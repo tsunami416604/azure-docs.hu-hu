@@ -2,13 +2,13 @@
 title: VRealize-műveletek beállítása Azure VMware-megoldáshoz
 description: Ismerje meg, hogyan állíthat be vRealize-műveleteket az Azure VMware-megoldás privát felhője számára.
 ms.topic: how-to
-ms.date: 08/06/2020
-ms.openlocfilehash: 729ee5c64776d7d04f702af62451175f7c53421b
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.date: 09/22/2020
+ms.openlocfilehash: 06b88eb610c4633018889315ab1cfd340d3f4b57
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88750398"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91293151"
 ---
 # <a name="set-up-vrealize-operations-for-azure-vmware-solution"></a>VRealize-műveletek beállítása Azure VMware-megoldáshoz
 
@@ -58,7 +58,23 @@ A vRealize-műveletek Azure VMware Solution példányának üzembe helyezése ut
 > A vRealize-Operations Manager telepítésének részletes útmutatóját a [VMware dokumentációjában](https://docs.vmware.com/en/vRealize-Operations-Manager/8.1/com.vmware.vcom.vapp.doc/GUID-7FFC61A0-7562-465C-A0DC-46D092533984.html) találja.
 
 
+## <a name="known-limitations"></a>Ismert korlátozások
 
+- Az **cloudadmin@vsphere.local** Azure VMware-megoldás felhasználója [korlátozott jogosultságokkal](concepts-rbac.md)rendelkezik. A VMware-eszközöket használó, a vendégen belüli memória-gyűjtemény nem támogatott az Azure VMware-megoldás virtuális gépei (VM-EK) használatával. Ebben az esetben az aktív és a felhasznált memória kihasználtsága továbbra is működik.
+- A gazdagép-alapú üzleti szándékok munkaterhelésének optimalizálása nem működik, mert az Azure VMware-megoldások kezelik a fürt konfigurációit, beleértve a DRS beállításait is.
+- A Operations Manager vRealize-alapú üzleti szándék használatával történő SDDC a fürtön belüli elhelyezésének munkaterhelési optimalizálása teljes mértékben támogatott a 8,0-es és újabb verziókban. A számítási feladatok optimalizálása azonban nem ismeri az erőforrás-készleteket, és a virtuális gépeket a fürt szintjén helyezi el. A felhasználó manuálisan is kijavítani ezt az Azure VMware-megoldás vCenter Server felületén.
+- Az Azure VMware-megoldás vCenter Server hitelesítő adataival nem tud bejelentkezni a vRealize Operations Managerba. 
+- Az Azure VMware-megoldás nem támogatja a vRealize Operations Manager beépülő modult.
+
+Ha vCenter Server Cloud-fiókkal csatlakozik az Azure VMware-megoldás vCenter a Operations Manager vRealize-hez, a következő figyelmeztetés jelenik meg:
+
+:::image type="content" source="./media/vrealize-operations-manager/warning-adapter-instance-creation-succeeded.png" alt-text="A figyelmeztetési adapter példányának létrehozása sikerült":::
+
+A figyelmeztetés azért fordul elő **cloudadmin@vsphere.local** , mert az Azure VMware-megoldás felhasználója nem rendelkezik megfelelő jogosultsággal ahhoz, hogy elvégezze a regisztrációhoz szükséges összes vCenter Server műveletet. A jogosultságok azonban elegendőek ahhoz, hogy az adapter példánya adatgyűjtést hajtson végre, ahogy az alábbi képen is látható:
+
+:::image type="content" source="./media/vrealize-operations-manager/adapter-instance-to-perform-data-collection.png" alt-text="Az adatgyűjtést végző adapter-példány":::
+
+További információ: vCenter- [adapter példányának konfigurálásához szükséges jogosultságok](https://docs.vmware.com/en/vRealize-Operations-Manager/8.1/com.vmware.vcom.core.doc/GUID-3BFFC92A-9902-4CF2-945E-EA453733B426.html).
 
 <!-- LINKS - external -->
 

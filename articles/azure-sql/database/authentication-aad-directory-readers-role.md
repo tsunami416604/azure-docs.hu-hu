@@ -1,6 +1,6 @@
 ---
 title: Az Azure SQL Azure Active Directory Directory-olvasói szerepköre
-description: Az Azure AD-alkalmazások (egyszerű szolgáltatásnév) támogatják az Azure AD-felhasználók létrehozását az Azure SQL Database, az Azure SQL felügyelt példányában és az Azure szinapszis Analytics szolgáltatásban
+description: Ismerje meg a címtár-olvasó szerepkörét az Azure SQL Azure AD-ben.
 ms.service: sql-db-mi
 ms.subservice: security
 ms.custom: azure-synapse
@@ -9,12 +9,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/14/2020
-ms.openlocfilehash: a517a4b14a64be2b9bf12270eef3d08e14d8f3c8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 5a6fb2c1c539c5b8e353f5c3720cb9d001dcbbc9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88556263"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91277948"
 ---
 # <a name="directory-readers-role-in-azure-active-directory-for-azure-sql"></a>Az Azure SQL Azure Active Directory Directory-olvasói szerepköre
 
@@ -49,7 +49,7 @@ A jelenleg **nyilvános előzetes**verzióban elérhető [globális rendszergazd
 
 Ennél a megoldásnál továbbra is magas jogosultsági szintű felhasználó (globális rendszergazda vagy Kiemelt szerepkörű rendszergazda) létrehozására van szükség a csoportok létrehozásához és a felhasználók egyszeri tevékenységhez való hozzárendeléséhez, de az Azure AD-csoport tulajdonosai további tagokat is hozzárendelhet. Így a jövőben nem kell magas jogosultsági szintű felhasználót bevezetni az Azure AD-bérlőben található összes SQL-adatbázis, SQL-felügyelt példány vagy Azure szinapszis-kiszolgáló konfigurálásához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: címtár-olvasók szerepkör hozzárendelése Azure AD-csoporthoz és szerepkör-hozzárendelések kezelése](authentication-aad-directory-readers-role-tutorial.md)

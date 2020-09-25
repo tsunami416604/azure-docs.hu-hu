@@ -8,18 +8,18 @@ manager: jroth
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 8eb9caf466148e43266c4be9cf1308da15fb67f2
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: ce3261eca8697ae1fabc07785353a4e845dadeba
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245536"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317004"
 ---
 # <a name="configure-a-distributed-network-name-for-an-fci"></a>Elosztott hálózatnév konfigurálása a következőhöz: 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -186,7 +186,7 @@ Másik lehetőségként beállíthat egy hálózati adaptert az Azure-ban a virt
 - A DNN jelenleg csak az Azure-beli virtuális gépeken SQL Server rendszerű feladatátvevő fürtök esetében támogatott. Használja a virtuális hálózat nevét Azure Load Balancer a rendelkezésre állási csoport figyelőkhöz.
 - További szempontokat is figyelembe kell venni, ha más SQL Server-funkciókkal dolgozik, és egy DNN-vel rendelkező egy-egy-egy-egy-egy További információ: [DNN együttműködési képesség](failover-cluster-instance-dnn-interoperability.md). 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni az Azure SQL Server HADR szolgáltatásairól, tekintse meg a [rendelkezésre állási csoportok](availability-group-overview.md) és a [feladatátvevő fürt példánya](failover-cluster-instance-overview.md)című témakört. Megtudhatja, [Hogyan](hadr-cluster-best-practices.md) konfigurálhatja a környezetet a magas rendelkezésre álláshoz és a vész-helyreállításhoz. 
 

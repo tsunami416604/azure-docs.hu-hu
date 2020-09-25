@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: jingwang
-ms.openlocfilehash: 1793517a76fce3c252c95fb73299d4c4e8c5a216
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: ac6540dfd86430aab518b145ed391d1d6283219e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531814"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276577"
 ---
 # <a name="delimited-text-format-in-azure-data-factory"></a>Tagolt szöveg formátuma Azure Data Factory
 
@@ -30,8 +30,8 @@ Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdon
 
 | Tulajdonság         | Leírás                                                  | Kötelező |
 | ---------------- | ------------------------------------------------------------ | -------- |
-| típus             | Az adatkészlet Type tulajdonságát **DelimitedText**értékre kell állítani. | Igen      |
-| location         | A fájl (ok) helyének beállításai. Minden fájl alapú összekötőhöz tartozik a saját hely típusa és a támogatott tulajdonságai `location` .  | Igen      |
+| típus             | Az adatkészlet Type tulajdonságát **DelimitedText**értékre kell állítani. | Yes      |
+| location         | A fájl (ok) helyének beállításai. Minden fájl alapú összekötőhöz tartozik a saját hely típusa és a támogatott tulajdonságai `location` .  | Yes      |
 | columnDelimiter  | A fájlban lévő oszlopok elkülönítésére szolgáló karakter (ek). <br>Az alapértelmezett érték a **vessző `,` **. Ha az oszlop elválasztója üres sztringként van definiálva, azaz nincs elválasztó karakter, a teljes sor egyetlen oszlopként lesz elvégezve.<br>Jelenleg az oszlop elválasztója üres sztringként vagy többkarakteres értékként csak a leképezési adatforgalom esetében támogatott, a másolási tevékenység azonban nem.  | No       |
 | rowDelimiter     | Az egyetlen karakter vagy "\r\n" egy fájl sorainak elkülönítésére szolgál. <br>Az alapértelmezett érték a következő értékek egyike **: ["\r\n", "\r", "\n"]** és **"\n" vagy "\r\n", íráshoz** az adatforgalom és a másolási tevékenység hozzárendelésével <br>Ha a sor elválasztó értéke nem határolójel (üres karakterlánc), akkor az oszlop elválasztóját nem kötelező megadni (üres karakterlánc) is, ami azt jelenti, hogy a teljes tartalmat egyetlen értékként kell kezelni.<br>Jelenleg a sorok elválasztója üres sztringként csak a leképezési folyamat esetében támogatott, a másolási tevékenység azonban nem. | No       |
 | quoteChar        | Az oszlop értékeit idézőjelek közé tartalmazó karakter. <br>Az alapértelmezett **érték idézőjelek** `"` . <br>Az adatforgalom leképezése `quoteChar` nem lehet üres karakterlánc. <br>A másolási tevékenység esetén ha `quoteChar` az üres sztringként van definiálva, az azt jelenti, hogy nincs idézőjel karakter, és az oszlop értéke nincs megadva, és a `escapeChar` rendszer az oszlop elválasztóját és saját magát is elkerüli. | No       |
@@ -80,7 +80,7 @@ A másolási tevékenység *** \* forrása \* *** szakaszban a következő tulaj
 
 | Tulajdonság       | Leírás                                                  | Kötelező |
 | -------------- | ------------------------------------------------------------ | -------- |
-| típus           | A másolási tevékenység forrásának Type tulajdonságát **DelimitedTextSource**értékre kell állítani. | Igen      |
+| típus           | A másolási tevékenység forrásának Type tulajdonságát **DelimitedTextSource**értékre kell állítani. | Yes      |
 | formatSettings | Tulajdonságok csoportja. Tekintse meg az alábbi, **tagolt szöveg olvasási beállítások** táblázatát. |  No       |
 | storeSettings  | Az adattárakból származó adatok beolvasására szolgáló tulajdonságok csoportja. A fájl alapú összekötők a saját támogatott olvasási beállításaival rendelkeznek `storeSettings` . | No       |
 
@@ -88,7 +88,7 @@ Támogatott **tagolt szöveges olvasási beállítások** a következő alatt `f
 
 | Tulajdonság      | Leírás                                                  | Kötelező |
 | ------------- | ------------------------------------------------------------ | -------- |
-| típus          | A formatSettings típusát **DelimitedTextReadSettings**értékre kell beállítani. | Igen      |
+| típus          | A formatSettings típusát **DelimitedTextReadSettings**értékre kell beállítani. | Yes      |
 | skipLineCount | Az adatok bemeneti fájlokból való olvasásakor kihagyható **nem üres** sorok számát jelzi. <br>Ha a skipLineCount és a firstRowAsHeader tulajdonság is meg van adva, a rendszer először kihagyja a sorokat, majd beolvassa a fejléc-információkat a bemeneti fájlból. | No       |
 | compressionProperties | Egy adott tömörítési kodekhez tartozó adatok kibontására szolgáló tulajdonságok csoportja. | No       |
 | preserveZipFileNameAsFolder<br>(*a `compressionProperties` -ben -> ) `type` `ZipDeflateReadSettings` * |  Akkor érvényes, ha a bemeneti adatkészlet **ZipDeflate** tömörítéssel van konfigurálva. Azt jelzi, hogy a forrás zip-fájlnevet a másolás során a mappa szerkezeteként kell-e megőrizni.<br>– Ha **true (alapértelmezett)** értékre van állítva, Data Factory a kibontott fájlokat ír a következőre: `<path specified in dataset>/<folder named as source zip file>/` .<br>– Ha **hamis**értékre van állítva, Data Factory a kibontott fájlokat közvetlenül a következőre írja: `<path specified in dataset>` . A versenyzés vagy a váratlan viselkedés elkerülése érdekében ügyeljen arra, hogy ne legyenek duplikált fájlnevek különböző zip-fájlokban.  | No |
@@ -128,7 +128,7 @@ A másolási *** \* \* tevékenység*** fogadója szakaszban a következő tulaj
 
 | Tulajdonság       | Leírás                                                  | Kötelező |
 | -------------- | ------------------------------------------------------------ | -------- |
-| típus           | A másolási tevékenység forrásának Type tulajdonságát **DelimitedTextSink**értékre kell állítani. | Igen      |
+| típus           | A másolási tevékenység forrásának Type tulajdonságát **DelimitedTextSink**értékre kell állítani. | Yes      |
 | formatSettings | Tulajdonságok csoportja. Tekintse meg az alábbi, **tagolt szöveges írási beállítások** táblázatát. |    No      |
 | storeSettings  | Az adattárakba való adatíráshoz szükséges tulajdonságok csoportja. A fájl alapú összekötők a saját támogatott írási beállításaival rendelkeznek `storeSettings` .  | No       |
 
@@ -136,7 +136,7 @@ Támogatott **tagolt szöveges írási beállítások** a (z) alatt `formatSetti
 
 | Tulajdonság      | Leírás                                                  | Kötelező                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
-| típus          | A formatSettings típusát **DelimitedTextWriteSettings**értékre kell beállítani. | Igen                                                   |
+| típus          | A formatSettings típusát **DelimitedTextWriteSettings**értékre kell beállítani. | Yes                                                   |
 | fileExtension | A kimeneti fájlok elnevezésére használt fájlkiterjesztés, például: `.csv` , `.txt` . Meg kell adni, ha az `fileName` nincs megadva a kimeneti DelimitedText adatkészletben. Ha a fájl neve konfigurálva van a kimeneti adatkészletben, akkor a rendszer a fogadó fájl nevét fogja használni, és a fájlkiterjesztés beállítás figyelmen kívül lesz hagyva.  | Igen, ha a fájl neve nincs megadva a kimeneti adatkészletben |
 | maxRowsPerFile | Az Adatmappában való íráskor több fájl írására is választhatja, és a fájlok maximális számát is megadhatja.  | No |
 | fileNamePrefix | `maxRowsPerFile`A konfigurálásakor alkalmazható.<br> Adja meg a fájlnév előtagját, ha több fájlra ír be adatírást, ami a következő mintának eredményezte: `<fileNamePrefix>_00000.<fileExtension>` . Ha nincs megadva, a rendszer automatikusan létrehozza a fájlnév-előtagot. Ez a tulajdonság nem érvényes, ha a forrás fájl-vagy [partíciós](copy-activity-performance-features.md)tárolásra képes adattár.  | No |
@@ -158,6 +158,7 @@ Az alábbi táblázatban a tagolt szöveges forrás által támogatott tulajdons
 | A fájl nevét tároló oszlop | Új oszlop létrehozása a forrásfájl nevével és elérési útjával | nem | Sztring | rowUrlColumn |
 | Befejezés után | A fájlok törlése vagy áthelyezése a feldolgozás után. A fájl elérési útja a tároló gyökeréből indul el | nem | Törlés: `true` vagy `false` <br> Áthelyezése `['<from>', '<to>']` | purgeFiles <br> moveFiles |
 | Szűrés utoljára módosítva | Válassza ki a fájlok szűrését az utolsó módosításuk alapján | nem | Timestamp | modifiedAfter <br> modifiedBefore |
+| Nem található fájlok engedélyezése | Ha az értéke igaz, a rendszer nem dobja el a hibát, ha nem található fájl | nem | `true` vagy `false` | ignoreNoFilesFound |
 
 ### <a name="source-example"></a>Forrás példa
 

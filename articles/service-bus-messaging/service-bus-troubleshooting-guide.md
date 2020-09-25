@@ -1,14 +1,14 @@
 ---
 title: Hibaelhárítási útmutató a Azure Service Bushoz | Microsoft Docs
-description: Ez a cikk hibaelhárítási tippeket és javaslatokat tartalmaz a Azure Service Bus használatakor esetlegesen előforduló problémákkal kapcsolatban.
+description: Ismerkedjen meg a hibaelhárítási tippekkel és javaslatokkal néhány olyan problémával kapcsolatban, amelyet a Azure Service Bus használatakor láthat.
 ms.topic: article
 ms.date: 09/16/2020
-ms.openlocfilehash: 39d2bf14f88e8efabcddda98268a187009cf029e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: aab7fa53b4af309c68cd91fdb1d25c5771f89828
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90885722"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91261124"
 ---
 # <a name="troubleshooting-guide-for-azure-service-bus"></a>A Azure Service Bus hibaelhárítási útmutatója
 Ez a cikk hibaelhárítási tippeket és javaslatokat tartalmaz a Azure Service Bus használatakor esetlegesen előforduló problémákkal kapcsolatban. 

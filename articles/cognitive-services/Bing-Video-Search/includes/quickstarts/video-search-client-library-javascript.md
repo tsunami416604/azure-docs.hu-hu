@@ -8,13 +8,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/19/2020
 ms.author: aahi
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 7cf28df4f009b017699c926d1ca54b7e5320a179
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: da45a404c52551e27ffc84d2a0c3e1d08f817593
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87404114"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328741"
 ---
 Ezzel a rövid útmutatóval megkezdheti a hírek keresését a JavaScripthez készült Bing Video Search ügyféloldali kódtár használatával. Habár a Bing Video Search REST API kompatibilis a legtöbb programozási nyelvvel, az ügyféloldali kódtár egyszerű módszert kínál a szolgáltatás integrálására az alkalmazásokba. A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/videoSearch.js)található. További megjegyzéseket és funkciókat tartalmaz.
 
@@ -56,12 +56,12 @@ Console-alkalmazás beállítása a Bing Video Search ügyféloldali kódtár ha
     });
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Egyoldalas Webalkalmazás létrehozása](../../tutorial-bing-video-search-single-page-app.md)
 
-## <a name="see-also"></a>További információ 
+## <a name="see-also"></a>Lásd még 
 
 * [Mi az a Bing Video Search API?](../../overview.md)
 * [A kognitív szolgáltatások .NET SDK-minták](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)

@@ -5,14 +5,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 02/06/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 8dfcdd8195824cb732df2c0c70c338e69630c5cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4c39a24664d36e4a69a44b7fe06835572e0cfe75
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84753126"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329244"
 ---
 # <a name="migrate-to-azure-virtual-wan"></a>Migrálás az Azure Virtual WAN-ba
 
@@ -27,7 +27,7 @@ Az Azure hub és a küllős kapcsolat modelljét több ezer ügyfelünk fogadta 
 
 Ez a cikk bemutatja, hogyan telepíthet át egy meglévő hibrid környezetet a virtuális WAN-ra.
 
-## <a name="scenario"></a>Forgatókönyv
+## <a name="scenario"></a>Használati eset
 
 A contoso egy globális pénzügyi szervezet, amely az európai és az ázsiai irodákkal is rendelkezik. Azt tervezzük, hogy meglévő alkalmazásaikat a helyszíni adatközpontból az Azure-ba helyezik át, és létrehoztak egy alapszintű kialakítást a manuális sugaras architektúra alapján, beleértve a regionális ügyfél által felügyelt hub virtuális hálózatokat a hibrid kapcsolatokhoz. A felhőalapú technológiákba való áttérés részeként a hálózati csapat feladata annak biztosítása, hogy a kapcsolat a vállalat felé irányuló továbbításra legyen optimalizálva.
 
@@ -280,6 +280,6 @@ A forgalom a következőképpen lesz átirányítva:
 
 ![8. folyamat](./media/migrate-from-hub-spoke-topology/flow8.png) 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az [Azure Virtual WAN](virtual-wan-about.md) -ról

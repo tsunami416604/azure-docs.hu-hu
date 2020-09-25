@@ -10,27 +10,27 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 08/23/2019
+ms.date: 09/15/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4950906e016b9e1915d18ecacc1edcfda8b4d09
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 2a5a4659671f8d4ded64a4f04f84abf1f67d8825
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279397"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265255"
 ---
 # <a name="azure-ad-connect---msexchuserholdpolicies-and-cloudmsexchuserholdpolicies"></a>Azure AD Connect – msExchUserHoldPolicies és cloudMsExchUserHoldPolicies
 Az alábbi dokumentum ismerteti ezeket az attribútumokat, amelyeket az Exchange használ, valamint az alapértelmezett szinkronizálási szabályok szerkesztésének megfelelő módját.
 
 ## <a name="what-are-msexchuserholdpolicies-and-cloudmsexchuserholdpolicies"></a>Mi a msExchUserHoldPolicies és a cloudMsExchUserHoldPolicies?
-Az Exchange Serverhez két különböző típusú [tároló érhető el: a peres](/Exchange/policy-and-compliance/holds/holds?view=exchserver-2019) eljárás megtartása és a helyben tartás. Ha a peres eljárás engedélyezve van, az összes postaláda minden elemet megtart.  A helyben tartott tárolók csak azokat az elemeket őrzik meg, amelyek megfelelnek a helyi elektronikus iratkezelési eszközzel megadott keresési lekérdezés feltételeinek.
+Az Exchange Serverhez két különböző típusú [tároló érhető el: a peres](https://docs.microsoft.com/Exchange/policy-and-compliance/holds/holds?view=exchserver-2019) eljárás megtartása és a helyben tartás. Ha a peres eljárás engedélyezve van, az összes postaláda minden elemet megtart.  A helyben tartott tárolók csak azokat az elemeket őrzik meg, amelyek megfelelnek a helyi elektronikus iratkezelési eszközzel megadott keresési lekérdezés feltételeinek.
 
 A MsExchUserHoldPolcies és a cloudMsExchUserHoldPolicies attribútumok lehetővé teszik a helyszíni AD és az Azure AD számára annak meghatározását, hogy mely felhasználók tartanak fenn, attól függően, hogy helyszíni Exchange-et vagy Exchange-et használnak-e.
 
 ## <a name="msexchuserholdpolicies-synchronization-flow"></a>msExchUserHoldPolicies szinkronizálási folyamata
-Alapértelmezés szerint a MsExchUserHoldPolcies szinkronizálja Azure AD Connect közvetlenül a metaverse-ban található msExchUserHoldPolicies attribútummal, majd az Azure AD msExchUserHoldPolices attribútumával.
+Alapértelmezés szerint a MsExchUserHoldPolcies szinkronizálja Azure AD Connect közvetlenül a metaverse-ban található msExchUserHoldPolicies attribútumhoz, majd az Azure AD msExchUserHoldPolicies attribútumához.
 
 Az alábbi táblázatok ismertetik a folyamatot:
 
@@ -38,7 +38,7 @@ Helyszíni Active Directorytól bejövő:
 
 |Active Directory attribútum|Attribútum neve|Folyamat típusa|Metaverse-attribútum|Szinkronizálási szabály|
 |-----|-----|-----|-----|-----|
-|Helyszíni Active Directory|msExchUserHoldPolicies|Direct|msExchUserHoldPolices|Az AD-User Exchange-ből|
+|Helyszíni Active Directory|msExchUserHoldPolicies|Direct|msExchUserHoldPolicies|Az AD-User Exchange-ből|
 
 Kimenő az Azure AD-be:
 
@@ -47,7 +47,7 @@ Kimenő az Azure AD-be:
 |Azure Active Directory|msExchUserHoldPolicies|Direct|msExchUserHoldPolicies|HRE – UserExchangeOnline|
 
 ## <a name="cloudmsexchuserholdpolicies-synchronization-flow"></a>cloudMsExchUserHoldPolicies szinkronizálási folyamata
-Alapértelmezés szerint a cloudMsExchUserHoldPolicies szinkronizálja Azure AD Connect közvetlenül a metaverse cloudMsExchUserHoldPolicies attribútumához. Ezt követően, ha a msExchUserHoldPolices nem null értékű a metaverse-ben, az attribútum a Active Directory.
+Alapértelmezés szerint a rendszer a cloudMsExchUserHoldPolicies szinkronizálja Azure AD Connect közvetlenül a metaverse cloudMsExchUserHoldPolicies attribútumához. Ezt követően, ha a msExchUserHoldPolicies nem null értékű a metaverse-ben, az attribútum a Active Directory.
 
 Az alábbi táblázatok ismertetik a folyamatot:
 

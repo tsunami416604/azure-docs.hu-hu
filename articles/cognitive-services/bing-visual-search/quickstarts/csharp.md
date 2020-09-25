@@ -1,7 +1,7 @@
 ---
 title: 'Gyors útmutató: a képelemzések beolvasása a REST API és a C#-Bing Visual Search használatával'
 titleSuffix: Azure Cognitive Services
-description: Megtudhatja, hogyan tölthet fel képet a Bing Visual Search API, és hogyan szerezhet be információkat.
+description: Megtudhatja, hogyan tölthet fel egy rendszerképet a Bing Visual Search API és a C# használatával, és hogyan szerezhet be információkat a rendszerképről.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: scottwhi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e5f772fe8152f209a8188ab5bf2d0010248feabf
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 0f908863b16b892e0978964a549b20bd9393fbae
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934310"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91277122"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-c"></a>Gyors útmutató: képelemzések beolvasása a Bing Visual Search REST API és C használatával #
 
@@ -268,7 +268,7 @@ A használatakor `HttpClient` a osztály segítségével hozhatja `MultipartForm
            }
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Visual Search egyoldalas Webalkalmazás létrehozása](../tutorial-bing-visual-search-single-page-app.md)

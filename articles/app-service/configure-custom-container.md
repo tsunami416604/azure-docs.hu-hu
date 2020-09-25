@@ -1,53 +1,306 @@
 ---
-title: Egyéni Linux-tároló konfigurálása
-description: Megtudhatja, hogyan konfigurálhat egyéni Linux-tárolókat a Azure App Serviceban. Ez a cikk a leggyakoribb konfigurációs feladatokat ismerteti.
+title: Egyéni tároló konfigurálása
+description: Megtudhatja, hogyan konfigurálhat egyéni tárolókat a Azure App Serviceban. A cikk a leggyakoribb konfigurációs feladatokat ismerteti.
 ms.topic: article
-ms.date: 03/28/2019
-ms.openlocfilehash: 9a27abe5457cf8adf2963db545c629134ae53709
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.date: 09/22/2020
+zone_pivot_groups: app-service-containers-windows-linux
+ms.openlocfilehash: 5b1bf9b205fc1eb90c6eeae3a101def764381213
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89566976"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91264575"
 ---
-# <a name="configure-a-custom-linux-container-for-azure-app-service"></a>Egyéni Linux-tároló konfigurálása Azure App Servicehoz
+# <a name="configure-a-custom-container-for-azure-app-service"></a>Egyéni tároló konfigurálása Azure App Servicehoz
 
-Ebből a cikkből megtudhatja, hogyan konfigurálhat egy egyéni Linux-tárolót, hogy Azure App Serviceon fusson.
+Ebből a cikkből megtudhatja, hogyan konfigurálhat egyéni tárolókat Azure App Service futtatásához.
 
-Ez az útmutató a Linux-alkalmazások App Service-ben történő tárolókra bontás kapcsolatos főbb fogalmakat és útmutatásokat tartalmazza. Ha még soha nem használta Azure App Servicet, először kövesse az [Egyéni tároló](quickstart-custom-container.md?pivots=container-linux) rövid [útmutatóját és az oktatóanyagot](tutorial-custom-container.md?pivots=container-linux) . A [multi-Container app](quickstart-multi-container.md) rövid [útmutatója és oktatóanyaga](tutorial-multi-container-app.md)is rendelkezésre áll.
+::: zone pivot="container-windows"
+
+Ez az útmutató a Windows-alkalmazások App Service-ben történő tárolókra bontás vonatkozó főbb fogalmakat és útmutatásokat tartalmazza. Ha még soha nem használta Azure App Servicet, először kövesse az [Egyéni tároló](quickstart-custom-container.md) rövid [útmutatóját és az oktatóanyagot](tutorial-custom-container.md) .
+
+::: zone-end
+
+::: zone pivot="container-linux"
+
+Ez az útmutató a Linux-alkalmazások App Service-ben történő tárolókra bontás kapcsolatos főbb fogalmakat és útmutatásokat tartalmazza. Ha még soha nem használta Azure App Servicet, először kövesse az [Egyéni tároló](quickstart-custom-container.md) rövid [útmutatóját és az oktatóanyagot](tutorial-custom-container.md) . A [multi-Container app](quickstart-multi-container.md) rövid [útmutatója és oktatóanyaga](tutorial-multi-container-app.md)is rendelkezésre áll.
+
+::: zone-end
+
+::: zone pivot="container-windows"
+
+## <a name="supported-parent-images"></a>Támogatott szülői lemezképek
+
+Egyéni Windows-rendszerkép esetén a kívánt keretrendszerhez ki kell választania a megfelelő [szülő-rendszerképet (alaprendszerkép)](https://docs.docker.com/develop/develop-images/baseimages/) :
+
+- A .NET-keretrendszer alkalmazásai üzembe helyezéséhez használjon egy szülő rendszerképet a Windows Server Core [hosszú távú karbantartási csatorna (LTSC)](/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) kiadása alapján. 
+- A .NET Core-alkalmazások telepítéséhez a Windows Server Nano [féléves karbantartási csatorna (SAC)](/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) kiadásán alapuló szülő lemezképet használjon. 
+
+Az alkalmazás indításakor a szülőrendszerkép letöltése hosszabb időbe telhet. Az indítási időt azonban lecsökkentheti az alábbi, az Azure App Service-ben már gyorsítótárazott szülőrendszerképek egyikének használatával:
+
+- [MCR.microsoft.com/Windows/ServerCore](https://hub.docker.com/_/microsoft-windows-servercore): 2004
+- [MCR.microsoft.com/Windows/ServerCore](https://hub.docker.com/_/microsoft-windows-servercore): ltsc2019
+- [MCR.microsoft.com/DotNet/Framework/ASPNET](https://hub.docker.com/_/microsoft-dotnet-framework-aspnet/): 4,8-windowsservercore-2004
+- [MCR.microsoft.com/DotNet/Framework/ASPNET](https://hub.docker.com/_/microsoft-dotnet-framework-aspnet/): 4,8-windowsservercore-ltsc2019
+- [MCR.microsoft.com/DotNet/Core/Runtime](https://hub.docker.com/_/microsoft-dotnet-core-runtime/): 3,1-nanoserver-2004
+- [MCR.microsoft.com/DotNet/Core/Runtime](https://hub.docker.com/_/microsoft-dotnet-core-runtime/): 3,1-nanoserver-1909
+- [MCR.microsoft.com/DotNet/Core/Runtime](https://hub.docker.com/_/microsoft-dotnet-core-runtime/): 3,1-nanoserver-1903
+- [MCR.microsoft.com/DotNet/Core/Runtime](https://hub.docker.com/_/microsoft-dotnet-core-runtime/): 3,1-nanoserver-1809
+- [MCR.microsoft.com/DotNet/Core/ASPNET](https://hub.docker.com/_/microsoft-dotnet-core-aspnet/): 3,1-nanoserver-2004
+- [MCR.microsoft.com/DotNet/Core/ASPNET](https://hub.docker.com/_/microsoft-dotnet-core-aspnet/): 3,1-nanoserver-1909
+- [MCR.microsoft.com/DotNet/Core/ASPNET](https://hub.docker.com/_/microsoft-dotnet-core-aspnet/): 3,1-nanoserver-1903
+- [MCR.microsoft.com/DotNet/Core/ASPNET](https://hub.docker.com/_/microsoft-dotnet-core-aspnet/): 3,1-nanoserver-1809
+
+::: zone-end
+
+## <a name="change-the-docker-image-of-a-custom-container"></a>Egyéni tároló Docker-rendszerképének módosítása
+
+Ha módosítani szeretné egy meglévő egyéni tároló alkalmazást a jelenlegi Docker-rendszerképből egy új képre, használja a következő parancsot:
+
+```azurecli-interactive
+az webapp config container set --name <app-name> --resource-group <group-name> --docker-custom-image-name <docker-hub-repo>/<image>
+```
+
+## <a name="use-an-image-from-a-private-registry"></a>Rendszerkép használata privát beállításjegyzékből
+
+Ha privát beállításjegyzékből (például Azure Container Registry) szeretne képet használni, futtassa a következő parancsot:
+
+```azurecli-interactive
+az webapp config container set --name <app-name> --resource-group <group-name> --docker-custom-image-name <image-name> --docker-registry-server-url <private-repo-url> --docker-registry-server-user <username> --docker-registry-server-password <password>
+```
+
+A *\<username>* és a esetében *\<password>* adja meg a saját beállításjegyzék-fiókja bejelentkezési hitelesítő adatait.
+
+## <a name="i-dont-see-the-updated-container"></a>Nem látom a frissített tárolót
+
+Ha módosítja a Docker-tároló beállításait úgy, hogy az új tárolóra mutasson, eltarthat néhány percig, amíg az alkalmazás az új tárolóból származó HTTP-kérelmeket is felkínálja. Amíg az új tárolót lehúzta és elindítják, App Service továbbra is a régi tárolótól érkező kérelmeket szolgálja ki. Csak akkor, ha az új tároló elindult, és készen áll a kérelmek fogadására, App Service megkezdi a kérelmek küldését.
+
+## <a name="how-container-images-are-stored"></a>A tároló-lemezképek tárolása
+
+Amikor először futtat egy egyéni Docker-rendszerképet a App Serviceban, App Service a `docker pull` és az összes képréteget lekéri. Ezeket a rétegeket a lemez tárolja, például ha a helyszíni Docker-t használta. Az alkalmazás minden újraindításakor App Service a `docker pull` , de csak a módosított rétegeket kéri le. Ha nem történt változás, a App Service a helyi lemezen lévő meglévő rétegeket használja.
+
+Ha az alkalmazás bármilyen okból módosítja a számítási példányokat, például az árképzési szintek fel-és leskálázásakor, App Service újra le kell húznia az összes réteget. Ugyanez érvényes, ha további példányok hozzáadásával bővíti a méretezést. Vannak olyan ritka esetek is, amikor az alkalmazás példányai méretezési művelet nélkül változhatnak.
 
 ## <a name="configure-port-number"></a>Portszám konfigurálása
 
-Alapértelmezés szerint a App Service feltételezi, hogy az egyéni tároló figyeli a 80-es portot. Az egyéni rendszerképben található webkiszolgáló a 80-től eltérő portot is használhat. Tájékoztassa az Azure-t arról, hogy az egyéni tároló milyen portot használ az Alkalmazásbeállítások használatával `WEBSITES_PORT` . A [jelen oktatóanyagban lévő Python-mintához](https://github.com/Azure-Samples/docker-django-webapp-linux) tartozó GitHub-oldalon az látható, hogy a `WEBSITES_PORT` értékét _8000_-re kell állítani. Megadhatja [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) a parancs futtatásával a Cloud shell. Például:
+Alapértelmezés szerint a App Service feltételezi, hogy az egyéni tároló figyeli a 80-es portot. Ha a tároló egy másik portot figyel, állítsa be az `WEBSITES_PORT` alkalmazás beállításait a app Service alkalmazásban. Megadhatja a [Cloud Shellon](https://shell.azure.com)keresztül. A Bashben:
 
 ```azurecli-interactive
-az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WEBSITES_PORT=8000
+az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings WEBSITES_PORT=8000
 ```
+
+A PowerShellben:
+
+```azurepowershell-interactive
+Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"WEBSITES_PORT"="8000"}
+```
+
+App Service jelenleg lehetővé teszi, hogy a tároló csak egy portot tegyen elérhetővé HTTP-kérelmek esetén. 
 
 ## <a name="configure-environment-variables"></a>Környezeti változók konfigurálása
 
-Az egyéni tároló olyan környezeti változókat használhat, amelyeket külsőleg kell megadni. Átadhatja azokat a parancs futtatásával [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) a Cloud shell. Például:
+Az egyéni tároló olyan környezeti változókat használhat, amelyeket külsőleg kell megadni. Átadhatja őket a [Cloud Shellon](https://shell.azure.com)keresztül. A Bashben:
 
 ```azurecli-interactive
-az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WORDPRESS_DB_HOST="myownserver.mysql.database.azure.com"
+az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings DB_HOST="myownserver.mysql.database.azure.com"
 ```
+
+A PowerShellben:
+
+```azurepowershell-interactive
+Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"DB_HOST"="myownserver.mysql.database.azure.com"}
+```
+
+Az alkalmazás futtatásakor a rendszer automatikusan a folyamatba befecskendezi a App Service alkalmazás beállításait környezeti változókként. 
+
+::: zone pivot="container-windows"
+Az IIS vagy a .NET-keretrendszer (4,0 vagy újabb) alapú tárolók esetében a rendszer a `System.ConfigurationManager` .NET-alkalmazás beállításait és a kapcsolatok karakterláncait app Service automatikusan befecskendezi. Minden más nyelv vagy keretrendszer esetében környezeti változókként vannak megadva a folyamathoz, a következő megfelelő előtagok egyikével:
+
+- `APPSETTING_`
+- `SQLCONTR_`
+- `MYSQLCONTR_`
+- `SQLAZURECOSTR_`
+- `POSTGRESQLCONTR_`
+- `CUSTOMCONNSTR_`
+
+::: zone-end
+
+::: zone pivot="container-linux"
 
 Ez a módszer egytárolós alkalmazások vagy többtárolós alkalmazások esetén is működik, ahol a környezeti változók a *Docker-compose. YML* fájlban vannak megadva.
 
+::: zone-end
+
 ## <a name="use-persistent-shared-storage"></a>Állandó megosztott tároló használata
+
+::: zone pivot="container-windows"
+
+Az alkalmazás fájlrendszerében a *C:\home* Directory használatával megtarthatja a fájlokat az újraindítások között, és megoszthatja azokat a példányok között. Az `C:\home` alkalmazásban elérhetővé teszi a tároló alkalmazás számára az állandó tárterület elérését.
+
+Ha az állandó tárterület le van tiltva, a rendszer nem őrzi meg az írásokat a `C:\home` könyvtárba. A [Docker-gazdagép naplófájljai és a tároló-naplók](#access-diagnostic-logs) egy alapértelmezett állandó megosztott tárolóba kerülnek, amely nincs a tárolóhoz csatolva. Ha az állandó tárterület engedélyezve van, a címtárba való összes írás megmarad, és a kibővített `C:\home` alkalmazás összes példánya elérhető, és a napló a következő címen érhető el: `C:\home\LogFiles` .
+
+Alapértelmezés szerint az állandó tárterület *le van tiltva* , és a beállítás nem érhető el az alkalmazás beállításaiban. Ennek engedélyezéséhez állítsa be az `WEBSITES_ENABLE_APP_SERVICE_STORAGE` alkalmazás beállításait a [Cloud Shellon](https://shell.azure.com)keresztül. A Bashben:
+
+```azurecli-interactive
+az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=true
+```
+
+A PowerShellben:
+
+```azurepowershell-interactive
+Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"WEBSITES_ENABLE_APP_SERVICE_STORAGE"=true}
+```
+
+::: zone-end
+
+::: zone pivot="container-linux"
 
 Az alkalmazás fájlrendszerében a */Home* Directory használatával megtarthatja a fájlokat az újraindítások között, és megoszthatja azokat a példányok között. Az `/home` alkalmazásban elérhetővé teszi a tároló alkalmazás számára az állandó tárterület elérését.
 
 Ha az állandó tárterület le van tiltva, akkor a rendszer a címtárba való írást `/home` nem őrzi meg az alkalmazások újraindítása vagy több példánya között. Az egyetlen kivétel az a `/home/LogFiles` könyvtár, amely a Docker és a tároló naplóinak tárolására szolgál. Ha az állandó tárterület engedélyezve van, a címtárba való összes írás megmarad, és a kibővített `/home` alkalmazás összes példánya elérhetővé válik.
 
-Alapértelmezés szerint az állandó tárterület *engedélyezve* van, és a beállítás nem érhető el az alkalmazás beállításaiban. A letiltásához állítsa az `WEBSITES_ENABLE_APP_SERVICE_STORAGE` alkalmazás beállítását a [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) Cloud Shell parancs futtatásával. Például:
+Alapértelmezés szerint az állandó tárterület *engedélyezve* van, és a beállítás nem érhető el az alkalmazás beállításaiban. A letiltásához állítsa be az `WEBSITES_ENABLE_APP_SERVICE_STORAGE` alkalmazás beállításait a [Cloud Shellon](https://shell.azure.com)keresztül. A Bashben:
 
 ```azurecli-interactive
-az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=false
+az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=false
+```
+
+A PowerShellben:
+
+```azurepowershell-interactive
+Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"WEBSITES_ENABLE_APP_SERVICE_STORAGE"=false}
+```
+
+::: zone-end
+
+> [!NOTE]
+> [Saját állandó tárterületet is beállíthat](configure-connect-to-azure-storage.md).
+
+## <a name="detect-https-session"></a>HTTPS-munkamenet észlelése
+
+App Service leállítja a TLS/SSL-t az előtér végén. Ez azt jelenti, hogy a TLS/SSL-kérések soha nem kapják meg az alkalmazást. Nem kell, és nem kell semmilyen támogatást biztosítani a TLS/SSL-hez az alkalmazásban. 
+
+Az előtér-végpontok az Azure-adatközpontokon belül találhatók. Ha a TLS/SSL protokollt használja az alkalmazáshoz, az interneten keresztüli forgalom mindig titkosítva lesz.
+
+::: zone pivot="container-windows"
+
+## <a name="customize-aspnet-machine-key-injection"></a>A ASP.NET-Beszúrás testreszabása
+
+ A tároló indításakor a rendszer automatikusan generált kulcsokat fecskendez a tárolóba a ASP.NET titkosítási rutinok számára. Ezeket a [kulcsokat a tárolóban](#connect-to-the-container) a következő környezeti változók keresésével érheti el:,, `MACHINEKEY_Decryption` `MACHINEKEY_DecryptionKey` `MACHINEKEY_ValidationKey` , `MACHINEKEY_Validation` . 
+
+Az egyes újraindítások új kulcsai alaphelyzetbe állíthatják a ASP.NET űrlapos hitelesítését, és megtekinthetik az állapotot, ha az alkalmazás ezektől függ. A kulcsok automatikus újragenerálásának megakadályozásához [állítsa be őket manuálisan app Service alkalmazásbeállításokként](#configure-environment-variables). 
+
+## <a name="connect-to-the-container"></a>Kapcsolódás a tárolóhoz
+
+A Windows-tárolóhoz közvetlenül kapcsolódhat a diagnosztikai feladatokhoz, ha navigál a alkalmazáshoz `https://<app-name>.scm.azurewebsites.net/DebugConsole` . Ez a következőképpen működik:
+
+- A hibakeresési konzol lehetővé teszi az interaktív parancsok végrehajtását, például a PowerShell-munkamenetek indítását, a beállításkulcsok vizsgálatát és a teljes tároló fájlrendszerének megkeresését.
+- A szolgáltatás a fenti grafikus böngészőtől függetlenül működik, amely csak a [megosztott tárolóban](#use-persistent-shared-storage)lévő fájlokat jeleníti meg.
+- A kibővített alkalmazásokban a hibakeresési konzol csatlakozik az egyik tároló példányhoz. A felső menüben választhat egy másik példányt a **példány** legördülő listából.
+- A tárolón belüli, a konzolon végrehajtott bármilyen módosítás *nem* marad meg az alkalmazás újraindításakor (kivéve a megosztott tárolóban történt változásokat), mert nem része a Docker-rendszerképnek. Ha továbbra is meg szeretné őrizni a módosításokat, például a beállításjegyzék beállításait és a szoftverek telepítését, tegye azokat a Docker.
+
+## <a name="access-diagnostic-logs"></a>Diagnosztikai naplók elérése
+
+App Service naplózza a Docker-gazdagép műveleteit, valamint a tárolón belüli tevékenységeket. A Docker-gazdagépről (platform-naplók) származó naplók alapértelmezés szerint el vannak szállítva, de a tárolón belül az alkalmazás naplófájljait vagy webkiszolgálói naplóit manuálisan kell engedélyezni. További információ: az [alkalmazások naplózásának engedélyezése](troubleshoot-diagnostic-logs.md#enable-application-logging-linuxcontainer) és a [webkiszolgáló naplózásának engedélyezése](troubleshoot-diagnostic-logs.md#enable-web-server-logging). 
+
+A Docker-naplók több módon is elérhetők:
+
+- [Azure Portal](#in-azure-portal)
+- [A kudu-konzolról](#from-the-kudu-console)
+- [A kudu API-val](#with-the-kudu-api)
+- [Naplók küldése az Azure monitornak](troubleshoot-diagnostic-logs.md#send-logs-to-azure-monitor-preview)
+
+### <a name="in-azure-portal"></a>Azure Portal
+
+A Docker-naplók a portálon, az alkalmazás **tároló beállításai** lapján jelennek meg. A naplók csonkoltek, de a **Letöltés**lehetőségre kattintva letöltheti az összes naplót. 
+
+### <a name="from-the-kudu-console"></a>A kudu-konzolról
+
+`https://<app-name>.scm.azurewebsites.net/DebugConsole`A naplófájlok megjelenítéséhez keresse meg és kattintson a **naplófájlok** mappára. A teljes **naplófájlok** könyvtárának letöltéséhez kattintson a könyvtár nevétől balra található **Letöltés** ikonra. Ezt a mappát FTP-ügyfél használatával is elérheti.
+
+A konzol-terminálon alapértelmezés szerint nem férhet hozzá a `C:\home\LogFiles` mappához, mert az állandó megosztott tárterület nincs engedélyezve. Ha engedélyezni szeretné ezt a viselkedést a konzol-terminálon, [engedélyezze az állandó megosztott tárolót](#use-persistent-shared-storage).
+
+Ha olyan Docker-naplót próbál letölteni, amely jelenleg használatban van egy FTP-ügyféllel, a fájl zárolása miatt hibaüzenetet kaphat.
+
+### <a name="with-the-kudu-api"></a>A kudu API-val
+
+Navigáljon közvetlenül a-hoz a `https://<app-name>.scm.azurewebsites.net/api/logs/docker` Docker-naplók metaadatainak megtekintéséhez. Egyszerre több naplófájl is látható, és a `href` tulajdonsággal közvetlenül is letöltheti a naplófájlt. 
+
+Az összes napló egyetlen ZIP-fájlban való letöltéséhez nyissa meg a következőt: `https://<app-name>.scm.azurewebsites.net/api/logs/docker/zip` .
+
+## <a name="customize-container-memory"></a>Tároló memóriájának testreszabása
+
+Alapértelmezés szerint a Azure App Service összes telepített Windows-tárolója 1 GB RAM-ra van korlátozva. Ezt az értéket módosíthatja úgy, hogy az `WEBSITE_MEMORY_LIMIT_MB` [Cloud Shellon](https://shell.azure.com)keresztül megadja az alkalmazás beállítását. A Bashben:
+
+```azurecli-interactive
+az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings WEBSITE_MEMORY_LIMIT_MB=2000
+```
+
+A PowerShellben:
+
+```azurepowershell-interactive
+Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"WEBSITE_MEMORY_LIMIT_MB"=2000}
+```
+
+Az érték MB-ban van definiálva, és a gazdagép teljes fizikai memóriájának meg kell egyeznie. A 8 GB RAM-mal rendelkező App Service-csomagban például az összes alkalmazás összesített összege `WEBSITE_MEMORY_LIMIT_MB` nem haladhatja meg a 8 GB-ot. Az egyes díjszabási szintekhez rendelkezésre álló memória mennyiségét a **Premium Container (Windows) csomag** szakaszban találja [app Service díjszabásban](https://azure.microsoft.com/pricing/details/app-service/windows/).
+
+## <a name="customize-the-number-of-compute-cores"></a>A számítási magok számának testreszabása
+
+Alapértelmezés szerint a Windows-tároló a választott díjszabási szinten elérhető összes maggal együtt fut. Előfordulhat például, hogy csökkenteni szeretné az átmeneti tárolóhely által használt magok számát. A tárolók által használt magok számának csökkentéséhez állítsa az `WEBSITE_CPU_CORES_LIMIT` alkalmazás beállítását a magok előnyben részesített számára. Megadhatja a [Cloud Shellon](https://shell.azure.com)keresztül. A Bashben:
+
+```azurecli-interactive
+az webapp config appsettings set --resource-group <group-name> --name <app-name> --slot staging --settings WEBSITE_CPU_CORES_LIMIT=1
+```
+
+A PowerShellben:
+
+```azurepowershell-interactive
+Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"WEBSITE_CPU_CORES_LIMIT"=1}
 ```
 
 > [!NOTE]
-> [Saját állandó tárterületet is beállíthat](configure-connect-to-azure-storage.md?pivots=platform-linux).
+> Az Alkalmazásbeállítás frissítése elindítja az automatikus újraindítást, ami minimális állásidőt okoz. Éles alkalmazások esetén érdemes lehet egy átmeneti tárolóhelyre cserélni, módosítani az alkalmazás beállítását az átmeneti tárolóhelyen, majd visszacserélni az éles környezetbe.
+
+Ellenőrizze a beállított számot a kudu-konzolon ( `https://<app-name>.scm.azurewebsites.net` ), majd írja be az alábbi parancsokat a PowerShell használatával. Mindegyik parancs egy számot ad eredményül.
+
+```PowerShell
+Get-ComputerInfo | ft CsNumberOfLogicalProcessors # Total number of enabled logical processors. Disabled processors are excluded.
+Get-ComputerInfo | ft CsNumberOfProcessors # Number of physical processors.
+```
+
+A processzorok többmagos vagy feleznie processzorok lehetnek. Az egyes díjszabási szintekhez elérhető magok száma a **Premium Container (Windows) csomag** szakaszban található [app Service díjszabásban](https://azure.microsoft.com/pricing/details/app-service/windows/).
+
+## <a name="customize-health-ping-behavior"></a>Az állapot pingelése viselkedés testreszabása
+
+App Service úgy véli, hogy egy tároló sikeresen elindul a tároló indításakor, és válaszol egy HTTP-pingelésre. A Health ping kérelem tárolói a fejlécet `User-Agent= "App Service Hyper-V Container Availability Check"` . Ha a tároló elindul, de bizonyos idő elteltével nem válaszol a pingelésre, App Service naplóz egy eseményt a Docker-naplóban, mondván, hogy a tároló nem indult el. 
+
+Ha az alkalmazás erőforrás-igényes, előfordulhat, hogy a tároló nem válaszol a HTTP-ping időben. Ha a HTTP-pingelések meghiúsulnak, állítsa be az `CONTAINER_AVAILABILITY_CHECK_MODE` alkalmazás beállításait. Megadhatja a [Cloud Shellon](https://shell.azure.com)keresztül. A Bashben:
+
+```azurecli-interactive
+az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings CONTAINER_AVAILABILITY_CHECK_MODE="ReportOnly"
+```
+
+A PowerShellben:
+
+```azurepowershell-interactive
+Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"CONTAINER_AVAILABILITY_CHECK_MODE"="ReportOnly"}
+```
+
+A következő táblázat a lehetséges értékeket mutatja:
+
+| Érték | Leírások |
+| - | - |
+| **Javítás** | A tároló újraindítása három egymást követő rendelkezésre állási ellenőrzés után |
+| **ReportOnly** | Az alapértelmezett érték. Ne indítsa újra a tárolót, de jelentse a tároló Docker-naplóit három egymást követő rendelkezésre állási ellenőrzés után. |
+| **Kikapcsolva** | Ne keressen rendelkezésre állást. |
+
+## <a name="support-for-group-managed-service-accounts"></a>Csoportosan felügyelt szolgáltatásfiókok támogatása
+
+A csoportosan felügyelt szolgáltatásfiókok (csoportosan felügyelt szolgáltatásfiókokat-EK) jelenleg nem támogatottak a App Service lévő Windows-tárolókban.
+
+::: zone-end
+
+::: zone pivot="container-linux"
 
 ## <a name="enable-ssh"></a>SSH engedélyezése
 
@@ -94,24 +347,6 @@ Az SSH lehetővé teszi a tároló és az ügyfél közötti biztonságos kommun
 
 [!INCLUDE [Access diagnostic logs](../../includes/app-service-web-logs-access-linux-no-h.md)]
 
-## <a name="change-the-docker-image-of-a-custom-container"></a>Egyéni tároló Docker-rendszerképének módosítása
-
-Ha módosítani szeretné egy meglévő egyéni tároló alkalmazást a jelenlegi Docker-rendszerképből egy új képre, használja a következő parancsot:
-
-```azurecli-interactive
-az webapp config container set --name <app-name> --resource-group <group-name> --docker-custom-image-name <docker-hub-repo>/<image>
-```
-
-## <a name="use-an-image-from-a-private-registry"></a>Rendszerkép használata privát beállításjegyzékből
-
-Ha privát beállításjegyzékből (például Azure Container Registry) szeretne képet használni, futtassa a következő parancsot:
-
-```azurecli-interactive
-az webapp config container set --name <app-name> --resource-group <group-name> --docker-custom-image-name <image-name> --docker-registry-server-url <private-repo-url> --docker-registry-server-user <username> --docker-registry-server-password <password>
-```
-
-A *\<username>* és a esetében *\<password>* adja meg a saját beállításjegyzék-fiókja bejelentkezési hitelesítő adatait.
-
 ## <a name="configure-multi-container-apps"></a>Többtárolós alkalmazások konfigurálása
 
 - [Állandó tároló használata a Docker-összeállításban](#use-persistent-storage-in-docker-compose)
@@ -122,15 +357,15 @@ A *\<username>* és a esetében *\<password>* adja meg a saját beállításjegy
 
 A többtárolós alkalmazások, például a WordPress esetében állandó tárterületre van szükség a megfelelő működéshez. Az engedélyezéshez a Docker-összeállítás konfigurációjának a tárolón *kívüli* tárolási helyre kell mutatnia. A tárolón belüli tárolóhelyek nem tartanak fenn módosításokat az alkalmazás újraindítása után.
 
-Engedélyezze az állandó tárterületet az Alkalmazásbeállítások beállításával az `WEBSITES_ENABLE_APP_SERVICE_STORAGE` az [WebApp config appSettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) parancs használatával Cloud Shellban.
+Engedélyezze az állandó tárterületet az Alkalmazásbeállítások beállításával az `WEBSITES_ENABLE_APP_SERVICE_STORAGE` az [WebApp config appSettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) parancs használatával [Cloud Shellban](https://shell.azure.com).
 
 ```azurecli-interactive
-az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=TRUE
+az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=TRUE
 ```
 
 A *Docker-compose. YML* fájlban rendelje hozzá a ( `volumes` `${WEBAPP_STORAGE_HOME}` ) beállítást. 
 
-A `WEBAPP_STORAGE_HOME` egy környezeti változó az App Service szolgáltatásban, amely az alkalmazás állandó tárolójára mutat. Például:
+A `WEBAPP_STORAGE_HOME` egy környezeti változó az App Service szolgáltatásban, amely az alkalmazás állandó tárolójára mutat. Példa:
 
 ```yaml
 wordpress:
@@ -177,10 +412,20 @@ Az alábbi listában a támogatott és nem támogatott Docker-összeállítási 
 
 [!INCLUDE [robots933456](../../includes/app-service-web-configure-robots933456.md)]
 
+::: zone-end
+
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: üzembe helyezés Private Container adattárból](tutorial-custom-container.md?pivots=container-linux)
+> [Oktatóanyag: egyéni szoftver átmigrálása Azure App Servicere egyéni tároló használatával](tutorial-custom-container.md)
+
+::: zone pivot="container-linux"
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Multi-Container WordPress-alkalmazás](tutorial-multi-container-app.md)
+
+::: zone-end
+
+Vagy tekintse meg a további forrásokat:
+
+[Tanúsítvány betöltése Windows/Linux-tárolókban](configure-ssl-certificate-in-code.md#load-certificate-in-linuxwindows-containers)

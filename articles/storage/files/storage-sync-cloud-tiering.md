@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6678f64802dc497de6cf0a70ba5ff0bbcaf44e1c
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 9df06a9d81ef3c9fbe3380bab88325a586981db9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88033121"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329312"
 ---
 # <a name="cloud-tiering-overview"></a>A felhőalapú rétegek áttekintése
 A felhőalapú rétegek a Azure File Sync választható funkciója, amelyekben a gyakran használt fájlok a kiszolgálón helyileg vannak gyorsítótárazva, míg az összes többi fájl a házirend-beállítások alapján Azure Files. Egy fájl többszintű kiválasztásakor a Azure File Sync fájlrendszer-szűrő (StorageSync.sys) a fájlt helyileg váltja fel egy mutatóval vagy újraelemzési ponttal. Az újraelemzési pont a fájl URL-címét jelöli Azure Files. A többrétegű fájlok "offline" attribútummal és az NTFS fájlrendszerrel beállított FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS attribútummal is rendelkeznek, így a harmadik féltől származó alkalmazások biztonságosan azonosíthatják a többrétegű fájlokat.
@@ -40,7 +40,7 @@ A felhő-rétegek nem függnek az NTFS-szolgáltatástól a legutóbbi hozzáfé
 <a id="tiering-minimum-file-size"></a>
 ### <a name="what-is-the-minimum-file-size-for-a-file-to-tier"></a>Mennyibe kerül a fájl minimális mérete a szinthez?
 
-Az ügynök 9-es és újabb verzióiban a fájl minimális fájlmérete a fájlrendszer fürtjének méretétől függ. A Felhőbeli rétegek minimális mérete a fürt méretének és a minimális 8 KB-os értéknek a kiszámítására alkalmas. A következő táblázat a mennyiségi fürt méretétől függően a minimálisan felhasználható fájlméretet mutatja be:
+Az ügynök 12-es és újabb verzióiban a fájlokra vonatkozó minimális fájlméret a fájlrendszer fürtjének méretétől függ. A Felhőbeli rétegek minimális mérete a fürt méretének és a minimális 8 KB-os értéknek a kiszámítására alkalmas. A következő táblázat a mennyiségi fürt méretétől függően a minimálisan felhasználható fájlméretet mutatja be:
 
 |Kötet fürtjének mérete (bájt) |Ennek a méretnek vagy nagyobb méretű fájloknak lépcsőzetesen kell lenniük  |
 |----------------------------|---------|
@@ -48,9 +48,9 @@ Az ügynök 9-es és újabb verzióiban a fájl minimális fájlmérete a fájlr
 |8 KB (8192)                 | 16 KB   |
 |16 KB (16384)               | 32 KB   |
 |32 KB (32768)               | 64 KB   |
-|64 KB (65536)               | 128 KB  |
+|64 KB (65536) és nagyobb    | 128 KB  |
 
-A Windows Server 2019 és a Azure File Sync Agent 12-ös és újabb verziója esetén a fürtök mérete akár 2 MB is lehet, és a nagyobb szektorcsoportok méretének megegyező módon működik. A régebbi operációs rendszer vagy ügynök verziója legfeljebb 64 KB-ig támogatja a fürtök méretét.
+A Windows Server 2019 és a Azure File Sync Agent 12-ös és újabb verziója esetén a fürtök mérete akár 2 MB is lehet, és a nagyobb szektorcsoportok méretének megegyező módon működik. A régebbi operációs rendszer vagy ügynök verziója legfeljebb 64 KB-ig támogatja a fürtök méretét, azonban a felhő-rétegek nem működnek.
 
 A Windows által használt összes fájlrendszer, a fürt méretétől függően rendezi a merevlemezt (más néven a foglalási egység mérete). A fürt mérete a fájl tárolására használható legkisebb lemezterületet jelöli. Ha a fájlméretek nem jönnek létre a fürt méretének még többszörösére, a fájlnak a fürt következő többszörösére való tárolásához további helyet kell használni.
 
@@ -85,11 +85,23 @@ Ha egy köteten egynél több kiszolgálói végpont található, akkor a kötet
 ### <a name="how-does-the-date-tiering-policy-work-in-conjunction-with-the-volume-free-space-tiering-policy"></a>Hogyan működik a dátum rétegzési szabályzata a köteten található szabad hely rétegzési szabályzatával együtt? 
 Ha egy kiszolgálói végponton engedélyezi a felhő-rétegek bekapcsolását, beállíthatja a kötet szabad területére vonatkozó házirendet. Mindig elsőbbséget élvez minden más szabályzattal szemben, beleértve a dátumra vonatkozó házirendet is. Lehetőség van arra is, hogy a köteten minden egyes kiszolgálói végponthoz engedélyezheti a dátum házirendjét. Ez a szabályzat úgy kezeli, hogy csak a megadott fájlok (azaz a () olvasása vagy írása) a szabályzat által ismertetett időtartományon belül maradjon helyi. A rendszer a megadott számú napon belül nem fér hozzá a fájlokhoz. 
 
-A Felhőbeli rétegek az utolsó hozzáférési időt használják annak meghatározására, hogy mely fájlokat kell a rétegekbe állítani. A felhő-előállítók szűrő-illesztőprogramja (storagesync.sys) nyomon követi a legutóbbi hozzáférési időt, és naplózza a Felhőbeli adattárolóban tárolt adatokat. A Heat Store-t egy helyi PowerShell-parancsmag használatával tekintheti meg.
+A Felhőbeli rétegek az utolsó hozzáférési időt használják annak meghatározására, hogy mely fájlokat kell a rétegekbe állítani. A felhő-előállítók szűrő-illesztőprogramja (storagesync.sys) nyomon követi a legutóbbi hozzáférési időt, és naplózza a Felhőbeli adattárolóban tárolt adatokat. Lekérheti a Heat Store-t, és mentheti egy CSV-fájlba egy helyi PowerShell-parancsmag használatával.
 
 ```powershell
+# There is a single heat store for files on a volume / server endpoint / individual file.
+# The heat store can get very large. If you only need to retrieve the "coolest" number of items, use -Limit and a number
+
+# Import the PS module:
 Import-Module '<SyncAgentInstallPath>\StorageSync.Management.ServerCmdlets.dll'
-Get-StorageSyncHeatStoreInformation '<LocalServerEndpointPath>'
+
+# VOLUME FREE SPACE: To get the order in which files will be tiered using the volume free space policy:
+Get-StorageSyncHeatStoreInformation -VolumePath '<DriveLetter>:\' -ReportDirectoryPath '<FolderPathToStoreResultCSV>' -IndexName LastAccessTimeWithSyncAndTieringOrder
+
+# DATE POLICY: To get the order in which files will be tiered using the date policy:
+Get-StorageSyncHeatStoreInformation -VolumePath '<DriveLetter>:\' -ReportDirectoryPath '<FolderPathToStoreResultCSV>' -IndexName LastAccessTimeWithSyncAndTieringOrderV2
+
+# Find the heat store information for a particular file:
+Get-StorageSyncHeatStoreInformation -FilePath '<PathToSpecificFile>'
 ```
 
 > [!IMPORTANT]
@@ -158,10 +170,10 @@ Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.Se
 Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint>
 ```
 Választható paraméterek:
-* `-Order CloudTieringPolicy`először a legutóbb módosított vagy elért fájlokat fogja felidézni, és az aktuális rétegű szabályzat engedélyezi. 
+* `-Order CloudTieringPolicy` először a legutóbb módosított vagy elért fájlokat fogja felidézni, és az aktuális rétegű szabályzat engedélyezi. 
     * Ha a kötet szabad területére vonatkozó házirend be van állítva, a rendszer visszahívja a fájlokat, amíg el nem éri a kötet szabad területére vonatkozó házirend-beállítást. Ha például a kötet szabad házirend-beállítása 20%, akkor a visszahívás leáll, ha a kötet szabad területe eléri a 20%-ot.  
     * Ha a kötet szabad területe és a dátum házirendje konfigurálva van, a rendszer visszahívja a fájlokat, amíg el nem éri a kötet szabad területét vagy a dátum házirend-beállítását. Ha például a kötet szabad házirend-beállítása 20%, a dátum pedig 7 nap, a visszahívás leáll, ha a kötet szabad területe eléri a 20%-ot, vagy a 7 napon belül elért vagy módosított összes fájl helyi.
-* `-ThreadCount`meghatározza, hogy hány fájlt lehet visszahívni párhuzamosan.
+* `-ThreadCount` meghatározza, hogy hány fájlt lehet visszahívni párhuzamosan.
 * `-PerFileRetryCount`meghatározza, hogy a rendszer milyen gyakran próbálkozzon a visszahívással egy jelenleg blokkolt fájlon.
 * `-PerFileRetryDelaySeconds`meghatározza azt az időtartamot másodpercben, ameddig a rendszer újrahívja az újrapróbálkozási kísérleteket, és mindig az előző paraméterrel együtt kell használni őket.
 
@@ -196,7 +208,7 @@ Invoke-StorageSyncCloudTiering -Path <file-or-directory-to-be-tiered>
 ### <a name="why-are-my-tiered-files-not-showing-thumbnails-or-previews-in-windows-explorer"></a>A Windows Intézőben miért nem láthatók miniatűr vagy előzetes verziók a többrétegű fájlok számára?
 A többhelyes fájlok esetében a miniatűrök és az előzetes verziók nem láthatók a kiszolgálói végponton. Ez a viselkedés várható, mivel a Windows miniatűr gyorsítótár funkciója szándékosan kihagyja a fájlok olvasását az offline attribútummal. Ha engedélyezve van a felhőalapú rétegek beolvasása, a többoldalas fájlok olvasásával le lehet tölteni őket (visszahívásra).
 
-Ez a viselkedés nem jellemző a Azure File Syncre, a Windows Intéző megjeleníti a "szürke X" értéket minden olyan fájlnál, amelynél az offline attribútum be van állítva. Az X ikon jelenik meg, amikor SMB-kapcsolaton keresztül fér hozzá a fájlokhoz. A viselkedés részletes ismertetését a következő témakörben találja:[https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105](https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105)
+Ez a viselkedés nem jellemző a Azure File Syncre, a Windows Intéző megjeleníti a "szürke X" értéket minden olyan fájlnál, amelynél az offline attribútum be van állítva. Az X ikon jelenik meg, amikor SMB-kapcsolaton keresztül fér hozzá a fájlokhoz. A viselkedés részletes ismertetését a következő témakörben találja: [https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105](https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105)
 
 <a id="afs-tiering-disabled"></a>
 ### <a name="i-have-cloud-tiering-disabled-why-are-there-tiered-files-in-the-server-endpoint-location"></a>Letiltottam a Felhőbeli letiltást, miért vannak a kiszolgálói végpontok helyen található, lépcsőzetes fájlok?

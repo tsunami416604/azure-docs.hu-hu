@@ -3,14 +3,14 @@ title: Azure Automation Update Management naplók lekérdezése
 description: Ez a cikk azt ismerteti, hogyan lehet lekérdezni Update Management naplóit a Log Analytics munkaterületen.
 services: automation
 ms.subservice: update-management
-ms.date: 07/28/2020
+ms.date: 09/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 290fb0165038eea8740361a12a6d4bfe2c1bf138
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 777d794716c7c17caf8d4c73007b91a625f40043
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87450130"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91264303"
 ---
 # <a name="query-update-management-logs"></a>Update Management-naplók lekérdezése
 
@@ -51,7 +51,7 @@ Létrejön egy olyan típusú rekord, `Update` amely az elérhető frissítések
 |----------|-------------|
 | ApprovalSource | Csak a Windows operációs rendszerre vonatkozik. A rekord jóváhagyási forrása. Az érték Microsoft Update. |
 | Approved | Igaz, ha a rekord jóvá van hagyva, vagy más módon hamis. |
-| Besorolás | Jóváhagyási besorolás. Az érték a frissítések. |
+| Osztályozás | Jóváhagyási besorolás. Az érték a frissítések. |
 | Computer | A jelentéskészítő gép teljes tartományneve. |
 | ComputerEnvironment | Környezet. A lehetséges értékek: Azure vagy nem Azure. |
 | MSRCBulletinID | Biztonsági közlemény AZONOSÍTÓjának száma |
@@ -110,9 +110,9 @@ A rendszer létrehoz egy olyan típusú rekordot, `UpdateRunProgress` amely fris
 | Computer | A jelentéskészítő gép teljes tartományneve. |
 | ComputerEnvironment | Környezet. Az értékek az Azure vagy nem az Azure. |
 | CorrelationId | A frissítéshez tartozó runbook-feladatok egyedi azonosítója. |
-| EndTime | Az az idő, amikor a szinkronizálási folyamat befejeződött. |
+| EndTime | Az az idő, amikor a szinkronizálási folyamat befejeződött. *Ez a tulajdonság jelenleg nincs használatban. Lásd: TimeGenerated.* |
 | ErrorResult | Windows Update hibakód jön létre, ha egy frissítés telepítése sikertelen. |
-| InstallationStatus | Az ügyfélszámítógépen található frissítés lehetséges telepítési állapotai<br> `NotStarted`– a feladatot még nem aktiválták.<br> `FailedToStart`– nem lehet elindítani a feladatot a gépen.<br> `Failed`– a feladatok elindult, de kivétel miatt sikertelen volt.<br> `InProgress`– a feladatok folyamatban vannak.<br> `MaintenanceWindowExceeded`– Ha a végrehajtás megmaradt, de elérte a karbantartási időszakot.<br> `Succeeded`– a feladatok sikeresek voltak.<br> `InstallFailed`– a frissítés telepítése sikertelen volt.<br> `NotIncluded`<br> `Excluded` |
+| InstallationStatus | Az ügyfélszámítógépen található frissítés lehetséges telepítési állapotai<br> `NotStarted` – a feladatot még nem aktiválták.<br> `FailedToStart` – nem lehet elindítani a feladatot a gépen.<br> `Failed` – a feladatok elindult, de kivétel miatt sikertelen volt.<br> `InProgress` – a feladatok folyamatban vannak.<br> `MaintenanceWindowExceeded` – Ha a végrehajtás megmaradt, de elérte a karbantartási időszakot.<br> `Succeeded` – a feladatok sikeresek voltak.<br> `InstallFailed` – a frissítés telepítése sikertelen volt.<br> `NotIncluded`<br> `Excluded` |
 | KBID | A Windows Update szolgáltatáshoz tartozó Tudásbázis-cikk azonosítója. |
 | ManagementGroupName | A Operations Manager felügyeleti csoport vagy Log Analytics munkaterület neve. |
 | OSType | Az operációs rendszer típusa. Az értékek Windows vagy Linux. |
@@ -123,8 +123,8 @@ A rendszer létrehoz egy olyan típusú rekordot, `UpdateRunProgress` amely fris
 | ResourceType | Erőforrástípus. |
 | SourceComputerId | A forrásoldali számítógépet jelképező egyedi azonosító. |
 | SourceSystem | A rekordhoz tartozó forrásoldali rendszer. Az érték `OperationsManager`. |
-| StartTime | A frissítés ütemezett telepítésének időpontja. |
-| SubscriptionId | Az Azure-előfizetés egyedi azonosítója. | 
+| StartTime | A frissítés ütemezett telepítésének időpontja. *Ez a tulajdonság jelenleg nincs használatban. Lásd: TimeGenerated.* |
+| SubscriptionId | Az Azure-előfizetés egyedi azonosítója. |
 | SucceededOnRetry | Az az érték, amely azt jelzi, hogy a frissítés végrehajtása sikertelen volt-e az első kísérlet során, és az aktuális művelet újrapróbálkozási kísérlet. |
 | TimeGenerated | A rekord létrehozásának dátuma és időpontja. |
 | Cím | A frissítés címe. |
@@ -209,7 +209,7 @@ Annak ellenőrzéséhez, hogy egy Operations Manager felügyeleti csoport kommun
 
 ### <a name="single-azure-vm-assessment-queries-windows"></a>Egyetlen Azure-beli VM-értékelő lekérdezés (Windows)
 
-Cserélje le a VMUUID értéket a lekérdezni kívánt virtuális gép virtuális géphez tartozó GUID azonosítóra. A következő lekérdezés Azure Monitor naplókban való futtatásával megtalálhatja a használni kívánt VMUUID:`Update | where Computer == "<machine name>" | summarize by Computer, VMUUID`
+Cserélje le a VMUUID értéket a lekérdezni kívánt virtuális gép virtuális géphez tartozó GUID azonosítóra. A következő lekérdezés Azure Monitor naplókban való futtatásával megtalálhatja a használni kívánt VMUUID: `Update | where Computer == "<machine name>" | summarize by Computer, VMUUID`
 
 #### <a name="missing-updates-summary"></a>Hiányzó frissítések összegzése
 
@@ -238,7 +238,7 @@ Update
 
 ### <a name="single-azure-vm-assessment-queries-linux"></a>Egyetlen Azure-beli VM-értékelő lekérdezés (Linux)
 
-Egyes Linux-disztribúciók esetében a [endianness](https://en.wikipedia.org/wiki/Endianness) nem egyezik a Azure Resource Manager és a Azure monitor naplókban tárolt VMUUID értékkel. A következő lekérdezés mindkét endianness egyezést keres. Cserélje le a VMUUID értékeket a GUID big-endian és little-endian formátumára, hogy megfelelően visszaadja az eredményeket. A következő lekérdezés Azure Monitor naplókban való futtatásával megtalálhatja a használni kívánt VMUUID:`Update | where Computer == "<machine name>"
+Egyes Linux-disztribúciók esetében a [endianness](https://en.wikipedia.org/wiki/Endianness) nem egyezik a Azure Resource Manager és a Azure monitor naplókban tárolt VMUUID értékkel. A következő lekérdezés mindkét endianness egyezést keres. Cserélje le a VMUUID értékeket a GUID big-endian és little-endian formátumára, hogy megfelelően visszaadja az eredményeket. A következő lekérdezés Azure Monitor naplókban való futtatásával megtalálhatja a használni kívánt VMUUID: `Update | where Computer == "<machine name>"
 | summarize by Computer, VMUUID`
 
 #### <a name="missing-updates-summary"></a>Hiányzó frissítések összegzése
@@ -408,7 +408,7 @@ Update
 | project-away ClassificationWeight, InformationId, InformationUrl
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Azure Monitor naplók részleteiért lásd: [Azure monitor naplók](../../azure-monitor/log-query/log-query-overview.md).
 * A riasztásokkal kapcsolatos segítségért lásd: [riasztások konfigurálása](update-mgmt-configure-alerts.md).

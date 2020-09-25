@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 73d9eed757acb4c58052a34811c490a70d306995
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: d56f17f6c60f30a38431ee347c7bdfc5b200b641
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88061489"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328589"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>Rövid útmutató: az első IoT Edge modul üzembe helyezése virtuális Windows-eszközön
 
@@ -82,7 +82,7 @@ IoT Edge-eszköz:
 >
 > Ha készen áll a IoT Edgehoz tartozó saját Windows-eszköz konfigurálására, beleértve az IoT Core-ot futtató eszközöket, kövesse a [Azure IoT Edge futtatókörnyezet telepítése Windows rendszeren](how-to-install-iot-edge-windows.md)című témakör lépéseit.
 
-## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
+## <a name="create-an-iot-hub"></a>IoT-központ létrehozása
 
 A rövid útmutató elindításához hozzon létre egy IoT hubot az Azure CLI-vel.
 
@@ -118,10 +118,10 @@ Mivel IoT Edge-eszközök viselkedése és kezelése eltérően történik a szo
 2. Megtekintheti az eszköz kapcsolati karakterláncát, amely a fizikai eszközt a IoT Hub identitásával társítja. Tartalmazza az IoT hub nevét, az eszköz nevét, majd egy megosztott kulcsot, amely a kettő közötti kapcsolatokat hitelesíti.
 
    ```azurecli-interactive
-   az iot hub device-identity show-connection-string --device-id myEdgeDevice --hub-name {hub_name}
+   az iot hub device-identity connection-string show --device-id myEdgeDevice --hub-name {hub_name}
    ```
 
-3. Másolja a `connectionString` kulcs értékét a JSON-kimenetből, és mentse. Ez az érték az eszköz kapcsolati sztringje. Erre a kapcsolati sztringre a következő szakaszban, az IoT Edge-futtatókörnyezet konfigurálásához lesz szükség.
+3. Másolja le a `connectionString` kulcs értékét a JSON-kimenetből, és mentse. Ez az érték az eszköz kapcsolati sztringje. Erre a kapcsolati sztringre a következő szakaszban, az IoT Edge-futtatókörnyezet konfigurálásához lesz szükség.
 
    ![A CLI-kimenetből származó kapcsolatok karakterláncának beolvasása](./media/quickstart/retrieve-connection-string.png)
 
@@ -257,7 +257,7 @@ Az erőforráscsoport törlését az erőforráscsoportok listájának megtekint
 az group list
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy IoT Edge eszközt, és a Azure IoT Edge Cloud Interface használatával helyezi üzembe a kódot az eszközön. Most már van egy teszteszköze, amely nyers adatokat állít elő a környezetéről.
 

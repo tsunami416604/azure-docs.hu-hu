@@ -13,12 +13,12 @@ ms.author: mireks
 ms.reviewer: vanto
 ms.date: 07/27/2020
 tags: azure-synapse
-ms.openlocfilehash: b2d179121b05d7bf3493937a9ff72e302fd31f3d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 15289727c3ee4d498fa50058ef98f0ae5b3d1b12
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281140"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91277801"
 ---
 # <a name="using-multi-factor-azure-active-directory-authentication"></a>Multi-Factor Azure Active Directory hitelesítés használata
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -29,7 +29,7 @@ Azure SQL Database, az Azure SQL felügyelt példánya és az Azure szinapszis A
 
 Az ebben a cikkben tárgyalt összes szolgáltatáshoz használja a 17,2-es vagy újabb 2017-es verziót. A legutóbbi kapcsolódás párbeszédpanelnek az alábbi képhez hasonlóan kell kinéznie:
 
-  ![1mfa – univerzális – kapcsolat](./media/authentication-mfa-ssms-overview/1mfa-universal-connect.png "Befejezi a Felhasználónév mezőt.")  
+  ![Képernyőkép a Kapcsolódás a kiszolgálóhoz párbeszédpanelről SQL Server Management Studio, amely a kiszolgáló típusának, a kiszolgálónévnek és a hitelesítésnek a beállításait jeleníti meg.](./media/authentication-mfa-ssms-overview/1mfa-universal-connect.png)  
 
 ## <a name="authentication-options"></a>Hitelesítési lehetőségek
 
@@ -57,11 +57,11 @@ Az univerzális hitelesítéssel hitelesíteni kívánt összes vendég felhaszn
 1. Nyisson meg egy kapcsolatokat a SSMS-ben. Adja meg a kiszolgáló nevét, és válassza a **Azure Active Directory-Universal beállítást MFA-** hitelesítéssel. Adja meg azt a **felhasználónevet** , amelyhez be szeretné jelentkezni.
 1. Válassza a **Beállítások** mezőt, és lépjen át a **kapcsolat tulajdonságai** lapra. A **Kapcsolódás az adatbázishoz** párbeszédpanelen végezze el az adatbázis párbeszédpaneljét. Ellenőrizze az **ad-tartomány nevét vagy a bérlő azonosítóját** , és adja meg a hitelesítő hatóságot, például a tartománynevet (**contosotest.onmicrosoft.com**) vagy a bérlő azonosítójának GUID azonosítóját. 
 
-   ![MFA-bérlő – SSMS](./media/authentication-mfa-ssms-overview/mfa-tenant-ssms.png)
+   ![Képernyőfelvétel a kapcsolat tulajdonságai lapról: a Kapcsolódás az adatbázishoz és az AD-tartománynévhez vagy a bérlői AZONOSÍTÓhoz tartozó beállítások.](./media/authentication-mfa-ssms-overview/mfa-tenant-ssms.png)
 
 Ha a SSMS 18. x vagy újabb verzióját futtatja, az AD-tartománynév vagy a bérlői azonosító már nem szükséges a vendég felhasználói számára, mert 18. x vagy újabb automatikusan felismeri azt.
 
-   ![MFA-bérlő – SSMS](./media/authentication-mfa-ssms-overview/mfa-no-tenant-ssms.png)
+   ![A Kapcsolódás az adatbázishoz mezőben a Kapcsolódás a kiszolgálóhoz párbeszédpanel kapcsolat tulajdonságai lapján a "MyDatabase" lehetőség van kiválasztva.](./media/authentication-mfa-ssms-overview/mfa-no-tenant-ssms.png)
 
 ### <a name="azure-ad-business-to-business-support"></a>Azure AD Business – üzleti támogatás
 
@@ -85,7 +85,7 @@ Az adatbázis-felhasználó létrehozása után a felhasználó `steve@gmail.com
 - Az univerzális hitelesítéshez nincs szükség további szoftverre Active Directory, kivéve, ha a SSMS támogatott verzióját kell használnia.  
 - Tekintse meg a következő hivatkozást az univerzális hitelesítés legújabb Active Directory-hitelesítési tár (ADAL) verziójához: [Microsoft. IdentityModel. clients. ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/).  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A konfigurációs lépésekért lásd: [Azure SQL Database multi-Factor Authentication konfigurálása SQL Server Management studiohoz](authentication-mfa-ssms-configure.md).
 - Mások hozzáférésének biztosítása az adatbázishoz: [SQL Database hitelesítés és engedélyezés: hozzáférés biztosítása](logins-create-manage.md)  

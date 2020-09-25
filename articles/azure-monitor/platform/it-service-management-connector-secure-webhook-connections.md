@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 09/08/2020
-ms.openlocfilehash: 39f277fffbb9a76a4be4bfa8aaedeaf3479a989f
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 9b6180f2480d8a92dc0ebdd2cad474a9eef3cbe4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90068883"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328853"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-secure-export"></a>Az Azure és a ITSM-eszközök összekapcsolhatók a biztonságos exportálás használatával
 
@@ -68,7 +68,7 @@ Az alábbi lépéseket követve regisztrálja az alkalmazást az Azure AD-ben:
 1. Adja **meg** az **alkalmazás azonosítójának URI**azonosítóját.
 
    [![Képernyőkép az I D-alkalmazás U R I értékének beállításáról.](media/it-service-management-connector-secure-webhook-connections/azure-ad.png)](media/it-service-management-connector-secure-webhook-connections/azure-ad-expand.png#lightbox)
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 ## <a name="create-a-secure-webhook-action-group"></a>Biztonságos webhook-műveleti csoport létrehozása
 
@@ -112,11 +112,13 @@ A következő szakaszokban részletesen ismertetjük a BMC Helix-termék és az 
 Győződjön meg arról, hogy teljesítette a következő előfeltételeket:
 
 * Az Azure AD regisztrálva van.
-* A BMC Helix multi-Cloud Service Management támogatott verziója (20,02-es vagy újabb verzió).
+* A BMC Helix multi-Cloud Service Management támogatott verziója (19,08-es vagy újabb verzió).
 
 ### <a name="configure-the-bmc-helix-connection"></a>A BMC Helix-kapcsolatok konfigurálása
 
-1. Kövesse az 20,02-es [verzióra vonatkozó, előre összeépített integráció engedélyezése a Azure Monitorrel](https://docs.bmc.com/docs/multicloud/enabling-prebuilt-integration-with-azure-monitor-879728195.html)című témakör utasításait.
+1. Kövesse az alábbi verzióra vonatkozó utasításokat:
+   * [A 20,02-es verzióra való előre összeépített integráció engedélyezése a Azure monitor](https://docs.bmc.com/docs/multicloud/enabling-prebuilt-integration-with-azure-monitor-879728195.html).
+   * [A 19,11-es verzióra való előre összeépített integráció engedélyezése a Azure monitor](https://docs.bmc.com/docs/multicloudprevious/enabling-prebuilt-integration-with-azure-monitor-904157623.html).
 
 1. A BMC Helix-kapcsolat konfigurációjának részeként nyissa meg az integrációs BMC-példányt, és kövesse az alábbi utasításokat:
 
@@ -138,4 +140,4 @@ Győződjön meg arról, hogy teljesítette a következő előfeltételeket:
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [ITSM-munkaelemek létrehozása az Azure-riasztásokból](./itsmc-overview.md#create-itsm-work-items-from-azure-alerts)
+* [ITSM-munkaelemek létrehozása az Azure-riasztásokból](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview)

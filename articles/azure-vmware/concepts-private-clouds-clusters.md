@@ -3,14 +3,14 @@ title: Fogalmak – privát felhők és fürtök
 description: Ismerje meg az Azure VMware szoftver által meghatározott adatközpontok és vSphere-fürtök főbb lehetőségeit az Azure-beli VMware-megoldásokban.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 06161d2ce95415ae3309d58ad18ad0d40b3782fb
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 715293d9951876ff0f794f8f6b580093f89571b3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752290"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316868"
 ---
-# <a name="azure-vmware-solution-preview-private-cloud-and-cluster-concepts"></a>Azure VMware-megoldás – előzetes verzió – saját felhő és fürt – fogalmak
+#  <a name="azure-vmware-solution-private-cloud-and-cluster-concepts"></a>Azure VMware-megoldás – saját felhő és fürt – fogalmak
 
 Az Azure VMware-megoldás VMware-alapú privát felhőket biztosít az Azure-ban. A privát felhők dedikált operációs rendszer nélküli gazdagépekről épülnek, és a Azure Portalon keresztül telepítik és felügyelik azokat. A privát felhőkben lévő fürtök VMware vSphere, vCenter, vSAN és NSX szoftverrel vannak kiépítve. Az Azure VMware megoldás saját Felhőbeli hardveres és szoftveres üzembe helyezése teljesen integrált és automatizált az Azure-ban.
 
@@ -61,7 +61,7 @@ Az Azure VMware Solution platform szoftverre vonatkozó általános frissítési
 
 A gazdagép-karbantartási és életciklus-felügyelet a privát felhőalapú fürtök kapacitására vagy teljesítményére gyakorolt hatás nélkül történik. Az automatizált gazdagépek karbantartására például a belső vezérlőprogram frissítése és a hardver javítása vagy cseréje tartozik.
 
-A Microsoft felelős a NSX-T készülékek, például a NSX-T Manager és a NSX-T Edge-eszközök életciklus-felügyeletével. A Microsoft feladata továbbá a hálózati konfiguráció beindításának elvégzése, például a 0. rétegbeli átjáró létrehozása és az észak-déli útválasztás engedélyezése. Rendszergazdaként az Azure VMware-megoldás saját felhője számára a NSX-T SDN-konfiguráció, például a hálózati szegmensek, az elosztott tűzfalszabályok, az 1. rétegbeli átjárók és a terheléselosztó felelősek.
+A Microsoft felelős a NSX-T készülékek, például a NSX-T Manager és a NSX-T Edge-eszközök életciklus-felügyeletével. A Microsoft feladata továbbá a hálózati konfiguráció beindításának elvégzése, például a 0. rétegbeli átjáró létrehozása és az észak-déli útválasztás engedélyezése. Az Azure VMware-megoldás saját Felhőbeli rendszergazdájaként Ön felelős a NSX-T SDN-konfigurációért. Ilyenek például a hálózati szegmensek, az elosztott tűzfalszabályok, az 1. rétegbeli átjárók és a terheléselosztó.
 
 > [!IMPORTANT]
 > Az Azure VMware-megoldás rendszergazdája nem módosíthatja az NSX-T Edge vagy a 0. rétegbeli átjáró konfigurációját. Ez a szolgáltatás elvesztését eredményezheti.
@@ -70,7 +70,7 @@ A Microsoft felelős a NSX-T készülékek, például a NSX-T Manager és a NSX-
 
 A Private Cloud vCenter és a NSX-T konfigurációkról óránként biztonsági mentés készül. A biztonsági mentések három napig tartanak. A biztonsági másolatból történő visszaállítást a Azure Portal egy szolgáltatási kérelme kéri.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő lépés a [Hálózatkezelés és a kapcsolatok közötti fogalmak](concepts-networking.md)megismerése.
 

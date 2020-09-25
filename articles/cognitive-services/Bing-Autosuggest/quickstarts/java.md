@@ -1,7 +1,7 @@
 ---
 title: 'Gyors útmutató: keresési lekérdezések ajánlása a Bing Autosuggest REST API és Javával'
 titleSuffix: Azure Cognitive Services
-description: Megtudhatja, hogyan kezdheti el gyorsan a keresési kifejezések javaslatait valós időben a Bing Autosuggest API.
+description: Megtudhatja, hogyan kezdheti el gyorsan a keresett kifejezéseket a Bing Autosuggest API és a Java használatával.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/06/2020
 ms.custom: devx-track-java
 ms.author: aahi
-ms.openlocfilehash: 4850daf8544129e29333be6a807c91106cc11f05
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: dc20b6abaf04b3743218e35d258bc8beab33c542
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321088"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91277444"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-java"></a>Gyors útmutató: keresési lekérdezések ajánlása a Bing Autosuggest REST API és Javával
 
@@ -71,7 +71,7 @@ public static String prettify(String json_text) {
 
 ## <a name="construct-and-send-the-search-request"></a>A keresési kérelem létrehozása és elküldése
 
-1. Hozzon létre egy nevű új metódust `get_suggestions()` , és hajtsa végre a következő lépéseket:
+1. Hozzon létre egy nevű új metódust  `get_suggestions()` , és hajtsa végre a következő lépéseket:
 
    1. Hozza létre a kérelem URL-címét az API-állomás, az elérési út és a keresési lekérdezés kódolásának kombinálásával. Ügyeljen arra, hogy URL-kódolással kódolja a lekérdezést a Hozzáfűzés előtt. Hozzon létre egy paraméter-karakterláncot a lekérdezéshez úgy, hogy hozzáfűzi a (z `mkt=` ) paraméterhez a piaci kódot, és lekérdezi a `q=` paramétert.
     
@@ -92,7 +92,7 @@ public static String prettify(String json_text) {
        //...
        ```
     
-   3. Hozzon létre egy `HttpsURLConnection` objektumot, és a használatával `openConnection()` hozzon létre egy-egy kapcsolatokat. Állítsa be a kérelem metódusát `GET` , és adja hozzá az előfizetési kulcsot a `Ocp-Apim-Subscription-Key` fejléchez.
+   3. Hozzon létre egy `HttpsURLConnection` objektumot, és a használatával  `openConnection()` hozzon létre egy-egy kapcsolatokat. Állítsa be a kérelem metódusát `GET` , és adja hozzá az előfizetési kulcsot a `Ocp-Apim-Subscription-Key` fejléchez.
 
       ```java
        //...
@@ -201,7 +201,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Egyoldalas webalkalmazás létrehozása](../tutorials/autosuggest.md)

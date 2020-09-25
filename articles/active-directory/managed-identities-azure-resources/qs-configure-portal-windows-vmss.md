@@ -1,5 +1,5 @@
 ---
-title: Felügyelt identitások konfigurálása az Azure VMSS-ben – Azure AD
+title: Felügyelt identitások konfigurálása a VMSS-ben – Azure AD
 description: Részletes útmutató az Azure-erőforrások felügyelt identitásának konfigurálásához egy virtuálisgép-méretezési csoporton a Azure Portal használatával.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 02/20/2018
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9ab1adeac5f8c67e06682f49fdded88e6a350e7
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 43b986b6bb25dff1227247b1d249ce565553877a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89262673"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329133"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-the-azure-portal"></a>Felügyelt identitások konfigurálása egy virtuálisgép-méretezési csoport Azure-erőforrásaihoz a Azure Portal használatával
 
@@ -59,7 +59,7 @@ A rendszer által hozzárendelt felügyelt identitás engedélyezése egy olyan 
 
 3. A **rendszer által hozzárendelt**, **állapot**területen válassza a be lehetőséget, majd kattintson **a** **Mentés**gombra:
 
-   ![Konfiguráció lap képernyőképe](./media/msi-qs-configure-portal-windows-vmss/create-windows-vmss-portal-configuration-blade.png) 
+   ![Képernyőfelvétel: az "identitás (előzetes verzió)" oldal a "rendszer kiosztva" beállítással, a "be" állapottal és a "Mentés" gomb kiemelésével jelenik meg.](./media/msi-qs-configure-portal-windows-vmss/create-windows-vmss-portal-configuration-blade.png) 
 
 ### <a name="remove-system-assigned-managed-identity-from-a-virtual-machine-scale-set"></a>Rendszerhez rendelt felügyelt identitás eltávolítása virtuálisgép-méretezési csoportból
 
@@ -88,7 +88,7 @@ A Azure Portal jelenleg nem támogatja a felhasználó által hozzárendelt fel�
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) a virtuálisgép-méretezési csoportját tartalmazó Azure-előfizetéshez társított fiók használatával.
 2. Navigáljon a kívánt virtuálisgép-méretezési csoporthoz, és kattintson az **identitás**, a **felhasználó hozzárendelve** , majd a ** \+ Hozzáadás**elemre.
 
-   ![Felhasználó által hozzárendelt identitás hozzáadása a VMSS-hez](./media/msi-qs-configure-portal-windows-vm/add-user-assigned-identity-vmss-screenshot1.png)
+   ![Képernyőkép, amely a "felhasználó által hozzárendelt" nevű "Identity" oldalt jeleníti meg, és a "Hozzáadás" gomb ki van emelve.](./media/msi-qs-configure-portal-windows-vm/add-user-assigned-identity-vmss-screenshot1.png)
 
 3. Kattintson arra a felhasználó által hozzárendelt identitásra, amelyet hozzá szeretne adni a virtuálisgép-méretezési csoporthoz, majd kattintson a **Hozzáadás**gombra.
    
@@ -102,6 +102,6 @@ A Azure Portal jelenleg nem támogatja a felhasználó által hozzárendelt fel�
    ![Felhasználó által hozzárendelt identitás eltávolítása egy VMSS](./media/msi-qs-configure-portal-windows-vm/remove-user-assigned-identity-vmss-screenshot.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A Azure Portal használatával adjon meg egy Azure-beli virtuálisgép-méretezési csoport felügyelt identitás [-hozzáférését egy másik Azure-erőforráshoz](howto-assign-access-portal.md).

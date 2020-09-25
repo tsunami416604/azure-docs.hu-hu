@@ -1,6 +1,6 @@
 ---
 title: 'Gyors útmutató: interaktív térképes keresés a Azure Maps'
-description: 'Ismerje meg, hogyan hozhat létre interaktív, kereshető térképeket. Lásd: Azure Maps fiók létrehozása, elsődleges kulcs beszerzése és a web SDK használata a térképes alkalmazások beállításához.'
+description: 'Rövid útmutató: interaktív, kereshető térképeket hozhat létre. Lásd: Azure Maps-fiók létrehozása, elsődleges kulcs beszerzése és a web SDK használata térképes alkalmazások beállításához'
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 7/10/2020
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: fa5cab35416f2629d39ec04803f90fae1a2e5f6d
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 99257b7bef83d0acef484118c7d53aea8eda168c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88031047"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91264286"
 ---
 # <a name="quickstart-create-an-interactive-search-map-with-azure-maps"></a>Gyors útmutató: interaktív keresési Térkép létrehozása Azure Maps
 
@@ -81,7 +81,7 @@ Miután sikeresen létrejött a Maps-fiókja, kérje le az elsődleges kulcsot, 
     :::image type="content" source="./media/quick-demo-map-app/interactive-search.png" alt-text="Interaktív térképes keresési webalkalmazás":::
 
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 >[!WARNING]
 >A [következő lépések](#next-steps) szakaszban felsorolt oktatóanyagok részletesen ismertetik, hogyan használhatja és konfigurálhatja a Azure Maps a fiókjával. Ne törölje az ebben a rövid útmutatóban létrehozott erőforrásokat, ha azt tervezi, hogy folytatja az oktatóanyagokat.
@@ -92,17 +92,15 @@ Ha nem tervezi tovább az oktatóanyagokat, hajtsa végre az alábbi lépéseket
 2. Navigáljon a Azure Portal lapra. A fő portál lapon válassza az **összes erőforrás** lehetőséget. Vagy kattintson a bal felső sarokban található menü ikonra. Válassza a **Minden erőforrás** elemet.
 3. Kattintson a Azure Maps-fiókjára. A lap tetején kattintson a **Törlés**elemre.
 
-## <a name="next-steps"></a>További lépések
+További példákat és egy interaktív kódolási élményt a következő útmutatók tartalmaznak:
+
+[Azure Maps keresési szolgáltatással rendelkező címek keresése](how-to-search-for-address.md)
+
+[Használja a Azure Maps térképkezelés](how-to-use-map-control.md)
+
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozta Azure Maps-fiókját, és létrehozott egy bemutató alkalmazást. Tekintse meg az alábbi oktatóanyagokat, amelyekben többet tudhat meg Azure Maps:
 
 > [!div class="nextstepaction"]
 > [Közeli érdekes helyek keresése Azure Maps](tutorial-search-location.md)
-
-További példákat és egy interaktív kódolási élményt a következő útmutatók tartalmaznak:
-
-> [!div class="nextstepaction"]
-> [Azure Maps keresési szolgáltatással rendelkező címek keresése](how-to-search-for-address.md)
-
-> [!div class="nextstepaction"]
-> [Használja a Azure Maps térképkezelés](how-to-use-map-control.md)

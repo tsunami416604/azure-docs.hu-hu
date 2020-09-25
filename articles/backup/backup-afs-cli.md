@@ -3,12 +3,12 @@ title: Azure-fájlmegosztás biztonsági mentése az Azure CLI-vel
 description: Ismerje meg, hogyan használhatja az Azure-fájlmegosztás biztonsági mentését az Azure CLI-vel az Recovery Services-tárolóban
 ms.topic: conceptual
 ms.date: 01/14/2020
-ms.openlocfilehash: cc4422a7d20dbd231729922bd013549d5276deb1
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 12d258a3242530745cc8ce31afae18f622323488
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89182207"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91293288"
 ---
 # <a name="back-up-azure-file-shares-with-cli"></a>Azure-fájlmegosztás biztonsági mentése a CLI-vel
 
@@ -22,7 +22,7 @@ Az oktatóanyag végén megtudhatja, hogyan hajthatja végre az alábbi művelet
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-A parancssori felület helyi telepítéséhez és használatához az Azure CLI 2.0.18-as vagy újabb verzióját kell futtatnia. A CLI verziójának megkereséséhez `run az --version` . Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli?view=azure-cli-latest) ismertető cikket.
+A parancssori felület helyi telepítéséhez és használatához az Azure CLI 2.0.18-as vagy újabb verzióját kell futtatnia. A CLI verziójának megkereséséhez `run az --version` . Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket.
 
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
 
@@ -30,7 +30,7 @@ A Recovery Services-tároló egy olyan entitás, amely összevont nézetet és f
 
 Recovery Services-tároló létrehozásához kövesse az alábbi lépéseket:
 
-1. Egy tároló egy erőforráscsoporthoz kerül. Ha nem rendelkezik meglévő erőforráscsoporthoz, hozzon létre egy újat az [az Group Create](/cli/azure/group?view=azure-cli-latest#az-group-create) paranccsal. Ebben az oktatóanyagban az új erőforráscsoport- *azurefiles* hozunk létre az USA keleti régiójában.
+1. Egy tároló egy erőforráscsoporthoz kerül. Ha nem rendelkezik meglévő erőforráscsoporthoz, hozzon létre egy újat az [az Group Create](/cli/azure/group#az-group-create) paranccsal. Ebben az oktatóanyagban az új erőforráscsoport- *azurefiles* hozunk létre az USA keleti régiójában.
 
     ```azurecli-interactive
     az group create --name AzureFiles --location eastus --output table
@@ -42,7 +42,7 @@ Recovery Services-tároló létrehozásához kövesse az alábbi lépéseket:
     eastus      AzureFiles
     ```
 
-1. A tároló létrehozásához használja az az [Backup Vault Create](/cli/azure/backup/vault?view=azure-cli-latest#az-backup-vault-create) parancsmagot. Azonos helyet kell megadnia a tárolóhoz az erőforráscsoport esetében.
+1. A tároló létrehozásához használja az az [Backup Vault Create](/cli/azure/backup/vault#az-backup-vault-create) parancsmagot. Azonos helyet kell megadnia a tárolóhoz az erőforráscsoport esetében.
 
     Az alábbi példa egy *azurefilesvault* nevű Recovery Services-tárolót hoz létre az USA keleti régiójában.
 
@@ -58,11 +58,11 @@ Recovery Services-tároló létrehozásához kövesse az alábbi lépéseket:
 
 ## <a name="enable-backup-for-azure-file-shares"></a>Azure-fájlmegosztás biztonsági mentésének engedélyezése
 
-Ez a szakasz azt feltételezi, hogy már rendelkezik egy Azure-fájlmegosztás, amelyhez biztonsági mentést kíván beállítani. Ha még nem rendelkezik ilyennel, hozzon létre egy Azure-fájlmegosztást az az [Storage Share Create](/cli/azure/storage/share?view=azure-cli-latest#az-storage-share-create) paranccsal.
+Ez a szakasz azt feltételezi, hogy már rendelkezik egy Azure-fájlmegosztás, amelyhez biztonsági mentést kíván beállítani. Ha még nem rendelkezik ilyennel, hozzon létre egy Azure-fájlmegosztást az az [Storage Share Create](/cli/azure/storage/share#az-storage-share-create) paranccsal.
 
-A fájlmegosztás biztonsági mentésének engedélyezéséhez létre kell hoznia egy védelmi szabályzatot, amely meghatározza, hogy mikor fusson a biztonsági mentési feladatok, és hogy mennyi ideig tárolja a rendszer a helyreállítási pontokat. Biztonsági mentési szabályzatot az az [Backup Policy Create](/cli/azure/backup/policy?view=azure-cli-latest#az-backup-policy-create) parancsmag használatával hozhat létre.
+A fájlmegosztás biztonsági mentésének engedélyezéséhez létre kell hoznia egy védelmi szabályzatot, amely meghatározza, hogy mikor fusson a biztonsági mentési feladatok, és hogy mennyi ideig tárolja a rendszer a helyreállítási pontokat. Biztonsági mentési szabályzatot az az [Backup Policy Create](/cli/azure/backup/policy#az-backup-policy-create) parancsmag használatával hozhat létre.
 
-A következő példa az az [Backup Protection Enable-for-azurefileshare](/cli/azure/backup/protection?view=azure-cli-latest#az-backup-protection-enable-for-azurefileshare) parancsmagot használja a *azurefiles* -fájlmegosztás biztonsági mentésének engedélyezéséhez a *afsaccount* Storage-fiókban az *1. ütemezett* biztonsági mentési szabályzat használatával:
+A következő példa az az [Backup Protection Enable-for-azurefileshare](/cli/azure/backup/protection#az-backup-protection-enable-for-azurefileshare) parancsmagot használja a *azurefiles* -fájlmegosztás biztonsági mentésének engedélyezéséhez a *afsaccount* Storage-fiókban az *1. ütemezett* biztonsági mentési szabályzat használatával:
 
 ```azurecli-interactive
 az backup protection enable-for-azurefileshare --vault-name azurefilesvault --resource-group  azurefiles --policy-name schedule1 --storage-account afsaccount --azure-file-share azurefiles  --output table
@@ -74,16 +74,16 @@ Name                                  ResourceGroup
 0caa93f4-460b-4328-ac1d-8293521dd928  azurefiles
 ```
 
-A kimenetben található **Name** attribútum a Backup szolgáltatás által a **biztonsági mentés engedélyezése** művelethez létrehozott feladatokhoz tartozó névvel egyezik. A feladatok állapotának nyomon követéséhez használja az az [Backup Job show](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) parancsmagot.
+A kimenetben található **Name** attribútum a Backup szolgáltatás által a **biztonsági mentés engedélyezése** művelethez létrehozott feladatokhoz tartozó névvel egyezik. A feladatok állapotának nyomon követéséhez használja az az [Backup Job show](/cli/azure/backup/job#az-backup-job-show) parancsmagot.
 
 ## <a name="trigger-an-on-demand-backup-for-file-share"></a>Igény szerinti biztonsági mentés indítása a fájlmegosztás számára
 
-Ha egy igény szerinti biztonsági mentést szeretne elindítani a fájlmegosztás számára ahelyett, hogy a biztonsági mentési szabályzatot a ütemezett időpontban futtatni szeretné, használja az az [Backup Protection Backup-Now](/cli/azure/backup/protection?view=azure-cli-latest#az-backup-protection-backup-now) parancsmagot.
+Ha egy igény szerinti biztonsági mentést szeretne elindítani a fájlmegosztás számára ahelyett, hogy a biztonsági mentési szabályzatot a ütemezett időpontban futtatni szeretné, használja az az [Backup Protection Backup-Now](/cli/azure/backup/protection#az-backup-protection-backup-now) parancsmagot.
 
 Az igény szerinti biztonsági mentés elindításához a következő paramétereket kell megadnia:
 
-* **--Container-Name** a fájlmegosztást üzemeltető Storage-fiók neve. A tároló **nevének** vagy **rövid nevének** lekéréséhez használja az az [Backup Container List](/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-list) parancsot.
-* **--Item-Name** annak a fájlmegosztásnak a neve, amelynek el szeretné indítani az igény szerinti biztonsági mentést. A biztonsági másolatban szereplő elem **nevének** vagy **rövid nevének** lekéréséhez használja az az [Backup Item List](/cli/azure/backup/item?view=azure-cli-latest#az-backup-item-list) parancsot.
+* **--Container-Name** a fájlmegosztást üzemeltető Storage-fiók neve. A tároló **nevének** vagy **rövid nevének** lekéréséhez használja az az [Backup Container List](/cli/azure/backup/container#az-backup-container-list) parancsot.
+* **--Item-Name** annak a fájlmegosztásnak a neve, amelynek el szeretné indítani az igény szerinti biztonsági mentést. A biztonsági másolatban szereplő elem **nevének** vagy **rövid nevének** lekéréséhez használja az az [Backup Item List](/cli/azure/backup/item#az-backup-item-list) parancsot.
 * **--megtartás – addig** , amíg meg nem adja a helyreállítási pont megőrzésének dátumát. Az értéket UTC formátumban kell megadni (nn-hh-éééé).
 
 Az alábbi példa egy igény szerinti biztonsági mentést indít el a *afsaccount* -fájlmegosztás lévő *azurefiles* -tárolóban, *20-01-2020*-ig megőrzéssel.
@@ -98,9 +98,9 @@ Name                                  ResourceGroup
 9f026b4f-295b-4fb8-aae0-4f058124cb12  azurefiles
 ```
 
-A kimenet **Name** attribútuma a Backup szolgáltatás által a "igény szerinti biztonsági mentés" művelethez létrehozott feladatokhoz tartozó névvel egyezik. A feladatok állapotának nyomon követéséhez használja az az [Backup Job show](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) parancsmagot.
+A kimenet **Name** attribútuma a Backup szolgáltatás által a "igény szerinti biztonsági mentés" művelethez létrehozott feladatokhoz tartozó névvel egyezik. A feladatok állapotának nyomon követéséhez használja az az [Backup Job show](/cli/azure/backup/job#az-backup-job-show) parancsmagot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg, hogyan [állíthatja vissza az Azure-FÁJLMEGOSZTÁS parancssori](restore-afs-cli.md) felületét
 * Ismerje meg, hogyan [kezelheti az Azure-fájlmegosztás biztonsági másolatait a CLI-vel](manage-afs-backup-cli.md)

@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
-ms.reviewer: vanto, carlrab
+ms.reviewer: vanto, sstein
 ms.date: 04/23/2020
-ms.openlocfilehash: 943569a16101ac170d01d08250b31ba67c0e590e
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 8221c77c0e6adeabe869a088089733d289a2f6ca
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89434282"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91277938"
 ---
 # <a name="use-azure-active-directory-authentication"></a>Azure Active Directory hitelesítés használata
 
@@ -168,7 +168,7 @@ Az Azure AD Server-rendszerbiztonsági tag (Logins) esetében az alábbi hiteles
 - A bejelentkezések, a felhasználók, az adatbázis-szerepkörök és a SQL Databaseban lévő engedélyek áttekintését lásd: [bejelentkezések, felhasználók, adatbázis-szerepkörök és engedélyek](logins-create-manage.md).
 - További információ az adatbázis résztvevőivel kapcsolatban: [Résztvevők](https://msdn.microsoft.com/library/ms181127.aspx).
 - További információ az adatbázis-szerepkörökkel kapcsolatban: [Adatbázis-szerepkörök](https://msdn.microsoft.com/library/ms189121.aspx).
-- Az SQL felügyelt példányához tartozó Azure AD-kiszolgálói rendszerbiztonsági tag (login) létrehozásával kapcsolatos szintaxisért lásd:  [create login (bejelentkezés létrehozása](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current)).
+- Az SQL felügyelt példányához tartozó Azure AD-kiszolgálói rendszerbiztonsági tag (login) létrehozásával kapcsolatos szintaxisért lásd:  [create login (bejelentkezés létrehozása](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true)).
 - További információ az SQL Database tűzfalszabályaival kapcsolatban: [SQL Database tűzfalszabályok](firewall-configure.md).
 
 <!--Image references-->

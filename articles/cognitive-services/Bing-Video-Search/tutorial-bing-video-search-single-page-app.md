@@ -10,13 +10,13 @@ ms.subservice: bing-video-search
 ms.topic: tutorial
 ms.date: 02/03/2020
 ms.author: aahi
-ms.custom: devx-track-javascript
-ms.openlocfilehash: c3515d6dc7556995c990180330212bffb1445ad2
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: 2bdd51218c098dcd778d9a72a98fe42b96357b4e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406231"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328717"
 ---
 # <a name="tutorial-single-page-video-search-app"></a>Oktatóanyag: Egyoldalas Video Search-alkalmazás
 A Bing Video Search API kikeresi az interneten a keresési lekérdezésnek megfelelő videótalálatokat. Ebben az oktatóanyagban létrehozunk egy egyoldalas webalkalmazást, amely a Bing Search API-t használja a keresési eredmények megjelenítéséhez az oldalon. Az alkalmazás HTML-, CSS- és JavaScript-összetevőkből áll.
@@ -309,7 +309,7 @@ A JSON-válasz a keresési eredményeket a legfelső szintű `value` objektumké
 
 A Bing News Search API legfeljebb négy különböző típusú kapcsolódó eredményt ad vissza, mindegyiket a saját legfelső szintű objektumában. Ezek a következők:
 
-|Kapcsolat típusa|Leírás|
+|Kapcsolat típusa|Description|
 |-|-|
 |`pivotSuggestions`|Lekérdezések, amelyek az eredeti keresés egyik lecserélhető szavát egy másikra cserélik. Ha például a „piros virágok” kifejezésre keres, a „piros” egy lecserélhető szó, a „sárga virágok” pedig egy alternatív javaslat.|
 |`queryExpansions`|Lekérdezések, amelyek további kifejezések hozzáadásával szűkítik az eredeti keresést. Ha például a „Microsoft Surface” kifejezésre keres, a lekérdezés egyik lehetséges kibővítése a „Microsoft Surface Pro”.|

@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 07/28/2020
+ms.date: 09/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 839662e496a61ff9a90a6250b417688b91ccaed1
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: e504a3ed2d9193bdc85fc08b3ea91c4f4f2c160c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87382576"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329504"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Az Azure RBAC hibáinak megoldása
 
@@ -86,7 +86,7 @@ $ras.Count
 
 ## <a name="transferring-a-subscription-to-a-different-directory"></a>Előfizetés átadása egy másik címtárba
 
-- Ha az előfizetés másik Azure AD-címtárba való átvitelének lépéseire van szüksége, tekintse meg [Az Azure-előfizetés tulajdonjogának átruházása másik fiókra](../cost-management-billing/manage/billing-subscription-transfer.md)című témakört.
+- Ha az előfizetés másik Azure AD-címtárba való átvitelének lépéseire van szüksége, tekintse meg [Az Azure-előfizetés átvitele másik Azure ad-címtárba (előzetes verzió)](transfer-subscription.md)című témakört.
 - Ha másik Azure AD-címtárba helyezi át az előfizetést, az összes szerepkör-hozzárendelés **véglegesen** törlődik a forrás Azure ad-címtárból, és nem települ át a cél Azure ad-címtárba. A szerepkör-hozzárendeléseket újra létre kell hoznia a cél könyvtárában. Emellett manuálisan újra létre kell hoznia a felügyelt identitásokat az Azure-erőforrásokhoz. További információ: [Gyakori kérdések és ismert problémák a felügyelt identitásokkal](../active-directory/managed-identities-azure-resources/known-issues.md)kapcsolatban.
 - Ha Ön az Azure AD globális rendszergazdája, és nem fér hozzá egy előfizetéshez a címtárak közötti átvitel után, használja az **Azure-erőforrások hozzáférés-vezérlése** kapcsolót, hogy ideiglenesen [emelje](elevate-access-global-admin.md) a hozzáférést az előfizetéshez.
 
@@ -99,11 +99,17 @@ $ras.Count
 - Ha egy erőforrás létrehozásakor a „The client with object id does not have authorization to perform action over scope (code: AuthorizationFailed)” (Az adott objektumazonosítójú ügyfél nem rendelkezik a művelet a kiválasztott hatókörben való végrehajtásához szükséges engedéllyel (kód: AuthorizationFailed)) engedélyekkel kapcsolatos hiba lép fel, ellenőrizze, hogy a felhasználó, amelyikkel bejelentkezett, olyan szerepkörhöz van-e hozzárendelve, amely rendelkezik írási engedéllyel a kiválasztott hatókörben található erőforráshoz. Például az erőforráscsoportban található virtuális gépek kezeléséhez a [Virtuális gépek közreműködője](built-in-roles.md#virtual-machine-contributor) szerepkörrel kell rendelkeznie az erőforráscsoportban (vagy a szülő hatókörben). Az egyes beépített szerepkörök engedélyeinek listáját az [Azure beépített szerepkörei](built-in-roles.md)című részben tekintheti meg.
 - Ha a támogatási jegy létrehozásakor vagy frissítésekor a "nincs engedélye a támogatási kérelem létrehozására" hibaüzenet jelenik meg, ellenőrizze, hogy jelenleg be van-e jelentkezve olyan felhasználóval, akinek van olyan szerepköre, amely rendelkezik `Microsoft.Support/supportTickets/write` engedéllyel, például [támogatási kérelem közreműködője](built-in-roles.md#support-request-contributor).
 
+## <a name="move-resources-with-role-assignments"></a>Erőforrások áthelyezése szerepkör-hozzárendelésekkel
+
+Ha olyan erőforrást helyez át, amely közvetlenül az erőforráshoz (vagy egy alárendelt erőforráshoz) van hozzárendelve egy Azure-szerepkörrel, a szerepkör-hozzárendelés nem kerül át, és nem lesz árva. Az áthelyezés után újra létre kell hoznia a szerepkör-hozzárendelést. Végül a rendszer automatikusan eltávolítja az árva szerepkör-hozzárendelést, de ez az ajánlott eljárás a szerepkör-hozzárendelés eltávolítására az erőforrás áthelyezése előtt.
+
+További információ az erőforrások áthelyezéséről: [erőforrások áthelyezése új erőforráscsoporthoz vagy előfizetésbe](../azure-resource-manager/management/move-resource-group-and-subscription.md).
+
 ## <a name="role-assignments-with-identity-not-found"></a>Nem található az identitással rendelkező szerepkör-hozzárendelések
 
 A Azure Portal szerepkör-hozzárendeléseinek listájában észreveheti, hogy a rendszerbiztonsági tag (felhasználó, csoport, szolgáltatásnév vagy felügyelt identitás) nem található **ismeretlen** típusú **identitásként** .
 
-![Webalkalmazás-erőforráscsoport](./media/troubleshooting/unknown-security-principal.png)
+![Az identitás nem található az Azure szerepkör-hozzárendelésekben](./media/troubleshooting/unknown-security-principal.png)
 
 Előfordulhat, hogy az identitás két okból nem található:
 
@@ -242,5 +248,5 @@ Egy olvasó rákattinthat a **platform szolgáltatásai** lapra, majd a **minden
 ## <a name="next-steps"></a>Következő lépések
 
 - [A vendég felhasználókkal kapcsolatos hibák](role-assignments-external-users.md#troubleshoot)
-- [Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása a Azure Portal használatával](role-assignments-portal.md)
+- [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure Portal használatával](role-assignments-portal.md)
 - [Az Azure RBAC változásaival kapcsolatos tevékenységek naplóinak megtekintése](change-history-report.md)

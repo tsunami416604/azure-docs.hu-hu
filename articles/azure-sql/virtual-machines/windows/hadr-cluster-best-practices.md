@@ -7,17 +7,17 @@ author: MashaMSFT
 editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 50546a3efc008e074f4e7831d2cc657539b2f98b
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: e98bfbf58c179fe9df0d99e0522e5747d220ae52
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89612329"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317021"
 ---
 # <a name="cluster-configuration-best-practices-sql-server-on-azure-vms"></a>A fürt konfigurálásának ajánlott eljárásai (SQL Server Azure-beli virtuális gépeken)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -27,7 +27,7 @@ A magas rendelkezésre állást és a vész-helyreállítást (HADR) használó 
 Ez a cikk a [Feladatátvevőfürt-példányok (FCIs-EK)](failover-cluster-instance-overview.md) és a [rendelkezésre állási csoportok](availability-group-overview.md) számára ajánlott, az Azure-beli virtuális gépeken való használattal SQL Server. 
 
 
-## <a name="networking"></a>Hálózat
+## <a name="networking"></a>Hálózatkezelés
 
 Egyetlen NIC-kiszolgálót (fürtcsomópont) és egyetlen alhálózatot használjon. Az Azure hálózatkezelésének fizikai redundancia van, így a további hálózati adapterek és alhálózatok szükségtelenek az Azure-beli virtuális gépek vendég fürtjében. A fürt ellenőrzési jelentése figyelmezteti, hogy a csomópontok csak egyetlen hálózaton érhetők el. Ezt a figyelmeztetést figyelmen kívül hagyhatja az Azure-beli virtuális gépek vendég feladatátvevő fürtökön.
 

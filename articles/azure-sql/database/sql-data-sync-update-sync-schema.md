@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: carlrab
+ms.reviewer: ''
 ms.date: 11/14/2018
-ms.openlocfilehash: 4d0800d109d17c1233a18966d84a498596e8e834
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b42624506b3fe3a40cd19353c0dc25ecd8a5da02
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84188194"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328802"
 ---
 # <a name="automate-the-replication-of-schema-changes-in-azure-sql-data-sync"></a>A séma változásainak az Azure-ban való replikálásának automatizálása SQL-adatszinkronizálás
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -173,7 +173,7 @@ Az oszlopok vagy táblázatok átnevezése lehetővé teszi az adatszinkronizál
 
 Más típusú sémák változásaihoz – például tárolt eljárások létrehozása vagy index eldobása – a szinkronizálási séma frissítése nem szükséges.
 
-## <a name="troubleshoot-automated-schema-change-replication"></a><a name="troubleshoot"></a>Automatikus séma-módosítási replikáció hibáinak megoldása
+## <a name="troubleshoot-automated-schema-change-replication"></a><a name="troubleshoot"></a> Automatikus séma-módosítási replikáció hibáinak megoldása
 
 A cikkben ismertetett replikációs logika bizonyos helyzetekben leáll – például ha olyan helyszíni adatbázisban hajtott végre sémát, amely Azure SQL Database nem támogatott. Ebben az esetben a séma módosításának követése tábla szinkronizálása sikertelen. A problémát manuálisan kell kijavítani:
 
@@ -201,7 +201,7 @@ A cikkben ismertetett replikációs logika bizonyos helyzetekben leáll – pél
 
 Ha meg szeretné tisztítani a rekordokat a séma módosításainak nyomon követése táblában, a CSONKÍTás helyett a TÖRLÉSt kell használnia. DBCC CHECKIDENT használatával soha ne használja újra a séma-módosítás követése tábla Identity oszlopát. Új séma-módosítási nyomon követési táblákat hozhat létre, és frissítheti a táblázat nevét a DDL-triggerben, ha újravetés szükséges.
 
-## <a name="other-considerations"></a><a name="other"></a>Egyéb megfontolások
+## <a name="other-considerations"></a><a name="other"></a> Egyéb megfontolások
 
 -   Az olyan adatbázis-felhasználóknak, akik a központi és a tagok adatbázisait konfigurálták, elegendő engedélyekkel kell rendelkezniük a séma-módosítási parancsok végrehajtásához.
 
@@ -219,7 +219,7 @@ Ha meg szeretné tisztítani a rekordokat a séma módosításainak nyomon köve
 
 -   Ne használja a CSONKÍTás lehetőséget a séma-változások követése táblában lévő adattörléshez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az SQL Data Syncről:
 

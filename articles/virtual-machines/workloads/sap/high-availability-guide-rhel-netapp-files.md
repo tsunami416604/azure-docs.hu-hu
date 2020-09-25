@@ -1,6 +1,6 @@
 ---
 title: Azure-beli virtuális gépek magas rendelkezésre állása az SAP NW számára a RHEL-ben Azure NetApp Files | Microsoft Docs
-description: Az Azure Virtual Machines magas rendelkezésre állása az SAP NetWeaver-on Red Hat Enterprise Linux
+description: Magas rendelkezésre állást hozhat létre az SAP NW számára az Azure Virtual Machines (VM) RHEL Azure NetApp Filessal.
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: rdeltcheva
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/04/2020
 ms.author: radeltch
-ms.openlocfilehash: 5ba5ebcb68ed206bab038f0a892e24834ddb0f22
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 51da96ab5c42c0b48f53969139bd8b87690b8319
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653426"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329278"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux-with-azure-netapp-files-for-sap-applications"></a>Az Azure Virtual Machines magas rendelkezésre állása az SAP NetWeaver számára a Red Hat Enterprise Linux SAP-alkalmazásokhoz Azure NetApp Files
 
@@ -1248,7 +1248,7 @@ Az SAP-alkalmazáskiszolgáló telepítéséhez kövesse az alábbi lépéseket.
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [HA SAP NW Azure-beli virtuális gépeken, RHEL for SAP Applications multi-SID útmutató](./high-availability-guide-rhel-multi-sid.md)
 * [Azure Virtual Machines az SAP tervezéséhez és megvalósításához][planning-guide]

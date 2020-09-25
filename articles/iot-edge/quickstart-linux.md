@@ -1,6 +1,6 @@
 ---
 title: Gyors útmutató Azure IoT Edge-eszköz létrehozásához Linux rendszeren | Microsoft Docs
-description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre IoT Edge eszközt, majd távolról is üzembe helyezheti az előre elkészített kódot a Azure Portal.
+description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre IoT Edge-eszközt Linux rendszeren, majd a Azure Portalból távolról is üzembe helyezhet egy előre elkészített kódot.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 36bebe829ccf81ef5b1832b90b2f73d15d5499af
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: bbed5899a860f3ba8ac7047a283966536f6c8a87
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87384803"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328615"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-linux-device"></a>Rövid útmutató: az első IoT Edge modul üzembe helyezése egy virtuális Linux-eszközön
 
@@ -56,7 +56,7 @@ Felhőerőforrások:
    az group create --name IoTEdgeResources --location westus2
    ```
 
-## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
+## <a name="create-an-iot-hub"></a>IoT-központ létrehozása
 
 A rövid útmutató elindításához hozzon létre egy IoT hubot az Azure CLI-vel.
 
@@ -93,7 +93,7 @@ Mivel IoT Edge-eszközök viselkedése és kezelése eltérően történik a szo
 2. Megtekintheti az eszköz kapcsolati karakterláncát, amely a fizikai eszközt a IoT Hub identitásával társítja. Tartalmazza az IoT hub nevét, az eszköz nevét, majd egy megosztott kulcsot, amely a kettő közötti kapcsolatokat hitelesíti. Ezt a kapcsolódási karakterláncot ismét a következő szakaszban fogjuk megtekinteni a IoT Edge eszköz beállításakor.
 
    ```azurecli-interactive
-   az iot hub device-identity show-connection-string --device-id myEdgeDevice --hub-name {hub_name}
+   az iot hub device-identity connection-string show --device-id myEdgeDevice --hub-name {hub_name}
    ```
 
    ![A CLI-kimenetből származó kapcsolatok karakterláncának megtekintése](./media/quickstart/retrieve-connection-string.png)
@@ -117,7 +117,7 @@ A következő CLI-paranccsal hozhatja létre IoT Edge eszközét az előre elké
 * Bash-vagy Cloud Shell-felhasználók esetén másolja a következő parancsot egy szövegszerkesztőbe, cserélje le a helyőrző szövegét az adataira, majd másolja be a bash vagy Cloud Shell ablakába:
 
    ```azurecli-interactive
-   az deployment group create --resource-group IoTEdgeResources --template-uri "https://aka.ms/iotedge-vm-deploy" --parameters dnsLabelPrefix='my-edge-vm' --parameters adminUsername='azureUser' --parameters deviceConnectionString=$(az iot hub device-identity show-connection-string --device-id myEdgeDevice --hub-name <REPLACE_WITH_HUB_NAME> -o tsv) --parameters authenticationType='password' --parameters adminPasswordOrKey="<REPLACE_WITH_PASSWORD>"
+   az deployment group create --resource-group IoTEdgeResources --template-uri "https://aka.ms/iotedge-vm-deploy" --parameters dnsLabelPrefix='my-edge-vm' --parameters adminUsername='azureUser' --parameters deviceConnectionString=$(az iot hub device-identity connection-string show --device-id myEdgeDevice --hub-name <REPLACE_WITH_HUB_NAME> -o tsv) --parameters authenticationType='password' --parameters adminPasswordOrKey="<REPLACE_WITH_PASSWORD>"
    ```
 
 * PowerShell-felhasználók esetén másolja a következő parancsot a PowerShell ablakába, majd cserélje le a helyőrző szöveget a saját adataira:
@@ -128,7 +128,7 @@ A következő CLI-paranccsal hozhatja létre IoT Edge eszközét az előre elké
    --template-uri "https://aka.ms/iotedge-vm-deploy" `
    --parameters dnsLabelPrefix='my-edge-vm1' `
    --parameters adminUsername='azureUser' `
-   --parameters deviceConnectionString=$(az iot hub device-identity show-connection-string --device-id myEdgeDevice --hub-name <REPLACE_WITH_HUB_NAME> -o tsv) `
+   --parameters deviceConnectionString=$(az iot hub device-identity connection-string show --device-id myEdgeDevice --hub-name <REPLACE_WITH_HUB_NAME> -o tsv) `
    --parameters authenticationType='password' `
    --parameters adminPasswordOrKey="<REPLACE_WITH_PASSWORD>"
    ```

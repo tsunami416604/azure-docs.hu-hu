@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 08/17/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 365fe8c330cadcc01fcd24de28b663cd80b55117
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: cd4ec60691344cef4030472b474a82e84c70244f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89535878"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91261175"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-hololens-unity-app-using-azure-spatial-anchors"></a>Oktatóanyag: lépésenkénti útmutató új HoloLens Unity-alkalmazás létrehozásához az Azure térbeli horgonyok használatával
 
@@ -204,11 +204,11 @@ Mielőtt továbblépne, létre kell hoznia egy Azure térbeli horgonyt a fiók a
 
 Ha már rendelkezik az Azure térbeli azonosítójának azonosítójával, kulcsával és tartományával, lépjen be és illessze be a `Account Id` into `SpatialAnchorsAccountId` , a into és a into rendszerbe `Account Key` `SpatialAnchorsAccountKey` `Account Domain` `SpatialAnchorsAccountDomain` .
 
-Végül Ismerkedjen meg egymással. A `SpawnNewAnchoredObject()` metódusban adja hozzá a következő kódot. A `CreateAnchorAsync()` metódust a gömb létrehozása után azonnal meghívja. A metódus visszatérése után az alábbi kód egy utolsó alkalommal frissíti a gömbet, és a színét kékre változtatja.
+Végül Ismerkedjen meg egymással. A `CreateAndSaveSphere()` metódusban adja hozzá a következő kódot. A `CreateAnchorAsync()` metódust a gömb létrehozása után azonnal meghívja. A metódus visszatérése után az alábbi kód egy utolsó alkalommal frissíti a gömbet, és a színét kékre változtatja.
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=320-397&highlight=26-77)]
 
-Futtassa az alkalmazást a **Visual studióból** . Mozgassa a fejét, majd a levegőben koppintva helyezze el a gömbjét. Ha elegendő keret áll rendelkezésre, a gömb sárga színűre vált, a Felhőbeli feltöltés pedig elindul. Miután a feltöltés befejeződik, a gömb kék színűre vált. Igény szerint a **Visual Studióban** található output (kimenet) ablakban is megfigyelheti az alkalmazás által küldött naplóüzenetek figyelését. A feltöltés befejezése után megtekintheti a `RecommendedForCreateProgress` felhőből visszaadott horgony azonosítóját.
+Futtassa az alkalmazást a **Visual studióból** . Mozgassa a fejét, majd a levegőben koppintva helyezze el a gömbjét. Ha elegendő keret áll rendelkezésre, a gömb sárga színűre vált, a Felhőbeli feltöltés pedig elindul. Miután a feltöltés befejeződik, a gömb kék színűre vált. Igény szerint a [Kimenet ablakban](https://docs.microsoft.com/visualstudio/ide/reference/output-window) is használhatja a **Visual Studióban** történő hibakeresést az alkalmazás által küldött naplóüzenetek figyelésére. A feltöltés befejezése után megtekintheti a `RecommendedForCreateProgress` felhőből visszaadott horgony azonosítóját.
 
 > [!NOTE]
 > Ha "DllNotFoundException: nem tölthető be a DLL-fájl" AzureSpatialAnchors ": a megadott modul nem található.", **törölje** , majd hozza **létre** újra a megoldást.

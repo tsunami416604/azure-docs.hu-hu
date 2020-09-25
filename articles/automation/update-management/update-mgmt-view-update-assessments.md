@@ -3,18 +3,18 @@ title: Azure Automation frissítési felmérések megtekintése
 description: Ez a cikk azt ismerteti, hogyan lehet megtekinteni Update Management központi telepítések frissítési értékeléseit.
 services: automation
 ms.subservice: update-management
-ms.date: 07/28/2020
+ms.date: 09/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: 92861304a946e357b2b265cd825eceb8e22f7d2d
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 2e32fc7c1872bf18b7f1c995f281a9b09ec45dc8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87450122"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91264467"
 ---
-# <a name="view-update-assessments"></a>Frissítésfelmérések megtekintése
+# <a name="view-update-assessments-in-update-management"></a>Frissítési értékelések megtekintése Update Management
 
-A Update Managementban megtekintheti a gépek adatait, a hiányzó frissítéseket, a frissítések központi telepítését és az ütemezett frissítések központi telepítését.
+A Update Managementban megtekintheti a gépek adatait, a hiányzó frissítéseket, a frissítések központi telepítését és az ütemezett frissítések központi telepítését. Megtekintheti a kijelölt Azure-beli virtuális gépre, a kijelölt ív-kiszolgálóról vagy az Automation-fiókból az összes konfigurált gépen és kiszolgálón elérhető értékelési információt.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
@@ -22,27 +22,33 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com)
 
 ## <a name="view-update-assessment"></a>A frissítésfelmérés megtekintése
 
-A Update Managementban megtekintheti a gépek adatait, a hiányzó frissítéseket, a frissítések központi telepítését és az ütemezett frissítések központi telepítését.
+Ha egy Azure-beli virtuális gépről szeretné megtekinteni a frissítési értékelést, navigáljon **Virtual Machines** , és válassza ki a virtuális gépet a listából. A bal oldali menüben válassza ki a **vendég + gazdagép frissítései**elemet, majd válassza a **Ugrás a Update Managementra** lehetőséget a **vendég + gazdagép frissítései** lapon.
+
+Update Managementban megtekintheti a gép adatait, a hiányzó frissítéseket, a frissítések központi telepítését és az ütemezett frissítések központi telepítését.
+
+[![Az Azure-beli virtuális gép Update Management értékelés nézete](./media/update-mgmt-view-update-assessments/update-assessment-azure-vm.png)](./media/update-mgmt-view-update-assessments/update-assessment-azure-vm-expanded.png#lightbox)
+
+Ha egy arc-kompatibilis kiszolgálóról szeretné megtekinteni a frissítési értékelést, navigáljon a **kiszolgálók – Azure arc** elemre, és válassza ki a kiszolgálót a listából. A bal oldali menüben válassza a **vendég és a gazdagép frissítése**lehetőséget. A **vendég + gazdagép frissítései** lapon válassza a **Update Management ugrás**lehetőséget.
+
+Update Managementban megtekintheti az ív használatára képes géppel, a hiányzó frissítésekkel, a frissítések központi telepítésével és az ütemezett frissítések telepítésével kapcsolatos információkat.
+
+[![Az arc-kompatibilis kiszolgálók Update Management értékelés nézete](./media/update-mgmt-view-update-assessments/update-assessment-arc-server.png)](./media/update-mgmt-view-update-assessments/update-assessment-arc-server-expanded.png#lightbox)
+
+Ha meg szeretné tekinteni a frissítési értékelést az összes gépen, beleértve az arc-kompatibilis kiszolgálókat az Automation-fiókból, navigáljon az **Automation-fiókok** elemre, és válassza ki az Automation-fiókját, amelynek Update Management engedélyezve van Az Automation-fiókjában válassza a bal oldali menüben a **frissítés kezelése** elemet.
+
+A környezet frissítései a **frissítés kezelése** oldalon találhatók. Ha valamelyik frissítést a rendszer hiányzóként azonosította, a **hiányzó frissítések** lapon megjelenik egy lista.
 
 [![Update Management alapértelmezett nézet](./media/update-mgmt-overview/update-management-view.png)](./media/update-mgmt-overview/update-management-view-expanded.png#lightbox)
 
-A frissítési felmérés megtekintéséhez hajtsa végre a következő műveleteket.
+A **megfelelőség** oszlopban megtekintheti a gép legutóbbi értékelésének időpontját. Az **ügynök készültségének frissítése** oszlopban láthatja a frissítési ügynök állapotát. Ha probléma merül fel, kattintson a hivatkozásra a hibaelhárítási dokumentációhoz, amely segíthet a probléma megoldásában.
 
-1. A Azure Portalban navigáljon az **Automation-fiókok** elemre, és válassza ki az Automation-fiókját, amelynek Update Management engedélyezve van a listából.
+Az **információ hivatkozás**alatt válassza ki a frissítésre mutató hivatkozást a támogatási cikk megnyitásához, amely fontos információkat nyújt a frissítésről.
 
-2. Az Automation-fiókban válassza a bal oldali ablaktábla **frissítés kezelése** elemét.
+[![Frissítési állapot megtekintése](./media/update-mgmt-view-update-assessments/missing-updates.png)](./media/update-mgmt-view-update-assessments/missing-updates-expanded.png#lightbox)
 
-3. A környezet frissítései a **frissítés kezelése** oldalon találhatók. Ha valamelyik frissítést a rendszer hiányzóként azonosította, a **hiányzó frissítések** lapon megjelenik egy lista.
+A frissítés gombra kattintva nyissa meg a naplóbeli keresés ablaktáblát. A naplókeresés lekérdezése az adott frissítéshez előre meg van adva. Módosíthatja a lekérdezést, vagy létrehozhat egy saját lekérdezést a részletes információk megtekintéséhez.
 
-   A **megfelelőség** oszlopban megtekintheti a gép legutóbbi értékelésének időpontját. Az **ügynök készültségének frissítése** oszlopban láthatja a frissítési ügynök állapotát. Ha probléma merül fel, kattintson a hivatkozásra a hibaelhárítási dokumentációhoz, amely segíthet a probléma megoldásában.
-
-4. Az **információ hivatkozás**alatt válassza ki a frissítésre mutató hivatkozást a támogatási cikk megnyitásához, amely fontos információkat nyújt a frissítésről.
-
-     [![Frissítési állapot megtekintése](./media/update-mgmt-view-update-assessments/missing-updates.png)](./media/update-mgmt-view-update-assessments/missing-updates-expanded.png#lightbox)
-
-5. A frissítés gombra kattintva nyissa meg a naplóbeli keresés ablaktáblát. A naplókeresés lekérdezése az adott frissítéshez előre meg van adva. Módosíthatja a lekérdezést, vagy létrehozhat egy saját lekérdezést a részletes információk megtekintéséhez.
-
-    [![Napló lekérdezési eredményeinek megtekintése](./media/update-mgmt-view-update-assessments/logsearch-results.png)](./media/update-mgmt-view-update-assessments/logsearch-results-expanded.png#lightbox)
+[![Napló lekérdezési eredményeinek megtekintése](./media/update-mgmt-view-update-assessments/logsearch-results.png)](./media/update-mgmt-view-update-assessments/logsearch-results-expanded.png#lightbox)
 
 ## <a name="view-missing-updates"></a>Hiányzó frissítések megtekintése
 
@@ -84,6 +90,6 @@ Jelenleg nem támogatott a natív besorolás engedélyezése – az adatelérhet
 
 A Red Hat Enterprise 6-os verziójának frissítéseinek besorolásához telepítenie kell a yum-Security beépülő modult. Red Hat Enterprise Linux 7 rendszeren a beépülő modul már maga is része a yum szolgáltatásnak, nem kell semmit telepítenie. További információkért lásd a Red Hat [Tudásbázis következő cikkét](https://access.redhat.com/solutions/10021).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A folyamat következő fázisában a nem megfelelő gépek [frissítéseinek telepítése](update-mgmt-deploy-updates.md) és a telepítési eredmények áttekintése.

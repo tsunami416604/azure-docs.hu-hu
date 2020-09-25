@@ -10,16 +10,16 @@ ms.devlang: python
 ms.topic: quickstart
 author: garyericson
 ms.author: garye
-ms.reviewer: davidph, carlrab
+ms.reviewer: davidph, sstein
 manager: cgronlun
 ms.date: 05/29/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: adc3cbd7b98d915a0b598227b459891cb0e0bfff
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 3a939c816cac44ed85802ecfa591564effc1ee73
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042509"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328833"
 ---
 # <a name="quickstart-use-r-with-azure-sql-database-machine-learning-services-preview-to-query-a-database"></a>Rövid útmutató: az R használata Azure SQL Database Machine Learning Services (előzetes verzió) használatával egy adatbázis lekérdezéséhez 
 
@@ -47,7 +47,7 @@ A Azure SQL Database-adatbázishoz való kapcsolódáshoz szükséges kapcsolati
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-2. Navigáljon az **SQL-adatbázisok** vagy az **SQL-felügyelt példányok** lapra.
+2. Navigáljon az **SQL-adatbázisok**  vagy az **SQL-felügyelt példányok** lapra.
 
 3. Az **Áttekintés** lapon tekintse át a teljes kiszolgálónevet a **kiszolgáló neve** mellett Azure SQL Database vagy a **gazdagép** melletti teljes kiszolgálónevet az Azure SQL felügyelt példányának felügyelt példánya számára. A kiszolgálónév vagy az állomásnév másolásához vigye a kurzort a fölé, és válassza a **Másolás** ikont.
 
@@ -80,7 +80,7 @@ A Azure SQL Database-adatbázishoz való kapcsolódáshoz szükséges kapcsolati
 
 1. Győződjön meg arról, hogy az **üzenetek** ablakban a 20 legfontosabb kategória/termék sorok lesznek visszaadva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az első adatbázis megtervezése Azure SQL Database](design-first-database-tutorial.md)
 - [Azure SQL Database Machine Learning Services (R)](machine-learning-services-overview.md)

@@ -10,12 +10,12 @@ ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d00232d602ce7b2de0db4e06ef3c7456f552833e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 6b9835cf5de28fbd515a214554f723d99e8e8fe4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018739"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91260731"
 ---
 # <a name="azure-synapse-analytics-shared-metadata-tables"></a>Az Azure szinapszis Analytics megosztott metaadatait tartalmazó táblái
 
@@ -105,7 +105,7 @@ Hozzon létre egy felügyelt Spark-táblázatot a SparkSQL a következő parancs
     CREATE TABLE mytestdb.myParquetTable(id int, name string, birthdate date) USING Parquet
 ```
 
-Ez létrehozza a táblát `myParquetTable` az adatbázisban `mytestdb` . Rövid késleltetés után megtekintheti a táblázatot az SQL on-demand használatával. Futtassa például az alábbi utasítást az SQL igény szerint.
+Ez a parancs létrehozza a táblát `myParquetTable` az adatbázisban `mytestdb` . Rövid késleltetés után megtekintheti a táblázatot az SQL on-demand használatával. Futtassa például az alábbi utasítást az SQL igény szerint.
 
 ```sql
     USE mytestdb;

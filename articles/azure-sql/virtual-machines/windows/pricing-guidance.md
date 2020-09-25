@@ -8,19 +8,19 @@ editor: ''
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: b1d07b3ff41c16ff2145311a0b42d8c57a8e7b82
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 7d18273d07cda3a6fe3517c47c9be12a2d236438
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141958"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316936"
 ---
 # <a name="pricing-guidance-for-sql-server-on-azure-vms"></a>Az Azure-beli virtuális gépek SQL Server díjszabási útmutatója
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -57,7 +57,7 @@ Ha nem könnyű üzemi számítási feladattal rendelkezik, használja a követk
 
 | SQL Server-kiadás | Számítási feladat |
 |-----|-----|
-| Web | Kisméretű webhelyek |
+| Webes | Kisméretű webhelyek |
 | Standard | Kis-és közepes számítási feladatok |
 | Enterprise | Nagy vagy kritikus fontosságú számítási feladatok|
 
@@ -94,7 +94,7 @@ Ha SQL Server 2017 rendszerű Azure-beli virtuális gépet szeretne létrehozni 
 > [!NOTE]
 > Mostantól megváltoztathatja a licencelési modellt a díjköteles használatból, hogy saját licencet (BYOL) és vissza lehessen állítani. További információ: [a SQL Server VM licencelési modelljének módosítása](licensing-model-azure-hybrid-benefit-ahb-change.md). 
 
-## <a name="bring-your-own-license-byol"></a><a id="byol"></a>Saját licenc használata (BYOL)
+## <a name="bring-your-own-license-byol"></a><a id="byol"></a> Saját licenc használata (BYOL)
 
 Ha **a saját SQL Server licencét licenchordozhatóság**(más néven **BYOL**) használja, akkor egy Azure-beli virtuális gépen meglévő, frissítési garanciával rendelkező SQL Server mennyiségi licencet használ. A BYOL-t használó SQL Server VM csak a virtuális gép SQL Server licencelési költségeiért számítanak fel díjat, mivel a mennyiségi licencelési program keretében már beszerezte a licenceket és a frissítési garanciát.
 
@@ -112,7 +112,7 @@ A saját SQL Server licencelésének engedélyezése licenchordozhatóság haszn
 
 Ahhoz, hogy a BYOL-t a SQL Server VM használatával használhassa, rendelkeznie kell egy, a mennyiségi licencelési programok keretében szükséges licenccel, valamint a többi szolgáltatással való opcionális vásárlással SQL Server Standard-vagy nagyvállalati és [frissítési garanciával](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default.aspx#tab=1). A mennyiségi licencelési programok által biztosított díjszabás a szerződés típusától és a SQL Serverre vonatkozó mennyiségi és elkötelezettségi szinttől függően változhat. A folyamatos üzemi munkaterhelések esetében azonban a saját licence a következő előnyökkel jár:
 
-| BYOL juttatás | Leírás |
+| BYOL juttatás | Description |
 |-----|-----|
 | **Költségmegtakarítás** | A [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) akár 55%-os megtakarítást is biztosít. További információ: [switch licencelési modell](licensing-model-azure-hybrid-benefit-ahb-change.md) |
 | **Szabad passzív másodlagos replika** | A saját licencének egy másik előnye, hogy a magas rendelkezésre állás érdekében SQL Server [egy passzív másodlagos replika ingyenes licencelését](https://azure.microsoft.com/pricing/licensing-faq/) . Ez feldarabolja a nagyszámú SQL Server üzemelő példány licencelési költségeit (például az Always On rendelkezésre állási csoportok használata esetén). A passzív másodlagos futtatásához szükséges jogosultságokat a feladatátvételi kiszolgálók frissítési garanciája biztosítja. |
@@ -134,7 +134,7 @@ Ha SQL Server 2017 operációs rendszert futtató Azure-beli virtuális gépet s
 
 A szükségtelen költségek elkerülése érdekében válasszon ki egy optimális virtuálisgép-méretet, és vegye figyelembe a nem folyamatos számítási feladatok időszakos leállítását.
 
-### <a name="correctly-size-your-vm"></a><a id="machinesize"></a>A virtuális gép megfelelő méretezése
+### <a name="correctly-size-your-vm"></a><a id="machinesize"></a> A virtuális gép megfelelő méretezése
 
 A SQL Server licencelési díja közvetlenül kapcsolódik a vCPU számához. Válasszon olyan virtuálisgép-méretet, amely megfelel a CPU-, memória-, tárterület-és I/O-sávszélesség várható igényeinek. A gép méretére vonatkozó beállítások teljes listáját a [Windows rendszerű virtuális gépek méretei](https://docs.microsoft.com/azure/virtual-machines/windows/sizes) és a linuxos virtuálisgép- [méretek](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)című részben tekintheti meg.
 

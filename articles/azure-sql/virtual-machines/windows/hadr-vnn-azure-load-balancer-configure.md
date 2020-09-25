@@ -8,18 +8,18 @@ manager: jroth
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 10ff324e85082a4a5911e2c949744e7df1d9ad0b
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 2f36e568603ded5a89f88cf11627a09a5a240fac
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965519"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316987"
 ---
 # <a name="configure-vnn-with-azure-load-balancer-sql-server-on-azure-vms"></a>VNN konfigurálása Azure Load Balancer (SQL Server Azure-beli virtuális gépeken)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -45,9 +45,9 @@ A terheléselosztó létrehozásához használja a [Azure Portal](https://portal
 
 1. A Azure Portal lépjen a virtuális gépeket tartalmazó erőforráscsoporthoz.
 
-1. Válassza a **Hozzáadás** elemet. **Load Balancer**keresése az Azure Marketplace-en. Válassza a **Load Balancer**lehetőséget.
+1. Válassza a **Hozzáadás** lehetőséget. **Load Balancer**keresése az Azure Marketplace-en. Válassza a **Load Balancer**lehetőséget.
 
-1. Válassza a **Létrehozás** lehetőséget.
+1. Kattintson a **Létrehozás** gombra.
 
 1. Állítsa be a terheléselosztó értékét a következő értékek használatával:
 
@@ -82,7 +82,7 @@ A terheléselosztó létrehozásához használja a [Azure Portal](https://portal
 
 1. A terheléselosztó ablaktáblán válassza az **állapot**-mintavételek elemet.
 
-1. Válassza a **Hozzáadás** elemet.
+1. Válassza a **Hozzáadás** lehetőséget.
 
 1. Az állapot-mintavétel **hozzáadása** panelen állítsa be <span id="probe"> </span> a következő állapot-mintavételi paramétereket:
 
@@ -98,7 +98,7 @@ A terheléselosztó létrehozásához használja a [Azure Portal](https://portal
 
 1. A terheléselosztó panelen válassza a **terheléselosztási szabályok**elemet.
 
-1. Válassza a **Hozzáadás** elemet.
+1. Válassza a **Hozzáadás** lehetőséget.
 
 1. Állítsa be a terheléselosztási szabály paramétereit:
 
@@ -157,7 +157,7 @@ A fürtözött erőforrás feladatátvételi tesztje a fürt működésének ell
 
 # <a name="failover-cluster-instance"></a>[Feladatátvevőfürt-példány](#tab/fci)
 
-Hajtsa végre a következő lépéseket:
+Tegye a következőket:
 
 1. Kapcsolódjon az egyik SQL Server fürtcsomópontok valamelyikéhez RDP használatával.
 1. Nyissa meg **Feladatátvevőfürt-kezelő**. Válassza a **szerepkörök**lehetőséget. Figyelje meg, hogy melyik csomópont tulajdonosa a SQL Server.
@@ -170,7 +170,7 @@ Hajtsa végre a következő lépéseket:
 
 # <a name="ag-listener"></a>[AG-figyelő](#tab/ag)
 
-Hajtsa végre a következő lépéseket:
+Tegye a következőket:
 
 1. Nyissa meg [SQL Server Management Studio)](/sql/ssms/download-sql-server-management-studio-ssms) , és kapcsolódjon a rendelkezésre állási csoport figyelőhöz. 
 
@@ -191,7 +191,7 @@ A kapcsolat teszteléséhez jelentkezzen be egy másik virtuális gépre ugyanab
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni az Azure SQL Server HADR szolgáltatásairól, tekintse meg a [rendelkezésre állási csoportok](availability-group-overview.md) és a [feladatátvevő fürt példánya](failover-cluster-instance-overview.md)című témakört. Megtudhatja, [Hogyan](hadr-cluster-best-practices.md) konfigurálhatja a környezetet a magas rendelkezésre álláshoz és a vész-helyreállításhoz. 
 

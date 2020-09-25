@@ -3,12 +3,12 @@ title: Licencelt rendszerkép engedélyezése a laborban Azure DevTest Labs | Mi
 description: Megtudhatja, hogyan engedélyezheti a licencelt rendszerképek használatát Azure DevTest Labs a Azure Portal
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: a043679e27580254c56fe118838dd355be5a58de
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e2b6e495be2257548782143517f5a970b424860c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286512"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276356"
 ---
 # <a name="enable-a-licensed-image-in-your-lab-in-azure-devtest-labs"></a>Licencelt rendszerkép engedélyezése a laborban Azure DevTest Labs
 
@@ -47,7 +47,7 @@ Az alábbi lépéseket követve engedélyezheti a programozott központi telepí
 
 1. Azonosítson egy licencelt rendszerképet, amelyhez a felhasználóknak hozzáférésre van szükségük, de a feltételek nem lettek elfogadva. Előfordulhat például, hogy egy olyan Data Science Virtual Machine jelenik meg, amely az **elfogadva** vagy a **feltételek felülvizsgálatához szükséges**állapotot jeleníti meg.
 
-    ![Programozott telepítés ablakának konfigurálása](./media/devtest-lab-create-custom-image-from-licensed-image/devtest-lab-licensed-images.png)
+    ![Képernyőkép, amely megjeleníti Data Science Virtual Machine "a" feltételt, és a "feltételek felülvizsgálata szükséges" állapotú lemezképeket.](./media/devtest-lab-create-custom-image-from-licensed-image/devtest-lab-licensed-images.png)
 
    > [!NOTE]
    > Az adatelemzési virtuális gépek Azure-beli virtuálisgép-lemezképek, előre telepített, konfigurált és tesztelt számos olyan népszerű eszközzel, amelyet általában az adatelemzés, a gépi tanulás és a mesterséges intelligenciával kapcsolatos képzésekhez használnak. A [Linux és a Windows rendszerhez készült Azure Data Science Virtual Machine bemutatása](../machine-learning/data-science-virtual-machine/overview.md) nagy mennyiségű információt nyújt a dsvm-ről.
@@ -66,7 +66,7 @@ Az alábbi lépéseket követve engedélyezheti a programozott központi telepí
    >
 
 
-1. Válassza a **Mentés** lehetőséget. 
+1. Kattintson a **Mentés** gombra. 
 
     A Piactéri lemezképek listájában a kép mostantól az **elfogadott kifejezéseket** jeleníti meg, és elérhetővé válik a felhasználók számára virtuális gépek létrehozásához.
 
@@ -81,7 +81,7 @@ Az alábbi lépéseket követve engedélyezheti a programozott központi telepí
 - [Egyéni lemezképek vagy képletek?](./devtest-lab-faq.md#blog-post)
 - [Egyéni rendszerképek másolása Azure DevTest Labs között](https://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Egyéni rendszerkép létrehozása virtuális gépből](devtest-lab-create-custom-image-from-vm-using-portal.md)
 - [Egyéni rendszerkép létrehozása VHD-fájlból](devtest-lab-create-template.md)

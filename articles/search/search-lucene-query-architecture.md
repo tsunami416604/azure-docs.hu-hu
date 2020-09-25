@@ -8,12 +8,12 @@ ms.author: jlembicz
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c2d5b4758f80d07516500c663762d7c8607e2a30
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 50a1656fcb92d9777d4a9476ef2a4c1fd2f2efc6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88917958"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329482"
 ---
 # <a name="full-text-search-in-azure-cognitive-search"></a>Teljes szöveges keresés az Azure Cognitive Search
 
@@ -51,7 +51,7 @@ A keresési kérések teljes körűen meghatározzák, hogy mit kell visszaadni 
 
 A következő példa egy olyan keresési kérelem, amelyet az Azure-Cognitive Search küldhet az [REST API](/rest/api/searchservice/search-documents)használatával.  
 
-~~~~
+```
 POST /indexes/hotels/docs/search?api-version=2020-06-30
 {
     "search": "Spacious, air-condition* +\"Ocean view\"",
@@ -61,7 +61,7 @@ POST /indexes/hotels/docs/search?api-version=2020-06-30
     "orderby": "geo.distance(location, geography'POINT(-159.476235 22.227659)')", 
     "queryType": "full" 
 }
-~~~~
+```
 
 Ehhez a kérelemhez a keresőmotor a következő műveleteket végzi el:
 
@@ -76,9 +76,9 @@ Ennek a cikknek a többsége a *keresési lekérdezés*feldolgozását ismerteti
 
 A lekérdezési karakterlánc a kérelem első sora: 
 
-~~~~
+```
  "search": "Spacious, air-condition* +\"Ocean view\"", 
-~~~~
+```
 
 A lekérdezés-elemző a keresési kifejezésektől elkülöníti a operátorokat (például `*` a és a `+` példában), és a keresési lekérdezést egy támogatott típusú *allekérdezésbe* hozza létre: 
 
@@ -104,9 +104,9 @@ Az elemzést befolyásoló másik keresési kérelem paraméter a `searchMode` p
 
 Ha a `searchMode=any` (z) alapértelmezés szerint a tágas és a légkondicionáló közötti térköz (), vagy ( `||` ), a minta lekérdezési szövege megegyezik a következővel: 
 
-~~~~
+```
 Spacious,||air-condition*+"Ocean view" 
-~~~~
+```
 
 A explicit operátorok `+` (például a-ben `+"Ocean view"` ) nem egyértelműek a logikai lekérdezések szerkezetében (a kifejezésnek egyeznie *kell* ). Kevésbé nyilvánvaló, hogy hogyan értelmezheti a fennmaradó kifejezéseket: tágas és légkondicionáló. A keresőmotor az Ocean View *és* a tágas *, illetve* a légkondicionáló esetében is megfelel? Vagy az is előfordulhat, hogy az Ocean View vagy a fennmaradó feltételek *valamelyike* szerepel? 
 
@@ -114,9 +114,9 @@ Alapértelmezés szerint `searchMode=any` a keresőmotor a szélesebb körű ér
 
 Tegyük fel, hogy most már be van állítva `searchMode=all` . Ebben az esetben a rendszer "és" műveletként értelmezi a helyet. A többi feltételnek mindkettőnek szerepelnie kell a dokumentumban, hogy egyezzen a megfelelő jogosultsággal. Az eredményül kapott minta lekérdezés a következőképpen lesz értelmezve: 
 
-~~~~
+```
 +Spacious,+air-condition*+"Ocean view"
-~~~~
+```
 
 A lekérdezés módosított lekérdezési fájának a következőnek kell lennie, ahol a megfelelő dokumentum a mindhárom allekérdezés metszéspontja: 
 
@@ -152,16 +152,16 @@ Ha az alapértelmezett elemző feldolgozza a kifejezést, az az "Ocean View" és
 
 Az analizátor viselkedését az [elemzés API](/rest/api/searchservice/test-analyzer)használatával lehet tesztelni. Adja meg az elemezni kívánt szöveget, és tekintse meg, hogy az adott elemző milyen feltételekkel fog létrejönni. Ha például azt szeretné látni, hogy a standard Analyzer hogyan dolgozza fel a "légkondicionáló" szöveget, a következő kérést adhatja ki:
 
-~~~~
+```json
 {
     "text": "air-condition",
     "analyzer": "standard"
 }
-~~~~
+```
 
 A standard Analyzer megszakítja a bemeneti szöveget a következő két jogkivonatba, és megjegyzésekkel láthatja el őket olyan attribútumokkal, mint a kezdő és a záró eltolás (a találatok kiemeléséhez használatos), valamint a helyük (a kifejezés megfeleltetéséhez használt):
 
-~~~~
+```json
 {
   "tokens": [
     {
@@ -178,7 +178,7 @@ A standard Analyzer megszakítja a bemeneti szöveget a következő két jogkivo
     }
   ]
 }
-~~~~
+```
 
 <a name="exceptions"></a>
 
@@ -192,7 +192,7 @@ A lexikális analízis csak olyan lekérdezési típusokra vonatkozik, amelyek t
 
 A dokumentumok beolvasása arra utal, hogy az indexben a dokumentumok megkeresése egyező kifejezésekkel történjen. Ez a szakasz a legjobban egy példán keresztül értelmezhető. Kezdjük a következő egyszerű sémával rendelkező Hotels indextel: 
 
-~~~~
+```json
 {
     "name": "hotels",
     "fields": [
@@ -201,11 +201,11 @@ A dokumentumok beolvasása arra utal, hogy az indexben a dokumentumok megkeresé
         { "name": "description", "type": "Edm.String", "searchable": true }
     ] 
 } 
-~~~~
+```
 
 Azt feltételezi, hogy ez az index a következő négy dokumentumot tartalmazza: 
 
-~~~~
+```json
 {
     "value": [
         {
@@ -230,7 +230,7 @@ Azt feltételezi, hogy ez az index a következő négy dokumentumot tartalmazza:
         }
     ]
 }
-~~~~
+```
 
 **A feltételek indexelése**
 
@@ -321,10 +321,12 @@ A keresési eredményhalmaz minden dokumentuma releváns pontszámot kap. A rele
 ### <a name="scoring-example"></a>Pontozási példa
 
 Hívja fel a példát a lekérdezésnek megfelelő három dokumentumra:
-~~~~
+
+```
 search=Spacious, air-condition* +"Ocean view"  
-~~~~
-~~~~
+```
+
+```json
 {
   "value": [
     {
@@ -347,7 +349,7 @@ search=Spacious, air-condition* +"Ocean view"
     }
   ]
 }
-~~~~
+```
 
 Az 1. dokumentum megfelelt a lekérdezésnek, mert mind a *tágas* , mind a szükséges, az *Ocean View* kifejezés a Leírás mezőben szerepel. A következő két dokumentum csak az *Ocean View*kifejezéssel egyezik meg. Előfordulhat, hogy meglepő, hogy a 2. és 3. dokumentum relevanciás pontszáma eltérő, bár a lekérdezésnek ugyanúgy egyeznek. Ez azért van, mert a pontozási képlet több összetevővel rendelkezik, mint a TF/IDF. Ebben az esetben a 3. dokumentumot egy valamivel magasabb pontszámot rendeltük, mert a leírása rövidebb. Ismerje meg a [Lucene gyakorlati pontozási képletét](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/search/similarities/TFIDFSimilarity.html) , amelyből megtudhatja, hogy a mezők hosszának és más tényezőknek milyen hatása lehet a releváns pontszámra.
 
@@ -371,7 +373,7 @@ Ez azt jelenti, hogy a *relevancia pontszáma* eltérő lehet az azonos dokument
 
 Általánosságban elmondható, hogy a dokumentum pontszáma nem a legjobb megoldás a dokumentumok rendezéséhez, ha a megrendelés stabilitása fontos. Ha például két, azonos pontszámmal rendelkező dokumentumot adott meg, akkor nincs garancia arra, hogy az adott lekérdezés későbbi futtatása során az egyik első jelenik meg. A dokumentum pontszáma csak az eredmények készletében lévő többi dokumentumra vonatkozó általános értelemben vett dokumentum-megfelelőséget adja meg.
 
-## <a name="conclusion"></a>Tanulság
+## <a name="conclusion"></a>Összegzés
 
 Az internetes keresőprogramok sikere miatt a teljes szöveges keresésre vonatkozó elvárások merültek fel a magánjellegű adatokon. Mostantól szinte bármilyen keresési élményhez elvárjuk, hogy a motor megértse a szándékát, még akkor is, ha a feltételek helytelenül vannak írva vagy hiányosak. Az is előfordulhat, hogy az egyezéseket a közel azonos feltételek vagy szinonimák alapján is elvárjuk, amelyeket valójában nem adtunk meg.
 
@@ -379,7 +381,7 @@ Technikai szempontból a teljes szöveges keresés nagyon összetett, és kifino
 
 Ez a cikk a teljes szöveges keresést ismerteti az Azure Cognitive Search kontextusában. Reméljük, hogy elegendő hátteret biztosít a gyakori lekérdezési problémák kezelésére vonatkozó lehetséges okok és megoldások felismeréséhez. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 + Hozza létre a minta indexet, próbálja ki a különböző lekérdezéseket, és tekintse át az eredményeket. Útmutatásért lásd: [index létrehozása és lekérdezése a portálon](search-get-started-portal.md#query-index).
 

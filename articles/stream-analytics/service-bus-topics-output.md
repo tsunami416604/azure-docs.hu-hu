@@ -6,13 +6,13 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 08/25/2020
-ms.openlocfilehash: ef5802d0c5e35b9c12db1f40782ba5f190ad1883
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/23/2020
+ms.openlocfilehash: cc09912bb0c9ab553d180ff5cc06fc52c4c5cc0c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907196"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91261050"
 ---
 # <a name="service-bus-topics-output-from-azure-stream-analytics"></a>Service Bus témakörök kimenete Azure Stream Analytics
 
@@ -46,6 +46,22 @@ A maximális üzenet mérete 256 KB/üzenet a standard szintű csomaghoz, a pré
 ## <a name="custom-metadata-properties-for-output"></a>A kimenet egyéni metaadat-tulajdonságai
 
 A lekérdezési oszlopokat felhasználói tulajdonságokként csatolhatja a kimenő üzenetekhez. Ezek az oszlopok nem kerülnek bele a hasznos adatokba. A tulajdonságok a kimeneti üzenet szótárának formájában jelennek meg. A *kulcs* az oszlopnév és az *érték* az oszlop értéke a tulajdonságok szótárban. A rekord és a tömb kivételével minden Stream Analytics adattípus támogatott.
+
+A következő példában a mezők és a `DeviceId` `DeviceStatus` metaadatokhoz lesznek adva.
+
+1. Használja a következő lekérdezést:
+
+   ```sql
+   select *, DeviceId, DeviceStatus from iotHubInput
+   ```
+
+1. Konfigurálja `DeviceId,DeviceStatus` a tulajdonság oszlopait a kimenetben.
+
+   :::image type="content" source="media/service-bus-topics-output/property-columns.png" alt-text="Tulajdonságok oszlopai":::
+
+Az alábbi ábrán a EventHub által a [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer)használatával megtekintett kimeneti üzenet várt tulajdonságai láthatók.
+
+:::image type="content" source="media/service-bus-topics-output/custom-properties.png" alt-text="Egyéni esemény tulajdonságai":::
 
 ## <a name="system-properties"></a>Rendszertulajdonságok
 

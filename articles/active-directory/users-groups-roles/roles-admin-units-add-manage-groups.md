@@ -1,5 +1,5 @@
 ---
-title: Csoportok hozzáadása, eltávolítása és listázása egy felügyeleti egységben (előzetes verzió) – Azure Active Directory | Microsoft Docs
+title: Csoportok hozzáadása, eltávolítása és listázása egy felügyeleti egységben – Azure Active Directory | Microsoft Docs
 description: Csoportok és szerepkörük engedélyeinek kezelése egy felügyeleti egységben Azure Active Directory
 services: active-directory
 documentationcenter: ''
@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.topic: how-to
 ms.subservice: users-groups-roles
 ms.workload: identity
-ms.date: 06/23/2020
+ms.date: 09/22/2020
 ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76026313eea8c8fbb2f3e55321e2e4ebbe5dcfc7
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 324d0ff0659270c6f2e90c0456ded83344f73936
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85850925"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265013"
 ---
 # <a name="add-and-manage-groups-in-administrative-units-in-azure-active-directory"></a>Csoportok hozzáadása és kezelése felügyeleti egységekben Azure Active Directory
 
@@ -31,7 +31,7 @@ A PowerShell és a Microsoft Graph felügyeleti egység felügyeletéhez való e
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Az előzetes verzióban csak az egyes felügyeleti egységekhez rendelhet csoportokat. A csoportok tömeges hozzárendelése nem lehetséges egy felügyeleti egységhez. A portálon a következő két módszer egyikével rendelhet hozzá egy csoportot egy felügyeleti egységhez:
+A csoportokat csak egyenként rendelheti hozzá egy felügyeleti egységhez. A csoportok tömeges kiosztása nem lehetséges egy felügyeleti egységben. A portálon a következő két módszer egyikével rendelhet hozzá egy csoportot egy felügyeleti egységhez:
 
 1. Az **Azure AD > csoportok** lapról
 
@@ -156,7 +156,7 @@ Remove-AzureADAdministrativeUnitMember -ObjectId $auId -MemberId $memberGroupObj
 https://graph.microsoft.com/beta/administrativeUnits/<adminunit-id>/members/<group-id>/$ref
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Szerepkör társítása egy felügyeleti egységhez](roles-admin-units-assign-roles.md)
 - [Felhasználók kezelése egy felügyeleti egységben](roles-admin-units-add-manage-users.md)

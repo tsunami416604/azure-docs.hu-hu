@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: aahi
-ms.openlocfilehash: b17e2618cd87c0689fa531e893149a1b2fab8d20
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 52df2ad0dc4c60c24e341a9765e31bcf9776bf5e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987196"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91277291"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>A térbeli elemzési tároló telepítése és futtatása (előzetes verzió)
 
@@ -30,7 +30,7 @@ A térbeli elemzési tároló lehetővé teszi a valós idejű adatfolyam-videó
 
 ### <a name="spatial-analysis-container-requirements"></a>Térbeli elemzési tárolóra vonatkozó követelmények
 
-A térbeli elemzési tároló futtatásához egy [NVIDIA Tesla T4 GPU](https://www.nvidia.com/data-center/tesla-t4/)-val rendelkező számítási eszközre van szükség. Javasoljuk, hogy a [Azure stack Edge](https://azure.microsoft.com/products/azure-stack/edge/) -t GPU-gyorsítással használja, azonban a tároló minden olyan asztali gépen fut, amely megfelel a minimális követelményeknek. Ezt az eszközt a gazdaszámítógépként fogjuk megtekinteni.
+A térbeli elemzési tároló futtatásához egy [NVIDIA Tesla T4 GPU](https://www.nvidia.com/en-us/data-center/tesla-t4/)-val rendelkező számítási eszközre van szükség. Javasoljuk, hogy a [Azure stack Edge](https://azure.microsoft.com/products/azure-stack/edge/) -t GPU-gyorsítással használja, azonban a tároló minden olyan asztali gépen fut, amely megfelel a minimális követelményeknek. Ezt az eszközt a gazdaszámítógépként fogjuk megtekinteni.
 
 #### <a name="azure-stack-edge-device"></a>[Azure Stack Edge-eszköz](#tab/azure-stack-edge)
 
@@ -71,7 +71,7 @@ Ebben a cikkben a következő szoftvercsomagok letöltésére és telepítésér
 
 ## <a name="request-approval-to-run-the-container"></a>Kérelem jóváhagyása a tároló futtatásához
 
-Töltse ki és küldje el a [kérelem űrlapját](https://aka.ms/cognitivegate) a tároló futtatásához jóváhagyás kéréséhez. 
+Töltse ki és küldje el a [kérelem űrlapját](https://aka.ms/csgate) a tároló futtatásához jóváhagyás kéréséhez.
 
 Az űrlap adatokat kér Önnek, a vállalatnak és a felhasználói forgatókönyvnek, amelyhez a tárolót fogja használni. Az űrlap elküldése után az Azure Cognitive Services csapata áttekinti és e-mailben értesíti Önt a döntésről.
 
@@ -116,7 +116,8 @@ Kattintson a **Létrehozás** lehetőségre. A IoT Hub erőforrás létrehozása
 Amikor a peremhálózati eszközön beállította a peremhálózat számítási szerepkört, két eszközt hoz létre: egy IoT eszközt és egy IoT Edge eszközt. Mindkét eszköz megtekinthető a IoT Hub erőforrásban. A Azure IoT Edge futtatókörnyezet már fut a IoT Edge eszközön.            
 
 > [!NOTE]
-> Jelenleg csak a Linux platform érhető el IoT Edge eszközökhöz. Az Azure Stack Edge-eszköz hibaelhárításával kapcsolatos segítségért lásd a [naplózási és hibaelhárítási](spatial-analysis-logging.md) cikket.
+> * A IoT Edge-eszközök jelenleg csak a Linux platformot támogatják. Az Azure Stack Edge-eszköz hibaelhárításával kapcsolatos segítségért lásd a [naplózási és hibaelhárítási](spatial-analysis-logging.md) cikket.
+> * Ha többet szeretne megtudni arról, hogyan konfigurálható IoT Edge eszköz egy proxykiszolgálón keresztüli kommunikációra, tekintse meg a [IoT Edge-eszköz konfigurálása proxykiszolgálón keresztüli kommunikációhoz](https://docs.microsoft.com/azure/iot-edge/how-to-configure-proxy-support#azure-portal) című témakört.
 
 ###  <a name="enable-mps-on-azure-stack-edge"></a>MPS engedélyezése Azure Stack Edge-ben 
 
@@ -260,13 +261,14 @@ az iot hub create --name "test-iot-hub-123" --sku S1 --resource-group "test-reso
 az iot hub device-identity create --hub-name "test-iot-hub-123" --device-id "my-edge-device" --edge-enabled
 ```
 
-Ha a gazdaszámítógép nem Azure Stack peremhálózati eszköz, akkor telepítenie kell a [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) 1.0.8 verzióját. Kövesse az alábbi lépéseket a megfelelő verzió letöltéséhez: Ubuntu Server 18,04:
+Ha a gazdaszámítógép nem Azure Stack peremhálózati eszköz, akkor telepítenie kell a [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) 1.0.8 verzióját. A megfelelő verzió letöltéséhez kövesse az alábbi lépéseket:
+
+Ubuntu Server 18,04:
 ```bash
 curl https://packages.microsoft.com/config/ubuntu/18.04/multiarch/prod.list > ./microsoft-prod.list
 ```
 
 Másolja a generált listát.
-
 ```bash
 sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/
 ```
@@ -324,8 +326,8 @@ A következő táblázat a IoT Edge modul által használt különféle környez
 | ARCHON_NODES_LOG_LEVEL | Információ Részletes | Naplózási szint, válasszon egyet a két érték közül|
 | OMP_WAIT_POLICY | PASSZÍV | Ne módosítsa|
 | QT_X11_NO_MITSHM | 1 | Ne módosítsa|
-| API_KEY | az API-kulcs| Gyűjtsön ezt az értéket Azure Portalból a Computer Vision-erőforrásból. Az erőforráshoz tartozó **kulcs és végpont** szakaszban találja a Azure Portal. |
-| BILLING_ENDPOINT | a végpont URI-ja| Gyűjtsön ezt az értéket Azure Portalból a Computer Vision-erőforrásból. Az erőforráshoz tartozó **kulcs és végpont** szakaszban találja a Azure Portal.|
+| API_KEY | az API-kulcs| Gyűjtsön ezt az értéket Azure Portalból a Computer Vision-erőforrásból. Az erőforráshoz tartozó **kulcs és végpont** szakaszban találja. |
+| BILLING_ENDPOINT | a végpont URI-ja| Gyűjtsön ezt az értéket Azure Portalból a Computer Vision-erőforrásból. Az erőforráshoz tartozó **kulcs és végpont** szakaszban találja.|
 | EULA | fogadja el | Ezt az értéket úgy kell beállítani, hogy *fogadja* a tároló futtatását |
 | KIJELZŐ | : 1 | Ennek az értéknek meg kell egyeznie a gazdaszámítógép kimenetével `echo $DISPLAY` . Azure Stack Edge-eszközök nem rendelkeznek kijelzővel. Ez a beállítás nem alkalmazható|
 
@@ -339,7 +341,6 @@ Ha a minta [DeploymentManifest.jsa](https://go.microsoft.com/fwlink/?linkid=2142
 az login
 az extension add --name azure-iot
 az iot edge set-modules --hub-name "<IoT Hub name>" --device-id "<IoT Edge device name>" --content DeploymentManifest.json -–subscription "<subscriptionId>"
-
 ```
 
 |Paraméter  |Leírás  |

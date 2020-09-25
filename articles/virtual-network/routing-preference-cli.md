@@ -1,7 +1,7 @@
 ---
 title: A nyilvános IP-cím útválasztási beállításainak konfigurálása az Azure CLI használatával
 titlesuffix: Azure Virtual Network
-description: Ismerje meg, hogyan hozhat létre egy nyilvános IP-címet egy internetes forgalom útválasztási beállításával
+description: Megtudhatja, hogyan hozhat létre egy nyilvános IP-címet egy internetes forgalom útválasztási beállításával az Azure CLI használatával.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -14,18 +14,18 @@ ms.workload: infrastructure-services
 ms.date: 05/18/2020
 ms.author: mnayak
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 64284b198fc76c219ffe0dfbc57461b587b23130
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 39514f8a34e85525e2a8900a8e6e3cc8656fb84a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87504602"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329295"
 ---
 # <a name="configure-routing-preference-for-a-public-ip-address-using-azure-cli"></a>A nyilvános IP-cím útválasztási beállításainak konfigurálása az Azure CLI használatával
 
 Ez a cikk bemutatja, hogyan konfigurálhatja az útválasztási beállításokat a nyilvános IP-címekre vonatkozó ISP-hálózaton (**Internet** -beállítás) az Azure CLI használatával. A nyilvános IP-cím létrehozása után a következő Azure-erőforrásokkal társíthatja a bejövő és kimenő adatforgalmat az internethez:
 
-* virtuális gép
+* Virtuális gép
 * Virtuálisgép-méretezési csoport
 * Azure Kubernetes Service (AKS)
 * Internetkapcsolattal rendelkező Load Balancer
@@ -77,7 +77,7 @@ az network public-ip create \
 
 A fenti létrehozott nyilvános IP-címet egy Windows vagy [Linux](../virtual-machines/linux/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) [rendszerű](../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuális géppel társíthatja. A CLI szakasz az oktatóanyag oldalon: [nyilvános IP-cím hozzárendelése egy virtuális géphez](associate-public-ip-address-vm.md#azure-cli) , hogy a nyilvános IP-címet a virtuális géphez rendelje. A fent létrehozott nyilvános IP-címet társíthatja egy [Azure Load Balancer](../load-balancer/load-balancer-overview.md)is, ha hozzárendeli a terheléselosztó előtér **-konfigurációjához.** A nyilvános IP-cím terheléselosztásos virtuális IP-címként (VIP) szolgál majd.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az [útválasztási beállításokról a nyilvános IP-címekben](routing-preference-overview.md). 
 - [Konfigurálja a virtuális gép útválasztási beállításait az Azure CLI használatával](configure-routing-preference-virtual-machine-cli.md).

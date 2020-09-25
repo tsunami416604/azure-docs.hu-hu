@@ -1,6 +1,6 @@
 ---
 title: A Windows Azure Diagnostics bővítmény (WAD) telepítése és konfigurálása
-description: Ismerje meg, hogyan gyűjthet Azure-diagnosztikai adatokat egy Azure Storage-fiókban, így megtekintheti azt a számos elérhető eszköz egyikével.
+description: Ismerje meg a Windows Diagnostics bővítmény telepítését és konfigurálását. Azt is megtudhatja, hogyan tárolja a rendszer az adattárolási és az Azure Storage-fiókban tárolt információkat.
 services: azure-monitor
 author: bwren
 ms.subservice: diagnostic-extension
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: bwren
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 46234f3b4bfd467db9b5754b5590603ff3d42915
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: e6ccba27fb599cb26da86e94d3500f4f806ecb76
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90974535"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328870"
 ---
 # <a name="install-and-configure-windows-azure-diagnostics-extension-wad"></a>A Windows Azure Diagnostics bővítmény (WAD) telepítése és konfigurálása
 Az [Azure Diagnostics bővítmény](diagnostics-extension-overview.md) olyan Azure monitor ügynöke, amely a vendég operációs rendszerből és az Azure-beli virtuális gépek és egyéb számítási erőforrások munkaterhelésével kapcsolatos figyelési adatokat gyűjt. Ez a cikk részletesen ismerteti a Windows diagnosztikai bővítmény telepítését és konfigurálását, valamint az adatok tárolásának és az Azure Storage-fiókban tárolt információk leírásának ismertetését.
@@ -192,7 +192,7 @@ Lásd még: a [PowerShell használata a Azure Diagnostics Windows rendszerű vir
 A következő táblázat felsorolja a diagnosztikai bővítményből összegyűjtött különböző típusú adatokat, valamint azt, hogy táblázatként vagy blobként vannak tárolva. A táblákban tárolt adattárolók a nyilvános konfiguráció [StorageType beállításától](diagnostics-extension-schema-windows.md#publicconfig-element) függően a blobokban is tárolhatók.
 
 
-| Adatok | Tárolási típus | Leírás |
+| Adatok | Tárolási típus | Description |
 |:---|:---|:---|
 | WADDiagnosticInfrastructureLogsTable | Táblázat | A diagnosztikai figyelő és a konfiguráció módosításai. |
 | WADDirectoriesTable | Táblázat | A diagnosztikai figyelő által figyelt címtárak.  Ez magában foglalja az IIS-naplókat, az IIS sikertelen kérelmek naplóit és az egyéni címtárakat.  A blob naplófájljának helye a tároló mezőben van megadva, és a blob neve a RelativePath mezőben található.  A AbsolutePath mező a fájl helyét és nevét jelzi, ahogy az Azure-beli virtuális gépen létezett. |

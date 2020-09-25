@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/01/2020
-ms.openlocfilehash: 48ab83db3dcbcf5c99b640ccab205ed1f0ee7ca1
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 2cd9f01404a4e33303356dd3f452cd7dbc47a747
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90604376"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328564"
 ---
 # <a name="azure-private-link-for-azure-data-factory"></a>Azure-beli privát hivatkozás Azure Data Factory
 
@@ -37,9 +37,9 @@ Telepítheti a saját üzemeltetésű integrációs modult egy helyszíni gépre
 
 A Azure Data Factory és az ügyfél virtuális hálózata között számos kommunikációs csatorna szükséges, ahogy az a következő táblázatban látható:
 
-| Tartomány | Port | Leírás |
+| Tartomány | Port | Description |
 | ---------- | -------- | --------------- |
-| `pe-adf.azure.com` | 443 | Data Factory létrehozásához és figyeléséhez szükséges vezérlő síkja. |
+| `adf.azure.com` | 443 | Data Factory létrehozásához és figyeléséhez szükséges vezérlő síkja. |
 | `*.{region}.datafactory.azure.net` | 443 | A saját üzemeltetésű integrációs modul számára szükséges a Data Factory szolgáltatáshoz való csatlakozáshoz. |
 | `*.servicebus.windows.net` | 443 | A saját üzemeltetésű integrációs modul szükséges az interaktív létrehozáshoz. |
 | `download.microsoft.com` | 443 | A frissítések letöltéséhez a saját üzemeltetésű Integration Runtime szükséges. |
@@ -84,7 +84,7 @@ Ha le szeretné tiltani az Azure-beli adatgyárhoz való nyilvános hozzáféré
 > [!NOTE]
 > A nyilvános hálózati hozzáférés letiltása után továbbra is elérheti a Azure Data Factory portált nyilvános hálózaton keresztül.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Adat-előállító létrehozása az Azure Data Factory felhasználói felületén](quickstart-create-data-factory-portal.md)
 - [Az Azure Data Factory bemutatása](introduction.md)

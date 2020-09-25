@@ -4,15 +4,15 @@ titleSuffix: Azure Kubernetes Service
 description: Ismerje meg, hogyan használható az Azure RBAC az Kubernetes-engedélyezéshez az Azure Kubernetes Service (ak) szolgáltatással.
 services: container-service
 ms.topic: article
-ms.date: 07/20/2020
+ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: c1222f671c95d4475de93b9c9e085a94f864b2ae
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 15bd917a16c250807d6848f7bc0ffbdba06b4019
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88003089"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329091"
 ---
 # <a name="use-azure-rbac-for-kubernetes-authorization-preview"></a>Azure RBAC használata Kubernetes-engedélyezéshez (előzetes verzió)
 
@@ -28,7 +28,6 @@ Az Azure-ból származó Kubernetes-erőforrások RBAC kezelése lehetővé tesz
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ### <a name="prerequisites"></a>Előfeltételek 
-- Regisztráljon az előzetes verzióra <https://aka.ms/aad-rbac-sign-up-form> .
 - Győződjön meg arról, hogy az Azure CLI 2.9.0 vagy újabb verziója van
 - Győződjön meg arról, hogy engedélyezve van a `EnableAzureRBACPreview` funkció jelzője.
 - Győződjön meg arról, hogy a `aks-preview` [CLI-bővítmény][az-extension-add] v 0.4.55 vagy újabb verziója van telepítve
@@ -44,7 +43,7 @@ Regisztrálja a `EnableAzureRBACPreview` szolgáltatás jelölőjét az az [Feat
 az feature register --namespace "Microsoft.ContainerService" --name "EnableAzureRBACPreview"
 ```
 
-Ahhoz, hogy a jelzőt sikeresen be tudja jegyeztetni, jóvá kell hagynia a jóváhagyást, miután elküldte a fenti előnézeti űrlapot. A regisztrációs állapotot az az [Feature List][az-feature-list] parancs használatával tekintheti meg:
+ A regisztrációs állapotot az az [Feature List][az-feature-list] parancs használatával tekintheti meg:
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableAzureRBACPreview')].{Name:name,State:properties.state}"
@@ -188,7 +187,7 @@ Most, hogy már rendelkezik a szerepkör-definícióval, a következő parancs f
 az role assignment create --role "AKS Deployment Viewer" --assignee <AAD-ENTITY-ID> --scope $AKS_ID
 ```
 
-## <a name="use-azure-rbac-for-kubernetes-authorization-with-kubectl"></a>Az Azure RBAC használata a Kubernetes engedélyezéséhez`kubectl`
+## <a name="use-azure-rbac-for-kubernetes-authorization-with-kubectl"></a>Az Azure RBAC használata a Kubernetes engedélyezéséhez `kubectl`
 
 > [!NOTE]
 > Az alábbi parancs futtatásával ellenőrizze, hogy rendelkezik-e a legújabb kubectl:
@@ -222,7 +221,7 @@ aks-nodepool1-93451573-vmss000002   Ready    agent   3h6m   v1.15.11
 ```
 
 
-## <a name="use-azure-rbac-for-kubernetes-authorization-with-kubelogin"></a>Az Azure RBAC használata a Kubernetes engedélyezéséhez`kubelogin`
+## <a name="use-azure-rbac-for-kubernetes-authorization-with-kubelogin"></a>Az Azure RBAC használata a Kubernetes engedélyezéséhez `kubelogin`
 
 Ha további forgatókönyveket szeretne feloldani, például nem interaktív bejelentkezéseket, régebbi `kubectl` verziókat vagy egyszeri bejelentkezést használ több fürtön anélkül, hogy be kellene jelentkeznie az új fürtbe, a jogkivonat még érvényes, az AK létrehozta a nevű exec beépülő modult [`kubelogin`](https://github.com/Azure/kubelogin) .
 
@@ -246,7 +245,7 @@ aks-nodepool1-93451573-vmss000002   Ready    agent   3h6m   v1.15.11
 ```
 
 
-## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
+## <a name="clean-up"></a>A feleslegessé vált elemek eltávolítása
 
 ### <a name="clean-role-assignment"></a>Szerepkör-hozzárendelés törlése
 
@@ -271,7 +270,7 @@ az role definition delete -n "AKS Deployment Viewer"
 az group delete -n MyResourceGroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az AK-hitelesítésről, az engedélyezésről és a RBAC [itt](concepts-identity.md)olvasható.
 - További információk az Azure RBAC-ről [itt](../role-based-access-control/overview.md)olvashat.
@@ -285,4 +284,4 @@ az group delete -n MyResourceGroup
 [az-extension-update]: /cli/azure/extension#az-extension-update
 [az-feature-list]: /cli/azure/feature#az-feature-list
 [az-feature-register]: /cli/azure/feature#az-feature-register
-[az-aks-install-cli]: /cli/azure/aks?view=azure-cli-latest#az-aks-install-cli
+[az-aks-install-cli]: /cli/azure/aks?view=azure-cli-latest#az-aks-install-cli&preserve-view=true

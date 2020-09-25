@@ -11,12 +11,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 07cfb0048e6027b0bac219b3fe28018db2d10257
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: d193438a232cc6bc113efb31ce4276117a366add
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185264"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276857"
 ---
 # <a name="create-an-azure-ssis-integration-runtime-in-azure-data-factory"></a>Azure SSIS integrációs modul létrehozása Azure Data Factory
 
@@ -79,11 +79,11 @@ Azon Azure-régiók listájáért, amelyekben Data Factory és Azure-SSIS IR el�
 
 Az alábbi táblázat összehasonlítja egy Azure SQL Database-kiszolgáló és az SQL felügyelt példány bizonyos funkcióit, amelyek az Azure-SSIR IR-hez kapcsolódnak:
 
-| Szolgáltatás | SQL Database| SQL felügyelt példány |
+| Funkció | SQL Database| SQL felügyelt példány |
 |---------|--------------|------------------|
 | **Ütemezés** | A SQL Server Agent nem érhető el.<br/><br/>Lásd: [csomagok végrehajtásának ütemezett Data Factory folyamata](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages?view=sql-server-2017#activity).| A felügyelt példány ügynöke elérhető. |
 | **Hitelesítés** | Létrehozhat egy SSISDB-példányt egy olyan tárolt adatbázis-felhasználóval, aki az adat-előállító felügyelt identitásával rendelkező Azure AD-csoportot az **db_owner** szerepkör tagjaként.<br/><br/>Lásd: az [Azure ad-hitelesítés engedélyezése SSISDB létrehozásához Azure SQL Database kiszolgálón](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database). | Létrehozhat egy SSISDB-példányt egy olyan tárolt adatbázis-felhasználóval, aki az adatelőállító felügyelt identitását képviseli. <br/><br/>Lásd: az [Azure ad-hitelesítés engedélyezése SSISDB létrehozásához az Azure SQL felügyelt példányában](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-sql-managed-instance). |
-| **Szolgáltatásszint** | Amikor létrehoz egy Azure-SSIS IR a Azure SQL Database-kiszolgálóval, kiválaszthatja a SSISDB szolgáltatási szintjét. Több szolgáltatási szint is rendelkezésre áll. | Ha felügyelt példánnyal hoz létre Azure-SSIS IR, nem választhatja ki a SSISDB szolgáltatási szintjét. A felügyelt példány összes adatbázisa ugyanazt az erőforrást használja, mint a példány. |
+| **Szolgáltatási szint** | Amikor létrehoz egy Azure-SSIS IR a Azure SQL Database-kiszolgálóval, kiválaszthatja a SSISDB szolgáltatási szintjét. Több szolgáltatási szint is rendelkezésre áll. | Ha felügyelt példánnyal hoz létre Azure-SSIS IR, nem választhatja ki a SSISDB szolgáltatási szintjét. A felügyelt példány összes adatbázisa ugyanazt az erőforrást használja, mint a példány. |
 | **Virtuális hálózat** | Ha olyan Azure SQL Database kiszolgálót használ, amely IP-tűzfalszabályok/virtuális hálózati szolgáltatás-végpontokkal rendelkezik, az Azure-SSIS IR csatlakozhat egy Azure Resource Manager virtuális hálózathoz. | Ha privát végponttal felügyelt példányt használ, az Azure-SSIS IR csatlakozhat egy Azure Resource Manager virtuális hálózathoz. A virtuális hálózatra akkor van szükség, ha nem engedélyez nyilvános végpontot a felügyelt példány számára.<br/><br/>Ha a Azure-SSIS IR a felügyelt példányhoz tartozó virtuális hálózathoz csatlakoztatja, győződjön meg arról, hogy a Azure-SSIS IR a felügyelt példánytól eltérő alhálózaton található. Ha a Azure-SSIS IR egy másik virtuális hálózathoz csatlakoztatja a felügyelt példányból, a virtuális hálózat vagy a hálózat – hálózat közötti kapcsolatot javasoljuk. Lásd: [az alkalmazás összekötése egy Azure SQL Database felügyelt példányhoz](../sql-database/sql-database-managed-instance-connect-app.md). |
 | **Elosztott tranzakciók** | Ez a funkció rugalmas tranzakciókkal támogatott. A Microsoft Elosztott tranzakciók koordinátora (MSDTC) tranzakciói nem támogatottak. Ha a SSIS-csomagok az MSDTC használatával koordinálják az elosztott tranzakciókat, érdemes lehet áttelepíteni a Azure SQL Database rugalmas tranzakcióit. További információ: [Elosztott tranzakciók felhőalapú adatbázisok között](../sql-database/sql-database-elastic-transactions-overview.md). | Nem támogatott. |
 | | | |
@@ -114,19 +114,21 @@ Az **Integration Runtime telepítési** paneljének **általános beállítások
 
    1. A **Név** mezőben adja meg az integrációs modul nevét.
 
-   1. A **Leírás** mezőben adja meg az integrációs modul leírását.
+   2. A **Leírás** mezőben adja meg az integrációs modul leírását.
 
-   1. A **Hely** mezőben válassza ki az integrációs modul helyét. Csak a támogatott helyek jelennek meg. Javasoljuk, hogy az SSISDB-t üzemeltető adatbázis-kiszolgálóval megegyező helyet válasszon.
+   3. A **Hely** mezőben válassza ki az integrációs modul helyét. Csak a támogatott helyek jelennek meg. Javasoljuk, hogy az SSISDB-t üzemeltető adatbázis-kiszolgálóval megegyező helyet válasszon.
 
-   1. A **csomópont mérete**beállításnál válassza ki a csomópont méretét az Integration Runtime-fürtben. Csak a támogatott csomópontméretek jelennek meg. Válasszon nagy méretű csomópontot (vertikális felskálázás), ha sok nagy számítási igényű vagy memória-igényű csomagot szeretne futtatni.
+   4. A **csomópont mérete**beállításnál válassza ki a csomópont méretét az Integration Runtime-fürtben. Csak a támogatott csomópontméretek jelennek meg. Válasszon nagy méretű csomópontot (vertikális felskálázás), ha sok nagy számítási igényű vagy memória-igényű csomagot szeretne futtatni.
+   > [!NOTE]
+   > Ha [számítási elkülönítésre](https://docs.microsoft.com/azure/azure-government/azure-secure-isolation-guidance#compute-isolation)van szüksége, válassza ki a **Standard_E64i_v3** csomópont méretét. Ez a csomóponti méret a teljes fizikai gazdagépet használó elkülönített virtuális gépeket jelöli, és biztosítja a szükséges elkülönítési szintet bizonyos munkaterhelések, például az Egyesült Államok védelmi Minisztériuma 5 (IL5) számítási feladataihoz.
+   
+   5. A **Csomópontszám** mezőben adja meg az integrációsmodul-fürtben található csomópontok számát. Csak a támogatott csomópontszámok jelennek meg. Ha egyszerre több csomagot szeretne futtatni, válasszon ki egy nagy méretű fürtöt sok csomóponttal.
 
-   1. A **Csomópontszám** mezőben adja meg az integrációsmodul-fürtben található csomópontok számát. Csak a támogatott csomópontszámok jelennek meg. Ha egyszerre több csomagot szeretne futtatni, válasszon ki egy nagy méretű fürtöt sok csomóponttal.
+   6. A **kiadás/licenc**lapon válassza ki az integrációs modul SQL Server kiadását: standard vagy Enterprise. Válassza a vállalat lehetőséget, ha az integrációs modul speciális funkcióit szeretné használni.
 
-   1. A **kiadás/licenc**lapon válassza ki az integrációs modul SQL Server kiadását: standard vagy Enterprise. Válassza a vállalat lehetőséget, ha az integrációs modul speciális funkcióit szeretné használni.
+   7. A **pénz megtakarítása**lehetőségnél válassza a Azure Hybrid Benefit lehetőséget az integrációs futtatókörnyezethez: **Igen** vagy **nem**. Válassza az **Igen** lehetőséget, ha a frissítési garanciával rendelkező saját SQL Server licencét szeretné kihasználni a hibrid használattal járó költségmegtakarítással.
 
-   1. A **pénz megtakarítása**lehetőségnél válassza a Azure Hybrid Benefit lehetőséget az integrációs futtatókörnyezethez: **Igen** vagy **nem**. Válassza az **Igen** lehetőséget, ha a frissítési garanciával rendelkező saját SQL Server licencét szeretné kihasználni a hibrid használattal járó költségmegtakarítással.
-
-   1. Válassza a **Tovább** lehetőséget.
+   8. Kattintson a **Tovább** gombra.
 
 #### <a name="deployment-settings-page"></a>Központi telepítési beállítások lap
 
@@ -944,7 +946,7 @@ Ebben a szakaszban egy Azure Resource Manager sablonnal hozza létre az Azure-SS
     }
     ```
 
-2. A Azure Resource Manager sablon üzembe helyezéséhez futtassa a `New-AzResourceGroupDeployment` parancsot az alábbi példában látható módon. A példában az `ADFTutorialResourceGroup` erőforráscsoport neve. `ADFTutorialARM.json`az a fájl, amely tartalmazza az adatelőállító JSON-definícióját és a Azure-SSIS IR.
+2. A Azure Resource Manager sablon üzembe helyezéséhez futtassa a `New-AzResourceGroupDeployment` parancsot az alábbi példában látható módon. A példában az `ADFTutorialResourceGroup` erőforráscsoport neve. `ADFTutorialARM.json` az a fájl, amely tartalmazza az adatelőállító JSON-definícióját és a Azure-SSIS IR.
 
     ```powershell
     New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFTutorialARM.json

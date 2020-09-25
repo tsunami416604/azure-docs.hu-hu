@@ -3,13 +3,13 @@ title: Azure-Application Insights JavaScript-alapú webalkalmazásokhoz
 description: Megtekintheti az oldal nézetét és a munkamenetek számát, a webes ügyfél adatait, az egyoldalas alkalmazásokat (SPA) és a használati mintákat. Kivételeket és teljesítményproblémákat észlelhet a JavaScript weblapokon.
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 9f335ca6912545b39fb8276f5895f98e653735d0
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.custom: devx-track-js
+ms.openlocfilehash: ddbdeaed1cf3f69c20c272ea3e9dde405119bc24
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89656945"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328904"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights weblapokhoz
 
@@ -107,7 +107,7 @@ Az elérhető konfigurációs lehetőségek a következők
 | Név | Típus | Description
 |------|------|----------------
 | src | karakterlánc **[kötelező]** | Az a teljes URL-cím, ahová be kell tölteni az SDK-t. Ezt az értéket egy dinamikusan hozzáadott parancsfájl vagy címke "src" attribútumához használja a rendszer &lt; &gt; . Használhatja a nyilvános CDN-helyet vagy a saját privát üzemeltetését.
-| name | karakterlánc *[nem kötelező]* | A inicializált SDK globális neve, alapértelmezett érték: `appInsights` . Így ```window.appInsights``` a inicializált példányra mutató hivatkozás lesz. Megjegyzés: Ha egy név értéket ad meg, vagy egy korábbi példányt rendel hozzá (a globális név appInsightsSDK), akkor ez a name érték a globális névtérben is definiálva lesz ```window.appInsightsSDK=<name value>``` , ezt az SDK inicializálási kódja megköveteli, hogy a rendszer inicializálja és frissítse a megfelelő kódrészletet és proxy metódusokat.
+| név | karakterlánc *[nem kötelező]* | A inicializált SDK globális neve, alapértelmezett érték: `appInsights` . Így ```window.appInsights``` a inicializált példányra mutató hivatkozás lesz. Megjegyzés: Ha egy név értéket ad meg, vagy egy korábbi példányt rendel hozzá (a globális név appInsightsSDK), akkor ez a name érték a globális névtérben is definiálva lesz ```window.appInsightsSDK=<name value>``` , ezt az SDK inicializálási kódja megköveteli, hogy a rendszer inicializálja és frissítse a megfelelő kódrészletet és proxy metódusokat.
 | ld | szám az MS-ban *[opcionális]* | Meghatározza azt a betöltési késleltetést, ameddig a rendszer megpróbálja betölteni az SDK-t. Az alapértelmezett érték a 0ms, és minden negatív érték azonnal hozzáad egy szkript címkét &lt; a &gt; lap főrégiójához, amely letiltja az oldal betöltési eseményét, amíg a parancsfájl be nem töltődik (vagy sikertelen).
 | useXhr | logikai érték *[opcionális]* | Ez a beállítás csak jelentési SDK-betöltési hibák esetén használatos. A jelentéskészítés először a beolvasást () fogja használni, ha elérhető, majd a tartalék x/óra értékre állítja be ezt az értéket, csak a beolvasás ellenőrzését. Ezt az értéket csak akkor kell használni, ha az alkalmazás olyan környezetben van használatban, amelyben a fetch nem fogja elküldeni a sikertelen események eseményeit.
 | crossOrigin | karakterlánc *[nem kötelező]* | Ennek a beállításnak a megadásával az SDK letöltéséhez hozzáadott parancsfájl-címke tartalmazza a crossOrigin attribútumot a karakterlánc értékkel. Ha nincs definiálva (az alapértelmezett) nincs crossOrigin attribútum hozzáadva. Az ajánlott értékek nincsenek definiálva (az alapértelmezett érték); ""; vagy a "névtelen" (az összes érvényes értéknél lásd a [HTML-attribútumot: `crossorigin` ](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin) dokumentáció)

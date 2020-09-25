@@ -5,12 +5,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 01/31/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 98eff02dacb5b44839937f826cd676fe16670cbb
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 92990df3049f7fa1074d55fc34734e13d6673cd7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017481"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328819"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-the-cli"></a>Virtuális gép biztonsági mentése az Azure-ban a parancssori felület (CLI) használatával
 
@@ -38,7 +38,7 @@ az backup vault create --resource-group myResourceGroup \
     --location eastus
 ```
 
-A Recovery Services-tároló alapértelmezés szerint georedundáns tárolásra van beállítva. A Geo-redundáns tárolás biztosítja, hogy a biztonsági mentési adatok egy olyan másodlagos Azure-régióba replikálódnak, amely több száz kilométerre van az elsődleges régiótól. Ha módosítani kell a tárolási redundancia beállítást, használja az [az Backup Vault Backup-Properties set](/cli/azure/backup/vault/backup-properties?view=azure-cli-latest#az-backup-vault-backup-properties-set) parancsmagot.
+A Recovery Services-tároló alapértelmezés szerint georedundáns tárolásra van beállítva. A Geo-redundáns tárolás biztosítja, hogy a biztonsági mentési adatok egy olyan másodlagos Azure-régióba replikálódnak, amely több száz kilométerre van az elsődleges régiótól. Ha módosítani kell a tárolási redundancia beállítást, használja az [az Backup Vault Backup-Properties set](/cli/azure/backup/vault/backup-properties#az-backup-vault-backup-properties-set) parancsmagot.
 
 ```azurecli
 az backup vault backup-properties set \
@@ -118,7 +118,7 @@ Amikor a biztonsági mentési feladat *Állapota* alatt *Befejezve* látható, a
 
 ## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása
 
-Ha többé már nincs szükség rá, a virtuális gép védelmét bármikor leállíthatja, eltávolíthatja a helyreállítási pontokat és a Recovery Services-tárolót, majd törölheti az erőforráscsoportot és a társított virtuális gép erőforrásait. Ha egy meglévő virtuális gépet használt, eltekinthet a végső [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete) parancs végrehajtásától, és megtarthatja az erőforráscsoportot és a virtuális gépet.
+Ha többé már nincs szükség rá, a virtuális gép védelmét bármikor leállíthatja, eltávolíthatja a helyreállítási pontokat és a Recovery Services-tárolót, majd törölheti az erőforráscsoportot és a társított virtuális gép erőforrásait. Ha egy meglévő virtuális gépet használt, eltekinthet a végső [az group delete](/cli/azure/group#az-group-delete) parancs végrehajtásától, és megtarthatja az erőforráscsoportot és a virtuális gépet.
 
 Ha szeretne megpróbálkozni a biztonsági mentéssel foglalkozó oktatóanyaggal, amely a virtuális gép adatainak visszaállítását ismerteti, ugorjon a [Következő lépések](#next-steps) részre.
 

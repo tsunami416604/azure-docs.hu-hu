@@ -3,12 +3,12 @@ title: Az Advisor-alkalmazás megbízhatóságának javítása
 description: A Azure Advisor használatával biztosíthatja és javíthatja a megbízhatóságot az üzleti szempontból kritikus fontosságú Azure-környezetekben.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 0d96974e53f24d5a01eeee8b08eee578177a9ad2
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: 3e556f8bc672705e6c83daced2c82a884e3ddf46
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258501"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91264592"
 ---
 # <a name="improve-the-reliability-of-your-application-by-using-azure-advisor"></a>Az alkalmazás megbízhatóságának javítása Azure Advisor használatával
 
@@ -76,7 +76,7 @@ Azok a virtuális gépek, amelyek olyan rendelkezésre állási csoportban talá
 
 ## <a name="repair-invalid-log-alert-rules"></a>Érvénytelen naplózási riasztási szabályok javítása
 
-Azure Advisor észleli azokat a riasztási szabályokat, amelyekben a feltételek szakaszban megadott lekérdezések érvénytelenek. A naplózási riasztási szabályokat a Azure Monitorban hozhatja létre, és a segítségével meghatározott időközönként futtathatja az elemzési lekérdezéseket. A lekérdezés eredményei határozzák meg, hogy ki kell-e indítani a riasztást. Az elemzési lekérdezések a hivatkozott erőforrások, táblák vagy parancsok változásai miatt változhatnak az idő múlásával. Az Advisor azt javasolja, hogy javítsa ki a lekérdezést a riasztási szabályban, hogy megakadályozza, hogy a rendszer automatikusan letiltsa, és biztosítsa az Azure-beli erőforrások lefedettségét. [További információ a riasztási szabályok hibaelhárításáról.](https://aka.ms/aa_logalerts_queryrepair)
+Azure Advisor észleli azokat a naplózási riasztási szabályokat, amelyekben érvénytelen lekérdezések vannak megadva a feltételek szakaszban. Azure Monitor naplózási riasztási szabályok lekérdezéseket futtatnak a megadott gyakorisággal és riasztásokkal az eredmények alapján. A lekérdezések idővel érvénytelenné válhatnak a hivatkozott erőforrások, táblák vagy parancsok változásai miatt. Az Advisor a riasztási lekérdezések helyesbítéseit javasolja, hogy megakadályozza a szabályok automatikus letiltását és a figyelési lefedettség biztosítását. További információ: [riasztási szabályok hibaelhárítása](../azure-monitor/platform/alerts-troubleshoot-log.md#query-used-in-a-log-alert-isnt-valid)
 
 ## <a name="configure-consistent-indexing-mode-on-your-azure-cosmos-db-collection"></a>Konzisztens indexelési mód konfigurálása a Azure Cosmos DB-gyűjteményen
 
@@ -115,7 +115,7 @@ Azok a virtuális gépek, amelyeken nincs engedélyezve a replikáció egy mási
 
 2.  Az Advisor irányítópultján válassza a **magas rendelkezésre állás** lapot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Advisor ajánlásaival kapcsolatos további információkért lásd:
 * [Az Advisor bemutatása](advisor-overview.md)

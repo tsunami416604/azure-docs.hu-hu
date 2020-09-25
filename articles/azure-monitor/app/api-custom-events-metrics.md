@@ -3,13 +3,13 @@ title: Application Insights API egyéni eseményekhez és mérőszámokhoz | Mic
 description: A használat és a problémák diagnosztizálásához helyezzen be néhány sornyi kódot az eszközön, az asztali alkalmazásban, a weblapon vagy a szolgáltatásban.
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: f60fdf9164d09b10d12ada7481edb503cd57a411
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: e9f175e2585a5254922c9e859cf5ece2afbbc3e3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936571"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91264133"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights API egyéni eseményekhez és metrikákhoz
 
@@ -19,7 +19,7 @@ Szúrjon be néhány sornyi kódot az alkalmazásban, hogy megtudja, mit csinál
 
 Az alapszintű API minden platformon egységes, többek között a `GetMetric` (csak .net-es) változatokon kívül.
 
-| Módszer | Alkalmazási cél |
+| Metódus | Alkalmazási cél |
 | --- | --- |
 | [`TrackPageView`](#page-views) |Lapok, képernyők, pengék vagy űrlapok. |
 | [`TrackEvent`](#trackevent) |Felhasználói műveletek és egyéb események. A felhasználói viselkedés nyomon követésére vagy a teljesítmény figyelésére szolgál. |
@@ -437,7 +437,7 @@ exceptions
 | summarize sum(itemCount) by type
 ```
 
-A fontos stack-információk nagy része már ki van választva különálló változóknak, de a szerkezet kihúzásával `details` További információkat érhet el. Mivel ez a struktúra dinamikus, az eredményt a várt típusra kell átadnia. Például:
+A fontos stack-információk nagy része már ki van választva különálló változóknak, de a szerkezet kihúzásával `details` További információkat érhet el. Mivel ez a struktúra dinamikus, az eredményt a várt típusra kell átadnia. Példa:
 
 ```kusto
 exceptions
@@ -500,7 +500,7 @@ Megkeresheti az üzenet tartalmát, de (a tulajdonság értékeitől eltérően)
 A méretkorlát `message` értéke sokkal nagyobb, mint a tulajdonságok korlátja.
 A TrackTrace előnye, hogy viszonylag hosszú adatmennyiséget helyezhet el az üzenetben. Például elvégezheti az adatposták küldését.  
 
-Emellett súlyossági szintet is hozzáadhat az üzenethez. És hasonlóan más telemetria is, hozzáadhat tulajdonságokat is a különböző nyomkövetési csoportok szűréséhez vagy kereséséhez. Például:
+Emellett súlyossági szintet is hozzáadhat az üzenethez. És hasonlóan más telemetria is, hozzáadhat tulajdonságokat is a különböző nyomkövetési csoportok szűréséhez vagy kereséséhez. Példa:
 
 *C#*
 
@@ -820,7 +820,7 @@ requests
 | summarize sum(itemCount), avg(todouble(customMeasurements.score)) by tostring(customDimensions.game)
 ```
 
-Figyelje meg, hogy:
+Figyelje meg az alábbiakat:
 
 * Ha Kinyer egy értéket a customDimensions vagy a customMeasurements JSON-ból, dinamikus típussal rendelkezik, és ezért el kell azt tennie `tostring` `todouble` .
 * A [mintavétel](./sampling.md)lehetőségének figyelembevételéhez a következőt kell használnia: `sum(itemCount)` `count()` .
@@ -1063,7 +1063,7 @@ var appInsights = window.appInsights || function(config){ ...
 
 ## <a name="telemetrycontext"></a>TelemetryContext
 
-A TelemetryClient rendelkezik egy környezeti tulajdonsággal, amely az összes telemetria-adattal együtt elküldett értékeket tartalmazza. Ezeket általában a standard telemetria modulok határozzák meg, de saját maguk is megadhatók. Például:
+A TelemetryClient rendelkezik egy környezeti tulajdonsággal, amely az összes telemetria-adattal együtt elküldett értékeket tartalmazza. Ezeket általában a standard telemetria modulok határozzák meg, de saját maguk is megadhatók. Példa:
 
 ```csharp
 telemetry.Context.Operation.Name = "MyOperationName";
@@ -1115,7 +1115,7 @@ Az adatok megőrzési időtartamának megállapításához tekintse meg az [adat
 
     Igen, az [adatelérési API](https://dev.applicationinsights.io/). Az adatok kinyerésének egyéb módjai közé tartozik az [elemzésből való exportálás Power bi](./export-power-bi.md) és a [folyamatos exportálás](./export-telemetry.md).
 
-## <a name="next-steps"></a><a name="next"></a>További lépések
+## <a name="next-steps"></a><a name="next"></a>Következő lépések
 
 * [Események és naplók keresése](./diagnostic-search.md)
 * [Hibaelhárítás](../faq.md)
