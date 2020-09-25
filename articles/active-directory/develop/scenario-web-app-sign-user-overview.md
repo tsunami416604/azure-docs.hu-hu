@@ -11,20 +11,16 @@ ms.workload: identity
 ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 52e33177b5fc6c68f615b8eb7738e66b18a1763a
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 7cadb4784cbf90d283f64e12edc155d4430fab06
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88118706"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257068"
 ---
 # <a name="scenario-web-app-that-signs-in-users"></a>Forgatókönyv: a felhasználók által bejelentkezett webalkalmazás
 
 Mindent megtudhat a Microsoft Identity platformot használó webalkalmazások létrehozásához a felhasználói bejelentkezéshez.
-
-## <a name="prerequisites"></a>Előfeltételek
-
-[!INCLUDE [Prerequisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
 ## <a name="getting-started"></a>Első lépések
 
@@ -60,7 +56,7 @@ Ha Python-fejlesztést végez, próbálja ki a következő rövid útmutatót:
 
 ## <a name="overview"></a>Áttekintés
 
-A webalkalmazáshoz olyan hitelesítést adhat hozzá, amellyel bejelentkezhet a felhasználókba. A hitelesítés hozzáadásával a webalkalmazás elérheti a korlátozott profilokra vonatkozó információkat, így testre szabhatja a felhasználói élményt. 
+A webalkalmazáshoz olyan hitelesítést adhat hozzá, amellyel bejelentkezhet a felhasználókba. A hitelesítés hozzáadásával a webalkalmazás elérheti a korlátozott profilokra vonatkozó információkat, így testre szabhatja a felhasználói élményt.
 
 A webalkalmazások a felhasználókat egy böngészőben hitelesítik. Ebben az esetben a webalkalmazás irányítja a felhasználó böngészőjében, hogy bejelentkezzen a Azure Active Directoryba (Azure AD). Az Azure AD egy bejelentkezési választ ad vissza a felhasználó böngészőjén keresztül, amely a felhasználóhoz tartozó jogcímeket tartalmaz egy biztonsági jogkivonatban. A felhasználók bejelentkezésekor a rendszer kihasználja a [nyílt ID-kapcsolat](./v2-protocols-oidc.md) szabványos protokolljának előnyeit, amelyet a middleware- [kódtárak](scenario-web-app-sign-user-app-configuration.md#libraries-for-protecting-web-apps)használatával egyszerűsített.
 
@@ -77,7 +73,11 @@ Második fázisként engedélyezheti, hogy az alkalmazás a bejelentkezett felha
 - Az alkalmazás kódjában meg kell adnia azt a szolgáltatót, amelyhez a webalkalmazás bejelentkezett. Előfordulhat, hogy testre szeretné szabni a jogkivonat-ellenőrzést (különösen a partneri forgatókönyvekben).
 - A webalkalmazások bármilyen fióktípus használatát támogatják. További információ: [támogatott fióktípus](v2-supported-account-types.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="recommended-reading"></a>Ajánlott olvasás
+
+[!INCLUDE [recommended-topics](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
+
+## <a name="next-steps"></a>Következő lépések
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 

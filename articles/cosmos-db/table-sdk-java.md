@@ -1,6 +1,6 @@
 ---
 title: Java-Azure Cosmos DB Table API
-description: Ismerkedjen meg a Azure Cosmos DB Table APIekkel, beleértve a kiadási dátumokat, a nyugdíjazási dátumokat és az egyes verziókon végrehajtott módosításokat.
+description: Ismerkedjen meg a Java Azure Cosmos DB Table APIával, beleértve a kiadási dátumokat, a nyugdíjazási dátumokat, valamint az egyes verziókon végrehajtott módosításokat.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: java
@@ -9,12 +9,12 @@ ms.date: 11/20/2018
 author: sakash279
 ms.author: akshanka
 ms.custom: devx-track-java
-ms.openlocfilehash: fc78688a413bf182d2a0489189a3ad9348ac4d21
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 40722053d28a0479e3f9ebaadd0fd04478a4f1aa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87308117"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91261889"
 ---
 # <a name="azure-cosmos-db-table-api-for-java-release-notes-and-resources"></a>Java-Azure Cosmos DB Table API: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -52,6 +52,6 @@ Az új funkciók és funkciók és optimalizálás csak a jelenlegi SDK-hoz adó
 ## <a name="faq"></a>GYIK
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 További információ a Cosmos DBről: [Microsoft Azure Cosmos db](https://azure.microsoft.com/services/cosmos-db/) szolgáltatás lapja. 
 

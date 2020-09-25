@@ -1,7 +1,7 @@
 ---
 title: Hatókörök és alkalmazás-szerepkörök által védett webes API ellenőrzése | Azure
 titleSuffix: Microsoft identity platform
-description: Ismerje meg, hogyan hozhat létre védett webes API-t, és hogyan konfigurálhatja az alkalmazás kódját.
+description: Győződjön meg arról, hogy az API-t csak olyan felhasználók nevében hívja meg, akik rendelkeznek a megfelelő hatókörrel és a megfelelő alkalmazás-szerepkörökkel rendelkező Daemon-alkalmazásokkal.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: c3cf8bfd2810e9c26a6f65c50c1a22baeec892af
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 1e5c8b788f1abbfbd46c4dfe6c7bb9d87adcee86
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855476"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257266"
 ---
 # <a name="protected-web-api-verify-scopes-and-app-roles"></a>Védett webes API: hatókörök és alkalmazás-szerepkörök ellenőrzése
 
@@ -150,7 +150,7 @@ bool isAppOnlyToken = oid == sub;
 
 Az inverz feltétel ellenőrzése lehetővé teszi, hogy csak azok az alkalmazások jelentkezzenek be az API-ra, amelyek bejelentkeznek a felhasználókba.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Átállás éles üzemre](scenario-protected-web-api-production.md)

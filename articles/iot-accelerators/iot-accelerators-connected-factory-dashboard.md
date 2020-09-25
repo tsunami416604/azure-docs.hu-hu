@@ -8,14 +8,17 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 07/10/2018
 ms.author: dobett
-ms.openlocfilehash: b53177d578768428665891704269e63bd8edb09e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 797bd97940aa49db87b4ca4dd96f140208cd69b6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73820172"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91261872"
 ---
 # <a name="use-features-in-the-connected-factory-solution-accelerator-dashboard"></a>A csatlakoztatott Factory megoldás-gyorsító irányítópultján található szolgáltatások használata
+
+> [!IMPORTANT]
+> A cikk frissítését követően tekintse meg az [Azure Industrial IoT](https://azure.github.io/Industrial-IoT/) a legfrissebb tartalomhoz című cikket.
 
 A [felhőalapú megoldás üzembe helyezése az ipari IoT-eszközökön](quickstart-connected-factory-deploy.md) a gyors útmutató bemutatja, hogyan navigálhat az irányítópulton, és hogyan reagálhat a riasztásokra. Ez a útmutató útmutatást nyújt a további irányítópult-funkciókhoz, amelyek segítségével figyelheti és kezelheti az ipari IoT-eszközöket.
 
@@ -107,7 +110,7 @@ Ha elkészült, törölheti a megoldás-gyorssegédet az Azure-előfizetésből 
 > [!NOTE]
 > A megoldás-gyorssegédtel kapcsolatos összes adat törléséhez törölje azt a [azureiotsolutions.com](https://www.azureiotsolutions.com/Accelerators#dashboard) webhelyen. Ne törölje az erőforráscsoportot a portálon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy üzembe helyezett egy működő megoldásgyorsítót, a következő cikkek elolvasásával folytathatja az ismerkedést az IoT-megoldásgyorsítók használatával:
 

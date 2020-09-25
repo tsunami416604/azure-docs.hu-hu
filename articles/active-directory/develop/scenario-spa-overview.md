@@ -11,31 +11,26 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 60e4ca80faa2c8787a13d87ab06cad9243299e50
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: dc0aee2e6c1b06850ffd0385626955a9798e7aeb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89291950"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257316"
 ---
 # <a name="scenario-single-page-application"></a>Forgatókönyv: egyoldalas alkalmazás
 
 Ismerje meg az egyoldalas alkalmazások (SPA) létrehozásához szükséges tudnivalókat.
 
-## <a name="prerequisites"></a>Előfeltételek
-
-[!INCLUDE [Prerequisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
-
 ## <a name="getting-started"></a>Első lépések
 
-Az első alkalmazást az alábbi JavaScript SPA-útmutató segítségével hozhatja létre:
+Ha még nem tette meg, hozza létre első alkalmazását a JavaScript SPA gyors útmutatójának kitöltésével:
 
-> [!div class="nextstepaction"]
-> [Rövid útmutató: egyoldalas alkalmazás](./quickstart-v2-javascript.md)
+[Rövid útmutató: egyoldalas alkalmazás](./quickstart-v2-javascript.md)
 
 ## <a name="overview"></a>Áttekintés
 
-Számos modern webalkalmazás úgy van kialakítva, mint az ügyféloldali egyoldalas alkalmazások. A fejlesztők a JavaScript vagy a SPA-keretrendszer, például a szögletes, a Vue és a reakciók használatával írhatják őket. Ezek az alkalmazások egy webböngészőben futnak, és különböző hitelesítési jellemzőkkel rendelkeznek, mint a hagyományos kiszolgálóoldali webes alkalmazások. 
+Számos modern webalkalmazás úgy van kialakítva, mint az ügyféloldali egyoldalas alkalmazások. A fejlesztők a JavaScript vagy a SPA-keretrendszer, például a szögletes, a Vue és a reakciók használatával írhatják őket. Ezek az alkalmazások egy webböngészőben futnak, és különböző hitelesítési jellemzőkkel rendelkeznek, mint a hagyományos kiszolgálóoldali webes alkalmazások.
 
 A Microsoft Identity platform **két** lehetőséget kínál, amelyek lehetővé teszik egyoldalas alkalmazások bejelentkezését a felhasználókba, és jogkivonatok beszerzését a háttérbeli szolgáltatások vagy webes API-k eléréséhez:
 
@@ -56,6 +51,10 @@ Ha ezt a forgatókönyvet szeretné engedélyezni az alkalmazásához, a követk
 * Az alkalmazás regisztrálása Azure Active Directory (Azure AD) szolgáltatással. A regisztrációs lépések eltérnek az implicit engedélyezési folyamat és az engedélyezési kód folyamata között.
 * Alkalmazás konfigurációja a regisztrált alkalmazás tulajdonságaival, például az alkalmazás azonosítójával.
 * A Microsoft Authentication Library for JavaScript (MSAL.js) használata a hitelesítési folyamat a bejelentkezéshez és a jogkivonatok beszerzéséhez.
+
+## <a name="recommended-reading"></a>Ajánlott olvasás
+
+[!INCLUDE [recommended-topics](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
 ## <a name="next-steps"></a>Következő lépések
 

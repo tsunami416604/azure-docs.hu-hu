@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7e0701cc5a9bb14800a48e2281dba1eb6ea0cf72
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ab0b74ffbcd8167613c6a8470e2f9102566edc60
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87026458"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257231"
 ---
 # <a name="a-web-api-that-calls-web-apis-acquire-a-token-for-the-app"></a>Webes API-kat meghívó webes API: az alkalmazás jogkivonatának beszerzése
 
@@ -27,7 +27,10 @@ Miután létrehozott egy ügyfélalkalmazás-objektumot, használja azt egy olya
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Íme egy példa a kód használatára a Microsoft. Identity. Web néven, amely az API-vezérlők műveleteiben található. Egy *ToDoList*nevű alsóbb RÉTEGbeli API-t hív meg. Az alárendelt API meghívására szolgáló jogkivonat lekéréséhez a `ITokenAcquisition` szolgáltatás a vezérlő konstruktorában (vagy az oldal konstruktorában, ha a Blazer használatakor) befecskendezi a szolgáltatást, és a vezérlő műveleteiben használja, a felhasználó ( `GetAccessTokenForUserAsync` ) vagy az alkalmazás () jogkivonatának beszerzése `GetAccessTokenForAppAsync` egy démoni forgatókönyv esetén.
+A *Microsoft. Identity. Web* olyan bővítményi metódusokat ad meg, amelyek kényelmi szolgáltatásokat biztosítanak Microsoft Graph vagy alsóbb rétegbeli webes API meghívásához. Ezeket a módszereket részletesen ismerteti a [webes API-kat meghívó webes API-k: az API meghívása](scenario-web-api-call-api-call-api.md). Ezekkel a segítő módszerekkel nem kell manuálisan megvásárolnia a tokent.
+
+Ha azonban a tokent manuálisan szeretné beszerezni, a következő kód egy példát mutat be a *Microsoft. Identity. Web* használatára egy API-vezérlőben. Egy *ToDoList*nevű alsóbb RÉTEGbeli API-t hív meg.
+Az alárendelt API meghívására szolgáló jogkivonat lekéréséhez a `ITokenAcquisition` szolgáltatás a vezérlő konstruktorában (vagy az oldal konstruktorában, ha a Blazer használatakor) befecskendezi a szolgáltatást, és a vezérlő műveleteiben használja, a felhasználó ( `GetAccessTokenForUserAsync` ) vagy az alkalmazás () jogkivonatának beszerzése `GetAccessTokenForAppAsync` egy démoni forgatókönyv esetén.
 
 ```csharp
 [Authorize]
@@ -58,7 +61,7 @@ public class MyApiController : Controller
 }
 ```
 
-A metódussal kapcsolatos részletekért `callTodoListService` tekintse meg [a webes API-kat meghívó webes API-t: az API meghívása](scenario-web-api-call-api-call-api.md)című témakört.
+A metódussal kapcsolatos részletekért `callTodoListService` tekintse meg  [a webes API-kat meghívó webes API-t: az API meghívása](scenario-web-api-call-api-call-api.md)című témakört.
 
 # <a name="java"></a>[Java](#tab/java)
 Íme egy példa az API-vezérlők műveleteiben meghívott kódra. Meghívja az alsóbb rétegbeli API-Microsoft Graph.
@@ -83,11 +86,11 @@ public class ApiController {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Egy Python webes API-nak bizonyos middleware-t kell használnia az ügyféltől kapott tulajdonosi jogkivonat ellenőrzéséhez. A webes API ezt követően a metódus meghívásával lekérheti az alsóbb rétegbeli API hozzáférési tokenjét a MSAL Python Library használatával [`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) . A folyamatot bemutató minta a MSAL Python szolgáltatással még nem érhető el.
+A Python webes API-k a middleware használatával ellenőrzik az ügyféltől kapott tulajdonosi jogkivonatot. A webes API ezután a metódus meghívásával beszerezhet egy alsóbb rétegbeli API hozzáférési tokenjét a MSAL Python-könyvtár használatával [`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) . A folyamatot bemutató minta a MSAL Python-val még nem érhető el.
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Webes API-kat meghívó webes API: az API meghívása](scenario-web-api-call-api-call-api.md)

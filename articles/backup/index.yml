@@ -9,12 +9,12 @@ metadata:
   author: dcurwin
   ms.author: dacurwin
   ms.date: 12/01/2019
-  ms.openlocfilehash: f78a311125340f447cb0f2dda960e34c289c123a
-  ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+  ms.openlocfilehash: eeca42ea748c10970f312a84ea32c53fb904344a
+  ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 08/20/2020
-  ms.locfileid: "88650842"
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90974432"
 landingContent:
 - title: További tudnivalók az Azure Backup szolgáltatásról
   linkLists:
@@ -56,12 +56,14 @@ landingContent:
   linkLists:
   - linkListType: whats-new
     links:
+    - text: Biztonsági mentési központ
+      url: backup-center-overview.md
+    - text: Az Azure Database for PostgreSQL biztonsági mentése
+      url: backup-azure-database-postgresql.md
     - text: Az Azure Backup helyreállítható törlése
       url: backup-azure-security-feature-cloud.md
     - text: Azure-beli virtuális gépeken futó SQL Server fájlonkénti visszaállítása
       url: restore-sql-database-azure-vm.md#restore-as-files
-    - text: Azure-beli virtuális gépeken tárolt SAP HANA-adatbázisok biztonsági mentése
-      url: backup-azure-sap-hana-database.md
 - title: Azure-beli virtuális gépek biztonsági mentése
   linkLists:
   - linkListType: concept
@@ -134,6 +136,8 @@ landingContent:
   linkLists:
   - linkListType: how-to-guide
     links:
+    - text: Nagy léptékű felügyelet a biztonsági mentési központtal
+      url: backup-center-monitor-operate.md
     - text: Irányítás nagy méretekben az Azure Policyvel
       url: backup-azure-auto-enable-backup.md
     - text: Figyelés és üzemeltetés nagy méretekben a Backup Explorerrel

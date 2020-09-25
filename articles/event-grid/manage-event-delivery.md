@@ -3,14 +3,14 @@ title: Kézbesítetlen levelek és újrapróbálkozási házirendek – Azure Ev
 description: Leírja, hogyan lehet testre szabni a Event Grid esemény-kézbesítési beállításait. Állítsa be a kézbesítetlen levél célját, és adja meg, hogy mennyi ideig próbálkozzon a kézbesítéssel.
 ms.topic: conceptual
 ms.date: 07/20/2020
-ms.openlocfilehash: 2ff1d05899fb74583489649154ffa062e857cb95
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e780ddd5c49b1a2cced10a1907d25784b0285f01
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074873"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91261804"
 ---
-# <a name="dead-letter-and-retry-policies"></a>Kézbesítetlen levelek és újrapróbálkozási szabályzatok
+# <a name="set-dead-letter-location-and-retry-policy"></a>Kézbesítetlen levelek helyének és újrapróbálkozási szabályzatának beállítása
 
 Esemény-előfizetés létrehozásakor testreszabhatja az események kézbesítésének beállításait. Ebből a cikkből megtudhatja, hogyan állíthatja be a kézbesítetlen levelek helyét, és hogyan szabhatja testre az újrapróbálkozási beállításokat. További információ ezekről a funkciókról: [Event Grid üzenet kézbesítése és újrapróbálkozás](delivery-and-retry.md).
 
@@ -130,7 +130,7 @@ New-AzEventGridSubscription `
 > [!NOTE]
 > Ha a és a lehetőséget is beállítja `event-ttl` `max-deliver-attempts` , Event Grid az elsővel jár le, hogy meghatározza, mikor kell leállítani az események kézbesítését. Ha például 30 percet állít be az élettartam (TTL) és 10 maximális kézbesítési kísérlet esetén. Ha a rendszer 30 perc (vagy) elteltével nem küldi el az eseményt 10 próbálkozás után, attól függően, hogy az esemény megtörténik-e, a rendszer kézbesíti az eseményt.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A kézbesítetlen levelek eseményeinek feldolgozására szolgáló Azure Function alkalmazást használó minta alkalmazáshoz lásd: [Azure Event Grid a .net-hez készült kézbesítetlen levelek mintáit](https://azure.microsoft.com/resources/samples/event-grid-dotnet-handle-deadlettered-events/).
 * További információ az események kézbesítéséről és újrapróbálkozásáról, [Event Grid az üzenetek kézbesítéséről, és próbálkozzon újra](delivery-and-retry.md).

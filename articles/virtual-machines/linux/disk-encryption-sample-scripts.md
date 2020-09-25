@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: abf805d24d164ba31daa4d77d6360629632bfcf0
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: dcfae72d5f15399dc4c759ab859ad8059134f11d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89072706"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91279790"
 ---
 # <a name="azure-disk-encryption-sample-scripts-for-linux-vms"></a>A Linux rendszerű virtuális gépekre Azure Disk Encryption minta szkriptek
 
@@ -136,7 +136,7 @@ Az operációs rendszer titkosítási folyamatát háromféle módon követheti 
 
   Nyissa meg a [Azure erőforrás-kezelő](https://resources.azure.com/), majd bontsa ki ezt a hierarchiát a bal oldali kiválasztási panelen:
 
-  ~~~~
+  ```
   |-- subscriptions
      |-- [Your subscription]
           |-- resourceGroups
@@ -146,7 +146,7 @@ Az operációs rendszer titkosítási folyamatát háromféle módon követheti 
                               |-- virtualMachines
                                    |-- [Your virtual machine]
                                         |-- InstanceView
-  ~~~~                
+  ```                
 
   A InstanceView görgessen lefelé a meghajtók titkosítási állapotának megtekintéséhez.
 

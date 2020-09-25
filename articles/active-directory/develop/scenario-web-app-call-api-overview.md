@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 0c4bef25a0be12c0335a82345ec998274f1faa67
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 174db339079de91a87cef9551bc79e6f03701605
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87058397"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257129"
 ---
 # <a name="scenario-a-web-app-that-calls-web-apis"></a>Forgatókönyv: webes API-kat meghívó webalkalmazás
 
@@ -24,12 +24,7 @@ Megtudhatja, hogyan hozhat létre olyan webalkalmazást, amely aláírja a felha
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-[!INCLUDE [Prerequisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
-
-Ez a forgatókönyv feltételezi, hogy már elvégezte a következő forgatókönyvet:
-
-> [!div class="nextstepaction"]
-> [Felhasználót bejelentkeztető webalkalmazás](scenario-web-app-sign-user-overview.md)
+Ez a forgatókönyv feltételezi, hogy már elvégezte [a következő forgatókönyvet: webalkalmazás, amely bejelentkezik a felhasználók számára](scenario-web-app-sign-user-overview.md).
 
 ## <a name="overview"></a>Áttekintés
 
@@ -52,7 +47,11 @@ Ehhez a forgatókönyvhöz a következő konkrét feladatok szükségesek:
 - Az [alkalmazás regisztrálása](scenario-web-app-call-api-app-registration.md)során meg kell adnia egy válasz URI-t, titkos kulcsot vagy tanúsítványt az Azure ad-vel való megosztáshoz. Ha az alkalmazást több helyre is telepíti, minden helyhez meg kell adnia egy válasz URI-t.
 - Az [alkalmazás-konfigurációnak](scenario-web-app-call-api-app-configuration.md) meg kell adnia az Azure ad-vel megosztott ügyfél-hitelesítő adatokat az alkalmazás regisztrálása során.
 
-## <a name="next-steps"></a>További lépések
+## <a name="recommended-reading"></a>Ajánlott olvasás
+
+[!INCLUDE [recommended-topics](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
+
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Webes API-kat meghívó webalkalmazás: alkalmazás regisztrálása](scenario-web-app-call-api-app-registration.md)

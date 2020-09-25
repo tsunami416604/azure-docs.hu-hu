@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/05/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: e9faea3462ae953e474b5053b651808b03f07c23
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: c1c882694f6ae3d8a3b217ed5e7e3d6050189135
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855457"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257187"
 ---
 # <a name="a-web-api-that-calls-web-apis-code-configuration"></a>Webes API-kat meghívó webes API: kód konfigurálása
 
@@ -27,9 +27,18 @@ A webes API konfigurálásához használt kód, hogy az alsóbb rétegbeli webes
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
+## <a name="microsoftidentityweb"></a>Microsoft. Identity. Web
+
+A Microsoft azt javasolja, hogy a [Microsoft. Identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web) NuGet csomagot használja egy ASP.net Core védett API-t használó, alsóbb rétegbeli webes API-k kifejlesztéséhez. Lásd [: védett webes API: kód konfigurálása | Microsoft. Identity. Web](scenario-protected-web-api-app-configuration.md#microsoftidentityweb) az adott könyvtár gyors megjelenítéséhez egy webes API kontextusában.
+
 ## <a name="client-secrets-or-client-certificates"></a>Ügyfél-titkok vagy Ügyféltanúsítványok
 
-Mivel a webes API most egy alárendelt webes API-t hív meg, meg kell adnia egy ügyfél-titkos vagy ügyféltanúsítványt a fájl *appsettings.js* .
+Mivel a webes API most egy alárendelt webes API-t hív meg, meg kell adnia egy ügyfél-titkos vagy ügyféltanúsítványt a fájl *appsettings.js* . Hozzáadhat egy szakaszt is, amely meghatározza a következőket:
+
+- Az alárendelt webes API URL-címe
+- Az API meghívásához szükséges hatókörök
+
+A következő példában a `GraphBeta` szakasz ezeket a beállításokat adja meg.
 
 ```JSON
 {
@@ -37,12 +46,16 @@ Mivel a webes API most egy alárendelt webes API-t hív meg, meg kell adnia egy 
     "Instance": "https://login.microsoftonline.com/",
     "ClientId": "[Client_id-of-web-api-eg-2ec40e65-ba09-4853-bcde-bcb60029e596]",
     "TenantId": "common"
-  
+
    // To call an API
    "ClientSecret": "[Copy the client secret added to the app from the Azure portal]",
    "ClientCertificates": [
   ]
- }
+ },
+ "GraphBeta": {
+    "BaseUrl": "https://graph.microsoft.com/beta",
+    "Scopes": "user.read"
+    }
 }
 ```
 
@@ -54,7 +67,7 @@ Az ügyfél titkos kulcsa helyett megadhat egy ügyféltanúsítványt. A követ
     "Instance": "https://login.microsoftonline.com/",
     "ClientId": "[Client_id-of-web-api-eg-2ec40e65-ba09-4853-bcde-bcb60029e596]",
     "TenantId": "common"
-  
+
    // To call an API
    "ClientCertificates": [
       {
@@ -62,8 +75,12 @@ Az ügyfél titkos kulcsa helyett megadhat egy ügyféltanúsítványt. A követ
         "KeyVaultUrl": "https://msidentitywebsamples.vault.azure.net",
         "KeyVaultCertificateName": "MicrosoftIdentitySamplesCert"
       }
-  ]
- }
+   ]
+  },
+  "GraphBeta": {
+    "BaseUrl": "https://graph.microsoft.com/beta",
+    "Scopes": "user.read"
+  }
 }
 ```
 
@@ -71,28 +88,88 @@ A Microsoft. Identity. Web számos módszert kínál a tanúsítványok leírás
 
 ## <a name="startupcs"></a>Startup.cs
 
-Ha azt szeretné, hogy a webes API meghívja az alárendelt webes API-kat, a Microsoft. Identity. Web használatával adja hozzá a `.EnableTokenAcquisitionToCallDownstreamApi()` sort, `.AddMicrosoftIdentityWebApi(Configuration)` majd válassza ki a jogkivonat-gyorsítótár implementációját, például `.AddInMemoryTokenCaches()` a *Startup.cs*:
+A webes API-nak meg kell adnia egy jogkivonatot az alsóbb rétegbeli API-hoz. Ezt úgy adhatja meg, hogy a sort a következő után adja hozzá `.EnableTokenAcquisitionToCallDownstreamApi()` `.AddMicrosoftIdentityWebApi(Configuration)` . Ez a sor teszi elérhetővé a `ITokenAcquisition` szolgáltatást, amelyet a vezérlő/lapok műveleteihez használhat. Azonban ahogy a következő két felsorolásjelen is látható, még egyszerűbben is megteheti. Ki kell választania egy jogkivonat-gyorsítótár implementációját is, például `.AddInMemoryTokenCaches()` a *Startup.cs*-ben:
 
 ```csharp
 using Microsoft.Identity.Web;
 
 public class Startup
 {
-  ...
+  // ...
   public void ConfigureServices(IServiceCollection services)
   {
-   // ...
-    services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-            .AddMicrosoftIdentityWebApi(Configuration, "AzureAd")
-                .EnableTokenAcquisitionToCallDownstreamApi()
-                .AddInMemoryTokenCaches();
   // ...
+  services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+          .AddMicrosoftIdentityWebApi(Configuration, Configuration.GetSection("AzureAd"))
+            .EnableTokenAcquisitionToCallDownstreamApi()
+            .AddInMemoryTokenCaches();
+   // ...
   }
   // ...
 }
 ```
 
-Akárcsak a Web Apps esetében, különböző jogkivonat-gyorsítótár-implementációkat is választhat. Részletekért lásd: [Microsoft Identity web wiki-token cache szerializálás](https://aka.ms/ms-id-web/token-cache-serialization) a githubon.
+Ha nem szeretné magát a tokent beszerezni, a *Microsoft. Identity. Web* két mechanizmust biztosít az ALÁRENDELT webes API-k más API-ból való meghívásához. A választott lehetőség attól függ, hogy Microsoft Graph vagy egy másik API-t szeretne meghívni.
+
+### <a name="option-1-call-microsoft-graph"></a>1. lehetőség: hívás Microsoft Graph
+
+Ha meg szeretné hívni Microsoft Graph, a Microsoft. Identity. Web lehetővé teszi, hogy közvetlenül használja a `GraphServiceClient` (az Microsoft Graph SDK által közzétett) API-műveleteket. Microsoft Graph közzététele:
+
+1. Adja hozzá a [Microsoft. Identity. Web. MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Identity.Web.MicrosoftGraph) NuGet-csomagot a projekthez.
+1. Adja `.AddMicrosoftGraph()` hozzá `.EnableTokenAcquisitionToCallDownstreamApi()` a következőt a *Startup.cs* -fájlhoz. `.AddMicrosoftGraph()` több felülbírálással rendelkezik. A konfigurációs szakaszt paraméterként tartalmazó felülbírálás használatával a kód a következőképpen fog megjelenni:
+
+```csharp
+using Microsoft.Identity.Web;
+
+public class Startup
+{
+  // ...
+  public void ConfigureServices(IServiceCollection services)
+  {
+  // ...
+  services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+          .AddMicrosoftIdentityWebApi(Configuration, Configuration.GetSection("AzureAd"))
+            .EnableTokenAcquisitionToCallDownstreamApi()
+               .AddMicrosoftGraph(Configuration.GetSection("GraphBeta"))
+            .AddInMemoryTokenCaches();
+   // ...
+  }
+  // ...
+}
+```
+
+### <a name="option-2-call-a-downstream-web-api-other-than-microsoft-graph"></a>2. lehetőség: a Microsoft Graphtól eltérő alárendelt webes API meghívása
+
+A Microsoft Graph, a *Microsoft. Identity. Web* által biztosított alsóbb RÉTEGbeli API meghívásához `.AddDownstreamWebApi()` , amely tokeneket kér le, és meghívja az alárendelt webes API-t.
+
+```csharp
+using Microsoft.Identity.Web;
+
+public class Startup
+{
+  // ...
+  public void ConfigureServices(IServiceCollection services)
+  {
+  // ...
+  services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+          .AddMicrosoftIdentityWebApi(Configuration, "AzureAd")
+            .EnableTokenAcquisitionToCallDownstreamApi()
+               .AddDownstreamWebApi("MyApi", Configuration.GetSection("GraphBeta"))
+            .AddInMemoryTokenCaches();
+   // ...
+  }
+  // ...
+}
+```
+
+Akárcsak a Web Apps esetében, különböző jogkivonat-gyorsítótár-implementációkat is választhat. Részletekért lásd: a [Microsoft Identity web-token cache szerializálás](https://aka.ms/ms-id-web/token-cache-serialization) a githubon.
+
+Az alábbi képen a *Microsoft. Identity. Web* különböző lehetőségei láthatók, valamint a *Startup.cs* fájlra gyakorolt hatásuk:
+
+:::image type="content" source="media/scenarios/microsoft-identity-web-startup-cs.png" alt-text="Webes API létrehozásakor dönthet úgy, hogy meghívja az alsóbb rétegbeli API-t és a jogkivonat-gyorsítótár implementációit.":::
+
+> [!NOTE]
+> Az itt található programkódok teljes megértéséhez ismernie kell [ASP.net Core alapjait](/aspnet/core/fundamentals), és különösen a [függőségi befecskendezést](/aspnet/core/fundamentals/dependency-injection) és a [beállításokat](/aspnet/core/fundamentals/configuration/options).
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -177,7 +254,7 @@ Megtekintheti az OBO flow megvalósításának példáját is [Node.js és Azure
 
 További információ az OBO protokollról: [Microsoft Identity platform és OAuth 2,0 on-Half-of flow](./v2-oauth2-on-behalf-of-flow.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Webes API-kat meghívó webes API: az alkalmazás jogkivonatának beszerzése](scenario-web-api-call-api-acquire-token.md)

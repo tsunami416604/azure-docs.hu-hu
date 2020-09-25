@@ -1,18 +1,18 @@
 ---
 title: Az alkalmazás teljesítményértékelése Azure Disk Storage
-description: Ismerje meg az Azure-beli alkalmazás teljesítménytesztének folyamatát.
+description: Tekintse át ezeket a példákat az Azure Premium Storage-lemezekkel kiépített standard DS14 virtuális gépek összehasonlítására.
 author: roygara
 ms.author: rogarana
 ms.date: 01/11/2019
 ms.topic: how-to
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: 293164413c4c8ecec0295152cb6db3d73718e00d
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: cc17ce49517a7af22dcc357fa5f050d28a8ed551
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690782"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91279688"
 ---
 # <a name="benchmark-your-application-on-azure-disk-storage"></a>Az alkalmazás teljesítményértékelése Azure Disk Storage
 
@@ -24,7 +24,7 @@ Az alábbi példák követéséhez hozzon létre egy standard DS14 virtuális g�
 
 [!INCLUDE [virtual-machines-disks-benchmarking](../../../includes/virtual-machines-managed-disks-benchmarking.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Folytassa a cikket a [nagy teljesítmény kialakításához](../premium-storage-performance.md).
 

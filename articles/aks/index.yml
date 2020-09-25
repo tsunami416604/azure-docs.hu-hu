@@ -9,12 +9,12 @@ metadata:
   author: laurenhughes
   ms.author: lahugh
   ms.date: 07/21/2020
-  ms.openlocfilehash: 35138e4e5569ddfa46cb60c742e7ae0b3868c8cd
-  ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+  ms.openlocfilehash: 98d96c36e8ec801c2a8a5a87d0075f2d9b57bd98
+  ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 08/04/2020
-  ms.locfileid: "87563330"
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90984956"
 landingContent:
 - title: Tudnivalók az Azure Kubernetes Service-ről (AKS-ről)
   linkLists:
@@ -34,9 +34,9 @@ landingContent:
       url: concepts-identity.md
     - text: Biztonság
       url: concepts-security.md
-    - text: Hálózat
+    - text: Hálózatkezelés
       url: concepts-network.md
-    - text: Storage
+    - text: Tárolás
       url: concepts-storage.md
     - text: Méretezés
       url: concepts-scale.md
@@ -50,14 +50,14 @@ landingContent:
       url: kubernetes-walkthrough-portal.md
     - text: Resource Manager-sablon
       url: kubernetes-walkthrough-rm-template.md
-- title: Alkalmazások fejlesztése és hibakeresése Helyi folyamat és Kubernetes használatával
+- title: Alkalmazások fejlesztése és hibakeresése a Bridge to Kubernetes segítségével
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Helyi folyamat és Kubernetes használata a Visual Studio Code-dal (előzetes verzió)
-      url: https://code.visualstudio.com/docs/containers/local-process-kubernetes
-    - text: Helyi folyamat és Kubernetes használata a Visual Studióval (előzetes verzió)
-      url: /visualstudio/containers/local-process-kubernetes
+    - text: A Bridge to Kubernetes használata a Visual Studio Code-dal
+      url: https://code.visualstudio.com/docs/containers/bridge-to-kubernetes
+    - text: A Bridge to Kubernetes használata a Visual Studióval
+      url: /visualstudio/containers/bridge-to-kubernetes
 - title: Alkalmazások telepítése, kezelése és frissítése
   linkLists:
   - linkListType: tutorial
