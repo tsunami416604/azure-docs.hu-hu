@@ -1,14 +1,16 @@
 ---
 title: Migrálás v3 gépi tanulási entitásba
 description: A v3 authoring egy új entitást biztosít, a gépi tanulási entitást, valamint lehetővé teszi a kapcsolatok hozzáadását a gépi tanulási entitáshoz, valamint az alkalmazás egyéb entitásait vagy funkcióit.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/08/2020
-ms.openlocfilehash: aaa5472f25a5eca5ceadf979c57a83874ce4cb6e
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 667226770d25ef1687420b1c13bc71863f987e33
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684589"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324688"
 ---
 # <a name="migrate-to-v3-authoring-entity"></a>Migrálás v3 authoring entitásba
 
@@ -106,7 +108,7 @@ Az alábbi táblázat az áttelepítést mutatja be:
 
 |V2 modellek|V3 modellek|
 |--|--|
-|Szülő-összetevő nevű entitás`Order`|Szülő-gépi tanulás nevű entitás`Order`|
+|Szülő-összetevő nevű entitás `Order`|Szülő-gépi tanulás nevű entitás `Order`|
 |Gyermek előre elkészített datetimeV2|* Az előre elkészített entitás migrálása új alkalmazásba.<br>* A kötelező funkció hozzáadása a szülőhöz előre elkészített datetimeV2.|
 |Gyermek-lista entitás a feltöltésekhez|* A List entitás migrálása új alkalmazásba.<br>* Ezt követően adjon hozzá egy kötelező szolgáltatást a szülőhöz a lista entitáshoz.|
 
@@ -132,7 +134,7 @@ Az alábbi táblázat az áttelepítést mutatja be:
 
 |V2 modellek|V3 modellek|
 |--|--|
-|Szülő-összetevő nevű entitás`Order`|Szülő-gépi tanulás nevű entitás`Order`|
+|Szülő-összetevő nevű entitás `Order`|Szülő-gépi tanulás nevű entitás `Order`|
 |Gyermek-hierarchikus entitás eredeti és utolsó pizza-feltöltéssel|* Adja hozzá a szerepkört `Order` az egyes feltöltésekhez.|
 
 ## <a name="api-change-constraint-replaced-with-required-feature"></a>Az API-módosítási megkötés lecserélve a szükséges szolgáltatással
@@ -185,6 +187,6 @@ Ez a funkció a és a tulajdonságok használatával lett alkalmazva az **[entit
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Fejlesztői erőforrások](developer-reference-resource.md)

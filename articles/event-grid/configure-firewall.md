@@ -3,12 +3,12 @@ title: IP-tűzfal konfigurálása Azure Event Grid témakörökhöz vagy tartom�
 description: Ez a cikk a tűzfalbeállítások konfigurálását ismerteti Event Grid témakörökhöz vagy tartományokhoz.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: df6098df4817ee6c47378704c25d07433d6b9480
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: fd190a13a177b6b6d0f6b0dbcaa35d63dccd93c9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509418"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324161"
 ---
 # <a name="configure-ip-firewall-for-azure-event-grid-topics-or-domains"></a>IP-tűzfal konfigurálása Azure Event Grid témakörökhöz vagy tartományokhoz 
 Alapértelmezés szerint a témakör és a tartomány elérhető az internetről, feltéve, hogy a kérés érvényes hitelesítéssel és engedélyezéssel rendelkezik. Az IP-tűzfallal továbbra is korlátozhatja, hogy csak IPv4-címek vagy IPv4-címtartományok legyenek a [CIDR (osztály nélküli tartományok közötti útválasztás)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) jelöléssel. A más IP-címről származó közzétevőket a rendszer elutasítja, és 403 (tiltott) választ fog kapni. A Event Grid által támogatott hálózati biztonsági funkciókkal kapcsolatos további információkért lásd: [Event Grid hálózati biztonsága](network-security.md).
@@ -23,7 +23,7 @@ Ez a szakasz bemutatja, hogyan használható a Azure Portal a bejövő IP-tűzfa
 
     Az IP-alapú tűzfalszabályok használatával korlátozhatja a forgalmat. Egyetlen IPv4-címet vagy IP-címtartományt kell megadnia az osztály nélküli Inter-domain Routing (CIDR) jelöléssel. 
 
-    ![Nyilvános hálózatok lap](./media/configure-firewall/public-networks-page.png)
+    ![Képernyőfelvétel: a "nyilvános hálózati hozzáférés" lap van kijelölve a "nyilvános hálózatok" lapon.](./media/configure-firewall/public-networks-page.png)
 3. Válassza a **privát végpontok** lehetőséget, hogy csak a privát végponti kapcsolatok férhessenek hozzá ehhez az erőforráshoz. A kapcsolatok kezeléséhez használja ezen a lapon a **Private Endpoint Connections** fület. 
 
     ![Nyilvános hálózatok lap](./media/configure-firewall/private-endpoints-page.png)
@@ -271,7 +271,7 @@ Invoke-RestMethod -Method 'Get'
 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ az események kézbesítésének figyeléséről: [Event Grid üzenet kézbesítésének figyelése](monitor-event-delivery.md).
 * További információ a hitelesítési kulcsról: [Event Grid biztonság és hitelesítés](security-authentication.md).

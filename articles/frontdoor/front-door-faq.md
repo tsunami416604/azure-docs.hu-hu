@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/13/2020
+ms.date: 09/18/2020
 ms.author: duau
-ms.openlocfilehash: 995b8ab77779f0d3b9e2260ea18aa13aa242db36
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 0d669d4232adca3348b51c2a48947e0dabf0a472
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399735"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324059"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Gyakori kérdések az Azure bejárati ajtóról
 
@@ -100,6 +100,31 @@ Ha úgy szeretné zárolni az alkalmazást, hogy csak a megadott bejárati ajtó
 
 -    Hajtson végre egy GET műveletet az előtérben az API `2020-01-01` -vagy újabb verzióval. Az API-hívásban keresse meg a `frontdoorID` mezőt. Szűrje a "**X-Azure-FDID**" bejövő fejlécet, amelyet a rendszer bekapcsol a háttérbe az adott mező értékével `frontdoorID` . `Front Door ID`Az értéket az áttekintő szakaszban is megtalálhatja az első ajtós portál oldalon. 
 
+- Alkalmazzon szabály-szűrést a háttérbeli webkiszolgálón a forgalom korlátozásához az eredményül kapott X-Azure-FDID fejléc értéke alapján.
+
+  Íme egy példa a [Microsoft Internet Information Services (IIS)](https://www.iis.net/)szolgáltatásra:
+
+    ``` xml
+    <?xml version="1.0" encoding="UTF-8"?>
+    <configuration>
+        <system.webServer>
+            <rewrite>
+                <rules>
+                    <rule name="Filter_X-Azure-FDID" patternSyntax="Wildcard" stopProcessing="true">
+                        <match url="*" />
+                        <conditions>
+                            <add input="{HTTP_X_AZURE_FDID}" pattern="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" negate="true" />
+                        </conditions>
+                        <action type="AbortRequest" />
+                    </rule>
+                </rules>
+            </rewrite>
+        </system.webServer>
+    </configuration>
+    ```
+
+
+
 ### <a name="can-the-anycast-ip-change-over-the-lifetime-of-my-front-door"></a>A kiválasztó IP-cím változhat a bejárati ajtó élettartama során?
 
 A bejárati ajtóhoz tartozó előtér-alhálózatok IP-címe általában nem változik, és a bejárati ajtó élettartama esetén statikus maradhat. Azonban nincsenek ilyen **garanciák** . Kérjük, ne vegyen fel közvetlen függőségeket az IP-címekre.
@@ -132,6 +157,10 @@ Az Azure bejárati ajtajának (AFD) egy nyilvános IP-címet vagy nyilvánosan f
 ### <a name="what-are-the-various-timeouts-and-limits-for-azure-front-door"></a>Milyen időtúllépéseket és korlátokat biztosít az Azure bejárati ajtó?
 
 Ismerje meg az Azure-előtérben lévő összes dokumentált [időtúllépést és korlátot](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-front-door-service-limits).
+
+### <a name="how-long-does-it-take-for-a-rule-to-take-effect-after-being-added-to-the-front-door-rules-engine"></a>Mennyi időt vesz igénybe egy szabály, hogy az a bejárati ajtó szabályainak motorba való felvétele után is érvénybe lép?
+
+A szabályok motorjának konfigurációja körülbelül 10 – 15 percet vesz igénybe a frissítés befejezéséhez. A szabály a frissítés befejeződése után is érvénybe lép. 
 
 ## <a name="performance"></a>Teljesítmény
 

@@ -5,16 +5,16 @@ description: Ismerje meg, hogyan hajthat végre több gyakori adatelemzési fela
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
-author: vijetajo
-ms.author: vijetaj
+author: lobrien
+ms.author: laobri
 ms.topic: conceptual
-ms.date: 07/17/2020
-ms.openlocfilehash: ca3cfa44bd4f757c6fbb0dd2c84d7a843f9bff36
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.date: 09/17/2020
+ms.openlocfilehash: 65a627cc009699660de0897ce853acaa78381f6a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816218"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275982"
 ---
 # <a name="data-science-with-an-ubuntu-data-science-virtual-machine-in-azure"></a>Adatelemzés Ubuntu-Data Science Virtual Machine az Azure-ban
 
@@ -374,7 +374,7 @@ A csörgő a fürt elemzését is képes futtatni. Kizárunk néhány funkciót,
 * word_freq_business
 * spam
 
-Térjen vissza a **fürt** lapra. Válassza a **KMeans**lehetőséget, majd állítsa be a **fürtök számát** **4**-re. Válassza a **Végrehajtás** lehetőséget. Az eredmények a kimenet ablakban jelennek meg. Az egyik fürt a _George_ és a _HP_nagy gyakorisággal rendelkezik, és valószínűleg egy legitim üzleti e-mail-cím.
+Térjen vissza a **fürt** lapra. Válassza a **KMeans**lehetőséget, majd állítsa a **fürtök számát** **4**-re. Válassza a **Végrehajtás** lehetőséget. Az eredmények a kimenet ablakban jelennek meg. Az egyik fürt a _George_ és a _HP_nagy gyakorisággal rendelkezik, és valószínűleg egy legitim üzleti e-mail-cím.
 
 Alapszintű döntés faszerkezetű gépi tanulási modell létrehozása:
 
@@ -478,7 +478,7 @@ A helyi kiszolgálóhoz való kapcsolódás beállítása:
 1. Az **illesztőprogram**esetében válassza a **PostgreSQL**lehetőséget.
 1. Állítsa be az URL-címet a **JDBC: PostgreSQL://localhost/spam**értékre.
 1. Adja meg a felhasználónevét és a jelszavát.
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
 1. A **kapcsolódási** ablak megnyitásához kattintson duplán a **Levélszemét-adatbázis** aliasára.
 1. Válassza a **Kapcsolódás** lehetőséget.
 

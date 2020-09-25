@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 05/15/2018
 ms.topic: conceptual
-ms.openlocfilehash: b07e21131d9560a49d99644525835ac5ee3bac9e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 21d84bea808ba5832b81d415001a3fc25a7e1630
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "61442239"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323957"
 ---
 # <a name="integrate-sim-data-in-the-remote-monitoring-solution"></a>SIM-alkalmazások integrálása a távoli figyelési megoldásba
 
@@ -61,14 +61,14 @@ A következő kapcsolódási paraméterek vannak közzétéve:
 * Hálózat alapú hely
 * Adatforgalom felhasználva
 
-![Irányítópult](./media/iot-accelerators-remote-monitoring-telefonica-sim/dashboard.png)
+![Képernyőkép az Azure IoT távoli monitorozási irányítópultjának Device Explorer ablakáról. Ki van emelve egy sor, amely megjeleníti a WeatherStation-eszköz részleteit.](./media/iot-accelerators-remote-monitoring-telefonica-sim/dashboard.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy áttekinti, hogyan integrálhatja a SIM-információkat az Azure IoT távoli monitorozási szolgáltatásba, a következő lépéseket javasoljuk a megoldás-gyorsítók:
 
 * [Az Azure IoT távoli figyelési megoldásának üzemeltetése](quickstart-remote-monitoring-deploy.md)
 * [Speciális monitorozás végrehajtása](iot-accelerators-remote-monitoring-monitor.md)
 * [Eszközök kezelése](iot-accelerators-remote-monitoring-manage.md)
-* [Eszközökkel kapcsolatos problémák elhárítása](iot-accelerators-remote-monitoring-maintain.md)
+* [Eszközkel kapcsolatos problémák elhárítása](iot-accelerators-remote-monitoring-maintain.md)
 

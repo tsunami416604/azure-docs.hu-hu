@@ -3,12 +3,12 @@ title: Támogatási mátrix a VMware/fizikai vész-helyreállításhoz Azure Sit
 description: Összefoglalja a VMware virtuális gépek és a fizikai kiszolgálók vész-helyreállításának támogatását az Azure-ban Azure Site Recovery használatával.
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: d5f4e99463260496c19c700c9cb1416acc4d5056
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 81cab05b9ad8d6d2bb7f37bc743b5237a4dd6d68
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530046"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323617"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>A VMware virtuális gépek és fizikai kiszolgálók Azure-ba való vész-helyreállítási mátrixának támogatása
 
@@ -77,7 +77,7 @@ Windows Server 2016 64 bites | A Server Core és a Server asztali felhasználói
 Windows Server 2012 R2/Windows Server 2012 | Támogatott.
 Windows Server 2008 R2 SP1 és újabb verziók. | Támogatott.<br/><br/> A mobilitási szolgáltatás ügynökének [9,30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) -es verziójától kezdve telepítenie kell a [SSU](https://support.microsoft.com/help/4490628) -t és az [SHA-2 frissítést](https://support.microsoft.com/help/4474419) a Windows 2008 R2 SP1 vagy újabb verzióját futtató gépekre. Az SHA-1 nem támogatott szeptember 2019-tól, és ha az SHA-2 kód aláírása nincs engedélyezve, az ügynök bővítmény nem a várt módon fog települni/frissíteni. További információ az [SHA-2 frissítésről és a követelményekről](https://aka.ms/SHA-2KB).
 Windows Server 2008 SP2 vagy újabb (64 bites/32 bites) |  Csak Migrálás esetén támogatott. [További információ](migrate-tutorial-windows-server-2008.md).<br/><br/> A mobilitási szolgáltatás ügynökének [9,30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) -es verziójától kezdve a Windows 2008 SP2 rendszerű gépekre telepíteni kell a [SSU](https://support.microsoft.com/help/4493730) -t és az [SHA-2 frissítést](https://support.microsoft.com/help/4474419) . A ISHA-1 nem támogatott szeptember 2019-tól, és ha az SHA-2 kód aláírása nincs engedélyezve, az ügynök bővítménye nem a várt módon fog települni/frissíteni. További információ az [SHA-2 frissítésről és a követelményekről](https://support.microsoft.com/en-us/help/4472027/2019-sha-2-code-signing-support-requirement-for-windows-and-wsus).
-Windows 10, Windows 8.1, Windows 8 | Támogatott.
+Windows 10, Windows 8.1, Windows 8 | Csak a 64 bites rendszer támogatott. a 32 bites rendszer nem támogatott.
 Windows 7 SP1 64 bites | A [36 kumulatív frissítés](https://support.microsoft.com/help/4503156) (a mobilitási szolgáltatás 9,22-es verziója) támogatott. </br></br> A mobilitási szolgáltatás ügynökének [9,30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) -es verziójától kezdve a Windows 7 SP1 rendszerű gépeken telepíteni kell a [SSU](https://support.microsoft.com/help/4490628) -t és az [SHA-2 frissítést](https://support.microsoft.com/help/4474419) .  Az SHA-1 nem támogatott szeptember 2019-tól, és ha az SHA-2 kód aláírása nincs engedélyezve, az ügynök bővítmény nem a várt módon fog települni/frissíteni. További információ az [SHA-2 frissítésről és a követelményekről](https://support.microsoft.com/en-us/help/4472027/2019-sha-2-code-signing-support-requirement-for-windows-and-wsus).
 
 ### <a name="for-linux"></a>Linux esetén
@@ -85,7 +85,7 @@ Windows 7 SP1 64 bites | A [36 kumulatív frissítés](https://support.microsoft
 **Operációs rendszer** | **Részletek**
 --- | ---
 Linux | Csak a 64 bites rendszer támogatott. a 32 bites rendszer nem támogatott.<br/><br/>Minden Linux-kiszolgálón telepítve kell lennie a [Linux Integration Services (lis) összetevőknek](https://www.microsoft.com/download/details.aspx?id=55106) . A feladatátvétel/feladatátvételi teszt után a kiszolgálót az Azure-ban kell elindítania. Ha a beépített LIS-összetevők hiányoznak, győződjön meg arról, hogy az [összetevőket](https://www.microsoft.com/download/details.aspx?id=55106) telepíteni kell, mielőtt engedélyezné a gépek replikálását az Azure-ban. <br/><br/> Site Recovery összehangolja a feladatátvételt, hogy Linux-kiszolgálókat futtasson az Azure-ban. Előfordulhat azonban, hogy a Linux-szállítók csak olyan terjesztési verziókra korlátozzák a támogatást, amelyek nem értek véget az élettartamuk.<br/><br/> A Linux-disztribúciók esetében csak a terjesztési alverzió kiadásának vagy frissítésének részét képező állomány-kernelek támogatottak.<br/><br/> Nem támogatott a védett gépek frissítése a nagy Linux-disztribúciós verziók között. A frissítéshez tiltsa le a replikálást, frissítse az operációs rendszert, majd engedélyezze újra a replikációt.<br/><br/> [További](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) információ a Linux és a nyílt forráskódú technológiák támogatásáról az Azure-ban.
-Linux Red Hat Enterprise | 5,2 – 5,11</b><br/> 6,1 – 6,10</b> </br> 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, [7,7](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery), [7,8](https://support.microsoft.com/help/4564347/), [7,9](https://support.microsoft.com/help/4578241/) </br> [8,0](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery), 8,1, [8,2](https://support.microsoft.com/help/4570609) <br/> A Red Hat Enterprise Linux 5.2-5.11 & 6.1-6.10-t futtató kiszolgálókon néhány régebbi kernel nem rendelkezik előre telepített [Linux Integration Services-(lis-) összetevőkkel](https://www.microsoft.com/download/details.aspx?id=55106) . Ha a beépített LIS-összetevők hiányoznak, győződjön meg arról, hogy az [összetevőket](https://www.microsoft.com/download/details.aspx?id=55106) telepíteni kell, mielőtt engedélyezné a gépek replikálását az Azure-ban.
+Linux Red Hat Enterprise | 5,2 – 5,11</b><br/> 6,1 – 6,10</b> </br> 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, [7,7](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery), [7,8](https://support.microsoft.com/help/4564347/), [7,9 Beta verzió](https://support.microsoft.com/help/4578241/) </br> [8,0](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery), 8,1, [8,2](https://support.microsoft.com/help/4570609) <br/> A Red Hat Enterprise Linux 5.2-5.11 & 6.1-6.10-t futtató kiszolgálókon néhány régebbi kernel nem rendelkezik előre telepített [Linux Integration Services-(lis-) összetevőkkel](https://www.microsoft.com/download/details.aspx?id=55106) . Ha a beépített LIS-összetevők hiányoznak, győződjön meg arról, hogy az [összetevőket](https://www.microsoft.com/download/details.aspx?id=55106) telepíteni kell, mielőtt engedélyezné a gépek replikálását az Azure-ban.
 Linux: CentOS | 5,2 – 5,11</b><br/> 6,1 – 6,10</b><br/> </br> 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, [7,7](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery), [7,8](https://support.microsoft.com/help/4564347/), [7,9](https://support.microsoft.com/help/4578241/) </br> [8,0](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery), 8,1, [8,2](https://support.microsoft.com/help/4570609) <br/><br/> A CentOS 5.2-5.11 & 6,1-6.10-t futtató kiszolgálók néhány régebbi kernele nem rendelkezik előre telepített  [Linux Integration Services-(lis-) összetevőkkel](https://www.microsoft.com/download/details.aspx?id=55106) . Ha a beépített LIS-összetevők hiányoznak, győződjön meg arról, hogy az [összetevőket](https://www.microsoft.com/download/details.aspx?id=55106) telepíteni kell, mielőtt engedélyezné a gépek replikálását az Azure-ban.
 Ubuntu | Ubuntu 14,04 * LTS [-kiszolgáló (a támogatott kernel-verziók áttekintése)](#ubuntu-kernel-versions)<br/>Ubuntu 16,04 * LTS [-kiszolgáló (a támogatott kernel-verziók áttekintése)](#ubuntu-kernel-versions) </br> Ubuntu 18,04 * LTS [-kiszolgáló (a támogatott kernel-verziók áttekintése)](#ubuntu-kernel-versions) </br> Ubuntu 20,04 * LTS [-kiszolgáló (a támogatott kernel-verziók áttekintése)](#ubuntu-kernel-versions) </br> (*az összes 14,04 támogatását tartalmazza.* x *, 16,04.* x *, 18,04.* x *, 20,04.* x * verziók)
 Debian | Debian 7/Debian 8 (tartalmazza az összes 7 támogatását). *x*, 8. *x* verziók); Debian 9 (a 9,1 és 9,13 közötti támogatással is rendelkezik. A Debian 9,0 nem támogatott.) [(támogatott kernel-verziók áttekintése)](#debian-kernel-versions)
@@ -194,15 +194,15 @@ Site Recovery szolgáltatáshoz való privát hivatkozás | Igen. [További info
 
 **Összetevő** | **Támogatott**
 --- | ---
-Azure ExpressRoute | Igen
-ILB | Igen
-ELB | Igen
-Azure Traffic Manager | Igen
-Több hálózati adapter | Igen
-Fenntartott IP címe | Igen
-IPv4 | Igen
-Forrás IP-címének megőrzése | Igen
-Azure Virtual Network szolgáltatásbeli végpontok<br/> | Igen
+Azure ExpressRoute | Yes
+ILB | Yes
+ELB | Yes
+Azure Traffic Manager | Yes
+Több hálózati adapter | Yes
+Fenntartott IP címe | Yes
+IPv4 | Yes
+Forrás IP-címének megőrzése | Yes
+Azure Virtual Network szolgáltatásbeli végpontok<br/> | Yes
 Gyorsított hálózatkezelés | No
 
 ## <a name="storage"></a>Tárolás
@@ -211,25 +211,25 @@ Gyorsított hálózatkezelés | No
 Dinamikus lemez | Az operációsrendszer-lemeznek alaplemeznek kell lennie. <br/><br/>Az adatlemezek lehetnek dinamikus lemezek
 Docker-lemez konfigurációja | No
 NFS-gazdagép | Igen, VMware-hez<br/><br/> Nem a fizikai kiszolgálók esetében
-Gazdagép SAN (iSCSI/FC) | Igen
+Gazdagép SAN (iSCSI/FC) | Yes
 Gazdagép vSAN | Igen, VMware-hez<br/><br/> N/A fizikai kiszolgálókhoz
 Gazdagép többutas (MPIO) | Igen, tesztelték a Microsoft DSM, EMC PowerPath 5,7 SP4, EMC PowerPath DSM for CLARiiON
 Gazdagép virtuális kötetei (VVols) | Igen, VMware-hez<br/><br/> N/A fizikai kiszolgálókhoz
-Vendég/kiszolgáló VMDK | Igen
+Vendég/kiszolgáló VMDK | Yes
 Vendég/kiszolgáló megosztott fürtözött lemeze | No
 Vendég/kiszolgáló által titkosított lemez | No
 Vendég/kiszolgáló NFS | No
 Vendég/kiszolgáló iSCSI | Áttelepítéshez – igen<br/>Vész-helyreállítás esetén az iSCSI a virtuális géphez csatlakoztatott lemezként fogja felvenni a feladat-visszavételt
 Vendég/kiszolgáló SMB 3,0 | No
-Vendég/kiszolgáló RDM | Igen<br/><br/> N/A fizikai kiszolgálókhoz
+Vendég/kiszolgáló RDM | Yes<br/><br/> N/A fizikai kiszolgálókhoz
 Vendég/kiszolgáló lemez > 1 TB | Igen, a lemeznek nagyobbnak kell lennie, mint 1024 MB<br/><br/>Akár 8 192 GB a felügyelt lemezekre való replikáláskor (9,26-es verzió)<br></br> Akár 4 095 GB a Storage-fiókokba való replikáláskor
 Vendég/kiszolgáló lemez 4K logikai és 4k fizikai szektor méretével | No
 Vendég/kiszolgáló lemez 4K logikai és 512 bájtos fizikai szektor méretével | No
-Vendég/kiszolgáló kötet szalagos lemezzel >4 TB | Igen
+Vendég/kiszolgáló kötet szalagos lemezzel >4 TB | Yes
 Logikai kötet kezelése (LVM)| Sűrű kiépítés – igen <br></br> Dinamikus kiépítés – nem
 Vendég/kiszolgáló – tárolóhelyek | No
 Vendég/kiszolgáló – gyors Hozzáadás/Eltávolítás lemez | No
-Vendég/kiszolgáló – lemez kizárása | Igen
+Vendég/kiszolgáló – lemez kizárása | Yes
 Vendég/kiszolgáló többutas (MPIO) | No
 Vendég/kiszolgáló GPT-partíciók | Az 37-es [kumulatív frissítés](https://support.microsoft.com/help/4508614/) (a mobilitási szolgáltatás 9,25-es verziója) a következő öt partíciót támogatja:. Korábban négy támogatott volt.
 ReFS | A rugalmas fájlrendszer a mobilitási szolgáltatás 9,23-es vagy újabb verziójával támogatott
@@ -247,17 +247,17 @@ Vendég/kiszolgáló EFI/UEFI rendszerindítás | – Az összes [Azure MARKETPL
 
 **Összetevő** | **Támogatott**
 --- | ---
-Helyileg redundáns tárolás | Igen
-Georedundáns tárolás | Igen
-Írásvédett georedundáns tárolás (RA-GRS) | Igen
+Helyileg redundáns tárolás | Yes
+Georedundáns tárolás | Yes
+Írásvédett georedundáns tárolás (RA-GRS) | Yes
 Ritkán használt tároló | No
 Gyors tárolás| No
 Blokkblobok | No
-Titkosítás – Rest (SSE)| Igen
+Titkosítás – Rest (SSE)| Yes
 Titkosítás – Rest (CMK)| Igen (a PowerShell az 3.3.0 modultól kezdődően)
 Dupla titkosítás a nyugalmi állapotban | Igen (a PowerShell az 3.3.0 modultól kezdődően). További információ a [Windows](../virtual-machines/windows/disk-encryption.md) és a [Linux](../virtual-machines/linux/disk-encryption.md)támogatott régióiról.
-Prémium szintű Storage | Igen
-Biztonságos átvitel lehetőség | Igen
+Prémium szintű Storage | Yes
+Biztonságos átvitel lehetőség | Yes
 Importálási/exportálási szolgáltatás | No
 Azure Storage-tűzfalak a virtuális hálózatok | Igen.<br/> A cél Storage/cache Storage-fiókra van konfigurálva (a replikációs adattároláshoz használatos).
 Általános célú v2 Storage-fiókok (gyakori és ritka elérésű szintek) | Igen (a tranzakciós költségek lényegesen magasabbak a v2-höz képest, mint a v1)
@@ -266,10 +266,10 @@ Azure Storage-tűzfalak a virtuális hálózatok | Igen.<br/> A cél Storage/cac
 
 **Funkció** | **Támogatott**
 --- | ---
-Rendelkezésre állási csoportok | Igen
+Rendelkezésre állási csoportok | Yes
 Rendelkezésre állási zónák | No
-HUB | Igen
-Felügyelt lemezek | Igen
+HUB | Yes
+Felügyelt lemezek | Yes
 
 ## <a name="azure-vm-requirements"></a>Azure virtuálisgép-követelmények
 

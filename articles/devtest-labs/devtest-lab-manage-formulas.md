@@ -3,12 +3,12 @@ title: Azure DevTest Labs képletek kezelése virtuális gépek létrehozásáho
 description: Ez a cikk bemutatja, hogyan hozhat létre képletet egy Alapból (egyéni rendszerképből, Piactéri rendszerképből vagy más képletből) vagy egy meglévő virtuális gépről.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 0a254d306ad2417c500571df4b8f2d852d21e7ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f012a8c59a8e938334c3e1abc4c7b3ccd0e48d3e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85480405"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91308894"
 ---
 # <a name="manage-azure-devtest-labs-formulas"></a>Azure DevTest Labs képletek kezelése
 
@@ -60,7 +60,7 @@ A következő lépések végigvezetik a képletek egyéni rendszerképből, Piac
     - **Lejárati dátum és idő** – ez a mező nem szerkeszthető. 
     - A **gép igényelhetővé tétele** – a gép "igényelhető" azt jelenti, hogy a létrehozáskor nem lesz hozzárendelve tulajdonos. Ehelyett a labor felhasználói jogosultak lesznek a gép tulajdonosára ("jogcím") a labor oldalára.  
 
-        ![Speciális beállítások lap](./media/devtest-lab-create-formulas/advanced-settings.png)
+        ![A "Create Formula (újrafelhasználható alap)" oldal speciális beállításait bemutató képernyőkép.](./media/devtest-lab-create-formulas/advanced-settings.png)
     - Ha az alapszintű megosztott képkatalógus-rendszerképet választotta, akkor a **rendszerkép verziója** mezőt is megtekintheti, amely lehetővé teszi, hogy kiválassza a rendszerkép azon verzióját, amelyet a gyűjtemény alapjául használni kíván. 
 
         ![Speciális beállítások lap](./media/devtest-lab-create-formulas/advanced-settings-shared-image-gallery.png)
@@ -98,7 +98,7 @@ A képletek módosításához kövesse az alábbi lépéseket:
 3. A laborok listájából válassza ki a kívánt labort.  
 4. A labor lapon válassza a **képletek (újrafelhasználható alapok)** lehetőséget.
    
-    ![Képlet menü](./media/devtest-lab-manage-formulas/lab-settings-formulas.png)
+    ![Képernyőkép, amely a labor oldalát jeleníti meg a "képletek (újrafelhasználható alapértékek)" beállítás kiválasztásával.](./media/devtest-lab-manage-formulas/lab-settings-formulas.png)
 5. A **labor-képletek** lapon válassza ki a módosítani kívánt képletet.
 6. A **képlet frissítése** lapon végezze el a kívánt módosításokat, majd kattintson a **frissítés**elemre.
 
@@ -113,7 +113,7 @@ A képletek törléséhez kövesse az alábbi lépéseket:
     ![Képlet menü](./media/devtest-lab-manage-formulas/lab-settings-formulas.png)
 5. A **labor-képletek** lapon válassza ki a törölni kívánt képlet jobb oldalán lévő három pontot.
    
-    ![Képlet menü](./media/devtest-lab-manage-formulas/lab-formulas-blade.png)
+    ![Képernyőfelvétel: a "Lab-képletek" oldal, a Kiemelt képleti beállításokhoz tartozó három ponttal.](./media/devtest-lab-manage-formulas/lab-formulas-blade.png)
 6. A képlet helyi menüjében válassza a **Törlés**lehetőséget.
    
     ![Képlet helyi menüje](./media/devtest-lab-manage-formulas/formula-delete-context-menu.png)
@@ -124,6 +124,6 @@ A képletek törléséhez kövesse az alábbi lépéseket:
 ## <a name="related-blog-posts"></a>Kapcsolódó blogbejegyzések
 * [Egyéni lemezképek vagy képletek?](devtest-lab-faq.md#what-is-the-difference-between-a-custom-image-and-a-formula)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Miután létrehozott egy, a virtuális gép létrehozásakor használandó képletet, a következő lépés [egy virtuális gép hozzáadása a laborhoz](devtest-lab-add-vm.md).
 

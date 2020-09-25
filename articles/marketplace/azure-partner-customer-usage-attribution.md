@@ -8,12 +8,12 @@ author: vikrambmsft
 ms.author: vikramb
 ms.date: 09/01/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 50e9eb6d5024d83e841532ed64e84b477a261c9a
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 72d8cb0ef80210cca1dbf1d2726590c0cb8540e5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89320970"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91261379"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Kereskedelmi Piactéri partner és ügyfél-használati jóváírás
 
@@ -268,39 +268,7 @@ A szoftverek központi telepítésekor a \<PARTNER> Microsoft képes azonosítan
 
 ## <a name="get-support"></a>Támogatás kérése
 
-A felmerülő problémáktól függően két támogatási csatorna van.
-
-Ha bármilyen problémába ütközik a partner Centerben, például megtekinti az ügyfél-használati jóváírási jelentést vagy bejelentkezik, hozzon létre egy támogatási kérést a partner Center támogatási csapatával itt: [https://partner.microsoft.com/support](https://partner.microsoft.com/support)
-
-![A támogatási oldal beszerzésének képernyőképe](./media/marketplace-publishers-guide/partner-center-log-in-support.png)
-
-Ha a piactér bevezetéséhez és/vagy az ügyfelek használati feladataihoz általában segítségre van szüksége, például hogyan kell beállítani az ügyfél-használati jóváírást, kövesse az alábbi lépéseket:
-
-1. Nyissa meg a [támogatási lapot](https://go.microsoft.com/fwlink/?linkid=844975).
-
-1. A **probléma típusa**területen válassza a **piactér**bevezetése elemet.
-
-1. Válassza ki a probléma **kategóriáját** :
-
-   - A használati társítással kapcsolatos problémák esetén válassza az **egyéb**lehetőséget.
-   - Az Azure Marketplace-en való hozzáférési problémák esetén válassza a **hozzáférési probléma**lehetőséget.
-
-     ![A probléma kategóriájának kiválasztása](media/marketplace-publishers-guide/lu-article-incident.png)
-
-1. Válassza a **kezdési kérelem**lehetőséget.
-
-1. A következő lapon adja meg a szükséges értékeket. Válassza a **Folytatás**lehetőséget.
-
-1. A következő lapon adja meg a szükséges értékeket.
-
-   > [!IMPORTANT]
-   > Az **incidens címe** mezőben adja meg az **ISV-használat nyomon követését**. A probléma részletes leírása.
-
-   ![Az incidens címéhez adja meg az ISV használatának nyomon követését](media/marketplace-publishers-guide/guid-dev-center-help-hd%201.png)
-
-1. Fejezze be az űrlapot, majd válassza a **Submit (Küldés**) lehetőséget.
-
-A technikai előfizetések, a üzembe helyezési és az alkalmazás-fejlesztési forgatókönyvek technikai útmutatója a Microsoft partneri műszaki tanácsadótól az ügyfelek használati felépítésének megismeréséhez és bevezetéséhez is segítséget nyújt.
+Ismerje meg a kereskedelmi piactér támogatási lehetőségeit a [partner Center kereskedelmi piactér programjának támogatásával](./partner-center-portal/support.md).
 
 ### <a name="how-to-submit-a-technical-consultation-request"></a>Technikai tanácsadási kérelem beküldése
 

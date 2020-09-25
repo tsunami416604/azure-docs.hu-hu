@@ -3,12 +3,12 @@ title: Azure Event Grid kézbesítés és újrapróbálkozás
 description: Leírja, hogy Azure Event Grid hogyan kézbesíti az eseményeket, és hogyan kezeli a kézbesítetlen üzeneteket.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: fe7574d7e17b1763afb2292c15007dd87b056ef1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 924abaa1e5c12c4477bddf888541e7414b7bdbec
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087611"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324093"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Event Grid üzenet kézbesítése és újrapróbálkozás
 
@@ -89,11 +89,151 @@ Event Grid küld egy eseményt a kézbesítetlen levelek helyére, amikor megpr�
 
 Az utolsó kísérlet az esemény kézbesítése és a kézbesítetlen levél helyére való továbbítása között öt perc késéssel jár. Ez a késleltetés a blob Storage-műveletek számának csökkentésére szolgál. Ha a kézbesítetlen levelek helye négy órán keresztül nem érhető el, a rendszer elveti az eseményt.
 
-A kézbesítetlen levelek helyének beállítása előtt egy tárolóval rendelkező Storage-fiókkal kell rendelkeznie. Az esemény-előfizetés létrehozásakor adja meg a tároló végpontját. A végpont formátuma a (z):`/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage-name>/blobServices/default/containers/<container-name>`
+A kézbesítetlen levelek helyének beállítása előtt egy tárolóval rendelkező Storage-fiókkal kell rendelkeznie. Az esemény-előfizetés létrehozásakor adja meg a tároló végpontját. A végpont formátuma a (z): `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage-name>/blobServices/default/containers/<container-name>`
 
-Előfordulhat, hogy értesítést szeretne kapni, ha egy eseményt elküldtek a kézbesítetlen levél helyére. Ha Event Gridt szeretne használni a nem kézbesített eseményekre való válaszadásra, [hozzon létre egy esemény-előfizetést](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) a kézbesítetlen levél blob Storage-hoz. Minden alkalommal, amikor a kézbesítetlen levelek blob-tárolója egy nem kézbesített eseményt kap, Event Grid értesíti a kezelőt. A kezelő olyan műveletekkel válaszol, amelyeket el kíván végezni a nem beérkező események egyeztetéséhez.
+Előfordulhat, hogy értesítést szeretne kapni, ha egy eseményt elküldtek a kézbesítetlen levél helyére. Ha Event Gridt szeretne használni a nem kézbesített eseményekre való válaszadásra, [hozzon létre egy esemény-előfizetést](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) a kézbesítetlen levél blob Storage-hoz. Minden alkalommal, amikor a kézbesítetlen levelek blob-tárolója egy nem kézbesített eseményt kap, Event Grid értesíti a kezelőt. A kezelő olyan műveletekkel válaszol, amelyeket el kíván végezni a nem beérkező események egyeztetéséhez. A kézbesítetlen levelek helyének beállításához és az újrapróbálkozási szabályzatok létrehozásához lásd: [kézbesítetlen levelek és újrapróbálkozási szabályzatok](manage-event-delivery.md).
 
-A kézbesítetlen levelek helyének beállításával kapcsolatos példát a [kézbesítetlen levelek és az újrapróbálkozási szabályzatok](manage-event-delivery.md)című témakörben talál.
+## <a name="delivery-event-formats"></a>Kézbesítési események formátuma
+Ez a szakasz példákat mutat be a különböző kézbesítési sémák formátumában (Event Grid sémában, CloudEvents 1,0 sémában és egyéni sémában) található eseményekről és elhalt levelekről. További információ ezekről a formátumokról: [Event Grid Schema](event-schema.md) and [Cloud Events 1,0 Schema](cloud-event-schema.md) article. 
+
+### <a name="event-grid-schema"></a>Event Grid-séma
+
+#### <a name="event"></a>Esemény 
+```json
+{
+    "id": "93902694-901e-008f-6f95-7153a806873c",
+    "eventTime": "2020-08-13T17:18:13.1647262Z",
+    "eventType": "Microsoft.Storage.BlobCreated",
+    "dataVersion": "",
+    "metadataVersion": "1",
+    "topic": "/subscriptions/000000000-0000-0000-0000-00000000000000/resourceGroups/rgwithoutpolicy/providers/Microsoft.Storage/storageAccounts/myegteststgfoo",
+    "subject": "/blobServices/default/containers/deadletter/blobs/myBlobFile.txt",    
+    "data": {
+        "api": "PutBlob",
+        "clientRequestId": "c0d879ad-88c8-4bbe-8774-d65888dc2038",
+        "requestId": "93902694-901e-008f-6f95-7153a8000000",
+        "eTag": "0x8D83FACDC0C3402",
+        "contentType": "text/plain",
+        "contentLength": 0,
+        "blobType": "BlockBlob",
+        "url": "https://myegteststgfoo.blob.core.windows.net/deadletter/myBlobFile.txt",
+        "sequencer": "00000000000000000000000000015508000000000005101c",
+        "storageDiagnostics": { "batchId": "cfb32f79-3006-0010-0095-711faa000000" }
+    }
+}
+```
+
+#### <a name="dead-letter-event"></a>Kézbesítetlen levelek eseménye
+
+```json
+{
+    "id": "93902694-901e-008f-6f95-7153a806873c",
+    "eventTime": "2020-08-13T17:18:13.1647262Z",
+    "eventType": "Microsoft.Storage.BlobCreated",
+    "dataVersion": "",
+    "metadataVersion": "1",
+    "topic": "/subscriptions/0000000000-0000-0000-0000-000000000000000/resourceGroups/rgwithoutpolicy/providers/Microsoft.Storage/storageAccounts/myegteststgfoo",
+    "subject": "/blobServices/default/containers/deadletter/blobs/myBlobFile.txt",    
+    "data": {
+        "api": "PutBlob",
+        "clientRequestId": "c0d879ad-88c8-4bbe-8774-d65888dc2038",
+        "requestId": "93902694-901e-008f-6f95-7153a8000000",
+        "eTag": "0x8D83FACDC0C3402",
+        "contentType": "text/plain",
+        "contentLength": 0,
+        "blobType": "BlockBlob",
+        "url": "https://myegteststgfoo.blob.core.windows.net/deadletter/myBlobFile.txt",
+        "sequencer": "00000000000000000000000000015508000000000005101c",
+        "storageDiagnostics": { "batchId": "cfb32f79-3006-0010-0095-711faa000000" }
+    },
+
+    "deadLetterReason": "MaxDeliveryAttemptsExceeded",
+    "deliveryAttempts": 1,
+    "lastDeliveryOutcome": "NotFound",
+    "publishTime": "2020-08-13T17:18:14.0265758Z",
+    "lastDeliveryAttemptTime": "2020-08-13T17:18:14.0465788Z" 
+}
+```
+
+### <a name="cloudevents-10-schema"></a>CloudEvents 1,0 séma
+
+#### <a name="event"></a>Esemény
+
+```json
+{
+    "id": "caee971c-3ca0-4254-8f99-1395b394588e",
+    "source": "mysource",
+    "dataversion": "1.0",
+    "subject": "mySubject",
+    "type": "fooEventType",
+    "datacontenttype": "application/json",
+    "data": {
+        "prop1": "value1",
+        "prop2": 5
+    }
+}
+```
+
+#### <a name="dead-letter-event"></a>Kézbesítetlen levelek eseménye
+
+```json
+{
+    "id": "caee971c-3ca0-4254-8f99-1395b394588e",
+    "source": "mysource",
+    "dataversion": "1.0",
+    "subject": "mySubject",
+    "type": "fooEventType",
+    "datacontenttype": "application/json",
+    "data": {
+        "prop1": "value1",
+        "prop2": 5
+    },
+
+    "deadletterreason": "MaxDeliveryAttemptsExceeded",
+    "deliveryattempts": 1,
+    "lastdeliveryoutcome": "NotFound",
+    "publishtime": "2020-08-13T21:21:36.4018726Z",
+}
+```
+
+### <a name="custom-schema"></a>Egyéni séma
+
+#### <a name="event"></a>Esemény
+
+```json
+{
+    "prop1": "my property",
+    "prop2": 5,
+    "myEventType": "fooEventType"
+}
+
+```
+
+#### <a name="dead-letter-event"></a>Kézbesítetlen levelek eseménye
+```json
+{
+    "id": "8bc07e6f-0885-4729-90e4-7c3f052bd754",
+    "eventTime": "2020-08-13T18:11:29.4121391Z",
+    "eventType": "myEventType",
+    "dataVersion": "1.0",
+    "metadataVersion": "1",
+    "topic": "/subscriptions/00000000000-0000-0000-0000-000000000000000/resourceGroups/rgwithoutpolicy/providers/Microsoft.EventGrid/topics/myCustomSchemaTopic",
+    "subject": "subjectDefault",
+  
+    "deadLetterReason": "MaxDeliveryAttemptsExceeded",
+    "deliveryAttempts": 1,
+    "lastDeliveryOutcome": "NotFound",
+    "publishTime": "2020-08-13T18:11:29.4121391Z",
+    "lastDeliveryAttemptTime": "2020-08-13T18:11:29.4277644Z",
+  
+    "data": {
+        "prop1": "my property",
+        "prop2": 5,
+        "myEventType": "fooEventType"
+    }
+}
+```
+
 
 ## <a name="message-delivery-status"></a>Üzenet kézbesítési állapota
 
@@ -117,7 +257,7 @@ Az összes többi, a fenti készletben nem szereplő kód (200-204) hibáknak mi
 | ------------|----------------|
 | 400 Hibás kérés | Újrapróbálkozás 5 perc vagy több után (kézbesítetlen levelek azonnal, ha a kézbesítetlen levelek telepítője) |
 | 401 Nem engedélyezett | Újrapróbálkozás 5 perc vagy több idő után |
-| 403 – Tiltott | Újrapróbálkozás 5 perc vagy több idő után |
+| 403 Tiltott | Újrapróbálkozás 5 perc vagy több idő után |
 | 404 Nem található | Újrapróbálkozás 5 perc vagy több idő után |
 | 408 Kérés időtúllépése | Próbálkozzon újra 2 perc múlva |
 | 413 kérelem entitása túl nagy | Újrapróbálkozás 10 másodperc vagy több után (a kézbesítetlen levelek azonnal, ha a kézbesítetlen levelek telepítője) |
@@ -125,7 +265,7 @@ Az összes többi, a fenti készletben nem szereplő kód (200-204) hibáknak mi
 | Minden más | Újrapróbálkozás 10 másodperc vagy több után |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az események kézbesítési állapotának megtekintéséhez lásd: [Event Grid üzenet kézbesítésének figyelése](monitor-event-delivery.md).
 * Az esemény-kézbesítési beállítások testreszabásával kapcsolatban lásd: [kézbesítetlen levelek és újrapróbálkozási szabályzatok](manage-event-delivery.md).

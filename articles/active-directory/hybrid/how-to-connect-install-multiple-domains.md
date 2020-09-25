@@ -16,12 +16,12 @@ ms.date: 05/31/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f913199e0c0ed438d4b95b879d4defc072c615aa
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 53a0da5b5db21c9a543d39d1b252b0b4c64e2a56
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662434"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306361"
 ---
 # <a name="multiple-domain-support-for-federating-with-azure-ad"></a>Többtartományos támogatás az Azure AD összevonási szolgáltatásához
 Az alábbi dokumentáció ismerteti, hogyan használható több legfelső szintű tartomány és altartomány a Microsoft 365-vagy Azure AD-tartományokkal való egyesítő.
@@ -38,7 +38,7 @@ Ha egy tartomány összevonása az Azure AD-vel történik, a tartományhoz töb
 
 A IssuerUri a PowerShell-parancs használatával tekintheti meg `Get-MsolDomainFederationSettings -DomainName <your domain>` .
 
-![Get-MsolDomainFederationSettings](./media/how-to-connect-install-multiple-domains/MsolDomainFederationSettings.png)
+![Képernyőkép, amely a "Get-MsolDomainFederationSettings" parancs a PowerShellben való beírását követően jeleníti meg az eredményeket.](./media/how-to-connect-install-multiple-domains/MsolDomainFederationSettings.png)
 
 Probléma merül fel, ha egynél több legfelső szintű tartományt ad hozzá.  Tegyük fel például, hogy beállította az Azure AD és a helyszíni környezet közötti összevonást.  Ehhez a dokumentumhoz a tartományt, a bmcontoso.com használja.  Most egy második, legfelső szintű tartomány, a bmfabrikam.com lett hozzáadva.
 
@@ -46,7 +46,7 @@ Probléma merül fel, ha egynél több legfelső szintű tartományt ad hozzá. 
 
 Ha a bmfabrikam.com-tartomány összevonására kísérli meg az átalakítást, hiba történik.  Ennek az az oka, hogy az Azure AD olyan korlátozással rendelkezik, amely nem teszi lehetővé, hogy a IssuerUri tulajdonság egynél több tartományhoz ugyanazt az értéket engedélyezze.  
 
-![Összevonási hiba](./media/how-to-connect-install-multiple-domains/error.png)
+![A PowerShellben összevonási hibát bemutató képernyőkép.](./media/how-to-connect-install-multiple-domains/error.png)
 
 ### <a name="supportmultipledomain-parameter"></a>SupportMultipleDomain paraméter
 A korlátozás megkerüléséhez hozzá kell adnia egy másik IssuerUri, amely a paraméter használatával végezhető el `-SupportMultipleDomain` .  Ez a paraméter a következő parancsmagokkal használható:
@@ -57,11 +57,11 @@ A korlátozás megkerüléséhez hozzá kell adnia egy másik IssuerUri, amely a
 
 Ez a paraméter lehetővé teszi, hogy az Azure AD konfigurálja a IssuerUri, hogy az a tartomány nevén alapuljon.  A IssuerUri egyediek lesznek az Azure AD-ban található címtárak között.  A paraméter használata lehetővé teszi a PowerShell-parancs sikeres befejezését.
 
-![Összevonási hiba](./media/how-to-connect-install-multiple-domains/convert.png)
+![A PowerShell-parancs sikeres befejezését bemutató képernyőkép.](./media/how-to-connect-install-multiple-domains/convert.png)
 
 A bmfabrikam.com tartomány beállításai a következőkben láthatók:
 
-![Összevonási hiba](./media/how-to-connect-install-multiple-domains/settings.png)
+![A "bmfabrikam.com" tartomány beállításait megjelenítő képernyőkép.](./media/how-to-connect-install-multiple-domains/settings.png)
 
 `-SupportMultipleDomain` a nem módosítja a többi végpontot, amelyek még úgy vannak konfigurálva, hogy az összevonási szolgáltatásra mutassanak a adfs.bmcontoso.com.
 
@@ -88,11 +88,11 @@ Ha nem állította be az összevont megbízhatósági kapcsolatot AD FS és az A
 
 Ha sikeresen hozzáadott egy új tartományt az Azure AD-portálon, majd megpróbálta átalakítani a használatával `Convert-MsolDomaintoFederated -DomainName <your domain>` , a következő hibaüzenet jelenik meg.
 
-![Összevonási hiba](./media/how-to-connect-install-multiple-domains/trust1.png)
+![Képernyőkép, amely egy összevonási hibát jelenít meg a PowerShellben, miután új tartományt próbált átalakítani az "Convert-MsolDomaintoFederated" paranccsal.](./media/how-to-connect-install-multiple-domains/trust1.png)
 
 Ha megpróbálja hozzáadni a `-SupportMultipleDomain` kapcsolót, a következő hibaüzenet jelenik meg:
 
-![Összevonási hiba](./media/how-to-connect-install-multiple-domains/trust2.png)
+![A "-SupportMultipleDomain" kapcsoló hozzáadását követően az összevonási hibát bemutató képernyőkép.](./media/how-to-connect-install-multiple-domains/trust2.png)
 
 Az eredeti tartományon történő futtatásra tett kísérlet `Update-MsolFederatedDomain -DomainName <your domain> -SupportMultipleDomain` hibát is eredményez.
 
@@ -121,7 +121,7 @@ Az új legfelső szintű tartomány a PowerShell használatával való hozzáad�
 A következő lépésekkel adhatja hozzá az új legfelső szintű tartományt a Azure AD Connect használatával.
 
 1. Azure AD Connect elindítása az asztalról vagy a Start menüből
-2. Válassza a további Azure ad-tartomány hozzáadása lehetőséget, és ![ adjon hozzá egy további Azure ad-tartományt](./media/how-to-connect-install-multiple-domains/add1.png)
+2. Válassza a "további Azure ad-tartomány hozzáadása" ![ képernyőképet, amely megjeleníti a további feladatok lapot a "további Azure ad-tartomány hozzáadása" lapon.](./media/how-to-connect-install-multiple-domains/add1.png)
 3. Adja meg Azure AD-és Active Directory hitelesítő adatait
 4. Válassza ki az összevonáshoz konfigurálni kívánt második tartományt.
    ![További Azure AD-tartomány hozzáadása](./media/how-to-connect-install-multiple-domains/add2.png)
@@ -130,7 +130,7 @@ A következő lépésekkel adhatja hozzá az új legfelső szintű tartományt a
 ### <a name="verify-the-new-top-level-domain"></a>Az új felső szintű tartomány ellenőrzése
 A PowerShell-parancs használatával `Get-MsolDomainFederationSettings -DomainName <your domain>` megtekintheti a frissített IssuerUri.  Az alábbi képernyőképen látható, hogy az összevonási beállítások frissítve lettek az eredeti tartományban `http://bmcontoso.com/adfs/services/trust`
 
-![Get-MsolDomainFederationSettings](./media/how-to-connect-install-multiple-domains/MsolDomainFederationSettings.png)
+![Képernyőkép, amely az eredeti tartományon frissített összevonási beállításokat jeleníti meg.](./media/how-to-connect-install-multiple-domains/MsolDomainFederationSettings.png)
 
 Az új tartomány IssuerUri pedig a következőre lett beállítva `https://bmfabrikam.com/adfs/services/trust`
 

@@ -7,12 +7,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: daperlov
-ms.openlocfilehash: e9df7b00a384859fb29577be0ad05da233683f46
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3e1c5f3b360960779dd58c8c05b25885df81d2e9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87044534"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276504"
 ---
 # <a name="delta-format-in-azure-data-factory"></a>Különbözeti formátum a Azure Data Factoryban
 
@@ -35,12 +35,13 @@ Az alábbi táblázat a Delta forrás által támogatott tulajdonságokat sorolj
 
 | Név | Leírás | Kötelező | Megengedett értékek | Adatfolyam-parancsfájl tulajdonsága |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| Formátum | A formátumot kötelező megadni`delta` | igen | `delta` | formátumban |
+| Formátum | A formátumot kötelező megadni `delta` | igen | `delta` | formátumban |
 | Fájlrendszer | A Delta-tó tárolója/fájlrendszere | igen | Sztring | Fájlrendszer |
 | Mappa elérési útja | A Delta-tó közvetlen | igen | Sztring | folderPath |
 | Tömörítés típusa | A különbözeti tábla tömörítési típusa | nem | `bzip2`<br>`gzip`<br>`deflate`<br>`ZipDeflate`<br>`snappy`<br>`lz4` | fájba |
 | Tömörítési szint | Válassza ki, hogy a tömörítés a lehető leggyorsabban befejeződjön-e, vagy ha az eredményül kapott fájlt optimálisan kell tömöríteni. | kötelező, ha meg `compressedType` van adva. | `Optimal` vagy `Fastest` | compressionLevel |
 | Utazási idő | Válassza ki, hogy szeretne-e lekérdezni egy különbözeti tábla egy régebbi pillanatképét | nem | Lekérdezés timestamp szerint: időbélyeg <br> Lekérdezés verzió: Integer | timestampAsOf <br> versionAsOf |
+| Nem található fájlok engedélyezése | Ha az értéke igaz, a rendszer nem dobja el a hibát, ha nem található fájl | nem | `true` vagy `false` | ignoreNoFilesFound |
 
 #### <a name="import-schema"></a>Séma importálása
 
@@ -71,7 +72,7 @@ Az alábbi táblázatban a különbözeti fogadó által támogatott tulajdonsá
 
 | Név | Leírás | Kötelező | Megengedett értékek | Adatfolyam-parancsfájl tulajdonsága |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| Formátum | A formátumot kötelező megadni`delta` | igen | `delta` | formátumban |
+| Formátum | A formátumot kötelező megadni `delta` | igen | `delta` | formátumban |
 | Fájlrendszer | A Delta-tó tárolója/fájlrendszere | igen | Sztring | Fájlrendszer |
 | Mappa elérési útja | A Delta-tó közvetlen | igen | Sztring | folderPath |
 | Tömörítés típusa | A különbözeti tábla tömörítési típusa | nem | `bzip2`<br>`gzip`<br>`deflate`<br>`ZipDeflate`<br>`snappy`<br>`lz4` | fájba |
@@ -108,7 +109,7 @@ moviesAltered sink(
 
 A különbözeti fogadóba való írás során létezik egy ismert korlátozás, amelyben a rendszer nem adja vissza az írásos sorok számát a figyelési kimenetben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Forrás- [átalakítás](data-flow-source.md) létrehozása a leképezési adatfolyamban.
 * Hozzon létre egy fogadó [transzformációt](data-flow-sink.md) a leképezési adatfolyamatban.

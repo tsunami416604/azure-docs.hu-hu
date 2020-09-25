@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: article
-ms.openlocfilehash: 81480bea735017d3fc59e9c6cf126c2146a0c968
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 31fde0c7af652bc50eb5f06743c5dd5807a1762e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798465"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323725"
 ---
 # <a name="system-requirements"></a>Rendszerkövetelmények
 
@@ -63,6 +63,17 @@ A jó felhasználói élmény érdekében elengedhetetlen a stabil, kis késlelt
 Tekintse meg a [hálózati követelmények](../reference/network-requirements.md)dedikált fejezetét.
 
 Hálózati problémák elhárításához tekintse meg a [hibaelhárítási útmutatót](../resources/troubleshoot.md#unstable-holograms).
+
+### <a name="network-ports"></a>Hálózati portok
+
+Győződjön meg arról, hogy a tűzfalak (az eszközökön belül, az útválasztók stb.) nem blokkolja a következő portokat:
+
+| Port              | Protokoll | Engedélyezés    | Description |
+|-------------------|----------|----------|-------------|
+| 50051             | TCP      | Kimenő | Kezdeti kapcsolat (HTTP-kézfogás) |
+| 8266              | UDP      | Kimenő | Adatátvitel |
+| 5000, 5433, 8443  | TCP      | Kimenő | A [ArrInspector eszközhöz](../resources/tools/arr-inspector.md) szükséges|
+
 
 ## <a name="software"></a>Szoftverek
 

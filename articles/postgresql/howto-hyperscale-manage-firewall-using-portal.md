@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 9/11/2020
-ms.openlocfilehash: d369614357bd62dc13073f650fbe5ce358d6dc6e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: dadd04497eae0e91bdf5ea3caad38beda35f7fa3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90884328"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275421"
 ---
 # <a name="manage-firewall-rules-for-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL-nagy kapacitású (Citus) tűzfalszabályok kezelése
 A kiszolgálói szintű tűzfalszabályok segítségével kezelheti a nagy kapacitású (Citus) koordinátor-csomópontokhoz való hozzáférést egy adott IP-cím vagy IP-címtartomány használatával.
@@ -49,7 +49,7 @@ Másik lehetőségként kattintson a **+ 0.0.0.0-255.255.255.255** (a B beállí
 
 ## <a name="connecting-from-azure"></a>Csatlakozás az Azure-ból
 
-Az Azure-ban üzemeltetett alkalmazásokhoz (például Azure Web Apps alkalmazásokhoz vagy Azure-beli virtuális gépekhez) egyszerűen biztosítható nagy kapacitású adatbázis-hozzáférés. Egyszerűen állítsa be az **Azure-szolgáltatások és-erőforrások elérésének engedélyezése a kiszolgálócsoport** számára beállítást **Igen** értékre a portálon a **hálózat** ablaktáblán, és kattintson a **Mentés**gombra.
+Az Azure-ban üzemeltetett alkalmazásokhoz (például Azure Web Apps alkalmazásokhoz vagy Azure-beli virtuális gépekhez) egyszerűen biztosítható nagy kapacitású (Citus) adatbázis-hozzáférés. Egyszerűen állítsa be az **Azure-szolgáltatások és-erőforrások elérésének engedélyezése a kiszolgálócsoport** számára beállítást **Igen** értékre a portálon a **hálózat** ablaktáblán, és kattintson a **Mentés**gombra.
 
 > [!IMPORTANT]
 > Ez a beállítás konfigurálja a tűzfalat arra, hogy engedélyezzen minden, az Azure felől érkező kapcsolatot, beleértve a más ügyfelek előfizetéseiből érkező kapcsolatokat is. Ezen beállítás kiválasztásakor győződjön meg arról, hogy a bejelentkezési és felhasználói engedélyei a hozzáféréseket az arra jogosult felhasználókra korlátozzák.

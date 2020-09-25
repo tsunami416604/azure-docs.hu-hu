@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 11/08/2019
 ms.author: b-juche
-ms.openlocfilehash: dda911add42568e76160e4233502a1f4f550520d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e749f27875612136c50938712fded6a371f8c7ab
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483720"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325623"
 ---
 # <a name="configure-nfsv41-default-domain-for-azure-netapp-files"></a>A NFSv 4.1 alapértelmezett tartományának konfigurálása a Azure NetApp Fileshoz
 
@@ -54,7 +54,7 @@ Ahogy a fenti példában is látható, a felhasználónak kell `file1` lennie `r
 
 Az alábbi példa az eredményül kapott felhasználó/csoport módosítását mutatja be: 
 
-![Eredményül kapott konfiguráció a NFSv 4.1 számára](../media/azure-netapp-files/azure-netapp-files-nfsv41-resulting-config.png)
+![Képernyőkép, amely az eredményül kapott felhasználó/csoport módosítására mutat példát.](../media/azure-netapp-files/azure-netapp-files-nfsv41-resulting-config.png)
 
 A példa azt mutatja, hogy a felhasználó/csoport mostantól a verzióról a verzióra módosult `nobody` `root` .
 
@@ -64,7 +64,7 @@ Azure NetApp Files támogatja a helyi felhasználókat (a gazdagépen helyileg l
 
 A következő példában `Host1` három meglévő tesztelési felhasználói fiók van ( `testuser01` , `testuser02` , `testuser03` ): 
 
-![Eredményül kapott konfiguráció a NFSv 4.1 számára](../media/azure-netapp-files/azure-netapp-files-nfsv41-host1-users.png)
+![Képernyőkép, amely azt mutatja, hogy a Host1 három meglévő tesztelési felhasználói fiókkal rendelkezik.](../media/azure-netapp-files/azure-netapp-files-nfsv41-host1-users.png)
 
 `Host2`Vegye figyelembe, hogy a teszt felhasználói fiókok nem lettek létrehozva, de a kötet mindkét gazdagépre csatlakoztatva van:
 

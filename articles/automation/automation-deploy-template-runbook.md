@@ -3,28 +3,28 @@ title: Azure Resource Manager-sablon üzembe helyezése Azure Automation PowerSh
 description: Ez a cikk azt ismerteti, hogyan helyezhet üzembe egy Azure Storage-ban tárolt Azure Resource Manager sablont egy PowerShell-runbook.
 services: automation
 ms.subservice: process-automation
-ms.date: 03/16/2018
+ms.date: 09/22/2020
 ms.topic: conceptual
 keywords: PowerShell, runbook, JSON, Azure Automation
-ms.openlocfilehash: 10eadd7b8ee6c2e954f40469a02d42dc77c2bf41
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 18f1d4ced2a80f9adb5da2c209987fc1997a3f22
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186554"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91304151"
 ---
 # <a name="deploy-an-azure-resource-manager-template-in-a-powershell-runbook"></a>Azure Resource Manager-sablon üzembe helyezése egy PowerShell-runbook
 
-[Azure Automation PowerShell-runbook](./learn/automation-tutorial-runbook-textual-powershell.md) is írhat, amely Azure Resource [Management-sablonnal](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)telepít egy Azure-erőforrást. A sablon használata lehetővé teszi, hogy a Azure Automation és az Azure Storage segítségével automatizálja Azure-erőforrásai üzembe helyezését. A Resource Manager-sablonokat egy központi, biztonságos helyen, például az Azure Storage-ban kezelheti.
+[Azure Automation PowerShell-runbook](./learn/automation-tutorial-runbook-textual-powershell.md) is írhat, amely Azure Resource [Management-sablonnal](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)telepít egy Azure-erőforrást. A sablonok lehetővé teszik Azure Automation használatát az Azure-erőforrások üzembe helyezésének automatizálásához. A Resource Manager-sablonokat egy központi, biztonságos helyen, például az Azure Storage-ban kezelheti.
 
 Ebben a cikkben egy PowerShell-runbook hozunk létre, amely egy [Azure Storage](../storage/common/storage-introduction.md) -ban tárolt Resource Manager-sablont használ egy új Azure Storage-fiók üzembe helyezéséhez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Egy Azure-előfizetés. Ha még nem rendelkezik ilyennel, [aktiválhatja MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) , vagy [regisztrálhat egy ingyenes fiókot](https://azure.microsoft.com/free/).
-* [Automation-fiók](./manage-runas-account.md) a forgatókönyv tárolásához és az Azure erőforrásokban való hitelesítéshez.  Ennek a fióknak jogosultsággal kell rendelkeznie a virtuális gép elindításához és leállításához.
-* A Resource Manager-sablon tárolására szolgáló [Azure Storage-fiók](../storage/common/storage-account-create.md)
-* Azure PowerShell telepítve a helyi gépre. A Azure PowerShell beszerzésével kapcsolatos információkért tekintse meg [a Azure PowerShell modul telepítése](/powershell/azure/install-az-ps?view=azps-3.5.0) című témakört.
+* [Automation-fiók](./manage-runas-account.md) a forgatókönyv tárolásához és az Azure erőforrásokban való hitelesítéshez. Ennek a fióknak jogosultsággal kell rendelkeznie a virtuális gép elindításához és leállításához.
+* A Resource Manager-sablon tárolására szolgáló [Azure Storage-fiók](../storage/common/storage-account-create.md) .
+* Azure PowerShell telepítve a helyi gépre. A Azure PowerShell beszerzésével kapcsolatos információkért tekintse meg [a Azure PowerShell modul telepítése](/powershell/azure/install-az-ps) című témakört.
 
 ## <a name="create-the-resource-manager-template"></a>A Resource Manager-sablon létrehozása
 
@@ -88,8 +88,7 @@ Mentse a fájlt helyileg **TemplateTest.js**.
 
 ## <a name="save-the-resource-manager-template-in-azure-storage"></a>A Resource Manager-sablon mentése az Azure Storage-ban
 
-Most a PowerShell használatával hozzon létre egy Azure Storage-fájlmegosztást, és töltse fel a **TemplateTest.js** fájlt.
-A fájlmegosztás létrehozásával és a Azure Portal fájl feltöltésével kapcsolatos utasításokért lásd: Ismerkedés [Az Azure file Storage szolgáltatással Windows](../storage/files/storage-dotnet-how-to-use-files.md)rendszeren.
+Most a PowerShell használatával hozzon létre egy Azure Storage-fájlmegosztást, és töltse fel a **TemplateTest.js** fájlt. A fájlmegosztás létrehozásával és a Azure Portal fájl feltöltésével kapcsolatos utasításokért lásd: Ismerkedés [Az Azure file Storage szolgáltatással Windows](../storage/files/storage-dotnet-how-to-use-files.md)rendszeren.
 
 Indítsa el a PowerShellt a helyi gépen, és futtassa a következő parancsokat egy fájlmegosztás létrehozásához, majd töltse fel a Resource Manager-sablont az adott fájlmegosztást.
 
@@ -114,7 +113,7 @@ Set-AzStorageFileContent -ShareName $fileShare.Name -Context $context -Source $t
 
 ## <a name="create-the-powershell-runbook-script"></a>A PowerShell-runbook parancsfájl létrehozása
 
-Most létrehozunk egy PowerShell-szkriptet, amely beolvassa az Azure Storage-ból származó fájl **TemplateTest.js** , és üzembe helyezi a sablont egy új Azure Storage-fiók létrehozásához.
+Most létrehozunk egy PowerShell-szkriptet, amely beolvassa az Azure Storage-ból származó fájl **TemplateTest.jsét** , és üzembe helyezi a sablont egy új Azure Storage-fiók létrehozásához.
 
 Illessze be a következő szöveget egy szövegszerkesztőbe:
 
@@ -159,7 +158,7 @@ $TemplateFile = Join-Path -Path 'C:\Temp' -ChildPath $StorageFileName
 
 # Deploy the storage account
 New-AzResourceGroupDeployment -ResourceGroupName $ResourceGroupName -TemplateFile $TemplateFile -TemplateParameterObject $Parameters 
-``` 
+```
 
 Mentse a fájlt helyileg **DeployTemplate.ps1**.
 
@@ -192,7 +191,7 @@ Publish-AzAutomationRunbook @publishParams
 
 ## <a name="start-the-runbook"></a>A runbook indítása
 
-Most kezdjük a runbook a [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.7.0) parancsmag meghívásával. További információ a runbook elindításáról a Azure Portalban: [Runbook elindítása Azure Automationban](./start-runbooks.md).
+Most kezdjük a runbook a [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook) parancsmag meghívásával. További információ a runbook elindításáról a Azure Portalban: [Runbook elindítása Azure Automationban](./start-runbooks.md).
 
 Futtassa a következő parancsokat a PowerShell-konzolon:
 
@@ -202,7 +201,7 @@ $runbookParams = @{
     ResourceGroupName = 'MyResourceGroup'
     StorageAccountName = 'MyStorageAccount'
     StorageAccountKey = $key[0].Value # We got this key earlier
-    StorageFileName = 'TemplateTest.json' 
+    StorageFileName = 'TemplateTest.json'
 }
 
 # Set up parameters for the Start-AzAutomationRunbook cmdlet
@@ -217,19 +216,17 @@ $startParams = @{
 $job = Start-AzAutomationRunbook @startParams
 ```
 
-A runbook fut, és a futtatásával megtekintheti az állapotát `$job.Status` .
+A runbook futtatása után megtekintheti az állapotát úgy, hogy beolvassa a feladatütemezés tulajdonságának értékét `$job.Status` .
 
-A runbook lekéri a Resource Manager-sablont, és egy új Azure Storage-fiók üzembe helyezéséhez használja azt.
-A következő parancs futtatásával láthatja, hogy az új Storage-fiók létrejött:
+A runbook lekéri a Resource Manager-sablont, és egy új Azure Storage-fiók üzembe helyezéséhez használja azt. Az új Storage-fiók létrehozása a következő parancs futtatásával végezhető el:
 
 ```powershell
 Get-AzStorageAccount
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a Resource Manager-sablonokról: [Azure Resource Manager Overview (áttekintés](../azure-resource-manager/management/overview.md)).
 * Az Azure Storage használatának megkezdéséhez tekintse [meg az Azure Storage bemutatása](../storage/common/storage-introduction.md)című témakört.
 * További hasznos Azure Automation runbookok a következő témakörben talál: [a Azure Automation runbookok és moduljainak használata](automation-runbook-gallery.md).
-* További hasznos Resource Manager-sablonokat a következő témakörben talál: [Azure Gyorsindítás sablonok](https://azure.microsoft.com/resources/templates/).
-* A PowerShell-parancsmagok leírása: [az. Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).
+* A PowerShell-parancsmagok leírása: [az. Automation](/powershell/module/az.automation#automation).

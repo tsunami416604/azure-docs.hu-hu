@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/10/2020
+ms.date: 09/22/2020
 ms.author: b-juche
-ms.openlocfilehash: 1690a844ff700a2975be8e972fd90ba71eeb937c
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: f83baf7a038ad8cf17421c778deccbc7dc389d97
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707781"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325555"
 ---
 # <a name="metrics-for-azure-netapp-files"></a>Az Azure NetApp Files metrikái
 
@@ -37,21 +37,24 @@ A Azure NetApp Files a lefoglalt tároló, a tényleges tárterület-használat,
 - *Készlet felhasznált mérete*  
     A kapacitási készlet kötetei között felhasznált logikai terület összesen (GiB).  
 
-- *A készlet összes pillanatképének mérete*    
-    A készletben lévő összes kötet pillanatkép-méretének összege.
+- *A készlethez tartozó pillanatképek teljes mérete*    
+    A készletben lévő összes kötetről származó Pillanatképek méretének összege.
 
 ## <a name="usage-metrics-for-volumes"></a><a name="volumes"></a>A kötetek használati metrikái
 
-<!--
-- *Volume Quota Size*    
-    The quota size (GiB) the volume is provisioned with.   
-    This size is the size you selected during capacity pool creation. 
+<!-- ANF-5023: fixed version: 2020.08, 2020.09
+- *Percentage Volume Consumed Size*    
+    The percentage of the volume consumed, including snapshots.  
 -->
+- *Kötet lefoglalt mérete*   
+    Kötet kiépített mérete
+- *Kötet kvótájának mérete*    
+    A kötet kiépített kvótájának mérete (GiB).   
 - *Kötet felhasznált mérete*   
-    A kötetben használt teljes logikai terület (GiB).  
+    A kötet logikai mérete (felhasznált bájtok).  
     Ez a méret magában foglalja az aktív fájlrendszerek és Pillanatképek által használt logikai teret.  
 - *Kötet pillanatképének mérete*   
-   A pillanatképek által használt növekményes logikai terület egy köteten.  
+   Egy kötet összes pillanatképének mérete.  
 
 ## <a name="performance-metrics-for-volumes"></a>A kötetek teljesítmény-mérőszámai
 
@@ -63,11 +66,28 @@ A Azure NetApp Files a lefoglalt tároló, a tényleges tárterület-használat,
     A kötetre irányuló olvasási műveletek száma másodpercenként.
 - *IOPS írása*   
     A kötetre írások száma másodpercenként.
+- *MiB/s olvasása*   
+    Olvasási sebesség (bájt/s).
+- *MiB/s írása*   
+    Írási átviteli sebesség (bájt/s).
+
+<!-- ANF-4128; 2020.07
+- *Pool Provisioned Throughput*   
+    The total throughput a capacity pool can provide to its volumes based on "Pool Provisioned Size" and "Service Level".
+- *Pool Allocated to Volume Throughput*   
+    The total throughput allocated to volumes in a given capacity pool (that is, the total of the volumes' allocated throughput in the capacity pool).
+-->
+
+<!-- ANF-6443; future
+- *Pool Consumed Throughput*    
+    The total throughput being consumed by volumes in a given capacity pool.
+-->
+
 
 ## <a name="volume-replication-metrics"></a><a name="replication"></a>Kötet replikációs metrikái
 
 - *A kötet replikálási állapota Kifogástalan*   
-    A replikációs kapcsolat feltétele. 
+    A replikációs kapcsolat feltétele. A megfelelő állapotot a jelzi `1` . A nem kifogástalan állapotot a jelzi `0` .
 
 - *A kötet-replikálás átadása*    
     Azt jelzi, hogy a kötet replikálásának állapota "átvitel". 
@@ -87,7 +107,7 @@ A Azure NetApp Files a lefoglalt tároló, a tényleges tárterület-használat,
 - *Kötet replikálásának teljes átvitele*   
     A kapcsolathoz továbbított összesített bájtok száma. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az Azure NetApp Files tárhely-hierarchiájának ismertetése](azure-netapp-files-understand-storage-hierarchy.md)
 * [Kapacitáskészlet beállítása](azure-netapp-files-set-up-capacity-pool.md)

@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c100c1b65b2af1201dfc3b52a6d90b2ed26d454
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 2ecbebfc75cb8c77ebb99ad04b1f9e33b3c4ef64
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89460814"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306463"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Mi az Azure AD Identity Governance?
 
@@ -46,7 +46,7 @@ Az identitások szabályozása révén a szervezetek a *termelékenység* egyens
 
 ![Identitás életciklusa](./media/identity-governance-overview/identity-lifecycle.png)
 
-Számos szervezet esetében az alkalmazottak identitás-életciklusa az adott felhasználó egy HCM (Human Capital Management) rendszerbeli ábrázolásához van kötve.  A prémium szintű Azure AD automatikusan fenntartja a felhasználói identitásokat a munkanapokban képviselt személyek számára a Active Directory és a Azure Active Directory esetében is, a [munkanap bejövő létesítési oktatóanyagában](../saas-apps/workday-inbound-tutorial.md)leírtak szerint.  A prémium szintű Azure AD [Microsoft Identity Manager](/microsoft-identity-manager/)is tartalmaz, amelyek olyan helyszíni HCM-rendszerekből származó rekordokat importálnak, mint az SAP, az Oracle inintegráció vagy az Oracle PeopleSoft.
+Számos szervezet esetében az alkalmazottak identitás-életciklusa az adott felhasználó egy HCM (Human Capital Management) rendszerbeli ábrázolásához van kötve.  A prémium szintű Azure AD a  [Felhőbeli HR-alkalmazásban az Azure Active Directory felhasználó-létesítési tervezési útmutatóban](../app-provisioning/plan-cloud-hr-provision.md)leírtak szerint automatikusan megtartja a felhasználói identitásokat a munkanapokon és a SuccessFactors Active Directory és Azure Active Directoryben szereplő személyek számára.  A prémium szintű Azure AD [Microsoft Identity Manager](/microsoft-identity-manager/)is tartalmaz, amely a helyszíni HCM-rendszerekből, például az SAP HCM-ből, az Oracle-től és az Oracle PeopleSoft-ból tud adatokat importálni.
 
 A forgatókönyvek egyre nagyobb mértékben igénylik a szervezeten kívüli személyekkel való együttműködést. Az [Azure ad B2B](/azure/active-directory/b2b/) együttműködés lehetővé teszi, hogy biztonságosan ossza meg szervezete alkalmazásait és szolgáltatásait a vendég felhasználókkal és a külső partnerekkel bármely szervezettől, miközben a saját vállalati adatok felett tartja a felügyeletet.  Az [Azure ad-jogosultságok kezelése](entitlement-management-overview.md) lehetővé teszi annak kiválasztását, hogy mely szervezet felhasználói férhetnek hozzá a hozzáféréshez, és hogyan vehetők fel B2B-vendégként a szervezeti címtárba, és biztosíthatja, hogy ezek a vendégek el legyenek távolítva, ha már nem férnek hozzá.
 
@@ -69,6 +69,24 @@ A rendszerjogosultságú hozzáférést a többi szállító a személyazonossá
 ![Emelt szintű hozzáférés életciklusa](./media/identity-governance-overview/privileged-access-lifecycle.png)
 
 A [Azure ad Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) további vezérlőket biztosít a hozzáférési jogosultságok biztosításához az erőforrásokhoz, az Azure ad-ben, az Azure-ban és más Microsoft Online-szolgáltatásokban.  A többtényezős hitelesítés és a feltételes hozzáférés mellett az Azure AD PIM által biztosított igény szerinti hozzáférés-és szerepkör-változási riasztási képességek széles körű irányítási vezérlőket biztosítanak a vállalati erőforrások biztonságossá tételéhez (címtár, Microsoft 365 és Azure erőforrás-szerepkörök). A más hozzáférési formákhoz hasonlóan a szervezetek hozzáférési felülvizsgálatokat is használhatnak a rendszergazdai szerepkörökben lévő összes felhasználóra vonatkozó ismétlődő hozzáférés-visszaigazolások konfigurálásához.
+
+## <a name="governance-capabilities-in-other-azure-ad-features"></a>Irányítási képességek más Azure AD-funkciókban
+
+A fent felsorolt funkciók mellett további Azure AD-funkciók is gyakran használatosak az identitás-irányítási forgatókönyvek biztosításához:
+
+| Képesség | Használati eset |Funkció
+| ------- | --------------------- |-----|
+|Identitás életciklusa (alkalmazottak)|A rendszergazdák engedélyezhetik a felhasználói fiókok üzembe helyezését a munkanap vagy a SuccessFactors Cloud HR vagy a helyszíni HR használatával.|[Felhőbeli HR – Azure AD-felhasználók üzembe helyezése](../app-provisioning/plan-cloud-hr-provision.md)|
+|Identitás életciklusa (vendég)|A rendszergazdák engedélyezhetik az önkiszolgáló vendég felhasználói számára egy másik Azure AD-bérlőből, közvetlen összevonásból, egyszeri jelszóból (OTP) vagy Google-fiókokból való bevezetést.  A vendég felhasználókat a rendszer automatikusan kiépíti és kiépíti életciklus-szabályzatok alapján.|[Jogosultságok kezelése](entitlement-management-overview.md) [B2B](../external-identities/what-is-b2b.md) használatával|
+|Jogosultságkezelés|Az erőforrás-tulajdonosok létrehozhatnak alkalmazásokat, csoportokat, Azure AD-és Microsoft 365-csoportokat és SharePoint Online-webhelyeket tartalmazó hozzáférési csomagokat.|[Jogosultságkezelés](entitlement-management-overview.md)|
+|Hozzáférési kérelmek|A végfelhasználók csoporttagság vagy alkalmazás-hozzáférés igénylésére is jogosultak. A végfelhasználók, beleértve a más szervezetek vendégeit is, hozzáférési csomagokat igényelhetnek.|[Jogosultságkezelés](entitlement-management-overview.md)|
+|Munkafolyamat|Az erőforrás-tulajdonosok a szerepkör-aktiválási kérelmekhez hozzáférési kérelmeket és jóváhagyókat is meghatározhatnak a jóváhagyók és a eszkalációs jóváhagyóik számára.  |[Jogosultságok kezelése](entitlement-management-overview.md) és [PIM](../privileged-identity-management/pim-configure.md)|
+|Házirend és szerepkör-kezelés|A rendszergazda feltételes hozzáférési szabályzatokat adhat meg az alkalmazásokhoz való futásidejű hozzáféréshez.  Az erőforrás-tulajdonosok házirendeket adhatnak meg a felhasználói hozzáféréshez a hozzáférési csomagokon keresztül.|[Feltételes hozzáférés](../conditional-access/overview.md) és [jogosultság-kezelési](entitlement-management-overview.md) szabályzatok|
+|Hozzáférés minősítése|A rendszergazdák a következőhöz engedélyezhetik az ismétlődő hozzáférés-újraminősítést: SaaS-alkalmazások vagy felhőalapú csoporttagság, Azure AD vagy Azure-erőforrás szerepkör-hozzárendelések. Automatikusan távolítsa el az erőforrás-hozzáférést, tiltsa le a vendég hozzáférését, és törölje a vendég fiókokat.|[Hozzáférési felülvizsgálatok](access-reviews-overview.md)a [PIM](../privileged-identity-management/pim-how-to-start-security-review.md) felületén is|
+|Teljesítés és kiépítés|Automatikus kiépítés és megszüntetés az Azure AD-hez csatlakoztatott alkalmazásokban, beleértve a SCIM-t és a SharePoint Online-webhelyeket. |[felhasználó kiépítés](../app-provisioning/user-provisioning.md)|
+|Jelentéskészítés és elemzés|A rendszergazdák lekérhetik a legutóbbi felhasználó-kiépítési és bejelentkezési tevékenység naplóit. Integráció a Azure Monitor és a "ki férhet hozzá" hozzáférési csomagokon keresztül.|[Azure ad-jelentések](../reports-monitoring/overview-reports.md) és- [figyelés](../reports-monitoring/overview-monitoring.md)|
+|Emelt szintű hozzáférés|Igény szerinti és ütemezett hozzáférés, riasztás, jóváhagyási munkafolyamatok Azure AD-szerepkörökhöz (beleértve az egyéni szerepköröket) és az Azure-erőforrás-szerepköröket.|[Azure AD PIM](../privileged-identity-management/pim-configure.md)|
+|Naplózás|A rendszergazdák riasztást kaphatnak a rendszergazdai fiókok létrehozásáról.|[Azure AD PIM-riasztások](../privileged-identity-management/pim-how-to-configure-security-alerts.md)|
 
 ## <a name="getting-started"></a>Első lépések
 
@@ -95,7 +113,7 @@ Ajánlott eljárás a legkevésbé Kiemelt szerepkör használata a rendszergazd
 |Privileged Identity Management | Kiemelt szerepkörű rendszergazda |
 | Használati feltételek | Biztonsági rendszergazda vagy feltételes hozzáférésű rendszergazda |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Mi az az Azure AD-jogosultságkezelés?](entitlement-management-overview.md)
 - [Mik azok az Azure AD-hozzáférési felülvizsgálatok?](access-reviews-overview.md)

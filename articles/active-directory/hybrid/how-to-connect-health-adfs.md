@@ -18,12 +18,12 @@ ms.date: 02/26/2019
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6aa7be140b47d389bea0e7468d1a5ac7e58c3b1b
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 26fdf202cb9bcacee94c83578432f7a399f90a0c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89276286"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306276"
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>Az AD FS monitorozása az Azure AD Connect Health használatával
 Az alábbi dokumentáció az AD FS infrastruktúra Azure AD Connect Health használatával végzett figyelésére vonatkozik. A Azure AD Connect (Sync) Azure AD Connect Health használatával történő figyelésével kapcsolatos információkért lásd: a [Azure ad Connect Health szinkronizálásának használata](how-to-connect-health-sync.md). Továbbá a Azure AD Connect Health Active Directory tartományi szolgáltatások figyelésével kapcsolatos további információkért lásd: a [Azure ad Connect Health használata AD DS használatával](how-to-connect-health-adds.md).
@@ -33,7 +33,7 @@ Az aktív riasztások listáját az Azure AD Connect Health-riasztások szakaszb
 
 Egy aktív vagy egy megoldott riasztásra duplán kattintva egy új panel nyílik meg, amely további információkat, a riasztás megoldását segítő lépéseket és a fontosabb dokumentációkra mutató hivatkozásokat tartalmaz. A már megoldott riasztások esetében az előzményadatokat is megtekintheti.
 
-![Az Azure AD Connect Health portál](./media/how-to-connect-health-adfs/alert2.png)
+![Képernyőkép, amely megjeleníti a riasztások kiválasztására szolgáló Azure AD Connect Health "riasztások" lapot, és megjelenik a "riasztás részletei" ablak.](./media/how-to-connect-health-adfs/alert2.png)
 
 ## <a name="usage-analytics-for-ad-fs"></a>Használatelemzés az AD FS szolgáltatáshoz
 Az Azure AD Connect Health Használatelemzés elemzi az összevonási kiszolgálók hitelesítési forgalmát. A használatelemzés mezőre duplán kattintva megnyílik az elemzés panel, amelyen számos metrika és csoportosítás jelenik meg.
@@ -43,7 +43,7 @@ Az Azure AD Connect Health Használatelemzés elemzi az összevonási kiszolgál
 >
 >
 
-![Az Azure AD Connect Health portál](./media/how-to-connect-health-adfs/report1.png)
+![Azure AD Connect Health a "használati elemzés" oldalt bemutató képernyőkép.](./media/how-to-connect-health-adfs/report1.png)
 
 További metrikák kiválasztásához adjon meg egy időtartományt, vagy a csoportosítás módosításához kattintson a jobb gombbal a használatelemzés diagramra, és válassza a Diagram szerkesztése lehetőséget. Ezt követően megadhatja az időtartományt, kiválaszthat egy másik metrikát, illetve módosíthatja a csoportosítást. A hitelesítési forgalom eloszlását különféle „metrikák” alapján tekintheti meg, és mindegyik metrikát csoportosíthatja a következő szakaszban ismertetett vonatkozó „csoportosítási szempont” paraméterek használatával:
 
@@ -78,7 +78,7 @@ További metrikák kiválasztásához adjon meg egy időtartományt, vagy a csop
 ## <a name="performance-monitoring-for-ad-fs"></a>Teljesítményfigyelés az AD FS szolgáltatáshoz
 Az Azure AD Connect Health-teljesítményfigyelés a metrikákkal kapcsolatos figyelési információkat biztosít. A Figyelés mező kijelölésével megnyílik egy új panel, amely részletes információkat tartalmaz a metrikákra vonatkozóan.
 
-![Az Azure AD Connect Health portál](./media/how-to-connect-health-adfs/perf1.png)
+![A Azure AD Connect Health teljesítményének figyelése oldalt megjelenítő képernyőkép.](./media/how-to-connect-health-adfs/perf1.png)
 
 A panel tetején lévő Szűrővel kiszolgálónként szűrheti az adatokat, és megtekintheti az egyes különálló kiszolgálók metrikáit. A metrika módosításához a jobb gombbal kattintson a figyelési diagramra a figyelés panel alatt, és válassza a Diagram szerkesztése lehetőséget (vagy a Diagram szerkesztése gombot). A megnyíló új panelen a legördülő menüből kiválaszthatja a további metrikákat, és megadhat egy időtartományt a vonatkozó teljesítményadatok megtekintéséhez.
 
@@ -89,7 +89,7 @@ Azonban más okok miatt is előfordulhat, hogy az AD FS-kiszolgálóknak váratl
 
 Az AD FS szolgáltatáshoz elérhető Azure AD Connect Health jelentést készít a rossz felhasználónév/jelszó megadásával leggyakrabban sikertelenül bejelentkezni próbáló 50 felhasználóról. Ez a jelentés a farmokon lévő összes AD FS-kiszolgáló által létrehozott összes naplózási esemény feldolgozásával készíthető el.
 
-![Az Azure AD Connect Health portál](./media/how-to-connect-health-adfs/report1a.png)
+![Képernyőfelvétel: a "jelentések" szakasz, amely az elmúlt 30 nap során feltett hibás jelszavak számát mutatja.](./media/how-to-connect-health-adfs/report1a.png)
 
 A jelentésen belül könnyen elérhetőek az alábbi információk:
 

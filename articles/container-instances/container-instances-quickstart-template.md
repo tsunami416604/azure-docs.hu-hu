@@ -4,14 +4,14 @@ description: Ebben a rövid útmutatóban egy Azure Resource Manager sablon hasz
 services: azure-resource-manager
 ms.service: azure-resource-manager
 ms.topic: quickstart
-ms.custom: subject-armqs, devx-track-javascript
+ms.custom: subject-armqs, devx-track-js
 ms.date: 04/30/2020
-ms.openlocfilehash: e501622ca10197796de1097db7b95eddfea8115f
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 621e3e1cef39e34656c094a39d218d5d5866fa26
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88651675"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91309081"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-an-arm-template"></a>Gyors útmutató: tároló-példány üzembe helyezése az Azure-ban ARM-sablon használatával
 
@@ -91,7 +91,7 @@ A tároló naplóinak megtekintéséhez a **Beállítások**területen válassza
 
 Ha elkészült a tárolóval, a tároló példányának **Áttekintés** lapján válassza a **Törlés**lehetőséget. A rendszer kérésére erősítse meg a törlést.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy Azure Container-példányt egy nyilvános Microsoft-rendszerképből. Ha szeretne létrehozni és üzembe helyezni egy tárolórendszerképet egy privát Azure-tárolóregisztrációs adatbázisból, lépjen tovább az Azure Container Instances oktatóanyagára.
 

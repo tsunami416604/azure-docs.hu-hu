@@ -4,16 +4,16 @@ description: Ebből a cikkből megtudhatja, hogyan jelenítheti meg a forgalmi a
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 02/27/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 8b07b520dec4e9149c6748777a119b68e56c65e9
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 93cabb566db02de7ef991fe9cdd293f8c399c3a3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87126397"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91272956"
 ---
 # <a name="show-traffic-data-on-the-map-using-azure-maps-android-sdk"></a>Forgalmi adatok megjelenítése a térképen Azure Maps Android SDK használatával
 
@@ -53,7 +53,7 @@ import static com.microsoft.azure.maps.mapcontrol.options.TrafficOptions.flow;
 
 Az alábbi kódrészlettel állíthatja be a forgalmi folyamatra vonatkozó adatokat. Az előző szakaszban szereplő kódhoz hasonlóan a metódus visszatérési értékét is átadjuk a `flow` `setTraffic` metódusnak. Négy érték adható át `flow` , és minden érték `flow` a megfelelő értéket adja vissza. A visszatérési értéke a következő `flow` argumentumként lesz átadva: `setTraffic` . A következő négy értéknél tekintse meg az alábbi táblázatot:
 
-|Folyamat értéke | Description|
+|Folyamat értéke | Leírás|
 | :-- | :-- |
 | Forgalomáramlási. NONE | Nem jeleníti meg a forgalmi adatokat a térképen |
 | Forgalomáramlási. relatív | Az út szabad áramlási sebességéhez viszonyított forgalmi adatokat jeleníti meg |
@@ -229,7 +229,7 @@ Egy adott szolgáltatás incidensének beszerzéséhez használhatja az alábbi 
 
    </center>
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő útmutatókból megtudhatja, hogyan adhat hozzá további információkat a térképhez:
 

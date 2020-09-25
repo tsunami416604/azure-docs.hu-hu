@@ -1,17 +1,17 @@
 ---
 title: Új hitelesítés a StorSimple virtuális tömbökhöz
-description: Ismerteti, hogyan használható az HRE-alapú hitelesítés a szolgáltatáshoz, új regisztrációs kulcs előállítása, valamint az eszközök manuális regisztrálásának elvégzése.
+description: Ismerje meg a HRE-hitelesítést, a társított új szolgáltatás regisztrációs kulcsát, valamint a tűzfalszabályok módosításait a StorSimple-eszközökre.
 author: alkohli
 ms.service: storsimple
 ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 89f367e866c1a794f4359c76b8b8a8a9cfefd50d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d750b3a85741bb4761b640848f01e5917760b5aa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76273806"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91261090"
 ---
 # <a name="use-the-new-authentication-for-your-storsimple"></a>Az új hitelesítés használata a StorSimple
 
@@ -38,7 +38,7 @@ Annak biztosítása érdekében, hogy a szolgáltatás HRE-alapú hitelesítést
 
 StorSimple virtuális tömb használata esetén győződjön meg arról, hogy a tűzfalszabályok a következő URL-címet tartalmazzák:
 
-| URL-minta                         | Felhő | Összetevő/funkció         |
+| URL-minta                         | Felhőbeli | Összetevő/funkció         |
 |------------------------------------|-------|---------------------------------|
 | `https://login.windows.net`        | Azure Public |HRE hitelesítési szolgáltatás      |
 | `https://login.microsoftonline.us` | Egyesült Államok – Államigazgatás |HRE hitelesítési szolgáltatás      |
@@ -84,6 +84,6 @@ A HRE szolgáltatás regisztrációs kulcsának létrehozásához hajtsa végre 
 
     ![Újragenerált megerősítés megerősítése](./media/storsimple-virtual-array-aad-registration-key/aad-registration-key2.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [StorSimple virtuális tömb](storsimple-virtual-array-deploy1-portal-prep.md) üzembe helyezéséről

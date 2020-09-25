@@ -12,17 +12,17 @@ ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
+ms.date: 09/24/2020
 ms.topic: how-to
-ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9e6686c69eb6dababb577e9c556a8a13ec42485a
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 3b2c89086688451b16a8a6e10c25be65ffd4d9dd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89296464"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273857"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Az Azure AD Connect Health-ügynök telepítése
 
@@ -30,9 +30,13 @@ Ez a dokumentum végigvezeti az Azure AD Connect Health-ügynökök telepítés�
 
 ## <a name="requirements"></a>Követelmények
 
+
+> [!IMPORTANT]
+> A Azure AD Connect Health ügynök telepítése a Windows Server Core-on nem támogatott.
+
 Az alábbi táblázat az Azure AD Connect Health használatának követelményeit sorolja fel.
 
-| Követelmény | Description |
+| Követelmény | Leírás |
 | --- | --- |
 | Azure AD Premium |Az Azure AD Connect Health egy Azure AD Premium szolgáltatás, amelyhez Azure AD Premium szükséges. <br /><br />További információ: [Bevezetés a prémium szintű Azure ad](../fundamentals/active-directory-get-started-premium.md) használatába <br />Egy 30 napos ingyenes próbaverzió indításához lásd: [Próbaverzió indítása.](https://azure.microsoft.com/trial/get-started-active-directory/) |
 | Az Azure AD Connect Health szolgáltatás indításához az Azure AD szolgáltatásban globális rendszergazdának kell lennie |Alapértelmezés szerint kizárólag a globális rendszergazdák telepíthetik és konfigurálhatják az állapotügynököket, hogy azok elinduljanak, a portálhoz hozzáférjenek, és műveleteket hajtsanak végre az Azure AD Connect Health szolgáltatásban. További információkért lásd: [Az Azure AD-címtár felügyelete](../fundamentals/active-directory-administer.md). <br /><br /> Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával engedélyezheti a hozzáférést Azure AD Connect Health a szervezet más felhasználói számára. További információ: [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) Azure ad Connect Healthhoz.](how-to-connect-health-operations.md#manage-access-with-azure-rbac) <br /><br />**Fontos:** Az ügynökök telepítésekor használt fióknak munkahelyi vagy iskolai fióknak kell lennie. Nem lehet Microsoft-fiók. További információkért lásd: [Regisztráció az Azure-ba szervezetként](../fundamentals/sign-up-organization.md) |
@@ -48,7 +52,7 @@ Az alábbi táblázat az Azure AD Connect Health használatának követelményei
 
 > [!NOTE]
 > Ha magas rendelkezésre állású és rendkívül korlátozott környezettel rendelkezik, az alábbi, az engedélyezett IE fokozott biztonsági beállításokban felsoroltak mellett a szolgáltatási végpontok listájában említett URL-címeket is fel kell vennie. 
->
+
 
 ### <a name="outbound-connectivity-to-the-azure-service-endpoints"></a>Kimenő kapcsolódás az Azure szolgáltatásvégpontokra
 

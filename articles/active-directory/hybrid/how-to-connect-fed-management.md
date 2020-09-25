@@ -18,12 +18,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dadffd6fe3e6b438b21900f957f0d4ef71bb23cb
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: cc0c8c40e370579100c562e0289c97e3f5ce4236
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661260"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91274112"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Active Directory összevonási szolgáltatások (AD FS) kezelése és testreszabása Azure AD Connect használatával
 Ez a cikk a Active Directory összevonási szolgáltatások (AD FS) (AD FS) Azure Active Directory (Azure AD) használatával történő kezelését és testreszabását ismerteti. Emellett olyan gyakori AD FS feladatokat is tartalmaz, amelyeket a AD FS farmok teljes konfigurálásához lehet szükség.
@@ -52,11 +52,11 @@ A Azure AD Connect segítségével megtekintheti a AD FS és az Azure AD megbíz
    ![HRE-és ADFS-megbízhatóság javítása](./media/how-to-connect-fed-management/RepairADTrust1.PNG)
 
 2. A **Kapcsolódás az Azure ad-hoz** lapon adja meg az Azure ad globális rendszergazdai hitelesítő adatait, és kattintson a **tovább**gombra.
-   ![Csatlakozás az Azure AD-hez](./media/how-to-connect-fed-management/RepairADTrust2.PNG)
+   ![Képernyőfelvétel: a "kapcsolódás az Azure AD szolgáltatáshoz" oldal, például a megadott hitelesítő adatokkal.](./media/how-to-connect-fed-management/RepairADTrust2.PNG)
 
 3. A **távelérési hitelesítő adatok** lapon adja meg a tartományi rendszergazda hitelesítő adatait.
 
-   ![Távelérési hitelesítő adatok](./media/how-to-connect-fed-management/RepairADTrust3.PNG)
+   ![Képernyőkép, amely a "távelérési hitelesítő adatok" lapot mutatja, például a megadott hitelesítő adatokat.](./media/how-to-connect-fed-management/RepairADTrust3.PNG)
 
     Miután rákattintott a **tovább**gombra, Azure ad Connect ellenőrzi a tanúsítvány állapotát, és megjeleníti a problémákat.
 
@@ -64,7 +64,7 @@ A Azure AD Connect segítségével megtekintheti a AD FS és az Azure AD megbíz
 
     A **konfigurálásra kész** lapon a megbízhatóság javításához végrehajtandó műveletek listája látható.
 
-    ![Ready to configure (Konfigurálásra kész)](./media/how-to-connect-fed-management/RepairADTrust5.PNG)
+    ![Képernyőfelvétel: a "készen áll a konfigurálásra" oldal, amely a műveletek listáját tartalmazza.](./media/how-to-connect-fed-management/RepairADTrust5.PNG)
 
 4. A megbízhatóság kijavításához kattintson a **telepítés** gombra.
 
@@ -98,7 +98,7 @@ A AD FS alternatív bejelentkezési AZONOSÍTÓjának konfigurálása két fő l
 
 2. A **Kapcsolódás az Azure ad-hoz** lapon adja meg az Azure ad globális rendszergazdai hitelesítő adatait, és kattintson a **tovább**gombra.
 
-   ![Csatlakozás az Azure AD szolgáltatáshoz](./media/how-to-connect-fed-management/AddNewADFSServer2.PNG)
+   ![Képernyőkép, amely a "kapcsolódás az Azure AD-hoz" lapot mutatja a megadott hitelesítő adatokkal.](./media/how-to-connect-fed-management/AddNewADFSServer2.PNG)
 
 3. Adja meg a tartományi rendszergazda hitelesítő adatait.
 
@@ -106,9 +106,9 @@ A AD FS alternatív bejelentkezési AZONOSÍTÓjának konfigurálása két fő l
 
 4. Azure AD Connect kéri a PFX-fájl jelszavának megadását, miközben az új AD FS Farm konfigurálását Azure AD Connect. Kattintson a **jelszó megadása** gombra a pfx-fájl jelszavának megadásához.
 
-   ![Tanúsítvány jelszava](./media/how-to-connect-fed-management/AddNewADFSServer4.PNG)
+   ![Képernyőfelvétel: az "SSL-tanúsítvány megadása" oldal megnyitása a "tanúsítvány jelszava" ablak megnyitásával.](./media/how-to-connect-fed-management/AddNewADFSServer4.PNG)
 
-    ![TLS/SSL-tanúsítvány meghatározása](./media/how-to-connect-fed-management/AddNewADFSServer5.PNG)
+    ![Képernyőfelvétel: "SSL-tanúsítvány megadása" oldal, miután megadta a PFX-fájlhoz tartozó jelszót.](./media/how-to-connect-fed-management/AddNewADFSServer5.PNG)
 
 5. A **AD FS kiszolgálók** lapon adja meg a AD FS farmhoz hozzáadandó kiszolgáló nevét vagy IP-címét.
 
@@ -116,9 +116,9 @@ A AD FS alternatív bejelentkezési AZONOSÍTÓjának konfigurálása két fő l
 
 6. Kattintson a **tovább**gombra, és folytassa a **konfigurálást** a végső oldalon. Miután Azure AD Connect befejezte a kiszolgálók hozzáadását a AD FS farmhoz, lehetősége lesz ellenőrizni a kapcsolatot.
 
-   ![Ready to configure (Konfigurálásra kész)](./media/how-to-connect-fed-management/AddNewADFSServer7.PNG)
+   ![Képernyőfelvétel: a "készen áll a konfigurálásra" oldal, amely a "telepítés" gombra kattintás után végrehajtandó műveletek listáját jeleníti meg.](./media/how-to-connect-fed-management/AddNewADFSServer7.PNG)
 
-    ![A telepítés befejeződött](./media/how-to-connect-fed-management/AddNewADFSServer8.PNG)
+    ![A "telepítés befejezése" lapot tartalmazó képernyőkép, amelynek "az intranetes konfiguráció ellenőrzése sikeres volt" üzenet jelenik meg. ](./media/how-to-connect-fed-management/AddNewADFSServer8.PNG)
 
 ## <a name="add-an-ad-fs-wap-server"></a><a name="addwapserver"></a>AD FS WAP-kiszolgáló hozzáadása 
 
@@ -131,7 +131,7 @@ A AD FS alternatív bejelentkezési AZONOSÍTÓjának konfigurálása két fő l
 
 2. Adja meg az Azure globális rendszergazdai hitelesítő adatait.
 
-   ![Csatlakozás az Azure AD szolgáltatáshoz](./media/how-to-connect-fed-management/wapserver2.PNG)
+   ![Képernyőfelvétel: a "kapcsolódás az Azure AD-hoz" oldal, egy példa felhasználónevével és jelszavával.](./media/how-to-connect-fed-management/wapserver2.PNG)
 
 3. Az **SSL-tanúsítvány megadása** lapon adja meg a AD FS Farm Azure ad Connect használatával való konfigurálásakor megadott pfx-fájl jelszavát.
    ![Tanúsítvány jelszava](./media/how-to-connect-fed-management/WapServer3.PNG)
@@ -148,7 +148,7 @@ A AD FS alternatív bejelentkezési AZONOSÍTÓjának konfigurálása két fő l
 
 6. A **készen áll a konfigurálásra** lapon a varázsló megjeleníti a végrehajtandó műveletek listáját.
 
-   ![Ready to configure (Konfigurálásra kész)](./media/how-to-connect-fed-management/WapServer7.PNG)
+   ![Képernyőfelvétel: a "készen áll a konfigurálásra" oldal, amely a végrehajtandó műveletek listáját jeleníti meg.](./media/how-to-connect-fed-management/WapServer7.PNG)
 
 7. A konfigurálás befejezéséhez kattintson a **telepítés** gombra. A konfiguráció befejezése után a varázsló lehetőséget ad a kiszolgálók kapcsolatának ellenőrzésére. A kapcsolat ellenőrzéséhez kattintson az **ellenőrzés** gombra.
 

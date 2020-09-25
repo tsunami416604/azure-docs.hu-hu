@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: nitinme
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3d52cd57d48a03c5dab8cb8098cd212e76ca76a1
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 6f6b2ed9357acf4dceeb960b1abdf6813987f657
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88929074"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324892"
 ---
 # <a name="migrate-your-face-data-to-a-different-face-subscription"></a>Az Arcfelismerés átmigrálása egy másik Face-előfizetésbe
 
@@ -229,7 +229,7 @@ Miután befejezte az adatok áttelepítését, manuálisan törölje a pillanatk
 await FaceClientEastAsia.Snapshot.DeleteAsync(snapshotId);
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ezután tekintse meg a megfelelő API-dokumentációt, Fedezze fel a pillanatkép szolgáltatást használó minta alkalmazást, vagy kövesse az útmutató lépéseit az itt említett egyéb API-műveletek használatának megkezdéséhez:
 
@@ -237,4 +237,3 @@ Ezután tekintse meg a megfelelő API-dokumentációt, Fedezze fel a pillanatké
 - [Face Snapshot minta](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample)
 - [Arcok hozzáadása](how-to-add-faces.md)
 - [Arcok felismerése a képeken](HowtoDetectFacesinImage.md)
-- [Képeken lévő arcok azonosítása](HowtoIdentifyFacesinImage.md)

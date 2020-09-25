@@ -1,14 +1,16 @@
 ---
 title: A megszemélyesítő működése – személyre szabás
 description: A személyre szabási _hurok_ gépi tanulással hozza létre a modellt, amely előre jelzi a tartalom legfelső szintű műveletét. A modell kizárólag a rangsorban és a jutalmazási hívásokkal eljuttatott adataira van kitanítva.
+ms.service: cognitive-services
+ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 02/18/2020
-ms.openlocfilehash: 836c207213ac52a60e27da6fc957418187059023
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cfbe5cf8c19bfafb38f6149391e09350785ebf9c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77623744"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91303607"
 ---
 # <a name="how-personalizer-works"></a>A Personalizer működése
 
@@ -54,6 +56,6 @@ A személyre szabott adatok az összes jelenleg megőrzött adat alapján a Azur
 
 A személyre szabott tudomány és kutatás területén a [megerősítő tanulás](concepts-reinforcement-learning.md) , többek között a dokumentumok, a kutatási tevékenységek, valamint a kutatás folyamatban van a Microsoft Research szolgáltatásban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerkedjen meg a személyre szabott [leggyakoribb forgatókönyvekkel](where-can-you-use-personalizer.md)

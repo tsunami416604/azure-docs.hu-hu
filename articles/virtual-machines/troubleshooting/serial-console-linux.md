@@ -1,6 +1,6 @@
 ---
 title: Azure soros konzol Linux rendszerhez | Microsoft Docs
-description: Kétirányú soros konzol az Azure Virtual Machines és Virtual Machine Scale Setshoz.
+description: Kétirányú soros konzol Azure Virtual Machines és Virtual Machine Scale Sets Linux-példa használatával.
 services: virtual-machines-linux
 documentationcenter: ''
 author: asinn826
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: cacb517c783416994fa95bd0f6a6d15a95a52ab4
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 9a31a22a5b037162198f594d9bcf35c91a0a4654
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423456"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306871"
 ---
 # <a name="azure-serial-console-for-linux"></a>Azure soros konzol Linuxhoz
 
@@ -79,7 +79,7 @@ Ha egyéni kernelt hoz létre, érdemes lehet engedélyezni a következő kernel
 
 ## <a name="common-scenarios-for-accessing-the-serial-console"></a>A soros konzol elérésének gyakori forgatókönyvei
 
-Forgatókönyv          | Műveletek a soros konzolon
+Használati eset          | Műveletek a soros konzolon
 :------------------|:-----------------------------------------
 Törött *FSTAB* -fájl | Nyomja le az **ENTER** billentyűt a folytatáshoz, majd egy szövegszerkesztővel javítsa ki az *FSTAB* fájlt. Előfordulhat, hogy egyfelhasználós módban kell lennie. További információért lásd a soros konzol című szakaszt, amely [bemutatja, hogyan lehet az fstab-problémákat kijavítani](https://support.microsoft.com/help/3206699/azure-linux-vm-cannot-start-because-of-fstab-errors) és a [soros konzol használatával hozzáférni a grub és az egyfelhasználós üzemmódhoz](serial-console-grub-single-user-mode.md).
 Helytelen tűzfalszabályok |  Ha úgy konfigurálta az iptables-t, hogy letiltsa az SSH-kapcsolatot, akkor a soros konzol használatával az SSH használata nélkül is dolgozhat a virtuális géppel. További részletek az [iptables man oldalon](https://linux.die.net/man/8/iptables)találhatók.<br>Hasonlóképpen, ha a tűzfal blokkolja az SSH-hozzáférést, a virtuális gépet a soros konzolon keresztül érheti el, és újrakonfigurálhatja a tűzfalat. További részletek a tűzfalon keresztül elérhető [dokumentációban](https://firewalld.org/documentation/)találhatók.
@@ -99,7 +99,7 @@ A soros konzolhoz való hozzáférés csak azokra a felhasználókra korlátozó
 ### <a name="channel-security"></a>Csatorna biztonsága
 A visszaadott és oda továbbított összes adatforgalom titkosítva van a huzalon.
 
-### <a name="audit-logs"></a>Naplók
+### <a name="audit-logs"></a>Auditnaplók
 A soros konzolhoz való összes hozzáférés jelenleg a virtuális gép [rendszerindítási diagnosztikai](./boot-diagnostics.md) naplóiban van naplózva. A naplókhoz való hozzáférést az Azure-beli virtuális gép rendszergazdája birtokolja és felügyeli.
 
 > [!CAUTION]
@@ -114,7 +114,7 @@ Ha egy felhasználó csatlakozik a soros konzolhoz, és egy másik felhasználó
 ## <a name="accessibility"></a>Akadálymentesség
 A kisegítő lehetőségek az Azure soros konzol egyik fő témája. Ennek érdekében biztosítjuk, hogy a soros konzol teljes mértékben elérhető legyen.
 
-### <a name="keyboard-navigation"></a>Navigálás billentyűzettel
+### <a name="keyboard-navigation"></a>Navigáció a billentyűzeten
 A billentyűzet **Tab** billentyűjét használva navigáljon a soros konzol felületén a Azure Portal. A hely ki lesz emelve a képernyőn. A soros konzol ablakának fókuszának elhagyásához nyomja le a **CTRL F6 billentyűt**a + **F6** billentyűzeten.
 
 ### <a name="use-serial-console-with-a-screen-reader"></a>Soros konzol használata képernyőolvasóval
@@ -133,38 +133,38 @@ Kiszámíthatatlan billentyűzet-bevitel a SLES BYOS-lemezképekben. A billenty�
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-**K. Hogyan küldhetek visszajelzést?**
+**Q. Hogyan küldhetek visszajelzést?**
 
-A. Visszajelzés létrehozásához hozzon létre egy GitHub-problémát a következő címen: https://aka.ms/serialconsolefeedback . Másik lehetőségként (kevésbé előnyben részesített) küldhet visszajelzést azserialhelp@microsoft.com a virtuális gép kategóriájában vagy a használatával https://feedback.azure.com .
+A. Visszajelzés létrehozásához hozzon létre egy GitHub-problémát a következő címen:  https://aka.ms/serialconsolefeedback . Másik lehetőségként (kevésbé előnyben részesített) küldhet visszajelzést azserialhelp@microsoft.com a virtuális gép kategóriájában vagy a használatával https://feedback.azure.com .
 
-**K. támogatja a soros konzol a másolást és beillesztést?**
+**Q. Támogatja a soros konzol a másolást és beillesztést?**
 
 A. Igen. **Ctrl** + **Shift** + **C** **Ctrl** + **Shift** + A terminálba másoláshoz és beillesztéshez használja a CTRL SHIFT C és a CTRL SHIFT**V** billentyűkombinációt.
 
-**K. használhatok soros konzolt SSH-kapcsolat helyett?**
+**Q. Használhatok soros konzolt SSH-kapcsolat helyett?**
 
 A. Habár ez a használat technikailag lehetségesnek tűnhet, a soros konzol elsődlegesen hibaelhárítási eszközként használható olyan helyzetekben, amikor az SSH-n keresztüli kapcsolat nem lehetséges. Javasoljuk, hogy a soros konzolt SSH-helyettesítéssel használja a következő okok miatt:
 
 - A soros konzol nem rendelkezik annyi sávszélességgel, mint az SSH. Mivel ez egy csak szöveges kapcsolat, a grafikus felhasználói felület több nehéz interakciót okoz.
 - Serial console hozzáférés jelenleg csak Felhasználónév és jelszó használatával lehetséges. Mivel az SSH-kulcsok sokkal biztonságosabbak, mint a Felhasználónév/jelszó kombinációk, a bejelentkezési biztonsági szempontból javasoljuk, hogy az SSH-t a soros konzolon keresztül.
 
-**K. ki engedélyezheti vagy letilthatja az előfizetéshez tartozó soros konzolt?**
+**Q. Ki engedélyezheti vagy tilthatja le az előfizetéshez tartozó soros konzolt?**
 
 A. A soros konzol előfizetés szintű engedélyezéséhez vagy letiltásához írási engedéllyel kell rendelkeznie az előfizetéshez. Az írási engedéllyel rendelkező szerepkörök rendszergazdai vagy tulajdonosi szerepköröket is tartalmaznak. Az egyéni szerepkörök rendelkezhetnek írási engedélyekkel is.
 
-**K. ki férhet hozzá a virtuális gép/virtuálisgép-méretezési csoport soros konzolján?**
+**Q. Ki férhet hozzá a virtuális gép/virtuálisgép-méretezési csoport soros konzolján?**
 
 A. A soros konzol eléréséhez a virtuális gép közreműködői szerepköre vagy a virtuális gép vagy virtuálisgép-méretezési csoport számára is magasabbnak kell lennie.
 
-**K. a soros konzol nem jelenít meg semmit, mit tegyek?**
+**Q. A soros konzolon nem jelenik meg semmi, mit tegyek?**
 
 A. A rendszerkép valószínűleg helytelenül van konfigurálva a soros konzolhoz való hozzáféréshez. További információ a rendszerképek a soros konzol engedélyezéséről való konfigurálásáról: [Serial Console Linux-disztribúció rendelkezésre állása](#serial-console-linux-distribution-availability).
 
-**K. elérhető a soros konzol a virtuálisgép-méretezési csoportokhoz?**
+**Q. Elérhető a soros konzol a virtuálisgép-méretezési csoportokhoz?**
 
 A. igen! Lásd [a Virtual Machine Scale sets soros konzolját](serial-console-overview.md#serial-console-for-virtual-machine-scale-sets)
 
-**K. Ha a virtuális gép vagy virtuálisgép-méretezési csoport csak SSH-kulcsos hitelesítéssel van beállítva, akkor is használhatom a soros konzolt a virtuális gép/virtuálisgép-méretezési csoport példányaihoz való kapcsolódáshoz?**
+**Q. Ha a virtuális gép vagy a virtuálisgép-méretezési csoport csak az SSH-kulcsos hitelesítés használatával lett beállítva, akkor is használhatom a soros konzolt a virtuális gép/virtuálisgép-méretezési csoport példányához való kapcsolódáshoz?**
 
 A. Igen. Mivel a soros konzol nem igényel SSH-kulcsokat, csak Felhasználónév/jelszó kombinációt kell beállítania. Ehhez válassza a **jelszó alaphelyzetbe állítása** lehetőséget a Azure Portalban, és használja ezeket a hitelesítő adatokat a soros konzolra való bejelentkezéshez.
 

@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8e575cf9bba02a59179cc70870fb680a27648963
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 466e590ba22efe1c2fbb457c15bc7f979f8a172e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85201175"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259636"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Tudnivalók a jogcímek feloldóinak Azure Active Directory B2C egyéni házirendekben
 
@@ -44,7 +44,7 @@ A technikai profilban rendelje hozzá a jogcím feloldóját a jogcím típusáh
 
 A következő fejezetei az elérhető jogcímek feloldóit sorolja fel.
 
-### <a name="culture"></a>Kulturális környezet
+### <a name="culture"></a>Kultúra
 
 | Jogcím | Leírás | Példa |
 | ----- | ----------- | --------|
@@ -67,16 +67,16 @@ A következő fejezetei az elérhető jogcímek feloldóit sorolja fel.
 | Jogcím | Leírás | Példa |
 | ----- | ----------- | --------|
 | {OIDC: AuthenticationContextReferences} |A `acr_values` lekérdezési karakterlánc paraméter. | N.A. |
-| {OIDC: ClientId} |A `client_id` lekérdezési karakterlánc paraméter. | 00000000-0000-0000-0000-000000000000 |
-| {OIDC: DomainHint} |A `domain_hint` lekérdezési karakterlánc paraméter. | facebook.com |
+| {OIDC: ClientId} |A `client_id`  lekérdezési karakterlánc paraméter. | 00000000-0000-0000-0000-000000000000 |
+| {OIDC: DomainHint} |A `domain_hint`  lekérdezési karakterlánc paraméter. | facebook.com |
 | {OIDC: LoginHint} |  A `login_hint` lekérdezési karakterlánc paraméter. | someone@contoso.com |
 | {OIDC: MaxAge} | A `max_age` . | N.A. |
-| {OIDC: alkalom} |A `Nonce` lekérdezési karakterlánc paraméter. | defaultNonce |
+| {OIDC: alkalom} |A `Nonce`  lekérdezési karakterlánc paraméter. | defaultNonce |
 | {OIDC: Password}| Az [erőforrás-tulajdonos jelszava hitelesíti](ropc-custom.md) a felhasználói jelszót.| jelszó1| 
 | {OIDC: prompt} | A `prompt` lekérdezési karakterlánc paraméter. | bejelentkezés |
-| {OIDC: RedirectUri} |A `redirect_uri` lekérdezési karakterlánc paraméter. | https://jwt.ms |
-| {OIDC: erőforrás} |A `resource` lekérdezési karakterlánc paraméter. | N.A. |
-| {OIDC: hatókör} |A `scope` lekérdezési karakterlánc paraméter. | OpenID |
+| {OIDC: RedirectUri} |A `redirect_uri`  lekérdezési karakterlánc paraméter. | https://jwt.ms |
+| {OIDC: erőforrás} |A `resource`  lekérdezési karakterlánc paraméter. | N.A. |
+| {OIDC: hatókör} |A `scope`  lekérdezési karakterlánc paraméter. | OpenID |
 | {OIDC: username}| Az [erőforrás-tulajdonos jelszavának hitelesítő adatai folyamat](ropc-custom.md) felhasználójának felhasználóneve.| emily@contoso.com| 
 
 ### <a name="context"></a>Környezet
@@ -88,7 +88,7 @@ A következő fejezetei az elérhető jogcímek feloldóit sorolja fel.
 | {Context: DateTimeInUtc} |A dátum és idő (UTC).  | 10/10/2018 12:00:00 PM |
 | {Context: Deploymentmode beállítása} |A házirend-telepítési mód.  | Éles környezet |
 | {Context: Ip_cím} | A felhasználó IP-címe. | 11.111.111.11 |
-| {Context: KMSI} | Azt jelzi, hogy be van-e jelölve [a bejelentkezve marad](custom-policy-keep-me-signed-in.md) jelölőnégyzet. |  igaz |
+| {Context: KMSI} | Azt jelzi, hogy be van-e jelölve [a bejelentkezve marad](custom-policy-keep-me-signed-in.md) jelölőnégyzet. |  true |
 
 ### <a name="claims"></a>Jogcímek 
 
@@ -113,6 +113,7 @@ Egy OIDC-vagy OAuth2-kérelem részeként megadott paraméter neve a felhasznál
 | Jogcím | Leírás | Példa |
 | ----- | ----------------------- | --------|
 | {oauth2: access_token} | A hozzáférési jogkivonat. | N.A. |
+| {oauth2: refresh_token} | A frissítési jogkivonat. | N.A. |
 
 
 ### <a name="saml"></a>SAML
@@ -122,8 +123,8 @@ Egy OIDC-vagy OAuth2-kérelem részeként megadott paraméter neve a felhasznál
 | {SAML: AuthnContextClassReferences} | Az `AuthnContextClassRef` elem értéke az SAML-kérelemből. | urn: Oasis: nevek: TC: SAML: 2.0: AC: osztályok: PasswordProtectedTransport |
 | {SAML: NameIdPolicyFormat} | Az `Format` attribútum az SAML- `NameIDPolicy` kérelem eleme alapján. | urn: Oasis: nevek: TC: SAML: 1.1: nameid-Format: emailAddress |
 | {SAML: kiállító} |  Az SAML-kérelem SAML- `Issuer` elemének értéke.| `https://contoso.com` |
-| {SAML: AllowCreate} | Az `AllowCreate` attribútum értéke az SAML- `NameIDPolicy` kérelem eleme alapján. | True (Igaz) |
-| {SAML: ForceAuthn} | Az `ForceAuthN` attribútum értéke az SAML- `AuthnRequest` kérelem eleme alapján. | True (Igaz) |
+| {SAML: AllowCreate} | Az `AllowCreate` attribútum értéke az SAML- `NameIDPolicy` kérelem eleme alapján. | Igaz |
+| {SAML: ForceAuthn} | Az `ForceAuthN` attribútum értéke az SAML- `AuthnRequest` kérelem eleme alapján. | Igaz |
 | {SAML: ProviderName} | Az `ProviderName` attribútum értéke az SAML- `AuthnRequest` kérelem eleme alapján.| Contoso.com |
 | {SAML: RelayState} | A `RelayState` lekérdezési karakterlánc paraméter.| 
 
@@ -131,7 +132,7 @@ Egy OIDC-vagy OAuth2-kérelem részeként megadott paraméter neve a felhasznál
 
 A jogcímek feloldóit a következő elemekkel használhatja:
 
-| Item | Elem | Beállítások |
+| Elem | Elem | Beállítások |
 | ----- | ----------------------- | --------|
 |Application Insights műszaki profil |`InputClaim` | |
 |[Azure Active Directory](active-directory-technical-profile.md) műszaki profil| `InputClaim`, `OutputClaim`| 1, 2|
@@ -139,7 +140,7 @@ A jogcímek feloldóit a következő elemekkel használhatja:
 |[OpenID Connect](openid-connect-technical-profile.md) – technikai profil| `InputClaim`, `OutputClaim`| 1, 2|
 |[Jogcím-átalakítási](claims-transformation-technical-profile.md) technikai profil| `InputClaim`, `OutputClaim`| 1, 2|
 |[Rest-szolgáltató](restful-technical-profile.md) technikai profilja| `InputClaim`| 1, 2|
-|[SAML-identitás szolgáltatójának](saml-identity-provider-technical-profile.md) műszaki profilja| `OutputClaim`| 1, 2|
+|[SAML-identitás szolgáltatójának](saml-identity-provider-technical-profile.md)  műszaki profilja| `OutputClaim`| 1, 2|
 |[Önérvényesített](self-asserted-technical-profile.md) technikai profil| `InputClaim`, `OutputClaim`| 1, 2|
 |[ContentDefinition](contentdefinitions.md)| `LoadUri`| |
 |[ContentDefinitionParameters](relyingparty.md#contentdefinitionparameters)| `Parameter` | |

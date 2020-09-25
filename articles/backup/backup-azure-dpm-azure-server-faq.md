@@ -4,12 +4,12 @@ description: Ebben a cikkben a Microsoft Azure Backup-kiszolgálóval (MABS) és
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/05/2019
-ms.openlocfilehash: 00eb064aaf549ee0d83d0cf7d9c9b47c2dc5ef78
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: d0a5c1b5800bbc626453ba8896dc706a0cd5bfd4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827205"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324943"
 ---
 # <a name="azure-backup-server-and-dpm---faq"></a>Azure Backup Server és DPM – gyakori kérdések
 
@@ -39,7 +39,7 @@ A felhőben védett adatforrásokkal rendelkező DPM-kiszolgálók esetében (a 
 
 ### <a name="are-there-recommendations-for-configuring-exclusions-for-antivirus-software"></a>Vannak javaslatok a víruskereső szoftverek kizárásának konfigurálására?
 
-Igen, javasoljuk a víruskeresők kizárásának konfigurálását. A DPM kizárásával kapcsolatban lásd: [víruskereső szoftver futtatása a DPM-kiszolgálón](https://docs.microsoft.com/system-center/dpm/run-antivirus-server?view=sc-dpm-2019). A MABS kizárásával kapcsolatban lásd: [a MABS-kiszolgáló víruskereső konfigurálása](backup-azure-mabs-troubleshoot.md#configure-antivirus-for-mabs-server).
+Igen, javasoljuk a víruskeresők kizárásának konfigurálását. A DPM kizárásával kapcsolatban lásd: [víruskereső szoftver futtatása a DPM-kiszolgálón](https://docs.microsoft.com/system-center/dpm/run-antivirus-server). A MABS kizárásával kapcsolatban lásd: [a MABS-kiszolgáló víruskereső konfigurálása](backup-azure-mabs-troubleshoot.md#configure-antivirus-for-mabs-server).
 
 ## <a name="vmware-and-hyper-v-backup"></a>VMware és Hyper-V biztonsági mentés
 
@@ -67,7 +67,7 @@ Igen, az elem visszaállítható az eredeti SharePoint-webhelyre.
 
 Mivel a SharePoint-adatbázisok konfigurálva vannak az SQL-AlwaysOn, csak akkor módosíthatók, ha a rendelkezésre állási csoport el lett távolítva. Ennek eredményeképpen a DPM nem tudja visszaállítani az adatbázist az eredeti helyére. SQL Server-adatbázist egy másik SQL Server-példányra is helyreállíthatja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További gyakori kérdéseket is áttekinthet:
 

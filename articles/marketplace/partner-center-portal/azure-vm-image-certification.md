@@ -7,12 +7,12 @@ ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 08/14/2020
-ms.openlocfilehash: 2d19098ec82fe9361154d798b981341a86decf97
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 751fbbb83f1ccb75cb84453f8c03296f6d1a786c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89647819"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275779"
 ---
 # <a name="azure-virtual-machine-image-validation"></a>Azure-beli virtuális gépek rendszerképének ellenőrzése
 
@@ -20,7 +20,7 @@ Ez a cikk azt ismerteti, hogyan lehet tesztelni és elküldeni a virtuális gép
 
 A virtuális gép ajánlatának elküldése előtt végezze el a következő lépéseket:
 
-- Helyezzen üzembe egy Azure-beli virtuális gépet az általánosított rendszerkép használatával.
+- Helyezzen üzembe egy Azure-beli virtuális gépet az általánosított rendszerkép használatával. Az [általánosított rendszerképekről](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-vm-technical-asset#generalize-the-image)itt talál további információt.
 - Érvényesítések futtatása.
 
 ## <a name="deploy-an-azure-vm-using-your-generalized-image"></a>Azure-beli virtuális gép üzembe helyezése az általánosított rendszerkép használatával
@@ -599,7 +599,9 @@ Az automatikus teszt befejezése után további információkat adhat meg a virt
 
 Az utolsó képernyőn több információt is megadhat, például az SSH-hozzáférési információkat egy linuxos virtuálisgép-rendszerképhez, valamint a sikertelen értékelések magyarázatát, ha kivételeket keres.
 
-Végül válassza a jelentés készítése lehetőséget, hogy letöltse a teszt eredményeit és a naplófájlokat a végrehajtott tesztelési esetekhez, valamint a kérdőívre adott válaszokat. Mentse az eredményeket ugyanabba a tárolóba, mint a virtuális merevlemezeket.
+Végül válassza a jelentés készítése lehetőséget, hogy letöltse a teszt eredményeit és a naplófájlokat a végrehajtott tesztelési esetekhez, valamint a kérdőívre adott válaszokat. 
+> [!Note]
+> Néhány közzétevőnek van olyan forgatókönyve, amelyben a virtuális gépeket zárolni kell, mert olyan szoftverekkel rendelkeznek, mint például a virtuális gépre telepített tűzfalak. Ebben az esetben a kiadók itt tölthetik le a [Certified test Tool eszközt](https://aka.ms/AzureCertificationTestTool) , és megadhatják a jelentést a [Marketplace Publisher támogatási szolgálatában](https://aka.ms/marketplacepublishersupport)
 
 ## <a name="how-to-use-powershell-to-consume-the-self-test-api"></a>Az önteszt API használata a PowerShell használatával
 

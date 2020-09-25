@@ -15,12 +15,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0b52830e7cddb01c129df2344e26ac1684a88872
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 959837ff540fd95d186497858d7b9de1f8b1124d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89292724"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91274010"
 ---
 # <a name="review-access-for-yourself-to-groups-or-applications-in-azure-ad-access-reviews"></a>Az Azure AD hozzáférési felülvizsgálatokban lévő csoportok és alkalmazások hozzáférésének áttekintése
 
@@ -65,13 +65,13 @@ Ha megnyitotta a hozzáférési felülvizsgálatot, a hozzáférését láthatja
 
     Ha a kérelem a mások számára való hozzáférés felülvizsgálatát kéri, a lap eltérő lesz. További információ: a [csoportok vagy alkalmazások hozzáférésének áttekintése](perform-access-review.md).
 
-    ![Nyissa meg a hozzáférési felülvizsgálatot, és kérje meg, hogy van-e hozzáférése egy csoporthoz](./media/review-your-access/perform-access-review.png)
+    ![A megnyitott hozzáférési felülvizsgálatot bemutató képernyőkép, amely azt kérdezi, hogy továbbra is szüksége van-e egy csoporthoz való hozzáférésre.](./media/review-your-access/perform-access-review.png)
 
 1. Az **Igen** gombra kattintva megtarthatja a hozzáférését, vagy a **nem** gombra kattintva eltávolíthatja a hozzáférését.
 
 1. Ha az **Igen**gombra kattint, lehet, hogy meg kell adnia egy indoklást az **OK** mezőben.
 
-    ![A hozzáférési felülvizsgálat befejezésével megkérdezte, hogy továbbra is szüksége van-e egy csoport elérésére](./media/review-your-access/perform-access-review-submit.png)
+    ![Képernyőkép, amely egy befejezett hozzáférési felülvizsgálatot mutat be, amely megkérdezi, hogy továbbra is szüksége van-e egy csoport elérésére, az "igen" beállítással.](./media/review-your-access/perform-access-review-submit.png)
 
 1. Kattintson a **Submit (Küldés**) gombra.
 

@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: sstein, carlrab, mathoma
+ms.reviewer: sstein, mathoma
 ms.date: 08/25/2019
-ms.openlocfilehash: 407d56c209f64d350906a17c0746b1c43f969d43
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6c4a538a0dc5447f95152de87f9a19ed57f08359
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708651"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325113"
 ---
 # <a name="restore-a-database-in-azure-sql-managed-instance-to-a-previous-point-in-time"></a>Adatbázis visszaállítása az Azure SQL felügyelt példányában egy korábbi időpontra
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -46,7 +46,7 @@ Az alábbi táblázat az SQL felügyelt példányának időponthoz kapcsolódó 
 
 |           |Meglévő adatbázis visszaállítása a felügyelt SQL-példány ugyanazon példányára| Meglévő adatbázis visszaállítása másik SQL felügyelt példányra|Az eldobott adatbázis visszaállítása ugyanazon SQL felügyelt példányra|Az eldobott adatbázis visszaállítása egy másik felügyelt SQL-példányra|
 |:----------|:----------|:----------|:----------|:----------|
-|**Azure Portalra**| Yes|No |Yes|No|
+|**Azure Portal**| Igen|Nem |Igen|Nem|
 |**Azure CLI**|Igen |Igen |Nem|Nem|
 |**PowerShell**| Igen|Igen |Igen|Igen|
 
@@ -206,7 +206,7 @@ DROP DATABASE WorldWideImporters;
 Az alábbi módszerek egyikével csatlakozhat az adatbázishoz az SQL felügyelt példányában:
 
 - [SSMS/Azure Data Studio Azure-beli virtuális gépen keresztül](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-vm)
-- [Pont – hely kapcsolat](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-p2s)
+- [Pont–hely kapcsolat](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-p2s)
 - [Nyilvános végpont](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
@@ -248,9 +248,9 @@ ALTER DATABASE WorldWideImportersPITR MODIFY NAME = WorldWideImporters;
 Az alábbi módszerek egyikével csatlakozhat az adatbázishoz az SQL felügyelt példányában:
 
 - [Azure-beli virtuális gép](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-vm)
-- [Pont – hely kapcsolat](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-p2s)
+- [Pont–hely kapcsolat](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-p2s)
 - [Nyilvános végpont](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az [automatizált biztonsági mentésekről](../database/automated-backups-overview.md).

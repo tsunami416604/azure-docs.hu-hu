@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: c1168602ccb527d8ffb3b64d5437a26490b44a21
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 770ded494f050631cd1c373f4b3fa5846c65e01a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90971520"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275132"
 ---
 # <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity"></a>Azure Storage-fiókhoz való kapcsolódás beállítása felügyelt identitás használatával
 
@@ -143,6 +143,10 @@ Ez az indexelő két óránként fut (az ütemezett időköz értéke "PT2H"). A
 Az indexelő API létrehozásával kapcsolatos további információkért tekintse meg az [Indexelő létrehozása](/rest/api/searchservice/create-indexer)című leírást.
 
 Az indexelő-ütemtervek definiálásával kapcsolatos további információkért lásd: [Az Azure Cognitive Search indexelő szolgáltatásának beosztása](search-howto-schedule-indexers.md).
+
+## <a name="accessing-secure-data-in-storage-accounts"></a>Biztonságos adatok elérése a Storage-fiókokban
+
+Az Azure Storage-fiókokat tűzfalakkal és virtuális hálózatokkal is biztonságossá teheti. Ha egy blob Storage-fiókból Data Lake vagy egy tűzfallal vagy virtuális hálózattal védett Gen2 szeretne tartalmat indexelni, kövesse az [adatok biztonságos elérését a Storage-fiókokban a megbízható szolgáltatásokkal kapcsolatos kivételek segítségével](search-indexer-howto-access-trusted-service-exception.md).
 
 ## <a name="see-also"></a>Lásd még
 

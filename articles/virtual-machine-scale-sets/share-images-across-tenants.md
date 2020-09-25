@@ -1,6 +1,6 @@
 ---
-title: Katalógusbeli rendszerképek megosztása az Azure-beli bérlők között
-description: Megtudhatja, hogyan oszthat meg virtuálisgép-lemezképeket az Azure-bérlők között megosztott képtárakkal.
+title: Katalógusbeli rendszerképek megosztása a bérlők között
+description: Megtudhatja, hogyan hozhat létre méretezési csoportokat az Azure-bérlők megosztott képtárakkal megosztott lemezképei segítségével.
 author: cynthn
 ms.author: cynthn
 ms.topic: how-to
@@ -9,14 +9,14 @@ ms.subservice: imaging
 ms.date: 04/05/2019
 ms.reviewer: akjosh
 ms.custom: akjosh, devx-track-azurecli
-ms.openlocfilehash: 542dfbc28621e02cd2842fb174e986bfeb91e6ec
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: ea61b3bd76fc4ada48a8a2fb734a841b8a969272
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501678"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323481"
 ---
-# <a name="share-gallery-vm-images-across-tenants-in-azure"></a>Katalógusbeli virtuálisgép-rendszerképek megosztása az Azure-beli bérlők között
+# <a name="share-images-across-tenants-with-shared-image-gallery"></a>Képek megosztása a megosztott képtárat használó bérlők között
 
 [!INCLUDE [virtual-machines-share-images-across-tenants](../../includes/virtual-machines-share-images-across-tenants.md)]
 
@@ -49,6 +49,6 @@ az vmss create \
   --generate-ssh-keys
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ha bármilyen problémába ütközik, a [megosztott képtárakat is elháríthatja](troubleshooting-shared-images.md).
+Ha bármilyen problémába ütközik, a [megosztott képtárakat is elháríthatja](../virtual-machines/troubleshooting-shared-images.md).

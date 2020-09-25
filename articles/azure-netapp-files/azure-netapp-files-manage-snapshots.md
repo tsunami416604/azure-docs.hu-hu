@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/04/2020
 ms.author: b-juche
-ms.openlocfilehash: 405d872c178a3172454943b7d40ea276ea5c017e
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: e1be0879af02fac0f7ae926a02ea23fd6be84de4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89459081"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325689"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Pillanatképek kezelése az Azure NetApp Filesszal
 
@@ -65,7 +65,7 @@ A **Pillanatkép-házirend** szolgáltatás jelenleg előzetes verzióban érhet
     ```azurepowershell-interactive
     Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSnapshotPolicy
     ```
-Használhatja az Azure CLI-parancsokat is, [`az feature register`](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-register) és [`az feature show`](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-show) regisztrálhatja a funkciót, és megjelenítheti a regisztrációs állapotot. 
+Használhatja az [Azure CLI-parancsokat](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest&preserve-view=true) is, `az feature register` és `az feature show` regisztrálhatja a funkciót, és megjelenítheti a regisztrációs állapotot. 
 
 ### <a name="create-a-snapshot-policy"></a>Pillanatkép-szabályzat létrehozása 
 
@@ -161,7 +161,7 @@ Jelenleg csak egy új kötetre állíthatja vissza a pillanatképet.
 
     ![Visszaállítás új kötetre](../media/azure-netapp-files/snapshot-restore-new-volume.png) 
 
-4. Kattintson a **felülvizsgálat + létrehozás**gombra.  Kattintson a **Létrehozás** gombra.   
+4. Kattintson a **felülvizsgálat + létrehozás**gombra.  Kattintson a **Létrehozás** lehetőségre.   
     Az új kötet ugyanazt a protokollt használja, mint amelyet a pillanatkép használ.   
     Az új kötet, amelybe a pillanatkép vissza lett állítva, megjelenik a kötetek panelen.
 
@@ -221,6 +221,6 @@ Ha a kötet létrehozásakor a pillanatkép elérési útjának elrejtése jelö
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Az Azure NetApp Files tárhely-hierarchiájának ismertetése](azure-netapp-files-understand-storage-hierarchy.md)
+* [Pillanatkép-házirendek – problémamegoldás](troubleshoot-snapshot-policies.md)
 * [Az Azure NetApp Files erőforráskorlátai](azure-netapp-files-resource-limits.md)
 * [Azure NetApp Files Pillanatképek 101 videó](https://www.youtube.com/watch?v=uxbTXhtXCkw&feature=youtu.be)

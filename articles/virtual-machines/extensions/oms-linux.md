@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: akjosh
-ms.openlocfilehash: d24463834a49cdfbdb4599770caf579ae94582d8
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 38bbe52e45c348977cdda02a5399f6c89fb91bcc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88999818"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91307449"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>Log Analytics virtuális gépi bővítmény Linuxhoz
 
@@ -43,7 +43,7 @@ Az alábbi táblázat a Log Analytics virtuálisgép-bővítmény és a Log Anal
 
 | Log Analytics linuxos virtuálisgép-bővítmény verziója | Log Analytics ügynök csomagjának verziója | 
 |--------------------------------|--------------------------|
-| 1.13.13 | [1.13.7 – 0](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.13.7-0) |
+| 1.13.15 | [1.13.9 – 0](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.13.9-0) |
 | 1.12.25 | [1.12.15 – 0](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.12.15-0) |
 | 1.11.15 | [1.11.0 – 9](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.11.0-9) |
 | 1.10.0 | [1.10.0 – 1](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.10.0-1) |
@@ -104,7 +104,7 @@ A következő JSON a Log Analytics ügynök bővítmény sémáját jeleníti me
 
 ### <a name="property-values"></a>Tulajdonságértékek
 
-| Név | Érték/példa |
+| Name | Érték/példa |
 | ---- | ---- |
 | apiVersion | 2018-06-01 |
 | közzétevő | Microsoft. EnterpriseCloud. monitoring |
@@ -211,6 +211,8 @@ A bővítmény végrehajtásának kimenete a következő fájlba van naplózva:
 | 19 | A nem-csomag telepítési hibája | 
 | 20 | SCX-csomag telepítési hibája |
 | 51 | Ez a bővítmény nem támogatott a virtuális gép operációs rendszerében | |
+| 52 | Ez a bővítmény hiányzó függőség miatt nem sikerült | A kimenet és a naplók további információkkal szolgálnak arról, hogy mely függőségek hiányoznak. |
+| 53 | Ez a bővítmény hiányzó vagy helytelen konfigurációs paraméterek miatt nem sikerült | A hibákkal kapcsolatos további információkért tekintse meg a kimenetet és a naplókat. Emellett ellenőrizze a munkaterület AZONOSÍTÓjának helyességét, és ellenőrizze, hogy a számítógép csatlakozik-e az internethez. |
 | 55 | Nem lehet csatlakozni a Azure Monitor szolgáltatáshoz, vagy hiányzik a szükséges csomagok, vagy a dpkg Package Manager zárolva van| Győződjön meg arról, hogy a rendszer rendelkezik internet-hozzáféréssel, vagy hogy érvényes HTTP-proxy van megadva. Emellett ellenőrizze a munkaterület-azonosító helyességét, és ellenőrizze, hogy telepítve vannak-e a curl és a Tar segédprogramok. |
 
 További hibaelhárítási tudnivalókat a [log Analytics-Agent-Linux hibaelhárítási útmutatójában](../../azure-monitor/platform/vmext-troubleshoot.md)talál.

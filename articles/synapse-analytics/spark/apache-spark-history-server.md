@@ -9,18 +9,18 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: e8dece3478e00c6f9279767e57e3bb8aca865f45
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 75aac74ae5ccf5b52234f1b554dc2a5edefcf32d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87059993"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91260410"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>Apache Spark alkalmazások hibakeresése és diagnosztizálása a kiterjesztett Apache Sparki előzményeket használó kiszolgálón
 
 Ez a cikk útmutatást nyújt arról, hogyan használható a kiterjesztett Apache Sparki előzmények kiszolgáló a befejezett és futó Spark-alkalmazások hibakereséséhez és diagnosztizálásához.
 
-A bővítmény tartalmaz egy adat fület, a Graph fület és a diagnosztika fület. a Spark-feladathoz tartozó bemeneti és kimeneti adatok ellenőrzéséhez használja az **adatok** lapot. A **Graph (gráf** ) lapon megtekintheti a feladatok gráfjának adatfolyamait és visszajátszását. A **diagnosztika** lapon az **adatok elferdítés**, az **idő**és a **végrehajtó használatának elemzése**látható.
+A bővítmény tartalmaz egy adatlapot, a Graph fület és a diagnosztika lapot. Használja az **adatok** lapot a Spark-feladathoz tartozó bemeneti és kimeneti adatok vizsgálatához. A **Graph (gráf** ) lapon megtekintheti a feladatok gráfjának adatfolyamait és visszajátszását. A **diagnosztika** lapon az  **adatok elferdítés**, az **idő**és a **végrehajtó használatának elemzése**látható.
 
 ## <a name="access-the-apache-spark-history-server"></a>A Apache Spark History-kiszolgáló elérése
 
@@ -30,11 +30,11 @@ A Apache Spark History Server a webes felhasználói felület a befejezett és f
 
 1. Nyissa meg az [Azure szinapszis Analytics szolgáltatást](https://web.azuresynapse.net/).
 
-2. Kattintson a **figyelés**, majd az **alkalmazások Apache Spark**elemre.
+2. Válassza a **figyelés**, majd az **alkalmazások Apache Spark**lehetőséget.
 
-    ![Kattintson a figyelés, majd a Spark-alkalmazás elemre.](./media/apache-spark-history-server/click-monitor-spark-application.png)
+    ![Válassza a figyelés, majd a Spark-alkalmazás lehetőséget.](./media/apache-spark-history-server/click-monitor-spark-application.png)
 
-3. Válasszon ki egy alkalmazást, majd kattintson rá a **napló lekérdezésének** megnyitásához.
+3. Válasszon ki egy alkalmazást, majd nyissa meg a **napló lekérdezését** .
 
     ![A napló lekérdezési ablakának megnyitása.](./media/apache-spark-history-server/open-application-window.png)
 
@@ -46,11 +46,11 @@ A Apache Spark History Server a webes felhasználói felület a befejezett és f
 
 1. Az Azure szinapszis Studio jegyzetfüzetből válassza ki a **Spark History Server** elemet a feladatok végrehajtása kimeneti cellából vagy a jegyzetfüzet dokumentum alján található állapot panelen. Válassza a **Munkamenet részletei** lehetőséget.
 
-   ![A Spark History Server elindítása](./media/apache-spark-history-server/launch-history-server2.png "A Spark History Server elindítása")
+   ![A Spark History Server 1 elindítása](./media/apache-spark-history-server/launch-history-server2.png "A Spark History Server elindítása")
 
 2. Válassza ki a **Spark History Server** elemet a kicsúsztatható panelen.
 
-   ![A Spark History Server elindítása](./media/apache-spark-history-server/launch-history-server.png "A Spark History Server elindítása")
+   ![A Spark History Server 2 elindítása](./media/apache-spark-history-server/launch-history-server.png "A Spark History Server elindítása")
 
 ## <a name="explore-the-data-tab-in-spark-history-server"></a>A Spark History Server adatlapjának megismerése
 
@@ -80,7 +80,7 @@ Válassza ki a megtekinteni kívánt feladatokhoz tartozó AZONOSÍTÓJÚ felada
 
     ![A Spark-alkalmazás letöltési sorával kapcsolatos adatgyűjtés](./media/apache-spark-history-server/sparkui-data-download-row.png)
 
-* Teljes elérési út vagy relatív elérési út másolásához válassza a **teljes elérési út másolása** vagy a **relatív elérési út** másolása lehetőséget a legördülő menüből. Azure Data Lake Storage fájlok esetében **nyissa meg a Azure Storage Explorer** elindítja Azure Storage Explorer, és keresse meg a mappát, amikor bejelentkezett.
+* Teljes elérési út vagy relatív elérési út másolásához válassza a **teljes elérési út másolása** vagy a **relatív elérési út** másolása lehetőséget a legördülő menüből. Azure Data Lake Storage fájlok esetében **nyissa meg a Azure Storage Explorer** elindítja Azure Storage Explorer, majd a bejelentkezéskor megkeresi a mappát.
 
     ![A Spark-alkalmazás másolási útvonalának elérési útja](./media/apache-spark-history-server/sparkui-data-copy-path.png)
 
@@ -112,7 +112,7 @@ Alapértelmezés szerint a **folyamatjelző** megjelenítés van kiválasztva. A
 
 ![Spark-alkalmazás és-feladatok diagramjának megjelenítése](./media/apache-spark-history-server/sparkui-graph-display.png)
 
-A Graph csomópont megjeleníti a hő jelmagyarázatban látható színeket.
+A Graph csomópont a hő jelmagyarázatban látható színeket jeleníti meg.
 
 ![Spark-alkalmazás és a Job Graph hő](./media/apache-spark-history-server/sparkui-graph-heatmap.png)
 
@@ -120,7 +120,7 @@ A Graph csomópont megjeleníti a hő jelmagyarázatban látható színeket.
 
 A feladatok lejátszásához válassza a **Lejátszás**lehetőséget. A **Leállítás lehetőség kiválasztásával** bármikor leállíthatja a leállítást. A feladat színei különböző állapotokat mutatnak vissza a lejátszáskor:
 
-|Szín (Color)|Értelmezés|
+|Szín|Értelmezés|
 |-|-|
 |Zöld|Sikeres: a feladatok sikeresen befejeződtek.|
 |Narancssárga|Újrapróbálkozás: a feladatok olyan példányai, amelyek sikertelenek voltak, de nem befolyásolják a feladat végső eredményét. Ezek a feladatok ismétlődő vagy újrapróbálkozási példányokkal rendelkeztek, amelyek később esetleg sikeresek lehetnek.|
@@ -157,7 +157,7 @@ Mutasson a Graph csomópontra az elemleírás megjelenítéséhez, amikor a fela
 
 A feladatütemezés lapon egy elemleírás és egy kis ikon jelenik meg, ha olyan feladatokkal rendelkeznek, amelyek megfelelnek a következő feltételeknek:
 
-|Feltétel|Description|
+|Condition (Állapot)|Leírás|
 |-|-|
 |Az adattorzítás|az adatolvasási méret > a fázisban lévő összes feladat átlagos adatolvasási mérete, valamint az adatolvasási méret > 10 MB|
 |Időbeli döntés|a végrehajtási idő > a szakasz összes feladatának átlagos végrehajtási időpontja * 2 és végrehajtási idő > 2 percen belül|
@@ -200,7 +200,7 @@ A lapfülek kiválasztásával keresse meg az **adatok eldöntését**, az **id�
 
 Amikor kiválasztja az **adatok eldöntése** fület, a megadott paraméterek alapján megjelennek a megfelelő ferde feladatok.
 
-* **Paraméterek megadása** – az első szakasz azokat a paramétereket jeleníti meg, amelyek az adatok eldöntésének észlelésére szolgálnak. Az alapértelmezett szabály a következő: a tevékenységi adatok olvasása nagyobb, mint háromszor az átlagos feladathoz tartozó adat, az olvasás pedig több mint 10 MB. Ha meg szeretné határozni saját szabályát a ferde feladatokhoz, kiválaszthatja a paramétereket, a **ferde szakasz** és a **ferde char** szakaszokat ennek megfelelően frissíti.
+* **Paraméterek megadása** – az első szakasz azokat a paramétereket jeleníti meg, amelyek az adatok eldöntésének észlelésére szolgálnak. Az alapértelmezett szabály a következő: a tevékenységi adatok olvasása nagyobb, mint háromszor az átlagos feladathoz tartozó adat, az olvasás pedig több mint 10 MB. Ha meg szeretné határozni saját szabályát a ferde feladatokhoz, kiválaszthatja a paramétereket. Ennek megfelelően frissül a **ferde szakasz** és a **ferde karakteres** szakasz.
 
 * **Ferde fázis** – a második szakasz a szakaszokat jeleníti meg, amelyek a fent megadott feltételeknek megfelelő ferde feladatokat látnak el. Ha egy szakaszban több elferdített feladat van, akkor a ferde szakasz tábla csak a leginkább ferde feladatot jeleníti meg (például a legnagyobb adat az adatok eldöntéséhez).
 
@@ -224,7 +224,7 @@ Az **idő megdöntése** lap a feladat végrehajtási ideje alapján elferdítet
 
 A végrehajtói használati gráf megjeleníti a Spark-feladatok végrehajtójának kiosztását és futási állapotát.  
 
-1. Válassza **a végrehajtói használat elemzése**lehetőséget, majd a végrehajtói használattal kapcsolatos négy típusú görbét, beleértve a **lefoglalt végrehajtókat**, a **végrehajtók**, az **üresjárati végrehajtók**és a **maximális végrehajtó példányok**futtatását. A lefoglalt végrehajtók esetében minden "végrehajtó hozzáadva" vagy "végrehajtó eltávolítva" esemény növeli vagy csökkenti a lefoglalt végrehajtókat. További összehasonlításért tekintse meg az "esemény ütemezése" részt a "feladatok" lapon.
+1. Válassza **a végrehajtói használat elemzése**lehetőséget, majd a végrehajtói használattal kapcsolatos négy típusú görbét, beleértve a **lefoglalt végrehajtókat**, a **végrehajtók**, az **üresjárati végrehajtók**és a **maximális végrehajtó példányok**futtatását. A lefoglalt végrehajtók esetében a "végrehajtó által hozzáadott" vagy "végrehajtó eltávolított" esemény növeli vagy csökkenti a lefoglalt végrehajtókat. További összehasonlításért tekintse meg az "esemény ütemezése" részt a "feladatok" lapon.
 
    ![sparkui-diagnosztikai végrehajtók lap](./media/apache-spark-history-server/sparkui-diagnosis-executors.png)
 
@@ -236,7 +236,7 @@ A végrehajtói használati gráf megjeleníti a Spark-feladatok végrehajtójá
 
 A rugalmasan elosztott adatkészletek (RDD) használatával a bemeneti/kimeneti adatok nem jelennek meg az adatok lapon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure Synapse Analytics](../overview-what-is.md)
 - [.NET Apache Spark dokumentációhoz](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)

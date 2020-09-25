@@ -3,13 +3,13 @@ title: A Azure Monitorrel integrált partnerek
 description: Ismerkedjen meg Azure Monitor partnereivel, és hogyan férhet hozzá az integrációhoz szükséges dokumentációhoz.
 ms.subservice: ''
 ms.topic: conceptual
-ms.date: 05/29/2020
-ms.openlocfilehash: dbac5f28723b712788df61eda34a0db61b9c5652
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.date: 09/21/2020
+ms.openlocfilehash: a99d391b34ff1ad783ba4cb7b746760835bd3f43
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526476"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278804"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor partner-integrációk
 
@@ -74,11 +74,19 @@ A CloudMonix monitorozást, automatizálást és önjavító szolgáltatásokat 
 
 ![Datadoggal embléma](./media/partners/datadog.png)
 
-A datadoggal a világ legjelentősebb monitorozási szolgáltatása a felhőalapú alkalmazások számára. Összegyűjti a kiszolgálók, adatbázisok, eszközök és szolgáltatások adatait a teljes verem egységes nézetének bemutatásához. Ezek a képességek SaaS-alapú adatelemzési platformon érhetők el. Ez a szolgáltatás lehetővé teszi, hogy a fejlesztői és az Ops-csapatok működjenek együtt az állásidő elkerülésével, a teljesítményproblémák megoldásával, valamint a fejlesztési és üzembe helyezési ciklusok időben történő befejezésének biztosításával. A Datadoggal és az Azure integrálásával az infrastruktúra különböző mérőszámait gyűjtheti és tekintheti meg. A virtuális gépek metrikáinak korrelációja az alkalmazás szintű metrikákkal. A mérőszámokat a tulajdonságok és az egyéni címkék bármely kombinációjának használatával darabolhatja és kockára teheti.
+Az Azure lehetővé teszi, hogy az ügyfelek áttelepítsenek és modernizálják alkalmazásaikat a felhőben való futtatásra számos partneri megoldással való együttműködésben. Az egyik ilyen partner a Datadoggal, amely a felhasználók számára biztosít megfigyelő és biztonsági eszközöket a hibrid és a többfelhős környezetekben lévő alkalmazásai állapotának és teljesítményének megismeréséhez.  A szükséges integrációk konfigurálásához azonban gyakran szükség van a Azure Portal és a Datadoggal közötti navigálásra.  Ez bonyolultságot ad, időt vesz igénybe, és megnehezíti a hibák megoldását, ha a dolgok nem működnek.  Ha csökkenteni szeretné a több portál közötti felügyelet terhét, a Microsoft a Datadoggal-szel együttműködve integrált Datadoggal-megoldást hozott létre az Azure Cloud platformon.  Az Azure Marketplace-en keresztül elérhető megoldás zökkenőmentesen használható a Datadoggal felhőalapú monitorozási megoldásának az Azure-ban való használatához.  
 
-[Nyissa meg a dokumentációt.][datadog-doc]
+Az új Azure-Datadoggal-integráció révén a szervezetek mostantól teljes mértékben leképezhetők örökölt és felhőalapú rendszerüket, valós idejű adatmennyiségeket figyelnek a Felhőbeli átmenet minden fázisában, és biztosítják, hogy az áttelepített alkalmazások megfeleljenek a teljesítményi céloknak. Ez az integráció ötvözi az Azure globális jelenlétét, rugalmasságát, biztonságát és megfelelőségét a Datadoggal naplózási és monitorozási képességeivel, hogy a lehető legjobb megoldást teremtsen a vállalatok számára. Ezen egységes felülettel a következőket teheti: 
 
-A Datadoggal új Azure Marketplace-integrációja a kiadásra van ütemezve a 2020. október elején. Itt egy hivatkozás jelenik meg A kiadás után. 
+- Hozzon létre egy új Datadoggal-szervezetet, és konfigurálja az Azure-erőforrásokat a naplók és mérőszámok Datadoggal való elküldéséhez – egy teljes körűen felügyelt telepítést, amely nem rendelkezik infrastruktúrával a telepítéshez és a működéshez  
+- A naplók és a metrikák zökkenőmentes küldése a Datadoggal. A naplózási továbbítási folyamat teljesen automatizált; a diagnosztikai beállításokkal, a Event Hubsokkal és a functions szolgáltatással végzett naplózási folyamat kiépítése helyett mindössze néhány kattintással konfigurálhat mindent.
+-   Egyszerűen telepítheti a Datadoggal-ügynököt a VM-gazdagépekre egyetlen kattintással.
+-   Az egyszeri bejelentkezés (SSO) egyszerűsítése a Datadoggal – a Datadoggal-portálról való külön bejelentkezés már nem szükséges. 
+-   Az Azure-előfizetés számlázásával egységes számlázást kaphat a Datadoggal szolgáltatáshoz.
+
+Regisztráljon az új Datadoggal-integráció [nyilvános előzetes](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR4z3T2aGXUZPslUNJ3YpcapURFBHSUJIMVJTWDM5VUFPMVkyTVhMVlYzMS4u) verziójára az Azure-ban.  A nyilvános előzetes verzió az Azure Marketplace-en lesz elérhető, október 2020.
+
+Ha továbbra is az előző manuálisan konfigurált integrációt használja, tekintse [meg a dokumentációt a datadoggal webhelyén][datadog-doc] .
 
 ## <a name="dynatrace"></a>Dynatrace
 

@@ -12,13 +12,13 @@ ms.custom:
 - mvc
 - amqp
 - mqtt
-- devx-track-javascript
-ms.openlocfilehash: b424ea01d8283963c49d899a97120c9132d862f8
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+- devx-track-js
+ms.openlocfilehash: 101bd9ce351ea830688fc18affdf21ce527ba43a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422538"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91261430"
 ---
 # <a name="create-an-advanced-device-model"></a>Speciális eszközmodell létrehozása
 
@@ -173,7 +173,7 @@ A sémában felsorolt mezők a következő típusokból állhatnak:
 
 ### <a name="supported-methods"></a>Támogatott módszerek
 
-A szimulált eszközök reagálnak a metódus hívására is, ebben az esetben bizonyos logikát hajtanak végre, és választ nyújtanak. A szimulációhoz hasonlóan a metódus logikáját egy JavaScript-fájlban tárolja a rendszer, és az eszköz állapota is használható. Például:
+A szimulált eszközök reagálnak a metódus hívására is, ebben az esetben bizonyos logikát hajtanak végre, és választ nyújtanak. A szimulációhoz hasonlóan a metódus logikáját egy JavaScript-fájlban tárolja a rendszer, és az eszköz állapota is használható. Példa:
 
 ```json
 "CloudToDeviceMethods": {
@@ -263,7 +263,7 @@ A JavaScript-fájloknak rendelkeznie kell egy **fő** függvénnyel, amely két 
     * **deviceModel**. Például: **lift**.
 * Egy **állapot** -objektum, amely az előző hívás függvényében visszaadott érték. Az eszköz állapotát a szimulációs szolgáltatás tartja karban, és telemetria-üzenetek létrehozásához használja.
 
-A **fő** függvény az új eszköz állapotát adja vissza. Például:
+A **fő** függvény az új eszköz állapotát adja vissza. Példa:
 
 ```JavaScript
 function main(context, state) {

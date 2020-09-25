@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/29/2019
 ms.author: Zhchia
-ms.openlocfilehash: 56a865de8cb1be079f4935ef2a8f840f10589b26
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b78de4769f49954c4d4e860e75818f6485247a17
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550010"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91305633"
 ---
 # <a name="tutorial-configure-harness-for-automatic-user-provisioning"></a>Oktatóanyag: a felhasználói kiépítés automatikus kihasználásának beállítása
 
@@ -126,7 +126,7 @@ Az Azure AD-ben az automatikus felhasználó-kiépítés konfigurálásához teg
 
     ![Bérlői URL + token](common/provisioning-testconnection-tenanturltoken.png)
  
-   a. A **bérlői URL-cím** mezőbe írja be a értéket **`https://app.harness.io/gateway/api/scim/account/XCPzWkCIQ46ypIu2DeT7yw`** .  
+   a. A **bérlői URL-cím** mezőbe írja be a értéket **`https://app.harness.io/gateway/api/scim/account/<your_harness_account_ID>`** . A hám-fiók AZONOSÍTÓját a böngészőben megjelenő URL-címről szerezheti be, amikor bejelentkezett a rendszerbe.
    b. A **titkos jogkivonat** mezőbe írja be az scim-hitelesítési jogkivonat értékét, amelyet a (z) "a kiépítés a kiépítés beállítása" szakasz 6. lépésében mentett.  
    c. Válassza a **kapcsolat tesztelése** lehetőséget annak biztosításához, hogy az Azure ad képes legyen csatlakozni a hám-hez. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a fiókja *rendszergazdai* jogosultságokkal rendelkezik, majd próbálkozzon újra.
 
@@ -134,7 +134,7 @@ Az Azure AD-ben az automatikus felhasználó-kiépítés konfigurálásához teg
 
     ![Az "értesítő E-mail" mező](common/provisioning-notification-email.png)
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 1. A **leképezések**területen válassza **a szinkronizálás Azure Active Directory felhasználók**számára lehetőséget.
 
@@ -160,7 +160,7 @@ Az Azure AD-ben az automatikus felhasználó-kiépítés konfigurálásához teg
 
 1. A **Beállítások**területen a **hatókör** legördülő listában válassza ki, hogyan szeretné szinkronizálni a kiépíteni kívánt felhasználókat vagy csoportokat.
 
-    ![Kiépítési hatókör](common/provisioning-scope.png)
+    ![Átadási hatókör](common/provisioning-scope.png)
 
 1. Ha készen áll a létesítésre, válassza a **Mentés**lehetőséget.
 
@@ -177,4 +177,4 @@ További információ az Azure AD-kiépítési naplók olvasásához: [jelentés
 
 ## <a name="next-steps"></a>További lépések
 
-* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../app-provisioning/check-status-user-account-provisioning.md)
+* [Tudnivalók a naplók áttekintéséről és az átadási tevékenységekkel kapcsolatos jelentések lekéréséről](../app-provisioning/check-status-user-account-provisioning.md)

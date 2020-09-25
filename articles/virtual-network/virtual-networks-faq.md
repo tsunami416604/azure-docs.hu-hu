@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: d39e66e205c592d58a93c1187a1c77269da9e7ad
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 171fc11c8de9cd53a7abd9602768a117341826ef
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89438228"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306600"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network – Gyakori kérdések (GYIK)
 
@@ -266,7 +266,7 @@ A következő erőforrások használhatnak alapszintű Load Balancert, ami azt j
 Ezekhez az erőforrásokhoz a ExpressRoute vagy a VNet – VNet használatával csatlakozhat a VNet-átjárók segítségével.
 
 ### <a name="can-i-enable-vnet-peering-if-my-virtual-networks-belong-to-subscriptions-within-different-azure-active-directory-tenants"></a>Engedélyezhető a VNet-társítás, ha a virtuális hálózatok különböző Azure Active Directory bérlőn belüli előfizetésekhez tartoznak?
-Igen. Ha az előfizetések különböző Azure Active Directory bérlőhöz tartoznak, létrehozhatók VNet-társítások (helyi vagy globális). Ezt megteheti a PowerShell vagy a parancssori felület használatával. A portál még nem támogatott.
+Igen. Ha az előfizetések különböző Azure Active Directory bérlőhöz tartoznak, létrehozhatók VNet-társítások (helyi vagy globális). Ezt a portálon, a PowerShellen vagy a CLI-n keresztül teheti meg.
 
 ### <a name="my-vnet-peering-connection-is-in-initiated-state-why-cant-i-connect"></a>A VNet-társítási kapcsolat *kezdeményezett* állapotban van, miért nem tudok csatlakozni?
 Ha a társ-kapcsolat *kezdeményezett* állapotban van, ez azt jelenti, hogy csak egy hivatkozást hozott létre. Sikeres kapcsolat létrehozásához kétirányú hivatkozást kell létrehozni. Ha például az A társ VNet a B VNet, a hivatkozást létre kell hozni a Társviszonyban áll-ből a b-be és a b-ből a Társviszonyban áll-be. Mindkét hivatkozás létrehozásakor a rendszer a *csatlakoztatott*állapotot fogja módosítani.

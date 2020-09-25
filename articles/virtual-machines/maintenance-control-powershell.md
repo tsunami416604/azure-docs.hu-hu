@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: cynthn
-ms.openlocfilehash: 5cb504e10c9a1b10c5bad201f4f599a3c00992fe
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: efd35cfe2660f4597ec0c95dc29bcb4b839da680
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530760"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306939"
 ---
 # <a name="control-updates-with-maintenance-control-and-azure-powershell"></a>Frissítések vezérlése karbantartási vezérléssel és Azure PowerShell
 
@@ -66,6 +66,33 @@ A [Get-AzMaintenanceConfiguration](/powershell/module/az.maintenance/get-azmaint
 ```azurepowershell-interactive
 Get-AzMaintenanceConfiguration | Format-Table -Property Name,Id
 ```
+
+### <a name="create-a-maintenance-configuration-with-scheduled-window-in-preview"></a>Karbantartási konfiguráció létrehozása ütemezett ablakkal (előzetes verzió)
+
+
+> [!IMPORTANT]
+> Az ütemezett ablak szolgáltatás jelenleg nyilvános előzetes verzióban érhető el.
+> Ezt az előzetes verziót szolgáltatói szerződés nélkül biztosítjuk, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
+> További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+A New-AzMaintenanceConfiguration használatával karbantartási konfigurációt hozhat létre egy ütemezett ablaktal, amikor az Azure alkalmazza a frissítéseket az erőforrásokon. Ez a példa egy konfig nevű karbantartási konfigurációt hoz létre, amelynek ütemezett ablaka 5 óra minden hónap negyedik hétfőjén. Miután létrehozott egy ütemezett ablakot, már nem kell manuálisan alkalmaznia a frissítéseket.
+
+```azurepowershell-interactive
+$config = New-AzMaintenanceConfiguration `
+   -ResourceGroup $RGName `
+   -Name $MaintenanceConfig `
+   -MaintenanceScope Host `
+   -Location $location `
+   -StartDateTime "2020-10-01 00:00" `
+   -TimeZone "Pacific Standard Time" `
+   -Duration "05:00" `
+   -RecurEvery "Month Fourth Monday"
+```
+> [!IMPORTANT]
+> A karbantartási **időtartamnak** *2 óra* vagy hosszabbnak kell lennie. A karbantartási **ismétlődést** legalább 35 nap múlva be kell állítani.
+
+A karbantartási **Ismétlődések** napi, heti vagy havi ütemezések formájában adhatók meg. A napi ütemezett példák a következők: nap, recurEvery: 3Days recurEvery. Hetente ütemezett példák a következők: recurEvery: 3Weeks, recurEvery: Week szombat, vasárnap. A havi ütemterv például a recurEvery: month day23, day24, recurEvery: hónap múlt vasárnap, recurEvery: hónap negyedik hétfő.
+
 
 ## <a name="assign-the-configuration"></a>A konfiguráció kiosztása
 

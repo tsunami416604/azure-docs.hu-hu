@@ -17,23 +17,23 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2975bb95511ba0a0d9f61886109c12715105fd8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 01d3b8a0ffaef1b1f03f6f9f8dab6af04a965ba9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357120"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306021"
 ---
 # <a name="introduction-to-the-azure-ad-connect-synchronization-service-manager-ui"></a>A Azure AD Connect Synchronization Service Manager felhasználói felület bemutatása
 
-![Service Manager szinkronizálása](./media/how-to-connect-sync-service-manager-ui/ssmui.png)
+![Képernyőkép, amely a Synchronization Service Manager U I-t jeleníti meg.](./media/how-to-connect-sync-service-manager-ui/ssmui.png)
 
 A **synchronization Service Manager** felhasználói felület a szinkronizálási motor fejlettebb szempontjainak konfigurálására és a szolgáltatás működési szempontjainak megtekintésére szolgál.
 
 A **synchronization Service Manager** felhasználói felületet a Start menüből indíthatja el. A **szinkronizálási szolgáltatás** neve, és a **Azure ad Connect** csoportban található.  
 ![Service Manager szinkronizálása](./media/how-to-connect-sync-service-manager-ui/startmenu.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Synchronization Service Manager felhasználói felületről, beleértve a [műveleteket](how-to-connect-sync-service-manager-ui-operations.md), az [összekötőket](how-to-connect-sync-service-manager-ui-connectors.md), a [metaverse designert](how-to-connect-sync-service-manager-ui-mvdesigner.md)és a [metaverse keresési](how-to-connect-sync-service-manager-ui-mvsearch.md) lapokat.
 

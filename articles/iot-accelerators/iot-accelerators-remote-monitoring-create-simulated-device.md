@@ -8,13 +8,13 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
-ms.custom: mqtt, devx-track-javascript
-ms.openlocfilehash: c0aac897d85cd96d537238bc81cbc89d3626a07c
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: mqtt, devx-track-js
+ms.openlocfilehash: 21d0587b951d909f0091eccf9a7f86a484bc5051
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422759"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324042"
 ---
 # <a name="create-and-test-a-new-simulated-device"></a>Új szimulált eszköz létrehozása és tesztelése
 
@@ -33,7 +33,7 @@ A második forgatókönyvben a contoso egy új intelligens villanykörte-eszköz
 
 | Name                     | Értékek                      |
 | ------------------------ | --------------------------- |
-| Szín (Color)                    | Fehér, piros, kék            |
+| Szín                    | Fehér, piros, kék            |
 | Fényerő               | 0 – 100                    |
 | Becsült hátralévő élettartam | Visszaszámlálás 10 000 órával |
 
@@ -43,7 +43,7 @@ Az alábbi táblázat azokat az adatstream-jelentéseket mutatja be, amelyeket a
 
 | Name   | Értékek      |
 | ------ | ----------- |
-| status | "on", "off" |
+| Állapot | "on", "off" |
 | Hőmérséklet | Fok F |
 | online | igaz, hamis |
 
@@ -108,7 +108,7 @@ Töltse le és csomagolja ki az [eszköz szimulációs szolgáltatását](https:
 
 Nyissa meg a **Remote-Monitoring-Services-DotNet-master\storage-adapter** mappát a Visual Studio Code-ban. A feloldatlan függőségek kijavításához kattintson bármelyik **visszaállítási** gombra.
 
-Nyissa meg a **Storage-adapter/webszolgáltatás/appsettings.ini** fájlt, és rendelje hozzá a Cosmos db-kapcsolódási karakterláncot a **documentDBConnectionString** változóhoz.
+Nyissa meg a **Storage-adapter/webszolgáltatás/appsettings.ini** fájlt, és rendelje hozzá a Cosmos db-kapcsolódási karakterláncot a **documentDBConnectionString**  változóhoz.
 
 Ha helyileg szeretné futtatni a szolgáltatást, kattintson a **hibakeresés > a hibakeresés indítása**elemre.
 

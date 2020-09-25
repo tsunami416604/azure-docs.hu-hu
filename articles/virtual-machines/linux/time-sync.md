@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/20/2020
 ms.author: cynthn
-ms.openlocfilehash: 8a122a36b14bd3c5f4912387dc98585cb89ab53b
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 399022c1ef740865e4b2f7b82e2175e748a2a925
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705640"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306956"
 ---
 # <a name="time-sync-for-linux-vms-in-azure"></a>Linux rendszerű virtuális gépek időszinkronizálása az Azure-ban
 
@@ -138,7 +138,7 @@ Az Ubuntu 19,10-es és újabb verzióiban, Red Hat Enterprise Linux és CentOS 8
 refclock PHC /dev/ptp0 poll 3 dpoll -2 offset 0
 ```
 
-Az Ubuntu és az NTP szolgáltatással kapcsolatos további információkért lásd: [időszinkronizálás](https://help.ubuntu.com/lts/serverguide/NTP.html).
+Az Ubuntu és az NTP szolgáltatással kapcsolatos további információkért lásd: [időszinkronizálás](https://ubuntu.com/server/docs/network-ntp).
 
 A Red Hat és az NTP szolgáltatással kapcsolatos további információkért lásd: az [NTP konfigurálása](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-configuring_ntp_using_ntpd#s1-Configure_NTP). 
 
@@ -162,7 +162,7 @@ systemctl restart chronyd
 
 A SUSE és az Ubuntu kiadása 19,10 előtt, a Time Sync a [rendszerszintű](https://www.freedesktop.org/wiki/Software/systemd/)használatával van konfigurálva. További információ az Ubunturól: [időszinkronizálás](https://help.ubuntu.com/lts/serverguide/NTP.html). További információ a SUSE-ről: [SUSE Linux Enterprise Server 12 SP3 kibocsátási megjegyzések](https://www.suse.com/releasenotes/x86_64/SUSE-SLES/12-SP3/#InfraPackArch.ArchIndependent.SystemsManagement)4.5.8 szakasza.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ: [a Windows Server 2016 pontos ideje](/windows-server/networking/windows-time-service/accurate-time).
 

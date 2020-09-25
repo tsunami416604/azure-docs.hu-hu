@@ -1,14 +1,16 @@
 ---
 title: 'Rövid útmutató: új alkalmazás létrehozása a LUIS portálon'
 description: Ebben a rövid útmutatóban létrehoz egy alkalmazás, szándékok és entitások alaprészeit, valamint teszteli a minta-kisegítő lehetőséget a LUIS-portálon.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 05/19/2020
-ms.openlocfilehash: 7cf55a7891b7e06c18c80d9d359b19e54f0413a9
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 38fffd7793e1f5bd59ac6dde4499b2eb25009b52
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697274"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91303852"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Rövid útmutató: új alkalmazás létrehozása a LUIS portálon
 
@@ -25,10 +27,10 @@ Ebben a rövid útmutatóban egy új alkalmazást hoz létre a LUIS portálon. E
 
 1. Az előugró ablakban konfigurálja az alkalmazást a következő beállításokkal, majd válassza a **kész**lehetőséget.
 
-   |Beállítás neve| Érték | Cél|
+   |Beállítás neve| Érték | Rendeltetés|
    |--|--|--|
    |Name|`myEnglishApp`|Egyedi LUIS-alkalmazás neve<br>kötelező|
-   |Kulturális környezet|**Angol**|A felhasználók hosszúságú kimondott szöveg nyelve, **en-us**<br>kötelező|
+   |Kultúra|**Angol**|A felhasználók hosszúságú kimondott szöveg nyelve, **en-us**<br>kötelező|
    |Leírás (nem kötelező)|`App made with LUIS Portal`|Az alkalmazás leírása<br>választható|
    |Előrejelzési erőforrás (nem kötelező) |-  |Ne válassza a lehetőséget. A LUIS egy alapszintű kulcsot biztosít a szerzői műveletek és a 1 000-es előrejelzési végpontokra vonatkozó kérések használatához. |
 
@@ -135,7 +137,7 @@ A **nincs** leképezési példa hosszúságú kimondott szöveg az ügyfélalkal
 
 ## <a name="look-at-the-regular-expression-entity-in-the-example-utterances"></a>Tekintse meg a reguláris kifejezés entitást a példában szereplő hosszúságú kimondott szöveg
 
-1. Győződjön meg arról, hogy az entitás a **FindForm** szándékban található, a bal oldali menüben a **leképezések** lehetőség kiválasztásával. Ezután válassza a **FindForm** szándék lehetőséget.
+1. Győződjön meg arról, hogy az entitás a **FindForm**  szándékban található, a bal oldali menüben a **leképezések** lehetőség kiválasztásával. Ezután válassza a **FindForm** szándék lehetőséget.
 
    Az entitás meg van jelölve, ahol megjelenik a példában szereplő hosszúságú kimondott szöveg.
 
@@ -159,9 +161,9 @@ A LUIS-portál interaktív **teszt** paneljén ellenőrizheti, hogy az entitás 
 
    A felső előre jelzett szándék megfelelően **FindForm** , több mint 90%-os megbízhatósággal (0,977). A **FormNumber** entitás a hrf-234098 értékkel van kinyerve.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha ezzel a rövid útmutatóval végzett, és nem a következő rövid útmutatóra vált, válassza a **saját alkalmazások** lehetőséget a felső navigációs menüből. Ezután jelölje be az alkalmazás bal oldali jelölőnégyzetét a listából, majd válassza a **Törlés** lehetőséget a lista fölötti helyi eszköztáron.
+Ha ezzel a rövid útmutatóval végzett, és nem a következő rövid útmutatóra vált, válassza a **saját alkalmazások** lehetőséget a felső navigációs menüből. Ezután jelölje be az alkalmazás bal oldali jelölőnégyzetét a listából, majd válassza a  **Törlés** lehetőséget a lista fölötti helyi eszköztáron.
 
 ## <a name="next-steps"></a>Következő lépések
 

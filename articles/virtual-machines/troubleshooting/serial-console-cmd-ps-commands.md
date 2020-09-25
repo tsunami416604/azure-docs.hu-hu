@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 571df9c07e71682e2be51a73e3837c79cb074c3a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ef533b3566ac557b57f1435a2a9b2dbe26896993
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87028464"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306888"
 ---
 # <a name="windows-commands---cmd-and-powershell"></a>Windows-parancsok – CMD és PowerShell
 
@@ -30,11 +30,11 @@ A SAC lehetővé teszi, hogy soros porton keresztül kapcsolódjon a futó oper�
 
 Mivel a SAC egy, a görgetést nem tartalmazó 80x24-pufferre korlátozódik, a Hozzáadás `| more` parancsokkal megjelenítheti a kimenetet egy oldalon egyszerre. A gombra `<spacebar>` kattintva megtekintheti a következő lapot, vagy megtekintheti `<enter>` a következő sort.
 
-`SHIFT+INSERT`a soros konzol ablakának beillesztési parancsikonja.
+`SHIFT+INSERT` a soros konzol ablakának beillesztési parancsikonja.
 
 A SAC korlátozott képernyős puffere miatt a több parancs könnyebben begépelhető egy helyi szövegszerkesztőbe, majd beilleszthető a SACbe.
 
-## <a name="view-and-edit-windows-registry-settings"></a>Windows beállításjegyzék-beállítások megtekintése és szerkesztése
+## <a name="view-and-edit-windows-registry-settings-using-cmd"></a>Windows beállításjegyzék-beállítások megtekintése és szerkesztése a CMD használatával
 ### <a name="verify-rdp-is-enabled"></a>Az RDP ellenőrzése engedélyezve
 `reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections`
 
@@ -49,7 +49,7 @@ A második kulcs (a \Policies alatt) csak akkor létezik, ha a megfelelő csopor
 
 A második kulcs (\Policies) csak akkor szükséges, ha a megfelelő csoportházirend-beállítást konfigurálták. Ha a csoportházirendben be van állítva, a rendszer a következő csoportházirend-frissítéskor újraírja az értéket.
 
-## <a name="manage-windows-services"></a>Windows-szolgáltatások kezelése
+## <a name="manage-windows-services-using-cmd"></a>Windows-szolgáltatások kezelése a CMD használatával
 
 ### <a name="view-service-state"></a>Szolgáltatás állapotának megtekintése
 `sc query termservice`
@@ -79,7 +79,7 @@ vagy
 vagy
 
 `sc stop termservice`
-## <a name="manage-networking-features"></a>Hálózatkezelési funkciók kezelése
+## <a name="manage-networking-features-using-cmd"></a>Hálózatkezelési funkciók kezelése a CMD használatával
 ### <a name="show-nic-properties"></a>NIC-tulajdonságok megjelenítése
 `netsh interface show interface`
 ### <a name="show-ip-properties"></a>IP-tulajdonságok megjelenítése
@@ -120,7 +120,7 @@ Ha a Windows rendszerben alapértelmezés szerint elérhető metódusokra korlá
 Ezt a parancsot akkor használhatja, ha a hibaelhárítás során átmenetileg kizárják a Windows tűzfalat. A következő újraindításkor vagy az alábbi parancs használatával engedélyezhető. Ne állítsa le a Windows tűzfal szolgáltatás (MPSSVC) vagy az alapszűrő motor (BFE) szolgáltatást úgy, hogy kizárja a Windows tűzfalat. A MPSSVC vagy a BFE leállítása az összes kapcsolat blokkolásával jár.
 ### <a name="enable-windows-firewall"></a>A Windows tűzfal engedélyezése
 `netsh advfirewall set allprofiles state on`
-## <a name="manage-users-and-groups"></a>Felhasználók és csoportok kezelése
+## <a name="manage-users-and-groups-using-cmd"></a>Felhasználók és csoportok kezelése a CMD használatával
 ### <a name="create-local-user-account"></a>Helyi felhasználói fiók létrehozása
 `net user /add <username> <password>`
 ### <a name="add-local-user-to-local-group"></a>Helyi felhasználó hozzáadása a helyi csoporthoz
@@ -150,7 +150,7 @@ Példa egy helyi rendszergazdai fiókból származó érdekes sorokra:
 
 ### <a name="view-local-groups"></a>Helyi csoportok megtekintése
 `net localgroup`
-## <a name="manage-the-windows-event-log"></a>A Windows-Eseménynapló kezelése
+## <a name="manage-the-windows-event-log-using-cmd"></a>A Windows-Eseménynapló kezelése a CMD használatával
 ### <a name="query-event-log-errors"></a>Eseménynaplók lekérdezése – hibák
 `wevtutil qe system /c:10 /f:text /q:"Event[System[Level=2]]" | more`
 
@@ -165,7 +165,7 @@ Váltson `/c:10` a visszaadni kívánt eseményekre, vagy helyezze át a szűrő
 `604800000`A használatával 24 óra helyett 7 napig kereshet vissza.
 ### <a name="query-event-log-by-event-id-provider-and-eventdata-in-the-last-7-days"></a>Eseménynapló lekérdezése eseményazonosító, szolgáltató és EventData szerint az elmúlt 7 napban
 `wevtutil qe security /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windows-Security-Auditing'] and EventID=4624 and TimeCreated[timediff(@SystemTime) <= 604800000]] and EventData[Data[@Name='TargetUserName']='<username>']]" | more`
-## <a name="view-or-remove-installed-applications"></a>Telepített alkalmazások megtekintése vagy eltávolítása
+## <a name="view-or-remove-installed-applications-using-cmd"></a>Telepített alkalmazások megtekintése és eltávolítása a CMD használatával
 ### <a name="list-installed-applications"></a>Telepített alkalmazások listázása
 `wmic product get Name,InstallDate | sort /r | more`
 
@@ -175,7 +175,7 @@ A `sort /r` telepítés dátuma alapján csökkenő sorrendbe rendezi a rendezé
 
 Cserélje le a értéket a `<name>` fenti parancsban visszaadott névre az eltávolítani kívánt alkalmazásra.
 
-## <a name="file-system-management"></a>Fájlrendszer-kezelés
+## <a name="file-system-management-using-cmd"></a>Fájlrendszer-kezelés a CMD használatával
 ### <a name="get-file-version"></a>Fájl verziójának beolvasása
 `wmic datafile where "drive='C:' and path='\\windows\\system32\\drivers\\' and filename like 'netvsc%'" get version /format:list`
 
@@ -206,7 +206,7 @@ Az elérési útnak a használatakor `/restore` megadott mappa szülőjének kel
 ## <a name="manage-group-policy"></a>Csoportházirend kezelése
 ### <a name="force-group-policy-update"></a>Csoportházirend frissítésének kényszerítése
 `gpupdate /force /wait:-1`
-## <a name="miscellaneous-tasks"></a>Egyéb feladatok
+## <a name="miscellaneous-tasks-using-cmd"></a>Egyéb feladatok a CMD használatával
 ### <a name="show-os-version"></a>Operációs rendszer verziójának megjelenítése
 `ver`
 
@@ -259,7 +259,7 @@ Ha a fenti parancs a PSReadLine modul verzióját adja vissza, futtassa a követ
 
 `remove-module psreadline`
 
-## <a name="view-and-edit-windows-registry-settings"></a>Windows beállításjegyzék-beállítások megtekintése és szerkesztése
+## <a name="view-and-edit-windows-registry-settings-using-powershell"></a>Windows beállításjegyzék-beállítások megtekintése és szerkesztése a PowerShell használatával
 ### <a name="verify-rdp-is-enabled"></a>Az RDP ellenőrzése engedélyezve
 `get-itemproperty -path 'hklm:\system\curRentcontrolset\control\terminal server' -name 'fdenytsconNections'`
 
@@ -272,11 +272,11 @@ A második kulcs (a \Policies alatt) csak akkor létezik, ha a megfelelő csopor
 `set-itemproperty -path 'hklm:\software\policies\microsoft\windows nt\terminal services' -name 'fdenytsconNections' 0 -type dword`
 
 A második kulcs (\Policies) csak akkor szükséges, ha a megfelelő csoportházirend-beállítást konfigurálták. Ha a csoportházirendben be van állítva, a rendszer a következő csoportházirend-frissítéskor újraírja az értéket.
-## <a name="manage-windows-services"></a>Windows-szolgáltatások kezelése
+## <a name="manage-windows-services-using-powershell"></a>Windows-szolgáltatások kezelése a PowerShell-lel
 ### <a name="view-service-details"></a>Szolgáltatás részleteinek megtekintése
 `get-wmiobject win32_service -filter "name='termservice'" |  format-list Name,DisplayName,State,StartMode,StartName,PathName,ServiceType,Status,ExitCode,ServiceSpecificExitCode,ProcessId`
 
-`Get-Service`használható, de nem tartalmazza a szolgáltatás bejelentkezési fiókját. `Get-WmiObject win32-service`nem.
+`Get-Service` használható, de nem tartalmazza a szolgáltatás bejelentkezési fiókját. `Get-WmiObject win32-service` nem.
 ### <a name="set-service-logon-account"></a>Szolgáltatás bejelentkezési fiókjának beállítása
 `(get-wmiobject win32_service -filter "name='termservice'").Change($null,$null,$null,$null,$null,$false,'NT Authority\NetworkService')`
 
@@ -291,7 +291,7 @@ Ha a (z), vagy rendszertől eltérő szolgáltatásfiókot használ, `NT AUTHORI
 `start-service termservice`
 ### <a name="stop-service"></a>Szolgáltatás leállítása
 `stop-service termservice`
-## <a name="manage-networking-features"></a>Hálózatkezelési funkciók kezelése
+## <a name="manage-networking-features-using-powershell"></a>Hálózatkezelési funkciók kezelése a PowerShell használatával
 ### <a name="show-nic-properties"></a>NIC-tulajdonságok megjelenítése
 `get-netadapter | where {$_.ifdesc.startswith('Microsoft Hyper-V Network Adapter')} |  format-list status,name,ifdesc,macadDresS,driverversion,MediaConNectState,MediaDuplexState`
 
@@ -299,7 +299,7 @@ vagy
 
 `get-wmiobject win32_networkadapter -filter "servicename='netvsc'" |  format-list netenabled,name,macaddress`
 
-`Get-NetAdapter`2012 + esetében érhető el a 2008R2 használatához `Get-WmiObject` .
+`Get-NetAdapter` 2012 + esetében érhető el a 2008R2 használatához `Get-WmiObject` .
 ### <a name="show-ip-properties"></a>IP-tulajdonságok megjelenítése
 `get-wmiobject Win32_NetworkAdapterConfiguration -filter "ServiceName='netvsc'" |  format-list DNSHostName,IPAddress,DHCPEnabled,IPSubnet,DefaultIPGateway,MACAddress,DHCPServer,DNSServerSearchOrder`
 ### <a name="enable-nic"></a>Hálózati adapter engedélyezése
@@ -309,13 +309,13 @@ vagy
 
 `(get-wmiobject win32_networkadapter -filter "servicename='netvsc'").enable()`
 
-`Get-NetAdapter`2012 + esetében érhető el a 2008R2 használatához `Get-WmiObject` .
+`Get-NetAdapter` 2012 + esetében érhető el a 2008R2 használatához `Get-WmiObject` .
 ### <a name="set-nic-to-use-dhcp"></a>Hálózati adapter beállítása DHCP használatára
 `get-netadapter | where {$_.ifdesc.startswith('Microsoft Hyper-V Network Adapter')} | Set-NetIPInterface -DHCP Enabled`
 
 `(get-wmiobject Win32_NetworkAdapterConfiguration -filter "ServiceName='netvsc'").EnableDHCP()`
 
-`Get-NetAdapter`2012 +-on érhető el. 2008R2 használata esetén `Get-WmiObject` . Az Azure-beli virtuális gépeket mindig úgy kell konfigurálni a vendég operációs rendszeren, hogy DHCP használatával igényeljenek IP-címet. Az Azure statikus IP-beállítása továbbra is DHCP protokollt használ, hogy az IP-címet a virtuális géphez adja.
+`Get-NetAdapter` 2012 +-on érhető el. 2008R2 használata esetén `Get-WmiObject` . Az Azure-beli virtuális gépeket mindig úgy kell konfigurálni a vendég operációs rendszeren, hogy DHCP használatával igényeljenek IP-címet. Az Azure statikus IP-beállítása továbbra is DHCP protokollt használ, hogy az IP-címet a virtuális géphez adja.
 ### <a name="ping"></a>Ping
 `test-netconnection`
 
@@ -326,7 +326,7 @@ vagy
 
 `get-wmiobject Win32_PingStatus -Filter 'Address="8.8.8.8"' | format-table -autosize IPV4Address,ReplySize,ResponseTime`
 
-`Test-Netconnection`paraméterek nélkül megpróbál pingelést végrehajtani `internetbeacon.msedge.net` . 2012 és újabb rendszereken érhető el. A 2008R2 a `Get-WmiObject` második példában látható módon használhatók.
+`Test-Netconnection` paraméterek nélkül megpróbál pingelést végrehajtani `internetbeacon.msedge.net` . 2012 és újabb rendszereken érhető el. A 2008R2 a `Get-WmiObject` második példában látható módon használhatók.
 ### <a name="port-ping"></a>Port pingelése
 `test-netconnection -ComputerName bing.com -Port 80`
 
@@ -334,7 +334,7 @@ vagy
 
 `(new-object Net.Sockets.TcpClient).BeginConnect('bing.com','80',$null,$null).AsyncWaitHandle.WaitOne(300)`
 
-`Test-NetConnection`2012 +-on érhető el. 2008R2 használata`Net.Sockets.TcpClient`
+`Test-NetConnection` 2012 +-on érhető el. 2008R2 használata `Net.Sockets.TcpClient`
 ### <a name="test-dns-name-resolution"></a>DNS-névfeloldási teszt
 `resolve-dnsname bing.com`
 
@@ -342,7 +342,7 @@ vagy
 
 `[System.Net.Dns]::GetHostAddresses('bing.com')`
 
-`Resolve-DnsName`2012 +-on érhető el. 2008R2 használata esetén `System.Net.DNS` .
+`Resolve-DnsName` 2012 +-on érhető el. 2008R2 használata esetén `System.Net.DNS` .
 ### <a name="show-windows-firewall-rule-by-name"></a>A Windows tűzfal szabályának megjelenítése név szerint
 `get-netfirewallrule -name RemoteDesktop-UserMode-In-TCP`
 ### <a name="show-windows-firewall-rule-by-port"></a>A Windows tűzfal szabályának megjelenítése Port alapján
@@ -352,12 +352,12 @@ vagy
 
 `(new-object -ComObject hnetcfg.fwpolicy2).rules | where {$_.localports -eq 3389 -and $_.direction -eq 1} | format-table Name,Enabled`
 
-`Get-NetFirewallPortFilter`2012 +-on érhető el. A 2008R2 a `hnetcfg.fwpolicy2` com-objektumot használják.
+`Get-NetFirewallPortFilter` 2012 +-on érhető el. A 2008R2 a `hnetcfg.fwpolicy2` com-objektumot használják.
 ### <a name="disable-windows-firewall"></a>A Windows tűzfal letiltása
 `Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False`
 
-`Set-NetFirewallProfile`2012 +-on érhető el. A `netsh advfirewall` fenti cmd szakaszban hivatkozott 2008R2 használja.
-## <a name="manage-users-and-groups"></a>Felhasználók és csoportok kezelése
+`Set-NetFirewallProfile` 2012 +-on érhető el. A `netsh advfirewall` fenti cmd szakaszban hivatkozott 2008R2 használja.
+## <a name="manage-users-and-groups-using-powershell"></a>Felhasználók és csoportok kezelése a PowerShell használatával
 ### <a name="create-local-user-account"></a>Helyi felhasználói fiók létrehozása
 `new-localuser <name>`
 ### <a name="verify-user-account-is-enabled"></a>Felhasználói fiók ellenőrzése engedélyezve
@@ -367,7 +367,7 @@ vagy
 
 `(get-wmiobject Win32_UserAccount -Namespace "root\cimv2" -Filter "SID like 'S-1-5-%-500'").Disabled`
 
-`Get-LocalUser`2012 +-on érhető el. 2008R2 használata esetén `Get-WmiObject` . Ez a példa a beépített helyi rendszergazdai fiókot mutatja be, amely mindig rendelkezik SID-vel `S-1-5-21-*-500` . Az általánosított rendszerképből létrehozott Azure-beli virtuális gépek helyi rendszergazdai fiókja átnevezve lesz a virtuális gép üzembe helyezése során megadott névre. Így általában nem fog megjelenni `Administrator` .
+`Get-LocalUser` 2012 +-on érhető el. 2008R2 használata esetén `Get-WmiObject` . Ez a példa a beépített helyi rendszergazdai fiókot mutatja be, amely mindig rendelkezik SID-vel `S-1-5-21-*-500` . Az általánosított rendszerképből létrehozott Azure-beli virtuális gépek helyi rendszergazdai fiókja átnevezve lesz a virtuális gép üzembe helyezése során megadott névre. Így általában nem fog megjelenni `Administrator` .
 ### <a name="add-local-user-to-local-group"></a>Helyi felhasználó hozzáadása a helyi csoporthoz
 `add-localgroupmember -group Administrators -member <username>`
 ### <a name="enable-local-user-account"></a>Helyi felhasználói fiók engedélyezése
@@ -381,12 +381,12 @@ vagy
 
 `get-wmiobject Win32_UserAccount -Namespace "root\cimv2" -Filter "SID like 'S-1-5-%-500'" |  format-list Name,Disabled,Status,Lockout,Description,SID`
 
-`Get-LocalUser`2012 +-on érhető el. 2008R2 használata esetén `Get-WmiObject` . Ez a példa a beépített helyi rendszergazdai fiókot mutatja be, amely mindig rendelkezik SID-vel `S-1-5-21-*-500` .
+`Get-LocalUser` 2012 +-on érhető el. 2008R2 használata esetén `Get-WmiObject` . Ez a példa a beépített helyi rendszergazdai fiókot mutatja be, amely mindig rendelkezik SID-vel `S-1-5-21-*-500` .
 ### <a name="view-local-groups"></a>Helyi csoportok megtekintése
 `(get-localgroup).name | sort` `(get-wmiobject win32_group).Name | sort`
 
-`Get-LocalUser`2012 +-on érhető el. 2008R2 használata esetén `Get-WmiObject` .
-## <a name="manage-the-windows-event-log"></a>A Windows-Eseménynapló kezelése
+`Get-LocalUser` 2012 +-on érhető el. 2008R2 használata esetén `Get-WmiObject` .
+## <a name="manage-the-windows-event-log-using-powershell"></a>A Windows-Eseménynapló kezelése a PowerShell használatával
 ### <a name="query-event-log-errors"></a>Eseménynaplók lekérdezése – hibák
 `get-winevent -logname system -maxevents 1 -filterxpath "*[System[Level=2]]" | more`
 
@@ -401,12 +401,12 @@ Váltson `/c:10` a visszaadni kívánt eseményekre, vagy helyezze át a szűrő
 `604800000`A használatával 24 óra helyett 7 napig kereshet vissza. |
 ### <a name="query-event-log-by-event-id-provider-and-eventdata-in-the-last-7-days"></a>Eseménynapló lekérdezése eseményazonosító, szolgáltató és EventData szerint az elmúlt 7 napban
 `get-winevent -logname system -maxevents 1 -filterxpath "*[System[Provider[@Name='Microsoft-Windows-Security-Auditing'] and EventID=4624 and TimeCreated[timediff(@SystemTime) <= 604800000]] and EventData[Data[@Name='TargetUserName']='<username>']]" | more`
-## <a name="view-or-remove-installed-applications"></a>Telepített alkalmazások megtekintése vagy eltávolítása
+## <a name="view-or-remove-installed-applications-using-powershell"></a>Telepített alkalmazások megtekintése és eltávolítása a PowerShell-lel
 ### <a name="list-installed-software"></a>Telepített szoftverek listázása
 `get-wmiobject win32_product | select installdate,name | sort installdate -descending | more`
 ### <a name="uninstall-software"></a>Szoftver eltávolítása
 `(get-wmiobject win32_product -filter "Name='<name>'").Uninstall()`
-## <a name="file-system-management"></a>Fájlrendszer-kezelés
+## <a name="file-system-management-using-powershell"></a>Fájlrendszer-kezelés a PowerShell használatával
 ### <a name="get-file-version"></a>Fájl verziójának beolvasása
 `(get-childitem $env:windir\system32\drivers\netvsc*.sys).VersionInfo.FileVersion`
 
@@ -415,7 +415,7 @@ Ez a példa a virtuális hálózati adapter illesztőprogramjának azon verziój
 `$path='c:\bin';md $path;cd $path;(new-object net.webclient).downloadfile( ('htTp:/'+'/download.sysinternals.com/files/SysinternalsSuite.zip'),"$path\SysinternalsSuite.zip");(new-object -com shelL.apPlication).namespace($path).CopyHere( (new-object -com shelL.apPlication).namespace("$path\SysinternalsSuite.zip").Items(),16)`
 
 Ez a példa létrehoz egy `c:\bin` mappát, majd letölti és kicsomagolja a Sysinternals csomagot a alkalmazásba `c:\bin` .
-## <a name="miscellaneous-tasks"></a>Egyéb feladatok
+## <a name="miscellaneous-tasks-using-powershell"></a>Egyéb feladatok a PowerShell használatával
 ### <a name="show-os-version"></a>Operációs rendszer verziójának megjelenítése
 `get-wmiobject win32_operatingsystem | format-list caption,version,buildnumber`
 ### <a name="view-os-install-date"></a>Operációs rendszer telepítési dátumának megtekintése
@@ -477,7 +477,7 @@ További információ: Azure- [példány metaadatainak szolgáltatása](../windo
 ### <a name="mac-address-instance-metadata"></a>MAC-címek (példány metaadatainak)
 `$im.network.interface.macAddress`
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Itt](serial-console-windows.md)található a soros konzol fő Windows-dokumentációs lapja.
 * A soros konzol [Linux](serial-console-linux.md) rendszerű virtuális gépekhez is elérhető.
 * További információ a [rendszerindítási diagnosztika](boot-diagnostics.md)szolgáltatásról.

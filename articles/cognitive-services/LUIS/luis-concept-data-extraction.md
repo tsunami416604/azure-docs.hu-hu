@@ -1,15 +1,17 @@
 ---
 title: Adatbányászat – LUIS
 description: Adatok kinyerése a teljes szövegből szándékok és entitások alapján. Ismerje meg, hogy milyen típusú adatok nyerhetők ki Language Understandingból (LUIS).
+ms.service: cognitive-services
+ms.subservice: language-understanding
 author: diberry
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 35f015691b15c6451a66509671c7dc2fc72f38e4
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: c69971b36bf945086d1a8f398043444071acea5c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682186"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324824"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>Adatok kinyerése a teljes szövegből szándékok és entitások alapján
 A LUIS lehetővé teszi a felhasználók természetes nyelvi hosszúságú kimondott szöveg származó információk beszerzését. Az adatok kinyerése oly módon történik, hogy egy program, egy alkalmazás vagy egy csevegési bot is felhasználja a műveletet. A következő részekben megismerheti, hogy a rendszer milyen adatokhoz adja vissza a leképezéseket és entitásokat a JSON-példákkal.
@@ -192,7 +194,7 @@ További információ a [v3 előrejelzési végpontról](luis-migration-api-v3.m
 
 * * *
 
-|Domain|Adatobjektum|Adattípus|Adatok helye|Érték|
+|Tartomány|Adatobjektum|Adattípus|Adatok helye|Érték|
 |--|--|--|--|--|
 |Segédprogramok|Szándék|Sztring|leképezések [0]. szándék|"<b>Segédprogramok</b>. ShowNext"|
 |Kommunikáció|Szándék|Sztring|leképezések [1]. szándék|<b>Kommunikáció</b>. StartOver"|
@@ -263,6 +265,6 @@ Ha egy szó vagy kifejezés több listával egyezik, a végpont lekérdezése az
 
 A lekérdezéshez `when is the best time to go to red rock?` , és az alkalmazás `red` több listában is szerepel, a Luis felismeri az összes entitást, és az entitások tömbjét adja vissza a JSON-végpont válaszának részeként.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az entitások LUIS-alkalmazáshoz való hozzáadásával kapcsolatos további tudnivalókért tekintse meg az [entitások hozzáadása](luis-how-to-add-entities.md) című témakört.

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/08/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: ac440db4c1dbddd317743e2d681a62251624d9bd
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: cc7ca9d217e405b0b39779cf256edcf0669afd6b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90898119"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302434"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-with-python-sdk"></a>Számítási célok létrehozása a modell betanításához és üzembe helyezéséhez a Python SDK-val
 
@@ -81,7 +81,7 @@ A következtetések elvégzése során a Azure Machine Learning létrehoz egy Do
 
 Ha a helyi számítógépet használja a **betanításhoz**, nem kell számítási célt létrehoznia.  Csak [küldje el a képzést](how-to-set-up-training-targets.md) a helyi gépről.
 
-Ha a helyi számítógépet használja a **következtetéshez**, telepítve kell lennie a Docker-nek. Az üzemelő példány végrehajtásához használja a [LocalWebservice. deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#deploy-configuration-port-none-) t a webszolgáltatás által használt port definiálásához. Ezután használja a normál telepítési folyamatot a [modellek üzembe helyezése Azure Machine learning](how-to-deploy-and-where.md)használatával című témakörben leírtak szerint.
+Ha a helyi számítógépet használja a **következtetéshez**, telepítve kell lennie a Docker-nek. Az üzemelő példány végrehajtásához használja a [LocalWebservice. deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py&preserve-view=true#deploy-configuration-port-none-) t a webszolgáltatás által használt port definiálásához. Ezután használja a normál telepítési folyamatot a [modellek üzembe helyezése Azure Machine learning](how-to-deploy-and-where.md)használatával című témakörben leírtak szerint.
 
 ## <a name="azure-machine-learning-compute-cluster"></a><a id="amlcompute"></a>Számítási fürt Azure Machine Learning
 
@@ -105,8 +105,7 @@ Azure Machine Learning a számítások újra felhasználhatók a futtatások kö
     
    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=cpu_cluster)]
 
-   Azure Machine Learning számítás létrehozásakor több speciális tulajdonság is konfigurálható. A tulajdonságok lehetővé teszik a rögzített méretű állandó fürt vagy az előfizetéshez tartozó meglévő Azure-Virtual Network létrehozását.  A részletekért tekintse meg a [AmlCompute osztályt](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py
-    ) .
+   Azure Machine Learning számítás létrehozásakor több speciális tulajdonság is konfigurálható. A tulajdonságok lehetővé teszik a rögzített méretű állandó fürt vagy az előfizetéshez tartozó meglévő Azure-Virtual Network létrehozását.  A részletekért tekintse meg a [AmlCompute osztályt](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py&preserve-view=true) .
 
     Emellett állandó Azure Machine Learning számítási erőforrást is létrehozhat és csatolhat [Azure Machine learning Studióban](how-to-create-attach-compute-studio.md#portal-create).
 
@@ -276,8 +275,25 @@ Ebben a forgatókönyvben az Azure Data Science Virtual Machine (DSVM) használa
 
 1. **Konfigurálás**: hozzon létre egy futtatási konfigurációt a DSVM számítási célhoz. A Docker és a Conda a DSVM lévő képzési környezet létrehozásához és konfigurálásához használható.
 
-   [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/dsvm.py?name=run_dsvm)]
-
+   ```python
+   from azureml.core import ScriptRunConfig
+   from azureml.core.environment import Environment
+   from azureml.core.conda_dependencies import CondaDependencies
+   
+   # Create environment
+   myenv = Environment(name="myenv")
+   
+   # Specify the conda dependencies
+   myenv.python.conda_dependencies = CondaDependencies.create(conda_packages=['scikit-learn'])
+   
+   # If no base image is explicitly specified the default CPU image "azureml.core.runconfig.DEFAULT_CPU_IMAGE" will be used
+   # To use GPU in DSVM, you should specify the default GPU base Docker image or another GPU-enabled image:
+   # myenv.docker.enabled = True
+   # myenv.docker.base_image = azureml.core.runconfig.DEFAULT_GPU_IMAGE
+   
+   # Configure the run configuration with the Linux DSVM as the compute target and the environment defined above
+   src = ScriptRunConfig(source_directory=".", script="train.py", compute_target=compute, environment=myenv) 
+   ```
 
 Most, hogy csatlakoztatta a számítási és konfigurálta a futtatást, a következő lépés a [betanítási Futtatás elküldése](how-to-set-up-training-targets.md).
 
@@ -494,7 +510,7 @@ Tekintse meg ezeket a jegyzetfüzeteket a különböző számítási célokból 
 
 ## <a name="next-steps"></a>Következő lépések
 
-* A számítási erőforrás segítségével [elküldheti a betanítási futtatást](how-to-set-up-training-targets.md).
+* A számítási erőforrás használatával [konfigurálhatja és elküldheti a betanítási futtatást](how-to-set-up-training-targets.md).
 * [Oktatóanyag: a betanítási modell](tutorial-train-models-with-aml.md) felügyelt számítási célt használ a modellek betanításához.
 * Ismerje meg, hogy miként lehet [hatékonyan hangolni a hiperparaméterek beállítása](how-to-tune-hyperparameters.md) a jobb modellek létrehozásához.
 * A betanított modellel megtudhatja, [Hogyan és hol helyezheti üzembe a modelleket](how-to-deploy-and-where.md).

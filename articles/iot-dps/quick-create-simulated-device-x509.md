@@ -1,5 +1,5 @@
 ---
-title: Szimulált X. 509 eszköz kiépítése az Azure-IoT Hub C használatával
+title: Gyors útmutató – szimulált X. 509 eszköz kiépítése az Azure-IoT Hub C használatával
 description: Ez a rövid útmutató egyéni regisztrációkat használ. Ebben a rövid útmutatóban egy szimulált X. 509 eszköz létrehozása és kiépítése az Azure IoT Hub Device Provisioning Service (DPS) C eszközoldali SDK-val.
 author: wesmc7777
 ms.author: wesmc
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 6cd606a8373e8abd4c58151cdb0b5f1f2b689535
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 42636695113dd824797d1a837e21ab2901d87738
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526680"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323863"
 ---
 # <a name="quickstart-provision-an-x509-simulated-device-using-the-azure-iot-c-sdk"></a>Rövid útmutató: Szimulált X.509-eszköz kiépítése az Azure IoT C SDK-val
 

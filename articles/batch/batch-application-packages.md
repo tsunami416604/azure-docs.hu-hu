@@ -2,66 +2,63 @@
 title: Alkalmazáscsomag üzembe helyezése számítási csomópontokon
 description: A Azure Batch alkalmazáscsomag funkciójának használatával egyszerűen kezelhet több alkalmazást és verziót a Batch számítási csomópontokon történő telepítéshez.
 ms.topic: how-to
-ms.date: 09/16/2020
-ms.custom: H1Hack27Feb2017, devx-track-csharp
-ms.openlocfilehash: 0d705ca731c40563deaeb02c29da120211db7ff4
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.date: 09/24/2020
+ms.custom:
+- H1Hack27Feb2017
+- devx-track-csharp
+- contperfq1
+ms.openlocfilehash: 1bacb0c71c05aeb983bfa9ebf71873a22fea39a1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985072"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91277699"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Alkalmazások üzembe helyezése számítási csomópontokhoz batch-alkalmazási csomagokkal
 
-A Azure Batch alkalmazáscsomag szolgáltatásával kezelheti a feladatok alkalmazásait és azok üzembe helyezését a készletekben lévő számítási csomópontokon. Az alkalmazáscsomag leegyszerűsítheti a kódot a Batch-megoldásban, és csökkentheti a tevékenységek által futtatott alkalmazások kezeléséhez szükséges terhelést. Az alkalmazáscsomag használatával a tevékenységek által futtatott alkalmazások több verzióját is feltöltheti és kezelheti, beleértve azok támogató fájljait is. Ezután automatikusan üzembe helyezhet egy vagy több alkalmazást a készlet számítási csomópontjain.
-
-Az alkalmazáscsomag segítségével az ügyfelek kiválaszthatják a feladataikat, és megadhatják a Batch-kompatibilis szolgáltatással végzett feladatok feldolgozásához használt pontos verziót. Lehetősége van arra is, hogy az ügyfelek feltöltsék és nyomon kövessék saját alkalmazásaikat a szolgáltatásban.
+Az alkalmazáscsomag leegyszerűsítheti a kódot a Azure Batch-megoldásban, és egyszerűbbé teheti a tevékenységek által futtatott alkalmazások kezelését. Az alkalmazáscsomag használatával feltölthet és kezelhet a feladatok által futtatott alkalmazások több verzióját, beleértve azok támogató fájljait is. Ezután automatikusan üzembe helyezhet egy vagy több alkalmazást a készlet számítási csomópontjain.
 
 Az alkalmazáscsomag létrehozásának és kezelésének API-jai a [Batch Management .net](/dotnet/api/overview/azure/batch/management) könyvtár részét képezik. Az alkalmazáscsomag számítási csomópontra történő telepítésének API-jai a [Batch .net](/dotnet/api/overview/azure/batch/client) -könyvtár részei. Az összehasonlítható funkciók a más nyelvekhez elérhető batch API-k.
 
-Ez a cikk ismerteti, hogyan tölthet fel és kezelhet alkalmazás-csomagokat a Azure Portalban, és hogyan telepítheti őket a készlet számítási csomópontjain a [Batch .net](/dotnet/api/overview/azure/batch/client) -kódtár használatával.
+Ez a cikk az alkalmazáscsomag feltöltését és kezelését ismerteti a Azure Portalban. Azt is bemutatja, hogyan telepítheti őket a készlet számítási csomópontjain a [Batch .net](/dotnet/api/overview/azure/batch/client) -kódtár használatával.
 
 ## <a name="application-package-requirements"></a>Alkalmazáscsomag követelményei
 
 Az alkalmazáscsomag használatához [egy Azure Storage-fiókot kell összekapcsolnia](#link-a-storage-account) a Batch-fiókkal.
 
-A Batch-fiókokban és az alkalmazáscsomag maximális méretén belül korlátozások vonatkoznak az alkalmazások és az alkalmazási csomagok számára. A korlátokkal kapcsolatos részletekért tekintse [meg a Azure batch szolgáltatás kvótáit és korlátait](batch-quota-limit.md) .
+A Batch-fiókokban és az alkalmazáscsomag maximális méretén belül korlátozások vonatkoznak az alkalmazások és az alkalmazási csomagok számára. További információ: [kvóták és korlátozások a Azure batch szolgáltatáshoz](batch-quota-limit.md).
 
 > [!NOTE]
-> A 2017. július 5. előtt létrehozott batch-készletek nem támogatják az alkalmazáscsomag használatát (kivéve, ha azokat az 2016. március 10. után hozták létre Cloud Services konfiguráció használatával).
->
-> Az itt leírt alkalmazáscsomag-szolgáltatás felülbírálja a szolgáltatás korábbi verzióiban elérhető batch Apps szolgáltatást.
+> A 2017. július 5. előtt létrehozott batch-készletek nem támogatják az alkalmazáscsomag használatát (kivéve, ha azokat az 2016. március 10. után hozták létre Cloud Services konfiguráció használatával). Az itt leírt alkalmazáscsomag-szolgáltatás felülbírálja a szolgáltatás korábbi verzióiban elérhető batch Apps szolgáltatást.
 
-## <a name="about-applications-and-application-packages"></a>Tudnivalók az alkalmazásokról és az alkalmazási csomagokról
+## <a name="understand-applications-and-application-packages"></a>Az alkalmazások és az alkalmazások csomagjainak ismertetése
 
-Azure Batchon belül egy *alkalmazás* olyan verziószámú bináris fájlokra hivatkozik, amelyek automatikusan letöltődnek a készlet számítási csomópontjaira. Az *alkalmazáscsomag* az alkalmazás egy adott verzióját jelképező bináris fájlok adott készletére hivatkozik.
+Azure Batchon belül egy *alkalmazás* olyan verziószámú bináris fájlokra hivatkozik, amelyek automatikusan letöltődnek a készlet számítási csomópontjaira. Egy alkalmazás egy vagy több *alkalmazáscsomag-csomagot*tartalmaz, amelyek az alkalmazás különböző verzióit képviselik.
+
+Minden *alkalmazáscsomag* egy. zip fájl, amely tartalmazza az alkalmazás bináris fájljait és a hozzá tartozó fájlokat. Csak a. zip formátumot támogatja a rendszer.
 
 :::image type="content" source="media/batch-application-packages/app_pkg_01.png" alt-text="Az alkalmazások és az alkalmazáscsomag magas szintű nézetét bemutató ábra.":::
 
-A Batch *alkalmazásban* egy vagy több alkalmazáscsomag található, és megadhatja az alkalmazás konfigurációs beállításait. Egy alkalmazás például megadhatja az alkalmazáscsomag alapértelmezett verzióját a számítási csomópontokon való telepítéshez, valamint azt is, hogy a csomagok frissíthetők vagy törölhetők.
-
-Az *alkalmazáscsomag* egy. zip fájl, amely tartalmazza az alkalmazás futtatásához szükséges bináris fájlokat és a hozzájuk kapcsolódó fájlokat. Minden alkalmazáscsomag az alkalmazás egy adott verzióját jelöli. Csak a. zip formátumot támogatja a rendszer.
-
-Az alkalmazáscsomag megadható a készletben vagy a tevékenység szintjein is. Készlet vagy feladat létrehozásakor megadhat egy vagy több ilyen csomagot és (opcionálisan) egy verziót.
+Az alkalmazáscsomag megadható a készlet vagy a feladat szintjén is.
 
 - A **készlet alkalmazáscsomag** a készlet minden csomópontjára telepítve van. Az alkalmazások akkor lesznek telepítve, amikor egy csomópont egy készlethez csatlakozik, és újraindul, vagy alaphelyzetbe áll.
   
-    A készlet alkalmazáscsomag akkor megfelelő, ha a készletben lévő összes csomópont végrehajt egy feladat feladatait. Készlet létrehozásakor megadhat egy vagy több alkalmazáscsomag-csomagot, és hozzáadhatja vagy frissítheti a meglévő készlet csomagjait is. Ha frissíti egy meglévő készlet alkalmazáscsomag-csomagjait, újra kell indítania a csomópontokat az új csomag telepítéséhez.
+    A készlet alkalmazáscsomag akkor megfelelő, ha a készletben lévő összes csomópont végrehajtja a feladat feladatait. Készlet létrehozásakor megadhat egy vagy több alkalmazáscsomag központi telepítését. Egy meglévő készlet csomagjait is hozzáadhat vagy frissíthet. Új csomag meglévő készletre való telepítéséhez újra kell indítania a csomópontokat.
 
 - A **Task Application-csomagok** központi telepítése csak olyan számítási csomópontra történik, amely egy feladat futtatására van ütemezve, közvetlenül a Feladat parancssorának futtatása előtt. Ha a megadott alkalmazáscsomag és verzió már szerepel a csomóponton, a rendszer nem telepíti újra, és a meglévő csomagot használja.
   
-    A feladat-alkalmazás csomagjai közös készletű környezetekben hasznosak, ahol a különböző feladatok egy készleten futnak, és a készlet nem törlődik a feladat befejezésekor. Ha a feladatnál a készletben kevesebb a tevékenység, mint a csomópont, az alkalmazáscsomagok használatával csökkentheti az adatátviteli igényt, mivel így a rendszer csak azokon a csomópontokon helyezi üzembe az alkalmazást, amelyek ténylegesen futtatják a tevékenységeket.
+    A Task Application-csomagok olyan megosztott készletű környezetekben hasznosak, ahol a különböző feladatok egy készleten futnak, és a készlet nem törlődik, ha a feladat befejeződik. Ha a feladat kevesebb feladatot tartalmaz, mint a készlet csomópontjai, a feladat-alkalmazás csomagjai csökkenthetik az adatátvitelt, mivel az alkalmazás csak a feladatokat futtató csomópontokra van telepítve.
   
-    Más forgatókönyvek, amelyek kihasználhatják a feladat-alkalmazási csomagokat, olyan feladatok, amelyek nagy alkalmazást futtatnak, de csak néhány feladathoz. Például egy előfeldolgozási szakasz vagy egy egyesítési feladat, ahol az előfeldolgozási vagy az egyesítési alkalmazás a nehézsúlyú, hasznos lehet a Task Application-csomagok használata.
+    Más forgatókönyvek, amelyek kihasználhatják a feladat-alkalmazási csomagokat, olyan feladatok, amelyek nagy alkalmazást futtatnak, de csak néhány feladathoz. Előfordulhat például, hogy a feladatok alkalmazásai hasznosak lehetnek az előzetes feldolgozási fázishoz vagy egyesítési feladathoz.
 
-Az alkalmazáscsomag esetében a készlet indítási feladatának nem kell megadnia a csomópontokon telepítendő egyes erőforrás-fájlok hosszú listáját. Az alkalmazás fájljainak több verzióját sem kell manuálisan kezelnie az Azure Storage-ban vagy a csomópontjain. Emellett nem kell aggódnia a [sas URL-címeinek](../storage/common/storage-sas-overview.md) létrehozásával, hogy hozzáférést biztosítson a Storage-fiókban található fájlokhoz. A Batch az Azure Storage háttérben működik az alkalmazáscsomag tárolásához és a számítási csomópontokon való üzembe helyezéséhez.
+Az alkalmazáscsomag esetében a készlet indítási feladatának nem kell megadnia a csomópontokon telepítendő egyes erőforrás-fájlok hosszú listáját. Az alkalmazás fájljainak több verzióját sem kell manuálisan kezelnie az Azure Storage-ban vagy a csomópontjain. Nem kell aggódnia a [sas URL-címeinek](../storage/common/storage-sas-overview.md) létrehozásával, hogy hozzáférést biztosítson a Storage-fiókban található fájlokhoz. A Batch az Azure Storage háttérben működik az alkalmazáscsomag tárolásához és a számítási csomópontokon való üzembe helyezéséhez.
 
 > [!NOTE]
 > Az indítási tevékenységek összesített mérete nem lehet nagyobb, mint 32768 karaktert, beleértve az erőforrásfájlokat és a környezeti változókat. Ha az indítási tevékenység meghaladja ezt a korlátot, az alkalmazáscsomag használata egy másik lehetőség. Létrehozhat egy. zip fájlt is, amely tartalmazza az erőforrás-fájlokat, feltöltheti blobként az Azure Storage-ba, majd kicsomagolhatja az indítási feladat parancssorából.
 
 ## <a name="upload-and-manage-applications"></a>Alkalmazások feltöltése és kezelése
 
-A Batch-fiókban lévő alkalmazáscsomag kezeléséhez használhatja a [Azure Portal](https://portal.azure.com) vagy a Batch Management API-kat. A következő néhány szakaszban először bemutatjuk, hogyan lehet egy Storage-fiókot összekapcsolni, majd megbeszélni az alkalmazások és csomagok hozzáadását és a portálon való felügyeletét.
+A Batch-fiókban lévő alkalmazáscsomag kezeléséhez használhatja a [Azure Portal](https://portal.azure.com) vagy a Batch Management API-kat. A következő szakasz ismerteti a Storage-fiókok összekapcsolását, valamint az alkalmazások és alkalmazáscsomag hozzáadását és kezelését a Azure Portal.
 
 ### <a name="link-a-storage-account"></a>Storage-fiók csatolása
 
@@ -74,7 +71,7 @@ A két fiók összekapcsolása után a Batch automatikusan üzembe helyezheti a 
 > [!IMPORTANT]
 > A [Tűzfalszabályok](../storage/common/storage-network-security.md)használatára konfigurált Azure Storage-fiókkal rendelkező alkalmazáscsomag nem használható, vagy ha a **hierarchikus névtér** engedélyezve értékre **van**állítva.
 
-A Batch szolgáltatás az Azure Storage-t használja az alkalmazáscsomag blokkolási blobként való tárolására. A blob-adatblokkok esetében a [szokásos módon kell fizetni](https://azure.microsoft.com/pricing/details/storage/) , és az egyes csomagok mérete nem haladhatja meg a Blobok maximális méretét. További információ: [Azure Storage skálázhatósági és teljesítménybeli célok a Storage-fiókokhoz](../storage/blobs/scalability-targets.md). A költségek csökkentése érdekében ügyeljen arra, hogy vegye figyelembe az alkalmazáscsomag méretét és számát, és rendszeres időközönként távolítsa el az elavult csomagokat.
+A Batch szolgáltatás az Azure Storage-t használja az alkalmazáscsomag blokkolási blobként való tárolására. A blob-adatblokkok esetében a [szokásos módon kell fizetni](https://azure.microsoft.com/pricing/details/storage/) , és az egyes csomagok mérete nem haladhatja meg a Blobok maximális méretét. További információ: [Azure Storage skálázhatósági és teljesítménybeli célok a Storage-fiókokhoz](../storage/blobs/scalability-targets.md). A költségek csökkentése érdekében ügyeljen rá, hogy az alkalmazáscsomag mérete és száma, valamint az elavult csomagok rendszeres eltávolítása történjen.
 
 ### <a name="view-current-applications"></a>Aktuális alkalmazások megtekintése
 
@@ -88,19 +85,19 @@ Ha ezt a menüelemet választja, megnyílik az **alkalmazások** ablak. Ez az ab
 - **Alapértelmezett verzió**: ha alkalmazható, akkor az alkalmazás verziója lesz telepítve, ha az alkalmazás telepítésekor nem ad meg verziót.
 - **Frissítések engedélyezése**: Megadja, hogy a csomagok frissítései és törlése engedélyezett-e.
 
-Ha szeretné megtekinteni a számítási csomóponton lévő alkalmazáscsomag [fájlrendszerét](files-and-directories.md) , keresse meg a Batch-fiókját a Azure Portal. Válassza a **készletek** lehetőséget, majd válassza ki azt a készletet, amely a kívánt számítási csomópontot tartalmazza. Ezután válassza ki azt a számítási csomópontot, amelyen az alkalmazáscsomag telepítve van, majd nyissa meg az **alkalmazások** mappát.
+[Az alkalmazáscsomag](files-and-directories.md) számítási csomóponton való megjelenítéséhez navigáljon a Batch-fiókjához a Azure Portal. Válassza a **készletek**lehetőséget. Ezután válassza ki a számítási csomópontot tartalmazó készletet. Válassza ki azt a számítási csomópontot, amelyen az alkalmazáscsomag telepítve van, és nyissa meg az **alkalmazások** mappát.
 
 ### <a name="view-application-details"></a>Alkalmazás részleteinek megtekintése
 
 Egy alkalmazás részleteinek megtekintéséhez válassza ki azt az **alkalmazások** ablakban. Az alkalmazáshoz a következő beállításokat állíthatja be.
 
-- **Frissítések engedélyezése**: azt jelzi, hogy lehet [-e frissíteni vagy törölni](#update-or-delete-an-application-package)az alkalmazáscsomag. Az alapértelmezett érték az **Igen**. Ha a **nem**értékre van állítva, a csomagok frissítései és törlése nem engedélyezett az alkalmazás számára, bár új alkalmazáscsomag-verziók is hozzáadhatók.
+- **Frissítések engedélyezése**: azt jelzi, hogy lehet [-e frissíteni vagy törölni](#update-or-delete-an-application-package)az alkalmazáscsomag. Az alapértelmezett érték az **Igen**. Ha a **nem**értékre van állítva, a meglévő alkalmazáscsomag nem frissíthető és nem törölhető, de az új alkalmazáscsomag-verziók továbbra is hozzáadhatók.
 - **Alapértelmezett verzió**: az alkalmazás telepítésekor használandó alapértelmezett alkalmazáscsomag, ha nincs megadva verzió.
 - **Megjelenítendő név**: a Batch-megoldás által az alkalmazással kapcsolatos információk megjelenítésére használt rövid név. Ezt a nevet használhatja például egy olyan szolgáltatás felhasználói felületén, amelyet az ügyfelek számára a Batch használatával biztosít.
 
 ### <a name="add-a-new-application"></a>Új alkalmazás hozzáadása
 
-Új alkalmazás létrehozásához vegyen fel egy alkalmazáscsomag-csomagot, és adjon meg egy új, egyedi alkalmazás-azonosítót.
+Új alkalmazás létrehozásához vegyen fel egy alkalmazáscsomag-csomagot, és adjon meg egy egyedi alkalmazás-azonosítót.
 
 A Batch-fiókban válassza az **alkalmazások** lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
 
@@ -143,7 +140,7 @@ Most, hogy megismerte, hogyan kezelheti az alkalmazás-csomagokat a Azure Portal
 
 ### <a name="install-pool-application-packages"></a>Készlet alkalmazáscsomag telepítése
 
-Egy adott készlet összes számítási csomópontján lévő alkalmazáscsomag telepítéséhez válasszon egy vagy több alkalmazáscsomag-referenciát a készlethez. A készlethez megadott alkalmazáscsomag minden számítási csomópontra telepítve van, amikor a csomópont csatlakozik a készlethez, és a csomópont újraindítása vagy rendszerképbe állítása történik.
+Egy adott készlet összes számítási csomópontján lévő alkalmazáscsomag telepítéséhez válasszon egy vagy több alkalmazáscsomag-referenciát a készlethez. A készlethez megadott alkalmazáscsomag minden olyan számítási csomóponton telepítve van, amely összekapcsolja a készletet, illetve bármely olyan csomóponton, amely újra van indítva vagy rendszerképben van.
 
 A Batch .NET-ben válasszon egy vagy több [CloudPool. ApplicationPackageReferences](/dotnet/api/microsoft.azure.batch.cloudpool.applicationpackagereferences) , amikor új készletet hoz létre, vagy egy meglévő készlethez. A [ApplicationPackageReference](/dotnet/api/microsoft.azure.batch.applicationpackagereference) osztály a készlet számítási csomópontjain telepítendő alkalmazás-azonosítót és verziót határozza meg.
 
@@ -170,7 +167,7 @@ await myCloudPool.CommitAsync();
 ```
 
 > [!IMPORTANT]
-> Ha egy alkalmazáscsomag üzembe helyezése bármilyen okból meghiúsul, a Batch szolgáltatás [használhatatlanként](/dotnet/api/microsoft.azure.batch.computenode.state)jelöli meg a csomópontot, és a csomóponton nem ütemezhető feladatok végrehajtásra. Ebben az esetben a csomag központi telepítésének újraindításához újra kell indítania a csomópontot. A csomópont újraindítása azt is lehetővé teszi, hogy a feladatütemezés ismét elérhető legyen a csomóponton.
+> Ha egy alkalmazáscsomag üzembe helyezése meghiúsul, a Batch szolgáltatás [használhatatlanként](/dotnet/api/microsoft.azure.batch.computenode.state)jelöli meg a csomópontot, és a csomóponton nem ütemezhető feladatok végrehajtásra. Ha ez történik, indítsa újra a csomópontot a csomag központi telepítésének újraindításához. A csomópont újraindítása azt is lehetővé teszi, hogy a feladatütemezés ismét elérhető legyen a csomóponton.
 
 ### <a name="install-task-application-packages"></a>Task Application-csomagok telepítése
 
@@ -205,7 +202,7 @@ Windows:
 AZ_BATCH_APP_PACKAGE_APPLICATIONID#version
 ```
 
-Linux-csomópontokon a formátum némileg eltérő. A pont (.), a kötőjel (-) és a Number Signs (#) a környezeti változóban található aláhúzásra van leképezve. Azt is vegye figyelembe, hogy a rendszer megőrzi az alkalmazás AZONOSÍTÓjának esetét. Például:
+Linux-csomópontokon a formátum némileg eltérő. A pont (.), a kötőjel (-) és a Number Signs (#) a környezeti változóban található aláhúzásra van leképezve. Azt is vegye figyelembe, hogy a rendszer megőrzi az alkalmazás AZONOSÍTÓjának esetét. Példa:
 
 ```
 Linux:
@@ -246,7 +243,7 @@ CloudTask blenderTask = new CloudTask(taskId, commandLine);
 
 ## <a name="update-a-pools-application-packages"></a>Készlet alkalmazáscsomagjainak frissítése
 
-Ha egy meglévő készlet már konfigurálva van egy alkalmazáscsomag használatával, megadhat egy új csomagot a készlethez. Ha egy készlethez új csomag-referenciát ad meg, a következők érvényesek:
+Ha egy meglévő készlet már konfigurálva van egy alkalmazáscsomag használatával, megadhat egy új csomagot a készlethez. Ez a következőket jelenti:
 
 - A Batch szolgáltatás telepíti az újonnan megadott csomagot az összes olyan új csomóponton, amely csatlakozik a készlethez, illetve az újraindított vagy rendszerképbe telepített meglévő csomópontokon.
 - A csomagok hivatkozásainak frissítésekor a készletben már szereplő számítási csomópontok nem telepítik automatikusan az új alkalmazáscsomag-csomagot. Ezeket a számítási csomópontokat újra kell indítani vagy rendszerképbe kell állítani az új csomag fogadásához.

@@ -3,12 +3,12 @@ title: Koncepció – Azure VMware-megoldás üzembe helyezésének integrálás
 description: Ismerje meg az Azure VMware-megoldások üzembe helyezését egy meglévő vagy egy új, az Azure-ban, az Azure-ban.
 ms.topic: conceptual
 ms.date: 09/09/2020
-ms.openlocfilehash: 1862b98b40788b6b71d05eb4be43bdacd39e927f
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: a2007e159d23a02ca573fd833590651061c59973
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89659204"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271732"
 ---
 # <a name="integrate-azure-vmware-solution-in-a-hub-and-spoke-architecture"></a>Azure VMware-megoldás integrálása egy sugaras architektúrával
 
@@ -109,7 +109,7 @@ A részletekért és a követelményekért tekintse át [Application Gateway](./
 
 Hozzáférés az Azure VMware megoldási környezethez a Jumpbox, amely egy olyan Windows 10 vagy Windows Server rendszerű virtuális gép, amelyet a hub virtuális hálózaton belül, a megosztott szolgáltatás alhálózatán helyeztek üzembe.
 
-Ajánlott biztonsági eljárásként a központi virtuális hálózaton belül üzembe helyezheti [Microsoft Azure megerősített](../bastion/index.yml) szolgáltatást. Az Azure Bastion zökkenőmentes RDP-és SSH-hozzáférést biztosít az Azure-on üzembe helyezett virtuális gépekhez anélkül, hogy nyilvános IP-címeket kellene kiépítenie ezekre az erőforrásokra. Az Azure Bastion szolgáltatás kiépítése után a Azure Portalból férhet hozzá a kiválasztott virtuális géphez. A kapcsolat létrehozása után megnyílik egy új lap, amely megjeleníti a Jumpbox asztalt, és ebből az asztalból elérheti az Azure VMware-megoldás saját Felhőbeli felügyeleti síkon.
+Ajánlott biztonsági eljárásként a központi virtuális hálózaton belül üzembe helyezheti [Microsoft Azure megerősített](../bastion/index.yml) szolgáltatást. Az Azure Bastion zökkenőmentes RDP-és SSH-hozzáférést biztosít az Azure-on üzembe helyezett virtuális gépekhez anélkül, hogy nyilvános IP-címeket kellene kiépítenie ezekre az erőforrásokra. Az Azure Bastion szolgáltatás kiépítése után a Azure Portalból férhet hozzá a kiválasztott virtuális géphez. A kapcsolat létrehozása után megnyílik egy új lap, amely a Jumpbox asztalt jeleníti meg, amelyen keresztül elérheti az Azure VMware-megoldás saját Felhőbeli felügyeleti síkon.
 
 > [!IMPORTANT]
 > Ne adjon meg nyilvános IP-címet a Jumpbox virtuális géphez, vagy tegye elérhetővé a 3389/TCP portot a nyilvános internethez. 
@@ -142,7 +142,7 @@ A helyszíni és az Azure VMware megoldás-kiszolgálókat feltételes továbbí
 
 ## <a name="identity-considerations"></a>Identitással kapcsolatos megfontolások
 
-A legjobb megoldás az, ha a központi telepítés során legalább egy AD-tartományvezérlőt üzembe helyez az elosztón a megosztott szolgáltatás alhálózatának használatával, ideális esetben kettőt a zóna által terjesztett módon vagy a virtuális gép rendelkezésre állási csoportján belül. A helyszíni AD-tartomány Azure-ra való kiterjesztését [Azure Architecture Center](/azure/architecture/reference-architectures/identity/adds-extend-domain) tekintheti meg.
+Identitási célokra a legjobb módszer az, ha legalább egy AD-tartományvezérlőt üzembe helyez a központban a megosztott szolgáltatás alhálózatának használatával. Ideális esetben ezek közül kettő a zónában elosztott módon vagy a virtuális gép rendelkezésre állási csoportján belül. A helyszíni AD-tartomány Azure-ra való kiterjesztését [Azure Architecture Center](/azure/architecture/reference-architectures/identity/adds-extend-domain) tekintheti meg.
 
 Emellett helyezzen üzembe egy másik tartományvezérlőt az Azure VMware megoldás oldalán, hogy identitásként és DNS-forrásként működjön a vSphere-környezetben.
 

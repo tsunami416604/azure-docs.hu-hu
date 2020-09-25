@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mathoma, carlrab
+ms.reviewer: mathoma, sstein
 ms.date: 08/28/2020
-ms.openlocfilehash: 3b81ce6e1b77db7b89f293850e2d00fde5d40cfa
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 7b4a85077c8e0147f926f9a86fc8a003591ec8ac
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89076514"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91277733"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Automatikus feladatátvételi csoportok használata több adatbázis átlátható és koordinált feladatátvételének engedélyezéséhez
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -213,11 +213,11 @@ A módosítási folyamat szemléltetése érdekében feltételezzük, hogy az a 
 
 ## <a name="best-practices-for-sql-managed-instance"></a>Ajánlott eljárások az SQL felügyelt példányaihoz
 
-Az automatikus feladatátvételi csoportot az elsődleges példányon kell konfigurálni, és egy másik Azure-régióban található másodlagos példánnyal kell csatlakoznia.  A példány összes adatbázisa replikálva lesz a másodlagos példányra.
+Az automatikus feladatátvételi csoportot az elsődleges példányon kell konfigurálni, és egy másik Azure-régióban található másodlagos példányhoz kell csatlakoznia.  A példányban lévő valamennyi adatbázis a másodlagos példányra lesz replikálva.
 
 A következő ábra egy geo-redundáns felhőalapú alkalmazás tipikus konfigurációját szemlélteti, amely felügyelt példányt és automatikus feladatátvételi csoportot használ.
 
-![automatikus feladatátvétel](./media/auto-failover-group-overview/auto-failover-group-mi.png)
+![automatikus feladatátvételi diagram](./media/auto-failover-group-overview/auto-failover-group-mi.png)
 
 > [!NOTE]
 > Tekintse meg a [felügyelt példány hozzáadása feladatátvételi csoporthoz](../managed-instance/failover-group-add-instance-tutorial.md) című témakört, amely részletesen ismerteti az SQL felügyelt példányok feladatátvételi csoport használatára való hozzáadásának lépéseit.
@@ -237,16 +237,16 @@ További információ a másodlagos SQL felügyelt példány létrehozásáról 
 
 Mivel minden példány el van különítve a saját VNet, engedélyezni kell a két irányú adatforgalmat a virtuális hálózatok között. Lásd: [Azure VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md)
 
-### <a name="creating-a-failover-group-between-managed-instances-in-different-subscriptions"></a>Feladatátvételi csoport létrehozása különböző előfizetésekben található felügyelt példányok között
+### <a name="creating-a-failover-group-between-managed-instances-in-different-subscriptions"></a>Feladatátvételi csoport létrehozása a felügyelt példányok között eltérő előfizetésekben
 
 Létrehozhat egy feladatátvételi csoportot két különböző előfizetésben lévő SQL felügyelt példányok között, feltéve, hogy az előfizetések ugyanahhoz a [Azure Active Directory bérlőhöz](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#terminology)vannak társítva. A PowerShell API használatakor ezt megteheti a `PartnerSubscriptionId` másodlagos SQL felügyelt példányának paraméterének megadásával. REST API használatakor a paraméterben szereplő minden példány-azonosító `properties.managedInstancePairs` rendelkezhet saját subscriptionID is.
   
 > [!IMPORTANT]
-> A Azure Portal nem támogatja a feladatátvételi csoportok létrehozását a különböző előfizetések között. Emellett a meglévő feladatátvételi csoportok esetében a különböző előfizetések és/vagy erőforráscsoportok esetében a feladatátvételt nem lehet manuálisan kezdeményezni a portálon keresztül az elsődleges SQL felügyelt példányon. Kezdeményezzen helyet a Geo-másodlagos példányból.
+> A Azure Portal nem támogatja a feladatátvételi csoportok létrehozását a különböző előfizetések között. Emellett a meglévő feladatátvételi csoportok esetében a különböző előfizetések és/vagy erőforráscsoportok esetében a feladatátvételt nem lehet manuálisan kezdeményezni a portálon keresztül az elsődleges SQL felügyelt példányon. Ehelyett azt a földrajzilag másodlagos példányból kell kezdeményeznie.
 
-### <a name="managing-failover-to-secondary-instance"></a>Feladatátvétel kezelése másodlagos példányra
+### <a name="managing-failover-to-secondary-instance"></a>Másodlagos példányra történő feladatátvétel kezelése
 
-A feladatátvételi csoport a felügyelt SQL-példány összes adatbázisának feladatátvételét fogja kezelni. Egy csoport létrehozásakor a rendszer a példány minden adatbázisát automatikusan a másodlagos SQL felügyelt példányra replikálja. A feladatátvételi csoportok nem használhatók az adatbázisok egy részhalmazának részleges feladatátvételének kezdeményezésére.
+A feladatátvételi csoport a felügyelt SQL-példányban lévő összes adatbázis feladatátvételét kezelni fogja. Egy csoport létrehozásakor a rendszer automatikusan elvégzi a példány minden adatbázisának georeplikálását a másodlagos felügyelt SQL-példányra. A feladatátvételi csoportok nem használhatók az adatbázisok egy részhalmazának részleges feladatátvételéhez.
 
 > [!IMPORTANT]
 > Ha egy adatbázis el lett távolítva az elsődleges SQL felügyelt példányból, akkor azt a rendszer a Geo-másodlagos SQL felügyelt példányon is automatikusan elveti.
@@ -260,7 +260,7 @@ OLTP műveletek végrehajtásakor használja `<fog-name>.zone_id.database.window
 Ha az adatok bizonyos elavulása érdekében logikailag elszigetelt írásvédett munkaterheléssel rendelkezik, használhatja az alkalmazás másodlagos adatbázisát. Ha közvetlenül a földrajzilag replikált másodlagoshoz szeretne csatlakozni, használja `<fog-name>.secondary.<zone_id>.database.windows.net` a kiszolgáló URL-címét, és a kapcsolat közvetlenül a földrajzilag replikált másodlagosra történik.
 
 > [!NOTE]
-> Bizonyos szolgáltatási rétegekben a SQL Database támogatja a csak olvasható [replikák](read-scale-out.md) használatát, hogy csak egy írásvédett replikát és a `ApplicationIntent=ReadOnly` paramétert használja a kapcsolódási karakterláncban. Ha egy földrajzilag replikált másodlagos beállítást konfigurált, ezzel a képességgel csatlakozhat egy írásvédett replikához az elsődleges helyen vagy a földrajzilag replikált helyen.
+> Bizonyos szolgáltatási rétegekben a SQL Database támogatja a csak olvasható [replikák](read-scale-out.md) használatát, hogy csak egy írásvédett replikát és a `ApplicationIntent=ReadOnly` paramétert használja a kapcsolódási karakterláncban. Ha georeplikált másodlagos példányt konfigurált, ezzel a képességgel csatlakozhat egy írásvédett replikához az elsődleges helyen vagy a georeplikált helyen is.
 >
 > - Az elsődleges helyen található írásvédett replikához való kapcsolódáshoz használja a következőt: `<fog-name>.<zone_id>.database.windows.net` .
 > - A másodlagos helyen található írásvédett replikához való kapcsolódáshoz használja a következőt: `<fog-name>.secondary.<zone_id>.database.windows.net` .
@@ -348,16 +348,16 @@ A fenti konfiguráció biztosítja, hogy az automatikus feladatátvétel ne blok
 > [!IMPORTANT]
 > A regionális kimaradások üzletmenet-folytonosságának garantálása érdekében biztosítania kell a földrajzi redundanciát mind az előtér-összetevők, mind az adatbázisok számára.
 
-## <a name="enabling-geo-replication-between-managed-instances-and-their-vnets"></a>A földrajzi replikálás engedélyezése a felügyelt példányok és a virtuális hálózatok között
+## <a name="enabling-geo-replication-between-managed-instances-and-their-vnets"></a>A georeplikáció engedélyezése felügyelt példányok és virtuális hálózataik között
 
 Ha egy feladatátvételi csoportot állít be az elsődleges és a másodlagos SQL felügyelt példányok között két különböző régióban, az egyes példányok különálló virtuális hálózattal vannak elkülönítve. A virtuális hálózatok közötti replikációs forgalom engedélyezéséhez ellenőrizze, hogy teljesülnek-e az előfeltételek:
 
 - Az SQL által felügyelt példány két példányának különböző Azure-régiókban kell lennie.
 - A felügyelt SQL-példányok két példányának azonos szolgáltatási szintnek kell lennie, és ugyanazzal a tárolási mérettel kell rendelkeznie.
 - A felügyelt SQL-példány másodlagos példányának üresnek kell lennie (nincs felhasználói adatbázis).
-- Az SQL felügyelt példány példányai által használt virtuális hálózatokat [VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md) vagy [expressz útvonalon](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md)keresztül kell csatlakoztatni. Ha két virtuális hálózat egy helyszíni hálózaton keresztül kapcsolódik, győződjön meg arról, hogy nincs tűzfalszabály blokkolja a 5022-es és a 11000-11999-es portot. A globális VNet-társítás nem támogatott.
+- Az SQL felügyelt példány példányai által használt virtuális hálózatokat [VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md) vagy [expressz útvonalon](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md)keresztül kell csatlakoztatni. Ha két virtuális hálózat egy helyszíni hálózaton keresztül csatlakozik, győződjön meg arról, hogy nem blokkolja tűzfalszabály az 5022-es és a 11000–11999-es portokat. A globális virtuális társhálózatok nem támogatottak.
 - A két felügyelt SQL-példány virtuális hálózatok nem rendelkezhet átfedésben lévő IP-címekkel.
-- Be kell állítania a hálózati biztonsági csoportokat (NSG) úgy, hogy a 5022-es és a 11000 ~ 12000-as tartomány a másik felügyelt példány alhálózatában lévő kapcsolatokhoz nyitott bejövő és kimenő. Ez lehetővé teszi a példányok közötti replikációs forgalmat.
+- A hálózati biztonsági csoportokat (NSG) úgy kell beállítania, hogy az 5022-es portnak és a 11000–12000 közötti tartományba eső portoknak engedélyezni kell a másik felügyelt példány alhálózatával folytatott bejövő és kimenő forgalmat. Ezzel lehetővé teszi a virtuális hálózatok közötti replikációs forgalmat.
 
    > [!IMPORTANT]
    > Helytelenül konfigurált NSG biztonsági szabályok vezetnek az adatbázis-másolási műveletek elakadása érdekében.
@@ -369,9 +369,9 @@ Ha egy feladatátvételi csoportot állít be az elsődleges és a másodlagos S
 
 ## <a name="upgrading-or-downgrading-a-primary-database"></a>Elsődleges adatbázis frissítése vagy visszaminősítése
 
-A másodlagos adatbázisok leválasztása nélkül frissítheti vagy visszaminősítheti az elsődleges adatbázist más számítási méretre (ugyanazon a szolgáltatási szinten belül, általános célú és üzletileg kritikus között). A frissítéskor javasoljuk, hogy először frissítse az összes másodlagos adatbázist, majd frissítse az elsődlegest. A visszalépést követően a sorrend megfordításakor a rendszer visszaminősíti az elsődlegest, majd lecseréli az összes másodlagos adatbázist. Ha az adatbázist egy másik szolgáltatási szintre frissíti vagy visszaminősíti, ez a javaslat érvénybe lép.
+A másodlagos adatbázisok leválasztása nélkül frissítheti vagy visszaminősítheti az elsődleges adatbázist más számítási méretre (ugyanazon a szolgáltatási szinten belül, általános célú és üzletileg kritikus között). A frissítéskor javasoljuk, hogy először frissítse az összes másodlagos adatbázist, majd frissítse az elsődlegest. A visszalépést követően a sorrend megfordításakor a rendszer visszaminősíti az elsődlegest, majd lecseréli az összes másodlagos adatbázist. Ha egy alacsonyabb vagy magasabb szolgáltatási szintre módosítja az adatbázist, a rendszer kikényszeríti ezt az ajánlást.
 
-Ezt a sorozatot kifejezetten arra a problémára érdemes elkerülni, hogy az alacsonyabb SKU-ban lévő másodlagos példány túlterhelt legyen, és a frissítés vagy a lefokozási folyamat során újra kell magot adni. A problémát úgy is elkerülheti, ha az elsődleges írásvédett, az összes írási és olvasási feladatnak az elsődlegesen való hatásának rovására kerül.
+Ezt az ütemezést kifejezetten azért javasoljuk, hogy az alacsonyabb szintű termékváltozatban lévő másodlagos példány ne legyen túlterhelve, és a frissítés vagy lefokozási folyamat során ne kelljen új magot kapnia. A problémát úgy is elkerülheti, ha az elsődleges példányt írásvédetté teszi, de ez hatással lesz az összes írási és olvasási számítási feladatra az elsődleges példányon.
 
 > [!NOTE]
 > Ha a másodlagos adatbázist a feladatátvételi csoport konfigurációjának részeként hozta létre, a másodlagos adatbázis visszalépéséhez nem ajánlott. Ezzel biztosíthatja, hogy az adatmennyiség elegendő kapacitással legyen feldolgozva a rendszeres számítási feladatok elvégzése után a feladatátvétel aktiválása után.

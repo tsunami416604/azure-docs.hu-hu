@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 04/02/2020
+ms.date: 09/22/2020
 ms.author: b-juche
-ms.openlocfilehash: d76af4901103b0eed8cd1cffac744f8fb41d9689
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2b52ad50854092cddd7b9e79cbeebd4a83017081
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483499"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325410"
 ---
 # <a name="set-up-a-capacity-pool"></a>Kapacitáskészlet beállítása
 
@@ -41,7 +41,7 @@ Már rendelkeznie kell egy létrehozott NetApp-fiókkal.
     Ekkor megjelenik az Új kapacitáskészlet ablak.
 
 3. Adja meg az alábbi, az új kapacitáskészletre vonatkozó információkat:  
-   * **Name (Név)**  
+   * **Név**  
      Adja meg a kapacitáskészlet nevét.  
      A kapacitáskészlet nevének a NetApp-fiókban egyedinek kell lennie.
 
@@ -49,16 +49,27 @@ Már rendelkeznie kell egy létrehozott NetApp-fiókkal.
      Ez a mező a kapacitáskészlet célteljesítményét mutatja.  
      A kapacitási készlet szolgáltatási szintjének megadása: [**Ultra**](azure-netapp-files-service-levels.md#Ultra), [**Premium**](azure-netapp-files-service-levels.md#Premium)vagy [**standard**](azure-netapp-files-service-levels.md#Standard).
 
-   * **Méret**     
+    * **Méret**     
      Adja meg a megvásárolni kívánt kapacitáskészlet-méretet.        
      A kapacitáskészletek minimális mérete 4 TiB. A létrehozott kapacitáskészlet méretének a 4 TiB egy szorzatának kell lennie.   
-      
-     ![Új kapacitáskészlet](../media/azure-netapp-files/azure-netapp-files-new-capacity-pool.png)
 
-4. Kattintson az **OK** gombra.
+   * **QoS**   
+     Adja meg, hogy a kapacitási készletnek a **manuális** vagy az **automatikus** QoS-típust kell használnia.  
 
-## <a name="next-steps"></a>További lépések 
+     A QoS-típusok megismeréséhez tekintse meg a [tárolási hierarchia](azure-netapp-files-understand-storage-hierarchy.md) és a [teljesítménnyel kapcsolatos szempontokat](azure-netapp-files-performance-considerations.md) .  
 
+     > [!IMPORTANT] 
+     > A **QoS** -típus **manuálisra** állítása állandó. A manuális QoS-kapacitás készlete nem alakítható át automatikus QoS használatára. Az automatikus QoS-kapacitás készletét azonban manuális QoS használatára is alakíthatja. Lásd: [Kapacitási készlet módosítása kézi QoS használatára](manage-manual-qos-capacity-pool.md#change-to-qos).   
+     > A kapacitáshoz tartozó készlet kézi QoS-típusának használatához regisztráció szükséges. Lásd: [manuális QoS-kapacitás készletének kezelése](manage-manual-qos-capacity-pool.md#register-the-feature). 
+
+    ![Új kapacitáskészlet](../media/azure-netapp-files/azure-netapp-files-new-capacity-pool.png)
+
+4. Kattintson a **Létrehozás** lehetőségre.
+
+## <a name="next-steps"></a>Következő lépések 
+
+- [Tárolási hierarchia](azure-netapp-files-understand-storage-hierarchy.md) 
 - [Az Azure NetApp Files szolgáltatásszintjei](azure-netapp-files-service-levels.md)
-- A különböző szolgáltatási szintek árának [Azure NetApp Files díjszabási oldalán](https://azure.microsoft.com/pricing/details/storage/netapp/) talál.
+- [Azure NetApp Files díjszabási oldala](https://azure.microsoft.com/pricing/details/storage/netapp/)
+- [Manuális QoS-kapacitás készletének kezelése](manage-manual-qos-capacity-pool.md)
 - [Alhálózat delegálása az Azure NetApp Fileshoz](azure-netapp-files-delegate-subnet.md)

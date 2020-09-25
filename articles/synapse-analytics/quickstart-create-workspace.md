@@ -8,13 +8,13 @@ ms.topic: quickstart
 ms.subservice: ''
 ms.date: 09/03/2020
 ms.author: pimorano
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 99f4471a3b64990fb71341dc8210bf7f8e5b0d5a
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.reviewer: jrasnick
+ms.openlocfilehash: cbf7fb8deba86dd966ccb8087823c76b20413db8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661936"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91260359"
 ---
 # <a name="quickstart-create-a-synapse-workspace"></a>Rövid útmutató: szinapszis-munkaterület létrehozása
 Ez a rövid útmutató ismerteti, hogyan hozhat létre egy Azure szinapszis-munkaterületet a Azure Portal használatával.
@@ -30,7 +30,7 @@ Ez a rövid útmutató ismerteti, hogyan hozhat létre egy Azure szinapszis-munk
     |Alapvető beállítások|**Munkaterület neve**|Bármilyen nevet megadhat.| Ebben a dokumentumban a **sajátmunkaterület**-t fogjuk használni.|
     |Alapvető beállítások|**Régió**|A Storage-fiók régiójának egyeztetése.|
 
-1. Munkaterület létrehozásához ADLSGEN2-fiókra van szükség. A legegyszerűbb lehetőség, hogy újat hozzon létre. Ha újra szeretné használni a meglévőket, néhány további konfigurálást is végre kell hajtania. 
+1. Munkaterület létrehozásához ADLSGEN2-fiókra van szükség. A legegyszerűbb választás egy új létrehozása. Ha újra szeretné használni a meglévőket, néhány további konfigurálást is végre kell hajtania. 
 1. 1. lehetőség új ADLSGEN2-fiók létrehozása 
     1. A **2. generációs Data Lake Storage kiválasztása**területen kattintson az **új létrehozása** elemre, és nevezze el **contosolake**.
     1. A **2. generációs Data Lake Storage kiválasztása**területen kattintson a **fájlrendszer** elemre, és nevezze el a **felhasználók**nevet.
@@ -68,7 +68,7 @@ Előfordulhat, hogy az Azure szinapszis-munkaterülethez tartozó felügyelt ide
 
 1. Kattintson a **Mentés** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [SQL-készlet létrehozása](quickstart-create-sql-pool-studio.md) 
 * [Apache Spark-készlet létrehozása](quickstart-create-apache-spark-pool-portal.md)

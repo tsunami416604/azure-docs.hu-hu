@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/05/2020
-ms.openlocfilehash: d93ff81bacbb537cc5891e0b869f164e0d6824c6
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.date: 09/24/2020
+ms.openlocfilehash: 8e46e9b323657b747fd73bad3b25ed66390f3aa9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440541"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324331"
 ---
 # <a name="copy-activity-performance-optimization-features"></a>Másolási tevékenység teljesítményének optimalizálási funkciói
 
@@ -124,31 +124,35 @@ Ha megad egy értéket a `parallelCopies` tulajdonsághoz, vegye figyelembe a te
 
 ## <a name="staged-copy"></a>Előkészített másolás
 
-Amikor Adatmásolást végez egy forrás adattárból egy fogadó adattárba, a blob Storage-t átmeneti átmeneti tárolóként használhatja. Az előkészítés különösen a következő esetekben hasznos:
+Amikor Adatmásolást végez egy forrás adattárból egy fogadó adattárba, dönthet úgy, hogy az Azure Blob Storage-t vagy Azure Data Lake Storage Gen2 átmeneti átmeneti tárolóként használja. Az előkészítés különösen a következő esetekben hasznos:
 
-- **A különböző adattárakból származó adatok betöltését az Azure szinapszis Analyticsbe (korábbi nevén SQL Data Warehouse)-be szeretné állítani a Base használatával.** Az Azure szinapszis Analytics a bázist nagy átviteli sebességű mechanizmusként használja nagy mennyiségű adat az Azure szinapszis Analyticsbe való betöltéséhez. A forrásadatok csak blob Storage-ban vagy Azure Data Lake Storeban szerepelhetnek, és meg kell felelniük a további feltételeknek. Ha a blob Storage-ból vagy a Azure Data Lake Storetól eltérő adattárból tölt be adattárolót, az Adatmásolást átmeneti átmeneti blob Storage használatával aktiválhatja. Ebben az esetben a Azure Data Factory végrehajtja a szükséges adatátalakításokat annak érdekében, hogy az megfeleljen a bázisterület követelményeinek. Ezután a Base használatával tölti be az adatok betöltését az Azure szinapszis Analytics szolgáltatásba. További információkért lásd: az [adatok az Azure szinapszis analyticsbe való betöltésének használata](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-synapse-analytics).
+- **A különböző adattárakból származó adatok betöltését az Azure szinapszis Analytics (korábban SQL Data Warehouse) használatával végezheti el, az adatok másolását a-ból vagy a hópehely-ból, vagy az Amazon vöröseltolódás/HDFS performantly származó adatok betöltését.** További részletek:
+  - Az [adatok Azure szinapszis-elemzésbe való betöltéséhez használjon albase-](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-synapse-analytics)t.
+  - [Hópehely-összekötő](connector-snowflake.md)
+  - [Amazon vöröseltolódás-összekötő](connector-amazon-redshift.md)
+  - [HDFS-összekötő](connector-hdfs.md)
+- **A vállalati informatikai házirendek miatt nem szeretné megnyitni a 80-as és a 443-es porton kívüli portokat a tűzfalon.** Ha például egy helyszíni adattárból másol be egy Azure SQL Database vagy egy Azure szinapszis Analytics-re, akkor a Windows tűzfal és a vállalati tűzfal esetében aktiválni kell a kimenő TCP-kommunikációt az 1433-as porton. Ebben az esetben a szakaszos másolás kihasználhatja a saját üzemeltetésű integrációs modul előnyeit, hogy először az 443-as porton keresztül, HTTP-n vagy HTTPS-en keresztül másolja az adatok egy átmeneti tárolóba, majd az adatok betöltését SQL Database vagy Azure szinapszis Analyticsbe. Ebben a folyamatban nem kell engedélyeznie a 1433-es portot.
 - **Időnként igénybe veheti a hibrid adatáthelyezést (azaz egy helyszíni adattárból a Felhőbeli adattárolóba történő másolást) lassú hálózati kapcsolaton keresztül.** A teljesítmény javítása érdekében a szakaszos másolással tömörítheti a helyszíni adatok, így kevesebb időt vesz igénybe az adatok áthelyezése a Felhőbeli átmeneti adattárba. Ezután kibonthatja az átmeneti tárolóban lévő adatok kibontását a cél adattárba való betöltés előtt.
-- **A vállalati informatikai házirendek miatt nem szeretné megnyitni a 80-as és a 443-es porton kívüli portokat a tűzfalon.** Ha például egy helyszíni adattárból másol be egy Azure SQL Database fogadóba vagy egy Azure szinapszis Analytics-fogadóba, akkor a Windows tűzfal és a vállalati tűzfal esetében aktiválni kell a kimenő TCP-kommunikációt az 1433-as porton. Ebben az esetben a szakaszos másolás kihasználhatja a saját üzemeltetésű integrációs modul előnyeit, hogy először másolja az adatait egy blob Storage-alapú átmeneti példányba HTTP vagy HTTPS protokollon keresztül a 443-es porton. Ezt követően az adatok betölthetők a SQL Databaseba vagy az Azure szinapszis Analytics szolgáltatásba a blob Storage átmeneti környezetből. Ebben a folyamatban nem kell engedélyeznie a 1433-es portot.
 
 ### <a name="how-staged-copy-works"></a>A szakaszos másolás működése
 
-Az előkészítési funkció aktiválása után a rendszer először a forrás adattárból másolja az adatokból az átmeneti blob Storage-ba (saját maga is). Ezt követően az adatok az előkészítési adattárból a fogadó adattárba lesznek másolva. A Azure Data Factory automatikusan kezeli a kétlépcsős folyamatot. Az adatáthelyezés befejezése után a Azure Data Factory az átmeneti tárolóból is törli az ideiglenes adatok mennyiségét.
+Az előkészítési funkció aktiválása után a rendszer először a forrás adattárból másolja az adatokból az átmeneti tárolóba (saját Azure-Blob vagy Azure Data Lake Storage Gen2). Ezután az adatok az előkészítésből a fogadó adattárba lesznek másolva. Azure Data Factory másolási tevékenység automatikusan kezeli a kétlépcsős folyamatot, és az adatok áthelyezése után az átmeneti tárolóból is törli az ideiglenes adatok mennyiségét.
 
 ![Előkészített másolás](media/copy-activity-performance/staged-copy.png)
 
-Ha átmeneti tároló használatával aktiválja az adatáthelyezést, megadhatja, hogy az adatok tömörítése megtörténjen-e, mielőtt áthelyezi az adatátvitelt a forrás adattárból egy ideiglenes vagy átmeneti adattárba, majd kibontja az adatok ideiglenes vagy átmeneti adattárból a fogadó adattárba való áthelyezését.
+Ha átmeneti tároló használatával aktiválja az adatáthelyezést, megadhatja, hogy az adatok tömörítése megtörténjen-e, mielőtt áthelyezi az adatátvitelt a forrás adattárból az átmeneti tárolóba, majd kibontja a kibontást, mielőtt áthelyezi az adatok átvitelét egy ideiglenes vagy átmeneti adattárból a fogadó adattárba.
 
 Jelenleg nem másolhat Adatmásolást két olyan adattár között, amely különböző saját üzemeltetésű IRs-kapcsolaton keresztül csatlakozik, sem a, sem a szakaszos másolat nélkül. Ilyen esetben két explicit módon láncolt másolási tevékenységet konfigurálhat a forrásról az előkészítésre való másoláshoz, majd az előkészítésből a fogadóba.
 
 ### <a name="configuration"></a>Konfiguráció
 
-Konfigurálja a **enableStaging** beállítást a másolási tevékenységben annak megadásához, hogy a blob Storage-ban kívánja-e az adatelőkészítést, mielőtt betölti azt egy célhely-adattárba. A **enableStaging** beállításakor `TRUE` adja meg az alábbi táblázatban felsorolt további tulajdonságokat. Ha még nem rendelkezik ilyennel, létre kell hoznia egy Azure Storage vagy Storage közös hozzáférésű aláírással társított szolgáltatást az átmeneti tároláshoz.
+Konfigurálja a **enableStaging** beállítást a másolási tevékenységben annak megadásához, hogy szeretné-e az adattárolást a tárolóba, mielőtt betölti azt egy célhely-adattárba. A **enableStaging** beállításakor `TRUE` adja meg az alábbi táblázatban felsorolt további tulajdonságokat. 
 
 | Tulajdonság | Leírás | Alapértelmezett érték | Kötelező |
 | --- | --- | --- | --- |
 | enableStaging |Itt adhatja meg, hogy egy átmeneti átmeneti tárolón keresztül kívánja-e az Adatmásolást. |Hamis |No |
-| linkedServiceName |Adja meg egy [AzureStorage](connector-azure-blob-storage.md#linked-service-properties) társított szolgáltatás nevét, amely az átmeneti előkészítési tárolóként használt tárolási példányra hivatkozik. <br/><br/> Nem használhat megosztott hozzáférési aláírással rendelkező tárolót az adatok Azure szinapszis-elemzésbe való betöltéséhez a Base használatával. Ezt minden más esetben használhatja. |N/A |Igen, ha a **enableStaging** értéke TRUE (igaz) |
-| path |Itt adhatja meg a blob Storage azon elérési útját, amelyben az előkészített adatértékeket tárolni szeretné. Ha nem ad meg elérési utat, a szolgáltatás létrehoz egy tárolót az ideiglenes adattároláshoz. <br/><br/> Elérési utat csak akkor kell megadni, ha megosztott hozzáférési aláírással rendelkező tárolót használ, vagy ha ideiglenes adatmennyiségre van szüksége egy adott helyen. |N/A |No |
+| linkedServiceName |Adja meg egy [Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties) vagy [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) társított szolgáltatás nevét, amely az átmeneti átmeneti tárolóként használt tároló példányára hivatkozik. |N.A. |Igen, ha a **enableStaging** értéke TRUE (igaz) |
+| path |Itt adhatja meg, hogy milyen elérési utat kívánja használni az előkészített adatkészletekben. Ha nem ad meg elérési utat, a szolgáltatás létrehoz egy tárolót az ideiglenes adattároláshoz. |N.A. |No |
 | enableCompression |Megadja, hogy a rendszer a célhelyre való másolás előtt tömöríti-e az adatfájlokat. Ez a beállítás csökkenti az átvitel alatt álló adatmennyiséget. |Hamis |No |
 
 >[!NOTE]
@@ -159,25 +163,24 @@ A másolási tevékenység mintájának definíciója az előző táblázatban i
 ```json
 "activities":[
     {
-        "name": "Sample copy activity",
+        "name": "CopyActivityWithStaging",
         "type": "Copy",
         "inputs": [...],
         "outputs": [...],
         "typeProperties": {
             "source": {
-                "type": "SqlSource",
+                "type": "OracleSource",
             },
             "sink": {
-                "type": "SqlSink"
+                "type": "SqlDWSink"
             },
             "enableStaging": true,
             "stagingSettings": {
                 "linkedServiceName": {
-                    "referenceName": "MyStagingBlob",
+                    "referenceName": "MyStagingStorage",
                     "type": "LinkedServiceReference"
                 },
-                "path": "stagingcontainer/path",
-                "enableCompression": true
+                "path": "stagingcontainer/path"
             }
         }
     }

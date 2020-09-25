@@ -9,36 +9,35 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: pafarley
-ms.openlocfilehash: da9445b12ce6f35d249fc3af1a4a0ef560ba35de
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 073f1361771ded96b33158d040efd77306acd846
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905091"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276941"
 ---
 # <a name="build-a-training-data-set-for-a-custom-model"></a>Betanítási adatkészlet létrehozása egyéni modellhez
 
-Ha az űrlap-felismerő egyéni modelljét használja, saját betanítási adatait is megadhatja, így a modell az iparágra jellemző űrlapokra is betanítható. 
+Az űrlap-felismerő egyéni modelljének használatakor saját betanítási adatait adhatja meg a [vonat egyéni modellje](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync) műveletnek, így a modell elvégezhető az iparág-specifikus űrlapok számára. Ebből az útmutatóból megtudhatja, hogyan gyűjthet és készíthet elő adatokat a modell hatékony betanításához.
 
 Ha manuális címkék nélkül végez betanítást, öt kitöltött űrlapot vagy egy üres űrlapot is használhat (a fájlnévben a "Empty" szót kell megadnia), valamint két kitöltött űrlapot is. Még ha elegendő kitöltött űrlap is van, a betanítási adatkészletbe üres űrlap hozzáadásával növelheti a modell pontosságát.
 
 Ha manuálisan címkézett betanítási adatmennyiséget szeretne használni, legalább öt kitöltött, azonos típusú kitöltésű űrlapon kell kezdődnie. Továbbra is használhat címkézetlen űrlapokat és egy üres űrlapot a szükséges adatkészleten kívül.
 
+## <a name="custom-model-input-requirements"></a>Egyéni modell bemeneti követelményei
+
+Először győződjön meg arról, hogy a betanítási adatkészlet az űrlap-felismerő bemeneti követelményeit követi.
+
+[!INCLUDE [input requirements](./includes/input-requirements.md)]
+
 ## <a name="training-data-tips"></a>Az adatképzéssel kapcsolatos tippek
 
-Fontos, hogy olyan adatkészletet használjon, amely betanításra van optimalizálva. A következő tippek segítségével biztosíthatja, hogy a legjobb eredményt kapja a [vonat egyéni modellje](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync) műveletből:
+Kövesse ezeket a további tippeket, hogy tovább optimalizálja az adatkészletet a képzéshez.
 
 * Ha lehetséges, a képeken alapuló dokumentumok helyett szöveges alapú PDF-dokumentumokat használjon. A beolvasott PDF-fájlok képként vannak kezelve.
 * A kitöltött űrlapok esetében olyan példákat használjon, amelyekben az összes mező kitöltése megtörtént.
 * Minden mezőben más értékkel rendelkező űrlapot használjon.
 * Ha az űrlapon lévő képek gyengébb minőségűek, használjon nagyobb adatkészletet (például 10-15-es lemezképeket).
-* A betanítási adatkészlet teljes mérete legfeljebb 500 oldal lehet.
-
-## <a name="general-input-requirements"></a>Általános bemeneti követelmények
-
-Győződjön meg arról, hogy a betanítási adatkészlet az összes űrlap-felismerő tartalomra vonatkozó bemeneti követelményeket is követi. 
-
-[!INCLUDE [input requirements](./includes/input-requirements.md)]
 
 ## <a name="upload-your-training-data"></a>A betanítási adatok feltöltése
 
@@ -73,7 +72,12 @@ Ha az alábbi tartalmat adja hozzá a kérelem törzséhez, az API az almappákb
 
 Most, hogy megismerte, hogyan hozhat létre egy betanítási adatkészletet, egy rövid útmutató segítségével betaníthat egy egyéni űrlap-felismerő modellt, és megkezdheti az űrlapokon való használatát.
 
+* [Modell betanítása és űrlapadatok kinyerése az ügyféloldali kódtár használatával](./quickstarts/client-library.md)
 * [Modellek betanítása és űrlapos adatok kinyerése a cURL használatával](./quickstarts/curl-train-extract.md)
 * [Modellek betanítása és űrlapos adatok kinyerése a REST API és a Python használatával](./quickstarts/python-train-extract.md)
 * [Betanítás címkék használatával a minta feliratozási eszközzel](./quickstarts/label-tool.md)
 * [Betanítás címkékkel a REST API és Python használatával](./quickstarts/python-labeled-data.md)
+
+## <a name="see-also"></a>Lásd még
+
+* [Mi a Form Recognizer?](./overview.md)

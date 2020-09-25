@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: larryfr
 author: BlackMist
 ms.date: 07/08/2020
-ms.openlocfilehash: a37a09d971ee80d05f9e028ece1adc7962c0c1a0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e1b92563acd6983b1680cacc06a8f2d0789dddf1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905713"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302502"
 ---
 # <a name="what-are-azure-machine-learning-environments"></a>Mik azok a Azure Machine Learning környezetek?
 
@@ -85,7 +85,7 @@ A második lépés kimarad, ha [felhasználó által felügyelt függőségeket]
 
 Ha ugyanezt a környezeti definíciót használja egy másik futtatáshoz, a Azure Machine Learning szolgáltatás újrahasználja a gyorsítótárazott rendszerképet a munkaterület ACR-ből. 
 
-A gyorsítótárazott képek részleteinek megtekintéséhez használja a [Environment. get_image_details](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#&preserve-view=trueget-image-details-workspace-) metódust.
+A gyorsítótárazott képek részleteinek megtekintéséhez használja a [Environment. get_image_details](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true#&preserve-view=trueget-image-details-workspace-) metódust.
 
 Annak megállapításához, hogy fel kell-e használni a gyorsítótárazott képet, vagy újat kell létrehoznia, a szolgáltatás kiszámítja a környezeti definícióból származó [kivonatot](https://en.wikipedia.org/wiki/Hash_table) , és összehasonlítja a meglévő környezetek kivonatával. A kivonat a következőn alapul:
  
@@ -108,10 +108,10 @@ A következő ábra három környezeti definíciót mutat be. Közülük kettő 
 A csomag frissítéséhez meg kell adnia egy verziószámot a rendszerkép újraépítésének kényszerítéséhez, például: ```numpy==1.18.1``` . A rendszer telepíti az új függőségeket, beleértve a beágyazottkat is, amelyek megszakítják a korábban működő forgatókönyvet. 
 
 > [!WARNING]
->  A [környezet. a Build](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#&preserve-view=truebuild-workspace--image-build-compute-none-) metódus újraépíti a gyorsítótárazott rendszerképet, amely a nem rögzített csomagok frissítésének lehetséges mellékhatása, valamint az adott gyorsítótárazott rendszerképnek megfelelő összes környezeti definíció esetén a reprodukálhatóság megszakítása.
+>  A [környezet. a Build](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true#&preserve-view=truebuild-workspace--image-build-compute-none-) metódus újraépíti a gyorsítótárazott rendszerképet, amely a nem rögzített csomagok frissítésének lehetséges mellékhatása, valamint az adott gyorsítótárazott rendszerképnek megfelelő összes környezeti definíció esetén a reprodukálhatóság megszakítása.
 
 ## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg, hogyan [hozhat létre és használhat környezeteket](how-to-use-environments.md) a Azure Machine Learningban.
-* A [környezeti osztályhoz](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py&preserve-view=true)tartozó Python SDK dokumentációjában talál.
+* A [környezeti osztályhoz](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py&preserve-view=true)tartozó Python SDK dokumentációjában talál.
 * Tekintse meg az R SDK dokumentációját a [környezetekhez](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-environments).

@@ -10,12 +10,12 @@ ms.date: 05/01/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: 2feaf33f7bc31396764bfbaa3ae6291b6752e961
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 0f6f193f531be746d3ef4920b86855ffa49efda2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89612801"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91260444"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-preview-notebooks-in-azure-synapse-analytics"></a>A szinapszis Studio (előzetes verzió) jegyzetfüzetek létrehozása, fejlesztése és karbantartása az Azure szinapszis Analyticsben
 
@@ -34,7 +34,7 @@ Ez a cikk bemutatja, hogyan használhatók a jegyzetfüzetek az Azure szinapszis
 
 Kétféleképpen hozhat létre jegyzetfüzetet. Létrehozhat egy új jegyzetfüzetet, vagy importálhat egy meglévő jegyzetfüzetet egy Azure-beli szinapszis-munkaterületre a **Object Explorerból**. Az Azure szinapszis Studio notebookok felismerik a standard Jupyter Notebook IPYNB-fájlokat.
 
-![szinapszis-Create-import-notebook](./media/apache-spark-development-using-notebooks/synapse-create-import-notebook.png)
+![importálási jegyzetfüzet létrehozása](./media/apache-spark-development-using-notebooks/synapse-create-import-notebook.png)
 
 ## <a name="develop-notebooks"></a>Jegyzetfüzetek fejlesztése
 
@@ -71,7 +71,7 @@ Az új hozzáadott cellák elsődleges nyelvét a felső parancssáv legördül�
 
 Több nyelvet is használhat egy jegyzetfüzetben a cella elején található megfelelő nyelvi mágikus parancs megadásával. A következő táblázat a cella nyelveinek váltására szolgáló mágikus parancsokat sorolja fel.
 
-|Magic parancs |Nyelv | Description |  
+|Magic parancs |Nyelv | Leírás |  
 |---|------|-----|
 |%% pyspark| Python | **Python** -lekérdezés végrehajtása a Spark-környezettel.  |
 |%% Spark| Scala | **Scala** -lekérdezés végrehajtása a Spark-környezettel.  |  
@@ -80,7 +80,7 @@ Több nyelvet is használhat egy jegyzetfüzetben a cella elején található me
 
 Az alábbi ábrán egy példa látható arra, hogyan írhat PySpark-lekérdezést a ( **z)%% PySpark** Magic paranccsal vagy egy SparkSQL-lekérdezéssel a (z)% **% SQL** Magic paranccsal a **Spark (Scala)** jegyzetfüzetben. Figyelje meg, hogy a jegyzetfüzet elsődleges nyelve a pySpark értékre van állítva.
 
-   ![szinapszis – Spark-Magics](./media/apache-spark-development-using-notebooks/synapse-spark-magics.png)
+   ![Szinapszis Spark Magic-parancsok](./media/apache-spark-development-using-notebooks/synapse-spark-magics.png)
 
 ### <a name="use-temp-tables-to-reference-data-across-languages"></a>Az adatnyelvek közötti hivatkozáshoz használjon ideiglenes táblázatokat
 
@@ -125,12 +125,12 @@ Az IntelliSense-funkciók a különböző nyelveken a lejárat különböző szi
 
 Az általános Markdown műveletek végrehajtásához használhatja a Text Cells eszköztár Format (formázás) gombját. Félkövér szöveggel, italicizing szöveggel, kódrészletek beszúrásával, Rendezetlen lista beszúrásával, rendezett lista beszúrásával és a rendszerkép URL-címének beszúrásával is magában foglalja.
 
-  ![szinapszis – szöveg-cella-eszköztár](./media/apache-spark-development-using-notebooks/synapse-text-cell-toolbar.png)
+  ![Szinapszis szöveg cellájának eszköztára](./media/apache-spark-development-using-notebooks/synapse-text-cell-toolbar.png)
 
 ### <a name="undo-cell-operations"></a>Cella műveleteinek visszavonása
 Kattintson a **Visszavonás** gombra, vagy nyomja le a **CTRL + Z** billentyűkombinációt a legutóbbi cella művelet visszavonásához. Most visszavonhatja a legutóbbi 20 korábbi cella műveleteit. 
 
-   ![szinapszis-visszavonás – cellák](./media/apache-spark-development-using-notebooks/synapse-undo-cells.png)
+   ![Szinapszis-visszavonási cellák](./media/apache-spark-development-using-notebooks/synapse-undo-cells.png)
 
 ### <a name="move-a-cell"></a>Cella áthelyezése
 
@@ -155,7 +155,7 @@ Az aktuális cella alján található nyíl gombra kattintva összecsukhatja azt
 
 ### <a name="collapse-a-cell-output"></a>Cella kimenetének összecsukása
 
-Kattintson a **kimenet összecsukása** gombra az aktuális cella kimenetének bal felső részén. A kibontásához kattintson a **cella kimenetének megjelenítése** gombra a cella kimenetének összecsukása közben.
+Válassza a **kimenet összecsukása** gombot az aktuális cella kimenetének bal felső részén. A kibontásához jelölje be a **cella kimenetének megjelenítése** a cella kimenetének összecsukása közben.
 
    ![összeomlás – cella-kimenet](./media/apache-spark-development-using-notebooks/synapse-collapse-cell-output.gif)
 
@@ -180,7 +180,7 @@ A kód több módon is futtatható a cellában.
 
 
 ### <a name="run-all-cells"></a>Az összes cella futtatása
-Kattintson az **összes futtatása** gombra az aktuális jegyzetfüzetben lévő összes cella sorba állításához.
+Az **összes futtatása** gomb kiválasztásával az aktuális jegyzetfüzet összes celláját sorba kell futtatni.
 
    ![Futtatás – összes cella](./media/apache-spark-development-using-notebooks/synapse-run-all.png)
 
@@ -192,7 +192,7 @@ A jobb szélen található további cellahivatkozások menü eléréséhez vála
 
 
 ### <a name="cancel-all-running-cells"></a>Az összes futó cella megszakítása
-Az **összes megszakítása** gombra kattintva szakítsa meg a várólistán várakozó futó cellákat vagy cellákat. 
+Az **összes megszakítása** gomb megnyomásával szakíthatja meg a várólistán várakozó futó cellákat vagy cellákat. 
    ![összes cella megszakítása](./media/apache-spark-development-using-notebooks/synapse-cancel-all.png) 
 
 ### <a name="cell-status-indicator"></a>Cella állapotának jelzője
@@ -204,7 +204,7 @@ Egy lépésenkénti cella-végrehajtási állapot jelenik meg a cella alatt, hog
 ### <a name="spark-progress-indicator"></a>Spark folyamatjelzője
 
 Az Azure szinapszis Studio notebook kizárólag Spark-alapú. A cellákat a Spark-készleten távolról hajtja végre a rendszer. A Spark-feladatok folyamatjelzője egy valós idejű folyamatjelzővel jelenik meg, amely a feladatok végrehajtási állapotának megértéséhez nyújt segítséget.
-Az egyes feladatokhoz vagy fázisokhoz tartozó feladatok száma segít a Spark-feladat párhuzamos szintjének azonosításában. Egy adott feladathoz (vagy fázishoz) tartozó Spark felhasználói felületen mélyebben is megtekintheti a feladatot (vagy a szakasz) a hivatkozásra kattintva.
+Az egyes feladatokhoz vagy fázisokhoz tartozó feladatok száma segít a Spark-feladat párhuzamos szintjének azonosításában. Az adott feladathoz (vagy fázishoz) tartozó Spark felhasználói felületen mélyebben is megtekintheti a feladatot (vagy fázis).
 
 
 ![Spark – folyamat – kijelző](./media/apache-spark-development-using-notebooks/synapse-spark-progress-indicator.png)
@@ -215,7 +215,7 @@ Megadhatja az időtúllépés időtartamát, a számot és a végrehajtók szám
 
 [![munkamenet-kezelés](./media/apache-spark-development-using-notebooks/synapse-spark-session-management.png)](./media/apache-spark-development-using-notebooks/synapse-spark-session-management.png#lightbox)
 
-A Spark munkamenet-ajánló mostantól elérhető a Spark munkamenet-konfiguráció paneljén. Közvetlenül a munkamenet-konfiguráció panelen választhatja ki a Spark-készletet, és megtekintheti, hogy hány csomópontot használ, és hogy hány végrehajtót kíván elérhetővé. Ezek az adatok segíthetnek a munkamenetek méretének megfelelő beállításában, és nem módosítják azt vissza.
+A Spark munkamenet-ajánló mostantól elérhető a Spark-munkamenet konfigurációs paneljén. Közvetlenül a munkamenet-konfiguráció panelen választhatja ki a Spark-készletet, és megtekintheti, hogy hány csomópontot használ, és hogy hány végrehajtót kíván elérhetővé. Ez az információ segít a megfelelő munkamenet-méret beállításában, és nem módosítja azt.
 
 ![munkamenet – ajánlott](./media/apache-spark-development-using-notebooks/synapse-spark-session-recommender.png)
 
@@ -277,7 +277,7 @@ Az elsődleges Storage-fiókban lévő adatelérést közvetlenül is elérheti.
 
 Táblázatos eredményeket tartalmazó nézetet biztosítunk a sávdiagram, a diagram, a tortadiagram, a pontdiagram és a diagramterület létrehozásához. Az adatait anélkül is megjelenítheti, hogy kódot kellene írnia. A diagramok testreszabhatók a **diagram beállításaiban**. 
 
-A **(z)%% SQL** Magic parancsok kimenete alapértelmezés szerint a megjelenített tábla nézetben jelenik meg. Meghívhatja <code>display(df)</code> a Spark DataFrames vagy a rugalmasan elosztott adatkészletek (RDD) függvényt a megjelenített tábla nézet létrehozásához.
+A **(z)%% SQL** Magic parancsok kimenete alapértelmezés szerint a megjelenített tábla nézetben jelenik meg. Meghívhatja <code>display(df)</code> a Spark DataFrames, a pandák DataFrames, a List vagy a rugalmas elosztott adatkészletek (RDD) függvényt a megjelenített tábla nézet létrehozásához.
 
    [![beépített diagramok](./media/apache-spark-development-using-notebooks/synapse-builtin-charts.png)](./media/apache-spark-development-using-notebooks/synapse-builtin-charts.png#lightbox)
 
@@ -287,13 +287,14 @@ Alapértelmezés szerint a <code>display(df)</code> függvény csak az adat els�
     [![beépített diagramok – összesítés – mind](./media/apache-spark-development-using-notebooks/synapse-builtin-charts-aggregation-all.png)](./media/apache-spark-development-using-notebooks/synapse-builtin-charts-aggregation-all.png#lightbox)
 
 
+
 ### <a name="visualize-data-statistic-information"></a>Adatstatisztikai adatok megjelenítése
-A <code>display(df, summary = true)</code> segítségével megtekintheti egy adott Spark-DataFrame statisztikai összegzését, amely tartalmazza az oszlop nevét, az oszlop típusát, az egyedi értékeket és az egyes oszlopok hiányzó értékeit. Kiválaszthat egy adott oszlopot is a minimális érték, a maximális érték, a középérték és a szórás megjelenítéséhez.
+A <code>display(df, summary = True)</code> segítségével megtekintheti egy adott Spark-DataFrame statisztikai összegzését, amely tartalmazza az oszlop nevét, az oszlop típusát, az egyedi értékeket és az egyes oszlopok hiányzó értékeit. Kiválaszthat egy adott oszlopot is a minimális érték, a maximális érték, a középérték és a szórás megjelenítéséhez.
     [![beépített diagramok – összefoglalás ](./media/apache-spark-development-using-notebooks/synapse-builtin-charts-summary.png)](./media/apache-spark-development-using-notebooks/synapse-builtin-charts-summary.png#lightbox)
 
 ### <a name="render-html-or-interactive-libraries"></a>HTML-vagy interaktív könyvtárak renderelése
 
-A **displayHTML ()** használatával HTML-vagy interaktív kódtárakat (például **bokeh**) is megjelenítheti.
+A **displayHTML ()** használatával HTML-kódot is megjelenítheti, beleértve a JavaScriptet, a CSS-t, a D3-t vagy az interaktív kódtárakat, például a **bokeh**-t
 
 Az alábbi ábrán egy példa látható a karakterjelek ábrázolására a **bokeh**használatával.
 
@@ -349,7 +350,7 @@ A jegyzetfüzet tulajdonságainál beállíthatja, hogy a cella kimenete megjele
    ![Jegyzetfüzet – tulajdonságok](./media/apache-spark-development-using-notebooks/synapse-notebook-properties.png)
 
 ## <a name="magic-commands"></a>Mágikus parancsok
-Használhatja az ismerős Jupyter Magic-parancsokat az Azure szinapszis Studio jegyzetfüzetben. Az alábbi listában tekintse meg az aktuálisan elérhető Magic-parancsokat. Ismertesse [a githubon a használati eseteit](https://github.com/MicrosoftDocs/azure-docs/issues/new) , hogy továbbra is felépíthetjük az igényeinek megfelelő Magic-parancsokat.
+Az Azure szinapszis Studio notebookjában ismerős Jupyter Magic-parancsokat is használhat. Tekintse át az alábbi listát az aktuálisan elérhető Magic-parancsokkal. Ismertesse [a githubon a használati eseteit](https://github.com/MicrosoftDocs/azure-docs/issues/new) , hogy továbbra is felépíthetjük az igényeinek megfelelő Magic-parancsokat.
 
 Elérhető vonali varázslatok: [% lsmagic](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-lsmagic), [% Time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time), [%)](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit)
 
@@ -360,23 +361,23 @@ Elérhető cella-varázslatok: [%% idő](https://ipython.readthedocs.io/en/stabl
 
 ### <a name="add-a-notebook-to-a-pipeline"></a>Jegyzetfüzet hozzáadása egy folyamathoz
 
-Kattintson a jobb felső sarokban található **Hozzáadás a folyamathoz** gombra a jegyzetfüzet meglévő folyamathoz való hozzáadásához, vagy egy új folyamat létrehozásához.
+A jobb felső sarokban található **Hozzáadás a folyamathoz** gombra kattintva hozzáadhat egy jegyzetfüzetet egy meglévő folyamathoz, vagy létrehozhat egy új folyamatot.
 
-![Hozzáadás a folyamathoz](./media/apache-spark-development-using-notebooks/add-to-pipeline.png)
+![Jegyzetfüzet hozzáadása a folyamathoz](./media/apache-spark-development-using-notebooks/add-to-pipeline.png)
 
 ### <a name="designate-a-parameters-cell"></a>Paraméterek cellájának kijelölése
 
-A parametrizáljaéhez kattintson a három pontra (...), és nyissa meg a jobb szélen a további cella műveletek menüt. Ezután válassza a **paraméter cellájának váltása** lehetőséget a cella paraméterként való kijelöléséhez.
+A jegyzetfüzet parametrizálja kattintson a három pontra (...), és nyissa meg a jobb szélen a további cella műveletek menüt. Ezután válassza a **paraméter cellájának váltása** lehetőséget a cella paraméterként való kijelöléséhez.
 
 ![váltás – paraméter](./media/apache-spark-development-using-notebooks/toggle-parameter-cell.png)
 
-Azure Data Factory megkeresi a parameters (paraméterek) cellát, és ezt a cellát a végrehajtási időpontban átadott paraméterek alapértelmezett értékeiként kezeli. A végrehajtó motor egy új cellát ad hozzá a paraméterek cellához a bemeneti paraméterekkel, hogy felülírja az alapértelmezett értékeket. Ha nincs megadva paraméter cella, a rendszer beszúrja az injektált cellát a jegyzetfüzet elejére.
+Azure Data Factory megkeresi a parameters (paraméterek) cellát, és ezt a cellát a végrehajtási időpontban átadott paraméterek alapértelmezett értékeiként kezeli. A végrehajtó motor egy új cellát fog hozzáadni a parameters (paraméterek) cella alatt a bemeneti paraméterekkel, hogy felülírja az alapértelmezett értékeket. Ha nincs kijelölve Parameters cella, a rendszer beszúrja az injektált cellát a jegyzetfüzet elejére.
 
 ### <a name="assign-parameters-values-from-a-pipeline"></a>Paraméterek értékének kiosztása egy folyamatból
 
 Miután létrehozott egy jegyzetfüzetet a paraméterekkel, végrehajthatja azt egy olyan folyamatból, amely az Azure szinapszis notebook-tevékenységét futtatja. Miután hozzáadta a tevékenységet a csővezeték-vászonhoz, a **Beállítások** lap **alapparaméterek** szakaszában állíthatja be a paraméterek értékét. 
 
-![hozzárendelés – paraméter](./media/apache-spark-development-using-notebooks/assign-parameter.png)
+![Paraméter kiosztása](./media/apache-spark-development-using-notebooks/assign-parameter.png)
 
 A paraméterek értékének kiosztásakor használhatja a [folyamat kifejezésének nyelvét](../../data-factory/control-flow-expression-language-functions.md) vagy a [rendszerváltozókat](../../data-factory/control-flow-system-variables.md).
 
@@ -386,11 +387,11 @@ A paraméterek értékének kiosztásakor használhatja a [folyamat kifejezésé
 
 A Jupyter-jegyzetfüzetekhez hasonlóan az Azure szinapszis Studio notebookok modális felhasználói felülettel rendelkeznek. A billentyűzet különböző műveleteket végez, attól függően, hogy a jegyzetfüzet-cella milyen módban van. A szinapszis Studio notebookok az alábbi két módot támogatják egy adott kódú cellához: parancs mód és szerkesztési mód.
 
-1. A cella parancs módban van, ha nincs beírni kívánt szöveg. Ha egy cella parancs módban van, a jegyzetfüzetet teljes egészében szerkesztheti, de nem lehet egyéni cellákba írni. A parancs mód megadásához nyomja le `ESC` vagy az egér használatával kattintson a cella szerkesztő területén kívülre.
+1. A cella parancs módban van, ha nincs beírni kívánt szöveg. Ha egy cella parancs módban van, a jegyzetfüzetet teljes egészében szerkesztheti, de nem lehet egyéni cellákba írni. A parancs mód megadásához nyomja le `ESC` vagy az egér használatával válassza ki a cella szerkesztő területén kívüli lehetőséget.
 
    ![parancssori üzemmód](./media/apache-spark-development-using-notebooks/synapse-command-mode2.png)
 
-2. A szerkesztési módot egy szöveges kurzor jelzi, amely arra kéri, hogy írja be a szerkesztőt. Ha egy cella szerkesztési módban van, beírhatja a cellába. Adja meg a szerkesztési módot úgy, `Enter` hogy az egérrel kattint a cella szerkesztői területeire, vagy az egér használatával rákattint.
+2. A szerkesztési módot egy szöveges kurzor jelzi, amely arra kéri, hogy írja be a szerkesztőt. Ha egy cella szerkesztési módban van, beírhatja a cellába. Adja meg a szerkesztési módot úgy, hogy lenyomja `Enter` vagy felhasználja az egeret a cella szerkesztői területein való kiválasztáshoz.
    
    ![edit-mode](./media/apache-spark-development-using-notebooks/synapse-edit-mode2.png)
 
@@ -398,7 +399,7 @@ A Jupyter-jegyzetfüzetekhez hasonlóan az Azure szinapszis Studio notebookok mo
 
 A következő billentyűleütés-billentyűparancsokkal könnyebben navigálhat és futtathat kódot az Azure szinapszis jegyzetfüzetekben.
 
-| Műveletek |A szinapszis Studio notebook parancsikonjai  |
+| Művelet |A szinapszis Studio notebook parancsikonjai  |
 |--|--|
 |Futtassa az aktuális cellát, és válassza az alábbi lehetőséget. | SHIFT + ENTER |
 |Az aktuális cella futtatása és az alábbi beszúrása | ALT + ENTER |
@@ -417,7 +418,7 @@ A következő billentyűleütés-billentyűparancsokkal könnyebben navigálhat 
 
 A következő billentyűleütés-billentyűparancsokkal könnyebben navigálhat és futtathat kódot az Azure szinapszis-jegyzetfüzetekben szerkesztési módban.
 
-| Műveletek |A szinapszis Studio notebook parancsikonjai  |
+| Művelet |A szinapszis Studio notebook parancsikonjai  |
 |--|--|
 |Kurzor mozgatása felfelé | Fel |
 |Kurzor mozgatása lefelé|Le|

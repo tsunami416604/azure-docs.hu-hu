@@ -54,6 +54,7 @@
     - name: Használati adatok vállalati ügyfelek esetén
       href: understand-reserved-instance-usage-ea.md?toc=/azure/cost-management-billing/reservations/toc.json
 - name: Útmutatók
+  expanded: true
   items:
     - name: 'Kiválaszthatja, hogy mit szeretne megvásárolni'
       items:

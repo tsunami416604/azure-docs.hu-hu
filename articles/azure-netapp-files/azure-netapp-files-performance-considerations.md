@@ -12,18 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/25/2019
+ms.date: 09/22/2020
 ms.author: b-juche
-ms.openlocfilehash: 5f88b4755c7b4c0b20f27065cf9de2351251bc1c
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: edfebe3d9470defbe70b3694d5574e58ca3b5938
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513876"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325521"
 ---
 # <a name="performance-considerations-for-azure-netapp-files"></a>Az Azure NetApp Files teljesítményével kapcsolatos szempontok
 
-A kötetek [átviteli sebességére vonatkozó korlátot](azure-netapp-files-service-levels.md) a kötethez rendelt kvóta és a kiválasztott szolgáltatási szint kombinációja határozza meg. Ha Azure NetApp Filesra vonatkozó teljesítménnyel kapcsolatos terveket készít, meg kell ismernie néhány szempontot. 
+Az automatikus QoS-vel rendelkező kötetek [átviteli korlátját](azure-netapp-files-service-levels.md) a kötethez rendelt kvóta és a kiválasztott szolgáltatási szint kombinációja határozza meg. A manuális QoS-vel rendelkező kötetek esetében az átviteli korlát külön is definiálható. Ha Azure NetApp Filesra vonatkozó teljesítménnyel kapcsolatos terveket készít, meg kell ismernie néhány szempontot. 
 
 ## <a name="quota-and-throughput"></a>Kvóta és átviteli sebesség  
 
@@ -31,19 +31,25 @@ Az átviteli sebesség korlátja csak a tényleges teljesítmény egyik meghatá
 
 A tárolási teljesítmény jellemző szempontjai, beleértve az olvasási és írási kombinációt, az átvitel méretét, a véletlenszerű vagy szekvenciális mintákat, és számos más tényező is hozzájárul a teljes teljesítményhez.  
 
-A tesztelés során megfigyelt maximális empirikus teljesítmény 4 500 MiB/s.  A Premium Storage szintjén a 70,31 TiB mennyiségi kvótája olyan átviteli korlátot fog kiépíteni, amely elég magas a teljesítmény eléréséhez.  
+A tesztelés során megfigyelt maximális empirikus teljesítmény 4 500 MiB/s.  A Premium Storage szintjén a 70,31 TiB automatikus QoS mennyiségi kvótája kiépíti az adatátviteli korlátot, amely elég magas ahhoz, hogy a teljesítmény elérhető legyen.  
 
-Ha az 70,31 TiB-nál nagyobb mennyiségű mennyiségi kvóta kiosztását fontolgatja, további kvóták is hozzárendelhetők a további adattárolási kötetekhez. A hozzáadott kvóta azonban nem eredményez további növekedést a tényleges átviteli sebességben.  
+Automatikus QoS-kötetek esetén, ha a mennyiségi kvóta 70,31 TiB-nál nagyobb mennyiségének kiosztását fontolgatja, további kvóta is hozzárendelhető egy kötethez további adattároláshoz. A hozzáadott kvóta azonban nem eredményez további növekedést a tényleges átviteli sebességben.  
 
-## <a name="overprovisioning-the-volume-quota"></a>A mennyiségi kvóta túlzott kiépítése
+Az empirikus átviteli kapacitás felső határa a manuális QoS-vel rendelkező kötetekre vonatkozik. Egy kötethez hozzárendelhető maximális átviteli sebesség 4 500 MiB/s.
 
-Ha a számítási feladatok teljesítménye a maximális átviteli sebesség, lehetséges, hogy a mennyiségi kvótát a magasabb átviteli sebesség beállítására és a nagyobb teljesítmény elérésére is lehetővé teszi.  
+## <a name="automatic-qos-volume-quota-and-throughput"></a>Automatikus QoS mennyiségi kvóta és átviteli sebesség
 
-Ha például a Premium Storage-szinten lévő köteten csak 500-es adat van, de 128 MiB/s átviteli sebességre van szükség, beállíthatja a kvótát 2 TiB-ra, hogy az átviteli szint megfelelően legyen beállítva (64 MiB/s/TB * 2 TiB = 128 MiB/s).  
+Ez a szakasz a kvóták kezelését és az automatikus QoS-típussal rendelkező kötetek átviteli sebességét ismerteti.
 
-Ha következetesen túlépít egy kötetet a magasabb átviteli sebesség eléréséhez, érdemes inkább magasabb szolgáltatási szintet használni.  A fenti példában ugyanezt az átviteli korlátot a mennyiségi kvóta felé is elérheti az ultra Storage-rétegek használatával (128 MiB/s/TiB * 1 TiB = 128 MiB/s).
+### <a name="overprovisioning-the-volume-quota"></a>A mennyiségi kvóta túlzott kiépítése
 
-## <a name="dynamically-increasing-or-decreasing-volume-quota"></a>Dinamikusan növekvő vagy csökkenő mennyiségi kvóta
+Ha a munkaterhelések teljesítménye meghaladja az átviteli sebességet, lehetséges, hogy az automatikus QoS mennyiségi kvótáját a magasabb átviteli sebesség beállítására és nagyobb teljesítményre van korlátozva.  
+
+Ha például a Premium Storage-szinten lévő automatikus QoS-köteten csak 500 GiB adat van, de 128 MiB/s átviteli sebességre van szükség, beállíthatja a kvótát 2 TiB-128 ra úgy, hogy az átviteli szint megfelelően legyen beállítva (64 MiB/s).  
+
+Ha következetesen túlépít egy kötetet a magasabb átviteli sebesség eléréséhez, érdemes lehet a manuális QoS-köteteket használni, vagy inkább magasabb szolgáltatási szintet használni.  A fenti példában ugyanezt az átviteli sebességet is elérheti, ha az automatikus QoS mennyiségi kvótát is használja az ultra Storage-rétegek használatával (128 MiB/s/TiB * 1 TiB = 128 MiB/s).
+
+### <a name="dynamically-increasing-or-decreasing-volume-quota"></a>Dinamikusan növekvő vagy csökkenő mennyiségi kvóta
 
 Ha a teljesítményre vonatkozó követelmények átmeneti jellegűek, vagy ha egy meghatározott időtartamnál nagyobb teljesítményre van szükség, dinamikusan növelheti vagy csökkentheti a mennyiségi kvótát, hogy azonnal módosítsa az átviteli sebességet.  Vegye figyelembe az alábbi szempontokat: 
 
@@ -55,11 +61,16 @@ Ha a teljesítményre vonatkozó követelmények átmeneti jellegűek, vagy ha e
 
     A módosítás nem szakítja meg a kötet-vagy I/O-hozzáférést.  
 
-* A mennyiségi kvóta módosítása a kapacitási készlet méretének változását igényli.  
+* A mennyiségi kvóta módosítása szükségessé teheti a kapacitási készlet méretének változását.  
 
     A kapacitási készlet mérete dinamikusan módosítható, és nem befolyásolja a kötetek rendelkezésre állását vagy az I/O-t.
 
-## <a name="next-steps"></a>További lépések
+## <a name="manual-qos-volume-quota-and-throughput"></a>QoS mennyiségi kvótájának és átviteli sebességének manuális meghatározása 
+
+Ha manuális QoS-köteteket használ, nem kell túlépítenie a mennyiségi kvótát a nagyobb átviteli sebesség eléréséhez, mert az átviteli sebességet egymástól függetlenül lehet hozzárendelni az egyes kötetekhez. Azonban továbbra is biztosítania kell, hogy a kapacitás-készlet előre kiépítve legyen a teljesítményre vonatkozó igényeknek megfelelő átviteli sebességgel. A kapacitás-készlet átviteli sebessége a méret és a szolgáltatási szint szerint van kiépítve. További részletekért tekintse [meg Azure NetApp Files szolgáltatási szintjeit](azure-netapp-files-service-levels.md) .
+
+
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure NetApp Files szolgáltatásszintjei](azure-netapp-files-service-levels.md)
 - [Teljesítménytesztek Linuxhoz](performance-benchmarks-linux.md)

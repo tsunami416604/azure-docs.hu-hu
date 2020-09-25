@@ -5,27 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: how-to
-ms.date: 08/03/2020
+ms.date: 09/16/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: hafowler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9efb3b451f6fc6c70c5d9ec346132bfc763ca28
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: e76c5f51486f7c1673fb5359eabc99ee41130472
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90705775"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278856"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Eszközidentitások kezelése az Azure Portal használatával
 
 Az Azure AD központi helyet biztosít az eszközök identitásának kezeléséhez.
-
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Tallózással keresse meg **Azure Active Directory**  >  **eszközöket**.
-
-[![A Azure Portal összes eszköz nézete](./media/device-management-azure-portal/all-devices-azure-portal.png)](./media/device-management-azure-portal/all-devices-azure-portal.png#lightbox)
 
 A **minden eszköz** oldal a következőket teszi lehetővé:
 
@@ -38,6 +33,13 @@ A **minden eszköz** oldal a következőket teszi lehetővé:
 - Adja meg az eszköz identitásának beállításait.
 - Enterprise State Roaming engedélyezése vagy letiltása.
 - Az eszközhöz kapcsolódó naplók áttekintése
+
+[![A Azure Portal összes eszköz nézete](./media/device-management-azure-portal/all-devices-azure-portal.png)](./media/device-management-azure-portal/all-devices-azure-portal.png#lightbox)
+
+Az eszközök portál a következő lépésekkel érhető el:
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Tallózással keresse meg **Azure Active Directory**  >  **eszközöket**.
 
 ## <a name="manage-devices"></a>Eszközök kezelése
 
@@ -147,6 +149,13 @@ Mostantól lehetősége lesz **szűrők hozzáadására** a **minden eszköz** n
 
 Az eszköz identitásának az Azure AD portálon való kezeléséhez az eszközöknek [regisztrálva](overview.md) kell lenniük, vagy hozzá kell csatlakozniuk az Azure ad-hez. Rendszergazdaként a következő eszközbeállítások konfigurálásával szabályozhatja az eszközök regisztrálásának és csatlakoztatásának folyamatát.
 
+A Azure Portal eszköz beállításainak megtekintéséhez vagy kezeléséhez a következő szerepkörök egyikét kell hozzárendelni:
+
+- Globális rendszergazda
+- Felhőalapú eszköz rendszergazdája
+- Globális olvasó
+- Címtár-olvasó
+
 ![Az Azure AD-hez kapcsolódó eszközbeállítások](./media/device-management-azure-portal/device-settings-azure-portal.png)
 
 - A **felhasználók csatlakozhatnak az eszközökhöz az Azure ad** -ben – ezzel a beállítással kiválaszthatja azokat a felhasználókat, akik regisztrálhatják az eszközeiket az Azure ad-hez csatlakoztatott eszközökként. Az alapértelmezett érték az **összes**.
@@ -168,7 +177,7 @@ Az eszköz identitásának az Azure AD portálon való kezeléséhez az eszköz�
 
 - [Vállalati állapothordozás](enterprise-state-roaming-overview.md)
 
-## <a name="audit-logs"></a>Naplók
+## <a name="audit-logs"></a>Auditnaplók
 
 Az eszközök tevékenységeit a tevékenység naplóiban érheti el. Ezek a naplók az eszköz regisztrációs szolgáltatása és a felhasználók által aktivált tevékenységeket foglalják magukban:
 
@@ -185,11 +194,11 @@ A napló egy alapértelmezett listanézet, amely a következőket jeleníti meg:
 - Egy tevékenység kezdeményezője/szereplője
 - A tevékenység (mi)
 
-![Naplók](./media/device-management-azure-portal/63.png)
+![Auditnaplók](./media/device-management-azure-portal/63.png)
 
 A listanézetet az eszköztár **Oszlopok** elemére kattintva lehet testre szabni.
 
-![Naplók](./media/device-management-azure-portal/64.png)
+![Auditnaplók](./media/device-management-azure-portal/64.png)
 
 A jelentésben lévő adatok megfelelő szintű szűkítéséhez az alábbi mezőkkel szűrheti a naplózott adatokat:
 
@@ -202,9 +211,9 @@ A jelentésben lévő adatok megfelelő szintű szűkítéséhez az alábbi mez�
 
 A szűrők mellett megkeresheti az adott bejegyzéseket is.
 
-![Naplók](./media/device-management-azure-portal/65.png)
+![Auditnaplók](./media/device-management-azure-portal/65.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Elavult eszközök kezelése az Azure AD-ben](manage-stale-devices.md)
 

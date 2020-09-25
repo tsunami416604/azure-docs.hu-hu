@@ -6,14 +6,14 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: 989399bcc86547b914deb442fa9793f6d79d0606
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 0940521873b8d6746381acbd8e6c4c6d3a273c49
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325321"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325759"
 ---
-# <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Az Azure ITSM-eszközökhöz kapcsolása az IT-szolgáltatásmenedzsmenti csatoló használatával
+# <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Az Azure csatlakoztatása ITSM-eszközökhöz az IT Service Management-összekötő használatával
 
 ![IT-szolgáltatásmenedzsmenti csatoló szimbólum](media/itsmc-overview/itsmc-symbol.png)
 
@@ -114,8 +114,8 @@ A műveleti csoportok moduláris és újrahasznosítható módszert biztosítana
 
 Kövesse az alábbi eljárást:
 
-1. Azure Portal kattintson a **figyelés**elemre.
-2. A bal oldali ablaktáblán kattintson a **műveleti csoportok**elemre. Megjelenik a **műveleti csoport hozzáadása** ablak.
+1. Azure Portal kattintson a  **figyelés**elemre.
+2. A bal oldali ablaktáblán kattintson a  **műveleti csoportok**elemre. Megjelenik a **műveleti csoport hozzáadása** ablak.
 
     ![Műveletcsoportok](media/itsmc-overview/action-groups.png)
 
@@ -137,6 +137,10 @@ Azure-riasztási szabály létrehozásakor/szerkesztésekor használjon egy ITSM
 > [!NOTE]
 >
 > A ITSM művelet díjszabásával kapcsolatos információkért tekintse meg a műveleti csoportok [díjszabási lapját](https://azure.microsoft.com/pricing/details/monitor/) .
+
+> [!NOTE]
+>
+> A riasztási szabály definíciójának rövid leírása mezője legfeljebb 40 karakter hosszú lehet, ha a ITSM művelettel küldi el a rendszer.
 
 
 ## <a name="visualize-and-analyze-the-incident-and-change-request-data"></a>Az incidens megjelenítése és elemzése és a kérelmekre vonatkozó adatváltozás
@@ -178,7 +182,7 @@ ServiceDeskWorkItemType_s = "incidens"
 
 - ServiceDeskConnectionName
 - Ügyfélszolgálat azonosítója
-- Állapot
+- Állam
 - Sürgősség
 - Hatás
 - Prioritás
@@ -212,7 +216,7 @@ ServiceDeskWorkItemType_s = "módosítási kérelem"
 - Cím
 - Típus
 - Kategória
-- Állapot
+- Állam
 - Eszkalálás
 - Ütközési állapot
 - Sürgősség
@@ -228,7 +232,7 @@ ServiceDeskWorkItemType_s = "módosítási kérelem"
 - Tervezett befejezési dátum
 - Munka kezdő dátuma
 - Munka befejezési dátuma
-- Leírás
+- Description
 - Computer
 
 ## <a name="output-data-for-a-servicenow-incident"></a>ServiceNow incidens kimeneti adatkészlete
@@ -236,7 +240,7 @@ ServiceDeskWorkItemType_s = "módosítási kérelem"
 | Log Analytics mező | ServiceNow mező |
 |:--- |:--- |
 | ServiceDeskId_s| Szám |
-| IncidentState_s | Állapot |
+| IncidentState_s | Állam |
 | Urgency_s |Sürgősség |
 | Impact_s |Hatás|
 | Priority_s | Prioritás |
@@ -264,7 +268,7 @@ ServiceDeskWorkItemType_s = "módosítási kérelem"
 | Title_s|  Rövid leírás |
 | Type_s|  Típus |
 | Category_s|  Kategória |
-| CRState_s|  Állapot|
+| CRState_s|  Állam|
 | Urgency_s|  Sürgősség |
 | Priority_s| Prioritás|
 | Risk_s| Kockázat|
@@ -275,7 +279,7 @@ ServiceDeskWorkItemType_s = "módosítási kérelem"
 | PlannedEndDate_t  |   Tervezett befejezési dátum |
 | WorkStartDate_t  | Tényleges kezdési dátum |
 | WorkEndDate_t | Tényleges befejezési dátum|
-| Description_s | Leírás |
+| Description_s | Description |
 | Computer  | Konfigurációs tétel |
 
 
@@ -289,7 +293,7 @@ ServiceDeskWorkItemType_s = "módosítási kérelem"
 
 2. Ha a ServiceNow származó adatok nem lettek szinkronizálva a Log Analyticsba, győződjön meg arról, hogy a ServiceNow-példány nem alvó állapotú. A ServiceNow dev-példányok időnként hosszabb ideig tétlenek maradnak. Máskülönben jelentse a problémát.
 3. Ha Log Analytics a riasztások tüzet, de a munkaelemek nem jönnek létre a ITSM termékben, vagy a konfigurációs elemek nem jönnek létre/nem kapcsolódnak munkaelemekhez vagy más általános információkhoz, tekintse meg a következő helyeket:
-   -  ITSMC: a megoldás a kapcsolatok/munkaelemek/számítógépek összegzését jeleníti meg. Kattintson az **összekötő állapotát**megjelenítő csempére, amely a megfelelő lekérdezéssel végzett **Keresés naplózására** kerül. További információkért tekintse meg a napló rekordjait LogType_S as HIBÁval.
+   -  ITSMC: a megoldás a kapcsolatok/munkaelemek/számítógépek összegzését jeleníti meg. Kattintson az **összekötő állapotát**megjelenítő csempére, amely a megfelelő lekérdezéssel végzett **Keresés naplózására**  kerül. További információkért tekintse meg a napló rekordjait LogType_S as HIBÁval.
    - **Naplók keresése** oldalon: közvetlenül a lekérdezési ServiceDeskLog_CL használatával tekintheti meg a hibákat/kapcsolódó információkat `*` `*` .
 
 ## <a name="troubleshoot-service-manager-web-app-deployment"></a>Service Manager webalkalmazás központi telepítésének hibáinak megoldása
@@ -302,6 +306,6 @@ ServiceDeskWorkItemType_s = "módosítási kérelem"
 
 A IT-szolgáltatásmenedzsmenti csatoló kapcsolatos bármilyen lekérdezésért és Visszajelzésért lépjen kapcsolatba velünk a következő címen: [omsitsmfeedback@microsoft.com](mailto:omsitsmfeedback@microsoft.com) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [ITSM-termékek/-szolgáltatások hozzáadása a it-szolgáltatásmenedzsmenti csatolóhoz](./itsmc-connections.md).
 

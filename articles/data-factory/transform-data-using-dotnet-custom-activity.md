@@ -1,6 +1,6 @@
 ---
 title: Egyéni tevékenységek használata egy folyamatban
-description: Ismerje meg, hogyan hozhat létre egyéni tevékenységeket, és hogyan használhatja őket egy Azure Data Factory folyamat során.
+description: Ismerje meg, hogyan hozhat létre egyéni tevékenységeket a .NET használatával, majd hogyan használhatja a tevékenységeket egy Azure Data Factory folyamaton belül.
 services: data-factory
 ms.service: data-factory
 author: nabhishek
@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/26/2018
-ms.openlocfilehash: 74e381a9ad32acdaa8cbb719824d74ca6d339f30
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8b8114a6abf5579ed0750862d59a5d13178339f6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84019962"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276492"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Egyéni tevékenységek használata Azure Data Factory-folyamatban
 
@@ -102,7 +102,7 @@ A következő táblázat ismerteti a tevékenységre jellemző tulajdonságok ne
 
 | Tulajdonság              | Leírás                              | Kötelező |
 | :-------------------- | :--------------------------------------- | :------- |
-| name                  | A folyamatban szereplő tevékenység neve     | Yes      |
+| név                  | A folyamatban szereplő tevékenység neve     | Yes      |
 | leírás           | A tevékenység működését leíró szöveg  | No       |
 | típus                  | Egyéni tevékenység esetén a tevékenység típusa **Egyéni**. | Yes      |
 | linkedServiceName     | Társított szolgáltatás Azure Batch. A társított szolgáltatással kapcsolatos további információkért lásd: [számítási társított szolgáltatások](compute-linked-services.md) cikk.  | Yes      |
@@ -310,7 +310,7 @@ Egyéni értékeket is elküldhet az egyéni tevékenység kódjából Azure Dat
 
 ## <a name="retrieve-securestring-outputs"></a>SecureString-kimenetek lekérése
 
-A *SecureString*típusként kijelölt bizalmas tulajdonságértékek a jelen cikk néhány példájában láthatók a Data Factory felhasználói felület figyelés lapján.  A folyamat tényleges végrehajtása során azonban a *SecureString* tulajdonság a fájlon belül JSON-ként van szerializálva `activity.json` egyszerű szövegként. Például:
+A *SecureString*típusként kijelölt bizalmas tulajdonságértékek a jelen cikk néhány példájában láthatók a Data Factory felhasználói felület figyelés lapján.  A folyamat tényleges végrehajtása során azonban a *SecureString* tulajdonság a fájlon belül JSON-ként van szerializálva `activity.json` egyszerű szövegként. Példa:
 
 ```json
 "extendedProperties": {
@@ -325,7 +325,7 @@ Ez a szerializálás nem igazán biztonságos, és nem biztonságos. A cél az, 
 
 Ha a *SecureString* típusú tulajdonságokat egy egyéni tevékenységből szeretné elérni, olvassa el a `activity.json` fájlt, amely a saját mappájába kerül. EXE, deszerializálja a JSON-t, majd elérheti a JSON-tulajdonságot (Extendedproperties példányt paraméterként => [propertyName] => érték).
 
-## <a name="compare-v2-custom-activity-and-version-1-custom-dotnet-activity"></a><a name="compare-v2-v1"></a>A v2 egyéni tevékenység és az 1. verzió (egyéni) DotNet-tevékenység összehasonlítása
+## <a name="compare-v2-custom-activity-and-version-1-custom-dotnet-activity"></a><a name="compare-v2-v1"></a> A v2 egyéni tevékenység és az 1. verzió (egyéni) DotNet-tevékenység összehasonlítása
 
 Az 1. Azure Data Factory-es verzióban egy (egyéni) DotNet-tevékenységet valósít meg egy .NET-es függvénytár-projekt létrehozásával egy olyan osztállyal, amely megvalósítja az `Execute` interfész metódusát `IDotNetActivity` . A társított szolgáltatások, adatkészletek és kiterjesztett tulajdonságok egy (egyéni) DotNet-tevékenység JSON-tartalmában való átadása a végrehajtási metódusnak nagy mértékben beírt objektumokként történik. Az 1. verzió működésével kapcsolatos részletekért lásd: [(egyéni) a DotNet az 1. verzióban](v1/data-factory-use-custom-activities.md). Ennek a megvalósításnak a megvalósítása miatt az 1. verziójú DotNet-hibakód a .NET-keretrendszer 4.5.2-es verzióját célozza meg. Az 1. verziójú DotNet-tevékenységet a Windows-alapú Azure Batch Pool-csomópontokon is el kell végezni.
 
@@ -378,7 +378,7 @@ A részletekért lásd: [számítási csomópontok automatikus méretezése egy 
 
 Ha a készlet az alapértelmezett [autoScaleEvaluationInterval](https://msdn.microsoft.com/library/azure/dn820173.aspx)használja, a Batch szolgáltatás 15-30 percet is igénybe vehet, hogy az egyéni tevékenység futtatása előtt előkészítse a virtuális gépet. Ha a készlet eltérő autoScaleEvaluationInterval használ, a Batch szolgáltatás autoScaleEvaluationInterval + 10 percet is igénybe vehet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A következő cikkekből megtudhatja, hogyan alakíthat át más módon az adatátalakítást:
 
 * [U-SQL-tevékenység](transform-data-using-data-lake-analytics.md)

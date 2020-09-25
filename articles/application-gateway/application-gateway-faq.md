@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: b55ba6ab73758ed562aaabeef91cf08acf659758
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 11b41f4dcffad2c98ea5d1f70346ba150fd18c17
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646540"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278634"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Gyakori kérdések a Application Gateway
 
@@ -49,7 +49,9 @@ Lásd: [támogatott háttérbeli erőforrások](https://docs.microsoft.com/azure
 
 ### <a name="in-what-regions-is-application-gateway-available"></a>Milyen régiókban Application Gateway elérhető?
 
-Application Gateway a globális Azure minden régiójában elérhető. Az [Azure China 21Vianet](https://www.azure.cn/) és [Azure Government](https://azure.microsoft.com/overview/clouds/government/)is elérhető.
+A Application Gateway v1 (standard és WAF) a globális Azure minden régiójában elérhető. Az [Azure China 21Vianet](https://www.azure.cn/) és [Azure Government](https://azure.microsoft.com/overview/clouds/government/)is elérhető.
+
+A Application Gateway v2 (Standard_v2 és WAF_v2) rendelkezésre állása: [Application Gateway v2 támogatott régiói](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#supported-regions)
 
 ### <a name="is-this-deployment-dedicated-for-my-subscription-or-is-it-shared-across-customers"></a>Ez az üzembe helyezés a saját előfizetéshez van hozzárendelve, vagy megosztották az ügyfelek között?
 
@@ -182,11 +184,15 @@ Nem. Az alhálózaton azonban más Application Gateway-átjárókat is telepíth
 
 ### <a name="are-network-security-groups-supported-on-the-application-gateway-subnet"></a>Támogatottak-e a hálózati biztonsági csoportok az Application Gateway alhálózaton?
 
-Lásd: [hálózati biztonsági csoportok a Application Gateway alhálózatban](https://docs.microsoft.com/azure/application-gateway/configuration-overview#network-security-groups-on-the-application-gateway-subnet).
+Lásd: [hálózati biztonsági csoportok a Application Gateway alhálózatban](https://docs.microsoft.com/azure/application-gateway/configuration-infrastructure#network-security-groups).
 
 ### <a name="does-the-application-gateway-subnet-support-user-defined-routes"></a>Támogatja az Application Gateway alhálózata a felhasználó által megadott útvonalakat?
 
 Tekintse [meg a Application Gateway alhálózat által támogatott, felhasználó által megadott útvonalakat](https://docs.microsoft.com/azure/application-gateway/configuration-infrastructure#supported-user-defined-routes).
+
+### <a name="are-service-endpoint-policies-supported-in-the-application-gateway-subnet"></a>Támogatottak-e a Application Gateway alhálózat szolgáltatás-végponti házirendek?
+
+Nem. A Storage-fiókok [szolgáltatási végponti házirendjei](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview) nem támogatottak Application Gateway alhálózatban, és a konfigurálásával letiltja az Azure-infrastruktúra forgalmát.
 
 ### <a name="what-are-the-limits-on-application-gateway-can-i-increase-these-limits"></a>Milyen korlátozások vonatkoznak a Application Gatewayra? Növelhetim ezeket a korlátokat?
 
@@ -222,7 +228,7 @@ A gazdagép mező azt a nevet adja meg, amelyet a mintavétel elküldéséhez a 
 
 ### <a name="can-i-allow-application-gateway-access-to-only-a-few-source-ip-addresses"></a>Engedélyezhető Application Gateway csak néhány forrás IP-cím eléréséhez?
 
-Igen. Lásd: [adott forrás IP-címekhez való hozzáférés korlátozása](https://docs.microsoft.com/azure/application-gateway/configuration-overview#allow-application-gateway-access-to-a-few-source-ips).
+Igen. Lásd: [adott forrás IP-címekhez való hozzáférés korlátozása](https://docs.microsoft.com/azure/application-gateway/configuration-infrastructure#allow-access-to-a-few-source-ips).
 
 ### <a name="can-i-use-the-same-port-for-both-public-facing-and-private-facing-listeners"></a>Használhatom ugyanazt a portot mind a nyilvános, mind a privát figyelőkhöz?
 
