@@ -3,12 +3,12 @@ title: VHD-fájl feltöltése Azure DevTest Labsre Storage Explorer használatá
 description: VHD-fájl feltöltése a labor Storage-fiókjába Microsoft Azure Storage Explorer használatával
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 6ed6ace63a135628b6d306b946c0356091bf1bd2
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: d4e421932ebba5d4f389000c12bcf44ac2f37599
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654514"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282527"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-microsoft-azure-storage-explorer"></a>VHD-fájl feltöltése a labor Storage-fiókjába Microsoft Azure Storage Explorer használatával
 
@@ -90,13 +90,13 @@ A következő lépések végigvezetik a VHD-fájlok DevTest Labs-be történő f
 
     1. A Storage Explorer jobb oldali ablaktáblában meg kell jelennie a Blobok listájának a labor Storage-fiókjának **feltöltési** blob-tárolójában. A blob-szerkesztő eszköztárán válassza a **feltöltés** lehetőséget. 
         
-        ![Feltöltés gomb][6]
+        ![Képernyőfelvétel: a Storage Explorer jobb oldali ablaktábla, ahol a "feltöltés" gomb van kiválasztva.][6]
     
     1. A **feltöltés** legördülő menüben válassza a **fájlok feltöltése..**. lehetőséget.
     
     1. A **fájlok feltöltése** párbeszédpanelen válassza a három pontot.
         
-        ![Fájl kiválasztása][8]  
+        ![A "fájlok feltöltése" párbeszédpanelt megjelenítő képernyőkép a kiválasztott három ponttal.][8]  
 
     1. A **feltölteni kívánt fájlok kiválasztása** párbeszédpanelen keresse meg a kívánt VHD-fájlt, jelölje ki, majd kattintson a **Megnyitás**gombra.
     
@@ -110,7 +110,7 @@ A következő lépések végigvezetik a VHD-fájlok DevTest Labs-be történő f
 
         ![Feltöltési fájl állapota][10]  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Egyéni rendszerkép létrehozása Azure DevTest Labs egy VHD-fájlból a Azure Portal használatával](devtest-lab-create-template.md)
 - [Egyéni rendszerkép létrehozása Azure DevTest Labs VHD-fájlból a PowerShell használatával](devtest-lab-create-custom-image-from-vhd-using-powershell.md)

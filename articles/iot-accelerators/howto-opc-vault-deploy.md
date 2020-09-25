@@ -8,14 +8,17 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 3c6385ff804b047cca11587ce5da5a0a682fdce8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 365cb0912d84f0664b2a5432cd54cd553df62466
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84307928"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282023"
 ---
 # <a name="build-and-deploy-the-opc-vault-certificate-management-service"></a>Az OPC Vault Certificate Management szolgáltatás létrehozása és üzembe helyezése
+
+> [!IMPORTANT]
+> A cikk frissítését követően tekintse meg az [Azure Industrial IoT](https://azure.github.io/Industrial-IoT/) a legfrissebb tartalomhoz című cikket.
 
 Ez a cikk bemutatja, hogyan helyezheti üzembe az OPC Vault tanúsítványkezelő szolgáltatást az Azure-ban.
 
@@ -75,9 +78,9 @@ A PowerShell-parancsfájlok egyszerű módszert biztosítanak az OPC-tároló-sz
    > [!NOTE]
    > Problémák esetén tekintse meg a cikk későbbi, "központi telepítési hibák elhárítása" című szakaszát.
 
-8. Nyissa meg a kedvenc böngészőjét, és nyissa meg az alkalmazás lapot:`https://myResourceGroup.azurewebsites.net`
+8. Nyissa meg a kedvenc böngészőjét, és nyissa meg az alkalmazás lapot: `https://myResourceGroup.azurewebsites.net`
 8. Az üzembe helyezést követően néhány perc alatt bemelegítheti a webalkalmazást és az OPC-tárolót. Előfordulhat, hogy a Webkezdőlap nem válaszol az első használatnál, akár egy percig, amíg meg nem kapja az első válaszokat.
-11. A hencegő API megkereséséhez nyissa meg a következőt:`https://myResourceGroup-service.azurewebsites.net`
+11. A hencegő API megkereséséhez nyissa meg a következőt: `https://myResourceGroup-service.azurewebsites.net`
 13. Ha egy helyi GDS-kiszolgálót a DotNet használatával szeretne elindítani, indítsa el a következőt: `.\myResourceGroup-gds.cmd` . A Docker-ben indítsa el a t `.\myResourceGroup-dockergds.cmd` .
 
 A buildek újbóli üzembe helyezése pontosan ugyanazokkal a beállításokkal lehetséges. Vegye figyelembe, hogy egy ilyen művelet megújítja az összes alkalmazás titkos kulcsát, és egyes beállítások alaphelyzetbe állíthatók a Azure Active Directory (Azure AD) alkalmazás regisztrációjában.
@@ -174,7 +177,7 @@ Ez az Újraépítés és a csak a webalkalmazások újbóli üzembe helyezése, 
 [docker-url]: https://www.docker.com/
 [dotnet-install]: https://www.microsoft.com/net/learn/get-started
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte, hogyan helyezheti üzembe az OPC-tárolót a semmiből, a következőket teheti:
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: longl
 ms.custom: devx-track-csharp
-ms.openlocfilehash: da34c2aa8a178a99f325bef8beb4a7e7685b3cbc
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: d250fc005c5760a3eecc2793d02b6f2a9161e663
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88931471"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91283037"
 ---
 # <a name="specify-a-face-recognition-model"></a>Arcfelismerési modell megadása
 
@@ -35,10 +35,11 @@ Olvassa el, hogy megtudja, hogyan határozhat meg egy kiválasztott modellt kül
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ismernie kell az AI arcfelismerés és-azonosítás fogalmait. Ha nem, tekintse meg a következő útmutatók első lépéseit:
+Ismernie kell az AI arcfelismerés és-azonosítás fogalmait. Ha nem, tekintse meg az alábbi útmutatókat:
 
+* [Arcfelismerés – fogalmak](../concepts/face-detection.md)
+* [Arcfelismerés – fogalmak](../concepts/face-recognition.md)
 * [Arcok észlelése egy képben](HowtoDetectFacesinImage.md)
-* [Arcok azonosítása egy képben](HowtoIdentifyFacesinImage.md)
 
 ## <a name="detect-faces-with-specified-model"></a>A megadott modellel rendelkező arcok észlelése
 
@@ -112,7 +113,7 @@ Ha a különböző felismerési modellek teljesítményét össze szeretné haso
 
 Ha általában a megbízhatósági küszöbértéket adja meg (a nulla és az egyik közötti érték, amely meghatározza, hogy a modellnek milyen mértékben kell azonosítania egy arcot), előfordulhat, hogy különböző küszöbértékeket kell használnia a különböző modellekhez. Az egyik modell küszöbértéke nem osztható meg egy másikhoz, és nem feltétlenül ugyanazt az eredményt fogja eredményezni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan határozhatja meg a különböző Face Service API-kkal használandó felismerési modellt. Ezután kövessen egy rövid útmutatót a Arcfelismerés használatának megkezdéséhez.
 

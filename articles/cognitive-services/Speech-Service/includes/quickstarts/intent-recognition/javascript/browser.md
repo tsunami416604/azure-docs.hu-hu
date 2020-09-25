@@ -4,13 +4,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
 ms.author: trbye
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 520cbeab2e6edc707299119ca4073668245a57c0
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: a80f357ec780fe9faa0c5c21150ca4747fe1a5da
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406204"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91283061"
 ---
 ## <a name="start-with-some-boilerplate-code"></a>Kezdés néhány szabványos kóddal
 
@@ -282,6 +282,6 @@ Az alkalmazás elindításához kattintson duplán az index.html fájlra, vagy n
 
 Az alkalmazás elindításához nyissa meg a kedvenc webböngészőjét, és mutasson arra a nyilvános URL-címre, amelyen a mappát üzemelteti, adja meg a [Luis-régiót](../../../../regions.md) és a Luis-alkalmazás azonosítóját, és indítson el egy felismerést a mikrofon használatával. Ha be van állítva, a jogkivonat-forrástól kapja meg a tokent, és megkezdi a kimondott parancsok felismerését.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [footer](footer.md)]

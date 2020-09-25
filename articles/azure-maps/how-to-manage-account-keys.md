@@ -4,22 +4,22 @@ description: 'Megtudhatja, hogyan kezelheti a Azure Maps-fiókokat a Azure Porta
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 01/27/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 5717e48683234e55638393d232d931bc50cb59b1
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: c618e8193bed1f35cbbe884d5725c4ecfb25dd75
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037320"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91311121"
 ---
 # <a name="manage-your-azure-maps-account"></a>Azure Maps fiók kezelése
 
 A Azure Maps fiókját a Azure Portal segítségével kezelheti. A fiók létrehozása után az API-kat a webhelyén vagy a mobil alkalmazásban is megvalósíthatja.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 ## <a name="create-a-new-account"></a>Új fiók létrehozása
 
@@ -41,7 +41,7 @@ A Azure Portal törölheti a fiókot. Navigáljon a fiók áttekintése lapra, �
 
 Ekkor megjelenik egy megerősítő oldal. A fiók törlését úgy ellenőrizheti, hogy beírja a nevét.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A hitelesítés beállítása a Azure Maps és a Azure Maps előfizetési kulcs beszerzésének megismerése:
 > [!div class="nextstepaction"]

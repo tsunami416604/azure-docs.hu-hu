@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 07/23/2019
 ms.author: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 6383505a7b6912e6fb673f711aac68136c6c7638
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: e9eeca39dfbbefd36c9662aa0fc8b16d2c804158
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89015203"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91252986"
 ---
 # <a name="azure-cosmos-db-net-examples-for-the-sql-api"></a>Azure Cosmos DB: .NET-példák az SQL API-hoz
 
@@ -21,6 +21,7 @@ ms.locfileid: "89015203"
 > * [.NET v2 SDK-példák](sql-api-dotnet-samples.md)
 > * [.NET v3 SDK-példák](sql-api-dotnet-v3sdk-samples.md)
 > * [Java v4 SDK-példák](sql-api-java-sdk-samples.md)
+> * [Spring-adatforrások v3 SDK-példák](sql-api-spring-data-sdk-samples.md)
 > * [Node.js példák](sql-api-nodejs-samples.md)
 > * [Python-példák](sql-api-python-samples.md)
 > * [Azure Kódminta-katalógus](https://azure.microsoft.com/resources/samples/?sort=0&service=cosmos-db)

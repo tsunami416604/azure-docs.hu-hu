@@ -3,12 +3,12 @@ title: Tantermi Labs-ütemterv létrehozása Azure Lab Servicesban | Microsoft D
 description: Megtudhatja, hogyan hozhat létre ütemterveket a tanterem Labs szolgáltatáshoz Azure Lab Services, hogy a laborokban lévő virtuális gépek egy adott időpontban induljon el és legyenek leállítva.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: d6dcdd8d09c2c71c2d41aebd358639883ccfb33d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4eb4e2459069b61990f51f8d8de76522b736723e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445780"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326439"
 ---
 # <a name="create-and-manage-schedules-for-classroom-labs-in-azure-lab-services"></a>Tantermi Labs-ütemtervek létrehozása és kezelése Azure Lab Services 
 Az ütemtervek lehetővé teszik a tantermi laborok konfigurálását, hogy a laborban lévő virtuális gépek automatikusan elindulnak és leálljanak egy adott időpontban. Meghatározhat egy egyszeri vagy ismétlődő ütemtervet. Az alábbi eljárások egy osztályterem laborhoz tartozó ütemtervek létrehozását és kezelését ismertetik: 
@@ -27,7 +27,7 @@ Hozzon létre egy ütemezett eseményt a laborhoz, hogy a laborban lévő virtu�
 
 1. Váltson az **ütemezések** lapra, és válassza az eszköztár **ütemezett esemény hozzáadása** elemét. 
 
-    ![Ütemterv hozzáadása gomb az ütemtervek lapon](./media/how-to-create-schedules/add-schedule-button.png)
+    ![Képernyőfelvétel: a Azure Lab Services "Schedule" (ütemterv hozzáadása) lap, amelyen be van jelölve az ütemezett Hozzáadás gomb.](./media/how-to-create-schedules/add-schedule-button.png)
 2. Ellenőrizze, hogy a **standard** érték van-e kiválasztva az **esemény típusára**. A **csak indítás** gombra kattintva adhatja meg a virtuális gépek kezdési idejét. Ha csak a virtuális gépek leállítási idejét szeretné megadni, válassza a **Leállítás** lehetőséget. 
 7. Az **ismétlés** szakaszban válassza ki az aktuális ütemtervet. 
 
@@ -71,7 +71,7 @@ Az **ütemezett esemény szerkesztése** lapon frissítheti az ütemezést, és 
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Lásd az alábbi cikkeket:
 
 - [Rendszergazdaként, labor-fiókok létrehozása és kezelése](how-to-manage-lab-accounts.md)

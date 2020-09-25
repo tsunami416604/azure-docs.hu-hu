@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=garyericson, previous-ms.author=garye
-ms.openlocfilehash: d09f13a65a72c6c856a7fcd3d943ec116f3da43f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f60b62faa36352ab1221b23332fca695f32a3d74
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76721863"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91250640"
 ---
 # <a name="cheat-sheet-for-an-automated-data-pipeline-for-azure-machine-learning-predictions"></a>Gyorsreferencia az Azure Machine Learning-előrejelzések automatikus folyamatához
 Az **Microsoft Azure Machine learning automatizált adatcsatorna-Cheat Sheet** segítségével navigálhat az adatoknak a Machine learning webszolgáltatásba való beolvasására szolgáló technológiában, ahol a prediktív elemzési modell által is megadható.
@@ -35,7 +35,6 @@ Töltse le a Cheat Sheet itt: ** [Microsoft Azure Machine learning automatizált
 
 
 ## <a name="more-help-with-machine-learning-studio"></a>További segítség a Machine Learning Studio használatához
-* A Microsoft Azure Machine Learning áttekintését lásd: [Bevezetés a Microsoft Azure Machine learning](../studio/what-is-machine-learning.md)használatába.
-* A pontozási webszolgáltatás üzembe helyezésének ismertetése: [Azure Machine learning webszolgáltatás telepítése](../studio/deploy-a-machine-learning-web-service.md).
-* A pontozási webszolgáltatás használatáról a következő témakörben talál további információt: [Azure Machine learning webszolgáltatások felhasználása](../studio/consume-web-services.md).
-
+* A Microsoft Azure Machine Learning áttekintését lásd: [Bevezetés a Microsoft Azure Machine learning](../classic/index.yml)használatába.
+* A pontozási webszolgáltatás üzembe helyezésének ismertetése: [Azure Machine learning webszolgáltatás telepítése](../classic/deploy-a-machine-learning-web-service.md).
+* A pontozási webszolgáltatás használatáról a következő témakörben talál további információt: [Azure Machine learning webszolgáltatások felhasználása](../classic/consume-web-services.md).

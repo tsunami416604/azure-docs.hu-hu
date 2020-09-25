@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/13/2019
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: a7afaf0da3bbb021d76c2d109cb385d86fd7c860
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 9ba3d25a07e4d6c32bd14c315018f0d008032b73
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319847"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91250487"
 ---
 # <a name="test-drive-technical-configuration"></a>Tesztverzió műszaki konfigurálása
 
@@ -74,7 +74,7 @@ Annak engedélyezéséhez, hogy a Microsoft a tesztelési meghajtót az Ön nev�
 
 - **Azure ad** -alkalmazás azonosítója (kötelező) – adja meg a Azure Active Directory (ad-) [alkalmazás azonosítóját](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)). Az azonosító megkereséséhez jelentkezzen be a [Azure Portalba](https://portal.azure.com/), válassza a Active Directory fület a bal oldali menüben, válassza a **Alkalmazásregisztrációk**lehetőséget, majd keresse meg a listában szereplő **alkalmazás-azonosító** számát (például `50c464d3-4930-494c-963c-1e951d15360e` ).
 
-- **Azure ad-alkalmazás ügyfél-titka** (kötelező) – adja meg az Azure ad-alkalmazás [ügyfelének titkos kulcsát](../active-directory/develop/howto-create-service-principal-portal.md#create-a-new-application-secret). Az érték megkereséséhez jelentkezzen be a [Azure Portalba](https://portal.azure.com/). Válassza ki a **Azure Active Directory** fület a bal oldali menüben, válassza a **Alkalmazásregisztrációk**lehetőséget, majd válassza ki a test Drive alkalmazást. Ezután válassza a **tanúsítványok és titkos kulcsok**lehetőséget, válassza az **új ügyfél titka**elemet, adja meg a leírást, válassza a **soha nem** **jár le**, majd a **Hozzáadás**lehetőséget. Ügyeljen rá, hogy az értéket másolja le. Az érték másolása előtt ne navigáljon el az oldalról.
+- **Azure ad-alkalmazás ügyfél-titka** (kötelező) – adja meg az Azure ad-alkalmazás [ügyfelének titkos kulcsát](../active-directory/develop/howto-create-service-principal-portal.md#option-2-create-a-new-application-secret). Az érték megkereséséhez jelentkezzen be a [Azure Portalba](https://portal.azure.com/). Válassza ki a **Azure Active Directory** fület a bal oldali menüben, válassza a **Alkalmazásregisztrációk**lehetőséget, majd válassza ki a test Drive alkalmazást. Ezután válassza a **tanúsítványok és titkos kulcsok**lehetőséget, válassza az **új ügyfél titka**elemet, adja meg a leírást, válassza a **soha nem** **jár le**, majd a **Hozzáadás**lehetőséget. Ügyeljen rá, hogy az értéket másolja le. Az érték másolása előtt ne navigáljon el az oldalról.
 
 ## <a name="test-drive-listings"></a>Tesztelési meghajtók listázása
 

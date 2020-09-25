@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b88d017110f4d7b9859f2d801c5405ecee1589c5
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 3f9064c25581523167918b84a2d0027747e32bd9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297467"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282374"
 ---
 # <a name="manage-digital-twins"></a>Digitális ikereszközök kezelése
 
@@ -383,6 +383,17 @@ Az összes ikrek egyszerre történő törléséről például töltse le az okt
 Az ikrek az Azure Digital Twins CLI használatával is kezelhetők. A parancsok a következő [*útmutatóban találhatók: az Azure digitális Twins parancssori*](how-to-use-cli.md)felületének használata.
 
 [!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
+
+## <a name="view-all-digital-twins"></a>Az összes digitális ikrek megtekintése
+
+A példányban lévő összes digitális ikrek megtekintéséhez használjon [lekérdezést](how-to-query-graph.md). Futtathat egy lekérdezést a [lekérdezési API](how-to-use-apis-sdks.md) -kkal vagy a [CLI-parancsokkal](how-to-use-cli.md).
+
+Itt látható az alapszintű lekérdezés törzse, amely a példányban található összes digitális ikrek listáját fogja visszaadni:
+
+```sql
+SELECT *
+FROM DIGITALTWINS
+``` 
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -4,16 +4,16 @@ description: Megtudhatja, hogyan adhat hozzá egy jelölőt egy térképhez. Egy
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 04/26/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 99a4f69a814314b233a3129ed31d18ffa1682d8d
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 10969e20cd7ae71cade230f6643a27d5d940ceaa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037388"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91311274"
 ---
 # <a name="add-a-symbol-layer-to-a-map-using-azure-maps-android-sdk"></a>Szimbólum-réteg hozzáadása térképhez Azure Maps Android SDK használatával
 
@@ -175,7 +175,7 @@ Ezen a ponton, ha futtatja az alkalmazást, látnia kell egy jelölőt a térké
 > [!TIP]
 > Alapértelmezés szerint a szimbólum-rétegek az átfedésben lévő szimbólumok elrejtésével optimalizálja a szimbólumok megjelenítését. A nagyításhoz a rejtett szimbólumok láthatóvá válnak. A funkció letiltásához és az összes szimbólum megjelenítéséhez állítsa be a beállítást a következőre: `iconAllowOverlap` `true` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha további dolgokat szeretne hozzáadni a térképhez, tekintse meg a következőt:
 

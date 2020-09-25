@@ -10,26 +10,17 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: trbye
-ms.custom: devx-track-javascript, devx-track-csharp, cog-serv-seo-aug-2020
+ms.custom: devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-set-two-with-js
 keywords: beszéd fordítása
-ms.openlocfilehash: da321e2f259ae6e994cddcb928cc139a28c6d9ae
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 855e999feddfa9c87f10115866f9b393e6cecc96
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89394873"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326917"
 ---
 # <a name="get-started-with-speech-translation"></a>A beszédfordítás használatának első lépései
-
-A Speech Service egyik fő funkciója az emberi beszéd felismerése és más nyelvekre való lefordítása. Ebből a rövid útmutatóból megtudhatja, hogyan használhatja a Speech SDK-t az alkalmazásaiban és termékeiben, hogy kiváló minőségű hangfordítást végezzen. Ez a rövid útmutató a következő témaköröket tartalmazza:
-
-* Beszéd – szöveg fordítása
-* Beszéd lefordítása több célként megadott nyelvre
-* Közvetlen beszéd – beszéd fordítás végrehajtása
-
-> [!TIP]
-> Ha egyenesen a mintakód kihagyása mellett szeretne kiugrani, tekintse meg a gyors üzembe helyezési [példákat](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart) a githubon.
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [C# Basics include](includes/how-to/speech-translation-basics/speech-translation-basics-csharp.md)]

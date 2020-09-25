@@ -1,17 +1,17 @@
 ---
 title: Node.js alkalmazások konfigurálása
-description: Megtudhatja, hogyan konfigurálhat egy Node.js alkalmazást a natív Windows-példányokban, vagy egy előre elkészített Linux-tárolóban, Azure App Service. Ez a cikk a leggyakoribb konfigurációs feladatokat ismerteti.
-ms.custom: devx-track-javascript
+description: Megtudhatja, hogyan konfigurálhat egy Node.js alkalmazást a natív Windows-példányokban, vagy egy előre elkészített Linux-tárolóban, Azure App Service. A cikk a leggyakoribb konfigurációs feladatokat ismerteti.
+ms.custom: devx-track-js
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: e6daf176504427c96f8dce0a4e9a6b6d5e999a0a
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 48b111966d58af80b6c34fa17231034f4f0cc213
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080113"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91311835"
 ---
 # <a name="configure-a-nodejs-app-for-azure-app-service"></a>Node.js alkalmazás konfigurálása Azure App Servicehoz
 
@@ -98,7 +98,7 @@ Ha a Build Automation használatával git vagy zip csomagok segítségével hely
 1. Futtassa az egyéni parancsfájlt, ha a meg van adva `POST_BUILD_SCRIPT_PATH` .
 
 > [!NOTE]
-> A NPM- [dokumentumok](https://docs.npmjs.com/misc/scripts), a (z) és a (z `prebuild` ) és után futtatott szkriptek, ha meg vannak `postbuild` `build` adva. `preinstall`és `postinstall` Futtatás előtt és után is `install` .
+> A NPM- [dokumentumok](https://docs.npmjs.com/misc/scripts), a (z) és a (z `prebuild` ) és után futtatott szkriptek, ha meg vannak `postbuild` `build` adva. `preinstall` és `postinstall` Futtatás előtt és után is `install` .
 
 `PRE_BUILD_COMMAND``POST_BUILD_COMMAND`a és a környezeti változók, amelyek alapértelmezés szerint üresek. Az előkészítő parancsok futtatásához adja meg a következőt: `PRE_BUILD_COMMAND` . A létrehozás utáni parancsok futtatásához adja meg a következőt: `POST_BUILD_COMMAND` .
 
@@ -199,7 +199,7 @@ Miután végzett a hibakereséssel, állítsa le a hibakeresőt a **kapcsolat bo
 
 ## <a name="access-environment-variables"></a>Hozzáférés a környezeti változókhoz
 
-App Service az [Alkalmazásbeállítások](configure-common.md) az alkalmazás kódján kívül is megadhatók. Ezután a standard Node.js mintával érheti el őket. Ha például egy nevű alkalmazáshoz szeretne hozzáférni `NODE_ENV` , használja a következő kódot:
+Az App Service-szel az alkalmazás kódján kívül is [megadhatja az alkalmazások beállításait](configure-common.md). Ezután a standard Node.js mintával érheti el őket. Például egy `NODE_ENV` nevű alkalmazásbeállítás hozzáféréséhez használja a következő kódot:
 
 ```javascript
 process.env.NODE_ENV
@@ -329,7 +329,7 @@ Ha egy működő Node.js alkalmazás másképp viselkedik App Service vagy hibá
 
 ::: zone-end
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Node.js alkalmazás a MongoDB](tutorial-nodejs-mongodb-app.md)
@@ -337,7 +337,7 @@ Ha egy működő Node.js alkalmazás másképp viselkedik App Service vagy hibá
 ::: zone pivot="platform-linux"
 
 > [!div class="nextstepaction"]
-> [App Service Linux – gyakori kérdések](faq-app-service-linux.md)
+> [App Service a Linuxon – gyakori kérdések](faq-app-service-linux.md)
 
 ::: zone-end
 

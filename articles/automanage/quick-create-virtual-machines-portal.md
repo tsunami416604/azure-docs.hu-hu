@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: quickstart
 ms.date: 09/04/2020
 ms.author: jushiman
-ms.openlocfilehash: 43e0805a828a2ed32d23984b6ffef95a7e710953
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f1dc37173dff8e694ba4d1e5aa9a1b14e462581a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90947131"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91311580"
 ---
 # <a name="quickstart-enable-azure-automanage-for-virtual-machines-in-the-azure-portal"></a>Gyors útmutató: az Azure automanage engedélyezése virtuális gépekhez a Azure Portal
 
@@ -28,7 +28,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy fi
 > Az ingyenes próbaverziós fiókok nem férnek hozzá az oktatóanyagban használt virtuális gépekhez. Váltson utólagos elszámolású előfizetésre.
 
 > [!IMPORTANT]
-> A következő RBAC engedély szükséges az automanage engedélyezéséhez: **tulajdonosi** szerepkör vagy **közreműködő** a **felhasználói hozzáférés rendszergazdai** szerepköreivel együtt.
+> Rendelkeznie kell a **közreműködő** szerepkörrel, hogy engedélyezze az automanage-t egy meglévő automanage-fiók használatával. Ha új automanage-fiókkal engedélyezi az autofelügyeletet, a következő engedélyek szükségesek: **tulajdonosi** szerepkör vagy **közreműködő** a **felhasználói hozzáférés rendszergazdai** szerepköreivel együtt.
 
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba

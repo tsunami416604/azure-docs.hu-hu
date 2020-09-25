@@ -4,16 +4,16 @@ description: 'Megtudhatja, hogyan adhat hozzá alakzatokat a térképekhez. Lás
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 04/26/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 9dd8718a6a96627781a578edb514d797e40f01fb
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 6ff64f975550a0222fd56325115bc98976fb038a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037422"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91311308"
 ---
 # <a name="add-a-shape-to-a-map-using-azure-maps-android-sdk"></a>Alakzat hozzáadása térképhez Azure Maps Android SDK használatával
 
@@ -238,7 +238,7 @@ A **sokszög réteg** lehetővé teszi a sokszög területének megjelenítésé
     });
     ```
 
-    A fenti kódrészlet először a **onReady ()** callback metódus használatával szerzi be Azure Maps Térkép vezérlőelem-példányát. Ezután létrehoz egy adatforrás-objektumot a **DataSource** osztály használatával, és hozzáadja azt a térképhez. Ekkor létrejön egy **sokszög** -objektum a **pont** objektumainak listájából, és az adatforráshoz kerül. A **sokszög réteg** a térképen lévő adatforrásba burkolt adatfeliratokat jeleníti meg. Ezután létrehoz egy sokszög réteget a sokszög terület megjelenítéséhez, és hozzáadja az adatforrást. A **sortörések** egy adatforrásba burkolt vonalas objektumokat jelenítenek meg. A kódrészlet utolsó része egy sor réteget hoz létre a sokszög körvonalának megjelenítéséhez és az adatforrás hozzáadásához.
+    A fenti kódrészlet először a **onReady ()** callback metódus használatával szerzi be Azure Maps Térkép vezérlőelem-példányát. Ezután létrehoz egy adatforrás-objektumot a **DataSource** osztály használatával, és hozzáadja azt a térképhez. Ekkor létrejön egy **sokszög** -objektum a **pont**  objektumainak listájából, és az adatforráshoz kerül. A **sokszög réteg** a térképen lévő adatforrásba burkolt adatfeliratokat jeleníti meg. Ezután létrehoz egy sokszög réteget a sokszög terület megjelenítéséhez, és hozzáadja az adatforrást. A **sortörések** egy adatforrásba burkolt vonalas objektumokat jelenítenek meg. A kódrészlet utolsó része egy sor réteget hoz létre a sokszög körvonalának megjelenítéséhez és az adatforrás hozzáadásához.
 
     Miután hozzáadta a fenti kódrészletet, a `MainActivity.java` következőhöz hasonlóan kell kinéznie:
 
@@ -353,7 +353,7 @@ Ha most futtatja az alkalmazást, akkor a térképen egy sokszög látható a le
 ![Az Android-térképen megjelenített sokszög](./media/how-to-add-shapes-to-android-map/android-map-polygon.png)</center>
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ hozzáadása a térképhez:
 

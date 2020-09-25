@@ -3,23 +3,28 @@ title: Cognitive Services erőforrás létrehozása az Azure felügyeleti ügyf�
 titleSuffix: Azure Cognitive Services
 description: Azure Cognitive Services-erőforrások létrehozása és kezelése az Azure felügyeleti ügyféloldali kódtár használatával.
 services: cognitive-services
+keywords: kognitív szolgáltatások, kognitív intelligencia, kognitív megoldások, AI-szolgáltatások
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: quickstart
-ms.date: 07/29/2020
+ms.date: 09/14/2020
 ms.author: pafarley
 zone_pivot_groups: programming-languages-set-ten
-ms.openlocfilehash: e56e9226593884045eb4533bfe3ffddce7aad883
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: e8628d051db7f5066a81171567f6f7e54fb0ab97
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89321579"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91262450"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-management-client-library"></a>Gyors útmutató: Cognitive Services-erőforrás létrehozása az Azure felügyeleti ügyféloldali kódtár használatával
 
-Ezzel a rövid útmutatóval Azure Cognitive Services-erőforrásokat hozhat létre és kezelhet az Azure felügyeleti ügyféloldali kódtár használatával. Az egyes AI-szolgáltatásokat az Azure-előfizetésében létrehozott Azure- [erőforrások](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal) jelölik. Miután létrehozta az erőforrást, használhatja a generált kulcsokat és végpontokat az alkalmazások hitelesítéséhez.
+Ezzel a rövid útmutatóval Azure Cognitive Services-erőforrásokat hozhat létre és kezelhet az Azure felügyeleti ügyféloldali kódtár használatával.
+
+Az Azure Cognitive Services a REST API-kkal rendelkező felhőalapú szolgáltatások és az ügyféloldali kódtár SDK-k, amelyek segítségével a fejlesztők kognitív intelligenciát hozhatnak létre az alkalmazásokban anélkül, hogy közvetlen mesterséges intelligencia (AI) vagy adattudományi ismereteket vagy ismereteiket kellene létrehozniuk. Az Azure Cognitive Services lehetővé teszi, hogy a fejlesztők könnyen hozzá tudják adni a kognitív funkciókat az alkalmazásaikban olyan kognitív megoldásokkal, amelyek megtekinthetik, meghallgatják, megértették, megértik, sőt, akár
+
+Az egyes AI-szolgáltatásokat az Azure-előfizetésében létrehozott Azure- [erőforrások](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal) jelölik. Miután létrehozta az erőforrást, használhatja a generált kulcsokat és végpontokat az alkalmazások hitelesítéséhez.
 
 ::: zone pivot="programming-language-csharp"
 

@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 05/14/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperfq4
-ms.openlocfilehash: c31cf0e5c655f53e8838c92f5463d3a85c2f6f65
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e84a3930d350ec45cef7119342e3e4d2d5daaee
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83836821"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91250657"
 ---
 # <a name="feature-engineering-in-data-science"></a>Az adatelemzés funkcióinak mérnöki funkciója
 
-Ebből a cikkből megtudhatja, hogyan fejlesztheti a funkciók mérnöki funkcióit, és hogyan javíthatja az adatait a gépi tanulásban. Ismerkedjen meg [Azure Machine learning Studio (klasszikus)](../studio/what-is-ml-studio.md) kísérletekből származó szemléltető példákkal. 
+Ebből a cikkből megtudhatja, hogyan fejlesztheti a funkciók mérnöki funkcióit, és hogyan javíthatja az adatait a gépi tanulásban. Ismerkedjen meg [Azure Machine learning Studio (klasszikus)](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio) kísérletekből származó szemléltető példákkal. 
 
 * **Szolgáltatás-mérnöki**folyamat: új funkciók létrehozása a nyers adatokból a tanulási algoritmus prediktív teljesítményének növeléséhez. A mérnöki funkcióknak olyan további információkat kell rögzíteniük, amelyek nem könnyen láthatók az eredeti szolgáltatáskészlet esetében.
 * **Szolgáltatás kiválasztása**: a funkciók dimenzióját kiválasztásának folyamata, amely csökkenti a betanítási probléma mértékét.
@@ -74,7 +74,7 @@ A négy modell teljesítmény-eredményeinek összehasonlítását az alábbi t�
 
 A legjobb eredményeket a + B + C funkció mutatja be. A hiba mértéke csökken, ha további szolgáltatáskészlet szerepel a betanítási adatkészletben. Ellenőrzi azt a feltételezést, hogy a B, C beállított funkció további releváns információkat biztosít a regressziós feladathoz. A D funkció hozzáadása azonban úgy tűnik, hogy nem biztosít további csökkentést a hibák arányában.
 
-## <a name="example-2-create-features-for-text-mining"></a><a name="example2"></a>2. példa: szolgáltatások létrehozása a szöveges adatbányászathoz
+## <a name="example-2-create-features-for-text-mining"></a><a name="example2"></a> 2. példa: szolgáltatások létrehozása a szöveges adatbányászathoz
 
 A szolgáltatások fejlesztését széles körben alkalmazzák a szöveges adatbányászatgal kapcsolatos feladatokban, például a dokumentumok besorolásával és a hangulat elemzésével. Mivel az egyes nyers szövegek általában bemeneti adatokként szolgálnak, a funkció-tervezési folyamat szükséges a szó/kifejezés gyakoriságát érintő funkciók létrehozásához.
 
@@ -101,7 +101,7 @@ A funkciók mérnöki és kijelölési funkciói is kombinálhatók, így a tanu
 
 Nem mindig feltétlenül kell végrehajtani a funkciók mérnöki vagy szolgáltatásbeli kijelölését. Ez az adatoktól, a kiválasztott algoritmustól és a kísérlet céljától függ.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Bizonyos környezetekben lévő adatszolgáltatások létrehozásához tekintse meg a következő cikkeket:
 

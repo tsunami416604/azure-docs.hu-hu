@@ -1,7 +1,7 @@
 ---
 title: Megbízhatósági pontszám – QnA Maker
 titleSuffix: Azure Cognitive Services
-description: A tudásbázist közzé kell tenni. A közzététel után a tudásbázist a generateAnswer API használatával kérdezi le a futásidejű előrejelzési végponton.
+description: Ha egy Tudásbázisban egy felhasználói lekérdezés egyezik, a QnA Maker a megfelelő válaszokat adja vissza, és egy megbízhatósági pontszámmal együtt.
 services: cognitive-services
 manager: nitinme
 ms.service: cognitive-services
@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 01/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: faf24f11763ca2bcd9bb872b09b5d1b69e78bd06
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: abae83cee106feb553e8ced404d23ba5619ba416
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131157"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327153"
 ---
 # <a name="the-confidence-score-of-an-answer"></a>A válasz megbízhatósági pontszáma
 Ha egy Tudásbázisban egy felhasználói lekérdezés egyezik, a QnA Maker a megfelelő válaszokat adja vissza, és egy megbízhatósági pontszámmal együtt. Ez a pontszám azt jelzi, hogy a válasz a megfelelő egyezés az adott felhasználói lekérdezés esetében.
@@ -86,7 +86,7 @@ Ha a Tudásbázis különböző régiókban található, az egyes régiók sajá
 ## <a name="no-match-found"></a>Nem található egyezés
 Ha a rangsor nem találja a megfelelő egyezést, a rendszer visszaadja a 0,0-as vagy a "None" megbízhatósági pontszámot, és az alapértelmezett Válasz: "nem található megfelelő találat a KB-ban". Ezt az [alapértelmezett választ](../How-To/metadata-generateanswer-usage.md) felül lehet bírálni a végpontot meghívó robot vagy alkalmazás kódjában. Másik lehetőségként beállíthatja a felülbírálási választ is az Azure-ban, és ez megváltoztatja az alapértelmezett értéket az adott QnA Maker szolgáltatásban telepített összes Tudásbázis esetében.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 > [!div class="nextstepaction"]
 > [Ajánlott eljárások](./best-practices.md)
 

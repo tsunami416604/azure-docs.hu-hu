@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 4044690bf042d05e4efd531826fab6cb5459b3b7
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 0be60208146681135c7502746a271e4e007dc0ea
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707645"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91249586"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux-smb"></a>A Linux (SMB) Azure Files problémáinak elhárítása
 
@@ -49,7 +49,7 @@ A probléma gyakori okai a következők:
 
 ### <a name="solution"></a>Megoldás
 
-A probléma megoldásához használja a [hibaelhárítási eszközt a Azure Files csatlakoztatási hibákhoz Linux rendszeren](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-02184089). Ez az eszköz:
+A probléma megoldásához használja a [hibaelhárítási eszközt a Azure Files csatlakoztatási hibákhoz Linux rendszeren](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Linux). Ez az eszköz:
 
 * Segít érvényesíteni a környezetet futtató ügyfelet.
 * Észleli a nem kompatibilis ügyfél-konfigurációt, amely Azure Fileshoz való hozzáférési hibát okozna.

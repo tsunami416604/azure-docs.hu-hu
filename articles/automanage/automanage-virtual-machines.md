@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: 8e48a5c896c4927b82f7d77f31b7f1c47fd156c5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 089cf07854f1f29eda7028db614edb1028e5d66a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90940860"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91311563"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>Azure-beli automata felügyelet virtuális gépeken
 
@@ -43,12 +43,11 @@ Több előfeltételt kell figyelembe vennie, mielőtt az Azure-beli automanage-t
 
 - Csak Windows Server-alapú virtuális gépek
 - A virtuális gépeknek futniuk kell
-- Csak a nem méretezési csoportba tartozó virtuális gépek
 - A virtuális gépeknek támogatott régióban kell lenniük
 - A felhasználónak megfelelő engedélyekkel kell rendelkeznie
 - A virtuális gépek nem csatolhatnak egy másik előfizetésben lévő log Analytics-munkaterülethez
 
-A következő RBAC engedély szükséges az automanage engedélyezéséhez: **tulajdonosi** szerepkör vagy **közreműködő** a **felhasználói hozzáférés rendszergazdai** szerepköreivel együtt.
+Rendelkeznie kell a **közreműködő** szerepkörrel, hogy engedélyezze az automanage-t egy meglévő automanage-fiók használatával. Ha új automanage-fiókkal engedélyezi az autofelügyeletet, a következő engedélyek szükségesek: **tulajdonosi** szerepkör vagy **közreműködő** a **felhasználói hozzáférés rendszergazdai** szerepköreivel együtt.
 
 Azt is fontos megjegyezni, hogy az automatikus felügyelet csak a következő régiókban található Windows rendszerű virtuális gépeket támogatja: Nyugat-Európa, az USA keleti régiója, USA 2. nyugati régiója, Közép-Kanada, USA nyugati középső régiója.
 
@@ -105,7 +104,7 @@ Az automatikus felügyelet fiók a biztonsági környezet vagy az az identitás,
 Ha a virtuális gépeken engedélyezi az automanage funkciót, az Azure Portal-élményben az Azure-beli **virtuális gépre vonatkozó ajánlott eljárások** panel speciális legördülő menüje lehetővé teszi az automanage-fiók hozzárendelését vagy manuális létrehozását.
 
 > [!NOTE]
-> A következő RBAC engedély szükséges az automanage engedélyezéséhez: **tulajdonosi** szerepkör vagy **közreműködő** a **felhasználói hozzáférés rendszergazdai** szerepköreivel együtt.
+> Rendelkeznie kell a **közreműködő** szerepkörrel, hogy engedélyezze az automanage-t egy meglévő automanage-fiók használatával. Ha új automanage-fiókkal engedélyezi az autofelügyeletet, a következő engedélyek szükségesek: **tulajdonosi** szerepkör vagy **közreműködő** a **felhasználói hozzáférés rendszergazdai** szerepköreivel együtt.
 
 
 ## <a name="status-of-vms"></a>Virtuális gépek állapota

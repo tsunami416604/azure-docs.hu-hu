@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/03/2020
 ms.author: tisande
-ms.openlocfilehash: b06a8737c1ceb538417f966a989ccb39069f4d4c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 546b664c74980b3522fefed82c00eec414641eaa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85116298"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326626"
 ---
 # <a name="index-geospatial-data-with-azure-cosmos-db"></a>Térinformatikai adatindexek indexelése Azure Cosmos DB
 
@@ -77,15 +77,15 @@ A következő JSON-kódrészlet egy indexelési házirendet mutat be, amelyen en
 **Tároló-indexelési házirend JSON földrajzi térbeli indexeléssel**
 
 ```json
-    {
-       "automatic":true,
-       "indexingMode":"Consistent",
-        "includedPaths": [
+{
+    "automatic": true,
+    "indexingMode": "Consistent",
+    "includedPaths": [
         {
             "path": "/*"
         }
-        ],
-        "spatialIndexes": [
+    ],
+    "spatialIndexes": [
         {
             "path": "/*",
             "types": [
@@ -96,8 +96,8 @@ A következő JSON-kódrészlet egy indexelési házirendet mutat be, amelyen en
             ]
         }
     ],
-       "excludedPaths":[]
-    }
+    "excludedPaths": []
+}
 ```
 
 > [!NOTE]
@@ -123,7 +123,7 @@ Hozzon létre egy határoló mezőt, amely az összes (vagy a legtöbb) adatát 
 Az alábbi példa olyan indexelési házirendet mutat be, amely a **geometriai** adatoknak a **geospatialConfig** beállítását a következőre állítja `geometry` :
 
 ```json
- {
+{
     "indexingMode": "consistent",
     "automatic": true,
     "includedPaths": [
@@ -161,7 +161,7 @@ A fenti indexelési házirend **boundingBox** (-10, 10) tartalmaz x koordinátá
 > [!NOTE]
 > Ha egy adattípusú tárolóhoz próbál felvenni egy **boundingBox** tartalmazó indexelési házirendet `geography` , a művelet sikertelen lesz. A BoundingBox hozzáadása előtt módosítania kell a tároló **geospatialConfig** `geometry` . **boundingBox** A tároló térinformatikai adattípusának kiválasztását megelőzően vagy azt követően módosíthatja az indexelési szabályzat hátralévő részét (például az elérési utakat és típusokat).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megtanulta, hogyan kezdheti meg a térinformatikai támogatás használatát Azure Cosmos DBban, a következő lehetőségekkel:
 

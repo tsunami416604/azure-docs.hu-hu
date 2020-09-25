@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 03/31/2020
 ms.author: victorh
-ms.openlocfilehash: 27e8eaa7b8171d6ccc43f6abc8a4b3d1017d30cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 653e432ca445451fc9da7155137052b9916d0d92
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84804398"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91311597"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Az Azure Application Gateway és a webalkalmazási tűzfal migrálása v1-ről v2-re
 
@@ -36,6 +36,8 @@ Olyan Azure PowerShell-parancsfájl érhető el, amely a következő műveleteke
 
 * Az új v2-átjáró új nyilvános és magánhálózati IP-címmel rendelkezik. A meglévő v1-átjáróhoz társított IP-címek nem helyezhetők át zökkenőmentesen v2-re. Meglévő (nem lefoglalt) nyilvános vagy magánhálózati IP-címet azonban lefoglalhat az új v2-átjáróra.
 * Meg kell adnia egy IP-címtartományt egy másik alhálózat számára a virtuális hálózaton belül, ahol a v1-átjáró található. A parancsfájl nem tudja létrehozni a v2-átjárót minden olyan meglévő alhálózatban, amely már rendelkezik v1-átjáróval. Ha azonban a meglévő alhálózatnak már van v2-átjárója, az továbbra is működik, ha elegendő IP-címtartomány van megadva.
+* Ha hálózati biztonsági csoporttal vagy a v2-átjáró alhálózatához társított felhasználói útvonalakkal rendelkezik, győződjön meg arról, hogy betartják a sikeres áttelepítés [NSG-követelményeit](../application-gateway/configuration-infrastructure.md#network-security-groups) és [UDR-követelményeit](../application-gateway/configuration-infrastructure.md#supported-user-defined-routes)
+* A [virtuális hálózati szolgáltatás végponti házirendjei](../virtual-network/virtual-network-service-endpoint-policies-overview.md) jelenleg nem támogatottak Application Gateway alhálózatban.
 * A TLS/SSL-konfiguráció átadásához meg kell adnia a v1-átjáróban használt összes TLS/SSL-tanúsítványt.
 * Ha a v1-átjáró esetében engedélyezve van a FIPS mód, a rendszer nem telepíti át az új v2-átjáróra. Az FIPS mód nem támogatott a v2-ben.
 * a v2 nem támogatja az IPv6 protokollt, így az IPv6-kompatibilis v1-átjárók nem települnek át. Ha futtatja a szkriptet, előfordulhat, hogy nem fejeződött be.
@@ -44,7 +46,7 @@ Olyan Azure PowerShell-parancsfájl érhető el, amely a következő műveleteke
 
 ## <a name="download-the-script"></a>A parancsfájl letöltése
 
-Töltse le az áttelepítési parancsfájlt a [PowerShell-Galéria](https://www.powershellgallery.com/packages/AzureAppGWMigration).
+Töltse le az áttelepítési parancsfájlt a  [PowerShell-Galéria](https://www.powershellgallery.com/packages/AzureAppGWMigration).
 
 ## <a name="use-the-script"></a>A szkript használata
 
@@ -198,6 +200,6 @@ Nem. Jelenleg a parancsfájl nem támogatja a kulcstartóban lévő tanúsítvá
   
 Az Azure-támogatással kapcsolatban a "konfiguráció és beállítás/Migrálás v2 SKU-ra" című témakörben olvashat. További információ az [Azure-támogatásról](https://azure.microsoft.com/support/options/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Tudnivalók a Application Gateway v2-ről](application-gateway-autoscaling-zone-redundant.md)

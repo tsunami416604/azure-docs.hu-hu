@@ -3,13 +3,13 @@ title: Rendszerkép létrehozása Felhőbeli natív Buildpack
 description: Az az ACR Pack Build paranccsal hozzon létre egy tároló-rendszerképet egy alkalmazásból, és leküldheti Azure Container Registryra anélkül, hogy Docker használ.
 ms.topic: article
 ms.date: 10/24/2019
-ms.custom: devx-track-javascript
-ms.openlocfilehash: f99175165e01a9287a66c59957fc7a239b00393a
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.custom: devx-track-js
+ms.openlocfilehash: cad7d5c066dd8c8a7468833cb67e6085f067417a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88077220"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91262110"
 ---
 # <a name="build-and-push-an-image-from-an-app-using-a-cloud-native-buildpack"></a>Rendszerkép létrehozása és elküldése egy Felhőbeli natív Buildpack használatával
 
@@ -31,7 +31,7 @@ Legalább a következő futtatásakor adja meg a következőket `az acr pack bui
 * Az ACR-feladatok egyik [támogatott környezeti helye](container-registry-tasks-overview.md#context-locations) , például egy helyi könyvtár, egy GitHub-tárház vagy egy távoli Fez
 * Az alkalmazáshoz megfelelő Buildpack Builder-rendszerkép neve. Azure Container Registry gyorsítótárazza a Builder-lemezképeket, például `cloudfoundry/cnb:0.0.34-cflinuxfs3` a gyorsabb buildekhez.  
 
-`az acr pack build`az ACR-feladatok egyéb funkcióit támogatja, beleértve a [futtatási változókat](container-registry-tasks-reference-yaml.md#run-variables) és a [tevékenységek futtatására szolgáló naplókat](container-registry-tasks-logs.md) , amelyeket a rendszer a későbbi lekéréshez is ment.
+`az acr pack build` az ACR-feladatok egyéb funkcióit támogatja, beleértve a [futtatási változókat](container-registry-tasks-reference-yaml.md#run-variables) és a [tevékenységek futtatására szolgáló naplókat](container-registry-tasks-logs.md) , amelyeket a rendszer a későbbi lekéréshez is ment.
 
 ## <a name="example-build-nodejs-image-with-cloud-foundry-builder"></a>Példa: Node.js rendszerkép kiépítése Cloud Foundry Builder-sel
 
@@ -94,7 +94,7 @@ docker run --rm -p 8080:8080 myregistry.azurecr.io/java-app:runid
 Tallózással keresse meg `localhost:8080` kedvenc böngészőjét, és tekintse meg a minta webalkalmazást. Nyomja le `[Ctrl]+[C]` a gombot a tároló leállításához.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután létrehozta és leküldte a tároló lemezképét a `az acr pack build` használatával, bármilyen képhez telepítheti azt egy tetszőleges célra. Az Azure-beli üzembe helyezési lehetőségek közé tartozik a [app Service](../app-service/tutorial-custom-container.md) vagy az [Azure Kubernetes Service](../aks/tutorial-kubernetes-deploy-cluster.md)-ben való futtatás, egyebek között.
 

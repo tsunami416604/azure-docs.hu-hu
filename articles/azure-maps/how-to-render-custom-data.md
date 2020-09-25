@@ -4,17 +4,17 @@ description: Megtudhatja, hogyan adhat hozzá pushpins, címkéket és geometria
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 01/23/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: d5dcc2701a0b77509868471ec97c45917b2ccf42
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: ec62461e5a12f0c566becdfc7d9a1464433ee656
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037371"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91311019"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>Egyéni adathalmazok renderelése egy raszteres térképen
 
@@ -148,7 +148,7 @@ Az elérési utat és a rögzítési hely adatait az [Adatfeltöltő API](https:
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0&subscription-key={Subscription-key}
    ```
 
-6. A udId beszerzéséhez nyisson meg egy új lapot a Poster alkalmazásban. Válassza a HTTP-módszer beolvasása lehetőséget a szerkesztő lapon. a GET kérést az állapot URI-ja alapján teheti meg. Ha az adatok feltöltése sikeres volt, egy udId fog kapni a válasz törzsében. Másolja a udId.
+6. A udId beszerzéséhez nyisson meg egy új lapot a Poster alkalmazásban. Válassza a HTTP-módszer beolvasása lehetőséget a szerkesztő lapon. Hozzon igénybe egy GET-kérelmet az állapot URI-n. Ha az adatok feltöltése sikeres volt, egy udId fog kapni a válasz törzsében. Másolja a udId.
 
    ```JSON
    {
@@ -219,7 +219,7 @@ A kör-és pushpins egyéni címkékkel történő megjelenítéséhez kövesse 
 
 Hasonlóképpen megváltoztathatja, hozzáadhatja és eltávolíthatja a többi stílus-módosítót is.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 
 * Ismerkedjen meg a [Azure Maps Map RENDSZERKÉP API](https://docs.microsoft.com/rest/api/maps/render/getmapimage) dokumentációjának használatával.

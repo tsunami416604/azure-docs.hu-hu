@@ -1,6 +1,6 @@
 ---
 title: Adatátalakítás a Pig tevékenységgel Azure Data Factory
-description: Megtudhatja, hogyan használhatja a Pig-tevékenységet egy Azure-beli adatgyárban a Pig-parancsfájlok igény szerinti vagy saját HDInsight-fürtön való futtatásához.
+description: Ismerje meg, hogyan használhatja a Pig-tevékenységet egy Azure-beli adatelőállító v1-ben egy igény szerinti vagy saját HDInsight-fürtön futó Pig-parancsfájlok futtatásához.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 5b8e7201a6239ef1fe83fb89d4b361995e305bbf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9e20b7a92d054a6664a00064fa7263b1150c3df9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74703195"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282578"
 ---
 # <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>Adatátalakítás a Pig tevékenységgel Azure Data Factory
 > [!div class="op_single_selector" title1="Átalakítási tevékenységek"]
@@ -84,7 +84,7 @@ A HDInsight Pig-tevékenység egy Data Factory [folyamat](data-factory-create-pi
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| name |A tevékenység neve |Yes |
+| név |A tevékenység neve |Yes |
 | leírás |A tevékenység által használt szöveg leírása |No |
 | típus |HDinsightPig |Yes |
 | bemenetek |A Pig tevékenység által felhasznált egy vagy több bemenet |No |

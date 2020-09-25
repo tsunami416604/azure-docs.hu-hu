@@ -11,14 +11,17 @@ manager: philmea
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: c664d4859a306387b4eafa2f19ab5877ccf6eb1b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a4b65195488f101d36aaf73956f1422bfccbbf9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81686955"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282136"
 ---
 # <a name="run-opc-publisher"></a>Az OPC Publisher futtatása
+
+> [!IMPORTANT]
+> A cikk frissítését követően tekintse meg az [Azure Industrial IoT](https://azure.github.io/Industrial-IoT/) a legfrissebb tartalomhoz című cikket.
 
 Ez a cikk az ad debug OPC-közzétevő futtatását ismerteti. Emellett a teljesítménnyel és a memóriával kapcsolatos szempontokat is tárgyalja.
 
@@ -375,7 +378,7 @@ Ha az OPC-közzétevőt modulként szeretné hozzáadni a IoT Edge üzembe helye
 1. Válassza a **modulok beállítása**lehetőséget.
 1. Válassza a **Hozzáadás** lehetőséget a **telepítési modulok** területen, majd **IoT Edge modult**.
 1. A **név** mezőbe írja be a **közzétevőt**.
-1. A **RENDSZERKÉP URI** mezőjébe írja be a`mcr.microsoft.com/iotedge/opc-publisher:<tag>`
+1. A **RENDSZERKÉP URI** mezőjébe írja be a `mcr.microsoft.com/iotedge/opc-publisher:<tag>`
 1. A rendelkezésre álló címkék a [Docker hub](https://hub.docker.com/_/microsoft-iotedge-opc-publisher) -ban találhatók
 1. Illessze be a következő JSON-t a **tároló létrehozási beállítások** mezőjébe:
 
@@ -519,7 +522,7 @@ A futásidejű környezet befolyásolja a tanúsítványok megőrzésének módj
 
 - A Windows rendszeren natív módon futtatott alkalmazás-tanúsítványtároló nem használható, `Directory` mert a titkos kulcshoz való hozzáférés sikertelen. Ebben az esetben használja a kapcsolót `--at X509Store` .
 - Linux Docker-tárolóként futtatva a tanúsítványtárolókat leképezheti a gazdagép fájlrendszerére a Docker Run kapcsolóval `-v <hostdirectory>:/appdata` . Ezzel a beállítással a tanúsítvány állandó lesz az alkalmazás futása során.
-- Linux Docker-tárolóként fut, és X509-tárolót szeretne használni az alkalmazás tanúsítványához, használja a Docker Run kapcsolót `-v x509certstores:/root/.dotnet/corefx/cryptography/x509stores` és az alkalmazás lehetőséget.`--at X509Store`
+- Linux Docker-tárolóként fut, és X509-tárolót szeretne használni az alkalmazás tanúsítványához, használja a Docker Run kapcsolót `-v x509certstores:/root/.dotnet/corefx/cryptography/x509stores` és az alkalmazás lehetőséget. `--at X509Store`
 
 ## <a name="performance-and-memory-considerations"></a>Teljesítménnyel és memóriával kapcsolatos megfontolások
 
@@ -531,9 +534,9 @@ Az OPC-közzétevő futtatásakor ismernie kell a teljesítményre vonatkozó k�
 
 A memória és a teljesítmény egymástól függ, és a konfigurációtól függ, hogy hány csomópontot szeretne közzétenni. Győződjön meg arról, hogy a következő paraméterek megfelelnek a követelményeknek:
 
-- IoT Hub küldési időköz:`--si`
-- IoT Hub üzenet mérete (alapértelmezett `1` ):`--ms`
-- Figyelt elemek várólistájának kapacitása:`--mq`
+- IoT Hub küldési időköz: `--si`
+- IoT Hub üzenet mérete (alapértelmezett `1` ): `--ms`
+- Figyelt elemek várólistájának kapacitása: `--mq`
 
 A `--mq` paraméter a belső várólista kapacitásának felső határát szabályozza, amely az összes OPC-csomópont értékének változási értesítéseit pufferbe helyezi. Ha az OPC-közzétevő nem tud üzeneteket küldeni IoT Hub elég gyors, akkor ez a várólista pufferbe helyezi az értesítéseket. A paraméterrel állítható be a pufferelt értesítések száma. Ha úgy látja, hogy a várólistában lévő elemek száma egyre növekszik a tesztek futtatásakor, az üzenetek elvesztésének elkerüléséhez tegye a következőket:
 
@@ -713,6 +716,6 @@ Ha nem rendelkezik valós OPC UA-kiszolgálóval, a kezdéshez használhatja a [
 
 Számos címkét valósít meg, amelyek véletlenszerű adatmennyiségeket és címkéket eredményeznek. Kiterjesztheti a mintát, ha további címkéző értékeket kell szimulálnia.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte az OPC-közzétevő futtatását, a javasolt következő lépések az [OPC Twin](overview-opc-twin.md) és az [OPC](overview-opc-vault.md)-tároló megismerése.

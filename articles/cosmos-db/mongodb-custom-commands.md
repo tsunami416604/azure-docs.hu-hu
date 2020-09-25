@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/28/2020
 ms.author: lbosq
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 7b0ac1e301705b24d706638deb3ee0a15d49c87b
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 4b069dea3f07477fcbca21e08166cdfad8cad2cf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87415091"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326728"
 ---
 # <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB-bővítményi parancsok használata a Azure Cosmos DB API-MongoDB tárolt adatkezeléshez 
 
@@ -33,7 +33,7 @@ A következő bővítmény-parancsok lehetővé teszik Azure Cosmos DB-specifiku
 * [Gyűjtemény frissítése](#update-collection)
 * [Gyűjtemény beolvasása](#get-collection)
 
-## <a name="create-database"></a><a id="create-database"></a>Adatbázis létrehozása
+## <a name="create-database"></a><a id="create-database"></a> Adatbázis létrehozása
 
 Az adatbázis-bővítmény létrehozása parancs létrehoz egy új MongoDB-adatbázist. Az adatbázis neve a parancs által beállított adatbázis-környezetből is használható `use database` . A következő táblázat a parancson belüli paramétereket ismerteti:
 
@@ -86,7 +86,7 @@ use test
 db.runCommand({customAction: "CreateDatabase", autoScaleSettings: { maxThroughput: 20000 } });
 ```
 
-## <a name="update-database"></a><a id="update-database"></a>Adatbázis frissítése
+## <a name="update-database"></a><a id="update-database"></a> Adatbázis frissítése
 
 Az adatbázis-kiterjesztés frissítése parancs frissíti a megadott adatbázishoz társított tulajdonságokat. A következő táblázat a parancson belüli paramétereket ismerteti:
 
@@ -129,7 +129,7 @@ db.runCommand({customAction: "UpdateDatabase", autoScaleSettings: { maxThroughpu
 ```
 
 
-## <a name="get-database"></a><a id="get-database"></a>Adatbázis beolvasása
+## <a name="get-database"></a><a id="get-database"></a> Adatbázis beolvasása
 
 Az adatbázis-kiterjesztés beolvasása parancs visszaadja az adatbázis-objektumot. Az adatbázis neve a parancs végrehajtásához használt adatbázis-környezetből származik.
 
@@ -195,7 +195,7 @@ Ha az adatbázishoz van hozzárendelve egy [adatbázis-szintű autoskálázási 
 }
 ```
 
-## <a name="create-collection"></a><a id="create-collection"></a>Gyűjtemény létrehozása
+## <a name="create-collection"></a><a id="create-collection"></a> Gyűjtemény létrehozása
 
 A gyűjtemény létrehozása bővítmény parancs egy új MongoDB-gyűjteményt hoz létre. Az adatbázis nevét a parancs által beállított adatbázisok környezete használja `use database` . A CreateCollection parancs formátuma a következő:
 
@@ -288,7 +288,7 @@ use test
 db.runCommand({customAction: "CreateCollection", collection: "testCollection", shardKey: "a.b", autoScaleSettings: { maxThroughput: 20000 }});
 ```
 
-## <a name="update-collection"></a><a id="update-collection"></a>Gyűjtemény frissítése
+## <a name="update-collection"></a><a id="update-collection"></a> Gyűjtemény frissítése
 
 Az Update Collection Extension parancs frissíti a megadott gyűjteményhez társított tulajdonságokat.
 
@@ -324,7 +324,7 @@ use test
 db.runCommand({customAction: "UpdateCollection", collection: "testCollection", offerThroughput: 1200 });
 ```
 
-## <a name="get-collection"></a><a id="get-collection"></a>Gyűjtemény beolvasása
+## <a name="get-collection"></a><a id="get-collection"></a> Gyűjtemény beolvasása
 
 A gyűjtemény egyéni beolvasása parancs a gyűjtemény objektumot adja vissza.
 
@@ -413,7 +413,7 @@ Ha a gyűjtemény [adatbázis-szintű átviteli sebességet](set-throughput.md#s
 ```
 
 
-## <a name="default-output-of-a-custom-command"></a><a id="default-output"></a>Egyéni parancs alapértelmezett kimenete
+## <a name="default-output-of-a-custom-command"></a><a id="default-output"></a> Egyéni parancs alapértelmezett kimenete
 
 Ha nincs megadva, az egyéni válasz a következő mezőket tartalmazó dokumentumot tartalmazza:
 

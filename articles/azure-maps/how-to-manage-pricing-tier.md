@@ -4,16 +4,16 @@ description: A Azure Portal segítségével kezelheti a Microsoft Azure Maps-fi�
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 01/27/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: dce65eaf4ac9b7918b1217a268bedf807d4253ce
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 8e62734e039d0f6ceff836947519ef71ee9b8497
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87126822"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91311053"
 ---
 # <a name="manage-the-pricing-tier-of-your-azure-maps-account"></a>A Azure Maps-fiók díjszabási szintjeinek kezelése
 
@@ -36,7 +36,7 @@ A Azure Maps-fiók létrehozása után frissítheti vagy visszaminősítheti Azu
 > [!NOTE]
 > Ha a Azure Maps-fiók díjszabási szintjét frissíti vagy visszaminősíti, nem kell új előfizetési kulcsot vagy ügyfél-azonosítót (Azure AD-hitelesítéshez) előkészítenie.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan tekintheti meg Azure Maps fiókjának API-használati metrikáit:
 

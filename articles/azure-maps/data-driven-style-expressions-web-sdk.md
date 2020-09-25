@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
-ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: ea88797a6423118cba40d117a37dc9df75b0b7a1
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.custom: codepen, devx-track-js
+ms.openlocfilehash: 539145836849bb66bcf1f12a97ea405fe84c47bd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90089445"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91311376"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>Adatvezérelt stílusú kifejezések (web SDK)
 
@@ -90,14 +90,16 @@ Az adatkifejezések hozzáférést biztosítanak a szolgáltatásban található
 |------------|-------------|-------------|
 | `['at', number, array]` | object | Egy elem lekérése egy tömbből. |
 | `['geometry-type']` | sztring | A szolgáltatás geometriai típusának beolvasása: pont, multipoint, LineString, MultiLineString, sokszög és többsokszög. |
-| `['get', string]` | Érték | A tulajdonság értékének beolvasása az aktuális funkció tulajdonságaiból. Null értéket ad vissza, ha a kért tulajdonság hiányzik. |
-| `['get', string, object]` | Érték | A tulajdonság értékének beolvasása a megadott objektum tulajdonságaiból. Null értéket ad vissza, ha a kért tulajdonság hiányzik. |
+| `['get', string]` | value | A tulajdonság értékének beolvasása az aktuális funkció tulajdonságaiból. Null értéket ad vissza, ha a kért tulajdonság hiányzik. |
+| `['get', string, object]` | value | A tulajdonság értékének beolvasása a megadott objektum tulajdonságaiból. Null értéket ad vissza, ha a kért tulajdonság hiányzik. |
 | `['has', string]` | boolean | Meghatározza, hogy a szolgáltatás tulajdonságai rendelkeznek-e a megadott tulajdonsággal. |
 | `['has', string, object]` | boolean | Meghatározza, hogy az objektum tulajdonságai rendelkeznek-e a megadott tulajdonsággal. |
-| `['id']` | Érték | A szolgáltatás AZONOSÍTÓjának beolvasása, ha rendelkezik ilyennel. |
+| `['id']` | value | A szolgáltatás AZONOSÍTÓjának beolvasása, ha rendelkezik ilyennel. |
 | `['length', string | array]` | szám | Egy karakterlánc vagy tömb hosszának beolvasása. |
 | `['in', boolean | string | number, array]` | boolean | Meghatározza, hogy egy elem létezik-e tömbben |
 | `['in', substring, string]` | boolean | Meghatározza, hogy létezik-e egy alsztring egy karakterláncban. |
+| `['index-of', boolean | string | number, array | string]`<br/><br/>`['index-of', boolean | string | number, array | string, number]` | szám | Azt az első pozíciót adja vissza, amikor egy tömbben vagy egy alsztringben található elem található egy karakterláncban, vagy `-1` Ha a bemenet nem található. Elfogad egy nem kötelező indexet a keresés megkezdéséhez. |
+| `['slice', array | string, number]`<br/><br/>`['slice', array | string, number, number]` | `string`\|tömb | Egy tömbből vagy egy karakterláncból származó elemet ad vissza egy megadott kezdő indexből, vagy egy kezdő indexből és egy záró indexből, ha be van állítva. A visszatérési érték tartalmazza a kezdő indexet, de nem a záró indexet. |
 
 **Példák**
 
@@ -151,8 +153,11 @@ Hasonlóképpen a sokszögek körvonalai is megjelennek a sorokban. Ha le szeret
 //Get item [0][1] from a 2D array "properties.array2d[0][1]" = "b"
 ['at', 1, ['at', 0, ['get', 'array2d']]]
 
-//Check to see if a value is in an array property "properties.abcArray.indexOf('a') !== -1" = true
+//Check to see if a value is in an array "properties.abcArray.indexOf('a') !== -1" = true
 ['in', 'a', ['get', 'abcArray']]
+
+//Gets the index of the value 'b' in an array "properties.abcArray.indexOf('b')" = 1
+['index-of', 'b', ['get', 'abcArray']]
 
 //Get the length of an array "properties.abcArray.length" = 3
 ['length', ['get', 'abcArray']]
@@ -162,6 +167,12 @@ Hasonlóképpen a sokszögek körvonalai is megjelennek a sorokban. Ha le szeret
 
 //Check that "fillColor" exists as a subproperty of "_style".
 ['has', 'fillColor', ['get', '_style']]
+
+//Slice an array starting at index 2 "properties.abcArray.slice(2)" = ['c']
+['slice', ['get', 'abcArray'], 2]
+
+//Slice a string from index 0 to index 4 "properties.entityType.slice(0, 4)" = 'rest'
+['slice', ['get', 'entityType'], 0, 4]
 ```
 
 ## <a name="math-expressions"></a>Matematikai kifejezések
@@ -225,8 +236,8 @@ Az értékek összehasonlításakor az összehasonlítás szigorúan be van írv
 
 | Expression | Visszatérési típus | Description |
 |------------|-------------|-------------|
-| `['! ', boolean]` | boolean | Logikai tagadás. Visszaadja `true` , ha a bemenet `false` , és `false` Ha a bemenet szerepel `true` . |
-| `['!= ', value, value]` | boolean | Visszaadja `true` , ha a bemeneti értékek nem egyenlőek, `false` ellenkező esetben. |
+| `['!', boolean]` | boolean | Logikai tagadás. Visszaadja `true` , ha a bemenet `false` , és `false` Ha a bemenet szerepel `true` . |
+| `['!=', value, value]` | boolean | Visszaadja `true` , ha a bemeneti értékek nem egyenlőek, `false` ellenkező esetben. |
 | `['<', value, value]` | boolean | Akkor adja vissza `true` , ha az első bemenet szigorúan kisebb a másodiknál, `false` ellenkező esetben. Az argumentumoknak karakterláncoknak vagy mindkét számnak kell lenniük. |
 | `['<=', value, value]` | boolean | Azt adja vissza `true` , hogy az első bemenet kisebb-e vagy egyenlő-e a másodikval, `false` ellenkező esetben. Az argumentumoknak karakterláncoknak vagy mindkét számnak kell lenniük. |
 | `['==', value, value]` | boolean | Visszaadja `true` , ha a bemeneti értékek egyenlőek, `false` ellenkező esetben. Az argumentumoknak karakterláncoknak vagy mindkét számnak kell lenniük. |

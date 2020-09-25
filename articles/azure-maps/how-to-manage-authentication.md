@@ -5,16 +5,16 @@ description: Ismerkedjen meg Azure Maps hitelesítéssel. Megtudhatja, melyik m�
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 06/12/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 8fc27ea4de7e81f1279f68d2e4a1a7fde1fcf41f
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 3383971b9984e6f565feebc3bdfb968fb77cbe85
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037337"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91311103"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>Hitelesítés kezelése Azure Maps
 
@@ -43,9 +43,9 @@ Az alábbi táblázat a Azure Maps gyakori hitelesítési és engedélyezési fo
 > [!IMPORTANT]
 > A Microsoft azt javasolja, hogy az éles alkalmazások esetében szerepköralapú hozzáférés-vezérléssel (RBAC) implementálja Azure Active Directory (Azure AD).
 
-| Forgatókönyv                                                                                    | Hitelesítés | Engedélyezés | Fejlesztési tevékenység | Működési tevékenység |
+| Használati eset                                                                                    | Hitelesítés | Engedélyezés | Fejlesztési tevékenység | Működési tevékenység |
 | ------------------------------------------------------------------------------------------- | -------------- | ------------- | ------------------ | ------------------ |
-| [Megbízható démon/nem interaktív ügyfélalkalmazás](./how-to-secure-daemon-app.md)        | Megosztott kulcsos     | N/A           | Közepes             | Magas               |
+| [Megbízható démon/nem interaktív ügyfélalkalmazás](./how-to-secure-daemon-app.md)        | Megosztott kulcsos     | N.A.           | Közepes             | Magas               |
 | [Megbízható démon/nem interaktív ügyfélalkalmazás](./how-to-secure-daemon-app.md)        | Azure AD       | Magas          | Alacsony                | Közepes             |
 | [Web Single Page-alkalmazás interaktív egyszeri bejelentkezéssel](./how-to-secure-spa-users.md) | Azure AD       | Magas          | Közepes             | Közepes             |
 | [Web Single Page-alkalmazás nem interaktív bejelentkezéssel](./how-to-secure-spa-app.md)      | Azure AD       | Magas          | Közepes             | Közepes             |
@@ -79,7 +79,7 @@ Igényeljen tokent az Azure AD-jogkivonat végpontján. Az Azure AD-kérelemben 
 
 További információ az Azure AD-től a felhasználók és a szolgáltatások hozzáférési jogkivonatának igénylésével kapcsolatban: [hitelesítési forgatókönyvek az Azure ad-hez](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios) és a [forgatókönyvekben](./how-to-manage-authentication.md#determine-authentication-and-authorization)megadott forgatókönyvek megtekintése.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ: [Azure ad és Azure Maps web SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control).
 

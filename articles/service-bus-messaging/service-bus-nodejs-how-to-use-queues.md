@@ -6,13 +6,13 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.custom: seo-javascript-september2019, seo-javascript-october2019, devx-track-javascript
-ms.openlocfilehash: ba0fd6cf7214beeaca9e93b1fe003a144c247cb5
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.custom: seo-javascript-september2019, seo-javascript-october2019, devx-track-js
+ms.openlocfilehash: 0e94d21bd6550a7d62ef3e7dec302c53f9851a4a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88076999"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326320"
 ---
 # <a name="quickstart-use-service-bus-queues-in-azure-with-nodejs-and-the-azure-sb-package"></a>Gyors útmutató: Service Bus-várólisták használata az Azure-ban Node.js és az Azure-SB csomaggal
 Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre Node.js-alkalmazásokat az üzenetek küldéséhez és fogadásához egy Azure Service Bus-várólistából az [Azure-SB](https://www.npmjs.com/package/azure-sb) csomag használatával. A minták JavaScript nyelven íródtak, és a Node.js [Azure-modult](https://www.npmjs.com/package/azure) használják, amely belsőleg használja az Azure-SB-csomagot.
@@ -40,7 +40,7 @@ Hozzon létre egy üres Node.js alkalmazást. Node.js alkalmazások létrehozás
 Azure Service Bus használatához töltse le és használja a Node.js Azure-csomagot. Ez a csomag olyan kódtárakat tartalmaz, amelyek a Service Bus REST-szolgáltatásokkal kommunikálnak.
 
 ### <a name="use-node-package-manager-npm-to-obtain-the-package"></a>A csomag beszerzéséhez használja a Node Package Managert (NPM)
-1. A **Node.jsWindows PowerShell** segítségével navigáljon a **c: \\ Node \\ sbqueues \\ webrole1 webes** mappába, amelyben létrehozta a minta alkalmazást.
+1. A **Node.jsWindows PowerShell ** segítségével navigáljon a **c: \\ Node \\ sbqueues \\ webrole1 webes** mappába, amelyben létrehozta a minta alkalmazást.
 2. Írja be a **NPM az Azure** -t a parancsablakban, amelynek az alábbi példához hasonló kimenetet kell eredményeznie:
 
     ```

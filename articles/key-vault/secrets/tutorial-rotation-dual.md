@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jalichwa
-ms.openlocfilehash: 904355b28af93d4a277f2158b1548517118a67ba
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: e2729a5dca54bb7e65e9504f89bd203f9928b120
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90529417"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91251643"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-with-two-sets-of-authentication-credentials"></a>A titkos kulcs rotációjának automatizálása két hitelesítési hitelesítő adattal rendelkező erőforrásokhoz
 
@@ -67,6 +67,8 @@ akvrotationstorage2    akvrotation      eastus      Microsoft.Storage/storageAcc
 ```
 
 ## <a name="create-and-deploy-storage-account-key-rotation-function"></a>Storage-fiók kulcsának rotációs függvényének létrehozása és üzembe helyezése
+> [!IMPORTANT]
+> Az alábbi sablonhoz az Key Vault, az Azure Storage-fiók és az Azure-függvénynek ugyanabban az erőforráscsoporthoz kell esnie
 
 Ezután hozzon létre egy, a rendszer által felügyelt identitással rendelkező Function alkalmazást a többi szükséges összetevőn kívül, és telepítse a Storage-fiók kulcsának rotációs funkcióit
 

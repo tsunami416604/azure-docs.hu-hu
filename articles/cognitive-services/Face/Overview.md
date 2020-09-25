@@ -1,20 +1,22 @@
 ---
-title: Mi az a Face szolgáltatás?
+title: Mi az Azure Face Service?
 titleSuffix: Azure Cognitive Services
-description: Az Azure Cognitive Services Face szolgáltatás olyan algoritmusokat biztosít, amelyek a képek emberi arcok észlelésére, felismerésére és elemzésére szolgálnak.
+description: Az Azure Face Service olyan AI-algoritmusokat biztosít, amelyeket a képeken található emberi arcok észlelésére, felismerésére és elemzésére használhat.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: overview
-ms.date: 9/01/2020
+ms.date: 9/17/2020
 ms.author: pafarley
-ms.openlocfilehash: 1dc970a16c3b031b311c5b98ca43613d9ecf39d4
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.custom: cog-serv-seo-aug-2020
+keywords: arc-felismerés, Arcfelismerés szoftver, arc-elemzés, szembenézés egyeztetése, Arcfelismerés alkalmazás, Szembenézés a képek alapján, Arcfelismerés keresés
+ms.openlocfilehash: 0a7e242add9fdaa9e169a4003e8ad8f39b1fb111
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89421572"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91262484"
 ---
 # <a name="what-is-the-azure-face-service"></a>Mi az Azure Face Service?
 
@@ -23,16 +25,16 @@ ms.locfileid: "89421572"
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Az Azure Cognitive Services Face szolgáltatás olyan algoritmusokat biztosít, amelyek a képeken az emberi arcok észlelését, felismerését és elemzését végzik. Az emberi arc-információk feldolgozásának lehetősége számos különböző szoftveres helyzetben fontos. Ilyenek például a biztonság, a természetes felhasználói felület, a képek tartalmának elemzése és kezelése, a Mobile apps és a robotika.
+Az Azure Face szolgáltatás olyan AI-algoritmusokat biztosít, amelyek a képeken az emberi arcok észlelését, felismerését és elemzését végzik. Az Arcfelismerés szoftver számos különböző helyzetben fontos, például a biztonság, a természetes felhasználói felület, a képtartalom elemzése és kezelése, a Mobile apps és a robotika.
 
-A Face szolgáltatás számos különböző funkciót biztosít, amelyek mindegyike az alábbi részben szerepel.
+A Face szolgáltatás számos különböző arc-elemzési funkciót biztosít, amelyek mindegyike az alábbi részben látható.
 
 ## <a name="face-detection"></a>Arcfelismerés
 
-A Face szolgáltatás észleli az emberi arcokat egy képen, és visszaadja a helyük téglalapjának koordinátáit. Ha szeretné, a Arcfelismerés több arc-specifikus attribútumot is Kinyer. Ilyenek például a következők: fej, nemek, kor, érzelem, arcszőrzet és szemüveg.
+A Face szolgáltatás észleli az emberi arcokat egy képen, és visszaadja a helyük téglalapjának koordinátáit. Ha szeretné, a Arcfelismerés számos arc-alapú attribútumot, például a Head póz, a nemek, a kor, az érzelem, az arcszőrzet és a szemüvegeket is kinyerheti.
 
 > [!NOTE]
-> Az Arcfelismerés funkció a [Computer Vision APIon](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)keresztül is elérhető. Ha további műveleteket szeretne végezni az adatokkal kapcsolatban, használja a Face szolgáltatást, amely a jelen cikkben tárgyalt szolgáltatás.
+> Az Arcfelismerés funkció a [Computer Vision szolgáltatáson](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)keresztül is elérhető. Ha azonban az adatokkal kapcsolatos további műveleteket kíván végrehajtani, ezt a szolgáltatást kell használnia.
 
 ![Egy nő és egy férfi képe, amely az arcukon és a nemek közötti téglalapokat ábrázolja](./Images/Face.detection.jpg)
 
@@ -40,11 +42,13 @@ Az Arcfelismerés szolgáltatással kapcsolatos további információkért tekin
 
 ## <a name="face-verification"></a>Arcellenőrzés
 
-Az ellenőrzés az API-val két észlelt arc vagy egy személy objektum közötti hitelesítést végez. Lényegében azt értékeli, hogy a két arc ugyanazon személyhez tartozik-e. Ez a funkció biztonsági helyzetekben hasznos lehet. További információ: [Arcfelismerés](concepts/face-recognition.md) fogalmakat ismertető útmutató vagy az API-dokumentáció [ellenőrzése](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a) .
+Az ellenőrzés az API-val két észlelt arc vagy egy személy objektum közötti hitelesítést végez. Lényegében azt értékeli, hogy a két arc ugyanazon személyhez tartozik-e. Ez a funkció biztonsági helyzetekben hasznos lehet. További információ: [arc-felismerési](concepts/face-recognition.md) fogalmakat ismertető útmutató vagy az API-dokumentáció [ellenőrzése](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a) .
 
 ## <a name="find-similar-faces"></a>Hasonló arcok keresése
 
-A keresés a hasonló API-val hasonlítja össze a cél arcát a jelölt arcokkal, hogy megkeresse a cél felületéhez hasonló arcok kisebb készletét. A matchPerson és a matchFace két működési mód támogatott. A matchPerson mód hasonló arcokat ad vissza, miután az [API ellenőrzése](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a)után ugyanezt a személyt szűri. A matchFace mód figyelmen kívül hagyja az egyszemélyes szűrőt. A hasonló jelölt arcok listáját adja vissza, amelyek esetleg vagy esetleg nem ugyanahhoz a személyhez tartoznak.
+A hasonló API megkeresése a cél és a jelölt arcok közötti egyezést is magában foglalhatja, és megkeresheti a cél felületéhez hasonló arcok kisebb készletét. Ez akkor lehet hasznos, ha a képet egy arc alapján keresik. 
+
+A **matchPerson** és a **matchFace**két működési mód támogatott. A **matchPerson** mód a hasonló arcokat adja vissza, miután ugyanezen személyre szűrést végez az [API ellenőrzése](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a)paranccsal. A **matchFace** mód figyelmen kívül hagyja az egyszemélyes szűrőt. A hasonló jelölt arcok listáját adja vissza, amelyek esetleg nem ugyanahhoz a személyhez tartoznak.
 
 Az alábbi példa a cél arcot mutatja:
 
@@ -54,15 +58,15 @@ Az alábbi példa a cél arcot mutatja:
 
 ![Öt mosolygó személy. Az a és b képek ugyanazt a személyt jelenítik meg.](./Images/FaceFindSimilar.Candidates.jpg)
 
-Négy hasonló arc megtalálásához a matchPerson mód az a és b értéket adja vissza, amely ugyanazt a személyt jeleníti meg, mint a cél arca. A matchFace mód az a, b, c és d &mdash; pontosan négy pályázót ad vissza, még akkor is, ha nem ugyanaz a személy, mint a cél, vagy alacsony hasonlóságot mutat. További információkért tekintse meg az [Arcfelismerés](concepts/face-recognition.md) fogalmakat ismertető útmutatót vagy a [hasonló API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) -referenciát.
+Négy hasonló arc megtalálásához a **matchPerson** mód az a és b értéket adja vissza, amely ugyanazt a személyt jeleníti meg, mint a cél arca. A **matchFace** mód az a, b, c és d &mdash; pontosan négy pályázót ad vissza, még akkor is, ha nem ugyanaz a személy, mint a cél, vagy alacsony hasonlóságot mutat. További információ: [arc-felismerési](concepts/face-recognition.md) fogalmakat ismertető útmutató vagy a [hasonló API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) -k keresése dokumentáció.
 
 ## <a name="face-grouping"></a>Arccsoportosítás
 
-A Group API több csoportra osztja az ismeretlen arcokat a hasonlóság alapján. Mindegyik csoport az eredeti arcok halmazának különálló valódi részhalmaza. Egy csoport összes arca valószínűleg ugyanahhoz a személyhez tartozik. Egyetlen személynek több különböző csoportja is lehet. A csoportokat egy másik tényező különbözteti meg, például a kifejezést. További információ: [Arcfelismerés](concepts/face-recognition.md) fogalmakat ismertető útmutató vagy a [csoport API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395238) -dokumentációja.
+A Group API több csoportra osztja az ismeretlen arcokat a hasonlóság alapján. Mindegyik csoport az eredeti arcok halmazának különálló valódi részhalmaza. Egy csoport összes arca valószínűleg ugyanahhoz a személyhez tartozik. Egyetlen személynek több különböző csoportja is lehet. A csoportokat egy másik tényező különbözteti meg, például a kifejezést. További információ: [arc-felismerési](concepts/face-recognition.md) fogalmakat ismertető útmutató vagy a [Group API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395238) -referenciák dokumentációja.
 
 ## <a name="person-identification"></a>Személyazonosítás
 
-Az azonosított API azonosítja az észlelt arcot egy személy adatbázisán. Ez a funkció akkor lehet hasznos, ha az automatikus képcímkézést a Photo Management szoftverben lehet használni. Az adatbázist előre kell létrehoznia, és bármikor szerkesztheti.
+Az azonosított API használatával azonosíthatók az észlelt arcok az emberek adatbázisán (Arcfelismerés keresés). Ez a funkció akkor lehet hasznos, ha az automatikus képcímkézést a Photo Management szoftverben lehet használni. Az adatbázist előre kell létrehoznia, és bármikor szerkesztheti.
 
 Az alábbi képen a nevű adatbázisra mutat példát `"myfriends"` . Mindegyik csoport legfeljebb 1 000 000 különböző személy objektumot tartalmazhat. Mindegyik személyobjektumhoz legfeljebb 248 arc lehet regisztrálva.
 
@@ -70,7 +74,7 @@ Az alábbi képen a nevű adatbázisra mutat példát `"myfriends"` . Mindegyik 
 
 Az adatbázis létrehozása és betanítása után az azonosítást a csoporton belül egy új észlelt arc használatával végezheti el. Ha a rendszer a csoport egyik tagjaként azonosítja az arcot, visszaadja a személyobjektumot.
 
-A személy azonosításával kapcsolatos további információkért tekintse meg az [Arcfelismerés](concepts/face-recognition.md) fogalmakat ismertető útmutatót vagy az API-referenciák [azonosítására](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) szolgáló dokumentációt.
+A személy azonosításával kapcsolatos további információkért tekintse meg az [arc-felismerési](concepts/face-recognition.md) fogalmakat ismertető útmutatót vagy az API-referenciák [azonosítására](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) szolgáló dokumentációt.
 
 ## <a name="containers"></a>Tárolók
 
@@ -89,6 +93,6 @@ Akárcsak az összes Cognitive Services erőforrás esetében, a Face szolgálta
 
 ## <a name="next-steps"></a>Következő lépések
 
-Kövessen egy rövid útmutatót egy Arcfelismerés forgatókönyv megvalósításához a kódban:
+Kövessen egy rövid útmutatót egy Arcfelismerés alkalmazás alapvető összetevőinek a választott nyelven való kódolásához.
 
-- Rövid útmutató [: az arcok észlelése egy képben a .net SDK és a C# használatával](quickstarts/csharp.md). Más nyelvek is elérhetők.
+- [Ügyféloldali kódtár](quickstarts/client-libraries.md)gyors üzembe helyezése

@@ -7,12 +7,12 @@ ms.topic: how-to
 author: AarathiN
 ms.author: aarathin
 ms.date: 07/14/2020
-ms.openlocfilehash: e7e7845b458d6d1a37b65fb79e0e7e9c13b0d07d
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 512f901c33ebce4fef06629fe78976a071820c87
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646939"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91251439"
 ---
 # <a name="create-an-azure-application-offer"></a>Azure-alkalmazásajánlat létrehozása
 
@@ -187,7 +187,7 @@ Ezen a lapon kezelhetők a kereskedelmi Marketplace-ajánlathoz tartozó másola
 4. Használati feltételek
 5. Adatvédelmi szabályzat címe (hivatkozás)
 6. Ajánlat neve
-7. Összegzés
+7. Összefoglalás
 8. Description
 9. Képernyőképek/videók
 
@@ -559,7 +559,7 @@ Annak engedélyezéséhez, hogy a tesztvezetés az Ön nevében legyen üzembe h
 * **Azure ad-bérlő azonosítója** (kötelező) – adja meg a Azure Active Directory (ad) [bérlői azonosítóját](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)). Az azonosító megkereséséhez jelentkezzen be a [Azure Portalba](https://portal.azure.com/), válassza a Active Directory fület a bal oldali menüben, válassza a **Tulajdonságok**elemet, majd keresse **meg a listában** szereplő 50c464d3-4930-494c-963c-1e951d15360e (például:). A szervezet bérlői AZONOSÍTÓját a tartománynév URL-címével is megkeresheti a következő helyen:  [https://www.whatismytenantid.com](https://www.whatismytenantid.com) .
 * **Azure ad-bérlő neve** (dinamikus 365 esetén szükséges) – adja meg a Azure Active Directory (ad) nevét. A név megkereséséhez jelentkezzen be a [Azure Portalba](https://portal.azure.com/), a jobb felső sarokban a bérlő neve a fiók neve alatt jelenik meg.
 * **Azure ad** -alkalmazás azonosítója (kötelező) – adja meg a Azure Active Directory (ad-) [alkalmazás azonosítóját](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)). Az azonosító megkereséséhez jelentkezzen be a [Azure Portalba](https://portal.azure.com/), majd a bal oldali navigációs menüben válassza a Active Directory fület, válassza a **Alkalmazásregisztrációk**lehetőséget, majd keresse meg a listában szereplő **alkalmazás-azonosító** számát (például 50c464d3-4930-494c-963c-1e951d15360e).
-* **Azure Active Directory alkalmazás-ügyfél titka** (kötelező) – adja meg az Azure ad-alkalmazás [ügyfelének titkos kulcsát](../../active-directory/develop/howto-create-service-principal-portal.md#create-a-new-application-secret). Az érték megkereséséhez jelentkezzen be a [Azure Portalba](https://portal.azure.com/). Válassza ki a **Azure Active Directory** fület a bal oldali navigációs menüben, válassza a **Alkalmazásregisztrációk**lehetőséget, majd válassza ki a test Drive alkalmazást. Ezután válassza a **tanúsítványok és titkos kulcsok**lehetőséget, válassza az **új ügyfél titka**elemet, adja meg a leírást, válassza a **soha nem** **jár le**, majd a **Hozzáadás**lehetőséget. A lap elhagyása előtt készítsen másolatot az értékről.)
+* **Azure Active Directory alkalmazás-ügyfél titka** (kötelező) – adja meg az Azure ad-alkalmazás [ügyfelének titkos kulcsát](../../active-directory/develop/howto-create-service-principal-portal.md#option-2-create-a-new-application-secret). Az érték megkereséséhez jelentkezzen be a [Azure Portalba](https://portal.azure.com/). Válassza ki a **Azure Active Directory** fület a bal oldali navigációs menüben, válassza a **Alkalmazásregisztrációk**lehetőséget, majd válassza ki a test Drive alkalmazást. Ezután válassza a **tanúsítványok és titkos kulcsok**lehetőséget, válassza az **új ügyfél titka**elemet, adja meg a leírást, válassza a **soha nem** **jár le**, majd a **Hozzáadás**lehetőséget. A lap elhagyása előtt készítsen másolatot az értékről.)
 
 A folytatás előtt válassza a **Piszkozat mentése** lehetőséget.
 

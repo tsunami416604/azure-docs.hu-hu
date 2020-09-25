@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 8d71cccfe0ebd049607d5b51e7211739c3a7209b
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.openlocfilehash: 89013e3b6ec9a0a6112e8b7fdcde4870be331d79
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89468708"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282306"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Az Azure Digital Twins Twin gráf lekérdezése
 
@@ -25,6 +25,15 @@ A cikk további része példákat tartalmaz a műveletek használatára.
 ## <a name="query-syntax"></a>Lekérdezési szintaxis
 
 Ez a szakasz olyan példákat tartalmaz, amelyek a lekérdezési nyelvi struktúrát illusztrálják, és a lehetséges lekérdezési műveleteket hajtják végre a [digitális Twins](concepts-twins-graph.md)-on.
+
+### <a name="show-all-existing-digital-twins"></a>Az összes meglévő digitális ikrek megjelenítése
+
+Itt látható az alapszintű lekérdezés, amely a példányban található összes digitális ikrek listáját fogja visszaadni:
+
+```sql
+SELECT *
+FROM DIGITALTWINS
+```
 
 ### <a name="select-top-items"></a>Legfelső elemek kijelölése
 
@@ -169,7 +178,7 @@ AND Room.$dtId IN ['room1', 'room2']
 
 A fenti típusú lekérdezéseket **kombinálhatja** a kombinált operátorok használatával, így több részletet is megadhat egyetlen lekérdezésben. Íme néhány további példa az összetett lekérdezésekre, amelyek egyszerre több típusú Twin-leírót kérdeznek le.
 
-| Description | Lekérdezés |
+| Leírás | Lekérdezés |
 | --- | --- |
 | A 123-as *termetű* eszközökön a kezelő szerepkört kiszolgáló MxChip-eszközöket kell visszaadnia. | `SELECT device`<br>`FROM DigitalTwins space`<br>`JOIN device RELATED space.has`<br>`WHERE space.$dtid = 'Room 123'`<br>`AND device.$metadata.model = 'dtmi:contosocom:DigitalTwins:MxChip:3'`<br>`AND has.role = 'Operator'` |
 | Olyan ikrek beszerzése, amelyekben egy nevű kapcsolat *található* egy másik, *ID1* azonosítóval | `SELECT Room`<br>`FROM DIGITIALTWINS Room`<br>`JOIN Thermostat ON Room.Contains`<br>`WHERE Thermostat.$dtId = 'id1'` |
@@ -193,7 +202,7 @@ A következő operátorok támogatottak:
 
 A következő típusú ellenőrzési és öntési függvények támogatottak:
 
-| Függvény | Leírás |
+| Funkció | Leírás |
 | -------- | ----------- |
 | IS_DEFINED | Egy logikai értéket ad vissza, amely azt jelzi, hogy a tulajdonsághoz hozzá van-e rendelve érték. Ez csak akkor támogatott, ha az érték egy egyszerű típus. Az egyszerű típusok például a következők: string, Boolean, numerikus vagy `null` . A DateTime, az Objektumtípusok és a tömbök nem támogatottak. |
 | IS_OF_MODEL | Egy logikai értéket ad vissza, amely azt jelzi, hogy a megadott iker megfelel-e a megadott modell típusának. |
@@ -206,10 +215,10 @@ A következő típusú ellenőrzési és öntési függvények támogatottak:
 
 A következő karakterlánc-függvények támogatottak:
 
-| Függvény | Leírás |
+| Funkció | Leírás |
 | -------- | ----------- |
-| STARTS_WITH (x, y) | Olyan logikai érték beolvasása, amely azt jelzi, hogy az első karakterlánc-kifejezés a másodikval kezdődik-e. |
-| ENDS_WITH (x, y) | Egy olyan logikai érték beolvasása, amely azt jelzi, hogy az első karakterlánc kifejezése a másodperctel végződik-e |
+| STARTSWITH (x, y) | Olyan logikai érték beolvasása, amely azt jelzi, hogy az első karakterlánc-kifejezés a másodikval kezdődik-e. |
+| ENDSWITH (x, y) | Egy olyan logikai érték beolvasása, amely azt jelzi, hogy az első karakterlánc kifejezése a másodperctel végződik-e |
 
 ## <a name="run-queries-with-an-api-call"></a>Lekérdezések futtatása API-hívással
 

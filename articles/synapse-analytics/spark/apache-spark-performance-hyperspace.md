@@ -10,33 +10,35 @@ ms.date: 08/12/2020
 ms.author: euang
 ms.reviewer: euang
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: 3d65a7771ff2bd8807a5f02278b0455ee103dbd6
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: f25aae64e117452cd689b68c5478e7431d1a21bf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526340"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91249365"
 ---
-# <a name="hyperspace---an-indexing-subsystem-for-apache-spark"></a>Hipertér – indexelő alrendszer a Apache Spark
+# <a name="hyperspace-an-indexing-subsystem-for-apache-spark"></a>Hipertér: Apache Spark indexelési alrendszere
 
-A hipertér lehetővé teszi, hogy Apache Spark felhasználók indexeket hozzanak létre az adatkészletekben (például CSV, JSON, Parquet stb.), és felhasználhatják őket a lehetséges lekérdezési és számítási feladatok gyorsításához.
+A hipertér lehetővé teszi, hogy Apache Spark felhasználók indexeket hozzanak létre az adatkészleteken, például a CSV, a JSON és a parketta használatával, valamint a lehetséges lekérdezési és munkaterhelés-gyorsításhoz.
 
-Ebben a cikkben kiemeljük a hipertér alapjait, hangsúlyozva az egyszerűségét, és bemutatjuk, hogy csak bárkivel hogyan használhatja azt.
+Ebben a cikkben kiemeljük a hipertér alapjait, hangsúlyozzák az egyszerűségét, és megmutatjuk, hogyan használhatók fel mindenki számára.
 
-Jogi nyilatkozat: a hipertér két esetben segít felgyorsítani a munkaterheléseket és a lekérdezéseket:
+Jogi nyilatkozat: a hipertér két esetben segít felgyorsítani a számítási feladatokat vagy lekérdezéseket:
 
-* A lekérdezések a magas szelektivitású predikátumok szűrőit tartalmazzák (például egy millió jelölt sorból álló, 100 egyező sorokat kíván kijelölni)
-* A lekérdezések olyan illesztést tartalmaznak, amely nagy mennyiségű véletlenszerű működést igényel (például egy 10 GB-os adatkészlettel rendelkező 100 GB-os adatkészlethez szeretne csatlakozni)
+* A lekérdezések a predikátumok magas szelektivitású szűrőit tartalmazzák. Előfordulhat például, hogy egy millió jelölt sorból szeretné kijelölni a 100 egyező sorokat.
+* A lekérdezések olyan illesztést tartalmaznak, amely nagy mennyiségű Shuffle-t igényel. Előfordulhat például, hogy egy 10 GB-os adatkészlettel rendelkező 100 GB-os adatkészlethez szeretne csatlakozni.
 
 Érdemes lehet körültekintően figyelni a munkaterheléseket, és meghatározni, hogy az indexelés segítséget nyújt-e eseti alapon.
 
-Ez a dokumentum a [Python](https://github.com/microsoft/hyperspace/blob/master/notebooks/python/Hitchhikers%20Guide%20to%20Hyperspace.ipynb), a [C#](https://github.com/microsoft/hyperspace/blob/master/notebooks/csharp/Hitchhikers%20Guide%20to%20Hyperspace.ipynb) és a [Scala](https://github.com/microsoft/hyperspace/blob/master/notebooks/scala/Hitchhikers%20Guide%20to%20Hyperspace.ipynb) esetében is elérhető notebook formájában.
+Ez a dokumentum a következő jegyzetfüzet-formában is elérhető: [Python](https://github.com/microsoft/hyperspace/blob/master/notebooks/python/Hitchhikers%20Guide%20to%20Hyperspace.ipynb), [C#](https://github.com/microsoft/hyperspace/blob/master/notebooks/csharp/Hitchhikers%20Guide%20to%20Hyperspace.ipynb)és [Scala](https://github.com/microsoft/hyperspace/blob/master/notebooks/scala/Hitchhikers%20Guide%20to%20Hyperspace.ipynb)
 
 ## <a name="setup"></a>Telepítés
 
-A kezdéshez indítson el egy új Spark-munkamenetet. Mivel ez a dokumentum csupán azt mutatja be, hogy milyen hipertér tud ajánlani, egy olyan konfigurációs módosítást fog végezni, amely lehetővé teszi számunkra, hogy kiemelje, milyen hipertér végez a kis adatkészleteken. Alapértelmezés szerint a Spark szórásos csatlakozást használ az illesztési lekérdezések optimalizálásához, ha az illesztés egyik oldalának adatmérete kicsi (ami az oktatóanyagban használt mintaadatok esetében is). Ezért letiltjuk a szórásos illesztéseket, így később, amikor csatlakozási lekérdezéseket futtatunk, a Spark rendezési illesztést használ. Ez elsősorban azt mutatja be, hogy a hipertér-indexek hogyan használhatók a skálázásban az összekapcsolási lekérdezések felgyorsításához.
+A kezdéshez indítson el egy új Spark-munkamenetet. Mivel ez a dokumentum csupán azt mutatja be, hogy milyen hipertér tud ajánlani, egy olyan konfigurációs módosítást fog végezni, amely lehetővé teszi számunkra, hogy kiemelje, milyen hipertér végez a kis adatkészleteken. 
 
-Az alábbi cella futtatásának kimenete egy hivatkozást mutat be a sikeresen létrehozott Spark-munkamenetre, és kinyomtatja az "-1" értéket a módosított JOIN config értékként, ami azt jelzi, hogy a szórásos csatlakozás sikeresen le van tiltva.
+Alapértelmezés szerint a Spark szórásos csatlakozást használ az illesztési lekérdezések optimalizálásához, ha az illesztés egyik oldalának adatmérete kicsi (ami az oktatóanyagban használt mintaadatok esetében is). Ezért letiltjuk a szórásos illesztéseket, így később, amikor csatlakozási lekérdezéseket futtatunk, a Spark rendezési illesztést használ. Ez elsősorban azt mutatja be, hogy a hipertér-indexek hogyan használhatók a skálázásban az összekapcsolási lekérdezések felgyorsításához.
+
+A következő cella futtatásának kimenete a sikeresen létrehozott Spark-munkamenetre mutat, és kiírja a "-1" értéket a módosított illesztési konfiguráció értékeként, ami azt jelzi, hogy a szórásos csatlakozás sikeresen le van tiltva.
 
 :::zone pivot = "programming-language-scala"
 
@@ -44,7 +46,7 @@ Az alábbi cella futtatásának kimenete egy hivatkozást mutat be a sikeresen l
 // Start your Spark session
 spark
 
-// Disable BroadcastHashJoin, so Spark will use standard SortMergeJoin. Currently hyperspace indexes utilize SortMergeJoin to speed up query.
+// Disable BroadcastHashJoin, so Spark will use standard SortMergeJoin. Currently, Hyperspace indexes utilize SortMergeJoin to speed up query.
 spark.conf.set("spark.sql.autoBroadcastJoinThreshold", -1)
 
 // Verify that BroadcastHashJoin is set correctly
@@ -57,10 +59,10 @@ println(spark.conf.get("spark.sql.autoBroadcastJoinThreshold"))
 :::zone pivot = "programming-language-python"
 
 ```python
-# Start your Spark session
+# Start your Spark session.
 spark
 
-# Disable BroadcastHashJoin, so Spark will use standard SortMergeJoin. Currently Hyperspace indexes utilize SortMergeJoin to speed up query.
+# Disable BroadcastHashJoin, so Spark will use standard SortMergeJoin. Currently, Hyperspace indexes utilize SortMergeJoin to speed up query.
 spark.conf.set("spark.sql.autoBroadcastJoinThreshold", -1)
 
 # Verify that BroadcastHashJoin is set correctly 
@@ -72,10 +74,10 @@ print(spark.conf.get("spark.sql.autoBroadcastJoinThreshold"))
 :::zone pivot = "programming-language-csharp"
 
 ```csharp
-// Disable BroadcastHashJoin, so Spark™ will use standard SortMergeJoin. Currently hyperspace indexes utilize SortMergeJoin to speed up query.
+// Disable BroadcastHashJoin, so Spark will use standard SortMergeJoin. Currently, Hyperspace indexes utilize SortMergeJoin to speed up query.
 spark.Conf().Set("spark.sql.autoBroadcastJoinThreshold", -1);
 
-// Verify that BroadcastHashJoin is set correctly 
+// Verify that BroadcastHashJoin is set correctly.
 Console.WriteLine(spark.Conf().Get("spark.sql.autoBroadcastJoinThreshold"));
 ```
 
@@ -88,13 +90,13 @@ res3: org.apache.spark.sql.SparkSession = org.apache.spark.sql.SparkSession@297e
 -1
 ```
 
-## <a name="data-preparation"></a>Adatelőkészítés
+## <a name="data-preparation"></a>Adatok előkészítése
 
-A környezet előkészítéséhez hozzon létre minta adatrekordokat, és mentse őket parketta-adatfájlként. Míg a parketta használatos illusztrációként, más formátumokat (például CSV) is használhat. A következő cellákban láthatja, hogyan hozhat létre több hipertér indexet ebben a minta adatkészletben, és hogyan teheti a Spark használatát lekérdezések futtatásakor.
+A környezet előkészítéséhez hozzon létre minta adatrekordokat, és mentse őket parketta-adatfájlként. A parketta használatos illusztrációként, de más formátumot is használhat, például CSV-t. A következő cellákban láthatja, hogyan hozhat létre több hipertér indexet ezen a minta adatkészleten, és hogyan használhatja a Sparkot a lekérdezések futtatásakor.
 
 A példában szereplő rekordok két adatkészletnek felelnek meg: részleg és alkalmazott. Az "empLocation" és a "deptLocation" útvonalat úgy kell konfigurálni, hogy a Storage-fiókban a létrehozott adatfájlok mentéséhez a kívánt helyre mutassanak.
 
-A cella alatti Futtatás kimenete az adatkészletek tartalmát jeleníti meg az adathalmazok listájaként, majd a dataFrames mutató hivatkozásokat, amelyeket a rendszer az egyes adatkészletek tartalmának a kívánt helyen való mentéséhez hozott létre.
+A következő cella futtatásának kimenete az adathalmazok tartalmát jeleníti meg az adatkészletek tartalmában, majd az egyes adatkészletek tartalmának az előnyben részesített helyen való mentéséhez létrehozott dataFrames mutató hivatkozásokat.
 
 :::zone pivot = "programming-language-scala"
 
@@ -240,9 +242,9 @@ empLocation: String = /your-path/employees.parquet
 deptLocation: String = /your-path/departments.parquet  
 ```
 
-Ellenőrizzük a fent létrehozott Parquet-fájlok tartalmát, hogy biztosan a várt rekordokat tartalmazzák a megfelelő formátumban. Később ezeket az adatfájlokat használjuk a hipertér indexek létrehozásához és a minta-lekérdezések futtatásához.
+Ellenőrizzük a létrehozott Parquet-fájlok tartalmát, hogy biztosan a várt rekordokat tartalmazzák a megfelelő formátumban. Később ezeket az adatfájlokat fogjuk használni a hipertér indexek létrehozásához és a lekérdezések futtatásához.
 
-Az alábbi cella futtatásakor a kimenet táblázatos formában jeleníti meg az alkalmazott és a részleg dataFrames sorait. 14 alkalmazottnak és 4 részlegnek kell lennie, amelyek mindegyike az előző cellában létrehozott hármasok egyikével egyező.
+A következő cella létrehozása és kimenete, amely táblázatos formában jeleníti meg az alkalmazott és a részleg dataFrames sorait. 14 alkalmazottnak és 4 részlegnek kell lennie, amelyek mindegyike az előző cellában létrehozott hármasok egyikével egyező.
 
 :::zone pivot = "programming-language-scala"
 
@@ -262,7 +264,7 @@ deptDF.show()
 
 ```python
 
-# emp_Location and dept_Location are the user defined locations above to save parquet files
+# emp_Location and dept_Location are the user-defined locations above to save parquet files
 emp_DF = spark.read.parquet(emp_Location)
 dept_DF = spark.read.parquet(dept_Location)
 
@@ -278,7 +280,7 @@ dept_DF.show()
 
 ```csharp
 
-// empLocation and deptLocation are the user defined locations above to save parquet files
+// empLocation and deptLocation are the user-defined locations above to save parquet files
 DataFrame empDF = spark.Read().Parquet(empLocation);
 DataFrame deptDF = spark.Read().Parquet(deptLocation);
 
@@ -329,18 +331,22 @@ deptDF: org.apache.spark.sql.DataFrame = [deptId: int, deptName: string ... 1 mo
 
 ## <a name="indexes"></a>Indexek
 
-A hipertér lehetővé teszi indexek létrehozását a megőrzött adatfájlokból beolvasott rekordokon. A sikeres létrehozás után az indexnek megfelelő bejegyzés kerül a hipertér metaadataiba. Ezt a metaadatokat a rendszer később a lekérdezés feldolgozásakor a Apache Spark-optimalizáló (bővítmények) használatával használja a megfelelő indexek megtalálásához és használatához.
+A hipertér lehetővé teszi indexek létrehozását a megőrzött adatfájlokból beolvasott rekordokon. A sikeres létrehozást követően az indexnek megfelelő bejegyzés kerül a hipertér metaadataiba. Ezt a metaadatokat a rendszer később a lekérdezés feldolgozásakor a Apache Spark-optimalizáló (bővítmények) használatával használja a megfelelő indexek megtalálásához és használatához.
 
-Az indexek létrehozása után több művelet is elvégezhető:
+Az indexek létrehozása után több műveletet is végrehajthat:
+
+* **Frissítés, ha az alapul szolgáló adat megváltozik.** A módosítások rögzítéséhez frissíthet egy meglévő indexet.
+* **Törölje, ha az index nem szükséges.** Elvégezheti a törlést, vagyis az indexet fizikailag nem törli, de "töröltként" van megjelölve, így a számítási feladatok már nem használhatók.
+* **Vákuum, ha már nincs szükség indexre.** A vákuum egy indexet is tartalmaz, amely az index tartalmának és a hozzájuk tartozó metaadatok fizikai törlését kényszeríti teljesen a hipertér metaadataiból.
 
 Ha az alapul szolgáló adat megváltozik, frissítheti a meglévő indexeket, hogy rögzítse azt.
 Törölje, ha az index nem szükséges, az indexet nem lehet fizikailag törölni, de "töröltként" van megjelölve, így már nem használható a számítási feladatokban.
-Vákuum, ha már nincs szükség indexre, vákuumot is használhat, amely az index tartalmának és a hozzájuk tartozó metaadatok fizikai törlését kényszeríti teljesen a hipertér metaadataiból.
+
 Az alábbi fejezetek azt mutatják be, hogyan hajthatók végre az indexek kezelési műveletei a hipertér-ben.
 
-Először importálnia kell a szükséges kódtárakat, és létre kell hoznia a hipertér egy példányát. Ezt a példányt később különböző hipertér API-k meghívására fogja használni, hogy indexeket hozzon létre a mintaadatok alapján, és módosítsa ezeket az indexeket.
+Először importálnia kell a szükséges kódtárakat, és létre kell hoznia a hipertér egy példányát. Később ezt a példányt fogja használni a különböző hipertér API-k meghívásához a mintaadatok indexek létrehozásához és az indexek módosításához.
 
-A Futtatás alatt álló cella kimenete a hipertér létrehozott példányára mutató hivatkozást mutat be.
+A következő cella futtatásának kimenete a hipertér létrehozott példányára mutató hivatkozást mutat be.
 
 :::zone pivot = "programming-language-scala"
 
@@ -388,9 +394,10 @@ hyperspace: com.microsoft.hyperspace.Hyperspace = com.microsoft.hyperspace.Hyper
 
 Hipertér index létrehozásához két adatot kell megadnia:
 
-Egy Spark-DataFrame, amely az indexelni kívánt adatokra hivatkozik.
-Egy index konfigurációs objektum: IndexConfig, amely az index nevét, indexelt és belefoglalt oszlopait határozza meg.
-Első lépésként hozzon létre három hipertér indexet a mintaadatok közül: két index a "deptIndex1" és a "deptIndex2" nevű részleg-adatkészletben, valamint egy index a "empIndex" nevű alkalmazotti adatkészletben. Az egyes indexekhez szükség van egy megfelelő IndexConfig, hogy rögzítse a nevet az indexelt és a benne foglalt oszlopok oszlopainak listájával együtt. Az alábbi cella futtatása létrehozza ezeket a indexConfigs, és a kimenete felsorolja őket.
+* Egy Spark-DataFrame, amely az indexelni kívánt adatokra hivatkozik.
+* Egy index konfigurációs objektum, a IndexConfig, amely az index nevét, valamint az index indexelt és befoglalt oszlopait határozza meg.
+
+Első lépésként hozzon létre három hipertér indexet a mintaadatok közül: két index a "deptIndex1" és a "deptIndex2" nevű részleg-adatkészletben, valamint egy index a "empIndex" nevű alkalmazotti adatkészletben. Az egyes indexekhez szükség van egy megfelelő IndexConfig, hogy rögzítse a nevet az indexelt és a benne foglalt oszlopok oszlopainak listájával együtt. A következő cella futtatása létrehozza ezeket a IndexConfigs, és megjeleníti a kimenetét.
 
 > [!Note]
 > Az index oszlop egy oszlop, amely megjelenik a szűrőkben vagy az illesztési feltételekben. A befoglalt oszlop egy olyan oszlop, amely megjelenik a Select/projektben.
@@ -403,7 +410,7 @@ FROM T
 WHERE Y = 2
 ```
 
-Az X lehet index oszlop, és az Y is szerepelhet oszlopként.
+Az X lehet index oszlop, és az Y egy belefoglalható oszlop is lehet.
 
 :::zone pivot = "programming-language-scala"
 
@@ -454,8 +461,7 @@ empIndexConfig: com.microsoft.hyperspace.index.IndexConfig = [indexName: empInde
 deptIndexConfig1: com.microsoft.hyperspace.index.IndexConfig = [indexName: deptIndex1; indexedColumns: deptid; includedColumns: deptname]  
 deptIndexConfig2: com.microsoft.hyperspace.index.IndexConfig = [indexName: deptIndex2; indexedColumns: location; includedColumns: deptname]  
 ```
-
-Most hozzon létre három indexet az index-konfigurációk használatával. Erre a célra "createIndex" parancsot kell meghívni a hipertér-példányon. Ehhez a parancshoz index-konfiguráció és az indexelni kívánt sorokat tartalmazó dataFrame szükséges. Az alábbi cella futtatása három indexet hoz létre.
+Most hozzon létre három indexet az index-konfigurációk használatával. Erre a célra "createIndex" parancsot kell meghívni a hipertér-példányon. Ehhez a parancshoz index-konfiguráció és az indexelni kívánt sorokat tartalmazó dataFrame szükséges. A következő cella futtatása három indexet hoz létre.
 
 :::zone pivot = "programming-language-scala"
 
@@ -505,14 +511,17 @@ import com.microsoft.hyperspace.index.Index
 
 ## <a name="list-indexes"></a>Indexek listázása
 
-Az alábbi kód azt mutatja be, hogyan lehet listázni az összes elérhető indexet egy hipertér-példányban. Az "indexek" API-t használja, amely a meglévő indexekkel kapcsolatos információkat adja vissza Spark-DataFrame, így további műveleteket hajthat végre. Például megnyithatja a DataFrame érvényes műveleteit a tartalom ellenőrzéséhez vagy további elemzéséhez (például adott indexek szűrése vagy csoportosítása a kívánt tulajdonság szerint).
+Az alábbi kód azt mutatja be, hogyan lehet listázni az összes elérhető indexet egy hipertér-példányban. Az "indexek" API-t használja, amely a meglévő indexekkel kapcsolatos információkat adja vissza Spark-DataFrame, így további műveleteket hajthat végre. 
 
-Az alábbi cella a DataFrame "show" műveletét használja a sorok teljes kinyomtatásához, és táblázatos formában jeleníti meg az indexek részleteit. Minden egyes indexnél megtekintheti a metaadatokban tárolt hipertér összes információt. A következő értesítést azonnal megtekintheti:
+Például megnyithatja a DataFrame érvényes műveleteit a tartalom ellenőrzéséhez vagy további elemzéséhez (például adott indexek szűrése vagy csoportosítása a kívánt tulajdonság szerint).
 
-* a "config. indexName", a "config. indexedColumns", a "config. includedColumns" és a "status. status" azok a mezők, amelyekhez a felhasználó általában hivatkozik.
-* a hipertér automatikusan létrehozza a "dfSignature"-t, és minden index esetében egyedi. A hipertér ezt az aláírást belsőleg használja az index fenntartásához és a lekérdezési időben való kihasználásához.
+A következő cella a DataFrame "show" műveletét használja a sorok teljes kinyomtatásához, és táblázatos formában jeleníti meg az indexek részleteit. Minden egyes indexnél megtekintheti a metaadatokban tárolt hipertér összes információt. A következő értesítést azonnal megtekintheti:
 
-Az alábbi kimenetben mindhárom indexnek "aktív" állapotúnak kell lennie, valamint a nevüknek, az indexelt oszlopoknak és a tartalmazott oszlopoknak meg kell egyezniük a fenti index-konfigurációkban definiált értékkel.
+* a config. indexName, a config. indexedColumns, a config. includedColumns és az status. status az a mező, amelyet a felhasználó általában hivatkozik.
+* a dfSignature automatikusan generálja a hipertér, és egyedi az egyes indexekhez. A hipertér ezt az aláírást belsőleg használja az index fenntartásához és a lekérdezési időben való kihasználásához.
+
+
+A következő kimenetben mindhárom indexnek "aktív" állapotúnak kell lennie, a nevüknek, az indexelt oszlopoknak és a tartalmazott oszlopoknak meg kell egyezniük a fenti index-konfigurációkban definiált értékekkel.
 
 :::zone pivot = "programming-language-scala"
 
@@ -554,9 +563,11 @@ Eredmények:
 
 ## <a name="delete-indexes"></a>Indexek törlése
 
-Egy meglévő indexet a "deleteIndex" API használatával és az index nevének megadásával lehet eldobni. Az index törlése egy Soft Delete (Törlés): elsősorban frissíti az index állapotát a hipertér metaadataiban az "ACTIVE" értékről a "DELETEd" értékre. Ez kizárja az eldobott indexet bármely jövőbeli lekérdezés-optimalizálásból, és a hipertér már nem veszi fel az indexet a lekérdezésekhez. A törölt indexek azonban továbbra is elérhetők maradnak (mivel ez egy Soft-delete), így az index visszaállítható, ha a felhasználó kéri.
+Egy meglévő indexet a "deleteIndex" API használatával és az index nevének megadásával lehet eldobni. Az index törlése egy Soft Delete (Törlés): elsősorban frissíti az index állapotát a hipertér metaadataiban az "ACTIVE" értékről a "DELETEd" értékre. Ez kizárja az eldobott indexet bármely jövőbeli lekérdezés-optimalizálásból, és a hipertér már nem veszi fel az indexet a lekérdezésekhez. 
 
-Az alábbi cella törli a "deptIndex2" nevű indexet, és ezt követően felsorolja a hipertér metaadatait. A kimenetnek hasonlónak kell lennie a fenti cellához a "List indexek" kifejezésnél, kivéve a "deptIndex2" tulajdonságot, amely most már "DELETEd" állapotúra változott.
+A törölt indexek azonban továbbra is elérhetők maradnak (mivel ez egy Soft-delete), így az index visszaállítható, ha a felhasználó kéri.
+
+A következő cella törli a "deptIndex2" nevű indexet, és ezt követően felsorolja a hipertér metaadatait. A kimenetnek hasonlónak kell lennie a fenti cellához a "List indexek" kifejezésnél, kivéve a "deptIndex2" tulajdonságot, amely most már "DELETEd" állapotúra változott.
 
 :::zone pivot = "programming-language-scala"
 
@@ -602,7 +613,7 @@ Eredmények:
 
 ## <a name="restore-indexes"></a>Indexek visszaállítása
 
-A "restoreIndex" API használatával visszaállíthatja a törölt indexeket. Ezzel visszahelyezi az index legújabb verzióját az aktív állapotba, és újból felhasználhatja a lekérdezésekhez. Az alábbi cella egy példát mutat be a "restoreIndex" használatára. Törli a "deptIndex1" kifejezést, és visszaállítja. A kimenet a "deleteIndex" parancs meghívása után először a "törölt" állapotba került, a "restoreIndex" hívása után pedig az "aktív" állapotra tért vissza.
+A "restoreIndex" API használatával visszaállíthatja a törölt indexeket. Ezzel visszahelyezi az index legújabb verzióját az aktív állapotba, és újból felhasználhatja a lekérdezésekhez. A következő cella egy példát mutat be a "restoreIndex" használatára. Törli a "deptIndex1" kifejezést, és visszaállítja. A kimenet a "deleteIndex" parancs meghívása után először a "törölt" állapotba került, a "restoreIndex" hívása után pedig az "aktív" állapotra tért vissza.
 
 :::zone pivot = "programming-language-scala"
 
@@ -666,9 +677,9 @@ Eredmények:
 
 ## <a name="vacuum-indexes"></a>Vákuum-indexek
 
-A "vacuumIndex" parancs használatával a törölt indexekhez teljes mértékben eltávolíthatja a fájlokat és a metaadat-bejegyzéseket. Ha elkészült, ez a művelet nem vonható vissza, mert fizikailag törli az összes index-fájlt (ezért a rendszer nehezen törölhető).
+A **vacuumIndex** parancs használatával a törölt indexek esetében teljes mértékben eltávolíthatja a fájlokat és a metaadat-bejegyzéseket. Ez a művelet nem vonható vissza. A szolgáltatás fizikailag törli az összes indexfájl-fájlt, ezért a rendszer nem törli a merevlemezt.
 
-Az alábbi cella vákuumban jeleníti meg a "deptIndex2" indexet, és a porszívózás után megjeleníti a hipertér metaadatait. A "deptIndex1" és a "empIndex" két indexhez tartozó metaadat-bejegyzéseket "aktív" állapottal kell látnia, és nincs bejegyzés a "deptIndex2" értékhez.
+A következő cella vákuumban jeleníti meg a "deptIndex2" indexet, és megjeleníti a hipertér metaadatokat a porszívózás után. A "deptIndex1" és a "empIndex" két indexhez tartozó metaadat-bejegyzéseket "aktív" állapottal kell látnia, és nincs bejegyzés a "deptIndex2" értékhez.
 
 :::zone pivot = "programming-language-scala"
 
@@ -711,13 +722,14 @@ Eredmények:
 |        empIndex|             [deptId]|             [empName]|`deptId` INT,`emp...|com.microsoft.cha...|30768c6c9b2533004...|Relation[empId#32...|       200|abfss://datasets@...|      ACTIVE|              0|
 ```
 
-## <a name="enabledisable-hyperspace"></a>Hipertér engedélyezése/letiltása
+## <a name="enable-or-disable-hyperspace"></a>Hipertér engedélyezése vagy letiltása
 
 A hipertér API-kat biztosít a Spark használatával történő indexelés engedélyezéséhez vagy letiltásához.
 
-A "enableHyperspace" parancs használatával a hipertér optimalizációs szabályai láthatóvá válnak a Spark-optimalizáló számára, és a rendszer kihasználja a meglévő hipertér indexeket a felhasználói lekérdezések optimalizálásához.
-A "disableHyperspace" parancs használatával a hipertér szabályok már nem érvényesek a lekérdezés optimalizálása során. Vegye figyelembe, hogy a hipertér letiltása nem érinti a létrehozott indexeket, mivel azok érintetlenek maradnak.
-Az alábbi cella bemutatja, hogyan használhatók ezek a parancsok a hipertér engedélyezéséhez vagy letiltásához. A kimenet egyszerűen olyan meglévő Spark-munkamenetre mutató hivatkozást mutat be, amelynek a konfigurációja frissült.
+* A **enableHyperspace** parancs használatával a hipertér optimalizálási szabályai láthatóvá válnak a Spark-optimalizáló számára, és a felhasználói lekérdezések optimalizálásához kihasználják a meglévő hipertér indexeket.
+* A **disableHyperspace** parancs használatával a hipertér szabályok már nem érvényesek a lekérdezés optimalizálása során. A hipertér letiltása nem befolyásolja a létrehozott indexeket, mert érintetlenek maradnak.
+
+A következő cella bemutatja, hogyan használhatók ezek a parancsok a hipertér engedélyezéséhez vagy letiltásához. A kimenet egy hivatkozást mutat be arra a meglévő Spark-munkamenetre, amelynek a konfigurációja frissült.
 
 :::zone pivot = "programming-language-scala"
 
@@ -770,7 +782,7 @@ res51: org.apache.spark.sql.Spark™Session = org.apache.spark.sql.SparkSession@
 
 Ahhoz, hogy a Spark használni tudja a hipertér indexeket a lekérdezések feldolgozásakor, meg kell győződnie arról, hogy a hipertér engedélyezve van.
 
-Az alábbi cella lehetővé teszi a hipertér, és létrehoz két, a DataFrames tartalmazó adatrekordokat, amelyeket példaként használhat a lekérdezések futtatásához. A rendszer minden egyes DataFrame kinyomtat néhány minta sort.
+A következő cella lehetővé teszi a hipertér, és létrehoz két, a DataFrames tartalmazó adatrekordokat, amelyeket példaként használhat a lekérdezések futtatásához. A rendszer minden egyes DataFrame kinyomtat néhány minta sort.
 
 :::zone pivot = "programming-language-scala"
 
@@ -857,11 +869,11 @@ deptDFrame: org.apache.spark.sql.DataFrame = [deptId: int, deptName: string ... 
 Jelenleg a hipertér rendelkezik olyan szabályokkal, amelyek két lekérdezési csoportra vonatkozó indexeket is kihasználnak:
 
 * Keresési vagy tartomány-kiválasztási szűrési predikátumokkal rendelkező kiválasztási lekérdezések.
-* Összekapcsolási lekérdezések összekapcsolása az esélyegyenlőségi JOIN predikátummal (azaz a következő extrákkal: illesztések).
+* Összekapcsolási lekérdezések összekapcsolása egy Esélyegyenlőségi JOIN predikátummal (azaz equijoins).
 
 ## <a name="indexes-for-accelerating-filters"></a>Indexek a gyorsuló szűrőkhöz
 
-Az első példa lekérdezés a részleg rekordjainak keresését végzi (lásd a lenti cellát). Az SQL-ben a lekérdezés a következőképpen néz ki:
+Az első példában a lekérdezés a részleg rekordjain végez keresést, ahogy az a következő cellában látható. Az SQL-ben a lekérdezés a következő példához hasonlóan néz ki:
 
 ```sql
 SELECT deptName
@@ -869,12 +881,12 @@ FROM departments
 WHERE deptId = 20
 ```
 
-Az alábbi cella futtatásának kimenete a következőket mutatja:
+A következő cella futtatási kimenete látható:
 
 * Lekérdezés eredménye, amely egyetlen részleg neve.
 * A lekérdezés futtatásához használt Spark lekérdezési terve.
 
-A lekérdezési tervben a csomag alján található "FileScan" operátor megjeleníti azt az adatforrást, amelyből a rekordokat beolvasták. A fájl helye a "deptIndex1" index legújabb verziójának elérési útját jelzi. Ez azt mutatja, hogy a lekérdezésnek és a hipertér optimalizálási szabályainak megfelelően a Spark úgy döntött, hogy futásidőben kihasználja a megfelelő indexet.
+A lekérdezési tervben a csomag alján található **FileScan** operátor azt az adatforrást jeleníti meg, ahol a rekordok beolvasva lettek. A fájl helye a "deptIndex1" index legújabb verziójának elérési útját jelzi. Ez az információ azt mutatja, hogy a lekérdezés és a hipertér optimalizálási szabályainak használatával a Spark úgy döntött, hogy futásidőben kihasználja a megfelelő indexet.
 
 :::zone pivot = "programming-language-scala"
 
@@ -954,7 +966,7 @@ Project [deptName#534]
    +- *(1) FileScan parquet [deptId#533,deptName#534] Batched: true, Format: Parquet, Location: InMemoryFileIndex[abfss://datasets@hyperspacebenchmark.dfs.core.windows.net/hyperspaceon..., PartitionFilters: [], PushedFilters: [IsNotNull(deptId), EqualTo(deptId,20)], ReadSchema: struct<deptId:int,deptName:string>
 ```
 
-A második példa egy tartomány-kiválasztási lekérdezés a részleg rekordjain. Az SQL-ben a lekérdezés a következőképpen néz ki:
+A második példa egy tartomány-kiválasztási lekérdezés a részleg rekordjain. Az SQL-ben a lekérdezés a következő példához hasonlóan néz ki:
 
 ```sql
 SELECT deptName
@@ -962,7 +974,7 @@ FROM departments
 WHERE deptId > 20
 ```
 
-Az első példához hasonlóan az alábbi cella kimenete a lekérdezési eredményeket (két részleg neve) és a lekérdezési tervet mutatja. Az adatfájl helye a FileScan operátorban azt mutatja, hogy a lekérdezés futtatásához a "deptIndex1" volt használatos.
+Az első példához hasonlóan a következő cella kimenete a lekérdezési eredményeket (két részleg neve) és a lekérdezési tervet mutatja. A **FileScan** operátorban található adatfájl helye azt mutatja, hogy a lekérdezés futtatásához a "deptIndex1" lett használva.
 
 :::zone pivot = "programming-language-scala"
 
@@ -1041,16 +1053,14 @@ Project [deptName#534]
 +- *(1) Filter (isnotnull(deptId#533) && (deptId#533 > 20))
    +- *(1) FileScan parquet [deptId#533,deptName#534] Batched: true, Format: Parquet, Location: InMemoryFileIndex[abfss://datasets@hyperspacebenchmark.dfs.core.windows.net/hyperspaceon..., PartitionFilters: [], PushedFilters: [IsNotNull(deptId), GreaterThan(deptId,20)], ReadSchema: struct<deptId:int,deptName:string>
 ```
-
-A harmadik példa egy olyan lekérdezés, amely a részleg és az alkalmazottak rekordjaihoz csatlakozik a részleg AZONOSÍTÓjában. Az egyenértékű SQL-utasítás alább látható:
+A harmadik példa egy olyan lekérdezés, amely a részleg és az alkalmazottak rekordjaihoz csatlakozik a részleg AZONOSÍTÓjában. A megfelelő SQL-utasítás a következőképpen jelenik meg:
 
 ```sql
 SELECT employees.deptId, empName, departments.deptId, deptName
 FROM   employees, departments
 WHERE  employees.deptId = departments.deptId
 ```
-
-Az alábbi cella futtatásának kimenete a lekérdezés eredményét jeleníti meg, amely a 14 alkalmazott neve, valamint az alkalmazottak osztályának neve. A lekérdezési terv is szerepel a kimenetben. Figyelje meg, hogy a két FileScan-operátor fájljának helye azt mutatja, hogy a Spark a "empIndex" és a "deptIndex1" indexeket használta a lekérdezés futtatásához.
+A következő cella futtatásának kimenete a lekérdezés eredményét jeleníti meg, amely a 14 alkalmazott neve, valamint annak a részlegnek a neve, amelyben minden alkalmazott dolgozik. A lekérdezési terv is szerepel a kimenetben. Figyelje meg, hogy a két **FileScan** -operátor fájljának helye azt mutatja, hogy a Spark a "empIndex" és a "deptIndex1" indexeket használta a lekérdezés futtatásához.
 
 :::zone pivot = "programming-language-scala"
 
@@ -1286,7 +1296,7 @@ Project [empName#528, deptName#534]
 
 ## <a name="explain-api"></a>API ismertetése
 
-Az indexek nagyszerűek, de Honnan tudhatja, hogy használatban van-e? A hipertér lehetővé teszi, hogy a felhasználók a lekérdezés futtatása előtt hasonlítsák össze az eredeti tervet és a frissített indextől függő tervet. A parancs kimenetének megjelenítéséhez lehetősége van a HTML/szöveges/konzolos mód kiválasztására.
+Az indexek nagyszerűek, de Honnan tudhatja, hogy használatban van-e? A hipertér lehetővé teszi, hogy a felhasználók a lekérdezés futtatása előtt hasonlítsák össze az eredeti tervet és a frissített indextől függő tervet. A parancs kimenetének megjelenítéséhez lehetősége van HTML-, egyszerű szöveges vagy konzolos mód kiválasztására.
 
 A következő cella egy példát mutat be HTML-sel. A Kiemelt szakasz az eredeti és a frissített csomagok közötti különbséget mutatja a használt indexek mellett.
 
@@ -1367,12 +1377,12 @@ empIndex:abfss://datasets@hyperspacebenchmark.dfs.core.windows.net/<container>/i
 
 ## <a name="refresh-indexes"></a>Indexek frissítése
 
-Ha az eredeti olyan adatmennyiséget, amelyeken egy indexet hoztak létre, akkor az index többé nem rögzíti a legutóbbi adatállapotot. A "refreshIndex" parancs használatával frissítheti az ilyen elavult indexeket. Ez azt eredményezi, hogy az index teljes mértékben újraépíthető, és a legújabb adatrekordok szerint frissíti azt (ne aggódjon, megmutatjuk, hogyan lehet az indexet fokozatosan frissíteni más jegyzetfüzetekben).
+Ha az eredeti olyan adatmennyiséget, amelyeken egy indexet hoztak létre, az index nem fogja többé rögzíteni a legutóbbi adatállapotot. A **refreshIndex** parancs használatával frissítheti az elavult indexeket. Ez a parancs azt eredményezi, hogy az index teljes mértékben újraépíthető, és a legújabb adatrekordok alapján frissíti azt. Bemutatjuk, hogyan lehet az indexet fokozatosan frissíteni más jegyzetfüzetekben.
 
-Az alábbi két cella példa erre a forgatókönyvre mutat:
+A következő két cella példát mutat be erre a forgatókönyvre:
 
-* Az első cella két további részleget helyez el az eredeti részlegek számára. Beolvassa és kinyomtatja a részlegek listáját, hogy ellenőrizze az új részlegek helyes hozzáadását. A kimenetben hat részleg látható összesen: négy régi és két új. A "refreshIndex" a "deptIndex1" frissítésének meghívása, hogy az index új részlegeket rögzítsen.
-* A második cella a tartomány kiválasztási lekérdezésének példáját futtatja. Az eredményeknek mostantól négy részleget kell tartalmazniuk: kettőt a fenti lekérdezés futtatása előtt, a kettő pedig az imént hozzáadott új részlegek közül.
+* Az első cella két további részleget helyez el az eredeti részlegek számára. Beolvassa és kinyomtatja a részlegek listáját, hogy ellenőrizze az új részlegek helyes hozzáadását. A kimenetben hat részleg látható összesen: négy régi és két új. A "deptIndex1" **refreshIndex** -frissítések meghívása, hogy az index új részlegeket rögzítsen.
+* A második cella a tartomány kiválasztási lekérdezésének példáját futtatja. Az eredményeknek most négy részleget kell tartalmazniuk: kettőt az előző lekérdezés futtatása előtt, a kettő pedig az új részlegeket is felvette.
 
 ### <a name="specific-index-refresh"></a>Adott index frissítése
 

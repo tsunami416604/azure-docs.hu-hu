@@ -1,6 +1,6 @@
 ---
 title: Fájlok feltöltése egy Media Services-fiókba .NET használatával | Microsoft Docs
-description: Megtudhatja, hogyan szerezhet be médiatartalmakat Media Servicesba eszközök létrehozásával és feltöltésével.
+description: Megtudhatja, hogyan szerezhet be médiatartalmakat Media Servicesba az eszközök .NET használatával történő létrehozásával és feltöltésével.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 51f6b40fc4cafad16ef6f6ca92fafa7ba1378c4a
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 83e9b0278e99867cafa7e633bc382e490ec273c1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89255937"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91250528"
 ---
 # <a name="upload-files-into-a-media-services-account-using-net"></a>Fájlok feltöltése Media Services-fiókba a .NET használatával
 
@@ -302,7 +302,7 @@ A következő példa a UploadFile függvényt hívja meg, és a tárolási titko
     var asset = UploadFile(@"C:\VideoFiles\BigBuckBunny.mp4", AssetCreationOptions.StorageEncrypted);
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most már kódolhatja a feltöltött adategységeket. További információ: [Encode Assets](media-services-portal-encode.md) (Adategységek kódolása).
 

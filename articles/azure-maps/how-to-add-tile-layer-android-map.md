@@ -4,16 +4,16 @@ description: Megtudhatja, hogyan adhat hozzá egy csempe réteget egy térképhe
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 04/26/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: bae1d06f1b5a96ad99d970613d957ce75a0c1393
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 905085d5b0787697d6094bd1337420ee8ae61d90
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037354"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91311088"
 ---
 # <a name="add-a-tile-layer-to-a-map-using-the-azure-maps-android-sdk"></a>Csempe réteg hozzáadása térképhez a Azure Maps Android SDK használatával
 
@@ -30,12 +30,12 @@ Egy csempe réteg tölti be a csempéket egy kiszolgálóról. Ezeket a képeket
 
 A csempe rétegbe átadott csempe URL-címének HTTP/HTTPS URL-címnek kell lennie egy TileJSON-erőforráshoz vagy egy csempe URL-sablonhoz, amely a következő paramétereket használja: 
 
-* `{x}`-A csempe X pozíciója `{y}`A és a is szükséges `{z}` .
-* `{y}`-A csempe Y pozíciója `{x}`A és a is szükséges `{z}` .
-* `{z}`– A csempe nagyítási szintje `{x}`A és a is szükséges `{y}` .
-* `{quadkey}`– Csempe quadkey-azonosítója a Bing Maps csempe rendszerelnevezési konvenciója alapján.
-* `{bbox-epsg-3857}`– Egy határolókeret karakterlánca, amely a `{west},{south},{east},{north}` EPSG 3857 térbeli hivatkozási rendszer formátumát jelöli.
-* `{subdomain}`– A altartomány értékeinek helyőrzője, ha meg van adva az altartomány értéke.
+* `{x}` -A csempe X pozíciója `{y}`A és a is szükséges `{z}` .
+* `{y}` -A csempe Y pozíciója `{x}`A és a is szükséges `{z}` .
+* `{z}` – A csempe nagyítási szintje `{x}`A és a is szükséges `{y}` .
+* `{quadkey}` – Csempe quadkey-azonosítója a Bing Maps csempe rendszerelnevezési konvenciója alapján.
+* `{bbox-epsg-3857}` – Egy határolókeret karakterlánca, amely a `{west},{south},{east},{north}` EPSG 3857 térbeli hivatkozási rendszer formátumát jelöli.
+* `{subdomain}` – A altartomány értékeinek helyőrzője, ha meg van adva az altartomány értéke.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -174,7 +174,7 @@ Ha most futtatja az alkalmazást, látnia kell egy vonalat a térképen az aláb
 
 ![Androidos Térkép sora](./media/how-to-add-tile-layer-android-map/xyz-tile-layer-android.png)</center>
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Térkép stílusainak beállításával kapcsolatos további tudnivalókért tekintse meg a következő cikket.
 

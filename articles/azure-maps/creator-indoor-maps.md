@@ -1,6 +1,6 @@
 ---
 title: Beltéri térképek használata Azure Maps Creatorben
-description: Ez a cikk a Azure Maps Creator szolgáltatásokra alkalmazandó fogalmakat ismerteti.
+description: Ez a cikk a Azure Maps Creator-szolgáltatásokra vonatkozó fogalmakat ismerteti
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 05/18/2020
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: d55a0726000a6ed55f049ac4a4146f66421a7085
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: ad1b7ae08e74f455190c44a813dde44b0b683014
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242576"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91311359"
 ---
 # <a name="creator-for-indoor-maps"></a>A beltéri térképek létrehozója
 
@@ -65,7 +65,7 @@ A vektoros adatok mellett a tileset metaadatokat biztosít a Térkép renderelé
 
 Miután létrejött a tileset, azt a [Render V2 szolgáltatás](#render-v2-service)kérheti le.
 
-Ha egy tileset elavulttá válik, és már nem hasznos, törölheti a tileset. A tilesets törlésével kapcsolatos további információkért lásd az [adatkarbantartást](#data-maintenance)ismertető témakört.
+Ha egy tileset elavulttá válik, és már nem hasznos, törölheti a tileset. A tilesets törlésével kapcsolatos további információkért lásd az  [adatkarbantartást](#data-maintenance)ismertető témakört.
 
 >[!NOTE]
 >A tileset független a létrehozott adatkészlettől. Ha tilesets hoz létre egy adatkészletből, majd később frissíti az adatkészletet, akkor a tilesets nem frissül. Az adatkészlet változásainak tükrözéséhez új tilesets kell létrehoznia. Hasonlóképpen, ha töröl egy tileset, az adatkészlet nem lesz hatással.

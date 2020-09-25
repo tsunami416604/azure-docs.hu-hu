@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 989496885445a8a0a8d3bbc1a789975a2875c6e0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 2aed3ea48935a62d68f739594a265649a2e1292d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90939912"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91311529"
 ---
 # <a name="create-sql-managed-instance---azure-arc-using-azure-data-studio"></a>SQL felügyelt példány létrehozása – Azure arc Azure Data Studio használatával
 
@@ -48,7 +48,8 @@ Logged in successfully to `https://10.0.0.4:30080` in namespace `arc`. Setting a
 - Azure Data Studio elindítása
 - A kapcsolatok lapon kattintson a bal felső sarokban található három pontra, és válassza az "új központi telepítés" lehetőséget.
 - A központi telepítési lehetőségek közül válassza az **Azure SQL felügyelt példány – Azure arc** lehetőséget. 
-  > **Megjegyzés:** Előfordulhat, hogy a rendszer arra kéri, hogy telepítse a azdata CLI-t, ha az jelenleg nincs telepítve.
+  > [!NOTE]
+  > Előfordulhat, hogy a rendszer arra kéri, hogy telepítse a azdata CLI-t, ha az jelenleg nincs telepítve.
 - Fogadja el az adatvédelmi és a licencfeltételeket, majd kattintson a lenti **kijelölés** elemre.
 
 

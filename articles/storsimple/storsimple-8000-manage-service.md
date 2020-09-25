@@ -1,6 +1,6 @@
 ---
 title: A StorSimple Eszközkezelő szolgáltatás üzembe helyezése az Azure-ban | Microsoft Docs
-description: A cikk azt ismerteti, hogyan lehet létrehozni és törölni a StorSimple Eszközkezelő szolgáltatást a Azure Portalban, és ismerteti a szolgáltatás regisztrációs kulcsának kezelését.
+description: Ismerje meg a szolgáltatás létrehozásához, törléséhez, áttelepítéséhez és a szolgáltatás regisztrációs kulcsának felügyeletéhez szükséges lépéseket.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 1e75acc03209fdd7e613801c9152f24aaecfa6de
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 73373f788a4a87a36a800d69ffcdc646f4cd2084
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847116"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91249552"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>A StorSimple Eszközkezelő szolgáltatás üzembe helyezése a StorSimple 8000 Series-eszközökön
 
@@ -177,12 +177,12 @@ Hajtsa végre a következő lépéseket a szolgáltatás adattitkosításának f
 
 #### <a name="to-update-the-service-data-encryption-key-on-physical-devices"></a>A szolgáltatásban tárolt adattitkosítási kulcs frissítése fizikai eszközökön
 1. A-konzolhoz való kapcsolódáshoz használja a Windows PowerShell StorSimple-bővítménye. Válassza az 1. lehetőséget a teljes hozzáféréssel való bejelentkezéshez.
-2. A parancssorba írja be a következőt:`Invoke-HcsmServiceDataEncryptionKeyChange – ServiceDataEncryptionKey`
+2. A parancssorba írja be a következőt:  `Invoke-HcsmServiceDataEncryptionKeyChange – ServiceDataEncryptionKey`
 3. Adja meg a szolgáltatás adattitkosítási kulcsának [módosítását a 2. lépés: Windows PowerShell StorSimple-bővítménye használata című témakörben](#to-initiate-the-service-data-encryption-key-change)leírtak szerint.
 
 #### <a name="to-update-the-service-data-encryption-key-on-all-the-80108020-cloud-appliances"></a>A szolgáltatásban tárolt adattitkosítási kulcs frissítése a 8010/8020-es felhőalapú készülékeken
 1. Töltse le és állítsa be [Update-CloudApplianceServiceEncryptionKey.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Update-CloudApplianceServiceEncryptionKey.ps1) PowerShell-szkriptet. 
-2. Nyissa meg a PowerShellt, és a parancssorba írja be a következőt:`Update-CloudApplianceServiceEncryptionKey.ps1 -SubscriptionId [subscription] -TenantId [tenantid] -ResourceGroupName [resource group] -ManagerName [device manager]`
+2. Nyissa meg a PowerShellt, és a parancssorba írja be a következőt:  `Update-CloudApplianceServiceEncryptionKey.ps1 -SubscriptionId [subscription] -TenantId [tenantid] -ResourceGroupName [resource group] -ManagerName [device manager]`
 
 Ez a szkript gondoskodik arról, hogy a Service-adattitkosítási kulcs az Eszközkezelőben az összes 8010/8020 felhőalapú készüléken be legyen állítva.
 
@@ -200,7 +200,7 @@ A Azure Portal csak a 5,0-es vagy újabb frissítést futtató StorSimple-eszkö
 | Kötet létrehozása, módosítása és törlése                                                                                             | No             |
 | Biztonsági mentési szabályzat létrehozása, módosítása és törlése                                                                                      | No             |
 | Manuális biztonsági mentés készítése                                                                                                            | No             |
-| Ütemezett biztonsági mentés készítése                                                                                                         | Nem értelmezhető |
+| Ütemezett biztonsági mentés készítése                                                                                                         | Nem alkalmazható |
 | Visszaállítás egy biztonságimásolat                                                                                                        | No             |
 | Klónozás egy 3,0-es vagy újabb frissítést futtató eszközre <br> A forrásoldali eszköz a 3,0-es frissítés előtti verziót futtatja.                                | Yes            |
 | Klónozás egy, a 3,0-es frissítés előtti verziót futtató eszközre                                                                          | No             |

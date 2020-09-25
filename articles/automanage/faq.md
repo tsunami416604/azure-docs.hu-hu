@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: troubleshooting
 ms.date: 09/04/2020
 ms.author: deanwe
-ms.openlocfilehash: ed97f7861f5dd959fd41ac22b4e497f492dbc3a3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: fa24c0db398c4c799d218ff5e8ec8e3d3e321742
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90940173"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91311546"
 ---
 # <a name="frequently-asked-questions-for-azure-automanage-for-vms"></a>Gyakori kérdések az Azure-beli automanage virtuális gépekről
 
@@ -36,7 +36,9 @@ Az alábbi előfeltételek az Azure automanage szolgáltatás engedélyezéséne
 
 **Milyen RBAC engedélyre van szükség az automanage engedélyezéséhez?**
 
-A felhasználóknak tulajdonosi szerepkörrel kell rendelkezniük. Azt is megteheti, hogy a felhasználók a felhasználói hozzáférés rendszergazdai szerepkörrel együtt vehetik igénybe a közreműködő szerepkört az autofelügyelet alkalmazásához.
+Ha egy meglévő automanage-fiókkal rendelkező virtuális gépen engedélyezi az automanage-alapú felügyeletet, akkor közreműködői szerepkörrel kell rendelkeznie ahhoz az erőforráscsoporthoz, amelyben a virtuális gép található. 
+
+Ha a engedélyezésekor új automanage-fiókot használ, a felhasználóknak vagy a tulajdonos szerepkörrel kell rendelkezniük, vagy közreműködői + felhasználói hozzáférés rendszergazdai szerepkörrel kell rendelkezniük az előfizetéshez.
 
 
 **Mely régiók támogatottak?**
@@ -82,6 +84,11 @@ Igen, van egy beépített szabályzatunk, amely automatikusan alkalmazza az auto
 **Mi az az automanage Account?**
 
 Az automatikus felügyelet fiók egy MSI (Managed Service Identity), amely biztosítja a biztonsági környezetet, illetve azt az identitást, amely alatt az automatizált műveletek történnek.
+
+
+**Az automanage engedélyezése esetén a kiválasztott virtuális gép (ek) mellett további virtuális gépekre is hatással van?**
+
+Ha a virtuális gép egy meglévő Log Analytics-munkaterülethez van csatolva, a következő megoldások alkalmazásával fogjuk felhasználni a munkaterületet: Change Tracking, leltár és Update Management. Az adott munkaterülethez csatlakozó összes virtuális gépnek engedélyezve lesznek ezek a megoldások. 
 
 
 **Módosíthatom a virtuális gép konfigurációs profilját?**

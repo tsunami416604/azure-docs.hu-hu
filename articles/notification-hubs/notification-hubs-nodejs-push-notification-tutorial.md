@@ -17,13 +17,13 @@ ms.date: 04/29/2020
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.custom: devx-track-javascript
-ms.openlocfilehash: d9b914c631c829c2e3dc71940a171cdb3dc81960
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.custom: devx-track-js
+ms.openlocfilehash: 34962686ae36764a6dc16b164e91004be9ef038d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88077492"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91250419"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>Leküldéses értesítések küldése az Azure Notification Hubs és Node.js
 
@@ -96,10 +96,10 @@ Szerezze be a `connectionstring` [Azure Portal] a kapcsolatok értékét a köve
 
 Az `NotificationHubService` objektum a következő objektum-példányokat teszi elérhetővé a leküldéses értesítések adott eszközökre és alkalmazásokba történő küldéséhez:
 
-- **Android** – a `GcmService` következő helyen található objektum használata:`notificationHubService.gcm`
-- **iOS** – használja az `ApnsService` objektumot, amely a következő címen érhető el:`notificationHubService.apns`
-- **Windows Phone-telefon** – használja a `MpnsService` következő helyen elérhető objektumot:`notificationHubService.mpns`
-- **Univerzális Windows-platform** – használja a `WnsService` következő helyen elérhető objektumot:`notificationHubService.wns`
+- **Android** – a `GcmService` következő helyen található objektum használata: `notificationHubService.gcm`
+- **iOS** – használja az `ApnsService` objektumot, amely a következő címen érhető el: `notificationHubService.apns`
+- **Windows Phone-telefon** – használja a `MpnsService` következő helyen elérhető objektumot: `notificationHubService.mpns`
+- **Univerzális Windows-platform** – használja a `WnsService` következő helyen elérhető objektumot: `notificationHubService.wns`
 
 ### <a name="how-to-send-push-notifications-to-android-applications"></a>Útmutató: leküldéses értesítések küldése Android-alkalmazásokba
 
@@ -155,7 +155,7 @@ Az `MpnsService` objektum olyan `send` metódust biztosít, amellyel leküldése
 
 - **Címkék** – a címke azonosítója. Ha nincs megadva címke, a rendszer az értesítést az összes ügyfélnek küldi el.
 - **Hasznos** adatok – az üzenet XML-adattartalma.
-- **TargetName**  -  TargetName `toast` bejelentési értesítésekhez. `token`csempe értesítéseihez.
+- **TargetName**  -  TargetName `toast` bejelentési értesítésekhez. `token` csempe értesítéseihez.
 - **NotificationClass** – az értesítés prioritása. Az érvényes értékekhez tekintse meg a [kiszolgálói dokumentum leküldéses értesítéseinek http-](/previous-versions/windows/xna/bb200104(v=xnagamestudio.41)) **fejléc elemei** című szakaszát.
 - **Beállítások** – nem kötelező kérelmek fejléce.
 - **Visszahívás** – a visszahívási függvény.

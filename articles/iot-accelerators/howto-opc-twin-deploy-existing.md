@@ -8,14 +8,17 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: b971ec13c71ccfd7d28ae6987593d09201b9b764
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a4d005b3a4712cfff0321e7a16f49c0e882cc9e0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73824121"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282119"
 ---
 # <a name="deploy-opc-twin-to-an-existing-project"></a>Az OPC Twin üzembe helyezése egy meglévő projektben
+
+> [!IMPORTANT]
+> A cikk frissítését követően tekintse meg az [Azure Industrial IoT](https://azure.github.io/Industrial-IoT/) a legfrissebb tartalomhoz című cikket.
 
 Az OPC Twin modul IoT Edge fut, és több peremhálózati szolgáltatást biztosít az OPC Twin és a Registry szolgáltatásokhoz.
 
@@ -137,7 +140,7 @@ A HRE-bérlőt használja.
 -credentials
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megtanulta, hogyan telepíthet OPC Twin-et egy meglévő projektbe, itt látható a következő lépés:
 

@@ -4,19 +4,19 @@ description: Azure Security benchmark v2 – incidens válasza
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/13/2020
+ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 2dbdb1af139472d5c7f4537399d434e045bb05cb
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: 172607a7f8f036bbfb68e8d15e77b2a3e3fb5377
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90059291"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326388"
 ---
-# <a name="security-control-incident-response"></a>Biztonsági ellenőrzés: incidens válasza
+# <a name="security-control-v2-incident-response"></a>Security Control v2: incidens válasza
 
-Az incidensek válasza az incidensek életciklusának előkészítését, észlelését és elemzését, a tárolást és az incidens utáni tevékenységeket fedi le. Ez magában foglalja az Azure-szolgáltatások, például a Azure Security Center és a Sentinel használatát az incidensek reagálási folyamatának automatizálásához.
+Az incidensekre adott válasz az incidensek életciklusának előkészítését, észlelését és elemzését, a tárolást és az incidens utáni tevékenységeket fedi le. Ez magában foglalja az Azure-szolgáltatások, például a Azure Security Center és a Sentinel használatát az incidensek reagálási folyamatának automatizálásához.
 
 ## <a name="ir-1-preparation--update-incident-response-process-for-azure"></a>IR-1: előkészítés – az incidensek frissítési folyamatának frissítése az Azure-ban
 
@@ -28,13 +28,13 @@ Győződjön meg arról, hogy a szervezetnek vannak folyamatai a biztonsági inc
 
 - [A biztonság megvalósítása a nagyvállalati környezetben](https://aka.ms/AzSec4)
 
-- [Incidens-válasz referenciájának útmutatója](https://aka.ms/IRRG)
+- [Incidens-válasz referenciájának útmutatója](/microsoft-365/downloads/IR-Reference-Guide.pdf)
 
 **Felelősség**: ügyfél
 
-**Ügyfelek biztonsági résztvevői**:
+**Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Biztonsági műveletek (SecOps)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Biztonsági műveletek](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [Incidens előkészítése](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 
@@ -52,9 +52,9 @@ Biztonsági incidensek elérhetőségi adatainak beállítása a Azure Security 
 
 **Felelősség**: ügyfél
 
-**Ügyfelek biztonsági résztvevői**:
+**Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Biztonsági műveletek (SecOps)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Biztonsági műveletek](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [Incidens előkészítése](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 
@@ -78,9 +78,9 @@ A Azure Security Center-riasztások és-javaslatok exportálásával az Exportá
 
 **Felelősség**: ügyfél
 
-**Ügyfelek biztonsági résztvevői**:
+**Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Biztonsági műveletek (SecOps)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Biztonsági műveletek](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [Incidens előkészítése](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 
@@ -92,17 +92,19 @@ A Azure Security Center-riasztások és-javaslatok exportálásával az Exportá
 |--|--|--|--|
 | IR-4 | 19 | IR-4 |
 
-Győződjön meg arról, hogy az elemzők különböző adatforrásokat tudnak lekérdezni és használni a lehetséges incidensek kivizsgálásakor, így teljes körű képet kaphat arról, hogy mi történt. Győződjön meg arról, hogy az elemzések és a megtanulások rögzítése más elemzők számára és a későbbi korábbi referenciák szerint történik. 
+Győződjön meg arról, hogy az elemzők különböző adatforrásokat tudnak lekérdezni és használni a lehetséges incidensek kivizsgálásakor, így teljes körű képet kaphat arról, hogy mi történt. Különböző naplókat kell gyűjteni a lehetséges támadók tevékenységének nyomon követéséhez a támadási láncon belül a vak foltok elkerülése érdekében.  Gondoskodjon arról is, hogy az elemzések és a megszerzett ismeretek rögzítése más elemzők és a későbbi korábbi referenciák esetében is megtörténjen.  
 
 A vizsgálathoz használt adatforrások közé tartoznak azok a központi naplózási források, amelyeket a rendszer már gyűjt a hatókörbeli szolgáltatásokból és a futó rendszerekről, de a következőket is tartalmazhatja:
 
-Hálózati adatok – hálózati biztonsági csoportok folyamatábrája, Azure Network Watcher és Azure Monitor a hálózati folyamat naplói és egyéb elemzési információk rögzítésére. Futó rendszerek pillanatképei: 
+- Hálózati adatok – hálózati biztonsági csoportok folyamatábrája, Azure Network Watcher és Azure Monitor a hálózati folyamat naplói és egyéb elemzési információk rögzítésére. 
 
--   Az Azure-beli virtuális gép pillanatkép-funkciója segítségével pillanatkép készíthető a futó rendszer lemezéről. 
+- Futó rendszerek pillanatképei: 
 
--   A futó rendszer memóriájának pillanatképének létrehozásához használja az operációs rendszer natív memóriaképének képességét.
+    - Az Azure-beli virtuális gép pillanatkép-funkciója segítségével pillanatkép készíthető a futó rendszer lemezéről. 
 
--   Használja az Azure-szolgáltatások pillanatkép-szolgáltatását, vagy az Ön szoftverének saját funkciója a futó rendszerek pillanatképének létrehozásához.
+    - A futó rendszer memóriájának pillanatképének létrehozásához használja az operációs rendszer natív memóriaképének képességét.
+
+    - Használja az Azure-szolgáltatások pillanatkép-szolgáltatását, vagy az Ön szoftverének saját funkciója a futó rendszerek pillanatképének létrehozásához.
 
 Az Azure Sentinel széles körű adatelemzést tesz lehetővé gyakorlatilag bármely naplózási forrás és egy eseti felügyeleti portál között az incidensek teljes életciklusának kezeléséhez. A nyomozás során felmerülő hírszerzési információk követési és jelentéskészítési célokra is társíthatók. 
 
@@ -116,9 +118,9 @@ Az Azure Sentinel széles körű adatelemzést tesz lehetővé gyakorlatilag bá
 
 **Felelősség**: ügyfél
 
-**Ügyfelek biztonsági résztvevői**:
+**Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Biztonsági műveletek (SecOps)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Biztonsági műveletek](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [Incidens előkészítése](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 
@@ -134,7 +136,7 @@ Adja meg a kontextust az elemzők számára, amelyeken a riasztás súlyossága 
 
 A Azure Security Center az egyes riasztásokhoz súlyosságot rendel, így rangsorolhatja, hogy a rendszer mely riasztásokat vizsgálja meg először. A súlyosság azon alapul, hogy az Security Center milyen mértékben szerepel a riasztás kibocsátásához használt elemzésben vagy elemzésben, valamint azt a megbízhatósági szintet, amely a riasztáshoz vezető tevékenység mögött rosszindulatú szándékú volt.
 
-Emellett megadhatja a címkéket használó előfizetéseket, és létrehozhat egy elnevezési rendszert az Azure-erőforrások azonosításához és kategorizálásához, különösen a bizalmas adatok feldolgozásához.  Az Ön felelőssége, hogy rangsorolja a riasztások szervizelését az Azure-erőforrások és-környezet kritikus jellemzői alapján, ahol az incidens történt.
+Emellett a címkék használatával megjelölheti az erőforrásokat, és létrehozhat egy elnevezési rendszert az Azure-erőforrások azonosítására és kategorizálására, különösen a bizalmas adatok feldolgozására.  Az Ön felelőssége, hogy rangsorolja a riasztások szervizelését az Azure-erőforrások és-környezet kritikus jellemzői alapján, ahol az incidens történt.
 
 - [Biztonsági riasztások az Azure Security Centerben](../../security-center/security-center-alerts-overview.md)
 
@@ -142,9 +144,9 @@ Emellett megadhatja a címkéket használó előfizetéseket, és létrehozhat e
 
 **Felelősség**: ügyfél
 
-**Ügyfelek biztonsági résztvevői**:
+**Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Biztonsági műveletek (SecOps)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Biztonsági műveletek](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [Incidens előkészítése](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 
@@ -166,9 +168,9 @@ Automatizálja a manuális ismétlődő feladatokat a válaszidő felgyorsítás
 
 **Felelősség**: ügyfél
 
-**Ügyfelek biztonsági résztvevői**:
+**Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Biztonsági műveletek (SecOps)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Biztonsági műveletek](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [Incidens előkészítése](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 
