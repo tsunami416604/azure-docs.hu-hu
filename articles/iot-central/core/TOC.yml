@@ -109,7 +109,7 @@
           href: howto-run-a-job.md
     - name: Átalakítás
       items:
-        - name: Adatok exportálása felhőbeli célhelyekre (előzetes verzió)
+        - name: Adatok exportálása felhőbeli célhelyekre
           href: howto-export-data.md
         - name: Adatok exportálása felhőbeli célhelyekre – (örökölt)
           href: howto-export-data-legacy.md

@@ -70,7 +70,7 @@
     - name: Inaktív adatok titkosítása
       href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Titkosítás inaktív állapotban ügyfél által felügyelt kulcsokkal
-      href: ../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+      href: ../common/customer-managed-keys-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Méretezhetőségi és teljesítménycélok
       href: storage-files-scale-targets.md
     - name: Megfelelőségi ajánlatok
@@ -243,18 +243,16 @@
           items:
             - name: A fiók titkosításikulcs-modelljének ellenőrzése
               href: ../common/storage-encryption-key-model-get.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-            - name: Ügyfél által kezelt titkosítási kulcsok konfigurálása
+            - name: Ügyfél által felügyelt kulcsokkal végzett titkosítás konfigurálása
               items:
-                - name: Portál
-                  href: ../common/storage-encryption-keys-portal.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-                - name: PowerShell
-                  href: ../common/storage-encryption-keys-powershell.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-                - name: Azure CLI
-                  href: ../common/storage-encryption-keys-cli.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Infrastruktúra titkosításának engedélyezése a tárfiókban
+                - name: Ügyfél által felügyelt kulcsok tárolása egy kulcstartóban
+                  href: ../common/customer-managed-keys-configure-key-vault.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+                - name: Ügyfél által felügyelt kulcsok tárolása egy felügyelt HSM-ben
+                  href: ../common/customer-managed-keys-configure-key-vault-hsm.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: Infrastruktúra titkosításának engedélyezése a fiókban
           href: ../common/infrastructure-encryption-enable.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Speciális fenyegetésvédelem
-          href: ../common/storage-advanced-threat-protection.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: Az Azure Defender konfigurálása veszélyforrások elleni védelem céljából
+          href: ../common/azure-defender-storage-configure.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: Tűzfalak és virtuális hálózatok konfigurálása
           href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: Biztonságos átvitel megkövetelése

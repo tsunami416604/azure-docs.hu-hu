@@ -165,18 +165,24 @@
           href: directory-manage-roles-portal.md
         - name: Egyéni szerepkörök
           items:
-            - name: Egyéni szerepkörök
+            - name: Egyéni szerepkörök áttekintése
               href: roles-custom-overview.md
             - name: Egyéni szerepkör létrehozása
               href: roles-create-custom.md
             - name: Egyéni szerepkör-hozzárendelések megtekintése
               href: roles-view-assignments.md
-            - name: Szerepkörök hozzárendelése az Azure AD felügyeleti központjában
+            - name: Egyéni szerepkörök hozzárendelése az Azure Portalon
               href: ../fundamentals/active-directory-users-assign-role-azure-portal.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context
             - name: Egyéni szerepkörök hozzárendelése a PowerShellben
               href: roles-assign-powershell.md
+            - name: Egyéni szerepkörök hozzárendelése vállalati alkalmazásokhoz
+              href: custom-enterprise-apps.md
             - name: Egyéni szerepkörengedélyek
-              href: roles-custom-available-permissions.md
+              items:
+                - name: Alkalmazásregisztráció engedélyei
+                  href: roles-custom-available-permissions.md
+                - name: Nagyvállalati alkalmazás engedélyei
+                  href: custom-enterprise-app-permissions.md
             - name: Alkalmazás rendszergazdai engedélyeinek delegálása
               href: roles-delegate-app-roles.md
         - name: Csoportok használata szerepkör-hozzárendelések kezeléséhez

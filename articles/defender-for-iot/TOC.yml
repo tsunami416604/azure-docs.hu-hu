@@ -1,0 +1,125 @@
+- name: Az IoT-hez készült Azure Defender dokumentációja
+  href: index.yml
+- name: Áttekintés
+  href: overview.md
+  items:
+    - name: Megoldásarchitektúra
+      href: architecture.md
+    - name: Az Azure RTOS biztonsági moduljai
+      href: iot-security-azure-rtos.md
+    - name: Biztonsági ügynökök
+      href: security-agent-architecture.md
+    - name: Biztonsági Edge-modul
+      href: security-edge-architecture.md
+    - name: A szolgáltatás előfeltételei
+      href: service-prerequisites.md
+    - name: Bevezetés az Azure Defender for IoT használatába
+      href: getting-started.md
+      items:
+        - name: IoT Hub
+          href: iot-hub-integration.md
+        - name: Biztonsági ügynökök
+          href: security-agents.md
+- name: Rövid útmutatók
+  expanded: true
+  items:
+    - name: Az Azure RTOS biztonsági moduljának konfigurálása
+      href: quickstart-azure-rtos-security-module.md
+    - name: Az Azure Defender for IoT előkészítése az IoT Hubban
+      href: quickstart-onboard-iot-hub.md
+    - name: A megoldás konfigurálása
+      href: quickstart-configure-your-solution.md
+    - name: Azure Defender for IoT-ikermodul létrehozása
+      href: quickstart-create-security-twin.md
+    - name: Biztonsági javaslatok vizsgálata
+      href: quickstart-investigate-security-recommendations.md
+    - name: Egyéni biztonsági riasztások létrehozása
+      href: quickstart-create-custom-alerts.md
+    - name: Biztonsági riasztások vizsgálata
+      href: quickstart-investigate-security-alerts.md
+- name: Alapelvek
+  items:
+    - name: Az Azure RTOS biztonsági moduljai
+      items:
+        - name: Az Azure RTOS biztonsági moduljának bemutatása
+          href: concept-rtos-security-module.md
+        - name: Az Azure RTOS biztonsági moduljával kapcsolatosa riasztások és javaslatok
+          href: concept-rtos-security-alerts-recommendations.md
+    - name: Biztonsági ügynök hitelesítése
+      href: concept-security-agent-authentication-methods.md
+    - name: Biztonsági modul
+      href: concept-security-module.md
+    - name: Biztonsági riasztások
+      href: concept-security-alerts.md
+    - name: Testreszabható biztonsági riasztások
+      href: concept-customizable-security-alerts.md
+    - name: Biztonsági javaslatok
+      href: concept-recommendations.md
+    - name: Alapkonfiguráció
+      href: concept-baseline.md
+    - name: Eseményösszesítés
+      href: event-aggregation.md
+    - name: Díjszabás és kapcsolódó költségek
+      href: concept-pricing.md
+- name: Útmutatók
+  items:
+    - name: Az Azure RTOS biztonsági moduljának használata
+      href: how-to-azure-rtos-security-module.md
+    - name: Melyik ügynököt telepítsem?
+      items:
+        - name: Üzembe helyezendő ügynök kiválasztása
+          href: how-to-deploy-agent.md
+        - name: C#-alapú biztonsági ügynök üzembe helyezése Windows-eszközön
+          href: how-to-deploy-windows-cs.md
+        - name: C#-alapú biztonsági ügynök üzembe helyezése Linux-eszközön
+          href: how-to-deploy-linux-cs.md
+        - name: C-alapú biztonsági ügynök üzembe helyezése Linux-eszközön
+          href: how-to-deploy-linux-c.md
+    - name: Biztonsági ügynök hibaelhárítása
+      items:
+        - name: Az Azure Defender for IoT linuxos biztonsági ügynökének hibaelhárítása
+          href: troubleshoot-agent.md
+        - name: Helyi konfiguráció – C
+          href: azure-iot-security-local-configuration-c.md
+        - name: Helyi konfiguráció – C#
+          href: azure-iot-security-local-configuration-csharp.md
+    - name: Biztonsági Edge-modul üzembe helyezése
+      href: how-to-deploy-edge.md
+    - name: Biztonsági ügynökök konfigurálása
+      href: how-to-agent-configuration.md
+    - name: Saját biztonsági üzenetek küldése
+      href: how-to-send-security-messages.md
+    - name: Hozzáférés a nyers biztonsági adatokhoz
+      href: how-to-security-data-access.md
+    - name: Eszköz vizsgálata
+      href: how-to-investigate-device.md
+    - name: Csatlakozás az Azure Sentinelhez
+      href: how-to-configure-with-sentinel.md
+    - name: A megoldás testreszabása
+      href: how-to-customize-solution.md
+- name: Hivatkozások
+  items:
+    - name: Az Azure RTOS biztonsági moduljának API-ja
+      href: azure-rtos-security-module-api.md
+    - name: Gyakori kérdések
+      href: resources-frequently-asked-questions.md
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
+- name: További források
+  items:
+    - name: Fejlessze a biztonsági készségeit a Microsoft Learnnel
+      href: 'https://docs.microsoft.com/learn/browse/?term=securityS&terms=securityS'
+    - name: Az Azure Security Center dokumentációja
+      href: 'https://docs.microsoft.com/azure/security-center/'
+    - name: Az Azure biztonsági dokumentációja
+      href: 'https://docs.microsoft.com/azure/security/'
+    - name: Azure RTOS biztonsági modul a Stack Overflow-n
+      href: 'https://stackoverflow.com/questions/tagged/azure-rtos+azure-iot-security-module'
+    - name: 'Azure IoT biztonsági, adatvédelmi és megfelelőségi blog'
+      href: 'https://techcommunity.microsoft.com/t5/iot-security/bd-p/IoTSecurity'
+    - name: Régiónkénti rendelkezésre állás
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/security-center/'
+    - name: Videók
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=security-center&service=internet-of-things&page=1&sort=newest'

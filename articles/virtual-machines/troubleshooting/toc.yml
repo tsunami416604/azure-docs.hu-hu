@@ -234,6 +234,12 @@
           items:
             - name: A PerfInsights használata
               href: how-to-use-perfinsights-linux.md
+- name: A Shared Image Gallery hibaelhárítása
+  items:
+    - name: A Shared Image Gallery hibaelhárítása Windowson
+      href: ../windows/troubleshooting-shared-images.md
+    - name: A Shared Image Gallery hibaelhárítása Linuxon
+      href: ../linux/troubleshooting-shared-images.md
 - name: Virtuálisgép-bővítményekkel kapcsolatos problémák
   items:
     - name: Az Azure-bővítmények áttekintése

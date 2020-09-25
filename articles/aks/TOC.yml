@@ -132,6 +132,8 @@
       items:
         - name: AKS-fürt méretezése
           href: scale-cluster.md
+        - name: AKS-fürt leállítása (előzetes verzió)
+          href: start-stop-cluster.md
         - name: AKS-fürt frissítése
           href: upgrade-cluster.md
         - name: Használati üzemidőre vonatkozó SLA
@@ -307,8 +309,10 @@
           href: /virtualization/windowscontainers/manage-docker/optimize-windows-dockerfile?context=/azure/aks/context/aks-context
     - name: Alkalmazások fejlesztése és futtatása
       items:
-        - name: Helyi folyamat és Kubernetes használata a Visual Studio Code-dal (előzetes verzió)
-          href: 'https://code.visualstudio.com/docs/containers/local-process-kubernetes'
+        - name: A Bridge to Kubernetes használata a Visual Studio Code-dal
+          href: 'https://code.visualstudio.com/docs/containers/bridge-to-kubernetes'
+        - name: A Bridge to Kubernetes használata a Visual Studióval
+          href: /visualstudio/containers/bridge-to-kubernetes
         - name: Meglévő alkalmazások telepítése Helm használatával
           href: kubernetes-helm.md
         - name: Az OpenFaaS használata

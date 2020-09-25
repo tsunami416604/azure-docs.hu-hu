@@ -1,0 +1,88 @@
+- name: Az Azure Communication Services dokumentációja
+  href: index.yml
+- name: Áttekintés
+  expanded: true
+  items:
+    - name: Az Azure Communication Services bemutatása
+      href: overview.md
+- name: Rövid útmutatók
+  expanded: true
+  items:
+    - name: Communication Services-erőforrás létrehozása
+      href: quickstarts/create-communication-resource.md
+    - name: Hozzáférési jogkivonatok létrehozása és kezelése
+      href: quickstarts/access-tokens.md
+    - name: Csevegés
+      items:
+        - name: Csevegés hozzáadása az alkalmazáshoz
+          href: quickstarts/chat/get-started.md
+    - name: Telefonos funkciók és SMS
+      items:
+        - name: Telefonszám lekérése
+          href: quickstarts/telephony-sms/get-phone-number.md
+        - name: SMS küldése
+          href: quickstarts/telephony-sms/send.md
+        - name: SMS-események kezelése
+          href: quickstarts/telephony-sms/handle-sms-events.md
+    - name: Hang- és videóhívás
+      items:
+        - name: Hanghívás hozzáadása az alkalmazáshoz
+          href: quickstarts/voice-video-calling/getting-started-with-calling.md
+        - name: A hívási ügyfélkódtár használata
+          href: quickstarts/voice-video-calling/calling-client-samples.md
+- name: Oktatóanyagok
+  expanded: false
+  items:
+    - name: Megbízható hitelesítési szolgáltatás létrehozása az Azure Functions használatával
+      href: tutorials/trusted-service-tutorial.md
+- name: Fogalmak
+  expanded: false
+  items:
+    - name: Csevegés
+      items:
+        - name: A csevegési ügyfélkódtár áttekintése
+          href: concepts/chat/sdk-features.md
+        - name: Csevegéssel kapcsolatos alapfogalmak
+          href: concepts/chat/concepts.md
+    - name: Telefonos funkciók és SMS
+      items:
+        - name: Az SMS-ügyfélkódtár áttekintése
+          href: concepts/telephony-sms/sdk-features.md
+        - name: SMS-sel kapcsolatos alapfogalmak
+          href: concepts/telephony-sms/concepts.md
+        - name: A telefonos és SMS-megoldás megtervezése
+          href: concepts/telephony-sms/plan-solution.md
+    - name: Hang- és videóhívás
+      items:
+        - name: Hívási ügyfélkódtár áttekintése
+          href: concepts/voice-video-calling/calling-sdk-features.md
+        - name: A hang- és videóhívással kapcsolatos alapfogalmak
+          href: concepts/voice-video-calling/about-call-types.md
+    - name: Ügyfél- és kiszolgálói architektúra
+      href: concepts/client-and-server-architecture.md
+    - name: Hívási folyamatok
+      href: concepts/call-flows.md
+    - name: Ügyfélkódtárak és REST API-k
+      href: concepts/sdk-options.md
+    - name: Díjszabási modell
+      href: concepts/pricing.md
+    - name: Hitelesítés
+      href: concepts/authentication.md
+    - name: Eseménykezelés
+      href: concepts/event-handling.md
+    - name: Értesítések
+      href: concepts/notifications.md
+- name: Példák
+  items:
+    - name: Csoportos hívás kiemelt mintája
+      href: samples/calling-hero-sample.md
+    - name: Csoportos csevegés kiemelt mintája
+      href: samples/chat-hero-sample.md
+- name: Hivatkozások
+  items:
+    - name: REST API – dokumentáció
+      href: 'https://docs.microsoft.com/rest/api/azure/'
+- name: További források
+  items:
+    - name: Kibocsátási megjegyzések
+      href: release-notes.md

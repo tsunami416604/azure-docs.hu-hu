@@ -31,6 +31,8 @@
       href: connection-monitor-preview.md
     - name: Virtuális gép hálózati forgalmi problémáinak diagnosztizálása
       href: network-watcher-ip-flow-verify-overview.md
+    - name: Az NSG-szabályok és a forgalomszűrés diagnosztizálása
+      href: network-watcher-network-configuration-diagnostics-overview.md
     - name: A virtuális gép útválasztási problémáinak diagnosztizálása
       href: network-watcher-next-hop-overview.md
     - name: A virtuális gép kimenő kommunikációjával kapcsolatos problémák diagnosztizálása

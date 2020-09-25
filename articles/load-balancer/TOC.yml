@@ -39,6 +39,10 @@
       href: powershell-samples.md
 - name: Alapelvek
   items:
+    - name: Régiók közötti terheléselosztó
+      href: cross-region-overview.md
+    - name: Újdonságok
+      href: whats-new.md
     - name: Összetevők
       href: components.md
     - name: Alapelvek

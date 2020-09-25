@@ -137,14 +137,14 @@
             - name: Azure Storage-titkosítás inaktív állapotban
               href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
               items:
-                - name: Felhasználó által kezelt kulcsok az Azure Key Vaulttal
-                  href: ../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: Felhasználó által biztosított kulcsok a kérelemhez kapcsolódóan
-                  href: ../common/encryption-customer-provided-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Titkosítás ügyfél által felügyelt kulccsal
+                  href: ../common/customer-managed-keys-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Kérés titkosítása felhasználó által biztosított kulcsokkal
+                  href: encryption-customer-provided-keys.md
+                - name: Titkosítási hatókörök
+                  href: encryption-scope-overview.md
             - name: Nem módosítható blobok
               href: storage-blob-immutable-storage.md
-            - name: Speciális fenyegetésvédelem
-              href: ../common/storage-advanced-threat-protection.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Beépített biztonsági vezérlők
               href: ../common/storage-security-controls.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Az Azure Private Endpoints használata
@@ -380,19 +380,17 @@
                   items:
                     - name: A fiók titkosításikulcs-modelljének ellenőrzése
                       href: ../common/storage-encryption-key-model-get.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: Ügyfél által kezelt titkosítási kulcsok konfigurálása
+                    - name: Ügyfél által felügyelt kulcsokkal végzett titkosítás konfigurálása
                       items:
-                        - name: Portál
-                          href: ../common/storage-encryption-keys-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                        - name: PowerShell
-                          href: ../common/storage-encryption-keys-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                        - name: Azure CLI
-                          href: ../common/storage-encryption-keys-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                        - name: Ügyfél által felügyelt kulcsok tárolása egy kulcstartóban
+                          href: ../common/customer-managed-keys-configure-key-vault.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                        - name: Ügyfél által felügyelt kulcsok tárolása egy felügyelt HSM-ben
+                          href: ../common/customer-managed-keys-configure-key-vault-hsm.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: Titkosítási kulcs biztosítása kérésre
                   href: storage-blob-customer-provided-key.md
                 - name: Titkosítási hatókörök kezelése
                   href: encryption-scope-manage.md
-                - name: Infrastruktúra titkosításának engedélyezése a tárfiókban
+                - name: Infrastruktúra titkosításának engedélyezése a fiókban
                   href: ../common/infrastructure-encryption-enable.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Ügyféloldali titkosítás konfigurálása
               items:
@@ -414,6 +412,8 @@
                       href: ../common/transport-layer-security-configure-minimum-version.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                     - name: TLS-verzió konfigurálása ügyfélalkalmazáshoz
                       href: ../common/transport-layer-security-configure-client-version.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Az Azure Defender konfigurálása veszélyforrások elleni védelem céljából
+              href: ../common/azure-defender-storage-configure.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Módosíthatatlansági szabályzatok beállítása és kezelése
               href: storage-blob-immutability-policies-manage.md
         - name: Adatredundancia kezelése

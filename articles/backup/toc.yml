@@ -50,6 +50,8 @@
       items:
         - name: Az Azure Backup támogatási mátrixa
           href: backup-support-matrix.md
+        - name: A biztonsági mentési központ támogatási mátrixa
+          href: backup-center-support-matrix.md
         - name: Azure-beli virtuális gépek biztonsági mentésének támogatási mátrixa
           href: backup-support-matrix-iaas.md
         - name: A DPM/Azure Backup Server (MABS) támogatási mátrixa
@@ -68,6 +70,8 @@
       items:
         - name: GYIK – Recovery Services-tárak
           href: backup-azure-backup-faq.md
+        - name: GYIK – Biztonsági mentési központ
+          href: backup-center-faq.md
         - name: GYIK – Azure-beli virtuális gépek biztonsági mentése
           href: backup-azure-vm-backup-faq.md
         - name: GYIK – A MARS-ügynök
@@ -88,18 +92,36 @@
       href: guidance-best-practices.md
 - name: Útmutatók
   items:
-    - name: Recovery Services-tároló
+    - name: Kulcstartók
+      items:
+        - name: Recovery Services-tároló
+          items:
+            - name: Áttekintés
+              href: backup-azure-recovery-services-vault-overview.md
+            - name: Létrehozás
+              href: backup-create-rs-vault.md
+            - name: Törlés
+              href: backup-azure-delete-vault.md
+            - name: Áthelyezés
+              href: backup-azure-move-recovery-services-vault.md
+            - name: Kezelés
+              href: backup-azure-manage-windows-server.md
+        - name: Biztonsági mentési tár
+          items:
+            - name: Áttekintés
+              href: backup-vault-overview.md
+    - name: Biztonsági mentési központ
       items:
         - name: Áttekintés
-          href: backup-azure-recovery-services-vault-overview.md
-        - name: Létrehozás
-          href: backup-create-rs-vault.md
-        - name: Törlés
-          href: backup-azure-delete-vault.md
-        - name: Áthelyezés
-          href: backup-azure-move-recovery-services-vault.md
-        - name: Kezelés
-          href: backup-azure-manage-windows-server.md
+          href: backup-center-overview.md
+        - name: Monitorozás és üzemeltetés
+          href: backup-center-monitor-operate.md
+        - name: Elemzések lekérése
+          href: backup-center-obtain-insights.md
+        - name: Környezet szabályozása
+          href: backup-center-govern-environment.md
+        - name: Műveletek végrehajtása
+          href: backup-center-actions.md
     - name: Azure-beli virtuális gép biztonsági mentése
       items:
         - name: Áttekintés
@@ -150,6 +172,10 @@
           href: restore-sql-database-azure-vm.md
         - name: Kezelés
           href: manage-monitor-sql-database-backup.md
+    - name: Az Azure Database for PostgreSQL biztonsági mentése
+      items:
+        - name: Backup
+          href: backup-azure-database-postgresql.md
     - name: MARS-ügynökkel létrehozott Windows biztonsági másolat
       items:
         - name: Áttekintés

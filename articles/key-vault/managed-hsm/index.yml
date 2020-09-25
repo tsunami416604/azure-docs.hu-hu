@@ -1,0 +1,84 @@
+### YamlMime:Landing
+title: Az Azure Key Vault Managed HSM dokumentációja
+summary: Megtudhatja, hogyan hozhatja létre és tarthatja karban a Managed HSM használatával a kulcsokat, amelyekkel elérheti és titkosíthatja a felhőalapú erőforrásokat, alkalmazásokat és megoldásokat. Oktatóanyagok, API-referenciák és egyebek.
+metadata:
+  title: Az Azure Managed HSM dokumentációja
+  description: Megtudhatja, hogyan hozhatja létre és tarthatja karban a Managed HSM használatával a kulcsokat, amelyekkel elérheti és titkosíthatja a felhőalapú erőforrásokat, alkalmazásokat és megoldásokat. Oktatóanyagok, API-referenciák és egyebek.
+  services: key-vault
+  ms.service: key-vault
+  ms.topic: landing-page
+  author: msmbaldwin
+  ms.author: mbaldwin
+  manager: rkarlin
+  ms.date: 09/15/2020
+  ms.openlocfilehash: d17d119528c04b270e9dffe5b824bafcc89472dc
+  ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90991982"
+landingContent:
+- title: Információk az Azure Key Vault Managed HSM előzetes verziójáról
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Az Azure Key Vault Managed HSM bemutatása
+      url: overview.md
+    - text: A REST API áttekintése
+      url: ../general/about-keys-secrets-certificates.md
+    - text: Támogatott kulcsok és algoritmusok
+      url: ../keys/about-keys.md
+- title: Fogalom
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: A Managed HSM ajánlott eljárásai
+      url: best-practices.md
+    - text: A Managed HSM hozzáférés-vezérlése
+      url: access-control.md
+    - text: Biztonsági tartomány
+      url: security-domain.md
+    - text: Beépített helyi RBAC-szerepkörök
+      url: built-in-roles.md
+- title: Bevezetés
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure CLI
+      url: quick-create-cli.md
+    - text: Azure Resource Manager
+      url: quick-create-template.md
+- title: Útmutatók
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Kezelés az Azure CLI-vel
+      url: key-management.md
+    - text: A Managed HSM szerepkörkezelése
+      url: role-management.md
+    - text: Biztonságos hozzáférés a Managed HSM-hez
+      url: secure-your-managed-hsm.md
+- title: Oktatóanyagok
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Biztonsági mentés és visszaállítás
+      url: backup-restore.md
+    - text: Vészhelyreállítás
+      url: disaster-recovery-guide.md
+    - text: HSM által védett kulcsok importálása (áttekintés)
+      url: hsm-protected-keys-byok.md
+    - text: Naplózás konfigurálása a felügyelt HSM-ekhez
+      url: logging.md
+- title: További információ a Key Vaultról
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: A Key Vault áttekintése
+      url: ../general/overview.md
+    - text: A kulcstartóval kapcsolatos alapfogalmak
+      url: ../general/basic-concepts.md
+    - text: A helyreállítható törlés áttekintése
+      url: ../general/soft-delete-overview.md
+    - text: Biztonsági áttekintés
+      url: ../general/overview-security.md

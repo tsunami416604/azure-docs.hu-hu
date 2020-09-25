@@ -60,7 +60,7 @@
               href: entitlement-management-catalog-create.md
             - name: Delegálás hozzáférésicsomag-kezelőknek
               href: entitlement-management-delegate-managers.md
-        - name: Hozzáférésicsomag-kezelők
+        - name: Hozzáférésicsomag-kezelők és hozzáférésicsomag-hozzárendelések kezelői
           items:
             - name: Új hozzáférési csomag létrehozása
               href: entitlement-management-access-package-create.md
@@ -68,8 +68,10 @@
               href: entitlement-management-access-package-settings.md
             - name: Erőforrás-szerepkörök módosítása
               href: entitlement-management-access-package-resources.md
-            - name: Változáskérés és jóváhagyás beállításai
+            - name: A kérelembeállítások módosítása
               href: entitlement-management-access-package-request-policy.md
+            - name: A jóváhagyási beállítások módosítása
+              href: entitlement-management-access-package-approval-policy.md
             - name: Életciklus-beállítások módosítása
               href: entitlement-management-access-package-lifecycle-policy.md
             - name: Kérések megtekintése

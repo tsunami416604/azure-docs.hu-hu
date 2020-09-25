@@ -7,55 +7,49 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 09/15/2020
 ms.author: banders
-ms.openlocfilehash: c7622c4916b186a39aad9dafb54a1e2404458794
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 0f1b4751ae2448b519387d57e4dbfa1eecf8a576
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89569356"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984310"
 ---
-# <a name="add-update-or-remove-a-credit-card-for-azure"></a>Hitelkártya hozzáadása, frissítése vagy eltávolítása az Azure-ban
+# <a name="add-or-update-a-credit-card-for-azure"></a>Hitelkártya hozzáadása vagy frissítése az Azure-ban
 
 Ez a cikk olyan ügyfelekre vonatkozik, akik hitelkártyával regisztráltak az Azure online-ra.
 
-Az Azure Portalon módosíthatja a fizetés alapértelmezett módját új hitelkártyára, frissítheti a meglévő hitelkártya adatait, vagy törölheti a nem használt hitelkártyákat. A módosítások végrehajtásához [fiókadminisztrátornak](billing-subscription-transfer.md#whoisaa) kell lennie.
+Az Azure Portalon módosíthatja a fizetés alapértelmezett módját új hitelkártyára, vagy frissítheti a meglévő hitelkártya adatait. A módosítások végrehajtásához [fiókadminisztrátornak](billing-subscription-transfer.md#whoisaa) kell lennie.
+
+Hitelkártya törléséhez lásd [Az Azure számlázásos fizetési módjának törlése](delete-azure-payment-method.md) szakaszt.
 
 A Microsoft Azure a hitelkártyás és csekkes/banki átutalásos fizetési módokat támogatja. Ha szeretne jogosulttá válni a csekkes/banki átutalásos fizetési mód használatára, tekintse meg a következőt: [Azure-előfizetések fizetése számla alapján](pay-by-invoice.md).
 
-Ha Microsoft Ügyfélszerződéssel rendelkezik, a fizetési módok a számlázási profilokhoz vannak társítva. Ismerje meg, hogyan [ellenőrizheti a Microsoft Ügyfélszerződéshez való hozzáférést](#check-the-type-of-your-account). Ha rendelkezik Microsoft Ügyfélszerződéssel, ugorjon a [Hitelkártyák kezelése Microsoft Ügyfélszerződés esetében](#manage-credit-cards-for-a-microsoft-customer-agreement) című részhez.
+Microsoft Ügyfélszerződés esetén a fizetési módok a számlázási profilokhoz vannak társítva. Ismerje meg, hogyan [ellenőrizheti a Microsoft Ügyfélszerződéshez való hozzáférést](#check-the-type-of-your-account). Ha rendelkezik Microsoft Ügyfélszerződéssel, ugorjon a [Hitelkártyák kezelése Microsoft Ügyfélszerződés esetében](#manage-credit-cards-for-a-microsoft-customer-agreement) című részhez.
 
 <a id="addcard"></a>
 
 ## <a name="manage-credit-cards-for-an-azure-subscription"></a>Hitelkártyák kezelése Azure-előfizetés esetében
 
-A következő szakaszok azokra az ügyfelekre érvényesek, akik számlázási fiókkal rendelkeznek a Microsoft Online Services Programhoz. Ismerje meg, hogyan [ellenőrizheti számlázási fiókjának típusát](#check-the-type-of-your-account). Ha a számlázási fiók típusa Microsoft Online Services Program, a fizetési módok egyéni Azure-előfizetésekhez vannak társítva. Ha hibaüzenetet kap a hitelkártya hozzáadása után, lásd a [hitelkártya az Azure-regisztrációkor történő elutasítását](../../billing/billing-credit-card-fails-during-azure-sign-up.md) ismertető cikket.
+A következő szakaszok azokra az ügyfelekre érvényesek, akik számlázási fiókkal rendelkeznek a Microsoft Online Services Programhoz. Ismerje meg, hogyan [ellenőrizheti számlázási fiókjának típusát](#check-the-type-of-your-account). Ha a számlázási fiók típusa Microsoft Online Services Program, a fizetési módok egyéni Azure-előfizetésekhez vannak társítva. Ha hibaüzenetet kap a hitelkártya hozzáadása után, lásd a [hitelkártya az Azure-regisztrációkor történő elutasítását](/troubleshoot-declined-card.md) ismertető cikket.
 
 ### <a name="change-credit-card-for-a-subscription-by-adding-a-new-credit-card"></a>Módosíthatja az előfizetéshez tartozó hitelkártyát új hitelkártya hozzáadásával.
 
-Az Azure-előfizetéshez tartozó alapértelmezett hitelkártyát az Azure Portalon módosíthatja új, illetve korábban mentett hitelkártyára. A hitelkártya módosításához fiókadminisztrátornak kell lennie. Ha egynél több, ugyanazt az aktív fizetési módot használó előfizetéssel rendelkezik, akkor az aktív fizetési mód az előfizetések bármelyikén való módosításával a többinél is frissíti az aktív fizetési módot.
-
+Az Azure-előfizetéshez tartozó alapértelmezett hitelkártyát az Azure Portalon módosíthatja új, illetve korábban mentett hitelkártyára. A hitelkártya módosításához fiókadminisztrátornak kell lennie. Ha több, ugyanazt az aktív fizetési módot használó előfizetéssel rendelkezik, akkor az aktív fizetési mód az előfizetések bármelyikén való módosításával a többinél is frissíti az aktív fizetési módot.
 
 Az előfizetéshez tartozó alapértelmezett hitelkártya helyett az alábbi lépésekkel állíthat be újat:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) fiókadminisztrátorként.
-1. Keressen rá a **Költségkezelés + számlázás** kifejezésre.
-
+1. Keressen rá a **Költségkezelés + számlázás** kifejezésre.  
     ![A keresést megjelenítő képernyőkép](./media/change-credit-card/search.png)
-
 1. Válassza ki azt az előfizetést, amelyhez hozzá szeretné adni a hitelkártyát.
-1. Válassza a **Fizetési módok** elemet.
-
-    ![A kiválasztott Fizetési módok kezelése lehetőséget megjelenítő képernyőkép.](./media/change-credit-card/payment-methods-blade-x.png)
-
+1. Válassza a **Fizetési módok** elemet.  
+    ![A kiválasztott Fizetési módok kezelése lehetőséget megjelenítő képernyőkép](./media/change-credit-card/payment-methods-blade-x.png)
 1. Kártya hozzáadásához válassza a „+” gombot a bal felső sarokban. A jobb oldalon megjelenik egy hitelkártyaűrlap.
-1. Adja meg a hitelkártya adatait.
-
-    ![Új kártya hozzáadását megjelenítő képernyőkép.](./media/change-credit-card/sub-add-new-x.png)
-
+1. Adja meg a hitelkártya adatait.  
+    ![Új kártya hozzáadását megjelenítő képernyőkép](./media/change-credit-card/sub-add-new-x.png)
 1. Ha ezt a kártyát szeretné aktív fizetési módként beállítani, jelölje be az **Ez legyen az aktív fizetési mód** beállítás melletti jelölőnégyzetet az űrlap felett. Ez a kártya lesz innentől az aktív fizetési eszköz az összes olyan előfizetés esetében, amely a kiválasztott előfizetéssel azonos kártyát használ.
-
 1. Kattintson a **Tovább** gombra.
 
 ### <a name="change-credit-card-for-a-subscription-to-a-previously-saved-credit-card"></a>Előfizetéshez tartozó hitelkártya módosítása korábban mentett hitelkártyára
@@ -63,18 +57,14 @@ Az előfizetéshez tartozó alapértelmezett hitelkártya helyett az alábbi lé
 Az előfizetéshez tartozó alapértelmezett hitelkártya helyett az alábbi lépésekkel állíthat be egy, a fiókhoz korábban már rögzített hitelkártyát:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) fiókadminisztrátorként.
-1. Keressen rá a **Költségkezelés + számlázás** kifejezésre.
-
+1. Keressen rá a **Költségkezelés + számlázás** kifejezésre.  
     ![A keresést megjelenítő képernyőkép](./media/change-credit-card/search.png)
-
 1. Válassza ki azt az előfizetést, amelyhez hozzá szeretné adni a hitelkártyát.
 1. Válassza a **Fizetési módok** elemet.
-
-    ![A kiválasztott Fizetési módok kezelése lehetőséget megjelenítő képernyőkép.](./media/change-credit-card/payment-methods-blade-x.png)
-
+    ![A kiválasztott Fizetési módok kezelése lehetőséget megjelenítő képernyőkép](./media/change-credit-card/payment-methods-blade-x.png)
 1. Jelölje be az aktív fizetési módként beállítani kívánt kártya melletti jelölőnégyzetet.
-1. Kattintson a **Beállítás aktívként** parancsra.
-    ![A kiválasztott és aktívként beállított hitelkártyát megjelenítő képernyőkép.](./media/change-credit-card/sub-change-active-x.png)
+1. Válassza a **Beállítás aktívként** lehetőséget.
+    ![A kiválasztott és aktívként beállított hitelkártyát megjelenítő képernyőkép](./media/change-credit-card/sub-change-active-x.png)
 
 ### <a name="edit-credit-card-details"></a>Hitelkártya adatainak szerkesztése
 
@@ -82,35 +72,13 @@ Ha a hitelkártya megújul, és a szám változatlan marad, frissítheti a megl�
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) fiókadminisztrátorként.
 1. Keressen rá a **Költségkezelés + számlázás** kifejezésre.
-
     ![A keresést megjelenítő képernyőkép](./media/change-credit-card/search.png)
-
 1. Válassza a **Fizetési módok** elemet.
-
-    ![A kiválasztott Fizetési módok kezelése lehetőséget megjelenítő képernyőkép.](./media/change-credit-card/payment-methods-blade-x.png)
-
-1. Kattintson a szerkeszteni kívánt hitelkártyára. A jobb oldalon megjelenik egy hitelkártyaűrlap.
-
-    ![A kiválasztott hitelkártyát megjelenítő képernyőkép.](./media/change-credit-card/edit-card-x.png)
-
+    ![A kiválasztott Fizetési módok kezelése lehetőséget megjelenítő képernyőkép](./media/change-credit-card/payment-methods-blade-x.png)
+1. Válassza ki a szerkeszteni kívánt hitelkártyát. A jobb oldalon megjelenik egy hitelkártyaűrlap.
+    ![A kiválasztott hitelkártyát megjelenítő képernyőkép](./media/change-credit-card/edit-card-x.png)
 1. Frissítse a hitelkártya adatait.
 1. Kattintson a **Mentés** gombra.
-
-### <a name="delete-a-credit-card-from-the-account"></a>Hitelkártya törlése a fiókból
-
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) fiókadminisztrátorként.
-1. Válassza ki a **Költségkezelés + számlázás** lehetőséget a lap bal oldalán.
-
-    ![A keresést megjelenítő képernyőkép](./media/change-credit-card/search.png)
-
-1. A **Számlázás** területen válassza a **Fizetési módok** elemet.
-
-    ![A kiválasztott Fizetési módok kezelése lehetőséget megjelenítő képernyőkép.](./media/change-credit-card/payment-methods-blade-x.png)
-
-1. Jelölje be az eltávolítani kívánt kártya melletti jelölőnégyzetet.
-1. Kattintson a **Törlés** gombra.
-
-Ha a hitelkártya a Microsoft-előfizetések bármelyikének aktív fizetési módja, nem távolíthatja el az Azure-fiókjából. Módosítsa az aktív fizetési módot az ehhez a hitelkártyához társított összes előfizetés esetében, majd próbálkozzon újra
 
 ## <a name="manage-credit-cards-for-a-microsoft-customer-agreement"></a>Hitelkártyák kezelése Microsoft Ügyfélszerződés esetében
 
@@ -126,53 +94,38 @@ Hitelkártya módosításához kövesse az alábbi lépéseket:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Végezzen keresést a **Költségkezelés + Számlázás** oldalon.
-1. A bal oldali menüben kattintson a **Számlázási profilok** elemre.
+1. A bal oldali menüben válassza a **Számlázási profilok** lehetőséget.
 1. Válasszon ki egy számlázási profilt.
-1. A bal oldali menüben válassza a **Fizetési módok** lehetőséget.
-
+1. A bal oldali menüben válassza a **Fizetési módok** lehetőséget.  
    ![Képernyőkép a menü fizetési módok eleméről](./media/change-credit-card/payment-methods-tab-mca.png)
+1. Az **Alapértelmezett fizetési mód** szakaszban válassza a **Csere** lehetőséget.  
+    :::image type="content" source="./media/change-credit-card/change-payment-method-mca.png" alt-text="Képernyőkép a Csere lehetőségről" :::
+1. A jobb oldalon található új területen válasszon ki egy már létező kártyát a legördülő listából, vagy válassza a kék **Új fizetési mód hozzáadása** hivatkozást egy új hozzáadásához.
 
-1. Az **Alapértelmezett fizetési mód** szakaszban kattintson a **Módosítás** elemre.
+### <a name="edit-a-credit-card"></a>Hitelkártya szerkesztése
 
-    ![A Módosítás gombot megjelenítő képernyőkép](./media/change-credit-card/change-payment-method-mca.png)
+A hitelkártya adatainak szerkesztését (pl. a lejárati dátum frissítését) az Azure Portalon végezheti el. 
 
-1. A jobb oldalon található új panelen válasszon ki egy már létező kártyát a legördülő listából, vagy kattintson a kék „Új fizetési mód hozzáadás” hivatkozásra egy új hozzáadásához.
-
-### <a name="edit-or-delete-a-credit-card"></a>Hitelkártya szerkesztése vagy törlése
-
-A hitelkártya adatainak szerkesztését (pl. a lejárati dátum frissítését) vagy a kártya a fiókból való törlését az Azure Portalon végezheti el. Csak olyan hitelkártyát törölhet, amely egyetlen Azure-előfizetéshez vagy fizetési profilhoz sincs társítva. Ha a kártya egy letiltott Azure-előfizetéshez van társítva, meg kell várnia az előfizetés törlését (30-90 nappal a lemondás után), mielőtt törölhetné.
-
-Hitelkártya szerkesztéséhez vagy törléséhez kövesse az alábbi lépéseket:
+Hitelkártya szerkesztéséhez kövesse az alábbi lépéseket:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Végezzen keresést a **Költségkezelés + Számlázás** oldalon.
-1. A bal oldali menüben kattintson a **Számlázási profilok** elemre.
+1. A bal oldali menüben válassza a **Számlázási profilok** lehetőséget.
 1. Válasszon ki egy számlázási profilt.
-1. A bal oldali menüben válassza a **Fizetési módok** lehetőséget.
-
+1. A bal oldali menüben válassza a **Fizetési módok** lehetőséget.  
    ![Képernyőkép a menü fizetési módok eleméről](./media/change-credit-card/payment-methods-tab-mca.png)
-
-1. A **Saját hitelkártyák** szakaszban keresse meg a szerkeszteni vagy törölni kívánt hitelkártyát.
-1. Válassza ki a sor végén található három pontot (`...`).
-
-    ![Képernyőkép a három pontról](./media/change-credit-card/edit-delete-credit-card-mca.png)
-
+1. A **Saját hitelkártyák** szakaszban keresse meg a szerkeszteni kívánt hitelkártyát.
+1. Válassza ki a sor végén található három pontot (`...`).  
+    :::image type="content" source="./media/change-credit-card/edit-delete-credit-card-mca.png" alt-text="Képernyőkép a három pontról" :::
 1. A hitelkártya adatainak szerkesztéséhez válassza a **Szerkesztés** lehetőséget a helyi menüből.
-1. A hitelkártya törléséhez válassza a **Törlés** lehetőséget a helyi menüből.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-Nem támogatjuk a virtuális kártyákat és a feltöltőkártyákat. Ha egy érvényes hitelkártya hozzáadása vagy frissítése során hibák lépnek fel, próbálja meg megnyitni a böngészőt inkognitó módban.
+Az Azure nem támogatja a virtuális kártyákat és a feltöltőkártyákat. Ha egy érvényes hitelkártya hozzáadása vagy frissítése során hibák lépnek fel, próbálja meg megnyitni a böngészőt inkognitó módban.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
 A következő szakaszokból a hitelkártya-adatok módosítására vonatkozó gyakori kérdésekre kaphat választ.
-
-### <a name="my-subscription-is-disabled-why-cant-i-remove-my-credit-card-now"></a>Az előfizetésem le van tiltva. Miért nem tudom eltávolítani a hitelkártyámat?
-
-Az előfizetés letiltását vagy törlését egy 90 napos türelmi idő követi, és ez idő alatt nem töröljük véglegesen az előfizetését. Erre az időre tovább tároljuk a fizetési mód adatait arra az esetre, ha az előfizetést újra szeretné aktiválni. Ezután az előfizetés véglegesen törlődik.
-
-Ha a hitelkártyáját a 90 napos megőrzési időszak vége előtt el kell távolítania, [aktiválja újra az előfizetést](subscription-disabled.md). Ha nem tudja újraaktiválni, [forduljon az Azure ügyfélszolgálatához](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 ### <a name="why-do-i-keep-getting-your-login-session-has-expired-please-click-here-to-log-back-in"></a>Miért kapom a „Bejelentkezési munkamenet lejárt. Kattintson ide az ismétel bejelentkezéshez.” üzenetet?
 
@@ -203,3 +156,4 @@ Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatá
 ## <a name="next-steps"></a>További lépések
 
 - További tudnivalók az [Azure Reservations](../reservations/save-compute-costs-reservations.md) szolgáltatás költségtakarékos megoldásairól.
+- Hitelkártya törléséhez lásd [Az Azure számlázásos fizetési módjának törlése](delete-azure-payment-method.md) szakaszt.

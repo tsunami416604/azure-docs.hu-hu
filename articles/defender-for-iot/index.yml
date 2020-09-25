@@ -1,0 +1,114 @@
+### YamlMime:Landing
+title: Az IoT-hez készült Azure Defender dokumentációja
+summary: Az Azure Defender for IoT egy Azure-alapú felhőbiztonsági szolgáltatás, amely teljes körű fenyegetésvédelmet biztosít az IoT-eszközök számára.
+metadata:
+  title: Az IoT-hez készült Azure Defender dokumentációja
+  description: Megismerheti, hogy az Azure Defender for IoT nevű Azure-alapú felhőbiztonsági szolgáltatás hogyan biztosít teljes körű fenyegetésvédelmet az IoT-eszközök számára.
+  services: service
+  ms.service: defender-for-iot
+  ms.topic: landing-page
+  ms.collection: M365-security-compliance
+  author: mlottner
+  ms.author: mlottner
+  ms.date: 09/07/2020
+  ms.openlocfilehash: 1f7728334b456eb292c33c18d15f01ccbaa199e8
+  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90928877"
+landingContent:
+- title: Az Azure Defender for IoT ismertetése
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Az Azure Defender for IoT bemutatása
+      url: overview.md
+    - text: Az Azure RTOS biztonsági moduljai
+      url: iot-security-azure-rtos.md
+    - text: A megoldás megtervezése
+      url: service-prerequisites.md
+  - linkListType: architecture
+    links:
+    - text: Az Azure Defender for IoT architektúrájának megismerése
+      url: architecture.md
+    - text: Azure Defender for IoT-ügynökök
+      url: security-agent-architecture.md
+    - text: Biztonsági Edge-modul
+      url: security-edge-architecture.md
+- title: Az Azure Defender for IoT előkészítése az IoT Hubba
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Bevezetés az Azure Defender for IoT használatába
+      url: getting-started.md
+    - text: IoT Hub
+      url: iot-hub-integration.md
+    - text: Az Azure RTOS biztonsági modul használatának első lépései
+      url: concept-rtos-security-module.md
+    - text: Biztonsági ügynökök
+      url: security-agents.md
+- title: A megoldás konfigurálása
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Az Azure Defender for IoT engedélyezése az IoT Hubban
+      url: quickstart-onboard-iot-hub.md
+    - text: IoT-biztonsági megoldás konfigurálása
+      url: quickstart-configure-your-solution.md
+    - text: Biztonsági modul konfigurálása az Azure RTOS-hez
+      url: quickstart-azure-rtos-security-module.md
+    - text: Azure Defender for IoT-ikermodul létrehozása
+      url: quickstart-create-security-twin.md
+    - text: Egyéni biztonsági riasztások létrehozása
+      url: quickstart-create-custom-alerts.md
+    - text: Biztonsági riasztások vizsgálata
+      url: quickstart-investigate-security-alerts.md
+- title: A megoldás testreszabása
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Az Azure RTOS biztonsági moduljának testreszabása
+      url: how-to-azure-rtos-security-module.md
+    - text: Ügynök kiválasztása
+      url: how-to-deploy-agent.md
+    - text: C#-alapú Azure Defender for IoT biztonsági ügynök üzembe helyezése Windowson
+      url: how-to-deploy-windows-cs.md
+    - text: C#-alapú Azure Defender for IoT biztonsági ügynök üzembe helyezése Linuxon
+      url: how-to-deploy-linux-cs.md
+    - text: C-alapú Azure Defender for IoT biztonsági ügynök üzembe helyezése Linuxon
+      url: how-to-deploy-linux-c.md
+    - text: Biztonsági Edge-modul üzembe helyezése
+      url: how-to-deploy-edge.md
+    - text: Biztonsági ügynökök konfigurálása
+      url: how-to-agent-configuration.md
+    - text: Saját biztonsági üzenetek küldése
+      url: how-to-send-security-messages.md
+    - text: Hozzáférés a nyers biztonsági adatokhoz
+      url: how-to-security-data-access.md
+    - text: Eszköz vizsgálata
+      url: how-to-investigate-device.md
+- title: Biztonsági ügynök hibaelhárítása
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Biztonsági ügynök hibaelhárítási útmutatója (Linux)
+      url: troubleshoot-agent.md
+    - text: A LocalConfiguration.json fájl ismertetése – C-ügynök
+      url: azure-iot-security-local-configuration-c.md
+    - text: A lokális konfigurációs fájl ismertetése – C#-ügynök
+      url: azure-iot-security-local-configuration-csharp.md
+- title: Az Azure Defender for IoT-megoldás erőforrásai
+  linkLists:
+  - linkListType: video
+    links:
+    - text: Az Azure Defender for IoT bemutatása
+      url: https://youtu.be/pq5uSp9u_x0
+    - text: Az Azure Defender for IoT megismerése
+      url: https://www.youtube.com/watch?time_continue=5&v=YOqkahQsKek
+  - linkListType: reference
+    links:
+    - text: Gyakori kérdések
+      url: resources-frequently-asked-questions.md
+    - text: Díjszabás és kapcsolódó költségek
+      url: concept-pricing.md

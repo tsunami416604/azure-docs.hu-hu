@@ -1,0 +1,115 @@
+### YamlMime:Landing
+title: Az Azure Confidential Computing dokumentációja
+summary: Az Azure Confidential Computing által biztosított megoldásokkal elkülönítheti bizalmas adatait a felhőben való feldolgozás során. A fogalmak elolvasása, az oktatóanyagok elvégzése és a mintakódok használata során megtanulhatja, hogyan hozhat létre és helyezhet üzembe bizalmas számítási infrastruktúrán alapuló alkalmazásokat. A bizalmas számításra épülő Microsoft-termékekkel a lehető legnagyobb biztonságban tudhatja számítási feladatait.
+metadata:
+  title: Azure Confidential Computing
+  description: Megtudhatja, hogyan biztosít védelmet a Confidential Computing a használatban lévő adatoknak, és megismerheti a felhőbeli bizalmas számítási feladatok létrehozásának módjait.
+  ms.service: virtual-machines
+  ms.subservice: workloads
+  ms.topic: landing-page
+  author: JBCook
+  ms.author: jencook
+  ms.date: 09/22/2020
+  ms.openlocfilehash: abe5104ff5425103baaca72efdc960a34ffc6a73
+  ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90991992"
+landingContent:
+- title: Az Azure Confidential Computing ismertetése
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Az Azure Confidential Computing bemutatása
+      url: overview.md
+    - text: Forgatókönyvek
+      url: use-cases-scenarios.md
+  - linkListType: concept
+    links:
+    - text: Virtual machines (Virtuális gépek)
+      url: confidential-computing-enclaves.md
+    - text: Tárolóalapú számítások az AKS-ben
+      url: confidential-containers.md
+    - text: Alkalmazásfejlesztés
+      url: application-development.md
+    - text: Igazolás
+      url: attestation.md
+  - linkListType: reference
+    links:
+    - text: Intel SGX virtuális gépek
+      url: ../virtual-machines/dcv2-series.md
+- title: Virtual machines (Virtuális gépek)
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Intel SGX virtuális gépek
+      url: confidential-computing-enclaves.md
+  - linkListType: concept
+    links:
+    - text: Megoldások virtuális gépeken
+      url: virtual-machine-solutions.md
+  - linkListType: quickstart
+    links:
+    - text: Üzembe helyezés az Azure Portalon
+      url: quick-create-portal.md
+    - text: Üzembe helyezés az Azure Marketplace-en
+      url: quick-create-marketplace.md
+  - linkListType: reference
+    links:
+    - text: Bizalmas számítást használó virtuális gépek – GYIK
+      url: faq.md
+    - text: Díjszabás
+      url: https://azure.microsoft.com/pricing/details/virtual-machines/linux/#DC1s-C8s%20v2
+    - text: Rendelkezésre állás
+      url: https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines
+- title: Tárolóalapú számítás
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Az Azure Kubernetes Service (AKS) bizalmas számítást használó csomópontjai (előzetes verzió)
+      url: confidential-nodes-aks-overview.md
+  - linkListType: concept
+    links:
+    - text: Bizalmas tárolók
+      url: confidential-containers.md
+    - text: Enklávéfüggő tárolók
+      url: enclave-aware-containers.md
+    - text: Folyamaton kívüli igazolás
+      url: confidential-nodes-out-of-proc-attestation.md
+  - linkListType: quickstart
+    links:
+    - text: Egyszerű enklávéjú tárolóalkalmazás az AKS-en
+      url: confidential-nodes-aks-get-started.md
+  - linkListType: sample
+    links:
+    - text: Bizalmas tárolók mintái (nem módosított tárolók SGX-en)
+      url: https://github.com/Azure-Samples/confidential-container-samples
+    - text: Enklávéfüggő tárolóminták
+      url: https://github.com/Azure-Samples/enclave-aware-container-samples
+  - linkListType: reference
+    links:
+    - text: Bizalmas csomópontok az AKS-en – GYIK
+      url: confidential-nodes-aks-overview.md
+    - text: Tudnivalók az Azure Kubernetes Service-ről (AKS-ről)
+      url: ../aks/intro-kubernetes.md
+- title: Bizalmas felhőszolgáltatások
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Microsoft Azure Attestation
+      url: ../attestation/overview.md
+    - text: Bizalmas származtatású ONNX Runtime
+      url: https://aka.ms/confidentialinference
+- title: Létrehozás bizalmas számításokkal
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Bizalmas egészségügyi bemutató az AKS-ben
+      url: https://github.com/Azure-Samples/confidential-container-samples
+    - text: Igazolt kölcsönös TLS Open Enclave-vel az AKS-ben
+      url: https://github.com/Azure-Samples/enclave-aware-container-samples
+  - linkListType: reference
+    links:
+    - text: Open Enclave (OE) SDK
+      url: https://aka.ms/oesdkGitHubRepo

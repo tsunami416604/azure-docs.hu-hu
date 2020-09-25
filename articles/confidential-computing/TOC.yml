@@ -1,27 +1,65 @@
 - name: Azure Confidential Computing
-  href: overview.md
+  href: ./index.yml
+- name: Áttekintés
+  expanded: true
+  items:
+    - name: Üdvözli az Azure Confidential Computing
+      href: overview.md
+    - name: Használati esetek és forgatókönyvek
+      href: use-cases-scenarios.md
 - name: Rövid útmutatók
   expanded: true
   items:
-    - name: Létrehozás az Azure Portalon
-      href: quick-create-portal.md
-    - name: Létrehozás a Marketplace-szel
-      href: quick-create-marketplace.md
-- name: Alapelvek
+    - name: Virtual machines (Virtuális gépek)
+      items:
+        - name: Létrehozás az Azure Portalon
+          href: quick-create-portal.md
+        - name: Létrehozás a Marketplace-szel
+          href: quick-create-marketplace.md
+    - name: Azure Kubernetes Services (AKS)
+      items:
+        - name: Bizalmas AKS-csomópontok áttekintése
+          href: confidential-nodes-aks-overview.md
+        - name: Bizalmas csomópontok Azure CLI-vel
+          href: confidential-nodes-aks-get-started.md
+        - name: Bizalmas csomópontok az AKS-en – GYIK
+          href: confidential-nodes-aks-faq.md
+- name: Fogalmak
   expanded: true
   items:
-    - name: Megoldások virtuális gépeken
-      href: virtual-machine-solutions.md
+    - name: Virtuális gépek (VM-ek)
+      items:
+        - name: Enklávéfüggő virtuális gépek
+          href: confidential-computing-enclaves.md
+        - name: Megoldások virtuális gépeken
+          href: virtual-machine-solutions.md
+        - name: Bizalmas számítást használó virtuális gép – GYIK
+          href: faq.md
+    - name: Tárolóalapú számítás
+      expanded: true
+      items:
+        - name: Bizalmas tárolók (átemelés)
+          items:
+            - name: Első lépések
+              href: confidential-containers.md
+        - name: Enklávéfüggő tárolók
+          items:
+            - name: Első lépések
+              href: enclave-aware-containers.md
+    - name: Igazolás
+      href: attestation.md
+    - name: Alkalmazásfejlesztés
+      href: application-development.md
 - name: Útmutató
-  expanded: true
   items:
     - name: Fortanix Enclave Manager
       href: how-to-fortanix-enclave-manager.md
-- name: További források
-  expanded: true
+- name: Hivatkozások
   items:
-    - name: GYIK
-      href: faq.md
+    - name: SGX-ajánlat segítőfunkciója
+      href: confidential-nodes-out-of-proc-attestation.md
+- name: Források
+  items:
     - name: Visszajelzés a Confidential Computingról
       href: 'https://feedback.azure.com/forums/919792-azure-confidential-compute'
     - name: StackOverflow

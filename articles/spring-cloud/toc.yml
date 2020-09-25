@@ -13,7 +13,7 @@
     - name: Mikroszolgáltatások létrehozása és futtatása
       expanded: true
       items:
-        - name: A mintaalkalmazások bemutatása
+        - name: A mintaalkalmazás bemutatása
           href: spring-cloud-quickstart-sample-app-introduction.md
         - name: Az Azure Spring Cloud szolgáltatás kiépítése
           href: spring-cloud-quickstart-provision-service-instance.md
@@ -37,8 +37,6 @@
       href: spring-cloud-tutorial-circuit-breaker.md
     - name: Egyéni DNS-név
       href: spring-cloud-tutorial-custom-domain.md
-    - name: IntelliJ használata az Azure Spring Cloud-alkalmazások üzembe helyezéséhez
-      href: spring-cloud-tutorial-intellij-deploy-apps.md
     - name: Azure Spring Cloud-példány üzembe helyezése a Terraform használatával
       href: spring-cloud-tutorial-provision-azure-spring-cloud-instance-terraform.md
     - name: CI/CD – Jenkins

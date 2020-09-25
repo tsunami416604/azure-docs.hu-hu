@@ -13,12 +13,12 @@ metadata:
   ms.date: 09/10/2020
   featureFlags:
   - clicktale
-  ms.openlocfilehash: ae4e327b7b4d230bd89baccdd27d5ac416ebb6cb
-  ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+  ms.openlocfilehash: aec131b8c7a3e5092b6b090668fb0eb006b079a3
+  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 09/15/2020
-  ms.locfileid: "90087949"
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90904129"
 highlightedContent:
   items:
   - title: Azure fejlesztői útmutató az első lépésekhez
@@ -36,7 +36,7 @@ highlightedContent:
 productDirectory:
   title: Tekintse át az Azure-termékeket
   items:
-  - title: Anomaly Detector (előzetes verzió)
+  - title: Anomáliadetektor
     summary: Könnyedén hozzáadhat rendellenességészlelési képességeket alkalmazásaihoz
     imageSrc: https://static.docs.com/ui/media/product/azure/anomaly-detector.svg
     azureCategories:
@@ -144,6 +144,13 @@ productDirectory:
     azureCategories:
     - ai-machine-learning
     url: cognitive-services/bing-web-search/overview.md
+  - title: Communication Services
+    summary: Valós idejű hang-, videó- és telefonos funkciók hozzáadása az alkalmazáshoz
+    imageSrc: ./media/index/communication-services.svg
+    azureCategories:
+    - web
+    - mobile
+    url: communication-services/overview.md
   - title: Számítógépes látástechnológia
     summary: Gyakorlatban használható információk leszűrése képekből
     imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
@@ -610,7 +617,7 @@ productDirectory:
     azureCategories:
     - databases
     url: azure-sql/managed-instance/index.yml
-  - title: Azure SQL Edge (előzetes verzió)
+  - title: Azure SQL Edge
     summary: Kis erőforrásigénnyel rendelkező, peremhálózatra optimalizált adatmotor beépített mesterséges intelligenciával
     imageSrc: https://static.docs.com/ui/media/product/azure/sql-database-edge.svg
     azureCategories:

@@ -9,8 +9,10 @@
       items:
         - name: Ismerkedés a Visual Studióval
           href: get-started-netcore-visualstudio.md
-    - name: Fogalmak
+    - name: Alapelvek
       items:
+        - name: Migrálás a Bridge to Kubernetesre
+          href: migrate-to-bridge-to-kubernetes.md
         - name: A Dev Spaces működése
           items:
             - name: Áttekintés

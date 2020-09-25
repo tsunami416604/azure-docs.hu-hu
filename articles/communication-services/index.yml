@@ -1,0 +1,102 @@
+### YamlMime:Landing
+title: Azure Communication Services
+summary: Az Azure Communication Services egy felhőalapú kommunikációs szolgáltatás, amellyel hang-, videó-, csevegési és telefonos funkciókat adhat hozzá az alkalmazásaihoz. Vegye figyelembe, hogy az Azure Communication Services jelenleg nyilvános előzetes verzióban érhető el.
+metadata:
+  title: Azure Communication Services
+  description: Az Azure Communication Services egy felhőalapú kommunikációs szolgáltatás, amellyel hang-, videó-, csevegési és telefonos funkciókat adhat hozzá az alkalmazásaihoz. Vegye figyelembe, hogy az Azure Communication Services jelenleg nyilvános előzetes verzióban érhető el.
+  ms.service: azure-communication-services
+  ms.topic: landing-page
+  author: mikben
+  ms.author: mikben
+  ms.date: 08/10/2020
+  ms.openlocfilehash: 6081063605439982e29984cc4378ec3aee7ac08a
+  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90928853"
+landingContent:
+- title: Az Azure Communication Services ismertetése
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Az Azure Communication Services bemutatása
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Ügyfélkódtár beállításai
+      url: concepts/sdk-options.md
+- title: Bevezetés
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Communication Services-erőforrás létrehozása
+      url: quickstarts/create-communication-resource.md
+    - text: Felhasználói hozzáférési jogkivonatok létrehozása és kezelése
+      url: quickstarts/access-tokens.md
+  - linkListType: concept
+    links:
+    - text: Ügyfél- és kiszolgálói architektúra
+      url: concepts/client-and-server-architecture.md
+    - text: Hitelesítés és engedélyezés
+      url: concepts/authentication.md
+    - text: Eseménykezelés
+      url: concepts/event-handling.md
+    - text: Értesítések
+      url: concepts/notifications.md
+- title: Hang- és videóhívás
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Hang- és videóhívás hozzáadása az alkalmazáshoz
+      url: quickstarts/voice-video-calling/getting-started-with-calling.md
+    - text: A hívási ügyfélkódtár használata
+      url: quickstarts/voice-video-calling/calling-client-samples.md
+  - linkListType: concept
+    links:
+    - text: A hang- és videóhívással kapcsolatos alapfogalmak
+      url: concepts/voice-video-calling/about-call-types.md
+    - text: Hívási ügyfélkódtár áttekintése
+      url: concepts/voice-video-calling/calling-sdk-features.md
+    - text: Hívási folyamatok
+      url: concepts/call-flows.md
+- title: Telefonos funkciók és SMS
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Telefonszám lekérése
+      url: quickstarts/telephony-sms/get-phone-number.md
+    - text: SMS küldése
+      url: quickstarts/telephony-sms/send.md
+    - text: SMS-események kezelése
+      url: quickstarts/telephony-sms/handle-sms-events.md
+  - linkListType: concept
+    links:
+    - text: SMS-sel kapcsolatos alapfogalmak
+      url: concepts/telephony-sms/concepts.md
+    - text: Az SMS-ügyfélkódtár áttekintése
+      url: concepts/telephony-sms/sdk-features.md
+    - text: Hívások áttekintése
+      url: concepts/voice-video-calling/calling-sdk-features.md
+    - text: A telefonos és SMS-megoldás megtervezése
+      url: concepts/telephony-sms/plan-solution.md
+- title: Csevegés
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Csevegés hozzáadása az alkalmazáshoz
+      url: quickstarts/chat/get-started.md
+  - linkListType: concept
+    links:
+    - text: Csevegéssel kapcsolatos alapfogalmak
+      url: concepts/chat/concepts.md
+    - text: A csevegési ügyfélkódtár áttekintése
+      url: concepts/chat/sdk-features.md
+- title: Példák
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: A csoportos hívás kiemelt mintájának bemutatása
+      url: samples/calling-hero-sample.md
+    - text: A csevegés kiemelt mintájának bemutatása
+      url: samples/chat-hero-sample.md
