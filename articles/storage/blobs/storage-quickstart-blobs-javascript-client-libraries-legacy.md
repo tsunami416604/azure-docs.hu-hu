@@ -3,18 +3,18 @@ title: 'Gyors útmutató: Azure Blob Storage a JavaScript v10-hez a böngészőb
 description: A HTML-lapokon a JavaScript v10 SDK használatával megtudhatja, hogyan tölthet fel, listázhat és törölhet blobokat.
 services: storage
 author: mhopkins-msft
-ms.custom: mvc, devx-track-javascript
+ms.custom: mvc, devx-track-js
 ms.service: storage
 ms.author: mhopkins
 ms.date: 07/24/2020
 ms.topic: quickstart
 ms.subservice: blobs
-ms.openlocfilehash: 3982e54d06f2e84c4e8e8703e70e9a26773c389a
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 134408704d54479fbbe0dfb5094f2920fa2e74be
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87429218"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336190"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -64,7 +64,7 @@ A böngészőben futó kód a közös hozzáférésű jogosultságkóddal (SAS) 
 
 Létrehozhat egy SAS-t az Azure CLI használatával az Azure Cloud shellben vagy a Azure Portal vagy Azure Storage Explorer. A következő táblázat azokat a paramétereket ismerteti, amelyekkel a rendszernek értékeket kell megadnia a parancssori felülettel való SAS létrehozásához.
 
-| Paraméter      |Description  | Helyőrző |
+| Paraméter      |Leírás  | Helyőrző |
 |----------------|-------------|-------------|
 | *lejárta*       | A hozzáférési jogkivonat lejárati dátuma ÉÉÉÉ-HH-NN formátumban. Írja be a holnapi dátumot ehhez a rövid útmutatóhoz. | *FUTURE_DATE* |
 | *fiók neve* | A tárfiók neve. Használja a korábbi lépésben félretett nevet. | *YOUR_STORAGE_ACCOUNT_NAME* |

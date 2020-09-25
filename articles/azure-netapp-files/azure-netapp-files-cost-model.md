@@ -12,18 +12,20 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/27/2020
+ms.date: 09/22/2020
 ms.author: b-juche
-ms.openlocfilehash: 78af9c12fb54b63e1a94c8b41a7ec2ac5c9b4e27
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c4eebae6909c9ef0969bc85bcb9a985db2a7c02
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84142146"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325606"
 ---
 # <a name="cost-model-for-azure-netapp-files"></a>Az Azure NetApp Files költségmodellje 
 
-A Azure NetApp Filesi cost modell megismerése segít a szolgáltatás költségeinek kezelésében.
+A Azure NetApp Filesi cost modell megismerése segít a szolgáltatás költségeinek kezelésében. 
+
+A régiók közötti replikációra jellemző Cost Model esetében lásd: [Cost Model a régiók közötti replikáláshoz](cross-region-replication-introduction.md#cost-model-for-cross-region-replication).
 
 ## <a name="calculation-of-capacity-consumption"></a>A kapacitás felhasználásának kiszámítása
 
@@ -61,6 +63,7 @@ Manuálisan növelheti vagy csökkentheti a készlet méretét. A következő me
 * 1 – TiB-növekmény a kezdeti 4 – TiB minimális vásárlás után
 * Egy órás minimális számlázási növekmény
 * Előfordulhat, hogy a kiépített készlet mérete nem csökkenthető a készlet teljes felhasznált kapacitásával.
+* A manuális QoS-vel rendelkező kapacitási készletek esetén a készlet mérete csak akkor csökkenthető, ha a méret és a szolgáltatási szint nagyobb átviteli sebességet biztosít, mint az összes kötet tényleges hozzárendelt átviteli sebessége.
 
 ## <a name="behavior-of-maximum-size-pool-overage"></a>A maximális méretet túllépő készlet viselkedése   
 
@@ -89,8 +92,9 @@ Az alábbi ábra a következő fogalmakat szemlélteti:
 
 Azure NetApp Files a pillanatképek kapacitásának felhasználását a fölérendelt kötet kvótája alapján számítjuk fel.  Ennek eredményeképpen ugyanazzal a számlázási sebességgel osztozik, mint a kötethez tartozó kapacitási készlet.  Az aktív kötettől eltérően azonban a pillanatkép-felhasználás a felhasznált növekményes kapacitás alapján mérhető.  Azure NetApp Files Pillanatképek eltérő jellegűek. Az adatváltozási aránytól függően a pillanatképek gyakran sokkal kevesebb kapacitást használnak, mint az aktív kötet logikai kapacitása. Tegyük fel például, hogy van egy 500-GiB kötet pillanatképe, amely csak 10 GiB különbözeti adatokból áll. A pillanatképre vonatkozó mennyiségi kvóta alapján felszámított kapacitás 10 GiB, nem 500 GiB. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure NetApp Files díjszabási oldala](https://azure.microsoft.com/pricing/details/storage/netapp/)
 * [Az Azure NetApp Files szolgáltatásszintjei](azure-netapp-files-service-levels.md)
 * [Az Azure NetApp Files erőforráskorlátai](azure-netapp-files-resource-limits.md)
+* [Cost Model a régiók közötti replikáláshoz](cross-region-replication-introduction.md#cost-model-for-cross-region-replication)

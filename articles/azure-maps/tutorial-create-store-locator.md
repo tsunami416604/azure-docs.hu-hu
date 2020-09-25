@@ -1,6 +1,6 @@
 ---
 title: 'Oktatóanyag: áruházbeli lokátor alkalmazás létrehozása Azure Maps használatával | Microsoft Azure térképek'
-description: Ismerje meg, hogyan hozhat létre tároló-lokátor webalkalmazásokat. A Azure Maps web SDK használatával létrehozhat egy weblapot, lekérdezheti a keresési szolgáltatást, és megjelenítheti az eredményeket egy térképen.
+description: Útmutató az áruházi lokátor webalkalmazásainak létrehozásához. A Azure Maps web SDK használatával létrehozhat egy weblapot, lekérdezheti a keresési szolgáltatást, és megjelenítheti az eredményeket egy térképen.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 08/11/2020
@@ -8,18 +8,18 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 61c085cb721f9e1a8d9c44146a9d96cd5a08562c
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.custom: mvc, devx-track-js
+ms.openlocfilehash: 9c2160a241243b59ca7adda99fe2100d416c55be
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085314"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335262"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>Oktatóanyag: tároló-lokátor létrehozása Azure Maps használatával
 
 Ez az oktatóanyag végigvezeti egy egyszerű tároló-lokátor létrehozásának folyamatán Azure Maps használatával. Az áruházbeli lokátorok gyakoriak. Az ilyen típusú alkalmazásokban használt fogalmak számos más típusú alkalmazásra alkalmazhatók. Az ügyfeleknek nyújtott áruházi lokátort a legtöbb, közvetlenül a fogyasztóknak értékesítő vállalat számára ajánlott biztosítani. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
-    
+
 > [!div class="checklist"]
 > * Hozzon létre egy új weblapot az Azure térképkezelés API használatával.
 > * Egyéni adatok betöltése egy fájlból, és megjelenítése egy térképen.
@@ -924,34 +924,21 @@ Ha a böngészőablakot kevesebb, mint 700 képpont szélesre módosítja, vagy 
 
 ![Képernyőkép az áruházi lokátor kis képernyős verziójáról](./media/tutorial-create-store-locator/FinishedSimpleStoreLocatorSmallScreen.png)
 
+Ebben az oktatóanyagban megtanulta, hogyan hozhat létre egy alapszintű tároló-lokátort Azure Maps használatával. Előfordulhat, hogy az oktatóanyagban létrehozott áruház-lokátor rendelkezik az összes szükséges funkcióval. Lehetőség van az áruházbeli lokátor szolgáltatásainak hozzáadására, vagy további speciális funkciók használatára az egyéni felhasználói élmény érdekében: 
+
+ * A keresőmezőbe való [beíráskor](https://azuremapscodesamples.azurewebsites.net/?sample=Search%20Autosuggest%20and%20JQuery%20UI) engedélyezze a javaslatokat.  
+ * [Több nyelv támogatásának](https://azuremapscodesamples.azurewebsites.net/?sample=Map%20Localization)megadása. 
+ * Lehetővé teszi a felhasználók számára, hogy [egy útvonal mentén szűrhetik a tárolóhelyeket](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Data%20Along%20Route). 
+ * Adja [meg a szűrők beállításának](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Symbols%20by%20Property)lehetőségét. 
+ * Adja meg a támogatást egy kezdeti keresési érték megadásához egy lekérdezési karakterlánc használatával. Ha ezt a lehetőséget használja az áruház lokátorában, a felhasználók könyvjelzőket és megosztási kereséseket is tartalmazhatnak. Emellett egyszerű módszert is biztosít, amellyel egy másik oldalról átadhatja a keresést ezen a lapon.  
+ * Az áruházbeli lokátor üzembe helyezése [Azure app Service webalkalmazásként](https://docs.microsoft.com/azure/app-service/quickstart-html). 
+ * Tárolja adatait egy adatbázisban, és keressen a közeli helyekre. További információ: [SQL Server térbeli adattípusok áttekintése](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-types-overview?view=sql-server-2017&preserve-view=true) és [térbeli adatainak lekérdezése a legközelebbi szomszédban](https://docs.microsoft.com/sql/relational-databases/spatial/query-spatial-data-for-nearest-neighbor?view=sql-server-2017&preserve-view=true).
+
+Megtekintheti a [teljes forráskódot](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator), [megtekintheti az élő mintát](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Simple%20Store%20Locator) , és további információkat tudhat meg a Azure Maps lefedettségéről és képességeiről a [nagyítási szintek és a csempék rácsának](zoom-levels-and-tile-grid.md)használatával. Az üzleti logikára [vonatkozó adatvezérelt stílusú kifejezéseket is használhat](data-driven-style-expressions-web-sdk.md) .
+
 ## <a name="next-steps"></a>Következő lépések
-
-Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre alapszintű tároló-lokátort Azure Maps használatával. Előfordulhat, hogy az oktatóanyagban létrehozott áruház-lokátor rendelkezik az összes szükséges funkcióval. Lehetőség van az áruházbeli lokátor szolgáltatásainak hozzáadására, vagy további speciális funkciók használatára az egyéni felhasználói élmény érdekében: 
-
-> [!div class="checklist"]
-> * A keresőmezőbe való [beíráskor](https://azuremapscodesamples.azurewebsites.net/?sample=Search%20Autosuggest%20and%20JQuery%20UI) engedélyezze a javaslatokat.  
-> * [Több nyelv támogatásának](https://azuremapscodesamples.azurewebsites.net/?sample=Map%20Localization)megadása. 
-> * Lehetővé teszi a felhasználók számára, hogy [egy útvonal mentén szűrhetik a tárolóhelyeket](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Data%20Along%20Route). 
-> * Adja [meg a szűrők beállításának](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Symbols%20by%20Property)lehetőségét. 
-> * Adja meg a támogatást egy kezdeti keresési érték megadásához egy lekérdezési karakterlánc használatával. Ha ezt a lehetőséget használja az áruház lokátorában, a felhasználók könyvjelzőket és megosztási kereséseket is tartalmazhatnak. Emellett egyszerű módszert is biztosít, amellyel egy másik oldalról átadhatja a keresést ezen a lapon.  
-> * Az áruházbeli lokátor üzembe helyezése [Azure app Service webalkalmazásként](https://docs.microsoft.com/azure/app-service/quickstart-html). 
-> * Tárolja adatait egy adatbázisban, és keressen a közeli helyekre. További információ: [SQL Server térbeli adattípusok áttekintése](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-types-overview) és [térbeli adatainak lekérdezése a legközelebbi szomszédban](https://docs.microsoft.com/sql/relational-databases/spatial/query-spatial-data-for-nearest-neighbor).
-
-> [!div class="nextstepaction"]
-> [Teljes forráskód megtekintése](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator)
-
-> [!div class="nextstepaction"]
-> [Élő minta megtekintése](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Simple%20Store%20Locator)
-
-További információ az Azure Maps lefedettségéről és képességeiről:
-
-> [!div class="nextstepaction"]
-> [Nagyítási szintek és csemperács](zoom-levels-and-tile-grid.md)
 
 További példakódok és az interaktív kódolási felület bemutatása:
 
 > [!div class="nextstepaction"]
 > [A Térkép vezérlőelem használata](how-to-use-map-control.md)
-
-> [!div class="nextstepaction"]
-> [Adatvezérelt stíluskifejezések használata](data-driven-style-expressions-web-sdk.md)

@@ -12,16 +12,16 @@ ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: 3b060d7caff425414cc7f4e8bbea5d9a29572094
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: d14e31aa4fbeb2d29137c554f14333e1617c484a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89178943"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265901"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Útmutató: Az erőforrásokhoz hozzáférő Azure AD-alkalmazás és -szolgáltatásnév létrehozása a portálon
 
-Ez a cikk bemutatja, hogyan hozhat létre egy új Azure Active Directory (Azure AD) alkalmazást és egyszerű szolgáltatást, amely a szerepköralapú hozzáférés-vezérléssel használható. Ha olyan alkalmazásokkal, üzemeltetett szolgáltatásokkal vagy automatizált eszközökkel rendelkezik, amelyeknek szüksége van az erőforrások elérésére vagy módosítására, létrehozhat egy identitást az alkalmazáshoz. Ezt az identitást szolgáltatásnévnek nevezzük. Az erőforrásokhoz való hozzáférést az egyszerű szolgáltatáshoz rendelt szerepkörök korlátozzák, így szabályozhatja, hogy mely erőforrások érhetők el és milyen szinten. Biztonsági okokból az automatizált eszközök esetében minden esetben ajánlott a szolgáltatásnevek használata a felhasználói identitással való bejelentkezés helyett. 
+Ez a cikk bemutatja, hogyan hozhat létre egy új Azure Active Directory (Azure AD) alkalmazást és egyszerű szolgáltatást, amely a szerepköralapú hozzáférés-vezérléssel használható. Ha olyan alkalmazásokkal, üzemeltetett szolgáltatásokkal vagy automatizált eszközökkel rendelkezik, amelyeknek szüksége van az erőforrások elérésére vagy módosítására, létrehozhat egy identitást az alkalmazáshoz. Ezt az identitást szolgáltatásnévnek nevezzük. Az erőforrásokhoz való hozzáférést az egyszerű szolgáltatáshoz rendelt szerepkörök korlátozzák, így szabályozhatja, hogy mely erőforrások érhetők el és milyen szinten. Biztonsági okokból az automatizált eszközök esetében minden esetben ajánlott a szolgáltatásnevek használata a felhasználói identitással való bejelentkezés helyett.
 
 Ez a cikk bemutatja, hogyan hozhatja létre az egyszerű szolgáltatásnevet a Azure Portalban a portál használatával. Egy egybérlős alkalmazásra koncentrál, amelyben az alkalmazás csak egy szervezeten belül fut. Általában egybérlős alkalmazásokat használ a szervezeten belül futó üzletági alkalmazásokhoz.  [A Azure PowerShell használatával is létrehozhat egy egyszerű szolgáltatást](howto-authenticate-service-principal-powershell.md).
 
@@ -129,12 +129,13 @@ Ha programozott módon jelentkezik be, át kell adnia a bérlő AZONOSÍTÓját 
 
    ![Az alkalmazás (ügyfél) AZONOSÍTÓjának másolása](./media/howto-create-service-principal-portal/copy-app-id.png)
 
-## <a name="upload-a-certificate-or-create-a-secret-for-signing-in"></a>Tanúsítvány feltöltése vagy titkos kód létrehozása a bejelentkezéshez
-Az egyszerű szolgáltatásokhoz kétféle hitelesítés érhető el: jelszó alapú hitelesítés (alkalmazás titkos kódja) és tanúsítványalapú hitelesítés.  Javasoljuk, hogy használjon egy tanúsítványt, de új alkalmazás-titkos kulcsot is létrehozhat.
+## <a name="authentication-two-options"></a>Hitelesítés: két lehetőség
 
-### <a name="upload-a-certificate"></a>Tanúsítvány feltöltése
+Az egyszerű szolgáltatásokhoz kétféle hitelesítés érhető el: jelszó alapú hitelesítés (alkalmazás titkos kódja) és tanúsítványalapú hitelesítés. *Javasoljuk, hogy használjon tanúsítványokat*, de létrehozhat egy alkalmazás-titkot is.
 
-Ha van ilyen, használhat meglévő tanúsítványt is.  Lehetőség van arra is, hogy önaláírt tanúsítványt *csak tesztelési célra*hozzon létre. Önaláírt tanúsítvány létrehozásához nyissa meg a PowerShellt, és futtassa a [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) parancsot a következő paraméterekkel a tanúsítvány létrehozásához a számítógép felhasználói tanúsítványtárolójában: 
+### <a name="option-1-upload-a-certificate"></a>1. lehetőség: tanúsítvány feltöltése
+
+Ha van ilyen, használhat meglévő tanúsítványt is.  Lehetőség van arra is, hogy önaláírt tanúsítványt *csak tesztelési célra*hozzon létre. Önaláírt tanúsítvány létrehozásához nyissa meg a PowerShellt, és futtassa a [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) parancsot a következő paraméterekkel a tanúsítvány létrehozásához a számítógép felhasználói tanúsítványtárolójában:
 
 ```powershell
 $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocation "Cert:\CurrentUser\My"  -KeyExportPolicy Exportable -KeySpec Signature
@@ -163,7 +164,7 @@ A tanúsítvány feltöltése:
 
 Miután regisztrálta a tanúsítványt az alkalmazással az alkalmazás regisztrációs portálján, engedélyeznie kell az ügyfélalkalmazás kódját a tanúsítvány használatához.
 
-### <a name="create-a-new-application-secret"></a>Új titkos alkalmazáskulcs létrehozása
+### <a name="option-2-create-a-new-application-secret"></a>2. lehetőség: új alkalmazás titkos kódjának létrehozása
 
 Ha úgy dönt, hogy nem használ tanúsítványt, létrehozhat egy új alkalmazás-titkot.
 
@@ -178,14 +179,15 @@ Ha úgy dönt, hogy nem használ tanúsítványt, létrehozhat egy új alkalmaz�
    ![Másolja a titkos értéket, mert később nem lehet beolvasni](./media/howto-create-service-principal-portal/copy-secret.png)
 
 ## <a name="configure-access-policies-on-resources"></a>Hozzáférési szabályzatok konfigurálása az erőforrásokon
-Ne feledje, hogy további engedélyeket kell konfigurálnia az alkalmazás számára szükséges erőforrásokhoz. A [Key Vault hozzáférési házirendjeit is frissítenie](../../key-vault/general/secure-your-key-vault.md#data-plane-and-access-policies) kell, hogy az alkalmazás hozzáférjen a kulcsokhoz, titkokhoz vagy tanúsítványokhoz.  
+Ne feledje, hogy további engedélyeket kell konfigurálnia az alkalmazás számára szükséges erőforrásokhoz. A [Key Vault hozzáférési házirendjeit is frissítenie](../../key-vault/general/secure-your-key-vault.md#data-plane-and-access-policies) kell, hogy az alkalmazás hozzáférjen a kulcsokhoz, titkokhoz vagy tanúsítványokhoz.
 
-1. A [Azure Portal](https://portal.azure.com)navigáljon a kulcstartóhoz, és válassza a **hozzáférési szabályzatok**lehetőséget.  
+1. A [Azure Portal](https://portal.azure.com)navigáljon a kulcstartóhoz, és válassza a **hozzáférési szabályzatok**lehetőséget.
 1. Válassza a **hozzáférési házirend hozzáadása**lehetőséget, majd válassza ki az alkalmazáshoz használni kívánt kulcs-, titkos és tanúsítvány-engedélyeket.  Válassza ki a korábban létrehozott szolgáltatásnevet.
 1. A hozzáférési szabályzat hozzáadásához válassza a **Hozzáadás** lehetőséget, majd a **Mentés** gombra kattintva véglegesítse a módosításokat.
     ![Hozzáférési szabályzat hozzáadása](./media/howto-create-service-principal-portal/add-access-policy.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Megtudhatja, hogyan [hozhat létre egyszerű szolgáltatásnevet a Azure PowerShell használatával](howto-authenticate-service-principal-powershell.md).
-* A biztonsági szabályzatok megadásával kapcsolatos további információkért lásd: [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md).  
+* A biztonsági szabályzatok megadásával kapcsolatos további információkért lásd: [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md).
 * A felhasználók számára megadható vagy megtagadható elérhető műveletek listáját itt tekintheti meg: [Azure Resource Manager erőforrás-szolgáltatói műveletek](../../role-based-access-control/resource-provider-operations.md).
+* További információ az alkalmazás-regisztrációk **Microsoft Graph**használatával történő használatáról: [alkalmazások](/graph/api/resources/application) API-referenciája.

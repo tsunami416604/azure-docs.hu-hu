@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: fc306dbca3191f04a85f2c5cc88d41336c13e09c
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: dc47bf73f39d73861c166674a692932d51064e6d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496389"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288528"
 ---
 # <a name="sql-on-demand-preview-in-azure-synapse-analytics"></a>SQL on-demand (előzetes verzió) az Azure szinapszis Analytics szolgáltatásban 
 
@@ -25,9 +25,11 @@ Az SQL on-demand egy lekérdezési szolgáltatás a adatközpontban található 
 - A jól ismert T-SQL-szintaxist, amellyel az adatlekérdezés nem szükséges, és nem kell egy speciális tárolóba másolni vagy betölteni az adatfájlokat. 
 - Integrált kapcsolódás a T-SQL felületen keresztül, amely számos üzleti intelligenciát és alkalmi lekérdezési eszközt kínál, beleértve a legnépszerűbb illesztőprogramokat is. 
 
-Az SQL on-demand egy elosztott adatfeldolgozó rendszer, amely nagy mennyiségű adattal és számítási feladatokhoz készült. Az SQL on-demand lehetővé teszi a nagy mennyiségű adatok elemzését másodpercek alatt, a munkaterhelés függvényében. A beépített lekérdezés-végrehajtás hibatűrésének köszönhetően a rendszer magas megbízhatóságot és sikerességi arányt biztosít, még a nagy adatkészleteket is tartalmazó hosszan futó lekérdezések esetében is.
+Az SQL on-demand egy elosztott adatfeldolgozó rendszer, amely nagy léptékű adatokra és számítási funkciókra épül. Az SQL on-demand lehetővé teszi a nagy mennyiségű adatok elemzését másodpercek alatt, a munkaterhelés függvényében. A beépített lekérdezés-végrehajtás hibatűrésének köszönhetően a rendszer magas megbízhatóságot és sikerességi arányt biztosít, még a nagy adatkészleteket is tartalmazó hosszan futó lekérdezések esetében is.
 
-Az SQL on-demand kiszolgáló nélküli, ezért nincs szükség a telepítéshez vagy a fürtök karbantartásához szükséges infrastruktúra kiépítésére. A szolgáltatás alapértelmezett végpontja minden Azure szinapszis-munkaterületen elérhető, így a munkaterület létrehozása után azonnal elindíthatja az adatlekérdezést. A fenntartott erőforrások díjmentesek, ezért csak a futtatott lekérdezések által beolvasott adatmennyiségért kell fizetnie, így ez a modell egy valódi, használaton kívüli modell.  
+Az SQL igény szerinti kiszolgáló nélküli, ezért nincs szükség a telepítéshez és a fürtök karbantartásához szükséges infrastruktúra kiépítésére. A szolgáltatás alapértelmezett végpontja minden Azure szinapszis-munkaterületen elérhető, így a munkaterület létrehozása után azonnal elindíthatja az adatlekérdezést. 
+
+A fenntartott erőforrások díjmentesek, csak a futtatott lekérdezések által feldolgozott adatmennyiségért kell fizetnie, ezért ez a modell egy valódi használaton kívüli modell.  
 
 Ha az adatfolyamatban az Azure Szinapszishoz Apache Sparkt használ, az adatok előkészítése, tisztítása vagy dúsítása érdekében [lekérdezheti](develop-storage-files-spark-tables.md) a folyamat során létrehozott külső Spark-táblákat közvetlenül az SQL igény szerint. Használja a [privát hivatkozást](../security/how-to-connect-to-workspace-with-private-links.md) , hogy az SQL igény szerinti végpontját a [felügyelt munkaterület VNet](../security/synapse-workspace-managed-vnet.md)hozza.  
 
@@ -56,7 +58,7 @@ Az SQL on-demand lehetővé teszi a meglévő SQL ad-hoc lekérdezési és üzle
 
 ## <a name="t-sql-support"></a>T-SQL-támogatás
 
-Az SQL on-demand a T-SQL lekérdezési felületét kínálja, amely némileg kibővített/bővíthető bizonyos aspektusokban, hogy a részben strukturált és strukturálatlan adatmennyiségek lekérdezéséhez igazodjon. Emellett a T-SQL nyelv néhány aspektusa nem támogatott az SQL igény szerinti kialakítása miatt, például a DML funkció jelenleg nem támogatott.
+Az SQL on-demand a T-SQL lekérdezési felületét kínálja, amely némileg kibővített/bővíthető bizonyos aspektusokban, hogy a részben strukturált és strukturálatlan adatmennyiségek lekérdezéséhez igazodjon. Emellett a T-SQL nyelv bizonyos szempontjai nem támogatottak az SQL igény szerinti kialakítása miatt, például a DML funkció jelenleg nem támogatott.
 
 - A számítási feladatok jól ismert fogalmakkal rendezhetők:
 - Adatbázisok – az igény szerinti SQL-végpont több adatbázissal is rendelkezhet.
@@ -81,7 +83,7 @@ Az SQL on-demand nem rendelkezik helyi tárterülettel, csak a metaadat-objektum
 
 - Táblák
 - Triggerek
-- Lényeges nézetek
+- Tényleges táblán alapuló nézetek
 - A nézetekhez és a biztonsághoz kapcsolódó DDL-utasítások
 - DML-utasítások
 
@@ -141,7 +143,7 @@ Az SQL igény szerinti szolgáltatásba bejelentkezett felhasználónak jogosult
 
 - A **felhasználói identitás** (más néven "átmenő") olyan engedélyezési típus, ahol az SQL-on igénybe vett Azure ad-felhasználó identitása az adatokhoz való hozzáférés engedélyezésére szolgál. Az adatok elérése előtt az Azure Storage rendszergazdájának engedélyeket kell adnia az Azure AD-felhasználónak az adatokhoz való hozzáféréshez. Ez az engedélyezési típus az SQL on-demand szolgáltatásba bejelentkezett Azure AD-felhasználót használja, ezért az SQL-felhasználók típusai nem támogatottak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A végponti kapcsolatok és a lekérdezési fájlok további információi a következő cikkekben találhatók: 
 - [Kapcsolódás a végponthoz](connect-overview.md)
 - [Fájlok lekérdezése](develop-storage-files-overview.md)

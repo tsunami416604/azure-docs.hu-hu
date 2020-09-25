@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 8083edaf647f52a07d55dddf21fe5751340783be
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.reviewer: jrasnick
+ms.openlocfilehash: 35eef6951f844ab60caec70033e41e23a7920d3a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496236"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288307"
 ---
 # <a name="query-parquet-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>A Parquet-fájlok lekérdezése az SQL on-demand (előzetes verzió) használatával az Azure szinapszis Analyticsben
 
@@ -22,7 +22,7 @@ Ebből a cikkből megtudhatja, hogyan írhat egy lekérdezést az SQL on-demand 
 
 ## <a name="quickstart-example"></a>Rövid útmutató – példa
 
-`OPENROWSET`a függvény lehetővé teszi a parketta-fájl tartalmának olvasását a fájl URL-címének megadásával.
+`OPENROWSET` a függvény lehetővé teszi a parketta-fájl tartalmának olvasását a fájl URL-címének megadásával.
 
 ### <a name="read-parquet-file"></a>Parketta-fájl olvasása
 
@@ -57,7 +57,7 @@ Ha egy adatforrás SAS-kulccsal vagy egyéni identitással védett, az [adatforr
 
 ### <a name="explicitly-specify-schema"></a>Séma explicit meghatározása
 
-`OPENROWSET`lehetővé teszi explicit módon megadhatja, hogy mely oszlopokat szeretné beolvasni a fájlból a `WITH` záradék használatával:
+`OPENROWSET` lehetővé teszi explicit módon megadhatja, hogy mely oszlopokat szeretné beolvasni a fájlból a `WITH` záradék használatával:
 
 ```sql
 select top 10 *
@@ -193,6 +193,6 @@ A Parquet-fájlok minden oszlop típusának leírását tartalmazzák. A követk
 |[Összetett típus](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#lists) |LISTÁJÁT |varchar (max), JSON-ba szerializálva |
 |[Összetett típus](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#maps)|Térkép|varchar (max), JSON-ba szerializálva |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkből megtudhatja, hogyan lehet [lekérdezni a parketta beágyazott típusait](query-parquet-nested-types.md).

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/09/2020
+ms.date: 09/22/2020
 ms.author: b-juche
-ms.openlocfilehash: 9822d7bd769ea161ddcf195d695f27024351ca4b
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 4b8c879a89da47a081e4b95382d17b3d2baede9d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662457"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325572"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Gyakori kérdések a Azure NetApp Files
 
@@ -132,6 +132,12 @@ Azure NetApp Files támogatja a NFSv3 és a NFSv 4.1-es verziója. [A köteteket
 
 Megadhatja, hogy a főfiók hozzáférhet-e a kötethez, vagy sem a kötet exportálási házirendjének használatával. További részletek: az [exportálási házirend konfigurálása NFS-kötethez](azure-netapp-files-configure-export-policy.md) .
 
+### <a name="can-i-use-the-same-file-path-volume-creation-token-for-multiple-volumes"></a>Használhatok-e több kötethez ugyanazt a elérési utat (mennyiségi létrehozási tokent)?
+
+Igen, írhat. A fájl elérési útját azonban egy másik előfizetésben vagy egy másik régióban kell használni.   
+
+Létrehozhat például egy nevű kötetet `vol1` . Ezután létrehoz egy másik kötetet is `vol1` , amelyet más kapacitású készletben, de ugyanabban az előfizetésben és régióban is hívnak. Ebben az esetben az azonos nevű kötet használata `vol1` hibát okoz. A fájl elérési útjának használatához a névnek egy másik régióban vagy előfizetésben kell lennie.
+
 ## <a name="smb-faqs"></a>SMB – gyakori kérdések
 
 ### <a name="which-smb-versions-are-supported-by-azure-netapp-files"></a>Mely SMB-verziókat támogatja a Azure NetApp Files?
@@ -161,12 +167,6 @@ Azure NetApp Files támogatja a Active Directory tartományi szolgáltatások Wi
 ### <a name="why-does-the-available-space-on-my-smb-client-not-show-the-provisioned-size"></a>Miért nem jelenik meg a kiépített méret az SMB-ügyfélen elérhető szabad terület?
 
 Az SMB-ügyfél által jelentett kötet mérete az a maximális méret, ameddig a Azure NetApp Files kötet képes növekedni. Az SMB-ügyfélen látható Azure NetApp Files kötet mérete nem tükrözi a kötet kvótáját vagy méretét. A Azure NetApp Files kötet méretét vagy kvótáját a Azure Portal vagy az API használatával szerezheti be.
-
-<!--
-### Does Azure NetApp Files support Kerberos encryption?
-
-Yes, by default, Azure NetApp Files supports both AES-128 and AES-256 encryption for traffic between the service and the targeted Active Directory domain controllers. See [Create an SMB volume for Azure NetApp Files](azure-netapp-files-create-volumes-smb.md) for requirements. 
--->
 
 <!--
 ### Does Azure NetApp Files support LDAP signing? 

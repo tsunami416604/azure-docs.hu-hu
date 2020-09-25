@@ -1,6 +1,6 @@
 ---
 title: 'Oktatóanyag: elektromos járművek irányítása Azure Notebooks (Python) használatával | Microsoft Azure térképek'
-description: Az elektromos járművek átirányítása Microsoft Azure Maps útválasztási API-k és Azure Notebooks használatával.
+description: Útmutató az elektromos járművek átirányításához Microsoft Azure Maps Routing API-k és Azure Notebooks használatával
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 506429f51ac442b73adea98058a833f52a728c72
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 28fcdc992f98ff380467718314148984559a7fee
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88639749"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335228"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>Oktatóanyag: elektromos járművek átirányítása Azure Notebooks használatával (Python)
 
@@ -387,8 +387,6 @@ display(Image(staticMapImage))
 
 ![Az útvonalat ábrázoló Térkép](./media/tutorial-ev-routing/route.png)
 
-## <a name="next-steps"></a>Következő lépések
-
 Ebből az oktatóanyagból megtudhatta, hogyan hívhatja közvetlenül a Azure Maps REST API-kat, és hogyan jelenítheti meg Azure Maps-adatok a Python használatával.
 
 Az oktatóanyagban használt Azure Maps API-k megismeréséhez tekintse meg a következőt:
@@ -399,7 +397,11 @@ Az oktatóanyagban használt Azure Maps API-k megismeréséhez tekintse meg a k�
 * [Render-Térkép képe](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
 * [Útvonal-mátrix küldése](https://docs.microsoft.com/rest/api/maps/route/postroutematrix)
 * [Útvonal irányának beolvasása](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)
+* [Azure Maps REST API-k](https://docs.microsoft.com/azure/azure-maps/consumption-model)
 
-Azure Maps REST API-k teljes listájáért lásd: [Azure Maps REST API](https://docs.microsoft.com/azure/azure-maps/consumption-model)-k.
+## <a name="next-steps"></a>Következő lépések
 
-További információ a Azure Notebooksről: [Azure Notebooks](https://docs.microsoft.com/azure/notebooks).
+További információ a Azure Notebooksről:
+
+> [!div class="nextstepaction"]
+> [Azure Notebooks](https://docs.microsoft.com/azure/notebooks)

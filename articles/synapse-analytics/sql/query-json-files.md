@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 04b2d7842222426010b76a1a7ed4c72ee74e3d87
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.reviewer: jrasnick
+ms.openlocfilehash: 0757c867d46144ac9fb9b9eca8b2a588aeeb15d6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489724"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288324"
 ---
 # <a name="query-json-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>JSON-fájlok lekérdezése az SQL on-demand (előzetes verzió) használatával az Azure szinapszis Analyticsben
 
@@ -24,7 +24,7 @@ Ebből a cikkből megtudhatja, hogyan írhat egy lekérdezést az SQL on-demand 
 
 ## <a name="read-json-documents"></a>JSON-dokumentumok olvasása
 
-A JSON-fájl tartalmának megtekintésének legegyszerűbb módja a fájl URL-címének `OPENROWSET` megadásához, a CSV megadása `FORMAT` , valamint `0x0b` a és a értékének beállítása `fieldterminator` `fieldquote` . Ha el kell olvasnia a sorokra tagolt JSON-fájlokat, akkor ez elég. Ha klasszikus JSON-fájllal rendelkezik, meg kell adnia a értékeit `0x0b` `rowterminator` . `OPENROWSET`a függvény a JSON-t elemzi, és az összes dokumentumot a következő formátumban fogja visszaadni:
+A JSON-fájl tartalmának megtekintésének legegyszerűbb módja a fájl URL-címének megadása a függvény számára `OPENROWSET` , a CSV megadása `FORMAT` , valamint `0x0b` a és a értékének beállítása `fieldterminator` `fieldquote` . Ha el kell olvasnia a sorokra tagolt JSON-fájlokat, akkor ez elég. Ha klasszikus JSON-fájllal rendelkezik, meg kell adnia a értékeit `0x0b` `rowterminator` . `OPENROWSET` a függvény a JSON-t elemzi, és az összes dokumentumot a következő formátumban fogja visszaadni:
 
 | doc |
 | --- |
@@ -33,7 +33,7 @@ A JSON-fájl tartalmának megtekintésének legegyszerűbb módja a fájl URL-c�
 |{"date_rep": "2020-07-26", "nap": 26, "hónap": 7, "év": 2020, "Cases": 4, "halálesetek": 0, "geo_id": "AF"}|
 |{"date_rep": "2020-07-27", "nap": 27, "hónap": 7, "év": 2020, "Cases": 8, "halálesetek": 0, "geo_id": "AF"}|
 
-Ha a fájl nyilvánosan elérhető, vagy ha az Azure AD-identitása hozzáfér ehhez a fájlhoz, akkor az alábbi példákban látható módon láthatja a fájl tartalmát.
+Ha a fájl nyilvánosan elérhető, vagy ha az Azure AD-identitása hozzáfér ehhez a fájlhoz, a fájl tartalmát az alábbi példákban látható módon kell megjelennie.
 
 ### <a name="read-json-files"></a>JSON-fájlok olvasása
 
@@ -58,11 +58,11 @@ from openrowset(
     ) with (doc nvarchar(max)) as rows
 ```
 
-Ez a lekérdezés minden JSON-dokumentumot az eredményhalmaz külön soraként ad vissza. Győződjön meg arról, hogy el tudja érni ezt a fájlt. Ha a fájlt SAS-kulccsal vagy egyéni identitással védi, akkor az [SQL-bejelentkezéshez a kiszolgálói szintű hitelesítő adatokat](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)kell beállítania. 
+Ez a lekérdezés minden JSON-dokumentumot az eredményhalmaz külön soraként ad vissza. Győződjön meg arról, hogy el tudja érni ezt a fájlt. Ha a fájlt SAS-kulccsal vagy egyéni identitással védi, be kell állítania a [kiszolgálói szintű hitelesítő adatokat az SQL-bejelentkezéshez](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential). 
 
 ### <a name="data-source-usage"></a>Adatforrás használata
 
-Az előző példa a fájl teljes elérési útját használja. Alternatív megoldásként létrehozhat egy külső adatforrást is, amely a tároló gyökérkönyvtárára mutat, és ezt az adatforrást és a fájl relatív elérési útját használja a következő `OPENROWSET` függvényben:
+Az előző példa a fájl teljes elérési útját használja. Alternatív megoldásként létrehozhat egy külső adatforrást is, amely a tároló gyökérkönyvtárára mutat, és ezt az adatforrást és a függvényben lévő fájl relatív elérési útját használja `OPENROWSET` :
 
 ```sql
 create external data source covid
@@ -167,7 +167,7 @@ where country = 'Serbia'
 order by country, date_rep desc;
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A sorozat következő cikkei a következőket szemléltetik:
 

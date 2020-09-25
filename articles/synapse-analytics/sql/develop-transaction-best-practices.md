@@ -1,6 +1,6 @@
 ---
 title: SQL-készlet tranzakcióinak optimalizálása
-description: Megtudhatja, hogyan optimalizálhatja a tranzakciós kód teljesítményét az SQL-készletben (az adatraktárban), miközben minimalizálja a hosszú visszaállítások kockázatát.
+description: Útmutató a tranzakciós kód teljesítményének optimalizálásához az SQL-készletben.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 0156cfb0720e78b87abc36f0811db69bc8435894
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 174ae84e66f10db4ad24ed561b228f0031492d97
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503191"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288647"
 ---
 # <a name="optimize-transactions-in-sql-pool"></a>Tranzakciók optimalizálása az SQL-készletben
 
@@ -23,7 +23,7 @@ Megtudhatja, hogyan optimalizálhatja a tranzakciós kód teljesítményét az S
 
 ## <a name="transactions-and-logging"></a>Tranzakciók és naplózás
 
-A tranzakciók a kapcsolatok adatbázis-működtetői egyik fontos összetevője. Az SQL-készlet tranzakciókat használ az adatmódosítás során. Ezek a tranzakciók explicitek vagy implicitek lehetnek. Az egyszeri INSERT, UPDATE és DELETE utasítások mindegyike implicit tranzakcióra mutat. A Explicit tranzakciók a BEGIN TRAN, a COMMon TRAN vagy a VISSZAÁLLÍTÁSi TRAN szolgáltatást használják. A explicit tranzakciókat jellemzően akkor használják, ha több módosítási utasítást kell összekötni egyetlen atomi egységben.
+A tranzakciók a kapcsolatok adatbázis-működtetői egyik fontos összetevője. Az SQL-készlet tranzakciókat használ az adatmódosítás során. Ezek a tranzakciók explicitek vagy implicitek lehetnek. Az egyszeri INSERT, UPDATE és DELETE utasítások mindegyike implicit tranzakcióra mutat. A Explicit tranzakciók a BEGIN TRAN, a COMMon TRAN vagy a VISSZAÁLLÍTÁSi TRAN szolgáltatást használják. A explicit tranzakciókat jellemzően akkor használják, ha több módosítási utasítást kell egyesíteni egyetlen atomi egységben.
 
 Az SQL-készlet a tranzakciós naplók használatával véglegesíti az adatbázis módosításait. Minden elosztás saját tranzakciónaplóval rendelkezik. A tranzakciónapló-írások automatikusak. Nincs szükség konfigurációra. Bár ez a folyamat garantálja az írást, a rendszer terhelést vezet be. Ezt a hatást a tranzakciós hatékony kód írásával csökkentheti. A tranzakciós szempontból hatékony kód nagyjából két kategóriába esik.
 
@@ -68,7 +68,7 @@ CTAS és Beszúrás... Válassza a tömeges betöltési műveletek lehetőséget
 
 | Elsődleges index | Betöltési forgatókönyv | Naplózási mód |
 | --- | --- | --- |
-| Halommemória |Bármely |**Minimális** |
+| Halommemória |Bármelyik |**Minimális** |
 | Fürtözött index |Üres céltábla |**Minimális** |
 | Fürtözött index |A betöltött sorok nem fedik át a cél meglévő lapjait |**Minimális** |
 | Fürtözött index |A betöltött sorok átfedésben vannak a cél meglévő lapjaival |Összes |
@@ -84,7 +84,7 @@ A fürtözött indexekkel rendelkező, nem üres táblába való betöltés ált
 
 ## <a name="optimize-deletes"></a>Törlések optimalizálása
 
-A DELETE egy teljesen naplózott művelet.  Ha egy táblán vagy partíción nagy mennyiségű adattal kell törölnie, gyakran több értelme van `SELECT` a megőrizni kívánt információknak, ami minimálisan naplózott műveletként futtatható.  Az adatválasztáshoz hozzon létre egy új táblát a [CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)használatával.  A létrehozást követően az [Átnevezés](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) használatával cserélje ki a régi táblát az újonnan létrehozott táblázatra.
+A DELETE egy teljesen naplózott művelet.  Ha egy táblán vagy partíción nagy mennyiségű adattal kell törölnie, gyakran több értelme van `SELECT` a megőrizni kívánt információknak, ami minimálisan naplózott műveletként futtatható.  Az adatválasztáshoz hozzon létre egy új táblát a [CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)használatával.  A létrehozást követően az [Átnevezés](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) használatával cserélje ki a régi táblát az újonnan létrehozott táblázatra.
 
 ```sql
 -- Delete all sales transactions for Promotions except PromotionKey 2.
@@ -420,6 +420,6 @@ A legjobb megoldás az, ha az SQL-készlet szüneteltetése vagy skálázása el
 * A hosszú ideig futó műveletek újraírása a [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) használatával
 * A művelet felosztása darabokra; a sorok egy részhalmazán működik
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az elkülönítési szintekkel és a tranzakciós korlátokkal kapcsolatos további tudnivalókért tekintse meg az [SQL-készletben található tranzakciókat](develop-transactions.md) .  Az egyéb ajánlott eljárások áttekintését lásd: [SQL Pool – ajánlott eljárások](best-practices-sql-pool.md).

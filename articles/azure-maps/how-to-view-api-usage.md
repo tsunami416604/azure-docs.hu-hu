@@ -4,16 +4,16 @@ description: 'Megtudhatja, hogyan tekintheti meg Azure Maps API használati metr
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 08/06/2018
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 766bb2eaf6878a8d7261472ba11ea7acd46de92e
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 3f5dfcafe1c7b08a2c8320f807bf809107197d40
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036487"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335279"
 ---
 # <a name="view-azure-maps-api-usage-metrics"></a>Az Azure Maps API használati metrikáinak megtekintése
 
@@ -56,7 +56,7 @@ Folytassa a következő szakasszal, ha testre kell szabnia ezeket a diagramokat 
 
 8. Ugyanezen a gráfon több mérőszám is megfigyelhető, egyszerűen kattintson a felül található **metrika hozzáadása** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerkedjen meg a Azure Maps API-kkal, amelyeken nyomon szeretné követni a használatot:
 > [!div class="nextstepaction"] 

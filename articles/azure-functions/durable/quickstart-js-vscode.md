@@ -1,17 +1,17 @@
 ---
 title: Az első tartós funkció létrehozása az Azure-ban JavaScript használatával
-description: Azure tartós függvény létrehozása és közzététele a Visual Studio Code használatával.
+description: Azure tartós függvény létrehozása és közzététele a JavaScriptben a Visual Studio Code használatával.
 author: anthonychu
 ms.topic: quickstart
 ms.date: 05/07/2020
 ms.reviewer: azfuncdf, antchu
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 7614cec43fd9b2f294a04ed266cb0614f6cde872
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: devx-track-js
+ms.openlocfilehash: f8ffa90ba0f1ac32d4691165fabf3d8eb9fb7605
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291841"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335449"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>Az első tartós függvény létrehozása a JavaScriptben
 
@@ -104,7 +104,7 @@ Ezután adja hozzá a hivatkozott `Hello` tevékenység függvényt.
     | Sablon kiválasztása a függvényhez | Durable Functions tevékenység | Tevékenységi függvény létrehozása |
     | Adja meg a függvény nevét | Üdvözöljük | A tevékenység függvényének neve |
 
-Hozzáadta a `Hello` Orchestrator által meghívott tevékenység-függvényt. Nyissa meg a *Hello/index.jst* , és tekintse meg, hogy bemenetként és Üdvözlésként adja meg a nevet. A Activity függvény olyan műveleteket hajt végre, mint például egy adatbázis hívása vagy egy számítási művelet végrehajtása.
+Hozzáadta a `Hello` Orchestrator által meghívott tevékenység-függvényt. Nyissa meg a *Hello/index.jst * , és tekintse meg, hogy bemenetként és Üdvözlésként adja meg a nevet. A Activity függvény olyan műveleteket hajt végre, mint például egy adatbázis hívása vagy egy számítási művelet végrehajtása.
 
 Végül egy HTTP által aktivált függvényt fog hozzáadni, amely elindítja a koordinálást.
 
@@ -120,7 +120,7 @@ Végül egy HTTP által aktivált függvényt fog hozzáadni, amely elindítja a
     | Adja meg a függvény nevét | DurableFunctionsHttpStart | A tevékenység függvényének neve |
     | Engedélyszint | Névtelen | Bemutató céljából engedélyezze, hogy a függvény hitelesítés nélkül legyen meghívva |
 
-Olyan HTTP által aktivált függvényt adott hozzá, amely egy előkészítést indít el. Nyissa meg a *DurableFunctionsHttpStart/index.jst* , és tekintse meg, hogy az `client.startNew` új előkészítés elindításához használja-e. Ezután egy olyan `client.createCheckStatusResponse` http-választ ad vissza, amely URL-címeket tartalmaz, amelyek az új előkészítés figyelésére és kezelésére használhatók.
+Olyan HTTP által aktivált függvényt adott hozzá, amely egy előkészítést indít el. Nyissa meg a *DurableFunctionsHttpStart/index.jst * , és tekintse meg, hogy az `client.startNew` új előkészítés elindításához használja-e. Ezután egy olyan `client.createCheckStatusResponse` http-választ ad vissza, amely URL-címeket tartalmaz, amelyek az új előkészítés figyelésére és kezelésére használhatók.
 
 Most már rendelkezik egy Durable Functions alkalmazással, amely helyileg futtatható és üzembe helyezhető az Azure-ban.
 
@@ -186,11 +186,11 @@ Miután ellenőrizte, hogy a függvény megfelelően fut a helyi számítógépe
 
 ## <a name="test-your-function-in-azure"></a>A függvény tesztelése az Azure-ban
 
-1. Másolja a vágólapra a HTTP-eseményindító URL-címét az **Output** (Kimenet) panelről. A HTTP-triggert használó függvényt meghívó URL-címnek a következő formátumúnak kell lennie:`http://<functionappname>.azurewebsites.net/api/orchestrators/HelloOrchestrator`
+1. Másolja a vágólapra a HTTP-eseményindító URL-címét az **Output** (Kimenet) panelről. A HTTP-triggert használó függvényt meghívó URL-címnek a következő formátumúnak kell lennie: `http://<functionappname>.azurewebsites.net/api/orchestrators/HelloOrchestrator`
 
 2. Illessze be a HTTP-kérelem új URL-címét a böngésző címsorába. Ugyanezt az állapot-választ kell megadnia, mint korábban a közzétett alkalmazás használatakor.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Visual Studio Code használatával JavaScript tartós Function-alkalmazást hozhat létre és tehet közzé.
 

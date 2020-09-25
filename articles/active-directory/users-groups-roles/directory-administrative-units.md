@@ -1,5 +1,5 @@
 ---
-title: Felügyeleti egységek kezelése (előzetes verzió) – Azure AD | Microsoft Docs
+title: Felügyeleti egységek a Azure Active Directoryban | Microsoft Docs
 description: Felügyeleti egységek használata az engedélyek részletesebb delegálásához Azure Active Directory
 services: active-directory
 documentationcenter: ''
@@ -9,21 +9,21 @@ ms.service: active-directory
 ms.topic: overview
 ms.subservice: users-groups-roles
 ms.workload: identity
-ms.date: 07/27/2020
+ms.date: 09/22/2020
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5854ef57a08218fee4479eb9e075824f4a1ff781
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: a31c4a5c9d20b5b248f7d722ed3d9289bbb4dded
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89376383"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335816"
 ---
-# <a name="administrative-units-management-in-azure-active-directory-preview"></a>Felügyeleti egységek felügyelete Azure Active Directoryban (előzetes verzió)
+# <a name="administrative-units-in-azure-active-directory"></a>Felügyeleti egységek a Azure Active Directory
 
-Ez a cikk a Azure Active Directory (Azure AD) felügyeleti egységeit ismerteti. A felügyeleti egység olyan Azure AD-erőforrás, amely más Azure AD-erőforrások tárolója lehet. Ebben az előzetes kiadásban egy felügyeleti egység csak felhasználókat és csoportokat tartalmazhat.
+Ez a cikk a Azure Active Directory (Azure AD) felügyeleti egységeit ismerteti. A felügyeleti egység olyan Azure AD-erőforrás, amely más Azure AD-erőforrások tárolója lehet. Egy felügyeleti egység csak felhasználókat és csoportokat tartalmazhat.
 
 A felügyeleti egységek lehetővé teszik olyan rendszergazdai engedélyek megadását, amelyek az Ön által meghatározott szervezeti egységre, régióra vagy más szegmensre korlátozódnak. A felügyeleti egységekkel engedélyeket delegálhat a regionális rendszergazdáknak, vagy megadhatja a szabályzatot egy részletességi szinten. A felhasználói fiók rendszergazdája például frissítheti a profil adatait, alaphelyzetbe állíthatja a jelszavakat, és hozzárendelheti a licenceket a felhasználók számára a felügyeleti egységben.
 
@@ -44,11 +44,11 @@ A felügyeleti egységek használatához prémium szintű Azure Active Directory
 
 ## <a name="manage-administrative-units"></a>Felügyeleti egységek kezelése
 
-Ebben az előzetes kiadásban a felügyeleti egységeket a Azure Portal, a PowerShell-parancsmagok és a parancsfájlok, vagy a Microsoft Graph használatával kezelheti. A részletekért tekintse meg a dokumentációt:
+A felügyeleti egységeket a Azure Portal, a PowerShell-parancsmagokkal és parancsfájlokkal, illetve a Microsoft Graphekkel kezelheti. A részletekért tekintse meg a dokumentációt:
 
 - [Szerepkörök létrehozása, eltávolítása, feltöltése és hozzáadása felügyeleti egységekhez](roles-admin-units-manage.md): az eljárások befejezése
-- Rendszergazdai [egységek](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0)használata: a felügyeleti egységekkel való együttműködés a PowerShell használatával
-- [Felügyeleti egység Graph-támogatás](/graph/api/resources/administrativeunit?view=graph-rest-beta): Részletes dokumentáció a Microsoft Graph felügyeleti egységekhez.
+- Rendszergazdai [egységek](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0&preserve-view=true)használata: a felügyeleti egységekkel való együttműködés a PowerShell használatával
+- [Felügyeleti egység Graph-támogatás](/graph/api/resources/administrativeunit?view=graph-rest-beta&preserve-view=true): Részletes dokumentáció a Microsoft Graph felügyeleti egységekhez.
 
 ### <a name="planning-your-administrative-units"></a>A felügyeleti egységek megtervezése
 

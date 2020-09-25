@@ -1,20 +1,20 @@
 ---
-title: 'Oktatóanyag: geokerítésen létrehozása és eszközök nyomon követése Azure Maps'
-description: Ismerje meg, hogyan állíthat be geokerítésen. Tekintse meg, hogyan követheti nyomon az eszközöket a geokerítésen viszonyítva a Azure Maps térbeli szolgáltatás használatával.
+title: 'Oktatóanyag: geokerítésen létrehozása és eszközök nyomon követése Microsoft Azure térképen'
+description: Útmutató a geokerítésen beállításához. Tekintse meg, hogyan követheti nyomon az eszközöket a geokerítésen viszonyítva a Azure Maps térbeli szolgáltatás használatával
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 8/11/2020
+ms.date: 8/20/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: b374bbe086281c7f7914334be6ca275f0fd05b7f
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 7a0c39b6d2369a1279fee3905083f0660a4aabb8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90056509"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335194"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>Oktatóanyag: Geokerítés beállítása az Azure Maps használatával
 
@@ -429,14 +429,14 @@ Az előző GeoJSON-válaszban a berendezés a fő hely geokerítésen maradt, de
 
 Az előző GeoJSON-válaszban a berendezés a fő hely geokerítésen maradt, de kilépett a geokerítésen alhelyről. Figyelje meg azonban, hogy az `userTime` érték a `expiredTime` geokerítésen-adatként megadott módon van megadva. Ennek eredményeképpen a paraméter a (z) értékre `isEventPublished` van beállítva `false` , és az Operations Manager nem kap e-mail-értesítést.
 
-### <a name="location-547637988-1221338344"></a>5. hely (47.637988,-122,1338344)
+### <a name="location-5-4763799--122134505"></a>5. hely (47,63799,-122,134505)
 
 1. A Poster alkalmazás teteje közelében válassza az **új**lehetőséget. Az **új létrehozása** ablakban válassza a **kérelem**lehetőséget. Adja meg a kérelem **nevét** . 5. tegye a *helyet*. Válassza ki a gyűjteményt, amelyet a [Geokerítések GeoJSON-adatok feltöltése szakaszban](#upload-geofencing-geojson-data)hozott létre, majd válassza a **Mentés**lehetőséget.
 
 2. Válassza a http **lekérése** módszert a Builder (szerkesztő) lapon, és adja meg a következő URL-címet. Győződjön meg arról, hogy az `{Azure-Maps-Primary-Subscription-key}` elsődleges előfizetési kulccsal van lecserélve, és `{udid}` az `udid` [Geokerítések GeoJSON-adatok feltöltése szakaszban](#upload-geofencing-geojson-data)mentette.
 
     ```HTTP
-    https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udid={udid}&lat=47.637988&lon=-122.1338344&searchBuffer=5&isAsync=True&mode=EnterAndExit
+    https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udid={udid}&lat=47.63799&lon=-122.134505&searchBuffer=5&isAsync=True&mode=EnterAndExit
     ```
 
 3. Válassza a **Küldés** lehetőséget. A következő GeoJSON jelenik meg a válasz ablakban:
@@ -469,13 +469,10 @@ Az előző GeoJSON-válaszban a berendezés a fő hely geokerítésen maradt, de
 
 Az előző GeoJSON-válaszban a berendezés kilépett a fő hely geokerítésen. Ennek eredményeképpen a paraméter a (z) értékre `isEventPublished` van beállítva `true` , és az Operations Manager e-mail-értesítést kap arról, hogy a berendezés kilépett egy geokerítésen.
 
+
+Az [e-mailes értesítéseket Event Grid és Logic apps is elküldheti](https://docs.microsoft.com/azure/event-grid/publish-iot-hub-events-to-logic-apps) , és a Event Grid a Azure Maps használatával megtekintheti [a támogatott események kezelőit](https://docs.microsoft.com/azure/event-grid/event-handlers) .
+
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Tartalomtípusok kezelése Azure Logic Appsban](https://docs.microsoft.com/azure/logic-apps/logic-apps-content-type)
-
-> [!div class="nextstepaction"]
-> [E-mailes értesítések küldése Event Grid és Logic Apps használatával](https://docs.microsoft.com/azure/event-grid/publish-iot-hub-events-to-logic-apps)
-
-> [!div class="nextstepaction"]
-> [A Event Grid támogatott eseménykezelői](https://docs.microsoft.com/azure/event-grid/event-handlers)

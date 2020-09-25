@@ -7,16 +7,16 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 4b2d882e6956fa23464e620e9820b0616e13b6f6
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 69ba8d1735d16791d62b6b04e49c0d2fb7484959
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563087"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325793"
 ---
-# <a name="timer-trigger-for-azure-functions"></a>Időzítő trigger a Azure Functionshoz 
+# <a name="timer-trigger-for-azure-functions"></a>Időzítő trigger a Azure Functionshoz
 
-Ez a cikk azt ismerteti, hogyan használhatók időzítő eseményindítók a Azure Functionsban. Az időzítő-trigger lehetővé teszi, hogy ütemezés szerint futtasson egy függvényt. 
+Ez a cikk azt ismerteti, hogyan használhatók időzítő eseményindítók a Azure Functionsban. Az időzítő-trigger lehetővé teszi, hogy ütemezés szerint futtasson egy függvényt.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
@@ -80,6 +80,21 @@ public static void Run(TimerInfo myTimer, ILogger log)
 }
 ```
 
+# <a name="java"></a>[Java](#tab/java)
+
+A következő példa függvény elindítja és végrehajtja az öt percenkénti műveletet. A `@TimerTrigger` függvény megjegyzése az ütemtervet a [cron-kifejezésekkel](https://en.wikipedia.org/wiki/Cron#CRON_expression)megegyező karakterlánc-formátum használatával határozza meg.
+
+```java
+@FunctionName("keepAlive")
+public void keepAlive(
+  @TimerTrigger(name = "keepAliveTrigger", schedule = "0 */5 * * * *") String timerInfo,
+      ExecutionContext context
+ ) {
+     // timeInfo is a JSON string, you can deserialize it to an object using your favorite JSON library
+     context.getLogger().info("Timer is triggered: " + timerInfo);
+}
+```
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Az alábbi példa egy időzítő trigger kötést mutat be egy *function.jsa* fájlban, és egy [JavaScript-függvényt](functions-reference-node.md) , amely a kötést használja. A függvény egy naplót ír, amely azt jelzi, hogy a függvény meghívása egy kihagyott ütemterv miatt következik-e be. A függvény egy [időzítő objektumot](#usage) ad át.
@@ -111,9 +126,44 @@ module.exports = function (context, myTimer) {
 };
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Az alábbi példa bemutatja, hogyan konfigurálhatja a [PowerShellben](./functions-reference-powershell.md)a *function.jst* és *run.ps1* fájlt egy időzítő-triggerhez.
+
+```json
+{
+  "bindings": [
+    {
+      "name": "Timer",
+      "type": "timerTrigger",
+      "direction": "in",
+      "schedule": "0 */5 * * * *"
+    }
+  ]
+}
+```
+
+```powershell
+# Input bindings are passed in via param block.
+param($Timer)
+
+# Get the current universal time in the default string format.
+$currentUTCtime = (Get-Date).ToUniversalTime()
+
+# The 'IsPastDue' property is 'true' when the current function invocation is later than scheduled.
+if ($Timer.IsPastDue) {
+    Write-Host "PowerShell timer is running late!"
+}
+
+# Write an information log with the current time.
+Write-Host "PowerShell timer trigger function ran! TIME: $currentUTCtime"
+```
+
+Az [időzítő objektum](#usage) egy példányát a függvény első argumentumaként adja át a rendszer.
+
 # <a name="python"></a>[Python](#tab/python)
 
-Az alábbi példa egy időzítő trigger kötést használ, amelynek konfigurációját a fájl *function.js* írja le. A kötést használó tényleges [Python-függvényt](functions-reference-python.md) az * __init__.* rajzfájl fájl írja le. A függvénynek átadott objektum [Azure. functions. TimerRequest objektum](/python/api/azure-functions/azure.functions.timerrequest)típusú. A függvény logikája azt jelzi, hogy az aktuális hívás egy kimaradt ütemterv miatt következik-e be. 
+Az alábbi példa egy időzítő trigger kötést használ, amelynek konfigurációját a fájl *function.js* írja le. A kötést használó tényleges [Python-függvényt](functions-reference-python.md) az * __init__.* rajzfájl fájl írja le. A függvénynek átadott objektum [Azure. functions. TimerRequest objektum](/python/api/azure-functions/azure.functions.timerrequest)típusú. A függvény logikája azt jelzi, hogy az aktuális hívás egy kimaradt ütemterv miatt következik-e be.
 
 A *function.js* fájlban található kötési adatfájlok:
 
@@ -145,21 +195,6 @@ def main(mytimer: func.TimerRequest) -> None:
     logging.info('Python timer trigger function ran at %s', utc_timestamp)
 ```
 
-# <a name="java"></a>[Java](#tab/java)
-
-A következő példa függvény elindítja és végrehajtja az öt percenkénti műveletet. A `@TimerTrigger` függvény megjegyzése az ütemtervet a [cron-kifejezésekkel](https://en.wikipedia.org/wiki/Cron#CRON_expression)megegyező karakterlánc-formátum használatával határozza meg.
-
-```java
-@FunctionName("keepAlive")
-public void keepAlive(
-  @TimerTrigger(name = "keepAliveTrigger", schedule = "0 */5 * * * *") String timerInfo,
-      ExecutionContext context
- ) {
-     // timeInfo is a JSON string, you can deserialize it to an object using your favorite JSON library
-     context.getLogger().info("Timer is triggered: " + timerInfo);
-}
-```
-
 ---
 
 ## <a name="attributes-and-annotations"></a>Attribútumok és jegyzetek
@@ -188,14 +223,6 @@ public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger
 
 A C# parancsfájl nem támogatja az attribútumokat.
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-A JavaScript nem támogatja az attribútumokat.
-
-# <a name="python"></a>[Python](#tab/python)
-
-A Python nem támogatja az attribútumokat.
-
 # <a name="java"></a>[Java](#tab/java)
 
 A `@TimerTrigger` függvény megjegyzése az ütemtervet a [cron-kifejezésekkel](https://en.wikipedia.org/wiki/Cron#CRON_expression)megegyező karakterlánc-formátum használatával határozza meg.
@@ -211,13 +238,25 @@ public void keepAlive(
 }
 ```
 
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+A JavaScript nem támogatja az attribútumokat.
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+A PowerShell nem támogatja az attribútumokat.
+
+# <a name="python"></a>[Python](#tab/python)
+
+A Python nem támogatja az attribútumokat.
+
 ---
 
 ## <a name="configuration"></a>Konfiguráció
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `TimerTrigger` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|----------------------|
 |**típusa** | n.a. | "TimerTrigger" értékre kell állítani. Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban.|
 |**irányba** | n.a. | "In" értékre kell állítani. Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban. |
@@ -229,7 +268,7 @@ Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított k
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 > [!CAUTION]
-> Javasoljuk, hogy éles környezetben **runOnStartup** a beállítást `true` . Ha ezt a beállítást használja, a kód nagy előre nem látható időpontokban lesz végrehajtva. Bizonyos éles beállításokban ezek az extra végrehajtások jelentős mértékben magasabb költségekkel járhatnak a használati tervekben üzemeltetett alkalmazások esetében. Ha például a **runOnStartup** engedélyezve van, akkor a rendszer meghívja az eseményindítót, amikor a Function alkalmazás skálázásra kerül. Győződjön meg arról, hogy teljesen tisztában van a függvények üzemi viselkedésével, mielőtt engedélyezi a **runOnStartup** az éles környezetben.   
+> Javasoljuk, hogy éles környezetben **runOnStartup** a beállítást `true` . Ha ezt a beállítást használja, a kód nagy előre nem látható időpontokban lesz végrehajtva. Bizonyos éles beállításokban ezek az extra végrehajtások jelentős mértékben magasabb költségekkel járhatnak a használati tervekben üzemeltetett alkalmazások esetében. Ha például a **runOnStartup** engedélyezve van, akkor a rendszer meghívja az eseményindítót, amikor a Function alkalmazás skálázásra kerül. Győződjön meg arról, hogy teljesen tisztában van a függvények üzemi viselkedésével, mielőtt engedélyezi a **runOnStartup** az éles környezetben.
 
 ## <a name="usage"></a>Használat
 
@@ -250,8 +289,7 @@ Időzítő eseményindító függvény meghívásakor a függvény egy időzít�
 
 A `IsPastDue` tulajdonság az, `true` amikor az aktuális függvény meghívása az ütemezettnél későbbi. Előfordulhat például, hogy egy Function alkalmazás újraindítása miatt a hívás kimarad.
 
-
-## <a name="ncrontab-expressions"></a>NCRONTAB kifejezések 
+## <a name="ncrontab-expressions"></a>NCRONTAB kifejezések
 
 Azure Functions a [NCronTab](https://github.com/atifaziz/NCrontab) -függvénytárat használja a NCronTab kifejezések értelmezéséhez. Egy NCRONTAB kifejezés hasonló egy CRON-kifejezéshez, kivéve, ha az elején további hatodik mező szerepel az idő pontosságához másodpercben:
 
@@ -300,12 +338,12 @@ A CRON kifejezéstől eltérően `TimeSpan` az érték határozza meg az egyes f
 
 Karakterláncként kifejezve a `TimeSpan` formátum a `hh:mm:ss` 24- `hh` nél kisebb. Ha az első két számjegy 24 vagy nagyobb, a formátum: `dd:hh:mm` . Néhány példa:
 
-|Példa |Aktiváláskor  |
-|---------|---------|
-|"01:00:00" | óránként        |
-|"00:01:00"|percenként         |
-|"24:00:00" | minden 24 nap        |
-|"1.00:00:00" | minden nap        |
+| Példa      | Aktiváláskor |
+|--------------|----------------|
+| "01:00:00"   | óránként     |
+| "00:01:00"   | percenként   |
+| "24:00:00"   | minden 24 nap  |
+| "1.00:00:00" | minden nap      |
 
 ## <a name="scale-out"></a>Bővítés
 
@@ -332,7 +370,7 @@ A várólista-triggertől eltérően az időzítő trigger nem próbálkozik új
 
 További információ arról, hogy mi a teendő, ha az időzítő trigger nem a várt módon működik, lásd: [kivizsgálás és jelentéskészítési hibák az időzítő által aktivált függvények nem égetéssel](https://github.com/Azure/azure-functions-host/wiki/Investigating-and-reporting-issues-with-timer-triggered-functions-not-firing).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Ugrás olyan rövid útmutatóra, amely időzítő-triggert használ](functions-create-scheduled-function.md)

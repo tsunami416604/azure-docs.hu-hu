@@ -7,12 +7,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 08/05/2020
 ms.author: kumud
-ms.openlocfilehash: 1898bcf619f1fc9aaf19384968225e35c9589688
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: a1ae6386ddbf9e8bc226598b0b9218ba20669356
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87847438"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336350"
 ---
 # <a name="azure-network-round-trip-latency-statistics"></a>Azure-alapú hálózati időszeletelési késések statisztikája
 
@@ -22,9 +22,9 @@ Az Azure folyamatosan figyeli a hálózat alapvető területeinek késését (se
 
 A késési mérések gyűjtése a ThousandEyes-ügynököktől történik, amelyek világszerte Azure Cloud-régiókban futnak, amelyek folyamatosan küldenek hálózati mintavételt egymás között 1 percenként. A havi késési statisztikát a havi begyűjtött minták átlaga alapján kell származtatni.
 
-## <a name="july-2020-round-trip-latency-figures"></a>2020. július kerekítési késési számok
+## <a name="august-2020-round-trip-latency-figures"></a>2020. augusztusi időarányos késési számok
 
-Az Azure-régiók közötti, az elmúlt 31 napban (2020. július 31-én) végződő havi átlagos menettérti időpontok alább láthatók. A [ThousandEyes](https://thousandeyes.com)a következő méréseket látja el.
+Az Azure-régiók közötti, az elmúlt 31 napban (2020. augusztus 31-én végződő) havi átlagos menettérti időpontok alább láthatók. A [ThousandEyes](https://thousandeyes.com)a következő méréseket látja el.
 
 [![Az Azure régiók közötti késési statisztikái](media/azure-network-latency/azure-network-latency.png)](media/azure-network-latency/azure-network-latency.png#lightbox)
 

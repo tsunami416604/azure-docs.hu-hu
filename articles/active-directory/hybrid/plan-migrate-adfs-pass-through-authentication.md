@@ -12,12 +12,12 @@ ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e5a5b06bc95d022cfad66118db4b55e9369b5bd
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: a0ee8661ca985e1882cff54d2fc2cdc5e9ad0a22
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661896"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335969"
 ---
 # <a name="migrate-from-federation-to-pass-through-authentication-for-azure-active-directory"></a>Migrálás az összevonásból a Azure Active Directory áteresztő hitelesítésre
 
@@ -283,9 +283,9 @@ Tovább gombra. További hitelesítési módszerek üzembe helyezése:
 
 4. Futtassa a hitelesítési ügynök telepítését. A telepítés során meg kell adnia egy globális rendszergazdai fiók hitelesítő adatait.
 
-   ![Képernyőkép a telepítés gombra a Microsoft Azure AD a hitelesítési ügynök csomagjának összekapcsolása lapon](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image11.png)
+   ![Képernyőfelvétel: a Microsoft Azure AD kapcsolódási ügynök csomagjának futtatásához használt telepítési gomb.](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image11.png)
 
-   ![A bejelentkezési oldalt megjelenítő képernyőkép](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image12.png)
+   ![A Microsoft bejelentkezési oldalát bemutató képernyőkép.](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image12.png)
 
 5. A hitelesítési ügynök telepítése után visszatérhet a továbbított hitelesítési ügynök állapota lapra, ahol megtekintheti a további ügynökök állapotát.
 
@@ -327,7 +327,7 @@ Először engedélyezze az átmenő hitelesítést:
    * A **zökkenőmentes egyszeri bejelentkezés** **engedélyezve**értékre van állítva.
    * Az **átmenő hitelesítés** **engedélyezve**értékre van állítva.
    
-   ![A felhasználói bejelentkezési szakaszban található beállításokat megjelenítő képernyőkép](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image19.png)
+   ![Képernyőkép, amely a felhasználói bejelentkezés szakaszban megjelenő beállításokat jeleníti meg.](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image19.png)
 8. Válassza az **átmenő hitelesítés** lehetőséget, és ellenőrizze, hogy az állapot **aktív**-e.<br />
    
    Ha a hitelesítési ügynök nem aktív, hajtson végre néhány [hibaelhárítási lépést](./tshoot-connect-pass-through-authentication.md) a következő lépésben a tartomány-átalakítási folyamat folytatása előtt. Ha a tartomány konvertálása előtt a hitelesítés leáll, a rendszer az áteresztő hitelesítési ügynökök sikeres telepítése és a Azure Portal **aktív** állapotának ellenőrzése előtt veszélyezteti a hitelesítési kimaradást.
@@ -368,7 +368,7 @@ Fejezze be az átalakítást az Azure AD PowerShell-modul használatával:
    * A **zökkenőmentes egyszeri bejelentkezés** **engedélyezve**értékre van állítva.
    * Az **átmenő hitelesítés** **engedélyezve**értékre van állítva.<br />
 
-   ![A felhasználói bejelentkezési szakaszban található beállításokat megjelenítő képernyőkép](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image26.png)<br />
+   ![Képernyőkép, amely az Azure AD-portál felhasználói bejelentkezés szakaszában található beállításokat jeleníti meg.](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image26.png)<br />
 
 ## <a name="testing-and-next-steps"></a>Tesztelés és további lépések
 

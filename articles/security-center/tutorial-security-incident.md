@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2018
 ms.author: memildin
-ms.openlocfilehash: c508591fe9909578dcc04b0922c0b76691898743
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 08e04749eae7158abb501f9a4d127cdd7a89a391
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90901091"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336275"
 ---
 # <a name="tutorial-respond-to-security-incidents"></a>Oktatóanyag: Reagálás a biztonsági incidensekre
 A Security Center fejlett elemzési eszközök és fenyegetésfelderítés segítségével folyamatosan elemzi a hibrid felhőbeli számítási feladatokat, hogy figyelmeztesse az esetleges rosszindulatú tevékenységekre. Ráadásul a Security Centerbe más biztonsági termékekből és szolgáltatásokból is integrálhat riasztásokat, és egyéni riasztásokat is létrehozhat a saját mutatói és intelligens forrásai alapján. Amikor valami kivált egy riasztást, gyors reagálásra van szükség a problémák kivizsgálásához és elhárításához. Az oktatóanyag során a következőket fogja elsajátítani:
@@ -29,7 +29,7 @@ A Security Center fejlett elemzési eszközök és fenyegetésfelderítés segí
 > * Részletes vizsgálat egy biztonsági incidens gyökerének és kiterjedésének meghatározása céljából
 > * Keresés a biztonsági adatok között a vizsgálat elősegítéséhez
 
-Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyagban szereplő funkciók átlépéséhez engedélyeznie kell az Azure Defender használatát. Az Azure Defender szolgáltatás díjmentesen kipróbálható. További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/). A gyors üzembe helyezés Security Center végigvezeti Önt a verziófrissítés [lépésein](security-center-get-started.md) .
@@ -76,7 +76,7 @@ A Security Center segítségével minden biztonsági riasztást egy egyesített 
 
    ![Riasztás részletei az incidensből](./media/tutorial-security-incident/tutorial-security-incident-fig3.png)
 
-   A riasztások típusa eltérő lehet. A riasztási típusokkal és az elhárításhoz szükséges lehetséges lépésekkel kapcsolatban tekintse meg [Az Azure Security Center biztonsági riasztásainak megismerése](https://docs.microsoft.com/azure/security-center/security-center-alerts-type) című cikket. A biztonságosan elvethető riasztások esetében jobb gombbal a riasztásra kattinthat, majd kiválaszthatja az **Elvetés** lehetőséget:
+   A riasztások típusa eltérő lehet. A riasztási típusokkal és az elhárításhoz szükséges lehetséges lépésekkel kapcsolatban tekintse meg [Az Azure Security Center biztonsági riasztásainak megismerése](security-center-alerts-type.md) című cikket. A biztonságosan elvethető riasztások esetében jobb gombbal a riasztásra kattinthat, majd kiválaszthatja az **Elvetés** lehetőséget:
 
    ![Riasztás](./media/tutorial-security-incident/tutorial-security-incident-fig4.png)
 

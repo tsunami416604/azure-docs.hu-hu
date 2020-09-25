@@ -1,5 +1,5 @@
 ---
-title: Kiszolgálói paraméterek – nagy kapacitású (nagy kapacitású (Citus) – Azure Database for PostgreSQL
+title: Kiszolgálói paraméterek – nagy kapacitású (Citus) – Azure Database for PostgreSQL
 description: Paraméterek a nagy kapacitású (Citus) SQL API-ban
 author: jonels-msft
 ms.author: jonels
@@ -7,23 +7,23 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: reference
 ms.date: 08/10/2020
-ms.openlocfilehash: 2b4d3d44cb4e78f52ab03f31e58df5e66118ae25
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 07f966c7b0be542f848f1a0a4eaf2b5549735b4b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89441510"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336241"
 ---
 # <a name="server-parameters"></a>Kiszolgálóparaméterek
 
 A nagy kapacitású (Citus) viselkedését számos kiszolgálói paraméter befolyásolja, mindkettő a standard PostgreSQL-től, illetve a nagy kapacitású (Citus).
 Ezek a paraméterek beállíthatók a nagy kapacitású-(Citus-) kiszolgálócsoport Azure Portal. A **Beállítások** kategória alatt válassza a feldolgozó **csomópont paramétereinek** vagy a **koordinátor csomópontjának paramétereit**. Ezek a lapok lehetővé teszik az összes munkavégző csomópont paramétereinek beállítását, vagy csak a koordinátor csomóponthoz.
 
-## <a name="hyperscale-parameters"></a>Nagy kapacitású paraméterek
+## <a name="hyperscale-citus-parameters"></a>Nagy kapacitású (Citus) paraméterei
 
 > [!NOTE]
 >
-> Előfordulhat, hogy a Citus motor régebbi verzióit futtató nagy kapacitású-kiszolgálócsoportok nem rendelkeznek az alább felsorolt paraméterekkel.
+> Előfordulhat, hogy a Citus-motor régebbi verzióit futtató nagy kapacitású-(Citus-) kiszolgálócsoportok nem biztosítanak az alább felsorolt paramétereket.
 
 ### <a name="general-configuration"></a>Általános konfiguráció
 

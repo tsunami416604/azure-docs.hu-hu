@@ -5,20 +5,20 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: fd0826ad11a153d72ee47f35930d25f0df498418
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/23/2020
+ms.openlocfilehash: dd7aed0d23dd657b655e473565611ef36c592562
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90940740"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336326"
 ---
 # <a name="logical-replication-and-logical-decoding-in-azure-database-for-postgresql---flexible-server"></a>Logikai replikáció és a logikai dekódolás Azure Database for PostgreSQL rugalmas kiszolgálón
 
 > [!IMPORTANT]
 > Azure Database for PostgreSQL – a rugalmas kiszolgáló előzetes verzióban érhető el
 
-A PostgreSQL logikai replikálása és a logikai dekódolási funkciók Azure Database for PostgreSQL rugalmas kiszolgálókon támogatottak.
+A PostgreSQL logikai replikálása és a logikai dekódolási funkciók Azure Database for PostgreSQL rugalmas kiszolgálókon, a postgres 11-es verziójában támogatottak.
 
 ## <a name="comparing-logical-replication-and-logical-decoding"></a>A logikai replikáció és a logikai dekódolás összehasonlítása
 A logikai replikáció és a logikai dekódolás több hasonlóságot is tartalmaz. Mindkettő
@@ -43,7 +43,11 @@ Logikai dekódolás
 1. Állítsa a Server paramétert a következőre: `wal_level` `logical` .
 2. A módosítás alkalmazásához indítsa újra a kiszolgálót `wal_level` .
 3. Győződjön meg arról, hogy a PostgreSQL-példány engedélyezi a hálózati forgalmat a kapcsolódó erőforrásból.
-4. Replikációs parancsok végrehajtásakor használja a rendszergazda felhasználót.
+4. Adja meg a rendszergazdai felhasználó replikációs engedélyeit.
+   ```SQL
+   ALTER ROLE <adminname> WITH REPLICATION;
+   ```
+
 
 ## <a name="using-logical-replication-and-logical-decoding"></a>Logikai replikáció és a logikai dekódolás használata
 
@@ -54,7 +58,7 @@ A logikai replikáció a "kiadó" és az "előfizető" kifejezést használja.
 
 Íme egy példa a logikai replikáció kipróbálására.
 
-1. Kapcsolódjon a közzétevőhöz. Hozzon létre egy táblázatot, és adjon hozzá néhányat.
+1. Kapcsolódjon a közzétevői adatbázishoz. Hozzon létre egy táblázatot, és adjon hozzá néhányat.
    ```SQL
    CREATE TABLE basic(id SERIAL, name varchar(40));
    INSERT INTO basic(name) VALUES ('apple');
@@ -66,14 +70,14 @@ A logikai replikáció a "kiadó" és az "előfizető" kifejezést használja.
    CREATE PUBLICATION pub FOR TABLE basic;
    ```
 
-3. Kapcsolódjon az előfizetőhöz. Hozzon létre egy táblázatot ugyanazzal a sémával, mint a közzétevőn.
+3. Kapcsolódjon az előfizetői adatbázishoz. Hozzon létre egy táblázatot ugyanazzal a sémával, mint a közzétevőn.
    ```SQL
    CREATE TABLE basic(id SERIAL, name varchar(40));
    ```
 
 4. Hozzon létre egy előfizetést, amely csatlakozni fog a korábban létrehozott kiadványhoz.
    ```SQL
-   CREATE SUBSCRIPTION sub CONNECTION 'host=<server>.postgres.database.azure.com user=<admin> dbname=<dbname>' PUBLICATION pub;
+   CREATE SUBSCRIPTION sub CONNECTION 'host=<server>.postgres.database.azure.com user=<admin> dbname=<dbname> password=<password>' PUBLICATION pub;
    ```
 
 5. Most már lekérdezheti a táblát az előfizetőn. Látni fogja, hogy a közzétevőtől kapott adatok.
@@ -170,8 +174,9 @@ SELECT * FROM pg_replication_slots;
 
 [Állítsa be a riasztásokat](howto-alert-on-metrics.md) a **maximálisan használt tranzakciós azonosítók** és a **tárolók** számára, és használja a rugalmas kiszolgálói metrikákat, hogy értesítést kapjon, ha az értékek a korábbi normál küszöbértékeket 
 
-## <a name="read-replicas"></a>Olvasási replikák
-A Azure Database for PostgreSQL olvasási replikák jelenleg nem támogatottak a rugalmas kiszolgálók esetében.
+## <a name="limitations"></a>Korlátozások
+* **Olvasási replikák** – Azure Database for PostgreSQL az olvasási replikák jelenleg nem támogatottak a rugalmas kiszolgálók esetében.
+* Az elsődleges kiszolgálón a **tárolóhelyek és a ha feladatátvételi** -logikai replikációs tárolóhelyek nem érhetők el a másodlagos az által biztosított készenléti kiszolgálón. Ez arra az esetre vonatkozik, ha a kiszolgáló a zóna – redundáns magas rendelkezésre állás lehetőséget használja. A készenléti kiszolgálóra történő feladatátvétel esetén a logikai replikációs tárolóhelyek nem lesznek elérhetők készenléti állapotban.
 
 ## <a name="next-steps"></a>Következő lépések
 * További információ a [hálózatkezelési lehetőségekről](concepts-networking.md)

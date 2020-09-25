@@ -2,17 +2,17 @@
 title: Oktatóanyag – hibrid gép figyelése Azure Monitor for VMs
 description: Megtudhatja, hogyan gyűjthet és elemezheti az adatokat egy hibrid gépről Azure Monitorban.
 ms.topic: tutorial
-ms.date: 08/12/2020
-ms.openlocfilehash: 76df7d403fdce6fc3ac77c0b24849aedffb57ce0
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.date: 09/23/2020
+ms.openlocfilehash: 97ab390570f434295a5aa836ef994640f6dc14f8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213162"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335415"
 ---
 # <a name="tutorial-monitor-a-hybrid-machine-with-azure-monitor-for-vms"></a>Oktatóanyag: hibrid gép monitorozása Azure Monitor for VMs
 
-A [Azure monitor](../overview.md) adatokat gyűjthet közvetlenül a hibrid virtuális gépekről egy log Analytics-munkaterületre, amely részletes elemzést és korrelációt biztosít. Ez általában a [log Analytics ügynök](../../../azure-monitor/platform/agents-overview.md#log-analytics-agent) telepítését vonja maga után parancsfájl, manuálisan vagy automatizált metódus használatával a konfiguráció-felügyeleti szabványok alapján. Az arc-kompatibilis kiszolgálók (előzetes verzió) a közelmúltban vezették be a Log Analytics és a függőségi ügynök virtuálisgép- [bővítményeinek](../manage-vm-extensions.md) telepítését a Windows és a Linux rendszerhez, ami lehetővé teszi, hogy az Azure monitor a nem Azure-beli virtuális gépekről gyűjt adatokat
+A [Azure monitor](../overview.md) adatokat gyűjthet közvetlenül a hibrid virtuális gépekről egy log Analytics-munkaterületre, amely részletes elemzést és korrelációt biztosít. Ez általában a [log Analytics ügynök](../../../azure-monitor/platform/agents-overview.md#log-analytics-agent) telepítését vonja maga után parancsfájl, manuálisan vagy automatizált metódus használatával a konfiguráció-felügyeleti szabványok alapján. Az arc-kompatibilis kiszolgálók a közelmúltban vezették be a Log Analytics és a függőségi ügynök virtuálisgép- [bővítményeinek](../manage-vm-extensions.md) telepítését a Windows és a Linux rendszerhez, amely lehetővé teszi a Azure monitor számára, hogy adatokat gyűjtsön a nem Azure-beli virtuális gépek
 
 Ebből az oktatóanyagból megtudhatja, hogyan konfigurálhat és gyűjthet adatokat a Linux vagy Windows rendszerű virtuális gépekről, ha a Azure Monitor for VMs egy egyszerűsített lépések követésével egyszerűsíti a felhasználói élményt, és rövidebb időt vesz igénybe.  
 

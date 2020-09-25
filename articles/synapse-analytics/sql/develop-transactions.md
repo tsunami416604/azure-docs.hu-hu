@@ -10,18 +10,18 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: c5d23770aab0bde745152d918adfe83209819899
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: de36d1eda21903480eee986df72c5274e1aa6dff
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500759"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288613"
 ---
 # <a name="use-transactions-in-sql-pool"></a>Tranzakciók használata az SQL-készletben
 
 Tippek a tranzakciók megvalósításához az SQL-készletben (adattárházban) a megoldások fejlesztéséhez.
 
-## <a name="what-to-expect"></a>Mire számíthat
+## <a name="what-to-expect"></a>Amire számíthat
 
 Ahogy várható, az SQL-készlet az adatraktár számítási feladatainak részeként támogatja a tranzakciókat. Az SQL-készlet teljesítményének biztosítása érdekében azonban bizonyos funkciók korlátozottak lesznek a SQL Serverhoz képest. Ez a cikk kiemeli a különbségeket, és felsorolja a többiet.
 
@@ -29,10 +29,10 @@ Ahogy várható, az SQL-készlet az adatraktár számítási feladatainak része
 
 Az SQL-készlet savas tranzakciókat valósít meg. A tranzakciós támogatás elkülönítési szintje alapértelmezés szerint nem VÉGLEGESÍThető.  Ha a Master adatbázishoz csatlakozik, a felhasználói adatbázis READ_COMMITTED_SNAPSHOT adatbázis lehetőségének bekapcsolásával módosíthatja az előjegyzett PILLANATKÉPek ELKÜLÖNÍTÉSét.  
 
-Ha engedélyezve van, a rendszer az ebben az adatbázisban lévő összes tranzakciót az OLVASÁSI véglegesített PILLANATKÉPek ELKÜLÖNÍTÉSe területen hajtja végre, és a munkamenet szintjén az olvasás VÉGLEGESÍTÉSe beállítást nem fogja figyelembe venni. A részletekért lásd az [Alter Database set Options (Transact-SQL) beállítást](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest) .
+Ha engedélyezve van, a rendszer az ebben az adatbázisban lévő összes tranzakciót az OLVASÁSI véglegesített PILLANATKÉPek ELKÜLÖNÍTÉSe területen hajtja végre, és a munkamenet szintjén az olvasás VÉGLEGESÍTÉSe beállítást nem fogja figyelembe venni. A részletekért lásd az [Alter Database set Options (Transact-SQL) beállítást](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest&preserve-view=true) .
 
 ## <a name="transaction-size"></a>Tranzakció mérete
-Egyetlen adatmódosítási tranzakció mérete korlátozott. A korlátot a rendszer eloszlás alapján alkalmazza. Ezért a teljes foglalás kiszámításához a korlátot a terjesztési szám alapján kell megszorozni. 
+Egyetlen adatmódosítási tranzakció mérete korlátozott. A korlátot a rendszer eloszlás alapján alkalmazza. Ennek megfelelően a teljes foglalás kiszámítható úgy, hogy a korlátot a terjesztési szám alapján szorozza meg. 
 
 Annak érdekében, hogy a tranzakció sorainak maximális száma megközelítse a terjesztési korlátot az egyes sorok teljes méretével. A változó hosszúságú oszlopok esetében érdemes lehet átlagos oszlopszélességet használni a maximális méret helyett.
 
@@ -134,7 +134,7 @@ SELECT @xact_state AS TransactionState;
 
 Az előző kód a következő hibaüzenetet jeleníti meg:
 
-Msg 111233, 16. szint, állapot 1, sor 1 111233; Az aktuális tranzakció meg lett szakítva, és a függőben lévő módosítások vissza lettek állítva. Ok: egy csak visszaállítási állapotban lévő tranzakciót nem lehetett explicit módon visszagörgetni a DDL, a DML vagy a SELECT utasítás előtt.
+Msg 111233, 16. szint, állapot 1, sor 1 111233; Az aktuális tranzakció meg lett szakítva, és a függőben lévő módosítások vissza lettek állítva. Ok: egy visszagörgetési állapotban lévő tranzakciót nem lehetett explicit módon visszagörgetni a DDL, a DML vagy a SELECT utasítás előtt.
 
 A ERROR_ * függvények kimenete nem jelenik meg.
 
@@ -181,21 +181,19 @@ Az összes módosult, hogy a tranzakció visszagörgetése még azelőtt törté
 
 ## <a name="error_line-function"></a>Error_Line () függvény
 
-Azt is érdemes megjegyezni, hogy az SQL-készlet nem implementálja és nem támogatja a ERROR_LINE () függvényt. Ha rendelkezik a kóddal, akkor azt el kell távolítania, hogy az megfeleljen az SQL-készletnek. Az egyenértékű funkciók megvalósítása helyett használja a kódban a lekérdezési címkéket. További részletekért tekintse meg a [címkét](develop-label.md) ismertető cikket.
+Azt is érdemes megjegyezni, hogy az SQL-készlet nem implementálja és nem támogatja a ERROR_LINE () függvényt. Ha ezt a függvényt a kódban, el kell távolítania, hogy az megfeleljen az SQL-készletnek. Az egyenértékű funkciók megvalósítása helyett használja a kódban a lekérdezési címkéket. További információkért lásd a [címkét](develop-label.md) ismertető cikket.
 
 ## <a name="use-of-throw-and-raiserror"></a>A THROW és a RAISERROR használata
 
 Az SQL-készletben a kivételek növelésének modern implementációja, de a RAISERROR is támogatott. Van néhány eltérés, amely azonban érdemes odafigyelni.
 
-* A felhasználó által definiált hibaüzenetek száma nem lehet az 100 000-150 000 tartományban a THROW
+* A felhasználó által definiált hibaüzenetek száma nem lehet a következő 100 000-150 000 tartományban: THROW
 * A RAISERROR-hibaüzenetek a következő időpontban vannak kijavítva: 50 000
 * A sys. messages használata nem támogatott
 
 ## <a name="limitations"></a>Korlátozások
 
-Az SQL-készletnek van néhány más korlátozása, amely a tranzakcióhoz kapcsolódik.
-
-Ezek a következők:
+Az SQL-készletnek van néhány más korlátozása, amely a tranzakcióhoz kapcsolódik. Ezek a következők:
 
 * Nincsenek elosztott tranzakciók
 * Nincsenek engedélyezett beágyazott tranzakciók
@@ -204,6 +202,6 @@ Ezek a következők:
 * Nincsenek megjelölt tranzakciók
 * Nem támogatott a DDL, például a CREATE TABLE egy felhasználó által definiált tranzakción belül
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A tranzakciók optimalizálásával kapcsolatos további tudnivalókért tekintse meg a [tranzakciók ajánlott eljárásai](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)című témakört. Az [SQL-készlet](best-practices-sql-pool.md) és az [igény szerinti SQL-szolgáltatás (előzetes verzió)](best-practices-sql-on-demand.md)további ajánlott eljárásokat ismertető útmutatók is rendelkezésre állnak.

@@ -1,5 +1,5 @@
 ---
-title: Képzés elküldése egy számítási célra
+title: Betanítási Futtatás konfigurálása
 titleSuffix: Azure Machine Learning
 description: A gépi tanulási modell tanítása különböző képzési környezetekben (számítási célok). Könnyedén válthat a képzési környezetek között. A képzés helyi elindítása. Ha vertikális felskálázásra van szüksége, váltson át egy felhőalapú számítási célra.
 services: machine-learning
@@ -8,46 +8,43 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 08/28/2020
+ms.date: 09/25/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 8b07d19ca88a2d680a4f9efbb85fcf60b895a2b3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f93b6ab43e1dbf9230c92d22f8fb22ca48eb720e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907600"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275761"
 ---
-# <a name="submit-a-training-run-to-a-compute-target"></a>Képzés elküldése egy számítási célra
+# <a name="configure-and-submit-training-runs"></a>Betanítási futtatások konfigurálása és beküldése
 
-Ebből a cikkből megtudhatja, hogyan használhatja a különböző képzési környezeteket ([számítási célok](concept-compute-target.md)) a gépi tanulási modell betanításához.
+Ebből a cikkből megtudhatja, hogyan konfigurálhat és küldhet be Azure Machine Learning-futtatásokat a modellek betanításához.
 
-A betanítás során gyakori, hogy a helyi számítógépen indul el, és később a betanítási szkriptet más számítási célra futtatja. A Azure Machine Learning használatával különböző számítási célokból futtathat parancsfájlokat anélkül, hogy módosítani kellene a betanítási szkriptet.
+Ha betanítást végez, gyakori, hogy elindítsa a helyi számítógépen, majd később kibővíti a felhőalapú fürtöt. A Azure Machine Learning használatával különböző számítási célokból futtathat parancsfájlokat anélkül, hogy módosítani kellene a betanítási szkriptet.
 
 Mindössze annyit kell tennie, hogy a **parancsfájl futtatási konfigurációján**belül minden számítási cél esetében meghatározza a környezetet.  Ha ezt követően egy másik számítási célra szeretné futtatni a betanítási kísérletet, adja meg az adott számítás futtatási konfigurációját.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy ingyenes fiókot a virtuális gép létrehozásának megkezdése előtt. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma
-* A [Pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)
+* A [Pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true) (>= 1.13.0)
 * Egy [Azure Machine learning munkaterület](how-to-manage-workspace.md), `ws`
 * Egy számítási cél `my_compute_target` .  Számítási cél létrehozása a rel:
   * [Python SDK](how-to-create-attach-compute-sdk.md) 
   * [Azure Machine Learning Studio](how-to-create-attach-compute-studio.md)
 
 ## <a name="whats-a-script-run-configuration"></a><a name="whats-a-run-configuration"></a>Mi az a parancsfájl-futtatási konfiguráció?
+A [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) használatával konfigurálhatja a betanítási futtatáshoz szükséges információkat a kísérlet részeként.
 
-A betanítási kísérletet egy [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) -objektummal küldi el.  Ez az objektum az alábbiakat tartalmazza:
+A betanítási kísérletet egy ScriptRunConfig-objektummal küldi el.  Ez az objektum az alábbiakat tartalmazza:
 
 * **source_directory**: a betanítási parancsfájlt tartalmazó forrás könyvtára
-* **parancsfájl**: a betanítási parancsfájl azonosítása
-* **run_config**: a [futtatási konfiguráció](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py&preserve-view=true), amely meghatározza, hogy hol történjen a képzés. A alkalmazásban `run_config` meg kell adnia a számítási célt és azt a környezetet, amelyet a betanítási parancsfájl futtatásakor kíván használni.  
-
-## <a name="whats-an-environment"></a>Mi az a környezet?
-
-Azure Machine Learning [környezetek](concept-environments.md) a gépi tanulási képzést végző környezet beágyazását jelentik. Megadják a Python-csomagokat, a környezeti változókat és a szoftver beállításait a képzés és a pontozási szkriptek köré. A futtatási időpontokat (Python, Spark vagy Docker) is megadják.  
-
-A környezetek az  `run_config` a objektumon belül vannak megadva `ScriptRunConfig` .
+* **parancsfájl**: a futtatandó betanítási szkript
+* **compute_target**: a futtatandó számítási cél
+* **környezet**: a parancsfájl futtatásakor használandó környezet
+* és néhány további konfigurálható lehetőség is (további információt a [dokumentációban](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) talál)
 
 ## <a name="train-your-model"></a><a id="submit"></a>A modell betanítása
 
@@ -55,13 +52,12 @@ A betanítási futtatást elküldő kód mintája megegyezik a számítási cél
 
 1. Kísérlet létrehozása a futtatáshoz
 1. Hozzon létre egy környezetet, amelyben a parancsfájl futni fog
-1. Hozzon létre egy parancsfájl-futtatási konfigurációt, amely a számítási célra és a környezetre hivatkozik
+1. ScriptRunConfig létrehozása, amely meghatározza a számítási célt és a környezetet
 1. A Futtatás elküldése
 1. Várjon, amíg a Futtatás befejeződik
 
 Vagy a következőket teheti:
 
-* A kísérletet egy olyan objektummal küldje el, amely `Estimator` az [ml modellek becslések-vel való betanítását](how-to-train-ml-models.md)mutatja.
 * HyperDrive-Futtatás küldése a [hiperparaméter finomhangolásához](how-to-tune-hyperparameters.md).
 * Kísérlet küldése a [vs Code bővítmény](tutorial-train-deploy-image-classification-model-vscode.md#train-the-model)használatával.
 
@@ -73,19 +69,27 @@ Hozzon létre egy kísérletet a munkaterületen.
 from azureml.core import Experiment
 
 experiment_name = 'my_experiment'
-
 experiment = Experiment(workspace=ws, name=experiment_name)
 ```
 
-## <a name="create-an-environment"></a>Környezet létrehozása
+## <a name="select-a-compute-target"></a>Számítási cél kiválasztása
 
-A kurátori környezetek Python-csomagok gyűjteményeit tartalmazzák, és alapértelmezés szerint a munkaterületen érhetők el. Ezeket a környezeteket a gyorsítótárazott Docker-rendszerképek alkotják, ami csökkenti a Futtatás előkészítési költségeit. Távoli számítási cél esetén a következő népszerű kurátori környezetek egyikét használhatja a kezdéshez:
+Válassza ki azt a számítási célt, amelyen a betanítási parancsfájl futni fog. Ha nincs megadva számítási cél a ScriptRunConfig, vagy ha az `compute_target='local'` Azure ml a parancsfájlt helyileg fogja végrehajtani. 
+
+A cikkben szereplő mintakód azt feltételezi, hogy már létrehozott egy számítási célt `my_compute_target` az "Előfeltételek" szakaszból.
+
+## <a name="create-an-environment"></a>Környezet létrehozása
+Azure Machine Learning [környezetek](concept-environments.md) a gépi tanulási képzést végző környezet beágyazását jelentik. Megadják a Python-csomagokat, a Docker-rendszerképet, a környezeti változókat és a szoftver beállításait a képzés és a pontozási szkriptek köré. Emellett a futtatókörnyezeteket (Python, Spark vagy Docker) is megadják.
+
+Meghatározhatja saját környezetét, vagy használhat egy Azure ML-beli kiszervezett környezetet is. A válogatott [környezetek](https://docs.microsoft.com/azure/machine-learning/how-to-use-environments#use-a-curated-environment) előre definiált környezetek, amelyek alapértelmezés szerint a munkaterületen elérhetők. Ezeket a környezeteket a gyorsítótárazott Docker-rendszerképek alkotják, ami csökkenti a Futtatás előkészítési költségeit. A rendelkezésre álló, kitalált környezetek teljes listájáért tekintse meg [Azure Machine learning kurátori környezeteket](https://docs.microsoft.com/azure/machine-learning/resource-curated-environments) .
+
+Távoli számítási cél esetén a következő népszerű kurátori környezetek egyikét használhatja a kezdéshez:
 
 ```python
 from azureml.core import Workspace, Environment
 
 ws = Workspace.from_config()
-my_environment = Environment.get(workspace=ws, name="AzureML-Minimal")
+myenv = Environment.get(workspace=ws, name="AzureML-Minimal")
 ```
 
 A környezetekkel kapcsolatos további információkért és részletekért lásd: [Create & Azure Machine learning-környezetek használata](how-to-use-environments.md).
@@ -97,47 +101,45 @@ Ha a számítási cél a **helyi gép**, Ön felelős annak biztosításáért, 
 ```python
 from azureml.core import Environment
 
-# Editing a run configuration property on-fly.
-my_environment = Environment("user-managed-env")
-
-my_environment.python.user_managed_dependencies = True
+myenv = Environment("user-managed-env")
+myenv.python.user_managed_dependencies = True
 
 # You can choose a specific Python environment by pointing to a Python path 
-#my_environment.python.interpreter_path = '/home/johndoe/miniconda3/envs/myenv/bin/python'
+# myenv.python.interpreter_path = '/home/johndoe/miniconda3/envs/myenv/bin/python'
 ```
 
-## <a name="create-script-run-configuration"></a>Parancsfájl futtatási konfigurációjának létrehozása
+## <a name="create-the-script-run-configuration"></a>A parancsfájl futtatási konfigurációjának létrehozása
 
-Most, hogy van egy számítási cél ( `compute_target` ) és egy környezet ( `my_environment` ), hozzon létre egy parancsfájl-futtatási konfigurációt, amely futtatja a saját könyvtárában található képzési parancsfájlt ( `train.py` ) `project_folder` :
+Most, hogy van egy számítási cél ( `my_compute_target` ) és egy környezet ( `myenv` ), hozzon létre egy parancsfájl-futtatási konfigurációt, amely futtatja a saját könyvtárában található képzési parancsfájlt ( `train.py` ) `project_folder` :
 
 ```python
 from azureml.core import ScriptRunConfig
 
-script_run_config = ScriptRunConfig(source_directory=project_folder, script='train.py')
-
-# Set compute target
-script_run_config.run_config.target = my_compute_target
-
-# Set environment.   If you don't do this, a default environment will be created.
-script_run_config.run_config.environment = my_environment
+src = ScriptRunConfig(source_directory=project_folder,
+                      script='train.py',
+                      compute_target=my_compute_target,
+                      environment=myenv)
 ```
 
-Előfordulhat, hogy a futtatási keretrendszert is be szeretné állítani.
+Ha nem ad meg környezetet, a rendszer létrehoz egy alapértelmezett környezetet az Ön számára.
 
-* HDI-fürt esetén:
-    ```python
-    src.run_config.framework = "pyspark"
-    ```
+Ha olyan parancssori argumentumokkal rendelkezik, amelyeket át szeretne adni a betanítási szkriptnek, akkor megadhatja azokat a **`arguments`** ScriptRunConfig konstruktor paraméterén keresztül, például: `arguments=['--arg1', arg1_val, '--arg2', arg2_val]` .
 
-* Távoli virtuális gép esetén:
-    ```python
-    src.run_config.framework = "python"
-    ```
+Ha szeretné felülbírálni a futtatáshoz engedélyezett alapértelmezett maximális időt, ezt a paraméterrel teheti meg **`max_run_duration_seconds`** . A rendszer megkísérli automatikusan megszakítani a futtatást, ha ez az érték hosszabb időt vesz igénybe.
+
+### <a name="specify-a-distributed-job-configuration"></a>Elosztott feladatok konfigurációjának meghatározása
+Ha elosztott betanítási feladatot szeretne futtatni, adja meg az elosztott feladatokhoz tartozó konfigurációt a **`distributed_job_config`** paraméterhez. A támogatott konfigurációs típusok közé tartozik az [MpiConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py&preserve-view=true), a [TensorflowConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration?view=azure-ml-py&preserve-view=true). 
+
+További információ és példák az elosztott Horovod, a TensorFlow és a PyTorch feladatok futtatásáról:
+
+* [TensorFlow-modellek betanítása](https://docs.microsoft.com/azure/machine-learning/how-to-train-tensorflow#distributed-training)
+* [PyTorch-modellek betanítása](https://docs.microsoft.com/azure/machine-learning/how-to-train-pytorch#distributed-training)
 
 ## <a name="submit-the-experiment"></a>A kísérlet elküldése
 
 ```python
-run = experiment.submit(config=script_run_config)
+run = experiment.submit(config=src)
+run.wait_for_completion(show_output=True)
 ```
 
 > [!IMPORTANT]
@@ -147,17 +149,24 @@ run = experiment.submit(config=script_run_config)
 > 
 > További információ a pillanatképekről: [Pillanatképek](concept-azure-machine-learning-architecture.md#snapshots).
 
+> [!IMPORTANT]
+> **Speciális mappák** Két mappa, *kimenet* és *napló*, a Azure Machine learning speciális kezelést kap. Ha a betanítás során a rendszer a gyökérkönyvtárhoz viszonyított *kimeneteket* és *naplókat* tartalmazó mappákba ír fájlokat `./outputs` , `./logs` a fájlok automatikusan feltöltve lesznek a futtatási előzményekbe, hogy a Futtatás befejezése után hozzáférhessenek hozzájuk.
+>
+> Az összetevőknek a betanítás során történő létrehozásához (például a Model Files, az ellenőrzőpontok, az adatfájlok vagy a képek kirajzolása) írja ezeket a `./outputs` mappába.
+>
+> Hasonlóképpen bármilyen naplót írhat a betanításból a `./logs` mappába. Azure Machine Learning [TensorBoard-integrációjának](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/export-run-history-to-tensorboard/export-run-history-to-tensorboard.ipynb) kihasználása érdekében ügyeljen arra, hogy a TensorBoard-naplókat a mappába írja. Amíg a Futtatás folyamatban van, el tudja indítani a TensorBoard, és továbbíthatja ezeket a naplókat.  Később is visszaállíthatja a naplókat az előző futtatások bármelyikéről.
+>
+> Ha például le szeretné tölteni a *kimenet* mappába a helyi gépre írt fájlt a távoli képzés futtatása után: `run.download_file(name='outputs/my_output_file', output_file_path='my_destination_path')`
 
-<a id="gitintegration"></a>
-
-## <a name="git-tracking-and-integration"></a>Git-követés és-integráció
+## <a name="git-tracking-and-integration"></a><a id="gitintegration"></a>Git-követés és-integráció
 
 Ha olyan képzést indít el, ahol a forrás könyvtára helyi git-tárház, a rendszer a tárház adatait a futtatási előzményekben tárolja. További információ: git- [integráció Azure Machine Learninghoz](concept-train-model-git-integration.md).
 
 ## <a name="notebook-examples"></a>Jegyzetfüzet-példák
 
-Tekintse meg ezeket a jegyzetfüzeteket a különböző számítási célokból származó képzésekre:
+Tekintse meg ezeket a jegyzetfüzeteket a futtatások konfigurálására példákat a különböző képzési forgatókönyvekhez:
 * [használati útmutató – azureml/képzés](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training)
+* [használati útmutató – azureml/ml – keretrendszerek](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks)
 * [oktatóanyagok/IMG-Classification-part1-Training. ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/image-classification-mnist-data/img-classification-part1-training.ipynb)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
@@ -165,7 +174,8 @@ Tekintse meg ezeket a jegyzetfüzeteket a különböző számítási célokból 
 ## <a name="next-steps"></a>Következő lépések
 
 * [Oktatóanyag: a betanítási modell](tutorial-train-models-with-aml.md) felügyelt számítási célt használ a modellek betanításához.
-* Ismerje meg, hogyan [javíthatja hatékonyan a hiperparaméterek beállítása](how-to-tune-hyperparameters.md) a jobb modellek létrehozásához? View = Azure-ml-a&megőrzése – nézet = true)
+* Megtudhatja, hogyan taníthat modelleket konkrét ML-keretrendszerekkel, például a [Scikit-Learn](how-to-train-scikit-learn.md), a [TensorFlow](how-to-train-tensorflow.md)és a [PyTorch](how-to-train-pytorch.md).
+* Ismerje meg, hogy miként lehet [hatékonyan hangolni a hiperparaméterek beállítása](how-to-tune-hyperparameters.md) a jobb modellek létrehozásához.
 * A betanított modellel megtudhatja, [Hogyan és hol helyezheti üzembe a modelleket](how-to-deploy-and-where.md).
-* Tekintse meg a [RunConfiguration Class](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py&preserve-view=true) SDK-referenciát.
+* Tekintse meg a [ScriptRunConfig Class](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) SDK-referenciát.
 * [Azure Machine Learning használata az Azure Virtual Networks használatával](how-to-enable-virtual-network.md)

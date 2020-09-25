@@ -7,13 +7,13 @@ ms.date: 07/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 1f3ec5b2b1c46b40c6f99836fc10778c98b59d4c
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.custom: devx-track-js
+ms.openlocfilehash: eebfa61632bc49d5df35c17ba2d2faca0382001c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432006"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336139"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -138,7 +138,7 @@ Az Azure SDK-kódtárak JavaScripten belüli használatához importálja a `@azu
 
 :::code language="javascript" source="~/azure-storage-snippets/blobs/quickstarts/JavaScript/V12/azure-blobs-js-browser/index.js" id="snippet_ImportLibrary":::
 
-Mentse a fájlt *index.jsként* az *Azure-Blob-js-Browser* könyvtárba.
+Mentse a fájlt *index.jsként * az *Azure-Blob-js-Browser* könyvtárba.
 
 ### <a name="implement-the-html-page"></a>A HTML-oldal implementálása
 

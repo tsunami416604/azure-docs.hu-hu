@@ -6,14 +6,14 @@ ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: quickstart
-ms.date: 06/09/2020
+ms.date: 09/22/2020
 ms.custom: devx-track-azurecli, subject-armqs
-ms.openlocfilehash: c8f431a609dafc1064b901cfdda8d170124cf0f9
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 1506ab7210f8b98614f51e5168555068cce0afbb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90089122"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325674"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Gyors útmutató: Azure NetApp Files beállítása és NFS-kötet létrehozása 
 
@@ -26,7 +26,7 @@ Ebben a rövid útmutatóban a következő elemeket fogja beállítani:
 - Egy kapacitás-készlet
 - Egy NFS-kötet a Azure NetApp Files
 
-Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 ## <a name="before-you-begin"></a>Előkészületek 
 
@@ -186,14 +186,15 @@ A következő kódrészlet azt mutatja be, hogyan hozható létre NetApp-fiók e
 
 3. Kattintson a **+ készletek hozzáadása**lehetőségre. 
 
-    ![Kattintson a készletek hozzáadása gombra.](../media/azure-netapp-files/azure-netapp-files-click-add-pools.png)  
+    ![Kattintson a készletek hozzáadása gombra.](../media/azure-netapp-files/azure-netapp-files-new-capacity-pool.png)  
 
 4. Adja meg a kapacitási készlet adatait: 
-    1. Adja meg a **mypool1** a készlet neveként.
-    2. Válassza a **prémium** lehetőséget a szolgáltatási szinthez. 
-    3. A készlet méreteként **4 (TiB)** adható meg. 
+    * Adja meg a **mypool1** a készlet neveként.
+    * Válassza a **prémium** lehetőséget a szolgáltatási szinthez. 
+    * A készlet méreteként **4 (TiB)** adható meg. 
+    * Használja az **automatikus** QoS-típust.
 
-5. Kattintson az **OK** gombra.
+5. Kattintson a **Létrehozás** lehetőségre.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -416,7 +417,7 @@ Ha elkészült, és ha szeretné, törölheti az erőforráscsoportot. Egy erőf
 
 3. Az erőforráscsoport lapon kattintson az **erőforráscsoport törlése**elemre.
 
-    ![Erőforráscsoport törlése](../media/azure-netapp-files/azure-netapp-files-azure-delete-resource-group.png) 
+    ![Képernyőkép, amely kiemeli az erőforráscsoport törlése gombot.](../media/azure-netapp-files/azure-netapp-files-azure-delete-resource-group.png) 
 
     Ekkor megnyílik egy ablak, mely figyelmezteti az erőforráscsoporttal törölt erőforrásokról.
 
