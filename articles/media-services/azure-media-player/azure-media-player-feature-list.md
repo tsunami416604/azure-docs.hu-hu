@@ -6,19 +6,19 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
-ms.openlocfilehash: 41e090b9e1d4c091bd3972afd296c5751e6b8c58
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 88048c3328114f17b30859efb41bb9f059b71439
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082715"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296365"
 ---
 # <a name="feature-list"></a>Funkciólista #
 Itt láthatók a tesztelt funkciók és a nem támogatott funkciók listája:
 
 | Funkció | TESZTELT | RÉSZLEGESEN TESZTELT | KIPRÓBÁLATLAN | TÁMOGATOTT | MEGJEGYZÉSEK |
 | ------- | ------ | ---------------- | -------- | ----------- | ----- |
-| Lejátszás                                |        |                  |          |             |                                                                                                                      |
+| **Lejátszás**                                |        |                  |          |             |                                                                                                                      |
 | Alapszintű igény szerinti lejátszás                | X      |                  |          |             | Csak Azure Media Services streamek támogatása                                                                      |
 | Alapszintű élő lejátszás                     | X      |                  |          |             | Csak Azure Media Services streamek támogatása                                                                      |
 | AES                                     | X      |                  |          |             | Támogatja Azure Media Services Key Delivery Service-t                                                                   |
@@ -26,12 +26,12 @@ Itt láthatók a tesztelt funkciók és a nem támogatott funkciók listája:
 | PlayReady                               | X      |                  |          |             | Támogatja Azure Media Services Key Delivery Service-t                                                                   |
 | Widevine                                |        | X                |          |             | A jegyzékfájlban körvonalazott Widevine PSSH-mezők támogatása                                                                    |
 | FairPlay                                |        | X                |          |             | Támogatja Azure Media Services Key Delivery Service-t                                                                   |
-| Techs                                   |        |                  |          |             |                                                                                                                      |
+| **Techs**                                   |        |                  |          |             |                                                                                                                      |
 | MSE/EME (AzureHtml5JS)                  | X      |                  |          |             |                                                                                                                      |
 | Flash-tartalék (vaku)                | X      |                  |          |             | Nem minden szolgáltatás érhető el ebben a technológiában.                                                                         |
 | Silverlight tartalék Silverlight      | X      |                  |          |             | Nem minden szolgáltatás érhető el ebben a technológiában.                                                                         |
 | Natív HLS átmenő (Html5)         |        | X                |          |             | A platform korlátozásai miatt nem minden szolgáltatás érhető el ebben a technológiában.                                            |
-| Funkciók                                |        |                  |          |             |                                                                                                                      |
+| **Funkciók**                                |        |                  |          |             |                                                                                                                      |
 | API-támogatás                             | X      |                  |          |             | Lásd: ismert problémák listája                                                                                                |
 | Alapszintű felhasználói felület                                | X      |                  |          |                                                                                                                                    |
 | Inicializálás JavaScript használatával       | X      |                  |          |             |                                                                                                                      |
@@ -40,7 +40,7 @@ Itt láthatók a tesztelt funkciók és a nem támogatott funkciók listája:
 | Szegmens címzése – index-alapú        |        |                  |          | X           |                                                                                                                      |
 | Szegmens címzés – bájt alapú         |        |                  |          | X           |                                                                                                                      |
 | Azure Media Services URL-újraíró       |        | X                |          |             |                                                                                                                      |
-| Kisegítő lehetőségek – feliratok és feliratok  |        | X                |          |             |  Igény szerint támogatott WebVTT, élő CEA 708 részben tesztelt                                                       |
+| Kisegítő lehetőségek – feliratok és feliratok  | X      |                 |          |             |  WebVTT (igény szerint), CEA 708 (igény szerinti és élő) és IMSC1 (igény szerinti és élő)                                                       |
 | Kisegítő lehetőségek – gyorsbillentyűk                 | X      |                  |          |             |                                                                                                                      |
 | Kisegítő lehetőségek – kontrasztos megjelenítés           |        | X                |          |             |                                                                                                                      |
 | Kisegítő lehetőségek – Tab fókusz               |        | X                |          |             |                                                                                                                      |
@@ -55,16 +55,16 @@ Itt láthatók a tesztelt funkciók és a nem támogatott funkciók listája:
 | Több hangos Stream                      |        | X                |          |             | A programozott hangkapcsolót a AzureHtml5JS és a Flashs technológiája támogatja, és a AzureHtml5JS, a Flashs és a natív Html5 (a Safariban) felhasználói felületének kiválasztásán keresztül érhető el.  A legtöbb platformon ugyanazt a kodeket kell magánjellegű adatokra váltani a hangstreamek váltásához (ugyanaz a kodek, csatorna, mintavételi sebesség stb.). |
 | Felhasználói felület honosítása                         |        | X                |          |             |                                                                                                                      |
 | Több példányos lejátszás                 |        |                  |          | X           | Ez a forgatókönyv bizonyos technológiák esetében működhet, de jelenleg nem támogatott és nem tesztelt. Azt is megteheti, hogy az IFRAMES használatával működik. |
-| Hirdetések támogatása                             |        | x                |          |             | Az AMP támogatja a nagy teljesítményű Active Directory-kiszolgálókat a AzureHtml5JS-technikai platformon a VOD-hoz kapcsolódó előre közép-és utólagos lineáris hirdetéseket. |
+| Hirdetések támogatása                             |        | X                |          |             | Az AMP támogatja a nagy teljesítményű Active Directory-kiszolgálókat a AzureHtml5JS-technikai platformon a VOD-hoz kapcsolódó előre közép-és utólagos lineáris hirdetéseket. |
 | Elemzés                               |        | X                |          |             | Az AMP lehetővé teszi az elemzési és diagnosztikai események figyelését, hogy az Ön által választott elemzési háttérbe küldjék.  Az események és tulajdonságok a platform korlátai miatt nem érhetők el a technológiák között.                                                                            |
-| Egyéni bőrök                            |        |                  | X        |             | Állítsa be a vezérlőket hamis értékre a saját HTML és CSS használatával.           |
+| Egyéni bőrök                            |        |                  | X        |             | Ez a forgatókönyv úgy érhető el, ha a vezérlőket hamis értékre állítja be, és saját HTML-és CSS-t használ.           |
 | Sáv tisztításának megkeresése                      |        |                  |          | X           |                                                                                                                      |
 | Trükk – lejátszás                              |        |                  |          | X           |                                                                                                                      |
-| Csak hang                              |        |                  |          | X           | Az adaptív adatfolyam-továbbításhoz bizonyos technológiákban működhet, de jelenleg nem támogatott, és nem működik a AzureHtml5JS-ben. A progresszív MP3-lejátszás képes együttműködni a HTML5-technológiával, ha a platform támogatja azt.                                                                                                        |
-| Csak videó                              |        |                  |          | X           | Az adaptív adatfolyam-továbbításhoz bizonyos technológiákban működhet, de jelenleg nem támogatott, és nem működik a AzureHtml5JS-ben.      |
+| Csak hang                              | X      |                  |          |           | A AzureHtml5JS támogatja. A progresszív MP3-lejátszás képes együttműködni a HTML5-technológiával, ha a platform támogatja azt.                                                                                                        |
+| Csak videó                              | X      |                  |          |           | A AzureHtml5JS támogatja.                                                                                                        |
 | Több időszakos bemutató               |        |                  |          | X                                                                                                                                  |
 | Több kamera látószöge                  |        |                  |          | X           |                                                                                                                      |
 | Lejátszás sebessége                          |        | X                |          |             | A legtöbb forgatókönyv esetén a lejátszási sebességet a Chrome részleges hibája miatt a legtöbb esetben támogatja a rendszer.                 |
 
-## <a name="next-steps"></a>További lépések ##
+## <a name="next-steps"></a>Következő lépések ##
 - [Azure Media Player rövid útmutató](azure-media-player-quickstart.md)

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 09/23/2020
 ms.author: erhopf
-ms.openlocfilehash: d4da9a819d7aa96992259112c75154b1651341ac
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: c55d69e99715a0c646c4e836df06cf105f9770bf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90604754"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319116"
 ---
 # <a name="inspect-custom-speech-data"></a>Custom Speech-adatok vizsgálata
 
@@ -35,7 +35,7 @@ Teszt létrehozásához kövesse az alábbi utasításokat:
 3. Kattintson a **teszt hozzáadása**gombra.
 4. Válassza a **minőség vizsgálata (csak hangalapú adatok)** lehetőséget. Adja meg a teszt nevét, leírását, és válassza ki a hangkészletet.
 5. Válasszon legfeljebb két modellt, amelyeket szeretne tesztelni.
-6. Kattintson a **Létrehozás** gombra.
+6. Kattintson a **Létrehozás** lehetőségre.
 
 Egy teszt sikeres létrehozása után megtekintheti, hogy egy modell hogyan írja át a megadott hangkészletet, vagy összehasonlítja a két modell eredményeit egymás mellett.
 
@@ -79,11 +79,13 @@ Az adat sikeres importálása után rákattinthat az adatkészletekre, és megke
 
 ### <a name="edit-transcription-by-listening-to-audio"></a>Átirat szerkesztése hang figyelésével
 
-Miután az adatok feltöltése sikeres volt, kattintson az egyes elemek nevére az adatok részleteinek megtekintéséhez. A Részletek lap felsorolja az adatkészlet összes fájlját, és rákattinthat a kívánt kifejezésre. Minden Kimondás esetén visszaállíthatja a hangot, és megvizsgálhatja az átiratokat, és szerkesztheti az átírásokat, ha bármilyen beszúrási, törlési vagy helyettesítési hibát talál. A hibákkal kapcsolatos további részletekért tekintse meg az [adatok kiértékelését](how-to-custom-speech-evaluate-data.md) ismertető témakört.
+Miután az adatok feltöltése sikeres volt, kattintson az egyes elemek nevére az adatok részleteinek megtekintéséhez. Az egyes fájlok közötti váltáshoz használhatja az **előző** és a **tovább** lehetőséget is.
+
+A Részletek lap felsorolja az egyes hangfájlok összes szegmensét, és rákattinthat a kívánt kifejezésre. Minden Kimondás esetén visszaállíthatja a hangot, és megvizsgálhatja az átiratokat, és szerkesztheti az átírásokat, ha bármilyen beszúrási, törlési vagy helyettesítési hibát talál. A hibákkal kapcsolatos további részletekért tekintse meg az [adatok kiértékelését](how-to-custom-speech-evaluate-data.md) ismertető témakört.
 
 ![Szerkesztő lap](media/custom-speech/custom-speech-editor.png)
 
-Ha a hangfájl hosszú, akkor a rendszer automatikusan kisebb darabokra szegmentálja. Egy-az-egyhez a **korábbi** és a lapok közötti váltás **mellett** is szerkesztheti őket. Miután végzett a szerkesztéssel, kattintson a **Save (Mentés** ) gombra.
+Miután végzett a szerkesztéssel, kattintson a **Save (Mentés** ) gombra.
 
 ### <a name="export-datasets-from-the-editor"></a>Adatkészletek exportálása a szerkesztőből
 
@@ -93,7 +95,7 @@ Az adatkészletek az **adatok** lapra való exportálásához navigáljon az ada
 
 Az adatba exportált fájlok teljesen új adatkészletként lesznek felhasználva, és nem érintik a meglévő adat/képzés/tesztelési entitásokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az adatai kiértékelése](how-to-custom-speech-evaluate-data.md)
 - [A modell betanítása](how-to-custom-speech-train-model.md)

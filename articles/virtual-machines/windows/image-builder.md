@@ -7,12 +7,12 @@ ms.date: 05/05/2020
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
-ms.openlocfilehash: f0d8a37f0edc161cbd73bf7438dc1c9486c4251b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 62d80426dec6f5d63d8fa5d67d64d6aafb881110
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027937"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320013"
 ---
 # <a name="preview-create-a-windows-vm-with-azure-image-builder"></a>Előzetes verzió: Windows rendszerű virtuális gép létrehozása az Azure rendszerkép-készítővel
 
@@ -161,7 +161,7 @@ vi helloImageTemplateWin.json
 ```
 
 > [!NOTE]
-> A forrás rendszerkép esetében mindig [meg kell adnia egy verziót](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-version-failure), amelyet nem használhat `latest` .
+> A forrás rendszerkép esetében mindig [meg kell adnia egy verziót](../linux/image-builder-troubleshoot.md#build--step-failed-for-image-version), amelyet nem használhat `latest` .
 > Ha hozzáadja vagy megváltoztatja azt az erőforráscsoportot, amelyben a rendszerkép el van terjesztve, meg kell adnia az [engedélyeket](#create-a-user-assigned-identity-and-set-permissions-on-the-resource-group) az erőforráscsoporthoz.
  
 ## <a name="create-the-image"></a>A rendszerkép létrehozása
@@ -179,13 +179,13 @@ az resource create \
 
 Ha elkészült, a rendszer visszaküldi a sikert jelző üzenetet a-konzolra, és létrehoz egy `Image Builder Configuration Template` -t a alkalmazásban `$imageResourceGroup` . Ezt az erőforrást az erőforráscsoport Azure Portalban tekintheti meg, ha engedélyezi a "rejtett típusok megjelenítése" beállítását.
 
-A háttérben a rendszerkép-szerkesztő létrehoz egy átmeneti erőforráscsoportot is az előfizetésében. Ez az erőforráscsoport a rendszerkép létrehozásához használatos. Ez a következő formátumban fog megjelenni:`IT_<DestinationResourceGroup>_<TemplateName>`
+A háttérben a rendszerkép-szerkesztő létrehoz egy átmeneti erőforráscsoportot is az előfizetésében. Ez az erőforráscsoport a rendszerkép létrehozásához használatos. Ez a következő formátumban fog megjelenni: `IT_<DestinationResourceGroup>_<TemplateName>`
 
 > [!Note]
 > Az átmeneti erőforráscsoportot nem szabad közvetlenül törölni. Először törölje a rendszerkép-sablon összetevőt, így az átmeneti erőforrás-csoport törölve lesz.
 
 Ha a szolgáltatás hibát jelez a rendszerkép-konfigurációs sablon beküldésekor:
--  Tekintse át ezeket a [hibaelhárítási](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#template-submission-errors--troubleshooting) lépéseket. 
+-  Tekintse át ezeket a [hibaelhárítási](../linux/image-builder-troubleshoot.md#troubleshoot-image-template-submission-errors) lépéseket. 
 - A Küldés megkísérlése előtt törölnie kell a sablont a következő kódrészlet használatával.
 
 ```azurecli-interactive
@@ -208,7 +208,7 @@ az resource invoke-action \
 
 Várjon, amíg a Build befejeződik. Ez körülbelül 15 percet vesz igénybe.
 
-Ha bármilyen hibát tapasztal, tekintse át ezeket a [hibaelhárítási](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-build-errors--troubleshooting) lépéseket.
+Ha bármilyen hibát tapasztal, tekintse át ezeket a [hibaelhárítási](../linux/image-builder-troubleshoot.md#troubleshoot-common-build-errors) lépéseket.
 
 
 ## <a name="create-the-vm"></a>A virtuális gép létrehozása
@@ -269,6 +269,6 @@ az group delete -n $imageResourceGroup
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a cikkben használt. JSON fájl összetevőiről, tekintse meg a [rendszerkép-szerkesztői sablon referenciáját](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

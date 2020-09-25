@@ -1,16 +1,18 @@
 ---
 title: Alkalmazásbeállítások – LUIS
 description: Az Azure Cognitive Services Language Understanding-alkalmazások beállításai az alkalmazásban és a portálon vannak tárolva.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 05/04/2020
-ms.openlocfilehash: 7b545e0959a43520b7d643ef8c0658a1e1a3b295
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 0578e3c3c952a475c6beb01ffcf354e19eda6e26
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83590985"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319163"
 ---
-# <a name="app-and-version-settings"></a>Alkalmazás-és verzió-beállítások
+# <a name="app-and-version-settings"></a>Alkalmazás- és verzióbeállítások
 
 Ezek a beállítások az [exportált](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40) alkalmazásban tárolódnak, és a REST API-kkal vagy a Luis-portálon frissülnek.
 
@@ -164,6 +166,6 @@ A következő írásjelek törlődnek a `NormalizePunctuation` tulajdonság ért
 |`+`|
 |`¡`|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Mellékjelek és a központozás [fogalmának](luis-concept-utterance.md#utterance-normalization-for-diacritics-and-punctuation) megismerése.

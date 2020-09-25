@@ -6,18 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 09/22/2020
+ms.date: 09/23/2020
 ms.author: alkohli
-ms.openlocfilehash: 20efae411ae4d2fae9bf3b5e69dbfdd98da1603a
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 4bae9e28a22a99d092db2bf887f0cd790e04c52a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985643"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318559"
 ---
 # <a name="what-is-the-azure-stack-edge-mini-r"></a>Mi az a Azure Stack Edge mini R?
 
-Az Azure Stack Edge mini R egy szolgáltatásként nyújtott hardveres megoldás. A Microsoft egy robusztus, felhőben felügyelt, ultra hordozható eszközt tartalmaz, amely egy beépített, a gyorsított AI-következtetést lehetővé tevő VPU, amely a hálózati tároló-átjáró összes képességével rendelkezik. Ezek az eszközök a legszigorúbb környezetekben használhatók, és mesterséges intelligenciára, elemzésre és kiszolgáló nélküli számítástechnikare vannak optimalizálva.
+Az Azure Stack Edge mini R egy rendkívül hordozható, robusztus, peremhálózati számítástechnikai eszköz, amely kemény környezetekben való használatra készült. Azure Stack Edge mini R szolgáltatás hardveres megoldásként érhető el. A Microsoft egy olyan felhőalapú felügyelt eszközt üzemeltet, amely hálózati tároló átjáróként működik, és beépített VPU rendelkezik, amely lehetővé teszi a gyorsított AI-következtetést.
 
 Ez a cikk áttekintést nyújt a Azure Stack Edge mini R megoldásról, a főbb képességekről, valamint azokról a forgatókönyvekről, amelyekben telepítheti az eszközt.
 
@@ -26,9 +26,9 @@ Ez a cikk áttekintést nyújt a Azure Stack Edge mini R megoldásról, a főbb 
 
 Azure Stack Edge mini R a következő képességekkel rendelkezik:
 
-|Képesség |Leírás  |
+|Képesség |Description  |
 |---------|---------|
-|Robusztus hardver| A legszigorúbb környezetekhez tervezett robusztus hardver.|
+|Robusztus hardver| Erős környezetekhez tervezett robusztus hardver.|
 |Ultra hordozható| Ultra hordozható, akkumulátorral működtetett forma tényező.|
 |Felhő által felügyelt|Az eszköz és a szolgáltatás kezelése a Azure Portal keresztül történik.|
 |Peremhálózati számítási feladatok|Lehetővé teszi az adatok elemzését, feldolgozását és szűrését.<br>Támogatja a virtuális gépeket és a tárolóban lévő számítási feladatokat. |
@@ -36,7 +36,7 @@ Azure Stack Edge mini R a következő képességekkel rendelkezik:
 |Vezetékes és vezeték nélküli | Lehetővé teszi a vezetékes és vezeték nélküli adatátvitelt.|
 |Az adatok elérése     | Az adatok közvetlen elérése az Azure Storage-blobokból és az Azure Filesból felhőalapú API-k használatával az adatok további feldolgozásához a felhőben. Az eszköz helyi gyorsítótára a legutóbb használt fájlok gyors elérésére szolgál.|
 |Leválasztott üzemmód|  Az eszköz és a szolgáltatás opcionálisan felügyelhető Azure Stack hub használatával. Alkalmazások telepítése, futtatása és kezelése offline módban. <br> A kapcsolat nélküli mód támogatja az offline feltöltési forgatókönyveket.|
-|Támogatott protokollok     |A standard SMB, NFS és REST protokollok használatát teszi lehetővé az adatok betöltéséhez. <br> A támogatott verziókról a [Azure stack Edge mini R rendszerkövetelményei](azure-stack-edge-gpu-system-requirements.md)című témakörben olvashat bővebben.|
+|Támogatott fájlátviteli protokollok      |A standard SMB, NFS és REST protokollok használatát teszi lehetővé az adatok betöltéséhez. <br> A támogatott verziókról a [Azure stack Edge mini R rendszerkövetelményei](azure-stack-edge-gpu-system-requirements.md)című témakörben olvashat bővebben.|
 |Adatfrissítés     | Lehetőség van a helyi fájlok legújabb változatra való frissítésére a felhőből.|
 |Dupla titkosítás    | Az öntitkosító meghajtó használata az első titkosítási réteget biztosítja. A VPN a második titkosítási réteget biztosítja. BitLocker-támogatás az adatok helyileg történő titkosításához és a felhőbe való biztonságos adatátvitelhez *https* -kapcsolaton keresztül.|
 |Sávszélesség-szabályozás| Sávszélesség-használat korlátozása csúcsidőben.|
@@ -60,13 +60,13 @@ Azure Stack Edge mini R a következő képességekkel rendelkezik:
 
 Az Azure Stack Edge mini R megoldás egy Azure Stack Edge-erőforrásból, Azure Stack Edge mini R robusztus, ultra hordozható fizikai eszközből és egy helyi webes felhasználói felületből áll.
 
-* **Azure stack Edge mini R fizikai eszköz** – egy, a Microsoft által biztosított, az Azure-ba való adatküldésre konfigurálható, ultra hordozható eszköz egy bevezető elemmel és egy olyan robusztus encasing, amelyet a Microsoft biztosít. Az akkumulátor tömege kevesebb, mint 7 lbs.
+* **Azure stack Edge mini R fizikai eszköz** – a Microsoft által biztosított, ultra hordozható, robusztus, számítási és tárolási eszköz. Az eszköznek van bevezető akkumulátora, és kevesebb, mint 7 lbs.
 
     ![Azure Stack Edge mini R-eszköz](media/azure-stack-edge-k-series-overview/perspective-view-1.png)
 
 * **Azure stack Edge-erőforrás** – a Azure Portal egyik erőforrása, amely lehetővé teszi egy robusztus, Azure stack Edge mini R-eszköz felügyeletét egy olyan webes felületen, amely különböző földrajzi helyekről érhető el. Az Azure Stack Edge-erőforrás segítségével erőforrásokat hozhat létre és kezelhet, megtekintheti és kezelheti az eszközöket és a riasztásokat, valamint kezelheti a megosztásokat.  
 
-* **Azure stack Edge mini r helyi webes felhasználói felület** – használja a helyi webes felhasználói felületet a kezdeti eszköz konfigurálásához, a diagnosztika futtatásához, a Azure stack Edge mini r-eszköz kikapcsolásához, a másolási naplók megtekintéséhez és a Microsoft ügyfélszolgálata kapcsolatfelvételhez.
+* **Azure stack Edge mini r local Web UI** – egy böngészőalapú helyi felhasználói felület az Azure stack Edge mini r-eszközön, elsődlegesen az eszköz kezdeti konfigurálására szolgál. A helyi webes felhasználói felülettel a diagnosztika futtatására, a Azure Stack Edge Pro-eszköz kikapcsolására, a másolási naplók megtekintésére és az Microsoft ügyfélszolgálata a szolgáltatási kérések fájlba való kapcsolódására is használhatja.
 
 
 ## <a name="region-availability"></a>Régiónkénti elérhetőség
@@ -74,6 +74,8 @@ Az Azure Stack Edge mini R megoldás egy Azure Stack Edge-erőforrásból, Azure
 Azure Stack Edge mini R fizikai eszközét, az Azure-erőforrást és a célként megadott Storage-fiókot, amelybe az adatok átvitele nem feltétlenül azonos régióban kell, hogy legyen.
 
 - **Erőforrás rendelkezésre állása** – az összes olyan régió listájához, ahol az Azure stack Edge-erőforrás elérhető, lépjen az [Azure-termékek régiónként elérhető területére](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). 
+
+- **Eszköz rendelkezésre állása** – az összes olyan országban, ahol az Azure stack Edge mini r-eszköz elérhető, lépjen a rendelkezésre állási szakaszra az [Azure stack Edge mini r díjszabásának](https://azure.microsoft.com/pricing/details/azure-stack/edge/#azureStackEdgeMiniR)Azure stack Edge mini r lapján.
 
 - **Céloldali tárfiókok** – Az adatokat tároló tárfiókok minden Azure-régióban elérhetők. Azok a régiók, amelyekben a Storage-fiókok tárolják Azure Stack Edge mini R-adataikat, közel kell lenniük ahhoz, ahol az eszköz az optimális teljesítmény érdekében található. Az eszköztől távol található tárfiók esetében hosszú késések és lassabb teljesítmény várható.
 

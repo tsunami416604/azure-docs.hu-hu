@@ -3,12 +3,12 @@ title: Üzembehelyezési előzmények törlései
 description: Ismerteti, hogyan Azure Resource Manager automatikusan törli a központi telepítéseket az üzembe helyezési előzményekből. A központi telepítések akkor törlődnek, ha az előzmények meghaladják a 800-as korlátot.
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.openlocfilehash: 1d4f49fe6b90e672b65aa97971426186384da02f
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 0c5d972eea9bc9cf2bf8716b26cd0e07d0a07b82
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90605209"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91284733"
 ---
 # <a name="automatic-deletions-from-deployment-history"></a>Automatikus törlés az üzembe helyezési előzményekből
 
@@ -16,7 +16,7 @@ Minden alkalommal, amikor telepít egy sablont, a központi telepítésre vonatk
 
 Azure Resource Manager automatikusan törli az előzményekből a korlát közelében lévő központi telepítéseket. Az automatikus törlés a korábbi viselkedés változása. Korábban a telepítési előzményekből manuálisan kellett törölni a központi telepítéseket, hogy elkerülje a hiba beolvasását. Ez a változás a 2020-es augusztus 6-án lett implementálva.
 
-**Az erőforráscsoport-telepítések esetében az automatikus törlések támogatottak. Jelenleg az [előfizetés](deploy-to-subscription.md), a [felügyeleti csoport](deploy-to-management-group.md)és a [bérlői](deploy-to-tenant.md) központi telepítések központi telepítési előzményeiben üzemelő példányok nincsenek törölve.**
+**Az erőforráscsoport-telepítések esetében az automatikus törlések támogatottak. Jelenleg az [előfizetés](deploy-to-subscription.md), a [felügyeleti csoport](deploy-to-management-group.md)és a [bérlői](deploy-to-tenant.md) központi telepítések előzményeiben üzemelő példányok nem törlődnek automatikusan.**
 
 > [!NOTE]
 > Egy központi telepítés az előzményekből való törlése nem befolyásolja az üzembe helyezett erőforrásokat.
@@ -118,6 +118,6 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Micro
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az üzembe helyezési előzmények megtekintésével kapcsolatos további tudnivalókért lásd: az [üzembe helyezési előzmények megtekintése Azure Resource Manager](deployment-history.md)használatával.

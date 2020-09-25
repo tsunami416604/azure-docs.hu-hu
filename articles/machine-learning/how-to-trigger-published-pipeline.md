@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.date: 02/07/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4
-ms.openlocfilehash: 6d54945ce026f91b27ce31ba82ada1b0cc49a260
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2e3544bee5158a855467f8cb142f176df2187ef5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324250"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318296"
 ---
 # <a name="trigger-a-run-of-a-machine-learning-pipeline-from-a-logic-app"></a>Machine Learning folyamat futtatásának elindítása logikai alkalmazásból
 
@@ -94,3 +94,14 @@ A logikai alkalmazás üzembe helyezése után a következő lépésekkel konfig
     > ![HTTP-beállítások](media/how-to-trigger-published-pipeline/http-settings.png)
 
 1. Válassza a **Mentés** lehetőséget, és most már készen áll az ütemtervre.
+
+## <a name="next-steps"></a>Következő lépések
+
+További információkért lásd:
+
+> [!div class="nextstepaction"]
+> [Azure Machine Learning folyamatok használata a Batch pontozáshoz](tutorial-pipeline-batch-scoring-classification.md)
+
+* További információ a [folyamatokról](concept-ml-pipelines.md)
+* További információ a [Azure Machine learning Jupyter való feltárásáról](samples-notebooks.md)
+

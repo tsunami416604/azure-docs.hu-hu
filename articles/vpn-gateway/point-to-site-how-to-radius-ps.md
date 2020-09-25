@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: e45afed3332d26006cf0b4296986edb6f6588962
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 2a93f612f5aeb5c2d3a4b83d580b9548f45e4c05
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89421730"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329159"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell"></a>Pont – hely kapcsolat konfigurálása VNet a RADIUS-hitelesítés használatával: PowerShell
 
@@ -24,8 +24,9 @@ A pont–hely VPN-kapcsolat indítása a Windows- és Mac-eszközökről törté
 
 * RADIUS-kiszolgáló
 * Natív tanúsítványalapú hitelesítés VPN Gateway
+* Natív Azure Active Directory hitelesítés (csak Windows 10 esetén)
 
-Ez a cikk segítséget nyújt a P2S-konfiguráció konfigurálásához a RADIUS-kiszolgáló használatával történő hitelesítéssel. Ha ehelyett a generált tanúsítványok és a VPN-átjáró natív tanúsítvány-hitelesítés használatával szeretne hitelesítést végezni, tekintse meg [a pont – hely kapcsolat konfigurálása VNet a VPN Gateway natív tanúsítvány-hitelesítés használatával](vpn-gateway-howto-point-to-site-rm-ps.md)című témakört.
+Ez a cikk segítséget nyújt a P2S-konfiguráció konfigurálásához a RADIUS-kiszolgáló használatával történő hitelesítéssel. Ha ehelyett a generált tanúsítványok és a VPN-átjáró natív tanúsítvány-hitelesítés használatával szeretne hitelesítést végezni, tekintse meg [a pont – hely kapcsolat konfigurálása VNet a VPN Gateway natív tanúsítvány-hitelesítéssel](vpn-gateway-howto-point-to-site-rm-ps.md) vagy Azure Active Directory-bérlő létrehozása a Azure Active Directory hitelesítéshez a [P2S OpenVPN protokoll kapcsolataihoz](openvpn-azure-ad-tenant.md) című témakört.
 
 ![Összekötő diagram – sugár](./media/point-to-site-how-to-radius-ps/p2sradius.png)
 
@@ -40,7 +41,7 @@ A pont–hely kapcsolatok nem igényelnek VPN-eszközt vagy nyilvános IP-címet
 A pont–hely kapcsolatokhoz a következőkre van szükség:
 
 * Útvonalalapú VPN-átjáró. 
-* RADIUS-kiszolgáló a felhasználói hitelesítés kezeléséhez. A RADIUS-kiszolgáló a helyszínen vagy az Azure-VNet is üzembe helyezhető.
+* RADIUS-kiszolgáló a felhasználói hitelesítés kezeléséhez. A RADIUS-kiszolgáló a helyszínen vagy az Azure-VNet is üzembe helyezhető. A magas rendelkezésre állás érdekében két RADIUS-kiszolgálót is beállíthat.
 * VPN-ügyfél konfigurációs csomagja azon Windows-eszközökhöz, amelyek csatlakozni fognak a VNet. A VPN-ügyfél konfigurációs csomagja biztosítja azokat a beállításokat, amelyek szükségesek ahhoz, hogy a VPN-ügyfél csatlakozhasson a P2S.
 
 ## <a name="about-active-directory-ad-domain-authentication-for-p2s-vpns"></a><a name="aboutad"></a>Tudnivalók a P2S VPN-EK Active Directory (AD) tartományi hitelesítéséről
@@ -221,6 +222,17 @@ New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
     Set-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway `
     -VpnClientAddressPool "172.16.201.0/24" -VpnClientProtocol @( "SSTP", "IkeV2" ) `
     -RadiusServerAddress "10.51.0.15" -RadiusServerSecret $Secure_Secret
+    ```
+
+   **Két** RADIUS-kiszolgáló **(előzetes verzió)** megadásához használja a következő szintaxist. Szükség szerint módosítsa a **-VpnClientProtocol** értéket
+
+    ```azurepowershell-interactive
+    $radiusServer1 = New-AzRadiusServer -RadiusServerAddress 10.1.0.15 -RadiusServerSecret $radiuspd -RadiusServerScore 30
+    $radiusServer2 = New-AzRadiusServer -RadiusServerAddress 10.1.0.16 -RadiusServerSecret $radiuspd -RadiusServerScore 1
+
+    $radiusServers = @( $radiusServer1, $radiusServer2 )
+
+    Set-AzVirtualNetworkGateway -VirtualNetworkGateway $actual -VpnClientAddressPool 201.169.0.0/16 -VpnClientProtocol "IkeV2" -RadiusServerList $radiusServers
     ```
 
 ## <a name="6-download-the-vpn-client-configuration-package-and-set-up-the-vpn-client"></a>6. <a name="vpnclient"></a> töltse le a VPN-ügyfél konfigurációs csomagját, és állítsa be a VPN-ügyfelet.

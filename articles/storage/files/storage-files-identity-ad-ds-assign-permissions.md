@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
-ms.openlocfilehash: 16c8058da30821a53a20cf3ea6afdb0e4dbfcb77
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 287bd02a11c71fbdd29b28b5ec9fc8424a477fea
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87535093"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320353"
 ---
 # <a name="part-two-assign-share-level-permissions-to-an-identity"></a>Második rész: megosztási szintű engedélyek kiosztása identitáshoz
 
@@ -47,7 +47,7 @@ Ha Azure-szerepkört szeretne hozzárendelni egy Azure AD-identitáshoz a [Azure
 1. A Azure Portal keresse meg a fájlmegosztást, vagy [hozzon létre egy fájlmegosztást](storage-how-to-create-file-share.md).
 1. Válassza a **Access Control (iam)** lehetőséget.
 1. Válassza **a szerepkör-hozzárendelés hozzáadása** elemet.
-1. A **szerepkör-hozzárendelés hozzáadása** panelen válassza ki a megfelelő beépített szerepkört (tárolási fájl adatsmb-megosztási olvasó, tárolási fájl adat SMB-megosztás közreműködője) a **szerepkör** listából. Az alapértelmezett beállításhoz ne **rendeljen hozzá hozzáférést** : **Azure ad-felhasználó,-csoport vagy egyszerű szolgáltatásnév**. Válassza ki a cél Azure AD-identitást név vagy e-mail-cím alapján. A kiválasztott Azure AD-identitásnak hibrid identitásnak kell lennie, és csak Felhőbeli identitás lehet. Ez azt jelenti, hogy ugyanazt az identitást is képviseli AD DSban.
+1. A **szerepkör-hozzárendelés hozzáadása** panelen válassza ki a megfelelő beépített szerepkört (tárolási fájl adatsmb-megosztási olvasó, tárolási fájl adat SMB-megosztás közreműködője) a **szerepkör** listából. Az alapértelmezett beállításhoz ne **rendeljen hozzá hozzáférést** : **Azure ad-felhasználó,-csoport vagy egyszerű szolgáltatásnév**. Válassza ki a cél Azure AD-identitást név vagy e-mail-cím alapján. **A kiválasztott Azure AD-identitásnak hibrid identitásnak kell lennie, és csak Felhőbeli identitás lehet.** Ez azt jelenti, hogy ugyanazt az identitást is képviseli AD DSban.
 1. A szerepkör-hozzárendelési művelet befejezéséhez válassza a **Mentés** lehetőséget.
 
 ### <a name="powershell"></a>PowerShell
@@ -76,7 +76,7 @@ A következő minta parancsfájl futtatása előtt ne felejtse el helyettesíten
 az role assignment create --role "<role-name>" --assignee <user-principal-name> --scope "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/fileServices/default/fileshares/<share-name>"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megosztott szintű engedélyeket rendelt hozzá, konfigurálnia kell a címtár-és a fájl szintű engedélyeket. Folytassa a következő cikkel.
 

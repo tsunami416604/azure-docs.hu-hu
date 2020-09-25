@@ -47,7 +47,9 @@
       items:
         - name: Ügynökök kapcsolódási problémái
           href: troubleshoot-agent-onboard.md
-- name: Hivatkozás
+        - name: Virtuálisgép-bővítményekkel kapcsolatos problémák
+          href: troubleshoot-vm-extensions.md
+- name: Referencia
   items:
     - name: Adattárolási hely
       href: data-residency.md

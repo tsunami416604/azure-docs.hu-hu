@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.author: mimart
 ms.date: 04/04/2020
-ms.custom: mvc, devx-track-javascript
+ms.custom: mvc, devx-track-js
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: f01ef1a4cf5bc5b805da3dd4d825ef17f81ce53e
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 8b10dd2d87ab7d4cf41a0bf860798f27651294d7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87170187"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258999"
 ---
 # <a name="tutorial-protect-and-grant-access-to-a-nodejs-web-api-from-a-single-page-application-with-azure-ad-b2c"></a>Oktatóanyag: Node.js webes API-hoz való hozzáférés biztosítása egy egyoldalas alkalmazásból Azure AD B2C
 
@@ -193,7 +193,7 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 Most, hogy már látott egy SPA-kérést egy védett webes API-ból származó erőforrással, mélyebben megértette, hogy ezek az alkalmazások hogyan hatnak egymással és a Azure AD B2C.
 
 > [!div class="nextstepaction"]
-> [Active Directory B2C >használható alkalmazások típusai](application-types.md)
+> [Active Directory B2C >használható alkalmazások típusai ](application-types.md)
 
 <!-- Links - EXTERNAL -->
 [github-js-spa]: https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp

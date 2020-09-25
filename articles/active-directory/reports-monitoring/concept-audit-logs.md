@@ -13,20 +13,22 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 07/17/2019
+ms.date: 09/17/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86eec0cf7108e2d3b47f7b98dbdaffe76be8afd8
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 23cfc2ea17e1801ec4caeea9e8933cfdc72e33d4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90603509"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331250"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Naplózott tevékenységekre vonatkozó jelentések az Azure Active Directory portálon 
 
 A Azure Active Directory-(Azure AD-) jelentésekkel megtekintheti a környezete működésének meghatározásához szükséges információkat.
+
+
 
 A jelentéskészítési architektúra a következő összetevőkből áll:
 
@@ -43,9 +45,9 @@ Ez a cikk áttekintést nyújt a naplózási jelentésről.
 
 * A **biztonsági rendszergazda**, a **biztonsági olvasó**, a **jelentéskészítő olvasó** , a **globális olvasó** vagy a **globális rendszergazdai** szerepkör felhasználói
 
-## <a name="audit-logs"></a>Naplók
+## <a name="audit-logs"></a>Auditnaplók
 
-Az Azure AD-naplók megfelelőségi adatokat biztosítanak a rendszertevékenységekről. A naplózási jelentés eléréséhez válassza a **naplók** lehetőséget a **Azure Active Directory** **figyelés** szakaszában. Vegye figyelembe, hogy a naplók késése akár egy óráig is tarthat, így a naplózási tevékenység adatai a feladat befejezése után a portálon jelennek meg.
+Az Azure AD-naplók megfelelőségi adatokat biztosítanak a rendszertevékenységekről. A naplózási jelentés eléréséhez válassza a **naplók** lehetőséget a **Azure Active Directory** **figyelés** szakaszában. 
 
 
 
@@ -58,19 +60,19 @@ Az auditnapló alapértelmezett listanézete az alábbi adatokat jeleníti meg:
 - a célt
 - a tevékenység kezdeményezőjét / szereplőjét (ki?)
 
-![Naplók](./media/concept-audit-logs/listview.png "Naplók")
+![Auditnaplók](./media/concept-audit-logs/listview.png "Auditnaplók")
 
 A listanézetet az eszköztár **Oszlopok** elemére kattintva lehet testre szabni.
 
-![Naplók](./media/concept-audit-logs/columns.png "Naplók")
+![Naplózási oszlopok](./media/concept-audit-logs/columns.png "Naplózási oszlopok")
 
 További mezőket jeleníthet meg, vagy eltávolíthatja a már megjelenített mezőket.
 
-![Naplók](./media/concept-audit-logs/columnselect.png "Naplók")
+![Mezők eltávolítása](./media/concept-audit-logs/columnselect.png "Mezők eltávolítása")
 
 Részletesebb információkhoz jelöljön ki egy elemet a listanézet nézetben.
 
-![Naplók](./media/concept-audit-logs/details.png "Naplók")
+![elem kiválasztása](./media/concept-audit-logs/details.png "Elem kiválasztása")
 
 
 ## <a name="filtering-audit-logs"></a>Auditnaplók szűrése
@@ -85,7 +87,7 @@ A naplózási adat a következő mezőkön szűrhető:
 - Kezdeményező (Szereplő)
 - Dátumtartomány
 
-![Naplók](./media/concept-audit-logs/filter.png "Naplók")
+![Objektum szűrése](./media/concept-audit-logs/filter.png "Objektum szűrése")
 
 A **szolgáltatás** szűrője lehetővé teszi, hogy a következő szolgáltatások legördülő listájából válasszon ki:
 
@@ -157,7 +159,7 @@ Egyéni időkeret kiválasztásakor beállíthatja a kezdő és a záró időpon
 
 Azt is megteheti, hogy letölti a szűrt adatokat, legfeljebb 250 000 rekordot a **Letöltés** gombra kattintva. A naplókat CSV-vagy JSON-formátumban is letöltheti. A letöltendő rekordok számát a [Azure Active Directory jelentés adatmegőrzési szabályzata](reference-reports-data-retention.md)korlátozza.
 
-![Naplók](./media/concept-audit-logs/download.png "Naplók")
+![Adatok letöltése](./media/concept-audit-logs/download.png "Adatok letöltése")
 
 ## <a name="audit-logs-shortcuts"></a>Rövidebb utak a naplók eléréséhez
 
@@ -170,7 +172,7 @@ Az **Azure Active Directory** mellett az Azure Portal két további lehetősége
 
 A felhasználó- és csoportalapú naplózási jelentésekkel az alábbi kérdésekre kaphat választ:
 
-- Milyen típusú frissítéseket telepítettek a felhasználók?
+- Milyen típusú frissítések lettek alkalmazva a felhasználókra?
 
 - Hány felhasználó lett módosítva?
 
@@ -188,11 +190,11 @@ A felhasználó- és csoportalapú naplózási jelentésekkel az alábbi kérdé
 
 Ha csak a felhasználókhoz kapcsolódó naplózási adatelemzést szeretné áttekinteni, a **felhasználók** lap **figyelés** területén a **naplók** területen található szűrt nézetet is megtalálhatja. Ennek a belépési pontnak a **UserManagement** van, mint az előválasztott kategória.
 
-![Naplók](./media/concept-audit-logs/users.png "Naplók")
+![Felhasználó](./media/concept-audit-logs/users.png "Felhasználó")
 
 Ha csak a csoportokhoz kapcsolódó naplózási adatellenőrzéseket szeretné áttekinteni, a **csoportok** lap **figyelés** területén a **naplók** területen található szűrt nézeteket is megtalálhatja. Ennek a belépési pontnak a **GroupManagement** van, mint az előválasztott kategória.
 
-![Naplók](./media/concept-audit-logs/groups.png "Naplók")
+![Csoportok szűrése](./media/concept-audit-logs/groups.png "Csoportok szűrése")
 
 ### <a name="enterprise-applications-audit-logs"></a>Vállalati alkalmazások naplói
 
@@ -206,7 +208,7 @@ Az alkalmazásalapú naplózási jelentésekkel az alábbi kérdésekre kaphat v
 
 Ha szeretné áttekinteni az alkalmazásokkal kapcsolatos naplózási adatait, a **vállalati alkalmazások** panel **tevékenység** szakaszában talál egy szűrt nézetet a **naplók** területen. Ehhez a belépési ponthoz az **alkalmazás típusaként**megadott **vállalati alkalmazások** vannak előválasztva.
 
-![Naplók](./media/concept-audit-logs/enterpriseapplications.png "Naplók")
+![Vállalati alkalmazások](./media/concept-audit-logs/enterpriseapplications.png "Vállalati alkalmazások")
 
 ## <a name="microsoft-365-activity-logs"></a>Microsoft 365 tevékenység naplói
 
@@ -214,7 +216,7 @@ A [Microsoft 365 felügyeleti központban](/office365/admin/admin-overview/about
 
 Az [Office 365 felügyeleti API](/office/office-365-management-api/office-365-management-apis-overview)-k használatával programozott módon is elérheti a Microsoft 365 tevékenység naplóit.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure AD naplózott tevékenységekre vonatkozó referencia](reference-audit-activities.md)
 - [Azure AD-jelentések adatmegőrzési referenciája](reference-reports-data-retention.md)

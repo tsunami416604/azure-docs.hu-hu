@@ -16,12 +16,12 @@ ms.date: 11/11/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ad2bf071d4aa5b49541c710ef9b0793a1076ea9
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 1ec5757b41da630c4cb09ad0c096aee87572615d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662499"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319894"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-microsoft-365-resources"></a>Azure Active Directory Connect Sync: Microsoft 365 erőforrások előnyben részesített adathelyének konfigurálása
 Ennek a témakörnek a célja, hogy megtudja, hogyan konfigurálhatja az attribútumot az előnyben részesített adathelyhez az Azure Active Directory (Azure AD) kapcsolódási szinkronizálásban. Ha valaki a Microsoft 365 több földrajzi funkcióját használja, ezzel az attribútummal jelölheti meg a felhasználó Microsoft 365-adatmennyiségének földrajzi helyét. (A feltételek *régiója* és a *földrajzi* terület szinonimaként használható.)
@@ -118,7 +118,7 @@ Nem minden Azure AD-attribútum importálható a helyszíni Active Directory-ös
 4. Győződjön meg arról, hogy a használni kívánt forrásoldali attribútum be van jelölve az attribútumok listájában. Ha nem látja az attribútumot, jelölje be az **összes megjelenítése** jelölőnégyzetet.
 5. A mentéshez kattintson **az OK gombra**.
 
-![A Synchronization Service Manager és a Tulajdonságok párbeszédpanel képernyőképe](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-step2.png)
+![Képernyőfelvétel: a Synchronization Service Manager és a tulajdonságok párbeszédpanelt, ahol az "attribútumok" lista látható.](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-step2.png)
 
 ## <a name="step-4-add-preferreddatalocation-to-the-azure-ad-connector-schema"></a>4. lépés: **PreferredDataLocation** hozzáadása az Azure ad Connector sémához
 **Erre a lépésre csak akkor van szükség, ha a 1.3.21 vagy régebbi verziójú csatlakozási verziót futtatja. Ha a 1.4.18 vagy újabb verzióval rendelkezik, ugorjon az 5. lépésre.**  

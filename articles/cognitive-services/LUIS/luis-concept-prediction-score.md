@@ -1,14 +1,16 @@
 ---
 title: Előrejelzési pontszámok – LUIS
 description: Az előrejelzési pontszám azt jelzi, hogy a LUIS API szolgáltatásnak milyen megbízhatósági foka van az előrejelzési eredményekhez a felhasználók teljes száma alapján.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/14/2020
-ms.openlocfilehash: 709a34f0a278d8a17267c7544583798d54167dad
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d836273e61752ff208133466016ce7c6ff9c28fa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81382378"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316460"
 ---
 # <a name="prediction-scores-indicate-prediction-accuracy-for-intent-and-entities"></a>Az előrejelzési pontszámok előrejelzési pontosságot jeleznek a szándék és az entitások számára
 
@@ -19,7 +21,7 @@ Az előrejelzési pontszám nulla (0) és egy (1) között van. Egy példa arra,
 |Pontszám értéke|Megbízhatóság|
 |--|--|
 |1|határozott egyezés|
-|0.99|magas megbízhatóság|
+|0,99|magas megbízhatóság|
 |0,01|alacsony megbízhatóság|
 |0|nem megfelelőnek határozott hiba|
 
@@ -46,7 +48,7 @@ Az összes cél pontszámának áttekintése jó módszer annak ellenőrzésére
 
 Ha több cél is van, a Kimondás kontextusa alapján az előrejelzési pontszámok is megváltozhatnak a leképezések között. A probléma megoldásához folytassa a hosszúságú kimondott szöveg hozzáadásával az egyes szándékokhoz a kontextusbeli különbségek széles skáláját, vagy megadhatja, hogy az ügyfélalkalmazás, például a csevegési robot, hogyan kezelje a 2 legfontosabb szándékot.
 
-A **nem determinisztikus betanítás**miatt a 2 cél, amely túl szorosan mutat, megfordítható. A legfelső pontszámot lehet a második csúcs, a második pedig az első legfelső pontszámot. Az ilyen helyzetek megelőzése érdekében vegyen fel például hosszúságú kimondott szöveg az első két cél elé, hogy a szó kiválasztásával és kontextusával a 2 szándékot megkülönböztetse. A két szándéknak azonos számú példa hosszúságú kimondott szöveg kell lennie. A leválasztásra szolgáló szabály, amely megakadályozza a betanítást, 15%-os különbség a pontszámokban.
+A túlságosan hasonló pontszámmal rendelkező 2 szándék felcserélődhet a **nem determinisztikus betanítás** következtében. A legfelső pontszámot lehet a második csúcs, a második pedig az első legfelső pontszámot. Az ilyen helyzetek megelőzése érdekében vegyen fel például hosszúságú kimondott szöveg az első két cél elé, hogy a szó kiválasztásával és kontextusával a 2 szándékot megkülönböztetse. A két szándéknak azonos számú példa hosszúságú kimondott szöveg kell lennie. A leválasztásra szolgáló szabály, amely megakadályozza a betanítást, 15%-os különbség a pontszámokban.
 
 Kikapcsolhatja a **nem determinisztikus képzést** az [összes adattal betanítva](luis-how-to-train.md#train-with-all-data).
 
@@ -60,7 +62,7 @@ Kikapcsolhatja a **nem determinisztikus képzést** az [összes adattal betanít
 
 ## <a name="e-exponent-notation"></a>E (kitevő) jelölés
 
-Az előrejelzési pontszámok használhatnak _appearing_ kitevői jelölést, amely az 0-1 `9.910309E-07`tartomány fölött jelenik meg, például:. Ez a pontszám nagyon **kis** számot jelez.
+Az előrejelzési pontszámok használhatnak kitevői jelölést, amely az 0-1 tartomány fölött _jelenik_ meg, például: `9.910309E-07` . Ez a pontszám nagyon **kis** számot jelez.
 
 |E jelölési pontszám |Tényleges pontszám|
 |--|--|
@@ -72,6 +74,6 @@ Az előrejelzési pontszámok használhatnak _appearing_ kitevői jelölést, am
 
 Az [Alkalmazásbeállítások](luis-reference-application-settings.md) segítségével szabályozhatja, hogyan befolyásolják a Mellékjelek és a központozás az előrejelzések pontszámait.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az entitások LUIS-alkalmazáshoz való hozzáadásával kapcsolatos további tudnivalókért tekintse meg az [entitások hozzáadása](luis-how-to-add-entities.md) című témakört.

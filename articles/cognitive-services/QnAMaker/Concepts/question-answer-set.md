@@ -1,20 +1,20 @@
 ---
 title: Tudásbázis tervezése – QnA Maker
-description: A QnA Maker Tudásbázis a kérdés-válasz típusú (QnA) és az egyes QnA-párokhoz tartozó opcionális metaadatokból áll.
+description: Megtudhatja, hogyan tervezhet tudásbázist – QnA Maker.
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: e75a9313f02a6b5cc4235cdcccb381585d2192ae
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 86e176a378d02d294e0123aba0d2e08d99b044fe
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83992997"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330655"
 ---
 # <a name="question-and-answer-pair-concepts"></a>Kérdések és válaszok – pár fogalmak
 
 A Tudásbázis kérdések és válaszok (QnA) párokból áll.  Minden pár egyetlen választ tartalmaz, és egy pár tartalmazza az adott _válaszhoz_tartozó összes információt. A válasz egy adatbázis-sorra vagy egy adatstruktúra-példányra is lazán hasonlíthat.
 
-## <a name="question-and-answer-pairs"></a>Kérdések és válaszok párok
+## <a name="question-and-answer-pairs"></a>Kérdés-válasz párok
 
 A kérdés-válasz (QnA) pár **kötelező** beállításai a következők:
 
@@ -43,7 +43,7 @@ Exportálja a tudásbázist a **Beállítások** lapról, majd szerkessze a tud�
 
 Miután végzett a szerkesztéssel, importálja újra a TSV-fájlt a **Beállítások** lapról. Ez teljes mértékben lecseréli az aktuális tudásbázist az importált tudásbázisba.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Tudásbázis életciklusa QnA Maker](./development-lifecycle-knowledge-base.md)

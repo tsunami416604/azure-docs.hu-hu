@@ -2,18 +2,18 @@
 title: Modulok fejlesztése és hibakeresése a Visual Studióban – Azure IoT Edge
 description: A Visual Studióval és az Azure IoT eszközökkel fejlesztheti a C vagy C# IoT Edge modult, és leküldheti a IoT Hubból egy IoT-eszközre, amelyet a telepítési jegyzék konfigurál.
 services: iot-edge
-author: shizn
+author: kgremban
 manager: philmea
-ms.author: xshi
+ms.author: kgremban
 ms.date: 3/27/2020
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 9722c7dec3a066d8f776424cb599be0d463416d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 823b16dcaf113136b10fdaa054da20840b99f02d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80384857"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297045"
 ---
 # <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge"></a>Azure IoT Edge-modulok fejlesztése és hibakeresése a Visual Studio 2019 használatával
 
@@ -236,6 +236,6 @@ Az IoT Edge-eszköz beállításához használt rövid útmutatóban egy modult 
 
 1. A figyelési információk leállításához jelölje be a **beépített esemény végpontjának figyelése** a **műveleti** ablakban jelölőnégyzetet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Egyéni modulok fejlesztése a IoT Edge-eszközökhöz, az [Azure IoT hub SDK-k megismerése és használata](../iot-hub/iot-hub-devguide-sdks.md).

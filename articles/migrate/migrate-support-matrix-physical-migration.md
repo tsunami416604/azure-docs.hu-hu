@@ -4,12 +4,12 @@ description: Ismerkedjen meg a fizikai kiszolgálók áttelepítésének támoga
 ms.topic: conceptual
 ms.custom: fasttrack-edit
 ms.date: 06/14/2020
-ms.openlocfilehash: 2e71ab5cd934f2fe931cd901d425061455cc9f0e
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: 95456298b3275c83152115d700a4539cab2d2a67
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89535448"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318160"
 ---
 # <a name="support-matrix-for-physical-server-migration"></a>A fizikai kiszolgáló áttelepítésének támogatási mátrixa
 
@@ -43,10 +43,10 @@ A tábla az áttelepíteni kívánt fizikai kiszolgálók támogatását összeg
 **Hálózat/tárterület** | A legfrissebb információkért tekintse át a Site Recovery [hálózati](../site-recovery/vmware-physical-azure-support-matrix.md#network) és [tárolási](../site-recovery/vmware-physical-azure-support-matrix.md#storage) előfeltételeit. Azure Migrate azonos hálózati/tárolási követelményeket biztosít.
 **Azure-követelmények** | A legfrissebb információkért tekintse át az [Azure hálózati](../site-recovery/vmware-physical-azure-support-matrix.md#azure-vm-network-after-failover), [tárolási](../site-recovery/vmware-physical-azure-support-matrix.md#azure-storage)és [számítási](../site-recovery/vmware-physical-azure-support-matrix.md#azure-compute) követelményeit site Recovery. Azure Migrate a fizikai kiszolgálók áttelepítésére vonatkozó követelményekkel rendelkezik.
 **Mobilitási szolgáltatás** | Minden áttelepíteni kívánt gépre telepíteni kell a mobilitási szolgáltatás ügynökét.
-**UEFI-rendszerindítás** | Az Azure-ban áttelepített gép automatikusan egy BIOS-rendszerindító Azure-beli virtuális gépre lesz konvertálva. Csak a Windows Server 2012-es és újabb verzióit futtató kiszolgálók támogatottak.<br/><br/> Az operációsrendszer-lemez legfeljebb négy partíciót tartalmazhat, és a köteteket NTFS fájlrendszerrel kell formázni.
+**UEFI-rendszerindítás** | Támogatott. Az UEFI-alapú gépek migrálása az Azure 2. generációs virtuális gépekre történik.  <br/><br/> Az operációsrendszer-lemez legfeljebb négy partíciót tartalmazhat, és a köteteket NTFS fájlrendszerrel kell formázni.
 **UEFI – biztonságos rendszerindítás**         | Migrálás esetén nem támogatott.
 **Céllemez** | A gépeket csak felügyelt lemezekre lehet áttelepíteni (standard HDD, standard SSD, prémium SSD) az Azure-ban.
-**Lemezméret** | 2 TB operációsrendszer-lemez; 8 TB adatlemezek esetében.
+**Lemezméret** | 2 TB-OS operációsrendszer-lemez (BIOS-rendszerindítás); 4 TB-OS operációsrendszer-lemez (UEFI-rendszerindítás); 8 TB adatlemezek esetében.
 **Lemezterület-korlátok** |  Legfeljebb 63 lemez/gép.
 **Titkosított lemezek/kötetek** |  A titkosított lemezekkel/kötetekkel rendelkező gépek migrálása nem támogatott.
 **Megosztott lemezes fürt** | Nem támogatott.

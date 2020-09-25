@@ -12,12 +12,12 @@ ms.date: 05/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f4eba1b48b651c8efe9e9d737e226727cb244fb
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 779b29c8d31dffa495926a7f2ca5e1f77870078c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662466"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319911"
 ---
 # <a name="azure-ad-connect-sync-v2-endpoint-api-public-preview"></a>Azure AD Connect Sync v2 Endpoint API (nyilvános előzetes verzió) 
 A Microsoft új végpontot (API-t) helyezett üzembe a Azure AD Connect számára, amely javítja a szinkronizálási szolgáltatás műveleteinek teljesítményét Azure Active Directory. Az új v2-végpont kihasználása az Azure AD-ba való exportálás és importálás során észrevehető teljesítménybeli nyereséget tapasztal. Ez az új végpont a következőket támogatja:
@@ -116,12 +116,12 @@ A tagsági korlát növeléséhez a következő lépések használhatók:
 1. Az Azure AD synchronization Rules Editor megnyitása 
 2. A szerkesztőben válassza a **kimenő** lehetőséget az irányhoz 
 3. Kattintson a **out to HRE – csoportos csatlakozás** szinkronizálása szabályra 
-4. Kattintson a **Szerkesztés** gombra a ![ szinkronizálási szabály szerkesztése elemre.](media/how-to-connect-sync-endpoint-api-v2/endpoint2.png)
+4. Kattintson a **Szerkesztés** gombra ![ , amely a "HRE-csoportba illesztés" elemre kattintva megjeleníti a szinkronizálási szabályok megtekintése és kezelése elemet.](media/how-to-connect-sync-endpoint-api-v2/endpoint2.png)
 
 6. Kattintson az **Igen** gombra az alapértelmezett szabály letiltásához és a szerkeszthető másolat létrehozásához.
- ![Szinkronizálási szabály szerkesztése](media/how-to-connect-sync-endpoint-api-v2/endpoint3.png)
+ ![Képernyőfelvétel: "a fenntartott szabály megerősítése" ablak a "yes" gomb kiválasztásával.](media/how-to-connect-sync-endpoint-api-v2/endpoint3.png)
 
-7. A **Leírás** lapon lévő előugró ablakban állítsa be a sorrendet egy 1 és 99 közötti értékre, és ![ módosítsa a szinkronizálási szabály értékét.](media/how-to-connect-sync-endpoint-api-v2/endpoint4.png)
+7. A **Leírás** lapon lévő előugró ablakban állítsa be a sorrendet egy 1 és 99 közötti számú ![ képernyőre, amely a "prioritás" beállítással jelölt "a kimenő szinkronizálási szabály szerkesztése" ablakot jeleníti meg.](media/how-to-connect-sync-endpoint-api-v2/endpoint4.png)
 
 8. Az **átalakítások** lapon frissítse a **tag** átalakításának **forrás** értékét, és cserélje le a 50000 értéket a 50001 és 250000 közötti értékre. Ez a csere növeli az Azure AD-vel szinkronizálni kívánt csoportok maximális tagsági méretét. Azt javasoljuk, hogy a nagyszámú 100k megkezdése után a nagy csoportok szinkronizálásának hatása legyen a szinkronizálási teljesítményre. 
  

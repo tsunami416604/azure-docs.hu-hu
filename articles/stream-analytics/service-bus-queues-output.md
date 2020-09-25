@@ -6,13 +6,13 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 08/25/2020
-ms.openlocfilehash: ba4b8f1d3aaa9b06f3bc24e9e267f6778734152a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/23/2020
+ms.openlocfilehash: bad81e8929cd0c5c66c87fd9f6cc11dc746b3e5f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903732"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317783"
 ---
 # <a name="service-bus-queues-output-from-azure-stream-analytics"></a>Service Bus a várólisták kimenetét Azure Stream Analytics
 
@@ -24,7 +24,7 @@ A [1,2-es kompatibilitási szinten](stream-analytics-compatibility-level.md)Azur
 
 A következő táblázat felsorolja a tulajdonságok nevét és a várólista kimenetének létrehozásához szükséges leírásokat.
 
-| Tulajdonság neve | Leírás |
+| Tulajdonság neve | Description |
 | --- | --- |
 | Kimeneti alias |Egy rövid név, amely lekérdezésekben a lekérdezés kimenetének a Service Bus üzenetsor felé történő irányítására szolgál. |
 | Service Bus névtér |Az üzenetküldési entitások készletének tárolója. |
@@ -51,6 +51,22 @@ A maximális üzenet mérete 256 KB/üzenet a standard szintű csomaghoz, a pré
 ## <a name="custom-metadata-properties-for-output"></a>A kimenet egyéni metaadat-tulajdonságai
 
 A lekérdezési oszlopokat felhasználói tulajdonságokként csatolhatja a kimenő üzenetekhez. Ezek az oszlopok nem kerülnek bele a hasznos adatokba. A tulajdonságok a kimeneti üzenet szótárának formájában jelennek meg. A *kulcs* az oszlopnév és az *érték* az oszlop értéke a tulajdonságok szótárban. A rekord és a tömb kivételével minden Stream Analytics adattípus támogatott.
+
+A következő példában a mezők és a `DeviceId` `DeviceStatus` metaadatokhoz lesznek adva.
+
+1. Használja a következő lekérdezést:
+
+   ```sql
+   select *, DeviceId, DeviceStatus from iotHubInput
+   ```
+
+1. Konfigurálja `DeviceId,DeviceStatus` a tulajdonság oszlopait a kimenetben.
+
+   :::image type="content" source="media/service-bus-queues-output/property-columns.png" alt-text="Tulajdonságok oszlopai":::
+
+Az alábbi ábrán a EventHub által a [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer)használatával megtekintett kimeneti üzenet várt tulajdonságai láthatók.
+
+:::image type="content" source="media/service-bus-queues-output/custom-properties.png" alt-text="Egyéni esemény tulajdonságai":::
 
 ## <a name="system-properties"></a>Rendszertulajdonságok
 

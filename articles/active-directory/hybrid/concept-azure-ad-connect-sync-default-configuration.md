@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3853d0e5754f368043414ea4eaade8c4adf179e9
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 5e55526e0a63a0c603e2b62ccb3ac0efed911cff
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661866"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295226"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Az Azure AD Connect szinkronizálása: az alapértelmezett konfiguráció ismertetése
 Ez a cikk a beépített konfigurációs szabályokat ismerteti. Dokumentálja a szabályokat, és hogy ezek a szabályok milyen hatással vannak a konfigurációra. Emellett Azure AD Connect Sync alapértelmezett konfigurációját is ismerteti. A cél az, hogy az olvasó tudomásul veszi, hogyan működik a deklaratív kiépítés nevű konfigurációs modell egy valós példában. Ez a cikk azt feltételezi, hogy már telepítette és konfigurálta Azure AD Connect szinkronizálást a telepítővarázsló használatával.
@@ -148,7 +148,7 @@ Mivel ez a szabály egy beépített szabály, a szabály megnyitásakor figyelme
 
 A szinkronizálási szabály négy konfigurációs szakaszt tartalmaz: Leírás, hatókör-szűrő, csatlakozási szabályok és átalakítások.
 
-#### <a name="description"></a>Description
+#### <a name="description"></a>Leírás
 Az első szakasz olyan alapvető információkat tartalmaz, mint például a név és a leírás.
 
 ![Leírás lap a szinkronizálási szabály szerkesztőjében](./media/concept-azure-ad-connect-sync-default-configuration/syncruledescription.png)
@@ -160,7 +160,7 @@ Azt is láthatja, hogy ez a szinkronizálási szabály a jelszó-szinkronizálá
 #### <a name="scoping-filter"></a>Hatókör-szűrő
 A hatóköri szűrő szakasz használatával konfigurálhatja, hogy mikor kell alkalmazni a szinkronizálási szabályt. Mivel a megtekintett szinkronizálási szabály neve azt jelzi, hogy csak az engedélyezett felhasználókra vonatkozik, a hatókör úgy van konfigurálva, hogy a **USERACCOUNTCONTROL** ad-attribútumnak ne legyen a 2. bit-készlete. Ha a Szinkronizáló motor megtalál egy felhasználót az AD-ben, akkor alkalmazza ezt a szinkronizálási szabályt, ha a **UserAccountControl** a 512 decimális értékre van beállítva (a normál felhasználó engedélyezve van). Nem alkalmazza a szabályt, ha a felhasználó **UserAccountControl** beállítása 514 (letiltva a normál felhasználó).
 
-![Hatókör lap a szinkronizálási szabály szerkesztőjében](./media/concept-azure-ad-connect-sync-default-configuration/syncrulescopingfilter.png)
+![A "bejövő szinkronizálási szabály szerkesztése" ablak "hatókör szűrő" szakaszát bemutató képernyőkép.](./media/concept-azure-ad-connect-sync-default-configuration/syncrulescopingfilter.png)
 
 A hatókör-szűrő olyan csoportokat és záradékokat tartalmaz, amelyek beágyazva lehetnek. Egy csoporton belüli összes záradéknak meg kell felelnie egy szinkronizálási szabály alkalmazásának. Ha több csoport van definiálva, akkor legalább egy csoportnak teljesülnie kell a szabály alkalmazásához. Ez a logikai vagy a csoportok és logikai, valamint egy csoporton belüli kiértékelése. Erre a konfigurációra például a kimenő szinkronizálási szabály a **HRE – csoportos csatlakozás**lehetőségnél talál példát. Több szinkronizálási szűrő is létezik, például egy a biztonsági csoportok ( `securityEnabled EQUAL True` ) és egy a terjesztési csoportok ( `securityEnabled EQUAL False` ) számára.
 
@@ -220,7 +220,7 @@ A szinkronizálási szabályok elsőbbségi sorrendjét a telepítővarázsló c
 ### <a name="putting-it-all-together"></a>Végső összeállítás
 Most már tudjuk, hogy a szinkronizálási szabályokkal tisztában lehet azzal, hogy a konfiguráció hogyan működik a különböző szinkronizálási szabályokkal. Ha megtekint egy felhasználót és a metaverse-hoz hozzájáruló attribútumokat, a szabályok a következő sorrendben lesznek alkalmazva:
 
-| Name | Megjegyzés |
+| Név | Megjegyzés |
 |:--- |:--- |
 | A from AD – felhasználói csatlakozás |Szabály az összekötő terület objektumainak metaverse-vel való csatlakoztatásához. |
 | A from AD – felhasználóifiók engedélyezve |Az Azure AD-be és Microsoft 365ba való bejelentkezéshez szükséges attribútumok. Ezeket az attribútumokat az engedélyezett fiókból szeretnénk használni. |

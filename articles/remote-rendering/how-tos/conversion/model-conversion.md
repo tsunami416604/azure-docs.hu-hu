@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: 49d3fd953d069f4368d28e26265114e574e8100a
-ms.sourcegitcommit: 655e4b75fa6d7881a0a410679ec25c77de196ea3
+ms.openlocfilehash: e899b249261ea3238695a2e2be6001cb6a9bc763
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89506661"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318058"
 ---
 # <a name="convert-models"></a>Modellek konvertálása
 
@@ -21,9 +21,8 @@ Az átalakítás után egy modell tölthető be egy Azure Storage-fiókból.
 
 Az átalakítási szolgáltatás a következő formátumokat támogatja:
 
-- **FBX**  (2011-es vagy újabb verzió)
-- **GLTF** (2. x verzió)
-- **Borai**  (2. x verzió)
+- **FBX**  (2011-es verzió 2020)
+- **GLTF** / **Borai** (2. x verzió)
 
 Kisebb eltérések vannak a formátumok között az anyagi tulajdonságok átalakításával kapcsolatban, ahogy az a Chapter [anyagok leképezése a modell-formátumokhoz](../../reference/material-mapping.md)című részben szerepel.
 

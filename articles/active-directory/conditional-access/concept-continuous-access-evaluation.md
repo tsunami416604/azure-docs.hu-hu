@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15f4f5d9eea8f53a894289160df00a1c1d8d8048
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 0f1bde255355e7a4f47df6a3969837410692cef5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90601758"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266059"
 ---
 # <a name="continuous-access-evaluation"></a>Folyamatos hozzáférés-kiértékelés
 
@@ -66,8 +66,8 @@ Ez a folyamat lehetővé teszi, hogy a felhasználók a hálózati hely megvált
 
 | | Office Web Apps | Office Win32-alkalmazások | IOS-es Office | Androidos Office | Mac-iroda |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| **szabályozásáról** | Támogatott | Támogatott | Nem támogatott | Támogatott | Támogatott |
-| **Exchange Online** | Támogatott | Támogatott | Nem támogatott | Támogatott | Támogatott |
+| **szabályozásáról** | Nem támogatott | Támogatott | Támogatott | Támogatott | Támogatott |
+| **Exchange Online** | Nem támogatott | Támogatott | Támogatott | Támogatott | Támogatott |
 
 ### <a name="client-side-claim-challenge"></a>Ügyféloldali jogcímek kihívása
 
@@ -144,7 +144,7 @@ A CAE esetében csak az elnevezett IP-alapú, névvel ellátott helyszínekre vo
 
 ### <a name="ip-address-configuration"></a>IP-címkonfiguráció
 
-A személyazonosság-szolgáltató és az erőforrás-szolgáltatók különböző IP-címeket láthatnak. Ez az eltérés a szervezeten belüli hálózati proxy-implementációk vagy az identitás-szolgáltató és az erőforrás-szolgáltató közötti helytelen IPv4/IPv6-konfigurációk miatt fordulhat elő. Például:
+A személyazonosság-szolgáltató és az erőforrás-szolgáltatók különböző IP-címeket láthatnak. Ez az eltérés a szervezeten belüli hálózati proxy-implementációk vagy az identitás-szolgáltató és az erőforrás-szolgáltató közötti helytelen IPv4/IPv6-konfigurációk miatt fordulhat elő. Példa:
 
 - Az identitás-szolgáltató egy IP-címet lát az ügyféltől.
 - Az erőforrás-szolgáltató egy másik IP-címet lát az ügyféltől a proxyn keresztüli továbbítás után.
@@ -183,6 +183,6 @@ Ha a felhasználót a letiltást követően engedélyezi. A fiók engedélyezés
 
 A bejelentkezések gyakorisága a CAE-vel vagy anélkül is megbecsülhető.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A folyamatos hozzáférés kiértékelésének bejelentése](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/moving-towards-real-time-policy-and-security-enforcement/ba-p/1276933)

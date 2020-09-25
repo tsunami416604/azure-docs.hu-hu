@@ -1,6 +1,6 @@
 ---
 title: Azure bejárati ajtó – gyorsítótárazás | Microsoft Docs
-description: Ebből a cikkből megtudhatja, hogy az Azure bejárati ajtaja hogyan figyeli a háttérrendszer állapotát
+description: Ebből a cikkből megtudhatja, hogyan használhatók a bejárati ajtók a gyorsítótárazást engedélyező útválasztási szabályokkal.
 services: frontdoor
 documentationcenter: ''
 author: duongau
@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/10/2018
+ms.date: 09/16/2020
 ms.author: duau
-ms.openlocfilehash: aada5b976721fdfed31131095f7f2b12aefefea9
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.openlocfilehash: 221627a756c69d11ec5385b12970bb835d6a0a0c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90024281"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318454"
 ---
 # <a name="caching-with-azure-front-door"></a>Gyorsítótárazás az Azure bejárati ajtaján
 A következő dokumentum a bejárati ajtó működésének módját határozza meg az olyan útválasztási szabályokkal, amelyeken engedélyezve van a gyorsítótárazás. A bejárati ajtó egy modern Content Delivery Network (CDN), és a dinamikus hely gyorsításával és a terheléselosztással együtt a gyorsítótárazási viselkedést is támogatja, ugyanúgy, mint bármely más CDN.
@@ -113,7 +113,7 @@ A rendszer a következő fejlécek sorrendjét használja annak meghatározásá
 2. Cache-Control: Max-Age =\<seconds>
 3. Lejár \<http-date>
 
-Cache-Control Response fejlécek, amelyek azt jelzik, hogy a válasz nem lesz gyorsítótárazva, például a Cache-Control: Private, Cache-Control: no-cache és Cache-Control: No-Store tiszteletben. Ha azonban egy adott URL-címen több kérelem van folyamatban egy POP-on, akkor megoszthatják a választ. Ha nincs gyorsítótár-vezérlő, az alapértelmezett viselkedés az, hogy a AFD gyorsítótárazza az erőforrást X időtartamra, ahol az X véletlenszerűen 1 és 3 nap közötti értéket vesz fel.
+Cache-Control Response fejlécek, amelyek azt jelzik, hogy a válasz nem lesz gyorsítótárazva, például a Cache-Control: Private, Cache-Control: no-cache és Cache-Control: No-Store tiszteletben.  Ha nincs gyorsítótár-vezérlő, az alapértelmezett viselkedés az, hogy a AFD gyorsítótárazza az erőforrást X időtartamra, ahol az X véletlenszerűen 1 és 3 nap közötti értéket vesz fel.
 
 ## <a name="request-headers"></a>Kérésfejlécek
 

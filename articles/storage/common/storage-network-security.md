@@ -9,12 +9,12 @@ ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 3ec4e6ee49052657210fffa8976b661c1a9e5948
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 474b3c4261b412c0c875f7a05802095c9e0c2cd9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827460"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320370"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Storage-tűzfalak és virtuális hálózatok konfigurálása
 
@@ -256,7 +256,7 @@ Az IP-hálózati szabályok csak a **nyilvános internetes** IP-címek esetében
 
 A tárolási tűzfalszabályok konfigurálásához csak IPV4-címek támogatottak.
 
-Az egyes Storage-fiókok legfeljebb 100 IP-hálózati szabályt támogatnak.
+Az egyes Storage-fiókok legfeljebb 200 IP-hálózati szabályt támogatnak.
 
 ### <a name="configuring-access-from-on-premises-networks"></a>A helyszíni hálózatokhoz való hozzáférés konfigurálása
 
@@ -472,7 +472,7 @@ A hálózati szabályok kivételeit a Azure Portal, a PowerShell vagy az Azure C
 > [!IMPORTANT]
 > Ügyeljen arra, hogy [az alapértelmezett szabályt](#change-the-default-network-access-rule) a **Megtagadás**értékre állítsa, vagy a kivételek eltávolítása ne legyen hatással.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az Azure Network Service-végpontokról a [szolgáltatási végpontokon](/azure/virtual-network/virtual-network-service-endpoints-overview).
 

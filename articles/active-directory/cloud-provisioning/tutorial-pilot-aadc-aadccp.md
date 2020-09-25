@@ -11,12 +11,12 @@ ms.date: 05/19/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43edb9ba6cdd73ce195a8b4eb60071b6831b7223
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: e771a988faca98d009b97b1e705ddac7110a255f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526935"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266496"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Kísérleti felhőalapú jogosultságkiosztás meglévő, szinkronizált AD-erdő esetén 
 
@@ -40,7 +40,7 @@ Az oktatóanyag elvégzéséhez a következő előfeltételek szükségesek
 - Tesztelési környezet Azure AD Connect Sync 1.4.32.0 vagy újabb verzióval
 - Egy olyan szervezeti egység vagy csoport, amely a szinkronizálási hatókörben van, és használható a próba használatával. Azt javasoljuk, hogy kezdjen el egy kis mennyiségű objektummal.
 - Egy Windows Server 2012 R2 vagy újabb rendszert futtató kiszolgáló, amely a kiépítési ügynököt fogja üzemeltetni.  Ez nem lehet a Azure AD Connect kiszolgálóval megegyező kiszolgáló.
-- A HRE-kapcsolat szinkronizálásának forrás-horgonyának *ObjectGUID* vagy *MS-DS-consistencyGUID* értékűnek kell lennie.
+- Azure AD Connect Sync forrás-horgonyának *ObjectGUID* vagy *MS-DS-consistencyGUID* értékűnek kell lennie
 
 ## <a name="update-azure-ad-connect"></a>Azure AD Connect frissítése
 
@@ -54,7 +54,7 @@ Azure AD Connect szinkronizálás szinkronizálja a helyszíni címtárban bekö
 3.  Futtassa az `Set-ADSyncScheduler -SyncCycleEnabled $false` parancsot.
 
 >[!NOTE] 
->Ha a HRE-kapcsolat szinkronizálásához saját egyéni ütemező alkalmazást futtat, tiltsa le az ütemező szolgáltatást. 
+>Ha Azure AD Connect szinkronizáláshoz saját egyéni ütemező alkalmazást futtat, tiltsa le az ütemező szolgáltatást. 
 
 ## <a name="create-custom-user-inbound-rule"></a>Egyéni felhasználó bejövő szabályának létrehozása
 
@@ -62,7 +62,7 @@ Azure AD Connect szinkronizálás szinkronizálja a helyszíni címtárban bekö
  ![Szinkronizációs szabály szerkesztője menü](media/how-to-cloud-custom-user-rule/user8.png)</br>
  
  2. Válassza a **bejövő** lehetőséget a legördülő listából az irányhoz, és kattintson az **új szabály hozzáadása**lehetőségre.
- ![Egyéni szabály](media/how-to-cloud-custom-user-rule/user1.png)</br>
+ ![A szinkronizálási szabályok megtekintése és kezelése ablak "bejövő" és "új szabály hozzáadása" gombjának bejelölését bemutató képernyőkép.](media/how-to-cloud-custom-user-rule/user1.png)</br>
  
  3. A **Leírás** lapon adja meg a következőt, majd kattintson a **tovább**gombra:
 
@@ -74,7 +74,7 @@ Azure AD Connect szinkronizálás szinkronizálja a helyszíni címtárban bekö
     **Hivatkozás típusa:** Csatlakozás<br>
     **Elsőbbség:** A rendszer egyedi értékének megadása<br>
     **Címke:** Hagyja üresen<br>
-    ![Egyéni szabály](media/how-to-cloud-custom-user-rule/user2.png)</br>
+    ![A "bejövő szinkronizálási szabály létrehozása – Leírás" oldal megjelenítése a megadott értékekkel.](media/how-to-cloud-custom-user-rule/user2.png)</br>
  
  4. A **hatókör-szűrő** lapon adja meg azt a szervezeti egységet vagy biztonsági csoportot, amelyet a próbaüzem alapján ki szeretne kapcsolni.  A szervezeti egység szűréséhez adja hozzá a megkülönböztető név OU részét. Ez a szabály az adott szervezeti egységben lévő összes felhasználóra vonatkozik.  Tehát ha a DN "OU = processzorok, DC = contoso, DC = com" végződéssel végződik, akkor ezt a szűrőt fogja felvenni.  Ezután kattintson a **Tovább** gombra. 
 
@@ -83,31 +83,31 @@ Azure AD Connect szinkronizálás szinkronizálja a helyszíni címtárban bekö
     |Hatóköri szervezeti egység|DN|ENDSWITH|A szervezeti egység megkülönböztető neve.|
     |Hatókör-csoport||ISMEMBEROF|A biztonsági csoport megkülönböztető neve.|
 
-    ![Egyéni szabály](media/how-to-cloud-custom-user-rule/user3.png)</br>
+    ![Képernyőfelvétel: a "bejövő szinkronizálási szabály létrehozása – hatóköri szűrő" lap, amely tartalmazza a megadott hatókör-szűrő értékét.](media/how-to-cloud-custom-user-rule/user3.png)</br>
  
  5. Az **illesztési** szabályok lapon kattintson a **tovább**gombra.
  6. Az **átalakítások** lapon adjon hozzá egy állandó átalakítást: a flow igaz értéket a cloudNoFlow attribútumhoz. Kattintson a **Hozzáadás** parancsra.
- ![Egyéni szabály](media/how-to-cloud-custom-user-rule/user4.png)</br>
+ ![Képernyőkép a "bejövő szinkronizálási szabály létrehozása – átalakítások" oldal "állandó átalakítás" folyamatával.](media/how-to-cloud-custom-user-rule/user4.png)</br>
 
 Ugyanezeket a lépéseket kell követni minden objektumtípus esetében (felhasználó, csoport és kapcsolattartó). Ismételje meg a lépéseket egy konfigurált AD-összekötő/AD-erdő alapján. 
 
 ## <a name="create-custom-user-outbound-rule"></a>Egyéni felhasználói Kimenő szabály létrehozása
 
  1. Válassza a **kimenő** lehetőséget a legördülő listából az irányhoz, és kattintson a **szabály hozzáadása**elemre.
- ![Egyéni szabály](media/how-to-cloud-custom-user-rule/user5.png)</br>
+ ![Képernyőkép, amely a "kimenő" irányt jeleníti meg, és az "új szabály hozzáadása" gomb ki van emelve.](media/how-to-cloud-custom-user-rule/user5.png)</br>
  
  2. A **Leírás** lapon adja meg a következőt, majd kattintson a **tovább**gombra:
 
     **Név:** Adjon egy értelmes nevet a szabálynak<br>
     **Leírás:** Adjon hozzá egy értelmes Leírást<br>
-    **Csatlakoztatott rendszerek:** Válassza ki azt a HRE-összekötőt, amelyhez egyéni szinkronizálási szabályt írunk<br>
+    **Csatlakoztatott rendszerek:** Válassza ki azt az Azure AD-összekötőt, amelyhez egyéni szinkronizálási szabályt írunk<br>
     **Csatlakoztatott rendszerobjektum típusa:** Felhasználói<br>
     **Metaverse objektum típusa:** Személy<br>
     **Hivatkozás típusa:** JoinNoFlow<br>
     **Elsőbbség:** A rendszer egyedi értékének megadása<br>
     **Címke:** Hagyja üresen<br>
     
-    ![Egyéni szabály](media/how-to-cloud-custom-user-rule/user6.png)</br>
+    ![Képernyőkép, amely a "Description" (Leírás) lapot mutatja a megadott tulajdonságokkal.](media/how-to-cloud-custom-user-rule/user6.png)</br>
  
  3. A **hatókör-szűrő** lapon válassza a **cloudNoFlow** egyenlő **igaz**értéket. Ezután kattintson a **Tovább** gombra.
  ![Egyéni szabály](media/how-to-cloud-custom-user-rule/user7.png)</br>
@@ -122,14 +122,14 @@ Ugyanezeket a lépéseket kell követni minden objektumtípus esetében (felhasz
 2. Töltse le a Azure AD Connect Cloud kiépítési ügynököt az [itt](how-to-install.md#install-the-agent)ismertetett lépések segítségével.
 3. Az Azure AD Connect Cloud kiépítés (AADConnectProvisioningAgent. Installer) futtatása
 3. A splash képernyőn **fogadja el** a licencelési feltételeket, majd kattintson a **telepítés**gombra.</br>
-![Üdvözlőképernyő](media/how-to-install/install1.png)</br>
+![Képernyőfelvétel: "Microsoft Azure A D kapcsolat létesítési ügynöke" splash screen.](media/how-to-install/install1.png)</br>
 
 4. A művelet befejezése után elindul a konfigurációs varázsló.  Jelentkezzen be az Azure AD globális rendszergazdai fiókjával.
 5. A **Active Directory összekapcsolása** képernyőn kattintson a **könyvtár hozzáadása** lehetőségre, majd jelentkezzen be a Active Directory rendszergazdai fiókjával.  Ezzel a művelettel a helyszíni címtárat fogja felvenni.  Kattintson a **Tovább** gombra.</br>
-![Üdvözlőképernyő](media/how-to-install/install3.png)</br>
+![Képernyőfelvétel: a "kapcsolat Active Directory" képernyő egy megadott könyvtár értékkel.](media/how-to-install/install3.png)</br>
 
 6. A **konfiguráció kész** képernyőn kattintson a **Confirm (megerősítés**) gombra.  Ez a művelet regisztrálja és újraindítja az ügynököt.</br>
-![Üdvözlőképernyő](media/how-to-install/install4.png)</br>
+![Képernyőfelvétel: a "jóváhagyás" gomb kiválasztásakor megjelenik a "konfigurálás kész" képernyő.](media/how-to-install/install4.png)</br>
 
 7. Miután a művelet befejeződik, meg kell jelennie arról, hogy **a sikeres ellenőrzést** észlelte.  Kattintson a **Kilépés**lehetőségre.</br>
 ![Üdvözlőképernyő](media/how-to-install/install5.png)</br>
@@ -141,7 +141,7 @@ Az ügynök ellenőrzése a Azure Portal és az ügynököt futtató helyi kiszo
 ### <a name="azure-portal-agent-verification"></a>Azure Portal ügynök ellenőrzése
 Az alábbi lépéseket követve ellenőrizheti, hogy az ügynök látja-e az Azure-t:
 
-1. Jelentkezzen be az Azure Portalra.
+1. Jelentkezzen be az Azure portálra.
 2. A bal oldalon válassza a **Azure Active Directory**, majd a **Azure ad Connect** , és a központban válassza a **felügyelet kiépítés (előzetes verzió)** lehetőséget.</br>
 ![Azure Portal](media/how-to-install/install6.png)</br>
 
@@ -195,8 +195,8 @@ Ezen felül ellenőrizheti, hogy a felhasználó és a csoport létezik-e az Azu
 Azure AD Connect szinkronizálás szinkronizálja a helyszíni címtárban bekövetkező változásokat egy ütemező használatával. Most, hogy módosította a szabályokat, újraindíthatja az ütemező programot.  Ehhez a következő lépések szükségesek:
 
 1.  Azure AD Connect Sync alkalmazást futtató kiszolgálón rendszergazdai jogosultságokkal nyissa meg a PowerShellt
-2.  Futtassa az `Set-ADSyncScheduler -SyncCycleEnabled $true` parancsot.
-3.  Futtassa az `Start-ADSyncSyncCycle` parancsot.  Nyomja meg az ENTER billentyűt.  
+2.  Futtatja a `Set-ADSyncScheduler -SyncCycleEnabled $true` parancsot.
+3.  Futtatja a `Start-ADSyncSyncCycle` parancsot.  Nyomja meg az ENTER billentyűt.  
 
 >[!NOTE] 
 >Ha Azure AD Connect szinkronizáláshoz saját egyéni ütemező alkalmazást futtat, engedélyezze az ütemező szolgáltatást. 

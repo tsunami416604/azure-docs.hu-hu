@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 5f087a2880c16218905a4410a2f591511a155ffd
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: 3747033fcaf65e0c6da07e9f1bb625771958bb4f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84628997"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319061"
 ---
 # <a name="create-a-custom-voice"></a>Egyéni hang létrehozása
 
@@ -117,7 +117,7 @@ A hangalapú betűkészlet sikeres létrehozása után tesztelheti a használat�
     > [!NOTE]
     > A szöveg nyelvének meg kell egyeznie a hang betűkészletének nyelvével. Csak a sikeresen betanított modellek tesztelése lehetséges. Ebben a lépésben csak egyszerű szöveg támogatott.
 
-5.  Kattintson a **Létrehozás**gombra.
+5.  Kattintson a **Létrehozás** lehetőségre.
 
 A tesztelési kérelem elküldése után vissza fog térni a teszt lapra. A tábla most már tartalmaz egy bejegyzést, amely megfelel az új kérésnek és az állapot oszlopnak. Néhány percet is igénybe vehet a beszédfelismerés. Ha az Állapot oszlopban a **sikeres**művelet látható, lejátszhatja a hangot, vagy letöltheti a szövegbeviteli szöveget (egy. txt fájlt) és hangkimenetet (egy. wav fájlt), és az utóbbit a minőségre is meghallgathatja.
 

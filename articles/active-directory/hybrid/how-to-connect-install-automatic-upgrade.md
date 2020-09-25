@@ -16,12 +16,12 @@ ms.date: 06/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dcc6de1ce50e86f177023a0a66c436633c8d502c
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 9c8dcc8766b21551f3cd62289805fe735ef0f333
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053286"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317616"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: automatikus frissítés
 Ez a szolgáltatás a Build [1.1.105.0 (2016. február) jelent](reference-connect-version-history.md)meg.  Ez a szolgáltatás a [build 1.1.561](reference-connect-version-history.md) lett frissítve, és mostantól támogatja azokat a további forgatókönyveket, amelyek korábban nem támogatottak.
@@ -64,14 +64,14 @@ Olyan eredmény is lehetséges, amely nem UpgradeResult, azaz "AADHealthEndpoint
 Ezután győződjön meg arról, hogy megnyitotta a szükséges URL-címeket a proxyban vagy a tűzfalban. Az automatikus frissítés a Azure AD Connect Health használja az [Áttekintés](#overview)című témakörben leírtak szerint. Ha proxyt használ, győződjön meg róla, hogy az állapot [proxykiszolgáló](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy)használatára van konfigurálva. Tesztelje az Azure AD-vel való [rendszerállapot-kapcsolatot](how-to-connect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service) is.
 
 Az Azure AD-vel való kapcsolat ellenőrzése után itt az ideje, hogy megtekintse az eseménynaplókat. Indítsa el az eseménynaplót, és keresse meg az **alkalmazás** eseménynaplóját. Adjon hozzá egy eseménynapló-szűrőt a forrás **Azure ad Connect frissítéshez** és az eseményazonosító tartomány **300-399**.  
-![Eseménynapló-szűrő az automatikus frissítéshez](./media/how-to-connect-install-automatic-upgrade/eventlogfilter.png)  
+![Képernyőkép, amely megjeleníti az "aktuális napló szűrése" ablakot az "Event Sources" és az "include/kizár" eseményazonosító mező kiemelésével.](./media/how-to-connect-install-automatic-upgrade/eventlogfilter.png)  
 
 Most már láthatja az automatikus frissítés állapotával kapcsolatos eseménynaplókat.  
 ![Eseménynapló-szűrő az automatikus frissítéshez](./media/how-to-connect-install-automatic-upgrade/eventlogresult.png)  
 
 Az eredmény kódja egy előtaggal rendelkezik, amely áttekintést nyújt az állapotról.
 
-| Eredmény-kód előtagja | Leírás |
+| Eredmény-kód előtagja | Description |
 | --- | --- |
 | Success |A telepítés frissítése sikeresen megtörtént. |
 | UpgradeAborted |Egy ideiglenes feltétel leállította a frissítést. Újból próbálkozik újra, és a várt érték az, hogy később sikeres lesz. |
@@ -79,7 +79,7 @@ Az eredmény kódja egy előtaggal rendelkezik, amely áttekintést nyújt az á
 
 Itt találja a leggyakoribb üzenetek listáját. Nem sorolja fel az összeset, de az eredményről tájékoztató üzenetnek Egyértelműnek kell lennie a problémával kapcsolatban.
 
-| Eredmény üzenet | Leírás |
+| Eredmény üzenet | Description |
 | --- | --- |
 | **UpgradeAborted** | |
 | UpgradeAbortedCouldNotSetUpgradeMarker |Nem lehet írni a beállításjegyzékbe. |
@@ -99,5 +99,5 @@ Itt találja a leggyakoribb üzenetek listáját. Nem sorolja fel az összeset, 
 |UpgradeNotSupportedLocalDbSizeExceeded|A helyi adatbázis mérete nagyobb vagy egyenlő, mint 8 GB|
 |UpgradeNotSupportedAADHealthUploadDisabled|Az állapot-adatfeltöltés le lett tiltva a portálról|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).

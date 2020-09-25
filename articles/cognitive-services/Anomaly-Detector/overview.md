@@ -1,27 +1,29 @@
 ---
 title: Mi az az Anomaly Detector API?
 titleSuffix: Azure Cognitive Services
-description: A rendellenesség-Kiderítő API speciális algoritmusait használva azonosíthatja az idősorozat-adataiban mutatkozó rendellenességeket.
+description: Az anomáliák Kiderítő API algoritmusai segítségével alkalmazhatja a anomáliák észlelését az idősorozat-adatain.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: overview
-ms.date: 09/10/2020
+ms.date: 09/22/2020
 ms.author: aahi
-ms.openlocfilehash: ba094709d78d92b678e3aa5ad9995923888caf00
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+keywords: anomáliák észlelése, gépi tanulás, algoritmusok
+ms.custom: cog-serv-seo-aug-2020
+ms.openlocfilehash: 2e48c189df23ed94cd54e1bc9097b7d9709c9ed3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90887508"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319316"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>Mi az az Anomaly Detector API?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-A rendellenesség-Kiderítő API lehetővé teszi, hogy az idősoros adataiban a gépi tanulással figyelje és azonosítsa a rendellenességeket. Az anomália-érzékelő API úgy alkalmazkodik, hogy automatikusan azonosítja és alkalmazza a legjobban illeszkedő modelleket az adataiba, függetlenül az iparágtól, a forgatókönyvtől vagy az adatmennyiségtől. Az idősorozat-adatok használatával az API meghatározza a rendellenességek észlelésére, a várt értékekre vonatkozó határokat, és hogy mely adatpontok rendellenesek.
+A rendellenesség-Kiderítő API lehetővé teszi, hogy a gépi tanulás ismerete nélkül figyelje és azonosítsa az idősoros adataiban felmerülő rendellenességeket. A rendellenesség-érzékelő API algoritmusai úgy vannak kialakítva, hogy automatikusan azonosítják és alkalmazzák a legjobban illeszkedő modelleket az adataihoz, függetlenül az iparágtól, a forgatókönyvtől vagy az adatmennyiségtől. Az idősorozat-adatok használatával az API meghatározza a rendellenességek észlelésére, a várt értékekre vonatkozó határokat, és hogy mely adatpontok rendellenesek.
 
 ![A szolgáltatási kérelmekben szereplő minták változásainak észlelése](./media/anomaly_detection2.png)
 
@@ -33,7 +35,7 @@ Az anomáliák detektorral automatikusan észlelheti a rendellenességeket az id
 
 |Funkció  |Leírás  |
 |---------|---------|
-|A valós időben előforduló rendellenességek észlelése. | A korábban látott adatpontok használatával észlelheti a folyamatos adatátviteli hibák észlelését, és meghatározhatja, hogy a legújabb-e anomália. A művelet létrehoz egy modellt a küldött adatpontok használatával, és meghatározza, hogy a célként megadott pont anomáli-e. Ha az API-t az Ön által létrehozott összes új adatpontra hívja fel, az adatait a létrehozásuk során figyelheti. |
+|Anomáliák észlelése valós időben. | A korábban látott adatpontok használatával észlelheti a folyamatos adatátviteli hibák észlelését, és meghatározhatja, hogy a legújabb-e anomália. A művelet létrehoz egy modellt a küldött adatpontok használatával, és meghatározza, hogy a célként megadott pont anomáli-e. Ha az API-t az Ön által létrehozott összes új adatpontra hívja fel, az adatait a létrehozásuk során figyelheti. |
 |Az adatkészletekben lévő rendellenességek észlelése kötegként. | Az idősorozat használatával észlelheti az összes olyan rendellenességet, amely létezhet az összes adategységben. A művelet létrehoz egy modellt a teljes idősorozat-adataival, és minden olyan pontot, amely ugyanazzal a modellel lett elemezve.         |
 |A módosítási pontok észlelése az adatkészletben kötegként. | Az idősorozat használatával észlelheti az adataiban található trend-változási pontokat. A művelet létrehoz egy modellt a teljes idősorozat-adataival, és minden olyan pontot, amely ugyanazzal a modellel lett elemezve.    |
 | További információkat kaphat az adatairól. | Hasznos információkhoz juthat az adatokról és az észlelt rendellenességekről, beleértve a várt értékeket, a rendellenességek határait és a pozíciókat. |

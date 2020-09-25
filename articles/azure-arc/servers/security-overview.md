@@ -1,26 +1,26 @@
 ---
 title: Biztonsági áttekintés
-description: Biztonsági információk az Azure arc használatára képes kiszolgálókról (előzetes verzió).
+description: Az Azure arc használatára képes kiszolgálók biztonsági információi.
 ms.topic: conceptual
-ms.date: 08/31/2020
-ms.openlocfilehash: 17641fab9933d9d6a60c2b21912f755acc01a6dd
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.date: 09/23/2020
+ms.openlocfilehash: be79be3030af76425b54fd683784d0e216ac2cf5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89447796"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329040"
 ---
-# <a name="azure-arc-for-servers-preview-security-overview"></a>Az Azure arc for Servers (előzetes verzió) biztonsági áttekintése
+# <a name="azure-arc-for-servers-security-overview"></a>Az Azure arc for Servers biztonsági áttekintése
 
 Ez a cikk ismerteti azokat a biztonsági konfigurációkat és szempontokat, amelyeket az Azure arc-kompatibilis kiszolgálók vállalaton belüli üzembe helyezése előtt ki kell értékelni.
 
 ## <a name="identity-and-access-control"></a>Identitás- és hozzáférés-vezérlés
 
-Minden egyes Azure arc-kompatibilis kiszolgáló felügyelt identitással rendelkezik egy olyan Azure-előfizetésben található erőforráscsoport részeként, amely a helyszíni vagy más felhőalapú környezetet futtató kiszolgálót jelképezi. Az erőforráshoz való hozzáférést szabványos [Azure szerepköralapú hozzáférés-vezérlés](../../role-based-access-control/overview.md)szabályozza. A Azure Portal [**Access Control (iam)**](../../role-based-access-control/role-assignments-portal.md#access-control-iam) lapján ellenőrizheti, hogy ki férhet hozzá az Azure arc-kompatibilis kiszolgálóhoz.
+Minden egyes Azure-beli arc-kiszolgáló felügyelt identitással rendelkezik egy Azure-előfizetésben található erőforráscsoport részeként, ez az identitás a helyszíni vagy más felhőalapú környezetet futtató kiszolgálót jelenti. Az erőforráshoz való hozzáférést szabványos [Azure szerepköralapú hozzáférés-vezérlés](../../role-based-access-control/overview.md)szabályozza. A Azure Portal [**Access Control (iam)**](../../role-based-access-control/role-assignments-portal.md#access-control-iam) lapján ellenőrizheti, hogy ki férhet hozzá az Azure arc-kompatibilis kiszolgálóhoz.
 
 :::image type="content" source="./media/security-overview/access-control-page.png" alt-text="Azure arc-kompatibilis kiszolgáló hozzáférés-vezérlése" border="false" lightbox="./media/security-overview/access-control-page.png":::
 
-Azok a felhasználók és alkalmazások, akik [közreműködői](../../role-based-access-control/built-in-roles.md#contributor) vagy rendszergazda szerepkörhöz férnek hozzá az erőforráshoz, módosíthatják az erőforrást, beleértve a [bővítmények](manage-vm-extensions.md) telepítését vagy törlését a gépen. A bővítmények olyan tetszőleges parancsfájlokat tartalmazhatnak, amelyek Kiemelt környezetben futnak, ezért az Azure-erőforráson belüli közreműködők a nem Azure-kiszolgáló közvetett rendszergazdájának kell lenniük.
+Azok a felhasználók és alkalmazások, akik [közreműködői](../../role-based-access-control/built-in-roles.md#contributor) vagy rendszergazda szerepkörhöz férnek hozzá az erőforráshoz, módosíthatják az erőforrást, beleértve a [bővítmények](manage-vm-extensions.md) telepítését vagy törlését a gépen. A bővítmények tartalmazhatnak olyan tetszőleges parancsfájlokat, amelyek egy emelt szintű környezetben futnak, ezért az Azure-erőforrás bármely közreműködőjét a kiszolgáló közvetett rendszergazdájaként kell figyelembe venni.
 
 Az **Azure Connected Machine** bevezetési szerepköre elérhető az Azure-ban, és csak új arc-kompatibilis kiszolgálókat tud olvasni vagy létrehozni az Azure-ban. Nem használható a már regisztrált vagy a bővítményeket kezelő kiszolgálók törlésére. Ajánlott eljárásként Azt javasoljuk, hogy csak akkor rendelje hozzá ezt a szerepkört ahhoz a Azure Active Directory (Azure AD) szolgáltatáshoz, amelyet a gépek nagy léptékű előkészítéséhez használnak.
 
@@ -28,9 +28,9 @@ Az **Azure Connected machine erőforrás-rendszergazdai** szerepkör tagjaként 
 
 ## <a name="agent-security-and-permissions"></a>Ügynök biztonsága és engedélyei
 
-Az Azure Connected Machine Agent (azcmagent) kezeléséhez Windows rendszeren a felhasználói fióknak a helyi Rendszergazdák csoport tagjának kell lennie, és Linux rendszeren rendszergazdai jogosultságokkal kell rendelkeznie.
+Az Azure Connected Machine Agent (azcmagent) Windows rendszeren való kezeléséhez a felhasználói fióknak a helyi Rendszergazdák csoport tagjának kell lennie. Linux rendszeren rendszergazdai jogosultságokkal kell rendelkeznie.
 
-Az Azure-beli csatlakoztatott gépi ügynök három, a gépen futó szolgáltatásból áll.
+Az Azure-beli csatlakoztatott gépi ügynök három szolgáltatásból áll, amelyek a gépen futnak.
 
 * A Hybrid Instance Metadata Service (himds) szolgáltatás felelős az arc összes alapvető funkciójának. Ez magában foglalja a szívverések Azure-ba küldését, a helyi példány metaadatainak szolgáltatását más alkalmazások számára, amelyekkel megismerheti a gép Azure-erőforrás-AZONOSÍTÓját, és beolvashatja az Azure AD-jogkivonatokat más Azure-szolgáltatásokban való hitelesítéshez. Ez a szolgáltatás nem rendszerjogosultságú virtuális szolgáltatásfiókként fut a Windowson, és a **himds** felhasználója a Linuxon.
 
@@ -56,4 +56,4 @@ Az Azure-beli csatlakoztatott gépi ügynök nyilvános kulcsú hitelesítést h
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az arc-kompatibilis kiszolgálók (előzetes verzió) több hibrid gépen való kiértékelése vagy engedélyezése előtt tekintse át a [csatlakoztatott gép ügynökének áttekintése című témakört](agent-overview.md) a követelmények, az ügynök műszaki adatai és a telepítési módszerek megismeréséhez.
+Az arc-kompatibilis kiszolgálók több hibrid gépen való kiértékelése vagy engedélyezése előtt tekintse át a [csatlakoztatott gép ügynökének áttekintése című témakört](agent-overview.md) a követelmények megismeréséhez, az ügynök műszaki részleteihez és a telepítési módszerekhez.

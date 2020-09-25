@@ -1,18 +1,18 @@
 ---
 title: A scorecard értelmezése | Microsoft Docs
-description: Az Azure Internet Analyzer szolgáltatással kapcsolatos gyakori kérdések.
+description: Útmutató a scorecard értelmezéséhez. A scorecard lapon a tesztek összesített és elemzett eredményei láthatók.
 services: internet-analyzer
 author: mattcalder
 ms.service: internet-analyzer
 ms.topic: how-to
 ms.date: 10/16/2019
 ms.author: mebeatty
-ms.openlocfilehash: 5ed8621fbfd1528bfffeaa986fa9c2e17c19f82b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f43d094193fb266d1ecec7089b44d8b3fd5e9b43
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84744034"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330213"
 ---
 # <a name="interpreting-your-scorecard"></a>A stratégiai mutatószámrendszer értelmezése
 
@@ -31,7 +31,7 @@ A scorecard lap az Internet Analyzer erőforrás menüjében található.
 
 A mérések száma az elemzés megbízhatóságát befolyásolja. Minél nagyobb a szám, annál pontosabb az eredmény. Legalább a teszteknek legalább 100 mérést kell végezniük napi szinten. Ha a mérési számok túl alacsonyak, konfigurálja úgy a JavaScript-ügyfelet, hogy gyakrabban fusson az alkalmazásában. Az A és B végpontok mérési számának nagyon hasonlónak kell lennie, bár a vártnál kisebb eltérések várhatók és rendben vannak. Nagy különbségek esetén az eredményeket nem szabad megbízhatóként megadni.
 
-## <a name="percentiles"></a>Időtartamának százalékos értéke
+## <a name="percentiles"></a>Percentilisek
 
 A késés (ezredmásodpercben mérve) egy népszerű metrika a forrás és a cél közötti sebesség méréséhez az interneten. A késési adatok általában nem oszlanak el (azaz nem követi a "harang-görbét"), mert a nagy késési értékek "hosszú farok" értékkel vannak elferdítve, amikor olyan statisztikai adatokat használnak, mint például a számtani középérték. Egy másik lehetőségként a percentilis "terjesztés – ingyenes" módszert biztosít az adatelemzéshez. Például a medián vagy 50 százalékos érték összegzi az eloszlás közepét, az értékek fele pedig az alatta lévő értékeket, a fele pedig alatta van. A 75th percentilis érték azt jelenti, hogy a terjesztésben az összes érték 75%-a nagyobb. Az Internet Analyzer a gyorsírásban a P50, a P75 és a P95 értékre hivatkozik.
 
@@ -50,11 +50,11 @@ A megbízhatósági intervallumok (CI) olyan értékek, amelyek valószínűség
 
 Az Internet Analyzer esetében a szűk megbízhatósági intervallum jó, mert a minta metrikája valószínűleg nagyon közel van a tényleges populációs mérőszámhoz. A széles körű megbízhatósági intervallum kevésbé biztos, hogy a minta mérőszáma az igazi populációs mérőszámot tükrözi. A CI javításának legjobb módja a mérések számának növelése.
 
-## <a name="time-series"></a>Idősorozat 
+## <a name="time-series"></a>idősorok 
 
 Az idősorozatok azt mutatják be, hogyan változik a metrika az idő múlásával. Az interneten számos olyan időbeli tényező van, amely hatással van a teljesítményre, például a maximális forgalmú időszakokra, a hétköznapok populációbeli különbségekre és a nyaralásokra.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információkért tekintse meg az [Internet Analyzer áttekintése](internet-analyzer-overview.md)című témakört.

@@ -1,6 +1,6 @@
 ---
 title: Az Azure AD Application Proxy-összekötők ismertetése | Microsoft Docs
-description: Az Azure AD Application Proxy-összekötők alapjaira terjed ki.
+description: Ismerje meg az Azure AD Application Proxy-összekötőket.
 services: active-directory
 author: kenwith
 manager: celestedg
@@ -12,12 +12,12 @@ ms.date: 11/15/2018
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 236e8e32eedce1a075aa4b3d1600c9c5595b7e2c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e7f14c757df8bcc38bf226cb6346c400087c2d7a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764672"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319826"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Az Azure AD Application Proxy-összekötők ismertetése
 
@@ -99,7 +99,7 @@ Fontos, hogy gondoskodjon arról, hogy elegendő kapacitást tervezzen az össze
 |8|32|270|1190|
 |16|64|245|1200 *|
 
-\*Ez a gép egyéni beállítást használt, hogy a .NET által ajánlott beállításokon felül néhány alapértelmezett kapcsolódási korlátot felemeljen. Javasoljuk, hogy futtasson egy tesztet az alapértelmezett beállításokkal, mielőtt felvette a kapcsolatot a támogatási szolgálattal, hogy megváltozzon a bérlőn a korlát.
+\* Ez a gép egyéni beállítást használt, hogy a .NET által ajánlott beállításokon felül néhány alapértelmezett kapcsolódási korlátot felemeljen. Javasoljuk, hogy futtasson egy tesztet az alapértelmezett beállításokkal, mielőtt felvette a kapcsolatot a támogatási szolgálattal, hogy megváltozzon a bérlőn a korlát.
 
 > [!NOTE]
 > A 4, 8 és 16 Magos gép közötti maximális TPS nem sok a különbség. A fő különbség a várt késés.
@@ -183,7 +183,7 @@ A szolgáltatás állapotát a szolgáltatások ablakban ellenőrizheti. Az öss
 
  ![Példa: szolgáltatások ablak, amelyen az Azure AD Services helyi](./media/application-proxy-connectors/aad-connector-services.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Alkalmazások közzététele különálló hálózatokon és helyszíneken összekötő csoportok használatával](application-proxy-connector-groups.md)
 - [Meglévő helyszíni proxykiszolgálók használata](application-proxy-configure-connectors-with-proxy-servers.md)

@@ -9,12 +9,12 @@ ms.date: 07/09/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
 ms.custom: references_regions
-ms.openlocfilehash: 2743dc0164f604c9c5e033aacc3e58fae42a1fd2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f5cf8f8ef004dacc9fe2bbdd1b815f2ae5275311
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90947704"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91298116"
 ---
 # <a name="quickstart-get-a-phone-number-using-the-azure-portal"></a>Gyors útmutató: telefonszám beszerzése a Azure Portal használatával
 
@@ -117,7 +117,7 @@ A telefonszámok kezeléséhez válassza a menü telefonszámok lapját.
 
 Gyakori kérdések és problémák:
 
-- Jelenleg csak az Egyesült Államok és Kanada támogatja a telefonszámok megvásárlását. Ez annak az előfizetésnek a számlázási címe alapján történik, amelyhez az erőforrás társítva van. Jelenleg nem lehet áthelyezni az erőforrást egy másik előfizetésbe.
+- Jelenleg csak az USA-beli telefonszámok megvásárlása támogatott. Ez annak az előfizetésnek a számlázási címe alapján történik, amelyhez az erőforrás társítva van. Jelenleg nem lehet áthelyezni egy erőforrást egy másik előfizetésbe.
 
 - Ha egy telefonszámot töröl, a telefonszámot a rendszer nem szabadítja fel, vagy a számlázási időszak végéig nem tudja újra megvásárolni.
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 04ea73825d6ffe2282a8d5564bfb6bb965a8190e
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 0a53e9ae42031203347784b78e162e8f806eb3c5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89649172"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320241"
 ---
 # <a name="linux-support"></a>Linux-támogatás
 
@@ -24,6 +24,7 @@ A következő partnerek jóváhagyták a Windows rendszerű virtuális asztali �
 |Partner|Partneri dokumentáció|Partneri támogatás|
 |:------|:--------------------|:--------------|
 |![IGEL embléma](./media/partners/igel.png)|[IGEL-ügyfél dokumentációja](https://www.igel.com/igel-solution-family/windows-virtual-desktop/)|[IGEL-támogatás](https://www.igel.com/support/)|
+|![NComputing embléma](./media/partners/ncomputing.png)|[NComputing-ügyfél dokumentációja](https://www.ncomputing.com/microsoft)|[NComputing-támogatás](https://www.ncomputing.com/support/support-options)|
 |![Stratodesk embléma](./media/partners/stratodesk.png)|[Stratodesk-ügyfél dokumentációja](https://www.stratodesk.com/kb/Microsoft_Windows_Virtual_Desktop_(WVD))|[Stratodesk-támogatás](https://www.stratodesk.com/support-3/)|
 
 ## <a name="next-steps"></a>Következő lépések

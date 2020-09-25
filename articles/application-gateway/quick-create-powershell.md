@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 08/27/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 115f01bffc4664798682923cb83a99a23a8ce274
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 3f64086ed97594416b5964cf648c857c2f271480
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958337"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331097"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway-using-azure-powershell"></a>Rövid útmutató: a webes forgalom közvetlen továbbítása az Azure Application Gateway használatával Azure PowerShell
 
@@ -37,7 +37,7 @@ Ez a rövid útmutató az [Azure CLI](quick-create-cli.md) vagy a [Azure Portal]
 
 Az Azure-hoz való kapcsolódáshoz futtassa a parancsot `Connect-AzAccount` .
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Az Azure-ban kapcsolódó erőforrásokat oszt ki egy erőforráscsoporthoz. Használhat meglévő erőforráscsoportot, vagy létrehozhat egy újat.
 
@@ -53,6 +53,8 @@ Ahhoz, hogy az Azure kommunikáljon a létrehozott erőforrások között, szük
 1. Hozza létre az alhálózati konfigurációkat a használatával `New-AzVirtualNetworkSubnetConfig` .
 2. Hozza létre a virtuális hálózatot az alhálózati konfigurációk használatával `New-AzVirtualNetwork` . 
 3. Hozza létre a nyilvános IP-címet a használatával `New-AzPublicIpAddress` . 
+> [!NOTE]
+> A [virtuális hálózati szolgáltatás végponti házirendjei](../virtual-network/virtual-network-service-endpoint-policies-overview.md) jelenleg nem támogatottak Application Gateway alhálózatban.
 
 ```azurepowershell-interactive
 $agSubnetConfig = New-AzVirtualNetworkSubnetConfig `

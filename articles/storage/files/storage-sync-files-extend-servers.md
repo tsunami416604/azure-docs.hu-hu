@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 10/23/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 80fcebec76788ca9ec754b35c57f9965f38c2c0e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1d2a0d79a5cdd53f8376c088fc986c20908575eb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037099"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329456"
 ---
 # <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>Oktatóanyag: Windows-fájlkiszolgálók kiterjesztése az Azure File Sync használatával
 
@@ -26,7 +26,7 @@ A cikk bemutatja a Windows Server tárolási kapacitásának a Azure File Sync h
 > * Szinkronizálási csoport és felhő végpont létrehozása
 > * Kiszolgálói végpont létrehozása
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -101,7 +101,7 @@ Ezen a ponton létrehozta a Storage-fiókot és egy fájlmegosztást egy fájlla
 
       ![Adatlemez adatai](./media/storage-sync-files-extend-servers/vm-create-new-disk-details.png)
 
-   1. Kattintson az **OK** gombra.
+   1. Válassza az **OK** lehetőséget.
 1. Válassza a **Felülvizsgálat és létrehozás** lehetőséget.
 1. Válassza a **Létrehozás** lehetőséget.
 
@@ -242,7 +242,7 @@ Az Azure File Sync ügynök egy letölthető csomag, amely lehetővé teszi a Wi
 1. Ha még nem tette meg, zárja be a PowerShell-ablakot.
 1. Fogadja el az alapértelmezett beállításokat a **Társzinkronizálási ügynök telepítő varázslóban**.
 1. Válassza a **Telepítés** lehetőséget.
-1. Válassza a **Befejezés** gombot.
+1. Válassza a **Befejezés** lehetőséget.
 
 Sikeresen üzembe helyezte az Azure Sync szolgáltatást és telepítette az ügynököt a Windows Server 2016 Datacenter virtuális gépre. Most regisztrálnia kell a virtuális gépet a Társzinkronizálási szolgáltatásra.
 
@@ -250,7 +250,7 @@ Sikeresen üzembe helyezte az Azure Sync szolgáltatást és telepítette az üg
 
 A Windows Server Storage Sync szolgáltatással való regisztrálása megbízhatósági kapcsolatot létesít a kiszolgáló (vagy fürt) és a Storage Sync szolgáltatás között. A kiszolgálók csak egy Storage Sync szolgáltatásban regisztrálhatók. Szinkronizálható más kiszolgálókkal és az adott Storage Sync szolgáltatáshoz társított Azure-fájlmegosztás használatával.
 
-A kiszolgáló regisztrációjának felhasználói felületének automatikusan meg kell nyílnia a Azure File Sync ügynök telepítése után. Ha nem, akkor manuálisan is megnyithatja a fájl helye:`C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe.`
+A kiszolgáló regisztrációjának felhasználói felületének automatikusan meg kell nyílnia a Azure File Sync ügynök telepítése után. Ha nem, akkor manuálisan is megnyithatja a fájl helye: `C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe.`
 
 1. Amikor megnyílik a kiszolgáló regisztrálása KEZELŐFELÜLET a virtuális gépen, kattintson az **OK gombra**.
 1. A kezdéshez válassza **a bejelentkezés** lehetőséget.
@@ -267,7 +267,7 @@ A kiszolgáló regisztrációjának felhasználói felületének automatikusan m
 
 1. A kiszolgáló regisztrációjának befejezéséhez válassza a **regisztráció** lehetőséget.
 1. A regisztrációs folyamat részeként meg kell adnia egy további bejelentkezést. Jelentkezzen be, és kattintson a **Tovább gombra**.
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
 
 ## <a name="create-a-sync-group"></a>Szinkronizálási csoport létrehozása
 
@@ -313,11 +313,13 @@ A fájlok az Azure-fájlmegosztások és a Windows Server között most már szi
 
 ![Az Azure Storage szinkronizálása sikeresen megtörtént](media/storage-sync-files-extend-servers/files-synced-in-azurestorage.png)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Ha törölni szeretné az oktatóanyagban létrehozott erőforrásokat, először távolítsa el a végpontokat a Storage Sync szolgáltatásból. Ezután szüntesse meg a kiszolgáló regisztrációját a Storage Sync szolgáltatásban, távolítsa el a szinkronizálási csoportokat, és törölje a szinkronizálási szolgáltatást.
 
 [!INCLUDE [storage-files-clean-up-portal](../../../includes/storage-files-clean-up-portal.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megismerte az alapvető lépéseket, amelyekkel kiterjesztheti a Windows Server tárolási kapacitását Azure File Sync használatával. A Azure File Sync központi telepítésének megtervezése alaposabban megtekinthető:
 

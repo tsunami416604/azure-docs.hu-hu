@@ -1,26 +1,28 @@
 ---
-title: 'Gyors útmutató: űrlap-felismerő ügyféloldali kódtár | Microsoft Docs'
-description: Ismerkedés a [Terméknév] ügyféloldali függvénytárával.
+title: 'Gyors útmutató: űrlap-felismerő ügyféloldali kódtár'
+titleSuffix: Azure Cognitive Services
+description: Az űrlap-felismerő ügyféloldali kódtár használatával létrehozhat egy űrlapot feldolgozó alkalmazást, amely Kinyeri a kulcs/érték párokat és a tábla adatait az egyéni dokumentumokból.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 08/17/2020
+ms.date: 09/21/2020
 ms.author: pafarley
-ms.custom: devx-track-javascript, devx-track-csharp
 zone_pivot_groups: programming-languages-set-ten
-ms.openlocfilehash: 0aa72b595bf60184aa840922a3d8a6496bb983a7
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.custom: devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
+keywords: űrlapok feldolgozása, automatizált adatfeldolgozás
+ms.openlocfilehash: eb3fc3ebe5c3d9f659758a14ba620018671d95f5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934352"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318906"
 ---
 # <a name="quickstart-use-the-form-recognizer-client-library"></a>Gyors útmutató: az űrlap-felismerő ügyféloldali kódtár használata
 
-Ismerkedés az űrlap-felismerő ügyféloldali függvénytárával. Az űrlap-felismerő egy olyan kognitív szolgáltatás, amely gépi tanulási technológiával azonosítja és Kinyeri a kulcs/érték párokat és a táblák adatait az űrlap dokumentumaiból. Ezután strukturált adatokat ad vissza, amelyek tartalmazzák az eredeti fájlban lévő kapcsolatokat. Az alábbi lépéseket követve telepítheti az SDK-csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját.
+Ismerkedjen meg az űrlap-felismerő ügyféloldali függvénytárával az Ön által választott nyelven. Az Azure Form-felismerő egy olyan kognitív szolgáltatás, amely lehetővé teszi a gépi tanulási technológia használatával automatizált adatfeldolgozási szoftverek készítését. Azonosíthatja és kinyerheti a szöveges, kulcs/érték párokat és táblázatos adatokat az űrlap dokumentumaiból &mdash; a szolgáltatás olyan strukturált adatokat jelenít meg, amelyek tartalmazzák az eredeti fájl kapcsolatait. Az alábbi lépéseket követve telepítheti az SDK-csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját.
 
 Használja az űrlap-felismerő ügyféloldali függvénytárát a következőre:
 

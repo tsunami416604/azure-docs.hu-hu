@@ -4,17 +4,17 @@ description: Azure Security teljesítményteszt v2 naplózás és fenyegetések 
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/13/2020
+ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 24ddca37a729a459382fc96a2f6e0ef1a7832f37
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: 9ada1956af2dabdb8e5deff33722af7a8691dd19
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90059301"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295464"
 ---
-# <a name="security-control-logging-and-threat-detection"></a>Biztonsági ellenőrzés: naplózás és fenyegetések észlelése
+# <a name="security-control-v2-logging-and-threat-detection"></a>Security Control v2: naplózás és fenyegetések észlelése
 
 A naplózás és a fenyegetések észlelése kiterjed az Azure-beli fenyegetések észlelésére, valamint az Azure-szolgáltatások naplófájljainak engedélyezésére, gyűjtésére és tárolására. Ebbe beletartozik az észlelési, vizsgálati és szervizelési folyamatok engedélyezése a vezérlőkkel, hogy magas színvonalú riasztásokat készítsen a natív veszélyforrások észlelésével az Azure-szolgáltatásokban; magában foglalja a naplók gyűjtését is Azure Monitor, központosítva a biztonsági elemzést az Azure Sentinel, az időszinkronizálás és a naplózás megőrzése mellett. 
 
@@ -40,11 +40,11 @@ Emellett az Azure Sentinel használatával elemzési szabályokat hozhat létre,
 
 **Felelősség**: ügyfél
 
-**Ügyfelek biztonsági résztvevői**:
+**Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Infrastruktúra és végpontbiztonság](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
-- [Biztonsági műveletek (SecOps)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Biztonsági műveletek](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [Helyzetkezelés](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
 
@@ -77,11 +77,11 @@ Azure Security Center riasztást is beállíthat bizonyos gyanús tevékenysége
 
 **Felelősség**: ügyfél
 
-**Ügyfelek biztonsági résztvevői**:
+**Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Infrastruktúra és végpontbiztonság](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
-- [Biztonsági műveletek (SecOps)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Biztonsági műveletek](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [Helyzetkezelés](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
 
@@ -111,11 +111,11 @@ A hálózati biztonsági csoport (NSG) erőforrás-naplói, NSG-naplók, Azure F
 
 **Felelősség**: ügyfél
 
-**Ügyfelek biztonsági résztvevői**:
+**Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Infrastruktúra és végpontbiztonság](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
-- [Biztonsági műveletek (SecOps)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Biztonsági műveletek](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [Helyzetkezelés](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
 
@@ -129,7 +129,7 @@ A hálózati biztonsági csoport (NSG) erőforrás-naplói, NSG-naplók, Azure F
 |--|--|--|--|
 | LT-4 | 6,2, 6,3, 8,8 | AU-3, AU-12 |
 
-Az Azure-erőforrások naplózásának engedélyezése a megfelelőség, a fenyegetések észlelése és a nyomozás, valamint a fenyegetések vadászata követelményeinek kielégítése érdekében. 
+Az Azure-erőforrások naplózásának engedélyezése a megfelelőség, a fenyegetések észlelése, a vadászat és az incidensek vizsgálatához szükséges követelmények teljesítése érdekében. 
 
 Azure Security Center és Azure Policy használatával engedélyezheti az erőforrás-naplókat és naplózhatja az adatok gyűjtését az Azure-erőforrásokon a naplózási, biztonsági és erőforrás-naplókhoz való hozzáféréshez. A automatikusan elérhető tevékenység-naplók közé tartozik az eseményforrás, a dátum, a felhasználó, az időbélyeg, a forráscím, a célcím és más hasznos elemek. 
 
@@ -141,9 +141,9 @@ Azure Security Center és Azure Policy használatával engedélyezheti az erőfo
 
 **Felelősség**: megosztott
 
-**Ügyfelek biztonsági résztvevői**:
+**Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Biztonsági műveletek (SecOps)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Biztonsági műveletek](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 Infrastruktúra és végpontbiztonság 
 
@@ -171,7 +171,7 @@ Számos szervezet úgy dönt, hogy a gyakran használt és az Azure-tárolót ha
 
 **Felelősség**: ügyfél
 
-**Ügyfelek biztonsági résztvevői**:
+**Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Biztonsági architektúra](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
@@ -185,25 +185,25 @@ Számos szervezet úgy dönt, hogy a gyakran használt és az Azure-tárolót ha
 |--|--|--|--|
 | LT-6 | 6.4 | AU-3, AU-11 |
 
-A megfelelőségi, szabályozási és egyéb követelmények szerint konfigurálja a napló megőrzését. 
+A megfelelőségi, szabályozási és üzleti követelményeinek megfelelően konfigurálja a napló megőrzését. 
 
 Azure Monitor az Log Analytics munkaterület megőrzési időszakát a szervezet megfelelőségi előírásai szerint állíthatja be. Az Azure Storage, a Data Lake vagy a Log Analytics munkaterület-fiókok használata hosszú távú és archiválási tároláshoz.
 
 - [Az adatmegőrzési időszak módosítása Log Analytics](../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
-Adatmegőrzési szabályzat konfigurálása az Azure Storage-fiók naplóihoz: ttps://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account#configure-logging
+- [Adatmegőrzési szabályzat konfigurálása az Azure Storage-fiók naplóihoz](../../storage/common/storage-monitor-storage-account.md#configure-logging)
 
 - [Azure Security Center riasztások és javaslatok exportálása](../../security-center/continuous-export.md)
 
 **Felelősség**: ügyfél
 
-**Ügyfelek biztonsági résztvevői**:
+**Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Biztonsági architektúra](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
 - [Alkalmazások biztonsága és DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
-- [Biztonsági műveletek (SecOps)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center) 
+- [Biztonsági műveletek](/azure/cloud-adoption-framework/organize/cloud-security-operations-center) 
 
 - [Biztonsági megfelelőség kezelése](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
@@ -225,7 +225,7 @@ Az Azure-on belüli erőforrások által generált összes napló biztosítja az
 
 **Felelősség**: megosztott
 
-**Ügyfelek biztonsági résztvevői**:
+**Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Szabályzat és szabványok](/azure/cloud-adoption-framework/organize/cloud-security-policy-standards)
 

@@ -5,12 +5,12 @@ author: MalcolmTyrrell
 ms.author: matyrr
 ms.date: 09/03/2020
 ms.topic: how-to
-ms.openlocfilehash: 8acd19408c328ef3f534ba7bc41c96e395f768be
-ms.sourcegitcommit: 655e4b75fa6d7881a0a410679ec25c77de196ea3
+ms.openlocfilehash: 13c4b841fe2d0b62472628d9382b5f6ee3d1fa6c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89510973"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318075"
 ---
 # <a name="laying-out-files-for-conversion"></a>Fájlok elrendezése átalakításhoz
 
@@ -28,6 +28,10 @@ Ha az elérési utak relatív elérési utakként vannak tárolva, és a forrás
 
 > [!Note]
 > Javasoljuk, hogy helyezzen el fájlokat a bemeneti tárolóba, hogy a fájlok relatív helyei ugyanazok legyenek, mint amikor az eszköz létrejött.
+
+> [!Note]
+> Inkább olyan objektumokat hozzon létre, amelyek relatív elérési utakat hordoznak.
+> A [3ds Max-hoz készült anyagok beállításával](../../tutorials/modeling/3dsmax-material-setup.md) kapcsolatos oktatóanyag egy 3ds Max-példát biztosít arra vonatkozóan, hogyan biztosítható, hogy egy eszköz relatív elérési utakat használjon.
 
 ## <a name="finding-textures"></a>Textúrák keresése
 

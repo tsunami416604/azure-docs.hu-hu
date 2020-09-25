@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
-ms.openlocfilehash: 9f3d95d7ae725dba700b0a060ba74552d6b83ad5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fbd4c4ecfa2be9815e5d301a02460dc28171716a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84172367"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329261"
 ---
 # <a name="public-ip-addresses"></a>Nyilvános IP-címek
 
@@ -72,7 +72,7 @@ Alapszintű SKU-címek:
 - Egy állítható bejövő, 4-30 perces üresjárati időkorláttal rendelkezik, amely alapértéke 4 perc, a rögzített kimenő folyamat pedig 4 perces üresjárati időkorlátot tartalmaz.
 - Alapértelmezés szerint nyitva vannak.  A hálózati biztonsági csoportok használata ajánlott, de nem kötelező a bejövő és kimenő forgalom korlátozásához.
 - Hozzárendelve bármely olyan Azure-erőforráshoz, amely nyilvános IP-címet rendelhet hozzá, például:
-    * Hálózati illesztők
+    * Hálózati adapterek
     * VPN-átjárók
     * Application Gateway-átjárók
     * Nyilvános terheléselosztó
@@ -165,16 +165,24 @@ A nyilvános IP-címet társíthatja egy [Azure Application Gateway átjáróval
 * Rendeljen egy **dinamikus** alapszintű nyilvános IP-címet egy Application Gateway v1 kezelőfelületi konfigurációhoz. 
 * Rendeljen **statikus** szabványos SKU-címeket egy v2 előtér-konfigurációhoz.
 
+## <a name="azure-firewall"></a>Azure Firewall
+
+[Azure Firewall](../firewall/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) lehetővé teszi az alkalmazás-és hálózati kapcsolati házirendek létrehozását, betartatását és naplózását az előfizetések és a virtuális hálózatok között.
+
+Csak **statikus** szabványos nyilvános IP-címeket rendelhet hozzá tűzfallal. Ez lehetővé teszi, hogy a tűzfalon kívüli adatok azonosíthassák a virtuális hálózatról származó forgalmat. 
+
+
 ## <a name="at-a-glance"></a>Egy pillantásra
 
 A következő táblázat azt a tulajdonságot mutatja be, amelyen keresztül a nyilvános IP-cím a legfelső szintű erőforráshoz és a lehetséges kiosztási módszerekhez társítható.
 
 | Legfelső szintű erőforrás | IP-cím társítása | Dinamikus | Statikus |
 | --- | --- | --- | --- |
-| Virtuális gép |Hálózati illesztő |Igen |Igen |
+| Virtuális gép |Hálózati adapter |Igen |Igen |
 | Internetkapcsolattal rendelkező terheléselosztó |Előtér-konfiguráció |Igen |Igen |
-| VPN-átjáró |Átjáró IP-konfigurációja |Yes |Nem |
+| VPN-átjáró |Átjáró IP-konfigurációja |Igen |Nem |
 | Alkalmazásátjáró |Előtér-konfiguráció |Igen (csak v1) |Igen (csak v2) |
+| Azure Firewall | Előtér-konfiguráció | Nem | Igen|
 
 ## <a name="limits"></a>Korlátok
 
@@ -186,7 +194,7 @@ A korlátok régiónként és előfizetésenként értendőek. [Vegye fel a kapc
 
 A nyilvános IP-címek kapcsán névleges díjak merülhetnek fel. Ha többet szeretne megtudni az Azure-ban használt IP-címek díjszabásáról, tekintse át az [IP-címek díjszabását](https://azure.microsoft.com/pricing/details/ip-addresses) ismertető oldalt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ [Az Azure-beli magánhálózati IP-címekről](private-ip-addresses.md)
 * [Statikus nyilvános IP-címmel rendelkező virtuális gép telepítése az Azure Portal használatával](virtual-network-deploy-static-pip-arm-portal.md)
 

@@ -7,12 +7,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/02/2020
-ms.openlocfilehash: 40ce2844e33c9a71f87e434a6a3e9f8e0f7e3cc6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 360578a36b92711c55b1fc65befa1b3df7927aad
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322108"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330893"
 ---
 # <a name="unify-multiple-azure-monitor-application-insights-resources"></a>Több Azure Monitor Application Insights erőforrás egységesítése 
 Ez a cikk azt ismerteti, hogyan lehet lekérdezni és megtekinteni az összes Application Insights naplózási adatait egy helyen, még akkor is, ha azok különböző Azure-előfizetésekben találhatók, a Application Insights Connector elavulttá tételének pótlására. Az egyetlen lekérdezésben felvehető Application Insights erőforrások száma a 100-ra korlátozódik.
@@ -57,7 +57,7 @@ A lekérdezés Application Insights sémát használ, bár a lekérdezés végre
 ![Példa több lekérdezés eredményére](media/unify-app-resource-data/app-insights-query-results.png)
 
 >[!NOTE]
->Az új [SCHEDULEDQUERYRULES API](/rest/api/monitor/scheduledqueryrules)támogatja a naplózási riasztásokban lévő [erőforrás-lekérdezések közötti lekérdezést](./cross-workspace-query.md) . Alapértelmezés szerint a Azure Monitor az [örökölt log Analytics riasztási API](../platform/api-alerts.md) -t használja az új naplózási riasztási szabályok létrehozásához Azure Portalból, kivéve, ha az [örökölt naplózási riasztások API](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api)-ból vált. A kapcsoló után az új API lesz az új riasztási szabályok alapértelmezett értéke Azure Portalban, és lehetővé teszi az erőforrások közötti lekérdezési napló riasztási szabályainak létrehozását. A [SCHEDULEDQUERYRULES API ARM-sablonjának](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template) használata nélkül hozhat létre [erőforrás-lekérdezési](./cross-workspace-query.md) napló-riasztási szabályokat, de ez a riasztási szabály kezelhető, bár a [scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules) nem Azure Portal.
+>A naplózási riasztásokban az [erőforrások közötti lekérdezések](./cross-workspace-query.md) csak a jelenlegi [scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules)-ban támogatottak. Ha az örökölt Log Analytics riasztások API-t használja, át kell [váltania az aktuális API](../platform/alerts-log-api-switch.md)-ra. [Lásd: példák a sablonokra](../platform/alerts-log-create-templates.md).
 
 ## <a name="application-insights-and-log-analytics-workspace-schema-differences"></a>Application Insights és Log Analytics munkaterület sémájának eltérései
 Az alábbi táblázat a Log Analytics és Application Insights közötti sémák közötti különbségeket mutatja be.  
@@ -73,16 +73,16 @@ Az alábbi táblázat a Log Analytics és Application Insights közötti sémák
 | AvailabilityMessage | message |
 | AvailabilityRunLocation | location |
 | AvailabilityTestId | id |
-| AvailabilityTestName | name |
+| AvailabilityTestName | név |
 | AvailabilityTimestamp | időbélyeg |
 | Böngésző | client_browser |
-| Település | client_city |
+| City | client_city |
 | Ügyfélip | client_IP |
 | Computer | cloud_RoleInstance | 
 | Ország | client_CountryOrRegion | 
 | CustomEventCount | itemCount | 
 | CustomEventDimensions | customDimensions |
-| CustomEventName | name | 
+| CustomEventName | név | 
 | DeviceModel | client_Model | 
 | DeviceType | client_Type | 
 | ExceptionCount | itemCount | 
@@ -94,12 +94,12 @@ Az alábbi táblázat a Log Analytics és Application Insights közötti sémák
 | Operációs rendszer | client_OS | 
 | PageViewCount | itemCount |
 | PageViewDuration | duration | 
-| PageViewName | name | 
+| PageViewName | név | 
 | ParentOperationID | operation_Id | 
 | RequestCount | itemCount | 
 | RequestDuration | duration | 
 | RequestID | id | 
-| RequestName | name | 
+| RequestName | név | 
 | RequestSuccess | sikeres | 
 | ResponseCode | resultCode | 
 | Szerepkör | cloud_RoleName |
@@ -110,7 +110,7 @@ Az alábbi táblázat a Log Analytics és Application Insights közötti sémák
 | URL-cím | url |
 | UserAccountId | user_AccountId |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Application Insights-alkalmazások részletes adatainak megtekintéséhez használja a [log Search kifejezést](./log-query-overview.md) .
 

@@ -1,14 +1,16 @@
 ---
 title: Entity types – LUIS
 description: Egy entitás kinyeri az adatait a felhasználótól az előrejelzési futtatókörnyezetben. Egy _opcionális_, másodlagos cél a szándék vagy más entitások előrejelzésének növelése az entitás szolgáltatásként való használatával.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: 8751bdd52bb1c3738103dc074184a3cf72bfeb09
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 398d18642052726af4d4920443bad515ec0b5bef
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88207747"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316562"
 ---
 # <a name="extract-data-with-entities"></a>Adatok kinyerése entitásokkal
 
@@ -97,7 +99,7 @@ A szülő alentitásának gépi tanulási entitásnak kell lennie. Az alentitás
 
 Válassza ki az entitást az Adatkivonatok és a kinyerés utáni megjelenítésük alapján.
 
-|Entitástípus|Cél|
+|Entitástípus|Rendeltetés|
 |--|--|
 |[**Gépi megtanult**](tutorial-machine-learned-entity.md)|Beágyazott, összetett adatok kinyerése a címkével ellátott példákból. |
 |[**Listáját**](reference-entity-list.md)|A **pontos szöveges egyezéssel**kinyert elemek és szinonimáik listája.|

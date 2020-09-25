@@ -3,12 +3,12 @@ title: A házirend-definíciós struktúra részletei
 description: Leírja, hogyan használhatók a szabályzat-definíciók a szervezeten belüli Azure-erőforrásokra vonatkozó konvenciók létrehozásához.
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: a049134a32fd6026cc1e0c4044a7b9d08fb9bd8f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f9b64255723c6e53a6d8fe945bf19506ba30644e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90895374"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330281"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
@@ -102,16 +102,19 @@ Javasoljuk, hogy a legtöbb esetben állítsa be a **módot** `all` . A portálo
 
 `indexed` a címkéket vagy helyszíneket kényszerítő házirendek létrehozásakor kell használni. Habár nem kötelező, megakadályozza, hogy a címkék és a hely nem támogatja az olyan erőforrásokat, amelyek nem felelnek meg a megfelelőségi eredményeknek. A kivétel az **erőforráscsoportok** és az **előfizetések**. Az erőforráscsoport vagy előfizetés helyét vagy címkéit kényszerítő szabályzat-definíciók **módot** kell beállítani a (z `all` ) és a (z) és a (z `Microsoft.Resources/subscriptions/resourceGroups` `Microsoft.Resources/subscriptions` ) típusra. Példaként tekintse meg a [minta: címkék – minta #1](../samples/pattern-tags.md). A címkéket támogató erőforrások listáját lásd: az Azure- [erőforrások támogatásának címkézése](../../../azure-resource-manager/management/tag-support.md).
 
-### <a name="resource-provider-modes-preview"></a><a name="resource-provider-modes"></a>Erőforrás-szolgáltatói módok (előzetes verzió)
+### <a name="resource-provider-modes"></a>Erőforrás-szolgáltatói módok
 
-Az előzetes verzióban jelenleg a következő erőforrás-szolgáltatói módok támogatottak:
+A következő erőforrás-szolgáltatói csomópont teljes mértékben támogatott:
+
+- `Microsoft.Kubernetes.Data` Az Azure-beli Kubernetes-fürtök kezeléséhez. Az erőforrás-szolgáltatói üzemmódot használó definíciók a következő hatásokat használják: _naplózás_, _Megtagadás_és _Letiltva_. A [EnforceOPAConstraint](./effects.md#enforceopaconstraint) -effektus használata _elavult_.
+
+A következő erőforrás-szolgáltatói módok jelenleg **előzetes**verzióként támogatottak:
 
 - `Microsoft.ContainerService.Data` a belépésvezérlés szabályainak kezeléséhez az [Azure Kubernetes szolgáltatásban](../../../aks/intro-kubernetes.md). Az ezt az erőforrás-szolgáltatói módot használó definícióknak a [EnforceRegoPolicy](./effects.md#enforceregopolicy) effektust **kell** használniuk. Ez a mód _elavult_.
-- `Microsoft.Kubernetes.Data` Az Azure-beli Kubernetes-fürtök kezeléséhez. Az erőforrás-szolgáltatói üzemmódot használó definíciók a következő hatásokat használják: _naplózás_, _Megtagadás_és _Letiltva_. A [EnforceOPAConstraint](./effects.md#enforceopaconstraint) hatás használatának _elavultnak_kell lennie.
 - `Microsoft.KeyVault.Data` a [Azure Key Vault](../../../key-vault/general/overview.md)tárolók és tanúsítványok kezeléséhez.
 
 > [!NOTE]
-> Az erőforrás-szolgáltatói módok csak a beépített szabályzat-definíciókat támogatják, és az előzetes verzióban nem támogatottak a kezdeményezések.
+> Az erőforrás-szolgáltatói módok csak a beépített szabályzat-definíciókat támogatják.
 
 ## <a name="metadata"></a>Metaadatok
 
@@ -552,9 +555,9 @@ Azure Policy a következő típusú hatásokat támogatja:
 - **Megtagadás**: eseményt hoz létre a tevékenység naplójában, és sikertelenül kéri a kérést.
 - **DeployIfNotExists**: egy kapcsolódó erőforrás üzembe helyezése, ha még nem létezik
 - **Letiltva**: nem értékeli ki a házirend-szabálynak való megfeleléshez szükséges erőforrásokat
-- **EnforceOPAConstraint** (előzetes verzió): az Azure-beli önfelügyelt Kubernetes-fürtökhöz az Open Policy Agent beléptetési vezérlőt konfigurálja az Azure-ban (előzetes verzió)
-- **EnforceRegoPolicy** (előzetes verzió): az Azure Kubernetes Service-ben a (z)
 - **Módosítás**: a definiált címkék hozzáadását, frissítését vagy eltávolítását egy erőforrásból
+- **EnforceOPAConstraint** (elavult): az Azure-beli önfelügyelt Kubernetes-fürtökhöz az Open Policy Agent beléptetési vezérlőt konfigurálja forgalomirányító v3-vel
+- **EnforceRegoPolicy** (elavult): az Azure Kubernetes Service-ben az Open Policy Agent beléptetési vezérlőt a forgalomirányító v2 protokollal konfigurálja
 
 Az egyes effektusok, a kiértékelési sorrend, a tulajdonságok és a példák részletes ismertetését lásd: a [Azure Policy effektusok ismertetése](effects.md).
 
@@ -592,6 +595,18 @@ A következő függvények csak a házirend-szabályokban érhetők el:
 - `requestContext().apiVersion`
   - A szabályzat kiértékelését kiváltó kérelem API-verzióját adja vissza (például: `2019-09-01` ).
     Ez az érték az a API-verzió, amelyet a PUT/PATCH kérelemben használt az erőforrás-létrehozási/frissítési kérelmekre vonatkozó értékelésekhez. A meglévő erőforrásokon a megfelelőségi értékelés során mindig a legújabb API-verziót használja a rendszer.
+- `policy()`
+  - A kiértékelt házirendre vonatkozó alábbi adatokat adja vissza. A tulajdonságok a visszaadott objektumból is elérhetők (például: `[policy().assignmentId]` ).
+  
+  ```json
+  {
+    "assignmentId": "/subscriptions/ad404ddd-36a5-4ea8-b3e3-681e77487a63/providers/Microsoft.Authorization/policyAssignments/myAssignment",
+    "definitionId": "/providers/Microsoft.Authorization/policyDefinitions/34c877ad-507e-4c82-993e-3452a6e0ad3c",
+    "setDefinitionId": "/providers/Microsoft.Authorization/policySetDefinitions/42a694ed-f65e-42b2-aa9e-8052e9740a92",
+    "definitionReferenceId": "StorageAccountNetworkACLs"
+  }
+  ```
+  
   
 #### <a name="policy-function-example"></a>Példa a házirend-függvényre
 

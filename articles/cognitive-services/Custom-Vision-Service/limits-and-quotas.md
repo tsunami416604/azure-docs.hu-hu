@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: pafarley
-ms.openlocfilehash: 21b90f423a3ba3c7fa38334c79aec9dc65a250cd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b79bf5e8ead16bbdf9c69e8d7faae43fa778ab3e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079187"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316579"
 ---
 # <a name="limits-and-quotas"></a>Korlátok és kvóták
 
@@ -39,7 +39,7 @@ A betanítási lemezképek száma projektenként és címkék szerint projektenk
 |[Egyéb API-hívások](https://go.microsoft.com/fwlink/?linkid=865446) (tranzakció/másodperc)|10|10|
 |Elfogadott rendszerképek típusai|jpg, PNG, BMP, GIF|jpg, PNG, BMP, GIF|
 |Minimális képméret/szélesség képpontban|256 (lásd a megjegyzést)|256 (lásd a megjegyzést)|
-|Maximális képméret/szélesség képpontban|korlátlan|korlátlan|
+|Maximális képméret/szélesség képpontban|10 240|10 240|
 |Maximális képméret (betanítási képfeltöltés) |6 MB|6 MB|
 |Maximális képméret (előrejelzés)|4 MB|4 MB|
 |Objektumok maximális száma objektum-észlelési betanítási képen|300|300|
@@ -47,3 +47,4 @@ A betanítási lemezképek száma projektenként és címkék szerint projektenk
 
 > [!NOTE]
 > Az 256 képpontnál kisebb méretű képek is el lesznek fogadva, a méretük pedig nagyobb.
+> A kép oldalarányának aránya nem lehet nagyobb, mint 25

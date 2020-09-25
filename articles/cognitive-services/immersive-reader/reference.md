@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 73322cdee151969e6e765690284bbffc1c871f4e
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: aa85f1323795098d161e6bfb1b9cf9237b2a5501
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090193"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330604"
 ---
 # <a name="immersive-reader-javascript-sdk-reference-v11"></a>Magával ragadó olvasó JavaScript SDK-referenciája (v 1.1)
 
@@ -311,7 +311,7 @@ Azokat a tulajdonságokat tartalmazza, amelyek a magába foglaló olvasó bizony
 | timeout | Szám | Az időtartam (ezredmásodpercben), mielőtt a [launchAsync](#launchasync) időtúllépési hiba miatt meghiúsul (az alapértelmezett érték 15000 MS). Ez az időkorlát csak az olvasó oldal kezdeti indítására vonatkozik, ahol a sikeres megfigyelhető, amikor megnyílik az olvasó lap, és elindul a tárcsa. Az időkorlát módosítása nem szükséges. |
 | uiZIndex | Szám | Z – a létrehozandó iframe-index (alapértelmezett érték: 1000). |
 | useWebview | Logikai| IFrame helyett Webview címkét használhat a Chrome-alkalmazásokkal való kompatibilitáshoz (az alapértelmezett érték a False). |
-| onExit | Függvény | Végrehajtja, amikor a magától megjelenő olvasó kilép. |
+| onExit | Funkció | Végrehajtja, amikor a magától megjelenő olvasó kilép. |
 | allowFullscreen | Logikai | Teljes képernyős váltás lehetősége (az alapértelmezett érték igaz). |
 | hideExitButton | Logikai | Azt jelzi, hogy el kell-e rejteni a megölelő olvasó kilépési gombjának nyilát (az alapértelmezett érték hamis). Ez csak akkor lehet igaz, ha egy olyan alternatív mechanizmus van megadva, amely kizárja az olvasót (például a mobil eszköztár vissza nyilát). |
 | cookiePolicy | [CookiePolicy](#cookiepolicy-options) | Az olvasó cookie-felhasználásának beállítása (az alapértelmezett érték a *CookiePolicy. disable*). A gazda alkalmazás feladata a szükséges felhasználói jóváhagyások beszerzése az EU cookie-k megfelelőségi szabályzatának megfelelően. Lásd: [cookie-házirend beállításai](#cookiepolicy-options). |
@@ -320,7 +320,7 @@ Azokat a tulajdonságokat tartalmazza, amelyek a magába foglaló olvasó bizony
 | translationOptions | [TranslationOptions](#translationoptions) | A fordítás konfigurálásának beállításai. |
 | displayOptions | [DisplayOptions](#displayoptions) | A szövegméret konfigurálására szolgáló beállítások, betűkészletek stb. |
 | beállítások | Sztring | Az a onPreferencesChanged, amely a felhasználó beállításait jelképezi a felhasználóbarát olvasóban. További információért lásd a [Beállítások paramétereit](#settings-parameters) és a [felhasználói beállítások tárolását](./how-to-store-user-preferences.md) ismertető témakört. |
-| onPreferencesChanged | Függvény | A felhasználó beállításainak megváltozásakor végez végrehajtást. További információkért lásd: [útmutató a felhasználói beállítások tárolásához](./how-to-store-user-preferences.md) . |
+| onPreferencesChanged | Funkció | A felhasználó beállításainak megváltozásakor végez végrehajtást. További információkért lásd: [útmutató a felhasználói beállítások tárolásához](./how-to-store-user-preferences.md) . |
 | customDomain | Sztring | Belső használatra fenntartva. Az az egyéni tartomány, ahol a magával ragadó olvasó WebApp fut (az alapértelmezett érték null). |
 
 ##### `-uiLang`
@@ -514,7 +514,7 @@ enum CookiePolicy { Disable, Enable }
 
 ## <a name="supported-languages"></a>Támogatott nyelvek
 
-A lebilincselő olvasó fordítási funkciója számos nyelvet támogat. További részletekért tekintse meg [ezt a cikket](https://www.onenote.com/learningtools/languagesupport) .
+A lebilincselő olvasó fordítási funkciója számos nyelvet támogat. További részletekért lásd a [nyelvi támogatást](./language-support.md) ismertető témakört.
 
 <br>
 

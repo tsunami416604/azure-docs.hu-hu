@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: 40549fa8880fb4dc4d29046b0037621610f0b130
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1d3ea609cda37c3bb0de28d8eb1a19944809980d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544183"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331160"
 ---
 # <a name="tutorial-configure-foodee-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Foodee konfigurálása
 
@@ -104,13 +104,13 @@ Az Azure AD-beli Foodee automatikus felhasználó-kiépítés beállítása a k�
 
     ![Az Foodee hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-1. Válassza ki a **kiépítés** lapot.
+1. Válassza a **Kiépítés** lapot.
 
-    ![Kiépítés lap](common/provisioning.png)
+    ![Képernyőkép a felügyeleti lehetőségek kezeléséről a kiépítési lehetőséggel.](common/provisioning.png)
 
 1. A **létesítési mód** legördülő listában válassza az **automatikus**lehetőséget.
 
-    ![Kiépítés lap](common/provisioning-automatic.png)
+    ![Képernyőkép a kiépítési mód legördülő listájáról az automatikus lehetőséggel.](common/provisioning-automatic.png)
 
 1. A **rendszergazdai hitelesítő adatok**területen tegye a következőket:
 
@@ -126,7 +126,7 @@ Az Azure AD-beli Foodee automatikus felhasználó-kiépítés beállítása a k�
 
     ![Az értesítő E-mail szövegmező](common/provisioning-notification-email.png)
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 1. A **leképezések**területen válassza **a Azure Active Directory felhasználók szinkronizálása a Foodee**lehetőséget.
 
@@ -171,4 +171,4 @@ A **jelenlegi állapot** szakasz segítségével figyelheti a folyamat előrehal
 
 ## <a name="next-steps"></a>További lépések
 
-* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../app-provisioning/check-status-user-account-provisioning.md)
+* [Tudnivalók a naplók áttekintéséről és az átadási tevékenységekkel kapcsolatos jelentések lekéréséről](../app-provisioning/check-status-user-account-provisioning.md)

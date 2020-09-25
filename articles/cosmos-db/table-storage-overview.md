@@ -1,6 +1,6 @@
 ---
 title: Az Azure Table Storage áttekintése
-description: Az Azure Table Storage, amely egy NoSQL-adattár, a strukturált adatok felhőben való tárolásához használható.
+description: Ismerje meg, hogyan tárolhatja az Azure Table Storage-t a rugalmas adatkészletek, például a webalkalmazások felhasználói adatai, a címjegyzékek, az eszközök adatai vagy más típusú metaadatok tárolására.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: dotnet
@@ -9,12 +9,12 @@ ms.date: 05/20/2019
 author: sakash279
 ms.author: akshanka
 ms.reviewer: sngun
-ms.openlocfilehash: 20c799f89394dd8978f120097b054a9adf9f1280
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: abd88c3cdb54747c21ad8772860a3ed6929dbd15
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76770742"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318721"
 ---
 # <a name="azure-table-storage-overview"></a>Az Azure Table Storage áttekintése
 
@@ -26,7 +26,7 @@ A Table Storage segítségével olyan rugalmas adatkészleteket tárolhat, mint 
 
 [!INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) egy ingyenes, önálló alkalmazás, amelynek segítségével vizuálisan dolgozhat Azure Storage-adatokkal Windows, macOS és Linux rendszereken.
 

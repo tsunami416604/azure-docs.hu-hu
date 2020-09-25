@@ -2,17 +2,20 @@
 title: Művelet támogatásának áthelyezése erőforrástípus szerint
 description: Felsorolja az új erőforráscsoporthoz vagy előfizetésbe áthelyezhető Azure-erőforrástípusok listáját.
 ms.topic: conceptual
-ms.date: 09/08/2020
-ms.openlocfilehash: 69fcb271ac94df3faf8e9e37c1ef30a6c0681441
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.date: 09/23/2020
+ms.openlocfilehash: e1e90a7cbc4f817f5dd6c854020e2711e8ac097b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89566126"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91284975"
 ---
-# <a name="move-operation-support-for-resources"></a>Erőforrás-áthelyezési műveletek támogatása
+# <a name="move-operation-support-for-resources"></a>Művelet-támogatás áthelyezése az erőforrásokhoz
 
 Ez a cikk azt mutatja be, hogy az Azure-erőforrástípus támogatja-e az áthelyezési műveletet. Emellett az erőforrások áthelyezésekor megfontolandó speciális feltételekkel kapcsolatos információkat is tartalmaz.
+
+> [!IMPORTANT]
+> A legtöbb esetben a gyermek erőforrás nem helyezhető át a fölérendelt erőforrástól függetlenül. A gyermek erőforrások típusa a következő formátumú: `<resource-provider-namespace>/<parent-resource>/<child-resource>` . Például a a `Microsoft.ServiceBus/namespaces/queues` alárendelt erőforrása `Microsoft.ServiceBus/namespaces` . Ha áthelyezi a fölérendelt erőforrást, a rendszer automatikusan áthelyezi a gyermek erőforrást. Ha nem lát alárendelt erőforrást ebben a cikkben, azt feltételezheti, hogy a szülő erőforrással lett áthelyezve. Ha a fölérendelt erőforrás nem támogatja az áthelyezést, a gyermek erőforrás nem helyezhető át.
 
 Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="op_single_selector"]
@@ -47,7 +50,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > - [Microsoft. Capacity](#microsoftcapacity)
 > - [Microsoft. CDN](#microsoftcdn)
 > - [Microsoft. CertificateRegistration](#microsoftcertificateregistration)
-> - [Microsoft. ChangeAnalysis](#microsoftchangeanalysis)
 > - [Microsoft.ClassicCompute](#microsoftclassiccompute)
 > - [Microsoft. ClassicInfrastructureMigrate](#microsoftclassicinfrastructuremigrate)
 > - [Microsoft. ClassicNetwork](#microsoftclassicnetwork)
@@ -63,7 +65,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > - [Microsoft. ContentModerator](#microsoftcontentmoderator)
 > - [Microsoft. CortanaAnalytics](#microsoftcortanaanalytics)
 > - [Microsoft. CostManagement](#microsoftcostmanagement)
-> - [Microsoft. CostManagementExports](#microsoftcostmanagementexports)
 > - [Microsoft. CustomerInsights](#microsoftcustomerinsights)
 > - [Microsoft. CustomerLockbox](#microsoftcustomerlockbox)
 > - [Microsoft. CustomProviders](#microsoftcustomproviders)
@@ -150,7 +151,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > - [Microsoft. Portal](#microsoftportal)
 > - [Microsoft. PowerBI](#microsoftpowerbi)
 > - [Microsoft. PowerBIDedicated](#microsoftpowerbidedicated)
-> - [Microsoft. PowerPlatform](#microsoftpowerplatform)
 > - [Microsoft. ProjectBabylon](#microsoftprojectbabylon)
 > - [Microsoft. ProviderHub](#microsoftproviderhub)
 > - [Microsoft. Quantum](#microsoftquantum)
@@ -206,10 +206,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | domainservices | Nem | Nem |
-> | domainservices / oucontainer | Nem | Nem |
-> | helyek | Nem | Nem |
-> | helyszínek/operationresults | Nem | Nem |
-> | műveletek | Nem | Nem |
 
 ## <a name="microsoftaadiam"></a>Microsoft. aadiam
 
@@ -218,7 +214,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | ------------- | ----------- | ---------- |
 > | diagnosticsettings | Nem | Nem |
 > | diagnosticsettingscategories | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | privatelinkforazuread | Igen | Igen |
 > | bérlők | Igen | Igen |
 
@@ -227,8 +222,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | operationresults | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | supportproviders | Nem | Nem |
 
 ## <a name="microsoftadhybridhealthservice"></a>Microsoft. ADHybridHealthService
@@ -242,7 +235,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | anonymousapiusers | Nem | Nem |
 > | konfiguráció | Nem | Nem |
 > | naplók | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | jelentések | Nem | Nem |
 > | servicehealthmetrics | Nem | Nem |
 > | services | Nem | Nem |
@@ -255,7 +247,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | konfigurációk | Nem | Nem |
 > | generaterecommendations | Nem | Nem |
 > | metaadatok | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | javaslatok | Nem | Nem |
 > | fóliakondenzát | Nem | Nem |
 
@@ -270,7 +261,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | alertsmetadata | Nem | Nem |
 > | alertssummary | Nem | Nem |
 > | alertssummarylist | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | smartdetectoralertrules | Igen | Igen |
 > | smartgroups | Nem | Nem |
 
@@ -279,11 +269,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | helyek | Nem | Nem |
-> | helyszínek/checknameavailability | Nem | Nem |
-> | helyszínek/operationresults | Nem | Nem |
-> | helyszínek/operationstatuses | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | kiszolgálók | Igen | Igen |
 
 ## <a name="microsoftapimanagement"></a>Microsoft. ApiManagement
@@ -294,39 +279,23 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | checkfeedbackrequired | Nem | Nem |
-> | checknameavailability | Nem | Nem |
-> | checkservicenameavailability | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | reportfeedback | Nem | Nem |
 > | szolgáltatás | Igen | Igen |
-> | validateservicename | Nem | Nem |
 
 ## <a name="microsoftappconfiguration"></a>Microsoft. AppConfiguration
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | checknameavailability | Nem | Nem |
 > | configurationstores | Igen | Igen |
 > | configurationstores / eventgridfilters | Nem | Nem |
-> | helyek | Nem | Nem |
-> | helyszínek/operationsstatus | Nem | Nem |
-> | műveletek | Nem | Nem |
 
 ## <a name="microsoftappplatform"></a>Microsoft. AppPlatform
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | helyek | Nem | Nem |
-> | helyszínek/checknameavailability | Nem | Nem |
-> | helyszínek/operationresults | Nem | Nem |
-> | helyszínek/operationstatus | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | Spring | Igen | Igen |
-> | Spring/apps | Nem | Nem |
-> | Spring/apps/üzemelő példányok | Nem | Nem |
 
 ## <a name="microsoftappservice"></a>Microsoft. AppService
 
@@ -346,28 +315,23 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | attestationproviders | Igen | Igen |
-> | műveletek | Nem | Nem |
 
 ## <a name="microsoftauthorization"></a>Microsoft.Authorization
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | CheckAccess | Nem | Nem |
 > | classicadministrators | Nem | Nem |
 > | dataaliases | Nem | Nem |
 > | denyassignments | Nem | Nem |
 > | elevateaccess | Nem | Nem |
 > | findorphanroleassignments | Nem | Nem |
 > | zárak | Nem | Nem |
-> | műveletek | Nem | Nem |
-> | operationstatus | Nem | Nem |
 > | engedélyek | Nem | Nem |
 > | policyassignments | Nem | Nem |
 > | policydefinitions | Nem | Nem |
 > | policysetdefinitions | Nem | Nem |
 > | privatelinkassociations | Nem | Nem |
-> | provideroperations | Nem | Nem |
 > | resourcemanagementprivatelinks | Nem | Nem |
 > | RoleAssignments | Nem | Nem |
 > | roleassignmentsusagemetrics | Nem | Nem |
@@ -385,26 +349,14 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | ------------- | ----------- | ---------- |
 > | automationaccounts | Igen | Igen |
 > | automationaccounts/konfigurációk | Igen | Igen |
-> | automationaccounts/feladatok | Nem | Nem |
-> | automationaccounts / privateendpointconnectionproxies | Nem | Nem |
-> | automationaccounts / privateendpointconnections | Nem | Nem |
-> | automationaccounts / privatelinkresources | Nem | Nem |
 > | automationaccounts/runbookok | Igen | Igen |
-> | automationaccounts / softwareupdateconfigurations | Nem | Nem |
-> | automationaccounts/webhookok | Nem | Nem |
-> | műveletek | Nem | Nem |
 
 ## <a name="microsoftavs"></a>Microsoft. AVS
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | helyek | Nem | Nem |
-> | helyszínek/checkquotaavailability | Nem | Nem |
-> | helyszínek/checktrialavailability | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | privateclouds | Igen | Igen |
-> | privateclouds/fürtök | Nem | Nem |
 
 ## <a name="microsoftazureactivedirectory"></a>Microsoft. AzureActiveDirectory
 
@@ -413,8 +365,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | ------------- | ----------- | ---------- |
 > | b2cdirectories | Igen | Igen |
 > | b2ctenants | Nem | Nem |
-> | checknameavailability | Nem | Nem |
-> | műveletek | Nem | Nem |
 
 ## <a name="microsoftazuredata"></a>Microsoft. AzureData
 
@@ -423,13 +373,11 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | ------------- | ----------- | ---------- |
 > | datacontrollers | Nem | Nem |
 > | hybriddatamanagers | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | postgresinstances | Nem | Nem |
 > | sqlinstances | Nem | Nem |
 > | sqlmanagedinstances | Nem | Nem |
 > | sqlserverinstances | Nem | Nem |
 > | sqlserverregistrations | Igen | Igen |
-> | sqlserverregistrations / sqlservers | Nem | Nem |
 
 ## <a name="microsoftazurestack"></a>Microsoft. AzureStack
 
@@ -437,10 +385,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | cloudmanifestfiles | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | regisztrációk | Igen | Igen |
-> | regisztrációk/customersubscriptions | Nem | Nem |
-> | regisztrációk/termékek | Nem | Nem |
 
 ## <a name="microsoftazurestackhci"></a>Microsoft. AzureStackHCI
 
@@ -448,7 +393,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | fürtök | Nem | Nem |
-> | műveletek | Nem | Nem |
 
 ## <a name="microsoftbatch"></a>Microsoft.Batch
 
@@ -456,11 +400,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | batchaccounts | Igen | Igen |
-> | helyek | Nem | Nem |
-> | helyszínek/accountoperationresults | Nem | Nem |
-> | helyszínek/checknameavailability | Nem | Nem |
-> | helyszínek/kvóták | Nem | Nem |
-> | műveletek | Nem | Nem |
 
 ## <a name="microsoftbilling"></a>Microsoft. számlázás
 
@@ -468,105 +407,22 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | billingaccounts | Nem | Nem |
-> | billingaccounts/szerződések | Nem | Nem |
-> | billingaccounts / billingpermissions | Nem | Nem |
-> | billingaccounts / billingprofiles | Nem | Nem |
-> | billingaccounts / billingprofiles / availablebalance | Nem | Nem |
-> | billingaccounts / billingprofiles / billingpermissions | Nem | Nem |
-> | billingaccounts / billingprofiles / billingroleassignments | Nem | Nem |
-> | billingaccounts / billingprofiles / billingroledefinitions | Nem | Nem |
-> | billingaccounts / billingprofiles / billingsubscriptions | Nem | Nem |
-> | billingaccounts / billingprofiles / createbillingroleassignment | Nem | Nem |
-> | billingaccounts/billingprofiles/ügyfelek | Nem | Nem |
-> | billingaccounts/billingprofiles/utasítások | Nem | Nem |
-> | billingaccounts/billingprofiles/számlák | Nem | Nem |
-> | billingaccounts/billingprofiles/számlák/árlista | Nem | Nem |
-> | billingaccounts/billingprofiles/számlák/tranzakciók | Nem | Nem |
-> | billingaccounts / billingprofiles / invoicesections | Nem | Nem |
-> | billingaccounts / billingprofiles / invoicesections / billingpermissions | Nem | Nem |
-> | billingaccounts / billingprofiles / invoicesections / billingroleassignments | Nem | Nem |
-> | billingaccounts / billingprofiles / invoicesections / billingroledefinitions | Nem | Nem |
-> | billingaccounts / billingprofiles / invoicesections / billingsubscriptions | Nem | Nem |
-> | billingaccounts / billingprofiles / invoicesections / createbillingroleassignment | Nem | Nem |
-> | billingaccounts / billingprofiles / invoicesections / initiatetransfer | Nem | Nem |
-> | billingaccounts/billingprofiles/invoicesections/termékek | Nem | Nem |
-> | billingaccounts/billingprofiles/invoicesections/termékek/átvitel | Nem | Nem |
-> | billingaccounts/billingprofiles/invoicesections/termékek/updateautorenew | Nem | Nem |
-> | billingaccounts/billingprofiles/invoicesections/tranzakciók | Nem | Nem |
-> | billingaccounts/billingprofiles/invoicesections/Transfers | Nem | Nem |
-> | billingaccounts / billingprofiles / patchoperations | Nem | Nem |
-> | billingaccounts / billingprofiles / paymentmethods | Nem | Nem |
-> | billingaccounts/billingprofiles/házirendek | Nem | Nem |
-> | billingaccounts/billingprofiles/árlista | Nem | Nem |
-> | billingaccounts / billingprofiles / pricesheetdownloadoperations | Nem | Nem |
-> | billingaccounts/billingprofiles/termékek | Nem | Nem |
-> | billingaccounts/billingprofiles/tranzakciók | Nem | Nem |
-> | billingaccounts / billingroleassignments | Nem | Nem |
-> | billingaccounts / billingroledefinitions | Nem | Nem |
-> | billingaccounts / billingsubscriptions | Nem | Nem |
-> | billingaccounts/billingsubscriptions/számlák | Nem | Nem |
-> | billingaccounts / createbillingroleassignment | Nem | Nem |
-> | billingaccounts / createinvoicesectionoperations | Nem | Nem |
-> | billingaccounts/ügyfelek | Nem | Nem |
-> | billingaccounts/ügyfelek/billingpermissions | Nem | Nem |
-> | billingaccounts/ügyfelek/billingsubscriptions | Nem | Nem |
-> | billingaccounts/ügyfelek/initiatetransfer | Nem | Nem |
-> | billingaccounts/ügyfelek/szabályzatok | Nem | Nem |
-> | billingaccounts/ügyfelek/termékek | Nem | Nem |
-> | billingaccounts/ügyfelek/tranzakciók | Nem | Nem |
-> | billingaccounts/ügyfelek/átvitelek | Nem | Nem |
-> | billingaccounts/részlegek | Nem | Nem |
-> | billingaccounts / enrollmentaccounts | Nem | Nem |
-> | billingaccounts/számlák | Nem | Nem |
-> | billingaccounts / invoicesections | Nem | Nem |
-> | billingaccounts / invoicesections / billingsubscriptionmoveoperations | Nem | Nem |
-> | billingaccounts / invoicesections / billingsubscriptions | Nem | Nem |
-> | billingaccounts/invoicesections/billingsubscriptions/átvitel | Nem | Nem |
-> | billingaccounts/invoicesections/Jogosultságszint-emelés | Nem | Nem |
-> | billingaccounts / invoicesections / initiatetransfer | Nem | Nem |
-> | billingaccounts / invoicesections / patchoperations | Nem | Nem |
-> | billingaccounts / invoicesections / productmoveoperations | Nem | Nem |
-> | billingaccounts/invoicesections/termékek | Nem | Nem |
-> | billingaccounts/invoicesections/termékek/átvitel | Nem | Nem |
-> | billingaccounts/invoicesections/termékek/updateautorenew | Nem | Nem |
-> | billingaccounts / invoicesections / producttransfersresults | Nem | Nem |
-> | billingaccounts/invoicesections/tranzakciók | Nem | Nem |
-> | billingaccounts/invoicesections/átvitel | Nem | Nem |
-> | billingaccounts / lineofcredit | Nem | Nem |
-> | billingaccounts / listinvoicesectionswithcreatesubscriptionpermission | Nem | Nem |
-> | billingaccounts / operationresults | Nem | Nem |
-> | billingaccounts / patchoperations | Nem | Nem |
-> | billingaccounts / paymentmethods | Nem | Nem |
-> | billingaccounts/termékek | Nem | Nem |
-> | billingaccounts/tranzakciók | Nem | Nem |
 > | billingperiods | Nem | Nem |
 > | billingpermissions | Nem | Nem |
 > | billingproperty | Nem | Nem |
 > | billingroleassignments | Nem | Nem |
 > | billingroledefinitions | Nem | Nem |
-> | createbillingroleassignment | Nem | Nem |
 > | részlegek | Nem | Nem |
 > | enrollmentaccounts | Nem | Nem |
 > | számlák | Nem | Nem |
-> | operationresults | Nem | Nem |
-> | műveletek | Nem | Nem |
-> | operationstatus | Nem | Nem |
 > | transzferek | Nem | Nem |
-> | átvitelek/accepttransfer | Nem | Nem |
-> | átvitelek/declinetransfer | Nem | Nem |
-> | átvitelek/operationstatus | Nem | Nem |
-> | átvitelek/validatetransfer | Nem | Nem |
-> | validateaddress | Nem | Nem |
 
 ## <a name="microsoftbingmaps"></a>Microsoft. BingMaps
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | listcommunicationpreference | Nem | Nem |
 > | mapapis | Nem | Nem |
-> | műveletek | Nem | Nem |
-> | updatecommunicationpreference | Nem | Nem |
 
 ## <a name="microsoftbiztalkservices"></a>Microsoft. BizTalkServices
 
@@ -582,12 +438,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | ------------- | ----------- | ---------- |
 > | blockchainmembers | Nem | Nem |
 > | cordamembers | Nem | Nem |
-> | helyek | Nem | Nem |
-> | helyszínek/blockchainmemberoperationresults | Nem | Nem |
-> | helyszínek/checknameavailability | Nem | Nem |
-> | helyszínek/listconsortiums | Nem | Nem |
-> | helyszínek/watcheroperationresults | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | Watchers | Nem | Nem |
 
 ## <a name="microsoftblockchaintokens"></a>Microsoft. BlockchainTokens
@@ -595,7 +445,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | műveletek | Nem | Nem |
 > | tokenservices | Nem | Nem |
 
 ## <a name="microsoftblueprint"></a>Microsoft. Blueprint
@@ -604,13 +453,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | blueprintassignments | Nem | Nem |
-> | blueprintassignments / assignmentoperations | Nem | Nem |
-> | blueprintassignments/műveletek | Nem | Nem |
 > | tervrajzok | Nem | Nem |
-> | tervrajzok/összetevők | Nem | Nem |
-> | tervezetek/verziók | Nem | Nem |
-> | tervrajzok/verziók/összetevők | Nem | Nem |
-> | műveletek | Nem | Nem |
 
 ## <a name="microsoftbotservice"></a>Microsoft. BotService
 
@@ -618,11 +461,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | botservices | Igen | Igen |
-> | botservices/csatornák | Nem | Nem |
-> | botservices/kapcsolatok | Nem | Nem |
-> | checknameavailability | Nem | Nem |
-> | listauthserviceproviders | Nem | Nem |
-> | műveletek | Nem | Nem |
 
 ## <a name="microsoftcache"></a>Microsoft. cache
 
@@ -632,14 +470,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | checknameavailability | Nem | Nem |
-> | helyek | Nem | Nem |
-> | helyszínek/operationresults | Nem | Nem |
-> | helyszínek/operationsstatus | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | Redis | Igen | Igen |
-> | Redis/eventgridfilters | Nem | Nem |
-> | Redis/privatelinkresources | Nem | Nem |
 > | redisenterprise | Nem | Nem |
 
 ## <a name="microsoftcapacity"></a>Microsoft. Capacity
@@ -652,24 +483,9 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | calculateprice | Nem | Nem |
 > | calculatepurchaseprice | Nem | Nem |
 > | katalógusok | Nem | Nem |
-> | checkoffers | Nem | Nem |
-> | checkpurchasestatus | Nem | Nem |
-> | checkscopes | Nem | Nem |
 > | commercialreservationorders | Nem | Nem |
 > | Exchange | Nem | Nem |
-> | listbenefits | Nem | Nem |
-> | műveletek | Nem | Nem |
-> | placepurchaseorder | Nem | Nem |
 > | reservationorders | Nem | Nem |
-> | reservationorders / availablescopes | Nem | Nem |
-> | reservationorders / calculaterefund | Nem | Nem |
-> | reservationorders/egyesítés | Nem | Nem |
-> | reservationorders/foglalások | Nem | Nem |
-> | reservationorders/foglalások/availablescopes | Nem | Nem |
-> | reservationorders/foglalások/változatok | Nem | Nem |
-> | reservationorders/Return | Nem | Nem |
-> | reservationorders/felosztás | Nem | Nem |
-> | reservationorders/swap | Nem | Nem |
 > | foglalások | Nem | Nem |
 > | resources | Nem | Nem |
 > | validatereservationorder | Nem | Nem |
@@ -681,22 +497,9 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | ------------- | ----------- | ---------- |
 > | cdnwebapplicationfirewallmanagedrulesets | Nem | Nem |
 > | cdnwebapplicationfirewallpolicies | Igen | Igen |
-> | checknameavailability | Nem | Nem |
-> | checkresourceusage | Nem | Nem |
 > | edgenodes | Nem | Nem |
-> | operationresults | Nem | Nem |
-> | operationresults / profileresults | Nem | Nem |
-> | operationresults / profileresults / endpointresults | Nem | Nem |
-> | operationresults / profileresults / endpointresults / customdomainresults | Nem | Nem |
-> | operationresults / profileresults / endpointresults / origingroupresults | Nem | Nem |
-> | operationresults / profileresults / endpointresults / originresults | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | profilok | Igen | Igen |
 > | profilok/végpontok | Igen | Igen |
-> | profilok/végpontok/customdomains | Nem | Nem |
-> | profilok/végpontok/origingroups | Nem | Nem |
-> | profilok/végpontok/eredetek | Nem | Nem |
-> | validateprobe | Nem | Nem |
 
 ## <a name="microsoftcertificateregistration"></a>Microsoft. CertificateRegistration
 
@@ -707,16 +510,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | tanúsítványrendelések | Igen | Igen |
-> | tanúsítványrendelések/tanúsítványok | Nem | Nem |
-> | műveletek | Nem | Nem |
-> | validatecertificateregistrationinformation | Nem | Nem |
-
-## <a name="microsoftchangeanalysis"></a>Microsoft. ChangeAnalysis
-
-> [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetés |
-> | ------------- | ----------- | ---------- |
-> | műveletek | Nem | Nem |
 
 ## <a name="microsoftclassiccompute"></a>Microsoft.ClassicCompute
 
@@ -727,27 +520,11 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | képességek | Nem | Nem |
-> | checkdomainnameavailability | Nem | Nem |
 > | tartománynevek | Igen | Nem |
-> | tartománynevek/képességek | Nem | Nem |
-> | tartománynevek/internalloadbalancers | Nem | Nem |
-> | tartománynevek/servicecertificates | Nem | Nem |
-> | tartománynevek/tárolóhelyek | Nem | Nem |
-> | tartománynevek/bővítőhelyek/szerepkörök | Nem | Nem |
-> | tartománynevek/bővítőhelyek/szerepkörök/metricdefinitions | Nem | Nem |
-> | tartománynevek/bővítőhelyek/szerepkörök/mérőszámok | Nem | Nem |
-> | movesubscriptionresources | Nem | Nem |
-> | operatingsystemfamilies | Nem | Nem |
-> | operatingsystems | Nem | Nem |
-> | műveletek | Nem | Nem |
-> | operationstatuses | Nem | Nem |
 > | kvóták | Nem | Nem |
 > | resourcetypes | Nem | Nem |
 > | validatesubscriptionmoveavailability | Nem | Nem |
 > | virtualmachines | Igen | Igen |
-> | virtualmachines / diagnosticsettings | Nem | Nem |
-> | virtualmachines / metricdefinitions | Nem | Nem |
-> | virtualmachines/mérőszámok | Nem | Nem |
 
 ## <a name="microsoftclassicinfrastructuremigrate"></a>Microsoft. ClassicInfrastructureMigrate
 
@@ -772,12 +549,9 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | expressroutecrossconnections/társak | Nem | Nem |
 > | gatewaysupporteddevices | Nem | Nem |
 > | networksecuritygroups | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | kvóták | Nem | Nem |
 > | reservedips | Nem | Nem |
 > | virtualnetworks | Nem | Nem |
-> | virtualnetworks/remotevirtualnetworkpeeringproxies | Nem | Nem |
-> | virtualnetworks/virtualnetworkpeerings | Nem | Nem |
 
 ## <a name="microsoftclassicstorage"></a>Microsoft. ClassicStorage
 
@@ -787,27 +561,13 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | képességek | Nem | Nem |
-> | checkstorageaccountavailability | Nem | Nem |
 > | lemezek | Nem | Nem |
 > | images | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | osimages | Nem | Nem |
 > | osplatformimages | Nem | Nem |
 > | publicimages | Nem | Nem |
 > | kvóták | Nem | Nem |
 > | storageaccounts | Igen | Nem |
-> | storageaccounts/blobservices | Nem | Nem |
-> | storageaccounts/fileservices | Nem | Nem |
-> | storageaccounts/metricdefinitions | Nem | Nem |
-> | storageaccounts/mérőszámok | Nem | Nem |
-> | storageaccounts/queueservices | Nem | Nem |
-> | storageaccounts/szolgáltatások | Nem | Nem |
-> | storageaccounts/szolgáltatások/diagnosticsettings | Nem | Nem |
-> | storageaccounts/szolgáltatások/metricdefinitions | Nem | Nem |
-> | storageaccounts/szolgáltatások/mérőszámok | Nem | Nem |
-> | storageaccounts/tableservices | Nem | Nem |
-> | storageaccounts/lemezképet | Nem | Nem |
 > | lemezképet | Nem | Nem |
 
 ## <a name="microsoftclassicsubscription"></a>Microsoft. ClassicSubscription
@@ -826,19 +586,12 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | fiókok | Igen | Igen |
-> | checkdomainavailability | Nem | Nem |
-> | helyek | Nem | Nem |
-> | helyszínek/checkskuavailability | Nem | Nem |
-> | helyszínek/deletevirtualnetworkorsubnets | Nem | Nem |
-> | helyszínek/operationresults | Nem | Nem |
-> | műveletek | Nem | Nem |
 
 ## <a name="microsoftcommerce"></a>Microsoft. Commerce
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | műveletek | Nem | Nem |
 > | ratecard | Nem | Nem |
 > | usageaggregates | Nem | Nem |
 
@@ -860,19 +613,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | hostgroups | Nem | Nem |
 > | hostgroups/gazdagépek | Nem | Nem |
 > | images | Igen | Igen |
-> | helyek | Nem | Nem |
-> | helyszínek/artifactpublishers | Nem | Nem |
-> | helyszínek/capsoperations | Nem | Nem |
-> | helyszínek/kitelepülések | Nem | Nem |
-> | helyszínek/loganalytics | Nem | Nem |
-> | helyszínek/műveletek | Nem | Nem |
-> | helyszínek/közzétevők | Nem | Nem |
-> | helyszínek/runcommands | Nem | Nem |
-> | helyszínek/használat | Nem | Nem |
-> | helyszínek/virtualmachines | Nem | Nem |
-> | helyszínek/méreteinek listáján | Nem | Nem |
-> | helyszínek/vsmoperations | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | proximityplacementgroups | Igen | Igen |
 > | restorepointcollections | Nem | Nem |
 > | restorepointcollections / restorepoints | Nem | Nem |
@@ -883,14 +623,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | sshpublickeys | Nem | Nem |
 > | virtualmachines | Igen | Igen |
 > | virtualmachines/bővítmények | Igen | Igen |
-> | virtualmachines / metricdefinitions | Nem | Nem |
-> | virtualmachines / runcommands | Nem | Nem |
 > | virtualmachinescalesets | Igen | Igen |
-> | virtualmachinescalesets/bővítmények | Nem | Nem |
-> | virtualmachinescalesets/networkinterfaces | Nem | Nem |
-> | virtualmachinescalesets/nyilvános IP | Nem | Nem |
-> | virtualmachinescalesets/virtualmachines | Nem | Nem |
-> | virtualmachinescalesets/virtualmachines/networkinterfaces | Nem | Nem |
 
 ## <a name="microsoftconsumption"></a>Microsoft. felhasználás
 
@@ -907,9 +640,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | előrejelzések | Nem | Nem |
 > | számos | Nem | Nem |
 > | piacterek | Nem | Nem |
-> | operationresults | Nem | Nem |
-> | műveletek | Nem | Nem |
-> | operationstatus | Nem | Nem |
 > | pricesheets | Nem | Nem |
 > | termékek | Nem | Nem |
 > | reservationdetails | Nem | Nem |
@@ -928,13 +658,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | containergroups | Nem | Nem |
-> | helyek | Nem | Nem |
-> | helyszínek/cachedimages | Nem | Nem |
-> | helyszínek/képességek | Nem | Nem |
-> | helyszínek/deletevirtualnetworkorsubnets | Nem | Nem |
-> | helyszínek/műveletek | Nem | Nem |
-> | helyszínek/használat | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | serviceassociationlinks | Nem | Nem |
 
 ## <a name="microsoftcontainerregistry"></a>Microsoft. ContainerRegistry
@@ -942,58 +665,12 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | checknameavailability | Nem | Nem |
-> | helyek | Nem | Nem |
-> | helyszínek/engedélyezés | Nem | Nem |
-> | helyszínek/deletevirtualnetworkorsubnets | Nem | Nem |
-> | helyszínek/operationresults | Nem | Nem |
-> | helyszínek/setupauth | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | kibocsátásiegység | Igen | Igen |
 > | kibocsátásiegység-forgalmi jegyzékek/agentpools | Igen | Igen |
-> | kibocsátásiegység-forgalmi jegyzékek/agentpools/listqueuestatus | Nem | Nem |
-> | kibocsátásiegység-forgalmi jegyzékek/buildek | Nem | Nem |
-> | kibocsátásiegység-forgalmi jegyzékek/buildek/Mégse | Nem | Nem |
-> | kibocsátásiegység-forgalmi jegyzékek/buildek/getloglink | Nem | Nem |
 > | kibocsátásiegység-forgalmi jegyzékek/buildtasks | Igen | Igen |
-> | kibocsátásiegység-forgalmi jegyzékek/buildtasks/listsourcerepositoryproperties | Nem | Nem |
-> | kibocsátásiegység-forgalmi jegyzékek/buildtasks/lépések | Nem | Nem |
-> | kibocsátásiegység-forgalmi jegyzékek/buildtasks/lépések/listbuildarguments | Nem | Nem |
-> | kibocsátásiegység-forgalmi jegyzékek/eventgridfilters | Nem | Nem |
-> | kibocsátásiegység-forgalmi jegyzékek/exportpipelines | Nem | Nem |
-> | kibocsátásiegység-forgalmi jegyzékek/generatecredentials | Nem | Nem |
-> | kibocsátásiegység-forgalmi jegyzékek/getbuildsourceuploadurl | Nem | Nem |
-> | kibocsátásiegység-forgalmi jegyzékek/getcredentials | Nem | Nem |
-> | kibocsátásiegység-forgalmi jegyzékek/importimage | Nem | Nem |
-> | kibocsátásiegység-forgalmi jegyzékek/importpipelines | Nem | Nem |
-> | kibocsátásiegység-forgalmi jegyzékek/listbuildsourceuploadurl | Nem | Nem |
-> | kibocsátásiegység-forgalmi jegyzékek/listcredentials | Nem | Nem |
-> | kibocsátásiegység-forgalmi jegyzékek/ListPolicies | Nem | Nem |
-> | kibocsátásiegység-forgalmi jegyzékek/listusages | Nem | Nem |
-> | kibocsátásiegység-forgalmi jegyzékek/pipelineruns | Nem | Nem |
-> | kibocsátásiegység-forgalmi jegyzékek/privateendpointconnectionproxies | Nem | Nem |
-> | nyilvántartások/privateendpointconnectionproxies/érvényesítés | Nem | Nem |
-> | kibocsátásiegység-forgalmi jegyzékek/privateendpointconnections | Nem | Nem |
-> | kibocsátásiegység-forgalmi jegyzékek/privatelinkresources | Nem | Nem |
-> | kibocsátásiegység-forgalmi jegyzékek/queuebuild | Nem | Nem |
-> | kibocsátásiegység-forgalmi jegyzékek/regeneratecredential | Nem | Nem |
-> | kibocsátásiegység-forgalmi jegyzékek/regeneratecredentials | Nem | Nem |
 > | kibocsátásiegység-forgalmi jegyzékek/replikálások | Igen | Igen |
-> | kibocsátásiegység-forgalmi jegyzékek/futtatások | Nem | Nem |
-> | nyilvántartások/futtatások/megszakítás | Nem | Nem |
-> | nyilvántartások/futtatások/listlogsasurl | Nem | Nem |
-> | kibocsátásiegység-forgalmi jegyzékek/schedulerun | Nem | Nem |
-> | kibocsátásiegység-forgalmi jegyzékek/scopemaps | Nem | Nem |
-> | kibocsátásiegység-forgalmi jegyzékek/taskruns | Nem | Nem |
-> | kibocsátásiegység-forgalmi jegyzékek/taskruns/listdetails | Nem | Nem |
 > | kibocsátásiegység-forgalmi jegyzékek/feladatok | Igen | Igen |
-> | nyilvántartások/feladatok/listdetails | Nem | Nem |
-> | kibocsátásiegység-forgalmi jegyzékek/jogkivonatok | Nem | Nem |
-> | kibocsátásiegység-forgalmi jegyzékek/updatepolicies | Nem | Nem |
 > | kibocsátásiegység-forgalmi jegyzékek/webhookok | Igen | Igen |
-> | kibocsátásiegység-forgalmi jegyzékek/webhookok/getcallbackconfig | Nem | Nem |
-> | kibocsátásiegység-forgalmi jegyzékek/webhookok/listevents | Nem | Nem |
-> | kibocsátásiegység-forgalmi jegyzékek/webhookok/ping | Nem | Nem |
 
 ## <a name="microsoftcontainerservice"></a>Microsoft. Tárolószolgáltatás
 
@@ -1001,14 +678,8 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | containerservices | Nem | Nem |
-> | helyek | Nem | Nem |
-> | helyszínek/openshiftclusters | Nem | Nem |
-> | helyszínek/operationresults | Nem | Nem |
-> | helyszínek/műveletek | Nem | Nem |
-> | helyszínek/rendszerszervezők | Nem | Nem |
 > | managedclusters | Nem | Nem |
 > | openshiftmanagedclusters | Nem | Nem |
-> | műveletek | Nem | Nem |
 
 ## <a name="microsoftcontentmoderator"></a>Microsoft. ContentModerator
 
@@ -1039,17 +710,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | enrollmentaccounts | Nem | Nem |
 > | export | Nem | Nem |
 > | externalbillingaccounts | Nem | Nem |
-> | externalbillingaccounts/riasztások | Nem | Nem |
-> | externalbillingaccounts/méretek | Nem | Nem |
-> | externalbillingaccounts/előrejelzés | Nem | Nem |
-> | externalbillingaccounts/lekérdezés | Nem | Nem |
-> | externalsubscriptions | Nem | Nem |
-> | externalsubscriptions/riasztások | Nem | Nem |
-> | externalsubscriptions/méretek | Nem | Nem |
-> | externalsubscriptions/előrejelzés | Nem | Nem |
-> | externalsubscriptions/lekérdezés | Nem | Nem |
 > | forecast | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | lekérdezés | Nem | Nem |
 > | Regisztráció | Nem | Nem |
 > | reportconfigs | Nem | Nem |
@@ -1057,13 +718,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | beállítások | Nem | Nem |
 > | showbackrules | Nem | Nem |
 > | kilátással | Nem | Nem |
-
-## <a name="microsoftcostmanagementexports"></a>Microsoft. CostManagementExports
-
-> [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetés |
-> | ------------- | ----------- | ---------- |
-> | műveletek | Nem | Nem |
 
 ## <a name="microsoftcustomerinsights"></a>Microsoft. CustomerInsights
 
@@ -1077,7 +731,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | műveletek | Nem | Nem |
 > | kérelmek | Nem | Nem |
 
 ## <a name="microsoftcustomproviders"></a>Microsoft. CustomProviders
@@ -1086,9 +739,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | szövetségek | Nem | Nem |
-> | helyek | Nem | Nem |
-> | helyszínek/operationstatuses | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | resourceproviders | Igen | Igen |
 
 ## <a name="microsoftdatabox"></a>Microsoft. DataBox
@@ -1097,14 +747,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | feladatok | Nem | Nem |
-> | helyek | Nem | Nem |
-> | helyszínek/availableskus | Nem | Nem |
-> | helyszínek/checknameavailability | Nem | Nem |
-> | helyszínek/operationresults | Nem | Nem |
-> | helyszínek/regionconfiguration | Nem | Nem |
-> | helyszínek/validateaddress | Nem | Nem |
-> | helyszínek/validateinputs | Nem | Nem |
-> | műveletek | Nem | Nem |
 
 ## <a name="microsoftdataboxedge"></a>Microsoft. DataBoxEdge
 
@@ -1113,21 +755,13 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | ------------- | ----------- | ---------- |
 > | availableskus | Nem | Nem |
 > | databoxedgedevices | Igen | Igen |
-> | databoxedgedevices / checknameavailability | Nem | Nem |
-> | műveletek | Nem | Nem |
 
 ## <a name="microsoftdatabricks"></a>Microsoft. Databricks
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | helyek | Nem | Nem |
-> | helyszínek/getnetworkpolicies | Nem | Nem |
-> | helyszínek/operationstatuses | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | munkaterületek | Nem | Nem |
-> | munkaterületek/dbworkspaces | Nem | Nem |
-> | munkaterületek/virtualnetworkpeerings | Nem | Nem |
 
 ## <a name="microsoftdatacatalog"></a>Microsoft. DataCatalog
 
@@ -1135,12 +769,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | katalógusok | Igen | Igen |
-> | checknameavailability | Nem | Nem |
 > | datacatalogs | Nem | Nem |
-> | helyek | Nem | Nem |
-> | helyek/feladatok | Nem | Nem |
-> | helyszínek/operationresults | Nem | Nem |
-> | műveletek | Nem | Nem |
 
 ## <a name="microsoftdataconnect"></a>Microsoft. DataConnect
 
@@ -1162,18 +791,9 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | checkazuredatafactorynameavailability | Nem | Nem |
-> | checkdatafactorynameavailability | Nem | Nem |
 > | datafactories | Igen | Igen |
-> | datafactories / diagnosticsettings | Nem | Nem |
-> | datafactories / metricdefinitions | Nem | Nem |
 > | datafactoryschema | Nem | Nem |
 > | előállítók | Igen | Igen |
-> | gyárak/integrationruntimes | Nem | Nem |
-> | helyek | Nem | Nem |
-> | helyszínek/configurefactoryrepo | Nem | Nem |
-> | helyszínek/getfeaturevalue | Nem | Nem |
-> | műveletek | Nem | Nem |
 
 ## <a name="microsoftdatalake"></a>Microsoft. DataLake
 
@@ -1188,16 +808,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | fiókok | Igen | Igen |
-> | fiókok/datalakestoreaccounts | Nem | Nem |
-> | fiókok/storageaccounts | Nem | Nem |
-> | fiókok/storageaccounts/tárolók | Nem | Nem |
-> | fiókok/storageaccounts/tárolók/listsastokens | Nem | Nem |
-> | helyek | Nem | Nem |
-> | helyszínek/képesség | Nem | Nem |
-> | helyszínek/checknameavailability | Nem | Nem |
-> | helyszínek/operationresults | Nem | Nem |
-> | helyszínek/használat | Nem | Nem |
-> | műveletek | Nem | Nem |
 
 ## <a name="microsoftdatalakestore"></a>Microsoft. Data Lake Store
 
@@ -1205,26 +815,12 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | fiókok | Igen | Igen |
-> | fiókok/eventgridfilters | Nem | Nem |
-> | fiókok/firewallrules | Nem | Nem |
-> | helyek | Nem | Nem |
-> | helyszínek/képesség | Nem | Nem |
-> | helyszínek/checknameavailability | Nem | Nem |
-> | helyszínek/deletevirtualnetworkorsubnets | Nem | Nem |
-> | helyszínek/operationresults | Nem | Nem |
-> | helyszínek/használat | Nem | Nem |
-> | műveletek | Nem | Nem |
 
 ## <a name="microsoftdatamigration"></a>Microsoft. DataMigration
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | helyek | Nem | Nem |
-> | helyszínek/checknameavailability | Nem | Nem |
-> | helyszínek/operationresults | Nem | Nem |
-> | helyszínek/operationstatuses | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | services | Nem | Nem |
 > | szolgáltatások/projektek | Nem | Nem |
 > | bővítőhely | Nem | Nem |
@@ -1235,8 +831,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | backupvaults | Nem | Nem |
-> | helyek | Nem | Nem |
-> | műveletek | Nem | Nem |
 
 ## <a name="microsoftdatashare"></a>Microsoft. DataShare
 
@@ -1244,124 +838,30 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | fiókok | Igen | Igen |
-> | fiókok/megosztások | Nem | Nem |
-> | fiókok/megosztások/adatkészletek | Nem | Nem |
-> | fiókok/megosztások/meghívók | Nem | Nem |
-> | fiókok/megosztások/providersharesubscriptions | Nem | Nem |
-> | fiókok/megosztások/synchronizationsettings | Nem | Nem |
-> | fiókok/sharesubscriptions | Nem | Nem |
-> | fiókok/sharesubscriptions/consumersourcedatasets | Nem | Nem |
-> | fiókok/sharesubscriptions/datasetmappings | Nem | Nem |
-> | fiókok/sharesubscriptions/eseményindítók | Nem | Nem |
-> | listinvitations | Nem | Nem |
-> | helyek | Nem | Nem |
-> | helyszínek/consumerinvitations | Nem | Nem |
-> | helyszínek/operationresults | Nem | Nem |
-> | helyszínek/rejectinvitation | Nem | Nem |
-> | műveletek | Nem | Nem |
 
 ## <a name="microsoftdbformariadb"></a>Microsoft. DBforMariaDB
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | checknameavailability | Nem | Nem |
-> | helyek | Nem | Nem |
-> | helyszínek/azureasyncoperation | Nem | Nem |
-> | helyszínek/operationresults | Nem | Nem |
-> | helyszínek/performancetiers | Nem | Nem |
-> | helyszínek/privateendpointconnectionazureasyncoperation | Nem | Nem |
-> | helyszínek/privateendpointconnectionoperationresults | Nem | Nem |
-> | helyszínek/privateendpointconnectionproxyazureasyncoperation | Nem | Nem |
-> | helyszínek/privateendpointconnectionproxyoperationresults | Nem | Nem |
-> | helyszínek/recommendedactionsessionsazureasyncoperation | Nem | Nem |
-> | helyszínek/recommendedactionsessionsoperationresults | Nem | Nem |
-> | helyszínek/securityalertpoliciesazureasyncoperation | Nem | Nem |
-> | helyszínek/securityalertpoliciesoperationresults | Nem | Nem |
-> | helyszínek/serverkeyazureasyncoperation | Nem | Nem |
-> | helyszínek/serverkeyoperationresults | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | kiszolgálók | Igen | Igen |
-> | kiszolgálók/tanácsadók | Nem | Nem |
-> | kiszolgálók/privateendpointconnectionproxies | Nem | Nem |
-> | kiszolgálók/privateendpointconnections | Nem | Nem |
-> | kiszolgálók/privatelinkresources | Nem | Nem |
-> | kiszolgálók/querytexts | Nem | Nem |
-> | kiszolgálók/recoverableservers | Nem | Nem |
-> | kiszolgálók/topquerystatistics | Nem | Nem |
-> | kiszolgálók/virtualnetworkrules | Nem | Nem |
-> | kiszolgálók/waitstatistics | Nem | Nem |
 
 ## <a name="microsoftdbformysql"></a>Microsoft. DBforMySQL
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | checknameavailability | Nem | Nem |
-> | helyek | Nem | Nem |
-> | helyszínek/administratorazureasyncoperation | Nem | Nem |
-> | helyszínek/administratoroperationresults | Nem | Nem |
-> | helyszínek/azureasyncoperation | Nem | Nem |
-> | helyszínek/operationresults | Nem | Nem |
-> | helyszínek/performancetiers | Nem | Nem |
-> | helyszínek/privateendpointconnectionazureasyncoperation | Nem | Nem |
-> | helyszínek/privateendpointconnectionoperationresults | Nem | Nem |
-> | helyszínek/privateendpointconnectionproxyazureasyncoperation | Nem | Nem |
-> | helyszínek/privateendpointconnectionproxyoperationresults | Nem | Nem |
-> | helyszínek/recommendedactionsessionsazureasyncoperation | Nem | Nem |
-> | helyszínek/recommendedactionsessionsoperationresults | Nem | Nem |
-> | helyszínek/securityalertpoliciesazureasyncoperation | Nem | Nem |
-> | helyszínek/securityalertpoliciesoperationresults | Nem | Nem |
-> | helyszínek/serverkeyazureasyncoperation | Nem | Nem |
-> | helyszínek/serverkeyoperationresults | Nem | Nem |
-> | műveletek | Nem | Nem |
+> | flexibleServers | Igen | Igen |
 > | kiszolgálók | Igen | Igen |
-> | kiszolgálók/tanácsadók | Nem | Nem |
-> | kiszolgálók/kulcsok | Nem | Nem |
-> | kiszolgálók/privateendpointconnectionproxies | Nem | Nem |
-> | kiszolgálók/privateendpointconnections | Nem | Nem |
-> | kiszolgálók/privatelinkresources | Nem | Nem |
-> | kiszolgálók/querytexts | Nem | Nem |
-> | kiszolgálók/recoverableservers | Nem | Nem |
-> | kiszolgálók/topquerystatistics | Nem | Nem |
-> | kiszolgálók/virtualnetworkrules | Nem | Nem |
-> | kiszolgálók/waitstatistics | Nem | Nem |
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft. DBforPostgreSQL
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | checknameavailability | Nem | Nem |
-> | helyek | Nem | Nem |
-> | helyszínek/administratorazureasyncoperation | Nem | Nem |
-> | helyszínek/administratoroperationresults | Nem | Nem |
-> | helyszínek/azureasyncoperation | Nem | Nem |
-> | helyszínek/operationresults | Nem | Nem |
-> | helyszínek/performancetiers | Nem | Nem |
-> | helyszínek/privateendpointconnectionazureasyncoperation | Nem | Nem |
-> | helyszínek/privateendpointconnectionoperationresults | Nem | Nem |
-> | helyszínek/privateendpointconnectionproxyazureasyncoperation | Nem | Nem |
-> | helyszínek/privateendpointconnectionproxyoperationresults | Nem | Nem |
-> | helyszínek/recommendedactionsessionsazureasyncoperation | Nem | Nem |
-> | helyszínek/recommendedactionsessionsoperationresults | Nem | Nem |
-> | helyszínek/securityalertpoliciesazureasyncoperation | Nem | Nem |
-> | helyszínek/securityalertpoliciesoperationresults | Nem | Nem |
-> | helyszínek/serverkeyazureasyncoperation | Nem | Nem |
-> | helyszínek/serverkeyoperationresults | Nem | Nem |
-> | műveletek | Nem | Nem |
+> | flexibleServers | Igen | Igen |
 > | servergroups | Nem | Nem |
 > | kiszolgálók | Igen | Igen |
-> | kiszolgálók/tanácsadók | Nem | Nem |
-> | kiszolgálók/kulcsok | Nem | Nem |
-> | kiszolgálók/privateendpointconnectionproxies | Nem | Nem |
-> | kiszolgálók/privateendpointconnections | Nem | Nem |
-> | kiszolgálók/privatelinkresources | Nem | Nem |
-> | kiszolgálók/querytexts | Nem | Nem |
-> | kiszolgálók/recoverableservers | Nem | Nem |
-> | kiszolgálók/topquerystatistics | Nem | Nem |
-> | kiszolgálók/virtualnetworkrules | Nem | Nem |
-> | kiszolgálók/waitstatistics | Nem | Nem |
 > | serversv2 | Igen | Igen |
 > | singleservers | Igen | Igen |
 
@@ -1371,8 +871,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | artifactsources | Igen | Igen |
-> | operationresults | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | kibocsátások | Igen | Igen |
 > | servicetopologies | Igen | Igen |
 > | servicetopologies/szolgáltatások | Igen | Igen |
@@ -1385,14 +883,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | applicationgroups | Igen | Igen |
-> | applicationgroups/alkalmazások | Nem | Nem |
-> | applicationgroups/asztali számítógépek | Nem | Nem |
-> | applicationgroups / startmenuitems | Nem | Nem |
 > | hostpools | Igen | Igen |
-> | hostpools / sessionhosts | Nem | Nem |
-> | hostpools / sessionhosts / usersessions | Nem | Nem |
-> | hostpools / usersessions | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | munkaterületek | Igen | Igen |
 
 ## <a name="microsoftdevices"></a>Microsoft.Devices
@@ -1400,17 +891,10 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | checknameavailability | Nem | Nem |
-> | checkprovisioningservicenameavailability | Nem | Nem |
 > | elasticpools | Nem | Nem |
 > | elasticpools / iothubtenants | Nem | Nem |
 > | iothubs | Igen | Igen |
-> | iothubs/eventgridfilters | Nem | Nem |
-> | iothubs/securitysettings | Nem | Nem |
-> | operationresults | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | provisioningservices | Igen | Igen |
-> | használat | Nem | Nem |
 
 ## <a name="microsoftdevops"></a>Microsoft. DevOps
 
@@ -1425,11 +909,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | tartományvezérlők | Igen | Igen |
-> | vezérlők/listconnectiondetails | Nem | Nem |
-> | helyek | Nem | Nem |
-> | helyszínek/checkcontainerhostmapping | Nem | Nem |
-> | helyszínek/operationresults | Nem | Nem |
-> | műveletek | Nem | Nem |
 
 ## <a name="microsoftdevtestlab"></a>Microsoft. segédösszetevője
 
@@ -1441,9 +920,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Labs/környezetek | Igen | Igen |
 > | Labor/servicerunners | Igen | Igen |
 > | Labor/virtualmachines | Igen | Nem |
-> | helyek | Nem | Nem |
-> | helyszínek/műveletek | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | menetrend | Igen | Igen |
 
 ## <a name="microsoftdigitaltwins"></a>Microsoft. DigitalTwins
@@ -1452,9 +928,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | digitaltwinsinstances | Nem | Nem |
-> | digitaltwinsinstances / operationresults | Nem | Nem |
-> | helyek | Nem | Nem |
-> | műveletek | Nem | Nem |
 
 ## <a name="microsoftdocumentdb"></a>Microsoft.DocumentDB
 
@@ -1463,24 +936,14 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | ------------- | ----------- | ---------- |
 > | databaseaccountnames | Nem | Nem |
 > | databaseaccounts | Igen | Igen |
-> | helyek | Nem | Nem |
-> | helyszínek/deletevirtualnetworkorsubnets | Nem | Nem |
-> | helyszínek/operationresults | Nem | Nem |
-> | helyszínek/operationsstatus | Nem | Nem |
-> | operationresults | Nem | Nem |
-> | műveletek | Nem | Nem |
 
 ## <a name="microsoftdomainregistration"></a>Microsoft. DomainRegistration
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | checkdomainavailability | Nem | Nem |
 > | tartományok | Igen | Igen |
-> | tartományok/domainownershipidentifiers | Nem | Nem |
 > | generatessorequest | Nem | Nem |
-> | listdomainrecommendations | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | topleveldomains | Nem | Nem |
 > | validatedomainregistrationinformation | Nem | Nem |
 
@@ -1489,9 +952,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | helyek | Nem | Nem |
-> | helyszínek/operationresults | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | services | Igen | Igen |
 
 ## <a name="microsofteventgrid"></a>Microsoft. EventGrid
@@ -1500,24 +960,12 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | tartományok | Igen | Igen |
-> | tartományok/témakörök | Nem | Nem |
 > | eventsubscriptions | Nem – nem helyezhető el egymástól függetlenül, de automatikusan áthelyezi az előfizetett erőforrással. | Nem – nem helyezhető el egymástól függetlenül, de automatikusan áthelyezi az előfizetett erőforrással. |
 > | extensiontopics | Nem | Nem |
-> | helyek | Nem | Nem |
-> | helyszínek/eventsubscriptions | Nem | Nem |
-> | helyszínek/operationresults | Nem | Nem |
-> | helyszínek/operationsstatus | Nem | Nem |
-> | helyszínek/topictypes | Nem | Nem |
-> | operationresults | Nem | Nem |
-> | műveletek | Nem | Nem |
-> | operationsstatus | Nem | Nem |
 > | partnernamespaces | Igen | Igen |
-> | partnernamespaces/eventchannels | Nem | Nem |
 > | partnerregistrations | Nem | Nem |
 > | partnertopics | Igen | Igen |
-> | partnertopics / eventsubscriptions | Nem | Nem |
 > | systemtopics | Igen | Igen |
-> | systemtopics / eventsubscriptions | Nem | Nem |
 > | témakörök | Igen | Igen |
 > | topictypes | Nem | Nem |
 
@@ -1526,21 +974,8 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | availableclusterregions | Nem | Nem |
-> | checknameavailability | Nem | Nem |
-> | checknamespaceavailability | Nem | Nem |
 > | fürtök | Igen | Igen |
-> | helyek | Nem | Nem |
-> | helyszínek/deletevirtualnetworkorsubnets | Nem | Nem |
 > | névterek | Igen | Igen |
-> | névterek/engedélyezési szabályok | Nem | Nem |
-> | névterek/disasterrecoveryconfigs | Nem | Nem |
-> | névterek/disasterrecoveryconfigs/checknameavailability | Nem | Nem |
-> | névterek/eventhubs | Nem | Nem |
-> | névterek/eventhubs/engedélyezési szabályok | Nem | Nem |
-> | névterek/eventhubs/consumergroups | Nem | Nem |
-> | névterek/networkrulesets | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | SKU | Nem | Nem |
 
 ## <a name="microsoftexperimentation"></a>Microsoft. kísérletezés
@@ -1549,8 +984,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | experimentworkspaces | Nem | Nem |
-> | helyek | Nem | Nem |
-> | helyszínek/műveletek | Nem | Nem |
 
 ## <a name="microsoftfalcon"></a>Microsoft. Falcon
 
@@ -1566,7 +999,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | ------------- | ----------- | ---------- |
 > | featureproviders | Nem | Nem |
 > | funkciók | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | szolgáltatók | Nem | Nem |
 > | subscriptionfeatureregistrations | Nem | Nem |
 
@@ -1585,7 +1017,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | automanagedaccounts | Nem | Nem |
 > | automanagedvmconfigurationprofiles | Nem | Nem |
 > | guestconfigurationassignments | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | szoftver | Nem | Nem |
 > | softwareupdateprofile | Nem | Nem |
 > | softwareupdates | Nem | Nem |
@@ -1596,10 +1027,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | hanainstances | Nem | Nem |
-> | helyek | Nem | Nem |
-> | helyszínek/műveletek | Nem | Nem |
-> | helyszínek/operationsstatus | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | sapmonitors | Igen | Igen |
 
 ## <a name="microsofthardwaresecuritymodules"></a>Microsoft. HardwareSecurityModules
@@ -1608,8 +1035,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | dedicatedhsms | Nem | Nem |
-> | helyek | Nem | Nem |
-> | műveletek | Nem | Nem |
 
 ## <a name="microsofthdinsight"></a>Microsoft. HDInsight
 
@@ -1622,41 +1047,21 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | fürtök | Igen | Igen |
-> | fürtök/alkalmazások | Nem | Nem |
-> | fürtök/operationresults | Nem | Nem |
-> | helyek | Nem | Nem |
-> | helyszínek/azureasyncoperations | Nem | Nem |
-> | helyszínek/billingspecs | Nem | Nem |
-> | helyszínek/képességek | Nem | Nem |
-> | helyszínek/operationresults | Nem | Nem |
-> | helyszínek/használat | Nem | Nem |
-> | helyszínek/validatecreaterequest | Nem | Nem |
-> | műveletek | Nem | Nem |
 
 ## <a name="microsofthealthcareapis"></a>Microsoft. HealthcareApis
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | checknameavailability | Nem | Nem |
-> | helyek | Nem | Nem |
-> | helyszínek/operationresults | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | services | Igen | Igen |
-> | szolgáltatások/privateendpointconnections | Nem | Nem |
-> | szolgáltatások/privatelinkresources | Nem | Nem |
 
 ## <a name="microsofthybridcompute"></a>Microsoft. HybridCompute
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | helyek | Nem | Nem |
-> | helyszínek/operationresults | Nem | Nem |
-> | helyszínek/operationstatus | Nem | Nem |
 > | gépek | Igen | Igen |
 > | gépek/bővítmények | Igen | Igen |
-> | műveletek | Nem | Nem |
 
 ## <a name="microsofthybriddata"></a>Microsoft. HybridData
 
@@ -1664,7 +1069,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | datamanagers | Igen | Igen |
-> | műveletek | Nem | Nem |
 
 ## <a name="microsofthybridnetwork"></a>Microsoft. HybridNetwork
 
@@ -1672,9 +1076,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | eszközök | Nem | Nem |
-> | helyek | Nem | Nem |
-> | helyszínek/operationstatuses | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | vnfs | Nem | Nem |
 
 ## <a name="microsofthydra"></a>Microsoft. Hydra
@@ -1683,9 +1084,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | összetevők | Nem | Nem |
-> | helyek | Nem | Nem |
 > | networkscopes | Nem | Nem |
-> | műveletek | Nem | Nem |
 
 ## <a name="microsoftimportexport"></a>Microsoft. ImportExport
 
@@ -1693,9 +1092,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | feladatok | Igen | Igen |
-> | helyek | Nem | Nem |
-> | helyszínek/operationresults | Nem | Nem |
-> | műveletek | Nem | Nem |
 
 ## <a name="microsoftinsights"></a>Microsoft. bepillantások
 
@@ -1710,14 +1106,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | alertrules | Igen | Igen |
 > | autoscalesettings | Igen | Igen |
 > | alapkonfiguráció | Nem | Nem |
-> | calculatebaseline | Nem | Nem |
 > | összetevők | Igen | Igen |
-> | összetevők/események | Nem | Nem |
-> | összetevők/linkedstorageaccounts | Nem | Nem |
-> | összetevők/metaadatok | Nem | Nem |
-> | összetevők/mérőszámok | Nem | Nem |
-> | összetevők/pricingplans | Nem | Nem |
-> | összetevők/lekérdezés | Nem | Nem |
 > | datacollectionrules | Nem | Nem |
 > | diagnosticsettings | Nem | Nem |
 > | diagnosticsettingscategories | Nem | Nem |
@@ -1726,8 +1115,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | extendeddiagnosticsettings | Nem | Nem |
 > | guestdiagnosticsettings | Nem | Nem |
 > | listmigrationdate | Nem | Nem |
-> | helyek | Nem | Nem |
-> | helyszínek/operationresults | Nem | Nem |
 > | logdefinitions | Nem | Nem |
 > | logprofiles | Nem | Nem |
 > | naplók | Nem | Nem |
@@ -1741,12 +1128,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | migratetonewpricingmodel | Nem | Nem |
 > | myworkbooks | Nem | Nem |
 > | notificationgroups | Nem | Nem |
-> | műveletek | Nem | Nem |
-> | privatelinkscopeoperationstatuses | Nem | Nem |
 > | privatelinkscopes | Nem | Nem |
-> | privatelinkscopes / privateendpointconnectionproxies | Nem | Nem |
-> | privatelinkscopes / privateendpointconnections | Nem | Nem |
-> | privatelinkscopes / scopedresources | Nem | Nem |
 > | rollbacktolegacypricingmodel | Nem | Nem |
 > | scheduledqueryrules | Igen | Igen |
 > | topology | Nem | Nem |
@@ -1763,19 +1145,14 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | apptemplates | Nem | Nem |
-> | checknameavailability | Nem | Nem |
-> | checksubdomainavailability | Nem | Nem |
 > | iotapps | Igen | Igen |
-> | műveletek | Nem | Nem |
 
 ## <a name="microsoftiotspaces"></a>Microsoft. IoTSpaces
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | checknameavailability | Igen | Igen |
 > | Graph | Igen | Igen |
-> | műveletek | Nem | Nem |
 
 ## <a name="microsoftkeyvault"></a>Microsoft. kulcstartó
 
@@ -1785,19 +1162,10 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | checknameavailability | Nem | Nem |
 > | deletedvaults | Nem | Nem |
 > | hsmpools | Nem | Nem |
-> | helyek | Nem | Nem |
-> | helyszínek/deletedvaults | Nem | Nem |
-> | helyszínek/deletevirtualnetworkorsubnets | Nem | Nem |
-> | helyszínek/operationresults | Nem | Nem |
 > | managedhsms | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | boltívek | Igen | Igen |
-> | tárolók/accesspolicies | Nem | Nem |
-> | tárolók/eventgridfilters | Nem | Nem |
-> | tárolók/titkok | Nem | Nem |
 
 ## <a name="microsoftkubernetes"></a>Microsoft. Kubernetes
 
@@ -1805,9 +1173,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | connectedclusters | Igen | Igen |
-> | helyek | Nem | Nem |
-> | helyszínek/operationstatuses | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | registeredsubscriptions | Nem | Nem |
 
 ## <a name="microsoftkubernetesconfiguration"></a>Microsoft. KubernetesConfiguration
@@ -1823,16 +1188,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | fürtök | Igen | Igen |
-> | fürtök/attacheddatabaseconfigurations | Nem | Nem |
-> | fürtök/adatbázisok | Nem | Nem |
-> | fürtök/adatbázisok/dataconnections | Nem | Nem |
-> | fürtök/adatbázisok/eventhubconnections | Nem | Nem |
-> | fürtök/adatbázisok/principalassignments | Nem | Nem |
-> | fürtök/principalassignments | Nem | Nem |
-> | helyek | Nem | Nem |
-> | helyszínek/checknameavailability | Nem | Nem |
-> | helyszínek/operationresults | Nem | Nem |
-> | műveletek | Nem | Nem |
 
 ## <a name="microsoftlabservices"></a>Microsoft. LabServices
 
@@ -1840,9 +1195,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | labaccounts | Nem | Nem |
-> | helyek | Nem | Nem |
-> | helyszínek/műveletek | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | felhasználók | Nem | Nem |
 
 ## <a name="microsoftlocationbasedservices"></a>Microsoft. LocationBasedServices
@@ -1869,9 +1221,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | integrationserviceenvironments | Igen | Nem |
 > | integrationserviceenvironments/król | Igen | Nem |
 > | isolatedenvironments | Nem | Nem |
-> | helyek | Nem | Nem |
-> | helyszínek/munkafolyamatok | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | munkafolyamatok | Igen | Igen |
 
 ## <a name="microsoftmachinelearning"></a>Microsoft. MachineLearning
@@ -1880,10 +1229,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | commitmentplans | Nem | Nem |
-> | helyek | Nem | Nem |
-> | helyszínek/műveletek | Nem | Nem |
-> | helyszínek/operationsstatus | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | WebServices | Igen | Nem |
 > | munkaterületek | Igen | Igen |
 
@@ -1900,11 +1245,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | fiókok | Nem | Nem |
-> | fiókok/munkaterületek | Nem | Nem |
-> | fiókok/munkaterületek/projektek | Nem | Nem |
 > | teamaccounts | Nem | Nem |
-> | teamaccounts/munkaterületek | Nem | Nem |
-> | teamaccounts/munkaterületek/projektek | Nem | Nem |
 
 ## <a name="microsoftmachinelearningmodelmanagement"></a>Microsoft. MachineLearningModelManagement
 
@@ -1918,24 +1259,13 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | helyek | Nem | Nem |
-> | helyszínek/computeoperationsstatus | Nem | Nem |
-> | helyszínek/kvóták | Nem | Nem |
-> | helyszínek/updatequotas | Nem | Nem |
-> | helyszínek/használat | Nem | Nem |
-> | helyszínek/méreteinek listáján | Nem | Nem |
-> | helyszínek/workspaceoperationsstatus | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | munkaterületek | Nem | Nem |
-> | munkaterületek/számítások | Nem | Nem |
-> | munkaterületek/eventgridfilters | Nem | Nem |
 
 ## <a name="microsoftmaintenance"></a>Microsoft. Maintenance
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | applyupdates | Nem | Nem |
 > | configurationassignments | Nem | Nem |
 > | maintenanceconfigurations | Igen | Igen |
 > | frissítések | Nem | Nem |
@@ -1946,7 +1276,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | identitások | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | userassignedidentities | Nem | Nem |
 
 ## <a name="microsoftmanagednetwork"></a>Microsoft. ManagedNetwork
@@ -1965,8 +1294,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | marketplaceregistrationdefinitions | Nem | Nem |
-> | műveletek | Nem | Nem |
-> | operationstatuses | Nem | Nem |
 > | registrationassignments | Nem | Nem |
 > | registrationdefinitions | Nem | Nem |
 
@@ -1975,13 +1302,9 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | checknameavailability | Nem | Nem |
 > | getentities | Nem | Nem |
 > | managementgroups | Nem | Nem |
 > | managementgroups/beállítások | Nem | Nem |
-> | operationresults | Nem | Nem |
-> | operationresults/asyncoperation | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | resources | Nem | Nem |
 > | starttenantbackfill | Nem | Nem |
 > | tenantbackfillstatus | Nem | Nem |
@@ -1992,33 +1315,20 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | fiókok | Igen | Igen |
-> | fiókok/eventgridfilters | Nem | Nem |
 > | fiókok/privateatlases | Igen | Igen |
-> | műveletek | Nem | Nem |
 
 ## <a name="microsoftmarketplace"></a>Microsoft. Marketplace
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | listavailableoffers | Nem | Nem |
 > | kínál | Nem | Nem |
 > | offertypes | Nem | Nem |
-> | offertypes/közzétevők | Nem | Nem |
-> | offertypes/kiadók/ajánlatok | Nem | Nem |
-> | offertypes/kiadók/ajánlatok/csomagok | Nem | Nem |
-> | offertypes/kiadók/ajánlatok/csomagok/szerződések | Nem | Nem |
-> | offertypes/kiadók/ajánlatok/csomagok/konfigurációk | Nem | Nem |
-> | offertypes/kiadók/ajánlatok/csomagok/konfigurációk/importimage | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | privategalleryitems | Nem | Nem |
 > | privatestoreclient | Nem | Nem |
 > | privatestores | Nem | Nem |
-> | privatestores/ajánlatok | Nem | Nem |
 > | termékek | Nem | Nem |
 > | közzétevők | Nem | Nem |
-> | kiadók/ajánlatok | Nem | Nem |
-> | közzétevők/ajánlatok/módosítások | Nem | Nem |
 > | Regisztráció | Nem | Nem |
 
 ## <a name="microsoftmarketplaceapps"></a>Microsoft. MarketplaceApps
@@ -2027,9 +1337,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | classicdevservices | Nem | Nem |
-> | listcommunicationpreference | Nem | Nem |
-> | műveletek | Nem | Nem |
-> | updatecommunicationpreference | Nem | Nem |
 
 ## <a name="microsoftmarketplaceordering"></a>Microsoft. MarketplaceOrdering
 
@@ -2038,33 +1345,15 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | ------------- | ----------- | ---------- |
 > | megállapodások | Nem | Nem |
 > | offertypes | Nem | Nem |
-> | műveletek | Nem | Nem |
 
 ## <a name="microsoftmedia"></a>Microsoft. Media
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | checknameavailability | Nem | Nem |
-> | helyek | Nem | Nem |
-> | helyszínek/checknameavailability | Nem | Nem |
 > | Mediaservices | Igen | Igen |
-> | Mediaservices/accountfilters | Nem | Nem |
-> | Mediaservices/-eszközök | Nem | Nem |
-> | Mediaservices/eszközök/assetfilters | Nem | Nem |
-> | Mediaservices/contentkeypolicies | Nem | Nem |
-> | Mediaservices/eventgridfilters | Nem | Nem |
-> | Mediaservices/liveeventoperations | Nem | Nem |
 > | Mediaservices/liveevents | Igen | Igen |
-> | Mediaservices/liveevents/liveoutputs | Nem | Nem |
-> | Mediaservices/liveoutputoperations | Nem | Nem |
-> | Mediaservices/streamingendpointoperations | Nem | Nem |
 > | Mediaservices/streamingendpoints | Igen | Igen |
-> | Mediaservices/streaminglocators | Nem | Nem |
-> | Mediaservices/streamingpolicies | Nem | Nem |
-> | Mediaservices/átalakítások | Nem | Nem |
-> | Mediaservices/átalakítások/feladatok | Nem | Nem |
-> | műveletek | Nem | Nem |
 
 ## <a name="microsoftmicroservices4spring"></a>Microsoft. Microservices4Spring
 
@@ -2079,12 +1368,8 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | assessmentprojects | Nem | Nem |
-> | helyek | Nem | Nem |
-> | helyszínek/assessmentoptions | Nem | Nem |
-> | helyszínek/checknameavailability | Nem | Nem |
 > | migrateprojects | Nem | Nem |
 > | movecollections | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | projektek | Nem | Nem |
 
 ## <a name="microsoftmixedreality"></a>Microsoft. MixedReality
@@ -2093,10 +1378,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | holographicsbroadcastaccounts | Nem | Nem |
-> | helyek | Nem | Nem |
-> | helyszínek/checknameavailability | Nem | Nem |
 > | objectunderstandingaccounts | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | remoterenderingaccounts | Igen | Igen |
 > | spatialanchorsaccounts | Igen | Igen |
 
@@ -2106,12 +1388,8 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | netappaccounts | Nem | Nem |
-> | netappaccounts / backuppolicies | Nem | Nem |
 > | netappaccounts / capacitypools | Nem | Nem |
 > | netappaccounts/capacitypools/kötetek | Nem | Nem |
-> | netappaccounts/capacitypools/kötetek/mounttargets | Nem | Nem |
-> | netappaccounts/capacitypools/kötetek/Pillanatképek | Nem | Nem |
-> | műveletek | Nem | Nem |
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
@@ -2121,76 +1399,25 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | applicationgatewayavailablerequestheaders | Nem | Nem |
-> | applicationgatewayavailableresponseheaders | Nem | Nem |
-> | applicationgatewayavailableservervariables | Nem | Nem |
-> | applicationgatewayavailablessloptions | Nem | Nem |
-> | applicationgatewayavailablewafrulesets | Nem | Nem |
 > | applicationgateways | Nem | Nem |
 > | applicationgatewaywebapplicationfirewallpolicies | Nem | Nem |
 > | applicationsecuritygroups | Igen | Igen |
-> | azurefirewallfqdntags | Nem | Nem |
 > | azurefirewalls | Nem | Nem |
 > | bastionhosts | Nem | Nem |
 > | bgpservicecommunities | Nem | Nem |
-> | checkfrontdoornameavailability | Nem | Nem |
-> | checktrafficmanagernameavailability | Nem | Nem |
 > | kapcsolatok | Igen | Igen |
 > | ddoscustompolicies | Igen | Igen |
 > | ddosprotectionplans | Nem | Nem |
-> | dnsoperationresults | Nem | Nem |
-> | dnsoperationstatuses | Nem | Nem |
 > | dnszones | Igen | Igen |
-> | dnszones/a | Nem | Nem |
-> | dnszones/AAAA | Nem | Nem |
-> | dnszones/mind | Nem | Nem |
-> | dnszones/CAA | Nem | Nem |
-> | dnszones/CNAME | Nem | Nem |
-> | dnszones/MX | Nem | Nem |
-> | dnszones/NS | Nem | Nem |
-> | dnszones/PTR | Nem | Nem |
-> | dnszones/rekordhalmazok | Nem | Nem |
-> | dnszones/SOA | Nem | Nem |
-> | dnszones/SRV | Nem | Nem |
-> | dnszones/txt | Nem | Nem |
 > | expressroutecircuits | Nem | Nem |
 > | expressroutegateways | Nem | Nem |
 > | expressrouteserviceproviders | Nem | Nem |
 > | firewallpolicies | Igen | Igen |
-> | frontdooroperationresults | Nem | Nem |
 > | frontdoors | Nem | Nem |
-> | frontdoors / frontendendpoints | Nem | Nem |
-> | frontdoorwebapplicationfirewallmanagedrulesets | Nem | Nem |
-> | frontdoorwebapplicationfirewallpolicies | Nem | Nem |
-> | getdnsresourcereference | Nem | Nem |
-> | internalnotify | Nem | Nem |
 > | ipallocations | Igen | Igen |
 > | ipgroups | Igen | Igen |
 > | loadbalancers | Igen – alapszintű SKU<br>Nem szabványos SKU | Igen – alapszintű SKU<br>Nem szabványos SKU |
 > | localnetworkgateways | Igen | Igen |
-> | helyek | Nem | Nem |
-> | helyszínek/autoapprovedprivatelinkservices | Nem | Nem |
-> | helyszínek/availabledelegations | Nem | Nem |
-> | helyszínek/availableprivateendpointtypes | Nem | Nem |
-> | helyszínek/availableservicealiases | Nem | Nem |
-> | helyszínek/baremetaltenants | Nem | Nem |
-> | helyszínek/batchnotifyprivateendpointsforresourcemove | Nem | Nem |
-> | helyszínek/batchvalidateprivateendpointsforresourcemove | Nem | Nem |
-> | helyszínek/checkacceleratednetworkingsupport | Nem | Nem |
-> | helyszínek/checkdnsnameavailability | Nem | Nem |
-> | helyszínek/checkprivatelinkservicevisibility | Nem | Nem |
-> | helyszínek/commitinternalazurenetworkmanagerconfiguration | Nem | Nem |
-> | helyszínek/effectiveresourceownership | Nem | Nem |
-> | helyszínek/nfvoperationresults | Nem | Nem |
-> | helyszínek/nfvoperations | Nem | Nem |
-> | helyszínek/operationresults | Nem | Nem |
-> | helyszínek/műveletek | Nem | Nem |
-> | helyszínek/servicetags | Nem | Nem |
-> | helyszínek/setresourceownership | Nem | Nem |
-> | helyszínek/supportedvirtualmachinesizes | Nem | Nem |
-> | helyszínek/használat | Nem | Nem |
-> | helyszínek/validateresourceownership | Nem | Nem |
-> | helyszínek/virtualnetworkavailableendpointservices | Nem | Nem |
 > | natgateways | Nem | Nem |
 > | networkexperimentprofiles | Nem | Nem |
 > | networkintentpolicies | Igen | Igen |
@@ -2201,20 +1428,8 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | networkwatchers / connectionmonitors | Igen | Nem |
 > | networkwatchers / flowlogs | Igen | Nem |
 > | networkwatchers / pingmeshes | Igen | Nem |
-> | műveletek | Nem | Nem |
 > | p2svpngateways | Nem | Nem |
-> | privatednsoperationresults | Nem | Nem |
-> | privatednsoperationstatuses | Nem | Nem |
 > | privatednszones | Igen | Igen |
-> | privatednszones/a | Nem | Nem |
-> | privatednszones/AAAA | Nem | Nem |
-> | privatednszones/mind | Nem | Nem |
-> | privatednszones/CNAME | Nem | Nem |
-> | privatednszones/MX | Nem | Nem |
-> | privatednszones/PTR | Nem | Nem |
-> | privatednszones/SOA | Nem | Nem |
-> | privatednszones/SRV | Nem | Nem |
-> | privatednszones/txt | Nem | Nem |
 > | privatednszones / virtualnetworklinks | Igen | Igen |
 > | privatednszonesinternal | Nem | Nem |
 > | privateendpointredirectmaps | Nem | Nem |
@@ -2245,12 +1460,8 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | checknameavailability | Nem | Nem |
-> | checknamespaceavailability | Nem | Nem |
 > | névterek | Igen | Igen |
 > | névterek/notificationhubs | Igen | Igen |
-> | operationresults | Nem | Nem |
-> | műveletek | Nem | Nem |
 
 ## <a name="microsoftobjectstore"></a>Microsoft. ObjectStore
 
@@ -2266,7 +1477,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | ------------- | ----------- | ---------- |
 > | hypervsites | Nem | Nem |
 > | importsites | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | serversites | Nem | Nem |
 > | vmwaresites | Nem | Nem |
 
@@ -2283,17 +1493,8 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | fürtök | Nem | Nem |
 > | deletedworkspaces | Nem | Nem |
 > | linktargets | Nem | Nem |
-> | helyek | Nem | Nem |
-> | helyszínek/operationstatuses | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | storageinsightconfigs | Nem | Nem |
 > | munkaterületek | Igen | Igen |
-> | munkaterületek/adatforrások | Nem | Nem |
-> | munkaterületek/linkedservices | Nem | Nem |
-> | munkaterületek/linkedstorageaccounts | Nem | Nem |
-> | munkaterületek/metaadatok | Nem | Nem |
-> | munkaterületek/lekérdezés | Nem | Nem |
-> | munkaterületek/scopedprivatelinkproxies | Nem | Nem |
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft. OperationsManagement
 
@@ -2302,7 +1503,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | ------------- | ----------- | ---------- |
 > | managementassociations | Nem | Nem |
 > | managementconfigurations | Igen | Igen |
-> | műveletek | Nem | Nem |
 > | megoldások | Igen | Igen |
 > | kilátással | Igen | Igen |
 
@@ -2311,9 +1511,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | checkserviceprovideravailability | Nem | Nem |
 > | legacypeerings | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | peerasns | Nem | Nem |
 > | peeringlocations | Nem | Nem |
 > | társviszonyok | Nem | Nem |
@@ -2327,8 +1525,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | asyncoperationresults | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | policyevents | Nem | Nem |
 > | policystates | Nem | Nem |
 > | policytrackedresources | Nem | Nem |
@@ -2341,10 +1537,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | ------------- | ----------- | ---------- |
 > |  -konzolok | Nem | Nem |
 > | irányítópultok | Igen | Igen |
-> | helyek | Nem | Nem |
-> | helyszínek/konzolok | Nem | Nem |
-> | helyszínek/usersettings | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | usersettings | Nem | Nem |
 
 ## <a name="microsoftpowerbi"></a>Microsoft. PowerBI
@@ -2352,8 +1544,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | helyek | Nem | Nem |
-> | helyszínek/checknameavailability | Nem | Nem |
 > | workspacecollections | Igen | Igen |
 
 ## <a name="microsoftpowerbidedicated"></a>Microsoft. PowerBIDedicated
@@ -2362,18 +1552,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | kapacitások | Igen | Igen |
-> | helyek | Nem | Nem |
-> | helyszínek/checknameavailability | Nem | Nem |
-> | helyszínek/operationresults | Nem | Nem |
-> | helyszínek/operationstatuses | Nem | Nem |
-> | műveletek | Nem | Nem |
-
-## <a name="microsoftpowerplatform"></a>Microsoft. PowerPlatform
-
-> [!div class="mx-tableFixed"]
-> | Erőforrás típusa | Erőforráscsoport | Előfizetés |
-> | ------------- | ----------- | ---------- |
-> | műveletek | Nem | Nem |
 
 ## <a name="microsoftprojectbabylon"></a>Microsoft. ProjectBabylon
 
@@ -2381,8 +1559,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | fiókok | Nem | Nem |
-> | checknameavailability | Nem | Nem |
-> | műveletek | Nem | Nem |
 
 ## <a name="microsoftproviderhub"></a>Microsoft. ProviderHub
 
@@ -2391,7 +1567,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | ------------- | ----------- | ---------- |
 > | availableaccounts | Nem | Nem |
 > | providerregistrations | Nem | Nem |
-> | providerregistrations / resourcetyperegistrations | Nem | Nem |
 > | kibocsátások | Nem | Nem |
 
 ## <a name="microsoftquantum"></a>Microsoft. Quantum
@@ -2399,9 +1574,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | helyek | Nem | Nem |
-> | helyszínek/operationstatuses | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | munkaterületek | Nem | Nem |
 
 ## <a name="microsoftrecoveryservices"></a>Microsoft. Recoveryservices szolgáltatónál
@@ -2412,21 +1584,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | backupprotecteditems | Nem | Nem |
-> | helyek | Nem | Nem |
-> | helyszínek/allocatedstamp | Nem | Nem |
-> | helyszínek/allocatestamp | Nem | Nem |
-> | helyszínek/backupaadproperties | Nem | Nem |
-> | helyszínek/backupcrossregionrestore | Nem | Nem |
-> | helyszínek/backupcrrjob | Nem | Nem |
-> | helyszínek/backupcrrjobs | Nem | Nem |
-> | helyszínek/backupcrroperationresults | Nem | Nem |
-> | helyszínek/backupcrroperationsstatus | Nem | Nem |
-> | helyszínek/backupprevalidateprotection | Nem | Nem |
-> | helyszínek/backupstatus | Nem | Nem |
-> | helyszínek/backupvalidatefeatures | Nem | Nem |
-> | helyszínek/checknameavailability | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | replicationeligibilityresults | Nem | Nem |
 > | boltívek | Igen | Igen |
 
@@ -2435,33 +1592,20 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | helyek | Nem | Nem |
-> | helyszínek/operationresults | Nem | Nem |
-> | helyszínek/operationsstatus | Nem | Nem |
 > | openshiftclusters | Nem | Nem |
-> | műveletek | Nem | Nem |
 
 ## <a name="microsoftrelay"></a>Microsoft. Relay
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | checknameavailability | Nem | Nem |
 > | névterek | Igen | Igen |
-> | névterek/engedélyezési szabályok | Nem | Nem |
-> | névterek/hybridconnections | Nem | Nem |
-> | névterek/hybridconnections/engedélyezési szabályok | Nem | Nem |
-> | névterek/privateendpointconnections | Nem | Nem |
-> | névterek/wcfrelays | Nem | Nem |
-> | névterek/wcfrelays/engedélyezési szabályok | Nem | Nem |
-> | műveletek | Nem | Nem |
 
 ## <a name="microsoftresourcegraph"></a>Microsoft. ResourceGraph
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | műveletek | Nem | Nem |
 > | lekérdezések | Igen | Igen |
 > | resourcechangedetails | Nem | Nem |
 > | resourcechanges | Nem | Nem |
@@ -2474,45 +1618,25 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | availabilitystatuses | Nem | Nem |
-> | childavailabilitystatuses | Nem | Nem |
 > | childresources | Nem | Nem |
 > | emergingissues | Nem | Nem |
 > | események | Nem | Nem |
 > | metaadatok | Nem | Nem |
 > | értesítések | Nem | Nem |
-> | műveletek | Nem | Nem |
 
 ## <a name="microsoftresources"></a>Microsoft. Resources
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | calculatetemplatehash | Nem | Nem |
-> | checkpolicycompliance | Nem | Nem |
-> | checkresourcename | Nem | Nem |
 > | központi telepítések | Nem | Nem |
-> | üzembe helyezések/műveletek | Nem | Nem |
 > | deploymentscripts | Nem | Nem |
 > | deploymentscripts/naplók | Nem | Nem |
 > | linkek | Nem | Nem |
-> | helyek | Nem | Nem |
-> | helyszínek/deploymentscriptoperationresults | Nem | Nem |
-> | notifyresourcejobs | Nem | Nem |
-> | operationresults | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | szolgáltatók | Nem | Nem |
 > | resourcegroups | Nem | Nem |
 > | resources | Nem | Nem |
 > | előfizetések | Nem | Nem |
-> | előfizetések/helyszínek | Nem | Nem |
-> | előfizetések/operationresults | Nem | Nem |
-> | előfizetések/szolgáltatók | Nem | Nem |
-> | előfizetések/resourcegroups | Nem | Nem |
-> | előfizetések/resourcegroups/erőforrások | Nem | Nem |
-> | előfizetések/erőforrások | Nem | Nem |
-> | előfizetések/tagNames | Nem | Nem |
-> | előfizetések/tagNames/tagvalues | Nem | Nem |
 > | tags | Nem | Nem |
 > | templatespecs | Nem | Nem |
 > | templatespecs/verziók | Nem | Nem |
@@ -2524,10 +1648,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | alkalmazások | Igen | Nem |
-> | checkmoderneligibility | Nem | Nem |
-> | checknameavailability | Nem | Nem |
-> | operationresults | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | saasresources | Nem | Nem |
 
 ## <a name="microsoftsearch"></a>Microsoft. Search
@@ -2538,9 +1658,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | checknameavailability | Nem | Nem |
-> | checkservicenameavailability | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | resourcehealthmetadata | Nem | Nem |
 > | searchservices | Igen | Igen |
 
@@ -2571,18 +1688,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | iotsecuritysolutions / analyticsmodels / aggregatedalerts | Nem | Nem |
 > | iotsecuritysolutions / analyticsmodels / aggregatedrecommendations | Nem | Nem |
 > | jitnetworkaccesspolicies | Nem | Nem |
-> | helyek | Nem | Nem |
-> | helyszínek/riasztások | Nem | Nem |
-> | helyszínek/allowedconnections | Nem | Nem |
-> | helyszínek/applicationwhitelistings | Nem | Nem |
-> | helyszínek/discoveredsecuritysolutions | Nem | Nem |
-> | helyszínek/externalsecuritysolutions | Nem | Nem |
-> | helyszínek/jitnetworkaccesspolicies | Nem | Nem |
-> | helyszínek/securitysolutions | Nem | Nem |
-> | helyszínek/securitysolutionsreferencedata | Nem | Nem |
-> | helyszínek/feladatok | Nem | Nem |
-> | helyszínek/topológiák | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | policies | Nem | Nem |
 > | pricings | Nem | Nem |
 > | regulatorycompliancestandards | Nem | Nem |
@@ -2612,12 +1717,10 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | könyvjelzők | Nem | Nem |
 > | esetekben | Nem | Nem |
 > | dataconnectors | Nem | Nem |
-> | dataconnectorscheckrequirements | Nem | Nem |
 > | szervezetek | Nem | Nem |
 > | entityqueries | Nem | Nem |
 > | incidensek | Nem | Nem |
 > | officeconsents | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | beállítások | Nem | Nem |
 > | threatintelligence | Nem | Nem |
 
@@ -2627,9 +1730,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | consoleservices | Nem | Nem |
-> | helyek | Nem | Nem |
-> | helyszínek/consoleservices | Nem | Nem |
-> | műveletek | Nem | Nem |
 
 ## <a name="microsoftservermanagement"></a>Microsoft. ServerManagement
 
@@ -2644,23 +1744,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | checknameavailability | Nem | Nem |
-> | checknamespaceavailability | Nem | Nem |
-> | helyek | Nem | Nem |
-> | helyszínek/deletevirtualnetworkorsubnets | Nem | Nem |
 > | névterek | Igen | Igen |
-> | névterek/engedélyezési szabályok | Nem | Nem |
-> | névterek/disasterrecoveryconfigs | Nem | Nem |
-> | névterek/disasterrecoveryconfigs/checknameavailability | Nem | Nem |
-> | névterek/eventgridfilters | Nem | Nem |
-> | névterek/networkrulesets | Nem | Nem |
-> | névterek/várólisták | Nem | Nem |
-> | névterek/várólisták/engedélyezési szabályok | Nem | Nem |
-> | névterek/témakörök | Nem | Nem |
-> | névterek/témakörök/engedélyezési szabályok | Nem | Nem |
-> | névterek/témakörök/előfizetések | Nem | Nem |
-> | névterek/témakörök/előfizetések/szabályok | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | premiummessagingregions | Nem | Nem |
 > | SKU | Nem | Nem |
 
@@ -2671,18 +1755,11 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | ------------- | ----------- | ---------- |
 > | alkalmazások | Nem | Nem |
 > | fürtök | Igen | Igen |
-> | fürtök/alkalmazások | Nem | Nem |
 > | containergroups | Nem | Nem |
 > | containergroupsets | Nem | Nem |
 > | edgeclusters | Nem | Nem |
-> | helyek | Nem | Nem |
-> | helyszínek/clusterversions | Nem | Nem |
-> | helyszínek/környezetek | Nem | Nem |
-> | helyszínek/operationresults | Nem | Nem |
-> | helyszínek/műveletek | Nem | Nem |
 > | managedclusters | Nem | Nem |
 > | hálózatok | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | secretstores | Nem | Nem |
 > | volumes | Nem | Nem |
 
@@ -2694,14 +1771,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | alkalmazások | Igen | Igen |
 > | containergroups | Nem | Nem |
 > | átjárók | Igen | Igen |
-> | helyek | Nem | Nem |
-> | helyszínek/applicationoperations | Nem | Nem |
-> | helyszínek/gatewayoperations | Nem | Nem |
-> | helyszínek/networkoperations | Nem | Nem |
-> | helyszínek/secretoperations | Nem | Nem |
-> | helyszínek/volumeoperations | Nem | Nem |
 > | hálózatok | Igen | Igen |
-> | műveletek | Nem | Nem |
 > | titkok | Igen | Igen |
 > | volumes | Igen | Igen |
 
@@ -2717,14 +1787,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | helyek | Nem | Nem |
-> | helyszínek/checknameavailability | Nem | Nem |
-> | helyszínek/operationresults | Nem | Nem |
-> | helyszínek/operationstatuses | Nem | Nem |
-> | helyszínek/használat | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | signalr | Igen | Igen |
-> | jelző/eventgridfilters | Nem | Nem |
 
 ## <a name="microsoftsoftwareplan"></a>Microsoft. SoftwarePlan
 
@@ -2732,7 +1795,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | hybridusebenefits | Nem | Nem |
-> | műveletek | Nem | Nem |
 
 ## <a name="microsoftsolutions"></a>Microsoft. Solutions
 
@@ -2742,9 +1804,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | applicationdefinitions | Nem | Nem |
 > | alkalmazások | Nem | Nem |
 > | jitrequests | Nem | Nem |
-> | helyek | Nem | Nem |
-> | helyszínek/operationstatuses | Nem | Nem |
-> | műveletek | Nem | Nem |
 
 ## <a name="microsoftsql"></a>Microsoft.Sql
 
@@ -2754,175 +1813,15 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | checknameavailability | Nem | Nem |
 > | instancepools | Nem | Nem |
 > | helyek | Igen | Igen |
-> | helyszínek/administratorazureasyncoperation | Nem | Nem |
-> | helyszínek/administratoroperationresults | Nem | Nem |
-> | helyszínek/auditingsettingsazureasyncoperation | Nem | Nem |
-> | helyszínek/auditingsettingsoperationresults | Nem | Nem |
-> | helyszínek/képességek | Nem | Nem |
-> | helyszínek/databaseazureasyncoperation | Nem | Nem |
-> | helyszínek/databaseoperationresults | Nem | Nem |
-> | helyszínek/databaserestoreazureasyncoperation | Nem | Nem |
-> | helyszínek/deletevirtualnetworkorsubnets | Nem | Nem |
-> | helyszínek/deletevirtualnetworkorsubnetsazureasyncoperation | Nem | Nem |
-> | helyszínek/deletevirtualnetworkorsubnetsoperationresults | Nem | Nem |
-> | helyszínek/dnsaliasasyncoperation | Nem | Nem |
-> | helyszínek/dnsaliasoperationresults | Nem | Nem |
-> | helyszínek/elasticpoolazureasyncoperation | Nem | Nem |
-> | helyszínek/elasticpooloperationresults | Nem | Nem |
-> | helyszínek/encryptionprotectorazureasyncoperation | Nem | Nem |
-> | helyszínek/encryptionprotectoroperationresults | Nem | Nem |
-> | helyszínek/extendedauditingsettingsazureasyncoperation | Nem | Nem |
-> | helyszínek/extendedauditingsettingsoperationresults | Nem | Nem |
-> | helyszínek/failovergroupazureasyncoperation | Nem | Nem |
-> | helyszínek/failovergroupoperationresults | Nem | Nem |
-> | helyszínek/firewallrulesazureasyncoperation | Nem | Nem |
-> | helyszínek/firewallrulesoperationresults | Nem | Nem |
-> | helyszínek/instancefailovergroupazureasyncoperation | Nem | Nem |
-> | helyszínek/instancefailovergroupoperationresults | Nem | Nem |
-> | helyszínek/instancefailovergroups | Nem | Nem |
-> | helyszínek/instancepoolazureasyncoperation | Nem | Nem |
-> | helyszínek/instancepooloperationresults | Nem | Nem |
-> | helyszínek/jobagentazureasyncoperation | Nem | Nem |
-> | helyszínek/jobagentoperationresults | Nem | Nem |
-> | helyszínek/longtermretentionbackupazureasyncoperation | Nem | Nem |
-> | helyszínek/longtermretentionbackupoperationresults | Nem | Nem |
-> | helyszínek/longtermretentionbackups | Igen | Igen |
-> | helyszínek/longtermretentionmanagedinstancebackupazureasyncoperation | Nem | Nem |
-> | helyszínek/longtermretentionmanagedinstancebackupoperationresults | Nem | Nem |
-> | helyszínek/longtermretentionmanagedinstancebackups | Nem | Nem |
-> | helyszínek/longtermretentionmanagedinstances | Nem | Nem |
-> | helyszínek/longtermretentionpolicyazureasyncoperation | Nem | Nem |
-> | helyszínek/longtermretentionpolicyoperationresults | Nem | Nem |
-> | helyszínek/longtermretentionservers | Nem | Nem |
-> | helyszínek/manageddatabaseazureasyncoperation | Nem | Nem |
-> | helyszínek/manageddatabasecompleterestoreazureasyncoperation | Nem | Nem |
-> | helyszínek/manageddatabasecompleterestoreoperationresults | Nem | Nem |
-> | helyszínek/manageddatabaseoperationresults | Nem | Nem |
-> | helyszínek/manageddatabaserestoreazureasyncoperation | Nem | Nem |
-> | helyszínek/manageddatabaserestoreoperationresults | Nem | Nem |
-> | helyszínek/managedinstanceazureasyncoperation | Nem | Nem |
-> | helyszínek/managedinstanceencryptionprotectorazureasyncoperation | Nem | Nem |
-> | helyszínek/managedinstanceencryptionprotectoroperationresults | Nem | Nem |
-> | helyszínek/managedinstancekeyazureasyncoperation | Nem | Nem |
-> | helyszínek/managedinstancekeyoperationresults | Nem | Nem |
-> | helyszínek/managedinstancelongtermretentionpolicyazureasyncoperation | Nem | Nem |
-> | helyszínek/managedinstancelongtermretentionpolicyoperationresults | Nem | Nem |
-> | helyszínek/managedinstanceoperationresults | Nem | Nem |
-> | helyszínek/managedinstancetdecertazureasyncoperation | Nem | Nem |
-> | helyszínek/managedinstancetdecertoperationresults | Nem | Nem |
-> | helyszínek/managedserversecurityalertpoliciesazureasyncoperation | Nem | Nem |
-> | helyszínek/managedserversecurityalertpoliciesoperationresults | Nem | Nem |
-> | helyszínek/managedshorttermretentionpolicyazureasyncoperation | Nem | Nem |
-> | helyszínek/managedshorttermretentionpolicyoperationresults | Nem | Nem |
-> | helyszínek/notifyazureasyncoperation | Nem | Nem |
-> | helyszínek/privateendpointconnectionazureasyncoperation | Nem | Nem |
-> | helyszínek/privateendpointconnectionoperationresults | Nem | Nem |
-> | helyszínek/privateendpointconnectionproxyazureasyncoperation | Nem | Nem |
-> | helyszínek/privateendpointconnectionproxyoperationresults | Nem | Nem |
-> | helyszínek/securityalertpoliciesazureasyncoperation | Nem | Nem |
-> | helyszínek/securityalertpoliciesoperationresults | Nem | Nem |
-> | helyszínek/serveradministratorazureasyncoperation | Nem | Nem |
-> | helyszínek/serveradministratoroperationresults | Nem | Nem |
-> | helyszínek/serverazureasyncoperation | Nem | Nem |
-> | helyszínek/serverkeyazureasyncoperation | Nem | Nem |
-> | helyszínek/serverkeyoperationresults | Nem | Nem |
-> | helyszínek/serveroperationresults | Nem | Nem |
-> | helyszínek/shorttermretentionpolicyazureasyncoperation | Nem | Nem |
-> | helyszínek/shorttermretentionpolicyoperationresults | Nem | Nem |
-> | helyszínek/syncagentoperationresults | Nem | Nem |
-> | helyszínek/syncdatabaseids | Nem | Nem |
-> | helyszínek/syncgroupoperationresults | Nem | Nem |
-> | helyszínek/syncmemberoperationresults | Nem | Nem |
-> | helyszínek/tdecertazureasyncoperation | Nem | Nem |
-> | helyszínek/tdecertoperationresults | Nem | Nem |
-> | helyszínek/használat | Nem | Nem |
-> | helyszínek/virtualclusterazureasyncoperation | Nem | Nem |
-> | helyszínek/virtualclusteroperationresults | Nem | Nem |
-> | helyszínek/virtualnetworkrulesazureasyncoperation | Nem | Nem |
-> | helyszínek/virtualnetworkrulesoperationresults | Nem | Nem |
-> | helyszínek/vulnerabilityassessmentscanazureasyncoperation | Nem | Nem |
-> | helyszínek/vulnerabilityassessmentscanoperationresults | Nem | Nem |
 > | managedinstances | Nem | Nem |
-> | managedinstances/rendszergazdák | Nem | Nem |
-> | managedinstances/adatbázisok | Nem | Nem |
-> | managedinstances/adatbázisok/backuplongtermretentionpolicies | Nem | Nem |
-> | managedinstances/adatbázisok/vulnerabilityassessments | Nem | Nem |
-> | managedinstances / metricdefinitions | Nem | Nem |
-> | managedinstances/mérőszámok | Nem | Nem |
-> | managedinstances / recoverabledatabases | Nem | Nem |
-> | managedinstances / tdecertificates | Nem | Nem |
-> | managedinstances / vulnerabilityassessments | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | kiszolgálók | Igen | Igen |
-> | kiszolgálók/administratoroperationresults | Nem | Nem |
-> | kiszolgálók/rendszergazdák | Nem | Nem |
-> | kiszolgálók/tanácsadók | Nem | Nem |
-> | kiszolgálók/aggregateddatabasemetrics | Nem | Nem |
-> | kiszolgálók/auditingpolicies | Nem | Nem |
-> | kiszolgálók/auditingsettings | Nem | Nem |
-> | kiszolgálók/automatictuning | Nem | Nem |
-> | kiszolgálók/communicationlinks | Nem | Nem |
-> | kiszolgálók/connectionpolicies | Nem | Nem |
 > | kiszolgálók/adatbázisok | Igen | Igen |
-> | kiszolgálók/adatbázisok/tanácsadók | Nem | Nem |
-> | kiszolgálók/adatbázisok/auditingpolicies | Nem | Nem |
-> | kiszolgálók/adatbázisok/auditingsettings | Nem | Nem |
-> | kiszolgálók/adatbázisok/auditrecords | Nem | Nem |
-> | kiszolgálók/adatbázisok/automatictuning | Nem | Nem |
 > | kiszolgálók/adatbázisok/backuplongtermretentionpolicies | Igen | Igen |
-> | kiszolgálók/adatbázisok/backupshorttermretentionpolicies | Nem | Nem |
-> | kiszolgálók/adatbázisok/connectionpolicies | Nem | Nem |
-> | kiszolgálók/adatbázisok/datamaskingpolicies | Nem | Nem |
-> | kiszolgálók/adatbázisok/datamaskingpolicies/szabályok | Nem | Nem |
-> | kiszolgálók/adatbázisok/bővítmények | Nem | Nem |
-> | kiszolgálók/adatbázisok/geobackuppolicies | Nem | Nem |
-> | kiszolgálók/adatbázisok/metricdefinitions | Nem | Nem |
-> | kiszolgálók/adatbázisok/mérőszámok | Nem | Nem |
-> | kiszolgálók/adatbázisok/recommendedsensitivitylabels | Nem | Nem |
-> | kiszolgálók/adatbázisok/securityalertpolicies | Nem | Nem |
-> | kiszolgálók/adatbázisok/syncgroups | Nem | Nem |
-> | kiszolgálók/adatbázisok/syncgroups/syncmembers | Nem | Nem |
-> | kiszolgálók/adatbázisok/topqueries | Nem | Nem |
-> | kiszolgálók/adatbázisok/topqueries/QueryText | Nem | Nem |
-> | kiszolgálók/adatbázisok/transparentdataencryption | Nem | Nem |
-> | kiszolgálók/adatbázisok/vulnerabilityassessment | Nem | Nem |
-> | kiszolgálók/adatbázisok/vulnerabilityassessments | Nem | Nem |
-> | kiszolgálók/adatbázisok/vulnerabilityassessmentscans | Nem | Nem |
-> | kiszolgálók/adatbázisok/vulnerabilityassessmentsettings | Nem | Nem |
-> | kiszolgálók/adatbázisok/workloadgroups | Nem | Nem |
-> | kiszolgálók/databasesecuritypolicies | Nem | Nem |
-> | kiszolgálók/disasterrecoveryconfiguration | Nem | Nem |
-> | kiszolgálók/dnsaliases | Nem | Nem |
-> | kiszolgálók/elasticpoolestimates | Nem | Nem |
 > | kiszolgálók/elasticpools | Igen | Igen |
-> | kiszolgálók/elasticpools/tanácsadók | Nem | Nem |
-> | kiszolgálók/elasticpools/metricdefinitions | Nem | Nem |
-> | kiszolgálók/elasticpools/mérőszámok | Nem | Nem |
-> | kiszolgálók/encryptionprotector | Nem | Nem |
-> | kiszolgálók/extendedauditingsettings | Nem | Nem |
-> | kiszolgálók/failovergroups | Nem | Nem |
-> | kiszolgálók/importálás | Nem | Nem |
-> | kiszolgálók/importexportoperationresults | Nem | Nem |
 > | kiszolgálók/jobaccounts | Igen | Igen |
 > | kiszolgálók/jobagents | Igen | Igen |
-> | kiszolgálók/jobagents/feladatok | Nem | Nem |
-> | kiszolgálók/jobagents/feladatok/végrehajtások | Nem | Nem |
-> | kiszolgálók/jobagents/feladatok/lépések | Nem | Nem |
-> | kiszolgálók/kulcsok | Nem | Nem |
-> | kiszolgálók/operationresults | Nem | Nem |
-> | kiszolgálók/recommendedelasticpools | Nem | Nem |
-> | kiszolgálók/recoverabledatabases | Nem | Nem |
-> | kiszolgálók/restorabledroppeddatabases | Nem | Nem |
-> | kiszolgálók/securityalertpolicies | Nem | Nem |
-> | kiszolgálók/serviceobjectives | Nem | Nem |
-> | kiszolgálók/syncagents | Nem | Nem |
-> | kiszolgálók/tdecertificates | Nem | Nem |
-> | kiszolgálók/használat | Nem | Nem |
-> | kiszolgálók/virtualnetworkrules | Nem | Nem |
-> | kiszolgálók/vulnerabilityassessments | Nem | Nem |
 > | virtualclusters | Igen | Igen |
 
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft. SqlVirtualMachine
@@ -2930,14 +1829,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | helyek | Nem | Nem |
-> | helyszínek/availabilitygrouplisteneroperationresults | Nem | Nem |
-> | helyszínek/operationtypes | Nem | Nem |
-> | helyszínek/sqlvirtualmachinegroupoperationresults | Nem | Nem |
-> | helyszínek/sqlvirtualmachineoperationresults | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | sqlvirtualmachinegroups | Igen | Igen |
-> | sqlvirtualmachinegroups / availabilitygrouplisteners | Nem | Nem |
 > | sqlvirtualmachines | Igen | Igen |
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
@@ -2945,23 +1837,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | checknameavailability | Nem | Nem |
-> | helyek | Nem | Nem |
-> | helyszínek/asyncoperations | Nem | Nem |
-> | helyszínek/checknameavailability | Nem | Nem |
-> | helyszínek/deletevirtualnetworkorsubnets | Nem | Nem |
-> | helyszínek/használat | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | storageaccounts | Igen | Igen |
-> | storageaccounts/blobservices | Nem | Nem |
-> | storageaccounts/fileservices | Nem | Nem |
-> | storageaccounts/listaccountsas | Nem | Nem |
-> | storageaccounts/listservicesas | Nem | Nem |
-> | storageaccounts/queueservices | Nem | Nem |
-> | storageaccounts/szolgáltatások | Nem | Nem |
-> | storageaccounts/szolgáltatások/metricdefinitions | Nem | Nem |
-> | storageaccounts/tableservices | Nem | Nem |
-> | használat | Nem | Nem |
 
 ## <a name="microsoftstoragecache"></a>Microsoft. StorageCache
 
@@ -2975,18 +1851,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | helyek | Nem | Nem |
-> | helyszínek/checknameavailability | Nem | Nem |
-> | helyszínek/operationresults | Nem | Nem |
-> | helyszínek/műveletek | Nem | Nem |
-> | helyszínek/munkafolyamatok | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | storagesyncservices | Igen | Igen |
-> | storagesyncservices / registeredservers | Nem | Nem |
-> | storagesyncservices / syncgroups | Nem | Nem |
-> | storagesyncservices / syncgroups / cloudendpoints | Nem | Nem |
-> | storagesyncservices / syncgroups / serverendpoints | Nem | Nem |
-> | storagesyncservices/munkafolyamatok | Nem | Nem |
 
 ## <a name="microsoftstoragesyncdev"></a>Microsoft. StorageSyncDev
 
@@ -3008,7 +1873,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | kezelők | Nem | Nem |
-> | műveletek | Nem | Nem |
 
 ## <a name="microsoftstreamanalytics"></a>Microsoft. StreamAnalytics
 
@@ -3019,9 +1883,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | fürtök | Nem | Nem |
-> | helyek | Nem | Nem |
-> | helyszínek/kvóták | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | streamingjobs | Igen | Igen |
 
 ## <a name="microsoftstreamanalyticsexplorer"></a>Microsoft. StreamAnalyticsExplorer
@@ -3030,24 +1891,13 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | környezetben | Nem | Nem |
-> | környezetek/eventsources | Nem | Nem |
 > | esetben | Nem | Nem |
-> | példányok/környezetek | Nem | Nem |
-> | példányok/környezetek/eventsources | Nem | Nem |
 
 ## <a name="microsoftsubscription"></a>Microsoft. előfizetés
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | mégse | Nem | Nem |
-> | createsubscription | Nem | Nem |
-> | engedélyezése | Nem | Nem |
-> | operationresults | Nem | Nem |
-> | műveletek | Nem | Nem |
-> | átnevezés | Nem | Nem |
-> | subscriptiondefinitions | Nem | Nem |
-> | subscriptionoperations | Nem | Nem |
 > | előfizetések | Nem | Nem |
 
 ## <a name="microsoftsupport"></a>Microsoft. support
@@ -3055,12 +1905,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | checknameavailability | Nem | Nem |
-> | operationresults | Nem | Nem |
-> | műveletek | Nem | Nem |
-> | operationsstatus | Nem | Nem |
 > | services | Nem | Nem |
-> | szolgáltatások/problemclassifications | Nem | Nem |
 > | supporttickets | Nem | Nem |
 
 ## <a name="microsoftsynapse"></a>Microsoft. szinapszis
@@ -3068,12 +1913,8 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | checknameavailability | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | munkaterületek | Igen | Igen |
 > | munkaterületek/bigdatapools | Igen | Igen |
-> | munkaterületek/operationresults | Nem | Nem |
-> | munkaterületek/operationstatuses | Nem | Nem |
 > | munkaterületek/sqlpools | Igen | Igen |
 
 ## <a name="microsofttimeseriesinsights"></a>Microsoft. TimeSeriesInsights
@@ -3082,10 +1923,8 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | környezetben | Igen | Igen |
-> | környezetek/accesspolicies | Nem | Nem |
 > | környezetek/eventsources | Igen | Igen |
 > | környezetek/referencedatasets | Igen | Igen |
-> | műveletek | Nem | Nem |
 
 ## <a name="microsofttoken"></a>Microsoft. token
 
@@ -3093,9 +1932,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | tárolja | Igen | Igen |
-> | üzletek/accesspolicies | Nem | Nem |
-> | üzletek/szolgáltatások | Nem | Nem |
-> | üzletek/szolgáltatások/jogkivonatok | Nem | Nem |
 
 ## <a name="microsoftvirtualmachineimages"></a>Microsoft. VirtualMachineImages
 
@@ -3103,10 +1939,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | imagetemplates | Nem | Nem |
-> | imagetemplates / runoutputs | Nem | Nem |
-> | helyek | Nem | Nem |
-> | helyszínek/műveletek | Nem | Nem |
-> | műveletek | Nem | Nem |
 
 ## <a name="microsoftvisualstudio"></a>Microsoft. VisualStudio
 
@@ -3119,8 +1951,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | account | Nem | Nem |
 > | fiók/bővítmény | Nem | Nem |
 > | fiók/projekt | Nem | Nem |
-> | checknameavailability | Nem | Nem |
-> | műveletek | Nem | Nem |
 
 ## <a name="microsoftvmware"></a>Microsoft. VMware
 
@@ -3128,9 +1958,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | arczones | Nem | Nem |
-> | helyek | Nem | Nem |
-> | helyszínek/operationstatuses | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | resourcepools | Nem | Nem |
 > | vCenter | Nem | Nem |
 > | virtualmachines | Nem | Nem |
@@ -3144,15 +1971,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | ------------- | ----------- | ---------- |
 > | dedicatedcloudnodes | Nem | Nem |
 > | dedicatedcloudservices | Nem | Nem |
-> | helyek | Nem | Nem |
-> | helyszínek/elérhetőség | Nem | Nem |
-> | helyszínek/operationresults | Nem | Nem |
-> | helyszínek/privateclouds | Nem | Nem |
-> | Locations/privateclouds/resourcepools | Nem | Nem |
-> | Locations/privateclouds/virtualmachinetemplates | Nem | Nem |
-> | Locations/privateclouds/virtualnetworks | Nem | Nem |
-> | helyszínek/használat | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | virtualmachines | Nem | Nem |
 
 ## <a name="microsoftvnfmanager"></a>Microsoft. VnfManager
@@ -3161,9 +1979,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | eszközök | Nem | Nem |
-> | helyek | Nem | Nem |
-> | helyszínek/operationstatuses | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | vnfs | Nem | Nem |
 
 ## <a name="microsoftvsonline"></a>Microsoft. VSOnline
@@ -3172,7 +1987,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | fiókok | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | tervek | Nem | Nem |
 > | registeredsubscriptions | Nem | Nem |
 
@@ -3187,7 +2001,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | availablestacks | Nem | Nem |
 > | billingmeters | Nem | Nem |
 > | tanúsítványok | Nem | Igen |
-> | checknameavailability | Nem | Nem |
 > | connectiongateways | Igen | Igen |
 > | kapcsolatok | Igen | Igen |
 > | customapis | Igen | Igen |
@@ -3195,27 +2008,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | deploymentlocations | Nem | Nem |
 > | georegions | Nem | Nem |
 > | hostingenvironments | Nem | Nem |
-> | hostingenvironments / eventgridfilters | Nem | Nem |
-> | hostingenvironments / multirolepools | Nem | Nem |
-> | hostingenvironments / workerpools | Nem | Nem |
-> | ishostingenvironmentnameavailable | Nem | Nem |
-> | ishostnameavailable | Nem | Nem |
-> | isusernameavailable | Nem | Nem |
 > | kubeenvironments | Igen | Igen |
-> | listsitesassignedtohostname | Nem | Nem |
-> | helyek | Nem | Nem |
-> | helyszínek/apioperations | Nem | Nem |
-> | helyszínek/connectiongatewayinstallations | Nem | Nem |
-> | helyszínek/deletedsites | Nem | Nem |
-> | helyszínek/deletevirtualnetworkorsubnets | Nem | Nem |
-> | helyszínek/extractapidefinitionfromwsdl | Nem | Nem |
-> | helyszínek/getnetworkpolicies | Nem | Nem |
-> | helyszínek/listwsdlinterfaces | Nem | Nem |
-> | helyszínek/król | Nem | Nem |
-> | helyszínek/operationresults | Nem | Nem |
-> | helyszínek/műveletek | Nem | Nem |
-> | helyszínek/futtatókörnyezetek | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | publishingusers | Nem | Nem |
 > | javaslatok | Nem | Nem |
 > | resourcehealthmetadata | Nem | Nem |
@@ -3223,28 +2016,17 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | kiszolgálófarmok | Igen | Igen |
 > | kiszolgálófarmok/eventgridfilters | Nem | Nem |
 > | helyek | Igen | Igen |
-> | helyek/eventgridfilters | Nem | Nem |
-> | helyek/hostnamebindings | Nem | Nem |
-> | helyek/networkconfig | Nem | Nem |
 > | helyek/premieraddons | Igen | Igen |
 > | helyek/bővítőhelyek | Igen | Igen |
-> | helyek/bővítőhelyek/eventgridfilters | Nem | Nem |
-> | helyek/bővítőhelyek/hostnamebindings | Nem | Nem |
-> | helyek/bővítőhelyek/networkconfig | Nem | Nem |
 > | sourcecontrols | Nem | Nem |
 > | staticsites | Nem | Nem |
-> | érvényesít | Nem | Nem |
-> | verifyhostingenvironmentvnet | Nem | Nem |
 
 ## <a name="microsoftwindowsesu"></a>Microsoft. WindowsESU
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | helyek | Nem | Nem |
-> | helyszínek/operationstatuses | Nem | Nem |
 > | multipleactivationkeys | Nem | Nem |
-> | műveletek | Nem | Nem |
 
 ## <a name="microsoftwindowsiot"></a>Microsoft. WindowsIoT
 
@@ -3252,16 +2034,12 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | deviceservices | Nem | Nem |
-> | műveletek | Nem | Nem |
 
 ## <a name="microsoftworkloadbuilder"></a>Microsoft. WorkloadBuilder
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | helyek | Nem | Nem |
-> | helyszínek/operationstatuses | Nem | Nem |
-> | műveletek | Nem | Nem |
 > | számítási feladatok | Nem | Nem |
 
 ## <a name="microsoftworkloadmonitor"></a>Microsoft. WorkloadMonitor
@@ -3274,14 +2052,13 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | monitorinstances | Nem | Nem |
 > | monitorinstancessummary | Nem | Nem |
 > | figyeli | Nem | Nem |
-> | notificationsettings | Nem | Nem |
-> | műveletek | Nem | Nem |
 
 ## <a name="third-party-services"></a>Harmadik féltől származó szolgáltatások
 
 A harmadik féltől származó szolgáltatások jelenleg nem támogatják az áthelyezési műveletet.
 
 ## <a name="next-steps"></a>Következő lépések
+
 Az erőforrások áthelyezésére szolgáló parancsokért lásd: [erőforrások áthelyezése új erőforráscsoporthoz vagy előfizetésbe](move-resource-group-and-subscription.md).
 
 Ha ugyanazokat az adatokkal szeretné lekérni a vesszővel tagolt értékeket tartalmazó fájlokat, töltse le [move-support-resources.csv](https://github.com/tfitzmac/resource-capabilities/blob/master/move-support-resources.csv).

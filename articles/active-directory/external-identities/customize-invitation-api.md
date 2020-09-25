@@ -1,6 +1,6 @@
 ---
 title: B2B együttműködési API és testreszabás – Azure Active Directory
-description: Az Azure Active Directory B2B együttműködés a vállalatokon átívelő kapcsolatok támogatása érdekében lehetővé teszi, hogy az üzleti partnerek szelektíven érhessék el a vállalati alkalmazásokat
+description: Azure Active Directory B2B együttműködés támogatja a vállalatok közötti kapcsolatokat azáltal, hogy lehetővé teszi az üzleti partnerek számára a vállalati alkalmazások szelektív elérését.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9f62ece12732c45037bcad328eec162bebb4e6a
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 2cc959d23aebea082d873e9474998e7f17b1b320
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87909551"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295158"
 ---
 # <a name="azure-active-directory-b2b-collaboration-api-and-customization"></a>Azure Active Directory B2B együttműködési API és testreszabás
 
@@ -80,7 +80,7 @@ Ebben a módban az API-t használó személyeknek az engedélyekkel kell rendelk
 
 Csak az alkalmazás kontextusában az alkalmazásnak szüksége van a felhasználó. INVITE. All hatókörre a meghívás sikerességéhez.
 
-További információkért lásd:https://developer.microsoft.com/graph/docs/authorization/permission_scopes
+További információkért lásd: https://developer.microsoft.com/graph/docs/authorization/permission_scopes
 
 
 ## <a name="powershell"></a>PowerShell
@@ -115,7 +115,7 @@ Get-AzureADUser -Filter "UserState eq 'PendingAcceptance'" | Format-List -Proper
 > [!NOTE]
 > Győződjön meg arról, hogy a AzureAD PowerShell-modul vagy a AzureADPreview PowerShell-modul legújabb verziója van telepítve. 
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 Tekintse meg a Meghívási API-referenciát a alkalmazásban [https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation) .
 

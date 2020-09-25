@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d462f146f3f094602835d88e48815d5537c58665
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: afbc16f0fb30c1ada22b668771525288602cda44
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86078782"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296637"
 ---
 # <a name="scenarios-for-advanced-analytics-in-azure-machine-learning"></a>Speciális elemzési forgatókönyvek az Azure Machine Learning rendszerben
 Ez a cikk a különböző típusú adatforrások és a [csoportos adatelemzési folyamat (TDSP)](overview.md)által kezelhető célzott forgatókönyvek körét ismerteti. A TDSP egy szisztematikus módszert biztosít a csapatok számára, hogy működjenek együtt az intelligens alkalmazások létrehozásán. Az itt bemutatott forgatókönyvek az adatfeldolgozási munkafolyamatban elérhető lehetőségeket illusztrálják, amelyek az Azure-ban az adatok jellemzőitől, a forrás helyeitől és a cél adattáraktól függenek.
@@ -31,7 +31,7 @@ A következő részekben egy minta forgatókönyvet talál. Az egyes forgatókö
 > 
 > * [Tárfiók létrehozása](../../storage/common/storage-account-create.md)
 >   <br/>
-> * [Azure Machine Learning munkaterület létrehozása](../studio/create-workspace.md)
+> * [Azure Machine Learning-munkaterület létrehozása](../classic/create-workspace.md)
 > 
 > 
 

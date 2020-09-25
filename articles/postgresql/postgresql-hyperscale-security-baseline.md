@@ -1,22 +1,22 @@
 ---
-title: Azure biztonsági alapkonfiguráció a Azure Database for PostgreSQL-nagy kapacitású
-description: Az Azure Database for PostgreSQL-nagy kapacitású biztonsági alapkonfiguráció eljárási útmutatást és erőforrásokat biztosít az Azure biztonsági Teljesítménytesztben meghatározott biztonsági javaslatok megvalósításához.
+title: Azure biztonsági alapkonfiguráció Azure Database for PostgreSQL-nagy kapacitású (Citus)
+description: Az Azure Database for PostgreSQL-nagy kapacitású (Citus) biztonsági alapkonfiguráció az Azure biztonsági Teljesítménytesztben meghatározott biztonsági javaslatok megvalósítására szolgáló eljárási útmutatást és erőforrásokat biztosít.
 author: msmbaldwin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 37ebd1702ed8ef059b38378b89f5a5cb61748568
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: c82451ca9f1f974aba7578b0dfc4f6f0eb99ac16
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231299"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318126"
 ---
-# <a name="azure-security-baseline-for-azure-database-for-postgresql---hyperscale"></a>Azure biztonsági alapkonfiguráció a Azure Database for PostgreSQL-nagy kapacitású
+# <a name="azure-security-baseline-for-azure-database-for-postgresql---hyperscale-citus"></a>Azure biztonsági alapkonfiguráció Azure Database for PostgreSQL-nagy kapacitású (Citus)
 
-A Azure Database for PostgreSQL-nagy kapacitású Azure biztonsági alapterve olyan javaslatokat tartalmaz, amelyek segítségével javíthatja az üzemelő példány biztonsági állapotát.
+A Azure Database for PostgreSQL-nagy kapacitású (Citus) Azure biztonsági alapterve olyan javaslatokat tartalmaz, amelyek segítségével javíthatja az üzemelő példány biztonsági állapotát.
 
 A szolgáltatás alapterve az [Azure Security Benchmark 1,0-es verziójából](https://docs.microsoft.com/azure/security/benchmarks/overview)származik, amely javaslatokat tesz arra vonatkozóan, hogy miként védheti meg felhőalapú megoldásait az Azure-ban az ajánlott eljárásokat ismertető útmutató segítségével.
 
@@ -631,7 +631,7 @@ A nem számítási Azure-erőforrásokra feltöltött tartalom előzetes vizsgá
 
 ### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9,2: teljes rendszerbiztonsági mentés és minden ügyfél által felügyelt kulcs biztonsági mentése
 
-**Útmutató**: naponta legalább egyszer Azure Database for PostgreSQL pillanatfelvételt készít az adatfájlokról és az adatbázis-tranzakciós naplóról. A biztonsági mentések lehetővé teszik a kiszolgálók bármely időpontra történő visszaállítását a megőrzési időtartamon belül. A megőrzési időszak jelenleg 35 nap az összes fürthöz. Az összes biztonsági mentés titkosítása AES 256 bites titkosítás használatával történik.
+**Útmutató**: naponta legalább egyszer Azure Database for PostgreSQL pillanatfelvételt készít az adatfájlokról és az adatbázis-tranzakciós naplóról. A biztonsági mentések lehetővé teszik a kiszolgálók bármely időpontra történő visszaállítását a megőrzési időtartamon belül. A megőrzési időszak jelenleg 35 nap az összes fürthöz. Minden biztonsági mentés AES 256 bites titkosítással van titkosítva.
 
 A rendelkezésre állási zónákat támogató Azure-régiókban a biztonsági mentési Pillanatképek három rendelkezésre állási zónában tárolódnak. Amíg legalább egy rendelkezésre állási zóna online állapotú, a nagy kapacitású (Citus) fürt visszaállítható.
 
