@@ -5,13 +5,19 @@ ms.topic: include
 ms.date: 03/11/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3d9e21c317240d27c8b32bd3daec0fcc66013e54
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 9bf89b1b61bdb0a4dc5b49daafcd0dae6cdd7a72
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89564984"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327109"
 ---
+A beszédfelismerési szolgáltatás egyik fő funkciója az emberi beszéd (más néven beszéd – szöveg) felismerése és átírása. Ebből a rövid útmutatóból megtudhatja, hogyan használhatja a Speech SDK-t az alkalmazásaiban és termékeiben a kiváló minőségű beszéd-szöveg átalakítás elvégzéséhez.
+
+## <a name="skip-to-samples-on-github"></a>Ugrás a mintákra a GitHubon
+
+Ha közvetlenül a mintakód kihagyását szeretné kihagyni, tekintse meg a [C# gyors példákat](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/dotnet) a githubon.
+
 ## <a name="prerequisites"></a>Előfeltételek
 
 Ez a cikk azt feltételezi, hogy rendelkezik Azure-fiókkal és Speech Service-előfizetéssel. Ha nem rendelkezik fiókkal és előfizetéssel, [próbálja ki ingyenesen a Speech szolgáltatást](../../../get-started.md).

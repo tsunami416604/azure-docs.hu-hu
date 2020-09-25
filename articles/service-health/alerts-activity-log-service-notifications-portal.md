@@ -1,14 +1,14 @@
 ---
 title: Eseménynapló-riasztások fogadása az Azure szolgáltatási értesítésein Azure Portal használatával
-description: Értesítés küldése SMS-ben, e-mailben vagy webhookon az Azure-szolgáltatás bekövetkeztekor.
+description: Megtudhatja, hogyan állíthatja be a Azure Portal a szolgáltatás állapotával kapcsolatos értesítésekhez a Azure Portal használatával.
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: b90940c4532370e7742f736708625ddec283aab1
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 88fbdeeb8bdcc239f1591e053aaf4fb1c36b9b19
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499269"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289786"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications-using-the-azure-portal"></a>Műveletnapló-riasztások létrehozása a szolgáltatási értesítéseken a Azure Portal használatával
 ## <a name="overview"></a>Áttekintés
@@ -76,7 +76,7 @@ Néhány percen belül a riasztás aktív, és a létrehozáskor megadott felté
 Megtudhatja, hogyan [konfigurálhat webhook-értesítéseket a meglévő probléma-felügyeleti rendszerekhez](service-health-alert-webhook-guide.md). A műveletnapló-riasztások webhook-sémájával kapcsolatos információkért lásd: [webhookok az Azure-beli tevékenység naplójában](../azure-monitor/platform/activity-log-alerts-webhook.md).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ [a Azure Service Health riasztások beállításával kapcsolatos ajánlott eljárásokról](https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUa).
 - Ismerje meg, hogyan állíthat be [Azure Service Health Mobile leküldéses értesítéseket](https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUw).
 - Megtudhatja, hogyan [konfigurálhat webhook-értesítéseket a meglévő probléma-felügyeleti rendszerekhez](service-health-alert-webhook-guide.md).

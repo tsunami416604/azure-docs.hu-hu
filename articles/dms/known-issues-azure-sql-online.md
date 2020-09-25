@@ -10,14 +10,14 @@ ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: da0c00f0b4a8f2c49996fbcb9b34ee4a1ab65273
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 6648a20e03facad4b791cacba8513f9f1aa7d2f0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856652"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91291911"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-database"></a>Ismert problémák/áttelepítési korlátozások az online áttelepítéssel Azure SQL Database
 
@@ -40,7 +40,7 @@ Ha a forrásadatbázis egy vagy több ideiglenes táblából áll, az adatbázis
 
 **Áthidaló megoldás**
 
-Hajtsa végre a következő lépéseket.
+Ehhez a következő lépések szükségesek.
 
 1. Az alábbi lekérdezéssel megkeresheti a forrás sémában található időbeli táblákat.
 
@@ -66,7 +66,7 @@ A "teljes adatterhelés" művelet során az "ntext nem kompatibilis a hierarchyi
 
 **Áthidaló megoldás**
 
-Hajtsa végre a következő lépéseket.
+Ehhez a következő lépések szükségesek.
 
 1. Keresse meg a hierarchyid adattípusú oszlopokat tartalmazó felhasználói táblákat az alábbi lekérdezés használatával.
 
@@ -82,7 +82,7 @@ Hajtsa végre a következő lépéseket.
 
 **Áthidaló megoldás**
 
-Hajtsa végre a következő lépéseket.
+Ehhez a következő lépések szükségesek.
 
 1. Keresse meg a forrás adatbázisban jelenleg aktív eseményindítókat az alábbi lekérdezés használatával:
 

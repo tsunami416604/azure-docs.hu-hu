@@ -2,14 +2,16 @@
 title: Mesterséges intelligencia (MI)
 description: A LUIS mesterséges intelligenciát (AI) használ, hogy az Ön által megadott séma alapján nyelvi megértést nyújtson az adatokhoz.
 ms.topic: conceptual
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.date: 08/07/2020
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: bdcede01ec6bab5f8b43d89ff40d588a011d5dfb
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 2586bf2d31ef28c662ad88bde3718541bb21a31c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88751344"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327204"
 ---
 # <a name="artificial-intelligence-in-language-understanding-luis"></a>Mesterséges intelligencia a Language Understandingban (LUIS)
 
@@ -53,6 +55,6 @@ LUIS kevéssé vagy egyáltalán nem ismeri a szélesebb körű _NLP_ -szemponto
 * vásárlása
 * vásárolta
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg a LUIS-alkalmazás [fejlesztési életciklusát](luis-concept-app-iteration.md)

@@ -1,14 +1,16 @@
 ---
 title: Alkalmazás sémájának definíciója
 description: A LUIS-alkalmazás a vagy a vagy a, `.json` `.lu` és tartalmazza az összes szándékot, az entitásokat, például a hosszúságú kimondott szöveg, a funkciókat és a beállításokat.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 08/22/2020
-ms.openlocfilehash: 816a6c50129f37a55ab3dba72319358e832a6b8b
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: db4fd52dad82542f20e58ebb3b8526c5be7f2f88
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88756788"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327323"
 ---
 # <a name="app-schema-definition"></a>Alkalmazás sémájának definíciója
 
@@ -142,6 +144,6 @@ Az alkalmazás importálásakor és exportálásakor válassza a vagy a lehetős
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Migrálás a [v3 authoring API](luis-migration-authoring-entities.md) -kra

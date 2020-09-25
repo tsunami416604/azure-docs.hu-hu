@@ -8,14 +8,14 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.topic: article
+ms.topic: overview
 ms.date: 02/20/2020
-ms.openlocfilehash: 64fb692c7ef896e643db603a6fbc3948cc4b3a11
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 77b121dca4ed5966487268cf47353dc43b7e9a1d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84749639"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91292081"
 ---
 # <a name="what-is-azure-database-migration-service"></a>Mi az Azure Database Migration Service?
 
@@ -36,7 +36,7 @@ A Azure Database Migration Service regionális elérhetőségével kapcsolatos n
 
 A Azure Database Migration Service díjszabásával kapcsolatos naprakész információk: [Azure Database Migration Service díjszabása](https://azure.microsoft.com/pricing/details/database-migration/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A Azure Database Migration Service által támogatott áttelepítési forgatókönyvek állapota](resource-scenario-status.md).
 * [Hozza létre Azure Database Migration Service példányát a Azure Portal használatával](quickstart-create-data-migration-service-portal.md).

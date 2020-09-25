@@ -10,22 +10,17 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 09/15/2020
 ms.author: trbye
-ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp, cog-serv-seo-aug-2020
+ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: speech-full-stack-go
 keywords: beszéd – szöveg, beszéd – szöveges szoftver
-ms.openlocfilehash: 08c42c383e114d404e5b3728fc264a70932aa915
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 2e738222897b60e3a7578ca10bd7596be4fc4da6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90706715"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327087"
 ---
 # <a name="get-started-with-speech-to-text"></a>A diktálás használatának első lépései
-
-A beszédfelismerési szolgáltatás egyik fő funkciója az emberi beszéd (más néven beszéd – szöveg) felismerése és átírása. Ebből a rövid útmutatóból megtudhatja, hogyan használhatja a Speech SDK-t az alkalmazásaiban és termékeiben a kiváló minőségű beszéd-szöveg átalakítás elvégzéséhez.
-
-> [!TIP]
-> Ha egyenesen a mintakód kihagyása mellett szeretne kiugrani, tekintse meg a gyors üzembe helyezési [példákat](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart) a githubon.
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [C# Basics include](includes/how-to/speech-to-text-basics/speech-to-text-basics-csharp.md)]
@@ -55,7 +50,7 @@ A beszédfelismerési szolgáltatás egyik fő funkciója az emberi beszéd (má
 [!INCLUDE [CLI include](includes/how-to/speech-to-text-basics/speech-to-text-basics-cli.md)]
 ::: zone-end
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Codec tömörített hangformátumok használata](how-to-use-codec-compressed-audio-input-streams.md)
 * Tekintse meg a gyors üzembe helyezési [mintákat](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart) a githubon

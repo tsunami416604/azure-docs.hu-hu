@@ -4,13 +4,23 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/13/2020
 ms.author: trbye
-ms.openlocfilehash: 9b5d1421c36fa5d0568985b7792715533d2540ee
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: b8cbbbb24293a3ae931a55299a3a97411e74c910
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86035931"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326920"
 ---
+A Speech Service egyik fő funkciója az emberi beszéd felismerése és más nyelvekre való lefordítása. Ebből a rövid útmutatóból megtudhatja, hogyan használhatja a Speech SDK-t az alkalmazásaiban és termékeiben, hogy kiváló minőségű hangfordítást végezzen. Ez a rövid útmutató a következő témaköröket tartalmazza:
+
+* Beszéd – szöveg fordítása
+* Beszéd lefordítása több célként megadott nyelvre
+* Közvetlen beszéd – beszéd fordítás végrehajtása
+
+## <a name="skip-to-samples-on-github"></a>Ugrás a mintákra a GitHubon
+
+Ha közvetlenül a mintakód kihagyását szeretné kihagyni, tekintse meg a C++ gyors üzembe helyezési [mintákat](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/cpp/windows/translate-speech-to-text) a githubon.
+
 ## <a name="prerequisites"></a>Előfeltételek
 
 Ez a cikk azt feltételezi, hogy rendelkezik Azure-fiókkal és Speech Service-előfizetéssel. Ha nem rendelkezik fiókkal és előfizetéssel, [próbálja ki ingyenesen a Speech szolgáltatást](../../../get-started.md).

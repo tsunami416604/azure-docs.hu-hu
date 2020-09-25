@@ -1,16 +1,16 @@
 ---
 title: Azure Event Grid erőforrások hálózati biztonsága
-description: Ez a cikk azt ismerteti, hogyan konfigurálható a hozzáférés a privát végpontokról
+description: Ez a cikk azt ismerteti, hogyan használhatók a kimenő forgalomhoz használt szolgáltatási címkék, az IP-tűzfalszabályok a bemenő és a magánhálózati végpontok számára a Azure Event Grid való behatoláshoz.
 author: VidyaKukke
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: vkukke
-ms.openlocfilehash: 1887b6b5919a8b0f6e8f570b2471d74d9541df31
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 81544d71db5131f76dc2f9a613b6fd89ed57d076
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119242"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326456"
 ---
 # <a name="network-security-for-azure-event-grid-resources"></a>Azure Event Grid erőforrások hálózati biztonsága
 Ez a cikk azt ismerteti, hogyan használhatók a következő biztonsági szolgáltatások a Azure Event Grid használatával: 
@@ -25,7 +25,7 @@ A szolgáltatás címkéje egy adott Azure-szolgáltatás IP-címeinek egy csopo
 
 A szolgáltatás-címkék használatával hálózati [biztonsági csoportokon](../virtual-network/security-overview.md#security-rules)   vagy [Azure Firewallon](../firewall/service-tags.md)is meghatározhat hálózati hozzáférés-vezérlést. A szolgáltatási címkéket adott IP-címek helyett használhatja biztonsági szabályok létrehozásakor. A szolgáltatási címke nevének (például **AzureEventGrid**) megadásával a szabály megfelelő *forrás*   vagy *cél*   mezőjében engedélyezheti vagy megtagadhatja a megfelelő szolgáltatás forgalmát.
 
-| Szolgáltatáscímke | Szerep | Használhat bejövő vagy kimenő adatforgalmat? | Lehet regionális? | Használható a Azure Firewall? |
+| Szolgáltatáscímke | Rendeltetés | Használhat bejövő vagy kimenő adatforgalmat? | Lehet regionális? | Használható a Azure Firewall? |
 | --- | -------- |:---:|:---:|:---:|
 | AzureEventGrid | Azure Event Grid. | Mindkettő | Nem | Nem |
 
@@ -57,7 +57,7 @@ Privát végpont létrehozásakor az erőforráshoz tartozó DNS CNAME rekord az
 
 Ha a témakör vagy a tartomány végpontjának URL-címét a VNet kívülről a privát végpontra oldja fel, a megoldás a szolgáltatás nyilvános végpontját oldja fel. A "Topica" DNS-erőforrásrekordjait, ha a privát végpontot üzemeltető **VNet kívülről** oldották fel, a következő lesz:
 
-| Name                                          | Típus      | Érték                                         |
+| Név                                          | Típus      | Érték                                         |
 | --------------------------------------------- | ----------| --------------------------------------------- |  
 | `topicA.westus.eventgrid.azure.net`             | CNAME     | `topicA.westus.privatelink.eventgrid.azure.net` |
 | `topicA.westus.privatelink.eventgrid.azure.net` | CNAME     | \<Azure traffic manager profile\>
@@ -66,7 +66,7 @@ Az [IP-tűzfal](#ip-firewall)használatával megtagadhatja vagy szabályozhatja 
 
 A privát végpontot futtató VNet feloldva a témakör vagy a tartomány végpontjának URL-címe feloldódik a magánhálózati végpont IP-címére. A "témakör" nevű DNS-erőforrásrekordok a privát végpontot futtató **VNet** feloldva a következő lesz:
 
-| Name                                          | Típus      | Érték                                         |
+| Név                                          | Típus      | Érték                                         |
 | --------------------------------------------- | ----------| --------------------------------------------- |  
 | `topicA.westus.eventgrid.azure.net`             | CNAME     | `topicA.westus.privatelink.eventgrid.azure.net` |
 | `topicA.westus.privatelink.eventgrid.azure.net` | A         | 10.0.0.5
@@ -83,10 +83,10 @@ A következő táblázat ismerteti a magánhálózati végponti kapcsolatok kül
 
 | Kapcsolatok állapota   |  Sikeres közzététel (igen/nem) |
 | ------------------ | -------------------------------|
-| Approved           | Igen                            |
-| Elutasítva           | Nem                             |
-| Függőben            | Nem                             |
-| Leválasztott       | Nem                             |
+| Approved           | Yes                            |
+| Elutasítva           | No                             |
+| Függőben            | No                             |
+| Leválasztott       | No                             |
 
 Ahhoz, hogy a közzététel sikeres legyen, **jóvá**kell hagyni a privát végponti kapcsolatok állapotát. Ha a rendszer visszautasítja a kapcsolatokat, a Azure Portal használatával nem lehet jóváhagyni. Az egyetlen lehetőség, hogy törölje a kapcsolódást, és hozzon létre egy újat.
 

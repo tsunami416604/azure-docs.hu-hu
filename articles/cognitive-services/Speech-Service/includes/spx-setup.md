@@ -5,17 +5,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: 2a0cb34c23ebee5ae16a8c0a272055880ceed388
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 3c176f103371bfb1b35231f222b2045f1f4a3ef9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89494331"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327046"
 ---
-## <a name="prerequisites"></a>Előfeltételek
-
-Az egyetlen előfeltétel egy Azure Speech-előfizetés. Ha még nem rendelkezik ilyennel, tekintse meg az új előfizetés létrehozásával kapcsolatos [útmutatót](../get-started.md#new-resource) .
-
 ## <a name="download-and-install"></a>Letöltés és telepítés
 
 #### <a name="windows-install"></a>[Windows-telepítés](#tab/windowsinstall)

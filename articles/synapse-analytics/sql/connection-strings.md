@@ -10,18 +10,18 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 42a1110b089d5edf9793bf2bb2c699a717a4b1a4
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: aa940b00e9c23ab08244ea55c0cd22a8d5f1897f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004969"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289378"
 ---
 # <a name="connection-strings-for-synapse-sql-preview"></a>A szinapszis SQL-hez kapcsolódó kapcsolatok karakterláncai (előzetes verzió)
 
 A szinapszis SQL (előzetes verzió) szolgáltatáshoz több különböző alkalmazás-protokoll, például a, a [ADO.net](https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx), az [ODBC](https://msdn.microsoft.com/library/jj730314.aspx), a [php](https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396)és a [JDBC](https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx)is csatlakozhat. Az alábbiakban néhány példát láthat a kapcsolatok sztringre az egyes protokollokhoz. 
 
-A Azure Portal használatával is létrehozhatja a kapcsolódási karakterláncot.  Ha a kapcsolati karakterláncot a Azure Portal használatával szeretné felépíteni, navigáljon az adatbázis panelre az *alapvető* erőforrások területen kattintson az *adatbázis-kapcsolati karakterláncok megjelenítése*elemre.
+A Azure Portal használatával is létrehozhatja a kapcsolódási karakterláncot.  Ha a kapcsolati karakterláncot a Azure Portal használatával szeretné felépíteni, navigáljon az adatbázis panelre az *Essentials* elemnél az *adatbázis-kapcsolati karakterláncok megjelenítése*területen.
 
 ## <a name="sample-adonet-connection-string"></a>Minta ADO.NET-kapcsolatok karakterlánca
 

@@ -3,13 +3,13 @@ title: Események fogadása Azure Event Gridról egy HTTP-végpontra
 description: Útmutató HTTP-végpontok érvényesítéséhez, majd az események fogadásához és deszerializálásához Azure Event Grid
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: 119e72b830c538df0cabf68ecea8cf78bae3029a
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: 42cf237f0c2fbe091307625fde70613ab9173b0c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90605260"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326473"
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>Események fogadása HTTP-végponton
 
@@ -395,7 +395,7 @@ Végezetül ellenőrizze, hogy a függvény mostantól képes-e kezelni az egyé
 
 Ezt a funkciót élőben is tesztelheti, ha [Egyéni eseményt küld a portálról,](./custom-event-quickstart-portal.md) vagy [egy egyéni témakörbe](./post-to-custom-topic.md)  helyezi el egy olyan szolgáltatással vagy alkalmazással, amely egy végpontra, például [Poster](https://www.getpostman.com/)-re tehet közzé. Hozzon létre egy egyéni témakört és egy esemény-előfizetést a függvény URL-címének megfelelő végponttal.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az [SDK-k Azure Event Grid felügyeletének és közzétételének](./sdk-overview.md) megismerése
 * Útmutató [Egyéni témakörhöz való közzétételhez](./post-to-custom-topic.md)

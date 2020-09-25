@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 27b745353521a44733c46170a5f5952c194c2343
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 2cde352738c1aa545c77cbcf5d974030cd75b1e8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89293506"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326524"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Végpontok és útvonalak kezelése az Azure Digital Twinsban (API-k és parancssori felület)
 
@@ -27,7 +27,7 @@ A [Azure Portal](https://portal.azure.com)is kezelhetők. A jelen cikk a portál
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Szüksége lesz egy **Azure-fiókra** ( [itt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)akár ingyenesen is beállíthatja)
-* Azure-beli **digitális Twins-példányra** lesz szüksége az Azure-előfizetésében. Ha még nem rendelkezik példányokkal, létrehozhat egyet a következő útmutató lépéseit követve [*: példány és hitelesítés beállítása*](how-to-set-up-instance-scripted.md). A telepítésből származó alábbi értékekkel a cikk későbbi részében használhatja a következő értékeket:
+* Azure-beli **digitális Twins-példányra** lesz szüksége az Azure-előfizetésében. Ha még nem rendelkezik példányokkal, létrehozhat egyet a következő útmutató lépéseit követve [*: példány és hitelesítés beállítása*](how-to-set-up-instance-portal.md). A telepítésből származó alábbi értékekkel a cikk későbbi részében használhatja a következő értékeket:
     - Példány neve
     - Erőforráscsoport
     
@@ -44,7 +44,7 @@ Ahhoz, hogy egy végpontot az Azure digitális Ikrekhöz lehessen kapcsolni, a v
 
 ### <a name="create-an-event-grid-endpoint"></a>Event Grid végpont létrehozása
 
-Az alábbi példa bemutatja, hogyan hozhat létre Event Grid típusú végpontot az Azure CLI használatával. [Azure Cloud Shell](https://shell.azure.com)használhat, vagy helyileg is [TELEPÍTheti a CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)-t.
+Az alábbi példa bemutatja, hogyan hozhat létre Event Grid típusú végpontot az Azure CLI használatával. [Azure Cloud Shell](https://shell.azure.com)használhat, vagy helyileg is [TELEPÍTheti a CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)-t.
 
 Először hozzon létre egy Event Grid-témakört. Használhatja az alábbi parancsot, vagy további részletekben tekintse meg a lépéseket. Ehhez látogasson el a Event Grid *Egyéni események* rövid útmutatójának [ *Egyéni témakör létrehozása* szakaszára](../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic) .
 

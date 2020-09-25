@@ -5,13 +5,13 @@ author: suhuruli
 ms.topic: tutorial
 ms.date: 09/01/2018
 ms.author: suhuruli
-ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java, devx-track-javascript
-ms.openlocfilehash: a4b5f98a4cb8a437a235f956a556745837f5d564
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java, devx-track-js
+ms.openlocfilehash: a3e58ae01fa3f30f0b13ffb176becb76371ed158
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432368"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326354"
 ---
 # <a name="tutorial-create-an-application-with-a-java-api-front-end-service-and-a-stateful-back-end-service-on-azure-service-fabric"></a>Oktatóanyag: alkalmazás létrehozása Java API előtér-szolgáltatással és állapot-visszaállítási szolgáltatással az Azure Service Fabric
 
@@ -70,7 +70,7 @@ A táblázat röviden ismerteti az előző képernyőképen látható Package Ex
 | **Package Explorer-elem** | **Leírás** |
 | --- | --- |
 | PublishProfiles | A helyi és Azure-beli Service Fabric-fürtök profilrészleteit ismertető JSON-fájlokat tartalmazza. A fájlok tartalmát a beépülő modul használja az alkalmazás üzembe helyezésekor. |
-| Scripts | Olyan segítő szkripteket tartalmaz, amelyek segítségével a parancssorról gyorsan kezelhető az alkalmazás egy fürttel. |
+| Parancsfájlok | Olyan segítő szkripteket tartalmaz, amelyek segítségével a parancssorról gyorsan kezelhető az alkalmazás egy fürttel. |
 | VotingApplication | A Service Fabric-fürtön közzétett Service Fabric-alkalmazást tartalmazza. |
 | VotingWeb | A kezelőfelületi állapotmentes szolgáltatás forrásfájljait és a kapcsolódó Gradle-buildfájlt tartalmazza. |
 | build.gradle | A projekt kezeléséhez használt Gradle-fájl. |

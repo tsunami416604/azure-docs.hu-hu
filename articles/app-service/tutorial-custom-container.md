@@ -7,12 +7,12 @@ ms.author: msangapu
 keywords: Azure app Service, webalkalmazás, Linux, Windows, Docker, tároló
 ms.custom: devx-track-csharp, mvc, seodec18, devx-track-python
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: fdc15ecd79a6672d2a46b4da284533965977d753
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: f4b2aea0a6782b5484b2f6d15066d71990348596
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90982873"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91312056"
 ---
 # <a name="migrate-custom-software-to-azure-app-service-using-a-custom-container"></a>Egyéni szoftver migrálása Azure App Service egyéni tároló használatával
 
@@ -72,7 +72,7 @@ A projekt mostantól futtatható egy Windows-tárolóban. Egy _Docker-fájl_ les
 
 Nyissa meg a **Docker-fájlt** a Megoldáskezelőből.
 
-Egy [támogatott szülőrendszerképet](quickstart-custom-container.md#use-a-different-parent-image) kell használnia. Módosítsa a szülőrendszerképet a `FROM` sor a következő kódra való lecserélésével:
+Egy [támogatott szülőrendszerképet](configure-custom-container.md#supported-parent-images) kell használnia. Módosítsa a szülőrendszerképet a `FROM` sor a következő kódra való lecserélésével:
 
 ```dockerfile
 FROM mcr.microsoft.com/dotnet/framework/aspnet:4.7.2-windowsservercore-ltsc2019
@@ -618,6 +618,8 @@ Az ebben a cikkben létrehozott erőforrások folyamatos költségeket okozhatna
 az group delete --name AppSvc-DockerTutorial-rg
 ```
 
+::: zone-end
+
 ## <a name="next-steps"></a>Következő lépések
 
 Az alábbiak elvégzését ismerte meg:
@@ -625,9 +627,13 @@ Az alábbiak elvégzését ismerte meg:
 > [!div class="checklist"]
 > * Egyéni rendszerkép üzembe helyezése egy privát tároló beállításjegyzékében
 > * Üzembe helyezés és az egyéni lemezkép App Service
+::: zone pivot="container-linux"
 > * A rendszerkép frissítése és újbóli üzembe helyezése
+::: zone-end
 > * Diagnosztikai naplók elérése
+::: zone pivot="container-linux"
 > * Csatlakozás a tárolóhoz SSH használatával
+::: zone-end
 
 A következő oktatóanyagban megismerheti, hogyan képezhető le egyéni DNS-név az alkalmazáshoz.
 
@@ -639,7 +645,7 @@ Vagy tekintse meg a többi erőforrást:
 > [!div class="nextstepaction"]
 > [Egyéni tároló konfigurálása](configure-custom-container.md)
 
+::: zone pivot="container-linux"
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Multi-Container WordPress-alkalmazás](tutorial-multi-container-app.md)
-
 ::: zone-end

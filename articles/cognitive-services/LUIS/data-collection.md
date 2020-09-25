@@ -1,14 +1,16 @@
 ---
 title: Adatgyűjtés
 description: Ismerje meg, hogy az alkalmazás fejlesztése során milyen példákat kell gyűjteni az adatok gyűjtéséhez
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/06/2020
-ms.openlocfilehash: 7abb3736eb9d7c73465ffa646b79e8e7dd7ae88b
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: bb00595a5d5be130bf6c1177004bf3042ef8f9f0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83599457"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327187"
 ---
 # <a name="data-collection-for-your-app"></a>Adatgyűjtés az alkalmazáshoz
 
@@ -75,7 +77,7 @@ Ne használja újra a hosszúságú kimondott szöveg a betanítási készletbő
 
 Miután közzétette az alkalmazás első verzióját, frissítenie kell a hosszúságú kimondott szöveg a valós forgalomból, hogy a tesztelési készlet tükrözze az éles eloszlást, és az idő múlásával nyomon követhető a reális teljesítmény.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Ismerje meg, hogyan változtatja meg a LUIS az adatait az előrejelzés előtt](luis-concept-data-alteration.md)

@@ -2,19 +2,19 @@
 title: 'Oktatóanyag: Node.js modul fejlesztése Linux rendszeren – Azure IoT Edge | Microsoft Docs'
 description: Az oktatóanyag bemutatja, hogyan hozhat létre IoT Edge-modult Node.js-kóddal, és hogyan helyezheti üzembe azt peremhálózati eszközökön
 services: iot-edge
-author: shizn
+author: kgremban
 manager: philmea
-ms.author: xshi
+ms.author: kgremban
 ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
-ms.custom: mvc, devx-track-python, devx-track-javascript
-ms.openlocfilehash: b1a24c4e97ba73dc5097e7b3c09c0c1c5a8771ac
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.custom: mvc, devx-track-python, devx-track-js
+ms.openlocfilehash: fd7e5c74876f9c7457d4ef29827527191f6558d9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87875421"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336803"
 ---
 # <a name="tutorial-develop-and-deploy-a-nodejs-iot-edge-module-for-linux-devices"></a>Oktatóanyag: Node.js IoT Edge modul fejlesztése és üzembe helyezése Linux-eszközökhöz
 
@@ -245,7 +245,7 @@ A NodeModule modult az üzembe helyezési jegyzékben használta, hogy 25 fokos 
 
 6. A bejövő eszközről a felhőbe irányuló üzenetek figyelése. Ekkor az új hőmérsékleti küszöb eléréséig az üzenetek leállnak.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha azt tervezi, hogy a következő ajánlott cikkel folytatja, megtarthatja és újból felhasználhatja a létrehozott erőforrásokat és konfigurációkat. Azt is megteheti, hogy ugyanezt az IoT Edge-eszközt használja teszteszközként.
 
