@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: az SQL igény szerinti elemzésének első lépései'
+title: 'Oktatóanyag: az adatelemzés első lépései a serverles SQL-sel'
 description: Ebből az oktatóanyagból megtudhatja, hogyan elemezheti az SQL-on keresztül igénybe venni kívánt információkat a Spark-adatbázisokban található adatforrások használatával.
 services: synapse-analytics
 author: saveenr
@@ -9,18 +9,18 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: 93ebc1c5e89e54f4813f270b9f8b7b13f672fbe3
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 8d26a03a8b61850dc17bc4efff5f8ca12dfca191
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90016112"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91300224"
 ---
 # <a name="analyze-data-with-sql-on-demand"></a>Az SQL igény szerinti elemzése
 
-Ebből az oktatóanyagból megtudhatja, hogyan elemezheti az SQL-on keresztül igénybe venni kívánt információkat a Spark-adatbázisokban található adatforrások használatával. 
+Ebből az oktatóanyagból megtudhatja, hogyan elemezheti az adatforrást a kiszolgáló nélküli SQL használatával egy igény szerinti SQL-készlettel a Spark-adatbázisokban található adatforrások használatával. 
 
-## <a name="analyze-nyc-taxi-data-in-blob-storage--using-sql-on-demand"></a>NYC-alapú taxi-adattárolás elemzése a blob Storage-ban az SQL igény szerinti használatával
+## <a name="analyze-nyc-taxi-data-in-blob-storage-using-sql-on-demand-pool"></a>NYC-alapú taxi-adatelemzés a blob Storage-ban SQL igény szerinti készlet használatával
 
 1. Az **adatközpontban** kattintson a jobb gombbal az **Azure Blob Storage > minta adatkészletek > nyc_tlc_yellow** elemre **, és**válassza a **legfelső 100-sorok kiválasztása** lehetőséget.
 1. Ekkor létrejön egy új SQL-parancsfájl a következő kóddal:

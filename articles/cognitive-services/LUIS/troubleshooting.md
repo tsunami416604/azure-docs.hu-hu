@@ -1,15 +1,17 @@
 ---
 title: Gyakori kérdések (GYIK) – LUIS
 description: Ez a cikk a Language Understanding (LUIS) kapcsolatos gyakori kérdésekre adott válaszokat tartalmazza.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: troubleshooting
 ms.date: 05/06/2020
 ms.author: diberry
-ms.openlocfilehash: b45f3c43e70502b2734696a66d2a497c2213d1b9
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: ff7beff6682d594f9b9fc1901d396d29028ec989
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86054845"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334701"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding – Gyakori kérdések (GYIK)
 
@@ -43,7 +45,7 @@ Igen, érdemes betanítani a **nincs** szándékot több hosszúságú kimondott
 Lásd a [Bing Spell Check API v7](luis-tutorial-bing-spellcheck.md) oktatóanyagot. LUIS kikényszeríti a Bing Spell Check API v7 által kiszabott korlátokat.
 
 ### <a name="how-do-i-edit-my-luis-app-programmatically"></a>Hogyan a LUIS-alkalmazás programozással való szerkesztését?
-Ha programozott módon szeretné szerkeszteni a LUIS alkalmazást, használja az [authoring API](https://go.microsoft.com/fwlink/?linkid=2092087)-t. Lásd: a [Luis authoring API meghívása](./get-started-get-model-rest-apis.md) és [a Luis-alkalmazás programozott módon történő létrehozása Node.jshasználatával](./luis-tutorial-node-import-utterances-csv.md) , példákkal a szerzői API meghívására. A szerzői API használatához a létrehozási [kulcsot](luis-how-to-azure-subscription.md#azure-resources-for-luis) kell használnia a végponti kulcs helyett. A programozott szerzői műveletek másodpercenként legfeljebb 1 000 000 hívást tesznek lehetővé, és másodpercenként öt tranzakciót biztosítanak. A LUIS használatával használt kulcsokról további információt a [kulcsok kezelése](./luis-how-to-azure-subscription.md)című témakörben talál.
+Ha programozott módon szeretné szerkeszteni a LUIS alkalmazást, használja az [authoring API](https://go.microsoft.com/fwlink/?linkid=2092087)-t. Lásd: a [Luis authoring API meghívása](./get-started-get-model-rest-apis.md) és [a Luis-alkalmazás programozott módon történő létrehozása Node.jshasználatával ](./luis-tutorial-node-import-utterances-csv.md) , példákkal a szerzői API meghívására. A szerzői API használatához a létrehozási [kulcsot](luis-how-to-azure-subscription.md#azure-resources-for-luis) kell használnia a végponti kulcs helyett. A programozott szerzői műveletek másodpercenként legfeljebb 1 000 000 hívást tesznek lehetővé, és másodpercenként öt tranzakciót biztosítanak. A LUIS használatával használt kulcsokról további információt a [kulcsok kezelése](./luis-how-to-azure-subscription.md)című témakörben talál.
 
 ### <a name="where-is-the-pattern-feature-that-provided-regular-expression-matching"></a>Hol található a reguláris kifejezésnek megfelelő minta funkció?
 Az előző **minta funkció** jelenleg elavult, **[mintázatok](luis-concept-patterns.md)** helyett.
@@ -78,7 +80,7 @@ További információ a [verzió importálásával kapcsolatos hibákról](luis-
 
 ### <a name="how-do-i-give-collaborators-access-to-luis-with-azure-active-directory-azure-ad-or-role-based-access-control-rbac"></a>Hogyan az Azure Active Directory (Azure AD) vagy a szerepköralapú hozzáférés-vezérlés (RBAC) használatával biztosítson közreműködőket a LUIS számára?
 
-A közreműködők hozzáférésének megismeréséhez tekintse meg [Azure Active Directory erőforrásokat](luis-how-to-collaborate.md#azure-active-directory-resources) és [Azure Active Directory bérlői felhasználót](luis-how-to-collaborate.md#azure-active-directory-tenant-user) .
+A közreműködők hozzáférésének megismeréséhez tekintse meg [Azure Active Directory erőforrásokat](luis-how-to-collaborate.md#azure-active-directory-resources)  és [Azure Active Directory bérlői felhasználót](luis-how-to-collaborate.md#azure-active-directory-tenant-user) .
 
 <a name="luis-endpoint"></a>
 
@@ -267,7 +269,7 @@ Az első probléma az, hogy elkülöníti a problémát, ha a probléma LUIS-hez
 #### <a name="resolve-issue-in-luis"></a>Probléma megoldása a LUIS-ben
 A Luis- [végponttal](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint)azonos Kimondás a Luis-nek. Ha hibaüzenetet kap, oldja meg a problémát a LUIS-ben, amíg a hibát már nem adja vissza. Gyakori hibák a következők:
 
-* `Out of call volume quota. Quota will be replenished in <time>.`– Ez a probléma azt jelzi, hogy egy szerzői kulcsból egy [végponti kulcsra](luis-how-to-azure-subscription.md) kell váltania, vagy módosítania kell a [szolgáltatási szinteket](luis-how-to-azure-subscription.md#change-pricing-tier).
+* `Out of call volume quota. Quota will be replenished in <time>.` – Ez a probléma azt jelzi, hogy egy szerzői kulcsból egy [végponti kulcsra](luis-how-to-azure-subscription.md) kell váltania, vagy módosítania kell a [szolgáltatási szinteket](luis-how-to-azure-subscription.md#change-pricing-tier).
 
 #### <a name="resolve-issue-in-azure-bot-service"></a>Probléma megoldása Azure Bot Service
 
@@ -329,7 +331,7 @@ Videók:
 
 * [Az Azure társalgási AI használata az üzlet méretezésére a következő generáció számára](https://www.youtube.com/watch?v=_k97jd-csuk&feature=youtu.be)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A LUIS-vel kapcsolatos további tudnivalókért tekintse meg a következő forrásokat:
 * [A LUIS-mel kapcsolatos kérdések Stack Overflow](https://stackoverflow.com/questions/tagged/luis)

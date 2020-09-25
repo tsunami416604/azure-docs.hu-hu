@@ -1,5 +1,5 @@
 ---
-title: Átmeneti hibák használata
+title: Átmeneti hibák elhárítása
 description: Megtudhatja, hogyan lehet elhárítani, diagnosztizálni és megakadályozni egy SQL-csatlakozási hibát vagy átmeneti hibát, amikor a Azure SQL Databasehoz, az Azure SQL felügyelt példányához és az Azure szinapszis Analyticshez csatlakozik.
 keywords: SQL-kapcsolat, kapcsolati karakterlánc, csatlakozási problémák, átmeneti hiba, kapcsolódási hiba
 services: sql-database
@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: dalechen
 ms.author: ninarn
-ms.reviewer: carlrab, vanto
+ms.reviewer: sstein, vanto
 ms.date: 01/14/2020
-ms.openlocfilehash: 0b28fa788e7b35e94482104d807c228db21f49b4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7fff2fdc4f1f8a39a807ceb6e7c33f3acf388df1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87003916"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91284193"
 ---
 # <a name="troubleshoot-transient-connection-errors-in-sql-database-and-sql-managed-instance"></a>A SQL Database és az SQL felügyelt példányának átmeneti csatlakoztatási hibáinak elhárítása
 
@@ -276,7 +276,7 @@ Az Enterprise Library 6 (EntLib60) .NET által felügyelt osztályokat kínál a
 
 Íme néhány Transact-SQL SELECT utasítás, amely a hibák naplóit és egyéb információkat kérdezi le.
 
-| Napló lekérdezése | Description |
+| Napló lekérdezése | Leírás |
 |:--- |:--- |
 | `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` |A [sys. event_log](https://msdn.microsoft.com/library/dn270018.aspx) nézet az egyes eseményekről nyújt információkat, amelyek között lehetnek átmeneti hibák vagy csatlakozási hibák.<br/><br/>Ideális esetben összekapcsolhatja a **start_time** vagy **end_time** értékeket, ha az ügyfélprogram problémát észlelt.<br/><br/>A lekérdezés futtatásához csatlakoznia kell a *Master* adatbázishoz. |
 | `SELECT c.*`<br/>`FROM sys.database_connection_stats AS c`<br/>`WHERE c.database_name = 'myDbName'`<br/>`AND 24 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, c.end_time, GetUtcDate())`<br/>`ORDER BY c.end_time;` |A [sys. database_connection_stats](https://msdn.microsoft.com/library/dn269986.aspx) nézet a további diagnosztikai események összesített számát kínálja.<br/><br/>A lekérdezés futtatásához csatlakoznia kell a *Master* adatbázishoz. |
@@ -443,7 +443,7 @@ public bool IsTransient(Exception ex)
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [SQL Database és SQL Serverhoz tartozó kapcsolatok kódtárai](connect-query-content-reference-guide.md#libraries)
 - [Kapcsolatok készletezése (ADO.NET)](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling)

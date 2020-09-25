@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 1d974badd715d7966f552603a77d77aab95d70f7
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 68869d464df01d3cc89493c64d66511b4a6f369d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549967"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91300006"
 ---
 # <a name="tutorial-azure-active-directory-sso-integration-with-kemp-loadmaster-azure-ad-integration"></a>Oktatóanyag: Azure Active Directory SSO-integráció a Kemp LoadMaster Azure AD-integrációval
 
@@ -113,7 +113,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -139,7 +139,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
 ### <a name="create-a-virtual-service"></a>Virtuális szolgáltatás létrehozása 
 
-1. Nyissa meg a Kemp LoadMaster Azure AD Integration Load Master webes felhasználói felületét > Virtual Services > új hozzáadása.
+1. Nyissa meg a Kemp LoadMaster Azure AD Integration LoadMaster webes felhasználói felületét > Virtual Services > új hozzáadása.
 
 1. Kattintson az új hozzáadása gombra.
 
@@ -197,11 +197,11 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
 ### <a name="ssl-acceleration"></a>SSL-gyorsítás
  
-1. Lépjen a Kemp Load Master webes felhasználói felület > Virtual Services > Virtual Services szolgáltatáshoz.
+1. Nyissa meg a Kemp LoadMaster webes felhasználói felületét > Virtual Services > a szolgáltatások megtekintése/módosítása lehetőséget.
 
 1. Kattintson a módosítás a művelet alatt elemre.
 
-1. A TCP/x.x.x.: 443 (azonosító: 6) tulajdonságok alatt – a 7. rétegbeli operációs rendszer esetén kattintson az SSL-Tulajdonságok elemre.
+1. Kattintson az SSL-Tulajdonságok elemre (amely a 7. rétegben működik).
     
     ![Kemp LoadMaster Azure AD-integrációs webkiszolgáló](./media/kemp-tutorial/kemp-3.png)
     

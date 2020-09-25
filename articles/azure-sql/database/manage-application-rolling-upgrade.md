@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mathoma, carlrab
+ms.reviewer: mathoma, sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 1346fed738bb9afa595b63c91064a481e2ee2b51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8645e8c1f1f371f1416a998af41104ebb6867eea
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84045626"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334883"
 ---
 # <a name="manage-rolling-upgrades-of-cloud-applications-by-using-sql-database-active-geo-replication"></a>Felhőalapú alkalmazások működés közbeni frissítésének kezelése SQL Database aktív földrajzi replikálás használatával
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -86,7 +86,7 @@ Ahhoz, hogy ezeket a célokat a Web Apps környezetek használata mellett is el�
 * Az elsődleges régió elsődleges adatbázisa (2)
 * A webalkalmazás készenléti példánya a biztonsági mentési régióban (3)
 * A földrajzi replikált másodlagos adatbázis a biztonsági mentési régióban (4)
-* Egy Traffic Manager Performance profil egy nevű online végponttal `contoso-1.azurewebsites.net` és egy kapcsolat nélküli végpont`contoso-dr.azurewebsites.net`
+* Egy Traffic Manager Performance profil egy nevű online végponttal `contoso-1.azurewebsites.net` és egy kapcsolat nélküli végpont `contoso-dr.azurewebsites.net`
 
 A frissítés visszavonásához létre kell hoznia egy átmeneti környezetet az alkalmazás teljesen szinkronizált példányával. Mivel meg kell győződnie arról, hogy az alkalmazás gyorsan helyreállítható, ha a frissítési folyamat során végzetes hiba történik, az átmeneti környezetnek is földrajzilag redundánsnak kell lennie. A következő lépések szükségesek egy átmeneti környezet létrehozásához a frissítéshez:
 
@@ -149,7 +149,7 @@ A fő kompromisszum az, hogy minden alkalmazás-összetevőnél kettős redundan
 
 A cikkben leírt két frissítési módszer különbözik az összetettség és a dollár díja között, de mindkettőre összpontosít, hogy a felhasználó mennyi ideig korlátozódik a csak olvasási műveletekre. Ezt az időt közvetlenül a Frissítési parancsfájl időtartama határozza meg. Ez nem függ az adatbázis méretétől, a választott szolgáltatási szinttől, a webhely konfigurációjától vagy más olyan tényezőktől, amelyeket nem tud egyszerűen szabályozni. Az előkészítési lépések elvesznek a frissítés lépéseitől, és nem befolyásolják az éles alkalmazást. A Frissítési parancsfájl hatékonysága kulcsfontosságú tényező, amely meghatározza a felhasználói élményt a frissítések során. Így a legjobb megoldás az, hogy a lehető leghatékonyabban fejlessze a frissítési szkriptet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az üzletmenet folytonosságának áttekintése és forgatókönyvei: az [üzletmenet folytonosságának áttekintése](business-continuity-high-availability-disaster-recover-hadr-overview.md).
 * Az aktív geo-replikálás Azure SQL Databaseával kapcsolatos további információkért lásd: [olvasható másodlagos adatbázisok létrehozása aktív geo-replikáció használatával](active-geo-replication-overview.md).

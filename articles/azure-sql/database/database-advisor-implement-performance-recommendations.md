@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, carlrab
+ms.reviewer: jrasnik, sstein
 ms.date: 03/10/2020
-ms.openlocfilehash: 5a81ceea151b937b63544cbe51cc22de11d25230
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b5170f1c2e6c72c684cb1afcf1bf9bf8d3ef6fff
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254939"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91284363"
 ---
 # <a name="database-advisor-performance-recommendations-for-azure-sql-database"></a>A Azure SQL Database teljesítményére vonatkozó javaslatok Database Advisor
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -84,9 +84,9 @@ A *parametrizálja-lekérdezések* javaslatai akkor jelennek meg, ha egy vagy t�
 
 Először minden lekérdezést le kell fordítani egy végrehajtási terv létrehozásához. Minden létrehozott csomag hozzá lesz adva a terv gyorsítótárába. Ugyanannak a lekérdezésnek a későbbi végrehajtásai újra felhasználhatják ezt a csomagot a gyorsítótárból, így nincs szükség további fordításra.
 
-A nem paraméteres értékekkel rendelkező lekérdezések teljesítménybeli terheléshez vezethetnek, mert a végrehajtási terv minden alkalommal újrafordításra kerül, amikor a nem paraméteres értékek eltérőek. Sok esetben a különböző paraméterekkel rendelkező lekérdezések ugyanazt a végrehajtási tervet eredményezik. Ezek a csomagok azonban továbbra is külön vannak hozzáadva a terv gyorsítótárába.
+A nem paraméteres értékekkel rendelkező lekérdezések teljesítménybeli terheléshez vezethetnek, mert a végrehajtási tervet minden alkalommal újra kell fordítani, amikor a nem paraméteres értékek eltérnek. Sok esetben előfordul, hogy ugyanaz a lekérdezés eltérő paraméterértékekkel ugyanazokat a végrehajtási terveket hozza létre. Ezek a tervek azonban továbbra is külön kerülnek be a terv gyorsítótárába.
 
-A végrehajtási tervek újrafordításának folyamata adatbázis-erőforrásokat használ, növeli a lekérdezés időtartamának időpontját, és túlcsordul a terv gyorsítótárán. Ezek az események a csomagok gyorsítótárból való kizárását okozzák. Ez a viselkedés úgy módosítható, ha a kényszerített paraméterezés beállítást állítja be az adatbázison.
+A végrehajtási tervek újrafordításának folyamata adatbázis-erőforrásokat használ, növeli a lekérdezés időtartamát, és túltelíti a terv gyorsítótárát. Ezek az események így a tervek a gyorsítótárból való kiürítését okozzák. Ez a viselkedés úgy módosítható, ha a kényszerített paraméterezés beállítást állítja be az adatbázison.
 
 A javaslat hatásának becslése érdekében a rendszer összehasonlítja a tényleges CPU-használat és a tervezett CPU-használat közötti összehasonlítást (ahogy a javaslat alkalmazta volna). Ez a javaslat segítséget nyújt a CPU-megtakarítás megszerzésében. Emellett segít csökkenteni a lekérdezési időtartamot és a terhelést a csomag gyorsítótárában, ami azt jelenti, hogy több csomag is maradhat a gyorsítótárban, és újra felhasználható. Ezt az ajánlást gyorsan alkalmazhatja az **Apply** parancs kiválasztásával.
 
@@ -116,7 +116,7 @@ A "séma javítása" javaslat akkor jelenik meg, ha Azure SQL Database észleli 
 
 A fejlesztők fontolóra vehetik az egyéni alkalmazások fejlesztését a Azure SQL Database teljesítményével kapcsolatos javaslatok használatával. Az adatbázis-portálon felsorolt összes javaslat a [Get-AzSqlDatabaseRecommendedAction](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaserecommendedaction) API-n keresztül érhető el.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az adatbázis-indexek és a lekérdezés-végrehajtási tervek automatikus finomhangolásával kapcsolatos további információkért lásd: [Azure SQL Database automatikus hangolás](automatic-tuning-overview.md).
 - Az adatbázis teljesítményének automatikus és a teljesítménnyel kapcsolatos problémák kiváltó okának elemzésével kapcsolatos további információkért lásd: [Azure SQL Intelligent Insights](intelligent-insights-overview.md).

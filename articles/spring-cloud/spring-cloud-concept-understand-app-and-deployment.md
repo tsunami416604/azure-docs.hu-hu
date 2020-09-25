@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 9e909db0041979eb7bc4fc30bd9551382e83c488
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c053a7830e02eb7c460bd030ca3c6a10c00ea78a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90892497"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323637"
 ---
 # <a name="understand-app-and-deployment-in-azure-spring-cloud"></a>Az alkalmazások és az üzembe helyezés ismertetése az Azure Spring Cloud-ban
 
@@ -29,11 +29,11 @@ Az Azure Spring Cloud standard csomag lehetővé teszi, hogy egy alkalmazás egy
 ## <a name="app"></a>Alkalmazás
 Az alkalmazás szintjén az alábbi funkciók/tulajdonságok vannak meghatározva.
 
-| Enumeráció | Definíció |
+| Funkciók | Description |
 |:--|:----------------|
 | Nyilvános</br>Végpont | Az alkalmazás eléréséhez használt URL-cím |
 | Egyéni</br>Tartomány | Az egyéni tartomány védelmét biztosító CNAME-rekord |
-| Szolgáltatás</br>Kötés | A fájl és a *ServiceBusTrigger* attribútum function.jsban beállított kötési konfigurációs tulajdonságok |
+| Szolgáltatás</br>Kötés | Egyéb Azure-szolgáltatásokkal létesített kapcsolatok |
 | Felügyelt</br>Identitás | A felügyelt identitás Azure Active Directory lehetővé teszi, hogy az alkalmazás könnyedén hozzáférhessen más Azure AD-védelemmel ellátott erőforrásokhoz, például a Azure Key Vault |
 | Állandó</br>Tárolás | Beállítás, amely lehetővé teszi, hogy az alkalmazások az alkalmazás újraindítása után is megmaradjanak |
 
@@ -41,14 +41,14 @@ Az alkalmazás szintjén az alábbi funkciók/tulajdonságok vannak meghatározv
 
 A következő funkciók/tulajdonságok a telepítési szinten vannak meghatározva, és az üzemi/átmeneti telepítés cseréjekor lesznek kicserélve.
 
-| Enumeráció | Definíció |
+| Funkciók | Leírás |
 |:--|:----------------|
 | CPU | Virtuális mag-példányok száma |
-| Memória | Beállítás, amely memóriát foglal le a vertikális felskálázáshoz vagy az üzembe helyezéshez |
+| Memória | GB memória/alkalmazás példánya|
 | Példány</br>Darabszám | Az alkalmazás példányainak száma, manuális vagy automatikus beállítás |
 | Automatikus méretezés | A példányok számának automatikus méretezése előre definiált szabályok és ütemtervek alapján |
-| JVM</br>Beállítások | beállítás: JAVA_OPTS |
-| Környezet</br>Változók | A teljes Azure Spring Cloud-környezetre érvényes beállítások |
+| JVM</br>Beállítások | JVM beállítások megadása  |
+| Környezet</br>Változók | Környezeti változók beállítása |
 | Futtatókörnyezet</br>Verzió | Java 8/Java 11|
 
 ## <a name="restrictions"></a>Korlátozások

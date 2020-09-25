@@ -11,19 +11,19 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 4d29b1301f66f2834c974bdcd2675cf1a672c742
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b669ef7856628f7e5d698edf674eee0b84845295
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555713"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323515"
 ---
 # <a name="tutorial-configure-druva-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Druva konfigurálása
 
 Az oktatóanyag célja annak bemutatása, hogy milyen lépéseket kell végrehajtani a Druva és a Azure Active Directory (Azure AD) szolgáltatásban az Azure AD konfigurálásához, hogy a felhasználók és/vagy csoportok automatikusan kiépítsék és kiépítsék a Druva.
 
 > [!NOTE]
-> Ez az oktatóanyag az Azure AD-beli felhasználói kiépítési szolgáltatásra épülő összekötőt ismerteti. A szolgáltatás működésének, működésének és gyakori kérdéseinek részletes ismertetését lásd: a felhasználók üzembe helyezésének [automatizálása és az SaaS-alkalmazások kiépítése Azure Active Directory használatával](../app-provisioning/user-provisioning.md).
+> Ez az oktatóanyag az Azure AD-beli felhasználói kiépítési szolgáltatásra épülő összekötőt ismerteti. A szolgáltatás funkcióival, működésével és a gyakori kérdésekkel kapcsolatos fontos részletekért lásd: [Felhasználók átadásának és megszüntetésének automatizálása a SaaS-alkalmazásokban az Azure Active Directoryval](../app-provisioning/user-provisioning.md).
 >
 > Ez az összekötő jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók általános Microsoft Azure használati feltételeivel kapcsolatos további információkért tekintse meg a [Microsoft Azure-előnézetek kiegészítő használati feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
@@ -99,7 +99,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 ### <a name="to-configure-automatic-user-provisioning-for-druva-in-azure-ad"></a>Az automatikus felhasználó-kiépítés konfigurálása a Druva az Azure AD-ben:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza a **vállalati alkalmazások**lehetőséget, majd válassza **a minden alkalmazás**lehetőséget.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza a **Vállalati alkalmazások** lehetőséget, majd a **Minden alkalmazás** elemet.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -107,13 +107,13 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Az Druva hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. Válassza ki a **kiépítés** lapot.
+3. Válassza a **Kiépítés** lapot.
 
-    ![Kiépítés lap](common/provisioning.png)
+    ![Képernyőkép a felügyeleti lehetőségek kezeléséről a kiépítési lehetőséggel.](common/provisioning.png)
 
-4. Állítsa a **kiépítési módot** **automatikus**értékre.
+4. Állítsa a **Kiépítési mód** mezőt **Automatikus** értékre.
 
-    ![Kiépítés lap](common/provisioning-automatic.png)
+    ![Képernyőkép a kiépítési mód legördülő listájáról az automatikus lehetőséggel.](common/provisioning-automatic.png)
 
 5.  A rendszergazdai hitelesítő adatok szakaszban adja `https://apis.druva.com/insync/scim` meg a **bérlői URL-címet**. Adja meg az **Auth token** értékét a **titkos jogkivonatban**. Kattintson a **kapcsolat tesztelése** lehetőségre, hogy az Azure ad képes legyen csatlakozni a Druva. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a Druva-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
@@ -121,7 +121,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 6. Az **értesítési e-mail** mezőbe írja be annak a személynek vagy csoportnak az e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és válassza az **e-mail-értesítés küldése hiba**esetén lehetőséget.
 
-    ![Értesítő E-mail](common/provisioning-notification-email.png)
+    ![Értesítés e-mailben](common/provisioning-notification-email.png)
 
 7. Kattintson a **Mentés** gombra.
 
@@ -134,19 +134,19 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
     ![Druva felhasználói attribútumai](media/druva-provisioning-tutorial/userattribute.png)
 
 
-10. A hatóköri szűrők konfigurálásához tekintse meg az alábbi utasításokat a [hatókör szűrője oktatóanyagban](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+10. Hatókörszűrők konfigurálásához tekintse meg a [hatókörszűrővel kapcsolatos oktatóanyagban](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) szereplő következő utasításokat.
 
 11. Az Azure AD-kiépítési szolgáltatás Druva való engedélyezéséhez módosítsa a **kiépítési állapotot** **a** **Beállítások** szakaszban.
 
-    ![Kiépítés állapota bekapcsolva](common/provisioning-toggle-on.png)
+    ![Kiépítési állapot bekapcsolva](common/provisioning-toggle-on.png)
 
 12. Adja meg a Druva kiépíteni kívánt felhasználókat és/vagy csoportokat a **Settings (beállítások** ) szakasz **hatókörében** a kívánt értékek kiválasztásával.
 
-    ![Kiépítési hatókör](common/provisioning-scope.png)
+    ![Átadási hatókör](common/provisioning-scope.png)
 
-13. Ha készen áll a létesítésre, kattintson a **Mentés**gombra.
+13. Amikor készen áll az átadásra, kattintson a **Mentés** gombra.
 
-    ![Kiépítési konfiguráció mentése](common/provisioning-configuration-save.png)
+    ![Átadási konfiguráció mentése](common/provisioning-configuration-save.png)
 
     Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghatározott összes felhasználó és/vagy csoport kezdeti szinkronizálását. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg az Azure AD kiépítési szolgáltatás fut. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenységre mutató hivatkozásokat, amelyek az Azure ad-kiépítési szolgáltatás által a Druva-on végrehajtott összes műveletet ismertetik.
 

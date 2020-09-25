@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 295c4bde64ad21a19d21fd48f2556114b26b202d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: fe5fe29a66483934ae47f70512a310a4ae6bb1b1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90947100"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91303240"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>Ismerkedés a Group chat Hero-mintával
 
@@ -30,7 +30,7 @@ Az Azure kommunikációs szolgáltatások **csoport csevegési hőse minta** azt
 Ebből a rövid útmutatóból megtudhatja, hogyan működik a minta a minta helyi gépen való futtatása előtt. Ezután üzembe helyezzük a mintát az Azure-ban a saját Azure kommunikációs szolgáltatások erőforrásaival.
 
 > [!IMPORTANT]
-> [A minta letöltése a GitHubról](https://github.com/Azure/Communication/tree/master/samples)
+> [A minta letöltése a GitHubról](https://github.com/Azure/Communication/tree/master/samples/Group%20Chat%20Hero%20Sample/Web/Chat)
 
 ## <a name="overview"></a>Áttekintés
 
@@ -72,29 +72,24 @@ Nyissa meg a Visual studiót a chat. csproj és futtassa hibakeresési módban, 
 
 A mintát helyileg is tesztelheti úgy, hogy több böngészős munkamenetet nyit meg a csevegés URL-címével, hogy szimulálja a többfelhasználós csevegést.
 
-### <a name="before-running-the-sample-for-the-first-time"></a>A minta első futtatása előtt
+## <a name="before-running-the-sample-for-the-first-time"></a>A minta első futtatása előtt
 
 1. Nyisson meg egy PowerShell-példányt, a Windows Terminalt, a parancssort vagy a megfelelőt, és navigáljon ahhoz a könyvtárhoz, amelyet a minta klónozására szeretne használni.
-2. `git clone`
-3. Lépjen a **csevegés/ClientApp** mappába, és futtassa a parancsot. `npm run setup`
-   1. Ha az 1. hibát látja, a kimenetben keresse meg az URL-címet, ahol engedélyezni kell az ügyfelet. (Az URL a következőképpen fog kinézni: `app.vssps.visualstudio.com/oauth2/authorize?clientid=...` ) Miután meglátogatta az URL-címet egy böngészőben, másolja a parancsot a böngészőablakból, és futtassa.
-   2. Futtassa `npm run setup` újra a parancsot az előző lépés befejezése után.
-4. Szerezze be a `Connection String` Azure Portal. A kapcsolati karakterláncokkal kapcsolatos további információkért lásd: [Azure kommunikációs erőforrások létrehozása](../quickstarts/create-communication-resource.md)
-5. A `Connection String` hozzáadását követően adja hozzá a kapcsolódási karakterláncot a csevegés mappájában található **appsettings.js** fájlhoz. Adja meg a kapcsolatok sztringjét a (z) változóban: `ResourceConnectionString` .
+2. `git clone https://github.com/Azure/Communication.git`
+3. Szerezze be a `Connection String` Azure Portal. A kapcsolati karakterláncokkal kapcsolatos további információkért lásd: [Azure kommunikációs erőforrások létrehozása](../quickstarts/create-communication-resource.md)
+4. A `Connection String` hozzáadását követően adja hozzá a kapcsolódási karakterláncot a csevegés mappájában található **appsettings.js** fájlhoz. Adja meg a kapcsolatok sztringjét a (z) változóban: `ResourceConnectionString` .
+5. Frissítse a ENVIRONMENT_URLt `./Chat/ClientApp/src/constants.tsx` az erőforrás helyeként. (például https://<RESOURCE_NAME>. communication.azure.com)
 
 ### <a name="local-run"></a>Helyi futtatás
 
-1. Ugrás a csevegési mappára
-2. A megoldás megnyitása a `Chat.csproj` Visual Studióban
-3. Futtassa a `Chat` projektet. *
-
-* A böngésző a következő localhost címen nyílik meg: 5000 (ahol a csomópont telepíti az ügyfélalkalmazás alkalmazást). Az alkalmazás nem támogatott az Internet Explorerben.
+1. Lépjen a csevegés mappára, és nyissa meg a `Chat.csproj` megoldást a Visual Studióban
+2. Futtassa a projektet. A böngésző a localhost: 5000 címen nyílik meg.
 
 #### <a name="troubleshooting"></a>Hibaelhárítás
 
 - A megoldás nem épül fel, hibákba ütközik a NPM telepítése/készítése során
 
-A C# megoldás tisztítása/újraépítése
+   A C# megoldás tisztítása/újraépítése
 
 ## <a name="publish-the-sample-to-azure"></a>A minta közzététele az Azure-ban
 
@@ -108,14 +103,17 @@ Ha törölni szeretné a kommunikációs szolgáltatások előfizetését, tör�
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információért tekintse át a következő cikkeket:
+>[!div class="nextstepaction"] 
+>[A minta letöltése a GitHubról](https://github.com/Azure/Communication/tree/master/samples/Group%20Chat%20Hero%20Sample/Web/Chat)
+
+További információkért tekintse át a következő cikkeket:
 
 - Tudnivalók a [csevegési fogalmakról](../concepts/chat/concepts.md)
 - Ismerkedjen meg a [csevegő ügyféloldali függvénytárával](../concepts/chat/sdk-features.md)
 
 ## <a name="additional-reading"></a>További információ
 
-- [Azure-kommunikáció – előzetes](https://github.com/Azure/communication-preview) verzió – további információ a csevegő web SDK-ról
+- [Azure Communication GitHub](https://github.com/Azure/communication) – további példákat és információkat talál a hivatalos GitHub-oldalon
 - [Redux](https://redux.js.org/) – ügyféloldali állapot kezelése
 - [FluentUI](https://developer.microsoft.com/fluentui#/) – Microsoft powered UI Library
 - [Reagálás](https://reactjs.org/) – függvénytár a felhasználói felületek létrehozásához

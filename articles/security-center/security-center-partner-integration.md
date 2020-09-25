@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2020
 ms.author: memildin
-ms.openlocfilehash: 40b96cac4c9ad638373fbb75f736dc7eded42b43
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 9a781fd48b30ccb32b0a733e5aa1ac054b96dc12
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90883938"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323655"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Biztonsági megoldások integrálása az Azure Security Centerbe
 Ez a dokumentum az Azure Security Centerhez már csatlakoztatott biztonsági megoldások kezelésében és újak hozzáadásában segít.
@@ -40,7 +40,7 @@ Ha többet szeretne megtudni a sebezhetőségi vizsgálat eszközeinek integrál
 A Security Center a következő biztonsági rések elemzését is biztosítja:
 
 * SQL-adatbázisok – lásd: [sebezhetőségi felmérési jelentések feltárása a sebezhetőségi felmérés irányítópultján](defender-for-sql-usage.md#explore-vulnerability-assessment-reports)
-* Azure Container Registry rendszerképek – lásd: [Azure Container Registry Integration with Security Center (előzetes verzió)](azure-container-registry-integration.md)
+* Azure Container Registry lemezképek – lásd: az [Azure Defender használata a tárolók beállításjegyzékében a lemezképek vizsgálatához a biztonsági rések](defender-for-container-registries-usage.md) felderítéséhez
 
 ## <a name="how-security-solutions-are-integrated"></a>A biztonsági megoldások integrálása
 A Security Centerből üzembe helyezett Azure biztonsági megoldások automatikusan csatlakoztatva vannak. Más biztonsági adatforrásokat is összekapcsolhat, beleértve a helyszínen vagy más felhőkben futó számítógépeket is.

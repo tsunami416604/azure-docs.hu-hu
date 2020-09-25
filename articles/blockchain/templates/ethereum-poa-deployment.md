@@ -4,13 +4,13 @@ description: Az Azure-beli többtagú konzorcium Ethereum üzembe helyezéséhez
 ms.date: 07/23/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 8ce343045f7ff124f5faf86b13210bfb5b3b5519
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.custom: devx-track-js
+ms.openlocfilehash: d1d3ad94957e791b2178b6c60d4c7debdec2b391
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90527156"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91283428"
 ---
 # <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>Ethereum proof-of-Authority Consortium megoldási sablon üzembe helyezése az Azure-ban
 
@@ -174,7 +174,7 @@ Meglévő log Analytics elsődleges kulcs (Csatlakozás meglévő Azure Monitor 
 
 Válassza az **OK** lehetőséget.
 
-### <a name="summary"></a>Összegzés
+### <a name="summary"></a>Összefoglalás
 
 Az összefoglalás segítségével tekintse át a megadott bemeneteket, és futtassa az alapszintű telepítés előtti ellenőrzést. A telepítése előtt letöltheti a sablont és a paramétereket.
 
@@ -331,9 +331,9 @@ Biztonsági okokból az SSH-port elérését alapértelmezés szerint egy háló
 
     ![SSH engedélyezése engedélyezése](./media/ethereum-poa-deployment/ssh-enable-allow.png)
 
-1. Válassza a **Mentés** lehetőséget. A módosítások alkalmazása eltarthat néhány percig.
+1. Kattintson a **Mentés** gombra. A módosítások alkalmazása eltarthat néhány percig.
 
-A megadott rendszergazdai felhasználónévvel és jelszóval/SSH-kulccsal távolról csatlakozhat az érvényesítő csomópontok virtuális gépei számára az SSH-n keresztül. Az első érvényesítő csomópont elérésére szolgáló SSH-parancs megjelenik a sablon központi telepítési kimenetében. Például:
+A megadott rendszergazdai felhasználónévvel és jelszóval/SSH-kulccsal távolról csatlakozhat az érvényesítő csomópontok virtuális gépei számára az SSH-n keresztül. Az első érvényesítő csomópont elérésére szolgáló SSH-parancs megjelenik a sablon központi telepítési kimenetében. Példa:
 
 ``` bash
 ssh -p 4000 poaadmin\@leader4vb.eastus.cloudapp.azure.com.

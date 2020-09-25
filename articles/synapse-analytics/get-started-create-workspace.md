@@ -9,14 +9,18 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 08/27/2020
-ms.openlocfilehash: 78ec233e618511c748ed9f51b97161eddc5e8308
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: f5851174ba223bd0ab48512b9e75449dcc927a04
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707526"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91300105"
 ---
-# <a name="create-a-synapse-workspace"></a>Synapse-munkaterület létrehozása
+# <a name="prerequisites"></a>Előfeltételek
+
+Az oktatóanyag lépéseinek elvégzéséhez hozzáféréssel kell rendelkeznie egy olyan erőforráscsoporthoz, amelyhez hozzá van rendelve a **tulajdonosi** szerepkör. Hozza létre a szinapszis munkaterületet ebben az erőforráscsoportban.
+
+## <a name="create-a-synapse-workspace"></a>Synapse-munkaterület létrehozása
 
 Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy szinapszis-munkaterületet, egy SQL-készletet és egy Apache Spark készletet. 
 
@@ -116,7 +120,7 @@ Konfigurálja a Storage-fiókhoz való hozzáférést a munkaterületről. Előf
 
 1. Kattintson a **Mentés** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Elemzés SQL-készlet használatával](get-started-analyze-sql-pool.md)

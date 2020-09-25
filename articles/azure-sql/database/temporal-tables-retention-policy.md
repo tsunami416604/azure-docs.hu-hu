@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: bonova
 ms.author: bonova
-ms.reviewer: carlrab
+ms.reviewer: sstein
 ms.date: 09/25/2018
-ms.openlocfilehash: 8c5ea1f7ef094944c3e5a20dd19bce6d8cce294d
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: d8a1c86443352c38a4ff578a271e45db2b5e3800
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985443"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91284176"
 ---
 # <a name="manage-historical-data-in-temporal-tables-with-retention-policy"></a>A múltbeli adatok kezelése adatmegőrzési házirenddel rendelkező időbeli táblákban
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -179,7 +179,7 @@ ALTER DATABASE <myDB>
 SET TEMPORAL_HISTORY_RETENTION  ON
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha szeretné megtudni, hogyan használhatók az időbeli táblázatok az alkalmazásokban, tekintse meg [első lépések az időbeli táblázatokkal](../temporal-tables.md).
 

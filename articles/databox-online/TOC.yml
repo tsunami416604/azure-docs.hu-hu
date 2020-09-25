@@ -7,6 +7,10 @@
       items:
         - name: Mi az a GPU-val rendelkező Azure Stack Edge Pro?
           href: azure-stack-edge-gpu-overview.md
+    - name: Rövid útmutatók
+      items:
+        - name: Bevezetés
+          href: azure-stack-edge-gpu-quickstart.md
     - name: Oktatóanyagok
       items:
         - name: 0 – Ellenőrzőlista lekérése

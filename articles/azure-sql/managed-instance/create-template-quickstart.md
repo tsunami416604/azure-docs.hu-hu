@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: quickstart
 author: stevestein
 ms.author: sstein
-ms.reviewer: carlrab
+ms.reviewer: ''
 ms.date: 06/22/2020
-ms.openlocfilehash: d405cfda3c72ce9c724a7d96925d3346428a3089
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: badeb850e8d0346347a994f053fb0f64fd01240a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88660614"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91283343"
 ---
 # <a name="quickstart-create-an-azure-sql-managed-instance-using-an-arm-template"></a>Gyors útmutató: felügyelt Azure SQL-példány létrehozása ARM-sablonnal
 
@@ -115,7 +115,7 @@ az group delete --name $resourceGroupName
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Azure-beli virtuális gép konfigurálása a felügyelt Azure SQL-példányhoz való kapcsolódáshoz](connect-vm-instance-configure.md)

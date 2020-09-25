@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: sstein, bonova, carlrab
+ms.reviewer: sstein, bonova
 ms.date: 07/17/2019
-ms.openlocfilehash: 2ba5794ba647c28cde3b54a1afdfbd0201b23e8e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9fdd61c5799724ab3ab098584f85ce52cdd6ccf4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84706154"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91283258"
 ---
 # <a name="configure-a-custom-dns-for-azure-sql-managed-instance"></a>Egyéni DNS konfigurálása az Azure SQL felügyelt példányaihoz
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -32,7 +32,7 @@ Mivel az SQL felügyelt példánya ugyanazt a DNS-t használja belső működés
 > [!IMPORTANT]
 > A virtuális hálózati DNS-kiszolgálók frissítése nem befolyásolja azonnal az SQL felügyelt példányát. A felügyelt SQL-példány DNS-konfigurációja a DHCP-bérlet lejárta vagy a platform verziófrissítése után frissül, attól függően, hogy melyik történik először. **A felhasználóknak javasoljuk, hogy az első felügyelt példány létrehozása előtt állítsa be a virtuális hálózat DNS-konfigurációját.**
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az áttekintést lásd: [Mi az az Azure SQL felügyelt példánya?](sql-managed-instance-paas-overview.md).
 - Az új felügyelt példányok létrehozásával kapcsolatos oktatóanyagért lásd: [felügyelt példány létrehozása](instance-create-quickstart.md).

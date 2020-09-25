@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sashan
-ms.reviewer: carlrab
+ms.reviewer: ''
 ms.date: 07/29/2020
-ms.openlocfilehash: 02ff222337e1b1c22df79724c232d4ca2b8b9f67
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: f6a3ccbcdb3d29434b196dbf75dc61c4177de271
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225733"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91284278"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>Adatbázis tranzakciós szempontból konzisztens másolatának másolása Azure SQL Database
 
@@ -26,7 +26,7 @@ Azure SQL Database számos módszert biztosít egy meglévő [adatbázis](single
 
 ## <a name="overview"></a>Áttekintés
 
-Az adatbázis-másolat a forrásadatbázis tranzakciós szempontból konzisztens pillanatképe, amely a másolási kérelem elindítása utáni időpontra mutat. Ugyanezt a kiszolgálót vagy egy másik kiszolgálót is kiválaszthat a másoláshoz. Dönthet úgy is, hogy megtartja a szolgáltatási szintet és a forrás-adatbázis számítási méretét, vagy más számítási méretet használ ugyanazon vagy egy másik szolgáltatási szinten belül. A másolás befejezése után teljesen működőképes, független adatbázis lesz. A másolt adatbázisban a bejelentkezések, a felhasználók és az engedélyek a forrás-adatbázistól függetlenül kezelhetők. A másolás a Geo-replikációs technológiával jön létre. A replika beültetésének befejezése után a rendszer automatikusan leállítja a Geo-replikálási hivatkozást. A Geo-replikáció használatának összes követelménye az adatbázis-másolási műveletre vonatkozik. Részletekért lásd: az [aktív geo-replikáció áttekintése](active-geo-replication-overview.md) .
+Az adatbázis-másolat a forrásadatbázis tranzakciós szempontból konzisztens pillanatképe, amely a másolási kérelem elindítása utáni időpontra mutat. Ugyanezt a kiszolgálót vagy egy másik kiszolgálót is kiválaszthat a másoláshoz. Dönthet úgy is, hogy megtartja a szolgáltatási szintet és a forrás-adatbázis számítási méretét, vagy más számítási méretet használ ugyanazon vagy egy másik szolgáltatási szinten belül. A másolás befejezése után teljesen működőképes, független adatbázis lesz. A másolt adatbázisban a bejelentkezések, a felhasználók és az engedélyek a forrás-adatbázistól függetlenül kezelhetők. A másolás a Geo-replikációs technológiával jön létre. Ha a replika index-összehangolása befejeződött, a georeplikációs hivatkozás automatikusan megszűnik. A georeplikáció használatára vonatkozó követelmények az adatbázis-másolási műveletnél is érvényesülnek. Részletekért lásd: az [aktív geo-replikáció áttekintése](active-geo-replication-overview.md) .
 
 ## <a name="logins-in-the-database-copy"></a>Bejelentkezések az adatbázis-másolatban
 
@@ -36,13 +36,13 @@ Ha egy adatbázist egy másik kiszolgálóra másol, akkor a célkiszolgálón a
 
 A célkiszolgálótől függetlenül a rendszer az összes adatbázis-felhasználót, az engedélyeiket és a biztonsági azonosítókat (SID-ket) az adatbázis-másolatba másolja. A [tárolt adatbázis-felhasználók](logins-create-manage.md) adathozzáféréshez való használata biztosítja, hogy a másolt adatbázis ugyanazzal a felhasználói hitelesítő adatokkal rendelkezik, így a másolás befejezése után azonnal elérheti ugyanazokkal a hitelesítő adatokkal.
 
-Ha kiszolgálói szintű bejelentkezést használ az adatok eléréséhez, és az adatbázist egy másik kiszolgálóra másolja, előfordulhat, hogy a bejelentkezési alapú hozzáférés nem működik. Ez azért fordulhat elő, mert a bejelentkezési adatok nem léteznek a célkiszolgálón, vagy mert a jelszavuk és a biztonsági azonosítóik (SID) eltérnek. Ha egy adatbázis másik kiszolgálóra való másolásakor szeretné megtudni a bejelentkezések kezelését, olvassa el a [Azure SQL Database biztonság kezelése](active-geo-replication-security-configure.md)a vész-helyreállítás után című témakört. Miután a másolási művelet egy másik kiszolgálóra sikeres, és a többi felhasználó újraleképezése előtt, csak az adatbázis-tulajdonoshoz tartozó bejelentkezési azonosító, vagy a kiszolgáló rendszergazdája jelentkezhet be a másolt adatbázisba. A bejelentkezések feloldásához és az adathozzáférés létrehozásához a másolási művelet befejezése után tekintse meg a [bejelentkezések feloldása](#resolve-logins)című témakört.
+Ha kiszolgálói szintű bejelentkezési adatokat használ az adatok eléréséhez, és az adatbázist egy másik kiszolgálóra másolja, előfordulhat, hogy a bejelentkezési alapú hozzáférés nem fog működni. Ennek az lehet az oka, hogy a bejelentkezési adatok nem léteznek a célkiszolgálón, vagy a jelszavuk és a biztonsági azonosítóik (SID) eltérnek. Ha egy adatbázis másik kiszolgálóra való másolásakor szeretné megtudni a bejelentkezések kezelését, olvassa el a [Azure SQL Database biztonság kezelése](active-geo-replication-security-configure.md)a vész-helyreállítás után című témakört. Miután a másolási művelet egy másik kiszolgálóra sikeres, és a többi felhasználó újraleképezése előtt, csak az adatbázis-tulajdonoshoz tartozó bejelentkezési azonosító, vagy a kiszolgáló rendszergazdája jelentkezhet be a másolt adatbázisba. A bejelentkezések feloldásához és az adathozzáférés létrehozásához a másolási művelet befejezése után tekintse meg a [bejelentkezések feloldása](#resolve-logins)című témakört.
 
 ## <a name="copy-using-the-azure-portal"></a>Másolás az Azure Portal használatával
 
 Ha a Azure Portal használatával szeretne másolni egy adatbázist, nyissa meg az adatbázis lapját, majd kattintson a **Másolás**gombra.
 
-   ![Adatbázis másolása](./media/database-copy/database-copy.png)
+   ![Adatbázis-másolat](./media/database-copy/database-copy.png)
 
 ## <a name="copy-using-powershell-or-the-azure-cli"></a>Másolás a PowerShell vagy az Azure CLI használatával
 
@@ -187,7 +187,7 @@ A következő hibák fordulhatnak elő az adatbázisok Azure SQL Databaseban tö
 | 40570 |16 |Az adatbázis másolása belső hiba miatt nem sikerült. Dobja el a céladatbázis-adatbázist, és próbálkozzon újra később. |
 | 40571 |16 |Az adatbázis másolása belső hiba miatt nem sikerült. Dobja el a céladatbázis-adatbázist, és próbálkozzon újra később. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a bejelentkezésekről: a [bejelentkezések kezelése](logins-create-manage.md) és [a Azure SQL Database biztonság kezelése a vész-helyreállítás után](active-geo-replication-security-configure.md).
 * Az adatbázisok exportálásával kapcsolatban tekintse meg [az adatbázis exportálása BACPAC](database-export.md)című témakört.

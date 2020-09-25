@@ -1,14 +1,14 @@
 ---
 title: Importálás adatforrásokból – QnA Maker
-description: A QnA Maker Tudásbázis a kérdés-válasz típusú (QnA) és az egyes QnA-párokhoz tartozó opcionális metaadatokból áll.
+description: Megtudhatja, hogyan importálhat kérdés-és válasz-párokat adatforrásokból – QnA Maker.
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: eaa19cb2abf84f31cda9d8894e91ec1540980b27
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: c66f81ccabd77e49ba1c492db25ad9e9edd34e93
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83993099"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334633"
 ---
 # <a name="importing-from-data-sources"></a>Importálás adatforrásokból
 
@@ -60,12 +60,12 @@ Ha nem biztos abban, hogy az QnA-párt képviselje a `.tsv` fájlban:
 * Ezt a [letölthető példát használhatja a githubról](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Structured-multi-turn-format.xlsx?raw=true)
 * Vagy hozza létre a párt a QnA Maker portálon, mentse, majd exportálja a tudásbázist egy példaként, hogy miként reprezentálja a párt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [A tudásbázisok fejlesztési életciklusa](./development-lifecycle-knowledge-base.md)
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 A válaszok formázásához használja a QnA Maker [Markdown-referenciát](../reference-markdown-format.md) .
 

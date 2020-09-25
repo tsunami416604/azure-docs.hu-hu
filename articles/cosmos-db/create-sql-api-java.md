@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 05/11/2020
+ms.date: 09/22/2020
 ms.author: anfeldma
 ms.custom: seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 474e8152341aeb5e05af1859e531810f2be31e7c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c8f93548443b043f26bdb3bd7d7d38e6efb39852
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322805"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334497"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>Gyors útmutató: Java-alkalmazás létrehozása Azure Cosmos DB SQL API-beli adatkezeléshez
 
@@ -23,6 +23,7 @@ ms.locfileid: "87322805"
 > * [.NET V3](create-sql-api-dotnet.md)
 > * [.NET V4](create-sql-api-dotnet-V4.md)
 > * [Java SDK v4](create-sql-api-java.md)
+> * [Spring-adatforrások v3](create-sql-api-spring-data.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
@@ -94,11 +95,11 @@ Ez a lépés nem kötelező. Ha meg szeretné ismerni, hogyan jönnek létre az 
     
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateSyncClient)]
 
-* `CosmosDatabase`létrehozása.
+* `CosmosDatabase` létrehozása.
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateDatabaseIfNotExists)]
 
-* `CosmosContainer`létrehozása.
+* `CosmosContainer` létrehozása.
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateContainerIfNotExists)]
 
@@ -124,11 +125,11 @@ Ez a lépés nem kötelező. Ha meg szeretné ismerni, hogyan jönnek létre az 
     
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=CreateAsyncClient)]
 
-* `CosmosAsyncDatabase`létrehozása.
+* `CosmosAsyncDatabase` létrehozása.
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateDatabaseIfNotExists)]
 
-* `CosmosAsyncContainer`létrehozása.
+* `CosmosAsyncContainer` létrehozása.
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateContainerIfNotExists)]
 
@@ -171,8 +172,8 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd indítsa 
 
     A terminálablakban értesítést kap a FamilyDB adatbázis létrejöttéről. 
     
-4. Az alkalmazás létrehoz egy nevű adatbázist`AzureSampleFamilyDB`
-5. Az alkalmazás létrehoz egy nevű tárolót`FamilyContainer`
+4. Az alkalmazás létrehoz egy nevű adatbázist `AzureSampleFamilyDB`
+5. Az alkalmazás létrehoz egy nevű tárolót `FamilyContainer`
 6. Az alkalmazás elvégzi a pont olvasását az objektumazonosítók és a partíciós kulcs érték használatával (amely a példában szereplő lastName). 
 7. Az alkalmazás lekérdezi az elemeket a vezetéknevet tartalmazó összes család lekéréséhez ("Andersen", "Wakefield", "Johnson")
 
@@ -186,7 +187,7 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd indítsa 
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre egy Azure Cosmos DB SQL API-fiókot, hogyan hozhat létre egy dokumentum-adatbázist és-tárolót a Adatkezelő használatával, és hogyan futtathat egy Java-alkalmazást a programozott módon történő futtatásához. Mostantól további adatait is importálhatja a Azure Cosmos DB-fiókjába. 
 

@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/15/2020
-ms.openlocfilehash: 5b7fe9cf6c751bfb96dff8aa911172ae91a17653
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5edea4b3d3834d8f99159546c0279394ec3986f8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84886623"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324348"
 ---
 # <a name="schema-drift-in-mapping-data-flow"></a>Séma-eltolódás a leképezési adatfolyamban
 
@@ -60,7 +60,7 @@ Ha engedélyezve van a séma-eltolódás, győződjön meg arról, hogy a lekép
 Ha az adatfolyamnak vannak sodródott oszlopai, az átalakításokban a következő módszerekkel érheti el őket:
 
 * A `byPosition` és a `byName` kifejezések használatával explicit módon hivatkozhat egy oszlopra név vagy pozíció száma alapján.
-* Oszlop mintázatának hozzáadása egy származtatott oszlophoz vagy összesítő átalakításhoz a név, a stream, a pozíció vagy a típus bármely kombinációjának megfelelően
+* Oszlop mintázatának hozzáadása egy származtatott oszlophoz vagy összesítő átalakításhoz a név, a stream, a pozíció, a forrás vagy a típus tetszőleges kombinációjának megfelelően
 * Szabályon alapuló leképezés hozzáadása egy Select vagy mosogató átalakításban, hogy az oszlopok aliasai megegyezzenek a mintázattal
 
 Az oszlopok mintáinak megvalósításával kapcsolatos további információkért lásd: [az adatforgalom leképezése az oszlopok mintái között](concepts-data-flow-column-pattern.md).
@@ -75,5 +75,5 @@ A generált származtatott oszlop transzformációjában minden egyes lebegő os
 
 ![Térkép felúszik](media/data-flow/mapdrifted2.png "Térkép felúszik")
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az [adatáramlás kifejezésének nyelvén](data-flow-expression-functions.md)további létesítményeket talál az oszlopok és a séma drift esetében, beleértve az "byName" és a "ByPosition" típust is.

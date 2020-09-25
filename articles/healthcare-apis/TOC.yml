@@ -80,7 +80,7 @@
     - name: Adatok exportálása
       expanded: false
       items:
-        - name: Azonosításra nem alkalmas exportálás
+        - name: Adatok exportálása
           href: export-data.md
     - name: Identitásobjektum-azonosítók keresése
       href: find-identity-object-ids.md

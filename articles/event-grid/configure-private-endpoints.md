@@ -4,12 +4,12 @@ description: Ez a cikk ismerteti, hogyan konfigurálhat privát végpontokat Azu
 ms.topic: how-to
 ms.date: 07/07/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: fa67ba8dbe8106c0311bafec07a1510ca0c25c3f
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: e2e164d55f61f7a08e689aea106eac678b553c82
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88508838"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324144"
 ---
 # <a name="configure-private-endpoints-for-azure-event-grid-topics-or-domains"></a>Privát végpontok konfigurálása Azure Event Grid témakörökhöz vagy tartományokhoz
 A [privát végpontok](../private-link/private-endpoint-overview.md) lehetővé teszik, hogy közvetlenül a virtuális hálózatról küldje el az eseményeket egy [privát kapcsolaton](../private-link/private-link-overview.md) keresztül, anélkül, hogy a nyilvános interneten kellene haladnia. A privát végpont egy IP-címet használ a témakörhöz vagy tartományhoz tartozó VNet. További elméleti információkat a [hálózati biztonság](network-security.md)című témakörben talál.
@@ -42,7 +42,7 @@ Ebből a szakaszból megtudhatja, hogyan hozhat létre saját végpontot egy té
         3. Győződjön meg arról, hogy a **célként megadott alerőforrás** a (z) **témakörre** vagy **tartományra** van beállítva (a kiválasztott erőforrástípus alapján).    
         4. Válassza a **Tovább: konfigurációs >** gombot az oldal alján. 
 
-            ![Magánhálózati végpont – Erőforrás lap](./media/configure-private-endpoints/resource-page.png)
+            ![Képernyőkép, amely a "privát végpont-erőforrás létrehozása" lapot mutatja.](./media/configure-private-endpoints/resource-page.png)
     2. Ha a **Kapcsolódás erőforráshoz erőforrás-azonosító vagy alias használatával**lehetőséget választja, kövesse az alábbi lépéseket:
         1. Adja meg az erőforrás AZONOSÍTÓját. Például: `/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>`.  
         2. Az **erőforrás**mezőbe írja be a következőt: **témakör** vagy **tartomány**. 
@@ -68,7 +68,7 @@ Privát végpont létrehozásakor jóvá kell hagyni a kapcsolódást. Ha az er�
 
 Négy kiépítési állapot létezik:
 
-| Szolgáltatási művelet | A szolgáltatás fogyasztói magánhálózati végpontjának állapota | Leírás |
+| Szolgáltatási művelet | A szolgáltatás fogyasztói magánhálózati végpontjának állapota | Description |
 |--|--|--|
 | Nincsenek | Függőben | A kapcsolat manuálisan lett létrehozva, és jóváhagyásra vár a Private link erőforrás-tulajdonostól. |
 | Jóváhagyás | Approved | A kapcsolódás automatikusan vagy manuálisan lett jóváhagyva, és készen áll a használatra. |
@@ -108,7 +108,7 @@ Elutasítja a függő állapotú vagy jóváhagyott állapotú privát végponto
 
 1. Válassza ki azt a **privát végpontot** , amelyet el szeretne utasítani, majd válassza az **elutasítás** lehetőséget az eszköztáron.
 
-    ![Privát végpont – elutasítás](./media/configure-private-endpoints/reject-button.png)
+    ![Képernyőkép, amely a "hálózati – privát végponti kapcsolatok (előzetes verzió)" elemet jeleníti meg az "elutasítás" beállítással.](./media/configure-private-endpoints/reject-button.png)
 1. A **kapcsolatok elutasítása** párbeszédpanelen írjon be egy megjegyzést (nem kötelező), majd válassza az **Igen**lehetőséget. 
 
     ![Privát végpont – elutasítás](./media/configure-private-endpoints/reject.png)
@@ -480,6 +480,6 @@ Invoke-RestMethod -Method 'Get'
 
 Az API-n keresztüli elutasítása után is jóváhagyhatja a kapcsolatokat. Ha Azure Portal használ, nem hagyhat jóvá egy elutasított végpontot. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Az IP-tűzfalbeállítások konfigurálásával kapcsolatos további tudnivalókért lásd: [IP-tűzfal konfigurálása Azure Event Grid témakörökhöz vagy tartományokhoz](configure-firewall.md).
 * A hálózati kapcsolattal kapcsolatos problémák elhárításáról lásd: [hálózati kapcsolattal kapcsolatos problémák elhárítása](troubleshoot-network-connectivity.md)

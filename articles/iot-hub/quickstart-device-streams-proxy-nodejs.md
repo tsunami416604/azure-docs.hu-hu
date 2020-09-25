@@ -6,15 +6,15 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.custom: mvc, devx-track-javascript
+ms.custom: mvc, devx-track-js
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 910ea6d333da08e69b6c5e6d6fe86421bda743ee
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: c54a112a85ad930dde524ba4293a3ad0b700a22f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422589"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91303063"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-nodejs-proxy-application-preview"></a>Gyors útmutató: SSH és RDP engedélyezése IoT Hub-adatfolyamon egy Node.js alkalmazásproxy alkalmazásával (előzetes verzió)
 
@@ -43,7 +43,7 @@ A Microsoft Azure IoT Hub jelenleg [előzetes verziójú szolgáltatásként](ht
 > [!IMPORTANT]
 > Az adatfolyamok előnézete jelenleg csak a következő régiókban létrehozott IoT hubok esetében támogatott:
 >
-> * USA középső régiója
+> * Az USA középső régiója
 > * USA középső – EUAP
 > * Észak-Európa
 > * Délkelet-Ázsia
@@ -60,7 +60,7 @@ az extension add --name azure-iot
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
-## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
+## <a name="create-an-iot-hub"></a>IoT-központ létrehozása
 
 Ha már elvégezte a [Rövid útmutató: Telemetria küldése egy eszközről IoT Hubra](quickstart-send-telemetry-node.md) című előző útmutatót, kihagyhatja ezt a lépést.
 

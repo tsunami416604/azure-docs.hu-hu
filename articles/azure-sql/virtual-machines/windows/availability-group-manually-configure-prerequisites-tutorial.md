@@ -8,18 +8,18 @@ editor: monicar
 tags: azure-service-management
 ms.assetid: c492db4c-3faa-4645-849f-5a1a663be55a
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 8e62d2d1955b5b323ad31cc5d45106210e3e22c6
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 278e5feb327c1376b7644050f414f680334d5c50
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88651182"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263232"
 ---
 # <a name="prerequisites-for-creating-always-on-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Always On rendelkezésre állási csoportok létrehozásának előfeltételei az Azure-beli SQL Serveron Virtual Machines
 
@@ -42,7 +42,7 @@ Ez az oktatóanyag feltételezi, hogy rendelkezik a SQL Server always on rendelk
 
 Rendelkeznie kell Azure-fiókkal. [Megnyithat egy ingyenes Azure-fiókot](https://signup.azure.com/signup?offer=ms-azr-0044p&appId=102&ref=azureplat-generic) , vagy [aktiválhatja a Visual Studio előfizetői előnyeit](https://docs.microsoft.com/visualstudio/subscriptions/subscriber-benefits).
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Ezzel a beállítással **+** új objektumot hozhat létre a portálon.
@@ -167,7 +167,7 @@ Miután létrehozta a hálózatot, az alhálózatokat és a rendelkezésre áll�
 
 A tartományvezérlők létrehozásához és konfigurálásához térjen vissza az **SQL-ha-RG** erőforráscsoporthoz.
 
-1. Válassza a **Hozzáadás** elemet. 
+1. Válassza a **Hozzáadás** lehetőséget. 
 2. Írja be a **Windows Server 2016 datacentert**.
 3. Válassza a **Windows Server 2016 Datacenter**lehetőséget. A **Windows Server 2016 Datacenter**rendszerben ellenőrizze, hogy a telepítési modell **Resource Manager**-e, majd válassza a **Létrehozás**lehetőséget. 
 
@@ -554,6 +554,6 @@ Hozzon létre egy fiókot a rendszerfiókhoz, és adja meg a megfelelő engedél
    GO 
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [SQL Server always on rendelkezésre állási csoport létrehozása az Azure-ban Virtual Machines](availability-group-manually-configure-tutorial.md)

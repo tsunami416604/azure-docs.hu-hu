@@ -3,12 +3,12 @@ title: Tudásbázis szerkesztése – QnA Maker
 description: A QnA Maker lehetővé teszi, hogy egy könnyen használható szerkesztési élményt biztosítson a Tudásbázis tartalmának kezeléséhez.
 ms.topic: conceptual
 ms.date: 07/16/2020
-ms.openlocfilehash: 52aaaf630806ed6c71101860a1286f88a23ec3fa
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 34eec343defa4614881e23543f2099040b866997
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054023"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324620"
 ---
 # <a name="edit-qna-pairs-in-your-knowledge-base"></a>QnA-párok szerkesztése a Tudásbázisban
 
@@ -72,7 +72,7 @@ A válasz szövegének gazdag szöveges szerkesztése lehetővé teszi, hogy egy
 
 
     > [!div class="mx-imgBorder"]
-    > ![A Rich Text Editor használatával adjon hozzá egy nyilvánosan elérhető rendszerképet és annak helyettesítő szövegét.](../media/qnamaker-how-to-edit-kb/add-image-url-alternate-text.png)
+    > ![A képernyőképen a nyilvánosan elérhető rendszerkép URL-címével és a beírt képhez tartozó helyettesítő szöveggel jelenik meg a helyi szerkesztő.](../media/qnamaker-how-to-edit-kb/add-image-url-alternate-text.png)
 
 1. Adja meg az URL-címre mutató hivatkozást a válaszban szereplő szöveg kiválasztásával, majd válassza a hivatkozás ikont az eszköztáron, vagy válassza a hivatkozás ikont az eszköztáron, majd írja be az új szöveget és az URL-címet.
 
@@ -128,7 +128,7 @@ A válaszok [gazdag szövegű szerkesztése](#add-an-editorial-qna-set) lehetőv
 
 A [Markdown](../reference-markdown-format.md) jobb eszköz, ha automatikusan létre kell hoznia egy tartalmat a CI/CD-folyamat vagy a [Batch-tesztelés](../Quickstarts/batch-testing.md)részeként importálandó tudásbázisok létrehozásához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Együttműködés a tudásbázison](./collaborate-knowledge-base.md)

@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: sstein, bonova, carlrab
+ms.reviewer: sstein, bonova
 ms.date: 03/17/2020
-ms.openlocfilehash: 059828336288eeadc0567fed060db07e323f885c
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.openlocfilehash: 81d0731f6ea77325b3f33f91bf8d5d1386dab2fb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88761865"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91283377"
 ---
 # <a name="connectivity-architecture-for-azure-sql-managed-instance"></a>Felügyelt Azure SQL-példány kapcsolati architektúrája
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -43,7 +43,7 @@ A végfelhasználók vagy az alkalmazások által indított egyes műveletekhez 
 
 Az SQL felügyelt példánya olyan Azure-szolgáltatásoktól függ, mint például az Azure Storage for Backups, az Azure Event Hubs for telemetria, a Azure Active Directory (Azure AD) hitelesítéshez, a Azure Key Vault for transzparens adattitkosítás (TDE), valamint néhány olyan Azure platform-szolgáltatás, amely biztonsági és támogatási funkciókat biztosít. Az SQL felügyelt példánya kapcsolatot létesít ezekkel a szolgáltatásokkal.
 
-Minden kommunikáció titkosítva van, és a tanúsítványokkal van aláírva. A kommunikáló felek megbízhatóságának ellenőrzéséhez az SQL felügyelt példánya folyamatosan ellenőrzi ezeket a tanúsítványokat a visszavont tanúsítványok listája alapján. Ha visszavonják a tanúsítványokat, az SQL felügyelt példánya lezárja a kapcsolatokat az adatvédelemhez.
+Minden kommunikáció titkosított és tanúsítványokkal van aláírva. A kommunikáló felek megbízhatóságának ellenőrzéséhez az SQL felügyelt példánya folyamatosan ellenőrzi ezeket a tanúsítványokat a visszavont tanúsítványok listája alapján. Ha visszavonják a tanúsítványokat, az SQL felügyelt példánya lezárja a kapcsolatokat az adatvédelemhez.
 
 ## <a name="high-level-connectivity-architecture"></a>Magas szintű kapcsolati architektúra
 
@@ -111,7 +111,7 @@ Telepítse az SQL felügyelt példányt egy dedikált alhálózatban a virtuáli
 
 ### <a name="mandatory-inbound-security-rules-with-service-aided-subnet-configuration"></a>Kötelező bejövő biztonsági szabályok a szolgáltatással segített alhálózat konfigurációjával
 
-| Név       |Port                        |Protokoll|Forrás           |Cél|Műveletek|
+| Név       |Port                        |Protokoll|Forrás           |Cél|Művelet|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |felügyelet  |9000, 9003, 1438, 1440, 1452|TCP     |SqlManagement    |MI ALHÁLÓZAT  |Engedélyezés |
 |            |9000, 9003                  |TCP     |CorpnetSaw       |MI ALHÁLÓZAT  |Engedélyezés |
@@ -121,7 +121,7 @@ Telepítse az SQL felügyelt példányt egy dedikált alhálózatban a virtuáli
 
 ### <a name="mandatory-outbound-security-rules-with-service-aided-subnet-configuration"></a>Kötelező kimenő biztonsági szabályok a szolgáltatással segített alhálózat konfigurációjával
 
-| Név       |Port          |Protokoll|Forrás           |Cél|Műveletek|
+| Név       |Port          |Protokoll|Forrás           |Cél|Művelet|
 |------------|--------------|--------|-----------------|-----------|------|
 |felügyelet  |443, 12000    |TCP     |MI ALHÁLÓZAT        |AzureCloud |Engedélyezés |
 |mi_subnet   |Bármelyik           |Bármelyik     |MI ALHÁLÓZAT        |MI ALHÁLÓZAT  |Engedélyezés |
@@ -331,15 +331,15 @@ Telepítse az SQL felügyelt példányt egy dedikált alhálózatban a virtuáli
 
 ### <a name="mandatory-inbound-security-rules"></a>Kötelező bejövő biztonsági szabályok
 
-| Név       |Port                        |Protokoll|Forrás           |Cél|Műveletek|
+| Név       |Port                        |Protokoll|Forrás           |Cél|Művelet|
 |------------|----------------------------|--------|-----------------|-----------|------|
-|felügyelet  |9000, 9003, 1438, 1440, 1452|TCP     |Bármely              |MI ALHÁLÓZAT  |Engedélyezés |
+|felügyelet  |9000, 9003, 1438, 1440, 1452|TCP     |Bármelyik              |MI ALHÁLÓZAT  |Engedélyezés |
 |mi_subnet   |Bármelyik                         |Bármelyik     |MI ALHÁLÓZAT        |MI ALHÁLÓZAT  |Engedélyezés |
 |health_probe|Bármelyik                         |Bármelyik     |AzureLoadBalancer|MI ALHÁLÓZAT  |Engedélyezés |
 
 ### <a name="mandatory-outbound-security-rules"></a>Kötelező kimenő biztonsági szabályok
 
-| Név       |Port          |Protokoll|Forrás           |Cél|Műveletek|
+| Név       |Port          |Protokoll|Forrás           |Cél|Művelet|
 |------------|--------------|--------|-----------------|-----------|------|
 |felügyelet  |443, 12000    |TCP     |MI ALHÁLÓZAT        |AzureCloud |Engedélyezés |
 |mi_subnet   |Bármelyik           |Bármelyik     |MI ALHÁLÓZAT        |MI ALHÁLÓZAT  |Engedélyezés |
@@ -528,7 +528,7 @@ Telepítse az SQL felügyelt példányt egy dedikált alhálózatban a virtuáli
 |Mi-204-79-180-24-nexthop-Internet|204.79.180.0/24|Internet|
 ||||
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az áttekintést lásd: [Mi az az Azure SQL felügyelt példánya?](sql-managed-instance-paas-overview.md).
 - Ismerje meg, hogyan [állíthat be egy új Azure-beli virtuális hálózatot](virtual-network-subnet-create-arm-template.md) vagy egy [meglévő Azure-beli virtuális hálózatot](vnet-existing-add-subnet.md) , ahol telepítheti az SQL felügyelt példányát.

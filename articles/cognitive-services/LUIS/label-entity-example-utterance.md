@@ -1,14 +1,16 @@
 ---
 title: Címke-entitás – példa Kimondás
 description: Megtudhatja, hogyan címkézheti a gépi tanulási entitásokat alentitásokkal a LUIS-portálon található, a szándékok részleteinek kimondása mellett.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: f576f42f46930d81212ff754a14ee30c75b79624
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: ffbaa2e40d5924ba61e548398e63295cf7dba2b0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85610489"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91303726"
 ---
 # <a name="label-machine-learning-entity-in-an-example-utterance"></a>Címke gépi tanulásra szolgáló entitása egy példa Kimondás esetén
 
@@ -53,7 +55,7 @@ Az entitás-paletta a korábbi címkézési felület alternatívájaként nyújt
 3. A példában a Kimondás elemre _festi_ az entitást a kurzorral.
 
     > [!div class="mx-imgBorder"]
-    > ![A gépi tanulási entitás entitás-palettája](media/label-utterances/example-1-label-machine-learned-entity-palette-label-action.png)
+    > ![A képernyőképen a kurzorral festett entitás látható.](media/label-utterances/example-1-label-machine-learned-entity-palette-label-action.png)
 
 ## <a name="adding-entity-as-a-feature-from-the-entity-palette"></a>Entitás hozzáadása szolgáltatásként az entitás palettáján
 
@@ -134,6 +136,6 @@ Az entitás-előrejelzési hibák azt jelzik, hogy az előre jelzett entitás ne
 > [!div class="mx-imgBorder"]
 > ![A gépi tanulási entitás entitás-palettája](media/label-utterances/example-utterance-indicates-prediction-error.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Használja az [irányítópultot](luis-how-to-use-dashboard.md) , és [tekintse át a végpont hosszúságú kimondott szöveg](luis-how-to-review-endpoint-utterances.md) az alkalmazás előrejelzési minőségének javítása érdekében.

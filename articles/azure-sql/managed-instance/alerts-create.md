@@ -9,19 +9,19 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, carlrab
+ms.reviewer: jrasnik, sstein
 ms.date: 05/04/2020
-ms.openlocfilehash: ae139dd65242be9456f3498c494e1a7c5a29402f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 48dfc456616fa4876b7053483f7377eda21aabde
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84695694"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91283819"
 ---
 # <a name="create-alerts-for-azure-sql-managed-instance-using-the-azure-portal"></a>Riasztások létrehozása az Azure SQL felügyelt példányaihoz a Azure Portal használatával
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Ebből a cikkből megtudhatja, hogyan állíthatja be a riasztásokat az Azure SQL felügyelt példány-adatbázisában lévő adatbázisokhoz a Azure Portal használatával. A riasztások e-mailt küldhetnek, meghívhatnak egy webhookot, végrehajtanak egy Azure-függvényt, runbook, külső ITSM kompatibilis jegyrendszer használatát, meghívhatják a telefont, vagy szöveges üzenetet küldhetnek, ha valamilyen metrika, például a példány tárolási mérete vagy a CPU-használat, egy előre meghatározott küszöbértéket ér el. Ez a cikk a riasztási időszakok beállításának ajánlott eljárásait is tartalmazza.
+Ebből a cikkből megtudhatja, hogyan állíthatja be a riasztásokat az Azure SQL felügyelt példány-adatbázisában lévő adatbázisokhoz a Azure Portal használatával. A riasztások küldhetnek e-mailt, meghívhatnak webhookot, végrehajthatnak egy Azure-függvényt, -runbookot, meghívhatnak külső, ITSM-kompatibilis jegykezelési rendszert, felhívhatják telefonon vagy küldhetnek SMS-t, ha egy adott metrika (például a példány tárterületének mérete vagy a processzorhasználat) elér egy előre meghatározott küszöbértéket. Ez a cikk a riasztási időszakok beállításának ajánlott eljárásait is tartalmazza.
 
 
 ## <a name="overview"></a>Áttekintés
@@ -50,13 +50,13 @@ A riasztási szabályokkal kapcsolatos információkat [a Azure Portal, a PowerS
 
 A következő felügyelt példány metrikái elérhetők riasztási konfigurációhoz:
 
-| Metric | Leírás | Mértékegység \ lehetséges értékek |
+| Metrika | Leírás | Mértékegység \ lehetséges értékek |
 | :--------- | --------------------- | ----------- |
 | Átlagos CPU-százalék | A CPU-kihasználtság átlagos százaléka a kiválasztott időszakban. | 0-100 (százalék) |
 | I/o-bájtok olvasása | Az i/o-bájtok beolvasása a kiválasztott időszakban. | Bájt |
 | I/o-bájtok írása | A kiválasztott időszakban írt IO-bájtok. | Bájt |
 | IO-kérelmek száma | Az i/o-kérések száma a kiválasztott időszakban. | Numerikus |
-| Tárterület fenntartva | Jelenlegi max. a felügyelt példány számára fenntartott tárterület. Változások az erőforrás-skálázási művelettel. | MB (megabájt) |
+| Tárterület fenntartva | A felügyelt példány számára fenntartott jelenlegi maximális tárterület. Változások az erőforrás-skálázási művelettel. | MB (megabájt) |
 | Felhasznált tárterület | A kiválasztott időszakban használt tárterület. Az adatbázisok és a példányok tárterület-felhasználásának változásai. | MB (megabájt) |
 | Virtuális mag száma | a felügyelt példány virtuális mag kiépítve. Változások az erőforrás-skálázási művelettel. | 4-80 (virtuális mag) |
 
@@ -140,7 +140,7 @@ Meglévő riasztások megtekintése, felfüggesztése, aktiválása, módosítá
 
    Megjelenik a meglévő riasztások listája. Válasszon ki egy egyéni meglévő riasztási szabályt a kezeléséhez. A meglévő aktív szabályok módosíthatók és beállíthatók az Ön igényei szerint. Az aktív szabályok felfüggesztés nélkül is felmenthetők. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tudnivalók Azure Monitor riasztási rendszerről: [a riasztások áttekintése Microsoft Azure](../../azure-monitor/platform/alerts-overview.md)
 * További információ a metrikus riasztásokról: [a metrikai riasztások működésének ismertetése Azure monitor](../../azure-monitor/platform/alerts-metric-overview.md)

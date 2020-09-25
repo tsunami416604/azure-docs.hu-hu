@@ -1,15 +1,17 @@
 ---
 title: Személyre szabott erőforrás létrehozása
 description: Ebből a cikkből megtudhatja, hogyan hozhat létre személyre szabott erőforrást a Azure Portal minden visszajelzési hurokhoz.
+ms.service: cognitive-services
+ms.subservice: personalizer
 ms.topic: how-to
 ms.date: 03/26/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7965fb1eaa3efbe1f47db4eedd88e4444b0e610b
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 0c75d917f1abe72af2f4aa56b0f67dbb7bcd24a1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985831"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91303556"
 ---
 # <a name="create-a-personalizer-resource"></a>Személyre szabott erőforrás létrehozása
 

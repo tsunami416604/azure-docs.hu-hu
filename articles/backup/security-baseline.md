@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 9e960914f86f2f9fc63a62d62fe1f923d21b9d31
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: a05c7a6f9c3752507705e1c4242becfe1d65ffd6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89394618"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334837"
 ---
 # <a name="azure-security-baseline-for-backup"></a>Azure biztonsági alapkonfiguráció biztonsági mentéshez
 
@@ -252,9 +252,9 @@ Egy Log Analytics munkaterületet is felvehet az Azure Sentinel szolgáltatásba
 
 Támogató dokumentáció:
 
-- [Címtárbeli szerepkör beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+- [Címtárbeli szerepkör beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrole)
 
-- [Címtárbeli szerepkör tagjainak beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [Címtárbeli szerepkör tagjainak beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
 **Azure Security Center figyelés**: igen
 
@@ -760,9 +760,9 @@ Az Azure Resource Graph segítségével lekérdezheti vagy felderítheti az elő
 
 **Útmutató**: ha egyéni Azure Policy-definíciókat használ, az Azure DevOps vagy az Azure Repos segítségével biztonságosan tárolhatja és kezelheti a kódot.
 
-- [Kód tárolása az Azure DevOps](/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [Kód tárolása az Azure DevOps](/azure/devops/repos/git/gitworkflow)
 
-- [Az Azure Repos dokumentációja](/azure/devops/repos/index?view=azure-devops)
+- [Az Azure Repos dokumentációja](/azure/devops/repos/index)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -914,7 +914,7 @@ A Storage-fiókokba feltöltött kártevők észleléséhez használja a Azure S
 
 **Útmutató**: a biztonsági másolatok által felügyelt kulcsok visszaállításának tesztelése.
 
-- [Key Vault-kulcsok visszaállítása az Azure-ban](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+- [Key Vault-kulcsok visszaállítása az Azure-ban](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey)
 
 **Azure Security Center figyelés**: nem alkalmazható
 

@@ -1,7 +1,7 @@
 ---
 title: 'Gyors útmutató: képelemzések beolvasása a REST API és a Ruby-Bing Visual Search használatával'
 titleSuffix: Azure Cognitive Services
-description: Megtudhatja, hogyan tölthet fel képet a Bing Visual Search API, és hogyan szerezhet be információkat.
+description: Megtudhatja, hogyan tölthet fel egy rendszerképet a Bing Visual Search API és a Ruby használatával, majd elemzéseket kaphat a rendszerképről.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
-ms.openlocfilehash: 20c5ef930af8cc279f63432e9e3a14a0767ca592
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: ba5d07017c0244c370a8dc6945a7958beb0f224f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83870371"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324569"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-ruby"></a>Gyors útmutató: képelemzések beolvasása a Bing Visual Search REST API és a Ruby használatával
 
@@ -283,7 +283,7 @@ JSON Response:
 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Mi a Bing Visual Search API?](../overview.md) 

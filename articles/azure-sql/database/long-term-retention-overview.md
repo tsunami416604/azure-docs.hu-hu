@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mathoma, carlrab
+ms.reviewer: mathoma, sstein
 ms.date: 05/18/2019
-ms.openlocfilehash: 4b2324c480ef81ef241f4d639c22c2ed4dd1545b
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: c4c19850cda158afdb888188d3f99b7d93195aa5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87808847"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334854"
 ---
 # <a name="long-term-retention---azure-sql-database-and-azure-sql-managed-instance"></a>Hosszú távú adatmegőrzés – Azure SQL Database és az Azure SQL felügyelt példánya
 
@@ -79,7 +79,7 @@ Ha aktív geo-replikációs vagy feladatátvételi csoportokat használ üzleti 
 > [!NOTE]
 > Amikor az eredeti elsődleges adatbázis helyreállítja a feladatátvételt okozó kimaradást, az új másodlagos lesz. Ezért a biztonsági másolat létrehozása nem folytatódik, és a meglévő LTR-házirend mindaddig nem lép érvénybe, amíg a rendszer újra nem válik. 
 
-## <a name="sql-managed-instance-support"></a>SQL felügyelt példányok támogatása
+## <a name="sql-managed-instance-support"></a>Az SQL Managed Instance támogatása
 
 A biztonsági másolatok hosszú távú megőrzése és az Azure SQL felügyelt példányának használata a következő korlátozásokkal jár:
 

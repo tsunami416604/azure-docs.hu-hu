@@ -1,5 +1,5 @@
 ---
-title: 'TPM-eszköz regisztrálása az Azure Device kiépítési szolgáltatásba C használatával #'
+title: 'Gyors útmutató – TPM-eszköz regisztrálása az Azure Device kiépítési szolgáltatásba C használatával #'
 description: Gyors útmutató – TPM-eszköz regisztrálása az Azure IoT Hub Device Provisioning Serviceba (DPS) a C# Service SDK használatával. Ez a rövid útmutató egyéni regisztrációkat használ.
 author: wesmc7777
 ms.author: wesmc
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 6176ff91029817e6891f0ee1e043cc3a827c2d6c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 7d6a8fe0d5d0524331c97221db777774d5db6b10
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88999053"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323826"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-c-service-sdk"></a>Gyors útmutató: TPM-eszköz regisztrálása a IoT Hub Device Provisioning Service a C# Service SDK-val
 

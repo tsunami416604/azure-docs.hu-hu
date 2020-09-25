@@ -1,5 +1,5 @@
 ---
-title: Szimulált X. 509 eszköz kiépítése az Azure IoT Hub Javával
+title: Gyors útmutató – szimulált X. 509 eszköz kiépítése az Azure-IoT Hub Javával
 description: Azure rövid útmutató – szimulált X. 509 eszköz létrehozása és kiépítése a IoT Hub Device Provisioning Service Javához készült Java eszközoldali SDK-val (DPS). Ez a rövid útmutató egyéni regisztrációkat használ.
 author: wesmc7777
 ms.author: wesmc
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: e36f026257563555013fa432a897f8458de22ab0
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 0198a32800f364f921a2b9f64048166c48a14f7e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90532477"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323889"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-x509-device-using-java-device-sdk-for-iot-hub-device-provisioning-service"></a>Rövid útmutató: szimulált X. 509 eszköz létrehozása és kiépítése a IoT Hub Device Provisioning Service Javához készült Java eszközoldali SDK-val
 

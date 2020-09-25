@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 09/10/2020
+ms.date: 09/24/2020
 ms.author: alkohli
-ms.openlocfilehash: 6f1199b29e3bdaa2200aeb7fe4f76c4c9d0d8e19
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 9d3aafad457f5c72a8c45f4f98f8f03eb8d978d7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935968"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324263"
 ---
 # <a name="azure-stack-edge-pro-with-gpu-general-availability-ga-release-notes"></a>A Azure Stack Edge Pro és a GPU általánosan elérhető (GA) kibocsátási megjegyzései
 
@@ -21,9 +21,7 @@ A következő kibocsátási megjegyzések azonosítják az Azure Stack Edge Pro-
 
 A kibocsátási megjegyzések folyamatosan frissülnek, és olyan kritikus fontosságú problémák észlelhetők, amelyek megkerülő megoldást igényelnek. A Azure Stack Edge Pro-eszköz üzembe helyezése előtt alaposan tekintse át a kibocsátási megjegyzésekben található információkat.
 
-Ez a cikk az **Azure stack Edge Pro 2009** szoftver kiadására vonatkozik. 
-
-<!--- This software release corresponds to software version number **2.1.1328.1904**-->
+Ez a cikk az **Azure stack Edge Pro 2009** kiadására vonatkozik, amely a szoftver verziószámának **2.1.1358.2075**van leképezve.
 
 ## <a name="whats-new"></a>Újdonságok
 

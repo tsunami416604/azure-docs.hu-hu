@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 06/08/2020
 ms.author: ccompy
-ms.openlocfilehash: 926a1867a77b543057fa1de170cdb64ccfefe7cb
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 9259e3d3e41a5ba4986fbef48e745210f80e6093
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86218334"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91255246"
 ---
 A regionális VNet-integráció használata lehetővé teszi, hogy az alkalmazás hozzáférjen:
 
@@ -56,7 +56,7 @@ Az egyes csomag-példányok esetében egy-egy-egy-egy címnek Ha öt példányra
 
 Ha azt szeretné, hogy egy másik csomagban lévő alkalmazásai olyan VNet érjenek el, amely már kapcsolódik egy másik csomagban lévő alkalmazásokhoz, válasszon egy másik alhálózatot, mint amelyet a meglévő VNet-integráció használ.
 
-A szolgáltatás teljes mértékben támogatott Windows-és Linux-alapú webalkalmazásokhoz is. Az összes viselkedés ugyanaz, mint a Windows-alkalmazások és a Linux-alkalmazások között.
+A szolgáltatás teljes mértékben támogatott Windows-és Linux-alkalmazásokhoz, beleértve az [Egyéni tárolókat](../articles/app-service/quickstart-custom-container.md)is. Az összes viselkedés ugyanaz, mint a Windows-alkalmazások és a Linux-alkalmazások között.
 
 ### <a name="service-endpoints"></a>Szolgáltatásvégpontok
 
@@ -65,7 +65,7 @@ A regionális VNet-integráció lehetővé teszi a szolgáltatási végpontok ha
 1. a regionális VNet-integráció konfigurálása a webalkalmazással
 1. Lépjen a célhely szolgáltatáshoz, és konfigurálja a szolgáltatási végpontokat az integrációhoz használt alhálózattal.
 
-### <a name="network-security-groups"></a>Hálózati biztonsági csoportok
+### <a name="network-security-groups"></a>Network security groups (Hálózati biztonsági csoportok)
 
 Hálózati biztonsági csoportok használatával blokkolhatja a bejövő és a kimenő forgalmat egy VNet erőforrásaihoz. A regionális VNet-integrációt használó alkalmazások [hálózati biztonsági csoporttal][VNETnsg] letilthatják a VNet vagy az interneten lévő erőforrásokra irányuló kimenő forgalmat. A nyilvános címekre irányuló forgalom letiltásához az alkalmazás beállítását WEBSITE_VNET_ROUTE_ALL 1-re kell beállítani. Egy NSG bejövő szabályai nem érvényesek az alkalmazásra, mert a VNet-integráció csak az alkalmazásból érkező kimenő forgalmat érinti.
 

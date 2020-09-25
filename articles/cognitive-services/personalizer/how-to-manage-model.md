@@ -1,14 +1,16 @@
 ---
 title: Modell-és tanulási beállítások kezelése – személyre szabás
 description: A gép által megtanult modell-és tanulási beállítások a saját verziókövetés rendszerében exportálhatók a biztonsági mentéshez.
+ms.service: cognitive-services
+ms.subservice: personalizer
 ms.topic: how-to
 ms.date: 02/20/2020
-ms.openlocfilehash: 59af5a64ea5752ec03fb44df91440e8d395e3782
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: f82adad5273f1c5559cbeb1924f59e57c863f6b6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344356"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91303454"
 ---
 # <a name="how-to-manage-model-and-learning-settings"></a>Modell-és tanulási beállítások kezelése
 
@@ -27,7 +29,7 @@ A **modell-és tanulási beállítások**erőforrás-kezelés szakaszában tekin
 
     ![A Azure Portalban törölje a jelet az adatok személyre szabása erőforrásból elemre.](./media/settings/clear-data-from-personalizer-resource.png)
 
-    |Érték|Cél|
+    |Érték|Rendeltetés|
     |--|--|
     |Naplózott személyre szabás és jutalmazási érték.|A naplózási adatai kapcsolat nélküli értékelésekben használatosak. Törölje az adatait, ha alaphelyzetbe állítja az erőforrást.|
     |A személyre szabott modell alaphelyzetbe állítása.|Ez a modell minden átképzésen megváltozik. A betanítás gyakorisága a konfiguráció lapon a **feltöltési modell gyakorisága** **beállításban** van megadva. |

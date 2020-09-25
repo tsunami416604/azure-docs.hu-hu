@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: jrasnick, carlrab
+ms.reviewer: jrasnick, sstein
 ms.date: 03/10/2020
-ms.openlocfilehash: b33d8db9d43b151cb0405ea24e0bea87e21cbdc9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a7cd807de7e723d48faaa0944ea55b1887c9721
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84345342"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91284108"
 ---
 # <a name="detectable-types-of-query-performance-bottlenecks-in-azure-sql-database"></a>A lekérdezési teljesítmény szűk keresztmetszetének észlelhető típusai Azure SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -58,7 +58,7 @@ Az SQL-lekérdezés-optimalizáló által generált inoptimalizált terv a lass�
 
 Az alábbi szakaszban megtudhatja, Hogyan oldhatók fel a lekérdezések az optimálisnál rosszabb lekérdezés-végrehajtási terv használatával.
 
-### <a name="queries-that-have-parameter-sensitive-plan-psp-problems"></a><a name="ParamSniffing"></a>A paraméterekre érzékeny terv (PSP) problémákkal rendelkező lekérdezések
+### <a name="queries-that-have-parameter-sensitive-plan-psp-problems"></a><a name="ParamSniffing"></a> A paraméterekre érzékeny terv (PSP) problémákkal rendelkező lekérdezések
 
 Ha a lekérdezés-optimalizáló olyan lekérdezés-végrehajtási tervet hoz létre, amely csak az adott paraméterérték (vagy az értékek halmaza) számára érhető el, és a gyorsítótárazott csomag nem optimális, akkor az egymást követő végrehajtásokban használt paraméterek értékei esetében nem optimális. Azok a csomagok, amelyek nem optimálisak, a lekérdezési teljesítménnyel kapcsolatos problémákat okozhatnak, és csökkenthetik a munkaterhelés teljes átviteli sebességét.
 
@@ -220,6 +220,6 @@ A lekérdezési tárolót nyomon követő DMV és a várakozási statisztikának
 > - [TigerToolbox várakozások és zárak](https://github.com/Microsoft/tigertoolbox/tree/master/Waits-and-Latches)
 > - [TigerToolbox usp_whatsup](https://github.com/Microsoft/tigertoolbox/tree/master/usp_WhatsUp)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [SQL Database monitorozás és hangolás áttekintése](database/monitor-tune-overview.md)

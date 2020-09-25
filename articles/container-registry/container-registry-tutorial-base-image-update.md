@@ -3,13 +3,13 @@ title: Oktatóanyag – rendszerkép-Build kiépítése az alapszintű rendszerk
 description: Ebből az oktatóanyagból megtudhatja, hogyan konfigurálhat egy Azure Container Registry feladatot úgy, hogy automatikusan aktiválja a tároló rendszerképét a felhőben, amikor egy alaprendszerkép frissül ugyanabban a beállításjegyzékben.
 ms.topic: tutorial
 ms.date: 01/22/2020
-ms.custom: seodec18, mvc, devx-track-javascript
-ms.openlocfilehash: 0efac34d05dfaf8877efec2e66f1f95a19ca95be
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: seodec18, mvc, devx-track-js
+ms.openlocfilehash: 0b87f4ca138e0da76efd184e87f12bec32e3960e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407999"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91262246"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>Oktatóanyag: a tároló rendszerképének automatizálása, amikor egy alaprendszerkép frissül egy Azure Container registryben 
 
@@ -133,7 +133,7 @@ docker run -d -p 8080:80 --name myapp --rm $ACR_NAME.azurecr.io/helloworld:<run-
 
 Lépjen a `http://localhost:8080` címre a böngészőben, és a weboldalon a Node.js verziószámának kell megjelennie az alábbihoz hasonlóan. Egy későbbi lépésben majd újabbra frissíti a verziót úgy, hogy egy „a” tagot ad hozzá a verziósztringhez.
 
-![A böngészőben megjelenített mintaalkalmazás képernyőképe][base-update-01]
+![A képernyőképen a böngészőben megjelenített minta alkalmazás látható.][base-update-01]
 
 A tároló leállításához és eltávolításához futtassa a következő parancsot:
 

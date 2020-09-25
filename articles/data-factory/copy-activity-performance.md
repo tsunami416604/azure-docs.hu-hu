@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/11/2020
-ms.openlocfilehash: aedb3df69821d1436b03b2eb1f12873b624d426e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/15/2020
+ms.openlocfilehash: a6e89883ec0e1e493bad9572876af86f4a0d3853
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81414172"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324437"
 ---
 # <a name="copy-activity-performance-and-scalability-guide"></a>Másolási tevékenység teljesítményére és méretezhetőségére vonatkozó útmutató
 
@@ -27,24 +27,46 @@ ms.locfileid: "81414172"
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Akár nagy léptékű adatáttelepítést szeretne végezni a EDW-ből az Azure-ba, vagy a különböző forrásokból az Azure-ba történő adatgyűjtést a big data Analitika számára, kritikus fontosságú az optimális teljesítmény és méretezhetőség.  A Azure Data Factory egy nagy teljesítményű, rugalmas és költséghatékony mechanizmust biztosít az adatok méretekben történő betöltéséhez, így kiválóan alkalmas az olyan adatmérnökök számára, akik magas teljesítményű és skálázható adatfeldolgozási folyamatokat kívánnak kialakítani.
+Előfordulhat, hogy nagy léptékű adatáttelepítést szeretne végrehajtani a (EDW) adat-Lake vagy Enterprise adattárházból az Azure-ba. Más időpontokban, amikor nagy mennyiségű adatot szeretne bevenni különböző forrásokból az Azure-ba, big data elemzésekhez. Az optimális teljesítmény és méretezhetőség érdekében minden esetben kritikus fontosságú.
+
+Azure Data Factory (ADF) az adatgyűjtési mechanizmust biztosít. Az ADF a következő előnyökkel jár:
+
+* Nagy mennyiségű adattal kezeli
+* Nagy teljesítményű
+* Költséghatékony
+
+Ezek az előnyök kiválóan alkalmasak az olyan adatmérnökök számára, akik nagy teljesítményű, méretezhető adatfeldolgozási folyamatokat kívánnak készíteni.
 
 A cikk elolvasása után a következő kérdésekre tud válaszolni:
 
-- Milyen szintű teljesítményt és méretezhetőséget érhet el az ADF másolási tevékenység az adatáttelepítési és adatfeldolgozási forgatókönyvek esetében?
-
-- Milyen lépéseket kell tennie az ADF másolási tevékenység teljesítményének finomhangolásához?
-- Milyen ADF-optimalizálási gombokat használhatok egy adott másolási tevékenység teljesítményének optimalizálására?
-- Az ADF-en kívül más tényezők is figyelembe veszik a másolási teljesítmény optimalizálásakor?
+* Milyen szintű teljesítményt és méretezhetőséget érhet el az ADF másolási tevékenység az adatáttelepítési és adatfeldolgozási forgatókönyvek esetében?
+* Milyen lépéseket kell tennie az ADF másolási tevékenység teljesítményének finomhangolásához?
+* Milyen ADF-optimalizálási gombokat használhatok egy adott másolási tevékenység teljesítményének optimalizálására?
+* Az ADF-en kívül más tényezők is figyelembe veszik a másolási teljesítmény optimalizálásakor?
 
 > [!NOTE]
 > Ha nem ismeri a másolási tevékenységet általánosságban, tekintse meg a [másolási tevékenység áttekintését](copy-activity-overview.md) a cikk elolvasása előtt.
 
 ## <a name="copy-performance-and-scalability-achievable-using-adf"></a>A teljesítmény és a méretezhetőség elérhetővé másolása ADF használatával
 
-Az ADF olyan kiszolgáló nélküli architektúrát kínál, amely különböző szinteken teszi lehetővé a párhuzamosságot, ami lehetővé teszi a fejlesztők számára, hogy teljes mértékben kihasználják a hálózati sávszélességet, valamint a tárolási IOPS és sávszélességet, hogy maximalizálják az adatátviteli sebességet a környezet számára.  Ez azt jelenti, hogy az elérni kívánt átviteli sebesség a forrás és a cél közötti minimális átviteli sebesség mérésével, a célhely adattárával és a hálózati sávszélességgel mérhető.  Az alábbi táblázat kiszámítja a másolás időtartamát az adatméret és a környezet sávszélesség-korlátja alapján. 
+Az ADF olyan kiszolgáló nélküli architektúrát kínál, amely különböző szinteken teszi lehetővé a párhuzamosságot.
 
-| Adatméret/ <br/> sávszélesség | 50 Mbps    | 100 Mbps  | 500 Mbps  | 1 Gbps   | 5 Gbps   | 10 Gbps  | 50 GB/s   |
+Ez az architektúra lehetővé teszi olyan folyamatok fejlesztését, amelyek maximalizálják az adatátviteli sebességet a környezet számára. Ezek a folyamatok teljes mértékben a következő erőforrásokat használják:
+
+* Hálózati sávszélesség
+* Tárolási bemeneti/kimeneti műveletek másodpercenként (IOPS) és sávszélesség
+
+Ez a teljes kihasználtság azt jelenti, hogy a következő erőforrásokhoz elérhető minimális átviteli sebesség mérésével megbecsülheti a teljes átviteli sebességet:
+
+* Forrás adattár
+* Céladattár
+* A forrás és a cél adattárolói közötti hálózati sávszélesség
+
+Az alábbi táblázat kiszámítja a másolás időtartamát. Az időtartam az adatméret és a környezet sávszélesség-korlátja alapján történik.
+
+&nbsp;
+
+| Adatméret/ <br/> sávszélesség | 50 Mbit/s    | 100 Mbps  | 500 Mbps  | 1 Gbps   | 5 Gbps   | 10 Gbps  | 50 GB/s   |
 | --------------------------- | ---------- | --------- | --------- | -------- | -------- | -------- | --------- |
 | **1 GB**                    | 2,7 perc    | 1,4 perc   | 0,3 perc   | 0,1 perc  | 0,03 perc | 0,01 perc | 0,0 perc   |
 | **10 GB**                   | 27,3 perc   | 13,7 perc  | 2,7 perc   | 1,3 perc  | 0,3 perc  | 0,1 perc  | 0,03 perc  |
@@ -54,39 +76,63 @@ Az ADF olyan kiszolgáló nélküli architektúrát kínál, amely különböző
 | **100 TB**                  | 194,2 nap | 97,1 nap | 19,4 nap | 9,7 nap | 1,9 nap | 1 nap    | 0,2 nap  |
 | **1 PB**                    | 64,7 mo    | 32,4 Mo   | 6,5 Mo    | 3,2 Mo   | 0,6 Mo   | 0,3 Mo   | 0,06 Mo   |
 | **10 PB**                   | 647,3 Mo   | 323,6 Mo  | 64,7 mo   | 31,6 Mo  | 6,5 Mo   | 3,2 Mo   | 0,6 Mo    |
+| | |  | | |  | | |
 
 Az ADF-másolás különböző szinteken méretezhető:
 
 ![Az ADF másolási méretezése](media/copy-activity-performance/adf-copy-scalability.png)
 
-- Az ADF-vezérlési folyamat egyszerre több másolási tevékenységet is elindíthat, például az [egyes hurkok esetében](control-flow-for-each-activity.md).
-- Egy másolási tevékenység kihasználhatja a skálázható számítási erőforrások előnyeit: Azure Integration Runtime használata esetén [akár 256 DIUs-t](#data-integration-units) is megadhat az egyes másolási tevékenységekhez kiszolgáló nélküli módon. saját üzemeltetésű Integration Runtime használatakor manuálisan is méretezheti a gépet, vagy akár több gépre is kibővíthető ([legfeljebb 4 csomópont](create-self-hosted-integration-runtime.md#high-availability-and-scalability)), és egyetlen másolási tevékenység fogja particionálni az összes csomóponton beállított fájlt.
-- Egy másolási tevékenység [párhuzamosan](#parallel-copy)több szál használatával olvas be és ír az adattárba.
+* Az ADF-vezérlési folyamat egyszerre több másolási tevékenységet is elindíthat, például az [egyes hurkok esetében](control-flow-for-each-activity.md).
+
+* Egyetlen másolási tevékenység kihasználhatja a méretezhető számítási erőforrások előnyeit.
+  * Az Azure Integration Runtime (IR) használata esetén [akár 256 adatintegrációs egységet (DIUs)](#data-integration-units) is megadhat az egyes másolási tevékenységekhez, kiszolgáló nélküli módon.
+  * Saját üzemeltetésű integrációs modul használata esetén a következő módszerek egyikét hajthatja végre:
+    * A gép manuális skálázása.
+    * Felskálázás több gépre ([legfeljebb 4 csomópontra](create-self-hosted-integration-runtime.md#high-availability-and-scalability)), és egyetlen másolási tevékenység particionálja az összes csomóponton beállított fájlját.
+
+* Egy másolási tevékenység [párhuzamosan](#parallel-copy)több szál használatával olvas be és ír az adattárba.
 
 ## <a name="performance-tuning-steps"></a>Teljesítmény-finomhangolási lépések
 
-Hajtsa végre ezeket a lépéseket a Azure Data Factory szolgáltatás teljesítményének finomhangolásához a másolási tevékenységgel.
+A következő lépésekkel hangolhatja be Azure Data Factory szolgáltatás teljesítményét a másolási tevékenységgel:
 
-1. **Válasszon ki egy tesztelési adatkészletet, és hozzon létre egy alaptervet.** A fejlesztési fázisban tesztelje a folyamatot a másolási tevékenységgel egy reprezentatív adatminta alapján. A kiválasztott adatkészlet a jellemző adatmintázatokat (a mappa szerkezete, a fájl mintája, az adatsémát stb.) jelöli, és elég nagy a másolási teljesítmény kiértékeléséhez, például a másolási tevékenység befejezéséhez 10 percet vagy azt meghaladó időt vesz igénybe. A [másolási tevékenység figyelését](copy-activity-monitoring.md)követő végrehajtási adatok és teljesítmény-jellemzők gyűjtése.
+1. **Válasszon ki egy tesztelési adatkészletet, és hozzon létre egy alaptervet.**
+
+    A fejlesztés során tesztelje a folyamatot a másolási tevékenységgel egy reprezentatív adatminta alapján. A kiválasztott adatkészlet a jellemző adatmintákat szemlélteti a következő attribútumok mentén:
+
+    * Mappa szerkezete
+    * Fájl mintája
+    * Adatséma
+
+    A másolási teljesítmény kiértékeléséhez az adathalmaznak elég nagynak kell lennie. A másolási tevékenység befejezéséhez a megfelelő méret legalább 10 percet vesz igénybe. A [másolási tevékenység figyelését](copy-activity-monitoring.md)követő végrehajtási adatok és teljesítmény-jellemzők gyűjtése.
 
 2. **Egy másolási tevékenység teljesítményének maximalizálása**:
 
-   Első lépésként azt javasoljuk, hogy először egyetlen másolási tevékenységgel maximalizálja a teljesítményt.
+    Javasoljuk, hogy először egyetlen másolási tevékenység használatával maximalizálja a teljesítményt.
 
-   - **Ha a másolási tevékenységet egy Azure Integration Runtime hajtja végre,** akkor az alapértelmezett értékeket kell megkezdenie az [adatintegrációs egységekhez (DIU)](#data-integration-units) és a [párhuzamos másolási](#parallel-copy) beállításokhoz. 
+    * **Ha a másolási tevékenységet egy _Azure_ Integration Runtime hajtja végre:**
 
-   - **Ha a másolási tevékenységet egy saját üzemeltetésű Integration Runtime hajtja végre:** javasoljuk, hogy az integrációs modul üzemeltetéséhez az adattárat üzemeltető kiszolgálótól külön dedikált gépet használjon. A [párhuzamos másolási](#parallel-copy) beállítás alapértelmezett értékeivel kezdődik, és egyetlen csomópontot használ a saját üzemeltetésű IR-hez.  
+        Az [adatintegrációs egységek (DIU)](#data-integration-units) és a [párhuzamos másolási](#parallel-copy) beállítások alapértelmezett értékeinek megkezdése.
 
-   Végezzen teljesítményteszt-futtatást, és jegyezze fel az elért teljesítményt, valamint a ténylegesen használt értékeket, például a DIUs és a párhuzamos másolást. Tekintse át a [másolási tevékenység figyelését](copy-activity-monitoring.md) a futtatási eredmények és a teljesítmény-beállítások gyűjtésével kapcsolatban, és Ismerje meg, hogyan oldhatja fel a [másolási tevékenység teljesítményét](copy-activity-performance-troubleshooting.md) a szűk keresztmetszetek azonosítására és megoldására. 
+    * **Ha a másolási tevékenységet egy _saját_ üzemeltetésű integrációs modulon hajtja végre:**
 
-   A hibaelhárítási és finomhangolási útmutatást követve további teljesítménytesztek futtatását is elvégezheti. Ha az Egypéldányos másolási tevékenység nem tud jobb teljesítményt elérni, érdemes lehet maximalizálni az összesített átviteli sebességet úgy, hogy több, a 3. lépésre hivatkozó példányt futtat.
+        Javasoljuk, hogy használjon dedikált gépet az IR üzemeltetéséhez. A gépnek különállónak kell lennie az adattárt futtató kiszolgálótól. A [párhuzamos másolási](#parallel-copy) beállítás alapértelmezett értékeivel kezdődik, és egyetlen csomópontot használ a saját üzemeltetésű IR-hez.
 
+    Teljesítményteszt futtatásának elvégzése. Jegyezze fel az elért teljesítményt. Adja meg a ténylegesen használt értékeket, például a DIUs és a párhuzamos másolást. Tekintse át a [másolási tevékenység figyelését](copy-activity-monitoring.md) a futtatási eredmények és a használt teljesítmény-beállítások gyűjtésének módjáról. Útmutató a [másolási tevékenység teljesítményének hibaelhárításához](copy-activity-performance-troubleshooting.md) a szűk keresztmetszetek azonosítása és megoldása érdekében.
+
+    A hibaelhárítási és finomhangolási útmutatást követve további teljesítménytesztek futtatását is elvégezheti. Ha az Egypéldányos másolási tevékenység nem tud jobb teljesítményt elérni, gondolja át, hogy az összesített átviteli sebesség maximalizálható-e több példány párhuzamos futtatásával. Ezt a lehetőséget a következő számozott felsorolásban tárgyaljuk.
 
 3. **Az összesített átviteli sebesség maximalizálása több példány párhuzamos futtatásával:**
 
-   Most, hogy teljes mértékben maximalizálta egy másolási tevékenység teljesítményét, ha még nem érte el a környezet-hálózat, a forrás adattár és a célhely adattárat, több másolási tevékenységet is futtathat párhuzamosan, az ADF vezérlési folyamatának összeállításával, például [az egyes hurokokhoz](control-flow-for-each-activity.md). Tekintse át a [fájlok több tárolóból való másolását](solution-template-copy-files-multiple-containers.md), az [Amazon S3-ból történő adatáttelepítést ADLS Gen2](solution-template-migration-s3-azure.md), vagy egy általános példaként egy vezérlőelem-tábla megoldási sablonjaival történő [tömeges másolást](solution-template-bulk-copy-with-control-table.md) .
+    Mostantól maximalizálta egyetlen másolási tevékenység teljesítményét. Ha még nem érte el a környezet felső korlátját, több másolási tevékenységet is futtathat párhuzamosan. Párhuzamosan is futtathatja az ADF-vezérlési folyamat szerkezetét. Az egyik ilyen szerkezet az [egyes hurkok esetében](control-flow-for-each-activity.md). További információkért tekintse meg a következő cikkeket a megoldási sablonokról:
 
-5. **Bontsa ki a konfigurációt a teljes adatkészletre.** Ha elégedett a végrehajtás eredményeivel és teljesítményével, kiterjesztheti a definíciót és a folyamatot a teljes adatkészlet lefedéséhez.
+    * [Fájlok másolása több tárolóból](solution-template-copy-files-multiple-containers.md)
+    * [Adatok migrálása az Amazon S3-ból ADLS Gen2ba](solution-template-migration-s3-azure.md)
+    * [Tömeges másolás vezérlőelem-táblázattal](solution-template-bulk-copy-with-control-table.md)
+
+4. **Bontsa ki a konfigurációt a teljes adatkészletre.**
+
+    Ha elégedett a végrehajtás eredményeivel és teljesítményével, kiterjesztheti a definíciót és a folyamatot a teljes adatkészlet lefedéséhez.
 
 ## <a name="troubleshoot-copy-activity-performance"></a>A másolási tevékenység teljesítményével kapcsolatos hibák
 
@@ -96,32 +142,42 @@ Kövesse a [teljesítmény-hangolás lépéseit](#performance-tuning-steps) a te
 
 Azure Data Factory a következő teljesítmény-optimalizálási funkciókat biztosítja:
 
-- [Adatintegrációs egységek](#data-integration-units)
-- [Saját üzemeltetésű Integration Runtime skálázhatósága](#self-hosted-integration-runtime-scalability)
-- [Párhuzamos másolás](#parallel-copy)
-- [Előkészített másolás](#staged-copy)
+* [Adatintegrációs egységek](#data-integration-units)
+* [Saját üzemeltetésű Integration Runtime skálázhatósága](#self-hosted-integration-runtime-scalability)
+* [Párhuzamos másolás](#parallel-copy)
+* [Előkészített másolás](#staged-copy)
 
 ### <a name="data-integration-units"></a>Adatintegrációs egységek
 
-Az adatintegrációs egység olyan mérték, amely a Azure Data Factory egyetlen egységének a CPU-, memória-és hálózati erőforrás-lefoglalási kombinációját jelöli. Az adatintegrációs egység csak az [Azure Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime)szolgáltatásra vonatkozik, a saját üzemeltetésű [integrációs](concepts-integration-runtime.md#self-hosted-integration-runtime)modul nem. [További információk](copy-activity-performance-features.md#data-integration-units).
+Az adatintegrációs egységek (DIU-EK) egy mérték, amely a Azure Data Factory egyetlen egységének erejét jelöli. A Power a CPU, a memória és a hálózati erőforrások kiosztásának kombinációja. A DIU csak az [Azure Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime)verzióra vonatkozik. A DIU nem vonatkozik a [saját üzemeltetésű integrációs](concepts-integration-runtime.md#self-hosted-integration-runtime)modulra. [További információ itt](copy-activity-performance-features.md#data-integration-units).
 
 ### <a name="self-hosted-integration-runtime-scalability"></a>Saját üzemeltetésű Integration Runtime skálázhatósága
 
-A párhuzamos munkaterhelések és a nagyobb teljesítmény elérése érdekében a saját üzemeltetésű Integration Runtime vertikális felskálázásával vagy felskálázásával végezhető el. [További információk](copy-activity-performance-features.md#self-hosted-integration-runtime-scalability).
+Előfordulhat, hogy növekvő párhuzamos számítási feladatot szeretne üzemeltetni. Vagy lehet, hogy nagyobb teljesítményt szeretne elérni a munkaterhelési szinten. A következő megközelítések segítségével növelheti a feldolgozás skálázását:
+
+* A saját üzemeltetésű integrációs modul vertikális _felskálázásával növelheti a_ csomóponton futtatható [egyidejű feladatok](create-self-hosted-integration-runtime.md#scale-up) számát.  
+A vertikális felskálázás csak akkor működik, ha a csomópont processzora és memóriája kevesebb, mint teljes mértékben kihasználva.
+* _A saját_ üzemeltetésű integrációs modult további csomópontok (gépek) hozzáadásával is kibővítheti.
+
+További információkért lásd:
+
+* [Másolási tevékenység teljesítmény-optimalizálási funkciói: saját üzemeltetésű integrációs modul skálázhatósága](copy-activity-performance-features.md#self-hosted-integration-runtime-scalability)
+* [Saját üzemeltetésű integrációs modul létrehozása és konfigurálása: méretezési szempontok](create-self-hosted-integration-runtime.md#scale-considerations)
 
 ### <a name="parallel-copy"></a>Párhuzamos másolás
 
-A párhuzamos másolással beállíthatja azt a párhuzamosságot, amelyet a másolási tevékenység használni kíván. Ezt a tulajdonságot úgy tekintheti meg, mint a másolási tevékenységben a forrásból beolvasott szálak maximális száma, vagy párhuzamosan írható a fogadó adattárba. [További információk](copy-activity-performance-features.md#parallel-copy).
+Megadhatja a `parallelCopies` tulajdonságot, hogy jelezze a másolási tevékenység által használni kívánt párhuzamosságot. Ezt a tulajdonságot úgy gondolja, mint a másolási tevékenységben lévő szálak maximális száma. A szálak párhuzamosan működnek. A szálak vagy a forrásból beolvasott adatok, vagy a fogadó adattárakba való írás. [További információ](copy-activity-performance-features.md#parallel-copy).
 
 ### <a name="staged-copy"></a>Előkészített másolás
 
-Amikor Adatmásolást végez egy forrás adattárból egy fogadó adattárba, a blob Storage-t átmeneti átmeneti tárolóként használhatja. [További információk](copy-activity-performance-features.md#staged-copy).
+Az adatmásolási művelet _közvetlenül_ a fogadó adattárba küldheti az adattárolási műveletet. Azt is megteheti, hogy a blob Storage-t _átmeneti átmeneti_ tárolóként használja. [További információ](copy-activity-performance-features.md#staged-copy).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
+
 Lásd a másolási tevékenység egyéb cikkeit:
 
-- [Másolási tevékenység – áttekintés](copy-activity-overview.md)
-- [A másolási tevékenység teljesítményével kapcsolatos hibák](copy-activity-performance-troubleshooting.md)
-- [Másolási tevékenység teljesítményének optimalizálási funkciói](copy-activity-performance-features.md)
-- [Az adatok áttelepíthetők a Azure Data Factory használatával az Azure-ba vagy az adattárházból](data-migration-guidance-overview.md)
-- [Adatok migrálása az Amazon S3-ból az Azure Storage-ba](data-migration-guidance-s3-azure-storage.md)
+* [Másolási tevékenység áttekintése](copy-activity-overview.md)
+* [A másolási tevékenység teljesítményével kapcsolatos hibák](copy-activity-performance-troubleshooting.md)
+* [Másolási tevékenység teljesítményének optimalizálási funkciói](copy-activity-performance-features.md)
+* [Az adatok áttelepíthetők a Azure Data Factory használatával az Azure-ba vagy az adattárházból](data-migration-guidance-overview.md)
+* [Adatok migrálása az Amazon S3-ból az Azure Storage-ba](data-migration-guidance-s3-azure-storage.md)

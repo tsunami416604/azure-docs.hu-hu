@@ -10,12 +10,12 @@ ms.date: 07/28/2020
 ms.topic: include
 ms.custom: include file
 ms.author: dademath
-ms.openlocfilehash: b4e085a4c81b44f721ddc8385d2dcd0f4a56f42a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7fc1225a37353e43f5fb17f3394df167fb795bf7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90947676"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91303315"
 ---
 Ismerkedés az Azure kommunikációs szolgáltatásokkal a kommunikációs szolgáltatások C# SMS ügyféloldali kódtár használatával SMS-üzenetek küldéséhez.
 
@@ -59,13 +59,14 @@ dotnet build
 Miközben az alkalmazás könyvtára továbbra is elérhető, telepítse az Azure Communication Services SMS ügyféloldali kódtárat a .NET-csomaghoz a `dotnet add package` parancs használatával.
 
 ```console
-dotnet add package Azure.Communication.Sms
+dotnet add package Azure.Communication.Sms --version 1.0.0-beta.1
 ```
 
 Adjon hozzá egy `using` direktívát a **program.cs** tetejéhez, hogy tartalmazza a `Azure.Communication` névteret.
 
 ```csharp
 
+using Azure.Communication;
 using Azure.Communication.Sms;
 
 ```

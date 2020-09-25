@@ -8,15 +8,15 @@ ms.subservice: data-movement
 author: stevestein
 ms.custom: sqldbrb=2
 ms.author: sstein
-ms.reviewer: carlrab
+ms.reviewer: ''
 ms.date: 07/16/2019
 ms.topic: conceptual
-ms.openlocfilehash: 10d10ccfbd04a52f6d522700d66d2c959fed24ee
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 9fb638feb254d5789d26cd854c0dcb3ae70da472
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85982416"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91284329"
 ---
 # <a name="export-to-a-bacpac-file---azure-sql-database-and-azure-sql-managed-instance"></a>Exportálás BACPAC-fájlba – Azure SQL Database és az Azure SQL felügyelt példánya
 
@@ -39,7 +39,7 @@ Ha archiválni vagy egy másik platformra szeretne áthelyezni egy adatbázist, 
 > [!NOTE]
 > A BACPACs nem használhatók biztonsági mentési és visszaállítási műveletekhez. Az Azure automatikusan készít biztonsági másolatokat minden felhasználói adatbázishoz. Részletekért lásd: [Üzletmenet-folytonosság áttekintése](business-continuity-high-availability-disaster-recover-hadr-overview.md) és [SQL Database biztonsági mentések](automated-backups-overview.md).
 
-## <a name="the-azure-portal"></a>Az Azure Portal
+## <a name="the-azure-portal"></a>Azure Portal
 
 Az [Azure SQL felügyelt példányairól](../managed-instance/sql-managed-instance-paas-overview.md) származó BACPAC exportálása a Azure Portal használatával jelenleg nem támogatott. Ehelyett használjon SQL Server Management Studio vagy SQLPackage.
 
@@ -104,7 +104,7 @@ while ($exportStatus.Status -eq "InProgress")
 $exportStatus
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az adatbázisok archiválási célú exportálásának alternatívájaként a biztonsági másolatok hosszú távú [megőrzése](long-term-retention-overview.md)című témakörből megismerheti az önálló adatbázisok és a készletezett adatbázisok hosszú távú biztonsági mentését. Az SQL-ügynök feladatainak használatával ütemezheti az [adatbázis-másolatok biztonsági mentését](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server) a hosszú távú biztonsági mentés alternatívájaként.
 - További információ a BACPAC-fájlokkal végzett migrálásról az SQL Server ügyféltanácsadói csapat blogján: [Migrálás SQL Serverről az Azure SQL Database-re BACPAC-fájlokkal](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/).

@@ -1,14 +1,16 @@
 ---
 title: Újdonságok – Language Understanding (LUIS)
 description: Ez a cikk rendszeresen frissül az Azure Cognitive Services Language Understanding APIával kapcsolatos hírekkel.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: overview
 ms.date: 06/15/2020
-ms.openlocfilehash: d178ee2f5db74949f4a8ad68df93bf3c4407c58a
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: fffe337a59ff343164a155fcd0f4d5616a32bf41
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84789208"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334616"
 ---
 # <a name="whats-new-in-language-understanding"></a>A Language Understanding újdonságai
 
@@ -21,7 +23,7 @@ Ismerje meg a szolgáltatás újdonságait. Ezek közé tartoznak a kibocsátás
 * [Előzetes verzió – 3,0 authoring](luis-migration-authoring-entities.md) SDK
     * 3.2.0 verziója – előzetes verzió. 3 – [.net-NuGet](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/)
     * Version 4.0.0 – előzetes verzió. 3 – [js – NPM](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring)
-* DevOps-gyakorlatok alkalmazása a LUIS-vel
+* DevOps-eljárások alkalmazása a LUIS használatával
     * Alapelvek
         * [DevOps eljárások a LUIS számára](luis-concept-devops-sourcecontrol.md)
         * [Folyamatos integráció és folyamatos kézbesítési munkafolyamatok LUIS DevOps](luis-concept-devops-automation.md)

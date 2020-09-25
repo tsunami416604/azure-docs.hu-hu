@@ -3,14 +3,14 @@ title: 'Gyors útmutató: QnA Maker REST API-kkal Node.js'
 description: Ez a rövid útmutató bemutatja, hogyan kezdheti el a Node.js QnA Maker REST API-jait. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját.  A QnA Maker lehetővé teszi egy kérdés-válasz szolgáltatás működtetését olyan félig strukturált tartalomból, mint a GYIK-dokumentumok, URL-címek és termékútmutatók.
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
-ms.custom: RESTCURL2020FEB27, devx-track-javascript
+ms.custom: RESTCURL2020FEB27, devx-track-js
 ms.topic: how-to
-ms.openlocfilehash: a891e806c54d8d88eea1021c95923ffdc90c36f9
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 67c4711d74bdeb970a706eabf795e8f9bdcbbded
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266425"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324603"
 ---
 # <a name="quickstart-qna-maker-rest-apis-for-nodejs"></a>Gyors útmutató: QnA Maker REST API-k Node.js
 
@@ -166,7 +166,7 @@ Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforr�
 * [Portál](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 >[Oktatóanyag: KB létrehozása és megválaszolása](../tutorials/create-publish-query-in-portal.md)

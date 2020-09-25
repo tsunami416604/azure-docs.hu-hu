@@ -10,12 +10,12 @@ ms.date: 08/20/2020
 ms.topic: include
 ms.custom: include file
 ms.author: chrwhit
-ms.openlocfilehash: 72bb38b7d9d28366fb75c5656832a1f37c770fd2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c11c2098d30ed6f00d94124fd77c2ebdb6cd2c7a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90947675"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91303316"
 ---
 Ismerkedés az Azure kommunikációs szolgáltatásokkal a kommunikációs szolgáltatások Java SMS ügyféloldali kódtár használatával SMS-üzenetek küldéséhez.
 
@@ -30,7 +30,8 @@ A rövid útmutató elvégzésével az Azure-fiókjában néhány USD értékű 
 - Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - A [Java Development Kit (JDK)](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable&preserve-view=true) 8-as vagy újabb verziója.
 - [Apache Maven](https://maven.apache.org/download.cgi).
-- Egy központilag telepített kommunikációs szolgáltatások erőforrása. [Hozzon létre egy kommunikációs szolgáltatások erőforrást](../../create-communication-resource.md).
+- Aktív kommunikációs szolgáltatások erőforrás-és kapcsolati karakterlánca. [Hozzon létre egy kommunikációs szolgáltatások erőforrást](../../create-communication-resource.md).
+- SMS-kompatibilis telefonszám. [Telefonszám beolvasása](../get-phone-number.md).
 
 ### <a name="prerequisite-check"></a>Előfeltételek ellenőrzése
 

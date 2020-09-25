@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, carlrab
+ms.reviewer: jrasnik, sstein
 ms.date: 03/10/2020
-ms.openlocfilehash: 76be966d8202bb56a6762a261be5adeaf2d58d6b
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 0805ea3c18525cd4a7491b7b74d8a3cd1a01c6ab
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926399"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334917"
 ---
 # <a name="query-performance-insight-for-azure-sql-database"></a>Azure SQL Database Lekérdezési terheléselemző
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -276,6 +276,6 @@ Ezen beállítások alkalmazása végül a Query Store telemetria gyűjti az új
     ALTER DATABASE [YourDB] SET QUERY_STORE CLEAR;
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Érdemes [Azure SQL Analyticst](../../azure-monitor/insights/azure-sql.md) használni az önálló és készletezett adatbázisok, rugalmas készletek, felügyelt példányok és példány-adatbázisok nagy flottájának speciális teljesítményének figyelésére.

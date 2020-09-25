@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 25150722e2d42625731cb741be80b86645c857e0
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: ee88b980c448bfbf581537aef4653fde5354623a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420090"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302931"
 ---
 # <a name="geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Térinformatikai és GeoJSON helye Azure Cosmos DB
 
@@ -164,7 +164,7 @@ A **Többsokszögű** tömb nulla vagy több sokszögből áll. A **Többsokszö
 
 Mivel a föld alakja szabálytalan, a földrajzi térinformatikai adathalmazok koordinátái számos koordináta-hivatkozási rendszerben (CRS) jelennek meg, amelyek mindegyike saját hivatkozási kerettel és mértékegységgel rendelkezik. Például a "Britain országos hálózata" egy hivatkozási rendszer, amely az Egyesült Királyság számára pontos, de nem azon kívül.
 
-A jelenleg használatban lévő legnépszerűbb CRS a [WGS-84](https://earth-info.nga.mil/GandG/update/index.php)globális geodéziai rendszer. A GPS-eszközök és számos leképezési szolgáltatás, például a Google Maps és a Bing Maps API-k a WGS-84-et használják. Azure Cosmos DB támogatja a földrajzi térinformatikai adatai indexelését és lekérdezését kizárólag a WGS-84 CRS használatával.
+A jelenleg használatban lévő legnépszerűbb CRS a  [WGS-84](https://earth-info.nga.mil/GandG/update/index.php)globális geodéziai rendszer. A GPS-eszközök és számos leképezési szolgáltatás, például a Google Maps és a Bing Maps API-k a WGS-84-et használják. Azure Cosmos DB támogatja a földrajzi térinformatikai adatai indexelését és lekérdezését kizárólag a WGS-84 CRS használatával.
 
 ## <a name="creating-documents-with-spatial-data"></a>Dokumentumok létrehozása térbeli adattal
 Ha GeoJSON-értékeket tartalmazó dokumentumokat hoz létre, azok automatikusan egy térbeli indextel lesznek indexelve a tároló indexelési házirendjének megfelelően. Ha egy Azure Cosmos DB SDK-val dolgozik olyan dinamikusan gépelt nyelven, mint a Python vagy a Node.js, akkor érvényes GeoJSON kell létrehoznia.

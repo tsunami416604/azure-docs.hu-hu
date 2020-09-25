@@ -9,12 +9,12 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 09/15/2020
-ms.openlocfilehash: c01d1bcb682a5f711dcba3cc7b32ef69b2642ef6
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 47b8c45e22569cc758d00fb8534f409ecebf58ca
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90900769"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91299931"
 ---
 # <a name="explore-the-synapse-knowledge-center"></a>A szinapszis Tudásközpont megismerése
 
@@ -46,7 +46,6 @@ A **Tudásközpont** három dolgot tesz lehetővé:
 1. Kattintson a Futtatás elemre. A kiválasztott szöveget fogja futtatni.
 
 ## <a name="loading-more-nyc-taxi-data"></a>A New York-i taxi-adathalmazok betöltése
-
 1. A **Tudásbázisban**kattintson az **elérhető minták tallózása** elemre. 
 1. Válassza a felül található **SQL-parancsfájlok** lapot.
 1. Válassza **a New York taxik-adatkészlet betöltése** lehetőséget.
@@ -58,5 +57,6 @@ A **Tudásközpont** három dolgot tesz lehetővé:
 
 ## <a name="next-steps"></a>Következő lépések
 
-> [!div class="nextstepaction"]
-> [Elemzés SQL-készlet használatával](get-started-analyze-sql-pool.md)
+* [Ismerkedés az Azure szinapszis Analytics szolgáltatással](get-started.md)
+* [Munkaterület létrehozása](quickstart-create-workspace.md)
+* [Az igény szerinti SQL használata](quickstart-sql-on-demand.md)

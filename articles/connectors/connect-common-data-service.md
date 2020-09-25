@@ -7,12 +7,12 @@ ms.reviewer: jdaly, logicappspm
 ms.topic: conceptual
 ms.date: 05/08/2020
 tags: connectors
-ms.openlocfilehash: 8cce90a8a65a7f070459e220e6d92ef0be57e909
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: de85a61cbd699ec9ac2669f8abb6217254038de9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284115"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334582"
 ---
 # <a name="create-and-manage-records-in-common-data-service-by-using-azure-logic-apps"></a>Rekordok létrehozása és kezelése Common Data Serviceban Azure Logic Apps használatával
 
@@ -51,9 +51,9 @@ Ebben a példában adja hozzá a Common Data Service eseményindítót, amely ú
 
    | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
-   | **Környezet** | Igen | A figyelni kívánt környezet, például "Fabrikam Sales Production". További információ: [Power platform – környezetek – áttekintés](/power-platform/admin/environments-overview). |
-   | **Entitás neve** | Igen | A figyelni kívánt entitás, például "leads" |
-   | **Hatókör** | Igen | Az új rekordot létrehozó forrás, például egy felhasználó a céges egységben vagy a szervezet bármely felhasználója. Ez a példa a "Business Unit" szolgáltatást használja. |
+   | **Környezet** | Yes | A figyelni kívánt környezet, például "Fabrikam Sales Production". További információ: [Power platform – környezetek – áttekintés](/power-platform/admin/environments-overview). |
+   | **Entitás neve** | Yes | A figyelni kívánt entitás, például "leads" |
+   | **Hatókör** | Yes | Az új rekordot létrehozó forrás, például egy felhasználó a céges egységben vagy a szervezet bármely felhasználója. Ez a példa a "Business Unit" szolgáltatást használja. |
    ||||
 
 ## <a name="add-common-data-service-action"></a>Common Data Service művelet hozzáadása
@@ -72,8 +72,8 @@ Most adjon hozzá egy Common Data Service műveletet, amely létrehoz egy új "l
 
    | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
-   | **Szervezet neve** | Igen | Az a környezet, amelyben létre kívánja hozni a rekordot, és nem feltétlenül ugyanazt a környezetet kell megadnia az triggerben, de ebben a példában a "Fabrikam értékesítési termelés" szerepel. |
-   | **Entitás neve** | Igen | Az entitás, amelyben létre szeretné hozni a rekordot, például "feladatok" |
+   | **Szervezet neve** | Yes | Az a környezet, amelyben létre kívánja hozni a rekordot, és nem feltétlenül ugyanazt a környezetet kell megadnia az triggerben, de ebben a példában a "Fabrikam értékesítési termelés" szerepel. |
+   | **Entitás neve** | Yes | Az entitás, amelyben létre szeretné hozni a rekordot, például "feladatok" |
    | **Tárgy** | Igen, az ebben a példában kiválasztott entitás alapján | A feladat céljával kapcsolatos rövid leírás |
    ||||
 
@@ -87,7 +87,7 @@ Most adjon hozzá egy Common Data Service műveletet, amely létrehoz egy új "l
 
       ![Válassza ki a feladat rekordban használni kívánt trigger-kimeneteket](./media/connect-common-data-service/create-new-record-action-select-trigger-outputs.png)
 
-      | Trigger kimenete | Leírás |
+      | Trigger kimenete | Description |
       |----------------|-------------|
       | **Keresztnév** | Az első név a rekordban, amelyet elsődleges partnerként kíván használni a feladatban. |
       | **Vezetéknév** | A tevékenység rekordjában az elsődleges partnerként használandó utolsó név a vezető rekordban |
@@ -108,7 +108,7 @@ A rekordok frissítésekor futó eseményindítók esetén, például **Ha a rek
 
 1. Az triggerben az **új paraméter hozzáadása** listából válassza az **attribútumok szűrők**elemet.
 
-   !["Attribute Filters" tulajdonság hozzáadása](./media/connect-common-data-service/when-record-updated-trigger-add-attribute-filters.png)
+   ![Képernyőfelvétel: "a rekord frissítésekor" művelet és a megnyitott "új paraméter hozzáadása" lista a "Attribute Filters" tulajdonsággal kiválasztva.](./media/connect-common-data-service/when-record-updated-trigger-add-attribute-filters.png)
 
 1. Minden **attribútum szűrő elemnél**válassza ki a frissítések figyeléséhez használni kívánt attribútumot, például:
 
@@ -122,7 +122,7 @@ A rekordokat visszaadó műveletek, például a **rekordok listázása** művele
 
    !["Lekérdezés szűrése" tulajdonság hozzáadása](./media/connect-common-data-service/list-records-action-filter-query.png)
 
-1. A **szűrő lekérdezési** tulajdonságában, amely most megjelenik a műveletben, írja be ezt a ODATA-szűrő lekérdezést:`statuscode eq 1`
+1. A **szűrő lekérdezési** tulajdonságában, amely most megjelenik a műveletben, írja be ezt a ODATA-szűrő lekérdezést: `statuscode eq 1`
 
    ![Adja meg a rekordok szűrésére szolgáló ODATA-szűrési lekérdezést](./media/connect-common-data-service/list-records-action-filter-query-value.png)
 
@@ -136,7 +136,7 @@ A rekordokat visszaadó műveletek, például a **rekordok listázása** művele
 
    !["Order by" tulajdonság hozzáadása](./media/connect-common-data-service/list-records-action-order-by.png)
 
-1. A műveletben most megjelenő **Order by** tulajdonsággal írja be ezt a ODATA-szűrési lekérdezést:`name`
+1. A műveletben most megjelenő **Order by** tulajdonsággal írja be ezt a ODATA-szűrési lekérdezést: `name`
 
    ![Adja meg a ODATA szűrő lekérdezését a rekordok rendezéséhez](./media/connect-common-data-service/list-records-action-order-by-value.png)
 
@@ -168,6 +168,6 @@ Ez a példa azt szemlélteti, hogy az **új rekord létrehozása** művelet hogy
 
 Az összekötők kivágási leírásán alapuló technikai információk, például eseményindítók, műveletek, korlátok és egyéb részletek: az [összekötő hivatkozási lapja](/connectors/commondataservice/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További tudnivalók [a Azure Logic apps-összekötők](../connectors/apis-list.md) használatáról

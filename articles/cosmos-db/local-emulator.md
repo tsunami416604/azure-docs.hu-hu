@@ -5,14 +5,14 @@ ms.service: cosmos-db
 ms.topic: how-to
 author: markjbrown
 ms.author: mjbrown
-ms.date: 09/17/2020
+ms.date: 09/22/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 16448706b7167f55f31c7603676010e4ad30166f
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 07a38e106b765fd28a8c3c1115e5fe84744ade62
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985848"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91303089"
 ---
 # <a name="install-and-use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Az Azure Cosmos Emulator telepítése és használata helyi fejlesztéshez és teszteléshez
 
@@ -104,11 +104,16 @@ Az Azure Cosmos emulatort a Windows Docker-tárolón futtathatja. További infor
 
    # <a name="command-line"></a>[Parancssor](#tab/cli)
 
-   ```cmd
+   ```bash
 
    md %LOCALAPPDATA%\CosmosDBEmulator\bind-mount
 
    docker run --name azure-cosmosdb-emulator --memory 2GB --mount "type=bind,source=%LOCALAPPDATA%\CosmosDBEmulator\bind-mount,destination=C:\CosmosDB.Emulator\bind-mount" --interactive --tty -p 8081:8081 -p 8900:8900 -p 8901:8901 -p 8902:8902 -p 10250:10250 -p 10251:10251 -p 10252:10252 -p 10253:10253 -p 10254:10254 -p 10255:10255 -p 10256:10256 -p 10350:10350 mcr.microsoft.com/cosmosdb/windows/azure-cosmos-emulator
+   ```
+   Előfordulhat, hogy a Windows-alapú Docker-lemezképek általában nem kompatibilisek minden Windows-gazdagép operációs rendszerével. Az alapértelmezett Azure Cosmos Emulator-rendszerkép például csak a Windows 10 és a Windows Server 2016 rendszerrel kompatibilis. Ha olyan rendszerképre van szüksége, amely kompatibilis a Windows Server 2019-mel, futtassa a következő parancsot:
+
+   ```bash
+   docker run --name azure-cosmosdb-emulator --memory 2GB --mount "type=bind,source=%hostDirectory%,destination=C:\CosmosDB.Emulator\bind-mount" --interactive --tty -p 8081:8081 -p 8900:8900 -p 8901:8901 -p 8902:8902 -p 10250:10250 -p 10251:10251 -p 10252:10252 -p 10253:10253 -p 10254:10254 -p 10255:10255 -p 10256:10256 -p 10350:10350 mcr.microsoft.com/cosmosdb/winsrv2019/azure-cosmos-emulator:latest
    ```
 
    # <a name="powershell"></a>[PowerShell](#tab/powershell)
@@ -123,7 +128,7 @@ Az Azure Cosmos emulatort a Windows Docker-tárolón futtathatja. További infor
 
    A válasz a következőhöz hasonlóan néz ki:
 
-   ```cmd
+   ```bash
    Starting emulator
    Emulator Endpoint: https://172.20.229.193:8081/
    Master Key: C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
@@ -143,7 +148,7 @@ Az Azure Cosmos emulatort a Windows Docker-tárolón futtathatja. További infor
 
    # <a name="command-line"></a>[Parancssor](#tab/cli)
 
-   ```cmd
+   ```bash
    cd  %LOCALAPPDATA%\CosmosDBEmulator\bind-mount
    powershell .\importcert.ps1
    ```
@@ -223,7 +228,7 @@ A következő lépésekkel használhatja az emulátort Linux vagy macOS rendszer
 
 1. Futtassa a következő parancsot a Windows rendszerű virtuális gépről, és jegyezze fel az IPv4-címeket:
 
-   ```cmd
+   ```bash
    ipconfig.exe
    ```
 
@@ -231,7 +236,7 @@ A következő lépésekkel használhatja az emulátort Linux vagy macOS rendszer
 
 1. A Windows rendszerű virtuális gépen indítsa el az Azure Cosmos emulatort a parancssorból a következő beállítások használatával. A parancssor által támogatott paraméterek részleteiért tekintse meg az [Emulator parancssori eszköz dokumentációját](emulator-command-line-parameters.md):
 
-   ```cmd
+   ```bash
    Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM +4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
    ```
 

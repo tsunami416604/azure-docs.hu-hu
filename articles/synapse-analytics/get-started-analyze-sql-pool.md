@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: az SQL-készlettel történő adatelemzés első lépései'
+title: 'Oktatóanyag: az adatelemzés első lépései dedikált SQL-készletekkel'
 description: Ebben az oktatóanyagban a New York-i taxi-mintaadatok segítségével megismerheti az SQL-készlet analitikus funkcióit.
 services: synapse-analytics
 author: saveenr
@@ -9,16 +9,16 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: b1060bcc8603cb7f7395a50056424b3d6c0ebe5a
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 3df0959003923a9a4ff2347330fd5a4f22e52245
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90015500"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91300122"
 ---
-# <a name="analyze-data-with-sql-pools"></a>Az SQL-készletekkel rendelkező adatelemzés
+# <a name="analyze-data-with-sql-dedicated-pools"></a>Adat elemzése dedikált SQL-készletekkel
 
-Az Azure szinapszis Analytics lehetővé teszi az SQL-készlettel való adatelemzés lehetőségét. Ebben az oktatóanyagban a New York-i taxi-mintaadatok segítségével megismerheti az SQL-készlet analitikus funkcióit.
+Az Azure szinapszis Analytics lehetővé teszi az adatelemzést egy dedikált SQL-készlettel. Ebben az oktatóanyagban a New York-i taxi-adatszolgáltatások segítségével megismerheti a dedicted SQL-készlet képességeit.
 
 ## <a name="load-the-nyc-taxi-data-into-sqldb1"></a>A New York-i taxi-szolgáltatás betöltése a SQLDB1
 
@@ -71,7 +71,7 @@ Az Azure szinapszis Analytics lehetővé teszi az SQL-készlettel való adatelem
     ```
 1. A szkript futtatása körülbelül 1 percet vesz igénybe. Egy dbo nevű táblába tölti be a New York-i, 2 000 000-as sorokat **. Utazás**
 
-## <a name="explore-the-nyc-taxi-data-in-the-sql-pool"></a>Ismerkedjen meg az SQL-készletben található New York-i taxi-szolgáltatással
+## <a name="explore-the-nyc-taxi-data-in-the-dedicated-sql-pool"></a>A New York-i taxi adatai a dedikált SQL-készletben
 
 1. A szinapszis Studióban nyissa meg **az** adatközpontot.
 1. Nyissa meg a **SQLDB1**  >  **táblákat**. Ekkor több táblázat is betöltődik.

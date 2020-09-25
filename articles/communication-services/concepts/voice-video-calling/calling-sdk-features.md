@@ -9,14 +9,14 @@ ms.author: mikben
 ms.date: 03/10/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 9cc00cfa9f44c69a5880d53c0b7ac623f60be16b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6021bb4fa5d30de423ab56bfb5fdea6af2665a4a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90947221"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334480"
 ---
-# <a name="calling-client-library-overview"></a>Az ügyféloldali kódtár meghívása – áttekintés
+# <a name="calling-client-library-overview"></a>Hívási ügyfélkódtár áttekintése
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
@@ -55,8 +55,7 @@ Az alábbi lista azokat a funkciókat mutatja be, amelyek jelenleg elérhetők a
 |                   | Csoportos hívás elhelyezése PSTN-résztvevőkkel                                                                           | ✔️   | ✔️            | ✔️
 |                   | Egy-az-egyhez hívás előléptetése PSTN-résztvevővel egy csoportos hívásban                                                 | ✔️   | ✔️            | ✔️
 |                   | Tárcsázás egy csoportos hívásból PSTN-résztvevőként                                                                    | ✔️   | ✔️            | ✔️   
-| Általános kérdések           | Részvétel egy legfeljebb 350 résztvevőt tartalmazó csoportos hívásban                                                       |  ✔️  | ✔️            | ✔️    
-|                   | A mikrofon, a hangszóró és a kamera tesztelése hangtesztelési szolgáltatással (elérhető a 8. hívással: echo123)                   |  ✔️  | ✔️            | ✔️   
+| Általános kérdések           | A mikrofon, a hangszóró és a kamera tesztelése hangtesztelési szolgáltatással (elérhető a 8. hívással: echo123)                   |  ✔️  | ✔️            | ✔️   
 
 ## <a name="calling-client-library-browser-support"></a>Az ügyféloldali kódtár böngésző támogatásának meghívása
 

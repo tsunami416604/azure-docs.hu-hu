@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: sstein, bonova, carlrab
+ms.reviewer: sstein, bonova
 ms.date: 12/13/2018
-ms.openlocfilehash: a0192f204fdb0797d98947a174bf6d669034b666
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fc77b73f7e284dcaacdc64fdc7e3c72579d2e135
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84695453"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91283701"
 ---
 # <a name="sync-networking-configuration-for-azure-app-service-hosting-plan-with-azure-sql-managed-instance"></a>Azure App Service üzemeltetési csomag hálózati konfigurációjának szinkronizálása az Azure SQL felügyelt példányával
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -46,6 +46,6 @@ Ehhez kövesse az alábbi lépéseket:
 
 Most már készen áll arra, hogy megpróbálja újból létrehozni a kapcsolatot az SQL felügyelt példányával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a VNet SQL felügyelt példányhoz való konfigurálásáról: az [SQL felügyelt példányok VNet architektúrája](connectivity-architecture-overview.md) és [a meglévő VNet konfigurálása](vnet-existing-add-subnet.md).

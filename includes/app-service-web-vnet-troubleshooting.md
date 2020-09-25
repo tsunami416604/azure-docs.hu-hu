@@ -4,23 +4,27 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 02/27/2020
 ms.author: ccompy
-ms.openlocfilehash: ff54d60573fbc7b6694b8d02d1378869674c1e81
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: b62e5057d8f144fc56d0e35927d17de27a1c8863
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86050418"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91255245"
 ---
 A szolgáltatás egyszerűen beállítható, de ez nem jelenti azt, hogy a probléma ingyenes lesz. Ha problémák merülnek fel a kívánt végpont elérésekor, néhány segédprogram segítségével tesztelheti a kapcsolatot az alkalmazás-konzolról. Két konzolt használhat. Az egyik a kudu-konzol, a másik pedig a Azure Portal konzolja. A kudu-konzol alkalmazásból való eléréséhez nyissa meg az **eszközök**  >  **kudu**. A Kudo-konzolt a következő helyen is elérheti: [sitename]. SCM. azurewebsites. net. A webhely betöltése után lépjen a **Debug konzol** lapra. Ha az alkalmazásból szeretné beolvasni a Azure Portal által üzemeltetett konzolt, lépjen az **eszközök**  >  **konzolra**.
 
 #### <a name="tools"></a>Eszközök
-A **ping**, az **nslookup**és a **tracert** eszköz a biztonsági korlátozások miatt nem fog működni a konzolon. Az üresség kitöltéséhez két különálló eszközt adnak hozzá. A DNS-funkciók teszteléséhez hozzáadott egy **nameresolver.exe**nevű eszközt. A szintaxis a következő:
+Natív Windows-alkalmazásokban a **ping**, az **nslookup**és a **tracert** eszköz nem fog működni a konzolon a biztonsági korlátozások miatt ( [Egyéni Windows-tárolókban](../articles/app-service/quickstart-custom-container.md)működnek). Az üresség kitöltéséhez két különálló eszközt adnak hozzá. A DNS-funkciók teszteléséhez hozzáadott egy **nameresolver.exe**nevű eszközt. A szintaxis a következő:
 
 ```console
 nameresolver.exe hostname [optional: DNS Server]
 ```
 
 A nameresolver segítségével megtekintheti az alkalmazástól függő gazdagépeket. Így ellenőrizheti, hogy van-e hibásan konfigurálva a DNS-sel, vagy lehet, hogy nem fér hozzá a DNS-kiszolgálóhoz. Az alkalmazás által a-konzolon használt DNS-kiszolgáló az WEBSITE_DNS_SERVER és WEBSITE_DNS_ALT_SERVER környezeti változók megtekintésével tekinthető meg.
+
+> [!NOTE]
+> nameresolver.exe jelenleg nem működik az egyéni Windows-tárolókban.
+>
 
 A következő eszközzel tesztelheti a TCP-kapcsolatot egy gazdagéphez és a portok kombinációjára. Az eszköz neve **tcpping** , és a szintaxis a következő:
 
