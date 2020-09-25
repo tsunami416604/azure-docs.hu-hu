@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/19/2019
 ms.author: genli
-ms.openlocfilehash: be124e7677774cbe6b4a0a2730c662f25b619ee0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f9907be0e7cd14876964b820d9b267f279fc50d3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525976"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331454"
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>Linux rendszerű virtuális gép hibáinak elhárítása az operációsrendszer-lemez egy helyreállítási virtuális géphez csatolásával a Azure Portal használatával
 Ha a linuxos virtuális gép (VM) rendszerindítási vagy lemezhiba miatti hibát észlel, lehetséges, hogy a virtuális merevlemezen hibaelhárítási lépéseket kell végrehajtania. Egy gyakori példa lehet egy olyan bejegyzés, `/etc/fstab` amely megakadályozza, hogy a virtuális gép sikeresen elinduljon. Ez a cikk részletesen ismerteti, hogyan lehet a Azure Portal használatával összekapcsolni a virtuális merevlemezt egy másik linuxos virtuális géppel a hibák elhárítása érdekében, majd újból létre kell hoznia az eredeti virtuális gépet.
@@ -28,7 +28,7 @@ A hibaelhárítási folyamat a következő:
 1. Állítsa le az érintett virtuális gépet.
 1. Készítsen pillanatképet a virtuális gép operációsrendszer-lemezéről.
 1. Hozzon létre egy virtuális merevlemezt a pillanatképből.
-1. Hibaelhárítási célból csatlakoztassa és csatlakoztassa a virtuális merevlemezt egy másik Windows rendszerű virtuális géphez.
+1. A virtuális merevlemez csatlakoztatása és csatlakoztatása egy másik linuxos virtuális géphez hibaelhárítási célból.
 1. Kapcsolódjon a hibaelhárítást végző virtuális gépre. Szerkessze a fájlokat, vagy futtasson eszközöket az eredeti virtuális merevlemezen található problémák megoldásához.
 1. Válassza le a virtuális merevlemezt a hibaelhárító virtuális gépről.
 1. Cserélje le a virtuális gép operációsrendszer-lemezét.

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 643e49bdba76051c873ed549d5f6c21487f34056
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: b0c23955248a3468ee6bd624ebf7281bc6c3c961
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90108727"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319605"
 ---
 # <a name="migrate-from-bing-maps-to-azure-maps"></a>Migrálás a Bing Mapsből a Azure Mapsba
 
@@ -36,7 +36,7 @@ Az alábbi táblázat a Bing Maps szolgáltatásainak magas szintű listáját �
 | UWP SDK                               | Tervezve            |
 | WPF SDK                               | Tervezve            |
 | REST-szolgáltatás API-k                     | ✓                  |
-| AutoSuggest                           | ✓                  |
+| Automatikus kiegészítés                           | ✓                  |
 | Irányok (beleértve a teherautót)          | ✓                  |
 | Távolsági mátrix                       | ✓                  |
 | Emelései                            | Tervezve            |
@@ -52,7 +52,7 @@ Az alábbi táblázat a Bing Maps szolgáltatásainak magas szintű listáját �
 | Térbeli Data Services (SDS)           | Részleges            |
 | Időzóna                             | ✓                  |
 | Forgalmi incidensek                     | ✓                  |
-| Konfigurációs vezérelt térképek             | N/A                |
+| Konfigurációs vezérelt térképek             | N.A.                |
 
 A Bing Maps alapvető kulcs-alapú hitelesítést biztosít. Azure Maps az alapszintű kulcs-alapú hitelesítést, valamint a nagyon biztonságos Azure Active Directory hitelesítést is biztosítja.
 
@@ -81,6 +81,15 @@ A következő egy magas szintű áttelepítési terv.
 4.  Telepítse át az alkalmazás kódját.
 5.  Tesztelje az áttelepített alkalmazást.
 6.  Telepítse az áttelepített alkalmazást éles környezetbe.
+
+## <a name="create-an-azure-maps-account"></a>Azure Maps-fiók létrehozása
+
+Azure Maps fiók létrehozásához és a Azure Maps platform eléréséhez kövesse az alábbi lépéseket:
+
+1. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
+2. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+3. Hozzon létre egy [Azure Maps fiókot](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys). 
+4. [Szerezze be a Azure Maps előfizetési kulcsát](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication#view-authentication-details) , vagy beállíthatja Azure Active Directory hitelesítését a fokozott biztonság eléréséhez.
 
 ## <a name="azure-maps-technical-resources"></a>Technikai erőforrások Azure Maps
 

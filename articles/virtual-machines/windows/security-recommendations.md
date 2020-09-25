@@ -1,6 +1,6 @@
 ---
 title: Biztonsági javaslatok az Azure-beli Windows rendszerű virtuális gépekhez
-description: Alkalmazza ezeket az ajánlásokat a megosztott felelősségi modellben ismertetett biztonsági kötelezettségek teljesítéséhez, valamint az üzemelő példányok általános biztonságának javításához.
+description: Alkalmazza ezeket a javaslatokat a Windows rendszerű virtuális gépekre az Azure-ban a megosztott felelősségi modellben ismertetett biztonsági kötelezettségek teljesítése érdekében, és javítsa az üzemelő példányok általános biztonságát.
 author: msmbaldwin
 manager: RKarlin
 ms.service: virtual-machines
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: 94da5ebc3094e112e6f6fcbf220fb7b6738686d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e6235524a4fdcb504b3fad1f1dc59036838fa717
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82100719"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331420"
 ---
 # <a name="security-recommendations-for-windows-virtual-machines-in-azure"></a>Biztonsági javaslatok az Azure-beli Windows rendszerű virtuális gépekhez
 

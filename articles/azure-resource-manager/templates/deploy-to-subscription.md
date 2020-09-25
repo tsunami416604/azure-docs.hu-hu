@@ -2,13 +2,13 @@
 title: Erőforrások üzembe helyezése az előfizetésben
 description: Leírja, hogyan lehet erőforráscsoportot létrehozni egy Azure Resource Manager sablonban. Azt is bemutatja, hogyan helyezhet üzembe erőforrásokat az Azure-előfizetési hatókörben.
 ms.topic: conceptual
-ms.date: 09/15/2020
-ms.openlocfilehash: 3889f5a06f138114dfe4511d0957558d6d803c8e
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.date: 09/24/2020
+ms.openlocfilehash: cd1d0a05fc1039d8e99b0af6fc8019face4516bf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90605175"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91284788"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Erőforráscsoportok és erőforrások létrehozása az előfizetési szinten
 
@@ -62,7 +62,7 @@ Más támogatott típusok a következők:
 * [eventSubscriptions](/azure/templates/microsoft.eventgrid/eventsubscriptions)
 * [peerAsns](/azure/templates/microsoft.peering/2019-09-01-preview/peerasns)
 
-### <a name="schema"></a>Séma
+## <a name="schema"></a>Séma
 
 Az előfizetési szintű központi telepítések sémája eltér az erőforráscsoport-telepítésekhez használt sémától.
 
@@ -77,6 +77,20 @@ A paraméterérték sémája megegyezik az összes központi telepítési hatók
 ```json
 https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#
 ```
+
+## <a name="deployment-scopes"></a>Központi telepítési hatókörök
+
+Az előfizetések telepítésekor egy előfizetést és egy, az előfizetésen belüli erőforráscsoportot is megcélozhat. Nem telepíthet olyan előfizetésre, amely eltér a cél előfizetéstől. A sablont telepítő felhasználónak hozzáféréssel kell rendelkeznie a megadott hatókörhöz.
+
+A sablon erőforrások szakaszában meghatározott erőforrások az előfizetésre lesznek alkalmazva.
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/default-sub.json" highlight="5":::
+
+Egy erőforráscsoport az előfizetésen belüli célzásához adjon hozzá egy beágyazott központi telepítést, és vegye fel a `resourceGroup` tulajdonságot. A következő példában a beágyazott telepítés a nevű erőforráscsoportot célozza meg `rg2` .
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/sub-to-resource-group.json" highlight="9,13":::
+
+Ebben a cikkben olyan sablonokat talál, amelyek bemutatják, hogyan telepíthet erőforrásokat különböző hatókörökre. Egy erőforráscsoportot létrehozó sablon és egy Storage-fiók üzembe helyezése esetén tekintse meg az [erőforráscsoport és erőforrások létrehozása](#create-resource-group-and-resources)című témakört. Egy erőforráscsoportot létrehozó sablon esetén egy zárolást alkalmaz rá, és hozzárendel egy szerepkört az erőforráscsoporthoz, lásd: [hozzáférés-vezérlés](#access-control).
 
 ## <a name="deployment-commands"></a>Üzembe helyezési parancsok
 
@@ -112,49 +126,6 @@ Az előfizetési szintű központi telepítések esetében meg kell adnia egy he
 Megadhatja a központi telepítés nevét, vagy használhatja az alapértelmezett központi telepítési nevet is. Az alapértelmezett név a sablonfájl neve. Egy **azuredeploy.js** nevű sablon üzembe helyezése például a **azuredeploy**alapértelmezett központi telepítési nevét hozza létre.
 
 Az egyes központi telepítési nevek esetében a hely nem módosítható. A központi telepítést nem lehet az egyik helyen létrehozni, ha egy másik helyen már van ilyen nevű üzemelő példány. Ha a hibakódot kapja `InvalidDeploymentLocation` , használjon más nevet vagy ugyanazt a helyet, mint az adott név előző üzembe helyezését.
-
-## <a name="deployment-scopes"></a>Központi telepítési hatókörök
-
-Az előfizetések telepítésekor egy előfizetést és egy, az előfizetésen belüli erőforráscsoportot is megcélozhat. Nem telepíthet olyan előfizetésre, amely eltér a cél előfizetéstől. A sablont telepítő felhasználónak hozzáféréssel kell rendelkeznie a megadott hatókörhöz.
-
-A sablon erőforrások szakaszában meghatározott erőforrások az előfizetésre lesznek alkalmazva.
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [
-        subscription-level-resources
-    ],
-    "outputs": {}
-}
-```
-
-Egy erőforráscsoport az előfizetésen belüli célzásához adjon hozzá egy beágyazott központi telepítést, és vegye fel a `resourceGroup` tulajdonságot. A következő példában a beágyazott telepítés a nevű erőforráscsoportot célozza meg `rg2` .
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [
-        {
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2020-06-01",
-            "name": "nestedDeployment",
-            "resourceGroup": "rg2",
-            "properties": {
-                "mode": "Incremental",
-                "template": {
-                    nested-template-with-resource-group-resources
-                }
-            }
-        }
-    ],
-    "outputs": {}
-}
-```
-
-Ebben a cikkben olyan sablonokat talál, amelyek bemutatják, hogyan telepíthet erőforrásokat különböző hatókörökre. Egy erőforráscsoportot létrehozó sablon és egy Storage-fiók üzembe helyezése esetén tekintse meg az [erőforráscsoport és erőforrások létrehozása](#create-resource-group-and-resources)című témakört. Egy erőforráscsoportot létrehozó sablon esetén egy zárolást alkalmaz rá, és hozzárendel egy szerepkört az erőforráscsoporthoz, lásd: [hozzáférés-vezérlés](#access-control).
 
 ## <a name="use-template-functions"></a>A Template functions használata
 
@@ -481,7 +452,7 @@ Az alábbi példa létrehoz egy erőforráscsoportot, egy zárolást alkalmaz r�
 
 :::code language="json" source="~/quickstart-templates/subscription-deployments/create-rg-lock-role-assignment/azuredeploy.json":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Azure Security Center munkaterület-beállításainak központi telepítésére példát a következő témakörben talál: [deployASCwithWorkspaceSettings.js](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json).
 * A sablonok a [githubon](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-deployments)találhatók.

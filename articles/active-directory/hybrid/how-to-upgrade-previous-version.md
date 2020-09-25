@@ -16,12 +16,12 @@ ms.date: 04/08/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69373e039320cd733fb859bb84e03e5493e05403
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: b78d3cab17b0cc4085c824cf35d4c6037f0e2af5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89277204"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319860"
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect: frissítés egy előző verzióról a legújabbra
 Ez a témakör azokat a különböző módszereket ismerteti, amelyekkel a Azure Active Directory (Azure AD) a legújabb verzióra történő frissítését végezheti el. Javasoljuk, hogy a Azure AD Connect kiadásával tartsa naprakészen. Ha jelentős konfigurációt végez, a [swing Migrálás](#swing-migration) szakasz lépéseit is használhatja.
@@ -106,7 +106,7 @@ Előfordulhatnak olyan helyzetek, amikor nem szeretné, hogy ezek a felülbírá
 
 1. A frissítés során **törölje** a **szinkronizálási folyamat elindítása a konfiguráció befejeződése**után lehetőséget. Ez letiltja a szinkronizálási ütemező szolgáltatást, és megakadályozza, hogy a szinkronizálási ciklus automatikusan megtörténjen a felülbírálások eltávolítása előtt.
 
-   ![DisableFullSyncAfterUpgrade](./media/how-to-upgrade-previous-version/disablefullsync01.png)
+   ![Képernyőfelvétel: a szinkronizálási folyamat elindítása, amikor a konfiguráció befejeződik, és törölni kell.](./media/how-to-upgrade-previous-version/disablefullsync01.png)
 
 2. A frissítés befejeződése után futtassa a következő parancsmagot, hogy megtudja, milyen felülbírálások lettek hozzáadva: `Get-ADSyncSchedulerConnectorOverride | fl`
 

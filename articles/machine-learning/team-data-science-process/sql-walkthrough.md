@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 047915874dfd81fdf68dc97ac217274b2439d726
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: d7c02e413fdaa54db431cdac7a3cf7af0bddeb98
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027477"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331896"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>A csoportos adatelemzési folyamat működés közben: a SQL Server használata
 Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre és helyezhet üzembe gépi tanulási modellt SQL Server és nyilvánosan elérhető adatkészlettel – a [New York-i taxis](https://www.andresmh.com/nyctaxitrips/) adatkészlettel. Az eljárás egy szabványos adatelemzési munkafolyamatot követ: az adatgyűjtést és-elemzést, a mérnöki funkciókat a tanulás megkönnyítésére, majd a modellek elkészítésére és üzembe helyezésére.
@@ -83,14 +83,14 @@ Ebben az oktatóanyagban az adat párhuzamos tömeges importálását mutatjuk b
 Az Azure-beli adatelemzési környezet beállítása:
 
 1. [Tárfiók létrehozása](../../storage/common/storage-account-create.md)
-2. [Azure Machine Learning munkaterület létrehozása](../studio/create-workspace.md)
+2. [Azure Machine Learning-munkaterület létrehozása](../classic/create-workspace.md)
 3. [Data Science Virtual Machine kiépítése](../data-science-virtual-machine/setup-sql-server-virtual-machine.md), amely egy SQL Server és egy IPython notebook-kiszolgálót biztosít.
    
    > [!NOTE]
    > A rendszer a telepítési folyamat során letölti a minta parancsfájlokat és a IPython jegyzetfüzeteket az adatelemzési virtuális gépre. Ha a virtuális gép telepítés utáni parancsfájlja befejeződik, a minták a virtuális gép dokumentumok könyvtárában lesznek:  
    > 
-   > * Példák a parancsfájlokra:`C:\Users\<user_name>\Documents\Data Science Scripts`  
-   > * Minta IPython notebookok:`C:\Users\<user_name>\Documents\IPython Notebooks\DataScienceSamples`  
+   > * Példák a parancsfájlokra: `C:\Users\<user_name>\Documents\Data Science Scripts`  
+   > * Minta IPython notebookok: `C:\Users\<user_name>\Documents\IPython Notebooks\DataScienceSamples`  
    >   hol `<user_name>` található a virtuális gép Windows-bejelentkezési neve. A minta **mappák példaként** jelennek meg a minta-és **minta-IPython jegyzetfüzetekben**.
    > 
    > 
@@ -175,8 +175,8 @@ Ebben a szakaszban a végső lekérdezést fogjuk menteni az adatok kinyerésér
 
 A sorok és oszlopok számának gyors ellenőrzése a korábban a párhuzamos tömeges importálás használatával kitöltve
 
-- A táblázatban nyctaxi_trip sorok száma tábla vizsgálata nélkül:`SELECT SUM(rows) FROM sys.partitions WHERE object_id = OBJECT_ID('nyctaxi_trip')`
-- A tábla oszlopainak nyctaxi_trip száma:`SELECT COUNT(*) FROM information_schema.columns WHERE table_name = 'nyctaxi_trip'`
+- A táblázatban nyctaxi_trip sorok száma tábla vizsgálata nélkül: `SELECT SUM(rows) FROM sys.partitions WHERE object_id = OBJECT_ID('nyctaxi_trip')`
+- A tábla oszlopainak nyctaxi_trip száma: `SELECT COUNT(*) FROM information_schema.columns WHERE table_name = 'nyctaxi_trip'`
 
 #### <a name="exploration-trip-distribution-by-medallion"></a>Kutatás: utazások eloszlása a medál alapján
 Ez a példa a medalion (taxiállomás) azonosítóját mutatja be egy adott időszakon belül több mint 100 utazással. A lekérdezés kihasználja a particionált tábla elérését, mivel azt a **felvételi \_ datetime**partíciós sémája feltétele. A teljes adatkészlet lekérdezése a particionált tábla és/vagy indexek vizsgálatát is igénybe veszi.
@@ -626,9 +626,9 @@ Most már készen áll az építés és a modell üzembe helyezésének modellez
 3. Regressziós feladat: az utazáshoz fizetett tipp mennyiségének előrejelzése.  
 
 ## <a name="building-models-in-azure-machine-learning"></a><a name="mlmodel"></a>Modellek kiépítése a Azure Machine Learningban
-A modellezési gyakorlat elindításához jelentkezzen be Azure Machine Learning munkaterületére. Ha még nem hozott létre Machine learning-munkaterületet, tekintse meg [a Azure Machine learning munkaterület létrehozása](../studio/create-workspace.md)című témakört.
+A modellezési gyakorlat elindításához jelentkezzen be Azure Machine Learning munkaterületére. Ha még nem hozott létre Machine learning-munkaterületet, tekintse meg [a Azure Machine learning munkaterület létrehozása](../classic/create-workspace.md)című témakört.
 
-1. A Azure Machine Learning megkezdéséhez tekintse meg a [Mi az a Azure Machine learning Studio?](../studio/what-is-ml-studio.md)
+1. A Azure Machine Learning megkezdéséhez tekintse meg a [Mi az a Azure Machine learning Studio?](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 2. Jelentkezzen be [Azure Machine learning Studioba](https://studio.azureml.net).
 3. A Studio kezdőlapja rengeteg információt, videót, oktatóanyagokat, hivatkozásokat tartalmaz a modulok hivatkozásához és más erőforrásokhoz. További információ a Azure Machine Learningről: [Azure Machine learning dokumentációs központ](https://azure.microsoft.com/documentation/services/machine-learning/).
 
@@ -651,7 +651,7 @@ Ebben a gyakorlatban már megvizsgáltuk és megtervezjük az SQL Server-ban lé
    
     ![Az adatimportálás Azure Machine Learning][17]
 2. Válassza a **Azure SQL Database** lehetőséget a **Tulajdonságok** panelen lévő **adatforrásként** .
-3. Adja meg az adatbázis DNS-nevét az **adatbázis-kiszolgáló neve** mezőben. Formátumban`tcp:<your_virtual_machine_DNS_name>,1433`
+3. Adja meg az adatbázis DNS-nevét az **adatbázis-kiszolgáló neve** mezőben. Formátumban `tcp:<your_virtual_machine_DNS_name>,1433`
 4. Adja meg az **adatbázis nevét** a megfelelő mezőben.
 5. Adja meg az **SQL-felhasználónevet** a **kiszolgáló felhasználói fiókjának nevében**, és a **jelszót** a **kiszolgáló felhasználói fiókjának jelszavában**.
 7. Az **adatbázis-lekérdezés** szövegmezőben illessze be azt a lekérdezést, amely kibontja a szükséges adatbázis-mezőket (beleértve a kiszámított mezőket, például a címkéket), és a legördülő menüben az adatok kinyerését a kívánt minta méretre.
@@ -668,7 +668,7 @@ Az alábbi ábrán egy példa látható a bináris besorolási kísérletre, ame
 > 
 
 ## <a name="deploying-models-in-azure-machine-learning"></a><a name="mldeploy"></a>Modellek üzembe helyezése Azure Machine Learning
-Ha a modell elkészült, egyszerűen üzembe helyezheti webszolgáltatásként közvetlenül a kísérletből. Az Azure Machine Learning webszolgáltatások telepítésével kapcsolatos további információkért lásd: [Azure Machine learning webszolgáltatás üzembe](../studio/deploy-a-machine-learning-web-service.md)helyezése.
+Ha a modell elkészült, egyszerűen üzembe helyezheti webszolgáltatásként közvetlenül a kísérletből. Az Azure Machine Learning webszolgáltatások telepítésével kapcsolatos további információkért lásd: [Azure Machine learning webszolgáltatás üzembe](../classic/deploy-a-machine-learning-web-service.md)helyezése.
 
 Új webszolgáltatás üzembe helyezéséhez a következőket kell tennie:
 
@@ -697,9 +697,9 @@ Ahhoz, hogy bedugni, ebben az útmutatóban létrehozott egy Azure-beli adatelem
 Ez a minta-útmutató és a hozzá tartozó parancsfájlok és IPython-jegyzetfüzet (ek) a Microsoft által a MIT licenc alatt vannak megosztva. További részletekért olvassa el a GitHubon található mintakód könyvtárában lévő LICENSE.txt fájlt.
 
 ### <a name="references"></a>Hivatkozások
-• [Andrés MONROY NYC taxi TRIPS letöltési oldal](https://www.andresmh.com/nyctaxitrips/)  
-• [A New York-i taxis utazási adatvédelme Chris Whong](https://chriswhong.com/open-data/foil_nyc_taxi/)   
-• A [New York-i taxi és a limuzin Bizottság kutatási és statisztikai adatai](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
+•    [Andrés MONROY NYC taxi TRIPS letöltési oldal](https://www.andresmh.com/nyctaxitrips/)  
+•    [A New York-i taxis utazási adatvédelme Chris Whong](https://chriswhong.com/open-data/foil_nyc_taxi/)   
+• A    [New York-i taxi és a limuzin Bizottság kutatási és statisztikai adatai](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
 
 [1]: ./media/sql-walkthrough/sql-walkthrough_26_1.png
 [2]: ./media/sql-walkthrough/sql-walkthrough_28_1.png

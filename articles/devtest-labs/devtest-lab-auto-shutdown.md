@@ -3,12 +3,12 @@ title: Automatikus leállítási házirendek kezelése a Azure DevTest Labsban |
 description: Megtudhatja, hogyan állíthatja be az automatikus leállítási szabályzatot egy laborhoz, hogy a virtuális gépek automatikusan leálljanak, ha nincsenek használatban.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: a30070470f9a75ec5c56d448cd09ca82dd0cbce7
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 3532e4859bd63c81cb9b9cda973064e5ef8357ac
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287544"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320710"
 ---
 # <a name="configure-autoshutdown-for-lab-and-compute-virtual-machines-in-azure-devtest-labs"></a>Az automatikus leállítás konfigurálása a tesztkörnyezet és a számítási virtuális gépek számára a Azure DevTest Labsban
 
@@ -43,7 +43,7 @@ A labor szabályzatának megtekintéséhez (és módosításához) kövesse az a
 6. Ezzel **a** beállítással engedélyezheti a szabályzatot **, és** letilthatja azt.
 7. Ha engedélyezi ezt a házirendet, az aktuális laborban lévő összes virtuális gép leállításához válassza ki az időt (és az időzónát).
 8. Adja meg az **Igen** vagy a **nem** lehetőséget, ha a megadott automatikus leállítási idő előtt 30 perccel szeretné elküldeni az értesítést. Ha az **Igen**lehetőséget választja, adjon meg egy WEBHOOK URL-címet vagy e-mail-címet, amely megadja, hogy hová szeretné közzétenni vagy elküldeni az értesítést. A felhasználó értesítést kap, és a Leállítás késleltetését adja meg. További információ: [értesítések](#notifications) szakasz. 
-9. Válassza a **Mentés** lehetőséget.
+9. Kattintson a **Mentés** gombra.
 
     Alapértelmezés szerint, ha engedélyezve van, ez a házirend az aktuális laborban található összes virtuális gépre vonatkozik. Ha egy adott virtuális gépről el szeretné távolítani ezt a beállítást, nyissa meg a virtuális gép felügyeleti paneljét, és módosítsa az automatikus **leállítási** beállítást.
     
@@ -162,7 +162,7 @@ Első lépésként hozzon létre egy logikai alkalmazást az Azure-előfizetés�
     }
     ```
     
-    ![Kérelem törzsének JSON-sémája](./media/devtest-lab-auto-shutdown/request-json.png)
+    ![A "kérelem törzse JSON-sémát" megjelenítő képernyőkép.](./media/devtest-lab-auto-shutdown/request-json.png)
 7. Válassza az **+ új lépés** lehetőséget a tervezőben, és kövesse az alábbi lépéseket:
     1. Keresse meg az **Office 365 Outlook – E-mail küldése lehetőséget**. 
     2. Válassza **az E-mail küldése** **műveletből**lehetőséget. 
@@ -184,7 +184,7 @@ Első lépésként hozzon létre egy logikai alkalmazást az Azure-előfizetés�
 2. Az **automatikus leállítás** lapon válassza **a** be lehetőséget a szabályzat engedélyezéséhez **, majd a** letiltásához.
 3. Ha engedélyezi ezt a házirendet, itt adhatja meg a virtuális gép leállításának **időpontját** (és **időzónáját**).
 4. Adja meg az **Igen** vagy a **nem** lehetőséget, ha a megadott automatikus leállítási idő előtt 30 perccel szeretné elküldeni az értesítést. Ha az **Igen**lehetőséget választja, adjon meg egy WEBHOOK URL-címet vagy e-mail-címet, amely megadja, hogy hová szeretné közzétenni vagy elküldeni az értesítést. A felhasználó értesítést kap, és a Leállítás késleltetését adja meg. További információ: [értesítések](#notifications) szakasz. 
-9. Válassza a **Mentés** lehetőséget.
+9. Kattintson a **Mentés** gombra.
 
     ![Automatikus leállítás konfigurálása számítási virtuális géphez](./media/devtest-lab-auto-shutdown/comnpute-auto-shutdown.png)
 
@@ -209,5 +209,5 @@ Amikor frissíti az automatikus leállítási beállítást, megjelenik a virtu�
     ![Activity napló – változások előzményei](./media/devtest-lab-auto-shutdown/activity-log-entry-change-history.png)
 6. A művelet további részleteinek megtekintéséhez váltson a **JSON** lapra az **ütemterv hozzáadása vagy módosítása** lapon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az összes házirend beállításának megismeréséhez tekintse meg [a tesztkörnyezet-szabályzatok meghatározása a Azure DevTest Labsban](devtest-lab-set-lab-policy.md)című témakört.

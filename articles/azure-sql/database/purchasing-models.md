@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: carlrab
+ms.reviewer: ''
 ms.date: 05/28/2020
-ms.openlocfilehash: a11894eb94b73d8d31ca7135be2ba9c05eca5e04
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: aef29eef7eb53c4cc4ffcc4926f9efe533374178
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86075880"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319452"
 ---
 # <a name="choose-between-the-vcore-and-dtu-purchasing-models---azure-sql-database-and-sql-managed-instance"></a>Választás a virtuális mag és a DTU beszerzési modelljei közül – Azure SQL Database és az SQL felügyelt példánya
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -34,10 +34,10 @@ Két beszerzési modell létezik:
 
 A következő táblázat és diagram hasonlítja össze a virtuális mag-alapú és a DTU-alapú vásárlási modelleket:
 
-|**Vásárlási modell**|**Leírás**|**Legjobb a következőhöz:**|
+|**Vásárlási modell**|**Leírás**|**A következőkre alkalmas**|
 |---|---|---|
-|DTU-alapú|Ez a modell a számítási, tárolási és I/O-erőforrások kötegelt mérőszámán alapul. A számítási méretek az önálló adatbázisok és a rugalmas készletekhez tartozó rugalmas adatbázis-tranzakciós egységek (Edtu) DTU vannak kifejezve. További információ a DTU és a Edtu: [Mi a DTU és a edtu?](purchasing-models.md#dtu-based-purchasing-model).|Azok az ügyfelek, akik egyszerű, előre konfigurált erőforrás-beállításokat szeretnének|
-|Virtuális mag-alapú|Ez a modell lehetővé teszi a számítási és tárolási erőforrások egymástól független kiválasztását. A virtuális mag-alapú vásárlási modell azt is lehetővé teszi, hogy a költségek megtakarításához a SQL Server [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) is használja.|Rugalmasságot, irányítást és átlátszóságot biztosító ügyfelek|
+|DTU-alapú|Ez a modell a számítási, tárolási és I/O-erőforrások kötegelt mérőszámán alapul. A számítási méretek az önálló adatbázisok esetében adatbázis-tranzakciós egységben (DTU), a rugalmas készletek esetében pedig rugalmas adatbázis-tranzakciós egységben (eDTU) vannak megadva. További információ a DTU-kkal és eDTU-kkal kapcsolatban: [Mik azok a DTU-k és eDTU-k?](purchasing-models.md#dtu-based-purchasing-model)|Azok az ügyfelek, akik egyszerű, előre konfigurált erőforrás-beállításokat szeretnének|
+|Virtuális mag-alapú|Ez a modell lehetővé teszi a számítási és tárolási erőforrások egymástól független kiválasztását. A virtuálismag-alapú vásárlási modell lehetővé teszi az [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) SQL Serverrel való használatát a költségek megtakarítása érdekében.|Rugalmasságot, irányítást és átlátszóságot biztosító ügyfelek|
 ||||  
 
 ![Díjszabási modell összehasonlítása](./media/purchasing-models/pricing-model.png)
@@ -76,8 +76,8 @@ A virtuális mag-alapú vásárlási modellben az SQL Database és az SQL felüg
 
 A virtuális mag-alapú vásárlási modell lehetővé teszi a számítási és tárolási erőforrások egymástól független kiválasztását, a helyszíni teljesítmény egyeztetését és az árak optimalizálását. A virtuális mag-alapú vásárlási modellben a következőket kell fizetnie:
 
-- Számítási erőforrások (a szolgáltatási szintek és a virtuális mag száma, valamint a memória mennyisége és a hardverek generálása).
-- Az adatmennyiség és a naplózási tároló típusa és mennyisége.
+- Számítási erőforrások (a szolgáltatásszint + a virtuális magok száma és a memória mennyisége + hardvergeneráció).
+- Az adatok típusa és mennyisége, valamint naplótárolás.
 - Biztonsági mentési tár (RA-GRS).
 
 > [!IMPORTANT]
@@ -168,7 +168,7 @@ Nem. Nem kell offline állapotba hoznia az alkalmazást. Az új szolgáltatási 
 
 Igen, a Azure Portal, a PowerShell, az Azure CLI, a T-SQL vagy a REST API használatával könnyedén átalakíthatja az adatbázist bármely támogatott teljesítménybeli célkitűzésre. Lásd: [önálló adatbázisok kezelése](single-database-scale.md) és [rugalmas készletek kezelése](elastic-pool-overview.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A virtuális mag-alapú vásárlási modellel kapcsolatos további információkért lásd: [virtuális mag-alapú vásárlási modell](service-tiers-vcore.md).
 - A DTU-alapú vásárlási modellel kapcsolatos további információkért lásd: [DTU-alapú vásárlási modell](service-tiers-dtu.md).

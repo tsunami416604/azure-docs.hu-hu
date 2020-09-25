@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 16d7965b8d42a6fdd6ebd68307b01b322cfa7cc6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: ad64d56899a9a54f4c8aede78ba6b4f2b77b8249
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285237"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331539"
 ---
 # <a name="azcopy-make"></a>azcopy make
 
@@ -45,7 +45,7 @@ azcopy make "https://[account-name].[blob,file,dfs].core.windows.net/[top-level-
 |Beállítás|Leírás|
 |--|--|
 |-h,-– Súgó|Súgótartalom megjelenítése a make parancshoz. |
-|--kvóta-GB UInt32|Meghatározza a megosztás maximális méretét gigabájtban (GiB), a nulla érték azt jelenti, hogy elfogadja a Fájlszolgáltatások alapértelmezett kvótáját.|
+|--kvóta-GB UInt32|Meghatározza a megosztás maximális méretét gigabájtban (GB), a nulla érték azt jelenti, hogy elfogadja a Fájlszolgáltatások alapértelmezett kvótáját.|
 
 ## <a name="options-inherited-from-parent-commands"></a>A szülő parancsoktól örökölt beállítások
 
@@ -55,6 +55,6 @@ azcopy make "https://[account-name].[blob,file,dfs].core.windows.net/[top-level-
 |--output-Type karakterlánc|A parancs kimenetének formátuma. A lehetőségek a következők: Text, JSON. Az alapértelmezett érték a "text".|
 |--megbízható-Microsoft-utótagok karakterlánca   |További tartomány-utótagokat határoz meg, amelyekben Azure Active Directory bejelentkezési tokenek küldhetők.  Az alapértelmezett érték: "*. Core.Windows.net;*. core.chinacloudapi.cn; *. Core.cloudapi.de;*. core.usgovcloudapi.net '. Az itt felsorolt beállítások az alapértelmezett értékre kerülnek. A biztonság érdekében itt csak Microsoft Azure-tartományokat helyezhet el. Több bejegyzést pontosvesszővel kell elválasztani.|
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 - [azcopy](storage-ref-azcopy.md)

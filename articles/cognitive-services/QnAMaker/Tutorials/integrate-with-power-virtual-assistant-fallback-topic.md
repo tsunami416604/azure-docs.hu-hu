@@ -3,12 +3,12 @@ title: 'Oktatóanyag: integrálás a Power Virtual agentekkel – QnA Maker'
 description: Ebben az oktatóanyagban az aktív tanulással fejlesztheti tudásbázisának minőségét. Tekintse át, fogadja el vagy utasítsa el, vagy vegye fel a meglévő kérdések eltávolítása vagy módosítása nélkül.
 ms.topic: tutorial
 ms.date: 06/08/2020
-ms.openlocfilehash: f1d51f6ad8892252161238eb71fbb02f463463fd
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 6d00833a1331ebca9b070d90f32ee30c56bd5f96
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84635375"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319214"
 ---
 # <a name="tutorial-add-your-knowledge-base-to-power-virtual-agents"></a>Oktatóanyag: a Tudásbázis hozzáadása a virtuális ügynökökhöz
 Hozzon létre és terjesszen ki egy [Power Virtual Agents](https://powervirtualagents.microsoft.com/) -robotot, hogy válaszokat nyújtson a Tudásbázisból.
@@ -152,7 +152,7 @@ Az alábbi eljárás egy olyan energiagazdálkodási folyamatot hoz létre, amel
 1. Jelölje be a **Válasz létrehozása** művelet jelölőnégyzetet, majd adja meg a QnA Maker beállításait egy korábbi [, Tudásbázis létrehozása és közzététele](#create-and-publish-a-knowledge-base)című szakaszban. Az alábbi képen a **Service Host** a Tudásbázis gazdagép- **gazdagépére** hivatkozik, és a formátuma a következő: `https://YOUR-RESOURCE-NAME.azurewebsites.net/qnamaker` .
 
 
-    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-fill-in-generate-answer-settings.png" alt-text="A QnA Maker-sablon folyamatának részleges képernyőképe, a Folytatás gomb kiemelve.":::
+    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-fill-in-generate-answer-settings.png" alt-text="A QnA Maker-sablon folyamatának részleges képernyőképe, a generált válasz (előzetes verzió) kiemelve.":::
 
 1. A folyamat mentéséhez válassza a **Mentés** lehetőséget.
 
@@ -199,10 +199,10 @@ Ahhoz, hogy az ügynök megtalálja és csatlakozhasson a folyamathoz, a folyama
 
 1. A környezeti eszköztáron válassza a **Mentés**lehetőséget, hogy mentse a szerzői vászon részleteit a témakörben.
 
-A végleges ügynök vásznon látható.
+Így néz ki a végső ügynök vászonja.
 
 > [!div class="mx-imgBorder"]
-> ![Képernyőfelvétel a végleges ügynök vászonról](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-topic-authoring-canvas-full-flow.png)
+> ![Képernyőfelvétel: a végső ügynök vászonja trigger kifejezésekkel, műveletekkel, majd üzenetekkel.](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-topic-authoring-canvas-full-flow.png)
 
 ## <a name="test-the-agent"></a>Az ügynök tesztelése
 
@@ -214,9 +214,9 @@ A végleges ügynök vásznon látható.
     |--|--|--|
     |1|Üdvözöljük|Beszélgetés indítása|
     |2|Tárolási idő|Példa témakörre. Ez úgy van konfigurálva, hogy az Ön részéről további munka nélkül működjön.|
-    |3|Igen|Válasz címzettje `Did that answer your question?`|
+    |3|Yes|Válasz címzettje `Did that answer your question?`|
     |4|Kiváló|Válasz címzettje `Please rate your experience.`|
-    |5|Igen|Válasz címzettje `Can I help with anything else?`|
+    |5|Yes|Válasz címzettje `Can I help with anything else?`|
     |6|Hogyan javíthatom a lekérdezési előrejelzések teljesítményének teljesítményét?|Ez a kérdés elindítja a visszalépési műveletet, amely választ küld a szövegnek a tudásbázisba. Ezután megjelenik a válasz. az egyes műveletekhez tartozó zöld pipa jelzi az egyes műveletek sikerességét.|
 
     :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-test-tracked.png" alt-text="Képernyőkép a csevegési robotról, amely zöld pipa jelzi a sikeres műveletekhez.":::

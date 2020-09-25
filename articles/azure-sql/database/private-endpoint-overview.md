@@ -9,12 +9,12 @@ ms.topic: overview
 ms.custom: sqldbrb=1
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: f8c7e2cfb17ca48a67a009f532a9cbb6894cc05d
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: b0908aee6253a3be486f71c245ea1eee2ff8b9bb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442598"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319469"
 ---
 # <a name="azure-private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure Private-hivatkozás Azure SQL Database és az Azure szinapszis Analyticshez
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -23,28 +23,6 @@ A privát hivatkozás lehetővé teszi, hogy egy **privát végponton**keresztü
 
 > [!IMPORTANT]
 > Ez a cikk a Azure SQL Database és az Azure szinapszis Analytics (korábban SQL Data Warehouse) szolgáltatásra is vonatkozik. Az egyszerűség kedvéért az "adatbázis" kifejezés a Azure SQL Database és az Azure szinapszis Analytics mindkét adatbázisára vonatkozik. Hasonlóképpen, a "Server"re mutató hivatkozások a Azure SQL Database és az Azure szinapszis Analytics szolgáltatást futtató [logikai SQL Serverre](logical-servers.md) hivatkoznak. Ez a cikk *nem* vonatkozik az **Azure SQL felügyelt példányaira**.
-
-## <a name="data-exfiltration-prevention"></a>Adatkiszivárgás megelőzése
-
-A Azure SQL Databaseban lévő adatok kiszűrése, ha egy jogosult felhasználó, például egy adatbázis-rendszergazda képes az adatok kinyerésére egy rendszerből, és a szervezeten kívül más helyre vagy rendszerre helyezi át. A felhasználó például egy harmadik fél tulajdonában lévő Storage-fiókba helyezi át az adatátvitelt.
-
-Vegyünk például egy olyan forgatókönyvet, amelyben SQL Server Management Studio (SSMS) fut egy Azure-beli virtuális gépen, amely egy SQL Database-adatbázishoz csatlakozik. Ez az adatbázis az USA nyugati régiójának adatközpontjában található. Az alábbi példa bemutatja, hogyan korlátozható a hozzáférés nyilvános végpontokkal a SQL Database hálózati hozzáférés-vezérlés használatával.
-
-1. Tiltsa le a nyilvános végponton keresztül SQL Database összes Azure-szolgáltatás forgalmát az Azure-szolgáltatások **kikapcsolásának**engedélyezése beállítással. Győződjön meg arról, hogy a kiszolgáló és az adatbázis szintű tűzfalszabályok nem engedélyezettek az IP-címekben. További információ: [Azure SQL Database és Azure szinapszis Analytics hálózati hozzáférés-vezérlés](network-access-controls-overview.md).
-1. Csak a virtuális gép magánhálózati IP-címének használatával engedélyezze a SQL Database-adatbázis felé irányuló forgalmat. További információt a [szolgáltatás-végpont](vnet-service-endpoint-rule-overview.md) és a [virtuális hálózati tűzfalszabályok](firewall-configure.md)cikkeiben talál.
-1. Az Azure-beli virtuális gépen a következő módon Szűkítse le a kimenő kapcsolatok hatókörét [hálózati biztonsági csoportok (NSG)](../../virtual-network/manage-network-security-group.md) és szolgáltatás-címkék használatával.
-    - Olyan NSG-szabályt ad meg, amely engedélyezi a forgalmat a Service tag = SQL szolgáltatásban. WestUs – csak az USA nyugati régiójában lévő SQL Databasehoz való kapcsolódás engedélyezése
-    - NSG-szabály megadása ( **magasabb prioritással**) a Service tag által megtagadott forgalom megtagadásához = SQL – az összes régióban SQL Database kapcsolatok megtagadása
-
-A telepítő végén az Azure-beli virtuális gép csak az USA nyugati régiójában lévő SQL Database adatbázisához tud csatlakozni. A kapcsolat azonban nem korlátozódik egyetlen adatbázisra sem a SQL Database-ben. A virtuális gép továbbra is csatlakozhat az USA nyugati régiójában található bármely adatbázishoz, beleértve azokat az adatbázisokat is, amelyek nem részei az előfizetésnek. Noha a fenti forgatókönyvben lévő adatmennyiséget egy adott régióra csökkentették, nem kiszűrése el teljesen.
-
-Privát hivatkozással az ügyfelek mostantól olyan hálózati hozzáférés-vezérlőket állíthatnak be, mint például a NSG a privát végponthoz való hozzáférés korlátozására. Az egyes Azure-beli Pásti-erőforrások ezután adott privát végpontokra vannak leképezve. A rosszindulatú bennfentesek csak a leképezett (például SQL Database) adatbázishoz férnek hozzá, és nincs más erőforrás. 
-
-## <a name="on-premises-connectivity-over-private-peering"></a>Helyszíni kapcsolat privát társon keresztül
-
-Amikor az ügyfelek a helyszíni gépekről csatlakoznak a nyilvános végponthoz, az IP-címüket [kiszolgálói szintű tűzfalszabály](firewall-create-server-level-portal-quickstart.md)használatával kell hozzáadni az IP-alapú tűzfalhoz. Habár ez a modell jól működik, hogy lehetővé tegye az egyes gépekhez való hozzáférést a fejlesztési vagy tesztelési feladatokhoz, nehéz felügyelni éles környezetben.
-
-A privát kapcsolat lehetővé teszi, hogy az ügyfelek az [ExpressRoute](../../expressroute/expressroute-introduction.md), a privát vagy a VPN-alagúton keresztül engedélyezzék a helyszíni hozzáférést a privát végponthoz. Az ügyfelek ezután letilthatják az összes hozzáférést a nyilvános végponton keresztül, és nem használhatják az IP-alapú tűzfalat az IP-címek engedélyezésére.
 
 ## <a name="how-to-set-up-private-link-for-azure-sql-database"></a>Privát hivatkozás beállítása Azure SQL Databasehoz 
 
@@ -71,6 +49,12 @@ Miután a hálózati rendszergazda létrehozta a magánhálózati végpontot (PE
 
 1. Jóváhagyás vagy elutasítás után a lista a megfelelő állapotot jeleníti meg a válasz szövegével együtt.
 ![A jóváhagyás utáni összes Pécs képernyőképe][5]
+
+## <a name="on-premises-connectivity-over-private-peering"></a>Helyszíni kapcsolat privát társon keresztül
+
+Amikor az ügyfelek a helyszíni gépekről csatlakoznak a nyilvános végponthoz, az IP-címüket [kiszolgálói szintű tűzfalszabály](firewall-create-server-level-portal-quickstart.md)használatával kell hozzáadni az IP-alapú tűzfalhoz. Habár ez a modell jól működik, hogy lehetővé tegye az egyes gépekhez való hozzáférést a fejlesztési vagy tesztelési feladatokhoz, nehéz felügyelni éles környezetben.
+
+A privát kapcsolat lehetővé teszi, hogy az ügyfelek az [ExpressRoute](../../expressroute/expressroute-introduction.md), a privát vagy a VPN-alagúton keresztül engedélyezzék a helyszíni hozzáférést a privát végponthoz. Az ügyfelek ezután letilthatják az összes hozzáférést a nyilvános végponton keresztül, és nem használhatják az IP-alapú tűzfalat az IP-címek engedélyezésére.
 
 ## <a name="use-cases-of-private-link-for-azure-sql-database"></a>Privát hivatkozás használata Azure SQL Database esetén 
 
@@ -154,6 +138,22 @@ A [SQL Databasehoz való kapcsolódáshoz](connect-query-ssms.md)kövesse az al�
 select client_net_address from sys.dm_exec_connections 
 where session_id=@@SPID
 ````
+
+## <a name="data-exfiltration-prevention"></a>Adatkiszivárgás megelőzése
+
+A Azure SQL Databaseban lévő adatok kiszűrése, ha egy jogosult felhasználó, például egy adatbázis-rendszergazda képes az adatok kinyerésére egy rendszerből, és a szervezeten kívül más helyre vagy rendszerre helyezi át. A felhasználó például egy harmadik fél tulajdonában lévő Storage-fiókba helyezi át az adatátvitelt.
+
+Vegyünk például egy olyan forgatókönyvet, amelyben SQL Server Management Studio (SSMS) fut egy Azure-beli virtuális gépen, amely egy SQL Database-adatbázishoz csatlakozik. Ez az adatbázis az USA nyugati régiójának adatközpontjában található. Az alábbi példa bemutatja, hogyan korlátozható a hozzáférés nyilvános végpontokkal a SQL Database hálózati hozzáférés-vezérlés használatával.
+
+1. Tiltsa le a nyilvános végponton keresztül SQL Database összes Azure-szolgáltatás forgalmát az Azure-szolgáltatások **kikapcsolásának**engedélyezése beállítással. Győződjön meg arról, hogy a kiszolgáló és az adatbázis szintű tűzfalszabályok nem engedélyezettek az IP-címekben. További információ: [Azure SQL Database és Azure szinapszis Analytics hálózati hozzáférés-vezérlés](network-access-controls-overview.md).
+1. Csak a virtuális gép magánhálózati IP-címének használatával engedélyezze a SQL Database-adatbázis felé irányuló forgalmat. További információt a [szolgáltatás-végpont](vnet-service-endpoint-rule-overview.md) és a [virtuális hálózati tűzfalszabályok](firewall-configure.md)cikkeiben talál.
+1. Az Azure-beli virtuális gépen a következő módon Szűkítse le a kimenő kapcsolatok hatókörét [hálózati biztonsági csoportok (NSG)](../../virtual-network/manage-network-security-group.md) és szolgáltatás-címkék használatával.
+    - Olyan NSG-szabályt ad meg, amely engedélyezi a forgalmat a Service tag = SQL szolgáltatásban. WestUs – csak az USA nyugati régiójában lévő SQL Databasehoz való kapcsolódás engedélyezése
+    - NSG-szabály megadása ( **magasabb prioritással**) a Service tag által megtagadott forgalom megtagadásához = SQL – az összes régióban SQL Database kapcsolatok megtagadása
+
+A telepítő végén az Azure-beli virtuális gép csak az USA nyugati régiójában lévő SQL Database adatbázisához tud csatlakozni. A kapcsolat azonban nem korlátozódik egyetlen adatbázisra sem a SQL Database-ben. A virtuális gép továbbra is csatlakozhat az USA nyugati régiójában található bármely adatbázishoz, beleértve azokat az adatbázisokat is, amelyek nem részei az előfizetésnek. Noha a fenti forgatókönyvben lévő adatmennyiséget egy adott régióra csökkentették, nem kiszűrése el teljesen.
+
+Privát hivatkozással az ügyfelek mostantól olyan hálózati hozzáférés-vezérlőket állíthatnak be, mint például a NSG a privát végponthoz való hozzáférés korlátozására. Az egyes Azure-beli Pásti-erőforrások ezután adott privát végpontokra vannak leképezve. A rosszindulatú bennfentesek csak a leképezett (például SQL Database) adatbázishoz férnek hozzá, és nincs más erőforrás. 
 
 ## <a name="limitations"></a>Korlátozások 
 A magánhálózati végponttal létesített kapcsolatok csak a **proxyt** támogatják a [kapcsolati házirendként](connectivity-architecture.md#connection-policy)

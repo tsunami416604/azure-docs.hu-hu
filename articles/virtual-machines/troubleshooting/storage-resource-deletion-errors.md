@@ -1,6 +1,6 @@
 ---
 title: A tárolási erőforrások törlésével kapcsolatos hibák elhárítása Linux rendszerű virtuális gépeken az Azure-ban | Microsoft Docs
-description: A csatlakoztatott virtuális merevlemezeket tartalmazó tárolási erőforrások törlésekor felmerülő problémák elhárítása.
+description: Megtudhatja, hogyan oldhatja meg a Linux rendszerű virtuális gépek problémáit a csatlakoztatott virtuális merevlemezeket tartalmazó tárolási erőforrások törlésekor.
 keywords: ''
 services: virtual-machines
 author: genlin
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 8f145dcf8d476009d81056b3f4f970460209a5bc
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 8209f5b7fc02f59c33ad0a7b58ec6305d6eecf0c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649737"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320081"
 ---
 # <a name="troubleshoot-storage-resource-deletion-errors"></a>A tárolási erőforrások törlési hibáinak elhárítása
 

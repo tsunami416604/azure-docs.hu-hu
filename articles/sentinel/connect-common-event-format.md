@@ -14,30 +14,32 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/26/2019
 ms.author: yelevin
-ms.openlocfilehash: 51e6c74a8b80b94ca552645cfbb76bd4e162a62b
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: cd84a4b50ba32ee3f562ace9b2583cf5e561be84
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650060"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320387"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>A külső megoldás összekötése a közös esemény formátumával
 
 
 Ha olyan külső megoldást csatlakoztat, amely CEF-üzeneteket küld, három lépést kell megtennie az Azure Sentinel szolgáltatással való csatlakozáshoz:
 
-1. lépés: [a CEF csatlakoztatása az ügynök üzembe helyezésével](connect-cef-agent.md) 2. lépés: a [megoldásra vonatkozó lépések végrehajtása](connect-cef-solution-config.md) 3. lépés: a [kapcsolat ellenőrzése](connect-cef-verify.md)
+1. lépés: [a CEF csatlakoztatása syslog/CEF-továbbító üzembe helyezésével](connect-cef-agent.md) 2. lépés: a [megoldásra vonatkozó lépések végrehajtása](connect-cef-solution-config.md) 3. lépés: a [kapcsolat ellenőrzése](connect-cef-verify.md)
 
-Ez a cikk leírja, hogyan működik a kapcsolat, biztosítja az előfeltételeket, és megadja az ügynök üzembe helyezésének lépéseit olyan biztonsági megoldásokban, amelyek a syslog-alapú Common Event Format (CEF) üzeneteket küldenek. 
+Ez a cikk leírja, hogyan működik a kapcsolat, biztosítja az előfeltételeket, és ismerteti az ügynök üzembe helyezésének lépéseit olyan biztonsági megoldásokban, amelyek a syslog-ra épülő Common Event Format (CEF) üzeneteket küldenek. 
 
 > [!NOTE] 
 > Az adattárolást annak a munkaterületnek a földrajzi helye tárolja, amelyen az Azure Sentinel alkalmazást futtatja.
 
-Ennek a kapcsolatnak a létrehozásához telepítenie kell egy ügynököt egy dedikált linuxos gépen (VM vagy helyszíni) a készülék és az Azure Sentinel közötti kommunikáció támogatása érdekében. Az alábbi ábra az Azure-beli Linux rendszerű virtuális gépek esetén történő telepítést ismerteti.
+Ahhoz, hogy ez a kapcsolat elérhető legyen, telepítenie kell egy syslog-továbbító kiszolgálót a készülék és az Azure Sentinel közötti kommunikáció támogatásához.  A kiszolgáló egy dedikált linuxos gépről (VM vagy helyszíni) áll, amelyen telepítve van a Linux rendszerhez készült Log Analytics-ügynök. 
+
+Az alábbi ábra az Azure-beli linuxos virtuális gépek esetén történő telepítést ismerteti:
 
  ![CEF az Azure-ban](./media/connect-cef/cef-syslog-azure.png)
 
-Másik lehetőségként ez a beállítás akkor is fennáll, ha egy másik felhőben vagy egy helyszíni gépen használ virtuális gépet. 
+Másik lehetőségként ez a beállítás akkor is előfordulhat, ha egy másik felhőben vagy egy helyszíni gépen található virtuális gépet használ: 
 
  ![CEF a helyszínen](./media/connect-cef/cef-syslog-onprem.png)
 
@@ -46,7 +48,7 @@ Másik lehetőségként ez a beállítás akkor is fennáll, ha egy másik felh�
 
 Győződjön meg arról, hogy a cég biztonsági szabályzata szerint konfigurálja a gép biztonságát. Konfigurálhatja például a hálózatot úgy, hogy az megfeleljen a vállalati hálózati biztonsági házirendnek, és módosítsa a démon portjait és protokollait úgy, hogy azok megfeleljenek a követelményeinek. A következő útmutatást követve javíthatja a gép biztonsági konfigurációját:  [biztonságos virtuális gép az Azure-ban](../virtual-machines/security-policy.md), [ajánlott eljárások a hálózati biztonsághoz](../security/fundamentals/network-best-practices.md).
 
-Ahhoz, hogy TLS-kommunikációt lehessen használni a biztonsági megoldás és a syslog-gép között, konfigurálnia kell a syslog démont (rsyslog vagy syslog-ng) a TLS-vel való kommunikációhoz: a [syslog-forgalom titkosítása TLS-rsyslog](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html), a [naplózási üzenetek titkosítása a TLS – syslog-ng](https://support.oneidentity.com/technical-documents/syslog-ng-open-source-edition/3.22/administration-guide/60#TOPIC-1209298)használatával.
+Ahhoz, hogy TLS-kommunikációt lehessen használni a syslog-forrás és a syslog-továbbító között, konfigurálnia kell a syslog démont (rsyslog vagy syslog-ng) a TLS-vel való kommunikációhoz: a [syslog-forgalom titkosítása a TLS-rsyslog](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html), a [naplózási üzenetek titkosítása a TLS – syslog-ng](https://support.oneidentity.com/technical-documents/syslog-ng-open-source-edition/3.22/administration-guide/60#TOPIC-1209298)használatával.
 
  
 ## <a name="prerequisites"></a>Előfeltételek
@@ -83,7 +85,7 @@ Győződjön meg arról, hogy a gép a következő követelményeknek is megfele
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebből a dokumentumból megtudhatta, hogyan csatlakoztathatók a CEF-készülékek az Azure Sentinel szolgáltatáshoz. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
 - Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats.md).

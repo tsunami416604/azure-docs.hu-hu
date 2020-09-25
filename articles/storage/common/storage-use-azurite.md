@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 35a93669bf301b3be1d560a0777751c12f3c9d14
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f18746242ef9f680f44be1fd614c6c769289aadb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001909"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331573"
 ---
 # <a name="use-the-azurite-emulator-for-local-azure-storage-development"></a>A Azurite Emulator használata a helyi Azure Storage-fejlesztéshez
 
@@ -555,6 +555,12 @@ A Azurite az Azure Storage-hibák kezelésére szolgáló logikával van összha
 A Azurite támogatja az olvasási hozzáférésű geo-redundáns replikálást (RA-GRS). A tárolási erőforrások esetében a fiók nevének hozzáfűzésével nyissa meg a másodlagos helyet `-secondary` . Például a következő címnek lehet a blobokhoz való hozzáférése a Azurite írásvédett másodlagos használatával:
 
 `http://127.0.0.1:10000/devstoreaccount1-secondary/mycontainer/myblob.txt`
+
+### <a name="table-support"></a>Tábla támogatása
+
+A Azurite lévő táblák támogatása jelenleg fejlesztés alatt áll, és a részvételre nyitott. A legújabb folyamathoz keresse meg a [Azurite v3 tábla](https://github.com/Azure/Azurite/wiki/Azurite-V3-Table) projektjét.
+
+A tartós függvények támogatásához táblák szükségesek.
 
 ## <a name="azurite-is-open-source"></a>A Azurite nyílt forráskódú
 

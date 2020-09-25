@@ -7,17 +7,17 @@ ms.author: baanders
 ms.date: 4/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 88f74bcc93d640ec8d4d9014c6f25a6d0d0df680
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.custom: devx-track-js
+ms.openlocfilehash: dd0d3e462f0b2d8b525e63d65d657a8f056d01a9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89614011"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331862"
 ---
 # <a name="write-client-app-authentication-code"></a>Ügyfél-alkalmazás hitelesítési kódjának írása
 
-Miután [beállított egy Azure digitális Twins-példányt és-hitelesítést](how-to-set-up-instance-scripted.md), létrehozhat egy ügyfélalkalmazás, amelyet a példánnyal való interakcióhoz használni fog. Miután beállította a Starter Client projektet, ez a cikk bemutatja, **hogyan írhat kódot az adott ügyfélalkalmazás számára** az Azure Digital Twins-példánnyal való hitelesítéshez.
+Miután [beállított egy Azure digitális Twins-példányt és-hitelesítést](how-to-set-up-instance-portal.md), létrehozhat egy ügyfélalkalmazás, amelyet a példánnyal való interakcióhoz használni fog. Miután beállította a Starter Client projektet, ez a cikk bemutatja, **hogyan írhat kódot az adott ügyfélalkalmazás számára** az Azure Digital Twins-példánnyal való hitelesítéshez.
 
 Ebben a cikkben két módszer létezik a mintakód megírására. A választott nyelvtől függően használhatja az Ön számára legmegfelelőbbet:
 * A mintakód első szakasza az Azure Digital Twins .NET (C#) SDK-t használja. Az SDK a .NET-hez készült Azure SDK része, és itt található: az [*Azure IoT Digital Twin ügyféloldali kódtár a .net-hez*](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core).
@@ -27,7 +27,7 @@ További információ az Azure Digital Twins API-jai és SDK [*-król: az Azure 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Először végezze el a telepítési lépéseket a következő [*útmutatóban: példány és hitelesítés beállítása*](how-to-set-up-instance-scripted.md). Ez biztosítja, hogy rendelkezik egy Azure digitális Twins-példánnyal, a felhasználó rendelkezik hozzáférési engedélyekkel, és beállította az ügyfélalkalmazások engedélyeit. Az összes beállítás után készen áll az ügyfélalkalmazás kódjának írására.
+Először végezze el a telepítési lépéseket a következő [*útmutatóban: példány és hitelesítés beállítása*](how-to-set-up-instance-portal.md). Ez biztosítja, hogy rendelkezik egy Azure digitális Twins-példánnyal, a felhasználó rendelkezik hozzáférési engedélyekkel, és beállította az ügyfélalkalmazások engedélyeit. Az összes beállítás után készen áll az ügyfélalkalmazás kódjának írására.
 
 A folytatáshoz szüksége lesz egy ügyfélalkalmazás-projektre, amelyben a kódot írja. Ha még nem rendelkezik beállított ügyfélalkalmazás-projekttel, hozzon létre egy alapszintű projektet a választott nyelven az oktatóanyag használatával.
 
@@ -45,13 +45,13 @@ A következő utasításokra is szüksége lesz:
 using Azure.Identity;
 using Azure.DigitalTwins.Core;
 ```
-A .NET SDK-val történő hitelesítéshez használja az [Azure. Identity](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet) könyvtárban definiált hitelesítő adatok beszerzésére szolgáló metódusok egyikét. Az alábbi két módszer általában használatban van (még ugyanabban az alkalmazásban együtt):
+A .NET SDK-val történő hitelesítéshez használja az [Azure. Identity](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true) könyvtárban definiált hitelesítő adatok beszerzésére szolgáló metódusok egyikét. Az alábbi két módszer általában használatban van (még ugyanabban az alkalmazásban együtt):
 
-* A [InteractiveBrowserCredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet) interaktív alkalmazásokhoz készült, és használható egy hitelesített SDK-ügyfél létrehozásához.
-* A [ManagedIdentityCredential](https://docs.microsoft.com/dotnet/api/azure.identity.managedidentitycredential?view=azure-dotnet) remekül működik olyan esetekben, amikor felügyelt identitásokat (MSI) kell használnia, és jó választás a Azure functions
+* A [InteractiveBrowserCredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true) interaktív alkalmazásokhoz készült, és használható egy hitelesített SDK-ügyfél létrehozásához.
+* A [ManagedIdentityCredential](https://docs.microsoft.com/dotnet/api/azure.identity.managedidentitycredential?view=azure-dotnet&preserve-view=true) remekül működik olyan esetekben, amikor felügyelt identitásokat (MSI) kell használnia, és jó választás a Azure functions
 
 ### <a name="interactivebrowsercredential-method"></a>InteractiveBrowserCredential metódus
-Az [InteractiveBrowserCredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet) metódus interaktív alkalmazásokhoz készült, és egy webböngészőt hoz létre a hitelesítéshez.
+Az [InteractiveBrowserCredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true) metódus interaktív alkalmazásokhoz készült, és egy webböngészőt hoz létre a hitelesítéshez.
 
 Ha egy hitelesített SDK-ügyfél létrehozásához az interaktív böngésző hitelesítő adatait szeretné használni, adja hozzá a következő kódot:
 
@@ -81,7 +81,7 @@ try
 > Habár az ügyfél-azonosító, a bérlői azonosító és a példány URL-címét közvetlenül a programkódba helyezheti a fentiekben látható módon, érdemes lehet a programkódot egy konfigurációs fájlból vagy környezeti változóból is beolvasni.
 
 ### <a name="managedidentitycredential-method"></a>ManagedIdentityCredential metódus
- A [ManagedIdentityCredential](https://docs.microsoft.com/dotnet/api/azure.identity.managedidentitycredential?view=azure-dotnet) metódus nagyban működik olyan esetekben, ahol [felügyelt identitásokra (MSI)](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)van szükség – például a Azure functions használatakor.
+ A [ManagedIdentityCredential](https://docs.microsoft.com/dotnet/api/azure.identity.managedidentitycredential?view=azure-dotnet&preserve-view=true) metódus nagyban működik olyan esetekben, ahol [felügyelt identitásokra (MSI)](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)van szükség – például a Azure functions használatakor.
 Az Azure-függvényekben a felügyelt identitás hitelesítő adatait használhatja a következőhöz hasonló módon:
 
 ```csharp

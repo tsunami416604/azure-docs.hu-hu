@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: azfuncdf
-ms.openlocfilehash: ae721d2a8df981ecf9ab8e8b04d0e0d287d523cd
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: f91cdaa81e18105eb39af442ab6152bfd2888ba9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88750708"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319707"
 ---
 # <a name="diagnostics-in-durable-functions-in-azure"></a>A Durable Functions diagnosztikája az Azure-ban
 
@@ -435,7 +435,7 @@ GET /runtime/webhooks/durabletask/instances/instance123?code=XYZ
 
 Az ügyfelek a következő választ kapják:
 
-```http
+```json
 {
   "runtimeStatus": "Running",
   "input": null,
@@ -461,7 +461,7 @@ Azure Functions támogatja a hibakeresési funkció programkódjának közvetlen
 > [!TIP]
 > Ha töréspontokat állít be a Orchestrator függvényekben, ha csak a nem újrajátszható végrehajtást szeretné megszüntetni, beállíthat egy feltételes töréspontot, amely csak akkor szakad meg, ha az "újrajátszás" érték `false` .
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Tárolás
 
 Alapértelmezés szerint a Durable Functions az Azure Storage-ban tárolja az állapotot. Ez azt jelenti, hogy a munkafolyamatok állapotát a [Microsoft Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md)eszközzel ellenőrizheti.
 
@@ -472,7 +472,7 @@ Ez a hibakereséshez hasznos, mert pontosan azt látja, hogy milyen állapotban 
 > [!WARNING]
 > Habár érdemes megtekinteni a táblázatos tárolóban a végrehajtási előzményeket, ne vegyen fel függőségeket ezen a táblán. Előfordulhat, hogy a Durable Functions bővítmény fejlődése megváltozhat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [További információ a Azure Functions figyeléséről](../functions-monitoring.md)

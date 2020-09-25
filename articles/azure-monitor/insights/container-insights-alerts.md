@@ -3,12 +3,12 @@ title: Teljesítmény-riasztások létrehozása a Azure Monitor for containers s
 description: Ez a cikk azt ismerteti, hogyan hozhatók létre egyéni riasztások a memória és a CPU-használat Azure Monitor a tárolók számára történő naplózási lekérdezései alapján.
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: 5d73f4399d10683597fb2a2e8a3a2ab4ba0d1165
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1041b8bfe299a0daac633e478c906c746759d50f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75730925"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319537"
 ---
 # <a name="how-to-set-up-alerts-for-performance-problems-in-azure-monitor-for-containers"></a>Teljesítményproblémákkal kapcsolatos riasztások beállítása a tárolókhoz készült Azure Monitorban
 
@@ -277,7 +277,7 @@ InsightsMetrics
 
 ## <a name="create-an-alert-rule"></a>Riasztási szabály létrehozása
 
-Az alábbi lépéseket követve hozzon létre egy naplózási riasztást Azure Monitorban a korábban megadott napló-keresési szabályok egyikének használatával. ARM-sablon használatával történő létrehozáshoz lásd: [példa a naplóbeli riasztások létrehozására az Azure Resource template használatával](../platform/alerts-log.md#sample-log-alert-creation-using-azure-resource-template).
+Az alábbi lépéseket követve hozzon létre egy naplózási riasztást Azure Monitorban a korábban megadott napló-keresési szabályok egyikének használatával. ARM-sablon használatával történő létrehozáshoz tekintse meg [Az Azure-erőforrás-sablon használatával történő naplózási riasztások létrehozásának mintáit](../platform/alerts-log-create-templates.md).
 
 >[!NOTE]
 >A tárolók erőforrás-felhasználására vonatkozó riasztási szabály létrehozásához a következő eljárással kell váltania egy új naplózási riasztási API-ra, amelyet a [váltás API-beállítások a naplók számára](../platform/alerts-log-api-switch.md)című témakörben talál.
@@ -305,7 +305,7 @@ Az alábbi lépéseket követve hozzon létre egy naplózási riasztást Azure M
 13. Válasszon ki egy meglévő **műveleti csoportot** , vagy hozzon létre egy új csoportot. Ez a lépés biztosítja, hogy a rendszer minden alkalommal végrehajtson ugyanazokat a műveleteket, amikor a rendszer riasztást indít el. Konfigurálás az alapján, hogy az informatikai vagy DevOps operatív csapata hogyan kezeli az incidenseket.
 14. Válassza a **riasztási szabály létrehozása** lehetőséget a riasztási szabály befejezéséhez. Azonnal el fog indulni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtekintheti a [napló lekérdezési példáit](container-insights-log-search.md#search-logs-to-analyze-data) , amelyekkel előre definiált lekérdezéseket és példákat tekinthet meg a fürtök riasztásának, megjelenítésének vagy elemzésének kiértékeléséhez és testreszabásához.
 - Ha többet szeretne megtudni a Azure Monitorről és a Kubernetes-fürt egyéb szempontjainak figyeléséről, tekintse meg a [Kubernetes-fürt teljesítményének megtekintése](container-insights-analyze.md) és a [Kubernetes-fürt állapotának megtekintése](container-insights-health.md)című témakört

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 09/07/2020
+ms.date: 09/23/2020
 ms.author: alkohli
-ms.openlocfilehash: c17cd17dfc3462d5a55753e6a4a364c14f9e2b62
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 34dc0717b13cb38c4477cc93f23d57d0a8023dae
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90899081"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320744"
 ---
 # <a name="what-is-azure-stack-edge-pro-with-gpu"></a>Mi az a GPU-val rendelkező Azure Stack Edge Pro?
 
@@ -40,15 +40,14 @@ Az alábbiakban azokat a forgatókönyveket láthatja, amelyekben a Azure Stack 
 
 Az Azure Stack Edge Pro a következő képességekkel rendelkezik:
 
-|Képesség |Leírás  |
+|Képesség |Description  |
 |---------|---------|
 |Gyorsított AI-következtetés| A beépített GPU (a modelltől függően egy vagy két) engedélyezte.|
 |Edge számítástechnika      |Támogatja a virtuális gépek és a tárolón lévő munkaterhelések használatát az adatok elemzéséhez, feldolgozásához és szűréséhez. |
-|Nagy teljesítmény | Nagy teljesítményű számítási és adatforgalom.|
 |Az adatok elérése     | Az adatok közvetlen elérése az Azure Storage-blobokból és az Azure Filesból felhőalapú API-k használatával az adatok további feldolgozásához a felhőben. Az eszköz helyi gyorsítótára a legutóbb használt fájlok gyors elérésére szolgál.|
 |Felhő által felügyelt     |Az eszköz és a szolgáltatás kezelése a Azure Portal keresztül történik.  |
 |Offline feltöltés     | A kapcsolat nélküli mód támogatja az offline feltöltési forgatókönyveket.|
-|Támogatott tárolási protokollok     | A standard SMB, NFS és REST protokollok támogatása az adatok betöltéséhez. <br> További információ a támogatott verziókról: [Azure stack Edge Pro rendszerkövetelményei](azure-stack-edge-system-requirements.md).|
+|Támogatott fájlátviteli protokollok      | A standard SMB, NFS és REST protokollok támogatása az adatok betöltéséhez. <br> További információ a támogatott verziókról: [Azure stack Edge Pro rendszerkövetelményei](azure-stack-edge-system-requirements.md).|
 |Adatfrissítés     | Lehetőség van a helyi fájlok legújabb változatra való frissítésére a felhőből.|
 |Titkosítás    | A BitLocker támogatja az adatok helyi titkosítását és biztonságos átvitelét a felhőbe *https*-en keresztül.|
 |Sávszélesség-szabályozás| Sávszélesség-használat korlátozása csúcsidőben.|
@@ -73,6 +72,8 @@ Az Azure Stack Edge Pro-megoldás Azure Stack Edge-erőforrásból, Azure Stack 
 Azure Stack Edge Pro fizikai eszköz, az Azure-erőforrás és a célként megadott Storage-fiók, amelybe az adatok átvitele nem feltétlenül azonos régióban kell, hogy legyen.
 
 - **Erőforrás rendelkezésre állása** – ebben az előzetes kiadásban az erőforrás az USA keleti régiójában, Nyugat-Európában és dél-Kelet-Ázsia régióban érhető el.
+
+- **Eszköz rendelkezésre állása** – az összes olyan ország listáját, ahol az Azure stack Edge Pro-eszköz elérhető, lépjen a **rendelkezésre állási** szakaszra az [Azure Stack Edge Pro díjszabásának](https://azure.microsoft.com/pricing/details/azure-stack/edge/#azureStackEdgePro) **Azure stack Edge Pro** lapján.
     
 - **Céloldali tárfiókok** – Az adatokat tároló tárfiókok minden Azure-régióban elérhetők. Azokat a régiókat, amelyekben a Storage-fiókok Azure Stack Edge Pro-adataikat tárolják, közel kell lennie ahhoz, hogy az eszköz az optimális teljesítmény érdekében legyen. Az eszköztől távol található tárfiók esetében hosszú késések és lassabb teljesítmény várható.
 

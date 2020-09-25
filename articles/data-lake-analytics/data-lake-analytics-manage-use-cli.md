@@ -6,12 +6,12 @@ ms.assetid: 4e5a3a0a-6d7f-43ed-aeb5-c3b3979a1e0a
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 01/29/2018
-ms.openlocfilehash: d4b9a7be36bd4c0a4044f3e76b96b21a16eb80de
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: f91619860b577981d9717904a3d4a3074c2eaf0f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132517"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320846"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-command-line-interface-cli"></a>Azure Data Lake Analytics kezelése az Azure parancssori felületével (CLI)
 
@@ -141,7 +141,7 @@ A blob Storage-fiók listázása:
    az dla account blob-storage list --account "<Data Lake Analytics account name>"
    ```
 
-![Data Lake Analytics adatforrások listázása](./media/data-lake-analytics-manage-use-cli/data-lake-analytics-list-data-source.png)
+![A "dataLakeStoreAccounts:" információval jelölt, az Azure C L-t bemutató képernyőkép.](./media/data-lake-analytics-manage-use-cli/data-lake-analytics-list-data-source.png)
 
 ### <a name="delete-data-sources"></a>Adatforrások törlése:
 
@@ -185,7 +185,7 @@ Ahhoz, hogy feladatot lehessen létrehozni, Data Lake Analytics fiókkal kell re
 >    ```
 
 ### <a name="cancel-jobs"></a>Feladatok megszakítása
-A LIST parancs használatával keresse meg a feladat azonosítóját, majd a Mégse gombra kattintva szakítsa meg a feladatot.
+A LIST parancs használatával keresse meg a feladat AZONOSÍTÓját, majd a Mégse gombra kattintva szakítsa meg a feladatot.
 
    ```azurecli
    az dla job cancel --account "<Data Lake Analytics account name>" --job-identity "<Job Id>"
@@ -211,7 +211,7 @@ az dla job recurrence list --account "<Data Lake Analytics Account Name>"
 az dla job recurrence show --account "<Data Lake Analytics Account Name>" --recurrence-identity "<Recurrence ID>"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [A Microsoft Azure Data Lake Analytics áttekintése](data-lake-analytics-overview.md)
 * [A Data Lake Analytics használatának első lépései az Azure Portallal](data-lake-analytics-get-started-portal.md)
 * [Azure Data Lake Analytics kezelése Azure Portal használatával](data-lake-analytics-manage-use-portal.md)

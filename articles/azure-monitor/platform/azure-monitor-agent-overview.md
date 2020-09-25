@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/10/2020
-ms.openlocfilehash: ea2fae483da495bce9551899b9646868251f0454
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: cc49bec71f6c591ca3036592b0949e3fc7cef48e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90030827"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263776"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a>Azure Monitor-ügynök áttekintése (előzetes verzió)
 A Azure Monitor ügynök (AMA) figyeli a virtuális gépek vendég operációs rendszerének figyelési adatait, és a Azure Monitor számára biztosítja azt. Ez a cikk áttekintést nyújt a Azure Monitor-ügynökről, beleértve a telepítésének módját és az adatgyűjtés konfigurálását.
@@ -38,6 +38,14 @@ A meglévő ügynökök adatgyűjtésének meghatározására szolgáló módsze
 - A diagnosztikai bővítmény minden virtuális géphez rendelkezik konfigurációval. Ez egyszerűen meghatározható a különböző virtuális gépek független definíciói, de a központilag könnyen kezelhető. Az adatok csak Azure Monitor metrikák, Azure Event Hubs vagy Azure Storage szolgáltatásba küldhetők. A Linux-ügynökök esetében a nyílt forráskódú, a Azure Monitor metrikák számára szükséges, hogy az adatok elküldjenek adatokat.
 
 Azure Monitor ügynök az [adatgyűjtési szabályok (DCR)](data-collection-rule-overview.md) használatával konfigurálja az egyes ügynököktől gyűjtött adatokat. Az adatgyűjtési szabályok lehetővé teszik a gyűjtési beállítások kezelhetőségét, miközben továbbra is engedélyezik az egyedi, hatókörön belüli konfigurációkat a számítógépek részhalmaza számára. Függetlenek a munkaterülettől és függetlenek a virtuális gépről, amely lehetővé teszi, hogy egyszer legyenek meghatározva és újra felhasználhatók legyenek a gépek és a környezetek között. Lásd: [az adatgyűjtés konfigurálása a Azure monitor-ügynökhöz (előzetes verzió)](data-collection-rule-azure-monitor-agent.md).
+
+## <a name="should-i-switch-to-azure-monitor-agent"></a>Váltson Azure Monitor ügynökre?
+Azure Monitor ügynök párhuzamosan [használható a Azure monitor általánosan elérhető ügynökökkel](agents-overview.md), de érdemes lehet a virtuális gépeket a Azure monitor-ügynök nyilvános előzetes verziójában áttérni a jelenlegi ügynökökre. A meghatározás során vegye figyelembe a következő tényezőket.
+
+- **Környezeti követelmények.** Azure Monitor ügynök a jelenlegi ügynököknél korlátozottabb számú támogatott operációs rendszert, környezetet és hálózatkezelési követelményt tartalmaz. A jövőbeli környezetek támogatása, például az új operációsrendszer-verziók és a hálózati követelmények típusai valószínűleg csak Azure Monitor ügynökben lesznek biztosítva. Érdemes felmérni, hogy Azure Monitor ügynök támogatja-e a környezetét. Ha nem, akkor az aktuális ügynökkel kell maradnia. Ha Azure Monitor ügynök támogatja a jelenlegi környezetét, érdemes áttérnie rá.
+- **Nyilvános előzetes kockázati tűréshatár.** Noha Azure Monitor ügynök alapos tesztelés alatt áll a jelenleg támogatott forgatókönyvek esetében, az ügynök még nyilvános előzetes verzióban érhető el. A verziók frissítései és a funkcionalitás fejlesztése gyakran előfordul, és hibákat okozhat. Fel kell mérnie, hogy az ügynökben milyen kockázattal jár a virtuális gépeken az adatgyűjtés leállítása. Ha az adatgyűjtési hézag nem lesz jelentős hatással a szolgáltatásaira, folytassa Azure Monitor ügynökkel. Ha alacsony toleranciával rendelkezik az instabilitáshoz, akkor az általánosan elérhető ügynökökkel maradjon, amíg Azure Monitor ügynök el nem éri ezt az állapotot.
+- **Aktuális és új szolgáltatásokra vonatkozó követelmények.** Azure Monitor ügynök számos új képességet vezet be, például szűrést, hatókört és többsoros vezérlést, de még nem paritásos a jelenlegi ügynökökkel, például az egyéni naplók gyűjtésével és a megoldásokkal való integrációval. Azure Monitor legtöbb új funkciója csak Azure Monitor ügynökkel érhető el, így az idő múlásával a további funkciók csak az új ügynökben lesznek elérhetők. Érdemes figyelembe vennie, hogy Azure Monitor ügynök rendelkezik-e a szükséges funkciókkal, és hogy vannak-e olyan szolgáltatások, amelyeket átmenetileg elvégezhet anélkül, hogy más fontos funkciókat kellene beszereznie az új ügynökhöz. Ha Azure Monitor ügynök rendelkezik az összes szükséges alapvető képességgel, érdemes áttérnie rá. Ha kritikus fontosságú funkciókra van szükség, akkor folytassa az aktuális ügynökkel, amíg Azure Monitor ügynök eléri a paritást.
+- **Az újraműködésre vonatkozó tolerancia.** Ha új környezetet állít be olyan erőforrásokkal, mint például a telepítési parancsfájlok és a bevezetési sablonok, érdemes megfontolnia, hogy képes-e újradolgozni, ha Azure Monitor ügynök általánosan elérhetővé válik. Ha az újraműködésre vonatkozó erőfeszítés minimális, a jelenlegi ügynökökkel együtt marad. Ha jelentős mennyiségű munkát fog igénybe venni, érdemes lehet új környezetet beállítani az új ügynökkel. A Azure Monitor ügynöknek általánosan elérhetőnek kell lennie, és az Log Analytics ügynökök számára közzé kell tenni az elavult dátumot a 2021-es verzióban. A jelenlegi ügynökök több évig is támogatottak lesznek, ha az elavultság megkezdődik.
 
 
 
@@ -68,7 +76,7 @@ A következő táblázat felsorolja, hogy milyen típusú adatok gyűjthetők ö
 
 A Azure Monitor ügynök adatokat küld Azure Monitor metrikák vagy egy Log Analytics munkaterületre, amely támogatja Azure Monitor naplókat.
 
-| Adatforrás | Célhelyek | Description |
+| Adatforrás | Célhelyek | Leírás |
 |:---|:---|:---|
 | Teljesítmény        | Azure Monitor metrikák<br>Log Analytics-munkaterület | Az operációs rendszer és a számítási feladatok különböző szempontjainak teljesítményét mérő numerikus értékek. |
 | Windows-eseménynaplók | Log Analytics-munkaterület | A Windows eseménynaplózási rendszernek eljuttatott információk. |
@@ -76,30 +84,14 @@ A Azure Monitor ügynök adatokat küld Azure Monitor metrikák vagy egy Log Ana
 
 
 ## <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
-A Azure Monitor ügynök jelenleg a következő operációs rendszereket támogatja.
+A Log Analytics ügynök által jelenleg támogatott Windows és Linux operációsrendszer-verziók listáját a [támogatott operációs rendszerek](agents-overview.md#supported-operating-systems) című részben tekintheti meg.
 
-### <a name="windows"></a>Windows 
-  - Windows Server 2019
-  - Windows Server 2016
-  - Windows Server 2012
-  - Windows Server 2012 R2
-
-### <a name="linux"></a>Linux
-  - CentOS 6<sup>1</sup>, 7
-  - Debian 9, 10
-  - Oracle Linux 6<sup>1</sup>, 7
-  - RHEL 6<sup>1</sup>, 7
-  - SLES 11, 12, 15
-  - Ubuntu 14,04 LTS, 16,04 LTS, 18,04 LTS
-
-> [!IMPORTANT]
-> <sup>1</sup> Ahhoz, hogy ezek a disztribúciók syslog-adatküldést küldjenek, az ügynök telepítése után egyszer újra kell indítania a rsyslog szolgáltatást.
 
 
 ## <a name="security"></a>Biztonság
 A Azure Monitor ügynöknek nincs szüksége kulcsra, de a [rendszerhez rendelt felügyelt identitásra](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#system-assigned-managed-identity)van szükség. Az ügynök telepítése előtt minden virtuális gépen engedélyezve kell lennie egy rendszerhez rendelt felügyelt identitásnak.
 
-## <a name="networking"></a>Hálózat
+## <a name="networking"></a>Hálózatkezelés
 Az Azure Monitor ügynök támogatja az Azure-szolgáltatás címkéit (a AzureMonitor és a AzureResourceManager címkét is kötelező megadni), de még nem működik Azure Monitor magánhálózati vagy közvetlen proxykkal.
 
 ## <a name="install-the-azure-monitor-agent"></a>A Azure Monitor ügynök telepítése

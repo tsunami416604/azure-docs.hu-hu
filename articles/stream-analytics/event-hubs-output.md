@@ -6,13 +6,13 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 08/25/2020
-ms.openlocfilehash: 50d2d974815e0921d99154bce67f604b7314970d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/23/2020
+ms.openlocfilehash: 86a6c1a15d804a6c758e90dbd4bdd7057a7a2716
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90892031"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295274"
 ---
 # <a name="event-hubs-output-from-azure-stream-analytics"></a>Azure Stream Analytics Event Hubs kimenete
 
@@ -46,7 +46,23 @@ Az üzenetek maximális mérete 256 KB vagy 1 MB/üzenet. További információ:
 
 ## <a name="custom-metadata-properties-for-output"></a>A kimenet egyéni metaadat-tulajdonságai
 
-A lekérdezési oszlopokat felhasználói tulajdonságokként csatolhatja a kimenő üzenetekhez. Ezek az oszlopok nem kerülnek bele a hasznos adatokba. A tulajdonságok a kimeneti üzenet szótárának formájában jelennek meg. A *kulcs* az oszlopnév és az *érték* az oszlop értéke a tulajdonságok szótárban. A rekord és a tömb kivételével minden Stream Analytics adattípus támogatott.  
+A lekérdezési oszlopokat felhasználói tulajdonságokként csatolhatja a kimenő üzenetekhez. Ezek az oszlopok nem kerülnek bele a hasznos adatokba. A tulajdonságok a kimeneti üzenet szótárának formájában jelennek meg. A *kulcs* az oszlopnév és az *érték* az oszlop értéke a tulajdonságok szótárban. A rekord és a tömb kivételével minden Stream Analytics adattípus támogatott.
+
+A következő példában a mezők és a `DeviceId` `DeviceStatus` metaadatokhoz lesznek adva.
+
+1. Használja a következő lekérdezést:
+
+   ```sql
+   select *, DeviceId, DeviceStatus from iotHubInput
+   ```
+
+1. Konfigurálja `DeviceId,DeviceStatus` a tulajdonság oszlopait a kimenetben.
+
+   :::image type="content" source="media/event-hubs-output/property-columns.png" alt-text="Tulajdonságok oszlopai":::
+
+Az alábbi ábrán a EventHub által a [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer)használatával megtekintett kimeneti üzenet várt tulajdonságai láthatók.
+
+:::image type="content" source="media/event-hubs-output/custom-properties.png" alt-text="Egyéni esemény tulajdonságai":::
 
 ## <a name="next-steps"></a>Következő lépések
 

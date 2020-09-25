@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: 3798396c72bc01bc20f1b4ee3ee66961fe33bff5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7701fe91d0e3f78f9596687bf945ba4b11c2d199
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935078"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331692"
 ---
 # <a name="manage-an-azure-database-for-mysql---flexible-server-preview-using-the-azure-cli"></a>Azure Database for MySQL rugalmas kiszolgáló (előzetes verzió) kezelése az Azure CLI-vel
 
@@ -40,7 +40,7 @@ az account set --subscription <subscription id>
 
 ## <a name="scale-compute-and-storage"></a>Számítási és tárolási méretezés
 
-A számítási szintet, a virtuális mag és a tárterületet könnyedén méretezheti a következő parancs használatával. Megtekintheti az összes olyan kiszolgálói műveletet, amelyet végrehajthat az [az MySQL rugalmas kiszolgáló kiszolgálójának áttekintése](/cli/azure/mysql/server)
+A számítási szintet, a virtuális mag és a tárterületet könnyedén méretezheti a következő parancs használatával. Megtekintheti az összes olyan kiszolgálói műveletet, amelyet végrehajthat az [az MySQL rugalmas kiszolgáló frissítése](/cli/azure/mysql/flexible-server#az_mysql_flexible_server_update) lehetőséggel
 
 ```azurecli-interactive
 az mysql flexible-server update --resource-group myresourcegroup --name mydemoserver --sku-name Standard_D4ds_v4 --storage-size 6144
@@ -62,12 +62,12 @@ storage-size | 6144 | A kiszolgáló tárkapacitása (megabájtban megadva). A 5
 ## <a name="manage-mysql-databases-on-a-server"></a>MySQL-adatbázisok kezelése kiszolgálón.
 Ezen parancsok bármelyikével létrehozhat, törölhet, listázhat és megtekinthet adatbázis-tulajdonságokat a kiszolgálón
 
-| Parancsmag | Használat| Leírás |
+| Parancsmag | Használat| Description |
 | --- | ---| --- |
-|[az MySQL flexibilis-Server db Create](/cli/azure/sql/db#az-mysql-flexible-server-db-create)|```az mysql flexible-server db create -g myresourcegroup -s mydemoserver -n mydatabasename``` |Létrehoz egy adatbázist|
-|[az MySQL flexibilis-Server db delete](/cli/azure/sql/db#az-mysql-flexible-server-db-delete)|```az mysql flexible-server db delete -g myresourcegroup -s mydemoserver -n mydatabasename```|Törölje az adatbázist a kiszolgálóról. Ez a parancs nem törli a kiszolgálót. |
-|[az MySQL flexibilis-Server db List](/cli/azure/sql/db#az-mysql-flexible-server-db-list)|```az mysql flexible-server db list -g myresourcegroup -s mydemoserver```|a kiszolgálón található összes adatbázis listája|
-|[az MySQL rugalmas-Server db show](/cli/azure/sql/db#az-mysql-flexible-server-db-show)|```az mysql flexible-server db show -g myresourcegroup -s mydemoserver -n mydatabasename```|Az adatbázis további részleteit jeleníti meg|
+|[az MySQL flexibilis-Server db Create](/cli/azure/mysql/flexible-server/db#az_mysql_flexible_server_db_create)|```az mysql flexible-server db create -g myresourcegroup -s mydemoserver -n mydatabasename``` |Létrehoz egy adatbázist|
+|[az MySQL flexibilis-Server db delete](/cli/azure/mysql/flexible-server/db#az_mysql_flexible_server_db_delete)|```az mysql flexible-server db delete -g myresourcegroup -s mydemoserver -n mydatabasename```|Törölje az adatbázist a kiszolgálóról. Ez a parancs nem törli a kiszolgálót. |
+|[az MySQL flexibilis-Server db List](/cli/azure/mysql/flexible-server/db#az_mysql_flexible_server_db_list)|```az mysql flexible-server db list -g myresourcegroup -s mydemoserver```|a kiszolgálón található összes adatbázis listája|
+|[az MySQL rugalmas-Server db show](/cli/azure/mysql/flexible-server/db#az_mysql_flexible_server_db_show)|```az mysql flexible-server db show -g myresourcegroup -s mydemoserver -n mydatabasename```|Az adatbázis további részleteit jeleníti meg|
 
 ## <a name="update-admin-password"></a>Rendszergazdai jelszó frissítése
 A rendszergazdai szerepkör jelszava ezzel a paranccsal módosítható
@@ -80,7 +80,7 @@ az mysql flexible-server update --resource-group myresourcegroup --name mydemose
 > A jelszónak tartalmaznia kell karaktereket a következő kategóriák közül legalább háromból: angol nagybetűs karakterek, angol kisbetűs betűk, számok és nem alfanumerikus karakterek.
 
 ## <a name="delete-a-server"></a>Kiszolgáló törlése
-Ha a MySQL rugalmas kiszolgálót szeretné törölni, futtathatja az [az MySQL flexibilis-Server Server delete](/cli/azure/mysql/server#az-mysql-flexible-server-delete) parancsot.
+Ha a MySQL rugalmas kiszolgálót szeretné törölni, futtathatja az [az MySQL flexibilis-Server Server delete](/cli/azure/mysql/flexible-server#az_mysql_flexible_server_delete) parancsot.
 
 ```azurecli-interactive
 az mysql flexible-server delete --resource-group myresourcegroup --name mydemoserver

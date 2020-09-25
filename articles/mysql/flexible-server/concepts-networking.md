@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 9/21/2020
-ms.openlocfilehash: 550f3367fe2e5283aff788b36203e988361590ad
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 9/23/2020
+ms.openlocfilehash: 4eb9ffceada245f7a7f4b2631a79330fb497a452
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934964"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331726"
 ---
 # <a name="connectivity-and-networking-concepts-for-azure-database-for-mysql---flexible-server-preview"></a>Kapcsolati és hálózatkezelési fogalmak a Azure Database for MySQL rugalmas kiszolgálóhoz (előzetes verzió)
 
@@ -62,6 +62,8 @@ Az alábbiakban néhány, a MySQL-hez rugalmas kiszolgálókkal rendelkező virt
 
    A MySQL rugalmas kiszolgálójának olyan alhálózaton kell lennie, amely csak a MySQL rugalmas kiszolgáló számára van **delegálva** . Ez a delegálás azt jelenti, hogy csak a rugalmas Azure Database for MySQL-kiszolgálók használhatják az alhálózatot. Az alhálózatra semmilyen más típusú Azure-erőforrás nem delegálható. Egy alhálózatot delegálhat úgy, hogy hozzárendeli a delegálási tulajdonságát a Microsoft. DBforMySQL/flexibleServers.
 
+* **Hálózati biztonsági csoportok (NSG)** A hálózati biztonsági csoportokban található biztonsági szabályok lehetővé teszik a virtuális hálózati alhálózatok és hálózati adapterek közötti és onnan kimenő hálózati forgalom típusának szűrését. További információkért tekintse át a [hálózati biztonsági csoport áttekintését](../../virtual-network/network-security-groups-overview.md) .
+
 
 ### <a name="unsupported-virtual-network-scenarios"></a>Nem támogatott virtuális hálózati forgatókönyvek
 * Nyilvános végpont (vagy nyilvános IP-cím vagy DNS) – a virtuális hálózatra központilag telepített rugalmas kiszolgáló nem rendelkezhet nyilvános végponttal
@@ -108,11 +110,9 @@ Vegye figyelembe a következő szempontokat, amikor a MySQL-kiszolgáló szolgá
 ## <a name="hostname"></a>Hostname (Gazdanév)
 A választott hálózati beállítástól függetlenül ajánlott mindig teljes tartománynevet (FQDN) használni a rugalmas kiszolgálóhoz való csatlakozáskor. A kiszolgáló IP-címe nem garantált, hogy statikus maradjon. A teljes tartománynév használata segít elkerülni a kapcsolódási karakterlánc módosítását. 
 
-Az egyik forgatókönyv, ahol az IP-változások akkor változnak, ha a zóna-redundáns HA-t használja, és a feladatátvétel az elsődleges és a másodlagos között történik. A FQDN használatával zökkenőmentesen próbálkozhat ugyanazzal a kapcsolati karakterlánccal való kapcsolattal.
-
 Példa
 * Ajánlott `hostname = servername.mysql.database.azure.com`
-* Kerülje a `hostname = 10.0.0.4` (magánhálózati cím) vagy a `hostname = 40.2.45.67` (nyilvános IP) használatának elkerülését
+* Ha lehetséges, kerülje a `hostname = 10.0.0.4` (privát cím) vagy `hostname = 40.2.45.67` a (nyilvános IP) használatát
 
 
 

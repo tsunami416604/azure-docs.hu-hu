@@ -17,12 +17,12 @@ ms.date: 05/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 31c76b78d4ab7a3f305b52526b7e4ce14f3b1ede
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: e4dcc7ed6076c3bac723d709f50f1b3ab2ce8f58
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89278037"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319928"
 ---
 # <a name="changing-the-adsync-service-account-password"></a>A ADSync-szolgáltatásfiók jelszavának módosítása
 Ha módosítja a ADSync-szolgáltatásfiók jelszavát, a szinkronizálási szolgáltatás nem fog megfelelően elindulni, amíg el nem hagyta a titkosítási kulcsot, és újra nem inicializálta a ADSync-szolgáltatásfiók jelszavát. 
@@ -52,7 +52,7 @@ Annak érdekében, hogy ne kapja meg ezeket a hibákat, kövesse a [AdSync-szolg
  
 ## <a name="abandoning-the-adsync-service-account-encryption-key"></a>A ADSync szolgáltatás fiókjának titkosítási kulcsának megszüntetése
 >[!IMPORTANT]
->Az alábbi eljárások csak Azure AD Connect build 1.1.443.0 vagy régebbi verzióra vonatkoznak. Ez nem használható a Azure AD Connect újabb verzióihoz.
+>Az alábbi eljárások csak Azure AD Connect build 1.1.443.0 vagy régebbi verzióra vonatkoznak. Ezt nem lehet a Azure AD Connect újabb verzióihoz használni, mert a titkosítási kulcsot az Azure AD kapcsolódása kezeli, ha módosítja az AD Sync szolgáltatás fiókjának jelszavát, így a következő lépések nem szükségesek az újabb verziókban.   
 
 A titkosítási kulcs megszüntetéséhez kövesse az alábbi eljárásokat.
 
@@ -88,7 +88,7 @@ Hagyjon le egy meglévő titkosítási kulcsot, hogy az új titkosítási kulcs 
 
 4. Futtassa a parancsot: `./miiskmu.exe /a`
 
-![Azure AD Connect Sync encryption Key segédprogram](./media/how-to-connect-sync-change-serviceacct-pass/key5.png)
+![A parancs futtatása után a PowerShellt bemutató képernyőkép.](./media/how-to-connect-sync-change-serviceacct-pass/key5.png)
 
 #### <a name="provide-the-password-of-the-ad-ds-connector-account"></a>Adja meg az AD DS Connector-fiók jelszavát
 Mivel az adatbázisban tárolt meglévő jelszavakat már nem lehet visszafejteni, meg kell adnia a szinkronizálási szolgáltatást az AD DS-összekötő fiókjának jelszavával. A szinkronizálási szolgáltatás titkosítja a jelszavakat az új titkosítási kulccsal:
@@ -101,7 +101,7 @@ Mivel az adatbázisban tárolt meglévő jelszavakat már nem lehet visszafejten
 5. Az előugró párbeszédpanelen válassza a **kapcsolódás Active Directory erdőhöz**lehetőséget:
 6. Adja meg a **jelszó** szövegmezőben a AD DS fiók jelszavát. Ha nem ismeri a jelszavát, a lépés végrehajtása előtt be kell állítania egy ismert értéket.
 7. Az új jelszó mentéséhez és az előugró ablak bezárásához kattintson **az OK** gombra.
-![Azure AD Connect Sync encryption Key segédprogram](./media/how-to-connect-sync-change-serviceacct-pass/key6.png)
+![A "tulajdonságok" ablak "kapcsolódás Active Directory erdőhöz" lapját bemutató képernyőkép.](./media/how-to-connect-sync-change-serviceacct-pass/key6.png)
 
 #### <a name="reinitialize-the-password-of-the-adsync-service-account"></a>A ADSync-szolgáltatásfiók jelszavának újrainicializálása
 Közvetlenül nem adhatja meg az Azure AD-szolgáltatásfiók jelszavát a szinkronizálási szolgáltatás számára. Ehelyett az **Add-ADSyncAADServiceAccount** parancsmagot kell használnia az Azure ad-szolgáltatásfiók újrainicializálásához. A parancsmag visszaállítja a fiók jelszavát, és elérhetővé teszi a szinkronizálási szolgáltatás számára:

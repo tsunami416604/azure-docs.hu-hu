@@ -16,12 +16,12 @@ ms.date: 03/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0852171544f179315535d234f5a2680d918e7d85
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 6a68d7574d16485c378f6066a652471d52fa0c30
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90084838"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319979"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Az Azure AD Connect szinkronizálása: a szűrés konfigurálása
 A szűrés használatával szabályozhatja, hogy mely objektumok jelenjenek meg Azure Active Directory (Azure AD) a helyszíni címtárból. Az alapértelmezett konfiguráció a konfigurált erdők összes tartományában lévő összes objektumot átveszi. Általában ez az ajánlott konfiguráció. A Microsoft 365 számítási feladatokat, például az Exchange Online-t és a Skype vállalati verziókat használó felhasználók teljes globális címlistát használhatnak, így e-maileket küldhetnek, és meghívhatnak mindenkit. Az alapértelmezett konfigurációval ugyanazzal a tapasztalattal rendelkeznek, mint az Exchange vagy a Lync helyszíni megvalósításával.
@@ -113,7 +113,7 @@ A tartományi szűrő beállításához hajtsa végre a következő lépéseket:
    ![Összekötő tulajdonságai](./media/how-to-connect-sync-configure-filtering/connectorproperties.png)  
 4. Kattintson a címtárpartíciók **konfigurálása**elemre.
 5. A **Select Directory Partitions (címtárpartíciók kiválasztása** ) listában válassza ki és válassza ki a kívánt tartományokat. Győződjön meg arról, hogy csak a szinkronizálni kívánt partíciók vannak kiválasztva.  
-   ![Partíciók](./media/how-to-connect-sync-configure-filtering/connectorpartitions.png)  
+   ![A "tulajdonságok" ablakban található címtárpartíciókat megjelenítő képernyőkép.](./media/how-to-connect-sync-configure-filtering/connectorpartitions.png)  
    Ha módosította a helyszíni Active Directory infrastruktúráját, és hozzáadta vagy eltávolította a tartományokat az erdőből, kattintson a **frissítés** gombra egy frissített lista lekéréséhez. A frissítésekor a rendszer a hitelesítő adatok megadását kéri. Adjon meg olyan hitelesítő adatokat, amelyek olvasási hozzáféréssel rendelkeznek a Windows Server Active Directoryhoz. Nem kell a párbeszédpanelen előre feltöltött felhasználónak lennie.  
    ![Frissítés szükséges](./media/how-to-connect-sync-configure-filtering/refreshneeded.png)  
 6. Ha elkészült, a **Tulajdonságok** párbeszédpanel bezárásához kattintson **az OK gombra**. Ha eltávolított tartományokat az erdőből, egy üzenet jelenik meg, amely szerint a tartomány el lett távolítva, és a rendszer törli a konfigurációt.

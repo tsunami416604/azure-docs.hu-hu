@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 05/05/2020
+ms.date: 09/24/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: ca9a796483c52e2e74231dfcbb67a72b913d35d7
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 5f570f13fd39bd25b37c35a2c823e64eaa02fef5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89072995"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295396"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>A Storage-fiók replikálási módjának módosítása
 
@@ -39,20 +39,20 @@ Az alábbi táblázat áttekintést nyújt az egyes replikálási típusokról a
 
 | Váltás | ... LRS | ... GRS/RA-GRS | ... ZRS | ... GZRS/RA-GZRS |
 |--------------------|----------------------------------------------------|---------------------------------------------------------------------|----------------------------------------------------|---------------------------------------------------------------------|
-| <b>... LRS</b> | N/A | Módosítsa az<sup>1</sup> . replikációs beállítást a Azure Portal, a PowerShell vagy a CLI használatával | Manuális áttelepítés végrehajtása <br /><br />Élő áttelepítés kérése | Manuális áttelepítés végrehajtása <br /><br /> VAGY <br /><br /> Először váltson a GRS/RA-GRS, majd igényeljen élő áttelepítést<sup>1</sup> |
-| <b>... GRS/RA-GRS</b> | A replikálási beállítás módosításához használja a Azure Portal, a PowerShell vagy a CLI-t. | N/A | Manuális áttelepítés végrehajtása <br /><br /> VAGY <br /><br /> Először váltson a LRS, majd kérjen élő áttelepítést | Manuális áttelepítés végrehajtása <br /><br /> Élő áttelepítés kérése |
-| <b>... ZRS</b> | Manuális áttelepítés végrehajtása | Manuális áttelepítés végrehajtása | N/A | A Azure Portal, a PowerShell vagy a CLI használatával módosítsa a replikálási beállítást<sup>1, 2</sup> |
-| <b>... GZRS/RA-GZRS</b> | Manuális áttelepítés végrehajtása | Manuális áttelepítés végrehajtása | A replikálási beállítás módosításához használja a Azure Portal, a PowerShell vagy a CLI-t. | N/A |
+| <b>... LRS</b> | N.A. | Módosítsa az<sup>1</sup> . replikációs beállítást a Azure Portal, a PowerShell vagy a CLI használatával | Manuális áttelepítés végrehajtása <br /><br /> VAGY <br /><br /> Élő áttelepítés kérése | Manuális áttelepítés végrehajtása <br /><br /> VAGY <br /><br /> Először váltson a GRS/RA-GRS, majd igényeljen élő áttelepítést<sup>1</sup> |
+| <b>... GRS/RA-GRS</b> | A replikálási beállítás módosításához használja a Azure Portal, a PowerShell vagy a CLI-t. | N.A. | Manuális áttelepítés végrehajtása <br /><br /> VAGY <br /><br /> Először váltson a LRS, majd kérjen élő áttelepítést | Manuális áttelepítés végrehajtása <br /><br /> VAGY <br /><br /> Élő áttelepítés kérése |
+| <b>... ZRS</b> | Manuális áttelepítés végrehajtása | Manuális áttelepítés végrehajtása | N.A. | A Azure Portal, a PowerShell vagy a CLI használatával módosítsa a replikálási beállítást<sup>1, 2</sup> |
+| <b>... GZRS/RA-GZRS</b> | Manuális áttelepítés végrehajtása | Manuális áttelepítés végrehajtása | A replikálási beállítás módosításához használja a Azure Portal, a PowerShell vagy a CLI-t. | N.A. |
 
 <sup>1</sup> egyszeri kimenő díj.<br />
 <sup>2</sup> a ZRS-ről GZRS/ra-GZRS-re vagy fordítva történő átalakítás nem támogatott a következő régiókban: USA keleti régiója, USA keleti régiója, Nyugat-Európa.
 
 > [!CAUTION]
-> Ha a (RA-) GRS vagy (RA-) GZRS fiók [feladatátvételét](storage-disaster-recovery-guidance.md) hajtotta végre, a fiók a feladatátvételt követően az új elsődleges régióban helyileg redundánsan szerepel. A ZRS vagy GZRS való élő áttelepítés nem támogatott a feladatátvételt eredményező LRS-fiókok esetében. Végre kell hajtania egy [manuális áttelepítést](#perform-a-manual-migration-to-zrs) a ZRS vagy a GZRS.
+> Ha a (RA-) GRS vagy (RA-) GZRS fiók [feladatátvételét](storage-disaster-recovery-guidance.md) hajtotta végre, a fiók a feladatátvételt követően az új elsődleges régióban helyileg redundánsan szerepel. A ZRS vagy GZRS való élő áttelepítés nem támogatott a feladatátvételt eredményező LRS-fiókok esetében. Ez akkor is igaz, ha az ún. feladat-visszavétel művelet. Ha például az RA-GZRS fiók feladatátvételét hajtja végre a másodlagos régióban lévő LRS, majd konfigurálja újra az RA-GRS, és egy másik fiók feladatátvételét az eredeti elsődleges régióba, nem léphet kapcsolatba az ügyfélszolgálattal az eredeti élő áttelepítéshez az RA-GZRS az elsődleges régióban. Ehelyett manuális áttelepítést kell végeznie a ZRS vagy a GZRS.
 
 ## <a name="change-the-replication-setting"></a>Replikációs beállítás módosítása
 
-A Azure Portal, a PowerShell vagy az Azure CLI használatával módosíthatja a Storage-fiókok replikálási beállításait, ha nem módosítja az elsődleges régióban lévő adatreplikálás módját. Ha az elsődleges régióban lévő LRS-ről kíván áttelepítést végezni az elsődleges régióban lévő ZRS, vagy fordítva, akkor [manuális áttelepítést](#perform-a-manual-migration-to-zrs) vagy [élő áttelepítést](#request-a-live-migration-to-zrs)kell végrehajtania.
+A Azure Portal, a PowerShell vagy az Azure CLI használatával módosíthatja a Storage-fiókok replikálási beállításait, ha nem módosítja az elsődleges régióban lévő adatreplikálás módját. Ha az elsődleges régióban lévő LRS-ről kíván áttelepítést végezni az elsődleges régióban lévő ZRS, vagy fordítva, akkor manuális áttelepítést vagy élő áttelepítést kell végrehajtania.
 
 A Storage-fiók replikálásának módosítása nem eredményezi az alkalmazásokhoz való időkorlátot.
 
@@ -89,7 +89,7 @@ az storage account update \
 
 ---
 
-## <a name="perform-a-manual-migration-to-zrs"></a>Manuális áttelepítés ZRS
+## <a name="perform-a-manual-migration-to-zrs-gzrs-or-ra-gzrs"></a>Manuális áttelepítés végrehajtása ZRS, GZRS vagy RA-GZRS
 
 Ha módosítani szeretné a Storage-fiókban lévő adatok replikálásának módját az elsődleges régióban, akkor a LRS-ről ZRS-re való áttéréssel vagy fordítva, akkor dönthet úgy, hogy manuális áttelepítést hajt végre. A manuális migrálás az élő migrálásnál nagyobb rugalmasságot biztosít. A manuális áttelepítés időzítését szabályozhatja, ezért akkor használja ezt a beállítást, ha az áttelepítésnek egy adott dátummal kell végrehajtania.
 
@@ -102,9 +102,11 @@ Manuális áttelepítés esetén a meglévő Storage-fiókból származó adatok
 - Az Adatmásolás egy meglévő eszközzel, például a AzCopy, az egyik Azure Storage ügyféloldali kódtár vagy egy megbízható, harmadik féltől származó eszköz használatával.
 - Ha már ismeri a Hadoop-t vagy a HDInsight-t, csatolhatja a forrás-és a cél Storage-fiók fiókját is a fürthöz. Ezután integrálással az adatmásolási folyamatot egy olyan eszközzel, mint a DistCp.
 
-## <a name="request-a-live-migration-to-zrs"></a>Élő áttelepítés kérése a ZRS-be
+## <a name="request-a-live-migration-to-zrs-gzrs-or-ra-gzrs"></a>Élő áttelepítés kérése ZRS, GZRS vagy RA-GZRS
 
-Ha a Storage-fiókot a LRS vagy a GRS-ből kell áttelepítenie az elsődleges régióban az alkalmazás leállása nélkül, akkor a Microsofttól élő áttelepítést igényelhet. Az élő áttelepítés során hozzáférhet a Storage-fiókban tárolt adataihoz, és a tartósság és a rendelkezésre állás elvesztése nélkül is elérhető. Az Azure Storage SLA az áttelepítési folyamat során megmarad. Az élő áttelepítéshez nem tartozik adatvesztés. A szolgáltatás-végpontok, a hozzáférési kulcsok, a közös hozzáférésű aláírások és az egyéb Fiókbeállítások az áttelepítés után változatlanok maradnak.
+Ha a Storage-fiókot a LRS-ből kell áttelepítenie az elsődleges régióban az alkalmazás leállása nélkül ZRS, a Microsofttól kérhet élő áttelepítést. A LRS-ről GZRS-re vagy RA-GZRS-re való áttelepítéshez először váltson GRS vagy RA-GRS, majd kérjen élő áttelepítést. Hasonlóképpen, a GRS vagy RA-GRS-ről élő áttelepítést is igényelhet GZRS vagy RA-GZRS. A GRS vagy RA-GRS-ről a ZRS-re való áttelepítéshez először váltson át a LRS-re, majd kérjen élő áttelepítést.
+
+Az élő áttelepítés során a Storage-fiókban lévő adatmennyiséget a tartósság és a rendelkezésre állás elvesztése nélkül érheti el. Az Azure Storage SLA az áttelepítési folyamat során megmarad. Az élő áttelepítéshez nem tartozik adatvesztés. A szolgáltatás-végpontok, a hozzáférési kulcsok, a közös hozzáférésű aláírások és az egyéb Fiókbeállítások az áttelepítés után változatlanok maradnak.
 
 A ZRS csak az általános célú v2-fiókokat támogatja, ezért mindenképpen frissítse a Storage-fiókját, mielőtt beküld egy élő áttelepítésre vonatkozó kérést a ZRS-be. További információ: [frissítés általános célú v2 Storage-fiókra](storage-account-upgrade.md). A Storage-fióknak tartalmaznia kell az áttelepíteni kívánt, élő áttelepítéssel kapcsolatos adatátvitelt.
 

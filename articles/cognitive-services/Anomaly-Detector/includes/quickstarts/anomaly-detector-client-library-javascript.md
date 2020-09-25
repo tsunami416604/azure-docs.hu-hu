@@ -6,17 +6,17 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 09/10/2020
+ms.date: 09/22/2020
 ms.author: aahi
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 4a4b6d02845c9767b7ab668dd172da38150fc89e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.custom: devx-track-js
+ms.openlocfilehash: 0aecf99c248d745288716c8638066ddec92e1a39
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "91025239"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319253"
 ---
-Ismerkedjen meg az anomáliák Kiderítő ügyféloldali kódtáraval a JavaScripthez. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját. Az anomália-detektor szolgáltatás lehetővé teszi, hogy az idősoros adataiban az adatsorozatok adatait automatikusan a legjobb illeszkedő modellekkel találja, függetlenül az iparágtól, a forgatókönyvtől vagy az adatmennyiségtől.
+Ismerkedjen meg az anomáliák Kiderítő ügyféloldali kódtáraval a JavaScripthez. Az alábbi lépéseket követve telepítheti a csomagot a szolgáltatás által biztosított algoritmusok használatával. Az anomália-detektor szolgáltatás lehetővé teszi, hogy az idősoros adataiban az adatsorozatok adatait automatikusan a legjobb illeszkedő modellekkel találja, függetlenül az iparágtól, a forgatókönyvtől vagy az adatmennyiségtől.
 
 A következőhöz használhatja az anomália-Kiderítő ügyféloldali kódtárat a JavaScripthez:
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: aahi
-ms.openlocfilehash: 4d0800ff8a35c5c91b067a85dfcc089f2e343d1f
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 3cd6febfc774b214a8c1ae8553e6c127c4f452fa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86090965"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319078"
 ---
 # <a name="batch-processing-kit-for-speech-containers"></a>Batch Processing Kit a Speech containers szolgáltatáshoz
 
@@ -23,9 +23,9 @@ A Batch Processing kit használatával kiegészítheti és bővítheti a számí
 
 :::image type="content" source="media/containers/general-diagram.png" alt-text="Egy példa batch-Kit-tároló munkafolyamatot bemutató diagram.":::
 
-A Batch Kit tároló ingyenesen elérhető a [githubon](https://github.com/microsoft/batch-processing-kit) és a [Docker hub](https://hub.docker.com/r/batchkit/speech-batch-kit/tags)-on. [Csak a](speech-container-howto.md#billing) használt beszédfelismerési tárolók kell fizetnie.
+A Batch Kit tároló ingyenesen elérhető a [githubon](https://github.com/microsoft/batch-processing-kit) és a   [Docker hub](https://hub.docker.com/r/batchkit/speech-batch-kit/tags)-on. [Csak a](speech-container-howto.md#billing) használt beszédfelismerési tárolók kell fizetnie.
 
-| Szolgáltatás  | Description  |
+| Funkció  | Leírás  |
 |---------|---------|
 | Köteg hangfájljának eloszlása     | Nagy számú fájl automatikus küldése a helyszíni vagy a felhőalapú beszédfelismerési tároló végpontjai számára. A fájlok bármilyen POSIX-kompatibilis köteten lehetnek, beleértve a hálózati fájlrendszereket is.       |
 | A Speech SDK integrációja | A Speech SDK közös jelzőit továbbíthatja, többek között a következőt: n-Best hipotézisek, diarization, nyelv, káromkodás maszkolása.  |
@@ -35,7 +35,7 @@ A Batch Kit tároló ingyenesen elérhető a [githubon](https://github.com/micro
 | Végpontok gyors cseréje | A beszédfelismerési tároló végpontjának hozzáadása, eltávolítása vagy módosítása a Futtatás közben a Batch előrehaladásának megszakítása nélkül. A frissítések azonnaliek. |
 | Valós idejű naplózás | A megkísérelt kérelmek, időbélyegek és meghibásodások valós idejű naplózása az egyes hangfájlok Speech SDK-naplófájljaival. |
 
-## <a name="get-the-container-image-with-docker-pull"></a>A tároló rendszerképének beolvasása a`docker pull`
+## <a name="get-the-container-image-with-docker-pull"></a>A tároló rendszerképének beolvasása a `docker pull`
 
 A Batch-készlet legújabb tárolójának letöltéséhez használja a [Docker pull](https://docs.docker.com/engine/reference/commandline/pull/) parancsot.
 
@@ -76,6 +76,8 @@ A Batch-ügyfél képes dinamikusan megállapítani, hogy egy végpont elérhete
 > * Ez a példa ugyanazt a könyvtárat ( `/my_nfs` ) használja a konfigurációs fájlhoz, valamint a bemenetek, a kimenetek és a naplók könyvtáraihoz. Ezekhez a mappákhoz üzemeltetett vagy NFS-hez csatlakoztatott címtárakat is használhat.
 > * Ha a-ügyfelet futtatja, a a `–h` elérhető parancssori paramétereket és azok alapértelmezett értékeit fogja listázni. 
 
+
+#### <a name="linux"></a>[Linux](#tab/linux)
 A `run` tároló elindításához használja a Docker parancsot. Ez egy interaktív felületet indít el a tárolón belül.
 
 ```Docker
@@ -94,6 +96,18 @@ A Batch-ügyfél és-tároló futtatása egyetlen paranccsal:
 docker run --rm -ti -v  /mnt/my_nfs:/my_nfs docker.io/batchkit/speech-batch-kit:latest  -config /my_nfs/config.yaml -input_folder /my_nfs/audio_files -output_folder /my_nfs/transcriptions -log_folder  /my_nfs/logs -log_level DEBUG -nbest 1 -m ONESHOT -diarization  None -language en-US -strict_config   
 ```
 
+#### <a name="windows"></a>[Windows](#tab/windows)
+
+A Batch-ügyfél és-tároló futtatása egyetlen paranccsal:
+
+```Docker
+docker run --rm -ti -v   c:\my_nfs:/my_nfs docker.io/batchkit/speech-batch-kit:latest  -config  /my_nfs/config.yaml -input_folder /my_nfs/audio_files -output_folder /my_nfs/transcriptions -log_folder  /my_nfs/logs -nbest 1 -m ONESHOT -diarization  None -language en-US -strict_config
+
+```
+
+---
+
+
 Az ügyfél elindul. Ha egy hangfájl már egy korábbi futtatás során lett lemásolva, az ügyfél automatikusan kihagyja a fájlt. A rendszer automatikusan újrapróbálkozik a fájlok küldésével, ha átmeneti hibák történnek, és megkülönböztetheti egymástól, hogy az ügyfél milyen hibákat próbálkozzon újra. Átírási hiba esetén az ügyfél továbbra is átírást folytat, és a folyamat elvesztése nélkül újra próbálkozik.  
 
 ## <a name="run-modes"></a>Futtatási módok 
@@ -102,7 +116,7 @@ A Batch Processing Kit három módot kínál a `--run-mode` paraméter használa
 
 #### <a name="oneshot"></a>[Oneshot](#tab/oneshot)
 
-`ONESHOT`a Mode (egy bemeneti könyvtárból és választható fájlokból) származó hangfájlok egyetlen kötegét írja át egy kimeneti mappába.
+`ONESHOT` a Mode (egy bemeneti könyvtárból és választható fájlokból) származó hangfájlok egyetlen kötegét írja át egy kimeneti mappába.
 
 :::image type="content" source="media/containers/batch-oneshot-mode.png" alt-text="Egy diagram, amely a Batch-Kit tároló oneshot módban történő feldolgozását mutatja.":::
 
@@ -117,7 +131,7 @@ A Batch Processing Kit három módot kínál a `--run-mode` paraméter használa
 > [!TIP]
 > Ha egyszerre több fájlt ad hozzá a bemeneti könyvtárhoz, akkor a teljesítményt a rendszeres időközönként való hozzáadásával javíthatja.
 
-`DAEMON`a Mode egy adott mappában lévő meglévő fájlokat írja át, és folyamatosan átmásolja az új hangfájlokat a hozzáadásuk során.          
+`DAEMON` a Mode egy adott mappában lévő meglévő fájlokat írja át, és folyamatosan átmásolja az új hangfájlokat a hozzáadásuk során.          
 
 :::image type="content" source="media/containers/batch-daemon-mode.png" alt-text="Egy diagram, amely a Batch-Kit tárolók feldolgozási fájljait tartalmazza démon módban.":::
 
@@ -130,14 +144,14 @@ A Batch Processing Kit három módot kínál a `--run-mode` paraméter használa
 
 #### <a name="rest"></a>[REST](#tab/rest)
 
-`REST`a Mode egy API-kiszolgáló mód, amely alapszintű HTTP-végpontokat biztosít a hangfájlok kötegelt küldéséhez, az állapot-ellenőrzéshez és a hosszú lekérdezésekhez. A lehetővé teszi a programozott felhasználást egy Python-modul bővítmény vagy egy almodulként való importálás használatával.
+`REST` a Mode egy API-kiszolgáló mód, amely alapszintű HTTP-végpontokat biztosít a hangfájlok kötegelt küldéséhez, az állapot-ellenőrzéshez és a hosszú lekérdezésekhez. A lehetővé teszi a programozott felhasználást egy Python-modul bővítmény vagy egy almodulként való importálás használatával.
 
 :::image type="content" source="media/containers/batch-rest-api-mode.png" alt-text="Egy diagram, amely a Batch-Kit tárolók feldolgozási fájljait tartalmazza démon módban.":::
 
 1. Adja meg azokat a Speech Container-végpontokat, amelyeket a Batch-ügyfél a fájlban fog használni `config.yaml` . 
 2. HTTP-kérelmek küldésére vonatkozó kérelem küldése az API-kiszolgáló egyik végpontjának. 
         
-    |Végpont  |Description  |
+    |Végpont  |Leírás  |
     |---------|---------|
     |`/submit`     | Végpont új batch-kérelmek létrehozásához.        |
     |`/status`     | Egy batch-kérelem állapotának ellenőrzéséhez használt végpont. A hálózat nyitva marad, amíg a köteg be nem fejeződik.       |
@@ -158,6 +172,6 @@ Az ügyfél létrehoz egy *Run. log* fájlt a `-log_folder` Docker parancs argum
 
 A által megadott kimeneti könyvtár `-output_folder` tartalmaz egy *run_summary.jst a*   fájlon, amely minden esetben 30 másodpercenként újraírható, vagy ha az új átírások befejeződtek. Ezt a fájlt használhatja a folyamat előrehaladásának ellenőrzéséhez. Emellett az összes fájl végleges futtatási statisztikáit és végső állapotát is tartalmazza a köteg befejezésekor. A köteg akkor fejeződik be, amikor a folyamat tiszta kijárattal rendelkezik. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Tárolók telepítése és futtatása](speech-container-howto.md)

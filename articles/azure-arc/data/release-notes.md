@@ -9,12 +9,12 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5908083be4e6ed389b606754ffef41a4a371c3e3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d22976254cc804ca53060fb284abde8e80a684e6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935812"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319726"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>Kibocsátási megjegyzések – az Azure arc-kompatibilis adatszolgáltatások (előzetes verzió)
 
@@ -28,6 +28,14 @@ A nyilvános előzetes verzióban elérhető az Azure arc-kompatibilis adatszolg
 - PostgreSQL nagy kapacitású
 
 Útmutatás: [Mi az az Azure arc-kompatibilis adatszolgáltatás?](overview.md)
+
+### <a name="known-issues"></a>Ismert problémák
+
+Erre a kiadásra a következő problémák érvényesek:
+
+* **PostgreSQL nagy kapacitású-kiszolgálócsoport törlése**: Ha módosította a kiszolgálócsoport vagy-példány konfigurációját, várja meg a szerkesztési művelet befejeződését, mielőtt törölné egy PostgreSQL nagy kapacitású-csoportot.
+
+* ** `azdata notebook run` sikertelen lehet**: a probléma megoldásához futtasson `azdata notebook run` egy Python virtuális környezetben. Ez a probléma az SQL felügyelt példányának vagy PostgreSQL nagy kapacitású-kiszolgáló csoportjának a Azure Data Studio Deployment Wizard használatával történő létrehozásának sikertelen kísérlete esetén is megnyilvánul. Ebben az esetben nyissa meg a jegyzetfüzetet, és kattintson az **összes futtatása** gombra a jegyzetfüzet tetején.
 
 ## <a name="next-steps"></a>Következő lépések
 

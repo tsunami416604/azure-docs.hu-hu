@@ -8,16 +8,19 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 1400f3c3d15698a5f1a145e8e0750ad7c4e9cec8
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 30fc71e6f59766a759cdb8e4e503123623f48bd9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90971404"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320472"
 ---
 # <a name="accessing-data-in-storage-accounts-securely-via-trusted-service-exception"></a>A Storage-fiókokban tárolt adatok biztonságos elérése a megbízható szolgáltatásokkal kapcsolatos kivételek használatával
 
 A Storage-fiókokban tárolt adathozzáférésű indexelő használhatják a [megbízható szolgáltatás kivételi](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) funkcióját az adathozzáférés biztonságos eléréséhez. Ez a mechanizmus olyan ügyfelek számára biztosít egyszerű, biztonságos és ingyenes alternatívát, akik nem tudnak [hozzáférni az indexelő számára az IP-tűzfalszabályok](search-indexer-howto-access-ip-restricted.md) használatával.
+
+> [!NOTE]
+> A Storage-fiókokban lévő adatok megbízható szolgáltatási kivételen keresztüli elérésének támogatása az Azure Blob Storage-ra és Azure Data Lake Gen2-tárolóra korlátozódik. Az Azure Table Storage nem támogatott.
 
 ## <a name="step-1-configure-connection-to-the-storage-account-via-identity"></a>1. lépés: a Storage-fiókhoz való kapcsolódás konfigurálása identitás használatával
 

@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 09/04/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 52f495753d055730c1ad42444c83cf3d5cd4c1d3
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: beac9f64b12a07d2fc900099ee1f107e4981f17e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89461425"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320217"
 ---
 # <a name="tutorial-manage-app-groups-with-the-azure-portal"></a>Oktatóanyag: alkalmazás-csoportok kezelése a Azure Portal
 
@@ -32,7 +32,8 @@ Ha már létrehozott egy gazdagép-készletet és egy munkamenet-gazdagépet a A
 
 1.  Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
    
-   >! Megjegyzés Ha bejelentkezik a US Gov portálra, ugorjon a [https://portal.azure.us/](https://portal.azure.us/) helyet.
+    >[!NOTE]
+    > Ha bejelentkezik a US Gov portálra, ugorjon a [https://portal.azure.us/](https://portal.azure.us/) helyet.
 
 2.  Keresse meg és válassza ki a **Windows virtuális asztal**elemet.
 
@@ -125,7 +126,7 @@ Az üzembe helyezési folyamat a következő műveleteket végzi el:
 >[!IMPORTANT]
 >Az egyes Azure Active Directory bérlők számára csak 50-es alkalmazáscsoport hozható létre. Ezt a korlátot a felhasználók számára a hírcsatornák beolvasásához szükséges szolgáltatási korlátozások miatt vesszük fel. Ez a korlát nem vonatkozik a Windows Virtual Desktopban (klasszikus) létrehozott alkalmazás-csoportokra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan hozhat létre egy alkalmazáscsoport, hogyan tölthető be a RemoteApp-programokkal, és hogyan rendelhet hozzá felhasználókat az alkalmazás-csoporthoz. Az érvényesítési gazdagépek létrehozásáról a következő oktatóanyagban olvashat bővebben. Az ellenőrzési gazdagépek segítségével figyelheti a szolgáltatás frissítéseit, mielőtt az éles környezetbe helyezné őket.
 

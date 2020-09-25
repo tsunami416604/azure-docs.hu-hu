@@ -9,14 +9,14 @@ ms.devlang: PowerShell
 ms.topic: sample
 author: juliemsft
 ms.author: jrasnick
-ms.reviewer: carlrab
+ms.reviewer: sstein
 ms.date: 03/12/2019
-ms.openlocfilehash: 3c4695bb9dfeb9f0122d39dd335c9b733fe039b2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 569e2e76e4741c6748dadea823470fb903e0ca0f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085044"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319421"
 ---
 # <a name="use-powershell-to-monitor-and-scale-a-single-database-in-azure-sql-database"></a>Egyetlen adatbázis figyelése és méretezése a PowerShell használatával Azure SQL Database
 
@@ -61,7 +61,7 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 |||
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Azure PowerShellről: [Azure PowerShell dokumentáció](/powershell/azure/).
 

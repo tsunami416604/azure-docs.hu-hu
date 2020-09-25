@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0d7703af48ba33edea81ca45516191266a79fa4
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 7006ecd760a886fdebe50becb2ab366ff79cf057
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799553"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319809"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Egy csoport licenc-hozzárendelési problémáinak azonosítása és megoldása Azure Active Directory
 
@@ -87,7 +87,7 @@ A probléma megoldásához meg kell győződnie arról, hogy a szükséges csoma
 
 ## <a name="usage-location-isnt-allowed"></a>A használat helye nem engedélyezett
 
-**Probléma:** Bizonyos Microsoft-szolgáltatások nem érhetők el minden helyen a helyi törvények és rendeletek miatt. Ahhoz, hogy licencet rendeljen a felhasználóhoz, meg kell adnia a felhasználó **használati helye** tulajdonságát. Megadhatja a helyet a Azure Portal **felhasználói**  >  **profil**  >  **beállításai** szakaszában.
+**Probléma:** Bizonyos Microsoft-szolgáltatások nem érhetők el minden helyen a helyi törvények és rendeletek miatt. Ahhoz, hogy licencet rendeljen a felhasználóhoz, meg kell adnia a felhasználó **használati helye** tulajdonságát. A Azure Portalban megadhatja a **felhasználói**  >  **profil**  >  **szerkesztése** szakaszban található helyet.
 
 Ha az Azure AD olyan felhasználóhoz próbál csoport-licencet hozzárendelni, amelynek a használati helye nem támogatott, a művelet sikertelen lesz, és hibát jelez a felhasználónál.
 

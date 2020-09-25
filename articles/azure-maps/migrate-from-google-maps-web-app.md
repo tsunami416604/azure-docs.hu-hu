@@ -1,20 +1,20 @@
 ---
-title: 'Oktatóanyag: webalkalmazás migrálása a Google Maps szolgáltatásból | Microsoft Azure térképek'
-description: Webalkalmazások áttelepítésének módja a Google Maps szolgáltatásból Microsoft Azure Maps-be.
+title: Webalkalmazás migrálása a Google Maps szolgáltatásból | Microsoft Azure térképek
+description: Webalkalmazás migrálása a Google Mapsből Microsoft Azure Maps-be
 author: rbrundritt
 ms.author: richbrun
-ms.date: 12/17/2019
-ms.topic: tutorial
+ms.date: 08/18/2020
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.custom: devx-track-javascript
-ms.openlocfilehash: bc5f10e34b929110763b53fe1016334ce9bfddd6
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.custom: devx-track-js
+ms.openlocfilehash: 3414f50d6d0fc4983b7a05226a2f768e7ead81dd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090754"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319673"
 ---
 # <a name="migrate-a-web-app-from-google-maps"></a>Webalkalmazás migrálása a Google Maps szolgáltatásból
 
@@ -32,6 +32,7 @@ Ha JavaScript-keretrendszer használatával fejleszt, a következő nyílt forr�
 - [AzureMapsControl. Components](https://github.com/arnaudleclerc/AzureMapsControl.Components) – Azure Maps Blazer-összetevő.
 - [Azure Maps reagáló összetevő](https://github.com/WiredSolutions/react-azure-maps) – a Azure Maps vezérlőre reagáló burkoló.
 - [Vue Azure Maps](https://github.com/rickyruiz/vue-azure-maps) – egy Azure Maps összetevő a Vue alkalmazáshoz.
+
 
 ## <a name="key-features-support"></a>A főbb funkciók támogatása
 
@@ -112,7 +113,7 @@ A Térkép betöltéséhez mindkét SDK-nak ugyanaz a lépései vannak:
 
 Az alábbi alapszintű példák a Google Maps szolgáltatást használják, hogy a koordinátákon keresztül középre igazított térképet töltsön be. A hosszúság:-73,985, szélesség: 40,747, és a Térkép a nagyítási szint 12.
 
-**Előtte: Google Maps**
+#### <a name="before-google-maps"></a>Előtte: Google Maps
 
 Megjelenítheti a Google Térkép középre igazított és nagyított helyét.
 
@@ -147,11 +148,9 @@ Megjelenítheti a Google Térkép középre igazított és nagyított helyét.
 
 A kód böngészőben való futtatásakor megjelenik egy Térkép, amely a következő képhez hasonlóan néz ki:
 
-<center>
+![Egyszerű Google Maps](media/migrate-google-maps-web-app/simple-google-map.png)
 
-![Egyszerű Google Maps](media/migrate-google-maps-web-app/simple-google-map.png)</center>
-
-**Utána: Azure Maps**
+#### <a name="after-azure-maps"></a>Utána: Azure Maps
 
 Töltsön be egy térképet ugyanazzal a nézettel Azure Maps együtt a Térkép stílusa vezérlőelem és a nagyítás gombokkal.
 
@@ -206,9 +205,7 @@ Töltsön be egy térképet ugyanazzal a nézettel Azure Maps együtt a Térkép
 
 A kód böngészőben való futtatásakor megjelenik egy Térkép, amely a következő képhez hasonlóan néz ki:
 
-<center>
-
-![Egyszerű Azure Maps](media/migrate-google-maps-web-app/simple-azure-maps.png)</center>
+![Egyszerű Azure Maps](media/migrate-google-maps-web-app/simple-azure-maps.png)
 
 Részletes dokumentációt talál arról, hogyan állíthatja be és használhatja a Azure Maps Térkép vezérlőelemet egy webalkalmazásban, ehhez kattintson [ide](how-to-use-map-control.md).
 
@@ -223,7 +220,7 @@ Részletes dokumentációt talál arról, hogyan állíthatja be és használhat
 
 Ha a célközönség több országra vagy régióra terjed ki, vagy különböző nyelveket beszél, a honosítás fontos.
 
-**Előtte: Google Maps**
+#### <a name="before-google-maps"></a>Előtte: Google Maps
 
 A Google Maps honosítása érdekében adjon hozzá nyelvi és területi paramétereket.
 
@@ -233,11 +230,9 @@ A Google Maps honosítása érdekében adjon hozzá nyelvi és területi paramé
 
 Itt látható egy példa arra, hogy a Google Maps a "fr-FR" nyelvre van állítva.
 
-<center>
+![Google Maps – honosítás](media/migrate-google-maps-web-app/google-maps-localization.png)
 
-![Google Maps – honosítás](media/migrate-google-maps-web-app/google-maps-localization.png)</center>
-
-**Utána: Azure Maps**
+#### <a name="after-azure-maps"></a>Utána: Azure Maps
 
 Azure Maps két különböző módszert biztosít a Térkép nyelvének és regionális nézetének beállításához. Az első lehetőség az adatok hozzáadása a globális *atlasz* -névtérhez. Ennek eredményeképpen az alkalmazás minden Térkép vezérlőelem-példánya alapértelmezés szerint ezekkel a beállításokkal fog szerepelni. A következő nyelvre állítja be a franciát ("fr-FR") és a regionális nézetet az "Auto" értékre:
 
@@ -267,9 +262,7 @@ A Azure Maps [támogatott nyelveinek](supported-languages.md) részletes listáj
 
 Itt látható egy példa arra, hogy a "FR" és a "fr-FR" értékre beállított nyelv Azure Maps.
 
-<center>
-
-![Honosítás Azure Maps](media/migrate-google-maps-web-app/azure-maps-localization.png)</center>
+![Honosítás Azure Maps](media/migrate-google-maps-web-app/azure-maps-localization.png)
 
 ### <a name="setting-the-map-view"></a>A Térkép nézet beállítása
 
@@ -278,7 +271,7 @@ Az Azure-ban és a Google Maps-ben elérhető dinamikus leképezések programozo
 > [!NOTE]
 > A Google Maps a méretekben 256 képpontos csempéket használ, míg a Azure Maps nagyobb 512 képpont csempét használ. Így a Azure Maps kevesebb hálózati kérést igényel, hogy ugyanazt a térképi terület legyen betöltve a Google Maps szolgáltatásban. Mivel a csempe-piramisok a Térkép vezérlőelemekben működnek, ki kell vonnia a Google Maps-ben használt nagyítási szintet Azure Maps használatakor. Ez az aritmetikai művelet biztosítja, hogy a Azure Maps nagyobb csempéi a Google Maps-ben azonos ábrázolási területtel rendelkeznek.
 
-**Előtte: Google Maps**
+#### <a name="before-google-maps"></a>Előtte: Google Maps
 
 Helyezze át a Google Maps Térkép vezérlőelemet a `setOptions` metódus használatával. Ez a módszer lehetővé teszi a Térkép középpontjának és a nagyítási szint megadását.
 
@@ -290,11 +283,9 @@ map.setOptions({
 });
 ```
 
-<center>
+![Google Maps-set nézet](media/migrate-google-maps-web-app/google-maps-set-view.png)
 
-![Google Maps-set nézet](media/migrate-google-maps-web-app/google-maps-set-view.png)</center>
-
-**Utána: Azure Maps**
+#### <a name="after-azure-maps"></a>Utána: Azure Maps
 
 A Azure Maps a metódus használatával módosítsa a Térkép pozícióját, `setCamera` és módosítsa a Térkép stílusát a `setStyle` metódussal. A (z) Azure Maps koordinátái "hosszúságú, szélesség" formátumúak, és a nagyítási szint értékének kivonása eggyel történik.
 
@@ -309,9 +300,7 @@ map.setStyle({
 });
 ```
 
-<center>
-
-![Azure Maps nézet beállítása](media/migrate-google-maps-web-app/azure-maps-set-view.jpeg)</center>
+![Azure Maps nézet beállítása](media/migrate-google-maps-web-app/azure-maps-set-view.jpeg)
 
 **További források:**
 
@@ -330,7 +319,7 @@ A szimbólum rétegeinek és buborékdiagram-rétegeinek megjelenítése a WebGL
 
 Vegyünk fel egy jelölőt a térképhez a 10. számú címkével. Használja a hosszúság:-0,2 és a szélesség: 51,5.
 
-**Előtte: Google Maps**
+#### <a name="before-google-maps"></a>Előtte: Google Maps
 
 A Google Maps használatával adja hozzá a jelölőket a térképhez a osztály segítségével, `google.maps.Marker` és adja meg a térképet az egyik lehetőség közül.
 
@@ -343,9 +332,7 @@ var marker = new google.maps.Marker({
 });
 ```
 
-<center>
-
-![Google Maps-jelölő](media/migrate-google-maps-web-app/google-maps-marker.png)</center>
+![Google Maps-jelölő](media/migrate-google-maps-web-app/google-maps-marker.png)
 
 **Utána: Azure Maps HTML-jelölők használatával**
 
@@ -359,9 +346,7 @@ map.markers.add(new atlas.HtmlMarker({
 }));
 ```
 
-<center>
-
-![Azure Maps HTML-jelölő](media/migrate-google-maps-web-app/azure-maps-html-marker.png)</center>
+![Azure Maps HTML-jelölő](media/migrate-google-maps-web-app/azure-maps-html-marker.png)
 
 **Utána: Azure Maps egy szimbólum réteget használva**
 
@@ -425,9 +410,7 @@ Szimbólum réteg esetén adja hozzá az adatforráshoz az adatforrást. Csatolj
 </html>
 ```
 
-<center>
-
-![Azure Maps szimbólum réteg](media/migrate-google-maps-web-app/azure-maps-symbol-layer.png)</center>
+![Azure Maps szimbólum réteg](media/migrate-google-maps-web-app/azure-maps-symbol-layer.png)
 
 **További források:**
 
@@ -451,7 +434,8 @@ Az egyéni rendszerképeket a térképen ábrázoló pontok ábrázolására is 
 ![sárga gombostű-rendszerkép](media/migrate-google-maps-web-app/yellow-pushpin.png)<br/>
 yellow-pushpin.png</center>
 
-**Előtte: Google Maps**
+
+#### <a name="before-google-maps"></a>Előtte: Google Maps
 
 Hozzon létre egy egyéni jelölőt egy olyan objektum megadásával `Icon` , amely tartalmazza a `url` képet. Egy pontot kell megadnia `anchor` , amely a gombostű-kép pontját a Térkép koordinátáival igazítja. A Google Maps-ben a horgony értéke a rendszerkép bal felső sarkához képest relatív.
 
@@ -466,9 +450,8 @@ var marker = new google.maps.Marker({
 });
 ```
 
-<center>
 
-![Google Maps – egyéni jelölő](media/migrate-google-maps-web-app/google-maps-custom-marker.png)</center>
+![Google Maps – egyéni jelölő](media/migrate-google-maps-web-app/google-maps-custom-marker.png)
 
 **Utána: Azure Maps HTML-jelölők használatával**
 
@@ -486,9 +469,7 @@ map.markers.add(new atlas.HtmlMarker({
 }));
 ```
 
-<center>
-
-![Egyéni HTML-jelölő Azure Maps](media/migrate-google-maps-web-app/azure-maps-custom-html-marker.png)</center>
+![Egyéni HTML-jelölő Azure Maps](media/migrate-google-maps-web-app/azure-maps-custom-html-marker.png)
 
 **Utána: Azure Maps egy szimbólum réteget használva**
 
@@ -553,9 +534,7 @@ A Azure Maps az egyéni rendszerképeket is támogatja. Először töltse be a k
 </html>
 ```
 
-<center>
-
-![Azure Maps egyéni ikon szimbólumának rétege](media/migrate-google-maps-web-app/azure-maps-custom-icon-symbol-layer.png)</center>
+![Azure Maps egyéni ikon szimbólumának rétege](media/migrate-google-maps-web-app/azure-maps-custom-icon-symbol-layer.png)</
 
 > [!TIP]
 > A speciális egyéni pontok megjelenítéséhez használjon több renderelési réteget együtt. Tegyük fel például, hogy több olyan pushpins szeretne, amelyeknek ugyanaz az ikonja a különböző színű körökben. Ahelyett, hogy az egyes színátfedésekhez hozzon létre egy csomó képet, adjon hozzá egy szimbólum réteget a buborék réteghez. A pushpins hivatkozhat ugyanarra az adatforrásra. Ez a megközelítés hatékonyabb lesz, mint a különböző rendszerképek létrehozása és karbantartása.
@@ -575,7 +554,7 @@ A Azure Maps az egyéni rendszerképeket is támogatja. Először töltse be a k
 
 A Térkép vonalának vagy elérési útjának ábrázolásához használjon vonalláncokat. Hozzunk létre egy szaggatott vonalláncot a térképen.
 
-**Előtte: Google Maps**
+#### <a name="before-google-maps"></a>Előtte: Google Maps
 
 A vonallánc osztály a lehetőségek készletét fogadja el. Adja át a koordináták tömbjét a `path` vonallánc beállításban.
 
@@ -611,11 +590,9 @@ var line = new google.maps.Polyline({
 line.setMap(map);
 ```
 
-<center>
+![Google Maps-vonallánc](media/migrate-google-maps-web-app/google-maps-polyline.png)
 
-![Google Maps-vonallánc](media/migrate-google-maps-web-app/google-maps-polyline.png)</center>
-
-**Utána: Azure Maps**
+#### <a name="after-azure-maps"></a>Utána: Azure Maps
 
 A vonalláncok neve `LineString` vagy `MultiLineString` objektumai. Ezek az objektumok hozzáadhatók egy adatforráshoz, és egy sor réteg használatával is megjeleníthető. Adjon hozzá `LineString` egy adatforráshoz, majd adja hozzá az adatforrást a elemhez, `LineLayer` hogy megjelenítse.
 
@@ -641,10 +618,7 @@ map.layers.add(new atlas.layer.LineLayer(datasource, null, {
     strokeDashArray: [3, 3]
 }));
 ```
-
-<center>
-
-![Azure Maps vonallánc](media/migrate-google-maps-web-app/azure-maps-polyline.png)</center>
+![Azure Maps vonallánc](media/migrate-google-maps-web-app/azure-maps-polyline.png)
 
 **További források:**
 
@@ -656,7 +630,7 @@ map.layers.add(new atlas.layer.LineLayer(datasource, null, {
 
 A Azure Maps és a Google Maps hasonló támogatást biztosít a sokszögekhez. A sokszögek egy területnek a térképen való ábrázolására szolgálnak. Az alábbi példák bemutatják, hogyan hozhat létre olyan sokszöget, amely a Térkép középpontjának koordinátái alapján alkotja a háromszöget.
 
-**Előtte: Google Maps**
+#### <a name="before-google-maps"></a>Előtte: Google Maps
 
 A sokszög osztály a lehetőségek készletét fogadja el. Adja át a koordináták tömbjét a `paths` sokszög beállításának.
 
@@ -681,11 +655,9 @@ var polygon = new google.maps.Polygon({
 polygon.setMap(map);
 ```
 
-<center>
+![Google Maps – sokszög](media/migrate-google-maps-web-app/google-maps-polygon.png)
 
-![Google Maps – sokszög](media/migrate-google-maps-web-app/google-maps-polygon.png)</center>
-
-**Utána: Azure Maps**
+#### <a name="after-azure-maps"></a>Utána: Azure Maps
 
 Adjon hozzá egy `Polygon` vagy egy `MultiPolygon` objektumot egy adatforráshoz. Az objektum leképezése rétegek használatával. Sokszög területének megjelenítése sokszög réteg használatával És a sokszög körvonalait egy vonal réteggel jeleníti meg.
 
@@ -716,10 +688,7 @@ map.layers.add(new atlas.layer.LineLayer(datasource, null, {
     strokeWidth: 2
 }));
 ```
-
-<center>
-
-![Azure Maps sokszög](media/migrate-google-maps-web-app/azure-maps-polygon.png)</center>
+![Azure Maps sokszög](media/migrate-google-maps-web-app/azure-maps-polygon.png)
 
 **További források:**
 
@@ -733,7 +702,7 @@ map.layers.add(new atlas.layer.LineLayer(datasource, null, {
 
 Az entitásokra vonatkozó további információk a térképen a `google.maps.InfoWindow` Google Maps-osztályként is megjeleníthetők. Azure Maps ez a funkció a osztály használatával érhető el `atlas.Popup` . A következő példákban egy jelölőt adunk hozzá a térképhez. Ha a jelölőre kattint, megjelenik egy információs ablak vagy egy előugró ablak.
 
-**Előtte: Google Maps**
+#### <a name="before-google-maps"></a>Előtte: Google Maps
 
 Egy információs ablak létrehozása a konstruktor használatával `google.maps.InfoWindow` .
 
@@ -754,12 +723,9 @@ marker.addListener('click', function () {
     infowindow.open(map, marker);
 });
 ```
+![Google Maps felugró ablak](media/migrate-google-maps-web-app/google-maps-popup.png)
 
-<center>
-
-![Google Maps felugró ablak](media/migrate-google-maps-web-app/google-maps-popup.png)</center>
-
-**Utána: Azure Maps**
+#### <a name="after-azure-maps"></a>Utána: Azure Maps
 
 A felugró ablak használatával további információkat jeleníthet meg a helyről. Adjon át egy HTML `string` -t vagy egy `HTMLElement` objektumot az `content` előugró ablak beállítására. Ha szeretné, az előugró ablakok bármilyen alakzattól függetlenül is megjeleníthetők. Így a felugró ablakoknak `position` meg kell adni egy értéket. Itt adhatja meg az `position` értéket. Az előugró ablak megjelenítéséhez hívja `open` meg a metódust, és adja meg, hogy az `map` előugró ablakban megjelenjen a.
 
@@ -785,10 +751,7 @@ map.events.add('click', marker, function () {
     popup.open(map);
 });
 ```
-
-<center>
-
-![Azure Maps előugró ablak](media/migrate-google-maps-web-app/azure-maps-popup.png)</center>
+![Azure Maps előugró ablak](media/migrate-google-maps-web-app/azure-maps-popup.png)
 
 > [!NOTE]
 > Ugyanezt megteheti egy szimbólummal, buborékmal, vonal vagy sokszög réteggel is, ha a kiválasztott réteget a Maps (Térkép) esemény kódjába továbbítja a jelölő helyett.
@@ -808,7 +771,7 @@ A Google Maps támogatja a GeoJSON-adatgyűjtést és a dinamikus formázást a 
 
 Az alábbi példák betöltenek minden földrengés GeoJSON-csatornáját az USGS-ből az elmúlt hét napban. A földrengések adathalmaza méretezhető körökként jelenik meg a térképen. Az egyes körök színe és méretezése az egyes földrengések nagyságán alapul, amely az `"mag"` adathalmaz egyes funkcióinak tulajdonságában van tárolva. Ha a magnitúdó nagyobb vagy egyenlő, mint öt, akkor a kör piros lesz. Ha a háromnál nagyobb vagy egyenlő, de kevesebb, mint öt, a kör narancssárga lesz. Ha kevesebb, mint három, a kör zöld színnel jelenik meg. Az egyes körök sugara a magnitúdó exponenciálisan megszorozva a 0,1-as értékkel.
 
-**Előtte: Google Maps**
+#### <a name="before-google-maps"></a>Előtte: Google Maps
 
 Egyetlen visszahívási függvényt kell megadni a `map.data.setStyle` metódusban. A visszahívási függvényen belül alkalmazza az üzleti logikát az egyes szolgáltatásokra. Töltse be a GeoJSON-hírcsatornát a `map.data.loadGeoJson` metódussal.
 
@@ -877,11 +840,9 @@ Egyetlen visszahívási függvényt kell megadni a `map.data.setStyle` metódusb
 </html>
 ```
 
-<center>
+![Google Maps GeoJSON](media/migrate-google-maps-web-app/google-maps-geojson.png)
 
-![Google Maps GeoJSON](media/migrate-google-maps-web-app/google-maps-geojson.png)</center>
-
-**Utána: Azure Maps**
+#### <a name="after-azure-maps"></a>Utána: Azure Maps
 
 A GeoJSON az Azure Maps alapadatának típusa. Importálja egy adatforrásba az `datasource.importFromUrl` metódus használatával. Buborék-réteg használata A buborék réteg az adatforrás szolgáltatásainak tulajdonságai alapján méretezhető körök megjelenítésére szolgáló funkciókat biztosít. A visszahívási függvény helyett az üzleti logikát egy kifejezésre alakítja át a rendszer, és átadja a stílus beállításait. A kifejezések határozzák meg az üzleti logika működését. A kifejezések átadhatók egy másik szálnak, és kiértékelhető a szolgáltatásra vonatkozó adattal. Több adatforrást és réteget is hozzáadhat a Azure Mapshoz, amelyek mindegyike különböző üzleti logikával rendelkezik. Ez a funkció lehetővé teszi több adatkészlet megjelenítését a térképen különböző módokon.
 
@@ -958,9 +919,9 @@ A GeoJSON az Azure Maps alapadatának típusa. Importálja egy adatforrásba az 
 </html>
 ```
 
-<center>
 
-![Azure Maps GeoJSON](media/migrate-google-maps-web-app/azure-maps-geojson.png)</center>
+
+![Azure Maps GeoJSON](media/migrate-google-maps-web-app/azure-maps-geojson.png)
 
 **További források:**
 
@@ -978,7 +939,7 @@ A következő példákban a kód betölt egy GeoJSON-hírcsatornát az elmúlt h
 > [!NOTE]
 > A Google Maps és a Azure Maps némileg eltérő csoportosítási algoritmusokat használnak. Ez azt eredményezi, hogy a fürtök pont eloszlása eltérő lehet.
 
-**Előtte: Google Maps**
+#### <a name="before-google-maps"></a>Előtte: Google Maps
 
 A MarkerCluster-függvénytárat használja a fürt jelölői számára. A fürt ikonjai csak a képekre korlátozódnak, amelyek neve a következő számokat tartalmazhatja. Ugyanabban a címtárban futnak.
 
@@ -1035,11 +996,11 @@ A MarkerCluster-függvénytárat használja a fürt jelölői számára. A fürt
 </html>
 ```
 
-<center>
 
-![Google Maps-fürtözés](media/migrate-google-maps-web-app/google-maps-clustering.png)</center>
 
-**Utána: Azure Maps**
+![Google Maps-fürtözés](media/migrate-google-maps-web-app/google-maps-clustering.png)
+
+#### <a name="after-azure-maps"></a>Utána: Azure Maps
 
 Adatforrásban lévő adatforrások hozzáadása és kezelése. Az adatforrások és a rétegek összekötése, majd az adathalmazok megjelenítése. A `DataSource` Azure Maps osztály számos fürtszolgáltatási lehetőséget kínál.
 
@@ -1163,9 +1124,9 @@ A GeoJSON-adat közvetlenül importálható az `importDataFromUrl` osztályban t
 </html>
 ```
 
-<center>
 
-![Azure Maps fürtözés](media/migrate-google-maps-web-app/azure-maps-clustering.png)</center>
+
+![Azure Maps fürtözés](media/migrate-google-maps-web-app/azure-maps-clustering.png)
 
 **További források:**
 
@@ -1180,7 +1141,7 @@ A Heat Maps (más néven a pont sűrűsége) az adatvizualizáció típusa. Ezek
 
 Az alábbi példák betöltenek egy GeoJSON-hírcsatornát az elmúlt hónapban az összes földrengésről az USGS-ből, és súlyozott hő-térképként jeleníti meg őket. A `"mag"` tulajdonság a súlyozásként használható.
 
-**Előtte: Google Maps**
+#### <a name="before-google-maps"></a>Előtte: Google Maps
 
 Heat Map létrehozásához töltse be a "vizualizáció" könyvtárat az `&libraries=visualization` API-szkript URL-címéhez való hozzáadásával. A Google Maps Heat Map rétege nem támogatja közvetlenül a GeoJSON-adatgyűjtést. Először töltse le az adatmennyiséget, és alakítsa át a súlyozott adatpontok tömbbe:
 
@@ -1245,11 +1206,11 @@ Heat Map létrehozásához töltse be a "vizualizáció" könyvtárat az `&libra
 </html>
 ```
 
-<center>
 
-![Google Maps – Heat Térkép](media/migrate-google-maps-web-app/google-maps-heatmap.png)</center>
 
-**Utána: Azure Maps**
+![Google Maps – Heat Térkép](media/migrate-google-maps-web-app/google-maps-heatmap.png)
+
+#### <a name="after-azure-maps"></a>Utána: Azure Maps
 
 Töltse be a GeoJSON az adatforrásba, és kapcsolja össze az adatforrást egy Heat Map-réteggel. A súlyozáshoz használt tulajdonságot kifejezés használatával lehet átadni a `weight` paraméternek. Az osztályban található függvénnyel közvetlenül importálhatja a Azure Maps GeoJSON-adataiba `importDataFromUrl` `DataSource` .
 
@@ -1311,9 +1272,9 @@ Töltse be a GeoJSON az adatforrásba, és kapcsolja össze az adatforrást egy 
 </html>
 ```
 
-<center>
 
-![Azure Maps Heat Térkép](media/migrate-google-maps-web-app/azure-maps-heatmap.png)</center>
+
+![Azure Maps Heat Térkép](media/migrate-google-maps-web-app/azure-maps-heatmap.png)
 
 **További források:**
 
@@ -1328,7 +1289,7 @@ A Azure Maps csempéi a Google Maps-ben képátfedésként ismertek. A csempe r�
 
 Az alábbi példák egy időjárási radar csempe réteget fedik fel az Iowa State University Iowa környezeti Mesonet.
 
-**Előtte: Google Maps**
+#### <a name="before-google-maps"></a>Előtte: Google Maps
 
 A Google Maps-ben a csempe rétegeit a osztály használatával lehet létrehozni `google.maps.ImageMapType` .
 
@@ -1342,11 +1303,11 @@ map.overlayMapTypes.insertAt(0, new google.maps.ImageMapType({
 }));
 ```
 
-<center>
 
-![Google Maps csempe réteg](media/migrate-google-maps-web-app/google-maps-tile-layer.png)</center>
 
-**Utána: Azure Maps**
+![Google Maps csempe réteg](media/migrate-google-maps-web-app/google-maps-tile-layer.png)
+
+#### <a name="after-azure-maps"></a>Utána: Azure Maps
 
 Vegyen fel egy csempe réteget a térképhez hasonlóan, mint bármely más réteget. Használjon olyan formázott URL-címet, amely x, y és nagyítási helyőrzőket tartalmaz. `{x}`, `{y}` , `{z}`  hogy tájékoztassa a réteget a csempék eléréséről. Azure Maps csempe rétegek is támogatják a, `{quadkey}` `{bbox-epsg-3857}` és a `{subdomain}` helyőrzőket.
 
@@ -1362,9 +1323,9 @@ map.layers.add(new atlas.layer.TileLayer({
 }), 'labels');
 ```
 
-<center>
 
-![Azure Maps csempe réteg](media/migrate-google-maps-web-app/azure-maps-tile-layer.png)</center>
+
+![Azure Maps csempe réteg](media/migrate-google-maps-web-app/azure-maps-tile-layer.png)
 
 > [!TIP]
 > A csempe-kéréseket a `transformRequest` Térkép lehetőségével lehet rögzíteni. Ez lehetővé teszi, hogy szükség esetén módosítsa vagy adja hozzá a fejléceket a kéréshez.
@@ -1379,7 +1340,7 @@ map.layers.add(new atlas.layer.TileLayer({
 
 A forgalmi adatok az Azure és a Google Maps is felhelyezhetők.
 
-**Előtte: Google Maps**
+#### <a name="before-google-maps"></a>Előtte: Google Maps
 
 Átfedő forgalmi adatok a térképen a forgalmi réteg használatával.
 
@@ -1388,11 +1349,11 @@ var trafficLayer = new google.maps.TrafficLayer();
 trafficLayer.setMap(map);
 ```
 
-<center>
 
-![Google Maps-forgalom](media/migrate-google-maps-web-app/google-maps-traffic.png)</center>
 
-**Utána: Azure Maps**
+![Google Maps-forgalom](media/migrate-google-maps-web-app/google-maps-traffic.png)
+
+#### <a name="after-azure-maps"></a>Utána: Azure Maps
 
 Azure Maps számos különböző lehetőséget biztosít a forgalom megjelenítéséhez. Az adatforgalmi incidensek, például a közúti bezárások és a balesetek ikonjainak megjelenítése a térképen. Átfedésben lévő forgalom és színkódolt utak a térképen. A színek a feladott sebesség korlátja alapján módosíthatók, a normál várható késéshez képest, vagy abszolút késleltetéssel. Az incidensek Azure Maps percenként frissülnek, és két percenként frissülnek az adatforgalom.
 
@@ -1405,15 +1366,15 @@ map.setTraffic({
 });
 ```
 
-<center>
 
-![Azure Maps forgalom](media/migrate-google-maps-web-app/azure-maps-traffic.png)</center>
+
+![Azure Maps forgalom](media/migrate-google-maps-web-app/azure-maps-traffic.png)
 
 Ha a Azure Maps egyik forgalmi ikonjára kattint, további információk jelennek meg a felugró ablakban.
 
-<center>
 
-![Azure Maps forgalmi incidens](media/migrate-google-maps-web-app/azure-maps-traffic-incident.png)</center>
+
+![Azure Maps forgalmi incidens](media/migrate-google-maps-web-app/azure-maps-traffic-incident.png)
 
 **További források:**
 
@@ -1424,7 +1385,7 @@ Ha a Azure Maps egyik forgalmi ikonjára kattint, további információk jelenne
 
 Az Azure és a Google Maps is támogatja a georeferens-lemezképek átfedését a térképen. A georeferens-képek mozgatása és méretezése a Térkép pásztázása és nagyítása révén. A Google Maps-ben a georeferens rendszerképeket nevezzük, miközben Azure Maps képrétegként hivatkoznak rájuk. Kiválóan használhatók alapszintű csomagok létrehozásához, a régi térképek és képek átfedéséhez egy droneből.
 
-**Előtte: Google Maps**
+#### <a name="before-google-maps"></a>Előtte: Google Maps
 
 Itt adhatja meg az átfedő képre mutató URL-címet, valamint egy határoló mezőt, amely a képet a térképen köti össze. Ez a példa egy [Newark New Jersey](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg) térképi képét fedi fel a térképen a 1922-es számon.
 
@@ -1471,11 +1432,9 @@ Itt adhatja meg az átfedő képre mutató URL-címet, valamint egy határoló m
 
 A kód böngészőben való futtatásakor megjelenik egy Térkép, amely a következő képhez hasonlóan néz ki:
 
-<center>
+![Google Maps-rendszerkép átfedésben](media/migrate-google-maps-web-app/google-maps-image-overlay.png)
 
-![Google Maps-rendszerkép átfedésben](media/migrate-google-maps-web-app/google-maps-image-overlay.png)</center>
-
-**Utána: Azure Maps**
+#### <a name="after-azure-maps"></a>Utána: Azure Maps
 
 Használja az `atlas.layer.ImageLayer` osztályt a georeferens képek átfedéséhez. Ehhez az osztályhoz a rendszerkép egy URL-címe és egy koordináták halmaza szükséges a rendszerkép négy sarkánál. A rendszerképet ugyanazon a tartományon kell tárolni, vagy engedélyezve kell lennie a CORs.
 
@@ -1534,9 +1493,9 @@ Használja az `atlas.layer.ImageLayer` osztályt a georeferens képek átfedés�
 </html>
 ```
 
-<center>
 
-![Azure Maps képátfedés](media/migrate-google-maps-web-app/azure-maps-image-overlay.png)</center>
+
+![Azure Maps képátfedés](media/migrate-google-maps-web-app/azure-maps-image-overlay.png)
 
 **További források:**
 
@@ -1547,7 +1506,7 @@ Használja az `atlas.layer.ImageLayer` osztályt a georeferens képek átfedés�
 
 Az Azure és a Google Maps egyaránt képes a KML-, KMZ-és GeoRSS-adathalmazok importálására és megjelenítésére a térképen. A Azure Maps támogatja a GPX, a GML, a térbeli CSV-fájlok, a GeoJSON, a jól ismert szövegek (WKT), a webes leképezési szolgáltatások (WMS), a webes leképezési szolgáltatások (WMTS) és a webes szolgáltatások (WFS) használatát is. Azure Maps a fájlokat helyileg beolvassa a memóriába, és a legtöbb esetben sokkal nagyobb KML-fájlokat kezelhet. 
 
-**Előtte: Google Maps**
+#### <a name="before-google-maps"></a>Előtte: Google Maps
 
 
 ```javascript
@@ -1586,11 +1545,9 @@ Az Azure és a Google Maps egyaránt képes a KML-, KMZ-és GeoRSS-adathalmazok 
 
 A kód böngészőben való futtatásakor megjelenik egy Térkép, amely a következő képhez hasonlóan néz ki:
 
-<center>
+![Google Maps – KML](media/migrate-google-maps-web-app/google-maps-kml.png)
 
-![Google Maps – KML](media/migrate-google-maps-web-app/google-maps-kml.png)</center>
-
-**Utána: Azure Maps**
+#### <a name="after-azure-maps"></a>Utána: Azure Maps
 
 Azure Maps GeoJSON a web SDK-ban használt fő adatformátum, a további térbeli adatformátumok könnyen integrálhatók a [térbeli IO modul](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/)használatával. Ez a modul a térbeli adatok olvasását és írását is magában foglalja, valamint egy egyszerű adatréteget is tartalmaz, amely könnyen megjelenítheti ezeket a térbeli adatformátumokból származó adatok bármelyikét. A térbeli adatfájlokban lévő információk beolvasásához adjon meg egy URL-címet vagy egy nyers adat karakterláncként vagy blobként a `atlas.io.read` függvénybe. Ezzel visszaadja a fájl összes elemzett adatait, amelyet aztán hozzáadhat a térképhez. A KML egy kicsit összetettebb, mint a legtöbb térbeli adatformátum, mivel sokkal több stílussal kapcsolatos információt tartalmaz. Az `SpatialDataLayer` osztály támogatja a stílusok renderelési többségét, azonban a szolgáltatásba való betöltés előtt az ikonokat be kell tölteni a térképbe, és a rendszernek külön fel kell vennie a terepeket a térképbe. Ha egy URL-címen keresztül tölt be egy adatkészletet, azt egy CORs-kompatibilis végponton kell üzemeltetni, vagy a proxy szolgáltatást az olvasási függvénynek kell átadnia. 
 
@@ -1683,9 +1640,9 @@ Azure Maps GeoJSON a web SDK-ban használt fő adatformátum, a további térbel
 </html>
 ```
 
-<center>
 
 ![Azure Maps KML](media/migrate-google-maps-web-app/azure-maps-kml.png)</center>
+
 
 **További források:**
 
@@ -1763,21 +1720,9 @@ A tárak további funkciókat is hozzáadhatnak a térképhez. Ezen könyvtárak
 | Geometriai könyvtár      | [Atlas. Math](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.math)   |
 | Vizualizációs könyvtár | [Heat Térkép réteg](map-add-heat-map-layer.md) |
 
-## <a name="next-steps"></a>Következő lépések
+További információ a Google Maps áttelepítéséről:
 
-További információ a Azure Maps web SDK-ról.
-
-> [!div class="nextstepaction"]
-> [A Térkép vezérlőelem használata](how-to-use-map-control.md)
-
-> [!div class="nextstepaction"]
-> [A szolgáltatások modul használata](how-to-use-services-module.md)
-
-> [!div class="nextstepaction"]
-> [A rajzolási eszközök modul használata](set-drawing-options.md)
-
-> [!div class="nextstepaction"]
-> [Kódminták](https://docs.microsoft.com/samples/browse/?products=azure-maps)
-
-> [!div class="nextstepaction"]
-> [Azure Maps web SDK szolgáltatás API-referenciájának dokumentációja](https://docs.microsoft.com/javascript/api/azure-maps-control/)
+* [a szolgáltatások modul használata](how-to-use-services-module.md) 
+* [a rajzolási eszközök modul használata](set-drawing-options.md)
+* [a szolgáltatások modul használata](how-to-use-services-module.md)
+* [a Térkép vezérlőelem használata](how-to-use-map-control.md)

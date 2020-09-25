@@ -1,6 +1,6 @@
 ---
 title: Méretezési csoport létrehozása általánosított rendszerképből Azure PowerShell
-description: Méretezési csoport létrehozása általánosított képpel egy megosztott Képtárban.
+description: Méretezési csoport létrehozása általánosított képpel a megosztott képtárban a PowerShell használatával.
 author: cynthn
 ms.service: virtual-machine-scale-sets
 ms.subservice: imaging
@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 3b8c9d46a5bc5dde3e39bfa5673247ca752d2a89
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 22bd1ed88f61689eec9312392f7f58d137f703e0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077573"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331522"
 ---
-# <a name="create-a-scale-set-from-a-generalized-image"></a>Méretezési csoport létrehozása általánosított rendszerképből
+# <a name="create-a-scale-set-from-a-generalized-image-using-powershell"></a>Méretezési csoport létrehozása általánosított rendszerképből a PowerShell használatával 
 
 Hozzon létre egy virtuális gépet egy [megosztott rendszerkép-gyűjteményben](shared-image-galleries.md)tárolt általánosított rendszerkép-verzióból. Ha speciális rendszerkép használatával szeretne méretezési csoportokat létrehozni, tekintse [meg a méretezési csoport példányainak létrehozása speciális rendszerképből](instance-specialized-image-version-powershell.md)című témakört.
 
@@ -172,7 +172,7 @@ New-AzVmss `
 
 A méretezési csoport erőforrásainak és virtuális gépeinek létrehozása és konfigurálása néhány percet vesz igénybe.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az [Azure rendszerkép-szerkesztő (előzetes verzió)](../virtual-machines/linux/image-builder-overview.md) segítségével automatizálhatja a rendszerkép-verziók létrehozását, és [egy meglévő rendszerkép-verzióból](../virtual-machines/linux/image-builder-gallery-update-image-version.md)is frissítheti és létrehozhatja az új rendszerkép verzióját. 
 
 Sablonok használatával is létrehozhat megosztott képgyűjteményi erőforrásokat. Több Azure Gyorsindítás-sablon is elérhető: 
@@ -181,4 +181,4 @@ Sablonok használatával is létrehozhat megosztott képgyűjteményi erőforrá
 - [Rendszerkép-definíció létrehozása Shared Image Galleryben](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
 - [Rendszerképverzió létrehozása Shared Image Galleryben](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
 
-A megosztott képtárakkal kapcsolatos további információkért tekintse meg az [áttekintést](shared-image-galleries.md). Ha problémákba ütközik, tekintse meg a [megosztott képtárak hibaelhárítása](troubleshooting-shared-images.md)című témakört.
+A megosztott képtárakkal kapcsolatos további információkért tekintse meg az [áttekintést](shared-image-galleries.md). Ha problémákba ütközik, tekintse meg a [megosztott képtárak hibaelhárítása](../virtual-machines/troubleshooting-shared-images.md)című témakört.

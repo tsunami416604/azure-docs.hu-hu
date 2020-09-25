@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, carlrab
+ms.reviewer: jrasnik, sstein
 ms.date: 06/03/2019
-ms.openlocfilehash: f6872ff362777f4357b2b4345d0535bc940eda66
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 01daf0af039a00f6a81b850b07cfcf6d901a7732
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85982891"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91284635"
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>Automatikus hangolással kapcsolatos e-mail-értesítések
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -248,7 +248,7 @@ A PowerShell-szkript módosításával beállíthatja az automatikus e-mailek ki
 
 Előfordulhat, hogy a megoldás egy adott hangolási eseményen, illetve több címzettnél, több előfizetéshez vagy adatbázishoz való kiépítéséhez az egyéni forgatókönyvek függvényében tovább testreszabja a megoldást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ arról, hogy az automatikus hangolás hogyan segít az adatbázisok teljesítményének javításában: [Azure SQL Database automatikus finomhangolása](automatic-tuning-overview.md).
 - A számítási feladatok kezeléséhez Azure SQL Database automatikus hangolásának engedélyezéséhez tekintse meg az [automatikus hangolás engedélyezése](automatic-tuning-enable.md)című témakört.

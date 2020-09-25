@@ -1,6 +1,6 @@
 ---
 title: Azure-beli virtuális gépek magas rendelkezésre állása az SAP NW számára a RHEL multi-SID útmutatóban | Microsoft Docs
-description: Az Azure Virtual Machines magas rendelkezésre állása az SAP NetWeaver-on Red Hat Enterprise Linux
+description: Magas rendelkezésre állás biztosítása az SAP NW számára az Azure Virtual Machines (VM) RHEL több SID-hez.
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: rdeltcheva
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/04/2020
 ms.author: radeltch
-ms.openlocfilehash: 892c45db835457d5f0127d7377d722fc7f0df518
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 612bd019dc7a4bdf481fde4511084245fabd1620
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760753"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319962"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-red-hat-enterprise-linux-for-sap-applications-multi-sid-guide"></a>Magas rendelkezésre állás az SAP NetWeaver Azure-beli virtuális gépeken Red Hat Enterprise Linux for SAP Applications multi-SID Guide
 
@@ -56,7 +56,7 @@ A példában a konfigurációk, telepítési parancsok stb. három SAP NetWeaver
 * **NW2**: ASCS-példány száma **10** és virtuális állomásnév **msnw2ascs**; Az ERS-példányok száma **12** és a virtuális gazdagép neve **msnw2ers**.  
 * **NW3**: ASCS-példány száma **20** és virtuális állomásnév **msnw3ascs**; A **22-es** számú példány és a virtuális állomásnév **msnw3ers**.  
 
-A cikk nem fedi le az adatbázis rétegét és az SAP NFS-megosztások központi telepítését. A cikkben szereplő példákban [Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-create-volumes.md) mennyiségi **sapMSID** használunk az NFS-megosztásokhoz, feltéve, hogy a kötet már telepítve van. Azt is feltételezzük, hogy a Azure NetApp Files kötet NFSv3 protokollal van telepítve, és a következő fájlelérési utak léteznek az SAP Systems NW1, NW2 és NW3 ASCS és ERS példányai esetében:  
+A cikk nem fedi le az adatbázis rétegét és az SAP NFS-megosztások központi telepítését. A cikkben szereplő példákban [Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-create-volumes.md)  mennyiségi **sapMSID** használunk az NFS-megosztásokhoz, feltéve, hogy a kötet már telepítve van. Azt is feltételezzük, hogy a Azure NetApp Files kötet NFSv3 protokollal van telepítve, és a következő fájlelérési utak léteznek az SAP Systems NW1, NW2 és NW3 ASCS és ERS példányai esetében:  
 
 * mennyiségi sapMSID (nfs://10.42.0.4/sapmnt<b>NW1</b>)
 * mennyiségi sapMSID (nfs://10.42.0.4/usrsap<b>NW1</b>ASCs)
@@ -804,7 +804,7 @@ A bemutatott tesztek egy két csomóponton, több SID-fürtön, három SAP-rends
    pcs resource cleanup rsc_sap_NW1_ERS02
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Virtual Machines az SAP tervezéséhez és megvalósításához][planning-guide]
 * [Azure Virtual Machines üzembe helyezés az SAP-ban][deployment-guide]

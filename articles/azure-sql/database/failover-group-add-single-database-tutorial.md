@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
-ms.reviewer: sstein, carlrab
+ms.reviewer: sstein
 ms.date: 06/19/2019
-ms.openlocfilehash: 4caad36d21d3facb97dc358fdfee61e89c420213
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 23b78acb226b0d4de637dc653e6edb3bb4177219
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496338"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263589"
 ---
 # <a name="tutorial-add-an-azure-sql-database-to-an-autofailover-group"></a>Oktatóanyag: Azure SQL Database hozzáadása egy autofeladatátvételi csoporthoz
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -80,7 +80,7 @@ Hozza létre a feladatátvételi csoportot, és adja hozzá az adatbázist a Azu
    - **Feladatátvételi csoport neve**: adjon meg egy egyedi feladatátvételi csoport nevét (például `failovergrouptutorial` ).
    - **Másodlagos kiszolgáló**: válassza a *szükséges beállítások konfigurálását* , majd válassza az **új kiszolgáló létrehozása**lehetőséget. Másik lehetőségként már meglévő kiszolgálót is választhat másodlagos kiszolgálóként. A következő értékek beírása után válassza a **kiválasztás**lehetőséget.
       - **Kiszolgáló neve**: írjon be egy egyedi nevet a másodlagos kiszolgálónak, például: `mysqlsecondary` .
-      - **Kiszolgáló-rendszergazdai bejelentkezés**: típus`azureuser`
+      - **Kiszolgáló-rendszergazdai bejelentkezés**: típus `azureuser`
       - **Password (jelszó**): írjon be egy olyan összetett jelszót, amely megfelel a jelszó követelményeinek.
       - **Hely**: válasszon ki egy helyet a legördülő menüből, például: `East US` . Ez a hely nem lehet ugyanazon a helyen, mint az elsődleges kiszolgáló.
 
@@ -336,7 +336,7 @@ Törölje az erőforrásokat az erőforráscsoport törlésével.
 Törölje az erőforráscsoportot a Azure Portal használatával.
 
 1. Navigáljon az erőforráscsoporthoz a [Azure Portal](https://portal.azure.com).
-1. Válassza az **erőforráscsoport törlése** lehetőséget a csoport összes erőforrásának, valamint maga az erőforráscsoport törléséhez.
+1. Válassza az  **erőforráscsoport törlése** lehetőséget a csoport összes erőforrásának, valamint maga az erőforráscsoport törléséhez.
 1. Írja be az erőforráscsoport nevét, a `myResourceGroup` szövegmezőbe, majd kattintson a **Törlés** elemre az erőforráscsoport törléséhez.  
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -427,7 +427,7 @@ Nincsenek elérhető parancsfájlok a Azure Portal számára.
 
 További Azure SQL Database szkriptek itt találhatók: [Azure PowerShell](powershell-script-content-guide.md) és [Azure CLI](az-cli-script-samples-content-guide.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy Azure SQL Database-adatbázist adott hozzá egy feladatátvételi csoporthoz, és tesztelte a feladatátvételt. Megtanulta végrehajtani az alábbi műveleteket:
 

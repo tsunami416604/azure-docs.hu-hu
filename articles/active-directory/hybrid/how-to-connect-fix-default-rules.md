@@ -13,12 +13,12 @@ ms.date: 03/21/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd16dd5a20a677568c928f805c1aaa5f2c222f24
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: a0fc1bc3158e04c9b1f677af7ef2375ac3ed2ce7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279941"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320047"
 ---
 # <a name="fix-modified-default-rules-in-azure-ad-connect"></a>Módosított alapértelmezett szabályok javítása Azure AD Connect
 
@@ -73,7 +73,7 @@ Ha a bővítmények nem működnek, próbálkozzon a következő szakaszokban is
 #### <a name="add-an-inbound-sync-rule"></a>Bejövő szinkronizálási szabály hozzáadása
 A bejövő szinkronizálási szabály azt jelenti, hogy az attribútum forrása egy összekötő terület, és a cél a metaverse. Ha például egy új attribútumot szeretne létrehozni a helyszíni Active Directoryról Azure Active Directoryra, hozzon létre egy új bejövő szinkronizálási szabályt. Indítsa el a **szinkronizálási szabályok szerkesztőjét**, válassza a **bejövő** lehetőséget irányként, majd kattintson az **új szabály hozzáadása**lehetőségre. 
 
- ![Szinkronizációs szabályok szerkesztője](media/how-to-connect-fix-default-rules/default3a.png)
+ ![Képernyőfelvétel: "beérkező" és "új szabály hozzáadása" beállítású "szinkronizációs szabályok szerkesztője".](media/how-to-connect-fix-default-rules/default3a.png)
 
 A szabály elnevezéséhez kövesse a saját elnevezési konvenciót. Itt a Custom (egyéni) lehetőséget használjuk az **ad-User**szolgáltatásból. Ez azt jelenti, hogy a szabály egy egyéni szabály, amely a Active Directory-összekötő területéről a metaverse felé irányuló Bejövő szabály.   
 
@@ -176,7 +176,7 @@ Előnézet kiválasztása. **..**
 
 Az előnézet ablakban válassza az **előnézet előállítása** és az **attribútum importálása** a bal oldali ablaktáblán lehetőséget.
 
-![Előnézet](media/how-to-connect-fix-default-rules/default14.png)
+![Képernyőfelvétel: az "Előnézet" ablak "az attribútum importálása" és az "előnézet előállítása" beállítás látható.](media/how-to-connect-fix-default-rules/default14.png)
  
 Itt figyelje meg, hogy az újonnan hozzáadott szabály fut az objektumon, és az attribútum értéke `cloudFiltered` true (igaz).
 

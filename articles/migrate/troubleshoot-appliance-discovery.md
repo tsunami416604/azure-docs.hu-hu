@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 9d4f30c5946e07b9f71c007d6f3f61efcae28637
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: b2a01e816c0f0569c207aa65e5027b935210e3b9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89296515"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331777"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>A Azure Migrate készülék és a felderítés hibáinak megoldása
 
@@ -234,6 +234,7 @@ A szokásos alkalmazás-felderítési hibák a táblázatban vannak összegezve.
 9033: nem sikerült felderíteni, mert a virtuális gép felhasználóneve érvénytelen karaktereket tartalmaz.     |   Érvénytelen karakterek észlelhetők a felhasználónévben.   |   Adja meg a virtuális gép hitelesítő adatait, hogy ne legyenek érvénytelen karakterek.
 9034: a megadott Felhasználónév nem UPN-formátumú.    |   A Felhasználónév nem UPN formátumú.  |   Győződjön meg arról, hogy a Felhasználónév az egyszerű felhasználónév (UPN) formátumban van.
 9035: nem sikerült felderíteni a PowerShell nyelvi üzemmódját, mert nincs "teljes nyelv" beállítás.  |   A PowerShell nyelvi módja a vendég virtuális gépen nem teljes nyelvre van beállítva.   |   Győződjön meg arról, hogy a PowerShell nyelvi mód beállítása "teljes nyelv".
+9037: az adatgyűjtés ideiglenesen szünetel, mert a virtuális gép válaszideje túl magas.    |   A felderített virtuális gép túl sokáig tart a válaszadáshoz     |   Nincs szükség beavatkozásra. Az alkalmazás észlelése 24 órán belül próbálkozik, és a függőségi elemzéshez 3 óra van (ügynök nélkül).
 10000: az operációs rendszer típusa nem támogatott.   |   A kiszolgálón futó operációs rendszer sem Windows, sem Linux.    |   A támogatott operációsrendszer-típusok csak Windows és Linux rendszereken érhetők el.
 10001: a kiszolgáló felderítésére szolgáló parancsfájl nem található a berendezésen.    |   A felderítés nem a várt módon működik.   |   Megoldásért forduljon Microsoft ügyfélszolgálatahoz.
 10002: a felderítési feladat nem fejeződött be időben.     |   A felderítési ügynök nem a várt módon működik.     |   A problémát 24 órán belül automatikusan fel kell oldani. Ha a probléma továbbra is fennáll, forduljon a Microsoft ügyfélszolgálatahoz.

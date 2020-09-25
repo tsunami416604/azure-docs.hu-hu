@@ -11,12 +11,12 @@ ms.author: laobri
 ms.reviewer: laobri
 ms.date: 03/11/2020
 ms.custom: contperfq4, devx-track-python
-ms.openlocfilehash: b6b4be2eb2cd490d525046541f68a45d87a8e638
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f02638acdc60bba710280dcbeba0717173ed8b83
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906681"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320506"
 ---
 # <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>Oktatóanyag: Azure Machine Learning folyamat létrehozása a Batch-pontozáshoz
 
@@ -38,7 +38,7 @@ Az oktatóanyagban az alábbi feladatokat fogja végrehajtani:
 > * Folyamat létrehozása, futtatása és közzététele
 > * REST-végpont engedélyezése a folyamat számára
 
-Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot, mielőtt hozzákezd. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -388,7 +388,7 @@ A folyamat REST-végpontból való futtatásához szüksége van egy OAuth2-tula
 
 Az egyszerű szolgáltatás hitelesítése magában foglalja az *alkalmazás regisztrációjának* létrehozását *Azure Active Directory*-ben. Először létrehoz egy ügyfél-titkos kulcsot, majd megadja a szolgáltatás elsődleges *szerepkörének hozzáférését* a Machine learning-munkaterülethez. A [`ServicePrincipalAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py&preserve-view=true) hitelesítési folyamat kezeléséhez használja a osztályt. 
 
-Mindkettő [`InteractiveLoginAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.interactiveloginauthentication?view=azure-ml-py&preserve-view=true) és `ServicePrincipalAuthentication` öröklése a következőtől: `AbstractAuthentication` . Mindkét esetben használja a [`get_authentication_header()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.abstractauthentication?view=azure-ml-py#&preserve-view=trueget-authentication-header--) függvényt ugyanúgy, hogy beolvassa a fejlécet:
+Mindkettő [`InteractiveLoginAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.interactiveloginauthentication?view=azure-ml-py&preserve-view=true) és `ServicePrincipalAuthentication` öröklése a következőtől: `AbstractAuthentication` . Mindkét esetben használja a [`get_authentication_header()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.abstractauthentication?view=azure-ml-py&preserve-view=true#&preserve-view=trueget-authentication-header--) függvényt ugyanúgy, hogy beolvassa a fejlécet:
 
 ```python
 from azureml.core.authentication import InteractiveLoginAuthentication

@@ -14,12 +14,12 @@ ms.date: 06/10/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39eb45f4488c0ddc63ab8e7357a122b47777feee
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: aed5dcf98e37b0d075804985355bdabe3b50b712
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662353"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295345"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Az Azure AD Connect testreszabott telepítése
 Az Azure AD Connect **Custom settings** (Egyéni beállítások) menüje akkor használható, ha részletesebb beállításokra van szükség a telepítéshez. Akkor van rá szükség, ha több erdővel rendelkezik vagy ha választható szolgáltatásokat kíván konfigurálni, amelyeket a gyorstelepítés nem tartalmaz. Minden olyan esetben szükséges, ahol a [**gyorstelepítés**](how-to-connect-install-express.md) beállítás nem megfelelő az üzemelő példányhoz vagy a topológiához.
@@ -37,7 +37,7 @@ Amikor a szinkronizálási szolgáltatásokat telepíti, a választható konfigu
 
 ![Szükséges összetevők](./media/how-to-connect-install-custom/requiredcomponents2.png)
 
-| Választható konfiguráció | Description |
+| Választható konfiguráció | Leírás |
 | --- | --- |
 | Meglévő SQL Server használata |A használatával megadhatja az SQL Server nevét és a példány nevét. Válassza ezt a lehetőséget, ha már rendelkezik adatbázis-kiszolgálóval, amelyet használni kíván. Adja meg a példány nevét, majd vesszővel elválasztva egy portszámot az **Instance Name** (Példány neve) mezőben, ha az SQL Serveren nincs engedélyezve a tallózás.  Ezután adja meg a Azure AD Connect adatbázis nevét.  Az SQL-jogosultságok határozzák meg, hogy létrejön-e új adatbázis, vagy az SQL-rendszergazdának előre kell létrehoznia az adatbázist.  Ha rendelkezik SQL SA-engedélyekkel, tekintse meg [a telepítés meglévő adatbázis használatával](how-to-connect-install-existing-database.md)című témakört.  Ha delegált engedélyekkel (DBO) rendelkezik, tekintse meg [az SQL-delegált rendszergazdai engedélyekkel rendelkező Azure ad Connect telepítése](how-to-connect-install-sql-delegation.md)című témakört. |
 | Meglévő szolgáltatásfiók használata |Alapértelmezés szerint az Azure AD Connect egy helyi szolgáltatásfiókot használ, amelyet a szinkronizálási szolgáltatások használhatnak. Amennyiben távoli SQL-kiszolgálót vagy egy hitelesítést igénylő proxyt használ, egy **felügyelt szolgáltatásfiókra** lesz szüksége, vagy egy, a tartományban lévő szolgáltatásfiókra, és ismernie kell a jelszót. Ezekben az esetekben adja meg a használni kívánt fiókot. Bizonyosodjon meg róla, hogy a telepítést futtató felhasználó rendszergazda az SQL Serveren, hogy létre lehessen hozni bejelentkezési adatokat a szolgáltatásfiókhoz.  Lásd: [Azure ad Connect fiókok és engedélyek](reference-connect-accounts-permissions.md#adsync-service-account). </br></br>A legújabb buildben az SQL-rendszergazda sávon kívül kiépítheti az adatbázist, majd az Azure AD Connect-rendszergazda adatbázis-tulajdonosi jogosultságokkal telepítheti.  További információ: [Az Azure AD Connect telepítése SQL-lel delegált rendszergazdai engedélyekkel](how-to-connect-install-sql-delegation.md).|
@@ -46,9 +46,9 @@ Amikor a szinkronizálási szolgáltatásokat telepíti, a választható konfigu
 ### <a name="user-sign-in"></a>Felhasználói bejelentkezés
 A szükséges összetevők telepítését követően a rendszer megkéri, hogy válassza ki a felhasználók egyszeri bejelentkezésének módját. Az alábbi táblázat tartalmazza az elérhető beállítások rövid ismertetését. A bejelentkezési módok teljes leírásáért lásd: [Felhasználói bejelentkezés](plan-connect-user-signin.md).
 
-![Felhasználói bejelentkezés](./media/how-to-connect-install-custom/usersignin4.png)
+![Képernyőfelvétel: "a jelszó kivonatának szinkronizálása" nevű "felhasználói bejelentkezés" oldal.](./media/how-to-connect-install-custom/usersignin4.png)
 
-| Egyszeri bejelentkezési beállítás | Description |
+| Egyszeri bejelentkezési beállítás | Leírás |
 | --- | --- |
 | Jelszókivonat szinkronizálása |A felhasználók a helyszíni hálózaton használt jelszóval jelentkezhetnek be a Microsoft Cloud servicesbe, például a Microsoft 365ba. A felhasználók jelszavai szinkronizálva vannak az Azure AD szolgáltatásba jelszókivonatként, és a hitelesítés a felhőben történik. További információkért lásd a [jelszókivonat szinkronizálásával](how-to-connect-password-hash-synchronization.md) foglalkozó részt. |
 |Átmenő hitelesítés|A felhasználók a helyszíni hálózaton használt jelszóval jelentkezhetnek be a Microsoft Cloud servicesbe, például a Microsoft 365ba.  A rendszer a felhasználói jelszavakat az őket ellenőrző helyszíni Active Directory-tartományvezérlőn keresztül továbbítja.
@@ -75,7 +75,7 @@ Ha hibaüzenetet kap, és problémák adódnak a kapcsolódással, tekintse meg 
 ### <a name="connect-your-directories"></a>Csatlakoztassa a címtárakat
 Az Active Directory tartományi szolgáltatások csatlakoztatásához az Azure AD Connectnek szüksége van az erdő nevére és egy megfelelő engedélyekkel rendelkező fiók hitelesítő adataira.
 
-![Címtár csatlakoztatása](./media/how-to-connect-install-custom/connectdir01.png)
+![Képernyőfelvétel: "a címtárak összekapcsolása" oldal megjelenítése.](./media/how-to-connect-install-custom/connectdir01.png)
 
 Miután beírta az erdő nevét és a **Címtár hozzáadása** gombra kattintott, megjelenik egy felugró párbeszédpanel a következő lehetőségekkel:
 
@@ -174,7 +174,7 @@ A képernyő segítségével beállíthatja a választható szolgáltatásokat a
 
 
 
-| Optional Features (Választható szolgáltatások) | Description |
+| Optional Features (Választható szolgáltatások) | Leírás |
 | --- | --- |
 | Exchange Hybrid Deployment (Exchange hibrid telepítés) |Az Exchange hibrid üzembe helyezési funkciója lehetővé teszi az Exchange-postaládák együttes létezését helyszíni és Microsoft 365 is. Az Azure AD Connect visszaszinkronizálja az [attribútumok](reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback) egy adott halmazát az Azure AD szolgáltatásból a helyszíni címtárba. |
 | Exchange Mail Public Folders (Exchange-levelezés – nyilvános mappák) | Az Exchange-levelezés nyilvános mappák funkciójával szinkronizálhatja a levelezési célú nyilvánosmappa-objektumokat a helyszíni Active Directoryból az Azure AD-be. |
@@ -300,7 +300,7 @@ Amennyiben a Csoportosan felügyelt szolgáltatásfiók lehetőséget választot
 ### <a name="select-the-azure-ad-domain-that-you-wish-to-federate"></a>Válassza ki az összevonni kívánt Azure AD-tartományt
 Ez a konfiguráció az AD FS és az Azure AD közti összevonási kapcsolat beállítására használatos. Beállítja, hogy az AD FS biztonsági jogkivonatokat adjon ki az Azure AD szolgáltatás számára, valamint hogy az Azure AD megbízzon az adott AD FS-példány által kiadott jogkivonatokban. Ezen az oldalon csak egyetlen tartomány konfigurálható a kezdeti telepítés alkalmával. További kiszolgálókat később, az Azure AD Connect ismételt futtatásával konfigurálhat.
 
-![Azure AD-tartomány](./media/how-to-connect-install-custom/adfs6.png)
+![Az "Azure AD-tartomány" oldalt megjelenítő képernyőkép.](./media/how-to-connect-install-custom/adfs6.png)
 
 ### <a name="verify-the-azure-ad-domain-selected-for-federation"></a>Az összevonáshoz kiválasztott Azure AD-tartomány ellenőrzése
 Amikor kiválasztja az összevonandó tartományt, az Azure AD Connect megadja a nem ellenőrzött tartományok ellenőrzéséhez szükséges adatokat. Az információk használatáról [a tartomány hozzáadását és ellenőrzését](../fundamentals/add-custom-domain.md) ismertető témakörben olvashat.
@@ -320,7 +320,7 @@ A PingFederate konfigurálása az Azure AD Connecttel egyszerű feladat, és min
 ### <a name="verify-the-domain"></a>A tartomány hitelesítése
 Az Összevonás a PingFederate-tel lehetőség kiválasztása után a rendszer megkéri, hogy erősítse meg az összevonni kívánt tartományt.  Válassza ki a tartományt a legördülő listában.
 
-![Tartomány ellenőrzése](./media/how-to-connect-install-custom/ping1.png)
+![Képernyőkép, amely az "Azure AD-tartományt" mutatja a "contoso.com" nevű példában kiválasztott tartománnyal.](./media/how-to-connect-install-custom/ping1.png)
 
 ### <a name="export-the-pingfederate-settings"></a>A PingFederate-beállítások exportálása
 
@@ -394,7 +394,7 @@ A következő szakaszban az Azure AD Connect telepítése során felmerülő pro
 ### <a name="the-adsync-database-already-contains-data-and-cannot-be-overwritten"></a>„Az ADSync adatbázis már tartalmaz adatokat, és nem írható felül”
 Ha egyéni telepítést Azure AD Connect, és bejelöli a **meglévő SQL Server használata** a **szükséges összetevők telepítése** lapon lehetőséget, akkor előfordulhat, hogy a AdSync-adatbázis már tartalmaz egy olyan hibát, amely azt jelzi, hogy **a rendszer nem tudja felülírni az adatbázist. Távolítsa el a meglévő adatbázist, és próbálkozzon újra.**
 
-![Hiba](./media/how-to-connect-install-custom/error1.png)
+![A "szükséges összetevők telepítése" lapot megjelenítő képernyőkép.](./media/how-to-connect-install-custom/error1.png)
 
 A hiba oka, hogy már létezik egy adatbázis **ADSync** néven az SQL Server SQL-példányán, amelyet a fenti szövegmezőkben megadott.
 

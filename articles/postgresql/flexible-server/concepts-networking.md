@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: 963c9c06409eca2b2f836388b94f8b80484a671a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/23/2020
+ms.openlocfilehash: e4d3a594011cb57ce6dfd951215d0ae7471ae7c2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934897"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331675"
 ---
 # <a name="networking-overview---azure-database-for-postgresql---flexible-server"></a>Hálózatkezelés – áttekintés – Azure Database for PostgreSQL – rugalmas kiszolgáló
 
@@ -62,7 +62,7 @@ Az alábbiakban néhány olyan fogalmat talál, amely ismeri a PostgreSQL rugalm
 
    A PostgreSQL rugalmas kiszolgálójának olyan alhálózaton kell lennie, amely a PostgreSQL rugalmas kiszolgáló számára van **delegálva** . Ez a delegálás azt jelenti, hogy csak Azure Database for PostgreSQL rugalmas kiszolgálók használhatják ezt az alhálózatot. Az alhálózatra semmilyen más típusú Azure-erőforrás nem delegálható. Egy alhálózatot delegálhat úgy, hogy hozzárendeli a delegálási tulajdonságát a Microsoft. DBforPostgreSQL/flexibleServers.
 
-Megtudhatja, hogyan hozhat létre a [Azure Portal](how-to-manage-virtual-network-portal.md) vagy [Az Azure CLI](how-to-manage-virtual-network-cli.md)-vel egy rugalmas, privát hozzáféréssel (VNet-integrációval) rendelkező kiszolgálót.
+* **Hálózati biztonsági csoportok (NSG)** A hálózati biztonsági csoportokban található biztonsági szabályok lehetővé teszik a virtuális hálózati alhálózatok és hálózati adapterek közötti és onnan kimenő hálózati forgalom típusának szűrését. További információkért tekintse át a [hálózati biztonsági csoport áttekintését](../../virtual-network/network-security-groups-overview.md) .
 
 
 ### <a name="unsupported-virtual-network-scenarios"></a>Nem támogatott virtuális hálózati forgatókönyvek
@@ -71,6 +71,7 @@ Megtudhatja, hogyan hozhat létre a [Azure Portal](how-to-manage-virtual-network
 * Az alhálózat mérete (Címterület) nem növelhető, ha az alhálózat erőforrásai léteznek
 * A különböző régiók közötti egyenrangú virtuális hálózatok nem támogatottak
 
+Megtudhatja, hogyan hozhat létre a [Azure Portal](how-to-manage-virtual-network-portal.md) vagy [Az Azure CLI](how-to-manage-virtual-network-cli.md)-vel egy rugalmas, privát hozzáféréssel (VNet-integrációval) rendelkező kiszolgálót.
 
 ## <a name="public-access-allowed-ip-addresses"></a>Nyilvános hozzáférés (engedélyezett IP-címek)
 A nyilvános hozzáférési módszer jellemzői a következők:
@@ -107,12 +108,9 @@ Vegye figyelembe a következő szempontokat, amikor a PostgreSQL-kiszolgáló Mi
 ## <a name="hostname"></a>Hostname (Gazdanév)
 A választott hálózati beállítástól függetlenül ajánlott mindig teljes tartománynevet (FQDN) használni a rugalmas kiszolgálóhoz való csatlakozáskor. A kiszolgáló IP-címe nem garantált, hogy statikus maradjon. A teljes tartománynév használata segít elkerülni a kapcsolódási karakterlánc módosítását. 
 
-Az egyik forgatókönyv, ahol az IP-változások akkor változnak, ha a zóna-redundáns HA-t használja, és a feladatátvétel az elsődleges és a másodlagos között történik. A FQDN használatával zökkenőmentesen próbálkozhat ugyanazzal a kapcsolati karakterlánccal való kapcsolattal.
-
 Példa
 * Ajánlott `hostname = servername.postgres.database.azure.com`
-* Kerülje a `hostname = 10.0.0.4` (magánhálózati) vagy a `hostname = 40.2.45.67` (nyilvános címek) használatát
-
+* Ha lehetséges, kerülje a `hostname = 10.0.0.4` (privát címek) vagy `hostname = 40.2.45.67` (nyilvános címek) használatát
 
 
 ## <a name="tls-and-ssl"></a>TLS és SSL

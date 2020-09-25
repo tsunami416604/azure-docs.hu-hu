@@ -2,19 +2,19 @@
 title: Útmutató a C modul fejlesztéséhez Linux rendszeren – Azure IoT Edge | Microsoft Docs
 description: Ez az oktatóanyag bemutatja, hogyan hozhat létre egy IoT Edge modult C kóddal, és hogyan helyezheti üzembe egy Linux rendszerű eszközön IoT Edge
 services: iot-edge
-author: shizn
+author: kgremban
 manager: philmea
-ms.author: xshi
+ms.author: kgremban
 ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: cf9fb8a95be9a5ba025534508139a0e300036542
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 9676b9f5c1cc8d1768aaf6e83e1b4e363e3e6ece
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88064842"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320659"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-linux-devices"></a>Oktatóanyag: C IoT Edge modul fejlesztése Linux rendszerű eszközökhöz
 
@@ -39,7 +39,7 @@ Ez az oktatóanyag bemutatja, hogyan fejleszthet a **C** modult a **Visual Studi
 
 A következő táblázat segítségével megismerheti a C modulok Linux rendszeren történő fejlesztésének és üzembe helyezésének lehetőségeit:
 
-| C# | Visual Studio Code | Visual Studio |
+| C | Visual Studio Code | Visual Studio |
 | - | ------------------ | ------------- |
 | **Linux AMD64** | ![A VS Code használata C-modulokhoz Linux AMD64 rendszeren](./media/tutorial-c-module/green-check.png) | ![A VS használata C-modulokhoz Linux AMD64 rendszeren](./media/tutorial-c-module/green-check.png) |
 | **Linux ARM32** | ![A VS Code használata C-modulokhoz Linux ARM32](./media/tutorial-c-module/green-check.png) | ![A VS C modulok használata Linux ARM32](./media/tutorial-c-module/green-check.png) |
@@ -362,7 +362,7 @@ Ellenkező esetben törölheti a cikkben használt helyi konfigurációkat és a
 
 [!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban olyan kódot tartalmazó IoT Edge-modult hozott létre, amely szűri az IoT Edge-eszköz által létrehozott nyers adatokat. Ha készen áll a saját modulok létrehozására, többet is megtudhat a [saját IoT Edge moduljainak fejlesztéséről](module-development.md) , illetve a [Visual Studio Code-hoz készült modulok fejlesztéséről](how-to-vs-code-develop-module.md). IoT Edge modulokra, például a szimulált hőmérsékleti modulra példákat a következő témakörben talál: [IoT Edge Module Samples](https://github.com/Azure/iotedge/tree/master/edge-modules) and [IoT C SDK Samples](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples).
 

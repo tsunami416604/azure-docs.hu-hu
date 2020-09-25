@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 98f4c30d03763e070b1bdc32a5e6e099556916ab
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 52a9932db4fc261b8f3d740a316af3e852559a32
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90946571"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320489"
 ---
 # <a name="tutorial-run-hello-world-python-script-part-2-of-4"></a>Oktatóanyag: ""Helló világ!"alkalmazás" Python-szkript futtatása (2. rész/4)
 
@@ -124,7 +124,7 @@ Itt látható a vezérlő parancsfájl működésének leírása:
       `run = experiment.submit(config)`
    :::column-end:::
    :::column span="2":::
-       Elküldi a parancsfájlt. Ezt a beküldést [futtatásnak](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py&preserve-view=true)nevezzük.  A Futtatás egyetlen végrehajtást ágyaz be a kódjába. Egy futtatással figyelheti a parancsfájl előrehaladását, rögzítheti a kimenetet, elemezheti az eredményeket, megjelenítheti a metrikákat és egyéb műveleteket is alkalmazhat.
+       Elküldi a parancsfájlt. Ezt a beküldést [futtatásnak](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true)nevezzük.  A Futtatás egyetlen végrehajtást ágyaz be a kódjába. Egy futtatással figyelheti a parancsfájl előrehaladását, rögzítheti a kimenetet, elemezheti az eredményeket, megjelenítheti a metrikákat és egyéb műveleteket is alkalmazhat.
    :::column-end:::
 :::row-end:::
 :::row:::

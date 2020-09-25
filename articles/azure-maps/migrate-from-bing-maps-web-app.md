@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 155786de61206b4e21a4f074dfc3781b0fde1273
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.custom: devx-track-js
+ms.openlocfilehash: 469565385ce4b3ee4b1589f105216213d584c8c9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90108740"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319739"
 ---
 # <a name="migrate-a-web-app-from-bing-maps"></a>Webalkalmazás migrálása a Bing Maps szolgáltatásból
 
@@ -53,7 +53,7 @@ Az alábbi táblázat a Bing Maps V8 JavaScript SDK legfontosabb API-funkcióit 
 | Geocoder szolgáltatás         | ✓                                                                                      |
 | Directions szolgáltatás       | ✓                                                                                      |
 | Távolsági mátrix szolgáltatás  | ✓                                                                                      |
-| Térbeli adatszolgáltatás     | N/A                                                                                    |
+| Térbeli adatszolgáltatás     | N.A.                                                                                    |
 | Satellite/antenna-képek | ✓                                                                                      |
 | Madarak szemének képei         | Tervezve                                                                                |
 | Utcai-képek       | Tervezve                                                                                |
@@ -941,7 +941,7 @@ Ha a fürtözés engedélyezve van, akkor az adatforrás fürtözött és nem f�
 
 Az `DataSource` osztály a következő segítő függvényt használja a fürttel kapcsolatos további információk eléréséhez a használatával `cluster_id` .
 
-| Függvény       | Visszatérési típus        | Description     |
+| Funkció       | Visszatérési típus        | Description     |
 |----------------|--------------------|-----------------|
 | `getClusterChildren(clusterId: number)`                              | `Promise<Feature<Geometry, any> | Shape>` | A következő nagyítási szinten kéri le a megadott fürt gyermekeit. Ezek a gyermekek alakzatokat és alfürtöket is tartalmazhatnak. Az alfürtök a fürt tulajdonságaival egyező tulajdonságokkal rendelkező funkciók lesznek. |
 | `getClusterExpansionZoom(clusterId: number)`                         | `Promise<number>`                            | Kiszámítja azt a nagyítási szintet, amelyet a fürt elkezd kibővíteni vagy bontani.    |

@@ -8,16 +8,16 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 09/17/2020
 ms.author: ambapat
-ms.openlocfilehash: b90d868042e9fb947afdfae9acf35262912eff94
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: ce275674704cd7538f25a2d3f31d0e65aecd7925
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90995671"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320625"
 ---
 # <a name="import-hsm-protected-keys-to-managed-hsm-byok"></a>HSM-védelemmel ellátott kulcsok importálása a felügyelt HSM-be (BYOK)
 
- Azure Key Vault felügyelt HSM támogatja a helyszíni hardveres biztonsági modulban (HSM) generált kulcsok importálását. a kulcsok soha nem hagyják el a HSM védelmi határt. Ezt a forgatókönyvet gyakran nevezik a *saját kulcsának* (BYOK). A felügyelt HSM a HSM (FIPS 140-2 3. szint) nCipher nShield-családját használja a kulcsok elleni védelemhez.
+ Azure Key Vault felügyelt HSM támogatja a helyszíni hardveres biztonsági modulban (HSM) generált kulcsok importálását. a kulcsok soha nem hagyják el a HSM védelmi határt. Ezt a forgatókönyvet gyakran nevezik a *saját kulcsának* (BYOK). A felügyelt HSM a Marvell LiquidSecurity HSM-adaptereket használja (az FIPS 140-2 3. szint ellenőrzött) a kulcsok megóvása érdekében.
 
 A cikkben található információk segítségével megtervezheti, létrehozhatja és átviheti a saját HSM-védelemmel ellátott kulcsait a felügyelt HSM-sel való használatra.
 
@@ -70,9 +70,9 @@ Ha további információt szeretne a bejelentkezési lehetőségekről a CLI-n k
 
 ## <a name="supported-key-types"></a>Támogatott kulcstípusok
 
-|Kulcs neve|Kulcs típusa|Kulcs mérete|Forrás|Leírás|
+|Kulcs neve|Kulcs típusa|Kulcs mérete|Forrás|Description|
 |---|---|---|---|---|
-|Key Exchange-kulcs (KEK)|RSA| 2 048 bites<br />3 072 bites<br />4 096 bites|Felügyelt HSM|A felügyelt HSM-ben generált HSM-alapú RSA kulcspár|
+|Key Exchange-kulcs (KEK)|RSA| 2 048 bites<br />3 072 bites<br />4 096 bites|Managed HSM|A felügyelt HSM-ben generált HSM-alapú RSA kulcspár|
 |Célként megadott kulcs|RSA|2 048 bites<br />3 072 bites<br />4 096 bites|Szállítói HSM|A felügyelt HSM-re továbbítandó kulcs|
 
 ## <a name="generate-and-transfer-your-key-to-the-managed-hsm"></a>Kulcs előállítása és átvitele a felügyelt HSM-be

@@ -9,14 +9,14 @@ ms.devlang: PowerShell
 ms.topic: sample
 author: mashamsft
 ms.author: mathoma
-ms.reviewer: carlrab
+ms.reviewer: sstein
 ms.date: 03/27/2019
-ms.openlocfilehash: ed66759ab2da28f004c704d4ea24ec4124355c98
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a072a81fd3ac6ce43420ec1bf33475c7b0d3d7ee
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084976"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319382"
 ---
 # <a name="use-powershell-to-restore-a-database-to-an-earlier-point-in-time"></a>Adatbázis visszaállítása egy korábbi időpontra a PowerShell használatával
 
@@ -57,7 +57,7 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | [Get-AzSqlDeletedDatabaseBackup](/powershell/module/az.sql/get-azsqldeleteddatabasebackup) | Lekér egy törölt adatbázist, amelyet visszaállíthat. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Azure PowerShellről: [Azure PowerShell dokumentáció](/powershell/azure/).
 

@@ -5,13 +5,17 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 7/22/2020
 ms.author: baanders
-ms.openlocfilehash: 041c8851fc5535b9c4494bc5aae618bfbc762086
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 9d09f29dc5fbe6ed6a358c37a6064319c28e35f8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87125290"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320768"
 ---
-Annak ellenőrzéséhez, hogy az engedélyek megfelelően vannak-e konfigurálva, kövesse [ezt a hivatkozást](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) , és keresse meg az Azure ad-alkalmazás regisztrációjának áttekintése lapot a Azure Portal. Ezen az oldalon az előfizetésében létrehozott összes alkalmazás regisztrálása látható.
+Annak ellenőrzéséhez, hogy az engedélyek megfelelően vannak-e konfigurálva, keresse meg az [Azure ad-alkalmazás regisztrációjának áttekintése lapot](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) a Azure Portal. Ezt a lapot saját maga is elérheti, ha a portálon a *Alkalmazásregisztrációk* keres rá.
 
-Az imént létrehozott alkalmazás-regisztráció megjelenik az Áttekintés listában. Válassza ki, hogy megnyissa a részleteit.
+Váltson a *minden alkalmazás* lapra, és tekintse meg az előfizetésében létrehozott összes regisztrációs alkalmazást.
+
+Ekkor megjelenik az imént létrehozott alkalmazás-regisztráció a listában. Válassza ki, hogy megnyissa a részleteit.
+
+:::image type="content" source="../articles/digital-twins/media/how-to-set-up-instance/portal/app-registrations.png" alt-text="Alkalmazásregisztrációk lap a Azure Portal":::

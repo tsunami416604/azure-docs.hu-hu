@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 09/02/2020
+ms.date: 09/17/2020
 ms.author: victorh
-ms.openlocfilehash: 92fc4252dd52236e2cc4e8fdfdd2afa32059a721
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 784459282007edab599d54edff0d2b38eed07b34
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89376944"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320642"
 ---
 # <a name="monitor-azure-firewall-logs-and-metrics"></a>Az Azure Firewall naplóinak és metrikáinak monitorozása
 
@@ -35,14 +35,17 @@ A diagnosztikai naplózás bekapcsolása után eltarthat néhány percig, amíg 
 1. A Azure Portal nyissa meg a tűzfal erőforráscsoportot, és válassza ki a tűzfalat.
 2. A **Monitorozás** területen kattintson a **Diagnosztikai beállítások** elemre.
 
-   Az Azure Firewallhoz két szolgáltatásspecifikus napló érhető el:
+   Azure Firewall esetében négy szolgáltatás-specifikus napló érhető el:
 
    * AzureFirewallApplicationRule
    * AzureFirewallNetworkRule
+   * AzureFirewallThreatIntelLog
+   * AzureFirewallDnsProxy
+
 
 3. Válassza a **diagnosztikai beállítás hozzáadása**lehetőséget. A **Diagnosztikai beállítások** lap megadja a diagnosztikai naplók beállításait.
 5. Ebben a példában Azure Monitor naplók tárolja a naplókat, ezért írja be a **tűzfal log Analytics** nevet a névre.
-6. A **napló**területen válassza a **AzureFirewallApplicationRule** és a **AzureFirewallNetworkRule** lehetőséget az alkalmazás-és hálózati szabályok naplóinak gyűjtéséhez.
+6. A **napló**területen válassza a **AzureFirewallApplicationRule**, a **AzureFirewallNetworkRule**, a **AzureFirewallThreatIntelLog**és a **AzureFirewallDnsProxy** elemet a naplók összegyűjtéséhez.
 7. Válassza a **küldés log Analytics** lehetőséget a munkaterület konfigurálásához.
 8. Válassza ki előfizetését.
 9. Kattintson a **Mentés** gombra.

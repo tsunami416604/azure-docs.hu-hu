@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, carlrab
+ms.reviewer: jrasnik, sstein
 ms.date: 12/03/2019
-ms.openlocfilehash: e7a3dd1c58f2bddb767dcac4ac2b5e354be77f65
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: dfd21a38c46238dbd9d58d3eae5b3f9414d3c5fc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90981452"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91284499"
 ---
 # <a name="enable-automatic-tuning-in-the-azure-portal-to-monitor-queries-and-improve-workload-performance"></a>A Azure Portal automatikus hangolásának engedélyezése a lekérdezések figyeléséhez és a munkaterhelés teljesítményének növeléséhez
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -28,7 +28,7 @@ Az automatikus hangolás a kiszolgálón vagy az adatbázis szintjén engedélye
 
 - A [Azure Portal](automatic-tuning-enable.md#azure-portal)
 - [REST API](automatic-tuning-enable.md#rest-api) hívások
-- [T-SQL-](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) parancsok
+- [T-SQL-](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current&preserve-view=true) parancsok
 
 > [!NOTE]
 > Az Azure SQL felügyelt példányai esetében a FORCE_LAST_GOOD_PLAN támogatott beállítás csak a [T-SQL-](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management) en keresztül konfigurálható. A jelen cikkben ismertetett Azure Portal-alapú konfigurációs és automatikus index-hangolási beállítások nem vonatkoznak az Azure SQL felügyelt példányaira.
@@ -109,7 +109,7 @@ Ha a be értékre állítja az egyes hangolási lehetőséget, az az adatbázis 
 > [Aktív földrajzi replikálás](auto-failover-group-overview.md)esetén az automatikus finomhangolást csak az elsődleges adatbázison kell konfigurálni. A automatikusan alkalmazott hangolási műveletek, például az index létrehozása vagy törlése automatikusan replikálódnak a csak olvasható másodlagosra. Ha a csak olvasási jogosultsággal rendelkező T-SQL-n keresztül szeretné engedélyezni az automatikus hangolást, a rendszer hibát okoz, mivel a csak olvasási jogosultsággal rendelkező másodlagos konfiguráció nem támogatott.
 >
 
-Ha többet szeretne megtudni a vmivel T-SQL-beállításokról az automatikus hangolás konfigurálásához, tekintse meg az [adatbázis-beállítási beállítások módosítása (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current)című témakört.
+Ha többet szeretne megtudni a vmivel T-SQL-beállításokról az automatikus hangolás konfigurálásához, tekintse meg az [adatbázis-beállítási beállítások módosítása (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current&preserve-view=true)című témakört.
 
 ## <a name="disabled-by-the-system"></a>A rendszer letiltotta
 

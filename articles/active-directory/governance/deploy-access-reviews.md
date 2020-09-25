@@ -16,12 +16,12 @@ ms.date: 08/14/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7154bc1f033806d359726cff8ed227f2219559ec
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 51983e52643d587fc497a1a67fcb0cd29dbb7f17
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89461034"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306565"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>Azure Active Directory hozzáférési felülvizsgálatok központi telepítésének tervezése
 
@@ -37,7 +37,7 @@ ms.locfileid: "89461034"
 
 * Automatizálja a felülvizsgálatok eredményeit, például a felhasználók erőforrásokhoz való hozzáférésének eltávolítását
 
-  ![Hozzáférési felülvizsgálatok tervezése](./media/deploy-access-review/1-planning-review.png)
+  ![A hozzáférési felülvizsgálatok folyamatát ábrázoló diagram.](./media/deploy-access-review/1-planning-review.png)
 
 A hozzáférési felülvizsgálatok egy [Azure ad Identity Governance](identity-governance-overview.md) képesség. A többi lehetőség a [jogosultságok kezelése](entitlement-management-overview.md), a [Privileged Identity Management](../privileged-identity-management/pim-configure.md) és a [használati feltételek](../conditional-access/terms-of-use.md). Együttesen segítenek a szervezeteknek a következő négy kérdés megválaszolásában:
 
@@ -300,7 +300,7 @@ A [hozzáférési csomagok](entitlement-management-overview.md) jelentősen leeg
 
 A hozzáférési felülvizsgálatok megtekintéséhez nyissa meg az életciklus lapot.
 
- ![A szabályzat szerkesztése](./media/deploy-access-review/5-plan-access-packages-admin-ui.png)
+ ![Képernyőkép, amely az "életciklus" lapon megjeleníti a "szabályzat szerkesztése" lehetőséget.](./media/deploy-access-review/5-plan-access-packages-admin-ui.png)
 
 ## <a name="plan-access-reviews-for-groups"></a>Csoportok hozzáférési felülvizsgálatának megtervezése
 
@@ -446,7 +446,7 @@ Az alkalmazottak és a vendégek számára az idő múlásával valószínűleg 
 
 Az elavult szerepkör-hozzárendelésekhez kapcsolódó kockázatok csökkentése érdekében rendszeresen tekintse át a Kiemelt Azure AD-szerepkörök elérését.
 
-![Azure ad-szerepkörök áttekintése](./media/deploy-access-review/8-review-azure-ad-roles-picker.png)
+![Képernyőkép, amely az Azure A D-szerepkörök "tagság áttekintése" listáját jeleníti meg.](./media/deploy-access-review/8-review-azure-ad-roles-picker.png)
 
 Kövesse az alábbi hivatkozások utasításait:
 

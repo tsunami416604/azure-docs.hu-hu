@@ -5,12 +5,12 @@ author: FlorianBorn71
 ms.author: flborn
 ms.date: 06/16/2020
 ms.topic: tutorial
-ms.openlocfilehash: e77379be863f4527081eeec6a0ee1f426d526527
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 12407d6344c69c747230e9db6fa4d53b4520dc82
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90084464"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331811"
 ---
 # <a name="tutorial-set-up-physically-based-rendering-materials-in-3ds-max"></a>Oktatóanyag: fizikailag vezérelt renderelési anyagok beállítása a 3ds Max-ban
 
@@ -22,6 +22,10 @@ Ebből az oktatóanyagból az alábbiakat sajátíthatja el:
 > * A speciális megvilágítás használatával olyan anyagokat rendelhet hozzá egy adott jelenet objektumaihoz.
 > * Objektumok és anyagok egypéldányos kezelése.
 > * FBX-formátumba exportálhatja a jeleneteket, és kiválaszthatja a fontos beállítások lehetőséget.
+
+> [!Note]
+> Az ebben az oktatóanyagban ismertetett eljárás a 3ds Max 2019-es és a 3ds Max 2020-es verziójában működik.
+> A 3ds Max 2021-as verziójának a megváltozása azt jelenti, hogy az átalakítási szolgáltatás nem találja a normál térképeket, ha ezt a verziót használják.
 
 A a 3ds Max-ban létrehozott [fizikai alapú renderelési (pbr) anyagok](../../overview/features/pbr-materials.md) egyszerű feladat. A PBR számos módon hasonló a más tartalom-létrehozási alkalmazásokhoz, például a Mayahoz. Ez az oktatóanyag az Azure-beli távoli renderelési projektek alapszintű PBR shader-telepítésének és FBX-exportálásának útmutatója.
 

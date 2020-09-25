@@ -1,5 +1,5 @@
 ---
-title: Felügyelt lemez virtuális merevlemeze egy másik régió fiókjához (Windows) – PowerShell
+title: Felügyelt lemez virtuális merevlemezének exportálása/másolása egy másik régió fiókjába (Windows) – PowerShell
 description: Azure PowerShell-példaszkript – Felügyelt lemez mögöttes VHD-fájljának exportálása/másolása egy ugyanabban vagy egy másik régióban lévő tárfiókba
 services: virtual-machines-windows
 documentationcenter: storage
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/17/2018
 ms.author: ramankum
-ms.openlocfilehash: ef760688e2a91da6e2f8ab759dc1858d3e583655
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: d76fda02f94f85126214de27d88079977824098d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89323150"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320132"
 ---
 # <a name="exportcopy-the-vhd-of-a-managed-disk-to-a-storage-account-in-different-region-with-powershell-windows"></a>Felügyelt lemez virtuális merevlemezének exportálása/másolása egy másik régióban lévő Storage-fiókba a PowerShell (Windows) használatával
 

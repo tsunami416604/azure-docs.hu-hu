@@ -1,6 +1,6 @@
 ---
 title: Teljesítmény optimalizálása az Azure Lsv2-sorozatú virtuális gépeken – tárterület
-description: Ismerje meg, hogyan optimalizálhatja megoldásának teljesítményét a Lsv2-sorozatú virtuális gépeken.
+description: Útmutató a megoldás teljesítményének optimalizálásához a Lsv2 sorozatú virtuális gépeken Windows-példa használatával.
 author: sasha-melamed
 ms.service: virtual-machines-windows
 ms.subservice: sizes
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/17/2019
 ms.author: joelpell
-ms.openlocfilehash: 82554982cd55b6c5fb2b96b2752b00401cb896d8
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 9d20379f60307fb8b8181ec50b87d3713a02ec6b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653630"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306854"
 ---
 # <a name="optimize-performance-on-the-lsv2-series-windows-virtual-machines"></a>A Lsv2-sorozatú Windows-alapú virtuális gépek teljesítményének optimalizálása
 
@@ -94,6 +94,6 @@ Ha többet szeretne megtudni a helyi tárolóban található adatbiztonsági men
 * **Módosíthatom a Windows Server 2019 lekérdezési beállításait?**  
    A lekérdezési beállítások nem állíthatók be a felhasználó számára.
    
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tekintse meg az Azure [tárolási teljesítményére optimalizált összes virtuális gép](../sizes-storage.md) specifikációit

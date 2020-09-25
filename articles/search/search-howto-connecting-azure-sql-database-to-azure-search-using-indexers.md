@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
-ms.openlocfilehash: a1dd88e9007a878ffdf6e5d836391c30c952c35a
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 631f5afbac4337cd0852f46ac4a336107f042397
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88923024"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331641"
 ---
 # <a name="connect-to-and-index-azure-sql-content-using-an-azure-cognitive-search-indexer"></a>Azure SQL-tartalomhoz való kapcsolódás és indexelés Azure Cognitive Search indexelő használatával
 
@@ -74,7 +74,9 @@ Az adatokhoz kapcsolódó számos tényezőtől függően előfordulhat, hogy az
     }
    ```
 
-   Lekérheti a [Azure Portal](https://portal.azure.com)a kapcsolatok karakterláncát; használja a `ADO.NET connection string` kapcsolót.
+   A kapcsolatok karakterlánca az alábbi formátumok bármelyikét követheti:
+    1. Lekérheti a [Azure Portal](https://portal.azure.com)a kapcsolatok karakterláncát; használja a `ADO.NET connection string` kapcsolót.
+    1. Felügyelt identitás-kapcsolatok karakterlánca, amely nem tartalmaz a következő formátumú fióknevet: `Initial Catalog|Database=<your database name>;ResourceId=/subscriptions/<your subscription ID>/resourceGroups/<your resource group name>/providers/Microsoft.Sql/servers/<your SQL Server name>/;Connection Timeout=connection timeout length;` . A kapcsolódási karakterlánc használatához kövesse a következő utasításokat: [Indexelő-kapcsolatok beállítása egy Azure SQL Database felügyelt identitás használatával](search-howto-managed-identities-sql.md).
 
 2. Ha még nem rendelkezik ilyennel, hozza létre a cél Azure Cognitive Search indexét. Létrehozhat egy indexet a [portál](https://portal.azure.com) vagy a [create index API](/rest/api/searchservice/Create-Index)használatával. Győződjön meg arról, hogy a célként megadott index sémája kompatibilis a forrástábla sémájával – lásd: [leképezés az SQL és az Azure kognitív keresési adattípusok között](#TypeMapping).
 
@@ -331,7 +333,7 @@ A **softDeleteMarkerValue** karakterláncnak kell lennie – a tényleges érté
 ## <a name="configuration-settings"></a>Konfigurációs beállítások
 Az SQL indexelő számos konfigurációs beállítást tesz elérhetővé:
 
-| Beállítás | Adattípus | Cél | Alapértelmezett érték |
+| Beállítás | Adattípus | Rendeltetés | Alapértelmezett érték |
 | --- | --- | --- | --- |
 | queryTimeout |sztring |Az SQL-lekérdezés végrehajtásának időtúllépését állítja be |5 perc ("00:05:00") |
 | disableOrderByHighWaterMarkColumn |logikai |Azt eredményezi, hogy a magas vízjelzési házirend által használt SQL-lekérdezés kihagyja a ORDER BY záradékot. Lásd: [magas vízjelek szabályzata](#HighWaterMarkPolicy) |hamis |

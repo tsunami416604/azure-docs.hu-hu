@@ -1,25 +1,19 @@
 ---
 title: Azure Relay integrálása az Azure Private link Service szolgáltatással
 description: Ismerje meg, hogyan integrálható Azure Relay az Azure Private link Service használatával
-ms.date: 06/23/2020
+ms.date: 09/24/2020
 ms.topic: article
-ms.openlocfilehash: e5c35f9333378a5f0b87956e8a916491d51e3cb3
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 10d82fe8e272ed18dcc339830dfef0f71d4b2ddb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719427"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263856"
 ---
 # <a name="integrate-azure-relay-with-azure-private-link-preview"></a>Azure Relay integrálása az Azure Private Linktel (előzetes verzió)
 Az Azure **Private link Service** lehetővé teszi az Azure-szolgáltatások (például a Azure Relay, a Azure Service Bus, az Azure Event Hubs, az Azure Storage és a Azure Cosmos db) és az Azure által üzemeltetett ügyfél-partner szolgáltatások elérését a virtuális hálózat privát végpontján keresztül. További információ: [Mi az az Azure Private link (előzetes verzió)?](../private-link/private-link-overview.md)
 
 A **privát végpont** egy olyan hálózati adapter, amely lehetővé teszi, hogy a virtuális hálózaton futó munkaterhelések privát és biztonságos módon kapcsolódjanak egy olyan szolgáltatáshoz, amelynek van **privát kapcsolati erőforrása** (például egy továbbító névtér). A privát végpont egy magánhálózati IP-címet használ a VNet, és hatékonyan hozza a szolgáltatást a VNet. A szolgáltatás felé irányuló összes forgalom a privát végponton keresztül irányítható, így nincs szükség átjáróra, NAT-eszközre, ExpressRoute, VPN-kapcsolatra vagy nyilvános IP-címekre. A virtuális hálózat és a szolgáltatás közötti forgalom áthalad a Microsoft gerinc hálózatán, és így megszűnik a nyilvános internetről való kitettség. Megadhatja a hozzáférés-vezérlés részletességi szintjét azáltal, hogy engedélyezi a kapcsolódást az adott Azure Relay névterekhez. 
-
-
-> [!IMPORTANT]
-> Ez a funkció jelenleg **előzetes**verzióban érhető el. 
->
-> Jelenleg támogatjuk a privát kapcsolatok kapcsolatait a küldő ügyfeleken. 
 
 
 ## <a name="add-a-private-endpoint-using-azure-portal"></a>Privát végpont hozzáadása a Azure Portal használatával
@@ -167,7 +161,7 @@ Négy kiépítési állapot létezik:
  
 ###  <a name="approve-reject-or-remove-a-private-endpoint-connection"></a>Privát végponti kapcsolatok jóváhagyása, elutasítása vagy eltávolítása
 
-1. Jelentkezzen be az Azure Portalra.
+1. Jelentkezzen be az Azure portálra.
 1. A keresősáv mezőbe írja be a következőt: **Relay**.
 1. Válassza ki a kezelni kívánt **névteret** .
 1. Válassza a **hálózatkezelés** lapot.
@@ -244,7 +238,7 @@ Aliases:  <namespace-name>.servicebus.windows.net
 - Az előfizetéshez tartozó privát végpontokkal rendelkező Azure Relay névterek maximális száma: 64.
 - A hálózati biztonsági csoport (NSG) szabályai és a felhasználó által megadott útvonalak nem vonatkoznak a privát végpontokra. További információ [: Azure Private link Service: korlátozások](../private-link/private-link-service-overview.md#limitations)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az [Azure Private linkről (előzetes verzió)](../private-link/private-link-service-overview.md)
 - További információ a [Azure Relay](relay-what-is-it.md)

@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: sstein, carlrab
+ms.reviewer: sstein
 ms.date: 09/03/2020
-ms.openlocfilehash: 2e7c931d6d99187b4ee7985be19374048c226312
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: bd393a897052dd0bd49851eee424c99ad1fcfb1f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442190"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319426"
 ---
 # <a name="use-read-only-replicas-to-offload-read-only-query-workloads"></a>Írásvédett replikák használata írásvédett lekérdezési feladatok kiszervezéséhez
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -85,7 +85,7 @@ Ha írásvédett replikához csatlakozik, a dinamikus felügyeleti nézetek (DMV
 
 A gyakran használt nézetek a következők:
 
-| Name | Cél |
+| Name | Rendeltetés |
 |:---|:---|
 |[sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Erőforrás-kihasználtsági metrikákat biztosít az elmúlt órában, beleértve a CPU-t, az adatio-t és a naplózási írási kihasználtságot a szolgáltatási célkitűzések korlátaihoz képest.|
 |[sys.dm_os_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)| Az adatbázismotor-példány összesített várakozási statisztikáját biztosítja. |

@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: quickstart
 author: mumian
 ms.author: jgao
-ms.reviewer: carlrab
+ms.reviewer: sstein
 ms.date: 06/24/2020
-ms.openlocfilehash: 2c1ae6bd69a87ad0ae941fba66785344d91e8268
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: a3589ec9b1a4cf652e7bcce16023a83a8b41ee5f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88660833"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319299"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-an-arm-template"></a>Rövid útmutató: önálló adatbázis létrehozása Azure SQL Database ARM-sablon használatával
 
@@ -80,7 +80,7 @@ $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
 Remove-AzResourceGroup -Name $resourceGroupName
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Hozzon létre egy kiszolgálói szintű tűzfalszabály, amely a helyszíni vagy távoli eszközökről csatlakozik az önálló adatbázishoz. További információ: [kiszolgálói szintű tűzfalszabály létrehozása](firewall-create-server-level-portal-quickstart.md).
 - A kiszolgálói szintű tűzfalszabály létrehozása után több különböző eszköz és nyelv használatával kapcsolódhat az adatbázishoz, [és lekérdezheti](connect-query-content-reference-guide.md) azt.

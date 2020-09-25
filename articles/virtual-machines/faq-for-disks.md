@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 0affcb3c1bab6eb5616c69bb15faf423895328b0
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: c2589b47c1619dd528ab843dcf4befd0da227d16
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89322517"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331488"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Gyakori kérdések az Azure IaaS virtuálisgép-lemezekről, valamint a felügyelt és nem felügyelt prémium szintű lemezekről
 
@@ -491,6 +491,6 @@ Nem.
 
 ## <a name="what-if-my-question-isnt-answered-here"></a>Mi a teendő, ha nem válaszolt a kérdésre?
 
-Ha a kérdés nem szerepel a listán, tudassa velünk, és segítünk megtalálni a választ. A megjegyzésekben a cikk végén teheti közzé a kérdést. Az Azure Storage csapata és a jelen cikk más közösségi tagjainak bevonásához használja az MSDN [Microsoft Q&az Azure Storage-hoz készült kérdés oldalát](https://docs.microsoft.com/answers/products/azure?product=storage).
+Ha a kérdés nem szerepel a listán, tudassa velünk, és segítünk megtalálni a választ. A megjegyzésekben a cikk végén teheti közzé a kérdést. Az Azure Storage csapata és a jelen cikk más közösségi tagjainak részvételéhez használja a [Microsoft Q&az Azure Storage-hoz készült kérdés oldalát](https://docs.microsoft.com/answers/products/azure?product=storage).
 
 A szolgáltatások igényléséhez küldje el kérelmeit és ötleteit az [Azure Storage visszajelzési fórumára](https://feedback.azure.com/forums/217298-storage).

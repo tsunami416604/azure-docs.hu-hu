@@ -4,12 +4,12 @@ description: Az erőforrások új erőforráscsoporthoz vagy előfizetésbe val�
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 43b5cd8c9fa5947ff8f345bd0cd3ad26d9e61923
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: cd05fe045532ee1b1f1fb88e502d786daabf9365
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90603152"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319554"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe
 
@@ -34,6 +34,10 @@ Néhány fontos lépést végre kell hajtani az erőforrások áthelyezése elő
    * [Útmutató a hálózatkezelés áthelyezéséhez](./move-limitations/networking-move-limitations.md)
    * [Útmutató Recovery Services](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)
    * [Útmutató Virtual Machines](./move-limitations/virtual-machines-move-limitations.md)
+
+1. Ha olyan erőforrást helyez át, amely közvetlenül az erőforráshoz (vagy egy alárendelt erőforráshoz) van hozzárendelve egy Azure-szerepkörrel, a szerepkör-hozzárendelés nem kerül át, és nem lesz árva. Az áthelyezés után újra létre kell hoznia a szerepkör-hozzárendelést. Végül a rendszer automatikusan eltávolítja az árva szerepkör-hozzárendelést, de ez az ajánlott eljárás a szerepkör-hozzárendelés eltávolítására az erőforrás áthelyezése előtt.
+
+    További információ a szerepkör-hozzárendelések kezeléséről: az Azure szerepkör-hozzárendelések [listázása](../../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-at-a-scope) és [Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása](../../role-based-access-control/role-assignments-portal.md).
 
 1. A forrás-és a cél-előfizetésnek aktívnak kell lennie. Ha problémája van egy letiltott fiók engedélyezésével, [hozzon létre egy Azure-támogatási kérelmet](../../azure-portal/supportability/how-to-create-azure-support-request.md). Válassza az **előfizetés kezelése** lehetőséget a probléma típusához.
 
@@ -293,6 +297,6 @@ Egy másik gyakori példa egy virtuális hálózat áthelyezését jelenti. Elő
 
 Jelenleg az Azure-támogatás nem minden erőforrást helyez át. Az áthelyezést támogató erőforrások listáját itt tekintheti meg: a [műveletek támogatásának áthelyezése az erőforrásokhoz](move-support-resources.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az áthelyezni kívánt erőforrások listáját itt tekintheti meg: a [műveletek támogatásának áthelyezése az erőforrásokhoz](move-support-resources.md).

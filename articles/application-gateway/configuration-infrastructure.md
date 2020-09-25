@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
-ms.openlocfilehash: ce0e03407349505d54aeb22b164fa8593446967d
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: cd1dc953c35233010250bf7f959c94d1de50fe4a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89652887"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319792"
 ---
 # <a name="application-gateway-infrastructure-configuration"></a>Infrastruktúra-konfiguráció Application Gateway
 
@@ -20,10 +20,10 @@ Az Application Gateway-infrastruktúra magában foglalja a virtuális hálózato
 
 ## <a name="virtual-network-and-dedicated-subnet"></a>Virtuális hálózat és dedikált alhálózat
 
-Az Application Gateway egy dedikált üzembe helyezés a virtuális hálózaton. A virtuális hálózaton belül egy dedikált alhálózat szükséges az Application Gateway számára. Egy adott Application Gateway-telepítés több példánya is lehet egy alhálózaton. Az alhálózaton más Application Gateway-átjárókat is üzembe helyezhet. Más erőforrás azonban nem helyezhető üzembe az Application Gateway alhálózatban.
+Az Application Gateway egy dedikált üzembe helyezés a virtuális hálózaton. A virtuális hálózaton belül egy dedikált alhálózat szükséges az Application Gateway számára. Egy adott Application Gateway-telepítés több példánya is lehet egy alhálózaton. Az alhálózaton más Application Gateway-átjárókat is üzembe helyezhet. Más erőforrás azonban nem helyezhető üzembe az Application Gateway alhálózatban. Standard_v2 és standard Azure-Application Gateway nem keverhető ugyanazon az alhálózaton.
 
 > [!NOTE]
-> Standard_v2 és standard Azure-Application Gateway nem keverhető ugyanazon az alhálózaton.
+> A [virtuális hálózati szolgáltatás végponti házirendjei](../virtual-network/virtual-network-service-endpoint-policies-overview.md) jelenleg nem támogatottak Application Gateway alhálózatban.
 
 ### <a name="size-of-the-subnet"></a>Az alhálózat mérete
 
