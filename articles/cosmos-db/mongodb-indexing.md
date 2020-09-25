@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 08/07/2020
 author: timsander1
 ms.author: tisande
-ms.custom: devx-track-javascript
-ms.openlocfilehash: fb90390814af39b240c9a157f490ee9390afeb8f
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.custom: devx-track-js
+ms.openlocfilehash: abd6d6379fba1efac20255ca97e66e6b2d7e72ee
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88030503"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324408"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>Az indexelés kezelése Azure Cosmos DB API-MongoDB
 
@@ -358,7 +358,7 @@ Az összetett indexek egy dokumentum több mezőjére vonatkozó hivatkozásokat
 
 Ha helyettesítő karaktert szeretne létrehozni, frissítsen a 3,6-es verzióra egy [támogatási kérelem](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)bejelentésével.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Indexelés az Azure Cosmos DB-ben](../cosmos-db/index-policy.md)
 * [Az Azure Cosmos DB automatikusan lejár az idő az élettartammal](../cosmos-db/time-to-live.md)

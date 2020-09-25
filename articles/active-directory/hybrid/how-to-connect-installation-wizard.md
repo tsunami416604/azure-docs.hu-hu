@@ -17,12 +17,12 @@ ms.date: 07/17/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 900471675c0e77cc5d82641fead3f019a0fa90c8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d81836b47acb19f624075480aafef74c9c0934c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358684"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306123"
 ---
 # <a name="azure-ad-connect-sync-running-the-installation-wizard-a-second-time"></a>Azure AD Connect szinkronizálás: a telepítővarázsló második alkalommal történő futtatása
 A Azure AD Connect telepítővarázsló első futtatásakor végigvezeti a telepítés konfigurálásának lépésein. Ha újra futtatja a telepítővarázslót, a karbantartási lehetőségeket kínál.
@@ -79,7 +79,7 @@ Ha ezt a beállítást választja, a rendszer a konfigurációban lévő összes
 Ezzel a beállítással engedélyezheti és letilthatja az átmeneti üzemmódot a kiszolgálón. További információt az átmeneti üzemmódról és annak használatáról az [Operations (műveletek](how-to-connect-sync-staging-server.md)) című témakörben találhat.
 
 A beállítás azt mutatja, hogy jelenleg engedélyezve van-e az előkészítés, vagy le van tiltva:  
-![Az átmeneti üzemmód aktuális állapotát is megjelenítő beállítás](./media/how-to-connect-installation-wizard/stagingmodecurrentstate.png)
+![A kikapcsolt átmeneti üzemmódot bemutató képernyőkép.](./media/how-to-connect-installation-wizard/stagingmodecurrentstate.png)
 
 Az állapot módosításához jelölje be ezt a beállítást, majd jelölje be vagy törölje a jelölőnégyzet jelölését.  
 ![Az átmeneti üzemmód aktuális állapotát is megjelenítő beállítás](./media/how-to-connect-installation-wizard/stagingmodeenable.png)
@@ -89,7 +89,7 @@ Ez a beállítás lehetővé teszi a felhasználói bejelentkezési módszer mó
 
 A beállítással kapcsolatos további információkért lásd: [felhasználói bejelentkezés](plan-connect-user-signin.md#changing-the-user-sign-in-method).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ a Azure AD Connect Sync által használt konfigurációs modellről a [deklaratív kiépítés ismertetése](concept-azure-ad-connect-sync-declarative-provisioning.md)című témakörben található.
 
 **Áttekintő témakörök**

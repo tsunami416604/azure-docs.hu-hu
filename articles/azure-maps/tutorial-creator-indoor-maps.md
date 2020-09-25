@@ -1,21 +1,21 @@
 ---
-title: A Creator használata beltéri térképek létrehozásához
-description: Beltéri térképek létrehozásához használja a Azure Maps Creatort.
+title: 'Oktatóanyag: beltéri térképek létrehozása a Creator használatával'
+description: Oktatóanyag a Azure Maps Creator használatával beltéri térképek létrehozásához
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 08/29/2020
-ms.topic: conceptual
+ms.date: 09/22/2020
+ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 9ed6690348816229d369bcff5d92c9703a4b3702
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.openlocfilehash: 01182343fb0c96040ec8e86ddf915050ba68cf9f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89469915"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335211"
 ---
-# <a name="use-creator-to-create-indoor-maps"></a>A Creator használata beltéri térképek létrehozásához
+# <a name="tutorial-use-creator-to-create-indoor-maps"></a>Oktatóanyag: beltéri térképek létrehozása a Creator használatával
 
 Ez az oktatóanyag bemutatja, hogyan hozhat létre beltéri térképeket. Ebből az oktatóanyagból megtudhatja, hogyan használhatja az API-t a következőkre:
 
@@ -404,43 +404,11 @@ A tileset a térképen megjelenített vektoros csempék halmaza. A tilesets a me
 
 A szolgáltatások [beolvasása API](https://docs.microsoft.com/rest/api/maps/featurestate/getstatespreview) lehetővé teszi egy szolgáltatás állapotának lekérését a funkciójának használatával `ID` . A stateset és erőforrásait a [szolgáltatás állapota törlés API](https://docs.microsoft.com/rest/api/maps/featurestate/deletestatesetpreview)használatával is törölheti.
 
-## <a name="next-steps"></a>További lépések
+Ha többet szeretne megtudni a jelen cikkben tárgyalt különböző Azure Maps létrehozó szolgáltatásokról, tekintse meg a [Creator beltéri térképeket](creator-indoor-maps.md).
 
-Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
+## <a name="next-steps"></a>Következő lépések
 
-> [!div class="checklist"]
-> * A beltéri Térkép rajzolási csomag feltöltése
-> * A rajzolási csomag átalakítása leképezési adatként
-> * Adatkészlet létrehozása a Térkép adataiból
-> * Tileset létrehozása az adatkészlet adataiból
-> * Az Azure Maps WFS szolgáltatás lekérdezése a térképi funkciók megismeréséhez
-> * Szolgáltatás stateset létrehozása a térképi funkciók és az adatkészlet adatai alapján
-> * A szolgáltatás stateset frissítése
-
-Most már rendelkezik a következő útmutatókra való áttéréshez szükséges képességekkel:
+A beltéri térképek modul használatának megismeréséhez tekintse meg a következőt:
 
 > [!div class="nextstepaction"]
 > [A beltéri térképek modul használata](how-to-use-indoor-module.md)
-
-> [!div class="nextstepaction"]
-> [Dinamikus stílus implementálása beltéri térképekhez](indoor-map-dynamic-styling.md)
-
-További információ a cikkben tárgyalt különböző Azure Maps szolgáltatásokról:
-
-> [!div class="nextstepaction"]
-> [Adatok feltöltése](creator-indoor-maps.md#upload-a-drawing-package)
-
-> [!div class="nextstepaction"]
-> [Adatátalakítás](creator-indoor-maps.md#convert-a-drawing-package)
-
-> [!div class="nextstepaction"]
-> [Adathalmaz](creator-indoor-maps.md#datasets)
-
-> [!div class="nextstepaction"]
-> [Tileset](creator-indoor-maps.md#tilesets)
-
-> [!div class="nextstepaction"]
-> [Szolgáltatás állapotának beállítása](creator-indoor-maps.md#feature-statesets)
-
-> [!div class="nextstepaction"]
-> [WFS szolgáltatás](creator-indoor-maps.md#web-feature-service-api)

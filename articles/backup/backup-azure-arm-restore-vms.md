@@ -4,12 +4,12 @@ description: Egy Azure-beli virtuális gép visszaállítása helyreállítási 
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: d2b5c00df9f9b5b41877fe21181f11ea7fe76084
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 90179ee78569f1c7b0a7bdf4b4da031c26f01783
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986549"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271868"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Azure-beli virtuális gépekre vonatkozó Azure Portal visszaállítása
 
@@ -163,9 +163,6 @@ A másodlagos régió visszaállítási felhasználói felülete hasonló lesz a
 ![Visszaállítási pont kiválasztása](./media/backup-azure-arm-restore-vms/sec-rp.png)
 
 ![Konfiguráció visszaállítása](./media/backup-azure-arm-restore-vms/rest-config.png)
-
->[!NOTE]
->A másodlagos régióban lévő virtuális hálózatot egyedi módon kell hozzárendelni, és nem használható az adott erőforráscsoport bármely más virtuális gépe számára.
 
 ![Trigger visszaállítása folyamatban lévő értesítésben](./media/backup-azure-arm-restore-vms/restorenotifications.png)
 

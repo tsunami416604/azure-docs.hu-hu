@@ -4,14 +4,14 @@ description: Ismerje meg, hogyan kezelheti a Kubernetes-erőforrásokkal az Azur
 services: container-service
 author: laurenhughes
 ms.topic: article
-ms.date: 08/11/2020
+ms.date: 09/21/2020
 ms.author: lahugh
-ms.openlocfilehash: 4a0acf284475f3c9119f3b9d012debad656b1faa
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 6a9567669445cb5aa94c1108051c961a216fabad
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661350"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335602"
 ---
 # <a name="access-kubernetes-resources-from-the-azure-portal-preview"></a>Kubernetes-erőforrások elérése a Azure Portal (előzetes verzió)
 
@@ -75,13 +75,27 @@ Ez a szakasz a gyakori problémákkal és a hibaelhárítási lépésekkel fogla
 
 A Kubernetes erőforrásainak eléréséhez hozzáféréssel kell rendelkeznie az AK-fürthöz, a Kubernetes API-hoz és a Kubernetes-objektumokhoz. Győződjön meg arról, hogy Ön vagy egy Fürtfelügyelő vagy egy olyan felhasználó, aki rendelkezik a megfelelő engedélyekkel az AK-fürt eléréséhez. A fürt biztonságával kapcsolatos további információkért lásd: [hozzáférési és identitási beállítások az AK][concepts-identity]-hoz.
 
+>[!NOTE]
+> Az Azure Portal kubernetes-erőforrás nézetét csak a [felügyelt HRE-kompatibilis fürtök](managed-aad.md) vagy nem HRE-kompatibilis fürtök támogatják. Ha felügyelt HRE engedélyezett fürtöt használ, a HRE-felhasználónak vagy-identitásnak rendelkeznie kell a megfelelő szerepkörökkel/szerepkör-kötésekkel a kubernetes API eléréséhez, a [felhasználó `kubeconfig` ](control-kubeconfig-access.md)lekérésére vonatkozó engedély mellett.
+
 ### <a name="enable-resource-view"></a>Erőforrás nézet engedélyezése
 
 A meglévő fürtök esetében előfordulhat, hogy engedélyeznie kell a Kubernetes erőforrás-nézetet. Az erőforrás nézet engedélyezéséhez kövesse a fürtben található portálon megjelenő utasításokat.
 
 :::image type="content" source="media/kubernetes-portal/enable-resource-view.png" alt-text="Azure Portal üzenet a Kubernetes erőforrás nézetének engedélyezéséhez." lightbox="media/kubernetes-portal/enable-resource-view.png":::
 
-## <a name="next-steps"></a>További lépések
+> [!TIP]
+> Az [**API-kiszolgáló által engedélyezett IP-tartományokhoz**](api-server-authorized-ip-ranges.md) tartozó AK funkció hozzáadható az API-kiszolgáló hozzáférésének korlátozásához csak a tűzfal nyilvános végpontja számára. Egy másik lehetőség, hogy az ilyen fürtök frissítése a `--api-server-authorized-ip-ranges` helyi ügyfélszámítógép vagy az IP-címtartomány (amelyről a portál böngészése) hozzáférését is tartalmazza. A hozzáférés engedélyezéséhez a számítógép nyilvános IPv4-címe szükséges. Ezt a címet megkeresheti az alábbi paranccsal, vagy a "mi az IP-cím" kifejezéssel az Internet böngészőben.
+```bash
+# Retrieve your IP address
+CURRENT_IP=$(dig @resolver1.opendns.com ANY myip.opendns.com +short)
+
+# Add to AKS approved list
+az aks update -g $RG -n $AKSNAME --api-server-authorized-ip-ranges $CURRENT_IP/32
+
+```
+
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk bemutatja, hogyan érheti el a Kubernetes-erőforrásokat az AK-fürthöz. A YAML és a Kubernetes erőforrás-megjelenítővel elért YAML-fájlok mélyebb megismeréséhez tekintse meg a [központi telepítések és a jegyzékfájlok][deployments] című témakört.
 

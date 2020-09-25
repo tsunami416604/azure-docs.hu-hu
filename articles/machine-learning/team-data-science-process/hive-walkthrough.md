@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: cb144aa7b6c717ada3a51fe3286f349bc3d8b325
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 991e81c46a0cd6c587ac3366b63ba4da6a07f7e7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86273914"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336513"
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>A csoportos adatelemzési folyamat működés közben: Azure HDInsight Hadoop fürtök használata
 Ebben az útmutatóban egy végpontok közötti forgatókönyvben használjuk a [csoportos adatelemzési folyamatot (TDSP)](overview.md) . Egy Azure HDInsight Hadoop- [fürtöt](https://azure.microsoft.com/services/hdinsight/) használunk a nyilvánosan elérhető [NYC-taxis](https://www.andresmh.com/nyctaxitrips/) adatkészletből származó adatok tárolására, megismerésére és szolgáltatására, valamint az adatok leállására. A bináris és a többosztályos besorolás és a regressziós prediktív feladatok kezeléséhez az adatok modelljeit Azure Machine Learning használatával kell kiépíteni. 
@@ -89,7 +89,7 @@ Beállíthat egy Azure-környezetet a speciális elemzésekhez, amelyek a HDInsi
    
    * Ne felejtse el összekapcsolni az 1. lépésben létrehozott Storage-fiókot a HDInsight-fürttel a létrehozásakor. Ez a Storage-fiók fér hozzá a fürtön belül feldolgozott adatszolgáltatásokhoz.
    * A fürt létrehozása után engedélyezze a távoli hozzáférést a fürt fő csomópontjához. Keresse meg a **konfiguráció** lapot, és válassza a **távoli engedélyezése**lehetőséget. Ez a lépés a távoli bejelentkezéshez használt felhasználói hitelesítő adatokat határozza meg.
-3. [Azure Machine learning munkaterület létrehozása](../studio/create-workspace.md): ezt a munkaterületet gépi tanulási modellek létrehozásához használhatja. Ez a feladat a kezdeti adatfeltárás és-mintavételezés befejezése után, a HDInsight-fürt használatával foglalkozik.
+3. [Azure Machine learning munkaterület létrehozása](../classic/create-workspace.md): ezt a munkaterületet gépi tanulási modellek létrehozásához használhatja. Ez a feladat a kezdeti adatfeltárás és-mintavételezés befejezése után, a HDInsight-fürt használatával foglalkozik.
 
 ## <a name="get-the-data-from-a-public-source"></a><a name="getdata"></a>Adatok beolvasása nyilvános forrásból
 > [!NOTE]
@@ -639,7 +639,7 @@ hdfs dfs -mkdir wasb:///queryoutputdir
 hive -f "C:\temp\sample_hive_trip_direct_distance.hql"
 ```
 
-A lekérdezés eredményét kilenc Azure-blobra (**queryoutputdir/000000 kódot \_ 0** – **queryoutputdir/000008 \_ 0**), a Hadoop-fürt alapértelmezett tárolójában kell írni.
+A lekérdezés eredményét kilenc Azure-blobra (**queryoutputdir/000000 kódot \_ 0** –  **queryoutputdir/000008 \_ 0**), a Hadoop-fürt alapértelmezett tárolójában kell írni.
 
 Az egyes Blobok méretének megtekintéséhez futtassa a következő parancsot a kaptár könyvtárának parancssorában:
 
@@ -654,7 +654,7 @@ hdfs dfs -copyToLocal wasb:///queryoutputdir/000000_0 C:\temp\tempfile
 ```
 
 > [!WARNING]
-> `copyToLocal`nagy méretű fájlok esetében nagyon lassú lehet, és nem ajánlott velük használni.  
+> `copyToLocal` nagy méretű fájlok esetében nagyon lassú lehet, és nem ajánlott velük használni.  
 > 
 > 
 
@@ -894,7 +894,7 @@ Most már folytathatja a [Machine learning](https://studio.azureml.net)-ben val�
 
   b. Ebben a kísérletben egy zavart mátrixot használunk az előrejelzési pontosság az itt látható módon:
 
-  ![Zavart mátrix](./media/hive-walkthrough/cxFmErM.png)
+  ![Keveredési mátrix](./media/hive-walkthrough/cxFmErM.png)
 
   Míg a pontosság osztály jó, a modell nem végez jó munkát a ritkább osztályokon a "learning".
 
@@ -915,17 +915,17 @@ Most már folytathatja a [Machine learning](https://studio.azureml.net)-ben val�
   Itt a meghatározás együtthatója 0,709, ami azt jelenti, hogy a modell együtthatói a variancia körülbelül 71 százalékát ismertetik.
 
 > [!IMPORTANT]
-> Ha többet szeretne megtudni a Machine Learningről, valamint arról, hogyan érheti el és használhatja azt, tekintse [meg a mi a Machine learning](../studio/what-is-machine-learning.md). Emellett a [Azure AI Gallery](https://gallery.cortanaintelligence.com/) kísérletek széles skáláját fedi le, és alapos bevezetést biztosít a Machine learning képességeinek körébe.
+> Ha többet szeretne megtudni a Machine Learningről, valamint arról, hogyan érheti el és használhatja azt, tekintse [meg a mi a Machine learning](../classic/index.yml). Emellett a [Azure AI Gallery](https://gallery.cortanaintelligence.com/) kísérletek széles skáláját fedi le, és alapos bevezetést biztosít a Machine learning képességeinek körébe.
 > 
 > 
 
 ## <a name="license-information"></a>Licencelési információk
 Ezt a minta-bemutatót és a hozzá tartozó parancsfájlokat a Microsoft a MIT licenc alatt osztja meg. További információ: **LICENSE.txt** fájl a githubon található mintakód könyvtárában.
 
-## <a name="references"></a>Referencia
-• [Andrés MONROY NYC taxi TRIPS letöltési oldal](https://www.andresmh.com/nyctaxitrips/)  
-• [A New York-i taxis utazási adatvédelme Chris Whong](https://chriswhong.com/open-data/foil_nyc_taxi/)   
-• A [New York-i taxi és a limuzin Bizottság kutatási és statisztikai adatai](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
+## <a name="references"></a>Hivatkozások
+•    [Andrés MONROY NYC taxi TRIPS letöltési oldal](https://www.andresmh.com/nyctaxitrips/)  
+•    [A New York-i taxis utazási adatvédelme Chris Whong](https://chriswhong.com/open-data/foil_nyc_taxi/)   
+• A    [New York-i taxi és a limuzin Bizottság kutatási és statisztikai adatai](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
 
 [2]: ./media/hive-walkthrough/output-hive-results-3.png
 [11]: ./media/hive-walkthrough/hive-reader-properties.png
@@ -937,6 +937,3 @@ Ezt a minta-bemutatót és a hozzá tartozó parancsfájlokat a Microsoft a MIT 
 <!-- Module References -->
 [select-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
 [import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
-
-
-

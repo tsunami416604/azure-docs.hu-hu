@@ -3,12 +3,12 @@ title: A nemmegfelelőség okainak meghatározása
 description: Ha egy erőforrás nem megfelelő, számos lehetséges oka lehet. Ismerje meg, hogy mi okozta a meg nem felelés okait.
 ms.date: 07/06/2020
 ms.topic: how-to
-ms.openlocfilehash: a666da4ecb97c24e7176e6c7cfbe2ee24f46f1b7
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 102a1a6a9573c73b4c1158a3c412be233e1a12b2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89648577"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334174"
 ---
 # <a name="determine-causes-of-non-compliance"></a>A nemmegfelelőség okainak meghatározása
 
@@ -36,7 +36,7 @@ A megfelelőségi adatok megtekintéséhez kövesse az alábbi lépéseket:
 
 1. A **szabályzat megfelelősége** lap **erőforrás-megfelelőség** lapján kattintson a jobb gombbal, vagy válassza ki az erőforrás három pontját egy olyan **megfelelőségi állapotban** , amely _nem megfelelő_. Ezután válassza a **megfelelőségi adatok megtekintése**lehetőséget.
 
-   :::image type="content" source="../media/determine-non-compliance/view-compliance-details.png" alt-text="Képernyőkép a megfelelőségi adatok megtekintése hivatkozásra az erőforrás-megfelelőség lapon." border="false":::
+   :::image type="content" source="../media/determine-non-compliance/view-compliance-details.png" alt-text="Képernyőkép a "megfelelőségi adatok megtekintése" hivatkozásra az erőforrás-megfelelőség lapon." border="false":::
 
 1. A **megfelelőség részletei** ablaktábla az erőforrás legutóbbi kiértékelésével kapcsolatos információkat jeleníti meg az aktuális szabályzat-hozzárendeléshez. Ebben a példában a **Microsoft. SQL/Servers/Version** mező értéke _12,0_ , míg a rendszer a _14,0_-es szabályzat-definíciót várta. Ha az erőforrás több okból nem megfelelő, az egyes elemek a panelen jelennek meg.
 
@@ -106,9 +106,15 @@ A következő mátrix minden lehetséges _okot_ leképez a szabályzat-definíci
 
 ## <a name="compliance-details-for-guest-configuration"></a>Vendégkonfiguráció megfelelőségi adatai
 
-A _vendég konfiguráció_ kategóriájában a _auditIfNotExists_ házirendek esetében több beállítás is KIÉRTÉKELhető a virtuális gépen, és meg kell tekintenie egy beállítás részleteit. Ha például a rendszer naplózza a jelszóházirend listáját, és csak az egyikük állapota _nem megfelelő_, akkor tudnia kell, hogy mely konkrét jelszóházirend-szabályzatok nem felelnek meg az előírásoknak, és miért.
+A _auditIfNotExists_ házirendek a _vendég konfiguráció_ kategóriában több beállítást is kiértékeltek a virtuális gépen belül, és meg kell tekintenie egy beállítás részleteit. Ha például a rendszer naplózza a jelszóházirend listáját, és csak az egyikük állapota _nem megfelelő_, akkor tudnia kell, hogy mely konkrét jelszóházirend-szabályzatok nem felelnek meg az előírásoknak, és miért.
 
 Előfordulhat, hogy nem fér hozzá közvetlenül a virtuális géphez, de jelentenie kell, hogy a virtuális gép miért _nem megfelelő_.
+
+## <a name="compliance-details-for-resource-provider-modes"></a>Az erőforrás-szolgáltatói módok megfelelőségi részletei
+
+[Erőforrás-szolgáltatói móddal](../concepts/definition-structure.md#resource-manager-modes)rendelkező hozzárendelések esetén válassza a _nem megfelelő_ erőforrást a mélyebb nézet megnyitásához. Az **összetevő megfelelősége** lapon további információk szerepelnek az erőforrás-szolgáltatói üzemmódra vonatkozóan a hozzárendelt szabályzatban, amely a _nem megfelelő_ **összetevőt** és **összetevő-azonosítót**mutatja.
+
+:::image type="content" source="../media/getting-compliance-data/compliance-components.png" alt-text="Képernyőkép az összetevő-megfelelőség lapról, valamint az erőforrás-szolgáltatói mód hozzárendelésének megfelelőségi részleteiről." border="false":::
 
 ### <a name="azure-portal"></a>Azure Portal
 

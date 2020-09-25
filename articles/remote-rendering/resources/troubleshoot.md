@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: a5b625ea2b5b76d0938ac62be2202127ff0af66e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: f82ea8361cef76b2030e5b257b3d3351968d8050
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90982976"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322189"
 ---
 # <a name="troubleshoot"></a>Hibaelhárítás
 
@@ -23,11 +23,7 @@ Néha a [Storage-fiók összekapcsolása](../how-tos/create-an-account.md#link-s
 
 ## <a name="client-cant-connect-to-server"></a>Az ügyfél nem tud csatlakozni a kiszolgálóhoz
 
-Győződjön meg arról, hogy a tűzfalak (az eszközökön belül, az útválasztók stb.) nem blokkolja a következő portokat:
-
-* **50051 (TCP)** – a kezdeti kapcsolathoz szükséges (http-kézfogás)
-* **8266 (TCP + UDP)** – adatátvitelhez szükséges
-* **5000 (TCP**), **5433 (tcp)**, **8443 (TCP)** – szükséges a [ArrInspector](tools/arr-inspector.md)
+Győződjön meg arról, hogy a tűzfalak (az eszközön belül, az útválasztók stb.) nem blokkolja a [rendszerkövetelményekben](../overview/system-requirements.md#network-ports)említett portokat.
 
 ## <a name="error-disconnected-videoformatnotavailable"></a>Hiba: " `Disconnected: VideoFormatNotAvailable` "
 
@@ -152,7 +148,7 @@ Ennek a határolókeretnak két problémája lehet, amely láthatatlan geometri�
 
 Az Azure Remote rendering összekapcsolja az egység renderelési folyamatát, hogy elvégezze a képkockák összeállítását a videóval, és hogy elvégezze az újravetítést. Ha szeretné ellenőrizni, hogy ezek a hookok léteznek-e, nyissa meg a menüt *:::no-loc text="Window > Analysis > Frame debugger":::* . Engedélyezze, és győződjön meg arról, hogy a folyamat két bejegyzéssel rendelkezik `HolographicRemotingCallbackPass` :
 
-![Unity frame Debugger](./media/troubleshoot-unity-pipeline.png)
+![Egység renderelési folyamata](./media/troubleshoot-unity-pipeline.png)
 
 ## <a name="checkerboard-pattern-is-rendered-after-model-loading"></a>A Pepita minta a modell betöltését követően jelenik meg
 
@@ -184,6 +180,12 @@ Hamis hibák történtek, amikor az egységbeli mintákat (gyors üzembe helyez�
 ### <a name="arm64-builds-for-unity-projects-fail-because-audiopluginmshrtfdll-is-missing"></a>Az Unity-projektek Arm64-buildei sikertelenek, mert AudioPluginMsHRTF.dll hiányzik
 
 A `AudioPluginMsHRTF.dll` for Arm64 hozzá lett adva a *Windows vegyes valósághoz* készült csomagjához *(com. Unity. XR. windowsmr. Metro)* a 3.0.1-es verzióban. Győződjön meg arról, hogy a Unity csomagkezelő segítségével telepítette az 3.0.1-es vagy újabb verziót. A Unity menüsávban navigáljon az *ablak > csomagkezelő* elemre, és keresse meg a *Windows vegyes valóság* csomagot.
+
+## <a name="native-c-based-application-does-not-compile"></a>A natív C++-alapú alkalmazás nem fordítható le
+
+### <a name="library-not-found-error-for-uwp-application-or-dll"></a>"A könyvtár nem található" hiba a UWP-alkalmazás vagy-DLL esetében
+
+A C++ Nuget csomagon belül van egy fájl, amely `microsoft.azure.remoterendering.Cpp.targets` meghatározza, hogy a bináris íz milyen típusú legyen. Az azonosításához a `UWP` fájlban található feltételeket kell megkeresni `ApplicationType == 'Windows Store'` . Ezért biztosítani kell, hogy ez a típus be legyen állítva a projektben. Ennek a helyzetnek kell lennie, amikor UWP-alkalmazást vagy DLL-t hoz létre a Visual Studio Project varázslójával.
 
 ## <a name="unstable-holograms"></a>Instabil Hologramok
 

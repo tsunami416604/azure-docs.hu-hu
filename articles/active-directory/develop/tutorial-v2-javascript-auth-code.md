@@ -11,13 +11,13 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
-ms.custom: aaddev, devx-track-javascript
-ms.openlocfilehash: 4613e22193de8dc374d1a9e1a293c317fb9c1b9b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: aaddev, devx-track-js
+ms.openlocfilehash: 7a136c03db6e27763a22d92d2c335f23c616856e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87311542"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91256806"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-app-spa-using-auth-code-flow"></a>Oktatóanyag: bejelentkezés a felhasználókba és a Microsoft Graph API meghívása egy JavaScript-alapú egyoldalas alkalmazásból (SPA) az Auth Code flow használatával
 
@@ -325,7 +325,7 @@ Módosítsa a szakasz értékeit az `msalConfig` itt leírtak szerint:
 - `Enter_the_Cloud_Instance_Id_Here`: Az Azure Cloud-példány, amelyben az alkalmazás regisztrálva van.
   - A fő (vagy *globális*) Azure-felhőhöz írja be a következőt: `https://login.microsoftonline.com` .
   - Az **országos** felhők esetében (például Kína) a megfelelő értékeket találja a [nemzeti felhőkben](authentication-national-cloud.md).
-- `Enter_the_Tenant_info_here`a következők egyikének kell lennie:
+- `Enter_the_Tenant_info_here` a következők egyikének kell lennie:
   - Ha az alkalmazás támogatja a *szervezeti címtárban lévő fiókokat*, cserélje le ezt az értéket a **bérlői azonosítóra** vagy a **bérlő nevére**. Például: `contoso.microsoft.com`.
   - Ha az alkalmazás *minden szervezeti címtárban támogatja a fiókokat*, cserélje le ezt az értéket a következőre: `organizations` .
   - Ha az alkalmazás a *szervezeti címtárban és a személyes Microsoft-fiókokban is támogatja a fiókokat*, cserélje le ezt az értéket a következőre: `common` .
@@ -350,7 +350,7 @@ const graphConfig = {
 
 Módosítsa a szakasz értékeit az `graphConfig` itt leírtak szerint:
 
-- `Enter_the_Graph_Endpoint_Here`a Microsoft Graph API azon példánya, amellyel az alkalmazásnak kommunikálnia kell.
+- `Enter_the_Graph_Endpoint_Here` a Microsoft Graph API azon példánya, amellyel az alkalmazásnak kommunikálnia kell.
   - A **globális** Microsoft Graph API-végpont esetében cserélje le a sztring mindkét példányát a következőre: `https://graph.microsoft.com` .
   - Az **országos** Felhőbeli üzemelő példányok esetében a Microsoft Graph dokumentációjában tekintse meg a [nemzeti Felhőbeli központi telepítések](https://docs.microsoft.com/graph/deployments) című témakört.
 
@@ -567,7 +567,7 @@ A hívás `acquireTokenPopup` megnyit egy előugró ablakot (vagy `acquireTokenR
 
 #### <a name="get-a-user-token-silently"></a>Felhasználói jogkivonat csendes beszerzése
 
-A `acquireTokenSilent` metódus felhasználói beavatkozás nélkül kezeli a tokenek beszerzését és megújítását. A `loginPopup` (vagy `loginRedirect` ) első futtatása után `acquireTokenSilent` a metódus általában a védett erőforrásokhoz való hozzáféréshez használt jogkivonatok beszerzésére szolgál a további hívásokhoz. (A kérések és a megújítási hívások csendesen történnek.) `acquireTokenSilent`bizonyos esetekben sikertelen lehet. Előfordulhat például, hogy a felhasználó jelszava lejárt. Az alkalmazás két módon tudja kezelni ezt a kivételt:
+A `acquireTokenSilent` metódus felhasználói beavatkozás nélkül kezeli a tokenek beszerzését és megújítását. A `loginPopup` (vagy `loginRedirect` ) első futtatása után `acquireTokenSilent` a metódus általában a védett erőforrásokhoz való hozzáféréshez használt jogkivonatok beszerzésére szolgál a további hívásokhoz. (A kérések és a megújítási hívások csendesen történnek.) `acquireTokenSilent` bizonyos esetekben sikertelen lehet. Előfordulhat például, hogy a felhasználó jelszava lejárt. Az alkalmazás két módon tudja kezelni ezt a kivételt:
 
 1. A `acquireTokenPopup` felhasználó bejelentkezési kérésének elindításához hívjon fel azonnal egy hívást. Ezt a mintát gyakran használják online alkalmazásokban, ahol az alkalmazás nem hitelesített tartalmakat használ a felhasználó számára. Az irányított telepítő által generált minta ezt a mintát használja.
 1. Vizuálisan jelezze a felhasználónak, hogy egy interaktív bejelentkezésre van szükség, hogy a felhasználó kiválassza a megfelelő időt a bejelentkezéshez, vagy az alkalmazás később is újra próbálkozik `acquireTokenSilent` . Ez a módszer általában akkor használható, ha a felhasználó az alkalmazás egyéb funkcióit nem zavarja. Előfordulhat például, hogy nem hitelesített tartalom érhető el az alkalmazásban. Ebben az esetben a felhasználó dönthet arról, hogy mikor szeretné bejelentkezni a védett erőforrás eléréséhez, vagy az elavult információk frissítéséhez.
@@ -647,7 +647,7 @@ Ha egy háttérrendszer API-nak nincs szüksége hatókörre, ami nem ajánlott,
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban létrehozott egy JavaScript-alapú egyoldalas alkalmazást (SPA), amely a JavaScript v 2.0-hoz készült Microsoft Authentication Library (MSAL) szolgáltatást használja a következőhöz:
 

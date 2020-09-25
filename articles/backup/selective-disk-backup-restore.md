@@ -4,19 +4,16 @@ description: Ebben a cikkben megismerheti a szelektív lemezek biztonsági ment�
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: references_regions
-ms.openlocfilehash: fa5ab60481b431971abb1e3fcb5c85492eb5b22a
-ms.sourcegitcommit: 655e4b75fa6d7881a0a410679ec25c77de196ea3
+ms.openlocfilehash: ce7e53bc740882a819e8a21e3ac95ab47d3b876a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89506695"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271375"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>Szelektív lemezes biztonsági mentés és visszaállítás Azure-beli virtuális gépekhez
 
 Azure Backup támogatja a virtuális gép összes lemezének (operációs rendszerének és adattípusának) biztonsági mentését egy virtuális gépen, a virtuális gépek biztonsági mentési megoldásával együtt. Most, hogy a szelektív lemezek biztonsági mentési és visszaállítási funkcióját használja, biztonsági mentést készíthet a virtuális gépek adatlemezei egy részhalmazáról. Ez hatékony és költséghatékony megoldást kínál a biztonsági mentési és visszaállítási igények kielégítésére. Az egyes helyreállítási pontok csak a biztonsági mentési művelet részét képező lemezeket tartalmazzák. Ez lehetővé teszi, hogy a visszaállítási művelet során a megadott helyreállítási pontról visszaállított lemezek egy részhalmaza legyen. Ez a pillanatképek és a tároló visszaállítására egyaránt vonatkozik.
-
->[!NOTE]
->Az Azure-beli virtuális gépek szelektív lemezes biztonsági mentése és visszaállítása minden régióban nyilvános előzetes verzióban érhető el.
 
 ## <a name="scenarios"></a>Forgatókönyvek
 
@@ -62,7 +59,7 @@ az backup protection enable-for-vm --resource-group {resourcegroup} --vault-name
 Ha a virtuális gép nem ugyanabban az erőforráscsoporthoz van, mint a tároló, akkor a **ResourceGroup** arra az erőforráscsoporthoz utal, amelyben a tárolót létrehozták. A virtuális gép neve helyett adja meg a virtuális gép AZONOSÍTÓját az alább jelzett módon.
 
 ```azurecli
-az backup protection enable-for-vm  --resource-group {ResourceGroup} --vault-name {vaultname} --vm $(az vm show -g VMResourceGroup -n MyVm --query id | tr -d '"') --policy-name {policyname} --disk-list-setting include --diskslist {LUN number(s) separated by space}
+az backup protection enable-for-vm  --resource-group {ResourceGroup} --vault-name {vaultname} --vm $(az vm show -g VMResourceGroup -n MyVm --query id --output tsv) --policy-name {policyname} --disk-list-setting include --diskslist {LUN number(s) separated by space}
 ```
 
 ### <a name="modify-protection-for-already-backed-up-vms-with-azure-cli"></a>A már biztonsági másolattal rendelkező virtuális gépek védelmének módosítása az Azure CLI-vel
@@ -86,7 +83,7 @@ az backup protection update-for-vm --resource-group {resourcegroup} --vault-name
 ### <a name="restore-disks-with-azure-cli"></a>Lemezek visszaállítása az Azure CLI-vel
 
 ```azurecli
-az backup restore restore-disks --resource-group {resourcegroup} --vault-name {vaultname} -c {vmname} -i {vmname} --backup-management-type AzureIaasVM -r {restorepoint} --target-resource-group {targetresourcegroup} --storage-account {storageaccountname} --diskslist {LUN number of the disk(s) to be restored}
+az backup restore restore-disks --resource-group {resourcegroup} --vault-name {vaultname} -c {vmname} -i {vmname} -r {restorepoint} --target-resource-group {targetresourcegroup} --storage-account {storageaccountname} --diskslist {LUN number of the disk(s) to be restored}
 ```
 
 ### <a name="restore-only-os-disk-with-azure-cli"></a>Csak az operációsrendszer-lemez visszaállítása az Azure CLI-vel
@@ -289,11 +286,32 @@ A szelektív lemezek biztonsági mentési funkciója nem támogatott a klassziku
 
 Az **új virtuális gép létrehozásához** és a **meglévő cseréjéhez** szükséges visszaállítási beállítások nem támogatottak a virtuális gép számára, amelyhez engedélyezve van a szelektív lemezek biztonsági mentése funkció.
 
+Az Azure-beli virtuális gép biztonsági mentése jelenleg nem támogatja az olyan virtuális gépeket, amelyek a csatlakoztatott lemezekkel vagy megosztott lemezzel rendelkeznek. A szelektív lemezes biztonsági mentés nem használható olyan esetekben, amelyek kizárják a lemezt, és biztonsági másolatot készítenek a virtuális gépről.
+
 ## <a name="billing"></a>Számlázás
 
 Az Azure-beli virtuális gépek biztonsági mentése a meglévő díjszabási modellt követi, amely részletesen ismerteti [itt](https://azure.microsoft.com/pricing/details/backup/).
 
-A **védett példány (PI)** díját csak akkor számítjuk ki az operációsrendszer-lemezre, ha úgy dönt, hogy **csak az operációs rendszer lemezének** használatával készít biztonsági mentést.  Ha a biztonsági mentést konfigurálja, és legalább egy adatlemezt választ ki, a PI-költségeket a rendszer a virtuális géphez csatolt összes lemez esetében kiszámítja. A **biztonsági mentési tárolási költségeket** a rendszer csak a tartalmazott lemezek alapján számítja ki, így a tárolási költségeket is megtakaríthatja. A rendszer mindig kiszámítja a **Pillanatképek árát** a virtuális gép összes lemezéhez (a tartalmazott és kizárt lemezekkel együtt).  
+A **védett példány (PI)** díját csak akkor számítjuk ki az operációsrendszer-lemezre, ha úgy dönt, hogy **csak az operációs rendszer lemezének** használatával készít biztonsági mentést.  Ha a biztonsági mentést konfigurálja, és legalább egy adatlemezt választ ki, a PI-költségeket a rendszer a virtuális géphez csatolt összes lemez esetében kiszámítja. A **biztonsági mentési tárolási költségeket** a rendszer csak a tartalmazott lemezek alapján számítja ki, így a tárolási költségeket is megtakaríthatja. A rendszer mindig kiszámítja a **Pillanatképek árát** a virtuális gép összes lemezéhez (a tartalmazott és kizárt lemezekkel együtt).
+
+Ha a régiók közötti visszaállítás (CRR) funkciót választotta, akkor a [CRR díjszabása](https://azure.microsoft.com/pricing/details/backup/) a lemez kizárása után a biztonsági mentési tárterületre vonatkozik.
+
+## <a name="frequently-asked-questions"></a>Gyakori kérdések
+
+### <a name="how-is-protected-instance-pi-cost-calculated-for-only-os-disk-backup-in-windows-and-linux"></a>Hogyan számítják ki a Protected instance (PI) díjait a Windows és a Linux operációs rendszer lemezes biztonsági mentéséhez?
+
+A PI-költségeket a virtuális gép tényleges (felhasznált) mérete alapján számítjuk ki.
+
+- Windows esetén: a felhasznált terület kiszámítása az operációs rendszert tároló meghajtón alapul (ez általában a C:).
+- Linux esetén: a felhasznált terület kiszámítása azon az eszközön alapul, ahol a gyökér fájlrendszer (/) csatlakoztatva van.
+
+### <a name="i-have-configured-only-os-disk-backup-why-is-the-snapshot-happening-for-all-the-disks"></a>Csak az operációsrendszer-lemez biztonsági mentését konfiguráltam, miért történik a pillanatkép az összes lemezen?
+
+A szelektív lemezes biztonsági mentési funkciók lehetővé teszik, hogy a biztonsági mentés részét képező befoglalt lemezeket megerősítve mentse a biztonságimásolat-tároló tárolási költségeit. A rendszer azonban a pillanatképet a virtuális géphez csatolt összes lemez esetében elvégzi. Így a rendszer mindig kiszámítja a pillanatkép költségeit a virtuális gép összes lemeze számára (a tartalmazott és kizárt lemezekkel együtt). További információ: [számlázás](#billing).
+
+### <a name="i-cant-configure-backup-for-the-azure-virtual-machine-by-excluding-ultra-disk-or-shared-disks-attached-to-the-vm"></a>Nem tudom konfigurálni az Azure-beli virtuális gép biztonsági mentését a virtuális géphez csatlakoztatott Ultra Disk vagy Shared Disks kizárásával
+
+A szelektív lemezes biztonsági mentési funkció az Azure-beli virtuális gépek biztonsági mentési megoldásán felüli képesség. Az Azure-beli virtuális gép biztonsági mentése jelenleg nem támogatja az olyan virtuális gépeket, amelyekhez a lemez csatlakoztatva van.
 
 ## <a name="next-steps"></a>Következő lépések
 

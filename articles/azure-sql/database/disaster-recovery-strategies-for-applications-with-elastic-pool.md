@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: carlrab
+ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 8ba9edc129cc169ccc146c7bc314d8f5ffe573b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6887371e50f5b7e8706cac0a0700873c42bdac06
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84050407"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321645"
 ---
 # <a name="disaster-recovery-strategies-for-applications-using-azure-sql-database-elastic-pools"></a>Vészhelyzeti helyreállítási stratégiák Azure SQL Database rugalmas készleteket használó alkalmazásokhoz
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -183,7 +183,7 @@ A fő kompromisszumok a következők:
 
 Ez a cikk a SaaS ISV több-bérlős alkalmazás által használt adatbázis-rétegre vonatkozó vész-helyreállítási stratégiákra összpontosít. Az Ön által választott stratégia az alkalmazás igényeinek, például az üzleti modellnek, az ügyfeleknek felkínált SLA-nak, a költségvetési korlátozásnak stb. Mindegyik ismertetett stratégia ismerteti az előnyöket és a kompromisszumot, így tájékozott döntést hozhat. Emellett az adott alkalmazás valószínűleg más Azure-összetevőket is tartalmaz. Ezért tekintse át az üzletmenet-folytonossági útmutatót, és hangolja össze az adatbázis-rétegek helyreállítását. Az adatbázis-alkalmazások Azure-ban történő helyreállításával kapcsolatos további tudnivalókért tekintse meg a [felhőalapú megoldások tervezése a vész-helyreállításhoz](designing-cloud-solutions-for-disaster-recovery.md)című témakört.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az automatikus biztonsági mentések Azure SQL Databaseáról a [Azure SQL Database automatizált biztonsági mentések](automated-backups-overview.md)című témakörben olvashat bővebben.
 * Az üzletmenet folytonosságának áttekintése és forgatókönyvei: az [üzletmenet folytonosságának áttekintése](business-continuity-high-availability-disaster-recover-hadr-overview.md).

@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: sudbalas
-ms.openlocfilehash: 2c5340b37d6b277c156189b1b99cb3143a5c3b15
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 9516a32e89b9ad671cf705c8f520c73e28801c19
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650751"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320591"
 ---
 # <a name="secure-access-to-a-key-vault"></a>Biztonságos hozzáférés a kulcstartóhoz
 
@@ -33,9 +33,9 @@ Mindkét síkon Azure Active Directoryt (Azure AD) használ a hitelesítéshez. 
 
 Amikor kulcstartót hoz létre egy Azure-előfizetésben, az automatikusan társítva lesz az előfizetés Azure AD-bérlője számára. Mindkét síkon lévő hívónak regisztrálnia kell ebben a bérlőben, és hitelesítenie kell magát a kulcstartó eléréséhez. Mindkét esetben az alkalmazások kétféleképpen férhetnek hozzá Key Vaulthoz:
 
-- **Csak alkalmazás**: az alkalmazás egy szolgáltatás-vagy háttér-feladatot jelöl. Ez az identitás a leggyakoribb forgatókönyv azon alkalmazások esetében, amelyeknek a kulcstárolóban rendszeresen kell elérniük a tanúsítványokat, a kulcsokat és a titkos kulcsokat. Ahhoz, hogy ez a forgatókönyv működjön, az `objectId` alkalmazásnak meg kell adni a hozzáférési házirendben, és `applicationId` a _nem_ adható meg vagy kötelező `null` .
-- **Csak felhasználó**: a felhasználó hozzáfér a Key vaulthoz a bérlőben regisztrált bármely alkalmazásból. Ilyen típusú hozzáférés például a Azure PowerShell és a Azure Portal. Ennek a forgatókönyvnek a működéséhez `objectId` meg kell adni a felhasználót a hozzáférési házirendben, és a `applicationId` _nem_ adható meg vagy kötelező `null` .
-- **Alkalmazás-Plus-User** (más néven _összetett identitás_): a felhasználónak egy adott alkalmazásból kell hozzáférnie a kulcstartóhoz _, és_ az alkalmazásnak a felhasználó megszemélyesítéséhez a hitelesítési (OBO) folyamatot kell használnia. Ahhoz, hogy ez a forgatókönyv működjön, mindkettőt `applicationId` `objectId` meg kell adni a hozzáférési házirendben. A `applicationId` azonosítja a szükséges alkalmazást, és `objectId` azonosítja a felhasználót. Ez a lehetőség jelenleg nem érhető el az Azure RBAC (előzetes verzió) adatsíkon
+- **Csak alkalmazás**: az alkalmazás egy szolgáltatás-vagy háttér-feladatot jelöl. Ez az identitás a leggyakoribb forgatókönyv azon alkalmazások esetében, amelyeknek időnként szükségük van tanúsítványokra, kulcsokra vagy titkos kulcsok elérésére a kulcstartóból. Ahhoz, hogy ez a forgatókönyv működjön, a `objectId` hozzáférési házirendben meg kell adni az alkalmazást, és `applicationId` a _nem_ adható meg vagy kötelező `null` .
+- **Csak felhasználó**: a felhasználó hozzáfér a Key vaulthoz a bérlőben regisztrált bármely alkalmazásból. Ilyen típusú hozzáférés például a Azure PowerShell és a Azure Portal. Ahhoz, hogy ez a forgatókönyv működjön, a `objectId` felhasználónak meg kell adni a hozzáférési szabályzatot, és `applicationId` a _nem_ adható meg vagy kötelező `null` .
+- **Alkalmazás-Plus-User** (más néven _összetett identitás_): a felhasználónak egy adott alkalmazásból kell hozzáférnie a kulcstartóhoz _, és_ az alkalmazásnak a felhasználó megszemélyesítéséhez a hitelesítési (OBO) folyamatot kell használnia. Ahhoz, hogy ez a forgatókönyv működjön, mindkettőt `applicationId` `objectId` meg kell adni a hozzáférési házirendben. Az `applicationId` azonosítja a szükséges alkalmazást, és `objectId` azonosítja a felhasználót. Ez a lehetőség jelenleg nem érhető el az Azure RBAC (előzetes verzió) adatsíkon.
 
 Az alkalmazás minden típusú hozzáférés esetén az Azure AD-vel hitelesíti magát. Az alkalmazás a [támogatott hitelesítési módszereket](../../active-directory/develop/authentication-scenarios.md) használja az alkalmazás típusától függően. Az alkalmazás jogkivonatot ad a síkon lévő erőforráshoz a hozzáférés biztosításához. Az erőforrás az Azure-környezet alapján a felügyelet vagy az adatsík végpontja. Az alkalmazás a jogkivonatot használja, és egy REST API kérelmet küld Key Vaultnak. További információért tekintse át a [teljes hitelesítési folyamatot](../../active-directory/develop/v2-oauth2-auth-code-flow.md).
 
@@ -165,10 +165,10 @@ A következő táblázat összefoglalja a szerepkörök és alkalmazások hozzá
 | Szerepkör | Felügyeleti sík engedélyei | Adatsík engedélyei – tár-hozzáférési szabályzatok | Adatsík engedélyei – Azure RBAC (előzetes verzió)  |
 | --- | --- | --- | --- |
 | Biztonsági csapat | Key Vault közreműködő | Tanúsítványok: minden művelet <br> Kulcsok: minden művelet <br> Titkok: minden művelet | Key Vault rendszergazda (előzetes verzió) |
-| Fejlesztők és &nbsp; operátorok | Key Vault üzembe helyezési engedély<br><br> **Megjegyzés**: ez az engedély lehetővé teszi, hogy a telepített virtuális gépek a kulcstartóból beolvassák a titkos kulcsokat. | Nincs | Nincs |
-| Ellenőrök | Nincs | Tanúsítványok: lista <br> Kulcsok: listája<br>Titkos kulcsok: listája<br><br> **Megjegyzés**: ez az engedély lehetővé teszi, hogy a könyvvizsgálók megvizsgálják a naplókban nem kibocsátott kulcsok és titkos kódok attribútumait (címkéket, aktiválási dátumokat, lejárati dátumokat). | Key Vault olvasó (előzetes verzió) |
-| Azure Storage-tárfiók neve | Nincs | Kulcsok: beolvasás, Listázás, wrapKey, unwrapKey <br> | Titkosítási szolgáltatás titkosításának Key Vault |
-| Alkalmazás | Nincs | Titkok: lekérés, Listázás <br> Tanúsítványok: lekérés, Listázás | Key Vault olvasó (előzetes verzió), Key Vault Secret User (előzetes verzió) |
+| Fejlesztők és &nbsp; operátorok | Key Vault üzembe helyezési engedély<br><br> **Megjegyzés**: ez az engedély lehetővé teszi, hogy a telepített virtuális gépek a kulcstartóból beolvassák a titkos kulcsokat. | Nincsenek | Nincsenek |
+| Ellenőrök | Nincsenek | Tanúsítványok: lista <br> Kulcsok: listája<br>Titkos kulcsok: listája<br><br> **Megjegyzés**: ez az engedély lehetővé teszi, hogy a könyvvizsgálók megvizsgálják a naplókban nem kibocsátott kulcsok és titkos kódok attribútumait (címkéket, aktiválási dátumokat, lejárati dátumokat). | Key Vault olvasó (előzetes verzió) |
+| Azure Storage-tárfiók neve | Nincsenek | Kulcsok: beolvasás, Listázás, wrapKey, unwrapKey <br> | Titkosítási szolgáltatás titkosításának Key Vault |
+| Alkalmazás | Nincsenek | Titkok: lekérés, Listázás <br> Tanúsítványok: lekérés, Listázás | Key Vault olvasó (előzetes verzió), Key Vault Secret User (előzetes verzió) |
 
 A három csoport szerepköreinek más erőforrásokhoz való hozzáférésre van szükségük Key Vault engedélyekkel együtt. A virtuális gépek (vagy a Azure App Service Web Apps funkciójának üzembe helyezéséhez) a fejlesztőknek és a kezelőknek telepíteniük kell a hozzáférést. A könyvvizsgálóknak olvasási hozzáféréssel kell rendelkezniük ahhoz a Storage-fiókhoz, ahol a Key Vault-naplókat tárolják.
 
@@ -177,7 +177,7 @@ Példánkban egy egyszerű forgatókönyvet ismertetünk. A valós életbeli for
 > [!NOTE]
 > Ez a példa azt mutatja be, hogy a Key Vault hozzáférés hogyan legyen zárolva az éles környezetben. A fejlesztőknek saját előfizetéssel vagy erőforráscsoporthoz kell rendelkezniük, amely teljes körű engedélyekkel rendelkezik a tárolók, virtuális gépek és az alkalmazás fejlesztéséhez szükséges Storage-fiók kezeléséhez.
 
-## <a name="resources"></a>További források
+## <a name="resources"></a>Források
 
 * [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)
 

@@ -3,12 +3,12 @@ title: host.jsAzure Functions 2. x esetén
 description: A v2 futtatókörnyezettel rendelkező fájl Azure Functions host.jsdokumentációja.
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 629f579642185c5600586473d1280d9b26f4cba3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 400ff6f9db421552b2b2736ea48265deefe676ac
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87055298"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321849"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x és újabb verziók – host.json referencia 
 
@@ -19,7 +19,7 @@ ms.locfileid: "87055298"
 A metaadatokat tartalmazó fájl *host.js* globális konfigurációs beállításokat tartalmaz, amelyek a Function app összes funkcióját érintik. Ez a cikk azokat a beállításokat sorolja fel, amelyek a Azure Functions futtatókörnyezet 2. x verziójával kezdődnek.  
 
 > [!NOTE]
-> Ez a cikk Azure Functions 2. x és újabb verziókban használható.  Az 1. x függvények host.jsának hivatkozását lásd:host.jsaz [Azure functions 1. x](functions-host-json-v1.md)esetében.
+> Ez a cikk Azure Functions 2. x és újabb verziókban használható.  Az 1. x függvények host.jsának hivatkozását lásd:host.jsaz [ Azure functions 1. x](functions-host-json-v1.md)esetében.
 
 A más Function app konfigurációs lehetőségei az [Alkalmazásbeállítások](functions-app-settings.md) (telepített alkalmazások esetében) vagy a [local.settings.js](functions-run-local.md#local-settings-file) fájlon (helyi fejlesztés esetén) kezelhetők.
 
@@ -162,11 +162,11 @@ A teljes JSON-struktúra esetében tekintse [meg a fájl host.jskorábbi példá
 | isEnabled | true | Engedélyezheti vagy letilthatja a mintavételezést. | 
 | maxTelemetryItemsPerSecond | 20 | Az egyes kiszolgálók gazdagépén másodpercenként naplózott telemetria-elemek megcélzott száma. Ha az alkalmazás számos gazdagépen fut, csökkentse ezt az értéket, hogy az a forgalom teljes célján belül maradjon. | 
 | evaluationInterval | 01:00:00 | A telemetria aktuális sebességének újraértékelésének időköze. A kiértékelést mozgóátlagként kell végrehajtani. Előfordulhat, hogy le kívánja rövidíteni ezt az intervallumot, ha a telemetria a hirtelen törtek. |
-| initialSamplingPercentage| 1,0 | A mintavételi folyamat elején alkalmazott kezdeti mintavételezési arány dinamikusan változik a százalékos arányban. Hibakeresés közben ne csökkentse az értéket. |
+| initialSamplingPercentage| 100,0 | A mintavételi folyamat elején alkalmazott kezdeti mintavételezési arány dinamikusan változik a százalékos arányban. Hibakeresés közben ne csökkentse az értéket. |
 | samplingPercentageIncreaseTimeout | 00:00:01 | A mintavételezés százalékos értékének megváltozásakor ez a tulajdonság határozza meg, hogy a későbbiekben milyen hamar Application Insights a mintavételezési százalékos arány a további adatmennyiségek rögzítéséhez. |
 | samplingPercentageDecreaseTimeout | 00:00:01 | A mintavételezés százalékos értékének megváltozásakor ez a tulajdonság határozza meg, hogy a későbbiekben milyen hamar Application Insights a mintavételezési százalékos arány a kevesebb adattal való rögzítéshez. |
-| minSamplingPercentage | 0.1 | Mivel a mintavételezési százalék változó, ez a tulajdonság határozza meg a minimálisan megengedett mintavételi százalékot. |
-| maxSamplingPercentage | 0.1 | Mivel a mintavételezési százalék változó, ez a tulajdonság határozza meg a maximálisan megengedett mintavételi százalékot. |
+| minSamplingPercentage | 0,1 | Mivel a mintavételezési százalék változó, ez a tulajdonság határozza meg a minimálisan megengedett mintavételi százalékot. |
+| maxSamplingPercentage | 100,0 | Mivel a mintavételezési százalék változó, ez a tulajdonság határozza meg a maximálisan megengedett mintavételi százalékot. |
 | movingAverageRatio | 1,0 | A mozgóátlag kiszámításakor a legutóbbi értékhez rendelt súlyozást. 1 értékkel egyenlő vagy annál kisebb értéket használjon. A kisebb értékek miatt az algoritmus kevésbé lesz újraaktiválva a hirtelen változásokkal. |
 | excludedTypes | null | Pontosvesszővel tagolt lista, amelyet nem szeretne mintát venni. A felismert típusok a következők:,,,, `Dependency` `Event` `Exception` `PageView` `Request` és `Trace` . A rendszer továbbítja a megadott típusok összes példányát. a nem megadott típusok mintául szolgálnak. |
 | includedTypes | null | A mintavételhez használni kívánt típusok pontosvesszővel tagolt listája; az üres lista minden típust magában foglalja. Írja be az `excludedTypes` itt felsorolt felülbírálási típusok listán szereplő típust. A felismert típusok a következők:,,,, `Dependency` `Event` `Exception` `PageView` `Request` és `Trace` . A megadott típusok példányainak mintája; a nem megadott vagy vélelmezett típusú típusok mintavételezés nélkül továbbítódnak. |
@@ -246,7 +246,7 @@ Az összes függvény időtúllépési időtartamát jelzi. A TimeSpan karakterl
 
 | Csomag típusa | Alapértelmezett (min.) | Maximum (min.) |
 | -- | -- | -- |
-| Használat | 5 | 10 |
+| Felhasználás | 5 | 10 |
 | <sup>1</sup> . prémium | 30 | -1 (nem kötött)<sup>2</sup> |
 | Dedikált (App Service) | 30 | -1 (nem kötött)<sup>2</sup> |
 
@@ -413,7 +413,7 @@ Tegyük fel például, hogy helyileg futtatta az alkalmazás-betekintési mintav
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Útmutató a host.jsfájl frissítéséhez](functions-reference.md#fileupdate)

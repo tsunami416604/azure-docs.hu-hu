@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.custom: devx-track-javascript
-ms.openlocfilehash: e79135ccf672fa057d9e88fc91fa72b7826ba71e
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.custom: devx-track-js
+ms.openlocfilehash: 75b193017bbfccbae0f299c0a1db2fe0e34f1810
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085192"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321798"
 ---
 # <a name="add-a-simple-data-layer"></a>Egyszerű adatréteg hozzáadása
 
@@ -114,7 +114,7 @@ Ha a szolgáltatás egy `Point` vagy a `MultiPoint` , és a szolgáltatás nem r
 
 A fürtöket a buborék réteg is megjeleníti. Alapértelmezés szerint a fürt sugara a következőre van beállítva: `16` . A fürt színe a fürtben lévő pontok számától függ, az alábbiakban meghatározottak szerint:
 
-| pontok száma | Color    |
+| pontok száma | Szín    |
 |-------------|----------|
 | &gt;= 100   | `red`    |
 | &gt;= 10    | `yellow` |

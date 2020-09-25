@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 81c4558bde3ffdbec72a756562b972c2eed4a1ee
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: ba2d0acec37d0f59240381cdea04f4d53ded0b1c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90939933"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273041"
 ---
 # <a name="create-the-azure-arc-data-controller"></a>Az Azure arc-adatkezelő létrehozása
 
@@ -45,7 +45,7 @@ Jelenleg a Kubernetes-szolgáltatások és-disztribúciók támogatott listája 
 > [!NOTE]
 > Ha a Red Hat OpenShift Container platformot használja az Azure-ban, a legújabb elérhető verziót ajánlott használni.
 
-A választott lehetőségtől függően bizonyos eszközökre lesz _szükség_, de ajánlott az [összes ügyféleszközök telepítése](install-client-tools.md) , mielőtt megkezdené az Azure arc-adatkezelő létrehozását.
+A választott lehetőségtől függően bizonyos eszközökre lesz _szükség_, de ajánlott az [összes ügyféleszközök telepítése](./install-client-tools.md) , mielőtt megkezdené az Azure arc-adatkezelő létrehozását.
 
 A létrehozási folyamat során a választott lehetőségtől függetlenül a következő információkat kell megadnia:
 
@@ -53,7 +53,7 @@ A létrehozási folyamat során a választott lehetőségtől függetlenül a k�
 - **Adatkezelő felhasználóneve** – az adatkezelő rendszergazda felhasználójának felhasználóneve.
 - **Adatvezérlő jelszava** – az adatkezelő rendszergazda felhasználójának jelszava.
 - A **Kubernetes-névtér neve** – annak a Kubernetes-névtérnek a neve, amelyben az adatvezérlőt létre kívánja hozni.
-- **Kapcsolati mód** – a fürt [kapcsolódási módja](connectivity.md) . Jelenleg csak a "közvetett" támogatott.
+- **Kapcsolati mód** – a fürt [kapcsolódási módja](./connectivity.md) . Jelenleg csak a "közvetett" támogatott.
 - **Azure-előfizetés azonosítója** – az Azure-előfizetés GUID azonosítója, ahol az Azure-beli adatkezelő erőforrást létre kívánja hozni.
 - **Azure-erőforráscsoport neve** – annak az erőforráscsoportnak a neve, amelyhez az Azure-beli adatkezelő erőforrást létre kívánja hozni.
 - **Azure Location** – az Azure-beli hely, ahol az adatkezelő erőforrás-metaadatai az Azure-ban lesznek tárolva. Az elérhető régiók listájáért lásd: [Azure globális infrastruktúra/termékek régiónként](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc).
@@ -68,5 +68,5 @@ Több lehetőség is létezik az Azure arc-adatkezelő létrehozásához:
 - [Adatkezelő létrehozása Azure-beli adatcli-vel (azdata)](create-data-controller-using-azdata.md)
 - [Adatvezérlő létrehozása Azure Data Studio](create-data-controller-azure-data-studio.md)
 - [Adatkezelő létrehozása a Azure Portal Jupyter notebookon keresztül Azure Data Studio](create-data-controller-resource-in-azure-portal.md)
-- [Adatvezérlő létrehozása Kubernetes eszközökkel, például kubectl vagy oC](create-data-controller-using-k8s-native-tools.md)
+- [Adatvezérlő létrehozása Kubernetes eszközökkel, például kubectl vagy oC](create-data-controller-using-kubernetes-native-tools.md)
 - [Adatvezérlő létrehozása Azure arc Jumpstart-vel a tesztelési célú üzembe helyezés gyorsított élményéhez](https://github.com/microsoft/azure_arc#azure-arc-enabled-data-services)

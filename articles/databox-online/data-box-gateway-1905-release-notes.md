@@ -1,6 +1,6 @@
 ---
 title: Azure Data Box Gateway 1905 kibocsátási megjegyzések | Microsoft Docs
-description: Az általános rendelkezésre állási kiadást futtató Azure Data Box Gateway kritikusan nyitott problémáit és megoldásait ismerteti.
+description: Az általános elérhetőségi kiadást futtató Azure Data Box Gateway 1905-es verziójának kritikusan nyitott problémáit és megoldásait ismerteti.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 06/12/2019
 ms.author: alkohli
-ms.openlocfilehash: f2843623061e39e8c9c0ebc35b4916bf9bd3b186
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b97165f19ac07e5a783203ece1a28420f731b649
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82561860"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320676"
 ---
 # <a name="azure-data-box-edge-and-azure-data-box-gateway-1905-release-notes"></a>Azure Data Box Edge és Azure Data Box Gateway 1905 kibocsátási megjegyzései
 
@@ -40,7 +40,7 @@ Ez a kiadás megfelel a szoftver verzióinak:
 Ebben a kiadásban nem jelennek meg új problémák a kiadásban. Az összes megjelent kiadási probléma az előző kiadásokból lett végrehajtva. Ha meg szeretné tekinteni az ismert problémák listáját, lépjen [a ga kiadás ismert problémáira](data-box-gateway-release-notes.md#known-issues-in-ga-release).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure Data Box Gateway üzembe helyezésének előkészítése](data-box-gateway-deploy-prep.md)
 - [Az Azure Data Box Edge üzembe helyezésének előkészítése](azure-stack-edge-deploy-prep.md)

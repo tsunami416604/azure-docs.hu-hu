@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 05/15/2020
-ms.openlocfilehash: f646af4cad6101e019e58f4f50a40b07aff19461
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: a36b9d20fa20df56ec53e090976ea86e689ac74b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89660485"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322512"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Helyszíni adatátjáró telepítése az Azure Logic Appshez
 
@@ -114,7 +114,7 @@ Ez a cikk bemutatja, hogyan töltheti le, telepítheti és állíthatja be a hel
 
    Vegye figyelembe, hogy **egy meglévő átjáró fürthöz való hozzáadás**lehetősége, amelyet akkor kell kiválasztani, amikor további átjárókat telepít a [magas rendelkezésre állású forgatókönyvekhez](#high-availability).
 
-1. Keresse meg az átjáró felhőalapú szolgáltatásának régióját, és [Azure Service Bus](https://azure.microsoft.com/services/service-bus/) , amelyet az átjáró telepítése használ. Alapértelmezés szerint ez a régió ugyanaz a hely, mint az Azure AD-bérlő az Azure-fiókjához.
+1. Győződjön meg arról, hogy az átjáró Cloud Service-hez és Azure Service Bus az átjáró által használt [üzenetküldési példányhoz](../service-bus-messaging/service-bus-messaging-overview.md) tartozó régiót használja. Alapértelmezés szerint ez a régió ugyanaz a hely, mint az Azure AD-bérlő az Azure-fiókjához.
 
    ![Az átjáró szolgáltatás és a Service Bus régiójának megerősítése](./media/logic-apps-gateway-install/confirm-gateway-region.png)
 
@@ -140,7 +140,7 @@ Ez a cikk bemutatja, hogyan töltheti le, telepítheti és állíthatja be a hel
 
 ## <a name="check-or-adjust-communication-settings"></a>A kommunikációs beállítások keresése vagy módosítása
 
-A helyszíni adatátjáró a felhőalapú kapcsolat [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) függ, és létrehozza a megfelelő kimenő kapcsolatokat az átjáróhoz tartozó Azure-régióhoz. Ha a munkahelyi környezet megköveteli, hogy a forgalom egy proxyn vagy tűzfalon keresztül hozzáférjen az internethez, akkor ez a korlátozás megakadályozhatja, hogy a helyszíni adatátjáró csatlakozzon az átjáró Cloud Service-hez, és Azure Service Bus. Az átjáró számos kommunikációs beállítással rendelkezik, amelyeket módosíthat. További információt az alábbi témakörökben talál:
+A helyszíni adatátjáró függ a felhőalapú kapcsolat [Azure Service Bus üzenetkezeléstől](../service-bus-messaging/service-bus-messaging-overview.md) , és létrehozza a megfelelő kimenő kapcsolatokat az átjáróhoz tartozó Azure-régióhoz. Ha a munkahelyi környezet megköveteli, hogy a forgalom egy proxyn vagy tűzfalon keresztül elérhesse az internetet, ez a korlátozás megakadályozhatja, hogy a helyszíni adatátjáró csatlakozzon az átjáró Cloud Service-hez, és Azure Service Bus üzenetkezelést. Az átjáró számos kommunikációs beállítással rendelkezik, amelyeket módosíthat. További információt az alábbi témakörökben talál:
 
 * [Helyszíni adatátjáró kommunikációs beállításainak módosítása](/data-integration/gateway/service-gateway-communication)
 * [Helyszíni adatátjáró proxybeállításainak konfigurálása](/data-integration/gateway/service-gateway-proxy)
@@ -206,7 +206,7 @@ A szervezet felhasználói hozzáférhetnek a helyszíni adataihoz, amelyekhez m
 
 Az átjáró segíti a gyorsabb és biztonságosabb kommunikációt a színfalak mögött. Ez a kommunikáció a felhőben, az átjáró Cloud Service-ben és a helyszíni adatforrásban lévő felhasználó között áramlik. Az átjáró Cloud Service titkosítja és tárolja az adatforrás hitelesítő adatait és az átjáró részleteit. A szolgáltatás a felhasználók, az átjáró és a helyszíni adatforrás közötti lekérdezéseket és azok eredményeit is átirányítja.
 
-Az átjáró tűzfalakkal működik, és csak kimenő kapcsolatokat használ. Az összes forgalom biztonságos kimenő forgalomnak minősül az átjáró ügynöktől. Az átjáró a helyszíni forrásokból származó adatok továbbítása a [Azure Service Buson](../service-bus-messaging/service-bus-messaging-overview.md)keresztül titkosított csatornákon keresztül történik. Ez a Service Bus létrehoz egy csatornát az átjáró és a hívó szolgáltatás között, de nem tárol semmilyen adattárolót. Az átjárón keresztül áthaladó összes adatátvitel titkosítva van.
+Az átjáró tűzfalakkal működik, és csak kimenő kapcsolatokat használ. Az összes forgalom biztonságos kimenő forgalomnak minősül az átjáró ügynöktől. Az átjáró [Azure Service Bus üzenetküldésen](../service-bus-messaging/service-bus-messaging-overview.md)keresztül küldi el a helyszíni forrásokból származó adatokat a titkosított csatornákon. Ez a Service Bus létrehoz egy csatornát az átjáró és a hívó szolgáltatás között, de nem tárol semmilyen adattárolót. Az átjárón keresztül áthaladó összes adatátvitel titkosítva van.
 
 ![Helyszíni adatátjáró architektúrája](./media/logic-apps-gateway-install/how-on-premises-data-gateway-works-flow-diagram.png)
 
@@ -217,9 +217,9 @@ Ezek a lépések azt írják le, hogy mi történik, ha egy helyszíni adatforr�
 
 1. A Cloud Service létrehoz egy lekérdezést az adatforrás titkosított hitelesítő adataival együtt. A szolgáltatás ezután elküldi a lekérdezést és a hitelesítő adatokat az átjáró várólistájának feldolgozásra.
 
-1. Az átjáró-felhőszolgáltatás elemzi a lekérdezést, és leküldi a kérelmet az Azure Service Bus szolgáltatásba.
+1. Az átjáró Cloud Service elemzi a lekérdezést, és leküldi a kérést Azure Service Bus üzenetküldésre.
 
-1. Az Azure Service Bus elküldi a függőben lévő kérelmeket az átjárónak.
+1. Azure Service Bus üzenetküldés a függőben lévő kéréseket elküldi az átjárónak.
 
 1. Az átjáró beolvassa a lekérdezést, visszafejti a hitelesítő adatokat, és csatlakozik egy vagy több adatforráshoz ezekkel a hitelesítő adatokkal.
 

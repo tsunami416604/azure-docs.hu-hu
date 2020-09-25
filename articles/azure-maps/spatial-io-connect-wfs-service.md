@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 890bf60ac794740716817094a60f2b4cb4ba5835
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: devx-track-js
+ms.openlocfilehash: ab6eb4851b9f2574fc235056f8f512edcb2054bd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282789"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321781"
 ---
 # <a name="connect-to-a-wfs-service"></a>Kapcsolódás WFS-szolgáltatáshoz
 
@@ -22,12 +22,12 @@ A webszolgáltatások (WFS) egy webszolgáltatás, amely a Nyílt térinformatik
 
 Az osztály a következő funkciókat támogatja `WfsClient` :
 
-- Támogatott verziók: `1.0.0` , `1.1.0` és`2.0.0`
+- Támogatott verziók: `1.0.0` , `1.1.0` és `2.0.0`
 - Támogatott szűrési operátorok: bináris összehasonlítás, logika, matematikai, érték és `bbox` .
 - A kérelmek csak a használatával készültek `HTTP GET` .
 - Támogatott műveletek:
 
-    | Művelet | Leírás |
+    | Művelet | Description |
     | :-- | :-- |
     | GetCapabilities | Metaadat-dokumentum létrehozása érvényes WFS-műveletekkel és-paraméterekkel |
     | GetFeature | Egy adatforrás funkcióinak kiválasztását adja vissza. |
@@ -105,7 +105,7 @@ client = new atlas.io.ogc.WfsClient({
 });
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a cikkben használt osztályokról és módszerekről:
 

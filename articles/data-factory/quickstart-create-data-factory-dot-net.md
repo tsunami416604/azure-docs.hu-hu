@@ -1,6 +1,6 @@
 ---
 title: Azure-beli adatelőállító létrehozása a .NET SDK-val
-description: Létrehozhat egy Azure-beli adat-előállítót az adatok egy Azure Blob Storage-beli helyről egy másik helyre történő másolásához.
+description: Hozzon létre egy Azure-beli adatgyárat és egy folyamatot a .NET SDK-val, hogy az adatok az Azure Blob Storage egyik helyéről egy másik helyre másolhatók.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/24/2019
 ms.author: jingwang
-ms.openlocfilehash: d4652ca62a82d14c7e44466161ae9b463818a71f
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: e8da3dff39f94d6639471a2d1d96691c9cde614d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89433979"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322869"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>Rövid útmutató: Adat-előállító és folyamat létrehozása a .NET SDK használatával
 
@@ -49,7 +49,7 @@ A How to: című részből megtudhatja, *hogyan hozhat létre az erőforrásokho
 
 1. A [Azure Active Directory alkalmazás létrehozása](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)területen hozzon létre egy alkalmazást, amely az oktatóanyagban létrehozott .NET-alkalmazást képviseli. A bejelentkezési URL-hez megadhat egy hamis URL-t, a cikkben láthatóak szerint (`https://contoso.org/exampleapp`).
 2. A beléptetési [értékek beolvasása](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)területen szerezze be az **alkalmazás azonosítóját** és a **bérlő azonosítóját**, és jegyezze fel ezeket az értékeket, amelyeket az oktatóanyag későbbi részében használ. 
-3. A [tanúsítványok és titkok](../active-directory/develop/howto-create-service-principal-portal.md#upload-a-certificate-or-create-a-secret-for-signing-in)területen szerezze be a **hitelesítési kulcsot**, és jegyezze fel ezt az értéket, amelyet az oktatóanyag későbbi részében használ.
+3. A [tanúsítványok és titkok](../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options)területen szerezze be a **hitelesítési kulcsot**, és jegyezze fel ezt az értéket, amelyet az oktatóanyag későbbi részében használ.
 4. Az [alkalmazás szerepkörhöz való hozzárendeléséhez](../active-directory/develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application)rendelje hozzá az alkalmazást a **közreműködő** szerepkörhöz az előfizetés szintjén, hogy az alkalmazás létre tudja hozni az adat-előállítókat az előfizetésben.
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio-projekt létrehozása

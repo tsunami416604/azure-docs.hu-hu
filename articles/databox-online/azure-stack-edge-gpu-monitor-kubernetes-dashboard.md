@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/29/2020
+ms.date: 09/22/2020
 ms.author: alkohli
-ms.openlocfilehash: 1a4f22e7ae3cc60d0a16b24a1f0e5f93d3a86d8c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 137cff47d49be1405f60bc47cd16f7f027ab63a9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90899198"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320829"
 ---
 # <a name="use-kubernetes-dashboard-to-monitor-your-azure-stack-edge-pro-gpu-device"></a>A Kubernetes-irányítópult használata az Azure Stack Edge Pro GPU-eszköz figyeléséhez
 
@@ -114,9 +114,9 @@ Egy adott névtér alapján is szűrhető. A következő példában megtekinthet
 
 ![Az Azure arc üzemelő példányok CPU-és memóriahasználat megtekintése](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/view-cpu-memory-azure-arc-1.png)
 
-A Kubernetes metrikai kiszolgáló a [horizontális Pod automatikus méretezéshez](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/)hasonló automatikus skálázási folyamatokat biztosít.
+Az Kubernetes mérőszámok kiszolgálója olyan automatikus skálázási folyamatokat biztosít, mint például a [horizontális Pod automatikus méretezés](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/).
 
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ a Kubernetes kapcsolatos hibák elhárításáról <!--insert link-->.
+Útmutató az [eszközök problémáinak elhárításához](azure-stack-edge-gpu-troubleshoot.md).

@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.date: 09/15/2020
 ms.author: mbaldwin
 author: msmbaldwin
-ms.openlocfilehash: 9eee3d5bc53ebe40ba4462f394ffe30cea6b70fa
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: e98b21d5afebdbd2654d032493b92eb5e6e7fdc6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "91000941"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320557"
 ---
 # <a name="what-is-azure-key-vault-managed-hsm-preview"></a>Mi az Azure Key Vault Managed HSM (előzetes verzió)?
 
@@ -33,7 +33,7 @@ Azure Key Vault felügyelt HSM egy teljes körűen felügyelt, magas rendelkezé
 
 - **Központosított kulcskezelő**: egy helyen kezelheti a cégen belüli kritikus és nagy értékű kulcsokat. A minimális jogosultságokkal rendelkező hozzáférés elve alapján minden egyes kulcshoz meg kell határozni a hozzáférést.
 - **Elkülönített hozzáférés-vezérlés**: a felügyelt HSM "helyi RBAC" hozzáférés-vezérlési modell lehetővé teszi, hogy a kijelölt HSM-fürt rendszergazdái teljes körűen szabályozzák a HSM, hogy még a felügyeleti csoport, az előfizetés vagy az erőforráscsoport-rendszergazda nem bírálhatja felül
-- **Fips 140-2 3. szint ellenőrzött HSM**: az adatvédelmet és a megfelelőségi követelmények teljesítését a FIPS ((Federal Information Protection Standard) 140-2 3. szint ellenőrzött HSM. A felügyelt HSM a Marvell LiquidSecurity Family of HSM-t használják.
+- **Fips 140-2 3. szint ellenőrzött HSM**: az adatvédelmet és a megfelelőségi követelmények teljesítését a FIPS ((Federal Information Protection Standard) 140-2 3. szint ellenőrzött HSM. A felügyelt HSM a Marvell LiquidSecurity HSM-adaptereket használják.
 - **Monitorozás és naplózás**: teljes mértékben integrált az Azure monitorral. Az összes tevékenység teljes naplóinak beolvasása Azure Monitoron keresztül. Az Azure Log Analytics használata az elemzésekhez és a riasztásokhoz.
 
 ### <a name="integrated-with-azure-and-microsoft-paassaas-services"></a>Az Azure és a Microsoft Pásti/SaaS szolgáltatásokkal integrálva 

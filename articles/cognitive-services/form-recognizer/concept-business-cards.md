@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 1163531fb5a6aa7158bd81ff9095ed1ee29e73c1
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f8f173291448d9da4d8967ff56b0fa027ca73409
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004901"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334548"
 ---
 # <a name="business-card-concepts"></a>Névjegykártyákra vonatkozó fogalmak
 
@@ -88,8 +88,8 @@ Tekintse meg a sikeres JSON-válasz következő példáját: a "readResults" cso
                 "width": 4032,
                 "height": 3024,
                 "unit": "pixel",
-                "lines": 
-                          {
+                   "lines": 
+                             {
                         "text": "Dr. Avery Smith",
                         "boundingBox": [
                             419.3,
@@ -389,7 +389,9 @@ A Business Card API a [AIBuilder névjegykártya-feldolgozási funkciót](https:
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Az első lépések a [Business Cards API Python](./quickstarts/python-business-cards.md) gyors üzembe helyezésének első lépéseiben
-- Az űrlap- [felismerő ismertetése REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync)
-- További információ az [űrlap-felismerőről](overview.md)
+- Kövesse a [Business Cards API Python](./quickstarts/python-business-cards.md) gyors útmutatóját, és ismerkedjen meg az üzleti kártyák felismerésével.
 
+## <a name="see-also"></a>Lásd még
+
+* [Mi a Form Recognizer?](./overview.md)
+* [REST API dokumentációs dokumentumok](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync)

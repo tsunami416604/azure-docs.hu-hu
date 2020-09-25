@@ -10,16 +10,16 @@ ms.assetid: 00fd08c6-98fa-4d62-a3b8-ca20aa5246b1
 ms.service: virtual-machines-sql
 ms.workload: iaas-sql-server
 ms.tgt_pltfrm: vm-windows-sql-server
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/18/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 7da9b83001d50c8e9a03188ed8dbf1245189bc30
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 83b29252038f88bf8b81299303442abd0cc36814
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84668849"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91298660"
 ---
 # <a name="migrate-a-sql-server-database-to-sql-server-on-an-azure-virtual-machine"></a>SQL Server adatbázis migrálása egy Azure-beli virtuális gépen SQL Server
 
@@ -107,7 +107,7 @@ Ezzel a módszerrel az összes rendszer-és felhasználói adatbázist áttelep�
 
 A [Windows import/export szolgáltatás módszerével](../../../storage/common/storage-import-export-service.md) nagy mennyiségű fájlt vihet át az Azure Blob Storage-ba olyan helyzetekben, amikor a hálózaton keresztüli feltöltés megfizethetetlenül drága vagy nem valósítható meg. Ezzel a szolgáltatással egy vagy több olyan merevlemezt küld egy Azure-adatközpontba, ahol az adatai fel lesznek töltve a Storage-fiókba.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ: [SQL Server az Azure Virtual Machines áttekintése](sql-server-on-azure-vm-iaas-what-is-overview.md).
 

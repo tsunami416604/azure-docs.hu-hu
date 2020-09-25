@@ -8,14 +8,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: douglas, carlrab, sstein
+ms.reviewer: douglas, sstein
 ms.date: 08/31/2020
-ms.openlocfilehash: 0d5390beff6c3e0045c6b887f0262a54a737a851
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: e805de26b7d2e5ec8d29801a05291acfe086bb1a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181765"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323158"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>Felhasználó által kezdeményezett manuális feladatátvétel a felügyelt SQL-példányon
 
@@ -94,7 +94,7 @@ A következő CLI-parancs használatával hajtson végre feladatátvételi olvas
 az sql mi failover -g myresourcegroup -n myinstancename --replica-type ReadableSecondary
 ```
 
-### <a name="using-rest-api"></a>A REST API használata
+### <a name="using-rest-api"></a>A REST API-val együtt
 
 A folyamatos tesztelési folyamat vagy az automatizált teljesítmény-elhárító használatával olyan speciális felhasználók számára, akik az SQL-felügyelt példányaik feladatátvételét szeretnék automatizálni, egy API-hívással végezheti el a feladatátvétel kezdeményezését. Lásd: [felügyelt példányok – feladatátvételi REST API](https://docs.microsoft.com/rest/api/sql/managed%20instances%20-%20failover/failover) a részletekért.
 
@@ -144,7 +144,7 @@ Nem fogja tudni ugyanazt a kimenetet látni a GP szolgáltatási szintjével, mi
 > - BC-példányok esetében léteznie kell a feladatátvételi kérelem elfogadásához szükséges replikák Kvórumának.
 > - BC-példányok esetében nem lehet megadni, hogy melyik olvasható másodlagos replika kezdeményezi a feladatátvételt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a felügyelt példány magas rendelkezésre állásáról [Az Azure SQL felügyelt példányain](../database/high-availability-sla.md).
 - Az áttekintést lásd: [Mi az az Azure SQL felügyelt példánya?](sql-managed-instance-paas-overview.md).

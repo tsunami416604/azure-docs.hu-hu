@@ -3,20 +3,20 @@ title: Az architektúra alapjai a Azure Lab Servicesban | Microsoft Docs
 description: Ez a cikk a labor Services és a labor alapszintű architektúrája által használt alapvető erőforrásokat fedi le.
 author: emaher
 ms.topic: overview
-ms.date: 06/26/2020
+ms.date: 09/16/2020
 ms.author: enewman
-ms.openlocfilehash: 93e95e1b03cd942e513a6d643f8a9e96399c231b
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.openlocfilehash: ac390fb6624ffc762f77b676c778165e7382f73f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85445644"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334038"
 ---
 # <a name="architecture-fundamentals-in-azure-lab-services"></a>Az architektúra alapjai a Azure Lab Servicesban
 
 A Azure Lab Services egy SaaS (szoftveres szolgáltatás) megoldás, ami azt jelenti, hogy a labor Services által igényelt erőforrások kezelése megtörténik. Ez a cikk a labor Services és a labor alapszintű architektúrája által használt alapvető erőforrásokat fedi le.  
 
-A Azure Lab Services egy pár olyan területet biztosít, amely lehetővé teszi saját erőforrásainak használatát a labor Services szolgáltatással együtt.  További információ a virtuális gépek saját hálózaton történő használatáról: How to [peer a Virtual Network](how-to-connect-peer-virtual-network.md).  Ha a lemezképeket egy megosztott képkatalógusból szeretné használni, tekintse meg [a megosztott rendszerkép csatolása](how-to-attach-detach-shared-image-gallery.md)című témakört.
+Azure Lab Services biztosít néhány olyan területet, amely lehetővé teszi a saját erőforrások használatát a labor Services szolgáltatással együtt.  További információ a virtuális gépek saját hálózaton történő használatáról: How to [peer a Virtual Network](how-to-connect-peer-virtual-network.md).  Ha a lemezképeket egy megosztott képkatalógusból szeretné használni, tekintse meg [a megosztott rendszerkép csatolása](how-to-attach-detach-shared-image-gallery.md)című témakört.
 
 Alább látható egy osztályterem labor alapszintű architektúrája.  A labor-fiók az előfizetésében van tárolva. A tanuló virtuális gépeket, valamint a virtuális gépek támogatásához szükséges erőforrásokat a labor Services által birtokolt előfizetésben üzemeltetik. Ismerkedjen meg a labor szolgáltatás előfizetésével kapcsolatos részletes információkkal.
 
@@ -38,6 +38,6 @@ A labor Services a tanulók szolgáltatásban való regisztrációját is kezeli
 
 Az osztályterem laborban üzemeltetett tanulói virtuális gépekhez a tesztkörnyezet létrehozója által beállított Felhasználónév és jelszó tartozik.  A tesztkörnyezet létrehozója lehetővé teheti a regisztrált tanulók számára, hogy az első bejelentkezéskor saját jelszavukat válasszák.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a labor-szolgáltatásokban elérhető szolgáltatásokról: [Azure Lab Services fogalmak](classroom-labs-concepts.md) és [Azure Lab Services áttekintése](classroom-labs-overview.md).

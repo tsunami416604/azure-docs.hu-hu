@@ -5,12 +5,12 @@ description: Megtudhatja, hogyan hozhat létre dinamikusan állandó kötetet Az
 services: container-service
 ms.topic: article
 ms.date: 07/01/2020
-ms.openlocfilehash: 0c11748c6faa0b94ff84dfc944e475116a2a1bd4
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 515994f07e524685df014a784309cd692a9491b7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611398"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91299269"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Állandó kötet létrehozása és használata Azure Files az Azure Kubernetes szolgáltatásban (ak)
 
@@ -33,6 +33,7 @@ A tárolási osztály segítségével határozható meg az Azure-fájlmegosztás
 * *Standard_ZRS* – szabványos zóna redundáns tárolója (ZRS)
 * *Standard_RAGRS* – szabványos olvasási hozzáférésű geo-redundáns tárolás (ra-GRS)
 * *Premium_LRS* – prémium helyileg redundáns tárolás (LRS)
+* *Premium_ZRS* – Premium Zone redundáns tárolás (ZRS)
 
 > [!NOTE]
 > Azure Files a Premium Storage-t a Kubernetes 1,13-es vagy újabb verzióját futtató AK-fürtök támogatják, a minimális prémium fájlmegosztás 100 GB

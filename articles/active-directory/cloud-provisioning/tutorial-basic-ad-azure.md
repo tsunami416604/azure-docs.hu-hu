@@ -10,18 +10,18 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8a6fc1291615760320deb488511fdd9d964d25d
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: ceffc928a0cf8313723ff6193d9a6a63f8465f90
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89227865"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266309"
 ---
 # <a name="tutorial-basic-active-directory-environment"></a>Oktatóanyag: alapszintű Active Directory környezet
 
 Ez az oktatóanyag végigvezeti egy alapszintű Active Directory környezet létrehozásán. 
 
-![Létrehozás](media/tutorial-single-forest/diagram1.png)
+![Egy alapszintű Azure D-környezetet bemutató diagram.](media/tutorial-single-forest/diagram1.png)
 
 Az oktatóanyagban létrehozott környezettel tesztelheti a hibrid identitási forgatókönyvek különböző szempontjait, és néhány oktatóanyag előfeltételként is használható.  Ha már rendelkezik meglévő Active Directory-környezettel, ezt helyettesítőként használhatja.  Ezek az adatok olyan személyeknek szólnak, akik nem a semmiből indulnak.
 
@@ -199,8 +199,8 @@ Most létre kell hoznia egy Azure AD-bérlőt, hogy szinkronizálni tudja a felh
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com), és jelentkezzen be egy Azure-előfizetéssel rendelkező fiókkal.
 2. Válassza ki a **plusz ikont (+)** és keresse meg az **Azure Active Directoryt**.
 3. Válassza ki az **Azure Active Directoryt** a keresési eredmények közül.
-4. Válassza a **Létrehozás** lehetőséget.</br>
-![Létrehozás](media/tutorial-single-forest/create1.png)</br>
+4. Kattintson a **Létrehozás** gombra.</br>
+![A Azure Portal Azure Active Directory lapját megjelenítő képernyőkép.](media/tutorial-single-forest/create1.png)</br>
 5. Adja meg a **szervezet nevét** a **kezdeti tartománynevet**. Ezután válassza a **Létrehozás** elemet. Ezzel létrejön a címtár.
 6. Miután ez befejeződik, kattintson az **ide** hivatkozásra a címtár kezeléséhez.
 
@@ -208,7 +208,7 @@ Most létre kell hoznia egy Azure AD-bérlőt, hogy szinkronizálni tudja a felh
 Most, hogy rendelkezik egy Azure AD-Bérlővel, létre fog hozni egy globális rendszergazdai fiókot.  A globális rendszergazdai fiók létrehozásához tegye a következőket.
 
 1.  A **Kezelés** menüpontban válassza a **Felhasználók** lehetőséget.</br>
-![Létrehozás](media/tutorial-single-forest/administrator1.png)</br>
+![Képernyőkép, amely az "áttekintés" menüt jeleníti meg a "felhasználók" beállítással.](media/tutorial-single-forest/administrator1.png)</br>
 2.  Válassza a **Minden felhasználó**, majd az **+ Új felhasználó** lehetőséget.
 3.  Adjon meg egy nevet és egy felhasználónevet ennek a felhasználónak. Ez lesz a bérlő globális rendszergazdája. A **címtárbeli szerepkört** a **globális rendszergazdára** is módosítani kívánja. Megjelenítheti az ideiglenes jelszót is. Ha elkészült, kattintson a **Létrehozás** gombra.</br>
 ![Létrehozás](media/tutorial-single-forest/administrator2.png)</br>

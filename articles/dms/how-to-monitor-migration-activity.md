@@ -9,14 +9,14 @@ ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/20/2020
-ms.openlocfilehash: 31b49cdd9e0e5569981b2a0b0c6efcab7239e019
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dc9123735ef65bec89e99a14d25cba881be306fe
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77648512"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297470"
 ---
 # <a name="monitor-migration-activity-using-the-azure-database-migration-service"></a>Áttelepítési tevékenység figyelése a Azure Database Migration Service használatával
 Ebből a cikkből megtudhatja, hogyan figyelheti az áttelepítés előrehaladását az adatbázis szintjén és a tábla szintjén is.
@@ -42,7 +42,7 @@ A következő táblázat felsorolja az adatbázis szintű panel mezőit, és ism
   <tbody>
     <tr>
       <td rowspan="3" class="ActivityStatus"><strong>Tevékenység állapota</strong></td>
-      <td>Fut</td>
+      <td>Futó</td>
       <td>Az áttelepítési tevékenység fut.</td>
     </tr>
     <tr>
@@ -59,7 +59,7 @@ A következő táblázat felsorolja az adatbázis szintű panel mezőit, és ism
       <td>A DMS az áttelepítési folyamat beállítására szolgál.</td>
     </tr>
     <tr>
-      <td>Fut</td>
+      <td>Futó</td>
       <td>A DMS-folyamat fut és az áttelepítés végrehajtása folyamatban van.</td>
     </tr>
     <tr>
@@ -134,12 +134,12 @@ Az alábbi táblázat a táblázat szintű áttelepítési folyamat során megje
 | **Állapot – szinkronizálás**      | Folyamatos szinkronizálás fut. |
 | **Insert**      | A célhelyre alkalmazott CDC-beszúrások száma.      |
 | **Frissítés** | A cél értékre alkalmazott CDC-frissítések száma.      |
-| **Szabályzat**      | A megadott számú CDC-törlés a célhelyre alkalmazott sorokban. |
+| **Törlés**      | A megadott számú CDC-törlés a célhelyre alkalmazott sorokban. |
 | **Összes alkalmazott**      | A CDC összes frissítésének, beszúrásának és törlésének összege a célhelyre alkalmazott sorokban. |
 | **Adathibák** | A táblázatban szereplő adathibák száma. Néhány példa a hibákra *511: nem hozható létre a (z)% d méretű sor, amely nagyobb, mint a maximálisan megengedett% d, 8114: hiba történt a (z)% ls% ls adattípusának konvertálása során.*  Az ügyfélnek az Azure Target dms_apply_exceptions táblájából kell lekérdezni a hiba részleteinek megtekintéséhez.    |
 
 > [!NOTE]
 > Az INSERT, az Update és a DELETE és az összes alkalmazott CDC értéke csökkenhet az adatbázis átváltás vagy az áttelepítés újraindításakor.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Tekintse át az áttelepítési útmutatót a Microsoft [Database áttelepítési útmutatójában](https://datamigration.microsoft.com/).

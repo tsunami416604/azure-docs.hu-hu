@@ -5,15 +5,15 @@ description: Ez a cikk áttekintést nyújt a webalkalmazási tűzfalról (WAF) 
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 08/31/2020
+ms.date: 09/16/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: e3b7e3ae10afd45105358743ef1fc0f4c6d14e78
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 659e7fcdbd2284110282d14fc89bd4d8d5ac2472
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226998"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91267023"
 ---
 # <a name="what-is-azure-web-application-firewall-on-azure-application-gateway"></a>Mi az Azure webalkalmazási tűzfal az Azure Application Gateway?
 
@@ -60,7 +60,7 @@ Ez a szakasz a Application Gateway által nyújtott WAF alapvető előnyeit isme
 
 * Egyéni szabályok létrehozása az alkalmazás igényeinek megfelelően
 
-## <a name="features"></a>Szolgáltatások
+## <a name="features"></a>Funkciók
 
 - SQL-befecskendezéses védelem.
 - Helyek közötti parancsfájlok elleni védelem.
@@ -75,9 +75,21 @@ Ez a szakasz a Application Gateway által nyújtott WAF alapvető előnyeit isme
 - Geo-szűrési forgalom, amely engedélyezi vagy letiltja bizonyos országok/régiók hozzáférését az alkalmazásaihoz. (előzetes verzió)
 - Az alkalmazásait a robotoktól a bot-elhárítási szabályokkal védekezhet. (előzetes verzió)
 
-## <a name="waf-policy"></a>WAF szabályzat
+## <a name="waf-policy-and-rules"></a>WAF szabályzat és szabályok
 
-A webalkalmazási tűzfal Application Gatewayon való engedélyezéséhez létre kell hoznia egy WAF házirendet. Ez a szabályzat a felügyelt szabályok, az egyéni szabályok, a kizárások és egyéb testreszabások, például a fájlfeltöltés korlátja. 
+A webalkalmazási tűzfal Application Gatewayon való engedélyezéséhez létre kell hoznia egy WAF házirendet. Ez a szabályzat a felügyelt szabályok, az egyéni szabályok, a kizárások és egyéb testreszabások, például a fájlfeltöltés korlátja.
+
+Beállíthat egy WAF házirendet, és hozzárendelheti a szabályzatot egy vagy több, a védelemhez használt Application Gateway-átjáróhoz. A WAF szabályzatok a biztonsági szabályok két típusát alkotják:
+
+- Létrehozott egyéni szabályok
+
+- Felügyelt szabálykészlet, amely az Azure által felügyelt előre konfigurált szabályok gyűjteménye
+
+Ha mindkettő létezik, az egyéni szabályok feldolgozása a felügyelt szabálykészlet szabályainak feldolgozása előtt történik meg. A szabályok egyeztetési feltételből, prioritásból és műveletből állnak. Támogatott tevékenységtípusok: Engedélyezés, LETILTÁS és naplózás. A felügyelt és az egyéni szabályok kombinálásával teljes mértékben testre szabott szabályzatot hozhat létre, amely megfelel az adott alkalmazás védelmi követelményeinek.
+
+A szabályzaton belüli szabályok feldolgozása prioritási sorrendben történik. A Priority egy egyedi egész szám, amely meghatározza a feldolgozandó szabályok sorrendjét. A kisebb egész szám magasabb prioritást jelöl, és ezeket a szabályokat a rendszer a magasabb egész értékkel rendelkező szabályok előtt értékeli ki. A szabály egyeztetése után a szabályban definiált megfelelő művelet lesz alkalmazva a kérelemre. Az ilyen egyezés feldolgozását követően az alacsonyabb prioritású szabályok nem kerülnek feldolgozásra.
+
+A Application Gateway által szállított webalkalmazások globális szinten, WAF vagy URI-szinten is létrehozhatók hozzájuk társítva.
 
 ### <a name="core-rule-sets"></a>Alapvető szabálykészletek
 
@@ -159,6 +171,11 @@ A beépített Azure WAF Firewall Events munkafüzettel áttekintést kaphat a WA
 
 
 ![Azure WAF tűzfal eseményeinek munkafüzete](../media/ag-overview/sentinel.png)
+
+
+#### <a name="azure-monitor-workbook-for-waf"></a>WAF Azure Monitor munkafüzet
+
+Ez a munkafüzet lehetővé teszi a biztonsággal kapcsolatos WAF események egyéni vizualizációját több szűrhető panelen. Minden WAF-típussal működik, beleértve a Application Gateway, a bejárati ajtót és a CDN-t, és a WAF típusa vagy egy adott WAF-példány alapján szűrhető. Importálás ARM-sablon vagy katalógus-sablon használatával. A munkafüzet üzembe helyezéséhez lásd: [WAF-munkafüzet](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20WAF/Azure%20Monitor%20Workbook).
 
 #### <a name="logging"></a>Naplózás
 

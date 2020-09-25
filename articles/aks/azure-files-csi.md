@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: 330c1b74a46b0f18af1068797d080e903f516ea6
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: d845e7589b57bf76d3da48c48fa0a520b09e1f94
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90089870"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91299306"
 ---
 # <a name="use-azure-files-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>A Azure Files Container Storage Interface (CSI) illesztőprogramjainak használata az Azure Kubernetes Service-ben (ak) (előzetes verzió)
 
@@ -194,16 +194,98 @@ Filesystem                                                                      
 //f149b5a219bd34caeb07de9.file.core.windows.net/pvc-5e5d9980-da38-492b-8581-17e3cad01770  200G  128K  200G   1% /mnt/azurefile
 ```
 
+
+## <a name="nfs-file-shares"></a>NFS-fájlmegosztás
+[A Azure Files mostantól támogatja az NFS v 4.1 protokollt](../storage/files/storage-files-how-to-create-nfs-shares.md). Az NFS 4,1-támogatás a Azure Files számára egy teljes körűen felügyelt NFS-fájlrendszert biztosít, amely egy olyan szolgáltatás, amely magasan elérhető és nagyon tartós, elosztott, rugalmasan fenntartható tárolási platformra épül.
+
+ Ez a beállítás a helyi adatfrissítésekkel rendelkező, véletlenszerű hozzáférésű számítási feladatokhoz van optimalizálva, és teljes körű POSIX fájlrendszer-támogatást biztosít. Ez a szakasz bemutatja, hogyan használhatók az NFS-megosztások az Azure file CSI-illesztőprogrammal egy AK-fürtön.
+
+Győződjön meg arról, hogy a [korlátozásokat](../storage/files/storage-files-compare-protocols.md#limitations) és a [régió elérhetőségét](../storage/files/storage-files-compare-protocols.md#regional-availability) az előzetes verzió fázisában ellenőrzi.
+
+### <a name="register-the-allownfsfileshares-preview-feature"></a>Az `AllowNfsFileShares` előzetes verzió funkciójának regisztrálása
+
+Az NFS 4,1-et használó fájlmegosztás létrehozásához engedélyeznie kell a `AllowNfsFileShares` szolgáltatás jelölőjét az előfizetésén.
+
+Regisztrálja a `AllowNfsFileShares` szolgáltatás jelölőjét az az [Feature Register][az-feature-register] paranccsal, az alábbi példában látható módon:
+
+```azurecli-interactive
+az feature register --namespace "Microsoft.Storage" --name "AllowNfsFileShares"
+```
+
+Néhány percet vesz igénybe, amíg az állapot *regisztrálva*jelenik meg. Ellenőrizze a regisztrációs állapotot az az [Feature List][az-feature-list] parancs használatával:
+
+```azurecli-interactive
+az feature list -o table --query "[?contains(name, 'Microsoft.Storage/AllowNfsFileShares')].{Name:name,State:properties.state}"
+```
+
+Ha elkészült, frissítse a *Microsoft. Storage* erőforrás-szolgáltató regisztrációját az az [Provider Register][az-provider-register] parancs használatával:
+
+```azurecli-interactive
+az provider register --namespace Microsoft.Storage
+```
+
+### <a name="create-a-storage-account-for-the-nfs-file-share"></a>Hozzon létre egy Storage-fiókot az NFS-fájlmegosztás számára
+
+[Hozzon létre egy `Premium_LRS` ](../storage/files/storage-how-to-create-premium-fileshare.md) Az NFS-megosztások támogatásához a következő konfigurációkat tartalmazó Azure Storage-fiók:
+- fiók típusa: FileStorage
+- biztonságos átvitel szükséges (csak HTTPS-forgalom engedélyezése): false
+- Válassza ki az ügynök csomópontjainak virtuális hálózatát a tűzfalak és a virtuális hálózatok területen
+
+### <a name="create-nfs-file-share-storage-class"></a>NFS-fájlmegosztás tárolási osztályának létrehozása
+
+A `nfs-sc.yaml` megfelelő helyőrzők szerkesztésével mentse az alábbi jegyzékfájlt tartalmazó fájlt.
+
+```yml
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: azurefile-csi
+provisioner: file.csi.azure.com
+parameters:
+  resourceGroup: EXISTING_RESOURCE_GROUP_NAME  # optional, required only when storage account is not in the same resource group as your agent nodes
+  storageAccount: EXISTING_STORAGE_ACCOUNT_NAME
+  protocol: nfs
+```
+
+A fájl szerkesztése és mentése után hozza létre a tárolási osztályt a [kubectl Apply][kubectl-apply] paranccsal:
+
+```console
+$ kubectl apply -f nfs-sc.yaml
+
+storageclass.storage.k8s.io/azurefile-csi created
+```
+
+### <a name="create-a-deployment-with-an-nfs-backed-file-share"></a>Központi telepítés létrehozása NFS-alapú fájlmegosztás esetén
+A [stateful set](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/statefulset.yaml) `data.txt` következő parancs az [kubectl Apply][kubectl-apply] paranccsal történő üzembe helyezésével olyan állapot-nyilvántartó készletet helyezhet üzembe, amely időbélyegeket ment egy fájlba:
+
+ ```console
+$ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-csi-driver/master/deploy/example/windows/statefulset.yaml
+
+statefulset.apps/statefulset-azurefile created
+```
+
+A kötet tartalmának ellenőrzése a futtatásával:
+
+```console
+$ kubectl exec -it statefulset-azurefile-0 -- df -h
+
+Filesystem      Size  Used Avail Use% Mounted on
+...
+/dev/sda1                                                                                 29G   11G   19G  37% /etc/hosts
+accountname.file.core.windows.net:/accountname/pvc-fa72ec43-ae64-42e4-a8a2-556606f5da38  100G     0  100G   0% /mnt/azurefile
+...
+```
+
 ## <a name="windows-containers"></a>Windows-tárolók
 
-A Azure Files CSI-illesztőprogram a Windows-csomópontokat és-tárolókat is támogatja. Ha Windows-tárolókat szeretne használni, kövesse a Windows- [tárolók oktatóanyagot](windows-container-cli.md) a Windows-csomópontok hozzáadásához.
+A Azure Files CSI-illesztőprogram a Windows-csomópontokat és-tárolókat is támogatja. Ha Windows-tárolókat szeretne használni, kövesse a [Windows-tárolók oktatóanyagot](windows-container-cli.md) a Windows-csomópontok hozzáadásához.
 
 A Windows-csomópontok készletének használata után használja a beépített tárolási osztályokat, `azurefile-csi` vagy hozzon létre egyéni fájlokat. Olyan [Windows-alapú állapot-nyilvántartó készletet](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/windows/statefulset.yaml) helyezhet üzembe, amely időbélyegeket ment egy fájlba, ha a `data.txt` következő parancsot telepíti a [kubectl Apply][kubectl-apply] paranccsal:
 
  ```console
 $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-csi-driver/master/deploy/example/windows/statefulset.yaml
 
-statefulset.apps/busybox-azuredisk created
+statefulset.apps/busybox-azurefile created
 ```
 
 A kötet tartalmának ellenőrzése a futtatásával:
@@ -248,10 +330,10 @@ $ kubectl exec -it busybox-azurefile-0 -- cat c:\mnt\azurefile\data.txt # on Win
 [operator-best-practices-storage]: operator-best-practices-storage.md
 [concepts-storage]: concepts-storage.md
 [storage-class-concepts]: concepts-storage.md#storage-classes
-[az-extension-add]: /cli/azure/extension?view=azure-cli-latest#az-extension-add
-[az-extension-update]: /cli/azure/extension?view=azure-cli-latest#az-extension-update
-[az-feature-register]: /cli/azure/feature?view=azure-cli-latest#az-feature-register
-[az-feature-list]: /cli/azure/feature?view=azure-cli-latest#az-feature-list
-[az-provider-register]: /cli/azure/provider?view=azure-cli-latest#az-provider-register
+[az-extension-add]: /cli/azure/extension?view=azure-cli-latest#az-extension-add&preserve-view=true
+[az-extension-update]: /cli/azure/extension?view=azure-cli-latest#az-extension-update&preserve-view=true
+[az-feature-register]: /cli/azure/feature?view=azure-cli-latest#az-feature-register&preserve-view=true
+[az-feature-list]: /cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true
+[az-provider-register]: /cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true
 [node-resource-group]: faq.md#why-are-two-resource-groups-created-with-aks
 [storage-skus]: ../storage/common/storage-redundancy.md

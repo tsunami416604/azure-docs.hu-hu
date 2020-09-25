@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Stack Edge Pro rendszerkövetelményei | Microsoft Docs
-description: Tudnivalók a Azure Stack Edge Pro szoftver-és hálózatkezelési követelményeiről
+title: Microsoft Azure Stack Edge rendszerre vonatkozó követelmények | Microsoft Docs
+description: Ismerje meg az Microsoft Azure Stack Edge-megoldás rendszerkövetelményeit és az Azure Stack Edge-hez csatlakozó ügyfeleket.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 091d272ff00982a0d0a5ae44885a04cc62d7a4b4
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e542480db4ed82cf84c6ce04c62e2a07b6193f4a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90899150"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320727"
 ---
 # <a name="system-requirements-for-azure-stack-edge-pro-with-gpu"></a>A GPU-val Azure Stack Edge Pro rendszerkövetelményei 
 

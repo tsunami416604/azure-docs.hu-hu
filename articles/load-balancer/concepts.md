@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/13/2020
 ms.author: allensu
-ms.openlocfilehash: 96b91c08e0bf9a176af2ed844cd63a2cfa1e233d
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 9765f685f2fccc9332a2f07d907aac415aa2c57f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589639"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333919"
 ---
 # <a name="azure-load-balancer-concepts"></a>Azure Load Balancer fogalmak
 
@@ -85,7 +85,7 @@ A lebegő IP-címek nélkül az Azure egy hagyományos terheléselosztási IP-c�
 
 ## <a name="limitations"></a><a name = "limitations"></a>Korlátozások
 
-- A belső terheléselosztási forgatókönyvek esetében jelenleg nem támogatott a lebegőpontos IP-cím a másodlagos IP-konfigurációk esetében.
+- A belső terheléselosztási forgatókönyvek vagy a nyilvános terheléselosztási forgatókönyvek esetében jelenleg nem támogatott a lebegőpontos IP-címek használata a másodlagos IP-konfigurációk esetében.
 
 - Egy terheléselosztó-szabály nem terjedhet ki két virtuális hálózatra.  A frontendeknek és a háttérbeli példányoknak ugyanabban a virtuális hálózatban kell lenniük.  
 
@@ -97,7 +97,7 @@ A lebegő IP-címek nélkül az Azure egy hagyományos terheléselosztási IP-c�
 
 - A továbbítási IP-töredékek nem támogatottak a terheléselosztási szabályokban. Az UDP-és TCP-csomagok IP-töredezettsége nem támogatott a terheléselosztási szabályokban. HA portok terheléselosztási szabályai használhatók a meglévő IP-töredékek továbbítására. További információ: [magas rendelkezésre állású portok – áttekintés](load-balancer-ha-ports-overview.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Lásd: [nyilvános standard Load Balancer létrehozása](quickstart-load-balancer-standard-public-portal.md) a Load Balancer használatának megkezdéséhez: hozzon létre egyet, hozzon létre virtuális gépeket egy egyéni IIS-bővítménnyel, és a virtuális gépek között a webalkalmazás terheléselosztását.
 - További információ a [Azure Load Balancer kimenő kapcsolatokról](load-balancer-outbound-connections.md).

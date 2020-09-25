@@ -3,13 +3,13 @@ title: Rövid útmutató – Docker-tároló üzembe helyezése a Container inst
 description: Ebben a rövid útmutatóban a Azure Portal használatával gyorsan üzembe helyezhet egy elkülönített Azure Container-példányon futó tároló-webalkalmazást
 ms.topic: quickstart
 ms.date: 08/24/2020
-ms.custom: seodec18, mvc, devx-track-javascript
-ms.openlocfilehash: 0decfdbc468cbf267260ef80634eb8ecb5e710b7
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.custom: seodec18, mvc, devx-track-js
+ms.openlocfilehash: c8477bd91c3a02a2cd02d341c38c16da251902ae
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88870806"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324535"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-portal"></a>Gyors útmutató: tároló-példány üzembe helyezése az Azure-ban a Azure Portal használatával
 

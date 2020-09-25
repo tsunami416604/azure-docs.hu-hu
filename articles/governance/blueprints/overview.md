@@ -3,12 +3,12 @@ title: Az Azure Blueprints áttekintése
 description: Ismerje meg, hogyan hozhat létre, határozhat meg és helyezhet üzembe összetevőket az Azure-környezetben az Azure BluePrints szolgáltatásban.
 ms.date: 08/27/2020
 ms.topic: overview
-ms.openlocfilehash: e5c08f4211f03ddc6d2f48eee4fc84a824732e43
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: a687bcbaff56fa1229794b6977e3565070c56e2a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050777"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302672"
 ---
 # <a name="what-is-azure-blueprints"></a>Mi az az Azure Blueprints?
 
@@ -78,7 +78,9 @@ A tervrajzok minden **közzétett** **verziója** hozzárendelhető (legfeljebb 
 
 ## <a name="permissions-in-azure-blueprints"></a>Engedélyek az Azure Blueprintsben
 
-A tervek használatához [szerepköralapú hozzáférés-vezérlésen (RBAC)](../../role-based-access-control/overview.md) kell megadni az engedélyeket. Tervek létrehozásához a fióknak a következő engedélyekkel kell rendelkeznie:
+A tervek használatához [szerepköralapú hozzáférés-vezérlésen (RBAC)](../../role-based-access-control/overview.md) kell megadni az engedélyeket. Ha Azure Portal tervét szeretné olvasni vagy megtekinteni, a fióknak olvasási hozzáféréssel kell rendelkeznie ahhoz a hatókörhöz, ahol a terv definíciója található.
+
+Tervek létrehozásához a fióknak a következő engedélyekkel kell rendelkeznie:
 
 - `Microsoft.Blueprint/blueprints/write` – Tervdefiníció létrehozása
 - `Microsoft.Blueprint/blueprints/artifacts/write` – Tervelemek létrehozása tervdefiníció alapján

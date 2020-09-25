@@ -10,18 +10,18 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: fe6def8a935fcc6f093c4489409a3bcde829ac10
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 8c1e47db4f5f5bb64c31d16c26f6c3860b5bcb29
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89294934"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323056"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-c"></a>Rövid útmutató: az arcok észlelése egy képen a Face REST API és C használatával #
 
 Ebben a rövid útmutatóban az Azure Face REST API a C# használatával ismeri fel az emberi arcokat a képen.
 
-Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/), mielőtt nekikezdene a feladatok elvégzésének.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/), mielőtt hozzákezd.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -75,7 +75,7 @@ namespace DetectFace
 
 ### <a name="receive-image-input"></a>Képbevitel fogadása
 
-Adja hozzá a következő kódot a **program** osztály **Main** metódusához. Ez a kód egy üzenetet ír a konzolra, amely arra kéri a felhasználót, hogy adjon meg egy képet URL-címet. Ezután meghívja a másik módszert, **MakeAnalysisRequest**, hogy feldolgozza a rendszerképet az adott helyen.
+Adja hozzá a következő kódot a **program** osztály **Main** metódusához. Ez a kód egy olyan kérést ír a konzolra, amely arra kéri a felhasználót, hogy adja meg a helyi képfájl elérési útját. Ezután meghívja a másik módszert, **MakeAnalysisRequest**, hogy feldolgozza a rendszerképet az adott helyen.
 
 ```csharp
         static void Main(string[] args)
@@ -159,7 +159,7 @@ A segítő metódusokat a következő lépésekben fogja meghatározni.
 
 ### <a name="process-the-input-image-data"></a>A bemeneti képadatok feldolgozása
 
-Adja hozzá a következő metódust a **program** osztályhoz. Ez a metódus a megadott URL-címen lévő rendszerképet egy byte-tömbre konvertálja.
+Adja hozzá a következő metódust a **program** osztályhoz. Ez a metódus a megadott elérési úton lévő rendszerképet egy byte tömbre konvertálja.
 
 ```csharp
         // Returns the contents of the specified file as a byte array.
@@ -343,7 +343,7 @@ A sikeres válasz egy könnyen olvasható JSON formátumban jeleníti meg az Arc
 ]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy egyszerű .NET-konzol alkalmazást, amely REST-hívásokat használ az Azure Face szolgáltatással az arcok észleléséhez a rendszerképben, és visszaküldi az attribútumokat. Ezután tekintse át a Face API dokumentációját, ahol további információt talál a támogatott forgatókönyvekről.
 

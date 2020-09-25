@@ -1,24 +1,24 @@
 ---
 title: API-protokollok konfigurálása – Azure Event Grid IoT Edge | Microsoft Docs
-description: A Event Grid által elérhetővé tett API-protokollok konfigurálása IoT Edgeon.
+description: A Event Grid modul lehetséges protokoll-konfigurációinak megismerése.
 author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
-ms.openlocfilehash: 801a320fbd66b4b8a46757ba90881da54b2721de
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: a9cf6088201ffeaed76d99a9b211e5bcd1ea139a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171720"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322580"
 ---
 # <a name="configure-event-grid-api-protocols"></a>Event Grid API-protokollok konfigurálása
 
 Ez az útmutató példákat mutat be egy Event Grid modul lehetséges protokoll-konfigurációjáról. A Event Grid modul az API-t teszi elérhetővé felügyeleti és futtatókörnyezeti műveleteihez. A következő táblázat rögzíti a protokollokat és a portokat.
 
-| Protokoll | Port | Leírás |
+| Protokoll | Port | Description |
 | ---------------- | ------------ | ------------ |
 | HTTP | 5888 | Alapértelmezés szerint ki van kapcsolva. Csak tesztelés során hasznos. Éles számítási feladatokhoz nem alkalmas.
 | HTTPS | 4438 | Alapértelmezett

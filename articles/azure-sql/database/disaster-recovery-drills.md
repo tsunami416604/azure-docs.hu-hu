@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mathoma, carlrab
+ms.reviewer: mathoma, sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: e32f2bf6f353e32fe96cd3c8b109d698cd3d40ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f53a08a12c5afda8dbc3f25d9102f52b870ceea4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84344577"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321662"
 ---
 # <a name="performing-disaster-recovery-drills"></a>Vész-helyreállítási gyakorlatok végrehajtása
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -31,7 +31,7 @@ A vész-helyreállítási részletezés végrehajtása a következőkből áll:
 
 Attól függően, hogy az [alkalmazás hogyan lett megtervezve az üzletmenet folytonossága](business-continuity-high-availability-disaster-recover-hadr-overview.md)érdekében, a részletezés végrehajtásának munkafolyamata eltérő lehet. Ez a cikk a vész-helyreállítási gyakorlat végrehajtásának ajánlott eljárásait ismerteti Azure SQL Database környezetében.
 
-## <a name="geo-restore"></a>Georedundáns helyreállítás
+## <a name="geo-restore"></a>Georedundáns visszaállítás
 
 Ha meg szeretné akadályozni, hogy a vész-helyreállítási gyakorlat elvégzése során milyen adatvesztés lehetséges, végezze el a részletezést a tesztkörnyezet használatával az éles környezet másolatának létrehozásával és a használatával, hogy ellenőrizze az alkalmazás feladatátvételi munkafolyamatát.
 
@@ -39,12 +39,12 @@ Ha meg szeretné akadályozni, hogy a vész-helyreállítási gyakorlat elvégz�
 
 A leállás szimulálása érdekében átnevezheti a forrás-adatbázist. Ez a név megváltoztatja az alkalmazás kapcsolódási hibáit.
 
-### <a name="recovery"></a>Helyreállítás
+### <a name="recovery"></a>Helyreállítási
 
 * Az [itt](disaster-recovery-guidance.md)leírtak szerint végezze el az adatbázis geo-visszaállítását egy másik kiszolgálóra.
 * Módosítsa az alkalmazás konfigurációját a helyreállított adatbázishoz való kapcsolódáshoz, és kövesse az [adatbázis konfigurálása a helyreállítási útmutató után](disaster-recovery-guidance.md) a helyreállítás befejezéséhez című témakört.
 
-### <a name="validation"></a>Ellenőrzés
+### <a name="validation"></a>Érvényesítés
 
 Végezze el a részletezést az alkalmazás integritás utáni helyreállításának ellenőrzésével (beleértve a kapcsolati karakterláncokat, a bejelentkezéseket, az alapszintű funkciók tesztelését vagy a szabványos alkalmazások signoffs eljárásainak egyéb érvényességi részeit).
 
@@ -56,17 +56,17 @@ A feladatátvételi csoportok használatával védett adatbázisok esetében a r
 
 A leállás szimulálása érdekében letilthatja az adatbázishoz csatlakozó webalkalmazást vagy virtuális gépet. Ez a leállás-szimuláció a webes ügyfelek kapcsolódási hibáit eredményezi.
 
-### <a name="recovery"></a>Helyreállítás
+### <a name="recovery"></a>Helyreállítási
 
 * Győződjön meg arról, hogy az alkalmazás konfigurációja a DR régióban a korábbi másodlagosra mutat, amely a teljesen elérhető új elsődleges lesz.
 * A feladatátvételi csoport [tervezett feladatátvételének](scripts/setup-geodr-and-failover-database-powershell.md) kezdeményezése a másodlagos kiszolgálóról.
 * A helyreállítás befejezéséhez kövesse az [adatbázis konfigurálása a helyreállítási útmutató után](disaster-recovery-guidance.md) című témakört.
 
-### <a name="validation"></a>Ellenőrzés
+### <a name="validation"></a>Érvényesítés
 
 Végezze el a részletezést az alkalmazás integritás utáni helyreállításának ellenőrzésével (beleértve a kapcsolatot, az alapszintű funkciók tesztelését vagy a részletezési signoffs szükséges egyéb érvényesítéseket).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az üzletmenet-folytonossági forgatókönyvek megismeréséhez lásd: [folytonossági forgatókönyvek](business-continuity-high-availability-disaster-recover-hadr-overview.md).
 * Az automatikus biztonsági mentések Azure SQL Databaseával kapcsolatos további tudnivalókért lásd: [SQL Database automatikus biztonsági mentések](automated-backups-overview.md)

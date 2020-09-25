@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f137b61f36ee425bdfecf3135370fded04242335
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: fde2052078e0131e720411f91aa8ae7484338252
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89658750"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295022"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Azure Active Directory zökkenőmentes egyszeri bejelentkezés: gyors üzembe helyezés
 
@@ -125,7 +125,7 @@ A felhasználók intranetes zónájának beállításai kétféleképpen módos�
 1. Nyissa meg az Csoportházirend-felügyeleti szerkesztő eszközt.
 2. Szerkessze az egyes felhasználókra alkalmazott csoportházirendet. Ez a példa az **alapértelmezett tartományi házirendet**használja.
 3. Tallózással keresse meg a **felhasználói konfigurációs**  >  **házirendet**  >  **Felügyeleti sablonok**  >  **Windows-összetevők**  >  **Internet Explorer**  >  **Internet Vezérlőpult**  >  **biztonsági lapján**. Ezután válassza **a hely – zóna hozzárendelési lista**lehetőséget.
-    ![Egyszeri bejelentkezés](./media/how-to-connect-sso-quick-start/sso6.png)
+    ![Képernyőfelvétel: a "biztonsági lap" a "helyről a zónákhoz való hozzárendelés" listára kiválasztva.](./media/how-to-connect-sso-quick-start/sso6.png)
 4. Engedélyezze a szabályzatot, majd adja meg a következő értékeket a párbeszédpanelen:
    - **Érték neve**: a Kerberos-jegyek továbbítására szolgáló Azure ad URL-cím.
    - **Érték** (adathalmaz): **1** az intranet zónát jelzi.
@@ -142,15 +142,15 @@ A felhasználók intranetes zónájának beállításai kétféleképpen módos�
 
 5. Válassza az **OK**, majd újra az **OK** elemet.
 
-    ![Egyszeri bejelentkezés](./media/how-to-connect-sso-quick-start/sso7.png)
+    ![Képernyőfelvétel: a "tartalmak megjelenítése" ablak, amelyen a zóna-hozzárendelés van kiválasztva.](./media/how-to-connect-sso-quick-start/sso7.png)
 
 6. Tallózással keresse meg a **felhasználói konfigurációs**  >  **házirendet**  >  **Felügyeleti sablonok**  >  **Windows-összetevők**  >  **Internet Explorer**  >  **Internet Vezérlőpult**  >  **biztonsági oldalának**  >  **intranet zónájában**. Ezután válassza **a frissítések engedélyezése állapotsoron parancsfájl használatával**lehetőséget.
 
-    ![Egyszeri bejelentkezés](./media/how-to-connect-sso-quick-start/sso11.png)
+    ![Képernyőkép: az "intranet zóna" oldal, amelyen a "frissítések engedélyezése az állapotsoron a szkripten keresztül" lehetőség van kiválasztva.](./media/how-to-connect-sso-quick-start/sso11.png)
 
 7. Engedélyezze a házirend-beállítást, majd kattintson **az OK gombra**.
 
-    ![Egyszeri bejelentkezés](./media/how-to-connect-sso-quick-start/sso12.png)
+    ![Képernyőfelvétel: "a frissítések engedélyezése az állapotsoron parancsfájl használatával" ablak, amelyen engedélyezve van a házirend-beállítás.](./media/how-to-connect-sso-quick-start/sso12.png)
 
 ### <a name="group-policy-preference-option---detailed-steps"></a>"Csoportházirend-beállítások" beállítás – részletes lépések
 
@@ -158,7 +158,7 @@ A felhasználók intranetes zónájának beállításai kétféleképpen módos�
 2. Szerkessze az egyes felhasználókra alkalmazott csoportházirendet. Ez a példa az **alapértelmezett tartományi házirendet**használja.
 3. Tallózással keresse meg a **felhasználói konfiguráció**  >  **beállításait**a  >  **Windows beállításai**  >  **beállításjegyzék**  >  **új**  >  **beállításjegyzék-eleme**.
 
-    ![Egyszeri bejelentkezés](./media/how-to-connect-sso-quick-start/sso15.png)
+    ![Képernyőfelvétel: a "Registry" kiválasztott és a "beállításjegyzék-elem" lehetőség be van jelölve.](./media/how-to-connect-sso-quick-start/sso15.png)
 
 4. Adja meg a következő értékeket a megfelelő mezőkben, majd kattintson **az OK**gombra.
    - **Kulcs elérési útja**: ***Software\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\Domains\microsoftazuread-SSO.com\autologon***
@@ -166,7 +166,7 @@ A felhasználók intranetes zónájának beállításai kétféleképpen módos�
    - **Érték típusa**: ***REG_DWORD***
    - **Érték**: ***00000001***
  
-     ![Egyszeri bejelentkezés](./media/how-to-connect-sso-quick-start/sso16.png)
+     ![Képernyőkép, amely az "új beállításjegyzék tulajdonságai" ablakot jeleníti meg.](./media/how-to-connect-sso-quick-start/sso16.png)
  
      ![Egyszeri bejelentkezés](./media/how-to-connect-sso-quick-start/sso17.png)
 

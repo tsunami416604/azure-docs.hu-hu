@@ -1,5 +1,5 @@
 ---
-title: Azure Key Vault REST API áttekintése
+title: A kulcsok, a titkok és a tanúsítványok Azure Key Vault áttekintése
 description: A kulcsok, titkok és tanúsítványok Azure Key Vault REST-felületének és fejlesztői adatainak áttekintése.
 services: key-vault
 author: msmbaldwin
@@ -9,14 +9,14 @@ ms.service: key-vault
 ms.topic: overview
 ms.date: 04/17/2020
 ms.author: mbaldwin
-ms.openlocfilehash: b2d3753cd31b54c500b2757520f2634eb1b2794a
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: c02a2658325fdd88ef1052937edc3b84c4545872
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983276"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296837"
 ---
-# <a name="azure-key-vault-rest-api-overview"></a>Azure Key Vault REST API áttekintése
+# <a name="azure-key-vault-keys-secrets-and-certificates-overview"></a>Azure Key Vault kulcsok, titkok és tanúsítványok áttekintése
 
 A Azure Key Vault lehetővé teszi Microsoft Azure alkalmazások és felhasználók számára, hogy különböző típusú titkos/kulcsfontosságú adattípusokat tároljanak és használjanak. Key Vault erőforrás-szolgáltató két erőforrástípust támogat: tárolókat és felügyelt HSM.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sasolank
-ms.openlocfilehash: eb2ce196687b2ca6a762a879570e4f8ebac788df
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 778c65b9ec42c27ea0ae1530c1ba7fa9739fbc3c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025115"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321883"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>API Management integrálása egy belső VNET Application Gateway
 
@@ -91,12 +91,12 @@ Ebben az útmutatóban a **fejlesztői portált** külső célközönségeknek i
 > 
 > Application Gateway WAF-szabályok, amelyek a portál funkcióinak megszakadása esetén a következők:
 > 
-> - `920330`,,, `931130` `942100` `942110` , `942180` , `942200` , `942260` , `942370` , `949110` , `980130` felügyeleti módban
+> - `920300`,,, `920330` `931130` `942100` , `942110` , `942180` , `942200` , `942260` , `942340` , `942370` felügyeleti módban
 > - `942200`,,,, `942260` `942370` `942430` `942440` a közzétett portálhoz
 
 ## <a name="create-a-resource-group-for-resource-manager"></a>Erőforráscsoport létrehozása a Resource Managerhez
 
-### <a name="step-1"></a>1\. lépés
+### <a name="step-1"></a>1. lépés
 
 Jelentkezzen be az Azure-ba
 
@@ -131,7 +131,7 @@ Az Azure Resource Manager megköveteli, hogy minden erőforráscsoport adjon meg
 
 Az alábbi példa bemutatja, hogyan hozhat létre Virtual Network a Resource Manager használatával.
 
-### <a name="step-1"></a>1\. lépés
+### <a name="step-1"></a>1. lépés
 
 Rendelje hozzá a 10.0.0.0/24 címtartományt az alhálózati változóhoz, amelyet a rendszer a Virtual Network létrehozásakor Application Gateway használni.
 
@@ -168,7 +168,7 @@ $apimsubnetdata = $vnet.Subnets[1]
 
 Az alábbi példa bemutatja, hogyan hozhat létre egy API Management szolgáltatást egy VNET, amely csak belső hozzáférésre van konfigurálva.
 
-### <a name="step-1"></a>1\. lépés
+### <a name="step-1"></a>1. lépés
 
 Hozzon létre egy API Management Virtual Network objektumot a fent létrehozott alhálózati $apimsubnetdata használatával.
 
@@ -194,7 +194,7 @@ A fenti parancs sikeres végrehajtásához tekintse meg a [belső VNET elérés�
 > [!IMPORTANT]
 > Az [új fejlesztői portálhoz](api-management-howto-developer-portal.md) az alábbi lépéseken felül a API Management felügyeleti végpontjának való kapcsolódás engedélyezése is szükséges.
 
-### <a name="step-1"></a>1\. lépés
+### <a name="step-1"></a>1. lépés
 
 Inicializálja a következő változókat a tartományokhoz tartozó titkos kulcsokkal rendelkező tanúsítványok részleteivel. Ebben a példában a és a-t fogjuk használni `api.contoso.net` `portal.contoso.net` .  
 
@@ -241,7 +241,7 @@ Amikor a szolgáltatás elindul, egy IP-cím lesz kiosztva az Application Gatewa
 
 Az Application Gateway létrehozása előtt minden konfigurációs elemet be kell állítani. Az alábbi lépések létrehozzák az Application Gateway erőforráshoz szükséges konfigurációs elemeket.
 
-### <a name="step-1"></a>1\. lépés
+### <a name="step-1"></a>1. lépés
 
 Hozzon létre egy **gatewayIP01** nevű Application Gateway IP-konfigurációt. Amikor az Application Gateway elindul, a konfigurált alhálózatból felvesz egy IP-címet, és a hálózati forgalmat a háttérbeli IP-készlet IP-címeihez irányítja. Ne feledje, hogy minden példány egy IP-címet vesz fel.
 
@@ -315,7 +315,7 @@ $apimPoolPortalSetting = New-AzApplicationGatewayBackendHttpSettings -Name "apim
 
 ### <a name="step-9"></a>9. lépés
 
-Konfigurálja a **apimbackend** nevű HÁTTÉRbeli IP-címkészletet a fent létrehozott API Management szolgáltatás belső virtuális IP-címével.
+Konfigurálja a **apimbackend**  nevű HÁTTÉRbeli IP-címkészletet a fent létrehozott API Management szolgáltatás belső virtuális IP-címével.
 
 ```powershell
 $apimProxyBackendPool = New-AzApplicationGatewayBackendAddressPool -Name "apimbackend" -BackendIPAddresses $apimService.PrivateIPAddresses[0]

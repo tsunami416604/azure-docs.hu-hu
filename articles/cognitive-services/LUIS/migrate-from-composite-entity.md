@@ -1,14 +1,16 @@
 ---
 title: Összetett entitás frissítése – LUIS
 description: Frissítse az összetett entitást a gépi tanulási entitásra a verziófrissítési folyamattal a LUIS portálon.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/04/2020
-ms.openlocfilehash: 58b546a27c1ff1e90e1b70026f430063a47a09e8
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 5c3ac14af6eb863daa9eadd32727f4fb53d2185f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684085"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322857"
 ---
 # <a name="upgrade-composite-entity-to-machine-learning-entity"></a>Összetett entitás frissítése gépi tanulási entitásra
 
@@ -32,7 +34,7 @@ A frissítési folyamat:
 
 A modell változásának megismeréséhez használja a következő diagramot:
 
-|Régi objektum|Új objektum|Megjegyzések|
+|Régi objektum|Új objektum|Jegyzetek|
 |--|--|--|
 |Összetett entitás|gépi tanulási entitás szerkezettel|Mindkét objektum szülő objektum.|
 |Az összetett gyermek entitás **egyszerű entitás**|alentitás|Mindkét objektum alárendelt objektum.|
@@ -70,6 +72,6 @@ A frissítés előtt ügyeljen a következőre:
 
 1. Az entitások listája lapon az új entitások a típus neve mellett **új** jelöléssel jelennek meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Szerzők és közreműködők](luis-how-to-collaborate.md)

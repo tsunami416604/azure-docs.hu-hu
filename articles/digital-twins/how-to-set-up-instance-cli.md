@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e9a78690128c2406277ab4e8fb6e6e4625d2787f
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: bb5ff0bf7347b87fdc3a103a03f9ff58279a367d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89280094"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320769"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-cli"></a>Azure digitális Twins-példány és-hitelesítés beállítása (CLI)
 
@@ -78,7 +78,7 @@ Ennek a parancsnak az eredménye a létrehozott szerepkör-hozzárendeléssel ka
 >
 > [Azure Active Directory felhasználók Azure Portal oldalán](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers) válassza ki a felhasználói fiókot, és nyissa meg a részleteit. A felhasználó *ObjectId*másolása:
 >
-> :::image type="content" source="media/includes/user-id.png" alt-text="A felhasználó oldalának nézete Azure Portal kiemelve a GUID azonosítót az objektumazonosító mezőben" lightbox="media/includes/user-id.png":::
+> :::image type="content" source="media/includes/user-id.png" alt-text="A felhasználó oldalának nézete Azure Portal kiemelve a GUID azonosítót az "objektumazonosító" mezőben" lightbox="media/includes/user-id.png":::
 >
 > Ezután ismételje meg a szerepkör-hozzárendelési lista parancsát a felhasználó *objektumazonosító* használatával a `assignee` fenti paraméterhez.
 
@@ -132,7 +132,7 @@ az ad app create --display-name <name-for-your-app-registration> --native-app --
 
 [!INCLUDE [digital-twins-setup-verify-app-registration-1.md](../../includes/digital-twins-setup-verify-app-registration-1.md)]
 
-Először ellenőrizze, hogy a feltöltött *manifest.js* beállításai megfelelően vannak-e beállítva a regisztrációhoz. Ehhez a menüsávban válassza a *jegyzékfájl* lehetőséget az alkalmazás regisztrációs jegyzékfájljának megtekintéséhez. Görgessen a Code (kód) ablak aljára, és keresse meg a *manifest.jsmezőket a* következő alatt `requiredResourceAccess` :
+Ezután ellenőrizze, hogy a feltöltött *manifest.js* beállításai megfelelően vannak-e beállítva a regisztrációhoz. Ehhez a menüsávban válassza a *jegyzékfájl* lehetőséget az alkalmazás regisztrációs jegyzékfájljának megtekintéséhez. Görgessen a Code (kód) ablak aljára, és keresse meg a *manifest.jsmezőket a* következő alatt `requiredResourceAccess` :
 
 [!INCLUDE [digital-twins-setup-verify-app-registration-2.md](../../includes/digital-twins-setup-verify-app-registration-2.md)]
 
@@ -151,7 +151,7 @@ Jegyezze **fel a lapon** megjelenő *alkalmazás (ügyfél) azonosítóját* és
 ## <a name="next-steps"></a>Következő lépések
 
 Tesztelje az egyes REST API hívásokat a példányon az Azure Digital Twins CLI parancsaival: 
-* [az DT Reference](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest)
+* [az DT Reference](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true)
 * [*Útmutató: az Azure digitális Twins parancssori felületének használata*](how-to-use-cli.md)
 
 Azt is megtudhatja, hogyan csatlakoztatható az ügyfélalkalmazás a példányhoz az ügyfélalkalmazás hitelesítési kódjának megírásával:

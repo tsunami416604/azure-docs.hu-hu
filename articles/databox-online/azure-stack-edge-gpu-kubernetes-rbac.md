@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 09/22/2020
 ms.author: alkohli
-ms.openlocfilehash: 1f194424a4030a2b829af6c8f5b97a3c200bd2e6
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 0880ae64520997fc6b41ba4a7e8508d927235a8a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90899289"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320812"
 ---
 # <a name="kubernetes-role-based-access-control-on-your-azure-stack-edge-pro-gpu-device"></a>Kubernetes szerepköralapú Access Control a Azure Stack Edge Pro GPU-eszközön
 
@@ -91,25 +91,7 @@ Itt látható egy diagram, amely a RBAC Azure Stack Edge Pro-eszközön való me
 
 Ebben az ábrában Alice, Bob és Chuck csak a hozzárendelt felhasználói névterekhez fér hozzá, ami ebben az esetben a, a `ns1` `ns2` és a `ns3` . Ezeken a névtereken belül rendszergazdai hozzáférésük van. A fürt rendszergazdájának viszont rendszergazdai hozzáférése van a rendszer névteréhez és a fürtre kiterjedő erőforrásokhoz.
 
-`kubectl`Parancsok használatával névtereket és felhasználókat hozhat létre, felhasználókat rendelhet hozzá a névterekhez vagy fájlokat tölthet le `kubeconfig` . Magas szintű munkafolyamat:
-
-1. Hozzon létre egy névteret és egy felhasználót.  
-
-    `New-HcsKubernetesNamespace -Namespace`  
-
-2. Hozzon létre egy felhasználót.  
-
-    `New-HcsKubernetesUser -UserName`  
-
-3. Társítsa a névteret a létrehozott felhasználóval.  
-
-    `Grant-HcsKubernetesNamespaceAccess -Namespace -UserName`  
-
-4. Mentse a felhasználói konfigurációt a következőre: `C:\Users\<username>\.kube` .  
-
-5. `kubectl`Alkalmazások telepítése és elindítása a alkalmazásban `kubectl` . 
-
-Részletes útmutatásért lásd: [hozzáférés a Kubernetes-fürthöz a Azure stack Edge Pro-on keresztül a kuebctl-on keresztül](azure-stack-edge-gpu-create-kubernetes-cluster.md).
+Felhasználóként névtereket és felhasználókat hozhat létre, felhasználókat rendelhet hozzá a névterekhez vagy letöltheti a `kubeconfig` fájlokat. Részletes útmutatásért lásd: [hozzáférés a Kubernetes-fürthöz a Azure stack Edge Pro-on keresztül a kuebctl-on keresztül](azure-stack-edge-gpu-create-kubernetes-cluster.md).
 
 
 Ha névtereket és felhasználókat használ a Azure Stack Edge Pro-eszközökön, a következő kikötések érvényesek:

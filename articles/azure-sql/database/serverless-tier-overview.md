@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: oslake
 ms.author: moslake
-ms.reviewer: sstein, carlrab
-ms.date: 9/8/2020
-ms.openlocfilehash: 979976ba88c2acca282a7f8bef4784b9d91ce0aa
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.reviewer: sstein
+ms.date: 9/17/2020
+ms.openlocfilehash: 2d317ac2543289aca3a0741b424f71a2e903c74d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89565089"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321407"
 ---
 # <a name="azure-sql-database-serverless"></a>Kiszolgáló nélküli Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -34,7 +34,7 @@ Azure SQL Database önálló adatbázisainak kiszolgáló nélküli számítási
 - A **minimális virtuális mag** és a **maximális virtuális mag** olyan konfigurálható paraméterek, amelyek meghatározzák az adatbázis számára elérhető számítási kapacitás tartományát. A memória és az i/o-korlátok arányosak a megadott virtuális mag-tartománnyal.  
 - Az automatikus **szüneteltetési késleltetés** egy konfigurálható paraméter, amely meghatározza azt az időtartamot, ameddig az adatbázisnak inaktívnak kell lennie, mielőtt a rendszer automatikusan szünetelteti az időt. A rendszer automatikusan folytatja az adatbázist, ha a következő bejelentkezés vagy más tevékenység történik.  Másik lehetőségként az autoszüneteltetés is letiltható.
 
-### <a name="cost"></a>Cost
+### <a name="cost"></a>Költség
 
 - A kiszolgáló nélküli adatbázisok díja a számítási és a tárolási díjak összegzése.
 - Ha a számítási használat a minimális és a maximális korlát között van, a számítási díj a felhasznált virtuális mag és memória alapján történik.
@@ -97,7 +97,7 @@ A kiépített számítási adatbázisokkal ellentétben az SQL-gyorsítótárbó
 
 A kiszolgáló nélküli és a kiépített számítási adatbázisokban a gyorsítótár bejegyzései kizárható, ha az összes rendelkezésre álló memória használatban van.
 
-Vegye figyelembe, hogy ha a CPU-kihasználtság alacsony, akkor az aktív gyorsítótár kihasználtsága a használati mintatól és a memória-visszanyeréstől függően magas marad.  Azt is megteheti, hogy a felhasználói tevékenység leállítása után további késleltetést okoz a memória-visszanyerési művelet, mivel a korábbi felhasználói tevékenységekre válaszoló időszakos háttérben futó folyamatok időnként megtörténnek  A törlési műveletek például a törlésre kijelölt Ghost-rekordokat hoznak, de nem törlődnek fizikailag, amíg a szellemkép-tisztítási folyamat fut, ami magában foglalhatja az adatlapok gyorsítótárba való beolvasását is.
+Vegye figyelembe, hogy ha a CPU-kihasználtság alacsony, akkor az aktív gyorsítótár kihasználtsága a használati mintatól és a memória-visszanyeréstől függően magas marad.  Azt is megteheti, hogy a felhasználói tevékenység leállítása után további késleltetést okoz a memória-visszanyerési művelet, mivel a korábbi felhasználói tevékenységekre válaszoló időszakos háttérben futó folyamatok időnként megtörténnek  A törlési műveletek és a QDS kiszolgálónév-karbantartási feladatok például a törlésre kijelölt szellemkép-rekordokat hoznak, de nem törlődnek fizikailag, amíg a szellemkép-tisztítási folyamat fut, ami magában foglalhatja az adatlapok gyorsítótárba való beolvasását is.
 
 #### <a name="cache-hydration"></a>Gyorsítótár-hidratáció
 
@@ -128,7 +128,7 @@ Az autoszüneteltetés átmenetileg megakadályozható néhány olyan szolgálta
 
 Az autofolytatás a következő esetekben aktiválódik, ha az alábbi feltételek bármelyike teljesül:
 
-|Jellemző|Trigger újraindítása|
+|Funkció|Trigger újraindítása|
 |---|---|
 |Hitelesítés és engedélyezés|Bejelentkezés|
 |Fenyegetések észlelése|A veszélyforrások észlelési beállításainak engedélyezése/letiltása az adatbázis vagy a kiszolgáló szintjén.<br>A veszélyforrások észlelési beállításainak módosítása az adatbázis vagy a kiszolgáló szintjén.|

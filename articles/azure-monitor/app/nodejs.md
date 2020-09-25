@@ -3,13 +3,13 @@ title: A Node.js szolgáltatások figyelése az Azure Application Insights segí
 description: Teljesítmény figyelése és problémák diagnosztizálása a Node.js szolgáltatásokban az Application Insights segítségével.
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: c6a1a030829f128c4369e99efcd56a416390afc6
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.custom: devx-track-js
+ms.openlocfilehash: 982adf6c6d7cd825d185802321ce30a04bd2f216
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371617"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323294"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>A Node.js szolgáltatások és appok figyelése az Application Insights segítségével
 
@@ -21,7 +21,7 @@ A Node.js SDK automatikusan képes figyelni a bejövő és kimenő HTTP-kérése
 
 A TelemetryClient API használatával manuálisan beállíthatók és monitorozhatók az alkalmazás és a rendszer további részletei. A TelemetryClient API-t a jelen cikk egy későbbi részében részletesebben ismertetjük.
 
-## <a name="get-started"></a>Bevezetés
+## <a name="get-started"></a>Első lépések
 
 Egy alkalmazás vagy szolgáltatás monitorozásának beállításához a következő feladatokat kell elvégezni.
 
@@ -59,7 +59,7 @@ Mielőtt hozzákezd, győződjön meg róla, hogy rendelkezik Azure-előfizetés
    ```javascript
    let appInsights = require('applicationinsights');
    ```
-4.  A rendszerállapotkulcsot a környezeti változón keresztül is megadhatja `APPINSIGHTS_INSTRUMENTATIONKEY` ahelyett, hogy manuálisan átadná azt a vagy a rendszernek `setup()` `new appInsights.TelemetryClient()` . Ez az eljárás lehetővé teszi, hogy ne írja be az erőforráskulcsot a jóváhagyott forráskódba, és eltérő erőforráskulcsot adjon meg az eltérő környezeteknél. A manuális hívás konfigurálásához `appInsights.setup('[your ikey]');` .
+4.  A rendszerállapotkulcsot a környezeti változón keresztül is megadhatja `APPINSIGHTS_INSTRUMENTATIONKEY` ahelyett, hogy manuálisan átadná azt a vagy a rendszernek  `setup()` `new appInsights.TelemetryClient()` . Ez az eljárás lehetővé teszi, hogy ne írja be az erőforráskulcsot a jóváhagyott forráskódba, és eltérő erőforráskulcsot adjon meg az eltérő környezeteknél. A manuális hívás konfigurálásához `appInsights.setup('[your ikey]');` .
 
     További konfigurációs részletekért lásd a következő szakaszokat.
 
@@ -67,7 +67,7 @@ Mielőtt hozzákezd, győződjön meg róla, hogy rendelkezik Azure-előfizetés
 
 5. Az adatok automatikus gyűjtésének és küldésének megkezdése hívással `appInsights.start();` .
 
-### <a name="monitor-your-app"></a><a name="monitor"></a>Az alkalmazás figyelése
+### <a name="monitor-your-app"></a><a name="monitor"></a> Az alkalmazás figyelése
 
 Az SDK automatikusan gyűjt telemetria az Node.js futtatókörnyezetről és néhány gyakori külső modulról. Az alkalmazás használatával gyűjtsön össze néhányat ezekből az adatokból.
 
@@ -110,7 +110,7 @@ Az 0,22-es és későbbi verziókban megjelenő kiadások között megszakad a v
 Általánosságban elvégezhető a Migrálás a következővel:
 
 - Cserélje le a hivatkozásokat a következőre: `appInsights.client` `appInsights.defaultClient` .
-- Hivatkozások `appInsights.getClient()` cseréje a következőre`new appInsights.TelemetryClient()`
+- Hivatkozások `appInsights.getClient()` cseréje a következőre `new appInsights.TelemetryClient()`
 - Az összes argumentumot cserélje le az Client. Track * metódusokra egyetlen objektummal, amely argumentumként nevesített tulajdonságokat tartalmaz. Az IDE tartozó beépített típusú célzási vagy [TelemetryTypes](https://github.com/Microsoft/ApplicationInsights-node.js/tree/develop/Declarations/Contracts/TelemetryTypes) megtekintheti az egyes telemetria a kivételt képező objektumot.
 
 Ha az SDK konfigurációs funkcióit anélkül éri el, hogy elvégezte őket a szolgáltatáshoz `appInsights.setup()` , mostantól megkeresheti ezeket a függvényeket `appInsights.Configurations` (például: `appInsights.Configuration.setAutoCollectDependencies(true)` ). Tekintse át az alapértelmezett konfiguráció módosításait a következő szakaszban.
@@ -413,7 +413,7 @@ Ezek a tulajdonságok az ügyfél-specifikusak, így a `appInsights.defaultClien
 | correlationIdRetryIntervalMs    | Az a várakozási idő, amely után újra kell hívni az azonosítót az összetevők közötti korrelációhoz (alapértelmezett `30000` ).     |
 | correlationHeaderExcludedDomains| Azoknak a tartományoknak a listája, amelyeket ki szeretne zárni az összetevők korrelációs fejlécének injektálásával (alapértelmezett: [config. TS](https://github.com/Microsoft/ApplicationInsights-node.js/blob/develop/Library/Config.ts)).|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A telemetria figyelése a portálon](./overview-dashboard.md)
 * [Analytics-lekérdezések írása a telemetrián](../log-query/get-started-portal.md)

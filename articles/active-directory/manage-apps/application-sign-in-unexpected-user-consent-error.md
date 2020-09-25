@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0be99a673fe3d062e114f375891f3c821c118d76
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 76e94e3c1571f865b41acd488ee1e868043427b2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499500"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321946"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>Váratlan hiba történt az alkalmazáshoz való beleegyezett művelet végrehajtásakor
 
@@ -33,7 +33,7 @@ Bizonyos feltételeknek igaznak kell lennie ahhoz, hogy egy felhasználó beleeg
 
 ## <a name="requesting-not-authorized-permissions-error"></a>Nem engedélyezett engedélyeket kérő hiba
 * **AADSTS90093:** &lt; a clientAppDisplayName &gt; egy vagy több olyan engedélyt kér, amelynek Ön nem jogosult a jóváhagyásra. Forduljon a rendszergazdához, aki beleegyezik az alkalmazásba az Ön nevében.
-* **AADSTS90094:** &lt; &gt;a clientAppDisplayName engedélyre van szüksége a szervezet erőforrásaihoz való hozzáféréshez, csak a rendszergazda adhat meg. Kérjen engedélyt a rendszergazdától az alkalmazáshoz, hogy használhassa azt.
+* **AADSTS90094:** &lt; &gt; a clientAppDisplayName engedélyre van szüksége a szervezet erőforrásaihoz való hozzáféréshez, csak a rendszergazda adhat meg. Kérjen engedélyt a rendszergazdától az alkalmazáshoz, hogy használhassa azt.
 
 Ez a hiba akkor fordul elő, ha egy olyan felhasználó, aki nem vállalati rendszergazda, olyan alkalmazást próbál meg használni, amely csak a rendszergazda által biztosított engedélyeket kér. Ezt a hibát feloldható egy rendszergazda, aki a szervezet nevében hozzáférést biztosít az alkalmazáshoz.
 
@@ -78,7 +78,15 @@ Ezek a hibák akkor fordulnak elő, amikor az alkalmazás a felhasználó beleeg
 
     -   Az alkalmazás hozzáadása az Azure AD Application Galleryből
 
-## <a name="next-steps"></a>További lépések 
+## <a name="risky-app-error-and-warning"></a>Kockázatos alkalmazáshiba és figyelmeztetés
+* Ez az alkalmazás kockázatos lehet. Ha megbízik az alkalmazásban, kérje meg a rendszergazdát, hogy engedélyezze a hozzáférést.
+* Ez az alkalmazás kockázatos lehet. Csak akkor folytassa, ha megbízik az alkalmazásban.
+
+Mindkét üzenet akkor jelenik meg, ha a Microsoft megállapította, hogy a beleegyezett kérelem kockázatos lehet. Számos más tényező között ez akkor fordulhat elő, ha egy [ellenőrzött közzétevőt](../develop/publisher-verification-overview.md) nem adtak hozzá az alkalmazás regisztrálásához. Az első üzenet jelenik meg a végfelhasználók számára, ha a [rendszergazda beleegyezik a munkafolyamat](configure-admin-consent-workflow.md) le van tiltva. A második üzenet jelenik meg a végfelhasználók számára, ha a rendszergazdai jogosultsági szintű munkafolyamat engedélyezve van, és a rendszergazdák. 
+
+A végfelhasználók nem tudnak jóváhagyást adni a kockázatnak kitett alkalmazásokhoz. A rendszergazdáknak képesnek kell lenniük, de körültekintően kell értékelniük az alkalmazást, és körültekintően kell eljárniuk. Ha az alkalmazás a további felülvizsgálat során gyanúsnak tűnik, a jelentés a Microsofttól kérhető a beleegyezési képernyőn. 
+
+## <a name="next-steps"></a>Következő lépések 
 
 [Alkalmazások, engedélyek és beleegyezett Azure Active Directory (v1-végpont)](https://docs.microsoft.com/azure/active-directory/active-directory-apps-permissions-consent)<br>
 

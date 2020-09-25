@@ -1,14 +1,14 @@
 ---
 title: Bérlők közötti felügyeleti megoldások
 description: Az Azure-beli delegált erőforrás-kezelés lehetővé teszi a több-bérlős felügyeleti élményt.
-ms.date: 09/10/2020
+ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1ec2beeef86478e36fe3809e8dabcd40333c098a
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 70356fd3856e517ca8fb3414a4ae2a8ccf28326e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90602387"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336632"
 ---
 # <a name="cross-tenant-management-experiences"></a>Bérlők közötti felügyeleti megoldások
 
@@ -48,7 +48,7 @@ A legtöbb feladat és szolgáltatás a felügyelt bérlők delegált erőforrá
 
 [Azure-ív](../../azure-arc/index.yml):
 
-- Hibrid kiszolgálók kezelése a skálán – [Azure arc-kompatibilis kiszolgálók (előzetes verzió)](../../azure-arc/servers/overview.md):
+- Hibrid kiszolgálók kezelése a skálán – [Azure arc-kompatibilis kiszolgálók](../../azure-arc/servers/overview.md):
   - Az Azure-on kívüli delegált előfizetésekhez és/vagy erőforráscsoportokhoz [csatlakoztatott Windows Server-vagy Linux-alapú gépek felügyelete](../../azure-arc/servers/onboard-portal.md)
   - Csatlakoztatott gépek kezelése Azure-konstrukciók használatával, például Azure Policy és címkézés
   - Győződjön meg arról, hogy ugyanazokat a szabályzatokat alkalmazza az ügyfelek hibrid környezetei között
@@ -157,7 +157,7 @@ Az összes forgatókönyv esetén vegye figyelembe a következő korlátozásoka
 - A Azure Databrickst használó előfizetések előállítása közben a bérlők kezelése szolgáltatásban lévő felhasználók jelenleg nem indíthatnak Azure Databricks-munkaterületeket a delegált előfizetéseken.
 - Az erőforrás-zárolással rendelkező előfizetések és erőforráscsoportok bevezetése közben ezek a zárolások nem akadályozzák meg a felhasználók által végzett műveletek végrehajtását a bérlők felügyeletében. A rendszer által felügyelt erőforrások, például az Azure által felügyelt alkalmazások vagy az Azure-tervrajzok (rendszer által hozzárendelt megtagadási hozzárendelések) által létrehozott [hozzárendelések megtagadása](../../role-based-access-control/deny-assignments.md) , hogy a bérlők ne tudják eljárni az adott erőforráson. Ugyanakkor az ügyfél bérlője jelenleg nem hozhat létre saját megtagadási hozzárendeléseket (felhasználó által hozzárendelt megtagadási hozzárendeléseket).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az ügyfeleket az Azure világítótoronyba [Azure Resource Manager sablonok használatával](../how-to/onboard-customer.md) vagy [egy magán-vagy nyilvános felügyelt szolgáltatás Azure Marketplace-re való közzétételével](../how-to/publish-managed-services-offers.md)teheti közzé.
 - [Megtekintheti és kezelheti az ügyfeleket](../how-to/view-manage-customers.md) a Azure Portalban lévő **ügyfelekkel** .

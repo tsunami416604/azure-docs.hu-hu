@@ -10,14 +10,14 @@ ms.assetid: 1c46ed69-4049-44ec-9b46-e90e964a4a8e
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/09/2020
+ms.date: 09/23/2020
 ms.author: jingwang
-ms.openlocfilehash: c761cf1265ad61517a9d0123b932d31b27d157dd
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: e32115c590d73f5c93f322d3bd542096f2964a4c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89613502"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297606"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Metaadatok beolvasása tevékenység Azure Data Factory
 
@@ -35,7 +35,7 @@ A következő funkciók érhetők el a vezérlési folyamatban:
 
 ## <a name="capabilities"></a>Képességek
 
-A metaadatok beolvasása tevékenység bemenetként fogadja az adatkészletet, és a metaadatok adatait adja vissza kimenetként. Jelenleg a következő összekötők és a megfelelő lekérdezhető metaadatok támogatottak. A visszaadott metaadatok maximális mérete 2 MB.
+A metaadatok beolvasása tevékenység bemenetként fogadja az adatkészletet, és a metaadatok adatait adja vissza kimenetként. Jelenleg a következő összekötők és a megfelelő lekérdezhető metaadatok támogatottak. A visszaadott metaadatok maximális mérete körülbelül 4 MB.
 
 >[!NOTE]
 >Ha a metaadatok lekérése tevékenységet egy saját üzemeltetésű integrációs modulon futtatja, a legújabb funkciók a 3,6-es vagy újabb verziókban támogatottak.
@@ -87,7 +87,7 @@ A következő metaadatokat adhatja meg a metaadatok beolvasása tevékenység me
 | contentMD5 | A fájl MD5-je. Csak a fájlokra érvényes. |
 | szerkezet | A fájl vagy a viszonyítási adatbázis táblázatának adatstruktúrája. A visszaadott érték az oszlopnevek és az oszlopok típusának listája. |
 | columnCount | A fájl vagy a rokon tábla oszlopainak száma. |
-| létezik| Azt határozza meg, hogy létezik-e fájl, mappa vagy tábla. Vegye figyelembe, hogy ha a `exists` metaadatok beolvasása mezők listájában meg van adva, akkor a tevékenység nem fog működni, még akkor sem, ha a fájl, mappa vagy tábla nem létezik. Ehelyett `exists: false` a rendszer visszaadja a kimenetet. |
+| létezik| Azt határozza meg, hogy létezik-e fájl, mappa vagy tábla. Ha `exists` meg van adva a metaadatok beolvasása mező listában, a tevékenység nem fog működni, még akkor sem, ha a fájl, mappa vagy tábla nem létezik. Ehelyett `exists: false` a rendszer visszaadja a kimenetet. |
 
 >[!TIP]
 >Ha szeretné ellenőrizni, hogy egy fájl, mappa vagy tábla létezik-e, `exists` a metaadatok beolvasása tevékenység mezők listájában adhatja meg. Ezt követően a tevékenység kimenetében is megtekintheti az `exists: true/false` eredményt. Ha `exists` nincs megadva a mezőlista, a metaadatok beolvasása tevékenység sikertelen lesz, ha az objektum nem található.

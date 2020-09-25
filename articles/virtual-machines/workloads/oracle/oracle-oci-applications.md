@@ -3,7 +3,7 @@ title: Architektúrák Oracle-alkalmazások üzembe helyezéséhez az Azure Virt
 description: Alkalmazás-architektúrák Oracle-alkalmazások, például az E-Business Suite, a JD Edwards EnterpriseOne és a PeopleSoft Microsoft Azure virtuális gépeken való üzembe helyezéséhez az Azure-ban vagy az Oracle Cloud Infrastructure-ben (OCI) található adatbázisokkal.
 services: virtual-machines-linux
 documentationcenter: ''
-author: rgardler
+author: dbakevlar
 manager: ''
 tags: ''
 ms.service: virtual-machines
@@ -11,14 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/18/2019
-ms.author: rogardle
+ms.author: kegorman
 ms.custom: ''
-ms.openlocfilehash: 9fe6886f368d053af919b326fabf1ad4c3066717
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 838bd2014f543747a3c3ec7edee7b278f5f4d8df
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224536"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91274602"
 ---
 # <a name="architectures-to-deploy-oracle-applications-on-azure"></a>Architektúrák Oracle-alkalmazások üzembe helyezéséhez az Azure-ban
 
@@ -68,7 +68,7 @@ A következő szakaszok a különböző összetevőket ismertetik magas szinten.
 
 Az alkalmazás szintje el van különítve a saját alhálózatában. Több virtuális gép van beállítva a hibatűréshez és az egyszerű javítások kezeléséhez. Ezeket a virtuális gépeket megosztott tárolók is használhatják, amelyeket Azure NetApp Files és ultra SSD-k kínálnak. Ez a konfiguráció lehetővé teszi a javítások egyszerű üzembe helyezését állásidő nélkül. Az alkalmazási rétegben található gépeket nyilvános Load balancernek kell ellátnia, hogy az EBS-alkalmazások szintjére érkező kéréseket akkor is dolgozza fel a rendszer, ha a réteg egyik gépe hiba miatt offline állapotban van.
 
-### <a name="load-balancer"></a>Terheléselosztóval
+### <a name="load-balancer"></a>Terheléselosztó
 
 Az Azure Load Balancer lehetővé teszi, hogy a magas rendelkezésre állás biztosítása érdekében a számítási feladatok több példányán keresztül ossza el a forgalmat. Ebben az esetben egy nyilvános terheléselosztó van beállítva, mivel a felhasználók hozzáférhetnek az EBS-alkalmazáshoz a weben keresztül. A terheléselosztó elosztja a terhelést mindkét gépre a középső szinten. A nagyobb biztonság érdekében csak a vállalati hálózatról a rendszerhez hozzáférő felhasználóktól érkező adatforgalmat helyek közötti VPN-vagy ExpressRoute-és hálózati biztonsági csoportok használatával.
 
@@ -189,7 +189,7 @@ Az PeopleTools-ügyfél az adminisztrációs tevékenységek, például a fejles
 
 [!INCLUDE [virtual-machines-oracle-applications-identity](../../../../includes/virtual-machines-oracle-applications-identity.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Használjon [Terraform-szkripteket](https://github.com/microsoft/azure-oracle) Oracle-alkalmazások beállításához az Azure-ban, és hozzon létre több Felhőbeli kapcsolatot a OCI használatával.
 

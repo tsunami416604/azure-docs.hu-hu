@@ -3,12 +3,12 @@ title: Több-turn beszélgetések – QnA Maker
 description: A kérdésekkel és környezettel kezelheti a több fordulatot, más néven a robotot az egyik kérdésből a másikba. A többszörös bekapcsolás lehetősége van arra, hogy olyan háttérbeli beszélgetést lehessen használni, ahol az előző kérdés kontextusa befolyásolja a következő kérdést és választ.
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: 93bc6201cb627dc27071caf7beded5778b06ccb6
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: eff2eccac55bc05784636ecd9d2dfb784f86c4ef
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86229346"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322835"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Követő kérések használata több kérdés–válasz párból álló beszélgetések létrehozásához
 
@@ -52,7 +52,7 @@ Ha ezt a beállítást választja, QnA Maker kibontja a dokumentum struktúráj�
 
 A többszörös kapcsolási struktúra csak URL-címekből, PDF-fájlokból vagy DOCX-fájlokból következtethető ki. A struktúra példájának megtekintéséhez tekintse meg a [Microsoft Surface felhasználói manuális PDF-fájljának](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf)képét.
 
-![! [A felhasználói kézikönyv struktúrájának példája] (.. /Media/conversational-Context/import-file-with-conversational-structure.png)](../media/conversational-context/import-file-with-conversational-structure.png#lightbox)
+:::image type="content" source="../media/conversational-context/import-file-with-conversational-structure.png" alt-text="A képernyőképen egy példa látható a struktúrára egy felhasználói kézikönyvben." lightbox="../media/conversational-context/import-file-with-conversational-structure.png":::
 
 ### <a name="building-your-own-multi-turn-document"></a>Saját multi-turn dokumentum kiépítése
 
@@ -92,7 +92,7 @@ Válassza a **megtekintési beállítások**, majd a **környezet megjelenítés
 
 A többszörös kapcsolási környezet az első oszlopban jelenik meg.
 
-![! [A "Context (előnézet)" oszlop] (.. /Media/conversational-Context/surface-manual-pdf-follow-up-prompt.png)](../media/conversational-context/surface-manual-pdf-follow-up-prompt.png#lightbox)
+:::image type="content" source="../media/conversational-context/surface-manual-pdf-follow-up-prompt.png" alt-text="A képernyőképen a környezeti szakasz jelenik meg." lightbox="../media/conversational-context/surface-manual-pdf-follow-up-prompt.png":::
 
 Az előző képen a **#1** félkövér szöveget jelöl az oszlopban, amely az aktuális kérdést jelzi. A szülő kérdés a sorban lévő legfelső elem. Az alábbi kérdések a csatolt kérdés-válasz párok. Ezek az elemek kiválaszthatók, így azonnal átléphet a többi környezeti elemre.
 
@@ -167,7 +167,7 @@ Amikor új kérdés-válasz párokat ad hozzá a tudásbázishoz, az egyes páro
 
     A szülő kérdés egy új kérdést jelenít meg az egyik lehetőség közül.
 
-    ![! [A környezeti oszlop mindkét kérdés esetében egy követő kérdés-kapcsolatot jelez] (.. /Media/conversational-Context/child-prompt-created.png)](../media/conversational-context/child-prompt-created.png#lightbox)
+    :::image type="content" source="../media/conversational-context/child-prompt-created.png" alt-text="A képernyőfelvételen a környezeti oszlop látható, a két kérdés esetében pedig követő kérdéses kapcsolat látható." lightbox="../media/conversational-context/child-prompt-created.png":::
 
 1. Miután hozzáadta a követő parancssort, válassza a **Mentés és betanítás** lehetőséget a felső navigációs sávon.
 
@@ -365,7 +365,7 @@ A [QnA Maker Update API](https://docs.microsoft.com/rest/api/cognitiveservices/q
 
 A QnA Maker támogatja a verziókövetés használatát, többek között az exportált fájlban lévő több lépésből álló beszélgetés lépéseivel.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a [párbeszédpanel](https://github.com/microsoft/BotBuilder-Samples/blob/master/samples/csharp_dotnetcore/adaptive-dialog/07.qnamaker/QnAMaker.csproj) környezetfüggő beszélgetésekről, vagy további információ a [fogalmi robot kialakításáról a több-turn beszélgetések esetében](https://docs.microsoft.com/azure/bot-service/bot-builder-conversations?view=azure-bot-service-4.0).
 

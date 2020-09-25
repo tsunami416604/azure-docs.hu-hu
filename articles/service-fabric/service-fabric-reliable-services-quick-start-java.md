@@ -1,17 +1,17 @@
 ---
 title: Az első megbízható szolgáltatás létrehozása javában
-description: Bevezetés az állapot nélküli és állapot-nyilvántartó szolgáltatásokkal Microsoft Azure Service Fabric alkalmazás létrehozásához.
+description: Bevezetés egy Microsoft Azure Service Fabric alkalmazás létrehozására az állapot nélküli és állapot-nyilvántartó szolgáltatásokkal Java-ban.
 author: suhuruli
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.custom: devx-track-java
 ms.author: suhuruli
-ms.openlocfilehash: 30797e68081e346ee0f31f77da15f820776337a0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f74265c7b774e4b471c8621e99377a009f939ee1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324505"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91250096"
 ---
 # <a name="get-started-with-reliable-services-in-java"></a>Ismerkedés a Reliable Services Javával
 > [!div class="op_single_selector"]
@@ -118,7 +118,7 @@ A platform meghívja ezt a módszert, ha a szolgáltatás egy példánya el van 
 
 Ezt a koordinálást a Service Fabric felügyeli, hogy a szolgáltatás legyen elérhető és megfelelően kiegyensúlyozott.
 
-`runAsync()`ne tiltsa le a szinkron módon. A runAsync implementációjának CompletableFuture kell visszaadnia, hogy a futtatókörnyezet továbbra is folytatódjon. Ha a munkaterhelésnek egy hosszú ideig futó feladatot kell megvalósítani, amelyet a CompletableFuture belül kell végrehajtani.
+`runAsync()` ne tiltsa le a szinkron módon. A runAsync implementációjának CompletableFuture kell visszaadnia, hogy a futtatókörnyezet továbbra is folytatódjon. Ha a munkaterhelésnek egy hosszú ideig futó feladatot kell megvalósítani, amelyet a CompletableFuture belül kell végrehajtani.
 
 #### <a name="cancellation"></a>Lemondás
 A számítási feladatok megszakítása a megadott lemondási token által koordinált együttműködési erőfeszítés. A rendszer megvárja a feladat befejezését (sikeres befejezéssel, megszakítással vagy hibával), mielőtt továbblép. Fontos, hogy tiszteletben tartsák a lemondási jogkivonatot, fejezze be a munkát, és `runAsync()` a lehető leggyorsabban lépjen ki, amikor a rendszer a lemondást kéri. Az alábbi példa bemutatja, hogyan kezelheti a lemondási eseményt:
@@ -184,7 +184,7 @@ protected CompletableFuture<?> runAsync(CancellationToken cancellationToken) {
 ```
 
 ### <a name="runasync"></a>RunAsync
-`RunAsync()`hasonló állapotú és állapot nélküli szolgáltatásokban működik. Egy állapot-nyilvántartó szolgáltatásban azonban a platform további feladatokat hajt végre az Ön nevében a végrehajtás előtt `RunAsync()` . Ez a munka magában foglalja annak biztosítását, hogy a megbízható állapot-kezelő és a megbízható gyűjtemények használatra készek legyenek.
+`RunAsync()` hasonló állapotú és állapot nélküli szolgáltatásokban működik. Egy állapot-nyilvántartó szolgáltatásban azonban a platform további feladatokat hajt végre az Ön nevében a végrehajtás előtt `RunAsync()` . Ez a munka magában foglalja annak biztosítását, hogy a megbízható állapot-kezelő és a megbízható gyűjtemények használatra készek legyenek.
 
 ### <a name="reliable-collections-and-the-reliable-state-manager"></a>Megbízható gyűjtemények és a megbízható State Manager
 ```java
@@ -262,6 +262,6 @@ Az alkalmazás telepítése után nyisson meg egy böngészőt, és keresse fel 
 > Ha az alkalmazást egy biztonságos Linux-fürtön szeretné üzembe helyezni az Azure-ban, konfigurálnia kell egy tanúsítványt, hogy érvényesítse az alkalmazást a Service Fabric futtatókörnyezettel. Ezzel lehetővé teszi, hogy a Reliable Services szolgáltatásai kommunikáljanak a mögöttes Service Fabric Runtime API-kkal. További információ: [Reliable Services alkalmazás konfigurálása Linux-fürtökön való futtatásra](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).  
 >
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A Service Fabric parancssori felület használatának első lépései](service-fabric-cli.md)

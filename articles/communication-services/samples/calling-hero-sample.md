@@ -1,5 +1,5 @@
 ---
-title: Csoport hívása – hős minta
+title: Csoportos hívás kiemelt mintája
 titleSuffix: An Azure Communication Services sample overview
 description: Az Azure kommunikációs szolgáltatásokkal való meghívásának áttekintése, amely lehetővé teszi a fejlesztők számára a minta belső működésének megismerését.
 author: ddematheu
@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: caee5686695594604f49dcbade54342a9134abc0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 9bd203586d6a9da974604099d361d2908a39e1d9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90947145"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297987"
 ---
 # <a name="get-started-with-the-group-calling-hero-sample"></a>Ismerkedés a csoport meghívása Hero-mintával
 
@@ -30,7 +30,7 @@ Az Azure kommunikációs szolgáltatások **csoportos hívása a Hero minta** az
 Ebből a rövid útmutatóból megtudhatja, hogyan működik a minta a minta helyi gépen való futtatása előtt. Ezután üzembe helyezzük a mintát az Azure-ban a saját Azure kommunikációs szolgáltatások erőforrásaival.
 
 > [!IMPORTANT]
-> [A minta letöltése a GitHubról](https://github.com/Azure/Communication/tree/master/samples)
+> [A minta letöltése a GitHubról](https://github.com/Azure/Communication/tree/master/samples/Group%20Calling%20Hero%20Sample/Web/Calling)
 
 ## <a name="overview"></a>Áttekintés
 
@@ -54,7 +54,7 @@ A fő hívó képernyő összetevői:
 - **Fejléc**: ez az a hely, ahol az elsődleges hívási vezérlők a beállítások és a résztvevő oldali sáv váltására, a videó bekapcsolására és a kikapcsolására, a megosztási képernyőre és a hívás elhagyása.
 - **Oldalsó sáv**: ebben az esetben a rendszer megjeleníti a résztvevők és a beállítások adatait, ha a fejlécben lévő vezérlők használatával váltanak ki. Az összetevőt a jobb felső sarokban található "X" használatával lehet elhagyni. A résztvevők oldali sáv megjeleníti a résztvevők listáját, valamint egy hivatkozást, amely további felhasználókat hívhat meg a csevegéshez. A beállítások oldal sáv lehetővé teszi a mikrofon és a kamera beállításainak konfigurálását.
 
-Az alábbiakban további információkat talál az előfeltételekről, a minta beállításának lépéseiről és a részletes oktatóanyagokról, amelyek segítenek a különböző összetevőinek megismerésében.
+Az alábbiakban további információkat talál a minta beállításához szükséges előfeltételekről és lépésekről.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -72,23 +72,17 @@ Ha helyileg szeretnénk üzembe helyezni, mindkét alkalmazást el kell indítan
 
 A mintát helyileg tesztelheti úgy, hogy több böngészős munkamenetet nyit meg a hívás URL-címével, amely több felhasználó hívását szimulálja.
 
-### <a name="before-running-the-sample-for-the-first-time"></a>A minta első futtatása előtt
+## <a name="before-running-the-sample-for-the-first-time"></a>A minta első futtatása előtt
 
 1. Nyisson meg egy PowerShell-példányt, a Windows Terminalt, a parancssort vagy a megfelelőt, és navigáljon ahhoz a könyvtárhoz, amelyet a minta klónozására szeretne használni.
-2. `git clone`
-3. Lépjen a **hívás/ClientApp mappára** , és futtassa a parancsot. `npm run setup`
-   1. Ha az 1. hibát látja, a kimenetben keresse meg az URL-címet, ahol engedélyezni kell az ügyfelet. (Az URL a következőképpen fog kinézni: `app.vssps.visualstudio.com/oauth2/authorize?clientid=...` ) Miután meglátogatta az URL-címet egy böngészőben, másolja a parancsot a böngészőablakból, és futtassa.
-   2. Futtassa `npm run setup-vsts-auth` újra a parancsot az előző lépés befejezése után.
-4. Szerezze be a `Connection String` Azure Portal. A kapcsolati karakterláncokkal kapcsolatos további információkért lásd: [Azure kommunikációs erőforrások létrehozása](../quickstarts/create-communication-resource.md)
-5. A kapcsolódási karakterlánc lekérése után adja hozzá a kapcsolódási karakterláncot a Service .NET mappában található **hívási/appsetting.js** fájlhoz. Adja meg a kapcsolatok sztringjét a (z) változóban: `ResourceConnectionString` .
+2. `git clone https://github.com/Azure/Communication.git`
+3. Szerezze be a `Connection String` Azure Portal. A kapcsolati karakterláncokkal kapcsolatos további információkért lásd: [Azure kommunikációs erőforrások létrehozása](../quickstarts/create-communication-resource.md)
+4. A `Connection String` hozzáadása után adja hozzá a kapcsolódási karakterláncot a Service .net mappában található **hívási/appsetting.js** fájlhoz. Adja meg a kapcsolatok sztringjét a (z) változóban: `ResourceConnectionString` .
 
 ### <a name="local-run"></a>Helyi Futtatás
 
-1. Ugrás a hívó mappára
-2. A megoldás megnyitása a `Calling.csproj` Visual Studióban
-2. A `Calling` projekt futtatása *
-
-* A böngésző ekkor megnyílik `localhost:5000` (ahol a csomópont telepíti az ügyfélalkalmazás alkalmazást). Az alkalmazás nem támogatott az Internet Explorerben.
+1. A Visual Studióban nyissa meg a hívó mappát és a megoldás megnyitása lehetőséget. `Calling.csproj`
+2. `Calling`Projekt futtatása. A böngésző ekkor megnyílik a localhost címen: 5001
 
 #### <a name="troubleshooting"></a>Hibaelhárítás
 
@@ -108,7 +102,10 @@ Ha törölni szeretné a kommunikációs szolgáltatások előfizetését, tör�
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információért tekintse át a következő cikkeket:
+>[!div class="nextstepaction"] 
+>[A minta letöltése a GitHubról](https://github.com/Azure/Communication/tree/master/samples/Group%20Calling%20Hero%20Sample/Web/Calling)
+
+További információkért tekintse át a következő cikkeket:
 
 - Ismerkedjen meg [a hívó ügyféloldali kódtár használatával](../quickstarts/voice-video-calling/calling-client-samples.md)
 - Tudnivalók az [ügyféloldali kódtár képességeinek meghívásáról](../quickstarts/voice-video-calling/calling-client-samples.md)
@@ -116,7 +113,7 @@ További információért tekintse át a következő cikkeket:
 
 ## <a name="additional-reading"></a>További információ
 
-- [Azure Communication Preview](https://github.com/Azure/communication-preview) – további információ a hívó web SDK-ról
+- [Azure Communication GitHub](https://github.com/Azure/communication) – további példákat és információkat talál a hivatalos GitHub-oldalon
 - [Redux](https://redux.js.org/) – ügyféloldali állapot kezelése
 - [FluentUI](https://developer.microsoft.com/fluentui#/) – Microsoft powered UI Library
 - [Reagálás](https://reactjs.org/) – függvénytár a felhasználói felületek létrehozásához

@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
-ms.openlocfilehash: 72ec59d0082071746cb8db2b06412d90b4958914
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce438ad0725aff677f897a635a0cd32d92bbbdbe
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359959"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265469"
 ---
 # <a name="configure-group-claims-for-applications-with-azure-active-directory"></a>Jogcímek konfigurálása az alkalmazásokhoz Azure Active Directory
 
@@ -78,11 +78,11 @@ Egy katalógus vagy nem katalógus SAML-alkalmazás csoportos jogcímeinek konfi
 
 Kattintson a **Csoport hozzáadása** elemre.  
 
-![jogcímek felhasználói felülete](media/how-to-connect-fed-group-claims/group-claims-ui-1.png)
+![Képernyőfelvétel: a "felhasználói attribútumok & jogcímek" lap, amelynél a "Csoport hozzáadása" lehetőség be van jelölve.](media/how-to-connect-fed-group-claims/group-claims-ui-1.png)
 
 A választógombok használatával kiválaszthatja, hogy mely csoportok szerepeljenek a jogkivonatban
 
-![jogcímek felhasználói felülete](media/how-to-connect-fed-group-claims/group-claims-ui-2.png)
+![A "csoportok jogcímei" ablakot a "biztonsági csoportok" beállítással megjelenítő képernyőkép.](media/how-to-connect-fed-group-claims/group-claims-ui-2.png)
 
 | Kiválasztás | Leírás |
 |----------|-------------|
@@ -93,15 +93,15 @@ A választógombok használatával kiválaszthatja, hogy mely csoportok szerepel
 
 Például az összes olyan biztonsági csoport kibocsátásához, amely tagja a felhasználónak, válassza a biztonsági csoportok lehetőséget.
 
-![jogcímek felhasználói felülete](media/how-to-connect-fed-group-claims/group-claims-ui-3.png)
+![Képernyőkép, amely megjeleníti a "csoportok jogcímei" ablakot a "biztonsági csoportok" beállításnál, a "forrás attribútum" legördülő menüt pedig megnyitva.](media/how-to-connect-fed-group-claims/group-claims-ui-3.png)
 
 Ha az Azure AD objectIDs helyett Active Directory szinkronizált Active Directory attribútumokkal szeretne csoportokat kibocsátani, válassza ki a kívánt formátumot a legördülő listából. A jogcímek között csak a Active Directory szinkronizált csoportok lesznek felszámítva.
 
-![jogcímek felhasználói felülete](media/how-to-connect-fed-group-claims/group-claims-ui-4.png)
+![A "forrás attribútum" legördülő menüt megjelenítő képernyőkép.](media/how-to-connect-fed-group-claims/group-claims-ui-4.png)
 
 Ha csak az alkalmazáshoz hozzárendelt csoportokat kívánja kibocsátani, válassza **az alkalmazáshoz hozzárendelt csoportok** elemet.
 
-![jogcímek felhasználói felülete](media/how-to-connect-fed-group-claims/group-claims-ui-4-1.png)
+![Képernyőfelvétel: a "csoport jogcímei" ablak "az alkalmazáshoz rendelt csoportokkal" van kiválasztva.](media/how-to-connect-fed-group-claims/group-claims-ui-4-1.png)
 
 Az alkalmazáshoz rendelt csoportok szerepelni fognak a jogkivonatban.  Más csoportok, amelyeknek a felhasználó tagja, el lesz hagyva.  Ha ezt a lehetőséget választja, a beágyazott csoportok nem szerepelnek, és a felhasználónak az alkalmazáshoz rendelt csoport közvetlen tagjának kell lennie.
 
@@ -115,11 +115,11 @@ A csoportos jogcímek kibocsátása a speciális beállítások területen talá
 
 A csoportjogcím nevének testreszabása: Ha be van jelölve, egy másik jogcím-típus adható meg a csoport jogcímeihez.   A névtér mezőben adja meg a jogcím típusát a név mezőben, valamint a jogcím opcionális névterét.
 
-![jogcímek felhasználói felülete](media/how-to-connect-fed-group-claims/group-claims-ui-5.png)
+![Képernyőkép: "speciális beállítások" szakasz, "a csoport nevének testreszabása" kiválasztott és "név" és "névtér" érték van megadva.](media/how-to-connect-fed-group-claims/group-claims-ui-5.png)
 
 Egyes alkalmazásokban a csoporttagság információit kell megjeleníteni a "szerepkör" jogcímben. A felhasználó csoportjait szerepkörökként is kibocsáthatja a "szerepkör-jogcímek kibocsátása" jelölőnégyzet bejelölésével.
 
-![jogcímek felhasználói felülete](media/how-to-connect-fed-group-claims/group-claims-ui-6.png)
+![Képernyőkép: "speciális beállítások" szakasz, "a csoport nevének testreszabása" és a "csoportok kibocsátása szerepkör-jogcímként" beállítás látható.](media/how-to-connect-fed-group-claims/group-claims-ui-6.png)
 
 > [!NOTE]
 > Ha a csoportok adatai szerepkörként való kibocsátásának lehetősége van használatban, csak a csoportok jelennek meg a szerepkör-jogcímben.  A felhasználó által hozzárendelt összes alkalmazás-szerepkör nem jelenik meg a szerepkör-jogcímben.
@@ -147,7 +147,7 @@ Az érvényes értékek a következők:
 | **"DirectoryRole** | Ha a felhasználóhoz címtárbeli szerepkörök vannak hozzárendelve, a rendszer "wids" jogcímként bocsátja ki őket (a csoportok jogcíme nem lesz kibocsátva) |
 | **"Alkalmazáscsoport** | Csak azokat a csoportokat bocsátja ki, amelyek kifejezetten az alkalmazáshoz vannak rendelve, és a felhasználó tagja |
 
-   Például:
+   Példa:
 
    ```json
    "groupMembershipClaims": "SecurityGroup"
@@ -220,7 +220,7 @@ Az SAML-és OIDC-azonosító jogkivonatokban a netbiosDomain\samAccountName form
  }
  ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Engedélyezés hozzáadása csoportok & csoportok jogcímek használata ASP.NET Core webalkalmazáshoz (kód minta)](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/master/5-WebApp-AuthZ/5-2-Groups/README.md)
 - [Felhasználó vagy csoport társítása vállalati alkalmazáshoz](../../active-directory/manage-apps/assign-user-or-group-access-portal.md)

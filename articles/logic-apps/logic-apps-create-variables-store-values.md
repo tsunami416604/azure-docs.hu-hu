@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 02e9426c7fc537a43fadddb5e2c34fd9c311d69b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b486b94a74d98f5630bd0bf40ebf0864c2ec5ab8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84753253"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333902"
 ---
 # <a name="store-and-manage-values-by-using-variables-in-azure-logic-apps"></a>Értékek tárolása és felügyelete változók használatával az Azure Logic Appsben
 
@@ -55,7 +55,7 @@ Létrehozhat egy változót, és deklarálhatja az adattípusát és a kezdeti �
 
    * Ha az utolsó lépés alatt szeretne felvenni egy műveletet, válassza az **új lépés**lehetőséget.
 
-     ![Művelet hozzáadása](./media/logic-apps-create-variables-store-values/add-action.png)
+     ![A "Logic app Designer" oldalon kiválasztott "új lépés" műveletet bemutató képernyőkép.](./media/logic-apps-create-variables-store-values/add-action.png)
 
    * A lépések közötti művelet hozzáadásához vigye az egérmutatót az összekötő nyíl fölé, hogy megjelenjen a pluszjel ( **+** ). Válassza ki a plusz jelre, majd válassza a **művelet hozzáadása**lehetőséget.
 
@@ -67,7 +67,7 @@ Létrehozhat egy változót, és deklarálhatja az adattípusát és a kezdeti �
 
    | Tulajdonság | Kötelező | Érték |  Leírás |
    |----------|----------|-------|--------------|
-   | **Name (Név)** | Yes | <*változó – név*> | A növekményes változó neve |
+   | **Név** | Yes | <*változó – név*> | A növekményes változó neve |
    | **Típus** | Yes | <*változó típusa*> | A változó adattípusa |
    | **Érték** | No | <*kezdő érték*> | A változó kezdeti értéke <p><p>**Tipp**: bár nem kötelező, állítsa be ezt az értéket ajánlott eljárásként, hogy mindig tudja a változó indítási értékét. |
    |||||
@@ -179,7 +179,7 @@ Néhány példa más változó típusokra:
 
 Változó tartalmának lekéréséhez vagy hivatkozásához használhatja a Logic app Designer és a Code View Editor [változók () függvényét](../logic-apps/workflow-definition-language-functions-reference.md#variables) is. Egy változóra való hivatkozáskor használja a változó nevét tokenként, nem pedig a művelet nevét, amely a szokásos módon hivatkozik egy művelet kimenetére.
 
-Ez a kifejezés például beolvassa a [cikkben korábban létrehozott](#append-value) Array változó elemeit a `variables()` függvény használatával. A `string()` függvény karakterlánc formátumban adja vissza a változó tartalmát:`"1, 2, 3, red"`
+Ez a kifejezés például beolvassa a [cikkben korábban létrehozott](#append-value) Array változó elemeit a `variables()` függvény használatával. A `string()` függvény karakterlánc formátumban adja vissza a változó tartalmát: `"1, 2, 3, red"`
 
 ```json
 @{string(variables('myArrayVariable'))}
@@ -207,7 +207,7 @@ Egy változó állandó értékkel *való növeléséhez vagy* növeléséhez ad
 
    | Tulajdonság | Kötelező | Érték |  Leírás |
    |----------|----------|-------|--------------|
-   | **Name (Név)** | Yes | <*változó – név*> | A növekményes változó neve |
+   | **Név** | Yes | <*változó – név*> | A növekményes változó neve |
    | **Érték** | No | <*növekmény – érték*> | A változó növeléséhez használt érték. Az alapértelmezett érték egy. <p><p>**Tipp**: bár nem kötelező, állítsa be ezt az értéket ajánlott eljárásként, hogy mindig tudja a változó növelésének adott értékét. |
    ||||
 
@@ -328,7 +328,7 @@ Itt láthatók a **változó csökkentése** művelet tulajdonságai:
 
 | Tulajdonság | Kötelező | Érték |  Leírás |
 |----------|----------|-------|--------------|
-| **Name (Név)** | Yes | <*változó – név*> | A csökkentő változó neve | 
+| **Név** | Yes | <*változó – név*> | A csökkentő változó neve | 
 | **Érték** | No | <*növekmény – érték*> | A változó csökkentésének értéke. Az alapértelmezett érték egy. <p><p>**Tipp**: bár nem kötelező, állítsa be ezt az értéket ajánlott eljárásként, hogy mindig tisztában legyen a változó csökkentése érdekében megadott értékkel. |
 ||||| 
 
@@ -361,7 +361,7 @@ Az alábbi tulajdonságok a **set változóra** vonatkozó művelet tulajdonság
 
 | Tulajdonság | Kötelező | Érték |  Leírás |
 |----------|----------|-------|--------------|
-| **Name (Név)** | Yes | <*változó – név*> | A módosítandó változó neve |
+| **Név** | Yes | <*változó – név*> | A módosítandó változó neve |
 | **Érték** | Yes | <*új érték*> | Az érték, amelyet hozzá kíván rendelni a változóhoz. Mindkettőnek azonos adattípussal kell rendelkeznie. |
 ||||| 
 
@@ -419,11 +419,11 @@ A Hozzáfűzés a következőhöz: **...** műveletekhez tartozó tulajdonságok
 
 | Tulajdonság | Kötelező | Érték |  Leírás |
 |----------|----------|-------|--------------|
-| **Name (Név)** | Yes | <*változó – név*> | A módosítandó változó neve |
+| **Név** | Yes | <*változó – név*> | A módosítandó változó neve |
 | **Érték** | Yes | <*Hozzáfűzés – érték*> | A hozzáfűzni kívánt érték, amely bármilyen típusú lehet |
 |||||
 
-Ha a tervezőből a kód nézet szerkesztőjére vált, a **Hozzáfűzés a tömbhöz változó** művelet a logikai alkalmazás definíciójában jelenik meg, amely JSON formátumú. Ez a példa egy tömb változót hoz létre, és egy másik értéket helyez el a tömb utolsó elemeként. Az eredmény egy olyan frissített változó, amely tartalmazza ezt a tömböt:`[1,2,3,"red"]`
+Ha a tervezőből a kód nézet szerkesztőjére vált, a **Hozzáfűzés a tömbhöz változó** művelet a logikai alkalmazás definíciójában jelenik meg, amely JSON formátumú. Ez a példa egy tömb változót hoz létre, és egy másik értéket helyez el a tömb utolsó elemeként. Az eredmény egy olyan frissített változó, amely tartalmazza ezt a tömböt: `[1,2,3,"red"]`
 
 ```json
 "actions": {
@@ -451,6 +451,6 @@ Ha a tervezőből a kód nézet szerkesztőjére vált, a **Hozzáfűzés a töm
 },
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tudnivalók az [Logic apps-összekötőről](../connectors/apis-list.md)

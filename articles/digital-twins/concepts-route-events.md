@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 394752792d143a3712d0bb9c50189936f23062f1
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 96da89fa8d7e4783afa11807534bbaeba52b79fe
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800466"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334259"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Események irányítása az Azure digitális Twins-n belül és kívül
 
@@ -69,15 +69,22 @@ A vezérlési síkon elérhető Endpoint API-k a következők:
 
 ## <a name="create-an-event-route"></a>Esemény útvonalának létrehozása
  
-Az események útvonalait egy ügyfélalkalmazás hozza létre a következő [.net (C#) SDK](how-to-use-apis-sdks.md) -hívással: 
+Az események útvonalait egy ügyfélalkalmazás hozza létre. Ennek egyik módja a `CreateEventRoute` [.net (C#) SDK](how-to-use-apis-sdks.md) -hívás: 
 
 ```csharp
-await client.EventRoutes.AddAsync("<name-for-the-new-route>", new EventRoute("<endpoint-name>"));
+EventRoute er = new EventRoute("endpointName");
+er.Filter("true"); //Filter allows all messages
+await client.CreateEventRoute("routeName", er);
 ```
 
-* Az `endpoint-name` azonosít egy végpontot, például egy Event hub, Event Grid vagy Service Bus. Ezeket a végpontokat az előfizetésében kell létrehoznia, és az Azure Digital Twins-hoz kell csatolni a vezérlési sík API-kkal a regisztrációs hívás előtt.
+1. Először létrejön egy `EventRoute` objektum, és a konstruktor a végpont nevét veszi át. Ez a `endpointName` mező egy végpontot azonosít, például egy Event hub, Event Grid vagy Service Bus. Ezeket a végpontokat az előfizetésében kell létrehoznia, és az Azure Digital Twins-hoz kell csatolni a vezérlési sík API-kkal a regisztrációs hívás előtt.
 
-Az átadott esemény-útválasztási objektum `EventRoutes.Add` egy [ **szűrő** paramétert](./how-to-manage-routes-apis-cli.md#filter-events)is végrehajt, amellyel korlátozható az ezt az útvonalat követő események típusai.
+2. Az Event Route objektumhoz tartozik egy [**szűrő**](./how-to-manage-routes-apis-cli.md#filter-events) mező is, amely az útvonalat követő események típusának korlátozására használható. A szűrője `true` lehetővé teszi az útvonal további szűrés nélküli használatát (a szűrő `false` letiltja az útvonalat). 
+
+3. Ekkor a rendszer átadja ezt az esemény `CreateEventRoute` -útválasztási objektumot, valamint az útvonal nevét.
+
+> [!TIP]
+> Minden SDK-függvény szinkron és aszinkron verzióban érhető el.
 
 Az útvonalakat az [Azure Digital Twins CLI](how-to-use-cli.md)használatával is létrehozhatja.
 
@@ -87,7 +94,7 @@ A IoT Hub és az Azure Digital Twins különböző típusú eseményei különb�
 
 [!INCLUDE [digital-twins-notifications.md](../../includes/digital-twins-notifications.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Lásd: események útvonalának beállítása és kezelése:
 * [*Útmutató: végpontok és útvonalak kezelése*](how-to-manage-routes-apis-cli.md)

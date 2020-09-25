@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: bonova
 ms.author: bonova
-ms.reviewer: carlrab
+ms.reviewer: sstein
 ms.date: 06/26/2019
-ms.openlocfilehash: 219d3755794a09ef25cdb41afdbe154af3736538
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: cebdbfc5bb84beb621e27725d0ec58308ba45efd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985482"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321390"
 ---
 # <a name="getting-started-with-temporal-tables-in-azure-sql-database-and-azure-sql-managed-instance"></a>Első lépések a Azure SQL Database és az Azure SQL felügyelt példányainak időbeli tábláival
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -198,7 +198,7 @@ A rendszerverzióval ellátott időszakos táblázatok esetében az előzmények
 - [Tábla particionálása](/sql/relational-databases/tables/manage-retention-of-historical-data-in-system-versioned-temporal-tables#using-table-partitioning-approach)
 - [Egyéni karbantartási parancsfájl](/sql/relational-databases/tables/manage-retention-of-historical-data-in-system-versioned-temporal-tables#using-custom-cleanup-script-approach)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az időbeli táblázatokkal kapcsolatos további információkért lásd: [ideiglenes táblák](/sql/relational-databases/tables/temporal-tables)megtekintése.
 - Látogasson el a Channel 9 csatornára, hogy meghallgassa az [ügyfél időbeli megvalósításának sikertörténetét](https://channel9.msdn.com/Blogs/jsturtevant/Azure-SQL-Temporal-Tables-with-RockStep-Solutions) , és figyelje az [élő időbeli bemutatót](https://channel9.msdn.com/Shows/Data-Exposed/Temporal-in-SQL-Server-2016).

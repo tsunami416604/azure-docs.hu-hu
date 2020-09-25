@@ -11,19 +11,19 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: zhchia
-ms.openlocfilehash: 6fe256660dc73aa411cf06e2b56ce9ef26934e2f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 9be2205ad0664d58c7a2ef0c07481b1c7aa02402
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547998"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273347"
 ---
 # <a name="tutorial-configure-merchlogix-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés MerchLogix konfigurálása
 
 Az oktatóanyag célja annak bemutatása, hogy milyen lépéseket kell végrehajtani a MerchLogix és a Azure Active Directory (Azure AD) szolgáltatásban az Azure AD konfigurálásához, hogy a felhasználók és/vagy csoportok automatikusan kiépítsék és kiépítsék a MerchLogix.
 
 > [!NOTE]
-> Ez az oktatóanyag az Azure AD-beli felhasználói kiépítési szolgáltatásra épülő összekötőt ismerteti. A szolgáltatás működésének, működésének és gyakori kérdéseinek részletes ismertetését lásd: a felhasználók üzembe helyezésének [automatizálása és az SaaS-alkalmazások kiépítése Azure Active Directory használatával](../app-provisioning/user-provisioning.md).
+> Ez az oktatóanyag az Azure AD-beli felhasználói kiépítési szolgáltatásra épülő összekötőt ismerteti. A szolgáltatás funkcióival, működésével és a gyakori kérdésekkel kapcsolatos fontos részletekért lásd: [Felhasználók átadásának és megszüntetésének automatizálása a SaaS-alkalmazásokban az Azure Active Directoryval](../app-provisioning/user-provisioning.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -55,7 +55,7 @@ Az Azure AD-vel való automatikus MerchLogix konfigurálása előtt hozzá kell 
 
 5. Az eredmények panelen válassza a **MerchLogix**lehetőséget, majd a **Hozzáadás** gombra kattintva adja hozzá a MerchLogix az SaaS-alkalmazások listájához.
 
-    ![MerchLogix kiépítés][4]
+    ![Képernyőkép a Hozzáadás a hasábról szakaszban a név megadása szövegmezővel.][4]
 
 ## <a name="assigning-users-to-merchlogix"></a>Felhasználók kiosztása a MerchLogix
 
@@ -84,11 +84,11 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 2. Az SaaS-alkalmazások listájából válassza a MerchLogix lehetőséget.
 
-3. Válassza ki a **kiépítés** lapot.
+3. Válassza a **Kiépítés** lapot.
 
-4. Állítsa a **kiépítési módot** **automatikus**értékre.
+4. Állítsa a **Kiépítési mód** mezőt **Automatikus** értékre.
 
-    ![MerchLogix kiépítés](./media/merchlogix-provisioning-tutorial/Merchlogix1.png)
+    ![Képernyőkép a MerchLogix-Prisioning szakaszról, az üzembe helyezési lehetőséggel, a létesítési mód automatikus értékre állítása és a kapcsolódási teszt beállítása beállítás.](./media/merchlogix-provisioning-tutorial/Merchlogix1.png)
 
 5. A **rendszergazdai hitelesítő adatok** szakaszban:
 
@@ -112,7 +112,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 13. Az Azure AD-kiépítési szolgáltatás MerchLogix való engedélyezéséhez módosítsa a **kiépítési állapotot** **a** **Beállítások** szakaszban.
 
-14. Ha készen áll a létesítésre, kattintson a **Mentés**gombra.
+14. Amikor készen áll az átadásra, kattintson a **Mentés** gombra.
 
 Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghatározott összes felhasználó és/vagy csoport kezdeti szinkronizálását. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg az Azure AD kiépítési szolgáltatás fut. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenységre mutató hivatkozásokat, amelyek az Azure ad-kiépítési szolgáltatás által a MerchLogix-on végrehajtott összes műveletet ismertetik.
 
@@ -120,12 +120,12 @@ Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további informáci
 
 ## <a name="additional-resources"></a>További források
 
-* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>További lépések
 
-* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../app-provisioning/check-status-user-account-provisioning.md)
+* [Tudnivalók a naplók áttekintéséről és az átadási tevékenységekkel kapcsolatos jelentések lekéréséről](../app-provisioning/check-status-user-account-provisioning.md)
 
 <!--Image references-->
 [1]: common/select-azuread.png

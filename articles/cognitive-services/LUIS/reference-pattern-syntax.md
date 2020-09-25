@@ -1,15 +1,17 @@
 ---
 title: Minta szintaxisának hivatkozása – LUIS
 description: Entitásokat hozhat létre a Language Understanding (LUIS) alkalmazások felhasználói hosszúságú kimondott szöveg származó kulcsfontosságú adatok kinyeréséhez. Az ügyfélalkalmazás a kinyert adatszolgáltatásokat használja.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/14/2020
 ms.author: diberry
-ms.openlocfilehash: a0139cf5ef424288c41c436fb63313494404f841
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 533dc87e50abc5a689d1157b294070ece39dab9f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684546"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322818"
 ---
 # <a name="pattern-syntax"></a>Minta szintaxisa
 
@@ -22,17 +24,17 @@ A mintákban lévő entitásokat kapcsos zárójelek veszik körül `{}` . A min
 
 A minta szintaxisa a következő szintaxist támogatja:
 
-|Függvény|Szintaxis|Beágyazási szint|Példa|
+|Funkció|Syntax|Beágyazási szint|Példa|
 |--|--|--|--|
-|entitás| {}– kapcsos zárójelek|2|Hol van a (z) {Entity-Name} űrlap?|
+|entitás| {} – kapcsos zárójelek|2|Hol van a (z) {Entity-Name} űrlap?|
 |választható|[] – szögletes zárójelek<BR><BR>A választható és a csoportosítás bármely kombinációja esetében 3 korlát van |2|A kérdőjel nem kötelező [?]|
 |Csoportosítás|() – zárójelek|2|(a \| b)|
-|vagy| \|– függőleges sáv (cső)<br><br>A függőleges sávokon (vagy) legfeljebb 2 van egy csoportban |-|Ahol a Form ({Form-Name-Short} &#x7c; {űrlap-név-Long} &#x7c; {Form-Number})|
+|vagy| \| – függőleges sáv (cső)<br><br>A függőleges sávokon (vagy) legfeljebb 2 van egy csoportban |-|Ahol a Form ({Form-Name-Short} &#x7c; {űrlap-név-Long} &#x7c; {Form-Number})|
 |a Kimondás kezdete és/vagy vége|^-kalap|-|^ a Kimondás kezdete<br>a Kimondás befejeződött ^<br>^ Strict teljes körű megfeleltetés a ({Number}} entitással) ^|
 
 ## <a name="nesting-syntax-in-patterns"></a>Szintaxisok beágyazásának mintázata
 
-A szögletes zárójelek **választható** szintaxisa két szint beágyazására használható. Példa: `[[this]is] a new form`. Ez a példa a következő hosszúságú kimondott szöveg teszi lehetővé:
+A szögletes zárójelek **választható** szintaxisa két szint beágyazására használható. Például: `[[this]is] a new form`. Ez a példa a következő hosszúságú kimondott szöveg teszi lehetővé:
 
 |Beágyazott opcionális Kimondás – példa|Magyarázat|
 |--|--|
@@ -40,7 +42,7 @@ A szögletes zárójelek **választható** szintaxisa két szint beágyazására
 |új űrlap|megfelel a külső opcionális és nem választható szavaknak a mintában|
 |új űrlap|csak a szükséges szavakra illeszkedik|
 
-A zárójelekkel rendelkező **csoportosítási** szintaxis két szinten ágyazható be. Példa: `(({Entity1.RoleName1} | {Entity1.RoleName2} ) | {Entity2} )`. Ez a funkció lehetővé teszi a három entitás összeegyeztetését.
+A zárójelekkel rendelkező **csoportosítási** szintaxis két szinten ágyazható be. Például: `(({Entity1.RoleName1} | {Entity1.RoleName2} ) | {Entity2} )`. Ez a funkció lehetővé teszi a három entitás összeegyeztetését.
 
 Ha a Entity1 olyan hely, ahol a szerepkörök, például a Origin (Seattle) és a Destination (Kairó) és a 2. entitás egy ismert épület neve a List entitásból (RedWest-C), a következő hosszúságú kimondott szöveg az alábbi mintát képezi le:
 
@@ -56,8 +58,8 @@ A **választható** szintaxisú **Csoportosítás** kombinációja legfeljebb 3 
 
 |Engedélyezve|Példa|
 |--|--|
-|Igen|([(test1 &#x7c; teszt2)] &#x7c; test3)|
-|Nem|([([test1] &#x7c; teszt2)] &#x7c; test3)|
+|Yes|([(test1 &#x7c; teszt2)] &#x7c; test3)|
+|No|([([test1] &#x7c; teszt2)] &#x7c; test3)|
 
 ## <a name="nesting-limits-for-groups-with-or-ing-syntax"></a>A vagy-ing szintaxissal rendelkező csoportok korlátainak beágyazásával
 
@@ -65,8 +67,8 @@ A **Group** with vagy a **-ing** szintaxisának kombinációja legfeljebb 2 füg
 
 |Engedélyezve|Példa|
 |--|--|
-|Igen|(test1 &#x7c; teszt2 &#x7c; (test3 &#x7c; test4))|
-|Nem|(test1 &#x7c; teszt2 &#x7c; test3 &#x7c; (test4 &#x7c; test5)) |
+|Yes|(test1 &#x7c; teszt2 &#x7c; (test3 &#x7c; test4))|
+|No|(test1 &#x7c; teszt2 &#x7c; test3 &#x7c; (test4 &#x7c; test5)) |
 
 ## <a name="syntax-to-add-an-entity-to-a-pattern-template"></a>Entitás hozzáadása egy minta sablonhoz
 Ha entitást szeretne hozzáadni a mintázat sablonhoz, az entitás nevét kapcsos zárójelekkel kell megadnia, például: `Who does {Employee} manage?` .
@@ -124,14 +126,14 @@ Ha ki szeretné javítani ezt a kivételt a mintához, adja hozzá `the man from
 ## <a name="syntax-to-mark-optional-text-in-a-template-utterance"></a>Nem kötelező szöveg megjelölésének szintaxisa a sablonban
 Megadhatja az opcionális szöveget a teljes szövegben a reguláris kifejezés szögletes zárójelének szintaxisa alapján `[]` . A választható szöveg legfeljebb két szögletes zárójelet tud beágyazni.
 
-|Minta opcionális szöveggel|Jelentés|
+|Minta opcionális szöveggel|Értelmezés|
 |--|--|
-|`[find] email about {subject} [from {person}]`|`find`és `from {person}` nem kötelező|
+|`[find] email about {subject} [from {person}]`|`find` és `from {person}` nem kötelező|
 |"Tud segíteni [?]|Az írásjel nem kötelező.|
 
 Az írásjeleket ( `?` , `!` , `.` ) figyelmen kívül kell hagyni, és a mintázat szögletes zárójelének szintaxisa alapján figyelmen kívül kell hagyni őket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a mintákról:
 

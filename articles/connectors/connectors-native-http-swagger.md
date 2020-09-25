@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 11/01/2019
 tags: connectors
-ms.openlocfilehash: cf32938b534272a13af5891d6a31e64b8136a528
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 7717c02fb460c41543ae810820ba01efb13a1ca7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281463"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271188"
 ---
 # <a name="call-rest-endpoints-by-using-azure-logic-apps"></a>REST-végpontok hívása Azure Logic Apps használatával
 
@@ -54,17 +54,17 @@ Ez a beépített trigger HTTP-kérést küld egy REST API leíró hencegő fájl
 
    `https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/export?DocumentFormat=Swagger&ApiName=Face%20API%20-%20V1.0`
 
-   ![Adja meg a hencegő végpont URL-címét](./media/connectors-native-http-swagger/http-swagger-trigger-parameters.png)
+   ![Képernyőfelvétel: a Logic app Designer és a "H T T P + henceg" trigger és a "hencegő végpont U R L" tulajdonsága U R L értékre van beállítva.](./media/connectors-native-http-swagger/http-swagger-trigger-parameters.png)
 
 1. Ha a tervező megjeleníti a hencegő fájl által leírt műveleteket, válassza ki a használni kívánt műveletet.
 
-   ![Műveletek a hencegő fájlban](./media/connectors-native-http-swagger/http-swagger-trigger-operations.png)
+   ![Képernyőkép, amely a "H T P + henceg" triggerrel rendelkező Logic app designert és a kivágási műveleteket megjelenítő listát jeleníti meg.](./media/connectors-native-http-swagger/http-swagger-trigger-operations.png)
 
 1. Adja meg az trigger paramétereinek értékeit, amelyek a kiválasztott művelettől függően változnak a végponti hívásban. Állítsa be az ismétlődést, hogy az eseményindító milyen gyakran hívja meg a végpontot.
 
    Ez a példa átnevezi a triggert a "HTTP + hencegő trigger: Face-Detect" kifejezésre, hogy a lépésnek legyen egy leíró neve.
 
-   ![Művelet részletei](./media/connectors-native-http-swagger/http-swagger-trigger-operation-details.png)
+   ![Képernyőfelvétel: a Logic app Designer és a "H T T P + henceg" trigger, amely megjeleníti az "Arcfelismerés" műveletet.](./media/connectors-native-http-swagger/http-swagger-trigger-operation-details.png)
 
 1. Más elérhető paraméterek hozzáadásához nyissa meg az **új paraméter hozzáadása** listát, és válassza ki a kívánt paramétereket.
 
@@ -163,7 +163,7 @@ Itt talál további információt a HTTP + hencegő triggerből vagy műveletbő
 | 500 | Belső kiszolgálóhiba. Ismeretlen hiba történt. |
 |||
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése
 

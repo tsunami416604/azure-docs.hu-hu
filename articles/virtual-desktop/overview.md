@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 08455d3033040d14c85e4c4170ae34a6d05cfac1
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 03566dccbb453aa06a2b5f86bd02b86d85d61b28
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90527173"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322053"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Mit takar a Windows Virtual Desktop?
 
@@ -100,6 +100,8 @@ Az optimális teljesítmény érdekében győződjön meg arról, hogy a hálóz
 * Az ügyfél hálózatáról az Azure-régióba, ahol a gazdagépek üzembe helyezése megtörtént, a RTT késése nem haladhatja meg a 150 MS-ot. A [Experience kalkulátor](https://azure.microsoft.com/services/virtual-desktop/assessment) használatával megtekintheti a kapcsolatok állapotát és az ajánlott Azure-régiót.
 * A hálózati forgalom az ország/régió határain kívül is eltarthat, amikor asztali számítógépeket és alkalmazásokat futtató virtuális gépek csatlakoznak a felügyeleti szolgáltatáshoz.
 * A hálózati teljesítmény optimalizálása érdekében javasoljuk, hogy a munkamenet-gazdagép virtuális gépei a közös elhelyezésű azonos Azure-régióban legyenek.
+
+Az [architektúra documenation](https://docs.microsoft.com/azure/architecture/example-scenario/wvd/windows-virtual-desktop)megtekintheti a vállalati Windows virtuális asztal tipikus építészeti beállításait.
 
 ## <a name="supported-remote-desktop-clients"></a>Támogatott Távoli asztal ügyfelek
 

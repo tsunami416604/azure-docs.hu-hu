@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/4/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: f2dc93767457bfb96a9457a73adb83c0ed965308
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 084a823571281c91419a56b6212ddf6c44dd80bb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069747"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322631"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>Azure Digital Twins hibaelhárítása: mérőszámok
 
@@ -22,7 +22,7 @@ A metrikák alapértelmezés szerint engedélyezve vannak. Az Azure digitális T
 
 ## <a name="how-to-view-azure-digital-twins-metrics"></a>Azure digitális Twins-mérőszámok megtekintése
 
-1. Hozzon létre egy Azure Digital Twins-példányt. Az Azure Digital Twins-példányok beállításával kapcsolatos utasításokat itt találja: a [*példányok és a hitelesítés beállítása*](how-to-set-up-instance-scripted.md).
+1. Hozzon létre egy Azure Digital Twins-példányt. Az Azure Digital Twins-példányok beállításával kapcsolatos utasításokat itt találja: a [*példányok és a hitelesítés beállítása*](how-to-set-up-instance-portal.md).
 
 2. Keresse meg az Azure Digital Twins-példányát a [Azure Portalban](https://portal.azure.com) (Nyissa meg a lapot, és írja be a nevét a portál keresési sávjába). 
 
@@ -53,7 +53,7 @@ Az alábbi táblázatok ismertetik az egyes Azure Digital Twins-példányok ált
 
 Az API-kérelmekkel rendelkező metrikák:
 
-| Metrika | Metrika megjelenítendő neve | Unit (Egység) | Összesítés típusa| Leírás | Dimenziók |
+| Metrika | Metrika megjelenítendő neve | Egység | Összesítés típusa| Description | Dimenziók |
 | --- | --- | --- | --- | --- | --- |
 | ApiRequests | API-kérések (előzetes verzió) | Darabszám | Összesen | A digitális ikrek olvasási, írási, törlési és lekérdezési műveleteire vonatkozó API-kérések száma. |  Hitelesítés <br>Művelet <br>Protokoll <br>Állapotkód, <br>Állapotkód osztály, <br>Állapot szövege |
 | ApiRequestsFailureRate | API-kérelmek meghibásodási aránya (előzetes verzió) | Százalék | Átlag | A szolgáltatás által a példányhoz kapott API-kérelmek százalékos aránya (500) a digitális ikrek olvasási, írási, törlési és lekérdezési műveleteinek belső hibája (). | Hitelesítés <br>Művelet <br>Protokoll <br>Állapotkód, <br>Állapotkód osztály, <br>Állapot szövege
@@ -66,17 +66,17 @@ A számlázással elvégezhető mérőszámok:
 >[!NOTE]
 > Az előzetes verzióban **a számlázás nulla**. Habár ezek a metrikák továbbra is megjelennek a választható listán, a rendszer nem alkalmazza az előzetes verzióban, és mindaddig nulla marad, amíg a szolgáltatás az előzetes verziónál nem halad.
 
-| Metrika | Metrika megjelenítendő neve | Unit (Egység) | Összesítés típusa| Leírás | Dimenziók |
+| Metrika | Metrika megjelenítendő neve | Egység | Összesítés típusa| Description | Dimenziók |
 | --- | --- | --- | --- | --- | --- |
 | BillingApiOperations | Számlázási API-műveletek (előzetes verzió) | Darabszám | Összesen | Az Azure Digital Twins szolgáltatásban végrehajtott API-kérelmek számának számlázási mérőszáma. | Fogyasztásmérő azonosítója |
-| BillingMessagesProcessed | Feldolgozott számlázási üzenetek (előzetes verzió) | Darabszám | Összesen | Számlázási metrika az Azure digitális Twins-ból külső végpontokra küldött üzenetek számának megadásához. | Fogyasztásmérő azonosítója |
+| BillingMessagesProcessed | Feldolgozott számlázási üzenetek (előzetes verzió) | Darabszám | Összesen | Számlázási metrika az Azure digitális Twins-ból külső végpontokra küldött üzenetek számának megadásához.<br><br>Ahhoz, hogy csak egyetlen üzenet legyen a számlázási célokra, a hasznos adatok nem lehetnek nagyobbak 1 KB-nál. Az ennél nagyobb hasznos adatok az 1 KB-os növekményekben további üzenetnek számítanak (ezért az 1. és 2. közötti üzenet 2 üzenetnek számít, 2 és 3 KB között 3 üzenet lesz, és így tovább).<br>Ez a korlátozás a válaszokra is vonatkozik – így a válasz törzsében az 1,5 KB értéket visszaadó hívás (például: 2 művelet lesz). | Fogyasztásmérő azonosítója |
 | BillingQueryUnits | Számlázási lekérdezési egységek (előzetes verzió) | Darabszám | Összesen | A lekérdezési egységek száma, a szolgáltatások erőforrás-felhasználásának belsőleg számított mértéke, a lekérdezések végrehajtásához felhasználva. A lekérdezési egységek méréséhez rendelkezésre áll egy segítő API is: [QueryChargeHelper Class](https://docs.microsoft.com/dotnet/api/azure.digitaltwins.core.querychargehelper?view=azure-dotnet-preview&preserve-view=true) | Fogyasztásmérő azonosítója |
 
 #### <a name="ingress-metrics"></a>Bejövő metrikák
 
 Adatbevitelsel ellátott mérőszámok:
 
-| Metrika | Metrika megjelenítendő neve | Unit (Egység) | Összesítés típusa| Leírás | Dimenziók |
+| Metrika | Metrika megjelenítendő neve | Egység | Összesítés típusa| Description | Dimenziók |
 | --- | --- | --- | --- | --- | --- |
 | IngressEvents | Bejövő események (előzetes verzió) | Darabszám | Összesen | A bejövő telemetria események száma az Azure digitális Twins-ban. | Eredmény |
 | IngressEventsFailureRate | Bejövő események meghibásodási aránya (előzetes verzió) | Százalék | Átlag | Azon bejövő telemetria-események százalékos aránya, amelyek esetében a szolgáltatás belső hibát (500) ad vissza. | Eredmény |
@@ -86,7 +86,7 @@ Adatbevitelsel ellátott mérőszámok:
 
 Az útválasztással elvégezhető mérőszámok:
 
-| Metrika | Metrika megjelenítendő neve | Unit (Egység) | Összesítés típusa| Leírás | Dimenziók |
+| Metrika | Metrika megjelenítendő neve | Egység | Összesítés típusa| Description | Dimenziók |
 | --- | --- | --- | --- | --- | --- |
 | MessagesRouted | Továbbított üzenetek (előzetes verzió) | Darabszám | Összesen | Az Azure-szolgáltatásokhoz (például Event hub, Service Bus vagy Event Grid) továbbított üzenetek száma. | Végpont típusa, <br>Eredmény |
 | RoutingFailureRate | Útválasztási hibák aránya (előzetes verzió) | Százalék | Átlag | Az olyan események százalékos aránya, amelyek az Azure digitális Twins-ból egy Endpoint Azure-szolgáltatásba, például az Event hub-ba, a Service Busba vagy a Event Gridra irányítják a hibát. | Végpont típusa, <br>Eredmény |

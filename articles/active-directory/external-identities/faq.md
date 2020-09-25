@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: reference
-ms.date: 03/19/2020
+ms.date: 09/23/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 92c3e0d77a26db406e24d6d2fa07e96349613634
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 158caf3a6c4cc0efc2f89e18d065a0112b481ee9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87909480"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91274044"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Azure Active Directory B2B-együttműködés – gyakori kérdések
 
@@ -116,6 +116,9 @@ Ha a partner rendelkezik a helyszíni hitelesítési infrastruktúrához összev
 
 ### <a name="i-thought-azure-ad-b2b-didnt-accept-gmailcom-and-outlookcom-email-addresses-and-that-b2c-was-used-for-those-kinds-of-accounts"></a>Azt hittem, hogy az Azure AD B2B nem fogadta el a gmail.com és a outlook.com e-mail-címeit, és ezt a B2C-t használták ilyen típusú fiókokhoz?
 A B2B és a vállalat – fogyasztó (B2C) együttműködés közötti különbségeket a rendszer az identitások támogatásának szempontjából is eltávolítja. A használt identitás nem jó ok a B2B vagy a B2C használatával való választásra. Az együttműködési lehetőség kiválasztásával kapcsolatos információkért lásd: [vállalatközi együttműködés és B2C Összevetése Azure Active Directoryban](compare-with-b2c.md).
+
+### <a name="can-an-azure-ad-b2c-local-account-be-invited-to-an-azure-ad-tenant-for-b2b-collaboration"></a>Meghívható Azure AD B2C helyi fiók egy Azure AD-bérlőnek a B2B-együttműködéshez?
+Nem. Azure AD B2C helyi fiók csak a Azure AD B2C bérlőbe való bejelentkezéshez használható. A fiók nem használható az Azure AD-bérlőbe való bejelentkezéshez. Egy Azure AD B2C helyi fiók meghívása egy Azure AD-bérlőhöz VÁLLALATKÖZI együttműködéshez nem támogatott.
 
 ### <a name="what-applications-and-services-support-azure-b2b-guest-users"></a>Milyen alkalmazások és szolgáltatások támogatják az Azure B2B Guest Users szolgáltatást?
 Minden Azure AD-integrált alkalmazás támogatja az Azure B2B vendég felhasználókat, de a vendég felhasználói hitelesítéshez bérlőként beállított végpontot kell használniuk. Előfordulhat, hogy testre kell [szabnia a jogcímeket](claims-mapping.md) az SAML-jogkivonatban, amely akkor jön ki, amikor egy vendég felhasználó hitelesíti az alkalmazást. 

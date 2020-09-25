@@ -3,12 +3,12 @@ title: Markdown formátuma – QnA Maker
 description: A következő lista azokat a Markdown-formátumokat tartalmazza, amelyeket QnA Maker a válasz szövegében is használhat.
 ms.topic: reference
 ms.date: 03/19/2020
-ms.openlocfilehash: 38532783c38263b3f1364e30125414958eab1394
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: d5bf8342b3e595ed4b381ec5104a0c82f0d7ecc9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652755"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321033"
 ---
 # <a name="markdown-format-supported-in-qna-maker-answer-text"></a>QnA Maker válasz szövegében támogatott Markdown formátum
 
@@ -26,7 +26,7 @@ A Markdown jobb eszköz, ha automatikusan létre kell hoznia egy tartalmat a CI/
 
 A következő lista azokat a Markdown-formátumokat tartalmazza, amelyeket QnA Maker a válasz szövegében is használhat.
 
-|Cél|Formátum|Markdown-példa|Renderelés<br>a csevegési robotban megjelenő módon|
+|Rendeltetés|Formátum|Markdown-példa|Renderelés<br>a csevegési robotban megjelenő módon|
 |--|--|--|--|
 Egy új sor két mondat között.|`\n\n`|`How can I create a bot with \n\n QnA Maker?`|![új sor formázása két mondat között](./media/qnamaker-concepts-datasources/format-newline.png)|
 |A H1-től a H6-ig terjedő fejlécek száma, `#` amely a fejlécet jelöli. 1 `#` a H1.|`\n# text \n## text \n### text \n####text \n#####text` |`## Creating a bot \n ...text.... \n### Important news\n ...text... \n### Related Information\n ....text...`<br><br>`\n# my h1 \n## my h2\n### my h3 \n#### my h4 \n##### my h5`|![formátum Markdown-fejlécekkel](./media/qnamaker-concepts-datasources/format-headers.png)<br>![formátum Markdown fejlécekkel H1 – H5](./media/qnamaker-concepts-datasources/format-h1-h5.png)|
@@ -38,7 +38,7 @@ Egy új sor két mondat között.|`\n\n`|`How can I create a bot with \n\n QnA M
 |Félkövér és dőlt|`***text***`|`How can I create a ***QnA Maker*** bot?`|![félkövér és dőlt formázás](./media/qnamaker-concepts-datasources/format-bold-italics.png)|
 |Hivatkozás félkövér URL-címe|`[**text**](https://www.my.com)`|`How do I create a bot with [**QnA Maker**](https://www.qnamaker.ai)?`|![félkövér URL-cím formázása](./media/qnamaker-concepts-datasources/format-bold-url.png)|
 |Dőlt betűs URL a hivatkozáshoz|`[*text*](https://www.my.com)`|`How do I create a bot with [*QnA Maker*](https://www.qnamaker.ai)?`|![dőlt betűs URL formátuma](./media/qnamaker-concepts-datasources/format-url-italics.png)|
-|Escape Markdown szimbólumok|`\*text\*`|`How do I create a bot with \*QnA Maker\*?`|![dőlt betűs URL formátuma](./media/qnamaker-concepts-datasources/format-escape-markdown-symbols.png)|
+|Escape Markdown szimbólumok|`\*text\*`|`How do I create a bot with \*QnA Maker\*?`|![Escape Markdown-szimbólumok formátuma](./media/qnamaker-concepts-datasources/format-escape-markdown-symbols.png)|
 |Rendezett lista|`\n 1. item1 \n 1. item2`|`This is an ordered list: \n 1. List item 1 \n 1. List item 2`<br>Az előző példában a Markdown beépített automatikus számozást használ.<br>`This is an ordered list: \n 1. List item 1 \n 2. List item 2`<br>Az előző példa explicit számozást használ.|![rendezett lista formátuma](./media/qnamaker-concepts-datasources/format-ordered-list.png)|
 |Rendezetlen listák|`\n * item1 \n * item2`<br>vagy<br>`\n - item1 \n - item2`|`This is an unordered list: \n * List item 1 \n * List item 2`|![Rendezetlen lista formátuma](./media/qnamaker-concepts-datasources/format-unordered-list.png)|
 |Beágyazott listák|`\n * Parent1 \n\t * Child1 \n\t * Child2 \n * Parent2`<br><br>`\n * Parent1 \n\t 1. Child1 \n\t * Child2 \n 1. Parent2`<br><br>A rendezett és rendezetlen listák együtt is ágyazhatók egymásba. A lap a `\t` gyermek elem behúzási szintjét jelzi.|`This is an unordered list: \n * List item 1 \n\t * Child1 \n\t * Child2 \n * List item 2`<br><br>`This is an ordered nested list: \n 1. Parent1 \n\t 1. Child1 \n\t 1. Child2 \n 1. Parent2`|![beágyazott Rendezetlen lista formátuma](./media/qnamaker-concepts-datasources/format-nested-unordered-list.png)<br>![beágyazott rendezett lista formátuma](./media/qnamaker-concepts-datasources/format-nested-ordered-list.png)|
@@ -49,11 +49,11 @@ Ha a Tudásbázis API-jai segítségével szeretne tartalmat felvenni, és a tar
 
 | HTML megőrzése  | Ábrázolás az API-kérelemben  | Megjelenítés a KB-ban |
 |-----------|---------|-------------------------|
-| Igen | \&lt; br \& gt; | &lt;br&gt; |
-| Igen | \&lt; H3 \& gt; fejléc \& lt;/H3 \& gt; | &lt;H3 &gt; fejléc &lt; /H3&gt; |
+| Yes | \&lt; br \& gt; | &lt;br&gt; |
+| Yes | \&lt; H3 \& gt; fejléc \& lt;/H3 \& gt; | &lt;H3 &gt; fejléc &lt; /H3&gt; |
 
 Emellett a CR LF (\r\n) a KB-ban a \n értékre lett konvertálva. Az LF (\n) a következőképpen van megtartva:. Ha a \t vagy a \n escape-sorozatot is el szeretné kerülni, használhat fordított perjelet, például: " \\ \\ r \\ \\ n" és " \\ \\ t"
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A [Batch tesztelési fájlformátumainak](reference-tsv-format-batch-testing.md)áttekintése.

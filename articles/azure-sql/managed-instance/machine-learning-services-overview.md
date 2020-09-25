@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: garyericson
 ms.author: garye
-ms.reviewer: carlrab, davidph
+ms.reviewer: sstein, davidph
 manager: cgronlun
 ms.date: 06/03/2020
-ms.openlocfilehash: ad25a9a62757e1e031ce8b93a44e6f2ada4d9964
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: d7a3c86f3d9cf083a8746f753b8c5287c774a93e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88689507"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263267"
 ---
 # <a name="machine-learning-services-in-azure-sql-managed-instance-preview"></a>Machine Learning Services az Azure SQL felügyelt példányában (előzetes verzió)
 
@@ -74,7 +74,7 @@ Miután regisztrált a programban, a Microsoft belépteti Önt a nyilvános elő
 
 A felügyelt SQL-példányokban a Machine Learning Services használata nem javasolt éles számítási feladatokhoz a nyilvános előzetes verzióban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse meg [SQL Server Machine learning Services főbb különbségeit](machine-learning-services-differences.md).
 - Ha szeretné megtudni, hogyan használható a Python a Machine Learning Servicesban, tekintse meg a [Python-parancsfájlok futtatása](https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-python-create-script?context=/azure/azure-sql/managed-instance/context/ml-context&view=sql-server-ver15)című témakört.
