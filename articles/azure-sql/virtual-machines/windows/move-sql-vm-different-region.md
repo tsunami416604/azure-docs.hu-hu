@@ -7,19 +7,19 @@ author: MashaMSFT
 tags: azure-resource-manager
 ms.assetid: aa5bf144-37a3-4781-892d-e0e300913d03
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/30/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 37f098bc28ee89bdad9e5bde213e3c2a6847b0bf
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 4252528020dde731dd7bf14ae8f7a03467ba953a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851798"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91298576"
 ---
 # <a name="move-a-sql-server-vm-to-another-region-within-azure-with-azure-site-recovery"></a>SQL Server VM áthelyezése az Azure-ban lévő másik régióba Azure Site Recovery
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -63,7 +63,7 @@ Készítse elő mind a forrás SQL Server VM, mind a cél régiót az áthelyez�
 - Győződjön meg arról, hogy minden, a forrás hálózatkezelési elrendezésben azonosított összetevőhöz létrehoz egy célként megadott erőforrást. Ez a lépés fontos annak biztosítása érdekében, hogy a virtuális gépek rendelkezzenek a forrás régiójában lévő adott régióban lévő összes funkcióval és szolgáltatással. 
     - Azure Site Recovery automatikusan felfedi és létrehoz egy virtuális hálózatot, amikor engedélyezi a forrás virtuális gép replikálását. Emellett előre létrehozhat egy hálózatot, és hozzárendelheti a virtuális géphez a replikáció engedélyezéséhez a felhasználói folyamaton belül. A célként megadott régióban manuálisan kell létrehoznia a többi erőforrást.
 - A forrás virtuális gép konfigurációja alapján a leggyakrabban használt hálózati erőforrások létrehozásához tekintse meg a következő dokumentációt: 
-    - [Network security groups (Hálózati biztonsági csoportok)](../../../virtual-network/tutorial-filter-network-traffic.md) 
+    - [Hálózati biztonsági csoportok](../../../virtual-network/tutorial-filter-network-traffic.md) 
     - [Terheléselosztó](../../../load-balancer/tutorial-load-balancer-standard-internal-portal.md)
     - [Nyilvános IP-cím](../../../virtual-network/virtual-network-public-ip-address.md)
     - További hálózatkezelési összetevőkért tekintse meg a [hálózatkezelési dokumentációt](../../../virtual-network/virtual-networks-overview.md).

@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42b980f809074c275a5e62098d4162e4cb4340a0
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 84e692540d376c95a4a981249eba42060ed4ab80
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89259370"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287100"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Bejelentkezés az Azure-beli Windows rendszerű virtuális gépre Azure Active Directory hitelesítéssel (előzetes verzió)
 
@@ -32,7 +32,7 @@ Az Azure AD-hitelesítés használatának számos előnye van az Azure-beli Wind
 - A továbbiakban nem kell helyi rendszergazdai fiókokat kezelnie.
 - Az Azure RBAC lehetővé teszi a megfelelő hozzáférés megadását a virtuális gépek igény szerinti eléréséhez, és ha már nincs rá szükség, távolítsa el azt.
 - A virtuális géphez való hozzáférés engedélyezése előtt az Azure AD feltételes hozzáférése további követelményeket is kikényszerítheti, például: 
-   - Multi-Factor Authentication
+   - Többtényezős hitelesítés
    - Bejelentkezési kockázat-ellenőrzési
 - Automatizálhatja és méretezheti az Azure AD Joint az Azure Windows rendszerű virtuális gépekhez, amelyek részét képezik a VDI üzembe helyezésének.
 
@@ -49,7 +49,7 @@ A következő Windows-disztribúciók jelenleg a funkció előzetes verziójába
 - Windows 10 1809 és újabb verziók
 
 > [!IMPORTANT]
-> Az Azure AD-hez csatlakoztatott virtuális gépekkel létesített távoli kapcsolódás csak olyan Windows 10 rendszerű számítógépeken engedélyezett, amelyekhez az Azure AD-hez csatlakoztatott vagy hibrid Azure AD csatlakozik **ugyanahhoz** a címtárhoz, mint a virtuális gép. 
+> Az Azure AD-hez csatlakoztatott virtuális gépekkel létesített távoli kapcsolódás csak olyan Windows 10 rendszerű számítógépeken engedélyezett, amelyeken az Azure AD regisztrálva van (Windows 10 20H1), az Azure AD-hez csatlakoztatott vagy hibrid Azure AD-hez **ugyanahhoz** a címtárhoz csatlakozik, mint a virtuális gép. 
 
 A szolgáltatás előzetes verziójában jelenleg a következő Azure-régiók támogatottak:
 
@@ -192,7 +192,7 @@ az role assignment create \
 Az Azure-RBAC az Azure-előfizetési erőforrásokhoz való hozzáférés kezeléséhez való használatáról a következő cikkekben talál további információt:
 
 - [Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása az Azure CLI-vel](../../role-based-access-control/role-assignments-cli.md)
-- [Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása a Azure Portal használatával](../../role-based-access-control/role-assignments-portal.md)
+- [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure Portal használatával](../../role-based-access-control/role-assignments-portal.md)
 - [Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása Azure PowerShell használatával](../../role-based-access-control/role-assignments-powershell.md).
 
 ## <a name="using-conditional-access"></a>Feltételes hozzáférés használata
@@ -365,6 +365,6 @@ Ha még nem telepítette a vállalati Windows Hello szolgáltatást, és ha ez n
 
 Ossza meg visszajelzését erről az előzetes verziójú szolgáltatásról, vagy jelentse a problémát az [Azure ad visszajelzési fórumának](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Azure Active Directoryről: [Mi az Azure Active Directory](../fundamentals/active-directory-whatis.md)

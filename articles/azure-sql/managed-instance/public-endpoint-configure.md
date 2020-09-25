@@ -8,14 +8,14 @@ ms.custom: sqldbrb=1
 ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: vanto, carlrab
+ms.reviewer: vanto, sstein
 ms.date: 05/07/2019
-ms.openlocfilehash: 1c2dd3f93abf6418b99bf28d11f2df254b024971
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 498d00b4f6a0ca16d07663641a46f30109b39d5f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708635"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325062"
 ---
 # <a name="configure-public-endpoint-in-azure-sql-managed-instance"></a>Nyilvános végpont konfigurálása az Azure SQL felügyelt példányában
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -40,7 +40,7 @@ A felügyelt példányban lévő adatérzékenység miatt a felügyelt példány
 
 ## <a name="enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal"></a>Felügyelt példányok nyilvános végpontjának engedélyezése a Azure Portalban
 
-1. A Azure Portal elindítása<https://portal.azure.com/.>
+1. A Azure Portal elindítása <https://portal.azure.com/.>
 1. Nyissa meg az erőforráscsoportot a felügyelt példánnyal, és válassza ki azt az **SQL felügyelt példányt** , amelyen a nyilvános végpontot konfigurálni kívánja.
 1. A **biztonsági** beállítások lapon válassza a **virtuális hálózat** lapot.
 1. A virtuális hálózat konfigurációja lapon válassza az **Engedélyezés** , majd a **Mentés** ikont a konfiguráció frissítéséhez.
@@ -82,7 +82,7 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 
 ## <a name="allow-public-endpoint-traffic-on-the-network-security-group"></a>Nyilvános végponti forgalom engedélyezése a hálózati biztonsági csoportban
 
-1. Ha a felügyelt példány konfigurációs lapja továbbra is nyitva van, lépjen az **Áttekintés** lapra. Máskülönben lépjen vissza az **SQL felügyelt példány** -erőforráshoz. Válassza ki a **virtuális hálózat/alhálózat** hivatkozást, amely a virtuális hálózat konfigurációja lapra kerül.
+1. Ha a felügyelt példány konfigurációs lapja továbbra is nyitva van, navigáljon az **Áttekintés** lapra. Ellenkező esetben lépjen vissza az **SQL felügyelt példányának** erőforrására. Válassza ki a **virtuális hálózat/alhálózat** hivatkozást, amely a virtuális hálózat konfigurációja lapra kerül.
 
     ![mi-overview.png](./media/public-endpoint-configure/mi-overview.png)
 
@@ -116,6 +116,6 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 
     ![mi-public-endpoint-conn-string.png](./media/public-endpoint-configure/mi-public-endpoint-conn-string.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az [Azure SQL felügyelt példányának biztonságos használatáról nyilvános végponttal](public-endpoint-overview.md).

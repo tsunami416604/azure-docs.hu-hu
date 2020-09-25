@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: cd10421ddcf752625b8040e1afa4e7b15f142ce2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 5892fd732a1e66b2b7dd4c1031cabfcbcc768c6d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90885690"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326150"
 ---
 # <a name="map-an-existing-custom-domain-to-azure-spring-cloud"></a>Meglévő egyéni tartomány leképezése az Azure Spring Cloud-ra
 
@@ -58,12 +58,12 @@ Használhatja az Azure CLI-t is a Key vaulthoz való Azure Spring Cloud-hozzáf�
 
 Az objektumazonosító beszerzése a következő parancs használatával.
 ```
-az ad sp show --id 03b39d0f-4213-4864-a245-b1476ec03169 --query objectId
+az ad sp show --id <service principal id> --query objectId
 ```
 
 Adja meg az Azure Spring Cloud olvasási hozzáférését a Key vaulthoz, és cserélje le az objektumazonosító értékét a következő parancsra.
 ```
-az keyvault set-policy -g <key vault resource group> -n <key vault name>  --object-id <object id> --certificate-permissions get list --secret-permissions get list
+az keyvault set-policy -g <key vault resource group> -n <key vault name>  --object-id <object id> --certificate-permissions get list
 ``` 
 
 Tanúsítvány importálása az Azure Spring Cloud-ba:
@@ -93,7 +93,7 @@ Miután sikeresen importálta a tanúsítványt, megjelenik a **titkos kulcsokra
 Vagy használhatja az Azure CLI-t is a tanúsítványok listájának megjelenítéséhez:
 
 ```
-az spring-cloud certificate list
+az spring-cloud certificate list --resource-group <resource group name> --service <service name>
 ```
 
 > [!IMPORTANT] 
@@ -128,7 +128,7 @@ Ugrás az alkalmazás oldalra.
 
 Vagy használhatja az Azure CLI-t egyéni tartomány hozzáadására is:
 ```
-az spring-cloud app custom-domain bind --domain-name <domain name> --app <app name> 
+az spring-cloud app custom-domain bind --domain-name <domain name> --app <app name> --resource-group <resource group name> --service <service name>
 ```
 
 Egy alkalmazás több tartománnyal is rendelkezhet, de egy tartomány csak egyetlen alkalmazáshoz képezhető le. Ha sikeresen leképezte az egyéni tartományt az alkalmazáshoz, az egyéni tartomány táblán fog megjelenni.
@@ -137,7 +137,7 @@ Egy alkalmazás több tartománnyal is rendelkezhet, de egy tartomány csak egye
 
 Használhatja az Azure CLI-t is az egyéni tartományok listájának megjelenítéséhez:
 ```
-az spring-cloud app custom-domain list --app <app name> 
+az spring-cloud app custom-domain list --app <app name> --resource-group <resource group name> --service <service name>
 ```
 
 > [!NOTE]
@@ -168,7 +168,7 @@ Az alkalmazás lapjának bal oldali navigációs sávján válassza az **egyéni
 
 Vagy az Azure CLI-vel kényszerítheti a HTTPS használatát:
 ```
-az spring-cloud app update -name <app-name> --https-only <true|false> -g <resource group> --service <service-name>
+az spring-cloud app custom-domain update --domain-name <domain name> --certificate <cert name> --app <app name> --resource-group <resource group name> --service <service name>
 ```
 
 Ha a művelet befejeződött, navigáljon az alkalmazására mutató HTTPS URL-címek bármelyikéhez. Vegye figyelembe, hogy a HTTP-URL-címek nem működnek.

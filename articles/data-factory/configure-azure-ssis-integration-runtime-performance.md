@@ -10,12 +10,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: ''
 manager: anandsub
-ms.openlocfilehash: 6aaa02c2e14cfc31a11da260da38705ba064ba79
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: db50049675766d9fd8a018c8730f48ac34e23bfc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86523315"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276663"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>A Azure-SSIS Integration Runtime konfigurálása nagy teljesítményhez
 
@@ -122,8 +122,7 @@ A **AzureSSISNodeNumber** az integrációs modul méretezhetőségét állítja 
 
 ## <a name="azuressismaxparallelexecutionspernode"></a>AzureSSISMaxParallelExecutionsPerNode
 
-Ha már egy hatékony munkavégző csomópontot használ a csomagok futtatásához, a **AzureSSISMaxParallelExecutionsPerNode** növelése növelheti az integrációs modul teljes átviteli sebességét. Standard_D1_v2 csomópontok esetében a csomópontok száma 1-4 párhuzamos végrehajtást támogat. Minden más típusú csomópont esetében a csomópontok száma 1 – Max (2 x mag, 8) párhuzamos végrehajtást támogat. Ha azt szeretné, hogy a **AzureSSISMaxParallelExecutionsPerNode** az általunk támogatott maximális értéknél nagyobb legyen, nyisson meg egy támogatási jegyet, és növeljük a maximális értéket, és utána az Azure PowerShellt kell használnia a **AzureSSISMaxParallelExecutionsPerNode**frissítéséhez.
-A megfelelő értéket a csomag költsége és a munkavégző csomópontok következő beállításai alapján becsülheti fel. További információ: [általános célú virtuális gépek méretei](../virtual-machines/windows/sizes-general.md).
+Ha már egy hatékony munkavégző csomópontot használ a csomagok futtatásához, a **AzureSSISMaxParallelExecutionsPerNode** növelése növelheti az integrációs modul teljes átviteli sebességét. Ha a maximális értéket szeretné megnövelni, a **AzureSSISMaxParallelExecutionsPerNode**frissítéséhez Azure PowerShellt kell használnia. A megfelelő értéket a csomag költsége és a munkavégző csomópontok következő beállításai alapján becsülheti fel. További információ: [általános célú virtuális gépek méretei](../virtual-machines/windows/sizes-general.md).
 
 | Méret             | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Ideiglenes tárterület maximális teljesítménye: IOPS / Olvasási MBps / Írási MBps | Adatlemezek max. száma / teljesítménye: IOPS | Hálózati adapterek max. száma / várt hálózati teljesítmény (Mbps) |
 |------------------|------|-------------|------------------------|------------------------------------------------------------|-----------------------------------|------------------------------------------------|

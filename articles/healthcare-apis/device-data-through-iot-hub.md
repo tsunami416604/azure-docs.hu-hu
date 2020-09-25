@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: tutorial
 ms.date: 08/03/2020
 ms.author: punagpal
-ms.openlocfilehash: 04c732b857c06246bdc636f01afd2689c98c2b0d
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 3b2e4a1ae5ff43283893b286dafb38491a1181b4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831617"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91308224"
 ---
 # <a name="tutorial-receive-device-data-through-azure-iot-hub"></a>Oktatóanyag: eszközre vonatkozó adatfogadás az Azure IoT Hub
 
@@ -48,10 +48,10 @@ Ez a lépés egy olyan végpontot határoz meg, amelybe a IoT Hub átirányítja
 
 Itt látható a végpont létrehozásához a paranccsal használandó paraméterek listája:
 
-|PowerShell-paraméter|CLI-paraméter|Leírás|
+|PowerShell-paraméter|CLI-paraméter|Description|
 |---|---|---|
 |ResourceGroupName|resource-group|Az IoT Hub erőforrás erőforráscsoport-neve.|
-|Név|hub neve|A IoT Hub erőforrás neve.|
+|Name|hub neve|A IoT Hub erőforrás neve.|
 |Végpontneve|végpont neve|Használjon olyan nevet, amelyet hozzá szeretne rendelni a létrehozandó végponthoz.|
 |EndpointType|végpont típusa|Annak a végpontnak a típusa, amelyhez IoT Hub csatlakoznia kell. Használja a "EventHub" konstans értékét a PowerShell és a "EventHub" számára a CLI-hez.|
 |EndpointResourceGroup|végpont – erőforrás-csoport|Erőforráscsoport neve az Azure IoT-összekötőhöz a FHIR Azure API-hoz a FHIR-erőforráshoz. Ezt az értéket a FHIR készült Azure API áttekintés lapján érheti el.|
@@ -61,12 +61,12 @@ Itt látható a végpont létrehozásához a paranccsal használandó paraméter
 ### <a name="add-a-message-route"></a>Üzenet útvonalának hozzáadása
 Ez a lépés egy üzenet útvonalát határozza meg a fent létrehozott végpont használatával. Hozzon létre egy útvonalat az [Add-AzIotHubRoute](https://docs.microsoft.com/powershell/module/az.iothub/Add-AzIoTHubRoute) PowerShell-paranccsal vagy [az IOT hub Route Create](https://docs.microsoft.com/cli/azure/iot/hub/route#az-iot-hub-route-create) CLI parancs használatával a beállítás alapján.
 
-Itt látható a végpont létrehozásához a paranccsal használandó paraméterek listája:
+Az üzenet útvonalának hozzáadásához a paranccsal használható paramétereket a következő lista tartalmazza:
 
-|PowerShell-paraméter|CLI-paraméter|Leírás|
+|PowerShell-paraméter|CLI-paraméter|Description|
 |---|---|---|
 |ResourceGroupName|g|Az IoT Hub erőforrás erőforráscsoport-neve.|
-|Név|hub neve|A IoT Hub erőforrás neve.|
+|Name|hub neve|A IoT Hub erőforrás neve.|
 |Végpontneve|végpont neve|A fent létrehozott végpont neve.|
 |Z|útvonal neve|A létrehozandó üzenet-útvonalhoz hozzárendelni kívánt név.|
 |Forrás|forrás típusa|A végpontnak küldendő adattípusok. Használja a "DeviceMessages" konstans értékét a PowerShell és a "DeviceMessages" számára a CLI-hez.|

@@ -9,14 +9,17 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: a057c0d35a465447cc0be99b574ffeebb671115a
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 787c7d7df5f013dd4477e466c02a2b323b4b59df
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90971544"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275098"
 ---
 # <a name="set-up-an-indexer-connection-to-a-data-source-using-a-managed-identity"></a>Indexelő-kapcsolatok beállítása egy adatforráshoz felügyelt identitás használatával
+
+> [!IMPORTANT] 
+> A felügyelt identitást használó adatforráshoz való kapcsolódás nem támogatott az ingyenes Azure Cognitive Search-csomaggal.
 
 Az Azure Cognitive Search [Indexelő](search-indexer-overview.md) egy olyan webbejáró, amely lehetővé teszi az adatok adatforrásból való lekérését az Azure Cognitive Searchba. Az indexelő beszerez egy adatforrás-kapcsolatokat a létrehozott adatforrás-objektumból. Az adatforrás-objektum általában tartalmazza a cél adatforráshoz tartozó hitelesítő adatokat. Az adatforrás-objektum például tartalmazhat egy Azure Storage-fiók kulcsát, ha blob Storage-tárolóból kívánja indexelni az adatait.
 

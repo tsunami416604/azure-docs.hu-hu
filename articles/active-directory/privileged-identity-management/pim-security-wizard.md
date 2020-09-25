@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 08/07/2020
+ms.date: 09/01/2020
 ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef1de7e98a9cb57f83b87589ceddedc3cdd80927
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: b826c6a1fd5a60247f8c69cb10cd24e7e001fe71
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005932"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335884"
 ---
 # <a name="discovery-and-insights-preview-for-azure-ad-roles-formerly-security-wizard"></a>Az Azure AD szerepköreinek felderítése és bepillantást nyerhet (korábban biztonsági varázsló)
 
@@ -29,9 +29,9 @@ Ha a Azure Active Directory (Azure AD) szervezeten belül Privileged Identity Ma
 
 A szervezet Privileged Identity Management használatának megkezdése előtt az összes szerepkör-hozzárendelés állandó. A felhasználók mindig a hozzárendelt szerepkörökhöz tartoznak, még akkor is, ha nincs rájuk szükségük. A korábbi biztonsági varázslót felváltó felderítési és észlelési funkciók (előzetes verzió) megjelenítik a Kiemelt szerepkörök listáját, valamint azt, hogy hány felhasználó van jelenleg ezekben a szerepkörökben. Kilistázhatja a szerepkörök hozzárendeléseit, ha többet szeretne megtudni a hozzárendelt felhasználókkal kapcsolatban, ha egy vagy több ismeretlen.
 
-: heavy_check_mark: a **Microsoft azt javasolja** , hogy tartsa meg a két, a bejelentkezéskor a többtényezős hitelesítést nem igénylő globális rendszergazdai szerepkörhöz véglegesen hozzárendelt break Glass-fiókot. Ezeket bármilyen megszakítást okozó megoldásban használhatja, vagy abban az esetben, ha senki sem tudja a globális rendszergazdai szerepkört megemelni.
+: heavy_check_mark: a **Microsoft azt javasolja** , hogy tartsa meg a globális rendszergazdai szerepkörhöz véglegesen hozzárendelt két break Glass-fiókot. Győződjön meg arról, hogy ezek a fiókok nem igénylik ugyanazt a többtényezős hitelesítési mechanizmust, mint a normál rendszergazdai fiókok a bejelentkezéshez, a következő témakörben leírtak szerint: az [Azure ad-beli segélyhívó hozzáférési fiókok kezelése](../users-groups-roles/directory-emergency-access.md)
 
-Emellett a szerepkör-hozzárendelések állandók maradnak, ha a felhasználó Microsoft-fiók (azaz egy olyan fiók, amelyet a Microsoft-szolgáltatásokba, például a Skype-ba vagy a Outlook.com-be való bejelentkezéshez használnak). Ha a többtényezős hitelesítés aktiválása szükséges egy ilyen szerepkörben, a rendszer kizárja a felhasználót.
+Emellett a szerepkör-hozzárendelések állandók maradnak, ha a felhasználó Microsoft-fiók (azaz egy olyan fiók, amelyet a Microsoft-szolgáltatásokba, például a Skype-ba vagy a Outlook.com-be való bejelentkezéshez használnak). Ha a többtényezős hitelesítésre van szüksége egy Microsoft-fiók egy szerepkör-hozzárendelés aktiválásához, a rendszer kizárja a felhasználót.
 
 ## <a name="open-discovery-and-insights-preview"></a>A felderítés és az észlelések megnyitása (előzetes verzió)
 
@@ -49,7 +49,7 @@ Emellett a szerepkör-hozzárendelések állandók maradnak, ha a felhasználó 
 
 1. Tekintse át a globális rendszergazdai szerepkör-hozzárendelések listáját.
 
-    ![Globális rendszergazdák csökkentése – az összes tagot megjelenítő szerepkör panel](./media/pim-security-wizard/new-global-administrator-list.png)
+    ![Globális rendszergazdák csökkentése – szerepkörök ablaktábla, amely az összes globális rendszergazdát megjeleníti](./media/pim-security-wizard/new-global-administrator-list.png)
 
 1. A **tovább** gombra kattintva válassza ki azokat a felhasználókat vagy csoportokat, akik számára jogosult szeretne lenni, majd válassza a **jogosult** vagy a **hozzárendelés eltávolítása**lehetőséget.
 
@@ -65,7 +65,7 @@ Emellett a szerepkör-hozzárendelések állandók maradnak, ha a felhasználó 
 
     ![További információk az állandó hozzáférés és az egyszerű szolgáltatások áttekintése érdekében ](./media/pim-security-wizard/new-preview-page-service-principals.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure AD-szerepkörök kiosztása Privileged Identity Management](pim-how-to-add-role-to-user.md)
 - [Hozzáférés biztosítása más rendszergazdáknak a Privileged Identity Management kezeléséhez](pim-how-to-give-access-to-pim.md)

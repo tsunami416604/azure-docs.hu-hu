@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 10/05/2019
 ms.author: rohink
-ms.openlocfilehash: d6faf5bd42c90ea1510d454a2ab7939f121b3d0d
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 9d183f2da7b916b1547fa1f81aa877b1b5488b41
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87925005"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91308435"
 ---
 # <a name="azure-private-dns-faq"></a>Azure Private DNS – gyakori kérdések
 
@@ -43,6 +43,14 @@ Igen. Írási művelet engedéllyel kell rendelkeznie a virtuális hálózatokon
 ## <a name="will-the-automatically-registered-virtual-machine-dns-records-in-a-private-zone-be-automatically-deleted-when-you-delete-the-virtual-machine"></a>A rendszer automatikusan törli a virtuális gép DNS-rekordjait egy privát zónában a virtuális gép törlésekor?
 
 Igen. Ha olyan virtuális gépet töröl, amelyen engedélyezve van az automatikus regisztráció, a rendszer automatikusan törli a regisztrált rekordokat.
+
+## <a name="ive-reconfigured-the-os-in-my-virtual-machine-to-have-a-new-host-name-or-static-ip-address-why-dont-i-see-that-change-reflected-in-the-private-zone"></a>Újrakonfiguráltam az operációs rendszert a virtuális gépen, hogy új állomásnév vagy statikus IP-cím legyen. Miért nem látom, hogy a módosítás a privát zónában szerepel?
+
+A privát zóna rekordjait az Azure DHCP szolgáltatás tölti fel; az ügyfél-regisztrációs üzenetek figyelmen kívül lesznek hagyva. Ha letiltotta a DHCP-ügyfél támogatását a virtuális gépen egy statikus IP-cím konfigurálásával, akkor a virtuális gépen lévő állomásnév vagy statikus IP-cím módosítása nem jelenik meg a zónában.
+
+## <a name="i-have-configured-a-preferred-dns-suffix-in-my-windows-virtual-machine-why-are-my-records-still-registered-in-the-zone-linked-to-the-virtual-network"></a>Konfiguráltam egy előnyben részesített DNS-utótagot a Windows rendszerű virtuális gépen. Miért van még regisztrálva a rekordok a virtuális hálózathoz kapcsolódó zónában?
+
+Az Azure DHCP szolgáltatás figyelmen kívül hagyja a DNS-utótagot, amikor regisztrálja a magánhálózati DNS-zónát. Ha például a virtuális gép `contoso.com` elsődleges DNS-utótagként van konfigurálva, de a virtuális hálózat a `fabrikam.com` magánhálózati DNS-zónához van társítva, a virtuális gép regisztrálása megjelenik a `fabrikam.com` magánhálózati DNS-zónában.
 
 ## <a name="can-an-automatically-registered-virtual-machine-record-in-a-private-zone-from-a-linked-virtual-network-be-deleted-manually"></a>A virtuális gépek automatikusan regisztrálhatók egy privát zónában egy csatolt virtuális hálózatból manuálisan?
 
@@ -81,6 +89,6 @@ Ha a meglévő privát DNS-zónát az előzetes verziójú API-val hozták létr
 
 Javasoljuk, hogy a lehető leghamarabb telepítse át az új erőforrás-modellre. A régi erőforrás-modell támogatott lesz, azonban a modellen felül további funkciók nem lesznek kifejlesztve. A jövőben azt szeretnénk, hogy az új erőforrás-modell mellett is érvénytelenítse azt. A meglévő privát DNS-zónák új erőforrás-modellre való áttelepítésével kapcsolatos útmutatásért lásd:[Azure DNS privát zónák áttelepítési útmutatója](private-dns-migration-guide.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [További információ az Azure saját DNS](private-dns-overview.md)

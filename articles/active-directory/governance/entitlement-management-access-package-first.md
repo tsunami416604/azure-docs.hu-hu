@@ -16,12 +16,12 @@ ms.date: 07/22/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e58a98f8503c271eec113298a7e7a0cab5e0003e
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 9df1226d4b61326f8e5aa6f9b71d36eb5a33e81e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707492"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306514"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>Oktatóanyag: az első hozzáférési csomag létrehozása az Azure AD-jogosultságok kezelésében
 
@@ -29,7 +29,7 @@ A szervezetek számára fontos funkció az összes erőforráshoz, például a c
 
 Ebben az oktatóanyagban a Woodgrove Bank rendszergazdaként működik. A rendszer arra kérte, hogy hozzon létre egy erőforrás-csomagot egy olyan marketingkampányok számára, amelyet a belső felhasználók önkiszolgáló kéréssel használhatnak. A kérések nem igényelnek jóváhagyást, és a felhasználó hozzáférése 30 nap után lejár. Ebben az oktatóanyagban a marketing kampány erőforrásai csak egyetlen csoport tagjai, de lehetnek csoportok, alkalmazások vagy SharePoint Online-webhelyek gyűjteményei.
 
-![A forgatókönyv áttekintése](./media/entitlement-management-access-package-first/elm-scenario-overview.png)
+![A forgatókönyv áttekintését bemutató diagram.](./media/entitlement-management-access-package-first/elm-scenario-overview.png)
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -110,7 +110,7 @@ A *hozzáférési csomag* olyan erőforrások kötege, amelyekhez egy csoportnak
 
      Alapértelmezés szerint a csoportok az általános katalóguson belül jelennek meg. Ha kijelöl egy csoportot az általános katalóguson kívül, amelyet láthat, ha bejelöli az **összes** megjelenítése jelölőnégyzetet, a rendszer hozzáadja az általános katalógushoz.
 
-    ![Új hozzáférési csomag – erőforrás-szerepkörök lap](./media/entitlement-management-access-package-first/resource-roles-select-groups.png)
+    ![Képernyőkép, amely az "új hozzáférési csomag – erőforrás-szerepkörök" lapot és a "csoportok kiválasztása" ablakot jeleníti meg.](./media/entitlement-management-access-package-first/resource-roles-select-groups.png)
 
 10. Kattintson a **kiválasztás** elemre a csoport listához való hozzáadásához.
 
@@ -262,8 +262,8 @@ Ebben a lépésben eltávolítja a végrehajtott módosításokat, és törli a 
 
 1. Törölje a **marketing-erőforrások** csoportot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkből megismerheti a jogosultságok kezelésének gyakori forgatókönyveit.
 > [!div class="nextstepaction"]
-> [Gyakori forgatókönyvek](entitlement-management-scenarios.md)
+> [Gyakori helyzetek](entitlement-management-scenarios.md)

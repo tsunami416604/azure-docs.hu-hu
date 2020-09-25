@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ced763ca4abd32f3b824f05f2f5786a5d9cfd4c4
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 583384d6f0ec71dc724868db61ee07ead7269607
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825443"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287321"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-ad-ds"></a>Profil tároló létrehozása Azure Files és AD DS
 
@@ -29,7 +29,7 @@ Először be kell állítania egy Azure Files Storage-fiókot.
 
 Storage-fiók beállítása:
 
-1. Jelentkezzen be az Azure Portalra.
+1. Jelentkezzen be az Azure portálra.
 
 2. Keresse meg a **Storage-fiókot** a keresősáv alatt.
 
@@ -56,7 +56,7 @@ Fájlmegosztás létrehozása:
 
 1. Válassza az **Erőforrás megnyitása** lehetőséget.
 
-2. Az Áttekintés lapon válassza a **fájlmegosztás**lehetőséget.
+2. Az Áttekintés lapon válassza a **Fájlmegosztások** lehetőséget.
 
 3. Válassza a **+ fájlmegosztás**lehetőséget, hozzon létre egy új fájlmegosztási **profilt**, majd adjon meg egy megfelelő kvótát, vagy hagyja üresen a mezőt a kvóta nélkül.
 
@@ -154,7 +154,7 @@ Az NTFS-engedélyek konfigurálása:
 2. A következő parancs futtatásával csatlakoztassa az Azure-fájlmegosztást, és rendeljen hozzá egy meghajtóbetűjelet:
 
      ```cmd
-     net use <desired-drive-letter>: <UNC-pat> <SA-key> /user:Azure\<SA-name>
+     net use <desired-drive-letter>: <UNC-path> <SA-key> /user:Azure\<SA-name>
      ```
 
 3. A következő parancs futtatásával tekintse át az Azure-fájlmegosztás hozzáférési engedélyeit:
@@ -179,7 +179,7 @@ Az NTFS-engedélyek konfigurálása:
      - Cserélje le <csatlakoztatott-meghajtóbetűjel> a meghajtó leképezni kívánt meghajtójának betűjelére.
      - Cserélje le <felhasználó-e-mail-> a megosztáshoz hozzáférést igénylő felhasználókat tartalmazó felhasználó vagy Active Directory csoport UPN-címére.
 
-     Például:
+     Példa:
 
      ```cmd
      icacls <mounted-drive-letter>: /grant john.doe@contoso.com:(M)
@@ -232,6 +232,6 @@ A munkamenet engedélyeinek ellenőrzését:
 
 További teszteléshez kövesse a következő témakör utasításait: Ellenőrizze, [hogy a profil működik](create-profile-container-adds.md#make-sure-your-profile-works)-e.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A FSLogix hibaelhárításához tekintse meg [ezt a hibaelhárítási útmutatót](/fslogix/fslogix-trouble-shooting-ht).

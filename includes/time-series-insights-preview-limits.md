@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: digital-twins
 ms.service: digital-twins
 ms.topic: include
@@ -9,12 +9,12 @@ author: deepakpalled
 ms.author: dpalled
 manager: diviso
 ms.custom: include file
-ms.openlocfilehash: 48080bb4d1e24f7f98d3dfe1fd63b65ba46df35e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 7259e1981f873c8385a02fe4f353dcdda495f823
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289913"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287413"
 ---
 ### <a name="property-limits"></a>Tulajdonságok korlátai
 
@@ -26,14 +26,13 @@ Azure Time Series Insights a 1 000 a Gen1-ben maximális 800-os korláttal emelk
 | Gen1 (S1) | 600 tulajdonságok (oszlopok) |
 | Gen1 (S2) | 800 tulajdonságok (oszlopok) |
 
-### <a name="event-sources"></a>Eseményforrások
+### <a name="streaming-ingestion"></a>Streamek feldolgozása
 
-A példányok száma legfeljebb két eseményforrás esetén támogatott.
+* Környezetekben legfeljebb két [eseményforrás](../articles/time-series-insights/concepts-streaming-ingestion-event-sources.md) lehet.
 
-* Ismerje meg, hogyan [adhat hozzá egy Event hub-forrást](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub).
-* [IoT hub-forrás](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub)konfigurálása.
+* Az Event sources szolgáltatással kapcsolatos ajánlott eljárások és általános útmutatás [itt](../articles/time-series-insights/concepts-streaming-ingestion-event-sources.md#streaming-ingestion-best-practices) található
 
-Alapértelmezés szerint a Gen2-környezetek **felhasználónként 1 megabájt/másodperc (MB/s)** [sebességű bejövő forgalmat támogatnak](https://docs.microsoft.com/azure/time-series-insights/concepts-streaming-ingress-throughput-limits) . Ha szükséges, az ügyfelek akár **16 MB/s** adatátviteli sebességet is igénybe vehetnek. A partíciós korlát **0,5 MB/s**.
+* Alapértelmezés szerint a Azure Time Series Insights Gen2 **legfeljebb 1 megabájt/másodperc (Mbps)** sebességgel képes befogadni a bejövő adatot Azure Time Series Insights Gen2-környezetben. A [hub-partíciók esetében](../articles/time-series-insights/concepts-streaming-ingress-throughput-limits.md#hub-partitions-and-per-partition-limits)további korlátozások vannak érvényben. A támogatási jegynek a Azure Portalon keresztüli elküldésével legfeljebb 8 MBps sebesség adható meg. További információért olvassa el a streaming betöltési [átviteli sebességének korlátozásait](../articles/time-series-insights/concepts-streaming-ingress-throughput-limits.md).
 
 ### <a name="api-limits"></a>API-korlátok
 

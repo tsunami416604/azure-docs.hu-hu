@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: da944f74fd6214e1b69a3ee7d230e72accd4e2e4
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 2830d8b82f5b53300d0af3f48e55b573d78ad295
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90084362"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287389"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>Oktatóanyag: állomáslista létrehozása a Azure Portal
 
@@ -48,7 +48,8 @@ Az új címkészlet létrehozásának megkezdéséhez:
 
 1. Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com/) webhelyen.
    
-   >! Megjegyzés Ha bejelentkezik a US Gov portálra, ugorjon a [https://portal.azure.us/](https://portal.azure.us/) helyet.
+   >[!NOTE]
+   > Ha bejelentkezik a US Gov portálra, ugorjon a [https://portal.azure.us/](https://portal.azure.us/) helyet.
 
 2. Adja meg a **Windows rendszerű virtuális asztalt** a keresőmezőbe, majd keresse meg és válassza ki a **Windows rendszerű virtuális asztali** szolgáltatások elemet.
 
