@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: d3094a8cca317e53dd3b8bc8e9b32b956c89a376
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 98b7f9b1ed5e09a1f731e45f8ca2d148a4084986
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904201"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336156"
 ---
 # <a name="troubleshoot-common-azure-spring-cloud-issues"></a>Az Azure Spring Cloud-problémák gyakori problémáinak elhárítása
 
@@ -131,7 +131,7 @@ A .NET Core Steeltoe alkalmazáshoz nem tölthet fel *. zip* fájlt a Azure Port
 
 Az alkalmazáscsomag [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)-vel történő telepítésekor az Azure CLI rendszeresen lekérdezi a telepítési folyamatot, és végül megjeleníti a központi telepítés eredményét.
 
-Győződjön meg arról, hogy az alkalmazás a megfelelő *. zip* -fájlformátumban van csomagolva. Ha nem megfelelően van csomagolva, a folyamat lefagy, vagy hibaüzenet jelenik meg.
+Győződjön meg arról, hogy az alkalmazás a megfelelő *. zip* -fájlformátumban van csomagolva. Ha nem megfelelően van csomagolva, a folyamat nem válaszol, vagy hibaüzenet jelenik meg.
 ::: zone-end
 
 ::: zone pivot="programming-language-java"

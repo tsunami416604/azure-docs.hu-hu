@@ -9,12 +9,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/17/2020
-ms.openlocfilehash: 61cb5384fd4d935ef4038c18b391b5da5fbc96b1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e03850dcc75e639c0436ceea339da5f2da5df4b3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88516690"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91277869"
 ---
 # <a name="tutorial-create-azure-ad-users-using-azure-ad-applications"></a>Oktatóanyag: Azure AD-felhasználók létrehozása az Azure AD-alkalmazásokkal
 
@@ -167,11 +167,11 @@ Az SQL felügyelt példányra vonatkozó **címtár** -olvasási engedélyek be�
 
     Ügyeljen arra, hogy hozzáadja az **alkalmazás engedélyeit** , valamint a **delegált engedélyeket**.
 
-    :::image type="content" source="media/authentication-aad-service-principals-tutorial/aad-apps.png" alt-text="HRE – alkalmazások":::
+    :::image type="content" source="media/authentication-aad-service-principals-tutorial/aad-apps.png" alt-text="A Azure Active Directory Alkalmazásregisztrációk lapját ábrázoló képernyőkép. A megjelenített név AppSP rendelkező alkalmazás ki van emelve.":::
 
     :::image type="content" source="media/authentication-aad-service-principals-tutorial/aad-app-registration-api-permissions.png" alt-text="API – engedélyek":::
 
-2. Létre kell hoznia egy ügyfél-titkot is a bejelentkezéshez. Kövesse az alábbi útmutatót a [tanúsítvány feltöltéséhez vagy a bejelentkezéshez szükséges titkos kód létrehozásához](../../active-directory/develop/howto-create-service-principal-portal.md#upload-a-certificate-or-create-a-secret-for-signing-in).
+2. Létre kell hoznia egy ügyfél-titkot is a bejelentkezéshez. Kövesse az alábbi útmutatót a [tanúsítvány feltöltéséhez vagy a bejelentkezéshez szükséges titkos kód létrehozásához](../../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options).
 
 3. Jegyezze fel a következőt az alkalmazás regisztrációjában. Az **Áttekintés** panelen elérhetőnek kell lennie:
     - **Alkalmazásazonosító**
@@ -298,7 +298,7 @@ Miután létrehozta a szolgáltatásnevet az Azure AD-ben, hozza létre a felhas
     myapp   E   EXTERNAL_USER   6d228f48-xxxx-xxxx-xxxx-xxxxxxxxxxxx
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure Active Directory egyszerű szolgáltatásnév az Azure SQL-sel](authentication-aad-service-principal.md)
 - [Mik azok az Azure-erőforrások felügyelt identitásai?](../../active-directory/managed-identities-azure-resources/overview.md)

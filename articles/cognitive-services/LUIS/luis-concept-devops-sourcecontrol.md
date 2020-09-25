@@ -1,20 +1,22 @@
 ---
 title: Verziókövetés és fejlesztési ágak – LUIS
 description: A Language Understanding (LUIS) alkalmazás karbantartása a verziókövetés alatt. Frissítések alkalmazása a LUIS-alkalmazásokhoz fejlesztési ág használata közben.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/28/2020
-ms.openlocfilehash: 2d060fefbd32ecea1f91e6b062da7606699a63c4
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.openlocfilehash: 25f2c4f4698785326f80c24d3749e7585e85d5bb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84783672"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91309506"
 ---
 # <a name="devops-practices-for-luis"></a>DevOps eljárások a LUIS számára
 
 A Language Understanding (LUIS) alkalmazást fejlesztő szoftverfejlesztők DevOps eljárásokat alkalmazhatnak a [verziókövetés](luis-concept-devops-sourcecontrol.md), az [automatizált buildek](luis-concept-devops-automation.md), a [tesztelés](luis-concept-devops-testing.md)és a [kiadási felügyelet terén](luis-concept-devops-automation.md#release-management) az alábbi irányelvek alapján.
 
-## <a name="source-control-and-branch-strategies-for-luis"></a>Verziókövetés és ág-stratégiák a LUIS számára
+## <a name="source-control-and-branch-strategies-for-luis"></a>A LUIS verziókövetési és elágaztatási stratégiái
 
 A DevOps sikerességének egyik fő tényezője a [verziókövetés](https://docs.microsoft.com/azure/devops/user-guide/source-control?view=azure-devops). A verziókövetés rendszer lehetővé teszi a fejlesztők számára, hogy a kódban működjenek együtt, és nyomon kövessék a módosításokat. Az ágak használata lehetővé teszi a fejlesztők számára a kód különböző verzióinak közötti váltást, és a csapat többi tagjától függetlenül működnek. Ha a fejlesztők egy [lekéréses kérelmet](https://help.github.com/github/collaborating-with-issues-and-pull-requests/about-pull-requests) (PR) állítanak elő a frissítések egyik ágban a másikba való előléptetéséhez, vagy ha a változások egyesülnek, akkor az [automatizált](luis-concept-devops-automation.md) buildek számára a kód kiépítéséhez és folyamatos teszteléséhez használható trigger lehet.
 
@@ -40,7 +42,7 @@ A jelen dokumentumban ismertetett fogalmakat és útmutatást követve kifejlesz
 
 ## <a name="source-control"></a>Verziókövetés
 
-Ha a LUIS-alkalmazás [alkalmazás-sémájának definícióját](https://docs.microsoft.com/azure/cognitive-services/luis/app-schema-definition) szeretné karbantartani egy forráskód-felügyeleti rendszeren, használja az alkalmazás [LUDown Format ( `.lu` )](https://docs.microsoft.com/azure/bot-service/file-format/bot-builder-lu-file-format?view=azure-bot-service-4.0) reprezentációját. `.lu`a formátum inkább a `.json` formátum, mert az ember számára olvasható, így könnyebben lehet elvégezni és áttekinteni a kérelmek változásait.
+Ha a LUIS-alkalmazás [alkalmazás-sémájának definícióját](https://docs.microsoft.com/azure/cognitive-services/luis/app-schema-definition) szeretné karbantartani egy forráskód-felügyeleti rendszeren, használja az alkalmazás [LUDown Format ( `.lu` )](https://docs.microsoft.com/azure/bot-service/file-format/bot-builder-lu-file-format?view=azure-bot-service-4.0)  reprezentációját. `.lu` a formátum inkább a `.json` formátum, mert az ember számára olvasható, így könnyebben lehet elvégezni és áttekinteni a kérelmek változásait.
 
 ### <a name="save-a-luis-app-using-the-ludown-format"></a>LUIS-alkalmazás mentése a LUDown formátum használatával
 
@@ -52,7 +54,7 @@ A LUIS-alkalmazás `.lu` formátumba való mentéséhez és a verziókövetés a
 
 > [!TIP]
 > Ha a LUIS-alkalmazás JSON-exportálásával dolgozik, a [botbuilder témakörben-Tools Luis CLI](https://github.com/microsoft/botbuilder-tools/tree/master/packages/LUIS)használatával [átalakíthatja a LUDown](https://github.com/microsoft/botframework-cli/tree/master/packages/luis#bf-luisconvert) . Ezzel a `--sort` beállítással biztosíthatja, hogy a szándékok és a hosszúságú kimondott szöveg betűrendben legyenek rendezve.  
-> Vegye figyelembe, hogy a **. **A Luis-portálba épített Lu-exportálási képesség már rendezi a kimenetet.
+> Vegye figyelembe, hogy a **. ** A Luis-portálba épített Lu-exportálási képesség már rendezi a kimenetet.
 
 ### <a name="build-the-luis-app-from-source"></a>A LUIS-alkalmazás létrehozása a forrástól
 
@@ -66,7 +68,7 @@ Egy LUIS-alkalmazás esetében a *forrásból való kiépítéshez* [egy új Lui
 
 A LUIS-alkalmazás következő típusú fájljait kell fenntartani a verziókövetés alatt:
 
-- `.lu`a LUIS-alkalmazás fájlja
+- `.lu` a LUIS-alkalmazás fájlja
 
 - [Egység test definition Files](luis-concept-devops-testing.md#writing-tests) (hosszúságú kimondott szöveg és várt eredmények)
 
@@ -209,7 +211,7 @@ Ha olyan "fejlesztői ág" LUIS-alkalmazással dolgozik, amelyet a szolgáltatá
 
 Ha a lekéréses kérelemben szereplő módosítások a főkiszolgálóba vannak egyesítve, akkor a verziószámozást kell alkalmazni, hogy a Master összes frissítése egymástól függetlenül legyen.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [Luis DevOps teszteléséről](luis-concept-devops-testing.md)
 * Ismerje meg, hogyan valósítható meg a [DevOps for Luis a GitHub](luis-how-to-devops-with-github.md) használatával

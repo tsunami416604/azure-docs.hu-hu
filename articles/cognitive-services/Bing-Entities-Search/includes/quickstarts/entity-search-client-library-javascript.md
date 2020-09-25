@@ -8,13 +8,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/06/2020
 ms.author: aahi
-ms.custom: devx-track-javascript
-ms.openlocfilehash: f5a3b48fd6be48d468b66009a77de100962be10d
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: 783896c4266159b167a95a2f8e9a8bb9edd8e86c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87405066"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91277554"
 ---
 Ezzel a rövid útmutatóval megkezdheti az entitások keresését a JavaScript Bing Entity Search ügyféloldali függvénytárával. Habár a Bing Entity Search REST API kompatibilis a legtöbb programozási nyelvvel, az ügyféloldali kódtár egyszerű módszert kínál a szolgáltatás integrálására az alkalmazásokba. A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/entitySearch.js)található.
 
@@ -22,7 +22,7 @@ Ezzel a rövid útmutatóval megkezdheti az entitások keresését a JavaScript 
 
 * A [Node.js](https://nodejs.org/en/download/) legújabb verziója.
 
-* A [Node.jsBING Entity Search SDK](https://www.npmjs.com/package/@azure/cognitiveservices-entitysearch)
+* A [Node.jsBING Entity Search SDK ](https://www.npmjs.com/package/@azure/cognitiveservices-entitysearch)
 
 Az Bing Entity Search SDK telepítése:
 
@@ -66,7 +66,7 @@ Az Bing Entity Search SDK telepítése:
 ![Entity results](media/entity-search-sdk-node-quickstart-results.png)
 -->
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Egyoldalas webalkalmazás létrehozása](../../tutorial-bing-entities-search-single-page-app.md)

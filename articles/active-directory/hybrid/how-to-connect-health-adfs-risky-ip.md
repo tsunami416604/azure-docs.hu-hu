@@ -16,12 +16,12 @@ ms.date: 02/26/2019
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 431b45f4ef3431e7fd1d34cf80278892470c36ef
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 24f8a60c5b955096f1661877416936b747a16979
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89660844"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306395"
 ---
 # <a name="risky-ip-report-public-preview"></a>Kockázatos IP-jelentés (nyilvános előzetes verzió)
 AD FS ügyfelek jelszavas hitelesítési végpontokat tehetnek elérhetővé az interneten, hogy hitelesítési szolgáltatásokat nyújtsanak a végfelhasználók számára az SaaS-alkalmazások, például a Microsoft 365 eléréséhez. Ez lehetőséget ad kártékony elemek számára, hogy megkíséreljenek bejelentkezni az AD FS rendszerbe, és találgatással kiderítsék a végfelhasználó jelszavát az alkalmazás-erőforrások elérése érdekében. A Windows Server 2012 R2-n futó AD FS-től kezdve elérhető zárolási funkció az extranet-fiókokhoz az ilyen típusú támadások elkerülése érdekében. Ha korábbi verziót használ, erősen ajánlott AD FS rendszerét Windows Server 2016-ra frissíteni. <br />
@@ -39,7 +39,7 @@ Ezenkívül előfordulhat, hogy egy IP-címről többször próbálnak bejelentk
 > 
 
 ## <a name="what-is-in-the-report"></a>Mi a jelentés?
-A sikertelen bejelentkezési tevékenység ügyfél IP-címei a webalkalmazás-proxy kiszolgálókon keresztül vannak összesítve. A Kockázatos IP jelentés minden eleme összesített adatokat tartalmaz a sikertelen AD FS-bejelentkezési kísérletekről, amelyek túllépték a kijelölt küszöbértéket. A következő információkat tartalmazza: ![Azure AD Connect Health portál](./media/how-to-connect-health-adfs/report4a.png)
+A sikertelen bejelentkezési tevékenység ügyfél IP-címei a webalkalmazás-proxy kiszolgálókon keresztül vannak összesítve. A Kockázatos IP jelentés minden eleme összesített adatokat tartalmaz a sikertelen AD FS-bejelentkezési kísérletekről, amelyek túllépték a kijelölt küszöbértéket. A következő információkat tartalmazza: ![ képernyőkép, amely egy kockázatos IP-jelentést jelenít meg az oszlopfejlécek kiemelésével.](./media/how-to-connect-health-adfs/report4a.png)
 
 | Jelentéselem | Description |
 | ------- | ----------- |
@@ -52,7 +52,7 @@ A sikertelen bejelentkezési tevékenység ügyfél IP-címei a webalkalmazás-p
 
 Például az alábbi jelentésben 2018. 02. 28-án 18:00 és 19:00 között a <i>104.2XX.2XX.9</i> IP-címről helytelen jelszó típusú hiba nem volt, azonban 284 extranet zárolási hiba fordult elő. 14 egyedi felhasználó volt érintett. A tevékenység meghaladta az óránkénti jelentési küszöbértéket. 
 
-![Az Azure AD Connect Health portál](./media/how-to-connect-health-adfs/report4b.png)
+![Képernyőkép, amely egy kockázatos IP-jelentés bejegyzésére mutat példát.](./media/how-to-connect-health-adfs/report4b.png)
 
 > [!NOTE]
 > - A jelentés listájában kizárólag a küszöbértéket meghaladó tevékenységek jelennek meg. 
@@ -60,7 +60,7 @@ Például az alábbi jelentésben 2018. 02. 28-án 18:00 és 19:00 között a <i
 > - Ebben a figyelmeztető jelentésben nem jelennek meg az Exchange-IP-címek és a magánhálózati IP-címek, az exportálási listában azonban szerepelnek. 
 >
 
-![Az Azure AD Connect Health portál](./media/how-to-connect-health-adfs/report4c.png)
+![Képernyőkép, amely a kockázatos IP-jelentést a "Letöltés", az "értesítési beállítások" és a "küszöbérték-beállítások" kiemelésével jeleníti meg.](./media/how-to-connect-health-adfs/report4c.png)
 
 ## <a name="load-balancer-ip-addresses-in-the-list"></a>Terheléselosztó IP-címei a listában
 A terheléselosztó összesítési bejelentkezési tevékenységei meghiúsultak, és elérte a riasztási küszöbértéket. Ha terheléselosztói IP-címek jelennek meg, nagyon valószínű, hogy a külső terheléselosztó nem küldi el az ügyfél IP-címét, amikor továbbítja a webalkalmazás proxykiszolgálójának. Konfigurálja megfelelően a terheléselosztót a továbbított ügyfél IP-címének továbbítására. 

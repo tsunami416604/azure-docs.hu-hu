@@ -3,13 +3,13 @@ title: Azure szolgáltatás állapotára vonatkozó riasztások küldése a Serv
 description: Személyre szabott értesítések beszerzése a ServiceNow-példány szolgáltatás állapotával kapcsolatos eseményekről.
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 68175dc17c1601eab097b94d4eefaa2706731f5c
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.custom: devx-track-js
+ms.openlocfilehash: f120e9d950cc349d0331a476dbfbfe9d7e599f0c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432530"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91307568"
 ---
 # <a name="send-azure-service-health-alerts-with-servicenow-using-webhooks"></a>Azure szolgáltatásbeli állapottal kapcsolatos riasztások küldése a ServiceNow webhookok használatával
 
@@ -43,9 +43,9 @@ Ez a cikk bemutatja, hogyan integrálhatja az Azure szolgáltatás állapotával
 
     >[!NOTE]
     >Az alábbi szkriptben frissítenie kell a `<secret>` , a `<group>` és a `<email>` értéket.
-    >* `<secret>`véletlenszerű sztringnek kell lennie, mint például egy GUID
-    >* `<group>`annak a ServiceNow-csoportnak kell lennie, amelyhez az incidenst hozzá szeretné rendelni
-    >* `<email>`azon személynek kell lennie, akit hozzá kíván rendelni az incidenshez (nem kötelező)
+    >* `<secret>` véletlenszerű sztringnek kell lennie, mint például egy GUID
+    >* `<group>` annak a ServiceNow-csoportnak kell lennie, amelyhez az incidenst hozzá szeretné rendelni
+    >* `<email>` azon személynek kell lennie, akit hozzá kíván rendelni az incidenshez (nem kötelező)
     >
 
     ```javascript

@@ -1,18 +1,16 @@
 ---
-title: Python-alkalmazások figyelése Azure Monitorokkal (előzetes verzió) | Microsoft Docs
+title: Python-alkalmazások figyelése Azure Monitorokkal | Microsoft Docs
 description: Útmutatást nyújt a OpenCensus Python Azure Monitor
 ms.topic: conceptual
-author: lzchen
-ms.author: lechen
-ms.date: 10/11/2019
+ms.date: 09/24/2020
 ms.reviewer: mbullwin
 ms.custom: devx-track-python
-ms.openlocfilehash: ac7569a48e4bab25d4db17f2fc6dd92b31afcab5
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 1e6376cd8389a4f1f0defebce0a2c7b6d0f9deed
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850049"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323265"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>Azure Monitor beállítása a Python-alkalmazáshoz
 
@@ -20,7 +18,7 @@ Azure Monitor támogatja a Python-alkalmazások elosztott nyomkövetését, metr
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
+- Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
 - Python-telepítés. Ez a cikk a [Python 3.7.0](https://www.python.org/downloads/release/python-370/)használja, bár más verziók valószínűleg kisebb módosításokkal fognak működni. Az SDK csak a Python v 2.7 és a v 3.4-v 3.7-es verziókat támogatja.
 - Hozzon létre egy Application Insights [erőforrást](./create-new-resource.md). Ehhez hozzá kell rendelnie saját Instrumentation-kulcsát (rendszerállapotkulcsot) az erőforráshoz.
 
@@ -31,8 +29,6 @@ Telepítse a OpenCensus Azure Monitor-exportőröket:
 ```console
 python -m pip install opencensus-ext-azure
 ```
-
-A csomagok és integrációk teljes listájáért lásd: [OpenCensus-csomagok](./nuget.md#common-packages-for-python-using-opencensus).
 
 > [!NOTE]
 > A `python -m pip install opencensus-ext-azure` parancs feltételezi, hogy rendelkezik a `PATH` Python-telepítéshez beállított környezeti változóval. Ha még nem konfigurálta ezt a változót, meg kell adnia a teljes könyvtár elérési útját, ahol a Python-végrehajtható fájl található. Az eredmény az alábbihoz hasonló parancs: `C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\python.exe -m pip install opencensus-ext-azure` .

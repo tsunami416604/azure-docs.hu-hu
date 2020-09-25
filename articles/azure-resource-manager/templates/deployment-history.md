@@ -3,13 +3,13 @@ title: Üzembe helyezési előzmények
 description: Ismerteti, hogyan lehet megtekinteni Azure Resource Manager telepítési műveleteket a portál, a PowerShell, az Azure CLI és a REST API használatával.
 tags: top-support-issue
 ms.topic: conceptual
-ms.date: 05/26/2020
-ms.openlocfilehash: b7439a70a3bd802a5f8a7c371fc04ab3eed31a5b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/23/2020
+ms.openlocfilehash: 00e0c51244d5c191d4c9f05f689b90ece81ec5a4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84117834"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91284618"
 ---
 # <a name="view-deployment-history-with-azure-resource-manager"></a>Az üzembe helyezési előzmények megtekintése Azure Resource Manager
 
@@ -21,7 +21,7 @@ Az egyes telepítési hibák elhárításával kapcsolatos segítségért lásd:
 
 ## <a name="get-deployments-and-correlation-id"></a>Központi telepítések és korrelációs AZONOSÍTÓk beolvasása
 
-A központi telepítés részleteit a Azure Portal, a PowerShell, az Azure CLI vagy a REST API segítségével tekintheti meg. Az egyes központi telepítések korrelációs AZONOSÍTÓval rendelkeznek, amely a kapcsolódó események nyomon követésére szolgál. Hasznos lehet, ha technikai támogatással dolgozik az üzemelő példányok hibakereséséhez.
+A központi telepítés részleteit a Azure Portal, a PowerShell, az Azure CLI vagy a REST API segítségével tekintheti meg. Az egyes központi telepítések korrelációs AZONOSÍTÓval rendelkeznek, amely a kapcsolódó események nyomon követésére szolgál. Ha [létrehoz egy Azure-támogatási kérelmet](../../azure-portal/supportability/how-to-create-azure-support-request.md), a támogatás kérheti a KORRELÁCIÓs azonosító megadását. A támogatás a korrelációs azonosító használatával azonosítja a sikertelen telepítés műveleteit.
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
@@ -61,13 +61,13 @@ A korrelációs azonosító beszerzéséhez használja a következőt:
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Egy erőforráscsoport központi telepítésének listázásához használja az [az Deployment Group List](/cli/azure/group/deployment?view=azure-cli-latest#az-deployment-group-list)lehetőséget.
+Egy erőforráscsoport központi telepítésének listázásához használja az [az Deployment Group List](/cli/azure/group/deployment#az-deployment-group-list)lehetőséget.
 
 ```azurecli-interactive
 az deployment group list --resource-group ExampleGroup
 ```
 
-Egy adott központi telepítés beszerzéséhez használja az az [üzembe helyezési csoport megjelenítése](/cli/azure/group/deployment?view=azure-cli-latest#az-deployment-group-show)lehetőséget.
+Egy adott központi telepítés beszerzéséhez használja az az [üzembe helyezési csoport megjelenítése](/cli/azure/group/deployment#az-deployment-group-show)lehetőséget.
 
 ```azurecli-interactive
 az deployment group show --resource-group ExampleGroup --name ExampleDeployment
@@ -81,7 +81,7 @@ az deployment group show --resource-group ExampleGroup --name ExampleDeployment 
 
 # <a name="http"></a>[HTTP](#tab/http)
 
-Egy erőforráscsoport központi telepítésének listázásához használja a következő műveletet. A kérelemben használandó legújabb API-verzióhoz lásd: [Deployments – List by erőforráscsoport](/rest/api/resources/deployments/listbyresourcegroup).
+Egy erőforráscsoport központi telepítésének listázásához használja a következő műveletet. A kérelemben használandó legújabb API-verzióhoz lásd:  [Deployments – List by erőforráscsoport](/rest/api/resources/deployments/listbyresourcegroup).
 
 ```
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/?api-version={api-version}
@@ -209,7 +209,7 @@ A válasz egy hibaüzenetet tartalmaz.
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az egyes telepítési hibák elhárításával kapcsolatos segítségért lásd: [gyakori hibák megoldása az erőforrások Azure-ba való telepítésekor a Azure Resource Manager használatával](common-deployment-errors.md).
 * Ha többet szeretne megtudni arról, hogy az üzembe helyezések hogyan kezelhetők az előzményekben, tekintse meg az [automatikus törlés a telepítési előzményekből](deployment-history-deletions.md)című témakört.

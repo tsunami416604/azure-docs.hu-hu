@@ -1,14 +1,14 @@
 ---
 title: Az Azure Arc áttekintése
 description: Ismerje meg, hogy mi az Azure arc, és hogyan segíti az ügyfelek a hibrid erőforrásaik kezelését és irányítását más Azure-szolgáltatásokkal és-funkciókkal.
-ms.date: 08/25/2020
+ms.date: 09/23/2020
 ms.topic: overview
-ms.openlocfilehash: 46bd2089dbc2794d0fb98ceb9a5e97011e36d6ea
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: e6dc052655bffae949399f77a26d7b76c5b0d13c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89052302"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335398"
 ---
 # <a name="azure-arc-overview"></a>Az Azure Arc áttekintése
 
@@ -34,7 +34,7 @@ Az Azure arc legfontosabb funkciói a következők:
 
 * Konfigurálja az Azure-beli virtuálisgép- [bővítményeket](./servers/manage-vm-extensions.md) az Azure felügyeleti szolgáltatások használatára a kiszolgálók figyeléséhez, biztonságossá tételéhez és frissítéséhez.
 
-* Kubernetes-fürtök kezelése és szabályozása skálán. 
+* Kubernetes-fürtök kezelése és szabályozása skálán.
 
 * Az alkalmazások és a konfigurációk GitOps való üzembe helyezéséhez használjon programkód-alapú konfigurációt, közvetlenül a forrás-vezérlőelemről, például a GitHubról.
 
@@ -50,7 +50,17 @@ Az alábbiakban az Azure arc által jelenleg elérhető funkciók díjszabása o
 
 ### <a name="arc-enabled-servers"></a>Arc-kompatibilis kiszolgálók
 
-Az aktuális előzetes verzióban az Azure arc-kompatibilis kiszolgálók díjmentesen vehetők igénybe.
+Az Azure arc-vezérlési sík funkció díjmentesen vehető igénybe.Ide tartoznak az alábbiak:
+
+* Erőforrás-szervezet Azure felügyeleti csoportok és címkék használatával.
+
+* Keresés és indexelés az Azure Resource Graph használatával.
+
+* Hozzáférés és biztonság RBAC és előfizetéseken keresztül.
+
+* Környezetek és automatizálás sablonok és bővítmények segítségével.
+
+* Frissítés kezelése
 
 Az arc-kompatibilis kiszolgálókon használt bármely Azure-szolgáltatás (például Azure Security Center vagy Azure Monitor) a szolgáltatás díjszabása szerint lesz felszámítva. További információ: Azure- [díjszabási oldal](https://azure.microsoft.com/pricing/).
 
@@ -58,7 +68,7 @@ Az arc-kompatibilis kiszolgálókon használt bármely Azure-szolgáltatás (pé
 
 Az aktuális előzetes verzióban az Azure arc-kompatibilis Kubernetes díjmentesen vehető igénybe.
 
-### <a name="azure-arc-enabled-data-services"></a>Az Azure arc-kompatibilis adatszolgáltatások
+### <a name="azure-arc-enabled-data-services"></a>Azure Arc-kompatibilis adatszolgáltatások
 
 Az aktuális előzetes verzióban az Azure arc-kompatibilis adatszolgáltatások díjmentesen vehetők igénybe.
 

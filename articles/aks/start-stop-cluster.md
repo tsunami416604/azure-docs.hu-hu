@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 09/18/2020
 author: palma21
-ms.openlocfilehash: a743a6c30d5ce8bcaf275bf1a658f8343de4d4fb
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 44c33aa018971cc2b2f5eb215597a63e8b55c853
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935345"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278566"
 ---
 # <a name="stop-and-start-an-azure-kubernetes-service-aks-cluster-preview"></a>Azure Kubernetes Service (ak) fürt leállítása és elindítása (előzetes verzió)
 
@@ -69,7 +69,7 @@ A `az aks stop` parancs segítségével leállíthatja egy futó AK-fürt csomó
 az aks stop --name myAKSCluster --resource-group myResourceGroup
 ```
 
-A fürt leállításának ellenőrzéséhez használja az [az AK show] [az-AK-show] parancsot, és erősítse `powerState` meg a bemutatókat az `Stopped` alábbi kimenetnél:
+A fürt leállításához használja az az [AK show][az-aks-show] parancsot, és erősítse `powerState` meg az `Stopped` alábbi kimenetet:
 
 ```json
 {
@@ -100,7 +100,7 @@ A következő példa egy *myAKSCluster*nevű fürtöt indít el:
 az aks start --name myAKSCluster --resource-group myResourceGroup
 ```
 
-Ellenőrizze, hogy a fürt elindult-e az [az AK show] [az-AK-show] parancs használatával, és erősítse `powerState` `Running` meg az alábbi kimenetet:
+Ellenőrizze, hogy a fürt elindult-e az az [AK show][az-aks-show] paranccsal, és erősítse `powerState` meg az `Running` alábbi kimenetet:
 
 ```json
 {
@@ -136,3 +136,4 @@ Ha az `provisioningState` azt `Starting` jelenti, hogy a fürt még nem lett tel
 [az-feature-register]: /cli/azure/feature?view=azure-cli-latest#az-feature-register&preserve-view=true
 [az-feature-list]: /cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true
 [az-provider-register]: /cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true
+[az-aks-show]: /cli/azure/aks?view=azure-cli-latest#az_aks_show

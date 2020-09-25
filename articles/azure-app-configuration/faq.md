@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: lcozzens
-ms.openlocfilehash: b1483230313b9e1b8e59cafea478b14ba0dfcc70
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 10510774409a6b75687086290b32885b30d9131a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587344"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335381"
 ---
 # <a name="azure-app-configuration-faq"></a>Azure-alkalmazás konfigurálása – gyakori kérdések
 
@@ -42,6 +42,10 @@ Létrehozhat olyan alkalmazás-konfigurációs értékeket, amelyek a Key Vaultb
 ## <a name="does-app-configuration-encrypt-my-data"></a>Titkosítja az alkalmazás konfigurációja az adataimat?
 
 Igen. Az alkalmazás konfigurációja titkosítja az összes általa birtokolt kulcs értékét, és titkosítja a hálózati kommunikációt. A kulcsok nevei és címkéi indexként használatosak a konfigurációs adatok beolvasásához, és nincsenek titkosítva.
+
+## <a name="where-does-data-stored-in-app-configuration-reside"></a>Hol találhatók az alkalmazások konfigurációjában tárolt adategységek? 
+
+Az alkalmazás konfigurációjában tárolt ügyféladatok abban a régióban találhatók, ahol az ügyfél alkalmazás-konfigurációs tárolóját létrehozták. Az alkalmazás konfigurációja replikálhatja az adataikat a [párosított régiókba](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) az adatrugalmasság érdekében, de nem replikálja vagy nem helyezi át az ügyféladatokat az [Azure-ban tárolt adattárolási](https://azure.microsoft.com/global-infrastructure/data-residency/)tartományon kívülre. Az ügyfelek és a végfelhasználók bármikor áthelyezhetik, másolhatják és érhetik el az ügyféladatokat bármely helyről.
 
 ## <a name="how-is-app-configuration-different-from-azure-app-service-settings"></a>Miben különbözik az alkalmazás konfigurációja a Azure App Service beállításaitól?
 
@@ -126,6 +130,6 @@ Fizessen elő a [GitHub-hirdetmények](https://github.com/Azure/AppConfiguration
 
 Közvetlenül a [githubon](https://github.com/Azure/AppConfiguration/issues)érhet el minket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Tudnivalók az Azure App Configurationről](./overview.md)

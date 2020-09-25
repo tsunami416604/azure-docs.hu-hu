@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
-ms.reviewer: sstein, carlrab
+ms.reviewer: sstein
 ms.date: 08/27/2019
-ms.openlocfilehash: 80fa5b7264d675317fba3cc12fa5049bdea76906
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 0c4a3c97649f168d339f5209cc10a46f56e97381
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042577"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335177"
 ---
 # <a name="tutorial-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>Oktatóanyag: Azure SQL Database rugalmas készlet hozzáadása egy feladatátvételi csoporthoz
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -147,7 +147,7 @@ Hozza létre a feladatátvételi csoportot a Azure Portal használatával.
     - **Feladatátvételi csoport neve**: adjon meg egy egyedi feladatátvételi csoport nevét (például `failovergrouptutorial` ).
     - **Másodlagos kiszolgáló**: válassza a *szükséges beállítások konfigurálását* , majd válassza az **új kiszolgáló létrehozása**lehetőséget. Másik lehetőségként már meglévő kiszolgálót is választhat másodlagos kiszolgálóként. Miután megadta a következő értékeket az új másodlagos kiszolgálóhoz, válassza a **kiválasztás**lehetőséget.
         - **Kiszolgáló neve**: írjon be egy egyedi nevet a másodlagos kiszolgálónak, például: `mysqlsecondary` .
-        - **Kiszolgáló-rendszergazdai bejelentkezés**: típus`azureuser`
+        - **Kiszolgáló-rendszergazdai bejelentkezés**: típus `azureuser`
         - **Password (jelszó**): írjon be egy olyan összetett jelszót, amely megfelel a jelszó követelményeinek.
         - **Hely**: válasszon ki egy helyet a legördülő menüből, például: `East US` . Ez a hely nem lehet ugyanazon a helyen, mint az elsődleges kiszolgáló.
 
@@ -348,14 +348,14 @@ Az oktatóanyag ezen része a következő PowerShell-parancsmagokat használja:
 
 ---
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Törölje az erőforrásokat az erőforráscsoport törlésével.
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
 1. Navigáljon az erőforráscsoporthoz a [Azure Portal](https://portal.azure.com).
-1. Válassza az **erőforráscsoport törlése** lehetőséget a csoport összes erőforrásának, valamint maga az erőforráscsoport törléséhez.
+1. Válassza az  **erőforráscsoport törlése** lehetőséget a csoport összes erőforrásának, valamint maga az erőforráscsoport törléséhez.
 1. Írja be az erőforráscsoport nevét, a `myResourceGroup` szövegmezőbe, majd kattintson a **Törlés** elemre az erőforráscsoport törléséhez.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -412,9 +412,9 @@ Nincsenek elérhető parancsfájlok a Azure Portal számára.
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban egy Azure SQL Database rugalmas készletet adott hozzá egy feladatátvételi csoporthoz, és tesztelte a feladatátvételt. Megismerte, hogyan végezheti el az alábbi műveleteket:
+Ebben az oktatóanyagban egy Azure SQL Database rugalmas készletet adott hozzá egy feladatátvételi csoporthoz, és tesztelte a feladatátvételt. Megtanulta végrehajtani az alábbi műveleteket:
 
 > [!div class="checklist"]
 >

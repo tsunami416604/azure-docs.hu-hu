@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a3cdb851ca00300d995bcf2075252a360242197
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 122cc6a2be17cb35e77b638a60fc5fa4f035c0d4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90601962"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266139"
 ---
 # <a name="how-to-require-approved-client-apps-for-cloud-app-access-with-conditional-access"></a>Útmutató: jóváhagyott ügyfélalkalmazások megkövetelése a Cloud app Accesshez feltételes hozzáféréssel
 
@@ -47,7 +47,7 @@ A szervezeteknek a következő három lépést kell végrehajtaniuk ahhoz, hogy 
 1. A **hozzárendelések**alatt válassza a **felhasználók és csoportok** lehetőséget.
    1. A **Belefoglalás**területen válassza ki az **összes felhasználó** elemet, illetve azokat a **felhasználókat és csoportokat** , amelyekre alkalmazni szeretné a szabályzatot. 
    1. Válassza a **Kész** lehetőséget.
-1. A **Cloud apps vagy a műveletek**területen  >  **Include**válassza az **Office 365 (előzetes verzió)** lehetőséget.
+1. A **Cloud apps vagy a műveletek**területen  >  **Include**válassza az **Office 365**lehetőséget.
 1. A **feltételek**területen válassza az **eszközök platformok**elemet.
    1. Állítsa **az** **Igen**értékre.
    1. **Android** és **iOS**is.
@@ -126,7 +126,7 @@ A szervezeteknek a következő három lépést kell végrehajtaniuk ahhoz, hogy 
 
 Tekintse át az alkalmazás-védelmi szabályzatok létrehozását [és hozzárendelését](/intune/apps/app-protection-policies)ismertető cikket, amely az Android és az iOS rendszerhez készült alkalmazás-védelmi szabályzatok létrehozásának lépéseit ismerteti. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Mit jelent a feltételes hozzáférés?](overview.md)
 

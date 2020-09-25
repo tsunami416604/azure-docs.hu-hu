@@ -3,7 +3,7 @@ title: Oracle-adatbázis tervezése és megvalósítása az Azure-ban | Microsof
 description: Egy Oracle-adatbázis megtervezése és megvalósítása az Azure-környezetben.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: rgardler
+author: dbakevlar
 manager: ''
 editor: ''
 tags: azure-resource-manager
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
-ms.author: rogardle
-ms.openlocfilehash: 0dd787916159637ce92a29a5d4baa1ffe7a09ba4
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.author: kegorman
+ms.openlocfilehash: 70de7363634cee2790a40ecf056134cf002c762d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510011"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91274707"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Oracle-adatbázis tervezése és implementálása az Azure-ban
 
@@ -232,7 +232,7 @@ Az Azure-környezet beállítása és konfigurálása után a következő lépé
 - [Az Oracle Golden Gate konfigurálása](configure-oracle-golden-gate.md)
 - [Oracle biztonsági mentés és helyreállítás](oracle-backup-recovery.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Oktatóanyag: kiválóan elérhető virtuális gépek létrehozása](../../linux/create-cli-complete.md)
 - [A virtuális gépek üzembe helyezésének megismerése Azure CLI-mintákkal](../../linux/cli-samples.md)

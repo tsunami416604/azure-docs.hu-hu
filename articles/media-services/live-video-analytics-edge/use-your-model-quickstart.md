@@ -1,15 +1,15 @@
 ---
 title: Élő videó elemzése saját HTTP-modell használatával – Azure
-description: Ebben a rövid útmutatóban a számítógép jövőképét fogja alkalmazni az élő videó hírcsatornájának (szimulált) IP-kamerából való elemzéséhez.
+description: Ebben a rövid útmutatóban a számítógép jövőképét fogja alkalmazni, hogy a saját HTTP-modelljével elemezze a (szimulált) IP-kamera élő videó-csatornáját.
 ms.topic: quickstart
 ms.date: 04/27/2020
 zone_pivot_groups: ams-lva-edge-programming-languages
-ms.openlocfilehash: 5fd7f1a7db323e3aa7971c1ced6fc588d6e60e37
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 07661fb1e9496aacff6f108a840e0c357f068d41
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684181"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336462"
 ---
 # <a name="quickstart-analyze-live-video-by-using-your-own-http-model"></a>Rövid útmutató: élő videó elemzése saját HTTP-modell használatával
 
@@ -79,7 +79,7 @@ Ez a rövid útmutató egy Azure-beli virtuális gépet használ IoT Edge eszkö
 
 Ha más gyors útmutatókat szeretne kipróbálni, tartsa meg a létrehozott erőforrásokat. Ellenkező esetben lépjen a Azure Portalra, nyissa meg az erőforráscsoportot, válassza ki azt az erőforráscsoportot, amelyben ezt a rövid útmutatót futtatta, és törölje az összes erőforrást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Próbálja ki a [YoloV3 modell biztonságos verzióját](https://github.com/Azure/live-video-analytics/blob/master/utilities/video-analysis/tls-yolov3-onnx/readme.md) , és telepítse azt a IoT Edge eszközre. 
 

@@ -7,17 +7,17 @@ author: MashaMSFT
 editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: overview
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 6d77855f095c59b47156af735f4581076ce5a09c
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: a8bfa91ac9b70c0ff4f461bd9e10899d1170b24d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89611629"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91272514"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Feladatátvevő fürt példányai SQL Server az Azure-ban Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -40,7 +40,7 @@ A feladatátvevő fürtök példányai az Azure-SQL Serverokkal Virtual Machines
 További információ: az [Azure-beli SQL Server virtuális gépekkel kapcsolatos ajánlott eljárások](hadr-cluster-best-practices.md#quorum). 
 
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Tárolás
 
 A hagyományos helyszíni fürtözött környezetekben a Windows feladatátvevő fürt a Tárolóhálózati (SAN) tárolót használja, amelyet mindkét csomópont a megosztott tárolóként is elérhet. SQL Server fájlok vannak tárolva a megosztott tárolóban, és csak az aktív csomópont fér hozzá egyszerre a fájlokhoz. 
 

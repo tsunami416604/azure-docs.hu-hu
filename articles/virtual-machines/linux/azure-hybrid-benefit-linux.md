@@ -3,34 +3,35 @@ title: Azure Hybrid Benefit és Linux rendszerű virtuális gépek
 description: A Azure Hybrid Benefit lehetővé teszi, hogy pénzt takarítson meg az Azure-on futó linuxos virtuális gépeken.
 services: virtual-machines
 documentationcenter: ''
-author: asinn826
+author: mathapli
 manager: westonh
-editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: vm
+ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: alsin
-ms.openlocfilehash: a9ea3b21908d1f461745ffe2689b36f8efcb6f89
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: d62eaf96354627e0c1e4e0a31bb16fb3265f66ac
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90995425"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91279773"
 ---
-# <a name="azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>Azure Hybrid Benefit – hogyan vonatkozik Linux Virtual Machines
+# <a name="preview-azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>Előzetes verzió: Azure Hybrid Benefit – hogyan vonatkozik Linux Virtual Machines
 
 ## <a name="overview"></a>Áttekintés
 
-A Azure Hybrid Benefit lehetővé teszi a helyszíni Red Hat Enterprise Linux (RHEL) és a SUSE Linux Enterprise (SLES) kiszolgáló Azure-ba való áttelepítését a saját, már meglévő Red hat-vagy SUSE-alapú szoftveres előfizetésének használatával. Ezzel a kedvezménysel csak a virtuális gép infrastrukturális költségeiért kell fizetnie, mert a RHEL vagy a SLES előfizetése fedezi a szoftver díját. Az előnyök az összes RHEL és SLES piactéren elvégzett (TB) lemezképre érvényesek.
+A Azure Hybrid Benefit lehetővé teszi a helyszíni Red Hat Enterprise Linux (RHEL) és a SUSE Linux Enterprise Server (SLES) virtuális gépek (VM-EK) Azure-ba történő áttelepítését a saját, korábban már meglévő Red hat vagy SUSE szoftveres előfizetéssel. Ezzel a kedvezménysel csak a virtuális gép infrastrukturális költségeiért kell fizetnie, mert a RHEL vagy a SLES előfizetése fedezi a szoftver díját. Az előnyök az összes RHEL és SLES piactéren elvégzett (TB) lemezképre érvényesek.
+
+> [!IMPORTANT]
+> A Linux rendszerű virtuális gépek Azure Hybrid Benefit jelenleg nyilvános előzetes verzióban érhető el.
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="benefit-description"></a>Juttatás leírása
 
 A Azure Hybrid Benefit segítségével könnyebben áttelepítheti a helyszíni RHEL és a SLES-kiszolgálókat az Azure-ba, ha átalakítja a meglévő RHEL-és SLES-TB-alapú virtuális gépeket az Azure-ban, hogy saját előfizetést (BYOS) számlázjon. Az Azure-beli TB-rendszerképekből üzembe helyezett virtuális gépek általában az infrastruktúra díját és a szoftver díját is felszámítják. A Azure Hybrid Benefit a TB virtuális gépek újratelepítése nélkül alakíthatók át BYOS számlázási modellre, így elkerülhető az állásidő kockázata.
 
-![A Cost vizualizáció Azure Hybrid Benefit Linux rendszerű virtuális gépeken](./media/ahb-linux/azure-hybrid-benefit-cost.png)
+:::image type="content" source="./media/ahb-linux/azure-hybrid-benefit-cost.png" alt-text="Azure Hybrid Benefit a Cost vizualizációt Linux rendszerű virtuális gépeken.":::
 
 Ha engedélyezi a kedvezményt egy RHEL vagy SLES virtuális gépen, akkor a továbbiakban nem számítunk fel díjat a TB virtuális gépen általában felmerülő további szoftverekért. Ehelyett a virtuális gép megkezdi a BYOS-díj kivezetését, amely csak a számítási hardver díját és a szoftver díját tartalmazza.
 

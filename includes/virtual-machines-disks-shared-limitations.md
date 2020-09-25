@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 08/26/2020
+ms.date: 09/22/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: edb5836ace6f7a1a0cff703b9921f6e6999de578
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 11901e0b68fed9a6a83287d50896bf2afc51fa37
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88944350"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91279560"
 ---
 A megosztott lemezek engedélyezése csak a lemezek egy részhalmaza számára lehetséges. Jelenleg csak az ultra-lemezek és a prémium szintű SSD-k engedélyezhetik a megosztott lemezeket. Minden olyan felügyelt lemez, amelyen engedélyezve vannak a megosztott lemezek, a következő korlátozások vonatkoznak a lemez típusa szerint rendezve:
 
@@ -51,15 +51,15 @@ A közös prémium SSD-k csak a következő régiókban támogatottak:
 - USA nyugati középső régiója
 - USA déli középső régiója
 - USA északi középső régiója
-- Central US
-- West Europe
+- Az USA középső régiója
+- Nyugat-Európa
 - Észak-Európa
 - Dél-Korea középső régiója
 - Közép-Kanada
 - Kelet-Kanada
 - Kelet-Japán
 - Nyugat-Japán
+- Délkelet-Ázsia
+- Kelet-Ázsia
 - USA-beli államigazgatás – Virginia
 - USA-beli államigazgatás – Arizona
-
-Ha érdeklik a közös prémium szintű SSD-k kipróbálása, [regisztráljon a hozzáférésre](https://aka.ms/AzureSharedDiskGASignUp).

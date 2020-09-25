@@ -3,7 +3,7 @@ title: Oracle-adatvédelem megvalósítása Azure Linux rendszerű virtuális g�
 description: Gyorsan lekérheti az Oracle-adatvédelmet az Azure-környezetben.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: rgardler
+author: dbakevlar
 manager: ''
 editor: ''
 tags: azure-resource-manager
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
-ms.author: rogardle
-ms.openlocfilehash: c6b064df1fe8943f9202446fb2857d50bcb4e0e1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: kegorman
+ms.openlocfilehash: f8a40f87b8fdaa2adf445392bd598dd8133aae4c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083378"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335901"
 ---
 # <a name="implement-oracle-data-guard-on-an-azure-linux-virtual-machine"></a>Oracle-adatvédelem megvalósítása Azure Linux rendszerű virtuális gépen 
 
@@ -282,7 +282,7 @@ SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_r
 SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_redo04.log') SIZE 50M;
 ```
 
-A flashback bekapcsolása (ami sokkal könnyebbé teszi a helyreállítást) és a KÉSZENLÉTi \_ Fájlkezelés \_ automatikusra állítása. Zárja be az SQL * Plus parancsot.
+A flashback bekapcsolása (ami sokkal könnyebbé teszi a helyreállítást) és a KÉSZENLÉTi \_ Fájlkezelés beállítása \_ automatikusra. Kilépés az SQL * Plus szolgáltatásból.
 
 ```bash
 SQL> ALTER DATABASE FLASHBACK ON;
@@ -699,7 +699,7 @@ Ha már nincs szüksége a virtuális gépre, a következő paranccsal távolít
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Oktatóanyag: kiválóan elérhető virtuális gépek létrehozása](../../linux/create-cli-complete.md)
 

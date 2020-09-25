@@ -3,12 +3,12 @@ title: Ügynök nélküli függőségi elemzés beállítása Azure Migrate Serv
 description: Az ügynök nélküli függőségek elemzésének beállítása Azure Migrate Server Assessment-ben.
 ms.topic: how-to
 ms.date: 6/08/2020
-ms.openlocfilehash: 2e6e562a18fa2ee0b89416ea67cc15394e760ada
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: 164cc20632faa1d444d06da6688000e9b40d7e76
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89536438"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275591"
 ---
 # <a name="analyze-machine-dependencies-agentless"></a>A gép függőségeinek elemzése (ügynök nélküli)
 
@@ -25,7 +25,7 @@ Ez a cikk az ügynök nélküli függőségek elemzésének beállítását isme
 
 - A függőség elemzése nézetben jelenleg nem adhat hozzá és nem távolíthat el kiszolgálót egy csoportból.
 - Jelenleg nem érhető el függőségi Térkép a kiszolgálók csoportjához.
-- A függőségi adatgyűjtés a 400-kiszolgálókhoz egyidejűleg állítható be. Nagyobb számú kiszolgálót is elemezheti a 400 kötegekben történő előkészítéssel.
+- A függőségi adatgyűjtés a 1000-kiszolgálókhoz egyidejűleg állítható be. Nagyobb számú kiszolgálót elemezheti a 1000 kötegekben történő előkészítéssel.
 
 ## <a name="before-you-start"></a>Előkészületek
 
@@ -57,7 +57,7 @@ Adja hozzá a felhasználói fiókot a készülékhez.
 
 ## <a name="start-dependency-discovery"></a>Függőségi felderítés elindítása
 
-Válassza ki azokat a gépeket, amelyeken engedélyezni szeretné a függőségi felderítést.
+Válassza ki azokat a gépeket, amelyeken engedélyezni szeretné a függőségi felderítést. 
 
 1. **Azure Migrate: kiszolgáló értékelése**, kattintson a **felderített kiszolgálók**elemre.
 2. Kattintson a **függőség elemzése** ikonra.
@@ -68,7 +68,7 @@ Válassza ki azokat a gépeket, amelyeken engedélyezni szeretné a függőségi
 
     ![Függőségi felderítés elindítása](./media/how-to-create-group-machine-dependencies-agentless/start-dependency-discovery.png)
 
-A függőségek felderítésének megkezdése után hat órán belül megjelenítheti a függőségeket.
+A függőségek felderítésének megkezdése után hat órán belül megjelenítheti a függőségeket. Ha több gépet szeretne engedélyezni, a [PowerShell](#start-or-stop-dependency-discovery-using-powershell) használatával teheti meg.
 
 ## <a name="visualize-dependencies"></a>Függőségek megjelenítése
 
@@ -125,7 +125,7 @@ Célport | Portszám a célszámítógépen
 
 ## <a name="stop-dependency-discovery"></a>Függőségi felderítés leállítása
 
-Válassza ki azokat a gépeket, amelyeken le szeretné állítani a függőségi felderítést.
+Válassza ki azokat a gépeket, amelyeken le szeretné állítani a függőségi felderítést. 
 
 1. **Azure Migrate: kiszolgáló értékelése**, kattintson a **felderített kiszolgálók**elemre.
 2. Kattintson a **függőség elemzése** ikonra.
@@ -133,6 +133,114 @@ Válassza ki azokat a gépeket, amelyeken le szeretné állítani a függőségi
 3. A **kiszolgálók eltávolítása** lapon válassza ki azt a **készüléket** , amely felderíti azokat a virtuális gépeket, amelyeken meg szeretné szüntetni a függőségi felderítést.
 4. A gép listából válassza ki a gépeket.
 5. Kattintson a **kiszolgálók eltávolítása**elemre.
+
+Ha több gép függőségét szeretné leállítani, a [PowerShell](#start-or-stop-dependency-discovery-using-powershell) használatával teheti meg.
+
+
+### <a name="start-or-stop-dependency-discovery-using-powershell"></a>Függőségi felderítés elindítása vagy leállítása a PowerShell használatával
+
+Töltse le a PowerShell-modult [Azure PowerShell Samples](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale) -tárházból a githubon.
+
+
+#### <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
+
+1. Jelentkezzen be az Azure-előfizetésbe a AzAccount parancsmag használatával.
+
+    ```PowerShell
+    Connect-AzAccount
+    ```
+    Azure Government használata esetén használja a következő parancsot.
+    ```PowerShell
+    Connect-AzAccount -EnvironmentName AzureUSGovernment
+    ```
+
+2. Válassza ki azt az előfizetést, amelyben létrehozta a Azure Migrate projektet 
+
+    ```PowerShell
+    select-azsubscription -subscription "Fabrikam Demo Subscription"
+    ```
+
+3. A letöltött AzMig_Dependencies PowerShell-modul importálása
+
+    ```PowerShell
+    Import-Module .\AzMig_Dependencies.psm1
+    ```
+
+#### <a name="enable-or-disable-dependency-data-collection"></a>Függőségi adatgyűjtés engedélyezése vagy letiltása
+
+1. A következő parancsokkal lekérheti a felderített VMware virtuális gépek listáját a Azure Migrate projektben. Az alábbi példában a projekt neve FabrikamDemoProject, és a hozzá tartozó erőforráscsoport FabrikamDemoRG. A gépek listája FabrikamDemo_VMs.csv lesz mentve
+
+    ```PowerShell
+    Get-AzMigDiscoveredVMwareVMs -ResourceGroupName "FabrikamDemoRG" -ProjectName "FabrikamDemoProject" -OutputCsvFile "FabrikamDemo_VMs.csv"
+    ```
+
+    A fájlban megtekintheti a virtuális gép megjelenítendő nevét, a függőségi gyűjtemény aktuális állapotát és az összes felderített virtuális gép ARM-AZONOSÍTÓját. 
+
+2. A függőségek engedélyezéséhez vagy letiltásához hozzon létre egy bemeneti CSV-fájlt. A fájlnak rendelkeznie kell egy "ARM ID" fejléctel rendelkező oszloppal. A CSV-fájlban szereplő további fejlécek figyelmen kívül lesznek hagyva. A CSV-t az előző lépésben létrehozott fájl használatával hozhatja létre. Hozzon létre egy másolatot a fájlról, és őrizze meg azokat a virtuális gépeket, amelyeken engedélyezni vagy letiltani szeretné a függőségeket. 
+
+    A következő példában a függőségi elemzés engedélyezve van a bemeneti fájlban lévő virtuális gépek listáján FabrikamDemo_VMs_Enable.csv.
+
+    ```PowerShell
+    Set-AzMigDependencyMappingAgentless -InputCsvFile .\FabrikamDemo_VMs_Enable.csv -Enable
+    ```
+
+    A következő példában a függőségi elemzés le van tiltva a bemeneti fájlban lévő virtuális gépek listáján FabrikamDemo_VMs_Disable.csv.
+
+    ```PowerShell
+    Set-AzMigDependencyMappingAgentless -InputCsvFile .\FabrikamDemo_VMs_Disable.csv -Disable
+    ```
+
+## <a name="visualize-network-connections-in-power-bi"></a>Hálózati kapcsolatok megjelenítése Power BIban
+
+Azure Migrate olyan Power BI-sablont kínál, amellyel egyszerre több kiszolgáló hálózati kapcsolatai jeleníthetők meg, és a szűrés folyamat és kiszolgáló alapján. A megjelenítéshez a következő utasítások szerint töltse be a Power BI függőségi adattal.
+
+1. Töltse le a PowerShell-modult és a Power BI sablont a GitHubon található [Azure PowerShell Samples](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale) tárházból.
+
+2. Jelentkezzen be az Azure-ba az alábbi utasítások alapján: 
+- Jelentkezzen be az Azure-előfizetésbe a AzAccount parancsmag használatával.
+
+    ```PowerShell
+    Connect-AzAccount
+    ```
+
+- Azure Government használata esetén használja a következő parancsot.
+
+    ```PowerShell
+    Connect-AzAccount -EnvironmentName AzureUSGovernment
+    ```
+
+- Válassza ki azt az előfizetést, amelyben létrehozta a Azure Migrate projektet 
+
+    ```PowerShell
+    select-azsubscription -subscription "Fabrikam Demo Subscription"
+    ```
+
+3. A letöltött AzMig_Dependencies PowerShell-modul importálása
+
+    ```PowerShell
+    Import-Module .\AzMig_Dependencies.psm1
+    ```
+
+4. Futtassa az alábbi parancsot. Ez a parancs letölti a függőségi adatmennyiséget egy CSV-fájlban, és feldolgozza azokat az egyedi függőségek listájának létrehozásához, amelyeket a Power BI vizualizációhoz használhat. Az alábbi példában a projekt neve FabrikamDemoProject, és a hozzá tartozó erőforráscsoport FabrikamDemoRG. A függőségek a FabrikamAppliance által felderített gépekre lesznek letöltve. Az egyedi függőségek a FabrikamDemo_Dependencies.csvba lesznek mentve
+
+    ```PowerShell
+    Get-AzMigDependenciesAgentless -ResourceGroup FabrikamDemoRG -Appliance FabrikamAppliance -ProjectName FabrikamDemoProject -OutputCsvFile "FabrikamDemo_Dependencies.csv"
+    ```
+
+5. A letöltött Power BI sablon megnyitása
+
+6. Töltse be Power BI a letöltött függőségi adatkészleteket.
+    - Nyissa meg Power BI a sablont.
+    - Kattintson az **adatlekérdezés** gombra az eszköztáron. 
+    - Válassza a **text/CSV** elemet a gyakori adatforrások közül.
+    - Válassza ki a letöltött függőségek fájlt.
+    - Kattintson a **Betöltés**elemre.
+    - Megjelenik egy tábla, amely a CSV-fájl nevével lesz importálva. A táblázat a jobb oldali mezők sávban látható. Nevezze át AzMig_Dependencies
+    - Kattintson a frissítés elemre az eszköztáron.
+
+    A hálózati kapcsolatok diagram és a forráskiszolgáló neve, a célkiszolgáló neve, a forrás folyamat neve, a cél folyamat neve szeletelők az importált értékekkel.
+
+7. Jelenítse meg a hálózati kapcsolatok leképezését kiszolgálók és folyamatok alapján. Mentse a fájlt.
 
 
 ## <a name="next-steps"></a>Következő lépések

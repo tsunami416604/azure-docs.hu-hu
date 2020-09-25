@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: dc05722ee79f72b2931cb1fa6106f742c5bc0e15
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 99595e27b17db716b09325d5dd80633bf44ffb02
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86274203"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336649"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>A csoportos adatelemzési folyamat működés közben – egy Azure HDInsight Hadoop-fürt használata 1 TB-os adatkészleten
 
@@ -67,7 +67,7 @@ Ebben az útmutatóban két példa előrejelzési problémát ismertetünk:
 
    * Az 1. lépésben létrehozott Storage-fiók összekapcsolása a HDInsight-fürttel a létrehozásakor. Ez a Storage-fiók a fürtön belül feldolgozható adatok elérésére szolgál.
    * A fürt fő csomópontjának távoli elérésének engedélyezése a létrehozása után. Jegyezze meg az itt megadott távelérési hitelesítő adatokat (a fürt létrehozásakor megadott hitelesítő adatoktól eltérő): végezze el az alábbi eljárásokat.
-3. [Azure Machine learning Studio (klasszikus) munkaterület létrehozása](../studio/create-workspace.md): ez a Azure Machine learning munkaterület a gépi tanulási modellek létrehozásához használatos a HDInsight-fürtön végzett kezdeti adatfelderítés és-vizsgálat után.
+3. [Azure Machine learning Studio (klasszikus) munkaterület létrehozása](../classic/create-workspace.md): ez a Azure Machine learning munkaterület a gépi tanulási modellek létrehozásához használatos a HDInsight-fürtön végzett kezdeti adatfelderítés és-vizsgálat után.
 
 ## <a name="get-and-consume-data-from-a-public-source"></a><a name="getdata"></a>Nyilvános forrásból származó adatok beolvasása és felhasználása
 A [Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/) adatkészletet úgy érheti el, ha a hivatkozásra kattint, elfogadja a használati feltételeket, és megadja a nevet. Itt látható egy pillanatkép:
@@ -98,7 +98,7 @@ A bal oldalon a "Hadoop Command line" (az adatfeltárási igásló). Figyelje me
 
 Most már be van állítva, és készen áll a bemutató első részének megkezdésére: az adatelemzés a kaptár használatával, és az adatAzure Machine Learningra való felkészülés.
 
-## <a name="create-hive-database-and-tables"></a><a name="hive-db-tables"></a>Struktúra-adatbázis és-táblák létrehozása
+## <a name="create-hive-database-and-tables"></a><a name="hive-db-tables"></a> Struktúra-adatbázis és-táblák létrehozása
 A Criteo adatkészlethez tartozó kaptár-táblázatok létrehozásához nyissa meg a ***Hadoop parancssort*** a fő csomópont asztalán, és írja be a kaptár könyvtárat a parancs beírásával.
 
 ```console
@@ -208,7 +208,7 @@ criteo_train
 Time taken: 1.437 seconds, Fetched: 4 row(s)
 ```
 
-## <a name="data-exploration-in-hive"></a><a name="exploration"></a>Adatelemzés a struktúrában
+## <a name="data-exploration-in-hive"></a><a name="exploration"></a> Adatelemzés a struktúrában
 Most már készen áll arra, hogy elvégezze a struktúra alapszintű adatfelderítését. Első lépésként megszámolja a példák számát a vonaton, és teszteli az adattáblákat.
 
 ### <a name="number-of-train-examples"></a>A betanítási példák száma
@@ -402,7 +402,7 @@ e5f3fd8d        a0aaffa6        792250
 Time taken: 560.22 seconds, Fetched: 15 row(s)
 ```
 
-## <a name="down-sample-the-datasets-for-azure-machine-learning"></a><a name="downsample"></a>Az adatkészletek legördülő mintája Azure Machine Learning
+## <a name="down-sample-the-datasets-for-azure-machine-learning"></a><a name="downsample"></a> Az adatkészletek legördülő mintája Azure Machine Learning
 Miután megvizsgálta az adatkészleteket, és bebizonyította, hogyan végezze el az ilyen típusú feltárást bármely változóhoz (beleértve a kombinációkat is), az adathalmazok mintáját, hogy az Azure Machine Learning modelljei is felépíthető legyenek. Ne felejtse el, hogy a probléma témája a következő: adott példa attribútumai (a Col2-Col40 származó szolgáltatások értékei), Tippelje meg, hogy a Col1 0 (nincs kattintás) vagy 1 (kattintson).
 
 A kiépítési és tesztelési adatkészletek az eredeti méret 1%-ában való lebontásához használja a kaptár natív RAND () függvényét. A következő szkript, [minta&#95;struktúra&#95;criteo&#95;felbontáscsökkentéséhez&#95;train&#95;adatkészlet. a HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_downsample_train_dataset.hql) ezt a betanítási adatkészletet adja meg:
@@ -471,7 +471,7 @@ Ezzel készen áll arra, hogy felhasználja a modelleket az Azure Machine Learni
 
 Az utolsó fontos összetevő a Azure Machine Learningre való áttérés előtt, amely a Count (darabszám) táblára vonatkozik. A következő alszakaszban részletesen tárgyalja a Count táblát.
 
-## <a name="a-brief-discussion-on-the-count-table"></a><a name="count"></a>A Count tábla rövid megbeszélése
+## <a name="a-brief-discussion-on-the-count-table"></a><a name="count"></a> A Count tábla rövid megbeszélése
 Ahogy látta, számos kategorikus változó magas dimenzióját rendelkezik. Az útmutatóban egy olyan hatékony technikát kell [megtanulnia](https://blogs.technet.com/b/machinelearning/archive/2015/02/17/big-learning-made-easy-with-counts.aspx) , amely a változók hatékony és robusztus módon történő kódolását mutatja be. A technikával kapcsolatos további információkat a megadott hivatkozás tartalmaz.
 
 >[!NOTE]
@@ -480,7 +480,7 @@ Ahogy látta, számos kategorikus változó magas dimenzióját rendelkezik. Az 
 
 A Count (darabszám) típusú táblák létrehozásához használja a RAW/Count mappában található adatértékeket. A modellezés szakaszban a felhasználók megmutatják, hogyan hozhatja létre ezeket a számlálási táblákat a teljesen új kategorikus funkciókhoz, vagy használhat egy előre elkészített számlálási táblázatot a felderítésekhez. A következőkben a "előre elkészített számlálási táblák" kifejezés használata esetén a megadott számú táblázatot használjuk. A táblázatok elérésének részletes ismertetését a következő szakaszban találja.
 
-## <a name="build-a-model-with-azure-machine-learning"></a><a name="aml"></a>Modell létrehozása Azure Machine Learning
+## <a name="build-a-model-with-azure-machine-learning"></a><a name="aml"></a> Modell létrehozása Azure Machine Learning
 Azure Machine Learning modell-létrehozási folyamata az alábbi lépéseket követi:
 
 1. [Adatok beolvasása a kaptár tábláiból Azure Machine Learning](#step1)
@@ -491,7 +491,7 @@ Azure Machine Learning modell-létrehozási folyamata az alábbi lépéseket kö
 
 Most már készen áll a modellek Azure Machine Learning Studióban való létrehozására. A rendszer a fürtben található kaptár-táblákként menti a levett mintául szolgáló adatkészleteket. Az adatelemzéshez használja az Azure Machine Learning **adatimportálási** modult. A fürt Storage-fiókjához való hozzáféréshez szükséges hitelesítő adatokat a következő cikkben találhatja meg.
 
-### <a name="step-1-get-data-from-hive-tables-into-azure-machine-learning-using-the-import-data-module-and-select-it-for-a-machine-learning-experiment"></a><a name="step1"></a>1. lépés: adatok beolvasása a kaptár tábláiból Azure Machine Learning az adatok importálása modul használatával, majd kiválaszthatja a Machine learning-kísérletekhez
+### <a name="step-1-get-data-from-hive-tables-into-azure-machine-learning-using-the-import-data-module-and-select-it-for-a-machine-learning-experiment"></a><a name="step1"></a> 1. lépés: adatok beolvasása a kaptár tábláiból Azure Machine Learning az adatok importálása modul használatával, majd kiválaszthatja a Machine learning-kísérletekhez
 Először válassza ki a **+ új**  ->  **kísérletből**álló  ->  **üres kísérletet**. Ezután a bal felső sarokban található **keresőmezőbe** írja be az "adatok importálása" kifejezést. Húzza az **adatimportálási** modult a kísérleti vászonra (a képernyő középső részére), és használja a modult az adateléréshez.
 
 Így néz ki az adatok **importálása** , miközben az adatok beolvasása a kaptár táblából történik:
@@ -525,7 +525,7 @@ A Machine learning-kísérletben használható mentett adatkészlet kiválasztá
 >
 >
 
-### <a name="step-2-create-an-experiment-in-azure-machine-learning-to-predict-clicks--no-clicks"></a><a name="step2"></a>2. lépés: kísérlet létrehozása Azure Machine Learningban a kattintások és a kattintások előrejelzéséhez
+### <a name="step-2-create-an-experiment-in-azure-machine-learning-to-predict-clicks--no-clicks"></a><a name="step2"></a> 2. lépés: kísérlet létrehozása Azure Machine Learningban a kattintások és a kattintások előrejelzéséhez
 A Azure Machine Learning Studio (klasszikus) kísérlet így néz ki:
 
 ![Machine Learning kísérlet](./media/hive-criteo-walkthrough/xRpVfrY.png)
@@ -602,7 +602,7 @@ Ez a részlet azt mutatja, hogy az oszlopokban megjelenő oszlopok esetében az 
 
 Most már készen áll arra, hogy az átalakított adatkészleteket használó Azure Machine Learning modellt hozzon létre. A következő szakaszban bemutatjuk, hogyan teheti ezt meg.
 
-### <a name="step-3-build-train-and-score-the-model"></a><a name="step3"></a>3. lépés: a modell kiépítése, betanítása és pontozása
+### <a name="step-3-build-train-and-score-the-model"></a><a name="step3"></a> 3. lépés: a modell kiépítése, betanítása és pontozása
 
 #### <a name="choice-of-learner"></a>A tanuló kiválasztása
 Először ki kell választania egy tanulót. A tanulónk kétosztályos, megnövelt döntési fát használ. A tanuló alapértelmezett beállításai a következők:
@@ -621,7 +621,7 @@ Ha már rendelkezik egy betanított modellel, készen áll a tesztelési adatké
 
 ![A Score model (Modell montozása) modul](./media/hive-criteo-walkthrough/fydcv6u.png)
 
-### <a name="step-4-evaluate-the-model"></a><a name="step4"></a>4. lépés: a modell kiértékelése
+### <a name="step-4-evaluate-the-model"></a><a name="step4"></a> 4. lépés: a modell kiértékelése
 Végezetül elemezni kell a modell teljesítményét. A két osztályos (bináris) besorolási probléma esetén a megfelelő mérték a AUC. A görbe megjelenítéséhez csatlakoztassuk a **pontszám modell** modult egy **kiértékelési modell** modulhoz. Ha **a** **modell kiértékelése** modulban a vizualizáció elemre kattint, az a következőhöz hasonló ábrát eredményez:
 
 ![A modul BDT modell kiértékelése](./media/hive-criteo-walkthrough/0Tl0cdg.png)
@@ -630,7 +630,7 @@ A bináris (vagy két osztály) besorolási problémák esetében az előrejelz�
 
 ![Modell kiértékelése modul megjelenítése](./media/hive-criteo-walkthrough/IRfc7fH.png)
 
-### <a name="step-5-publish-the-model-as-a-web-service"></a><a name="step5"></a>5. lépés: a modell közzététele webszolgáltatásként
+### <a name="step-5-publish-the-model-as-a-web-service"></a><a name="step5"></a> 5. lépés: a modell közzététele webszolgáltatásként
 Egy Azure Machine Learning-modell webszolgáltatásként való közzétételének lehetősége, amely a lehető legszélesebb körben elérhető. Ezt követően bárki megteheti, hogy meghívja a webszolgáltatást olyan bemeneti adatokkal, amelyekhez előrejelzések szükségesek, és a webszolgáltatás a modellt használja az előrejelzések visszaadásához.
 
 Először mentse a betanított modellt egy betanított modell-objektumként. ehhez kattintson a jobb gombbal a **vonat modell** modulra, és használja a **Save as betanított modell** lehetőséget.
@@ -661,7 +661,7 @@ Nulladik lépésként, mivel a Count tábla nagy méretű, néhány sornyi vizsg
 #### <a name="scoring-experiment-for-publishing-webservice"></a>Pontozási kísérlet a webszolgáltatások közzétételéhez
 Először is az alapvető struktúra egy **pontszám-modell** modul, amely elfogadja a betanított modell objektumát és az előző lépésekben generált bemeneti adatok néhány sorát a **Count Képtulajdonság** modul használatával. Használja az "Oszlopok kiválasztása az adatkészletben" lehetőséget a mutatós címkék és a pontszám valószínűségek kivetítéséhez.
 
-![Oszlopok kiválasztása az adathalmazban](./media/hive-criteo-walkthrough/kRHrIbe.png)
+![Adathalmaz oszlopainak kiválasztása](./media/hive-criteo-walkthrough/kRHrIbe.png)
 
 Figyelje meg, hogyan használhatók az adatkészletek "szűrés" adatainak **kiválasztására szolgáló adatkészlet modul Select oszlopai** . A tartalom itt látható:
 
@@ -695,4 +695,3 @@ Az alapértelmezett API-kulcsot a webszolgáltatás API-kulcsa váltotta fel. Ha
 A Python-parancsfájl JSON-keretrendszerében feltett két tesztelési példát a "pontozásos címkék", a mutatós valószínűségek című űrlapon kaphat választ. Ebben az esetben az alapértelmezett értékek úgy lettek kiválasztva, hogy az előre definiált kód (0 az összes numerikus oszlopra, a "value" karakterláncot pedig az összes kategorikus oszlop esetében) adja meg.
 
 Az útmutató bemutatja, hogyan kezelheti a nagyméretű adatkészleteket Azure Machine Learning használatával. Elindított egy terabájtos adatmennyiséget, létrehozta az előrejelzési modellt, és üzembe helyezte azt webszolgáltatásként a felhőben.
-

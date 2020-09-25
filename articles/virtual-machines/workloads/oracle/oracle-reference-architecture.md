@@ -2,7 +2,7 @@
 title: Az Azure-beli Oracle-adatbázisok referenciái architektúrái | Microsoft Docs
 description: A Oracle Database Enterprise Edition-adatbázisok Microsoft Azure Virtual Machines-on való futtatására szolgáló architektúrák.
 services: virtual-machines-linux
-author: rgardler
+author: dbakevlar
 manager: ''
 tags: ''
 ms.service: virtual-machines
@@ -10,14 +10,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/13/2019
-ms.author: rogardle
+ms.author: kegorman
 ms.custom: ''
-ms.openlocfilehash: 8feede515cf7ed861f3219fdf5f4642a33c9e83e
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 2bbc78f9a5569c8446743980cdea153883c19d4d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690357"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91274436"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Az Azure-beli Oracle Database Enterprise Edition hivatkozási architektúrái
 
@@ -226,7 +226,7 @@ A virtuális gépi operációs rendszer javítása [Azure Automation Update Mana
 - Az [Azure-folyamatokkal](/azure/devops/pipelines/get-started/what-is-azure-pipelines) az adatbázis javításait és frissítéseit leállás nélkül kezelheti.
 - A Felhőbeli natív mintázatok, például az [újrapróbálkozási minta](/azure/architecture/patterns/retry), az [áramkör-megszakító mintázata](/azure/architecture/patterns/circuit-breaker)és a [Felhőbeli tervezési minták útmutatójában](/azure/architecture/patterns/) definiált egyéb minták hozzáadásával az alkalmazáshoz tartozó kód finomhangolása is rugalmasabb lehet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse át a forgatókönyvre vonatkozó alábbi Oracle-hivatkozási cikkeket.
 

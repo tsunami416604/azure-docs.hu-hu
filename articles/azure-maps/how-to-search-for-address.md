@@ -4,16 +4,16 @@ description: További információ a Azure Maps Search szolgáltatásról. Tekin
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/21/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 48dd0168f878a16e2eabe47151d0b09993d9f5f9
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 2a322de383194f131395629d33456d7561397eb9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037779"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91310985"
 ---
 # <a name="search-for-a-location-using-azure-maps-search-services"></a>Hely keresése Azure Maps Search Services használatával
 
@@ -172,7 +172,7 @@ Ebben a példában a címek koordinátái alapján keresünk egy kereszt utcát.
   
 3. Kattintson a **Küldés**gombra, és tekintse át a válasz törzsét. Figyelje meg, hogy a válasz tartalmazza a `crossStreet` értékét `Occidental Avenue South` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Azure Maps Search Service REST API](https://docs.microsoft.com/rest/api/maps/search)

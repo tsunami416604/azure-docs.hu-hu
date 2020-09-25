@@ -11,12 +11,12 @@ ms.date: 09/04/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43b69deb242fd1ad80d9cdc4667070d2dbfefcd5
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: da4e1cfc68dff4ad2bc0552c6d35fe1230779306
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255608"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91312957"
 ---
 # <a name="what-is-the-azure-ad-connect-admin-agent"></a>Mi az az Azure AD Connect felügyeleti ügynök? 
 A Azure AD Connect felügyeleti ügynök a Azure Active Directory Connect egy új összetevője, amely Azure Active Directory Connect-kiszolgálóra telepíthető. A szolgáltatás a Active Directory-környezetből származó adatok összegyűjtésére szolgál, amely segít a Microsoft támogatási szakemberének a támogatási eset megnyitásakor felmerülő problémák megoldásában. 
@@ -46,7 +46,7 @@ Ha a rendszer kéri, adja meg az Azure AD globális rendszergazdai hitelesítő 
 
 Az ügynök telepítése után a következő két új program jelenik meg a "programok telepítése és törlése" listában a kiszolgáló Vezérlőpultján: 
 
-![felügyeleti ügynök](media/whatis-aadc-admin-agent/adminagent1.png)
+![Képernyőfelvétel: a programok telepítése és törlése lista, amely tartalmazza a hozzáadott új programokat.](media/whatis-aadc-admin-agent/adminagent1.png)
 
 ## <a name="what-data-in-my-sync-service-is-shown-to-the-microsoft-service-engineer"></a>A szinkronizálási szolgáltatásom milyen adatai jelennek meg a Microsoft Service engineerben? 
 Amikor megnyit egy támogatási esetet, az Microsoft ügyfélszolgálata mérnök láthatja, hogy egy adott felhasználó számára a Active Directory, a Active Directory-összekötő területe a Azure Active Directory Connect-kiszolgálón, a Azure Active Directory-kiszolgáló és a metaverse a Azure Active Directory Connect-kiszolgálón. 
@@ -69,7 +69,7 @@ Ha az ügynök telepítése után nem szeretné, hogy a Microsoft szolgáltatás
 3. Mentse a konfigurációs fájlt.
 4. Azure AD Connect felügyeleti ügynök szolgáltatás újraindítása az alább látható módon
 
-![felügyeleti ügynök](media/whatis-aadc-admin-agent/adminagent2.png)
+![Képernyőfelvétel: az Azure AD Administrator Agent szolgáltatás újraindításának helye.](media/whatis-aadc-admin-agent/adminagent2.png)
 
 ## <a name="next-steps"></a>Következő lépések
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).

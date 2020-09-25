@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 06/29/2020
+ms.date: 09/22/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 034d2410b97562946216815e5bdafd35fe1bc40b
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 672918280a988771431dccc81f042226addf029d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90601673"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265935"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>A hitelesítési munkamenetek kezelésének konfigurálása feltételes hozzáféréssel
 
@@ -89,6 +89,8 @@ A feltételes hozzáférés prémium szintű Azure AD képesség, és prémium s
 
 > [!WARNING]
 > Ha a [konfigurálható jogkivonat élettartama](../develop/active-directory-configurable-token-lifetimes.md) funkciót jelenleg nyilvános előzetes verzióban használja, vegye figyelembe, hogy nem támogatott két különböző szabályzat létrehozása ugyanahhoz a felhasználóhoz vagy alkalmazás-kombinációhoz: egyet ezzel a szolgáltatással, és egy másik, konfigurálható jogkivonat-élettartam funkciót. A Microsoft azt tervezi, hogy a konfigurálható jogkivonat élettartama funkciót a 2020-as és a feltételes hozzáférési hitelesítési munkamenet-kezelési szolgáltatással helyettesíti.  
+>
+> A bejelentkezési gyakoriság engedélyezése előtt győződjön meg arról, hogy az egyéb újrahitelesítési beállítások le vannak tiltva a bérlőben. Ha a "Remember MFA on Trusted Devices" beállítás engedélyezve van, a bejelentkezési gyakoriság használata előtt tiltsa le a szolgáltatást, mivel a két beállítás együttes használata váratlanul kéri a felhasználókat. Ha többet szeretne megtudni az újrahitelesítéssel kapcsolatos kérésekről és a munkamenetek élettartamáról, tekintse meg az [újrahitelesítéssel kapcsolatos tudnivalókat és az Azure-multi-Factor Authentication munkamenet-élettartamának megismerését](../authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime.md)ismertető cikket.
 
 ### <a name="policy-1-sign-in-frequency-control"></a>1. szabályzat: a bejelentkezés gyakoriságának szabályozása
 
@@ -134,7 +136,7 @@ A What-if eszköz használatával szimulálhatja a felhasználót a célalkalmaz
 
 Annak ellenőrzéséhez, hogy a házirend a várt módon működik-e, az ajánlott eljárás az, hogy tesztelje azt az éles üzemben való működés előtt. Ideális esetben egy tesztelési bérlő használatával ellenőrizheti, hogy az új szabályzat a kívánt módon működik-e. További információkért tekintse meg a [Azure Active Directory a feltételes hozzáférésre vonatkozó ajánlott eljárásokat](best-practices.md)ismertető cikket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha tudni szeretné, hogyan kell konfigurálni a feltételes hozzáférési szabályzatot, tekintse meg a többtényezős hitelesítés [megkövetelése adott alkalmazásokhoz Azure Active Directory feltételes hozzáféréssel](../authentication/tutorial-enable-azure-mfa.md)című cikket.
 * Ha készen áll a környezet feltételes hozzáférési házirendjeinek konfigurálására, tekintse meg az [ajánlott eljárásokat a feltételes hozzáféréshez Azure Active Directory](best-practices.md).

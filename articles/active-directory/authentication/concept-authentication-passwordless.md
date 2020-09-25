@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fdac9562ed9a83f49e074e7abd790e8e2819d6aa
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 9b225ccb0e607b073fd28f79d0151da0b77f5cdf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90527020"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266615"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>A Azure Active Directory jelszóval nem rendelkező hitelesítési beállításai
 
@@ -82,7 +82,7 @@ A jelszó nélküli bejelentkezéshez a következő útmutatók végrehajtásáv
 
 ## <a name="fido2-security-keys"></a>FIDO2 biztonsági kulcsok
 
-A (gyors identitás online) Szövetség segíti a nyílt hitelesítési szabványok előléptetését, és a jelszavak felhasználói hitelesítés formájában történő csökkentését. A FIDO2 a legújabb szabvány, amely magában foglalja a webes hitelesítési (WebAuthn) szabványt.
+A (gyors identitás online) Szövetség segíti a nyílt hitelesítési szabványok előléptetését, és csökkenti a jelszavak használatát hitelesítés formájában. A FIDO2 a legújabb szabvány, amely magában foglalja a webes hitelesítési (WebAuthn) szabványt.
 
 A FIDO2 biztonsági kulcsai egy nem adattípusra épülő, szabványos jelszavas hitelesítési módszer, amely bármilyen típusú tényezőt tartalmazhat. A gyors identitású online (pont) egy nyílt szabvány a jelszó nélküli hitelesítéshez. A parancs lehetővé teszi, hogy a felhasználók és a szervezetek a standard használatával bejelentkezzenek az erőforrásaik számára Felhasználónév vagy jelszó nélkül, egy külső biztonsági kulccsal vagy egy eszközbe épített platform-kulccsal.
 
@@ -172,7 +172,7 @@ A három jelszóval nem rendelkező lehetőség közül választhat, hogy a vál
 
 A következő táblázat segítségével kiválaszthatja, hogy melyik módszer fogja támogatni a követelményeket és a felhasználókat.
 
-|Persona|Forgatókönyv|Környezet|Jelszóval nem rendelkező technológia|
+|Persona|Használati eset|Környezet|Jelszóval nem rendelkező technológia|
 |:-|:-|:-|:-|
 |**Felügyelet**|Biztonságos hozzáférés egy eszközhöz felügyeleti feladatokhoz|Hozzárendelt Windows 10-es eszköz|Vállalati Windows Hello és/vagy FIDO2 biztonsági kulcs|
 |**Felügyelet**|Felügyeleti feladatok nem Windows rendszerű eszközökön| Mobil-vagy nem Windows-eszköz|Jelszó nélküli bejelentkezés a Microsoft Authenticator alkalmazással|

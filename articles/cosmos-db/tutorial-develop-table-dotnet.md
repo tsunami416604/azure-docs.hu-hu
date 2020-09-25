@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/03/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 56198392f3c769837d8d672b861baa9b341d284e
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 760a3a194e181576acb3601aabc07c6900cb664e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89419350"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276764"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>Bevezetés az Azure Cosmos DB Table API és az Azure Table Storage a .NET SDK-val való használatába
 
@@ -120,7 +120,7 @@ Ez a kód olyan Entity osztályt határoz meg, amely az ügyfél utónevét hasz
 
 ## <a name="insert-or-merge-an-entity"></a>Entitás beszúrása vagy egyesítése
 
-A következő mintakód létrehoz egy entitás objektumot, és hozzáadja azt a táblához. Az entitások beszúrásához vagy egyesítéséhez a [TableOperation](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableoperation) osztályon belüli InsertOrMerge metódus használható. A művelet végrehajtásához a [CloudTable.ExecuteAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.cloudtable.executeasync?view=azure-dotnet) metódust kell meghívni. 
+A következő mintakód létrehoz egy entitás objektumot, és hozzáadja azt a táblához. Az entitások beszúrásához vagy egyesítéséhez a [TableOperation](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableoperation) osztályon belüli InsertOrMerge metódus használható. A művelet végrehajtásához a [CloudTable.ExecuteAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.cloudtable.executeasync?view=azure-dotnet&preserve-view=true) metódust kell meghívni. 
 
 Kattintson a jobb gombbal a projekt **CosmosTableSamples**. Válassza a **Hozzáadás**, **új elem elemet** , és adjon hozzá egy **SamplesUtils.cs**nevű osztályt. Ez az osztály tárolja az entitásokon a SZIFILISZi műveletek végrehajtásához szükséges összes kódot. 
 
@@ -178,4 +178,4 @@ Most jelentkezzen be a Azure Portalba, és ellenőrizze, hogy az adatkészletek 
 Most folytassa a következő oktatóanyaggal, és megtudhatja, hogyan telepítheti át az információkat Azure Cosmos DB Table API-fiókba. 
 
 > [!div class="nextstepaction"]
->[Az adatlekérdezés](../cosmos-db/table-import.md)
+>[Az adatáttelepítés az Azure Comsos DB-be Table API](../cosmos-db/table-import.md)

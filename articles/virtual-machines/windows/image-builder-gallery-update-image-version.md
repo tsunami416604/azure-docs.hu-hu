@@ -1,17 +1,17 @@
 ---
 title: Új rendszerkép-verzió létrehozása meglévő rendszerkép-verzióból az Azure rendszerkép-készítővel (előzetes verzió)
-description: Hozzon létre egy új virtuálisgép-rendszerkép verzióját egy meglévő rendszerkép-verzióból az Azure rendszerkép-készítő használatával.
+description: Hozzon létre egy új virtuálisgép-rendszerkép verzióját egy meglévő rendszerkép-verzióból a Windows Azure rendszerkép-készítő használatával.
 author: cynthn
 ms.author: cynthn
 ms.date: 05/05/2020
 ms.topic: how-to
 ms.service: virtual-machines-windows
-ms.openlocfilehash: bdae608d573bc411242b4bf66ea033a7df421cfc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7515e0a39d1cf0da74d2a23457443e96716b4275
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87005701"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335952"
 ---
 # <a name="preview-create-a-new-vm-image-version-from-an-existing-image-version-using-azure-image-builder-in-windows"></a>Előzetes verzió: hozzon létre egy új virtuálisgép-rendszerkép verzióját egy meglévő rendszerkép-verzióból a Windows Azure rendszerkép-szerkesztő használatával
 
@@ -171,10 +171,10 @@ dir c:\
 ```
 
 Ekkor két könyvtárat kell látnia:
-- `buildActions`Ez az első rendszerkép-verzióban lett létrehozva.
-- `buildActions2`Ez az első rendszerkép-verzió frissítésének részeként jött létre a második rendszerkép-verzió létrehozásához.
+- `buildActions` Ez az első rendszerkép-verzióban lett létrehozva.
+- `buildActions2` Ez az első rendszerkép-verzió frissítésének részeként jött létre a második rendszerkép-verzió létrehozásához.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a cikkben használt. JSON fájl összetevőiről, tekintse meg a [rendszerkép-szerkesztői sablon referenciáját](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

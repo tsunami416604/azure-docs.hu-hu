@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan derítheti fel az AWS-példányokat Azure Migra
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: c2d91e0b2c2eaa2df8b01aca60e5a0e18e251fb8
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: e48d123a9317d35cd2bb8e38a29d23cae3b75eb8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90603696"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275455"
 ---
 # <a name="tutorial-discover-aws-instances-with-server-assessment"></a>Oktatóanyag: AWS-példányok felderítése kiszolgáló-értékeléssel
 
@@ -29,7 +29,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!NOTE]
 > Az oktatóanyagok a forgatókönyvek kipróbálásának leggyorsabb elérési útját mutatják be, és az alapértelmezett beállításokat használják.  
 
-Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/), mielőtt hozzákezd.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -47,7 +47,7 @@ Azure Migrate projekt létrehozásához és a Azure Migrate berendezés regisztr
 - Közreműködő vagy tulajdonosi engedélyek egy Azure-előfizetéshez.
 - Azure Active Directory alkalmazások regisztrálásához szükséges engedélyek.
 
-Ha csak az ingyenes Azure-fiókot hozta létre, akkor Ön az előfizetés tulajdonosa. Ha nem Ön az előfizetés tulajdonosa, a tulajdonossal együtt az alábbi módon rendelheti hozzá az engedélyeket:
+Ha most hozott létre egy ingyenes Azure-fiókot, akkor Ön az előfizetés tulajdonosa. Ha nem Ön az előfizetés tulajdonosa, a tulajdonossal együtt az alábbi módon rendelheti hozzá az engedélyeket:
 
 1. A Azure Portal keressen rá az "előfizetések" kifejezésre, és a **szolgáltatások**területen válassza az **előfizetések**lehetőséget.
 
@@ -76,7 +76,18 @@ Ha csak az ingyenes Azure-fiókot hozta létre, akkor Ön az előfizetés tulajd
 
 - Windows-kiszolgálók esetén állítson be egy helyi felhasználói fiókot a felderítésbe felvenni kívánt Windows-kiszolgálókon. Adja hozzá a felhasználói fiókot a következő csoportokhoz:-távfelügyeleti felhasználók – Teljesítményfigyelő felhasználók – Teljesítménynapló felhasználói.
  - Linux-kiszolgálók esetén rendszergazdai fiókra van szüksége a felderíteni kívánt Linux-kiszolgálókon.
-
+- A Azure Migrate a jelszó-hitelesítést használja az AWS-példányok felfedése során. Az AWS-példányok alapértelmezés szerint nem támogatják a jelszó-hitelesítést. A példány felderítése előtt engedélyeznie kell a jelszó-hitelesítést.
+    - Windows rendszerű gépek esetén engedélyezze a WinRM 5985-es portját (HTTP). Ez lehetővé teszi a távoli WMI-hívásokat.
+    - Linux rendszerű gépek esetén:
+        1. Jelentkezzen be az egyes Linux-gépekre.
+        2. Nyissa meg a sshd_config fájlt: VI/etc/ssh/sshd_config
+        3. A fájlban keresse meg a **PasswordAuthentication** sort, és módosítsa az értéket **Igen**értékre.
+        4. Mentse a fájlt, és a bezáráshoz. Indítsa újra az SSH-szolgáltatást.
+    - Ha a Linux rendszerű virtuális gépek felderítéséhez root felhasználót használ, győződjön meg arról, hogy a virtuális gépeken engedélyezve van a rendszergazdai bejelentkezés.
+        1. Bejelentkezés az egyes Linux rendszerű gépekre
+        2. Nyissa meg a sshd_config fájlt: VI/etc/ssh/sshd_config
+        3. A fájlban keresse meg a **PermitRootLogin** sort, és módosítsa az értéket **Igen**értékre.
+        4. Mentse a fájlt, és a bezáráshoz. Indítsa újra az SSH-szolgáltatást.
 
 ## <a name="set-up-a-project"></a>Projekt beállítása
 
@@ -118,7 +129,7 @@ A készülék beállítása:
 
 ### <a name="generate-the-azure-migrate-project-key"></a>A Azure Migrate projekt kulcsának előállítása
 
-1. Az **áttelepítési célok**  >  **kiszolgálói**  >  **Azure Migrate: kiszolgáló értékelése**területen válassza a **felderítés**lehetőséget.
+1. A **Migrálási célok** > **Kiszolgálók** > **Azure Migrate: Kiszolgáló értékelése** területen válassza a **Felderítés** lehetőséget.
 2. A **Discover Machines**szolgáltatásban  >  **a gépek virtualizáltak?**, válassza a **fizikai vagy egyéb (AWS, GCP, Xen stb.)** lehetőséget.
 3. **1.: Azure Migrate Project-kulcs létrehozásakor**adja meg a fizikai vagy virtuális kiszolgálók felderítéséhez beállítani kívánt Azure Migrate berendezés nevét. A névnek legfeljebb 14 karakterből kell állnia.
 1. Kattintson a **kulcs létrehozása** lehetőségre a szükséges Azure-erőforrások létrehozásának elindításához. Az erőforrások létrehozásakor ne zárja be a gépek felderítése lapot.
@@ -244,10 +255,10 @@ Ez elindítja a felderítést. Kiszolgálónként körülbelül 2 percet vesz ig
 
 A felderítés befejeződése után ellenőrizheti, hogy a kiszolgálók megjelennek-e a portálon.
 
-1. Nyissa meg a Azure Migrate irányítópultot.
+1. Nyissa meg az Azure Migrate irányítópultját.
 2. A **Azure Migrate-Servers**  >  **Azure Migrate: kiszolgáló értékelése** lapon kattintson arra az ikonra, amely megjeleníti a **felderített kiszolgálók**darabszámát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az Azure-beli virtuális gépekre való Migrálás [fizikai kiszolgálóinak felmérése](tutorial-migrate-aws-virtual-machines.md) .
 - [Tekintse át a](migrate-appliance.md#collected-data---physical) berendezés által a felderítés során gyűjtött adatokat.

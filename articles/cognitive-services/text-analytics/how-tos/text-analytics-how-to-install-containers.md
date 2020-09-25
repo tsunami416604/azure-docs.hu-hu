@@ -11,24 +11,24 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: aahi
-ms.openlocfilehash: a83fd67a9ad5e5a36555fcbaed65b1d76936c33d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 27881d6271fbedfb5763b293d5145e2f87cd1c13
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906008"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91309309"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>A Text Analytics-tárolók telepítése és futtatása
 
 > [!NOTE]
 > * A Hangulatelemzés v3 tárolója már általánosan elérhető. A kulcskifejezés-kinyerési és a nyelvfelismerési tárolók nem korlátozott nyilvános előzetes verzióként érhetők el.
 > * Az entitások összekapcsolása és megtekintő szolgáltatás jelenleg nem érhető el tárolóként.
-> * Ahhoz, hogy a Text Analytics az állapotfigyelő tárolóhoz hozzáférhessen, egy [kérelem űrlapra](https://aka.ms/cognitivegate)van szükség. Jelenleg a használatért nem számítunk fel díjat.
+> * Ahhoz, hogy a Text Analytics az állapotfigyelő tárolóhoz hozzáférhessen, egy [kérelem űrlapra](https://aka.ms/csgate)van szükség. Jelenleg a használatért nem számítunk fel díjat.
 > * Lehetséges, hogy a tároló rendszerképének helyei nemrég módosultak. Ebből a cikkből megtudhatja, hogy melyik a tároló frissített helye.
 
 A tárolók lehetővé teszik a Text Analytics API-k a saját környezetében való futtatását, és kiválóan alkalmasak saját biztonsági és adatszabályozási követelményeihez. A Text Analytics tárolók fejlett természetes nyelvi feldolgozást biztosítanak a nyers szövegeken, és három fő funkciót tartalmaznak: a hangulat elemzését, a kulcsfontosságú kifejezés kinyerését és a nyelvfelismerés. 
 
-Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/), mielőtt hozzákezd.
 
 > [!IMPORTANT]
 > Az ingyenes fiók havonta 5 000 tranzakcióra van korlátozva, és csak az **ingyenes** és a **standard** <a href="https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics" target="_blank">szintű <span class="docon docon-navigate-external x-hidden-focus"></span> díjszabás</a> érvényes a tárolók esetében. A tranzakciós kérelmek díjszabásával kapcsolatos további információkért lásd az [Adatkorlátokat](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits)ismertető témakört.
@@ -41,7 +41,7 @@ A Text Analytics tárolók futtatásához rendelkeznie kell a gazdagép és a t�
 
 Text Analytics tárolók használata előtt meg kell felelnie a következő előfeltételeknek:
 
-|Kötelező|Cél|
+|Kötelező|Rendeltetés|
 |--|--|
 |A Docker-motor| A Docker-motornak telepítve kell lennie a [gazdagépen](#the-host-computer). A Docker csomagokat biztosít a Docker-környezet konfigurálásához [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) és [Linux](https://docs.docker.com/engine/installation/#supported-platforms) rendszereken. A Docker és a tárolók alapszintű ismertetéséért lásd a [Docker felhasználói útmutatóját](https://docs.docker.com/engine/docker-overview/).<br><br> A Docker-t úgy kell konfigurálni, hogy lehetővé tegye a tárolók számára az Azure-ba való kapcsolódást és a számlázási információk küldését. <br><br> **Windows rendszeren a**Docker-t is konfigurálni kell a Linux-tárolók támogatásához.<br><br>|
 |A Docker ismerete | Alapvető ismeretekkel kell rendelkeznie a Docker-fogalmakról, például a kibocsátásiegység-forgalmi jegyzékekről, a adattárakról, a tárolók és a tárolók lemezképéről, valamint az alapszintű `docker` parancsokról.| 

@@ -10,14 +10,14 @@ ms.devlang: PowerShell
 ms.topic: sample
 author: MashaMSFT
 ms.author: mathoma
-ms.reviewer: carlrab
+ms.reviewer: sstein
 ms.date: 07/16/2019
-ms.openlocfilehash: 5b8ca2f578881b3e8bd557fa5aaac618bcab1599
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: cd954f07d733e4d80054d6f429a748ca59b5747d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073457"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273211"
 ---
 # <a name="use-powershell-to-add-a-managed-instance-to-a-failover-group"></a>Felügyelt példány hozzáadása feladatátvételi csoporthoz a PowerShell használatával 
 
@@ -74,7 +74,7 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | [Kapcsoló – AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) | Végrehajtja az SQL felügyelt példányok feladatátvételi csoportjának feladatátvételét. | 
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Eltávolít egy erőforráscsoportot. | 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Azure PowerShellről: [Azure PowerShell dokumentáció](/powershell/azure/).
 

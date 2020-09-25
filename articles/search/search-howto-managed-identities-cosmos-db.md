@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: b295c4f8380d59d8824049e8050605cb66fbae65
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: fc12978e59ecc3ebcc58d4070fa057f9a53fda58
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90971652"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275285"
 ---
 # <a name="set-up-an-indexer-connection-to-a-cosmos-db-database-using-a-managed-identity"></a>Indexelő-kapcsolatok beállítása egy Cosmos DB-adatbázishoz felügyelt identitás használatával
 
@@ -136,6 +136,14 @@ Ez az indexelő két óránként fut (az ütemezett időköz értéke "PT2H"). A
 Az indexelő API létrehozásával kapcsolatos további információkért tekintse meg az [Indexelő létrehozása](/rest/api/searchservice/create-indexer)című leírást.
 
 Az indexelő-ütemtervek definiálásával kapcsolatos további információkért lásd: [Az Azure Cognitive Search indexelő szolgáltatásának beosztása](search-howto-schedule-indexers.md).
+
+## <a name="troubleshooting"></a>Hibaelhárítás
+
+Ha azt tapasztalja, hogy nem tudja indexelni a Cosmos DB adatait, vegye figyelembe a következőket:
+
+1. Ha nemrég elforgatta a Cosmos DB-fiók kulcsait, akkor a felügyelt identitás-kapcsolódási karakterlánc működéséhez akár 15 percet is várnia kell.
+
+1. Ellenőrizze, hogy a Cosmos DB-fiók hozzáférése korlátozott-e a hálózatok kiválasztásához. Ha igen, tekintse meg az [adatforrásokhoz való indexeléshez való hozzáférést az Azure hálózati biztonsági funkcióinak használatával](search-indexer-securing-resources.md).
 
 ## <a name="see-also"></a>Lásd még
 

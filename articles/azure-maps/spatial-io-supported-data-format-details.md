@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 4b7c82e4650c7680709e809d9f563d79f068601f
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 7227813f607ca18ee50f503a30b290414f333e21
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87127927"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91310169"
 ---
 # <a name="supported-data-format-details"></a>Támogatott adatformátumokra vonatkozó részletek
 
@@ -52,7 +52,7 @@ A térbeli IO-modul a következő KML-elemeket támogatja.
 | `atom:author`        | igen     | igen     |                                                                                                                            |
 | `atom:link`          | igen     | igen     |                                                                                                                            |
 | `atom:name`          | igen     | igen     |                                                                                                                            |
-| `BalloonStyle`       | részleges | részleges | `displayMode`nem támogatott. A következőre konvertálva: `PopupTemplate` . Az íráshoz vegyen fel egy `popupTemplate` tulajdonságot annak a szolgáltatásnak a tulajdonságával, amelybe írni szeretné. |
+| `BalloonStyle`       | részleges | részleges | `displayMode` nem támogatott. A következőre konvertálva: `PopupTemplate` . Az íráshoz vegyen fel egy `popupTemplate` tulajdonságot annak a szolgáltatásnak a tulajdonságával, amelybe írni szeretné. |
 | `begin`              | igen     | igen     |                                                                                                                            |
 | `color`              | igen     | igen     | A következőket tartalmazza: `#AABBGGRR` és `#BBGGRR` . Elemzés egy CSS-szín sztringbe                                                           |
 | `colorMode`          | igen     | nem      |                                                                                                                            |
@@ -68,12 +68,12 @@ A térbeli IO-modul a következő KML-elemeket támogatja.
 | `extrude`            | részleges | részleges | Csak a sokszögek esetében támogatott. A különböző magasságú sokszögekkel rendelkező többgeometriás elemek az egyes funkciókban lesznek kiosztva. A vonalstílus nem támogatottak. A 0 magasságú sokszögek sima sokszögként lesznek megjelenítve. Olvasáskor a rendszer a külső gyűrű első koordinátája magasságát hozzáadja a sokszög height tulajdonságához. Ezt követően az első koordináta magasságát fogja használni a rendszer a sokszög megjelenítéséhez a térképen. |
 | `fill`               | igen     | igen     |                                                                                                                            |
 | `Folder`             | igen     | igen     |                                                                                                                            |
-| `GroundOverlay`      | igen     | igen     | `color`nem támogatott                                                                                                   |
+| `GroundOverlay`      | igen     | igen     | `color` nem támogatott                                                                                                   |
 | `heading`            | részleges | nem      | Elemezve, de nem jeleníti meg `SimpleDataLayer` . Csak azt írja, hogy a rendszer az alakzat tulajdonságában tárolja-e az adatot.                 |
 | `hotSpot`            | igen     | részleges | Csak azt írja, hogy a rendszer az alakzat tulajdonságában tárolja-e az adatot. Az egységek csak "képpont"-ként vannak megadva.                         |
 | `href`               | igen     | igen     |                                                                                                                            |
 | `Icon`               | részleges | részleges | Elemezve, de nem jeleníti meg `SimpleDataLayer` . Csak akkor írja be az alakzat Icon tulajdonságát, ha URI-adatot tartalmaz. Csak `href` a támogatott. |
-| `IconStyle`          | részleges | részleges | `icon`a,, `heading` `colorMode` és értékek elemzése megtörtént, `hotspots` de a rendszer nem jeleníti meg`SimpleDataLayer`         |
+| `IconStyle`          | részleges | részleges | `icon`a,, `heading` `colorMode` és értékek elemzése megtörtént, `hotspots` de a rendszer nem jeleníti meg `SimpleDataLayer`         |
 | `innerBoundaryIs`    | igen     | igen     |                                                                                                                            |
 | `kml`                | igen     | igen     |                                                                                                                            |
 | `LabelStyle`         | nem      | nem      |                                                                                                                            |
@@ -81,7 +81,7 @@ A térbeli IO-modul a következő KML-elemeket támogatja.
 | `gx:LatLonQuad`      | igen     | igen     |                                                                                                                            |
 | `LinearRing`         | igen     | igen     |                                                                                                                            |
 | `LineString`         | igen     | igen     |                                                                                                                            |
-| `LineStyle`          | igen     | igen     | `colorMode`nem támogatott.                                                                                         |
+| `LineStyle`          | igen     | igen     | `colorMode` nem támogatott.                                                                                         |
 | `Link`               | igen     | nem      | A `href` hálózati kapcsolatok csak a tulajdonságot támogatják.                                                                   |
 | `MultiGeometry`      | részleges | részleges | Az olvasáskor az egyes funkciókban is kibonthatók.                                                                     |
 | `name`               | igen     | igen     |                                                                                                                            |
@@ -92,14 +92,14 @@ A térbeli IO-modul a következő KML-elemeket támogatja.
 | `outerBoundaryIs`    | igen     | igen     |                                                                                                                            |
 | `outline`            | igen     | igen     |                                                                                                                            |
 | `overlayXY`          | nem      | nem      |                                                                                                                            |
-| `Pair`               | részleges | nem      | Csak az `normal` a stílus `StyleMap` támogatott. `highlight`nem támogatott.                                   |
+| `Pair`               | részleges | nem      | Csak az `normal` a stílus `StyleMap` támogatott. `highlight` nem támogatott.                                   |
 | `phoneNumber`        | igen     | igen     |                                                                                                                            |
 | `PhotoOverlay`       | nem      | nem      |                                                                                                                            |
 | `Placemark`          | igen     | igen     |                                                                                                                            |
 | `Point`              | igen     | igen     |                                                                                                                            |
 | `Polygon`            | igen     | igen     |                                                                                                                            |
 | `PolyStyle`          | igen     | igen     |                                                                                                                            |
-| `Region`             | részleges | részleges | `LatLongBox`a dokumentum szintjén támogatott.                                                                      |
+| `Region`             | részleges | részleges | `LatLongBox` a dokumentum szintjén támogatott.                                                                      |
 | `rotation`           | nem      | nem      |                                                                                                                            |
 | `rotationXY`         | nem      | nem      |                                                                                                                            |
 | `scale`              | nem      | nem      |                                                                                                                            |
@@ -111,7 +111,7 @@ A térbeli IO-modul a következő KML-elemeket támogatja.
 | `SimpleData`         | igen     | igen     |                                                                                                                            |
 | `SimpleField`        | igen     | igen     |                                                                                                                            |
 | `size`               | nem      | nem      |                                                                                                                            |
-| `Snippet`            | részleges | részleges | `maxLines`az attribútum figyelmen kívül lesz hagyva.                                                                                  |
+| `Snippet`            | részleges | részleges | `maxLines` az attribútum figyelmen kívül lesz hagyva.                                                                                  |
 | `south`              | igen     | igen     |                                                                                                                            |
 | `Style`              | igen     | igen     |                                                                                                                            |
 | `StyleMap`           | részleges | nem      | Csak az a normál stílusa `StyleMap` támogatott.                                                                        |
@@ -225,12 +225,12 @@ A térbeli IO-modul a következő GML-elemeket támogatja.
 | `gml:LineString`        | igen  | igen   |                                                                                        |
 | `gml:lineStringMember`  | igen  | igen   |                                                                                        |
 | `gml:lineStringMembers` | igen  | nem    |                                                                                        |
-| `gml:MultiCurve`        | igen  | nem    | Csak a `gml:LineString` tagok olvasása. Írás másként`gml.MultiLineString`                  |
+| `gml:MultiCurve`        | igen  | nem    | Csak a `gml:LineString` tagok olvasása. Írás másként `gml.MultiLineString`                  |
 | `gml:MultiGeometry`     | részleges  | részleges   | Csak FeatureCollection olvasása.                                              |
 | `gml:MultiLineString`   | igen  | igen   |                                                                                        |
 | `gml:MultiPoint`        | igen  | igen   |                                                                                        |
 | `gml:MultiPolygon`      | igen  | igen   |                                                                                        |
-| `gml:MultiSurface`      | igen  | nem    | Csak a `gml:Polygon` tagok olvasása. Írás másként`gml.MultiPolygon`                        |
+| `gml:MultiSurface`      | igen  | nem    | Csak a `gml:Polygon` tagok olvasása. Írás másként `gml.MultiPolygon`                        |
 | `gml:name`              | igen  | igen   |                                                                                        |
 | `gml:outerBoundaryIs`   | igen  | nem    | Írás a használatával `gml.exterior` .                                                          |
 | `gml:Point`             | igen  | igen   |                                                                                        |
@@ -246,7 +246,7 @@ A térbeli IO-modul a következő GML-elemeket támogatja.
 #### <a name="additional-notes"></a>További megjegyzések
 
 - A rendszer megkeresi a tag elemeit egy olyan geometriában, amely a gyermek elemek között eltemethető. Erre a keresési műveletre azért van szükség, mert a GML-ből kiterjesztő számos XML-formátum esetében nem lehet a tag elem közvetlen gyermekének geometriáját elhelyezni.
-- `srsName`részlegesen támogatott a WGS84-koordináták esetében, valamint a következő kódokat:[EPSG: 4326](https://epsg.io/4326)) és web Mercator ([EPSG: 3857](https://epsg.io/3857) vagy az egyik alternatív kód. Minden más koordináta-rendszer a WGS84-ként lesz értelmezve.
+- `srsName` részlegesen támogatott a WGS84-koordináták esetében, valamint a következő kódokat:[EPSG: 4326](https://epsg.io/4326)) és web Mercator ([EPSG: 3857](https://epsg.io/3857) vagy az egyik alternatív kód. Minden más koordináta-rendszer a WGS84-ként lesz értelmezve.
 - Az XML-hírcsatornák olvasásakor a tengely sorrendjét az XML-hírcsatorna mutatói alapján határozzák meg. A "szélesség, hosszúság" tengely sorrendjére van megadva a beállítás.
 - Ha nem ad meg egyéni GML-névteret a tulajdonságokhoz a GML-fájl írásakor, a további tulajdonságértékek nem lesznek hozzáadva.
 
@@ -427,9 +427,8 @@ A fejlécsor vizsgálatakor a rendszer az oszlop nevében található bármely t
 
 Ha a fejlécből nem lehet kinyerni a típus adatait, és a dinamikus gépelési beállítás be van kapcsolva az olvasáskor, akkor minden egyes cella külön lesz elemezve annak meghatározásához, hogy melyik adattípust érdemes a legjobban átadni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alábbi cikkekben további kódokat talál a Maps-hez való hozzáadáshoz:
 
-> [!div class="nextstepaction"]
-> [Térbeli adatok beolvasása és írása](spatial-io-read-write-spatial-data.md)
+[Térbeli adatok beolvasása és írása](spatial-io-read-write-spatial-data.md)

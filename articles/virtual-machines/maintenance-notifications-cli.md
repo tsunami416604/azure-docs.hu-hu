@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: 633708219adaba2fb4c4889754b2112fbf3c4180
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c449bce76cc9cb7e5f8b9659c11b443e186c65ad
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87069355"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306973"
 ---
 # <a name="handling-planned-maintenance-notifications-using-the-azure-cli"></a>Tervezett karbantartási értesítések kezeléséhez az Azure CLI használatával
 
@@ -24,6 +24,19 @@ A karbantartási adatokat csak akkor adja vissza a rendszer, ha karbantartási t
 
 ```azurecli-interactive
 az vm get-instance-view -n myVM -g myResourceGroup --query instanceView.maintenanceRedeployStatus
+```
+
+Kimenet
+```
+      "maintenanceRedeployStatus": {
+      "additionalProperties": {},
+      "isCustomerInitiatedMaintenanceAllowed": true,
+      "lastOperationMessage": null,
+      "lastOperationResultCode": "None",
+      "maintenanceWindowEndTime": "2018-06-04T16:30:00+00:00",
+      "maintenanceWindowStartTime": "2018-05-21T16:30:00+00:00",
+      "preMaintenanceWindowEndTime": "2018-05-19T12:30:00+00:00",
+      "preMaintenanceWindowStartTime": "2018-05-14T12:30:00+00:00"
 ```
 
 ## <a name="start-maintenance"></a>Karbantartás indítása
@@ -58,6 +71,6 @@ A *myVM* nevű klasszikus virtuális gép karbantartásának megkezdéséhez a *
 azure compute virtual-machine initiate-maintenance --service-name myService --name myDeployment --virtual-machine-name myVM
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A tervezett karbantartást a [Azure PowerShell](maintenance-notifications-powershell.md) vagy a [portál](maintenance-notifications-portal.md)használatával is kezelheti.

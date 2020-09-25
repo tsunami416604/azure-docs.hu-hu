@@ -3,14 +3,14 @@ title: Azure Automation Update Management áttekintése
 description: Ez a cikk áttekintést nyújt a Windows és Linux rendszerű gépek frissítéseinek megvalósítására szolgáló Update Management szolgáltatásról.
 services: automation
 ms.subservice: update-management
-ms.date: 09/22/2020
+ms.date: 09/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4a753cd139db9dec23c82346704382979aeaa0de
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 314012467da532002529a3f561b192876602b46e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90976995"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335432"
 ---
 # <a name="update-management-overview"></a>A frissítéskezelés áttekintése
 
@@ -59,7 +59,7 @@ Update Management a jelentést arról, hogy a gép milyen naprakészen van, hogy
 
 A frissítéseket egy ütemezett telepítés létrehozásával telepítheti és telepítheti a frissítésekhez szükséges számítógépeken. A választhatóként besorolt frissítések nem szerepelnek a Windows rendszerű gépek központi telepítési hatókörében. A központi telepítési hatókörben csak a szükséges frissítések szerepelnek.
 
-Az ütemezett telepítés meghatározza, hogy mely célszámítógépek kapják meg a megfelelő frissítéseket. Ezt úgy hajtja végre, hogy explicit módon megadta bizonyos gépeket, vagy olyan számítógépcsoport kiválasztásával [, amely egy](../../azure-monitor/platform/computer-groups.md) adott típusú gép (vagy egy [Azure-lekérdezés] Update-mgmt-view-logs.MD) naplóbeli keresésén alapul, és amely dinamikusan kiválasztja az Azure-beli virtuális gépeket a megadott feltételek alapján. Ezek a csoportok eltérnek a [hatókör-konfigurációtól](../../azure-monitor/insights/solution-targeting.md), amellyel szabályozható a Update Management engedélyezése a konfigurációt fogadó gépek célzása. Ezzel megakadályozhatja, hogy a frissítés megfelelőségét és a jóváhagyott szükséges frissítéseket telepítse.
+Az ütemezett telepítés meghatározza, hogy mely célszámítógépek kapják meg a megfelelő frissítéseket. Ezt az egyes gépek explicit módon történő megadásával, vagy egy olyan [számítógépcsoport](../../azure-monitor/platform/computer-groups.md) kiválasztásával hajtja végre, amely egy adott gép (vagy egy olyan [Azure-lekérdezésen](update-mgmt-query-logs.md) alapul, amely dinamikusan kiválasztja az Azure-beli virtuális gépeket a megadott feltételek alapján). Ezek a csoportok eltérnek a [hatókör-konfigurációtól](../../azure-monitor/insights/solution-targeting.md), amellyel szabályozható a Update Management engedélyezése a konfigurációt fogadó gépek célzása. Ezzel megakadályozhatja, hogy a frissítés megfelelőségét és a jóváhagyott szükséges frissítéseket telepítse.
 
 A központi telepítés meghatározásakor meg kell adnia egy ütemtervet is a jóváhagyáshoz, és beállíthatja azt az időszakot, amely alatt a frissítések telepíthetők. Ezt az időtartamot karbantartási időszaknak nevezzük. A karbantartási időszak 20 perces időszaka újraindítások számára van fenntartva, feltételezve, hogy az egyik szükséges, és a megfelelő újraindítási beállítást választotta. Ha a javítás a vártnál hosszabb időt vesz igénybe, és a karbantartási időszakban kevesebb mint 20 perc van, a rendszer újraindítást hajt végre.
 
@@ -164,7 +164,7 @@ A felügyeleti csomagok frissítéseivel kapcsolatos további információkért 
 
 A következő táblázat ismerteti a Update Management által támogatott csatlakoztatott forrásokat:
 
-| Csatlakoztatott forrás | Támogatott | Leírás |
+| Csatlakoztatott forrás | Támogatott | Description |
 | --- | --- | --- |
 | Windows-ügynökök |Yes |Update Management adatokat gyűjt a Windows-ügynököktől a rendszerfrissítésekről, majd elindítja a szükséges frissítések telepítését. |
 | Linux-ügynökök |Yes |Update Management adatokat gyűjt a Linux-ügynököktől a rendszerfrissítésekről, majd elindítja a szükséges frissítések telepítését a támogatott disztribúciók esetében. |

@@ -1,6 +1,6 @@
 ---
 title: Videofájlok streamelése az Azure Media Services használatával – .NET | Microsoft Docs
-description: Az oktatóanyag lépéseit követve hozzon létre egy új Azure Media Services fiókot, kódoljon egy fájlt, és továbbítsa a Azure Media Player.
+description: Kövesse ennek az oktatóanyagnak a lépéseit, hogy a .NET használatával új Azure Media Services fiókot hozzon létre, kódoljon egy fájlt, és továbbítsa a Azure Media Player.
 services: media-services
 documentationcenter: ''
 author: IngridAtMicrosoft
@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: ec60f775fbeb176f9442aff11117c85c5028a81f
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 530089b9c6b9544201b0f07368cac3d1a695a4f8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267088"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268689"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---net"></a>Oktatóanyag: távoli fájl kódolása URL-cím alapján és stream a video-.NET
 
@@ -70,7 +70,7 @@ Az alkalmazás futtatásakor megjelennek a videó különböző protokollokkal v
 1. Az *EncodeAndStreamFiles* alkalmazás futtatásához nyomja le a Ctrl+F5 billentyűkombinációt.
 2. Válassza az Apple **HLS** protokollját (a vége *manifest(format=m3u8-aapl)*), és másolja a streamelési URL-címet a konzolról.
 
-![Kimenet](./media/stream-files-tutorial-with-api/output.png)
+![Képernyőkép a Visual Studióban található EncodeAndStreamFiles alkalmazás kimenetéről, amely a Azure Media Playerben használható három streaming URL-címet jeleníti meg.](./media/stream-files-tutorial-with-api/output.png)
 
 A minta [forráskódjában](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs) láthatja az URL felépítését. A létrehozásához össze kell fűznie a streamelési végpont gazdanevét és a streamelési lokátor elérési útját.  
 
@@ -113,7 +113,7 @@ Lásd: [hibakódok](/rest/api/media/jobs/get#joberrorcode).
 
 Az Azure Media Services v3 SDK-k nem szálbiztosak. Többszálas alkalmazások használatakor minden szálhoz ajánlott létrehozni egy új AzureMediaServicesClient objektumot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: fájlok feltöltése, kódolása és streamelése](stream-files-tutorial-with-api.md)

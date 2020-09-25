@@ -10,12 +10,12 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: 3306e51fe2fdbb2586be9684432d8f8c310afe95
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: afd78acadf133a9f128eec402eba9d0eed51b8e3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90900598"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91284482"
 ---
 # <a name="azure-sql-edge-release-notes"></a>Az Azure SQL Edge kibocsátási megjegyzései 
 
@@ -23,17 +23,23 @@ Ez a cikk ismerteti az újdonságokat és az Azure SQL Edge minden új buildjét
 
 ## <a name="azure-sql-edge---100-rtm"></a>Azure SQL Edge – 1.0.0 (RTM)
 
-### <a name="sql-engine-build-number---15020001549"></a>SQL Engine Build száma – 15.0.2000.1549
+### <a name="sql-engine-build-number---15020001552"></a>SQL Engine Build száma – 15.0.2000.1552
 
 ### <a name="whats-new"></a>Újdonságok
 1. Ubuntu 18,04-alapú tároló rendszerképek. 
 2. A és `IGNORE NULL` a `RESPECT NULL` függvények támogatása `LAST_VALUE()` `FIRST_VALUE()` . 
 3. Megbízhatósági változások a ONNX-vel való ELŐREJELZÉShez.
-4. Adatmegőrzési szabályzaton alapuló tisztítás támogatása.      
-   - A fürtözött oszlopcentrikus indexek optimalizált tisztításának támogatása.
+4. Adatmegőrzési szabályzaton alapuló tisztítás támogatása.
+   - A hibaelhárításhoz szükséges adatmegőrzési feladat a gyűrű pufferének támogatása.
 5. Új funkció támogatása 
    - Gyors helyreállítás
    - Lekérdezések automatikus finomhangolása
+   - Párhuzamos végrehajtási forgatókönyvek engedélyezése
+6. Energiatakarékos az alacsony energiaellátású üzemmód fejlesztése
+7. A streaming új funkcióinak támogatása 
+   - [Pillanatkép-Windows](https://docs.microsoft.com/stream-analytics-query/snapshot-window-azure-stream-analytics) : az új ablak típusa lehetővé teszi, hogy a pontos időpontra érkező események csoportosítsák. 
+   - A [TopOne](https://docs.microsoft.com/stream-analytics-query/topone-azure-stream-analytics) és a [CollectTop](https://docs.microsoft.com/stream-analytics-query/collecttop-azure-stream-analytics) analitikai függvényként való engedélyezése lehetővé teszi, hogy a választott oszlop által rendezett rekordokat visszaadja, anélkül, hogy egy ablakhoz kellene tartoznia. 
+   - A [MATCH_RECOGNIZE](https://docs.microsoft.com/stream-analytics-query/match-recognize-stream-analytics)fejlesztése. 
 
 ### <a name="fixes"></a>Javítások
 1. További hibaüzenetek és részletek a TSQL adatfolyam-továbbítási műveleteivel kapcsolatos hibák elhárításához. 
@@ -41,9 +47,13 @@ Ez a cikk ismerteti az újdonságokat és az Azure SQL Edge minden új buildjét
 3. TSQL streaming Engine-javítások: 
    - Leállított folyamatos átviteli feladatok karbantartása 
    - Javítások a honosítási és a Unicode-kezelési javításokhoz
+   - Javíthatja a TSQL-adatfolyamok hibakeresését, lehetővé téve a felhasználók számára, hogy lekérdezzek a feladatokról get_streaming_job.
 4. Adatmegőrzési házirend alapú tisztítás
    - Az adatmegőrzési szabályzat létrehozásának és a tisztítási forgatókönyveknek a javításai.
 5. Javítja a háttérben futó időzítő feladatait, hogy az alacsony energiaellátású üzemmód számára növelje az energiamegtakarítást.
+
+### <a name="known-issues"></a>Ismert problémák 
+1. Date_Bucket T-SQL függvény nem használható számított oszlopban.
 
 
 ## <a name="ctp-23"></a>CTP 2,3

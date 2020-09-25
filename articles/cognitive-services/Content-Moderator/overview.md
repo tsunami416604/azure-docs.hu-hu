@@ -8,24 +8,28 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: overview
-ms.date: 08/05/2020
+ms.date: 09/15/2020
 ms.author: pafarley
-ms.openlocfilehash: 82dc81c540115f08e57f87e63184e1e895c5e4fe
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.custom: cog-serv-seo-aug-2020
+keywords: Content moderátor, Azure Content moderátor, online moderátor, Content Filtering szoftver, Content moderációs szolgáltatás
+ms.openlocfilehash: d502f41a79500b80e1891219b54bde30eb3cd8ca
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87834541"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91309654"
 ---
 # <a name="what-is-azure-content-moderator"></a>Mi az az Azure Content Moderator?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Az Azure Content Moderator egy olyan kognitív szolgáltatás, amely potenciálisan sértő, kockázatos vagy egyéb módon nemkívánatos anyagok számára ellenőrzi a szöveget, a képeket és a videó tartalmát. Ha ez az anyag megtalálható, a szolgáltatás a megfelelő címkéket (jelzőket) alkalmazza a tartalomra. Az alkalmazás ezután kezelheti a megjelölt tartalmakat, így betarthatja az előírásokat, és fenntarthatja a felhasználók számára kívánt környezetet. A [moderálási API](#moderation-apis) -k című szakaszban további információt talál arról, hogy mit jeleznek a különböző tartalmi jelzők.
+Az Azure Content Moderator egy AI-szolgáltatás, amely potenciálisan sértő, kockázatos vagy egyéb módon nemkívánatos tartalmak kezelésére szolgál. Magában foglalja az AI-alapú Content moderációs szolgáltatást, amely szöveget, képet és videót vizsgál, és automatikusan alkalmazza a tartalmi jelzőket, valamint a felülvizsgálati eszközt, amely egy, az emberi felülvizsgálók csapatának online moderátori környezete.
+
+Előfordulhat, hogy az alkalmazásba kívánja felépíteni a Content Filtering szoftvert, hogy megfeleljen a szabályozásoknak, vagy megőrizze a kívánt környezetet a felhasználók számára.
 
 ## <a name="where-its-used"></a>Hol használják
 
-A szoftverfejlesztőknek vagy a csapatoknak például a következő néhány alkalmazási helyzetben érdemes használniuk a Content Moderatort:
+Az alábbiakban néhány olyan forgatókönyvet ismertetünk, amelyekben a szoftverfejlesztő vagy a csapat egy Content moderációs szolgáltatást igényel:
 
 - Online piactér, amely mérsékelt termékkatalógusokat és más, felhasználó által létrehozott tartalmat mutat be.
 - A nagyvállalatok által generált játék-összetevőkkel és csevegési szobákkal rendelkező vállalatok.
@@ -33,7 +37,7 @@ A szoftverfejlesztőknek vagy a csapatoknak például a következő néhány alk
 - Vállalati média-vállalatok, amelyek központosított moderálást valósítanak meg a tartalmukhoz.
 - A K-12 oktatási megoldás-szolgáltatók olyan tartalmat szűrnek ki, amely nem felel meg a diákoknak és a pedagógusoknak.
 
-> [!NOTE]
+> [!IMPORTANT]
 > Nem használhatja a Content Moderatort a gyermekek illegális kiaknázására szolgáló rendszerképek észlelésére. A minősített szervezetek azonban használhatják a [PhotoDNA Cloud Service](https://www.microsoft.com/photodna "Microsoft PhotoDNA Cloud Service") -t az ilyen típusú tartalmak megjelenítésére.
 
 ## <a name="what-it-includes"></a>Mit tartalmaz?
@@ -48,7 +52,7 @@ A Content Moderator szolgáltatás olyan moderálási API-kat tartalmaz, amelyek
 
 Az alábbi táblázat a moderálási API-k különböző típusait ismerteti.
 
-| API-csoport | Leírás |
+| API-csoport | Description |
 | ------ | ----------- |
 |[**Szövegmoderálás**](text-moderation-api.md)| Megvizsgálja a sértő tartalom, a szexuálisan explicit vagy szuggesztív tartalom, a káromkodás és a személyes adatokat szövegét.|
 |[**Egyéni kifejezéslista**](try-terms-list-api.md)| A szöveget a beépített kifejezésekkel együtt a kifejezések egyéni listájában vizsgálja. Az egyéni listákkal a saját tartalomházirendjének megfelelően tilthatja le vagy engedélyezheti a tartalmakat.|  
@@ -77,4 +81,4 @@ Akárcsak az összes Cognitive Services esetében, a Content Moderator szolgált
 
 ## <a name="next-steps"></a>Következő lépések
 
-A Content Moderator szolgáltatás használatának megkezdéséhez kövesse az alábbi témakörben található útmutatást a [webes kipróbálás Content moderator](quick-start.md).
+Az Content Moderator a webes portálon való használatának megkezdéséhez kövesse [az interneten található Content moderator kipróbálása](quick-start.md)című témakört. Vagy fejezze be az [ügyféloldali kódtár](client-libraries.md) gyors üzembe helyezését a kódban található alapszintű forgatókönyvek megvalósításához.

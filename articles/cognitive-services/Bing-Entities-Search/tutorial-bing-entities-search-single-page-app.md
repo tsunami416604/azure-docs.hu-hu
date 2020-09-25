@@ -10,19 +10,19 @@ ms.subservice: bing-entity-search
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
-ms.custom: devx-track-javascript
-ms.openlocfilehash: d14681e07518188deabd9f48a04b80a489d858b8
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: 58bbda6d3b02042c6e512e03e108cd69fbd7ed51
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407931"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91277325"
 ---
 # <a name="tutorial-single-page-web-app"></a>Oktatóanyag: Egyoldalas webalkalmazás
 
 A Bing Entity Search API-val *entitásokról* és *helyekről* kereshet információkat a weben. Egy adott lekérdezésben kérheti a helyeket, az entitásokat vagy mindkettőt. A helyek és entitások definícióját az alábbiakban találja.
 
-| Eredmény | Leírás |
+| Eredmény | Description |
 |-|-|
 |Entitások|Ismert személyek, helyek és dolgok, amelyeket/akiket név alapján talál meg|
 |Helyek|Éttermek, szállodák és egyéb helyi vállalkozások, amelyeket név *vagy* típus alapján talál meg (olasz éttermek)|
@@ -142,7 +142,7 @@ A `<body>` HTML-címke tartalmaz egy `onload` attribútumot, amely a lap betölt
 
 A HTML-űrlap a következő vezérlőket tartalmazza:
 
-| Vezérlés | Leírás |
+| Vezérlés | Description |
 |-|-|
 |`where`|Legördülő menü a kereséshez használt piac (hely és nyelv) kiválasztásához.|
 |`query`|Szövegmező a keresőkifejezések megadásához.|

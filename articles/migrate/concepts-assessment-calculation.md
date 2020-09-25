@@ -3,12 +3,12 @@ title: Azure VM-értékelések Azure Migrate Server Assessment-ben
 description: Tudnivalók a Azure Migrate Server Assessment értékeléséről
 ms.topic: conceptual
 ms.date: 05/27/2020
-ms.openlocfilehash: 1d9c887f42089611ce7402aa32174958cd8c0b07
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 4020df3ef77e4b8ae0618108f539322092b93079
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88261854"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275523"
 ---
 # <a name="server-assessment-overview-migrate-to-azure-vms"></a>A kiszolgáló értékelésének áttekintése (Migrálás az Azure-beli virtuális gépekre)
 
@@ -25,17 +25,17 @@ A kiszolgáló-értékelési eszközzel végzett értékelés méri a készülts
 
 A Azure Migrate: Server Assessment használatával kétféle értékelést hozhat létre.
 
-**Értékelés típusa** | **Részletek**
+**Kiértékelés típusa** | **Részletek**
 --- | --- 
-**Azure VM** | Értékelések a helyszíni kiszolgálók Azure-beli virtuális gépekre való átköltöztetéséhez. <br/><br/> A helyszíni [VMWare virtuális gépeket](how-to-set-up-appliance-vmware.md), a [Hyper-V virtuális gépeket](how-to-set-up-appliance-hyper-v.md)és a [fizikai kiszolgálókat](how-to-set-up-appliance-physical.md) felhasználhatja az Azure-ba való áttelepítéshez ezzel az értékelési típussal.
-**Azure VMware Solution (AVS)** | A helyszíni kiszolgálók [Azure VMware-megoldásba (AVS)](../azure-vmware/introduction.md)való átköltöztetésének felmérése. <br/><br/> A helyszíni [VMWare virtuális gépeket](how-to-set-up-appliance-vmware.md) az értékelés típusának használatával értékelheti az Azure VMware-megoldásba (AVS) való áttelepítésre. [További információ](concepts-azure-vmware-solution-assessment-calculation.md)
+**Azure VM** | Kiértékelés a helyszíni kiszolgálók Azure-beli virtuális gépekre történő migrálásához. <br/><br/> Az Azure-ba történő migráláshoz ezen kiértékeléstípus használatával értékelheti a helyszíni [VMware rendszerű virtuális gépeket](how-to-set-up-appliance-vmware.md), a [Hyper-V rendszerű virtuális gépeket](how-to-set-up-appliance-hyper-v.md) és [fizikai kiszolgálókat](how-to-set-up-appliance-physical.md).
+**Azure VMware Solution (AVS)** | Kiértékelés a helyszíni kiszolgálók [Azure VMware Solutionbe (AVS-be)](../azure-vmware/introduction.md) történő migrálásához. <br/><br/> Az Azure VMware Solutionbe (AVS-be) történő migráláshoz ezen kiértékeléstípus használatával értékelheti a helyszíni [VMware rendszerű virtuális gépeket](how-to-set-up-appliance-vmware.md).[További információ](concepts-azure-vmware-solution-assessment-calculation.md)
 
 A kiszolgáló-értékeléssel létrehozott értékelések az adatok időpontra vonatkozó pillanatképei. Az Azure-beli virtuális gépek értékelése a kiszolgálók értékelése során két méretezési feltétel közül választhat:
 
 **Értékelés típusa** | **Részletek** | **Adatok**
 --- | --- | ---
-**Teljesítmény-alapú** | Az összegyűjtött teljesítményadatok alapján ajánlásokat tevő értékelések | A virtuálisgép-méretre vonatkozó javaslat a CPU-és a RAM-kihasználtsági adatain alapul.<br/><br/> A lemez típusú javaslat a (z) másodpercenkénti bemeneti/kimeneti műveletek (IOPS) és a helyszíni lemezek átviteli sebessége alapján történik. A lemezek típusai az Azure standard HDD, az Azure standard SSD és az Azure prémium szintű lemezek.
-**Helyszíni** | Olyan felmérések, amelyek nem használnak teljesítményadatokat a javaslatok elvégzéséhez | A virtuálisgép-méretre vonatkozó javaslat a helyszíni virtuális gép méretétől függ.<br/><br> Az ajánlott lemez típusa az értékeléshez kiválasztott tárolási típuson alapul.
+**Teljesítményalapú** | A gyűjtött teljesítményalapok alapján javaslatot tevő kiértékelések | A virtuálisgép-méretre vonatkozó javaslat a CPU-és a RAM-kihasználtsági adatain alapul.<br/><br/> A lemez típusú javaslat a (z) másodpercenkénti bemeneti/kimeneti műveletek (IOPS) és a helyszíni lemezek átviteli sebessége alapján történik. A lemezek típusai az Azure standard HDD, az Azure standard SSD és az Azure prémium szintű lemezek.
+**Módosítás nélküli helyszíni** | Olyan felmérések, amelyek nem használnak teljesítményadatokat a javaslatok elvégzéséhez | A virtuálisgép-méretre vonatkozó javaslat a helyszíni virtuális gép méretétől függ.<br/><br> Az ajánlott lemez típusa az értékeléshez kiválasztott tárolási típuson alapul.
 
 ## <a name="how-do-i-run-an-assessment"></a>Hogyan egy értékelést?
 
@@ -80,7 +80,7 @@ Ha a készüléket a felderítéshez használja, a következő lépésekkel gyű
     - **Hyper-V virtuális gépek**: a rendszer 30 másodpercenként gyűjt egy mintavételi pontot.
     - **Fizikai kiszolgálók**: egy mintavételi pont gyűjtése 5 percenként történik.
 
-1. A készülék 10 percenként egyesíti a mintavételi pontokat, hogy egyetlen adatpontot hozzon létre. Az adatpont létrehozásához a készülék kiválasztja az összes minta csúcsérték-értékeit. Ezután elküldi az adatpontot az Azure-nak.
+1. A készülék egyesíti a mintavételi pontokat úgy, hogy a VMware és a Hyper-V kiszolgálók esetében 10 percenként hozzon létre egyetlen adatpontot, és hogy a fizikai kiszolgálók 5 percenként legyenek. Az adatpont létrehozásához a készülék kiválasztja az összes minta csúcsérték-értékeit. Ezután elküldi az adatpontot az Azure-nak.
 1. A kiszolgáló értékelése az elmúlt hónapban az összes 10 perces adatpontot tárolja.
 1. Értékelés létrehozásakor a kiszolgáló értékelése azonosítja a megadásában használandó megfelelő adatpontot. Az azonosítás a *teljesítmény előzményeinek* és a *percentilis kihasználtságának*százalékos értékein alapul.
 
@@ -152,7 +152,7 @@ Tulajdonság | Részletek | Azure-készültségi állapot
 --- | --- | ---
 **Rendszerindítás típusa** | Az Azure a BIOS rendszerindítási típusával támogatja a virtuális gépeket, nem az UEFI-t. | Feltételesen üzemkész, ha a rendszerindítás UEFI típusú.
 **Cores** | Minden gépnek legfeljebb 128 maggal kell rendelkeznie, amely az Azure-beli virtuális gépek által támogatott maximális szám.<br/><br/> Ha rendelkezésre áll a teljesítmény előzményei, Azure Migrate az összehasonlításhoz a felhasznált magokat veszi figyelembe. Ha az értékelési beállítások egy kényelmi tényezőt határoznak meg, a kihasználatlan magok száma megszorozza a komfort tényezővel.<br/><br/> Ha nincsenek teljesítménybeli előzmények, a Azure Migrate a lefoglalt magok használatával alkalmazza a komfort tényezőt. | Készen áll, ha a magok száma a határértéken belül van
-**RAM** | Az egyes gépek legfeljebb 3 892 GB RAM-mal rendelkezhetnek, ami az Azure M sorozatú Standard_M128m &nbsp; <sup>2</sup> virtuális gép által támogatott maximális méret. [További információk](../virtual-machines/sizes.md).<br/><br/> Ha elérhetők a teljesítmény előzményei, Azure Migrate a felhasznált RAM-ot az összehasonlításhoz. Ha meg van adva egy kényelmi tényező, a kihasznált RAM-ot a komfort faktor megszorozza.<br/><br/> Ha nincsenek előzmények, a rendszer a lefoglalt RAM-ot használja a komfort tényező alkalmazásához.<br/><br/> | Készen áll, ha a RAM mennyisége a határértéken belül van
+**RAM** | Az egyes gépek legfeljebb 3 892 GB RAM-mal rendelkezhetnek, ami az Azure M sorozatú Standard_M128m &nbsp; <sup>2</sup> virtuális gép által támogatott maximális méret. [További információ](../virtual-machines/sizes.md).<br/><br/> Ha elérhetők a teljesítmény előzményei, Azure Migrate a felhasznált RAM-ot az összehasonlításhoz. Ha meg van adva egy kényelmi tényező, a kihasznált RAM-ot a komfort faktor megszorozza.<br/><br/> Ha nincsenek előzmények, a rendszer a lefoglalt RAM-ot használja a komfort tényező alkalmazásához.<br/><br/> | Készen áll, ha a RAM mennyisége a határértéken belül van
 **Storage-lemez** | A lemez lefoglalt mérete nem haladhatja meg a 32 TB-ot. Bár az Azure támogatja az 64 TB-os lemezeket az Azure ultra SSD Disks szolgáltatással, Azure Migrate: a Server Assessment jelenleg a 32 TB-ot ellenőrzi a lemez mérete miatt, mert még nem támogatja ultra SSD. <br/><br/> A géphez csatolt lemezek számának, beleértve az operációsrendszer-lemezt, 65 vagy kevesebbnek kell lennie. | Készen áll, ha a lemez mérete és száma a határértékeken belül van
 **Hálózat** | A gépekhez nem tartozhat több, mint 32 hálózati adapter (NIC). | Készen áll, ha a hálózati adapterek száma a korláton belül van
 
@@ -293,7 +293,7 @@ A méretezési javaslatok befejezése után az Azure-beli virtuális gépek felm
 
 A költségek az értékelési beállításokban megadott pénznemben jelennek meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Tekintse át](best-practices-assessment.md) az értékelések létrehozásával kapcsolatos ajánlott eljárásokat. 
 

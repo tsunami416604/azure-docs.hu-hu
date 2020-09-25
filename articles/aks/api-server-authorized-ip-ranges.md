@@ -3,13 +3,13 @@ title: Az API-kiszolgáló által jóváhagyott IP-címtartományok az Azure Kub
 description: Ismerje meg, hogyan biztonságossá teheti a fürtöt IP-címtartomány használatával az Azure Kubernetes szolgáltatásban (ak) lévő API-kiszolgálóhoz való hozzáféréshez
 services: container-service
 ms.topic: article
-ms.date: 11/05/2019
-ms.openlocfilehash: 404bd600f825a5da334811744132c6aa9b751566
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.date: 09/21/2020
+ms.openlocfilehash: 5dbe5061253fb18222a476a88a1ec94a5ce4b0fa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006893"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91299663"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Biztonságos hozzáférés az API-kiszolgálóhoz a jogosult IP-címtartományok használatával az Azure Kubernetes szolgáltatásban (ak)
 
@@ -17,18 +17,21 @@ A Kubernetes-ben az API-kiszolgáló kérelmeket fogad a fürt műveleteinek vé
 
 Ebből a cikkből megtudhatja, hogyan használható az API-kiszolgáló által engedélyezett IP-címtartományok annak a korlátozására, hogy mely IP-címek és CIDRs férhetnek hozzá a vezérlő síkja.
 
-> [!IMPORTANT]
-> Az API-kiszolgáló által engedélyezett IP-címtartományok után létrehozott fürtökön a 2019 októberi időszakban az API-kiszolgáló által engedélyezett IP-címtartományok csak a *standard* SKU Load Balancer esetében támogatottak. Az *alapszintű* SKU Load Balancer és a konfigurált API-kiszolgáló által jóváhagyott IP-címtartományok meglévő fürtök továbbra is ugyanúgy működnek, mint a *standard* SKU Load Balancer. Ezek a meglévő fürtök továbbra is működni fognak, ha a Kubernetes verziója vagy a vezérlő síkja frissül. Az API-kiszolgáló által engedélyezett IP-címtartományok a privát fürtök esetében nem támogatottak.
-
 ## <a name="before-you-begin"></a>Előkészületek
 
 Ez a cikk bemutatja, hogyan hozhat létre egy AK-fürtöt az Azure CLI használatával.
 
 Szüksége lesz az Azure CLI-verzió 2.0.76 vagy újabb verziójára, és konfigurálva van.  `az --version`A verzió megkereséséhez futtassa a parancsot. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
 
+### <a name="limitations"></a>Korlátozások
+
+Az API-kiszolgáló által jóváhagyott IP-címtartományok funkció a következő korlátozásokkal rendelkezik:
+- Az API-kiszolgáló által engedélyezett IP-címtartományok után létrehozott fürtökön a 2019 októberi időszakban az API-kiszolgáló által engedélyezett IP-címtartományok csak a *standard* SKU Load Balancer esetében támogatottak. Az *alapszintű* SKU Load Balancer és a konfigurált API-kiszolgáló által jóváhagyott IP-címtartományok meglévő fürtök továbbra is ugyanúgy működnek, mint a *standard* SKU Load Balancer. Ezek a meglévő fürtök továbbra is működni fognak, ha a Kubernetes verziója vagy a vezérlő síkja frissül. Az API-kiszolgáló által engedélyezett IP-címtartományok a privát fürtök esetében nem támogatottak.
+- Ez a funkció nem kompatibilis azokkal a fürtökkel, amelyek [nyilvános IP-t használnak a csomóponti csomópontok készletének előzetes](use-multiple-node-pools.md#assign-a-public-ip-per-node-for-your-node-pools-preview)verziójában.
+
 ## <a name="overview-of-api-server-authorized-ip-ranges"></a>Az API-kiszolgáló által jóváhagyott IP-címtartományok áttekintése
 
-A Kubernetes API-kiszolgáló az alapul szolgáló Kubernetes API-k számára elérhető. Ez az összetevő a felügyeleti eszközök, például `kubectl` a vagy a Kubernetes irányítópultjának interakcióját biztosítja. Az AK egybérlős fürtös főkiszolgálót biztosít dedikált API-kiszolgálóval. Alapértelmezés szerint az API-kiszolgáló nyilvános IP-címet kap, és a hozzáférés vezérlése szerepköralapú hozzáférés-vezérléssel (RBAC) történik.
+A Kubernetes API-kiszolgáló az alapul szolgáló Kubernetes API-k számára elérhető. Ez az összetevő a felügyeleti eszközök, például `kubectl` a vagy a Kubernetes irányítópultjának interakcióját biztosítja. Az AK egy egybérlős fürtbeli vezérlési síkot biztosít dedikált API-kiszolgálóval. Alapértelmezés szerint az API-kiszolgáló nyilvános IP-címet kap, és a hozzáférés vezérlése szerepköralapú hozzáférés-vezérléssel (RBAC) történik.
 
 Az egyébként nyilvánosan elérhető AK-vezérlési sík/API-kiszolgáló hozzáférésének biztonságossá tételéhez engedélyezheti és használhatja az engedélyezett IP-tartományokat. Ezek a megengedett IP-címtartományok csak a meghatározott IP-címtartományok használatát teszik lehetővé az API-kiszolgálóval való kommunikációhoz. Az API-kiszolgálónak egy olyan IP-címről érkező kérés le van tiltva, amely nem része ezeknek az engedélyezett IP-tartományoknak. Továbbra is használhatja a RBAC-t a felhasználók engedélyezéséhez és a kért műveletekhez.
 
@@ -82,7 +85,7 @@ az aks create \
 
 A fenti példában a paraméterben megadott összes IP-cím *`--load-balancer-outbound-ip-prefixes`* engedélyezett a paraméterben található IP-címekkel együtt *`--api-server-authorized-ip-ranges`* .
 
-Másik lehetőségként megadhatja a *`--load-balancer-outbound-ip-prefixes`* paramétert is, hogy engedélyezze a kimenő terheléselosztó IP-előtagjait.
+Ehelyett megadhatja a *`--load-balancer-outbound-ip-prefixes`* paramétert a kimenő terheléselosztó IP-előtagjainak engedélyezéséhez.
 
 ### <a name="allow-only-the-outbound-public-ip-of-the-standard-sku-load-balancer"></a>Csak a standard SKU Load Balancer kimenő nyilvános IP-címének engedélyezése
 
@@ -127,7 +130,7 @@ az aks update \
     --api-server-authorized-ip-ranges ""
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben engedélyezte az API-kiszolgáló engedélyezett IP-tartományait. Ez a megközelítés a biztonságos AK-fürtök futtatásának egyik része.
 

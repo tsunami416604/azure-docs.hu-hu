@@ -8,13 +8,13 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: elioda
-ms.custom: mqtt, devx-track-javascript
-ms.openlocfilehash: 874e9dd0454fa4f0a0877d949a34058baa711b83
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: mqtt, devx-track-js
+ms.openlocfilehash: 65ced3812072bd2650fc36bbb7a7b0f3f75e0def
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420719"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336785"
 ---
 # <a name="get-started-with-device-twins-nodejs"></a>Ismerkedés az eszközök ikrekkel (Node.js)
 
@@ -40,7 +40,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 * Győződjön meg arról, hogy a 8883-es port meg van nyitva a tűzfalon. A cikkben szereplő MQTT protokollt használ, amely a 8883-as porton keresztül kommunikál. Lehetséges, hogy ez a port bizonyos vállalati és oktatási hálózati környezetekben blokkolva van. A probléma megoldásával kapcsolatos további információkért lásd: [csatlakozás IoT hubhoz (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
-## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
+## <a name="create-an-iot-hub"></a>IoT-központ létrehozása
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -109,7 +109,7 @@ Ebben a szakaszban egy Node.js Console-alkalmazást hoz létre, amely a hely met
 
     A címkék frissítése után meghívja a **queryTwins** függvényt.
 
-5. Adja hozzá a következő kódot a **AddTagsAndQuery.js** végén a **queryTwins** függvény megvalósításához:
+5. Adja hozzá a következő kódot a  **AddTagsAndQuery.js** végén a **queryTwins** függvény megvalósításához:
 
    ```javascript
         var queryTwins = function() {

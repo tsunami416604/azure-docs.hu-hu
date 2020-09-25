@@ -6,12 +6,12 @@ ms.author: nlarin
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 5b06120437555ec71bc431cb1429120cb5e1987f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: be6040b8b84a4b86746d62bd2f1c07f0ffea0a3b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935926"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336292"
 ---
 # <a name="manage-scheduled-maintenance-settings-for-azure-database-for-postgresql--flexible-server"></a>Azure Database for PostgreSQL – rugalmas kiszolgáló ütemezett karbantartási beállításainak kezelése
  
@@ -31,9 +31,9 @@ A útmutató lépéseinek elvégzéséhez a következőkre lesz szüksége:
  
 ## <a name="notifications-about-scheduled-maintenance-events"></a>Értesítés az ütemezett karbantartási eseményekről
  
-A Azure Service Health használatával [megtekintheti](/azure/service-health/service-notifications.md) a rugalmas kiszolgálón a közelgő és ütemezett karbantartással kapcsolatos értesítéseket. A riasztásokat a Azure Service Healthban is [beállíthatja](/azure/service-health/resource-health-alert-monitor-guide.md) , hogy értesítéseket kapjon a karbantartási eseményekről.
+A Azure Service Health használatával [megtekintheti](../../service-health/service-notifications.md) a rugalmas kiszolgálón a közelgő és ütemezett karbantartással kapcsolatos értesítéseket. A riasztásokat a Azure Service Healthban is [beállíthatja](../../service-health/resource-health-alert-monitor-guide.md) , hogy értesítéseket kapjon a karbantartási eseményekről.
  
 ## <a name="next-steps"></a>Következő lépések  
  
 * Ismerje meg [Azure Database for PostgreSQL – rugalmas kiszolgáló ütemezett karbantartását](concepts-maintenance.md)
-* Sovány [Azure Service Health](/azure/service-health/overview.md)
+* Sovány [Azure Service Health](../../service-health/overview.md)
