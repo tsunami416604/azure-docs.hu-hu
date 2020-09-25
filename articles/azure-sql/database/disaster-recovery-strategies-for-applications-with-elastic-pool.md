@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 6887371e50f5b7e8706cac0a0700873c42bdac06
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0463d11466859c0f30901a0afd960bdc7b2599a5
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91321645"
+ms.locfileid: "91357784"
 ---
 # <a name="disaster-recovery-strategies-for-applications-using-azure-sql-database-elastic-pools"></a>Vészhelyzeti helyreállítási stratégiák Azure SQL Database rugalmas készleteket használó alkalmazásokhoz
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -78,7 +78,7 @@ Egy kiforrott SaaS-alkalmazást használok, amely többplatformos szolgáltatás
 
 A forgatókönyv támogatásához válassza szét a próbaverziós bérlőket a fizetős bérlők számára, ha különálló rugalmas készletbe helyezi őket. A próbaverziós ügyfeleknél alacsonyabb eDTU vagy virtuális mag, illetve alacsonyabb SLA-ra van szükség. A fizetős ügyfelek egy-egy magasabb eDTU vagy virtuális mag rendelkező készletben vannak, és magasabb SLA-t biztosítanak. A legalacsonyabb helyreállítási idő biztosításához a fizetős ügyfelek bérlői adatbázisai földrajzilag replikálódnak. Ez a konfiguráció a következő diagramon látható.
 
-![4. ábra](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-4.png)
+![A diagram egy elsődleges régiót és egy D R-régiót mutat be, amely geo-replikációt alkalmaz a felügyeleti adatbázis és a fizetős ügyfelek elsődleges készlete és a másodlagos készlet között, és nem replikálja a próbaverziós ügyfelek készletét.](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-4.png)
 
 Ahogy az első forgatókönyvben is, a felügyeleti adatbázisok meglehetősen aktívak, így egyetlen földrajzilag replikált adatbázist használ hozzá (1). Ez biztosítja az új ügyfél-előfizetések, a profilok frissítései és egyéb felügyeleti műveletek kiszámítható teljesítményét. Az a régió, amelyben a felügyeleti adatbázisok elsődlegesek, a DR régió, ahol a felügyeleti adatbázisok formátumú másodlagos zónák található, az elsődleges régió és a régió.
 
@@ -86,7 +86,7 @@ A fizetős ügyfelek bérlői adatbázisai aktív adatbázisokkal rendelkeznek a
 
 Ha az elsődleges régióban áramkimaradás történik, az alkalmazás online állapotba helyezésének helyreállítási lépései a következő ábrán láthatók:
 
-![5. ábra](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-5.png)
+![A diagram az elsődleges régió leállását jeleníti meg, a felügyeleti adatbázis feladatátvételével, a fizetős ügyfél másodlagos készletével, valamint a próbaverziós ügyfelek létrehozásával és visszaállításával.](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-5.png)
 
 * A felügyeleti adatbázisok azonnali feladatátvétele a DR régióba (3).
 * Módosítsa az alkalmazás kapcsolódási karakterláncát úgy, hogy az a DR régióra mutasson. Most minden új fiók és bérlői adatbázis létre lett hozva a DR régióban. A meglévő próbaverziós ügyfelek átmenetileg nem érhetők el.
@@ -99,7 +99,7 @@ Ezen a ponton az alkalmazás ismét online állapotba kerül a DR régióban. Az
 
 Ha az Azure-t a DR régióban visszaállította az alkalmazás visszaállítása *után* , akkor folytathatja az alkalmazás futtatását az adott régióban, vagy dönthet úgy is, hogy visszaadja az elsődleges régiónak. Ha az elsődleges régiót a feladatátvételi folyamat befejezése *előtt* állítja helyre, érdemes lehet azonnal visszaadnia a hibát. A feladat-visszavétel a következő ábrán látható lépéseket mutatja be:
 
-![6. ábra](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-6.png)
+![A diagram az elsődleges régió visszaállítása utáni megvalósítási feladat-visszavétel lépéseit mutatja be.](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-6.png)
 
 * Az összes függőben lévő geo-visszaállítási kérelem megszakítása.
 * A felügyeleti adatbázisok (8) feladatátvétele. A régió helyreállítása után a régi elsődleges automatikusan a másodlagos lesz. Most már az elsődleges lesz.  
@@ -128,7 +128,7 @@ A forgatókönyv támogatásához használjon három különálló rugalmas kés
 
 A leállások legalacsonyabb helyreállítási idejének garantálása érdekében a fizetős ügyfelek bérlői adatbázisai a két régió elsődleges adatbázisainak 50%-ában vannak replikálva. Hasonlóképpen, minden régió a másodlagos adatbázisok 50%-a. Így ha egy régió offline állapotban van, a fizetős ügyfelek adatbázisainak csak 50%-a érintett, és a feladatátvételre van hatással. A többi adatbázis érintetlen marad. Ezt a konfigurációt az alábbi ábra szemlélteti:
 
-![4. ábra](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-7.png)
+![A diagram az A és a B régió nevű elsődleges régiót jeleníti meg, amely geo-replikációt alkalmaz a felügyeleti adatbázis és a fizetős ügyfelek elsődleges készlete és másodlagos készlete között, és nem replikálja a próbaverziós ügyfelek készletét.](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-7.png)
 
 Ahogy az előző forgatókönyvek esetében is, a felügyeleti adatbázisok meglehetősen aktívak, ezért konfigurálja őket egyetlen földrajzilag replikált adatbázisként (1). Ez biztosítja az új ügyfél-előfizetések, a profilok frissítései és az egyéb felügyeleti műveletek kiszámítható teljesítményét. Az A régió a felügyeleti adatbázisok elsődleges régiója, a B régió pedig a felügyeleti adatbázisok helyreállításához használatos.
 
@@ -136,7 +136,7 @@ A fizetős ügyfelek bérlői adatbázisai is földrajzilag replikálódnak, de 
 
 A következő diagram azt mutatja be, hogy milyen helyreállítási lépéseket kell végrehajtania, ha az A régióban áramkimaradás történik.
 
-![5. ábra](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-8.png)
+![A diagram az elsődleges régió meghibásodását mutatja, a felügyeleti adatbázis feladatátvételével, a fizetős ügyfél másodlagos készletével, valamint a próbaverziós ügyfelek számára a B régióba történő létrehozásával és visszaállításával.](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-8.png)
 
 * A felügyeleti adatbázisok azonnali feladatátvétele a B régióra (3).
 * Módosítsa az alkalmazás kapcsolódási karakterláncát úgy, hogy az a B régió felügyeleti adatbázisaira mutasson. módosítsa a felügyeleti adatbázisokat, hogy az új fiókok és bérlői adatbázisok a B régióban jöjjenek létre, és a meglévő bérlői adatbázisok is megtalálhatók. A meglévő próbaverziós ügyfelek átmenetileg nem érhetők el.
@@ -152,7 +152,7 @@ Ezen a ponton az alkalmazás ismét online állapotba kerül a B régióban. Az 
 
 Az A régió helyreállítása esetén el kell döntenie, hogy a B régiót szeretné-e használni a próbaverziós ügyfelek vagy a feladat-visszavétel számára az A régióban lévő próbaverziós ügyfelek készletének használatával. Az egyik feltétel lehet a helyreállítás óta módosított próbaverziós bérlői adatbázisok%-a. A döntéstől függetlenül át kell osztania a fizetős bérlőket két készlet között. a következő diagram azt mutatja be, hogy a próbaverziós bérlő adatbázisai hogyan működnek az A régióba.  
 
-![6. ábra](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-9.png)
+![A diagram az A régió visszaállítása utáni megvalósítási feladat-visszavételi lépéseket mutatja be.](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-9.png)
 
 * Törölje az összes kihelyezett geo-visszaállítási kérést a DR-készlet próbaverziója számára.
 * A felügyeleti adatbázis feladatátvétele (8). A régió helyreállítása után a régi elsődleges automatikusan a másodlagos lett. Most már az elsődleges lesz.  

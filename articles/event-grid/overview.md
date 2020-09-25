@@ -2,13 +2,13 @@
 title: Mi az Azure Event Grid?
 description: Eseményazonosító küldése a forrástól a kezelőknek Azure Event Grid használatával. Hozzon létre eseményvezérelt alkalmazásokat, és integrálja az Azure-szolgáltatásokat.
 ms.topic: overview
-ms.date: 07/07/2020
-ms.openlocfilehash: 87ac29c2324c63977c57d60b11b3b930c23a4dd9
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.date: 09/24/2020
+ms.openlocfilehash: 73d218058c5f95d8c2d2324f1a0e1e77b24f1364
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89436867"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326498"
 ---
 # <a name="what-is-azure-event-grid"></a>Mi az Azure Event Grid?
 
@@ -20,16 +20,17 @@ Azure Event Grid üzembe helyezése a rendelkezésre állás maximalizálása é
 
 Ez a cikk az Azure Event Gridről nyújt áttekintést. Az Event Grid használatának első lépései: [Egyéni események létrehozása és átirányítása az Azure Event Griddel](custom-event-quickstart.md). 
 
-![A források és a kezelők Event Grid modellje](./media/overview/functional-model.png)
+:::image type="content" source="./media/overview/functional-model.png" alt-text="A források és a kezelők Event Grid modellje" lightbox="./media/overview/functional-model.png":::
 
 Ez a rendszerkép azt mutatja be, hogy Event Grid hogyan csatlakozik a forrásokhoz és a kezelőhöz, és nem a támogatott integrációk átfogó listája.
 
 ## <a name="event-sources"></a>Eseményforrások
 
-Jelenleg az alábbi Azure-szolgáltatások támogatják az események Event Gridbe való küldését:
+Jelenleg az alábbi Azure-szolgáltatások támogatják az események küldését a Event Gridba. A listában szereplő forrásokkal kapcsolatos további információkért válassza ki a hivatkozást.
 
 - [Azure App Configuration](event-schema-app-configuration.md)
 - [Azure Blob Storage](event-schema-blob-storage.md)
+- [Azure Communication Services](event-schema-communication-services.md) 
 - [Azure Container Registry](event-schema-container-registry.md)
 - [Azure Event Hubs](event-schema-event-hubs.md)
 - [Azure IoT Hub](event-schema-iot-hub.md)
@@ -68,7 +69,7 @@ Az Azure Event Grid öt fontos alapfogalma:
 
 További információ ezekről a fogalmakról: [Az Azure Event Grid alapfogalmai](concepts.md).
 
-## <a name="capabilities"></a>Funkciók
+## <a name="capabilities"></a>Képességek
 
 Az Azure Event Grid néhány főbb jellemzője:
 

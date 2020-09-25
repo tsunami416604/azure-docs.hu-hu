@@ -11,12 +11,12 @@ ms.author: srbozovi
 ms.reviewer: vanto
 ms.date: 10/07/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e46c6d1c14d226522a1d534418b91076efeaaccf
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: f1c4fe8268d24026609f55d76a102a5c9a4e8295
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89070717"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91356299"
 ---
 # <a name="azure-sql-managed-instance-connection-types"></a>Felügyelt Azure SQL-példány kapcsolattípusai
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -27,14 +27,14 @@ Ez a cikk azt ismerteti, hogyan csatlakozhatnak az ügyfelek az Azure SQL felüg
 
 Az Azure SQL felügyelt példánya a következő két kapcsolattípus használatát támogatja:
 
-- **Átirányítás (ajánlott):** Az ügyfelek közvetlen kapcsolatot létesít az adatbázist futtató csomóponttal. Az átirányítás használatával történő csatlakozás engedélyezéséhez meg kell nyitnia a tűzfalakat és a hálózati biztonsági csoportokat (NSG), hogy engedélyezze a hozzáférést a 1433-es és 11000-11999-es portokon. A csomagok közvetlenül az adatbázisba kerülnek, ezért a proxyn keresztüli átirányítás a késés és az átviteli teljesítmény terén is javul.
-- **Proxy (alapértelmezett):** Ebben a módban minden kapcsolat egy proxy átjáró összetevőt használ. A kapcsolat engedélyezéséhez csak a 1433-es portot kell megnyitni a magánhálózati és a 3342-es porthoz a nyilvános kapcsolathoz. Ha ezt a módot választja, a számítási feladatok természetétől függően nagyobb késést és alacsonyabb átviteli sebességet eredményezhet. A legalacsonyabb késés és a legmagasabb átviteli sebesség érdekében javasoljuk, hogy a proxy kapcsolati házirendjét átirányítsa az átirányítás kapcsolati házirendre.
+- **Átirányítás (ajánlott):** Az ügyfelek közvetlen kapcsolatot létesít az adatbázist futtató csomóponttal. Az átirányítás használatával történő csatlakozás engedélyezéséhez tűzfalakat és hálózati biztonsági csoportokat (NSG-ket) kell nyitnia, hogy engedélyezze a hozzáférést a 1433-as, illetve a 11000–11999-es portokon. A csomagok közvetlenül az adatbázisba kerülnek, ezért az átirányítás használatával a késés és az átviteli teljesítmény is javul a proxyhoz képest.
+- **Proxy (alapértelmezett):** Ebben a módban minden kapcsolat egy proxy átjáró összetevőt használ. A csatlakozás engedélyezéséhez magánhálózatok esetében csak a 1433-as, nyilvános kapcsolatok esetében csak a 3342-es portnak kell nyitva lennie. Ha ezt a módot választja, az a számítási feladat jellegétől függően nagyobb késleltetést és kisebb átviteli sebességet eredményezhet. Azt javasoljuk, hogy a legalacsonyabb késleltetés és a legnagyobb átviteli sebesség elérése érdekében az átirányítási csatlakozási szabályzatot részesítse előnyben a proxy csatlakozási szabályzattal szemben.
 
 ## <a name="redirect-connection-type"></a>A kapcsolattípus átirányítása
 
 Az átirányítás kapcsolat típusa beállításnál a TCP-munkamenet SQL-motorhoz való létrehozása után az ügyfél-munkamenet a terheléselosztó virtuális fürtjének célként megadott virtuális IP-címét szerzi be. A következő csomagok közvetlenül a virtuális fürt csomópontjára áramlanak, és megkerülik az átjárót. A következő ábra szemlélteti ezt a forgalmat.
 
-![redirect.png](./media/connection-types-overview/redirect.png)
+![A diagram egy olyan helyszíni hálózatot mutat be, amely egy Azure-beli virtuális hálózat átjárójának és egy, a virtuális hálózatban lévő elsődleges csomóponthoz csatlakoztatott átirányítási lekérdezésnek a használatával csatlakozik.](./media/connection-types-overview/redirect.png)
 
 > [!IMPORTANT]
 > Az átirányítási kapcsolattípus jelenleg csak privát végpont esetén működik. A kapcsolat típusának beállításától függetlenül a nyilvános végponton keresztül érkező kapcsolatok egy proxyn keresztül történnek.
@@ -43,7 +43,7 @@ Az átirányítás kapcsolat típusa beállításnál a TCP-munkamenet SQL-motor
 
 A proxy kapcsolati típusában a TCP-munkamenet az átjáróval és az azt követő összes további csomaggal lesz létrehozva. A következő ábra szemlélteti ezt a forgalmat.
 
-![proxy.png](./media/connection-types-overview/proxy.png)
+![A diagram egy helyszíni hálózatot mutat be, amely egy Azure-beli virtuális hálózatban lévő átjáróhoz csatlakozik, és a virtuális hálózatban található adatbázis elsődleges csomópontja mellett csatlakozik.](./media/connection-types-overview/proxy.png)
 
 ## <a name="changing-connection-type"></a>Kapcsolattípus módosítása
 

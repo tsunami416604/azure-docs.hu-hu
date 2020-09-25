@@ -4,12 +4,12 @@ description: Ebből az oktatóanyagból megtudhatja, hogyan állíthatja be a fo
 ms.topic: tutorial
 ms.date: 08/29/2018
 ms.custom: mvc
-ms.openlocfilehash: 498513d1e31108d633de8165b2684dffbebdf37d
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: bb0eb9226a99f139ff10a8da12a1e22017536c67
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563947"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326303"
 ---
 # <a name="tutorial-deploy-a-container-application-with-cicd-to-a-service-fabric-cluster"></a>Oktatóanyag: Tárolóalkalmazás üzembe helyezése Service Fabric-fürtön CI/CD használatával
 
@@ -46,11 +46,11 @@ Hozzon létre egy új helyi git-tárházat a projekthez a Visual Studio jobb als
 
 A **Team Explorer****Push** (Leküldés) nézetében válassza ki a **Push to Azure DevOps** (Leküldés Azure DevOps szolgáltatásba) alatt található **Publish Git Repo** (Git-adattár közzététele) gombot.
 
-![Leküldéses Git-adattár][push-git-repo]
+![Képernyőkép a Visual Studióban található Team Explorer-szinkronizációs ablakról. A leküldése az Azure-ba DevOps területen ki van emelve a közzététel a git-tárházban gomb.][push-git-repo]
 
 Ellenőrizze az e-maileket, és válassza ki a szervezetét a **fiók** legördülő menüből. Előfordulhat, hogy be kell állítania egy szervezetet, ha még nem rendelkezik ilyennel. Adja meg az adattár nevét, majd válassza ki a **Publish repository** (Adattár közzététele) lehetőséget.
 
-![Leküldéses Git-adattár][publish-code]
+![Képernyőkép a leküldéses Azure DevOps ablakról. A rendszer kijelöli az e-mailek, a fiók, a tárház neve és az adattár közzététele gomb beállításait.][publish-code]
 
 Az adattár közzétételével egy új csoportprojekt jön létre a fiókjában a helyi adattáréval azonos néven. Ha egy már meglévő csapatprojektben kíván adattárat létrehozni, az **Adattár** neve mellett kattintson az **Advanced** (Speciális) elemre, és válassza ki a csoportprojektet. A kód megtekintéséhez a weben válassza a **See it on the web** (Megtekintés a weben) lehetőséget.
 
@@ -158,7 +158,7 @@ A build folyamatának ellenőrzéséhez váltson át a Visual Studio **Team Expl
 
 Győződjön meg arról, hogy az üzembe helyezés sikeres volt, és ellenőrizze, hogy az alkalmazás megfelelően fut-e a fürtön.  Nyisson meg egy webböngészőt, és lépjen a `http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/` lapra.  Vegye figyelembe, hogy a példában szereplő alkalmazásverzió száma „1.0.0.20170815.3”.
 
-![Service Fabric Explorer][sfx1]
+![Képernyőkép a Service Fabric Explorer szavazási alkalmazásról. Az Essentials (alapok) lapon ki van emelve az alkalmazás "1.0.0.20170815.3" verziója.][sfx1]
 
 ## <a name="update-the-application"></a>Az alkalmazás frissítése
 
@@ -166,11 +166,11 @@ Módosítsa a kódokat az alkalmazásban.  Az előző lépések mentén mentse �
 
 Az alkalmazás frissítésének megkezdése után a frissítési folyamat állapotát a Service Fabric Explorerben lehet megtekinteni:
 
-![Service Fabric Explorer][sfx2]
+![Képernyőkép a Service Fabric Explorer szavazási alkalmazásról. A "verziófrissítés folyamatban" üzenet ki van emelve, és az alkalmazás állapota "verziófrissítés".][sfx2]
 
 Az alkalmazásfrissítés több percig is eltarthat. Ha a frissítés befejeződött, az alkalmazás a következő verziót futtatja majd.  Ebben a példában ez az „1.0.0.20170815.4”-es.
 
-![Service Fabric Explorer][sfx3]
+![Képernyőkép a Service Fabric Explorer szavazási alkalmazásról. Az Essentials (alapok) lapon a frissített "1.0.0.20170815.4" verziójú alkalmazás van kiemelve.][sfx3]
 
 ## <a name="next-steps"></a>További lépések
 

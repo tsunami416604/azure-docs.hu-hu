@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviwer: ''
 ms.date: 04/23/2020
-ms.openlocfilehash: 848a0c9817472086dbaf3973dad9c64e3ed74b10
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: f47569eef7281840108c32283f664c3218de23dc
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954241"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91357785"
 ---
 # <a name="configure-always-encrypted-by-using-the-windows-certificate-store"></a>Always Encrypted konfigurálása a Windows tanúsítványtároló használatával
 
@@ -119,7 +119,7 @@ Ellenőrizze, hogy a **Windows tanúsítványtároló** van-e kiválasztva, majd
 
 ![Főkulcs konfigurálása](./media/always-encrypted-certificate-store-configure/master-key-configuration.png)
 
-### <a name="validation"></a>Ellenőrzés
+### <a name="validation"></a>Érvényesítés
 
 Ezután titkosíthatja az oszlopokat, vagy mentheti a PowerShell-parancsfájlt, hogy később fusson. Ebben az oktatóanyagban válassza a **Folytatás a befejezéshez** lehetőséget, és kattintson a **tovább**gombra.
 
@@ -127,7 +127,7 @@ Ezután titkosíthatja az oszlopokat, vagy mentheti a PowerShell-parancsfájlt, 
 
 Ellenőrizze, hogy a beállítások helyesek-e, majd kattintson a **Befejezés** gombra a Always encrypted telepítésének befejezéséhez.
 
-![Összefoglalás](./media/always-encrypted-certificate-store-configure/summary.png)
+![Képernyőfelvétel: az eredmények lap, amelyen az átadott feladatok láthatók.](./media/always-encrypted-certificate-store-configure/summary.png)
 
 ### <a name="verify-the-wizards-actions"></a>A varázsló műveleteinek ellenőrzése
 
@@ -532,7 +532,7 @@ Ahhoz, hogy a SSMS használatával hozzáférhessen az egyszerű szöveges infor
 > [!NOTE]
 > Ha egy másik számítógépről csatlakozik a SSMS (vagy bármely ügyféllel), nem fog tudni hozzáférni a titkosítási kulcsokhoz, és nem tudja visszafejteni az adatok visszafejtését.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután létrehozta a Always Encryptedt használó adatbázist, a következőket teheti:
 
@@ -544,7 +544,7 @@ Miután létrehozta a Always Encryptedt használó adatbázist, a következőket
 ## <a name="related-information"></a>Kapcsolódó információk
 
 * [Always Encrypted (ügyfél-fejlesztés)](https://msdn.microsoft.com/library/mt147923.aspx)
-* [transzparens adattitkosítás](https://msdn.microsoft.com/library/bb934049.aspx)
+* [Transzparens adattitkosítás](https://msdn.microsoft.com/library/bb934049.aspx)
 * [Titkosítás SQL Server](https://msdn.microsoft.com/library/bb510663.aspx)
 * [Always Encrypted varázsló](https://msdn.microsoft.com/library/mt459280.aspx)
 * [Always Encrypted blog](https://docs.microsoft.com/archive/blogs/sqlsecurity/always-encrypted-key-metadata)

@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 02/20/2020
 ms.topic: article
 keywords: Azure, Kinect, specs, Hardware, DK, képességek, mélység, szín, RGB, IMU, tömb, mélység, több, szinkronizálás
-ms.openlocfilehash: e22f42a69e7d9b8283ec2f2da478dde0c27ce4ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c79101de5e5455ae2ff9fd8b5d8369a3832631c
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85277578"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361160"
 ---
 # <a name="synchronize-multiple-azure-kinect-dk-devices"></a>Több Azure Kinect DK-eszköz szinkronizálása
 
@@ -26,7 +26,7 @@ Számos oka lehet annak, hogy több Azure Kinect DK-eszközt használ, többek k
 
 - Adja meg az elzáródásokat. Habár az Azure Kinect DK-adatátalakítások egyetlen képet hoznak létre, a két kamera (mélység és RGB) valójában egy kis távolságra esik. Az eltolás lehetővé teszi a elzáródást. Elzáródás akkor következik be, amikor egy előtér-objektum egy adott eszközön lévő két kamera valamelyikének egy részének nézetét blokkolja. Az eredményül kapott színes képen az előtér-objektum árnyékot dob a háttérben lévő objektumon.  
    Az alábbi ábrán például a bal oldali kamera látja a "P2" szürke képpontot. A fehér előtér-objektum azonban blokkolja a jobb oldali kamera IR-fényét. A jobb oldali kamera nem rendelkezik a "P2" adattal.  
-   ![Elzáródás](./media/occlusion.png)  
+   ![A diagram két olyan kamerát mutat be, amelyek ugyanazon a ponton vannak letiltva.](./media/occlusion.png)  
    A további szinkronizált eszközök biztosíthatják a bezárt adatokat.
 - Objektumok vizsgálata három dimenzióban.
 - Növelje a tényleges képkockák sebességét olyan értékre, amely nagyobb, mint 30 képkocka másodpercenként (FPS).
@@ -185,7 +185,7 @@ Több lehetőség is rendelkezésre áll az eszközök többre történő kalibr
 
 További információ a kalibrálásról: az [Azure Kinect Calibration functions használata](use-calibration-functions.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A szinkronizált eszközök beállítása után azt is megtudhatja, hogyan használhatja a
 > [!div class="nextstepaction"]

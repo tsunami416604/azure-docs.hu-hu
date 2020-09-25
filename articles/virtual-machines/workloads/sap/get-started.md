@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/08/2020
+ms.date: 09/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 986e4fd8c7043f5c01868302ffc2b554e2ce76f7
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: f778e996eeda0f2b850864c9c90cd522c411b032
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89567078"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328020"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Az Azure használata az SAP munkaterhelés-forgatókönyvek üzemeltetéséhez és futtatásához
 
@@ -82,6 +82,7 @@ Ebből a szakaszból megtudhatja, hogyan konfigurálhatja az SSO-t a legtöbb SA
 
 ## <a name="change-log"></a>Módosítási napló
 
+- 09/02/2020: új hitelesített SKU-ket adhat hozzá a HLI [elérhető SKU-HLI](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-available-skus) 
 - 09/08/2020: a SLES-on futó Azure-beli [virtuális gépek SAP HANA magas rendelkezésre állásának](./sap-hana-high-availability.md) megváltozása a stonith-definíciók tisztázásához
 - 09/03/2020: változás a [SAP HANA Azure-beli virtuális gépek tárolási konfigurációjában](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) , hogy a rendszer 1 GB-os kapacitással, ultra Disk használatával alkalmazkodjon a minimális 2 IOPS
 - 09/02/2020: a [rendelkezésre álló SKU-HLI](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-available-skus) változása átláthatóbbá válik a HANA-tanúsítvánnyal rendelkező SKU-ban

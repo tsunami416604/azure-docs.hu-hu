@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 09/18/2020
+ms.date: 09/22/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 7fbebf21b79d2a533de0a872dfe6a10bc8f8e7e5
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 32d0c44abed2d4ace4c8896922ed7f6ed8b596ff
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987028"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326099"
 ---
 # <a name="point-in-time-restore-for-block-blobs"></a>Időponthoz való visszaállítás a blokk Blobok esetében
 
@@ -36,13 +36,6 @@ Az Azure Storage elemzi a megadott Blobok összes módosítását a kért vissza
 Egyszerre csak egy visszaállítási műveletet lehet futtatni a Storage-fiókban. A visszaállítási művelet nem szakítható meg, ha folyamatban van, de egy második visszaállítási művelet is végrehajtható az első művelet visszavonásához.
 
 A **blob-tartományok visszaállítása** művelet egy visszaállítási azonosítót ad vissza, amely egyedileg azonosítja a műveletet. Egy adott időponthoz tartozó visszaállítás állapotának megtekintéséhez hívja meg a visszaállítási **állapot lekérése** műveletet a **blob-tartományok visszaállítása** művelet által VISSZAadott visszaállítási azonosítóval.
-
-Ne feledje, hogy a visszaállítási műveletekre a következő korlátozások vonatkoznak:
-
-- Egy olyan blokk, amely egy [put blokkon](/rest/api/storageservices/put-block) keresztül lett feltöltve, vagy az [URL-címről](/rest/api/storageservices/put-block-from-url), de nem a [put blokk](/rest/api/storageservices/put-block-list)használatával véglegesítve van, nem része a blobnak, ezért a visszaállítási művelet részeként nem lesz visszaállítva.
-- Az aktív bérlettel rendelkező Blobok nem állíthatók vissza. Ha egy aktív bérlettel rendelkező blob szerepel a visszaállítani kívánt Blobok tartományában, a visszaállítási művelet atomi módon sikertelen lesz.
-- A pillanatképeket a rendszer nem hozza létre vagy törli a visszaállítási művelet részeként. A rendszer csak az alap blobot állítja vissza az előző állapotába.
-- Ha egy blob a jelen pillanatban és a visszaállítási pont közötti időszakban a gyors és a lassú elérési szint között mozgott, a blob vissza lesz állítva az előző szintjére. Az archiválási szintre áthelyezett Blobok azonban nem lesznek visszaállítva.
 
 > [!IMPORTANT]
 > Ha visszaállítási műveletet hajt végre, az Azure Storage blokkolja a művelet időtartamára visszaállított tartományokban lévő Blobok adatműveleteit. Az olvasási, írási és törlési műveletek blokkolva vannak az elsődleges helyen. Ezért az olyan műveletek, mint például a tárolók listázása a Azure Portalban előfordulhat, hogy nem a várt módon hajtják végre a visszaállítási műveletet.
@@ -76,9 +69,12 @@ A visszaállítási művelet elindításához az ügyfélnek írási engedéllye
 
 A blokk-Blobok időponthoz való visszaállítása a következő korlátozásokkal és ismert problémákkal rendelkezik:
 
-- Egy adott időponthoz tartozó visszaállítási művelet részeként csak a standard általános célú v2-es Storage-fiókban található Blobok állíthatók vissza. A Blobok, a blobok és a prémium blokk Blobok hozzáfűzése nem állítható vissza. Ha törölt egy tárolót a megőrzési időszak alatt, a rendszer nem állítja vissza a tárolót az időponthoz tartozó visszaállítási művelettel. A tárolók törlésből való védelmének megismeréséhez lásd: [tárolók törlésének törlése (előzetes verzió)](soft-delete-container-overview.md).
-- Az adott időponthoz tartozó visszaállítási műveletekben csak a gyakori vagy a ritka elérésű szinteken található Blobok állíthatók vissza. A blokk-Blobok archiválási szinten való visszaállítása nem támogatott. Ha például egy blob két nappal ezelőtt át lett helyezve a gyakori elérésű szintről az archív szintre, és a visszaállítási művelet egy három nappal korábbi pontra állítja vissza a rendszert, a blob nem lesz vissza állítva a gyakori elérésű szintre. Archivált blob visszaállításához először helyezze át az archiválási szintről.
-- Ha a visszaállítani kívánt tartományban található blokk-blob aktív bérlettel rendelkezik, az időponthoz tartozó visszaállítási művelet sikertelen lesz. A visszaállítási művelet megkezdése előtt szüntesse meg az aktív címbérletek megadását.
+- Egy adott időponthoz tartozó visszaállítási művelet részeként csak a standard általános célú v2-es Storage-fiókban található Blobok állíthatók vissza. A Blobok, a blobok és a prémium blokk Blobok hozzáfűzése nem állítható vissza. 
+- Ha törölt egy tárolót a megőrzési időszak alatt, a rendszer nem állítja vissza a tárolót az időponthoz tartozó visszaállítási művelettel. Ha olyan Blobok egy tartományát kísérli meg visszaállítani, amelyek blobokat tartalmaznak egy törölt tárolóban, az időponthoz tartozó visszaállítási művelet sikertelen lesz. A tárolók törlésből való védelmének megismeréséhez lásd: [tárolók törlésének törlése (előzetes verzió)](soft-delete-container-overview.md).
+- Ha egy blob a jelen pillanatban és a visszaállítási pont közötti időszakban a gyors és a lassú elérési szint között mozgott, a blob vissza lesz állítva az előző szintjére. A blokk-Blobok archiválási szinten való visszaállítása nem támogatott. Ha például egy blob két nappal ezelőtt át lett helyezve a gyakori elérésű szintről az archív szintre, és a visszaállítási művelet egy három nappal korábbi pontra állítja vissza a rendszert, a blob nem lesz vissza állítva a gyakori elérésű szintre. Archivált blob visszaállításához először helyezze át az archiválási szintről. További információkért lásd: [Blobok adatainak rehidratálása az archív szintről](storage-blob-rehydration.md).
+- Egy olyan blokk, amely egy [put blokkon](/rest/api/storageservices/put-block) keresztül lett feltöltve, vagy az [URL-címről](/rest/api/storageservices/put-block-from-url), de nem a [put blokk](/rest/api/storageservices/put-block-list)használatával véglegesítve van, nem része a blobnak, ezért a visszaállítási művelet részeként nem lesz visszaállítva.
+- Az aktív bérlettel rendelkező Blobok nem állíthatók vissza. Ha egy aktív bérlettel rendelkező blob szerepel a visszaállítani kívánt Blobok tartományában, a visszaállítási művelet atomi módon sikertelen lesz. A visszaállítási művelet megkezdése előtt szüntesse meg az aktív címbérletek megadását.
+- A pillanatképeket a rendszer nem hozza létre vagy törli a visszaállítási művelet részeként. A rendszer csak az alap blobot állítja vissza az előző állapotába.
 - Azure Data Lake Storage Gen2 lapos és hierarchikus névterek visszaállítása nem támogatott.
 
 > [!IMPORTANT]

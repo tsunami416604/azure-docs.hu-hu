@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: 04f2b0e989edcb182c6c52ff0479902035137810
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 3f2fd9f2b75faeeb2d40bd71d074a929e86eebdf
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90561823"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358372"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>Az SMB-hozzáférésre vonatkozó Azure Files identitás-alapú hitelesítési beállítások áttekintése
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -114,7 +114,7 @@ Az alábbi ábra az Azure-AD DS az SMB-en keresztüli Azure-fájlmegosztás hite
 
 - Először nem kell létrehoznia az identitást az Azure AD DSban a Storage-fiók képviseletéhez. Ezt az engedélyezési folyamat hajtja végre a háttérben.
 
-- Másodszor, az Azure AD-ben található összes felhasználó hitelesíthető és engedélyezett. A felhasználó csak Felhőbeli vagy hibrid lehet. Az Azure AD-ből az Azure AD DS-ra való szinkronizálást a platform felügyeli anélkül, hogy felhasználói konfigurációra lenne szükség. Az ügyfélnek azonban tartományhoz kell tartoznia az Azure AD DShoz, nem lehet az Azure AD-hez csatlakoztatva vagy regisztrálni. 
+- Másodszor, az Azure AD-ben meglévő összes felhasználó hitelesíthető és engedélyezett. A felhasználó csak Felhőbeli vagy hibrid lehet. Az Azure AD-ből az Azure AD DS-ra való szinkronizálást a platform felügyeli anélkül, hogy felhasználói konfigurációra lenne szükség. Az ügyfélnek azonban tartományhoz kell tartoznia az Azure AD DShoz, nem lehet az Azure AD-hez csatlakoztatva vagy regisztrálni. 
 
 :::image type="content" source="media/storage-files-active-directory-overview/Files-Azure-AD-DS-Diagram.png" alt-text="Ábra":::
 
@@ -144,7 +144,7 @@ Azure Files támogatja az adatok Azure-fájlmegosztásba való másolásakor a c
 ## <a name="pricing"></a>Díjszabás
 A Storage-fiókjában nem található további szolgáltatás, amely lehetővé teszi az identitás-alapú hitelesítés használatát az SMB protokollon keresztül. A díjszabással kapcsolatos további információkért tekintse meg a [Azure Files díjszabását](https://azure.microsoft.com/pricing/details/storage/files/) és a [Azure ad Domain Services díjszabását](https://azure.microsoft.com/pricing/details/active-directory-ds/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az SMB-en keresztüli Azure Files-és identitás-alapú hitelesítéssel kapcsolatos további információkért tekintse meg a következő forrásokat:
 
 - [Azure Files üzembe helyezésének tervezése](storage-files-planning.md)

@@ -6,13 +6,13 @@ ms.service: signalr
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: zhshang
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 45dc137141491938367fb57c6955e8e3145f8ff9
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.custom: devx-track-js
+ms.openlocfilehash: e0bb4df611c6a9cfecf0aadbdfc3a577243856ba
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050454"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327618"
 ---
 # <a name="tutorial-azure-signalr-service-authentication-with-azure-functions"></a>Oktatóanyag: Azure SignalR Service-hitelesítés az Azure Functions segítségével
 
@@ -52,7 +52,7 @@ Azure Functions-alkalmazását helyileg fogja összeállítani és tesztelni. Az
 
 1. Az új Azure-erőforrások létrehozásához kattintson az **erőforrás létrehozása** ( **+** ) gombra.
 
-1. Keresse meg és válassza ki a **SignalR Service** elemet. Kattintson a **Create** (Létrehozás) gombra.
+1. Keresse meg és válassza ki a **SignalR Service** elemet. Kattintson a **Létrehozás** lehetőségre.
 
     ![Új SignalR Service](media/signalr-tutorial-authenticate-azure-functions/signalr-quickstart-new.png)
 
@@ -65,7 +65,7 @@ Azure Functions-alkalmazását helyileg fogja összeállítani és tesztelni. Az
     | Hely | Válasszon ki egy Önhöz közel eső helyet |
     | Tarifacsomag | Ingyenes |
 
-1. Kattintson a **Create** (Létrehozás) gombra.
+1. Kattintson a **Létrehozás** lehetőségre.
 
 1. A példány üzembe helyezése után nyissa meg a portálon, és keresse meg a beállítások lapot. Módosítsa a szolgáltatás mód beállítását *kiszolgáló*nélkülire.
 

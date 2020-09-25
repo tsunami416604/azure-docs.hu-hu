@@ -7,12 +7,12 @@ ms.date: 08/28/2019
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 33eaf6274f2da09ab98a21e6028b0103df817744
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 4c95e345255b28ba43e474087cdb80fcab493394
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961363"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91356417"
 ---
 # <a name="run-a-custom-container-in-azure"></a>Egyéni tároló futtatása az Azure-ban
 
@@ -57,7 +57,7 @@ Hozzon létre egy ASP.NET-webalkalmazást a következő lépések végrehajtás�
 
 1. Ha a _Dockerfile_ fájl nem nyílik meg automatikusan, nyissa meg a **Solution Explorer** (Megoldáskezelő) lapról.
 
-1. Szüksége van egy [támogatott szülő rendszerképre](#use-a-different-parent-image). Módosítsa a szülőrendszerképet a `FROM` sor a következő kódra való lecserélésével, majd mentse a fájlt:
+1. Szüksége van egy [támogatott szülő rendszerképre](configure-custom-container.md#supported-parent-images). Módosítsa a szülőrendszerképet a `FROM` sor a következő kódra való lecserélésével, majd mentse a fájlt:
 
    ```dockerfile
    FROM mcr.microsoft.com/dotnet/framework/aspnet:4.7.2-windowsservercore-ltsc2019
@@ -169,22 +169,16 @@ A streamelt naplók a következőképpen néznek ki:
 
 ![Frissített webalkalmazás az Azure-ban](./media/quickstart-custom-container/azure-web-app-updated.png)
 
-## <a name="use-a-different-parent-image"></a>Másik szülőrendszerkép használata
-
-Egy másik egyéni Docker-rendszerképet is használhat az alkalmazás futtatásához. A kívánt keretrendszerhez azonban ki kell választania a megfelelő [szülő rendszerképet (alaprendszerkép)](https://docs.docker.com/develop/develop-images/baseimages/) :
-
-- A .NET-keretrendszerbeli alkalmazások telepítéséhez a Windows Server Core 2019 [hosszú távú karbantartási csatorna (LTSC)](/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) kiadásán alapuló szülő lemezképet használjon. 
-- A .NET Core-alkalmazások telepítéséhez a Windows Server Nano 1809 [féléves karbantartási csatorna (SAC)](/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) kiadásán alapuló szülő lemezképet használjon. 
-
-Az alkalmazás indításakor a szülőrendszerkép letöltése hosszabb időbe telhet. Az indítási időt azonban lecsökkentheti az alábbi, az Azure App Service-ben már gyorsítótárazott szülőrendszerképek egyikének használatával:
-
-- [MCR.microsoft.com/DotNet/Framework/ASPNET](https://hub.docker.com/_/microsoft-dotnet-framework-aspnet/): 4.7.2-windowsservercore-ltsc2019
-- [MCR.microsoft.com/Windows/nanoserver](https://hub.docker.com/_/microsoft-windows-nanoserver/): 1809 – ez a rendszerkép a Microsoft [ASP.net Core](https://hub.docker.com/_/microsoft-dotnet-core-aspnet/) Microsoft Windows Nano Server rendszerképein használt alaptároló.
-
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Áttelepítés az Azure-ban található Windows-tárolókba](tutorial-custom-container.md)
+
+Vagy tekintse meg a többi erőforrást:
+
+> [!div class="nextstepaction"]
+> [Egyéni tároló konfigurálása](configure-custom-container.md)
+
 ::: zone-end  
 
 ::: zone pivot="container-linux"
@@ -225,7 +219,7 @@ docker --version
 
 Végezetül ellenőrizze, hogy a Azure Container Registry csatlakoztatva van-e. Ehhez válassza ki a Docker-emblémát a tevékenység sávjában, majd navigáljon **a**beállításjegyzékek elemre.
 
-![Beállításjegyzékek](./media/quickstart-docker/registries.png)
+![Képernyőfelvétel: a beállításjegyzékek értéke az Azure Expanded értékkel, valamint egy, a dot i o filename bővítménnyel rendelkező fájl.](./media/quickstart-docker/registries.png)
 
 ## <a name="deploy-the-image-to-azure-app-service"></a>A rendszerkép üzembe helyezése Azure App Service
 
@@ -260,5 +254,10 @@ Ezután tekintse meg a többi Azure-bővítményt.
 * [Eszközök Azure Resource Manager](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
 
 Az [Azure Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) bővítmény csomag telepítésével vagy az összes beszerzésével.
+
+Tekintse meg a többi erőforrást:
+
+> [!div class="nextstepaction"]
+> [Egyéni tároló konfigurálása](configure-custom-container.md)
 
 ::: zone-end

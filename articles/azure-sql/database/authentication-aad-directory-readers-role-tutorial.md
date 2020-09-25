@@ -9,12 +9,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/14/2020
-ms.openlocfilehash: ca330357e88ff6f4824c74a6048769638542cc29
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d6c447deedbdcc4f2439fc069f368db88b3560b9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88556431"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278022"
 ---
 # <a name="tutorial-assign-directory-readers-role-to-an-azure-ad-group-and-manage-role-assignments"></a>Oktatóanyag: címtár-olvasók szerepkör hozzárendelése Azure AD-csoporthoz és szerepkör-hozzárendelések kezelése
 
@@ -55,7 +55,7 @@ Az Azure SQL-hez készült Azure AD-csoport címtár-olvasók szerepkörének ki
 
 A létrehozott csoport vizsgálatához és kezeléséhez lépjen vissza a Azure Portal **csoportok** ablaktáblájába, és keresse meg a csoport nevét. A csoportok kiválasztása után további tulajdonosokat és tagokat adhat hozzá a **tulajdonosok** és a **tagok** **kezelése** menüben. A csoporthoz **hozzárendelt szerepkörök** is áttekinthetők.
 
-:::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-group-created.png" alt-text="Azure-ad-Group – létrehozva":::
+:::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-group-created.png" alt-text="Képernyőfelvétel a csoportok ablaktábláról a tagok, a tulajdonosok és a hozzárendelt szerepkörök (előzetes verzió) beállítások menüjében kiemelve.":::
 
 ### <a name="add-azure-sql-managed-identity-to-the-group"></a>Azure SQL felügyelt identitás hozzáadása a csoporthoz
 
@@ -68,17 +68,17 @@ A további lépések végrehajtásához a globális rendszergazda vagy a Kiemelt
 
 1. Keresse meg az **SQL felügyelt példánya** erőforrásának nevét a Azure Portal.
 
-   :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-managed-instance.png" alt-text="Azure-ad – felügyelt példány":::
+   :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-managed-instance.png" alt-text="Képernyőkép a felügyelt SQL-példányok képernyőjéről az SQL-példány neve ssomitest és az alhálózat neve ManagedInstance kiemelve.":::
 
    Az SQL felügyelt példányának létrehozása során létre lett hozva egy Azure-identitás a példányhoz. A létrehozott identitás neve megegyezik a felügyelt SQL-példány nevének előtagjával. A következő lépéseket követve megkeresheti az SQL felügyelt példányának Azure AD-alkalmazásként létrehozott identitásának egyszerű szolgáltatását:
 
     - Lépjen a **Azure Active Directory** erőforráshoz. A **kezelés** beállítás alatt válassza a **vállalati alkalmazások**lehetőséget. Az **objektumazonosító** a példány identitása.
     
-    :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-managed-instance-service-principal.png" alt-text="Azure-ad – felügyelt példány – szolgáltatás – elsődleges":::
+    :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-managed-instance-service-principal.png" alt-text="Képernyőfelvétel a vállalati alkalmazások oldaláról Azure Active Directory erőforráshoz a kijelölt SQL felügyelt példány objektumazonosító alapján.":::
 
 1. Lépjen a **Azure Active Directory** erőforráshoz. A **felügyelt**területen válassza a **csoportok**lehetőséget. Válassza ki a létrehozott csoportot. A csoport **felügyelt** beállítása alatt válassza a **tagok**lehetőséget. Válassza a **Tagok hozzáadása** lehetőséget, és adja hozzá az SQL felügyelt példány egyszerű szolgáltatásnevet a csoport tagjaként a fent található név megkeresésével.
 
-   :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-add-managed-instance-service-principal.png" alt-text="Azure-ad-bővítmény – felügyelt példány – szolgáltatás – elsődleges":::
+   :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-add-managed-instance-service-principal.png" alt-text="Képernyőkép a Azure Active Directory-erőforrás tagjainak oldaláról az SQL felügyelt példány új tagként való hozzáadására kijelölt beállításokkal.":::
 
 > [!NOTE]
 > Több percet is igénybe vehet, hogy az Azure-rendszeren keresztül propagálja az egyszerű szolgáltatás engedélyeit, és lehetővé tegye az Azure AD-Graph API elérését. Előfordulhat, hogy néhány percet várnia kell, mielőtt kiépít egy Azure AD-rendszergazdát az SQL felügyelt példányához.
@@ -186,7 +186,7 @@ A további lépések végrehajtásához a globális rendszergazda vagy a Kiemelt
     Add-AzureADGroupMember -ObjectId $group.ID -RefObjectId $miIdentity.ObjectId
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure SQL Azure Active Directory Directory-olvasói szerepköre](authentication-aad-directory-readers-role.md)
 - [Oktatóanyag: Azure AD-felhasználók létrehozása az Azure AD-alkalmazásokkal](authentication-aad-service-principal-tutorial.md)

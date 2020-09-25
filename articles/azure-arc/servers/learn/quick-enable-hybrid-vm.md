@@ -1,24 +1,24 @@
 ---
-title: Hibrid gép összekapcsolása az Azure arc-kompatibilis kiszolgálókkal (előzetes verzió)
-description: Ismerje meg, hogyan csatlakozhat és regisztrálhat hibrid gépet az Azure arc-kompatibilis kiszolgálókhoz (előzetes verzió).
+title: Hibrid gép összekapcsolása az Azure arc-kompatibilis kiszolgálókkal
+description: Ismerje meg, hogyan csatlakozhat és regisztrálhat hibrid gépet az Azure arc-kompatibilis kiszolgálókon.
 ms.topic: quickstart
-ms.date: 08/12/2020
-ms.openlocfilehash: eacf75871b1f7cc7fc3b703d8859338578e43456
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.date: 09/23/2020
+ms.openlocfilehash: b57f30821a105a99041d8187716b75096116ea8e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213610"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327884"
 ---
-# <a name="quickstart-connect-hybrid-machine-with-azure-arc-enabled-servers-preview"></a>Gyors útmutató: hibrid gép összekapcsolása az Azure arc-kompatibilis kiszolgálókkal (előzetes verzió)
+# <a name="quickstart-connect-hybrid-machine-with-azure-arc-enabled-servers"></a>Gyors útmutató: hibrid gép összekapcsolása az Azure arc-kompatibilis kiszolgálókkal
 
-Az [Azure arc-kompatibilis kiszolgálók](../overview.md) (előzetes verzió) lehetővé teszik a helyszíni, Edge és többfelhős környezetekben üzemeltetett Windows és Linux rendszerű gépek felügyeletét és szabályozását. Ebben a rövid útmutatóban üzembe helyezi és konfigurálja a csatlakoztatott gépi ügynököt az Azure-on kívül üzemeltetett Windows-vagy Linux-gépen az arc-kompatibilis kiszolgálók (előzetes verzió) általi felügyelethez.
+Az [Azure arc-kompatibilis kiszolgálók](../overview.md) lehetővé teszik a helyszíni, Edge és többfelhős környezetekben üzemeltetett Windows és Linux rendszerű gépek felügyeletét és szabályozását. Ebben a rövid útmutatóban üzembe helyezi és konfigurálja a csatlakoztatott gépi ügynököt az Azure-on kívül üzemeltetett Windows-vagy Linux-gépen az arc-kompatibilis kiszolgálók általi felügyelethez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-* Az arc-kompatibilis kiszolgálók (előzetes verzió) hibrid csatlakoztatott gépi ügynökének üzembe helyezéséhez rendszergazdai engedélyekkel kell rendelkeznie a gépen az ügynök telepítéséhez és konfigurálásához. Linux rendszeren a legfelső szintű fiókkal és a Windows rendszeren egy olyan fiókkal, amely a helyi Rendszergazdák csoport tagja.
+* Az arc-kompatibilis kiszolgálók hibrid csatlakoztatott gépi ügynökének üzembe helyezéséhez rendszergazdai engedélyekkel kell rendelkeznie a gépen az ügynök telepítéséhez és konfigurálásához. Linux rendszeren a legfelső szintű fiókkal és a Windows rendszeren egy olyan fiókkal, amely a helyi Rendszergazdák csoport tagja.
 
 * Az első lépések előtt tekintse át az ügynök [előfeltételeit](../agent-overview.md#prerequisites) , és ellenőrizze a következőket:
 
@@ -28,13 +28,13 @@ Az [Azure arc-kompatibilis kiszolgálók](../overview.md) (előzetes verzió) le
 
     * Ha a gép tűzfalon vagy proxykiszolgálón keresztül csatlakozik az interneten keresztüli kommunikációhoz, győződjön meg arról, hogy a [felsorolt](../agent-overview.md#networking-configuration) URL-címek nincsenek letiltva.
 
-    * Az Azure arc-kompatibilis kiszolgálók (előzetes verzió) csak az [itt](../overview.md#supported-regions)megadott régiókat támogatják.
+    * Az Azure arc-kompatibilis kiszolgálók csak az [itt](../overview.md#supported-regions)megadott régiókat támogatják.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="register-azure-resource-providers"></a>Azure-erőforrás-szolgáltatók regisztrálása
 
-Az Azure arc-kompatibilis kiszolgálók (előzetes verzió) az előfizetés alábbi Azure-erőforrás-szolgáltatói alapján használhatók a szolgáltatás használatához:
+Az Azure arc használatára képes kiszolgálók a szolgáltatás használatához a következő Azure-erőforrás-szolgáltatótól függenek:
 
 * Microsoft. HybridCompute
 * Microsoft. GuestConfiguration
@@ -97,7 +97,7 @@ Az Azure arc letöltésének, telepítésének és létrehozásának automatizá
 
 ## <a name="verify-the-connection-with-azure-arc"></a>Az Azure Arc csatlakozásának ellenőrzése
 
-Miután telepítette az ügynököt, és konfigurálta az Azure arc-kompatibilis kiszolgálókhoz való csatlakozáshoz (előzetes verzió), lépjen a Azure Portal, és ellenőrizze, hogy a kiszolgáló sikeresen csatlakozott-e. Megtekintheti a gépet a [Azure Portalban](https://aka.ms/hybridmachineportal).
+Miután telepítette az ügynököt, és konfigurálta az Azure arc-kompatibilis kiszolgálókhoz való csatlakozáshoz, lépjen a Azure Portal, és ellenőrizze, hogy a kiszolgáló sikeresen csatlakozott-e. Megtekintheti a gépet a [Azure Portalban](https://aka.ms/hybridmachineportal).
 
 :::image type="content" source="./media/quick-enable-hybrid-vm/enabled-machine.png" alt-text="A számítógép sikeres csatlakoztatása" border="false":::
 
@@ -105,7 +105,7 @@ Miután telepítette az ügynököt, és konfigurálta az Azure arc-kompatibilis
 
 Most, hogy engedélyezte a Linux vagy Windows rendszerű hibrid gépet, és sikeresen csatlakozott a szolgáltatáshoz, készen áll a Azure Policy az Azure-ban való megfelelőség megismerésére.
 
-Ha meg szeretné tudni, hogyan azonosíthatók a Log Analytics ügynökkel nem rendelkező Azure arc-kompatibilis kiszolgálók (előzetes verzió), folytassa az oktatóanyagot:
+Ha meg szeretné tudni, hogyan azonosíthatók azok az Azure arc-kompatibilis kiszolgálók, amelyeken nincs telepítve a Log Analytics ügynök, folytassa a következő oktatóanyaggal:
 
 > [!div class="nextstepaction"]
 > [Szabályzat-hozzárendelés létrehozása a nem megfelelő erőforrások azonosításához](tutorial-assign-policy-portal.md)

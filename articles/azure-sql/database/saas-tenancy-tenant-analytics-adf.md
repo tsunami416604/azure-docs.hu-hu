@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: 2f4f81f8159e5800da7dfec58c01f474cb1c0d07
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 66f22fa2781fb4c0f4caa07323b3de8cac1ef9fd
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89437445"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361109"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-azure-synapse-analytics-data-factory-and-power-bi"></a>Ismerje meg a SaaS Analytics szolgáltatást Azure SQL Database, az Azure szinapszis Analytics, a Data Factory és a Power BI használatával
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -111,7 +111,7 @@ A Object Explorerban:
     1. A Star-Schema táblák a következők: **fact_Tickets**, **dim_Customers**, **dim_Venues**, **dim_Events**és **dim_Dates**.
     1. A tárolt eljárás, **sp_transformExtractedData** az adatátalakításra és a Star-Schema táblákba való betöltésére szolgál.
 
-![DWtables](./media/saas-tenancy-tenant-analytics-adf/DWtables.JPG)
+![Képernyőfelvétel: Object Explorer a különböző adatbázis-objektumok megjelenítéséhez kibontott táblázatokkal.](./media/saas-tenancy-tenant-analytics-adf/DWtables.JPG)
 
 #### <a name="blob-storage"></a>Blob Storage
 
@@ -167,7 +167,7 @@ A három társított szolgáltatásnak megfelelő három olyan adathalmaz van, a
   
 ### <a name="data-warehouse-pattern-overview"></a>Az adatraktár-minta áttekintése
 
-Az Azure szinapszis (korábban SQL Data Warehouse) a bérlői adatok összesítésének elvégzéséhez használt elemzési tároló. Ebben a példában a rendszer az adatoknak az adatraktárba való betöltésére használható. A nyers adatok betöltődik olyan átmeneti táblákba, amelyek rendelkeznek egy azonosító oszloppal, hogy nyomon kövessék a Star-Schema táblákba átalakított sorokat. A következő képen a betöltési minta látható: ![ loadingpattern](./media/saas-tenancy-tenant-analytics-adf/loadingpattern.JPG)
+Az Azure szinapszis (korábban SQL Data Warehouse) a bérlői adatok összesítésének elvégzéséhez használt elemzési tároló. Ebben a példában a rendszer az adatoknak az adatraktárba való betöltésére használható. A nyers adatok betöltődik olyan átmeneti táblákba, amelyek rendelkeznek egy azonosító oszloppal, hogy nyomon kövessék a Star-Schema táblákba átalakított sorokat. Az alábbi képen a betöltési minta látható: az ![ ábrán az adatbázistáblák betöltési mintája látható.](./media/saas-tenancy-tenant-analytics-adf/loadingpattern.JPG)
 
 Ebben a példában a lassan változó dimenzió (. SCD) Type 1 dimenziós táblázatok használatosak. Minden dimenzióhoz tartozik egy azonosító oszlop használatával meghatározott helyettes kulcs. Az ajánlott eljárás szerint a dátum dimenzió tábla előre ki van töltve, hogy időt takarítson meg. A többi dimenzió tábláinál a CREATE TABLE válassza ki a következőt:... (CTAS) utasítás egy ideiglenes tábla létrehozására szolgál, amely tartalmazza a meglévő módosított és nem módosított sorokat, valamint a helyettesítő kulcsokat. Ez a következővel történik: IDENTITY_INSERT = ON. Ekkor a rendszer beszúrja az új sorokat a táblába IDENTITY_INSERT = OFF. Az egyszerű visszaállításhoz a rendszer átnevezi a meglévő dimenzió táblát, és az ideiglenes táblát átnevezi, hogy az új dimenzió táblázat legyen. Az egyes futtatások előtt a régi dimenzió táblát törli a rendszer.
 
@@ -181,14 +181,14 @@ Kövesse az alábbi lépéseket az összes bérlői adatbázis teljes kinyerési
 
 1. Az ADF felhasználói felület **Szerző** lapján válassza a **SQLDBToDW** folyamat lehetőséget a bal oldali ablaktáblán.
 1. Kattintson az **aktiválás** elemre, majd a legördülő menüben kattintson az **aktiválás most**elemre. Ez a művelet azonnal futtatja a folyamatot. Éles környezetben a folyamat futtatásának ütemezését kell megadnia, hogy az ütemezés szerint frissítse az adataikat.
-  ![adf_trigger](./media/saas-tenancy-tenant-analytics-adf/adf_trigger.JPG)
+  ![A képernyőképen az S Q L D B és a D W közötti folyamat gyári erőforrásai láthatók, a kibontva és a trigger kibontása lehetőség kiválasztva.](./media/saas-tenancy-tenant-analytics-adf/adf_trigger.JPG)
 1. A **folyamat futtatása** lapon kattintson a **Befejezés**gombra.
 
 ### <a name="monitor-the-pipeline-run"></a>A folyamat futásának monitorozása
 
 1. Az ADF felhasználói felületen váltson a **monitor** lapra a bal oldali menüben.
 1. Kattintson a **frissítés** gombra, amíg a SQLDBToDW folyamat állapota **sikeres**nem lesz.
-  ![adf_monitoring](./media/saas-tenancy-tenant-analytics-adf/adf_monitoring.JPG)
+  ![A képernyőképen az S Q L D B és a D W folyamat sikeres állapottal jelenik meg.](./media/saas-tenancy-tenant-analytics-adf/adf_monitoring.JPG)
 1. Kapcsolódjon az adattárházhoz a SSMS-szel, és kérdezze le a Star-Schema táblákat annak ellenőrzéséhez, hogy az adott táblázatban szerepelnek-e az adatgyűjtés.
 
 A folyamat befejezését követően az egyedkapcsolat tábla az összes helyszínre vonatkozó jegyeladási adatokat tartalmazza, a dimenzió táblák pedig a megfelelő helyszínekkel, eseményekkel és ügyfelekkel lesznek feltöltve.

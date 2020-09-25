@@ -7,12 +7,12 @@ ms.author: jpalma
 ms.date: 06/29/2020
 ms.custom: fasttrack-edit
 author: palma21
-ms.openlocfilehash: 00a20ece2358f0054e4490ffb914f78b82d9c509
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 236b69b1e10eb80b9c0a5e27b213eb3972209346
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89594259"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361041"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>A fürtcsomópontok kimenő forgalmának szabályozása az Azure Kubernetes szolgáltatásban (ak)
 
@@ -766,7 +766,7 @@ A kapcsolat ellenőrzéséhez navigáljon a böngészőben a Azure Firewall elő
 Ekkor meg kell jelennie az AK-szavazati alkalmazásnak. Ebben a példában a tűzfal nyilvános IP-címe volt `52.253.228.132` .
 
 
-![AK – szavazás](media/limit-egress-traffic/aks-vote.png)
+![A képernyőképen az a K-S szavazási alkalmazás jelenik meg, amely a macskák, a kutyák és az alaphelyzetek, valamint az összesítések gombjaival rendelkezik](media/limit-egress-traffic/aks-vote.png)
 
 
 ### <a name="clean-up-resources"></a>Az erőforrások eltávolítása

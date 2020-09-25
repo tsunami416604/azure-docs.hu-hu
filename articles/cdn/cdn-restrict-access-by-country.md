@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/19/2018
 ms.author: allensu
-ms.openlocfilehash: fba1f0b1f8160dece41c312b61cbc8ae9571436d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ed82adcc1432bde27042d5775c454bfabcdb96ca
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887034"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358134"
 ---
 # <a name="restrict-azure-cdn-content-by-countryregion"></a>Azure CDN tartalmának korlátozása ország/régió szerint
 
@@ -38,7 +38,7 @@ A Verizon-profilokból **származó Azure CDN Premium** esetén a Geo-szűrés a
 ### <a name="define-the-directory-path"></a>A könyvtár elérési útjának megadása
 A Geo-szűrés funkció eléréséhez válassza ki a CDN-végpontot a portálon belül, majd válassza a **geo-szűrés** lehetőséget a bal oldali menü beállítások területén. 
 
-![Geo-szűrési standard](./media/cdn-filtering/cdn-geo-filtering-standard.png)
+![A végpontok menüjéből kiválasztott geo-szűrést ábrázoló képernyőfelvétel.](./media/cdn-filtering/cdn-geo-filtering-standard.png)
 
 Az **elérési út** mezőben határozza meg annak a helynek a relatív elérési útját, amelyhez a felhasználók engedélyezik vagy megtagadják a hozzáférést. 
 
@@ -67,9 +67,9 @@ Az **országkódok** listából válassza ki azokat az országokat/régiókat, a
 
 Miután befejezte az országok/régiók kijelölését, válassza a **Mentés** lehetőséget az új geo-szűrési szabály aktiválásához. 
 
-![Geo-szűrési szabályok](./media/cdn-filtering/cdn-geo-filtering-rules.png)
+![A képernyőképen az országok és régiók letiltására és engedélyezésére használt országkódok láthatók.](./media/cdn-filtering/cdn-geo-filtering-rules.png)
 
-### <a name="clean-up-resources"></a>Erőforrások felszabadítása
+### <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 Egy szabály törléséhez válassza ki a listából a **geo-szűrés** lapon, majd válassza a **Törlés**lehetőséget.
 
 ## <a name="azure-cdn-premium-from-verizon-profiles"></a>Prémium szintű Azure CDN Verizon-profilokból
@@ -79,7 +79,7 @@ A Verizon-profilokból **származó Azure CDN Premium** esetén a Geo-szűrési 
 
 2. A Verizon portálon válassza a **http Large**, majd az **ország szűrése**lehetőséget.
 
-    ![Geo-szűrési standard](./media/cdn-filtering/cdn-geo-filtering-premium.png)
+    ![Képernyőfelvétel: az ország szűrésének kiválasztása az Azure C D N-ben.](./media/cdn-filtering/cdn-geo-filtering-premium.png)
 
 3. Válassza az **ország szűrő hozzáadása**lehetőséget.
 
@@ -93,9 +93,9 @@ A Verizon-profilokból **származó Azure CDN Premium** esetén a Geo-szűrési 
     
     Az új szabály megjelenik az **ország szűrése** lap táblázatban.
 
-    ![Geo-szűrési szabályok](./media/cdn-filtering/cdn-geo-filtering-premium-rules.png)
+    ![A képernyőképen látható, hogy a szabály hol jelenik meg az ország-szűrésben.](./media/cdn-filtering/cdn-geo-filtering-premium-rules.png)
 
-### <a name="clean-up-resources"></a>Erőforrások felszabadítása
+### <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 Az ország/régió szűrési szabályok táblázatban válassza a törlés ikont egy szabály mellett a törléshez, vagy a Szerkesztés ikont a módosításhoz.
 
 ## <a name="considerations"></a>Megfontolandó szempontok

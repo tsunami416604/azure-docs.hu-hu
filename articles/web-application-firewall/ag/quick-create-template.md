@@ -1,19 +1,19 @@
 ---
 title: 'Rövid útmutató: Azure WAF v2 létrehozása Application Gateway-Azure Resource Manager sablonhoz'
 titleSuffix: Azure Application Gateway
-description: Megtudhatja, hogyan hozhat létre egy webalkalmazási tűzfal v2-t az Azure Application Gateway Azure Resource Manager sablonnal (ARM-sablon).
+description: Megtudhatja, hogyan hozhat létre egy webalkalmazási tűzfal v2-t az Application Gateway Azure-on a Azure Resource Manager-alapú Gyorsindítás sablonnal (ARM-sablon).
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: quickstart
-ms.date: 04/02/2020
+ms.date: 09/16/2020
 ms.author: victorh
-ms.openlocfilehash: b0a430ebfb19ca529ae96698173df27d18e6dd10
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 036503f95a7dc1aaa5690bacc01d07034e6d162f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705197"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266955"
 ---
 # <a name="quickstart-create-an-azure-waf-v2-on-application-gateway-using-an-arm-template"></a>Rövid útmutató: Azure WAF v2 létrehozása Application Gateway ARM-sablon használatával
 
@@ -95,7 +95,7 @@ Az erőforráscsoport törléséhez hívja meg a következő `Remove-AzResourceG
 Remove-AzResourceGroup -Name "<your resource group name>"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Application Gateway létrehozása webalkalmazási tűzfallal a Azure Portal használatával](application-gateway-web-application-firewall-portal.md)

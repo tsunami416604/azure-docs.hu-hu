@@ -7,12 +7,12 @@ ms.service: azure-cdn
 ms.topic: article
 ms.date: 08/04/2020
 ms.author: allensu
-ms.openlocfilehash: cae0ec1daed8277d1e7e4f3c5cbc701965ac00b8
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: b272426f865636640e0a2fafde46cbebbe6eb363
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661750"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327493"
 ---
 # <a name="standard-rules-engine-reference-for-azure-cdn"></a>A Standard szabálymotor referenciája az Azure CDN-hez
 
@@ -40,7 +40,7 @@ Ebben a korlátban egy alapértelmezett *globális szabály*szerepel. A globáli
 
 Minden Azure CDN végpont legfeljebb 25 szabályt tartalmazhat. Mindegyik szabály legfeljebb tíz egyeztetési feltételt és öt műveletet tartalmazhat. A Rules Engine díjszabása az alábbi dimenziókat követi: 
 - Szabályok: $1/szabály/hó 
-- Feldolgozott kérelmek: $0,60/millió requets
+- Feldolgozott kérelmek: $0,60/millió kérelem
 - Az első 5 szabály továbbra is ingyenes marad
 
 ## <a name="syntax"></a>Syntax

@@ -3,12 +3,12 @@ title: Erőforrás-tulajdonságok felderítése
 description: Az erőforrás-tulajdonságok keresésének módját ismerteti.
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: 75c089ac9d0ca08c788fea1ac9011f018ef0195e
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: c8bbe0dcb1bc9dc9751a1dc0d0b98a6368473546
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057075"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327748"
 ---
 # <a name="discover-resource-properties"></a>Erőforrás-tulajdonságok felderítése
 
@@ -74,7 +74,7 @@ Erőforrás-kezelő be van ágyazva a Azure Portalba. A metódus használata el�
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. A keresőmezőbe írja be az **erőforrás-kezelő**kifejezést, majd válassza a **erőforrás-kezelő**lehetőséget.
 
-    ![Azure Portal erőforrás-kezelő](./media/view-resources/azure-portal-resource-explorer.png)
+    ![A képernyőképen a Azure Portal erőforrás-kezelő keresését láthatja.](./media/view-resources/azure-portal-resource-explorer.png)
 
 1. A bal oldalon bontsa ki az **előfizetések**elemet, majd bontsa ki az Azure-előfizetését. A Storage-fiókot a **szolgáltatók** vagy a **ResourceGroups**között találja.
 
@@ -114,6 +114,6 @@ Annak bemutatásához, hogyan kérhető le a séma adatai az eszköz használat�
 
     ![Azure Portal erőforrás-kezelő Storage-fiók SKU](./media/view-resources/azure-portal-resource-explorer-sku.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan keresheti meg a sablon sémájának adatait. A Resource Manager-sablonok létrehozásával kapcsolatos további tudnivalókért tekintse meg [az ARM-sablonok szerkezetének és szintaxisának megismerését](./template-syntax.md)ismertető témakört.

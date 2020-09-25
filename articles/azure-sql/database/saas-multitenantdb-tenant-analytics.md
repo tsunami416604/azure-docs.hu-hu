@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/19/2018
-ms.openlocfilehash: 9339ed7d0ab122420b37a67a96ee0d9d324e2f15
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 446517f56d1f5ba6fa32408489f07411ee1a3e02
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442905"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91356803"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---multi-tenant-app"></a>Több-bérlős elemzés a kinyert adatszolgáltatások használatával – több-bérlős alkalmazás
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -36,7 +36,7 @@ Ezen oktatóanyag segítségével megtanulhatja a következőket:
 > - Az elemzési adatbázis lekérdezése.
 > - Az adatvizualizációk Power BI használatával kiemelheti a bérlői adattrendeket, és javaslatokat tehet a tökéletesítésekhez.
 
-![architectureOverView](./media/saas-multitenantdb-tenant-analytics/architectureOverview.png)
+![A diagram a cikkben használt architektúra áttekintését jeleníti meg.](./media/saas-multitenantdb-tenant-analytics/architectureOverview.png)
 
 ## <a name="offline-tenant-analytics-pattern"></a>Offline bérlői elemzési minta
 
@@ -53,7 +53,7 @@ Ezután az összesített adatokat a rendszer a [Star-Schema](https://www.wikiped
 
 A központi és a dimenzió táblázatok együttesen teszik lehetővé a hatékony analitikai feldolgozást. Az oktatóanyagban használt csillag-séma az alábbi képen látható:
  
-![StarSchema](./media/saas-multitenantdb-tenant-analytics/StarSchema.png)
+![Az adatbázisábra négy, központi adatbázis-objektumhoz csatlakozó adatbázis-objektumot mutat be.](./media/saas-multitenantdb-tenant-analytics/StarSchema.png)
 
 Végül a Star-Schema táblákat kérdezi le. A lekérdezési eredmények vizuálisan jelennek meg, hogy kiemelje a bérlői viselkedést és az alkalmazás használatát. Ezzel a csillag-sémával olyan lekérdezéseket futtathat, amelyek segítenek a következőhöz hasonló elemek felderítésében:
 
@@ -111,7 +111,7 @@ Az elemzési tár csomópontjának kibontásával tekintse meg a SSMS Object Exp
 - A Star-Schema táblák a következők: **fact_Tickets**, **dim_Customers**, **dim_Venues**, **dim_Events**és **dim_Dates**.
 - A **sp_ShredRawExtractedData** tárolt eljárás a Star-Schema tábláknak a nyers adattáblákból való feltöltésére szolgál.
 
-![tenantAnalytics](./media/saas-multitenantdb-tenant-analytics/tenantAnalytics.png)
+![A képernyőképen az Analytics-tároló csomópontja, például a táblák, a nézetek és a csomópontok Object Explorerja látható.](./media/saas-multitenantdb-tenant-analytics/tenantAnalytics.png)
 
 ## <a name="data-extraction"></a>Adatbányászat 
 
@@ -139,7 +139,7 @@ Az egyes feladatok kinyerik az adataikat, és beolvasják azokat az Analytics-t�
 4. Az **F5** billentyű lenyomásával futtathatja a parancsfájlt, amely létrehozza és futtatja a jegyeket és az ügyfelek adatait az egyes bérlői adatbázisokból. A művelet elmenti az adatok elemzését az Analytics-tárolóba.
 5. A tenantanalytics-adatbázis TicketsRawData táblájának lekérdezése annak biztosítására, hogy a tábla az összes bérlőről származó jegyek adataival legyen feltöltve.
 
-![ticketExtracts](./media/saas-multitenantdb-tenant-analytics/ticketExtracts.png)
+![A képernyőképen a ExtractTickets-adatbázis jelenik meg, amelyen az Object Explorer d b o van kiválasztva.](./media/saas-multitenantdb-tenant-analytics/ticketExtracts.png)
 
 Ismételje meg az előző lépéseket, a 2. lépésben lecserélve a **\ExtractTickets.SQL** a **\ExtractVenuesEvents.SQL** elemre.
 
@@ -159,7 +159,7 @@ Az oktatóanyag ezen szakaszában definiálhat és futtathat egy olyan feladatot
 4. A feladatok sikeres futtatásának engedélyezése elég idő.
     - Tekintse át a feladatok **életciklus** -oszlopát. jobs_execution a feladat állapotához tartozó táblázatot. A folytatás előtt győződjön meg arról, hogy a művelet **sikeres** volt. A sikeres Futtatás az alábbi diagramhoz hasonló adattípust jelenít meg:
 
-![shreddingJob](./media/saas-multitenantdb-tenant-analytics/shreddingJob.PNG)
+![A képernyőkép a sp_ShredRawExtractedData eljárás futtatásának sikeres eredményét jeleníti meg.](./media/saas-multitenantdb-tenant-analytics/shreddingJob.PNG)
 
 ## <a name="data-exploration"></a>Adatelemzés
 
@@ -174,11 +174,11 @@ A következő lépésekkel csatlakozhat a Power BIhoz, és importálhatja a kor�
 3. Az **adatlekérdezés** ablakban válassza a Azure SQL Database lehetőséget.
 4. Az adatbázis-bejelentkezés ablakban adja meg a kiszolgáló nevét (Catalog-MT- \<User\> . database.Windows.net). Válassza **Import** az importálás **adatkapcsolati módra**lehetőséget, majd kattintson az OK gombra. 
 
-    ![powerBISignIn](./media/saas-multitenantdb-tenant-analytics/powerBISignIn.PNG)
+    ![Képernyőfelvétel: SQL Server adatbázis párbeszédpanel, amelyen megadhatja a kiszolgálót és az adatbázist.](./media/saas-multitenantdb-tenant-analytics/powerBISignIn.PNG)
 
 5. Válassza ki az **adatbázist** a bal oldali ablaktáblán, majd írja be a Felhasználónév = *fejlesztő*nevet, majd írja be a Password = *P \@ ssword1*értéket. Kattintson a **Csatlakozás** gombra.  
 
-    ![DatabaseSignIn](./media/saas-multitenantdb-tenant-analytics/databaseSignIn.PNG)
+    ![Képernyőfelvétel: a SQL Server adatbázis párbeszédpanel, amelyen megadhatja a felhasználónevet és a jelszót.](./media/saas-multitenantdb-tenant-analytics/databaseSignIn.PNG)
 
 6. A **navigátor** ablaktábla elemzési adatbázis területén válassza ki a csillag-séma táblákat: fact_Tickets, dim_Events, dim_Venues, dim_Customers és dim_Dates. Ezután válassza a **Betöltés**lehetőséget. 
 
@@ -186,13 +186,13 @@ Gratulálunk! Sikeresen betöltötte az adatPower BIba. Most már megkezdheti az
 
 Első lépésként elemezze a jegyek értékesítési adatait, hogy megtekintse a különböző helyszíneken használatos változást. Válassza ki az alábbi beállításokat a Power BI az egyes helyszíneken eladott jegyek teljes számát ábrázoló sávdiagram ábrázolásához. A Ticket Generator véletlenszerű variációja miatt előfordulhat, hogy az eredmények eltérőek.
  
-![TotalTicketsByVenues](./media/saas-multitenantdb-tenant-analytics/TotalTicketsByVenues.PNG)
+![Képernyőfelvétel: a Power B I vizualizáció és a jobb oldalon látható adatvizualizációk vezérlői.](./media/saas-multitenantdb-tenant-analytics/TotalTicketsByVenues.PNG)
 
 Az előző ábra megerősíti, hogy az egyes helyszínek által eladott jegyek száma változó. A több jegyet értékesítő helyszínek sokkal nagyobb mértékben használják a szolgáltatást, mint a kevesebb jegyet értékesítő helyszíneken. Lehetőség van arra, hogy az erőforrás-kiosztást a különböző bérlői igényeknek megfelelően testre lehessen szabni.
 
 Tovább elemezheti az adatelemzést, hogy megtudja, hogyan változnak a jegyek forgalma az idő múlásával. Válassza ki az alábbi beállításokat a Power BIban az egyes napokon a 60 napos időszakra eladott jegyek teljes számának ábrázolásához.
  
-![SaleVersusDate](./media/saas-multitenantdb-tenant-analytics/SaleVersusDate.PNG)
+![Képernyőfelvétel: a Power B I vizualizáció a jegyek értékesítésének eloszlása és az értékesítés napján látható.](./media/saas-multitenantdb-tenant-analytics/SaleVersusDate.PNG)
 
 Az előző diagramon látható, hogy egyes helyszíneken a Ticket Sales Spike szerepel. Ezek a tüskék erősítik azt a gondolatot, hogy egyes helyszínek aránytalanul nagy mennyiségű rendszererőforrást fogyasztanak. Eddig nem látható mintázat a tüskék előfordulásakor.
 
