@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 22bc3d6efca24a88b28217b2e06ac79d33f16b2e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2d781ca7293d4bd95ae62eadc50295ca14c2d381
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87030079"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314930"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---hyperscale-citus"></a>Biztonsági mentés és visszaállítás a Azure Database for PostgreSQL-nagy kapacitású (Citus)
 
@@ -35,7 +35,7 @@ Az aktuális biztonsági mentési tár díjszabását a Azure Database for Postg
 Azure Database for PostgreSQL egy nagy kapacitású-(Citus-) fürt visszaállítása új fürtöt hoz létre az eredeti csomópontok biztonsági másolatai közül. 
 
 > [!IMPORTANT]
->A nagy kapacitású-fürtöt csak ugyanabban az előfizetésben és erőforráscsoporthoz, valamint egy másik fürt nevével állíthatja vissza.
+>A nagy kapacitású-(Citus-) fürtöt csak ugyanabban az előfizetésben és erőforráscsoporthoz, illetve egy másik fürt nevével állíthatja vissza.
 
 
 > [!IMPORTANT]
@@ -63,7 +63,7 @@ A helyreállítási mechanizmusból való visszaállítás után a következőke
 * Győződjön meg arról, hogy a megfelelő bejelentkezések és az adatbázis-szintű engedélyek vannak érvényben
 * Konfigurálja a riasztásokat, ha szükséges.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg az [Azure rendelkezésre állási zónáit](/azure/availability-zones/az-overview).
 * A [javasolt riasztások](/azure/postgresql/howto-hyperscale-alert-on-metric#suggested-alerts) beállítása nagy kapacitású-(Citus-) kiszolgálócsoportok esetén.

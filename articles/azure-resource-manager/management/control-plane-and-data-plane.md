@@ -3,12 +3,12 @@ title: A sík és az adatsík műveletek vezérlése
 description: Leírja a vezérlési sík és az adatsík műveletek közötti különbséget. A vezérlési sík műveleteit Azure Resource Manager kezeli. Az adatsík-műveleteket egy szolgáltatás kezeli.
 ms.topic: conceptual
 ms.date: 09/10/2020
-ms.openlocfilehash: a0575c37c80417d9859ef36366dc9f26cdb4dbe4
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: f478037c3e83c1d28cc900d64512a41619628dd7
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90039040"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371269"
 ---
 # <a name="azure-control-plane-and-data-plane"></a>Azure-vezérlési sík és adatsík
 
@@ -41,7 +41,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 Azure Resource Manager kezeli az összes vezérlési sík kérelmét. A szolgáltatás automatikusan alkalmazza az Ön által megvalósított Azure-szolgáltatásokat az erőforrások kezeléséhez, például:
 
-* [Azure szerepköralapú Access Control (RBAC)](../../role-based-access-control/overview.md)
+* [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/overview.md)
 * [Azure Policy](../../governance/policy/overview.md)
 * [Felügyeleti zárolások](lock-resources.md)
 * [Tevékenységnaplók](view-activity-logs.md)

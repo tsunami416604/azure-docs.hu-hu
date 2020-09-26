@@ -10,12 +10,12 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: a50f09dd52ccf4d35fd3803967898a4a25e3299f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d0754ea2d7e8f8f59ec475be8e27fcffd058c11f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90947187"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91376871"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 Az első lépések előtt ügyeljen a következőre:
@@ -90,6 +90,8 @@ Hozzon létre egy fájlt **client.js** nevű projekt gyökérkönyvtárában, ho
 ### <a name="create-a-chat-client"></a>Csevegési ügyfél létrehozása
 
 Ha csevegési ügyfelet szeretne létrehozni a webalkalmazásban, akkor a kommunikációs szolgáltatás végpontját és az előfeltételként szükséges lépések részeként létrehozott hozzáférési tokent fogja használni. A felhasználói hozzáférési tokenek lehetővé teszik olyan ügyfélalkalmazások összeállítását, amelyek közvetlenül az Azure kommunikációs szolgáltatásokban vannak hitelesítve. Miután létrehozta ezeket a jogkivonatokat a kiszolgálón, továbbíthatja őket egy ügyfél-eszköznek. Az osztályt kell használnia `AzureCommunicationUserCredential` `Common client library` , hogy átadja a tokent a csevegési ügyfelének.
+
+Hozzon létre egy **client.js** fájlt a projekt gyökérkönyvtárában. Ezt a fájlt használjuk a csevegési funkció hozzáadására az Azure kommunikációs csevegési ügyféloldali kódtár használatával a JavaScripthez.
 
 ```JavaScript
 

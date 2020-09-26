@@ -3,12 +3,12 @@ title: Visual Studio Resource Group-projektek létrehozása & üzembe helyezése
 description: A Visual Studióval hozzon létre egy Azure erőforráscsoport-projektet, és telepítse az erőforrásokat az Azure-ba.
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: eacab3e1919b68661dd24eb78e3b0eca51cf4972
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 479dbed1f288148c24fc8464f7895cd3e2b182f9
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985254"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372646"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Azure erőforráscsoport-sablonok létrehozása és telepítése a Visual Studio alkalmazással
 
@@ -41,7 +41,7 @@ Ebben a szakaszban egy Azure erőforráscsoport-projektet hoz létre egy **webal
 
     A webalkalmazás-sablon választása óta a következő fájlok láthatók:
 
-   | Fájlnév | Leírás |
+   | Fájlnév | Description |
    | --- | --- |
    | Deploy-AzureResourceGroup.ps1 |PowerShell-parancsfájl, amely PowerShell-parancsokat futtat az Azure Resource Manager üzembe helyezéséhez. A Visual Studio ezt a PowerShell-parancsfájlt használja a sablon üzembe helyezéséhez. |
    | WebSite.jsbekapcsolva |Az Azure szolgáltatásban telepíteni kívánt infrastruktúrát, valamint a telepítés során megadható paramétereket meghatározó Resource Manager-sablon. A telepített erőforrások közti függőségeket is meghatározza, így a Resource Manager megfelelő sorrendben telepíti azokat. |
@@ -370,7 +370,7 @@ Nem csak a Visual Studio felületén keresztül elérhető erőforrásokat haszn
 
    ![Egyéni irányítópult](./media/create-visual-studio-deployment-project/Ops-DemoSiteGroup-dashboard.png)
 
-RBAC-csoportokkal kezelheti az irányítópult hozzáférését. Az irányítópult kinézetét is testreszabhatja az üzembe helyezése után. Ha azonban újból üzembe helyezi az erőforráscsoportot, az irányítópult visszaáll a sablonban szereplő alapértelmezett állapotba. Az irányítópultok létrehozásával kapcsolatos további információkért lásd az [Azure-irányítópultok szoftveres létrehozásával](../../azure-portal/azure-portal-dashboards-create-programmatically.md) foglalkozó témakört.
+Az irányítópulthoz való hozzáférést az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) segítségével kezelheti. Az irányítópult kinézetét is testreszabhatja az üzembe helyezése után. Ha azonban újból üzembe helyezi az erőforráscsoportot, az irányítópult visszaáll a sablonban szereplő alapértelmezett állapotba. Az irányítópultok létrehozásával kapcsolatos további információkért lásd az [Azure-irányítópultok szoftveres létrehozásával](../../azure-portal/azure-portal-dashboards-create-programmatically.md) foglalkozó témakört.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

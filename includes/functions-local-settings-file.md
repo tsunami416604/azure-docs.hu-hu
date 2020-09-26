@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 04/14/2019
 ms.author: glenga
-ms.openlocfilehash: 47e1c509e8b7b60e889e1202b49b1a145c68162c
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: aae89e1c6f8db2fb657ac2a43c4bce0396ab3ddd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88929490"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91377073"
 ---
 ## <a name="local-settings-file"></a>Local settings file (Helyi beállításfájl)
 
@@ -40,7 +40,7 @@ Ezek a beállítások akkor támogatottak, ha helyileg futtatja a projekteket:
 
 | Beállítás      | Leírás                            |
 | ------------ | -------------------------------------- |
-| **`IsEncrypted`** | Ha ez a beállítás a értékre van beállítva `true` , az összes érték helyi számítógép kulccsal lesz titkosítva. `func settings`Parancsokkal használható. Az alapértelmezett érték: `false` . |
+| **`IsEncrypted`** | Ha ez a beállítás a értékre van beállítva `true` , az összes érték helyi számítógép kulccsal lesz titkosítva. `func settings`Parancsokkal használható. Az alapértelmezett érték: `false` . Érdemes lehet titkosítani a local.settings.jsa helyi számítógépen lévő fájlon, ha titkos kulcsokat tartalmaz, például a szolgáltatás kapcsolódási karakterláncait. A gazdagép automatikusan visszafejti a beállításokat a futtatásakor. A `func settings decrypt` helyileg titkosított beállítások olvasásának megkísérlése előtt használja a parancsot. |
 | **`Values`** | Az Alkalmazásbeállítások és a kapcsolódási karakterláncok tömbje, amely akkor használatos, amikor egy projekt helyileg fut. Ezek a kulcs-érték (String-String) párok megfelelnek az Azure-beli Function alkalmazás beállításainak, például: [`AzureWebJobsStorage`] . Számos eseményindító és kötés olyan tulajdonsággal rendelkezik, amely egy kapcsolati karakterlánc-alkalmazásra vonatkozó beállításra hivatkozik, például `Connection` a [blob Storage eseményindítóhoz](../articles/azure-functions/functions-bindings-storage-blob-trigger.md#configuration). Ezen tulajdonságok esetében a tömbben definiált Alkalmazásbeállítás szükséges `Values` . A gyakran használt beállítások listáját a következő táblázatban tekintheti meg. <br/>Az értékeknek karakterláncnak és nem JSON-objektumoknak vagy tömböknek kell lenniük. A nevek beállítása nem tartalmazhat kettőspontot ( `:` ) vagy dupla aláhúzást ( `__` ). A kettős aláhúzási karakterek a futtatókörnyezet számára vannak fenntartva, és a kettőspont a [függőségi injekció](../articles/azure-functions/functions-dotnet-dependency-injection.md#working-with-options-and-settings)támogatásához van fenntartva. |
 | **`Host`** | Az ebben a szakaszban található beállítások testre szabják a functions gazdagép folyamatát, amikor helyileg futtat projekteket. Ezek a beállítások eltérhetnek a beállítások host.jstól, amelyek akkor is érvényesek, amikor projekteket futtat az Azure-ban. |
 | **`LocalHttpPort`** | Beállítja a helyi functions-gazdagép (és) futtatásakor használt alapértelmezett portot `func host start` `func run` . A `--port` parancssori kapcsoló elsőbbséget élvez ezzel a beállítással szemben. |

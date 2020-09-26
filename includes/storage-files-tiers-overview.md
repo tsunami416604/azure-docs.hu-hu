@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/28/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: e75cb7d13fb74d32191ab7f076d73ad66976503d
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 7d0286b63703c165dda6cd12bb625fc64272aac1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90606659"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91376401"
 ---
 A Azure Files négyféle tárterületet kínál, a prémium, a tranzakciós optimalizált, a gyakori és a ritka elérésű csomagokat, hogy lehetővé tegye a megosztások testreszabását a forgatókönyv teljesítményére és árára vonatkozó követelmények szerint:
 
@@ -26,4 +26,5 @@ A prémium fájlmegosztás csak kiépített számlázási modellben érhető el.
 
 A gyakori és ritka elérésű fájlmegosztás az összes Azure nyilvános és Azure Government régióban elérhető. A tranzakciós optimalizált fájlmegosztás minden Azure-régióban elérhető, beleértve az Azure China-t és az Azure Germany-régiókat.
 
-A gyakori vagy ritka elérésű fájlmegosztás üzembe helyezésével kapcsolatban lásd: [gyors vagy lassú fájlmegosztás létrehozása](../articles/storage/files/storage-how-to-create-file-share.md#create-a-hot-or-cool-file-share). 
+> [!Important]  
+> A fájlmegosztást a GPv2 belül is áthelyezheti (a tranzakció optimalizált, gyors és lassú). Megosztható a csomagok közötti váltások tranzakció: a melegebb szintről a hűvösebb szintre való áttéréskor a hűvösebb réteg írási tranzakciós díja a megosztás minden egyes fájljánál, míg a hűvösebb szintről a melegebb szintre való áttérés a ritka réteg olvasási tranzakciós díját terheli a megosztás összes fájlja esetében.

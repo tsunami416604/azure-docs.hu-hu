@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 01/11/2019
 ms.author: annayak
-ms.openlocfilehash: 3e7469f0d53a154f605480b811d36937e3d4ad6c
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: c74f2ef9eed25719e722970671406c850b6a59b2
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649856"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361857"
 ---
 # <a name="troubleshoot-classic-storage-resource-deletion-errors"></a>A klasszikus tárolási erőforrás törlésével kapcsolatos hibák elhárítása
 Ez a cikk hibaelhárítási útmutatót tartalmaz, ha a következő hibák valamelyike a klasszikus Azure Storage-fiók, a tároló vagy a *. vhd oldal blob-fájljának törlésére tett kísérlet során következik be. 
@@ -36,7 +36,7 @@ A "Disk" (lemez) erőforrás egy *. vhd oldal blob-fájljának a virtuális gép
 
 1. Törölje a klasszikus virtuális gépet.
 2. Ha a "lemezek" jelölőnégyzet be van jelölve, akkor a blobhoz (a fenti képen látható) tartozó **lemez címbérlete** megszakadt. A tényleges oldal blob *. vhd fájlja továbbra is létezik a Storage-fiókban.
-![Képernyőkép a portálról, amelyen a virtuális gép (klasszikus) "Delete" (Törlés) panelje nyitva van](./media/storage-classic-cannot-delete-storage-account-container-vhd/steps_while_deleting_classic_vm.jpg) 
+![Képernyőfelvétel: a virtuális gép törlésének megerősítésére szolgáló párbeszédpanel.](./media/storage-classic-cannot-delete-storage-account-container-vhd/steps_while_deleting_classic_vm.jpg) 
 
 3. Ha a lemez (ek) bérlete megszakadt, maga a blob (ok) is törölhető. A Storage-fiók vagy-tároló törölhető, ha a bennük lévő összes "Disk" erőforrás törölve van.
 
@@ -52,7 +52,7 @@ A felhasználó a [Azure Portal](https://portal.azure.com) klasszikus Storage-fi
 
 Virtuális géphez csatlakoztatott lemez (ek)
 
-![Képernyőkép a portálról, amelyen a virtuális gép (klasszikus) "Delete" (Törlés) panelje nyitva van](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_storage_account_disks_attached_portal.jpg) 
+![A képernyőképen egy üzenet jelenik meg, amely ismerteti, hogy miért nem lehet törölni a Storage-fiókot.](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_storage_account_disks_attached_portal.jpg) 
 
 
 Ha a lemez (ek) "nincs csatlakoztatva" a virtuális géphez
@@ -93,12 +93,12 @@ Az Azure-beli virtuális gép törlése után a felhasználó megpróbálja tör
 A portálon két élmény lehet a törlésre kijelölt Blobok listájától függően.
 
 1. Ha csak a "bérelt" Blobok vannak kiválasztva, akkor a törlés gomb nem jelenik meg.
-![Képernyőkép a portálról, amelyen a tároló blob "List" panelje meg van nyitva](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_vhd_leased_portal.jpg)
+![Képernyőkép a portálról, amelyen a Container blob List panel meg van nyitva, és csak a bérelt Blobok vannak kiválasztva.](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_vhd_leased_portal.jpg)
 
 
 2. Ha a "bérelt" és "elérhető" Blobok kombinációja be van jelölve, a "Törlés" gomb jelenik meg. A "Törlés" művelet azonban az oldal Blobok mögött marad, amelyeknek lemezes bérletük van. 
-![Képernyőkép a portálról: a tároló blob "List" panelje megnyitja ](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_vhd_leased_and_unleased_portal_1.jpg)
- ![ a portál képernyőképét, és megnyílik a kiválasztott blob "Törlés" panelje.](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_vhd_leased_and_unleased_portal_2.jpg)
+![Képernyőkép a portálról, amelyen a Container blob List panel meg van nyitva, és a bérelt és a rendelkezésre álló Blobok is ki vannak választva. ](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_vhd_leased_and_unleased_portal_1.jpg)
+ ![ Képernyőkép a portálról, a kiválasztott blob "Delete" (Törlés) panelje nyitva van](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_vhd_leased_and_unleased_portal_2.jpg)
 
 #### <a name="azure-powershell"></a>Azure PowerShell 
 Ha a felhasználó a PowerShell használatával választja a törlést, a következő hibaüzenetet fogja eredményezni. 
@@ -114,10 +114,10 @@ Ha a felhasználó a PowerShell használatával választja a törlést, a követ
 Kövesse az alábbi lépéseket a Azure Portalon:
 1.  Navigáljon a [Azure Portal](https://portal.azure.com).
 2.  Navigáljon a lemezekhez (klasszikus). 
-3.  Kattintson a lemezek fülre. ![ Képernyőkép a portálról, amelyen a tároló blob "List" panelje meg van nyitva](./media/storage-classic-cannot-delete-storage-account-container-vhd/resolution_click_disks_tab.jpg)
+3.  Kattintson a lemezek fülre. ![ A képernyőképen a kiválasztott lemezek (klasszikus) és a klasszikus lemez neve és a Storage-fiók Azure Portal látható.](./media/storage-classic-cannot-delete-storage-account-container-vhd/resolution_click_disks_tab.jpg)
  
 4.  Válassza ki az adatlemezt, majd kattintson a Lemez törlése gombra.
- ![Képernyőkép a portálról, amelyen a tároló blob "List" panelje meg van nyitva](./media/storage-classic-cannot-delete-storage-account-container-vhd/resolution_click_delete_disk.jpg)
+ ![Képernyőfelvétel: a kiválasztott lemezekkel (klasszikus) rendelkező Azure Portal a kijelölt adatlemezzel és a törlés lehetőséggel jeleníti meg.](./media/storage-classic-cannot-delete-storage-account-container-vhd/resolution_click_delete_disk.jpg)
  
 5.  Próbálkozzon újra a korábban meghiúsult törlési művelettel.
 6.  A Storage-fiók vagy-tároló nem törölhető, amíg egyetlen lemezzel rendelkezik.

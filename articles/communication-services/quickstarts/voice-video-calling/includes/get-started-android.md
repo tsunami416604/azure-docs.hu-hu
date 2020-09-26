@@ -6,25 +6,23 @@ ms.author: marobert
 ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 658aaf018dd4c231b9bc9fc8c6dda78b2a6f05c0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 93037d1e1c56e280458a91ae5723502bff27995b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90947276"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91377424"
 ---
-Ebből a rövid útmutatóból megtudhatja, hogyan indíthat el egy hívást az Android rendszerhez készült ügyféloldali kódtárat hívó Azure kommunikációs szolgáltatással.
+Ebből a rövid útmutatóból megtudhatja, hogyan indíthat el hívást az Android rendszerhez készült ügyféloldali kódtárat hívó Azure kommunikációs szolgáltatással.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Android Studio](https://developer.android.com/studio)az Android-alkalmazás létrehozásához.
-- Az Azure kommunikációs szolgáltatás [felhasználói hozzáférési jogkivonata](../../access-tokens.md) .
 - Egy központilag telepített kommunikációs szolgáltatások erőforrása. [Hozzon létre egy kommunikációs szolgáltatások erőforrást](../../create-communication-resource.md).
-
+- Az Azure kommunikációs szolgáltatás [felhasználói hozzáférési jogkivonata](../../access-tokens.md) .
 
 ## <a name="setting-up"></a>Beállítás
-
 
 ### <a name="create-an-android-app-with-an-empty-activity"></a>Üres tevékenységgel rendelkező Android-alkalmazás létrehozása
 
@@ -126,9 +124,9 @@ See https://developer.android.com/about/versions/pie/android-9.0-changes-28#apac
     
 ```
 
-### <a name="setup-the-layout-for-the-app"></a>Az alkalmazás elrendezésének beállítása
+### <a name="set-up-the-layout-for-the-app"></a>Az alkalmazás elrendezésének beállítása
 
-Két bemenetre van szükség: egy szövegbevitelt a hívott azonosítóhoz, valamint egy gombot a hívás elhelyezéséhez. Ezek hozzáadhatók a tervezőben vagy az elrendezési XML-fájl szerkesztésével. Hozzon létre egy gombot egy azonosítóval `call_button` és egy szövegbevitelsel `callee_id` . Navigáljon a ( `app/src/main/res/layout/activity_main.xml` ) elemre, és cserélje le a fájl tartalmát a következőre:
+Két bemenetre van szükség: egy szövegbevitelt a hívott AZONOSÍTÓhoz, valamint egy gombot a hívás elhelyezéséhez. Ezek hozzáadhatók a tervezőben vagy az elrendezési XML-fájl szerkesztésével. Hozzon létre egy gombot egy AZONOSÍTÓval `call_button` és egy szövegbevitelsel `callee_id` . Navigáljon a ( `app/src/main/res/layout/activity_main.xml` ) elemre, és cserélje le a fájl tartalmát a következőre:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -291,7 +289,7 @@ private void createAgent() {
 
 ## <a name="start-a-call-using-the-call-agent"></a>Hívás indítása a hívási ügynök használatával
 
-A hívás elhelyezése a hívási ügynökön keresztül végezhető el, és csak a hívott azonosítók és a hívási beállítások listájának megadását igényli. A gyors üzembe helyezéshez az alapértelmezett hívási beállítások videó nélkül, a szöveges bemenetből pedig egyetlen meghívó azonosító lesz használva.
+A hívás elhelyezése a hívási ügynökön keresztül végezhető el, és csak a hívott azonosítók és a hívási beállítások listájának megadását igényli. A gyors útmutatóhoz a rendszer az alapértelmezett hívási beállításokat videó nélkül, a szöveges bemenetből pedig egyetlen meghívó azonosítót fog használni.
 
 ```java
 /**
@@ -316,3 +314,7 @@ private void startCall() {
 Az alkalmazás mostantól az eszköztár Run app (alkalmazás futtatása) gombjával (Shift + F10) indítható el. Ellenőrizze, hogy meghívja-e a hívásokat `8:echo123` . Egy előre rögzített üzenet jelenik meg, majd újra megismétli az üzenetet.
 
 :::image type="content" source="../media/android/quickstart-android-call-echobot.png" alt-text="A befejezett alkalmazást bemutató képernyőkép.":::
+
+## <a name="sample-code"></a>Példakód
+
+A minta alkalmazást letöltheti a [githubról](https://github.com/Azure/Communication/tree/master/samples/Add%20Voice%20Calling/Android/Java)

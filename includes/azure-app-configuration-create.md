@@ -4,14 +4,14 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: include
 ms.date: 1/31/2020
-ms.openlocfilehash: 089a199da08503e13dbd42518970c3b7ed8a984d
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: c8044ca5a52bb3acf1e154a7b835471d09072083
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "77619298"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372330"
 ---
-1. Új alkalmazás-konfigurációs tároló létrehozásához jelentkezzen be a [Azure Portalba](https://portal.azure.com). A Kezdőlap bal felső sarkában válassza az **erőforrás létrehozása**lehetőséget. A **Keresés a piactéren** mezőbe írja be az **alkalmazás konfigurációját** , és válassza az ENTER billentyűt.
+1. Új alkalmazás-konfigurációs tároló létrehozásához jelentkezzen be a [Azure Portalba](https://portal.azure.com). A Kezdőlap bal felső sarkában válassza az **erőforrás létrehozása**lehetőséget. A **Keresés a piactéren** mezőbe írja be az *alkalmazás konfigurációját* , és válassza az <kbd>ENTER billentyűt</kbd>.
 
     ![Alkalmazás konfigurációjának keresése](media/azure-app-configuration-create/azure-portal-search.png)
 
@@ -19,18 +19,18 @@ ms.locfileid: "77619298"
 
     ![A Létrehozás lehetőség kiválasztása](media/azure-app-configuration-create/azure-portal-app-configuration-create.png)
 
-1. Az **alkalmazás-konfiguráció**  >  **létrehozása** panelen adja meg a következő beállításokat:
+1. Az **alkalmazás-konfiguráció létrehozása** panelen adja meg a következő beállításokat:
 
     | Beállítás | Ajánlott érték | Leírás |
     |---|---|---|
-    | **Erőforrás neve** | Globálisan egyedi név | Adja meg az alkalmazás konfigurációs tárolási erőforrásához használandó egyedi erőforrás nevét. A névnek 5 és 50 karakter közötti sztringnek kell lennie, és csak számokat, betűket és `-` karaktert tartalmazhat. A név nem kezdődhet vagy végződhet a `-` karakterrel.  |
     | **Előfizetés** | Az Ön előfizetése | Válassza ki az alkalmazás konfigurációjának teszteléséhez használni kívánt Azure-előfizetést. Ha a fiókja csak egyetlen előfizetéssel rendelkezik, akkor automatikusan ki van választva, és az **előfizetések** listája nem jelenik meg. |
     | **Erőforráscsoport** | *AppConfigTestResources* | Válasszon ki vagy hozzon létre egy erőforráscsoportot az alkalmazás konfigurációs tárolójának erőforrásához. Ez a csoport akkor lehet hasznos, ha több olyan erőforrást szeretne szervezni, amelyet az erőforráscsoport törlésével egyszerre törölni kíván. További információ: [erőforráscsoportok használata az Azure-erőforrások kezeléséhez](/azure/azure-resource-manager/resource-group-overview). |
+    | **Erőforrás neve** | Globálisan egyedi név | Adja meg az alkalmazás konfigurációs tárolási erőforrásához használandó egyedi erőforrás nevét. A névnek 5 és 50 karakter közötti sztringnek kell lennie, és csak számokat, betűket és `-` karaktert tartalmazhat. A név nem kezdődhet vagy végződhet a `-` karakterrel. |
     | **Hely** | *USA középső régiója* | A **Location (hely** ) használatával adja meg azt a földrajzi helyet, amelyben az alkalmazás konfigurációs tárolója üzemel. A legjobb teljesítmény érdekében hozza létre az erőforrást ugyanabban a régióban, mint az alkalmazás többi összetevőjét. |
-    | **Tarifacsomag** | *Ingyenes* | Válassza ki a kívánt árképzési szintet. További részletekért tekintse meg az [alkalmazás konfigurációjának díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/app-configuration/).
+    | **Tarifacsomag** | *Ingyenes* | Válassza ki a kívánt árképzési szintet. További információt az [alkalmazás konfigurációjának díjszabását ismertető oldalon](https://azure.microsoft.com/pricing/details/app-configuration)talál. |
 
-    ![Alkalmazás-konfigurációs tároló erőforrásának létrehozása](media/azure-app-configuration-create/azure-portal-app-configuration-create-settings.png)
+1. Válassza a **felülvizsgálat + létrehozás** lehetőséget a beállítások érvényesítéséhez.
 
 1. Kattintson a **Létrehozás** gombra. Az üzembe helyezés néhány percet is igénybe vehet.
 
-1. Az üzembe helyezés befejeződése után válassza a **Beállítások**  >  **hozzáférési kulcsok**elemet. Jegyezze fel az elsődleges írásvédett kulcs-összekapcsolási karakterláncot. Ezt a kapcsolódási karakterláncot később fogja használni az alkalmazás konfigurálásához az Ön által létrehozott alkalmazás-konfigurációs tárolóval való kommunikációhoz.
+1. Az üzembe helyezés befejeződése után navigáljon az alkalmazás konfigurációs erőforrásához. Válassza a **Beállítások** > **Hozzáférési kulcsok** lehetőséget. Jegyezze fel az elsődleges írásvédett kulcs-összekapcsolási karakterláncot. Ezt a kapcsolódási karakterláncot később fogja használni az alkalmazás konfigurálásához az Ön által létrehozott alkalmazás-konfigurációs tárolóval való kommunikációhoz.

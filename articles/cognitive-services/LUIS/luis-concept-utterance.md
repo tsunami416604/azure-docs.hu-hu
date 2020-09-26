@@ -1,14 +1,16 @@
 ---
 title: Jó példa hosszúságú kimondott szöveg – LUIS
 description: A beszédelem az a felhasználói bemenet, amelyet az alkalmazásnak értelmeznie kell. Gyűjtse be azokat a kifejezéseket, amelyeket a felhasználók meg fognak adni. Olyan hosszúságú kimondott szöveg adjon meg, amelyek ugyanazt a dolgot jelentik, de a szó hosszában és a Word elhelyezésekor máshogy vannak kiépítve.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 6a17416183762893432841c27124ec6a0f8a289d
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 4c3b5674fe039a89eb97b915d13b5d472a6a0568
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83685271"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316392"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>Ismerje meg, hogy a LUIS-alkalmazás milyen jó hosszúságú kimondott szöveg
 
@@ -103,7 +105,7 @@ A központozás egy különálló jogkivonat a LUIS-ben. Egy teljes időszakot, 
 
 Ha a központozás nem normalizált, akkor a LUIS alapértelmezés szerint nem hagyja figyelmen kívül a központozás jelét, mert egyes ügyfélalkalmazások fontosnak helyezhetik el ezeket a jeleket. Győződjön meg arról, hogy a példa hosszúságú kimondott szöveg mindkét írásjelet használja, és nincs írásjel, hogy mindkét stílus ugyanazt a relatív pontszámot adja vissza.
 
-Győződjön meg arról, hogy a modell kezeli a központozást a példában szereplő hosszúságú kimondott szöveg (és nem rendelkezik írásjelekkel), vagy azokban a [mintázatokban](luis-concept-patterns.md) , amelyekben a speciális szintaxissal egyszerűbb a központozás figyelmen kívül hagyása:`I am applying for the {Job} position[.]`
+Győződjön meg arról, hogy a modell kezeli a központozást a példában szereplő hosszúságú kimondott szöveg (és nem rendelkezik írásjelekkel), vagy azokban a [mintázatokban](luis-concept-patterns.md) , amelyekben a speciális szintaxissal egyszerűbb a központozás figyelmen kívül hagyása: `I am applying for the {Job} position[.]`
 
 Ha a központozás nem rendelkezik konkrét jelentéssel az ügyfélalkalmazás számára, akkor az írásjelek normalizálása révén érdemes [figyelmen kívül hagyni](#utterance-normalization) a központozást.
 
@@ -144,6 +146,6 @@ A következő hosszúságú kimondott szöveg a szó `fair` egy homográfia. A h
 Ha azt szeretné, hogy az esemény entitása az összes eseményt megkeresse, címkézze meg a szót az első szövegben `fair` , de ne a másodikban.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A felhasználói hosszúságú kimondott szöveg megismeréséhez lásd: [példa hosszúságú kimondott szöveg hozzáadása](luis-how-to-add-example-utterances.md) a Luis-alkalmazások betanításához.
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: kumud
-ms.openlocfilehash: 726bc34a309ac6a29c189f13037e059f200732ce
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 50b0324be8da8024dcbda140eff062f3ff712225
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91335918"
+ms.locfileid: "91371184"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Azure DDoS Protection standard áttekintése
 
@@ -61,7 +61,7 @@ DDoS Protection a standard funkciók a következők:
 
 DDoS Protection standard figyeli a tényleges forgalom kihasználtságát, és folyamatosan összehasonlítja a DDoS-szabályzatban meghatározott küszöbértékekkel. Ha túllépi a forgalom küszöbértékét, a DDoS-megoldás automatikusan indul el. Ha a forgalom a küszöbérték alatti értéket adja vissza, a rendszer eltávolítja a megoldást.
 
-![Kockázatcsökkentés](./media/ddos-protection-overview/mitigation.png)
+![A diagram egy olyan folyamatot mutat be, amely egy ügyféltől kezdve a Azure Portal keresztül a DDoS Protection standard, a nyilvános I P címein keresztül, a házirend létrehozásakor két nyilvános I P-címmel végződik.](./media/ddos-protection-overview/mitigation.png)
 
 A mérséklés során a rendszer átirányítja a védett erőforrásnak továbbított forgalmat a DDoS Protection szolgáltatástól, és számos ellenőrzést végez, például a következő ellenőrzéseket:
 

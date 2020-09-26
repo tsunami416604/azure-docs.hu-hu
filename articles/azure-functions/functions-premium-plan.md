@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: jehollan
 ms.custom: references_regions
-ms.openlocfilehash: 4f6e2008cad66ce7cd68016d3873ecbc18b1961c
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: a650c6d5aeea28e800b1a4ce9db325a52d60d5cc
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89145749"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372221"
 ---
 # <a name="azure-functions-premium-plan"></a>Prémium csomag Azure Functions
 
@@ -32,7 +32,7 @@ Ebben a példában cserélje le az `<RESOURCE_GROUP>` erőforráscsoportot és a
 
 A terv létrehozásakor az [az functionapp Create](/cli/azure/functionapp#az-functionapp-create) paranccsal hozhatja létre a Function alkalmazást. A portálon a csomag és az alkalmazás is egyszerre jön létre. A teljes Azure CLI-szkriptre vonatkozó példát a [Function app létrehozása prémium](scripts/functions-cli-create-premium-plan.md)szintű csomagban talál.
 
-## <a name="features"></a>Szolgáltatások
+## <a name="features"></a>Funkciók
 
 A következő szolgáltatások használhatók a prémium csomagba telepített alkalmazások működéséhez.
 
@@ -122,7 +122,7 @@ az resource update -g <resource_group> -n <premium_plan_name> --set sku.capacity
 
 A csomag létrehozásakor vagy skálázásakor három példány mérete közül választhat.  A rendszer a másodpercenként felhasznált magok és memória teljes számát számlázza.  Az alkalmazás igény szerint automatikusan több példányra is kibővíthető.  
 
-|Termékváltozat|Cores|Memória|Storage|
+|Termékváltozat|Cores|Memória|Tárolás|
 |--|--|--|--|
 |EP1|1|3.5 GB|250GB|
 |EP2|2|7GB|250GB|
@@ -141,13 +141,15 @@ Tekintse meg a függvények teljes regionális elérhetőségét itt: [Azure.com
 
 |Region| Windows | Linux |
 |--| -- | -- |
-|Ausztrália középső régiója| 20 | Nem érhető el |
-|Ausztrália 2. középső régiója| 20 | Nem érhető el |
+|Ausztrália középső régiója| 100 | Nem érhető el |
+|Ausztrália 2. középső régiója| 100 | Nem érhető el |
 |Kelet-Ausztrália| 100 | 20 |
 |Délkelet-Ausztrália | 100 | 20 |
-|Dél-Brazília| 60 | 20 |
+|Dél-Brazília| 100 | 20 |
 |Közép-Kanada| 100 | 20 |
-|USA középső régiója| 100 | 20 |
+|Az USA középső régiója| 100 | 20 |
+|Kelet-Kína 2| 100 | 20 |
+|Észak-Kína 2| 100 | 20 |
 |Kelet-Ázsia| 100 | 20 |
 |USA keleti régiója | 100 | 20 |
 |USA 2. keleti régiója| 100 | 20 |
@@ -156,17 +158,24 @@ Tekintse meg a függvények teljes regionális elérhetőségét itt: [Azure.com
 |Kelet-Japán| 100 | 20 |
 |Nyugat-Japán| 100 | 20 |
 |Dél-Korea középső régiója| 100 | 20 |
+|Dél-Korea déli régiója| Nem érhető el | 20 |
 |USA északi középső régiója| 100 | 20 |
 |Észak-Európa| 100 | 20 |
-|Kelet-Norvégia| 20 | 20 |
+|Kelet-Norvégia| 100 | 20 |
 |USA déli középső régiója| 100 | 20 |
 |Dél-India | 100 | Nem érhető el |
 |Délkelet-Ázsia| 100 | 20 |
+|Észak-Svájc| 100 | Nem érhető el |
+|Nyugat-Svájc| 100 | Nem érhető el |
 |Az Egyesült Királyság déli régiója| 100 | 20 |
 |Az Egyesült Királyság nyugati régiója| 100 | 20 |
+|USGov Arizona| 100 | 20 |
+|USGov Virginia| 100 | 20 |
+|USNat keleti régiója| 100 | Nem érhető el |
+|USNat nyugati régiója| 100 | Nem érhető el |
 |Nyugat-Európa| 100 | 20 |
 |Nyugat-India| 100 | 20 |
-|USA nyugati középső régiója| 20 | 20 |
+|USA nyugati középső régiója| 100 | 20 |
 |USA nyugati régiója| 100 | 20 |
 |USA 2. nyugati régiója| 100 | 20 |
 

@@ -1,14 +1,16 @@
 ---
 title: A LUIS-vel rendelkező gépi tanulási funkciók
 description: Adjon hozzá funkciókat a nyelvi modellhez, hogy javaslatokat nyújtson a címkével vagy osztályozással ellátott bemenetek felismeréséhez.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 06/10/2020
-ms.openlocfilehash: 02a6fd27dbe22a40b29b47515edec5506d3b2075
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/22/2020
+ms.openlocfilehash: 08ab71375171d4bb4167c725bc7118bec2e1ebfa
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075165"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372011"
 ---
 # <a name="machine-learning-features"></a>Gépi tanulási funkciók
 
@@ -20,12 +22,10 @@ Egy funkció a következő függvényként használható: f (x) = y. A példába
 
 ## <a name="types-of-features"></a>A szolgáltatások típusai
 
-A LUIS a kifejezések listáját és modelljét is támogatja a szolgáltatásként:
+A szolgáltatások a séma kialakításának szükséges részei. A LUIS a kifejezések listáját és modelljét is támogatja a szolgáltatásként:
 
-* Kifejezés-lista funkció 
+* Kifejezés-lista funkció
 * Modell (szándék vagy entitás) szolgáltatásként
-
-A funkciókat a séma kialakításának szükséges részévé kell tekinteni.
 
 ## <a name="find-features-in-your-example-utterances"></a>A példa hosszúságú kimondott szöveg funkcióinak megkeresése
 
@@ -43,32 +43,6 @@ Annak megállapítása, hogy a szöveg, mert megkülönbözteti a tulajdonságok
 * Pontos szót vagy kifejezést adjon meg: vegyen fel egy reguláris kifejezés entitást vagy egy lista entitást az entitás vagy szándék szolgáltatásként.
 * Olyan jól ismert fogalmakkal, mint például a dátumok, az időpontok vagy a személyek nevei: egy előre összeépített entitást használhat az entitás vagy szándék szolgáltatásként.
 * Ismerkedjen meg az új példákkal az idő múlásával: használjon egy kifejezést a fogalomhoz, amely az entitás vagy a szándék szolgáltatásának egyik példáját mutatja be.
-
-## <a name="combine-features"></a>Funkciók egyesítése
-
-Egy tulajdonság vagy fogalom leírásához több funkciót is használhat. Gyakori párosítás egy kifejezés-lista funkció és egy olyan entitás típusa, amelyet gyakran használnak szolgáltatásként:
-
- * előre elkészített entitás
- * reguláris kifejezésű entitás
- * entitás listázása
-
-### <a name="ticket-booking-entity-example"></a>Példa a Ticket-Booking entitásra
-
-Első példaként vegye fontolóra egy olyan alkalmazás foglalását, amely egy repülési foglalási szándékot és egy Ticket-foglalási entitást foglal le.
-
-A Ticket-Booking entitás egy gépi tanulási entitás a repülési célhoz. A hely kinyeréséhez a következő két funkcióval lehet segíteni:
-
-* A releváns szavak, például a **repülő**, a **repülés**, a **foglalás**vagy a **jegy** kifejezésének listája
-* Egy előre összeépített **geographyV2** entitás, amely szolgáltatásként szolgál az entitás számára
-
-### <a name="pizza-entity-example"></a>Pizza-entitás – példa
-
-Egy másik példa arra, hogy egy olyan alkalmazást rendeljen egy olyan pizzához, amely létrehoz egy pizza-Order szándékot és egy pizza-entitást.
-
-A pizza-entitás a pizza részleteinek gépi tanulásra szolgáló entitása. A részletek kinyeréséhez használja a következő két funkciót:
-
-* A kapcsolódó szavak, például a **sajt**, a **kéreg**, a **pepperoni**vagy az **ananász** kifejezésének listája
-* Egy előre összeépített **szám** entitás, amely szolgáltatásként szolgál az entitás számára
 
 ## <a name="create-a-phrase-list-for-a-concept"></a>Kifejezések listájának létrehozása egy fogalomhoz
 
@@ -176,12 +150,12 @@ Folytassa a szállítási címek példáját:
 
 Szállítási címe (gépi megtanult entitás)
 
- * Utca száma (alentitás) 
- * Utca címe (alentitás) 
- * Utca neve (alentitás) 
- * Város (alentitás) 
- * Állam vagy megye (alentitás) 
- * Ország/régió (alentitás) 
+ * Utca száma (alentitás)
+ * Utca címe (alentitás)
+ * Utca neve (alentitás)
+ * Város (alentitás)
+ * Állam vagy megye (alentitás)
+ * Ország/régió (alentitás)
  * Irányítószám (alentitás)
 
 ### <a name="required-feature-using-prebuilt-entities"></a>Kötelező funkció előre elkészített entitások használatával
@@ -218,11 +192,64 @@ A globális szolgáltatás leggyakoribb felhasználási célja, hogy egy tovább
 
 Mivel a felhasználó a másodlagos nyelvet szeretné használni bármely szándék vagy entitás között, a másodlagos nyelv szavait adja hozzá a kifejezés listához. A kifejezések listáját globális szolgáltatásként konfigurálja.
 
+## <a name="combine-features-for-added-benefit"></a>Funkciók összevonása a hozzáadott előnyökkel
+
+Egy tulajdonság vagy fogalom leírásához több funkciót is használhat. Gyakori párosítást kell használni:
+
+* Egy kifejezés-lista funkció: több kifejezést is használhat ugyanazon modell szolgáltatásként.
+* Szolgáltatásként szolgáló modell: [előre összeépített entitás](luis-reference-prebuilt-entities.md), [reguláris kifejezés entitás](reference-entity-regular-expression.md), [entitás listázása](reference-entity-list.md). 
+
+### <a name="example-ticket-booking-entity-features-for-a-travel-app"></a>Példa: egy utazási alkalmazás Ticket-foglalási entitásának funkciói  
+
+Alapszintű példaként vegye fontolóra egy olyan alkalmazás foglalását, amely egy repülési foglalási _szándékot_ és egy Ticket-foglalási _entitást_foglal le. A Ticket-Booking entitás rögzíti az információkat, hogy egy repülőjegyet foglaljon le egy foglalási rendszeren. 
+
+A Ticket-Book gépi tanulási entitása két alentitással rendelkezik a forrás és a cél rögzítéséhez. A funkciókat hozzá kell adni az egyes alentitásokhoz, nem a legfelső szintű entitáshoz.
+
+:::image type="content" source="media/luis-concept-features/ticket-booking-entity.png" alt-text="Ticketbooking-entitás sémája":::
+
+A Ticket-Booking entitás egy gépi tanulásra szolgáló entitás, amelynek alentitásai, például a _forrás_ és a _cél_. Ezek az alentitások mind földrajzi helyet jeleznek. A hely kinyeréséhez, valamint a _forrás_ és a _cél_közötti különbségtételhez minden alentitásnak rendelkeznie kell funkciókkal.
+
+|Típus|Forrás alentitás |Cél alentitás|
+|--|--|--|
+|Modell szolgáltatásként|[geographyV2](luis-reference-prebuilt-geographyv2.md?tabs=V3) előre elkészített entitás|[geographyV2](luis-reference-prebuilt-geographyv2.md?tabs=V3) előre elkészített entitás|
+|Kifejezések listája|**Forrás szavai**: `start at` , `begin from` , `leave`|**Cél szavai**: `to` ,,, `arrive` `land at` `go` , `going` , `stay` , `heading`|
+|Kifejezések listája|Repülőtéri kódok – azonos lista a forrás és a cél számára|Repülőtéri kódok – azonos lista a forrás és a cél számára|
+|Kifejezések listája|Repülőterek nevei – azonos lista a forrás és a cél számára|Repülőtéri kódok – azonos lista a forrás és a cél számára|
+
+Ha azt tervezi, hogy a felhasználók a repülőtér-kódokat és a repülőterek nevét használják, mint a LUIS, akkor a kifejezések listáját mindkét típusú kifejezést használja. A repülőtéri kódok gyakoribbak lehetnek a Csevegőrobot beírt szövegekkel, míg a repülőtéri nevek gyakoribbak lehetnek a szóbeli beszélgetésekkel, például a beszédfelismerést támogató Csevegőrobot.
+
+A funkciók megfeleltetési részleteit csak a modellekhez adja vissza, nem pedig a kifejezések listájához, mert a rendszer csak a modelleket adja vissza az előrejelzési JSON-ben.
+
+#### <a name="ticket-booking-labeling-in-the-intent"></a>Jegy – a foglalás címkézése a szándékban
+
+Miután létrehozta a gépi tanulási entitást, hozzá kell adnia egy példa hosszúságú kimondott szöveg egy szándékhoz, és fel kell címkéznie a szülő entitást és az összes alentitást.
+
+A Ticket foglalási példához címkézze fel a példában szereplő hosszúságú kimondott szöveg az `TicketBooking` entitással és a szövegben található alentitásokkal.
+
+:::image type="content" source="media/luis-concept-features/intent-example-utterances-machine-learning-entity.png" alt-text="Címke – példa hosszúságú kimondott szöveg":::
+
+### <a name="example-pizza-ordering-app"></a>Példa: Pizza rendezési alkalmazás
+
+Egy másik Példaként vegyünk egy alkalmazást egy pizzéria-étterem számára, amely pizzás rendeléseket fogad, beleértve a Megrendeléses pizza típusának részleteit. Ha lehetséges, a pizza minden részletét ki kell vonni a megrendelés feldolgozásának befejezéséhez.
+
+Ebben a példában a gépi tanulási entitás a beágyazott alentitások, a kifejezések listája, az előre elkészített entitások és az egyéni entitások esetében összetettebb.
+
+:::image type="content" source="media/luis-concept-features/pizza-order-entity.png" alt-text="Pizza Order entitás sémája":::
+
+Ez a példa az alentitások szintjén és az alentitások szintjének alárendelt funkciókat használja. Milyen szinten kapja meg, hogy milyen típusú kifejezéseket vagy modelleket tartalmaz a funkció az entitások kialakításának fontos részeként.
+
+Habár az alentitások számos olyan kifejezést tartalmazhatnak, amelyek segítenek az entitás észlelésében, az egyes alentitások csak egy modellel rendelkeznek szolgáltatásként. Ebben a [pizza-alkalmazásban](https://github.com/Azure/pizza_luis_bot/blob/master/CognitiveModels/MicrosoftPizza.json)ezek a modellek elsősorban a listában szerepelnek.
+
+:::image type="content" source="media/luis-concept-features/intent-example-utterances-machine-learning-entity-pizza.png" alt-text="Pizza Order szándék a címkével ellátott példa hosszúságú kimondott szöveg":::
+
+A helyesen címkézett példa hosszúságú kimondott szöveg úgy jelenik meg, hogy megmutassa az entitások beágyazásának módját. 
+
+
 ## <a name="best-practices"></a>Ajánlott eljárások
 
 Ismerje meg az [ajánlott eljárásokat](luis-concept-best-practices.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Kiterjesztheti](schema-change-prediction-runtime.md) az alkalmazás modelljeit az előrejelzési futtatókörnyezetben.
 * További információ a szolgáltatások hozzáadása a LUIS-alkalmazáshoz [című témakörben](luis-how-to-add-features.md) talál további információt.

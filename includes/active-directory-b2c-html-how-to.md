@@ -5,12 +5,12 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 03/19/2020
 ms.author: mimart
-ms.openlocfilehash: af11283f9e9dbd925ec994dcb1d96393332b90fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9b660bf20c90a84780175e70573c96a0ce1b0b7d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80117089"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91377319"
 ---
 ## <a name="use-custom-page-content"></a>Egyéni oldal tartalmának használata
 
@@ -165,9 +165,9 @@ Az alábbi lépések végrehajtásával konfigurálja a blob Storage-t az idegen
 
 Ellenőrizze, hogy készen áll-e a következő lépések végrehajtásával:
 
-1. Ismételje meg a CORS konfigurálása lépést. Az **engedélyezett eredetek**mezőben adja meg a következőt:`https://www.test-cors.org`
+1. Ismételje meg a CORS konfigurálása lépést. Az **engedélyezett eredetek**mezőben adja meg a következőt: `https://www.test-cors.org`
 1. Navigáljon a [www.test-CORS.org](https://www.test-cors.org/) 
-1. A **távoli URL-cím** mezőben illessze be a HTML-fájl URL-címét. Például: `https://your-account.blob.core.windows.net/azure-ad-b2c/unified.html`
+1. A **távoli URL-cím** mezőben illessze be a HTML-fájl URL-címét. Például: `https://your-account.blob.core.windows.net/root/azure-ad-b2c/unified.html`
 1. Válassza a **küldési kérelem**lehetőséget.
     Ennek az eredménynek kell lennie `XHR status: 200` . 
     Ha hibaüzenetet kap, ellenőrizze, hogy helyesek-e a CORS beállításai. Előfordulhat, hogy törölnie kell a böngésző gyorsítótárát, vagy meg kell nyitnia egy privát böngészési munkamenetet a CTRL + SHIFT + P billentyűkombináció lenyomásával.

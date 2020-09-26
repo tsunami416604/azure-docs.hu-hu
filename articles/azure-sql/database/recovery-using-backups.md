@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein, danil
 ms.date: 09/26/2019
-ms.openlocfilehash: 069387b5c761d502d960d0284d156b4ee6431a55
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: d95bf9ed50f819c5a92c7945827ee82a2c6ecdc9
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91357012"
+ms.locfileid: "91371779"
 ---
 # <a name="recover-using-automated-database-backups---azure-sql-database--sql-managed-instance"></a>Helyreállítás automatikus adatbázis-biztonsági másolatokkal – Azure SQL Database & SQL felügyelt példánya
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -196,7 +196,7 @@ A felügyelt példányok adatbázisának geo-visszaállítását bemutató Power
 A Geo-másodlagos adatbázison nem hajtható végre időponthoz való visszaállítás. Ezt csak elsődleges adatbázison teheti meg. További információ a Geo-visszaállítás a leállás utáni helyreállításhoz való használatáról: [áramkimaradás](../../key-vault/general/disaster-recovery-guidance.md)miatti helyreállítás.
 
 > [!IMPORTANT]
-> A Geo-visszaállítás a SQL Database és az SQL felügyelt példányában elérhető alapszintű katasztrófa-helyreállítási megoldás. Az automatikusan létrehozott, földrajzilag replikált biztonsági mentéseket a helyreállítási időcélkitűzéssel (RPO) egyenlő 1 órára, a becsült helyreállítási időtartam pedig legfeljebb 12 óra. Nem garantálja, hogy a célként megadott régió a regionális leállás után helyreállíthatja az adatbázisokat, mivel a kereslet jelentős növekedése várható. Ha az alkalmazás viszonylag kis adatbázisokat használ, és nem kritikus fontosságú a vállalat számára, a Geo-visszaállítás egy megfelelő vész-helyreállítási megoldás. 
+> A Geo-visszaállítás a SQL Database és az SQL felügyelt példányában elérhető alapszintű katasztrófa-helyreállítási megoldás. A szolgáltatás automatikusan létrehozott geo-replikált biztonsági mentéseket egy helyreállítási időkorláttal (RPO), legfeljebb 1 órára, a becsült helyreállítási időt pedig akár 12 óráig is elvégezheti. Nem garantálja, hogy a célként megadott régió a regionális leállás után helyreállíthatja az adatbázisokat, mivel a kereslet jelentős növekedése várható. Ha az alkalmazás viszonylag kis adatbázisokat használ, és nem kritikus fontosságú a vállalat számára, a Geo-visszaállítás egy megfelelő vész-helyreállítási megoldás. 
 >
 > Az üzleti szempontból kritikus fontosságú alkalmazások esetében, amelyeknek nagy adatbázisokra van szükségük, és biztosítaniuk kell az üzletmenet folytonosságát, használja az [automatikus feladatátvételi csoportokat](auto-failover-group-overview.md). Sokkal alacsonyabb RPO és helyreállítási idő célkitűzést kínál, és a kapacitás mindig garantált. 
 >

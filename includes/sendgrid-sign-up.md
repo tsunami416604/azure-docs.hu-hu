@@ -4,12 +4,12 @@ ms.service: multiple
 ms.topic: include
 ms.date: 11/25/2018
 ms.author: gwallace
-ms.openlocfilehash: e38cecfe206f21f9189493e7ed6e8f0cadda9cd9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4eb1a6f351cdf129611949049f762fe51cac4b16
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75463530"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91376749"
 ---
 Az Azure-ügyfelek havonta 25 000 ingyenes e-mailt oldhatnak fel. Ezek a 25 000-es ingyenes havi e-mailek hozzáférést biztosítanak a speciális jelentéskészítéshez és elemzésekhez, valamint [az összes API][all APIs] -hoz (web, SMTP, Event, parse stb.). A SendGrid által biztosított további szolgáltatásokról a [SendGrid Solutions][SendGrid Solutions] oldalán talál információkat.
 
@@ -17,64 +17,64 @@ Az Azure-ügyfelek havonta 25 000 ingyenes e-mailt oldhatnak fel. Ezek a 25 000-
 1. Jelentkezzen be az [Azure Portalra][Azure portal].
 2. A Azure Portal menüben vagy a kezdőlapon válassza az **erőforrás létrehozása**lehetőséget.
 
-    ![command-bar-new][command-bar-new]
+    ![Képernyőkép a Azure Portal menüjéről az erőforrás létrehozása lehetőség kiválasztásával.][command-bar-new]
 3. Keresse meg és válassza ki a **SendGrid**.
 
-    ![sendgrid-store][sendgrid-store]
+    ![Képernyőkép a Azure Portal Marketplace képernyőről, amely a keresési eredmények között kiválasztott SendGr és SendGrid jeleníti meg a "" elemet.][sendgrid-store]
 4. Töltse ki a regisztrációs űrlapot, majd válassza a **Létrehozás** lehetőséget.
 
-    ![sendgrid-create][sendgrid-create]
+    ![Képernyőkép az új SendGrid-fiók létrehozása párbeszédpanelről, a név, a jelszó, az előfizetés és az erőforráscsoport mezők kitöltésével.][sendgrid-create]
 5. Adjon meg egy **Nevet** a SendGrid-szolgáltatás azonosításához az Azure beállításaiban. A neveknek 1–100 karakter hosszúságúnak kell lenniük, és kizárólag alfanumerikus karaktereket, kötőjeleket, pontokat és aláhúzásjeleket tartalmazhatnak. A névnek egyedinek kell lennie az előfizetett Azure Store-elemek listájában.
 6. Adja meg és erősítse meg a **Jelszót**.
 7. Válassza ki az **Előfizetést**.
 8. Hozzon létre egy új **Erőforráscsoportot** vagy használjon egy meglévőt.
 9. A **Tarifacsomag** szakaszban válassza ki azt a SendGrid-csomagot, amelyre regisztrálni kíván.
 
-    ![sendgrid-pricing][sendgrid-pricing]
+    ![Képernyőkép az új SendGrid-fiók létrehozása párbeszédpanel megnyitásáról és az ingyenes díjszabási csomag kiválasztásáról.][sendgrid-pricing]
 10. Adjon meg egy **Promóciókódot**, ha rendelkezik ilyennel.
-11. Adja meg a **Kapcsolattartási adatait**.
+11. Adja meg a **kapcsolattartási adatait**.
 12. Tekintse át és fogadja el a **Jogi feltételeket**.
 13. A vásárlás megerősítését követően egy **központi telepítés sikeres** előugró ablak jelenik meg, és megjelenik a fiókja.
 
-    ![all-resources][all-resources]
+    ![Képernyőkép a SendGrid-fiókok oldalról, amely a felsorolt új fiók ContosoSendGrid mutatja.][all-resources]
 
     Miután befejezte a vásárlást, valamint a **Kezelés** gombra kattintva elindította az e-mail ellenőrzésének folyamatát, a SendGrid küld egy e-mailt, amelyben a fiókja megerősítésére kéri. Ha nem kapja meg ezt az e-mailt, vagy nem sikerül ellenőrizni a fiókját, tekintse meg a gyakori kérdéseket.
 
-    ![kezelés][manage]
+    ![Képernyőkép a ContosoSendGrid-fiók oldaláról, a kezelés gombbal kiemelve.][manage]
 
     **Fiókja megerősítéséig naponta legfeljebb 100 e-mailt tud elküldeni.**
 
     Az előfizetési csomag módosításához vagy a SendGrid kapcsolattartási beállításainak megtekintéséhez kattintson a SendGrid-szolgáltatás nevére a SendGrid Marketplace irányítópultjának megnyitásához.
 
-    ![beállítások][settings]
+    ![Képernyőfelvétel: a ContosoSendGrid-fiók beállítások lapja a ContosoSendGrid-fiók lapon a minden beállítás lehetőség kiválasztásával nyitható meg.][settings]
 
     Ha a SendGrid használatával szeretne e-mailt küldeni, meg kell adnia API-kulcsát.
 
 ### <a name="to-find-your-sendgrid-api-key"></a>A SendGrid API-kulcsának megkeresése
 1. Kattintson a **Kezelés** gombra.
 
-    ![kezelés][manage]
+    ![Képernyőkép a ContosoSendGrid-fiók oldaláról, a kezelés gombbal kiemelve.][manage]
 2. A SendGrid irányítópultján válassza a **Beállítások**, majd az **API-kulcsok** lehetőséget a bal oldali menüben.
 
-    ![api-keys][api-keys]
+    ![Képernyőfelvétel a SendGrid-irányítópultról, a beállítások legördülő menüből kiválasztva és az API-kulcsok kiválasztásával.][api-keys]
 
 3. Kattintson az **API létrehozása kulcsra**.
 
-    ![general-api-key][general-api-key]
+    ![Képernyőkép az API-kulcsok képernyőről, az API-kulcs létrehozása gomb kiválasztásával.][general-api-key]
 4. Adja meg legalább a **Kulcs nevét**, biztosítson teljes hozzáférést a **Levélküldés** számára, majd válassza a **Mentés** lehetőséget.
 
-    ![hozzáférés][access]
+    ![Képernyőkép az új általános API-kulcs hozzáadása képernyőről a levelezés küldési készlete teljes hozzáféréshez beállításnál az ütemezett küldés nem fér hozzá, és a Mentés gomb ki van emelve.][access]
 5. Ekkor az API egyetlen alkalommal megjelenik. Ügyeljen arra, hogy biztonságosan tárolja.
 
 ### <a name="to-find-your-sendgrid-credentials"></a>A SendGrid hitelesítő adatainak megkeresése
 1. Kattintson a kulcs ikonra a **Felhasználónév** megkereséséhez.
 
-    ![kulcs][key]
+    ! Képernyőfelvétel a ContosoSendGrid-fiók oldaláról a Kiemelt kulcs ikonnal.] [kulcs]
 2. A jelszó megegyezik azzal, amelyet a beállításkor megadott. Módosításokat a **Jelszó módosítása** vagy a **Jelszó alaphelyzetbe állítása** lehetőségek kiválasztásával eszközölhet.
 
 Az e-mailek kézbesítési eredményessége beállításainak kezeléséhez kattintson a **Kezelés gombra**. A rendszer átirányítja a SendGrid-irányítópultra.
 
-![kezelés][manage]
+![Képernyőkép a ContosoSendGrid-fiók oldaláról, a kezelés gombbal kiemelve.][manage]
 
 Az e-mailek SendGrid-n keresztül történő elküldésével kapcsolatos további információkért tekintse meg az [E-mail API áttekintését][Email API Overview].
 
@@ -90,7 +90,7 @@ Az e-mailek SendGrid-n keresztül történő elküldésével kapcsolatos tovább
 [api-keys]: ./media/sendgrid-sign-up/api-keys.png
 [general-api-key]: ./media/sendgrid-sign-up/general-api-key.png
 [access]: ./media/sendgrid-sign-up/access.png
-[key]: ./media/sendgrid-sign-up/key.png
+[kulcs]: ./media/sendgrid-sign-up/key.png
 
 <!--Links-->
 

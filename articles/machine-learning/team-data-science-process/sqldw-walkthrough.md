@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, devx-track-python, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 59935d2659d27059617059c021fef9b6a2b552e0
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: e48261c4c6aeb75556663e1bf77c675557bcd1b1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440201"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91315490"
 ---
 # <a name="the-team-data-science-process-in-action-using-azure-synapse-analytics"></a>A csoportos adatelemzési folyamat működés közben: az Azure szinapszis Analytics használata
 Ebben az oktatóanyagban bemutatjuk, hogyan hozhat létre és helyezhet üzembe gépi tanulási modellt az Azure szinapszis Analytics használatával egy nyilvánosan elérhető adatkészlethez – a [New York-i taxis](https://www.andresmh.com/nyctaxitrips/) adatkészlethez. A bináris besorolási modell alapján megjósolható, hogy egy adott utazási tipp díjköteles-e.  A modellek többosztályos besorolást tartalmaznak (legyen szó vagy sem a tippről) és a regresszióról (a tip-összeg kifizetésének eloszlása).
@@ -117,7 +117,7 @@ BEGIN CATCH
 END CATCH;
 ```
 
-**Hozzon létre egy Azure Machine Learning munkaterületet az Azure-előfizetésében.** Útmutatásért lásd: [Azure Machine learning munkaterület létrehozása](../studio/create-workspace.md).
+**Hozzon létre egy Azure Machine Learning munkaterületet az Azure-előfizetésében.** Útmutatásért lásd: [Azure Machine learning munkaterület létrehozása](../classic/create-workspace.md).
 
 ## <a name="load-the-data-into-azure-synapse-analytics"></a><a name="getdata"></a>Az Azure szinapszis Analytics szolgáltatásba való betöltés
 Nyisson meg egy Windows PowerShell-parancssori konzolt. A következő PowerShell-parancsok futtatásával töltse le a GitHubon megosztott SQL-parancsfájlokat egy helyi könyvtárba, amelyet a *-DestDir*paraméterrel adott meg. A *DestDir* paraméter értékét bármely helyi könyvtárra módosíthatja. Ha a *-DestDir* nem létezik, akkor a PowerShell-szkript hozza létre.
@@ -941,9 +941,9 @@ Most már készen áll az építés és a modell üzembe helyezésének modellez
 2. **Többosztályos besorolás**: a kifizetett tipp tartományának előrejelzéséhez a korábban definiált osztályok alapján.
 3. **Regressziós feladat**: az utazáshoz fizetett tipp mennyiségének előrejelzése.
 
-A modellezési gyakorlat megkezdéséhez jelentkezzen be a **Azure Machine learning (klasszikus)** munkaterületre. Ha még nem hozott létre Machine learning-munkaterületet, tekintse meg a [Azure Machine learning Studio (klasszikus) munkaterület létrehozása](../studio/create-workspace.md)című témakört.
+A modellezési gyakorlat megkezdéséhez jelentkezzen be a **Azure Machine learning (klasszikus)** munkaterületre. Ha még nem hozott létre Machine learning-munkaterületet, tekintse meg a [Azure Machine learning Studio (klasszikus) munkaterület létrehozása](../classic/create-workspace.md)című témakört.
 
-1. A Azure Machine Learning megkezdéséhez tekintse meg a [Mi az a Azure Machine learning Studio (klasszikus)?](../studio/what-is-ml-studio.md)
+1. A Azure Machine Learning megkezdéséhez tekintse meg a [Mi az a Azure Machine learning Studio (klasszikus)?](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 2. Jelentkezzen be [Azure Machine learning Studioba (klasszikus)](https://studio.azureml.net).
 3. A Machine Learning Studio (klasszikus) kezdőlapja rengeteg információt, videót, oktatóanyagokat, hivatkozásokat tartalmaz a modulok hivatkozásához és egyéb erőforrásokhoz. További információ a Azure Machine Learningről: [Azure Machine learning dokumentációs központ](https://azure.microsoft.com/documentation/services/machine-learning/).
 
@@ -983,7 +983,7 @@ Példa egy bináris besorolási kísérletre, amely közvetlenül az Azure szina
 >
 
 ## <a name="deploy-models-in-azure-machine-learning"></a><a name="mldeploy"></a>Modellek üzembe helyezése Azure Machine Learning
-Ha a modell elkészült, egyszerűen üzembe helyezheti webszolgáltatásként közvetlenül a kísérletből. Az Azure ML-webszolgáltatások üzembe helyezésével kapcsolatos további információkért lásd: [Azure Machine learning webszolgáltatás üzembe](../studio/deploy-a-machine-learning-web-service.md)helyezése.
+Ha a modell elkészült, egyszerűen üzembe helyezheti webszolgáltatásként közvetlenül a kísérletből. Az Azure ML-webszolgáltatások üzembe helyezésével kapcsolatos további információkért lásd: [Azure Machine learning webszolgáltatás üzembe](../classic/deploy-a-machine-learning-web-service.md)helyezése.
 
 Új webszolgáltatás üzembe helyezéséhez a következőket kell tennie:
 
@@ -1006,7 +1006,7 @@ Az alábbi ábrán egy minta pontozási kísérlet szerepel. Ha készen áll a t
 
 ![Azure ML-közzététel][11]
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 Ahhoz, hogy beolvassa az ebben az útmutatóban ismertetett oktatóanyagot, létrehozott egy Azure-beli adatelemzési környezetet, amely egy nagyméretű nyilvános adatkészlettel dolgozott, a csoportos adatelemzési folyamaton keresztül, egészen az adatgyűjtésig a modell betanítása, majd egy Azure Machine Learning webszolgáltatás üzembe helyezése során.
 
 ### <a name="license-information"></a>Licencelési információk

@@ -1,15 +1,17 @@
 ---
 title: Az előrejelzési végpont módosításai a V3 API-ban
 description: Megváltoztak a lekérdezés-előrejelzési végpont V3 API-jai. Ebből az útmutatóból megtudhatja, hogyan telepítheti át a 3. verziójú Endpoint API-kat.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 06/30/2020
 ms.author: diberry
-ms.openlocfilehash: d3d8f4d77793390484c64b03393fb528dfa643b7
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 3e4567eea02b3b7db9514f4e03c7f7f36496449b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85610880"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91309429"
 ---
 # <a name="prediction-endpoint-changes-for-v3"></a>Előrejelzési végpont módosításai v3 esetén
 
@@ -39,14 +41,14 @@ V3 a következő módosításokat hajtotta végre a GA-ra való áttérés rész
     * [OrdinalV1](luis-reference-prebuilt-ordinal.md)
     * [GeographyV2](luis-reference-prebuilt-geographyv2.md)
     * [DatetimeV2](luis-reference-prebuilt-datetimev2.md)
-    * Mérhető egység kulcsának neve a `units` -ből`unit`
+    * Mérhető egység kulcsának neve a `units` -ből `unit`
 
 * Kérelem törzse JSON-változás:
-    * innen `preferExternalEntities` :`preferExternalEntities`
+    * innen `preferExternalEntities` : `preferExternalEntities`
     * választható `score` paraméter külső entitásokhoz
 
 * A válasz törzsének JSON-módosításai:
-    * `normalizedQuery`távolítva
+    * `normalizedQuery` távolítva
 
 ## <a name="suggested-adoption-strategy"></a>Javasolt bevezetési stratégia
 
@@ -57,7 +59,7 @@ Ha tudja, hogy egyik ügyfélalkalmazás vagy integráció (bot Framework és Bi
 
 ## <a name="not-supported"></a>Nem támogatott
 
-### <a name="bing-spell-check"></a>Bing Spell Check
+### <a name="bing-spell-check"></a>Bing – Helyesírás-ellenőrzés
 
 Ez az API nem támogatott a v3 előrejelzési végpontban – továbbra is használja a v2 API-előrejelzési végpontot a helyesírási helyesbítésekhez. Ha a V3 API használatakor helyesírási korrekcióra van szüksége, az ügyfélalkalmazás meghívja a [Bing Spell Check](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/overview) API-t, és a szöveget a megfelelő helyesírásra módosítja, mielőtt elküldené a szöveget a Luis API-nak.
 
@@ -77,7 +79,7 @@ A [v3-VÉGPONT http](developer-reference-resource.md#rest-endpoints) -hívásán
 
 Ha verzió alapján szeretne lekérdezni, először közzé kell tennie az [API-n keresztül](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c3b) a használatával `"directVersionPublish":true` . A tárolóhely neve helyett a verziószámra hivatkozó végpont lekérdezése.
 
-|Érvényes értékek a következőhöz:`SLOT-NAME`|
+|Érvényes értékek a következőhöz: `SLOT-NAME`|
 |--|
 |`production`|
 |`staging`|
@@ -102,12 +104,12 @@ Ha verzió alapján szeretne lekérdezni, először közzé kell tennie az [API-
 }
 ```
 
-|Tulajdonság|Típus|Verzió|Alapértelmezett|Cél|
+|Tulajdonság|Típus|Verzió|Alapértelmezett|Rendeltetés|
 |--|--|--|--|--|
-|`dynamicLists`|tömb|Csak v3|Nem kötelező.|A [dinamikus listák](schema-change-prediction-runtime.md#dynamic-lists-passed-in-at-prediction-time) segítségével kiterjesztheti a már meglévő betanított és közzétett lista entitást, amely már a Luis-alkalmazásban van.|
-|`externalEntities`|tömb|Csak v3|Nem kötelező.|A [külső entitások](schema-change-prediction-runtime.md#external-entities-passed-in-at-prediction-time) lehetővé teszi, hogy a Luis-alkalmazás képes legyen az entitások azonosítására és címkézésére a futtatókörnyezet során, amely funkciókként használható a meglévő entitásokhoz. |
+|`dynamicLists`|array|Csak v3|Nem kötelező.|A [dinamikus listák](schema-change-prediction-runtime.md#dynamic-lists-passed-in-at-prediction-time) segítségével kiterjesztheti a már meglévő betanított és közzétett lista entitást, amely már a Luis-alkalmazásban van.|
+|`externalEntities`|array|Csak v3|Nem kötelező.|A [külső entitások](schema-change-prediction-runtime.md#external-entities-passed-in-at-prediction-time) lehetővé teszi, hogy a Luis-alkalmazás képes legyen az entitások azonosítására és címkézésére a futtatókörnyezet során, amely funkciókként használható a meglévő entitásokhoz. |
 |`options.datetimeReference`|sztring|Csak v3|Nincs alapértelmezett érték|A [datetimeV2 eltolásának](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity)meghatározására szolgál. A datetimeReference formátuma [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).|
-|`options.preferExternalEntities`|logikai|Csak v3|hamis|Meghatározza, hogy a felhasználó [külső entitása (a meglévő entitás nevével megegyező névvel)](schema-change-prediction-runtime.md#override-existing-model-predictions) van-e használva, vagy a modellben lévő meglévő entitást használja-e a rendszer az előrejelzéshez. |
+|`options.preferExternalEntities`|boolean|Csak v3|hamis|Meghatározza, hogy a felhasználó [külső entitása (a meglévő entitás nevével megegyező névvel)](schema-change-prediction-runtime.md#override-existing-model-predictions) van-e használva, vagy a modellben lévő meglévő entitást használja-e a rendszer az előrejelzéshez. |
 |`query`|sztring|Csak v3|Kötelező.|A **v2-ben**az előre jelzett érték a `q` paraméterben szerepel. <br><br>A **v3**-as verzióban a funkció a `query` paraméterben lesz átadva.|
 
 ## <a name="response-changes"></a>Válasz módosításai
@@ -271,6 +273,6 @@ A v3-as verzióban Ugyanez az eredmény szerepel az `verbose` entitás metaadata
 
 A v2 API-t a v3 előzetes verzió után legalább 9 hónapig nem lehet érvényteleníteni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A V3 API dokumentációjának használatával frissítheti a meglévő REST-hívásokat a LUIS [Endpoint](https://westcentralus.dev.cognitive.microsoft.com/docs/services/luis-endpoint-api-v3-0/operations/5cb0a9459a1fe8fa44c28dd8) API-kra.

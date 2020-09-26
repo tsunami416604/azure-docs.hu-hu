@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 01182343fb0c96040ec8e86ddf915050ba68cf9f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 731ffe02b16fe832bb5feba34973ca81bf941646
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91335211"
+ms.locfileid: "91371422"
 ---
 # <a name="tutorial-use-creator-to-create-indoor-maps"></a>Oktatóanyag: beltéri térképek létrehozása a Creator használatával
 
@@ -35,7 +35,7 @@ Beltéri térképek létrehozása:
 1. [Azure Maps fiók létrehozása](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [Szerezzen be egy elsődleges előfizetési kulcsot](quick-demo-map-app.md#get-the-primary-key-for-your-account), más néven az elsődleges kulcsot vagy az előfizetési kulcsot.
 3. [Létrehozó erőforrás létrehozása](how-to-manage-creator.md)
-4. Töltse le a [minta rajzolási csomagot](https://github.com/Azure-Samples/am-creator-indoor-data-examples).
+4. Töltse le a [minta rajzolási csomagot](https://github.com/Azure-Samples/am-creator-indoor-data-examples/blob/master/Sample%20-%20Contoso%20Drawing%20Package.zip).
 
 Ez az oktatóanyag a [Poster](https://www.postman.com/) alkalmazást használja, de más API-fejlesztési környezetet is választhat.
 

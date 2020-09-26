@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 09/21/2020
 ms.author: jgao
-ms.openlocfilehash: a6925ef8f72615cc3868c8b5cd4ea030ed3c3c40
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 63879350eba897cfe5a793309e5129323fe8bbde
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91278063"
+ms.locfileid: "91372374"
 ---
 # <a name="introduce-health-integration-rollout-to-azure-deployment-manager-public-preview"></a>Állapot-integráció bevezetése az Azure telepítéskezelő (nyilvános előzetes verzió)
 
@@ -41,7 +41,7 @@ A telepítés Azure telepítéskezelő állapot-ellenőrzésekkel való beszerz�
     1. Hitelesítő adatok. Jelenleg csak az API-kulcs stílusú hitelesítés támogatott. Azure Monitor esetében a hitelesítési típust "RolloutIdentity" értékre kell beállítani, mert az Azure telepítéskezelő bevezetéséhez használt felhasználóhoz rendelt felügyelt identitás kiterjeszti a Azure Monitor.
     1. [Http-állapotkódok](https://www.wikipedia.org/wiki/List_of_HTTP_status_codes) vagy reguláris kifejezések, amelyek egészséges választ határoznak meg. Vegye figyelembe, hogy olyan reguláris kifejezéseket is megadhat, amelyeknek meg kell egyezniük ahhoz, hogy a válasz kifogástalan legyen, vagy olyan kifejezéseket is megadhat, amelyeknek meg kell egyezniük a válasz megfelelő állapotával. Mindkét módszer támogatott.
 
-    A következő JSON egy példa az Azure telepítéskezelő Azure Monitor integrálására, amely kihasználja a RolloutIdentity, és megállapítja a bevezetési előrehaladást, ha nincsenek riasztások. Az egyetlen támogatott Azure Monitor API: [riasztások – az összes beolvasása](/rest/api/monitor/alertsmanagement/alerts/getall.md).
+    A következő JSON egy példa az Azure telepítéskezelő Azure Monitor integrálására, amely kihasználja a RolloutIdentity, és megállapítja a bevezetési előrehaladást, ha nincsenek riasztások. Az egyetlen támogatott Azure Monitor API: [riasztások – az összes beolvasása](/rest/api/monitor/alertsmanagement/alerts/getall).
 
     ```json
     {

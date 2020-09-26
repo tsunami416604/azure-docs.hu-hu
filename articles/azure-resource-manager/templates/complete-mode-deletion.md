@@ -3,12 +3,12 @@ title: Törlés Teljes mód esetén
 description: Azt mutatja, hogy az erőforrástípusok hogyan kezelik a teljes módú törlést Azure Resource Manager-sablonokban.
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: e288d3af080a96616026e94ac7be352a7684c181
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1e27960953aeb16486f893054c7653edb98bbdbc
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91327663"
+ms.locfileid: "91372461"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>Azure-erőforrások törlése a teljes módú üzembe helyezésekhez
 
@@ -1502,11 +1502,8 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
 > | munkaterületek | Yes |
-> | munkaterületek/codeJobs | No |
 > | munkaterületek/számítások | No |
 > | munkaterületek/eventGridFilters | No |
-> | munkaterületek/inferenceEndpoints | Yes |
-> | munkaterületek/inferenceEndpoints/központi telepítések | Yes |
 > | munkaterületek/linkedServices | No |
 
 ## <a name="microsoftmaintenance"></a>Microsoft. Maintenance

@@ -7,12 +7,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 08/12/2020
-ms.openlocfilehash: 51d9880c654a6ecabbbab294016293113bffb655
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 4a78e966d420591ebe7a9607777158cf17ddf698
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89434231"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91370878"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Adatfolyamatok teljesítményének és hangolási útmutatójának leképezése
 
@@ -53,7 +53,7 @@ Miután azonosította az adatáramlás szűk keresztmetszetét, az alábbi optim
 
 Az **optimalizálás** lap a Spark-fürt particionálási sémájának konfigurálásához szükséges beállításokat tartalmazza. Ez a lap az adatfolyam minden átalakításában megtalálható, és megadja, hogy az átalakítás befejeződése **után** szeretné-e újraparticionálni az adatparticionálást. A particionálás beállítása lehetővé teszi az adatok elosztását a számítási csomópontok és az adatkörnyezet-optimalizálások között, amelyek mind pozitív, mind negatív hatással lehetnek a teljes adatfolyam-teljesítményre.
 
-![Optimalizálás](media/data-flow/optimize.png "Optimalizálás")
+![A képernyőképen az optimalizálás lap látható, amely tartalmazza a partíciós beállítást, a partíció típusát és a partíciók számát.](media/data-flow/optimize.png)
 
 Alapértelmezés szerint a *jelenlegi particionálás használata* beállítás van kiválasztva, amely arra utasítja Azure Data Factory az átalakítás aktuális kimeneti particionálását. Ahogy az adatok újraparticionálása időt vesz igénybe, a legtöbb esetben ajánlott a *jelenlegi particionálás használata* . Olyan forgatókönyvek, amelyekben érdemes lehet az adatok újraparticionálása olyan összesítések és illesztések után, amelyek jelentősen elferdítik az adatokat, vagy ha az SQL-ADATBÁZISon alapuló forrás-particionálást használnak.
 

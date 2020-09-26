@@ -4,12 +4,12 @@ description: Ismerteti, Hogyan oldhatók fel a gyakori hibák, amikor erőforrá
 tags: top-support-issue
 ms.topic: troubleshooting
 ms.date: 09/09/2020
-ms.openlocfilehash: a24a95bbf3b3a338102d42fcee06b5e4bd59dd83
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: fb7e476a5b4416282546d321a5e9a0127b7a4364
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650954"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372238"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Gyakori Azure-beli üzembe helyezési hibák elhárítása az Azure Resource Managerrel
 
@@ -34,6 +34,7 @@ Ha egy hibakódra vonatkozó információt keres, és ez a cikk nem tartalmaz in
 | DeploymentNameLengthLimitExceeded | A központi telepítési nevek legfeljebb 64 karakterből állhatnak.  | |
 | DeploymentFailed | A DeploymentFailed hiba általános hiba, amely nem adja meg a hiba megoldásához szükséges adatokat. Tekintse meg a hiba részletes adatait, amely további információkat tartalmaz. | [Hibakód keresése](#find-error-code) |
 | DeploymentQuotaExceeded | Ha eléri a 800-es üzemelő példányok számát egy erőforráscsoport esetében, törölje a már nem szükséges előzményekből származó központi telepítéseket. | [Hiba elhárítása, ha a központi telepítés száma meghaladja a 800](deployment-quota-exceeded.md) |
+| DeploymentSizeExceeded | Egyszerűsítse a sablont a méret csökkentése érdekében. | [Sablon méretével kapcsolatos hibák elhárítása](error-job-size-exceeded.md) |
 | DnsRecordInUse | A DNS-rekord nevének egyedinek kell lennie. Adjon meg másik nevet. | |
 | ImageNotFound | A VM-rendszerkép beállításainak megtekintése. |  |
 | InUseSubnetCannotBeDeleted | Ez a hiba akkor fordulhat elő, ha egy erőforrást próbál frissíteni, és az erőforrás törlésével és létrehozásával dolgozza fel a kérést. Győződjön meg arról, hogy az összes változatlan értéket meg kell adni. | [Erőforrás frissítése](/azure/architecture/building-blocks/extending-templates/update-resource) |
@@ -49,6 +50,7 @@ Ha egy hibakódra vonatkozó információt keres, és ez a cikk nem tartalmaz in
 | InvalidSubscriptionRegistrationState | Regisztrálja az előfizetését az erőforrás-szolgáltatónál. | [Regisztráció feloldása](error-register-resource-provider.md) |
 | InvalidTemplate | A hibákért keresse meg a sablon szintaxisát. | [Érvénytelen sablon feloldása](error-invalid-template.md) |
 | InvalidTemplateCircularDependency | Felesleges függőségek eltávolítása. | [Körkörös függőségek feloldása](error-invalid-template.md#circular-dependency) |
+| JobSizeExceeded | Egyszerűsítse a sablont a méret csökkentése érdekében. | [Sablon méretével kapcsolatos hibák elhárítása](error-job-size-exceeded.md) |
 | LinkedAuthorizationFailed | Ellenőrizze, hogy a fiókja ugyanahhoz a bérlőhöz tartozik-e, mint a központilag telepíteni kívánt erőforráscsoport. | |
 | LinkedInvalidPropertyId | Egy erőforrás erőforrás-azonosítója nem oldja meg megfelelően a megoldást. Győződjön meg arról, hogy az erőforrás-AZONOSÍTÓhoz szükséges összes értéket megadja, beleértve az előfizetés-azonosítót, az erőforráscsoport nevét, az erőforrás típusát, a szülő erőforrás nevét (ha szükséges) és az erőforrás nevét. | |
 | LocationRequired | Adja meg az erőforrás helyét. | [Hely beállítása](resource-location.md) |

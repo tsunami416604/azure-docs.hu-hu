@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/07/2020
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 65f6c239f34775efff6a2ea2e399064a7702606a
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 8882625d28871135223dd30e3fd96a385a13e8fe
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89664145"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91376374"
 ---
 ![A Dsv3 dokumentációja](media/vm-disk-performance/dsv3-documentation.jpg)
 
@@ -81,7 +81,13 @@ Az Azure-ban olyan mérőszámok találhatók, amelyek betekintést nyújtanak a
 
 ## <a name="storage-io-utilization-metrics"></a>Storage IO kihasználtsági metrikái
 A lemez i/o-korlátjának diagnosztizálását segítő mérőszámok:
-- **Adatlemez IOPS** kihasználtsága (%) – az adatlemez IOPS kiszámított százalékos arány a kiépített adatlemez IOPS. Ha ez az érték 100%-os, az alkalmazás futása az adatlemez IOPS-korlátja alapján lesz lekorlátozva.
+- **Adatlemez IOPS** kihasználtsága (%) – az ADATlemez IOPS kiszámított százalékos arány a kiépített adatlemez IOPS. Ha ez az érték 100%-os, az alkalmazás futása az adatlemez IOPS-korlátja alapján lesz lekorlátozva.
 - **Adatlemez sávszélességének** kihasználtsága (%) – az adatlemez átviteli sebessége által kiszámított százalékos arány a kiépített adatlemez átviteli sebessége után. Ha ez az érték 100%-os, az alkalmazás futása az adatlemez sávszélesség-korlátja alapján lesz lekorlátozva.
 - **Operációsrendszer-lemez IOPS felhasznált százaléka** – az operációsrendszer-lemez IOPS kiszámított százalék a kiépített operációsrendszer-lemez IOPS. Ha ez az érték 100%-os, akkor az alkalmazás futása az operációsrendszer-lemez IOPS-korlátja alapján lesz lekorlátozva.
 - **Operációsrendszer-lemez sávszélességének** kihasználtsága (százalék) – az operációsrendszer-lemez átviteli sebessége által kiszámított százalék a kiépített operációsrendszer-lemez átviteli sebessége után. Ha ez az érték 100%-os, az alkalmazás futása az operációsrendszer-lemez sávszélesség-korlátja alapján lesz lekorlátozva.
+
+A virtuális gépek IO-korlátjának diagnosztizálását segítő mérőszámok:
+- A virtuális **gép gyorsítótárazott IOPS** kihasználtsága (%) – a teljes IOPS által kiszámított százalékos arány a virtuális gépek maximálisan gyorsítótárazott IOPS korlátja alapján. Ha ez az érték 100%-os, az alkalmazás futása a virtuális gép gyorsítótárazott IOPs-korlátja alapján lesz lekorlátozva.
+- A virtuális **gép gyorsítótárazott sávszélességének** kihasználtsága (%) – a teljes lemez átviteli sebessége által kiszámított százalék a maximálisan gyorsítótárazott virtuálisgép-átviteli sebességnél. Ha ez az érték 100%-os, az alkalmazás futása a virtuális gép gyorsítótárazott sávszélesség-korlátja alapján lesz lekorlátozva.
+- A virtuális gép nem **gyorsítótárazott IOPS** kihasználtsága (%) – a virtuális gépen lévő összes IOPS által kiszámított százalék a nem gyorsítótárazott virtuális gép maximális IOPS-korlátja alapján lett végrehajtva. Ha ez az érték 100%-os, az alkalmazás futása a virtuális gép nem gyorsítótárazott IOPs-korlátja alapján lesz lekorlátozva.
+- A virtuális gép nem **gyorsítótárazott sávszélességének** kihasználtsága (%) – a virtuális gépek teljes lemezének átviteli sebessége által kiszámított százalékos arány a virtuális gép maximálisan kiépített virtuálisgép-átviteli sebessége. Ha ez az érték 100%-os, az alkalmazás futása a virtuális gép nem gyorsítótárazott sávszélesség-korlátja alapján lesz korlátozva.

@@ -9,22 +9,22 @@ ms.topic: include
 ms.date: 03/19/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: da45a404c52551e27ffc84d2a0c3e1d08f817593
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: fa1ecb24649d9355e6104bff8add5430fdd64c3c
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328741"
+ms.locfileid: "91376677"
 ---
 Ezzel a rövid útmutatóval megkezdheti a hírek keresését a JavaScripthez készült Bing Video Search ügyféloldali kódtár használatával. Habár a Bing Video Search REST API kompatibilis a legtöbb programozási nyelvvel, az ügyféloldali kódtár egyszerű módszert kínál a szolgáltatás integrálására az alkalmazásokba. A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/videoSearch.js)található. További megjegyzéseket és funkciókat tartalmaz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- [Node.js](https://www.nodejs.org/)
-
-Console-alkalmazás beállítása a Bing Video Search ügyféloldali kódtár használatával:
-* Futtatás a `npm install ms-rest-azure` fejlesztési környezetben.
-* Futtatás a `npm install azure-cognitiveservices-videosearch` fejlesztési környezetben.
+* A [Node.js](https://nodejs.org/en/download/) legújabb verziója.
+* A [javascripthez készült BING Video Search SDK](https://www.npmjs.com/package/@azure/cognitiveservices-videosearch)
+     *  A telepítéséhez futtassa a következőt `npm install @azure/cognitiveservices-videosearch`
+* A `CognitiveServicesCredentials` `@azure/ms-rest-azure-js` csomagból a-ügyfelet hitelesítő osztály.
+     * A telepítéséhez futtassa a következőt `npm install @azure/ms-rest-azure-js`
 
 [!INCLUDE [cognitive-services-bing-video-search-signup-requirements](~/includes/cognitive-services-bing-video-search-signup-requirements.md)]
 
@@ -33,8 +33,8 @@ Console-alkalmazás beállítása a Bing Video Search ügyféloldali kódtár ha
 1. Hozzon létre egy új JavaScript-fájlt a kedvenc IDE vagy szerkesztőben, és adjon hozzá egy `require()` utasítást a Bing Video Search ügyféloldali függvénytárához és a `CognitiveServicesCredentials` modulhoz. Hozzon létre egy változót az előfizetési kulcshoz. 
     
     ```javascript
-    const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
-    const VideoSearchAPIClient = require('azure-cognitiveservices-videosearch');
+    const CognitiveServicesCredentials = require('@azure/ms-rest-azure-js').CognitiveServicesCredentials;
+    const VideoSearchAPIClient = require('@azure/cognitiveservices-videosearch');
     ```
 
 2. Hozzon létre egy példányt a `CognitiveServicesCredentials` kulcsával. Ezután a használatával hozza létre a videó-keresési ügyfél egy példányát.
