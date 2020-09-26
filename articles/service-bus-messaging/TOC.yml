@@ -90,6 +90,8 @@
       href: service-bus-throttling.md
     - name: Biztonság
       items:
+        - name: Biztonsági alapkonfiguráció
+          href: security-baseline.md
         - name: Hitelesítés és engedélyezés
           href: service-bus-authentication-and-authorization.md
           items:

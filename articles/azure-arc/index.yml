@@ -10,12 +10,12 @@ metadata:
   author: MGoedtel
   ms.author: magoedte
   ms.date: 09/23/2020
-  ms.openlocfilehash: ea57cbb94a45339c6de58ba1abdaa864ddc43186
-  ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+  ms.openlocfilehash: 2ebc8329466df4fba7963a2838c19e2b7a1c539f
+  ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
   ms.translationtype: HT
   ms.contentlocale: hu-HU
   ms.lasthandoff: 09/25/2020
-  ms.locfileid: "91317242"
+  ms.locfileid: "91357828"
 highlightedContent:
   items:
   - title: Az Azure Arc bemutatása
@@ -32,7 +32,7 @@ highlightedContent:
     url: ./data/overview.md
   - title: Azure Arc-kompatibilis SQL Server (előzetes verzió)
     itemType: overview
-    url: https://docs.microsoft.com/sql/sql-server/azure-arc/overview
+    url: /sql/sql-server/azure-arc/overview
 productDirectory:
   title: Azure Arc-kompatibilis szolgáltatások
   summary: Tekintse át, mi kell ahhoz, hogy bárhol futtathasson szolgáltatásokat.
@@ -48,7 +48,7 @@ productDirectory:
       text: Gépek csatlakoztatása az Azure-hoz a PowerShell DSC használatával
     - url: ./servers/index.yml
       text: Több megjelenítése...
-  - title: Azure Arc-kompatibilis Kubernetes
+  - title: Azure Arc-kompatibilis Kubernetes (előzetes verzió)
     imageSrc: ./media/01088-icon-arc-kubernetes-menu.svg
     links:
     - url: ./kubernetes/connect-cluster.md
@@ -71,9 +71,9 @@ productDirectory:
   - title: Azure Arc-kompatibilis SQL Server (előzetes verzió)
     imageSrc: ./media/01850-icon-arc-sql-server-menu.svg
     links:
-    - url: https://docs.microsoft.com/sql/sql-server/azure-arc/assess
+    - url: /sql/sql-server/azure-arc/assess
       text: Az SQL-példányok felmérése
-    - url: https://docs.microsoft.com/sql/sql-server/azure-arc/overview
+    - url: /sql/sql-server/azure-arc/overview
       text: Több megjelenítése...
 conceptualContent:
   title: Bevezetés
