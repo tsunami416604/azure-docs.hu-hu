@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 8bca88fc63a7fc04a22d2a68adbe59259b07f50e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 390a8a49e9a47ee5e6845d85fe4fe02f514708e8
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74185881"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362197"
 ---
 # <a name="how-does-hyper-v-replication-work"></a>Hogyan működik a Hyper-V replikáció?
 
@@ -30,7 +30,7 @@ A Azure Migrate kiszolgáló áttelepítése egy eszköz a helyszíni számítá
 
 ## <a name="architectural-components"></a>Az architektúra összetevői
 
-![Architektúra](./media/hyper-v-replication-architecture/architecture.png)
+![A diagram egy olyan forrás Hyper-V hálózatot mutat be, amely a H T T P S adatcsatornán keresztül Microsoft Azure, és a táblázatban szereplő részleteket ismerteti.](./media/hyper-v-replication-architecture/architecture.png)
 
 
 
@@ -86,6 +86,6 @@ Ha van tartalék sávszélesség a replikáláshoz, és szeretné megnövelni a 
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Próbálja ki a [Hyper-V áttelepítését](tutorial-migrate-hyper-v.md) Azure Migrate kiszolgáló áttelepítésével.

@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18, devx-track-azurepowershell
 ms.date: 02/05/2018
-ms.openlocfilehash: 63c1ad3c0e5c675c42c7eb3ee84dade8f38ae8cf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f5e999e50818ab6374ce09dd6920cb5dc3dabc82
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91343920"
+ms.locfileid: "91362435"
 ---
 # <a name="deploy-azure-machine-learning-studio-classic-workspace-using-azure-resource-manager"></a>Azure Machine Learning Studio (klasszikus) munkaterület üzembe helyezése Azure Resource Manager használatával
 
-**a következőkre vonatkozik:** ![ igen ](../../../includes/media/aml-applies-to-skus/yes.png) Machine learning Studio (klasszikus) ![ nincs](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../compare-azure-ml-to-studio-classic.md)  
+**a következőkre vonatkozik:** ![ A következőre vonatkozik:. ](../../../includes/media/aml-applies-to-skus/yes.png) A Machine Learning Studio (klasszikus) ![ nem vonatkozik a következőre:.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
 
 Egy Azure Resource Manager telepítési sablon használatával időt takaríthat meg azáltal, hogy méretezhető módon telepíti az összekapcsolt összetevőket egy érvényesítési és újrapróbálkozási mechanizmussal. Azure Machine Learning Studio (klasszikus) munkaterületek beállításához például először be kell állítania egy Azure Storage-fiókot, majd telepítenie kell a munkaterületet. Képzelje el ezt manuálisan a több száz munkaterülethez. Egyszerűbb alternatíva egy Azure Resource Manager sablon használata Studio (klasszikus) munkaterület és annak összes függőségének üzembe helyezéséhez. Ez a cikk végigvezeti a folyamat lépésein. A Azure Resource Manager nagyszerű áttekintését az [Azure Resource Manager áttekintése](../../azure-resource-manager/management/overview.md)című témakörben tekintheti meg.
 

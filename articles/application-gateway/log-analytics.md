@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 9a5925b9667cf0db5003584c3bf6a30d8611c5ce
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 881dbd02a6bf069fbe68108cc6eab0cb6b909a13
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986005"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362650"
 ---
 # <a name="use-log-analytics-to-examine-application-gateway-web-application-firewall-waf-logs"></a>Log Analytics használata Application Gateway webalkalmazási tűzfal (WAF) naplófájljainak vizsgálatához
 
@@ -80,7 +80,7 @@ AzureDiagnostics
 
 A lekérdezés létrehozása után felveheti azt az irányítópultra.  A log Analytics-munkaterület jobb felső sarkában válassza a **rögzítés az irányítópulton** lehetőséget. Egy példa irányítópultra rögzített előző négy lekérdezéssel az alábbi információk láthatók:
 
-![Irányítópult](media/log-analytics/dashboard.png)
+![A képernyőképen egy Azure-irányítópult látható, ahol felveheti a lekérdezést.](media/log-analytics/dashboard.png)
 
 ## <a name="next-steps"></a>Következő lépések
 
