@@ -11,19 +11,19 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/14/2019
-ms.openlocfilehash: 44ed9c0d19b6e0034b49e36448765d098d575273
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f3c7c166b72a43b6b11dc1830643332b032abad2
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325317"
+ms.locfileid: "91356876"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>Geo-visszaállítás használata több-bérlős SaaS-alkalmazás helyreállításához az adatbázis biztonsági másolatainak használatával
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Ez az oktatóanyag egy teljes vész-helyreállítási forgatókönyvet mutat be egy több-bérlős SaaS-alkalmazáshoz, amely egy bérlői modellben van megvalósítva. A [geo-visszaállítással](recovery-using-backups.md) helyreállíthatja a katalógust és a bérlői adatbázisokat, így automatikusan megőrizheti a Geo-redundáns biztonsági mentéseket egy másodlagos helyreállítási régióban. A leállás feloldása után a [geo-replikációval](active-geo-replication-overview.md) szabadon hazautalhatnak a megváltozott adatbázisokat az eredeti régiójába.
 
-![Geo-visszaállítás – architektúra](./media/saas-dbpertenant-dr-geo-restore/geo-restore-architecture.png)
+![A diagram egy eredeti és helyreállítási régiót mutat be, amelyek közül mindkettő tartalmaz egy alkalmazást, egy katalógust, a kiszolgálók és készletek eredeti vagy tükrözött képét, a tárterület automatikus biztonsági mentését, a helyreállítási régiót, amely a biztonsági mentés földrajzi replikálását fogadja el, valamint a kiszolgáló és a készlet új bérlők számára.](./media/saas-dbpertenant-dr-geo-restore/geo-restore-architecture.png)
 
 A Geo-visszaállítás a Azure SQL Database legalacsonyabb díjas helyreállítási megoldása. Azonban a Geo-redundáns biztonsági mentésből való visszaállítás akár egy óra adatvesztést eredményezhet. Az egyes adatbázisok méretétől függően jelentős időt is igénybe vehet. 
 

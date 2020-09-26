@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/07/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 822d74c6f080a1bb1e5e5af38bdf2c221af16d52
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d6c7ea0057553ea0052ded72353d22ade86b9d74
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086761"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91298915"
 ---
 # <a name="automated-patching-for-sql-server-on-azure-virtual-machines-resource-manager"></a>Az Azure Virtual Machines szolgáltatásban SQL Server automatikus javítása (Resource Manager)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -40,6 +40,7 @@ Az automatikus javítás használatához vegye figyelembe a következő előfelt
 * Windows Server 2012
 * Windows Server 2012 R2
 * Windows Server 2016
+* Windows Server 2019
 
 **SQL Server verziója**:
 
@@ -48,6 +49,7 @@ Az automatikus javítás használatához vegye figyelembe a következő előfelt
 * SQL Server 2014
 * SQL Server 2016
 * SQL Server 2017
+* SQL Server 2019
 
 **Azure PowerShell**:
 
@@ -125,7 +127,7 @@ A SQL Server IaaS-ügynök telepítése és konfigurálása több percet is igé
 
 Az automatikus javítás letiltásához futtassa ugyanazt a parancsfájlt anélkül, hogy a **-enable** paramétert a **New-AzVMSqlServerAutoPatchingConfig**. A **-enable** paraméter hiánya jelzi, hogy a parancs letiltja a funkciót.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ az egyéb rendelkezésre álló automatizálási feladatokról: [SQL Server IaaS-ügynök bővítmény](sql-server-iaas-agent-extension-automate-management.md).
 
 A SQL Server Azure-beli virtuális gépeken való futtatásával kapcsolatos további információkért lásd: [SQL Server az Azure Virtual Machines szolgáltatásban – áttekintés](sql-server-on-azure-vm-iaas-what-is-overview.md).

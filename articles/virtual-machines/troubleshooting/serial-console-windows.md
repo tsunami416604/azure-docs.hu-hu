@@ -1,6 +1,6 @@
 ---
 title: Windowsos Azure soros konzol | Microsoft Docs
-description: Kétirányú soros konzol az Azure Virtual Machines és Virtual Machine Scale Setshoz.
+description: Kétirányú soros konzol Azure Virtual Machines és Virtual Machine Scale Sets Windows-példa használatával.
 services: virtual-machines-windows
 documentationcenter: ''
 author: asinn826
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: c30999a5f0239e60c842084b60b44c165fb7182e
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: c5c139cb94358d70d1f23b68f2a369adb953da08
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424000"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325980"
 ---
 # <a name="azure-serial-console-for-windows"></a>Windows rendszerhez készült Azure soros konzol
 
@@ -148,7 +148,7 @@ A soros konzolhoz való hozzáférés csak azokra a felhasználókra korlátozó
 ### <a name="channel-security"></a>Csatorna biztonsága
 A visszaadott és oda továbbított összes adatforgalom titkosítva van a huzalon.
 
-### <a name="audit-logs"></a>Naplók
+### <a name="audit-logs"></a>Auditnaplók
 A soros konzolhoz való összes hozzáférés jelenleg a virtuális gép [rendszerindítási diagnosztikai](./boot-diagnostics.md) naplóiban van naplózva. A naplókhoz való hozzáférést az Azure-beli virtuális gép rendszergazdája birtokolja és felügyeli.
 
 > [!CAUTION]
@@ -163,7 +163,7 @@ Ha egy felhasználó csatlakozik a soros konzolhoz, és egy másik felhasználó
 ## <a name="accessibility"></a>Akadálymentesség
 A kisegítő lehetőségek az Azure soros konzol egyik fő témája. Ebből a célból biztosítjuk, hogy a soros konzol elérhető legyen a látássérültek számára, vagy akik nagyothallók, illetve akik esetleg nem tudják használni az egeret.
 
-### <a name="keyboard-navigation"></a>Navigálás billentyűzettel
+### <a name="keyboard-navigation"></a>Navigáció a billentyűzeten
 A billentyűzet **Tab** billentyűjét használva navigáljon a soros konzol felületén a Azure Portal. A hely ki lesz emelve a képernyőn. A soros konzol ablakának fókuszának elhagyásához nyomja le a **CTRL F6 billentyűt**a + **F6** billentyűzeten.
 
 ### <a name="use-the-serial-console-with-a-screen-reader"></a>A soros konzol használata képernyőolvasóval
@@ -171,7 +171,7 @@ A soros konzol beépített képernyőolvasó-támogatással rendelkezik. A bekap
 
 ## <a name="common-scenarios-for-accessing-the-serial-console"></a>A soros konzol elérésének gyakori forgatókönyvei
 
-Forgatókönyv          | Műveletek a soros konzolon
+Használati eset          | Műveletek a soros konzolon
 :------------------|:-----------------------------------------
 Helytelen tűzfalszabályok | Nyissa meg a soros konzolt, és javítsa a Windows tűzfal szabályait.
 Fájlrendszer-sérülés/-ellenőrzési | Nyissa meg a soros konzolt, és állítsa helyre a fájlrendszert.
@@ -194,27 +194,27 @@ A hosszú karakterláncok beillesztése nem működik. | A soros konzol korláto
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-**K. Hogyan küldhetek visszajelzést?**
+**Q. Hogyan küldhetek visszajelzést?**
 
 A. Visszajelzés létrehozásához hozzon létre egy GitHub-problémát a következő címen: https://aka.ms/serialconsolefeedback . Másik lehetőségként (kevésbé előnyben részesített) küldhet visszajelzést azserialhelp@microsoft.com a virtuális gép kategóriájában vagy a használatával https://feedback.azure.com .
 
-**K. támogatja a soros konzol a másolást és beillesztést?**
+**Q. Támogatja a soros konzol a másolást és beillesztést?**
 
 A. Igen. **Ctrl** + **Shift** + **C** **Ctrl** + **Shift** + A terminálba másoláshoz és beillesztéshez használja a CTRL SHIFT C és a CTRL SHIFT**V** billentyűkombinációt.
 
-**K. ki engedélyezheti vagy letilthatja az előfizetéshez tartozó soros konzolt?**
+**Q. Ki engedélyezheti vagy tilthatja le az előfizetéshez tartozó soros konzolt?**
 
 A. A soros konzol előfizetés szintű engedélyezéséhez vagy letiltásához írási engedéllyel kell rendelkeznie az előfizetéshez. Az írási engedéllyel rendelkező szerepkörök rendszergazdai vagy tulajdonosi szerepköröket is tartalmaznak. Az egyéni szerepkörök rendelkezhetnek írási engedélyekkel is.
 
-**K. ki férhet hozzá a virtuális géphez tartozó soros konzolhoz?**
+**Q. Ki férhet hozzá a virtuális géphez tartozó soros konzolhoz?**
 
 A. A virtuális gép soros konzoljának eléréséhez rendelkeznie kell a virtuálisgép-közreműködő szerepkörrel vagy magasabb jogosultsággal.
 
-**K. a soros konzol nem jelenít meg semmit, mit tegyek?**
+**Q. A soros konzolon nem jelenik meg semmi, mit tegyek?**
 
 A. A rendszerkép valószínűleg helytelenül van konfigurálva a soros konzolhoz való hozzáféréshez. További információ a lemezképnek a soros konzol engedélyezéséhez való konfigurálásáról: [a soros konzol engedélyezése egyéni vagy régebbi lemezképekben](#enable-the-serial-console-in-custom-or-older-images).
 
-**K. elérhető a soros konzol a virtuálisgép-méretezési csoportokhoz?**
+**Q. Elérhető a soros konzol a virtuálisgép-méretezési csoportokhoz?**
 
 A. igen! Lásd [a Virtual Machine Scale sets soros konzolját](./serial-console-overview.md#serial-console-for-virtual-machine-scale-sets)
 

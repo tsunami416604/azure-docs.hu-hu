@@ -10,12 +10,12 @@ ms.tgt_pltfrm: arduino
 ms.date: 03/07/2018
 ms.author: liydu
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f0aa71b34818cf373d1bb58531ee5c68c8d3d5ec
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 187e44a40228adb62a1d97f4e0df8a7ad3a7e2d3
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004322"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91356067"
 ---
 # <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>Shake, Shake for a tweet – Twitter-üzenet beolvasása Azure Functions
 
@@ -61,7 +61,7 @@ A megoldás ablakban futtassa a `Ctrl+P` (z) (MacOS:) feladatot a következő `C
 
 A VS Code terminalban egy interaktív parancssor végigvezeti a szükséges Azure-szolgáltatások kiépítési folyamatán:
 
-![felhő – kiépítés](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/cloud-provision.png)
+![A képernyőképen a Visual Studio Code Terminal interaktív parancssora látható.](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/cloud-provision.png)
 
 > [!NOTE]
 > Ha a lap a betöltési állapotba kerül, amikor megpróbál bejelentkezni az Azure-ba, tekintse meg a ["bejelentkezési oldal lefagy" lépést a IoT fejlesztői készlet – gyakori kérdések című témakörben](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#page-hangs-when-log-in-azure).
@@ -80,7 +80,7 @@ Cserélje le a karakterláncot `iot` a kapcsos zárójelek között a kívánt h
 
 A `Ctrl+P` futtatásához használja a (MacOS: `Cmd+P` ) parancsot a `task cloud-deploy` Azure functions kód üzembe helyezésének megkezdéséhez:
 
-![Felhőbeli üzembe helyezés](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/cloud-deploy.png)
+![A képernyőfelvételen a Visual Studio Code látható, ahol futtathatja a Cloud-Deploy feladatot Azure Functions kód üzembe helyezéséhez.](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/cloud-deploy.png)
 
 > [!NOTE]
 > Esetenként előfordulhat, hogy az Azure-függvény nem működik megfelelően. A probléma elhárításához olvassa el a [IoT fejlesztői készlet – gyakori kérdések című témakör "fordítási hiba" szakaszát](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#compilation-error-for-azure-function).
@@ -115,7 +115,7 @@ A rendszer most a kapcsolatok karakterláncát állítja be, ellenőrzi és felt
 
 1. A VS Code elindítja az Arduino-vázlat ellenőrzését és feltöltését a fejlesztői készlet:
 
-   ![eszköz – feltöltés](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/device-upload.png)
+   ![A képernyőképen a Visual Studio Code az Arduino-vázlat ellenőrzése és feltöltése látható.](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/device-upload.png)
 
 2. A DevKit újraindul, és elkezdi a kód futtatását.
 
@@ -154,7 +154,7 @@ Az alkalmazás inicializálását követően kattintson A gombra, és az A gombo
 
 ## <a name="how-it-works"></a>Működés
 
-![diagram](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/diagram.png)
+![Az ábrán egy olyan mobileszköz látható, amely egy eseményt küld az Azure I o T-hubhoz, amely egy Azure Function app-alkalmazást indít el egy Tweet kéréséhez, amelyet visszaküld az alkalmazásnak, és továbbítja azokat a központba és a mobileszközön.](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/diagram.png)
 
 Az Arduino-vázlat egy eseményt küld az Azure IoT Hubnak. Ez az esemény elindítja a Azure Functions alkalmazást. A Azure Functions alkalmazás tartalmazza a Twitter API-hoz való kapcsolódáshoz és Tweet beolvasásához szükséges logikát. Ezután becsomagolja a tweet szövegét egy C2D (felhőből eszközre), és visszaküldi az eszközre.
 
@@ -170,7 +170,7 @@ Tesztelési célból a minta projekt előre konfigurált Twitter-tulajdonosi jog
 
 4. A (z) {: Target = "_blank"} [Azure Portalban](https://portal.azure.com/)szerezze be az **erőforráscsoportot** , és keresse meg az Azure-függvényt (típus: app Service) a "Shake, Shake" projekthez. A név mindig tartalmazza a "Shake..." karakterlánc.
 
-   ![Azure-függvény](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/azure-function.png)
+   ![A Azure Portal képernyőképe a projekthez tartozó app Service-t jeleníti meg.](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/azure-function.png)
 
 5. Frissítse a `run.csx` **functions > shakeshake-cs** és a saját jogkivonatát tartalmazó kódot:
 
@@ -178,7 +178,7 @@ Tesztelési célból a minta projekt előre konfigurált Twitter-tulajdonosi jog
    string authHeader = "Bearer " + "[your own token]";
    ```
   
-   ![Twitter – token](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/twitter-token.png)
+   ![Képernyőfelvétel: a függvény C# kódját jeleníti meg, ahol megadhatja a tokent.](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/twitter-token.png)
 
 6. Mentse a fájlt, és kattintson a **Futtatás**gombra.
 
@@ -196,7 +196,7 @@ Vagy a kód futtatásakor az alkalmazás újraindítását okozó visszavert jel
 
 2. A [Azure Portal](https://portal.azure.com/)keresse meg a létrehozott Azure functions alkalmazást, és indítsa újra:
 
-   ![Azure-Function-újraindítás](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/azure-function-restart.png)
+   ![Képernyőfelvétel: a Azure Portal Azure Functions alkalmazással és az újraindítás gombbal jeleníthető meg.](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/azure-function-restart.png)
 
 Ha más problémákat tapasztal, tekintse meg a [IoT fejlesztői készlet GYIK](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) -et, vagy vegye fel velünk a kapcsolatot az alábbi csatornákon keresztül:
 

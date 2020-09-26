@@ -1,14 +1,15 @@
 ---
 title: Erőforrások rendszerezése felügyeleti csoportokkal – Azure-irányítás
 description: Megismerheti a felügyeleti csoportokat és azok használatának módját, valamint a hozzájuk tartozó engedélyek működését.
-ms.date: 07/06/2020
+ms.date: 09/22/2020
 ms.topic: overview
-ms.openlocfilehash: d259f44b8424afa9fcfc94b3f1812a0485ab2993
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.custom: contperfq1
+ms.openlocfilehash: e0404cdc934771f8ebc0125ce9e21559739aee35
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89659245"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334157"
 ---
 # <a name="what-are-azure-management-groups"></a>Mik azok az Azure felügyeleti csoportok?
 
@@ -22,7 +23,7 @@ Alkalmazhat például olyan szabályzatokat egy felügyeleti csoportra, amelyek 
 A felügyeleti csoportok és előfizetések rugalmas szerkezetének létrehozásával hierarchiába rendezheti erőforrásait az egységes szabályzat- és hozzáféréskezeléshez. Az alábbi ábrán egy példa látható szabályozási hierarchia létrehozására felügyeleti csoportok használatával.
 
 :::image type="complex" source="./media/tree.png" alt-text="Egy példaként szolgáló felügyeleti csoport hierarchiájának ábrája." border="false":::
-   A felügyeleti csoportokat és előfizetéseket tároló legfelső szintű felügyeleti csoport ábrája. Egyes alárendelt felügyeleti csoportok felügyeleti csoportokat tartanak fenn, néhányat tartanak előfizetések, és némelyikük is megtartható. A minta-hierarchia egyik példája 4 olyan felügyeleti csoport, amelynek a gyermek szintje minden előfizetés.
+   A felügyeleti csoportokat és előfizetéseket tároló legfelső szintű felügyeleti csoport ábrája. Egyes alárendelt felügyeleti csoportok felügyeleti csoportokat tartanak fenn, néhányat tartanak előfizetések, és némelyikük is megtartható. A minta-hierarchia egyik példája négy olyan felügyeleti csoport, amelynek a gyermek szintje minden előfizetés.
 :::image-end:::
 
 Létrehozhat egy hierarchiát, amelyre szabályzatot alkalmazhat, például a virtuális gépek helyének az USA nyugati régiójára való korlátozását a „Production” csoporton. Ez a szabályzat minden olyan Nagyvállalati Szerződés (EA) előfizetésre vonatkozik, amely az adott felügyeleti csoport leszármazottait képezi, és az előfizetések alá tartozó összes virtuális gépre érvényes lesz. Ezt a biztonsági szabályzatot az erőforrás vagy az előfizetés tulajdonosa nem módosíthatja, ez pedig hatékonyabb kontrollt biztosít.
@@ -74,7 +75,7 @@ Néhány címtárban, amelyek az előzetes verzió korai szakaszában (2018. jú
 A probléma megoldására két lehetősége van.
 
 - Az összes szerepkör- és szabályzat-hozzárendelés eltávolítása a gyökérszintű felügyeleti csoportról
-  - Ha az összes szerepkör- és szabályzat-hozzárendelést eltávolítja a gyökérszintű felügyeleti csoportról, a szolgáltatás a következő éjszakai ciklus során visszatölti az összes előfizetést a hierarchiába. Ennek a folyamatnak az a célja, hogy a hozzáférések vagy szabályzat-hozzárendelések kiosztása nehogy véletlenül érvényes legyen az összes bérlői előfizetésre.
+  - Ha eltávolítja a szabályzatokat és a szerepkör-hozzárendeléseket a gyökérszintű felügyeleti csoportból, a szolgáltatás a következő éjszakai ciklusban backfills az összes előfizetést a hierarchiába. Ennek a folyamatnak az a célja, hogy a hozzáférések vagy szabályzat-hozzárendelések kiosztása nehogy véletlenül érvényes legyen az összes bérlői előfizetésre.
   - A legjobb mód a folyamat a szolgáltatások működésének befolyásolása nélküli végrehajtására, ha a szerepkör- vagy szabályzat-hozzárendeléseket egy szinttel a gyökérszintű felügyeleti csoport alatt alkalmazza. Ezután eltávolíthatja az összes hozzárendelést a gyökérszintű hatókörből.
 - A visszatöltési folyamat elindítása az API közvetlen meghívásával
   - A címtár bármelyik ügyfele meghívhatja a _TenantBackfillStatusRequest_ vagy a _StartTenantBackfillRequest_ API-t. A StartTenantBackfillRequest API a meghívásakor elindítja az összes előfizetés a hierarchiába való átvitelére vonatkozó kezdeti konfigurációs folyamatot. A folyamat azt az eljárást is elindítja, amely az összes új előfizetést a gyökérszintű felügyeleti csoport gyermekeként érvényesíti.
@@ -167,7 +168,7 @@ A forgatókönyv kijavításához néhány különböző lehetőség áll rendel
 
 A felügyeleti csoportok egyéni szerepköreinek használatakor korlátozások vannak érvényben. 
 
- - Egy új szerepkör hozzárendelhető hatókörében csak egy felügyeleti csoportot lehet definiálni. Ez a korlátozás azért van érvényben, hogy csökkentse a helyzetek számát, amikor a szerepkör-definíciók és a szerepkör-hozzárendelések le vannak választva. Ez a helyzet akkor fordul elő, ha egy szerepkör-hozzárendeléssel rendelkező előfizetést vagy felügyeleti csoportot egy másik, szerepkör-definícióval nem rendelkező szülőbe helyez át a rendszer.  
+ - Egy új szerepkör hozzárendelhető hatókörében csak egy felügyeleti csoportot lehet definiálni. Ez a korlátozás azért van érvényben, hogy csökkentse a helyzetek számát, amikor a szerepkör-definíciók és a szerepkör-hozzárendelések le vannak választva. Ez a helyzet akkor fordul elő, ha egy szerepkör-hozzárendeléssel rendelkező előfizetés vagy felügyeleti csoport egy másik szülőhöz kerül, amely nem rendelkezik szerepkör-definícióval.  
  - A RBAC adatsík műveletei nem definiálhatók a felügyeleti csoport egyéni szerepköreiben. Ez a korlátozás azért van érvényben, mert késési probléma van az adatközpont-erőforrás-szolgáltatókat frissítő RBAC műveletekkel.
    Ez a késési probléma jelenleg használatban van, és ezek a műveletek le lesznek tiltva a szerepkör-definícióból a kockázatok csökkentése érdekében.
  - A Azure Resource Manager nem ellenőrzi a felügyeleti csoport létezését a szerepkör-definíció hozzárendelhető hatókörében. Ha a rendszer elküld egy elírást vagy helytelen felügyeleti csoport AZONOSÍTÓját, akkor a szerepkör-definíció továbbra is létrejön.  
@@ -197,7 +198,7 @@ A felügyeleti csoportok támogatottak az [Azure-tevékenységnaplóban](../../a
 
 Az Azure Portalon kívüli felügyeleti csoportok lekérdezésekor a felügyeleti csoportok célhatóköre a következőhöz hasonlóan néz ki: **"/ providers/Microsoft.Management/managementGroups/{yourMgID}"**.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A felügyeleti csoportokkal kapcsolatos további tudnivalókért lásd:
 

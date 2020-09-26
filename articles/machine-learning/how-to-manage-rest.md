@@ -10,18 +10,18 @@ ms.subservice: core
 ms.date: 01/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 39000a34d1d19026ce406eeb996f89d1acc7ea04
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: b733fbc44deefe46e3496e288ebad525346ef005
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897362"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322308"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>Azure ML-erőforrások létrehozása, futtatása és törlése a REST használatával
 
 
 
-Az Azure ML-erőforrások több módon is kezelhetők. Használhatja a [portált](https://portal.azure.com/), a [parancssori felületet](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)vagy a [Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)-t. Vagy a REST API is kiválaszthatja. A REST API a HTTP-műveleteket szabványos módon használja az erőforrások létrehozásához, lekéréséhez, frissítéséhez és törléséhez. A REST API bármely olyan nyelven vagy eszközzel működik, amely HTTP-kéréseket tesz elérhetővé. A REST egyszerű szerkezete sokszor jó választás a parancsfájlkezelési környezetekben és a MLOps-automatizálásban. 
+Az Azure ML-erőforrások több módon is kezelhetők. Használhatja a [portált](https://portal.azure.com/), a [parancssori felületet](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest&preserve-view=true)vagy a [Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)-t. Vagy a REST API is kiválaszthatja. A REST API a HTTP-műveleteket szabványos módon használja az erőforrások létrehozásához, lekéréséhez, frissítéséhez és törléséhez. A REST API bármely olyan nyelven vagy eszközzel működik, amely HTTP-kéréseket tesz elérhetővé. A REST egyszerű szerkezete sokszor jó választás a parancsfájlkezelési környezetekben és a MLOps-automatizálásban. 
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 

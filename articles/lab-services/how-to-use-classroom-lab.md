@@ -1,14 +1,14 @@
 ---
 title: Hozzáférés osztályterem-tesztkörnyezethez az Azure Lab Servicesben | Microsoft Docs
-description: Ebben az oktatóanyagban egy oktató által beállított tantermi laborban érheti el a virtuális gépeket.
+description: Ismerje meg, hogyan regisztrálhat egy osztálytermi laborba, megtekintheti az összes elérni kívánt labort, elindíthatja és leállíthatja a virtuális gépet a laborban, és csatlakozhat a virtuális géphez.
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 34b61be1ca3fc938032b75358842f2067e5c011c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cd06bfc2dff27f1ef1bc84f01b001b8dbd282cf4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85443570"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334055"
 ---
 # <a name="how-to-access-a-classroom-lab-in-azure-lab-services"></a>Hozzáférés osztályterem-tesztkörnyezethez az Azure Lab Servicesben
 Ez a cikk bemutatja, hogyan regisztrálhat egy osztályterem laborba, megtekintheti az összes elérni kívánt labort, elindíthatja vagy leállíthatja a virtuális gépet a laborban, és csatlakozhat a virtuális géphez. 
@@ -80,7 +80,7 @@ A laborba való regisztráció után az alábbi lépéseket követve megtekinthe
     ![Összes tesztkörnyezet megtekintése](./media/how-to-manage-classroom-labs/all-labs.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Lásd az alábbi cikkeket:
 
 - [Rendszergazdaként, labor-fiókok létrehozása és kezelése](how-to-manage-lab-accounts.md)

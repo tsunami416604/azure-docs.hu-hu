@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
-ms.openlocfilehash: 7408d7609cbceb4ac39298680b6d3854a2d71306
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: b88408480bb0822a061e97336eee5c6b3ccfc8e0
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589214"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358321"
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>Oktatóanyag: a GitHub konfigurálása automatikus felhasználói üzembe helyezéshez
 
@@ -23,7 +23,7 @@ Ennek az oktatóanyagnak a célja, hogy megmutassa a GitHubon és az Azure AD-be
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő elemekkel:
+Az ebben az oktatóanyagban felvázolt forgatókönyv feltételezi, hogy már rendelkezik a következőkkel:
 
 * Azure Active Directory-bérlő
 * GitHub [vállalati felhőben](https://help.github.com/articles/github-s-products/#github-enterprise)létrehozott GitHub-szervezet, amelyhez a [GitHub Enterprise számlázási csomag](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations) szükséges
@@ -63,19 +63,19 @@ Ez a szakasz végigvezeti az Azure AD-nek a GitHub felhasználói fiók létesí
 
 3. Válassza ki a GitHub-példányt, majd válassza a **kiépítés** lapot.
 
-4. Állítsa a **kiépítési módot** **automatikus**értékre.
+4. Állítsa a **Kiépítési mód** mezőt **Automatikus** értékre.
 
     ![GitHub-kiépítés](./media/github-provisioning-tutorial/GitHub1.png)
 
-5. A **rendszergazdai hitelesítő adatok** szakaszban kattintson az **Engedélyezés**elemre. A művelet megnyit egy GitHub-engedélyezési párbeszédpanelt egy új böngészőablakban. Ügyeljen arra, hogy a hozzáférés engedélyezéséhez jóvá kell hagynia a jóváhagyást. Kövesse az [itt](https://help.github.com/github/setting-up-and-managing-organizations-and-teams/approving-oauth-apps-for-your-organization)ismertetett útmutatást.
+5. A **Rendszergazdai hitelesítő adatok** szakaszban kattintson az **Engedélyezés** elemre. A művelet megnyit egy GitHub-engedélyezési párbeszédpanelt egy új böngészőablakban. Ügyeljen arra, hogy a hozzáférés engedélyezéséhez jóvá kell hagynia a jóváhagyást. Kövesse az [itt](https://help.github.com/github/setting-up-and-managing-organizations-and-teams/approving-oauth-apps-for-your-organization)ismertetett útmutatást.
 
-6. Az új ablakban jelentkezzen be a GitHubba a rendszergazdai fiókjával. Az eredményül kapott hitelesítés párbeszédpanelen válassza ki azt a GitHub-csoportot, amely számára engedélyezni szeretné a kiépítés beállítást, majd válassza az **Engedélyezés**lehetőséget. Ha elkészült, térjen vissza a Azure Portal a létesítési konfiguráció befejezéséhez.
+6. Az új ablakban jelentkezzen be a GitHubba a rendszergazdai fiókjával. Az eredményül kapott hitelesítés párbeszédpanelen válassza ki azt a GitHub-csoportot, amely számára engedélyezni szeretné a kiépítés beállítást, majd válassza az **Engedélyezés**lehetőséget. Miután végzett, lépjen vissza az Azure Portalra az átadás konfigurációjának befejezéséhez.
 
-    ![Engedélyezési párbeszédpanel](./media/github-provisioning-tutorial/GitHub2.png)
+    ![A képernyőfelvételen a GitHub bejelentkezési oldala látható.](./media/github-provisioning-tutorial/GitHub2.png)
 
 7. A Azure Portal írja be a **bérlői URL-címet** , majd kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad csatlakozhasson a GitHub-alkalmazáshoz. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a GitHub-fiókja rendszergazdai jogosultságokkal rendelkezik, és a **bérlői URL-cím** helyesen van megadva, majd próbálja megismételni az "engedélyezés" lépést (a **bérlői URL-cím** a szabály `https://api.github.com/scim/v2/organizations/<Organization_name>` szerint megtalálhatja a szervezeteket a GitHub-fiókjában: **Settings**  >  **Organizations**).
 
-    ![Engedélyezési párbeszédpanel](./media/github-provisioning-tutorial/GitHub3.png)
+    ![Képernyőfelvétel: a GitHubon a szervezetek lapja látható.](./media/github-provisioning-tutorial/GitHub3.png)
 
 8. Adja meg annak a személynek vagy csoportnak az e-mail-címét, akinek meg kell kapnia az értesítő e-mail-értesítéseket az **értesítési e-mail** mezőben, és jelölje be az "e-mail-értesítés küldése hiba esetén" jelölőnégyzetet.
 
@@ -83,7 +83,7 @@ Ez a szakasz végigvezeti az Azure AD-nek a GitHub felhasználói fiók létesí
 
 10. A leképezések szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a githubra**lehetőséget.
 
-11. Az **attribútum-hozzárendelések** szakaszban tekintse át az Azure ad-ből a githubra szinkronizált felhasználói attribútumokat. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a GitHub felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez kattintson a Save (Mentés) gombra.
+11. Az **attribútum-hozzárendelések** szakaszban tekintse át az Azure ad-ből a githubra szinkronizált felhasználói attribútumokat. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a GitHub felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások véglegesítéséhez válassza a Mentés gombot.
 
 12. Ha engedélyezni szeretné az Azure AD kiépítési szolgáltatást a GitHubhoz, módosítsa a **kiépítési állapotot** **a következőre** a **Settings (beállítások** ) szakaszban.
 
@@ -95,9 +95,9 @@ Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további informáci
 
 ## <a name="additional-resources"></a>További források
 
-* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>További lépések
 
-* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../app-provisioning/check-status-user-account-provisioning.md)
+* [Tudnivalók a naplók áttekintéséről és az átadási tevékenységekkel kapcsolatos jelentések lekéréséről](../app-provisioning/check-status-user-account-provisioning.md)

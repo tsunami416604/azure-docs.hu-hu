@@ -3,12 +3,12 @@ title: Virtuális gépek jelszavának beállítása Azure Lab Servicesban | Micr
 description: Megtudhatja, hogyan állíthatja be és állíthatja alaphelyzetbe a virtuális gépek (VM) jelszavát a Azure Lab Services osztályterem Labs szolgáltatásban.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 6012123b729bd1be6b4ff0fdb00d71aca56cfa09
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 49615b37875b8340f46ed900a1e7144256c7cb7d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85443774"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334072"
 ---
 # <a name="set-up-and-manage-virtual-machine-pool"></a>Virtuális gépek készleteinek létrehozása és kezelése 
 Ez a cikk bemutatja, hogyan végezheti el a következő feladatokat:
@@ -24,7 +24,7 @@ A labor kapacitásának növeléséhez vagy csökkentéséhez (a laborban talál
 2. Adja meg a laborban használni kívánt **virtuális gépek új számát** . Ennek a számnak nagyobbnak vagy egyenlőnek kell lennie a laborban regisztrált felhasználók számával. 
 3. Ezután válassza a **Mentés**lehetőséget. 
 
-    ![Összes elindítása gomb](./media/how-to-set-virtual-machine-passwords/number-of-vms-in-lab.png)
+    ![Képernyőfelvétel: a "labor Capacity" ablak a "maximális gépek a laborban" és a "Mentés" gomb kiválasztásával.](./media/how-to-set-virtual-machine-passwords/number-of-vms-in-lab.png)
 4. Ha növelte a kapacitást, megtekintheti a létrehozott virtuális gépet vagy virtuális gépeket. Ha nem látja az új virtuális gépet a listában, frissítse a lapot. 
 
     ![Létrehozott virtuális gép](./media/how-to-set-virtual-machine-passwords/vm-being-created.png)
@@ -100,7 +100,7 @@ Ha a következő feltételek teljesülnek, a tesztkörnyezet létrehozója (peda
 
     ![Virtuális gépek listájának exportálása](./media/how-to-export-users-virtual-machines-csv/virtual-machines-export-csv.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha szeretne többet megtudni a tanulók által beállítható egyéb használati lehetőségekről, tekintse meg a következő cikket: a [tanulói használat konfigurálása](how-to-configure-student-usage.md).
 
 A virtuális gépek jelszavának alaphelyzetbe állításáról a következő témakörben olvashat: [Virtual Machines-jelszó beállítása vagy alaphelyzetbe állítása a tanterem Labs-ban (diákok)](how-to-set-virtual-machine-passwords-student.md).

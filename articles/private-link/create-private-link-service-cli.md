@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 4312c6b89a7ba3e56e39050d76c673aa532f6f92
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2cfc746d883b565fe7a082a316ce314f385225df
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737342"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358169"
 ---
 # <a name="create-a-private-link-service-using-azure-cli"></a>Privát kapcsolati szolgáltatás létrehozása az Azure CLI-vel
 Ebből a cikkből megtudhatja, hogyan hozhat létre egy privát hivatkozási szolgáltatást az Azure-ban az Azure CLI használatával.
@@ -21,7 +21,7 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre egy privát hivatkozási szo
 
 Ha az Azure CLI helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz az Azure CLI legújabb verzióját kell használnia. A telepített verziójának megkereséséhez futtassa a parancsot `az --version` . További információ: az [Azure CLI telepítése](/cli/azure/install-azure-cli) a telepítéshez vagy a frissítéshez.
 ## <a name="create-a-private-link-service"></a>Privát kapcsolati szolgáltatás létrehozása
-### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 A virtuális hálózat létrehozása előtt létre kell hoznia egy erőforráscsoportot a virtuális hálózat üzemeltetéséhez. Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. Ez a példa létrehoz egy *myResourceGroup* nevű erőforráscsoportot a *westcentralus* helyen:
 
@@ -88,7 +88,7 @@ A Private link Service-nek szüksége van egy virtuális hálózaton belüli bá
 az network vnet subnet update --resource-group myResourceGroup --vnet-name myVirtualNetwork --name mySubnet --disable-private-link-service-network-policies true 
 ```
  
-## <a name="create-a-private-link-service"></a>Privát kapcsolati szolgáltatás létrehozása  
+## <a name="create-a-private-link-service-using-standard-load-balancer"></a>Privát kapcsolati szolgáltatás létrehozása standard Load Balancer használatával 
  
 Hozzon létre egy privát hivatkozási szolgáltatást standard Load Balancer előtér-IP-konfiguráció használatával az [az Network Private-link-Service Create](/cli/azure/network/private-link-service#az-network-private-link-service-create)paranccsal. Ez a példa létrehoz egy standard Load Balancer *myPLS* nevű privát kapcsolati szolgáltatást a *myResourceGroup*nevű *myLoadBalancer* . 
  
@@ -160,6 +160,6 @@ Lásd: kapcsolódási kérelmek a Private link Service [-ben az az Network Priva
 ```azurecli-interactive 
 az network private-link-service show --resource-group myResourceGroup --name myPLS 
 ```
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ az [Azure Private link Service](private-link-service-overview.md) -ről
  

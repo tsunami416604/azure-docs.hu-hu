@@ -4,12 +4,12 @@ description: 'Gyors útmutató: Ez a cikk egy olyan .NET-keretrendszerbeli alkal
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e3f8aee3480f5200a23344553268da1864f892c7
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ea3ad7e90a947269833a03a4cacf3d4fe76a6620
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021289"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334276"
 ---
 # <a name="quickstart-send-events-to-or-receive-events-from-azure-event-hubs-using-net-framework"></a>Gyors útmutató: események küldése vagy fogadása az Azure Event Hubs a .NET-keretrendszerrel
 Az Azure Event Hubs egy Big Data streamplatform és eseményfeldolgozó szolgáltatás, amely másodpercenként több millió esemény fogadására és feldolgozására képes. Az Event Hubs képes az elosztott szoftverek és eszközök által generált események, adatok vagy telemetria feldolgozására és tárolására. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók. Az Event Hubs részletes áttekintéséért lásd az [Event Hubs áttekintését](event-hubs-about.md) és az [Event Hubs-szolgáltatásokat](event-hubs-features.md) ismertető cikket.
@@ -29,7 +29,7 @@ Ebből a szakaszból megtudhatja, hogyan hozhat létre egy .NET-keretrendszerbel
 
 A Visual Studióban hozzon létre egy új Visual C# asztali alkalmazás projektet a **Console Application** Project sablon használatával. Adja a projektnek a **Sender** (Küldő) nevet.
    
-![Konzolalkalmazás létrehozása](./media/event-hubs-dotnet-framework-getstarted-send/create-sender-csharp1.png)
+![Képernyőfelvétel: az "új projekt" ablak a "Console app (.NET-keretrendszer)" beállítással van kiválasztva, a "feladó" és az "OK" gomb pedig kiemelten jelenik meg.](./media/event-hubs-dotnet-framework-getstarted-send/create-sender-csharp1.png)
 
 ### <a name="add-the-event-hubs-nuget-package"></a>Az Event Hubs NuGet-csomag hozzáadása
 

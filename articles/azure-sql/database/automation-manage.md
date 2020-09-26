@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: juliemsft
 ms.author: jrasnick
-ms.reviewer: carlrab
+ms.reviewer: sstein
 ms.date: 03/12/2019
-ms.openlocfilehash: b90acafb9146ec6cd796a0916ad46bf880398b22
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: faf5b1108e28b352a0b8622feed8bdd99264ff16
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87013980"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327578"
 ---
 # <a name="manage-databases-in-azure-sql-database-by-using-azure-automation"></a>Azure SQL Database-adatbázisok kezelése Azure Automation használatával
 
@@ -40,7 +40,7 @@ A Azure Automation az SQL-kiszolgálókkal való közvetlen kommunikációt is l
 
 [Azure Automation](../../automation/automation-runbook-gallery.md) runbook és modul-galériák a Microsoft és a Közösség különböző runbookok kínálják, amelyeket importálhat a Azure Automationba. Ha szeretné használni, töltsön le egy runbook a katalógusból, vagy közvetlenül importálhatja a runbookok a katalógusból vagy az Automation-fiókjából a Azure Portal.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte a Azure Automation alapjait, és azt, hogy miként használható a Azure SQL Database kezelésére, kövesse az alábbi hivatkozásokat, amelyekkel többet is megtudhat a Azure Automationről.
 

@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: sstein, bonova, carlrab
+ms.reviewer: sstein, bonova
 ms.date: 02/22/2019
-ms.openlocfilehash: 562766ada8fb9a2620fa83875dc98d02ab752d95
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 04f0fca06c2e50ef6d99d51c03e58b468a476e9d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85338555"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323107"
 ---
 # <a name="determine-required-subnet-size--range-for-azure-sql-managed-instance"></a>A szükséges alhálózati méret meghatározása & az Azure SQL felügyelt példányának tartománya
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -52,14 +52,14 @@ Az alhálózat méretezése a jövőbeli példányok központi telepítésének 
 
 GP = általános célú; BC = üzleti szempontból kritikus; VC = virtuális fürt
 
-| **Hardveres Gen** | **Díjszabási csomag** | **Azure-használat** | **VC-használat** | **Példány használata** | **Teljes*** |
+| **Hardveres Gen** | **Tarifacsomag** | **Azure-használat** | **VC-használat** | **Példány használata** | **Teljes*** |
 | --- | --- | --- | --- | --- | --- |
 | Gen4 | GP | 5 | 1 | 5 | 11 |
 | Gen4 | BC | 5 | 1 | 5 | 11 |
 | Gen5 | GP | 5 | 6 | 3 | 14 |
 | Gen5 | BC | 5 | 6 | 5 | 16 |
 
-  \*Az oszlop összesen azon címek számát jeleníti meg, amelyek akkor történnek, ha az egyik példány üzembe helyezése az alhálózatban történik. Az alhálózatban lévő minden további példány hozzáadja a példány-használat oszlophoz tartozó címek számát. Az Azure használati oszlopával jelölt címek több virtuális fürtön is megoszthatók, míg a VC-használat oszlopmal jelölt címek megosztása megtörténik a virtuális fürtön elhelyezett példányok között.
+  \* Az oszlop összesen azon címek számát jeleníti meg, amelyek akkor történnek, ha az egyik példány üzembe helyezése az alhálózatban történik. Az alhálózatban lévő minden további példány hozzáadja a példány-használat oszlophoz tartozó címek számát. Az Azure használati oszlopával jelölt címek több virtuális fürtön is megoszthatók, míg a VC-használat oszlopmal jelölt címek megosztása megtörténik a virtuális fürtön elhelyezett példányok között.
 
 A frissítési művelethez általában a virtuális fürtök átméretezése szükséges. Bizonyos esetekben a frissítési művelethez a virtuális fürt létrehozása szükséges (további részletekért lásd a [kezelési műveletek című cikket](sql-managed-instance-paas-overview.md#management-operations)). Virtuális fürt létrehozása esetén a további címek számának meg kell egyeznie a VC-használat oszlop által képviselt címek számával, és a virtuális fürtben lévő példányokhoz szükséges címekkel (a példányok használati oszlopa).
 
@@ -74,7 +74,7 @@ A fentiekben említettek szerint a frissítési művelethez szükség van a virt
 
 A skálázási művelet példányaiban átmenetileg további IP-kapacitásra van szükség, amely az árképzési szinttől és a hardverek létrehozástól függ.
 
-| **Hardveres Gen** | **Díjszabási csomag** | **Forgatókönyv** | **További címek*** |
+| **Hardveres Gen** | **Tarifacsomag** | **Forgatókönyv** | **További címek*** |
 | --- | --- | --- | --- |
 | Gen4 | GP vagy BC | Virtuális mag skálázása | 5 |
 | Gen4 | GP vagy BC | Tárterület skálázása | 5 |
@@ -88,9 +88,9 @@ A skálázási művelet példányaiban átmenetileg további IP-kapacitásra van
 | Gen5 | BC | Tárterület skálázása | 5 |
 | Gen5 | BC | Váltás a GP-re | 3 |
 
-  \*A Gen4 hardverek fokozatos kiépítése folyamatban van, és már nem érhető el az új üzemelő példányokhoz. Frissítse a Gen4-ről a Gen5-re vonatkozó hardver-előállítást, hogy kihasználhassa a Gen5-hardverek létrehozásával kapcsolatos képességeket.
+  \* A Gen4 hardverek fokozatos kiépítése folyamatban van, és már nem érhető el az új üzemelő példányokhoz. Frissítse a Gen4-ről a Gen5-re vonatkozó hardver-előállítást, hogy kihasználhassa a Gen5-hardverek létrehozásával kapcsolatos képességeket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az áttekintést lásd: [Mi az az Azure SQL felügyelt példánya?](sql-managed-instance-paas-overview.md).
 - További információ az [SQL felügyelt példányának kapcsolati architektúráról](connectivity-architecture-overview.md).

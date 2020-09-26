@@ -1,6 +1,6 @@
 ---
 title: Önkiszolgáló bejelentkezési felhasználói folyamat hozzáadása – Azure AD
-description: A összevonása a Facebook használatával lehetővé teheti a külső felhasználók (vendégek) számára, hogy saját Facebook-fiókjával jelentkezzenek be az Azure AD-alkalmazásokba.
+description: Felhasználói folyamatokat hozhat létre a szervezete által készített alkalmazásokhoz. Ezután a felhasználók, akik meglátogatják az alkalmazást, megszerezhetik a vendég fiókot a felhasználói folyamaton konfigurált beállítások használatával.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9fa9d9e23de9a4ec93cbef6d2696d7bec70d41d
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: ffb1d5eb756c7bc316a6d8e1de30a95eb1ac5194
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908459"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287049"
 ---
 # <a name="add-a-self-service-sign-up-user-flow-to-an-app-preview"></a>Önkiszolgáló bejelentkezési felhasználói folyamat hozzáadása egy alkalmazáshoz (előzetes verzió)
 > [!NOTE]
@@ -71,7 +71,7 @@ Ezután létre kell hoznia a felhasználói folyamatot az önkiszolgáló regisz
 
    ![Új felhasználói folyamat létrehozása lap](media/self-service-sign-up-user-flow/create-user-flow.png)
 
-8. Válassza a **Létrehozás** lehetőséget.
+8. Kattintson a **Létrehozás** gombra.
 9. Az új felhasználói folyamat megjelenik a **felhasználói folyamatok (előzetes verzió)** listában. Ha szükséges, frissítse az oldalt.
 
 ## <a name="select-the-layout-of-the-attribute-collection-form"></a>Az attribútumok gyűjteménye űrlap elrendezésének kiválasztása

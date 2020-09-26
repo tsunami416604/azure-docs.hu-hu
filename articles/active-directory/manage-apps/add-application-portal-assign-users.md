@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 09/01/2020
 ms.author: kenwith
-ms.openlocfilehash: 5a0a158f91695bb0aba07aa412f5ba234906d493
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 889ad3b74a2f7c0baa006a0c45e3f14664d6cd0c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707696"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325878"
 ---
 # <a name="quickstart-assign-users-to-an-app-that-is-using-azure-ad-as-an-identity-provider"></a>Gyors útmutató: felhasználók kiosztása az Azure AD-t használó alkalmazásokhoz identitás-szolgáltatóként
 
@@ -55,15 +55,19 @@ Ha felhasználókat szeretne hozzárendelni az Azure AD-bérlőhöz hozzáadott 
     > Ha az alkalmazás nem támogatja a szerepkör kiválasztását, a rendszer az alapértelmezett hozzáférési szerepkört rendeli hozzá. Ebben az esetben az alkalmazás kezeli a felhasználók hozzáférési szintjét.
 9. A **hozzárendelés hozzáadása** panelen kattintson a **hozzárendelés** gombra a panel alján.
 
-> [!NOTE]
-> A felhasználókat és csoportokat ugyanazzal az eljárással lehet kiosztani. Válassza ki azt a felhasználót vagy csoportot, amelynek hozzárendelését törölni szeretné, majd válassza az **Eltávolítás**lehetőséget. A Microsoft 365 és az Office 365-alkalmazások némelyike a PowerShell használatát igényli. 
+A felhasználókat és csoportokat ugyanazzal az eljárással lehet kiosztani. Válassza ki azt a felhasználót vagy csoportot, amelynek hozzárendelését törölni szeretné, majd válassza az **Eltávolítás**lehetőséget. A Microsoft 365 és az Office 365-alkalmazások némelyike a PowerShell használatát igényli. 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha elkészült a gyors üzembe helyezéssel, vegye fontolóra az alkalmazás törlését. Így megőrizheti a teszt bérlőjét. Az alkalmazás törlését a sorozat utolsó rövid útmutatója tartalmazza. [alkalmazás törlése](delete-application-portal.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkből megtudhatja, hogyan állíthatja be az egyszeri bejelentkezést az alkalmazásokhoz.
 > [!div class="nextstepaction"]
-> [Egyszeri bejelentkezés beállítása](add-application-portal-setup-sso.md)
+> [SAML-alapú egyszeri bejelentkezés beállítása](add-application-portal-setup-sso.md)
+
+VAGY
+
+> [!div class="nextstepaction"]
+> [OIDC-alapú egyszeri bejelentkezés beállítása](add-application-portal-setup-oidc-sso.md)

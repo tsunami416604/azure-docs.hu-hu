@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
-ms.date: 01/30/2020
-ms.openlocfilehash: 2a39e27c0a9fc7999d7f363767ad62513d383192
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 09/24/2020
+ms.openlocfilehash: 5df596560e97ea9dba38dca4d4ca58e38caabd37
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520732"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333953"
 ---
 # <a name="set-up-azure-monitor-logs-and-collect-diagnostics-data-for-azure-logic-apps"></a>Azure Monitor naplók beállítása és diagnosztikai adatok összegyűjtése Azure Logic Apps
 
@@ -19,7 +19,7 @@ A logikai alkalmazásokkal kapcsolatos részletes hibakeresési információk a 
 
 A logikai alkalmazás naplózásának beállításához [engedélyezheti a log Analytics a logikai alkalmazás létrehozásakor](#logging-for-new-logic-apps), vagy a meglévő logikai alkalmazások log Analytics munkaterületén is [telepítheti a Logic apps felügyeleti megoldást](#install-management-solution) . Ez a megoldás összesített információt biztosít a logikai alkalmazás futtatásához, és konkrét részleteket tartalmaz, például az állapotot, a végrehajtási időt, az újraküldési állapotot és a korrelációs azonosítókat. Ezután a naplózás engedélyezéséhez és a lekérdezések létrehozásához hozzon létre [Azure monitor naplókat](#set-up-resource-logs).
 
-Ez a cikk bemutatja, hogyan engedélyezheti Log Analytics a logikai alkalmazások létrehozásakor, a Logic Apps felügyeleti megoldás telepítésével és beállításával, valamint a Azure Monitor naplókhoz tartozó lekérdezések beállításával és létrehozásával kapcsolatban.
+Ez a cikk bemutatja, hogyan engedélyezheti a Log Analyticst az új Logic apps és a meglévő Logic Apps alkalmazásokban, hogyan telepítheti és állíthatja be a Logic Apps felügyeleti megoldást, valamint hogyan állíthatja be és hozhat létre lekérdezéseket Azure Monitor naplókhoz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -89,6 +89,9 @@ Ha bekapcsolta Log Analytics a logikai alkalmazás létrehozásakor, hagyja ki e
 
 Ha [Azure monitor naplókban](../azure-monitor/platform/data-platform-logs.md)lévő futtatókörnyezeti eseményekkel és adatokkal kapcsolatos információkat tárol, létrehozhat olyan [napló-lekérdezéseket](../azure-monitor/log-query/log-query-overview.md) , amelyek segítségével megkeresheti és áttekintheti az információkat.
 
+> [!NOTE]
+> Miután engedélyezte a diagnosztikai beállításokat, előfordulhat, hogy a diagnosztikai adatforgalom legfeljebb 30 percet vesz igénybe a megadott célhelyen, például az Log Analytics, az Event hub vagy a Storage-fiókban. Ez a késleltetés azt jelenti, hogy az adott időszak diagnosztikai adatai nem léteznek a felülvizsgálathoz. Előfordulhat, hogy a befejezett események és a [követett tulajdonságok](#extend-data) nem jelennek meg a log Analytics munkaterületen 10-15 percen belül.
+
 1. A [Azure Portal](https://portal.azure.com)keresse meg és válassza ki a logikai alkalmazást.
 
 1. A logikai alkalmazás menüjének **figyelés**területén válassza a **diagnosztikai beállítások**  >  **Hozzáadás diagnosztikai beállítás**elemet.
@@ -140,13 +143,12 @@ A logikai alkalmazás futtatása után megtekintheti a futtatások adatait a Log
 
    ![Logikai alkalmazás futtatásának és állapotának megtekintése](./media/monitor-logic-apps-log-analytics/logic-app-run-details.png)
 
+   > [!NOTE]
+   > A lap **újraküldési** funkciója jelenleg nem érhető el.
+
    Azokat a műveleteket, amelyeken a [követett tulajdonságokat beállította](#extend-data), megtekintheti ezeket a tulajdonságokat a **nyomon követett tulajdonságok** oszlopban a **nézet** lehetőség kiválasztásával. A követett tulajdonságok kereséséhez használja az oszlop szűrőt.
 
    ![Logikai alkalmazás nyomon követett tulajdonságainak megtekintése](./media/monitor-logic-apps-log-analytics/logic-app-tracked-properties.png)
-
-   > [!NOTE]
-   > A nyomon követett tulajdonságok vagy befejezett események 10-15 perces késést tapasztalhatnak a Log Analytics munkaterületen való megjelenés előtt.
-   > Emellett az ezen a lapon lévő **újraküldési** funkció jelenleg nem érhető el.
 
 1. Az eredmények szűréséhez ügyféloldali és Kiszolgálóoldali szűrés is végezhető.
 

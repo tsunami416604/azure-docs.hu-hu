@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: tamram
 ms.reviewer: ozgun
-ms.openlocfilehash: d2ad302042b277cf29b3a7b22af88b662686b3fd
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: c7e0c9aee1ce6b4a2524ac756673784b63be3b31
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90994910"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289769"
 ---
 # <a name="configure-azure-defender-for-storage"></a>Az Azure Defender beállítása a Storage szolgáltatáshoz
 
@@ -23,11 +23,11 @@ Az Azure Defender for Storage egy további biztonsági intelligenciát biztosít
 
 A biztonsági riasztások akkor lépnek életbe, ha a tevékenységben anomáliák vannak. Ezek a biztonsági riasztások integrálva vannak [Azure Security Centerekkel](https://azure.microsoft.com/services/security-center/), és e-mailben is elküldjük az előfizetés-rendszergazdáknak, a gyanús tevékenységek részleteivel és a fenyegetések kivizsgálásával és javításával kapcsolatos ajánlásokkal együtt.
 
-A szolgáltatás betölti az olvasási, írási és törlési kérelmek erőforrás-naplóit a blob Storage-ba, illetve Azure Files (előzetes verzió) a veszélyforrások észleléséhez. Az Azure Defender által indított riasztások vizsgálatához Storage Analytics naplózás használatával tekintheti meg a kapcsolódó tárolási tevékenységeket. További információ: a **naplózás konfigurálása** a [Storage-fiók figyelése a Azure Portalban](storage-monitor-storage-account.md#configure-logging).
+A szolgáltatás betölti az olvasási, írási és törlési kérelmek erőforrás-naplóit a blob Storage-ba, és Azure Files a veszélyforrások észleléséhez. Az Azure Defender által indított riasztások vizsgálatához Storage Analytics naplózás használatával tekintheti meg a kapcsolódó tárolási tevékenységeket. További információ: a **naplózás konfigurálása** a [Storage-fiók figyelése a Azure Portalban](storage-monitor-storage-account.md#configure-logging).
 
 ## <a name="availability"></a>Rendelkezésre állás
 
-A Storage-hoz készült Azure Defender jelenleg blob Storage, Azure Files (előzetes verzió) és Azure Data Lake Storage Gen2 (előzetes verzió) esetén érhető el. Az Azure Defendert támogató fióktípus például az általános célú v2, a blobok és a blob Storage-fiókok. Az Azure Defender for Storage a nyilvános felhőkben és az USA kormányzati felhőkben is elérhető, de nem más szuverén vagy Azure Government Felhőbeli régiókban.
+A Storage-hoz készült Azure Defender jelenleg blob Storage, Azure Files és Azure Data Lake Storage Gen2 számára érhető el. Az Azure Defendert támogató fióktípus például az általános célú v2, a blobok és a blob Storage-fiókok. Az Azure Defender for Storage a nyilvános felhőkben és az USA kormányzati felhőkben is elérhető, de nem más szuverén vagy Azure Government Felhőbeli régiókban.
 
 Az Azure Blob Storage API-kat és a Data Lake Storage API-kat használó Data Lake Storage támogatási tranzakciókat engedélyező hierarchikus névtereket tartalmazó fiókok. Az Azure-fájlmegosztás támogatja a tranzakciókat az SMB protokollon keresztül.
 
@@ -37,8 +37,8 @@ Az alábbi lista összefoglalja az Azure Defender for Storage szolgáltatás el�
 
 - Kiadás állapota:
   - [Blob Storage](https://azure.microsoft.com/services/storage/blobs/) (általánosan elérhető)
-  - [Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) (az előzetes verzió támogatja az SMB-és Rest-tranzakciókat)
-  - Azure Data Lake Storage Gen2 (előzetes verzió)
+  - [Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) (általánosan elérhető)
+  - Azure Data Lake Storage Gen2 (általánosan elérhető)
 - Felhők<br>
     ✔ Kereskedelmi felhők<br>
     ✔ US Gov<br>

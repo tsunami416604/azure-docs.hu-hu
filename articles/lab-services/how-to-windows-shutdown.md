@@ -3,12 +3,12 @@ title: Útmutató a Windows leállítási viselkedésének szabályozásához a 
 description: A tétlen Windowsos virtuális gépek automatikus leállításának és a Windows leállítás parancs eltávolításának lépései.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: e17f6e79c3d18d82dd206954dcfb0e06b02b4d53
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3c20bc2bb79faf53c4f3fbd113c18c5c6d923e59
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445168"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334021"
 ---
 # <a name="guide-to-controlling-windows-shutdown-behavior"></a>Útmutató a Windows leállítási viselkedésének szabályozásához
 
@@ -61,7 +61,7 @@ A következő manuális lépéseket is végrehajthatja a sablon virtuális gép 
 
 1. Nyissa meg a **Számítógép konfigurációja > Felügyeleti sablonok > Windows-összetevők > távoli asztali szolgáltatások > távoli asztal munkamenet-állomás > munkamenetek időbeli korlátait**.  
 
-    ![Helyi csoportházirend-szerkesztő](./media/how-to-windows-shutdown/group-policy-idle.png)
+    ![Képernyőfelvétel: a "helyi csoportházirend-szerkesztő" a "munkamenet időkorlátai" beállítással látható.](./media/how-to-windows-shutdown/group-policy-idle.png)
    
 1. Kattintson a jobb gombbal **az aktív, de üresjáratban lévő távoli asztali szolgáltatások munkamenetek időkorlátjának beállítása**elemre, majd kattintson a **Szerkesztés**elemre.
 
@@ -104,5 +104,5 @@ A következő manuális lépéseket is végrehajthatja a sablon virtuális gép 
 
     ![Leállítás parancs](./media/how-to-windows-shutdown/start-menu.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse meg a Windows-sablonos virtuális gép előkészítéséről szóló cikket: [útmutató a Windows-sablonok számítógépének beállításához Azure Lab Services](how-to-prepare-windows-template.md)

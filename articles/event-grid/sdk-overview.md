@@ -3,12 +3,12 @@ title: SDK-k Azure Event Grid
 description: A Azure Event Grid SDK-kat ismerteti. Ezek az SDK-k felügyeletet, közzétételt és felhasználást biztosítanak.
 ms.topic: reference
 ms.date: 07/07/2019
-ms.openlocfilehash: 2b21d8bf2c393b096e9046765e6cfadc76baffbf
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 5e93448ef703be88583cd59ae5eee9d1993c4054
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119106"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322529"
 ---
 # <a name="event-grid-sdks-for-management-and-publishing"></a>SDK-k Event Grid a felügyelethez és a közzétételhez
 
@@ -29,12 +29,15 @@ A felügyeleti SDK-k lehetővé teszik az Event Grid-témakörök és-előfizet�
 
 Az adatközponti SDK-k lehetővé teszik események küldését a témakörökbe a hitelesítés, az esemény kialakítása és a megadott végpontra történő aszinkron közzététel megtételével. Azt is lehetővé teszik, hogy az első féltől származó eseményeket használja. Jelenleg a következő SDK-k érhetők el:
 
-* [.NET](https://www.nuget.org/packages/Microsoft.Azure.EventGrid)
-* [Ugrás](https://github.com/Azure/azure-sdk-for-go)
-* [Java](https://mvnrepository.com/artifact/com.microsoft.azure/azure-eventgrid)
-* [Csomópont](https://www.npmjs.com/package/azure-eventgrid)
-* [Python](https://pypi.python.org/pypi/azure-eventgrid)
-* [Ruby](https://rubygems.org/gems/azure_event_grid)
+| Programozási nyelv | SDK | 
+| -------------------- | ---------- | ---------- | 
+| .NET | Stabil SDK: [Microsoft. Azure. EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid)<p>Előzetes verzió SDK: [Azure. Messaging. EventGrid](https://www.nuget.org/packages/Azure.Messaging.EventGrid/) |
+| Java | Stabil SDK: [Azure-eventgrid](https://mvnrepository.com/artifact/com.microsoft.azure/azure-eventgrid)<p>Előzetes verzió SDK: [Azure-Messaging-eventgrid](https://search.maven.org/artifact/com.azure/azure-messaging-eventgrid/)</p> |  
+| Python | [Azure-eventgrid](https://pypi.org/project/azure-eventgrid/#history) (lásd a legújabb stabil és előzetes verziókat a **kiadási előzmények** oldalon) |
+| JavaScript | [@azure/eventgrid](https://www.npmjs.com/package/@azure/eventgrid/) (váltson a **verziók** lapra a legújabb stabil és bétaverziós csomagok megtekintéséhez). | 
+| Go | [Azure SDK for Go](https://github.com/Azure/azure-sdk-for-go) | | 
+| Ruby | [azure_event_grid](https://rubygems.org/gems/azure_event_grid) | | 
+
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -9,19 +9,19 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: e267a30d6f73b48f825c4b61b3bc1106133b8cdf
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: df0620308fab2e813fe3802dc7effb9dc1ce226c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935453"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91285383"
 ---
 # <a name="scale-out-your-azure-arc-enabled-postgresql-hyperscale-server-group-by-adding-more-worker-nodes"></a>Több feldolgozó csomópont hozzáadásával bővítheti az Azure arc-alapú PostgreSQL nagy kapacitású-kiszolgáló csoportját
 Ez a dokumentum azt ismerteti, hogyan lehet felskálázást végezni egy Azure arc-kompatibilis PostgreSQL-nagy kapacitású-kiszolgálócsoport használatával. Ezt a forgatókönyvek átvételével végezheti el. **Ha nem kívánja futtatni a forgatókönyvet, és szeretné megtekinteni a vertikális felskálázást, ugorjon a bekezdés [felskálázása](#scale-out)lehetőségre**.
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="get-started"></a>Bevezetés
+## <a name="get-started"></a>Első lépések
 Ha már ismeri az Azure arc engedélyezése PostgreSQL nagy kapacitású vagy Azure Database for PostgreSQL nagy kapacitású (Citus) skálázási modelljét, kihagyhatja ezt a bekezdést. Ha nem, javasoljuk, hogy a Azure Database for PostgreSQL nagy kapacitású (Citus) dokumentációs oldaláról olvassa el ezt a skálázási modellt. A Azure Database for PostgreSQL nagy kapacitású (Citus) ugyanaz a technológia, amely az Azure szolgáltatásként üzemel (a platform szolgáltatásként más néven Pásti), és nem az Azure arc-kompatibilis Data Services részeként elérhető:
 - [Csomópontok és táblák](../../postgresql/concepts-hyperscale-nodes.md)
 - [Alkalmazás típusának meghatározása](../../postgresql/concepts-hyperscale-app-type.md)
@@ -46,7 +46,7 @@ Kapcsolódjon az Azure arc-kompatibilis PostgreSQL nagy kapacitású-kiszolgál�
 ```console
 azdata arc postgres endpoint list -n <server name>
 ```
-Például:
+Példa:
 ```console
 azdata arc postgres endpoint list -n postgres01
 ```
@@ -151,12 +151,16 @@ A kibővíthető parancs általános formátuma:
 azdata arc postgres server edit -n <server group name> -w <target number of worker nodes>
 ```
 
-A következő parancs futtatásával például növelheti a munkavégző csomópontok számát 2 és 4 között:
+> [!CAUTION]
+> Az előzetes verzió nem támogatja a skálázást. A munkavégző csomópontok számának csökkentése például még nem lehetséges. Ha ezt szeretné tenni, ki kell bontania/biztonsági másolatot kell készítenie az adatokról, el kell dobnia a kiszolgálói csoportot, létre kell hoznia egy új, kevesebb feldolgozó csomóponttal rendelkező számítógépcsoportot, majd importálnia kell az adatmennyiséget.
+
+Ebben a példában a következő parancs futtatásával növeljük a munkavégző csomópontok számát 2 és 4 között:
+
 ```console
 azdata arc postgres server edit -n postgres01 -w 4
 ```
 
-Csomópontok hozzáadásakor a rendszer függő állapotot lát a kiszolgálócsoport számára. Például:
+Csomópontok hozzáadásakor a rendszer függő állapotot lát a kiszolgálócsoport számára. Példa:
 ```console
 azdata arc postgres server list
 ```
@@ -178,7 +182,7 @@ Futtassa a következő parancsot:
 azdata arc postgres server list
 ```
 
-Visszaadja a névtérben létrehozott kiszolgálócsoportok listáját, és jelzi a munkavégző csomópontok számát. Például:
+Visszaadja a névtérben létrehozott kiszolgálócsoportok listáját, és jelzi a munkavégző csomópontok számát. Példa:
 ```console
 Name        State    Workers
 ----------  -------  ---------
@@ -191,12 +195,13 @@ Futtassa a következő parancsot:
 kubectl get postgresql-12
 ```
 
-Visszaadja a névtérben létrehozott kiszolgálócsoportok listáját, és jelzi a munkavégző csomópontok számát. Például:
+Visszaadja a névtérben létrehozott kiszolgálócsoportok listáját, és jelzi a munkavégző csomópontok számát. Példa:
 ```console
 NAME         STATE   READY-PODS   EXTERNAL-ENDPOINT   AGE
 postgres01   Ready   4/4          10.0.0.4:31066      4d20h
 ```
-> **Megjegyzés:** Ha a 11 PostgreSQL-es verziójának a 12 helyett a Server-csoportot hozta létre, futtassa inkább a következő parancsot: _kubectl Get PostgreSQL-11_
+> [!NOTE]
+> Ha a 11 PostgreSQL-es verziójának a 12 helyett a Server-csoportot hozta létre, futtassa inkább a következő parancsot: _kubectl Get PostgreSQL-11_
 
 #### <a name="with-a-sql-query"></a>SQL-lekérdezéssel:
 Kapcsolódjon a kiszolgálói csoporthoz az Ön által választott ügyfél-eszközzel, és futtassa a következő lekérdezést:
@@ -230,7 +235,6 @@ Jegyezze fel a végrehajtási időt.
 >* [Nagy teljesítményű HTAP az Azure PostgreSQL nagy kapacitású (Citus)](https://www.youtube.com/watch?v=W_3e07nGFxY)
 >* [HTAP-alkalmazások fejlesztése a Python & Azure PostgreSQL nagy kapacitású (Citus) használatával](https://www.youtube.com/watch?v=YDT8_riLLs0)
 
-> Az előzetes verzió nem támogatja a skálázást. A munkavégző csomópontok számának csökkentése például még nem lehetséges. Ha ezt szeretné tenni, ki kell bontania/biztonsági másolatot kell készítenie az adatokról, el kell dobnia a kiszolgálói csoportot, létre kell hoznia egy új, kevesebb feldolgozó csomóponttal rendelkező számítógépcsoportot, majd importálnia kell az adatmennyiséget.
 
 ## <a name="next-steps"></a>Következő lépések
 

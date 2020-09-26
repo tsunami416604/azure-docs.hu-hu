@@ -3,12 +3,12 @@ title: A VMware HCX telepítése
 description: A VMware HCX-megoldás beállítása az Azure VMware-megoldás saját felhőhöz
 ms.topic: how-to
 ms.date: 09/24/2020
-ms.openlocfilehash: 76a7432b78ec2141039dcdc5dd1d7572335b18e1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a101712f2d80e0d8e70d37bd5b7b08931f62ba3d
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91263201"
+ms.locfileid: "91356553"
 ---
 # <a name="install-hcx-for-azure-vmware-solution"></a>Az Azure VMware-megoldás HCX telepítése
 
@@ -40,7 +40,7 @@ A telepítés befejezése után kövesse a cikk végén elérhető, javasolt kö
 
 A számítási és tárolási erőforrások méretezése az Azure VMware Solution Private Cloud HCX megoldás használatának előkészítéséhez elengedhetetlen tervezési lépés. A méretezési lépést a saját felhőalapú környezet kezdeti megtervezésének részeként kell kezelni. 
 
-A számítási feladatokat a Azure Migrate-portálon az [Azure VMware-megoldás értékelésének](https://docs.microsoft.com/azure/migrate/how-to-create-azure-vmware-solution-assessment) elvégzésével is elvégezheti.
+A számítási feladatokat a Azure Migrate-portálon az [Azure VMware-megoldás értékelésének](../migrate/how-to-create-azure-vmware-solution-assessment.md) elvégzésével is elvégezheti.
 
 ## <a name="software-version-requirements"></a>A szoftver verziójának követelményei
 

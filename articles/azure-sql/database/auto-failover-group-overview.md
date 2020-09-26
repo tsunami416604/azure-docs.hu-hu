@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 08/28/2020
-ms.openlocfilehash: 7b4a85077c8e0147f926f9a86fc8a003591ec8ac
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 469620456fecb7c0cb398988c4a4fc25da97f863
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91277733"
+ms.locfileid: "91357709"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Automatikus feladatátvételi csoportok használata több adatbázis átlátható és koordinált feladatátvételének engedélyezéséhez
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -153,7 +153,7 @@ A feladatátvételi csoport feladatátvételéhez írási hozzáféréssel kell 
 
 Az automatikus feladatátvételi csoportot az elsődleges kiszolgálón kell konfigurálni, és egy másik Azure-régióban található másodlagos kiszolgálóhoz kell csatlakoznia. A csoportok tartalmazhatják a kiszolgálók összes vagy néhány adatbázisát. A következő ábra egy geo-redundáns felhőalapú alkalmazás tipikus konfigurációját mutatja be, amely több adatbázist és automatikus feladatátvételi csoportot használ.
 
-![automatikus feladatátvétel](./media/auto-failover-group-overview/auto-failover-group.png)
+![A diagram egy geo-redundáns felhőalapú alkalmazás tipikus konfigurációját mutatja be, amely több adatbázist és automatikus feladatátvételi csoportot használ.](./media/auto-failover-group-overview/auto-failover-group.png)
 
 > [!NOTE]
 > Lásd: [SQL Database hozzáadása egy feladatátvételi csoporthoz](failover-group-add-single-database-tutorial.md) , amely részletesen ismerteti, hogyan adhat hozzá egy adatbázist a SQL Database egy feladatátvételi csoporthoz.

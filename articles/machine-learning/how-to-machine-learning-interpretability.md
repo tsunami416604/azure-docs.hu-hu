@@ -11,12 +11,12 @@ ms.author: mithigpe
 author: minthigpen
 ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
-ms.openlocfilehash: 757646a1630443f297d4b7c538721e9facdc130c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d063af3ba3b9261100af5e48a2c507a80ac76d98
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897435"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322359"
 ---
 # <a name="model-interpretability-in-azure-machine-learning-preview"></a>Modell értelmezése Azure Machine Learningban (előzetes verzió)
 
@@ -39,20 +39,11 @@ A modell fejlesztésének két fő fázisában fontos a gépi tanulási modell e
 
 ## <a name="interpretability-with-azure-machine-learning"></a>Értelmezés Azure Machine Learning
 
-Az értelmező osztályok több SDK-csomagon keresztül érhetők el: (útmutató a [Azure Machine learning SDK-csomagjainak telepítéséhez](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true))
+Az értelmező osztályok a következő SDK-csomagon keresztül érhetők el: (útmutató a [Azure Machine learning SDK-csomagjainak telepítéséhez](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true))
 
-* `azureml.interpret`a fő csomag, amely a Microsoft által támogatott funkciókat tartalmazza.
+* `azureml.interpret`, a Microsoft által támogatott funkciókat tartalmaz.
 
-* `azureml.contrib.interpret`, előzetes verzió, és kísérleti funkciók, amelyeket kipróbálhat.
-
-`pip install azureml-interpret` `pip install azureml-contrib-interpret` Általános használatra használható.
-
-
-> [!IMPORTANT]
-> A `contrib` névtérben lévő tartalom nem teljes mértékben támogatott. Mivel a kísérleti funkciók megérettek, a rendszer fokozatosan a fő névtérbe helyezi át őket.
-.
-
-
+`pip install azureml-interpret`Általános használatra használható.
 
 ## <a name="how-to-interpret-your-model"></a>A modell értelmezése
 
@@ -71,7 +62,7 @@ Ismerje meg a támogatott értelmező technikákat, a támogatott gépi tanulás
 
  `azureml-interpret` a az [értelmezés – Közösség](https://github.com/interpretml/interpret-community/), a értelmezhető modellek betanítására szolgáló nyílt forráskódú Python-csomag, valamint a tábla AI-rendszerek ismertetésére szolgáló, értelmezhető technikákat használja. A [tolmácsolás – a Közösség](https://github.com/interpretml/interpret-community/) az SDK által támogatott magyarázatokat üzemeltető gazdagépként működik, és jelenleg a következő értelmező módszereket támogatja:
 
-|Értelmező technika|Leírás|Típus|
+|Értelmező technika|Description|Típus|
 |--|--|--------------------|
 |ALAKÍTÁSi fa magyarázata| A SHAP 's Tree [Deformálója](https://github.com/slundberg/shap), amely a **fák és a fák különböző részeire**jellemző, a többhelyes idő gyors formálására szolgáló algoritmusra koncentrál.|Modell-specifikus|
 |Mélyreható magyarázat kialakítása| A SHAPer magyarázata alapján a Deep deformáló "egy nagy sebességű közelítési algoritmus az értékek alakításához a Deep learning-modellekben, amely egy, a [SHAP](https://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions)-beli DeepLIFT-ben leírt módon létesített kapcsolatban. A **TensorFlow** modellek és **kerasz** modellek támogatottak a TensorFlow-háttér használatával (a PyTorch előzetes támogatása is elérhető).|Modell-specifikus|

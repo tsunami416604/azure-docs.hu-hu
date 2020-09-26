@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 23af7ff9e4740b88d3d1f8cffb3d79a46c8d0d61
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6cb2c90658a69f3e63e9ebe08db41eea0a9bc7fa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544451"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91299697"
 ---
 # <a name="tutorial-configure-gotomeeting-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés GoToMeeting konfigurálása
 
@@ -23,7 +23,7 @@ Ennek az oktatóanyagnak a célja, hogy megmutassa a GoToMeeting és az Azure AD
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő elemekkel:
+Az ebben az oktatóanyagban felvázolt forgatókönyv feltételezi, hogy már rendelkezik a következőkkel:
 
 *   Egy Azure Active Directory-bérlő.
 *   GoToMeeting egyszeri bejelentkezésre alkalmas előfizetés.
@@ -60,7 +60,7 @@ Ez a szakasz végigvezeti az Azure AD-nek a GoToMeeting felhasználói fiók lé
 
 1. Állítsa a **kiépítési** módot **automatikus**értékre. 
 
-    ![kiépítési](./media/citrixgotomeeting-provisioning-tutorial/provisioning.png)
+    ![A Azure Portal GoToMeeting kiépítési lapjának képernyőképe. A kiépítési mód beállítása automatikus és rendszergazdai Felhasználónév, jelszó és tesztelési kapcsolatok kiemelése.](./media/citrixgotomeeting-provisioning-tutorial/provisioning.png)
 
 1. A rendszergazdai hitelesítő adatok szakaszban hajtsa végre a következő lépéseket:
    
@@ -76,7 +76,7 @@ Ez a szakasz végigvezeti az Azure AD-nek a GoToMeeting felhasználói fiók lé
 
 1. A leképezések szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a GoToMeeting lehetőséget.**
 
-1. Az **attribútum-hozzárendelések** szakaszban tekintse át az Azure ad-ből az GoToMeeting-be szinkronizált felhasználói attribútumokat. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a GoToMeeting felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez kattintson a Save (Mentés) gombra.
+1. Az **attribútum-hozzárendelések** szakaszban tekintse át az Azure ad-ből az GoToMeeting-be szinkronizált felhasználói attribútumokat. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a GoToMeeting felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások véglegesítéséhez válassza a Mentés gombot.
 
 1. Az Azure AD-kiépítési szolgáltatás GoToMeeting való engedélyezéséhez módosítsa a **kiépítési állapotot** a következőre a beállítások **szakaszban:**
 
@@ -88,7 +88,7 @@ Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további informáci
 
 ## <a name="additional-resources"></a>További források
 
-* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](tutorial-list.md)
+* [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 * [Egyszeri bejelentkezés konfigurálása](https://docs.microsoft.com/azure/active-directory/active-directory-saas-citrix-gotomeeting-tutorial)
 

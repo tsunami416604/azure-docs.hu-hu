@@ -1,18 +1,18 @@
 ---
-title: Bejövő adatkezelő-bővítmény engedélyezése meglévő AK-fürthöz meglévő Azure-Application Gateway
+title: 'Oktatóanyag: bejövő adatkezelő-bővítmény engedélyezése meglévő AK-fürthöz meglévő Azure-Application Gateway'
 description: Ezzel az Oktatóanyaggal engedélyezheti a meglévő AK-fürt bemenő vezérlő bővítményét meglévő Application Gateway
 services: application-gateway
 author: caya
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 06/10/2020
+ms.date: 09/24/2020
 ms.author: caya
-ms.openlocfilehash: 35d9396ac1f4569002b95549a8752745537621cf
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: d0ce58c5bb6de4712117959f10b48ae3449f0b97
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89595954"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91285644"
 ---
 # <a name="tutorial-enable-application-gateway-ingress-controller-add-on-for-an-existing-aks-cluster-with-an-existing-application-gateway-through-azure-cli-preview"></a>Oktatóanyag: az Azure CLI (előzetes verzió) szolgáltatással meglévő Application Gatewayokkal rendelkező meglévő AK-fürthöz való belépés Application Gateway bejövő vezérlő bővítményének engedélyezése
 
@@ -29,7 +29,9 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Minta alkalmazás üzembe helyezése az AGIC használatával a bejövő forgalomhoz az AK-fürtön
 > * Győződjön meg arról, hogy az alkalmazás elérhető Application Gateway
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+## <a name="prerequisites"></a>Előfeltételek
+
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -151,7 +153,6 @@ az group delete --name myResourceGroup
 ```
 
 ## <a name="next-steps"></a>Következő lépések
-* [További információ a AGIC-bővítmény letiltásáról](./ingress-controller-disable-addon.md)
-* [További információ a AGIC által támogatott jegyzetekről](./ingress-controller-annotations.md)
-* [AGIC kapcsolatos hibák elhárítása](./ingress-controller-troubleshoot.md)
 
+> [!div class="nextstepaction"]
+> [További információ a AGIC-bővítmény letiltásáról](./ingress-controller-disable-addon.md)

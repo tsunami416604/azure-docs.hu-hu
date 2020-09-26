@@ -1,14 +1,14 @@
 ---
 title: Az Azure Event Hubs integrálása az Azure Private link Service szolgáltatással
 description: Ismerje meg, hogyan integrálható az Azure Event Hubs az Azure Private link Service használatával
-ms.date: 07/29/2020
+ms.date: 08/22/2020
 ms.topic: article
-ms.openlocfilehash: 817ec7b9256829ace61a0d1dad98f1f34683c95e
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 59167635cfc0d8c1123a47410c87d6b9151f6f62
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716791"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334242"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-via-private-endpoints"></a>Azure Event Hubs-névterek hozzáférésének engedélyezése privát végpontokon keresztül 
 Az Azure Private link Service lehetővé teszi az Azure-szolgáltatások (például az Azure Event Hubs, az Azure Storage és a Azure Cosmos DB) és az Azure által üzemeltetett ügyfél/partner szolgáltatások elérését a virtuális hálózat **privát végpontján** keresztül.
@@ -24,7 +24,6 @@ További információ: [Mi az az Azure Private link?](../private-link/private-li
 > 
 > Íme néhány olyan szolgáltatás, amely nem fér hozzá Event Hubs erőforrásokhoz, ha a privát végpontok engedélyezve vannak. Vegye figyelembe, hogy a lista **nem** teljes.
 >
-> - Azure Stream Analytics
 > - Azure IoT Hub útvonalak
 > - Azure IoT Device Explorer
 > - Azure Event Grid
@@ -202,7 +201,7 @@ Privát végpont létrehozásakor jóvá kell hagyni a kapcsolódást. Ha az er�
 
 Négy kiépítési állapot létezik:
 
-| Szolgáltatási művelet | A szolgáltatás fogyasztói magánhálózati végpontjának állapota | Leírás |
+| Szolgáltatási művelet | A szolgáltatás fogyasztói magánhálózati végpontjának állapota | Description |
 |--|--|--|
 | Nincsenek | Függőben | A kapcsolat manuálisan lett létrehozva, és jóváhagyásra vár a Private link erőforrás-tulajdonostól. |
 | Jóváhagyás | Approved | A kapcsolódás automatikusan vagy manuálisan lett jóváhagyva, és készen áll a használatra. |
@@ -211,7 +210,7 @@ Négy kiépítési állapot létezik:
  
 ###  <a name="approve-reject-or-remove-a-private-endpoint-connection"></a>Privát végponti kapcsolatok jóváhagyása, elutasítása vagy eltávolítása
 
-1. Jelentkezzen be az Azure Portalra.
+1. Jelentkezzen be az Azure portálra.
 2. A keresősáv mezőbe írja be az **Event hubok**kifejezést.
 3. Válassza ki a kezelni kívánt **névteret** .
 4. Válassza a **hálózatkezelés** lapot.
@@ -278,7 +277,7 @@ Aliases:  <event-hubs-namespace-name>.servicebus.windows.net
 
 További információ [: Azure Private link Service: korlátozások](../private-link/private-link-service-overview.md#limitations)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az [Azure Private linkről](../private-link/private-link-service-overview.md)
 - További információ az [Azure Event Hubs](event-hubs-about.md)

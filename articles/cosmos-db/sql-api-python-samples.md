@@ -9,12 +9,12 @@ ms.topic: sample
 ms.date: 08/11/2020
 ms.author: rosouz
 ms.custom: devx-track-python
-ms.openlocfilehash: 34257281470f051f3d385aa729ca5a4f3591e61c
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: a0db0ff7db8f0bf5b036e40080ee7ff8eac62b63
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586250"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322682"
 ---
 # <a name="azure-cosmos-db-python-examples"></a>Azure Cosmos DB Python-példák
 
@@ -22,6 +22,7 @@ ms.locfileid: "88586250"
 > * [.NET v2 SDK-példák](sql-api-dotnet-samples.md)
 > * [.NET v3 SDK-példák](sql-api-dotnet-v3sdk-samples.md)
 > * [Java v4 SDK-példák](sql-api-java-sdk-samples.md)
+> * [Spring-adatforrások v3 SDK-példák](sql-api-spring-data-sdk-samples.md)
 > * [Node.js példák](sql-api-nodejs-samples.md)
 > * [Python-példák](sql-api-python-samples.md)
 > * [Azure Kódminta-katalógus](https://azure.microsoft.com/resources/samples/?sort=0&service=cosmos-db)
@@ -51,7 +52,7 @@ Az [Azure-documentdb-Python](https://github.com/Azure/azure-documentdb-python) G
 
 A [database_management.](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/database_management.py) a Python-minta bemutatja, hogyan végezheti el a következő feladatokat. Ha az alábbi minták futtatása előtt szeretne többet megtudni az Azure Cosmos-adatbázisokról, olvassa el a következő témakört: [adatbázisok, tárolók és elemek](databases-containers-items.md) fogalmi cikkének használata.
 
-| Tevékenység | API-referencia |
+| Feladat | API-referencia |
 | --- | --- |
 | [Adatbázis létrehozása](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/database_management.py#L48-L56) |CosmosClient. create_database|
 | [Adatbázis beolvasása azonosító alapján](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/database_management.py#L59-L67) |CosmosClient. get_database_client|
@@ -63,7 +64,7 @@ A [database_management.](https://github.com/Azure/azure-sdk-for-python/blob/mast
 
 A [container_management.](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/container_management.py) a Python-minta bemutatja, hogyan végezheti el a következő feladatokat. Ha az alábbi minták futtatása előtt szeretne többet megtudni az Azure Cosmos-gyűjteményekről, tekintse meg a következő témakört: [adatbázisok, tárolók és elemek](databases-containers-items.md) fogalmi cikkének használata.
 
-| Tevékenység | API-referencia |
+| Feladat | API-referencia |
 | --- | --- |
 | [Tároló lekérdezése](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/container_management.py#L51-L66) |adatbázis. query_containers |
 | [Tároló létrehozása](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/container_management.py#L69-L163) |adatbázis. create_container |
@@ -76,7 +77,7 @@ A [container_management.](https://github.com/Azure/azure-sdk-for-python/blob/mas
 
 A [item_management.](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/document_management.py) a Python-minta bemutatja, hogyan végezheti el a következő feladatokat. Ha az alábbi minták futtatása előtt szeretne többet megtudni az Azure Cosmos-dokumentumokról, olvassa el a következő témakört: [adatbázisok, tárolók és elemek](databases-containers-items.md) fogalmi cikkének használata.
 
-| Tevékenység | API-referencia |
+| Feladat | API-referencia |
 | --- | --- |
 | [Elemek létrehozása egy tárolóban](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/document_management.py#L26-L38) |tároló. create_item |
 | [Elemek olvasása azonosító alapján](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/document_management.py#L41-L49) |tároló. read_item |
@@ -91,7 +92,7 @@ A [item_management.](https://github.com/Azure/azure-sdk-for-python/blob/master/s
 
 A [index_management.](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/index_management.py) a Python-minta bemutatja, hogyan végezheti el a következő feladatokat. A következő minták futtatása előtt a Azure Cosmos DB indexelésének megismeréséhez lásd: a [házirendek indexelése](index-policy.md), az [indexelési típusok](index-types.md)és az [indexelési útvonalak](index-paths.md) fogalmi cikkei.
 
-| Tevékenység | API-referencia |
+| Feladat | API-referencia |
 | --- | --- |
 | [Adott elem kizárása az indexelésből](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/index_management.py#L145-L201) | documents.IndexingDirective.Exclude|
 | [Manuális indexelés használata adott elemek indexeléséhez](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/index_management.py#L204-L263) | dokumentumok. IndexingDirective. include |

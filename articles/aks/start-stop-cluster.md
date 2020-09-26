@@ -3,24 +3,33 @@ title: Azure Kubernetes szolgáltatás indítása és leállítása (ak)
 description: Ismerje meg, hogyan állíthat le vagy indíthat el egy Azure Kubernetes-szolgáltatási (ak-) fürtöt.
 services: container-service
 ms.topic: article
-ms.date: 09/18/2020
+ms.date: 09/24/2020
 author: palma21
-ms.openlocfilehash: 44c33aa018971cc2b2f5eb215597a63e8b55c853
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 460b592924a19449d77ce8d45f470f3e3129f4a6
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91278566"
+ms.locfileid: "91357947"
 ---
 # <a name="stop-and-start-an-azure-kubernetes-service-aks-cluster-preview"></a>Azure Kubernetes Service (ak) fürt leállítása és elindítása (előzetes verzió)
 
-Előfordulhat, hogy az AK-beli számítási feladatait nem kell folyamatosan futtatni, például egy fejlesztési fürtöt, amely csak munkaidőn belül használatos. Ez olyan időpontokat eredményez, amikor az Azure Kubernetes-szolgáltatás (ak) fürtje tétlen lehet, és nem fut tovább a rendszerösszetevőknél. Csökkentheti a fürt lábnyomát úgy, hogy az [összes `User` csomópont-készletet 0-ra](scale-cluster.md#scale-user-node-pools-to-0)méretezi, de a [ `System` készlet](use-system-pools.md) továbbra is szükséges a rendszerösszetevők futtatásához a fürt futása közben. A költségek ezen időszakok alatti optimalizálása érdekében teljes mértékben kikapcsolhatja (leállíthatja) a fürtöt. Ez a művelet teljes mértékben leállítja a vezérlő-és az ügynök-csomópontokat, így az összes számítási költséget mentheti, miközben az összes objektumot és a fürt állapotát az újraindításkor tárolja. Ez lehetővé teszi, hogy közvetlenül egy hétvége után, vagy csak a Batch-feladatok futtatása közben futtassa a fürtöt.
+Előfordulhat, hogy az AK-beli számítási feladatait nem kell folyamatosan futtatni, például egy fejlesztési fürtöt, amely csak munkaidőn belül használatos. Ez olyan időpontokat eredményez, amikor az Azure Kubernetes-szolgáltatás (ak) fürtje tétlen lehet, és nem fut tovább a rendszerösszetevőknél. Csökkentheti a fürt lábnyomát úgy, hogy az [összes `User` csomópont-készletet 0-ra](scale-cluster.md#scale-user-node-pools-to-0)méretezi, de a [ `System` készlet](use-system-pools.md) továbbra is szükséges a rendszerösszetevők futtatásához a fürt futása közben. A költségek ezen időszakok alatti optimalizálása érdekében teljes mértékben kikapcsolhatja (leállíthatja) a fürtöt. Ez a művelet teljes mértékben leállítja a vezérlő-és az ügynök-csomópontokat, így az összes számítási költséget mentheti, miközben az összes objektumot és a fürt állapotát az újraindításkor tárolja. Ezután felveheti a jogot, hogy egy hétvége után maradjon, vagy hogy a fürt csak a Batch-feladatok futtatásakor fusson.
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ## <a name="before-you-begin"></a>Előkészületek
 
 Ez a cikk feltételezi, hogy rendelkezik egy meglévő AK-fürttel. Ha AK-fürtre van szüksége, tekintse meg az AK gyors üzembe helyezését [Az Azure CLI használatával][aks-quickstart-cli] vagy [a Azure Portal használatával][aks-quickstart-portal].
+
+
+### <a name="limitations"></a>Korlátozások
+
+A fürt indítási/leállítási funkciójának használatakor a következő korlátozások érvényesek:
+
+- Ez a funkció csak Virtual Machine Scale Sets-alapú fürtök esetén támogatott.
+- A leállított AK-fürtök fürtjének állapota akár 12 hónapig is megmarad. Ha a fürt 12 hónapnál hosszabb ideig leáll, a fürt állapota nem állítható helyre. További információ: [AK-támogatási szabályzatok](support-policies.md).
+- Csak leállított AK-fürtöket lehet elindítani vagy törölni. Az olyan műveletek elvégzéséhez, mint a skálázás vagy a frissítés, először indítsa el a fürtöt.
 
 ### <a name="install-the-aks-preview-azure-cli"></a>Az `aks-preview` Azure CLI telepítése 
 
@@ -33,11 +42,6 @@ az extension add --name aks-preview
 # Update the extension to make sure you have the latest version installed
 az extension update --name aks-preview
 ``` 
-
-> [!WARNING]
-> A leállított AK-fürtök fürtjének állapota akár 12 hónapig is megmarad. Ha a fürt több mint 12 hónapig leáll, a fürt állapota nem állítható helyre. További információ: [AK-támogatási szabályzatok](support-policies.md).
-> Csak leállított AK-fürtöket lehet elindítani vagy törölni. Az olyan műveletek elvégzéséhez, mint a skálázás vagy a frissítés, először indítsa el a fürtöt.
-
 
 ### <a name="register-the-startstoppreview-preview-feature"></a>Az `StartStopPreview` előzetes verzió funkciójának regisztrálása
 

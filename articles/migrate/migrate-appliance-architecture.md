@@ -3,12 +3,12 @@ title: Az Azure Migrate-berendezés architektúrája
 description: Áttekintést nyújt a kiszolgálók értékeléséhez és áttelepítéséhez használt Azure Migrate készülékről.
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 623790568fb8d86d8065711439f148211fc7fd6b
-ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
+ms.openlocfilehash: 028e0e5b0bbf83c08b5f9cd6d24d7914513ae89a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89514567"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322257"
 ---
 # <a name="azure-migrate-appliance-architecture"></a>Az Azure Migrate-berendezés architektúrája
 
@@ -72,7 +72,7 @@ A készülék a következő eljárással kommunikál a vCenter-kiszolgálókkal 
 2. **Metaadatok és teljesítményadatok összegyűjtése**:
     - A készülék egy CIM (CIM) munkamenet használatával gyűjt Hyper-V virtuális gépek adatait a Hyper-V-gazdagépről a 5985-es porton.
     - A készülék alapértelmezés szerint az 443-as porttal kommunikál a VMware virtuális gépek adatainak a vCenter Serverból való összegyűjtéséhez.
-3. **Adatküldés**: a készülék elküldi az összegyűjtött adatokat Azure Migrate kiszolgáló értékelésére és Azure Migrate kiszolgáló áttelepítésére az 443-as SSL-porton keresztül. A készülék az interneten keresztül tud csatlakozni az Azure-hoz, vagy használhatja a ExpressRoute nyilvános/Microsoft-partneri kapcsolattal is.
+3. **Adatküldés**: a készülék elküldi az összegyűjtött adatokat Azure Migrate kiszolgáló értékelésére és Azure Migrate kiszolgáló áttelepítésére az 443-as SSL-porton keresztül. A készülék az interneten keresztül vagy ExpressRoute keresztül tud csatlakozni az Azure-hoz (Microsoft-társat igényel).
     - A teljesítményadatok esetében a készülék valós idejű kihasználtsági adatokat gyűjt.
         - A teljesítményadatokat a rendszer minden egyes teljesítménymutató esetében 20 másodpercenként gyűjti a VMware-hez, és minden 30 másodpercenként a Hyper-V-hez.
         - Az összegyűjtött adatokat a rendszer összesíti, hogy egy adatpontot 10 percen belül hozzon létre.

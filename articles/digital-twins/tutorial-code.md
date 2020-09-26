@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 30a782c7d7c13eb9c92e4a4bf64e268416a2b382
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: bd8eee2fd6134bb36c0b0ab45492567f4fdbec26
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90561550"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297504"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Oktatóanyag: kódolás az Azure Digital Twins API-kkal
 
@@ -23,7 +23,7 @@ Gyakori, hogy az Azure Digital Twins-szel dolgozó fejlesztők az Azure Digital 
 > * Első lépések a Project Code-ban   
 > * Kód teljes mintája
 > * Az erőforrások eltávolítása
-> * További lépések
+> * Következő lépések
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -234,8 +234,7 @@ await foreach (ModelData md in modelDataList)
     Console.WriteLine($"Type name: {md.DisplayName}: {md.Id}");
 }
 ```
-
-Mielőtt újra futtatja a programot az új kód teszteléséhez, emlékezteti arra, hogy a program legutóbbi futtatásakor már feltöltötte a modellt. Az Azure Digital Twins nem teszi lehetővé, hogy kétszer töltse fel ugyanazt a modellt, ezért a program újbóli futtatásakor a rendszer kivételt vár.
+Mielőtt újra futtatja a programot az új kód teszteléséhez, emlékezteti arra, hogy a program legutóbbi futtatásakor már feltöltötte a modellt. Az Azure Digital Twins nem teszi lehetővé kétszer ugyanazt a modellt, így ha újra megpróbálja feltölteni ugyanazt a modellt, a program kivételt jelez.
 
 Most futtassa újra a programot ezzel a paranccsal a parancsablakban:
 
@@ -258,7 +257,6 @@ try {
     Console.WriteLine($"Load model: {rex.Status}:{rex.Message}");
 }
 ```
-
 Ha most futtatja a programot a `dotnet run` parancssori ablakban, látni fogja, hogy hibakódot kap vissza. A kimenet valahogy így néz ki:
 
 ```cmd/sh
@@ -270,11 +268,11 @@ Load model: 409:Service request failed.
 Status: 409 (Conflict)
 
 Content:
-{"error":{"code":"DocumentAlreadyExists","message":"A document with same identifier already exists.","details":[]}}
+{"error":{"code":"ModelAlreadyExists","message":"Model with same ID already exists dtmi:com:contoso:SampleModel;1. Use Model_List API to view models that already exist. See the Swagger example. (http://aka.ms/ModelListSwSmpl):}}
 
 Headers:
 api-supported-versions: REDACTED
-Date: Tue, 05 May 2020 01:57:51 GMT
+Date: Thu, 10 Sep 2020 01:57:51 GMT
 Content-Length: 115
 Content-Type: application/json; charset=utf-8
 
@@ -392,6 +390,25 @@ await ListRelationships(client, "sampleTwin-0");
 ```
 
 A parancsablakban futtassa a programot a paranccsal `dotnet run` . Ekkor meg kell jelennie a létrehozott kapcsolatok listájának.
+
+Íme egy példa a kimenetre:
+
+```cmd/sh
+Hello World!
+Service client created - ready to go
+
+Upload a model
+Type name: System.Collections.Generic.Dictionary'2[System.String,System.String]: dtmi:contosocom:DigitalTwins:SampleModel;1
+Create twin: sampleTwin-0
+Create twin: sampleTwin-1
+Create twin: sampleTwin-2
+Created relationship successfully
+Created relationship successfully
+Twin sampleTwin-0 is connected to:
+-contains->sampleTwin-1
+-contains->sampleTwin-2
+
+```
 
 ### <a name="query-digital-twins"></a>Digitális ikrek lekérdezése
 
@@ -543,7 +560,7 @@ Az oktatóanyagban használt példány újra felhasználható a következő okta
 
 Végül törölje a helyi gépen létrehozott Project mappát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban létrehozta a .NET-konzol ügyfélprogramját a semmiből. Az ügyfélalkalmazás kódját az Azure Digital Twins-példányon végzett alapszintű műveletek végrehajtásához írta.
 

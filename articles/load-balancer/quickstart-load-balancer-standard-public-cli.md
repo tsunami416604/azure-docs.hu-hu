@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/23/2020
 ms.author: allensu
-ms.custom: mvc, devx-track-javascript, devx-track-azurecli
-ms.openlocfilehash: b437bfa205833594c9e76c6f0d8ff1923f51f117
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.custom: mvc, devx-track-js, devx-track-azurecli
+ms.openlocfilehash: 0b6973f50e4d51c1c94e262a08681ec0431f511e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762708"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333985"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-cli"></a>Rövid útmutató: Nyilvános Load Balancer létrehozása a virtuális gépek terhelésének elosztásához az Azure CLI használatával
 
@@ -36,7 +36,7 @@ Ismerkedjen meg Azure Load Balancer az Azure CLI használatával, és hozzon lé
 
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz az Azure CLI 2.0.28 verziójára vagy újabb verziójára van szükség. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését]( /cli/azure/install-azure-cli) ismertető cikket.
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
@@ -1072,7 +1072,7 @@ Ha már nincs rá szükség, az az [Group delete](https://docs.microsoft.com/cli
     --name myResourceGroupLB
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a rövid útmutatóban
 
 * Létrehozta a standard vagy a nyilvános terheléselosztó

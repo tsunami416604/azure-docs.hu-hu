@@ -7,12 +7,12 @@ author: hedidin
 ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 07/29/2016
-ms.openlocfilehash: 1bb6e28c9dcae01f3233178706d2a24156fa509a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fdf5f25ae6f89ccc06c95ee1be021691dab0047a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76902699"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322427"
 ---
 # <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>Forgatókönyv: Kivételkezelés és hibanaplózás a logikai alkalmazásokhoz kapcsolódóan
 
@@ -103,15 +103,15 @@ A beteg rekord forrását (kérését) be kell jelentkezni a Dynamics CRM Online
 
    **Naplóbejegyzés beszúrása**
 
-   ![Naplóbejegyzés beszúrása](media/logic-apps-scenario-error-and-exception-handling/lognewpatient.png)
+   ![Képernyőkép a Logic app Designerről, amely a InsertLogEntry konfigurációs beállításait mutatja.](media/logic-apps-scenario-error-and-exception-handling/lognewpatient.png)
 
    **Hibanapló beszúrása**
 
-   ![Naplóbejegyzés beszúrása](media/logic-apps-scenario-error-and-exception-handling/insertlogentry.png)
+   ![Képernyőkép a Logic app Designerről, amely a CreateErrorRecord konfigurációs beállításait mutatja.](media/logic-apps-scenario-error-and-exception-handling/insertlogentry.png)
 
    **A rekord létrehozásakor fellépő hiba keresése**
 
-   ![Állapot](media/logic-apps-scenario-error-and-exception-handling/condition.png)
+   ![Képernyőkép a CreateErrorRecord képernyőről a Logic app Designerben, amely a hibaüzenetek létrehozására szolgáló mezőket mutatja.](media/logic-apps-scenario-error-and-exception-handling/condition.png)
 
 ## <a name="logic-app-source-code"></a>Logic app-forráskód
 
@@ -478,7 +478,7 @@ Az előző kódban szereplő kifejezés a *Create_NewPatientRecord* **sikertelen
 
 A Logic Apps kivételek kezelése API-alkalmazás forráskódja ebben a GitHub- [tárházban](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi "Logic app-kivételek kezelési API-ját")érhető el.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [További példák és forgatókönyvek a Logic app szolgáltatásban](../logic-apps/logic-apps-examples-and-scenarios.md)
 * [Logikai alkalmazások figyelése](../logic-apps/monitor-logic-apps.md)

@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 07/16/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 5dce7cde3c46fbcf3f764819f730f42cace4a74c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 0c5f91f1423bc20b2202589c488c9b225ed3fbaa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897539"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333851"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Azure Machine Learning Studio használata Azure-beli virtuális hálózaton
 
@@ -56,8 +56,7 @@ Ha például hálózati biztonsági csoportokat (NSG) használ a kimenő forgalo
 
 ## <a name="access-data-using-the-studio"></a>Hozzáférés az adataihoz a Studio használatával
 
-Ha az adatok egy virtuális hálózaton vannak tárolva, a Storage-fiókokat úgy kell konfigurálni, hogy [felügyelt identitást](../active-directory/managed-identities-azure-resources/overview.md) használjanak az adatokhoz való hozzáférés biztosításához.
-
+Miután [hozzáadta az Azure Storage-fiókot a virtuális hálózathoz](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts), úgy kell beállítania a Storage-fiókot, hogy a [felügyelt identitást](../active-directory/managed-identities-azure-resources/overview.md) használja, hogy biztosítsa a Studio számára az adatokhoz való hozzáférést. A Studio támogatja a szolgáltatási végpontok vagy privát végpontok használatára konfigurált Storage-fiókokat. A Storage-fiókok alapértelmezés szerint szolgáltatás-végpontokat használnak. A magánhálózati végpontok tárolásának engedélyezéséhez lásd: [privát végpontok használata az Azure Storage](../storage/common/storage-private-endpoints.md) -hoz
 
 Ha nem engedélyezi a felügyelt identitást, akkor ez a hibaüzenet jelenik meg, `Error: Unable to profile this dataset. This might be because your data is stored behind a virtual network or your data does not support profile.` továbbá a következő műveletek lesznek letiltva:
 
@@ -72,7 +71,6 @@ A Studio a következő adattár-típusokból származó adatok olvasását támo
 * 1. generációs Azure Data Lake Storage
 * 2. generációs Azure Data Lake Storage
 * Azure SQL Database
-
 
 ### <a name="configure-datastores-to-use-managed-identity"></a>Adattárolók konfigurálása felügyelt identitás használatára
 

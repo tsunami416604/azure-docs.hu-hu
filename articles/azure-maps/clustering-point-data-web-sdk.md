@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: 9247d6bed8f4ca6ec5e51d0d64eb4fe94dc89af7
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.custom: codepen, devx-track-js
+ms.openlocfilehash: 6d0cb0c6a9cc3080ec4b2fbd2c4b707a52a88319
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90089496"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91285111"
 ---
 # <a name="clustering-point-data"></a>Fürtözési pontra vonatkozó adatértékek
 
@@ -48,7 +48,7 @@ var datasource = new atlas.source.DataSource(null, {
 
 Az alábbiakban az osztály által a `DataSource` fürtözéshez biztosított további módszerek érhetők el:
 
-| Metódus | Visszatérési típus | Description |
+| Metódus | Visszatérési típus | Leírás |
 |--------|-------------|-------------|
 | getClusterChildren (clusterId: szám) | &lt;A tömb &lt; funkcióinak &lt; geometriája, bármilyen &gt; \| alakzat&gt;&gt; | A következő nagyítási szinten kéri le a megadott fürt gyermekeit. Ezek a gyerekek az alakzatok és alfürtek kombinációja lehet. Az alfürtek a ClusteredProperties megfelelő tulajdonságokkal rendelkező funkciók lesznek. |
 | getClusterExpansionZoom (clusterId: szám) | Ígéret &lt; száma&gt; | Kiszámítja azt a nagyítási szintet, amelynél a fürt megkezdi a kibővítését vagy szétbontását. |
@@ -92,7 +92,7 @@ Tekintse meg a tollas <a href='https://codepen.io/azuremaps/pen/VRJrgO/'>fürtö
 
 Ha az egér eseményei olyan rétegen történnek, amely fürtözött adatpontokat tartalmaz, a fürtözött adatpont GeoJSON pont szolgáltatás objektumként tér vissza az eseményre. Ennek a pontnak a funkciója a következő tulajdonságokkal fog rendelkezni:
 
-| Tulajdonság neve             | Típus    | Description   |
+| Tulajdonság neve             | Típus    | Leírás   |
 |---------------------------|---------|---------------|
 | `cluster`                 | boolean | Azt jelzi, hogy a szolgáltatás egy fürtöt jelöl-e. |
 | `cluster_id`              | sztring  | A fürt egyedi azonosítója, amely használható az adatforrással `getClusterExpansionZoom` , `getClusterChildren` és `getClusterLeaves` metódusokkal. |

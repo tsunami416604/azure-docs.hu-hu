@@ -1,6 +1,6 @@
 ---
 title: 'Oktatóanyag: az érzékelő adataihoz való csatlakozás időjárás-előrejelzési adataival Azure Notebooks (Python) használatával | Microsoft Azure térképek'
-description: Ebből az oktatóanyagból megtudhatja, hogyan csatlakoztathatja az érzékelő adatait Microsoft Azure Maps időjárási szolgáltatásból Azure Notebooks (Python) használatával.
+description: A Azure Notebooks (Python) használatával Microsoft Azure Maps időjárási szolgáltatásból származó időjárás-előrejelzési adatokkal való csatlakoztatásának útmutatója.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 01/29/2020
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 4ec51bc84041008c0b843a8549e299747c3134a3
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 717cb600f1bdae228f45409cb271ab04d1d51a19
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87851645"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91310101"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>Oktatóanyag: az érzékelő adataihoz való csatlakozás időjárás-előrejelzési adataival Azure Notebooks (Python) használatával
 
@@ -182,9 +182,6 @@ Az alábbi diagramok megjelenítik az előrejelzési adatértékeket. A szél se
 
 ![Szél sebességét ábrázoló ](./media/weather-service-tutorial/speed-date-plot.png) ![ szél irányának ábrázolása](./media/weather-service-tutorial/direction-date-plot.png)</center>
 
-
-## <a name="next-steps"></a>Következő lépések
-
 Ebben az oktatóanyagban megtanulta, hogyan hívhat meg Azure Maps REST API-kat az időjárási előrejelzési adatok beszerzéséhez. Azt is megtanulta, hogyan jelenítheti meg a gráfokban tárolt adatmegjelenítést.
 
 Ha többet szeretne megtudni arról, hogyan hívhat Azure Maps REST API-kat Azure Notebookson belül, tekintse meg az [EV-útválasztást a Azure Notebooks használatával](https://docs.microsoft.com/azure/azure-maps/tutorial-ev-routing).
@@ -196,4 +193,9 @@ Az oktatóanyagban használt Azure Maps API-k megismeréséhez tekintse meg a k�
 
 Azure Maps REST API-k teljes listájáért lásd: [Azure Maps REST API](https://docs.microsoft.com/azure/azure-maps/consumption-model)-k.
 
-További információ a Azure Notebooksről: [Azure Notebooks](https://docs.microsoft.com/azure/notebooks).
+## <a name="next-steps"></a>Következő lépések
+
+További információ a Azure Notebooksről:
+
+> [!div class="nextstepaction"]
+> [Azure Notebooks](https://docs.microsoft.com/azure/notebooks)
