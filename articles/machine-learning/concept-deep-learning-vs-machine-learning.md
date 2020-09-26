@@ -1,24 +1,27 @@
 ---
 title: Mélyreható tanulás és gépi tanulás
-titleSuffix: Azure
-description: Ismerje meg, hogy a Deep learning hogyan kapcsolódik a gépi tanuláshoz és a mesterséges intelligenciához. A mélyreható tanulást olyan forgatókönyvek használják, mint például a csalások észlelése, a hang & az Arcfelismerés, a hangulat-elemzés és az idősorozat-előrejelzés.
+titleSuffix: Azure Machine Learning
+description: Ismerje meg, hogyan kapcsolódik a Deep learning a Machine learninghez és a mesterséges intelligenciához. A Azure Machine Learning a csalások észlelése, az objektumok észlelése és egyéb lehetőségek mélyreható tanulási modelljeit használja.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
-ms.date: 03/05/2020
-ms.openlocfilehash: 177f1992eb0cd93ad871ef3a181460417b1ef523
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/22/2020
+ms.custom: contperfq1
+ms.openlocfilehash: d462ed4627254275703d88cadbaf5d55a106da55
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905137"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330128"
 ---
-# <a name="deep-learning-vs-machine-learning"></a>Mélyreható tanulás és gépi tanulás
+# <a name="deep-learning-vs-machine-learning-in-azure-machine-learning"></a>Mélyreható tanulás és gépi tanulás a Azure Machine Learning
 
-Ez a cikk segítséget nyújt a Deep learning és a Machine learning összehasonlításában. Megtudhatja, hogyan hasonlítja össze a két fogalmat, és hogyan illeszkednek a mesterséges intelligencia tágabb kategóriába. A cikk azt is leírja, hogyan alkalmazhatók a mély tanulás olyan valós forgatókönyvekre, mint például a csalások észlelése, a hang-és Arcfelismerés, a hangulat-elemzés és az idősorozat-előrejelzés.
+Ez a cikk a részletes tanulást és a gépi tanulást ismerteti, valamint azt, hogy azok hogyan illeszkednek a mesterséges intelligencia tágabb kategóriába. Ismerkedjen meg a Azure Machine Learningre épülő mélyreható tanulási megoldásokkal, például a csalások észlelésével, a hang-és Arcfelismerés, a hangulat elemzése és az idősorozat-előrejelzés használatával.
+
+Az algoritmusok megoldáshoz való kiválasztásával kapcsolatos útmutatásért tekintse meg a [Machine learning algoritmust tartalmazó Cheat lapot](algorithm-cheat-sheet.md).
 
 ## <a name="deep-learning-machine-learning-and-ai"></a>Mély tanulás, gépi tanulás és AI
 
@@ -37,7 +40,7 @@ Vegye figyelembe a következő definíciókat a Deep learning és a Machine lear
 
 - A **mesterséges intelligencia (AI)** olyan technika, amely lehetővé teszi a számítógépek számára az emberi intelligenciát. A gépi tanulást is magában foglalja. 
  
-Fontos megérteni az AI, a gépi tanulás és a mély tanulás közötti kapcsolatot. A gépi tanulás a mesterséges intelligencia elérésének módja. A gépi tanulás és a mélyreható tanulási technikák használatával olyan számítógéprendszer és alkalmazások hozhatók létre, amelyek az emberi intelligenciához gyakran társított feladatokat látnak el. Ezek a feladatok a képek felismerését, a beszédfelismerést és a nyelvi fordítást tartalmazzák.
+A gépi tanulás és a mélyreható tanulási technikák használatával olyan számítógéprendszer és alkalmazások hozhatók létre, amelyek az emberi intelligenciához gyakran társított feladatokat látnak el. Ezek a feladatok a képek felismerését, a beszédfelismerést és a nyelvi fordítást tartalmazzák.
 
 ## <a name="techniques-of-deep-learning-vs-machine-learning"></a>A Deep learning és a Machine learning módszerei 
 
@@ -58,7 +61,7 @@ A következő táblázat részletesebben összehasonlítja a két technikát:
 
 A mesterséges neurális hálózati struktúra miatt a Deep learning kiemelkedik a strukturálatlan adat, például képek, hang, videó és szöveg mintázatának azonosítására. Emiatt a Deep learning gyorsan átalakítja számos iparágat, például az egészségügyet, az energiát, a pénzügyt és a szállítást. Ezek az iparágak mostantól a hagyományos üzleti folyamatokat gondolják át. 
 
-A Deep learning leggyakoribb alkalmazásai a következő bekezdésekben olvashatók.
+A Deep learning leggyakoribb alkalmazásai a következő bekezdésekben olvashatók. Azure Machine Learning a modelleket egy nyílt forráskódú keretrendszerből építheti fel, vagy felépítheti a modellt a megadott eszközök használatával.
 
 ### <a name="named-entity-recognition"></a>Nevesített entitások felismerése
 
@@ -69,6 +72,8 @@ A nevesített entitások felismerése olyan mély tanulási módszer, amely a sz
 A Deep learning számos objektum-észlelési használati esettel lett alkalmazva. Az objektumok észlelése két részből áll: a képek besorolása, majd a képek honosítása. A rendszerkép _besorolása_ azonosítja a rendszerkép objektumait, például az autókat vagy a személyeket. A rendszerkép _honosítása_ megadja az objektumok adott helyét. 
 
 Az objektumok észlelése már használatban van olyan iparágakban, mint például a játékok, a kiskereskedelem, a turizmus és az önkiszolgáló autók.
+
+Megtudhatja, hogyan használhat képbesorolási modellt egy nyílt forráskódú keretrendszerből Azure Machine Learning: [rendszerképek osztályozása Pytorch-modell használatával](https://docs.microsoft.com/azure/machine-learning/how-to-train-pytorch?WT.mc_id=docs-article-lazzeri)
 
 ### <a name="image-caption-generation"></a>Képfelirat létrehozása
 
@@ -87,6 +92,8 @@ A megfelelő adatátalakítással a neurális hálózat képes értelmezni a sz�
 A mélyreható tanulási módszereken alapuló szöveges elemzések nagy mennyiségű szöveges adat (például orvosi dokumentumok vagy költségek visszaigazolása) elemzését, a minták felismerését, valamint a szervezett és tömör információk létrehozását ismertetik.
 
 A vállalatok mély tanulással végeznek szöveges elemzést a bennfentes kereskedelem és a kormányzati szabályozásoknak való megfelelés észlelése érdekében. Egy másik gyakori példa a biztosítási csalás: a szöveges elemzés gyakran a nagy mennyiségű dokumentum elemzésére szolgál, hogy felismerje a biztosítási követelések csalásának esélyét. 
+
+Ismerje meg, hogyan használhat TensorFlow modellt a Azure Machine Learningban: [kézzel írt számjegyek osztályozása TensorFlow-modell használatával](https://docs.microsoft.com/azure/machine-learning/how-to-train-tensorflow?WT.mc_id=docs-article-lazzeri)
 
 ## <a name="artificial-neural-networks"></a>Mesterséges neurális hálózatok
 
@@ -110,14 +117,8 @@ A többszintű neurális hálózatok olyan területeken lettek felhasználva, mi
 
 ## <a name="next-steps"></a>Következő lépések
 
-A következő cikkek bemutatják, hogyan használhatja a Deep learning-technológiát a [Azure Machine Learningban](https://docs.microsoft.com/azure/machine-learning/?WT.mc_id=docs-article-lazzeri):
-
-- [Kézzel írt számjegyek osztályozása TensorFlow-modell használatával](https://docs.microsoft.com/azure/machine-learning/how-to-train-tensorflow?WT.mc_id=docs-article-lazzeri)
+A következő cikkek további lehetőségeket mutatnak be a nyílt forráskódú mély tanulási modellek [Azure Machine Learningban](https://docs.microsoft.com/azure/machine-learning/?WT.mc_id=docs-article-lazzeri)való használatára:
 
 - [Kézzel írt számjegyek osztályozása TensorFlow-kalkulátor és kerasz használatával](https://docs.microsoft.com/azure/machine-learning/how-to-train-keras?WT.mc_id=docs-article-lazzeri)
 
-- [Rendszerképek osztályozása Pytorch-modell használatával](https://docs.microsoft.com/azure/machine-learning/how-to-train-pytorch?WT.mc_id=docs-article-lazzeri)
-
 - [Kézzel írt számjegyek besorolása egy Láncer-modell használatával](https://docs.microsoft.com/azure/machine-learning/how-to-train-ml-models)
-
-Továbbá a modellhez tartozó algoritmusok kiválasztásához használja a [Machine learning algoritmust tartalmazó Cheat lapot](algorithm-cheat-sheet.md) .

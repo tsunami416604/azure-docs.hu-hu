@@ -1,5 +1,5 @@
 ---
-title: 'X. 509 eszköz regisztrálása az Azure Device kiépítési szolgáltatásba C használatával #'
+title: 'Rövid útmutató – X. 509 eszköz regisztrálása az Azure Device kiépítési szolgáltatásba C használatával #'
 description: Ez a rövid útmutató csoportos regisztrációkat használ. Ebben a rövid útmutatóban X. 509 eszközöket regisztrál az Azure IoT Hub Device Provisioning Service (DPS) a C# használatával.
 author: wesmc7777
 ms.author: wesmc
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 89d98cdf6f635cab3b85462adf5c6695f7c4482e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: d8d6c9e2276b2368e09cdb0697a37e34dcf487b5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020932"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330264"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-c"></a>Rövid útmutató: X.509-eszközök regisztrációja a Device Provisioning Service-be a C# használatával
 

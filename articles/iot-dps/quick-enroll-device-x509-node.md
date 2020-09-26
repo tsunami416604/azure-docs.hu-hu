@@ -1,5 +1,5 @@
 ---
-title: X. 509 eszközök regisztrálása az Azure Device kiépítési szolgáltatásba Node.js használatával
+title: Rövid útmutató – X. 509 eszközök regisztrálása az Azure Device kiépítési szolgáltatásba Node.js használatával
 description: Ez a rövid útmutató csoportos regisztrációkat használ. Ebben a rövid útmutatóban X. 509 eszközöket fog regisztrálni az Azure IoT Hub Device Provisioning Service (DPS) az Node.js Service SDK használatával
 author: wesmc7777
 ms.author: wesmc
@@ -8,13 +8,13 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.devlang: nodejs
-ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 0f6d18aa0ce4576db1618d17d8fb3866101f87b1
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: mvc, devx-track-js
+ms.openlocfilehash: e1a7bb40e952f0437f0f8c168c48dc1d48b8cf94
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424358"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330230"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-nodejs"></a>Rövid útmutató: X.509-eszközök regisztrációja a Device Provisioning Service-be a Node.js használatával
 
@@ -26,7 +26,7 @@ Ebben a rövid útmutatóban Node.js használatával programozott módon hozhat 
 
 - A [IoT hub Device Provisioning Service beállításának befejezése a Azure Portal](./quick-setup-auto-provision.md).
 - Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egyet ingyen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- [Node.js v 4.0 +](https://nodejs.org). Ez a rövid útmutató telepíti az alábbi [Node.jsIOT SDK](https://github.com/Azure/azure-iot-sdk-node) -t.
+- [Node.js v 4.0 +](https://nodejs.org). Ez a rövid útmutató telepíti az alábbi [Node.jsIOT SDK ](https://github.com/Azure/azure-iot-sdk-node) -t.
 - [Git](https://git-scm.com/download/).
 - [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c).
 
@@ -146,7 +146,7 @@ Egy regisztrációs csoport a tanúsítványláncukban ugyanazon aláíró tanú
 Ha azt tervezi, hogy vizsgálja meg a Node.js szolgáltatás mintáit, ne törölje az ebben a rövid útmutatóban létrehozott erőforrásokat. Ha nem folytatja a műveletet, a következő lépésekkel törölheti az ebben a rövid útmutatóban létrehozott összes Azure-erőforrást.
  
 1. Zárja be a Node.js-minta kimeneti ablakát a gépen.
-2. Navigáljon a Azure Portal eszköz kiépítési szolgáltatásához, válassza a **regisztrációk kezelése**lehetőséget, majd válassza a **beléptetési csoportok** fület. jelölje be a rövid útmutató segítségével regisztrált X. 509 eszközök *csoportjának neve* melletti jelölőnégyzetet, majd kattintson a panel tetején található **Törlés** gombra.    
+2. Navigáljon a Azure Portal eszköz kiépítési szolgáltatásához, válassza a **regisztrációk kezelése**lehetőséget, majd válassza a **regisztrációs csoportok** lapot. Jelölje be az ebben a rövid útmutatóban regisztrált X. 509 eszközök *csoport neve* melletti jelölőnégyzetet, majd kattintson a panel tetején található **Törlés** gombra.    
 3. A Azure Portal eszköz kiépítési szolgáltatásában válassza ki a **tanúsítványok**lehetőséget, válassza ki a rövid útmutatóhoz feltöltött tanúsítványt, majd kattintson a **tanúsítvány részletei** ablak tetején található **Törlés** gombra.  
  
 ## <a name="next-steps"></a>Következő lépések

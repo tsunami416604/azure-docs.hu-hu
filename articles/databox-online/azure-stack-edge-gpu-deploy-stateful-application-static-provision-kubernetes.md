@@ -6,20 +6,22 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/18/2020
+ms.date: 09/22/2020
 ms.author: alkohli
-ms.openlocfilehash: 8366c5b7a05b35891bcf87e446229357a5511359
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6949b2265e1b22d924b67d0d46e5b2f2bf9c23ac
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90899537"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330400"
 ---
 # <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-a-persistentvolume-on-your-azure-stack-edge-pro-device"></a>Kubernetes állapot-nyilvántartó alkalmazás futtatása a kubectl használatával a Azure Stack Edge Pro-eszközön PersistentVolume
 
 Ez a cikk bemutatja, hogyan helyezhet üzembe egy egypéldányos állapotú alkalmazást a Kubernetes egy PersistentVolume (PV) és egy központi telepítés használatával. A központi telepítés `kubectl` egy meglévő Kubernetes-fürtön lévő parancsokat használ, és üzembe helyezi a MySQL-alkalmazást. 
 
 Ez az eljárás azon felhasználók számára készült, akik áttekintették a [Kubernetes-tárolót Azure stack Edge Pro-eszközön](azure-stack-edge-gpu-kubernetes-storage.md) , és ismerik a [Kubernetes-tároló](https://kubernetes.io/docs/concepts/storage/)fogalmait.
+
+A Azure Stack Edge Pro támogatja az Azure SQL Edge-tárolók futtatását is, és ezek a MySQL-hez hasonló módon telepíthetők. További információ: [Azure SQL Edge](../azure-sql-edge/overview.md).
 
 
 ## <a name="prerequisites"></a>Előfeltételek

@@ -5,14 +5,14 @@ ms.assetid: 0b4d7d0e-e984-49a1-a57a-3c0caa955f0e
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 06/16/2020
-ms.custom: mvc, cli-validate, seodec18, devx-track-javascript
+ms.custom: mvc, cli-validate, seodec18, devx-track-js
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: a409af7468daf2ac9de731bcdba5e8f355422ddd
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 4fc79f8508f46f5003b99289d725b303feef78aa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88084590"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91312022"
 ---
 # <a name="tutorial-build-a-nodejs-and-mongodb-app-in-azure"></a>Oktatóanyag: Node.js-és MongoDB-alkalmazás létrehozása az Azure-ban
 
@@ -99,7 +99,7 @@ Hagyja figyelmen kívül a config.domain figyelmeztetést. Az alkalmazás teljes
 --
 MEAN.JS – fejlesztési környezet
 
-Környezet: fejlesztői kiszolgáló: http://0.0.0.0:3000 adatbázis: Mongodb://localhost/Mean-dev alkalmazás verziója: 0.5.0 MEAN.JS verziója: 0.5.0--
+Környezet: fejlesztői kiszolgáló:          http://0.0.0.0:3000 adatbázis: Mongodb://localhost/Mean-dev alkalmazás verziója: 0.5.0 MEAN.JS verziója: 0.5.0--
 </pre>
 
 Egy böngészőben nyissa meg a `http://localhost:3000` oldalt. A felső menüben kattintson a **Regisztráció** lehetőségre, és hozzon létre egy tesztfelhasználót. 
@@ -516,7 +516,7 @@ Alapértelmezés szerint a portál az alkalmazás **Áttekintés** lapját jelen
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
 <a name="next"></a>
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alábbiak elvégzését ismerte meg:
 

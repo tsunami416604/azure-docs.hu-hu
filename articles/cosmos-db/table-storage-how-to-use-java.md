@@ -1,6 +1,6 @@
 ---
 title: Az Azure Table Storage vagy a Java Azure Cosmos DB Table API használata
-description: Az Azure Table Storage vagy az Azure Cosmos DB Table API használatával strukturált adatok tárolhatók a felhőben.
+description: Strukturált adatok tárolása a felhőben az Azure Table Storage vagy a Java Azure Cosmos DB Table API használatával.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: Java
@@ -9,12 +9,12 @@ ms.date: 07/23/2020
 author: sakash279
 ms.author: akshanka
 ms.custom: devx-track-java
-ms.openlocfilehash: e28770bae9f845ae8f5edd3b67bc55175392052a
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: d50f3015be4ce12d5980fde7d039d87ef06da164
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056669"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330468"
 ---
 # <a name="how-to-use-azure-table-storage-or-azure-cosmos-db-table-api-from-java"></a>Az Azure Table Storage és az Azure Cosmos DB Table API használata a Java segítségével
 
@@ -286,7 +286,7 @@ Kötegelt műveletek esetében ügyeljen a következőkre:
 
 ## <a name="retrieve-all-entities-in-a-partition"></a>Egy partíció összes entitásának lekérése
 
-Egy partícióban lévő entitások táblájának lekérdezéséhez használhatja a t `TableQuery` . Meghívásával `TableQuery.from` létrehozhat egy olyan lekérdezést egy adott táblán, amely egy megadott eredményhalmazt ad vissza. Az alábbi kód egy szűrőt ad meg a „Smith” partíciókulcsú entitásokra. `TableQuery.generateFilterCondition`a egy segítő módszer szűrők létrehozására a lekérdezésekhez. Hívja `where` meg a metódus által visszaadott hivatkozást `TableQuery.from` , hogy alkalmazza a szűrőt a lekérdezésre. Ha a lekérdezés az objektumra irányuló hívással van végrehajtva `execute` `CloudTable` , a egy értéket ad vissza, `Iterator` amely a `CustomerEntity` megadott eredményt adja. Ezután a `Iterator` visszaadott értéket "foreach" ciklusban használhatja az eredmények felhasználásához. A kód megjeleníti a konzolon a lekérdezés eredményei között szereplő entitásokhoz tartozó mezőket.
+Egy partícióban lévő entitások táblájának lekérdezéséhez használhatja a t `TableQuery` . Meghívásával `TableQuery.from` létrehozhat egy olyan lekérdezést egy adott táblán, amely egy megadott eredményhalmazt ad vissza. Az alábbi kód egy szűrőt ad meg a „Smith” partíciókulcsú entitásokra. `TableQuery.generateFilterCondition` a egy segítő módszer szűrők létrehozására a lekérdezésekhez. Hívja `where` meg a metódus által visszaadott hivatkozást `TableQuery.from` , hogy alkalmazza a szűrőt a lekérdezésre. Ha a lekérdezés az objektumra irányuló hívással van végrehajtva `execute` `CloudTable` , a egy értéket ad vissza, `Iterator` amely a `CustomerEntity` megadott eredményt adja. Ezután a `Iterator` visszaadott értéket "foreach" ciklusban használhatja az eredmények felhasználásához. A kód megjeleníti a konzolon a lekérdezés eredményei között szereplő entitásokhoz tartozó mezőket.
 
 ```java
 try
@@ -615,7 +615,7 @@ catch (Exception e)
 
 [!INCLUDE [storage-check-out-samples-java](../../includes/storage-check-out-samples-java.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Bevezetés az Azure Table Service használatába Javában](https://github.com/Azure-Samples/storage-table-java-getting-started)
 * A [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) egy ingyenes, önálló alkalmazás, amelynek segítségével vizuálisan dolgozhat Azure Storage-adatokkal Windows, macOS és Linux rendszereken.

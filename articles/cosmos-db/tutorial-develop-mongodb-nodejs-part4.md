@@ -8,14 +8,14 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.author: jopapa
-ms.custom: seodec18, devx-track-javascript
+ms.custom: seodec18, devx-track-js
 ms.reviewer: sngun
-ms.openlocfilehash: e4127024404489d0aa8478a9cbd073773f8b512a
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: c3026ac25d8da0e21c72ffa2d36f90e44a691aea
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423932"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330502"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-cosmos-account"></a>Szögletes alkalmazás létrehozása Azure Cosmos DB API-MongoDB – Cosmos-fiók létrehozása
 
@@ -60,7 +60,7 @@ az cosmosdb create --name <cosmosdb-name> --resource-group myResourceGroup --kin
 A parancs végrehajtása egy-két percet is igénybe vehet. Amint befejeződött, a terminálablakban megjelennek az új adatbázissal kapcsolatos információk. 
 
 Amint az Azure Cosmos DB-fiók létrejött:
-1. Nyisson meg egy új böngészőablakot, és lépjen a következőre[https://portal.azure.com](https://portal.azure.com)
+1. Nyisson meg egy új böngészőablakot, és lépjen a következőre [https://portal.azure.com](https://portal.azure.com)
 1. Kattintson a Azure Cosmos DB logóra a :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-icon.png"::: bal oldali sávon, és megjelenik az összes Azure Cosmos-adatbázisok.
 1. Kattintson az imént létrehozott Azure Cosmos DB-fiókra, válassza az **Overview** (Áttekintés) lapot, és görgessen le a térképig, amelyen az adatbázis található. 
 
