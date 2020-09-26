@@ -11,13 +11,13 @@ author: linda33wj
 manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 06/10/2020
-ms.openlocfilehash: 54aac9fda42a867ab66d631279efbca4f812b01a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 09/23/2020
+ms.openlocfilehash: 942cbda3652692acc8eedf2ec9508bb501a60547
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497615"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332100"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Adatok másolása a és a rendszerből a Dynamics 365 (Common Data Service) vagy a Dynamics CRM-be a Azure Data Factory használatával
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -79,10 +79,10 @@ A Dynamics társított szolgáltatás a következő tulajdonságokat támogatja.
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A Type tulajdonságot "Dynamics", "DynamicsCrm" vagy "CommonDataServiceForApps" értékre kell beállítani. | Igen |
-| Megadva | A Dynamics-példány központi telepítési típusa. Az értéknek "online" értékűnek kell lennie a Dynamics online-hoz. | Igen |
-| serviceUri | A Dynamics-példány szolgáltatásának URL-címe. Például: https://www.crmdynamics.com. | Igen |
-| authenticationType | A Dynamics-kiszolgálóhoz való kapcsolódáshoz szükséges hitelesítési típus. Az érvényes értékek: "AADServicePrincipal" és "Office 365". | Igen |
+| típus | A Type tulajdonságot "Dynamics", "DynamicsCrm" vagy "CommonDataServiceForApps" értékre kell beállítani. | Yes |
+| Megadva | A Dynamics-példány központi telepítési típusa. Az értéknek "online" értékűnek kell lennie a Dynamics online-hoz. | Yes |
+| serviceUri | A Dynamics-példány szolgáltatásának URL-címe, amely ugyanaz, mint a böngészőből. Ilyen például a "https:// \<organization-name> . CRM [x]. Dynamics. com". | Yes |
+| authenticationType | A Dynamics-kiszolgálóhoz való kapcsolódáshoz szükséges hitelesítési típus. Az érvényes értékek: "AADServicePrincipal" és "Office 365". | Yes |
 | servicePrincipalId | Az Azure AD-alkalmazás ügyfél-azonosítója. | Igen, ha a hitelesítés "AADServicePrincipal" |
 | servicePrincipalCredentialType | A szolgáltatás egyszerű hitelesítéséhez használandó hitelesítőadat-típus. Az érvényes értékek: "ServicePrincipalKey" és "ServicePrincipalCert". | Igen, ha a hitelesítés "AADServicePrincipal" |
 | servicePrincipalCredential | A szolgáltatás egyszerű hitelesítő adatai. <br/><br/>Ha a "ServicePrincipalKey" hitelesítő adatként használja, `servicePrincipalCredential` akkor egy karakterlánc, amely Azure Data Factory titkosítja a társított szolgáltatás központi telepítését. Vagy a Azure Key Vault titkos kódjára is hivatkozhat. <br/><br/>Ha hitelesítő adatként használja a "ServicePrincipalCert" kifejezést, `servicePrincipalCredential` Azure Key Vault-ben lévő tanúsítványra kell hivatkoznia. | Igen, ha a hitelesítés "AADServicePrincipal" |
@@ -102,7 +102,7 @@ A Dynamics társított szolgáltatás a következő tulajdonságokat támogatja.
         "type": "Dynamics",  
         "typeProperties": {  
             "deploymentType": "Online",  
-            "serviceUri": "https://www.crmdynamics.com",  
+            "serviceUri": "https://<organization-name>.crm[x].dynamics.com",  
             "authenticationType": "AADServicePrincipal",  
             "servicePrincipalId": "<service principal id>",  
             "servicePrincipalCredentialType": "ServicePrincipalKey",  
@@ -124,7 +124,7 @@ A Dynamics társított szolgáltatás a következő tulajdonságokat támogatja.
         "type": "Dynamics", 
         "typeProperties": { 
             "deploymentType": "Online", 
-            "serviceUri": "https://www.crmdynamics.com", 
+            "serviceUri": "https://<organization-name>.crm[x].dynamics.com", 
             "authenticationType": "AADServicePrincipal", 
             "servicePrincipalId": "<service principal id>", 
             "servicePrincipalCredentialType": "ServicePrincipalCert", 
@@ -154,7 +154,7 @@ A Dynamics társított szolgáltatás a következő tulajdonságokat támogatja.
         "type": "Dynamics",
         "typeProperties": {
             "deploymentType": "Online",
-            "serviceUri": "https://www.crmdynamics.com",
+            "serviceUri": "https://<organization-name>.crm[x].dynamics.com",
             "authenticationType": "Office365",
             "username": "test@contoso.onmicrosoft.com",
             "password": {
@@ -222,7 +222,7 @@ Az adatok a és a Dynamics rendszerbe való másolásához a következő tulajdo
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | Az adatkészlet Type tulajdonságát "DynamicsEntity", "DynamicsCrmEntity" vagy "CommonDataServiceForAppsEntity" értékre kell beállítani. |Igen |
+| típus | Az adatkészlet Type tulajdonságát "DynamicsEntity", "DynamicsCrmEntity" vagy "CommonDataServiceForAppsEntity" értékre kell beállítani. |Yes |
 | entityName | A lekérdezni kívánt entitás logikai neve. | Nem a forrásnál, ha a tevékenység forrása "Query" (lekérdezés), igen, fogadóként van megadva |
 
 #### <a name="example"></a>Példa
@@ -254,7 +254,7 @@ A Dynamicsből származó adatok másolásához a másolási tevékenység **for
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A másolási tevékenység forrásának Type tulajdonságát "DynamicsSource", "DynamicsCrmSource" vagy "CommonDataServiceForAppsSource" értékre kell beállítani. | Igen |
+| típus | A másolási tevékenység forrásának Type tulajdonságát "DynamicsSource", "DynamicsCrmSource" vagy "CommonDataServiceForAppsSource" értékre kell beállítani. | Yes |
 | lekérdezés | A FetchXML egy saját lekérdezési nyelv, amelyet a Dynamics online-ban és a helyszínen is használhat. Tekintse meg a következő példát. További információ: [lekérdezések készítése a FetchXML](https://msdn.microsoft.com/library/gg328332.aspx). | Nem, ha az `entityName` adatkészletben meg van adva |
 
 >[!NOTE]
@@ -323,7 +323,7 @@ Az adatmásoláshoz a másolási **tevékenység** elfogadója szakasz a követk
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | típus | A másolási tevékenység fogadójának Type tulajdonságát "DynamicsSink", "DynamicsCrmSink" vagy "CommonDataServiceForAppsSink" értékre kell beállítani. | Igen. |
-| writeBehavior | A művelet írási viselkedése. Az értéknek "Upsert" értékűnek kell lennie. | Igen |
+| writeBehavior | A művelet írási viselkedése. Az értéknek "Upsert" értékűnek kell lennie. | Yes |
 | alternateKeyName | Az entitáson definiált másodlagos kulcs neve upsert. | Nem. |
 | writeBatchSize | Az egyes kötegekben a Dynamicsba írt adatsorok száma. | Nem. Az alapértelmezett érték 10. |
 | ignoreNullValues | Azt határozza meg, hogy a rendszer figyelmen kívül hagyja-e a null értékeket a Key mezőktől eltérő bemeneti adatokból az írási művelet során.<br/><br/>Az érvényes értékek **igazak** és **hamisak**:<ul><li>**True (igaz**): a célobjektum nem módosult, ha upsert vagy frissítési műveletet végez. Definiált alapértelmezett érték beszúrása egy beszúrási művelet végrehajtásakor.</li><li>**Hamis**: a upsert vagy frissítési művelet végrehajtásakor a célként megadott objektumban lévő Adatfrissítés NULL értékre. Szúrjon be egy null értéket a beszúrási művelet végrehajtásakor.</li></ul> | Nem. Az alapértelmezett érték **false (hamis**). |
@@ -378,17 +378,17 @@ Konfigurálja a megfelelő Data Factory adattípust a forrás-Dynamics adattípu
 | Dynamics-adattípus | Data Factory időközi adattípus | Forrásként támogatott | Fogadóként támogatott |
 |:--- |:--- |:--- |:--- |
 | AttributeTypeCode. BigInt | Hosszú | ✓ | ✓ |
-| AttributeTypeCode. Boolean | Logikai érték | ✓ | ✓ |
+| AttributeTypeCode. Boolean | Logikai | ✓ | ✓ |
 | AttributeType. Customer | GUID | ✓ | ✓ (Lásd: [útmutató](#writing-data-to-a-lookup-field)) |
 | AttributeType. DateTime | Datetime | ✓ | ✓ |
-| AttributeType. decimális | Decimal | ✓ | ✓ |
+| AttributeType. decimális | Tizedesjegy | ✓ | ✓ |
 | AttributeType. Double | Dupla | ✓ | ✓ |
 | AttributeType. EntityName | Sztring | ✓ | ✓ |
 | AttributeType. Integer | Int32 | ✓ | ✓ |
 | AttributeType. lookup | GUID | ✓ | ✓ (Lásd: [útmutató](#writing-data-to-a-lookup-field)) |
-| AttributeType. ManagedProperty | Logikai érték | ✓ | |
+| AttributeType. ManagedProperty | Logikai | ✓ | |
 | AttributeType. Memo | Sztring | ✓ | ✓ |
-| AttributeType. Money | Decimal | ✓ | ✓ |
+| AttributeType. Money | Tizedesjegy | ✓ | ✓ |
 | AttributeType. Owner | GUID | ✓ | ✓ (Lásd: [útmutató](#writing-data-to-a-lookup-field)) |
 | AttributeType. lista | Int32 | ✓ | ✓ |
 | AttributeType. uniqueidentifier | GUID | ✓ | ✓ |

@@ -2,15 +2,15 @@
 title: Sablon létrehozása és üzembe helyezése – spec
 description: Megtudhatja, hogyan hozhat létre egy sablont az ARM-sablon alapján. Ezután telepítse a SPECT egy erőforráscsoporthoz az előfizetésében.
 author: tfitzmac
-ms.date: 08/31/2020
+ms.date: 09/25/2020
 ms.topic: quickstart
 ms.author: tomfitz
-ms.openlocfilehash: 47791455c63852bfc6f8a7e3152fabe18d303ecb
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: a4f24e69f29614de27947573d968d817dce4a57b
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89227729"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91369215"
 ---
 # <a name="quickstart-create-and-deploy-template-spec-preview"></a>Gyors útmutató: sablon létrehozása és üzembe helyezése specifikáció (előzetes verzió)
 
@@ -55,7 +55,7 @@ Ezek a beállítások alább láthatók.
       -Version "1.0" `
       -ResourceGroupName templateSpecRG `
       -Location westus2 `
-      -TemplateJsonFile "c:\Templates\azuredeploy.json"
+      -TemplateFile "c:\Templates\azuredeploy.json"
     ```
 
 # <a name="cli"></a>[Parancssori felület](#tab/azure-cli)
@@ -220,7 +220,7 @@ Most már üzembe helyezheti a sablon specifikációját. A sablon specifikáci�
 1. Szerezze be a sablonhoz tartozó specifikáció erőforrás-AZONOSÍTÓját.
 
     ```azurepowershell
-    $id = (Get-AzTemplateSpec -ResourceGroupName templateSpecRG -Name storageSpec -Version "1.0").Version.Id
+    $id = (Get-AzTemplateSpec -ResourceGroupName templateSpecRG -Name storageSpec -Version "1.0").Versions.Id
     ```
 
 1. Telepítse a sablon specifikációját.

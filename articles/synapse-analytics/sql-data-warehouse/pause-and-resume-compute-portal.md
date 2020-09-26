@@ -11,16 +11,16 @@ ms.date: 04/18/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 25f12d038b2a83688c12d95adefef3d4fb39be43
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: aa86161bce0b52eb1043d792fb2f4770df0992ee
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85214468"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91369416"
 ---
 # <a name="quickstart-pause-and-resume-compute-in-synapse-sql-pool-via-the-azure-portal"></a>Rövid útmutató: a számítások szüneteltetése és folytatása a szinapszis SQL-készletben a Azure Portal használatával
 
-A Azure Portal használatával szüneteltetheti és folytathatja a szinapszis SQL-készlet (adatraktár) számítási erőforrásait. Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
+A Azure Portal használatával szüneteltetheti és folytathatja a szinapszis SQL-készlet (adatraktár) számítási erőforrásait. Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
@@ -46,10 +46,10 @@ Egy SQL-készlet szüneteltetéséhez kövesse az alábbi lépéseket:
     ![Számítás online](././media/pause-and-resume-compute-portal/compute-online.png)
 
 4. Az SQL-készlet szüneteltetéséhez kattintson a **szüneteltetés** gombra. 
-5. A folytatáshoz egy megerősítést kérő kérdés jelenik meg. Kattintson az **Igen**gombra.
+5. A folytatáshoz egy megerősítést kérő kérdés jelenik meg. Kattintson a **Yes** (Igen) gombra.
 6. Várjon néhány percet, és figyelje meg, hogy **Status** az állapot **szünetel**.
 
-    ![Felfüggesztés](./media/pause-and-resume-compute-portal/pausing.png)
+    ![Képernyőfelvétel: a minta adattárház Azure Portal egy szüneteltetési állapottal.](./media/pause-and-resume-compute-portal/pausing.png)
 
 7. A szüneteltetési művelet befejezésekor a rendszer **szünetelteti** az állapotot, és a beállítás gombja **folytatódik**.
 8. Az SQL-készlet számítási erőforrásai mostantól offline állapotban vannak. A számítási feladatokért nem számítunk fel díjat, amíg újra nem folytatja a szolgáltatást.
@@ -68,17 +68,17 @@ Az SQL-készlet folytatásához kövesse az alábbi lépéseket.
     ![Számítás offline](././media/pause-and-resume-compute-portal/compute-offline.png)
 
 4. Az SQL-készlet folytatásához kattintson a **Folytatás**gombra. 
-5. Egy megerősítő kérdés jelenik meg, amely megkérdezi, hogy szeretné-e elindítani. Kattintson az **Igen**gombra.
+5. Egy megerősítő kérdés jelenik meg, amely megkérdezi, hogy szeretné-e elindítani. Kattintson a **Yes** (Igen) gombra.
 6. Figyelje meg, hogy az **állapot** **folytatása**folyamatban van.
 
-    ![Folytatás](./media/pause-and-resume-compute-portal/resuming.png)
+    ![A képernyőképen egy minta adattárház Azure Portal látható a Start gomb kiválasztásával és a folytatás állapot értékével.](./media/pause-and-resume-compute-portal/resuming.png)
 
 7. Ha az SQL-készlet ismét online állapotba kerül, az állapota **online** állapotban van, a választókapcsoló pedig **szünetel**.
 8. Az SQL-készlet számítási erőforrásai online állapotban vannak, és használhatja a szolgáltatást. A számítási költségek újraindultak.
 
     ![Számítás online](././media/pause-and-resume-compute-portal/compute-online.png)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Az adatraktár-egységekért és az SQL-készletben tárolt adatforgalomért kell fizetnie. Ezek a számítási és tárolási erőforrások elkülönítve lesznek kiszámlázva. 
 
@@ -89,7 +89,7 @@ Kövesse az alábbi lépéseket a fölöslegessé vált erőforrások eltávolí
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és kattintson az SQL-készletre.
 
-    ![Erőforrások felszabadítása](./media/pause-and-resume-compute-portal/clean-up-resources.png)
+    ![Az erőforrások eltávolítása](./media/pause-and-resume-compute-portal/clean-up-resources.png)
 
 1. A számítási erőforrások szüneteltetéshez kattintson a **Szüneteltetés** gombra. 
 
@@ -103,7 +103,7 @@ Kövesse az alábbi lépéseket a fölöslegessé vált erőforrások eltávolí
 5. Az erőforráscsoport törléséhez kattintson a **myResourceGroup** elemre, majd az **Erőforráscsoport törlése** parancsra.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ezzel szüneteltette és folytatta a számítást az SQL-készlethez. A következő cikkből megtudhatja, hogyan [tölthetők be](load-data-from-azure-blob-storage-using-polybase.md)az információk az SQL-készletbe. A számítási képességek kezelésével kapcsolatos további információkért tekintse meg a [számítás áttekintését](sql-data-warehouse-manage-compute-overview.md) ismertető cikket. 
 

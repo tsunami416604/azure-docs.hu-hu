@@ -5,20 +5,20 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: 3b68df1b3fc2f03d7659205fe03fdae09ecc3f7a
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 4ac748c606d8ec3c8ba754c34d9c9e7512344a83
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827328"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91292682"
 ---
 ## <a name="configure-the-sample-project"></a>A minta projekt konfigurálása
 
-Ezután állítson be egy példa ügyfélalkalmazás-alkalmazást, amely az Azure Digital Twins-példánnyal fog működni. Ha még nem töltötte le a minta projektet, szerezze be most az [*Azure Digital ikrek Samples*](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples) kezdőlapján, ehhez válassza a cím alatt található *zip letöltése* gombot.
+Ezután állítson be egy példa ügyfélalkalmazás-alkalmazást, amely az Azure Digital Twins-példánnyal fog működni.
 
-Navigáljon a letöltött fájlhoz a gépen, és csomagolja ki.
+Navigáljon a gépre az [*Azure Digital Twins-mintákból*](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples) korábban letöltött fájlra (és ha még nem tette meg, csomagolja ki).
 
-Miután a kibontott mappában található, navigáljon a _AdtSampleApp_. Nyissa meg a _**AdtE2ESample. SLN**_ alkalmazást a Visual Studio 2019-ben. 
+A mappa belsejében navigáljon a _AdtSampleApp_. Nyissa meg a _**AdtE2ESample. SLN**_ alkalmazást a Visual Studio 2019-ben. 
 
 A Visual Studióban a *megoldáskezelő* ablaktáblán hozza létre a _SampleClientApp >serviceConfig.jsmásolatát **. SABLONFÁJL** _ (a másoláshoz és a beillesztéshez használhatja a jobb gombbal kiválasztható menüket). Nevezze át a *serviceConfig.js*másolását. Ez egy előre beállított JSON-fájlként fog szolgálni a projekt futtatásához szükséges konfigurációs változók használatával.
 

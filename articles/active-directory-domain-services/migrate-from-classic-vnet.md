@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 08/10/2020
+ms.date: 09/24/2020
 ms.author: iainfou
-ms.openlocfilehash: de27ee713caae0310f185cd717d5db2095feff32
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: ef05704ea03316ef0c95510e27ee630ddcfb0b44
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88054289"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266904"
 ---
 # <a name="migrate-azure-active-directory-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>Azure Active Directory Domain Services migrálása a klasszikus virtuális hálózati modellből a Resource Managerbe
 
@@ -139,17 +139,25 @@ A felügyelt tartomány áttelepíthető virtuális hálózatokra vonatkozó kor
 
 A virtuális hálózati követelményekkel kapcsolatos további információkért lásd a [virtuális hálózatok kialakításával kapcsolatos szempontokat és a konfigurációs beállításokat][network-considerations].
 
+Egy hálózati biztonsági csoportot is létre kell hoznia a felügyelt tartományhoz tartozó virtuális hálózat forgalmának korlátozásához. Az áttelepítési folyamat során létrejön egy Azure standard Load Balancer, amely megköveteli ezeket a szabályokat. Ez a hálózati biztonsági csoport biztosítja az Azure AD DSét, és szükséges a felügyelt tartomány megfelelő működéséhez.
+
+További információ a szükséges szabályokról: [Azure AD DS hálózati biztonsági csoportok és szükséges portok](network-considerations.md#network-security-groups-and-required-ports).
+
+### <a name="ldaps-and-tlsssl-certificate-expiration"></a>LDAPs és TLS/SSL-tanúsítvány lejárata
+
+Ha a felügyelt tartomány LDAPs használatára van konfigurálva, győződjön meg róla, hogy az aktuális TLS/SSL-tanúsítvány több mint 30 napig érvényes. A következő 30 napon belül lejáró tanúsítvány miatt sikertelen lesz az áttelepítési folyamat. Szükség esetén újítsa meg a tanúsítványt, és alkalmazza azt a felügyelt tartományra, majd indítsa el az áttelepítési folyamatot.
+
 ## <a name="migration-steps"></a>A migrálás lépései
 
 A Resource Manager-alapú üzemi modellre és a virtuális hálózatra történő áttelepítés 5 fő lépésből áll:
 
 | Lépés    | Végrehajtás  | Becsült idő  | Állásidő  | Vissza/vissza? |
 |---------|--------------------|-----------------|-----------|-------------------|
-| [1. lépés – az új virtuális hálózat frissítése és megkeresése](#update-and-verify-virtual-network-settings) | Azure Portal | 15 perc | Nincs szükség állásidőre | N/A |
+| [1. lépés – az új virtuális hálózat frissítése és megkeresése](#update-and-verify-virtual-network-settings) | Azure Portal | 15 perc | Nincs szükség állásidőre | N.A. |
 | [2. lépés – a felügyelt tartomány előkészítése áttelepítésre](#prepare-the-managed-domain-for-migration) | PowerShell | 15 – 30 perc átlagosan | Az Azure AD DS leállása a parancs befejezése után kezdődik. | Visszaállítás és helyreállítás elérhető. |
 | [3. lépés – a felügyelt tartomány áthelyezése meglévő virtuális hálózatra](#migrate-the-managed-domain) | PowerShell | átlagosan 1 – 3 óra | A parancs befejezése után egy tartományvezérlő érhető el, a leállás véget ér. | Hiba esetén mind a visszaállítás (önkiszolgáló), mind a visszaállítás elérhető. |
 | [4. lépés – tesztelés és várakozás a replika tartományvezérlőre](#test-and-verify-connectivity-after-the-migration)| PowerShell és Azure Portal | 1 óra vagy több, a tesztek számától függően | Mindkét tartományvezérlő elérhető, és általában működnie kell. | N/A. Az első virtuális gép sikeres áttelepítése után nincs lehetőség visszaállításra vagy visszaállításra. |
-| [5. lépés – választható konfigurációs lépések](#optional-post-migration-configuration-steps) | Azure Portal és virtuális gépek | N/A | Nincs szükség állásidőre | N/A |
+| [5. lépés – választható konfigurációs lépések](#optional-post-migration-configuration-steps) | Azure Portal és virtuális gépek | N.A. | Nincs szükség állásidőre | N.A. |
 
 > [!IMPORTANT]
 > Az áttelepítési folyamat megkezdése előtt olvassa el az összes áttelepítési cikket és útmutatást a további állásidő elkerüléséhez. Az áttelepítési folyamat egy adott időszakra hatással van az Azure AD DS tartományvezérlők rendelkezésre állására. A felhasználók, szolgáltatások és alkalmazások nem tudnak hitelesíteni a felügyelt tartományon az áttelepítési folyamat során.
@@ -166,7 +174,9 @@ Az áttelepítési folyamat megkezdése előtt végezze el a következő kezdeti
 
     Győződjön meg arról, hogy a hálózati beállítások nem blokkolja az Azure-AD DS szükséges portokat. A portoknak a klasszikus virtuális hálózaton és a Resource Manager virtuális hálózaton is nyitva kell lenniük. Ezek a beállítások útválasztási táblákat tartalmaznak (bár az útválasztási táblák használata nem ajánlott) és a hálózati biztonsági csoportok.
 
-    A szükséges portok megtekintéséhez tekintse meg a [hálózati biztonsági csoportok és a szükséges portok][network-ports]című témakört. A hálózati kommunikációs problémák csökkentése érdekében javasoljuk, hogy várjon, és alkalmazzon egy hálózati biztonsági csoportot vagy útválasztási táblázatot a Resource Manager virtuális hálózatra az áttelepítés sikeres befejeződése után.
+    Az Azure AD DS hálózati biztonsági csoportra van szüksége a felügyelt tartományhoz szükséges portok biztonságossá tételéhez és az összes többi bejövő forgalom blokkolásához. Ez a hálózati biztonsági csoport a felügyelt tartomány elérésének zárolására szolgáló extra védelmi rétegként működik. A szükséges portok megtekintéséhez tekintse meg a [hálózati biztonsági csoportok és a szükséges portok][network-ports]című témakört.
+
+    Ha biztonságos LDAP-t használ, vegyen fel egy szabályt a hálózati biztonsági csoportba, hogy engedélyezze a bejövő forgalmat a *636*-as *TCP* -porton. További információ: [biztonságos LDAP-hozzáférés zárolása az interneten keresztül](tutorial-configure-ldaps.md#lock-down-secure-ldap-access-over-the-internet)
 
     Jegyezze fel a célként megadott erőforráscsoportot, a célként megadott virtuális hálózatot és a célként megadott virtuális hálózati alhálózatot. Ezeket az erőforrásokat az áttelepítési folyamat során használja a rendszer.
 
@@ -265,9 +275,9 @@ Ha legalább egy tartományvezérlő elérhető, hajtsa végre a következő kon
 
 Most tesztelje a virtuális hálózati kapcsolatokat és a névfeloldást. A Resource Manager-alapú virtuális hálózathoz csatlakoztatott virtuális GÉPEN vagy a hozzá tartozó kapcsolaton próbálja ki a következő hálózati kommunikációs teszteket:
 
-1. Ellenőrizze, hogy tud-e pingelni az egyik tartományvezérlő IP-címét, például`ping 10.1.0.4`
+1. Ellenőrizze, hogy tud-e pingelni az egyik tartományvezérlő IP-címét, például `ping 10.1.0.4`
     * A tartományvezérlők IP-címei a Azure Portal felügyelt tartományának **Tulajdonságok** lapján jelennek meg.
-1. Ellenőrizze a felügyelt tartomány névfeloldását, például`nslookup aaddscontoso.com`
+1. Ellenőrizze a felügyelt tartomány névfeloldását, például `nslookup aaddscontoso.com`
     * Adja meg a saját felügyelt tartomány DNS-nevét annak ellenőrzéséhez, hogy a DNS-beállítások helyesek-e, majd oldja fel.
 
 Az áttelepítési parancsmag befejezését követően a második tartományvezérlő 1-2 órán belül elérhetőnek kell lennie. A második tartományvezérlő elérhetővé tételének vizsgálatához tekintse meg a felügyelt tartomány **tulajdonságlapját** a Azure Portal. Ha két IP-cím látható, a második tartományvezérlő készen áll.
@@ -295,13 +305,6 @@ Ha szükséges, frissítheti a részletes jelszóházirendek, hogy az alapértel
 1. Ha egy virtuális gép elérhető az internethez, tekintse át az általános fiókok neveit, például a rendszergazda, a *felhasználó*vagy a *vendég* *szerepkört*a magas bejelentkezési kísérletekkel. Ha lehetséges, frissítse ezeket a virtuális gépeket úgy, hogy azok kevésbé általános névvel ellátott fiókokat használjanak.
 1. A virtuális gépen található hálózati nyomkövetés használatával keresse meg a támadások forrását, és tiltsa le az IP-címeket, hogy a rendszer megkísérelje a bejelentkezést.
 1. Ha minimális zárolási probléma merül fel, frissítse a részletes jelszóházirendek a szükségesnél szigorúbb korlátozást.
-
-### <a name="creating-a-network-security-group"></a>Hálózati biztonsági csoport létrehozása
-
-Az Azure AD DS hálózati biztonsági csoportra van szüksége a felügyelt tartományhoz szükséges portok biztonságossá tételéhez és az összes többi bejövő forgalom blokkolásához. Ez a hálózati biztonsági csoport kiegészítő védelmi rétegként működik a felügyelt tartományhoz való hozzáférés zárolása érdekében, és nem jön létre automatikusan. A hálózati biztonsági csoport létrehozásához és a szükséges portok megnyitásához tekintse át a következő lépéseket:
-
-1. A Azure Portal válassza ki az Azure AD DS-erőforrást. Az Áttekintés oldalon egy gomb jelenik meg egy hálózati biztonsági csoport létrehozásához, ha nincs társítva a Azure AD Domain Serviceshoz.
-1. Ha biztonságos LDAP-t használ, vegyen fel egy szabályt a hálózati biztonsági csoportba, hogy engedélyezze a bejövő forgalmat a *636*-as *TCP* -porton. További információ: [Secure LDAP konfigurálása][secure-ldap].
 
 ## <a name="roll-back-and-restore-from-migration"></a>Visszaállítás és helyreállítás az áttelepítésből
 
@@ -337,7 +340,7 @@ Ha a Resource Manager-alapú üzemi modellre való áttelepítést követően pr
 * [Fiók bejelentkezési problémáinak elhárítása][troubleshoot-sign-in]
 * [A biztonságos LDAP-kapcsolati problémák elhárítása][tshoot-ldaps]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A felügyelt tartomány áttelepítése a Resource Manager-alapú üzemi modellre, a [Létrehozás és a tartomány csatlakoztatása Windows rendszerű virtuális géphez][join-windows] , majd a [felügyeleti eszközök telepítése][tutorial-create-management-vm].
 

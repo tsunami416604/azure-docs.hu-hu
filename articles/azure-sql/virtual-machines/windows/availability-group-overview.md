@@ -8,18 +8,18 @@ editor: monicar
 tags: azure-service-management
 ms.assetid: 601eebb1-fc2c-4f5b-9c05-0e6ffd0e5334
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: overview
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/13/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019, devx-track-azurecli
-ms.openlocfilehash: 705c7dd602d9c908ec9048d131ba66b21c5b2103
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 34d76d7c85a478b5e31a692e653752aa1653884c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89006516"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91293662"
 ---
 # <a name="introducing-sql-server-always-on-availability-groups-on-azure-virtual-machines"></a>SQL Server always on rendelkezésre állási csoportok bemutatása az Azure-on Virtual Machines
 

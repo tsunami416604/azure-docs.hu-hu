@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 0b7e277518337072659bf5ccddd3436c05ff5201
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 0db39884ef54310db849abcef1062adbaeb9f22e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563794"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91292680"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Oktatóanyag: végpontok közötti megoldás kiépítése
 
@@ -85,6 +85,16 @@ A következő parancs futtatásával ellenőrizheti a létrehozott ikreket, amel
 ```cmd/sh
 Query
 ```
+
+>[!TIP]
+> Ez az egyszerűsített módszer a _**AdtE2ESample**_ projekt részeként van megadva. A mintakód kontextusán kívül bármikor, a [lekérdezési API](how-to-use-apis-sdks.md) -k vagy a [CLI-parancsok](how-to-use-cli.md)használatával lekérdezheti a példányban lévő összes ikreket.
+>
+> Itt látható a teljes lekérdezési törzs az összes digitális ikrek számára a példányban:
+> 
+> ```sql
+> SELECT *
+> FROM DIGITALTWINS
+> ``` 
 
 Ezután leállíthatja a projekt futtatását. A megoldást megnyithatja a Visual Studióban, de az oktatóanyag során továbbra is használhatja azt.
 
@@ -188,7 +198,7 @@ Ebben a lépésben egy szimulált termosztátos eszközt fog összekötni [IoT h
 
 Ez a végpontok közötti forgatókönyv (**B nyíl**) ezen részén történik:
 
-:::image type="content" source="media/tutorial-end-to-end/building-scenario-b.png" alt-text="Egy részlet a teljes építési forgatókönyvből, a B nyilat kiemelve, az Azure Digital Twins előtti elemek: az eszköz, a IoT Hub és az első Azure-függvény":::
+:::image type="content" source="media/tutorial-end-to-end/building-scenario-b.png" alt-text="Egy részlet a teljes építési forgatókönyvből, a "B" nyilat kiemelve, az Azure Digital Twins előtti elemek: az eszköz, a IoT Hub és az első Azure-függvény":::
 
 Az eszköz kapcsolódásának beállításához a következő műveleteket kell végrehajtania:
 1. Hozzon létre egy IoT hub-t, amely a szimulált eszközt felügyeli
@@ -255,13 +265,13 @@ Ezután konfigurálja az eszköz-szimulátort, hogy az adatküldés a IoT Hub-p�
 Először az *IoT hub-kapcsolatok karakterláncának* beszerzése ezzel a paranccsal:
 
 ```azurecli
-az iot hub show-connection-string -n <your-IoT-hub-name>
+az iot hub connection-string show -n <your-IoT-hub-name>
 ```
 
 Ezután szerezze be az *eszköz-kapcsolatok karakterláncát* a következő paranccsal:
 
 ```azurecli
-az iot hub device-identity show-connection-string --device-id thermostat67 --hub-name <your-IoT-hub-name>
+az iot hub device-identity connection-string show --device-id thermostat67 --hub-name <your-IoT-hub-name>
 ```
 
 Ezeket az értékeket a helyi projekt eszköz-szimulátor kódjába kell csatlakoztatnia a szimulátornak a IoT hub és az IoT hub-eszközhöz való csatlakoztatásához.
@@ -436,7 +446,7 @@ Itt látható az oktatóanyagban kiépített forgatókönyv áttekintése.
 
 Ha már nincs szüksége az oktatóanyagban létrehozott erőforrásokra, a következő lépésekkel törölheti őket. 
 
-A [Azure Cloud Shell](https://shell.azure.com)használatával törölheti az erőforráscsoport összes Azure-erőforrását az az [Group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) paranccsal. Ezzel eltávolítja az erőforráscsoportot; Az Azure Digital Twins-példány; az IoT hub és a hub-eszköz regisztrációja; az Event Grid-témakör és a hozzá tartozó előfizetések; és a Azure Functions alkalmazást, beleértve a függvényeket és a hozzájuk kapcsolódó erőforrásokat, például a tárolót.
+A [Azure Cloud Shell](https://shell.azure.com)használatával törölheti az erőforráscsoport összes Azure-erőforrását az az [Group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest&preserve-view=true#az-group-delete) paranccsal. Ezzel eltávolítja az erőforráscsoportot; Az Azure Digital Twins-példány; az IoT hub és a hub-eszköz regisztrációja; az Event Grid-témakör és a hozzá tartozó előfizetések; és a Azure Functions alkalmazást, beleértve a függvényeket és a hozzájuk kapcsolódó erőforrásokat, például a tárolót.
 
 > [!IMPORTANT]
 > Az erőforráscsoport törlése nem vonható vissza. Az erőforráscsoport és a benne foglalt erőforrások véglegesen törlődnek. Figyeljen arra, hogy ne töröljön véletlenül erőforráscsoportot vagy erőforrásokat. 
@@ -453,7 +463,7 @@ az ad app delete --id <your-application-ID>
 
 Végezetül törölje a helyi gépre letöltött Project Sample mappát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban létrehozott egy teljes körű forgatókönyvet, amely bemutatja, hogy az Azure digitális ikrek az élő eszközön tárolt adatmennyiségen alapulnak.
 
