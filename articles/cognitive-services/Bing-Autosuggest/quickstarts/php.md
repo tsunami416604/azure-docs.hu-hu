@@ -1,7 +1,7 @@
 ---
 title: 'Gyors útmutató: keresési lekérdezések ajánlása a Bing Autosuggest REST API és a PHP-vel'
 titleSuffix: Azure Cognitive Services
-description: Megtudhatja, hogyan kezdheti el gyorsan a keresési kifejezések javaslatait valós időben a Bing Autosuggest API.
+description: Megtudhatja, hogyan kezdheti el gyorsan a keresési kifejezések feltételeit a Bing Autosuggest API és a PHP használatával.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: quickstart
 ms.date: 05/06/2020
 ms.author: aahi
-ms.openlocfilehash: 6552c345678b6996f4a35e9e1fc7a1838505ff09
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 534702a9122fd19be1b47dc1fcbd54ba7bfad14c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930182"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332610"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-php"></a>Gyors útmutató: keresési lekérdezések ajánlása a Bing Autosuggest REST API és a PHP-vel
 
@@ -148,12 +148,12 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Bing Autosuggest-oktatóanyag](../tutorials/autosuggest.md)
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 - [Mi a Bing Autosuggest?](../get-suggested-search-terms.md)
 - [A Bing Autosuggest API 7-es verziójának referenciája](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)

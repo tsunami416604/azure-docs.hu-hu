@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: raynew
-ms.openlocfilehash: 3cd64de05c44729f1aa714849e12fc8f69998334
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 08796b0a9b232c7b42b3f62fea69ab49b8957c60
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498616"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322087"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Az Azure-ból Azure-ba történő vészhelyreállítás architektúrája
 
@@ -104,7 +104,7 @@ Az összeomlás-konzisztens Pillanatképek rögzítik a lemezen lévő, a pillan
 
 **Leírás** | **Részletek** | **Ajánlás**
 --- | --- | ---
-Az alkalmazással konzisztens helyreállítási pontok az alkalmazással konzisztens Pillanatképek alapján jönnek létre.<br/><br/> Az alkalmazás-konzisztens Pillanatképek tartalmazzák az összeomlás-konzisztens Pillanatképek összes adatát, valamint a memóriában lévő összes adatot és a folyamatban lévő tranzakciókat. | Az alkalmazással konzisztens Pillanatképek a Kötet árnyékmásolata szolgáltatást (VSS) használják:<br/><br/>   1.) Ha pillanatképet kezdeményez, a VSS a köteten egy másolási írási (COW) műveletet hajt végre.<br/><br/>   2) mielőtt elvégezte a TEHENEt, a VSS tájékoztatja a gépen lévő összes alkalmazást, hogy a memóriában tárolt adatok lemezre való kiürítése szükséges.<br/><br/>   3) a VSS ezután lehetővé teszi a biztonsági mentési/vész-helyreállítási alkalmazás (ebben az esetben Site Recovery) számára a pillanatkép-adatok olvasását és a folytatást. | Az alkalmazással konzisztens Pillanatképek a megadott gyakoriságnak megfelelően készülnek. A gyakoriságnak mindig kisebbnek kell lennie, mint a helyreállítási pontok megőrzéséhez. Ha például megőrzi a helyreállítási pontokat a 24 órás alapértelmezett beállítással, a gyakoriságot 24 óránál rövidebb ideig kell beállítania.<br/><br/>Összetettebbek, és hosszabb időt is igénybe vehetik, mint az összeomlás-konzisztens Pillanatképek.<br/><br/> Hatással vannak a replikálásra engedélyezett virtuális gépeken futó alkalmazások teljesítményére. 
+Az alkalmazással konzisztens helyreállítási pontok az alkalmazással konzisztens Pillanatképek alapján jönnek létre.<br/><br/> Az alkalmazás-konzisztens Pillanatképek tartalmazzák az összeomlás-konzisztens Pillanatképek összes adatát, valamint a memóriában lévő összes adatot és a folyamatban lévő tranzakciókat. | Az alkalmazással konzisztens Pillanatképek a Kötet árnyékmásolata szolgáltatást (VSS) használják:<br/><br/>   1.) Azure Site Recovery a csak másolás biztonsági mentési (VSS_BT_COPY) metódust használja, amely nem módosítja a Microsoft SQL tranzakciós naplójának biztonsági mentésének idejét és sorszámát. </br></br> 2) Ha pillanatképet kezdeményez, a VSS a köteten egy másolási írási (COW) műveletet hajt végre.<br/><br/>   3) mielőtt elvégezte a TEHENEt, a VSS tájékoztatja a gépen lévő összes alkalmazást, hogy a memóriájában tárolt adatok lemezre ürítése szükséges.<br/><br/>   4.) a VSS ezután lehetővé teszi a biztonsági mentési/vész-helyreállítási alkalmazás (ebben az esetben Site Recovery) számára a pillanatkép-adatok olvasását és a folytatást. | Az alkalmazással konzisztens Pillanatképek a megadott gyakoriságnak megfelelően készülnek. A gyakoriságnak mindig kisebbnek kell lennie, mint a helyreállítási pontok megőrzéséhez. Ha például megőrzi a helyreállítási pontokat a 24 órás alapértelmezett beállítással, a gyakoriságot 24 óránál rövidebb ideig kell beállítania.<br/><br/>Összetettebbek, és hosszabb időt is igénybe vehetik, mint az összeomlás-konzisztens Pillanatképek.<br/><br/> Hatással vannak a replikálásra engedélyezett virtuális gépeken futó alkalmazások teljesítményére. 
 
 ## <a name="replication-process"></a>Replikációs folyamat
 
@@ -130,7 +130,7 @@ Ha a virtuális gépek kimenő hozzáférése URL-címekkel van vezérelve, enge
 
 | **Név**                  | **Kereskedelmi**                               | **Államigazgatás**                                 | **Leírás** |
 | ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
-| Storage                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`               | Lehetővé teszi az adatok írását a virtuális gépről a forrásrégió gyorsítótárjának tárfiókjába. |
+| Tárolás                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`               | Lehetővé teszi az adatok írását a virtuális gépről a forrásrégió gyorsítótárjának tárfiókjába. |
 | Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Hitelesítést és engedélyezést biztosít a Site Recovery szolgáltatás URL-címeihez. |
 | Replikáció               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`     | Lehetővé teszi a virtuális gép és a Site Recovery szolgáltatás közötti kommunikációt. |
 | Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | Lehetővé teszi a virtuális gép számára a Site Recovery monitorozási és diagnosztikai adatainak írását. |
@@ -193,6 +193,6 @@ Feladatátvétel kezdeményezése esetén a virtuális gépek a célként megado
 
 ![A feladatátvételi folyamatot bemutató diagram a forrás-és a célként megadott környezetekben.](./media/concepts-azure-to-azure-architecture/failover-v2.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Gyorsan replikálhat](azure-to-azure-quickstart.md) egy Azure-beli virtuális gépet egy másodlagos régióba.

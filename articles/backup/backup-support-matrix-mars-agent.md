@@ -3,12 +3,12 @@ title: A MARS-ügynök támogatási mátrixa
 description: Ez a cikk a Microsoft Azure Recovery Services (MARS) ügynököt futtató gépek biztonsági mentésének Azure Backup támogatását foglalja össze.
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 2b719bd36c27336b3fe24cdb904715bf8194ed70
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: b11a2e3ec2fdf3a46b324dcc0f95d4666a84c179
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87872412"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332678"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Támogatási mátrix a Microsoft Azure Recovery Services-(MARS-) ügynökkel való biztonsági mentéshez
 
@@ -67,6 +67,15 @@ A MARS-ügynöknek hozzá kell férnie az alábbi URL-címekhez:
 
 A fentiekben felsorolt URL-címek és IP-címek elérése a HTTPS protokollt használja a 443-es porton.
 
+Ha az Azure-beli virtuális gépekről a MARS-ügynök használatával készít biztonsági másolatot a fájlokról és mappákról, az Azure Virtual Network-t is konfigurálni kell, hogy engedélyezze a hozzáférést. Ha hálózati biztonsági csoportokat (NSG) használ, használja a *AzureBackup* szolgáltatás címkéjét, hogy engedélyezze a kimenő hozzáférést Azure Backuphoz. A Azure Backup címkén kívül az Azure AD-hoz (*AzureActiveDirectory*) és az Azure Storage-hoz (*Storage*) hasonló [NSG szabályok](https://docs.microsoft.com/azure/virtual-network/network-security-groups-overview#service-tags) létrehozásával is engedélyeznie kell a csatlakozást a hitelesítéshez és az adatátvitelhez. A következő lépések azt ismertetik, hogyan hozható létre szabály a Azure Backup címke számára:
+
+1. A **minden szolgáltatás**területen lépjen a **hálózati biztonsági csoportok** elemre, és válassza ki a hálózati biztonsági csoportot.
+2. A **Beállítások**területen válassza a **kimenő biztonsági szabályok** lehetőséget.
+3. Válassza a **Hozzáadás** lehetőséget. Adja meg az új szabály létrehozásához szükséges összes adatot a [biztonsági szabály beállításai](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings)című témakörben leírtak szerint. Győződjön meg arról, hogy a **cél** a *Service tag* és a **cél szolgáltatás címkéje** *AzureBackup*értékre van állítva.
+4. Válassza a **Hozzáadás** lehetőséget az újonnan létrehozott kimenő biztonsági szabály mentéséhez.
+
+Hasonlóképpen NSG kimenő biztonsági szabályokat hozhat létre az Azure Storage és az Azure AD számára. A szolgáltatás címkével kapcsolatos további információkért tekintse meg [ezt a cikket](https://docs.microsoft.com/azure/virtual-network/service-tags-overview).
+
 ### <a name="azure-expressroute-support"></a>Azure ExpressRoute-támogatás
 
 Az Azure ExpressRoute-on keresztül biztonsági mentést készíthet az adatairól a nyilvános (a régi áramkörökhöz elérhető) és a Microsoft-partnerek számára. A privát kapcsolaton keresztüli biztonsági mentés nem támogatott.
@@ -81,11 +90,11 @@ Nyilvános társítás esetén: a következő tartományokhoz/címekhez való ho
 
 A Microsoft-partnerekkel válassza ki a következő szolgáltatásokat/régiókat és a vonatkozó közösségi értékeket:
 
+- Azure Backup (az Recovery Services-tároló helyének megfelelően)
 - Azure Active Directory (12076:5060)
-- Microsoft Azure régió (az Recovery Services-tároló helyének megfelelően)
 - Azure Storage (az Recovery Services-tároló helyének megfelelően)
 
-További információkért tekintse meg a [ExpressRoute útválasztási követelményeit](../expressroute/expressroute-routing.md).
+További információkért tekintse meg a [ExpressRoute útválasztási követelményeit](../expressroute/expressroute-routing.md#bgp).
 
 >[!NOTE]
 >Az új áramkörök esetében a nyilvános társítás elavult.
@@ -180,7 +189,7 @@ Ritka adatfolyam| Nem támogatott. Kimarad.
 OneDrive (a szinkronizált fájlok ritka adatfolyamok)| Nem támogatott.
 Elosztott fájlrendszer replikációs szolgáltatása engedélyezett mappák | Nem támogatott.
 
-\*Győződjön meg arról, hogy a MARS-ügynök hozzáfér a szükséges tanúsítványokhoz a titkosított fájlok eléréséhez. A rendszer kihagyja a nem elérhető fájlokat.
+\* Győződjön meg arról, hogy a MARS-ügynök hozzáfér a szükséges tanúsítványokhoz a titkosított fájlok eléréséhez. A rendszer kihagyja a nem elérhető fájlokat.
 
 ## <a name="supported-drives-or-volumes-for-backup"></a>A biztonsági mentéshez támogatott meghajtók vagy kötetek
 

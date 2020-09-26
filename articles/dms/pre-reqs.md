@@ -9,14 +9,14 @@ ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: 8d87052ecfe85fa35c41c8b306bb48551fd06be9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e6002bb7995be1cfd1b2812b765835ff7af924e7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85322851"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91308537"
 ---
 # <a name="overview-of-prerequisites-for-using-the-azure-database-migration-service"></a>Az Azure Database Migration Service használatára vonatkozó előfeltételek áttekintése
 
@@ -140,6 +140,6 @@ Ha a Azure Database Migration Service használatával hajtja végre SQL Server A
    > [!NOTE]
    > A SQL Serverról az SQL felügyelt példányra történő áttelepítések végrehajtásához szükséges előfeltételek teljes listáját az oktatóanyag az [SQL felügyelt példányra SQL Server áttelepítése](https://aka.ms/migratetomiusingdms)című témakörben Azure Database Migration Service.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Azure Database Migration Service és a regionális elérhetőség áttekintését lásd: [Mi a Azure Database Migration Service](dms-overview.md).

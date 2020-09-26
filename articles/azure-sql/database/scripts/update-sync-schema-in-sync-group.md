@@ -9,14 +9,14 @@ ms.devlang: PowerShell
 ms.topic: sample
 author: stevestein
 ms.author: sstein
-ms.reviewer: carlrab
+ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 44a9b0b4d609013147f799ae19f750c34e81837c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c60bff122b6ad9bef4e9e4558d9858e1243ebd1f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084874"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321456"
 ---
 # <a name="use-powershell-to-update-the-sync-schema-in-an-existing-sync-group"></a>PowerShell használata meglévő szinkronizálási csoport szinkronizálási sémájának frissítéséhez
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]
@@ -84,7 +84,7 @@ Az **UpdateSyncSchema** szkript a következő parancsokat használja. A tábláz
 | [Get-AzSqlSyncSchema](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlsyncschema) | Egy szinkronizálási sémával kapcsolatos információkat ad vissza. |
 | [Frissítés – AzSqlSyncSchema](https://docs.microsoft.com/powershell/module/az.sql/update-azsqlsyncschema) | Frissít egy szinkronizálási sémát. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure PowerShellről [az Azure PowerShell dokumentációjában](/powershell/azure/) talál további információt.
 

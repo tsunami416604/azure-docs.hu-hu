@@ -10,16 +10,16 @@ ms.devlang: ''
 ms.topic: conceptual
 author: juliemsft
 ms.author: jrasnick
-ms.reviewer: carlrab
+ms.reviewer: sstein
 ms.date: 04/19/2020
-ms.openlocfilehash: f0a9e36113226a40f4bd21a7b171ca7a65930f95
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 7ee876b1d65e71657cb1af857cdad9f62a32100e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85987236"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333052"
 ---
-# <a name="monitoring-microsoft-azure-sql-database-and-azure-sql-managed-instance-performance-using-dynamic-management-views"></a>Microsoft Azure SQL Database és az Azure SQL felügyelt példány teljesítményének figyelése dinamikus felügyeleti nézetek használatával
+# <a name="monitoring-microsoft-azure-sql-database-and-azure-sql-managed-instance-performance-using-dynamic-management-views"></a>A Microsoft Azure SQL Database és a felügyelt Azure SQL-példány teljesítményének monitorozása dinamikus felügyeleti nézetekkel
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 A Microsoft Azure SQL Database és az Azure SQL felügyelt példánya lehetővé teszi a dinamikus felügyeleti nézetek egy részhalmazát a teljesítményproblémák diagnosztizálására, ami a blokkolt vagy hosszan futó lekérdezések, az erőforrás szűk keresztmetszetei, a rossz lekérdezési csomagok és így tovább. Ez a témakör arról nyújt tájékoztatást, hogyan észlelhetők a gyakori teljesítményproblémák a dinamikus felügyeleti nézetek használatával.
@@ -529,7 +529,7 @@ Ezeket a nézeteket a használat figyelésére is használhatja:
 - Felügyelt Azure SQL-példány: [sys. server_resource_stats](/sql/relational-databases/system-catalog-views/sys-server-resource-stats-azure-sql-database)
 - A Azure SQL Database és az Azure SQL felügyelt példánya is: [sys. resource_stats](https://msdn.microsoft.com/library/dn269979.aspx)
 
-### <a name="sysdm_db_resource_stats"></a>sys. dm_db_resource_stats
+### <a name="sysdm_db_resource_stats"></a>sys.dm_db_resource_stats
 
 A [sys. dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) nézetet minden adatbázisban használhatja. A **sys. dm_db_resource_stats** nézet a legutóbbi erőforrás-használati adatmennyiséget jeleníti meg a szolgáltatási szintjéhez képest. A CPU, az adatio, a log writes és a memória átlagos százalékos arányát 15 másodpercenként rögzíti a rendszer, és 1 órára tartja karban.
 
@@ -550,7 +550,7 @@ FROM sys.dm_db_resource_stats;
 
 Más lekérdezések esetében tekintse meg a következő témakörben található példákat: [sys. dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx).
 
-### <a name="sysserver_resource_stats"></a>sys. server_resource_stats
+### <a name="sysserver_resource_stats"></a>sys.server_resource_stats
 
 A [sys. server_resource_stats](/sql/relational-databases/system-catalog-views/sys-server-resource-stats-azure-sql-database) használatával visszaállíthatja az Azure SQL felügyelt példányainak CPU-használati, IO-és tárolási adatait. Az adatok gyűjtése és összesítése öt percen belül történik. Minden 15 másodpercenként jelentést egy sor jelent. A visszaadott adatok közé tartozik a CPU-használat, a tárterület mérete, az IO-kihasználtság és a felügyelt példány SKU. A korábbi adat megőrzése körülbelül 14 nap.
 

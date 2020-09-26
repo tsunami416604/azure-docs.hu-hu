@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: carlrab
+ms.reviewer: ''
 ms.date: 12/20/2018
-ms.openlocfilehash: f4a851377128577cc7e50af777b502c9f59211c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 51a251d7a1ff4063178a6c03d71fedc5adfca423
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84188244"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332865"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync"></a>Az SQL Data Synckel kapcsolatos hibák elhárítása
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -44,7 +44,7 @@ A SQL-adatszinkronizálás áttekintését lásd: az [adatszinkronizálás több
 
 - [Hogyan kezeli az adatszinkronizálás a körkörös hivatkozásokat? Ez azt jelenti, hogy ha ugyanazokat az adatfájlokat szinkronizálja több szinkronizálási csoportban, és ennek eredményeként változik?](#sync-circ)
 
-### <a name="sync-fails-in-the-portal-ui-for-on-premises-databases-that-are-associated-with-the-client-agent"></a><a name="sync-fails"></a>A szinkronizálás sikertelen a portál felhasználói felületén az ügyfél ügynökéhez társított helyszíni adatbázisok esetében
+### <a name="sync-fails-in-the-portal-ui-for-on-premises-databases-that-are-associated-with-the-client-agent"></a><a name="sync-fails"></a> A szinkronizálás sikertelen a portál felhasználói felületén az ügyfél ügynökéhez társított helyszíni adatbázisok esetében
 
 A szinkronizálás sikertelen a SQL-adatszinkronizálás portál felhasználói felületén az ügyfél ügynökéhez társított helyszíni adatbázisokhoz. Az ügynököt futtató helyi számítógépen a System. IO. IOException hibák jelennek meg az eseménynaplóban. A hibák azt mondják, hogy a lemezen nincs elég hely.
 
@@ -52,7 +52,7 @@ A szinkronizálás sikertelen a SQL-adatszinkronizálás portál felhasználói 
 
 - **Megoldás**. Hozzon létre több helyet azon a meghajtón, amelyen a% TEMP% könyvtár található.
 
-### <a name="my-sync-group-is-stuck-in-the-processing-state"></a><a name="sync-stuck"></a>A szinkronizálási csoportom megakadt a feldolgozási állapotban
+### <a name="my-sync-group-is-stuck-in-the-processing-state"></a><a name="sync-stuck"></a> A szinkronizálási csoportom megakadt a feldolgozási állapotban
 
 A SQL-adatszinkronizálás szinkronizálási csoportja hosszú ideje már a feldolgozási állapotban van. Nem válaszol a **Leállítás** parancsra, és a naplók nem jelenítenek meg új bejegyzéseket.
 
@@ -81,7 +81,7 @@ A következő feltételek bármelyike előfordulhat, hogy a szinkronizálási cs
 > [!NOTE]
 > Ha az előző információ nem helyezi át a szinkronizálási csoportot a feldolgozási állapotból, Microsoft ügyfélszolgálata állíthatja vissza a szinkronizálási csoport állapotát. A szinkronizálási csoport állapotának alaphelyzetbe állításához a [Microsoft Q&a Azure SQL Database kérdés lapján](https://docs.microsoft.com/answers/topics/azure-sql-database.html)hozzon létre egy bejegyzést. A bejegyzésben adja meg az előfizetés-AZONOSÍTÓját és a szinkronizálási csoport AZONOSÍTÓját az alaphelyzetbe állítani kívánt csoport számára. Egy Microsoft ügyfélszolgálata mérnök válaszol a bejegyzésre, és tudatja Önnel, ha az állapot alaphelyzetbe áll.
 
-### <a name="i-see-erroneous-data-in-my-tables"></a><a name="sync-baddata"></a>A táblázatokban hibás információk jelennek meg
+### <a name="i-see-erroneous-data-in-my-tables"></a><a name="sync-baddata"></a> A táblázatokban hibás információk jelennek meg
 
 Ha az azonos nevű, de eltérő adatbázis-sémából származó táblák is szerepelnek a szinkronizálásban, a szinkronizálás után a táblákban hibás adatok jelennek meg.
 
@@ -89,7 +89,7 @@ Ha az azonos nevű, de eltérő adatbázis-sémából származó táblák is sze
 
 - **Megoldás**. Győződjön meg arról, hogy a szinkronizálásban részt vevő táblák nevei eltérőek, még akkor is, ha a táblák egy adatbázis különböző sémái közé tartoznak.
 
-### <a name="i-see-inconsistent-primary-key-data-after-a-successful-sync"></a><a name="sync-pkdata"></a>A sikeres szinkronizálás után inkonzisztens elsődleges kulcs-adatértékek jelennek meg
+### <a name="i-see-inconsistent-primary-key-data-after-a-successful-sync"></a><a name="sync-pkdata"></a> A sikeres szinkronizálás után inkonzisztens elsődleges kulcs-adatértékek jelennek meg
 
 A szinkronizálás sikeresként van jelezve, és a napló nem jelenít meg sikertelen vagy kihagyott sorokat, de azt is észleli, hogy az elsődleges kulcs adatai nem konzisztensek a szinkronizálási csoport adatbázisai között.
 
@@ -97,7 +97,7 @@ A szinkronizálás sikeresként van jelezve, és a napló nem jelenít meg siker
 
 - **Megoldás**. A probléma elkerülése érdekében győződjön meg arról, hogy a rendszer nem módosítja az elsődleges kulcs oszlopában lévő összes adattípust. A probléma elhárítása után törölje a szinkronizálási csoport összes végpontjának inkonzisztens adatait tartalmazó sort. Ezután szúrja be újra a sort.
 
-### <a name="i-see-a-significant-degradation-in-performance"></a><a name="sync-perf"></a>Jelentős romlást látok a teljesítményben
+### <a name="i-see-a-significant-degradation-in-performance"></a><a name="sync-perf"></a> Jelentős romlást látok a teljesítményben
 
 A teljesítmény jelentősen csökken, valószínűleg arra a pontra, ahol még nem is megnyithatja az adatszinkronizálási felhasználói felületet.
 
@@ -105,12 +105,12 @@ A teljesítmény jelentősen csökken, valószínűleg arra a pontra, ahol még 
 
 - **Megoldás**. A legjobb megoldás a megelőzés. Győződjön meg arról, hogy nincs körkörös hivatkozás a szinkronizálási csoportokban. Az egyik szinkronizálási csoporttal szinkronizált sorokat nem lehet szinkronizálni egy másik szinkronizálási csoport.
 
-### <a name="i-see-this-message-cannot-insert-the-value-null-into-the-column-column-column-does-not-allow-nulls-what-does-this-mean-and-how-can-i-fix-it"></a><a name="sync-nulls"></a>A következő üzenet jelenik meg: "a NULL érték nem szúrható be az oszlopba \<column> . Az oszlop nem engedélyezi a null értéket. " Mit jelent ez, és Hogyan javíthatom? 
+### <a name="i-see-this-message-cannot-insert-the-value-null-into-the-column-column-column-does-not-allow-nulls-what-does-this-mean-and-how-can-i-fix-it"></a><a name="sync-nulls"></a> A következő üzenet jelenik meg: "a NULL érték nem szúrható be az oszlopba \<column> . Az oszlop nem engedélyezi a null értéket. " Mit jelent ez, és Hogyan javíthatom? 
 Ez a hibaüzenet azt jelzi, hogy a következő két probléma egyike történt:
 -  Egy táblához nem tartozik elsődleges kulcs. A probléma megoldásához vegyen fel egy elsődleges kulcsot az összes szinkronizálni kívánt táblába.
 -  Létezik egy WHERE záradék a CREATE INDEX utasításban. Az adatszinkronizálás nem kezeli ezt az állapotot. A probléma megoldásához távolítsa el a WHERE záradékot, vagy manuálisan végezze el a módosításokat az összes adatbázison. 
  
-### <a name="how-does-data-sync-handle-circular-references-that-is-when-the-same-data-is-synced-in-multiple-sync-groups-and-keeps-changing-as-a-result"></a><a name="sync-circ"></a>Hogyan kezeli az adatszinkronizálás a körkörös hivatkozásokat? Ez azt jelenti, hogy ha ugyanazokat az adatfájlokat szinkronizálja több szinkronizálási csoportban, és ennek eredményeként változik?
+### <a name="how-does-data-sync-handle-circular-references-that-is-when-the-same-data-is-synced-in-multiple-sync-groups-and-keeps-changing-as-a-result"></a><a name="sync-circ"></a> Hogyan kezeli az adatszinkronizálás a körkörös hivatkozásokat? Ez azt jelenti, hogy ha ugyanazokat az adatfájlokat szinkronizálja több szinkronizálási csoportban, és ennek eredményeként változik?
 Az adatszinkronizálás nem kezeli a körkörös hivatkozásokat. Ne felejtse el elkerülni őket. 
 
 ## <a name="client-agent-issues"></a>Ügyfél-ügynökkel kapcsolatos problémák
@@ -135,7 +135,7 @@ Az ügyfél ügynökével kapcsolatos problémák elhárításához lásd: [az a
 
 - [Mi történik, ha egy elveszett vagy sérült adatbázist állítok vissza?](#setup-restore)
 
-### <a name="i-get-a-disk-out-of-space-message"></a><a name="setup-space"></a>"Lemezről kifogyott" üzenet jelenik meg
+### <a name="i-get-a-disk-out-of-space-message"></a><a name="setup-space"></a> "Lemezről kifogyott" üzenet jelenik meg
 
 - **OK**. Előfordulhat, hogy a "lemez elfogyva" üzenet jelenik meg, ha a maradék fájlokat törölni kell. Ennek oka az lehet, hogy a víruskereső szoftver, vagy ha a törlési műveletek során a fájlok meg vannak nyitva.
 
@@ -144,7 +144,7 @@ Az ügyfél ügynökével kapcsolatos problémák elhárításához lásd: [az a
 > [!IMPORTANT]
 > Ne töröljön fájlokat, amíg a szinkronizálás folyamatban van.
 
-### <a name="i-cant-delete-my-sync-group"></a><a name="setup-delete"></a>Nem tudom törölni a szinkronizálási csoportot
+### <a name="i-cant-delete-my-sync-group"></a><a name="setup-delete"></a> Nem tudom törölni a szinkronizálási csoportot
 
 A szinkronizálási csoport törlésére tett kísérlet sikertelen. A következő forgatókönyvek bármelyike hibát okozhat a szinkronizálási csoport törlésében:
 
@@ -166,7 +166,7 @@ A szinkronizálási csoport törlésére tett kísérlet sikertelen. A következ
 
 - **Megoldás**. Várjon, amíg befejeződik a kiépítési vagy szinkronizálási folyamat, majd próbálkozzon újra a szinkronizálási csoport törlésével.
 
-### <a name="i-cant-unregister-a-sql-server-database"></a><a name="setup-unreg"></a>Nem lehet törölni egy SQL Server adatbázis regisztrációját
+### <a name="i-cant-unregister-a-sql-server-database"></a><a name="setup-unreg"></a> Nem lehet törölni egy SQL Server adatbázis regisztrációját
 
 - **OK**. Legvalószínűbb, hogy olyan adatbázist próbál meg törölni, amely már törölve lett.
 
@@ -186,7 +186,7 @@ A szinkronizálási csoport törlésére tett kísérlet sikertelen. A következ
   1. Válassza a **hitelesítő adatok szerkesztése**lehetőséget, majd adja meg az adatbázishoz tartozó hitelesítő adatokat.
   1. Folytassa a regisztráció megszüntetésével.
 
-### <a name="i-dont-have-sufficient-privileges-to-start-system-services"></a><a name="setup-perms"></a>Nem rendelkezem megfelelő jogosultsággal a rendszerszolgáltatások indításához
+### <a name="i-dont-have-sufficient-privileges-to-start-system-services"></a><a name="setup-perms"></a> Nem rendelkezem megfelelő jogosultsággal a rendszerszolgáltatások indításához
 
 - **OK**. Ez a hiba két esetben fordul elő:
   -   A Felhasználónév és/vagy a jelszó helytelen.
@@ -200,7 +200,7 @@ A szinkronizálási csoport törlésére tett kísérlet sikertelen. A következ
   1. Válassza az **Apply** (Alkalmaz) lehetőséget, majd kattintson az **OK** gombra.
   1. Az összes Windows lezárása.
 
-### <a name="a-database-has-an-out-of-date-status"></a><a name="setup-date"></a>Egy adatbázis "elavult" állapottal rendelkezik
+### <a name="a-database-has-an-out-of-date-status"></a><a name="setup-date"></a> Egy adatbázis "elavult" állapottal rendelkezik
 
 - **OK**. A SQL-adatszinkronizálás eltávolítja azokat az adatbázisokat, amelyek offline állapotban voltak a szolgáltatásból 45 napig vagy többet (az adatbázis offline állapotának időpontjától számítva). Ha egy adatbázis 45 vagy több napig offline állapotú, majd ismét elérhető **, az állapota elavult.**
 
@@ -214,7 +214,7 @@ A szinkronizálási csoport törlésére tett kísérlet sikertelen. A következ
   > [!WARNING]
   > Az adatbázison végrehajtott összes módosítást a kapcsolat nélküli üzemmódban elveszíti.
 
-### <a name="a-sync-group-has-an-out-of-date-status"></a><a name="setup-date2"></a>Egy szinkronizálási csoport "elavult" állapottal rendelkezik
+### <a name="a-sync-group-has-an-out-of-date-status"></a><a name="setup-date2"></a> Egy szinkronizálási csoport "elavult" állapottal rendelkezik
 
 - **OK**. Ha egy vagy több módosítás nem alkalmazható a 45 napos teljes megőrzési időtartamra, a szinkronizálási csoport elavult lehet.
 
@@ -222,7 +222,7 @@ A szinkronizálási csoport törlésére tett kísérlet sikertelen. A következ
 
   Ha a szinkronizálási csoport állapota elavult **, törölje**a szinkronizálási csoportot, majd hozza létre újra.
 
-### <a name="a-sync-group-cant-be-deleted-within-three-minutes-of-uninstalling-or-stopping-the-agent"></a><a name="setup-delete2"></a>Egy szinkronizálási csoport nem törölhető az ügynök eltávolítása vagy leállítása után három percen belül
+### <a name="a-sync-group-cant-be-deleted-within-three-minutes-of-uninstalling-or-stopping-the-agent"></a><a name="setup-delete2"></a> Egy szinkronizálási csoport nem törölhető az ügynök eltávolítása vagy leállítása után három percen belül
 
 A szinkronizálási csoport nem törölhető három percen belül a társított SQL-adatszinkronizálás ügyfél-ügynök eltávolítása vagy leállítása után.
 
@@ -235,11 +235,11 @@ A szinkronizálási csoport nem törölhető három percen belül a társított 
     b.  Telepítse az ügynököt a helyszíni számítógépen (ez ugyanaz vagy egy másik számítógép is lehet). Ezután küldje el a portálon létrehozott ügynökkulcsot az offline állapotúként megjelenő ügynöknek.  
     c. Próbálja meg törölni a szinkronizálási csoportot.
 
-### <a name="what-happens-when-i-restore-a-lost-or-corrupted-database"></a><a name="setup-restore"></a>Mi történik, ha egy elveszett vagy sérült adatbázist állítok vissza?
+### <a name="what-happens-when-i-restore-a-lost-or-corrupted-database"></a><a name="setup-restore"></a> Mi történik, ha egy elveszett vagy sérült adatbázist állítok vissza?
 
 Ha egy elveszett vagy sérült adatbázist állít vissza egy biztonsági másolatból, előfordulhat, hogy az adatbázishoz tartozó szinkronizálási csoportokba tartozó adatok nem konvergálnak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a SQL-adatszinkronizálásról:
 
 -   Áttekintés – az [adatszinkronizálás több Felhőbeli és helyszíni adatbázison SQL-adatszinkronizálás az Azure-ban](sql-data-sync-data-sql-server-sql-database.md)

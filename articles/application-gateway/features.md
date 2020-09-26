@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 04/07/2020
+ms.date: 09/25/2020
 ms.author: victorh
-ms.openlocfilehash: bbb78fd879bc5c6bb8c2624329a23d7137b11660
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: ba9f42bc932a37e1052f17db2ae00413e0769d59
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651984"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91355737"
 ---
 # <a name="azure-application-gateway-features"></a>Azure Application Gateway-funkciók
 
@@ -147,9 +147,9 @@ További információt a [HTTP-fejlécek és URL-cím újraírása](rewrite-http
 
 ## <a name="sizing"></a>Méretezés
 
-Application Gateway Standard_v2 konfigurálható automatikus skálázáshoz vagy rögzített méretű központi telepítésekhez. Ez az SKU nem biztosít különböző méretű példányokat. A v2 teljesítményével és díjszabásával kapcsolatos további információkért lásd az automatikus [skálázás v2](application-gateway-autoscaling-zone-redundant.md) és a [díjszabás megismerése](understanding-pricing.md)című témakört.
+Application Gateway Standard_v2 konfigurálható automatikus skálázáshoz vagy rögzített méretű központi telepítésekhez. A v2 SKU nem biztosít különböző méretű példányokat. A v2 teljesítményével és díjszabásával kapcsolatos további információkért lásd az automatikus [skálázás v2](application-gateway-autoscaling-zone-redundant.md) és a [díjszabás megismerése](understanding-pricing.md)című témakört.
 
-A standard szintű Application Gateway három méretben érhető el: **kicsi**, **közepes**és **nagy**. A Kicsi méret ideális fejlesztési és tesztelési célokra.
+A Application Gateway standard (v1) a következő három méretben érhető el: **kicsi**, **közepes**és **nagy**. A Kicsi méret ideális fejlesztési és tesztelési célokra.
 
 Az Application Gateway korlátainak teljes listáját lásd: [Az Application Gateway szolgáltatási korlátozásai](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits).
 

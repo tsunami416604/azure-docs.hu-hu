@@ -3,12 +3,12 @@ title: Service Fabric szolgáltatási végpontok meghatározása
 description: A végponti erőforrások leírása a szolgáltatás jegyzékfájljában, beleértve a HTTPS-végpontok beállítását is
 ms.topic: conceptual
 ms.date: 09/16/2020
-ms.openlocfilehash: 8fdd95a7c0390c987b7c59663e0ee12e4a4a968e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c0c3c45c47447390901e5e0d60e77ab6b85a6a0d
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91267805"
+ms.locfileid: "91354759"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>Erőforrások meghatározása a szolgáltatás jegyzékfájljában
 ## <a name="overview"></a>Áttekintés
@@ -198,7 +198,7 @@ Adja meg az alábbi paramétereket:
   </Parameters>
 ```
 
-Az alkalmazás telepítése során ezeket az értékeket ApplicationParameters-ként adhatja át.  Példa:
+Az alkalmazás telepítése során ezeket az értékeket ApplicationParameters-ként adhatja át.  Például:
 
 ```powershell
 PS C:\> New-ServiceFabricApplication -ApplicationName fabric:/myapp -ApplicationTypeName "AppType" -ApplicationTypeVersion "1.0.0" -ApplicationParameter @{Port='1001'; Protocol='https'; Type='Input'; Port1='2001'; Protocol='http'}
@@ -206,7 +206,7 @@ PS C:\> New-ServiceFabricApplication -ApplicationName fabric:/myapp -Application
 
 Megjegyzés: Ha egy adott ApplicationParameter megadott érték üres, a megfelelő Végpontneve tartozó ServiceManifest megadott alapértelmezett értékre megyünk vissza.
 
-Példa:
+Például:
 
 Ha a megadott ServiceManifest
 
@@ -227,9 +227,9 @@ Tegyük fel, hogy helytelen értéket ad meg. Tegyük fel, hogy a porthoz a "foo
 Ez a cikk azt ismerteti, hogyan lehet végpontokat meghatározni a Service Fabric szolgáltatási jegyzékfájljában. Részletesebb példákat a következő témakörben talál:
 
 > [!div class="nextstepaction"]
-> [Példák alkalmazások és szolgáltatások jegyzékeire](https://docs.microsoft.com/azure/service-fabric/service-fabric-manifest-examples.md)
+> [Példák alkalmazások és szolgáltatások jegyzékeire](service-fabric-manifest-examples.md)
 
 Egy meglévő alkalmazás Service Fabric-fürtön történő üzembe helyezéséhez és telepítéséhez tekintse meg a következőt:
 
 > [!div class="nextstepaction"]
-> [Meglévő végrehajtható fájl becsomagolása és üzembe helyezése Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-existing-app.md)
+> [Meglévő végrehajtható fájl becsomagolása és üzembe helyezése Service Fabric](service-fabric-deploy-existing-app.md)

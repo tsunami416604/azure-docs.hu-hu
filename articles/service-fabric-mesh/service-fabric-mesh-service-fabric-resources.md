@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: vturecek
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 0ae2ed163560aee4c0c3525ab31910e37afaa5b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a7f25d4156c3d2671e1a15a1253ed7ba22265af0
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847007"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91354870"
 ---
 # <a name="introduction-to-service-fabric-resource-model"></a>A Service Fabric Resource Model bemutatása
 
@@ -66,7 +66,7 @@ A titkok erőforrásai olyan alkalmazás-vagy szolgáltatási erőforrástól f�
 
 A tárolók gyakran teszik elérhetővé az ideiglenes lemezeket. Az ideiglenes lemezek elmúló jellegűek, ezért új ideiglenes lemezt kap, és elveszíti az adatokat, amikor a tároló összeomlik. A többi tárolóval rendelkező ideiglenes lemezekkel kapcsolatos információkat is nehéz megosztani. A kötetek olyan könyvtárak, amelyek az állapot megőrzéséhez használható tároló-példányokon belül vannak csatlakoztatva. A kötetek általános célú fájlmegosztást biztosítanak, és lehetővé teszik a fájlok olvasását/írását a normál lemez I/O-fájl API-jai használatával. A mennyiségi erőforrás egy deklaratív módszer, amely leírja, hogyan van csatlakoztatva egy könyvtár és a hozzá tartozó tároló (Azure Files kötet vagy Service Fabric megbízható kötet).  További információért olvassa el a [tárolás állapotot](service-fabric-mesh-storing-state.md#volumes).
 
-![Kötetek][Image3]
+![A diagram egy lemezes kötetre áramló szolgáltatást mutat be, amely Service Fabric megbízható kötetre, majd egy replikált helyi lemezre, valamint Azure Files kötetre, majd a hálózati tárterületre áramlik.][Image3]
 
 ## <a name="programming-models"></a>Programozási modellek
 A szolgáltatási erőforráshoz csak a tároló rendszerképének futtatására van szükség, amely az erőforráshoz társított kód csomag (ok) ra hivatkozik. Bármilyen, bármilyen nyelven írt kódot futtathat a tárolón belül bármely keretrendszer használatával anélkül, hogy tudnia kellene vagy használni kellene Service Fabric Mesh-specifikus API-kat. 
@@ -78,7 +78,7 @@ Az alkalmazás kódja Service Fabric hálón kívül is hordozható marad, és a
 Az erőforrás-modellen alapuló Service Fabric Mesh-alkalmazások a Docker-tárolóként vannak csomagolva.  Service Fabric Mesh egy megosztott, több-bérlős környezet, és a tárolók magas szintű elkülönítést biztosítanak.  Ezeket az alkalmazásokat JSON-formátum vagy YAML-formátum (ezt követően JSON-re konvertálva) írják le. Amikor Mesh-alkalmazást telepít az Azure Service Fabric Meshba, az alkalmazás leírására használt JSON egy Azure Resource Manager sablon. Az erőforrások az Azure-erőforrásokra vannak leképezve.  Ha egy Mesh-alkalmazást Service Fabric fürtre (önálló vagy Azure-beli) helyez üzembe, az alkalmazás leírásához használt JSON formátuma egy Azure Resource Manager sablonhoz hasonlít.  A üzembe helyezést követően a háló alkalmazások a HTTP-interfészeken vagy az Azure CLI-n keresztül felügyelhetők. 
 
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 Ha többet szeretne megtudni a Service Fabric Meshról, olvassa el az áttekintést:
 - [Service Fabric Mesh – áttekintés](service-fabric-mesh-overview.md)
 

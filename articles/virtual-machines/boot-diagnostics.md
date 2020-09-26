@@ -7,12 +7,12 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: conceptual
 ms.date: 08/04/2020
-ms.openlocfilehash: 0b3e1b3bc296676c44eddf34b35a0d4e06d3b8c4
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: b51b44f3a3d0889836bb41e0bf2fa37234338cf4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90007332"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287083"
 ---
 # <a name="azure-boot-diagnostics"></a>Azure rendszerindítási diagnosztika
 
@@ -38,6 +38,7 @@ A virtuális gép paneljén a rendszerindítási diagnosztika lehetőség a Azur
 - A rendszerindítási diagnosztika nem támogatja a Premium Storage-fiókokat, ha prémium szintű Storage-fiókot használ a rendszerindítási diagnosztikai felhasználóknak a `StorageAccountTypeNotSupported` virtuális gép indításakor hibaüzenet jelenik meg. 
 - A felügyelt Storage-fiókok a Resource Manager API "2020-06-01" és újabb verzióiban támogatottak.
 - Az Azure soros konzol jelenleg nem kompatibilis a rendszerindítási diagnosztika felügyelt tárolási fiókjával. További információ az [Azure soros konzolról](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-overview).
+- A rendszerindítási diagnosztika kezelése a Storage-fiókkal jelenleg csak a Azure Portalon keresztül lehetséges. 
 
 ## <a name="next-steps"></a>Következő lépések
 

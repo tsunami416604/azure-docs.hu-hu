@@ -8,16 +8,16 @@ ms.service: dns
 ms.topic: quickstart
 ms.date: 3/11/2019
 ms.author: rohink
-ms.openlocfilehash: 3b34b45cba805d748dcc8a0c31340cd8116e1c80
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 93d9ce50a451221c86f5336107dba30695af159f
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82160766"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91355363"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-the-azure-portal"></a>Gyors útmutató: Azure DNS zóna és rekord létrehozása a Azure Portal használatával
 
-Az Azure DNS-t konfigurálhatja úgy, hogy feloldja a gazdagépneveket a nyilvános tartományban. Ha például megvásárolta a *contoso. xyz* tartománynevet a tartománynév-regisztrálótól, a Azure DNS konfigurálhatja a *contoso. xyz* tartomány üzemeltetéséhez és a webkiszolgáló vagy a webalkalmazás IP-címéhez való feloldáshoz *`www.contoso.xyz`* .
+Az Azure DNS-t konfigurálhatja úgy, hogy feloldja a gazdagépneveket a nyilvános tartományban. Ha például megvásárolta a *contoso. xyz* tartománynevet a tartománynév-regisztrálótól, a Azure DNS konfigurálhatja a *contoso. xyz* tartomány üzemeltetéséhez és a *`www.contoso.xyz`* webkiszolgáló vagy a webalkalmazás IP-címéhez való feloldáshoz.
 
 Ebben a rövid útmutatóban létrehoz egy tesztelési tartományt, majd létrehoz egy címet a *www* feloldásához az IP- *10.10.10.10*.
 
@@ -28,7 +28,7 @@ Ebben a rövid útmutatóban létrehoz egy tesztelési tartományt, majd létreh
 You can also perform these steps using [Azure PowerShell](dns-getstarted-powershell.md) or the cross-platform [Azure CLI](dns-getstarted-cli.md).
 --->
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 Az összes portál lépéseihez jelentkezzen be a [Azure Portalba](https://portal.azure.com).
 
@@ -67,7 +67,7 @@ DNS-bejegyzéseket vagy-rekordokat hoz létre a tartományhoz a DNS-zónán bel�
    - **Típus**: válassza **A**elemet. Az "a" rekordok a leggyakoribbak, de léteznek más rekordtípusok is a levelezési kiszolgálók (MX), az IP v6-címek ("AAAA") és így tovább. 
    - **TTL**: Type *1*. A DNS-kérelem *élettartama* határozza meg, hogy a DNS-kiszolgálók és az ügyfelek mennyi ideig tudják gyorsítótárazni a válaszokat.
    - **TTL-egység**: válassza az **órák**lehetőséget. Ez a **TTL** -érték időegysége. 
-   - **IP-cím**: ehhez a rövid útmutatóhoz írja be a következőt: *10.10.10.10*. Ez az érték annak az IP-címnek a neve, amely a rekord nevét feloldja. Valós forgatókönyv esetén a webkiszolgáló nyilvános IP-címét kell megadnia.
+   - **IP-cím**: ehhez a rövid útmutatóhoz írja be a következőt: *10.10.10.10*. Ez az érték annak az IP-címnek a neve, amely a rekord nevét feloldja. Egy valós forgatókönyvben Ön adná meg a webkiszolgáló nyilvános IP-címét.
 
 Mivel ez a rövid útmutató csak a gyors tesztelési célokra szolgál, nem kell konfigurálnia a Azure DNS névszervereket a tartománynév-regisztrálónál. Valódi üzemi tartománnyal azt is megteheti, hogy a webkiszolgálóhoz vagy alkalmazáshoz való kapcsolódáshoz az internetet bárki megoldják. A tartománynév-regisztrálót felkeresve cserélje le a névkiszolgálói rekordokat a Azure DNS névkiszolgálók helyére. További információ: [oktatóanyag: a tartomány üzemeltetése Azure DNSban](dns-delegate-domain-azure-dns.md#delegate-the-domain).
 
@@ -97,15 +97,15 @@ Most, hogy rendelkezik egy "A" teszttel rendelkező DNS-zónával, tesztelheti a
 
    A következő képernyőhöz hasonlóan kell megjelennie:
 
-   ![nslookup](media/dns-getstarted-portal/nslookup.PNG)
+   ![Képernyőfelvétel: a parancssori ablak n s keresési paranccsal, valamint a kiszolgáló, a címe, a név és a címe értékeit jeleníti meg.](media/dns-getstarted-portal/nslookup.PNG)
 
-A **www\.contoso. xyz** nevű állomásnév a **10.10.10.10**hasonlóan oldódik meg, ugyanúgy, ahogy konfigurálta. Ez az eredmény ellenőrzi, hogy a névfeloldás megfelelően működik-e. 
+A **www \. contoso. xyz** nevű állomásnév a **10.10.10.10**hasonlóan oldódik meg, ugyanúgy, ahogy konfigurálta. Ez az eredmény ellenőrzi, hogy a névfeloldás megfelelően működik-e. 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szüksége az ebben a rövid útmutatóban létrehozott erőforrásokra, távolítsa el őket a **MyResourceGroup** -erőforráscsoport törlésével. Nyissa meg a **MyResourceGroup** erőforráscsoportot, majd válassza az **erőforráscsoport törlése**elemet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Webalkalmazások DNS-rekordjainak létrehozása egyéni tartományban](./dns-web-sites-custom-domain.md)

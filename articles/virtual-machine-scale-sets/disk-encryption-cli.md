@@ -1,6 +1,6 @@
 ---
 title: Lemezek titkosítása az Azure-méretezési csoportokhoz az Azure CLI-vel
-description: Ismerje meg, hogyan titkosíthatja a virtuálisgép-példányokat és a csatlakoztatott lemezeket a Azure PowerShell használatával a Windowsos virtuálisgép-méretezési csoportokban
+description: Ismerje meg, hogyan titkosíthatja a virtuálisgép-példányokat és a csatlakoztatott lemezeket az Azure CLI használatával egy Windows rendszerű virtuálisgép-méretezési csoportokban
 author: ju-shim
 ms.author: jushiman
 ms.topic: tutorial
@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.date: 10/15/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: dfb8a0dc6c27b042319f43bc5970dd8d1bc2b094
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4d8e6d225e02006683166de73a0b66f795bc3993
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496950"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321975"
 ---
 # <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-the-azure-cli"></a>Operációs rendszer és csatlakoztatott adatlemezek titkosítása virtuálisgép-méretezési csoportokban az Azure CLI-vel
 
@@ -172,7 +172,7 @@ Ha már nem kíván titkosított virtuálisgép-példányokat használni, letilt
 az vmss encryption disable --resource-group myResourceGroup --name myScaleSet
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ebben a cikkben az Azure CLI használatával titkosít egy virtuálisgép-méretezési készletet. Használhat [Azure PowerShell](disk-encryption-powershell.md) vagy [Azure Resource Manager sablonokat](disk-encryption-azure-resource-manager.md)is.
 - Ha azt szeretné, hogy a Azure Disk Encryption egy másik bővítmény kiépítés után is alkalmazza, használhatja a [bővítmények sorrendjét](virtual-machine-scale-sets-extension-sequencing.md). 

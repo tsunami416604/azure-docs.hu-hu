@@ -4,12 +4,12 @@ description: Használja a Service Fabric DNS-szolgáltatását, hogy a rendszer 
 ms.topic: conceptual
 ms.date: 7/20/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a05669bbd6de44447d7eb11a0b9941d18e8048d1
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f7f06920820cdc73f8d3101ab24ee46625931ee4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021272"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268043"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>DNS-szolgáltatás az Azure Service Fabricben
 A DNS-szolgáltatás egy opcionális rendszerszolgáltatás, amelyet engedélyezheti a fürtben más szolgáltatások felderítéséhez a DNS protokoll használatával. 
@@ -18,7 +18,7 @@ A már meglévő URL-címeken keresztül számos szolgáltatás, különösen a 
 
 A DNS-szolgáltatás leképezi a DNS-neveket a szolgáltatás neveként, amelyet a elnevezési szolgáltatás a szolgáltatás végpontjának visszaküldéséhez feloldott. A szolgáltatás DNS-neve a létrehozás időpontjában van megadva. Az alábbi ábra bemutatja, hogyan működik a DNS-szolgáltatás az állapot nélküli szolgáltatások esetében.
 
-![szolgáltatási végpontok](./media/service-fabric-dnsservice/stateless-dns.png)
+![Azt bemutató ábra, hogy a DNS-nevek hogyan vannak leképezve a DNS szolgáltatás által az állapot nélküli szolgáltatások számára.](./media/service-fabric-dnsservice/stateless-dns.png)
 
 A Service Fabric 6,3-es verziójától kezdve a Service Fabric DNS protokoll ki lett bővítve, hogy tartalmazza a particionált állapot-nyilvántartó szolgáltatások kezelésére szolgáló sémát. Ezek a bővítmények feloldják az adott partíciós IP-címeket az állapot-nyilvántartó DNS-név és a partíció neve együttes használatával. Mindhárom particionálási séma támogatott:
 
@@ -28,7 +28,7 @@ A Service Fabric 6,3-es verziójától kezdve a Service Fabric DNS protokoll ki 
 
 Az alábbi ábra bemutatja, hogyan működik a DNS-szolgáltatás particionált állapot-nyilvántartó szolgáltatásokhoz.
 
-![állapot-nyilvántartó szolgáltatási végpontok](./media/service-fabric-dnsservice/stateful-dns.png)
+![Diagram, amely azt mutatja, hogy a DNS-nevek hogyan vannak leképezve a DNS szolgáltatás által a particionált állapot nélküli szolgáltatások számára.](./media/service-fabric-dnsservice/stateful-dns.png)
 
 A DNS-szolgáltatás nem támogatja a dinamikus portokat. A dinamikus portokon elérhetővé tett szolgáltatások megoldásához használja a [fordított proxy szolgáltatást](./service-fabric-reverseproxy.md).
 

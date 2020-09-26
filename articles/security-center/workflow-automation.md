@@ -6,14 +6,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 09/12/2020
+ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 7933cc692ebc3b40e5f608a917dce51f5298fbe3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f3a1dc716e4db51d9d8b488bd98fc254f8dad842
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904624"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322155"
 ---
 # <a name="create-automatic-responses-to-alerts-and-recommendations-with-workflow-automation"></a>Automatikus válaszok létrehozása a riasztások és javaslatok számára a munkafolyamat-automatizálással
 
@@ -33,7 +33,7 @@ Ez a cikk a Azure Security Center munkafolyamat-automatizálási szolgáltatás�
 |Kiadás állapota:|Általánosan elérhető (GA)|
 |Árképzési|Ingyenes|
 |Szükséges szerepkörök és engedélyek:|**Biztonsági rendszergazdai szerepkör** vagy **tulajdonos** az erőforráscsoporthoz<br>A cél erőforráshoz is írási engedéllyel kell rendelkeznie<br><br>Azure Logic Apps munkafolyamatok használatához a következő Logic Apps szerepköröket/engedélyeket is meg kell adni:<br> - A [Logic app-operátor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-operator) engedélyei kötelezőek vagy logikai alkalmazások olvasási/aktiválási hozzáférése (ez a szerepkör nem tud logikai alkalmazásokat létrehozni vagy szerkeszteni, csak a meglévőket *futtathatja* )<br> - A logikai alkalmazás létrehozásához és módosításához a [Logic app közreműködői](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-contributor) engedélyei szükségesek<br>Ha logikai alkalmazás-összekötőket szeretne használni, további hitelesítő adatokra lehet szüksége a saját szolgáltatásaiba való bejelentkezéshez (például az Outlook/csapatok/Slack-példányok esetében)|
-|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) US Gov<br>![Igen](./media/icons/yes-icon.png) Kínai gov, egyéb gov|
+|Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![Yes](./media/icons/yes-icon.png) Kínai gov, egyéb gov|
 |||
 
 
@@ -67,14 +67,12 @@ Ez a cikk a Azure Security Center munkafolyamat-automatizálási szolgáltatás�
 
     A Logic app Designerben a Security Center összekötők következő eseményindítói támogatottak:
 
-    * **Azure Security Center javaslat létrehozása vagy elindítása**
-    * **Azure Security Center riasztás létrehozásakor vagy aktiválásakor** 
-    
-    > [!TIP]
-    > Testreszabhatja az indítást úgy, hogy az csak az Önt érdeklő súlyossági szinttel rendelkező riasztásokra vonatkozik.
+    * **Azure Security Center javaslat létrehozásakor vagy elindításakor** – ha a logikai alkalmazás egy elavult vagy lecserélt javaslatra támaszkodik, az automatizálás leáll, és frissítenie kell az aktiválást. A javaslatok változásainak nyomon követéséhez lásd: [Azure Security Center kibocsátási megjegyzések](release-notes.md).
+
+    * **Azure Security Center riasztás létrehozásakor vagy indításakor** – testreszabhatja az indítást úgy, hogy az csak az Önt érdeklő súlyossági szinttel rendelkező riasztásokhoz kapcsolódik.
     
     > [!NOTE]
-    > Ha az örökölt triggert használja a Azure Security Center riasztásra adott válasz indításakor, a rendszer nem indítja el a Logic Apps a munkafolyamat-automatizálási szolgáltatás. Ehelyett használja a fent említett eseményindítók egyikét. 
+    > Ha az örökölt triggert használja a Azure Security Center riasztásra adott válasz indításakor, a rendszer nem indítja el a logikai alkalmazásokat a munkafolyamat-automatizálási szolgáltatással. Ehelyett használja a fent említett eseményindítók egyikét. 
 
     [![Minta logikai alkalmazás](media/workflow-automation/sample-logic-app.png)](media/workflow-automation/sample-logic-app.png#lightbox)
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 79e2726e26ff7883d5022e57fff8fa8961af2c98
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 3277fefb5615fd492b2859b741ef8e6f991eaf23
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163679"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91355474"
 ---
 # <a name="deploy-to-azure-functions-with-devops-starter"></a>Üzembe helyezés Azure Functions a DevOps Starter használatával
 
@@ -95,7 +95,7 @@ A DevOps Starter automatikusan konfigurálja a CI/CD-folyamatot az Azure DevOps-
 
 1. Kattintson a **Létrehozás**alatt található hivatkozásra. Egy böngésző lap megjeleníti az új projekt összeállítási folyamatát.
 
-    ![Létrehozás](_img/azure-devops-project-functions/build.png)
+    ![Képernyőfelvétel: a Azure Portal DevOps Starter-irányítópultja, amely egy nyílra mutat, amely a C I/C D folyamat Build elemében található.](_img/azure-devops-project-functions/build.png)
 
 1. Válassza a **Szerkesztés** elemet. Ezen az ablaktáblán ellenőrizheti a felépítési folyamat különféle feladatait. A build különböző feladatokat hajt végre, mint például a forráskód beolvasása a git-tárházból, az alkalmazás létrehozása, az egységhez tartozó tesztek futtatása, valamint az üzembe helyezéshez használt kimenetek közzététele.
 
@@ -154,7 +154,7 @@ Most már készen áll az alkalmazásban lévő csapattal való együttműködé
 
 A létrehozott kapcsolódó erőforrásokat törölheti, ha már nincs rájuk szükség. Használja a **delete** funkciót a DevOps Starter irányítópultján.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A csapat igényeihez igazodva módosíthatja ezt a buildet és a kiadási folyamatokat. Ezt a CI-/CD-mintát egyéb folyamatok sablonjaként is használhatja. Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

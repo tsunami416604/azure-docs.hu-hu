@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: d8da8bcf3d2bb6b2af2b5c69ce003289d83d3884
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 517fed0dd9eb1736344546bde9f79e52ee17182f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936209"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333103"
 ---
 # <a name="troubleshooting-azure-sql-edge-deployments"></a>Azure SQL Edge-telepítések hibaelhárítása 
 
@@ -138,32 +138,12 @@ docker exec -it <Container ID> /bin/bash
 
 Most futtathatja a parancsokat úgy, mintha a tárolón belül futtatja őket a terminálon. Ha elkészült, írja be a következőt: `exit` . Ez kilép az interaktív parancs-munkamenetből, de a tároló továbbra is fut.
 
-## <a name="troubleshooting-issues-with-data-streaming"></a>Az adatfolyamokkal kapcsolatos problémák elhárítása
-
-Alapértelmezés szerint az Azure SQL Edge streaming Engine naplói a `current` **/var/opt/MSSQL/log/Services/00000001-0000-0000-0000-000000000000** könyvtár alatt található fájlba íródnak. A fájl közvetlenül a leképezett köteten vagy az adatmennyiség-tárolón keresztül érhető el, vagy egy interaktív parancssori munkamenet elindításával az SQL Edge-tárolóba. 
-
-Továbbá, ha az ügyfél eszközeivel tud csatlakozni az SQL Edge-példányhoz, az alábbi T-SQL-paranccsal érheti el az aktuális streaming Engine-naplót. 
-
-```sql
-
-select value as log, try_convert(DATETIME2, substring(value, 0, 26)) as timestamp 
-from 
-    STRING_SPLIT
-    (
-        (
-            select BulkColumn as logs
-            FROM OPENROWSET (BULK '/var/opt/mssql/log/services/00000001-0000-0000-0000-000000000000/current', SINGLE_CLOB) MyFile
-        ),
-        CHAR(10)
-    ) 
-where datalength(value) > 0
-
-```
-
 ### <a name="enabling-verbose-logging"></a>Részletes naplózás engedélyezése
 
 Ha az adatfolyam-kezelő motor alapértelmezett naplózási szintje nem biztosít elegendő információt, az adatfolyam-kezelő motor hibakeresési naplózása az SQL Edge-ben is engedélyezhető. A hibakeresési naplózás engedélyezéséhez adja hozzá a `RuntimeLogLevel=debug` környezeti változót az SQL Edge-telepítéshez. A hibakeresési naplózás engedélyezése után próbálja meg reprodukálni a problémát, és keresse meg a megfelelő üzeneteket vagy kivételeket a naplókban. 
 
+> [!NOTE]
+> A részletes naplózási beállítást csak hibaelhárításhoz kell használni, és nem a szokásos üzemi számítási feladatokhoz. 
 
 
 ## <a name="next-steps"></a>Következő lépések

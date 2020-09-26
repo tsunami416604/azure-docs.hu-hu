@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: carlrab
+ms.reviewer: ''
 ms.date: 12/20/2018
-ms.openlocfilehash: a45fc5f4e56ff3a5d7f0be167c5d758aa0e47caf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd9bc17db3eccc64f35d7295d57dc120364481dd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84196358"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332984"
 ---
 # <a name="best-practices-for-azure-sql-data-sync"></a>Ajánlott eljárások az Azure SQL Data Synchez 
 
@@ -29,7 +29,7 @@ Az SQL Data Sync áttekintéséhez tekintse meg a [több felhőalapú és helysz
 > [!IMPORTANT]
 > Az Azure SQL-adatszinkronizálás jelenleg **nem** támogatja az Azure SQL felügyelt példányát.
 
-## <a name="security-and-reliability"></a><a name="security-and-reliability"></a>Biztonság és megbízhatóság
+## <a name="security-and-reliability"></a><a name="security-and-reliability"></a> Biztonság és megbízhatóság
 
 ### <a name="client-agent"></a>Ügyfél ügynöke
 
@@ -54,7 +54,7 @@ Azure SQL Database csak a hitelesítő adatok egyetlen készletét támogatja. A
 
 ## <a name="setup"></a>Telepítés
 
-### <a name="database-considerations-and-constraints"></a><a name="database-considerations-and-constraints"></a>Az adatbázissal kapcsolatos megfontolások és megkötések
+### <a name="database-considerations-and-constraints"></a><a name="database-considerations-and-constraints"></a> Az adatbázissal kapcsolatos megfontolások és megkötések
 
 #### <a name="database-size"></a>Adatbázisméret
 
@@ -63,7 +63,7 @@ Amikor új adatbázist hoz létre, állítsa be a maximális méretet úgy, hogy
 > [!IMPORTANT]
 > A SQL-adatszinkronizálás további metaadatokat tárol az egyes adatbázisokkal. Győződjön meg arról, hogy a szükséges lemezterület kiszámításához a metaadatokat kell figyelembe veszi. A hozzáadott terhelés mennyisége a táblák szélessége (például a keskeny táblázatok nagyobb terhelést igényelnek) és a forgalom mennyiségével kapcsolatos.
 
-### <a name="table-considerations-and-constraints"></a><a name="table-considerations-and-constraints"></a>A táblázat szempontjai és megkötései
+### <a name="table-considerations-and-constraints"></a><a name="table-considerations-and-constraints"></a> A táblázat szempontjai és megkötései
 
 #### <a name="selecting-tables"></a>Táblák kiválasztása
 
@@ -79,7 +79,7 @@ A SQL-adatszinkronizálás éles környezetben való használata előtt tesztelj
 
 Az üres táblák a legjobb teljesítményt nyújtják az inicializálási időpontnál. Ha a céltábla üres, az adatszinkronizálás a tömeges Beszúrás használatával tölti be az adatmennyiséget. Ellenkező esetben az adatszinkronizálás az ütközések ellenőrzéséhez sorok közötti összehasonlítást és beszúrást végez. Ha azonban a teljesítmény nem jelent problémát, beállíthatja az olyan táblák közötti szinkronizálást, amelyek már tartalmaznak adattartalmat.
 
-### <a name="provisioning-destination-databases"></a><a name="provisioning-destination-databases"></a>Cél-adatbázisok kiépítés
+### <a name="provisioning-destination-databases"></a><a name="provisioning-destination-databases"></a> Cél-adatbázisok kiépítés
 
 A SQL-adatszinkronizálás alapszintű adatbázis-létesítést biztosít.
 
@@ -103,7 +103,7 @@ A SQL-adatszinkronizálás az alábbi korlátozásokkal rendelkezik az kiépít�
 -   Kizárólag a szolgáltatás kipróbálásakor használja a SQL-adatszinkronizálás-kiépítési képességet.  
 -   Éles környezetben kiépítheti az adatbázis-sémát.
 
-### <a name="where-to-locate-the-hub-database"></a><a name="locate-hub"></a>Hol található a hub-adatbázis
+### <a name="where-to-locate-the-hub-database"></a><a name="locate-hub"></a> Hol található a hub-adatbázis
 
 #### <a name="enterprise-to-cloud-scenario"></a>Vállalat – felhő forgatókönyv
 
@@ -120,7 +120,7 @@ Alkalmazza az előző irányelveket az összetett szinkronizálási csoport konf
 
 ## <a name="sync"></a>Sync
 
-### <a name="avoid-slow-and-costly-initial-sync"></a><a name="avoid-a-slow-and-costly-initial-synchronization"></a>A lassú és költséges kezdeti szinkronizálás elkerülése
+### <a name="avoid-slow-and-costly-initial-sync"></a><a name="avoid-a-slow-and-costly-initial-synchronization"></a> A lassú és költséges kezdeti szinkronizálás elkerülése
 
 Ebben a szakaszban egy szinkronizálási csoport kezdeti szinkronizálását tárgyaljuk. Ebből a témakörből megtudhatja, hogyan akadályozhatja meg, hogy a kezdeti szinkronizálás hosszabb időt vesz igénybe, és költségesebb legyen a szükségesnél.
 
@@ -134,13 +134,13 @@ Ha az adatbázisok különböző adatközpontokban találhatók, minden sornak a
 
 Ha lehetséges, először csak az egyik szinkronizálási csoport adatbázisaiban található adatmennyiséget kell megkezdenie.
 
-### <a name="design-to-avoid-sync-loops"></a><a name="design-to-avoid-synchronization-loops"></a>A szinkronizálási hurkok elkerülésének tervezése
+### <a name="design-to-avoid-sync-loops"></a><a name="design-to-avoid-synchronization-loops"></a> A szinkronizálási hurkok elkerülésének tervezése
 
 Szinkronizálási hurok akkor következik be, amikor körkörös hivatkozások vannak egy szinkronizálási csoporton belül. Ebben az esetben az egyik adatbázis minden változása végtelen és körkörösen replikálódik a szinkronizálási csoport adatbázisain keresztül.   
 
 Ügyeljen arra, hogy elkerülje a szinkronizálási hurkokat, mert ezek a teljesítmény romlását okozzák, és jelentős mértékben növelhetik a költségeket.
 
-### <a name="changes-that-fail-to-propagate"></a><a name="handling-changes-that-fail-to-propagate"></a>Nem propagált módosítások
+### <a name="changes-that-fail-to-propagate"></a><a name="handling-changes-that-fail-to-propagate"></a> Nem propagált módosítások
 
 #### <a name="reasons-that-changes-fail-to-propagate"></a>A változások sikertelen propagálásának okai
 
@@ -166,7 +166,7 @@ A szinkronizálási csoport és az adatbázis állapotának rendszeres figyelés
 
 ## <a name="maintenance"></a>Karbantartás
 
-### <a name="avoid-out-of-date-databases-and-sync-groups"></a><a name="avoid-out-of-date-databases-and-sync-groups"></a>Elavult adatbázisok és szinkronizálási csoportok elkerülése
+### <a name="avoid-out-of-date-databases-and-sync-groups"></a><a name="avoid-out-of-date-databases-and-sync-groups"></a> Elavult adatbázisok és szinkronizálási csoportok elkerülése
 
 A szinkronizálási csoportban lévő szinkronizálási csoport vagy adatbázis elavult lehet. Ha a szinkronizálási csoport állapota elavult **, a**működése leáll. Ha **az adatbázis állapota elavult, az**adatok elveszhetnek. Érdemes elkerülni ezt a forgatókönyvet ahelyett, hogy helyre kellene állítani.
 
@@ -191,11 +191,11 @@ Elavult szinkronizálási csoportok megelőzése:
 -   Frissítse az idegenkulcs-értékeket a hibás sorokban található értékek belefoglalásához.
 -   Frissítse a meghibásodott sorban lévő adatértékeket, hogy azok kompatibilisek legyenek a céladatbázis sémával vagy külső kulcsaival.
 
-### <a name="avoid-deprovisioning-issues"></a><a name="avoid-deprovisioning-issues"></a>A problémák megszüntetésének elkerülése
+### <a name="avoid-deprovisioning-issues"></a><a name="avoid-deprovisioning-issues"></a> A problémák megszüntetésének elkerülése
 
 Bizonyos esetekben előfordulhat, hogy az ügyfél ügynökkel való regisztrációjának törlése miatt a szinkronizálás sikertelen lesz.
 
-#### <a name="scenario"></a>Forgatókönyv
+#### <a name="scenario"></a>Használati eset
 
 1. Az A szinkronizálási csoport egy SQL Database-példány és egy SQL Server-adatbázis használatával lett létrehozva, amely az 1. helyi ügynökhöz van társítva.
 2. Ugyanaz a helyszíni adatbázis regisztrálva van a (z) 2. helyi ügynökkel (ez az ügynök nincs hozzárendelve egyetlen szinkronizálási csoporthoz sem).
@@ -212,7 +212,7 @@ Helyreállítás ebből a forgatókönyvből:
 2. Adja vissza az adatbázist minden olyan szinkronizálási csoportba, amelyet eltávolított a alkalmazásból.  
 3. Telepítsen minden érintett szinkronizálási csoportot (ez a művelet kiépíti az adatbázist).  
 
-### <a name="modifying-a-sync-group"></a><a name="modifying-your-sync-group"></a>Szinkronizálási csoport módosítása
+### <a name="modifying-a-sync-group"></a><a name="modifying-your-sync-group"></a> Szinkronizálási csoport módosítása
 
 Ne kísérelje meg eltávolítani az adatbázist egy szinkronizálási csoportból, majd szerkessze a szinkronizálási csoportot anélkül, hogy először telepítené az egyik módosítást.
 
@@ -228,7 +228,7 @@ Ha a szinkronizáláshoz összetett séma áll rendelkezésre, akkor a séma fri
 
 A probléma megoldásához csökkentse a szinkronizálási metaadat-adatbázist úgy, hogy magasabb SKU-t (például S3) használjon. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a SQL-adatszinkronizálásról:
 
 -   Áttekintés – az [adatszinkronizálás több felhőalapú és helyszíni adatbázis között az Azure SQL-adatszinkronizálás](sql-data-sync-data-sql-server-sql-database.md)

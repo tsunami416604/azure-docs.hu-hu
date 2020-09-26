@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: carlrab
+ms.reviewer: ''
 ms.date: 11/26/2019
-ms.openlocfilehash: fbf753436a259993f6869372ae3ba7272f2a181a
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: ba2170923885eac19af4bfe3ce55ea653371c0e8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541702"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321356"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>A DTU-alapú vásárlási modell szolgáltatásszintjei
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -42,7 +42,7 @@ A szolgáltatási szint kiválasztása elsősorban az üzletmenet folytonossága
 |**CPU**|Alacsony|Alacsony, közepes és magas|Közepes, magas|
 |**IO-átviteli sebesség (hozzávetőleges)** |1-5 IOPS/DTU| 1-5 IOPS/DTU | 25 IOPS/DTU|
 |**IO-késés (hozzávetőleges)**|5 MS (olvasás), 10 MS (írás)|5 MS (olvasás), 10 MS (írás)|2 MS (olvasás/írás)|
-|**Oszlopcentrikus indexelése** |N/A|S3 és újabb verziók|Támogatott|
+|**Oszlopcentrikus indexelése** |N.A.|S3 és újabb verziók|Támogatott|
 |**Memóriabeli OLTP**|N.A.|N.A.|Támogatott|
 
 > [!IMPORTANT]
@@ -68,7 +68,7 @@ A számítási méretek az önálló adatbázisok és a rugalmas adatbázis-tran
 
 ## <a name="elastic-pool-edtu-storage-and-pooled-database-limits"></a>Rugalmas készlet eDTU, tárolás és készletezett adatbázisok korlátai
 
-|| **Basic** | **Standard** | **Prémium szintű** |
+|| **Basic** | **Standard** | **Prémium** |
 | :-- | --: | --: | --: |
 | **Tárterület maximális mérete adatbázison**  | 2 GB | 1 TB | 1 TB |
 | **Tárterület maximális mérete készlet szerint** | 156 GB | 4 TB | 4 TB |
@@ -109,7 +109,7 @@ Az adatbázis méretezési tényezőn alapul. A méretezési tényező (SF-ként
 
 A munkaterhelés kilenc tranzakciós típusból áll, ahogy az alábbi táblázatban is látható. Minden tranzakció úgy van kialakítva, hogy kiemelje a rendszerjellemzők egy adott készletét az adatbázismotor és a rendszer hardverén, nagy kontraszttal a többi tranzakciótól. Ezzel a megközelítéssel könnyebben mérhetővé válik a különböző összetevők hatása a teljes teljesítményre. Például a "READ Heavy" tranzakció jelentős számú olvasási műveletet eredményez a lemezről.
 
-| Transaction Type (Tranzakció típusa) | Leírás |
+| Transaction Type (Tranzakció típusa) | Description |
 | --- | --- |
 | A Lite olvasása |Válassza memóriában tárolt; csak olvasható |
 | Adathordozó olvasása |Válassza többnyire a memóriában; csak olvasható |
@@ -174,7 +174,7 @@ A teljesítményteszt fő mérőszámai az átviteli sebesség és a válaszidő
 | Standard |Percenkénti tranzakciók |90 százalék 1,0 másodpercnél |
 | Alapszintű |Tranzakció/óra |80th percentilis 2,0 másodpercnél |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az önálló adatbázisok esetében elérhető számítási méretekről és a tárolási méretekről az önálló [adatbázisok SQL Database DTU-alapú erőforrás-korlátozásai](resource-limits-dtu-single-databases.md#single-database-storage-sizes-and-compute-sizes)című témakörben olvashat bővebben.
 - Az adott számítási méretek és a rugalmas készletekhez rendelkezésre álló tárolási méretek részleteiért lásd: [SQL Database DTU-alapú erőforrás-korlátok](resource-limits-dtu-elastic-pools.md#elastic-pool-storage-sizes-and-compute-sizes).

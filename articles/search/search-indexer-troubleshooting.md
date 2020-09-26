@@ -8,12 +8,12 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 05d0cba2a3751ac010dc26f68137a31dd04c62ce
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 7eadc9121c54b636fa8b42579284d4018043e1c1
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935143"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91355125"
 ---
 # <a name="troubleshooting-common-indexer-issues-in-azure-cognitive-search"></a>Az Azure Cognitive Search gyakori indexelő problémáinak elhárítása
 
@@ -91,7 +91,7 @@ api-key: [admin key]
 A blob indexelő [megkeresi és kiolvassa a tárolóban lévő Blobok szövegét](search-howto-indexing-azure-blob-storage.md#how-azure-search-indexes-blobs). A szöveg kinyerésével kapcsolatos problémák például a következők:
 
 * A dokumentum csak a beolvasott képeket tartalmazza. A nem szöveges tartalmú PDF-Blobok, például a beolvasott képek (jpg-EK) nem eredményeznek eredményt a szabványos blob-indexelési folyamatokban. Ha szöveges elemekkel rendelkező képtartalommal rendelkezik, a [kognitív keresés](cognitive-search-concept-image-scenarios.md) használatával megkeresheti és kinyerheti a szöveget.
-* A blob-indexelő úgy van beállítva, hogy csak a metaadatok indexelésére legyen konfigurálva. A tartalom kinyeréséhez a blob indexelő úgy kell konfigurálni, hogy [mindkét tartalmat és metaadatot kinyerje](search-howto-indexing-azure-blob-storage.md#controlling-which-parts-of-the-blob-are-indexed):
+* A blob-indexelő úgy van beállítva, hogy csak a metaadatok indexelésére legyen konfigurálva. A tartalom kinyeréséhez a blob indexelő úgy kell konfigurálni, hogy [mindkét tartalmat és metaadatot kinyerje](search-howto-indexing-azure-blob-storage.md#PartsOfBlobToIndex):
 
 ```
 PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2020-06-30

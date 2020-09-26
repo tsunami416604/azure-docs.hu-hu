@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: 08fcf3540b2f8677f3fbfff49f21f99062d0ca40
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 45f63aed410c4d140259808044872cbbecfaa95b
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91343376"
+ms.locfileid: "91355567"
 ---
 # <a name="manage-azure-machine-learning-studio-classic-web-services-using-api-management"></a>Azure Machine Learning Studio (klasszikus) webszolgáltatások kezelése API Management használatával
 
-**a következőkre vonatkozik:** ![ igen ](../../../includes/media/aml-applies-to-skus/yes.png) Machine learning Studio (klasszikus) ![ nincs](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../compare-azure-ml-to-studio-classic.md)  
+**a következőkre vonatkozik:** ![ A következőre vonatkozik:. ](../../../includes/media/aml-applies-to-skus/yes.png) A Machine Learning Studio (klasszikus) ![ nem vonatkozik a következőre:.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
 
 
 ## <a name="overview"></a>Áttekintés
@@ -50,7 +50,7 @@ A Azure Machine Learning webszolgáltatását API Management példánnyal kezelh
 
 Egy új szolgáltatás létrehozása akár 30 percet is igénybe vehet.
 
-![szolgáltatás létrehozása](./media/manage-web-service-endpoints-using-api-management/create-service.png)
+![Képernyőfelvétel: a P I felügyeleti szolgáltatás párbeszédpanel, amely a szolgáltatások létrehozásához szükséges beállításokat tartalmazza.](./media/manage-web-service-endpoints-using-api-management/create-service.png)
 
 
 ## <a name="create-the-api"></a>Az API létrehozása
@@ -87,12 +87,12 @@ Először hozzon létre egy műveletet a AzureML ERŐFORRÁSREKORDOK szolgáltat
 2. Az **URL-sablonhoz**írja be a következőt: " `/workspaces/{workspace}/services/{service}/execute?api-version={apiversion}&details={details}` ".
 3. Adja meg a **megjelenítendő nevet** (ez a példa a "erőforrásrekordok végrehajtása" kifejezést használja).
 
-   ![Add-erőforrásrekordok-Operation-Signature](./media/manage-web-service-endpoints-using-api-management/add-rrs-operation-signature.png)
+   ![Képernyőfelvétel: az aláírás oldal, amelyen megadhatja a megjelenítendő nevet.](./media/manage-web-service-endpoints-using-api-management/add-rrs-operation-signature.png)
 
 4. Kattintson **Responses**  >  a bal oldalon a válaszok**Hozzáadás** elemre, és válassza a **200 OK**lehetőséget.
 5. A művelet mentéséhez kattintson a **Mentés** gombra.
 
-   ![Add-RR-Operation-Response](./media/manage-web-service-endpoints-using-api-management/add-rrs-operation-response.png)
+   ![A képernyőképen az R R S Execute (Mentés) gombot tartalmazó művelet jelenik meg.](./media/manage-web-service-endpoints-using-api-management/add-rrs-operation-response.png)
 
 ## <a name="add-bes-operations"></a>BES-műveletek hozzáadása
 
@@ -141,15 +141,15 @@ A műveletek meghívhatók közvetlenül a fejlesztői portálról, amely kénye
 
 1. Kattintson a **fejlesztői portál**elemre.
 
-   ![fejlesztő – portál](./media/manage-web-service-endpoints-using-api-management/developer-portal.png)
+   ![Képernyőfelvétel: a fejlesztői portál hivatkozása.](./media/manage-web-service-endpoints-using-api-management/developer-portal.png)
 
 2. Kattintson az **API** -k elemre a felső menüben, majd kattintson a **AzureML demo API** elemre az elérhető műveletek megtekintéséhez.
 
-   ![demoazureml – API](./media/manage-web-service-endpoints-using-api-management/demoazureml-api.png)
+   ![Képernyőfelvétel: az Azure M L bemutatója a P I hivatkozást mutatja.](./media/manage-web-service-endpoints-using-api-management/demoazureml-api.png)
 
 3. Válassza ki a művelethez tartozó **erőforrásrekordok-végrehajtás** elemet. Kattintson a **kipróbálás**gombra.
 
-   ![kipróbálás](./media/manage-web-service-endpoints-using-api-management/try-it.png)
+   ![Képernyőfelvétel: az Azure M L bemutatója: P I. a kiválasztott R S és a TRY IT gomb](./media/manage-web-service-endpoints-using-api-management/try-it.png)
 
 4. A **kérés paramétereinek**megtekintéséhez írja be a **munkaterületet** és a  **szolgáltatást**, írja be a "2,0 for the **apiversion**" és a "true" értéket a **részletekre**. A **munkaterület** és a **szolgáltatás** a AzureML webszolgáltatás irányítópultján található (lásd: **a webszolgáltatás tesztelése** az a függelékben).
 
@@ -157,15 +157,15 @@ A műveletek meghívhatók közvetlenül a fejlesztői portálról, amely kénye
 
    A **kérelem törzse**mezőbe írja be a következőt: `{"Inputs": {"input1": {"ColumnNames": ["Col2"], "Values": [["This is a good day"]]}}, "GlobalParameters": {}}` .
 
-   ![azureml-bemutató-API](./media/manage-web-service-endpoints-using-api-management/azureml-demo-api.png)
+   ![Képernyőfelvétel: az Azure M L bemutatója: a P I paraméter, a kérelem fejléce, A kérelem törzse és az engedélyezés.](./media/manage-web-service-endpoints-using-api-management/azureml-demo-api.png)
 
 5. Kattintson a **Küldés** gombra.
 
-   ![Küldj](./media/manage-web-service-endpoints-using-api-management/send.png)
+   ![A képernyőképen egy Küldés gomb látható.](./media/manage-web-service-endpoints-using-api-management/send.png)
 
 A művelet meghívása után a fejlesztői portál megjeleníti a **kért URL-címet** a háttér-szolgáltatástól, a **Válasz állapotától**, a válasz **fejléctől**és a **Válasz tartalmától**.
 
-![Válasz – állapot](./media/manage-web-service-endpoints-using-api-management/response-status.png)
+![Képernyőfelvétel: a fejlesztői portál a válasz állapotát, a válasz késését, a válasz fejléceit és a válasz tartalmát jeleníti meg.](./media/manage-web-service-endpoints-using-api-management/response-status.png)
 
 ## <a name="appendix-a---creating-and-testing-a-simple-azureml-web-service"></a>A függelék – egyszerű AzureML webszolgáltatás létrehozása és tesztelése
 ### <a name="creating-the-experiment"></a>A kísérlet létrehozása
@@ -177,11 +177,11 @@ Az alábbiakban egy egyszerű AzureML-kísérlet létrehozásának és webszolg�
 
 Először a kívánt böngésző használatával lépjen a következő helyre:, [https://studio.azureml.net/](https://studio.azureml.net/) és adja meg a bejelentkezéshez szükséges hitelesítő adatait. Ezután hozzon létre egy új üres kísérletet.
 
-![Keresés – kísérlet – sablonok](./media/manage-web-service-endpoints-using-api-management/search-experiment-templates.png)
+![A képernyőképen egy új oldal jelenik meg, amelyen a KÍSÉRLETEZÉS van kiválasztva és egy szöveges keresés.](./media/manage-web-service-endpoints-using-api-management/search-experiment-templates.png)
 
 Nevezze át a **SimpleFeatureHashingExperiment**. Bontsa ki a **mentett adatkészletek** csomópontot, és húzza a **Book Reviews from Amazon elemet** a kísérletre.
 
-![egyszerű funkció – kivonatolás – kísérlet](./media/manage-web-service-endpoints-using-api-management/simple-feature-hashing-experiment.png)
+![Képernyőfelvétel: a bal oldalon található minták, valamint a jobb oldali SimpleFeatureHashingExperiment ablaktábla, amely az elemek húzására szolgáló utasításokat tartalmazza.](./media/manage-web-service-endpoints-using-api-management/simple-feature-hashing-experiment.png)
 
 Bontsa ki az **adatátalakítás** és- **kezelés** elemet, és húzza az **adatkészletben az Oszlopok kiválasztása lehetőséget** a kísérletbe. A **Book-értékelések** összekapcsolhatók az Amazontól az **adatkészlet oszlopainak kiválasztásához**.
 
@@ -193,53 +193,53 @@ Kattintson **az Oszlopok kiválasztása az adatkészletben** elemre, majd kattin
 
 Bontsa ki **text Analytics** és húzza a **szolgáltatás-kivonatolást** a kísérletre. Az **adatkészlethez tartozó oszlopok kiválasztása** a **szolgáltatások kivonatolásához**.
 
-![összekapcsolási projekt – oszlopok](./media/manage-web-service-endpoints-using-api-management/connect-project-columns.png)
+![A képernyőfelvételen a munkaterülethez hozzáadott szolgáltatás-kivonatolási elem látható.](./media/manage-web-service-endpoints-using-api-management/connect-project-columns.png)
 
 Írja be a **3** értéket a **kivonatoló bitsize**. Ez 8 (23) oszlopot fog létrehozni.
 
-![kivonatolás – bitsize](./media/manage-web-service-endpoints-using-api-management/hashing-bitsize.png)
+![A képernyőfelvételen a funkciók kivonatolása lehetőség van kiválasztva, és a kivonatoló bitsize is megadható.](./media/manage-web-service-endpoints-using-api-management/hashing-bitsize.png)
 
 Ezen a ponton érdemes a **Futtatás** gombra kattintani a kísérlet teszteléséhez.
 
-![futtassa](./media/manage-web-service-endpoints-using-api-management/run.png)
+![A képernyőképen egy Futtatás gomb látható.](./media/manage-web-service-endpoints-using-api-management/run.png)
 
 ### <a name="create-a-web-service"></a>Webszolgáltatás létrehozása
 Most hozzon létre egy webszolgáltatás-szolgáltatást. Bontsa ki a **webszolgáltatás** csomópontot, és húzza a **bemenetet** a kísérletbe. A **bemenet** összekötése a **szolgáltatások kivonatolásával**. Húzza a **kimenetet** a kísérletbe is. A **kimenet** összekötése a **szolgáltatások kivonatolásával**.
 
-![kimenet – funkció – kivonatolás](./media/manage-web-service-endpoints-using-api-management/output-to-feature-hashing.png)
+![A képernyőkép a megadott módosítások után jeleníti meg a munkaterületet.](./media/manage-web-service-endpoints-using-api-management/output-to-feature-hashing.png)
 
 Kattintson a **webszolgáltatások közzététele**elemre.
 
-![közzététel – Web-Service](./media/manage-web-service-endpoints-using-api-management/publish-web-service.png)
+![Képernyőfelvétel: a közzétételi WEBSZOLGÁLTATÁS gomb megjelenítése.](./media/manage-web-service-endpoints-using-api-management/publish-web-service.png)
 
 A kísérlet közzétételéhez kattintson az **Igen** gombra.
 
-![igen – közzététel](./media/manage-web-service-endpoints-using-api-management/yes-to-publish.png)
+![A képernyőképen egy megerősítési üzenet jelenik meg, a közzététel lehetősége pedig nem.](./media/manage-web-service-endpoints-using-api-management/yes-to-publish.png)
 
 ### <a name="test-the-web-service"></a>A webszolgáltatás tesztelése
 Egy AzureML webszolgáltatás RSS (kérés/válasz szolgáltatás) és BES (batch-végrehajtási szolgáltatás) végpontokból áll. Az RSS szinkron végrehajtásra szolgál. A BES aszinkron feladatok végrehajtásához használható. Ha a webszolgáltatást az alábbi példa Python-forrással szeretné tesztelni, előfordulhat, hogy le kell töltenie és telepítenie kell a Pythonhoz készült Azure SDK-t (lásd: a [Python telepítése](/azure/developer/python/azure-sdk-install)).
 
 Szüksége lesz az alábbi mintakód **munkaterületére**, **szolgáltatására**és **api_keyére** is. A munkaterületet és a szolgáltatást úgy keresheti meg, hogy a kísérletet a webszolgáltatás irányítópultján a **kérelem/válasz** vagy a **kötegelt végrehajtás** lehetőségre kattint.
 
-![Keresés-munkaterület-és-szolgáltatás](./media/manage-web-service-endpoints-using-api-management/find-workspace-and-service.png)
+![A képernyőképen a kérelem panel látható, ahol megtalálhatja a munkaterület és a szolgáltatás értékeit.](./media/manage-web-service-endpoints-using-api-management/find-workspace-and-service.png)
 
 A **api_key** a webszolgáltatás irányítópultján a kísérletre kattintva érheti el.
 
-![Keresés-API-kulcs](./media/manage-web-service-endpoints-using-api-management/find-api-key.png)
+![Képernyőfelvétel: a webszolgáltatási irányítópulton látható kísérlet, ahol megtalálhatja a P I kulcsot.](./media/manage-web-service-endpoints-using-api-management/find-api-key.png)
 
 #### <a name="test-rrs-endpoint"></a>ERŐFORRÁSREKORDOK tesztelési végpontja
 ##### <a name="test-button"></a>Teszt gomb
 Az RR-végpont tesztelésének egyszerű módja, ha a **tesztelés** gombra kattint a webszolgáltatás irányítópultján.
 
-![test](./media/manage-web-service-endpoints-using-api-management/test.png)
+![Képernyőfelvétel: a webszolgáltatási irányítópulton látható kísérlet, amelyben a teszt gomb található.](./media/manage-web-service-endpoints-using-api-management/test.png)
 
 Írja be **, hogy ez egy jó nap** a **col2**. Kattintson a pipa jelre.
 
-![adatbevitel](./media/manage-web-service-endpoints-using-api-management/enter-data.png)
+![Képernyőfelvétel: az adatbevitel előrejelzése párbeszédpanel, amelyen megadhatja a szöveget, például ez egy jó nap.](./media/manage-web-service-endpoints-using-api-management/enter-data.png)
 
 Látni fog valami hasonlót
 
-![minta – kimenet](./media/manage-web-service-endpoints-using-api-management/sample-output.png)
+![A pillanatkép a kísérlet eredményét jeleníti meg, amely beolvassa, hogy ez egy jó nap és több számjegy az idézőjelek között.](./media/manage-web-service-endpoints-using-api-management/sample-output.png)
 
 ##### <a name="sample-code"></a>Példakód
 Az ERŐFORRÁSREKORDOK tesztelésének egy másik módja az ügyfél kódja. Ha az irányítópulton a **kérelem/válasz** elemre kattint, és az aljára kattint, a rendszer a C#, a Python és az R minta kódját fogja látni. Megtekintheti az ERŐFORRÁSREKORDOK szintaxisát is, beleértve a kérelem URI-JÁT, fejléceit és törzsét.

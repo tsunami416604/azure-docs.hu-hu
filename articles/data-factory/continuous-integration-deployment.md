@@ -10,13 +10,13 @@ ms.author: daperlov
 ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
-ms.date: 08/31/2020
-ms.openlocfilehash: 8749b64b664571abab6f354018dcbd2bd797531e
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.date: 09/23/2020
+ms.openlocfilehash: a5856d85b6a967f49fd651942ca6e4596bf15e7d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531219"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320976"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Folyamatos integráció és kézbesítés Azure Data Factory
 
@@ -212,13 +212,17 @@ Ha a fejlesztői gyárhoz tartozik egy társított git-tárház, felülbírálha
 * Automatikus CI/CD-t használ, és módosítani szeretné néhány tulajdonságot a Resource Manager üzembe helyezése során, de a tulajdonságok alapértelmezés szerint nem paraméterek.
 * A gyár olyan nagy méretű, hogy az alapértelmezett Resource Manager-sablon érvénytelen, mert több, mint a maximálisan megengedett paraméterek (256).
 
-Az alapértelmezett paraméterezés-sablon felülbírálásához hozzon létre egy **arm-template-parameters-definition.js** nevű fájlt a git-ág gyökérmappa mappájába. Pontosan ezt a fájlnevet kell használnia.
+Az alapértelmezett paraméterezés-sablon felülbírálásához nyissa meg a felügyeleti központot, és válassza a **paraméterezés sablon** lehetőséget a verziókövetés szakaszban. Válassza a **Sablon szerkesztése** lehetőséget a paraméterezés sablon kódjának megnyitásához. 
 
-   ![Egyéni paraméterek fájlja](media/continuous-integration-deployment/custom-parameters.png)
+![Egyéni paraméterek kezelése](media/author-management-hub/management-hub-custom-parameters.png)
+
+Egyéni paraméterezés-sablon létrehozásához létrehoz egy **arm-template-parameters-definition.js** nevű fájlt a git-ág gyökérkönyvtárában. Pontosan ezt a fájlnevet kell használnia.
+
+![Egyéni paraméterek fájlja](media/continuous-integration-deployment/custom-parameters.png)
 
 Az együttműködési ág közzétételét követően Data Factory beolvassa ezt a fájlt, és a konfigurációját használva létrehozza, hogy mely tulajdonságok kapják meg a paramétereket. Ha nem található fájl, a rendszer az alapértelmezett sablont használja.
 
-Egy Resource Manager-sablon exportálásakor Data Factory beolvassa ezt a fájlt attól függően, hogy melyik ág éppen dolgozik, nem csak az együttműködési ág alapján. A fájlt létrehozhatja vagy szerkesztheti egy privát ág alapján, ahol tesztelheti a módosításokat úgy, hogy kiválasztja az **ARM-sablon exportálása** lehetőséget a felhasználói felületen. Ezután egyesítheti a fájlt az együttműködési ágban.
+Egy Resource Manager-sablon exportálásakor Data Factory beolvassa ezt a fájlt attól függően, hogy melyik ág éppen dolgozik, és nem az együttműködési ágat. A fájlt létrehozhatja vagy szerkesztheti egy privát ág alapján, ahol tesztelheti a módosításokat úgy, hogy kiválasztja az **ARM-sablon exportálása** lehetőséget a felhasználói felületen. Ezután egyesítheti a fájlt az együttműködési ágban.
 
 > [!NOTE]
 > Az egyéni paraméterezés-sablonok nem változtatják meg az ARM-sablon 256-as korlátját. Lehetővé teszi a paraméteres tulajdonságok számának kiválasztását és csökkentését.
