@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0ea9259e701e2ad9a4026401f5aef39c0ecfa51
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 0dcbd58c5d8dc12898fe343dbba6c3a6f8cd61b4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90601826"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258712"
 ---
 # <a name="conditional-access-conditions"></a>Feltételes hozzáférés: feltételek
 
@@ -116,6 +116,9 @@ Ez a beállítás minden böngészővel működik. Ahhoz azonban, hogy kielégí
 | Windows Server 2008 R2 | Internet Explorer |
 | macOS | Chrome, Safari |
 
+> [!NOTE]
+> A 85-ös Edge + használatához a felhasználónak be kell jelentkeznie a böngészőbe, hogy megfelelően átadja az eszköz identitását. Ellenkező esetben a Chrome a fiókok bővítmény nélkül viselkedik. Előfordulhat, hogy ez a bejelentkezés nem történik meg automatikusan egy hibrid Azure AD JOIN forgatókönyvben. 
+
 #### <a name="why-do-i-see-a-certificate-prompt-in-the-browser"></a>Miért jelenik meg a tanúsítvány Rákérdezés a böngészőben
 
 Windows 7 rendszeren az iOS, az Android és a macOS Azure AD az eszközt az Azure AD-vel való regisztráláskor kiépített ügyféltanúsítvány használatával azonosítja.  Amikor a felhasználó először jelentkezik be a böngészőben, a rendszer a felhasználótól kéri a tanúsítvány kiválasztását. A felhasználónak a böngésző használata előtt ki kell választania ezt a tanúsítványt.
@@ -190,7 +193,7 @@ Az eszköz állapotának feltétele a hibrid Azure AD-hez csatlakoztatott eszkö
 Például minden olyan *felhasználó* **, aki**a *Microsoft Azure Management* Cloud alkalmazáshoz fér hozzá, beleértve az eszköz **összes ÁLLAPOTÁT** , kivéve az **eszközök hibrid Azure ad-hez csatlakoztatott** eszközét és a **megfelelőként megjelölt eszközt** , valamint a *hozzáférés-vezérlést*. 
    - Ez a példa olyan házirendet hoz létre, amely csak a hibrid Azure AD-hez csatlakoztatott eszközökről és/vagy a megfelelőként megjelölt eszközökről engedélyezi a Microsoft Azure-felügyelet elérését.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Feltételes hozzáférés: Engedélyezés](concept-conditional-access-grant.md)
 

@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 1/17/2019
 ms.author: srrengar
-ms.openlocfilehash: 4b4e454532dec31cbcc92269d63c8be1ff92a9f6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 25a50a2841a03929804be45be8012f9b5d0457ff
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247523"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91357131"
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Monitorozás és diagnosztika az Azure Service Fabric
 
@@ -39,7 +39,7 @@ Service Fabric az események széles körét biztosítja a dobozból. Ezek a [Se
 
 * EventStore – a EventStore a platform által kínált olyan szolgáltatás, amely Service Fabric platformon elérhető eseményeket biztosít a Service Fabric Explorer és a REST APIon keresztül. Láthatja, hogy mi történik a fürtben az egyes entitások esetében, például a csomópont, a szolgáltatás, az alkalmazás és a lekérdezés az esemény időpontja alapján. További információt a EventStore a [EventStore áttekintése című](service-fabric-diagnostics-eventstore.md)témakörben talál.    
 
-![EventStore](media/service-fabric-diagnostics-overview/eventstore.png)
+![Képernyőfelvétel: a csomópontok ablaktábla események lapja, amely több eseményt is magában foglal, például egy NodeDown eseményt.](media/service-fabric-diagnostics-overview/eventstore.png)
 
 A megadott diagnosztika a mezőből álló átfogó események formájában érhető el. Ezek a [Service Fabric események](service-fabric-diagnostics-events.md) illusztrálják a platform különböző entitások, például csomópontok, alkalmazások, szolgáltatások, partíciók stb. által végzett műveleteit. A fenti legutóbbi forgatókönyvben, ha egy csomópontot le kellett lépni, a platform kibocsát egy `NodeDown` eseményt, és azonnal értesítést kaphat a figyelési eszköztől. Más gyakori példák `ApplicationUpgradeRollbackStarted` `PartitionReconfigured` a feladatátvételre vagy azokra. **Ugyanezek az események Windows-és Linux-fürtökön is elérhetők.**
 

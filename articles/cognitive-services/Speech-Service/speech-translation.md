@@ -12,12 +12,12 @@ ms.date: 09/01/2020
 ms.author: erhopf
 ms.custom: devx-track-csharp, cog-serv-seo-aug-2020
 keywords: beszéd fordítása
-ms.openlocfilehash: 67bb418926932ebb7e443e77c65dd12c7352049d
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: e4bc2f07fce3917bfa59f79305498bb91889344d
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401214"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91359800"
 ---
 # <a name="what-is-speech-translation"></a>Mi az a beszédfordítás?
 
@@ -36,7 +36,7 @@ A Microsoft jelenleg a NMT használja a legnépszerűbb nyelvekre való fordít�
 * Több célnyelv fordításának támogatása.
 * Az ideiglenes felismerés és a fordítás eredményei.
 
-## <a name="get-started"></a>Bevezetés 
+## <a name="get-started"></a>Első lépések 
 
 Tekintse [meg a](get-started-speech-translation.md) rövid útmutató lépéseit a beszédfelismerési fordítás megkezdéséhez. A beszédfelismerési szolgáltatás a [SPEECH SDK](speech-sdk.md) és a [Speech CLI](spx-overview.md)használatával érhető el.
 
@@ -63,5 +63,5 @@ Ha alkalmazásai, eszközei vagy termékei a [Translator Speech API](https://doc
 ## <a name="next-steps"></a>Következő lépések
 
 * A [beszéd fordításának](get-started-speech-translation.md) befejezése
-* [Beszédfelismerési szolgáltatás előfizetési kulcsának beszerzése ingyenesen](get-started.md)
+* [Beszédfelismerési szolgáltatás előfizetési kulcsának beszerzése ingyenesen](overview.md#try-the-speech-service-for-free)
 * [A Speech SDK beszerzése](speech-sdk.md)

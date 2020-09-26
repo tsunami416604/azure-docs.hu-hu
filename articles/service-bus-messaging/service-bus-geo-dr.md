@@ -3,12 +3,12 @@ title: Azure Service Bus geo-vész-helyreállítás | Microsoft Docs
 description: A földrajzi régiók használata feladatátvételhez és a vész-helyreállítás elvégzéséhez Azure Service Bus
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: fcdeb499b8ebecc4ecddbfcbe32b812ce7e3efe5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c203ed197c1e5bfb15cfb503a04df79b85c630e
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341483"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372523"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Azure Service Bus geo-vész-helyreállítás
 
@@ -149,7 +149,7 @@ Ha egy privát végponttal rendelkező elsődleges névtér és egy privát vég
 > [!NOTE]
 > Ha az elsődleges névteret privát végponttal és a másodlagos névtérrel próbálja párosítani, az érvényesítési folyamat csak azt ellenőrzi, hogy létezik-e privát végpont a másodlagos névtérben. Nem vizsgálja, hogy a végpont működik-e, vagy a feladatátvétel után fog működni. Az Ön felelőssége annak biztosítása, hogy a titkos végponttal rendelkező másodlagos névtér a feladatátvételt követően is a várt módon működjön.
 >
-> Annak ellenőrzéséhez, hogy a magánhálózati végponti konfigurációk azonosak-e, küldjön egy [Get Queues](/rest/api/servicebus/queues/get) kérést a másodlagos névtérnek a virtuális hálózaton kívülről, és ellenőrizze, hogy hibaüzenetet kap-e a szolgáltatástól.
+> Annak ellenőrzéséhez, hogy a magánhálózati végponti konfigurációk azonosak-e, küldjön egy [Get Queues](/rest/api/servicebus/stable/queues/get) kérést a másodlagos névtérnek a virtuális hálózaton kívülről, és ellenőrizze, hogy hibaüzenetet kap-e a szolgáltatástól.
 
 ### <a name="existing-pairings"></a>Meglévő párosítások
 Ha az elsődleges és a másodlagos névtér közötti párosítás már létezik, akkor az elsődleges névtéren a magánhálózati végpont létrehozása sikertelen lesz. A megoldáshoz először hozzon létre egy privát végpontot a másodlagos névtérben, majd hozzon létre egyet az elsődleges névtérhez.
@@ -177,9 +177,9 @@ Ennek a megközelítésnek az az előnye, hogy a feladatátvétel a Service Bus 
 > [!NOTE]
 > A virtuális hálózatok földrajzi katasztrófa utáni helyreállításával kapcsolatos útmutatásért lásd: [Virtual Network – üzletmenet folytonossága](../virtual-network/virtual-network-disaster-recovery-guidance.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Tekintse meg a Geo-vész-helyreállítási [REST API referenciát](/rest/api/servicebus/disasterrecoveryconfigs).
+- Tekintse meg a Geo-vész-helyreállítási [REST API referenciát](/rest/api/servicebus/stable/disasterrecoveryconfigs).
 - Futtassa a Geo-vész-helyreállítási [mintát a githubon](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/SBGeoDR2/SBGeoDR2).
 - Tekintse meg a földrajzi katasztrófa utáni helyreállítási [mintát, amely üzeneteket küld egy aliasnak](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/TestGeoDR/ConsoleApp1).
 

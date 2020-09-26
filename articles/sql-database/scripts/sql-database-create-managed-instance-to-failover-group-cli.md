@@ -1,6 +1,6 @@
 ---
 title: 'Azure CLI: felügyelt példány hozzáadása a feladatátvételi csoporthoz'
-description: Azure CLI-példa parancsfájl egy felügyelt Azure SQL-példány létrehozásához, a feladatátvételi csoporthoz való hozzáadásához és a feladatátvételi teszthez.
+description: Ismerje meg, hogyan hozhat létre két felügyelt példányt, hogyan veheti fel őket egy feladatátvételi csoportba, majd tesztelheti a feladatátvételt.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: b29fcd33c8181ba61f57d7105d08e7e4956d80bc
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: afefc556bcac096d67051f3014c31e449dbbca32
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497256"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323566"
 ---
 # <a name="use-cli-to-create-an-azure-sql-managed-instance-to-a-failover-group"></a>Azure SQL felügyelt példány létrehozása a parancssori felület használatával feladatátvételi csoportba
 
@@ -58,7 +58,7 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | [az Network vnet-Gateway](/cli/azure/network/vnet-gateway) | Virtual Network átjáró parancsai |
 | [az SQL instance-feladatátvétel-Group](/cli/azure/sql/instance-failover-group) | SQL felügyelt példány feladatátvételi csoportjának parancsai. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).
 

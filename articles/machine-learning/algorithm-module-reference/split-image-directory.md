@@ -1,7 +1,7 @@
 ---
 title: Képkönyvtár felosztása
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan készíthet előrejelzéseket egy betanított képmodell használatával a Azure Machine Learning pontszám rendszerkép-modell moduljának használatával.
+description: Megtudhatja, hogyan használhatja a Azure Machine Learning Designerben (előzetes verzió) a lemezkép-könyvtár lemezképeit két különálló készletre a lemezképek könyvtárainak felosztásához.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: 63ae7115f905523a3aac131fd7e77b56eb695243
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 49c2d2c24cc8acd8468f660189212a8ae71a1d6e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90890258"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268927"
 ---
 # <a name="split-image-directory"></a>Képkönyvtár felosztása
 

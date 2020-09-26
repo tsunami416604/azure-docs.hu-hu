@@ -1,18 +1,18 @@
 ---
 title: Azure File Sync hálózatkezelési megfontolások | Microsoft Docs
-description: A Azure File Sync hálózati beállításainak áttekintése.
+description: Megtudhatja, hogyan konfigurálhatja a hálózatkezelést úgy, hogy Azure File Sync használatával gyorsítótárazza a fájlokat a helyszínen.
 author: roygara
 ms.service: storage
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: af5561a010ca1c2d45cf10a37a3b302d5e224158
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b291bd45b4003dd2241f40c810ed9d78af9f8bc9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512566"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91267788"
 ---
 # <a name="azure-file-sync-networking-considerations"></a>Azure File Sync hálózati megfontolások
 Az Azure-fájlmegosztás két módon is kapcsolódhat:
@@ -60,7 +60,7 @@ Ha az Azure-ban Azure File Synct használ, még akkor is, ha ez egy másik régi
 Ha helyszíni Azure File Sync használ, a Service tag API-val adott IP-címtartományok beolvasása a tűzfal engedélyezési listájához. A következő két módszer használható az adatok lekéréséhez:
 
 - A szolgáltatási címkéket támogató összes Azure-szolgáltatáshoz tartozó IP-címtartományok aktuális listája a Microsoft letöltőközpontban, egy JSON-dokumentum formájában, hetente van közzétéve. Mindegyik Azure-felhő saját JSON-dokumentummal rendelkezik, amely a felhőhöz kapcsolódó IP-címtartományt tartalmazza:
-    - [Azure Public](https://www.microsoft.com/download/details.aspx?id=56519)
+    - [Nyilvános Azure](https://www.microsoft.com/download/details.aspx?id=56519)
     - [Azure US Government](https://www.microsoft.com/download/details.aspx?id=57063)
     - [Azure China](https://www.microsoft.com/download/details.aspx?id=57062)
     - [Azure Germany](https://www.microsoft.com/download/details.aspx?id=57064)
@@ -170,6 +170,6 @@ A Azure File Sync ügynöktől az Azure-fájlmegosztás vagy a Storage Sync szol
 
 További információ az átvitel közbeni titkosításról: [biztonságos átvitel megkövetelése az Azure Storage-ban](../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
-## <a name="see-also"></a>További információ
-- [Az Azure File Sync üzembe helyezésének megtervezése](storage-sync-files-planning.md)
-- [Az Azure File Sync üzembe helyezése](storage-sync-files-deployment-guide.md)
+## <a name="see-also"></a>Lásd még
+- [Azure File Sync – üzembe helyezés tervezése](storage-sync-files-planning.md)
+- [Azure File Sync – üzembe helyezés](storage-sync-files-deployment-guide.md)

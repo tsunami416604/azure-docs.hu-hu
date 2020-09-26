@@ -8,14 +8,17 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 890a25ed2cf11d657cad930815d78dbf968cc9f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0829d4b3fca068ddb0db2df53dd635ab7ad80bed
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71203653"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91281915"
 ---
 # <a name="manage-the-opc-vault-certificate-service"></a>Az OPC-tár tanúsítvány-szolgáltatásának kezelése
+
+> [!IMPORTANT]
+> A cikk frissítését követően tekintse meg az [Azure Industrial IoT](https://azure.github.io/Industrial-IoT/) a legfrissebb tartalomhoz című cikket.
 
 Ez a cikk az Azure-beli OPC Vault Certificate Management szolgáltatás felügyeleti feladatait ismerteti. A kiállító HITELESÍTÉSSZOLGÁLTATÓ tanúsítványainak megújításával, a visszavont tanúsítványok listájának megújításával, valamint a felhasználói hozzáférés engedélyezésével és visszavonásával kapcsolatos információkat tartalmaz.
 
@@ -35,7 +38,7 @@ Az OPC-tároló üzembe helyezése után létre kell hoznia a legfelső szintű 
 6. Kattintson a **Mentés** gombra.
 7. Ha ezen a ponton "tiltott" hibaüzenet jelenik meg, a felhasználói hitelesítő adatai nem rendelkeznek rendszergazdai jogosultsággal az új főtanúsítvány módosításához vagy létrehozásához. Alapértelmezés szerint a szolgáltatást telepítő felhasználó rendelkezik rendszergazdai és aláírási szerepkörökkel a szolgáltatással. Más felhasználókat hozzá kell adni a jóváhagyó, az író vagy a rendszergazdai szerepkörhöz a Azure Active Directory (Azure AD) alkalmazás regisztrációjának megfelelően.
 8. Válassza a **részletek**lehetőséget. Ez a frissített információkat jeleníti meg.
-9. Válassza a **hitelesítésszolgáltatói tanúsítvány megújítása** lehetőséget az első kiállító hitelesítésszolgáltatói tanúsítvány kiállításához, vagy a kiállítói tanúsítvány megújításához. Ezután kattintson az **OK** gombra.
+9. Válassza a **hitelesítésszolgáltatói tanúsítvány megújítása** lehetőséget az első kiállító hitelesítésszolgáltatói tanúsítvány kiállításához, vagy a kiállítói tanúsítvány megújításához. Ezután válassza az **OK** gombot.
 10. Néhány másodperc elteltével látni fogja a **tanúsítvány részleteit**. Ha le szeretné tölteni a legújabb HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt és a CRL-t az OPC UA-alkalmazásokba való terjesztéshez, válassza a **kiállító** vagy a **CRL**lehetőséget.
 
 Az OPC UA tanúsítványkezelő szolgáltatás most már készen áll az OPC UA-alkalmazások tanúsítványainak kiállítására.
@@ -126,7 +129,7 @@ Alapértelmezés szerint a szolgáltatás identitása csak korlátozott engedél
 4. Nyissa meg a **hozzáférési házirendeket**.
 5. Keresse meg az eltávolítandó felhasználót, és válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte az OPC-tároló tanúsítványainak és a felhasználók felügyeletét, a következőket teheti:
 

@@ -1,5 +1,5 @@
 ---
-title: TPM-eszköz regisztrálása az Azure Device kiépítési szolgáltatásba a Javával
+title: Gyors útmutató – TPM-eszköz regisztrálása az Azure Device kiépítési szolgáltatásba a Javával
 description: Gyors útmutató – TPM-eszköz regisztrálása az Azure IoT Hub Device Provisioning Serviceba (DPS) a Java Service SDK-val. Ez a rövid útmutató egyéni regisztrációkat használ.
 author: wesmc7777
 ms.author: wesmc
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 44ed6d849a29b598784ee9341bf4c61ad491e0ae
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e6b299b5befec93f21e9e8476d0cc74710612d66
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325848"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323804"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-java-service-sdk"></a>Gyors útmutató: TPM-eszköz regisztrálása IoT Hub Device Provisioning Service a Java Service SDK-val
 
@@ -141,7 +141,7 @@ Ez a szakasz bemutatja, hogyan adhatja hozzá a TPM-eszköz kiépítési adatait
 
 4. A sikeres regisztráció érdekében kísérje figyelemmel a kimeneti ablakot. 
 
-5. Az Azure Portalon lépjen a kiépítési szolgáltatásra. Válassza a **regisztrációk kezelése**lehetőséget, és válassza az **Egyéni regisztrációk** fület. figyelje meg, hogy a szimulált TPM-eszköz *regisztrációs azonosítója* már szerepel a listáján. 
+5. Az Azure Portalon lépjen a kiépítési szolgáltatásra. Válassza a **regisztrációk kezelése**lehetőséget, és válassza az **Egyéni regisztrációk** lapot. Figyelje meg, hogy a szimulált TPM-eszköz *regisztrációs azonosítója* mostantól megjelenik. 
 
     ![Sikeres TPM-regisztráció ellenőrzése a portálon](./media/quick-enroll-device-tpm-java/verify-tpm-enrollment.png)  
 
@@ -150,9 +150,9 @@ Ha azt tervezi, hogy feltárja a Java-szolgáltatás mintáját, ne törölje az
 
 1. Zárja be a Java-minta kimeneti ablakát a gépen.
 1. Zárja be a TPM-szimulátor ablakát, amely a TPM-eszköz szimulálásához jött létre.
-1. Navigáljon a Azure Portal eszköz kiépítési szolgáltatásához, válassza a regisztrációk **kezelése**lehetőséget, majd válassza az **Egyéni regisztrációk** fület. jelölje be az ebben a rövid útmutatóban létrehozott beléptetési bejegyzéshez tartozó *regisztrációs azonosító* melletti jelölőnégyzetet, majd kattintson a panel tetején található **Törlés** gombra.
+1. Navigáljon a Azure Portal eszköz kiépítési szolgáltatásához, válassza a **regisztrációk kezelése**lehetőséget, majd válassza az **Egyéni regisztrációk** lapot. Jelölje be a rövid útmutató segítségével létrehozott beléptetési bejegyzés *regisztrációs azonosítójának* melletti jelölőnégyzetet, majd kattintson a panel tetején található **Törlés** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a rövid útmutatóban egy szimulált TPM-eszközt regisztrált az eszköz kiépítési szolgáltatásához. Ha mélyebben szeretné megismerni az eszközkiépítést, folytassa az Azure Portalon az eszközkiépítési szolgáltatás beállításának oktatóanyagával. 
 
 > [!div class="nextstepaction"]

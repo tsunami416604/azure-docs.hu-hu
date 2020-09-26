@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.date: 08/10/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: c2ce40f7d8a8d08e191fce11c98bd780e0c2fda1
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 4b25458cc934097b5477c174ae7ecc47762e2929
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230075"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280300"
 ---
 # <a name="enable-and-manage-soft-delete-for-containers-preview"></a>Tárolók helyreállítható törlésének engedélyezése és kezelése (előzetes verzió)
 
-A tároló-helyreállító törlés (előzetes verzió) védi az adatok véletlen vagy helytelen módosítását vagy törlését. Ha a tároló-helyreállító törlés engedélyezve van egy Storage-fiókhoz, akkor a tároló és annak tartalma a megadott megőrzési időn belül visszaállítható.
+A tároló-helyreállító törlés (előzetes verzió) védi az adatok véletlen vagy helytelen módosítását vagy törlését. Ha a tároló-helyreállító törlés engedélyezve van egy Storage-fiókhoz, akkor a tároló és annak tartalma a megadott megőrzési időtartamon belül visszaállítható.
 
 Ha egy alkalmazás vagy egy másik Storage-fiók felhasználója véletlenül nem módosíthatja vagy törölheti az adatait, a Microsoft javasolja a tárolók törlésének bekapcsolását. Ez a cikk bemutatja, hogyan engedélyezheti a tárolók Soft delete szolgáltatását. A tárolók helyreállítható törlésével kapcsolatos további részletekért, beleértve az előzetes verzió regisztrálásának módját, lásd: a [tárolók helyreállítható törlése (előzetes verzió)](soft-delete-container-overview.md).
 
@@ -93,7 +93,7 @@ A Azure Portalban található, lágyan törölt tárolók megtekintéséhez köv
 A megőrzési időtartamon belül visszaállíthatja a nem törölt tárolót és annak tartalmát. A Azure Portal helyreállítható tárolók visszaállításához kövesse az alábbi lépéseket:
 
 1. Navigáljon a Azure Portal Storage-fiókjához, és tekintse meg a tárolók listáját.
-1. Jelenítse meg a törölni kívánt tároló helyi menüjét, majd válassza a menü **Törlés törlése** parancsát.
+1. Jelenítse meg a visszaállítani kívánt tároló helyi menüjét, és válassza a menü **Törlés törlése** elemét.
 
     :::image type="content" source="media/soft-delete-container-enable/soft-delete-container-portal-restore.png" alt-text="Képernyőfelvétel: a Azure Portal helyreállítható tárolójának visszaállítása":::
 

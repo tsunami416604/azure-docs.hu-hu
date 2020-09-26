@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: e75dde14cf7182f5153b3a42b26f1c7e8a4e78ac
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 2a251ef426d41413cf81f46ca05b11640f01e87a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89258027"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333783"
 ---
 # <a name="azure-media-services-concepts"></a>Azure Media Services fogalmak
 
@@ -103,12 +103,11 @@ A Media Services dinamikus csomagolást biztosít, amely lehetővé teszi az ada
 
 A [dinamikus csomagolás](media-services-dynamic-packaging-overview.md)kihasználásához kódolni kell a köztes (forrás) fájlt egy adaptív sávszélességű MP4-fájlba vagy adaptív sávszélességű Smooth streaming fájlokra, és legalább egy standard vagy prémium szintű streaming végpontot el kell indítani.
 
-A Media Services a következő, igény szerinti kódolókat támogatja, amelyek a jelen cikkben olvashatók:
+Media Services a jelen cikkben ismertetett, igény szerinti kódolót támogatja:
 
 * [Media Encoder Standard](media-services-encode-asset.md#media-encoder-standard)
-* [Media Encoder Premium-munkafolyamat](media-services-encode-asset.md#media-encoder-premium-workflow)
 
-További információ a támogatott kódolókkal kapcsolatban: [kódolók](media-services-encode-asset.md).
+További információ erről a támogatott kódolóról: [kódoló](media-services-encode-asset.md).
 
 ## <a name="live-streaming"></a>Élő streamelés
 Azure Media Services a csatorna az élő adatfolyam tartalmának feldolgozására szolgáló folyamatot jelöli. A csatorna az élő bemeneti streameket kétféleképpen fogadja el:

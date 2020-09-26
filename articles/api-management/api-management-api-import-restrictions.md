@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/02/2020
 ms.author: apimpm
-ms.openlocfilehash: 61d43addfdf9008cb7aa8a073dcf3bb702cb55f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 86ed7f3941965bcac525a2ba71786d20a4753489
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76513371"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335500"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>API-importálási korlátozások és ismert problémák
 
@@ -34,15 +34,15 @@ Ha hibaüzenetet kap a OpenAPI-dokumentum importálásakor, győződjön meg ró
 ### <a name="general"></a><a name="open-api-general"> </a>Általános kérdések
 
 -   Az elérési út és a lekérdezés kötelező paramétereinek egyedi névvel kell rendelkezniük. (A OpenAPI csak egyedinek kell lennie egy helyen belül, például elérési út, lekérdezés, fejléc. API Management azonban lehetővé tesszük, hogy a műveletek a két útvonal és a lekérdezési paraméterek (amelyek nem támogatják a OpenAPI) megkülönböztetését. Ezért a paraméterek neveinek egyedinek kell lenniük a teljes URL-sablonon belül.)
--   `\$ref`a mutatók nem hivatkozhatnak külső fájlokra.
--   `x-ms-paths`és `x-servers` az egyetlen támogatott bővítmény.
+-   `\$ref` a mutatók nem hivatkozhatnak külső fájlokra.
+-   `x-ms-paths` és `x-servers` az egyetlen támogatott bővítmény.
 -   Az egyéni bővítményeket a rendszer figyelmen kívül hagyja az importálás során, és nem menti vagy nem őrzi meg az exportálást.
--   `Recursion`-API Management nem támogatja a rekurzív módon definiált definíciókat (például a magukra hivatkozó sémákat).
+-   `Recursion` -API Management nem támogatja a rekurzív módon definiált definíciókat (például a magukra hivatkozó sémákat).
 -   A forrásfájl URL-címe (ha elérhető) a relatív kiszolgálói URL-címekre lesz alkalmazva.
 -   A biztonsági definíciók figyelmen kívül lesznek hagyva.
 -   Az API-műveletekhez tartozó beágyazott séma-definíciók nem támogatottak. A séma-definíciók az API-hatókörben vannak meghatározva, és az API-műveleti kérelemben vagy a válasz hatókörében is szerepelhetnek.
 -   Egy meghatározott URL-paraméternek az URL-sablon részét kell képeznie.
--   `Produces`a kulcsszó, amely leírja az API által visszaadott MIME-típusokat, nem támogatott. 
+-   `Produces` a kulcsszó, amely leírja az API által visszaadott MIME-típusokat, nem támogatott. 
 
 ### <a name="openapi-version-2"></a><a name="open-api-v2"> </a>OpenAPI 2. verzió
 
@@ -51,13 +51,17 @@ Ha hibaüzenetet kap a OpenAPI-dokumentum importálásakor, győződjön meg ró
 ### <a name="openapi-version-3"></a><a name="open-api-v3"> </a>OpenAPI 3-as verzió
 
 -   Ha sok `servers` van megadva, API Management megpróbálja kiválasztani az első HTTPS URL-címet. Ha nincsenek HTTPs URL-címek – az első HTTP URL-cím. Ha nincs HTTP URL-cím, akkor a kiszolgáló URL-címe üres lesz.
--   `Examples`nem támogatott, de `example` .
+-   `Examples` nem támogatott, de `example` .
 
 ## <a name="openapi-import-update-and-export-mechanisms"></a>OpenAPI importálási, frissítési és exportálási mechanizmusai
 
+### <a name="general"></a><a name="open-import-export-general"> </a>Általános kérdések
+
+-   A API Management szolgáltatásból exportált API-definíciók elsődlegesen a API Management szolgáltatáson kívüli alkalmazások számára készültek, amelyeknek meg kell hívniuk a API Management szolgáltatásban üzemeltetett API-t. Az exportált API-definíciók nem importálhatók újra ugyanabba vagy a különböző API Management szolgáltatásba. Az API-defiitions különböző többek között webszolgáltatások/envionments keresztüli konfigurálásához tekintse meg a dokumentációt, amely a API Management szolgáltatás és a git használatával történő használatáról nyújt tájékoztatást. 
+
 ### <a name="add-new-api-via-openapi-import"></a>Új API hozzáadása az OpenAPI import használatával
 
-Az OpenAPI dokumentumban található minden egyes művelethez létrejön egy új művelet, amely az Azure-erőforrás nevét és a megjelenítendő nevet fogja beállítani a és a értékre `operationId` `summary` . `operationId`az érték normalizált az alábbi szabályok szerint. `summary`az értéket a rendszer importálja, és a hossza 300 karakterre van korlátozva.
+Az OpenAPI dokumentumban található minden egyes művelethez létrejön egy új művelet, amely az Azure-erőforrás nevét és a megjelenítendő nevet fogja beállítani a és a értékre `operationId` `summary` . `operationId` az érték normalizált az alábbi szabályok szerint. `summary` az értéket a rendszer importálja, és a hossza 300 karakterre van korlátozva.
 
 Ha `operationId` nincs megadva (azaz nincs jelen, `null` vagy üres), az Azure-Erőforrás neve értéket a http-metódus és az elérésiút-sablon kombinálásával hozza létre, például: `get-foo` .
 
@@ -86,7 +90,7 @@ A operationId vonatkozó normalizálás szabályai
 
 - Kis-és nagybetűkre konvertálható.
 - Cserélje le a nem alfanumerikus karakterek egyes sorozatait egyetlen kötőjeltel, például a következőre: `GET-/foo/{bar}?buzz={quix}` `get-foo-bar-buzz-quix-` .
-- A kötőjelek mindkét oldalon láthatók, például a következő `get-foo-bar-buzz-quix-` lesz:`get-foo-bar-buzz-quix`
+- A kötőjelek mindkét oldalon láthatók, például a következő `get-foo-bar-buzz-quix-` lesz: `get-foo-bar-buzz-quix`
 - Csonkítás 76 karakterre, az erőforrás neveként legfeljebb négy karakterből állhat.
 - Ha szükséges, használja a további négy karaktert a deduplikáló utótaghoz, a következő formátumban: `-1, -2, ..., -999` .
 

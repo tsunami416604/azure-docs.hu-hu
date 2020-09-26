@@ -3,14 +3,14 @@ title: Azure Functions összekötése az Azure Storage-ba a Visual Studio Code h
 description: Megtudhatja, hogyan csatlakoztathatja a Azure Functionst egy Azure Storage-várólistához a Visual Studio Code projekthez tartozó kimeneti kötés hozzáadásával.
 ms.date: 02/07/2020
 ms.topic: quickstart
-ms.custom: devx-track-python, devx-track-javascript
+ms.custom: devx-track-python, devx-track-js
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: ee10adea181c187bd630b5d334e4768545f4f6c8
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 4f4733a52d1d58cbec4413140a613a93c8074188
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87845374"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323413"
 ---
 # <a name="connect-azure-functions-to-azure-storage-using-visual-studio-code"></a>Azure Functions összekötése az Azure Storage-ba a Visual Studio Code használatával
 
@@ -199,7 +199,7 @@ Itt az ideje, hogy újra közzé lehessen tenni a frissített Function alkalmaz�
 
 1. Ismét [tekintse meg az üzenetet a Storage-várólistán](#examine-the-output-queue) annak ellenőrzéséhez, hogy a kimeneti kötés ismét létrehoz egy új üzenetet a várólistában.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Az Azure-ban az *erőforrások* a Function apps, a functions, a Storage-fiókok és így tovább. *Erőforráscsoportokba*vannak csoportosítva, és a csoport törlésével törölheti a csoport összes elemét.
 

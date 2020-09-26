@@ -10,14 +10,14 @@ ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
-ms.topic: article
+ms.topic: tutorial
 ms.date: 09/25/2019
-ms.openlocfilehash: 66375d83dca4edef17919e3b493d5e45be37cc40
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0dbab7db45a9f97db48bbf97aba55b5943f623a3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78255622"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282442"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-online-using-dms"></a>Oktatóanyag: a MongoDB migrálása Azure Cosmos DB API-ra a MongoDB online-hoz a DMS használatával
 
@@ -29,7 +29,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Hozzon létre egy Azure Database Migration Service-példányt.
 > * Hozzon létre egy áttelepítési projektet Azure Database Migration Service használatával.
 > * A migrálás futtatása.
-> * A migrálás monitorozása.
+> * Az áttelepítés monitorozása.
 > * Ha elkészült, fejezze be az áttelepítést.
 
 Ebben az oktatóanyagban áttelepít egy adatkészletet egy Azure-beli virtuális gépen üzemeltetett MongoDB, Azure Cosmos DB API-ját a MongoDB számára minimális állásidővel Azure Database Migration Service használatával. Ha még nincs beállítva MongoDB-forrás, tekintse [meg a MongoDB telepítése és konfigurálása Windowsos virtuális gépen az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/windows/install-mongodb)című cikket.
@@ -201,7 +201,7 @@ A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa me
     > [!NOTE]
     > A Futtatás felgyorsításához hajtsa végre párhuzamosan az adatbázis áttelepítését és gyűjtését Azure Database Migration Service több példányával, ha szükséges.
 
-   Megadhat egy szegmens kulcsot is, amellyel kihasználhatja a [particionálást Azure Cosmos db](https://docs.microsoft.com/azure/cosmos-db/partitioning-overview) az optimális méretezhetőség érdekében. Mindenképpen tekintse át az [ajánlott eljárásokat a szegmens/partíciós kulcs kiválasztásához](https://docs.microsoft.com/azure/cosmos-db/partitioning-overview#choose-partitionkey). Ha nem rendelkezik partíciós kulccsal, a jobb teljesítmény érdekében mindig használhatja a **_id** .
+   Megadhat egy szegmens kulcsot is, amellyel kihasználhatja a [particionálást Azure Cosmos db](https://docs.microsoft.com/azure/cosmos-db/partitioning-overview) az optimális méretezhetőség érdekében. Mindenképpen tekintse át az  [ajánlott eljárásokat a szegmens/partíciós kulcs kiválasztásához](https://docs.microsoft.com/azure/cosmos-db/partitioning-overview#choose-partitionkey). Ha nem rendelkezik partíciós kulccsal, a jobb teljesítmény érdekében mindig használhatja a **_id** .
 
    ![Gyűjtemények táblázatának kiválasztása](media/tutorial-mongodb-to-cosmosdb-online/dms-collection-setting1.png)
 
@@ -209,7 +209,7 @@ A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa me
 
 5. **A migrálás összegzése** képernyő **Tevékenység neve** szövegbeviteli mezőjében adja meg a migrálási tevékenység nevét.
 
-    ![Áttelepítési összefoglalás](media/tutorial-mongodb-to-cosmosdb-online/dms-migration-summary1.png)
+    ![A migrálás összegzése](media/tutorial-mongodb-to-cosmosdb-online/dms-migration-summary1.png)
 
 ## <a name="run-the-migration"></a>A migrálás futtatása
 
@@ -251,6 +251,6 @@ Miután áttelepítette a MongoDB-adatbázisban tárolt adatAzure Cosmos DB API-
 
 * [Cosmos DB szolgáltatás adatai](https://azure.microsoft.com/services/cosmos-db/)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tekintse át az áttelepítési útmutatót a Microsoft [Database áttelepítési útmutatóban](https://datamigration.microsoft.com/)található további forgatókönyvekhez.

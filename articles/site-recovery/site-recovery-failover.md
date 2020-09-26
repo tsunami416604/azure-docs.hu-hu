@@ -4,12 +4,12 @@ description: Virtuális gépek/fizikai kiszolgálók feladatátvétele az Azure-
 ms.service: site-recovery
 ms.topic: article
 ms.date: 12/10/2019
-ms.openlocfilehash: d2f7fed25955d6a34c6162b87b82bfae5e58ff41
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 481e7c692be24bbebd14584f8158740a5b7043ba
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563981"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317888"
 ---
 # <a name="run-a-failover-from-on-premises-to-azure"></a>Feladatátvétel futtatása a helyszíni rendszerről az Azure-ba
 
@@ -46,7 +46,7 @@ Futtassa a helyreállítási terv feladatátvételét a következőképpen:
 1. A site Recovery-tárolóban válassza a **helyreállítási tervek**  >  *recoveryplan_name*lehetőséget.
 2. Kattintson a **feladatátvétel**elemre.
 
-    ![Képernyőfelvétel: a ADRP ablaktábla, amely a több menüből kiválasztott feladatátvételt jeleníti meg.](./media/site-recovery-failover/Failover.png)
+    ![Képernyőkép a Azure Site Recoveryről, amely a ADRP panelt jeleníti meg a további menüből kiválasztott Feladatátvételsel.](./media/site-recovery-failover/Failover.png)
 
 3. A **feladatátvétel**  >  **feladatátvételi irányában**hagyja meg az alapértelmezett értéket, ha az Azure-ba végzi a replikálást.
 4. A feladatátvétel területen válassza ki azt a **helyreállítási pontot** , amelyre a **feladatátvételt**végre szeretné adni.
@@ -81,7 +81,7 @@ Futtathat egy tervezett feladatátvételt a Hyper-V virtuális gépekhez.
 
 A feladatátvételhez számos feladat van társítva.
 
-![Feladatátvétel](./media/site-recovery-failover/FailoverJob.png)
+![Képernyőkép a feladatok lapról, amely az 1. csoportba tartozó feladatok listáját tartalmazza: Start (1) a Name (név) oszlopban kibontva. A SQLServer feladatokhoz tartozó sor ki van emelve.](./media/site-recovery-failover/FailoverJob.png)
 
 - **Előfeltételek ellenőrzése**: ellenőrzi, hogy a feladatátvételhez szükséges összes feltétel teljesül-e.
 - **Feladatátvétel**: az adatok feldolgozásával az Azure-beli virtuális gépek létrehozhatók. Ha a **legutóbbi** helyreállítási pontot választotta, a rendszer egy helyreállítási pontot hoz létre a szolgáltatásnak elküldett adatokból.
@@ -141,7 +141,7 @@ Kövesse az [itt](site-recovery-failover-to-azure-troubleshoot.md) leírt lépé
 - **Külső IP-címek**: a feladatátvételhez nyilvános IP-címeket is megtarthat. A feladatátvételi folyamat részeként létrehozott Azure-beli virtuális gépekhez az Azure-régióban elérhető Azure nyilvános IP-címet kell rendelni. A nyilvános IP-címeket manuálisan is hozzárendelheti, vagy automatizálhatja a folyamatot egy helyreállítási terv használatával. [További információ](concepts-public-ip-address-with-site-recovery.md).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A feladatátvételt követően újra kell védetté tenni az Azure-beli virtuális gépeknek a helyszíni helyre történő replikálásának megkezdéséhez. A replikálást követően a rendszer visszaállíthatja a helyszíni feladatokat, ha elkészült.
 

@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/24/2020
+ms.date: 09/18/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 9aa5eb54d79d98627697c51ee7dcb16a44fccb60
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: c59dbe9464e70c1a071b64fabf91ce56f409d8d7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90053208"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258521"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft Identity platform hozzáférési jogkivonatok
 
@@ -71,7 +71,7 @@ A jogcímek csak akkor jelennek meg, ha egy érték van kitöltve. Tehát az alk
 
 ### <a name="header-claims"></a>Fejléc jogcímei
 
-|Jogcím | Formátum | Description |
+|Jogcím | Formátum | Leírás |
 |--------|--------|-------------|
 | `typ` | String – mindig "JWT" | Azt jelzi, hogy a token egy JWT.|
 | `nonce` | Sztring | A jogkivonat-Visszajátszási támadások elleni védelemhez használt egyedi azonosító. Az erőforrás rögzítheti ezt az értéket a visszajátszás elleni védelemhez. |
@@ -81,7 +81,7 @@ A jogcímek csak akkor jelennek meg, ha egy érték van kitöltve. Tehát az alk
 
 ### <a name="payload-claims"></a>Hasznos adatokhoz tartozó jogcímek
 
-| Jogcím | Formátum | Description |
+| Jogcím | Formátum | Leírás |
 |-----|--------|-------------|
 | `aud` | Karakterlánc, alkalmazás-azonosító URI | Azonosítja a jogkivonat kívánt címzettjét. Az azonosító jogkivonatokban a célközönség az alkalmazáshoz rendelt alkalmazásspecifikus azonosító, amely a Azure Portalban van hozzárendelve az alkalmazáshoz. Az alkalmazásnak ellenőriznie kell ezt az értéket, és el kell utasítania a jogkivonatot, ha az érték nem egyezik. |
 | `iss` | Karakterlánc, STS URI | Azonosítja azt a biztonságijogkivonat-szolgáltatást (STS), amely létrehozza és visszaadja a tokent, valamint azt az Azure AD-bérlőt, amelyben a felhasználó hitelesítése megtörtént. Ha a kiállított jogkivonat egy v 2.0-token (lásd a `ver` jogcímet), akkor az URI-ja befejeződik `/v2.0` . Az a GUID, amely azt jelzi, hogy a felhasználó egy Microsoft-fiók vásárló felhasználója `9188040d-6c67-4c5b-b112-36a304b66dad` . Az alkalmazásnak a jogcím GUID részét kell használnia, hogy korlátozza azon bérlők készletét, amelyek be tudnak jelentkezni az alkalmazásba, ha vannak ilyenek. |
@@ -139,7 +139,7 @@ Az `BulkCreateGroups.ps1` [alkalmazás-létrehozási parancsfájlok](https://git
 
 A következő jogcímek a v 1.0 jogkivonatokban lesznek felszámítva, ha vannak ilyenek, de alapértelmezés szerint nem szerepelnek a 2.0-s jogkivonatokban. Ha a 2.0-s verzióját használja, és szüksége van ezekre a jogcímek egyikére, kérje meg őket az [opcionális jogcímek](active-directory-optional-claims.md)használatával.
 
-| Jogcím | Formátum | Description |
+| Jogcím | Formátum | Leírás |
 |-----|--------|-------------|
 | `ipaddr`| Sztring | A felhasználó által hitelesített IP-cím. |
 | `onprem_sid`| Karakterlánc, [SID-formátumban](/windows/desktop/SecAuthZ/sid-components) | Azokban az esetekben, amikor a felhasználó helyszíni hitelesítéssel rendelkezik, ez a jogcím a biztonsági azonosítóját adja meg. `onprem_sid`A for Authorization használatával örökölt alkalmazásokban is használható.|
@@ -266,9 +266,17 @@ A frissítési tokeneket a kiszolgáló visszavonhatja a hitelesítő adatok mó
 | A rendszergazda visszavonja a felhasználó összes frissítési jogkivonatát a [PowerShell](/powershell/module/azuread/revoke-azureaduserallrefreshtoken) használatával | Revoked | Revoked |Revoked | Revoked | Revoked |
 | Egyszeri kijelentkezés ([v 1.0](../azuread-dev/v1-protocols-openid-connect-code.md#single-sign-out), [v 2.0](v2-protocols-oidc.md#single-sign-out) ) a weben | Revoked | Életben marad | Revoked | Életben marad | Életben marad |
 
+#### <a name="non-password-based"></a>Nem jelszó alapú
+
+A *nem jelszó alapú* bejelentkezés olyan esetben, amikor a felhasználó nem adott meg jelszót a letöltéshez. Példák a nem jelszó alapú bejelentkezésre:
+
+- Az arc és a Windows Hello használata
+- FIDO2 kulcs
+- SMS
+- Hang
+- PIN kód 
+
 > [!NOTE]
-> A "nem jelszó alapú" bejelentkezési azonosító olyan eset, amikor a felhasználó nem adott meg jelszót a letöltéshez. Például a Windows Hello, egy FIDO2-kulcs vagy egy PIN-kód használatával.
->
 > A Windows 10-es elsődleges frissítési tokenek (PRT) a hitelesítő adatok alapján elkülönülnek. A Windows Hello és a Password például a saját PRT-vel rendelkeznek, és egymástól elszigetelten vannak. Ha a felhasználó Hello hitelesítő adatokkal (PIN-kóddal vagy biometrikus azonosítóval) jelentkezik be, majd módosítja a jelszót, a rendszer visszavonja a korábban beszerzett jelszó-alapú PRT-t. A jelszó megadásával visszaigazolja a régi PRT-t, és egy újat kér.
 >
 > A frissítési tokenek nem lettek érvénytelenítve vagy visszavonva, ha új hozzáférési jogkivonatot és frissítési jogkivonatot kívánnak beolvasni.  Azonban az alkalmazásnak el kell vetnie a régit, amint a használatban van, és lecseréli az újat, mert az új jogkivonat új lejárati ideje van. 

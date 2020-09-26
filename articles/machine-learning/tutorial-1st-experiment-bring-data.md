@@ -1,7 +1,7 @@
 ---
 title: 'Oktatóanyag: saját adatai használata'
 titleSuffix: Azure Machine Learning
-description: Az Azure ML első lépések sorozatának 4. része azt mutatja be, hogyan használhatók a saját adatai egy távoli betanítási futtatásban.
+description: A Azure Machine Learning Get-Started sorozat 4. része azt mutatja be, hogyan használhatók a saját adatai egy távoli tanítási futtatásban.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,46 +11,46 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 876ba76655572979a1d831a1ca07e5f3871a3283
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 13d43eb788c750a2f24033a6138ebf00ac57fffe
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90946574"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372569"
 ---
 # <a name="tutorial-use-your-own-data-part-4-of-4"></a>Oktatóanyag: saját adatai használata (4. rész)
 
 Ebből az oktatóanyagból megtudhatja, hogyan tölthet fel és használhat saját adatait a gépi tanulási modellek Azure Machine Learningban való betanításához.
 
-Ez az oktatóanyag **egy négy részből álló oktatóanyag-sorozat negyedik** része, amelyben megismerheti a Azure Machine learning és az Azure-ban végzett feladatok-alapú gépi tanulási feladatok alapjait. Ez az oktatóanyag kiépíti az [1. rész: beállítás](tutorial-1st-experiment-sdk-setup-local.md), [2. rész: a ""Helló világ!"alkalmazás"](tutorial-1st-experiment-hello-world.md)és a [3. rész: a modell betanítása](tutorial-1st-experiment-sdk-train.md)című részben leírtakat.
+Ez az oktatóanyag *egy négy részből álló oktatóanyag-Sorozat 4. része* , amelyben megismerheti a Azure Machine learning és az Azure-ban végzett feladatok-alapú gépi tanulási feladatok alapjait. Ez az oktatóanyag az [1. rész: beállítás](tutorial-1st-experiment-sdk-setup-local.md), [2. rész: futtassa a ""Helló világ!"alkalmazás!"](tutorial-1st-experiment-hello-world.md)és a [3. rész: a modell betanítása](tutorial-1st-experiment-sdk-train.md)című részben leírtakat.
 
-A [3. részben: a modell betanítása](tutorial-1st-experiment-sdk-train.md)az `torchvision.datasets.CIFAR10` PyTorch API beépített metódusának használatával töltődik le. Sok esetben azonban a saját adatait szeretné használni egy távoli képzési folyamatban. Ez a cikk azt a munkafolyamatot mutatja be, amelynek használatával a saját adataival dolgozhat Azure Machine Learningban.
+A [3. részben: a modell betanítása](tutorial-1st-experiment-sdk-train.md)az `torchvision.datasets.CIFAR10` PyTorch API beépített metódusával lett letöltve. Sok esetben azonban a saját adatait is használni szeretné egy távoli betanítási futtatás során. Ez a cikk azt a munkafolyamatot mutatja be, amelynek használatával a saját adataival dolgozhat Azure Machine Learningban.
 
 Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
 > [!div class="checklist"]
-> * Betanítási parancsfájl konfigurálása helyi címtárban tárolt adatfelhasználáshoz
-> * A betanítási parancsfájl helyi tesztelése
-> * Adatok feltöltése az Azure-ba
-> * Vezérlő parancsfájl létrehozása
-> * Ismerje meg az új Azure Machine Learning fogalmakat (paraméterek, adatkészletek, adattárolók átadása)
-> * Betanítási szkript elküldése és futtatása
-> * A kód kimenetének megtekintése a felhőben
+> * Betanítási parancsfájlt konfigurálhat a helyi címtárban lévő adatértékek használatára.
+> * Tesztelje a betanítási szkriptet helyileg.
+> * Adatok feltöltése az Azure-ba.
+> * Hozzon létre egy vezérlő parancsfájlt.
+> * Ismerje meg az új Azure Machine Learning fogalmakat (paraméterek, adatkészletek, adattárolók átadása).
+> * A betanítási szkript elküldése és futtatása.
+> * A kód kimenetének megtekintése a felhőben.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Fejezze be a sorozat [3. részét](tutorial-1st-experiment-sdk-train.md) .
+* A sorozat [3. részének](tutorial-1st-experiment-sdk-train.md) befejezése.
 * A Python nyelv és a gépi tanulási munkafolyamatok bevezető ismerete.
-* Helyi fejlesztési környezet. Ez magában foglalja a következőket: de nem korlátozódik a Visual Studio Code, a Jupyter vagy a Notebookshoz.
-* Python (3.5-3.7-es verzió).
+* Helyi fejlesztési környezet, mint például a Visual Studio Code, a Jupyter vagy a Notebookshoz.
+* Python (3,5-3,7-es verzió).
 
 ## <a name="adjust-the-training-script"></a>A betanítási parancsfájl módosítása
-Most már rendelkezik a Azure Machine Learning futó betanítási szkripttel (oktatóanyag/src/Train. Másolás), és nyomon követheti a modell teljesítményét. Parametrize a betanítási szkriptet argumentumok bevezetésével. Az argumentumok használata lehetővé teszi a különböző hyperparmeters egyszerű összehasonlítását.
+Mostantól a Azure Machine Learning futó betanítási szkriptet (oktatóanyag/src/Train. Másolás) futtatja, és nyomon követheti a modell teljesítményét. Parametrizálja a betanítási szkriptet argumentumok bevezetésével. Az argumentumok használata lehetővé teszi a különböző hiperparaméterek beállítása egyszerű összehasonlítását.
 
-A betanítási szkript jelenleg úgy van beállítva, hogy a CIFAR10-adatkészletet minden futtatáskor letöltse. Az alábbi Python-kód úgy lett kialakítva, hogy beolvassa a címtárból származó adatok olvasását.
+A betanítási szkript most úgy van beállítva, hogy a CIFAR10-adatkészletet minden futtatáskor letöltse. A következő Python-kód lett kialakítva, hogy beolvassa a címtárból származó adatok olvasását.
 
 >[!NOTE] 
-> A használatával `argparse` parametize a szkriptet.
+> A `argparse` szkript felparaméterezi használata.
 
 ```python
 # tutorial/src/train.py
@@ -130,7 +130,7 @@ if __name__ == "__main__":
 
 ### <a name="understanding-the-code-changes"></a>A kód módosításainak megismerése
 
-A-ben használt kód `train.py` kihasználta a `argparse` könyvtárat a, a és a beállításához `data_path` `learning_rate` `momentum` .
+A kód a `train.py` függvénytárat használta a, a `argparse` és a beállításához `data_path` `learning_rate` `momentum` .
 
 ```python
 # .... other code
@@ -142,7 +142,7 @@ args = parser.parse_args()
 # ... other code
 ```
 
-A `train.py` parancsfájl a felhasználó által definiált paraméterek használatára is alkalmazkodott az Optimizer frissítéséhez:
+A parancsfájl a `train.py` felhasználó által definiált paraméterek használatára is alkalmazkodott az Optimizer frissítéséhez:
 
 ```python
 optimizer = optim.SGD(
@@ -180,14 +180,14 @@ A módosított betanítási parancsfájl helyi futtatásához hívja a következ
 python src/train.py --data_path ./data --learning_rate 0.003 --momentum 0.92
 ```
 
-Nem kell letöltenie a CIFAR10-adatkészletet az adat helyi elérési útjának átadásával. Emellett a _tanulási sebesség_ és a _lendület_ hiperparaméterek beállítása különböző értékeivel is kísérletezhet, anélkül, hogy a betanítási szkriptben kellene őket feldolgoznia.
+Nem kell letöltenie a CIFAR10-adatkészletet az adat helyi elérési útjának átadásával. A _tanulási sebesség_ és a _lendület_ hiperparaméterek beállítása különböző értékeivel is kísérletezhet, anélkül, hogy a betanítási szkriptben kellene őket feldolgoznia.
 
 ## <a name="upload-the-data-to-azure"></a>Adatok feltöltése az Azure-ba
 
-A szkript Azure Machine Learning-ben való futtatásához a betanítási adatait elérhetővé kell tenni az Azure-ban. A Azure Machine Learning munkaterület _alapértelmezett_ **adattárral** rendelkezik – egy Azure Blob Storage-fiókkal, amely a betanítási adatai tárolására használható.
+A szkript Azure Machine Learning-ben való futtatásához a betanítási adatait elérhetővé kell tenni az Azure-ban. Az Azure Machine Learning-munkaterület _alapértelmezett_ adattárral van ellátva. Ez egy Azure Blob Storage-fiók, ahol elvégezheti a betanítási adatai tárolását.
 
 >[!NOTE] 
-> A Azure Machine Learning lehetővé teszi az adatai tárolására szolgáló más felhőalapú adattárolók összekapcsolását. További részletekért lásd az [adattár dokumentációját](./concept-data.md).  
+> A Azure Machine Learning lehetővé teszi az adatai tárolására szolgáló más felhőalapú adattárolók összekapcsolását. További részletekért tekintse meg az [adattár dokumentációját](./concept-data.md).  
 
 Hozzon létre egy új `05-upload-data.py` , a címtárban nevű Python-vezérlő parancsfájlt `tutorial` :
 
@@ -199,12 +199,12 @@ datastore = ws.get_default_datastore()
 datastore.upload(src_dir='./data', target_path='datasets/cifar10', overwrite=True)
 ```
 
-A `target_path` meghatározza az adattároló azon elérési útját, ahol a CIFAR10-adatbázis fel lesz töltve.
+Az `target_path` érték határozza meg az adattároló azon elérési útját, ahol a CIFAR10-adatfeltöltés történik.
 
 >[!TIP] 
-> Míg az adatok feltöltéséhez Azure Machine Learningt használ, a [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) használatával ad-hoc fájlokat tölthet fel. Ha ETL-eszközre van szüksége, [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/introduction) használatával betöltheti adatait az Azure-ba.
+> Az adatok feltöltéséhez Azure Machine Learning használatakor a [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) használatával ad hoc fájlokat tölthet fel. Ha ETL-eszközre van szüksége, a [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/introduction) használatával betöltheti adatait az Azure-ba.
 
-Az adatok feltöltéséhez futtassa a Python-fájlt (Megjegyzés: a feltöltésnek gyorsnak, 60 másodpercnél rövidebbnek kell lennie.)
+Az adatok feltöltéséhez futtassa a Python-fájlt. (A feltöltésnek gyorsnak, 60 másodpercnél rövidebbnek kell lennie.)
 
 ```bash
 python 05-upload-data.py
@@ -223,7 +223,7 @@ Uploaded 9 files
 
 ## <a name="create-a-control-script"></a>Vezérlő parancsfájl létrehozása
 
-Ahogy korábban elvégezte, hozzon létre egy új, nevű Python-vezérlő szkriptet `06-run-pytorch-data.py` :
+Ahogy korábban végzett, hozzon létre egy új, nevű Python-vezérlő parancsfájlt `06-run-pytorch-data.py` :
 
 ```python
 # tutorial/06-run-pytorch-data.py
@@ -264,14 +264,14 @@ if __name__ == "__main__":
 
 ### <a name="understand-the-code-changes"></a>A kód módosításainak megismerése
 
-A vezérlő parancsfájl hasonló a [sorozat 3. részéből](tutorial-1st-experiment-sdk-train.md) a következő új sorokkal:
+A vezérlő parancsfájl hasonló a [sorozat 3. részéből](tutorial-1st-experiment-sdk-train.md), a következő új sorokkal:
 
 :::row:::
    :::column span="":::
       `dataset = Dataset.File.from_files( ... )`
    :::column-end:::
    :::column span="2":::
-      Az [adatkészletek](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py&preserve-view=true) az Azure Blob-tárolóba feltöltött adatokat használják. Az adatkészletek olyan absztrakt rétegek, amelyek a megbízhatóság és a megbízhatóság javítása érdekében lettek kialakítva.
+      Az [adatkészletek](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py&preserve-view=true) az Azure Blob Storageba feltöltött adatokat használják. Az adatkészletek olyan absztrakt rétegek, amelyek a megbízhatóság és a megbízhatóság javítása érdekében lettek kialakítva.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -279,11 +279,11 @@ A vezérlő parancsfájl hasonló a [sorozat 3. részéből](tutorial-1st-experi
       `config = ScriptRunConfig(...)`
    :::column-end:::
    :::column span="2":::
-      A [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) úgy módosul, hogy tartalmazza a számára átadott argumentumok listáját `train.py` . Az `dataset.as_named_input('input').as_mount()` argumentum azt jelenti, hogy a megadott könyvtár _csatlakoztatva_ lesz a számítási célhoz.
+      A [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) úgy módosul, hogy tartalmazza a számára átadott argumentumok listáját `train.py` . Az `dataset.as_named_input('input').as_mount()` argumentum azt jelenti, hogy a megadott könyvtár a számítási célhoz lesz _csatlakoztatva_ .
    :::column-end:::
 :::row-end:::
 
-## <a name="submit-run-to-azure-machine-learning"></a>Futtatás beküldése Azure Machine Learningre
+## <a name="submit-the-run-to-azure-machine-learning"></a>A Futtatás beküldése Azure Machine Learningre
 
 Most küldje el újra a futtatást az új konfiguráció használatára:
 
@@ -291,11 +291,11 @@ Most küldje el újra a futtatást az új konfiguráció használatára:
 python 06-run-pytorch-data.py
 ```
 
-Ekkor a rendszer kinyomtatja a kísérlethez tartozó URL-címet Azure Machine Learning Studio. Ha erre a hivatkozásra kattint, megtekintheti a kód futását.
+Ez a kód egy URL-címet fog kinyomtatni a kísérlethez a Azure Machine Learning Studióban. Ha erre a hivatkozásra kattint, megtekintheti a kód futását.
 
-### <a name="inspect-the-70_driver_log-log-file"></a>A 70_driver_log naplófájl vizsgálata
+### <a name="inspect-the-log-file"></a>A naplófájl vizsgálata
 
-A Azure Machine Learning Studióban navigáljon a kísérlet futtatásához (ehhez kattintson a fenti cella URL-címére), majd a **kimenetek + naplók**elemre. Kattintson a 70_driver_log.txt fájlra – a következő kimenetnek kell megjelennie:
+A Studióban nyissa meg a kísérlet futtatását (az előző URL-kimenet kiválasztásával), majd a **kimenetek + naplók**elemet. Válassza ki a `70_driver_log.txt` fájlt. A következő kimenetnek kell megjelennie:
 
 ```txt
 Processing 'input'.
@@ -331,8 +331,8 @@ LIST FILES IN DATA PATH...
 
 Megjegyzčs
 
-1. Azure Machine Learning automatikusan csatlakoztatta a BLOB-tárolót a számítási fürthöz.
-2. A ``dataset.as_named_input('input').as_mount()`` vezérlő parancsfájlban használt megoldás a csatlakoztatási pontra lesz feloldva
+- A Azure Machine Learning automatikusan csatlakoztatta Blob Storage a számítási fürthöz.
+- A ``dataset.as_named_input('input').as_mount()`` vezérlő parancsfájlban használt érték a csatlakoztatási pontra lesz feloldva.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -344,8 +344,8 @@ Megtarthatja az erőforráscsoportot is, de törölhet egyetlen munkaterületet 
 
 Ebben az oktatóanyagban láttuk, hogyan tölthetők fel adatok az Azure-ba a használatával `Datastore` . Az adattár Felhőbeli tárolóként szolgál a munkaterülethez, így megőrizheti az adatok megőrzésének állandó és rugalmas helyét.
 
-Megismerte, hogyan módosíthatja a betanítási szkriptet az adatelérési út parancssoron keresztüli elfogadásához. A használatával `Dataset` csatlakoztathat egy könyvtárat a távoli futtatáshoz. 
+Megismerte, hogyan módosíthatja a betanítási szkriptet az adatelérési út parancssoron keresztüli elfogadásához. A használatával `Dataset` egy könyvtárat csatlakoztathat a távoli futtatáshoz. 
 
 Most, hogy már rendelkezik egy modellel, ismerkedjen meg a következőket:
 
-* [Modellek üzembe helyezése Azure Machine learning](how-to-deploy-and-where.md)
+* [Modellek üzembe helyezése Azure Machine learning](how-to-deploy-and-where.md)használatával.

@@ -8,12 +8,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: overview
 ms.date: 09/01/2020
-ms.openlocfilehash: e62d1bf0e9db5e80193cb0615d0a9d31e3041d63
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 90d3cb106fa93649f7d6dda5ab5755061d118f66
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90947180"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268383"
 ---
 # <a name="what-is-azure-database-for-postgresql---hyperscale-citus"></a>Mi az Azure Database for PostgreSQL-nagy kapacitású (Citus)?
 
@@ -32,5 +32,5 @@ A PostgreSQL-re épülő alkalmazások [a standard szintű](./concepts-connectio
 ## <a name="next-steps"></a>Következő lépések
 
 - Első lépésként [hozza létre első](./quickstart-create-hyperscale-portal.md) Azure Database for PostgreSQL-nagy kapacitású (Citus) kiszolgálócsoportét.
-- Tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/postgresql/) a Cost-összehasonlításokhoz és a számológépekhez. A nagy kapacitású (Citus) előre fizetett, fenntartott példányokra vonatkozó kedvezményeket is kínál, további részletekért lásd a [nagy kapacitású ri díjszabási](concepts-hyperscale-reserved-pricing.md) oldalát.
+- Tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/postgresql/) a Cost-összehasonlításokhoz és a számológépekhez. A nagy kapacitású (Citus) előre fizetett, fenntartott példányokra vonatkozó kedvezményeket is kínál, további részletekért lásd a [nagy kapacitású (Citus) ri díjszabási](concepts-hyperscale-reserved-pricing.md) oldalát.
 - A kiszolgálócsoport legjobb [kezdeti méretének](howto-hyperscale-scaling.md#picking-initial-size) meghatározása

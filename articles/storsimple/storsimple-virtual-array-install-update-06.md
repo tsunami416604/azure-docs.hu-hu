@@ -1,6 +1,6 @@
 ---
 title: Az 0,6-es frissítés telepítése a StorSimple virtuális tömbön | Microsoft Docs
-description: Ismerteti, hogyan használhatók a StorSimple virtuális tömb webes felhasználói felülete a frissítések alkalmazásához a Azure Portal és a gyorsjavítási módszer használatával
+description: Ismerteti, hogyan használható a StorSimple Virtual Array webes FELÜLETe az 0,6-es frissítés alkalmazásához a Azure Portal és a gyors javítási módszer használatával.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/18/2017
 ms.author: alkohli
-ms.openlocfilehash: 02b85cb90948f35cb6f6c855cfbe81fd58301de0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 917af7ea1789394ddba5d349d631018e2b620216
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513593"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295685"
 ---
 # <a name="install-update-06-on-your-storsimple-virtual-array"></a>Az 0,6-es frissítés telepítése a StorSimple virtuális tömbön
 
@@ -35,7 +35,7 @@ A frissítés alkalmazása előtt javasoljuk, hogy a köteteket vagy a megosztá
 >
 > - Ha a 0,2-es vagy újabb frissítést futtatja, javasoljuk, hogy telepítse a frissítéseket a Azure Portal használatával. Ha a 0,1-es vagy a GA-os verziót futtatja, a gyorsjavítást a helyi webes felületen keresztül kell használnia az 0,6-es frissítés telepítéséhez.
 >
-> - Ne feledje, hogy frissítés vagy gyorsjavítás telepítése újraindítja az eszközt. Mivel a StorSimple virtuális tömb egyetlen csomópontos eszköz, a folyamatban lévő I/O-műveletek megszakadnak, és az eszköz leállást tapasztal.
+> - Ne feledje, hogy egy frissítés vagy gyorsjavítás telepítése újraindítja az eszközt. Mivel a StorSimple virtuális tömb egyetlen csomópontos eszköz, a folyamatban lévő I/O-műveletek megszakadnak, és az eszköz leállást tapasztal.
 
 ## <a name="use-the-azure-portal"></a>Az Azure Portal használata
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/09/2019
 ms.author: sharadag
 ms.custom: include file
-ms.openlocfilehash: 9397c5f075c1d6653920d19766d5d6a740294ec7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 68d0459153fbdb34216c1313f70e292119b93a7c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67330763"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269802"
 ---
 A saját tanúsítvány létrehozásakor a következő hitelesítésszolgáltatók engedélyezettek:
 
@@ -23,6 +23,7 @@ A saját tanúsítvány létrehozásakor a következő hitelesítésszolgáltat�
 - AME infra CA 02
 - Ameroot
 - APCA-DM3P
+- Atos TrustedRoot 2011
 - Autopilot legfelső szintű HITELESÍTÉSSZOLGÁLTATÓja
 - Baltimore CyberTrust-gyökér
 - 3. osztály – nyilvános elsődleges hitelesítésszolgáltató
@@ -52,8 +53,12 @@ A saját tanúsítvány létrehozásakor a következő hitelesítésszolgáltat�
 - GlobalSign legfelső szintű HITELESÍTÉSSZOLGÁLTATÓ
 - Go Daddy – legfelső szintű hitelesítésszolgáltató – G2
 - Go Daddy – biztonságos hitelesítésszolgáltató – G2
+- Let 's encrypting Authority X3
 - QuoVadis gyökérszintű CA2 G3
 - RapidSSL RSA CA 2018
+- Biztonsági kommunikáció RootCA1
+- Biztonsági kommunikáció RootCA2
+- Biztonsági kommunikáció RootCA3
 - Symantec Class 3 EV SSL-CA – G3
 - Symantec 3. osztály – biztonságos kiszolgálói HITELESÍTÉSSZOLGÁLTATÓ – G4
 - Symantec Enterprise Mobile root a Microsoft számára

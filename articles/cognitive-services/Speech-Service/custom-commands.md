@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: travisw
-ms.openlocfilehash: 0800a287b747a8a421958d20f0b1ce56247d6d01
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: c9f7168bc0524b483413ade9792af18ff9cfebfa
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362159"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358542"
 ---
 # <a name="what-is-custom-commands"></a>Mik azok az egyéni parancsok?
 
@@ -50,9 +50,9 @@ Ha elkészült a gyors üzembe helyezéssel, tekintse át a útmutatókat, amely
 ## <a name="building-voice-assistants-with-custom-commands"></a>Hangsegédek kiépítése egyéni parancsokkal
 > [!VIDEO https://www.youtube.com/embed/1zr0umHGFyc]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Beszédfelismerési szolgáltatás előfizetési kulcsának beszerzése ingyenesen](get-started.md)
+* [Beszédfelismerési szolgáltatás előfizetési kulcsának beszerzése ingyenesen](overview.md#try-the-speech-service-for-free)
 * [Megtekintheti a hangsegédek tárházát a GitHubon a mintákhoz](https://aka.ms/speech/cc-samples)
 * [Az egyéni parancsok kipróbálásához nyissa meg a Speech studiót](https://speech.microsoft.com/customcommands)
 * [A Speech SDK beszerzése](speech-sdk.md)

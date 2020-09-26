@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1608039b051cb17684ca77cf7f00c705c9a8e7b5
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 318da4e92e6d07df1fcb89a4df0cb29d82caa630
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89659523"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91294867"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>Hibrid identitás-bevezetési stratégia definiálása
 Ebben a feladatban megadhatja a hibrid identitás-bevezetési stratégiát a hibrid személyazonossági megoldáshoz, hogy megfeleljenek a következő cikkben tárgyalt üzleti követelményeknek:
@@ -55,7 +55,7 @@ Az alábbi táblázat segít meghatározni az alábbi stratégiák előnyeit és
 | Stratégia | Előnyök | Hátrányok |
 | --- | --- | --- |
 | **Felhőbeli identitások** |Könnyebben kezelhető a kis szervezet számára. <br> Nincs a helyszínen telepíteni. Nincs szükség további hardverre<br>Könnyen letiltható, ha a felhasználó elhagyja a vállalatot |A felhasználóknak be kell jelentkezniük a Felhőbeli számítási feladatok elérésekor <br> Előfordulhat, hogy a jelszavak nem egyeznek a Felhőbeli és a helyszíni identitásokkal. |
-| **Szinkronizált** |Helyszíni és Felhőbeli könyvtárak hitelesítése helyszíni jelszóval <br>Könnyebben kezelhető kis, közepes vagy nagyméretű szervezetek számára <br>Egyes erőforrások esetében a felhasználók egyszeri bejelentkezéssel (SSO) rendelkezhetnek <br> A Microsoft által javasolt szinkronizálási módszer <br> Könnyebben kezelhető |Előfordulhat, hogy néhány ügyfél vonakodik szinkronizálni a címtárakat a felhő miatt a vállalat rendőrségével |
+| **Szinkronizált** |Helyszíni és Felhőbeli könyvtárak hitelesítése helyszíni jelszóval <br>Könnyebben kezelhető kis, közepes vagy nagyméretű szervezetek számára <br>Egyes erőforrások esetében a felhasználók egyszeri bejelentkezéssel (SSO) rendelkezhetnek <br> A Microsoft által javasolt szinkronizálási módszer <br> Könnyebben kezelhető |Előfordulhat, hogy néhány ügyfél vonakodik szinkronizálni a címtárakat a Felhőbeli konkrét vállalati szabályzatokkal |
 | **Összevont** |A felhasználók rendelkezhetnek egyszeri bejelentkezéssel (SSO) <br>Ha a felhasználó leáll vagy elhagyja a fiókot, a fiók azonnal letiltható, és a rendszer visszavonja a hozzáférést.<br> Olyan speciális forgatókönyvek támogatása, amelyek szinkronizálása nem végezhető el |További lépések a beállításához és konfigurálásához <br> Nagyobb karbantartás <br> További hardvert igényelhet az STS-infrastruktúrához <br> Az összevonási kiszolgáló telepítéséhez további hardverre lehet szükség. Ha AD FS van használatban, további szoftverre van szükség <br> Széles körű beállítás szükséges az egyszeri bejelentkezéshez <br> Kritikus meghibásodási pont, ha az összevonási kiszolgáló nem érhető el, a felhasználók nem fognak tudni hitelesítést végezni |
 
 ### <a name="client-experience"></a>Ügyfélélmény

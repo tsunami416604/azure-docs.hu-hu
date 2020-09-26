@@ -6,19 +6,19 @@ ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 09/14/2020
-ms.openlocfilehash: c6a2d38644d844cb1231a24465478b7f70a85111
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.date: 09/16/2020
+ms.openlocfilehash: 74656401d7b0ef12cf509674921a6a5153ce992d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531148"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282918"
 ---
 # <a name="using-column-patterns-in-mapping-data-flow"></a>Oszlopok mintáinak használata a leképezési adatfolyamban
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Számos leképezési adatfolyam-átalakítás lehetővé teszi a sablon oszlopainak a rögzített oszlopnevek helyett a mintázatok alapján történő hivatkozását. Ezt a megfeleltetést *oszlopbeli mintázatoknak*nevezzük. Megadhat mintázatokat az oszlopoknak a név, az adattípus, a stream vagy a pozíció alapján történő egyeztetéséhez a mezők nevének megadása helyett. Az oszlopok mintája két esetben hasznos:
+Számos leképezési adatfolyam-átalakítás lehetővé teszi a sablon oszlopainak a rögzített oszlopnevek helyett a mintázatok alapján történő hivatkozását. Ezt a megfeleltetést *oszlopbeli mintázatoknak*nevezzük. Megadhat mintázatokat az oszlopoknak a név, az adattípus, a stream, a forrás vagy a pozíció alapján való egyeztetéséhez, a mezők nevének megadása helyett. Az oszlopok mintája két esetben hasznos:
 
 * Ha a bejövő forrás mezői gyakran változnak, például a szövegfájlokban vagy a NoSQL-adatbázisokban lévő oszlopok módosításának esetére. Ez a forgatókönyv a [séma drift](concepts-data-flow-schema-drift.md)néven ismert.
 * Ha egy gyakori műveletet szeretne végezni az oszlopok nagy csoportjára. Például minden olyan oszlopot, amely "Total" értékkel rendelkezik az oszlop nevében, dupla értékre kívánja feldolgozni.
@@ -31,7 +31,7 @@ Ha egy származtatott oszlopba, összesítésbe vagy ablak átalakításba szere
 
 ![oszlop mintázatai](media/data-flow/add-column-pattern.png "Oszlopminták")
 
-A [Kifejezésszerkesztő](concepts-data-flow-expression-builder.md) segítségével adja meg a egyezési feltételt. Hozzon létre egy logikai kifejezést, amely a (z),, `name` `type` `stream` és oszlop alapján egyezik az oszlopokkal `position` . A minta minden olyan oszlopot érint, amely sodródik vagy definiálva lesz, ahol a feltétel igaz értéket ad vissza.
+A [Kifejezésszerkesztő](concepts-data-flow-expression-builder.md) segítségével adja meg a egyezési feltételt. Hozzon létre egy olyan logikai kifejezést, amely a (z),,, `name` `type` `stream` `origin` és `position` oszlop alapján egyezik az oszlopokkal. A minta minden olyan oszlopot érint, amely sodródik vagy definiálva lesz, ahol a feltétel igaz értéket ad vissza.
 
 Az egyeztetési feltétel alá tartozó két kifejezés mező adja meg az érintett oszlopok új neveit és értékeit. Ezzel a `$$` beállítással hivatkozhat a megegyező mező meglévő értékére. A bal oldali kifejezés mezőben a név és a jobb oldali kifejezés mező határozza meg az értéket.
 
@@ -45,7 +45,7 @@ Az egyeztetési feltétel helyességének ellenőrzéséhez ellenőrizheti a **m
 
 ## <a name="rule-based-mapping-in-select-and-sink"></a>Szabályon alapuló hozzárendelés a Select és a mosogatóban
 
-A forrásban lévő oszlopok leképezése és az átalakítások kiválasztása esetén rögzített leképezési vagy szabály-alapú leképezéseket adhat hozzá. Egyezés a,, `name` `type` `stream` és `position` oszlopok alapján. A rögzített és a szabályokon alapuló leképezések tetszőleges kombinációja lehet. Alapértelmezés szerint az 50-nál nagyobb számú összes kivetítés alapértelmezett értéke egy olyan szabály-alapú hozzárendelés, amely minden oszlop esetében megfelel, és a megjelenő nevet adja eredményül. 
+A forrásban lévő oszlopok leképezése és az átalakítások kiválasztása esetén rögzített leképezési vagy szabály-alapú leképezéseket adhat hozzá. Egyezés a,, `name` , `type` `stream` `origin` és `position` oszlopok alapján. A rögzített és a szabályokon alapuló leképezések tetszőleges kombinációja lehet. Alapértelmezés szerint az 50-nál nagyobb számú összes kivetítés alapértelmezett értéke egy olyan szabály-alapú hozzárendelés, amely minden oszlop esetében megfelel, és a megjelenő nevet adja eredményül. 
 
 Szabály alapú hozzárendelés hozzáadásához kattintson a **leképezés hozzáadása** elemre, és válassza a **szabály alapú leképezés**lehetőséget.
 
@@ -82,6 +82,7 @@ A fenti példa a komplex oszlopok összes aloszlopára illeszkedik `a` . `a` ké
 * `type` az egyes bejövő oszlopok adattípusát jelöli
 * `stream` az egyes adatfolyamokhoz társított nevet vagy a folyamat átalakítását jelöli
 * `position` az adatfolyamat oszlopainak sorszáma
+* `origin` az a transzformáció, amelyben egy oszlop származik vagy Utoljára frissítve lett
 
 ## <a name="next-steps"></a>Következő lépések
 * További információ az adatátalakítások hozzárendelési folyamatának [kifejezési nyelvéről](data-flow-expression-functions.md)

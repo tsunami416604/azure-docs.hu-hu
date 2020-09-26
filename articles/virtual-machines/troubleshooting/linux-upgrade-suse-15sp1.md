@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 05/21/2020
 ms.author: arremana
-ms.openlocfilehash: 079574ab4c5846eae6266d1e13240baf99428a69
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ed355f82b88f460ff4b372484a690f166a15550
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84449243"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91359511"
 ---
 # <a name="upgrade-azure-vm-with-sles-12-to-sles-15-sp1"></a>Azure-beli virtuális gép frissítése SLES 12-SLES 15 SP1-re
 
@@ -66,11 +66,11 @@ A jelenlegi SLES-verziónak 12 SP4 vagy 12 SP5 SLES kell lennie, mielőtt továb
 
 6. Nyissa meg a [Azure Portal](https://portal.azure.com), válassza ki a virtuális gépet, majd válassza a **Serial Console**lehetőséget. Látni fogja, hogy a rendszer leáll "újraindítás: újraindítási rendszer". Ez a folyamat körülbelül 15-45 percet vesz igénybe. A 2. generációs virtuális gépek esetében előfordulhat, hogy az "újraindítás: rendszer újraindítása" képernyőn beragadt. Ebben az esetben várjon 45 percet. Ha még mindig nem halad tovább, lépjen a Azure Portal található virtuális gép **Áttekintés** lapjára, állítsa le a virtuális gépet, majd indítsa újra.
 
-     ![A soros konzolon lévő üzenetekkel kapcsolatos képernyőkép](./media/linux-upgrade-suse-15sp1/reboot-message.png)
+     ![A soros konzolon lévő üzenetekkel kapcsolatos képernyőkép.](./media/linux-upgrade-suse-15sp1/reboot-message.png)
 
 8. A rendszer új rendszermaggal való újraindítása után a következő üzenet jelenik meg.
 
-     ![A soros konzolon lévő üzenetekkel kapcsolatos képernyőkép](./media/linux-upgrade-suse-15sp1/output-message.png)
+     ![A soros konzolon lévő üzenetekkel kapcsolatos képernyőkép a rendszer újraindítása után az új kernelen.](./media/linux-upgrade-suse-15sp1/output-message.png)
 9. Ellenőrizze a kernel és az operációs rendszer verziószámát, és ellenőrizze, hogy a rendszer frissítése sikeresen megtörtént-e.
 
     ```
@@ -85,4 +85,4 @@ A következő módszerek egyikével ellenőrizhető a generáció verziója:
 - A SLES-terminálon futtassa a parancsot `dmidecode | grep -i hyper` . Ha ez egy generációs v1-es virtuális gép, a rendszer nem ad vissza kimenetet. A Generations v2 virtuális gépek esetében a következő kimenet jelenik meg:
 
      ![A 2. generációs virtuális gépek kimenetét bemutató képernyőkép](./media/linux-upgrade-suse-15sp1/output-gen2.png)
-- A [Azure Portal](https://portal.azure.com)nyissa meg a virtuális gép **tulajdonságait** , majd jelölje be a **virtuális gép létrehozási** mezőjét.
+- A [Azure Portal](https://portal.azure.com)nyissa meg a virtuális gép **tulajdonságait**  , majd jelölje be a **virtuális gép létrehozási** mezőjét.

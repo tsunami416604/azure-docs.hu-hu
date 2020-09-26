@@ -5,15 +5,15 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: 7d1d7f9759fc8e2826da6232981eb3a389576c07
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/23/2020
+ms.openlocfilehash: b0957219308dfaab2d375fb7c23926a13c745344
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935029"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314674"
 ---
-# <a name="monitor-metrics-azure-database-for-postgresql---flexible-server"></a>Metrikák figyelése Azure Database for PostgreSQL – rugalmas kiszolgáló
+# <a name="monitor-metrics-on-azure-database-for-postgresql---flexible-server"></a>Metrikák figyelése Azure Database for PostgreSQL-rugalmas kiszolgálón
 
 > [!IMPORTANT]
 > Azure Database for PostgreSQL – a rugalmas kiszolgáló előzetes verzióban érhető el
@@ -27,8 +27,9 @@ Azure Database for PostgreSQL különböző mérőszámokat biztosít, amelyek b
 A következő mérőszámok érhetők el a PostgreSQL rugalmas kiszolgálóhoz:
 
 
-|Metrika|Metrika megjelenítendő neve|Egység|Leírás|
+|Metrika|Metrika megjelenítendő neve|Egység|Description|
 |---|---|---|---|
+| active_connections | Aktív kapcsolatok | Darabszám | A kiszolgálóval létesített kapcsolatok száma. | 
 | backup_storage_used | Felhasznált biztonsági mentési tár | Bájt | A felhasznált biztonsági mentési tár mennyisége. Ez a metrika a teljes adatbázis biztonsági mentése, a különbözeti biztonsági másolatok és a naplózott biztonsági mentések által felhasznált tárterület összegét jelöli, amelyet a kiszolgáló számára beállított biztonsági másolatok megőrzési időtartama alapján tartanak fenn. A biztonsági mentések gyakorisága a szolgáltatás által felügyelt. A földrajzilag redundáns tároláshoz a biztonsági mentési tárterület a helyileg redundáns tárolásnál kétszer szerepel. |
 | connections_failed | Sikertelen kapcsolatok | Darabszám | Sikertelen kapcsolatok. |
 | connections_succeeded | Sikeres kapcsolatok | Darabszám | Sikeres kapcsolatok. |

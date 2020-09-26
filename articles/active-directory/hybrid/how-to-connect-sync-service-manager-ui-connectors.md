@@ -17,25 +17,25 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a013af680ecc84a2a981341ba4bb95148adc799f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d215c2e200308664f24daa28a0054c8f1bcfc09c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357256"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319877"
 ---
 # <a name="using-connectors-with-the-azure-ad-connect-sync-service-manager"></a>Összekötők használata a Azure AD Connect Sync Service Manager
 
-![Service Manager szinkronizálása](./media/how-to-connect-sync-service-manager-ui-connectors/connectors.png)
+![A szinkronizálási Service Manager bemutató képernyőkép.](./media/how-to-connect-sync-service-manager-ui-connectors/connectors.png)
 
 Az összekötők lapon minden olyan rendszer felügyelhető, amelyhez a Szinkronizáló motor csatlakozik.
 
 ## <a name="connector-actions"></a>Összekötő műveletei
-| Műveletek | Megjegyzés |
+| Művelet | Megjegyzés |
 | --- | --- |
 | Létrehozás |Ne használja. További AD-erdőkhöz való csatlakozáshoz használja a telepítővarázslót. |
 | Tulajdonságok |Tartomány-és OU-szűréshez használatos. |
-| [Szabályzat](#delete) |Az összekötő területének vagy az erdőhöz való csatlakozás törlésére szolgál. |
+| [Törlés](#delete) |Az összekötő területének vagy az erdőhöz való csatlakozás törlésére szolgál. |
 | [Futtatási profilok konfigurálása](#configure-run-profiles) |A tartományi szűrés kivételével itt nem kell konfigurálnia. Ezt a műveletet használhatja a már konfigurált futtatási profilok megjelenítéséhez. |
 | Futtatás |Egy profil egyszeri futtatásának elindítására szolgál. |
 | Leállítás |Egy profilt jelenleg futtató összekötő leállítása. |
@@ -47,7 +47,7 @@ Az összekötők lapon minden olyan rendszer felügyelhető, amelyhez a Szinkron
 
 ### <a name="delete"></a>Törlés
 A törlési művelet két különböző dolog esetében használatos.  
-![Service Manager szinkronizálása](./media/how-to-connect-sync-service-manager-ui-connectors/connectordelete.png)
+![Képernyőkép: az "összekötő törlése" ablak "csak az összekötő-terület törlése" beállítással látható.](./media/how-to-connect-sync-service-manager-ui-connectors/connectordelete.png)
 
 Az **összekötő törlése lehetőség csak** az összes adathalmazt távolítja el, de megtartja a konfigurációt.
 
@@ -58,17 +58,17 @@ Mindkét lehetőség szinkronizálja az összes objektumot, és frissíti a meta
 ### <a name="configure-run-profiles"></a>Futtatási profilok konfigurálása
 Ez a beállítás lehetővé teszi az összekötőhöz konfigurált futtatási profilok megtekintését.
 
-![Service Manager szinkronizálása](./media/how-to-connect-sync-service-manager-ui-connectors/configurerunprofiles.png)
+![Képernyőfelvétel: a "futtatási profilok konfigurálása" ablak a "különbözeti Importálás" beállítással.](./media/how-to-connect-sync-service-manager-ui-connectors/configurerunprofiles.png)
 
 ### <a name="search-connector-space"></a>Keresési összekötő területe
 A keresési összekötő területe művelet hasznos lehet objektumok kereséséhez és az adathibák elhárításához.
 
-![Service Manager szinkronizálása](./media/how-to-connect-sync-service-manager-ui-connectors/cssearch.png)
+![A "keresési összekötő területe" ablakot megjelenítő képernyőkép.](./media/how-to-connect-sync-service-manager-ui-connectors/cssearch.png)
 
 Először válasszon ki egy **hatókört**. Kereshet az objektum (RDN, DN, Anchor, Sub-Tree) vagy az objektum állapota alapján (az összes többi lehetőség).  
-![Service Manager szinkronizálása](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchscope.png)  
+![A "hatókör" legördülő menüt megjelenítő képernyőkép.](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchscope.png)  
 Ha például faszerkezetes keresést végez, az összes objektum egy szervezeti egységben fog megjelenni.  
-![Service Manager szinkronizálása](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchsubtree.png)  
+![A "Sub-Tree" keresési példát bemutató képernyőkép.](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchsubtree.png)  
 Ebből a rácsból kiválaszthat egy objektumot, kiválaszthatja a **tulajdonságokat**, és [követheti azt](tshoot-connect-object-not-syncing.md) a forrás-összekötő területéről, a metaverse használatával és a cél összekötő területéhez.
 
 ### <a name="changing-the-ad-ds-account-password"></a>Az AD DS-fiók jelszavának módosítása
@@ -93,7 +93,7 @@ A probléma megoldásához frissítse a AD DS felhasználói fiókot a következ
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a [Azure ad Connect szinkronizálási](how-to-connect-sync-whatis.md) konfigurációról.
 
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).

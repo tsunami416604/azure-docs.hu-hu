@@ -3,13 +3,13 @@ title: Azure Application Insights alapértelmezett SDK-végpontok felülbírál�
 description: Az alapértelmezett Azure Monitor Application Insights SDK-végpontok módosítása olyan régiók esetében, mint például a Azure Government.
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.custom: references_regions, devx-track-javascript
-ms.openlocfilehash: 22f81b327c161df4f6605cfcb64b48b8d75beed3
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.custom: references_regions, devx-track-js
+ms.openlocfilehash: d6cea9044cd4898480fcc30532a05e6c8a407012
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373130"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333290"
 ---
 # <a name="application-insights-overriding-default-endpoints"></a>Application Insights felülbírálja az alapértelmezett végpontokat
 
@@ -79,7 +79,7 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPuls
 
 Azure Functions azt javasoljuk, hogy a függvény alkalmazási beállításaiban a [kapcsolódási karakterláncok](./sdk-connection-string.md?tabs=net) legyenek beállítva. Ha az alkalmazás beállításait a függvények ablaktáblán belül szeretné elérni, válassza a **Beállítások**  >  **konfigurációs**  >  **alkalmazás beállításai**lehetőséget. 
 
-Név: `APPLICATIONINSIGHTS_CONNECTION_STRING` érték:`Connection String Value`
+Név: `APPLICATIONINSIGHTS_CONNECTION_STRING` érték: `Connection String Value`
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -158,7 +158,7 @@ A opencensus-Python SDK betöltési végpontjának módosításával kapcsolatos
 
 Jelenleg csak a végpontok módosítását igénylő régiók [Azure Government](../../azure-government/compare-azure-government-global-azure.md#application-insights) és az [Azure China](/azure/china/resources-developer-guide).
 
-|Régió |  Végpont neve | Érték |
+|Region |  Végpont neve | Érték |
 |-----------------|:------------|:-------------|
 | Azure China | Telemetria-csatorna | `https://dc.applicationinsights.azure.cn/v2/track` |
 | Azure China | QuickPulse (élő metrikák) |`https://live.applicationinsights.azure.cn/QuickPulseService.svc` |
@@ -170,7 +170,7 @@ Jelenleg csak a végpontok módosítását igénylő régiók [Azure Government]
 Ha jelenleg a "api.applicationinsights.io"-n keresztül hozzáférő [Application Insights Rest APIt](https://dev.applicationinsights.io/
 ) használja, akkor a régió helyi végpontját kell használnia:
 
-|Régió |  Végpont neve | Érték |
+|Region |  Végpont neve | Érték |
 |-----------------|:------------|:-------------|
 | Azure China | REST API | `api.applicationinsights.azure.cn` |
 | Azure Government | REST API | `api.applicationinsights.us`|
@@ -178,7 +178,7 @@ Ha jelenleg a "api.applicationinsights.io"-n keresztül hozzáférő [Applicatio
 > [!NOTE]
 > Ezekben a régiókban **jelenleg nem támogatottak** a kód nélküli ügynök/bővítmény alapú figyelés az Azure app Services-ban. Amint ez a funkció elérhetővé válik, a cikk frissülni fog.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha többet szeretne megtudni a Azure Government egyéni módosításaival kapcsolatban, tekintse meg az [Azure monitorozásával és](../../azure-government/compare-azure-government-global-azure.md#application-insights)felügyeletével kapcsolatos részletes útmutatást.
 - Ha többet szeretne megtudni az Azure China-ról, tekintse meg az [Azure China](/azure/china/)forgatókönyvét.

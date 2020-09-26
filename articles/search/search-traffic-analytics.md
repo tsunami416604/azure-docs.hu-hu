@@ -8,13 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/18/2020
-ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: 1e7f832faffc09cb7bbbcca73763b09f58cbb412
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: d93ced4b45befec207494909de61d30a98d2a67e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019793"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333732"
 ---
 # <a name="collect-telemetry-data-for-search-traffic-analytics"></a>Telemetria-adatok gyűjtése a keresési forgalom elemzéséhez
 
@@ -51,7 +51,7 @@ A Visual Studio-projektek egyes típusaihoz tartozó parancsikonok az alábbi l�
 
 1. A Visual Studio és a ASP.net fejlesztéséhez nyissa meg a megoldást, és válassza a **projekt**  >  **Hozzáadás Application Insights telemetria**lehetőséget.
 
-1. Kattintson az első **lépések**elemre.
+1. Kattintson az **Első lépések** lehetőségre.
 
 1. Az alkalmazás regisztrálása Microsoft-fiók, Azure-előfizetés és egy Application Insights-erőforrás biztosításával (az új erőforrás az alapértelmezett). Kattintson a **Regisztrálás** parancsra.
 

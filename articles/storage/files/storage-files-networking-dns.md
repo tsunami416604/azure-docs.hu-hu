@@ -1,18 +1,18 @@
 ---
 title: DNS-továbbítás konfigurálása Azure Fileshoz | Microsoft Docs
-description: A Azure Files hálózati beállításainak áttekintése.
+description: Ismerje meg, hogyan konfigurálhatja a Azure Files DNS-továbbítását.
 author: roygara
 ms.service: storage
 ms.topic: how-to
 ms.date: 3/19/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6404115e64ba0ac1f65ba1cfc8d26604f1ce9cfa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4b5ce48cf15c890fbdb3dfd90d9d0ab922a2f4b2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85509965"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320268"
 ---
 # <a name="configuring-dns-forwarding-for-azure-files"></a>DNS-továbbítás konfigurálása az Azure Fileshoz
 Azure Files lehetővé teszi, hogy saját végpontokat hozzon létre a fájlmegosztást tartalmazó Storage-fiókok számára. Bár számos különböző alkalmazás esetében hasznos, a privát végpontok különösen hasznosak az Azure-fájlmegosztás helyszíni hálózatról VPN-vagy ExpressRoute-kapcsolattal való összekapcsolásához. 
@@ -110,7 +110,7 @@ New-AzDnsForwarder `
 
 Emellett hasznos/szükséges lehet a további paraméterek biztosításához:
 
-| Paraméter neve | Típus | Leírás |
+| Paraméter neve | Típus | Description |
 |----------------|------|-------------|
 | `DnsServerResourceGroupName` | `string` | Alapértelmezés szerint a DNS-kiszolgálók a virtuális hálózattal megegyező erőforráscsoporthoz lesznek telepítve. Ha ez nem megfelelő, ez a paraméter lehetővé teszi, hogy kiválasszon egy másik erőforráscsoportot, amelybe telepíteni kívánja őket. |
 | `DnsForwarderRootName` | `string` | Alapértelmezés szerint az Azure-ban üzembe helyezett DNS-kiszolgálóknak vannak a nevei `DnsFwder-*` , ahol a csillagot egy iteráció tölti ki. Ez a paraméter megváltoztatja a név gyökerét (azaz `DnsFwder` ). |
@@ -151,7 +151,7 @@ Ha már beállított egy VPN-vagy ExpressRoute-kapcsolat használatát, azt is m
 Test-NetConnection -ComputerName storageaccount.file.core.windows.net -CommonTCPPort SMB
 ```
 
-## <a name="see-also"></a>További információ
-- [Az Azure Files üzembe helyezésének megtervezése](storage-files-planning.md)
+## <a name="see-also"></a>Lásd még
+- [Azure Files üzembe helyezésének tervezése](storage-files-planning.md)
 - [Azure Files hálózati megfontolások](storage-files-networking-overview.md)
 - [Azure Files hálózati végpontok konfigurálása](storage-files-networking-endpoints.md)

@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: c5c9ad8be8bd4cd834b01a0c67e0bbc81b8cdd4a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a17ed0f13e352fb185d20d9dc2d7bfffa74ac957
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68881885"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334769"
 ---
 # <a name="using-the-bing-spell-check-api"></a>A Bing Spell Check API használata
 
@@ -40,11 +40,11 @@ A `Spell` agresszívabb, hogy jobb keresési eredményeket adhasson. A `Spell` m
 > * A maximális támogatott lekérdezési hossz alább látható. Ha a lekérdezés túllépi a maximális hosszúságot, a lekérdezés és annak eredménye nem módosul.
 >    * 130 karakter a következő nyelvi kódokhoz: en, de, es, fr, pl, PT, SV, ru, NL, NB, TR-TR, it, ZH, ko. 
 >    * 65 karakter az összes többinél.
-> * A helyesírási mód nem támogatja a szögletes zárójel`[` karaktereit `]`(és) a lekérdezésekben, és inkonzisztens eredményeket eredményezhet. Javasoljuk, hogy a spell mód használatakor távolítsa el őket a lekérdezésből.
+> * A helyesírási mód nem támogatja a szögletes zárójel karaktereit ( `[` és `]` ) a lekérdezésekben, és inkonzisztens eredményeket eredményezhet. Javasoljuk, hogy a spell mód használatakor távolítsa el őket a lekérdezésből.
 
 ## <a name="market-setting"></a>Piac beállítása
 
-A kérésben a `mkt` lekérdezési paraméterrel meg kell adni egy [piaci kódot](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#market-codes) . Az API egyébként a kérelem IP-címe alapján az alapértelmezett piacot fogja használni.
+A kérésben a lekérdezési paraméterrel meg kell adni egy [piaci kódot](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#market-codes) `mkt` . Az API egyébként a kérelem IP-címe alapján az alapértelmezett piacot fogja használni.
 
 
 ## <a name="http-post-and-get-support"></a>HTTP-POST és támogatás KÉRÉSe
@@ -120,7 +120,7 @@ Ha a `type` mező RepeatedToken, továbbra is kicserélheti a tokent a `suggesti
 
 [!INCLUDE [cognitive-services-bing-throttling-requests](../../../../includes/cognitive-services-bing-throttling-requests.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Mi a Bing Spell Check API?](../overview.md)
 - [A Bing Spell Check API 7-es verzió referenciája](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

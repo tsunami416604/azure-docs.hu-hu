@@ -1,6 +1,6 @@
 ---
 title: Azure virtuálisgép-bővítmények és-funkciók Linux rendszerhez
-description: Ismerje meg, hogy mely bővítmények érhetők el az Azure Virtual Machines szolgáltatásban, az általuk biztosított vagy a fejlesztésük szerint csoportosítva.
+description: Ismerje meg, hogy milyen bővítmények érhetők el a Linux rendszerű Azure-beli virtuális gépekhez, az általuk biztosított vagy a fejlesztésük szerint csoportosítva.
 services: virtual-machines-linux
 documentationcenter: ''
 author: axayjo
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
-ms.openlocfilehash: bc29a62f469b0b9d091fcdef2488afba764a09fe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b61bbacf889df23455266fb81124e14ef44388d2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080352"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336122"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Virtuálisgép-bővítmények és-funkciók Linux rendszerhez
 
@@ -231,7 +231,7 @@ A kiadók különböző időpontokban teszik elérhetővé a frissítéseket a r
 
 #### <a name="agent-updates"></a>Ügynök frissítései
 
-A Linux rendszerű virtuális gép ügynöke egy csomagban található *kiépítési ügynök kódját* és a *bővítmények kezelésére szolgáló kódot* tartalmaz, amely nem választható el egymástól. Ha a Cloud-init használatával szeretné kiépíteni az Azure-t, letilthatja a *kiépítési ügynököt* . Ehhez lásd: [a Cloud-init használata](../linux/using-cloud-init.md).
+A Linux rendszerű virtuális gép ügynöke egy csomagban található *kiépítési ügynök kódját* és a *bővítmények kezelésére szolgáló kódot*  tartalmaz, amely nem választható el egymástól. Ha a Cloud-init használatával szeretné kiépíteni az Azure-t, letilthatja a *kiépítési ügynököt* . Ehhez lásd: [a Cloud-init használata](../linux/using-cloud-init.md).
 
 Az ügynökök támogatott verziói az automatikus frissítéseket használhatják. Az egyetlen módosítható kód a *bővítmények kezelési*kódja, nem pedig a kiépítési kód. A *kiépítési ügynök kódja* egyszeri futtatású kód.
 
@@ -410,6 +410,6 @@ A bővítményeket a következőképpen is eltávolíthatja a Azure Portalban:
 | Azure Diagnostics bővítmény |Azure Diagnostics kezelése |[Azure Diagnostics bővítmény](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/) |
 | Azure VM-hozzáférési bővítmény |Felhasználók és hitelesítő adatok kezelése |[VM-hozzáférési bővítmény Linux rendszerhez](https://azure.microsoft.com/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/) |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a virtuálisgép-bővítményekről: [Azure-beli virtuális gépek bővítményei és funkcióinak áttekintése](overview.md).

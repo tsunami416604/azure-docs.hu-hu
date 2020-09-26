@@ -8,14 +8,17 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 231d1efa02ec80e8ad56a8895d4262d774480111
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ae0e18a2dfbce52e50b4a8b58d478a46dff12922
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73824099"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282102"
 ---
 # <a name="deploying-dependencies-for-local-development"></a>Függőségek üzembe helyezése helyi fejlesztéshez
+
+> [!IMPORTANT]
+> A cikk frissítését követően tekintse meg az [Azure Industrial IoT](https://azure.github.io/Industrial-IoT/) a legfrissebb tartalomhoz című cikket.
 
 Ez a cikk azt ismerteti, hogyan helyezhető üzembe csak a helyi fejlesztéshez és hibakereséshez szükséges Azure platform-szolgáltatások.   A végén egy olyan erőforráscsoport lesz telepítve, amely a helyi fejlesztéshez és a hibakereséshez szükséges mindent tartalmaz.
 
@@ -32,7 +35,7 @@ Ez a cikk azt ismerteti, hogyan helyezhető üzembe csak a helyi fejlesztéshez 
    deploy -type local
    ```
 
-2. Az utasításokat követve rendeljen hozzá egy nevet az erőforráscsoporthoz az üzemelő példányhoz.  A parancsfájl csak az Azure-előfizetésében lévő ezen erőforráscsoport függőségeit telepíti, a Micro Services azonban nem.  A parancsfájl Azure Active Directoryban is regisztrál egy alkalmazást.  Erre azért van szükség, hogy támogassa a OAUTH-alapú hitelesítést.  Az üzembe helyezés több percet is igénybe vehet.
+2. Az utasításokat követve rendeljen hozzá egy nevet az erőforráscsoporthoz az üzemelő példányhoz.  A parancsfájl csak az Azure-előfizetésében lévő ezen erőforráscsoport függőségeit telepíti, a Micro Services azonban nem.  A parancsfájl egy alkalmazást is regisztrál az Azure AD-ben.  Erre azért van szükség, hogy támogassa a OAUTH-alapú hitelesítést.  Az üzembe helyezés több percet is igénybe vehet.
 
 3. A parancsfájl befejeződése után kiválaszthatja a. env fájl mentését.  A. env környezeti fájl a fejlesztői gépen futtatni kívánt összes szolgáltatás és eszköz konfigurációs fájlja.  
 
@@ -42,15 +45,15 @@ Ez a cikk azt ismerteti, hogyan helyezhető üzembe csak a helyi fejlesztéshez 
 
 Győződjön meg arról, hogy rövid és egyszerű erőforráscsoport-nevet használ.  A nevet az erőforrások elnevezésére is használni kell, mert meg kell felelnie az erőforrás-elnevezési követelményeknek.  
 
-### <a name="azure-active-directory-aad-registration"></a>Azure Active Directory (HRE) regisztráció
+### <a name="azure-active-directory-ad-registration"></a>Azure Active Directory (AD) regisztráció
 
-Az üzembe helyezési parancsfájl megpróbálja regisztrálni a HRE-alkalmazásokat a Azure Active Directoryban.  A kiválasztott HRE-bérlő jogaitól függően ez sikertelen lehet.   Három beállítás érhető el:
+Az üzembe helyezési parancsfájl megkísérli az Azure ad-alkalmazások regisztrálását az Azure AD-ben.  A kiválasztott Azure AD-bérlőre vonatkozó jogaitól függően ez sikertelen lehet. Három beállítás érhető el:
 
-1. Ha a bérlők listájából választ egy HRE-bérlőt, indítsa újra a szkriptet, és válasszon egy másikat a listából.
-2. Másik megoldásként helyezzen üzembe egy privát HRE-bérlőt, indítsa újra a parancsfájlt, és válassza ki a használatát.
+1. Ha az Azure AD-bérlőt választotta a bérlők listájáról, indítsa újra a szkriptet, és válasszon egy másikat a listából.
+2. Másik megoldásként helyezzen üzembe egy privát Azure AD-bérlőt, indítsa újra a szkriptet, és válassza ki a használatát.
 3. Folytatás hitelesítés nélkül.  Mivel a Micro Services helyileg fut, ez elfogadható, de nem utánozza az éles környezeteket.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy sikeresen telepítette az OPC Twin-szolgáltatásokat egy meglévő projektbe, itt látható a következő lépés:
 

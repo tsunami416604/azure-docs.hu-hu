@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 08/17/2020
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 80bb59527f416afd78b992fb12a4ef72956f91b7
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: c5dd703851054b058d96440a3a994b9d10eecfa3
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587225"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372663"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Az Azure Functions méretezése és üzemeltetése
 
@@ -34,7 +34,7 @@ A különböző üzemeltetési csomagok (beleértve a Kubernetes-alapú üzemelt
 
 A használati terv használatakor a rendszer a Azure Functions gazdagép példányait dinamikusan hozzáadja és eltávolítja a bejövő események száma alapján. Ezek a kiszolgáló nélküli csomagok automatikusan méreteznek, és csak akkor kell fizetni a számítási erőforrásokért, amikor a függvények futnak. Használatalapú csomag esetében egy függvény végrehajtása túllépi a konfigurált időkorlátot.
 
-A számlázás a végrehajtások száma, a végrehajtási idő és a felhasznált memória alapján történik. A számlázási folyamat a függvényalkalmazás összes függvényét figyelembe veszi. További információkért tekintse meg a [Azure functions díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/functions/).
+A számlázás a végrehajtások száma, a végrehajtási idő és a felhasznált memória alapján történik. A használat a Function alkalmazás összes függvényében összesíthető. További információkért tekintse meg a [Azure functions díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/functions/).
 
 A felhasználási terv az alapértelmezett üzemeltetési csomag, amely a következő előnyöket kínálja:
 
@@ -58,7 +58,7 @@ A Prémium csomag használatakor a rendszer a Azure Functions gazdagép példán
 
 A következő témakörben megtudhatja, hogyan hozhat létre egy Function-alkalmazást egy prémium csomagban: [Azure functions Prémium csomag](functions-premium-plan.md).
 
-A számlázás és a felhasznált memória helyett a Prémium csomag számlázása a szükséges és az előre bemelegített példányok által használt fő másodpercek és memória számától függ. Legalább egy példánynak minden esetben melegnek kell lennie. Ez azt jelenti, hogy a végrehajtások számától függetlenül az aktív csomagokra vonatkozó minimális havi költségnek kell lennie. Ne feledje, hogy a prémium szintű csomag összes funkciója előre bemelegítő és aktív példányokat oszt meg.
+A számlázás és a felhasznált memória helyett a Prémium csomag számlázása a különböző példányok által lefoglalt fő másodpercek és memória számától függ.  A Prémium csomag esetében nincs végrehajtási díj. Legalább egy példányt le kell osztani a csomag minden időpontjában. Ez az aktív csomagokra vonatkozó minimális havi költséget eredményezi, függetlenül attól, hogy a függvény aktív vagy üresjáratban van-e. Vegye figyelembe, hogy a prémium szintű csomag összes funkciója a lefoglalt példányok megosztására szolgál.
 
 Vegye figyelembe a Azure Functions prémium csomagot a következő helyzetekben:
 
@@ -79,12 +79,12 @@ A következő helyzetekben vegye fontolóra App Service tervet:
 
 Ugyanezt a funkciót a App Service csomagban lévő Function apps esetében is megfizeti, mint más App Service-erőforrásokhoz, például a webalkalmazásokhoz. Az App Service-csomag működésével kapcsolatos részletekért tekintse [meg a Azure app Service tervek részletes áttekintését](../app-service/overview-hosting-plans.md).
 
-App Service csomaggal a további virtuálisgép-példányok hozzáadásával manuálisan is felskálázást hajthat végre. Az autoscale is engedélyezhető. További információ: a [Példányszám manuális vagy automatikus skálázása](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json). Egy másik App Service terv kiválasztásával is méretezhető. További információ: alkalmazás vertikális [Felskálázása az Azure-ban](../app-service/manage-scale-up.md). 
+App Service-csomag használata esetén a további virtuálisgép-példányok hozzáadásával manuálisan is felskálázást hajthat végre. Emellett engedélyezheti az autoscale méretezést is, bár a prémium szintű csomag rugalmas skálázása lassabban történik. További információ: a [Példányszám manuális vagy automatikus skálázása](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json). Egy másik App Service terv kiválasztásával is méretezhető. További információ: alkalmazás vertikális [Felskálázása az Azure-ban](../app-service/manage-scale-up.md). 
 
 Ha a JavaScript-függvényeket App Service csomagon futtatja, olyan csomagot válasszon, amelynek kevesebb vCPU van. További információ: [Choose Single-core app Service Plans](functions-reference-node.md#choose-single-vcpu-app-service-plans). 
 <!-- Note: the portal links to this section via fwlink https://go.microsoft.com/fwlink/?linkid=830855 --> 
 
-A [app Service Environment](../app-service/environment/intro.md) (bevezetéssel) való futtatása lehetővé teszi a függvények teljes elkülönítését és a nagy léptékű előnyök kihasználását.
+A [app Service Environment](../app-service/environment/intro.md) (bevezetéssel) való futtatása lehetővé teszi a függvények teljes elkülönítését és a app Service csomagnál nagyobb számú példány kihasználása érdekében.
 
 ### <a name="always-on"></a><a name="always-on"></a> Always on
 
@@ -121,6 +121,12 @@ Több Function-alkalmazás is lehetséges, hogy problémák nélkül megoszthatj
 <!-- JH: Does using a Premium Storage account improve perf? -->
 
 További információ a Storage-fiókok típusairól: [Az Azure Storage szolgáltatásainak bemutatása](../storage/common/storage-introduction.md#core-storage-services).
+
+### <a name="in-region-data-residency"></a>Régióbeli adattárolás
+
+Ha az összes ügyfél-adathoz szükség van, hogy egyetlen régióban maradjon, a Function alkalmazáshoz társított Storage-fióknak a [régióban redundancia](../storage/common/storage-redundancy.md)kell lennie.  Az [Azure Durable functions](./durable/durable-functions-perf-and-scale.md#storage-account-selection) for Durable functions esetében is használni kell a régión belüli redundáns Storage-fiókot.
+
+A platform által felügyelt ügyféladatokat csak a régión belül kell tárolni, ha belső Load Balancer App Service Environment (vagy ILB-t) üzemeltet.  A részletek a következő címen találhatók: a bemutató [zóna redundancia](../app-service/environment/zone-redundancy.md#in-region-data-residency).
 
 ## <a name="how-the-consumption-and-premium-plans-work"></a>A használatalapú és a prémium szintű csomag működése
 
@@ -185,7 +191,7 @@ Az alábbi összehasonlító táblázat a Azure Functions app üzemeltetési cso
 |**[Használatalapú csomag](#consumption-plan)**| Automatikusan méretezhető, és csak a számítási erőforrásokért kell fizetnie, ha a függvények futnak. A használati terv a függvények gazdagépének példányait dinamikusan hozzáadja és eltávolítja a bejövő események száma alapján.<br/> ✔ Alapértelmezett üzemeltetési csomag.<br/>A ✔ csak akkor kell fizetnie, ha a függvények futnak.<br/>a ✔ automatikusan kibővíthető, akár nagy terhelésű időszakok esetén is.|  
 |**[Prémium szintű csomag](#premium-plan)**|Míg az automatikus skálázás igény szerint történik, az előre betöltött feldolgozók az üresjárat után késedelem nélkül futtathatják az alkalmazásokat, és a virtuális hálózatok-hez csatlakoznak. Vegye figyelembe a Azure Functions prémium csomagot az alábbi helyzetekben, a App Service-csomag összes funkciója mellett: <br/>✔ A Function apps folyamatosan, vagy majdnem folyamatosan fut.<br/>✔ Nagy mennyiségű kis végrehajtással rendelkezik, és magas végrehajtási számlával rendelkezik, de a használati terv alacsony GB-os, második számlával rendelkezik.<br/>✔ Több CPU-vagy memória-beállításra van szüksége, mint amit a használati terv biztosít.<br/>✔ A kódnak hosszabb ideig kell futnia, mint a felhasználási tervben engedélyezett maximális végrehajtási idő.<br/>✔ Olyan funkciókat kell megkövetelni, amelyek csak prémium csomagon, például virtuális hálózati kapcsolaton keresztül érhetők el.|  
 |**[Dedikált](#app-service-plan)**<sup>1</sup> . csomag|A függvényeket egy App Service csomagon belül futtathatja normál App Service csomag díjszabásával. Jó illeszkedés a hosszú ideig futó műveletekhez, valamint a prediktív skálázás és a költségek kiszámításához. A következő helyzetekben vegye fontolóra App Service tervet:<br/>✔ Rendelkezik olyan meglévő, nem használt virtuális gépekkel, amelyek már futtatnak más App Service példányokat.<br/>✔ Szeretné megadni a függvények futtatására szolgáló egyéni rendszerképet.|  
-|**[ASE](#app-service-plan)**<sup>1</sup> . kiegészítő|A App Service Environment (benyújtó) egy App Service funkció, amely teljesen elkülönített és dedikált környezetet biztosít a App Service alkalmazások biztonságos, nagy léptékű futtatásához. A ASE megfelelőek a következőket igénylő alkalmazás-munkaterhelésekhez: <br/>✔ Nagyon nagy léptékű.<br/>✔ Elkülönítés és biztonságos hálózati hozzáférés.<br/>✔ A nagy memória kihasználtsága.|  
+|**[ASE](#app-service-plan)**<sup>1</sup> . kiegészítő|A App Service Environment (benyújtó) egy App Service funkció, amely teljesen elkülönített és dedikált környezetet biztosít a App Service alkalmazások biztonságos, nagy léptékű futtatásához. A ASE megfelelőek a következőket igénylő alkalmazás-munkaterhelésekhez: <br/>✔ Nagyon nagy léptékű.<br/>✔ A teljes számítási elkülönítést és a hálózati hozzáférés biztonságos elérését.<br/>✔ A nagy memória kihasználtsága.|  
 | **[Kubernetes](functions-kubernetes-keda.md)** | A Kubernetes egy teljesen elkülönített és dedikált környezetet biztosít, amely a Kubernetes platformon fut.  A Kubernetes a következőket igénylő alkalmazás-munkaterhelések esetén megfelelő: <br/>✔ Egyéni hardverkövetelmények.<br/>✔ Elkülönítés és biztonságos hálózati hozzáférés.<br/>✔ Lehetőség hibrid vagy többfelhős környezetben való futtatásra.<br/>✔ Fut a meglévő Kubernetes-alkalmazások és-szolgáltatások mellett.|  
 
 <sup>1</sup> a különböző app Service-csomagokra vonatkozó beállításokra vonatkozó meghatározott korlátokat a [app Service csomag korlátai](../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits)című részben tekintheti meg.
@@ -249,7 +255,7 @@ Az alábbi összehasonlító táblázat a Azure Functions app üzemeltetési cso
 
 <sup>1</sup> a különböző app Service-csomagokra vonatkozó beállításokra vonatkozó meghatározott korlátokat a [app Service csomag korlátai](../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits)című részben tekintheti meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 + [Gyors útmutató: Azure Functions projekt létrehozása a Visual Studio Code használatával](functions-create-first-function-vs-code.md)
 + [Üzembe helyezési technológiák Azure Functions](functions-deployment-technologies.md) 

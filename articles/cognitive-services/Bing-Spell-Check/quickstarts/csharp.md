@@ -1,7 +1,7 @@
 ---
 title: 'Gyors útmutató: helyesírás ellenőrzése a REST API és C#-Bing Spell Check'
 titleSuffix: Azure Cognitive Services
-description: Az Bing Spell Check REST API használatának első lépései a helyesírás és a nyelvtan ellenőrzéséhez.
+description: Az Bing Spell Check REST API és a C# használatának első lépései a helyesírás és a nyelvtan ellenőrzéséhez.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/21/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: df77ea73338f37925c0b59a8838c31617ff22ad8
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: d11430ab02b37d066fb74dcc1b67833577471fd3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88919403"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323041"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-c"></a>Gyors útmutató: helyesírás ellenőrzése a Bing Spell Check REST API és C #
 
@@ -194,7 +194,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Egyoldalas webalkalmazás létrehozása](../tutorials/spellcheck.md)

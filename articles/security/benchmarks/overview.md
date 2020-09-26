@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 2be5df88a665c800f55f773b2470cc095fa27b2b
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: fb6813875858ab6cc438df5abb78a75391adfeac
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90058682"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280657"
 ---
-# <a name="overview-of-the-azure-security-benchmark"></a>Az Azure biztonsági teljesítményteszt áttekintése
+# <a name="overview-of-the-azure-security-benchmark-v2"></a>Az Azure biztonsági teljesítményteszt áttekintése (v2)
 
 Az Azure Security benchmark (ASB) az Azure-ban a munkaterhelések, az adatok és a szolgáltatások biztonságának javítását segítő ajánlott eljárásokat és javaslatokat tartalmaz.
 
@@ -24,10 +24,11 @@ Ez a teljesítményteszt egy átfogó biztonsági útmutató részét képezi, a
 - **Felhőalapú bevezetési keretrendszer** – útmutatás a biztonsághoz, beleértve a [stratégiát](/azure/cloud-adoption-framework/strategy/define-security-strategy), a [szerepköröket és a felelősségeket](/azure/cloud-adoption-framework/organize/cloud-security), az [Azure Top 10 ajánlott biztonsági eljárásait](/azure/cloud-adoption-framework/get-started/security#step-1-establish-essential-security-practices)és a [hivatkozások megvalósítását](/azure/cloud-adoption-framework/ready/enterprise-scale/).
 - **Azure-** beli, jól összeállítható keretrendszer – útmutató az Azure-beli számítási [feladatok biztonságossá](https://docs.microsoft.com/assessments/?mode=pre-assessment&session=local) tételéhez.
 - **Microsoft Security – ajánlott eljárások** – az Azure-beli példákkal. [recommendations](/security/compass/microsoft-security-compass-introduction)
+
  Az Azure biztonsági teljesítményteszt a felhő-központú ellenőrzési területekre koncentrál. Ezek a vezérlők összhangban vannak a jól ismert biztonsági referenciaértékekkel, például a Center for Internet Security (CIS) vezérli az 7,1-es és a National Institute of Standards and Technology (NIST) SP800 – 53-as verzióját.
 Az Azure biztonsági teljesítményteszt a következő vezérlőket tartalmazza:
 
-| ASB-vezérlési tartományok | Description 
+| ASB-vezérlési tartományok | Leírás 
 |--|--|
 | [Hálózati biztonság (NS)](security-controls-v2-network-security.md) | A hálózati biztonság magában foglalja az Azure-hálózatok biztonságossá tételének és védelmének, beleértve a virtuális hálózatok biztonságossá tételét, a magánhálózati kapcsolatok létrehozását, a külső támadások megelőzését és enyhítését, valamint a DNS biztonságossá tételét. |
 | [Identitáskezelés (IM)](security-controls-v2-identity-management.md) | Az Identitáskezelés kiterjed a biztonságos identitás-és hozzáférés-vezérlések létrehozására Azure Active Directory használatával, beleértve az egyszeri bejelentkezést, az erős hitelesítéseket, a felügyelt identitásokat (és a szolgáltatási alapelveket) az alkalmazásokhoz, a feltételes hozzáféréshez és a fiókok rendellenességének figyeléséhez. |
@@ -52,7 +53,7 @@ Minden javaslat a következő információkat tartalmazza:
 - **NIST SP800-53 R4-azonosító (k)**: az ehhez a javaslathoz tartozó NIST SP800-53 R4 (mérsékelt) vezérlő (k).
 - **Részletek**: a javaslat indoklása és a megvalósításával kapcsolatos útmutatásra mutató hivatkozások. Ha Azure Security Center támogatja az ajánlást, a rendszer ezeket az információkat is felsorolja.
 - **Felelősség**: a javaslat végrehajtásáért az ügyfél, a szolgáltató vagy mindkettő felelős. A biztonsági kötelezettségek a nyilvános felhőben vannak megosztva. Bizonyos biztonsági vezérlők csak a felhőalapú szolgáltató számára érhetők el, ezért a szolgáltató felelős az ilyen problémák kezeléséhez. Ezek általános megfigyelések – egyes szolgáltatások esetében a felelősség nem fog megjelenni az Azure biztonsági Teljesítménytesztben felsoroltak közül. Ezeket a különbségeket az egyes szolgáltatásokra vonatkozó alapkövetelmények írják le.
-- **Ügyfelek biztonsági résztvevői**: az ügyfél szervezetének azon biztonsági funkciói, akik felelősséggel vonhatók, felelősek vagy megtekinthetők a megfelelő felügyelethez. A vállalat biztonsági szervezetének struktúrájától, illetve az Azure-biztonsággal kapcsolatos szerepköröktől és felelősségtől függően a szervezettől eltérő lehet.
+- **Ügyfelek biztonsági résztvevői**: az ügyfél szervezetének azon [biztonsági funkciói](/azure/cloud-adoption-framework/organize/cloud-security#security-functions) , akik felelősséggel vonhatók, felelősek vagy megtekinthetők a megfelelő felügyelethez. A vállalat biztonsági szervezetének struktúrájától, illetve az Azure-biztonsággal kapcsolatos szerepköröktől és felelősségtől függően a szervezettől eltérő lehet.
 
 > [!NOTE]
 > A ASB és az iparági referenciaértékek (például a NIST és a CIS) közötti vezérlési leképezések csak azt jelzik, hogy egy adott Azure-szolgáltatás teljes mértékben vagy részben a NIST-ben vagy a CIS-ben meghatározott ellenőrzési követelményt is felhasználható. Tisztában kell lennie azzal, hogy az ilyen implementáció nem feltétlenül a VIR-ben vagy a NIST-ben lévő megfelelő ellenőrzés teljes megfelelőségét jelenti.

@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, divswa, logicappspm
 ms.topic: article
 ms.date: 04/22/2020
-ms.openlocfilehash: c32b3ee5c4689e960834d543de1ca377e918751d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b36641677dbf36402c7f578b9b1887c52f441afd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82106287"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322478"
 ---
 # <a name="decode-edifact-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Azure Logic Apps EDIFACT-üzeneteinek dekódolása a Enterprise Integration Pack
 
@@ -84,13 +84,13 @@ A dekódolási EDIFACT-összekötő a következő feladatokat hajtja végre:
   * Ellenőrzi a tranzakciónapló-vezérlő számát az adott csoportban lévő más tranzakciónapló-vezérlők számával.
 * Feldarabolja a csomópontot a tranzakciós készletekbe, vagy megőrzi a teljes adatcsomópontot:
   * Csomópont felosztása tranzakciónaplóként – a tranzakciók felfüggesztése a következő hiba miatt: felosztás tranzakciós készletekre, és az egyes tranzakciótípusok elemzése. 
-  A X12-dekódolási művelet csak azokat a tranzakciónaplókat jeleníti meg, amelyek nem tudják érvényesíteni az ellenőrzést `badMessages` , és a fennmaradó tranzakciókat a következőre küldi: `goodMessages` .
+  A EDIFACT-dekódolási művelet csak azokat a tranzakciónaplókat jeleníti meg, amelyek nem tudják érvényesíteni az ellenőrzést `badMessages` , és a fennmaradó tranzakciókat a következőre küldi: `goodMessages` .
   * Csomópont felosztása tranzakciótípusokként – adatcsere felfüggesztése a következő hiba miatt: a rendszer elosztja a csomópontot a tranzakciónaplók között, és elemzi az egyes tranzakciós készleteket. 
-  Ha a csomópont egy vagy több tranzakciójának ellenőrzése sikertelen, a X12 dekódolása művelet a csomóponton lévő összes tranzakciós készletet kiírja a következőre: `badMessages` .
+  Ha a csomópont egy vagy több tranzakciójának ellenőrzése sikertelen, a EDIFACT dekódolása művelet a csomóponton lévő összes tranzakciós készletet kiírja a következőre: `badMessages` .
   * Adatcsere megőrzése – tranzakciók felfüggesztése hiba esetén: őrizze meg a cserét, és dolgozza fel a teljes batchd-adatcserét. 
-  A X12-dekódolási művelet csak azokat a tranzakciónaplókat jeleníti meg, amelyek nem tudják érvényesíteni az ellenőrzést `badMessages` , és a fennmaradó tranzakciókat a következőre küldi: `goodMessages` .
+  A EDIFACT-dekódolási művelet csak azokat a tranzakciónaplókat jeleníti meg, amelyek nem tudják érvényesíteni az ellenőrzést `badMessages` , és a fennmaradó tranzakciókat a következőre küldi: `goodMessages` .
   * Adatcsere megőrzése – az adatcsere felfüggesztése hiba esetén: őrizze meg a cserét, és dolgozza fel a teljes batchd-adatcserét. 
-  Ha a csomópont egy vagy több tranzakciójának ellenőrzése sikertelen, a X12 dekódolása művelet a csomóponton lévő összes tranzakciós készletet kiírja a következőre: `badMessages` .
+  Ha a csomópont egy vagy több tranzakciójának ellenőrzése sikertelen, a EDIFACT dekódolása művelet a csomóponton lévő összes tranzakciós készletet kiírja a következőre: `badMessages` .
 * Létrehoz egy technikai (vezérlő) és/vagy funkcionális visszaigazolást (ha be van állítva).
   * A technikai nyugtázás vagy a CONTRL ACK a teljes fogadott adatcsere szintaktikai vizsgálatának eredményét jelenti.
   * A funkcionális nyugták elfogadják vagy elutasítja a fogadott adatcserét vagy csoportot
@@ -98,6 +98,6 @@ A dekódolási EDIFACT-összekötő a következő feladatokat hajtja végre:
 ## <a name="view-swagger-file"></a>Hencegő fájl megtekintése
 A EDIFACT-összekötőhöz tartozó felvágási részletek megtekintéséhez lásd: [EDIFACT](/connectors/edifact/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [További információ a Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md "Tudnivalók a Enterprise Integration Pack") 
 

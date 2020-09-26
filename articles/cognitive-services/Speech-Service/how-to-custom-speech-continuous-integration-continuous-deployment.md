@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/09/2020
 ms.author: kaprochi
-ms.openlocfilehash: 463f5d5360e19fdd7f49139aea4c6dc65baf903c
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 46bdc314e7aa0002937e808d7982f43c8e725d6f
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85081189"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91357471"
 ---
-# <a name="cicd-for-custom-speech"></a>CI/CD Custom Speech
+# <a name="cicd-for-custom-speech"></a>CI/CD a Custom Speechhez
 
 Az automatizált betanítási, tesztelési és kiadási felügyelet megvalósítása lehetővé teszi a Custom Speech-modellek folyamatos fejlesztését, miközben a frissítéseket alkalmazza a képzési és tesztelési célokra. A CI/CD-munkafolyamatok hatékony megvalósításával gondoskodhat arról, hogy a legjobb teljesítményű Custom Speech modell végpontja mindig elérhető legyen.
 
@@ -74,7 +74,7 @@ A legtöbb csapatnak manuális felülvizsgálati és jóváhagyási folyamatra v
 A következő eszközök használhatók a Custom Speech CI/CD Automation munkafolyamataihoz:
 
 - Azure [CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) az Azure-szolgáltatás egyszerű hitelesítésének létrehozásához, az Azure-előfizetések lekérdezéséhez és a tesztelési eredmények tárolásához az Azure blobban.
-- Az [Azure SPEECH CLI](https://github.com/msimecek/Azure-Speech-CLI) segítségével a parancssorból vagy egy automatizált munkafolyamatból dolgozhat a Speech szolgáltatással.
+- Az [Azure SPEECH CLI](spx-overview.md) segítségével a parancssorból vagy egy automatizált munkafolyamatból dolgozhat a Speech szolgáltatással.
 
 ## <a name="devops-solution-for-custom-speech-using-github-actions"></a>DevOps-megoldás a Custom Speech GitHub-műveletek használatával
 
@@ -88,7 +88,7 @@ A [beszédfelismerési DevOps-sablon](https://github.com/Azure-Samples/Speech-Se
 - Automatizált pontossági tesztelést végezhet a modell [Word-hibák arányának](how-to-custom-speech-evaluate-data.md#what-is-word-error-rate-wer) (WER) létrehozásához. A teszt eredményeinek tárolása az Azure blobban.
 - Futtassa a CD-munkafolyamatot, és hozzon létre egy végpontot, amikor a WER fejleszti.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a DevOps és a Speech:
 

@@ -3,12 +3,12 @@ title: Folyamatos videofelvétel a felhőbe és a lejátszás a Felhőbeli oktat
 description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure Live Video Analytics szolgáltatást Azure IoT Edgeon, hogy folyamatosan rögzítsen videókat a felhőbe, és a videó bármely részét továbbítsa a Azure Media Services használatával.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: c94f87068d003fc260d861cb99c60326d4a53258
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: a5cb857dcd5f457a68b947d2ece5d78c158e78f0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89566796"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336479"
 ---
 # <a name="tutorial-continuous-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Oktatóanyag: folyamatos videofelvétel a felhőbe és a felhőből való lejátszás
 
@@ -131,7 +131,7 @@ Ezután keresse meg a src/Cloud-to-Device-Console-app mappát. Itt láthatja a a
 
 Az üzembe helyezési jegyzék meghatározza, hogy milyen modulok vannak üzembe helyezve egy peremhálózati eszközön és a modulok konfigurációs beállításaiban. Kövesse az alábbi lépéseket egy jegyzékfájl létrehozásához a sablonból, majd telepítse azt a peremhálózati eszközre.
 
-1. A Visual Studio Code elindítása.
+1. Indítsa el a Visual Studio Code-ot.
 1. Állítsa be a IoT Hub a kapcsolódási karakterláncot a bal alsó sarokban található **Azure IOT hub** panel melletti **További műveletek** ikonra kattintva. Másolja a karakterláncot a src/Cloud-to-Device-Console-app/appsettings.jsfájlból. 
 
     ![IoT Hub-kapcsolatok karakterláncának beállítása](./media/quickstarts/set-iotconnection-string.png)
@@ -164,7 +164,7 @@ Ha a Live Video Analytics szolgáltatást használja IoT Edge modulban az élő 
 1. A **GraphTopologySet** csomópont alatt szerkessze a következőket:
 
     `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/cvr-asset/topology.json" `
-1. Ezután a **GraphInstanceSet** és az **GraphTopologyDelete** csomópont alatt ellenőrizze, hogy a **topologyName** értéke megegyezik-e az előző Graph-topológia **Name (név** ) tulajdonságának értékével:
+1. Ezután a **GraphInstanceSet** csomópont alatt ellenőrizze, hogy a **topologyName** értéke megegyezik-e az előző gráf-topológia **Name (név** ) tulajdonságának értékével:
 
     `"topologyName" : "CVRToAMSAsset"`  
 1. Nyissa meg a [topológiát](https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/cvr-asset/topology.json) egy böngészőben, és tekintse meg a következőt: assetNamePattern. Annak érdekében, hogy rendelkezzen egy egyedi névvel rendelkező eszközzel, érdemes lehet módosítani a Graph-példány nevét a fájl operations.jsjában (a minta-Graph-1 alapértelmezett értékről).
@@ -373,7 +373,7 @@ Megvizsgálhatja a Media Graph által létrehozott Media Services adategységet,
 
 Ha szeretné kipróbálni a többi oktatóanyagot, tartsa be a létrehozott erőforrásokat. Ellenkező esetben lépjen a Azure Portal, keresse meg az erőforráscsoportot, válassza ki azt az erőforráscsoportot, amelyben az oktatóanyagot futtatta, és törölje az erőforráscsoportot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Használjon olyan [IP-kamerát](https://en.wikipedia.org/wiki/IP_camera) , amely támogatja az RTSP-t az RTSP-szimulátor használata helyett. Az ONVIF-kompatibilis [termékek lapon](https://www.onvif.org/conformant-products/) megkeresheti az RTSP-támogatással rendelkező IP-kamerákat a G, S vagy T profiloknak megfelelő eszközök keresésével.
 * AMD64 vagy x64 Linux rendszerű eszköz használata (Azure Linux rendszerű virtuális gép használata). Az eszköznek ugyanabban a hálózaton kell lennie, mint az IP-kamerának. Kövesse a következő témakör utasításait: [Install Azure IoT Edge Runtime on Linux](../../iot-edge/how-to-install-iot-edge-linux.md). Ezután kövesse az [első IoT Edge modul üzembe helyezése virtuális Linux-eszközre című](../../iot-edge/quickstart-linux.md) rövid útmutatót az eszköz Azure IoT hub való regisztrálásához.

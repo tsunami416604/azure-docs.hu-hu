@@ -7,13 +7,13 @@ ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 56fbcc3950a739c4c9fc3df86468301e2e2ff4d8
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 1e8e1aa9d8e582644d1d625fc8a97cc0e0c790df
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421127"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334395"
 ---
 # <a name="javascript-query-api-in-azure-cosmos-db"></a>JavaScript lekérdezési API a Azure Cosmos DB
 
@@ -35,7 +35,7 @@ A Azure Cosmos DBban található SQL API-val végzett lekérdezések mellett a [
 A predikátum és/vagy választó függvények részét képező következő JavaScript-összeállítások automatikusan Azure Cosmos DB indexeken való futtatásra vannak optimalizálva:
 
 - Egyszerű operátorok `=` `+` `-` `*` `/` : `%` `|` `^` `&` `==` `!=` `===` `!===` `<` `>` `<=` `>=` `||` `&&` `<<` `>>` `>>>!``~`
-- Literálok, beleértve az objektum szövegkonstans-ját:{}
+- Literálok, beleértve az objektum szövegkonstans-ját: {}
 - var, visszatérés
 
 A következő JavaScript-szerkezetek nem optimalizáltak Azure Cosmos DB indexekhez:
@@ -50,7 +50,7 @@ További információ: [Cosmos db kiszolgálóoldali JavaScript-dokumentáció](
 Az alábbi táblázat különböző SQL-lekérdezéseket és a kapcsolódó JavaScript-lekérdezéseket ismerteti. Az SQL-lekérdezésekhez hasonlóan a tulajdonságok (például a item.id) is megkülönböztetik a kis-és nagybetűket.
 
 > [!NOTE]
-> `__`(dupla aláhúzás) `getContext().getCollection()` a JavaScript lekérdezési API használatakor használt alias.
+> `__` (dupla aláhúzás) `getContext().getCollection()` a JavaScript lekérdezési API használatakor használt alias.
 
 |**SQL**|**JavaScript lekérdezési API**|**Leírás**|
 |---|---|---|

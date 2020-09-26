@@ -8,14 +8,17 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: caa3717fdf915e205c1a4f82f4e199346ca29fcb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e95edf21b7d6dce29b31220533269439fac120e4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082810"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91281952"
 ---
 # <a name="use-the-opc-vault-certificate-management-service"></a>Az OPC Vault Certificate Management szolgáltatás használata
+
+> [!IMPORTANT]
+> A cikk frissítését követően tekintse meg az [Azure Industrial IoT](https://azure.github.io/Industrial-IoT/) a legfrissebb tartalomhoz című cikket.
 
 Ez a cikk azt ismerteti, hogyan regisztrálhat alkalmazásokat, és hogyan lehet aláírt alkalmazás-tanúsítványokat kibocsátani az OPC UA-eszközökhöz.
 
@@ -102,7 +105,7 @@ Most az OPC UA-eszköztől függ, hogyan alkalmazza az új tanúsítványt. A HI
 
 Az OPC UA-eszköz most már készen áll arra, hogy a CA által aláírt tanúsítványok által védett más OPC UA-eszközökkel tudjon kommunikálni további konfiguráció nélkül.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte az OPC UA-eszközök biztonságossá tételét, a következőket teheti:
 

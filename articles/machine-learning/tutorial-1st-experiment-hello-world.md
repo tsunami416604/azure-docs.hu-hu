@@ -1,7 +1,7 @@
 ---
-title: 'Oktatóanyag: ""Helló világ!"alkalmazás" Python-szkript futtatása'
+title: 'Oktatóanyag: a "Helló világ!" futtatása Python-szkript'
 titleSuffix: Azure Machine Learning
-description: Az Azure ML első lépések sorozatának 2. része azt mutatja be, hogyan lehet beküldeni egy triviális "Hello World" Python-szkriptet a felhőbe.
+description: A Azure Machine Learning Get-Started sorozat 2. része azt mutatja be, hogyan lehet beküldeni egy triviális "Helló világ!" Python-szkript a felhőbe.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,39 +11,38 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 52a9932db4fc261b8f3d740a316af3e852559a32
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 980347c658c65a0c08dfc50c08f50741fb9a00fd
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320489"
+ms.locfileid: "91372544"
 ---
-# <a name="tutorial-run-hello-world-python-script-part-2-of-4"></a>Oktatóanyag: ""Helló világ!"alkalmazás" Python-szkript futtatása (2. rész/4)
+# <a name="tutorial-run-a-hello-world-python-script-part-2-of-4"></a>Oktatóanyag: a "Helló világ!" futtatása Python-szkript (2. rész/4)
 
-Ebből az oktatóanyagból megtudhatja, hogyan küldhet és futtathat Python ""Helló világ!"alkalmazás" parancsfájlt a Azure Machine Learning Python SDK használatával.
+Ebből az oktatóanyagból megtudhatja, hogyan használhatja a Pythonhoz készült Azure Machine Learning SDK-t a "Hello World!" nevű Python beküldéséhez és futtatásához. parancsfájl.
 
-Ez az oktatóanyag **egy négy részből álló oktatóanyag-sorozat második része** , amelyben megismerheti a Azure Machine learning és az Azure-ban végzett feladatok-alapú gépi tanulási feladatok alapjait. Ez az oktatóanyag az oktatóanyag 1. részében kiépített munkából áll, [amely a helyi gépet Azure Machine learning számára állítja be](
-tutorial-1st-experiment-sdk-setup-local.md).
+Ez az oktatóanyag *egy négy részből álló oktatóanyag-Sorozat 2. része* , amelyben megismerheti a Azure Machine learning és az Azure-ban végzett feladatok-alapú gépi tanulási feladatok alapjait. Ez az oktatóanyag az [1. rész: a helyi gép beállítása Azure Machine Learninghoz című részben](tutorial-1st-experiment-sdk-setup-local.md)leírtak szerint épül fel.
 
-Ebben az oktatóanyagban a következőket fogja elsajátítani:
+Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
 > [!div class="checklist"]
-> * ""Helló világ!"alkalmazás" Python-szkript létrehozása és futtatása helyileg
-> * Hozzon létre egy Python-vezérlő parancsfájlt a "Hello World" beküldéséhez Azure Machine Learning
-> * A Azure Machine Learning fogalmak ismertetése a vezérlő parancsfájlban
-> * ""Helló világ!"alkalmazás" elküldése és futtatása
-> * A kód kimenetének megtekintése a felhőben
+> * Hozzon létre és futtasson egy "Helló világ!" Python-szkript helyileg.
+> * Hozzon létre egy Python-vezérlőt a "Helló világ!" elküldéséhez Azure Machine Learning.
+> * Ismerje meg a Azure Machine Learning fogalmakat a vezérlő parancsfájlban.
+> * A "Helló világ!" beküldése és futtatása parancsfájl.
+> * A kód kimenetének megtekintése a felhőben.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Ha még nem rendelkezik Azure Machine Learning munkaterülettel, fejezze be [az oktatóanyag 1. részét a helyi gép beállításához](tutorial-1st-experiment-sdk-setup-local.md) .
+- Az [1. rész](tutorial-1st-experiment-sdk-setup-local.md) befejezése, ha még nem rendelkezik Azure Machine learning munkaterülettel.
 - A Python nyelv és a gépi tanulási munkafolyamatok bevezető ismerete.
-- Helyi fejlesztési környezet. Ez magában foglalja a következőket: de nem korlátozódik a Visual Studio Code, a Jupyter vagy a Notebookshoz.
-- Python (3.5-3.7-es verzió).
+- Helyi fejlesztési környezet, mint például a Visual Studio Code, a Jupyter vagy a Notebookshoz.
+- Python (3,5-3,7-es verzió).
 
 ## <a name="create-and-run-a-python-script-locally"></a>Python-szkriptek helyi létrehozása és futtatása
 
-Hozzon létre egy új alkönyvtárat `src` a könyvtár alatt a `tutorial` Azure Machine learning számítási fürtön futtatni kívánt kód tárolásához. Az `src` alkönyvtárban hozza létre a `hello.py` Python-szkriptet:
+Hozzon létre egy új alkönyvtárat `src` a könyvtár alatt a `tutorial` Azure Machine learning számítási fürtön futtatni kívánt kód tárolásához. A `src` alkönyvtárban hozza létre a `hello.py` Python-szkriptet:
 
 ```python
 # src/hello.py
@@ -64,7 +63,7 @@ tutorial
 
 ### <a name="test-your-script-locally"></a>Parancsfájl helyi tesztelése
 
-A kódot helyileg is futtathatja, amely a kód interaktív hibakeresésének előnyeit használja kedvenc IDE vagy egy terminálon keresztül:
+A kódot helyileg is futtathatja kedvenc IDE vagy egy terminál használatával. A kód helyi futtatásának előnye a kód interaktív hibakeresése.
 
 ```bash
 cd <path/to/tutorial>
@@ -73,9 +72,9 @@ python ./src/hello.py
 
 ## <a name="create-a-control-script"></a>Vezérlő parancsfájl létrehozása
 
-A *vezérlési parancsfájlok* lehetővé teszik a szkript futtatását `hello.py` a felhőben.  A vezérlő parancsfájl segítségével szabályozhatja, hogy a gépi tanulási kód hogyan és hol fusson.  
+A *vezérlési parancsfájlok* lehetővé teszik a szkript futtatását `hello.py` a felhőben. A vezérlő parancsfájl segítségével szabályozhatja, hogy a gépi tanulási kód hogyan és hol fusson.  
 
-Az oktatóanyag könyvtárában hozzon létre egy nevű új Python `03-run-hello.py` -fájlt, és másolja és illessze be az alábbi kódot a fájlba:
+Az oktatóanyag könyvtárában hozzon létre egy új, nevű Python-fájlt, `03-run-hello.py` és másolja/illessze be a következő kódot a fájlba:
 
 ```python
 # tutorial/03-run-hello.py
@@ -116,7 +115,7 @@ Itt látható a vezérlő parancsfájl működésének leírása:
       `config = ScriptRunConfig( ... )` 
    :::column-end:::
    :::column span="2":::
-      A [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) becsomagolja a `hello.py` kódot, és átadja a munkaterületnek. Ahogy a neve is sugallja, ezt az osztályt használhatja annak _konfigurálásához_ , hogy a _parancsfájl_ hogyan _fusson_ Azure Machine learning. Azt is meghatározza, hogy a parancsfájl milyen számítási célt fog futni.  Ebben a kódban a cél a [telepítési oktatóanyagban](tutorial-1st-experiment-sdk-setup-local.md)létrehozott számítási fürt.
+      A [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) becsomagolja a `hello.py` kódot, és átadja a munkaterületnek. Ahogy a neve is sugallja, ezt az osztályt használhatja annak _konfigurálásához_ , hogy a _parancsfájl_ hogyan _fusson_ Azure Machine learning. Azt is meghatározza, hogy a parancsfájl milyen számítási célt fog futni. Ebben a kódban a cél az a számítási fürt, amelyet a [beállítási oktatóanyagban](tutorial-1st-experiment-sdk-setup-local.md)hozott létre.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -124,7 +123,7 @@ Itt látható a vezérlő parancsfájl működésének leírása:
       `run = experiment.submit(config)`
    :::column-end:::
    :::column span="2":::
-       Elküldi a parancsfájlt. Ezt a beküldést [futtatásnak](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true)nevezzük.  A Futtatás egyetlen végrehajtást ágyaz be a kódjába. Egy futtatással figyelheti a parancsfájl előrehaladását, rögzítheti a kimenetet, elemezheti az eredményeket, megjelenítheti a metrikákat és egyéb műveleteket is alkalmazhat.
+       Elküldi a parancsfájlt. Ezt a beküldést [futtatásnak](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true)nevezzük. A Futtatás egyetlen végrehajtást ágyaz be a kódjába. Egy futtatással figyelheti a parancsfájl előrehaladását, rögzítheti a kimenetet, elemezheti az eredményeket, megjelenítheti a metrikákat, és egyéb műveleteket is alkalmazhat.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -132,7 +131,7 @@ Itt látható a vezérlő parancsfájl működésének leírása:
       `aml_url = run.get_portal_url()` 
    :::column-end:::
    :::column span="2":::
-        Az `run` objektum egy leírót biztosít a kód végrehajtásához. A Azure Machine Learning Studio és a Python-szkriptből kinyomtatott URL-címmel figyelheti a folyamat előrehaladását.  
+        Az `run` objektum egy leírót biztosít a kód végrehajtásához. Figyelje a Azure Machine Learning Studio folyamatát a Python-szkriptből kinyomtatott URL-címmel.  
    :::column-end:::
 :::row-end:::
 
@@ -144,11 +143,11 @@ Futtassa a vezérlési parancsfájlt, amely viszont a `hello.py` [telepítési o
 python 03-run-hello.py
 ```
 
-## <a name="monitor-your-code-in-the-cloud-using-studio"></a>A kód figyelése a felhőben a Studio használatával
+## <a name="monitor-your-code-in-the-cloud-by-using-the-studio"></a>A kód figyelése a felhőben a Studio használatával
 
-A kimenet tartalmazni fog egy hivatkozást a Azure Machine Learning studióhoz, amely a következőképpen néz ki: `https://ml.azure.com/experiments/hello-world/runs/<run-id>?wsid=/subscriptions/<subscription-id>/resourcegroups/<resource-group>/workspaces/<workspace-name>` .
+A kimenet tartalmazni fog egy hivatkozást a studióhoz, amely a következőhöz hasonlóan néz ki: `https://ml.azure.com/experiments/hello-world/runs/<run-id>?wsid=/subscriptions/<subscription-id>/resourcegroups/<resource-group>/workspaces/<workspace-name>` .
 
-Kövesse a hivatkozást, és navigáljon a **kimenetek és naplók** lapra. Itt a következőhöz hasonló fájl látható `70_driver_log.txt` :
+Kövesse a hivatkozást, és lépjen a **kimenetek és naplók** lapra. Itt látható egy `70_driver_log.txt` fájl, amely így néz ki:
 
 ```txt
  1: [2020-08-04T22:15:44.407305] Entering context manager injector.
@@ -174,11 +173,11 @@ Kövesse a hivatkozást, és navigáljon a **kimenetek és naplók** lapra. Itt 
 
 A 8. sorban a "Helló világ!" kifejezés látható kimeneti.
 
-A `70_driver_log.txt` fájl egy futtatásból származó standard kimenetet tartalmaz. Ez a fájl hasznos lehet a felhőben futtatott távoli futtatások hibakeresése során.
+A `70_driver_log.txt` fájl egy futtatásból származó standard kimenetet tartalmaz. Ez a fájl akkor lehet hasznos, ha távoli futtatásokat végez a felhőben.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban egy egyszerű "Hello World" szkriptet vettünk igénybe, és az Azure-on futtatták. Megismerte, hogyan csatlakozhat a Azure Machine Learning-munkaterülethez, létrehozhat egy kísérletet, és elküldheti a `hello.py` kódot a felhőbe.
+Ebben az oktatóanyagban egy egyszerű "Helló világ!" szkriptet, és futtatta azt az Azure-ban. Megismerte, hogyan csatlakozhat a Azure Machine Learning-munkaterülethez, létrehozhat egy kísérletet, és elküldheti a `hello.py` kódot a felhőbe.
 
 A következő oktatóanyagban ezeket a betanulásokat úgy építheti be, hogy valami érdekesebb, mint a `print("Hello world!")` .
 
@@ -186,4 +185,4 @@ A következő oktatóanyagban ezeket a betanulásokat úgy építheti be, hogy v
 > [Oktatóanyag: Modell betanítása](tutorial-1st-experiment-sdk-train.md)
 
 >[!NOTE] 
-> Ha itt szeretné befejezni az oktatóanyag-sorozatot, és nem halad a következő lépéssel, ne feledje, hogy [kiüríti az erőforrásokat](tutorial-1st-experiment-bring-data.md#clean-up-resources)
+> Ha itt szeretné befejezni az oktatóanyag-sorozatot, és nem halad a következő lépéssel, ne felejtse el [törölni az erőforrásokat](tutorial-1st-experiment-bring-data.md#clean-up-resources).

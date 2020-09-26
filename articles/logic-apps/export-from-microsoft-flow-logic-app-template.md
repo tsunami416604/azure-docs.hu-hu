@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: b2a45218118282f4f1cadb29c9022fc05b30f907
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1c2f0a2c54be7adbc7b8babd596f18e08c67a024
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078735"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269556"
 ---
 # <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>Folyamatok exportálása a Power Automate-ből és üzembe helyezés az Azure Logic Appsben
 
@@ -76,7 +76,7 @@ További információ: [Grow up to Azure Logic apps](https://flow.microsoft.com/
       | <*kapcsolattípus*> | A logikai alkalmazás által újra felhasználható korábban létrehozott kapcsolatok egy vagy több neve <p><p>**Megjegyzés**: Ha ez a logikai alkalmazás az első, az összes kapcsolat újként jön létre, így elfogadhatja az alapértelmezett neveket. Ellenkező esetben megadhatja a korábban létrehozott kapcsolatok nevét, amelyeket több logikai alkalmazás között használhat. |
       |||
 
-      Például:
+      Példa:
 
       ![Adja meg a sablon bemeneti paramétereit](./media/export-from-microsoft-flow-logic-app-template/template-input-parameters.png)
 
@@ -96,7 +96,7 @@ További információ: [Grow up to Azure Logic apps](https://flow.microsoft.com/
 
    1. Minden olyan lépéshez, amelyhez engedélyezve van a kapcsolat, bontsa ki ezt a lépést, és válassza az **új hozzáadása**lehetőséget.
 
-      ![Új kapcsolatok hozzáadása](./media/export-from-microsoft-flow-logic-app-template/add-new-connection.png)
+      ![Képernyőkép, amely az Outlook "kapcsolatok" ablakában kiválasztott "új" gombot jeleníti meg.](./media/export-from-microsoft-flow-logic-app-template/add-new-connection.png)
 
    1. Jelentkezzen be az egyes szolgáltatásokhoz, vagy adja meg a szükséges hitelesítő adatokat a kapcsolódás engedélyezéséhez.
 
@@ -156,7 +156,7 @@ Ha a Visual studiót a Logic apps létrehozásához szükséges [előfeltételek
 
    ![Telepítési paraméterek szerkesztése](./media/export-from-microsoft-flow-logic-app-template/edit-parameters-deployment.png)
 
-   Amikor az üzembe helyezés elindul, az alkalmazás üzembehelyezési állapota a Visual Studio **Kimenet** ablakában jelenik meg. Ha az állapot nem jelenik meg, nyissa meg a **Kimenet mutatása innen** listát, és válassza ki az Azure-erőforráscsoportot. Például:
+   Amikor az üzembe helyezés elindul, az alkalmazás üzembehelyezési állapota a Visual Studio **Kimenet** ablakában jelenik meg. Ha az állapot nem jelenik meg, nyissa meg a **Kimenet mutatása innen** listát, és válassza ki az Azure-erőforráscsoportot. Példa:
 
    ![Kimeneti ablak](./media/export-from-microsoft-flow-logic-app-template/output-window.png)
 
@@ -172,7 +172,7 @@ Ha a Visual studiót a Logic apps létrehozásához szükséges [előfeltételek
 
 További információ ezekről az üzembe helyezési lépésekről: rövid útmutató [: automatizált feladatok, folyamatok és munkafolyamatok létrehozása Azure Logic apps-Visual Studióval](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#deploy-to-Azure)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ az [Azure Logic apps-összekötők számára](../connectors/apis-list.md)
 * További információ a [Azure Logic apps](../logic-apps/logic-apps-overview.md)

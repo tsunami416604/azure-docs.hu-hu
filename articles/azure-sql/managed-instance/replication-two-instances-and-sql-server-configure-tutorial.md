@@ -8,14 +8,14 @@ ms.custom: sqldbrb=1
 ms.topic: tutorial
 author: MashaMSFT
 ms.author: mathoma
-ms.reviewer: carlrab
+ms.reviewer: sstein
 ms.date: 11/21/2019
-ms.openlocfilehash: d89bc33b0ddd0793a3c55dbd64bef9678bd723e7
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 9d6592ccfb3ba5236a660d689d8b5d2cd1600c48
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920143"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91283190"
 ---
 # <a name="tutorial-configure-transactional-replication-between-azure-sql-managed-instance-and-sql-server"></a>Oktatóanyag: tranzakciós replikáció konfigurálása az Azure SQL felügyelt példánya és SQL Server között
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -85,7 +85,7 @@ Hozzon létre egy SQL Server virtuális gépet a [Azure Portal](https://portal.a
 - Név: `sql-vm-sub`
 - Rendszerkép: SQL Server 2016 vagy újabb
 - Erőforráscsoport: ugyanaz, mint a felügyelt példány
-- Virtuális hálózat:`sql-vm-sub-vnet`
+- Virtuális hálózat: `sql-vm-sub-vnet`
 
 SQL Server VM Azure-beli üzembe helyezésével kapcsolatos további információkért lásd: gyors útmutató [: SQL Server VM létrehozása](../virtual-machines/windows/sql-vm-create-portal-quickstart.md).
 
@@ -146,7 +146,7 @@ A privát DNS-zónák lehetővé teszik a DNS-útválasztást a felügyelt péld
 
 ### <a name="create-a-private-dns-zone"></a>Privát DNS-zóna létrehozása
 
-1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Az új Azure-erőforrás létrehozásához válassza **az erőforrás létrehozása** lehetőséget.
 1. Keressen rá az `private dns zone` Azure Marketplace-en.
 1. Válassza ki a Microsoft által közzétett **saját DNS zóna** erőforrást, majd válassza a **Létrehozás** lehetőséget a DNS-zóna létrehozásához.
@@ -184,11 +184,11 @@ A privát DNS-zónák lehetővé teszik a DNS-útválasztást a felügyelt péld
 
 [Hozzon létre egy Azure Storage-fiókot](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account) a munkakönyvtár számára, majd hozzon létre egy [fájlmegosztást](../../storage/files/storage-how-to-create-file-share.md) a Storage-fiókon belül.
 
-Másolja a fájlmegosztás elérési útját a (z) formátumban:`\\storage-account-name.file.core.windows.net\file-share-name`
+Másolja a fájlmegosztás elérési útját a (z) formátumban: `\\storage-account-name.file.core.windows.net\file-share-name`
 
 Például: `\\replstorage.file.core.windows.net\replshare`
 
-Másolja a Storage-hozzáférési kulcs kapcsolati karakterláncát a formátuma:`DefaultEndpointsProtocol=https;AccountName=<Storage-Account-Name>;AccountKey=****;EndpointSuffix=core.windows.net`
+Másolja a Storage-hozzáférési kulcs kapcsolati karakterláncát a formátuma: `DefaultEndpointsProtocol=https;AccountName=<Storage-Account-Name>;AccountKey=****;EndpointSuffix=core.windows.net`
 
 Például: `DefaultEndpointsProtocol=https;AccountName=replstorage;AccountKey=dYT5hHZVu9aTgIteGfpYE64cfis0mpKTmmc8+EP53GxuRg6TCwe5eTYWrQM4AmQSG5lb3OBskhg==;EndpointSuffix=core.windows.net`
 
@@ -285,12 +285,12 @@ A terjesztés konfigurálása után már létrehozhatja a kiadványt. Ehhez köv
 1. Kapcsolódjon a `sql-mi-publisher` felügyelt példányhoz.
 1. A **Object Explorer**bontsa ki a **replikálás** csomópontot, majd kattintson a jobb gombbal a **helyi közzétételi** mappára. **Új kiadvány**kiválasztása...
 1. Kattintson a **tovább** gombra, ha az üdvözlőlapot át szeretné helyezni.
-1. A **kiadvány-adatbázis** lapon válassza ki a `ReplTutorial` korábban létrehozott adatbázist. Válassza a **Tovább** lehetőséget.
-1. A **kiadvány típusa** lapon válassza a **tranzakciós kiadvány**lehetőséget. Válassza a **Tovább** lehetőséget.
-1. A **cikkek** lapon jelölje be a **táblák**melletti jelölőnégyzetet. Válassza a **Tovább** lehetőséget.
+1. A **kiadvány-adatbázis** lapon válassza ki a `ReplTutorial` korábban létrehozott adatbázist. Kattintson a **Tovább** gombra.
+1. A **kiadvány típusa** lapon válassza a **tranzakciós kiadvány**lehetőséget. Kattintson a **Tovább** gombra.
+1. A **cikkek** lapon jelölje be a **táblák**melletti jelölőnégyzetet. Kattintson a **Tovább** gombra.
 1. A **tábla sorainak szűrése** lapon a szűrők hozzáadása nélkül válassza a **Next (tovább** ) lehetőséget.
-1. A **Pillanatkép-ügynök** lapon jelölje be a pillanatkép azonnali létrehozása elem melletti jelölőnégyzetet, **és az előfizetések inicializálásához tartsa elérhetővé a pillanatképet**. Válassza a **Tovább** lehetőséget.
-1. Az **ügynök biztonsága** lapon válassza a **biztonsági beállítások...** lehetőséget. Adja meg SQL Server bejelentkezési hitelesítő adatait a pillanatkép-ügynökhöz, és kapcsolódjon a közzétevőhöz. Kattintson az **OK** gombra a **Pillanatkép-ügynök biztonsági** oldalának bezárásához. Válassza a **Tovább** lehetőséget.
+1. A **Pillanatkép-ügynök** lapon jelölje be a pillanatkép azonnali létrehozása elem melletti jelölőnégyzetet, **és az előfizetések inicializálásához tartsa elérhetővé a pillanatképet**. Kattintson a **Tovább** gombra.
+1. Az **ügynök biztonsága** lapon válassza a **biztonsági beállítások...** lehetőséget. Adja meg SQL Server bejelentkezési hitelesítő adatait a pillanatkép-ügynökhöz, és kapcsolódjon a közzétevőhöz. Kattintson az **OK** gombra a **Pillanatkép-ügynök biztonsági** oldalának bezárásához. Kattintson a **Tovább** gombra.
 
    ![A Snapshot Agent biztonságának konfigurálása](./media/replication-two-instances-and-sql-server-configure-tutorial/snapshot-agent-security.png)
 
@@ -349,7 +349,7 @@ Use ReplTutorial
 INSERT INTO ReplTest (ID, c1) VALUES (15, 'pub')
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 1. Navigáljon az erőforráscsoporthoz a [Azure Portal](https://portal.azure.com).
 1. Válassza ki a felügyelt példány (oka) t, majd válassza a **Törlés**lehetőséget. Írja be `yes` a szövegmezőbe, és erősítse meg, hogy törölni kívánja az erőforrást, majd válassza a **Törlés**lehetőséget. Ez a folyamat hosszabb időt is igénybe vehet a háttérben, és amíg el nem végzi a műveletet, nem fogja tudni törölni a *virtuális fürtöt* vagy bármely más függő erőforrást. Figyelje meg a törlést a **tevékenység** lapon a felügyelt példány törlésének megerősítéséhez.
@@ -377,8 +377,8 @@ Ez valószínűleg azért van, mert az 445-es port le van zárva az Azure tűzfa
 
 Ezt a hibát okozhatja, ha a fájlmegosztás elérési útjának fordított perjel helyett perjelet használ.
   
-  - Ez rendben van:`\\replstorage.file.core.windows.net\replshare`
-  - Ez egy OS 55-es hibát eredményezhet:`'\\replstorage.file.core.windows.net/replshare'`
+  - Ez rendben van: `\\replstorage.file.core.windows.net\replshare`
+  - Ez egy OS 55-es hibát eredményezhet: `'\\replstorage.file.core.windows.net/replshare'`
 
 ### <a name="could-not-connect-to-subscriber"></a>Nem lehet csatlakozni az előfizetőhöz
 
@@ -403,7 +403,7 @@ Amikor új előfizetést ad hozzá az **új előfizetés** varázslóval, a **ki
 
 Habár lehetséges, hogy ez a hibaüzenet pontos, és valójában nem érhető el kiadványok az Ön által csatlakoztatott közzétevőn, vagy ha nem rendelkezik megfelelő engedélyekkel, ezt a hibát a SQL Server Management Studio egy régebbi verziója is okozhatja. Próbálja meg frissíteni a SQL Server Management Studio 18,0-es vagy újabb verziójára, hogy kizárja a problémát kiváltó okként.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 ### <a name="enable-security-features"></a>Biztonsági funkciók engedélyezése
 

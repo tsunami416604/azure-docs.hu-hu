@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: útvonal-utasítások megjelenítése Microsoft Azure Maps Route Service és Map Control használatával'
-description: Megtudhatja, hogyan jelenítheti meg az útvonal irányait a Microsoft Azure Maps Route Service és a Map Control használatával.
+title: 'Oktatóanyag: útvonal megkeresése egy helyhez | Microsoft Azure térképek'
+description: 'Útmutató a hasznos pontokra mutató útvonal megkereséséhez. Lásd: a címek koordinátáinak beállítása és a Azure Maps útvonal-szolgáltatás lekérdezése a pont irányára.'
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 09/01/2020
@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 35a3f6d1e7894eec9baa4ea5432a8e3fec138a21
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.custom: mvc, devx-track-js
+ms.openlocfilehash: 3cb9bee65ab7fa2c29185c40ecb48fd531192187
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085042"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321713"
 ---
 # <a name="tutorial-how-to-display-route-directions-using-azure-maps-route-service-and-map-control"></a>Oktatóanyag: útvonal-utasítások megjelenítése a Azure Maps Route Service és a Map Control használatával
 
@@ -218,7 +218,7 @@ Ebből a szakaszból megtudhatja, hogyan használhatja a Azure Maps Route Direct
 
      :::image type="content" source="./media/tutorial-route-location/map-route.png" alt-text="Azure Map Control és Route Service":::
 
-    A minta teljes forráskódját [itt](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/route.html)szerezheti be. [Itt](https://azuremapscodesamples.azurewebsites.net/?sample=Route%20to%20a%20destination)találhat egy élő mintát.
+A minta teljes forráskódját [itt](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/route.html)szerezheti be. [Itt](https://azuremapscodesamples.azurewebsites.net/?sample=Route%20to%20a%20destination)találhat egy élő mintát.
 
 ## <a name="next-steps"></a>Következő lépések
 

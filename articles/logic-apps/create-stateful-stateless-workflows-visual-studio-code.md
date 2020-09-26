@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: deli, rohitha, vikanand, hongzili, sopai, absaafan, logicappspm
 ms.topic: conceptual
-ms.date: 09/23/2020
-ms.openlocfilehash: abb6f8bcaa3b8e356bea00185702bc0ae783e071
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/25/2020
+ms.openlocfilehash: 1f67d7228da8529699a26539f20efd55f9a20c27
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91270248"
+ms.locfileid: "91370980"
 ---
 # <a name="create-stateful-or-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Állapot-nyilvántartó vagy állapot nélküli munkafolyamatok létrehozása a Visual Studio Code-ban a Azure Logic Apps (előzetes verzió) bővítménnyel
 
@@ -72,11 +72,11 @@ A Azure Logic Apps (előzetes verzió) bővítmény számos aktuális és továb
 
 * *Állapot nélküli*
 
-  Állapot nélküli logikai alkalmazások létrehozása, ha nem kell mentenie, áttekintenie vagy hivatkoznia az előző eseményekről. Ezek a logikai alkalmazások csak a memóriában tárolják az egyes műveletek bemeneteit és kimeneteit, és nem továbbítják ezeket az adatokat a külső tárterületre. Ennek eredményeképpen az állapot nélküli logikai alkalmazások rövidebb ideig tartanak, amelyek általában nem kevesebb mint 5 percet vesznek igénybe, gyorsabb a gyorsabb válaszidő, a nagyobb átviteli sebesség és a csökkenő működési költségek, mivel a futtatási adatok és előzmények nem a külső tárolóban maradnak. Ha azonban az kimaradások történnek, a megszakított futtatások nem állíthatók automatikusan vissza, így a hívónak manuálisan kell újraküldenie a megszakított futtatásokat. A könnyebb hibakeresés érdekében engedélyezheti az állapot nélküli logikai alkalmazások [futtatási előzményeit](#run-history) .
+  Állapot nélküli logikai alkalmazások hozhatók létre, ha nem kell a külső tárolóban lévő korábbi eseményekből származó adatok mentését, felülvizsgálatát vagy hivatkozását későbbi ellenőrzés céljából. Ezek a logikai alkalmazások csak a memóriában tárolják az egyes műveletek bemeneteit és kimeneteit, és nem továbbítják ezeket az adatokat a külső tárterületre. Ennek eredményeképpen az állapot nélküli logikai alkalmazások rövidebb ideig tartanak, amelyek általában nem kevesebb mint 5 percet vesznek igénybe, gyorsabb a gyorsabb válaszidő, a nagyobb átviteli sebesség és a csökkenő működési költségek, mivel a futtatási adatok és előzmények nem a külső tárolóban maradnak. Ha azonban az kimaradások történnek, a megszakított futtatások nem állíthatók automatikusan vissza, így a hívónak manuálisan kell újraküldenie a megszakított futtatásokat. Ezek a logikai alkalmazások csak szinkronban és a hibakereséshez is futtathatók, így [engedélyezheti a futtatási előzményeket](#run-history), ami hatással van a teljesítményre.
 
   Az állapot nélküli munkafolyamatok jelenleg csak a [felügyelt összekötők](../connectors/apis-list.md#managed-api-connectors)műveleteit támogatják, az eseményindítók nem. A munkafolyamat elindításához válassza ki a [beépített kérelmet, Event Hubs vagy Service Bus triggert](../connectors/apis-list.md#built-ins). A nem támogatott eseményindítókkal, műveletekkel és összekötővel kapcsolatos további információkért lásd a nem [támogatott képességeket](#unsupported).
 
-A beágyazott logikai alkalmazások állapot-nyilvántartó és állapot nélküli logikai alkalmazások közötti különbségeit lásd: [beágyazott viselkedési különbségek az állapot-nyilvántartó és az állapot nélküli logikai alkalmazások között](#nested-behavior).
+További információ arról, hogy a beágyazott logikai alkalmazások hogyan viselkednek eltérően az állapot-nyilvántartó és az állapot nélküli logikai alkalmazások között: [beágyazott viselkedési különbségek az állapot-nyilvántartó és az állapot nélküli logikai alkalmazások között](#nested-behavior).
 
 <a name="pricing-model"></a>
 
@@ -812,7 +812,7 @@ Ha már telepítette a projektet a Azure Portalba, kövesse az alábbi lépések
 
 1. Az **érték** mezőbe írja be a következő értéket: `WithStatelessRunHistory`
 
-   Példa:
+   Például:
 
    ![Képernyőfelvétel: a Azure Portal és Logic app (előzetes verzió) erőforrás "Configuration" > "új Alkalmazásbeállítás" < "alkalmazás hozzáadása/szerkesztése" panel megnyitása és a "munkafolyamatok". {yourWorkflowName}. A "OperationOptions" beállítás "WithStatelessRunHistory" értékre van állítva.](./media/create-stateful-stateless-workflows-visual-studio-code/stateless-operation-options-run-history.png)
 
@@ -918,7 +918,7 @@ A [.net Core parancssori felület (CLI) eszköz](/dotnet/core/tools/)használat�
 
 ## <a name="nested-behavior-differences-between-stateful-and-stateless-logic-apps"></a>Beágyazott viselkedési különbségek az állapot-nyilvántartó és az állapot nélküli logikai alkalmazások között
 
-A Logic apps-munkafolyamatok más logikai alkalmazás-munkafolyamatokból is [meghívhatók](../logic-apps/logic-apps-http-endpoint.md) a [kérelem](../connectors/connectors-native-reqres.md) eseményindító, a [http-webhook](../connectors/connectors-native-webhook.md) eseményindító vagy a felügyelt összekötő eseményindítók használatával, amelyek [APICONNECTIONWEHOOK-típussal](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-trigger) rendelkeznek, és HTTPS-kéréseket kaphatnak.
+A Logic app-munkafolyamatok [meghívhatók](../logic-apps/logic-apps-http-endpoint.md) más logikai alkalmazás-munkafolyamatokból, amelyek ugyanabban a **logikai alkalmazásban (előzetes verzió)** , a [kérelem](../connectors/connectors-native-reqres.md) eseményindítója, a [http-webhook](../connectors/connectors-native-webhook.md) eseményindító vagy a felügyelt összekötő-eseményindítók használatával, amelyek a [ApiConnectionWehook típussal](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-trigger) rendelkeznek, és HTTPS-kéréseket fogadhatnak.
 
 Az alábbiakban láthatók a beágyazott logikai alkalmazások munkafolyamatainak viselkedési mintái, miután egy szülő munkafolyamat meghívja a gyermek munkafolyamatot:
 
@@ -930,7 +930,7 @@ Az alábbiakban láthatók a beágyazott logikai alkalmazások munkafolyamataina
 
   A gyermek visszaigazolja a hívást, hogy azonnal visszaadja a `202 ACCEPTED` választ, és a szülő továbbra is a következő műveletre vár anélkül, hogy meg kellene várnia a gyermek eredményét. Ehelyett a szülő megkapja az eredményeket, amikor a gyermek befejezi a futását. Olyan alárendelt állapot-nyilvántartó munkafolyamatok, amelyek nem tartalmazzák a válasz műveletet, mindig a szinkron mintát kövessék. Gyermek állapot-nyilvántartó munkafolyamatok esetén a futtatási előzmények elérhetők az áttekintéshez.
 
-  A viselkedés engedélyezéséhez a munkafolyamat JSON-definíciójában állítsa be a tulajdonságot a következőre: `OperationOptions` `DisableAsyncPattern` . További információ: [trigger-és Művelettípus – műveleti beállítások](../logic-apps/logic-apps-workflow-actions-triggers.md#operation-options).
+  A viselkedés engedélyezéséhez a munkafolyamat JSON-definíciójában állítsa be a tulajdonságot a következőre: `operationOptions` `DisableAsyncPattern` . További információ: [trigger-és Művelettípus – műveleti beállítások](../logic-apps/logic-apps-workflow-actions-triggers.md#operation-options).
 
 * Trigger és várakozás
 
@@ -966,7 +966,9 @@ Ebben a nyilvános előzetes verzióban ezek a képességek nem érhetők el, va
 
 * Az új **Logic app (előzetes verzió)** erőforrás létrehozása jelenleg nem érhető el MacOS rendszeren.
 
-* Ez az előzetes verzió nem támogatja az egyéni összekötők, webhook-alapú eseményindítók és a csúszó ablak eseményindítóját. Az állapot nélküli logikai alkalmazások munkafolyamataihoz csak a [felügyelt összekötők](../connectors/apis-list.md#managed-api-connectors)műveletei adhatók meg, az eseményindítók nem. A munkafolyamat elindításához használja a [beépített kérelmet, Event Hubs vagy Service Bus triggert](../connectors/apis-list.md#built-ins).
+* A munkafolyamat elindításához használja a [kérelem, a http, a Event Hubs vagy a Service Bus triggert](../connectors/apis-list.md). Jelenleg a [vállalati összekötők](../connectors/apis-list.md#enterprise-connectors), [a helyszíni adatátjáró-eseményindítók, a](../connectors/apis-list.md#on-premises-connectors)webhook-alapú eseményindítók, a csúszó ablak-eseményindítók, az [Egyéni összekötők](../connectors/apis-list.md#custom-apis-and-connectors), az integrációs fiókok, az összetevők és [az összekötők](../connectors/apis-list.md#integration-account-connectors) nem támogatottak ebben az előzetes verzióban. Az "Azure-függvény hívása" funkció nem érhető el, így most a HTTP- *művelettel* hívhatja meg az Azure-függvény kérésének URL-címét.
+
+  Az állapot nélküli Logic app-munkafolyamatok csak a [felügyelt összekötők](../connectors/apis-list.md#managed-api-connectors)műveleteit használhatják, az eseményindítókat nem. A korábban megadott eseményindítók kivételével az állapot-nyilvántartó munkafolyamatok az eseményindítókat és műveleteket is használhatják a felügyelt összekötők esetében.
 
 * Az új **Logic app (előzetes verzió)** típusú erőforrástípus csak [prémium vagy app Service üzemeltetési csomagra](#publish-azure) telepíthető az Azure-ban vagy egy [Docker-tárolóban](#deploy-docker), és nem [integrációs szolgáltatási környezetekben (ISEs)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md). A **felhasználási** üzemeltetési csomagok nem támogatottak, és nem érhetők el az erőforrástípus üzembe helyezéséhez.
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 838d2a1dd1c7b89c1f5c9fec6578312107264958
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 2512602b0c8c00c696253a708af13278bc513a1f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90602064"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258744"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>Feltételes hozzáférés: felhőalapú alkalmazások vagy műveletek
 
@@ -31,9 +31,9 @@ A felhőalapú alkalmazások vagy műveletek a feltételes hozzáférési szabá
 
 Számos meglévő Microsoft Cloud-alkalmazás szerepel azon alkalmazások listáján, amelyek közül választhat. 
 
-A rendszergazdák feltételes hozzáférési szabályzatot rendelhetnek a Microsoft következő felhőalapú alkalmazásaihoz. Egyes alkalmazások, például az Office 365 (előzetes verzió) és a Microsoft Azure felügyelet több kapcsolódó alárendelt alkalmazást vagy szolgáltatást tartalmaznak. A következő lista nem teljes, és változhat.
+A rendszergazdák feltételes hozzáférési szabályzatot rendelhetnek a Microsoft következő felhőalapú alkalmazásaihoz. Egyes alkalmazások, például az Office 365 és a Microsoft Azure Management több kapcsolódó alárendelt alkalmazást vagy szolgáltatást tartalmaznak. A következő lista nem teljes, és változhat.
 
-- [Office 365 (előzetes verzió)](#office-365-preview)
+- [Office 365](#office-365)
 - Azure Analysis Services
 - Azure DevOps
 - [Azure SQL Database és Data Warehouse](../../azure-sql/database/conditional-access-configure.md)
@@ -67,15 +67,15 @@ A rendszergazdák feltételes hozzáférési szabályzatot rendelhetnek a Micros
 - Virtuális magánhálózat (VPN)
 - Windows Defender ATP
 
-### <a name="office-365-preview"></a>Office 365 (előzetes verzió)
+### <a name="office-365"></a>Office 365
 
 A Microsoft 365 felhőalapú hatékonyságnövelő és együttműködési szolgáltatásokat nyújt, mint például az Exchange, a SharePoint és a Microsoft teams. A Microsoft 365 Cloud Services szorosan integrálva van a zökkenőmentes és együttműködő élmény biztosítása érdekében. Ez az integráció zavart okozhat a házirendek létrehozásakor, mivel egyes alkalmazások, például a Microsoft-csapatok függőségekkel rendelkeznek másokkal, például a SharePoint vagy az Exchange használatával.
 
-Az Office 365 (előzetes verzió) alkalmazás lehetővé teszi, hogy egyszerre lehessen megcélozni ezeket a szolgáltatásokat. Javasoljuk, hogy az új Office 365 (előzetes verzió) alkalmazást az egyes felhőalapú alkalmazások célzása helyett a [szolgáltatási függőségek](service-dependencies.md)elkerülése érdekében használja. Az alkalmazások csoportjának megcélzása segít elkerülni a nem konzisztens házirendek és függőségek miatt felmerülő problémákat.
+Az Office 365-alkalmazás lehetővé teszi, hogy egyszerre lehessen megcélozni ezeket a szolgáltatásokat. Javasoljuk, hogy az új Office 365-alkalmazást az egyes felhőalapú alkalmazások célzása helyett a [szolgáltatás függőségeivel](service-dependencies.md)kapcsolatos problémák elkerülésére használja. Az alkalmazások csoportjának megcélzása segít elkerülni a nem konzisztens házirendek és függőségek miatt felmerülő problémákat.
 
-A rendszergazdák dönthetnek úgy, hogy kizárják az adott alkalmazásokat a szabályzatból, ha azokat az Office 365 (előzetes verzió) alkalmazással kívánják kizárni, és kizárják a házirendben választott alkalmazásokat.
+A rendszergazdák dönthetnek úgy, hogy kizárják az adott alkalmazásokat a szabályzatból, ha az Office 365 alkalmazást kívánják kizárni, és kizárják a házirendben általuk választott konkrét alkalmazásokat.
 
-Az Office 365 (előzetes verzió) ügyfélalkalmazás részét képező legfontosabb alkalmazások:
+Az Office 365-ügyfélalkalmazás részét képező legfontosabb alkalmazások:
 
    - Microsoft Flow
    - Microsoft Forms
@@ -127,7 +127,7 @@ A Microsoft-alkalmazások mellett a rendszergazdák bármilyen Azure AD-beli reg
 
 A felhasználói műveletek olyan feladatok, amelyeket a felhasználók elvégezhetnek. Az egyetlen jelenleg támogatott művelet a **biztonsági információk regisztrálása**, amely lehetővé teszi, hogy a feltételes hozzáférési szabályzat kikényszerítse azokat a felhasználókat, akik a kombinált regisztrációhoz engedélyezve vannak a biztonsági információik regisztrálásához. További információt a következő cikkben talál: [kombinált biztonsági információk regisztrálása](../authentication/concept-registration-mfa-sspr-combined.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Feltételes hozzáférés: feltételek](concept-conditional-access-conditions.md)
 
