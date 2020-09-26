@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
-ms.reviewer: carlrab
+ms.reviewer: sstein
 ms.date: 06/25/2019
-ms.openlocfilehash: 46b95c438830a488494d50308d71a115d6f0da42
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 9e7d2d08c7041b23f0eb02328367d07e72fe35eb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85982143"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333069"
 ---
 # <a name="move-resources-to-new-region---azure-sql-database--azure-sql-managed-instance"></a>Erőforrások áthelyezése új régióba – Azure SQL Database & Azure SQL felügyelt példánya
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -193,6 +193,6 @@ Az áthelyezés befejeződése után távolítsa el a forrás régió erőforrá
 1. Törölje a forrás felügyelt példányt a [Remove-AzSqlInstance](/powershell/module/az.sql/remove-azsqlinstance)használatával.
 1. Távolítsa el az erőforráscsoport további erőforrásait, például a virtuális fürtöt, a virtuális hálózatot és a biztonsági csoportot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az adatbázis [kezelése](manage-data-after-migrating-to-database.md) az áttelepítés után.

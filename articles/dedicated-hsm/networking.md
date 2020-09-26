@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbaldwin
-ms.openlocfilehash: 06cd02177d7d5c478f3378eb05517f1a37297e92
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3764b261b491c660da16d7989be20742fead1fbf
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84300732"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91359154"
 ---
 # <a name="azure-dedicated-hsm-networking"></a>Azure dedikált HSM hálózatkezelés
 
@@ -54,7 +54,7 @@ További információ a kapcsolódási lehetőségekről: [VPN Gateway tervezés
 > [!NOTE]
 > Jelenleg a ExpressRoute nem áll rendelkezésre helyszíni erőforrásokhoz való kapcsolódásra. Azt is figyelembe kell venni, hogy a fent leírtak szerint használt ExpressRoute-átjáró nem a helyszíni infrastruktúrához való kapcsolódáshoz szükséges.
 
-### <a name="point-to-site-vpn"></a>Pont–hely VPN
+### <a name="point-to-site-vpn"></a>Pont – hely típusú VPN
 
 A pont – hely virtuális magánhálózat a biztonságos kapcsolat legegyszerűbb formája a helyszíni egyetlen végponthoz. Ez akkor lehet hasznos, ha csak egyetlen felügyeleti munkaállomást szeretne használni az Azure-alapú dedikált HSM.
 
@@ -66,7 +66,7 @@ A helyek közötti virtuális magánhálózat lehetővé teszi az Azure-alapú d
 
 A dedikált HSM tipikus telepítési architektúrája egyetlen virtuális hálózattal és a HSM-eszközök létrehozásához és üzembe helyezéséhez szükséges alhálózattal kezdődik. Ugyanezen a régión belül további virtuális hálózatok és alhálózatok is lehetnek a dedikált HSM-et használó alkalmazás-összetevők számára. Ezen hálózatok közötti kommunikáció engedélyezéséhez Virtual Network-társítást használunk.
 
-### <a name="virtual-network-peering"></a>Társviszony létesítése virtuális hálózatok között
+### <a name="virtual-network-peering"></a>Virtuális hálózati társviszony
 
 Ha egy régión belül több virtuális hálózat is van, amelyeknek hozzá kell férniük egymás erőforrásaihoz, Virtual Network a társítással biztonságos kommunikációs csatornák hozhatók létre egymás között.  A virtuális hálózatok társítása nemcsak biztonságos kommunikációt tesz lehetővé, hanem alacsony késleltetésű és nagy sávszélességű kapcsolatokat is biztosít az Azure-beli erőforrások között.
 
@@ -83,9 +83,9 @@ Globálisan elosztott alkalmazások esetén vagy magas rendelkezésre állású 
 > [!NOTE]
 > A globális vnet-társítás jelenleg nem érhető el a régiók közötti kapcsolódási forgatókönyvekben a dedikált HSM, és helyette a VPN-átjárót kell használni. 
 
-![globális – vnet](media/networking/global-vnet.png)
+![Az ábrán két, két V P N átjáróval összekapcsolt régió látható. Minden régió egyenrangú virtuális hálózatokat tartalmaz.](media/networking/global-vnet.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Gyakori kérdések](faq.md)
 - [Támogatási lehetőségek](supportability.md)

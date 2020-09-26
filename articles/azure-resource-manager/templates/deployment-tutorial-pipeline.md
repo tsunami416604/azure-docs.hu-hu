@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan hozhat létre, tesztelheti és telepítheti Azu
 ms.date: 08/24/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: c793c8bcbc01cbef99de13ef6dd2f6ce61a50773
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 433811cb632aae0d7370fc8e401c01fe36621a5b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892677"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333237"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>Oktatóanyag: Azure Resource Manager-sablonok folyamatos integrálása az Azure-folyamatokkal
 
@@ -65,7 +65,7 @@ Ezt a tárházat *távoli tárháznak*nevezzük. Ugyanannak a projektnek minden 
 
 1. Nyissa meg a git-rendszerhéj vagy a git bash felületet.  Lásd: [Előfeltételek](#prerequisites).
 1. Ellenőrizze, hogy az aktuális mappa a **GitHub**-e.
-1. Futtassa a következő parancsot:
+1. Futtassa az alábbi parancsot:
 
     ```bash
     git clone https://github.com/[YourAccountName]/[YourGitHubRepositoryName]
@@ -95,7 +95,7 @@ A azuredeploy.jsbekerült a helyi tárházba. Ezután töltse fel a sablont a t�
 1. Ha nincs megnyitva, nyissa meg a *git-rendszerhéj* vagy a *git bash*eszközt.
 1. Módosítsa a könyvtárat a helyi tárház CreateWebApp mappájába.
 1. Ellenőrizze, hogy a fájl **azuredeploy.js** a mappában van-e.
-1. Futtassa a következő parancsot:
+1. Futtassa az alábbi parancsot:
 
     ```bash
     git add .
@@ -180,15 +180,15 @@ Folyamat létrehozása lépéssel a sablon üzembe helyezéséhez:
     * **Üzembe helyezési mód**: válassza a **növekményes**lehetőséget.
     * **Központi telepítés neve**: adja meg a **DeployPipelineTemplate**. A **központi telepítés nevének**megtekintéséhez válassza a **speciális** lehetőséget.
 
-    ![Azure DevOps Azure-folyamatok Azure Resource Managerának lépései](./media/deployment-tutorial-pipeline/resource-manager-template-pipeline-configure.png)
+    ![Képernyőfelvétel: az ARM-sablon üzembe helyezési lapja, ahol a szükséges értékek szerepelnek.](./media/deployment-tutorial-pipeline/resource-manager-template-pipeline-configure.png)
 
-1. Válassza a **Hozzáadás** elemet.
+1. Válassza a **Hozzáadás** lehetőséget.
 
     További információ a feladatról: az [Azure-erőforráscsoport üzembe helyezési feladata](/azure/devops/pipelines/tasks/deploy/azure-resource-group-deployment)és [Azure Resource Manager sablon központi telepítési feladata](https://github.com/microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureResourceManagerTemplateDeploymentV3/README.md)
 
     A YML-fájl a következőhöz hasonló:
 
-    ![Azure DevOps Azure-YAML Azure Resource Manager](./media/deployment-tutorial-pipeline/azure-resource-manager-devops-pipelines-yml.png)
+    ![A képernyőképen a felülvizsgálati oldal látható az új pipline, amelynek címe a folyamat YAML áttekintése.](./media/deployment-tutorial-pipeline/azure-resource-manager-devops-pipelines-yml.png)
 
 1. Kattintson a **Mentés és futtatás** elemre.
 1. A **Mentés és Futtatás** ablaktáblán válassza a **Mentés és Futtatás** újra lehetőséget. A rendszer menti a YAML fájl egy példányát a csatlakoztatott adattárba. A YAML-fájlt a tárház tallózásával érheti el.
@@ -239,7 +239,7 @@ Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett
 
 Előfordulhat, hogy törölni szeretné a GitHub-tárházat és az Azure DevOps-projektet is.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Gratulálunk, befejezte ezt a Resource Manager-sablon üzembe helyezését ismertető oktatóanyagot. Tudassa velünk, ha megjegyzésekkel és javaslatokkal rendelkezik a visszajelzések szakaszban. Köszönjük!
 Készen áll a sablonokkal kapcsolatos speciális fogalmak beugrására. A következő oktatóanyag részletesen ismerteti a sablon-referenciák dokumentációjának használatát, amely segítséget nyújt a telepítendő erőforrások definiálásához.

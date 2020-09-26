@@ -14,12 +14,12 @@ ms.date: 03/05/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 258e05b135195004fec628936bb458ea8f1dc7b1
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 98af7725e1929637228c6cadd7ee2dc856bd4e8b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419988"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331298"
 ---
 # <a name="configure-security-alerts-for-azure-ad-roles-in-privileged-identity-management"></a>Azure AD-szerepkörökhöz tartozó biztonsági riasztások konfigurálása Privileged Identity Management
 
@@ -108,8 +108,8 @@ Ez a szakasz felsorolja az Azure AD-szerepkörökkel kapcsolatos összes biztons
 | **Hogyan lehet javítani?** | Tekintse át a listában szereplő felhasználókat, és távolítsa el azokat, amelyek nem feltétlenül szükségesek a globális rendszergazdai szerepkörhöz. </br>Ehelyett alacsonyabb jogosultsági szintű szerepköröket rendelhet hozzájuk a felhasználókhoz. |
 | **Megelőzés** | Rendelje hozzá a felhasználókat a szükséges legalacsonyabb jogosultsági szintű szerepkörhöz. |
 | **A portálon belüli kockázatcsökkentő művelet** | Eltávolítja a fiókot a Kiemelt szerepkörből. |
-| **Eseményindító** | Akkor aktiválódik, ha két különböző feltétel teljesül, és mindkettőt konfigurálhatja. Először el kell érnie a globális rendszergazdák egy bizonyos küszöbértékét. Másodszor, a teljes szerepkör-hozzárendelések egy adott százalékának globális rendszergazdának kell lennie. Ha csak a fenti mérések egyikét elégíti ki, a riasztás nem jelenik meg. |
-| **Globális rendszergazdák minimális száma** | Ez a beállítás határozza meg, hogy az Azure AD-szervezetnek milyen számú globális rendszergazdát kell megadnia (2 – 100). |
+| **Eseményindító** | Akkor aktiválódik, ha két különböző feltétel teljesül, és mindkettőt konfigurálhatja. Először a globális rendszergazdai szerepkör-hozzárendelések egy bizonyos küszöbértékét kell elérnie. Másodszor, a teljes szerepkör-hozzárendelések egy adott százalékának globális rendszergazdának kell lennie. Ha csak a fenti mérések egyikét elégíti ki, a riasztás nem jelenik meg. |
+| **Globális rendszergazdák minimális száma** | Ezzel a beállítással adható meg, hogy a globális rendszergazdai szerepkör-hozzárendelések száma 2 és 100 között legyen, és az Azure AD-szervezet számára túl kevésnek kell lennie. |
 | **Globális rendszergazdák százalékos aránya** | Ezzel a beállítással adható meg, hogy a rendszergazdák milyen minimális százalékos arányban kapják meg a globális rendszergazdákat, 0%-ról 100%-ra, és nem szeretné, hogy az Azure AD-szervezet bemerítést végezzen. |
 
 ### <a name="roles-are-being-activated-too-frequently"></a>Túl gyakran aktiválják a szerepköröket
@@ -125,21 +125,21 @@ Ez a szakasz felsorolja az Azure AD-szerepkörökkel kapcsolatos összes biztons
 | **Aktiválás megújítási időkerete** | Ez a beállítás a gyanús megújítások nyomon követéséhez használni kívánt időszakot adja meg napokban, órában, percben és másodpercben. |
 | **Az aktiválás megújításának száma** | Ezzel a beállítással adható meg az aktiválások száma 2 és 100 között, amelyekről értesítést szeretne kapni a választott időkereten belül. A beállítás módosításához mozgassa a csúszkát, vagy írjon be egy számot a szövegmezőbe. |
 
-## <a name="configure-security-alert-settings"></a>Biztonsági riasztás beállításainak konfigurálása
+## <a name="customize-security-alert-settings"></a>A biztonsági riasztás beállításainak testreszabása
 
-A riasztások lapon lépjen a **Beállítások**elemre.
+A **riasztások** lapon válassza a **Beállítások**lehetőséget.
 
 ![Riasztások lap Kiemelt beállításokkal](media/pim-how-to-configure-security-alerts/alert-settings.png)
 
 A különböző riasztások beállításainak testreszabásával dolgozhat a környezettel és a biztonsági célokkal.
 
-![Riasztás beállítása a beállítások engedélyezéséhez és konfigurálásához](media/pim-resource-roles-configure-alerts/rbac-alert-settings.png)
+![Riasztás beállítása a beállítások engedélyezéséhez és konfigurálásához](media/pim-how-to-configure-security-alerts/security-alert-settings.png)
 
 # <a name="previous-version"></a>[Előző verzió](#tab/previous)
 
-![Azure AD-szerepkörök – riasztási ablaktábla, amely a riasztásokat és a súlyosságot tartalmazza](./media/pim-how-to-configure-security-alerts/pim-directory-alerts.png)
+![Azure AD-szerepkörök – a riasztási ablaktábla a riasztást és a súlyosságot felsorolva](./media/pim-how-to-configure-security-alerts/pim-directory-alerts.png)
 
-## <a name="security-alerts"></a>Biztonsági riasztások
+## <a name="security-alert-details"></a>Biztonsági figyelmeztetés részletei
 
 Ez a szakasz felsorolja az Azure AD-szerepkörökkel kapcsolatos összes biztonsági riasztást, valamint a javítás és a megelőzés módját. A súlyosság a következő jelentéssel bír:
 

@@ -1,18 +1,18 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 author: anthonychu
 ms.service: signalr
 ms.topic: include
 ms.date: 09/14/2018
 ms.author: antchu
 ms.custom: include file
-ms.openlocfilehash: 0a228f6d8b4f72acd3783f27bf192fe6bd13f988
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f738daab7ddcf0403f546e7c9ffeaeccb66bc6b7
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75392150"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91355643"
 ---
 ## <a name="create-an-azure-signalr-service-instance"></a>Azure SignalR Service-példány létrehozása
 
@@ -20,7 +20,7 @@ Az alkalmazás egy SignalR Service-példányhoz fog csatlakozni az Azure-ban.
 
 1. Kattintson az Azure Portal bal felső sarkában található Új gombra. Az Új képernyőn írja be a keresőmezőbe a *SignalR Service* kifejezést, majd nyomja le az Enter billentyűt.
 
-    ![SignalR Service keresése](../media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-new.png)
+    ![A képernyőképen a Signaler szolgáltatás keresése látható a Azure Portalban.](../media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-new.png)
 
 1. A keresési eredmények között válassza ki a **SignalR Service** elemet, majd a **Létrehozás** lehetőséget.
 
@@ -32,11 +32,11 @@ Az alkalmazás egy SignalR Service-példányhoz fog csatlakozni az Azure-ban.
     | **Előfizetés** | Az Ön előfizetése | Az új SignalR Service-példány létrehozásához használt előfizetés. | 
     | **[Erőforráscsoport](../../azure-resource-manager/management/overview.md)** |  myResourceGroup | Az új erőforráscsoport neve, amelyben létrehozza a SignalR Service-példányt. | 
     | **Hely** | USA nyugati régiója | Válasszon egy Önhöz közeli [régiót](https://azure.microsoft.com/regions/). |
-    | **Díjszabási csomag** | Ingyenes | Az Azure SignalR Service-t ingyenesen is kipróbálhatja. |
+    | **Tarifacsomag** | Ingyenes | Az Azure SignalR Service-t ingyenesen is kipróbálhatja. |
     | **Egységek száma** |  Nem alkalmazható | Az egységek száma azt határozza meg, hogy a SignalR Service-példány hány kapcsolatot tud elfogadni. Ez a beállítás csak a Standard szinten konfigurálható. |
-    | **Szolgáltatási mód** |  Kiszolgáló nélküli | Azure Functions vagy REST API használatával. |
+    | **Szolgáltatásmód** |  Kiszolgáló nélküli | Azure Functions vagy REST API használatával. |
 
-    ![SignalR szolgáltatás létrehozása](../media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-create.png)
+    ![Képernyőfelvétel: a Signaler alapjai lapot jeleníti meg az értékekkel.](../media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-create.png)
 
 1. A SignalR Service-példány üzembe helyezésének megkezdéséhez kattintson a **Létrehozás** gombra.
 

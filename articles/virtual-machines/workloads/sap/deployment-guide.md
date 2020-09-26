@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/16/2020
 ms.author: sedusch
-ms.openlocfilehash: 6b66db639e0b22a7e0c45486465a1fa395aba33d
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 4494af89ac35a391f7dc6097b14d135a911d99dd
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653511"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91359613"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Azure Virtual Machines üzembe helyezés az SAP NetWeaver-ben
 
@@ -370,7 +370,7 @@ A következő információk ismerete az SAP-méretezéshez:
 
 Az Azure Resource Manager az Azure-előfizetésében lévő összes alkalmazás-erőforrást az erőforráscsoportok használatával kezelheti. További információt [Az Azure Resource Manager áttekintésében][resource-group-overview] találhat.
 
-## <a name="resources"></a>További források
+## <a name="resources"></a>Források
 
 ### <a name="sap-resources"></a><a name="42ee2bdb-1efc-4ec7-ab31-fe4c22769b94"></a>SAP-erőforrások
 
@@ -511,7 +511,7 @@ A Azure Portal adja meg a következő paramétereket a sablonhoz:
 1. **Feltételek és kikötések**:  
     Tekintse át és fogadja el a jogi feltételeket.
 
-1. Válassza a **Beszerzés** lehetőséget.
+1. Válassza a **Vásárlás** lehetőséget.
 
 Az Azure-beli virtuálisgép-ügynök alapértelmezés szerint telepítve van, ha az Azure Marketplace-en lemezképet használ.
 
@@ -543,11 +543,11 @@ Mivel az operációs rendszer vagy az adatbázis különböző verziói eltérő
 A Linux rendszerhez készült privát rendszerképeket különböző lépésekkel hozhatja létre, mint a Windows számára.
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows-embléma.][Logo_Windows] Windows
 >
 > Ha olyan Windows-lemezképet szeretne előkészíteni, amelyet több virtuális gép telepítéséhez használhat, a Windows-beállításokat (például a Windows SID-t és az állomásnévt) a helyszíni virtuális gépen kell absztrakt vagy általánosítani. Ezt a [Sysprep](/previous-versions/windows/it-pro/windows-8.1-and-8/hh825084(v=win.10)) használatával végezheti el.
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux-embléma.][Logo_Linux] Linux
 >
 > A több virtuális gép üzembe helyezéséhez használható linuxos lemezkép előkészítéséhez egyes Linux-beállításokat el kell vetni vagy általánosítani kell a helyszíni virtuális gépen. `waagent -deprovision`Ezt használhatja. További információ: az Azure-ban [futó linuxos virtuális gép rögzítése][virtual-machines-linux-capture-image] és az [Azure Linux-ügynök felhasználói útmutatója][virtual-machines-linux-agent-user-guide-command-line-options].
 >
@@ -651,7 +651,7 @@ A Azure Portal adja meg a következő paramétereket a sablonhoz:
 1. **Feltételek és kikötések**:  
     Tekintse át és fogadja el a jogi feltételeket.
 
-1. Válassza a **Beszerzés** lehetőséget.
+1. Válassza a **Vásárlás** lehetőséget.
 
 #### <a name="install-the-vm-agent-linux-only"></a>A VM-ügynök telepítése (csak Linux)
 
@@ -683,11 +683,11 @@ Ebben az esetben a virtuálisgép-ügynököt **nem** telepíti automatikusan a 
 Az Azure-beli virtuálisgép-ügynökkel kapcsolatos további információkért tekintse meg a következő forrásokat.
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows-embléma.][Logo_Windows] Windows
 >
 > [Az Azure Virtual Machine Agent áttekintése][virtual-machines-windows-agent-user-guide]
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux-embléma.][Logo_Linux] Linux
 >
 > [Az Azure Linux-ügynök használati útmutatója][virtual-machines-linux-agent-user-guide]
 >
@@ -739,7 +739,7 @@ A Azure Portal adja meg a következő paramétereket a sablonhoz:
 1. **Feltételek és kikötések**:  
     Tekintse át és fogadja el a jogi feltételeket.
 
-1. Válassza a **Beszerzés** lehetőséget.
+1. Válassza a **Vásárlás** lehetőséget.
 
 #### <a name="install-the-vm-agent"></a>A virtuálisgép-ügynök telepítése
 
@@ -1010,7 +1010,7 @@ Az Azure-bővítmény telepítése az SAP-hez az Azure CLI használatával:
    cat /var/lib/AzureEnhancedMonitor/PerfCounters
    ```
 
-   A kimenet így néz ki:
+   A kimenet a következőképpen fog kinézni:
 
    ```output
    ...
@@ -1309,7 +1309,7 @@ Ha bizonyos infrastruktúra-információk nem jelennek meg megfelelően az [Azur
 > [!NOTE]
 > A virtuálisgép-bővítménynek két verziója van. Ez a fejezet az alapértelmezett virtuálisgép-bővítményt ismerteti. Ha telepítette az új virtuálisgép-bővítményt, tekintse meg [az SAP-hez készült új Azure-bővítmény hibaelhárítása][deployment-guide-5.3-new]című fejezetet.
 
-#### <a name="windowslogo_windows-azure-performance-counters-do-not-show-up-at-all"></a>![Windows][Logo_Windows] Az Azure-teljesítményszámlálók egyáltalán nem jelennek meg
+#### <a name="windows-logologo_windows-azure-performance-counters-do-not-show-up-at-all"></a>![Windows-embléma.][Logo_Windows] Az Azure-teljesítményszámlálók egyáltalán nem jelennek meg
 
 A AzureEnhancedMonitoring Windows-szolgáltatás a teljesítmény-mérőszámokat gyűjti az Azure-ban. Ha a szolgáltatás nem lett megfelelően telepítve, vagy ha nem fut a virtuális gépen, akkor nem gyűjthetők teljesítmény mérőszámok.
 
@@ -1350,13 +1350,13 @@ A AzureEnhancedMonitoring Windows-szolgáltatás létezik, és engedélyezve van
 
 A konfiguráció helytelen. Indítsa újra az SAP-hez készült Azure-bővítményt a virtuális gépen az [Azure-bővítmény konfigurálása az SAP][deployment-guide-4.5]-hoz című témakörben leírtak szerint.
 
-#### <a name="windowslogo_windows-some-azure-performance-counters-are-missing"></a>![Windows][Logo_Windows] Egyes Azure-teljesítményszámlálók hiányoznak
+#### <a name="windows-logologo_windows-some-azure-performance-counters-are-missing"></a>![Windows-embléma.][Logo_Windows] Egyes Azure-teljesítményszámlálók hiányoznak
 
 A AzureEnhancedMonitoring Windows-szolgáltatás a teljesítmény-mérőszámokat gyűjti az Azure-ban. A szolgáltatás különböző forrásokból származó adatokkal rendelkezik. Bizonyos konfigurációs adatokat a rendszer helyileg gyűjt, és egyes teljesítmény-metrikák beolvasása Azure Diagnostics. A tárolási számlálókat a rendszer a tárolási előfizetés szintjén használja a naplózásban.
 
 Ha a [1999351] -es SAP-Megjegyzés használatával végzett hibaelhárítás nem oldja meg a problémát, futtassa újra a `Set-AzVMAEMExtension` konfigurációs parancsfájlt. Előfordulhat, hogy várnia kell egy órát, mert a Storage Analytics vagy a diagnosztikai számlálók nem hozhatók létre azonnal, miután engedélyezve lettek. Ha a probléma továbbra is fennáll, nyisson meg egy SAP-ügyfélszolgálati üzenetet a BC-OP-NT-AZR for Windows vagy BC-OP-LNX-AZR összetevővel Linux rendszerű virtuális gépen.
 
-#### <a name="linuxlogo_linux-azure-performance-counters-do-not-show-up-at-all"></a>![Linux][Logo_Linux] Az Azure-teljesítményszámlálók egyáltalán nem jelennek meg
+#### <a name="linux-logologo_linux-azure-performance-counters-do-not-show-up-at-all"></a>![Linux-embléma.][Logo_Linux] Az Azure-teljesítményszámlálók egyáltalán nem jelennek meg
 
 Az Azure-ban a teljesítmény-mérőszámokat egy démon gyűjti. Ha a démon nem fut, a teljesítmény-mérőszámok nem gyűjthetők össze.
 
@@ -1389,7 +1389,7 @@ azperfli.exe végrehajtása a korábban leírtak szerint, a nem kifogástalan á
 Az üzeneteket az a tény okozza, hogy a standard Managed Disks nem a SAP SAP-bővítmény által használt API-kat használják a standard Azure Storage-fiókok statisztikáinak ellenőrzéséhez. Ez nem jelent problémát. A standard Disk Storage-fiókok gyűjtési adatok bevezetésének oka a gyakran előforduló bemenetek és kimenetek szabályozása volt. A felügyelt lemezek a Storage-fiókban lévő lemezek számának korlátozásával elkerülhetők az ilyen szabályozások. Ezért az ilyen típusú adattípusok nem kritikus fontosságúak.
 
 
-#### <a name="linuxlogo_linux-some-azure-performance-counters-are-missing"></a>![Linux][Logo_Linux] Egyes Azure-teljesítményszámlálók hiányoznak
+#### <a name="linux-logologo_linux-some-azure-performance-counters-are-missing"></a>![Linux-embléma.][Logo_Linux] Egyes Azure-teljesítményszámlálók hiányoznak
 
 Az Azure-beli teljesítmény-mérőszámokat egy démon gyűjti, amely több forrásból származó adatokat kap. Bizonyos konfigurációs adatokat a rendszer helyileg gyűjt, és egyes teljesítmény-metrikák beolvasása Azure Diagnostics. A tárolási számlálók a tároló-előfizetés naplóiból származnak.
 
@@ -1402,7 +1402,7 @@ Ha a [1999351] -es SAP-Megjegyzés használatával végzett hibaelhárítás nem
 > [!NOTE]
 > A virtuálisgép-bővítménynek két verziója van. Ez a fejezet az új virtuálisgép-bővítményt ismerteti. Ha telepítette az alapértelmezett virtuálisgép-bővítményt, tekintse meg [az SAP-hez készült Azure-bővítmény hibaelhárítása][deployment-guide-5.3]című fejezetet.
 
-#### <a name="windowslogo_windows-azure-performance-counters-do-not-show-up-at-all"></a>![Windows][Logo_Windows] Az Azure-teljesítményszámlálók egyáltalán nem jelennek meg
+#### <a name="windows-logologo_windows-azure-performance-counters-do-not-show-up-at-all"></a>![Windows-embléma.][Logo_Windows] Az Azure-teljesítményszámlálók egyáltalán nem jelennek meg
 
 A AzureEnhancedMonitoring folyamat teljesítmény-mérőszámokat gyűjt az Azure-ban. Ha a folyamat nem fut a virtuális gépen, a teljesítmény-metrikák gyűjtése nem végezhető el.
 
@@ -1416,13 +1416,13 @@ A telepítési könyvtár C: \\ Packages \\ plugins \\ Microsoft. AzureCAT. Azur
 
 A bővítmény nincs telepítve. Állapítsa meg, hogy ez egy proxy-probléma (a korábban leírtak szerint). Előfordulhat, hogy újra kell indítania a gépet, vagy újra kell telepítenie a virtuálisgép-bővítményt.
 
-#### <a name="windowslogo_windows-some-azure-performance-counters-are-missing"></a>![Windows][Logo_Windows] Egyes Azure-teljesítményszámlálók hiányoznak
+#### <a name="windows-logologo_windows-some-azure-performance-counters-are-missing"></a>![Windows-embléma.][Logo_Windows] Egyes Azure-teljesítményszámlálók hiányoznak
 
 A AzureEnhancedMonitoring Windows-folyamat teljesítmény-mérőszámokat gyűjt az Azure-ban. A folyamat különböző forrásokból származó adatokkal rendelkezik. Bizonyos konfigurációs adatokat a rendszer helyileg gyűjt, és egyes teljesítmény-metrikák beolvasása Azure Monitor.
 
 Ha a [1999351] -es SAP-Megjegyzés használatával végzett hibaelhárítás nem oldja meg a problémát, nyisson meg egy SAP-ügyfélszolgálati üzenetet a BC-op-NT-AZR for Windows vagy BC-op-LNX-AZR számára Linux rendszerű virtuális gép esetén. Csatolja a következő naplófájlt: C: \\ Packages \\ plugins \\ Microsoft. AzureCAT. AzureEnhancedMonitoring. MonitorX64Windows \\ &lt; Version>\\logapp.txt az incidenshez.
 
-#### <a name="linuxlogo_linux-azure-performance-counters-do-not-show-up-at-all"></a>![Linux][Logo_Linux] Az Azure-teljesítményszámlálók egyáltalán nem jelennek meg
+#### <a name="linux-logologo_linux-azure-performance-counters-do-not-show-up-at-all"></a>![Linux-embléma.][Logo_Linux] Az Azure-teljesítményszámlálók egyáltalán nem jelennek meg
 
 Az Azure-ban a teljesítmény-mérőszámokat egy démon gyűjti. Ha a démon nem fut, a teljesítmény-mérőszámok nem gyűjthetők össze.
 
@@ -1436,7 +1436,7 @@ A \\ következő könyvtár \\ \\ \\ nem rendelkezik ALkönyvtárral az SAP-hez 
 
 A bővítmény nincs telepítve. Állapítsa meg, hogy ez egy proxy-probléma (a korábban leírtak szerint). Előfordulhat, hogy újra kell indítania a számítógépet, vagy újra kell telepítenie a virtuálisgép-bővítményt.
 
-#### <a name="linuxlogo_linux-some-azure-performance-counters-are-missing"></a>![Linux][Logo_Linux] Egyes Azure-teljesítményszámlálók hiányoznak
+#### <a name="linux-logologo_linux-some-azure-performance-counters-are-missing"></a>![Linux-embléma.][Logo_Linux] Egyes Azure-teljesítményszámlálók hiányoznak
 
 Az Azure-beli teljesítmény-mérőszámokat egy démon gyűjti, amely több forrásból származó adatokat kap. Bizonyos konfigurációs adatokat a rendszer helyileg gyűjt, és egyes teljesítmény-metrikák beolvasása Azure Monitor.
 
@@ -1495,7 +1495,7 @@ Az ebben az útmutatóban található, [az SAP-hez készült Azure-bővítmény 
 
 Ha a hibák nem szűnnek meg, [forduljon az ügyfélszolgálathoz][deployment-guide-contact-support].
 
-#### <a name="contact-support"></a><a name="3ba34cfc-c9bb-4648-9c3c-88e8b9130ca2"></a>Kapcsolatfelvétel a támogatási szolgáltatással
+#### <a name="contact-support"></a><a name="3ba34cfc-c9bb-4648-9c3c-88e8b9130ca2"></a>Kapcsolatfelvétel az ügyfélszolgálattal
 
 Váratlan hiba történt, vagy nincs ismert megoldás. Gyűjtsön a C:\Packages\Plugins\Microsoft.AzureCAT.AzureEnhancedMonitoring.AzureCATExtensionHandler \\ \<version\> \Drop (Windows) vagy a/var/log/Azure/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux (Linux) mappában található AzureEnhancedMonitoring_service. log fájlt, és további segítségért forduljon az SAP támogatási szolgálatához.
 

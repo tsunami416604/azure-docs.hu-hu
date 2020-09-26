@@ -2,15 +2,15 @@
 title: Azure Automation Update Management problémák elhárítása
 description: Ez a cikk azt ismerteti, hogyan lehet elhárítani a Azure Automation Update Managementekkel kapcsolatos problémákat.
 services: automation
-ms.date: 06/30/2020
+ms.date: 09/25/2020
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: b0b1e31a8c10ba372473c36e35c19044ef02898a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 26ce59c1d4ec8e3e2bf2096a4688b7639148410f
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89003354"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91359239"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Az Update Management hibáinak elhárítása
 
@@ -65,9 +65,9 @@ Ha a felváltott frissítés 100%-os lesz, a frissítés jóváhagyási állapot
 
 1. Az Automation-fiókban válassza a **Update Management** lehetőséget a gép állapotának megtekintéséhez. Lásd: [frissítési felmérések megtekintése](../update-management/update-mgmt-view-update-assessments.md).
 
-2. Ellenőrizze a felülírt frissítést, és győződjön meg arról, hogy az 100%-os nem alkalmazható. 
+2. Ellenőrizze a felülírt frissítést, és győződjön meg arról, hogy az 100%-os nem alkalmazható.
 
-3. A frissítés elutasításának megjelölése, ha kérdése van a frissítéssel kapcsolatban. 
+3. A frissítés elutasításának megjelölése, ha kérdése van a frissítéssel kapcsolatban.
 
 4. Válassza a **számítógépek** lehetőséget, és a **megfelelőség** oszlopban ellenőrizze, hogy a megfelelőségi ellenőrzés ki van-e kényszerítve. Lásd: [virtuális gépek frissítéseinek kezelése](../update-management/update-mgmt-manage-updates-for-vm.md).
 
@@ -112,9 +112,9 @@ Ezt a problémát a helyi konfigurációs problémák vagy a nem megfelelően ko
    | summarize by Computer, Solutions
    ```
 
-4. Ha nem látja a gépet a lekérdezés eredményei között, a közelmúltban nem volt bejelölve. Valószínűleg van egy helyi konfigurációs probléma, és újra kell [telepítenie az ügynököt](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows). 
+4. Ha nem látja a gépet a lekérdezés eredményei között, a közelmúltban nem volt bejelölve. Valószínűleg van egy helyi konfigurációs probléma, és újra kell [telepítenie az ügynököt](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows).
 
-5. Ha a gép megjelenik a lekérdezés eredményei között, ellenőrizze a hatókör-konfigurációs problémákat. A [hatókör-konfiguráció](../update-management/update-mgmt-scope-configuration.md) határozza meg, hogy mely gépek vannak konfigurálva a Update Managementhoz. 
+5. Ha a gép megjelenik a lekérdezés eredményei között, ellenőrizze a hatókör-konfigurációs problémákat. A [hatókör-konfiguráció](../update-management/update-mgmt-scope-configuration.md) határozza meg, hogy mely gépek vannak konfigurálva a Update Managementhoz.
 
 6. Ha a gép megjelenik a munkaterületen, de nem Update Managementban, akkor a hatókör-konfigurációt úgy kell konfigurálnia, hogy az a gépet célozza meg. Ennek módjáról a következő témakörben talál további információt: [gépek engedélyezése a munkaterületen](../update-management/update-mgmt-enable-automation-account.md#enable-machines-in-the-workspace).
 
@@ -180,7 +180,7 @@ Ha az előfizetése nincs konfigurálva az Automation erőforrás-szolgáltatóh
 
 1. A [Azure Portalban](../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)nyissa meg az Azure-szolgáltatások listáját.
 
-2. Válassza a **minden szolgáltatás**lehetőséget, majd az általános szolgáltatási csoportban válassza az **előfizetések** lehetőséget. 
+2. Válassza a **minden szolgáltatás**lehetőséget, majd az általános szolgáltatási csoportban válassza az **előfizetések** lehetőséget.
 
 3. Keresse meg az üzemelő példány hatókörében meghatározott előfizetést.
 
@@ -251,7 +251,7 @@ Az alábbi lépéseket követve ellenőrizheti, hogy a lekérdezések megfelelő
     | project id, location, name, tags
     ```
 
-2. Ellenőrizze, hogy a keresett gépek szerepelnek-e a lekérdezés eredményei között. 
+2. Ellenőrizze, hogy a keresett gépek szerepelnek-e a lekérdezés eredményei között.
 
 3. Ha a gépek nincsenek felsorolva, valószínűleg probléma van a dinamikus csoportban kiválasztott szűrővel. Szükség szerint módosítsa a csoport konfigurációját.
 
@@ -325,7 +325,7 @@ Ha klónozott képet használ, a különböző számítógépnevek ugyanazzal a 
 
 3. `Restart-Service HealthService`Az állapotfigyelő szolgáltatás újraindításához futtassa a parancsot. A művelet újból létrehozza a kulcsot, és létrehoz egy új UUID-t.
 
-4. Ha ez a megközelítés nem működik, először futtassa a sysprept a rendszerképen, majd telepítse az MMA-t.
+4. Ha ez a megközelítés nem működik, először futtassa a sysprept a rendszerképen, majd telepítse a Windows Log Analytics Agent ügynököt.
 
 ## <a name="scenario-you-receive-a-linked-subscription-error-when-you-create-an-update-deployment-for-machines-in-another-azure-tenant"></a><a name="multi-tenant"></a>Forgatókönyv: egy másik Azure-bérlőben lévő gépekhez tartozó frissítési központi telepítés létrehozásakor a rendszer csatolt előfizetési hibát kap
 
@@ -343,7 +343,7 @@ Ez a hiba akkor fordul elő, amikor olyan frissítési központi telepítést ho
 
 ### <a name="resolution"></a>Feloldás
 
-A következő megkerülő megoldással kérheti le ezeket az elemeket. A [New-AzAutomationSchedule](/powershell/module/az.automation/new-azautomationschedule?view=azps-3.7.0) parancsmagot használhatja a `ForUpdateConfiguration` paraméterrel az ütemterv létrehozásához. Ezután használja a [New-AzAutomationSoftwareUpdateConfiguration](/powershell/module/Az.Automation/New-AzAutomationSoftwareUpdateConfiguration?view=azps-3.7.0) parancsmagot, és adja át a többi bérlőben található gépeket a `NonAzureComputer` paraméternek. Az alábbi példa bemutatja, hogyan teheti meg ezt:
+A következő megkerülő megoldással kérheti le ezeket az elemeket. A [New-AzAutomationSchedule](/powershell/module/az.automation/new-azautomationschedule) parancsmagot használhatja a `ForUpdateConfiguration` paraméterrel az ütemterv létrehozásához. Ezután használja a [New-AzAutomationSoftwareUpdateConfiguration](/powershell/module/Az.Automation/New-AzAutomationSoftwareUpdateConfiguration) parancsmagot, és adja át a többi bérlőben található gépeket a `NonAzureComputer` paraméternek. Az alábbi példa bemutatja, hogyan teheti meg ezt:
 
 ```azurepowershell-interactive
 $nonAzurecomputers = @("server-01", "server-02")
@@ -386,24 +386,15 @@ Ez a hiba a következő okok valamelyike miatt jelentkezhet:
 * A gép már nem létezik.
 * A gép ki van kapcsolva, és nem érhető el.
 * A gép hálózati kapcsolattal rendelkezik, ezért a hibrid feldolgozó a gépen nem érhető el.
-* Frissült az MMA, amely megváltoztatta a forrásoldali számítógép AZONOSÍTÓját.
+* Frissítés történt a forrásszámítógép AZONOSÍTÓját megváltoztató Log Analytics ügynökre.
 * A frissítési kísérlet szabályozása megtörtént, ha elér egy Automation-fiók 200 egyidejű feladatának korlátját. Az egyes központi telepítések feladatoknak minősülnek, és a frissítések központi telepítésének minden gépe feladatoknak számít. Az Automation-fiókban jelenleg futó egyéb automatizálási feladatok vagy frissítési üzembe helyezések az egyidejű feladatok korlátja felé mutatnak.
 
 ### <a name="resolution"></a>Feloldás
 
 Ha alkalmazható, használjon [dinamikus csoportokat](../update-management/update-mgmt-groups.md) a frissítés központi telepítéséhez. Emellett az alábbi lépéseket is végrehajthatja.
 
-1. Győződjön meg arról, hogy a gép még létezik, és elérhető. 
-2. Ha a gép nem létezik, szerkessze az üzemelő példányt, és távolítsa el a gépet.
-3. Tekintse meg a [hálózati tervezés](../update-management/update-mgmt-overview.md#ports) szakaszt a Update Managementhoz szükséges portok és címek listájának megtekintéséhez, majd ellenőrizze, hogy a gép megfelel-e a követelményeknek.
-4. Ellenőrizze a hibrid Runbook-feldolgozóval való kapcsolatot a hibrid Runbook Worker Agent-hibakereső használatával. A hibaelhárítással kapcsolatos további tudnivalókért tekintse meg a [frissítési ügynökkel kapcsolatos problémák elhárítása](update-agent-issues.md)című témakört.
-5. Futtassa a következő lekérdezést a Log Analyticsban azon gépek megkereséséhez, amelyekben a forrás számítógép azonosítója megváltozott. Keressen olyan számítógépeket, amelyek azonos `Computer` értékkel rendelkeznek, de eltérő `SourceComputerId` értékkel rendelkeznek.
-
-   ```kusto
-   Heartbeat | where TimeGenerated > ago(30d) | distinct SourceComputerId, Computer, ComputerIP
-   ```
-
-6. Miután megtalálta az érintett gépeket, szerkessze az ezeket a gépeket tároló frissítési központi telepítéseket, majd távolítsa el és olvassa el őket, hogy `SourceComputerId` a megfelelő értéket tükrözze.
+1. Ellenőrizze, hogy a számítógép vagy a kiszolgáló megfelel-e a [követelményeknek](../update-management/update-mgmt-overview.md#client-requirements).
+2. Ellenőrizze a hibrid Runbook-feldolgozóval való kapcsolatot a hibrid Runbook Worker Agent-hibakereső használatával. A hibaelhárítással kapcsolatos további tudnivalókért tekintse meg a [frissítési ügynökkel kapcsolatos problémák elhárítása](update-agent-issues.md)című témakört.
 
 ## <a name="scenario-updates-are-installed-without-a-deployment"></a><a name="updates-nodeployment"></a>Forgatókönyv: a frissítések központi telepítés nélkül települnek
 
@@ -466,7 +457,7 @@ Access is denied. (Exception form HRESULT: 0x80070005(E_ACCESSDENIED))
 
 ### <a name="cause"></a>Ok
 
-Előfordulhat, hogy A proxy, az átjáró vagy a tűzfal blokkolja a hálózati kommunikációt. 
+Előfordulhat, hogy A proxy, az átjáró vagy a tűzfal blokkolja a hálózati kommunikációt.
 
 ### <a name="resolution"></a>Feloldás
 
