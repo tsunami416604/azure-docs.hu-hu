@@ -5,12 +5,12 @@ author: mikkelhegn
 ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: mikhegn
-ms.openlocfilehash: 92f6f495f6aac23785dd2a21672747bffb07e2e3
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 5c1a7de386baeb4b89fd12bd89236ea2e0348a57
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256254"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91357216"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>A fürt megjelenítése a Service Fabric Explorerrel
 
@@ -106,7 +106,7 @@ A Service Fabric Explorer használatával is létrehozhat alkalmazás-példányo
 ## <a name="event-store"></a>Event Store
 A EventStore a platform által kínált olyan szolgáltatás, amely Service Fabric platformon elérhető eseményeket biztosít a Service Fabric Explorer és a REST APIon keresztül. Láthatja, hogy mi történik a fürtben az egyes entitások esetében, például a csomópont, a szolgáltatás, az alkalmazás és a lekérdezés az esemény időpontja alapján. További információt a EventStore a [EventStore áttekintése című](service-fabric-diagnostics-eventstore.md)témakörben talál.   
 
-![EventStore][sfx-eventstore]
+![Képernyőfelvétel: a csomópontok ablaktábla, ahol a kiválasztott események láthatók.][sfx-eventstore]
 
 >[!NOTE]
 >A Service Fabric 6,4-es verziójának megfelelően. A EventStore alapértelmezés szerint nincs engedélyezve, és a Resource Manager-sablonban engedélyezve kell lennie.

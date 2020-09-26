@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan készíthet biztonsági mentést egy Exchange-k
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 02d1cde7ab48aa951c47cfbfea29c90c3f53f768
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: ee89af311619922fa6ca585381d70ca66955f36a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378389"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271647"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>Exchange-kiszolgáló biztonsági mentése az Azure Backupba a System Center 2012 R2 DPM-mel
 
@@ -38,8 +38,8 @@ A folytatás előtt győződjön meg arról, hogy teljesülnek a Microsoft Azure
 
 Ha a DPM védelmi ügynököt az Exchange-kiszolgálóra szeretné telepíteni, kövesse az alábbi lépéseket:
 
-1. Győződjön meg arról, hogy a tűzfalak megfelelően vannak konfigurálva. Lásd: [tűzfal-kivételek konfigurálása az ügynökhöz](/system-center/dpm/configure-firewall-settings-for-dpm?view=sc-dpm-2019).
-2. Telepítse az ügynököt az Exchange-kiszolgálóra az DPM Felügyeleti konzol-ben **> telepítés felügyeleti > ügynökök** kiválasztásával. A részletes lépésekért lásd [a DPM védelmi ügynök telepítése](/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019) című témakört.
+1. Győződjön meg arról, hogy a tűzfalak megfelelően vannak konfigurálva. Lásd: [tűzfal-kivételek konfigurálása az ügynökhöz](/system-center/dpm/configure-firewall-settings-for-dpm).
+2. Telepítse az ügynököt az Exchange-kiszolgálóra az DPM Felügyeleti konzol-ben **> telepítés felügyeleti > ügynökök** kiválasztásával. A részletes lépésekért lásd [a DPM védelmi ügynök telepítése](/system-center/dpm/deploy-dpm-protection-agent) című témakört.
 
 ## <a name="create-a-protection-group-for-the-exchange-server"></a>Védelmi csoport létrehozása az Exchange-kiszolgálóhoz
 
@@ -62,7 +62,7 @@ Ha a DPM védelmi ügynököt az Exchange-kiszolgálóra szeretné telepíteni, 
 
    * Rövid távú védelmet szeretnék a lemezzel.
    * Online védelmet szeretnék.
-6. Válassza a **Tovább** gombot.
+6. Kattintson a **Tovább** gombra.
 7. Jelölje be az **eseutil futtatása az adatok sértetlenségének ellenőrzése** lehetőséget, ha szeretné megtekinteni az Exchange Server-adatbázisok integritását.
 
     Ha ezt a beállítást választja, a biztonsági mentés konzisztencia-ellenőrzése a DPM-kiszolgálón fog futni, hogy elkerülje az **eseutil** parancsnak az Exchange-kiszolgálón való futtatásával generált I/O-forgalmat.
@@ -72,7 +72,7 @@ Ha a DPM védelmi ügynököt az Exchange-kiszolgálóra szeretné telepíteni, 
    > ![Eseutil-hiba](./media/backup-azure-backup-exchange-server/eseutil-error.png)
    >
    >
-8. Válassza a **Tovább** gombot.
+8. Kattintson a **Tovább** gombra.
 9. Válassza ki az adatbázist a **másolási biztonsági mentéshez**, majd kattintson a **tovább**gombra.
 
    > [!NOTE]
@@ -83,10 +83,10 @@ Ha a DPM védelmi ügynököt az Exchange-kiszolgálóra szeretné telepíteni, 
 11. Tekintse át a rendelkezésre álló lemezterületet, majd kattintson a **tovább**gombra.
 12. Válassza ki azt az időpontot, amikor a DPM-kiszolgáló létrehozza a kezdeti replikálást, majd kattintson a **tovább**gombra.
 13. Válassza ki a konzisztencia-ellenőrzési beállításokat, majd válassza a **tovább**lehetőséget.
-14. Válassza ki azt az adatbázist, amelyről biztonsági másolatot szeretne készíteni az Azure-ba, majd válassza a **tovább**lehetőséget. Például:
+14. Válassza ki azt az adatbázist, amelyről biztonsági másolatot szeretne készíteni az Azure-ba, majd válassza a **tovább**lehetőséget. Példa:
 
     ![Online védelmi adatértékek meghatározása](./media/backup-azure-backup-exchange-server/specify-online-protection-data.png)
-15. Adja meg a **Azure Backup**ütemtervét, majd kattintson a **tovább**gombra. Például:
+15. Adja meg a **Azure Backup**ütemtervét, majd kattintson a **tovább**gombra. Példa:
 
     ![Online biztonsági mentési ütemterv megadása](./media/backup-azure-backup-exchange-server/specify-online-backup-schedule.png)
 

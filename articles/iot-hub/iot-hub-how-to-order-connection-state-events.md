@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: asrastog
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: af8bd9a0420c90df4dea16fa8ebacbf4ea6494db
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 815dc0a90d79323fb88c98867b5540105a6fa8cc
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87488128"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91356196"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Eszközkapcsolati események megrendelése az Azure IoT Hubról az Azure Cosmos DB használatával
 
@@ -227,13 +227,13 @@ A logikai alkalmazás munkafolyamatában a feltételek segítséget nyújtanak b
 
 5. Válassza az **új paraméter hozzáadása**lehetőséget. A megjelenő legördülő menüben jelölje be a **partíciós kulcs** és paraméterek melletti jelölőnégyzetet **a tárolt eljáráshoz**, majd kattintson a képernyő bárhol máshol elemére. hozzáadja a partíciós kulcs értékét és a tárolt eljárás paramétereinek mezőjét.
 
-   ![logikai alkalmazás feltöltése művelet](./media/iot-hub-how-to-order-connection-state-events/logicapp-stored-procedure.png)
+   ![A képernyőképen egy végrehajtott tárolt eljárás elem jelenik meg, amelyhez új paraméter van kiválasztva.](./media/iot-hub-how-to-order-connection-state-events/logicapp-stored-procedure.png)
 
 6. Ezután adja meg a partíciós kulcs értékét és paramétereit az alább látható módon. Ügyeljen arra, hogy a zárójeleket és a dupla idézőjeleket az ábrán látható módon helyezze el. Előfordulhat, hogy a **dinamikus tartalom hozzáadása** lehetőségre kell kattintania az itt használható érvényes értékek lekéréséhez.
 
-   ![logikai alkalmazás feltöltése művelet](./media/iot-hub-how-to-order-connection-state-events/logicapp-stored-procedure-2.png)
+   ![A képernyőképen egy végrehajtott tárolt eljárási tétel látható paraméterekkel megadva.](./media/iot-hub-how-to-order-connection-state-events/logicapp-stored-procedure-2.png)
 
-7. Győződjön meg **arról, hogy**a panel felső részén a **Kimenet kiválasztása az előző lépésekben**lehetőségre, majd a **törzs** lehetőség van kiválasztva.
+7. Győződjön meg **arról, hogy**a panel felső részén a **Kimenet kiválasztása az előző lépésekben**lehetőségre, majd a  **törzs** lehetőség van kiválasztva.
 
    ![logikai alkalmazás feltöltése – mindegyik](./media/iot-hub-how-to-order-connection-state-events/logicapp-foreach-body.png)
 
@@ -363,7 +363,7 @@ Ha nem szeretné elveszteni a logikai alkalmazásba fektetett munkáját, a tör
 
 Azure Cosmos DB fióknak a Azure Portalból való eltávolításához kattintson a jobb gombbal a fiók nevére, és kattintson a **fiók törlése**parancsra. [Azure Cosmos db fiók törlésének](https://docs.microsoft.com/azure/cosmos-db/manage-account)részletes utasításait itt tekintheti meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ [IoT hub eseményekre való reagálásról Event Grid használatával a műveletek elindításához](../iot-hub/iot-hub-event-grid.md)
 

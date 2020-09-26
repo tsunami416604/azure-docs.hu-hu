@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: raynew
-ms.openlocfilehash: d345d707cbf58f48466c3bd830d93250d13397c6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 90e499b436a3ae44fa29cec1138d939a106a4db7
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77425857"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91357165"
 ---
 # <a name="agent-based-migration-architecture"></a>Ügynökalapú migrálási architektúra
 
@@ -34,7 +34,7 @@ Az ügynök-alapú áttelepítés a helyszíni VMware virtuális gépek és fizi
 
 A diagram az ügynök-alapú áttelepítés során érintett összetevőket ábrázolja.
 
-![Architektúra](./media/agent-based-replication-architecture/architecture.png)
+![A diagram az ügynök alapú áttelepítés összetevőit jeleníti meg, amelyeket a táblázat ismertet.](./media/agent-based-replication-architecture/architecture.png)
 
 A tábla összegzi az ügynök alapú áttelepítéshez használt összetevőket.
 
@@ -95,7 +95,7 @@ Az ebben a táblázatban szereplő értékek alapján megállapíthatja, hogy sz
 - Ha a napi változási arány (a forgalom aránya) meghaladja a 2 TB-ot, helyezzen üzembe egy további kiszolgálót.
 - Ha több mint 200 gépet replikál, helyezzen üzembe egy további replikációs készüléket.
 
-**CPU** | **Memory (Memória)** | **Szabad terület – az adatgyorsítótárazás** | **Adatforgalom aránya** | **Replikációs korlátok**
+**CPU** | **Memória** | **Szabad terület – az adatgyorsítótárazás** | **Adatforgalom aránya** | **Replikációs korlátok**
 --- | --- | --- | --- | ---
 8 vCPU (2 szoftvercsatorna * 4 mag \@ 2,5 GHz) | 16 GB | 300 GB | 500 GB vagy kevesebb | < 100 gép 
 12 vCPU (2 szoftvercsatorna * 6 mag \@ 2,5 GHz) | 18 GB | 600 GB | 501 GB – 1 TB | 100-150 gép.
@@ -123,6 +123,6 @@ Az Azure-ba replikált VMware-forgalom egy adott folyamat-kiszolgálón halad á
     3. A **szabályozás**alatt jelölje be a **biztonsági mentési műveletek internetes sávszélesség-szabályozásának engedélyezése**jelölőnégyzetet. A munkamennyiség és a munkaidőn kívüli munkaidő korlátozásának beállítása. Az érvényes tartományok 512 kbps és 1 023 Mbps között vannak.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Próbálja ki a [VMware](tutorial-migrate-vmware-agent.md) vagy a [fizikai kiszolgálók](tutorial-migrate-physical-virtual-machines.md) [ügynök-alapú áttelepítését](tutorial-migrate-vmware-agent.md) .

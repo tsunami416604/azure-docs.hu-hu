@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: sstein, bonova, carlrab
+ms.reviewer: sstein, bonova
 ms.date: 03/17/2020
-ms.openlocfilehash: 5d91fc0d5dd51ea5ef766f23519f38202b24a337
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 17838d4a652be3a1b50da56812731e0f634a0c08
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711306"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323124"
 ---
 # <a name="configure-an-existing-virtual-network-for-azure-sql-managed-instance"></a>Meglévő virtuális hálózat konfigurálása felügyelt Azure SQL-példányhoz
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -58,7 +58,7 @@ A szkript három lépésben készíti elő az alhálózatot:
 2. Confirm (megerősítés): megjeleníti a felhasználó által az SQL felügyelt példány központi telepítésének előkészítéséhez szükséges módosításokat. Emellett beleegyezik.
 3. Előkészítés: helyesen konfigurálja a virtuális hálózatot és az alhálózatot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az áttekintést lásd: [Mi az SQL felügyelt példány?](sql-managed-instance-paas-overview.md).
 - A virtuális hálózatok létrehozásával, felügyelt példány létrehozásával és adatbázis biztonsági másolatból való visszaállításával kapcsolatos oktatóanyagért lásd: [felügyelt példány létrehozása](instance-create-quickstart.md).

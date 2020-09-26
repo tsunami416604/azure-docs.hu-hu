@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/19/2017
 ms.custom: mvc
-ms.openlocfilehash: b656774762f5930c5665166a701bda7333940307
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: af8479f6460a6cc555d7ea67dcfe65c779878624
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322431"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91357862"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Futásidejű kivételek észlelése és diagnosztizálása az Azure Application Insights segítségével
 
@@ -97,7 +97,7 @@ Az Application Insights által gyűjtött minden adatot az Azure Log Analytics t
 
     ![Code](media/tutorial-runtime-exceptions/codelens.png)
 
-1. Kattintson a **Hatás elemzése** elemre az Application Insights Analytics megnyitásához.  Több lekérdezés is található itt, amelyek részleteket biztosítanak a sikertelen kérésekről, például az érintett felhasználókról, böngészőkről és régiókról.<br><br>![Elemzés](media/tutorial-runtime-exceptions/analytics.png)<br>
+1. Kattintson a **Hatás elemzése** elemre az Application Insights Analytics megnyitásához.  Több lekérdezés is található itt, amelyek részleteket biztosítanak a sikertelen kérésekről, például az érintett felhasználókról, böngészőkről és régiókról.<br><br>![A képernyőképen Application Insights ablak több lekérdezést is tartalmaz.](media/tutorial-runtime-exceptions/analytics.png)<br>
 
 ## <a name="add-work-item"></a>Munkaelem hozzáadása
 Ha az Application Insights alkalmazást egy követőrendszerhez csatlakoztatja, például az Azure DevOpshoz vagy a GitHubhoz, létrehozhat egy munkaelemet közvetlenül az Application Insightsból.
@@ -108,7 +108,7 @@ Ha az Application Insights alkalmazást egy követőrendszerhez csatlakoztatja, 
 
     ![Új munkaelem](media/tutorial-runtime-exceptions/new-work-item.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most már megtanulta, hogyan azonosíthatja a futásidejű kivételeket. Térjen át a következő oktatóanyagra, hogy megtanulja, hogyan azonosíthatja és diagnosztizálhatja a teljesítménybeli problémákat.
 
 > [!div class="nextstepaction"]

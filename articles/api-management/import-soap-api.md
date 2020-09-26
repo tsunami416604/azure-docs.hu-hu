@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: 583179c4678b43bef25174835ec2701d571b37b6
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 3ceaa357150fe0c4d26eeedc6821761d2eb00106
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905650"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91357964"
 ---
 # <a name="import-soap-api"></a>SOAP API importálása
 
@@ -45,7 +45,7 @@ Hajtsa végre a következő rövid útmutatót: [Azure API Management-példány 
 3. A **WSDL-specifikáció** mezőben adja meg azt az URL-címet, ahol a SOAP API található.
 4. Alapértelmezés szerint a **SOAP típusú továbbítás** választógomb van kijelölve. Így az API SOAP-ként lesz elérhető. A fogyasztónak a SOAP-szabályokat kell használnia. Ha REST API-t szeretne használni, kövesse a [SOAP API importálását és REST-konvertálását](restify-soap-api.md) ismertető szakasz lépéseit.
 
-    ![Továbbítás](./media/import-soap-api/pass-through.png)
+    ![Képernyőfelvétel: a létrehozás a W S D L-ből párbeszédpanel, ahol megadható a W S D L specifikáció.](./media/import-soap-api/pass-through.png)
 5. Nyomja le a Tab billentyűt.
 
     A rendszer kitölti a következő mezőket a SOAP API-ból származó adatokkal: Megjelenített név, Név, Leírás.
@@ -59,7 +59,7 @@ Hajtsa végre a következő rövid útmutatót: [Azure API Management-példány 
     * **Kezdő**
     * **Korlátlan**   
 8. Adja meg az egyéb API-beállításokat. Megadhatja az értékeket a létrehozás során, vagy később konfigurálhatja őket a **Beállítások** lapon. A beállításokat az [első API-oktatóanyag importálásával és közzétételével](import-and-publish.md#-import-and-publish-a-backend-api) foglalkozó cikkben ismertetjük.
-9. Válassza a **Létrehozás** lehetőséget.
+9. Kattintson a **Létrehozás** gombra.
 
 ### <a name="test-the-new-api-in-the-administrative-portal"></a>Az új API tesztelése a felügyeleti portálon
 

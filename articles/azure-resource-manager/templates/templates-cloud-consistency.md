@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
-ms.openlocfilehash: 9355482c26cabb96fc6292bab5d542f36aec6a8c
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 72f9e332a4faa98a8a86ef7b6edbefe20357e33f
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509756"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91356885"
 ---
 # <a name="develop-arm-templates-for-cloud-consistency"></a>ARM-sablonok fejlesztése a felhő konzisztenciájához
 
@@ -655,7 +655,7 @@ Az összes kapcsolódó beállítás, képesség és korlátozás nyomon követ�
 
 Az alábbi képen egy, az integrált fejlesztési környezet (IDE) használatával egy csoport fejlesztési folyamatának tipikus példája látható. Az idősor különböző szakaszaiban különböző tesztelési típusok lesznek végrehajtva. Itt két fejlesztő dolgozik ugyanazon a megoldáson, de ez a forgatókönyv egyformán érvényes egyetlen fejlesztőre vagy egy nagy csapatra is. Minden fejlesztő általában egy központi tárház helyi példányát hozza létre, amely lehetővé teszi, hogy mindegyik a helyi másolaton működjön, anélkül, hogy befolyásolná azokat a felhasználókat, akik ugyanazon a fájlokon dolgoznak.
 
-![Munkafolyamat](./media/templates-cloud-consistency/workflow.png)
+![A diagram két egységnyi tesztet és integrációs tesztet mutat be párhuzamosan a helyi I D E-n, amelyek egyesítik a C I/C fejlesztési folyamat egységes tesztelését, az integrációs teszteket, majd az üzembe helyezést, majd a telepítést.](./media/templates-cloud-consistency/workflow.png)
 
 A teszteléshez és automatizáláshoz vegye figyelembe a következő tippeket:
 
@@ -665,7 +665,7 @@ A teszteléshez és automatizáláshoz vegye figyelembe a következő tippeket:
 * Vegye figyelembe, hogy egyes tesztek a Azure Resource Manager csatlakoztatása nélkül is elvégezhetők. Mások, például a sablonok tesztelésének megkövetelése, hogy a Resource Manager olyan műveleteket végezzen, amelyeken nem végezhető el a kapcsolat nélküli üzemmód.
 * Egy központi telepítési sablon az érvényesítési API-val való tesztelése nem egyenlő a tényleges telepítéssel. Emellett akkor is, ha egy helyi fájlból telepít egy sablont, a sablonban lévő beágyazott sablonokra mutató hivatkozásokat közvetlenül a Resource Manager kéri le, és a virtuálisgép-bővítmények által hivatkozott összetevők lekérése a telepített virtuális gépen futó virtuálisgép-ügynök által történik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Resource Manager a sablonra vonatkozó megfontolások](/azure-stack/user/azure-stack-develop-templates)
 * [Ajánlott eljárások ARM-sablonokhoz](template-syntax.md)

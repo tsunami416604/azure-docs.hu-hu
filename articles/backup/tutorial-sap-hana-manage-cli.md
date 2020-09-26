@@ -4,12 +4,12 @@ description: Ebből az oktatóanyagból megtudhatja, hogyan kezelheti az Azure-b
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3051eb9a6f0c395f8ec06d92d6501296ec39c768
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 22ff95fe5261a839927aa6ad8123ba370710f178
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89007298"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323090"
 ---
 # <a name="tutorial-manage-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Oktatóanyag: SAP HANA-adatbázisok kezelése Azure-beli virtuális gépen az Azure CLI használatával
 
@@ -39,7 +39,7 @@ Az Azure CLI-vel könnyedén kezelheti az olyan Azure-beli virtuális gépeken f
 
 ## <a name="monitor-backup-and-restore-jobs"></a>Biztonsági mentési és visszaállítási feladatok figyelése
 
-A befejezett vagy jelenleg futó feladatok (biztonsági mentés vagy visszaállítás) figyeléséhez használja az az [Backup Job List](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-list) parancsmagot. A CLI lehetővé teszi [a jelenleg futó feladatok felfüggesztését](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-stop) , vagy [várjon, amíg a feladatok befejeződik](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-wait).
+A befejezett vagy jelenleg futó feladatok (biztonsági mentés vagy visszaállítás) figyeléséhez használja az az [Backup Job List](/cli/azure/backup/job#az-backup-job-list) parancsmagot. A CLI lehetővé teszi [a jelenleg futó feladatok felfüggesztését](/cli/azure/backup/job#az-backup-job-stop) , vagy [várjon, amíg a feladatok befejeződik](/cli/azure/backup/job#az-backup-job-wait).
 
 ```azurecli-interactive
 az backup job list --resource-group saphanaResourceGroup \
@@ -60,7 +60,7 @@ F7c68818-039f-4a0f-8d73-e0747e68a813  Restore (Log)          Completed   hxe [hx
 
 ## <a name="change-policy"></a>Házirend módosítása
 
-A SAP HANA biztonsági mentési konfiguráció alapjául szolgáló házirend módosításához használja az az [Backup Policy set](/cli/azure/backup/policy?view=azure-cli-latest#az-backup-policy-set) parancsmagot. A parancsmag Name paramétere arra a biztonsági mentési elemre hivatkozik, amelynek a szabályzatát módosítani szeretné. Ebben az oktatóanyagban a SAP HANA Database *saphanadatabase; hxe; hxe* szabályzatát cseréljük új házirend- *newsaphanaPolicy*. Új házirendek hozhatók létre az az [Backup Policy Create](/cli/azure/backup/policy?view=azure-cli-latest#az-backup-policy-create) parancsmag használatával.
+A SAP HANA biztonsági mentési konfiguráció alapjául szolgáló házirend módosításához használja az az [Backup Policy set](/cli/azure/backup/policy#az-backup-policy-set) parancsmagot. A parancsmag Name paramétere arra a biztonsági mentési elemre hivatkozik, amelynek a szabályzatát módosítani szeretné. Ebben az oktatóanyagban a SAP HANA Database *saphanadatabase; hxe; hxe* szabályzatát cseréljük új házirend- *newsaphanaPolicy*. Új házirendek hozhatók létre az az [Backup Policy Create](/cli/azure/backup/policy#az-backup-policy-create) parancsmag használatával.
 
 ```azurecli-interactive
 az backup item set policy --resource-group saphanaResourceGroup \
@@ -82,7 +82,7 @@ cb110094-9b15-4c55-ad45-6899200eb8dd  SAPHANA
 
 Egy Recovery Services-tárolóval [rendelkező SAP HANA-példány regisztrálása](tutorial-sap-hana-backup-cli.md#register-and-protect-the-sap-hana-instance) automatikusan felfedi az összes adatbázist ebben a példányban.
 
-Azonban abban az esetben, ha később új adatbázisokat ad hozzá a SAP HANA-példányhoz, használja az az [Backup Protect-Item inicializálási](/cli/azure/backup/protectable-item?view=azure-cli-latest#az-backup-protectable-item-initialize) parancsmagot. Ez a parancsmag felfedi a hozzáadott új adatbázisokat.
+Azonban abban az esetben, ha később új adatbázisokat ad hozzá a SAP HANA-példányhoz, használja az az [Backup Protect-Item inicializálási](/cli/azure/backup/protectable-item#az-backup-protectable-item-initialize) parancsmagot. Ez a parancsmag felfedi a hozzáadott új adatbázisokat.
 
 ```azurecli-interactive
 az backup protectable-item initialize --resource-group saphanaResourceGroup \
@@ -91,7 +91,7 @@ az backup protectable-item initialize --resource-group saphanaResourceGroup \
     --workload-type SAPHANA
 ```
 
-Ezután használja az az [Backup Protected-Item List](/cli/azure/backup/protectable-item?view=azure-cli-latest#az-backup-protectable-item-list) parancsmagot az SAP HANA-példányon felderített adatbázisok listázásához. Ez a lista azonban kizárja azokat az adatbázisokat, amelyeken már konfigurálva van a biztonsági másolat. Az adatbázis biztonsági mentésének észlelése után tekintse meg az SAP HANA-  [adatbázis biztonsági másolatának engedélyezése](tutorial-sap-hana-backup-cli.md#enable-backup-on-sap-hana-database)című témakört.
+Ezután használja az az [Backup Protected-Item List](/cli/azure/backup/protectable-item#az-backup-protectable-item-list) parancsmagot az SAP HANA-példányon felderített adatbázisok listázásához. Ez a lista azonban kizárja azokat az adatbázisokat, amelyeken már konfigurálva van a biztonsági másolat. Az adatbázis biztonsági mentésének észlelése után tekintse meg az SAP HANA-  [adatbázis biztonsági másolatának engedélyezése](tutorial-sap-hana-backup-cli.md#enable-backup-on-sap-hana-database)című témakört.
 
 ```azurecli-interactive
 az backup protectable-item list --resource-group saphanaResourceGroup \
@@ -127,7 +127,7 @@ Nézzük meg, hogyan lehet részletesebben leállítani a védelmet.
 
 ### <a name="stop-protection-with-retain-data"></a>Védelem leállítása az adatok megőrzésével
 
-Az adatmegőrzési védelem leállításához használja az az [Backup Protection disable](/cli/azure/backup/protection?view=azure-cli-latest#az-backup-protection-disable) parancsmagot.
+Az adatmegőrzési védelem leállításához használja az az [Backup Protection disable](/cli/azure/backup/protection#az-backup-protection-disable) parancsmagot.
 
 ```azurecli-interactive
 az backup protection disable --resource-group saphanaResourceGroup \
@@ -146,11 +146,11 @@ Name                                  ResourceGroup
 g0f15dae-7cac-4475-d833-f52c50e5b6c3  saphanaResourceGroup
 ```
 
-A művelet állapotának megtekintéséhez használja az az [Backup Job show](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) parancsmagot.
+A művelet állapotának megtekintéséhez használja az az [Backup Job show](/cli/azure/backup/job#az-backup-job-show) parancsmagot.
 
 ### <a name="stop-protection-without-retain-data"></a>Védelem leállítása az adat megőrzése nélkül
 
-A védelem leállításához az adat megőrzése nélkül használja az az [Backup Protection disable](/cli/azure/backup/protection?view=azure-cli-latest#az-backup-protection-disable) parancsmagot.
+A védelem leállításához az adat megőrzése nélkül használja az az [Backup Protection disable](/cli/azure/backup/protection#az-backup-protection-disable) parancsmagot.
 
 ```azurecli-interactive
 az backup protection disable --resource-group saphanaResourceGroup \
@@ -170,13 +170,13 @@ Name                                  ResourceGroup
 g0f15dae-7cac-4475-d833-f52c50e5b6c3  saphanaResourceGroup
 ```
 
-A művelet állapotának megtekintéséhez használja az az [Backup Job show](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) parancsmagot.
+A művelet állapotának megtekintéséhez használja az az [Backup Job show](/cli/azure/backup/job#az-backup-job-show) parancsmagot.
 
 ## <a name="resume-protection"></a>Védelem folytatása
 
 Ha leállítja a SAP HANA-adatbázis védelmét az adatmegőrzési lehetőséggel, később folytathatja a védelmet. Ha nem őrzi meg a biztonsági másolatban szereplő adatait, nem fogja tudni folytatni a védelmet.
 
-A védelem folytatásához használja az az [Backup Protection Resume](/cli/azure/backup/protection?view=azure-cli-latest#az-backup-protection-resume) parancsmagot.
+A védelem folytatásához használja az az [Backup Protection Resume](/cli/azure/backup/protection#az-backup-protection-resume) parancsmagot.
 
 ```azurecli-interactive
 az backup protection resume --resource-group saphanaResourceGroup \
@@ -194,7 +194,7 @@ Name                                  ResourceGroup
 b2a7f108-1020-4529-870f-6c4c43e2bb9e  saphanaResourceGroup
 ```
 
-A művelet állapotának megtekintéséhez használja az az [Backup Job show](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) parancsmagot.
+A művelet állapotának megtekintéséhez használja az az [Backup Job show](/cli/azure/backup/job#az-backup-job-show) parancsmagot.
 
 ## <a name="next-steps"></a>Következő lépések
 

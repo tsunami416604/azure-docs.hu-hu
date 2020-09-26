@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: 88f1e40101b807e82eaf69be6c167cd4aa2e2831
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4413a987af7a4802366556fb86c0c55e7b401776
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539193"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91356794"
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>Új bérlők kiépítése és katalógusa egy SaaS-alkalmazásban többvállalatos több-bérlős Azure SQL Database használatával
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -103,7 +103,7 @@ Bármely alkalmazáshoz hasonlóan a Wingtip is fejlődik az idő múlásával. 
 
 A SaaS-alkalmazásokkal ezeket a módosításokat koordinált módon kell üzembe helyezni valószínűleg nagyszámú bérlői adatbázison. Ahhoz, hogy ezek a változások a jövőbeli bérlői adatbázisokban legyenek, be kell építeni őket a létesítési folyamatba. Ezt a kihívást tovább vizsgálja a [séma kezelése oktatóanyagban](saas-tenancy-schema-management.md).
 
-#### <a name="scripts"></a>Scripts
+#### <a name="scripts"></a>Parancsfájlok
 
 Ebben az oktatóanyagban a bérlői kiépítési szkriptek az alábbi forgatókönyveket támogatják:
 - Bérlő kiépítés egy meglévő, más bérlők által megosztott adatbázisba.
@@ -169,7 +169,7 @@ Annak megismeréséhez, hogy a Wingtip alkalmazás hogyan valósítja meg az új
 
 4. Miután a szkript végrehajtása leáll a törésponton, nyomja le az **F11** billentyűt a kód beléptetéséhez.
 
-   ![debug](./media/saas-multitenantdb-provision-and-catalog/debug.png)
+   ![A képernyőképen a hibakeresési menüt tartalmazó Windows PowerShell integrált parancsprogram-kezelési környezet látható, majd válassza ki a kiválasztott elemet.](./media/saas-multitenantdb-provision-and-catalog/debug.png)
 
 5. A szkript végrehajtásának nyomon követéséhez használja a **Debug** menüpontot, az **F10** és az **F11**billentyűt a függvények meghívásához.
 
@@ -237,7 +237,7 @@ A bérlők és az azokhoz tartozó adatbázisok teljes listája elérhető a kat
 - A bérlő nevét a bérlők táblában tárolja a rendszer.
 - Az adatbázis nevét a rendszer a szegmens felügyeleti táblázatokban tárolja.
 
-1. A SQL Server Management Studio (SSMS) alkalmazásban kapcsolódjon a bérlők kiszolgálójához a **Catalog-Mt. \<USER\> . database.Windows.net**, a login = **Developer**és a Password = **P \@ ssword1** használatával.
+1. A SQL Server Management Studio (SSMS) alkalmazásban kapcsolódjon a bérlők kiszolgálójához a **Catalog-Mt. \<USER\> címen. database.windows.net**, bejelentkezés = **Developer**és Password = **P \@ ssword1**
 
     ![SSMS-kapcsolatok párbeszédpanel](./media/saas-multitenantdb-provision-and-catalog/SSMSConnection.png)
 

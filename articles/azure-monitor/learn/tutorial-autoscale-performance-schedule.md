@@ -8,12 +8,12 @@ ms.date: 12/11/2017
 ms.author: ancav
 ms.custom: mvc
 ms.subservice: autoscale
-ms.openlocfilehash: 8a55ab9b6b87a379fbdebcead4467ec47507d67a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 8853a153450a07105ed4bac13de0da6cea95ce2a
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327514"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91356349"
 ---
 # <a name="create-an-autoscale-setting-for--azure-resources-based-on-performance-data-or-a-schedule"></a>Automatikus méretezési beállítás Azure-erőforrásokhoz teljesítményadatok vagy ütemezés alapján
 
@@ -27,7 +27,7 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 > * Horizontális leskálázási művelet kiváltása és a példányszám csökkenésének megfigyelése
 > * Az erőforrások törlése
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
+Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 ## <a name="log-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra
 
@@ -46,7 +46,7 @@ A rendszer néhány percen belül üzembe helyezi az erőforrásokat. Az oktató
 1. Kattintson a bal oldali navigációs ablaktáblán a **Figyelés** eleme. Ha az oldal betöltött, kattintson az **Automatikus skálázás** lapra.
 2. Itt találja az előfizetéséhez tartozó azon erőforrások listáját, amelyek támogatják az automatikus méretezést. Keresse meg az oktatóanyag korábbi részében létrehozott App Service-csomagot, és kattintson rá.
 
-    ![Az automatikus méretezési beállítások megnyitása](./media/tutorial-autoscale-performance-schedule/monitor-blade-autoscale.png)
+    ![Képernyőfelvétel: a Azure Portal a figyelővel, majd az autoscale kiválasztva.](./media/tutorial-autoscale-performance-schedule/monitor-blade-autoscale.png)
 
 3. Az automatikus skálázáshoz kattintson az **Automatikus skálázás engedélyezése** gombra.
 
@@ -59,7 +59,7 @@ A következő néhány lépés segít kitölteni az automatikus skálázási ké
 2. Az alapértelmezett profilban a **Skálázási mód** legyen „Skálázás adott példányszámra”.
 3. Állítsa a példányszámot **1**-re. Ez a beállítás biztosítja, hogy ha nincs másik aktív vagy működő profil, akkor az alapértelmezett profil példányszáma visszaáll 1-re.
 
-   ![Az automatikus méretezési beállítások megnyitása](./media/tutorial-autoscale-performance-schedule/autoscale-setting-profile.png)
+   ![Képernyőfelvétel: az autoskálázási beállítás lapja, amely a beállításhoz megadott névvel rendelkezik.](./media/tutorial-autoscale-performance-schedule/autoscale-setting-profile.png)
 
 
 ## <a name="create-recurrence-profile"></a>Ismétlődési profil létrehozása
@@ -169,7 +169,7 @@ Az automatikus méretezési beállítás leskálázási feltétele akkor aktivá
 
 4. A törlés megerősítéséhez írja be a **yes** (igen) szöveget a szövegmezőbe, majd kattintson a **Törlés** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban az alábbiakat végezte el:  
 > [!div class="checklist"]

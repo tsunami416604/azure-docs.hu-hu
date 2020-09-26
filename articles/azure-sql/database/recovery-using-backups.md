@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mathoma, carlrab, danil
+ms.reviewer: mathoma, sstein, danil
 ms.date: 09/26/2019
-ms.openlocfilehash: 6b07b6c3e54f4aebcda6c2e84047ecd1a27b3d5b
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 069387b5c761d502d960d0284d156b4ee6431a55
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809472"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91357012"
 ---
 # <a name="recover-using-automated-database-backups---azure-sql-database--sql-managed-instance"></a>Helyreállítás automatikus adatbázis-biztonsági másolatokkal – Azure SQL Database & SQL felügyelt példánya
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -91,13 +91,13 @@ A Azure Portalban visszaállítani kívánt adatbázis áttekintés paneljéről
 
 Ha a Azure Portal használatával kívánja helyreállítani az adatbázist egy adott időpontra, nyissa meg az adatbázis áttekintése lapot, és válassza a **visszaállítás** lehetőséget az eszköztáron. Válassza ki a biztonsági mentési forrást, és válassza ki azt az időponthoz tartozó biztonsági mentési pontot, amelyből új adatbázist kíván létrehozni.
 
-  ![Az adatbázis-visszaállítási lehetőségek képernyőképe](./media/recovery-using-backups/pitr-backup-sql-database-annotated.png)
+  ![Képernyőkép a SQL Database adatbázis-visszaállítási lehetőségeiről.](./media/recovery-using-backups/pitr-backup-sql-database-annotated.png)
 
 #### <a name="sql-managed-instance"></a>SQL Managed Instance
 
 Felügyelt példány adatbázisának egy időpontra történő helyreállításához a Azure Portal segítségével nyissa meg az adatbázis-áttekintés lapot, és válassza a **visszaállítás** lehetőséget az eszköztáron. Válassza ki azt az időponthoz tartozó biztonsági mentési pontot, amelyből új adatbázist kíván létrehozni.
 
-  ![Az adatbázis-visszaállítási lehetőségek képernyőképe](./media/recovery-using-backups/pitr-backup-managed-instance-annotated.png)
+  ![Képernyőkép a felügyelt SQL-példány adatbázis-visszaállítási lehetőségeiről.](./media/recovery-using-backups/pitr-backup-managed-instance-annotated.png)
 
 > [!TIP]
 > Az adatbázis biztonsági másolatból való programozott visszaállításával kapcsolatban lásd: a [helyreállítás programozott módon történő végrehajtása automatizált biztonsági mentéssel](recovery-using-backups.md).
@@ -140,7 +140,7 @@ A törölt példányok adatbázisának visszaállítását bemutató minta Power
 > [!TIP]
 > A törölt adatbázisok programozott visszaállításával kapcsolatban lásd: a [helyreállítás programozott módon történő végrehajtása automatizált biztonsági mentéssel](recovery-using-backups.md).
 
-## <a name="geo-restore"></a>Georedundáns helyreállítás
+## <a name="geo-restore"></a>Georedundáns visszaállítás
 
 > [!IMPORTANT]
 > A Geo-visszaállítás csak a Geo-redundáns (RA-GRS) biztonsági mentési tárolási típussal konfigurált felügyelt példányok esetén érhető el. A helyileg redundáns vagy a Zone-redundáns biztonsági mentési tárolási típusokkal konfigurált felügyelt példányok nem támogatják a Geo-visszaállítást.
@@ -259,9 +259,9 @@ A felügyelt példányok adatbázisának az Azure CLI használatával történő
 
 Az automatikus biztonsági mentések védik az adatbázisokat a felhasználók és alkalmazások hibáiból, a véletlen adatbázis-törlésből és a hosszan tartó kimaradásokból. Ez a beépített képesség minden szolgáltatási réteghez és számítási mérethez elérhető.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Üzletmenet-folytonosság áttekintése](business-continuity-high-availability-disaster-recover-hadr-overview.md)
+- [Az üzletmenet folytonossága – áttekintés](business-continuity-high-availability-disaster-recover-hadr-overview.md)
 - [Automatikus biztonsági mentések SQL Database](automated-backups-overview.md)
 - [Hosszú távú megőrzés](long-term-retention-overview.md)
 - A gyorsabb helyreállítási lehetőségek megismeréséhez lásd: [aktív földrajzi replikálás](active-geo-replication-overview.md) vagy [automatikus feladatátvételi csoportok](auto-failover-group-overview.md).

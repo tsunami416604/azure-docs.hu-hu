@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/28/2019
 ms.author: sngun
 ms.custom: devx-track-java
-ms.openlocfilehash: c9abc4dc89651eec7df635fb415314b2c12da3a6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: b1de0fa2e6601e4350b52caea32f8bc379909f85
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319762"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91356366"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>A valós idejű adatelemzések megjelenítéséhez használja a Azure Cosmos DB módosítási csatornát
 
@@ -157,7 +157,7 @@ Amikor új dokumentumot hoznak létre, vagy egy aktuális dokumentumot módosít
    * Cserélje le a **gyűjtemény neve** szöveget a gyűjtemény nevével. Ha követte a korábbi utasításokat, a gyűjtemény neve changefeedlabcollection.  
    * Cserélje le a **bérletek gyűjteménye nevét** a bérletek gyűjteményének nevére. Ha követte a korábbi utasításokat, a bérletek gyűjteményének neve **bérletek**.  
    * Győződjön meg arról, hogy a Visual Studio tetején a zöld nyíl bal oldalán található indítási projekt mező a következőt mondja: **ChangeFeedFunction**.  
-   * A program futtatásához kattintson a **Start** gombra az oldal tetején.  
+   * A program futtatásához kattintson a **Start**  gombra az oldal tetején.  
    * Ellenőrizheti, hogy a függvény fut-e, amikor a konzol alkalmazás a "feladat-gazdagép elindult".
 
 ## <a name="insert-data-into-azure-cosmos-db"></a>Adatbeszúrás Azure Cosmos DBba 
@@ -315,7 +315,7 @@ A Power BI egy üzleti elemzési eszközcsomag, mellyel adatokat elemezhet és m
 
    A minta irányítópult a következő diagramokat keresi:
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/visualizations.png" alt-text="vizualizációk":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/visualizations.png" alt-text="A képernyőfelvétel egy minta-irányítópultot mutat be, amely a megvásárolt elemek átlagos árát tartalmazza művelet, egyedi látogató, bevétel és 5 legfontosabb elem alapján.":::
 
 ## <a name="optional-visualize-with-an-e-commerce-site"></a>Nem kötelező: megjelenítés E-kereskedelmi webhellyel
 
@@ -393,6 +393,6 @@ Most bemutatjuk, hogyan használható az új adatelemzési eszköz egy valós e-
 
 A laborban létrehozott erőforrások törléséhez keresse meg [Azure Portal](https://portal.azure.com/)az erőforráscsoportot, majd válassza az **erőforráscsoport törlése** elemet az oldal tetején található menüből, és kövesse a megadott utasításokat.
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
   
 * Ha többet szeretne megtudni a hírcsatornák változásáról, tekintse meg a [Azure Cosmos db](change-feed.md) 

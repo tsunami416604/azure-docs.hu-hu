@@ -7,18 +7,18 @@ author: MashaMSFT
 tags: azure-resource-manager
 ms.assetid: aa5bf144-37a3-4781-892d-e0e300913d03
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/12/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: aa0fdddbf31cadad55582f4d45c8e536ce74acd9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 26052441d19abb6a0c423a3b3d6f6c2d21478814
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84667424"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91272055"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>Kapcsolódás SQL Server Azure-beli virtuális géphez
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -39,10 +39,10 @@ Ha kiépít egy SQL Server VM a Azure Portalban, lehetősége van megadnia az **
 
 A kapcsolódási lehetőségek a következők:
 
-| Beállítás | Description |
+| Beállítás | Leírás |
 |---|---|
 | **Nyilvános** | Kapcsolódjon SQL Server az interneten keresztül. |
-| **Privát** | Kapcsolódjon SQL Server ugyanahhoz a virtuális hálózathoz. |
+| **Személyes** | Kapcsolódjon SQL Server ugyanahhoz a virtuális hálózathoz. |
 | **Helyi** | Kapcsolódjon SQL Server helyileg ugyanazon a virtuális gépen. | 
 
 A következő részek részletesebben ismertetik a **nyilvános** és a **magánjellegű** beállításokat.
@@ -91,7 +91,7 @@ Feltételezve, hogy konfigurálta a DNS-t a virtuális hálózaton, csatlakozhat
 Server=mysqlvm;Integrated Security=true
 ```
 
-## <a name="change-sql-connectivity-settings"></a><a id="change"></a>SQL-kapcsolat beállításainak módosítása
+## <a name="change-sql-connectivity-settings"></a><a id="change"></a> SQL-kapcsolat beállításainak módosítása
 
 [!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
 
@@ -111,7 +111,7 @@ A Azure Portal a SQL Server virtuális gép csatlakozási beállításait módos
 
    ![SQL virtuális gép frissítési értesítése](./media/ways-to-connect-to-sql/sql-vm-updating-notification.png)
 
-## <a name="enable-tcpip-for-developer-and-express-editions"></a><a id="manualtcp"></a>A TCP/IP engedélyezése fejlesztőknek és expressz kiadásoknak
+## <a name="enable-tcpip-for-developer-and-express-editions"></a><a id="manualtcp"></a> A TCP/IP engedélyezése fejlesztőknek és expressz kiadásoknak
 
 SQL Server kapcsolódási beállítások módosításakor az Azure nem engedélyezi automatikusan a TCP/IP protokollt SQL Server Developer és Express kiadásokhoz. Az alábbi lépések ismertetik, hogyan lehet manuálisan engedélyezni a TCP/IP protokollt, hogy távolról is csatlakozhasson IP-címmel.
 
@@ -129,13 +129,13 @@ Az alábbi lépések bemutatják, hogyan hozhat létre opcionális DNS-címkét 
 
 [!INCLUDE [Connect to SQL Server in a VM Resource Manager](../../../../includes/virtual-machines-sql-server-connection-steps-resource-manager.md)]
 
-## <a name="manual-configuration-and-troubleshooting"></a><a id="manual"></a>Manuális konfigurálás és hibaelhárítás
+## <a name="manual-configuration-and-troubleshooting"></a><a id="manual"></a> Manuális konfigurálás és hibaelhárítás
 
 Bár a portál lehetőséget biztosít a kapcsolatok automatikus konfigurálására, hasznos tudni, hogyan konfigurálhatja a kapcsolatot manuálisan. A követelmények megismerése is segítséget nyújthat a hibaelhárításban.
 
 A következő táblázat az Azure-beli virtuális gépen SQL Serverhoz való kapcsolódás követelményeit sorolja fel.
 
-| Követelmény | Description |
+| Követelmény | Leírás |
 |---|---|
 | [SQL Server hitelesítési mód engedélyezése](/sql/database-engine/configure-windows/change-server-authentication-mode#use-ssms) | SQL Server hitelesítés szükséges ahhoz, hogy távolról csatlakozhasson a virtuális GÉPHEZ, hacsak nem konfigurálta a Active Directoryt egy virtuális hálózaton. |
 | [SQL-bejelentkezés létrehozása](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/create-a-login) | SQL-hitelesítés használata esetén olyan felhasználónévvel és jelszóval rendelkező SQL-bejelentkezésre van szükség, amely a céladatbázis engedélyeivel is rendelkezik. |
@@ -146,7 +146,7 @@ A következő táblázat az Azure-beli virtuális gépen SQL Serverhoz való kap
 > [!TIP]
 > Az előző táblázatban szereplő lépések a Kapcsolódás a portálon való konfigurálásakor lesznek végrehajtva. Ezekkel a lépésekkel megerősítheti a konfigurációt, vagy manuálisan állíthatja be a kapcsolatot SQL Server számára.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha meg szeretné tekinteni a telepítési utasításokat ezen csatlakozási lépések mellett, tekintse [meg a SQL Server virtuális gép üzembe helyezése az Azure](create-sql-vm-portal.md)-ban című témakört.
 

@@ -3,12 +3,12 @@ title: A szolgáltatási költségek csökkentése Azure Advisor használatával
 description: A Azure Advisor használatával optimalizálhatja az Azure-beli üzemelő példányok költségeit.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: d234e89d0d042999805fae73d3df24c03d1027c9
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 89bc72bcf3a19867341675f89cbc0a734d7996d5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654038"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325844"
 ---
 # <a name="reduce-service-costs-by-using-azure-advisor"></a>A szolgáltatási költségek csökkentése Azure Advisor használatával
 
@@ -20,7 +20,7 @@ Bár bizonyos alkalmazási forgatókönyvek alacsony kihasználtságot eredmény
 
 Az ajánlott műveletek leállítása vagy átméretezése a kiértékelt erőforrásra jellemző.
 
-Az Advisor Advanced értékelési modellje a virtuális gépek leállítását is mérlegeli, ha mindkét utasítás igaz: 
+Az Advisor Advanced értékelési modellje a virtuális gépek leállítását veszi figyelembe, ha az összes ilyen utasítás igaz: 
 - A CPU-kihasználtság maximális értéke P95th kisebb, mint 3%. 
 - A hálózati kihasználtság kevesebb, mint 2% a hét napos időszakban.
 - A memória nyomása kisebb a küszöbértéknél
@@ -107,7 +107,7 @@ Az Advisor azonosítja azokat az erőforrásokat, amelyekben a tábla-gyorsító
 
 1. Az **Advisor** irányítópulton válassza a **Cost (Cost** ) lapot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Advisor ajánlásaival kapcsolatos további tudnivalókért tekintse meg a következő témakört:
 * [Az Advisor bemutatása](advisor-overview.md)

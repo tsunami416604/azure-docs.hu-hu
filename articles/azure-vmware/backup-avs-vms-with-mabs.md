@@ -3,12 +3,12 @@ title: Azure VMware-megoldás virtuális gépek biztonsági mentése Azure Backu
 description: Konfigurálja az Azure VMware-megoldási környezetét a virtuális gépek biztonsági mentésére Azure Backup Server használatával.
 ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: 9b37f909fc8199975eb399fe5ca28ebb53ab2789
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4cba224de3d8b223ebcc1ac4d2d8d569275b4e3b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84817934"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91272246"
 ---
 # <a name="back-up-azure-vmware-solution-vms-with-azure-backup-server"></a>Azure VMware-megoldás virtuális gépek biztonsági mentése Azure Backup Server
 
@@ -105,9 +105,9 @@ A VMware 6,7-es verziójában a TLS engedélyezve volt a kommunikációs protoko
 
 1. Kattintson a jobb gombbal a TLS elemre. REG-fájlt, majd válassza az **Egyesítés** vagy a **Megnyitás** lehetőséget a beállítások beállításjegyzékhez való hozzáadásához.
 
-## <a name="add-the-provisioning-ip-address-for-azure-vmware-solution-esxi-hosts-on-azure-backup-server"></a>Az Azure VMware Solution ESXi-gazdagépek kiépítési IP-címének hozzáadása a Azure Backup Server
+## <a name="add-the-provisioning-ip-address"></a>A kiépítési IP-cím hozzáadása 
 
-Az előzetes verzióban az Azure VMware megoldás nem oldja meg az ESX-gazdagépet a virtuális hálózaton üzembe helyezett virtuális gépről. További lépéseket kell végrehajtania a gazda fájl bejegyzésének a Azure Backup Server virtuális gépen való hozzáadásához.
+Az Azure VMware-megoldás nem oldja fel az ESX-gazdagépet a virtuális hálózaton üzembe helyezett virtuális gépről. További lépéseket kell tennie a gazda fájl bejegyzésének a Azure Backup Server virtuális gépen való hozzáadásához.
 
 ### <a name="identify-the-ip-address-for-esxi-hosts"></a>Az ESXi-gazdagépek IP-címének azonosítása
 
@@ -144,7 +144,7 @@ Az előzetes verzióban az Azure VMware megoldás nem oldja meg az ESX-gazdagép
 
 1. A **hitelesítő adatok kezelése** párbeszédpanelen válassza a **Hozzáadás**lehetőséget.
 
-   ![Azure Backup Server hitelesítő adatok kezelése párbeszédpanel](../backup/media/backup-azure-backup-server-vmware/mabs-manage-credentials-dialog.png)
+   ![A hitelesítő adatok kezelése párbeszédpanelen válassza a Hozzáadás lehetőséget.](../backup/media/backup-azure-backup-server-vmware/mabs-manage-credentials-dialog.png)
 
 1. A **hitelesítő adatok hozzáadása** párbeszédpanelen adja meg az új hitelesítő adat nevét és leírását. Adja meg a VMware-kiszolgálón megadott felhasználónevet és jelszót.
 
@@ -155,7 +155,7 @@ Az előzetes verzióban az Azure VMware megoldás nem oldja meg az ESX-gazdagép
 
 1. Az új hitelesítő adat hozzáadásához válassza a **Hozzáadás** lehetőséget.
 
-   ![Azure Backup Server hitelesítő adatok kezelése párbeszédpanel](../backup/media/backup-azure-backup-server-vmware/new-list-of-mabs-creds.png)
+   ![Képernyőfelvétel: a hitelesítő adatok kezelése párbeszédpanel Azure Backup Server új hitelesítő adatokkal jelenik meg.](../backup/media/backup-azure-backup-server-vmware/new-list-of-mabs-creds.png)
 
 ## <a name="add-the-vcenter-server-to-azure-backup-server"></a>A vCenter-kiszolgáló hozzáadása a Azure Backup Server
 
@@ -192,7 +192,10 @@ Az előzetes verzióban az Azure VMware megoldás nem oldja meg az ESX-gazdagép
 
    ![Befejezés lap](../backup/media/backup-azure-backup-server-vmware/summary-screen.png)
 
-   Az **üzemi kiszolgáló** területen látható vCenter-kiszolgálót a **VMware-kiszolgálóként** **és az** **ügynök állapotaként** kell megtekinteni. Ha az **ügynök állapota** **ismeretlenként**jelenik meg, válassza a **frissítés**lehetőséget.
+   Az **üzemi kiszolgáló** területen látható vCenter-kiszolgálót a **VMware-kiszolgálóként** **és az** **ügynök állapotaként** kell megtekinteni. 
+
+   >[!TIP]
+   >Ha az **ügynök állapota** **ismeretlenként**jelenik meg, válassza a **frissítés**lehetőséget.
 
 ## <a name="configure-a-protection-group"></a>Védelmi csoport konfigurálása
 
@@ -242,7 +245,7 @@ A védelmi csoportok több virtuális gépet gyűjtenek, és ugyanazokat az adat
 
 1. A **replika-létrehozási módszer kiválasztása** lapon adja meg, hogyan szeretné elkészíteni a kezdeti biztonsági mentést, és válassza a **tovább**lehetőséget.
 
-   - Az alapértelmezett érték **automatikusan a hálózaton keresztül** történik, és **most**. Ha az alapértelmezett értéket használja, akkor az off-Peak időt kell megadnia. Ha **később**választja, adjon meg egy napot és egy időpontot.
+   - Az alapértelmezett érték **automatikusan a hálózaton keresztül** történik, és **most**. Ha az alapértelmezett értéket használja, akkor az off-Peak időt kell megadnia. Ha a **később**lehetőséget választja, adjon meg egy napot és egy időpontot.
    - Nagy mennyiségű vagy kevésbé optimális hálózati feltételnél érdemes lehet a cserélhető adathordozó használatával offline módon replikálni az adatfájlokat.
 
    ![Replika-létrehozási módszer kiválasztása](../backup/media/backup-azure-backup-server-vmware/replica-creation.png)
@@ -300,7 +303,7 @@ A Azure Backup Server felügyeleti konzol két módon lehet helyreállítani az 
 
 1. A Azure Backup Server felügyeleti konzol válassza ki a **helyreállítás** nézetet. 
 
-1. A **Tallózás** panelen tallózással vagy szűréssel keresse meg a helyreállítani kívánt virtuális gépet. Miután kiválasztott egy virtuális gépet vagy mappát, a **helyreállítási pontok** ablaktáblán megjelennek a rendelkezésre álló helyreállítási pontok.
+1. A **Tallózás** ablaktáblában tallózással vagy szűréssel keresse meg a helyreállítani kívánt virtuális gépet. Miután kiválasztott egy virtuális gépet vagy mappát, megjelenik a rendelkezésre álló helyreállítási pontok.
 
    ![Rendelkezésre álló helyreállítási pontok](../backup/media/restore-azure-backup-server-vmware/recovery-points.png)
 
@@ -317,12 +320,13 @@ A Azure Backup Server felügyeleti konzol két módon lehet helyreállítani az 
 
    ![Helyreállítási varázsló, a helyreállítás kijelölésének áttekintése lap](../backup/media/restore-azure-backup-server-vmware/recovery-wizard.png)
 
-1. A **tovább** gombra kattintva nyissa **meg a helyreállítási beállítások megadása** képernyőt. Kattintson a **tovább** gombra, ha a **helyreállítási típus kiválasztása** képernyőre szeretne lépni. 
+1. A **tovább** gombra kattintva nyissa **meg a helyreállítási beállítások megadása** képernyőt. 
+1. Kattintson a **tovább** gombra, ha a **helyreállítási típus kiválasztása** képernyőre szeretne lépni. 
 
    > [!NOTE]
    > A VMware-alapú munkaterhelések nem támogatják a hálózati sávszélesség szabályozásának engedélyezését.
 
-1. A **helyreállítási típus kiválasztása** lapon válassza ki, hogy a helyreállítást az eredeti példányra vagy egy új helyre kívánja-e visszaállítani, majd válassza a **tovább**lehetőséget.
+1. A **helyreállítási típus kiválasztása** lapon válassza a helyreállítás az eredeti példányra vagy egy új helyre lehetőséget, majd kattintson a **tovább**gombra.
 
    - Ha a **helyreállítás az eredeti példányra**lehetőséget választja, nem kell további döntéseket hoznia a varázslóban. A rendszer az eredeti példányra vonatkozó adatgyűjtést használja.
    - Ha **bármelyik gazdagépen a helyreállítás virtuális géphez**lehetőséget választja, akkor a **célhely megadása** képernyőn adja meg az **ESXi-gazdagép**, az **erőforráskészlet**, a **mappa**és az **elérési út**adatait.
@@ -342,7 +346,7 @@ A védett virtuális gépek helyreállítási pontjairól is visszaállíthatja 
 
 1. A Azure Backup Server felügyeleti konzol válassza ki a **helyreállítás** nézetet.
 
-1. A **Tallózás** panelen tallózással vagy szűréssel keresse meg a helyreállítani kívánt virtuális gépet. Miután kiválasztott egy virtuális gépet vagy mappát, a **helyreállítási pontok** ablaktáblán megjelennek a rendelkezésre álló helyreállítási pontok.
+1. A **Tallózás** ablaktáblában tallózással vagy szűréssel keresse meg a helyreállítani kívánt virtuális gépet. Miután kiválasztott egy virtuális gépet vagy mappát, megjelenik a rendelkezésre álló helyreállítási pontok.
 
    ![Elérhető helyreállítási pontok](../backup/media/restore-azure-backup-server-vmware/vmware-rp-disk.png)
 
@@ -379,7 +383,7 @@ A védett virtuális gépek helyreállítási pontjairól is visszaállíthatja 
 
 1. Az **Összefoglalás** képernyőn tekintse át a beállításokat, majd **kattintson a helyreállítás** elemre a helyreállítási folyamat elindításához. A **helyreállítás állapota** képernyőn a helyreállítási művelet előrehaladása látható.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A biztonsági másolatok beállítása során felmerülő problémák elhárításához tekintse át a Azure Backup Server hibaelhárítási útmutatóját.
 

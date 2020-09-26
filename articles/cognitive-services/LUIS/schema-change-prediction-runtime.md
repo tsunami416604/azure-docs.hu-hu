@@ -1,14 +1,16 @@
 ---
 title: Alkalmazás kiterjesztése futásidőben – LUIS
 description: ''
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/14/2020
-ms.openlocfilehash: c0f9d71f5d89d73d9cdce2a2f646859d8eba3adc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 69e2608fb01ece81f555aae2f3d4a2e4a05cfc90
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81538577"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322801"
 ---
 # <a name="extend-app-at-prediction-runtime"></a>Alkalmazás kiterjesztése előrejelzési futtatókörnyezetben
 
@@ -34,7 +36,7 @@ A külső entitások a v3 authoring API részét képezik. További információ
 
 ### <a name="entity-already-exists-in-app"></a>Az entitás már létezik az alkalmazásban
 
-A kérelem elküldésekor a betanított és a közzétett alkalmazásban már léteznie kell a külső entitás értéke, amelyet a `entityName` rendszer a végponti kérelem post törzsében átadott. Az entitás típusa nem számít, az összes típus támogatott.
+A kérelem elküldésekor a `entityName` betanított és a közzétett alkalmazásban már léteznie kell a külső entitás értéke, amelyet a rendszer a végponti kérelem post törzsében átadott. Az entitás típusa nem számít, az összes típus támogatott.
 
 ### <a name="first-turn-in-conversation"></a>A beszélgetés első bekapcsolása
 
@@ -42,7 +44,7 @@ Vegye fontolóra egy csevegési bot-beszélgetés első kitöltését, ahol a fe
 
 `Send Hazem a new message`
 
-A csevegési robottól a LUIS-re irányuló kérés a POST törzsben található `Hazem` információkkal is átadható, így közvetlenül a felhasználó névjegyeinek felel meg.
+A csevegési robottól a LUIS-re irányuló kérés a POST törzsben található információkkal is átadható, `Hazem` így közvetlenül a felhasználó névjegyeinek felel meg.
 
 ```json
     "externalEntities": [
@@ -66,7 +68,7 @@ A csevegési robot következő felhasználójának kimondása homályosan műkö
 
 `Send him a calendar reminder for the party.`
 
-A beszélgetés ezen részében a Kimondás `him` a következőre hivatkozik: `Hazem`. A POST szövegtörzsben lévő beszélgetési csevegési robot a kinyert entitás értékére képezhető `him` le. `Hazem`
+A beszélgetés ezen részében a Kimondás a következőre `him` hivatkozik: `Hazem` . A POST szövegtörzsben lévő beszélgetési csevegési robot a `him` kinyert entitás értékére képezhető le `Hazem` .
 
 ```json
     "externalEntities": [
@@ -86,9 +88,9 @@ Az előrejelzési válasz tartalmazza azt a külső entitást, amely az összes 
 
 ### <a name="override-existing-model-predictions"></a>Meglévő modell-előrejelzések felülbírálása
 
-A `preferExternalEntities` beállítások tulajdonság azt adja meg, hogy ha a felhasználó olyan külső entitást küld, amely átfedésben van egy azonos nevű előre jelzett entitással, a Luis kiválasztja az átadott entitást vagy a modellben meglévő entitást.
+A `preferExternalEntities` Beállítások tulajdonság azt adja meg, hogy ha a felhasználó olyan külső entitást küld, amely átfedésben van egy azonos nevű előre jelzett entitással, a Luis kiválasztja az átadott entitást vagy a modellben meglévő entitást.
 
-Vegyük például a lekérdezést `today I'm free`. A LUIS `today` a következő választ datetimeV2 észleli:
+Vegyük például a lekérdezést `today I'm free` . A LUIS a `today` következő választ datetimeV2 észleli:
 
 ```JSON
 "datetimeV2": [
@@ -117,7 +119,7 @@ Ha a felhasználó a külső entitást küldi el:
 }
 ```
 
-Ha a `preferExternalEntities` értéke `false`, a Luis egy választ ad vissza, mintha a külső entitás nem lett elküldve.
+Ha a értéke `preferExternalEntities` , a `false` Luis egy választ ad vissza, mintha a külső entitás nem lett elküldve.
 
 ```JSON
 "datetimeV2": [
@@ -133,7 +135,7 @@ Ha a `preferExternalEntities` értéke `false`, a Luis egy választ ad vissza, m
 ]
 ```
 
-Ha a `preferExternalEntities` értéke `true`, a Luis egy választ ad vissza, amely a következőket tartalmazza:
+Ha a értéke `preferExternalEntities` , a `true` Luis egy választ ad vissza, amely a következőket tartalmazza:
 
 ```JSON
 "datetimeV2": [
@@ -145,7 +147,7 @@ Ha a `preferExternalEntities` értéke `true`, a Luis egy választ ad vissza, am
 
 
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 
 A _választható_ `resolution` tulajdonság visszaadja az előrejelzési választ, amely lehetővé teszi a külső entitáshoz társított metaadatok átadását, majd visszaküldi a válaszban.
 
@@ -173,7 +175,7 @@ A List entitás lehet üres a LUIS-alkalmazásban, de léteznie kell. A LUIS-alk
 
 ### <a name="dynamic-list-json-request-body"></a>Dinamikus lista JSON-kérelmének törzse
 
-A következő JSON-törzsbe való küldéssel adjon hozzá egy új, szinonimákkal ellátott allistát a listához, és Tippelje meg a `LUIS`szöveg lista entitását, a `POST` lekérdezés-előrejelzési kérelemmel együtt:
+A következő JSON-törzsbe való küldéssel adjon hozzá egy új, szinonimákkal ellátott allistát a listához, és Tippelje meg a szöveg lista entitását, `LUIS` a `POST` lekérdezés-előrejelzési kérelemmel együtt:
 
 ```JSON
 {
@@ -202,7 +204,7 @@ A következő JSON-törzsbe való küldéssel adjon hozzá egy új, szinonimákk
 
 Az előrejelzési válasz tartalmazza a List entitást az összes többi előre jelzett entitással együtt, mert a kérelemben van definiálva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Előrejelzési pontszám](luis-concept-prediction-score.md)
 * [Az API v3-változások készítése](luis-migration-api-v3.md)

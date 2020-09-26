@@ -5,12 +5,12 @@ author: FlorianBorn71
 ms.author: flborn
 ms.date: 06/16/2020
 ms.topic: tutorial
-ms.openlocfilehash: 43c11575be084354e4c9287b44b5847d4d086aff
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 56aa0d91372ac2d21a20f28b1044f0811c716b0c
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90084396"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358032"
 ---
 # <a name="tutorial-set-up-physically-based-rendering-materials-in-maya"></a>Oktatóanyag: fizikailag alapú renderelési anyagok beállítása a Maya-ban
 
@@ -79,7 +79,7 @@ A Maya-ben a egypéldányos folyamata egyszerű.
 1. A **Speciális beállítások duplikálása** párbeszédpanelen, a **geometria típusa** mezőben válassza a **példány** lehetőséget. 
 1. Válassza az **ismétlődő speciális**lehetőséget.
 
-   ![Egypéldányos](media/instancing.jpg)
+   ![A képernyőképen egy Maya ablak jelenik meg, amely a speciális beállítások duplikálása párbeszédpanelt nyitja meg, valamint a speciálisan kiválasztott ismétlődő elemeket.](media/instancing.jpg)
 
 Ez a művelet létrehozza az objektum egy példányát. A szülőtől és a szülő más példányaitól függetlenül áthelyezheti, elforgathatja vagy méretezheti is. 
 

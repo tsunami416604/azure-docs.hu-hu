@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: trbye
-ms.openlocfilehash: 6dc125b68af8f9a07731aaae9d858c19c51f934f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2b0bb997ecea55d25748152bab7bb6963d67657f
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81402394"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91357641"
 ---
 # <a name="what-is-direct-line-speech"></a>Mi az a Direct Line Speech?
 
@@ -27,7 +27,7 @@ A közvetlen vonalas beszédfelismerés a lehető legmagasabb szintű testreszab
 
 ## <a name="getting-started-with-direct-line-speech"></a>Első lépések a közvetlen vonalas Beszédtel
 
-A közvetlen vonalas beszédfelismerést használó hangsegédek létrehozásának első lépései [egy beszédfelismerési előfizetési kulcs beszerzése](get-started.md), az előfizetéshez társított új robot létrehozása, valamint a robot csatlakoztatása a közvetlen vonalas hangcsatornához.
+A közvetlen vonalas beszédfelismerést használó hangsegédek létrehozásának első lépései [egy beszédfelismerési előfizetési kulcs beszerzése](overview.md#try-the-speech-service-for-free), az előfizetéshez társított új robot létrehozása, valamint a robot csatlakoztatása a közvetlen vonalas hangcsatornához.
 
    ![A közvetlen vonalas beszédfelismerési szolgáltatás folyamatának fogalmi diagramja](media/voice-assistants/overview-directlinespeech.png "A beszédfelismerési csatorna folyamata")
 
@@ -35,7 +35,7 @@ Az egyszerű hangsegédek közvetlen vonalas Beszédtel való létrehozásával 
 
 Emellett olyan gyors útmutatókat is kínálunk, amelyekkel a kód futtatásával és az API-kkal való ismerkedéssel gyorsan elsajátítható. Ez a táblázat a hangsegédek nyelvén és platformon szervezett rövid útmutatóit sorolja fel.
 
-| Első lépések | Platform | API-referencia |
+| Gyorsútmutató | Platform | API-referencia |
 |------------|----------|---------------|
 | C#, UWP | Windows | [Tallózás](https://aka.ms/csspeech/csharpref) |
 | Java | Windows, macOS, Linux | [Tallózás](https://aka.ms/csspeech/javaref) |
@@ -62,9 +62,9 @@ A közvetlen vonalas beszéd és a hozzá tartozó funkciók a hangsegédek szá
 * [Beszéd SDK](speech-sdk-reference.md)
 * [Azure Bot Service](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Beszédfelismerési szolgáltatás előfizetési kulcsának beszerzése ingyenesen](get-started.md)
+* [Beszédfelismerési szolgáltatás előfizetési kulcsának beszerzése ingyenesen](overview.md#try-the-speech-service-for-free)
 * [A Speech SDK beszerzése](speech-sdk.md)
 * [Alapszintű robot létrehozása és üzembe helyezése](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
 * [A virtuális asszisztens megoldás és a vállalati sablon beszerzése](https://github.com/Microsoft/AI)

@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pafarley
-ms.openlocfilehash: 164e5a8c107f445b376d26f9be7db92a7983b0d3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3957a9cde957c8e92806f10d39c949d73f20153e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73743076"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323022"
 ---
 # <a name="face-recognition-concepts"></a>Arcfelismerés – fogalmak
 
@@ -25,7 +25,7 @@ Ez a cikk az ellenőrzés, a hasonló, a csoport és az arcfelismerő műveletek
 
 Az elismerési műveletek elsősorban a következő adatstruktúrákat használják. Ezek az objektumok a felhőben tárolódnak, és az azonosító sztringek hivatkozhatnak rájuk. Az azonosító sztringek mindig egyediek az előfizetésen belül. A név mezők többször is megadhatók.
 
-|Name (Név)|Leírás|
+|Név|Leírás|
 |:--|:--|
 |DetectedFace| Az egyoldalas megjelenítést a [Arcfelismerés](../Face-API-How-to-Topics/HowtoDetectFacesinImage.md) művelet kéri le. Az azonosító 24 órával a létrehozása után lejár.|
 |PersistedFace| Ha a DetectedFace objektumokat egy csoportba, például FaceList vagy személyhez adja hozzá, akkor a rendszer PersistedFace-objektumokat vált ki. Ezeket bármikor [lekérhetik](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524c) , és nem járnak le.|
@@ -45,7 +45,7 @@ Az [ellenőrzési](https://westus.dev.cognitive.microsoft.com/docs/services/5638
 
 A [hasonló művelet megkeresése](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) a DetectedFace vagy a PersistedFace, illetve a FaceList vagy más Arcfelismerés-azonosítók tömbjét veszi át. A FaceList egy kisebb FaceList ad vissza, amely hasonló az adott arc eléréséhez. Az arc-azonosítók tömbje hasonlóan kisebb tömböt ad vissza.
 
-### <a name="group"></a>Csoport
+### <a name="group"></a>Group
 
 A [csoportosítási](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395238) művelet a DetectedFace vagy a PersistedFace különböző számú arc-azonosítót használ, és ugyanazokat az azonosítókat adja vissza, amelyek több kisebb tömbbe vannak csoportosítva. Az egyes "csoportok" tömb olyan Arcfelismerés-azonosítókat tartalmaz, amelyek hasonlónak látszanak. Egyetlen "messyGroup" tömb tartalmaz olyan Arcfelismerés-azonosítókat, amelyekhez nem találhatók hasonlóságok.
 
@@ -67,8 +67,8 @@ A következő tippek segítségével biztosíthatja, hogy a bemeneti képek a le
   * Az arc megjelenése az életkor miatt változik.
   * Szélsőséges arc kifejezéseket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Most, hogy már ismeri az Arcfelismerés fogalmait, megtudhatja, hogyan írhat olyan parancsfájlt, amely azonosítja az arcokat egy betanított PersonGroup.
+Most, hogy már ismeri az Arcfelismerés fogalmait, írjon egy olyan parancsfájlt, amely azonosítja az arcokat egy betanított PersonGroup.
 
-* [Képeken lévő arcok azonosítása](../Face-API-How-to-Topics/HowtoIdentifyFacesinImage.md)
+* [Arc ügyféloldali kódtár – rövid útmutató](../Quickstarts/client-libraries.md)
