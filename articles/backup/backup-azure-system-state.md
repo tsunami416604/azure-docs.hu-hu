@@ -3,12 +3,12 @@ title: A Windows rendszer állapotának biztonsági mentése az Azure-ba
 description: Ismerje meg, hogyan készíthet biztonsági mentést a Windows Server rendszerű számítógépek rendszerállapotáról az Azure-ba.
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.openlocfilehash: ebe527ef7ddb32d46c2f39970f74b64c2594bf60
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 1b3573d757d2f7b1ffec9ae718aa791488960f3b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90975490"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332889"
 ---
 # <a name="back-up-windows-system-state-to-azure"></a>A Windows rendszer állapotának biztonsági mentése az Azure-ba
 
@@ -38,7 +38,7 @@ A Recovery Services-tároló létrehozásakor győződjön meg róla, hogy a tá
     ![Az új tároló tárolási konfigurációjának beállítása](./media/backup-try-azure-backup-in-10-mins/set-storage-configuration.png)
 4. Válassza ki a megfelelő tárolóreplikációs beállítást a tárolóhoz.
 
-    ![Tárolási konfiguráció lehetőségei](./media/backup-try-azure-backup-in-10-mins/choose-storage-configuration.png)
+    ![Tárolási konfiguráció lehetőségei](./media/backup-try-azure-backup-in-10-mins/choose-storage-configuration-for-vault.png)
 
     Alapértelmezés szerint a tárolója georedundáns tárolással rendelkezik. Ha az Azure-t használja az elsődleges biztonsági mentési tároló végpontjaként, folytassa a **georedundáns** beállítás használatát. Ha nem az Azure-t használja az elsődleges biztonsági mentési tároló végpontjaként, válassza a **Helyileg redundáns** lehetőséget, amely csökkenti az Azure Storage költségeit. További információ a tárterület [-redundáns](../storage/common/storage-redundancy.md#geo-redundant-storage), [helyileg redundáns](../storage/common/storage-redundancy.md#locally-redundant-storage) és [zónákra redundáns](../storage/common/storage-redundancy.md#zone-redundant-storage) tárolási lehetőségekről a [tárolási redundancia áttekintésében](../storage/common/storage-redundancy.md).
 

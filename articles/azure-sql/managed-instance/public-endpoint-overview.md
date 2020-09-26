@@ -8,14 +8,14 @@ ms.custom: sqldbrb=1
 ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: vanto, carlrab
+ms.reviewer: vanto, sstein
 ms.date: 05/08/2019
-ms.openlocfilehash: a3339d03607c2286dabbac73fd0b683c61552dc0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d9c1828732b9a4e0e85c3af2263f097edd54437d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708603"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332848"
 ---
 # <a name="use-azure-sql-managed-instance-securely-with-public-endpoints"></a>Az Azure SQL felügyelt példányának biztonságos használata nyilvános végpontokkal
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -52,6 +52,6 @@ Ha az ügyfeleknek csatlakozniuk kell egy helyszíni hálózatról, győződjön
 
 Ha a kapcsolatok az Azure-ból indulnak, javasoljuk, hogy a forgalom egy jól ismert, hozzárendelt [virtuális IP-címről](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip) (például egy virtuális gépről) származik. A virtuális IP-címek (VIP) egyszerűbb kezelése érdekében érdemes lehet [nyilvános IP-cím előtagokat](../../virtual-network/public-ip-address-prefix.md)használni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja, hogyan konfigurálhat nyilvános végpontot a következő példányok kezeléséhez: [nyilvános végpont konfigurálása](public-endpoint-configure.md)

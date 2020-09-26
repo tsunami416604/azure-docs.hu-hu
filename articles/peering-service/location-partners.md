@@ -8,14 +8,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Infrastructure-services
-ms.date: 05/29/2020
+ms.date: 09/24/2020
 ms.author: derekol
-ms.openlocfilehash: 012468ea16a9d1125bbcc93333eb8dad586aa502
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4b034c2657cd1bddd696b40738d51c8a3e6c9798
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84872103"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91355252"
 ---
 # <a name="peering-service-partners"></a>Társ-szolgáltatási partnerek
 
@@ -33,8 +33,8 @@ A cikkben található táblázat a partneri kapcsolattal rendelkező partnerekke
 | [CenturyLink](https://www.ctl.io/microsoft-azure-peering-services/) |Egyesült Államok|
 | [BBIX](https://www.bbix.net/en/service/) |Japán |
 | [CCL](https://concepts.co.nz/news/general-news/) |Óceánia |
-| [Colt](https://www.colt.net/why-colt/strategic-alliances/microsoft-partnership/)|Európa|
-| [DE-CIX](https://www.de-cix.net/microsoft)|Európa, Észak-Amerika |
+| [Colt](https://www.colt.net/why-colt/strategic-alliances/microsoft-partnership/)|Európa, Ázsia|
+| [DE-CIX](https://www.de-cix.net/microsoft)|Európa |
 | [IIJ](https://www.iij.ad.jp/en/) | Japán |
 | [Intercloud](https://intercloud.com/microsoft-saas-applications/)|Európa  |
 | [Kordia](https://www.kordia.co.nz/cloudconnect) |Óceánia  |
@@ -47,7 +47,7 @@ A cikkben található táblázat a partneri kapcsolattal rendelkező partnerekke
 >További információ az egyenrangú szolgáltatási partner programjával való részvételről: peeringservice@microsoft.com .
 >
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A társ-kezelés szolgáltatással kapcsolatos további tudnivalókért tekintse meg a [peering Service áttekintése](about.md)című témakört.
 - A szolgáltatással kapcsolatos gyakori kérdések megismeréséhez tekintse meg a következő témakört: [társközi szolgáltatás – gyakori kérdések](faq.md).

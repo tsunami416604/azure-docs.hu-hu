@@ -3,12 +3,12 @@ title: A Microsoft Azure Backup Server újdonságai
 description: A Microsoft Azure Backup-kiszolgáló továbbfejlesztett biztonsági mentési lehetőségeket biztosít a virtuális gépek, fájlok és mappák, munkaterhelések és egyebek védelméhez.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: ca06e52c81b909bb19008fdccfe4b3fdeb7e6248
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 39050d0f658e29b82f270f1fe53026e2fb80bfa1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89182139"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332763"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server-mabs"></a>A Microsoft Azure Backup-kiszolgáló újdonságai (MABS)
 
@@ -23,7 +23,7 @@ A Microsoft Azure Backup Server (MABS) 3. verziója UR1 a legújabb frissítés,
 
 A MABS v2 [modern biztonsági másolati tárhely](backup-mabs-add-storage.md) (MBS), ami javítja a tárterület kihasználtságát és a teljesítményt. Az MBS a ReFS használja alapul szolgáló fájlrendszerként, és úgy van kialakítva, hogy a hibrid tárolókat, például a többszintű tárolást használja.
 
-Az MB-os méretezés és teljesítmény elérése érdekében javasoljuk, hogy a Flash Storage (SSD) kis százalékát (a teljes tárterület 4%-át) használja a MABS v3 UR1, a DPM HDD-tárolóval együtt. A MABS v3 UR1 és a többplatformos tárolás 50-70%-kal gyorsabb biztonsági mentést biztosít. A többplatformos tárolás konfigurálásának lépéseiért tekintse meg a DPM ( [MB) beállítását a Tiered Storage](/system-center/dpm/add-storage?view=sc-dpm-2019#set-up-mbs-with-tiered-storage) .
+Az MB-os méretezés és teljesítmény elérése érdekében javasoljuk, hogy a Flash Storage (SSD) kis százalékát (a teljes tárterület 4%-át) használja a MABS v3 UR1, a DPM HDD-tárolóval együtt. A MABS v3 UR1 és a többplatformos tárolás 50-70%-kal gyorsabb biztonsági mentést biztosít. A többplatformos tárolás konfigurálásának lépéseiért tekintse meg a DPM ( [MB) beállítását a Tiered Storage](/system-center/dpm/add-storage#set-up-mbs-with-tiered-storage) .
 
 ### <a name="support-for-refs-volumes"></a>ReFS-kötetek támogatása
 
@@ -123,7 +123,7 @@ További információ [a MABS telepítési](./backup-azure-microsoft-azure-backu
 >
 > A MABS ugyanazzal a kóddal rendelkezik, mint a System Center Data Protection Manager. A MABS v3 egyenértékű a Data Protection Manager 1807-vel. A MABS v3 UR1 egyenértékű a Data Protection Manager 2019 UR1.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan készítheti elő a kiszolgálót, vagy megkezdheti a munkaterhelés védelmét:
 

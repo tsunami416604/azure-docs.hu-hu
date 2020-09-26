@@ -4,12 +4,12 @@ description: Összefoglalja a Azure Backup szolgáltatás támogatási beállít
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: 94a795ad91be1d648ad025287f5c5bc6f1d8d07e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: d9da2ee893244afc7150ab6249dbe51845d5d0c2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985011"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332712"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup támogatási mátrixa
 
@@ -39,6 +39,7 @@ A következő táblázat a Recovery Services-tárolók szolgáltatásait ismerte
 **Tárolók áthelyezése** | A tárolókat [áthelyezheti](./backup-azure-move-recovery-services-vault.md) előfizetések között, illetve az azonos előfizetésben található erőforráscsoportok között is. A tárolók különböző régiók közötti áthelyezése azonban nem támogatott.
 **Adatáthelyezés a tárolók között** | A biztonsági másolatok tárolók közötti áthelyezése nem támogatott.
 **Tár tárolási típusának módosítása** | A tároló replikációs típusát (vagy a Geo-redundáns tárterületet vagy a helyileg redundáns tárolást) a biztonsági másolatok tárolása előtt módosíthatja. Miután a biztonsági mentések megkezdődnek a tárolóban, a replikálás típusa nem módosítható.
+**Zónaredundáns tárolás (ZRS)** | Elérhető a Egyesült Királyság déli régiója (UKS) és a Dél-Kelet-Ázsia (tengeri) régiókban.
 
 ## <a name="on-premises-backup-support"></a>Helyszíni biztonsági mentési támogatás
 
@@ -150,9 +151,9 @@ Azure Backup hozzáadta a régiók közötti visszaállítási szolgáltatást a
 | Biztonságimásolat-kezelés típusa | Támogatott                                                    | Támogatott régiók |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
 | Azure VM               | Igen.   Támogatott a 4 TB-nál kisebb lemezzel rendelkező titkosított virtuális gépek és virtuális gépek esetében | Minden Azure-beli nyilvános régió és szuverén felhő.  |
-| SQL/SAP HANA | Yes                                                          | Minden Azure-beli nyilvános régió és szuverén felhő.             |
+| SQL/SAP HANA | Yes                                                          | USA 2. nyugati régiója (WUS2), USA nyugati középső régiója (WCUS), Közép-Kanada (CNC), Kelet-Kanada (CNE), USA keleti régiója (EUS), USA nyugati régiója (WUS), Kelet-Japán (JPE), Kelet-Japán (JPE) |
 | MARS-ügynök/helyszíni  | No                                                           | N.A.               |
-| AFS                    | No                                                           | N.A.               |
+| AFS (Azure-fájlmegosztás)                 | No                                                           | N.A.               |
 
 ## <a name="next-steps"></a>Következő lépések
 

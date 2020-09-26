@@ -3,12 +3,12 @@ title: SQL Server munkaterhelések biztonsági mentése Azure Stack
 description: Ebből a cikkből megtudhatja, hogyan konfigurálhatja Microsoft Azure Backup Servert (MABS) SQL Server-adatbázisok védelmére Azure Stackon.
 ms.topic: conceptual
 ms.date: 06/08/2018
-ms.openlocfilehash: 912e6f10b689217303786b20ec6315fca595a8c2
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 80de7913b010fca69c3703e423109f2ede653590
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89376332"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332814"
 ---
 # <a name="back-up-sql-server-on-azure-stack"></a>SQL Server biztonsági mentése Azure Stack
 
@@ -24,10 +24,10 @@ Az Azure-ba való SQL Server adatbázis biztonsági mentésének és az Azure-ba
 
 * Ha olyan adatbázist használ, amelynek fájljai távoli fájlmegosztásban találhatók, a védelem sikertelen lesz, és a 104-es azonosítójú hibaüzenet jelenik meg. A MABS nem támogatja a távoli fájlmegosztás SQL Server-adatvédelmének védelmét.
 * A MABS nem tudja megóvni a távoli SMB-megosztásokon tárolt adatbázisokat.
-* Győződjön meg arról, hogy a [rendelkezésre állási csoport replikái csak olvashatóként vannak konfigurálva](/sql/database-engine/availability-groups/windows/configure-read-only-access-on-an-availability-replica-sql-server?view=sql-server-ver15).
+* Győződjön meg arról, hogy a [rendelkezésre állási csoport replikái csak olvashatóként vannak konfigurálva](/sql/database-engine/availability-groups/windows/configure-read-only-access-on-an-availability-replica-sql-server).
 * Explicit módon hozzá kell adnia a rendszerfiók **NTAuthority\System** a sysadmin (rendszergazda) csoporthoz SQL Serveron.
-* Ha egy másik helyre történő helyreállítást hajt végre egy részlegesen tárolt adatbázis esetében, győződjön meg arról, hogy a célként megadott SQL-példányon engedélyezve van a [tárolt adatbázisok](/sql/relational-databases/databases/migrate-to-a-partially-contained-database?view=sql-server-ver15#enable) funkció.
-* Ha egy másik helyre történő helyreállítást hajt végre egy file stream-adatbázis esetében, akkor győződjön meg arról, hogy a cél SQL-példányon engedélyezve van a [file stream Database](/sql/relational-databases/blob/enable-and-configure-filestream?view=sql-server-ver15) szolgáltatás.
+* Ha egy másik helyre történő helyreállítást hajt végre egy részlegesen tárolt adatbázis esetében, győződjön meg arról, hogy a célként megadott SQL-példányon engedélyezve van a [tárolt adatbázisok](/sql/relational-databases/databases/migrate-to-a-partially-contained-database#enable) funkció.
+* Ha egy másik helyre történő helyreállítást hajt végre egy file stream-adatbázis esetében, akkor győződjön meg arról, hogy a cél SQL-példányon engedélyezve van a [file stream Database](/sql/relational-databases/blob/enable-and-configure-filestream) szolgáltatás.
 * Az SQL Server AlwaysOn rendelkezésre állási csoportok védelme:
   * A MABS észleli a rendelkezésre állási csoportokat, amikor lekérdezést futtat a védelmi csoport létrehozásakor.
   * A MABS észleli a feladatátvételt, és folytatja az adatbázis védelmét.
@@ -45,7 +45,7 @@ Az Azure-ba való SQL Server adatbázis biztonsági mentésének és az Azure-ba
     * Ha a biztonsági mentés sikertelen a kiválasztott csomóponton, a biztonsági mentési művelet meghiúsul.
     * Az eredeti helyre történő helyreállítás nem támogatott.
 * SQL Server 2014 vagy újabb biztonsági mentési problémák:
-  * Az SQL Server 2014 új funkciót adott hozzá, amely létrehoz egy adatbázist a helyszíni SQL Server számára a [Windows Azure Blob Storage-ban](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure?view=sql-server-ver15). A MABS nem használható ennek a konfigurációnak a megvédésére.
+  * Az SQL Server 2014 új funkciót adott hozzá, amely létrehoz egy adatbázist a helyszíni SQL Server számára a [Windows Azure Blob Storage-ban](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure). A MABS nem használható ennek a konfigurációnak a megvédésére.
   * Létezik néhány ismert probléma, amely a "másodlagos előnyben részesített" biztonsági mentést részesíti előnyben az SQL-AlwaysOn beállításnál. A MABS mindig a másodlagos biztonsági mentést végzi. Ha nem található másodlagos, akkor a biztonsági mentés sikertelen lesz.
 
 ## <a name="before-you-start"></a>Előkészületek

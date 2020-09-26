@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/12/2020
+ms.date: 09/17/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: c9ce265707743d98f6c93d3facca33e16d1b75ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 75d8b63328f71df2f8de22a95c106c5cc18dc28f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513497"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275208"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Az Azure Import/Export szolgáltatás használata adatok Azure Blob-tárolóból való exportálására
 
@@ -83,9 +83,9 @@ Az alábbi lépések végrehajtásával hozzon létre egy exportálási feladato
 
 6. **Visszaszállítási adatok**:
 
-    - Válassza ki a szolgáltatót a legördülő listából. Ha a FedEx/DHL-től eltérő szolgáltatót szeretne használni, válasszon ki egy meglévő lehetőséget a legördülő menüből. Lépjen kapcsolatba Azure Data Box operatív csapatával a `adbops@microsoft.com` használni kívánt szolgáltatóra vonatkozó információkkal.
+    - Válassza ki a szolgáltatót a legördülő listából. Ha a FedEx/DHL-től eltérő szolgáltatót szeretne használni, válasszon ki egy meglévő lehetőséget a legördülő menüből. Lépjen kapcsolatba Azure Data Box operatív csapatával a `adbops@microsoft.com`  használni kívánt szolgáltatóra vonatkozó információkkal.
     - Adjon meg egy érvényes, a szállítóval létrehozott számlaszámot. A Microsoft ezt a fiókot használja a meghajtók visszaszállításához az exportálási feladatok befejezése után.
-    - Adjon meg egy teljes és érvényes nevet, telefont, e-mailt, utcanév-címet, várost, irányítószámot, államot/régiót és országot/régiót.
+    - Adjon meg egy teljes és érvényes nevet, telefont, e-mailt, házszámot, várost, irányítószámot, államot/régiót és országot/régiót.
 
         > [!TIP]
         > E-mail-cím egyetlen felhasználóhoz való megadása helyett adjon meg egy csoportos e-mailt. Ez biztosítja, hogy értesítést kapjon, még akkor is, ha a rendszergazda elhagyja.
@@ -119,7 +119,7 @@ Amikor az irányítópult jelentést készít a feladatokról, a rendszer elkül
 1. Miután az exportált adattal rendelkező meghajtókat kapott, a BitLocker-kulcsokat a meghajtók zárolásának feloldásához kell kérnie. Lépjen az exportálási feladatokhoz a Azure Portal. Kattintson az **Importálás/exportálás** fülre.
 2. Válassza ki, majd kattintson az exportálási feladatokra a listából. Nyissa meg a **titkosítást** , és másolja a kulcsokat.
 
-   ![Az exportálási feladatokhoz tartozó BitLocker-kulcsok megtekintése](./media/storage-import-export-service/export-job-bitlocker-keys-02.png)
+   ![Az exportálási feladatokhoz tartozó BitLocker-kulcsok megtekintése](./media/storage-import-export-data-from-blobs/export-from-blob7.png)
 
 3. A lemezek zárolásának feloldásához használja a BitLocker kulcsait.
 
@@ -127,15 +127,13 @@ Az Exportálás befejeződött.
 
 ## <a name="step-5-unlock-the-disks"></a>5. lépés: a lemezek zárolásának feloldása
 
-Ha a WAImportExport eszköz 1.4.0.300 használja, használja a következő parancsot a meghajtó zárolásának feloldásához:
+A meghajtó zárolásának feloldásához használja az alábbi parancsot:
 
-   `WAImportExport Unlock /bk:<BitLocker key (base 64 string) copied from journal (*.jrn*) file> /driveLetter:<Drive letter>`  
+   `WAImportExport Unlock /bk:<BitLocker key (base 64 string) copied from Encryption blade in Azure portal> /driveLetter:<Drive letter>`  
 
 Íme egy példa a minta bemenetre.
 
    `WAImportExport.exe Unlock /bk:CAAcwBoAG8AdQBsAGQAIABiAGUAIABoAGkAZABkAGUAbgA= /driveLetter:e`
-
-Ha az eszköz korábbi verzióit használja, a BitLocker párbeszédpanellel oldhatja fel a meghajtót.
 
 Ekkor törölheti a feladatot, vagy meghagyhatja. A feladatok 90 nap után automatikusan törlődnek.
 
@@ -155,7 +153,7 @@ Ez a *választható* lépés segít megszabni az exportálási feladatokhoz szü
 
     A paramétereket a következő táblázat ismerteti:
 
-    |Parancssori paraméter|Description|  
+    |Parancssori paraméter|Leírás|  
     |--------------------------|-----------------|  
     |**/logdir:**|Választható. A naplózási könyvtár. A részletes naplófájlokat a rendszer erre a könyvtárba írja. Ha nincs megadva, a rendszer az aktuális könyvtárat használja a napló könyvtáraként.|  
     |**SN**|Kötelező. Az exportálási feladatokhoz tartozó Storage-fiók neve.|  
@@ -209,7 +207,7 @@ Number of drives needed:        3
 
 A következő táblázat példákat mutat be a Blobok érvényes elérési útjaira:
 
-   | Szelektor | BLOB elérési útja | Description |
+   | Szelektor | BLOB elérési útja | Leírás |
    | --- | --- | --- |
    | Kezdete |/ |A Storage-fiókban lévő összes blob exportálása |
    | Kezdete |/$root/ |A gyökér tárolóban lévő összes blob exportálása |
@@ -219,7 +217,7 @@ A következő táblázat példákat mutat be a Blobok érvényes elérési útja
    | Egyenlő |$root/logo.bmp |A blob **logo.bmp** exportálása a gyökér tárolóba |
    | Egyenlő |videók/story.mp4 |BLOB- **story.mp4** exportálása a tároló- **videókban** |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A feladatok és a meghajtó állapotának megtekintése](storage-import-export-view-drive-status.md)
 - [Importálási/exportálási követelmények áttekintése](storage-import-export-requirements.md)

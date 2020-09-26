@@ -1,34 +1,34 @@
 ---
-title: Keresés az Azure Blob Storage-tartalmakon
+title: BLOB-indexelő konfigurálása
 titleSuffix: Azure Cognitive Search
-description: Megtudhatja, hogyan indexelheti a dokumentumokat az Azure Blob Storageban, és hogyan kinyerheti a dokumentumokat az Azure Cognitive Search használatával.
+description: Állítson be egy Azure Blob indexelő, amely automatizálja a Blobok tartalmának indexelését a teljes szöveges keresési műveletekhez az Azure Cognitive Searchban.
 manager: nitinme
 author: mgottein
 ms.author: magottei
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/11/2020
-ms.custom: fasttrack-edit
-ms.openlocfilehash: 2ba511d3747ba308ae04ab1bbe3dcb89bca6a8a8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/23/2020
+ms.openlocfilehash: 9fccd731cee5044b36de9a0dba4a408a9a5b9a49
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328292"
+ms.locfileid: "91355278"
 ---
-# <a name="how-to-index-documents-in-azure-blob-storage-with-azure-cognitive-search"></a>Dokumentumok indexelése az Azure Blob Storage az Azure-ban Cognitive Search
+# <a name="how-to-configure-a-blob-indexer-in-azure-cognitive-search"></a>BLOB-indexelő konfigurálása az Azure-ban Cognitive Search
 
-Ez a cikk bemutatja, hogyan használható az Azure Cognitive Search az Azure Blob Storage-ban tárolt dokumentumok (például PDF-fájlok, Microsoft Office dokumentumok és számos más gyakori formátum) indexeléséhez. Első lépésként ismerteti a blob-indexelő beállításának és konfigurálásának alapjait. Ezt követően mélyebben megismerheti a viselkedéseket és a valószínűleg felmerülő forgatókönyveket.
+Ez a cikk bemutatja, hogyan használható az Azure Cognitive Search az Azure Blob Storage-ban tárolt szöveg-alapú dokumentumok (például PDF-fájlok, Microsoft Office dokumentumok és számos más gyakori formátum) indexeléséhez. Első lépésként ismerteti a blob-indexelő beállításának és konfigurálásának alapjait. Ezt követően mélyebben megismerheti a viselkedéseket és a valószínűleg felmerülő forgatókönyveket.
 
 <a name="SupportedFormats"></a>
 
-## <a name="supported-document-formats"></a>Támogatott dokumentumformátumok
+## <a name="supported-formats"></a>Támogatott formátumok
+
 A blob-indexelő a következő dokumentum-formátumokból tud szöveget kinyerni:
 
 [!INCLUDE [search-blob-data-sources](../../includes/search-blob-data-sources.md)]
 
-## <a name="setting-up-blob-indexing"></a>BLOB-indexelés beállítása
+## <a name="set-up-blob-indexing"></a>BLOB-indexelés beállítása
 Beállíthat egy Azure Blob Storage indexelő a használatával:
 
 * [Azure Portal](https://ms.portal.azure.com)
@@ -130,7 +130,7 @@ Az indexelő-ütemtervek definiálásával kapcsolatos további információkér
 
 <a name="how-azure-search-indexes-blobs"></a>
 
-## <a name="how-azure-cognitive-search-indexes-blobs"></a>Hogyan indexeli a blobokat az Azure Cognitive Search
+## <a name="how-blobs-are-indexed"></a>A Blobok indexelése
 
 Az [Indexelő konfigurációjától](#PartsOfBlobToIndex)függően a blob indexelő csak a tárolási metaadatokat tudja indexelni (ez akkor hasznos, ha csak a metaadatokat érdekli, és nem szükséges a Blobok tartalmának indexelése), a tárolási és tartalmi metaadatokat, illetve a metaadatokat és a szöveges tartalmakat is. Alapértelmezés szerint az indexelő kibontja a metaadatokat és a tartalmakat is.
 
@@ -170,7 +170,7 @@ Az Azure Cognitive Search a dokumentum kulcsa egyedileg azonosít egy dokumentum
 
 Alaposan gondolja át, hogy melyik kibontott mező legyen leképezve az index Key mezőjére. A jelöltek a következők:
 
-* **metaadat- \_ tároló \_ neve** – ez lehet egy kényelmes jelölt, de vegye figyelembe, hogy 1) a nevek nem egyediek, mivel előfordulhat, hogy az azonos nevű Blobok eltérő mappákban találhatók, és 2) a név olyan karaktereket tartalmazhat, amelyek érvénytelenek a dokumentum kulcsaiban, például kötőjelek. Az érvénytelen karaktereket a `base64Encode` [mező-hozzárendelési függvény](search-indexer-field-mappings.md#base64EncodeFunction) használatával kezelheti – ha ezt teszi, ne felejtse el kódolni a dokumentum kulcsait, amikor azok API-hívásokban, például a kereséskor kerülnek továbbításra. (Például a .NET-ben a [UrlTokenEncode metódust](/dotnet/api/system.web.httpserverutility.urltokenencode?view=netframework-4.8) használhatja erre a célra).
+* **metaadat- \_ tároló \_ neve** – ez lehet egy kényelmes jelölt, de vegye figyelembe, hogy 1) a nevek nem egyediek, mivel előfordulhat, hogy az azonos nevű Blobok eltérő mappákban találhatók, és 2) a név olyan karaktereket tartalmazhat, amelyek érvénytelenek a dokumentum kulcsaiban, például kötőjelek. Az érvénytelen karaktereket a `base64Encode` [mező-hozzárendelési függvény](search-indexer-field-mappings.md#base64EncodeFunction) használatával kezelheti – ha ezt teszi, ne felejtse el kódolni a dokumentum kulcsait, amikor azok API-hívásokban, például a kereséskor kerülnek továbbításra. (Például a .NET-ben a [UrlTokenEncode metódust](/dotnet/api/system.web.httpserverutility.urltokenencode) használhatja erre a célra).
 * **metaadat- \_ tárolási \_ útvonal** – a teljes elérési út használata biztosítja az egyediséget, de az elérési út határozottan olyan karaktereket tartalmaz, `/` amelyek [érvénytelenek a dokumentum kulcsában](/rest/api/searchservice/naming-rules).  A fentieknek megfelelően lehetősége van a kulcsok kódolására a `base64Encode` [függvény](search-indexer-field-mappings.md#base64EncodeFunction)használatával.
 * Ha a fenti lehetőségek egyike sem működik, hozzáadhat egy egyéni metaadat-tulajdonságot a blobokhoz. Ez a beállítás azonban megköveteli a blob feltöltési folyamatát, hogy hozzáadja a metaadat-tulajdonságot az összes blobhoz. Mivel a kulcs egy kötelező tulajdonság, a tulajdonságot nem tartalmazó Blobok nem lesznek indexelve.
 
@@ -231,10 +231,12 @@ Vannak olyan időpontok, amikor egy mező kódolású verzióját kell használn
     }
 ```
 <a name="WhichBlobsAreIndexed"></a>
-## <a name="controlling-which-blobs-are-indexed"></a>A Blobok indexelésének szabályozása
+## <a name="index-by-file-type"></a>Index fájltípus szerint
+
 Megadhatja, hogy mely Blobok indexelve legyenek, és melyeket a rendszer kihagyja.
 
-### <a name="index-only-the-blobs-with-specific-file-extensions"></a>Csak a Blobok indexelése adott fájlkiterjesztések esetén
+### <a name="include-blobs-having-specific-file-extensions"></a>Adott fájlkiterjesztések tartalmazó Blobok belefoglalása
+
 Az indexelő konfigurációs paraméterrel csak azokat a blobokat lehet indexelni, amelyeket az Ön által megadott fájlnévkiterjesztéssel használ `indexedFileNameExtensions` . Az érték egy olyan karakterlánc, amely a fájlkiterjesztés vesszővel tagolt listáját tartalmazza (vezető ponttal). Például csak a érték indexeléséhez. PDF és. DOCX Blobok:
 
 ```http
@@ -248,7 +250,8 @@ Az indexelő konfigurációs paraméterrel csak azokat a blobokat lehet indexeln
     }
 ```
 
-### <a name="exclude-blobs-with-specific-file-extensions"></a>Blobok kizárása adott fájlkiterjesztések esetén
+### <a name="exclude-blobs-having-specific-file-extensions"></a>Megadott fájlkiterjesztés-kiterjesztésű Blobok kizárása
+
 A konfigurációs paraméter használatával kizárhat olyan blobokat, amelyek adott fájlnévkiterjesztéssel rendelkeznek az indexelésből `excludedFileNameExtensions` . Az érték egy olyan karakterlánc, amely a fájlkiterjesztés vesszővel tagolt listáját tartalmazza (vezető ponttal). Például az összes blob indexeléséhez, kivéve a következővel:. PNG és. JPEG-bővítmények:
 
 ```http
@@ -265,7 +268,7 @@ A konfigurációs paraméter használatával kizárhat olyan blobokat, amelyek a
 Ha mindkettő `indexedFileNameExtensions` és `excludedFileNameExtensions` paraméter szerepel, az Azure Cognitive Search először a következőt tekinti meg: `indexedFileNameExtensions` `excludedFileNameExtensions` . Ez azt jelenti, hogy ha ugyanaz a fájlkiterjesztés szerepel mindkét listán, az indexelésből ki lesz zárva.
 
 <a name="PartsOfBlobToIndex"></a>
-## <a name="controlling-which-parts-of-the-blob-are-indexed"></a>Annak szabályozása, hogy a blob mely részei legyenek indexelve
+## <a name="index-parts-of-a-blob"></a>BLOB elemeinek indexe
 
 Megadhatja, hogy a Blobok mely részei legyenek indexelve a `dataToExtract` konfigurációs paraméter használatával. A következő értékeket veheti fel:
 
@@ -296,7 +299,8 @@ A fent ismertetett konfigurációs paraméterek az összes blobra érvényesek. 
 | AzureSearch_SkipContent |igaz |Ez egyenértékű a `"dataToExtract" : "allMetadata"` [fent](#PartsOfBlobToIndex) ismertetett beállítással egy adott blobon. |
 
 <a name="DealingWithErrors"></a>
-## <a name="dealing-with-errors"></a>Hibák kezelése
+
+## <a name="handle-errors"></a>Hibakezelés
 
 Alapértelmezés szerint a blob-indexelő azonnal leáll, ha nem támogatott tartalomtípusú blobot (például egy képet) észlel. Természetesen használhatja a `excludedFileNameExtensions` paramétert bizonyos tartalomtípusok kihagyása érdekében. Előfordulhat azonban, hogy a blobokat a lehetséges tartalomtípusok előzetes ismerete nélkül kell indexelni. Ha nem támogatott tartalomtípust észlel, az indexelés folytatásához állítsa a `failOnUnsupportedContentType` konfigurációs paramétert a következőre `false` :
 
@@ -466,7 +470,7 @@ Alapértelmezés szerint a `UTF-8` rendszer a kódolást feltételezi. Másik k�
 ## <a name="content-type-specific-metadata-properties"></a>Tartalomtípus-specifikus metaadatok tulajdonságai
 Az alábbi táblázat összefoglalja az egyes dokumentumok formátumának feldolgozását, valamint ismerteti az Azure Cognitive Search által kinyert metaadatok tulajdonságait.
 
-| Dokumentum formátuma/tartalmának típusa | Tartalomtípus-specifikus metaadatok tulajdonságai | Feldolgozás részletei |
+| Dokumentum formátuma/tartalmának típusa | Kinyert metaadatok | Feldolgozás részletei |
 | --- | --- | --- |
 | HTML (text/html) |`metadata_content_encoding`<br/>`metadata_content_type`<br/>`metadata_language`<br/>`metadata_description`<br/>`metadata_keywords`<br/>`metadata_title` |HTML-jelölés és szöveg kinyerése |
 | PDF (alkalmazás/PDF) |`metadata_content_type`<br/>`metadata_language`<br/>`metadata_author`<br/>`metadata_title` |Szöveg kinyerése, beleértve a beágyazott dokumentumokat is (képek nélkül) |

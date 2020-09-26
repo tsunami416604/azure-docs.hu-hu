@@ -14,12 +14,12 @@ ms.custom:
 - it-pro
 - seo-update-azuread-jan"
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb81e5a72ff1f5a8d4442e6e1f211ad2368f6277
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 10c396c4e4b4eac83f08ae0cbbe565f8621688a4
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88206282"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91354972"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Azure Active Directory B2B-együttműködés hibaelhárítása
 
@@ -106,6 +106,20 @@ November 18-án 2019-én a címtárban található vendég felhasználók a Azur
 ## <a name="in-an-azure-us-government-tenant-i-cant-invite-a-b2b-collaboration-guest-user"></a>Egy Azure-beli Egyesült államokbeli kormányzati bérlő nem hívhat meg VÁLLALATKÖZI együttműködési vendég felhasználót
 
 Az Amerikai Egyesült Államok kormányzati felhője keretében a B2B-együttműködés jelenleg csak az USA-beli kormányzati felhőben és a B2B-együttműködés támogatását támogató bérlők között támogatott. Ha olyan bérlőn hívja meg a felhasználót, amely nem része az Azure US government-felhőnek, vagy amely még nem támogatja a B2B-együttműködést, hibaüzenetet kap. A részleteket és a korlátozásokat lásd: [prémium szintű Azure Active Directory P1 és P2 változatok](https://docs.microsoft.com/azure/azure-government/documentation-government-services-securityandidentity#azure-active-directory-premium-p1-and-p2).
+
+## <a name="i-receive-the-error-that-azure-ad-cannot-find-the-aad-extensions-app-in-my-tenant"></a>Azt a hibaüzenetet kapom, hogy az Azure AD nem találja a HRE-Extensions-app a saját bérlőben
+
+Az önkiszolgáló bejelentkezési funkciók, például az egyéni felhasználói attribútumok vagy a felhasználói folyamatok használatakor a rendszer automatikusan létrehoz egy nevű alkalmazást `aad-extensions-app. Do not modify. Used by AAD for storing user data.` . Az Azure AD külső identitások használják a regisztrálásra és az egyéni attribútumok begyűjtésére szolgáló felhasználók adatainak tárolására.
+
+Ha véletlenül törölte a `aad-extensions-app` -et, 30 napja van a helyreállításhoz. Az alkalmazást az Azure AD PowerShell-modul használatával állíthatja vissza.
+
+1. Indítsa el az Azure AD PowerShell-modult, és futtassa a parancsot `Connect-AzureAD` .
+1. Jelentkezzen be globális rendszergazdaként azon Azure AD-bérlőhöz, amely számára vissza kívánja állítani a törölt alkalmazást.
+1. Futtassa a PowerShell-parancsot `Get-AzureADDeletedApplication` .
+1. Keresse meg az alkalmazást abban a listában, ahol a megjelenítendő név kezdődik, `aad-extensions-app` és másolja a `ObjectId` tulajdonság értékét.
+1. Futtassa a PowerShell-parancsot `Restore-AzureADDeletedApplication -ObjectId {id}` . Cserélje le a `{id}` parancs részét az `ObjectId` előző lépésből származóra.
+
+Ekkor látnia kell a visszaállított alkalmazást a Azure Portalban.
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: sstein, carlrab
+ms.reviewer: sstein
 ms.date: 08/29/2019
-ms.openlocfilehash: 81e3547dbd86c840baed8e044a84afd3b63f5be5
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 7a7373f5fcd36298d2feeff6a2a5b67c9e10e40b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86075773"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321594"
 ---
 # <a name="save-costs-for-resources-with-reserved-capacity---azure-sql-database--sql-managed-instance"></a>Fenntartott kapacitással rendelkező erőforrások költségeinek mentése – Azure SQL Database & SQL felügyelt példánya
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)] 
@@ -50,18 +50,18 @@ Tegyük fel például, hogy egy általános célt futtat, Gen5 – 16 virtuális
 
     A következő táblázat a kötelező mezőket ismerteti.
     
-    | Mező      | Description|
+    | Mező      | Leírás|
     |------------|--------------|
     |Előfizetés|A kapacitás foglalásának megfizetéséhez használt előfizetés. Az előfizetéshez tartozó fizetési módot a foglalás előzetes költségei alapján számítjuk fel. Az előfizetés típusának nagyvállalati szerződésnek (az MS-AZR-0017P vagy MS-AZR-0148P) vagy az utólagos elszámolású díjszabásnak (az MS-AZR-0003P vagy az MS-AZR-0023P) megfelelő egyedi szerződésnek kell lennie. Nagyvállalati előfizetésnél a díjak a regisztrációhoz tartozó keretek egyenlegeiből lesznek levonva, illetve túlhasználatként lesznek számlázva. Az utólagos elszámolású előfizetések esetében az előfizetés díjait a bankkártya vagy a számla fizetési módja alapján számítjuk fel.|
     |Hatókör       |A virtuális mag foglalási hatóköre egyetlen előfizetésre vagy több előfizetésre (megosztott hatókörre) is vonatkozhat. Ha a lehetőséget választja <br/><br/>**Megosztva**a virtuális mag foglalási kedvezményt a számlázási környezetben lévő előfizetésekben futó adatbázisra vagy felügyelt példányra alkalmazza a rendszer. A vállalati ügyfelek esetében a közös hatókör a regisztráció, és a regisztráción belüli összes előfizetés szerepel. A használatalapú fizetéses ügyfelek esetében a megosztott hatókör a fiókadminisztrátor által létrehozott, használatalapú fizetéses előfizetéseket foglalja magában.<br/><br/>**Egyszeri előfizetés**esetén a virtuális mag foglalási kedvezményt az előfizetésben lévő adatbázisokra vagy felügyelt példányokra alkalmazza a rendszer. <br/><br/>**Egy erőforráscsoport**, a foglalási kedvezmény a kiválasztott előfizetésben található adatbázisok vagy felügyelt példányok példányaira, valamint az adott előfizetéshez tartozó kiválasztott erőforráscsoporthoz lesz alkalmazva.|
-    |Régió      |Az Azure-régió, amelyre a kapacitás foglalása vonatkozik.|
+    |Region      |Az Azure-régió, amelyre a kapacitás foglalása vonatkozik.|
     |Központi telepítés típusa|Az az SQL-erőforrástípus, amelyre a foglalást megvásárolni szeretné.|
     |Teljesítményszint|Az adatbázisok vagy a felügyelt példányok szolgáltatási szintje. |
-    |Kifejezés        |Egy vagy három év.|
+    |Időszak        |Egy vagy három év.|
     |Mennyiség    |A kapacitás-foglalás keretében megvásárolt számítási erőforrások mennyisége. A mennyiség a kiválasztott Azure-régióban és a lefoglalt teljesítményszint virtuális mag, és a számlázási kedvezményt kapja. Ha például futtatja vagy tervezi több adatbázis futtatását az USA keleti régiójában lévő Gen5 16 virtuális mag teljes számítási kapacitásával, akkor a mennyiséget 16-ra kell beállítania, hogy maximalizálja az összes adatbázis előnyeit. |
 
 1. Tekintse át a kapacitás foglalásának költségeit a costs ( **költségek** ) szakaszban.
-1. Válassza a **Beszerzés** lehetőséget.
+1. Válassza a **Vásárlás** lehetőséget.
 1. Válassza a **foglalás megtekintése** lehetőséget a vásárlás állapotának megtekintéséhez.
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Foglalások lemondása, cseréje vagy visszatérítése

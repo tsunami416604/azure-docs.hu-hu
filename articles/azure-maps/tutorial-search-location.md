@@ -1,6 +1,6 @@
 ---
 title: 'Oktatóanyag: a közeli helyszínek keresése térképen | Microsoft Azure térképek'
-description: Megtudhatja, hogyan keresheti meg a térképekre vonatkozó érdekes helyeket. Tekintse meg, hogyan adhat hozzá keresési képességeket és interaktív előugró mezőket a térképhez a Azure Maps web SDK használatával.
+description: Útmutató az érdekes pontok kereséséhez a térképen. Tekintse meg, hogyan adhat hozzá keresési képességeket és interaktív előugró mezőket a térképhez a Azure Maps web SDK használatával.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 1/15/2020
@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 6ed463cbda3ceb560f907529dc8de54a772932ea
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.custom: mvc, devx-track-js
+ms.openlocfilehash: 4d6728d4fbde4b7d6cc8ed06e961642264ad31bc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085076"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321696"
 ---
 # <a name="tutorial-search-nearby-points-of-interest-using-azure-maps"></a>Oktatóanyag: a közeli érdekes pontok keresése Azure Maps használatával
 
@@ -26,44 +26,14 @@ Ez az oktatóanyag bemutatja, hogyan állíthat be egy fiókot az Azure Maps has
 > * Új weblap létrehozása a térképkezelési API használatával
 > * A Maps keresőszolgáltatásának használata egy közeli hasznos hely kereséséhez
 
-Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
-
-## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
-
-Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+## <a name="prerequisites"></a>Előfeltételek
 
 <a id="createaccount"></a>
-
-## <a name="create-an-account-with-azure-maps"></a>Azure Maps-fiók létrehozása
-
-Hozzon létre egy új Maps-fiókot az alábbi lépésekkel:
-
-1. Kattintson az [Azure Portal](https://portal.azure.com) bal felső sarkában az **Erőforrás létrehozása** gombra.
-2. A *Keresés a Marketplace-en* mezőbe írja be a következőt: **Maps**.
-3. Az *Eredmények* részben válassza a **Maps** lehetőséget. Kattintson a térkép alatt megjelenő **Létrehozás** gombra.
-4. A **Maps-fiók létrehozása** lapon adja meg a következő értékeket:
-    * A fiókhoz használni kívánt *előfizetés*.
-    * A fiókhoz tartozó *erőforráscsoport* neve. Választhat, hogy *létrehoz egy új erőforráscsoportot*, vagy egy *meglévő erőforráscsoportot használ*.
-    * Az új fiók *neve*.
-    * A fiók *díjszabási szintje* .
-    * Olvassa el a *licencfeltételeket* és az *adatvédelmi nyilatkozatot*, és jelölje be az azok elfogadását jelző jelölőnégyzetet.
-    * Kattintson a **Létrehozás** gombra.
-
-![Azure Maps fiók létrehozása Azure Portal](./media/tutorial-search-location/create-account.png)
-
 <a id="getkey"></a>
 
-## <a name="get-the-primary-key-for-your-account"></a>A fiók elsődleges kulcsának lekérése
-
-A Maps-fiók sikeres létrehozását követően kérje le azt a kulcsot, amely lehetővé teszi a Maps API-k lekérdezését. Azure Maps szolgáltatások meghívásakor azt javasoljuk, hogy a fiók elsődleges kulcsát használja előfizetési kulcsként.
-
-1. Nyissa meg a Maps-fiókot a portálon.
-2. A beállítások szakaszban válassza a **hitelesítés**lehetőséget.
-3. Másolja ki az **elsődleges kulcsot** a vágólapra. Mentse a helyi gépre, hogy később felhasználhassa ebben az oktatóanyagban.
-
-![Elsődleges kulcs lekérése Azure Portal](./media/tutorial-search-location/get-key.png)
-
-A Azure Maps-hitelesítéssel kapcsolatos további információkért lásd: a [Azure Maps hitelesítés kezelése](how-to-manage-authentication.md).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
+2. [Azure Maps fiók létrehozása](quick-demo-map-app.md#create-an-azure-maps-account)
+3. [Szerezzen be egy elsődleges előfizetési kulcsot](quick-demo-map-app.md#get-the-primary-key-for-your-account), más néven az elsődleges kulcsot vagy az előfizetési kulcsot. A Azure Maps-hitelesítéssel kapcsolatos további információkért lásd: a [Azure Maps hitelesítés kezelése](how-to-manage-authentication.md).
 
 <a id="createmap"></a>
 
@@ -275,21 +245,9 @@ A létrehozott térkép ezen a ponton még csak a keresési eredmények hosszús
 
     ![Azure Térkép vezérlőelem és Search Service](./media/tutorial-search-location/popup-map.png)
 
-## <a name="next-steps"></a>További lépések
+Az oktatóanyag teljes kódjának megtekintéséhez kattintson [ide](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/search.html). Az élő minta megtekintéséhez kattintson [ide](https://azuremapscodesamples.azurewebsites.net/?sample=Search%20for%20points%20of%20interest)
 
-Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
-
-> [!div class="checklist"]
-> * Azure Maps-fiók létrehozása
-> * A fiók elsődleges kulcsának lekérése
-> * Új weblap létrehozása a Térkép vezérlőelem API használatával
-> * A Search Service használata egy közeli hasznos hely kereséséhez
-
-> [!div class="nextstepaction"]
-> [Teljes forráskód megtekintése](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/search.html)
-
-> [!div class="nextstepaction"]
-> [Élő minta megtekintése](https://azuremapscodesamples.azurewebsites.net/?sample=Search%20for%20points%20of%20interest)
+## <a name="next-steps"></a>Következő lépések
 
 A következő oktatóanyag bemutatja, hogyan lehet megjeleníteni egy útvonalat két hely között.
 

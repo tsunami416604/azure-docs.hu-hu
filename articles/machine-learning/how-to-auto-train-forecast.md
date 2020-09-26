@@ -10,27 +10,28 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
 ms.date: 08/20/2020
-ms.openlocfilehash: 982c7a41f1e05c34ddf0fbae9f944df4a4d08fa5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: ce8ff8bedc6f6e4f99a940bbdb26bd3fafc930d8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90893362"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296773"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Idősorozat-előrejelzési modell automatikus betanítása
 
 
 Ebből a cikkből megtudhatja, hogyan konfigurálhat és betaníthat egy idősorozat-előrejelző regressziós modellt a [Azure Machine learning PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true)-ban, az automatikus gépi tanulás, a AutoML használatával. 
 
+Ehhez a következőket kell tennie: 
+
+> [!div class="checklist"]
+> * Az idősorozat-modellezéssel kapcsolatos adatelőkészítés.
+> * Adott idősorozat-paraméterek konfigurálása egy [`AutoMLConfig`](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) objektumban.
+> * Előrejelzéseket futtathat az idősorozat-adatsorokkal.
+
 Az alacsony kódú felhasználói élményért tekintse meg a következő [oktatóanyagot:](tutorial-automated-ml-forecast.md) az automatikus gépi tanulással kapcsolatos előrejelzési igények az automatikus gépi tanulással a [Azure Machine learning Studióban](https://ml.azure.com/).
 
 A klasszikus idősorozat-módszerekkel ellentétben az automatikus ML-ben a múltbeli idősorozat-értékek "Pivotal", hogy további dimenziókat regressor a többi előrejelzővel együtt. Ez a megközelítés több kontextusbeli változót is magában foglal, és a képzés során egymáshoz fűződő kapcsolatukat. Mivel több tényező is befolyásolhatja az előrejelzést, ez a módszer jól illeszkedik a valós előrejelzési forgatókönyvekhez. Például az értékesítések előrejelzése, a múltbeli trendek, az árfolyam és az ár interakciója együttesen hajtja végre az értékesítés eredményét. 
-
-Az alábbi példák a következőket mutatják be:
-
-* Az idősorozat-modellezéssel kapcsolatos adatelőkészítés
-* Adott idősorozat-paraméterek konfigurálása egy [`AutoMLConfig`](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) objektumban
-* Előrejelzések futtatása idősoros adattal
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -118,52 +119,20 @@ automl_config = AutoMLConfig(task='forecasting',
 További információ arról, hogy a AutoML hogyan alkalmazza a határokon átnyúló ellenőrzéseket a [túlzottan illeszkedő modellek megelőzése](concept-manage-ml-pitfalls.md#prevent-over-fitting)érdekében.
 
 ## <a name="configure-experiment"></a>Kísérlet konfigurálása
-Az [`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py&preserve-view=true) objektum meghatározza az automatizált gépi tanulási feladatokhoz szükséges beállításokat és adatmennyiséget. Az előrejelzési modell konfigurációja hasonló a standard regressziós modell beállításához, de bizonyos featurization lépések és konfigurációs beállítások kifejezetten az idősorozat-adatsorokhoz szükségesek. 
 
-### <a name="featurization-steps"></a>Featurization lépések
+Az [`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py&preserve-view=true) objektum meghatározza az automatizált gépi tanulási feladatokhoz szükséges beállításokat és adatmennyiséget. Az előrejelzési modell konfigurációja hasonló a standard regressziós modell beállításához, de bizonyos modellek, konfigurációs beállítások és featurization lépések kifejezetten az idősorozat-adatsorokra vonatkoznak. 
 
-Az automatikus skálázási és normalizáló technikákat minden automatizált gépi tanulási kísérlet során alapértelmezés szerint alkalmazza a rendszer az adataira. Ezek a technikák olyan **featurization** -típusok, amelyek *bizonyos* , különböző léptékű funkciókra érzékeny algoritmusokat nyújtanak. További információ a [AutoML-beli featurization](how-to-configure-auto-features.md#automatic-featurization) alapértelmezett featurization lépéseiről
+### <a name="supported-models"></a>Támogatott modellek
+Az automatizált gépi tanulás automatikusan különböző modelleket és algoritmusokat próbál a modell létrehozási és hangolási folyamatának részeként. Felhasználóként nem kell megadnia az algoritmust. Az előrejelzési kísérletek esetében a natív idősorozat és a Deep learning modellek is a javaslati rendszer részét képezik. A következő táblázat összefoglalja a modellek ezen részhalmazát. 
 
-A következő lépések azonban csak a feladattípusok esetén hajthatók végre `forecasting` :
+>[!Tip]
+> A rendszer a hagyományos regressziós modelleket is teszteli a javaslatrendszer részeként az előrejelzési kísérletekhez. A modellek teljes listájáért tekintse meg a [támogatott modell táblázatát](how-to-configure-auto-train.md#supported-models) . 
 
-* Az idősorozat mintavételi gyakoriságának (például óránkénti, napi, heti) észlelése, és új rekordok létrehozása a hiányzó időpontokhoz, hogy a sorozat folyamatos legyen.
-* Hiányzó értékek bevonása a célhelyből (továbbítási kitöltéssel) és a funkció oszlopai (medián Column Values használatával)
-* Funkciók létrehozása idősorozat-azonosítók alapján a különböző adatsorozatok rögzített hatásainak engedélyezéséhez
-* Időalapú szolgáltatások létrehozása a szezonális minták tanulásának segítésére
-* Kategorikus változók kódolása numerikus mennyiségre
-
-A fenti lépések eredményeképpen létrehozott funkciók összefoglalását lásd: [Featurization átlátszóság](how-to-configure-auto-features.md#featurization-transparency)
-
-> [!NOTE]
-> Az automatizált gépi tanulás featurization lépései (a funkciók normalizálása, a hiányzó adatkezelés, a szöveg konvertálása a numerikus formátumba stb.) az alapul szolgáló modell részévé válnak. A modell előrejelzésekhez való használatakor a betanítás során alkalmazott azonos featurization-lépéseket automatikusan alkalmazza a rendszer a bemeneti adatokra.
-
-#### <a name="customize-featurization"></a>Featurization testreszabása
-
-Lehetősége van arra is, hogy testreszabja a featurization beállításait, így biztosítva, hogy a ML-modell betanításához használt adatokat és szolgáltatásokat a megfelelő előrejelzések képezzék. 
-
-A feladatok támogatott testreszabásai a `forecasting` következők:
-
-|Testreszabás|Definíció|
-|--|--|
-|**Oszlop céljának frissítése**|Felülbírálja a megadott oszlop automatikusan észlelt funkciójának típusát.|
-|**A transzformátor paraméterének frissítése** |Frissítse a megadott átalakító paramétereit. Jelenleg támogatja az *imputált* (fill_value és medián).|
-|**Oszlopok eldobása** |Meghatározza az eldobni kívánt oszlopokat a featurized.|
-
-Az SDK-val való featurizations testreszabásához adja meg az `"featurization": FeaturizationConfig` `AutoMLConfig` objektumot az objektumban. További információ az [Egyéni featurizations](how-to-configure-auto-features.md#customize-featurization).
-
-```python
-featurization_config = FeaturizationConfig()
-# `logQuantity` is a leaky feature, so we remove it.
-featurization_config.drop_columns = ['logQuantitity']
-# Force the CPWVOL5 feature to be of numeric type.
-featurization_config.add_column_purpose('CPWVOL5', 'Numeric')
-# Fill missing values in the target column, Quantity, with zeroes.
-featurization_config.add_transformer_params('Imputer', ['Quantity'], {"strategy": "constant", "fill_value": 0})
-# Fill mising values in the `INCOME` column with median value.
-featurization_config.add_transformer_params('Imputer', ['INCOME'], {"strategy": "median"})
-```
-
-Ha a kísérlethez a Azure Machine Learning Studiot használja, tekintse meg [a featurization testreszabása a Studióban](how-to-use-automated-ml-for-ml-models.md#customize-featurization)című témakört.
+Modellek| Description | Előnyök
+----|----|---
+Próféta (előzetes verzió)|A próféta a legjobb idősorozattal működik, amely erős szezonális hatásokat és több időszakot is tartalmaz. A modell kihasználása érdekében telepítse helyileg a használatával `pip install fbprophet` . | Pontos & gyors, robusztus a kiugró értékek, a hiányzó adatmennyiségek és az idősorozat drámai változásai.
+Automatikus ARIMA (előzetes verzió)|Az automatikusan újradegresszív, integrált mozgóátlag (ARIMA) a legjobbat hajtja végre, ha az adatok állomáson vannak. Ez azt jelenti, hogy a statisztikai tulajdonságok, például a középérték és a variancia állandó a teljes készleten. Ha például egy érme tükrözését hajtja végre, akkor a fejek beszerzésének valószínűsége 50%, függetlenül attól, hogy a mai, a holnapi vagy a jövő évi tükrözést szeretné-e megtekinteni.| Kiválóan használható a univariate sorozatokhoz, mivel a korábbi értékeket a jövőbeli értékek előrejelzésére használjuk.
+ForecastTCN (előzetes verzió)| A ForecastTCN egy olyan neurális hálózati modell, amely a legigényesebb előrejelzési feladatok kezelésére, a nem lineáris helyi és globális trendek rögzítésére szolgál az adatokban, valamint az idősorozatok közötti kapcsolatokat.|Képes az adathalmazok összetett trendjeinek kihasználása és a nagy adatkészletek rugalmas méretezésére.
 
 ### <a name="configuration-settings"></a>Konfigurációs beállítások
 
@@ -221,6 +190,51 @@ automl_config = AutoMLConfig(task='forecasting',
                              **time_series_settings)
 ```
 
+### <a name="featurization-steps"></a>Featurization lépések
+
+Az automatikus skálázási és normalizáló technikákat minden automatizált gépi tanulási kísérlet során alapértelmezés szerint alkalmazza a rendszer az adataira. Ezek a technikák olyan **featurization** -típusok, amelyek *bizonyos* , különböző léptékű funkciókra érzékeny algoritmusokat nyújtanak. További információ a [AutoML-beli featurization](how-to-configure-auto-features.md#automatic-featurization) alapértelmezett featurization lépéseiről
+
+A következő lépések azonban csak a feladattípusok esetén hajthatók végre `forecasting` :
+
+* Az idősorozat mintavételi gyakoriságának (például óránkénti, napi, heti) észlelése, és új rekordok létrehozása a hiányzó időpontokhoz, hogy a sorozat folyamatos legyen.
+* Hiányzó értékek bevonása a célhelyből (továbbítási kitöltéssel) és a funkció oszlopai (medián Column Values használatával)
+* Funkciók létrehozása idősorozat-azonosítók alapján a különböző adatsorozatok rögzített hatásainak engedélyezéséhez
+* Időalapú szolgáltatások létrehozása a szezonális minták tanulásának segítésére
+* Kategorikus változók kódolása numerikus mennyiségre
+
+A fenti lépések eredményeképpen létrehozott funkciók összefoglalását lásd: [Featurization átlátszóság](how-to-configure-auto-features.md#featurization-transparency)
+
+> [!NOTE]
+> Az automatizált gépi tanulás featurization lépései (a funkciók normalizálása, a hiányzó adatkezelés, a szöveg konvertálása a numerikus formátumba stb.) az alapul szolgáló modell részévé válnak. A modell előrejelzésekhez való használatakor a betanítás során alkalmazott azonos featurization-lépéseket automatikusan alkalmazza a rendszer a bemeneti adatokra.
+
+#### <a name="customize-featurization"></a>Featurization testreszabása
+
+Lehetősége van arra is, hogy testreszabja a featurization beállításait, így biztosítva, hogy a ML-modell betanításához használt adatokat és szolgáltatásokat a megfelelő előrejelzések képezzék. 
+
+A feladatok támogatott testreszabásai a `forecasting` következők:
+
+|Testreszabás|Definíció|
+|--|--|
+|**Oszlop céljának frissítése**|Felülbírálja a megadott oszlop automatikusan észlelt funkciójának típusát.|
+|**A transzformátor paraméterének frissítése** |Frissítse a megadott átalakító paramétereit. Jelenleg támogatja az *imputált* (fill_value és medián).|
+|**Oszlopok eldobása** |Meghatározza az eldobni kívánt oszlopokat a featurized.|
+
+Az SDK-val való featurizations testreszabásához adja meg az `"featurization": FeaturizationConfig` `AutoMLConfig` objektumot az objektumban. További információ az [Egyéni featurizations](how-to-configure-auto-features.md#customize-featurization).
+
+```python
+featurization_config = FeaturizationConfig()
+# `logQuantity` is a leaky feature, so we remove it.
+featurization_config.drop_columns = ['logQuantitity']
+# Force the CPWVOL5 feature to be of numeric type.
+featurization_config.add_column_purpose('CPWVOL5', 'Numeric')
+# Fill missing values in the target column, Quantity, with zeroes.
+featurization_config.add_transformer_params('Imputer', ['Quantity'], {"strategy": "constant", "fill_value": 0})
+# Fill mising values in the `INCOME` column with median value.
+featurization_config.add_transformer_params('Imputer', ['INCOME'], {"strategy": "median"})
+```
+
+Ha a kísérlethez a Azure Machine Learning Studiot használja, tekintse meg [a featurization testreszabása a Studióban](how-to-use-automated-ml-for-ml-models.md#customize-featurization)című témakört.
+
 ## <a name="optional-configurations"></a>Választható konfigurációk
 
 További opcionális konfigurációk is elérhetők az előrejelzési feladatokhoz, például a Deep learning engedélyezéséhez és a cél gördülő ablak összesítésének megadásához. 
@@ -250,17 +264,7 @@ automl_config = AutoMLConfig(task='forecasting',
 
 Ha engedélyezni szeretné a DNN a Azure Machine Learning Studióban létrehozott AutoML-kísérlethez, tekintse meg a következő témakörben található feladattípus [-beállításokat: a Studio útmutatója](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment).
 
-
-Az automatikus ML lehetővé teszi, hogy a felhasználók natív idősorozatú és mély tanulási modelleket is biztosítanak a javaslatrendszer részeként. 
-
-Modellek| Leírás | Előnyök
-----|----|---
-Próféta (előzetes verzió)|A próféta a legjobb idősorozattal működik, amely erős szezonális hatásokat és több időszakot is tartalmaz. A modell kihasználása érdekében telepítse helyileg a használatával `pip install fbprophet` . | Pontos & gyors, robusztus a kiugró értékek, a hiányzó adatmennyiségek és az idősorozat drámai változásai.
-Automatikus ARIMA (előzetes verzió)|Az automatikusan újradegresszív, integrált mozgóátlag (ARIMA) a legjobbat hajtja végre, ha az adatok állomáson vannak. Ez azt jelenti, hogy a statisztikai tulajdonságok, például a középérték és a variancia állandó a teljes készleten. Ha például egy érme tükrözését hajtja végre, akkor a fejek beszerzésének valószínűsége 50%, függetlenül attól, hogy a mai, a holnapi vagy a jövő évi tükrözést szeretné-e megtekinteni.| Kiválóan használható a univariate sorozatokhoz, mivel a korábbi értékeket a jövőbeli értékek előrejelzésére használjuk.
-ForecastTCN (előzetes verzió)| A ForecastTCN egy olyan neurális hálózati modell, amely a legigényesebb előrejelzési feladatok kezelésére, a nem lineáris helyi és globális trendek rögzítésére szolgál az adatokban, valamint az idősorozatok közötti kapcsolatokat.|Képes az adathalmazok összetett trendjeinek kihasználása és a nagy adatkészletek rugalmas méretezésére.
-
 Tekintse meg az [üzemi előrejelzést tartalmazó jegyzetfüzetet](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb) , amely egy részletes kód, például a DNN kihasználása.
-
 
 ### <a name="target-rolling-window-aggregation"></a>Cél gördülő ablak összesítése
 A legjobb információ gyakran a cél legutóbbi értéke lehet.  A cél gördülő ablak összesítései lehetővé teszik, hogy az adatértékek folyamatos összesítését adja hozzá szolgáltatásként. Ezeket a kiegészítő funkciókat további kontextusbeli adatok létrehozásával és használatával segítheti a betanítási modell pontosságát.
@@ -283,7 +287,7 @@ experiment = Experiment(ws, "forecasting_example")
 local_run = experiment.submit(automl_config, show_output=True)
 best_run, fitted_model = local_run.get_output()
 ```
-
+ 
 ## <a name="forecasting-with-best-model"></a>Előrejelzés a legjobb modellel
 
 Használja a legjobb modell iterációt a tesztelési adatkészletre vonatkozó előrejelzési értékekhez.

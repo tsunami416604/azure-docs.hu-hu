@@ -9,14 +9,14 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 01/08/2020
 ms.author: mayg
-ms.openlocfilehash: 39a92dbdc0bdcd0fdd2bb06efe3fbd4bfe33069d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e2ab52120e2a5db6648caac61f0228cb0be7e67b
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87071182"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91355040"
 ---
-# <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>Hibák elhárítása VMware virtuális gépen vagy fizikai gépen az Azure-ba történő feladatátvétel során
+# <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>VMware virtuális gépről vagy fizikai gépről az Azure-ba irányuló feladatátvétel hibaelhárítása
 
 A virtuális gépek Azure-ba történő feladatátvétele közben a következő hibák valamelyike jelenhet meg. A hibaelhárításhoz használja a leírt lépéseket az egyes hibák feltételéhez.
 
@@ -84,8 +84,8 @@ Az SSH-problémákról részletes hibaelhárítási utasításokért tekintse me
 
 Ha az Azure-ban a feladatátvételen átesett virtuális gépen a **Connect (csatlakozás** ) gomb szürkén jelenik meg, és nem csatlakozik az Azure-hoz az expressz útvonalon vagy a helyek közötti VPN-kapcsolaton keresztül, akkor
 
-1. Nyissa meg a **virtuális gép**  >  **hálózatkezelését**, és kattintson a szükséges hálózati adapter nevére.  ![hálózati adapter](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
-2. Navigáljon az **IP-konfigurációk**elemre, majd kattintson a szükséges IP-konfiguráció név mezőjére. ![IPConfigurations](media/site-recovery-failover-to-azure-troubleshoot/IpConfigurations.png)
+1. Nyissa meg a **virtuális gép**  >  **hálózatkezelését**, és kattintson a szükséges hálózati adapter nevére.  ![A képernyőfelvételen a hálózati csatoló nevét tartalmazó virtuális gép hálózatkezelési lapja látható.](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
+2. Navigáljon az **IP-konfigurációk**elemre, majd kattintson a szükséges IP-konfiguráció név mezőjére. ![Képernyőfelvétel: a hálózati adapter I p-konfigurációk lapja, amely a kiválasztott I P konfiguráció nevét tartalmazza.](media/site-recovery-failover-to-azure-troubleshoot/IpConfigurations.png)
 3. A nyilvános IP-cím engedélyezéséhez kattintson az **Engedélyezés**gombra. ![IP-cím engedélyezése](media/site-recovery-failover-to-azure-troubleshoot/Enable-Public-IP.png)
 4. Kattintson a **kötelező beállítások konfigurálása**  >  **új létrehozása**lehetőségre. ![Új létrehozása](media/site-recovery-failover-to-azure-troubleshoot/Create-New-Public-IP.png)
 5. Adja meg a nyilvános címek nevét, válassza ki az **SKU** és a **hozzárendelés**alapértelmezett beállításait, majd kattintson az **OK**gombra.
@@ -181,7 +181,7 @@ A hiba megoldása érdekében:
      - Tiltsa le a proxyt a fő célkiszolgálón. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Windows rendszerű virtuális gép RDP-kapcsolatának](../virtual-machines/troubleshooting/troubleshoot-rdp-connection.md) hibáinak megoldása
 - Linux rendszerű [virtuális géppel létesített SSH-kapcsolatok](../virtual-machines/troubleshooting/detailed-troubleshoot-ssh-connection.md) hibáinak megoldása
 

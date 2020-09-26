@@ -12,12 +12,12 @@ ms.date: 04/14/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e5e6afef70ee3d4f4d84cb6b867a916ae57da5a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 854931273ffebd653615a44dbfa9ce1b846655c2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356304"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333426"
 ---
 # <a name="azure-ad-pass-through-authentication-agent-version-release-history"></a>Azure AD átmenő hitelesítési ügynök: verzió kiadási előzményei 
  
@@ -55,21 +55,16 @@ A kapcsolódó témakörök a következők:
 ## <a name="154050"></a>1.5.405.0 
 ### <a name="release-status"></a>Kiadás állapota 
 1/31/2018: kiadva a letöltéshez  
-### <a name="fixed-issues"></a>Hibák kijavítva: 
-
+### <a name="fixed-issues"></a>Megoldott problémák 
 - Kijavítva egy olyan hibát, amely valamilyen memóriavesztés okozta az ügynököt. 
 - Frissült a Azure Service Bus verziója, amely tartalmazza az összekötő időtúllépési hibáinak elhárítását. 
- 
-## <a name="154050"></a>1.5.405.0 
-### <a name="release-status"></a>Kiadás állapota 
-11/26/2017: kiadva a letöltéshez  
 ### <a name="new-features-and-improvements"></a>Új funkciók és Újdonságok 
-- WebSocket-alapú kapcsolatok támogatása az ügynök és az Azure AD szolgáltatások között a kapcsolat rugalmasságának növelése érdekében 
+- WebSocket-alapú kapcsolatok támogatása az ügynök és az Azure AD szolgáltatások között a kapcsolat rugalmasságának növelése érdekében
 
 ## <a name="154020"></a>1.5.402.0 
 ### <a name="release-status"></a>Kiadás állapota 
 11/25/2017: kiadva a letöltéshez  
-### <a name="fixed-issues"></a>Hibák kijavítva: 
+### <a name="fixed-issues"></a>Megoldott problémák 
 - Az alapértelmezett proxy-forgatókönyvek DNS-gyorsítótárával kapcsolatos kijavított hibák 
  
 ## <a name="153890"></a>1.5.389.0 
@@ -84,6 +79,6 @@ A kapcsolódó témakörök a következők:
 ### <a name="new-features-and-improvements"></a>Új funkciók és Újdonságok 
 - Az Azure AD átmenő hitelesítési ügynök GA-verziója 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Felhasználói bejelentkezés az Azure Active Directory átmenő hitelesítésével](how-to-connect-pta.md)

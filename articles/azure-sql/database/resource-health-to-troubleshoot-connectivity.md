@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: aamalvea
 ms.author: aamalvea
-ms.reviewer: jrasnik, carlrab
+ms.reviewer: jrasnik, sstein
 ms.date: 02/26/2019
-ms.openlocfilehash: 27865afd356be9eac64083c1ebdeb6ced43dbd18
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 8be537fd28adce45b7fc106cc3798688ee4c54ae
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85986942"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321577"
 ---
 # <a name="use-resource-health-to-troubleshoot-connectivity-for-azure-sql-database-and-azure-sql-managed-instance"></a>A Resource Health használata a Azure SQL Database és az Azure SQL felügyelt példányaihoz való kapcsolódással kapcsolatos problémák megoldásához
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -39,7 +39,7 @@ Az **elérhető** állapot azt jelenti, hogy a Resource Health nem észlelte a b
 
 ### <a name="degraded"></a>Csökkentett teljesítményű
 
-A **csökkentett teljesítményű** állapot azt jelenti, hogy Resource Health a sikeres bejelentkezések többségét észlelte, de néhány hiba is. Ezek valószínűleg átmeneti bejelentkezési hibák. Az átmeneti bejelentkezési hibák okozta kapcsolódási problémák csökkentése érdekében hajtsa végre az [újrapróbálkozási logikát](troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors) a kódban.
+A **Csökkentett teljesítmény** állapot azt jelenti, hogy a Resource Health főleg sikeres bejelentkezéseket észlelt, de néhány sikertelent is. Ezek valószínűleg átmeneti bejelentkezési hibák. Az átmeneti bejelentkezési hibák okozta kapcsolódási problémák csökkentése érdekében hajtsa végre az [újrapróbálkozási logikát](troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors) a kódban.
 
 ![Csökkentett teljesítményű](./media/resource-health-to-troubleshoot-connectivity/sql-resource-health-degraded.jpg)
 
@@ -71,7 +71,7 @@ Az Azure-infrastruktúra rendszeres időközönként tervezett karbantartást v�
 
 Az újrakonfigurálások átmeneti feltételeknek számítanak, és időről időre várhatóak. Ezeket az eseményeket terheléselosztás vagy szoftver/hardver meghibásodása esetén aktiválhatja. A felhőalapú adatbázishoz csatlakozó összes ügyfél-előállító alkalmazásnak robusztus kapcsolati [újrapróbálkozási logikát](troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors)kell létrehoznia, mivel ez segít az ilyen helyzetek enyhítésében, és általánosságban a hibákat általában a végfelhasználók számára transzparensvé teszi.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az [átmeneti hibákra vonatkozó újrapróbálkozási logikáról](troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors).
 - Az [SQL-kapcsolatok hibáinak elhárítása, diagnosztizálása és letiltása](troubleshoot-common-connectivity-issues.md).

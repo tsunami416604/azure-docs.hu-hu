@@ -4,19 +4,19 @@ description: Ismerje meg a Azure Monitor Application Insights klasszikus erőfor
 author: mrbullwinkle
 ms.author: mbullwin
 ms.topic: conceptual
-ms.date: 09/09/2020
-ms.openlocfilehash: caaf5469eace891f2996a565af183b411ad1d740
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/23/2020
+ms.openlocfilehash: aab2d1ec5a6c3e046840e736ced0993e560c4661
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935543"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333341"
 ---
 # <a name="migrate-to-workspace-based-application-insights-resources"></a>Áttelepítés munkaterületen alapuló Application Insights erőforrásokra
 
 Ez az útmutató végigvezeti a klasszikus Application Insights erőforrásnak a munkaterület-alapú erőforrásba való áttelepítésének folyamatán. A munkaterület-alapú erőforrások a Application Insights és Log Analytics közötti teljes integrációt támogatják. A munkaterület-alapú erőforrások Application Insights telemetria küldenek egy közös Log Analytics munkaterületre, amely lehetővé teszi [a Azure monitor legújabb funkcióinak](#new-capabilities) elérését, miközben az alkalmazások, az infrastruktúra és a platformok naplóit egyetlen konszolidált helyen tartja.
 
-A munkaterület-alapú erőforrások lehetővé teszik a közös szerepköralapú Access Control (RBAC) használatát az erőforrások között, és kiküszöböli a alkalmazások közötti vagy munkaterület-lekérdezések szükségességét.
+A munkaterület-alapú erőforrások lehetővé teszik a közös szerepköralapú Access Control (RBAC) használatát az erőforrások között, és kiküszöböli az alkalmazások közötti vagy munkaterület-lekérdezések szükségességét.
 
 **A munkaterület-alapú erőforrások jelenleg minden kereskedelmi régióban és az Egyesült Államok kormányzati szerveiben érhetők el**
 
@@ -34,12 +34,11 @@ A munkaterület-alapú Application Insights lehetővé teszi Azure Monitor és L
 
 Ha munkaterületen alapuló erőforrásra végez áttelepítést, a rendszer a klasszikus erőforrás tárterületéről nem helyez át adatátvitelt az új munkaterület-alapú tárolóba. Az áttelepítés kiválasztása Ehelyett megváltoztatja azt a helyet, ahol az új adatai Log Analytics munkaterületre íródnak, miközben megőrizheti a klasszikus erőforrások adataihoz való hozzáférést. 
 
-A klasszikus erőforrás-adatok továbbra is megmaradnak, és a betöltéskor a megőrzési beállítások vonatkoznak rájuk. Minden új áttelepítési adatot a rendszer a társított Log Analytics munkaterület megőrzési beállításaitól függ. 
-
+A klasszikus erőforrás-adatok továbbra is megmaradnak, és a klasszikus Application Insights erőforrás megőrzési beállításai vonatkoznak rájuk. Az áttelepítés utáni összes új adatot a társított Log Analytics munkaterület [megőrzési beállításai](../platform/manage-cost-storage.md#change-the-data-retention-period) szabályozzák, amely más [adatmegőrzési beállításokat is támogat adattípus szerint](../platform/manage-cost-storage.md#retention-by-data-type).
 Az áttelepítési folyamat **állandó, és nem vonható vissza**. Miután áttelepítette az erőforrást a munkaterület-alapú Application Insightsre, mindig munkaterület-alapú erőforrás lesz. A Migrálás után azonban a kívánt gyakorisággal módosíthatja a cél munkaterületet. 
 
 > [!NOTE]
-> A munkaterületen alapuló Application Insights erőforrások adatfeldolgozása és megőrzése a Log Analytics munkaterületen történik, ahol az adatok találhatók. [További]( ./pricing.md#workspace-based-application-insights) információ a munkaterület-alapú Application Insights erőforrások számlázásáról. (A klasszikus Application Insights az áttelepítés előtt betöltött erőforrás-adatok továbbra is Application Insights megőrzés/díjszabás alatt maradnak az adatok tárolásának időtartama alatt.) 
+> A munkaterületen alapuló Application Insights erőforrások adatfeldolgozása és megőrzése a [log Analytics munkaterületen](../platform/manage-cost-storage.md) történik, ahol az adatok találhatók. Ha 90 napnál nagyobb adatmegőrzést jelölt ki a klasszikus Application Insights erőforrásba való áttelepítés előtt betöltött adatokon, az adatmegőrzés továbbra is a Application Insights erőforráson keresztül történik. [További]( ./pricing.md#workspace-based-application-insights) információ a munkaterület-alapú Application Insights erőforrások számlázásáról.
 
 Ha nem kell áttelepítenie egy meglévő erőforrást, és ehelyett új munkaterület-alapú Application Insights erőforrást szeretne létrehozni, használja a [munkaterület-alapú erőforrás-létrehozási útmutatót](create-workspace-resource.md).
 

@@ -3,13 +3,13 @@ title: Az Azure app Services teljesítményének figyelése | Microsoft Docs
 description: Az alkalmazások teljesítményének figyelése az Azure app Servicesben. A diagram betöltésének és a válaszidő, a függőségi adatok és a riasztások beállítása a teljesítményre.
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.custom: devx-track-javascript, devx-track-dotnet
-ms.openlocfilehash: 952cd9669ecc3fb5ff1326d15aef25e1a1524ca5
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.custom: devx-track-js, devx-track-dotnet
+ms.openlocfilehash: 2ac5466e280bb7dd835314561f565ca72be2743c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90979442"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321815"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Az Azure App Service teljesítményének monitorozása
 
@@ -355,7 +355,7 @@ Az alábbiakban részletes hibaelhárítási útmutatót talál az Azure App Ser
 1. Ellenőrizze, hogy az alkalmazást a használatával figyeli-e `ApplicationInsightsAgent` .
     * Győződjön meg arról, hogy az `ApplicationInsightsAgent_EXTENSION_VERSION` alkalmazás beállítása "~ 2" értékre van állítva.
 2. Győződjön meg arról, hogy az alkalmazás megfelel a figyelni kívánt követelményeknek.
-    * Tallózással keresse meg a `https://yoursitename.scm.azurewebsites.net/ApplicationInsights`
+    * Nyissa meg a következő címet a böngészőben: `https://yoursitename.scm.azurewebsites.net/ApplicationInsights`
 
     ![Az https://yoursitename.scm.azurewebsites/applicationinsights eredmények oldal képernyőképe](./media/azure-web-apps/app-insights-sdk-status.png)
 

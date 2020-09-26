@@ -7,19 +7,19 @@ author: MashaMSFT
 tags: azure-resource-manager
 ms.assetid: 1aff691f-a40a-4de2-b6a0-def1384e086e
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
 ms.date: 11/07/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e315f49cb0b78e13c4b6132f844397d1261ff0f9
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: a7cd15bab0b26a13f9ffb818aa29e8e262c0bd06
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652016"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332916"
 ---
 # <a name="how-to-use-the-azure-portal-to-provision-a-windows-virtual-machine-with-sql-server"></a>Windows rendszerű virtuális gép kiépítése a Azure Portal használatával SQL Server
 
@@ -69,7 +69,7 @@ Az **alapvető beállítások** lapon adja meg a következő információkat:
   ![Előfizetés](./media/create-sql-vm-portal/basics-project-details.png)
 
   > [!NOTE]
-  > Az Azure szolgáltatásban futó SQL Server üzemelő példányok tesztelésekor vagy a velük való megismerkedéskor érdemes egy új erőforráscsoportot használni. A tesztelés befejezése után törölje az erőforráscsoportot a virtuális gép és az erőforráscsoporthoz társított összes erőforrás automatikus törléséhez. További információ az erőforráscsoportokkal kapcsolatban: [Azure Resource Manager Overview](../../../active-directory-b2c/overview.md) (Az Azure Resource Manager áttekintése).
+  > Az Azure szolgáltatásban futó SQL Server üzemelő példányok tesztelésekor vagy a velük való megismerkedéskor érdemes egy új erőforráscsoportot használni. A tesztelés befejezése után törölje az erőforráscsoportot a virtuális gép és az erőforráscsoporthoz társított összes erőforrás automatikus törléséhez. További információ az erőforráscsoportok használatáról: [Azure Resource Manager Overview (áttekintés](../../../active-directory-b2c/overview.md)).
 
 
 * A **példány részletei**területen:
@@ -80,12 +80,12 @@ Az **alapvető beállítások** lapon adja meg a következő információkat:
     1. A **rendszerkép** listában válassza az _ingyenes SQL Server licenc: SQL Server 2017 Developer elemet a Windows Server 2016-on_.  
     1. A virtuális gép **méretének** **módosításához** válassza az **a2 alapszintű** ajánlat lehetőséget. Ne felejtse el megtisztítani az erőforrásokat, ha elkészült velük, hogy elkerülje a váratlan költségeket. Az éles számítási feladatok esetében ajánlott gépméretekért és -konfigurációkért tekintse meg [az SQL Server teljesítményének Azure Virtual Machines szolgáltatásbeli növelésével kapcsolatos ajánlott eljárásokat](performance-guidelines-best-practices.md).
 
-    ![Példány részletei](./media/create-sql-vm-portal/basics-instance-details.png)
+    ![Példány adatai](./media/create-sql-vm-portal/basics-instance-details.png)
 
 > [!IMPORTANT]
 > A **Méret kiválasztása** ablakban megjelenő, becsült havi költségek nem tartalmazzák az SQL Server licencelési költségeit. Ez a becslés a virtuális gép költsége. A SQL Server expressz és fejlesztői kiadásai esetében ez a becsült összeg a teljes becsült díj. Más kiadások esetében tekintse meg a [Windows rendszerű virtuális gépek árképzését ismertető oldalt](https://azure.microsoft.com/pricing/details/virtual-machines/windows/), és válassza ki az SQL Server megfelelő kiadását. Tekintse meg a SQL Server Azure-beli [virtuális gépekkel és-méretekkel kapcsolatos](../../../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) [díjszabási útmutatót](pricing-guidance.md) is.
 
-* A **rendszergazdai fiók**területen adja meg a felhasználónevet és a jelszót. A jelszónak legalább 12 karakter hosszúságúnak kell lennie, [az összetettségre vonatkozó követelmények teljesülése mellett](../../../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).
+* A **rendszergazdai fiók**területen adja meg a felhasználónevet és a jelszót. A jelszónak legalább 12 karakter hosszúnak kell lennie, és meg kell felelnie a [meghatározott összetettségi követelményeknek](../../../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).
 
    ![Rendszergazdai fiók](./media/create-sql-vm-portal/basics-administrator-account.png)
 
@@ -109,13 +109,13 @@ A **lemezek** lapon adja meg a lemez beállításait.
 ![Az SQL virtuális gép lemezének beállításai](./media/create-sql-vm-portal/azure-sqlvm-disks.png)
   
   
-### <a name="networking"></a>Hálózat
+### <a name="networking"></a>Hálózatkezelés
 
 A **hálózatkezelés** lapon konfigurálja a hálózati beállításokat. 
 
 * Hozzon létre egy új **virtuális hálózatot** , vagy használjon egy meglévő virtuális hálózatot a SQL Server VM számára. Jelölje ki az **alhálózatot** is. 
 
-* A **NIC hálózati biztonsági csoport**területen válassza az alapszintű biztonsági csoport vagy a speciális biztonsági csoport lehetőséget. Az alapszintű beállítás megadásával kiválaszthatja a bejövő portokat a SQL Server VM, amelyek ugyanazok az értékek, mint az **alapszintű** lapon. a speciális beállítás kiválasztásával megadhat egy meglévő hálózati biztonsági csoportot, vagy létrehozhat egy újat. 
+* A **NIC hálózati biztonsági csoport**területen válassza az alapszintű biztonsági csoport vagy a speciális biztonsági csoport lehetőséget. Az alapszintű beállítás választása lehetővé teszi, hogy a SQL Server VM bejövő portjait válassza, amelyek ugyanazok az értékek, amelyek az **alapszintű** lapon vannak konfigurálva. A speciális beállítás kiválasztásával választhat egy meglévő hálózati biztonsági csoportot, vagy létrehozhat egy újat. 
 
 * Más módosításokat is végezhet a hálózati beállításokon, vagy megtarthatja az alapértelmezett értékeket.
 
@@ -138,7 +138,7 @@ A **SQL Server beállítások** lapon adja meg a SQL Server adott beállításai
 - [Kapcsolatok](#connectivity)
 - [Hitelesítés](#authentication)
 - [Azure Key Vault integráció](#azure-key-vault-integration)
-- [Tárolási konfiguráció](#storage-configuration)
+- [Tároló konfigurálása](#storage-configuration)
 - [Automatikus javítás](#automated-patching)
 - [Automatikus biztonsági mentés](#automated-backup)
 - [Machine Learning Services](#machine-learning-services)
@@ -282,6 +282,6 @@ Az alábbi fejezetek bemutatják, hogyan csatlakozhat az interneten keresztül a
   > Ez a példa a Common 1433-as portot használja. Ezt az értéket azonban módosítani kell, ha egy másik portot (például 1401) adott meg a SQL Server VM telepítése során. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az SQL Server használatáról az Azure-ban: [SQL Server on Azure Virtual Machines](sql-server-on-azure-vm-iaas-what-is-overview.md) (SQL Server az Azure virtuális gépeken) és [Frequently Asked Questions](frequently-asked-questions-faq.md) (Gyakran ismételt kérdések).

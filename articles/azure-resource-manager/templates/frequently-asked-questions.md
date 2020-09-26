@@ -2,15 +2,15 @@
 title: ARM-sablon – gyakori kérdések
 description: Gyakori kérdések (GYIK) Azure Resource Manager-sablonokról.
 ms.topic: conceptual
-ms.date: 07/27/2020
+ms.date: 09/17/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: e23334daf0f4f6d5a6917af49c786d47c4557375
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 47ac8d0e3172645ec168d5cfe7a002d84765b864
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327259"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333120"
 ---
 # <a name="frequently-asked-questions-about-arm-templates"></a>Az ARM-sablonokkal kapcsolatos gyakori kérdések
 
@@ -88,7 +88,7 @@ Ez a cikk a Azure Resource Manager-(ARM-) sablonokkal kapcsolatos gyakori kérd�
 
 * **Hallottam, hogy az új sablon nyelvén dolgozik. Hol találhatok további információt?**
 
-  Az új sablon nyelvének megismeréséhez [regisztráljon az értesítésekre](https://aka.ms/armLangUpdates).
+  Az új nyelv megtekintéséhez lásd: [Project bicep repository](https://github.com/Azure/bicep). Ha az új nyelvről szeretne tájékozódni, [regisztráljon az értesítésekre](https://aka.ms/armLangUpdates).
 
 * **Van olyan terv, amely támogatja a sablonok létrehozását a YAML-ben?**
 
@@ -118,7 +118,7 @@ Ez a cikk a Azure Resource Manager-(ARM-) sablonokkal kapcsolatos gyakori kérd�
 
 * **Megoszthatók a sablonhoz tartozó szemüvegek az előfizetések között?**
 
-  Igen, használhatók az előfizetések között, feltéve, hogy a felhasználó rendelkezik olvasási hozzáféréssel a sablonhoz spec. template specifikációk nem használhatók a bérlők között.
+  Igen, használhatók az előfizetések között, feltéve, hogy a felhasználó rendelkezik olvasási hozzáféréssel a sablonhoz. A sablon specifikációi nem használhatók a bérlők között.
 
 ## <a name="scripts-in-templates"></a>Sablonokban található parancsfájlok
 
@@ -154,7 +154,7 @@ Ez a cikk a Azure Resource Manager-(ARM-) sablonokkal kapcsolatos gyakori kérd�
 
 * **Mi a teendő, ha a nem a saját sablonban található tulajdonságok módosításait látom. A rendszer ezt a "zajt" várta?**
 
-  Mi a teendő az előzetes verzióban. Dolgozunk a zaj csökkentésén. A GitHub-tárházban található problémák a következő lépések elküldésével segíthetnek a fejlesztésben:https://aka.ms/WhatIfIssues
+  Mi a teendő az előzetes verzióban. Dolgozunk a zaj csökkentésén. A GitHub-tárházban található problémák a következő lépések elküldésével segíthetnek a fejlesztésben: https://aka.ms/WhatIfIssues
 
 ## <a name="template-visualizer"></a>Sablon megjelenítő
 
@@ -188,6 +188,6 @@ Ez a cikk a Azure Resource Manager-(ARM-) sablonokkal kapcsolatos gyakori kérd�
 
   Igen, lásd: [Azure Resource Manager-sablonok telepítése GitHub-műveletek használatával](deploy-github-actions.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az ARM-sablonok bemutatása: [Mi az ARM-sablonok?](overview.md).

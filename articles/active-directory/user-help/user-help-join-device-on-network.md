@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 08/03/2018
 ms.author: curtand
 ms.reviewer: jairoc
-ms.openlocfilehash: 17c0b7bd802d4a50343f88b9517313489943e10c
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 146b867f1075a7eac1b6817f5fc8dbcd7ba04b02
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799485"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333409"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>Munkahelyi eszköz csatlakoztatása a szervezet hálózatához
 Csatlakoztassa a munkahelyi Windows 10-es eszközét a szervezet hálózatához, hogy hozzáférhessen a potenciálisan korlátozott erőforrásokhoz.
@@ -54,7 +54,7 @@ Ha az eszköz teljesen új, és még nincs beállítva, átléphet a Windows be�
 
     Az eszköz most már csatlakoztatva van a szervezet hálózatához.
 
-## <a name="to-make-sure-youre-joined"></a>Annak ellenőrzése, hogy csatlakozik-e
+## <a name="to-make-sure-youre-joined-new-device"></a>Annak ellenőrzése, hogy csatlakozik-e (új eszköz)
 Győződjön meg arról, hogy a beállításait megtekinti.
 
 1. Nyissa meg a **Beállítások**, majd a **fiókok**elemet.

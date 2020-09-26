@@ -9,16 +9,16 @@ ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: jrasnick, carlrab
+ms.reviewer: jrasnick, sstein
 ms.date: 03/10/2020
-ms.openlocfilehash: 6e17e2a6e5c9151080facc3a2dd8c1a18c0580fe
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 36a1be4f802292e62c98098508927b06a5851afa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85982160"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333086"
 ---
-# <a name="monitoring-and-performance-tuning-in-azure-sql-database-and-azure-sql-managed-instance"></a>A monitorozás és a teljesítmény finomhangolása Azure SQL Database és az Azure SQL felügyelt példányain
+# <a name="monitoring-and-performance-tuning-in-azure-sql-database-and-azure-sql-managed-instance"></a>Monitorozás és a teljesítmény finomhangolása az Azure SQL Database-ben és a felügyelt Azure SQL-példányban
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 A Azure SQL Database és az Azure SQL felügyelt példányában lévő adatbázisok teljesítményének figyeléséhez először figyelje a számítási feladatok által használt CPU-és IO-erőforrásokat az adott szolgáltatási szint és teljesítmény szintjének kiválasztása során kiválasztott adatbázis-teljesítmény szintjéhez képest. Ennek elvégzéséhez Azure SQL Database és az Azure SQL felügyelt példánya olyan erőforrás-metrikákat bocsát ki, amelyek megtekinthetők a Azure Portal vagy a következő SQL Server felügyeleti eszközök valamelyikével: [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is) vagy [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS).
@@ -93,7 +93,7 @@ Stream-metrikák és erőforrás-naplók az [Azure Storage](../../azure-monitor/
 
 Emellett a speciális figyeléshez és hibaelhárításhoz is használhatja a SQL Server [kiterjesztett eseményeit](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events) . A kiterjesztett események architektúrája lehetővé teszi a felhasználók számára, hogy a teljesítménnyel kapcsolatos problémák elhárításához vagy azonosításához szükséges mennyiségű vagy kevés adatot gyűjtsenek. További információ a Azure SQL Database kiterjesztett eseményeinek használatáról: [kiterjesztett események a Azure SQL Databaseban](xevent-db-diff-from-svr.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az önálló és a készletezett adatbázisokra vonatkozó intelligens teljesítménnyel kapcsolatos javaslatokról az [adatbázis-tanácsadó teljesítményével kapcsolatos javaslatok](database-advisor-implement-performance-recommendations.md)című témakörben olvashat bővebben.
 - Az adatbázis teljesítményének automatikus és a teljesítménnyel kapcsolatos problémák kiváltó okának elemzésével kapcsolatos további információkért lásd: [Azure SQL Intelligent Insights](intelligent-insights-overview.md).

@@ -12,19 +12,19 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto, emlisa
 ms.date: 09/21/2020
-ms.openlocfilehash: f3ae5e1ef4dc2968724daeafb32f26cf445b0d2f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f0ebd511d0b706d1d2066ea87f45c89ae536da69
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90885292"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321424"
 ---
 # <a name="an-overview-of-azure-sql-database-and-sql-managed-instance-security-capabilities"></a>A Azure SQL Database és az SQL felügyelt példányának biztonsági képességeinek áttekintése
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 Ez a cikk a [Azure SQL Database](sql-database-paas-overview.md) és az [Azure SQL felügyelt példányát](../managed-instance/sql-managed-instance-paas-overview.md)használó alkalmazások adatszintjeinek biztonságossá tételének alapjait ismerteti. A leírt biztonsági stratégia az alábbi képen látható, többrétegű védelem részletes megközelítését követi, és a következőn kívülről lép:
 
-![SQL biztonsági layer.png](./media/security-overview/sql-security-layer.png)
+![A réteges védelem részletes ábrája. A vásárlói adatok a hálózati biztonság, a hozzáférés-kezelés, a fenyegetések és az adatvédelem rétegeibe vannak befoglalva.](./media/security-overview/sql-security-layer.png)
 
 ## <a name="network-security"></a>Hálózati biztonság
 
@@ -77,7 +77,7 @@ Ajánlott eljárásként hozzon létre egyéni szerepköröket, ha szükséges. 
 
 A sor szintű biztonság lehetővé teszi az ügyfelek számára, hogy a lekérdezést végrehajtó felhasználó jellemzői alapján szabályozzák az adatbázistábla soraihoz való hozzáférést (például csoporttagság vagy végrehajtási környezet). A sor szintű biztonság egyéni címkézett biztonsági fogalmak megvalósítására is használható. További információ: [sor szintű biztonság](/sql/relational-databases/security/row-level-security).
 
-![Azure Database rls.png](./media/security-overview/azure-database-rls.png)
+![Ez a diagram azt mutatja, hogy a sor szintű biztonsági védelem egy SQL-adatbázis egyes sorait a felhasználók által egy ügyfélalkalmazás segítségével érheti el.](./media/security-overview/azure-database-rls.png)
 
 ## <a name="threat-protection"></a>Fenyegetések elleni védelem
 
@@ -91,7 +91,7 @@ A SQL Database és az SQL felügyelt példányának naplózása nyomon követi a
 
 A komplex veszélyforrások elleni védelem a naplók elemzésével azonosíthatja a szokatlan viselkedést és a potenciálisan ártalmas kísérleteket az adatbázisok eléréséhez vagy kiaknázásához. A riasztások olyan gyanús tevékenységekhez jönnek létre, mint például az SQL-injektálás, a lehetséges adatszivárgások és a találgatásos támadások, illetve a hozzáférési mintákban mutatkozó rendellenességek a jogosultság-eszkalációs és a megsértett hitelesítő adatok használata esetén. A riasztásokat a  [Azure Security Center](https://azure.microsoft.com/services/security-center/)tekintik meg, ahol a gyanús tevékenységek részletei megtalálhatók, valamint a fenyegetést enyhítő műveletekkel kapcsolatos javaslatok a további vizsgálathoz. A komplex veszélyforrások elleni védelem felár ellenében engedélyezhető kiszolgálónként. További információ: Ismerkedés [a SQL Database komplex veszélyforrások elleni védelemmel](threat-detection-configure.md).
 
-![Azure Database td.jpg](./media/security-overview/azure-database-td.jpg)
+![Ábra: az SQL-veszélyforrások észlelésének figyelése az SQL Database-hez egy külső támadótól és rosszindulatú bennfentestől származó webalkalmazáshoz való hozzáféréshez.](./media/security-overview/azure-database-td.jpg)
 
 ## <a name="information-protection-and-encryption"></a>Adatvédelem és titkosítás
 
@@ -122,13 +122,13 @@ A [transzparens adattitkosítás](/sql/relational-databases/security/encryptio
 
 ### <a name="always-encrypted-encryption-in-use"></a>Always Encrypted (titkosítás használatban)
 
-![Azure Database ae.png](./media/security-overview/azure-database-ae.png)
+![A Always Encrypted funkció alapjait bemutató ábra. A zárolással rendelkező SQL Database-adatbázist csak egy kulcsot tartalmazó alkalmazás éri el.](./media/security-overview/azure-database-ae.png)
 
 A [Always encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) az adott adatbázis-oszlopokban tárolt bizalmas adatok hozzáférésének (például a hitelkártya-számok, a nemzeti azonosító számok vagy az adatok _ismerete_ alapján) való védelme. Ebbe beletartozik az adatbázis-rendszergazdák vagy más, jogosultsággal rendelkező felhasználók, akik jogosultak az adatbázis elérésére a felügyeleti feladatok elvégzéséhez, de nincs szükségük üzleti tevékenységre a titkosított oszlopokban lévő adatok eléréséhez. A rendszer mindig titkosítja az adattitkosítást, ami azt jelenti, hogy a titkosított adatforgalom csak olyan ügyfélalkalmazások általi feldolgozásra van visszafejtve, amelyek hozzáférnek a titkosítási kulcshoz. A titkosítási kulcs soha nem érhető el SQL Database vagy SQL felügyelt példány számára, és a [Windows tanúsítványtárolóban](always-encrypted-certificate-store-configure.md) vagy [Azure Key Vault](always-encrypted-azure-key-vault-configure.md)tárolható.
 
 ### <a name="dynamic-data-masking"></a>Dinamikus adatmaszkolás
 
-![Azure Database ddm.png](./media/security-overview/azure-database-ddm.png)
+![A dinamikus adatmaszkolást ábrázoló diagram. Az üzleti alkalmazások adatokat küldenek egy SQL-adatbázisba, amely elfedi az adatokat, mielőtt visszaküldi azt az üzleti alkalmazásnak.](./media/security-overview/azure-database-ddm.png)
 
 A dinamikus adatmaszkolás korlátozza a bizalmas adatokkal való érintkezést azáltal, hogy a nem Kiemelt felhasználók számára maszkolást végez. A dinamikus adatmaszkolás automatikusan felfedi a Azure SQL Database és az SQL felügyelt példányában előforduló potenciálisan bizalmas adatokat, és gyakorlati ajánlásokat biztosít ezen mezők maszkolásához, az alkalmazás rétegének minimális hatásával. Rejtjelezi a bizalmas adatokat egy kijelölt adatbázismezőkön végrehajtott lekérdezés eredményhalmazában, miközben az adatbázis adatait nem módosítja. További információ: Ismerkedés [a SQL Database és az SQL felügyelt példányának dinamikus adatmaszkolásával](dynamic-data-masking-overview.md).
 

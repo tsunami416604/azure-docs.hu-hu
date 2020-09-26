@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: adott utazási módokhoz tartozó útvonalak keresése és megjelenítése Microsoft Azure térképekkel'
-description: Megtudhatja, hogyan használhatja a Azure Maps az útvonalak megkereséséhez és megjelenítéséhez az adott utazási módokon.
+title: 'Oktatóanyag: több útvonal megkeresése utazási mód alapján | Microsoft Azure térképek'
+description: 'Oktatóanyag a Azure Maps használatáról az adott utazási módokhoz tartozó útvonalak megtalálásához. Lásd: több útvonal megjelenítése a Maps-ben.'
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 09/10/2020
@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: a5b8dba920db0227c400e62ef7ddaf718d27c78a
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.custom: mvc, devx-track-js
+ms.openlocfilehash: 0d57e86088ee472c63b433bde14a0e4316cc20a5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085059"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321747"
 ---
 # <a name="tutorial-find-and-display-routes-for-different-modes-of-travel-using-azure-maps"></a>Oktatóanyag: útvonalak keresése és megjelenítése különböző utazási módokhoz Azure Maps használatával
 
@@ -160,11 +160,13 @@ Ebben az oktatóanyagban két útvonalat számítunk ki és jelenítünk meg a t
 
     ```
 
+
     A Map Control `ready` eseménykezelőben létrejön egy adatforrás, amely az útvonalat az elejétől a végéig tárolja. A [kifejezések](data-driven-style-expressions-web-sdk.md) használatával lehet beolvasni a vonal szélességét és színét az útválasztási sor funkciójának tulajdonságaiban. Annak biztosítása érdekében, hogy az útválasztási vonal ne fedje fel a közúti címkéket, egy második paramétert adtunk át a következő értékkel: `'labels'` .
 
     Ezután létrejön egy szimbólum-réteg, amely az adatforráshoz van csatolva. Ez a réteg határozza meg a kezdő és a záró pontok megjelenítésének módját. A kifejezések hozzá lettek adva, hogy beolvassák az ikon képének és a szöveg feliratának adatait az egyes pontok objektumainak tulajdonságaiban. A kifejezésekkel kapcsolatos további információkért lásd: [adatvezérelt stílusú kifejezések](data-driven-style-expressions-web-sdk.md).
 
 2. Állítsa be a kezdőpontot fiktív vállalatként, melynek neve: fabrikam, a végpont pedig Microsoft Office.  A Map Control `ready` eseménykezelőben fűzze hozzá a következő kódot.
+
 
     ```JavaScript
     //Create the GeoJSON objects which represent the start and end point of the route.
@@ -279,7 +281,11 @@ Ebből a szakaszból megtudhatja, hogyan használhatja a Azure Maps Route Servic
 
     A teherautó útvonala sűrű kék vonal használatával jelenik meg. Az autó útvonala egy vékony lila vonal használatával jelenik meg. Az autó útvonala az I-90-n keresztül halad végig Washington államon keresztül, és a lakossági területeken lévő alagutakon keresztül halad. Mivel az alagutak megközelítik a lakossági területeket, a veszélyes hulladékok mennyisége korlátozott. A tehergépkocsi útvonala, amely megadja a `USHazmatClass2` rakomány típusát, egy másik autópálya használatára van irányítva.
 
-    A minta teljes forráskódját [itt](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/truckRoute.html)szerezheti be. [Itt](https://azuremapscodesamples.azurewebsites.net/?sample=Multiple%20routes%20by%20mode%20of%20travel)találhat egy élő mintát.
+A minta teljes forráskódját [itt](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/truckRoute.html)szerezheti be. [Itt](https://azuremapscodesamples.azurewebsites.net/?sample=Multiple%20routes%20by%20mode%20of%20travel)találhat egy élő mintát.
+
+Az [adatvezérelt stílusú kifejezéseket is használhatja](data-driven-style-expressions-web-sdk.md)
+
+
 
 ## <a name="next-steps"></a>Következő lépések
 

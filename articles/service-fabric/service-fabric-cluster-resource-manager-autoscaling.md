@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: miradic
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f57e5079543a3112b4fa59f26ba0ae27c24b79a2
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 060bb9dcdd504846c76ab4c782b2857fdddfa394
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89005513"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91354802"
 ---
 # <a name="introduction-to-auto-scaling"></a>Az automatikus skálázás bemutatása
 Az automatikus skálázás az Service Fabric egy további funkciója, amellyel dinamikusan méretezheti a szolgáltatásokat a szolgáltatások által jelentett terhelés vagy az erőforrások használata alapján. Az automatikus skálázás nagy rugalmasságot biztosít, és igény szerint lehetővé teszi a szolgáltatás további példányainak vagy partícióinak üzembe helyezését. A teljes automatikus skálázási folyamat automatizált és átlátható, és a szabályzatok szolgáltatáshoz való beállítása után a szolgáltatás szintjén nem szükséges manuális skálázási művelet. Az automatikus skálázás a szolgáltatás létrehozási idején vagy a szolgáltatás frissítésével bármikor bekapcsolható.
@@ -51,7 +51,7 @@ A triggerrel használható egyetlen mechanizmus a PartitionInstanceCountScaleMec
 * A _példányok maximális száma_ határozza meg a skálázás felső korlátját. Ha a partíció példányainak száma eléri ezt a korlátot, a rendszer a terheléstől függetlenül nem bővíti a szolgáltatást. Ezt a korlátot a-1 érték megadásával lehet kihagyni, és ebben az esetben a szolgáltatás a lehető legnagyobb mértékben lesz kibővítve (ez a korlát a fürtben elérhető csomópontok száma).
 * A _példányok minimális száma_ határozza meg a skálázás legalacsonyabb korlátját. Ha a partíció példányainak száma eléri ezt a korlátot, a rendszer a terheléstől függetlenül nem fogja méretezni a szolgáltatást.
 
-## <a name="setting-auto-scaling-policy"></a>Automatikus skálázási szabályzat beállítása
+## <a name="setting-auto-scaling-policy-for-instance-based-scaling"></a>Az automatikus skálázási szabályzat beállítása a példányon alapuló skálázáshoz
 
 ### <a name="using-application-manifest"></a>Az alkalmazás jegyzékfájljának használata
 ``` xml
@@ -133,7 +133,7 @@ Ugyanaz, mint a méretezést használó mechanizmusokhoz példányok hozzáadás
 > [!WARNING] 
 > A AddRemoveIncrementalNamedPartitionScalingMechanism állapot-nyilvántartó szolgáltatásokkal való használata esetén Service Fabric **értesítés vagy figyelmeztetés nélkül**fogja hozzáadni vagy eltávolítani a partíciókat. A skálázási mechanizmus elindításakor a rendszer nem hajtja végre az adatparticionálást. Felskálázási művelet esetén az új partíciók üresek lesznek, és a méretezési művelet esetén a **partíció a benne található összes adattal együtt törölve**lesz.
 
-## <a name="setting-auto-scaling-policy"></a>Automatikus skálázási szabályzat beállítása
+## <a name="setting-auto-scaling-policy-for-partition-based-scaling"></a>Az automatikus skálázási szabályzat beállítása a particionálásra alapuló skálázáshoz
 
 ### <a name="using-application-manifest"></a>Az alkalmazás jegyzékfájljának használata
 ``` xml

@@ -9,14 +9,14 @@ ms.devlang: PowerShell
 ms.topic: sample
 author: DavidTrigano
 ms.author: datrigan
-ms.reviewer: carlrab, vanto
+ms.reviewer: sstein, vanto
 ms.date: 04/28/2020
-ms.openlocfilehash: d44370e17b0d38f1d19849e97b2a7f41b50a4119
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1dc4630e429641fad1ef9efa96bbfa920c6d8963
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87040573"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321503"
 ---
 # <a name="use-powershell-to-configure-sql-database-auditing-and-advanced-threat-protection"></a>A PowerShell használata SQL Database naplózás és az összetett veszélyforrások elleni védelem konfigurálásához
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]
@@ -56,7 +56,7 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 |||
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Azure PowerShellről: [Azure PowerShell dokumentáció](/powershell/azure/).
 

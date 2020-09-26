@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: erhopf
-ms.openlocfilehash: 4ec153a9c770b0001888c972dc44414470e3ddbf
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 560c156c8e2c3d69c099b2ad573fa0d214f3f80b
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84730305"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91355074"
 ---
 # <a name="what-is-the-speech-devices-sdk"></a>Mi a Speech Devices SDK?
 
@@ -55,9 +55,9 @@ Az alkalmazás a Speech SDK csomaggal, valamint az Eclipse Java IDE (v4) a 64 bi
 
 További bináris fájlok érhetők el a közelgő eszközök, a [Roobo v2 DDK](https://aka.ms/sdsdk-download-roobov2), a [Urbetter DDK](https://aka.ms/sdsdk-download-urbetter), a [GGEC Speaker](https://aka.ms/sdsdk-download-speaker), a [Linux ARM32](https://aka.ms/sdsdk-download-linux-arm32)és a [Linux ARM64](https://aka.ms/sdsdk-download-linux-arm64)támogatásához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Beszédfelismerési eszköz kiválasztása](get-speech-devices-sdk.md)
 > [!div class="nextstepaction"]
-> [Beszédfelismerési szolgáltatás előfizetési kulcsának beszerzése ingyenesen](get-started.md)
+> [Beszédfelismerési szolgáltatás előfizetési kulcsának beszerzése ingyenesen](overview.md#try-the-speech-service-for-free)

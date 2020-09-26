@@ -3,16 +3,16 @@ title: A DHCP létrehozása és kezelése
 description: Ez a cikk bemutatja, hogyan kezelheti a DHCP-t az Azure VMware megoldásban.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: ba7c3983f55ed729c77d2f24d3ef311a00522148
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 2c059918f57b7f01058a031f1bf281b243855661
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069560"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332831"
 ---
 # <a name="how-to-create-and-manage-dhcp-in-azure-vmware-solution"></a>A DHCP létrehozása és kezelése az Azure VMWare-megoldásban
 
-A NSX-T lehetővé teszi a DHCP konfigurálását a saját felhőhöz. Ha azt tervezi, hogy a NSX-T használja a DHCP-kiszolgáló üzemeltetéséhez, tekintse meg a [DHCP-kiszolgáló létrehozása](#create-dhcp-server)című témakört. Ellenkező esetben, ha külső külső DHCP-kiszolgálóval rendelkezik a hálózaton, és továbbítani szeretné a kérelmeket a DHCP-kiszolgálónak, tekintse meg a [DHCP-továbbító szolgáltatás létrehozása](#create-dhcp-relay-service)című témakört.
+A NSX-T lehetővé teszi a DHCP konfigurálását a saját felhőhöz. Ha azt tervezi, hogy a NSX-T használja a DHCP-kiszolgáló üzemeltetéséhez, tekintse meg a [DHCP-kiszolgáló létrehozása](#create-dhcp-server)című témakört. Ellenkező esetben, ha harmadik féltől származó külső DHCP-kiszolgálóval rendelkezik a hálózaton, és továbbítani szeretné a kérelmeket a DHCP-kiszolgálónak, tekintse meg a [DHCP-továbbító szolgáltatás létrehozása](#create-dhcp-relay-service)című témakört.
 
 ## <a name="create-dhcp-server"></a>DHCP-kiszolgáló létrehozása
 
@@ -24,7 +24,7 @@ A NSX Manager alkalmazásban navigáljon a **hálózatkezelés** lapra, és vál
 
 ### <a name="connect-dhcp-server-to-the-tier-1-gateway"></a>A DHCP-kiszolgáló összekötése az 1. rétegbeli átjáróval.
 
-1. Válassza az **1. szintű átjárók**lehetőséget, válassza ki az átjárót, és válassza a **Szerkesztés** lehetőséget.
+1. Válassza az **1. szintű átjárók**, az átjáró, majd a **Szerkesztés** lehetőséget.
 
    :::image type="content" source="./media/manage-dhcp/edit-tier-1-gateway.png" alt-text="Válassza ki a használni kívánt átjárót" border="true":::
 
@@ -56,7 +56,7 @@ A DHCP-kiszolgáló létrehozása után hozzá kell adnia egy hálózati szegmen
 
 ## <a name="create-dhcp-relay-service"></a>DHCP-továbbító szolgáltatás létrehozása
 
-1. A NSX-T ablakban válassza a **hálózatkezelés** fület, majd az **IP-kezelés**területen válassza a **DHCP**lehetőséget. Válassza a **kiszolgáló hozzáadása**lehetőséget. Válassza a DHCP-továbbító lehetőséget a **kiszolgáló típusa mezőben** , majd adja meg a továbbító kiszolgáló kiszolgálójának nevét és IP-címét. A módosítások mentéséhez válassza a **Mentés** gombot.
+1. Az NXT-T ablakban válassza a **hálózatkezelés** fület, majd az **IP-kezelés**területen válassza a **DHCP**lehetőséget. Válassza a **kiszolgáló hozzáadása**lehetőséget. Válassza a DHCP-továbbító lehetőséget a **kiszolgáló típusa mezőben** , majd adja meg a továbbító kiszolgáló kiszolgálójának nevét és IP-címét. A módosítások mentéséhez válassza a **Mentés** gombot.
 
    :::image type="content" source="./media/manage-dhcp/create-dhcp-relay.png" alt-text="DHCP-továbbító kiszolgáló létrehozása" border="true":::
 
