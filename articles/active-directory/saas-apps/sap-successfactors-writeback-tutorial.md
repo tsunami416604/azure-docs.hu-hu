@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 08/05/2020
 ms.author: chmutali
-ms.openlocfilehash: b185f29cea61b9c366714a1af72648aeee35b61c
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 5ec06960e695abfa4bf004633b1f171214a5d29a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90017931"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91286553"
 ---
 # <a name="tutorial-configure-attribute-write-back-from-azure-ad-to-sap-successfactors"></a>Oktatóanyag: az attribútumok az Azure AD-ből az SAP SuccessFactors való visszaírásának konfigurálása
 Ennek az oktatóanyagnak a célja, hogy megjelenjenek az Azure AD-ből származó, az SAP SuccessFactors Employee Central-re vonatkozó írási és olvasási műveletek lépései. 
@@ -125,68 +125,97 @@ A SuccessFactors felügyeleti csapatával vagy a megvalósítási partnerrel egy
 
 ## <a name="preparing-for-successfactors-writeback"></a>Felkészülés a SuccessFactors visszaírási
 
-A SuccessFactors visszaírási kiépítési alkalmazás bizonyos *kódokat* használ az e-mailek és a telefonszámok megadásához az Employee Centralban. A *kódok* értéke állandó értékként van beállítva az attribútum-leképezési táblában, és az egyes SuccessFactors-példányok esetében eltérőek. Ebben a szakaszban a [Poster](https://www.postman.com/downloads/) használatával lehet beolvasni a kód értékeit. A HTTP-kérelmek küldéséhez a [curl](https://curl.haxx.se/), a [Hegedűs](https://www.telerik.com/fiddler) vagy bármely más hasonló eszköz használható. 
+A SuccessFactors visszaírási kiépítési alkalmazás bizonyos *kódokat* használ az e-mailek és a telefonszámok megadásához az Employee Centralban. A *kódok* értéke állandó értékként van beállítva az attribútum-leképezési táblában, és az egyes SuccessFactors-példányok esetében eltérőek. Ez a szakasz a *kódok* értékének rögzítéséhez szükséges lépéseket tartalmazza.
 
-### <a name="download-and-configure-postman-with-your-successfactors-tenant"></a>A Poster letöltése és konfigurálása a SuccessFactors-Bérlővel
+   > [!NOTE]
+   > A jelen szakasz lépéseinek végrehajtásához vonja be a SuccessFactors-rendszergazdát. 
 
-1. [Poster](https://www.postman.com/downloads/) letöltése
-1. Hozzon létre egy "új gyűjteményt" a Poster alkalmazásban. Hívja meg "SuccessFactors". 
+### <a name="identify-email-and-phone-number-picklist-names"></a>Az e-mailek és telefonszámok nevének azonosítása 
+
+Az SAP-SuccessFactors a *listára* konfigurálható beállítások állíthatók be, amelyből a felhasználó kiválaszthat. A különböző típusú e-mailek és telefonszámok (például üzleti, személyes és egyéb) a lista egy listás használatával jelennek meg. Ebben a lépésben a SuccessFactors-bérlőben konfigurált listákat azonosítjuk az e-mailek és telefonszámok értékének tárolására. 
+ 
+1. A SuccessFactors felügyeleti központban keressen az *üzleti konfiguráció kezelése*elemre. 
 
    > [!div class="mx-imgBorder"]
-   > ![Új Poster-gyűjtemény](./media/sap-successfactors-inbound-provisioning/new-postman-collection.png)
+   > ![Üzleti konfiguráció kezelése](./media/sap-successfactors-inbound-provisioning/manage-business-config.png)
 
-1. Az "engedélyezés" lapon adja meg az előző szakaszban konfigurált API-felhasználó hitelesítő adatait. A típus konfigurálása "alapszintű hitelesítés". 
+1. A **HRIS elemek**területen válassza a **emailInfo** elemet, majd kattintson az **e-mail típusú** mező *részleteire* .
 
    > [!div class="mx-imgBorder"]
-   > ![Poster-engedélyezés](./media/sap-successfactors-inbound-provisioning/postman-authorization.png)
+   > ![E-mail-adatok beolvasása](./media/sap-successfactors-inbound-provisioning/get-email-info.png)
 
-1. Mentse a konfigurációt. 
+1. Az e **-mail-típus** részletei lapon jegyezze fel a mezőhöz társított lista nevét. Alapértelmezés szerint ez a **ecEmailType**. Ez azonban eltérő lehet a bérlőben. 
+
+   > [!div class="mx-imgBorder"]
+   > ![E-mail lista azonosítása](./media/sap-successfactors-inbound-provisioning/identify-email-picklist.png)
+
+1. A **HRIS elemek**területen válassza a **phoneInfo** elemet, majd kattintson a **telefonos típus** mező *részleteire* .
+
+   > [!div class="mx-imgBorder"]
+   > ![Telefonos adatok beolvasása](./media/sap-successfactors-inbound-provisioning/get-phone-info.png)
+
+1. A **telefon típusa** Részletek lapon jegyezze fel a mezőhöz társított lista nevét. Alapértelmezés szerint ez a **ecPhoneType**. Ez azonban eltérő lehet a bérlőben. 
+
+   > [!div class="mx-imgBorder"]
+   > ![Telefonos lista azonosítása](./media/sap-successfactors-inbound-provisioning/identify-phone-picklist.png)
 
 ### <a name="retrieve-constant-value-for-emailtype"></a>EmailType állandó értékének beolvasása
 
-1. A Poster alatt kattintson a SuccessFactors-gyűjteményhez társított három pontra (...), és adjon hozzá egy "új kérés" nevű "e-mail-típusokat" az alább látható módon. 
+1. A SuccessFactors felügyeleti központban keresse meg és nyissa meg a *listás centert*. 
+1. Használja az előző szakaszban rögzített e-mail-lista nevét (pl. ecEmailType) az e-mail lista megkereséséhez. 
 
    > [!div class="mx-imgBorder"]
-   > ![Poster-e-mail-kérelem ](./media/sap-successfactors-inbound-provisioning/postman-email-request.png)
+   > ![E-mail típusú lista keresése](./media/sap-successfactors-inbound-provisioning/find-email-type-picklist.png)
 
-1. Nyissa meg az "e-mail-típus beolvasása" kérés panelt. 
-1. A GET URL-cím mezőbe írja be a következő URL-címet, `successFactorsAPITenantName` és cserélje le az SuccessFactors-példány API-bérlőjét. 
-   `https://<successfactorsAPITenantName>/odata/v2/Picklist('ecEmailType')?$expand=picklistOptions&$select=picklistOptions/id,picklistOptions/externalCode&$format=json`
+1. Nyissa meg az aktív e-mail listákat. 
 
    > [!div class="mx-imgBorder"]
-   > ![Poster – e-mail típusának beolvasása](./media/sap-successfactors-inbound-provisioning/postman-get-email-type.png)
+   > ![Aktív e-mail típusú lista megnyitása](./media/sap-successfactors-inbound-provisioning/open-active-email-type-picklist.png)
 
-1. Az "engedélyezés" lapon a rendszer örökli a gyűjteményhez konfigurált hitelesítést. 
-1. Az API-hívás indításához kattintson a Küldés gombra. 
-1. A válasz törzsében tekintse meg a JSON-eredményhalmazt, és keresse meg a megfelelő azonosítót `externalCode = B` . 
+1. Az e-mail típus lista lapon válassza ki az *üzleti* levelezés típusát.
 
    > [!div class="mx-imgBorder"]
-   > ![Poster e-mail típusú válasz](./media/sap-successfactors-inbound-provisioning/postman-email-type-response.png)
+   > ![Üzleti levelezés típusának kiválasztása](./media/sap-successfactors-inbound-provisioning/select-business-email-type.png)
 
-1. Jegyezze fel ezt az értéket állandóként, hogy az attribútum-leképezési tábla *emailType* használja.
+1. Jegyezze fel az *üzleti* e-mailhez társított **Beállítások azonosítóját** . Ezt a kódot fogjuk használni a *emailType* az attribútum-leképezési táblában.
+
+   > [!div class="mx-imgBorder"]
+   > ![E-mail típus kódjának beolvasása](./media/sap-successfactors-inbound-provisioning/get-email-type-code.png)
+
+   > [!NOTE]
+   > A vessző karakter eldobása az érték átmásolásakor. Például ha az **azonosító** értéke *8 448*, akkor a *emailType* az Azure AD-ben állítsa be a *8448* állandó számra (a vessző karakter nélkül). 
 
 ### <a name="retrieve-constant-value-for-phonetype"></a>PhoneType állandó értékének beolvasása
 
-1. A Poster alatt kattintson a SuccessFactors-gyűjteményhez társított három pontra (...), és adjon hozzá egy "új kérés" nevű "Get Phone Types" (az alább látható). 
+1. A SuccessFactors felügyeleti központban keresse meg és nyissa meg a *listás centert*. 
+1. Használja az előző szakaszban rögzített telefonos választási lista nevét a telefonos lista megkereséséhez. 
 
    > [!div class="mx-imgBorder"]
-   > ![Poster telefonos kérelem](./media/sap-successfactors-inbound-provisioning/postman-phone-request.png)
+   > ![Telefon típusának keresése](./media/sap-successfactors-inbound-provisioning/find-phone-type-picklist.png)
 
-1. Nyissa meg a "telefonos típus" kérés panelt. 
-1. A GET URL-cím mezőbe írja be a következő URL-címet, `successFactorsAPITenantName` és cserélje le az SuccessFactors-példány API-bérlőjét. 
-   `https://<successfactorsAPITenantName>/odata/v2/Picklist('ecPhoneType')?$expand=picklistOptions&$select=picklistOptions/id,picklistOptions/externalCode&$format=json`
+1. Nyissa meg az aktív telefonos listákat. 
 
    > [!div class="mx-imgBorder"]
-   > ![Telefonos Beolvasás típusa](./media/sap-successfactors-inbound-provisioning/postman-get-phone-type.png)
+   > ![Az aktív telefonos típus lista megnyitása](./media/sap-successfactors-inbound-provisioning/open-active-phone-type-picklist.png)
 
-1. Az "engedélyezés" lapon a rendszer örökli a gyűjteményhez konfigurált hitelesítést. 
-1. Az API-hívás indításához kattintson a Küldés gombra. 
-1. A válasz törzsében tekintse meg a JSON-eredményhalmazt, és keresse meg a és a értékének megfelelő *azonosítót* `externalCode = B` `externalCode = C` . 
+1. A telefonos listára vonatkozó listán tekintse át a különböző típusú telefonszámokat a **lista értékei**között.
 
    > [!div class="mx-imgBorder"]
-   > ![Poster – telefonos](./media/sap-successfactors-inbound-provisioning/postman-phone-type-response.png)
+   > ![Telefonos típusok áttekintése](./media/sap-successfactors-inbound-provisioning/review-phone-types.png)
 
-1. Jegyezze fel ezeket az értékeket a *businessPhoneType* és a *cellPhoneType* az attribútum-leképezési táblában való használatának állandó értékeiként.
+1. Jegyezze fel a *vállalati* telefonhoz társított **Beállítások azonosítóját** . Ezt a kódot fogjuk használni a *businessPhoneType* az attribútum-leképezési táblában.
+
+   > [!div class="mx-imgBorder"]
+   > ![Üzleti telefon kódjának beolvasása](./media/sap-successfactors-inbound-provisioning/get-business-phone-code.png)
+
+1. Jegyezze fel a *mobiltelefonhoz* társított **Beállítások azonosítóját** . Ezt a kódot fogjuk használni a *cellPhoneType* az attribútum-leképezési táblában.
+
+   > [!div class="mx-imgBorder"]
+   > ![Mobiltelefon kódjának beolvasása](./media/sap-successfactors-inbound-provisioning/get-cell-phone-code.png)
+
+   > [!NOTE]
+   > A vessző karakter eldobása az érték átmásolásakor. Például ha az **azonosító** értéke *10 606*, akkor a *cellPhoneType* az Azure AD-ben állítsa be a *10606* állandó számra (a vessző karakter nélkül). 
+
 
 ## <a name="configuring-successfactors-writeback-app"></a>SuccessFactors visszaírási-alkalmazás konfigurálása
 
@@ -313,7 +342,7 @@ Tekintse meg az SAP SuccessFactors integrációs útmutatójának [visszaírási
 ## <a name="next-steps"></a>Következő lépések
 
 * [Az Azure AD és az SAP SuccessFactors integrációs dokumentációjának részletes bemutatása](../app-provisioning/sap-successfactors-integration-reference.md)
-* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../app-provisioning/check-status-user-account-provisioning.md)
+* [Tudnivalók a naplók áttekintéséről és az átadási tevékenységekkel kapcsolatos jelentések lekéréséről](../app-provisioning/check-status-user-account-provisioning.md)
 * [Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a SuccessFactors és a Azure Active Directory között](successfactors-tutorial.md)
 * [Ismerje meg, hogyan integrálhat más SaaS-alkalmazásokat a Azure Active Directory](tutorial-list.md)
 * [Útmutató a kiépítési konfigurációk exportálásához és importálásához](../app-provisioning/export-import-provisioning-configuration.md)

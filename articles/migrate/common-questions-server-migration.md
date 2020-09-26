@@ -3,12 +3,12 @@ title: Azure Migrate kiszolgáló áttelepítésével kapcsolatos gyakori kérd�
 description: Választ kaphat a Azure Migrate kiszolgáló áttelepítésének a gépek áttelepítésére való használatával kapcsolatos gyakori kérdésekre.
 ms.topic: conceptual
 ms.date: 08/28/2020
-ms.openlocfilehash: b0ae28fc387125b198bed202d857c3b9ecdd44bb
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 80334bb2f0d6c0284c9031a99c0eb469b348873d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050658"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275540"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Azure Migrate kiszolgáló áttelepítése: gyakori kérdések
 
@@ -18,6 +18,28 @@ Ez a cikk a Azure Migrate: Server áttelepítési eszközzel kapcsolatos gyakori
 - Az [Azure Migrate berendezéssel](common-questions-appliance.md) kapcsolatos kérdések
 - A [felderítéssel, az értékeléssel és a függőségi vizualizációval](common-questions-discovery-assessment.md) kapcsolatos kérdések
 - A [Azure Migrate fórumban](https://aka.ms/AzureMigrateForum) választ kaphat kérdéseire
+
+## <a name="does-azure-migrate-convert-uefi-based-machines-to-bios-based-machines-and-migrate-them-to-azure-as-azure-generation-1-vms"></a>A Azure Migrate UEFI-alapú gépeket konvertál BIOS-alapú gépekre, és migrálja őket az Azure-ba Azure 1. generációs virtuális gépekként?
+Azure Migrate: a kiszolgáló áttelepítési eszköze az összes UEFI-alapú gépet áttelepíti az Azure-ba Azure 2. generációs virtuális gépekként. Az UEFI-alapú virtuális gépek BIOS-alapú virtuális gépekre való átalakítása már nem támogatott. Vegye figyelembe, hogy a BIOS-alapú gépeket csak az Azure 1. generációs virtuális gépei telepítik át az Azure-ba.
+
+## <a name="how-can-i-migrate-uefi-based-machines-to-azure-as-azure-generation-1-vms"></a>Hogyan telepíthetek UEFI-alapú gépeket az Azure-ba az 1. generációs virtuális gépeken?
+Azure Migrate: a kiszolgáló áttelepítési eszköze UEFI-alapú gépeket telepít át az Azure-ba az Azure 2. generációs virtuális gépeiként. Ha az Azure 1. generációs virtuális gépekre kívánja áttelepíteni őket, a replikálás megkezdése előtt alakítsa át a rendszerindítási típust a BIOS-ba, majd használja a Azure Migrate: Server áttelepítési eszközt az Azure-ba való áttelepítéshez
+ 
+## <a name="which-operating-systems-are-supported-for-migration-of-uefi-based-machines-to-azure"></a>Mely operációs rendszerek támogatottak az UEFI-alapú gépek Azure-ba való áttelepítéséhez?
+
+| **UEFI-alapú gépekhez támogatott operációs rendszerek** | **Ügynök nélkül VMware – Azure**                                                                                                             | **Ügynök nélküli Hyper-V-ről Azure-ra** | **Ügynök-alapú VMware, fizikai és egyéb felhők az Azure-ba** |
+| ------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ | ---------------------------------------------------------- |
+| Windows Server 2019, 2016, 2012 R2, 201                 | Y                                                                                                                                         | Y                              | Y                                                          |
+| Windows 10 Pro, Windows 10 Enterprise                   | Y                                                                                                                                         | Y                              | Y                                                          |
+| SUSE Linux Enterprise Server 15 SP1                     | Y                                                                                                                                         | Y                              | Y                                                          |
+| SUSE Linux Enterprise Server 12 SP4                     | Y                                                                                                                                         | Y                              | Y                                                          |
+| Ubuntu Server 16,04, 18,04, 19,04, 19,10                | Y                                                                                                                                         | Y                              | Y                                                          |
+| RHEL 8,1, 8,0, 7,8, 7,7, 7,6, 7,5, 7,4, 7,0, 6. x        | Y<br>                 _A RHEL 8. x [manuális előkészítést](https://go.microsoft.com/fwlink/?linkid=2143939) igényel_   | Y                              | Y                                                          |
+| Cent OS 8,1, 8,0, 7,7, 7,6, 7,5, 7,4, 6. x               | Y<br>_A cent OS 8. x [manuális előkészítést](https://go.microsoft.com/fwlink/?linkid=2143939) igényel_ | Y                              | Y                                                          |
+| Oracle Linux 7,7, 7,7-CI                                |  Y                                                                                                                                        | Y                              | Y                                                          |
+
+## <a name="can-i-use-the-recovery-services-vault-created-by-azure-migrate-for-disaster-recovery-scenarios"></a>Használhatom a Azure Migrate által létrehozott Recovery Services-tárolót a vész-helyreállítási forgatókönyvekhez?
+A Azure Migrate által létrehozott Recovery Services-tároló használata vész-helyreállítási forgatókönyvek esetén nem ajánlott. Ennek eredményeképpen a replikálási hibák megkezdődhetnek Azure Migrateban. 
 
 ## <a name="where-should-i-install-the-replication-appliance-for-agent-based-migrations"></a>Hol kell telepíteni a replikációs berendezést az ügynök-alapú áttelepítésekhez?
 
@@ -109,7 +131,7 @@ Egy ügynök-alapú replikációs módszer esetén a Deployment Planner segíthe
 
 ## <a name="how-do-i-throttle-replication-in-using-azure-migrate-appliance-for-agentless-vmware-replication"></a>Hogyan a replikációt a Azure Migrate berendezés használatával az ügynök nélküli VMware-replikációhoz?  
 
-A NetQosPolicy használatával szabályozhatja a szabályozást. Például:
+A NetQosPolicy használatával szabályozhatja a szabályozást. Példa:
 
 A NetQosPolicy használandó AppNamePrefix: "GatewayWindowsService.exe". Létrehozhat egy szabályzatot az Azure Migrate berendezésen a készülék replikációs forgalmának szabályozásához egy olyan házirend létrehozásával, mint például ez:
 
@@ -200,11 +222,6 @@ Azure Migrate-kiszolgáló áttelepítési képességeinek támogatása, példá
 
 Az ügynök nélküli replikáció a VMware vCenter Server és VMware ESXi gazdagépek teljesítményére gyakorolt hatásukat eredményez. Mivel az ügynök nélküli replikáció pillanatképeket használ, a IOPS-t használja a tárterületen, ezért bizonyos IOPS-sávszélességre van szükség. Nem ajánlott ügynök nélküli replikálást használni, ha a környezetében korlátozásokkal rendelkezik a tároló-vagy IOPs.
 
-## <a name="can-i-do-agentless-migration-of-uefi-vms-to-azure-gen-2"></a>Az UEFI virtuális gépek ügynök nélkül áttelepíthetők az Azure Gen 2-be?
-
-Nem. A [VMware-ügynökön alapuló](https://docs.microsoft.com/azure/migrate/tutorial-migrate-vmware-agent)áttelepítési, [Hyper-V áttelepítési](https://docs.microsoft.com/azure/migrate/tutorial-migrate-physical-virtual-machines)vagy [fizikai kiszolgálók áttelepítési](https://docs.microsoft.com/azure/migrate/tutorial-migrate-physical-virtual-machines) lehetőségeivel áttelepítheti ezeket a virtuális gépeket a 2. generációs Azure virtuális gépekre.
-
-***Megjegyzés:*** Győződjön meg arról, hogy a megfelelő virtuálisgép-méretet választja, amely támogatja a 2. generációs UEFI használatát az Azure-ban.
 
 ## <a name="next-steps"></a>Következő lépések
 

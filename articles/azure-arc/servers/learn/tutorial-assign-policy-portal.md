@@ -2,18 +2,18 @@
 title: Oktatóanyag – új szabályzat-hozzárendelés Azure Portal
 description: Ebben az oktatóanyagban a Azure Portal használatával hoz létre egy Azure Policy-hozzárendelést a nem megfelelő erőforrások azonosításához.
 ms.topic: tutorial
-ms.date: 08/12/2020
-ms.openlocfilehash: 4ba301b066137dbdb85ccea0a02ffcac88128e6b
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.date: 09/23/2020
+ms.openlocfilehash: fbfe7090db1b4e1a8f802b30fdf749466ea26f1f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213239"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321866"
 ---
 # <a name="tutorial-create-a-policy-assignment-to-identify-non-compliant-resources"></a>Oktatóanyag: szabályzat-hozzárendelés létrehozása a nem megfelelő erőforrások azonosításához
 
 Az Azure-ral való megfelelőség megértéséhez szükséges első lépés a saját erőforrásai állapotának megállapítása.
-Ez az oktatóanyag végigvezeti az Azure arc-kompatibilis kiszolgálók (előzetes verzió) gépek azonosítására szolgáló szabályzat-hozzárendelés létrehozásának folyamatán, és azokat olyan gépek azonosítására, amelyek nem rendelkeznek az Azure arc-kompatibilis gépekre telepített Log Analytics ügynökkel.
+Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy szabályzat-hozzárendelést az Azure arc-kompatibilis kiszolgálók gépek azonosításához, és hogy azonosítsa azokat a gépeket, amelyek nem rendelkeznek az Azure arc-kompatibilis gépekre telepített Log Analytics ügynökkel.
 
 A folyamat végén sikeresen azonosíthatja azokat a gépeket, amelyeken nincs telepítve a Log Analytics ügynök a Windows vagy a Linux rendszerhez. Ezek a szabályzat-hozzárendelés szempontjából _nem megfelelőnek_ minősülnek.
 
@@ -51,7 +51,7 @@ Ebben az oktatóanyagban létrehoz egy szabályzat-hozzárendelést, és hozzár
 
    Az elérhető beépített szabályzatok részleges listáját lásd: [Azure Policy minták](../../../governance/policy/samples/index.md).
 
-1. A házirend-definíciók listájában keresse meg az _ \[ előzetes verziót]: log Analytics ügynöknek telepítve kell lennie a Windows Azure arc-gépek_ definíciójában, ha engedélyezte az arc-kompatibilis kiszolgálók (előzetes verzió) ügynököt egy Windows-alapú gépen. A Linux-alapú gépek esetében keresse meg a megfelelő _ \[ előzetes verziót]: log Analytics ügynöknek telepítve kell lennie a Linux Azure_ -beli ív-számítógép házirendjének definíciójában. Kattintson a szabályzatra, majd kattintson a **Kiválasztás** elemre.
+1. Tekintse meg az előzetes verziót a szabályzat-definíciók listájában _ \[ : log Analytics ügynöknek telepítve kell lennie a Windows Azure arc-gépek_ definíciójában, ha engedélyezte az arc-kompatibilis kiszolgálók ügynököt egy Windows-alapú gépen. A Linux-alapú gépek esetében keresse meg a megfelelő _ \[ előzetes verziót]: log Analytics ügynöknek telepítve kell lennie a Linux Azure_ -beli ív-számítógép házirendjének definíciójában. Kattintson a szabályzatra, majd kattintson a **Kiválasztás** elemre.
 
    :::image type="content" source="./media/tutorial-assign-policy-portal/select-available-definition.png" alt-text="A megfelelő szabályzatdefiníció megtalálása" border="false":::
 
@@ -96,8 +96,7 @@ A létrehozott hozzárendelés eltávolításához kövesse az alábbi lépések
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban egy szabályzat-definíciót rendelt hozzá egy hatókörhöz, és kiértékelte a megfelelőségi jelentést.
-A házirend-definíció ellenőrzi, hogy a hatókör összes erőforrása megfelelő-e, és azonosítja, hogy melyek nem. Most már készen áll az Azure arc-kompatibilis kiszolgálók (előzetes verzió) számítógép figyelésére Azure Monitor for VMs használatával.
+Ebben az oktatóanyagban egy szabályzat-definíciót rendelt hozzá egy hatókörhöz, és kiértékelte a megfelelőségi jelentést. A házirend-definíció ellenőrzi, hogy a hatókör összes erőforrása megfelelő-e, és azonosítja, hogy melyek nem. Most már készen áll az Azure arc-kompatibilis kiszolgálók számítógépének figyelésére Azure Monitor for VMs használatával.
 
 Ha meg szeretné tudni, hogyan figyelheti és tekintheti meg a teljesítményt, a folyamat és a függőségeik működését a gépről, folytassa az Oktatóanyaggal:
 

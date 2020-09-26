@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: a IoT térbeli elemzés megvalósítása Microsoft Azure térképekkel'
-description: IoT Hub integrálása Azure Maps Service API-kkal.
+title: 'Oktatóanyag: a IoT térbeli elemzésének megvalósítása | Microsoft Azure térképek'
+description: Oktatóanyag a IoT Hub integrálásához a Microsoft Azure Maps Service API-kkal
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 09/01/2020
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 25665e75a361fbaa5479e2717d5e6aa9290c3d3a
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 3eb405783b16d1bb7de27f6638dba394457601c8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90056568"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321832"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-by-using-azure-maps"></a>Oktatóanyag: a IoT térbeli elemzés megvalósítása Azure Maps használatával
 
@@ -153,7 +153,7 @@ Az alábbi lépéseket követve feltöltheti a geokerítésen a Azure Maps adatf
       }
       ```
 
-## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
+## <a name="create-an-iot-hub"></a>IoT-központ létrehozása
 
 A IoT Hub biztonságos és megbízható kétirányú kommunikációt tesz lehetővé egy IoT-alkalmazás és az általa kezelt eszközök között. Ebben az oktatóanyagban információt szeretne kapni a járműről származó eszközről, hogy meghatározza a bérelt autó helyét. Ebben a szakaszban egy IoT hubot hoz létre a *ContosoRental* erőforráscsoporthoz. Ez a központ felelős az eszköz telemetria eseményeinek közzétételéhez.
 
@@ -182,7 +182,7 @@ Most állítsa be az Azure-függvényt.
 
     :::image type="content" source="./media/tutorial-iot-hub-maps/rental-app.png" alt-text="Képernyőkép a Function-alkalmazás létrehozásáról.":::
 
-1. A **Storage-fiók**területen válassza ki az [Azure Storage-fiók létrehozása](#create-an-azure-storage-account)lapon létrehozott Storage-fiókot. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
+1. A **Storage-fiók**területen válassza ki az [Azure Storage-fiók létrehozása](#create-an-azure-storage-account)lapon létrehozott Storage-fiókot. Válassza az **Áttekintés + létrehozás** lehetőséget.
 
 1. Tekintse át a Function alkalmazás részleteit, és válassza a **Létrehozás**lehetőséget.
 
@@ -218,7 +218,7 @@ Most állítsa be az Azure-függvényt.
 
     :::image type="content" source="./media/tutorial-iot-hub-maps/function-create-event-subscription-confirm.png" alt-text="Képernyőkép az esemény-előfizetés létrehozásának megerősítéséről.":::
 
-1. Most visszatért az **trigger szerkesztése** panelre. Válassza a **Mentés** lehetőséget.
+1. Most visszatért az **trigger szerkesztése** panelre. Kattintson a **Mentés** gombra.
 
 ## <a name="filter-events-by-using-iot-hub-message-routing"></a>Események szűrése IoT Hub üzenet-útválasztás használatával
 
@@ -253,6 +253,7 @@ Ha az Azure-függvény fut, most telemetria-adatait is elküldheti az IoT hubhoz
     dotnet run
     ```
 
+
   A helyi terminálnak az alábbihoz hasonlóan kell kinéznie.
 
 :::image type="content" source="./media/tutorial-iot-hub-maps/terminal.png" alt-text="A terminál kimenetének képernyőképe.":::
@@ -276,8 +277,6 @@ A Azure Maps REST API-k teljes listájáért lásd:
 
 * [Azure Maps REST API-k](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence)
 
-A IoT Plug and Play további tudnivalókért lásd:
-
 * [IoT Plug and Play](https://docs.microsoft.com/azure/iot-pnp)
 
 A IoT Azure minősítéssel rendelkező eszközök listájának lekéréséhez látogasson el a következő webhelyre:
@@ -287,6 +286,7 @@ A IoT Azure minősítéssel rendelkező eszközök listájának lekéréséhez l
 ## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni az eszközről a felhőbe irányuló telemetria küldéséről, és fordítva, tekintse meg a következőt:
+
 
 > [!div class="nextstepaction"]
 > [Telemetria küldése egy eszközről](https://docs.microsoft.com/azure/iot-hub/quickstart-send-telemetry-dotnet)

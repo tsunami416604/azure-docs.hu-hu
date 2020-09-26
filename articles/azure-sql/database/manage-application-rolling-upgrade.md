@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 8645e8c1f1f371f1416a998af41104ebb6867eea
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 44005dafb1e3eee60f163f80ad2e4282147233e4
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91334883"
+ms.locfileid: "91355618"
 ---
 # <a name="manage-rolling-upgrades-of-cloud-applications-by-using-sql-database-active-geo-replication"></a>Felhőalapú alkalmazások működés közbeni frissítésének kezelése SQL Database aktív földrajzi replikálás használatával
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -40,7 +40,7 @@ Ha az alkalmazás az adatbázis automatikus biztonsági mentésére támaszkodik
 > [!NOTE]
 > Ezek az előkészítési lépések nem érintik az éles környezetet, ami teljes hozzáférésű módban működhet.
 
-![SQL Database geo-replikációs konfiguráció a Felhőbeli vész-helyreállításhoz.](./media/manage-application-rolling-upgrade/option1-1.png)
+![A diagram a Felhőbeli vész-helyreállítás SQL Database geo-replikációs konfigurációját jeleníti meg.](./media/manage-application-rolling-upgrade/option1-1.png)
 
 Az előkészítési lépések elvégzése után az alkalmazás készen áll a tényleges frissítésre. A következő diagram a frissítési folyamat lépéseit szemlélteti:
 
@@ -48,7 +48,7 @@ Az előkészítési lépések elvégzése után az alkalmazás készen áll a t�
 2. Válassza le a másodlagos adatbázist a tervezett megszakítási mód használatával (4). Ez a művelet az elsődleges adatbázis teljesen szinkronizált, független másolatát hozza létre. Ez az adatbázis frissülni fog.
 3. Állítsa a másodlagos adatbázist írási-olvasási módba, és futtassa a frissítési parancsfájlt (5).
 
-![SQL Database geo-replikációs konfiguráció a Felhőbeli vész-helyreállításhoz.](./media/manage-application-rolling-upgrade/option1-2.png)
+![A diagram megjeleníti SQL Database geo-replikációs konfigurációját a Felhőbeli vész-helyreállításhoz, amely a frissítési parancsfájlt futtatja.](./media/manage-application-rolling-upgrade/option1-2.png)
 
 Ha a frissítés sikeresen befejeződött, most már készen áll arra, hogy átváltsa a felhasználókat az alkalmazás frissített példányára, amely éles környezetvé válik. A váltás néhány további lépést is magában foglal, ahogy azt a következő ábra szemlélteti:
 
@@ -67,7 +67,7 @@ Ezen a ponton az alkalmazás teljesen működőképes, és megismételheti a fri
 > [!NOTE]
 > A visszaállítás nem igényli a DNS-módosításokat, mert még nem hajtott végre swap-műveletet.
 
-![SQL Database geo-replikációs konfiguráció a Felhőbeli vész-helyreállításhoz.](./media/manage-application-rolling-upgrade/option1-4.png)
+![Ábrán látható SQL Database geo-replikálási konfiguráció a Felhőbeli vész-helyreállításhoz az átmeneti környezet leszerelt állapotában.](./media/manage-application-rolling-upgrade/option1-4.png)
 
 Ennek a lehetőségnek a legfőbb előnye, hogy egyetlen régióban frissítheti az alkalmazásokat, ha az egyszerű lépések egy halmazát követi. A frissítés dolláros díja viszonylag alacsony. 
 
@@ -98,7 +98,7 @@ A frissítés visszavonásához létre kell hoznia egy átmeneti környezetet az
 > [!NOTE]
 > Ezek az előkészítési lépések nem érintik az alkalmazást az éles környezetben. Az alkalmazás teljes funkcionalitásban marad az írási és olvasási módban.
 
-![SQL Database geo-replikációs konfiguráció a Felhőbeli vész-helyreállításhoz.](./media/manage-application-rolling-upgrade/option2-1.png)
+![A diagram megjeleníti SQL Database geo-replikálási konfigurációját a Felhőbeli vész-helyreállításhoz az alkalmazás teljesen szinkronizált példányával.](./media/manage-application-rolling-upgrade/option2-1.png)
 
 Az előkészítési lépések elvégzése után az átmeneti környezet készen áll a frissítésre. A következő diagram ezeket a frissítési lépéseket szemlélteti:
 
@@ -120,14 +120,14 @@ REMOVE SECONDARY ON SERVER <Partner-Server>
 
 3. Futtassa a frissítési parancsfájlt a `contoso-1-staging.azurewebsites.net` , `contoso-dr-staging.azurewebsites.net` a és az átmeneti elsődleges adatbázison (12). Az adatbázis módosításait a rendszer automatikusan replikálja a másodlagos átmeneti állapotba.
 
-![SQL Database geo-replikációs konfiguráció a Felhőbeli vész-helyreállításhoz.](./media/manage-application-rolling-upgrade/option2-2.png)
+![A diagram megjeleníti SQL Database geo-replikálási konfigurációját a Felhőbeli vész-helyreállításhoz az adatbázis-módosításokkal, amelyek átmeneti állapotba kerülnek.](./media/manage-application-rolling-upgrade/option2-2.png)
 
 Ha a frissítés sikeresen befejeződött, most már készen áll arra, hogy a felhasználókat az alkalmazás v2 verziójára váltsa. A következő diagram az alábbi lépéseket szemlélteti:
 
 1. Aktiváljon egy swap-műveletet a webalkalmazás éles és átmeneti környezete között az elsődleges régióban (13) és a biztonsági mentési régióban (14). Az alkalmazás v2-je mostantól éles környezetbe kerül, és a biztonsági mentési régióban redundáns másolattal rendelkezik.
 2. Ha már nincs szüksége a v1 alkalmazásra (15 és 16), leszerelheti az átmeneti környezetet.
 
-![SQL Database geo-replikációs konfiguráció a Felhőbeli vész-helyreállításhoz.](./media/manage-application-rolling-upgrade/option2-3.png)
+![A diagramon SQL Database földrajzi replikálási konfiguráció látható a Felhőbeli vész-helyreállításhoz az átmeneti környezet választható leszerelésével.](./media/manage-application-rolling-upgrade/option2-3.png)
 
 Ha a frissítési folyamat sikertelen (például a Frissítési parancsfájl hibája miatt), vegye figyelembe, hogy az átmeneti környezet inkonzisztens állapotban van. Az alkalmazás frissítés előtti állapotba való visszaállításához térjen vissza az alkalmazás v1-es verziójára az éles környezetben. A szükséges lépések a következő diagramon láthatók:
 
@@ -139,7 +139,7 @@ Ezen a ponton az alkalmazás teljesen működőképes, és megismételheti a fri
 > [!NOTE]
 > A visszaállítás nem igényli a DNS-módosításokat, mert nem hajtott végre swap-műveletet.
 
-![SQL Database geo-replikációs konfiguráció a Felhőbeli vész-helyreállításhoz.](./media/manage-application-rolling-upgrade/option2-4.png)
+![A diagram megjeleníti SQL Database geo-replikációs konfigurációját a Felhőbeli vész-helyreállításhoz a frissítési folyamat visszavonásával.](./media/manage-application-rolling-upgrade/option2-4.png)
 
 Ennek a lehetőségnek a legfőbb előnye, hogy az alkalmazást és annak geo-redundáns másolatát párhuzamosan is frissítheti anélkül, hogy az üzletmenet folytonosságát veszélyeztetné a frissítés során.
 

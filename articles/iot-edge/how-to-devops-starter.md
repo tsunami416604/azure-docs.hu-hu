@@ -2,17 +2,17 @@
 title: CI/CD-folyamat az Azure DevOps Starter-Azure IoT Edge | Microsoft Docs
 description: Az Azure DevOps Starter megkönnyíti az Azure-ban való ismerkedést. Segítségével néhány gyors lépésben elindíthat egy Azure IoT Edge alkalmazást.
 author: shizn
-ms.author: xshi
+ms.author: kgremban
 ms.date: 08/25/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 7251e84af001422de2c0e33ca04fdfdb309f7afd
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: f0f0452854ef7456d1bdf7caf0674fab5bd14557
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89303000"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297130"
 ---
 # <a name="create-a-cicd-pipeline-for-iot-edge-with-azure-devops-starter"></a>CI/CD-folyamat létrehozása IoT Edgehoz az Azure DevOps Starter-vel
 

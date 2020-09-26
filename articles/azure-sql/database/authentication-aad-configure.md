@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
-ms.reviewer: vanto, carlrab
+ms.reviewer: vanto, sstein
 ms.date: 08/17/2020
-ms.openlocfilehash: 22ed36213c932c7e202817fd093e1ec96aec94fd
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: f354cb25c93826b50c0094e75ef7a1756f7625b7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89434401"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278175"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Azure AD-hitelesítés konfigurálása és kezelése az Azure SQL-sel
 
@@ -89,19 +89,19 @@ Az SQL felügyelt példány Azure AD olvasási engedélyének az Azure Portal ha
 
 3. Navigáljon az Azure AD-integrációhoz használni kívánt SQL felügyelt példányhoz.
 
-   ![HRE](./media/authentication-aad-configure/aad.png)
+   ![Képernyőkép a Azure Portal a kiválasztott SQL felügyelt példányhoz tartozó Active Directory rendszergazdai oldal megnyitásáról.](./media/authentication-aad-configure/aad.png)
 
 4. Válassza ki a Active Directory felügyeleti oldal tetején található szalagcímet, és adja meg az engedélyt az aktuális felhasználónak.
 
-    ![engedélyek megadása – portál](./media/authentication-aad-configure/grant-permissions.png)
+    ![Képernyőkép az SQL felügyelt példány engedélyeinek megadásához a Active Directory eléréséhez. Az engedélyek megadása gomb van kiválasztva.](./media/authentication-aad-configure/grant-permissions.png)
 
 5. A művelet sikeres végrehajtása után a következő értesítés jelenik meg a jobb felső sarokban:
 
-    ![sikeres](./media/authentication-aad-configure/success.png)
+    ![Képernyőkép arról, hogy az Active Directory olvasási engedélyei sikeresen frissítve lettek a felügyelt példányra vonatkozóan.](./media/authentication-aad-configure/success.png)
 
 6. Most kiválaszthatja az SQL felügyelt példányához tartozó Azure AD-rendszergazdát. Ehhez a Active Directory admin lapon válassza a **felügyeleti parancs beállítása** lehetőséget.
 
-    ![rendszergazda beállítása](./media/authentication-aad-configure/set-admin.png)
+    ![A kiválasztott SQL felügyelt példányhoz tartozó Active Directory felügyeleti lapon Kiemelt rendszergazdai parancs beállítása.](./media/authentication-aad-configure/set-admin.png)
 
 7. Az Azure AD-rendszergazda lapon keressen rá egy felhasználóra, válassza ki a felhasználót vagy csoportot, majd válassza a **kiválasztás**lehetőséget.
 
@@ -111,7 +111,7 @@ Az SQL felügyelt példány Azure AD olvasási engedélyének az Azure Portal ha
 
 8. A Active Directory-rendszergazda lap tetején válassza a **Mentés**lehetőséget.
 
-    ![save](./media/authentication-aad-configure/save.png)
+    ![Képernyőkép a Active Directory felügyeleti oldalról a rendszergazda beállítása és a rendszergazda eltávolítása gomb mellett található mentés gombbal.](./media/authentication-aad-configure/save.png)
 
     A rendszergazda módosításának folyamata több percet is igénybe vehet. Ezután megjelenik az új rendszergazda a Active Directory admin mezőben.
 
@@ -190,7 +190,7 @@ Az Azure AD-rendszergazda kiépítéséhez hajtsa végre a következő Azure Pow
 
 Az SQL felügyelt példányához az Azure AD-rendszergazda üzembe helyezéséhez és kezeléséhez használt parancsmagok az alábbi táblázatban láthatók:
 
-| Parancsmag neve | Description |
+| Parancsmag neve | Leírás |
 | --- | --- |
 | [Set-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlinstanceactivedirectoryadministrator) |Kiépít egy Azure AD-rendszergazdát a jelenlegi előfizetésben található SQL felügyelt példányhoz. (Az aktuális előfizetésből kell származnia)|
 | [Remove-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlinstanceactivedirectoryadministrator) |Eltávolít egy Azure AD-rendszergazdát az SQL által felügyelt példányhoz az aktuális előfizetésben. |
@@ -279,7 +279,7 @@ A PowerShell-parancsmagok futtatásához Azure PowerShell kell telepítenie és 
 
 Az Azure AD-rendszergazdák üzembe helyezéséhez és kezeléséhez használt parancsmagok a SQL Database és az Azure szinapszis számára:
 
-| Parancsmag neve | Description |
+| Parancsmag neve | Leírás |
 | --- | --- |
 | [Set-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlserveractivedirectoryadministrator) |Kiépít egy Azure Active Directory rendszergazdát a SQL Database vagy az Azure szinapszis-t üzemeltető kiszolgáló számára. (Az aktuális előfizetésből kell származnia) |
 | [Remove-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlserveractivedirectoryadministrator) |Eltávolít egy Azure Active Directory rendszergazdát a SQL Database vagy az Azure szinapszis-t futtató kiszolgáló számára.|

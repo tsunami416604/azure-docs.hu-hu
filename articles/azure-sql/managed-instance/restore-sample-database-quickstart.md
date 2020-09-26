@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 12/14/2018
-ms.openlocfilehash: ed34f1ea4f4c6355b1cd55558afb322698569865
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 18f717ca05e93c9a8f06ac8868e9a6e5ff80eadb
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91283173"
+ms.locfileid: "91355533"
 ---
 # <a name="quickstart-restore-a-database-to-azure-sql-managed-instance-with-ssms"></a>Gyors útmutató: adatbázis visszaállítása az Azure SQL felügyelt példányára a SSMS használatával
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -76,7 +76,7 @@ A SQL Server Management Studio az alábbi lépéseket követve állítsa vissza 
      'https://mitutorials.blob.core.windows.net/databases/WideWorldImporters-Standard.bak'
    ```
 
-    ![visszaállítás](./media/restore-sample-database-quickstart/restore.png)
+    ![A képernyőképen a Object Explorer futó parancsfájl a sikert jelző üzenettel jelenik meg.](./media/restore-sample-database-quickstart/restore.png)
 
 6. Futtassa a következő szkriptet a visszaállítás állapotának nyomon követéséhez.
 

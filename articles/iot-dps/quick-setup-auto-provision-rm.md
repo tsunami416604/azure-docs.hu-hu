@@ -1,5 +1,5 @@
 ---
-title: Az Azure IoT Hub Device Provisioning beállítása Azure Resource Manager sablonnal
+title: Rövid útmutató – Azure-IoT Hub Device Provisioning beállítása Azure Resource Manager sablon használatával
 description: Azure rövid útmutató – az Azure IoT Hub Device Provisioning Service (DPS) beállítása sablon használatával
 author: wesmc7777
 ms.author: wesmc
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 482401b75cadf44e2cef03cced8dd216d0980524
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e1ca3d7270fb0858bb2512e5b9e285eb8d4555c6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74969581"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297147"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-an-azure-resource-manager-template"></a>Rövid útmutató: a IoT Hub Device Provisioning Service beállítása Azure Resource Manager sablonnal
 
@@ -22,7 +22,7 @@ Az [Azure Resource Managerrel](https://docs.microsoft.com/azure/azure-resource-m
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+- Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 - Ehhez a rövid útmutatóhoz helyileg kell futtatnia az Azure CLI-t. Az Azure CLI 2.0-s vagy újabb verzióját kell telepíteni. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretné a parancssori felületet, olvassa el [az Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli) ismertető témakört.
 
 
@@ -272,7 +272,7 @@ Az utolsó lépésben megadott sablon paraméterek használatával adja meg az I
 
    ```
 
-4. Adja hozzá a **hubLocation** értéket a paraméterek szakaszához. Ez az érték határozza meg az IoT Hub és a regisztrációs szolgáltatás helyét. Az értéknek egyeznie kell a sablonfájl paraméterdefinícióiban szereplő **allowedValues** gyűjteményben megadott helyek egyikével. Ebben a gyűjteményben az értékek azon Azure-helyekre korlátozódnak, amelyek támogatják az IoT Hubok és a regisztrációs szolgáltatások használatát. Az eszközök kiépítési szolgáltatásának támogatott helyeinek listáját futtathatja a parancs `az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table`futtatásával, vagy megtekintheti az [Azure állapot](https://azure.microsoft.com/status/) lapot, és megkeresheti a "Device kiépítési szolgáltatás" kifejezést.
+4. Adja hozzá a **hubLocation** értéket a paraméterek szakaszához. Ez az érték határozza meg az IoT Hub és a regisztrációs szolgáltatás helyét. Az értéknek egyeznie kell a sablonfájl paraméterdefinícióiban szereplő **allowedValues** gyűjteményben megadott helyek egyikével. Ebben a gyűjteményben az értékek azon Azure-helyekre korlátozódnak, amelyek támogatják az IoT Hubok és a regisztrációs szolgáltatások használatát. Az eszközök kiépítési szolgáltatásának támogatott helyeinek listáját futtathatja a parancs futtatásával, vagy megtekintheti `az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table` az [Azure állapot](https://azure.microsoft.com/status/) lapot, és megkeresheti a "Device kiépítési szolgáltatás" kifejezést.
 
    ```json
     "parameters": {
@@ -300,7 +300,7 @@ Az utolsó lépésben megadott sablon paraméterek használatával adja meg az I
 
 A következő Azure CLI-parancsokkal helyezheti üzembe a sablonokat és ellenőrizheti az üzembe helyezést.
 
-1. A sablon üzembe helyezéséhez navigáljon a sablon és a paraméter fájljait tartalmazó mappához, és futtassa a következő [parancsot egy központi telepítés elindításához](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create):
+1. A sablon üzembe helyezéséhez navigáljon a sablon és a paraméter fájljait tartalmazó mappához, és futtassa a következő [parancsot egy központi telepítés elindításához](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create&preserve-view=true):
     
     ```azurecli
      az group deployment create -g {your resource group name} --template-file template.json --parameters @parameters.json
@@ -311,7 +311,7 @@ A következő Azure CLI-parancsokkal helyezheti üzembe a sablonokat és ellenő
    ![Regisztrációs kimenet](./media/quick-setup-auto-provision-rm/output.png) 
 
 
-2. Az üzembe helyezés ellenőrzéséhez futtassa az alábbi [parancsot az erőforrások megjelenítéséhez](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-list), és a kimenetben keresse meg az új regisztrációs szolgáltatást és az IoT Hubot:
+2. Az üzembe helyezés ellenőrzéséhez futtassa az alábbi [parancsot az erőforrások megjelenítéséhez](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-list&preserve-view=true), és a kimenetben keresse meg az új regisztrációs szolgáltatást és az IoT Hubot:
 
     ```azurecli
      az resource list -g {your resource group name}
@@ -341,7 +341,7 @@ az group delete --name {your resource group name}
 
 A Azure Portal, a PowerShell vagy a REST API-k használatával is törölhet erőforráscsoportokat és egyedi erőforrásokat, valamint a Azure Resource Managerhoz vagy IoT Hub Device Provisioning Servicehoz közzétett támogatott Platform SDK-kat is.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban üzembe helyezett egy IoT hubot és egy eszköz kiépítési szolgáltatási példányát, és összekapcsolta a két erőforrást. Ha szeretné megtudni, hogyan lehet szimulált eszközt kiépíteni a telepítővel, folytassa a szimulált eszköz létrehozására szolgáló rövid útmutatóval.
 

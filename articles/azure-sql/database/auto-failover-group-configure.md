@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
-ms.reviewer: sstein, carlrab
+ms.reviewer: sstein
 ms.date: 08/14/2019
-ms.openlocfilehash: 6c85fce45bcfa63d921297b068066b8f6e814223
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: a154f9a75a70ed46155424d676d2b2cd8c6df3bf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85987130"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91277971"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>Feladatátvételi csoport konfigurálása Azure SQL Databasehoz
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -342,7 +342,7 @@ Feladatátvétel a másodlagos kiszolgálóra:
 > [!IMPORTANT]
 > Ha törölnie kell a másodlagos adatbázist, a törlése előtt távolítsa el a feladatátvételi csoportból. Ha egy másodlagos adatbázist töröl a feladatátvételi csoportból való eltávolítása előtt, akkor kiszámíthatatlan viselkedést okozhat.
 
-## <a name="sql-managed-instance"></a>Felügyelt SQL-példány
+## <a name="sql-managed-instance"></a>SQL Managed Instance
 
 A Azure Portal vagy a PowerShell használatával hozzon létre egy feladatátvételi csoportot a felügyelt Azure SQL-példány két felügyelt példánya között.
 
@@ -381,7 +381,7 @@ Hozza létre az elsődleges virtuális hálózati átjárót a Azure Portal hasz
     | **Mező** | Érték |
     | --- | --- |
     | **Előfizetés** |  Az az előfizetés, amelyben az elsődleges felügyelt példánya. |
-    | **Name (Név)** | A virtuális hálózati átjáró neve. |
+    | **Név** | A virtuális hálózati átjáró neve. |
     | **Régió** | Az a régió, ahol az elsődleges felügyelt példánya van. |
     | **Átjáró típusa** | Válassza a **VPN**lehetőséget. |
     | **VPN-típus** | **Útvonal-alapú** |
@@ -389,7 +389,7 @@ Hozza létre az elsődleges virtuális hálózati átjárót a Azure Portal hasz
     | **Hely**| A másodlagos felügyelt példány és a másodlagos virtuális hálózat helye.   |
     | **Virtuális hálózat**| Válassza ki a virtuális hálózatot a másodlagos felügyelt példányhoz. |
     | **Nyilvános IP-cím**| Válassza az **Új létrehozása** lehetőséget. |
-    | **Nyilvános IP-cím**| Adja meg az IP-cím nevét. |
+    | **Nyilvános IP-cím neve**| Adja meg az IP-cím nevét. |
     | &nbsp; | &nbsp; |
 
 1. Hagyja meg a többi értéket alapértelmezettként, majd válassza a **felülvizsgálat + létrehozás** lehetőséget a virtuális hálózati átjáró beállításainak áttekintéséhez.
@@ -443,7 +443,7 @@ A következő táblázat a másodlagos felügyelt példány átjárója számár
    | **Mező** | Érték |
    | --- | --- |
    | **Előfizetés** |  Az előfizetés, amelyben a másodlagos felügyelt példánya van. |
-   | **Name (Név)** | A virtuális hálózati átjáró neve, például: `secondary-mi-gateway` . |
+   | **Név** | A virtuális hálózati átjáró neve, például: `secondary-mi-gateway` . |
    | **Régió** | Az a régió, amelyben a másodlagos felügyelt példány található. |
    | **Átjáró típusa** | Válassza a **VPN**lehetőséget. |
    | **VPN-típus** | **Útvonal-alapú** |
@@ -451,7 +451,7 @@ A következő táblázat a másodlagos felügyelt példány átjárója számár
    | **Hely**| A másodlagos felügyelt példány és a másodlagos virtuális hálózat helye.   |
    | **Virtuális hálózat**| Válassza ki a 2. szakaszban létrehozott virtuális hálózatot, például: `vnet-sql-mi-secondary` . |
    | **Nyilvános IP-cím**| Válassza az **Új létrehozása** lehetőséget. |
-   | **Nyilvános IP-cím**| Adja meg az IP-cím nevét, például: `secondary-gateway-IP` . |
+   | **Nyilvános IP-cím neve**| Adja meg az IP-cím nevét, például: `secondary-gateway-IP` . |
    | &nbsp; | &nbsp; |
 
    ![Másodlagos átjáró beállításai](./media/auto-failover-group-configure/settings-for-secondary-gateway.png)
@@ -679,7 +679,7 @@ A figyelő végpont formátuma a (z) `fog-name.database.windows.net` , és a Azu
 
 - Egyetlen vagy készletezett adatbázis feladatátvételi csoportjának eltávolítása nem állítja le a replikálást, és nem törli a replikált adatbázist. Manuálisan kell leállítania a Geo-replikálást, és törölnie kell az adatbázist a másodlagos kiszolgálóról, ha az eltávolítását követően egyetlen vagy készletezett adatbázist szeretne visszaadni egy feladatátvételi csoportnak. A művelet elvégzése sikertelen lehet, `The operation cannot be performed due to multiple errors` Ha az adatbázis feladatátvételi csoportba való hozzáadására tett kísérlet során hasonló hibaüzenetet eredményez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A feladatátvételi csoportok konfigurálásának részletes lépéseiért tekintse meg a következő oktatóanyagokat:
 

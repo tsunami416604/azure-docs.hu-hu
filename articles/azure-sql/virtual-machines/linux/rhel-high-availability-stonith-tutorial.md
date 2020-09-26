@@ -8,12 +8,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 06/25/2020
-ms.openlocfilehash: af1df529ae0f6bb03a8d3f36e51619f273780dfe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4411bd490ab72aa27fbf16a8598a9ff0dae7a5b5
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086795"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358916"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Oktatóanyag: rendelkezésre állási csoportok konfigurálása az Azure-beli virtuális gépek RHEL SQL Server 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -35,7 +35,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Ez az oktatóanyag az Azure CLI használatával helyezi üzembe az erőforrásokat az Azure-ban.
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
@@ -223,7 +223,7 @@ A parancs befejeződése után a következő eredményeket kell megkapnia:
     - `<resourceGroupName>`
     - `<VM-basename>`
     - `<availabilitySetName>`
-    - `<VM-Size>`– Példa: "Standard_D16_v3"
+    - `<VM-Size>` – Példa: "Standard_D16_v3"
     - `<username>`
     - `<adminPassword>`
 
@@ -485,7 +485,7 @@ Description : The fence-agents-azure-arm package contains a fence agent for Azur
 ### <a name="register-a-new-application-in-azure-active-directory"></a>Új alkalmazás regisztrálása Azure Active Directory
  
  1. Nyissa meg a következőt: https://portal.azure.com
- 2. Nyissa meg a [Azure Active Directory](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties)panelt. Válassza a tulajdonságok lehetőséget, és jegyezze fel a címtár-azonosítót. Ez a`tenant ID`
+ 2. Nyissa meg a [Azure Active Directory](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties)panelt. Válassza a tulajdonságok lehetőséget, és jegyezze fel a címtár-azonosítót. Ez a `tenant ID`
  3. Kattintson [ **Alkalmazásregisztrációk**](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)
  4. Kattintson az **új regisztráció** elemre.
  5. Adjon meg **Name** egy nevet `<resourceGroupName>-app` , például **: válassza a fiókok ebben a szervezeti címtárban** lehetőséget.
@@ -570,8 +570,8 @@ Rendelje hozzá az `Linux Fence Agent Role-<username>` utolsó lépésben létre
 4. Kattintson a **hozzáférés-vezérlés (iam)** elemre.
 5. Kattintson **a szerepkör-hozzárendelés hozzáadása** elemre.
 6. Szerepkör kiválasztása `Linux Fence Agent Role-<username>` a **szerepkör** listából
-7. A **Select (kiválasztás** ) listán adja meg a fent létrehozott alkalmazás nevét.`<resourceGroupName>-app`
-8. Kattintson a **Mentés** gombra
+7. A **Select (kiválasztás** ) listán adja meg a fent létrehozott alkalmazás nevét. `<resourceGroupName>-app`
+8. Kattintson a **Mentés** gombra.
 9. Ismételje meg a fenti lépéseket a fürt összes csomópontján.
 
 ### <a name="create-the-stonith-devices"></a>A STONITH-eszközök létrehozása
@@ -908,7 +908,7 @@ Az összes SQL Server példányon mentse a SQL Server bejelentkezéshez használ
 
 1. A másodlagos replikák csatlakoztatása után megtekintheti őket a SSMS Object Explorer az **Always on magas rendelkezésre állású** csomópont kibontásával:
 
-    ![availability-group-joined.png](./media/rhel-high-availability-stonith-tutorial/availability-group-joined.png)
+    ![A képernyőképen az elsődleges és másodlagos rendelkezésre állási replikák láthatók.](./media/rhel-high-availability-stonith-tutorial/availability-group-joined.png)
 
 ### <a name="add-a-database-to-the-availability-group"></a>Adatbázis hozzáadása a rendelkezésre állási csoporthoz
 
@@ -1216,7 +1216,7 @@ Node: <VM3> fenced
 ```
 A kerítések eszközének tesztelésével kapcsolatos további információkért tekintse meg a következő [Red Hat](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/s1-stonithtest-haar) cikket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha a rendelkezésre állási csoport figyelőjét szeretné használni a SQL Server példányaihoz, létre kell hoznia és konfigurálnia kell egy Load balancert.
 

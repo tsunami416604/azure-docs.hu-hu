@@ -12,19 +12,19 @@ ms.date: 09/10/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d6341aeb6db89d43ef887a3ae50c4439e3867e6
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 2c7225adcfe970d17f8f86afdd15e36e2ba76de3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89318607"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287015"
 ---
 # <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>Gyors útmutató: új bérlő létrehozása Azure Active Directory
 Az Azure Active Directory (Azure AD) portált használva elvégezheti valamennyi felügyeleti feladatát, a szervezet számára új bérlő létrehozását is beleértve. 
 
 Ebből a rövid útmutatóból megtudhatja, hogyan érheti el az Azure portált és az Azure Active Directory-t, és megtudhatja, hogyan hozhat létre alapszintű bérlőt a szervezete számára.
 
-Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt nekikezdene a feladatok elvégzésének.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
 
 ## <a name="create-a-new-tenant-for-your-organization"></a>Új bérlő létrehozása a szervezetén belül
 Miután bejelentkezett az Azure portálra, létrehozhat egy új bérlőt a szervezet számára. Az új bérlő a szervezetét képviseli és segíti a Microsoft felhőszolgáltatások konkrét példányának kezelését a belső és külső felhasználók számára.
@@ -37,7 +37,7 @@ Miután bejelentkezett az Azure portálra, létrehozhat egy új bérlőt a szerv
 
     ![Azure Active Directory resoure lap létrehozása](media/active-directory-access-create-new-tenant/azure-ad-portal.png)
 
-1. Válassza az **identitás**lehetőséget, majd válassza a **Azure Active Directory**lehetőséget.
+1. Keresse meg és válassza ki az **Azure Active Directoryt**.
 
     Megjelenik a **Címtár létrehozása** lap.
 
@@ -51,7 +51,7 @@ Miután bejelentkezett az Azure portálra, létrehozhat egy új bérlőt a szerv
 
     - Hagyja meg az _Egyesült Államok_ beállítást az **Ország vagy régió** mezőben.
 
-1. Válassza a **Létrehozás** lehetőséget.
+1. Kattintson a **Létrehozás** gombra.
 
 Az új bérlő létrejön a contoso.onmicrosoft.com tartománnyal.
 
