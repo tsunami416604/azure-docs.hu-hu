@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
-ms.openlocfilehash: 06d9ea895607332c8de25176376d52987ceed7a1
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 1d86009d593ef7e594ec2981132bcfb856569c31
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212273"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317225"
 ---
 # <a name="azure-queue-storage-output-bindings-for-azure-functions"></a>Az Azure üzenetsor-tároló kimeneti kötései Azure Functions
 
@@ -365,7 +365,7 @@ A kimeneti várólista elem elérhető, `context.bindings.<NAME>` ahol a `<NAME>
 
 # <a name="python"></a>[Python](#tab/python)
 
-Az Event hub-üzenetek egy függvényből való üzembe helyezésének két lehetősége van:
+A várólista-üzenetek egy függvényből való üzembe helyezésének két lehetősége van:
 
 - Visszaadott **érték**: állítsa be `name` *function.js* tulajdonságát a értékre `$return` . Ezzel a konfigurációval a függvény visszatérési értéke üzenetsor-tárolási üzenetként is megmarad.
 
@@ -373,17 +373,17 @@ Az Event hub-üzenetek egy függvényből való üzembe helyezésének két lehe
 
 # <a name="java"></a>[Java](#tab/java)
 
-Az Event hub-üzenetek egy függvényből való üzembe helyezésére két lehetőség áll rendelkezésre a [QueueOutput](/java/api/com.microsoft.azure.functions.annotation.queueoutput) jegyzet használatával:
+Az üzenetsor-üzenetek egy függvényből való kiosztására két lehetőség áll rendelkezésre a [QueueOutput](/java/api/com.microsoft.azure.functions.annotation.queueoutput) jegyzet használatával:
 
-- Visszaadott **érték**: Ha a jegyzetet a függvényhez alkalmazza, a függvény visszatérési értéke Event hub-üzenetként marad.
+- Visszaadott **érték**: Ha a jegyzetet a függvényhez alkalmazza, a függvény visszatérési értéke üzenetsor-üzenetként marad.
 
-- **Elengedhetetlen**: Ha explicit módon be szeretné állítani az üzenet értékét, alkalmazza a jegyzetet egy adott paraméterre [`OutputBinding<T>`](/java/api/com.microsoft.azure.functions.outputbinding) , ahol a egy `T` POJO vagy bármely natív Java-típus. Ezzel a konfigurációval a metódus értékének átadása az `setValue` Event hub-üzenetként megőrzi az értéket.
+- **Elengedhetetlen**: Ha explicit módon be szeretné állítani az üzenet értékét, alkalmazza a jegyzetet egy adott paraméterre [`OutputBinding<T>`](/java/api/com.microsoft.azure.functions.outputbinding) , ahol a egy `T` POJO vagy bármely natív Java-típus. Ezzel a konfigurációval a metódus értékének átadásakor a rendszer `setValue` várólista-üzenetként is megőrzi az értéket.
 
 ---
 
 ## <a name="exceptions-and-return-codes"></a>Kivételek és visszatérési kódok
 
-| Kötés |  Hivatkozás |
+| Kötés |  Referencia |
 |---|---|
 | Üzenetsor | [Üzenetsor-hibakódok](/rest/api/storageservices/queue-service-error-codes) |
 | BLOB, tábla, üzenetsor | [Tárolási hibakódok](/rest/api/storageservices/fileservices/common-rest-api-error-codes) |

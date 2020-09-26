@@ -5,21 +5,18 @@ services: container-service
 ms.topic: article
 ms.date: 09/22/2020
 author: jluk
-ms.openlocfilehash: 9ebd12777c32a9415eeb1b77d9cd487b0f23eb29
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: fd4f79e0cae5028e4bbaa8a4f5115d5a767dcf54
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91299153"
+ms.locfileid: "91368855"
 ---
 # <a name="secure-pods-with-azure-policy"></a>Biztonságos hüvelyek Azure Policy
 
 Az AK-fürt biztonságának növelése érdekében megadhatja, hogy a rendszer milyen függvényeket biztosítson, és ha a vállalat szabályzata minden esetben működik. Ez a hozzáférés az AK-hoz készült [Azure Policy-bővítmény][kubernetes-policy-reference]által biztosított beépített házirendekkel van meghatározva. Azáltal, hogy további szabályozást biztosít a pod specifikációjának (például a legfelső szintű jogosultságok) biztonsági szempontjai felett, lehetővé teszi a szigorúbb biztonsági betartást és láthatóságot a fürtben üzembe helyezett környezetekben. Ha egy pod nem felel meg a szabályzatban meghatározott feltételeknek, Azure Policy letilthatja a hüvelyt a szabálysértés elindításához vagy megjelöléséhez. Ez a cikk bemutatja, hogyan használhatók a Azure Policy a hüvelyek az AK-ban való üzembe helyezésének korlátozására.
 
 ## <a name="before-you-begin"></a>Előkészületek
-
-> [!IMPORTANT]
-> Az AK-beli Azure Policy általánosan elérhető (GA) minden régióban aktívan felszabadítva. A GA-kiadás várható globális befejezése 9/29/2020. A GA kiadás nélküli régiókban való használat előzetes regisztrációs lépéseket igényel. Ez azonban automatikusan frissül a GA kiadásban, ha az elérhető a régióban.
 
 Ez a cikk feltételezi, hogy rendelkezik egy meglévő AK-fürttel. Ha AK-fürtre van szüksége, tekintse meg az AK gyors üzembe helyezését [Az Azure CLI használatával][aks-quickstart-cli] vagy [a Azure Portal használatával][aks-quickstart-portal].
 
