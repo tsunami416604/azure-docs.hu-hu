@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: ''
 ms.date: 04/23/2020
-ms.openlocfilehash: ab1865608146880bbf612b7cb08c2a673c93b31f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fa60d6127a42f0118df152e5b3081751c595dbcf
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087961"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362631"
 ---
 # <a name="configure-always-encrypted-by-using-azure-key-vault"></a>Always Encrypted konfigurálása Azure Key Vault használatával 
 
@@ -179,11 +179,11 @@ Ez az oktatóanyag bemutatja, hogyan tárolhatók a kulcsok a Azure Key Vaultban
 
 Ezután titkosíthatja az oszlopokat, vagy mentheti a PowerShell-parancsfájlt, hogy később fusson. Ebben az oktatóanyagban válassza a **Folytatás a befejezéshez** lehetőséget, és kattintson a **tovább**gombra.
 
-### <a name="summary"></a>Összegzés
+### <a name="summary"></a>Összefoglalás
 
 Ellenőrizze, hogy a beállítások helyesek-e, majd kattintson a **Befejezés** gombra a Always encrypted telepítésének befejezéséhez.
 
-![Összegzés](./media/always-encrypted-azure-key-vault-configure/summary.png)
+![Képernyőfelvétel: az eredmények lap, amelyen az átadott feladatok láthatók.](./media/always-encrypted-azure-key-vault-configure/summary.png)
 
 ### <a name="verify-the-wizards-actions"></a>A varázsló műveleteinek ellenőrzése
 
@@ -596,7 +596,7 @@ Ezután adja hozzá az *oszlop titkosítási beállítás = engedélyezve* param
    
    ![Új konzolos alkalmazás](./media/always-encrypted-azure-key-vault-configure/ssms-plaintext.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha az adatbázis a Always Encrypted használatára van konfigurálva, a következőket teheti:
 

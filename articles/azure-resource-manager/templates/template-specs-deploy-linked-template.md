@@ -3,12 +3,12 @@ title: Sablon specifikációjának telepítése csatolt sablonként
 description: Megtudhatja, hogyan helyezhet üzembe egy meglévő sablon-SPECT egy csatolt üzemelő példányban.
 ms.topic: conceptual
 ms.date: 08/31/2020
-ms.openlocfilehash: 799dac2bb553983b16f734d1d1abc2ad9281fb58
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 4469e793a7da407f793bfe2885f7bb039e29d736
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89228018"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91369110"
 ---
 # <a name="tutorial-deploy-a-template-spec-as-a-linked-template-preview"></a>Oktatóanyag: a sablon specifikációjának központi telepítése csatolt sablonként (előzetes verzió)
 
@@ -120,7 +120,7 @@ A rendszer a függvény használatával hozza létre a sablon spec-AZONOSÍTÓj�
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
-$id = (Get-AzTemplateSpec -ResourceGroupName $resourceGroupName -Name $templateSpecName -Version $templateSpecVersion).Version.Id
+$id = (Get-AzTemplateSpec -ResourceGroupName $resourceGroupName -Name $templateSpecName -Version $templateSpecVersion).Versions.Id
 ```
 
 # <a name="cli"></a>[Parancssori felület](#tab/azure-cli)

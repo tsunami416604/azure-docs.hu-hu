@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: juda
 ms.custom: mvc
-ms.openlocfilehash: 98b1842f81703041f419850be17c0c05a24b7c6b
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: a4834ece4741b14981c08721e28bf528cab1da89
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440898"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91368889"
 ---
 # <a name="using-openfaas-on-aks"></a>OpenFaaS használata az AK-on
 
@@ -134,7 +134,7 @@ Most, hogy a OpenFaaS működőképes, hozzon létre egy függvényt a OpenFaas-
 
 Kattintson az **új funkció telepítése** és a **Figlet**keresése elemre. Válassza ki a Figlet függvényt, majd kattintson a **telepítés**elemre.
 
-![Figlet](media/container-service-serverless/figlet.png)
+![Képernyőfelvétel: az új függvény üzembe helyezése párbeszédpanel a keresési sorban lévő szöveg figlet.](media/container-service-serverless/figlet.png)
 
 Használja a curl-t a függvény meghívásához. Cserélje le az IP-címet a következő példában az OpenFaas-átjáróval.
 

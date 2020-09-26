@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: edbe202350b0912372aad822c8530c5f79c76384
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 2d3f382635e9a8b8a562f7a7f60f256d68b90b8f
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86254826"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91363205"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Fejlesztői fiókok engedélyezése az Azure Active Directory használatával az Azure API Managementben
 
@@ -34,7 +34,7 @@ Ez a cikk bemutatja, hogyan engedélyezheti a hozzáférést a fejlesztői port�
 ## <a name="authorize-developer-accounts-by-using-azure-ad"></a>Fejlesztői fiókok engedélyezése az Azure AD használatával
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
-2. Válassza ezt: ![nyíl](./media/api-management-howto-aad/arrow.png).
+2. Válassza ezt: ![Nyíl ikon.](./media/api-management-howto-aad/arrow.png).
 3. Írja be az **API** kifejezést a keresőmezőbe.
 4. Válassza ki **API Management szolgáltatásokat**.
 5. Válassza ki az API Management-szolgáltatáspéldányát.
@@ -103,7 +103,7 @@ Külső Azure AD-csoport hozzáadása után megtekintheti és konfigurálhatja a
  
 A konfigurált Azure AD-példány felhasználói már bejelentkezhetnek a fejlesztői portálra. Megtekinthetik és előfizethetnek bármely olyan csoportra, amelyben láthatók.
 
-## <a name="developer-portal---add-azure-ad-account-authentication"></a><a id="log_in_to_dev_portal"></a>Fejlesztői portál – Azure AD-fiók hitelesítésének hozzáadása
+## <a name="developer-portal---add-azure-ad-account-authentication"></a><a id="log_in_to_dev_portal"></a> Fejlesztői portál – Azure AD-fiók hitelesítésének hozzáadása
 
 A fejlesztői portálon jelentkezzen be a HRE-be a **Bejelentkezés gombra: OAuth** widget. A widget már szerepel a fejlesztői portál alapértelmezett tartalmának bejelentkezési oldalán.
 

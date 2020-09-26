@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 09/24/2020
 author: palma21
-ms.openlocfilehash: 460b592924a19449d77ce8d45f470f3e3129f4a6
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 4a814d575e0879daec64ebfdabc1539219bea250
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91357947"
+ms.locfileid: "91368940"
 ---
 # <a name="stop-and-start-an-azure-kubernetes-service-aks-cluster-preview"></a>Azure Kubernetes Service (ak) fürt leállítása és elindítása (előzetes verzió)
 
@@ -28,6 +28,7 @@ Ez a cikk feltételezi, hogy rendelkezik egy meglévő AK-fürttel. Ha AK-fürtr
 A fürt indítási/leállítási funkciójának használatakor a következő korlátozások érvényesek:
 
 - Ez a funkció csak Virtual Machine Scale Sets-alapú fürtök esetén támogatott.
+- Az előzetes verzióban ez a funkció nem támogatott a privát fürtök esetében.
 - A leállított AK-fürtök fürtjének állapota akár 12 hónapig is megmarad. Ha a fürt 12 hónapnál hosszabb ideig leáll, a fürt állapota nem állítható helyre. További információ: [AK-támogatási szabályzatok](support-policies.md).
 - Csak leállított AK-fürtöket lehet elindítani vagy törölni. Az olyan műveletek elvégzéséhez, mint a skálázás vagy a frissítés, először indítsa el a fürtöt.
 

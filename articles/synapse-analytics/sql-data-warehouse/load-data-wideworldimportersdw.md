@@ -11,12 +11,12 @@ ms.date: 07/17/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, synapse-analytics
-ms.openlocfilehash: bb05a817ae553872fa1a6c364da4c075ae454e1f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f089a67262c78f31092780bb8b4d7d803d47e0d
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85211176"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91369093"
 ---
 # <a name="tutorial-load-data-to--azure-synapse-analytics-sql-pool"></a>Oktatóanyag: az Azure szinapszis Analytics SQL-készletbe való betöltés
 
@@ -34,7 +34,7 @@ Ez az oktatóanyag a Base használatával tölti be a Wideworldimportersdw adatt
 > * Egy évnyi adat létrehozása a dátumdimenzió és értékesítés ténytáblában
 > * Statisztikák készítése az újonnan betöltött adatokról
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -58,7 +58,7 @@ Az alábbi lépéseket követve hozzon létre egy üres SQL-készletet.
 
 1. Töltse ki a **Project details** szakaszt a következő információkkal:
 
-   | Beállítás | Példa | Description |
+   | Beállítás | Példa | Leírás |
    | ------- | --------------- | ----------- |
    | **Előfizetés** | Az Ön előfizetése  | Az előfizetései részleteivel kapcsolatban lásd az [előfizetéseket](https://account.windowsazure.com/Subscriptions) ismertető cikket. |
    | **Erőforráscsoport** | myResourceGroup | Az érvényes erőforráscsoport-nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) ismertető cikket. |
@@ -69,7 +69,7 @@ Az alábbi lépéseket követve hozzon létre egy üres SQL-készletet.
     | ------- | --------------- | ----------- |
     |**SQL-készlet neve**|SampleDW| Az érvényes adatbázisnevekkel kapcsolatban lásd az [adatbázis-azonosítókat](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ismertető cikket. |
     | **Kiszolgáló neve** | Bármely globálisan egyedi név | Az érvényes kiszolgálónevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) ismertető cikket. |
-    | **Kiszolgáló-rendszergazdai bejelentkezés** | Bármely érvényes név | Az érvényes bejelentkezési nevekkel kapcsolatban lásd az [adatbázis-azonosítókat](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ismertető cikket.|
+    | **Kiszolgáló rendszergazdájának felhasználóneve** | Bármely érvényes név | Az érvényes bejelentkezési nevekkel kapcsolatban lásd az [adatbázis-azonosítókat](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ismertető cikket.|
     | **Jelszó** | Bármely érvényes jelszó | A jelszónak legalább nyolc karakter hosszúságúnak kell lennie, és tartalmaznia kell karaktereket a következő kategóriák közül legalább háromból: nagybetűs karakterek, kisbetűs karakterek, számjegyek és nem alfanumerikus karakterek. |
     | **Hely** | Bármely érvényes hely | A régiókkal kapcsolatos információkért lásd [az Azure régióit](https://azure.microsoft.com/regions/) ismertető cikket. |
 
@@ -83,7 +83,7 @@ Az alábbi lépéseket követve hozzon létre egy üres SQL-készletet.
 
 1. A beállítások áttekintéséhez válassza a **felülvizsgálat + létrehozás** lehetőséget, majd válassza a **Létrehozás** lehetőséget az adattárház létrehozásához. A folyamat nyomon követéséhez nyissa meg a **telepítés folyamatban** van lapon az **értesítések** menüből.
 
-     ![értesítés](./media/load-data-wideworldimportersdw/notification.png)
+     ![A képernyőképen a telepítés folyamatban állapotú értesítések láthatók.](./media/load-data-wideworldimportersdw/notification.png)
 
 ## <a name="create-a-server-level-firewall-rule"></a>Kiszolgálószintű tűzfalszabály létrehozása
 
@@ -100,7 +100,7 @@ Az Azure szinapszis Analytics szolgáltatás egy tűzfalat hoz létre a kiszolg�
 1. Válassza ki a kiszolgálónevet.
     ![kiszolgáló neve](././media/load-data-wideworldimportersdw/find-server-name.png)
 
-1. Válassza a **tűzfalbeállítások megjelenítése**lehetőséget. Ekkor megnyílik a kiszolgáló **tűzfalbeállítások** lapja.
+1. Válassza a **Tűzfalbeállítások megjelenítése** lehetőséget. Ekkor megnyílik a kiszolgáló **tűzfalbeállítások** lapja.
 
     ![kiszolgáló beállításai](./media/load-data-wideworldimportersdw/server-settings.png)
 
@@ -131,8 +131,8 @@ Ez a szakasz [SQL Server Management Studio](/sql/ssms/download-sql-server-manage
 
     | Beállítás      | Ajánlott érték | Leírás |
     | ------------ | --------------- | ----------- |
-    | Kiszolgáló típusa | Adatbázismotor | Kötelezően megadandó érték |
-    | Kiszolgáló neve | A teljes kiszolgálónév | Például a **sqlpoolservername.database.Windows.net** egy teljesen minősített kiszolgálónév. |
+    | Server type (Kiszolgáló típusa) | Adatbázismotor | Kötelezően megadandó érték |
+    | Kiszolgálónév | A teljes kiszolgálónév | Például a **sqlpoolservername.database.Windows.net** egy teljesen minősített kiszolgálónév. |
     | Hitelesítés | SQL Server-hitelesítés | Ebben az oktatóanyagban az SQL-hitelesítésen kívül más hitelesítéstípus nincs konfigurálva. |
     | Bejelentkezés | A kiszolgálói rendszergazdafiók | Ezt a fiókot adta meg a kiszolgáló létrehozásakor. |
     | Jelszó | A kiszolgálói rendszergazdai fiók jelszava | Ez az a jelszó, amely a kiszolgáló létrehozásakor lett megadva. |
@@ -1073,7 +1073,7 @@ A jó lekérdezési teljesítmény eléréséhez fontos statisztikákat létreho
     EXEC [dbo].[prc_sqldw_create_stats] 1, NULL;
     ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Az adattárházába betöltött számítási erőforrások és adatok díjkötelesek. Ezeket külön-külön számlázzuk.  
 
@@ -1081,7 +1081,7 @@ Kövesse az alábbi lépéseket a fölöslegessé vált erőforrások eltávolí
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com), és kattintson az adattárházra.
 
-    ![Erőforrások felszabadítása](./media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
+    ![Az erőforrások eltávolítása](./media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
 2. Ha szeretné az adatokat megtartani a tárolóban, a számítási erőforrásokat szüneteltetheti, amíg nem használja az adattárházat. A számítás felfüggesztésével csak az Adattárolásért kell fizetnie, és folytathatja a számítást, amikor készen áll az adatokkal való munkára. A számítási erőforrások szüneteltetéshez kattintson a **Szüneteltetés** gombra. Ha az adattárház szüneteltetve van, az **Indítás** gomb látható.  A számítási erőforrások újraindításához kattintson az **Indítás** gombra.
 
@@ -1091,7 +1091,7 @@ Kövesse az alábbi lépéseket a fölöslegessé vált erőforrások eltávolí
 
 5. Az erőforráscsoport törléséhez kattintson a **SampleRG** elemre, majd az **Erőforráscsoport törlése** parancsra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ennek az oktatóanyagnak a segítségével megtanulta, hogyan hozhat létre egy adattárházat, illetve egy felhasználót az adatok betöltéséhez. Külső táblákat hozott létre, hogy definiálhassa az Azure Storage-blobban tárolt adatok struktúráját, majd a PolyBase CREATE TABLE AS SELECT utasításával adatokat töltött be az adattárházába.
 
