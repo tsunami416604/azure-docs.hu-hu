@@ -1,20 +1,20 @@
 ---
-title: Mintaforgatókönyv felfedezése
+title: Rövid útmutató – példa a forgatókönyvre
 titleSuffix: Azure Digital Twins
-description: A ADT Explorer minta használatával megjelenítheti és feltárhatja az előre elkészített forgatókönyvet.
+description: Rövid útmutató – a ADT Explorer minta használatával megjelenítheti és feltárhatja az előre elkészített forgatókönyvet.
 author: baanders
 ms.author: baanders
-ms.date: 8/12/2020
+ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: d91ae0f3db9ad3637043f9eb7472539d8aba2c8d
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: dbe37e8a5cba18254cff1dc5d0fff4d5b9bc783d
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563037"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372612"
 ---
-# <a name="explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>Egy minta Azure digitális Twins-forgatókönyv megismerése a ADT Explorer használatával
+# <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>Gyors útmutató – a minta Azure digitális Twins-forgatókönyvek megismerése a ADT Explorer használatával
 
 Az Azure Digital Twins segítségével valós környezetei élő modelljeit hozhat létre és kezelhet. Ezt úgy teheti meg, hogy az egyes elemeket **digitális ikrekként**modellezi, majd összekapcsolja őket egy **olyan Tudásbázisban, amely** képes reagálni az élő eseményekre, és információkat kér le.
 
@@ -29,15 +29,17 @@ A rövid útmutató a következő főbb lépéseket tartalmazza:
 
 A példában szereplő gráf két emeleten és két szobával működő épületet jelöl. A gráf így fog kinézni:
 
-:::image type="content" source="media/quickstart-adt-explorer/graph-view-full.png" alt-text="Egy 4 kör alakú csomópontból álló gráf nézete, amely a nyilakhoz csatlakozik. A Floor1 címkével ellátott kör egy Room1 címkével ellátott nyíllal van összekötve. a Floor0 címkével ellátott kör egy Room0 címkével ellátott nyíllal van összekötve. A Floor1 és a Floor0 nincs csatlakoztatva.":::
+:::image type="content" source="media/quickstart-adt-explorer/graph-view-full.png" alt-text="Egy 4 kör alakú csomópontból álló gráf nézete, amely a nyilakhoz csatlakozik. A "Floor1" címkével ellátott kör egy "Room1" címkével ellátott nyíllal van összekötve. a "Floor0" címkével ellátott kör egy "Room0" címkével ellátott nyíllal van összekötve. A "Floor1" és a "Floor0" nincs csatlakoztatva.":::
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 A rövid útmutató elvégzéséhez szüksége lesz egy Azure-előfizetésre. Ha még nem rendelkezik ilyennel, **[hozzon létre egyet most ingyen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)** .
 
-A rövid útmutató elindítása előtt két mintát is le kell töltenie:
-* A **ADT Explorer** minta alkalmazás. Ez a minta a rövid útmutatóban használt fő alkalmazást tartalmazza egy Azure digitális Twins-forgatókönyv betöltéséhez és megismeréséhez. Az alkalmazás beszerzéséhez navigáljon ide: [Azure Digital Twins (ADT) Explorer](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). A letöltéshez kattintson a *zip letöltése* gombra *. * A MINTAKÓD zip-fájlja _**ADT_Explorer.zipként **_ a gépre.
-* **Példa Azure digitális Twins-forgatókönyvre**. Ez egy előre elkészített Azure digitális Twins-gráfot tartalmaz, amelyet a ADT Explorerbe fog betölteni, hogy működjön a-mel. A forgatókönyv eléréséhez navigáljon ide: [Azure Digital Twins-minták](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples). A letöltéshez kattintson a *zip letöltése* gombra *. * A MINTAKÓD zip-fájlja _**Azure_Digital_Twins_samples.zipként **_ a gépre.
+A gépen **Node.js** is szüksége lesz. A legújabb verziót a következő hivatkozásra kattintva érheti el: [Node.js](https://nodejs.org/).
+
+Végül le kell töltenie két mintát is a gyors üzembe helyezés során:
+* A **ADT Explorer** minta alkalmazás. Ez a minta a rövid útmutatóban használt fő alkalmazást tartalmazza egy Azure digitális Twins-forgatókönyv betöltéséhez és megismeréséhez. Az alkalmazás beszerzéséhez navigáljon ide: [Azure Digital Twins (ADT) Explorer](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). A letöltéshez kattintson a *zip letöltése* gombra *. * A MINTAKÓD zip-fájlja _**Azure_Digital_Twins__ADT__explorer.zipként **_ a gépre. Bontsa ki a mappát, és bontsa ki a fájlokat.
+* **Példa Azure digitális Twins-forgatókönyvre**. Ez egy előre elkészített Azure digitális Twins-gráfot tartalmaz, amelyet a ADT Explorerbe fog betölteni, hogy működjön a-mel. A forgatókönyv eléréséhez navigáljon ide: [Azure Digital Twins-minták](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples). A letöltéshez kattintson a *zip letöltése* gombra *. * A MINTAKÓD zip-fájlja a gépre, mivel ez letölti a alkalmazást. A ZIP-mappát **Azure_Digital_Twins_samples.zipként **. Bontsa ki a mappát, és bontsa ki a fájlokat.
 
 ## <a name="set-up-azure-digital-twins-and-adt-explorer"></a>Az Azure digitális Twins és a ADT Explorer beállítása
 
@@ -47,7 +49,7 @@ Emellett be kell állítania a ADT Explorer futtatásához szükséges engedély
 
 ### <a name="set-up-azure-digital-twins-instance"></a>Azure digitális Twins-példány beállítása
 
-A példányok és a szükséges hitelesítések beállításának legegyszerűbb módja egy automatizált üzembehelyezési parancsfájl-minta futtatása. Kövesse az útmutató [*: példány és hitelesítés beállítása (megírt)*](how-to-set-up-instance-scripted.md)című témakör utasításait. Az utasítások azt is tartalmazzák, hogy az egyes lépéseket sikeresen elvégezte-e, és készen állnak az új példány használatára való áttérésre.
+Először állítson be egy Azure digitális Twins-példányt és a szükséges hitelesítést ahhoz, hogy működjön vele. Ehhez kövesse az útmutató [*: példány és hitelesítés beállítása*](how-to-set-up-instance-portal.md)című témakör útmutatását. Az előnyben részesített felhasználói élménytől függően a telepítési cikk a [Azure Portal](how-to-set-up-instance-portal.md), a [CLI](how-to-set-up-instance-cli.md)vagy az [automatizált Cloud Shell üzembe helyezési parancsfájl-minta](how-to-set-up-instance-scripted.md)számára elérhető. Az utasítások összes verziója olyan lépéseket is tartalmaz, amelyekkel ellenőrizheti, hogy sikeresen elvégezte-e az egyes lépéseket, és készen áll az új példány használatára való áttérésre.
 
 Ebben a rövid útmutatóban a példány beállításakor a következő értékekre lesz szüksége. Ha újra össze kell gyűjtenie ezeket az értékeket, az alábbi hivatkozásokra kattintva megkeresheti azokat a [Azure Portalban](https://portal.azure.com).
 * Azure digitális Twins-példány **_állomásneve_** ([Keresés a portálon](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values))
@@ -60,12 +62,14 @@ Ezt követően készítse elő a létrehozott Azure digitális Twins-példányt,
 
 Válassza a *hitelesítés* lehetőséget a regisztráció menüjében, és nyomja meg *a + platform hozzáadása*elemet.
 
-:::image type="content" source="media/quickstart-adt-explorer/authentication-pre.png" alt-text="Az alkalmazás-regisztráció hitelesítési adatainak Azure Portal lapja. A platform hozzáadása gomb körül van egy kiemelés" lightbox="media/quickstart-adt-explorer/authentication-pre.png":::
+:::image type="content" source="media/quickstart-adt-explorer/authentication-pre.png" alt-text="Az alkalmazás-regisztráció hitelesítési adatainak Azure Portal lapja. A "platform hozzáadása" gomb körül van egy kiemelés" lightbox="media/quickstart-adt-explorer/authentication-pre.png":::
 
 A következő *platformok konfigurálása* oldalon válassza a *web*lehetőséget.
 Adja meg a konfigurációs adatokat a következőképpen:
 * **Átirányítási**URI-k: adjon hozzá egy ÁTirányítási URI-t *http://localhost:3000* .
 * **Implicit támogatás**: jelölje be a *hozzáférési jogkivonatok*jelölőnégyzetét.
+
+A *Konfigurálás* befejezéséhez.
 
 :::row:::
     :::column:::
@@ -75,17 +79,15 @@ Adja meg a konfigurációs adatokat a következőképpen:
     :::column-end:::
 :::row-end:::
 
-A *Konfigurálás* befejezéséhez.
+Most már rendelkezik egy olyan webes konfigurációval, amelyet a ADT Explorer használni fog. Ennek a Azure Portal hitelesítés lapjának kell szerepelnie. Az alábbi fejezetek ellenőrzése után kattintson a *Mentés gombra*.
 
-Most már rendelkezik egy olyan webes konfigurációval, amelyet a ADT Explorer használni fog. Ennek a Azure Portal hitelesítés lapjának kell szerepelnie.
-
-:::image type="content" source="media/quickstart-adt-explorer/authentication-post.png" alt-text="Az alkalmazás-regisztráció hitelesítési adatainak Azure Portal lapja. A webplatformok szakasza egy átirányítási URI-t tartalmaz http://localhost:3000 , és a hozzáférési tokenek számára engedélyezve van az implicit engedélyezés.":::
+:::image type="content" source="media/quickstart-adt-explorer/authentication-post.png" alt-text="Az alkalmazás-regisztráció hitelesítési adatainak Azure Portal lapja. A webes platform szakasz egy átirányítási URI-ja http://localhost:3000 , a hozzáférési jogkivonatok esetében pedig az implicit támogatás engedélyezve van. A Mentés gomb szintén ki van emelve.":::
 
 ### <a name="run-and-configure-adt-explorer"></a>A ADT Explorer futtatása és konfigurálása
 
 Ezután futtassa a ADT Explorer alkalmazást, és konfigurálja az Azure Digital Twins-példányhoz.
 
-Navigáljon a letöltött _**ADT_Explorer.zip**_ mappára, és csomagolja ki. Nyisson meg egy parancssort a mappa helye *ADT_explorer/Client/src*.
+Navigáljon a letöltött és kibontott _**Azure_Digital_Twins__ADT__explorer**_ mappához. Nyisson meg egy parancssort a mappa helye *Azure_Digital_Twins__ADT__explorer/Client/src*.
 
 A futtatásával `npm install` töltse le az összes szükséges függőséget.
 
@@ -95,7 +97,7 @@ Néhány másodperc elteltével megnyílik egy böngészőablak, és az alkalmaz
 
 :::image type="content" source="media/quickstart-adt-explorer/explorer-blank.png" alt-text="A böngészőablakban futó alkalmazást bemutató böngészőablak: 3000. Az alkalmazás neve ADT Explorer, és tartalmazza a lekérdezési Explorer, a modell nézet, a Graph View és a Property Explorer mezőit. Még nincsenek megjeleníthető adathalmazok." lightbox="media/quickstart-adt-explorer/explorer-blank.png":::
 
-Az ablak tetején található *Bejelentkezés* gombra kattintva állítsa be, hogy a ADT Explorer működjön a beállított példánnyal. 
+Az ablak tetején található *Bejelentkezés* gombra kattintva (az alábbi képen látható) megadhatja, hogy a ADT Explorer működjön a beállított példánnyal. 
 
 :::image type="content" source="media/quickstart-adt-explorer/sign-in.png" alt-text="ADT Explorer – a bejelentkezési ikon kiemelése az ablak tetején. Az ikon a kulcs sziluettjét ábrázoló személy egyszerű sziluettjét jeleníti meg." lightbox="media/quickstart-adt-explorer/sign-in.png":::
 
@@ -116,7 +118,7 @@ Ha megjelenik a Microsoft előugró ablakát *kérő engedély* , adja meg az al
 
 Ezután importálni fogja a minta forgatókönyvet és a Graphot a ADT Explorerben.
 
-A minta forgatókönyv a letöltött  _**Azure_Digital_Twins_samples.zip**_ mappában található, ezért most navigáljon a mappához, és bontsa ki a mappát.
+A minta forgatókönyv a letöltött és kibontott  _**Azure_Digital_Twins_samples**_ mappában található, ezért most navigáljon a mappához.
 
 ### <a name="models"></a>Modellek
 
@@ -144,14 +146,14 @@ A *modell nézet* mezőben nyomja meg a *modell feltöltése* ikont.
 3. Az Azure-fiókba való bejelentkezéshez kattintson a felugró ablakra.
 
 >[!NOTE]
->Ha a következő hibaüzenet jelenik meg :::image type="content" source="media/quickstart-adt-explorer/error-models-popup.png" alt-text="egy felugró ablak olvasása hiba hiba történt a modellek beolvasásakor ClientAuthError hiba A felugró ablak megnyitásakor. Ez akkor fordulhat elő, ha az IE-t használja, vagy ha az előugró ablakok le vannak tiltva a böngészőben. egy Bezárás gomb alul" border="false"::: 
+>Ha a következő hibaüzenet jelenik meg: :::image type="content" source="media/quickstart-adt-explorer/error-models-popup.png" alt-text="egy felugró ablak olvasása hiba: hiba történt a modellek beolvasásakor: ClientAuthError: hiba A felugró ablak megnyitásakor. Ez akkor fordulhat elő, ha az IE-t használja, vagy ha az előugró ablakok le vannak tiltva a böngészőben. "egy Bezárás gomb alul" border="false"::: 
 > Próbálja meg letiltani a felugró ablakok blokkolása vagy egy másik böngésző használatával.
 
 A ADT Explorer ekkor feltölti ezeket a modell-fájlokat az Azure Digital Twins-példányba. Meg kell jelennie a *modell nézet* mezőben, amely megjeleníti a felhasználóbarát neveket és a teljes modell azonosítóit. A *modellre* vonatkozó információk megtekintése buborékok lehetőségre kattintva megtekintheti a mögöttes DTDL-kódot.
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/model-info.png" alt-text="A Model View (modell nézet) mező nézete két, a padlón (dtmi: Floor; 1) és a Room (dtmi: példa: Room; 1) felsorolt modell-definícióval. A modell megtekintése ikon egy kör i betűjét jeleníti meg az egyes modellekhez." lightbox="media/quickstart-adt-explorer/model-info.png":::
+        :::image type="content" source="media/quickstart-adt-explorer/model-info.png" alt-text="A "Model View" (modell nézet) mező nézete két, a padlón (dtmi: Floor; 1) és a Room (dtmi: példa: Room; 1) felsorolt modell-definícióval. A "modell megtekintése" ikon egy kör "i" betűjét jeleníti meg az egyes modellekhez." lightbox="media/quickstart-adt-explorer/model-info.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -195,7 +197,7 @@ A ADT Explorer most a feltöltött fájllal hozza létre a kért ikreket és kap
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/import-success.png" alt-text="A Graph importálás sikerességét jelző párbeszédpanel. A sikeres importálást olvassa be. 49 ikrek importálva. 50 kapcsolat importálva." lightbox="media/quickstart-adt-explorer/import-success.png":::
+        :::image type="content" source="media/quickstart-adt-explorer/import-success.png" alt-text="A Graph importálás sikerességét jelző párbeszédpanel. A sikeres importálást olvassa be. 49 ikrek importálva. 50 kapcsolat importálva. "" lightbox="media/quickstart-adt-explorer/import-success.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -205,7 +207,7 @@ A ADT Explorer most a feltöltött fájllal hozza létre a kért ikreket és kap
 
 A gráf már fel lett töltve a ADT Explorerben. Ha látni szeretné a gráfot, a ADT Explorer ablakának tetején kattintson a *lekérdezés futtatása* gombra a *Graph Explorerben* . 
 
-:::image type="content" source="media/quickstart-adt-explorer/run-query.png" alt-text="Az ablak felső részén található lekérdezés futtatása gomb beolvasása megnyomva jelenik meg" lightbox="media/quickstart-adt-explorer/run-query.png":::
+:::image type="content" source="media/quickstart-adt-explorer/run-query.png" alt-text="Az ablak felső részén található "lekérdezés futtatása" gomb beolvasása megnyomva jelenik meg" lightbox="media/quickstart-adt-explorer/run-query.png":::
 
 Ez az alapértelmezett lekérdezést fogja futtatni az összes digitális ikrek kiválasztásához és megjelenítéséhez. A ADT Explorer lekéri az összes ikreket és kapcsolatot a szolgáltatásból, és a *gráf nézet* mezőben rajzolja meg az általuk meghatározott gráfot.
 
@@ -213,7 +215,7 @@ Ez az alapértelmezett lekérdezést fogja futtatni az összes digitális ikrek 
 
 Most láthatja a minta forgatókönyv feltöltött gráfját:
 
-:::image type="content" source="media/quickstart-adt-explorer/graph-view-full.png" alt-text="A Graph View (gráf nézet) mező megjelenítése, amelyen belül egy dupla gráf található. A floor1 címkével ellátott kör egy room1 címkével ellátott nyíllal van összekötve. a floor0 címkével ellátott kör egy room0 címkével ellátott nyíllal van összekötve.":::
+:::image type="content" source="media/quickstart-adt-explorer/graph-view-full.png" alt-text="A "Graph View" (gráf nézet) mező megjelenítése, amelyen belül egy dupla gráf található. A "floor1" címkével ellátott kör egy "room1" címkével ellátott nyíllal van összekötve. a "floor0" címkével ellátott kör egy "room0" címkével ellátott nyíllal van összekötve.":::
 
 A körök (gráf "csomópontok") a digitális ikreket jelölik, és a vonalak a kapcsolatokat jelképezik. Látni fogja, hogy a *Floor0* Twin *Room0*tartalmaz, és a *Floor1* Twin tartalmazza a *Room1*.
 
@@ -227,7 +229,7 @@ A *Room0*tulajdonságai:
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/properties-room0.png" alt-text="Jelölje ki a Property Explorer (Tulajdonságok) panelt, amely a Room0 tulajdonságait mutatja, beleértve a (többek között) $dtId mezőt a Room0, a 70-es hőmérsékleti mező és a 30-as páratartalom mező mellett." lightbox="media/quickstart-adt-explorer/properties-room0.png":::
+        :::image type="content" source="media/quickstart-adt-explorer/properties-room0.png" alt-text="Jelölje ki a "Property Explorer" (Tulajdonságok) panelt, amely a Room0 tulajdonságait mutatja, beleértve a (többek között) $dtId mezőt a "Room0", a 70-es hőmérsékleti mező és a 30-as páratartalom mező mellett." lightbox="media/quickstart-adt-explorer/properties-room0.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -239,7 +241,7 @@ A *Room1*tulajdonságai:
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/properties-room1.png" alt-text="Jelölje ki a Property Explorer (Tulajdonságok) panelt, amely a Room1 tulajdonságait mutatja, beleértve a (többek között) $dtId mezőt a Room1, a 80-es hőmérsékleti mező és a 60-es páratartalom mező mellett." lightbox="media/quickstart-adt-explorer/properties-room1.png":::
+        :::image type="content" source="media/quickstart-adt-explorer/properties-room1.png" alt-text="Jelölje ki a "Property Explorer" (Tulajdonságok) panelt, amely a Room1 tulajdonságait mutatja, beleértve a (többek között) $dtId mezőt a "Room1", a 80-es hőmérsékleti mező és a 60-es páratartalom mező mellett." lightbox="media/quickstart-adt-explorer/properties-room1.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -319,9 +321,9 @@ Ha azt tervezi, hogy folytatja az Azure digitális Twins-oktatóanyagokat, az eb
  
 [!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
-Végezetül törölje a helyi gépre letöltött Project Sample-mappákat (_**ADT_Explorer.zip**_ és _**Azure_Digital_Twins_samples.zip**_).
+Végezetül törölje a helyi gépre letöltött Project Sample-mappákat (_**Azure_Digital_Twins__ADT__explorer**_ és _**Azure_Digital_Twins_samples**_). Előfordulhat, hogy törölnie kell a tömörített és a kibontott verziókat is.
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 
 Ezután folytassa az Azure digitális Twins-oktatóanyagokkal, és készítse elő saját Azure digitális Twins-forgatókönyvét és interakciós eszközeit.
 

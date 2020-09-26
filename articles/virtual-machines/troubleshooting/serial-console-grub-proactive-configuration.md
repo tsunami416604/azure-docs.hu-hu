@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/10/2019
 ms.author: mimckitt
-ms.openlocfilehash: c48ef0321ece2e7e0ffcdfcb8c0907c5f839e738
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: aba47500400004c1d6a7044a266bad6f20d5d9c9
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831362"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360548"
 ---
 # <a name="proactively-ensuring-you-have-access-to-grub-and-sysrq-could-save-you-lots-of-down-time"></a>Proaktív módon biztosíthatja, hogy hozzáférjen a GRUB-hoz, és a SYSRQ rengeteg időt takaríthat meg
 
@@ -57,9 +57,9 @@ Az Azure soros konzolon a Linux rendszerű virtuális gépekkel ugyanúgy dolgoz
 
 Számos konfigurációs fájlt is kezelhet, beleértve a kernel indításának módját is. 
 
-A tapasztaltabb Linux-/UNIX-rendszergazdák értékelik az Azure soros konzolon keresztül elérhető **egyetlen felhasználói** és **vészhelyzeti üzemmódot** , így a lemez cseréje és a virtuális gép törlése sok redundáns helyreállítási forgatókönyv esetén.
+A tapasztaltabb Linux-/UNIX-rendszergazdák értékelik az Azure soros konzolon keresztül elérhető **egyetlen felhasználói** és  **vészhelyzeti üzemmódot** , így a lemez cseréje és a virtuális gép törlése sok redundáns helyreállítási forgatókönyv esetén.
 
-A helyreállítás módszere az észlelt problémától függ, például az elveszett vagy a rossz helyre állított jelszó visszaállítható a Azure Portal beállítások-> **új jelszó**kérése parancs használatával. A **jelszó alaphelyzetbe állítása** szolgáltatás bővítményként ismert, és a Linux vendég ügynökkel kommunikál.
+A helyreállítás módszere az észlelt problémától függ, például az elveszett vagy a rossz helyre állított jelszó visszaállítható a Azure Portal beállítások->  **új jelszó**kérése parancs használatával. A **jelszó alaphelyzetbe állítása** szolgáltatás bővítményként ismert, és a Linux vendég ügynökkel kommunikál.
 
 Más bővítmények, például az egyéni szkriptek is elérhetők, azonban a Linux **waagent** kifogástalan állapotban kell lennie, ami nem mindig így van.
 
@@ -117,7 +117,7 @@ A kernel paraméter dinamikus konfigurálása
 
 Ha nem rendelkezik **rendszergazdai** hozzáféréssel, vagy a sudo megszakadt, a SYSRQ nem konfigurálható a rendszerhéj parancssorból.
 
-Ebben a forgatókönyvben a Azure Portal használatával engedélyezheti a SYSRQ. Ez a módszer akkor lehet hasznos, ha a **sudoers. d/waagent** fájl megszakadt vagy törölve lett.
+Ebben a forgatókönyvben a Azure Portal használatával engedélyezheti a SYSRQ. Ez a módszer akkor lehet hasznos, ha a  **sudoers. d/waagent** fájl megszakadt vagy törölve lett.
 
 A Azure Portal Operations-> Run Command-> RunShellScript funkció használata esetén a waagent folyamatnak kifogástalan állapotban kell lennie, hogy ezt a parancsot a SYSRQ engedélyezéséhez adja.
 
@@ -210,11 +210,11 @@ A rendszerindítási folyamat megszakítása és a GRUB-menü elérése
 
 Válassza az Ubuntu speciális beállításai lehetőséget, majd nyomja le az ENTER billentyűt
 
-![ubunturec1](./media/virtual-machines-serial-console/ubunturec1.png)
+![Képernyőfelvétel: az Ubuntu kiválasztott speciális beállításait tartalmazó Serial console.](./media/virtual-machines-serial-console/ubunturec1.png)
 
 Válassza ki a megjelenített sort *(helyreállítási mód)* , ne nyomja le az ENTER billentyűt, de nyomja meg az "e" gombot.
 
-![ubunturec2](./media/virtual-machines-serial-console/ubunturec2.png)
+![A képernyőfelvételen a helyreállítási mód kiválasztott verziójának Serial console látható.](./media/virtual-machines-serial-console/ubunturec2.png)
 
 Keresse meg azt a sort, amely betölti a kernelt, és az utolsó paramétert helyettesíti a **nomodeset** a (z) **Console = ttyS0**
 
@@ -226,12 +226,12 @@ change to
 linux /boot/vmlinuz-4.15.0-1023-azure root=UUID=21b294f1-25bd-4265-9c4e-d6e4aeb57e97 ro recovery console=ttyS0
 ```
 
-![ubunturec3](./media/virtual-machines-serial-console/ubunturec3.png)
+![A képernyőképen a módosult értékkel rendelkező Serial console látható.](./media/virtual-machines-serial-console/ubunturec3.png)
 
 Nyomja le a **CTRL-x** billentyűkombinációt a kernel elindításához és betöltéséhez.
 Ha minden jól megy, ezeket a további beállításokat fogja látni, amelyek más helyreállítási lehetőségeket is elvégezhetnek.
 
-![ubunturec4](./media/virtual-machines-serial-console/ubunturec4.png)
+![A képernyőképen látható Serial console a helyreállítási menüben, amely további helyreállítási lehetőségeket kínál.](./media/virtual-machines-serial-console/ubunturec4.png)
 
 
 ## <a name="red-hat-grub-configuration"></a>Red Hat GRUB-konfiguráció
@@ -335,13 +335,13 @@ terminal --timeout=5 serial console
 ```
 
 
-Az utolsó sor *terminálja – a timeout = 5 soros konzol* tovább növeli a **grub** -időtúllépést úgy, hogy 5 másodperces figyelmeztetést jelenít **meg, és a folytatáshoz nyomjon le egy billentyűt.**
+Az utolsó sor  *terminálja – a timeout = 5 soros konzol* tovább növeli a **grub** -időtúllépést úgy, hogy 5 másodperces figyelmeztetést jelenít **meg, és a folytatáshoz nyomjon le egy billentyűt.**
 
-![RH6 – 1](./media/virtual-machines-serial-console/rh6-1.png)
+![A képernyőképen egy kimenettel rendelkező konzol látható.](./media/virtual-machines-serial-console/rh6-1.png)
 
 Az ESC billentyű lenyomása nélkül a GRUB menünek meg kell jelennie a képernyőn a beállított időkorláthoz = 15. Győződjön meg arról, hogy a böngészőben a konzolon az aktív menüre kattint, és kiválasztja a szükséges kernelt
 
-![RH6 – 2](./media/virtual-machines-serial-console/rh6-2.png)
+![Képernyőfelvétel: két Linux-lehetőséggel rendelkező konzol megjelenítése.](./media/virtual-machines-serial-console/rh6-2.png)
 
 ## <a name="suse"></a>SuSE
 
@@ -405,18 +405,18 @@ A rendszerhéjhoz jelszó megadása nélkül férhet hozzá. Ezután a Linux-fi�
 A GRUB-hozzáférés lehetővé teszi, hogy megszakítsa az inicializálási folyamatot, amely számos helyreállítási eljárás esetében hasznos lehet.
 Ha nem rendelkezik rendszergazdai jelszóval, és az egyetlen felhasználóhoz rendszergazdai jelszó szükséges, akkor a rendszerindítási programot egy bash-parancssorral is elindíthatja az init program helyett – ez a megszakítás az init =/bin/bash és a kernel rendszerindítási vonalának hozzáfűzésével érhető el.
 
-![bash1](./media/virtual-machines-serial-console/bash1.png)
+![A képernyőfelvétel a frissített rendszerindítási sorral rendelkező konzolt jeleníti meg.](./media/virtual-machines-serial-console/bash1.png)
 
 Csatlakoztassa újra a/(root) fájlrendszerbeli RW-t a parancs használatával
 
 `mount -o remount,rw /`
 
-![bash2](./media/virtual-machines-serial-console/bash2.png)
+![Képernyőfelvétel: a konzol ismételt csatlakoztatási művelettel.](./media/virtual-machines-serial-console/bash2.png)
 
 
 Most már elvégezheti a rendszergazdai jelszó módosítását vagy a Linux-konfiguráció számos más módosítását
 
-![bash3](./media/virtual-machines-serial-console/bash3.png)
+![A képernyőképen egy konzol látható, amelyen megváltoztathatja a gyökér jelszavát és egyéb konfigurációját.](./media/virtual-machines-serial-console/bash3.png)
 
 Indítsa újra a virtuális gépet a 
 
@@ -436,5 +436,5 @@ További információ az egyfelhasználós mód eléréséről: Ez a [dokumentum
 ![single_user_ubuntu](./media/virtual-machines-serial-console/single-user-ubuntu.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ az [Azure soros konzolról]( ./serial-console-linux.md)

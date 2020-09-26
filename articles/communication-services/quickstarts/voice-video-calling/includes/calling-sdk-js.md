@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 6922ab2aac8529da8ba55a98f465e3c0e3123b53
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 5542ca2f50152e7588f32e9ac8717f691fdb4d63
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90940080"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91376953"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -80,11 +80,11 @@ A kommunikációs szolgáltatások erőforrását úgy kell konfigurálni, hogy 
 
 const userCallee = { communicationUserId: <ACS_USER_ID> }
 const pstnCallee = { phoneNumber: <PHONE_NUMBER>};
-const groupCall = callClient.call([userCallee, pstnCallee], placeCallOptions);
+const groupCall = callAgent.call([userCallee, pstnCallee], placeCallOptions);
 
 ```
 
-### <a name="place-a-11-call-with-with-video-camera"></a>1:1-hívás elhelyezése a kamerával
+### <a name="place-a-11-call-with-video-camera"></a>1:1-hívás elhelyezése videokameráról
 > [!WARNING]
 > Jelenleg legfeljebb egy kimenő helyi videó stream lehet.
 Videohívás létrehozásához a helyi kamerákat a deviceManager API használatával kell enumerálni `getCameraList` .
@@ -95,7 +95,7 @@ const deviceManager = await callClient.getDeviceManager();
 const videoDeviceInfo = deviceManager.getCameraList()[0];
 localVideoStream = new LocalVideoStream(videoDeviceInfo);
 const placeCallOptions = {videoOptions: {localVideoStreams:[localVideoStream]}};
-const call = callClient.call(['acsUserId'], placeCallOptions);
+const call = callAgent.call(['acsUserId'], placeCallOptions);
 
 ```
 
@@ -104,7 +104,7 @@ const call = callClient.call(['acsUserId'], placeCallOptions);
 ```js
 
 const context = { groupId: <GUID>}
-const call = callClient.join(context);
+const call = callAgent.join(context);
 
 ```
 
@@ -113,19 +113,19 @@ const call = callClient.join(context);
 A hívási tulajdonságokat elérheti, és különböző műveleteket hajthat végre a videóval és hanggal kapcsolatos beállítások kezeléséhez.
 
 ### <a name="call-properties"></a>Hívás tulajdonságai
-* A hívás egyedi azonosítójának beolvasása.
+* A hívás egyedi AZONOSÍTÓjának (karakterláncának) beolvasása.
 ```js
 
 const callId: string = call.id;
 
 ```
 
-* Ha szeretne többet megtudni a hívás többi résztvevőjének, vizsgálja meg a `remoteParticipant` példányon a gyűjteményt `call` .
+* Ha szeretne többet megtudni a hívás többi résztvevőjének, vizsgálja meg a `remoteParticipant` példányon a gyűjteményt `call` . A tömb lista `RemoteParticipant` objektumokat tartalmaz
 ```js
-const remoteParticipants: RemoteParticipants = call.remoteParticipants;
+const remoteParticipants = call.remoteParticipants;
 ```
 
-* A hívó identitása, ha a hívás beérkező.
+* A hívó identitása, ha a hívás beérkező. Az identitás az egyik `Identifier` típusa
 ```js
 
 const callerIdentity = call.callerIdentity;
@@ -135,7 +135,7 @@ const callerIdentity = call.callerIdentity;
 * A hívás állapotának beolvasása.
 ```js
 
-const callState: CallState = call.state;
+const callState = call.state;
 
 ```
 Ez egy olyan sztringet ad vissza, amely a hívás aktuális állapotát jelöli:
@@ -153,35 +153,34 @@ Ez egy olyan sztringet ad vissza, amely a hívás aktuális állapotát jelöli:
 * Ha meg szeretné tudni, hogy egy adott hívás miért ért véget, vizsgálja meg a `callEndReason` tulajdonságot.
 ```js
 
-const callEndReason: CallEndReason = call.callEndReason;
+const callEndReason = call.callEndReason;
+// callEndReason.code (number) code associated with the reason
+// callEndReason.subCode (number) subCode associated with the reason
+```
+
+* Ha meg szeretné tudni, hogy az aktuális hívás bejövő hívás-e, ellenőrizze a `isIncoming` tulajdonságot, és adja vissza `Boolean` .
+```js
+const isIncoming = call.isIncoming;
+```
+
+*  Annak ellenőrzéséhez, hogy az aktuális mikrofon el van-e némítva, ellenőrizze a `muted` tulajdonságot, és adja vissza `Boolean` .
+```js
+
+const muted = call.isMicrophoneMuted;
 
 ```
 
-* Ha meg szeretné tudni, hogy az aktuális hívás bejövő hívás-e, vizsgálja meg a `isIncoming` tulajdonságot.
+* Ha szeretné megtudni, hogy a képernyő-megosztási adatfolyamot egy adott végponton küldik-e el, ellenőrizze a `isScreenSharingOn` tulajdonságot, és adja vissza `Boolean` .
 ```js
 
-const isIncoming: boolean = call.isIncoming;
+const isScreenSharingOn = call.isScreenSharingOn;
 
 ```
 
-*  Annak ellenőrzéséhez, hogy az aktuális mikrofon el van-e némítva, vizsgálja meg a következő `muted` tulajdonságot:
+* Az aktív videó streamek vizsgálatához tekintse `localVideoStreams` meg a gyűjteményt, amely `LocalVideoStream` objektumokat tartalmaz
 ```js
 
-const muted: boolean = call.isMicrophoneMuted;
-
-```
-
-* Ha szeretné megtudni, hogy a képernyő-megosztási adatfolyamot egy adott végponton küldik-e el, ellenőrizze a következő `isScreenSharingOn` tulajdonságot:
-```js
-
-const isScreenSharingOn: boolean = call.isScreenSharingOn;
-
-```
-
-* Az aktív videó streamek vizsgálatához tekintse meg a `localVideoStreams` gyűjteményt:
-```js
-
-const localVideoStreams: LocalVideoStream[] = call.localVideoStreams;
+const localVideoStreams = call.localVideoStreams;
 
 ```
 
@@ -194,7 +193,7 @@ A helyi végpont némításához vagy a némítás feloldásához használhatja 
 //mute local device 
 await call.mute();
 
-//unmute device 
+//unmute local device 
 await call.unmute();
 
 ```
@@ -206,7 +205,7 @@ A videók elindításához az objektum metódusának használatával kell enumer
 
 
 ```js
-const localVideoStream = new SDK.LocalVideoStream(videoDeviceInfo);
+const localVideoStream = new LocalVideoStream(videoDeviceInfo);
 await call.startVideo(localVideoStream);
 
 ```
@@ -254,49 +253,49 @@ A távoli résztvevő rendelkezik a hozzá társított tulajdonságok és gyűjt
 * A távoli résztvevő azonosítójának beolvasása.
 Az identitás az "azonosító" típusok egyike:
 ```js
-
-const identity: CommunicationUser | PhoneNumber | CallingApplication | UnknownIdentifier;
-
+const identifier = remoteParticipant.identifier;
+//It can be one of:
+// { communicationUserId: '<ACS_USER_ID'> } - object representing ACS User
+// { phoneNumber: '<E.164>' } - object representing phone number in E.164 format
 ```
 
 * A távoli résztvevő állapotának beolvasása.
 ```js
 
-const state: RemoteParticipantState = remoteParticipant.state;
+const state = remoteParticipant.state;
 ```
 Az állapot lehet az egyik
 * "Tétlen" – kezdeti állapot
 * "Connecting" – átmeneti állapot, miközben a résztvevő csatlakozik a híváshoz
 * "Csatlakoztatott" – a résztvevő csatlakozik a híváshoz
 * "Hold" – a résztvevő tart
-* "EarlyMedia" – a Annoucement csak akkor játszható le, ha a résztvevő csatlakozik a híváshoz
+* "EarlyMedia" – a bejelentést csak akkor játssza le a rendszer, ha a résztvevő csatlakozik a híváshoz
 * "Leválasztott" – végső állapot – a résztvevő nem kapcsolódik a híváshoz
 
 Annak megismeréséhez, hogy a résztvevő miért hagyta el a hívást, vizsgálja meg a `callEndReason` tulajdonságot:
 ```js
 
-const callEndReason: CallEndReason = remoteParticipant.callEndReason;
+const callEndReason = remoteParticipant.callEndReason;
+// callEndReason.code (number) code associated with the reason
+// callEndReason.subCode (number) subCode associated with the reason
+```
+
+* Annak ellenőrzéséhez, hogy a távoli résztvevő el van-e némítva vagy sem, vizsgálja `isMuted` meg a tulajdonságot, és adja vissza `Boolean`
+```js
+const isMuted = remoteParticipant.isMuted;
+```
+
+* Annak ellenőrzéséhez, hogy a távoli résztvevő beszél-e vagy sem, vizsgálja meg a visszaadott `isSpeaking` tulajdonság értékét. `Boolean`
+```js
+
+const isSpeaking = remoteParticipant.isSpeaking;
 
 ```
 
-* Annak ellenőrzéséhez, hogy a távoli résztvevő elnémul-e, vagy sem, vizsgálja meg a `isMuted` tulajdonságot:
+* Az adott résztvevő által a hívásban küldött összes videó stream vizsgálatához tekintse `videoStreams` meg a gyűjteményt, amely `RemoteVideoStream` objektumokat tartalmaz
 ```js
 
-const isMuted: boolean = remoteParticipant.isMuted;
-
-```
-
-* Annak ellenőrzéséhez, hogy a távoli résztvevő beszél-e vagy sem, vizsgálja meg a következő `isSpeaking` tulajdonságot:
-```js
-
-const isSpeaking: boolean = remoteParticipant.isSpeaking;
-
-```
-
-* Az adott résztvevő által ebben a hívásban küldött összes videó stream vizsgálatához tekintse meg a `videoStreams` gyűjteményt:
-```js
-
-const videoStreams: RemoteVideoStream[] = remoteParticipant.videoStreams; // [RemoteVideoStream, ...]
+const videoStreams = remoteParticipant.videoStreams; // [RemoteVideoStream, ...]
 
 ```
 
@@ -312,7 +311,6 @@ const userIdentifier = { communicationUserId: <ACS_USER_ID> };
 const pstnIdentifier = { phoneNumber: <PHONE_NUMBER>}
 const remoteParticipant = call.addParticipant(userIdentifier);
 const remoteParticipant = call.addParticipant(pstnIdentifier);
-
 ```
 
 ### <a name="remove-participant-from-a-call"></a>Résztvevő eltávolítása egy hívásból
@@ -333,7 +331,6 @@ await call.removeParticipant(pstnIdentifier);
 A távoli résztvevők videó streamek és a képernyő-megosztási streamek listázásához vizsgálja meg a `videoStreams` gyűjteményeket:
 
 ```js
-
 const remoteVideoStream: RemoteVideoStream = call.remoteParticipants[0].videoStreams[0];
 const streamType: MediaStreamType = remoteVideoStream.type;
 ```

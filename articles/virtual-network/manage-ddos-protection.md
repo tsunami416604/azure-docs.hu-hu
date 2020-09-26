@@ -16,18 +16,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
-ms.openlocfilehash: 73036ba1a72d657fd07a826bbee8651781f70e9b
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 706379649b47846b5c020dc76493a98e346c4a8f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88931964"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317684"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Azure DDoS Protection standard kezelése a Azure Portal használatával
 
 Megtudhatja, hogyan engedélyezheti és tilthatja le az elosztott szolgáltatásmegtagadási (DDoS) védelmet, és hogyan használhatja a telemetria-t a Azure DDoS Protection standard szintű DDoS-támadások enyhítésére. A DDoS Protection standard védelmet biztosít az Azure-erőforrások, például a virtuális gépek, a terheléselosztó és az olyan Application Gateway-átjárók számára, amelyekhez hozzá van rendelve egy Azure [nyilvános IP-cím](virtual-network-public-ip-address.md) . Ha többet szeretne megtudni a DDoS Protection standard és képességeiről, tekintse meg a [DDoS Protection standard áttekintése](ddos-protection-overview.md)című témakört.
 
-Az oktatóanyag lépéseinek elvégzése előtt jelentkezzen be a Azure Portalba https://portal.azure.com egy olyan fiókkal, amely a [hálózati közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) szerepkörhöz van rendelve, vagy egy olyan [Egyéni szerepkörhöz](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , amely az [engedélyek](#permissions)területen felsorolt megfelelő műveletekhez van rendelve.
+Az oktatóanyag lépéseinek elvégzése előtt jelentkezzen be a Azure Portalba https://portal.azure.com egy olyan fiókkal, amely a [hálózati közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) szerepkörhöz van rendelve, vagy egy olyan [Egyéni szerepkörhöz](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , amely az [engedélyek](#permissions-and-restrictions)területen felsorolt megfelelő műveletekhez van rendelve.
 
 Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
@@ -39,12 +39,12 @@ A legtöbb szervezet esetében nem szükséges több csomag létrehozása. A cso
 
 1. Válassza az **erőforrás létrehozása** lehetőséget a Azure Portal bal felső sarkában.
 2. Keressen rá a *DDoS*kifejezésre. Ha a **DDoS Protection-csomag** megjelenik a keresési eredmények között, válassza ki.
-3. Válassza a **Létrehozás** lehetőséget.
+3. Kattintson a **Létrehozás** gombra.
 4. Adja meg vagy válassza ki a saját értékeit, vagy írja be, vagy válassza ki a következő példában szereplő értékeket, majd válassza a **Létrehozás**lehetőséget:
 
     |Beállítás        |Érték                                              |
     |---------      |---------                                          |
-    |Name (Név)           | myDdosProtectionPlan                              |
+    |Név           | myDdosProtectionPlan                              |
     |Előfizetés   | Válassza ki előfizetését.                         |
     |Erőforráscsoport | Válassza az **új létrehozása** elemet, és adja meg a *myResourceGroup* |
     |Hely       | USA keleti régiója                                           |
@@ -57,7 +57,7 @@ A legtöbb szervezet esetében nem szükséges több csomag létrehozása. A cso
 
     | Beállítás         | Érték                                                        |
     | ---------       | ---------                                                    |
-    | Name (Név)            | myVirtualNetwork                                             |
+    | Név            | myVirtualNetwork                                             |
     | Előfizetés    | Válassza ki előfizetését.                                    |
     | Erőforráscsoport  | Válassza a **meglévő használata**lehetőséget, majd a **myResourceGroup** lehetőséget. |
     | Hely        | USA keleti régiója                                                      |
@@ -106,7 +106,7 @@ A rendelkezésre álló DDoS-védelmi mérőszámok bármelyikét kiválaszthatj
 
     |Beállítás                  |Érték                                                                                               |
     |---------                |---------                                                                                           |
-    |Name (Név)                     | myDdosAlert                                                                                        |
+    |Név                     | myDdosAlert                                                                                        |
     |Előfizetés             | Válassza ki azt az előfizetést, amely a nyilvános IP-címet tartalmazza, amelyhez riasztásokat szeretne kapni.        |
     |Erőforráscsoport           | Válassza ki azt az erőforráscsoportot, amely tartalmazza azt a nyilvános IP-címet, amelyhez riasztásokat szeretne kapni.      |
     |Erőforrás                 | Válassza ki azt a nyilvános IP-címet, amely tartalmazza azt a nyilvános IP-címet, amelyhez riasztásokat szeretne kapni. A DDoS figyeli a virtuális hálózaton belüli erőforrásokhoz rendelt nyilvános IP-címeket. Ha nem rendelkezik nyilvános IP-címmel rendelkező erőforrásokkal a virtuális hálózaton, először létre kell hoznia egy nyilvános IP-címmel rendelkező erőforrást. Az [Azure-szolgáltatásokhoz tartozó Virtual Network](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network)(nem klasszikus) Resource Managerrel telepített összes erőforrás nyilvános IP-címét a Azure app Service környezetek és az Azure VPN Gateway kivételével figyelheti. Az oktatóanyag folytatásához gyorsan létrehozhat egy Windows vagy [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) [rendszerű](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuális gépet.                   |
@@ -191,7 +191,7 @@ A támadás-elhárítási folyamat naplói lehetővé teszik, hogy a közel val�
     - **Archiválás egy Storage-fiókba**: az adatok egy Azure Storage-fiókba íródnak. Ha többet szeretne megtudni erről a lehetőségről, olvassa el az [erőforrás-naplók archiválása](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)című témakört.
     - **Stream az Event hub**-ba: lehetővé teszi, hogy a naplók egy Azure Event hub használatával vegyenek fel naplókat. Az Event hubok lehetővé teszik az integrációt a splunk vagy más SIEM-rendszerekkel. Ha többet szeretne megtudni erről a lehetőségről, tekintse meg a [stream-erőforrás naplófájljait az Event hub](../azure-monitor/platform/resource-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)-ban.
     - **Küldés log Analyticsba**: a naplók beírása a Azure monitor szolgáltatásba. Ha többet szeretne megtudni erről a lehetőségről, tekintse meg a [naplók összegyűjtése Azure monitor naplókban való használatát](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)ismertető témakört.
-1. Ha meg szeretné tekinteni a folyamat naplófájljainak adatait az Azure Analytics irányítópultján, importálhatja a minta-irányítópultot a következőből: https://github.com/Anupamvi/Azure-DDoS-Protection/raw/master/flowlogsbyip.zip
+1. Ha meg szeretné tekinteni a folyamat naplófájljainak adatait az Azure Analytics-munkafüzetben, importálhatja a minta-irányítópultot a következőből: https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/Azure%20DDoS%20Protection%20Workbook
 
 A flow-naplók a következő mezőket fogják tartalmazni: 
 - Forrás IP-címe
@@ -225,11 +225,11 @@ A riasztások megtekintéséhez nyissa meg **Security Center** a Azure Portalban
 
 A riasztások a támadás, a Geo és a veszélyforrások felderítésére vonatkozó információk, valamint a Szervizelési lépések általános információit tartalmazzák a nyilvános IP-címekről.
 
-## <a name="permissions"></a>Engedélyek
+## <a name="permissions-and-restrictions"></a>Engedélyek és korlátozások
 
 A DDoS elleni védelmi tervekkel való együttműködéshez a fiókját hozzá kell rendelni a [hálózati közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) szerepkörhöz vagy egy [Egyéni](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) szerepkörhöz, amely az alábbi táblázatban felsorolt megfelelő műveletekhez van rendelve:
 
-| Művelet                                            | Name (Név)                                     |
+| Művelet                                            | Name                                     |
 | ---------                                         | -------------                            |
 | Microsoft. Network/ddosProtectionPlans/READ        | DDoS Protection-csomag beolvasása              |
 | Microsoft. Network/ddosProtectionPlans/Write       | DDoS elleni védelmi terv létrehozása vagy frissítése  |
@@ -238,6 +238,9 @@ A DDoS elleni védelmi tervekkel való együttműködéshez a fiókját hozzá k
 
 Ha engedélyezni szeretné a DDoS Protectiont egy virtuális hálózat számára, a fióknak hozzá kell rendelnie a [virtuális hálózatok megfelelő műveleteit](manage-virtual-network.md#permissions)is.
 
-## <a name="next-steps"></a>További lépések
+### <a name="azure-policy"></a>Azure Policy
+Azon ügyfelek esetében, akik különböző előfizetésekkel rendelkeznek, és szeretnék biztosítani, hogy a Azure DDoS Protection standard csomagra vonatkozó egyetlen tervet telepítsenek a bérlők számára a Cost Control szolgáltatásban, a Azure Policy segítségével [korlátozható Azure DDoS Protection standard csomagok létrehozása](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/Restrict%20creation%20of%20Azure%20DDoS%20Protection%20Standard%20Plans%20with%20Azure%20Policy). Ez a szabályzat letiltja a DDoS-csomagok létrehozását, kivéve, ha az előfizetés korábban kivételként van megjelölve. Ez a szabályzat az összes olyan előfizetés listáját is megjeleníti, amelynek a DDoS-terve telepítve van, de nem. 
+
+## <a name="next-steps"></a>Következő lépések
 
 - Virtuális hálózatok [Azure Policy defintions](policy-samples.md) létrehozása és kiosztása

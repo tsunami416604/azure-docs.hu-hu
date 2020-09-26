@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 9/18/2020
-ms.openlocfilehash: fef873d5122fefb48c85281f71e206f95f3fbe48
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: dd59d0b09a28febfc0afe35d9f008ba0e0ee19ab
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986733"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295714"
 ---
 # <a name="server-group-size"></a>Kiszolgálócsoport mérete
 
@@ -26,13 +26,13 @@ Egy kiszolgálócsoport mérete, a csomópontok száma és a hardver kapacitása
 
 Ha a nagy kapacitású (Citus) áttelepítést végez egy meglévő egycsomópontos PostgreSQL-adatbázis-példányból, javasoljuk, hogy válasszon olyan fürtöt, amelyben a feldolgozó virtuális mag és a RAM mennyisége megegyezik az eredeti példány értékével. Ilyen helyzetekben 2 – 3 – 4 teljesítménybeli javulás látható, mivel a horizontális felskálázás javítja az erőforrások kihasználtságát, és lehetővé teszi a kisebb indexek használatát stb.
 
-A koordinátori csomóponthoz szükséges virtuális mag száma a meglévő munkaterheléstől (írási/olvasási sebesség) függ. A koordinátori csomópont nem igényel annyi RAM-t, mint a feldolgozó csomópontok, de a RAM-foglalás a virtuális mag száma alapján van meghatározva (a [nagy kapacitású konfigurációs beállításaiban](concepts-hyperscale-configuration-options.md)leírtak szerint), így a virtuális mag száma lényegében a valódi döntés.
+A koordinátori csomóponthoz szükséges virtuális mag száma a meglévő munkaterheléstől (írási/olvasási sebesség) függ. A koordinátori csomópont nem igényel annyi RAM-t, mint a feldolgozó csomópontok, de a RAM-kiosztás a virtuális mag száma alapján van meghatározva (a [nagy kapacitású (Citus) konfigurációs beállításaiban](concepts-hyperscale-configuration-options.md)leírtak szerint), így a virtuális mag száma lényegében az igazi döntés.
 
 ### <a name="real-time-analytics-use-case"></a>Valós idejű elemzési használati eset
 
 Teljes virtuális mag: Ha a munkamennyiség a RAM-ban található, akkor a nagy kapacitású (Citus) lineáris teljesítményének növelése várható a munkavégző magok számával arányosan. Az igényeinek megfelelő számú virtuális mag meghatározásához vegye figyelembe az egycsomópontos adatbázisban lévő lekérdezések aktuális késését, valamint a nagy kapacitású (Citus) szükséges késését. Ossza el az aktuális kését a kívánt késéssel, majd kerekítse az eredményt.
 
-Feldolgozó RAM: a legjobb eset elegendő memória biztosítása lenne, amelyben a munkakészlet többsége elfér. Az alkalmazás által használt lekérdezések típusa befolyásolja a memória követelményeit. Az ELEMZÉSek MAGYARÁZATának futtatásával határozhatja meg, hogy mennyi memóriát igényel. Ne feledje, hogy a virtuális mag és a RAM méretezése a [nagy kapacitású konfigurációs beállítások](concepts-hyperscale-configuration-options.md) című cikkben leírtak szerint történik.
+Feldolgozó RAM: a legjobb eset elegendő memória biztosítása lenne, amelyben a munkakészlet többsége elfér. Az alkalmazás által használt lekérdezések típusa befolyásolja a memória követelményeit. Az ELEMZÉSek MAGYARÁZATának futtatásával határozhatja meg, hogy mennyi memóriát igényel. Ne feledje, hogy a virtuális mag és a RAM méretezése a [nagy kapacitású (Citus) konfigurációs beállításai](concepts-hyperscale-configuration-options.md) című cikkben leírtak szerint történik.
 
 ## <a name="scale-a-hyperscale-citus-server-group"></a>Nagy kapacitású-(Citus-) kiszolgálócsoport méretezése
 

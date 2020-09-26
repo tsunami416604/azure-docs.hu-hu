@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 03/04/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 4312864d692d8f9027accfa2dff2b94df41d8bd3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 72c520b0ff135e9f48cd74f0024197ae8606f206
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91327415"
+ms.locfileid: "91377046"
 ---
 Ezzel a rövid útmutatóval elvégezheti az első képkeresést az Bing Image Search ügyféloldali kódtár használatával, amely az API burkolója, és ugyanazokat a szolgáltatásokat tartalmazza. Ez az egyszerű JavaScript-alkalmazás elküld egy képkeresési lekérdezést, elemzi a JSON-választ, és megjeleníti az első visszaadott kép URL-címét.
 
@@ -22,10 +22,11 @@ A minta forráskódja elérhető a [githubon](https://github.com/Azure-Samples/c
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A [Node.js-hez készült Cognitive Services Image Search SDK](https://www.npmjs.com/package/@azure/cognitiveservices-imagesearch)
-    * Végezze el a telepítést a `npm install @azure/cognitiveservices-imagesearch` paranccsal
-* A [Node.js Azure Rest](https://www.npmjs.com/package/ms-rest-azure) modul
-    * Végezze el a telepítést a `npm install ms-rest-azure` paranccsal
+* A [Node.js](https://nodejs.org/en/download/) legújabb verziója.
+* A [javascripthez készült BING Image Search SDK](https://www.npmjs.com/package/@azure/cognitiveservices-imagesearch)
+     *  A telepítéséhez futtassa a következőt `npm install @azure/cognitiveservices-imagesearch`
+* A `CognitiveServicesCredentials` `@azure/ms-rest-azure-js` csomagból a-ügyfelet hitelesítő osztály.
+     * A telepítéséhez futtassa a következőt `npm install @azure/ms-rest-azure-js`
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](~/includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
@@ -36,7 +37,7 @@ A minta forráskódja elérhető a [githubon](https://github.com/Azure-Samples/c
     ```javascript
     'use strict';
     const ImageSearchAPIClient = require('@azure/cognitiveservices-imagesearch');
-    const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
+    const CognitiveServicesCredentials = require('@azure/ms-rest-azure-js').CognitiveServicesCredentials;
     ```
 
 2. A projekt fő metódusában hozzon létre változókat érvényes előfizetési kulcsához, a Bing által visszaadandó képtalálatokhoz és egy keresési kifejezéshez. Ezután példányosítsa a képkeresési ügyfelet a kulcs használatával.

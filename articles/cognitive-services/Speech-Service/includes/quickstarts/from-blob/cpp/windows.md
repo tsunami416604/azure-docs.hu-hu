@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/13/2020
 ms.author: trbye
-ms.openlocfilehash: 629fc5e3bc41377fe852a1648680d77b22395d02
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: e1d2493474736ebbcdb54aeb697716e1dc7d6ee6
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81400969"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91376967"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -17,7 +17,7 @@ Az első lépések előtt ügyeljen a következőre:
 
 > [!div class="checklist"]
 > * [Állítsa be a fejlesztési környezetet, és hozzon létre egy üres projektet](../../../../quickstarts/setup-platform.md?tabs=linux&pivots=programmming-language-cpp)
-> * [Azure Speech-erőforrás létrehozása](../../../../get-started.md)
+> * [Azure Speech-erőforrás létrehozása](../../../../overview.md#try-the-speech-service-for-free)
 > * [Forrásfájl feltöltése Azure-blobba](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
 
 ## <a name="open-your-project-in-visual-studio"></a>A projekt megnyitása a Visual Studióban
@@ -58,12 +58,12 @@ Mielőtt megkezdené a deklarációját, tegye a következőt: `recognizeSpeech`
 
 ## <a name="create-and-configure-an-http-client"></a>Http-ügyfél létrehozása és konfigurálása
 Első lépésként egy olyan http-ügyfélre van szükségünk, amely megfelelő alap URL-címmel és hitelesítési készlettel rendelkezik.
-A kód beszúrása a következőbe:`recognizeSpeech`
+A kód beszúrása a következőbe: `recognizeSpeech`
 
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-blob/helloworld.cpp?range=191-197)]
 
 ## <a name="generate-a-transcription-request"></a>Átírási kérelem létrehozása
-Ezután létrehozjuk az átírási kérelmet. Kód hozzáadása a következőhöz`recognizeSpeech`
+Ezután létrehozjuk az átírási kérelmet. Kód hozzáadása a következőhöz `recognizeSpeech`
 
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-blob/helloworld.cpp?range=199-203)]
 

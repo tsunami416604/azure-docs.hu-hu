@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/12/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: a5db76f0258eb08f6b1f8ed102dc29e26c8d8bb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e72129b1f391996f6d5b085fe602adb35a3aecbe
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85206444"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371218"
 ---
 # <a name="secure-access-to-on-premises-apis-with-azure-ad-application-proxy"></a>Biztonságos hozzáférés a helyszíni API-khoz az Azure AD Application Proxy
 
@@ -43,7 +43,7 @@ Mivel az Azure AD Application Proxy hitelesítés és engedélyezés az Azure AD
 Az útmutató követéséhez a következőkre lesz szüksége:
 
 - Rendszergazdai hozzáférés egy Azure-címtárhoz egy olyan fiókkal, amely alkalmazásokat hozhat létre és regisztrálhat
-- A mintául szolgáló webes API és a natív ügyfélalkalmazások[https://github.com/jeevanbisht/API-NativeApp-ADAL-SampleApp](https://github.com/jeevanbisht/API-NativeApp-ADAL-SampleApp)
+- A mintául szolgáló webes API és a natív ügyfélalkalmazások [https://github.com/jeevanbisht/API-NativeApp-ADAL-SampleApp](https://github.com/jeevanbisht/API-NativeApp-ADAL-SampleApp)
 
 ## <a name="publish-the-api-through-application-proxy"></a>Az API közzététele az alkalmazásproxy használatával
 
@@ -185,9 +185,9 @@ Ha úgy szeretné konfigurálni a natív alkalmazást, hogy az Azure Active Dire
 
 A paraméterek konfigurálása után hozza létre és futtassa a natív alkalmazást. Amikor kiválasztja a **Bejelentkezés** gombot, az alkalmazás lehetővé teszi a bejelentkezést, majd egy sikeres képernyőt jelenít meg annak ellenőrzéséhez, hogy sikeresen csatlakozott-e a SecretAPI.
 
-![Sikeres](./media/application-proxy-secure-api-access/success.png)
+![Képernyőfelvétel: a P sikeres és az OK gomb titkát ábrázoló üzenet.](./media/application-proxy-secure-api-access/success.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Oktatóanyag: helyi alkalmazás hozzáadása a távoli eléréshez az alkalmazásproxy használatával Azure Active Directory](application-proxy-add-on-premises-application.md)
 - [Gyors útmutató: ügyfélalkalmazás konfigurálása a webes API-k eléréséhez](../develop/quickstart-configure-app-access-web-apis.md)

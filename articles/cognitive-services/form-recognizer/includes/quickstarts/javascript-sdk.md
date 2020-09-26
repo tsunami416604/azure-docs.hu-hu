@@ -1,21 +1,21 @@
 ---
 title: 'Gyors útmutató: űrlap-felismerő ügyféloldali kódtár a JavaScripthez'
-description: Ebben a rövid útmutatóban megkezdheti a JavaScripthez készült űrlap-felismerő ügyféloldali kódtár használatának első lépéseit.
+description: Használja az űrlap-felismerő ügyféloldali függvénytárát a JavaScripthez olyan űrlap-feldolgozó alkalmazás létrehozásához, amely Kinyeri a kulcs/érték párokat és a tábla adatait az egyéni dokumentumokból.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
-ms.date: 08/21/2020
+ms.date: 09/21/2020
 ms.author: pafarley
-ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: cc72fa9e05dd25ef2d63f126f0fbb45841cb799c
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: af6ca27236649ef915bbb52853fc0c34e29fb800
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934351"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318904"
 ---
 > [!IMPORTANT]
 > * Az űrlap-felismerő SDK jelenleg a from felismerő szolgáltatás v 2.0-s verzióját célozza meg.
@@ -84,7 +84,9 @@ Az űrlap-felismerő használatával két különböző típusú ügyfél hozhat
 * A fiókban létrehozott modellek kezelése.
 * Egyéni modell másolása az egyik űrlap-felismerő erőforrásból egy másikba.
 
-Vegye figyelembe, hogy a modellek grafikus felhasználói felülettel is betanítható, például az [űrlap-felismerő címkéző eszköz](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/label-tool)használatával.
+> [!NOTE]
+> A modellek grafikus felhasználói felülettel is betanítható, például az [űrlap-felismerő címkéző eszköz](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/label-tool)használatával.
+
 
 ## <a name="code-examples"></a>Kódpéldák
 
@@ -114,12 +116,12 @@ const trainingClient = new FormTrainingClient(endpoint, new AzureKeyCredential(a
 const client = new FormRecognizerClient(endpoint, new AzureKeyCredential(apiKey));
 ```
 
-## <a name="assets-for-testing"></a>Tesztelési eszközök
+## <a name="get-assets-for-testing"></a>Eszközök beszerzése teszteléshez
 
 Az útmutatóban szereplő kódrészletek az URL-címek által elért távoli űrlapokat használják. Ha ehelyett a helyi űrlapos dokumentumokat szeretné feldolgozni, tekintse meg a kapcsolódó módszereket a [dokumentációban](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer) és a [mintákban](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples).
 
 Emellett a képzési és tesztelési adatok URL-címeihez is hozzá kell adnia a hivatkozásokat.
-* Az egyéni modell betanítási adataihoz tartozó SAS URL-cím lekéréséhez nyissa meg a Microsoft Azure Storage Explorer, kattintson a jobb gombbal a tárolóra, majd válassza a **közös hozzáférésű aláírás beolvasása**elemet. Győződjön meg arról, hogy az **olvasási** és a **listázási** engedély be van jelölve, majd kattintson a **Létrehozás**gombra. Ezután másolja az értéket az **URL** szakaszban. A formátumnak a következőket kell tartalmaznia: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` .
+* Az egyéni modell betanítási adataihoz tartozó SAS URL-cím lekéréséhez nyissa meg a Microsoft Azure Storage Explorer, kattintson a jobb gombbal a tárolóra, majd válassza a **közös hozzáférésű aláírás beolvasása**elemet. Győződjön meg arról, hogy az **olvasási** és a **listázási** engedély be van jelölve, majd kattintson a **Létrehozás**gombra. Ezután másolja az értéket az **URL** szakaszban. A következő formátumban kell lennie: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
 * Használja az alábbi mintákban található minta-és beérkezési képeket (a [githubon](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms) is elérhetők), vagy a fenti lépésekkel lekérheti az egyes dokumentumok sas URL-címét a blob Storage-ban. 
 
 > [!NOTE]
@@ -672,7 +674,7 @@ export DEBUG=azure*
 
 A naplók engedélyezésével kapcsolatos részletes információkért lásd a [ @azure/logger csomag dokumentációját](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/core/logger).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban az űrlap felismerő Python ügyféloldali függvénytárát használta a modellek tanításához és az űrlapok különböző módokon történő elemzéséhez. Következő lépésként Ismerkedjen meg a jobb betanítási adatkészlet létrehozásával és a pontosabb modellek előállításával.
 

@@ -10,16 +10,40 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 08/26/2020
 ms.author: aahi
-ms.openlocfilehash: f017960e304df04148c318b5098f384e6140de9a
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 436d64583184ca2cd59b4ddf33056922c746fb34
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88930910"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271171"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>A Text Analytics API újdonságai.
 
 A Text Analytics API frissítése folyamatosan történik. Ha naprakészen szeretne maradni a legutóbbi fejleményekkel, ez a cikk az új kiadásokkal és szolgáltatásokkal kapcsolatos információkat tartalmaz.
+
+## <a name="september-2020"></a>2020. szeptember
+
+### <a name="general-api-updates"></a>Általános API-frissítések
+
+* A Text Analytics v 3.1 nyilvános előzetes verziójának új URL-címének kiadása a következő elnevezett Entity Recognition v3-végpontok frissítéseinek támogatásához: 
+    * `/pii` a végpont mostantól tartalmazza a `redactedText` Válasz JSON-ban található új tulajdonságot, ahol a bemeneti szövegben található személyes adatokat feltüntető entitásokat az adott `*` entitások minden karaktere helyettesíti.
+    * `/linking` a végpont mostantól tartalmazza a `bingID` csatolt entitások válasz JSON-fájljának tulajdonságát.
+* A következő Text Analytics előzetes verziójú API-végpontok a 2020-es szeptember 4-ig lettek kivonva:
+    * v 2.1 – előzetes verzió
+    * 3.0-s előzetes verzió
+    * v 3.0 – előzetes verzió. 1
+    
+> [!div class="nextstepaction"]
+> [További információ: Text Analytics API v 3.1 – előzetes verzió. 2](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/Languages)
+
+### <a name="text-analytics-for-health-container-updates"></a>Text Analytics az állapot-tároló frissítéseihez
+
+A következő frissítések csak az Text Analytics az állapotfigyelő tárolóra vonatkozó szeptemberi kiadására vonatkoznak.
+* Az új Model-Version címkével rendelkező új tároló `1.1.013530001-amd64-preview` -rendszerkép `2020-09-03` megjelent a containerpreview adattárban. 
+* A modell verziója az entitások felismerésének, a rövidítések észlelésének és a késések fejlesztésének fejlesztését teszi lehetővé.
+
+> [!div class="nextstepaction"]
+> [További információ az Text Analyticsról az állapotról](how-tos/text-analytics-for-health.md)
 
 ## <a name="august-2020"></a>2020. augusztus
 
@@ -31,7 +55,7 @@ A Text Analytics API frissítése folyamatosan történik. Ha naprakészen szere
 * A rendszer mostantól HTTP 400-es hibát ad vissza az olyan V3 API-kérelmek esetében, amelyek túllépik a közzétett [adatkorlátot](concepts/data-limits.md). 
 * Az eltolást visszaadó végpontok támogatják a választható `stringIndexType` paramétert, amely a visszaadott `offset` és az értékeket úgy állítja be, `length` hogy az megfeleljen egy támogatott [karakterlánc-indexelési sémának](concepts/text-offsets.md).
 
-### <a name="text-analytics-for-health-container-august-updates"></a>Az állapot-tárolók augusztus Text Analytics frissítései
+### <a name="text-analytics-for-health-container-updates"></a>Text Analytics az állapot-tároló frissítéseihez
 
 A következő frissítések csak az Text Analytics az állapotfigyelő tárolóra vonatkozó augusztusi kiadására vonatkoznak.
 
@@ -189,7 +213,7 @@ Támogatja az angol ( `en` ), a japán (), a `ja` kínai egyszerűsített ( `zh-
 > [!div class="nextstepaction"]
 > [További információ a Hangulatelemzés v3-ról](how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Mi a Text Analytics API?](overview.md)  
 * [Példa felhasználói forgatókönyvek](text-analytics-user-scenarios.md)

@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 06/16/2020
-ms.openlocfilehash: 5b6d1ee41434d8aebac81d38ced9cadd93e51ba8
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 6d7f9ccd1c87b6105988a1f5d23700cb58693062
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181442"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296450"
 ---
 # <a name="issues-and-solutions-during-virtual-machine-certification"></a>Problémák és megoldások a virtuális gépek minősítése során 
 
@@ -21,7 +21,7 @@ Amikor közzéteszi a virtuális gép (VM) rendszerképét az Azure Marketplace-
 Ez a cikk a virtuálisgép-rendszerkép közzétételekor, valamint a kapcsolódó megoldásokkal kapcsolatos gyakori hibaüzeneteket ismerteti.
 
 > [!NOTE]
-> Ha kérdése vagy visszajelzése van a fejlesztéssel kapcsolatban, forduljon a [partner Center ügyfélszolgálatához](https://partner.microsoft.com/support/v2/?stage=1).
+> Ha kérdése vagy visszajelzése van a fejlesztéssel kapcsolatban, forduljon a [partner Center támogatási szolgálatához](https://partner.microsoft.com/support/v2/?stage=1).
 
 ## <a name="approved-base-image"></a>Jóváhagyott alaprendszerkép
 
@@ -34,6 +34,9 @@ A probléma megoldásához kérje le a rendszerképet az Azure Marketplace-ről,
 - [Linux-rendszerképek](../../virtual-machines/linux/endorsed-distros.md?toc=/azure/virtual-machines/linux/toc.json)
 - [Windows-rendszerképek](create-azure-vm-technical-asset.md#create-a-vm-image-using-an-approved-base)
 
+> [!Note]
+> Ha olyan linuxos alaprendszerképet használ, amely nem a piactéren alapul, az első partíciót 2048 KB-ra lehet ellensúlyozni. Ez lehetővé teszi, hogy a formázatlan terület felhasználható legyen új számlázási adatok hozzáadására, és lehetővé teszi az Azure számára a virtuális gép közzétételét a piactéren.  
+
 ## <a name="vm-extension-failure"></a>VM-bővítmény hibája
 
 Ellenőrizze, hogy a rendszerkép támogatja-e a virtuálisgép-bővítményeket.
@@ -43,7 +46,7 @@ A virtuálisgép-bővítmények engedélyezéséhez tegye a következőket:
 1. Válassza ki a linuxos virtuális gépet.
 1. Lépjen a **diagnosztikai beállítások menüpontra**.
 1. Az alapmátrixok engedélyezéséhez frissítse a **Storage-fiókot**.
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
    ![Vendégszintű monitorozás engedélyezése](./media/vm-certification-issues-solutions-1.png)
 
@@ -63,7 +66,7 @@ Győződjön meg arról, hogy a virtuális gép üzembe helyezési folyamatát s
 
 A kiépítési problémák a következő meghibásodási helyzetekben lehetnek:
 
-|Forgatókönyv|Hiba|Ok|Megoldás|
+|Használati eset|Hiba|Ok|Megoldás|
 |---|---|---|---|
 |1|Érvénytelen virtuális merevlemez (VHD)|Ha a VHD-láblécben megadott cookie-érték helytelen, a VHD-fájl érvénytelennek tekintendő.|Hozza létre újra a lemezképet, és küldje el a kérést.|
 |2|Érvénytelen blob-típus|A virtuális gép kiépítés meghiúsult, mert a használt blokk egy oldal típusa helyett blob típusú.|Hozza létre újra a lemezképet, és küldje el a kérést.|
@@ -94,7 +97,7 @@ Töltse le a [Microsoft minősítési eszközkészletet](azure-vm-image-certific
 
 A következő táblázat felsorolja az eszközkészlet által futtatott Linux-tesztelési eseteket. A teszt érvényesítése a leírásban van megadva.
 
-|Forgatókönyv|Teszteset|Leírás|
+|Használati eset|Teszteset|Leírás|
 |---|---|---|
 |1|Bash-előzmények|A rendszer a virtuális gép rendszerképének létrehozása előtt törli a bash-előzmények fájljait.|
 |2|Linux-ügynök verziója|Telepíteni kell az Azure Linux Agent 2.2.41 vagy újabb verzióját.|
@@ -111,7 +114,7 @@ A következő táblázat felsorolja az eszközkészlet által futtatott Linux-te
 
 A következő táblázat felsorolja a korábbi tesztelési esetek végrehajtása során talált gyakori hibákat:
  
-|Forgatókönyv|Teszteset|Hiba|Megoldás|
+|Használati eset|Teszteset|Hiba|Megoldás|
 |---|---|---|---|
 |1|Linux-ügynök verziója – tesztelési eset|A Linux-ügynök minimális verziója 2.2.41 vagy újabb. Ezt a követelményt a 2020. május 1. óta kötelező megadni.|Frissítse a Linux-ügynök verzióját, és 2,241-es vagy újabb verziójának kell lennie. További információt a [Linux-ügynök verziójának frissítését ismertető oldalon](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)talál.|
 |2|Bash-előzmények tesztelési esete|Hibaüzenet jelenik meg, ha az elküldött képen a bash-előzmények mérete meghaladja az 1 kilobájtot (KB). A méret 1 KB-ra van korlátozva, így biztosítható, hogy a rendszer ne rögzítse az esetlegesen bizalmas adatokat a bash-előzmények fájljában.|A probléma megoldásához csatlakoztassa a virtuális merevlemezt bármely más működő virtuális géphez, és végezze el a kívánt módosításokat (például törölje a *. bash* -előzmények fájljait), hogy csökkentse a méretet 1 KB-nál kisebb vagy egyenlő értékre.|
@@ -122,7 +125,7 @@ A következő táblázat felsorolja a korábbi tesztelési esetek végrehajtása
 
 A következő táblázat felsorolja az eszközkészlet által futtatott Windows-tesztelési eseteket, valamint a tesztek ellenőrzésének leírását:
 
-|Forgatókönyv |Tesztelési esetek|Leírás|
+|Használati eset |Tesztelési esetek|Leírás|
 |---|---|---|---|
 |1|Operációs rendszer architektúrája|Az Azure csak a 64 bites operációs rendszereket támogatja.|
 |2|Felhasználói fióktól való függőség|Az alkalmazás végrehajtása nem függhet a rendszergazdai fióktól.|
@@ -261,7 +264,7 @@ Ellenőrizze, hogy engedélyezve van-e a megfelelő hozzáférés ahhoz a fiókh
     
 Tekintse meg az alábbi táblázatot a virtuálisgép-rendszerkép megosztott hozzáférési aláírás (SAS) URL-címével történő letöltésekor felmerülő problémákról.
 
-|Forgatókönyv|Hiba|Ok|Megoldás|
+|Használati eset|Hiba|Ok|Megoldás|
 |---|---|---|---|
 |1|A blob nem található|Lehet, hogy a VHD-t törölték vagy áthelyezték a megadott helyről.|| 
 |2|BLOB használatban|A virtuális merevlemezt egy másik belső folyamat használja.|A VHD-nek a használatban lévő állapotban kell lennie, amikor letölti egy SAS URL-cím használatával.|
@@ -270,9 +273,12 @@ Tekintse meg az alábbi táblázatot a virtuálisgép-rendszerkép megosztott ho
 |6|HTTP feltételes fejléc|A SAS URL-címe érvénytelen.|Szerezze be a megfelelő SAS URL-címet.|
 |7|Érvénytelen VHD-név|Ellenőrizze, hogy vannak-e speciális karakterek, például a százalék jele (%) vagy idézőjelek (") léteznek a VHD-névben.|Nevezze át a VHD-fájlt a speciális karakterek eltávolításával.|
 
-## <a name="first-1-mb-partition"></a>Első 1 MB méretű partíció
+## <a name="first-mb-2048-kb-partition-only-for-linux"></a>Első MB (2048 KB) partíció (csak Linux esetében)
 
-A virtuális merevlemez elküldésekor ügyeljen arra, hogy a VHD első 1 MB-os partíciója üres legyen. Ellenkező esetben a kérés sikertelen lesz.
+A virtuális merevlemez elküldésekor győződjön meg arról, hogy a VHD első 2048 KB-a üres. Ellenkező esetben a kérés sikertelen lesz *.
+
+>[!NOTE]
+>* Bizonyos speciális rendszerképekhez, például az Azure Marketplace-ről az Azure-beli Windows alapképekre épülő, a számlázási címke megkeresése és a rendelkezésre álló belső értékekkel való megfelelés esetén figyelmen kívül hagyja a MB partíciót.
 
 ## <a name="default-credentials"></a>Alapértelmezett hitelesítő adatok
 
@@ -367,6 +373,6 @@ A kiadóknak el kell érniük a támogatási szolgálatot a [Marketplace kiadó 
    8.   Melléklet – bármilyen fontos dokumentum csatolása. A zárolt virtuális gépek esetében csatolja a teszt jelentést, és az egyéni sablonokhoz adja meg az egyéni ARM-sablont mellékletként. Nem sikerült csatolni a jelentést a zárolt virtuális gépekhez és az egyéni ARM-sablonhoz az egyéni sablonok esetén a rendszer megtagadást eredményez.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha kérdése vagy visszajelzése van a fejlesztéssel kapcsolatban, forduljon a [partner Center ügyfélszolgálatához](https://partner.microsoft.com/support/v2/?stage=1).

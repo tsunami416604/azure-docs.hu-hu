@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 11/05/2019
 ms.author: wolfma
-ms.openlocfilehash: 5832920ec491ce9d99219a7a423fcf0e38ba62cc
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 3a3799fc1e931993c00ba497765f4cd3e60d3493
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88226271"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91376444"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az első lépések előtt:
 
 > [!div class="checklist"]
-> * [Azure Speech-erőforrás létrehozása](../../../../get-started.md)
+> * [Azure Speech-erőforrás létrehozása](../../../../overview.md#try-the-speech-service-for-free)
 > * [A fejlesztési környezet beállítása](../../../../quickstarts/setup-platform.md?tabs=android&pivots=programming-language-java)
 > * Győződjön meg arról, hogy van hozzáférése egy mikrofonhoz a hangrögzítéshez
 
@@ -76,6 +76,6 @@ A beszédfelismerési szakasz elindításához kattintson az alkalmazásban a go
 
 ![Az Android-alkalmazás képernyőképe](~/articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-13-gui-on-device.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [Speech recognition basics](../../speech-to-text-next-steps.md)]

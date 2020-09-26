@@ -4,12 +4,12 @@ description: Kód nélküli alkalmazások teljesítményének figyelése bármil
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 561a6405a49d8f15affbf6d8d4de1a7f4886826a
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 93b0b89cff7e48ddc4eb9173c9423961f96ec4bb
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90056098"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371303"
 ---
 # <a name="configuration-options---java-standalone-agent-for-azure-monitor-application-insights"></a>Konfigurációs lehetőségek – Java önálló ügynök a Azure Monitor Application Insights
 
@@ -49,7 +49,18 @@ Erre szükség van. A Application Insights erőforrásban található a kapcsola
 
 :::image type="content" source="media/java-ipa/connection-string.png" alt-text="Application Insights a kapcsolatok karakterlánca":::
 
+
+```json
+{
+  "instrumentationSettings": {
+    "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000"
+  }
+}
+```
+
 A környezeti változó használatával is beállíthatja a kapcsolatok karakterláncát `APPLICATIONINSIGHTS_CONNECTION_STRING` .
+
+Ha nem állítja be a kapcsolatok karakterláncát, akkor letiltja a Java-ügynököt.
 
 ## <a name="cloud-role-name"></a>Felhőbeli szerepkör neve
 
@@ -93,7 +104,7 @@ A Felhőbeli szerepkör-példányt a környezeti változó használatával is be
 
 Application Insights Java 3,0 előzetes verzió automatikusan rögzíti az alkalmazások naplózását a Log4j, a Logback és a Java. util. Logging használatával.
 
-Alapértelmezés szerint a rendszer az összes, szinten vagy felül végrehajtott naplózást rögzíti `WARN` .
+Alapértelmezés szerint a rendszer az összes, szinten vagy felül végrehajtott naplózást rögzíti `INFO` .
 
 Ha módosítani kívánja ezt a küszöbértéket:
 
@@ -103,13 +114,15 @@ Ha módosítani kívánja ezt a küszöbértéket:
     "preview": {
       "instrumentation": {
         "logging": {
-          "threshold": "ERROR"
+          "threshold": "WARN"
         }
       }
     }
   }
 }
 ```
+
+A naplózási küszöbértéket a környezeti változó használatával is megadhatja `APPLICATIONINSIGHTS_LOGGING_THRESHOLD` .
 
 Ezek az érvényes `threshold` értékek, amelyeket megadhat a `ApplicationInsights.json` fájlban, és hogyan felelnek meg a naplózási szintnek a különböző naplózási keretrendszerek között:
 
@@ -136,9 +149,9 @@ Ha van olyan JMX mérőszáma, amelyet szeretne a rögzítéshez:
     "preview": {
       "jmxMetrics": [
         {
-          "objectName": "java.lang:type=ClassLoading",
-          "attribute": "LoadedClassCount",
-          "display": "Loaded Class Count"
+          "objectName": "java.lang:type=Runtime",
+          "attribute": "Uptime",
+          "display": "JVM uptime (millis)"
         },
         {
           "objectName": "java.lang:type=MemoryPool,name=Code Cache",
@@ -150,6 +163,10 @@ Ha van olyan JMX mérőszáma, amelyet szeretne a rögzítéshez:
   }
 }
 ```
+
+A JMX metrikákat a környezeti változó használatával is beállíthatja `APPLICATIONINSIGHTS_JMX_METRICS` .
+
+A környezeti változó tartalmának a fenti struktúrának megfelelő JSON-adatokat kell tartalmaznia, például: `[{"objectName": "java.lang:type=Runtime", "attribute": "Uptime", "display": "JVM uptime (millis)"}, {"objectName": "java.lang:type=MemoryPool,name=Code Cache", "attribute": "Usage.used", "display": "Code Cache Used"}]`
 
 ## <a name="micrometer-including-metrics-from-spring-boot-actuator"></a>Mikrométer (beleértve a Spring boot indítószerkezet mérőszámait)
 
@@ -214,6 +231,8 @@ Az alábbi példa bemutatja, hogyan állíthatja be a mintavételezést az **ös
   }
 }
 ```
+
+A mintavételezési százalékot a környezeti változó használatával is beállíthatja `APPLICATIONINSIGHTS_SAMPLING_PERCENTAGE` .
 
 ## <a name="http-proxy"></a>HTTP-proxy
 

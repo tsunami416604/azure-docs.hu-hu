@@ -3,15 +3,15 @@ title: Windows rendszerű virtuális asztali problémák diagnosztizálása – 
 description: A Windows rendszerű virtuális asztali diagnosztika szolgáltatás használata a problémák diagnosztizálásához.
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 08/11/2020
+ms.date: 09/21/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 50fe1eb6e5aed551b56bcd1526daa5d441185501
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 70676bd1a07acdfcbba071a906b390ed66d70074
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121408"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91279858"
 ---
 # <a name="identify-and-diagnose-windows-virtual-desktop-issues"></a>A Windows rendszerű virtuális asztali problémák azonosítása és diagnosztizálása
 
@@ -24,10 +24,10 @@ Azok a kapcsolatok, amelyek nem érik el a Windows virtuális asztalt, nem jelen
 
 ## <a name="common-error-scenarios"></a>Gyakori hibaforgatókönyvek
 
-A hibákra vonatkozó forgatókönyvek a szolgáltatás belső és külső Windowsos virtuális asztalára vannak kategorizálva.
+A WVDErrors tábla minden tevékenységtípus esetében nyomon követi a hibákat. A "ServiceError" nevű oszlop egy "true" vagy "false" jelölésű további jelzőt biztosít. Ez a jelző azt jelzi, hogy a hiba kapcsolódik-e a szolgáltatáshoz.
 
-* Belső probléma: olyan forgatókönyveket ad meg, amelyeket az ügyfél nem tud enyhíteni, és támogatási problémaként meg kell oldani. Ha visszajelzést ad a [Windows rendszerű virtuális asztali technikai Közösségen](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)keresztül, adja meg a korrelációs azonosítót és a megközelítőleges időkeretet a probléma előfordulásakor.
-* Külső probléma: az ügyfél által enyhíthető forgatókönyvekre vonatkozik. Ezek a Windows rendszerű virtuális asztali gépeken kívül vannak.
+* Ha az érték "true" (igaz), akkor előfordulhat, hogy a szolgáltatási csapat már megvizsgálta ezt a problémát. Ha ez hatással van a felhasználói élményre, és nagy számú alkalommal jelenik meg, javasoljuk, hogy küldjön be egy támogatási jegyet a Windows rendszerű virtuális asztalra.
+* Ha az érték "false" (hamis), akkor lehet, hogy helytelen a konfiguráció, amelyet saját maga javíthat. A hibaüzenetből megtudhatja, hol kezdjen el.
 
 A következő táblázat azokat a gyakori hibákat sorolja fel, amelyeket a rendszergazdák futtathatnak.
 
@@ -46,7 +46,7 @@ A következő táblázat azokat a gyakori hibákat sorolja fel, amelyeket a rend
 |Nem sikerült a felhasználó hozzárendelésének megszüntetése az alkalmazás csoportjából|Nem lehetett visszavonni egy alkalmazás csoportjának közzétételét a felhasználó számára. Ellenőrizze, hogy elérhető-e a felhasználó az Azure AD-ben. Ellenőrizze, hogy a felhasználó tagja-e egy olyan felhasználói csoportnak, amelyre az alkalmazáscsoport közzé lett téve. |
 |Hiba történt az elérhető helyszínek beolvasásakor |A gazdagép-készlet létrehozása varázslóban használt virtuális gép helyének keresése. Ha a rendszerkép nem érhető el ezen a helyen, adjon hozzá egy képet az adott helyen, vagy válasszon másik virtuálisgép-helyet. |
 
-### <a name="external-connection-error-codes"></a>Külső kapcsolatok hibakódai
+### <a name="connection-error-codes"></a>Hálózati hibakódok
 
 |Numerikus kód|Hibakód|Javasolt megoldás|
 |---|---|---|
@@ -69,7 +69,7 @@ Miután hozzárendelt egy felhasználót egy alkalmazás csoportjához, a Azure 
 
 **Javítás:** Mielőtt bejelentkeznek a Azure Portalba, a rendszergazdának először be kell jelentkeznie a SharePointba, és el kell fogadnia a használati feltételeket. Ezután be kell jelentkezniük a Azure Portalba, például a normális kerékvágásba.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Windows rendszerű virtuális asztali szerepkörökkel kapcsolatos további információkért lásd: [Windows rendszerű virtuális asztali környezet](environment-setup.md).
 

@@ -9,14 +9,14 @@ ms.author: mikben
 ms.date: 03/18/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: f39aa76e4bd2ce3d298e555f56b09d0218ef0862
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 2d5637be547b28c231ef757b5dd4355692dab88f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935339"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318823"
 ---
-# <a name="client-libraries-and-rest-apis"></a>Ügyféloldali kódtárak és REST API-k
+# <a name="client-libraries-and-rest-apis"></a>Ügyfélkódtárak és REST API-k
 
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
@@ -28,7 +28,7 @@ Az Azure kommunikációs szolgáltatások funkcióit koncepcionálisan hat terü
 | ---------------------- | --------------------- | ---|-------------------------- | --------------------------------------------------------------------------- |
 | Azure Resource Manager | REST | Megnyitás            | Azure. erőforráskezelő. Communication | Kommunikációs szolgáltatások erőforrásainak kiépítése és kezelése             |
 | Közös                 | REST | Megnyitás               | Azure. Communication. Common          | Alaptípusokat biztosít más ügyféloldali kódtárak számára |
-| Felügyelet         | REST |                | Azure. Communication. Administration  | A felhasználók, a hozzáférési tokenek és a telefonszámok kezelése, a szabványoknak megfelelő kábítás és a kiszolgálók kiosztása |
+| Felügyelet         | REST | Megnyitás               | Azure. Communication. Administration  | A felhasználók, a hozzáférési tokenek és a telefonszámok kezelése, a szabványoknak megfelelő kábítás és a kiszolgálók kiosztása |
 | Csevegés                   | További tulajdonosi jelzéssel | Megnyitás zárt forrású jelző csomaggal    | Azure. Communication. chat            | Valós idejű szöveg-alapú csevegés hozzáadása az alkalmazásokhoz  |
 | SMS                    | REST | Megnyitás              | Azure. Communication. SMS             | SMS-üzenetek küldése és fogadása |
 | Hívó                | Saját szállítás | Zárt |Azure. Communication. Calling         | A hang-, videó-, képernyő-megosztási és egyéb valós idejű adatkommunikációs képességek kihasználása          |

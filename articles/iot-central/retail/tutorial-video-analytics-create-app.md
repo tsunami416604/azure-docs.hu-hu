@@ -8,12 +8,12 @@ ms.topic: tutorial
 author: KishorIoT
 ms.author: nandab
 ms.date: 07/31/2020
-ms.openlocfilehash: b98406984f2c9f2adfca030369a6ea3d47a786f3
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: c7ddff70d24fe87380c4bf1439811042418ac76a
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762777"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91369569"
 ---
 # <a name="tutorial-create-a-video-analytics---object-and-motion-detection-application-in-azure-iot-central"></a>Oktatóanyag: video Analytics-objektum-és mozgásészlelési alkalmazás létrehozása az Azure-ban IoT Central
 
@@ -24,7 +24,7 @@ A minta alkalmazás két szimulált eszközt és egy IoT Edge átjárót tartalm
 * Hozza létre az IoT Edge átjárót egy Azure-beli virtuális gépen, és csatlakoztasson egy szimulált kamerát.
 * Hozza létre az IoT Edge-átjárót egy valódi eszközön, például egy Intel-NUC, és csatlakoztasson egy valódi kamerát.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > * Hozzon létre egy kiskereskedelmi áruházbeli alkalmazást az Azure IoT Central video Analytics alkalmazás sablon használatával
 > * Az Alkalmazásbeállítások testreszabása
@@ -119,7 +119,7 @@ Az oktatóanyag későbbi részében a IoT Edge-átjáró konfigurálásakor sz�
 
 Az **Adminisztráció** szakaszban válassza ki az **alkalmazást** , és jegyezze fel az **alkalmazás URL-címét** és az **alkalmazás azonosítóját** a *scratchpad.txt* fájlban:
 
-:::image type="content" source="./media/tutorial-video-analytics-create-app/administration.png" alt-text="Felügyelet":::
+:::image type="content" source="./media/tutorial-video-analytics-create-app/administration.png" alt-text="Képernyőfelvétel: az U R L-t és az alkalmazás I D-t tartalmazó video Analytics-oldal adminisztrációs paneljét jeleníti meg.":::
 
 Válassza ki az **API-jogkivonatokat** , és állítson elő egy **LVAEdgeToken** nevű új jogkivonatot az **operátori** szerepkörhöz:
 
@@ -245,12 +245,12 @@ Navigáljon a *LVA* mappára, és válassza ki a korábban szerkesztett *deploym
 
 Az **LVA Edge Gateway** -eszköz sablonjában, a **modulok/LVA Edge-átjáró modul**alatt válassza a **kapcsolatok**lehetőséget. Válassza a **+ kapcsolat hozzáadása** lehetőséget, és adja hozzá a következő két kapcsolatot:
 
-|Megjelenítendő név               |Név          |Cél |
+|Megjelenítendő név               |Name          |Cél |
 |-------------------------- |------------- |------ |
 |LVA Edge mozgásérzékelő   |Alapértelmezett használata   |LVA Edge mozgásérzékelő eszköz |
 |LVA Edge-objektum detektora   |Alapértelmezett használata   |LVA Edge Object detektor eszköz |
 
-Kattintson a **Mentés** gombra.
+Ez után válassza a **Mentés** lehetőséget.
 
 :::image type="content" source="media/tutorial-video-analytics-create-app/relationships.png" alt-text="Kapcsolatok hozzáadása":::
 
@@ -319,7 +319,7 @@ Szüksége lesz a hitelesítő adatokra, amelyek lehetővé teszik az eszköz sz
 
 1. Válassza a **Bezárás** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ezzel létrehozott egy IoT Central alkalmazást a **video Analytics-Object és a mozgásérzékelő** alkalmazás sablonnal, létrehozott egy eszköz sablont az átjáró eszközhöz, és hozzáadta az átjáró-eszközt az alkalmazáshoz.
 

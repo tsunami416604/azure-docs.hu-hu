@@ -15,12 +15,12 @@ ms.date: 01/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1111b56a08343f1e12c3b2d582e350907ab37b46
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: a6df1347eab57a6971fe2e39c0a55869c8f23939
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89276031"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317487"
 ---
 # <a name="troubleshoot-an-attribute-not-synchronizing-in-azure-ad-connect"></a>A Azure AD Connect nem szinkronizált attribútumok hibáinak megoldása
 
@@ -67,7 +67,7 @@ Az attribútumok szinkronizálásával kapcsolatos problémák megismerése elő
 
 * A **Active Directory-összekötőre** duplán kattintva megtekintheti az **összekötő terület** attribútumait. Kattintson a **Preview (előnézet** ) gombra, és a következő párbeszédablakban kattintson az **előnézet előállítása** gombra.
 
-  ![Összekötő terület attribútumai](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/csattributes.png)
+  ![Képernyőkép, amely az összekötői terület objektum tulajdonságai képernyőt jeleníti meg az előnézet gombbal kiemelve.](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/csattributes.png)
 
 * Most kattintson az **attribútum importálása folyamatra**, ez az attribútumok áramlását mutatja **Active Directory összekötő területéről** a **metaverse**-ra. A **szinkronizálási szabály** oszlopban látható, hogy melyik **szinkronizálási szabály** járul hozzá az attribútumhoz. Az **adatforrás** oszlopban az **összekötő terület**attribútumai láthatók. A **metaverse attribútum** oszlop a **metaverse**attribútumait jeleníti meg. Itt megkeresheti, hogy az attribútum ne legyen szinkronizálva. Ha itt nem találja az attribútumot, akkor ez nincs leképezve, és létre kell hoznia egy új egyéni **szinkronizálási szabályt** az attribútum leképezéséhez.
 
@@ -75,7 +75,7 @@ Az attribútumok szinkronizálásával kapcsolatos problémák megismerése elő
 
 * A bal oldali ablaktáblán kattintson az **attribútum exportálása folyamatra** , hogy megtekintse az attribútumot a **Metaverse** -ből **Active Directory összekötő területére** a **kimenő szinkronizálási szabályok**használatával.
 
-  ![Összekötő terület attribútumai](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/mvtocsattributeflow.png)
+  ![Képernyőfelvétel: az attribútum a metaverse-ből Active Directory az összekötő területére a kimenő szinkronizálási szabályok használatával.](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/mvtocsattributeflow.png)
 
 * Hasonlóképpen, megtekintheti az **Azure Active Directory-összekötő terület** objektumát, és előkészítheti az **előzetes** verziót, amellyel megtekintheti a **metaverse** -ből az **összekötő területéhez** tartozó attribútum-folyamatokat, és fordítva, így megvizsgálhatja, hogy egy attribútum miért nem szinkronizálható.
 

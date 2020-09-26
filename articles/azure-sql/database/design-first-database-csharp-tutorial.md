@@ -10,12 +10,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
 ms.date: 07/29/2019
-ms.openlocfilehash: 3cf73816b89d0a89ff8066fe45ceaece60c230b8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: fe4bcb10db33c6f68abeb779e668726fc1a59345
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91321730"
+ms.locfileid: "91360242"
 ---
 # <a name="tutorial-design-a-relational-database-in-azure-sql-database-cx23-and-adonet"></a>Oktatóanyag: a Azure SQL Database C&#x23; és a ADO.NET-ben található, viszonyítási adatbázis tervezése
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -82,7 +82,7 @@ Az alábbi lépéseket követve hozzon létre egy üres adatbázist.
 
 9. Az eszköztáron kattintson az **Értesítések** elemre az üzembehelyezési folyamat monitorozásához.
 
-   ![értesítés](./media/design-first-database-csharp-tutorial/notification.png)
+   ![A képernyőképen a Azure Portalban lévő értesítések láthatók a telepítés folyamatban.](./media/design-first-database-csharp-tutorial/notification.png)
 
 ## <a name="create-a-server-level-ip-firewall-rule"></a>Kiszolgálói szintű IP-tűzfalszabály létrehozása
 

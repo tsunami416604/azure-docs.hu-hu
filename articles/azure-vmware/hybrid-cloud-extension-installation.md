@@ -3,18 +3,18 @@ title: A VMware HCX telepítése
 description: A VMware HCX-megoldás beállítása az Azure VMware-megoldás saját felhőhöz
 ms.topic: how-to
 ms.date: 09/24/2020
-ms.openlocfilehash: a101712f2d80e0d8e70d37bd5b7b08931f62ba3d
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: cdeffa41db5aac597d8dfcf3a735cbeb7f0d8a8e
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91356553"
+ms.locfileid: "91370844"
 ---
 # <a name="install-hcx-for-azure-vmware-solution"></a>Az Azure VMware-megoldás HCX telepítése
 
 Ebből a cikkből megtudhatja, hogyan állíthatja be a VMWare HCX-megoldást az Azure VMWare-megoldás privát felhője számára. A HCX lehetővé teszi a VMware-alapú számítási feladatok felhőbe és más csatlakoztatott webhelyekre történő áttelepítését a különböző beépített HCX támogatott áttelepítési típusokon keresztül.
 
-A HCX Advanced, az alapértelmezett telepítés, amely legfeljebb három hely kapcsolatát támogatja (a helyszínen vagy a felhőben). Ha több mint három kapcsolatra van szükség, az ügyfeleknek lehetősége van a HCX Enterprise bővítmény támogatására, amely jelenleg előzetes verzióban érhető el. A HCX Enterprise további díjakat biztosít az ügyfelek számára az általánosan elérhető verzió (GA) után, de [további funkciókat](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/)is kínál.
+A HCX Advanced, az alapértelmezett telepítés, amely legfeljebb három hely kapcsolatát támogatja (a helyszínen vagy a felhőben). Ha több mint három hely-vagy HCX [vállalati szolgáltatásra](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/) van szükség, az ügyfeleknek lehetősége van a HCX Enterprise bővítmény engedélyezésére, amely jelenleg előzetes verzióban érhető el. Az HCX EE az AVS-vel, előzetes verziójú funkcióval vagy szolgáltatásként érhető el. Míg az AVS-hez készült HCX EE előzetes verzióban érhető el, ingyenes funkció vagy szolgáltatás, és az előzetes verziójú szolgáltatási feltételek és kikötések érvényesek. Ha a HCX EE szolgáltatás a GA, akkor 30 napos értesítést kap, hogy a számlázás átvált. Lehetősége van a szolgáltatás kikapcsolására/letiltására is.
 
 
 Először alaposan [áttekintheti](#before-you-begin)a [szoftver verziójának követelményeit](#software-version-requirements)és [előfeltételeit](#prerequisites) . 
@@ -63,17 +63,15 @@ Az infrastruktúra-összetevőknek a szükséges minimális verziót kell futtat
 
 * A helyszíni HCX IX-es és a NE készülékeknek képesnek kell lenniük a vCenter és az ESXi-infrastruktúra elérésére.
 
-* A WAN Interconnect-berendezés üzembe helyezéséhez a Azure Portal a SDDC való üzembe helyezéshez használt/22 CIDR-blokkon kívül a HCX egy/29 blokkot igényel. Ügyeljen arra, hogy ezt a követelményt a hálózat megtervezésében is figyelembe kell venni.
+* A WAN Interconnect-berendezés üzembe helyezéséhez a saját felhő létrehozásakor a megadott CIDR-tartományok már le vannak foglalva az ügyféltől.
 
 ## <a name="deploy-the-vmware-hcx-ova-on-premises"></a>A VMware HCX-petesejtek üzembe helyezése a helyszínen
 
 1. Jelentkezzen be az Azure VMware Solution HCX Managerbe a `https://x.x.x.9` 443-es porton a **cloudadmin** felhasználói hitelesítő adataival, majd lépjen a **támogatás**elemre.
 
-1. Válassza ki a VMware HCX PETESEJTJEI fájl letöltési hivatkozását. 
+1. Válassza ki a letöltési hivatkozást a VMware HCX-PETESEJT-fájlhoz a vCenter való üzembe helyezéshez.
 
-1. Jelentkezzen be az Azure VMware megoldás SDDC vCenter, és válassza a **HCX**lehetőséget.
-   
-1. Nyissa meg a helyszíni vCenter, és válassza ki a helyszíni vCenter üzembe helyezni kívánt OVF-sablont.  
+1. Nyissa meg a helyszíni vCenter, és válassza ki az újonnan letöltött OVF-sablont a helyszíni vCenter való üzembe helyezéshez.  
 
    :::image type="content" source="media/hybrid-cloud-extension-installation/select-template.png" alt-text="Ezután nyissa meg a helyszíni vCenter, és válasszon ki egy OVF-sablont a helyszíni vCenter való üzembe helyezéshez.":::
 

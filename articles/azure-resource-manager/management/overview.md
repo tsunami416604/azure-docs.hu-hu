@@ -4,12 +4,12 @@ description: Ismerteti, hogyan használja az Azure Resource Manager eszközt er�
 ms.topic: overview
 ms.date: 09/01/2020
 ms.custom: contperfq1
-ms.openlocfilehash: 2dc33093df0d9bc0bd75410bac8d200fe6555257
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: f78b6015846253d79020752522c10af96839a854
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89293948"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372272"
 ---
 # <a name="what-is-azure-resource-manager"></a>Mi az Azure Resource Manager?
 
@@ -49,7 +49,7 @@ A Resource Managerrel a következőket teheti:
 
 * Definiálja az erőforrások közötti függőségeket, hogy azok a megfelelő sorrendben legyenek telepítve.
 
-* Hozzáférés-vezérlés alkalmazása minden szolgáltatáshoz, mivel a szerepköralapú Access Control (RBAC) natív módon integrálva van a felügyeleti platformba.
+* Hozzáférés-vezérlés alkalmazása minden szolgáltatáshoz, mivel az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) natív módon integrálva van a felügyeleti platformba.
 
 * Címkék alkalmazása az erőforrásokra az előfizetésben lévő összes erőforrás logikus rendszerezéséhez.
 
@@ -83,7 +83,7 @@ Néhány fontos tényezőt érdemes figyelembe venni az erőforráscsoport megha
 
    Ha az erőforráscsoport régiója átmenetileg nem érhető el, az erőforráscsoport erőforrásai nem frissíthetők, mert a metaadatok nem érhetők el. A más régiókban lévő erőforrások továbbra is a várt módon fognak működni, de nem frissítheti őket. A megbízható alkalmazások létrehozásával kapcsolatos további információkért lásd: [megbízható Azure-alkalmazások tervezése](/azure/architecture/checklist/resiliency-per-service).
 
-* Az erőforráscsoport segítségével meghatározhatja a hozzáférés-vezérlési hatókört felügyeleti műveletekhez. Az erőforráscsoportok kezeléséhez [Azure-szabályzatokat](../../governance/policy/overview.md), [RBAC-szerepköröket](../../role-based-access-control/role-assignments-portal.md)vagy erőforrás- [zárolásokat](lock-resources.md)rendelhet hozzá.
+* Az erőforráscsoport segítségével meghatározhatja a hozzáférés-vezérlési hatókört felügyeleti műveletekhez. Az erőforráscsoportok kezeléséhez [Azure-szabályzatokat](../../governance/policy/overview.md), [Azure-szerepköröket](../../role-based-access-control/role-assignments-portal.md)vagy erőforrás- [zárolásokat](lock-resources.md)rendelhet hozzá.
 
 * Címkéket is [alkalmazhat](tag-resources.md) egy erőforráscsoporthoz. Az erőforráscsoport erőforrásai nem öröklik ezeket a címkéket.
 
@@ -111,7 +111,7 @@ A Azure Resource Manager szolgáltatás a rugalmasság és a folyamatos rendelke
 
 Ez a rugalmasság olyan szolgáltatásokra vonatkozik, amelyek a Resource Manageren keresztül kapják meg a kérelmeket. Például Key Vault a rugalmasság előnyeit.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ az erőforrások áthelyezéséről: [erőforrások áthelyezése új erőforráscsoporthoz vagy előfizetésbe](move-resource-group-and-subscription.md).
 

@@ -8,14 +8,17 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 88f8188779c5fb6b3cd07c67e9f35a6b8f9ad97d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d702a3cca6a24819d2d184dc6df09153c9dcc860
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84687072"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91281881"
 ---
 # <a name="run-the-opc-vault-certificate-management-service-securely"></a>Az OPC Vault tanúsítványkezelő szolgáltatás biztonságos futtatása
+
+> [!IMPORTANT]
+> A cikk frissítését követően tekintse meg az [Azure Industrial IoT](https://azure.github.io/Industrial-IoT/) a legfrissebb tartalomhoz című cikket.
 
 Ez a cikk azt ismerteti, hogyan futtatható az OPC-tár tanúsítványkezelő szolgáltatás az Azure-ban, és hogyan tekintheti át az egyéb biztonsági irányelveket.
 
@@ -237,7 +240,7 @@ A HITELESÍTÉSSZOLGÁLTATÓI kulcs generálási ünnepségét olyan dokumentál
   - A tároláshoz szükséges anyagok előkészítése.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte az OPC-tároló biztonságos kezelését, a következőket teheti:
 

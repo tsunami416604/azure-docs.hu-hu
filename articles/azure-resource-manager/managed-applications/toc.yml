@@ -13,8 +13,6 @@
       href: deploy-service-catalog-quickstart.md
 - name: Oktatóanyagok
   items:
-    - name: Piactéren elérhető alkalmazás közzététele
-      href: publish-marketplace-app.md
     - name: Felügyelt alkalmazás létrehozása egyéni szolgáltatóval
       href: tutorial-create-managed-app-with-custom-provider.md
 - name: Példák
@@ -41,6 +39,8 @@
           href: create-uidefinition-overview.md
         - name: A portálfelület tesztelése
           href: test-createuidefinition.md
+        - name: Azure-alkalmazásajánlat létrehozása
+          href: ../../marketplace/partner-center-portal/create-new-azure-apps-offer.md?toc=/azure/azure-resource-manager/managed-applications/toc.json
         - name: Igény szerinti hozzáférés igénylése
           href: request-just-in-time-access.md
         - name: Meglévő virtuális hálózat használata

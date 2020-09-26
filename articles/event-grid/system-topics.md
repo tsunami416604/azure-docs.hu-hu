@@ -2,13 +2,13 @@
 title: Rendszertémakörök a Azure Event Grid
 description: A Azure Event Grid rendszertémaköreinek ismertetése.
 ms.topic: conceptual
-ms.date: 08/27/2020
-ms.openlocfilehash: f5ca472ab5141207222987d476284813c2aacf56
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.date: 09/24/2020
+ms.openlocfilehash: b3a6e7528da2a11c2f91007425ab8beecaf920c3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019096"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297283"
 ---
 # <a name="system-topics-in-azure-event-grid"></a>Rendszertémakörök a Azure Event Grid
 A Event Grid rendszertémaköre egy vagy több olyan eseményt jelent, amelyet az Azure-szolgáltatások, például az Azure Storage és az Azure Event Hubs tesznek közzé. Előfordulhat például, hogy egy rendszertémakör az **összes blob-eseményt** vagy csak a **blob által létrehozott** és a blob által **törölt** , **adott Storage-fiók**számára közzétett eseményeket jelöli. Ebben a példában, amikor egy blobot töltenek fel a Storage-fiókba, az Azure Storage szolgáltatás **létrehoz egy blobot létrehozott** eseményt a Event grid rendszer témakörében, amely ezután továbbítja az eseményt a témakör azon [előfizetőknek](event-handlers.md) , akik megkapják és feldolgozzák az eseményt. 
@@ -22,6 +22,7 @@ Itt látható az Azure-szolgáltatások aktuális listája, amelyek támogatják
 - [Azure App Configuration](event-schema-app-configuration.md)
 - [Azure App Service](event-schema-app-service.md)
 - [Azure Blob Storage](event-schema-blob-storage.md)
+- [Azure Communication Services](event-schema-communication-services.md) 
 - [Azure Container Registry](event-schema-container-registry.md)
 - [Azure Event Hubs](event-schema-event-hubs.md)
 - [Azure IoT Hub](event-schema-iot-hub.md)

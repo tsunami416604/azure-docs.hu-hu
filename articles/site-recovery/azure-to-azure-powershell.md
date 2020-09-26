@@ -7,14 +7,14 @@ manager: rochakm
 ms.topic: article
 ms.date: 3/29/2019
 ms.author: sutalasi
-ms.openlocfilehash: 182b4f262361db001dcb6d47bf3e8f2aac6bc9b3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6a272294ca602e3f482156a7334084bf041f683e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091521"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91307551"
 ---
-# <a name="set-up-disaster-recovery-for-azure-virtual-machines-using-azure-powershell"></a>Az Azure-beli virtuális gépek vész-helyreállításának beállítása Azure PowerShell használatával
+# <a name="set-up-disaster-recovery-for-azure-virtual-machines-using-azure-powershell"></a>Azure-beli virtuális gépek vészhelyreállításának beállítása az Azure PowerShell használatával
 
 Ebből a cikkből megtudhatja, hogyan állíthatja be és tesztelheti az Azure-beli virtuális gépek vész-helyreállítását Azure PowerShell használatával.
 
@@ -40,7 +40,7 @@ Az alábbiak végrehajtásának módját ismerheti meg:
 
 Előkészületek:
 - Ismernie kell a [forgatókönyv-architektúrát és az összetevőket](azure-to-azure-architecture.md).
-- Minden összetevőre vonatkozóan tekintse át a [támogatási követelményeket](azure-to-azure-support-matrix.md).
+- Tekintse át az összes összetevő [támogatási követelményeit](azure-to-azure-support-matrix.md) .
 - A Azure PowerShell `Az` modul. Ha Azure PowerShellt kell telepítenie vagy frissítenie, a [Azure PowerShell telepítéséhez és konfigurálásához](/powershell/azure/install-az-ps)kövesse az alábbi útmutatót.
 
 ## <a name="sign-in-to-your-microsoft-azure-subscription"></a>Jelentkezzen be Microsoft Azure-előfizetésbe
@@ -623,9 +623,9 @@ Az ismételt védelem befejeződése után fordított irányban, az USA keleti r
 A replikációt letilthatja a `Remove-AzRecoveryServicesAsrReplicationProtectedItem` parancsmaggal.
 
 ```azurepowershell
-Remove-AzRecoveryServicesAsrReplicationProtectedItem -ReplicationProtectedItem $ReplicatedItem
+Remove-AzRecoveryServicesAsrReplicationProtectedItem -ReplicationProtectedItem $ReplicationProtectedItem
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg a [Azure site Recovery PowerShell-hivatkozást](/powershell/module/az.RecoveryServices) , amelyből megtudhatja, hogyan végezhet el további feladatokat, például helyreállítási terveket hozhat létre, és tesztelheti a helyreállítási tervek feladatátvételét a PowerShell használatával.

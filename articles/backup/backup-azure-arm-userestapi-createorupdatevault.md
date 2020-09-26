@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan kezelheti az Azure-beli virtu
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: e54750b4-4518-4262-8f23-ca2f0c7c0439
-ms.openlocfilehash: d0baac97b7a1bfb5ac55ee8cacc40dc8f13994a5
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: a37808548ec58977b7d6af16c75b94b7b5efe446
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89012602"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271596"
 ---
 # <a name="create-azure-recovery-services-vault-using-rest-api"></a>Azure Recovery Services-tároló létrehozása REST API használatával
 
@@ -23,7 +23,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 ## <a name="create-a-request"></a>Kérelem létrehozása
 
-A *put* kérelem létrehozásához a `{subscription-id}` paraméter megadása kötelező. Ha több előfizetéssel rendelkezik, tekintse meg [a több előfizetés használata](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)című témakört. Megadhatja a `{resourceGroupName}` és a `{vaultName}` erőforrásait, valamint a `api-version` paramétert. Ez a cikk a következőt használja: `api-version=2016-06-01` .
+A *put* kérelem létrehozásához a `{subscription-id}` paraméter megadása kötelező. Ha több előfizetéssel rendelkezik, tekintse meg [a több előfizetés használata](/cli/azure/manage-azure-subscriptions-azure-cli)című témakört. Megadhatja a `{resourceGroupName}` és a `{vaultName}` erőforrásait, valamint a `api-version` paramétert. Ez a cikk a következőt használja: `api-version=2016-06-01` .
 
 A következő fejlécek megadása kötelező:
 
