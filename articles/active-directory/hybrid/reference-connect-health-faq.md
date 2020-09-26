@@ -16,12 +16,12 @@ ms.topic: reference
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d15b12b758adbf99ddabc88eb06be9daba1ece3e
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 6140f5fd431a0b089b45892130e075bde02a2eb2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89276201"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91299765"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health gyakori kérdések
 Ez a cikk válaszokat tartalmaz a Azure Active Directory (Azure AD) kapcsolati állapotával kapcsolatos gyakori kérdésekre (GYIK). Ezek a gyakori kérdések a szolgáltatás használatával kapcsolatos kérdéseket foglalják magukban, beleértve a számlázási modellt, a képességeket, a korlátozásokat és a támogatást.
@@ -68,7 +68,7 @@ Példa:
 
 A Azure AD Connect Health a németországi felhőben nem támogatott, kivéve a [szinkronizálási hibák jelentési funkcióját](how-to-connect-health-sync.md#object-level-synchronization-error-report).
 
-| Szerepkörök | Szolgáltatások | Támogatott a német felhőben |
+| Szerepkörök | Funkciók | Támogatott a német felhőben |
 | ------ | --------------- | --- |
 | Kapcsolat állapota szinkronizáláshoz | Figyelés/betekintés/riasztások/elemzés | No |
 |  | Szinkronizálási hibajelentés | Yes |
@@ -128,6 +128,10 @@ Ha eltávolít egy ügynököt egy kiszolgálóról, a rendszer nem távolítja 
 Előfordulhat, hogy egy kiszolgáló rendszerképét alaphelyzetbe állítja, vagy egy új kiszolgálót hoz létre ugyanazzal a részletekkel (például a számítógépnévvel). Ha nem távolítja el a már regisztrált kiszolgálót a Azure AD Connect Health-portálról, és az ügynököt az új kiszolgálóra telepítette, akkor előfordulhat, hogy két azonos nevű bejegyzés jelenik meg.
 
 Ebben az esetben manuálisan törölje a régebbi kiszolgálóhoz tartozó bejegyzést. A kiszolgáló adatának elavultnak kell lennie.
+
+**K: telepíthetem a Azure AD Connect Health Agent ügynököt a Windows Server Core-on?**
+
+Nem.  A Server Core-on való telepítés nem támogatott.
 
 ## <a name="health-agent-registration-and-data-freshness"></a>Az állapotadatok regisztrálása és az adatfrissesség
 
@@ -198,6 +202,7 @@ Használja a <i>Get-AdfsProperties-AuditLevel PowerShell-</i> parancsmagot annak
 
 **K: Mikor kerül sor az ügynök tanúsítványának automatikus megújítására a lejárat előtt?**
 Az ügynök minősítése a lejárat napja előtt **6 hónappal** automatikusan megújul. Ha nem újítják meg, gondoskodjon arról, hogy az ügynök hálózati kapcsolatai stabilak legyenek. A probléma megoldásához indítsa újra az ügynök szolgáltatásait, vagy frissítsen a legújabb verzióra.
+
 
 
 ## <a name="related-links"></a>Kapcsolódó hivatkozások

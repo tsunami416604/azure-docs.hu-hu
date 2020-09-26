@@ -4,20 +4,20 @@ titleSuffix: Azure Kubernetes Service
 description: Ismerje meg, hogyan hozhat létre dinamikusan állandó kötetet Azure-lemezekkel az Azure Kubernetes szolgáltatásban (ak)
 services: container-service
 ms.topic: article
-ms.date: 07/10/2020
-ms.openlocfilehash: 06aad076836c0f6fdc59c4ed5d0116231080d15c
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.date: 09/21/2020
+ms.openlocfilehash: fd2bc698a107599dccf8f142b0d318400b40aaf3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683606"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91299323"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Állandó kötet létrehozása és használata Azure-lemezekkel az Azure Kubernetes szolgáltatásban (ak)
 
 Az állandó kötet a Kubernetes hüvelyekkel való használatra kiépített tárterületet jelöli. Egy állandó kötetet egy vagy több hüvely is használhat, és dinamikusan vagy statikusan kiépíthető. Ebből a cikkből megtudhatja, hogyan hozhat létre dinamikusan állandó köteteket az Azure-lemezekkel az Azure Kubernetes Service-(ak-) fürtben található egyetlen Pod használatával.
 
 > [!NOTE]
-> Az Azure-lemezeket csak a ReadWriteOnce *hozzáférési móddal* lehet *ReadWriteOnce*csatlakoztatni, így csak egyetlen Pod-ban érhető el az AK-ban. Ha egy állandó kötetet több hüvelyben kell megosztania, használja a [Azure Files][azure-files-pvc].
+> Az Azure-lemezeket csak a ReadWriteOnce *hozzáférési móddal* lehet *ReadWriteOnce*csatlakoztatni, ami elérhetővé teszi az AK-ban lévő egyik csomópont számára. Ha egy állandó kötetet több csomóponton kell megosztania, használja a [Azure Files][azure-files-pvc].
 
 A Kubernetes-kötetekkel kapcsolatos további információkért lásd: az [AK-beli alkalmazások tárolási beállításai][concepts-storage].
 
@@ -256,7 +256,7 @@ Volumes:
 [...]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A kapcsolódó ajánlott eljárásokért lásd: [ajánlott eljárások a tároláshoz és a biztonsági mentéshez az AK-ban][operator-best-practices-storage].
 
