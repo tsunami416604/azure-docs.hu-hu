@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 37245711008442acd0379a35b393ac88c3775482
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 96d8c32791bd968dd8740a2d4633496b42e9f3f4
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505536"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360973"
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>Speciális automatikus méretezési konfiguráció a Resource Manager-sablonokkal VM Scale Sets
 A Virtual Machine Scale Sets méretezési és kibővíthető teljesítmény-metrikai küszöbértékek, ismétlődő ütemterv vagy egy adott dátum alapján. A méretezési műveletekhez e-mail-és webhook-értesítéseket is konfigurálhat. Ez a forgatókönyv egy virtuálisgép-méretezési csoport Resource Manager-sablonnal történő konfigurálásának példáját mutatja be.
@@ -36,7 +36,7 @@ Ebben az útmutatóban a méretezési csoportokra vonatkozóan a [Azure erőforr
 
 3. Mostantól további profilokat és szabályokat adhat hozzá az ütemterv vagy a speciális követelmények alapján. Létrehozunk egy három profillal rendelkező autoskálázási beállítást. Az autoscale-profilok és-szabályok megértéséhez tekintse át az [ajánlott eljárások az autoscale](autoscale-best-practices.md)-ben című témakört.  
 
-    | Profilok & szabályok | Leírás |
+    | Profilok & szabályok | Description |
     |--- | --- |
     | **Profil** |**Teljesítmény/metrika-alapú** |
     | Szabály |Service Bus üzenetsor-üzenetek száma > x |
@@ -63,7 +63,7 @@ Ebben az útmutatóban a méretezési csoportokra vonatkozóan a [Azure erőforr
 
 6. Kattintson a Szerkesztés gombra. **Cserélje le** a "profilok" elemet az automatikus skálázási beállításban a következő konfigurációval:
 
-    ![profilok](media/autoscale-virtual-machine-scale-sets/profiles.png)
+    ![Képernyőfelvétel a profilok elemet mutatja.](media/autoscale-virtual-machine-scale-sets/profiles.png)
 
     ```
     {

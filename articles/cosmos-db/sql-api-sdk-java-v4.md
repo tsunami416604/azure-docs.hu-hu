@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: aabd52d47bfc59de7a1d79bbe5ffbdda90d099bf
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.openlocfilehash: 92f1b722e39083463fd7fa57fdf8508c2c4084cd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90060696"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326643"
 ---
 # <a name="azure-cosmos-db-java-sdk-v4-for-core-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK v4 for Core (SQL) API: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -66,131 +66,10 @@ Az Azure Cosmos DB Java SDK v4 for Core (SQL) egy aszinkron API-t és egy "Sync"
 | **Minimális támogatott futtatókörnyezet**|[JDK 8](/java/azure/jdk/?view=azure-java-stable) | 
 | **Azure Cosmos DB workshopok és Labs** |[Cosmos DB workshopok kezdőlapja](https://aka.ms/cosmosworkshop)
 
-## <a name="release-history"></a>Kiadási előzmények
-
-### <a name="450-beta1-unreleased"></a>4.5.0-Beta. 1 (nem kiadott)
-
-### <a name="440-2020-09-12"></a>4.4.0 (2020-09-12)
-#### <a name="key-bug-fixes"></a>Kulcs hibajavításai
-* A függőség engedélyezésekor rögzített RequestTimeoutException `netty-tcnative-boringssl` .
-* Rögzített memória-szivárgási probléma a `Delete` műveletekben a `GATEWAY` módban.
-* Rögzített egy szivárgást a `CosmosClient` példányban, ha a végpont URI azonosítója érvénytelen.
-* Továbbfejlesztett `CPU History` diagnosztika.
-
-### <a name="431-2020-08-13"></a>4.3.1 (2020-08-13)
-#### <a name="key-bug-fixes"></a>Kulcs hibajavításai
-* A lekérdezés kijavítva `GROUP BY` , ahol csak egyetlen lapot adott vissza.
-* Rögzített felhasználói ügynök karakterlánc-formátuma a központi SDK-irányelvek betartása érdekében.
-* Továbbfejlesztett diagnosztikai információk, amelyek tartalmazzák a lekérdezési terv diagnosztikát.
-
-### <a name="430-2020-07-29"></a>4.3.0 (2020-07-29)
-#### <a name="new-features"></a>Új funkciók
-* Frissítette a reaktor-Core függvénytár verzióját `3.3.8.RELEASE` . 
-* Frissített reaktor – a többplatformos függvénytár verziója `0.9.10.RELEASE` . 
-* Frissítette a többverziós kódtár verzióját a következőre: `4.1.51.Final` . 
-* Új túlterhelés API-k lettek hozzáadva `upsertItem` a szolgáltatáshoz `partitionKey` . 
-* Az Open telemetria nyomkövetési támogatás hozzáadva. 
-#### <a name="key-bug-fixes"></a>Kulcs hibajavításai
-* Kijavítva a hiba, ahol a SSLException a kérelmeknek az ÁTJÁRÓ módban való megszakítása esetén kerül kiváltásra.
-* Rögzített erőforrás-szabályozási újrapróbálkozási szabályzat a tárolt eljárások végrehajtásához.
-* Kijavítva a hiba, hogy az SDK a naplózási szintű HIBAKERESÉSi módban leáll. 
-* Rögzített időszakos tüskék a késésben közvetlen módban. 
-* A magas ügyfél-inicializálási idő kijavítva. 
-* Kijavítva a http-proxy hibája az ügyfél közvetlen és átjáró módban való testreszabásakor. 
-* A felhasználók rögzített lehetséges NPE null beállításokat ad át. 
-* TimeUnit hozzáadva a `requestLatency` diagnosztikai karakterlánchoz.
-* Az ismétlődő URI-karakterlánc el lett távolítva a diagnosztikai karakterláncból. 
-* Rögzített diagnosztikai karakterlánc a megfelelő JSON-formátumban a pont műveleteihez.
-* Kijavítva a probléma az `.single()` operátorral, ami miatt a reaktor lánca nem talált kivétel esetén felmerül. 
-
-### <a name="420-2020-07-14"></a>4.2.0 (2020-07-14)
-#### <a name="new-features"></a>Új funkciók
-* Parancsfájl-naplózás engedélyezve API-t adott hozzá `CosmosStoredProcedureRequestOptions` .
-* Az `DirectConnectionConfig` alapértelmezett érték `idleEndpointTimeout` az 1h és `connectTimeout` az alapértelmezett érték 5 mp.
-#### <a name="key-bug-fixes"></a>Kulcs hibajavításai
-* Kijavítva a hiba, amely `GatewayConnectionConfig` `idleConnectionTimeout` felülbírálta a problémát `DirectConnectionConfig` `idleConnectionTimeout` .
-* Rögzített `responseContinuationTokenLimitInKb` Get és set API-k a-ben `CosmosQueryRequestOptions` .
-* Kijavítva a probléma a lekérdezésben, és módosíthatja a hírcsatornát, amikor a gyűjteményt ugyanazzal a névvel hozza létre.
-* Kijavítva a probléma a leggyakoribb lekérdezési ClassCastException.
-* Kijavítva a hiba az Order by Query NullPointerException.
-* Kijavítva a visszavont kérelmek közvetlen módban való kezelésére szolgáló hiba, ami miatt a reaktort `onErrorDropped` meghívták. 
-
-### <a name="410-2020-06-25"></a>4.1.0 (2020-06-25)
-#### <a name="new-features"></a>Új funkciók
-* A lekérdezés támogatása hozzáadva `GROUP BY` .
-* Megnövelte a maxConnectionsPerEndpoint alapértelmezett értékét a 130 értékre a DirectConnectionConfig-ben.
-* Megnövelte a maxRequestsPerConnection alapértelmezett értékét a DirectConnectionConfig-ben.
-#### <a name="key-bug-fixes"></a>Kulcs hibajavításai
-* Az Order by lekérdezés által visszaadott hibák a folytatási token használatával ismétlődő eredményeket adnak vissza. 
-* Az érték lekérdezésével kapcsolatos rögzített hibák a beágyazott objektumhoz null értékeket adnak vissza.
-* Rögzített null értékű kivétel a RntbdClientChannelPool-ben a Request Managerben.
-
-### <a name="401-2020-06-10"></a>4.0.1 (2020-06-10)
-#### <a name="new-features"></a>Új funkciók
-* Átnevezve: `QueryRequestOptions` `CosmosQueryRequestOptions` .
-* Frissítve `ChangeFeedProcessorBuilder` a Builder minta.
-* Frissítve `CosmosPermissionProperties` az új tároló neve és a gyermek erőforrások API-k segítségével.
-* További minták lettek hozzáadva & dúsított dokumentumok a következőhöz: `CosmosClientBuilder` . 
-* Frissített `CosmosDatabase`  &  `CosmosContainer` API-k az throughputProperties az autoscale/Autopilot támogatásához. 
-* Átnevezve: `CosmosClientException` `CosmosException` . 
-* Az API-k váltotta fel `AccessCondition`  &  `AccessConditionType` `ifMatchETag()`  &  `ifNoneMatchETag()` . 
-* Az összes típus egyesítve lett `Cosmos*AsyncResponse`  &  `CosmosResponse` egyetlen `CosmosResponse` típussal.
-* Átnevezve: `CosmosResponseDiagnostics` `CosmosDiagnostics` .  
-* Becsomagolva `FeedResponseDiagnostics` `CosmosDiagnostics` . 
-* Eltávolított `jackson` függőség az Azure-cosmos & az Azure-Core-ra támaszkodva. 
-* Lecserélve `CosmosKeyCredential` `AzureKeyCredential` típussal. 
-* API-k hozzáadása a következőhöz: `ProxyOptions` `GatewayConnectionConfig` . 
-* Frissítette az SDK-t a `Instant` típus helyett `OffsetDateTime` . 
-* Új enumerálási típus hozzáadva `OperationKind` . 
-* Átnevezve: `FeedOptions` `QueryRequestOptions` . 
-* `getETag()`  &  `getTimestamp()` API-k hozzáadása a `Cosmos*Properties` típusokhoz. 
-* További `userAgent` információ a alkalmazásban `CosmosException`  &  `CosmosDiagnostics` . 
-* Új sor karakterének frissítése az `Diagnostics` új sor karakterbe. 
-* Eltávolított `readAll*` API-k, a lekérdezés használatával válassza ki az összes API-t.
-* A `ChangeFeedProcessor` becsült késési API hozzáadva.   
-* Az autoscale/Autopilot átviteli sebességének támogatása az SDK-ban.  
-* `ConnectionPolicy`Új kapcsolatok konfigurációjának lecserélése. Elérhető API-k `DirectConnectionConfig`  &  `GatewayConnectionConfig` `CosmosClientBuilder` a közvetlen & átjáró módú kapcsolatok konfigurációjában.
-* Áthelyezve `JsonSerializable`  &  `Resource` a implementációs csomagba. 
-* `contentResponseOnWriteEnabled`Olyan API-t adott hozzá a CosmosClientBuilder-hez, amely letiltja a teljes válasz tartalmakat az írási műveletekben.
-* Feltehetően elérhető API-k `getETag()` a válasz típusoknál.
-* Áthelyezve `CosmosAuthorizationTokenResolver` a megvalósításba. 
-* Az API átnevezve a következőre: `preferredLocations`  &  `multipleWriteLocations` `preferredRegions`  &  `multipleWriteRegions` . 
-* Frissítve `reactor-core` a 3.3.5. Release, `reactor-netty` a 0.9.7. Release & `netty` a 4.1.49. Final verziókig. 
-* Támogatás hozzáadva az `analyticalStoreTimeToLive` SDK-hoz.     
-* `CosmosClientException` kiterjeszti `AzureException` . 
-* Ehelyett az API-k használatával eltávolította az API-kat `maxItemCount`  &  `requestContinuationToken` `FeedOptions` `byPage()` `CosmosPagedFlux`  &  `CosmosPagedIterable` .
-* `CosmosPermissionProperties`Az API-k nyilvános felületén lett bevezetve `Permission` .
-* Eltávolított `SqlParameterList` típus & lecserélve `List`
-* Rögzített több memóriavesztés a közvetlen TCP-ügyfélben. 
-* A lekérdezések támogatása megnövelve `DISTINCT` . 
-* A külső függőségek el lettek távolítva `fasterxml.uuid, guava, commons-io, commons-collection4, commons-text` .  
-* Áthelyezve `CosmosPagedFlux`  &  `CosmosPagedIterable` a `utils` csomagba. 
-* Frissítve a 4.1.45. Final & Project-reaktort a 3.3.3 verzióra.
-* Frissített nyilvános Rest-szerződések `Final` osztályokba.
-* Speciális diagnosztika támogatása a pont műveleteihez.
-* Csomag frissítve `com.azure.cosmos`
-* Csomag hozzáadva `models` a modell/Rest szerződések számára
-* Csomag hozzáadva `utils` a `CosmosPagedFlux`  &  `CosmosPagedIterable` típusokhoz. 
-* Frissített nyilvános API-k az SDK-ban való használatra `Duration` .
-* Az összes Rest-szerződés hozzáadva a `models` csomaghoz.
-* `RetryOptions` átnevezve: `ThrottlingRetryOptions` .
-* `CosmosPagedFlux`  &  `CosmosPagedIterable` A lekérdezési API-khoz hozzáadott tördelési típusok. 
-* A TransportClient megosztásának támogatása a CosmosClients több példányán keresztül egy új API-val a `CosmosClientBuilder#connectionSharingAcrossClientsEnabled(true)`
-* Lekérdezések optimalizálása a kettős szerializálás/deszerializálás eltávolításával. 
-* A válasz fejlécének optimalizálása a szükségtelen másolás visszavonásával. 
-* Optimalizált `ByteBuffer` szerializálás/deszerializálás közbenső karakterlánc-példányok eltávolításával.
-
-#### <a name="key-bug-fixes"></a>Kulcs hibajavításai
-* Rögzített ConnectionPolicy `toString()` Null mutató kivétel.
-* Kijavítottuk a lekérdezés eredményeinek elemzését a lekérdezések alapján. 
-* Rögzített szoftvercsatorna-szivárgási problémák a közvetlen TCP-ügyféllel.
-* `orderByQuery`A folytatási jogkivonat hibája javítva.
-* `ChangeFeedProcessor` a partíciók felosztására szolgáló hibajavítás &, ha a partíció nem található.
-* `ChangeFeedProcessor` hibajavítás a címbérleti frissítések különböző szálak közötti szinkronizálásakor.
-* Rögzített versenyhelyzet okozza `ArrayIndexOutOfBound` a kivételt a StoreReader
+[!INCLUDE[Release notes](~/azure-sdk-for-java-cosmos-db/sdk/cosmos/azure-cosmos/CHANGELOG.md)]
 
 ## <a name="faq"></a>GYIK
-[!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
+[!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)] 
 
 ## <a name="next-steps"></a>Következő lépések
 További információ a Cosmos DBről: [Microsoft Azure Cosmos db](https://azure.microsoft.com/services/cosmos-db/) szolgáltatás lapja.

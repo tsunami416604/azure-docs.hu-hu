@@ -8,17 +8,17 @@ editor: ''
 tags: azure-resource-management
 ms.assetid: 95a89072-0edf-49b5-88ed-584891c0e066
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
-ms.openlocfilehash: 6a03a91eeb9296e60aa147f97634a15e8d344209
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a4965c587cb2f42c8411d48af2417dd3fe3d5edb
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87293042"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360786"
 ---
 # <a name="backup-and-restore-for-sql-server-on-azure-vms"></a>SQL Server biztonsági mentése és visszaállítása Azure-beli virtuális gépeken
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -31,7 +31,7 @@ A cikk első része áttekintést nyújt a rendelkezésre álló biztonsági men
 
 Az alábbi táblázat az Azure-beli virtuális gépek SQL Serverának különböző biztonsági mentési és visszaállítási lehetőségeiről nyújt információkat:
 
-| Stratégia | SQL-verziók | Leírás |
+| Stratégia | SQL-verziók | Description |
 |---|---|---|
 | [Automatikus biztonsági mentés](#automated) | 2014<br/> 2016<br/> 2017 | Az automatikus biztonsági mentés lehetővé teszi a SQL Server VM összes adatbázisának rendszeres biztonsági mentését. A biztonsági mentések tárolása az Azure Storage-ban akár 30 napig is eltartható. A SQL Server 2016-es verziójától kezdve az automatizált Backup v2 további lehetőségeket kínál, például a manuális ütemezés konfigurálását, valamint a teljes és naplózott biztonsági másolatok gyakoriságát. |
 | [Azure Backup SQL-alapú virtuális gépekhez](#azbackup) | 2008<br/> 2012<br/> 2014<br/> 2016<br/> 2017 | A Azure Backup nagyvállalati szintű biztonsági mentési képességet biztosít a SQL Server Azure-beli virtuális gépeken. Ezzel a szolgáltatással központilag kezelheti a biztonsági mentéseket több kiszolgáló és több ezer adatbázis között. Az adatbázisok visszaállíthatók egy adott időpontban a portálon. Testreszabható adatmegőrzési szabályzatot kínál, amely évekig képes biztonsági mentéseket fenntartani. |
@@ -39,7 +39,7 @@ Az alábbi táblázat az Azure-beli virtuális gépek SQL Serverának különbö
 
 Az alábbi szakaszok részletesebben ismertetik az egyes lehetőségeket. A cikk utolsó szakasza egy szolgáltatás-mátrix formájában összefoglalást tartalmaz.
 
-## <a name="automated-backup"></a><a id="automated"></a>Automatikus biztonsági mentés
+## <a name="automated-backup"></a><a id="automated"></a> Automatikus biztonsági mentés
 
 Az automatikus biztonsági mentés automatikus biztonsági mentési szolgáltatást biztosít az Azure-beli Windows rendszerű virtuális gépeken futó SQL Server Standard és Enterprise kiadásokhoz. Ezt a szolgáltatást a [SQL Server IaaS-ügynök bővítménye](sql-server-iaas-agent-extension-automate-management.md)nyújtja, amely a Azure Portal SQL Server Windows rendszerű virtuálisgép-lemezképeken automatikusan települ.
 
@@ -58,7 +58,7 @@ Az SQL virtuális gépek automatikus biztonsági mentésének konfigurálásáva
 - **SQL Server 2016/2017**: [automatizált Backup v2 az Azure](automated-backup.md) -hoz Virtual machines
 - **SQL Server 2014**: [SQL Server 2014 automatikus biztonsági mentése Virtual Machines](automated-backup-sql-2014.md)
 
-## <a name="azure-backup-for-sql-vms"></a><a id="azbackup"></a>Azure Backup SQL virtuális gépekhez
+## <a name="azure-backup-for-sql-vms"></a><a id="azbackup"></a> Azure Backup SQL virtuális gépekhez
 
 A [Azure Backup](/azure/backup/) nagyvállalati szintű biztonsági mentési képességet biztosít a SQL Server Azure-beli virtuális gépeken. Az összes biztonsági mentést egy Recovery Services tárolóban tárolják és kezelik. A megoldás számos előnnyel jár, különösen a vállalatok számára:
 
@@ -79,7 +79,7 @@ Az alábbi videóban gyorsan áttekintheti, hogyan működik együtt a bemutató
 
 Az SQL virtuális gépekre vonatkozó Azure Backup megoldás általánosan elérhető. További információ: [SQL Server adatbázis biztonsági mentése az Azure-](../../../backup/backup-azure-sql-database.md)ba.
 
-## <a name="manual-backup"></a><a id="manual"></a>Manuális biztonsági mentés
+## <a name="manual-backup"></a><a id="manual"></a> Manuális biztonsági mentés
 
 Ha manuálisan szeretné kezelni a biztonsági mentési és visszaállítási műveleteket az SQL-alapú virtuális gépeken, a használt SQL Server verziójától függően több lehetőség is rendelkezésre áll. A biztonsági mentés és a visszaállítás áttekintéséhez tekintse meg az alábbi cikkek egyikét a SQL Server verziója alapján:
 
@@ -129,23 +129,23 @@ Az alábbi táblázat összefoglalja az Azure-ban SQL Server virtuális gépek b
 
 | Beállítás | Automatikus biztonsági mentés | SQL-Azure Backup | Manuális biztonsági mentés |
 |---|---|---|---|
-| További Azure-szolgáltatásra van szükség |   | ![Igen](./media/backup-restore/yes.png) |   |
-| Biztonsági mentési szabályzat konfigurálása Azure Portal | ![Igen](./media/backup-restore/yes.png) | ![Igen](./media/backup-restore/yes.png) |   |
-| Adatbázisok visszaállítása Azure Portal |   | ![Igen](./media/backup-restore/yes.png) |   |
-| Több kiszolgáló kezelése egyetlen irányítópulton |   | ![Igen](./media/backup-restore/yes.png) |   |
-| Adott időpontnak megfelelő helyreállítás | ![Igen](./media/backup-restore/yes.png) | ![Igen](./media/backup-restore/yes.png) | ![Igen](./media/backup-restore/yes.png) |
-| 15 perces helyreállítási pont célkitűzése (RPO) | ![Igen](./media/backup-restore/yes.png) | ![Igen](./media/backup-restore/yes.png) | ![Igen](./media/backup-restore/yes.png) |
-| Rövid távú biztonsági mentési adatmegőrzési szabályzat (nap) | ![Igen](./media/backup-restore/yes.png) | ![Igen](./media/backup-restore/yes.png) |   |
-| Biztonsági másolatok hosszú távú megőrzési szabályzata (hónapok, évek) |   | ![Igen](./media/backup-restore/yes.png) |   |
-| Beépített támogatás a SQL Server always on |   | ![Igen](./media/backup-restore/yes.png) |   |
-| Biztonsági mentés az Azure Storage-fiók (ok) ba | ![Igen](./media/backup-restore/yes.png)automatikus | ![Igen](./media/backup-restore/yes.png)automatikus | ![Igen](./media/backup-restore/yes.png)(ügyfél által felügyelt) |
-| A tárolási és a biztonságimásolat-fájlok kezelése | | ![Igen](./media/backup-restore/yes.png) |  |
-| Biztonsági másolat készítése a virtuális gépen található csatlakoztatott lemezekre |   |   | ![Igen](./media/backup-restore/yes.png) |
-| Központi testreszabható biztonsági mentési jelentések |   | ![Igen](./media/backup-restore/yes.png) |   |
-| Összevont e-mail-riasztások a hibákhoz |   | ![Igen](./media/backup-restore/yes.png) |   |
-| A figyelés testreszabása Azure Monitor naplók alapján |   | ![Igen](./media/backup-restore/yes.png) |   |
-| Biztonsági mentési feladatok figyelése SSMS vagy Transact-SQL-parancsfájlok segítségével | ![Igen](./media/backup-restore/yes.png) | ![Igen](./media/backup-restore/yes.png) | ![Igen](./media/backup-restore/yes.png) |
-| Adatbázisok visszaállítása SSMS vagy Transact-SQL-parancsfájlokkal | ![Igen](./media/backup-restore/yes.png) |   | ![Igen](./media/backup-restore/yes.png) |
+| További Azure-szolgáltatásra van szükség |   | ![Zöld pipa](./media/backup-restore/yes.png) |   |
+| Biztonsági mentési szabályzat konfigurálása Azure Portal | ![Zöld pipa](./media/backup-restore/yes.png) | ![Zöld pipa](./media/backup-restore/yes.png) |   |
+| Adatbázisok visszaállítása Azure Portal |   | ![Zöld pipa](./media/backup-restore/yes.png) |   |
+| Több kiszolgáló kezelése egyetlen irányítópulton |   | ![Zöld pipa](./media/backup-restore/yes.png) |   |
+| Adott időpontnak megfelelő helyreállítás | ![Zöld pipa](./media/backup-restore/yes.png) | ![Zöld pipa](./media/backup-restore/yes.png) | ![Zöld pipa](./media/backup-restore/yes.png) |
+| 15 perces helyreállítási pont célkitűzése (RPO) | ![Zöld pipa](./media/backup-restore/yes.png) | ![Zöld pipa](./media/backup-restore/yes.png) | ![Zöld pipa](./media/backup-restore/yes.png) |
+| Rövid távú biztonsági mentési adatmegőrzési szabályzat (nap) | ![Zöld pipa](./media/backup-restore/yes.png) | ![Zöld pipa](./media/backup-restore/yes.png) |   |
+| Biztonsági másolatok hosszú távú megőrzési szabályzata (hónapok, évek) |   | ![Zöld pipa](./media/backup-restore/yes.png) |   |
+| Beépített támogatás a SQL Server always on |   | ![Zöld pipa](./media/backup-restore/yes.png) |   |
+| Biztonsági mentés az Azure Storage-fiók (ok) ba | ![Zöld pipa](./media/backup-restore/yes.png)automatikus | ![Zöld pipa](./media/backup-restore/yes.png)automatikus | ![Zöld pipa](./media/backup-restore/yes.png)(ügyfél által felügyelt) |
+| A tárolási és a biztonságimásolat-fájlok kezelése | | ![Zöld pipa](./media/backup-restore/yes.png) |  |
+| Biztonsági másolat készítése a virtuális gépen található csatlakoztatott lemezekre |   |   | ![Zöld pipa](./media/backup-restore/yes.png) |
+| Központi testreszabható biztonsági mentési jelentések |   | ![Zöld pipa](./media/backup-restore/yes.png) |   |
+| Összevont e-mail-riasztások a hibákhoz |   | ![Zöld pipa](./media/backup-restore/yes.png) |   |
+| A figyelés testreszabása Azure Monitor naplók alapján |   | ![Zöld pipa](./media/backup-restore/yes.png) |   |
+| Biztonsági mentési feladatok figyelése SSMS vagy Transact-SQL-parancsfájlok segítségével | ![Zöld pipa](./media/backup-restore/yes.png) | ![Zöld pipa](./media/backup-restore/yes.png) | ![Zöld pipa](./media/backup-restore/yes.png) |
+| Adatbázisok visszaállítása SSMS vagy Transact-SQL-parancsfájlokkal | ![Zöld pipa](./media/backup-restore/yes.png) |   | ![Zöld pipa](./media/backup-restore/yes.png) |
 
 ## <a name="next-steps"></a>Következő lépések
 

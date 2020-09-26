@@ -4,17 +4,17 @@ description: A titkosítási hatókörök lehetővé teszik a titkosítás kezel
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 09/17/2020
+ms.date: 09/22/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 041b0bf57f57fd8ddd74c8330888d75e31aacc83
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 6fb3c9b6dbbab036ddb00edd7e1d5980bb425ebe
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90995137"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326116"
 ---
 # <a name="encryption-scopes-for-blob-storage-preview"></a>BLOB Storage titkosítási hatókörök (előzetes verzió)
 
@@ -22,7 +22,7 @@ A titkosítási hatókörök lehetővé teszik a titkosítás kezelését a tár
 
 Alapértelmezés szerint a Storage-fiók egy olyan kulccsal van titkosítva, amely a teljes Storage-fiókra terjed ki. A titkosítási hatókörrel megadhatja, hogy egy vagy több tárolót csak azokra a kulcsokra lehessen titkosítani, amelyek hatóköre csak ezekre a tárolóra terjed ki.
 
-Dönthet úgy, hogy a Microsoft által felügyelt kulcsokat vagy az ügyfél által felügyelt kulcsokat használja Azure Key Vault vagy Key Vault felügyelt hardveres biztonsági modell (HSM) (előzetes verzió) használatával, hogy megvédje és vezérelje az adatait titkosító kulcshoz való hozzáférést. Ugyanazon a Storage-fiókon belül a különböző titkosítási hatókörök a Microsoft által felügyelt vagy az ügyfél által felügyelt kulcsokat egyaránt használhatják.
+Dönthet úgy, hogy a Microsoft által felügyelt kulcsokat vagy az ügyfél által felügyelt kulcsokat használja Azure Key Vaultban, hogy megvédje és vezérelje az adatait titkosító kulcshoz való hozzáférést. Ugyanazon a Storage-fiókon belül a különböző titkosítási hatókörök a Microsoft által felügyelt vagy az ügyfél által felügyelt kulcsokat egyaránt használhatják.
 
 Miután létrehozott egy titkosítási hatókört, megadhatja a titkosítási hatókört egy tároló vagy blob létrehozásához szükséges kérelemben. A titkosítási hatókör létrehozásával kapcsolatos további információkért lásd: [titkosítási hatókörök létrehozása és kezelése (előzetes verzió)](encryption-scope-manage.md).
 
@@ -50,7 +50,7 @@ Ha letilt egy titkosítási hatókört, a titkosítási hatókörön végrehajto
 
 Ha a titkosítási hatókör le van tiltva, már nem számítunk fel díjat. Tiltsa le azokat a titkosítási hatóköröket, amelyek nem szükségesek a szükségtelen költségek elkerülése érdekében.
 
-Ha a titkosítási hatókört az ügyfél által felügyelt kulcsok védik, akkor a titkosítási hatókör letiltásához a Key Vault vagy a Managed HSM társított kulcsát is törölheti. Ne feledje, hogy az ügyfél által felügyelt kulcsokat a rendszer a Key vaultban vagy a felügyelt HSM-ben a védelem törlésével és kiürítésével védi, és a törölt kulcsra a tulajdonságok által meghatározott viselkedés vonatkozik. További információkért tekintse meg a következő témakörök egyikét az Azure Key Vault dokumentációjában:
+Ha az ügyfél által felügyelt kulcsokkal védi a titkosítási hatókört, akkor a kulcstárolóban található társított kulcsot is törölheti a titkosítási hatókör letiltásához. Ne feledje, hogy az ügyfél által felügyelt kulcsokat a rendszer a Key vaultban lévő, helyreállítható törlési és kiürítési védelemmel védi, és a törölt kulcsra a tulajdonságok által meghatározott viselkedés vonatkozik. További információkért tekintse meg a következő témakörök egyikét az Azure Key Vault dokumentációjában:
 
 - [A Soft delete használata a PowerShell-lel](../../key-vault/general/soft-delete-powershell.md)
 - [A Soft delete használata a parancssori felülettel](../../key-vault/general/soft-delete-cli.md)

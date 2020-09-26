@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 52cdf25b4d77fee0a7a2182e3f1ce60865caf066
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: f49ae5139dc92ec1448e5dea05be8c8c216ef91e
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90088561"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361347"
 ---
 # <a name="how-to-use-perfinsights-in-azure"></a>A PerfInsights használata az Azure-ban
 
@@ -118,12 +118,12 @@ A Windows rendszerű virtuális gépekre, lemezekre vagy tárolási készletek k
 | SQL Server-konfiguráció          | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
 | Teljesítmény-diagnosztika nyomkövetése *  | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
 | Teljesítményszámláló nyomkövetése * *      |                            |                                    | Igen                      |                      | Igen                  |
-| SMB-számláló nyomkövetése * *              |                            |                                    |                          | Igen                  |                      |
+| SMB-számláló nyomkövetése * *              |                            |                                    |                          | Yes                  |                      |
 | SQL Server számláló nyomkövetése * *       |                            |                                    | Igen                      |                      | Igen                  |
-| XPerf nyomkövetés                       |                            |                                    |                          |                      | Igen                  |
-| StorPort-nyomkövetés                    |                            |                                    |                          |                      | Igen                  |
+| XPerf nyomkövetés                       |                            |                                    |                          |                      | Yes                  |
+| StorPort-nyomkövetés                    |                            |                                    |                          |                      | Yes                  |
 | Hálózati nyomkövetés                     |                            |                                    |                          | Igen                  | Igen                  |
-| Diskspd teljesítményteszt nyomkövetése * * *       |                            | Igen                                |                          |                      |                      |
+| Diskspd teljesítményteszt nyomkövetése * * *       |                            | Yes                                |                          |                      |                      |
 |       |                            |                         |                                                   |                      |                      |
 
 ### <a name="performance-diagnostics-trace-"></a>Teljesítmény-diagnosztika nyomkövetése (*)
@@ -259,8 +259,8 @@ A **PerformanceDiagnostics \_ éééé-hh-nn \_hh-mm-ss-fff.zip** FÁJLjában ta
 
 Válassza az **eredmények** lapot.
 
-![Képernyőkép a PerfInsights jelentésről ](media/how-to-use-perfInsights/pi-finding-tab.png)
- ![ a PerfInsights-jelentésről](media/how-to-use-perfInsights/pi-findings.png)
+![Képernyőkép az PerfInsights-jelentés áttekintés lapjáról. ](media/how-to-use-perfInsights/pi-finding-tab.png)
+ ![ Képernyőkép a PerfInsights-jelentés Storage lapján.](media/how-to-use-perfInsights/pi-findings.png)
 
 > [!NOTE] 
 > A magas kategóriába sorolt megállapítások olyan ismert problémák, amelyek teljesítménnyel kapcsolatos problémákat okozhatnak. A közepesként kategorizált eredmények olyan nem optimális konfigurációkat jelentenek, amelyek nem szükségszerűen okoznak teljesítménnyel kapcsolatos problémákat. Az alacsonyként kategorizált eredmények csak tájékoztató utasítások.

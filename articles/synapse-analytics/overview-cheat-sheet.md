@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 04/15/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0e4b96092107e3411f33411f1044fd7cc839f132
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 98fc8b23369f961ca023832430d47c8868e42158
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90051992"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91260665"
 ---
 # <a name="azure-synapse-analytics-cheat-sheet"></a>Azure szinapszis Analytics – Cheat Sheet
 
@@ -26,17 +26,17 @@ Az Azure szinapszis Analytics Cheat Sheet végigvezeti Önt a szolgáltatás ala
 
 A **szinapszis munkaterület** biztonságos együttműködési határ az Azure-beli felhőalapú vállalati elemzésekhez. A munkaterület egy adott régióban van üzembe helyezve, és rendelkezik egy társított ADLS Gen2 fiókkal és fájlrendszerrel (az ideiglenes adattárolók tárolásához). A munkaterület egy erőforráscsoport alatt található.
 
-A munkaterület lehetővé teszi, hogy az SQL és az Apache Spark használatával végezzen elemzéseket. Az SQL és a Spark Analytics számára elérhető erőforrások **készletekbe**vannak rendezve. Három fajta készlet létezik.
-* **SQL-készletek**. Ezek **dedikált** SQL Analytics-kapacitást biztosítanak.
-* **Igény szerinti SQL-készlet**. Minden munkaterülethez pontosan egy SQL igény szerinti készlet tartozik. Ez a **kiszolgáló** nélküli SQL Analytics-kapacitást nyújt lekérdezési alapon.
-* **Spark-készletek**. Ezek a Spark Analytics-kapacitást biztosítják.
+A munkaterület lehetővé teszi, hogy az SQL és az Apache Spark használatával végezzen elemzéseket. Az SQL és a Spark Analytics számára elérhető erőforrások SQL-és Spark- **készletekbe**vannak rendezve. 
+
+## <a name="synapse-sql"></a>Synapse SQL
+A **SZINAPSZIS SQL** lehetővé teszi a T-SQL-alapú elemzések elvégzését a szinapszis munkaterületen. A szinapszis SQL két felhasználási modellt tartalmaz: dedikált és kiszolgáló nélküli.  A dedikált modell esetében használjon dedikált **SQL-készleteket**. A munkaterület bármely nubmer rendelkezhet. A kiszolgáló nélküli modell használatához használja az "SQL on-demand" nevű kiszolgáló nélküli SQL-készletet. Minden munkaterülethez tartozik egy ilyen készlet.
+
+## <a name="apache-spark-for-synapse"></a>A szinapszis Apache Spark
+A Spark Analytics használatához hozzon létre és használjon **Spark-készleteket** a szinapszis-munkaterületen.
+
 ## <a name="terminology"></a>Terminológia
 | Időszak                         | Definíció      |
 |:---                                 |:---                 |
-| **Szinapszis-munkaterület** | Biztonságos együttműködési határ az Azure-beli felhőalapú vállalati elemzésekhez. A munkaterület egy adott régióban van üzembe helyezve, és rendelkezik egy társított ADLS Gen2 fiókkal és fájlrendszerrel (az ideiglenes adattárolók tárolásához). A munkaterület egy erőforráscsoport alatt található. |
-| **Synapse SQL**   | Az elemzéseket készletekkel vagy igény szerinti funkciókkal futtathatja.  |
-| **SQL-készlet**   | a megfelelő adatbázisokkal rendelkező 0 – N SQL kiépített erőforrások egy munkaterületen helyezhetők üzembe. Minden SQL-készlethez tartozik egy társított adatbázis. Egy SQL-készlet méretezhető, szüneteltethető és folytatható manuálisan vagy automatikusan. Az SQL-készletek 100 DWU akár 30 000 DWU is méretezhetők.       |
-| **Igény szerinti SQL**   | Elosztott adatfeldolgozási rendszer, amely nagy léptékű adathoz készült, és lehetővé teszi a T-SQL-lekérdezések futtatását a adat-Lake-ben. Kiszolgáló nélküli, így nem kell felügyelni az infrastruktúrát.       |
 |**A szinapszis Apache Spark** | Spark Run – a Spark-készletben használt idő. A jelenleg támogatott verzió a Spark 2,4 a Python 3.6.1, a Scala 2.11.12, a .NET-támogatás a Apache Spark 0,5 és a Delta Lake 0,3.  | 
 | **Apache Spark készlet**  | a 0 – N Spark kiosztott erőforrásai és a hozzájuk tartozó adatbázisok is üzembe helyezhetők egy munkaterületen. A Spark-készlet lehet automatikusan szüneteltethető, folytatható és méretezhető.  |
 | **Spark-alkalmazás**  |   Egy illesztőprogram-folyamatból és egy végrehajtó folyamatokból áll. A Spark-alkalmazások egy Spark-készleten futnak.            |

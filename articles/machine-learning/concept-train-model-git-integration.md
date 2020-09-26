@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.date: 03/05/2020
-ms.openlocfilehash: bd77af133b88e1ba93054dbb7e0f896d8d418f89
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 71ac7793fe5226215c5d4eab98f84dba356b114c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90893557"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275965"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Git-integráció a Azure Machine Learning
 
@@ -35,13 +35,95 @@ Azt javasoljuk, hogy a tárházat a felhasználók könyvtárába klónozással,
 
 A (GitHub, Azure Repos, BitBucket stb.) használatával bármilyen git-tárház klónozását végezheti el.
 
-A git parancssori felület használatáról itt [talál](https://guides.github.com/introduction/git-handbook/)további tájékoztatást.
+A klónozással kapcsolatos további információkért tekintse meg a [git parancssori felület használatának](https://guides.github.com/introduction/git-handbook/)útmutatója című témakört.
+
+## <a name="authenticate-your-git-account-with-ssh"></a>A git-fiók hitelesítése SSH-val
+### <a name="generate-a-new-ssh-key"></a>Új SSH-kulcs létrehozása
+1) [Nyissa meg a terminál ablakot](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#terminal) a Azure Machine learning notebook lapon.
+
+2) Illessze be az alábbi szöveget az e-mail-címébe való Behelyettesítéssel.
+
+```bash
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+```
+
+Ez egy új SSH-kulcsot hoz létre, amely a megadott e-mail-címkét használja.
+
+```
+> Generating public/private rsa key pair.
+```
+
+3) Amikor a rendszer arra kéri, hogy "adjon meg egy fájlt, amelybe menteni szeretné a kulcsot" nyomja le az ENTER billentyűt. Ez a fájl alapértelmezett helyét fogadja el.
+
+4) Győződjön meg arról, hogy az alapértelmezett hely a "/Home/azureuser/.ssh", majd nyomja le az ENTER billentyűt. Egyéb esetben a "/Home/azureuser/.ssh" helyet kell megadni.
+
+> [!TIP]
+> Győződjön meg róla, hogy az SSH-kulcs a "/Home/azureuser/.ssh" mappába van mentve. Ezt a fájlt a számítási példányon menti a rendszer, csak a számítási példány tulajdonosa férhet hozzá.
+
+```
+> Enter a file in which to save the key (/home/azureuser/.ssh/id_rsa): [Press enter]
+```
+
+5) A parancssorba írja be a biztonságos hozzáférési kódot. Azt javasoljuk, hogy adjon hozzá egy hozzáférési kódot az SSH-kulcshoz a további biztonság érdekében
+
+```
+> Enter passphrase (empty for no passphrase): [Type a passphrase]
+> Enter same passphrase again: [Type passphrase again]
+```
+
+### <a name="add-the-public-key-to-git-account"></a>A nyilvános kulcs hozzáadása a git-fiókhoz
+1) Másolja ki a nyilvános kulcs fájljának tartalmát a terminál ablakban. Ha átnevezte a kulcsot, cserélje le a id_rsa. pub fájlt a nyilvános kulcs fájljának nevére.
+
+```bash
+cat ~/.ssh/id_rsa.pub
+```
+> [!TIP]
+> **Másolás és beillesztés a terminálon**
+> * Windows: `Ctrl-Insert` Másolás és használat `Ctrl-Shift-v` vagy `Shift-Insert` Beillesztés.
+> * Mac OS: `Cmd-c` a másoláshoz és `Cmd-v` a beillesztéshez.
+> * A FireFox/IE nem támogatja megfelelően a vágólap-engedélyeket.
+
+2) Válassza ki és másolja a vágólapra a kulcs kimenetét.
+
++ [GitHub](https://docs.github.com/github/authenticating-to-github/adding-a-new-ssh-key-to-your-github-account)
+
++ [GitLab](https://docs.gitlab.com/ee/ssh/#adding-an-ssh-key-to-your-gitlab-account)
+
++ [Azure-DevOps](https://docs.microsoft.com/azure/devops/repos/git/use-ssh-keys-to-authenticate?view=azure-devops#step-2--add-the-public-key-to-azure-devops-servicestfs)  Kezdje a **2. lépéssel**.
+
++ [BitBucket](https://support.atlassian.com/bitbucket-cloud/docs/set-up-an-ssh-key/#SetupanSSHkey-ssh2). Kezdje a **4. lépéssel**.
+
+### <a name="clone-the-git-repository-with-ssh"></a>A git-tárház klónozása SSH-val
+
+1) Másolja az SSH git Clone URL-címét a git-tárházból.
+
+2) Illessze be az URL-címet az `git clone` alábbi parancsba az SSH git-tárház URL-címének használatához. Ez a következőképpen fog kinézni:
+
+```bash
+git clone git@example.com:GitUser/azureml-example.git
+Cloning into 'azureml-example'...
+```
+
+A következőhöz hasonló választ fog látni:
+
+```bash
+The authenticity of host 'example.com (192.30.255.112)' can't be established.
+RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'github.com,192.30.255.112' (RSA) to the list of known hosts.
+```
+
+Előfordulhat, hogy az SSH megjeleníti a kiszolgáló SSH-ujjlenyomatát, és megkéri, hogy ellenőrizze. Győződjön meg arról, hogy a megjelenített ujjlenyomat megegyezik az SSH nyilvános kulcsok oldalának egyik ujjlenyomatával.
+
+Az SSH ezt az ujjlenyomatot jeleníti meg, amikor egy ismeretlen gazdagéphez csatlakozik, és így védelmet nyújt a támadók [számára.](https://technet.microsoft.com/library/cc959354.aspx) Ha elfogadja a gazdagép ujjlenyomatát, az SSH nem kérdezi újra, ha az ujjlenyomat megváltozása megtörténik.
+
+3) Ha a rendszer megkérdezi, hogy szeretné-e folytatni a csatlakozást, írja be a következőt: `yes` . A git a tárház klónozásával és az SSH-val a későbbi git-parancsokkal való kapcsolódáshoz állítja be a forrás távoli kapcsolatot.
 
 ## <a name="track-code-that-comes-from-git-repositories"></a>A git-adattárakból származó kód nyomon követése
 
 Amikor beküld egy képzést a Python SDK-ból vagy Machine Learning CLI-ből, a modell betanításához szükséges fájlok fel lesznek töltve a munkaterületre. Ha a `git` parancs elérhető a fejlesztői környezetben, a feltöltési folyamat azt a segítségével ellenőrizze, hogy a fájlok egy git-tárházban tárolódnak-e. Ha igen, akkor a git-tárházból származó információk is fel vannak töltve a betanítási Futtatás részeként. Ezeket az adatokat a következő tulajdonságok tárolják a betanítási futtatáshoz:
 
-| Tulajdonság | Az érték beolvasásához használt git-parancs | Leírás |
+| Tulajdonság | Az érték beolvasásához használt git-parancs | Description |
 | ----- | ----- | ----- |
 | `azureml.git.repository_uri` | `git ls-remote --get-url` | Az a URI, amelyből a tárház klónozott volt. |
 | `mlflow.source.git.repoURL` | `git ls-remote --get-url` | Az a URI, amelyből a tárház klónozott volt. |
@@ -110,7 +192,7 @@ A `az ml run` CLI-parancs használatával lekérheti a tulajdonságokat egy futt
 az ml run list -e train-on-amlcompute --last 1 -w myworkspace -g myresourcegroup --query '[].properties'
 ```
 
-További információ: az [ml Run](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest) Reference dokumentáció.
+További információ: az [ml Run](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest&preserve-view=true) Reference dokumentáció.
 
 ## <a name="next-steps"></a>Következő lépések
 

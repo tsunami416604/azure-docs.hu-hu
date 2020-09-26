@@ -7,12 +7,12 @@ ms.service: internet-analyzer
 ms.topic: overview
 ms.date: 10/16/2019
 ms.author: mebeatty
-ms.openlocfilehash: 3d9d1240e31d40a3d9c75d56314acc1721d90b99
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2512092c69390ce604c26ab6c5dd000afafc7c05
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73501945"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360888"
 ---
 # <a name="what-is-internet-analyzer-preview"></a>Mi az Internet Analyzer? (Előzetes verzió)
 
@@ -38,7 +38,7 @@ Az előzetes verzió ideje alatt a következő előre konfigurált végpontok é
 * **Azure-régiók**
     * Dél-Brazília
     * Közép-India
-    * USA középső régiója
+    * Az USA középső régiója
     * Kelet-Ázsia
     * USA keleti régiója
     * Nyugat-Japán
@@ -49,7 +49,7 @@ Az előzetes verzió ideje alatt a következő előre konfigurált végpontok é
     * Az Egyesült Királyság nyugati régiója  
     * Nyugat-Európa
     * USA nyugati régiója 
-    * USA nyugati régiója, 2.
+    * USA 2. nyugati régiója
 * **Több Azure-régió kombinációja** 
     * USA keleti régiója, Dél-Brazília 
     * USA keleti régiója, Kelet-Ázsia 
@@ -90,7 +90,7 @@ Az Internet Analyzer használatához állítson be egy Internet Analyzer-erőfor
 
 Amikor egy felhasználó meglátogatja a webalkalmazást, a JavaScript-ügyfél két végpontot választ ki az összes konfigurált teszt alapján. Az ügyfél minden végpont esetében _hideg_ és _meleg_ mérést végez. A _hideg_ mérés további késleltetést okoz a felhasználó és a végpont közötti, például a DNS-feloldás, a TCP-kapcsolati kézfogás és az SSL/TLS egyeztetése közötti tiszta hálózati késés mellett. A _meleg_ mérés közvetlenül a _hideg_ mérés befejeződése után következik be, és kihasználja a modern böngészők állandó TCP-kapcsolatok felügyeletének előnyeit a teljes körű késés érdekében. Ha a felhasználó böngészője támogatja, a W3C-erőforrás időzítési API-ját a pontos mérési időzítéshez használja a rendszer. Jelenleg csak a meleg késési mérések használatosak az elemzéshez.
 
-![architektúra](./media/ia-overview/architecture.png)
+![A diagram egy olyan végfelhasználót mutat be, amely egy, a-ügyféllel és az interneten lévő két végponttal csatlakozik egy alkalmazás-kiszolgálóhoz, több lehetőség közül. A felhasználó a méréseket az Internet Analyzerbe tölti fel.](./media/ia-overview/architecture.png)
 
 
 ## <a name="scorecards"></a>Sarokszámokat 
@@ -104,7 +104,7 @@ A teszt elindítását követően a telemetria adatai megjelennek az Internet An
 A scorecardokkal kapcsolatos további információkért tekintse meg a [Scorecardok értelmezését](internet-analyzer-scorecard.md) ismertető oldalt. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg, hogyan [hozhatja létre az első Internet Analyzer-erőforrását](internet-analyzer-create-test-portal.md).
 * Olvassa el az [Internet Analyzer – gyakori kérdések](internet-analyzer-faq.md)című részt. 

@@ -4,17 +4,17 @@ description: Ez a rövid útmutató azt ismerteti, hogyan használható a webes 
 services: synapse-analytics
 author: euangMS
 ms.author: euang
-ms.reviewer: jrasnick, carlrab
+ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: quickstart
 ms.date: 04/15/2020
-ms.openlocfilehash: 4ca718db8d2d2d57c73e8e492e2edbee221cb3ec
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: aca58328ada4f01072cf3779735bcd5cb518ef0a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049808"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91260767"
 ---
 # <a name="quickstart-create-an-apache-spark-pool-in-azure-synapse-analytics-using-web-tools"></a>Rövid útmutató: Apache Spark-készlet létrehozása az Azure szinapszis Analyticsben webes eszközök használatával
 
@@ -49,7 +49,7 @@ A notebook egy interaktív környezet, amely különböző programozási nyelvek
 4. A **Tulajdonságok** ablakban adja meg a jegyzetfüzet nevét.
 5. Az eszköztáron kattintson a **Közzététel**elemre.
 6. Ha a munkaterületen csak egy Apache Spark készlet található, akkor alapértelmezés szerint ki van választva. A legördülő listából válassza ki a megfelelő Apache Spark készletet, ha nincs kiválasztva.
-7. Kattintson a **kód hozzáadása**gombra. Az alapértelmezett nyelv: `Pyspark` . A Pyspark és a Spark SQL kombinációját fogja használni, ezért az alapértelmezett választás a megfelelő.
+7. Kattintson a **kód hozzáadása**gombra. Az alapértelmezett nyelv: `Pyspark` . A Pyspark és a Spark SQL kombinációját fogja használni, ezért az alapértelmezett választás a megfelelő. Más támogatott nyelvek a Scala és a .NET for Spark.
 8. Ezután hozzon létre egy egyszerű Spark DataFrame objektumot a kezeléshez. Ebben az esetben a kód alapján hozza létre. Három sor és három oszlop található:
 
    ```python
@@ -119,7 +119,7 @@ A Structured Query Language (SQL) a leggyakoribb és legszélesebb körben haszn
 6. Az X tengely oszlop mezőjében válassza az "állapot" lehetőséget.
 7. Az Y tengely oszlop mezőjében válassza a "fizetés" lehetőséget.
 8. Az **Összesítés** mezőben válassza az "AVG" lehetőséget.
-9. Válassza az **Alkalmaz** lehetőséget.
+9. Kattintson az **Alkalmaz** gombra.
 
    ![Diagram kimenete az Azure szinapszis Sparkban](./media/quickstart-apache-spark-notebook/spark-get-started-query-chart-output.png "Diagram kimenete az Azure szinapszis Sparkban")
 

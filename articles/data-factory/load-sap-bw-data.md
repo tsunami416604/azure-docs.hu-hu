@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/22/2019
-ms.openlocfilehash: 5403abab0f93edf14237dcc73f29ffb00a6581f0
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: bad9a706c5289966334af26eacbfa41c418b7ab5
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86081281"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360803"
 ---
 # <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>Adatok másolása az SAP Business Warehouse-ból Azure Data Factory használatával
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -69,7 +69,7 @@ Az Azure Portalon lépjen az adat-előállítóra. Válassza a **létrehozás & 
 
    3. Válassza a **Kapcsolódás tesztelése** lehetőséget a beállítások ellenőrzéséhez, majd válassza a **Befejezés**lehetőséget.
 
-   4. Létrejön egy új kapcsolatok. Válassza a **Tovább** lehetőséget.
+   4. Létrejön egy új kapcsolatok. Kattintson a **Tovább** gombra.
 
 5. A **hub-célhelyek kiválasztása** lapon tallózzon a SAP BWban elérhető nyitott hub-célhelyek között. Válassza ki a OHD az adatok másolásához, majd kattintson a **tovább**gombra.
 
@@ -77,7 +77,7 @@ Az Azure Portalon lépjen az adat-előállítóra. Válassza a **létrehozás & 
 
 6. Ha szüksége van rá, válasszon szűrőt. Ha a OHD csak egyetlen adatátviteli folyamatból (DTP) származó, egyetlen kérelem-AZONOSÍTÓval rendelkező adatokból áll, vagy biztos abban, hogy a DTP elkészült, és az adatok másolását szeretné végrehajtani, törölje a jelet a **legutóbbi kérelem kizárása** jelölőnégyzetből.
 
-   További információ ezekről a beállításokról a jelen cikk [SAP BW Open hub-cél konfigurációk](#sap-bw-open-hub-destination-configurations) című szakaszában olvasható. Válassza a **validate (ellenőrzés** ) lehetőséget, hogy duplán ellenőrizze, milyen adatforrások lesznek visszaadva. Ezután válassza a **tovább**lehetőséget.
+   További információ ezekről a beállításokról a jelen cikk [SAP BW Open hub-cél konfigurációk](#sap-bw-open-hub-destination-configurations) című szakaszában olvasható. Válassza a **validate (ellenőrzés** ) lehetőséget, hogy duplán ellenőrizze, milyen adatforrások lesznek visszaadva. Ezután kattintson a **Tovább** gombra.
 
    ![SAP BW nyitott hub-szűrő konfigurálása](media/load-sap-bw-data/configure-sap-bw-open-hub-filter.png)
 
@@ -88,9 +88,9 @@ Az Azure Portalon lépjen az adat-előállítóra. Válassza a **létrehozás & 
    ![ADLS Gen2 társított szolgáltatás oldalának létrehozása](media/load-sap-bw-data/create-adls-gen2-linked-service.png)
 
    1. Válassza ki a Data Lake Storage Gen2-kompatibilis fiókot a **név** legördülő listából.
-   2. Kattintson a **Befejezés** gombra a kapcsolat létrehozásához. Ezután válassza a **tovább**lehetőséget.
+   2. Kattintson a **Befejezés** gombra a kapcsolat létrehozásához. Ezután kattintson a **Tovább** gombra.
 
-9. A **kimeneti fájl vagy mappa kiválasztása** lapon adja meg a **copyfromopenhub** a kimeneti mappa neveként. Ezután válassza a **tovább**lehetőséget.
+9. A **kimeneti fájl vagy mappa kiválasztása** lapon adja meg a **copyfromopenhub** a kimeneti mappa neveként. Ezután kattintson a **Tovább** gombra.
 
    ![Kimeneti mappa kiválasztása lap](media/load-sap-bw-data/choose-output-folder.png)
 
@@ -98,11 +98,11 @@ Az Azure Portalon lépjen az adat-előállítóra. Válassza a **létrehozás & 
 
     ![Fogadó formátum oldalának meghatározása](media/load-sap-bw-data/specify-sink-format.png)
 
-11. A **Beállítások** lapon bontsa ki a **teljesítmény beállításai**elemet. Adjon meg egy értéket a **másolási párhuzamosság mértékének** (például 5) a párhuzamos SAP BW betöltéséhez. Ezután válassza a **tovább**lehetőséget.
+11. A **Beállítások** lapon bontsa ki a **teljesítmény beállításai**elemet. Adjon meg egy értéket a **másolási párhuzamosság mértékének** (például 5) a párhuzamos SAP BW betöltéséhez. Ezután kattintson a **Tovább** gombra.
 
     ![Másolási beállítások konfigurálása](media/load-sap-bw-data/configure-copy-settings.png)
 
-12. Az **Összefoglalás** lapon tekintse át a beállításokat. Ezután válassza a **tovább**lehetőséget.
+12. Az **Összefoglalás** lapon tekintse át a beállításokat. Ezután kattintson a **Tovább** gombra.
 
 13. A folyamat figyeléséhez az **üzembe helyezés** lapon válassza a **figyelő** lehetőséget.
 
@@ -217,7 +217,7 @@ Ha a korábbi másolási és növekményes másolási, vagy csak növekményes m
 
    Növelheti a párhuzamosan futó SAP-munkafolyamatok számát a DTP esetében:
 
-   ![a-SAP-BW-OHD-delta3 létrehozása](media/load-sap-bw-data/create-sap-bw-ohd-delta3.png)
+   ![A képernyőfelvétel a párhuzamos feldolgozás beállításait jeleníti meg, ahol kiválaszthatja a D T P párhuzamos folyamatainak számát.](media/load-sap-bw-data/create-sap-bw-ohd-delta3.png)
 
 2. Ütemezze a DTP-t a feldolgozási láncokban.
 
@@ -271,7 +271,7 @@ A Delta DTP állapotának **beolvasásához**a következő lehetőség használa
 
 *Nincs Adatátvitel; Különbözeti állapot a forrásban: beolvasva*
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerkedjen meg SAP BW Open hub-összekötő támogatásával:
 

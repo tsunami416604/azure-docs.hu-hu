@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2806ce18cc9febfdf15d48052d301da48b3c226f
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 3b0c85f2c9ba04ac999911e534b906c634d457b8
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934463"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360956"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Oktatóanyag: hang – a robot engedélyezése a Speech SDK használatával
 
@@ -65,7 +65,7 @@ Az oktatóanyag elvégzéséhez a következőket kell elvégeznie:
 - [GitHub](https://github.com/)-fiók
 - [Git for Windows](https://git-scm.com/download/win)
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Az oktatóanyagban létrehozandó ügyfélalkalmazás néhány Azure-szolgáltatást használ. Ha csökkenteni szeretné a robottól érkező válaszok időkorlátját, győződjön meg arról, hogy ezek a szolgáltatások ugyanabban az Azure-régióban találhatók. Ebben a szakaszban egy erőforráscsoportot hoz létre az **USA nyugati** régiójában. Ezt az erőforráscsoportot a bot Framework, a Direct line Speech Channel és a Speech Service egyedi erőforrásainak létrehozásakor fogjuk használni.
 
@@ -75,7 +75,7 @@ Az oktatóanyagban létrehozandó ügyfélalkalmazás néhány Azure-szolgáltat
    * Adja meg az **erőforráscsoport**nevét. Javasoljuk, hogy **SpeechEchoBotTutorial-ResourceGroup**.
    * A régió legördülő menüben válassza az **USA nyugati** **régiója** lehetőséget.
 1. Kattintson az **Áttekintés és létrehozás** elemre. Ekkor meg kell jelennie egy olyan szalagcímnek, amely beolvasta az **érvényesítést**.
-1. Kattintson a **Create** (Létrehozás) gombra. Az erőforráscsoport létrehozása eltarthat néhány percig.
+1. Kattintson a **Létrehozás** lehetőségre. Az erőforráscsoport létrehozása eltarthat néhány percig.
 1. Az oktatóanyag későbbi részében létrehozott erőforrásokhoz hasonlóan érdemes ezt az erőforráscsoportot az irányítópultra rögzíteni az egyszerű hozzáférés érdekében. Ha rögzíteni szeretné ezt az erőforráscsoportot, kattintson az erőforráscsoport nevének jobb oldalán lévő rögzítés ikonra.
 
 ### <a name="choosing-an-azure-region"></a>Azure-régió kiválasztása
@@ -124,7 +124,7 @@ A következő lépés egy App Service terv létrehozása. Az App Service-csomago
    * A régió területen válassza az **USA nyugati** **régiója**lehetőséget.
    * Az **árképzési szint**esetében ellenőrizze, hogy a **standard S1** van-e kiválasztva. Ennek az alapértelmezett értéknek kell lennie. Ha nem, ügyeljen arra, hogy az operációs rendszert a fent ismertetett módon állítsa be a **Windows** **rendszerre** .
 5. Kattintson az **Áttekintés és létrehozás** elemre. Ekkor meg kell jelennie egy olyan szalagcímnek, amely beolvasta az **érvényesítést**.
-6. Kattintson a **Create** (Létrehozás) gombra. Az erőforráscsoport létrehozása eltarthat néhány percig.
+6. Kattintson a **Létrehozás** lehetőségre. Az erőforráscsoport létrehozása eltarthat néhány percig.
 
 Ezen a ponton győződjön meg arról, hogy az erőforráscsoport (**SpeechEchoBotTutorial-ResourceGroup**) két erőforrással rendelkezik:
 
@@ -158,7 +158,7 @@ Most, hogy létrehozott néhány erőforrást, hozzon létre egy robotot. Kezdj�
 4. A projekt betöltését követően nyomja le az <kbd>F5</kbd> billentyűt a projekt létrehozásához és futtatásához.
 5. Egy böngésző elindul, és egy ehhez hasonló képernyő jelenik meg.
     > [!div class="mx-imgBorder"]
-    > [![echobot-on-Running-on-localhost](media/tutorial-voice-enable-your-bot-speech-sdk/echobot-running-on-localhost.png "A localhost-on futó EchoBot")](media/tutorial-voice-enable-your-bot-speech-sdk/echobot-running-on-localhost.png#lightbox)
+    > [![A képernyőképen megjelenik a EchoBot lap, amelyen a robotja elkészült.](media/tutorial-voice-enable-your-bot-speech-sdk/echobot-running-on-localhost.png "A localhost-on futó EchoBot")](media/tutorial-voice-enable-your-bot-speech-sdk/echobot-running-on-localhost.png#lightbox)
 
 ### <a name="test-the-bot-sample-with-the-bot-framework-emulator"></a>Tesztelje a bot-mintát a bot Framework emulátorával
 
@@ -174,7 +174,7 @@ A [bot Framework Emulator](https://github.com/microsoft/botframework-emulator) e
    ```
    kattintson a "kapcsolat" gombra.
 4. A robotnak a "Hello and Welcome!" kifejezéssel kell köszönteni. üzenetet küldi vissza. Írjon be bármilyen szöveges üzenetet, és erősítse meg, hogy választ kap a robottól.
-5. Az ECHO bot-példánnyal folytatott kommunikáció cseréje a következőhöz hasonló lehet: [ ![bot-Framework-Emulator](media/tutorial-voice-enable-your-bot-speech-sdk/bot-framework-emulator.png "Bot Framework emulátor")](media/tutorial-voice-enable-your-bot-speech-sdk/bot-framework-emulator.png#lightbox)
+5. Az ECHO bot-példánnyal folytatott kommunikáció cseréje a következőhöz hasonló lehet: [ ![képernyőfelvétel a bot Framework emulatort mutatja be.](media/tutorial-voice-enable-your-bot-speech-sdk/bot-framework-emulator.png "Bot Framework emulátor")](media/tutorial-voice-enable-your-bot-speech-sdk/bot-framework-emulator.png#lightbox)
 
 ## <a name="deploy-your-bot-to-an-azure-app-service"></a>A robot üzembe helyezése egy Azure App Service
 
@@ -201,7 +201,7 @@ A következő lépés az ECHO-robot üzembe helyezése az Azure-ban. A robot üz
    * Az **előfizetés**beállításnál állítsa az **ingyenes próbaverzióra**
    * **Erőforráscsoport**esetében válassza az **SpeechEchoBotTutorial-ResourceGroup** elemet.
    * Az **üzemeltetési csomag**esetében válassza az **SpeechEchoBotTutorial-AppServicePlan**
-1. Kattintson a **Create** (Létrehozás) gombra. A varázsló utolsó képernyőjén kattintson a **Befejezés**gombra.
+1. Kattintson a **Létrehozás** lehetőségre. A varázsló utolsó képernyőjén kattintson a **Befejezés**gombra.
 1. A közzétételi képernyő jobb oldalán kattintson a **publish (közzététel** ) elemre. A Visual Studio üzembe helyezi a robotot az Azure-ban.
 1. A Visual Studio kimeneti ablakában a következőhöz hasonló üzenetnek kell megjelennie:
 
@@ -467,7 +467,7 @@ Ha nem folytatja a jelen oktatóanyagban üzembe helyezett echo-bot használatá
 2. Keresse meg az erőforráscsoport neve: **SpeechEchoBotTutorial-ResourceGroup**. Kattintson a három pontra (...).
 3. Válassza az **Erőforráscsoport törlése** elemet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Saját ügyfélalkalmazás létrehozása a Speech SDK-val](quickstart-voice-assistant-csharp-uwp.md)
@@ -478,7 +478,7 @@ Ha nem folytatja a jelen oktatóanyagban üzembe helyezett echo-bot használatá
 * [Magas színvonalú NEURÁLIS TTS-hangokat támogató Azure-régió](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices) üzembe helyezése
 * A Direct line Speech Channel szolgáltatáshoz kapcsolódó díjszabás:
   * [A bot Service díjszabása](https://azure.microsoft.com/pricing/details/bot-service/)
-  * [Speech szolgáltatás](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)
+  * [Beszédfelismerési szolgáltatás](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)
 * Saját hang-kompatibilis bot kiépítése és üzembe helyezése:
   * Hozzon létre egy [robot Framework robotot](https://dev.botframework.com/). Regisztrálja a [Direct line Speech Channel](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech?view=azure-bot-service-4.0) használatával, és [szabja testre a robotját](https://docs.microsoft.com/azure/bot-service/directline-speech-bot?view=azure-bot-service-4.0)
   * A meglévő [bot Framework-megoldások](https://microsoft.github.io/botframework-solutions/index)megismerése: [virtuális asszisztens](https://microsoft.github.io/botframework-solutions/overview/virtual-assistant-solution/) létrehozása és [kiterjesztése a közvetlen vonalas beszédre](https://microsoft.github.io/botframework-solutions/clients-and-channels/tutorials/enable-speech/1-intro/)

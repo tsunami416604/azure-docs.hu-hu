@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 08/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 1275eab36e21ea6befdda13e14759a30ef5398a3
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: ce3b2b30b1ed421937c11e58bc014cc740b45480
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121153"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287287"
 ---
 # <a name="create-a-windows-virtual-desktop-host-pool-with-powershell"></a>Windows rendszerű virtuális asztali címkészlet létrehozása a PowerShell-lel
 
@@ -140,10 +140,10 @@ Az ügynök frissítése:
      - Számítógép \ HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\RDInfraAgent
      - Számítógép \ HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\RDAgentBootLoader
 
-6. Miután eltávolította ezeket az elemeket, az összes társítást el kell távolítania a régi gazdagép-készlettel. Ha szeretné újra regisztrálni a gazdagépet a szolgáltatásban, kövesse a [virtuális gépek regisztrálása a WIndows rendszerű virtuális asztali alkalmazáskészletbe](create-host-pools-powershell.md#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool)című témakör utasításait.
+6. Miután eltávolította ezeket az elemeket, az összes társítást el kell távolítania a régi gazdagép-készlettel. Ha szeretné újra regisztrálni a gazdagépet a szolgáltatásban, kövesse a [virtuális gépek regisztrálása a Windows rendszerű virtuális asztali alkalmazáskészletbe](create-host-pools-powershell.md#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool)című témakör utasításait.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy létrehozott egy gazdagépet, feltöltheti azt a RemoteApps szolgáltatással. Ha többet szeretne megtudni az alkalmazások kezeléséről a Windows Virtual Desktopban, tekintse meg az alkalmazáscsoport kezelése oktatóanyagot.
 

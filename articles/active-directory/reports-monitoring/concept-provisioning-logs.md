@@ -17,12 +17,12 @@ ms.date: 09/02/2020
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a15024362b31d49e51b291c10401bbf2965f1d82
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.openlocfilehash: 8aa31c6e196f916b4c7633da0c54a30ab9d7b548
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89469864"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361279"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Jelentések kiépítési jelentései a Azure Active Directory portálon (előzetes verzió)
 
@@ -85,7 +85,7 @@ További mezőket jeleníthet meg, vagy eltávolíthatja a már megjelenített m
 
 Részletesebb információkhoz jelöljön ki egy elemet a listanézet nézetben.
 
-![Részletes információk](./media/concept-provisioning-logs/steps.png "Szűrés")
+![Részletes információk](./media/concept-provisioning-logs/steps.png "Szűrő")
 
 
 ## <a name="filter-provisioning-activities"></a>Kiépítési tevékenységek szűrése
@@ -95,11 +95,11 @@ Az alapértelmezett nézetben a következő szűrőket választhatja ki:
 
 - Identitás
 - Dátum
-- status
-- Műveletek
+- Állapot
+- Művelet
 
 
-![Szűrők hozzáadása](./media/concept-provisioning-logs/default-filter.png "Szűrés")
+![Szűrők hozzáadása](./media/concept-provisioning-logs/default-filter.png "Szűrő")
 
 Az **Identity** szűrő segítségével megadhatja a nevet vagy az Ön számára fontos identitást. Ez az identitás lehet felhasználó, csoport, szerepkör vagy más objektum. Az objektum neve vagy azonosítója alapján kereshet. Az azonosító forgatókönyv szerint változik. Ha például egy objektumot kiépít az Azure AD-ből a SalesForce-be, a forrás azonosítója az Azure AD-beli felhasználó objektumazonosítóa, míg a TargetID a Salesforce felhasználójának azonosítója. Ha a munkahelyről a Active Directoryre való kiépítés után a forrás azonosítója a munkanap munkavégző alkalmazottjának azonosítója. Vegye figyelembe, hogy a felhasználó neve nem mindig szerepel az Identity oszlopban. Mindig egy azonosító lesz. 
 
@@ -172,7 +172,7 @@ A részletek a következő kategóriák alapján vannak csoportosítva:
 
 - Módosított tulajdonságok
 
-- Összegzés
+- Összefoglalás
 
 
 ![Kiépítés részletei](./media/concept-provisioning-logs/provisioning-tabs.png "Tabulátorok")
@@ -190,7 +190,7 @@ A **lépések** lapon az objektum kiépítéséhez szükséges lépések szerepe
 
 
 
-![Lépések](./media/concept-provisioning-logs/steps.png "Szűrés")
+![Képernyőfelvétel: a lépések lap, amely a kiépítési lépéseket mutatja be.](./media/concept-provisioning-logs/steps.png "Szűrő")
 
 
 ### <a name="troubleshoot-and-recommendations"></a>Hibák és javaslatok
@@ -204,7 +204,7 @@ A **hibakeresés és javaslatok** lap a hibakódot és az okot adja meg. A hiba 
 A **módosított tulajdonságok** a régi értéket és az új értéket jelenítik meg. Olyan esetekben, amikor nincs régi érték, a régi érték oszlop üres. 
 
 
-### <a name="summary"></a>Összegzés
+### <a name="summary"></a>Összefoglalás
 
 Az **Összefoglalás** lapon áttekintheti, hogy mi történt, és milyen azonosítókat tartalmaz a forrás és a cél rendszer objektumához. 
 

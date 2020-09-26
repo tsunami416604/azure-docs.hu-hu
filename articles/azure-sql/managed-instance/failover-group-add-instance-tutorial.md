@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
-ms.reviewer: sashan, carlrab
+ms.reviewer: sashan, sstein
 ms.date: 08/27/2019
-ms.openlocfilehash: a6f400db2a068953080e734148e024b575e3e1e9
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 598bb30d21a17b2c39f69a845690c3c754ec2145
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89070853"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325249"
 ---
 # <a name="tutorial-add-sql-managed-instance-to-a-failover-group"></a>Oktatóanyag: SQL felügyelt példány hozzáadása feladatátvételi csoporthoz
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -32,7 +32,7 @@ Az Azure SQL felügyelt példány felügyelt példányainak hozzáadása egy fel
   > [!NOTE]
   > - Ha ezt az oktatóanyagot hajtja végre, győződjön meg arról, hogy az erőforrásokat az [SQL felügyelt példányához tartozó feladatátvételi csoportok beállításának előfeltételei](../database/auto-failover-group-overview.md#enabling-geo-replication-between-managed-instances-and-their-vnets)szerint konfigurálja. 
   > - A felügyelt példányok létrehozása jelentős időt vehet igénybe. Ennek eredményeképpen ez az oktatóanyag több órát is igénybe vehet. További információ a kiépítési időszakokról: [SQL felügyelt példányok kezelési műveletei](sql-managed-instance-paas-overview.md#management-operations). 
-  > - A feladatátvételi csoportban részt vevő felügyelt példányokhoz [Azure ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) vagy két csatlakoztatott VPN-átjáró szükséges. A globális VNet-társítás nem támogatott. Ez az oktatóanyag a VPN-átjárók létrehozásának és csatlakoztatásának lépéseit ismerteti. Hagyja ki ezeket a lépéseket, ha már konfigurálta a ExpressRoute. 
+  > - A feladatátvételi csoportban részt vevő felügyelt példányokhoz [Azure ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) vagy két csatlakoztatott VPN-átjáró szükséges. A globális virtuális társhálózatok nem támogatottak. Ez az oktatóanyag a VPN-átjárók létrehozásának és csatlakoztatásának lépéseit ismerteti. Hagyja ki ezeket a lépéseket, ha már konfigurálta a ExpressRoute. 
 
 
 ## <a name="prerequisites"></a>Előfeltételek

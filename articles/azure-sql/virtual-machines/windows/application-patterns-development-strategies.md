@@ -8,17 +8,17 @@ editor: ''
 tags: azure-service-management,azure-resource-manager
 ms.assetid: 41863c8d-f3a3-4584-ad86-b95094365e05
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mathoma
-ms.openlocfilehash: 2904a61077c5538846fbfb7cc7d6ee1791ea890c
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 758607c37f271657c81d4699b0895f9e997450af
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231607"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91299034"
 ---
 # <a name="application-patterns-and-development-strategies-for-sql-server-on-azure-virtual-machines"></a>Alkalmazási minták és fejlesztési stratégiák az Azure-beli SQL Serverhoz Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -41,7 +41,7 @@ Számos különböző típusú n szintű alkalmazást fejleszthet, ha elválaszt
 
 Egy tipikus *n* szintű alkalmazás tartalmazza a megjelenítési szintet, az üzleti szintet és az adatréteget:
 
-| Szint | Leírás |
+| Szint | Description |
 | --- | --- |
 | **Megjelenítés** |A *megjelenítési szint* (webes réteg, előtér-réteg) az a réteg, amelyben a felhasználók egy alkalmazással kommunikálnak. |
 | **Üzleti** |Az *üzleti szint* (középső réteg) az a réteg, amelyet a megjelenítési réteg és az adatréteg használ egymással való kommunikációhoz, és a rendszer alapvető funkcióit tartalmazza. |
@@ -274,6 +274,6 @@ Az alábbi táblázat a hagyományos webes fejlesztés és az Azure-Cloud Servic
 
 A programozási módszerek közötti választással kapcsolatos további információkért tekintse meg az [Azure Web Apps, a Cloud Services és a virtuális gépek: Mikor kell ezt használni](/azure/architecture/guide/technology-choices/compute-decision-tree).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az Azure Virtual Machines SQL Server futtatásával kapcsolatos további információkért lásd: [SQL Server az Azure-on Virtual Machines áttekintés](sql-server-on-azure-vm-iaas-what-is-overview.md).
 

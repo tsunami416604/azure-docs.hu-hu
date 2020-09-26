@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: d80a1ba515aa137eba57051f080b4a2b4f311072
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 8406074933489e53e9235a8a6a05b68f1dd42a85
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90708768"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259136"
 ---
 # <a name="tutorial-for-configuring-saviynt-with-azure-active-directory-b2c"></a>Oktatóanyag a Saviynt konfigurálásához a Azure Active Directory B2C
 
-Ebben a példában útmutatást adunk a Azure Active Directory (AD) B2C és a [Saviynt](https://saviynt.com/)integrálásához. A Saviynt Security Manager platformja a mai üzleti igényeknek megfelelő, egységes platformon biztosítja a láthatóságot, a biztonságot és a kormányzást. A Saviynt magában foglalja az alkalmazások kockázatát és irányítását, az infrastruktúra kezelését, a Kiemelt fiókok felügyeletét és az ügyfelek kockázati elemzését.
+Ebben a példában útmutatást adunk a Azure Active Directory (AD) B2C és a [Saviynt](https://saviynt.com/integrations/azure-ad/for-b2c/)integrálásához. A Saviynt Security Manager platformja a mai üzleti igényeknek megfelelő, egységes platformon biztosítja a láthatóságot, a biztonságot és a kormányzást. A Saviynt magában foglalja az alkalmazások kockázatát és irányítását, az infrastruktúra kezelését, a Kiemelt fiókok felügyeletét és az ügyfelek kockázati elemzését.
 
 Ebben a példában az oktatóanyagban be kell állítania a Saviynt, hogy részletes hozzáférés-vezérlési alapú delegált felügyeletet biztosítson Azure AD B2C felhasználók számára. A Saviynt a következő ellenőrzésekkel állapítja meg, hogy a felhasználó rendelkezik-e jogosultsággal Azure AD B2C felhasználók kezeléséhez.
 
@@ -46,7 +46,7 @@ A Saviynt-integráció a következő összetevőket tartalmazza:
 
 - [Azure ad B2C](https://azure.microsoft.com/services/active-directory/external-identities/b2c/) – a vállalatok közötti identitás olyan szolgáltatás, amely lehetővé teszi, hogy az ügyfelek regisztráljanak, jelentkezzenek be és kezeljék a profiljaikat.
 
-- [Saviynt](https://saviynt.com/) – a személyazonosság-irányítási platform, amely részletesen delegált felügyeletet biztosít a felhasználói életciklus kezeléséhez és a Azure ad B2C felhasználók hozzáférésének irányításához.  
+- [Saviynt](https://saviynt.com/integrations/azure-ad/for-b2c/) – a személyazonosság-irányítási platform, amely részletesen delegált felügyeletet biztosít a felhasználói életciklus kezeléséhez és a Azure ad B2C felhasználók hozzáférésének irányításához.  
 
 - [Microsoft Graph API](https://docs.microsoft.com/graph/use-the-api) – ez az API biztosítja a Saviynt számára a Azure ad B2C felhasználók és a hozzájuk tartozó hozzáférések Azure ad B2Cban való kezeléséhez szükséges interfészeket.
 
@@ -54,7 +54,7 @@ A következő architektúra-diagram a megvalósítást mutatja be.
 
 ![Saviynt architektúra diagramot ábrázoló kép](./media/partner-saviynt/saviynt-architecture-diagram.png)
 
-|Lépés | Description |
+|Lépés | Leírás |
 |:-----| :-----------|
 | 1. | A meghatalmazott rendszergazda elindítja Azure AD B2C felhasználói művelet kezelését a Saviynt-on keresztül.
 | 2. | Ha a meghatalmazott rendszergazda végrehajtja az adott műveletet, a Saviynt ellenőrzi az engedélyezési motorját.
@@ -73,7 +73,7 @@ A következő architektúra-diagram a megvalósítást mutatja be.
 
 ## <a name="configure-azure-ad-b2c-with-saviynt"></a>Azure AD B2C konfigurálása a Saviynt
 
-### <a name="creating-an-azure-ad-application-for-saviynt"></a>Azure AD-alkalmazás létrehozása a Saviynt-hez
+### <a name="create-an-azure-ad-application-for-saviynt"></a>Azure AD-alkalmazás létrehozása a Saviynt-hez
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/#home).
 
@@ -108,7 +108,7 @@ A következő architektúra-diagram a megvalósítást mutatja be.
 
 15. A telepítőnek a Saviynt-ben való végrehajtásához a bérlő AZONOSÍTÓját, az ügyfél-azonosítót és az ügyfél-titkos kulcsot is meg kell adni.
 
-### <a name="enabling-saviynt-to-delete-users"></a>Felhasználók törlésének engedélyezése a Saviynt számára
+### <a name="enable-saviynt-to-delete-users"></a>Felhasználók törlésének engedélyezése a Saviynt
 
 Az alábbi lépések azt ismertetik, hogyan engedélyezhető a Saviynt a felhasználói törlési műveletek végrehajtásához a Azure AD B2Cban.
 

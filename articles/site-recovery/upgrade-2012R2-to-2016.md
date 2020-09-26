@@ -1,6 +1,6 @@
 ---
 title: A Windows Server/System Center VMM 2012 R2 frissítése a Windows Server 2016-Azure Site Recovery
-description: Ismerje meg, hogyan állíthatja be a vész-helyreállítást az Azure-ba Azure Stack virtuális gépekre a Azure Site Recovery szolgáltatással.
+description: Ismerje meg, hogyan frissítheti a Windows Server 2012 R2 rendszerű gazdagépeket & SCVMM 2012 R2-re, amelyek Azure Site Recovery-vel vannak konfigurálva a Windows Server 2016 & SCVMM 2016.
 services: site-recovery
 author: Sharmistha-Rai
 manager: gaggupta
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: site-recovery
 ms.date: 12/03/2018
 ms.author: sharrai
-ms.openlocfilehash: 82e178d37074b22cd170d6b2478525dd2ea7ddf1
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: b9869ae7dfbf5afd6b8d3b870a2ad4e56fd54c1a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424324"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91250068"
 ---
 # <a name="upgrade-windows-server-serversystem-center-2012-r2-vmm-to-windows-servervmm-2016"></a>A Windows Server Server/System Center 2012 R2 VMM frissítése a Windows Serverre/VMM 2016 
 
@@ -78,7 +78,7 @@ A Windows Server 2012 R2 rendszerű gazdagépek frissítése előtt frissítenie
 3. A **Programok eltávolítása**területen válassza a **VMM**  >  **Eltávolítás**elemet. b. Válassza a **szolgáltatások eltávolítása**lehetőséget, majd válassza a V**mm felügyeleti kiszolgáló és a VMM-konzol**elemet. c. Az **adatbázis beállításai**területen válassza az **adatbázis megőrzése**lehetőséget. d. Tekintse át az összegzést, és kattintson az **Eltávolítás**gombra.
 
 4. [A VMM 2016 telepítése](/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#install-vmm-2016)
-5. Indítsa el a SCVMM, és tekintse meg az egyes állomások állapotát a **hálók** lapon. a legutóbbi állapot beszerzéséhez kattintson a **frissítés** gombra. A "figyelmet igényel" állapotnak kell megjelennie. 
+5. Indítsa el a SCVMM, és győződjön meg arról, hogy az egyes gazdagépek állapota a **hálók** lapon található. A legutóbbi állapot lekéréséhez kattintson a **frissítés** gombra. A "figyelmet igényel" állapotnak kell megjelennie. 
 17. Telepítse a legújabb [Microsoft Azure site Recovery szolgáltatót](https://aka.ms/downloaddra) a SCVMM.
 16. Telepítse a legújabb [Microsoft Azure Recovery Service-(MARS-) ügynököt](https://aka.ms/latestmarsagent) a fürt minden egyes gazdagépén. A frissítéssel biztosíthatja, hogy a SCVMM képes legyen sikeresen lekérdezni a gazdagépeket.
 
@@ -96,7 +96,7 @@ A Windows Server 2012 R2 rendszerű gazdagépek frissítése előtt frissítenie
 
 1.  Az ASR-szolgáltató eltávolításához navigáljon a Vezérlőpult – > programok – > programok és szolgáltatások – >Microsoft Azure Site Recovery, és kattintson az Eltávolítás elemre.
 2. Kövesse az [itt](/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#upgrade-a-standalone-vmm-server) említett lépéseket a végrehajtani kívánt verziófrissítési mód alapján.
-3. Indítsa el a SCVMM konzolt, és tekintse meg az egyes állomások állapotát a **hálók** lapon. a legutóbbi állapot beszerzéséhez kattintson a **frissítés** gombra. A "figyelmet igényel" állapotnak kell megjelennie.
+3. Indítsa el a SCVMM konzolt, és az egyes állomások állapotát a **hálók** lapon. A legutóbbi állapot lekéréséhez kattintson a **frissítés** gombra. A "figyelmet igényel" állapotnak kell megjelennie.
 4. Telepítse a legújabb [Microsoft Azure site Recovery szolgáltatót](https://aka.ms/downloaddra) a SCVMM.
 5. Frissítse a legújabb [Microsoft Azure Recovery Service-(MARS-) ügynököt](https://aka.ms/latestmarsagent) a fürt minden egyes állomásán. A frissítéssel ellenőrizheti, hogy az SC VMM képes-e sikeresen lekérdezni a gazdagépeket.
 

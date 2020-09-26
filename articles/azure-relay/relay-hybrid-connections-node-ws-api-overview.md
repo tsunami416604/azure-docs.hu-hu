@@ -3,13 +3,13 @@ title: Az Azure Relay Node API-k áttekintése | Microsoft Docs
 description: Ez a cikk áttekintést nyújt a Azure Relay szolgáltatás Node.js API-ról. Azt is bemutatja, hogyan használható a HYCO-ws Node-csomag.
 ms.topic: article
 ms.date: 06/23/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 67d818a95d63b3097f81f799a287fb4c48a1cfb7
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.custom: devx-track-js
+ms.openlocfilehash: 558f49c09203192ff4cbb1af392eaeef8d705c94
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386248"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263487"
 ---
 # <a name="relay-hybrid-connections-node-api-overview"></a>Relay Hibrid kapcsolatok Node API – áttekintés
 
@@ -48,10 +48,10 @@ var uri = createRelayListenUri([namespaceName], [path], [[token]], [[id]])
 
 Egy érvényes Azure Relay hibrid kapcsolatok figyelő URI-t hoz létre a megadott névtérhez és elérési úthoz. Ezt az URI-t ezután a WebSocketServer osztály Relay-verziójával lehet használni.
 
-- `namespaceName`(kötelező) – a használni kívánt Azure Relay névtér tartományhoz tartozó neve.
-- `path`(kötelező) – létező Azure Relay hibrid kapcsolatok neve a névtérben.
-- `token`(nem kötelező) – a figyelő URI-ba beágyazott, korábban kiadott továbbító hozzáférési jogkivonat (lásd a következő példát).
-- `id`(nem kötelező) – egy nyomkövetési azonosító, amely lehetővé teszi a kérelmek végpontok közötti diagnosztikai nyomon követését.
+- `namespaceName` (kötelező) – a használni kívánt Azure Relay névtér tartományhoz tartozó neve.
+- `path` (kötelező) – létező Azure Relay hibrid kapcsolatok neve a névtérben.
+- `token` (nem kötelező) – a figyelő URI-ba beágyazott, korábban kiadott továbbító hozzáférési jogkivonat (lásd a következő példát).
+- `id` (nem kötelező) – egy nyomkövetési azonosító, amely lehetővé teszi a kérelmek végpontok közötti diagnosztikai nyomon követését.
 
 Az `token` érték nem kötelező, és csak akkor használható, ha a WebSocket-kézfogással együtt nem lehet HTTP-fejléceket küldeni, ahogy a W3C WebSocket-verem esetében is.                  
 
@@ -64,10 +64,10 @@ var uri = createRelaySendUri([namespaceName], [path], [[token]], [[id]])
 
 Létrehoz egy érvényes Azure Relay hibrid kapcsolatok küldési URI-JÁT a megadott névtérhez és elérési úthoz. Ezt az URI-t bármely WebSocket-ügyféllel együtt használhatja.
 
-- `namespaceName`(kötelező) – a használni kívánt Azure Relay névtér tartományhoz tartozó neve.
-- `path`(kötelező) – létező Azure Relay hibrid kapcsolatok neve a névtérben.
-- `token`(nem kötelező) – a küldési URI-ba beágyazott, korábban kiadott továbbító hozzáférési jogkivonat (lásd a következő példát).
-- `id`(nem kötelező) – egy nyomkövetési azonosító, amely lehetővé teszi a kérelmek végpontok közötti diagnosztikai nyomon követését.
+- `namespaceName` (kötelező) – a használni kívánt Azure Relay névtér tartományhoz tartozó neve.
+- `path` (kötelező) – létező Azure Relay hibrid kapcsolatok neve a névtérben.
+- `token` (nem kötelező) – a küldési URI-ba beágyazott, korábban kiadott továbbító hozzáférési jogkivonat (lásd a következő példát).
+- `id` (nem kötelező) – egy nyomkövetési azonosító, amely lehetővé teszi a kérelmek végpontok közötti diagnosztikai nyomon követését.
 
 Az `token` érték nem kötelező, és csak akkor használható, ha a WebSocket-kézfogással együtt nem lehet HTTP-fejléceket küldeni, ahogy a W3C WebSocket-verem esetében is.                   
 
@@ -80,10 +80,10 @@ var token = createRelayToken([uri], [ruleName], [key], [[expirationSeconds]])
 
 Létrehoz egy Azure Relay megosztott hozzáférési aláírási (SAS-) tokent az adott cél URI, SAS szabály és SAS-szabály kulcsa számára, amely a megadott számú másodpercre érvényes, vagy ha a lejárati argumentum nincs megadva, akkor az aktuális pillanattól egy órára.
 
-- `uri`(kötelező) – az az URI, amely számára ki kell állítani a jogkivonatot. Az URI a HTTP-séma használatára van normalizálva, és a lekérdezési karakterlánc adatai el vannak megfosztotva.
-- `ruleName`(kötelező) – SAS-szabály neve az adott URI által képviselt entitáshoz vagy az URI-gazda rész által képviselt névtérhez.
-- `key`(kötelező) – az SAS-szabály érvényes kulcsa. 
-- `expirationSeconds`(nem kötelező) – azon másodpercek száma, ameddig a generált tokennek le kell járnia. Ha nincs megadva, az alapértelmezett érték 1 óra (3600).
+- `uri` (kötelező) – az az URI, amely számára ki kell állítani a jogkivonatot. Az URI a HTTP-séma használatára van normalizálva, és a lekérdezési karakterlánc adatai el vannak megfosztotva.
+- `ruleName` (kötelező) – SAS-szabály neve az adott URI által képviselt entitáshoz vagy az URI-gazda rész által képviselt névtérhez.
+- `key` (kötelező) – az SAS-szabály érvényes kulcsa. 
+- `expirationSeconds` (nem kötelező) – azon másodpercek száma, ameddig a generált tokennek le kell járnia. Ha nincs megadva, az alapértelmezett érték 1 óra (3600).
 
 A kiállított jogkivonat megadja a megadott SAS-szabályhoz társított jogosultságokat a megadott időtartamra.
 
@@ -118,12 +118,12 @@ A `RelayedServer` konstruktor eltérő argumentumokat támogat `Server` , mert n
 
 Konstruktor argumentumai:
 
-- `server`(kötelező) – a megfigyelni kívánt hibrid kapcsolati név teljes URI-ja, amely általában a WebSocket. createRelayListenUri () segítő metódussal lett felépítve.
-- `token`(kötelező) – Ez az argumentum egy korábban kiállított jogkivonat-karakterláncot vagy egy visszahívási függvényt tartalmaz, amely meghívható egy ilyen jogkivonat-karakterlánc beszerzésére. A visszahívási beállítás előnyben részesített, mivel lehetővé teszi a jogkivonat megújítását.
+- `server` (kötelező) – a megfigyelni kívánt hibrid kapcsolati név teljes URI-ja, amely általában a WebSocket. createRelayListenUri () segítő metódussal lett felépítve.
+- `token` (kötelező) – Ez az argumentum egy korábban kiállított jogkivonat-karakterláncot vagy egy visszahívási függvényt tartalmaz, amely meghívható egy ilyen jogkivonat-karakterlánc beszerzésére. A visszahívási beállítás előnyben részesített, mivel lehetővé teszi a jogkivonat megújítását.
 
 #### <a name="events"></a>Események
 
-`RelayedServer`a példányok három olyan eseményt bocsátanak ki, amelyek lehetővé teszik a bejövő kérések kezelését, a kapcsolatok létrehozását és a hibák észlelését. Az üzenetek kezelésére elő kell fizetnünk az `connect` eseményre. 
+`RelayedServer` a példányok három olyan eseményt bocsátanak ki, amelyek lehetővé teszik a bejövő kérések kezelését, a kapcsolatok létrehozását és a hibák észlelését. Az üzenetek kezelésére elő kell fizetnünk az `connect` eseményre. 
 
 ##### <a name="headers"></a>fejlécek
 

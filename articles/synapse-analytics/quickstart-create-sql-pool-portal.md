@@ -8,13 +8,13 @@ ms.topic: quickstart
 ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 768b559ddaf7364726cb26a34d12f357d4126426
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.reviewer: jrasnick
+ms.openlocfilehash: c89bd01cb2e6947df5ed192d66e0dbae08cf66d5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86274254"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91260631"
 ---
 # <a name="quickstart-create-a-synapse-sql-pool-preview-using-the-azure-portal"></a>Rövid útmutató: szinapszis SQL-készlet létrehozása (előzetes verzió) a Azure Portal használatával
 
@@ -56,12 +56,12 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/)
     > [!IMPORTANT]
     > Vegye figyelembe, hogy az SQL-készletek által használható nevekre vonatkozó korlátozások érvényesek. A nevek nem tartalmazhatnak speciális karaktereket, csak 15 karakterből állhatnak, és nem tartalmazhatnak fenntartott szavakat, és egyedinek kell lenniük a munkaterületen.
 
-3. Válassza a **Tovább: további beállítások**lehetőséget.
+3. Válassza a **Tovább: További beállítások** lehetőséget.
 4. Válassza a **nincs** lehetőséget, ha az SQL-készletet adatnélkül szeretné kiépíteni. Hagyja bejelölve az alapértelmezett rendezést.
 ![SQL-készlet folyamat létrehozása – további beállítások lap.](media/quickstart-create-sql-pool/create-sql-pool-portal-03.png)
 
-5. Válassza az **Áttekintés és létrehozás** lehetőséget.
-6. Győződjön meg arról, hogy a korábban megadott adatok alapján a részletek helyesek. Válassza a **Létrehozás** lehetőséget.
+5. Válassza az **Áttekintés + létrehozás** lehetőséget.
+6. Győződjön meg arról, hogy a korábban megadott adatok alapján a részletek helyesek. Kattintson a **Létrehozás** gombra.
 ![SQL-készlet létrehozása folyamat – felülvizsgálati beállítások lap.](media/quickstart-create-sql-pool/create-sql-pool-portal-04.png)
 
 7. Ekkor elindul az erőforrás-kiépítési folyamat.

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 36a402669f8af465a1cedbf1585e16c972b18015
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 4e5becdd026b0a1c9e848b183ebeee5833654461
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89293115"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259271"
 ---
 # <a name="tutorial-for-configuring-jumio-with-azure-active-directory-b2c"></a>Oktatóanyag a Jumio konfigurálásához a Azure Active Directory B2C
 
@@ -28,7 +28,7 @@ A kezdéshez a következőkre lesz szüksége:
 
 - Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
 
-- Egy [Azure ad B2C bérlő](https://review.docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant) , amely az Azure-előfizetéshez van csatolva.
+- Egy [Azure ad B2C bérlő](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant) , amely az Azure-előfizetéshez van csatolva.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
@@ -46,7 +46,7 @@ A következő architektúra-diagram a megvalósítást mutatja be.
 
 ![A Jumio-vel való Azure AD B2C integráció architektúrájának ábrája.](./media/partner-jumio/jumio-architecture-diagram.png)
 
-|Lépés | Description |
+|Lépés | Leírás |
 |:-----| :-----------|
 | 1. | A felhasználó egy lapon megérkezik, hogy jelentkezzen be, vagy regisztráljon, és hozzon létre egy fiókot. A Azure AD B2C a felhasználói attribútumokat gyűjti.
 | 2. | Azure AD B2C meghívja a középső rétegbeli API-t, és átadja a felhasználói attribútumokat.

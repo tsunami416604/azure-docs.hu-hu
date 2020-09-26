@@ -1,6 +1,6 @@
 ---
 title: StorSimple virtuális tömb hibáinak megoldása | Microsoft Docs
-description: Ismerteti a StorSimple Eszközkezelő diagnosztizálására szolgáló képességet, és ismerteti, hogyan használható a StorSimple virtuális tömb hibaelhárítására.
+description: Ismerje meg a StorSimple Eszközkezelő szolgáltatáson belül elérhető önkiszolgáló hibaelhárítási képességet.
 services: storsimple
 documentationcenter: ''
 author: manuaery
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
-ms.openlocfilehash: 684554c5eaf3f5fa2701bad2d49c082595552adb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6cb78a7042ca3acbb27f510207783b97f733cfb0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515187"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91249535"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-troubleshoot-the-storsimple-virtual-array"></a>A StorSimple Virtual Array hibaelhárítása a StorSimple-eszközkezelő szolgáltatással
 ## <a name="overview"></a>Áttekintés
@@ -42,6 +42,6 @@ Megtekintheti a StorSimple virtuális tömbökkel kapcsolatos gyakori problémá
 
 3. Ha nem talál hivatkozást a problémára, vagy nem oldja meg, forduljon Microsoft ügyfélszolgálata további segítségért.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a [támogatási jegyek naplózásáról](storsimple-virtual-array-log-support-ticket.md)
 
