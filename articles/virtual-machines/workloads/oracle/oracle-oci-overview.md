@@ -3,7 +3,7 @@ title: Microsoft Azure integrálása az Oracle Cloud Infrastructure szolgáltat�
 description: Ismerje meg azokat a megoldásokat, amelyek a Microsoft Azureon futó Oracle-alkalmazásokat integrálják az Oracle Cloud Infrastructure (OCI) adatbázisaival.
 services: virtual-machines-linux
 documentationcenter: ''
-author: rgardler
+author: dbakevlar
 manager: ''
 tags: ''
 ms.assetid: ''
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/01/2020
-ms.author: rogardle
+ms.author: kegorman
 ms.custom: ''
-ms.openlocfilehash: d93446f4db914c736235daeb4e08e82b9ff00e62
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: a73d327ad2a251b5043da7e58c14e5f6f311e334
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224502"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91274503"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure"></a>Oracle Application Solutions Microsoft Azure és Oracle Cloud Infrastructure integrációja
 
@@ -31,7 +31,7 @@ Ha szeretné futtatni a middleware-t, beleértve a WebLogic-kiszolgálót, az Az
 
 Ha az Oracle-megoldások teljes egészében Azure-infrastruktúrán való üzembe helyezését érdekli, tekintse meg az [Oracle virtuálisgép-rendszerképek és azok üzembe helyezése Microsoft Azure](oracle-vm-solutions.md).
 
-## <a name="scenario-overview"></a>Forgatókönyv áttekintése
+## <a name="scenario-overview"></a>A forgatókönyv áttekintése
 
 A Felhőbeli kapcsolat lehetővé teszi, hogy az Oracle piacvezető alkalmazásait és saját egyéni alkalmazásait az Azure Virtual Machines szolgáltatásban futtassa, miközben élvezi az üzemeltetett adatbázis-szolgáltatások előnyeit a OCI-ben. 
 
@@ -56,7 +56,7 @@ A Felhőbeli kapcsolat a következő régiókra korlátozódik:
 * Azure West Europe (WestEurope) & OCI Amsterdam (Hollandia északnyugati régiója)
 * Azure Kelet-Japán (JapanEast) & OCI Tokyo (Kelet-Japán)
 
-## <a name="networking"></a>Hálózat
+## <a name="networking"></a>Hálózatkezelés
 
 A nagyvállalati ügyfelek gyakran úgy döntenek, hogy különböző üzleti és üzemeltetési okokból több felhőben is diverzifikálják és üzembe helyezik a számítási feladatokat. Az ügyfelek változatossá teszik a felhőalapú hálózatokat az interneten, az IPSec VPN-en vagy a felhőalapú szolgáltató közvetlen csatlakozási megoldásának használatával a helyszíni hálózaton keresztül. A felhőalapú hálózatok összekapcsolásával jelentős mértékű befektetésekre lehet szükség az idő, a pénz, a tervezés, a beszerzés, a telepítés, a tesztelés és a műveletek terén. 
 
@@ -78,7 +78,7 @@ Az identitás a Microsoft és az Oracle közötti partnerség egyik legfontosabb
 
 Jelenleg ez az integráció lehetővé teszi, hogy egyetlen központi helyen kezelje a Azure Active Directory. Az Azure AD szinkronizálja a címtárban bekövetkezett változásokat a megfelelő Oracle-címtárral, és az egyszeri bejelentkezést használja a felhőalapú Oracle-megoldásokhoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerkedjen meg az Azure és a OCI közötti [Felhőbeli hálózattal](configure-azure-oci-networking.md) . 
 

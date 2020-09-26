@@ -5,31 +5,28 @@ description: Megtudhatja, hogyan használhatja az egyéni Docker-rendszerképet 
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.author: jordane
-author: jpe316
+ms.author: sagopal
+author: saachigopal
 ms.reviewer: larryfr
 ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: f69ba6e1c5fdfc04fac6fed8487b246f9af72fa2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: ea8b100e8a690cf4f400dda02f2a58b6500d5f31
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90889945"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328445"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Modell üzembe helyezése egyéni Docker-alapú rendszerkép használatával
 
-
 Megtudhatja, hogyan használhat egyéni Docker-alapképet a betanított modellek Azure Machine Learning használatával történő telepítésekor.
 
-Ha egy webszolgáltatáshoz vagy IoT Edge eszközhöz helyez üzembe egy betanított modellt, a rendszer létrehoz egy csomagot, amely a bejövő kérelmek kezelésére szolgáló webkiszolgálót tartalmaz.
+Ha nincs megadva, a Azure Machine Learning alapértelmezett alapszintű Docker-rendszerképet fog használni. Megtalálhatja a által használt Docker-rendszerképet `azureml.core.runconfig.DEFAULT_CPU_IMAGE` . Azure Machine Learning- __környezeteket__ is használhat egy adott alaprendszerkép kiválasztásához, vagy használhat egy Ön által megadott egyéni rendszerképet.
 
-Azure Machine Learning biztosít egy alapértelmezett Docker-alapképet, így nem kell aggódnia a létrehozásával kapcsolatban. Azure Machine Learning- __környezeteket__ is használhat egy adott alaprendszerkép kiválasztásához, vagy használhat egy Ön által megadott egyéni rendszerképet.
+Alapszintű rendszerképet kell használni a központi telepítés rendszerképének létrehozásakor. A mögöttes operációs rendszert és összetevőket tartalmazza. A telepítési folyamat ezután további összetevőket, például a modellt, a Conda-környezetet és más eszközöket is felépít a rendszerképbe.
 
-Alapszintű rendszerképet kell használni a központi telepítés rendszerképének létrehozásakor. A mögöttes operációs rendszert és összetevőket tartalmazza. Az üzembe helyezési folyamat ezután további összetevőket (például a modellt, a Conda-környezetet és más eszközöket) helyez el a lemezképbe a telepítés előtt.
-
-Általában egyéni alapképet kell létrehoznia, ha a Docker használatával kezeli a függőségeket, megtarthatja az összetevő-verziók szigorúbb szabályozását, vagy időt takaríthat meg az üzembe helyezés során. Előfordulhat például, hogy a Python, a Conda vagy más összetevő egy adott verziójára szeretne szabványosítani. Előfordulhat, hogy a modellhez szükséges szoftvert is telepítenie kell, ahol a telepítési folyamat hosszú időt vesz igénybe. Ha az alaprendszerkép létrehozásakor telepíti a szoftvert, azt jelenti, hogy nem kell telepítenie az összes központi telepítéshez.
+Általában egyéni alapképet kell létrehoznia, ha a Docker használatával kezeli a függőségeket, megtarthatja az összetevő-verziók szigorúbb szabályozását, vagy időt takaríthat meg az üzembe helyezés során. Előfordulhat, hogy a modellhez szükséges szoftvert is telepítenie kell, ahol a telepítési folyamat hosszú időt vesz igénybe. Ha az alaprendszerkép létrehozásakor telepíti a szoftvert, azt jelenti, hogy nem kell telepítenie az összes központi telepítéshez.
 
 > [!IMPORTANT]
 > Modell telepítésekor nem bírálhatja felül a fő összetevőket, például a webkiszolgálót vagy a IoT Edge összetevőket. Ezek az összetevők olyan ismert munkahelyi környezetet biztosítanak, amelyet a Microsoft tesztelt és támogat.
@@ -46,7 +43,7 @@ Ez a dokumentum két részre oszlik:
 
 * Egy Azure Machine Learning munkacsoport. További információt a [Munkaterület létrehozása](how-to-manage-workspace.md) című cikkben talál.
 * A [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true). 
-* Az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)-vel.
+* Az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)-vel.
 * A [Azure Machine learning CLI-bővítménye](reference-azure-machine-learning-cli.md).
 * Az interneten elérhető [Azure Container Registry](/azure/container-registry) vagy más Docker-beállításjegyzék.
 * A jelen dokumentum lépései azt feltételezik, hogy a modell üzembe helyezésének részeként már ismeri a __következtetési konfigurációs__ objektum létrehozását és használatát. További információ: [hol kell telepíteni, és hogyan](how-to-deploy-and-where.md).
@@ -62,8 +59,6 @@ Az ebben a szakaszban található információk azt feltételezik, hogy Azure Co
     > [!WARNING]
     > A munkaterülethez tartozó Azure Container Registry akkor jön létre, amikor a munkaterületen __először betanít vagy telepít egy modellt__ . Ha létrehozott egy új munkaterületet, de nem képzett vagy nem hozott létre modellt, akkor a munkaterülethez nem tartozik Azure Container Registry.
 
-    A munkaterület Azure Container Registry nevének beolvasásával kapcsolatos információkért tekintse meg a jelen cikk [tároló beállításjegyzékének beolvasása](#getname) című szakaszát.
-
     __Önálló tároló-beállításjegyzékben__tárolt rendszerképek használata esetén konfigurálnia kell egy egyszerű szolgáltatásnevet, amely legalább olvasási hozzáféréssel rendelkezik. Ezután megadhatja az egyszerű szolgáltatás AZONOSÍTÓját (felhasználónevét) és jelszavát, amely a beállításjegyzékből származó lemezképeket használ. Ez alól kivételt képez, ha nyilvánosan elérhetővé teszi a tároló-beállításjegyzéket.
 
     A privát Azure Container Registry létrehozásával kapcsolatos információkért lásd: [saját tároló beállításjegyzékének létrehozása](/azure/container-registry/container-registry-get-started-azure-cli).
@@ -72,12 +67,29 @@ Az ebben a szakaszban található információk azt feltételezik, hogy Azure Co
 
 * Azure Container Registry-és képinformációk: adja meg a rendszerkép nevét a használni kívánt felhasználók számára. Például egy `myimage` nevű beállításjegyzékbeli nevű rendszerképet `myregistry` `myregistry.azurecr.io/myimage` a rendszer a rendszerképnek a modell központi telepítésére való használatakor hivatkozik.
 
-* Rendszerképekre vonatkozó követelmények: Azure Machine Learning csak a következő szoftvereket biztosító Docker-rendszerképeket támogatja:
+### <a name="image-requirements"></a>A rendszerképre vonatkozó követelmények
 
-    * Ubuntu 16,04 vagy újabb.
-    * Conda 4.5. # vagy nagyobb.
-    * Python 3.5. #, 3.6. # vagy 3.7. #.
+A Azure Machine Learning csak a következő szoftvereket biztosító Docker-rendszerképeket támogatja:
+* Ubuntu 16,04 vagy újabb.
+* Conda 4.5. # vagy nagyobb.
+* Python 3.5 +.
 
+Az adatkészletek használatához telepítse a libfuse-dev csomagot. Győződjön meg arról is, hogy minden szükséges felhasználói tárterület-csomagot telepít.
+
+Az Azure ML a Microsoft Container Registry közzétett CPU-és GPU-lemezképek készletét is fenntarthatja, hogy a saját egyéni rendszerkép létrehozása helyett opcionálisan (vagy hivatkozásként) is kihasználhatja. A képek Dockerfiles megtekintéséhez tekintse meg az [Azure/AzureML-containers GitHub-](https://github.com/Azure/AzureML-Containers) tárházat.
+
+A GPU-lemezképek esetében az Azure ML jelenleg a cuda9 és a cuda10 alaprendszerképét is biztosítja. Az alaplemezképekben telepített fő függőségek a következők:
+
+| Függőségek | IntelMPI CPU | OpenMPI CPU | IntelMPI GPU | OpenMPI GPU |
+| --- | --- | --- | --- | --- |
+| miniconda | = = 4.5.11 | = = 4.5.11 | = = 4.5.11 | = = 4.5.11 |
+| MPI | intelmpi = = 2018.3.222 |openmpi = = 3.1.2 |intelmpi = = 2018.3.222| openmpi = = 3.1.2 |
+| CUDA | - | - | 9.0/10.0 | 9.0/10.0/10.1 |
+| cudnn | - | - | 7.4/7.5 | 7.4/7.5 |
+| nccl | - | - | 2,4 | 2,4 |
+| git | 2.7.4 | 2.7.4 | 2.7.4 | 2.7.4 |
+
+A CPU-lemezképek Ubuntu-16.04 épülnek. A cuda9 készült GPU-lemezképek NVIDIA/CUDA: 9.0-cudnn7-devel-Ubuntu 16.04 épülnek. A cuda10 tartozó GPU-lemezképek NVIDIA/CUDA: 10.0-cudnn7-devel-Ubuntu 16.04 épülnek.
 <a id="getname"></a>
 
 ### <a name="get-container-registry-information"></a>Tároló beállításjegyzék-adatainak beolvasása
@@ -117,7 +129,7 @@ Ha már betanított vagy telepített modelleket Azure Machine Learning használa
 
 ### <a name="build-a-custom-base-image"></a>Egyéni alaprendszerkép létrehozása
 
-Az ebben a szakaszban ismertetett lépések végigvezetik az egyéni Docker-rendszerkép létrehozásán a Azure Container Registry.
+Az ebben a szakaszban ismertetett lépések végigvezetik az egyéni Docker-rendszerkép létrehozásán a Azure Container Registry. A minta dockerfiles tekintse meg az [Azure/AzureML-containers GitHub-](https://github.com/Azure/AzureML-Containers) tárházat.
 
 1. Hozzon létre egy nevű új szövegfájlt `Dockerfile` , és használja a következő szöveget a tartalomként:
 
@@ -131,11 +143,12 @@ Az ebben a szakaszban ismertetett lépések végigvezetik az egyéni Docker-rend
 
     ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
     ENV PATH /opt/miniconda/bin:$PATH
+    ENV DEBIAN_FRONTEND=noninteractive
 
     RUN apt-get update --fix-missing && \
         apt-get install -y wget bzip2 && \
-        apt-get install -y fuse \
-        apt-get clean && \
+        apt-get install -y fuse && \
+        apt-get clean -y && \
         rm -rf /var/lib/apt/lists/*
 
     RUN useradd --create-home dockeruser
@@ -200,13 +213,13 @@ Egyéni rendszerkép használatához a következő információk szükségesek:
 
 A Microsoft számos Docker-rendszerképet biztosít egy nyilvánosan elérhető adattáron, amely az ebben a szakaszban ismertetett lépésekkel használható:
 
-| Kép | Leírás |
+| Kép | Description |
 | ----- | ----- |
 | `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` | Azure Machine Learning alaprendszerképe |
 | `mcr.microsoft.com/azureml/onnxruntime:latest` | A CPU-következtetések ONNX-futtatókörnyezetét tartalmazza |
 | `mcr.microsoft.com/azureml/onnxruntime:latest-cuda` | A ONNX futtatókörnyezetet és a CUDA-t tartalmazza a GPU-hoz |
 | `mcr.microsoft.com/azureml/onnxruntime:latest-tensorrt` | ONNX Runtime és TensorRT for GPU-t tartalmaz |
-| `mcr.microsoft.com/azureml/onnxruntime:latest-openvino-vadm ` | Az ONNX Runtime és a OpenVINO for Intel <sup></sup> látási gyorssegéd kialakítását tartalmazza a Movidius<sup>TM</sup> MyriadX VPUs alapján |
+| `mcr.microsoft.com/azureml/onnxruntime:latest-openvino-vadm` | Az ONNX Runtime és a OpenVINO for Intel <sup></sup> látási gyorssegéd kialakítását tartalmazza a Movidius<sup>TM</sup> MyriadX VPUs alapján |
 | `mcr.microsoft.com/azureml/onnxruntime:latest-openvino-myriad` | Az ONNX Runtime és a OpenVINO for Intel <sup></sup> Movidius<sup>TM</sup> USB-Sticks szolgáltatását tartalmazza |
 
 A ONNX Runtime alaplemezképekkel kapcsolatos további információkért lásd a GitHub-tárház [ONNX Runtime Docker szakaszát](https://github.com/microsoft/onnxruntime/blob/master/dockerfiles/README.md) .
@@ -338,4 +351,4 @@ A modellek ML parancssori felülettel történő üzembe helyezésével kapcsola
 ## <a name="next-steps"></a>Következő lépések
 
 * További információ a [telepítéséről és a módjáról](how-to-deploy-and-where.md).
-* Ismerje meg, hogyan lehet [gépi tanulási modelleket betanítani és üzembe helyezni az Azure-folyamatok használatával](/azure/devops/pipelines/targets/azure-machine-learning?view=azure-devops).
+* Ismerje meg, hogyan lehet [gépi tanulási modelleket betanítani és üzembe helyezni az Azure-folyamatok használatával](/azure/devops/pipelines/targets/azure-machine-learning?view=azure-devops&preserve-view=true).

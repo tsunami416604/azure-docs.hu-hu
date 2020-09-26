@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: 24897826c6a70d0810b239b9b8f639787c3dac2a
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 9df5d702019063ffba6d79cc63370cd25a7242fd
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843385"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358781"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>Logikai alkalmazások és runbookok előkészítése a klasszikus riasztási szabályok migrálására
 
@@ -76,7 +76,7 @@ Ha klasszikus riasztásokkal rendelkező logikai alkalmazásokat használ, módo
 
 1. Használja a "Azure Monitor-metrikák riasztási kezelője" sablont. Ennek a sablonnak van egy **http-kérelmi** triggere, amely a megfelelő sémát határozza meg.
 
-    ![logikai alkalmazás – sablon](media/alerts-migration/logic-app-template.png "Metrika riasztási sablonja")
+    ![Képernyőfelvétel: két gomb, üres logikai alkalmazás és Azure Monitor – mérőszámok riasztási kezelője.](media/alerts-migration/logic-app-template.png "Metrika riasztási sablonja")
 
 1. Adjon hozzá egy műveletet a feldolgozási logika üzemeltetéséhez.
 

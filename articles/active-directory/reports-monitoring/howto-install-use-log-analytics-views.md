@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56eee39a9e99e9d6752d1b4f6eb7182043ff14d6
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 168b41534f6ea6055294cc9e9cec139853904fea
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230585"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358899"
 ---
 # <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>A log Analytics-nézetek telepítése és használata Azure Active Directory
 
@@ -56,7 +56,7 @@ A log Analytics-nézetek használatához a következőkre lesz szüksége:
 
 3. Válassza ki az egyes nézetek bármelyikét, hogy beugorjon az egyes jelentésekre. Riasztásokat is beállíthat a jelentési paraméterek bármelyikén. Tegyük fel például, hogy riasztást állítunk be minden alkalommal, amikor bejelentkezési hiba történt. Ehhez először jelölje ki a **bejelentkezési események** nézetet, válassza a **bejelentkezési hibák időbeli** jelentéssel lehetőséget, majd válassza az **elemzés** lehetőséget a Részletek lap megnyitásához a jelentés mögötti tényleges lekérdezéssel. 
 
-    ![Részletek](./media/howto-install-use-log-analytics-views/details.png)
+    ![A képernyőképen a jelentés lekérdezését tartalmazó Analytics-Részletek lap látható.](./media/howto-install-use-log-analytics-views/details.png)
 
 
 4. Válassza a **riasztás beállítása**lehetőséget, majd válassza ki, hogy az egyéni naplók keresésekor a **riasztási feltételek** szakaszban ne **legyen &lt; meghatározva &gt; a logikai** érték. Mivel a bejelentkezési hiba miatt riasztást szeretnénk kapni, állítsa az alapértelmezett riasztási logika **küszöbértékét** **1-re** , majd válassza a **kész**lehetőséget. 

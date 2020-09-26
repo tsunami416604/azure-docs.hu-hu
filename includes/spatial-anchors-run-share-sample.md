@@ -4,17 +4,19 @@ ms.service: spatial-anchors
 ms.topic: include
 ms.date: 8/27/2020
 ms.author: rgarcia
-ms.openlocfilehash: 8e3f58a5a88495263396c4e915a6363ad065c202
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: efd5ff494620d4fab3fb904d9bcf054b57a3290b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89570189"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358768"
 ---
 ## <a name="android"></a>[Android](#tab/Android)
 
 A Java Android-minta támogatja az eszközök közötti megosztást.
 Nyissa meg a fájlt `SharedActivity.java` a Android Studio Samples mappájában. Adja meg az előző lépésben beszerzett URL-címet (a ASP.NET Web App Azure-telepítésből) a `SharingAnchorsServiceUrl` fájlban lévő értékként `SharedActivity.java` . Cserélje le az `index.html` URL-címet a alkalmazásban `api/anchors` . A következőhöz hasonlóan kell kinéznie: `https://<app_name>.azurewebsites.net/api/anchors` .
+
+[!INCLUDE [Run shared sample](spatial-anchors-deploy-sample.md)]
 
 [!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
 
@@ -23,12 +25,16 @@ Nyissa meg a fájlt `SharedActivity.java` a Android Studio Samples mappájában.
 A Objective-C iOS-minta támogatja az eszközök közötti megosztást.
 Nyissa meg a fájlt `SharedDemoViewController.m` a Samples mappában. Adja meg az előző lépésben beszerzett URL-címet (a ASP.NET Web App Azure-telepítésből) a `SharingAnchorsServiceUrl` fájlban lévő értékként `SharedDemoViewController.m` . Cserélje le az `index.html` URL-címet a alkalmazásban `api/anchors` . A következőhöz hasonlóan kell kinéznie: `https://<app_name>.azurewebsites.net/api/anchors` .
 
+Telepítse az alkalmazást az eszközre. Az alkalmazás elindítása után válassza a **koppintson a megosztott bemutató indításához** lehetőségre. Kövesse az alkalmazás utasításait. Kiválaszthatja **, hogy a rögzítési szám alapján megkeresi** a horgonyt, vagy **koppintson a horgony létrehozására, és mentse a szolgáltatásba**.
+
 [!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
 
 ## <a name="xamarin"></a>[Xamarin](#tab/Xamarin)
 
 A Xamarin Android-és iOS-minták egyaránt támogatják az eszközök közötti megosztást.
 Nyissa meg a fájlt `AccountDetails.cs` a Samples mappában. Adja meg az előző lépésben beszerzett URL-címet (a ASP.NET Web App Azure-telepítésből) a `AnchorSharingServiceUrl` fájlban lévő értékként `AccountDetails.cs` . Cserélje le az `index.html` URL-címet a alkalmazásban `api/anchors` . A következőhöz hasonlóan kell kinéznie: `https://<app_name>.azurewebsites.net/api/anchors` .
+
+[!INCLUDE [Run shared sample](spatial-anchors-deploy-sample.md)]
 
 [!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
 

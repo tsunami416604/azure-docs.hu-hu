@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 5c54c3702dabf254e50068aadeac0992e3a20cb2
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 445155ed48334c9680dfa0be7b5402d057c98cef
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89262464"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329720"
 ---
 # <a name="azure-media-services-v3-community"></a>Azure Media Services v3 Közösség
 
@@ -42,12 +42,12 @@ Az alábbi fórumok az aktuális termékekkel és szolgáltatásokkal kapcsolato
 
 Az MSDN jelenleg Media Services csapat elsődleges közösségi fóruma.
 
-[![MSDN](./media/media-services-community/msdn.png)](/answers/topics/azure-media-services.html) 
+[![Képernyőfelvétel: az MSDN emblémája, az Media Services csapat elsődleges közösségi fóruma.](./media/media-services-community/msdn.png)](/answers/topics/azure-media-services.html) 
 
 A csapat az Azure-Media-Services szolgáltatással Stack Overflow címkézett kérdéseket is figyeli.
 
 [![StackOverflow](./media/media-services-community/stack-overflow.png)](https://stackoverflow.com/questions/tagged/azure-media-services) 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Az Azure Media Services áttekintése](media-services-overview.md)

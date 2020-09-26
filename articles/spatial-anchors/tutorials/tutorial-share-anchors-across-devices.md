@@ -8,18 +8,18 @@ ms.author: rgarcia
 ms.date: 07/31/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 12a15a2d0cd45207b4adefc7315e48c6d642c0f7
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 8b6c3608165ed592cc2f0daf475226c9d35de012
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810171"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358770"
 ---
 # <a name="tutorial-share-azure-spatial-anchors-across-sessions-and-devices"></a>Oktatóanyag: Azure térbeli horgonyok megosztása a munkamenetek és az eszközök között
 
 Ebből az oktatóanyagból megtudhatja, hogyan használhatók az [Azure térbeli horgonyok](../overview.md) egy adott munkamenetben, majd megkereshetik őket ugyanazon az eszközön vagy egy másikon. Ugyanezeket a horgonyokat több eszköz is elhelyezheti ugyanazon a helyen és egyidejűleg.
 
-![Kitartás](./media/persistence.gif)
+![Az animáció megjeleníti a mobileszköz használatával létrehozott Azure térbeli horgonyokat, és a nap folyamán egy másik eszközzel használható.](./media/persistence.gif)
 
 Az Azure térbeli horgonyok egy többplatformos fejlesztői szolgáltatás, amely lehetővé teszi, hogy vegyes valóságot hozzon létre olyan objektumok használatával, amelyek az adott helyen maradnak a helyükön az egyes eszközökön. Ha elkészült, egy olyan alkalmazással fog rendelkezni, amely két vagy több eszközre is telepíthető. Az egyik példány által létrehozott Azure térbeli horgonyok megoszthatók másokkal.
 
@@ -92,7 +92,7 @@ Nyissa meg a Visual Studio Code-ot, és nyissa meg a projektet a `Sharing\Sharin
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban üzembe helyezett egy ASP.NET Core webalkalmazást az Azure-ban, majd konfigurálta és telepítette az Unity alkalmazást. A térbeli horgonyok az alkalmazással lettek létrehozva, és más eszközökkel lettek megosztva a ASP.NET Core webalkalmazás használatával.
 

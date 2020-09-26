@@ -8,12 +8,12 @@ ms.date: 08/26/2020
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.service: digital-twins
-ms.openlocfilehash: e2cb8ee282666d7a9a567ca04762b26de3b3b9bd
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 1725c3ff162e4f6b7ac3a5ea1ede6976c827b510
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89443041"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328495"
 ---
 # <a name="move-an-azure-digital-twins-instance-to-a-different-azure-region"></a>Azure digitális Twins-példány áthelyezése egy másik Azure-régióba
 
@@ -88,7 +88,7 @@ Most meg kell jelennie a ADT Explorer-alkalmazásnak, amely egy böngészőben f
 
 A kapcsolat ellenőrzéséhez kattintson a *lekérdezés futtatása* gombra, és futtassa az alapértelmezett lekérdezést, amely az összes ikreket és kapcsolatot megjeleníti a Graph *Explorer* mezőben.
 
-:::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="Az ablak felső részén található lekérdezés futtatása gomb beolvasása megnyomva jelenik meg" lightbox="media/how-to-move-regions/run-query.png":::
+:::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="Az ablak felső részén található "lekérdezés futtatása" gomb beolvasása megnyomva jelenik meg" lightbox="media/how-to-move-regions/run-query.png":::
 
 A ADT Explorer futását elhagyhatja, mivel a cikk későbbi részében később újra fel fogja tölteni ezeket az elemeket az új példányba a célként megadott régióban.
 
@@ -113,7 +113,7 @@ Ezután végrehajtja a példány áthelyezését úgy, hogy létrehoz egy új p�
 
 ### <a name="create-a-new-instance"></a>Új példány létrehozása
 
-Először **hozzon létre egy új Azure Digital Twins-példányt a megcélzott régióban**. Ennek elvégzéséhez kövesse az [*útmutató: példány és hitelesítés beállítása*](how-to-set-up-instance-scripted.md), az alábbi mutatók szem előtt tartásával:
+Először **hozzon létre egy új Azure Digital Twins-példányt a megcélzott régióban**. Ennek elvégzéséhez kövesse az [*útmutató: példány és hitelesítés beállítása*](how-to-set-up-instance-portal.md), az alábbi mutatók szem előtt tartásával:
 * Megtarthatja az új példány nevét, **Ha** az egy másik erőforráscsoporthoz esik. Ha ugyanazt az erőforráscsoportot kell használnia, amely az eredeti példányt tartalmazza, akkor az új példánynak saját nevet kell adnia.
 * Ha a rendszer kéri, adja meg a cél új régiót.
 * **Nem kell** újból létrehoznia az alkalmazás regisztrációját. Az új példány felhasználhatja ugyanazt az alkalmazás-regisztrációt, amelyhez már rendelkezik.
@@ -168,7 +168,7 @@ A ADT Explorer most feltölti modelljeit és gráfját (beleértve az ikreket é
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-move-regions/import-success.png" alt-text="A Graph importálás sikerességét jelző párbeszédpanel. A sikeres importálást olvassa be. 2 modell importálva. 4 ikrek importálva. 2 kapcsolat importálva. " lightbox="media/how-to-move-regions/import-success.png":::
+        :::image type="content" source="media/how-to-move-regions/import-success.png" alt-text="A Graph importálás sikerességét jelző párbeszédpanel. A sikeres importálást olvassa be. 2 modell importálva. 4 ikrek importálva. 2 kapcsolat importálva. "" lightbox="media/how-to-move-regions/import-success.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -178,11 +178,11 @@ A ADT Explorer most feltölti modelljeit és gráfját (beleértve az ikreket é
 
 Annak ellenőrzéséhez, hogy minden sikeresen feltöltve lett, a *Graph Explorerben* a *lekérdezés futtatása* gombra kattintva futtathatja az alapértelmezett lekérdezést, amely megjeleníti az összes ikreket és kapcsolatot a gráfban. Ez a *modell nézetben*is frissíti a modellek listáját.
 
-:::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="Az ablak felső részén látható futtatási lekérdezés gomb kiemelése a korábbi verziók között" lightbox="media/how-to-move-regions/run-query.png":::
+:::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="Az ablak felső részén látható "futtatási lekérdezés" gomb kiemelése a korábbi verziók között" lightbox="media/how-to-move-regions/run-query.png":::
 
 Meg kell jelennie a gráfnak a *Graph Explorerben* megjelenő összes ikrek és kapcsolat között. Emellett a *modell nézet* mezőben is megjelennek a modellek.
 
-:::image type="content" source="media/how-to-move-regions/post-upload.png" alt-text="A ADT Explorer nézete, amely a Model View (modell nézet) mezőben Kiemelt 2 modellt mutatja be, és egy gráfot jelölt ki a Graph Explorer mezőben." lightbox="media/how-to-move-regions/post-upload.png":::
+:::image type="content" source="media/how-to-move-regions/post-upload.png" alt-text="A ADT Explorer nézete, amely a "Model View" (modell nézet) mezőben Kiemelt 2 modellt mutatja be, és egy gráfot jelölt ki a "Graph Explorer" mezőben." lightbox="media/how-to-move-regions/post-upload.png":::
 
 Ezzel megerősíti, hogy a modelleket, az ikreket és a gráfot újra feltöltötte a célként megadott régióban lévő új példányra.
 

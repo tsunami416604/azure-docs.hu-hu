@@ -3,12 +3,12 @@ title: VIRTUÁLIS gépek automatikus indítási beállításainak konfigurálás
 description: Megtudhatja, hogyan konfigurálhatja a virtuális gépek automatikus indítási beállításait a laborban. Ez a beállítás lehetővé teszi, hogy a laborban lévő virtuális gépek automatikusan el legyenek indítva egy adott időpontban.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 4ff2a156367b6a65e75b1c8b907da91dc3c88eb9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 83e7b0836273a59eaaf66471bd0cb42d63ccf1c3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482785"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328479"
 ---
 # <a name="auto-startup-lab-virtual-machines"></a>Automatikus indítási Tesztkörnyezet virtuális gépei  
 A Azure DevTest Labs lehetővé teszi a laborban lévő virtuális gépek automatikus indítását és leállítását ütemterv alapján. Az automatikus leállítási beállítások konfigurálásával kapcsolatos információkért lásd: [Azure DevTest Labs-tesztkörnyezet automatikus leállítási házirendjeinek kezelése](devtest-lab-auto-shutdown.md). 
@@ -21,7 +21,7 @@ Ebből a cikkből megtudhatja, hogyan konfigurálhat egy laborhoz tartozó autos
 1. Navigáljon a labor kezdőlapjának oldalára. 
 2. Válassza a **konfiguráció és szabályzatok** lehetőséget a bal oldali menüben. 
 
-    ![Konfiguráció és házirendek menü](./media/devtest-lab-auto-startup-vm/configuration-policies-menu.png)
+    ![Képernyőkép, amely a "konfiguráció és szabályzatok" menüt mutatja a DevTest laborban.](./media/devtest-lab-auto-startup-vm/configuration-policies-menu.png)
 3. A **konfiguráció és házirendek** lapon hajtsa végre a következő lépéseket:
     
     1. Válassza **a** be lehetőséget, ha engedélyezni szeretné, hogy a **virtuális gépek automatikus indításra legyenek ütemezve** , hogy engedélyezze az autostart funkciót ehhez a laborhoz. 
@@ -50,5 +50,5 @@ Az alábbi eljárás lépéseit ismerteti a virtuális gépeknek a labor automat
 4. Ezután válassza a **Mentés** lehetőséget az eszköztáron a beállítás mentéséhez. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A laborok automatikus leállítási házirendjének megismeréséhez lásd: [Azure DevTest Labs](devtest-lab-auto-shutdown.md)

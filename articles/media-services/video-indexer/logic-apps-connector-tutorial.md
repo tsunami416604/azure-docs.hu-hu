@@ -7,13 +7,13 @@ ms.author: alzam
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: tutorial
-ms.date: 05/01/2020
-ms.openlocfilehash: 2d89782b836db0daaf75c0337ad3b7f475824177
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/21/2020
+ms.openlocfilehash: 99f3c2c05117fb537527f2a2bcb52f0f9843385a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90882886"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329635"
 ---
 # <a name="tutorial-use-video-indexer-with-logic-app-and-power-automate"></a>Oktatóanyag: Video Indexer használata a Logic app és a Power automatizáló használatával
 
@@ -21,7 +21,7 @@ Azure Media Services [video Indexer v2 REST API](https://api-portal.videoindexer
 
 Ahhoz, hogy az integráció még könnyebbé váljon, [Logic Apps](https://azure.microsoft.com/services/logic-apps/)támogatjuk az   API-val kompatibilis Logic apps és [automatizálási](https://preview.flow.microsoft.com/connectors/shared_videoindexer-v2/video-indexer-v2/)   összekötőket. Az összekötők segítségével egyéni munkafolyamatokat állíthat be, amelyekkel hatékonyan indexelheti és kinyerheti a nagy mennyiségű videó-és hangfájlból származó elemzéseket anélkül, hogy egyetlen sor kódot kellene írnia. Emellett az integrációs összekötők segítségével jobb láthatóságot biztosít a munkafolyamat állapotával és a hibakereséshez.  
 
-Ha segítségre van szüksége a Video Indexer-összekötők gyors megkezdéséhez, egy példát láthat a logikai alkalmazásra és a beállítható automatizálási megoldásra. Ez az oktatóanyag bemutatja, hogyan állíthatja be a folyamatokat a Logic Apps használatával.
+Ha segítségre van szüksége a Video Indexer-összekötők gyors megkezdéséhez, egy példát láthat a logikai alkalmazásra és a beállítható automatizálási megoldásra. Ez az oktatóanyag bemutatja, hogyan állíthatja be a folyamatokat a Logic Apps használatával. A szerkesztők és a képességek azonban szinte azonosak mindkét megoldásban, így a diagramok és a magyarázatok egyaránt alkalmazhatók a Logic Apps és a teljesítmény automatizálására is.
 
 Az oktatóanyagban szereplő "a videó automatikus feltöltése és indexelése" forgatókönyv két különböző, együttesen működő folyamatból áll. 
 * Az első folyamat akkor aktiválódik, ha egy blobot hozzáadnak vagy módosítanak egy Azure Storage-fiókban. Feltölti az új fájlt Video Indexer egy visszahívási URL-címmel, hogy értesítést küldjön az indexelési művelet befejeződése után. 
@@ -53,7 +53,12 @@ Az első folyamat beállításához meg kell adnia a Video Indexer API-kulcsot �
 
 ![Kapcsolat neve és API-kulcs](./media/logic-apps-connector-tutorial/connection-name-api-key.png)
 
-Miután kapcsolódhat az Azure Storage-hoz, és Video Indexer fiókokhoz, megkeresheti és kiválaszthatja a "blob hozzáadása vagy módosítása" triggert **Logic apps Designerben**. Válassza ki azt a tárolót, ahová a videofájlokat helyezni fogja. 
+> [!TIP]
+> Ha korábban csatlakoztatott egy Video Indexer-vagy Storage-fiókot a Logic Apps a kapcsolat adatait tárolja, és a rendszer automatikusan csatlakoztatja. A kapcsolat szerkesztéséhez kattintson a **kapcsolat módosítása** lehetőségre az egyes műveletek alján.
+
+Miután kapcsolódhat az Azure Storage-hoz, és Video Indexer fiókokhoz, megkeresheti és kiválaszthatja a "blob hozzáadása vagy módosítása" triggert **Logic apps Designerben**.
+
+Válassza ki azt a tárolót, ahová a videofájlokat helyezni fogja. 
 
 ![Képernyőfelvétel: a blob hozzáadásakor vagy módosításakor megjelenő párbeszédpanel, ahol kijelölhet egy tárolót.](./media/logic-apps-connector-tutorial/container.png)
 

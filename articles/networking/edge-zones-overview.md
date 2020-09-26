@@ -7,12 +7,12 @@ ms.service: vnf-manager
 ms.topic: article
 ms.date: 07/07/2020
 ms.author: ganesr
-ms.openlocfilehash: be113fec596d4730d55403b6ce4dbd6d2709e273
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 68aa3342ab09be73a82f4f896ffdff99d15a5350
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260072"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329572"
 ---
 # <a name="about-azure-edge-zone-preview"></a>Az Azure Edge Zone előzetes verziójának bemutatása
 
@@ -74,7 +74,7 @@ A tipikus használati esetek a következők:
 
 A peremhálózati zónák a következő operátorokkal együttműködve lesznek elérhetők:
 
-- &T (Atlanta, Dallas és Los Angeles) 
+- &T (Atlanta, Dallas és Los Angeles)
 
 Az 5G-hálózatokhoz csatlakozó, optimalizált és méretezhető alkalmazásokkal rendelkező ISV-ket mostantól az Azure Edge Zones új, a&T-re vonatkozó előzetes verzióját használhatja az alacsony késésű platformok, a mobil és a csatlakoztatott forgatókönyvek kiépítéséhez és kipróbálásához. Regisztráljon a korai örökbefogadó programra, és használja ki a biztonságos, nagy sávszélességű kapcsolat előnyeit.
 
@@ -86,9 +86,9 @@ További információért [vegye fel a kapcsolatot az Edge Zone csapatával](htt
 
 Az Azure Private Edge Zones az Azure kis helyigényű bővítményei, amelyek a helyszínen vannak elhelyezve. Az Azure Private Edge Zone az [Azure stack Edge](https://azure.microsoft.com/products/azure-stack/edge/) platformon alapul. Kis késésű hozzáférést biztosít a helyszínen üzembe helyezett számítástechnikai és tárolási szolgáltatásokhoz. A privát peremhálózati zóna lehetővé teszi, hogy a szoftvergyártók és a virtualizált hálózati függvények (VNFs-EK) alkalmazásait az [Azure által felügyelt alkalmazásokként](https://azure.microsoft.com/services/managed-applications/) , valamint a helyszíni virtuális gépekkel és tárolókkal is telepítse. Ezek a VNFs tartalmazhatnak mobil csomagok magjait, útválasztókat, tűzfalakat és SD-WAN készülékeket. Az Azure Private Edge Zone egy Felhőbeli natív kialakítási megoldás, amely lehetővé teszi a VNFs és az alkalmazások életciklusának kezelését a Azure Portal.
 
-Az Azure Private Edge Zone lehetővé teszi, hogy a helyszínen fejlesszen és helyezzen üzembe alkalmazásokat az Azure-ban az alkalmazások létrehozásához és üzembe helyezéséhez használt, ismerős eszközök használatával. 
+Az Azure Private Edge Zone lehetővé teszi, hogy a helyszínen fejlesszen és helyezzen üzembe alkalmazásokat az Azure-ban az alkalmazások létrehozásához és üzembe helyezéséhez használt, ismerős eszközök használatával.
 
-Emellett a következőket is lehetővé teszi: 
+Emellett a következőket is lehetővé teszi:
 
 - Privát mobil hálózatok futtatása (privát HTH, privát 5G).
 - A biztonsági funkciók, például a tűzfalak implementálása.
@@ -113,6 +113,7 @@ A VNF-gyártók, az ISV-és az MSP-partnerek gazdag ökoszisztémája lehetővé
 ##### <a name="virtualized-evolved-packet-core-vepc-for-mobile-networks"></a><a name="vEPC"></a>Virtualizált kialakult Packet Core (vEPC) mobil hálózatokhoz
 
 - [Megerősített hálózatok](https://www.affirmednetworks.com/)
+- [Celona](https://www.celona.io/azure-edge)
 - [Druida szoftver](https://www.druidsoftware.com/)
 - [Expeto](https://www.expeto.io/)
 - [Mavenir](https://mavenir.com/)
@@ -121,12 +122,15 @@ A VNF-gyártók, az ISV-és az MSP-partnerek gazdag ökoszisztémája lehetővé
 
 ##### <a name="mobile-radio-partners"></a><a name="mobile-radio"></a>Mobil rádiós partnerek
 
+- [Celona](https://www.celona.io/azure-edge)
 - [Commscope ricsaj](https://support.ruckuswireless.com/)
 
 ##### <a name="sd-wan-vendors"></a><a name="sdwan-vendors"></a>SD-WAN-szállítók
 
+- [128 Technology](https://www.128technology.com/)
 - [NetFoundry](https://netfoundry.io/)
 - [Nuage hálózatok Nokia-ból](https://www.nuagenetworks.net/)
+- [Fordítva hálózatok](https://www.versa-networks.com/)
 - [VMware SD – WAN by Velocloud](https://www.velocloud.com/)
 
 ##### <a name="router-vendors"></a><a name="router-vendors"></a>Útválasztó-szállítók
@@ -158,10 +162,10 @@ A VNF-gyártók, az ISV-és az MSP-partnerek gazdag ökoszisztémája lehetővé
 
 ![Privát mobileszköz a privát peremhálózati zónákban](./media/edge-zones-overview/mobile-networks.png "Privát mobileszköz a privát peremhálózati zónákban")
 
-Most már üzembe helyezhet egy privát mobil hálózatot a saját peremhálózati zónákban. A privát mobileszközök rendkívül alacsony késést és nagy kapacitást, valamint az üzleti szempontból kritikus fontosságú alkalmazások számára szükséges megbízható és biztonságos vezeték nélküli hálózatot teszik lehetővé. 
+Most már üzembe helyezhet egy privát mobil hálózatot a saját peremhálózati zónákban. A privát mobileszközök rendkívül alacsony késést és nagy kapacitást, valamint az üzleti szempontból kritikus fontosságú alkalmazások számára szükséges megbízható és biztonságos vezeték nélküli hálózatot teszik lehetővé.
 
-A privát mobil hálózatok a következő esetekben engedélyezhetik a hasonló forgatókönyveket: 
-- Az automatizált vezetett járművek (AGVs-EK) irányítása és vezérlése a raktárakban. 
+A privát mobil hálózatok a következő esetekben engedélyezhetik a hasonló forgatókönyveket:
+- Az automatizált vezetett járművek (AGVs-EK) irányítása és vezérlése a raktárakban.
 - Valós idejű kommunikáció a robotok között az intelligens gyárakban.
 - Kibővített valóság és virtuális valóság Edge-alkalmazások.
 
@@ -174,7 +178,7 @@ A Microsoft olyan partneri ökoszisztémát biztosít, amely segítséget nyújt
 #### <a name="sd-wan-on-private-edge-zones"></a><a name="sdwan-private-edge"></a>SD-WAN a saját peremhálózati zónái
 
 ![SD-WAN a saját peremhálózati zónái](./media/edge-zones-overview/sd-wan.png "SD-WAN a saját peremhálózati zónái")
- 
+
 Az SD-WAN lehetővé teszi, hogy olyan nagyvállalati szintű hálózatokat (WAN) hozzon létre, amelyek az alábbi előnyökkel rendelkeznek:
 
 - Nagyobb sávszélesség
@@ -183,7 +187,7 @@ Az SD-WAN lehetővé teszi, hogy olyan nagyvállalati szintű hálózatokat (WAN
 - Megbízhatóság
 - Szabályzatkezelés
 - Kiterjedt hálózat láthatósága
-    
+
 Az SD-WAN zökkenőmentes fiókirodai kapcsolatot biztosít, amely a redundáns központi vezérlőkből áll, és alacsonyabb a tulajdonlási díja.
 Az SD-WAN privát peremhálózati zónái lehetővé teszik, hogy a CAPEX-központú modellből egy szolgáltatott szoftveres (SaaS) modellre váltson, hogy csökkentse az informatikai költségvetéseket. Az Ön által választott SD-WAN-partnereket, Orchestrator vagy vezérlőket használhat az új szolgáltatások engedélyezéséhez, és a teljes hálózaton keresztül propagálhatja azokat.
 
