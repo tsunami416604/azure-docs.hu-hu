@@ -7,12 +7,12 @@ ms.service: azure-cdn
 ms.topic: article
 ms.date: 05/26/2020
 ms.author: allensu
-ms.openlocfilehash: 75633521474ec3bcbc35cea49ea7a2da6a271e01
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 295bc0a20a547bf944f48af6711b18af34571b02
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83872500"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362580"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-reference"></a>Azure CDN a Verizon Premium Rules motor referenciája
 
@@ -28,7 +28,7 @@ A szabályok motor úgy lett kialakítva, hogy az adott típusú kérelmeknek a 
 - Egyéni naplófájlok tárolása.
 ## <a name="key-concepts"></a>Fő fogalmak
 A szabályok motorjának beállításával kapcsolatos alapfogalmak alább olvashatók.
-### <a name="draft"></a>Vázlat
+### <a name="draft"></a>Draft
 A szabályzatok vázlata egy vagy több olyan szabályból áll, amely a kérelmek azonosítását és a rájuk vonatkozó műveletek készletét jelenti. A draft egy olyan folyamatban lévő folyamat, amely a gyakori konfigurációs frissítéseket a hely forgalmának befolyásolása nélkül teszi lehetővé. Miután a vázlat készen áll a véglegesítésre, át kell alakítani egy írásvédett szabályzatba.
 
 ### <a name="rule"></a>Szabály
@@ -41,7 +41,7 @@ A következőkből áll:
 - Olyan funkciók összessége, amelyek meghatározzák, hogy a CDN hogyan fogja kezelni a fenti kérelmeket.
 Ezeket az elemeket a következő ábra azonosítja.
 
-![Házirend-telepítési munkafolyamat](./media/cdn-verizon-premium-rules-engine-reference/verizon-rules-engine-reference.png)
+![A címkékkel ellátott képernyőképen látható egy szabály feltételes kifejezése, a egyezése és a szolgáltatás funkciói.](./media/cdn-verizon-premium-rules-engine-reference/verizon-rules-engine-reference.png)
 
 ### <a name="policy"></a>Szabályzat
 A csak olvasható szabályokból álló szabályzatok az alábbiakat biztosítják:
@@ -95,7 +95,7 @@ A helyettesítő karakterként értelmezett szöveg a speciális karakterek tov�
 
 Karakter | Description
 ----------|------------
-\ | A program fordított perjelet használ a táblázatban megadott karakterek bármelyikének megmeneküléséhez. Meg kell adni egy fordított perjelet közvetlenül a kikerülő különleges karakter előtt.<br/>Az alábbi szintaxis például megmenekül egy csillaggal:`\*`
+\ | A program fordított perjelet használ a táblázatban megadott karakterek bármelyikének megmeneküléséhez. Meg kell adni egy fordított perjelet közvetlenül a kikerülő különleges karakter előtt.<br/>Az alábbi szintaxis például megmenekül egy csillaggal: `\*`
 % | A százalékos szimbólum az URL-kódolás (például:) jelölésére szolgál `%20` .
 \* | A csillag egy helyettesítő karakter, amely egy vagy több karaktert jelöl.
 Space (Szóköz) | A szóköz karakter azt jelzi, hogy egy egyezési feltétel teljesül a megadott értékek vagy minták valamelyikével.
@@ -107,7 +107,7 @@ A reguláris kifejezések határozzák meg a szöveges értéken belül keresend
 
 Speciális karakter | Description
 ------------------|------------
-\ | Egy fordított perjel elmenekül a következő karakterrel, ami azt eredményezi, hogy a karaktert literál értékként kell kezelni, ahelyett, hogy a reguláris kifejezés jelentését kellene használnia. Az alábbi szintaxis például megmenekül egy csillaggal:`\*`
+\ | Egy fordított perjel elmenekül a következő karakterrel, ami azt eredményezi, hogy a karaktert literál értékként kell kezelni, ahelyett, hogy a reguláris kifejezés jelentését kellene használnia. Az alábbi szintaxis például megmenekül egy csillaggal: `\*`
 % | A százalékos szimbólum jelentése a használattól függ.<br/><br/> `%{HTTPVariable}`: Ez a szintaxis egy HTTP-változót azonosít.<br/>`%{HTTPVariable%Pattern}`: Ez a szintaxis egy százalékos szimbólummal azonosítja a HTTP-változót és elválasztóként.<br />`\%`: A százalékos szimbólum megmenekülése lehetővé teszi, hogy literál értékként, vagy URL-kódolást jelezzen (például: `\%20` ).
 \* | A csillag lehetővé teszi, hogy az előző karakter nulla vagy több alkalommal legyen összepárosítva.
 Space (Szóköz) | A szóköz karaktert általában literál karakterként kezeli a rendszer.
@@ -117,9 +117,9 @@ A reguláris kifejezéseket támogató feltételek és funkciók egyeztetése a 
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Szabálymotor egyezési feltételei](cdn-verizon-premium-rules-engine-reference-match-conditions.md)
+- [Szabályok motorjának egyeztetési feltételei](cdn-verizon-premium-rules-engine-reference-match-conditions.md)
 - [Szabálymotor feltételes kifejezései](cdn-verizon-premium-rules-engine-reference-conditional-expressions.md)
 - [Szabálymotor funkciói](cdn-verizon-premium-rules-engine-reference-features.md)
 - [HTTP-viselkedés felülbírálása a szabályok motor használatával](cdn-verizon-premium-rules-engine.md)

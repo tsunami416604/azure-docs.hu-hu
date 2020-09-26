@@ -4,17 +4,17 @@ description: Az Azure Security teljesítményteszt v2 adatvédelme
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/13/2020
+ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: e377c6669b1db96f549958173aded4f29bae6713
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: ab42acbc07072f48d28b3adb5bc4c65672f257bc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90059252"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314317"
 ---
-# <a name="security-control-data-protection"></a>Biztonság-ellenőrzés: Adatvédelem
+# <a name="security-control-v2-data-protection"></a>Biztonság-vezérlés v2: Adatvédelem
 
 Az adatvédelem magában foglalja az adatvédelem inaktív állapotban, továbbításkor és a jogosult hozzáférési mechanizmusok útján történő felügyeletét. Ez magában foglalja a bizalmas adategységek felderítését, osztályozását, védelmének és figyelését a hozzáférés-vezérlés, a titkosítás és az Azure-beli naplózás használatával.
 
@@ -22,7 +22,7 @@ Az adatvédelem magában foglalja az adatvédelem inaktív állapotban, tovább�
 
 | Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP800-53 R4 azonosító (k) |
 |--|--|--|--|
-| DP-1 | 14,5, 14,7 | SI-4, SC-28 |
+| DP-1 | 13,1, 14,5, 14,7 | SC-28 |
 
 Felderítheti, osztályozhatja és címkézheti a bizalmas adatokat, így megtervezheti a megfelelő vezérlőket, hogy biztosítsa a bizalmas adatok tárolását, feldolgozását és biztonságos továbbítását a szervezet technológiai rendszereinek segítségével. 
 
@@ -36,7 +36,7 @@ Az Azure SQL Information Protection használatával segítséget nyújthat az Az
 
 **Felelősség**: megosztott
 
-**Ügyfelek biztonsági résztvevői**:
+**Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Alkalmazások biztonsága és DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)  
 
@@ -62,7 +62,7 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 **Felelősség**: megosztott
 
-**Ügyfelek biztonsági résztvevői**:
+**Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Alkalmazások biztonsága és DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
@@ -90,9 +90,9 @@ Ha az adatveszteség-megelőzés (DLP) megfelelőségéhez szükség van, egy ga
 
 **Felelősség**: megosztott
 
-**Ügyfelek biztonsági résztvevői**:
+**Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Biztonsági műveletek központja (SOC)](/azure/cloud-adoption-framework/organize/cloud-security) 
+- [Biztonsági műveletek](/azure/cloud-adoption-framework/organize/cloud-security) 
 
 - [Alkalmazások biztonsága és DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
@@ -118,7 +118,7 @@ Alapértelmezés szerint az Azure titkosítást biztosít az Azure-adatközponto
 
 **Felelősség**: megosztott
 
-**Ügyfelek biztonsági résztvevői**:
+**Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Biztonsági architektúra](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -148,7 +148,7 @@ Az Azure alapértelmezés szerint az inaktív adatok titkosítását biztosítja
 
 **Felelősség**: megosztott
 
-**Ügyfelek biztonsági résztvevői**:
+**Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Biztonsági architektúra](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 

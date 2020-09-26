@@ -10,14 +10,14 @@ ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
-ms.topic: article
+ms.topic: tutorial
 ms.date: 01/08/2020
-ms.openlocfilehash: 20ca7f1d9c8322fe9a4d5dd784768bdaaf7cd0d7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 12725c28c3e128317301bc51f9ce93f76021cc2b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85314938"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91291367"
 ---
 # <a name="tutorial-migrate-rds-sql-server-to-azure-sql-database-or-an-azure-sql-managed-instance-online-using-dms"></a>Oktatóanyag: RDS SQL Server migrálása Azure SQL Database vagy Azure SQL felügyelt példányra online a DMS használatával
 
@@ -30,7 +30,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Egy Azure Database Migration Service-példány létrehozása.
 > * Migrálási projekt létrehozása az Azure Database Migration Service használatával.
 > * A migrálás futtatása.
-> * A migrálás monitorozása.
+> * Az áttelepítés monitorozása.
 > * Migrálási jelentés letöltése.
 
 > [!NOTE]
@@ -250,7 +250,7 @@ A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa me
 
 4. A következő **speciális Online áttelepítési beállítások**megadása után válassza a **Mentés**lehetőséget.
 
-    | Beállítás | Description |
+    | Beállítás | Leírás |
     | ------------- | ------------- |
     | **A párhuzamosan betölteni kívánt táblázatok maximális száma** | Meghatározza, hogy a DMS hány táblát hajt végre párhuzamosan az áttelepítés során. Az alapértelmezett érték 5, de beállítható úgy, hogy az optimális érték legyen az adott áttelepítési igényeknek megfelelő POC-Migrálás alapján. |
     | **A forrástábla csonkítása esetén** | Meghatározza, hogy a DMS csonkolja-e a cél táblát az áttelepítés során. Ez a beállítás akkor lehet hasznos, ha egy vagy több tábla az áttelepítési folyamat részeként van csonkítva. |
@@ -292,7 +292,7 @@ Az első teljes betöltés elkészültével az adatbázisok **Átállásra kész
 
     ![Tevékenység állapota: Befejezve](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-activity-completed.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ az Azure-ba történő online áttelepítéssel kapcsolatos ismert problémákról és korlátozásokról: [ismert problémák és megkerülő megoldások online áttelepítéssel](known-issues-azure-sql-online.md).
 * További információ a Database Migration Serviceről: [Mi a Database Migration Service?](https://docs.microsoft.com/azure/dms/dms-overview).

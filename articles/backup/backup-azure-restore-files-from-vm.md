@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan állíthatja helyre a fájlok
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: fd68c33e4425d717837923b90119d42569a1f003
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 3f26f761b3d683be71f7f6d900d91dd432ceefc8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89178520"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91292965"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Fájlok helyreállítása az Azure-beli virtuális gépek biztonsági másolatából
 
@@ -302,17 +302,17 @@ A parancsfájlnak a Python és a bash összetevők futtatására is szükség va
 Ha korlátozott hozzáféréssel rendelkező számítógépen futtatja a parancsfájlt, ellenőrizze, hogy van-e hozzáférése a következőhöz:
 
 - `download.microsoft.com`
-- A helyreállítási szolgáltatás URL-címei (a Geo neve arra a régióra utal, ahol a Recovery Services-tároló található)
-  - `https://pod01-rec2.geo-name.backup.windowsazure.com` (Azure-beli nyilvános régiókban)
-  - `https://pod01-rec2.geo-name.backup.windowsazure.cn` (Az Azure China 21Vianet esetében)
-  - `https://pod01-rec2.geo-name.backup.windowsazure.us` (Azure USA kormánya)
-  - `https://pod01-rec2.geo-name.backup.windowsazure.de` (Az Azure Germany esetében)
+- A helyreállítási szolgáltatás URL-címei (a GEO neve arra a régióra utal, ahol a Recovery Services-tároló található)
+  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.com` (Azure-beli nyilvános régiókban)
+  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.cn` (Az Azure China 21Vianet esetében)
+  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.us` (Azure USA kormánya)
+  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.de` (Az Azure Germany esetében)
 - Kimenő portok 53 (DNS), 443, 3260
 
 > [!NOTE]
 >
-> - A letöltött parancsfájl neve lesz az URL-címben kitöltendő **geo-név** . Például: a letöltött parancsfájl neve a \' VMname \' \_ \' geoname \' _ \' GUID azonosítóval kezdődik \' , például *ContosoVM_wcus_12345678*
-> - Az URL-cím a következő lenne: <https://pod01-rec2.wcus.backup.windowsazure.com> "
+> A [fenti](#mount-the-volume-and-copy-files) 5. lépésben letöltött parancsfájl a fájl nevében fogja tartalmazni a **geo-nevet** . Használja ezt a **földrajzi nevet** az URL-cím kitöltéséhez. A letöltött parancsfájl neve a következőket fogja kezdeni: \' VMname \' \_ \' geoname \' _ \' GUID \' .<br><br>
+> Így például, ha a parancsfájl fájlneve *ContosoVM_wcus_12345678*, a **geo-név** *wcus* , és az URL-cím a következő lesz:<br> <https://pod01-rec2.wcus.backup.windowsazure.com>
 >
 
 Linux esetén a parancsfájl "Open-iSCSI" és "lshw" összetevőket igényel a helyreállítási ponthoz való kapcsolódáshoz. Ha az összetevők nem léteznek azon a számítógépen, amelyen a parancsfájl fut, a parancsfájl engedélyt kér az összetevők telepítésére. Adja meg a szükséges összetevők telepítésének jóváhagyását.
@@ -400,7 +400,7 @@ A szülő/biztonsági mentés alatt lévő virtuális gépen található összes
 
 A parancsfájl csak olvasási hozzáférést biztosít egy helyreállítási ponthoz, és csak 12 órára érvényes. Ha korábban szeretné eltávolítani a hozzáférést, jelentkezzen be Azure Portal/PowerShell/parancssori felületre, és hajtson végre **leválasztott lemezeket** az adott helyreállítási ponthoz. A parancsfájl azonnal érvénytelenítve lesz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A fájlok visszaállítása során felmerülő problémákért tekintse meg a [hibaelhárítási](#troubleshooting) szakaszt.
 - Ismerje meg, hogyan [állíthatja vissza a fájlokat a PowerShell](./backup-azure-vms-automation.md#restore-files-from-an-azure-vm-backup) használatával

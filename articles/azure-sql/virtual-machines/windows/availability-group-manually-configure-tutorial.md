@@ -8,18 +8,18 @@ editor: monicar
 tags: azure-service-management
 ms.assetid: 08a00342-fee2-4afe-8824-0db1ed4b8fca
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 22240c61b2341999528dcb477308990133042fa0
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 30c7d525f821b828dcc4c389c32a27123b79a56b
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286859"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360922"
 ---
 # <a name="tutorial-configure-a-sql-server-availability-group-on-azure-virtual-machines-manually"></a>Oktatóanyag: SQL Server rendelkezésre állási csoport konfigurálása az Azure Virtual Machines-on manuálisan
 
@@ -41,13 +41,13 @@ A következő táblázat felsorolja azokat az előfeltételeket, amelyeket el ke
 
 | Követelmény |Leírás |
 |----- |----- |----- |
-|![Square ](./media/availability-group-manually-configure-tutorial/square.png) **Two SQL Server instances**    | – Azure-beli rendelkezésre állási csoport <br/> -Egyetlen tartományban <br/> -A feladatátvételi fürtszolgáltatás telepített funkciója |
-|![Square ](./media/availability-group-manually-configure-tutorial/square.png) **Windows Server**    | Fájlmegosztás a tanúsító fürthöz |  
-|![Square ](./media/availability-group-manually-configure-tutorial/square.png) **SQL Server-szolgáltatásfiók**    | Tartományi fiók |
-|![Square ](./media/availability-group-manually-configure-tutorial/square.png) **SQL Server Agent-szolgáltatásfiók**    | Tartományi fiók |  
-|![A szögletes ](./media/availability-group-manually-configure-tutorial/square.png) **tűzfal portjai nyitva** vannak    | -SQL Server: **1433** az alapértelmezett példányhoz <br/> – Adatbázis-tükrözési végpont: **5022** vagy bármely elérhető port <br/> -Rendelkezésre állási csoport terheléselosztó IP-címe állapotának mintavétele: **59999** vagy bármely elérhető port <br/> – A fürt alapvető terheléselosztó IP-címe állapotának mintavétele: **58888** vagy bármely elérhető port |
-|![A ](./media/availability-group-manually-configure-tutorial/square.png) **feladatátvételi fürtszolgáltatás hozzáadása funkció**    | Mindkét SQL Server példánynak szüksége van erre a szolgáltatásra |
-|![Négyzetes ](./media/availability-group-manually-configure-tutorial/square.png) **telepítési tartományi fiók**    | -Helyi rendszergazda az egyes SQL Servereken <br/> -SQL Server sysadmin (rendszergazda) rögzített kiszolgálói szerepkör tagja SQL Server egyes példányaihoz  |
+|:::image type="icon" source="./media/availability-group-manually-configure-tutorial/square.png" border="false":::   **Két SQL Server példány** | – Azure-beli rendelkezésre állási csoport <br/> -Egyetlen tartományban <br/> -A feladatátvételi fürtszolgáltatás telepített funkciója |
+|:::image type="icon" source="./media/availability-group-manually-configure-tutorial/square.png" border="false":::   **Windows Server** | Fájlmegosztás a tanúsító fürthöz |  
+|:::image type="icon" source="./media/availability-group-manually-configure-tutorial/square.png" border="false":::   **SQL Server szolgáltatásfiók** | Tartományi fiók |
+|:::image type="icon" source="./media/availability-group-manually-configure-tutorial/square.png" border="false":::   **SQL Server Agent szolgáltatásfiók** | Tartományi fiók |  
+|:::image type="icon" source="./media/availability-group-manually-configure-tutorial/square.png" border="false":::   **A tűzfal portjai nyitva vannak** | -SQL Server: **1433** az alapértelmezett példányhoz <br/> – Adatbázis-tükrözési végpont: **5022** vagy bármely elérhető port <br/> -Rendelkezésre állási csoport terheléselosztó IP-címe állapotának mintavétele: **59999** vagy bármely elérhető port <br/> – A fürt alapvető terheléselosztó IP-címe állapotának mintavétele: **58888** vagy bármely elérhető port |
+|:::image type="icon" source="./media/availability-group-manually-configure-tutorial/square.png" border="false":::   **Feladatátvételi fürtszolgáltatás hozzáadása** | Mindkét SQL Server példánynak szüksége van erre a szolgáltatásra |
+|:::image type="icon" source="./media/availability-group-manually-configure-tutorial/square.png" border="false":::   **Telepítési tartományi fiók** | -Helyi rendszergazda az egyes SQL Servereken <br/> -SQL Server sysadmin (rendszergazda) rögzített kiszolgálói szerepkör tagja SQL Server egyes példányaihoz  |
 
 
 Az oktatóanyag megkezdése előtt be kell [fejeznie az Always On rendelkezésre állási csoportok létrehozásához szükséges előfeltételeket az Azure Virtual Machinesban](availability-group-manually-configure-prerequisites-tutorial.md). Ha ezek az előfeltételek már befejeződtek, ugorjon a [fürt létrehozása](#CreateCluster)lehetőségre.
@@ -119,7 +119,7 @@ Adja hozzá a másik SQL Server a fürthöz.
    >Ha tárolóhelyeket használ, és nem törli **az összes megfelelő tároló hozzáadása a fürthöz**lehetőséget, a Windows leválasztja a virtuális lemezeket a fürtözési folyamat során. Ennek eredményeképpen azok nem jelennek meg a Lemezkezelésben vagy az Intézőben, amíg a tárolóhelyek el nem távolítják a fürtöt, és a PowerShell használatával újra hozzá vannak rendelve. A tárolóhelyek több lemezt is csoportosítanak a Storage-készletekbe. További információ: [tárolóhelyek](https://technet.microsoft.com/library/hh831739).
    >
 
-1. Válassza a **Tovább** lehetőséget.
+1. Kattintson a **Tovább** gombra.
 
 1. Válassza a **Befejezés** lehetőséget.
 
@@ -143,9 +143,9 @@ Ebben a példában a Windows-fürt fájlmegosztást használ a fürt Kvórumána
 
    Megosztás létrehozásához használja **a megosztott mappa létrehozása varázslót** .
 
-1. A **mappa elérési útja**lapon válassza a **Tallózás** lehetőséget, és keresse meg vagy hozza létre a megosztott mappa elérési útját. Válassza a **Tovább** lehetőséget.
+1. A **mappa elérési útja**lapon válassza a **Tallózás** lehetőséget, és keresse meg vagy hozza létre a megosztott mappa elérési útját. Kattintson a **Tovább** gombra.
 
-1. A **név, leírás és beállítások területen** ellenőrizze a megosztás nevét és elérési útját. Válassza a **Tovább** lehetőséget.
+1. A **név, leírás és beállítások területen** ellenőrizze a megosztás nevét és elérési útját. Kattintson a **Tovább** gombra.
 
 1. A **megosztott mappa engedélyeinek** beállítása **testreszabja az engedélyeket**. Válassza az **Egyéni...** lehetőséget.
 
@@ -181,9 +181,9 @@ Ezután állítsa be a fürt kvórumát.
    >A Windows Server 2016 támogatja a Felhőbeli tanúkat. Ha ezt a típusú tanúsító választja, nincs szükség a tanúsító fájlmegosztás megosztására. További információ: [Felhőbeli tanúsító üzembe helyezése feladatátvevő fürtön](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness). Ez az oktatóanyag egy tanúsító fájlmegosztást használ, amelyet a korábbi operációs rendszerek támogatnak.
    >
 
-1. A **tanúsító fájlmegosztás konfigurálása**területen adja meg a létrehozott megosztás elérési útját. Válassza a **Tovább** lehetőséget.
+1. A **tanúsító fájlmegosztás konfigurálása**területen adja meg a létrehozott megosztás elérési útját. Kattintson a **Tovább** gombra.
 
-1. Ellenőrizze a beállításokat a **megerősítéshez**. Válassza a **Tovább** lehetőséget.
+1. Ellenőrizze a beállításokat a **megerősítéshez**. Kattintson a **Tovább** gombra.
 
 1. Válassza a **Befejezés** lehetőséget.
 
@@ -234,7 +234,7 @@ Repeat these steps on the second SQL Server.
 7. **Object Explorer**kattintson a jobb gombbal az **adatbázisok** elemre, és válassza az **új adatbázis**lehetőséget.
 8. Az **adatbázis neve**mezőbe írja be a **MyDB1**nevet, majd kattintson **az OK gombra**.
 
-### <a name="create-a-backup-share"></a><a name="backupshare"></a>Biztonsági másolat megosztásának létrehozása
+### <a name="create-a-backup-share"></a><a name="backupshare"></a> Biztonsági másolat megosztásának létrehozása
 
 1. A **Kiszolgálókezelő**első SQL Server válassza az **eszközök**elemet. Nyissa meg a **Számítógép-kezelés**programot.
 
@@ -246,9 +246,9 @@ Repeat these steps on the second SQL Server.
 
    Megosztás létrehozásához használja **a megosztott mappa létrehozása varázslót** .
 
-1. A **mappa elérési útja**lapon válassza a **Tallózás** lehetőséget, és keresse meg vagy hozza létre az adatbázis biztonsági másolatának megosztott mappájának elérési útját. Válassza a **Tovább** lehetőséget.
+1. A **mappa elérési útja**lapon válassza a **Tallózás** lehetőséget, és keresse meg vagy hozza létre az adatbázis biztonsági másolatának megosztott mappájának elérési útját. Kattintson a **Tovább** gombra.
 
-1. A **név, leírás és beállítások területen** ellenőrizze a megosztás nevét és elérési útját. Válassza a **Tovább** lehetőséget.
+1. A **név, leírás és beállítások területen** ellenőrizze a megosztás nevét és elérési útját. Kattintson a **Tovább** gombra.
 
 1. A **megosztott mappa engedélyeinek** beállítása **testreszabja az engedélyeket**. Válassza az **Egyéni...** lehetőséget.
 
@@ -285,7 +285,7 @@ Most már készen áll a rendelkezésre állási csoport konfigurálására a k�
 
     ![Új rendelkezésre állási csoport elindítása varázsló](./media/availability-group-manually-configure-tutorial/56-newagwiz.png)
 
-2. A **Bevezetés** lapon válassza a **tovább**lehetőséget. A rendelkezésre **állási csoport nevének megadása** lapon adja meg a rendelkezésre állási **csoport nevét a**rendelkezésre állási csoport nevében. Például **AG1**. Válassza a **Tovább** lehetőséget.
+2. A **Bevezetés** lapon válassza a **tovább**lehetőséget. A rendelkezésre **állási csoport nevének megadása** lapon adja meg a rendelkezésre állási **csoport nevét a**rendelkezésre állási csoport nevében. Például **AG1**. Kattintson a **Tovább** gombra.
 
     ![Új rendelkezésre állási csoport varázsló, rendelkezésre állási csoport nevének megadása](./media/availability-group-manually-configure-tutorial/58-newagname.png)
 
@@ -301,7 +301,7 @@ Most már készen áll a rendelkezésre állási csoport konfigurálására a k�
 
    ![Új rendelkezésre állási csoport varázsló, replikák megadása](./media/availability-group-manually-configure-tutorial/62-newagaddreplica.png)
 
-5. Megjelenik a **Kapcsolódás a kiszolgálóhoz** párbeszédpanel. Írja be a **kiszolgáló neve**mezőbe a második kiszolgáló nevét. Kattintson a **Csatlakozás** gombra.
+5. Megjelenik a **Kapcsolódás a kiszolgálóhoz** párbeszédpanel. Írja be a **kiszolgáló neve**mezőbe a második kiszolgáló nevét. Válassza a **Kapcsolódás** lehetőséget.
 
    A **replikák megadására** szolgáló lapon a második kiszolgáló jelenik meg a **rendelkezésre állási replikák**területen. Konfigurálja a replikákat az alábbiak szerint.
 
@@ -311,7 +311,7 @@ Most már készen áll a rendelkezésre állási csoport konfigurálására a k�
 
     ![Új rendelkezésre állási csoport varázsló, válassza a kezdeti adatszinkronizálás lehetőséget.](./media/availability-group-manually-configure-tutorial/66-endpoint.png)
 
-8. A **kezdeti adatszinkronizálás kiválasztása** lapon válassza a **teljes** lehetőséget, és adjon meg egy megosztott hálózati helyet. A helyhez használja a [létrehozott biztonsági mentési megosztást](#backupshare). A példában ** \\ \\<először SQL Server \> \backup \\ **. Válassza a **Tovább** lehetőséget.
+8. A **kezdeti adatszinkronizálás kiválasztása** lapon válassza a **teljes** lehetőséget, és adjon meg egy megosztott hálózati helyet. A helyhez használja a [létrehozott biztonsági mentési megosztást](#backupshare). A példában ** \\ \\<először SQL Server \> \backup \\ **. Kattintson a **Tovább** gombra.
 
    >[!NOTE]
    >A teljes szinkronizálás teljes biztonsági mentést készít az adatbázisról SQL Server első példányán, és visszaállítja a második példányra. Nagyméretű adatbázisok esetén a teljes szinkronizálás nem ajánlott, mert hosszú időt is igénybe vehet. Ezt az időt manuálisan is elvégezheti, ha kézzel készít biztonsági másolatot az adatbázisról, és visszaállítja azt `NO RECOVERY` . Ha az adatbázis már vissza van állítva a `NO RECOVERY` második SQL Server a rendelkezésre állási csoport konfigurálása előtt, válassza a **csak csatlakozás**lehetőséget. Ha a rendelkezésre állási csoport konfigurálása után szeretné a biztonsági mentést készíteni, válassza a **kezdeti adatszinkronizálás kihagyása**lehetőséget.
@@ -367,7 +367,7 @@ Az Azure-ban a terheléselosztó lehet standard Load Balancer vagy egy alapszint
 
    ![Rendelkezésre állási csoport a Feladatátvevőfürt-kezelő](./media/availability-group-manually-configure-tutorial/82-azureloadbalancer.png)
 
-1. Válassza a **Létrehozás** lehetőséget.
+1. Kattintson a **Létrehozás** gombra.
 1. Konfigurálja a terheléselosztó következő paramétereit.
 
    | Beállítás | Mező |
@@ -490,7 +490,7 @@ A WSFC IP-címének is szerepelnie kell a terheléselosztó számára.
 
 1. A terheléselosztási szabályok megadásához kattintson **az OK gombra** .
 
-## <a name="configure-the-listener"></a><a name="configure-listener"></a>A figyelő konfigurálása
+## <a name="configure-the-listener"></a><a name="configure-listener"></a> A figyelő konfigurálása
 
 A következő lépés a rendelkezésre állási csoport figyelő konfigurálása a feladatátvevő fürtön.
 
@@ -538,6 +538,6 @@ Az SQLCMD-kapcsolat automatikusan csatlakozik a SQL Server-példányhoz, amely a
 > Győződjön meg arról, hogy a megadott port meg van nyitva a tűzfalon mindkét SQL Server-kiszolgálón. Mindkét kiszolgálónak szüksége van egy bejövő szabályra a használt TCP-porthoz. További információ: [Tűzfalszabály hozzáadása vagy szerkesztése](https://technet.microsoft.com/library/cc753558.aspx).
 >
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Adjon hozzá egy IP-címet egy terheléselosztó számára egy második rendelkezésre állási csoport számára](availability-group-listener-powershell-configure.md#Add-IP).

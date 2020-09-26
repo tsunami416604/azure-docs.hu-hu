@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: c3e4b1c97c5fcc86a863313c2d6f54d93f26390e
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.openlocfilehash: 3b9edab6e908b4506a92c78aa8f3f53277b9c17b
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89055041"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360871"
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>Az Azure-beli virtuális gépekről az elsődleges régióba irányuló feladatátvételhez kapcsolódó védelem-visszaállítási művelet meghiúsult
 
@@ -31,7 +31,7 @@ Ha az Azure-beli virtuális gépeket az egyik régióból a másikba [Azure site
 
 1. A **tárolóban**  >  **replikált elemek**területen kattintson a jobb gombbal a feladatátvételen átadott virtuális gépre, majd válassza az **ismételt védelem**lehetőséget. Az ismételt védelem irányának másodlagosról elsődlegesre kell mutatnia.
 
-   ![Ismételt védelme](./media/site-recovery-how-to-reprotect-azure-to-azure/reprotect.png)
+   ![A képernyőképen egy olyan virtuális gép látható, amelynek a helyi menüje a kijelölés ismételt védelemmel van ellátva.](./media/site-recovery-how-to-reprotect-azure-to-azure/reprotect.png)
 
 1. Tekintse át az erőforráscsoportot, a hálózatot, a tárterületet és a rendelkezésre állási készleteket. Ezután kattintson az **OK** gombra. Ha van olyan erőforrás, amely újként van megjelölve, akkor az ismételt védelmi folyamat részeként jön létre.
 1. A védelmi feladatsor a legfrissebb adatokkal magot a célhelyre. A feladatok befejeződése után a különbözeti replikáció zajlik. Ezután visszatérhet az elsődleges helyre. Kiválaszthatja a Storage-fiókot vagy azt a hálózatot, amelyet az ismételt védelem során használni szeretne, a Testreszabás lehetőség használatával.

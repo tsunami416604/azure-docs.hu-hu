@@ -14,12 +14,12 @@ ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04ea92e18fc6efb8b375a22cc34baf1d33b78802
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: b82dcc633f0f2bb13cb84f80873117f9eb94a24f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279023"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91313162"
 ---
 # <a name="tutorial--integrate-a-single-ad-forest-using-password-hash-sync-phs"></a>Oktatóanyag: egyetlen AD-erdő integrálása a jelszó-kivonatolási szinkronizálással (PHS)
 
@@ -183,8 +183,8 @@ Most létre kell hozni egy Azure AD-bérlőt, hogy szinkronizálni lehessen a fe
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com), és jelentkezzen be egy Azure-előfizetéssel rendelkező fiókkal.
 2. Válassza ki a **plusz ikont (+)** és keresse meg az **Azure Active Directoryt**.
 3. Válassza ki az **Azure Active Directoryt** a keresési eredmények közül.
-4. Válassza a **Létrehozás** lehetőséget.</br>
-![Létrehozás](media/tutorial-password-hash-sync/create1.png)</br>
+4. Kattintson a **Létrehozás** gombra.</br>
+![Képernyőkép, amely bemutatja, hogyan hozhat létre egy Azure AD-bérlőt.](media/tutorial-password-hash-sync/create1.png)</br>
 5. Adja meg a **szervezet nevét** a **kezdeti tartománynevet**. Ezután válassza a **Létrehozás** elemet. Ezzel létrejön a címtár.
 6. Miután ez befejeződik, kattintson az **ide** hivatkozásra a címtár kezeléséhez.
 
@@ -192,10 +192,10 @@ Most létre kell hozni egy Azure AD-bérlőt, hogy szinkronizálni lehessen a fe
 Most, hogy rendelkezünk egy Azure AD-Bérlővel, globális rendszergazdai fiókot hozunk létre.  Ezzel a fiókkal lehet létrehozni az Azure AD Connector-fiókot Azure AD Connect telepítés közben.  Az Azure AD Connector-fiók az információk Azure AD-be való írásához használatos.   A globális rendszergazdai fiók létrehozásához tegye a következőket.
 
 1.  A **Kezelés** menüpontban válassza a **Felhasználók** lehetőséget.</br>
-![Létrehozás](media/tutorial-password-hash-sync/gadmin1.png)</br>
+![Képernyőfelvétel: a kezelés szakaszban kiválasztott felhasználói lehetőség, amelyben globális rendszergazda hozható létre az Azure AD-ben.](media/tutorial-password-hash-sync/gadmin1.png)</br>
 2.  Válassza a **Minden felhasználó**, majd az **+ Új felhasználó** lehetőséget.
 3.  Adjon meg egy nevet és egy felhasználónevet ennek a felhasználónak. Ez lesz a bérlő globális rendszergazdája. A **címtárbeli szerepkört** a **globális rendszergazdára** is módosítani kívánja. Megjelenítheti az ideiglenes jelszót is. Ha elkészült, kattintson a **Létrehozás** gombra.</br>
-![Létrehozás](media/tutorial-password-hash-sync/gadmin2.png)</br>
+![Képernyőfelvétel: az Azure AD-ben globális rendszergazda létrehozásakor kiválasztott létrehozás gomb látható.](media/tutorial-password-hash-sync/gadmin2.png)</br>
 4. Ha ez befejeződik, nyisson meg egy új webböngészőt, és jelentkezzen be a myapps.microsoft.com-be az új globális rendszergazdai fiókkal és az ideiglenes jelszóval.
 5. Módosítsa a globális rendszergazda jelszavát úgy, hogy megjegyezzen.
 
@@ -206,7 +206,7 @@ Most itt az ideje, hogy letöltse és telepítse Azure AD Connect.  A telepíté
 2. Keresse meg az **AzureADConnect.msi** fájlt, és kattintson rá duplán.
 3. Az üdvözlőképernyőn jelölje be a licencfeltételek elfogadását jelző mezőt, és kattintson a **Continue** (Folytatás) gombra.  
 4. Az Express settings (Gyorsbeállítások) képernyőn kattintson a **Use express settings** (Gyorsbeállítások használata) lehetőségre.</br>  
-![Létrehozás](media/tutorial-password-hash-sync/express1.png)</br>
+![Képernyőkép, amely az expressz beállítások képernyőt és az expressz beállítások használata gombot jeleníti meg.](media/tutorial-password-hash-sync/express1.png)</br>
 5. A Kapcsolódás az Azure AD-hoz képernyőn adja meg az Azure AD globális rendszergazdájának felhasználónevét és jelszavát. Kattintson a **Tovább** gombra.  
 6. A Connect to AD DS (Csatlakozás az AD DS szolgáltatáshoz) képernyőn adja meg egy vállalati rendszergazdai fiók felhasználónevét és jelszavát. Kattintson a **Tovább** gombra.  
 7. A Ready to configure (Konfigurálásra kész) oldalon kattintson az **Install** (Telepítés) lehetőségre.
@@ -226,7 +226,7 @@ Most ellenőrizzük, hogy a helyszíni címtárban található felhasználók sz
 
 ## <a name="test-signing-in-with-one-of-our-users"></a>Bejelentkezés az egyik felhasználóval
 
-1. Tallózással keresse meg a [https://myapps.microsoft.com](https://myapps.microsoft.com)
+1. Nyissa meg a következő címet a böngészőben: [https://myapps.microsoft.com](https://myapps.microsoft.com)
 2. Jelentkezzen be egy olyan felhasználói fiókkal, amely az új bérlőben lett létrehozva.  A következő formátumban kell bejelentkeznie: ( user@domain.onmicrosoft.com ). Ugyanazt a jelszót használja, amelyet a felhasználó a helyszíni bejelentkezéshez használ.</br>
    ![Ellenőrzés](media/tutorial-password-hash-sync/verify1.png)</br>
 

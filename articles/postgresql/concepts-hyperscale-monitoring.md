@@ -7,18 +7,18 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: dcce4485e00415f9caa706966cac1c936c1f15f6
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 9a6d8843acf27a53e261d9c7180906b15d05cc33
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690408"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314810"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL figyelése és finomhangolása – nagy kapacitású (Citus)
 
 A kiszolgálók figyelési adatai segítenek a számítási feladatok megoldásában és optimalizálásában. A nagy kapacitású (Citus) különböző figyelési lehetőségeket biztosít, amelyek betekintést nyújtanak a kiszolgálói csoportok csomópontjainak viselkedésére.
 
-## <a name="metrics"></a>Metrikák
+## <a name="metrics"></a>Mérőszámok
 
 A nagy kapacitású (Citus) metrikákat biztosít a kiszolgálócsoport egyes csomópontjaihoz. A metrikák betekintést nyújtanak a támogatási erőforrások viselkedésére. Minden metrika egy egyperces gyakorisággal van kibocsátva, és akár 30 napig is eltarthat.
 
@@ -28,11 +28,11 @@ A metrikák diagramjainak megtekintése mellett beállíthatja a riasztásokat i
 
 Ezek a metrikák a nagy kapacitású-(Citus-) csomópontokhoz érhetők el:
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Leírás|
+|Metrika|Metrika megjelenítendő neve|Egység|Description|
 |---|---|---|---|
 |active_connections|Aktív kapcsolatok|Darabszám|A kiszolgálóval létesített aktív kapcsolatok száma.|
 |cpu_percent|CPU-százalék|Százalék|A használatban lévő CPU százalékos aránya.|
-|IOPS|IOPS|Darabszám|Lásd a [IOPS-definíciót](../virtual-machines/premium-storage-performance.md#iops) és a [nagy kapacitású átviteli sebességét](concepts-hyperscale-configuration-options.md)|
+|IOPS|IOPS|Darabszám|Lásd a [IOPS-definíció](../virtual-machines/premium-storage-performance.md#iops) és a [nagy kapacitású (Citus) átviteli sebességét.](concepts-hyperscale-configuration-options.md)|
 |memory_percent|Memória százaléka|Százalék|A használatban lévő memória százalékos aránya.|
 |network_bytes_ingress|Bejövő hálózat|Bájt|A hálózat aktív kapcsolatokon keresztül.|
 |network_bytes_egress|Kimenő hálózat|Bájt|A hálózat aktív kapcsolatokon keresztül.|
@@ -41,6 +41,6 @@ Ezek a metrikák a nagy kapacitású-(Citus-) csomópontokhoz érhetők el:
 
 Az Azure nem biztosít összesített mérőszámokat a fürt egészére vonatkozóan, de a több csomópont metrikái ugyanazon a gráfon helyezhetők el.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A riasztások metrikai létrehozásával kapcsolatos útmutatást a riasztások [beállítása](howto-hyperscale-alert-on-metric.md) című témakörben tekintheti meg.

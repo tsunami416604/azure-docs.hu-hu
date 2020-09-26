@@ -5,20 +5,20 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 02/28/2020
+ms.date: 09/25/2020
 ms.author: victorh
-ms.openlocfilehash: 008274c86944b06b168bf52ca501c655bbe78434
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3bde4c11e9dc34be13efb25864fe75054d22bddb
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610625"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91363103"
 ---
 # <a name="integrate-azure-firewall-with-azure-standard-load-balancer"></a>Az Azure Firewall integrálása az Azure Standard Load Balancerrel
 
 Egy Azure Firewall integrálhat egy virtuális hálózatba egy Azure-standard Load Balancer (nyilvános vagy belső). 
 
-Az előnyben részesített kialakítás egy belső terheléselosztó integrálása az Azure-tűzfallal, mivel ez sokkal egyszerűbb kialakítás. Ha már rendelkezik egy központilag telepített szolgáltatással, és meg szeretné őrizni a helyet, használhat nyilvános Load balancert is. Azonban tisztában kell lennie egy olyan aszimmetrikus útválasztási problémával, amely képes a nyilvános terheléselosztó-forgatókönyvvel való működés megszakítására.
+Az előnyben részesített kialakítás egy belső terheléselosztó integrálása az Azure-tűzfallal, mivel ez egy sokkal egyszerűbb kialakítás. Ha már van üzembe helyezett nyilvános terheléselosztója, és meg akarja tartani, használhatja azt is. Tisztában kell lennie azonban egy aszimmetrikus útválasztási problémával, amely megakadályozhatja a nyilvános terheléselosztót alkalmazó forgatókönyv működését.
 
 További információ a Azure Load Balancerről: [Mi az Azure Load Balancer?](../load-balancer/load-balancer-overview.md)
 
@@ -65,6 +65,10 @@ Ez a forgatókönyv nem rendelkezik aszimmetrikus útválasztási problémával.
 
 Így a nyilvános terheléselosztó-forgatókönyvhöz hasonlóan telepítheti ezt a forgatókönyvet, de nincs szükség a tűzfal nyilvános IP-címének elérési útjára.
 
+>[!NOTE]
+>A háttér-készletben lévő virtuális gépek nem rendelkeznek kimenő internetkapcsolattal ezzel a konfigurációval. </br> A kimenő kapcsolatok nyújtásával kapcsolatos további információkért lásd: </br> **[Kimenő kapcsolatok az Azure-ban](../load-balancer/load-balancer-outbound-connections.md)**</br> Kapcsolatok biztosításának lehetőségei: </br> **[Csak kifelé irányuló terheléselosztó konfigurációja](../load-balancer/egress-only.md)** </br> [**Mi az Virtual Network NAT?**](../virtual-network/nat-overview.md)
+
+
 ## <a name="additional-security"></a>További biztonság
 
 Az elosztott terhelésű forgatókönyvek biztonságának növelése érdekében használhat hálózati biztonsági csoportokat (NSG).
@@ -75,6 +79,6 @@ Létrehozhat például egy NSG a háttérbeli alhálózaton, ahol a terheléselo
 
 További információ a NSG: [biztonsági csoportok](../virtual-network/security-overview.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja, hogyan [helyezhet üzembe és konfigurálhat egy Azure Firewall](tutorial-firewall-deploy-portal.md).
