@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/15/2020
-ms.openlocfilehash: 07a8c26f7fc314680c51270ebafe03d4e3a84757
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 098c0a85dc6c0fac8b78f344c4c8559b168b9114
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88749855"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371337"
 ---
 # <a name="managed-identities-in-azure-hdinsight"></a>Felügyelt identitások az Azure HDInsight
 
@@ -27,7 +27,7 @@ A felügyelt identitások két típusa létezik: felhasználó által hozzárend
 
 Az Azure HDInsight a felügyelt identitások csak a belső összetevőkhöz használhatók a HDInsight szolgáltatásban. A külső szolgáltatások eléréséhez a HDInsight telepített felügyelt identitások használatával jelenleg nincs támogatott módszer a hozzáférési tokenek létrehozásához. Bizonyos Azure-szolgáltatások, például a számítási virtuális gépek esetében a felügyelt identitások olyan végponttal valósulnak meg, amelyet hozzáférési jogkivonatok beszerzésére használhat. Ez a végpont jelenleg nem érhető el a HDInsight-csomópontokban.
 
-Ha el kell érnie az alkalmazásait, hogy elkerülje a titkokat/jelszavakat az elemzési feladatok (például a SCALA-feladatok) esetében, distrubte saját tanúsítványait a fürtcsomópontok számára a parancsfájlok használatával, majd a tanúsítvány használatával megszerezheti a hozzáférési jogkivonatot (például az Azure kulcstartó eléréséhez).
+Ha be kell állítania az alkalmazásait, hogy elkerülje a titkokat vagy jelszavakat az elemzési feladatokban (pl.: SCALA-feladatok), a fürt csomópontjain a parancsfájlok használatával terjesztheti a saját tanúsítványait, majd ezt a tanúsítványt használhatja a hozzáférési token beszerzéséhez (például az Azure kulcstartó eléréséhez).
 
 ## <a name="create-a-managed-identity"></a>Felügyelt identitás létrehozása
 
@@ -48,12 +48,21 @@ A felügyelt identitásokat több forgatókönyvben használják az Azure HDInsi
 * [Enterprise Security Package](domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-and-authorize-a-managed-identity)
 * [Ügyfél által felügyelt kulcson alapuló lemeztitkosítás](disk-encryption.md)
 
+A HDInsight automatikusan megújítja az ezekben a forgatókönyvekben használt felügyelt identitásokhoz tartozó tanúsítványokat. Ha azonban több különböző felügyelt identitást használ a hosszú ideig futó fürtökhöz, előfordulhat, hogy a tanúsítvány megújítása nem a várt módon működik az összes felügyelt identitás esetében. E korlátozás miatt, ha hosszú ideig futó fürtöket kíván használni (például több mint 60 nap), javasoljuk, hogy ugyanazt a felügyelt identitást használja az összes fenti forgatókönyvhöz. 
+
+Ha már létrehozott egy hosszú ideig futó fürtöt, amelynek több különböző felügyelt identitása van, és ezek a problémák valamelyikén futnak:
+ * Az ESP-fürtökben a fürtszolgáltatás elindít vagy felskálázást végez, és az egyéb műveletek sikertelenek lesznek a hitelesítési hibákkal.
+ * Az ESP-fürtökben a HRE-DS LDAPs tanúsítványának módosításakor az LDAPs-tanúsítvány nem frissül automatikusan, így az LDAP-szinkronizálás és a méretezési lépések sikertelenek lesznek.
+ * MSI-hozzáférés ADLS Gen2 indítás sikertelen.
+ * A titkosítási kulcsokat nem lehet elforgatni a CMK-forgatókönyvben.
+ezt követően a fürtben használt összes felügyelt identitáshoz hozzá kell rendelnie a fenti forgatókönyvekhez szükséges szerepköröket és engedélyeket. Ha például különböző felügyelt identitásokat használt ADLS Gen2 és ESP-fürtökhöz, akkor mindkettőnek rendelkeznie kell a "Storage blob-adat tulajdonosával" és a "HDInsight tartományi szolgáltatások közreműködői" szerepkörökkel, hogy elkerülje az ilyen problémákhoz való futást.
+
 ## <a name="faq"></a>GYIK
 
 ### <a name="what-happens-if-i-delete-the-managed-identity-after-the-cluster-creation"></a>Mi történik, ha törölem a felügyelt identitást a fürt létrehozása után?
 
 A fürt problémákba ütközik, amikor a felügyelt identitásra van szükség. A fürt létrehozása után jelenleg nincs lehetőség felügyelt identitás frissítésére vagy módosítására. Ezért javasoljuk, hogy a fürt futtatókörnyezetében ne törölje a felügyelt identitást. Vagy újra létrehozhatja a fürtöt, és hozzárendelhet egy új felügyelt identitást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Mit kell tudni az Azure-erőforrások felügyelt identitásairól?](../active-directory/managed-identities-azure-resources/overview.md)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 05/30/2017
 ms.author: genli
-ms.openlocfilehash: c0f4e02a76044268946a4a482eaeccf5d622b8a7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 678bad67b454ec0930d2cf30df45ba7b2c822e35
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87036264"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371456"
 ---
 # <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>Egy sikertelen, hibát eredményező vagy elutasított Azure-beli Linux rendszerű virtuális gép SSH-kapcsolatainak hibaelhárítása
 Ez a cikk segít megkeresni és kijavítani a Secure Shell-(SSH-) hibák, SSH-kapcsolódási hibák vagy SSH-problémák miatti problémákat, amikor megpróbál csatlakozni egy linuxos virtuális géphez (VM). A kapcsolódási problémák elhárításához és megoldásához használhatja a Linux Azure Portal, Azure CLI vagy VM-hozzáférési bővítményét.
@@ -29,16 +29,16 @@ Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a ka
 ## <a name="quick-troubleshooting-steps"></a>Gyors hibaelhárítási lépések
 Az egyes hibaelhárítási lépések után próbálkozzon újra a virtuális géppel.
 
-1. [Állítsa alaphelyzetbe az SSH-konfigurációt](#reset-config).
-2. A felhasználó [hitelesítő adatainak alaphelyzetbe állítása](#reset-credentials) .
-3. Ellenőrizze, hogy a [hálózati biztonsági csoport](../../virtual-network/security-overview.md) szabályai engedélyezik-e az SSH-forgalmat.
-   * Győződjön meg arról, hogy létezik egy [hálózati biztonsági csoport szabálya](#security-rules) az SSH-forgalom engedélyezéséhez (alapértelmezés szerint a 22-es TCP-port).
+1. [Állítsa alaphelyzetbe az SSH-konfigurációt](#reset-the-ssh-configuration).
+2. A felhasználó [hitelesítő adatainak alaphelyzetbe állítása](#reset-ssh-credentials-for-a-user) .
+3. Ellenőrizze, hogy a [hálózati biztonsági csoport](../../virtual-network/network-security-groups-overview.md) szabályai engedélyezik-e az SSH-forgalmat.
+   * Győződjön meg arról, hogy létezik egy [hálózati biztonsági csoport szabálya](#check-security-rules) az SSH-forgalom engedélyezéséhez (alapértelmezés szerint a 22-es TCP-port).
    * A port átirányítása/leképezése nem használható Azure Load Balancer használata nélkül.
 4. Keresse meg a [virtuális gép erőforrás-állapotát](../../service-health/resource-health-overview.md).
    * Győződjön meg arról, hogy a virtuális gép állapota Kifogástalan.
    * Ha engedélyezve van a [rendszerindítási diagnosztika](boot-diagnostics.md), ellenőrizze, hogy a virtuális gép nem jelent-e rendszerindítási hibákat a naplókban.
-5. [Indítsa újra a virtuális gépet](#restart-vm).
-6. [Telepítse újra a virtuális gépet](#redeploy-vm).
+5. [Indítsa újra a virtuális gépet](#restart-a-vm).
+6. [Telepítse újra a virtuális gépet](#redeploy-a-vm).
 
 Folytassa az olvasást részletesebb hibaelhárítási lépésekkel és magyarázatokkal.
 
@@ -59,15 +59,15 @@ A kezdéshez válassza ki a virtuális gépet a Azure Portalban. Görgessen le a
 
 ![Az SSH-konfiguráció vagy a hitelesítő adatok alaphelyzetbe állítása a Azure Portal](./media/troubleshoot-ssh-connection/reset-credentials-using-portal.png)
 
-### <a name="reset-the-ssh-configuration"></a><a id="reset-config" />Az SSH-konfiguráció alaphelyzetbe állítása
+### <a name="reset-the-ssh-configuration"></a>Az SSH-konfiguráció alaphelyzetbe állítása
 Az SSH-konfiguráció alaphelyzetbe állításához válassza a `Reset configuration only` **Mode (mód** ) szakaszt az előző képernyőképen, majd válassza a **frissítés**lehetőséget. Ha a művelet befejeződött, próbálja meg újra elérni a virtuális gépet.
 
-### <a name="reset-ssh-credentials-for-a-user"></a><a id="reset-credentials" />Egy felhasználó SSH hitelesítő adatainak visszaállítása
-Egy meglévő felhasználó hitelesítő adatainak alaphelyzetbe állításához válassza `Reset SSH public key` `Reset password` az előző képernyőképen, vagy a **mód** szakaszban. Adja meg a felhasználónevet és az SSH-kulcsot vagy az új jelszót, majd válassza a **frissítés**lehetőséget.
+### <a name="reset-ssh-credentials-for-a-user"></a>Egy felhasználó SSH hitelesítő adatainak visszaállítása
+Egy meglévő felhasználó hitelesítő adatainak alaphelyzetbe állításához válassza `Reset SSH public key` `Reset password` az előző képernyőképen, vagy a **mód** szakaszban. Adja meg a felhasználónevet és az SSH-kulcsot vagy az új jelszót, majd válassza a  **frissítés**lehetőséget.
 
 Ezen a menüben létrehozhat egy sudo jogosultságokkal rendelkező felhasználót is a virtuális gépen. Adja meg az új felhasználónevet és a hozzá tartozó jelszót vagy SSH-kulcsot, majd válassza a **frissítés**lehetőséget.
 
-### <a name="check-security-rules"></a><a id="security-rules" />Biztonsági szabályok keresése
+### <a name="check-security-rules"></a>Biztonsági szabályok keresése
 
 Az [IP-folyamat ellenőrzésével](../../network-watcher/diagnose-vm-network-traffic-filtering-problem.md) ellenőrizze, hogy egy hálózati biztonsági csoportban lévő szabály blokkolja-e a virtuális gép felé irányuló vagy onnan érkező forgalmat. A hatályos biztonsági csoportok szabályait is áttekintheti, így biztosítva, hogy a bejövő "engedélyezés" NSG szabály létezik, és az SSH-portra van rangsorolva (alapértelmezés szerint 22). További információ: [hatékony biztonsági szabályok használata a virtuális gépek forgalmának hibakereséséhez](../../virtual-network/diagnose-network-traffic-filter-problem.md).
 
@@ -206,7 +206,7 @@ azure vm reset-access --resource-group myResourceGroup --name myVM \
     --user-name myUsername --ssh-key-file ~/.ssh/id_rsa.pub
 ```
 
-## <a name="restart-a-vm"></a><a id="restart-vm" />Virtuális gép újraindítása
+## <a name="restart-a-vm"></a>Virtuális gép újraindítása
 Ha alaphelyzetbe állítja az SSH-konfigurációt és a felhasználói hitelesítő adatokat, vagy hibát észlelt, akkor próbálja meg újraindítani a virtuális gépet az alapul szolgáló számítási problémák megoldásához.
 
 ### <a name="azure-portal"></a>Azure Portal
@@ -231,7 +231,7 @@ A következő példa újraindítja a nevű virtuális gépet `myVM` a nevű erő
 azure vm restart --resource-group myResourceGroup --name myVM
 ```
 
-## <a name="redeploy-a-vm"></a><a id="redeploy-vm" />Virtuális gép ismételt üzembe helyezése
+## <a name="redeploy-a-vm"></a>Virtuális gép ismételt üzembe helyezése
 Az Azure-on belül újratelepítheti a virtuális gépet egy másik csomópontra, amely az összes mögöttes hálózati problémát kijavítani tudja. A virtuális gépek újratelepítésével kapcsolatos további információkért lásd: [virtuális gép újratelepítése új Azure-csomópontra](./redeploy-to-new-node-windows.md?toc=/azure/virtual-machines/windows/toc.json).
 
 > [!NOTE]

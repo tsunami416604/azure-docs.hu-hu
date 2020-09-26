@@ -3,18 +3,18 @@ title: Igény szerinti hozzáférés igénylése
 description: Ismerteti, hogyan Azure Managed Applications a kiadók a felügyelt alkalmazásokhoz való igény szerinti hozzáférést.
 author: MSEvanhi
 ms.topic: conceptual
-ms.date: 06/03/2019
+ms.date: 09/25/2020
 ms.author: evanhi
-ms.openlocfilehash: 7f475774828bcaecd471e13de994b156041323ed
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e1a929924e2c291e0044da99f3ae5d7d1c3b894
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75651383"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371565"
 ---
 # <a name="enable-and-request-just-in-time-access-for-azure-managed-applications"></a>Igény szerinti hozzáférés engedélyezése és kérése Azure Managed Applications
 
-Előfordulhat, hogy a felügyelt alkalmazás felhasználói vonakodnak állandó hozzáférést biztosítani a felügyelt erőforráscsoporthoz. Egy Manager-alkalmazás közzétevője számára érdemes lehet, hogy a fogyasztók pontosan tudják, mikor kell hozzáférni a felügyelt erőforrásokhoz. Annak érdekében, hogy a felhasználók nagyobb mértékben szabályozzák a felügyelt erőforrásokhoz való hozzáférést, Azure Managed Applications biztosít egy igény szerinti (JIT) hozzáférés szolgáltatást, amely jelenleg előzetes verzióban érhető el.
+Előfordulhat, hogy a felügyelt alkalmazás felhasználói vonakodnak állandó hozzáférést biztosítani a felügyelt erőforráscsoporthoz. Egy Manager-alkalmazás közzétevője számára érdemes lehet, hogy a fogyasztók pontosan tudják, mikor kell hozzáférni a felügyelt erőforrásokhoz. Ahhoz, hogy a felhasználók nagyobb mértékben szabályozzák a felügyelt erőforrásokhoz való hozzáférést, Azure Managed Applications az igény szerinti (JIT) hozzáférés szolgáltatást nyújt. Ez a szolgáltatás jelenleg előzetes kiadásban elérhető.
 
 A JIT-hozzáférés lehetővé teszi, hogy a hibaelhárítás és a karbantartás érdekében emelt szintű hozzáférést kérjen egy felügyelt alkalmazás erőforrásaihoz. Mindig csak olvasási hozzáférése van az erőforrásokhoz, de egy adott időszakra vonatkozóan nagyobb hozzáférés érhető el.
 
@@ -34,9 +34,7 @@ Ez a cikk a-közzétevők által a JIT-hozzáférés engedélyezéséhez és a k
 
 ## <a name="add-jit-access-step-to-ui"></a>JIT hozzáférési lépés hozzáadása a felhasználói felülethez
 
-A CreateUiDefinition.jsfájl pontosan az állandó hozzáféréshez létrehozott felhasználói felületi fájlhoz hasonlít, kivéve, ha olyan lépést kell tartalmaznia, amely lehetővé teszi a felhasználók számára a JIT-hozzáférés engedélyezését. Ha többet szeretne megtudni az első felügyelt alkalmazás Azure Marketplace-en való közzétételéről, tekintse meg [a Azure Managed Applications a piactéren](publish-marketplace-app.md).
-
-Az ajánlathoz tartozó JIT-képesség támogatásához adja hozzá a következő tartalmat a CreateUiDefinition.jsfájlhoz:
+A fájl CreateUiDefinition.jsban adjon meg egy lépést, amely lehetővé teszi a felhasználók számára a JIT-hozzáférés engedélyezését. Az ajánlathoz tartozó JIT-képesség támogatásához adja hozzá a következő tartalmat a CreateUiDefinition.jsfájlhoz.
 
 A "Steps":
 
@@ -58,7 +56,7 @@ A "Steps":
     ]
 }
 ```
- 
+
 A "kimenetek" elemnél:
 
 ```json
@@ -70,15 +68,17 @@ A "kimenetek" elemnél:
 
 ## <a name="enable-jit-access"></a>JIT-hozzáférés engedélyezése
 
-Az ajánlat a piactéren való definiálásakor győződjön meg arról, hogy engedélyezte a JIT-hozzáférést.
+Ha az ajánlatot a partner Centerben hozza létre, győződjön meg arról, hogy engedélyezte a JIT-hozzáférést.
 
-1. Jelentkezzen be a [Cloud Partner közzétételi portálján](https://cloudpartner.azure.com).
+1. Jelentkezzen be a kereskedelmi piactér portálra a [partner Centerben](https://partner.microsoft.com/dashboard/commercial-marketplace/overview).
 
-1. Adja meg azokat az értékeket, amelyek alapján közzé szeretné tenni a felügyelt alkalmazást a piactéren. Válassza az **Igen** lehetőséget a **JIT-hozzáférés engedélyezéséhez?**
+1. Az új felügyelt alkalmazások létrehozásával kapcsolatos útmutatásért kövesse az [Azure-alkalmazási ajánlat létrehozása](../../marketplace/partner-center-portal/create-new-azure-apps-offer.md)című témakör lépéseit.
 
-   ![Igény szerinti hozzáférés engedélyezése](./media/request-just-in-time-access/marketplace-enable.png)
+1. A **technikai konfiguráció** lapon jelölje be az igény szerinti **(JIT) hozzáférés engedélyezése** jelölőnégyzetet.
 
-Egy JIT-konfigurációs lépést adott hozzá a felhasználói felületéhez, és engedélyezte a JIT-hozzáférést a Piactéri ajánlatban. Ha a felhasználók telepítik a felügyelt alkalmazást, [bekapcsolhatják az JIT-hozzáférést a példányhoz](approve-just-in-time-access.md#enable-during-deployment).
+   :::image type="content" source="./media/request-just-in-time-access/enable-just-in-time-access.png" alt-text="Igény szerinti hozzáférés engedélyezése":::
+
+Egy JIT-konfigurációs lépést adott hozzá a felhasználói felületéhez, és engedélyezte a JIT-hozzáférést a kereskedelmi Piactéri ajánlatban. Ha a felhasználók telepítik a felügyelt alkalmazást, [bekapcsolhatják az JIT-hozzáférést a példányhoz](approve-just-in-time-access.md#enable-during-deployment).
 
 ## <a name="request-access"></a>Hozzáférés kérése
 
@@ -110,6 +110,6 @@ JIT hozzáférési kérelem küldése:
 
 A JIT-hozzáférést kérő fiók résztvevő-AZONOSÍTÓjának explicit módon szerepelnie kell a felügyelt alkalmazás definíciójában. A fiók nem szerepelhet csak a csomagban megadott csoporton keresztül. Ezt a korlátozást egy későbbi kiadásban rögzíti a rendszer.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A JIT-hozzáférésre vonatkozó kérések jóváhagyásáról további információt az igény szerinti [hozzáférés jóváhagyása Azure Managed Applications-ben](approve-just-in-time-access.md)című témakörben talál.

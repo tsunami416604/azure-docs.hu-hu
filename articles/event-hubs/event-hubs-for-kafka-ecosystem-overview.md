@@ -2,13 +2,13 @@
 title: Az Event hub használata Apache Kafka alkalmazásból – Azure Event Hubs | Microsoft Docs
 description: Ez a cikk az Azure Event Hubs Apache Kafka támogatásáról nyújt információt.
 ms.topic: article
-ms.date: 07/20/2020
-ms.openlocfilehash: 29850e89d1cccf7708e5cca8eaf58afee8157890
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.date: 09/25/2020
+ms.openlocfilehash: 2c552c9f901fdb886a7ddc3e71505e8e46717c03
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90061407"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371490"
 ---
 # <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>Az Azure Event Hubs használata Apache Kafka alkalmazásokból
 A Event Hubs egy olyan végpontot biztosít, amely kompatibilis a Apache Kafka® gyártóval és a fogyasztói API-kkal, amelyeket a legtöbb meglévő Apache Kafka ügyfélalkalmazás használhat a saját Apache Kafka-fürt futtatására. A Event Hubs a Apache Kafka gyártói és fogyasztói API-ügyfelét támogatja a 1,0-es és újabb verziókban.
@@ -128,7 +128,7 @@ Az önálló és ksqlDB nélkül a Kafka-adatfolyamok kevesebb képességgel ren
 
 - [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md)
 - [Azure szinapszis Analytics (Event Hubs Capture használatával)](../event-grid/event-grid-event-hubs-integration.md)
-- [Azure Databricks](/azure/databricks/scenarios/databricks-stream-from-eventhubs.md)
+- [Azure Databricks](/databricks/scenarios/databricks-stream-from-eventhubs)
 - [Apache Samza](https://samza.apache.org/learn/documentation/latest/connectors/eventhubs)
 - [Apache Storm](event-hubs-storm-getstarted-receive.md)
 - [Apache Spark](event-hubs-kafka-spark-tutorial.md)

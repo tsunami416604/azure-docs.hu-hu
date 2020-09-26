@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-azurecli
 ms.date: 04/14/2020
 ms.author: tomfitz
-ms.openlocfilehash: f6a3a16fe7fd6b0036b36520262e85a9066a4e63
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: af5efd7c9b3c486e608c39c230700b52dd17a260
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497854"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371626"
 ---
 # <a name="quickstart-create-and-publish-a-managed-application-definition"></a>Rövid útmutató: Felügyelt alkalmazás definíciójának létrehozása és közzététele
 
@@ -25,7 +25,7 @@ A felügyelt alkalmazások a szolgáltatás-katalógusban való közzétételéh
 * El kell döntenie, hogy melyik felhasználónak, csoportnak vagy alkalmazásnak kell hozzáférést biztosítani a felhasználó előfizetésében található erőforráscsoporthoz.
 * Hozza létre a felügyelt alkalmazás definícióját, amely a _. zip_ csomagra mutat, és hozzáférést kér az identitáshoz.
 
-## <a name="create-the-arm-template"></a>ARM-sablon létrehozása
+## <a name="create-the-arm-template"></a>Az ARM-sablon létrehozása
 
 Minden felügyelt alkalmazás definíciója tartalmaz egy _mainTemplate.json_ nevű fájlt. Ebben lehet meghatározni a telepítendő Azure-erőforrásokat. A sablon nem különbözik a szokásos ARM-sablonoktól.
 
@@ -215,7 +215,7 @@ groupid=$(az ad group show --group mygroup --query objectId --output tsv)
 
 ### <a name="get-the-role-definition-id"></a>A szerepkördefiníció-azonosító lekérése
 
-Ezután annak a beépített RBAC-szerepkörnek a szerepkördefiníció-azonosítójára van szükség, amelyhez hozzáférést szeretne biztosítani a felhasználó, a felhasználói csoport vagy az alkalmazás számára. Általában a Tulajdonos, a Közreműködő vagy az Olvasó szerepkört használják. Az alábbi parancs bemutatja, hogyan kérheti le a tulajdonos szerepkör szerepkördefiníció-azonosítóját:
+Ezután szüksége lesz az Azure beépített szerepkörének szerepkör-definíciós AZONOSÍTÓJÁRA, amelyhez hozzáférést szeretne adni a felhasználónak, a felhasználói csoportnak vagy az alkalmazásnak. Általában a Tulajdonos, a Közreműködő vagy az Olvasó szerepkört használják. Az alábbi parancs bemutatja, hogyan kérheti le a tulajdonos szerepkör szerepkördefiníció-azonosítóját:
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -401,9 +401,9 @@ Megtekintheti, hogy az alkalmazás-definíciós fájlok a megadott Storage-fiók
 
 ## <a name="make-sure-users-can-see-your-definition"></a>Győződjön meg arról, hogy a definíció a felhasználók számára látható
 
-Ön hozzáfér a felügyelt alkalmazás definíciójához, azonban gondoskodnia kell róla, hogy a vállalat más felhasználói is hozzáférjenek. Engedélyezzen számukra legalább Olvasó szerepkört a definícióhoz. Előfordulhat, hogy ezt a hozzáférési szintet már megörökölték az előfizetéstől vagy az erőforráscsoporttól. A definíció elérésének ellenőrzésével, valamint további felhasználók és csoportok hozzáadásával kapcsolatban lásd: [Az Azure-előfizetések erőforrásaihoz való hozzáférés kezelése szerepköralapú hozzáférés-vezérléssel](../../role-based-access-control/role-assignments-portal.md).
+Ön hozzáfér a felügyelt alkalmazás definíciójához, azonban gondoskodnia kell róla, hogy a vállalat más felhasználói is hozzáférjenek. Engedélyezzen számukra legalább Olvasó szerepkört a definícióhoz. Előfordulhat, hogy ezt a hozzáférési szintet már megörökölték az előfizetéstől vagy az erőforráscsoporttól. Ha szeretné megtekinteni, hogy ki férhet hozzá a definícióhoz, és hogyan adhat hozzá felhasználókat vagy csoportokat, tekintse meg [Az Azure szerepkör-hozzárendelések hozzáadása vagy eltávolítása a Azure Portal használatával](../../role-based-access-control/role-assignments-portal.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Sikeresen közzétette a felügyelt alkalmazás definícióját. Most megismerheti, hogyan helyezheti üzembe a definíció egyik példányát.
 

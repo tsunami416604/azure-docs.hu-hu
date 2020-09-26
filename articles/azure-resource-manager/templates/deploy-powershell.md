@@ -3,12 +3,12 @@ title: Erőforrások üzembe helyezése a PowerShell és a sablon használatáva
 description: Erőforrások üzembe helyezése az Azure-ban Azure Resource Manager és Azure PowerShell használatával. Az erőforrások egy Resource Manager-sablonban vannak meghatározva.
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.openlocfilehash: ef2ff71430f0dcaca660666bb9a6c015c923da3f
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: e47de54558962215fe3be78f5b9c45c8d46c54a3
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89536072"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372442"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-powershell"></a>Erőforrások üzembe helyezése ARM-sablonokkal és Azure PowerShell
 
@@ -124,7 +124,7 @@ Az előző példa egy nyilvánosan elérhető URI-t igényel a sablonhoz, amely 
 
 ## <a name="deploy-template-spec"></a>Sablon üzembe helyezése – spec
 
-Helyi vagy távoli sablon telepítése helyett hozzon létre egy [specifikációt](template-specs.md). A sablon spec egy ARM-sablont tartalmazó Azure-előfizetésben található erőforrás. Megkönnyíti a sablon biztonságos megosztását a szervezetben lévő felhasználókkal. Szerepköralapú hozzáférés-vezérlés (RBAC) használatával biztosít hozzáférést a sablonhoz. Ez a funkció jelenleg előzetes verzióban érhető el.
+Helyi vagy távoli sablon telepítése helyett hozzon létre egy [specifikációt](template-specs.md). A sablon spec egy ARM-sablont tartalmazó Azure-előfizetésben található erőforrás. Megkönnyíti a sablon biztonságos megosztását a szervezetben lévő felhasználókkal. Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával hozzáférést biztosíthat a sablon specifikációjának. Ez a funkció jelenleg előzetes verzióban érhető el.
 
 Az alábbi példák bemutatják, hogyan hozhat létre és helyezhet üzembe egy sablon-specifikációt. Ezek a parancsok csak akkor érhetők el, ha [regisztrált az előzetes](https://aka.ms/templateSpecOnboarding)verzióra.
 

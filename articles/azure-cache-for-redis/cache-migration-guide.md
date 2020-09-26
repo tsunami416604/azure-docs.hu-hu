@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: yegu
-ms.openlocfilehash: 2a95aa9e9fccdb7047c2c0901f4349fecfbab672
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 4b196818ade1e703e24ed1ced6ebac1b44d0b083
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009579"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372068"
 ---
 # <a name="migrate-to-azure-cache-for-redis"></a>Migrálás az Azure Cache for Redisbe
 Ez a cikk számos módszert ismertet a helyszíni vagy egy másik felhőalapú szolgáltatásban futó meglévő Redis-gyorsítótár áttelepítése érdekében az Azure cache for Redis számára.
@@ -34,7 +34,7 @@ Többféleképpen válthat az egyik gyorsítótárból a másikba. Attól függ�
    | ------------ | ---------- | ------------- |
    | Új gyorsítótár létrehozása | Legegyszerűbben implementálható. | Újra fel kell töltenie az adatokat az új gyorsítótárba, ami esetleg nem működik sok alkalmazással. |
    | Adatexportálás és-importálás RDB-fájlon keresztül | Általában minden Redis cache-gyorsítótárral kompatibilis. | Egyes adatvesztések elvesznek, ha a RDB fájl létrehozása után a meglévő gyorsítótárba írják őket. | 
-   | Kettős írású adatlemez két gyorsítótárba | Nincs adatvesztés vagy belváros. A meglévő gyorsítótár megszakítás nélküli műveletei. Az új gyorsítótár egyszerűbb tesztelése. | Hosszabb ideig két gyorsítótárra van szükség. | 
+   | Kettős írású adatlemez két gyorsítótárba | Nincs adatvesztés vagy állásidő. A meglévő gyorsítótár megszakítás nélküli műveletei. Az új gyorsítótár egyszerűbb tesztelése. | Hosszabb ideig két gyorsítótárra van szükség. | 
    | Az adatáttelepítés programozott módon | Az adatáthelyezés módjának teljes körű vezérlése. | Egyéni kódot igényel. | 
 
 ### <a name="create-a-new-azure-cache-for-redis"></a>Új Azure cache létrehozása a Redis-hez
@@ -111,8 +111,8 @@ A beállítás megvalósításának általános lépései a következők:
 
 4. Használjon olyan alkalmazást, mint a fenti nyílt forráskódú eszköz, amellyel automatizálható az adatok másolása a forrás-gyorsítótárból a célhelyre. Ne feledje, hogy a másolási folyamat eltarthat egy darabig, hogy az adatkészlet méretétől függően befejeződjön.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ az Azure cache Redis szolgáltatásairól.
 
 * [Azure cache a Redis szolgáltatási szintjeihez](cache-overview.md#service-tiers)
-* [Adatimportálás](cache-how-to-import-export-data.md#import)
+* [Adatok importálása](cache-how-to-import-export-data.md#import)

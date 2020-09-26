@@ -3,12 +3,12 @@ title: Azure-beli virtuális gépek biztonsági mentése
 description: Ebből a cikkből megtudhatja, hogy az Azure Backup szolgáltatás hogyan készít biztonsági másolatot az Azure Virtual Machines szolgáltatásról, és hogyan követi az ajánlott eljárásokat.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: f9da75a66d25896e8d977910e2eb7fbe6ea69ca1
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 58079cba9a65ab4df3632bb641397ba10496ae81
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89014642"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371507"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Az Azure virtuális gépek biztonsági mentésének áttekintése
 
@@ -105,6 +105,13 @@ Ezek a gyakori forgatókönyvek a teljes biztonsági mentés idejére hatással 
 - **Töredezett lemezek:** A biztonsági mentési műveletek gyorsabbak, ha a lemez változása összefüggő. Ha a módosítások szét vannak osztva és töredezettek egy lemezen, a biztonsági mentés lassabb lesz.
 - **Lemez** elváltozása: Ha a növekményes biztonsági mentés alatt álló védett lemezek napi adatváltozása meghaladja a 200 GB-ot, a biztonsági mentés hosszú időt is igénybe vehet (több mint nyolc óra) a befejezéshez.
 - **Biztonsági mentési verziók:** A biztonsági mentés legújabb verziója (vagyis az azonnali visszaállítás verziója) egy optimalizált folyamatot használ, mint a változások azonosításához szükséges ellenőrzőösszeg-összehasonlítás. Ha azonban azonnali visszaállítást használ, és törölt egy biztonsági mentési pillanatképet, a biztonsági mentés ellenőrzőösszeg-összehasonlításra vált. Ebben az esetben a biztonsági mentési művelet 24 óránál hosszabb időt vesz igénybe (vagy sikertelen).
+
+### <a name="restore-performance"></a>Teljesítmény visszaállítása
+
+Ezek a gyakori forgatókönyvek a teljes visszaállítási időt befolyásolhatják:
+
+- A teljes visszaállítási idő a másodpercenkénti bemeneti/kimeneti műveletektől (IOPS) és a Storage-fiók átviteli sebességtől függ.
+- A teljes visszaállítási idő hatással lehet, ha a célként megadott Storage-fiók betöltődik más alkalmazás-olvasási és írási műveletekkel. A visszaállítási művelet javításához válasszon olyan Storage-fiókot, amely nincs betöltve más alkalmazásadatok használatával.
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 
