@@ -4,12 +4,12 @@ description: A C# .NET-webalkalmazások személyre szabási hurokkal való testr
 ms.topic: tutorial
 ms.date: 06/10/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e9ce4c433a038008b1ffd75dc6c4b2f9d0b57fde
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 59881a749676f4f5408c1ffc87b3bcf75c512e1e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935619"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316222"
 ---
 # <a name="tutorial-add-personalizer-to-a-net-web-app"></a>Oktatóanyag: személyre szabás hozzáadása egy .NET-webalkalmazáshoz
 
@@ -254,7 +254,7 @@ Hozzon létre és futtasson HttpRequestFeaturesExample az alábbi módszerek egy
 Egy webböngészőn keresztül egy rangsoroló kérést és egy jutalmazási kérést küldhet, és megtekintheti a válaszokat, valamint a környezetből kinyert HTTP-kérések funkcióit.
 
 > [!div class="mx-imgBorder"]
-> ![Hozza létre és futtassa a HTTPRequestFeaturesExample projektet. Megnyílik egy böngészőablak, amely megjeleníti az egyoldalas alkalmazást.](./media/tutorial-web-app/web-app-single-page.png)
+> ![A képernyőképen egy példa látható a HTTP-kérések szolgáltatásra egy böngészőben.](./media/tutorial-web-app/web-app-single-page.png)
 
 ## <a name="demonstrate-the-personalizer-loop"></a>A személyre szabott hurok bemutatása
 
@@ -267,7 +267,7 @@ Egy webböngészőn keresztül egy rangsoroló kérést és egy jutalmazási ké
 1. Állítsa be a jutalom értékét, majd kattintson a **jutalom kérésének küldése** gombra. Ha nem módosítja a jutalom értékét, az ügyfélalkalmazás mindig a `1` személyre szabott értéket küldi el.
 
     > [!div class="mx-imgBorder"]
-    > ![Hozza létre és futtassa a HTTPRequestFeaturesExample projektet. Megnyílik egy böngészőablak, amely megjeleníti az egyoldalas alkalmazást.](./media/tutorial-web-app/reward-score-api-call.png)
+    > ![Képernyőfelvétel: a jutalmazási kérelem szakasza.](./media/tutorial-web-app/reward-score-api-call.png)
 
     A saját jövőbeli alkalmazása esetében előfordulhat, hogy a jutalom pontszámának generációja a felhasználó viselkedésének az ügyfélen való összegyűjtése után, valamint az üzleti logikával együtt történik a kiszolgálón.
 
@@ -588,7 +588,7 @@ Ha elkészült ezzel az Oktatóanyaggal, törölje a következő erőforrásokat
 * A személyre szabott erőforrás törlése – gondolja át, hogy egy személyre szabott erőforrás a műveletekhez és a kontextushoz legyen felhasználva
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [A Personalizer működése](how-personalizer-works.md)
 * [Funkciók](concepts-features.md): a funkciókkal és környezettel kapcsolatos fogalmak megismerése
 * [Jutalmak](concept-rewards.md): tudnivalók a jutalmak kiszámításáról

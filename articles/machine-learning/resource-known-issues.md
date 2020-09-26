@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4
 ms.date: 08/13/2020
-ms.openlocfilehash: 1524e51fff64b00a798f15425973145feee730fe
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 67ab15a6b890bc5f28cd18fca8a35adbc7437778
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651642"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280980"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Ismert problémák és hibaelhárítás a Azure Machine Learningban
 
@@ -291,12 +291,12 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
 
 * **ModuleErrors (nincs nevű modul)**: Ha a ModuleErrors-ben futtatott kísérleteket az Azure ml-ben, az azt jelenti, hogy a betanítási parancsfájl egy telepítendő csomagot vár, de nincs hozzáadva. A csomag nevének megadása után az Azure ML telepíti a csomagot a betanítási futtatáshoz használt környezetben. 
 
-    Ha a [becslések](concept-azure-machine-learning-architecture.md#estimators) -t használja a kísérletek elküldéséhez, megadhatja a csomag nevét `pip_packages` `conda_packages` a kalkulátoron keresztül vagy paraméterrel, attól függően, hogy melyik forrásból szeretné telepíteni a csomagot. Egy YML-fájlt is megadhat az összes függőségének használatával, `conda_dependencies_file` vagy listázhatja az összes pip-követelményét egy txt-fájlban a `pip_requirements_file` paraméter használatával. Ha rendelkezik saját Azure ML-környezetbeli objektummal, amellyel felül szeretné bírálni a kalkulátor által használt alapértelmezett rendszerképet, megadhatja ezt a környezetet a `environment` kalkulátor konstruktorának paraméterén keresztül.
+    Ha a becslések-t használja a kísérletek elküldéséhez, megadhatja a csomag nevét `pip_packages` `conda_packages` a kalkulátoron keresztül vagy paraméterrel, attól függően, hogy melyik forrásból szeretné telepíteni a csomagot. Egy YML-fájlt is megadhat az összes függőségének használatával, `conda_dependencies_file` vagy listázhatja az összes pip-követelményét egy txt-fájlban a `pip_requirements_file` paraméter használatával. Ha rendelkezik saját Azure ML-környezetbeli objektummal, amellyel felül szeretné bírálni a kalkulátor által használt alapértelmezett rendszerképet, megadhatja ezt a környezetet a `environment` kalkulátor konstruktorának paraméterén keresztül.
 
     Az Azure ML a TensorFlow, a PyTorch, a Chainer és a SKLearn keretrendszer-specifikus becslések is biztosítja. Ezeknek a becslések a használata biztosítja, hogy az alapvető keretrendszer függőségei a betanításhoz használt környezetben legyenek telepítve az Ön nevében. Lehetősége van további függőségek megadására a fentiekben leírtak szerint. 
  
     Az Azure ML által karbantartott Docker-rendszerképek és azok tartalma [AzureML-tárolókban](https://github.com/Azure/AzureML-Containers)láthatók.
-    A keretrendszer-specifikus függőségek a megfelelő keretrendszer dokumentációs [láncában](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py#&preserve-view=trueremarks), a [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py#&preserve-view=trueremarks), a [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py#&preserve-view=trueremarks)és a [SKLearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py#&preserve-view=trueremarks)listájában találhatók meg.
+    A keretrendszer-specifikus függőségek a megfelelő keretrendszer dokumentációs [láncában](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py&preserve-view=true#&preserve-view=trueremarks), a [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py&preserve-view=true#&preserve-view=trueremarks), a [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py&preserve-view=true#&preserve-view=trueremarks)és a [SKLearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py&preserve-view=true#&preserve-view=trueremarks)listájában találhatók meg.
 
     > [!Note]
     > Ha úgy gondolja, hogy egy adott csomag elég gyakori ahhoz, hogy hozzá lehessen adni az Azure ML karbantartott lemezképekhez és környezetekhez, hozzon létre GitHub-problémát a [AzureML-tárolókban](https://github.com/Azure/AzureML-Containers). 
@@ -305,7 +305,7 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
 
 * A **Horovod le lett**állítva: a legtöbb esetben, ha "AbortedError: Horovod" állapotba került, akkor ez a kivétel azt jelenti, hogy a Horovod leállítását okozó egyik folyamat egy mögöttes kivételt észlelt. Az MPI-feladatok mindegyik rangsora saját dedikált naplófájlba kerül az Azure ML-ben. Ezek a naplók neve `70_driver_logs` . Elosztott képzés esetén a naplók neve utótaggal van ellátva, `_rank` hogy könnyebben megkülönböztesse a naplókat. A Horovod leállítását okozó pontos hiba megtalálásához folytassa az összes naplófájlt, és keresse meg a `Traceback` driver_log fájlok végén található fájlt. Ezen fájlok egyike megadja a tényleges mögöttes kivételt. 
 
-* A **Run vagy a Experiment művelet törlése**: a kísérletek a [kísérlet. Archive](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#&preserve-view=truearchive--) metódussal vagy a Azure Machine learning Studio-ügyfél kísérlet lapjának az "Archive Experiment" gomb használatával is archiválható. Ez a művelet elrejti a kísérletet a lekérdezések és nézetek listájában, de nem törli azt.
+* A **Run vagy a Experiment művelet törlése**: a kísérletek a [kísérlet. Archive](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truearchive--) metódussal vagy a Azure Machine learning Studio-ügyfél kísérlet lapjának az "Archive Experiment" gomb használatával is archiválható. Ez a művelet elrejti a kísérletet a lekérdezések és nézetek listájában, de nem törli azt.
 
     Az egyes kísérletek vagy futtatások végleges törlése jelenleg nem támogatott. További információ a munkaterület-eszközök törléséről: [Machine learning szolgáltatás-munkaterület adatainak exportálása vagy törlése](how-to-export-delete-data.md).
 
@@ -320,7 +320,7 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
 
 ## <a name="automated-machine-learning"></a>Automatizált gépi tanulás
 
-* A **AutoML-függőségek újabb verzióra való frissítése a következő compatibilitity válik**: az SDK verziójának megfelelően a modellek nem lesznek betöltve a régebbi SDK-kba, mert az előző csomagokban rögzített korábbi verziók és a most rögzített újabb verziók inkompatibilisek. A következő hibaüzenetet fogja látni:
+* A **AutoML-függőségek újabb verzióra történő frissítése a kompatibilitási kompatibilitást eredményezi**: az SDK verziójának 1.13.0 a modellek nem lesznek betöltve a régebbi SDK-kba, mert nem kompatibilisek az előző csomagokban rögzített korábbi verziók és a most rögzített újabb verziók között. A következő hibaüzenetet fogja látni:
   * A modul nem található: ex. `No module named 'sklearn.decomposition._truncated_svd` ,
   * Importálási hibák: pl. `ImportError: cannot import name 'RollingOriginValidator'` ,
   * Attribútum hibái: pl. `AttributeError: 'SimpleImputer' object has no attribute 'add_indicator`
@@ -366,7 +366,7 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
     * A parancs futtatásával győződjön meg arról, hogy a 64 bites Conda telepítve van, és nem 32 bites `conda info` . A legyen `platform` `win-64` Windows vagy Mac rendszerű `osx-64` .
     * Győződjön meg arról, hogy a Conda 4.4.10 vagy újabb verziója telepítve van. A verziót a paranccsal lehet megtekinteni `conda -V` . Ha telepítve van egy korábbi verziója, a paranccsal frissítheti a parancsot: `conda update conda` .
     * Linux `gcc: error trying to exec 'cc1plus'`
-      *  Ha a `gcc: error trying to exec 'cc1plus': execvp: No such file or directory` hiba előfordul, telepítse a Build Essentials-t a ther parancs használatával `sudo apt-get install build-essential` .
+      *  Ha a `gcc: error trying to exec 'cc1plus': execvp: No such file or directory` hiba előfordul, telepítse a Build Essentials parancsot a paranccsal `sudo apt-get install build-essential` .
       * Új Conda-környezet létrehozásához adjon meg egy új nevet az első paraméterként automl_setup. Megtekintheti a meglévő Conda-környezeteket `conda env list` , és eltávolíthatja őket a használatával `conda env remove -n <environmentname>` .
       
 * a **automl_setup_linux. sh sikertelen**: ha a automl_setup_linus. sh sikertelen Ubuntu Linux a következő hibával:`unable to execute 'gcc': No such file or directory`-
@@ -376,7 +376,7 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
   4. Futtatás `automl_setup_linux.sh` újra
 
 * a **Configuration. ipynb sikertelen**:
-  * A helyi Conda esetében először győződjön meg arról, hogy a automl_setup susccessfully fut.
+  * A helyi Conda esetében először győződjön meg arról, hogy a automl_setup sikeresen futott.
   * Győződjön meg arról, hogy a subscription_id helyes. Keresse meg az subscription_id az Azure Portalon a minden szolgáltatás, majd az előfizetések lehetőség kiválasztásával. A (z) "<" és a ">" karakterek nem szerepelhetnek a subscription_id értékben. Például `subscription_id = "12345678-90ab-1234-5678-1234567890abcd"` érvényes a formátuma.
   * Győződjön meg arról, hogy a közreműködő vagy a tulajdonos hozzáférése van az előfizetéshez.
   * Győződjön meg arról, hogy a régió a támogatott régiók egyike:,,,,,, `eastus2` `eastus` `westcentralus` `southeastasia` `westeurope` `australiaeast` `westus2` , `southcentralus` .
@@ -390,15 +390,15 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
   3. Ha új előfizetést, erőforráscsoportot, munkaterületet vagy régiót használ, győződjön meg arról, hogy a `configuration.ipynb` jegyzetfüzetet újra futtatja. config.jsközvetlen módosítása csak akkor működik, ha a munkaterület már létezik a megadott erőforrás-csoportban a megadott előfizetésben.
   4. Ha módosítani szeretné a régiót, módosítsa a munkaterületet, az erőforráscsoportot vagy az előfizetést. `Workspace.create` a nem hoz létre vagy frissít egy munkaterületet, ha már létezik, még akkor is, ha a megadott régió eltér.
   
-* A **minta jegyzetfüzet sikertelen**: Ha egy minta jegyzetfüzet hibát jelez, a metódus vagy a könyvtár nem létezik:
-  * Győződjön meg arról, hogy a correctcorrect kernel ki van választva a jupyter jegyzetfüzetben. A kernel a notebook oldal jobb felső sarkában jelenik meg. Az alapértelmezett érték azure_automl. Vegye figyelembe, hogy a rendszer a rendszermagot a jegyzetfüzet részeként menti. Ha tehát új Conda-környezetre vált, ki kell választania az új kernelt a jegyzetfüzetben.
+* A **minta jegyzetfüzet sikertelen**: Ha egy minta jegyzetfüzet hibát jelez, a tulajdonság, a metódus vagy a könyvtár nem létezik:
+  * Győződjön meg arról, hogy a megfelelő kernel van kiválasztva a jupyter-jegyzetfüzetben. A kernel a notebook oldal jobb felső sarkában jelenik meg. Az alapértelmezett érték azure_automl. Vegye figyelembe, hogy a rendszer a rendszermagot a jegyzetfüzet részeként menti. Ha tehát új Conda-környezetre vált, ki kell választania az új kernelt a jegyzetfüzetben.
       * Azure Notebooks esetén a Python 3,6-es értéknek kell lennie. 
-      * Helyi Conda-környezetek esetén az automl_setup-ben megadott Conda-envioronment kell lennie.
+      * Helyi Conda környezetekben a automl_setupban megadott Conda-környezeti nevet kell megadni.
   * Győződjön meg arról, hogy a jegyzetfüzet a használt SDK-verzióhoz készült. Az SDK verziójának ellenőrzéséhez futtassa a `azureml.core.VERSION` jupyter jegyzetfüzet-cellát. A minta jegyzetfüzetek előző verzióját a GitHubról töltheti le, ha a `Branch` gombra kattint, majd kiválasztja a `Tags` fület, majd kiválasztja a verziót.
 
 * A **NumPy importálása sikertelen a Windows**rendszerben: egyes Windows-környezetek a NumPy betöltésével kapcsolatos hibát látnak a legújabb Python-verzió 3.6.8. Ha ezt a problémát látja, próbálkozzon a Python-verzió 3.6.7.
 
-* A **NumPy importálása sikertelen**: az automatikus ml Conda-környezetben keresse meg a tensorflow verzióját. A támogatott verziók a következők: < 1,13. Távolítsa el a tensorflow a környezetből, ha a verziószáma >= 1,13 a tensorflow és az Eltávolítás verzióját a következőképpen is megtekintheti:
+* A **NumPy importálása sikertelen**: az automatikus ml Conda-környezetben keresse meg a TensorFlow verzióját. A támogatott verziók a következők: < 1,13. Távolítsa el a TensorFlow a környezetből, ha a verziószáma >= 1,13 a TensorFlow és az Eltávolítás verzióját a következőképpen is megtekintheti:
   1. Indítsa el a parancssort, aktiválja a Conda-környezetet, amelyben az automatikus ml-csomagok telepítve vannak.
   2. Adja meg `pip freeze` és keresse meg `tensorflow` , ha található, a felsorolt verziónak < 1,13
   3. Ha a felsorolt verzió nem támogatott verzió, a `pip uninstall tensorflow` parancs-rendszerhéjban írja be az y értéket a megerősítéshez.

@@ -11,12 +11,12 @@ author: MarkusVi
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93caf52d8b4a11f9843ad5f18ebf968d1d0730cd
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 643010ef1f6e941a57673a711e1871aafd1e341d
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226207"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361908"
 ---
 # <a name="tutorial-configure-the-log-analytics-wizard"></a>Oktatóanyag: a log Analytics varázsló konfigurálása
 
@@ -72,7 +72,7 @@ A log Analytics-munkaterület konfigurálása két fő lépésből áll:
 
 3. A log Analytics-munkaterületek lapon kattintson a **Hozzáadás**gombra.
 
-    ![Hozzáadás](./media/tutorial-log-analytics-wizard/add.png)
+    ![A képernyőfelvétel a log Analytics-munkaterületek lapon látható Hozzáadás gombra mutat.](./media/tutorial-log-analytics-wizard/add.png)
 
 4.  A **log Analytics-munkaterület létrehozása** lapon hajtsa végre a következő lépéseket:
 
@@ -260,7 +260,7 @@ Ez az eljárás bemutatja, hogyan küldhet riasztásokat a breakglass-fiók hasz
 
 14. A **műveleti csoport létrehozása** oldalon hajtsa végre a következő lépéseket:
 
-    ![Példány részletei](./media/tutorial-log-analytics-wizard/instance-details.png)
+    ![Példány adatai](./media/tutorial-log-analytics-wizard/instance-details.png)
 
     1. A **műveleti csoport neve** szövegmezőbe írja be a **saját műveleti csoport**értéket.
 
@@ -305,7 +305,7 @@ Ez az eljárás bemutatja, hogyan hozhat létre egy új munkafüzetet a gyors ü
 
 3. A **figyelés** szakaszban kattintson a **munkafüzetek**elemre.
 
-    ![Munkafüzetek](./media/tutorial-log-analytics-wizard/workbooks.png)
+    ![Képernyőfelvétel: a Azure Portal menü figyelés elemét jeleníti meg a kiválasztott munkafüzetekkel.](./media/tutorial-log-analytics-wizard/workbooks.png)
 
 4. A rövid **útmutató szakaszban kattintson** az **üres**gombra.
 
@@ -357,7 +357,7 @@ Ez az eljárás bemutatja, hogyan adhat hozzá egy lekérdezést egy meglévő m
 
 3. A **figyelés** szakaszban kattintson a **munkafüzetek**elemre.
 
-    ![Munkafüzetek](./media/tutorial-log-analytics-wizard/workbooks.png)
+    ![A képernyőképen a kiválasztott munkafüzeteket tartalmazó menüben látható a figyelés.](./media/tutorial-log-analytics-wizard/workbooks.png)
 
 4. A **feltételes hozzáférés** szakaszban kattintson a **feltételes hozzáférésű információ és jelentéskészítés**elemre.
 

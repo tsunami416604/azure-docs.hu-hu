@@ -4,12 +4,12 @@ ms.service: site-recovery
 ms.topic: include
 ms.date: 04/28/2019
 ms.author: ramamill
-ms.openlocfilehash: 00b0c1b1a40ad16db177916c57dba6e9d5a187a7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bff9457220efbb6a6b318550a5b2dd9af4ae230f
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67179647"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361389"
 ---
 Kövesse az adott körülményeknek megfelelő lépéseket.
 
@@ -35,7 +35,7 @@ Csak akkor használja ezeket a lépéseket, ha nincs mód arra, hogy újraélesz
     - S. Nem: a Process Server sorozatszáma.
     - IP/Name: a Process Servert futtató gép IP-címe és neve.
     - Szívverés: az utolsó szívverés a Process Server gépről.
-    ![Regisztráció törlése – cmd](media/site-recovery-vmware-unregister-process-server/Unregister-cmd.PNG)
+    ! [Képernyőfelvétel: a folyamat-kiszolgálókkal és a szöveggel kapcsolatos információk szöveges megjelenítése a regisztráció megszüntetése érdekében válassza a fenti kiszolgálók egyikét. (média/hely-helyreállítás-VMware-Regisztráció törlése-Process-Server/Unregister-cmd.PNG)
 
 4. A regisztrálni kívánt folyamat-kiszolgáló sorozatszámának meghatározása.
 5. A folyamat-kiszolgáló regisztrációjának törlése eltávolítja a rendszer összes adatát, és a következő üzenetet jeleníti meg: a **kiszolgáló neve sikeresen megszüntetve> (kiszolgáló-IP-cím)**

@@ -9,16 +9,16 @@ author: peterclu
 ms.author: peterlu
 ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT, devx-track-csharp
 ms.date: 02/14/2019
-ms.openlocfilehash: dfc959984147d89ca5bfe68ed103a89b22f75501
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0064509c1158d8b016413046cb528bfd125b5f2f
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91344432"
+ms.locfileid: "91362316"
 ---
 # <a name="retrain-and-deploy-a-classic-studio-classic-web-service"></a>Klasszikus Studio-webszolgáltatás újratanítása és üzembe helyezése
 
-**a következőkre vonatkozik:** ![ igen ](../../../includes/media/aml-applies-to-skus/yes.png) Machine learning Studio (klasszikus) ![ nincs](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../compare-azure-ml-to-studio-classic.md)  
+**a következőkre vonatkozik:** ![ Zöld pipa. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasszikus) ![ X, amely nem.](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../compare-azure-ml-to-studio-classic.md)  
 
 
 A gépi tanulási modellek átképzésének egyik módja annak biztosítása, hogy pontosak maradjanak, és a rendelkezésre álló legfontosabb információk alapján. Ez a cikk bemutatja, hogyan végezheti el a klasszikus Studio (klasszikus) webszolgáltatás újratanítását. Az új Studio (klasszikus) webszolgáltatás újratanításával kapcsolatos útmutatóért [tekintse meg ezt a cikket.](retrain-machine-learning-model.md)

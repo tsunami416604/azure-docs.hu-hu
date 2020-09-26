@@ -9,12 +9,12 @@ ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
 ms.custom: has-adal-ref
-ms.openlocfilehash: bc503213169f909850460edf5e50ed3f1b34fbe2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 52964c906df7a96685c8eb80c1d23ef9a9efc6e1
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91288596"
+ms.locfileid: "91361840"
 ---
 # <a name="use-multi-factor-aad-authentication-with-synapse-sql-ssms-support-for-mfa"></a>Multi-Factor HRE-hitelesítés használata a szinapszis SQL-sel (SSMS-támogatás az MFA-hoz)
 
@@ -26,7 +26,7 @@ Ez a cikk a különböző hitelesítési lehetőségek közötti különbségeke
 
 Az ebben a cikkben tárgyalt összes szolgáltatáshoz használja a 17,2-es vagy újabb 2017-es verziót.  A legutóbbi kapcsolódás párbeszédpanelnek az alábbi képhez hasonlóan kell kinéznie:
 
-![1mfa – univerzális – kapcsolat](./media/mfa-authentication/1mfa-universal-connect.png "Befejezi a Felhasználónév mezőt.")  
+![Képernyőfelvétel: Kapcsolódás a kiszolgálóhoz párbeszédpanel, ahol kiválaszthatja a kiszolgáló nevét és a hitelesítési lehetőséget.](./media/mfa-authentication/1mfa-universal-connect.png "Befejezi a Felhasználónév mezőt.")  
 
 ## <a name="the-five-authentication-options"></a>Az öt hitelesítési lehetőség  
 
@@ -63,7 +63,7 @@ A (17,2-es SSMS-es verziótól kezdődő) paraméter megadásához a **Kapcsoló
 
 Ellenőrizze az **ad-tartomány nevét vagy a bérlő azonosítóját** , és adja meg a hitelesítő hatóságot, például a tartománynevet (**contosotest.onmicrosoft.com**) vagy a bérlő azonosítójának GUID azonosítóját.  
 
-   ![MFA-bérlő – SSMS](./media/mfa-authentication/mfa-tenant-ssms.png)
+   ![Képernyőfelvétel: Kapcsolódás a kiszolgálóhoz a kapcsolat tulajdonságai lapon megadott értékekkel.](./media/mfa-authentication/mfa-tenant-ssms.png)
 
 Ha a SSMS 18. x vagy újabb verzióját futtatja, akkor az AD-tartománynév vagy a bérlői azonosító már nem szükséges a vendég felhasználói számára, mert 18. x vagy újabb automatikusan felismeri.
 

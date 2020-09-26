@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 06/11/2018
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 4ca601a3f149d8287137265665379d407d10b988
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 08bbe1000d457cc4f4d6b655051ec640d4dcecf4
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192687"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362095"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-azure-cdn-endpoint"></a>Útmutató: Egyéni tartomány hozzáadása az Azure CDN-végponthoz
 Ez az útmutató megmutatja, hogyan adható hozzá egyéni tartomány egy Azure Content Delivery Network- (CDN-) végponthoz. Amikor CDN-végpontot használ a tartalom továbbítására, és azt szeretné, hogy a saját tartományneve jelenjen meg a CDN URL-címében, egyéni tartományt kell létrehoznia. A látható tartománynév hasznos lehet az ügyfelei számára, és a vállalati arculat szempontjából is. 
@@ -90,7 +90,7 @@ Példaképp a GoDaddy tartományregisztráló eljárása a következő:
 
 5. Töltse ki a következő mezőket a CNAME bejegyzéshez:
 
-    ![CNAME bejegyzés](./media/cdn-map-content-to-custom-domain/cdn-cdnverify-cname-entry.png)
+    ![A képernyőképen egy ideiglenes cdnverify altartományhoz tartozó Type, Host, Points és T T L értékekkel rendelkező C-név bejegyzés látható.](./media/cdn-map-content-to-custom-domain/cdn-cdnverify-cname-entry.png)
 
     - Típus: Hagyja kijelölve a *CNAME* elemet.
 
@@ -100,11 +100,11 @@ Példaképp a GoDaddy tartományregisztráló eljárása a következő:
 
     - Élettartam: Hagyja kiválasztva az *1 óra* lehetőséget.
 
-6. Válassza a **Mentés** lehetőséget.
+6. Kattintson a **Mentés** gombra.
  
     A CNAME bejegyzést a rendszer a DNS-rekordok táblázatához adja.
 
-    ![DNS-rekordok táblázata](./media/cdn-map-content-to-custom-domain/cdn-cdnverify-dns-table.png)
+    ![A képernyőfelvétel azt mutatja, hogy a C-név bejegyzés hozzá lett adva a D N S rekordok táblához egy ideiglenes cdnverify altartományhoz.](./media/cdn-map-content-to-custom-domain/cdn-cdnverify-dns-table.png)
 
 
 ## <a name="associate-the-custom-domain-with-your-cdn-endpoint"></a>Az egyéni tartomány hozzárendelése a CDN-végponthoz
@@ -188,7 +188,7 @@ Példaképp a GoDaddy tartományregisztráló eljárása a következő:
 
 5. Töltse ki a CNAME bejegyzés mezőit:
 
-    ![CNAME bejegyzés](./media/cdn-map-content-to-custom-domain/cdn-cname-entry.png)
+    ![A képernyőképen egy állandó egyéni tartomány típusával, Gazdagépével, pontjaival és T T L értékével rendelkező C név jelenik meg.](./media/cdn-map-content-to-custom-domain/cdn-cname-entry.png)
 
     - Típus: Hagyja kijelölve a *CNAME* elemet.
 
@@ -198,11 +198,11 @@ Példaképp a GoDaddy tartományregisztráló eljárása a következő:
 
     - Élettartam: Hagyja kiválasztva az *1 óra* lehetőséget.
 
-6. Válassza a **Mentés** lehetőséget.
+6. Kattintson a **Mentés** gombra.
  
     A CNAME bejegyzést a rendszer a DNS-rekordok táblázatához adja.
 
-    ![DNS-rekordok táblázata](./media/cdn-map-content-to-custom-domain/cdn-dns-table.png)
+    ![A képernyőfelvétel azt mutatja, hogy a C-név bejegyzés hozzá lett adva a D N S rekordok táblához egy állandó egyéni tartományhoz.](./media/cdn-map-content-to-custom-domain/cdn-dns-table.png)
 
 7. Ha rendelkezik cdnverify CNAME rekorddal, kattintson a mellette található ceruza ikonra, majd válassza a kuka ikont.
 

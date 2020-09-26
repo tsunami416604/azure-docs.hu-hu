@@ -5,14 +5,14 @@ author: kgremban
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 09/25/2020
 ms.author: kgremban
-ms.openlocfilehash: 3a43d7e3e406e4a248e0ac2c27fb74a2f1b036cf
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d81cc6c94c04c683362fd12cd6777c304a4b0a84
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90940896"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361976"
 ---
 # <a name="confidential-computing-at-the-edge"></a>Bizalmas számítástechnika az Edge-ben
 
@@ -42,8 +42,8 @@ A nyitott enklávé több hardveres platformot is támogat. IoT Edge az enkláv�
 
 A nyílt enklávé-tárház olyan mintákat is tartalmaz, amelyek segítségével a fejlesztők megkezdhetik az első lépéseket. További információért válasszon a bevezető cikkek közül:
 
-* [Open enklávé SDK-minták készítése Linux rendszeren](https://github.com/openenclave/openenclave/blob/master/samples/README_Linux.md)
-* [Open enklávé SDK-minták készítése Windows rendszeren](https://github.com/openenclave/openenclave/blob/master/samples/README_Windows.md)
+* [Open enklávé SDK-minták készítése Linux rendszeren](https://github.com/openenclave/openenclave/blob/master/samples/BuildSamplesLinux.md)
+* [Open enklávé SDK-minták készítése Windows rendszeren](https://github.com/openenclave/openenclave/blob/master/samples/BuildSamplesWindows.md)
 
 ## <a name="hardware"></a>Hardver
 

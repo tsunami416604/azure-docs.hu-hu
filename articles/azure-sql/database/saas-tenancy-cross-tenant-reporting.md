@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewers: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: fe4b25dfd8bf96d1ed6dab189543e0e1b810ecd8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3542bb502bbb0d41ff6a35902bc38262c26876de
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84042119"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361738"
 ---
 # <a name="cross-tenant-reporting-using-distributed-queries"></a>Több-bérlős jelentéskészítés elosztott lekérdezések használatával
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -93,7 +93,7 @@ A *helyszínek* nézet definíciójának vizsgálata:
 
 1. A **Object Explorer**bontsa ki a **contosoconcerthall**-  >  **nézetek**elemet:
 
-   ![kilátással](./media/saas-tenancy-cross-tenant-reporting/views.png)
+   ![A képernyőkép a nézetek csomópont tartalmát jeleníti meg, beleértve a d b. helyszín négy típusát is.](./media/saas-tenancy-cross-tenant-reporting/views.png)
 
 2. Kattintson a jobb gombbal a dbo elemre **. Helyszínek**.
 3. Válassza ki a **parancsfájl nézetet az**  >  **CREATE To**  >  **Új lekérdezés-szerkesztő ablak** létrehozásához.
@@ -176,7 +176,7 @@ Fontos megjegyezni, hogy ha a külső adatforrás meghatározásakor a **Distrib
    ![lekérdezés](./media/saas-tenancy-cross-tenant-reporting/query3-plan.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

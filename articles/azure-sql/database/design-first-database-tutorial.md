@@ -10,12 +10,12 @@ ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 07/29/2019
 ms.custom: sqldbrb=1
-ms.openlocfilehash: b56dd81cd0cdc5d9a6917b0bf43c3fceeff63c4a
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 1e0ab1d6c1266b37dfcba461fbbdc373fc526783
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84216540"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362163"
 ---
 # <a name="tutorial-design-a-relational-database-in-azure-sql-database-using-ssms"></a>Oktatóanyag: a SSMS-t használó, Azure SQL Databaseban található viszonyítási adatbázis tervezése
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -92,14 +92,14 @@ Az alábbi lépéseket követve hozzon létre egy üres adatbázist.
 
 9. Az eszköztáron kattintson az **Értesítések** elemre az üzembehelyezési folyamat monitorozásához.
 
-   ![értesítés](./media/design-first-database-tutorial/notification.png)
+   ![Képernyőfelvétel: az értesítések menü, amelyen a telepítés folyamatban van.](./media/design-first-database-tutorial/notification.png)
 
 ## <a name="create-a-server-level-ip-firewall-rule"></a>Kiszolgálói szintű IP-tűzfalszabály létrehozása
 
 A Azure SQL Database egy IP-tűzfalat hoz létre a kiszolgáló szintjén. Ez a tűzfal megakadályozza, hogy a külső alkalmazások és eszközök csatlakozzanak a kiszolgálóhoz és a kiszolgálón lévő adatbázisokhoz, kivéve, ha egy tűzfalszabály engedélyezi az IP-címet a tűzfalon keresztül. Az adatbázis külső kapcsolatának engedélyezéséhez először hozzá kell adnia egy IP-tűzfalszabály-szabályt az IP-címhez (vagy IP-címtartomány). A [kiszolgálói szintű IP-tűzfalszabály](firewall-configure.md)létrehozásához kövesse az alábbi lépéseket.
 
 > [!IMPORTANT]
-> A Azure SQL Database a 1433-es porton keresztül kommunikál. Ha vállalati hálózaton belülről próbál csatlakozni a szolgáltatáshoz, előfordulhat, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 1433-as porton keresztül. Ha igen, nem tud csatlakozni az adatbázishoz, ha a rendszergazda megnyitja a 1433-es portot.
+> Az Azure SQL Database az 1433-as porton kommunikál. Ha vállalati hálózaton belülről próbál csatlakozni a szolgáltatáshoz, előfordulhat, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 1433-as porton keresztül. Ha igen, nem tud csatlakozni az adatbázishoz, ha a rendszergazda megnyitja a 1433-es portot.
 
 1. Az üzembe helyezés befejezése után válassza az **SQL-adatbázisok** lehetőséget a Azure Portal menüben, vagy keresse meg és válassza ki az *SQL-adatbázisok* elemet bármely oldalon.  
 
@@ -133,7 +133,7 @@ Kapcsolat létesítése az adatbázissal a [SQL Server Management Studio](/sql/s
 
    | Beállítás       | Ajánlott érték | Leírás |
    | ------------ | ------------------ | ------------------------------------------------- |
-   | **Kiszolgáló típusa** | Adatbázismotor | Kötelezően megadandó érték. |
+   | **Server type (Kiszolgáló típusa)** | Adatbázismotor | Kötelezően megadandó érték. |
    | **Kiszolgáló neve** | A teljes kiszolgálónév | Például: *YourServer.database.Windows.net*. |
    | **Hitelesítés** | SQL Server-hitelesítés | Az SQL-hitelesítés az egyetlen hitelesítési típus, amelyet ebben az oktatóanyagban konfiguráltunk. |
    | **Bejelentkezés** | A kiszolgálói rendszergazdafiók | Az a fiók, amely a kiszolgáló létrehozásakor lett megadva. |
@@ -272,7 +272,7 @@ Hajtsa végre a következő lekérdezéseket az adatbázistáblákban lévő inf
        AND person.LastName = 'Coleman'
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban számos alapvető adatbázis-feladatot tanult meg. Megtanulta végrehajtani az alábbi műveleteket:
 

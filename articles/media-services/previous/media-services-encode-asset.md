@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: juliako
-ms.openlocfilehash: c98d265f2d21c1e16ca787d4055eb4c2b1a89133
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 5d5a00488321c9c67dd1469b1d8476636675aa8f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269080"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91281014"
 ---
 # <a name="overview-of-azure-on-demand-media-encoders"></a>Az Azure igény szerinti adathordozó-kódolóinak áttekintése
 
@@ -36,12 +36,11 @@ A Media Services dinamikus csomagolást biztosít, amely lehetővé teszi az ada
 
 A Media Services fiók létrehozásakor a rendszer **leállított** állapotban adja hozzá a fiókhoz az **alapértelmezett** folyamatos átviteli végpontot. A tartalom streamelésének megkezdéséhez, valamint a dinamikus csomagolás és a dinamikus titkosítás kihasználásához a tartalomstreameléshez használt streamvégpontnak **Fut** állapotban kell lennie. A folyamatos átviteli végpontok számlázása akkor történik meg, amikor a végpont **futó** állapotban van.
 
-Media Services a következő, igény szerinti kódolókat támogatja, amelyek a jelen cikkben olvashatók:
+Media Services a következő igény szerinti kódolót támogatja:
 
 * [Media Encoder Standard](media-services-encode-asset.md#media-encoder-standard)
-* [Media Encoder Premium-munkafolyamat](media-services-encode-asset.md#media-encoder-premium-workflow)
 
-Ez a cikk rövid áttekintést nyújt az igény szerinti adathordozó-kódolókkal kapcsolatban, és hivatkozásokat tartalmaz a részletesebb információkat tartalmazó cikkekhez. A témakör emellett a kódolók összehasonlítását is tartalmazza.
+Ez a cikk rövid áttekintést nyújt az igény szerinti adathordozó-kódolókkal kapcsolatban, és részletesebb információkat tartalmazó cikkekre mutató hivatkozásokat tartalmaz.
 
 Alapértelmezés szerint minden Media Services fiók egyszerre csak egy aktív kódolási feladattal rendelkezhet. Olyan kódolási egységeket foglalhat le, amelyek lehetővé teszik, hogy egyszerre több kódolási feladatot futtasson, egyet a megvásárolt kódoláshoz fenntartott egységekhez. További információ: [kódolási egységek skálázása](media-services-scale-media-processing-overview.md).
 
@@ -72,15 +71,6 @@ További információ: [átfedések létrehozása Media Encoder standard haszná
 
 ### <a name="see-also"></a>Lásd még
 [A Media Services blog](https://azure.microsoft.com/blog/2015/07/16/announcing-the-general-availability-of-media-encoder-standard/)
-
-## <a name="media-encoder-premium-workflow"></a>Media Encoder Premium-munkafolyamat
-### <a name="overview"></a>Áttekintés
-[Prémium szintű kódolás bemutatása Azure Media Services](https://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services/)
-
-### <a name="how-to-use"></a>Használat
-A Media Encoder Premium Workflow összetett munkafolyamatok használatával van konfigurálva. A munkafolyamat-fájlok a [munkafolyamat-tervező](media-services-workflow-designer.md) eszköz használatával hozhatók létre és frissíthetők.
-
-[Prémium szintű kódolás használata a Azure Media Servicesban](https://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services/)
 
 ### <a name="known-issues"></a>Ismert problémák
 Ha a bemeneti videó nem tartalmaz kódolt feliratozást, a kimeneti eszköz továbbra is tartalmaz egy üres TTML-fájlt.

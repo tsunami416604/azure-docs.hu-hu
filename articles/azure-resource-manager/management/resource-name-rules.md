@@ -2,13 +2,13 @@
 title: Erőforrás-elnevezési korlátozások
 description: Az Azure-erőforrások elnevezési szabályait és korlátozásait mutatja be.
 ms.topic: conceptual
-ms.date: 05/21/2020
-ms.openlocfilehash: 56c50354a6ecbd6ba1d9a806f986cea1c4f3215f
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.date: 09/23/2020
+ms.openlocfilehash: 0ee19140d3105e101c44ce70d77ccc9427600aa0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235978"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317089"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Az Azure-erőforrásokra vonatkozó elnevezési szabályok és korlátozások
 
@@ -53,7 +53,7 @@ Az alábbi táblázatokban az alfanumerikus kifejezés a következőre hivatkozi
 > | szolgáltatás/tanúsítványok | szolgáltatás | 1-256 | Nem használható:<br> `*#&+:<>?` |
 > | szolgáltatás/diagnosztika | szolgáltatás | 1-256 | Nem használható:<br> `*#&+:<>?` |
 > | szolgáltatás/csoportok | szolgáltatás | 1-256 | Nem használható:<br> `*#&+:<>?` |
-> | szolgáltatás/csoportok/felhasználók | group | 1-256 | Nem használható:<br> `*#&+:<>?` |
+> | szolgáltatás/csoportok/felhasználók | csoport | 1-256 | Nem használható:<br> `*#&+:<>?` |
 > | szolgáltatás/identityProviders | szolgáltatás | 1-256 | Nem használható:<br> `*#&+:<>?` |
 > | szolgáltatás/naplózók | szolgáltatás | 1-256 | Nem használható:<br> `*#&+:<>?` |
 > | szolgáltatás/értesítések | szolgáltatás | 1-256 | Nem használható:<br> `*#&+:<>?` |
@@ -107,7 +107,7 @@ Az alábbi táblázatokban az alfanumerikus kifejezés a következőre hivatkozi
 > [!div class="mx-tableFixed"]
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
-> | batchAccounts | Régió | 3–24 | Kisbetűk és számok. |
+> | batchAccounts | Region | 3–24 | Kisbetűk és számok. |
 > | batchAccounts/alkalmazások | batch-fiók | 1-64 | Alfanumerikus karakterek, aláhúzások és kötőjelek. |
 > | batchAccounts/tanúsítványok | batch-fiók | 5-45 | Alfanumerikus karakterek, aláhúzások és kötőjelek. |
 > | batchAccounts/készletek | batch-fiók | 1-64 | Alfanumerikus karakterek, aláhúzások és kötőjelek. |
@@ -174,8 +174,8 @@ Az alábbi táblázatokban az alfanumerikus kifejezés a következőre hivatkozi
 > | galériák/lemezképek/verziók | image | 32 bites egész szám | Számok és időszakok. |
 > | images | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzások, időszakok és kötőjelek.<br><br>Kezdje alfanumerikusan. Az alfanumerikus vagy aláhúzás karakterrel végződik. |
 > | pillanatképek | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzások, időszakok és kötőjelek.<br><br>Kezdje alfanumerikusan. Az alfanumerikus vagy aláhúzás karakterrel végződik. |
-> | virtualMachines | erőforráscsoport | 1-15 (Windows)<br>1-64 (Linux)<br><br>Lásd az alábbi megjegyzést. | Nem használható:<br> `\/"'[]:|<>+=;,?*@&`<br><br>Nem kezdődhet aláhúzással. Nem végződhet ponttal vagy kötőjeltel. |
-> | virtualMachineScaleSets | erőforráscsoport | 1-15 (Windows)<br>1-64 (Linux)<br><br>Lásd az alábbi megjegyzést. | Nem használható:<br> `\/"'[]:|<>+=;,?*@&`<br><br>Nem kezdődhet aláhúzással. Nem végződhet ponttal vagy kötőjeltel. |
+> | virtualMachines | erőforráscsoport | 1-15 (Windows)<br>1-64 (Linux)<br><br>Lásd az alábbi megjegyzést. | A szóköz vagy a következő karakterek nem használhatók:<br> `\/"'[]:|<>+=;,?*@&`<br><br>Nem kezdődhet aláhúzással. Nem végződhet ponttal vagy kötőjeltel. |
+> | virtualMachineScaleSets | erőforráscsoport | 1-15 (Windows)<br>1-64 (Linux)<br><br>Lásd az alábbi megjegyzést. | A szóköz vagy a következő karakterek nem használhatók:<br> `\/"'[]:|<>+=;,?*@&`<br><br>Nem kezdődhet aláhúzással. Nem végződhet ponttal vagy kötőjeltel. |
 
 > [!NOTE]
 > Az Azure-beli virtuális gépek két különböző névvel rendelkeznek: az erőforrás neve és az állomásnév. Amikor létrehoz egy virtuális gépet a portálon, ugyanazt az értéket használja mindkét névhez. Az előző táblázatban szereplő korlátozások az állomásnévre vonatkoznak. A tényleges erőforrásnév legfeljebb 64 karakterből állhat.
@@ -543,7 +543,7 @@ Az alábbi táblázatokban az alfanumerikus kifejezés a következőre hivatkozi
 > [!div class="mx-tableFixed"]
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
-> | megoldások | munkaterület | N/A | A Microsoft által létrehozott megoldások esetében a névnek a következő mintában kell szerepelnie:<br>`SolutionType(WorkspaceName)`<br><br>Harmadik felek által létrehozott megoldások esetében a névnek a következő mintában kell lennie:<br>`SolutionType[WorkspaceName]`<br><br>Egy érvényes név például a következő:<br>`AntiMalware(contoso-IT)`<br><br>A megoldás típusa megkülönbözteti a kis-és nagybetűket. |
+> | megoldások | munkaterület | N.A. | A Microsoft által létrehozott megoldások esetében a névnek a következő mintában kell szerepelnie:<br>`SolutionType(WorkspaceName)`<br><br>Harmadik felek által létrehozott megoldások esetében a névnek a következő mintában kell lennie:<br>`SolutionType[WorkspaceName]`<br><br>Egy érvényes név például a következő:<br>`AntiMalware(contoso-IT)`<br><br>A megoldás típusa megkülönbözteti a kis-és nagybetűket. |
 
 ## <a name="microsoftportal"></a>Microsoft. Portal
 
@@ -704,6 +704,6 @@ Az alábbi táblázatokban az alfanumerikus kifejezés a következőre hivatkozi
 > [!NOTE]
 > A Azure Functions azonos elnevezési szabályokkal és korlátozásokkal rendelkezik, mint a Microsoft. Web/Sites.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az erőforrások elnevezésével kapcsolatos ajánlásokat a [Ready: ajánlott elnevezési és címkézési konvenciók](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)című témakörben talál.

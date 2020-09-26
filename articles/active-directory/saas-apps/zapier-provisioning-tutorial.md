@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: Zhchia
-ms.openlocfilehash: bb010ea7262de4498d25250845eebaec8606c707
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b45c7fcbc4e3c0eda4f2e8d3eb21a81428dee39d
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91327986"
+ms.locfileid: "91361245"
 ---
 # <a name="tutorial-configure-zapier-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Zapier konfigurálása
 
@@ -95,7 +95,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a Zapier **bérlői URL-címét** és a **titkos jogkivonatot**. Kattintson a **kapcsolat tesztelése** lehetőségre, hogy az Azure ad képes legyen csatlakozni a Zapier. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a Zapier-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
-   ![kiépítési](./media/zapier-provisioning-tutorial/provisioning.png)
+   ![Képernyőfelvétel: a rendszergazdai hitelesítő adatok párbeszédpanel, ahol megadhatja a bérlő U R L-t és a titkos jogkivonatot.](./media/zapier-provisioning-tutorial/provisioning.png)
 
 6. Az **Értesítés e-mailben** mezőben adja meg annak a személynek vagy csoportnak az e-mail-címét, aki az átadással kapcsolatos hibaüzeneteket kapja, és jelölje be az **E-mail-értesítés küldése hiba esetén** jelölőnégyzetet.
 

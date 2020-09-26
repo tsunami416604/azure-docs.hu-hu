@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f43ba78bc9c48b003d4718945dc47b0a076a048f
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 82b0b53b1933a7ca08163a12b2b7649b7b9538f4
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134525"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361636"
 ---
 # <a name="utilize-azure-infrastructure-vm-restart-to-achieve-higher-availability-of-an-sap-system"></a>Az Azure-infrastruktúra virtuális gépek újraindításának kihasználása egy SAP-rendszer "magasabb rendelkezésre állásának" eléréséhez
 
@@ -210,7 +210,7 @@ ms.locfileid: "86134525"
 
 > Ez a szakasz a következőkre vonatkozik:
 >
-> ![Windows][Logo_Windows] Windows és ![Linux][Logo_Linux] Linux
+> ![Windows-embléma.][Logo_Windows] Windows és ![Linux-embléma.][Logo_Linux] Linux
 >
 
 Ha úgy dönt, hogy nem használ olyan funkciókat, mint például a Windows Server feladatátvételi fürtszolgáltatás (WSFC) vagy a pacemaker a Linux rendszeren (jelenleg csak SUSE Linux Enterprise Server [SLES] 12-es és újabb verziók esetén támogatott), az Azure-beli virtuális gépek újraindítása is megtörténik. Az SAP-rendszereket az Azure fizikai kiszolgálói infrastruktúra és a teljes mögöttes Azure platform tervezett és nem tervezett leállásával védi.

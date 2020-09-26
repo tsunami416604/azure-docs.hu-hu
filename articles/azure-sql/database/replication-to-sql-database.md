@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: mathoma
 ms.date: 04/28/2020
-ms.openlocfilehash: 6f1eb48655c4e38e2cf0520409e5e2b38750baf5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 079d187f66cf77585121198df06cabafc454fea1
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84324147"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362129"
 ---
 # <a name="replication-to-azure-sql-database"></a>Replikálás Azure SQL Databasere
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -57,8 +57,8 @@ A replikáció különböző [típusú](https://docs.microsoft.com/sql/relationa
 | [**Normál tranzakciós**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Igen (csak előfizetőként) | Yes | 
 | [**Pillanatkép**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Igen (csak előfizetőként) | Yes|
 | [**Replikálás egyesítése**](https://docs.microsoft.com/sql/relational-databases/replication/merge/merge-replication) | Nem | Nem|
-| [**Társ-társ**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | Nem | Nem|
-| [**Kétirányú**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | No | Igen|
+| [**Egyenrangú**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | Nem | Nem|
+| [**Kétirányú**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | Nem | Igen|
 | [**Frissíthető előfizetések**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | Nem | Nem|
 | &nbsp; | &nbsp; | &nbsp; |
 
@@ -78,7 +78,7 @@ A replikáció különböző [típusú](https://docs.microsoft.com/sql/relationa
 
 ## <a name="replication-architecture"></a>Replikációs architektúra  
 
-![replikálás – SQL-adatbázis](./media/replication-to-sql-database/replication-to-sql-database.png)  
+![A diagram megjeleníti a replikálási architektúrát Azure SQL Databaseával, amely több előfizetői fürtöt tartalmaz különböző régiókban, valamint helyszíni Azure-beli virtuális gépeket, amelyek közzétevőt, Logread végrehajtható fájlt és a távoli fürtökhöz kapcsolódó terjesztői végrehajtható fájlokat tartalmaznak.](./media/replication-to-sql-database/replication-to-sql-database.png)  
 
 ## <a name="scenarios"></a>Forgatókönyvek  
 

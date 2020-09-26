@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: aahi
-ms.openlocfilehash: 305242e13dab23b6a003c5d864073372a052601a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: d6b1085d51d7345b233087986127cbc97c0597e1
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83593171"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362061"
 ---
 # <a name="migrate-from-the-translator-speech-api-to-the-speech-service"></a>Migrálás a Translator Speech APIról a beszédfelismerési szolgáltatásba
 
@@ -59,12 +59,12 @@ Ha Ön vagy a szervezete rendelkezik olyan alkalmazásokkal, amelyeket a Transla
 
 * A Translator Speech APItól eltérően a beszédfelismerési szolgáltatás több nyelven is elvégezheti a fordítást egyetlen kérelemben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Próbálja ki ingyenesen a Speech szolgáltatást](get-started.md)
+* [Próbálja ki ingyenesen a Speech szolgáltatást](overview.md#try-the-speech-service-for-free)
 * [Gyors útmutató: beszédfelismerés felismerése UWP-alkalmazásban a Speech SDK használatával](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=uwp)
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 * [Mi a beszédfelismerési szolgáltatás?](overview.md)
 * [A Speech Service és a Speech SDK dokumentációja](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-qsg)

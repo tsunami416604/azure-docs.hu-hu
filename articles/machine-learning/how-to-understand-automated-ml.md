@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 12/05/2019
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 42b2ff0b7c2d43beb1d5f0b2136a97e67c0143a5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a38d65e66debd8e718964efdce27fe42772d8e0a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905069"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91315541"
 ---
 # <a name="understand-automated-machine-learning-results"></a>Az automatizált gépi tanulási eredmények értelmezése
 
@@ -30,7 +30,7 @@ További információk:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot, mielőtt hozzákezd. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
 * Hozzon létre egy kísérletet az automatizált gépi tanuláshoz, vagy az SDK-val vagy a Azure Machine Learning Studióban.
 
@@ -226,8 +226,8 @@ A rendszer a következő metrikákat menti a regressziós vagy előrejelzési fe
 
 |Metrika|Leírás|Számítás|További paraméterek
 --|--|--|--|
-explained_variance|Az elmagyarázott variancia azt az arányt adja meg, amelynek a matematikai modellje egy adott adathalmaz variációját mutatja. Ez az eredeti és a hibák eltérésének százalékos csökkenése. Ha a hibák középértéke 0, akkor egyenlő a magyarázattal.|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.explained_variance_score.html)|Nincsenek|
-r2_score|R2 a meghatározási együttható vagy a négyzetes hibák százalékos csökkenése a középértéket eredményező alapmodellhez képest. |[Kiszámítása](https://scikit-learn.org/0.16/modules/generated/sklearn.metrics.r2_score.html)|Nincsenek|
+explained_variance|Az elmagyarázott variancia azt az arányt adja meg, amelynek a matematikai modellje egy adott adathalmaz variációját mutatja. Ez az eredeti és a hibák eltérésének százalékos csökkenése. Ha a hibák középértéke 0, akkor a meghatározás együtthatója egyenlő (lásd alább r2_score).|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.explained_variance_score.html)|Nincsenek|
+r2_score|Az R ^ 2 a meghatározási együttható vagy a négyzetes hibák százalékos csökkenése egy olyan alapmodellhez képest, amely a középértéket adja eredményül. |[Kiszámítása](https://scikit-learn.org/0.16/modules/generated/sklearn.metrics.r2_score.html)|Nincsenek|
 spearman_correlation|A lándzsás korreláció a két adathalmaz közötti kapcsolat monotonicity nem számszerű mérőszáma. A Pearson korrelációtól eltérően a lándzsás korreláció nem feltételezi, hogy mindkét adathalmazt általában kiosztják. Más korrelációs tényezőhöz hasonlóan ez az 1 és + 1 között változik, és a 0 érték nem jelent korrelációt. Az-1 vagy + 1 korrelációk pontos monoton kapcsolatot jelentenek. A pozitív korrelációk azt sugallják, hogy az x növekszik, így az y. A negatív korrelációk azt sugallják, hogy az x nő, az y pedig csökken.|[Kiszámítása](https://docs.scipy.org/doc/scipy-0.16.1/reference/generated/scipy.stats.spearmanr.html)|Nincsenek|
 mean_absolute_error|Abszolút érték: a cél és az előrejelzés közötti különbség abszolút értéke a várt érték.|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html)|Nincsenek|
 normalized_mean_absolute_error|Normalizált Mean abszolút hiba: abszolút hiba, amelyet az adattartomány feloszt|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html)|Osztás az adattartomány szerint|

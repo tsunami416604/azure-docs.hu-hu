@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/19/2020
 ms.author: mjbrown
-ms.openlocfilehash: 5038d9968e37b956774d1c5f8abdb14865422e8b
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 8e6a6d1c557a765e55152685f08e80ad54bbd903
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027746"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362010"
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-with-a-web-app-from-github-using-an-azure-resource-manager-template"></a>Azure Cosmos DB és Azure App Service üzembe helyezése a GitHub webalkalmazásával egy Azure Resource Manager sablon használatával
 
@@ -98,7 +98,7 @@ A működéséhez három elem szükséges.
 
 Először az alkalmazásnak meg kell kérnie az Cosmos DB-végpontot és a kulcsot a `Startup` ASP.net MVC webalkalmazás osztályában. A [mintaként szolgáló Cosmos db](https://github.com/Azure-Samples/cosmos-dotnet-core-todo-app) helyileg futtatható, ahol megadhatja a kapcsolódási adatokat a appsettings.js. A telepítésekor azonban ez a fájl az alkalmazással együtt települ. Ha a piros vonal nem fér hozzá a beállításokhoz a appsettings.json-ben, akkor a Azure App Service alkalmazás beállításai közül próbálkozik.
 
-:::image type="content" source="./media/create-website/startup.png" alt-text="Indítás":::
+:::image type="content" source="./media/create-website/startup.png" alt-text="A képernyőfelvétel egy olyan metódust mutat be, amely több, vörös színnel jelölt karakterlánc-változóval rendelkezik, beleértve a databaseName, a containerName, a fiókot és a kulcsot":::
 
 ### <a name="using-special-azure-resource-management-functions"></a>Speciális Azure Resource Management-függvények használata
 
@@ -112,7 +112,7 @@ Végül telepíteni kell a webalkalmazást a GitHubról a App Serviceba. Ezt az 
 
 :::image type="content" source="./media/create-website/deploy-from-github.png" alt-text="Üzembe helyezés a GitHubról":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Gratulálunk! Telepítette Azure Cosmos DB, Azure App Service és egy minta webalkalmazást, amely automatikusan rendelkezik a Cosmos DBhoz való kapcsolódáshoz szükséges kapcsolódási adatokkal, egyetlen művelettel, és a bizalmas adatok kivágása és beillesztése nélkül. A sablon kiindulási pontként való használata lehetővé teszi, hogy a saját webalkalmazásait ugyanúgy telepítse.
 

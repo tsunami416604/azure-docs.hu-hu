@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: cc1d6e04b19d36f0ca8c7ed4b2bb3d62f5e8e15a
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 8cab2e3490703cbf955ed1ed5c6e753a3ccfc753
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "78252749"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361432"
 ---
 # <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application-using-yeoman"></a>Oktatóanyag: Tárolók csomagolása és üzembe helyezése Service Fabric-alkalmazásként a Yeoman használatával
 
@@ -278,9 +278,9 @@ Nyisson meg egy böngészőt, és navigáljon a Service Fabric Explorer a http: 
 
 A futó alkalmazáshoz való kapcsolódáshoz nyisson meg egy webböngészőt, és nyissa meg a fürt URL-címét – például http: \/ /containertestcluster.eastus.cloudapp.Azure.com:80. A webes felhasználói felületen a szavazóalkalmazásnak kell megjelennie.
 
-![szavazóalkalmazás][votingapp]
+![Képernyőfelvétel: az Azure-beli szavazási alkalmazás macskák, kutyák és alaphelyzetbe állítására szolgáló gombokkal és összegekkel.][votingapp]
 
-## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
+## <a name="clean-up"></a>A feleslegessé vált elemek eltávolítása
 
 Használja a sablonban megadott eltávolítási szkriptet az alkalmazáspéldánynak a fürtről történő törléséhez, és törölje az alkalmazástípus regisztrációját. A parancsnak némi időre van szüksége, hogy kiürítse a példányt, ezért az „install.sh” parancs nem futtatható azonnal a szkript után.
 

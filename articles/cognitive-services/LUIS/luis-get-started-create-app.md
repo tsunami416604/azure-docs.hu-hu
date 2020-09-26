@@ -1,14 +1,16 @@
 ---
 title: 'Gyors útmutató: alkalmazás létrehozása – LUIS'
 description: Ez a rövid útmutató bemutatja, hogyan hozhat létre egy olyan LUIS-alkalmazást, amely az előre elkészített tartományt használja a `HomeAutomation` fények és a készülékek be-és kikapcsolásához. Ez az előre összeállított tartomány szándékokat, entitásokat és kimondott szövegek példáit tartalmazza. Amikor végzett, egy felhőben futó LUIS-végponttal fog rendelkezni.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 05/05/2020
-ms.openlocfilehash: cefa9d5995f876ef3f07cc32324e747125e9cbf7
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 28bf79b61c0278a3f45820a23cd2c69f0b609700
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701269"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316485"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>Rövid útmutató: Előre összeállított otthonautomatizálási alkalmazás használata
 
@@ -27,7 +29,7 @@ A **My Apps** (Saját alkalmazások) lapon hozhatja létre és kezelheti az alka
 1. Válassza az **angol nyelvet** kulturális környezetként.
 1. Adja meg a leírást (nem kötelező).
 1. Ne válasszon előrejelzési erőforrást, ha még nem hozta létre az erőforrást. Az alkalmazás előrejelzési végpontjának (átmeneti vagy éles üzem) használatához hozzá kell rendelnie egy előrejelzési erőforrást.
-1. Válassza a **Done** (Kész) lehetőséget.
+1. Válassza a **Kész** lehetőséget.
 
     LUIS létrehozza az alkalmazást.
 
@@ -201,7 +203,7 @@ Miután betanította az alkalmazását, tesztelheti is.
     További információ a [v3 előrejelzési végpontról](luis-migration-api-v3.md).
 
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 

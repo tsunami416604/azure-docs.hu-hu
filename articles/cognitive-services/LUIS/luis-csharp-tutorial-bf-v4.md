@@ -1,15 +1,17 @@
 ---
 title: 'Oktatóanyag: Language Understanding robot C# v4'
 description: A C# használatával hozzon létre egy csevegőrobotot integrált nyelvfelismeréssel (LUIS). A robot a robot Framework 4-es verziójával és az Azure Web App bot Service-szel készült.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 820cdeb692dffbf80a0e85c9d3dd86b703a4cae3
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 57a9186033b8df71d1972289fe33b0fe654690f6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88931267"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316426"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-c"></a>Oktatóanyag: webalkalmazás-robot használata a Language Understanding C használatával #
 
@@ -32,7 +34,7 @@ A C# használatával a Language Understanding (LUIS) nyelvvel integrált cseveg�
 
 1. Az [Azure Portalon](https://portal.azure.com) válassza az **Új erőforrás létrehozása** lehetőséget.
 
-1. A keresőmezőben keresse meg, majd válassza ki a **Webalkalmazás-robot** elemet. Válassza a **Létrehozás** lehetőséget.
+1. A keresőmezőben keresse meg, majd válassza ki a **Webalkalmazás-robot** elemet. Kattintson a **Létrehozás** gombra.
 
 1. A **Bot Service** szolgáltatásban adja meg a szükséges adatokat:
 
@@ -57,7 +59,7 @@ A C# használatával a Language Understanding (LUIS) nyelvvel integrált cseveg�
     |SDK nyelve|Robot programozási nyelve|**C#**|
     |Bot|Robot típusa|**Alapszintű robot**|
 
-1. Válassza a **Létrehozás** lehetőséget. Ezzel létrehozza a robotszolgáltatást, és üzembe helyezi azt az Azure-ban. A folyamat egyik része egy `luis-csharp-bot-XXXX` nevű LUIS-appot hoz létre. Ez a név a/Azure bot Service-alkalmazás nevén alapul.
+1. Kattintson a **Létrehozás** gombra. Ezzel létrehozza a robotszolgáltatást, és üzembe helyezi azt az Azure-ban. A folyamat egyik része egy `luis-csharp-bot-XXXX` nevű LUIS-appot hoz létre. Ez a név a/Azure bot Service-alkalmazás nevén alapul.
 
     > [!div class="mx-imgBorder"]
     > [![Webalkalmazás-robot létrehozása](./media/bfv4-csharp/create-web-app-service.png)](./media/bfv4-csharp/create-web-app-service.png#lightbox)
@@ -320,16 +322,16 @@ A Visual Studio 2019-ben indítsa el a robotot. Ekkor megnyílik egy böngésző
 
 1. A robot-emulátorban írja be és adja meg `Book a flight from Seattle to Berlin tomorrow` ugyanazt a választ az alapszintű robothoz, mint amit az előző szakaszban a **webes csevegésben való tesztelés** során kapott.
 
-    [![Alapszintű bot-válasz az emulátorban](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png)](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png#lightbox)
+    [![A képernyőképen egy alapszintű bot-válasz látható a robot Framework emulátorban.](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png)](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png#lightbox)
 
 1. Válassza az **Igen** lehetőséget. A robot a műveleteinek összegzésével válaszol.
 1. A robot-emulátor naplójából válassza ki a sort, amely tartalmazza a elemet `<- trace LuisV3 Trace` . Ez megjeleníti a LUIS által a cél és a Kimondás entitásai számára küldött JSON-választ.
 
-    [![Alapszintű bot-válasz az emulátorban](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png)](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png#lightbox)
+    [![A képernyőképen egy alapszintű bot-válasz jelenik meg a kiválasztott LuisV3-nyomkövetés és a JSON-válasz kiválasztásával.](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png)](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png#lightbox)
 
 [!INCLUDE [Bot Information](../../../includes/cognitive-services-qnamaker-luis-bot-info.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További [mintákat](https://github.com/microsoft/botframework-solutions) tekinthet meg a társalgási robotokkal.
 

@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: kumud
-ms.openlocfilehash: c3223bed6c8335a31b1bfb918e6d44e3b54a7787
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5bd88493324867dc957922a732506f5cfb8bbc20
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87047271"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361234"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-website"></a>Márkák modell testreszabása a Video Indexer webhellyel
 
@@ -42,7 +42,7 @@ Lehetősége van beállítani, hogy szeretné-e a márkákat a Bing Brands adatb
 
 3. A márkák szerkesztéséhez válassza a **márkák** lapot.
 
-    ![Brands-modell testreszabása Video Indexerban](./media/customize-brand-model/customize-brand-model.png)
+    ![Képernyőfelvétel: a tartalmi modell testreszabása párbeszédpanel márkák lapja.](./media/customize-brand-model/customize-brand-model.png)
 
 4. Tekintse meg a **Bing által javasolt márkák megjelenítése** lehetőséget, ha azt szeretné, video Indexer a Bing által javasolt márkák észlelése – ha nem, akkor hagyja meg a jelölőnégyzet jelölését.
 
@@ -54,7 +54,7 @@ A **márkák belefoglalása** szakasz azokat az egyéni márkákat tartalmazza, 
 
 1. Válassza a **+ márka hozzáadása**elemet.
 
-    ![Brands-modell testreszabása Video Indexerban](./media/customize-brand-model/add-brand.png)
+    ![Képernyőfelvétel: a márkák belefoglalása párbeszédpanel, ahol hozzáadhat márkákat is.](./media/customize-brand-model/add-brand.png)
 
     Adja meg a nevet (kötelező), a kategóriát (nem kötelező), a leírást (nem kötelező) és a hivatkozási URL-címet (opcionális).
     A Kategória mező célja, hogy segítsen a márkák címkézésében. Ez a mező a video Indexer API-k használatakor a márka *címkéi* jelenik meg. Például az "Azure" márka címkézhető vagy kategorizálható "Cloud"-ként.
@@ -101,6 +101,6 @@ A **márkák kizárása** szakasz azokat a márkákat jelenti, amelyeket nem kí
 1. Válassza ki a törölni kívánt márka melletti Kuka ikont.
 2. Válassza a **Törlés** lehetőséget, a márka pedig többé nem jelenik meg a *kizárási márkák* listájában.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A Brands modell testreszabása API-k használatával](customize-brands-model-with-api.md)

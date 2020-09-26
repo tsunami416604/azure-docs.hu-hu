@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: sedusch
-ms.openlocfilehash: fda62ff0af29c7cf681d9438b02420d299535701
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e20863cd971a55142283676fe035d3238520ae1
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80293950"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361364"
 ---
 # <a name="sap-lama-connector-for-azure"></a>Az Azure SAP LaMa összekötője
 
@@ -47,7 +47,7 @@ Ez az útmutató leírja, hogyan állíthatja be az Azure-összekötőt az SAP l
 > [!NOTE]
 > Az összekötő csak az SAP láma Enterprise kiadásában érhető el
 
-## <a name="resources"></a>További források
+## <a name="resources"></a>Források
 
 A következő SAP-megjegyzések az Azure-beli SAP láma témaköréhez kapcsolódnak:
 
@@ -129,7 +129,7 @@ Nyissa meg az SAP láma webhelyét, és navigáljon az infrastruktúrához. Lép
 * Label (címke): válassza ki az összekötő-példány nevét
 * Felhasználónév: egyszerű szolgáltatásnév vagy a virtuális gép felhasználó által hozzárendelt identitásának azonosítója. További információért lásd a [rendszer vagy felhasználó által hozzárendelt identitás használata] című témakört.
 * Password (jelszó): egyszerű szolgáltatásnév kulcs/jelszó. Ha rendszer vagy felhasználó által hozzárendelt identitást használ, hagyja üresen ezt a mezőt.
-* URL: az alapértelmezett érték megtartása`https://management.azure.com/`
+* URL: az alapértelmezett érték megtartása `https://management.azure.com/`
 * Figyelési időköz (másodperc): legalább 300 kell lennie
 * Felügyelt identitás használata: az SAP láma rendszer vagy felhasználó által hozzárendelt identitás használatával hitelesítheti magát az Azure API-val. Lásd: fejezet [a felügyelt identitás használata az Azure API-hoz való hozzáféréshez](lama-installation.md#af65832e-6469-4d69-9db5-0ed09eac126d) az útmutatóban.
 * Előfizetés azonosítója: Azure-előfizetés azonosítója
@@ -260,14 +260,14 @@ Az alábbi példákban feltételezzük, hogy a SAP HANA a System ID HN1 és az S
 
 Az SAP Software kiépítési vezető (SWPM) elindítása előtt csatlakoztatnia kell a ASCS virtuális állomásneve IP-címét. Az ajánlott módszer a sapacext használata. Ha az IP-címet az sapacext használatával csatlakoztatja, akkor az újraindítás után mindenképp csatlakoztassa újra az IP-címet.
 
-![Linux][Logo_Linux] Linux
+![Linux-embléma.][Logo_Linux] Linux
 
 ```bash
 # /usr/sap/hostctrl/exe/sapacext -a ifup -i <network interface> -h <virtual hostname or IP address> -n <subnet mask>
 /usr/sap/hostctrl/exe/sapacext -a ifup -i eth0 -h ah1-ascs -n 255.255.255.128
 ```
 
-![Windows][Logo_Windows] Windows
+![Windows-embléma.][Logo_Windows] Windows
 
 ```bash
 # C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i <network interface> -h <virtual hostname or IP address> -n <subnet mask>
@@ -276,7 +276,7 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h ah1-as
 
 Futtassa a SWPM, és használja a *ah1-ASCs* a *ASCs-példány állomásneve*számára.
 
-![Linux ][Logo_Linux] Linux  
+![Linux-embléma.][Logo_Linux] Linux  
 Adja hozzá a következő profil paramétert az SAP Host Agent-profilhoz, amely a/usr/SAP/hostctrl/exe/host_profile található. További információ: SAP Note [2628497].
 ```
 acosprep/nfs_paths=/home/ah1adm,/usr/sap/trans,/sapmnt/AH1,/usr/sap/AH1
@@ -387,14 +387,14 @@ Futtassa a SWPM adatbázis-példányának telepítését az alkalmazáskiszolgá
 
 Az SAP Software kiépítési vezető (SWPM) elindítása előtt csatlakoztatnia kell az alkalmazáskiszolgáló virtuális állomásneve IP-címét. Az ajánlott módszer a sapacext használata. Ha az IP-címet az sapacext használatával csatlakoztatja, akkor az újraindítás után mindenképp csatlakoztassa újra az IP-címet.
 
-![Linux][Logo_Linux] Linux
+![Linux-embléma.][Logo_Linux] Linux
 
 ```bash
 # /usr/sap/hostctrl/exe/sapacext -a ifup -i <network interface> -h <virtual hostname or IP address> -n <subnet mask>
 /usr/sap/hostctrl/exe/sapacext -a ifup -i eth0 -h ah1-di-0 -n 255.255.255.128
 ```
 
-![Windows][Logo_Windows] Windows
+![Windows-embléma.][Logo_Windows] Windows
 
 ```bash
 # C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i <network interface> -h <virtual hostname or IP address> -n <subnet mask>
@@ -591,7 +591,7 @@ Használja az *AS1-di-0 értéket* a *Pas instance Host neveként* a párbeszéd
   * Megoldás  
     Ügyeljen arra, hogy a virtuális gép és a tartományvezérlő közötti kommunikáció engedélyezéséhez adjon hozzá egy gazdagép-szabályt a lépés *elkülönítése* beállításhoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [SAP HANA az Azure-műveletek útmutatójában][hana-ops-guide]
 * [Azure Virtual Machines az SAP tervezéséhez és megvalósításához][planning-guide]
 * [Azure Virtual Machines üzembe helyezés az SAP-ban][deployment-guide]

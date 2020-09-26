@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: arvinh
-ms.openlocfilehash: ef87a1c7163825fcee8f4a27408719839d8a6d43
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e908c8d19a4640995c536580b6584558212ada3e
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549704"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361571"
 ---
 # <a name="tutorial-configure-linkedin-sales-navigator-for-automatic-user-provisioning"></a>Oktatóanyag: a LinkedIn Sales Navigator konfigurálása a felhasználók automatikus kiépítési felállításához
 
@@ -23,7 +23,7 @@ Ennek az oktatóanyagnak a célja, hogy megmutassa a LinkedIn Sales Navigatorban
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő elemekkel:
+Az ebben az oktatóanyagban felvázolt forgatókönyv feltételezi, hogy már rendelkezik a következőkkel:
 
 * Egy Azure Active Directory-bérlő
 * Egy LinkedIn Sales Navigator-bérlő 
@@ -71,12 +71,12 @@ Az első lépés a LinkedIn hozzáférési jogkivonatának beolvasása. Ha Ön v
     > [!NOTE]
     > Ha az autoassign-licencek nincsenek engedélyezve, az azt jelenti, hogy csak a felhasználói adatszolgáltatások szinkronizálva vannak.
 
-    ![A LinkedIn Sales Navigator üzembe helyezése](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_1.PNG)
+    ![A képernyőfelvételen a LinkedIn Account Center globális beállításai láthatók.](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_1.PNG)
 
     > [!NOTE]
     > Ha engedélyezve van az autolicenc-hozzárendelés, fel kell jegyeznie az alkalmazás példányát és a licenc típusát. A licencek első alkalommal lesznek hozzárendelve, az összes licenc beszerzése előtt.
 
-    ![A LinkedIn Sales Navigator üzembe helyezése](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_2.PNG)
+    ![A képernyőképen az S C I M telepítő lapja látható.](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_2.PNG)
 
 5. Kattintson a **jogkivonat előállítása**elemre. A hozzáférési jogkivonat megjelenítéséhez a **hozzáférési jogkivonat** mezőben kell megjelennie.
 
@@ -88,9 +88,9 @@ Az első lépés a LinkedIn hozzáférési jogkivonatának beolvasása. Ha Ön v
 
 9. Válassza ki a LinkedIn Sales Navigator példányát, majd válassza a **kiépítés** lapot.
 
-10. Állítsa a **kiépítési módot** **automatikus**értékre.
+10. Állítsa a **Kiépítési mód** mezőt **Automatikus** értékre.
 
-    ![A LinkedIn Sales Navigator üzembe helyezése](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_3.PNG)
+    ![A képernyőfelvételen a LinkedIn jogosultságszint-emelési kiépítési lapja látható.](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_3.PNG)
 
 11. Adja meg a következő mezőket a **rendszergazdai hitelesítő adatok** területen:
 
@@ -104,9 +104,9 @@ Az első lépés a LinkedIn hozzáférési jogkivonatának beolvasása. Ha Ön v
 
 13. Kattintson a **Mentés** gombra.
 
-14. Az **attribútum-hozzárendelések** szakaszban tekintse át az Azure ad-ből a LinkedIn Sales navigatorba szinkronizálandó felhasználói és csoportosítási attribútumokat. Vegye figyelembe, hogy a **megfelelő** tulajdonságokként kiválasztott attribútumok a LinkedIn Sales Navigator felhasználói fiókjainak és csoportjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez kattintson a Save (Mentés) gombra.
+14. Az **attribútum-hozzárendelések** szakaszban tekintse át az Azure ad-ből a LinkedIn Sales navigatorba szinkronizálandó felhasználói és csoportosítási attribútumokat. Vegye figyelembe, hogy a **megfelelő** tulajdonságokként kiválasztott attribútumok a LinkedIn Sales Navigator felhasználói fiókjainak és csoportjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások véglegesítéséhez válassza a Mentés gombot.
 
-    ![A LinkedIn Sales Navigator üzembe helyezése](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_4.PNG)
+    ![A képernyőképen láthatók a leképezések, beleértve az attribútumok hozzárendeléseit is.](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_4.PNG)
 
 15. Ha engedélyezni szeretné az Azure AD-kiépítési szolgáltatást a LinkedIn Sales navigatorhoz, módosítsa a **kiépítési állapotot** a következőre a **Beállítások** **szakaszban:**
 
@@ -118,5 +118,5 @@ Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további informáci
 
 ## <a name="additional-resources"></a>További források
 
-* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

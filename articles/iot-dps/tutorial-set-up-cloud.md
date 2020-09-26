@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 925d1178ad630699cfd3d9e48677c0f029fc75af
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: f45c3def84c548ba12221efa59e9ebbd4699df71
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "74976723"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316069"
 ---
 # <a name="tutorial-configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>Oktatóanyag: felhőalapú erőforrások konfigurálása az eszközök kiépítési felállításához a IoT Hub Device Provisioning Service
 
@@ -21,13 +21,13 @@ Ez az oktatóanyag bemutatja, hogyan állíthatja be a felhőt az automatikus es
 
 > [!div class="checklist"]
 > * IoT Hub Device Provisioning Service létrehozása és az azonosító hatókörének lekérése az Azure Portallal
-> * IoT Hub létrehozása
+> * IoT-központ létrehozása
 > * Az IoT Hub csatolása a Device Provisioning Service-hez
 > * A Device Provisioning Service kiosztási szabályzatának beállítása
 
 Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
 
-## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
+## <a name="prerequisites"></a>Előfeltételek
 
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
@@ -52,13 +52,13 @@ Kövesse az alábbi lépéseket egy új Device Provisioning Service-példány l�
 
    ![Írja be a Device Provisioning Service-szolgáltatás alapvető adatait a portálon](./media/tutorial-set-up-cloud/create-iot-dps-portal.png)
 
-5. Kattintson a **Create** (Létrehozás) gombra. A rendszer néhány pillanaton belül létrehozza a Device Provisioning Service-példányt, majd megjeleníti az **Áttekintés** lapot.
+5. Kattintson a **Létrehozás** lehetőségre. A rendszer néhány pillanaton belül létrehozza a Device Provisioning Service-példányt, majd megjeleníti az **Áttekintés** lapot.
 
 6. Az új szolgáltatáspéldány **Áttekintés** lapján másolja az **Azonosító hatóköre** értéket későbbi felhasználás céljából. Az érték a regisztrációs azonosítók azonosítására szolgál, továbbá garantálja a regisztrációs azonosító egyediségét.
 
 7. Jegyezze fel a **Szolgáltatásvégpont** értéket is későbbi felhasználás céljából. 
 
-## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
+## <a name="create-an-iot-hub"></a>IoT-központ létrehozása
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -116,7 +116,7 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * IoT Hub Device Provisioning Service létrehozása és az azonosító hatókörének lekérése az Azure Portallal
-> * IoT Hub létrehozása
+> * IoT-központ létrehozása
 > * Az IoT Hub csatolása a Device Provisioning Service-hez
 > * A Device Provisioning Service kiosztási szabályzatának beállítása
 
