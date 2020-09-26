@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: fa7fd73a7d8019919a89dd9e9522b7389dc9c18f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 31f7e348a805c86964a8856fb81b83831c611de5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90940065"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91377475"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -31,7 +31,7 @@ A Xcode-ben hozzon létre egy új iOS-projektet, és válassza ki az **Egynézet
 Adja hozzá az ügyféloldali függvénytárat hívó Azure kommunikációs szolgáltatásokat és annak függőségeit (AzureCore. Framework és AzureCommunication. Framework) a projekthez.
 
 > [!NOTE]
-> A AzureCommunicationCalling SDK kiadásával egy bash-szkriptet talál `BuildAzurePackages.sh` . A futtatáskor a parancsfájl `sh ./BuildAzurePackages.sh` Megadja a létrehozott keretrendszer csomagjainak elérési útját, amelyet a következő lépésben kell importálni a minta alkalmazásban. Vegye figyelembe, hogy a Xcode parancssori eszközöket kell beállítania, ha még nem tette meg a parancsfájl futtatása előtt: indítsa el a Xcode, majd válassza a "Preferences-> Locations" lehetőséget. Válassza ki a Xcode verzióját a parancssori eszközökhöz.
+> A AzureCommunicationCalling SDK kiadásával egy bash-szkriptet talál `BuildAzurePackages.sh` . A futtatáskor a parancsfájl `sh ./BuildAzurePackages.sh` Megadja a létrehozott keretrendszer csomagjainak elérési útját, amelyet a következő lépésben kell importálni a minta alkalmazásban. Vegye figyelembe, hogy a Xcode parancssori eszközöket kell beállítania, ha még nem tette meg a parancsfájl futtatása előtt: indítsa el a Xcode, majd válassza a "Preferences-> Locations" lehetőséget. Válassza ki a Xcode verzióját a parancssori eszközökhöz. **Vegye figyelembe, hogy a BuildAzurePackages.sh parancsfájl csak a Xcode 11,5-es vagy újabb verzióval működik.**
 
 1. Töltse le az iOS rendszerhez készült ügyféloldali kódtárat hívó Azure kommunikációs szolgáltatásokat.
 2. A Xcode-ben kattintson a projektfájl elemre, majd válassza ki a Build célt a Project Settings Editor megnyitásához.

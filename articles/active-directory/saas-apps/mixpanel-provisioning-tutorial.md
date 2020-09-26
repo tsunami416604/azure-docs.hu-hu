@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: Zhchia
-ms.openlocfilehash: 00e5f750c1acfa49aea2caadbc95fd75cef0b24b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d37034057f7d1bc39c065110b20a8a2cdce13b62
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91256046"
+ms.locfileid: "91360497"
 ---
 # <a name="tutorial-configure-mixpanel-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés mixpanel konfigurálása
 
@@ -88,7 +88,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a mixpanel **bérlői URL-címét** és a **titkos jogkivonatot**. Kattintson a **kapcsolat tesztelése** lehetőségre, hogy az Azure ad képes legyen csatlakozni a mixpanel. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a mixpanel-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
-    ![kiépítési](./media/mixpanel-provisioning-tutorial/provisioning.png)
+    ![Képernyőfelvétel: a rendszergazdai hitelesítő adatok párbeszédpanel, ahol megadhatja a bérlő U R L-t és a titkos jogkivonatot.](./media/mixpanel-provisioning-tutorial/provisioning.png)
 
 6. Az **Értesítés e-mailben** mezőben adja meg annak a személynek vagy csoportnak az e-mail-címét, aki az átadással kapcsolatos hibaüzeneteket kapja, és jelölje be az **E-mail-értesítés küldése hiba esetén** jelölőnégyzetet.
 

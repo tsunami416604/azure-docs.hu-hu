@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f3a8cafa907cb66832faf033f7b62e68bf859097
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 49922599adb30e6c631f29b4831fda60cc000a40
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918825"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360123"
 ---
 # <a name="integrate-with-a-client-application-using-speech-sdk"></a>Integráció egy ügyfélalkalmazás használatával a Speech SDK-val
 
@@ -34,7 +34,7 @@ A cikk végrehajtásához egyéni parancsokat tartalmazó alkalmazás szüksége
 A következőkre is szüksége lesz:
 > [!div class = "checklist"]
 > * A [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) -es vagy újabb verziója. Ez az útmutató a Visual Studio 2019-alapú.
-> * Egy Azure-előfizetési kulcs a Speech Serviceshez. [Szerezze be ingyen](get-started.md) , vagy hozza létre a [Azure Portal](https://portal.azure.com)
+> * Egy Azure-előfizetési kulcs a Speech Serviceshez. [Szerezze be ingyen](overview.md#try-the-speech-service-for-free) , vagy hozza létre a [Azure Portal](https://portal.azure.com)
 > * [Az eszköz fejlesztésének engedélyezése](https://docs.microsoft.com/windows/uwp/get-started/enable-your-device-for-development)
 
 ## <a name="step-1-publish-custom-commands-application"></a>1. lépés: egyéni parancsok alkalmazásának közzététele
@@ -418,7 +418,7 @@ Adja hozzá a forráskód mögötti forrást az alábbiak szerint:
 
 1. Válassza a **Talk**lehetőséget, és beszéljen egy angol kifejezéssel vagy mondattal az eszköz mikrofonjában. A beszéd a közvetlen vonalas beszéd csatornába kerül, és szövegbe kerül, amely az ablakban jelenik meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Útmutató: tevékenység küldése ügyfélalkalmazás számára (előzetes verzió)](./how-to-custom-commands-send-activity-to-client.md)

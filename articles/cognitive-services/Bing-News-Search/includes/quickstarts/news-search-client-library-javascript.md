@@ -9,23 +9,22 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: d9234d4a184a0a09ff8c4a7c08e4035668870e22
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3760213c7f469dfe89599c0f01afe98168efde2d
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91304090"
+ms.locfileid: "91376694"
 ---
 Ezzel a rövid útmutatóval megkezdheti a hírek keresését a JavaScripthez készült Bing News Search ügyféloldali kódtár használatával. Habár a Bing News Search REST API kompatibilis a legtöbb programozási nyelvvel, az ügyféloldali kódtár egyszerű módszert kínál a szolgáltatás integrálására az alkalmazásokba. A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/newsSearch.js)található.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Node.js](https://nodejs.org/en/)
-
-Console-alkalmazás beállítása a Bing News Search ügyféloldali kódtár használatával:
-1. Futtatás a `npm install ms-rest-azure` fejlesztési környezetben.
-2. Futtatás a `npm install azure-cognitiveservices-newssearch` fejlesztési környezetben.
-
+* A [Node.js](https://nodejs.org/en/download/) legújabb verziója.
+* A [javascripthez készült BING News Search SDK](https://www.npmjs.com/package/@azure/cognitiveservices-newssearch)
+     *  A telepítéséhez futtassa a következőt `npm install @azure/cognitiveservices-newssearch`
+* A `CognitiveServicesCredentials` `@azure/ms-rest-azure-js` csomagból a-ügyfelet hitelesítő osztály.
+     * A telepítéséhez futtassa a következőt `npm install @azure/ms-rest-azure-js`
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](~/includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
@@ -34,7 +33,7 @@ Console-alkalmazás beállítása a Bing News Search ügyféloldali kódtár has
 1. Hozza létre a `CognitiveServicesCredentials` egy példányát. Hozzon létre változókat az előfizetési kulcshoz és egy keresési kifejezéshez.
 
     ```javascript
-    const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
+    const CognitiveServicesCredentials = require('@azure/ms-rest-azure-js').CognitiveServicesCredentials;
     let credentials = new CognitiveServicesCredentials('YOUR-ACCESS-KEY');
     let search_term = 'Winter Olympics'
     ```
@@ -42,7 +41,7 @@ Console-alkalmazás beállítása a Bing News Search ügyféloldali kódtár has
 2. az ügyfél példánya:
     
     ```javascript
-    const NewsSearchAPIClient = require('azure-cognitiveservices-newssearch');
+    const NewsSearchAPIClient = require('@azure/cognitiveservices-newssearch');
     let client = new NewsSearchAPIClient(credentials);
     ```
 

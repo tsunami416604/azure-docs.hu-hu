@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/30/2019
 ms.author: zivr
 ms.custom: include file
-ms.openlocfilehash: c7e3c9292b53aeb073e11a5293459e39a22ca81d
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: b5827d60b5968eb9f5e9e0a2ca5ec884366aea3d
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89570002"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91376632"
 ---
 A virtuális gépek egyetlen régióban való elhelyezése csökkenti a példányok közötti fizikai távolságot. Ha egyetlen rendelkezésre állási zónába helyezi őket, az is fizikailag szorosabban fog működni. Mivel azonban az Azure-lábnyom növekszik, az egyetlen rendelkezésre állási zóna több fizikai adatközpontra is kiterjedhet, ami az alkalmazást érintő hálózati késést eredményezhet. 
 
@@ -47,6 +47,39 @@ A közelségi elhelyezési csoportok közös helyet foglalnak el ugyanabban az a
 -   Rugalmas munkaterhelések esetén, ahol virtuálisgép-példányokat adhat hozzá és távolíthat el, a központi telepítéshez való közelségi csoport megkötése miatt előfordulhat, hogy a kérelem nem felel meg a **AllocationFailure** hibájának. 
 - A rugalmasság elérésének egy másik módja a virtuális gépek leállítása (felszabadítása) és szükség szerint történő elindítása. Mivel a rendszer nem tartja fenn a kapacitást, ha leállítja (felszabadítja) a virtuális gépet, az újraindítással **AllocationFailure** hibát okozhat.
 
+## <a name="planned-maintenance-and-proximity-placement-groups"></a>Tervezett karbantartás és közelségi csoportok
+
+A tervezett karbantartási események, például az Azure-adatközpontok hardveres leszerelése potenciálisan érinthetik az erőforrások közelségét az elhelyezési csoportokban. Előfordulhat, hogy az erőforrásokat egy másik adatközpontba helyezik át, ami megszakítja a közelségi elhelyezési csoporthoz kapcsolódó létrehozásakor közös elhelyezés és késési elvárásokat.
+
+### <a name="check-the-alignment-status"></a>Az igazítás állapotának bejelölése
+
+A következő műveleteket végezheti el a közelségi elhelyezési csoportok igazítási állapotának vizsgálatához.
+
+
+- A közelségi elhelyezési csoport egyhelyes állapotát a portál, a CLI és a PowerShell használatával lehet megtekinteni.
+
+    -   A PowerShell használatakor a "-ColocationStatus" választható paraméterrel együtt a Get-AzProximityPlacementGroup parancsmag használatával is beszerezhetők a helyek közötti állapot.
+
+    -   A parancssori felület használatakor `az ppg show` a (z) a (z) használatával a (z) és a (z) választható paramétert is megadhatja.
+
+- Az egyes közelségi elhelyezési csoportok esetében az **egyhelyes állapot** tulajdonság a csoportosított erőforrások aktuális igazítási állapotának összegzését jeleníti meg. 
+
+    - **Igazított**: az erőforrás a közelségi elhelyezési csoport ugyanazon késési keretén belül van.
+
+    - **Ismeretlen**: a virtuálisgép-erőforrások közül legalább egy fel van foglalva. Miután sikeresen megkezdte a visszaállítást, az állapotnak **jobbra**kell állnia.
+
+    - **Nincs igazítva**: legalább egy virtuálisgép-erőforrás nincs igazítva a közelségi elhelyezési csoporttal. A nem igazított erőforrások külön is meghívhatók a tagság szakaszban
+
+- A rendelkezésre állási csoportok esetében a rendelkezésre állási csoport áttekintése lapon tekintheti meg az egyes virtuális gépek igazításával kapcsolatos információkat.
+
+- A méretezési csoportok esetében az egyes példányok igazításával kapcsolatos információkat a méretezési csoport **Áttekintés** oldalának **példányok** lapján tekintheti meg. 
+
+
+### <a name="re-align-resources"></a>Erőforrások ismételt igazítása 
+
+Ha a közelségi elhelyezési csoport van `Not Aligned` , akkor stop\deallocate, majd újraindíthatja az érintett erőforrásokat. Ha a virtuális gép rendelkezésre állási csoportba vagy méretezési csoportba esik, a rendelkezésre állási csoporton vagy a méretezési csoporton belül minden virtuális gépnek először stopped\deallocated kell lennie az újraindítás előtt.
+
+Ha az üzembe helyezési megkötések miatt lefoglalási hiba merül fel, előfordulhat, hogy az érintett közelségi elhelyezési csoport összes erőforrását először be kell stop\deallocate (beleértve az igazított erőforrásokat), majd újra kell indítania őket az igazítás visszaállításához.
 
 ## <a name="best-practices"></a>Ajánlott eljárások 
 - A legkisebb késés érdekében használja a közeli elhelyezési csoportokat a gyorsított hálózatkezeléssel együtt. További információ: [Linux rendszerű virtuális gép gyorsított hálózatkezeléssel való létrehozása](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) vagy [Windows rendszerű virtuális gép létrehozása gyorsított hálózatkezeléssel](/azure/virtual-network/create-vm-accelerated-networking-powershell?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

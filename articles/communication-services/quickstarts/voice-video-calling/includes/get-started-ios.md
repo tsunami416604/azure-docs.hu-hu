@@ -6,14 +6,14 @@ ms.author: marobert
 ms.date: 07/24/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: c67440453e5ca8395464369d75bfac418a564764
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: bb0af58c9abc4fad701b1d0927f4c13e1fdcca49
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90947271"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91377391"
 ---
-Ebből a rövid útmutatóból megtudhatja, hogyan indíthat el egy hívást az iOS-hez készült ügyféloldali kódtárat hívó Azure kommunikációs szolgáltatással.
+Ebből a rövid útmutatóból megtudhatja, hogyan indíthat el hívást az iOS-hez készült ügyféloldali kódtárat hívó Azure kommunikációs szolgáltatással.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -28,21 +28,21 @@ Az oktatóanyag elvégzéséhez a következő előfeltételekre lesz szüksége:
 
 ### <a name="creating-the-xcode-project"></a>A Xcode projekt létrehozása
 
-A Xcode-ben hozzon létre egy új iOS-projektet, és válassza ki az **Egynézetes alkalmazás** sablonját. Ez az oktatóanyag a [SwiftUI keretrendszert](https://developer.apple.com/xcode/swiftui/)használja, ezért állítsa be a **nyelvet** a **Swift** értékre, a **felhasználói felületet** pedig **SwiftUI**. Ebben a rövid útmutatóban nem hozhat létre egység-vagy felhasználói felületi teszteket. Nyugodtan törölje az **egységre vonatkozó teszteket** , és törölje a **felhasználói felületi tesztek**bejelölését is.
+A Xcode-ben hozzon létre egy új iOS-projektet, és válassza ki az **Egynézetes alkalmazás** sablonját. Ez az oktatóanyag a [SwiftUI keretrendszert](https://developer.apple.com/xcode/swiftui/)használja, ezért a **nyelvet** a **Swift** értékre kell beállítani, és a **felhasználói felületet** kell **SwiftUI**. Ebben a rövid útmutatóban nem fog teszteket létrehozni. Nyugodtan szüntesse meg a **tesztek belefoglalását**.
 
-:::image type="content" source="../media/ios/xcode-new-ios-project.png" alt-text="Képernyőfelvétel: az új projekt létrehozása ablak a Xcode belül.":::
+:::image type="content" source="../media/ios/xcode-new-ios-project.png" alt-text="Képernyőfelvétel: az új projekt ablak a Xcode belül.":::
 
 ### <a name="install-the-package"></a>A csomag telepítése
 
 Adja hozzá az ügyféloldali függvénytárat hívó Azure kommunikációs szolgáltatásokat és annak függőségeit (AzureCore. Framework és AzureCommunication. Framework) a projekthez.
 
 > [!NOTE]
-> A AzureCommunicationCalling SDK kiadásával egy bash-szkriptet talál `BuildAzurePackages.sh` . A futtatáskor a parancsfájl `sh ./BuildAzurePackages.sh` Megadja a létrehozott keretrendszer csomagjainak elérési útját, amelyet a következő lépésben kell importálni a minta alkalmazásban. Vegye figyelembe, hogy a Xcode parancssori eszközöket kell beállítania, ha még nem tette meg a parancsfájl futtatása előtt: indítsa el a Xcode, majd válassza a "Preferences-> Locations" lehetőséget. Válassza ki a Xcode verzióját a parancssori eszközökhöz.
+> A AzureCommunicationCalling SDK kiadásával egy bash-szkriptet talál `BuildAzurePackages.sh` . A futtatáskor a parancsfájl `sh ./BuildAzurePackages.sh` Megadja a létrehozott keretrendszer csomagjainak elérési útját, amelyet a következő lépésben kell importálni a minta alkalmazásban. Vegye figyelembe, hogy a Xcode parancssori eszközöket kell beállítania, ha még nem tette meg a parancsfájl futtatása előtt: indítsa el a Xcode, majd válassza a "Preferences-> Locations" lehetőséget. Válassza ki a Xcode verzióját a parancssori eszközökhöz. **A BuildAzurePackages.sh parancsfájl csak a Xcode 11,5-es vagy újabb verzióval működik**
 
-1. Töltse le az iOS rendszerhez készült ügyféloldali kódtárat hívó Azure kommunikációs szolgáltatásokat.
+1. [Töltse le](https://github.com/Azure/Communication/releases) az iOS rendszerhez készült ügyféloldali kódtárat hívó Azure kommunikációs szolgáltatásokat.
 2. A Xcode-ben kattintson a projektfájl elemre, majd válassza ki a Build célt a Project Settings Editor megnyitásához.
 3. Az **általános** lapon görgessen a **keretrendszerek, tárak és beágyazott tartalom** szakaszhoz, és kattintson a **"+"** ikonra.
-4. A párbeszédpanel bal alsó részén válassza a **fájlok hozzáadása**lehetőséget, navigáljon a kibontott ügyféloldali függvénytár-csomag **AzureCommunicationCalling. Framework** könyvtárába.
+4. A párbeszédpanel bal alsó részén a legördülő menüben válassza a **fájlok hozzáadása**lehetőséget, navigáljon a kibontott ügyféloldali függvénytár-csomag **AzureCommunicationCalling. Framework** könyvtárába.
     1. Ismételje meg az utolsó lépést a **AzureCore. Framework** és a **AzureCommunication. Framework**hozzáadásához.
 5. Nyissa meg a Project Settings Editor **Build Settings (létrehozási beállítások** ) lapját, és görgessen a **keresési útvonalak** szakaszhoz. Adjon hozzá egy új **Framework keresési útvonalak** bejegyzést a **AzureCommunicationCalling. Framework**-t tartalmazó könyvtárhoz.
     1. Vegyen fel egy másik Framework keresési útvonal bejegyzést, amely a függőségeket tartalmazó mappára mutat.
@@ -51,7 +51,7 @@ Adja hozzá az ügyféloldali függvénytárat hívó Azure kommunikációs szol
 
 ### <a name="request-access-to-the-microphone"></a>Hozzáférés kérése a mikrofonhoz
 
-Az eszköz mikrofonjának eléréséhez frissítenie kell az alkalmazás információs tulajdonságainak listáját `NSMicrophoneUsageDescription` . A társított értéket adja meg, `string` amely szerepelni fog a párbeszédpanelen, amelyet a rendszer a kérelem hozzáférésének kéréséhez használ a felhasználótól.
+Az eszköz mikrofonjának eléréséhez frissítenie kell az alkalmazás információs tulajdonságainak listáját `NSMicrophoneUsageDescription` . A társított értéket adja meg, `string` amely szerepelni fog a párbeszédpanelen, amelyet a rendszer a felhasználótól való hozzáférés kéréséhez használ.
 
 Kattintson a jobb gombbal a `Info.plist` projekt fájának bejegyzésére, és válassza a **Megnyitás**  >  **forrásként kód**lehetőséget. Adja hozzá a következő sorokat a legfelső szintű `<dict>` szakaszhoz, majd mentse a fájlt.
 
@@ -121,7 +121,7 @@ Az alábbi osztályok és felületek az Azure kommunikációs szolgáltatások �
 | ACSCallClient | A CallClient a hívó ügyféloldali függvénytár fő belépési pontja.|
 | ACSCallAgent | A CallAgent a hívások indításához és kezeléséhez használatos. |
 | CommunicationUserCredential | A rendszer a CommunicationUserCredential használja jogkivonat-hitelesítő adatként a CallAgent létrehozásához.| 
-| CommunicationIndentifier | A CommunicationIndentifier a felhasználó identitásának jelölésére szolgál, amely a következők egyike lehet: CommunicationUser/telefonszám/CallingApplication. |
+| CommunicationIdentifier | A CommunicationIdentifier a felhasználó identitásának jelölésére szolgál, amely a következők egyike lehet: CommunicationUser/telefonszám/CallingApplication. |
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
@@ -190,7 +190,7 @@ func endCall()
 
 ## <a name="run-the-code"></a>A kód futtatása
 
-A **termék**  >  **futtatása** vagy a (&#8984;-R) billentyűparancs használatával létrehozhat egy alkalmazást iOS-szimulátoron.
+Az alkalmazást az iOS-szimulátorban a **termék**  >  **futtatása** vagy a (&#8984;-R) billentyűparancs használatával hozhatja létre és futtathatja.
 
 :::image type="content" source="../media/ios/quick-start-make-call.png" alt-text="A gyors üzembe helyezési alkalmazás végső megjelenésének és működésének első lépései":::
 
@@ -199,6 +199,6 @@ A kimenő VOIP-hívást úgy teheti meg, hogy egy felhasználói azonosítót bi
 > [!NOTE]
 > Amikor először végez hívást, a rendszer kérni fogja a mikrofon elérését. Éles alkalmazásban az API-t kell használnia az `AVAudioSession` [engedély állapotának ellenőrzése](https://developer.apple.com/documentation/uikit/protecting_the_user_s_privacy/requesting_access_to_protected_resources) és az alkalmazás működésének zökkenőmentes frissítése érdekében, ha az engedély nem lett megadva.
 
-## <a name="sample"></a>Sample
+## <a name="sample-code"></a>Példakód
 
-A minta alkalmazást letöltheti a [githubról](https://github.com/Azure/Communication/tree/master/samples/AzureCommunicationCalling/iOS/Swift)
+A minta alkalmazást letöltheti a [githubról](https://github.com/Azure/Communication/tree/master/samples/Add%20Voice%20Calling/iOS/Swift)

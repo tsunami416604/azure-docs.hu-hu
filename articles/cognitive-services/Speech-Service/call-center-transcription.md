@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 84a1e2edcbe9e9da93a158ebc11e7bf638dae100
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: a11573da29cead49bfb17c2c5df3951229182959
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462734"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360650"
 ---
 # <a name="speech-service-for-telephony-data"></a>Beszédfelismerési szolgáltatás a telefonos adatkezeléshez
 
@@ -121,7 +121,7 @@ Egy másik forgatókönyv a közvetlen integráció a munkamenet-kezdeményező 
 
  A beszédfelismerési szolgáltatás a beépített modellekkel jól működik. Azonban érdemes lehet tovább testreszabni és hangolni a termék vagy a környezet élményét. A testreszabási lehetőségek köre az akusztikus modell finomhangolása és a márka egyedi hangbetűkészletei között. Miután létrehozott egy egyéni modellt, a beszédfelismerési szolgáltatás bármelyik szolgáltatásával valós időben vagy batch módban használhatja azt.
 
-| Speech szolgáltatás | Modell | Description |
+| Speech szolgáltatás | Modellezés | Description |
 | -------------- | ----- | ----------- |
 | Diktálás | [Akusztikai modell](how-to-customize-acoustic-models.md) | Hozzon létre egy egyéni akusztikai modellt olyan alkalmazásokhoz, eszközökhöz vagy eszközökhöz, amelyeket az adott környezetben, például autóban vagy gyári szinten használnak, és amelyek külön rögzítési feltételekkel rendelkeznek. Ilyenek például az ékezetes beszédek, a konkrét háttérzajok, vagy egy adott mikrofon használata a rögzítéshez. |
 |                | [Nyelvi modell](how-to-customize-language-model.md) | Hozzon létre egy egyéni nyelvi modellt, amellyel javítható az iparágra jellemző szókincs és nyelvtan, például az orvosi szakkifejezések vagy az informatikai szakzsargonk átírása. |
@@ -147,4 +147,4 @@ A mintakód a GitHubon érhető el a beszédfelismerési szolgáltatás egyes fu
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Beszédfelismerési szolgáltatás előfizetési kulcsának beszerzése ingyenesen](get-started.md)
+> [Beszédfelismerési szolgáltatás előfizetési kulcsának beszerzése ingyenesen](overview.md#try-the-speech-service-for-free)

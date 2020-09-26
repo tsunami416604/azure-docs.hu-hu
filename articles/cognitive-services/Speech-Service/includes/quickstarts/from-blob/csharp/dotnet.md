@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 04/04/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 750ce2d19334f549242c37494a11a1f683469f12
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 05cf63f741e287112ace76a5249ae2ca8d01f34f
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88926140"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91376557"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -18,7 +18,7 @@ Az első lépések előtt ügyeljen a következőre:
 
 > [!div class="checklist"]
 > * [Állítsa be a fejlesztési környezetet, és hozzon létre egy üres projektet](../../../../quickstarts/setup-platform.md?tabs=dotnet&pivots=programmming-language-csharp)
-> * [Azure Speech-erőforrás létrehozása](../../../../get-started.md)
+> * [Azure Speech-erőforrás létrehozása](../../../../overview.md#try-the-speech-service-for-free)
 > * [Forrásfájl feltöltése Azure-blobba](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
 
 ## <a name="open-your-project-in-visual-studio"></a>A projekt megnyitása a Visual Studióban
@@ -556,6 +556,6 @@ Most már készen áll az alkalmazás felépítésére és a beszédfelismerési
 2. **Indítsa** el az alkalmazást – a menüsávban **válassza a hibakeresés**  >  **indítása** vagy az **F5**billentyűt.
 3. **Felismerés elindítása** – felszólítja, hogy beszéljen egy angol nyelvű kifejezéssel. A rendszer elküldje a beszédet a beszédfelismerési szolgáltatásnak, amelyet szövegként leír, és a konzolon jeleníti meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [footer](./footer.md)]

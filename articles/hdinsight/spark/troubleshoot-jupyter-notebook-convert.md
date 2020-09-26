@@ -1,18 +1,18 @@
 ---
 title: Nem sikerült létrehozni a Jupyter-jegyzetfüzetet az Azure HDInsight
-description: Leírja az Azure HDInsight-fürtökkel való interakció során felmerülő problémák hibaelhárítási lépéseit és lehetséges megoldásait.
+description: Ismerje meg az Azure HDInsight-fürtökkel való interakció során felmerülő problémák hibaelhárítási lépéseit és lehetséges megoldásait.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 02/11/2020
-ms.openlocfilehash: 61e7cd8d37108b8f4eea88c4f6b6b2a8cdbfd605
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e4f4fcfa52733ec8f1f0ceedc669b8307efabf3c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77186801"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324008"
 ---
 # <a name="unable-to-create-jupyter-notebook-in-azure-hdinsight"></a>Nem sikerült létrehozni a Jupyter-jegyzetfüzetet az Azure HDInsight
 
@@ -30,7 +30,7 @@ Cannot convert notebook to v5 because that version doesn't exist
 
 A verziószám nem egyezik.
 
-## <a name="resolution"></a>Megoldás:
+## <a name="resolution"></a>Feloldás
 
 1. A fürthöz való kapcsolódáshoz használja az [SSH-parancsot](../hdinsight-hadoop-linux-use-ssh-unix.md) . Szerkessze az alábbi parancsot az CLUSTERNAME helyére a fürt nevével, majd írja be a következő parancsot:
 
@@ -56,7 +56,7 @@ A verziószám nem egyezik.
 
 1. Indítsa újra a Jupyter szolgáltatást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
 

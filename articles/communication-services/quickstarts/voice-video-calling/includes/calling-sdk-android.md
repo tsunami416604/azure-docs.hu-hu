@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: c0213b050745712a5c77d4861b9cfba4fc953dfd
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: aec9d2049a69aebc7102a70274e5fb2a3ef865a8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90940077"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91377569"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -81,8 +81,8 @@ DeviceManage deviceManager = await callClient.getDeviceManager().get();
 
 ## <a name="place-an-outgoing-call-and-join-a-group-call"></a>Helyezzen el egy kimenő hívást, és csatlakozzon egy csoportos híváshoz
 
-Hívás létrehozásához és elindításához meg kell hívnia a `CallClient.call()` metódust, és meg kell adnia a `Identifier` hívott (k) t.
-Egy csoportos híváshoz való csatlakozáshoz meg kell hívnia a `CallClient.join()` metódust, és meg kell adnia a GroupID. A csoport azonosítóinak GUID vagy UUID formátumúnak kell lenniük.
+Hívás létrehozásához és elindításához meg kell hívnia a `CallAgent.call()` metódust, és meg kell adnia a `Identifier` hívott (k) t.
+Egy csoportos híváshoz való csatlakozáshoz meg kell hívnia a `CallAgent.join()` metódust, és meg kell adnia a GroupID. A csoport azonosítóinak GUID vagy UUID formátumúnak kell lenniük.
 
 A hívás létrehozása és a kezdés szinkronban van. A hívási példány lehetővé teszi a hívás összes eseményére való előfizetést.
 
@@ -106,7 +106,7 @@ PhoneNumber acsUser2 = new PhoneNumber("<PHONE_NUMBER>");
 CommunicationIdentifier participants[] = new CommunicationIdentifier[]{ acsUser1, acsUser2 };
 StartCallOptions startCallOptions = new StartCallOptions();
 Context appContext = this.getApplicationContext();
-Call groupCall = callClient.call(participants, startCallOptions);
+Call groupCall = callAgent.call(participants, startCallOptions);
 ```
 
 ### <a name="place-a-11-call-with-with-video-camera"></a>1:1-hívás elhelyezése a kamerával
@@ -266,7 +266,7 @@ Ha a leküldéses értesítési üzenet kezelése sikeres, és a minden esemény
 
 ### <a name="unregister-push-notification"></a>Leküldéses értesítés regisztrációjának törlése
 
-- Az alkalmazások bármikor megszüntetik a leküldéses értesítések regisztrációját. Egyszerűen hívja `unregisterPushNotification()` meg a metódust a callAgent.
+- Az alkalmazások bármikor megszüntetik a leküldéses értesítések regisztrációját. A regisztráció megszüntetéséhez hívja `unregisterPushNotification()` meg a metódust a callAgent.
 
 ```java
 try {
@@ -281,7 +281,7 @@ catch(Exception e) {
 A hívási tulajdonságokat elérheti, és különböző műveleteket hajthat végre a videóval és hanggal kapcsolatos beállítások kezeléséhez.
 
 ### <a name="call-properties"></a>Hívás tulajdonságai
-* A hívás egyedi azonosítójának beolvasása.
+* A hívás egyedi AZONOSÍTÓjának beolvasása.
 ```java
 String callId = call.getCallId();
 ```
@@ -300,12 +300,12 @@ CommunicationIdentifier callerId = call.getCallerId();
 ```java
 CallState callState = call.getState();
 ```
-Egy olyan karakterláncot ad vissza, amely egy hívás aktuális állapotát reprensting:
+Egy hívás aktuális állapotát jelképező karakterláncot ad vissza:
 * "None" – kezdeti hívás állapota
 * "Bejövő" – azt jelzi, hogy a hívás bejövő, vagy el kell fogadni vagy el kell utasítani
 * "Connecting" – a kezdeti átmenet állapota a hívás elhelyezése vagy elfogadása után
 * "Ringing" – kimenő hívás esetén – azt jelzi, hogy a hívás a távoli résztvevők csengőhangja, a "bejövő" ó
-* "EarlyMedia" – egy olyan állapotot jelöl, amelyben a rendszer a hívás csatlakoztatása előtt a bejelentést játssza
+* "EarlyMedia" – egy olyan állapotot jelöl, amelyben a rendszer a hívás csatlakoztatása előtt bejelentést játszik
 * Csatlakoztatott – a hívás csatlakoztatva van
 * "Hold" – a hívás megtartásra kerül, és a helyi végpont és a távoli résztvevő (k) között nem folyik adathordozó.
 * "Leválasztás" – az átmenet állapota, mielőtt a hívás megszakadt állapotba kerül
@@ -354,7 +354,7 @@ Future startVideoFuture = call.startVideo(currentVideoStream);
 startVideoFuture.get();
 ```
 
-Miután sikeresen megkezdte a videó küldését, egy `LocalVideoStream` példány lesz hozzáadva a `localVideoStreams` hívási példányon lévő gyűjteményhez.
+A videó küldésének sikeres megkezdése után a rendszer egy `LocalVideoStream` példányt ad hozzá a `localVideoStreams` gyűjteményhez a hívási példányon.
 ```java
 currentVideoStream == call.getLocalVideoStreams().get(0);
 ```
@@ -385,7 +385,7 @@ Bármely adott távoli résztvevő rendelkezik a hozzá társított tulajdonság
 * A távoli résztvevő azonosítójának beolvasása.
 Az identitás egyike az "azonosító" típusok egyike.
 ```java
-CommunicationIdentifier participantIdentity = remoteParticipant.getId();
+CommunicationIdentifier participantIdentity = remoteParticipant.getIdentifier();
 ```
 
 * A távoli résztvevő állapotának beolvasása.
@@ -397,7 +397,7 @@ Az állapot lehet az egyik
 * "Connecting" – átmeneti állapot, miközben a résztvevő csatlakozik a híváshoz
 * "Csatlakoztatott" – a résztvevő csatlakozik a híváshoz
 * "Hold" – a résztvevő tart
-* "EarlyMedia" – a Annoucement csak akkor játszható le, ha a résztvevő csatlakozik a híváshoz
+* "EarlyMedia" – a bejelentést csak akkor játssza le a rendszer, ha a résztvevő csatlakozik a híváshoz
 * "Leválasztott" – végső állapot – a résztvevő nem kapcsolódik a híváshoz
 
 

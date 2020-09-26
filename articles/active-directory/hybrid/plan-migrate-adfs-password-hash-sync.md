@@ -12,12 +12,12 @@ ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: afef3d41212c9366aa696bfcd0abff6c8cfc4eb3
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 3e85d2ef9d75bbff6357466e76ffcf60e3716e78
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662414"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273674"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>Áttelepítés az összevonásból a jelszó-kivonatolási szinkronizálásba Azure Active Directory
 
@@ -302,7 +302,7 @@ Először módosítsa a bejelentkezési módszert:
 
 5. Az **egyszeri bejelentkezés engedélyezése** lapon adja meg a tartományi rendszergazdai fiók hitelesítő adatait, majd kattintson a **tovább**gombra.
 
-   ![Az egyszeri bejelentkezés engedélyezése oldal képernyőképe](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image9.png)<br />
+   ![Képernyőkép az egyszeri bejelentkezés engedélyezése oldalról, ahol megadhatja a tartományi rendszergazdai fiók hitelesítő adatait.](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image9.png)<br />
 
    > [!NOTE]
    > A zökkenőmentes egyszeri bejelentkezés engedélyezéséhez tartományi rendszergazdai fiók hitelesítő adatai szükségesek. A folyamat a következő műveleteket hajtja végre, ehhez emelt szintű engedélyekre van szükség. A tartományi rendszergazdai fiók hitelesítő adatai nem Azure AD Connect vagy az Azure AD-ben tárolódnak. A tartományi rendszergazdai fiók hitelesítő adatai csak a funkció bekapcsolására használhatók. A rendszer a folyamat sikeres befejeződése után elveti a hitelesítő adatokat.
@@ -324,7 +324,7 @@ Először módosítsa a bejelentkezési módszert:
    * A **zökkenőmentes egyszeri bejelentkezés** **engedélyezve**értékre van állítva.
    * A **Jelszó-szinkronizálás** **engedélyezve**értékre van állítva.<br /> 
 
-   ![A felhasználói bejelentkezési szakaszban található beállításokat megjelenítő képernyőkép](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image11.png)<br />
+   ![Képernyőkép, amely az Azure AD-portál felhasználói bejelentkezés szakaszában található beállításokat jeleníti meg.](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image11.png)<br />
 
 Ugorjon a [tesztelés és a további lépések](#testing-and-next-steps)elemre.
 

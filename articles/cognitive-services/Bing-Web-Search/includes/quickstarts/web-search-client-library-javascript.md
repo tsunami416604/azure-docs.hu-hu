@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 6e4db45385c95bc39cea58511115eba25461cf6f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 20eaf6e6a9f0eee15e6ad6a5bd8f23bf8531545c
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91298446"
+ms.locfileid: "91376435"
 ---
 Az Bing Web Search ügyféloldali kódtár megkönnyíti a Bing Web Search integrálását a Node.js alkalmazásba. Ebben a rövid útmutatóban elsajátíthatja az ügyfél-példányosítás, a kérésküldés és a válaszmegjelenítés módját.
 
@@ -46,11 +46,11 @@ Kezdjük azzal, hogy beállítjuk a fejlesztési környezetet a Node.js-projekt�
     npm init
     ```
 
-1. Most telepítsünk néhány Azure-modellt, és adjuk őket hozzá a `package.json` fájlhoz:
+1. Most telepítsen néhány Azure-modult, és adja hozzá őket a következőhöz `package.json` :
 
     ```console
-    npm install --save azure-cognitiveservices-websearch
-    npm install --save ms-rest-azure
+    npm install --save @azure/cognitiveservices-websearch
+    npm install --save @azure/ms-rest-azure-js
     ```
 
 ## <a name="create-a-project-and-declare-required-modules"></a>Projekt létrehozása és a szükséges modulok deklarálása
@@ -60,13 +60,13 @@ Hozzon létre egy új Node.js-projektet a kedvenc IDE-környezete vagy szerkeszt
 Ezután másolja ezt a kódot a projektbe. Ez betölti az előző szakaszban telepített modulokat.
 
 ```javascript
-const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
-const WebSearchAPIClient = require('azure-cognitiveservices-websearch');
+const CognitiveServicesCredentials = require('@azure/ms-rest-azure-js').CognitiveServicesCredentials;
+const WebSearchAPIClient = require('@azure/cognitiveservices-websearch');
 ```
 
 ## <a name="instantiate-the-client"></a>Az ügyfél példányosítása
 
-Ez a kód az `azure-cognitiveservices-websearch` modul segítségével példányosítja az ügyfelet. Folytatás előtt győződjön meg arról, hogy érvényes előfizetői azonosítót adott meg az Azure-fiókjához.
+Ez a kód az `@azure/cognitiveservices-websearch` modul segítségével példányosítja az ügyfelet. Folytatás előtt győződjön meg arról, hogy érvényes előfizetői azonosítót adott meg az Azure-fiókjához.
 
 ```javascript
 let credentials = new CognitiveServicesCredentials('YOUR-ACCESS-KEY');

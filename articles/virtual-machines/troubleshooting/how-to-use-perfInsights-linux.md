@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 7/10/2019
 ms.author: genli
-ms.openlocfilehash: ce60f360a6839d43b0cbc209242a1385a0984c9d
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: d4d25d8e79c30933546af2b823e328a652f482eb
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90088544"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360531"
 ---
 # <a name="how-to-use-perfinsights"></a>A PerfInsights használata
 
@@ -218,8 +218,8 @@ A **PerformanceDiagnostics \_ éééé-hh-nn \_ hh-mm-SS-fff. tar. gz** fájlon 
 
 Az **Áttekintés** lapon az alapszintű Futtatás részletei és a virtuális gép adatai láthatók. Az **eredmények** lapon a PerfInsights-jelentés különböző részeiből származó javaslatok összegzése látható.
 
-![Képernyőkép a PerfInsights-jelentésről](media/how-to-use-perfinsights-linux/perfinsights-linux-overview.png)  
-![Képernyőkép a PerfInsights-jelentésről](media/how-to-use-perfinsights-linux/perfinsights-linux-findings-tab.png)
+![Képernyőkép a PerfInsights-jelentés áttekintés lapjáról.](media/how-to-use-perfinsights-linux/perfinsights-linux-overview.png)  
+![Képernyőkép a PerfInsights-jelentés Linux lapjáról.](media/how-to-use-perfinsights-linux/perfinsights-linux-findings-tab.png)
 
 > [!NOTE]
 > A magas kategóriába sorolt megállapítások olyan ismert problémák, amelyek teljesítménnyel kapcsolatos problémákat okozhatnak. A közepesként kategorizált eredmények olyan nem optimális konfigurációkat jelentenek, amelyek nem szükségszerűen okoznak teljesítménnyel kapcsolatos problémákat. Az alacsonyként kategorizált eredmények csak tájékoztató utasítások.

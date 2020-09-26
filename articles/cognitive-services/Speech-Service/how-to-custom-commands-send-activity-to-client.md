@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 520b38f4c733e7bf28a2a06429ad14d016c5bd28
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 6e8e6feb064a5d26eb6cb72b521d3f9df0380086
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027613"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360106"
 ---
 # <a name="send-custom-commands-activity-to-client-application"></a>Egyéni parancsok tevékenység küldése ügyfélalkalmazás számára
 
@@ -29,8 +29,8 @@ A következő feladatokat hajtja végre:
 ## <a name="prerequisites"></a>Előfeltételek
 > [!div class = "checklist"]
 > * A [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) -es vagy újabb verziója. Ez az útmutató a Visual Studio 2019-et használja
-> * Egy Azure-előfizetési kulcs a Speech Service-hez: [egyszeri](get-started.md) letöltés vagy létrehozás a [Azure Portal](https://portal.azure.com)
-> * Egy korábban [létrehozott egyéni parancsok alkalmazás](quickstart-custom-commands-application.md)
+> * Egy Azure-előfizetői azonosító a Speech szolgáltatáshoz: [Szerezzen be egyet ingyen](overview.md#try-the-speech-service-for-free), vagy hozza létre az [Azure Portalon](https://portal.azure.com)
+> * Egy korábban [létrehozott Custom Commands-alkalmazás](quickstart-custom-commands-application.md)
 > * Egy Speech SDK-kompatibilis ügyfélalkalmazás: [útmutató: integrálás egy ügyfélalkalmazás használatával a SPEECH SDK-val](./how-to-custom-commands-setup-speech-sdk.md)
 
 ## <a name="setup-send-activity-to-client"></a>A telepítő tevékenység küldése az ügyfélnek 
@@ -51,7 +51,7 @@ A következő feladatokat hajtja végre:
    > [!div class="mx-imgBorder"]
    > ![Tevékenység-befejezési szabály küldése](media/custom-commands/send-activity-to-client-completion-rules.png)
 
-## <a name="integrate-with-client-application"></a>Integrálás az ügyfélalkalmazás alkalmazásával
+## <a name="integrate-with-client-application"></a>Integrálás ügyfélalkalmazással
 
 [Útmutató: az ügyfélalkalmazás beállítása a SPEECH SDK-val (előzetes verzió)](./how-to-custom-commands-setup-speech-sdk.md), a Speech SDK-val létrehozott UWP-ügyfélalkalmazás olyan parancsokat kezelt, mint például a `turn on the tv` , `turn off the fan` . Néhány vizualizáció hozzáadásával megtekintheti a parancsok eredményét.
 
@@ -149,14 +149,14 @@ connector.ActivityReceived += async (sender, activityReceivedEventArgs) =>
 ## <a name="try-it-out"></a>Próba
 
 1. Az alkalmazás elindítása
-1. Válassza a mikrofon engedélyezése lehetőséget.
-1. A beszélgetés gomb kiválasztása
-1. Mondani`turn on the tv`
+1. Válassza a Mikrofon engedélyezése lehetőséget
+1. Válassza a Beszéd gombot
+1. Mondja a következőt: `turn on the tv`
 1. A TV vizualizációs állapotának "on" értékre kell váltania
    > [!div class="mx-imgBorder"]
    > ![Tevékenység-adattartalom küldése](media/custom-commands/send-activity-to-client-turn-on-tv.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Útmutató: webes végpontok beállítása (előzetes verzió)](./how-to-custom-commands-setup-web-endpoints.md)
