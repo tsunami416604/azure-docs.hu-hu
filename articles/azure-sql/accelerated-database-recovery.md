@@ -9,19 +9,28 @@ ms.devlang: ''
 ms.topic: conceptual
 author: mashamsft
 ms.author: mathoma
-ms.reviewer: carlrab
+ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: a6d95bbcb0873086a799dcf216beab4a6b0d33de
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4c679b6bb0f5645ea7a972be03ba3621b824a501
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84344696"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327629"
 ---
 # <a name="accelerated-database-recovery-in-azure-sql"></a>Gyorsított adatbázis-helyreállítás az Azure SQL-ben 
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
 
-A **gyorsított adatbázis-helyreállítás (ADR)** egy SQL Server adatbázismotor-szolgáltatás, amely nagy mértékben javítja az adatbázisok rendelkezésre állását, különösen a hosszú ideig futó tranzakciók jelenlétében, a SQL Server adatbázismotor helyreállítási folyamatának újratervezésével. Az ADR jelenleg a Azure SQL Database, az Azure SQL felügyelt példányához, az Azure-beli virtuális gépeken SQL Server és az Azure szinapszis Analytics (jelenleg előzetes verzióban elérhető) adatbázisaihoz érhető el. Az ADR elsődleges előnyei a következők:
+A **gyorsított adatbázis-helyreállítás (ADR)** egy SQL Server adatbázismotor-szolgáltatás, amely nagy mértékben javítja az adatbázisok rendelkezésre állását, különösen a hosszú ideig futó tranzakciók jelenlétében, a SQL Server adatbázismotor helyreállítási folyamatának újratervezésével. 
+
+Az ADR jelenleg a Azure SQL Database, az Azure SQL felügyelt példányaihoz, az Azure szinapszis Analytics (jelenleg előzetes verzióban elérhető) adatbázisokhoz, valamint az Azure-beli virtuális gépeken SQL Server SQL Server 2019-től kezdődően érhető el. 
+
+> [!NOTE] 
+> Az automatikus központi telepítési szabály alapértelmezés szerint engedélyezve van Azure SQL Database és az Azure SQL felügyelt példányain, és a termékre vonatkozó ADR letiltása nem támogatott. 
+
+## <a name="overview"></a>Áttekintés
+
+Az ADR elsődleges előnyei a következők:
 
 - **Gyors és konzisztens adatbázis-helyreállítás**
 

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 1d3cd61ea3da88c4c5231f22c0e127508591fb8d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c3406b28c44644053fa984f2cf7739bb53ccf6c8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76720469"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336445"
 ---
 # <a name="modeling-stage-of-the-team-data-science-process-lifecycle"></a>A csoportos adatelemzési folyamat életciklusának modellezési szakasza
 
@@ -53,7 +53,7 @@ Ehhez a lépéshez a tartományi szakértelmet és az adatfeltárási lépésbő
 A különböző Azure-adattechnológiákat használó funkciók mérnöki műszaki útmutatója: [az adatelemzési folyamat funkcióinak](create-features.md)fejlesztése. 
 
 ### <a name="model-training"></a>A modell betanítása
-A választ igénylő kérdés típusától függően számos modellezési algoritmus érhető el. Az algoritmusok kiválasztásával kapcsolatos útmutatásért lásd: [algoritmusok kiválasztása Microsoft Azure Machine Learninghoz](../studio/algorithm-choice.md). Bár ez a cikk Azure Machine Learningt használ, az általa biztosított útmutatás minden gépi tanulási projekt esetében hasznos lehet. 
+A választ igénylő kérdés típusától függően számos modellezési algoritmus érhető el. Az algoritmusok kiválasztásával kapcsolatos útmutatásért lásd: [algoritmusok kiválasztása Microsoft Azure Machine Learninghoz](../how-to-select-algorithms.md). Bár ez a cikk Azure Machine Learningt használ, az általa biztosított útmutatás minden gépi tanulási projekt esetében hasznos lehet. 
 
 A modell betanításának folyamata a következő lépéseket tartalmazza: 
 
@@ -78,7 +78,7 @@ Az ebben a szakaszban bemutatott összetevők a következők:
      * A modell megfelelő megbízhatósággal válaszol a kérdésre a tesztelési adat miatt? 
      * Érdemes kipróbálnia bármilyen alternatív megközelítést? További adatok gyűjtése, több funkció-mérnöki megoldás vagy más algoritmusok kipróbálása?
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alábbiakban a TDSP életciklusának egyes lépéseire mutató hivatkozásokat talál:
 

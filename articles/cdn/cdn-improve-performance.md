@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/28/2018
 ms.author: allensu
-ms.openlocfilehash: bd32bbb5957832629fa19eb756b95356c0292ef1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3b8ce5b82b7d2022fd7feea1cd9efe8d524ee6a4
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887693"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358287"
 ---
-# <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>A teljesítmény javítása a fájlok tömörítésével az Azure CDN-ben
+# <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>Teljesítmény javítása fájltömörítéssel az Azure CDN-ben
 A fájltömörítés egy egyszerű és hatékony módszer a fájlátvitel sebességének javítására, valamint a lapozófájl teljesítményének növelésére azáltal, hogy a fájl méretét a kiszolgálóról való elküldésük előtt csökkenti. A fájltömörítés csökkentheti a sávszélesség-költségeket, és rugalmasabb felhasználói élményt nyújt a felhasználóknak.
 
 A fájltömörítés kétféleképpen engedélyezhető:
@@ -53,12 +53,12 @@ A standard és a prémium szintű CDN-csomagok ugyanazt a tömörítési funkci�
     Megnyílik a CDN-végpont lap.
 2. Válassza a **tömörítés**lehetőséget.
 
-    ![CDN-tömörítés kiválasztása](./media/cdn-file-compression/cdn-compress-select-std.png)
+    ![A képernyőképen egy, a portál menüjében kiválasztott tömörítéssel rendelkező végpont látható.](./media/cdn-file-compression/cdn-compress-select-std.png)
 
     Megnyílik a tömörítés oldal.
 3. A tömörítés bekapcsolásához válassza **a** be lehetőséget.
 
-    ![CDN-fájlok tömörítési beállításai](./media/cdn-file-compression/cdn-compress-standard.png)
+    ![Képernyőfelvétel: a tömörítés bekapcsolásának megjelenítése.](./media/cdn-file-compression/cdn-compress-standard.png)
 4. Használja az alapértelmezett MIME-típusokat, vagy módosítsa a listát a MIME-típusok hozzáadásával vagy eltávolításával.
 
    > [!TIP]

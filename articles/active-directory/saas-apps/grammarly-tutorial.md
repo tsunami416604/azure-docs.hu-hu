@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/01/2020
 ms.author: jeedes
-ms.openlocfilehash: 29778d872541ea251a46affcccd0e2befbd9003d
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.openlocfilehash: 989e3f4a285d44128bba1c9811aebcb76b8c0220
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500867"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327969"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-grammarly"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció nyelvtanilag
 
@@ -81,16 +81,13 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 1. Az **alapszintű SAML-konfiguráció** szakaszban az alkalmazás előre konfigurálva van, és a szükséges URL-címek már előre fel vannak töltve az Azure-ban. A felhasználónak mentenie kell a konfigurációt a **Save (Mentés** ) gombra kattintva.
 
 
-1. A nyelvtanilag alkalmazás az SAML-jogcímeket egy adott formátumban várja, amelyhez egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható.
-
-    ![image](common/default-attributes.png)
-
-1. A fentieken kívül a nyelvtani alkalmazás néhány további attribútumot vár az SAML-válaszban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
+1. A nyelvtanilag alkalmazás az SAML-kijelentéseket egy adott formátumban várja. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
     
-    | Név |  Forrás attribútum|
+    | Name |  Forrás attribútum|
     | -------------- | --------- |
     | FirstName | User. givenName |
     | LastName | felhasználó. vezetéknév |
+    | EmailAddress | User. egyszerű név|
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
 
@@ -126,7 +123,7 @@ Ebben a szakaszban a B. Simon számára engedélyezheti az Azure egyszeri bejele
 
 ## <a name="configure-grammarly-sso"></a>Nyelvtani egyszeri bejelentkezés konfigurálása
 
-Ha **nyelvtanilag** szeretné beállítani az egyszeri bejelentkezést, el kell küldenie a letöltött **tanúsítványt (Base64)** és a megfelelő másolt url-címeket a Azure Portalról a [nyelvtanilag támogatott csoportba](mailto:support@grammarly.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
+Ha **nyelvtanilag**szeretné beállítani az egyszeri bejelentkezést, másolja át a **bejelentkezési URL-címet**, az **Azure ad-azonosítót**és a letöltött **tanúsítványt (Base64)** a nyelvtani felügyeleti panelre. [Ismerje meg, hogyan](https://support.grammarly.com/hc/en-us/articles/360048683092-How-do-I-set-up-SAML-single-sign-on-for-my-Grammarly-Business-account-).
 
 ### <a name="create-grammarly-test-user"></a>Nyelvtanilag tesztelő felhasználó létrehozása
 
@@ -140,6 +137,6 @@ Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egysze
 
 2. Használhatja a Microsoft Access panelt. Amikor a hozzáférési panelen a nyelvtani csempére kattint, automatikusan be kell jelentkeznie a Nyelvtanba, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A nyelvtani konfigurálást követően kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

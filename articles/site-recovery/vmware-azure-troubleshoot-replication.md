@@ -7,14 +7,14 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/2/2019
 ms.author: mayg
-ms.openlocfilehash: e9e66cbb024aa64e8c4cb5db9fc1c172fdc573fc
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 8b44a1d6119cc658b9460e0a52fa0629f759964a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135360"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336205"
 ---
-# <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>A VMware virtuális gépek és a fizikai kiszolgálók replikációs problémáinak elhárítása
+# <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>VMware virtuális gépek és fizikai kiszolgálók replikációs problémáinak hibaelhárítása
 
 Ez a cikk a helyszíni VMware virtuális gépek és a fizikai kiszolgálók Azure-ba történő replikálásával kapcsolatos gyakori problémákat és bizonyos hibákat ismerteti, amelyek a [site Recovery](site-recovery-overview.md)használatával történnek.
 
@@ -192,6 +192,24 @@ Ellenőrizze, hogy a VSS-szolgáltató szolgáltatás indítási típusa **autom
         - VSS szolgáltatás
         - Azure Site Recovery VSS-szolgáltató
         - VDS szolgáltatás
+
+## <a name="error-id-95001---insufficient-permissions-found"></a>95001-es AZONOSÍTÓJÚ hiba – nem megfelelő engedélyek találhatók
+
+Ez a hiba akkor fordul elő, amikor megkísérli engedélyezni a replikációt, és az alkalmazás mappái nem rendelkeznek megfelelő engedélyekkel.
+
+**Javítás**: a probléma megoldásához ellenőrizze, hogy a IUSR-felhasználó rendelkezik-e tulajdonosi szerepkörrel a lent említett mappákhoz.
+
+- *C\ProgramData\Microsoft Azure site Recovery\private*
+- A telepítési könyvtár. Ha például a telepítési könyvtár F meghajtó, akkor adja meg a megfelelő engedélyeket a következőhöz:
+    - *F:\Program-fájlok (x86) \Microsoft Azure site Recovery\home\svsystems*
+- A *\pushinstallsvc* mappája a telepítési könyvtárban. Ha például a telepítési könyvtár F meghajtó, adja meg a megfelelő engedélyeket a következőhöz:
+    - *F:\Program-fájlok (x86) \Microsoft Azure site Recovery\home\svsystems\pushinstallsvc*
+- A *\etc* mappája a telepítési könyvtárban. Ha például a telepítési könyvtár F meghajtó, adja meg a megfelelő engedélyeket a következőhöz:
+    - *F:\Program-fájlok (x86) \Microsoft Azure site Recovery\home\svsystems\etc*
+- *C:\Temp*
+- *C:\thirdparty\php5nts*
+- Az alábbi elérési úton található összes elem –
+    - *C:\thirdparty\rrdtool-1.2.15-win32-perl58\rrdtool\Release\**
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6b1fe78ac00b57d7627a64970e84ae8b717ae5c3
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 35fb8adaa5f7c0fff1c6d967f0136736b8071ce4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501916"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91260155"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>A szinapszis munkaterület biztonságossá tétele (előzetes verzió)
 
@@ -97,8 +97,8 @@ A szinapszis munkaterületnek hozzá kell férnie a STG1 és a CNT1, hogy képes
 
 - Nyissa meg az Azure Portalt
 - Navigáljon a WS1
-- A **Beállítások**területen kattintson az **SQL Active Directory-rendszergazda** lehetőségre.
-- Kattintson a **rendszergazda beállítása** elemre, és válassza a WS1 \_ SQLAdmins
+- A **Beállítások**területen válassza az **SQL Active Directory-rendszergazda** elemet.
+- Válassza a **rendszergazda beállítása** elemet, és válassza a WS1 \_ SQLAdmins
 
 ## <a name="step-6-maintain-access-control"></a>6. lépés: hozzáférés-vezérlés fenntartása
 
@@ -123,8 +123,9 @@ Az egyes szerepkörökben lévő felhasználóknak a következő lépéseket kel
 
 > [!NOTE]
 > [1] SQL-vagy Spark-készletek létrehozásához a felhasználónak legalább közreműködő szerepkörrel kell rendelkeznie a szinapszis munkaterületen.
-> [!TIP]
 >
+ 
+>[!TIP]
 > - A szerepkörtől függően bizonyos lépések szándékosan nem engedélyezettek.
 > - Ne feledje, hogy bizonyos feladatok sikertelenek lehetnek, ha a biztonság nem volt teljesen konfigurálva. Ezeket a feladatokat a táblázatban kell feltüntetni.
 
@@ -140,7 +141,7 @@ A munkaterület mostantól teljesen konfigurálva van és biztonságos.
 
 A szinapszis Studio a felhasználói szerepkörök alapján eltérően fog működni. Előfordulhat, hogy egyes elemek el lesznek rejtve vagy le vannak tiltva, ha a felhasználó nincs olyan szerepkörhöz rendelve, amely megfelelő hozzáférést biztosít. A következő táblázat összefoglalja a szinapszis Studióra gyakorolt hatást.
 
-| Tevékenység | Munkaterület-rendszergazdák | Spark-rendszergazdák | SQL-rendszergazdák |
+| Feladat | Munkaterület-rendszergazdák | Spark-rendszergazdák | SQL-rendszergazdák |
 | --- | --- | --- | --- |
 | A szinapszis Studio megnyitása | IGEN | IGEN | IGEN |
 | Kezdőlap hub megtekintése | IGEN | IGEN | IGEN |
@@ -182,6 +183,6 @@ A szinapszis Studio a felhasználói szerepkörök alapján eltérően fog műk�
 > [1] a tárolókban lévő adatokhoz való hozzáférés a ADLS Gen2 hozzáférés-vezérléstől függ. </br>
 > [2] az SQL OD-táblák és a Spark-táblázatok tárolja az ADLS Gen2 és a hozzáféréshez szükséges megfelelő engedélyeket a ADLS Gen2.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Szinapszis- [munkaterület](../quickstart-create-workspace.md) létrehozása

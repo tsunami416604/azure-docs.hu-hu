@@ -2,7 +2,7 @@
 title: Az Azure ExpressRoute és az Oracle Cloud Infrastructure összekötése | Microsoft Docs
 description: Az Azure ExpressRoute és az Oracle Cloud Infrastructure (OCI) FastConnect összekapcsolása a felhőalapú Oracle-alkalmazások megoldásának lehetővé tételéhez
 documentationcenter: virtual-machines
-author: rgardler
+author: dbakevlar
 manager: ''
 editor: ''
 tags: azure-resource-manager
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/16/2020
 ms.author: rogardle
-ms.openlocfilehash: 95f1f7b42b88baaab6d89192f226ca67962544fb
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 7f5f3f4edccc6d23b8041051028273559bcffecd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86220473"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325929"
 ---
 # <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>Közvetlen kapcsolat beállítása az Azure és az Oracle Cloud Infrastructure között  
 
@@ -88,7 +88,7 @@ A Microsoft Terraform parancsfájlokat hozott létre a hálózati összekötő a
 
 A Terraform-parancsfájlok és a kapcsolódó dokumentáció a kapcsolaton keresztüli kapcsolódás központi telepítéséhez ebben a [GitHub-adattárban](https://aka.ms/azureociinterconnecttf)található.
 
-## <a name="monitoring"></a>Monitorozás
+## <a name="monitoring"></a>Figyelés
 
 Ha az ügynököket mindkét felhőkre telepíti, használhatja az Azure [Network Performance monitor (NPM)](../../../expressroute/how-to-npm.md) szolgáltatást a végpontok közötti hálózat teljesítményének figyelésére. A NPM megkönnyíti a hálózati problémák azonosítását, és segít a hibák elhárításában.
 
@@ -102,7 +102,7 @@ Az összekötő törléséhez a következő lépéseket kell követni a megadott
 
 Ezen a ponton a törlési és megszüntetési folyamat befejeződött.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A OCI és az Azure közötti Felhőbeli kapcsolattal kapcsolatos további információkért tekintse meg az [Oracle dokumentációját](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/azure.htm).
 * A [Terraform-parancsfájlok](https://aka.ms/azureociinterconnecttf) használatával az Azure-on keresztül megcélozhatja az Oracle-alkalmazások infrastruktúráját, és konfigurálhatja a hálózati összekötőt. 

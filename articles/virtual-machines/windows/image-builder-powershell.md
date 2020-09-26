@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e25b2b53acdfb05af8572a01109961bf3002e429
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: a221ba8fe14db37729183774197bfc2db8bf2baa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499432"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328105"
 ---
 # <a name="preview-create-a-windows-vm-with-azure-image-builder-using-powershell"></a>Előzetes verzió: Windows rendszerű virtuális gép létrehozása az Azure rendszerkép-készítővel a PowerShell használatával
 
@@ -24,7 +24,7 @@ Ez a cikk bemutatja, hogyan hozhat létre testreszabott Windows-rendszerképeket
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
+Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 Ha a PowerShell helyi használatát választja, akkor ehhez a cikkhez telepítenie kell az az PowerShell-modult, és csatlakoznia kell az Azure-fiókjához a [AzAccount](/powershell/module/az.accounts/connect-azaccount) parancsmag használatával. Az az PowerShell-modul telepítésével kapcsolatos további információkért lásd: [Install Azure PowerShell](/powershell/azure/install-az-ps).
 
@@ -271,7 +271,7 @@ A háttérben a rendszerkép-készítő létrehoz egy átmeneti erőforráscsopo
 
 Ha a szolgáltatás hibát jelez a rendszerkép-konfigurációs sablon beküldésekor:
 
-- Lásd: az [Azure VM rendszerkép-build (AIB) hibáinak elhárítása](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#template-submission-errors--troubleshooting).
+- Lásd: az [Azure VM rendszerkép-build (AIB) hibáinak elhárítása](../linux/image-builder-troubleshoot.md).
 - Az újrapróbálkozás előtt törölje a sablont a következő példa használatával.
 
 ```azurepowershell-interactive
@@ -288,7 +288,7 @@ Start-AzImageBuilderTemplate -ResourceGroupName $imageResourceGroup -Name $image
 
 Várjon, amíg a rendszerkép-létrehozási folyamat befejeződik. Ez a lépés akár egy órát is igénybe vehet.
 
-Ha hibát tapasztal, tekintse át az [Azure VM-rendszerkép build (AIB) hibáinak elhárítását ismertető témakört](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-build-errors--troubleshooting).
+Ha hibát tapasztal, tekintse át az [Azure VM-rendszerkép build (AIB) hibáinak elhárítását ismertető témakört](../linux/image-builder-troubleshoot.md).
 
 ## <a name="create-a-vm"></a>Virtuális gép létrehozása
 
@@ -340,6 +340,6 @@ Remove-AzImageBuilderTemplate -ResourceGroupName $imageResourceGroup -Name $imag
 Remove-AzResourceGroup -Name $imageResourceGroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a cikkben használt. JSON fájl összetevőiről, tekintse meg a [rendszerkép-szerkesztői sablon referenciáját](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

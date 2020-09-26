@@ -2,15 +2,15 @@
 title: Azure Automation Update Management engedélyezése Azure-beli virtuális gépről
 description: Ez a cikk azt ismerteti, hogyan engedélyezhető a Update Management egy Azure-beli virtuális gépről.
 services: automation
-ms.date: 07/28/2020
+ms.date: 09/16/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 27832190125840e367edbfb2db8e4134f98b192d
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: dead4649635bebd9f73f79937dea1d24565f273e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87450196"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327796"
 ---
 # <a name="enable-update-management-from-an-azure-vm"></a>Az Update Management engedélyezése Azure-beli virtuális gépről
 
@@ -35,15 +35,17 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 2. Válassza ki azt a virtuális gépet, amelynek engedélyezni szeretné a Update Management. A virtuális gépek bármelyik régióban létezhetnek, az Automation-fiókja helyétől függetlenül. Ön
 
-3. A virtuális gép lap **műveletek**területén válassza a **Update Management**lehetőséget.
+3. A virtuális gép lap **műveletek**területén válassza a **vendég + gazdagép frissítései**lehetőséget.
+
+    ![Vendég + gazdagép frissítéseinek kiválasztása a bal oldali panelen](media/update-mgmt-enable-vm/select-guest-and-os-updates.png)
 
 4. Rendelkeznie kell `Microsoft.OperationalInsights/workspaces/read` engedéllyel annak megállapításához, hogy a virtuális gép engedélyezve van-e a munkaterületen. További információ a szükséges engedélyekről: a [gépek engedélyezéséhez szükséges engedélyek](../automation-role-based-access-control.md#feature-setup-permissions). Ha többet szeretne megtudni arról, hogyan engedélyezheti egyszerre több gépet, tekintse meg az [Automation-fiók Update Managementának engedélyezése](update-mgmt-enable-automation-account.md)című témakört.
 
-5. Válassza ki az Log Analytics munkaterületet és Automation-fiókot, majd kattintson az **Engedélyezés** elemre Update Management engedélyezéséhez. A Update Management engedélyezése után körülbelül 15 percet is igénybe vehet, mielőtt megtekintheti a frissítés értékelését a virtuális gépről.
+5. A Update Management engedélyezése lapon válassza a Log Analytics munkaterület és az Automation-fiók elemet, és kattintson az **Engedélyezés** gombra a Update Management engedélyezéséhez. A Update Management engedélyezése után körülbelül 15 percet is igénybe vehet, mielőtt megtekintheti a frissítés értékelését a virtuális gépről.
 
-    ![Az Update Management engedélyezése](media/update-mgmt-enable-vm/manageupdates-update-enable.png)
+    ![Az Update Management engedélyezése](media/update-mgmt-enable-vm/enable-update-management.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az Update Management virtuális gépekhez való használatához lásd: [Az Azure-beli virtuális gépek frissítéseinek és javításának kezelése](update-mgmt-manage-updates-for-vm.md).
 

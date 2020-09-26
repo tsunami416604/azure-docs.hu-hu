@@ -2,20 +2,20 @@
 title: Adattárolási hely
 description: Adatok tartózkodási helye és információk az Azure arc használatára képes kiszolgálókról.
 ms.topic: reference
-ms.date: 09/02/2020
+ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: 8b4b8171bd7133e52928a5227c488bd6234ce686
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 73acb07b8caa3c1368c936463f04969c29d37985
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90908129"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327765"
 ---
 # <a name="azure-arc-enabled-servers-data-residency"></a>Azure arc-kompatibilis kiszolgálók: az adatrezidens
 
 Ez a cikk az adattárolási koncepciót ismerteti, valamint azt, hogy hogyan vonatkozik az Azure arc-kompatibilis kiszolgálókra.
 
-Az Azure arc-kompatibilis kiszolgálók a **Egyesült Államokban, Európában vagy Ázsia és a csendes-óceáni térség** **[érhetők el](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc)** .
+Az Azure arc-kompatibilis kiszolgálók a **Egyesült Államok, Európa, Egyesült Királyság vagy Ázsia és a csendes-óceáni térség** **[számára érhetők el](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc)** .
 
 ## <a name="data-residency"></a>Adattárolási hely
 

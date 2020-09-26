@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e3dd4d5f413238e0d0da79ff43deeee6245681f4
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 7bc7b0ce521522e677e0dc53809c8c33e0743f0d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90016401"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327918"
 ---
 # <a name="what-is-risk"></a>Mit jelent a kockázat?
 
@@ -30,7 +30,7 @@ Az Identity Protection lehetővé teszi a szervezetek számára a hatékony erő
 
 Kétféle kockázati **felhasználó** és **Bejelentkezés** , valamint két típusú észlelési vagy számítási módszer áll rendelkezésre a **valós időben** és a **kapcsolat nélküli üzemmódban**.
 
-A valós idejű észlelések nem jelennek meg a jelentéskészítésben öt – tíz percen belül. Előfordulhat, hogy az offline észlelések nem jelennek meg két-négy órán keresztül a jelentéskészítés során.
+A valós idejű észlelések nem jelennek meg a jelentéskészítésben öt – tíz percen belül. Előfordulhat, hogy az offline észlelések nem jelennek meg a jelentéskészítésben két-huszonnégy órán keresztül.
 
 ### <a name="user-risk"></a>Felhasználói kockázat
 

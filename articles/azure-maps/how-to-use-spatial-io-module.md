@@ -4,17 +4,17 @@ description: Megtudhatja, hogyan használhatja a Azure Maps web SDK által bizto
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 02/28/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.custom: devx-track-javascript
-ms.openlocfilehash: f848274f67b5ebf5349cbef24a769aaae39b9955
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: devx-track-js
+ms.openlocfilehash: 61ea102d0e020f7890da1ae86cdfbb5c3db8f51b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287047"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335296"
 ---
 # <a name="how-to-use-the-azure-maps-spatial-io-module"></a>A Azure Maps térbeli IO-modul használata
 
@@ -231,7 +231,7 @@ A Azure Maps térbeli i/o-modult a két lehetőség egyikének használatával t
 
     </center>
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az itt bemutatott funkció csak a térbeli IO-modul számos funkciójának egyike. Az alábbi útmutatókból megtudhatja, hogyan használhatja más funkciókat a térbeli IO-modulban:
 

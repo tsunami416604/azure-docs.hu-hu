@@ -3,12 +3,12 @@ title: 'Oktatóanyag: Azure Event Grid használata a feltöltött képek átmér
 description: 'Oktatóanyag: a Azure Event Grid az Azure Storage-ban blob-feltöltéseket indíthat. A segítségével Azure Storage-ba feltöltött képfájlokat küldhet más szolgáltatásoknak, például az Azure Functions szolgáltatásnak átméretezés vagy egyéb javítás céljából.'
 ms.topic: tutorial
 ms.date: 07/07/2020
-ms.openlocfilehash: 19dfffdcee0fb95ae867b1b26fa51e702658445d
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 47ac8cad6d7c2ead8d25aa3525aafdab735f9e71
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86105795"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326558"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>Oktatóanyag: feltöltött képek átméretezésének automatizálása Event Grid használatával
 
@@ -20,11 +20,11 @@ Az Azure CLI és az Azure Portal segítségével hozzáadja az átméretezési f
 
 # <a name="net-v12-sdk"></a>[\.NET V12 SDK](#tab/dotnet)
 
-![Közzétett webalkalmazás a böngészőben](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
+![Képernyőkép, amely egy közzétett webalkalmazást jelenít meg egy böngészőben a \. net V12 SDK-hoz.](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
 
 # <a name="nodejs-v10-sdk"></a>[Node.js V10 SDK](#tab/nodejsv10)
 
-![Közzétett webalkalmazás a böngészőben](./media/resize-images-on-storage-blob-upload-event/upload-app-nodejs-thumb.png)
+![Képernyőkép, amely egy közzétett webalkalmazást jelenít meg egy böngészőben a \. net v10 SDK-hoz.](./media/resize-images-on-storage-blob-upload-event/upload-app-nodejs-thumb.png)
 
 ---
 
@@ -301,7 +301,7 @@ Kattintson a **Fényképek feltöltése** területre egy fájl kiválasztásáho
 
 Figyelje meg, hogy miután a feltöltött rendszerkép eltűnik, a feltöltött képek egy másolata jelenik meg a **generált miniatűröket** tartalmazó körhintán. A függvény átméretezte a képet, hozzáadta a *miniatűrök* tárolóhoz, a webes ügyfél pedig letöltötte a képet.
 
-![Közzétett webalkalmazás a böngészőben](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
+![Képernyőkép, amely egy "ImageResizer" nevű közzétett webes alkalmazást mutat be egy böngészőben a \. net V12 SDK-hoz.](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
 
 # <a name="nodejs-v10-sdk"></a>[Node.js V10 SDK](#tab/nodejsv10)
 

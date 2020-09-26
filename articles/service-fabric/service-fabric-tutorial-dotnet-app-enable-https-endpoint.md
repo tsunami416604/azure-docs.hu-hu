@@ -4,12 +4,12 @@ description: Ez az oktatóanyag azt ismerteti, hogyan adhat hozzá HTTPS-végpon
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: b309a13288c8ea95f453c1e80549a979e3f89921
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: c675f8ece8369bcfc0055343221ac82aea59dec1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89441527"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326235"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>Oktatóanyag: HTTPS-végpont hozzáadása ASP.NET Core Web API előtér-szolgáltatáshoz a Kestrel használatával
 
@@ -354,7 +354,7 @@ A Megoldáskezelő válassza ki a **szavazati** alkalmazást, és állítsa be a
 
 Mentse a fájlokat és nyomja le az F5 billentyűt az alkalmazás helyi futtatásához.  Az alkalmazás üzembe helyezését követően megnyílik egy webböngésző a https: \/ /localhost: 443. Ha önaláírt tanúsítványt használ, látni fog egy figyelmeztetést, amely szerint a számítógépe nem bízik az adott webhely biztonságában.  Tovább a weblapra.
 
-![Szavazóalkalmazás][image2]
+![Képernyőkép az URL-címet tartalmazó böngészőablakban futó Service Fabric szavazási minta alkalmazásról https://localhost/ .][image2]
 
 ## <a name="install-certificate-on-cluster-nodes"></a>Tanúsítvány telepítése fürtcsomópontokon
 
@@ -371,7 +371,7 @@ Ezután telepítse a tanúsítványt a távoli fürtön a [megadott PowerShell-p
 > [!Warning]
 > Az önaláírt tanúsítvány elegendő alkalmazások fejlesztéséhez és teszteléséhez. Éles alkalmazásokhoz használja a [hitelesítésszolgáltatói (CA-)](https://wikipedia.org/wiki/Certificate_authority) tanúsítványt az önaláírt tanúsítvány helyett.
 
-## <a name="open-port-443-in-the-azure-load-balancer"></a>A 443-as port megnyitása az Azure Load Balancerben
+## <a name="open-port-443-in-the-azure-load-balancer-and-virtual-network"></a>Nyissa meg az 443-es portot az Azure Load balancerben és a virtuális hálózaton
 
 Nyissa meg a 443-as portot a Load Balancerben, ha még nem tette meg.
 
@@ -396,13 +396,33 @@ $slb | Add-AzLoadBalancerRuleConfig -Name $rulename -BackendAddressPool $slb.Bac
 $slb | Set-AzLoadBalancer
 ```
 
+Tegye ugyanezt a társított virtuális hálózattal.
+
+```powershell
+$rulename="allowAppPort$port"
+$nsgname="voting-vnet-security"
+$RGname="voting_RG"
+$port=443
+
+# Get the NSG resource
+$nsg = Get-AzNetworkSecurityGroup -Name $nsgname -ResourceGroupName $RGname
+
+# Add the inbound security rule.
+$nsg | Add-AzNetworkSecurityRuleConfig -Name $rulename -Description "Allow app port" -Access Allow `
+    -Protocol * -Direction Inbound -Priority 3891 -SourceAddressPrefix "*" -SourcePortRange * `
+    -DestinationAddressPrefix * -DestinationPortRange $port
+
+# Update the NSG.
+$nsg | Set-AzNetworkSecurityGroup
+```
+
 ## <a name="deploy-the-application-to-azure"></a>Az alkalmazás üzembe helyezése az Azure-ban
 
 Mentsen minden fájlt, váltson Hibakeresésről Kiadásra, majd nyomja le az F6 billentyűt az újraépítéshez.  A Megoldáskezelőben kattintson a jobb gombbal a **Szavazás** elemre, majd válassza a **Közzététel** lehetőséget. Válassza ki az [Alkalmazás üzembe helyezése egy fürtön](service-fabric-tutorial-deploy-app-to-party-cluster.md) területen létrehozott fürt kapcsolati végpontját, vagy válasszon ki egy másik fürtöt.  Kattintson a **Közzététel** gombra az alkalmazás közzétételéhez a távoli fürtön.
 
 Az alkalmazás üzembe helyezése után nyisson meg egy webböngészőt, majd keresse meg a következő elemet: `https://mycluster.region.cloudapp.azure.com:443` (frissítse az URL-címet a fürtjéhez tartozó kapcsolati végponttal). Ha önaláírt tanúsítványt használ, látni fog egy figyelmeztetést, amely szerint a számítógépe nem bízik az adott webhely biztonságában.  Tovább a weblapra.
 
-![Szavazóalkalmazás][image3]
+![Képernyőkép az URL-címet tartalmazó böngészőablakban futó Service Fabric szavazási minta alkalmazásról https://mycluster.region.cloudapp.azure.com:443 .][image3]
 
 ## <a name="next-steps"></a>Következő lépések
 

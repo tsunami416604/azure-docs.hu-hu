@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: 5e811e487856ea38f96b669ccb12cabda655a8cd
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: e49525018a3e23ecbbf92d7a8b3f7c50804432b8
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852123"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358661"
 ---
 # <a name="use-the-voluntary-migration-tool-to-migrate-your-classic-alert-rules"></a>A klasszikus riasztási szabályok áttelepítéséhez használja az önkéntes áttelepítési eszközt
 
@@ -49,7 +49,7 @@ A klasszikus riasztási szabályok áttelepítésének elindításához a Azure 
 
 1. Válassza az áttelepítés **új szabályokra** lehetőséget az áttelepítési kezdőlapra való ugráshoz. Ezen az oldalon az összes előfizetésének és a Migrálás állapotának listája látható:
 
-    ![áttelepítés – kiszállás](media/alerts-migration/migration-landing.png "Szabályok áttelepíthetők")
+    ![Képernyőfelvétel: a riasztási szabályok áttelepíthetők lapja.](media/alerts-migration/migration-landing.png "Szabályok áttelepíthetők")
 
     Az eszköz használatával áttelepíthető összes előfizetés készként van megjelölve az **áttelepítésre**.
 
@@ -60,7 +60,7 @@ A klasszikus riasztási szabályok áttelepítésének elindításához a Azure 
 
     Az eredményül kapott oldal megjeleníti a klasszikus riasztási szabályok részleteit, amelyek egy adott előfizetéshez lesznek áttelepítve. Az **előfizetéshez tartozó áttelepítési adatok letöltésével** is kiválaszthatja a részleteket CSV formátumban.
 
-    ![áttelepítés – előzetes verzió](media/alerts-migration/migration-preview.png "Áttelepítés előzetes verziója")
+    ![Képernyőfelvétel: a riasztási szabályok áttelepítése lap az előfizetésre vonatkozó áttelepítési adatok letöltésére szolgáló hivatkozásra kattintva megadhatja az e-mailek áttelepítési értesítését.](media/alerts-migration/migration-preview.png "Áttelepítés előzetes verziója")
 
 1. Egy vagy több e-mail-címet kell megadnia az áttelepítési állapot értesítéséhez. E-mailt fog kapni, ha az áttelepítés befejeződik, vagy ha bármilyen műveletre szükség van.
 
@@ -69,7 +69,7 @@ A klasszikus riasztási szabályok áttelepítésének elindításához a Azure 
     > [!IMPORTANT]
     > Miután elindította az áttelepítést egy előfizetéshez, nem szerkesztheti és nem hozhatja létre klasszikus riasztási szabályokat az adott előfizetéshez. Ez a korlátozás biztosítja, hogy a klasszikus riasztási szabályok módosítása ne vesszenek el az új szabályokba való áttelepítés során. Bár a klasszikus riasztási szabályok nem módosíthatók, a rendszer továbbra is futtatja, és a riasztásokat csak az áttelepítés előtt küldi el. Az előfizetéshez tartozó áttelepítés befejezése után már nem használhat klasszikus riasztási szabályokat.
 
-    ![áttelepítés – megerősítés](media/alerts-migration/migration-confirm.png "Áttelepítés megkezdésének megerősítése")
+    ![A képernyőképen egy megerősítő üzenet jelenik meg az áttelepítéshez, beleértve a fontos információkat is, amelyek további információt tartalmaznak a továbblépés előtt.](media/alerts-migration/migration-confirm.png "Áttelepítés megkezdésének megerősítése")
 
 1. Ha az áttelepítés befejeződik, vagy ha szükséges, a rendszer e-mailt fog kapni a korábban megadott címekről. Azt is megteheti, hogy rendszeresen ellenőrzi az állapotot az áttelepítés kezdőlapján a portálon.
 

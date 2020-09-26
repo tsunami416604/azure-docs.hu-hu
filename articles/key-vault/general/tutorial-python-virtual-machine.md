@@ -1,6 +1,6 @@
 ---
 title: Oktatóanyag – Azure Key Vault használata virtuális géppel a Pythonban | Microsoft Docs
-description: Ebben az oktatóanyagban egy ASP.NET Core-alkalmazást konfigurál, hogy beolvassa a titkos kulcsot a kulcstartóból.
+description: Ebben az oktatóanyagban egy Python-alkalmazással konfigurál egy virtuális gépet, hogy beolvassa a titkos kulcsot a kulcstartóból.
 services: key-vault
 author: msmbaldwin
 ms.service: key-vault
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/20/2020
 ms.author: mbaldwin
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: c0f98f8c77e4a9cd4271511e0169f07da1c52baa
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 8980505ac34e32a29403060a7cf3cfaec077d8af
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87875949"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336700"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-python"></a>Oktatóanyag: Azure Key Vault használata virtuális géppel a Pythonban
 
@@ -64,7 +64,7 @@ Hozzon létre egy **myVM** nevű virtuális gépet az alábbi módszerek egyiké
 |--|--|
 | [Azure CLI](../../virtual-machines/linux/quick-create-cli.md) | [Azure CLI](../../virtual-machines/windows/quick-create-cli.md) |
 | [PowerShell](../../virtual-machines/linux/quick-create-powershell.md) | [PowerShell](../../virtual-machines/windows/quick-create-powershell.md) |
-| [Azure Portal](../../virtual-machines/linux/quick-create-portal.md) | [A Azure Portal](../../virtual-machines/windows/quick-create-portal.md) |
+| [Azure Portal](../../virtual-machines/linux/quick-create-portal.md) | [Az Azure Portal](../../virtual-machines/windows/quick-create-portal.md) |
 
 Linuxos virtuális gép Azure CLI használatával történő létrehozásához használja az az [VM Create](/cli/azure/vm) parancsot.  A következő példa egy *azureuser*nevű felhasználói fiókot vesz fel. A `--generate-ssh-keys` paraméter használatával automatikusan létrejön egy SSH-kulcs, és elhelyezhető az alapértelmezett kulcs helyén (*~/.ssh*). 
 
@@ -156,7 +156,7 @@ python3 sample.py
 The value of secret 'mySecret' in '<your-unique-keyvault-name>' is: 'Success!'
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rájuk szükség, törölje a virtuális gépet és a kulcstartót.  Ezt gyorsan elvégezheti, ha egyszerűen törli azt az erőforráscsoportot, amelyhez tartoznak:
 

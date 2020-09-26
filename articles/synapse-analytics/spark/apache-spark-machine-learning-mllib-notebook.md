@@ -4,17 +4,17 @@ description: Megtudhatja, hogyan használhatja a Apache Spark MLlib olyan gépi 
 services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
-ms.reviewer: jrasnick, carlrab
+ms.reviewer: jrasnick
 ms.topic: conceptual
 ms.subservice: machine-learning
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: e1ece0add7b0749cfd808b0a3ec7962dd43a302d
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 2b641075a45db29c07b96c1934d4540f4c3292dd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719342"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259985"
 ---
 # <a name="build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>Gépi tanulási alkalmazás létrehozása Apache Spark MLlib és az Azure szinapszis Analytics használatával
 
@@ -96,7 +96,7 @@ Mivel a nyers adatmennyiség parkettás formátumú, a Spark-környezettel közv
     display(sampled_taxi_df)
     ```
 
-4. A generált adatkészlet méretétől és a jegyzetfüzet többszöri kipróbálásának vagy futtatásának szükségessége alapján célszerű lehet az adatkészlet helyi gyorsítótárazása a munkaterületen. Az explicit gyorsítótárazás három módon hajtható végre:
+4. A generált adatkészlet méretétől függően, és a jegyzetfüzetet többször kell kísérletezni vagy futtatni, célszerű lehet a munkaterületen helyileg gyorsítótárazni az adatkészletet. Az explicit gyorsítótárazás három módon hajtható végre:
 
    - A dataframe helyi mentése fájlként
    - A dataframe mentése ideiglenes táblába vagy nézetbe
@@ -193,7 +193,7 @@ taxi_featurised_df = taxi_df.select('totalAmount', 'fareAmount', 'tipAmount', 'p
 
 ## <a name="create-a-logistic-regression-model"></a>Logisztikai regressziós modell létrehozása
 
-A végső feladat a címkézett adatok átalakítása olyan formátumra, amelyet a logisztikai regresszió alapján lehet elemezni. A logisztikai regressziós algoritmus bemenetének a *label-Feature Vector pár*készletének kell lennie, ahol a *funkció vektor* a bemeneti pontot jelképező számok vektora. Ezért a kategorikus oszlopokat számmá kell alakítani. Az `trafficTimeBins` és az `weekdayString` oszlopokat egész szám típusú ábrázolásra kell átalakítani. Az átalakítás végrehajtásához több módszer is rendelkezésre áll, azonban az ebben a példában szereplő megközelítés *OneHotEncoding*, közös megközelítés.
+A végső feladat a címkézett adatok átalakítása olyan formátumra, amelyet a logisztikai regresszió alapján lehet elemezni. A logisztikai regressziós algoritmus bemenetének a *label-Feature Vector pár*készletének kell lennie, ahol a *funkció vektor* a bemeneti pontot jelképező számok vektora. Ezért a kategorikus oszlopokat számmá kell alakítani. A `trafficTimeBins` és `weekdayString` oszlopoknak egész szám típusú ábrázolásra kell konvertálniuk. Az átalakítás végrehajtásához több módszer is rendelkezésre áll, azonban az ebben a példában szereplő megközelítés *OneHotEncoding*, közös megközelítés.
 
 ```python
 # Since the sample uses an algorithm that only works with numeric features, convert them so they can be consumed
@@ -206,7 +206,7 @@ en2 = OneHotEncoder(dropLast=False, inputCol="weekdayIndex", outputCol="weekdayV
 encoded_final_df = Pipeline(stages=[sI1, en1, sI2, en2]).fit(taxi_featurised_df).transform(taxi_featurised_df)
 ```
 
-Ez egy új dataframe eredményez, amely a megfelelő formátumban lévő összes oszlopból betanít egy modellt.
+Ez a művelet egy új dataframe eredményez, amely a megfelelő formátumban lévő összes oszloppal betanítja a modellt.
 
 ## <a name="train-a-logistic-regression-model"></a>Logisztikai regressziós modell betanítása
 
@@ -282,7 +282,7 @@ Miután befejezte az alkalmazás futtatását, állítsa le a notebookot az erő
 
 - [Áttekintés: Apache Spark az Azure szinapszis Analytics szolgáltatásban](apache-spark-overview.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [.NET Apache Spark dokumentációhoz](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)

@@ -9,14 +9,14 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: prgomata
 ms.reviewer: euang
-ms.openlocfilehash: 58c52649750ae03f19188a025fa4baa16a55ae05
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 11f73d2becb40b800c49afe0cd58f56953f8d42d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590081"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259918"
 ---
-# <a name="introduction"></a>Bevezetés
+# <a name="introduction"></a>Introduction (Bevezetés)
 
 Az Azure szinapszis Apache Spark a szinapszis SQL connectorhoz az Azure szinapszisban az adatoknak a Spark-készletek (előzetes verzió) és az SQL-készletek közötti hatékony átvitelét szolgálja. Az Azure szinapszis Apache Spark a szinapszis SQL-összekötő csak az SQL-készleteken működik, az SQL igény szerint nem működik.
 
@@ -30,7 +30,7 @@ Az Azure szinapszis Apache Spark Pool to szinapszis SQL Connector a Apache Spark
 
 ## <a name="authentication-in-azure-synapse-analytics"></a>Hitelesítés az Azure szinapszis Analyticsben
 
-A rendszerek közötti hitelesítés zökkenőmentesen elérhető az Azure szinapszis Analytics szolgáltatásban. Létezik egy jogkivonat-szolgáltatás, amely összekapcsolja a Azure Active Directory-mel a Storage-fiók vagy az adatraktár-kiszolgáló eléréséhez szükséges biztonsági jogkivonatok beszerzéséhez.
+A rendszerek közötti hitelesítés zökkenőmentesen elérhető az Azure szinapszis Analytics szolgáltatásban. A jogkivonat-szolgáltatás a Azure Active Directory használatával csatlakozik a Storage-fiókhoz vagy az adatraktár-kiszolgálóhoz való hozzáféréshez szükséges biztonsági jogkivonatok beszerzéséhez.
 
 Emiatt nem kell hitelesítő adatokat létrehoznia, vagy megadnia azokat az összekötő API-ban, ha a HRE-Auth konfigurálva van a Storage-fiókban és az adatraktár-kiszolgálón. Ha nem, akkor megadható az SQL-hitelesítés. További részleteket a [használati](#usage) szakaszban talál.
 
@@ -91,14 +91,14 @@ A fenti API a belső (felügyelt) és az SQL-készletben található külső tá
 df.write.sqlanalytics("<DBName>.<Schema>.<TableName>", <TableType>)
 ```
 
-Az írási API létrehozza a táblát az SQL-készletben, majd meghívja a albase-et az adatok betöltéséhez.  A tábla nem létezhet az SQL-készletben, és a rendszer hibaüzenetet küld, amely szerint a "már létezik, és az objektum neve."
+Az írási API létrehozza a táblát az SQL-készletben, majd meghívja a albase-et az adatok betöltéséhez.  A tábla nem létezhet az SQL-készletben, és a rendszer hibaüzenetet ad vissza, amely szerint a "már van egy nevű objektum..."
 
 TableType-értékek
 
 - Állandók. belső felügyelt tábla az SQL-készletben
 - Konstansok. külső külső tábla az SQL-készletben
 
-SQL-készlet által felügyelt tábla
+SQL-készlet – felügyelt tábla
 
 ```scala
 df.write.sqlanalytics("<DBName>.<Schema>.<TableName>", Constants.INTERNAL)
@@ -106,7 +106,7 @@ df.write.sqlanalytics("<DBName>.<Schema>.<TableName>", Constants.INTERNAL)
 
 SQL Pool – külső tábla
 
-SQL-készlet külső táblájába való íráshoz egy külső adatforrást és egy külső FÁJLFORMÁTUMot kell létrehozni az SQL-készleten.  További információért olvassa el a [külső adatforrás](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) és az SQL-készlet külső [fájlformátumainak](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) létrehozása című témakört.  Az alábbiakban a külső adatforrás és a külső fájlformátumok SQL-készletben való létrehozására mutatunk példákat.
+SQL-készlet külső táblájába való íráshoz egy külső adatforrást és egy külső FÁJLFORMÁTUMot kell létrehozni az SQL-készleten.  További információért olvassa el a [külső adatforrás](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) és az SQL-készlet külső [fájlformátumainak](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) létrehozása című témakört.  Az alábbiakban a külső adatforrás és a külső fájlformátumok SQL-készletben való létrehozására mutatunk példákat.
 
 ```sql
 --For an external table, you need to pre-create the data source and file format in SQL pool using SQL queries:
@@ -235,7 +235,7 @@ A munkaterülethez csatlakoztatott ADLS Gen2 Storage-fiókban tárolnia kell a b
 > [!IMPORTANT]
 > Ügyeljen arra, hogy ne válassza az "alapértelmezett" lehetőséget, ha nem kívánja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [SQL-készlet létrehozása a Azure Portal használatával](../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md)
 - [Új Apache Spark-készlet létrehozása a Azure Portal használatával](../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md) 

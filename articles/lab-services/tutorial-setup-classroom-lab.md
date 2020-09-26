@@ -3,12 +3,12 @@ title: Osztályterem-tesztkörnyezet beállítása az Azure Lab Services szolgá
 description: Ebben az oktatóanyagban a Azure Lab Services használatával állít be egy tantermi labort olyan virtuális gépekkel, amelyeket az osztályban tanulók használnak.
 ms.topic: tutorial
 ms.date: 06/26/2020
-ms.openlocfilehash: bc1b23b92c6af902797a9be354fe6514b4e225af
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 1155646d31ddb8a0a3abce025acde5c4cb645f54
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85445134"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336734"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Oktatóanyag: Osztályterem-tesztkörnyezet beállítása 
 Ebben az oktatóanyagban megtanulhatja, hogyan állíthat be egy diákok által használható virtuális gépekkel rendelkező osztályterem-tesztkörnyezetet.  
@@ -37,7 +37,7 @@ Ebben a lépésben létrehoz egy labort az osztályhoz az Azure-ban.
 2. Válassza a **Bejelentkezés** lehetőséget, és adja meg a hitelesítő adatait. Az Azure Lab Services támogatja a szervezeti fiókok és a Microsoft-fiókok használatát is. 
 3. Válassza az **új Labor**elemet. 
     
-    ![Osztályterem-tesztkörnyezet létrehozása](./media/tutorial-setup-classroom-lab/new-lab-button.png)
+    ![Képernyőfelvétel: "Azure Lab Services", az "új Labor" gomb kiválasztásával.](./media/tutorial-setup-classroom-lab/new-lab-button.png)
 4. Az **Új tesztkörnyezet** ablakban tegye a következőket: 
     1. Adja meg a labor **nevét** , majd kattintson a **Tovább gombra**.  
 
@@ -90,7 +90,7 @@ Hozzon létre egy ütemezett eseményt a laborhoz, hogy a laborban lévő virtu�
 
 1. Váltson az **ütemezések** lapra, és válassza az eszköztár **ütemezett esemény hozzáadása** elemét. 
 
-    ![Ütemterv hozzáadása gomb az ütemtervek lapon](./media/how-to-create-schedules/add-schedule-button.png)
+    ![Képernyőkép az "ütemezett esemény hozzáadása" gombra az "ütemezések" lapon.](./media/how-to-create-schedules/add-schedule-button.png)
 2. Az **ütemezett esemény hozzáadása** oldalon hajtsa végre a következő lépéseket:
     1. Ellenőrizze, hogy a **standard** érték van-e kiválasztva az **esemény típusára**.  
     2. Válassza ki az osztály **kezdő dátumát** . 
@@ -147,7 +147,7 @@ Hozzon létre egy ütemezett eseményt a laborhoz, hogy a laborban lévő virtu�
 
     A tanulók osztályhoz való hozzáadásával és a labor használatának felügyeletével kapcsolatos további információkért lásd: [a tanulói használat konfigurálása](how-to-configure-student-usage.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben az oktatóanyagban létrehozott egy labort az osztályhoz az Azure-ban. Ha meg szeretné tudni, hogyan férhetnek hozzá a diákok a tesztkörnyezet virtuális gépeihez a regisztrációs hivatkozással, folytassa a következő oktatóanyaggal:
 
 > [!div class="nextstepaction"]

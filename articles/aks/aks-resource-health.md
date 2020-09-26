@@ -6,12 +6,12 @@ author: yunjchoi
 ms.topic: troubleshooting
 ms.date: 08/18/2020
 ms.author: yunjchoi
-ms.openlocfilehash: d14ed7e714eac175dc7a17bbccd2150f9bb01ef9
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: f830debafb1a9b6b303ee6af987c7cd4fbf34aea
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752721"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358253"
 ---
 # <a name="check-for-resource-health-events-impacting-your-aks-cluster-preview"></a>Az AK-fürtöket befolyásoló Resource Health események keresése (előzetes verzió)
 
@@ -33,7 +33,7 @@ Ha a tároló számítási feladatait az AK-on futtatja, azt szeretné, hogy a p
 - A bal oldali navigációs sávon válassza az **erőforrás állapota** lehetőséget.
 - Válassza ki az előfizetését, és állítsa be az erőforrás típusát az Azure Kubernetes Service (ak) értékre.
 
-![erőforrás-állapot-ellenőrzési](./media/aks-resource-health/resource-health-check.png)
+![A képernyőfelvételen a K S fürtök erőforrás-állapota látható.](./media/aks-resource-health/resource-health-check.png)
 
 ## <a name="check-the-health-status"></a>Állapot állapotának ellenõrzése
 
@@ -55,6 +55,6 @@ Az egyes állapotok állapotával kapcsolatos további részletekért tekintse m
 
 Megtekintheti az elmúlt 30 nap korábbi Resource Health információkat is az **állapotadatok** szakaszban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Futtasson ellenőrzéseket a fürtön a fürtökkel kapcsolatos problémák további hibaelhárításához az [AK-diagnosztika](https://docs.microsoft.com/azure/aks/concepts-diagnostics)használatával.

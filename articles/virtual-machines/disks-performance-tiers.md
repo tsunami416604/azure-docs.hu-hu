@@ -4,16 +4,16 @@ description: Ismerje meg a felügyelt lemezek teljesítményi szintjeit, valamin
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 09/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: aa188babf56d4a825059fe6103e2e07745eb134f
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 3d6b243ab517f3663f779d01569acf3d46ad8411
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90974139"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328122"
 ---
 # <a name="performance-tiers-for-managed-disks-preview"></a>A felügyelt lemezek teljesítményi szintjei (előzetes verzió)
 
@@ -21,7 +21,9 @@ Azure Disk Storage jelenleg beépített kitörési képességekkel rendelkezik, 
 
 ## <a name="how-it-works"></a>Működés
 
-Amikor először telepít vagy kiépít egy lemezt, a lemez alapteljesítményi szintje a kiosztott lemez mérete alapján van beállítva. Magasabb teljesítményszint kiválasztható úgy, hogy magasabb szintű igényt lehessen kielégíteni, és ha ez a teljesítmény már nem szükséges, visszatérhet a kezdeti alapteljesítményi szintjéhez. Ha például kiépít egy P10-lemezt (128 GiB), az alapkonfigurációi teljesítményszint P10 (500 IOPS és 100 MB/s) van beállítva. A szintet úgy frissítheti, hogy az megfeleljen a P50 (7500 IOPS és 250 MB/s) teljesítményének, a lemez méretének növelése nélkül, és térjen vissza a P10, ha a nagyobb teljesítmény már nem szükséges.
+Amikor először telepít vagy kiépít egy lemezt, a lemez alapteljesítményi szintje a kiosztott lemez mérete alapján van beállítva. Magasabb teljesítményszint kiválasztható úgy, hogy magasabb szintű igényt lehessen kielégíteni, és ha ez a teljesítmény már nem szükséges, visszatérhet a kezdeti alapteljesítményi szintjéhez.
+
+A számlázási változások a rétegek változásakor változnak. Ha például kiépít egy P10-lemezt (128 GiB), az alapteljesítmény-szintet a P10 (500 IOPS és 100 MB/s) értékre állítja be, és a P10 arányban kell fizetnie. A szintet a P50 (7500 IOPS és 250 MB/s) teljesítményének megfelelően frissítheti a lemez méretének növelése nélkül, amely során a P50 díjszabása alapján számítjuk fel a díjat. Ha a nagyobb teljesítményre már nincs szükség, visszatérhet a P10 szintjéhez, és a lemez újbóli számlázása a P10 arányban történik.
 
 | Lemezméret | Alapteljesítmény szintje | Frissíthető a következőre |
 |----------------|-----|-------------------------------------|
@@ -40,70 +42,63 @@ Amikor először telepít vagy kiépít egy lemezt, a lemez alapteljesítményi 
 | 16 TiB | P70 | P80 |
 | 32 tebibájt | P80 | Nincsenek |
 
+Számlázási információk: a [felügyelt lemez díjszabása](https://azure.microsoft.com/pricing/details/managed-disks/).
+
 ## <a name="restrictions"></a>Korlátozások
 
 - Jelenleg csak a prémium SSD-k támogatottak.
 - A rétegek módosítása előtt le kell választani a lemezeket egy futó virtuális gépről.
 - A P60, a P70 és a P80 teljesítmény-szintjeinek használata a 4096 GiB vagy újabb lemezekre korlátozódik.
+- A lemezek teljesítményi szintje csak 24 óránként módosítható.
 
 ## <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
 
 A felügyelt lemezek teljesítményi szintjének módosítása jelenleg csak a prémium szintű SSD-k számára érhető el a következő régiókban:
 
 - USA nyugati középső régiója 
-- 2. Kelet-Egyesült Államok 
-- Nyugat-Európa
-- Kelet-Ausztrália 
-- Dél-Kelet-Ausztrália 
-- Dél-India
 
-## <a name="createupdate-a-data-disk-with-a-tier-higher-than-the-baseline-tier"></a>Adatlemez létrehozása/frissítése az alapcsomagnál magasabb szinten
+## <a name="create-an-empty-data-disk-with-a-tier-higher-than-the-baseline-tier"></a>Hozzon létre egy üres adatlemezt, amely az alapcsomagnál magasabb szintű.
 
-1. Hozzon létre egy üres adatlemezt, amely magasabb szintű, mint az alapcsomag, vagy frissítse az alapszinten magasabb lemez szintjét a minta sablon [CreateUpdateDataDiskWithTier.js](https://github.com/Azure/azure-managed-disks-performance-tiers/blob/main/CreateUpdateDataDiskWithTier.json)
+```azurecli
+subscriptionId=<yourSubscriptionIDHere>
+resourceGroupName=<yourResourceGroupNameHere>
+diskName=<yourDiskNameHere>
+diskSize=<yourDiskSizeHere>
+performanceTier=<yourDesiredPerformanceTier>
+region=westcentralus
 
-     ```cli
-     subscriptionId=<yourSubscriptionIDHere>
-     resourceGroupName=<yourResourceGroupNameHere>
-     diskName=<yourDiskNameHere>
-     diskSize=<yourDiskSizeHere>
-     performanceTier=<yourDesiredPerformanceTier>
-     region=<yourRegionHere>
-    
-     az login
-    
-     az account set --subscription $subscriptionId
-    
-     az group deployment create -g $resourceGroupName \
-     --template-uri "https://raw.githubusercontent.com/Azure/azure-managed-disks-performance-tiers/main/CreateUpdateDataDiskWithTier.json" \
-     --parameters "region=$region" "diskName=$diskName" "performanceTier=$performanceTier" "dataDiskSizeInGb=$diskSize"
-     ```
+az login
 
-1. A lemez szintjeinek megerősítése
+az account set --subscription $subscriptionId
 
-    ```cli
-    az resource show -n $diskName -g $resourceGroupName --namespace Microsoft.Compute --resource-type disks --api-version 2020-06-30 --query [properties.tier] -o tsv
-     ```
+az disk create -n $diskName -g $resourceGroupName -l $region --sku Premium_LRS --size-gb $diskSize --tier $performanceTier
+```
+## <a name="create-an-os-disk-with-a-tier-higher-than-the-baseline-tier-from-an-azure-marketplace-image"></a>Azure Marketplace-rendszerképből származó alapszinten magasabb szintű operációsrendszer-lemez létrehozása
 
-## <a name="createupdate-an-os-disk-with-a-tier-higher-than-the-baseline-tier"></a>OPERÁCIÓSRENDSZER-lemez létrehozása/frissítése az alapszintűnél magasabb szintűként
+```azurecli
+resourceGroupName=<yourResourceGroupNameHere>
+diskName=<yourDiskNameHere>
+performanceTier=<yourDesiredPerformanceTier>
+region=westcentralus
+image=Canonical:UbuntuServer:18.04-LTS:18.04.202002180
 
-1. Hozzon létre egy operációsrendszer-lemezt a piactér rendszerképből, vagy frissítse az alapszinten magasabb operációsrendszer-lemez szintjét a minta sablonnal [CreateUpdateOSDiskWithTier.js](https://github.com/Azure/azure-managed-disks-performance-tiers/blob/main/CreateUpdateOSDiskWithTier.json)
+az disk create -n $diskName -g $resourceGroupName -l $region --image-reference $image --sku Premium_LRS --tier $performanceTier
+```
+     
+## <a name="update-the-tier-of-a-disk"></a>Lemez szintjeinek frissítése
 
-     ```cli
-     resourceGroupName=<yourResourceGroupNameHere>
-     diskName=<yourDiskNameHere>
-     performanceTier=<yourDesiredPerformanceTier>
-     region=<yourRegionHere>
-    
-     az group deployment create -g $resourceGroupName \
-     --template-uri "https://raw.githubusercontent.com/Azure/azure-managed-disks-performance-tiers/main/CreateUpdateOSDiskWithTier.json" \
-     --parameters "region=$region" "diskName=$diskName" "performanceTier=$performanceTier"
-     ```
- 
- 1. A lemez szintjeinek megerősítése
- 
-     ```cli
-     az resource show -n $diskName -g $resourceGroupName --namespace Microsoft.Compute --resource-type disks --api-version 2020-06-30 --query [properties.tier] -o tsv
-     ```
+```azurecli
+resourceGroupName=<yourResourceGroupNameHere>
+diskName=<yourDiskNameHere>
+performanceTier=<yourDesiredPerformanceTier>
+
+az disk update -n $diskName -g $resourceGroupName --set tier=$performanceTier
+```
+## <a name="show-the-tier-of-a-disk"></a>Lemez szintjeinek megjelenítése
+
+```azurecli
+az disk show -n $diskName -g $resourceGroupName --query [tier] -o tsv
+```
 
 ## <a name="next-steps"></a>Következő lépések
 

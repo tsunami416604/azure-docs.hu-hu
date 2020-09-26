@@ -8,17 +8,17 @@ editor: ''
 tags: azure-service-management
 ms.assetid: 53981f7e-8370-4979-b26a-93a5988d905f
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/29/2020
 ms.author: mathoma
-ms.openlocfilehash: 93819332def05022272eabc130e0f2240938f244
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 43b0f64a1d88a71b221fac240392dc71b93eef76
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955505"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91298829"
 ---
 # <a name="configure-a-workgroup-availability-group"></a>Munkacsoport rendelkezésre állási csoportjának konfigurálása 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -36,7 +36,7 @@ Munkacsoporton rendelkezésre állási csoport konfigurálásához a következő
 
 A következő paraméterek használhatók a cikkben, de a szükséges módon módosítható: 
 
-| **Name (Név)** | **Paraméter** |
+| **Név** | **Paraméter** |
 | :------ | :---------------------------------- |
 | **Csomópont1**   | AGNode1 (10.0.0.4) |
 | **Csomópont2**   | AGNode2 (10.0.0.5) |
@@ -289,7 +289,7 @@ Ebben a lépésben konfigurálja a rendelkezésre állási csoportot, és adja h
 Ebben az utolsó lépésben konfigurálja a terheléselosztó-t a [Azure Portal](availability-group-load-balancer-portal-configure.md) vagy a [PowerShell](availability-group-listener-powershell-configure.md)használatával.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A rendelkezésre állási csoport konfigurálásához az [az SQL VM CLI](availability-group-az-cli-configure.md) -t is használhatja. 
 

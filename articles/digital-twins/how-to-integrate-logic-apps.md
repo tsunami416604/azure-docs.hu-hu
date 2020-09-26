@@ -8,12 +8,12 @@ ms.date: 9/11/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 09181a28edf21f0a4da11a244d3c094469446ab5
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 6726dab6f1037f01eda316968e3c5b503aa9dbfb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983449"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326576"
 ---
 # <a name="integrate-with-logic-apps-using-a-custom-connector"></a>Integrálás a Logic Apps használatával egyéni összekötővel
 
@@ -28,7 +28,7 @@ Ebben a cikkben a [Azure Portal](https://portal.azure.com) használatával **hoz
 Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt **hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) ** .
 Jelentkezzen be a [Azure Portalba](https://portal.azure.com) ezzel a fiókkal. 
 
-A szakasz további részében a következő lépések jelennek meg:
+A következő elemeket is el kell végeznie az előfeltétel-telepítés részeként. Ennek a szakasznak a további lépései a következő lépésekben találhatók:
 - Azure digitális Twins-példány beállítása
 - Az alkalmazás regisztrációs ügyfelének titkának beolvasása
 - Digitális Twin hozzáadása
@@ -37,9 +37,9 @@ A szakasz további részében a következő lépések jelennek meg:
 
 Ha egy Azure digitális Twins-példányt szeretne összekapcsolással Logic Apps ebben a cikkben, akkor már be kell állítania az **Azure digitális Twins-példányát** . 
 
-Ha most létre kell hoznia egy új példányt, a legegyszerűbb módszer az, ha egy automatizált üzembe helyezési parancsfájlt futtat. Az új példány és a szükséges Azure AD-alkalmazás regisztrálásához kövesse az útmutató [*: példány és hitelesítés beállítása (parancsfájl használatával)*](how-to-set-up-instance-scripted.md) című témakör utasításait. Az utasítások azt is tartalmazzák, hogy az egyes lépéseket sikeresen elvégezte-e, és készen állnak az új példány használatára való áttérésre.
+Először állítson be egy Azure digitális Twins-példányt és a szükséges hitelesítést ahhoz, hogy működjön vele. Ehhez kövesse az útmutató [*: példány és hitelesítés beállítása*](how-to-set-up-instance-portal.md)című témakör útmutatását. Az előnyben részesített felhasználói élménytől függően a telepítési cikk a [Azure Portal](how-to-set-up-instance-portal.md), a [CLI](how-to-set-up-instance-cli.md)vagy az [automatizált Cloud Shell üzembe helyezési parancsfájl-minta](how-to-set-up-instance-scripted.md)számára elérhető. Az utasítások összes verziója olyan lépéseket is tartalmaz, amelyekkel ellenőrizheti, hogy sikeresen elvégezte-e az egyes lépéseket, és készen áll az új példány használatára való áttérésre.
 
-Ebben az oktatóanyagban az alábbi értékekre lesz szüksége a példány beállításakor. Ha újra össze kell gyűjtenie ezeket az értékeket, az alábbi hivatkozásokra kattintva megkeresheti azokat a [Azure Portalban](https://portal.azure.com).
+Ebben az oktatóanyagban több értékre lesz szüksége a példány beállításakor. Ha újra össze kell gyűjtenie ezeket az értékeket, az alábbi hivatkozásokra kattintva megkeresheti azokat a [Azure Portalban](https://portal.azure.com).
 * Azure digitális Twins-példány **_állomásneve_** ([Keresés a portálon](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values))
 * Azure AD App Registration **_Application (ügyfél-) azonosító_** ([Keresés a portálon](how-to-set-up-instance-portal.md#collect-important-values))
 * Azure AD-alkalmazás regisztrációs **_könyvtárának (bérlői) azonosítója_** ([Keresés a portálon](how-to-set-up-instance-portal.md#collect-important-values))
@@ -160,13 +160,13 @@ Ezzel létrehozta az Azure Digital Twins API-khoz hozzáférő egyéni összekö
 
 Ezután létre fog hozni egy logikai alkalmazást, amely az új összekötő használatával automatizálja az Azure digitális Twins-frissítéseit.
 
-Navigáljon a Azure Portal [Logic apps (felhasználás)](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Logic%2Fworkflows) lapjára (ezt a hivatkozást használhatja, vagy keresse meg a portálon a keresési sávban). Logikai alkalmazás létrehozásához kattintson a *Hozzáadás* gombra.
+A [Azure Portalban](https://portal.azure.com)keressen a *Logic apps* kifejezésre a portál keresési sávján. Ha kiválasztja, a *Logic apps (logikai alkalmazások* ) lapra kerül. Új logikai alkalmazás létrehozásához kattintson a *logikai alkalmazás létrehozása* gombra.
 
-:::image type="content" source="media/how-to-integrate-logic-apps/create-logic-app.png" alt-text="A Azure Portal Logic Apps (felhasználás) lapja. A Hozzáadás gomb megnyomása":::
+:::image type="content" source="media/how-to-integrate-logic-apps/create-logic-app.png" alt-text="A Azure Portal "Logic Apps" lapja. A Hozzáadás gomb megnyomása":::
 
-Az alábbi *Logic apps (felhasználás)* lapon adja meg az előfizetését, az erőforráscsoportot. Továbbá válassza ki a logikai alkalmazás nevét, és válassza ki a helyet.
+Az alábbi *logikai alkalmazás* oldalon adja meg az előfizetését és az erőforráscsoportot. Továbbá válassza ki a logikai alkalmazás nevét, és válassza ki a központi telepítési helyet.
 
-Válassza a _felülvizsgálat + létrehozás_ gombot.
+Nyomja meg a _felülvizsgálat + létrehozás_ gombot.
 
 Ekkor a *felülvizsgálat + létrehozás* lapra kerül, ahol áttekintheti az adatokat, és az alján található *create* (létrehozás) gombra kattintva létrehozhatja az erőforrást.
 

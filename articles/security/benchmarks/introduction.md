@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 53473b6be9e91adb636c3c9528e97ec644616115
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: f3b492534bedde50d2413b88fa38cd6325ed5df7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90058614"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328258"
 ---
 # <a name="azure-security-benchmark-introduction"></a>Az Azure Security teljesítményteszt bemutatása
 
@@ -23,8 +23,8 @@ A Microsoft úgy találta, hogy a *biztonsági referenciaértékek* használatá
 
 Az Azure biztonsági teljesítményteszt olyan nagy hatású biztonsági javaslatokat tartalmaz, amelyek segítségével biztonságossá teheti az Azure-ban használt szolgáltatásokat:
 
-- Biztonsági vezérlők: ezek a javaslatok általánosan érvényesek az Azure-bérlő és az Azure-szolgáltatások között. Mindegyik javaslat azonosítja azon érdekelt felek listáját, akik általában részt vesznek a teljesítményteszt megtervezésében, jóváhagyásában vagy megvalósításában. 
-- Szolgáltatás alapkonfigurációi: ezek a vezérlők az egyes Azure-szolgáltatásokra vonatkoznak, hogy javaslatokat szolgáltassanak a szolgáltatás biztonsági beállításairól.
+- **Biztonsági vezérlők**: ezek a javaslatok általánosan érvényesek az Azure-bérlő és az Azure-szolgáltatások között. Mindegyik javaslat azonosítja azon érdekelt felek listáját, akik általában részt vesznek a teljesítményteszt megtervezésében, jóváhagyásában vagy megvalósításában. 
+- **Szolgáltatás**alapkonfigurációi: ezek a vezérlők az egyes Azure-szolgáltatásokra vonatkoznak, hogy javaslatokat szolgáltassanak a szolgáltatás biztonsági beállításairól.
 
 ## <a name="implement-the-azure-security-benchmark"></a>Az Azure biztonsági teljesítményteszt implementálása
 - **Tervezze** meg az Azure biztonsági teljesítményteszt megvalósítását a vállalati vezérlők és a szolgáltatás-specifikus alapkonfigurációk [dokumentációjának](overview.md) áttekintésével, hogy megtervezze a vezérlési keretrendszert, és hogy miként képezi le a CIS (Controls v 7.1) és a NIST (SP800-53) keretrendszerhez hasonló útmutatást.

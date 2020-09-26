@@ -11,14 +11,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mathoma, carlrab
+ms.reviewer: mathoma, sstein
 ms.date: 06/25/2019
-ms.openlocfilehash: 8ceef173e33c3603d9bc5d6ef217d54eef88609c
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: a69332f1534e32a85ce084289dd00533612cc282
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85982472"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327561"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Az Azure SQL Database üzletmenet-folytonossági funkcióinak áttekintése
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -65,13 +65,13 @@ Az [automatikus feladatátvételi csoportok](auto-failover-group-overview.md#ter
 
 |                                              | Georeplikáció | Feladatátvételi csoportok  |
 |:---------------------------------------------| :-------------- | :----------------|
-| **Automatikus feladatátvétel**                          |     Nem          |      Yes         |
-| **Több adatbázis feladatátvétele egyszerre**  |     Nem          |      Yes         |
-| **A felhasználónak frissítenie kell a kapcsolatok karakterláncát a feladatátvétel után**      |     Yes         |      Nem          |
-| **SQL felügyelt példányok támogatása**                   |     Nem          |      Yes         |
-| **Ugyanabban a régióban lehet, mint az elsődleges**             |     Yes         |      Nem          |
-| **Több replika**                            |     Yes         |      Nem          |
-| **Olvasási méretezés támogatása**                          |     Igen         |      Igen         |
+| **Automatikus feladatátvétel**                          |     Nem          |      Igen         |
+| **Több adatbázis egyidejű feladatátvétele**  |     Nem          |      Igen         |
+| **A felhasználónak frissítenie kell a kapcsolati sztringet a feladatátvétel után**      |     Igen         |      Nem          |
+| **Az SQL Managed Instance támogatása**                   |     Nem          |      Igen         |
+| **Ugyanabban a régióban lehet, mint az elsődleges**             |     Igen         |      Nem          |
+| **Több replika**                            |     Igen         |      Nem          |
+| **Támogatja az olvasásra optimalizálást**                          |     Igen         |      Igen         |
 
 
 ## <a name="recover-a-database-to-the-existing-server"></a>Adatbázis helyreállítása a meglévő kiszolgálóra
@@ -152,6 +152,6 @@ A helyreállítási mechanizmusok végrehajtása után a következő további fe
 
 Időnként előfordulhat, hogy egy alkalmazást a tervezett karbantartás, például egy alkalmazás frissítése miatt offline állapotba kell helyezni. Az [alkalmazások frissítéseinek kezelése](manage-application-rolling-upgrade.md) azt ismerteti, hogyan használható az aktív geo-replikálás a Felhőbeli alkalmazások működés közbeni frissítésének engedélyezéséhez, hogy a frissítés során csökkentse az állásidőt, és ha valamilyen hiba történik, helyreállítási útvonalat adjon meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az önálló adatbázisokra és a rugalmas készletekre vonatkozó alkalmazás-tervezési szempontokkal kapcsolatos további információkért lásd: [alkalmazás tervezése a Felhőbeli vész-helyreállításhoz](designing-cloud-solutions-for-disaster-recovery.md) és a rugalmas készletek vész- [helyreállítási stratégiái](disaster-recovery-strategies-for-applications-with-elastic-pool.md).

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 09/02/2020
 ms.author: kirpas
 ms.subservice: disks
-ms.openlocfilehash: 3f1c7fb08c3dcaa078de8f1ee0b90409289cfb43
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.openlocfilehash: b739bb94911e24002b359aabfa23583ecfc9de85
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89469237"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336003"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>Virtuális gép operációsrendszer-meghajtójának bővítése
 
@@ -30,7 +30,7 @@ Amikor új virtuális gépet (VM) hoz létre egy erőforráscsoporthoz egy rends
 - Fizikai számítógép vagy virtuális gép áttelepíthető a helyszíni rendszerből egy nagyobb operációsrendszer-meghajtóval.
 
 > [!IMPORTANT]
-> Egy Azure-beli virtuális gép operációsrendszer-lemezének átméretezéséhez a virtuális gépet fel kell osztani.
+> Egy Azure-beli virtuális gép operációs rendszerének vagy adatlemezének átméretezéséhez a virtuális gépet fel kell osztani.
 >
 > A lemezek bővítése után [ki kell bővíteni a kötetet az operációs rendszeren belül](#expand-the-volume-within-the-os) , hogy kihasználhassa a nagyobb lemezt.
 > 
@@ -59,7 +59,7 @@ Amikor új virtuális gépet (VM) hoz létre egy erőforráscsoporthoz egy rends
 
     :::image type="content" source="./media/expand-os-disk/size.png" alt-text="Képernyőkép, amely a kiválasztott lemezterülettel rendelkező konfigurációs ablaktáblát jeleníti meg.":::
 
-6. Válassza a **Mentés** lehetőséget.
+6. Kattintson a **Mentés** gombra.
 
     :::image type="content" source="./media/expand-os-disk/save.png" alt-text="Képernyőkép, amely megjeleníti a konfiguráció ablaktáblát a Mentés gomb kiválasztásával.":::
 

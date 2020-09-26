@@ -5,14 +5,14 @@ author: vhorne
 ms.service: web-application-firewall
 services: web-application-firewall
 ms.topic: tutorial
-ms.date: 03/18/2020
+ms.date: 09/16/2020
 ms.author: victorh
-ms.openlocfilehash: 7a9e0cc3977892fd899b4a25e17ad72f13481506
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: c5505b9437a4bd8dced6a090817b17d5e29374f2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "82608813"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327938"
 ---
 # <a name="tutorial-create-a-waf-policy-on-azure-cdn-using-the-azure-portal"></a>Oktatóanyag: WAF szabályzat létrehozása Azure CDN a Azure Portal használatával
 
@@ -72,17 +72,22 @@ Egyéni szabály létrehozásához válassza az egyéni **szabály hozzáadása*
 
 Az alábbi képernyőfelvételen egy egyéni egyeztetési szabály látható, amely letilt egy kérést, ha a lekérdezési karakterlánc tartalmazza a **blockme**értéket.
 
-![WAF házirend mód módosítása](../media/waf-cdn-create-portal/custommatch.png)
+![Egyéni egyezési szabály hozzáadása](../media/waf-cdn-create-portal/custommatch.png)
 
 A díjszabási korlát szabályai két további mezőt igényelnek: a **díjszabási korlát időtartamát** és a **díjszabási küszöbértéket (kérelmeket)** az alábbi példában látható módon:
 
-![WAF házirend mód módosítása](../media/waf-cdn-create-portal/customrate.png)
+![Díjszabási korlát hozzáadása szabály](../media/waf-cdn-create-portal/customrate.png)
 
 ### <a name="default-rule-set-drs"></a>Alapértelmezett szabálykészlet (DRS)
 
 Az Azure által felügyelt alapértelmezett szabálykészlet alapértelmezés szerint engedélyezve van. Ha le szeretne tiltani egy szabály csoportjának egy adott szabályát, bontsa ki a szabály csoporton belüli szabályokat, jelölje be a szabály száma előtt található jelölőnégyzetet, majd válassza a **Letiltás** lehetőséget a fenti lapon. Ha módosítani szeretné a szabálykészlet egyes szabályainak típusát, jelölje be a szabály száma előtt található jelölőnégyzetet, majd válassza a fenti **módosítási művelet** fület.
 
  ![WAF-szabálykészlet módosítása](../media/waf-cdn-create-portal/managed2.png)
+
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Ha már nincs rá szükség, távolítsa el az erőforráscsoportot és az összes kapcsolódó erőforrást.
+
 
 ## <a name="next-steps"></a>Következő lépések
 

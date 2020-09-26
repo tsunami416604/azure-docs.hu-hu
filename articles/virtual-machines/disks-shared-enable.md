@@ -4,16 +4,16 @@ description: Egy megosztott lemezzel rendelkező Azure felügyelt lemez konfigur
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 08/21/2020
+ms.date: 09/22/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: ad70aa1d044649a0ca61060fff9880d4ef1e34c1
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 447380c7aed7e765695ea5389f0b3f2973a16b0d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752043"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328139"
 ---
 # <a name="enable-shared-disk"></a>Megosztott lemez engedélyezése
 
@@ -147,7 +147,7 @@ A következő sablon használata előtt cserélje le a,,,,,, `[parameters('dataD
 Miután telepített egy megosztott lemezt a `maxShares>1` használatával, csatlakoztathatja a lemezt egy vagy több virtuális géphez.
 
 > [!NOTE]
-> Ha Ultra-lemezt telepít, győződjön meg arról, hogy az megfelel a szükséges követelményeknek. A részletekért tekintse meg az ultra Disk cikk [PowerShell](disks-enable-ultra-ssd.md#enable-ultra-disk-compatibility-on-an-existing-vm-1) vagy [CLI](disks-enable-ultra-ssd.md#enable-ultra-disk-compatibility-on-an-existing-vm) szakaszát.
+> Ha Ultra-lemezt telepít, győződjön meg arról, hogy az megfelel a szükséges követelményeknek. További információ: az [Azure Ultra Disks használata](disks-enable-ultra-ssd.md) .
 
 ```azurepowershell-interactive
 
@@ -206,7 +206,7 @@ PR_EXCLUSIVE_ACCESS_ALL_REGISTRANTS
 PR_RESERVE, PR_REGISTER_AND_IGNORE, PR_REGISTER_KEY, PR_PREEMPT_RESERVATION, PR_CLEAR_RESERVATION vagy PR_RELEASE – foglalás használatakor állandó foglalási kulcsot kell megadnia.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha Azure Resource Manager-sablonokat szeretne használni a lemez üzembe helyezéséhez, a következő sablonok érhetők el:
 - [Prémium SSD](https://aka.ms/SharedPremiumDiskARMtemplate)

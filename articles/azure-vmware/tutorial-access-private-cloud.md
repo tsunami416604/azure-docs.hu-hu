@@ -1,20 +1,20 @@
 ---
-title: Oktatóanyag – a privát felhő elérésének megismerése
+title: Oktatóanyag – hozzáférés saját felhőhöz
 description: Ismerje meg, hogyan férhet hozzá egy Azure VMware-megoldás saját felhőhöz
 ms.topic: tutorial
-ms.date: 08/21/2020
-ms.openlocfilehash: 73226c6aa567dc5fbe18251bed4812637664a02c
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.date: 09/21/2020
+ms.openlocfilehash: 417c480c26711899949a3d9f2311cc1f128d9e5b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88750531"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91298497"
 ---
-# <a name="tutorial-learn-how-to-access-an-azure-vmware-solution-private-cloud"></a>Oktatóanyag: az Azure VMware-megoldás privát felhőhöz való hozzáférésének ismertetése
+# <a name="tutorial-access-an-azure-vmware-solution-private-cloud"></a>Oktatóanyag: Azure VMware-megoldás privát felhőhöz való hozzáférése
 
-Az előzetes verzióban az Azure VMware megoldás nem teszi lehetővé, hogy a helyszíni vCenter kezelhesse a saját felhőjét. További telepítést és kapcsolódást kell végrehajtania egy helyi vCenter-példányhoz egy Jump Box használatával. 
+Az Azure VMware-megoldás nem teszi lehetővé, hogy a helyszíni vCenter kezelhesse a saját felhőjét. A helyi vCenter-példányhoz további beállítás és kapcsolódás szükséges a Jump Box használatával. 
 
-Ebben az oktatóanyagban egy Windows rendszerű virtuális gépet hoz létre egy Jump Box számára az előző oktatóanyagban létrehozott erőforráscsoporthoz [: konfigurálja a hálózatkezelést a VMware Private Cloud-ban az Azure-ban](tutorial-configure-networking.md) , és jelentkezzen be a vCenter. Ez egy virtuális gép, amely az Ön által létrehozott virtuális hálózaton található, és hozzáférést biztosít a vCenter és a NSX Managerhez. 
+Ebben az oktatóanyagban létrehoz egy Jump Box-t az [előző oktatóanyagban](tutorial-configure-networking.md) létrehozott erőforráscsoporthoz, és bejelentkezik a vCenter. A Jump Box egy Windows rendszerű virtuális gép (VM) ugyanazon a virtuális hálózaton, amelyet Ön hozott létre.  Hozzáférést biztosít a vCenter és a NSX Managerhez. 
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -24,53 +24,37 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="create-a-new-windows-virtual-machine"></a>Új Windows rendszerű virtuális gép létrehozása
 
-1. Az erőforráscsoport területen válassza a **+ Hozzáadás** , majd a keresés lehetőséget, és válassza a **Microsoft Windows 10**elemet, majd kattintson a **Létrehozás**gombra.
-
-   :::image type="content" source="./media/tutorial-access-private-cloud/ss8-azure-w10vm-create.png" alt-text="Adjon hozzá egy új Windows 10-es virtuális gépet egy Jumpbox." border="true":::
-
-1. Adja meg a szükséges adatokat a mezőkben, majd válassza a **felülvizsgálat + létrehozás**elemet. A mezőkkel kapcsolatos további információkért tekintse meg a következő táblázatot.
-
-   | Mező | Érték |
-   | --- | --- |
-   | **Előfizetés** | Ez az érték már fel van töltve azzal az előfizetéssel, amelyhez az erőforráscsoport tartozik. |
-   | **Erőforráscsoport** | Ez az érték már fel van töltve az aktuális erőforráscsoporthoz. Ez lehet az előző oktatóanyagban létrehozott erőforráscsoport. |
-   | **Virtuális gép neve** | Adjon meg egy egyedi nevet a virtuális gép számára. |
-   | **Régió** | Válassza ki a virtuális gép földrajzi helyét. |
-   | **Rendelkezésre állási beállítások** | Hagyja bejelölve az alapértelmezett értéket. |
-   | **Kép** | Válassza ki a virtuális gép rendszerképét. |
-   | **Méret** | Hagyja meg az alapértelmezett méret értéket. |
-   | **Hitelesítés típusa**  | Válassza a **jelszó**lehetőséget. |
-   | **Felhasználónév** | Adja meg a virtuális gépre való bejelentkezéshez használt felhasználónevet. |
-   | **Jelszó** | Adja meg a virtuális gépre való bejelentkezéshez használt jelszót. |
-   | **Jelszó megerősítése** | Adja meg a virtuális gépre való bejelentkezéshez használt jelszót. |
-   | **Nyilvános bejövő portok** | Válassza a **Nincs** lehetőséget. Ha a nincs lehetőséget választja, a [JIT-hozzáférés](../security-center/security-center-just-in-time.md#jit-configure) használatával szabályozhatja a virtuális gép elérését, ha azt szeretné elérni.  |
-
-1. A megfelelő információk megadása után kattintson a **felülvizsgálat + létrehozás**gombra. 
-1. Az ellenőrzés után válassza a **Létrehozás** lehetőséget a virtuális gép létrehozási folyamatának elindításához.
-
-   :::image type="content" source="./media/tutorial-access-private-cloud/ss11-review-create-wjb01.png" alt-text="Hozzon létre egy új Windows 10-es virtuális gépet egy Jumpbox." border="true":::
+[!INCLUDE [create-avs-jump-box-steps](includes/create-avs-jump-box-steps.md)]
 
 ## <a name="connect-to-the-local-vcenter-of-your-private-cloud"></a>Kapcsolódás a saját felhő helyi vCenter
 
-1. A Jump Box használatával jelentkezzen be a vSphere-ügyfélbe VMware vCenter SSO-val. Jelentkezzen be a vSphere-ügyfélbe egy Felhőbeli rendszergazda felhasználóneve használatával. fogadja el a biztonsági kockázatot, és folytassa, ha megjelenik egy figyelmeztetés a lehetséges biztonsági kockázatról; Jelentkezzen be a VMware vCenter egyszeri bejelentkezési hitelesítő adataival, és ellenőrizze, hogy a felhasználói felület sikeresen megjelenik-e.
+1. A Jump (ugrás) mezőben jelentkezzen be a vSphere-ügyfélre a VMware vCenter SSO használatával egy Felhőbeli rendszergazdai felhasználónévvel és valósággal, hogy a felhasználói felület sikeresen megjelenik.
 
-1. A Azure Portal válassza ki saját felhőjét, majd az **Áttekintés** nézetben válassza az **identitás > alapértelmezett**lehetőséget. Megjelenik a Private Cloud vCenter és NSX-T Manager URL-címei és bejelentkezési hitelesítő adatai.
+1. A Azure Portal válassza ki saját felhőjét, majd az **Áttekintés** nézetben válassza az **identitás > alapértelmezett**lehetőséget. 
 
-   :::image type="content" source="./media/tutorial-access-private-cloud/ss4-display-identity.png" alt-text="Saját Felhőbeli vCenter és NSX-kezelő URL-címek és hitelesítő adatok megjelenítése." border="true":::
+   A Private Cloud vCenter és a NSX-T Manager kijelző URL-címei és felhasználói hitelesítő adatai.
 
-1. Navigáljon az előző lépésben létrehozott virtuális gépre, és kapcsolódjon a virtuális géphez. A virtuális géphez való kapcsolódás részletes lépéseiért lásd: [Kapcsolódás virtuális géphez](../virtual-machines/windows/connect-logon.md#connect-to-the-virtual-machine)
+   :::image type="content" source="media/tutorial-access-private-cloud/ss4-display-identity.png" alt-text="Saját Felhőbeli vCenter és NSX-kezelő URL-címek és hitelesítő adatok megjelenítése." border="true":::
 
-1. A Windows rendszerű virtuális gépen nyisson meg egy böngészőt, és navigáljon a vCenter és a NSX-T jászol URL-címeihez két lapon. A vCenter lapon adja meg az `cloudadmin@vmcp.local` előző lépésben használt felhasználói hitelesítő adatokat.
+1. Navigáljon az előző lépésben létrehozott virtuális GÉPRE, és kapcsolódjon a virtuális géphez. 
 
-   :::image type="content" source="./media/tutorial-access-private-cloud/ss5-vcenter-login.png" alt-text="Jelentkezzen be a saját Felhőbeli vCenter." border="true":::
+   Ha segítségre van szüksége a virtuális GÉPHEZ való csatlakozáshoz, a részletekért lásd: [Csatlakozás virtuális géphez](../virtual-machines/windows/connect-logon.md#connect-to-the-virtual-machine) .
 
-   :::image type="content" source="./media/tutorial-access-private-cloud/ss6-vsphere-client-home.png" alt-text="vCenter-portál." border="true":::
+1. A Windows rendszerű virtuális gépen nyisson meg egy böngészőt, és navigáljon a vCenter és a NSX-T jászol URL-címeihez két lapon. 
+
+1. A vCenter lapon adja meg az `cloudadmin@vmcp.local` előző lépésben használt felhasználói hitelesítő adatokat.
+
+   :::image type="content" source="media/tutorial-access-private-cloud/ss5-vcenter-login.png" alt-text="Jelentkezzen be a saját Felhőbeli vCenter." border="true":::
+
+   :::image type="content" source="media/tutorial-access-private-cloud/ss6-vsphere-client-home.png" alt-text="vCenter-portál." border="true":::
 
 1. A böngésző második lapján jelentkezzen be a NSX-T Managerbe.
 
-   :::image type="content" source="./media/tutorial-access-private-cloud/ss10-nsx-manager-home.png" alt-text="A böngésző második lapján jelentkezzen be a NSX-T Managerbe." border="true":::
+   :::image type="content" source="media/tutorial-access-private-cloud/ss10-nsx-manager-home.png" alt-text="A böngésző második lapján jelentkezzen be a NSX-T Managerbe." border="true":::
 
-## <a name="next-steps"></a>További lépések
+
+
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
@@ -78,7 +62,9 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > * A vCenter való kapcsolódáshoz használandó Windows rendszerű virtuális gép létrehozása
 > * Bejelentkezés a vCenter a virtuális gépről
 
-Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan méretezheti az Azure VMware-megoldás saját felhőjét.
+Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan hozhat létre virtuális hálózatot a saját felhőalapú fürtök helyi felügyeletének beállításához.
 
 > [!div class="nextstepaction"]
-> [Azure VMware-megoldás saját felhő méretezése](tutorial-scale-private-cloud.md)
+> [Virtual Network létrehozása](tutorial-configure-networking.md)
+
+

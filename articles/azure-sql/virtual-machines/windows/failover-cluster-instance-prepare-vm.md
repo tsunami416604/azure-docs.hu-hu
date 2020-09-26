@@ -7,17 +7,17 @@ author: MashaMSFT
 editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 7e62e414182d95a445f37c1c97cdef8aff6a587a
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: f42d6c8015061406958bdc16473dc0f042d3143a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965488"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91272498"
 ---
 # <a name="prepare-virtual-machines-for-an-fci-sql-server-on-azure-vms"></a>Virtuális gépek előkészítése a (z) rendszerhez (SQL Server Azure-beli virtuális gépeken)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -28,7 +28,7 @@ További információért lásd: az Azure-beli [virtuális gépekkel](failover-c
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
-- Microsoft Azure előfizetés. Az első lépések [ingyenesek](https://azure.microsoft.com/free/). 
+- Egy Microsoft Azure-előfizetés. Az első lépések [ingyenesek](https://azure.microsoft.com/free/). 
 - Egy Windows-tartomány az Azure Virtual Machines szolgáltatásban, vagy egy helyszíni adatközpont, amely az Azure-ra bővült a virtuális hálózat párosításával.
 - Egy olyan fiók, amely rendelkezik objektumok létrehozásához szükséges engedélyekkel az Azure Virtual Machines szolgáltatásban és a Active Directoryban.
 - Az alábbi összetevőkhöz elegendő IP-címmel rendelkező Azure-beli virtuális hálózat és alhálózat:
@@ -105,7 +105,7 @@ Az egyes virtuális gépeken nyissa meg a SQL Server által használt Windows t�
 
 Ez a tábla a szükséges portokat részletezi az Ön által megnyitható portoktól függően: 
 
-   | Szerep | Port | Jegyzetek
+   | Rendeltetés | Port | Jegyzetek
    | ------ | ------ | ------
    | SQL Server | TCP 1433 | Normál port a SQL Server alapértelmezett példányaihoz. Ha a katalógusból rendszerképet használt, a rendszer automatikusan megnyitja a portot. </br> </br> **Felhasználta**: az összes%-os konfiguráció. |
    | Állapotadat-mintavétel | TCP 59999 | Bármilyen nyitott TCP-port. Konfigurálja a terheléselosztó [állapotának](hadr-vnn-azure-load-balancer-configure.md#configure-health-probe) mintavételét és a fürtöt a port használatára. </br> </br> **A**(z): a Load Balancer használatával. |
@@ -120,7 +120,7 @@ A virtuális gépeket is csatlakoztatnia kell a tartományhoz. Ezt megteheti egy
 Az Azure piactéren létrehozott virtuális gépekhez csatlakoztatott tároló tartozik. Ha a prémium szintű fájlmegosztás vagy az Azure Shared Disks használatával tervezi beállítani a (z)%-os tárhelyet, eltávolíthatja a csatlakoztatott tárolót a költségek mentéséhez, mivel a rendszer a feladatátvevő fürt példányához nem használja a helyi tárterületet. Azonban lehetséges, hogy a csatlakoztatott tárolót Közvetlen tárolóhelyek-es verziós megoldásokhoz is használhatja, ezért előfordulhat, hogy a rendszer nem segít eltávolítani őket ebben az esetben. Tekintse át a következőt:-es tárolási megoldás annak megállapításához, hogy a csatlakoztatott tároló eltávolítása optimális-e a költségek megtakarításához 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy előkészítette a virtuális gép környezetét, készen áll a feladatátvevő fürt példányának konfigurálására. 
 
