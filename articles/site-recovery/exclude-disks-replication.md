@@ -3,12 +3,12 @@ title: Lemezek kizárása a replikációból a Azure Site Recovery
 description: Lemezek kizárása a replikációból az Azure-ba Azure Site Recovery használatával.
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: 778bb030d9768c5fbe1cb8aeba0becfc68c00629
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 15989fbfd65f758eb777c5170c217aba8707e0be
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86245398"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333664"
 ---
 # <a name="exclude-disks-from-disaster-recovery"></a>Lemezek kizárása a vész-helyreállításból
 
@@ -207,7 +207,7 @@ DB-Disk3 | Disk3 | F:\ | Felhasználói adatok, 2
 
 A forrás virtuális gép lapozófájl-beállításai a következők:
 
-![Lapozófájl-beállítások a forrás virtuális gépen](./media/exclude-disks-replication/pagefile-d-drive-source-vm.png)
+![Képernyőfelvétel a virtuális memória párbeszédpanelről a D: meghajtó [lapozófájl mennyisége] sorban, amely a lapozófájl mérete (MB) 3000-7000.](./media/exclude-disks-replication/pagefile-d-drive-source-vm.png)
 
 1. Engedélyezzük a virtuális gép replikálását.
 2. A replikációból kizárjuk az adatbázis-Disk1.
@@ -260,12 +260,12 @@ DB-Disk3 | Disk3 | F:\ | Felhasználói adatok, 2
 
 Az Azure-beli virtuális gépen elérhető lapozófájl-beállítások a következők:
 
-![Lapozófájl-beállítások az Azure virtuális gépen](./media/exclude-disks-replication/pagefile-azure-vm-after-failover-2.png)
+![Képernyőfelvétel a virtuális memória párbeszédpanelről a C: meghajtó vonallal, amely a "rendszer által felügyelt" lapozófájl-méret beállítását mutatja.](./media/exclude-disks-replication/pagefile-azure-vm-after-failover-2.png)
 
 
 ## <a name="next-steps"></a>Következő lépések
 
 - További információ az ideiglenes Storage-lemezre vonatkozó irányelvekről:
     - [További](https://cloudblogs.microsoft.com/sqlserver/2014/09/25/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/) tudnivalók az SSD-k Azure-beli virtuális gépeken való használatáról SQL Server tempdb és puffer-bővítmények tárolásához
-    - [Tekintse át](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md) az Azure-beli virtuális gépek SQL Serverinak teljesítményére vonatkozó ajánlott eljárásokat.
+    - [Tekintse át ](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md) az Azure-beli virtuális gépek SQL Serverinak teljesítményére vonatkozó ajánlott eljárásokat.
 - Ha sikerült beállítania és elindítani az üzemelő példányt, [ismerkedjen meg részletesebben](failover-failback-overview.md) a feladatátvételi különféle típusaival.

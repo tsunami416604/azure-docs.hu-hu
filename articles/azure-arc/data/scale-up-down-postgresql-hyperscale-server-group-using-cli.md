@@ -9,18 +9,18 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: b96f38d04fe3e3cb59fa75424ae588fe0e38f510
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: dc77b3c8bc357b63047d20afa9493bbaaff77113
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935446"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91285315"
 ---
 # <a name="scale-up-and-down-an-azure-database-for-postgresql-hyperscale-server-group-using-cli-azdata-or-kubectl"></a>Azure Database for PostgreSQL nagy kapacitású-kiszolgálócsoport vertikális fel-és leskálázása a CLI-vel (azdata vagy kubectl)
 
 
 
-Időnként előfordulhat, hogy módosítania kell a kiszolgálócsoport jellemzőit vagy definícióját. Például:
+Időnként előfordulhat, hogy módosítania kell a kiszolgálócsoport jellemzőit vagy definícióját. Példa:
 
 - A koordinátor vagy a munkavégző csomópont által használt virtuális mag számának vertikális felskálázása
 - Vertikális fel-vagy leskálázás a memóriát, amelyet a koordinátor vagy a munkavégző csomópont használ
@@ -84,7 +84,7 @@ Alapértelmezett konfigurációban csak a minimális memória van beállítva a 
 
 A beállítani kívánt beállításokat figyelembe kell venni a Kubernetes-fürthöz beállított konfiguráción belül. Ügyeljen arra, hogy ne állítson be olyan értékeket, amelyeket a Kubernetes-fürt nem tud kielégíteni. Ez hibákhoz vagy kiszámíthatatlan viselkedéshez vezethet. Ha például a kiszolgálócsoport állapota hosszabb ideig frissül az állapot _frissítése_ után, a konfiguráció módosítása után előfordulhat, hogy az alábbi paramétereket úgy állítja be, hogy a Kubernetes-fürt nem tudja kielégíteni az értékeket. Ha ez a helyzet, állítsa be a módosítást, vagy olvassa el a _troubleshooting_section.
 
-Tegyük fel, hogy a következőre kívánja méretezni a kiszolgálócsoport definícióját:
+Tegyük fel például, hogy a következőre szeretné méretezni a kiszolgálócsoport definícióját:
 
 - Minimális virtuális mag = 2
 - Max. virtuális mag = 4
@@ -94,6 +94,13 @@ Tegyük fel, hogy a következőre kívánja méretezni a kiszolgálócsoport def
 A következő módszerek egyikét kellene használnia:
 
 ### <a name="cli-with-azdata"></a>CLI és azdata
+
+```console
+azdata arc postgres server edit -n <name of your server group> --cores-request <# core-request>  --cores-limit <# core-limit>  --memory-request <# memory-request>Mi  --memory-limit <# memory-limit>Mi
+```
+
+> [!CAUTION]
+> Alább látható egy példa, amely bemutatja, hogyan használhatja a parancsot. A szerkesztési parancs végrehajtása előtt ügyeljen arra, hogy a paramétereket olyan értékekre állítsa be, amelyeket a Kubernetes-fürt megtarthat.
 
 ```console
 azdata arc postgres server edit -n <name of your server group> --cores-request 2  --cores-limit 4  --memory-request 512Mi  --memory-limit 1024Mi
@@ -116,6 +123,10 @@ kubectl edit postgresql-12/<server group name> [-n <namespace name>]
 
 Ekkor megjelenik a VI-szerkesztő, ahol megtekintheti és módosíthatja a konfigurációt. A következő paranccsal rendelje hozzá a kívánt beállítást a mező nevére a specifikációban:
 
+> [!CAUTION]
+> Alább látható egy példa, amely bemutatja, hogyan szerkesztheti a konfigurációt. A konfiguráció frissítése előtt ügyeljen arra, hogy a paramétereket olyan értékekre állítsa be, amelyeket a Kubernetes-fürt megtarthat.
+
+Példa:
 - Min. virtuális mag = 2 – > scheduling\default\resources\requests\cpu
 - Max virtuális mag = 4 – > scheduling\default\resources\limits\cpu
 - Minimális memória = 512 MB – > scheduling\default\resources\requests\cpu

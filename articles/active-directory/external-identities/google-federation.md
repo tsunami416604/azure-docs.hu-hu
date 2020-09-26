@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eef04be1891eac35577a5f4cb18d5b83b8d0f301
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.openlocfilehash: 6dba592417ca07d1858a7942b162b4dfa6a85680
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89669392"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273993"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Google hozzáadása identitás-szolgáltatóként a B2B vendég felhasználói számára
 
@@ -70,7 +70,7 @@ Először hozzon létre egy új projektet a Google Developers konzolon egy ügyf
 
    ![A jogosultsággal rendelkező tartományok szakaszt bemutató képernyőkép](media/google-federation/google-oauth-authorized-domains.PNG)
 
-9. Válassza a **Mentés** lehetőséget.
+9. Kattintson a **Mentés** gombra.
 
 10. Adja meg a **hitelesítő adatokat**. A **hitelesítő adatok létrehozása** menüben válassza a **OAUTH ügyfél-azonosító**elemet.
 
@@ -78,10 +78,10 @@ Először hozzon létre egy új projektet a Google Developers konzolon egy ügyf
 
 11. Az **alkalmazás típusa**területen válassza a **webalkalmazás** elemet, és adja meg az alkalmazásnak megfelelő nevet (például "Azure ad B2B"), majd a **jóváhagyott átirányítási URI**-k területen adja meg a következő URI-ket:
     - `https://login.microsoftonline.com` 
-    - `https://login.microsoftonline.com/te/<directory id>/oauth2/authresp` <br>(hol `<directory id>` van a címtár-azonosítója)
+    - `https://login.microsoftonline.com/te/<tenant id>/oauth2/authresp` <br>(hol `<tenant id>` van a bérlő azonosítója)
    
     > [!NOTE]
-    > A címtár-azonosító megkereséséhez nyissa meg a https://portal.azure.com elemet, és a **Azure Active Directory**alatt válassza a **Tulajdonságok** lehetőséget, és másolja a **címtár-azonosítót**.
+    > A bérlő AZONOSÍTÓjának megkereséséhez nyissa meg a https://portal.azure.com elemet, és a **Azure Active Directory**alatt válassza a **Tulajdonságok** lehetőséget, és másolja a **bérlői azonosítót**.
 
     ![A jóváhagyott átirányítási URI-k szakaszt ábrázoló képernyőkép](media/google-federation/google-create-oauth-client-id.png)
 
@@ -96,7 +96,7 @@ Most be kell állítania a Google ügyfél-azonosítót és az ügyfél titkát,
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com). A bal oldali panelen válassza az **Azure Active Directory** lehetőséget. 
 2. Válassza a **külső identitások**lehetőséget.
 3. Válassza a **minden identitás szolgáltató**lehetőséget, majd kattintson a **Google** gombra.
-4. Ezután adja meg a korábban beszerzett ügyfél-azonosítót és az ügyfél-titkot. Válassza a **Mentés** lehetőséget. 
+4. Ezután adja meg a korábban beszerzett ügyfél-azonosítót és az ügyfél-titkot. Kattintson a **Mentés** gombra. 
 
    ![Képernyőfelvétel a Google Identity Provider hozzáadása oldalról](media/google-federation/google-identity-provider.png)
 

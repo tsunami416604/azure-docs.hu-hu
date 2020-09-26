@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: 8a086830398555d962bb13d1d9b0fea3554f7924
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 9f0a7b6f68c5a3adeb320fd18bec2f195a833dbf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032520"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91309999"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics-ügynök áttekintése
 Az Azure Log Analytics-ügynök a Windows-és Linux-alapú virtuális gépekről gyűjt telemetria a Felhőbeli, a helyszíni gépeken, valamint a [System Center Operations Manager](/system-center/scom/) által figyelt, és az összegyűjtött adatokat a Azure monitor log Analytics munkaterületére küldi el. A Log Analytics ügynök az Azure Monitor, például a [Azure monitor for VMS](../insights/vminsights-enable-overview.md), a [Azure Security Center](../../security-center/index.yml)és a [Azure Automation](../../automation/automation-intro.md)által nyújtott bepillantást és egyéb szolgáltatásokat is támogatja. Ez a cikk részletes áttekintést nyújt az ügynökről, a rendszerről és a hálózati követelményekről, valamint az üzembe helyezési módszerekről.
@@ -59,7 +59,7 @@ Az ügynökök Operations Manager felügyeleti csoporthoz való csatlakoztatás�
 
 * A Windows-ügynökök akár négy munkaterülethez is csatlakozhatnak, még akkor is, ha azok egy System Center Operations Manager felügyeleti csoporthoz csatlakoznak.
 * A Linux-ügynök nem támogatja a többsoros vezérlést, és csak egyetlen munkaterülethez vagy felügyeleti csoportjához tud csatlakozni.
-  
+
 
 ## <a name="security-limitations"></a>Biztonsági korlátozások
 
@@ -69,6 +69,8 @@ Az ügynökök Operations Manager felügyeleti csoporthoz való csatlakoztatás�
 ## <a name="installation-options"></a>Telepítési lehetőségek
 
 Több módszerrel is telepítheti a Log Analytics-ügynököt, és a saját igényeinek megfelelően Azure Monitor csatlakozhat a számítógéphez. A következő részekben felsoroljuk a különböző típusú virtuális gépek lehetséges módszereit.
+> [!NOTE]
+> A Log Analytics ügynökkel rendelkező gépek klónozása nem támogatott. Ha az ügynök már társítva van egy munkaterülethez, ez nem fog működni az "arany lemezképek" esetében.
 
 ### <a name="azure-virtual-machine"></a>Azure virtuális gép
 

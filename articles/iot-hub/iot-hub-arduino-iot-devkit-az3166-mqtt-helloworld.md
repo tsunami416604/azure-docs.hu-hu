@@ -10,12 +10,12 @@ ms.tgt_pltfrm: arduino
 ms.date: 04/02/2018
 ms.author: liydu
 ms.custom: mqtt
-ms.openlocfilehash: a3a8c065c226d1cc94d79b44d16f288fab205a56
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 09ea3ceb15c9b175b8366bf3ac57a61e468ab72a
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337857"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91356026"
 ---
 # <a name="send-messages-to-an-mqtt-server"></a>Üzenetek küldése egy MQTT-kiszolgálónak
 
@@ -55,7 +55,7 @@ Bontsa ki a bal oldali **ARDUINO-példák** szakaszt, és keresse meg a **PÉLD�
 
 `Ctrl+P`A futtatáshoz írja be a (MacOS: `Cmd+P` ) parancsot `task device-upload` . A feltöltés befejezése után a fejlesztői készlet újraindítja és futtatja a vázlatot.
 
-![eszköz – feltöltés](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/device-upload.jpg)
+![A képernyőképen egy parancssori ablak jelenik meg, amely feltölti és futtatja az Arduino-vázlatot.](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/device-upload.jpg)
 
 > [!NOTE]
 > A "hiba: AZ3166: ismeretlen csomag" hibaüzenet jelenhet meg. Ez a hiba akkor fordul elő, ha a tábla csomagjának indexe nem frissül megfelelően. A hiba megoldásához tekintse meg a [IoT fejlesztői készlet – gyakori kérdések című témakör fejlesztés szakaszát](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development).
@@ -64,15 +64,15 @@ Bontsa ki a bal oldali **ARDUINO-példák** szakaszt, és keresse meg a **PÉLD�
 
 A VS Code-ban kövesse ezt az eljárást a soros figyelő megnyitásához és beállításához:
 
-1. Kattintson az `COM[X]` állapotsorban található szóra a megfelelő com-port beállításához a következővel `STMicroelectronics` : ![ set-com-port](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/set-com-port.jpg)
+1. Kattintson az `COM[X]` állapotsorban található szóra a megfelelő com-port beállításához `STMicroelectronics` a ![ következővel: képernyőkép a Visual Studio Code-t jeleníti meg a COM8 S T Micro Electronics elem kiválasztásával.](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/set-com-port.jpg)
 
-2. Kattintson az állapotsorban található Power plugin ikonra a soros figyelő megnyitásához: ![ soros figyelő](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/serial-monitor.jpg)
+2. A soros figyelő megnyitásához kattintson az állapotsorban található Power plugin ikonra: a ![ képernyőképen látható a kiadás összegzése és a Power dugó ikonja az állapotsorban.](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/serial-monitor.jpg)
   
-3. Az állapotsoron kattintson a Baud-arányt jelölő számra, és állítsa be a következőre `115200` : ![ set-Baud-Rate](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/set-baud-rate.jpg)
+3. Az állapotsoron kattintson a Baud-arányt jelölő számra, és állítsa be a `115200` ![ következőre: képernyőkép a Bitsebesség beállítását mutatja a Visual Studio Code-ban.](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/set-baud-rate.jpg)
 
 A soros figyelő megjeleníti a minta vázlat által küldött összes üzenetet. A vázlat csatlakoztatja a fejlesztői készlet a Wi-Fi-hez. A Wi-Fi-kapcsolat sikeressége után a vázlat üzenetet küld a MQTT-közvetítőnek. Ezután a minta ismételten két "iot.eclipse.org" üzenetet küld a QoS 0 és a QoS 1 használatával.
 
-![soros kimenet](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/serial-output.jpg)
+![A képernyőfelvételen a vázlat által küldött üzeneteket megjelenítő soros figyelő látható.](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/serial-output.jpg)
 
 ## <a name="problems-and-feedback"></a>Problémák és visszajelzés
 
@@ -81,11 +81,11 @@ Ha problémákba ütközik, tekintse meg a [IoT fejlesztői készlet kapcsolatos
 * [Gitter.im](https://gitter.im/Microsoft/azure-iot-developer-kit)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 * [A IoT fejlesztői készlet AZ3166 összekötése az Azure IoT Hub a felhőben](iot-hub-arduino-iot-devkit-az3166-get-started.md)
 * [Shake, Shake for a tweet](iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megtanulta, hogyan konfigurálhatja a MXChip IOT fejlesztői készlet MQTT-ügyfélként, és az MQTT-ügyfél kódtár használatával küldhet üzeneteket egy MQTT-közvetítőnek, itt látható a következő lépés: az [Azure IOT távoli monitorozási megoldásának gyorsítása – áttekintés](https://docs.microsoft.com/azure/iot-suite/)

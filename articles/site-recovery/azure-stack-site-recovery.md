@@ -3,12 +3,12 @@ title: Azure Stack virtuális gépek replikálása az Azure-ba Azure Site Recove
 description: Ismerje meg, hogyan állíthatja be a vész-helyreállítást az Azure-ba Azure Stack virtuális gépekre a Azure Site Recovery szolgáltatással.
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 61154e58582a3dcbab0f7ed9542d094be192ae74
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 5bc78dc5b01bb4790190268b303cb894de2b6f71
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90564309"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333715"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Azure Stack rendszerű virtuális gépek replikálása az Azure-ba
 
@@ -164,13 +164,13 @@ Keresse meg az IP-címet az összes replikálni kívánt gépen:
 1. Kattintson az **infrastruktúra előkészítése**  >  **forrás**elemre.
 2. A **Forrás előkészítése** ablakban kattintson a **+Konfigurációs kiszolgáló** gombra.
 
-    ![A forrás beállítása](./media/azure-stack-site-recovery/plus-config-srv.png)
+    ![Képernyőfelvétel a + konfigurációs kiszolgáló párbeszédpanelről "kattintson a fenti parancssáv + konfigurációs kiszolgáló elemére egy..." gombra.](./media/azure-stack-site-recovery/plus-config-srv.png)
 
 3. A **kiszolgáló hozzáadása**területen győződjön meg arról, hogy a **konfigurációs kiszolgáló** megjelenik a **kiszolgáló típusa mezőben**.
 5. Töltse le a Site Recovery egyesített telepítési telepítőfájlt.
 6. Töltse le a tároló regisztrációs kulcsát. Az egyesített telepítő futtatásakor szüksége lesz a regisztrációs kulcsra. A kulcs a generálásától számított öt napig érvényes.
 
-    ![A forrás beállítása](./media/azure-stack-site-recovery/set-source2.png)
+    ![Képernyőkép: a kiszolgáló hozzáadása párbeszédpanel, amely a kiszolgáló típusa beállítással a konfigurációs kiszolgálóra van beállítva, és a tároló regisztrációs kulcsának letöltése gomb kiemelve.](./media/azure-stack-site-recovery/set-source2.png)
 
 
 ### <a name="run-azure-site-recovery-unified-setup"></a>Azure Site Recovery egyesített telepítő futtatása
@@ -339,7 +339,7 @@ Ebben a fázisban a feladat-visszavétel befejeződött.
 
 Ebben a cikkben Azure Stack virtuális gépeket replikált az Azure-ba. A replikáció a helyén egy vész-helyreállítási részletezést futtatott, amely gondoskodik arról, hogy az Azure-beli feladatátvétel az elvárásoknak megfelelően működik. A cikk a teljes feladatátvétel Azure-ba való futtatásának lépéseit is tartalmazza, és visszakerül a Azure Stackra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A feladat-visszavételt követően újra védetté teheti a virtuális gépet, és megkezdheti az Azure-ba való replikálást. ehhez ismételje meg a jelen cikkben ismertetett lépéseket.
 

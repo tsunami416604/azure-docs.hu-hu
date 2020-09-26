@@ -1,16 +1,16 @@
 ---
-title: Előzetes verzió – a Kubernetes Azure Policy megismerése
-description: Ismerje meg, hogyan használja a Azure Policy a Rego-t és a nyílt házirend-ügynököt az Azure-ban vagy a helyszínen futó Kubernetes futtató fürtök kezelésére. Ez egy előzetes verziójú szolgáltatás.
-ms.date: 08/07/2020
+title: A Kubernetes Azure Policy megismerése
+description: Ismerje meg, hogyan használja a Azure Policy a Rego-t és a nyílt házirend-ügynököt az Azure-ban vagy a helyszínen futó Kubernetes futtató fürtök kezelésére.
+ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: a824548cb45f886bcf82bedad6e5d5c216bb7fea
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: dbe7257b577f0526e0d34c13e0102305e58cc656
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89645600"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322461"
 ---
-# <a name="understand-azure-policy-for-kubernetes-clusters-preview"></a>A Kubernetes-fürtök Azure Policy megismerése (előzetes verzió)
+# <a name="understand-azure-policy-for-kubernetes-clusters"></a>A Kubernetes-fürtökhöz tartozó Azure Policy ismertetése
 
 A Azure Policy kiterjeszti a [forgalomirányító](https://github.com/open-policy-agent/gatekeeper) v3-t, amely egy, a [nyílt házirendügynök](https://www.openpolicyagent.org/) (OPA) által biztosított _belépésvezérlés-webhook_ , amely a fürtökre központosított, konzisztens módon alkalmazható. Azure Policy lehetővé teszi, hogy a Kubernetes-fürtök megfelelőségi állapotát egyetlen helyről kezelhesse és jelentse. A bővítmény a következő funkciókat hozza létre:
 
@@ -25,7 +25,7 @@ A Kubernetes Azure Policy a következő fürt-környezeteket támogatja:
 - [AK-motor](https://github.com/Azure/aks-engine/blob/master/docs/README.md)
 
 > [!IMPORTANT]
-> A Kubernetes-hez készült Azure Policy előzetes verzióban érhető el, és csak a Linux-csomópontok készleteit és beépített szabályzat-definíciókat támogat. A beépített szabályzat-definíciók a **Kubernetes** kategóriában találhatók. A korlátozott előzetes verziójú házirend-definíciók a **EnforceOPAConstraint** és a **EnforceRegoPolicy** effektussal, a kapcsolódó **Kubernetes-szolgáltatások** kategóriája pedig _elavult_. Ehelyett használja a hatások _naplózása_ és a _Megtagadás_ erőforrás-szolgáltatói módot `Microsoft.Kubernetes.Data` .
+> Az KABAi motor és az arc-kompatibilis Kubernetes-bővítmények **előzetes**verzióban érhetők el. A Kubernetes Azure Policy csak a Linux-csomópontok készleteit és a beépített szabályzat-definíciókat támogatja. A beépített szabályzat-definíciók a **Kubernetes** kategóriában találhatók. A korlátozott előzetes verziójú házirend-definíciók a **EnforceOPAConstraint** és a **EnforceRegoPolicy** effektussal, a kapcsolódó **Kubernetes-szolgáltatások** kategóriája pedig _elavult_. Ehelyett használja a hatások _naplózása_ és a _Megtagadás_ erőforrás-szolgáltatói módot `Microsoft.Kubernetes.Data` .
 
 ## <a name="overview"></a>Áttekintés
 
@@ -45,29 +45,57 @@ A Kubernetes-fürttel való Azure Policy engedélyezéséhez és használatához
 
 1. [Várakozás az ellenőrzésre](#policy-evaluation)
 
+## <a name="limitations"></a>Korlátozások
+
+A következő általános korlátozások érvényesek a Kubernetes-fürtök Azure Policy-bővítményére:
+
+- A Kubernetes Azure Policy bővítménye a **1,14** -es vagy újabb verziójú Kubernetes támogatott.
+- A Kubernetes Azure Policy bővítménye csak Linux-csomópontos készleteken telepíthető
+- Csak a beépített szabályzat-definíciók támogatottak
+- A szabályzattal nem kompatibilis rekordok maximális száma a fürtön: **500**
+- Nem megfelelő rekordok maximális száma (előfizetés: **1 000 000** )
+- Az Azure Policy-bővítményen kívüli forgalomirányító telepítése nem támogatott. A Azure Policy bővítmény engedélyezése előtt távolítsa el az előző forgalomirányító-telepítés által telepített összetevőket.
+- A [meg nem felelés okai](../how-to/determine-non-compliance.md#compliance-reasons) nem érhetők el az `Microsoft.Kubernetes.Data` 
+   [erőforrás-szolgáltató mód](./definition-structure.md#resource-provider-modes) esetében
+
+A következő korlátozások érvényesek az AK-ra vonatkozó Azure Policy-bővítményre:
+
+- Az [AK Pod biztonsági házirend](../../../aks/use-pod-security-policies.md) és az AK Azure Policy bővítménye nem engedélyezhető egyszerre. További információ: [AK Pod biztonsági korlátozás](../../../aks/use-pod-security-on-azure-policy.md#limitations).
+- A Azure Policy bővítmény által automatikusan kizárt névterek a következő kiértékeléshez: _Kube-System_, _forgalomirányító-System_és _AK-periszkóp_.
+
+## <a name="recommendations"></a>Javaslatok
+
+Az alábbi általános javaslatok a Azure Policy bővítmény használatára:
+
+- A Azure Policy bővítmény 3 forgalomirányító-összetevő futtatását igényli: 1 naplózási Pod és 2 webhook Pod-replika. Ezek az összetevők több erőforrást használnak, mint a Kubernetes erőforrások száma és a házirend-hozzárendelések a fürtben, amely naplózási és kényszerítési műveleteket igényelnek.
+
+  - Ha kevesebb mint 500 hüvely van egyetlen fürtben, legfeljebb 20 megkötést biztosítunk: 2 vCPU és 350 MB memória/összetevő.
+  - Több mint 500 hüvelyre egyetlen fürtben, legfeljebb 40 korlátozással: 3 vCPU és 600 MB memória/összetevő.
+
+- A Windows-hüvelyek [nem támogatják a biztonsági környezeteket](https://kubernetes.io/docs/concepts/security/pod-security-standards/#what-profiles-should-i-apply-to-my-windows-pods).
+  Így a Azure Policy-definíciók némelyike, például a legfelső szintű jogosultságok letiltását, a Windows-hüvelyekben nem lehet kibővíteni, és csak a Linux-hüvelyekre vonatkozik.
+
+A következő javaslat csak az AK-ra és a Azure Policy bővítményre vonatkozik:
+
+- A rendszercsomópont-készletet és a `CriticalAddonsOnly` Taint használva ütemezze a forgalomirányító hüvelyeket. További információ: [a rendszercsomópont-készletek használata](../../../aks/use-system-pools.md#system-and-user-node-pools).
+- Biztonságos kimenő forgalom az AK-fürtökből. További információ: a [csomópontok kimenő forgalmának szabályozása a fürtcsomópontok esetében](../../../aks/limit-egress-traffic.md).
+- Ha a fürt `aad-pod-identity` engedélyezve van, a csomópont által felügyelt identitás (NMI)-hüvelyek módosítja a csomópontok iptables-et az Azure-példány metaadatainak végpontjának lehallgatására. Ez a konfiguráció azt jelenti, hogy a metaadat-végpontra irányuló kéréseket a NMI akkor is elfogja, ha a pod nem használja `aad-pod-identity` . A AzurePodIdentityException CRD konfigurálható úgy, hogy tájékoztassa `aad-pod-identity` , hogy a tőkekövetelmény-ből származó, a CRD-ban definiált címkével rendelkező, a NMI-ben való feldolgozás nélkül proxyra irányuló kérelmeket. A `kubernetes.azure.com/managedby: aks` _Kube-_ rendszernévtérben címkével ellátott rendszerhüvelyeket ki kell ZÁRNI a `aad-pod-identity` AzurePodIdentityException CRD konfigurálásával. További információ: [a HRE-Pod-Identity letiltása egy adott Pod vagy alkalmazáshoz](https://github.com/Azure/aad-pod-identity/blob/master/docs/readmes/README.app-exception.md).
+  Kivétel konfigurálásához telepítse a [MIC-Exception YAML](https://github.com/Azure/aad-pod-identity/blob/master/deploy/infra/mic-exception.yaml).
+
 ## <a name="install-azure-policy-add-on-for-aks"></a>Azure Policy bővítmény telepítése az AK-hoz
 
 A Azure Policy bővítmény telepítése vagy a szolgáltatás bármely funkciójának engedélyezése előtt az előfizetésnek engedélyeznie kell a **Microsoft. tárolószolgáltatás** és a **Microsoft. PolicyInsights** erőforrás-szolgáltatót.
 
-1. Szüksége lesz az Azure CLI-verzió 2.0.62 vagy újabb verziójára, és konfigurálva van. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket.
+> [!IMPORTANT]
+> Az AK-beli Azure Policy általánosan elérhető (GA) minden régióban aktívan felszabadítva. A GA-kiadás várható globális befejezése 9/29/2020. A GA kiadás nélküli régiókban való használat előzetes regisztrációs lépéseket igényel. Ez azonban automatikusan frissül a GA kiadásban, ha az elérhető a régióban.
+
+1. Szüksége lesz az Azure CLI-verzió 2.12.0 vagy újabb verziójára, és konfigurálva van. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket.
 
 1. Regisztrálja az erőforrás-szolgáltatókat és az előzetes verziójú funkciókat.
 
    - Azure Portal:
 
-     1. Regisztrálja a **Microsoft. tárolószolgáltatás** és a **Microsoft. PolicyInsights** erőforrás-szolgáltatókat. A lépéseket lásd: [erőforrás-szolgáltatók és típusok](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal).
-
-     1. Indítsa el a Azure Policy szolgáltatást a Azure Portal a **minden szolgáltatás**lehetőség kiválasztásával, majd a **szabályzat**keresésével és kiválasztásával.
-
-        :::image type="content" source="../media/policy-for-kubernetes/search-policy.png" alt-text="Képernyőkép a szabályzatok kereséséről az összes szolgáltatásban." border="false":::
-
-     1. A Azure Policy lap bal oldalán válassza a **Csatlakozás előnézete** elemet.
-
-        :::image type="content" source="../media/policy-for-kubernetes/join-aks-preview.png" alt-text="Képernyőkép a házirend oldal csatlakozás előnézete csomópontról." border="false":::
-
-     1. Válassza ki az előfizetéshez hozzáadni kívánt előfizetés sorát.
-
-     1. Válassza az előfizetések listájának tetején található **opt-in** gombot.
+     Regisztrálja a **Microsoft. tárolószolgáltatás** és a **Microsoft. PolicyInsights** erőforrás-szolgáltatókat. A lépéseket lásd: [erőforrás-szolgáltatók és típusok](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal).
 
    - Azure CLI:
 
@@ -79,18 +107,9 @@ A Azure Policy bővítmény telepítése vagy a szolgáltatás bármely funkció
 
      # Provider register: Register the Azure Policy provider
      az provider register --namespace Microsoft.PolicyInsights
-
-     # Feature register: enables installing the add-on
-     az feature register --namespace Microsoft.ContainerService --name AKS-AzurePolicyAutoApprove
-
-     # Use the following to confirm the feature has registered
-     az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-AzurePolicyAutoApprove')].   {Name:name,State:properties.state}"
-
-     # Once the above shows 'Registered' run the following to propagate the update
-     az provider register -n Microsoft.ContainerService
      ```
 
-1. Ha a korlátozott előzetes verziójú szabályzat-definíciók telepítve lettek, távolítsa el a bővítményt az AK-fürt **Letiltás** gombjával a **házirendek (előzetes verzió)** lapon.
+1. Ha a korlátozott előzetes verziójú szabályzat-definíciók telepítve lettek, távolítsa el a bővítményt az AK-fürt **Letiltás** gombjával a **házirendek** lapon.
 
 1. Az AK-fürt _1,14_ -es vagy újabb verziójának kell lennie. A következő parancsfájl használatával ellenőrizze az AK-fürt verzióját:
 
@@ -101,20 +120,7 @@ A Azure Policy bővítmény telepítése vagy a szolgáltatás bármely funkció
    az aks list
    ```
 
-1. Telepítse az Azure CLI előzetes verziójának _0.4.0_ verzióját az AK-hoz `aks-preview` :
-
-   ```azurecli-interactive
-   # Log in first with az login if you're not using Cloud Shell
-
-   # Install/update the preview extension
-   az extension add --name aks-preview
-
-   # Validate the version of the preview extension
-   az extension show --name aks-preview --query [version]
-   ```
-
-   > [!NOTE]
-   > Ha korábban már telepítette az _AK-előnézeti_ bővítményt, telepítse az összes frissítést a `az extension update --name aks-preview` parancs használatával.
+1. Telepítse az Azure CLI _2.12.0_ vagy újabb verzióját. További információ: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
 
 A fenti előfeltételként szükséges lépések elvégzése után telepítse a Azure Policy-bővítményt a felügyelni kívánt AK-fürtön.
 
@@ -124,19 +130,16 @@ A fenti előfeltételként szükséges lépések elvégzése után telepítse a 
 
   1. Válasszon egy AK-beli fürtöt.
 
-  1. A Kubernetes szolgáltatás oldalának bal oldalán válassza a **házirendek (előzetes verzió)** lehetőséget.
-
-     :::image type="content" source="../media/policy-for-kubernetes/policies-preview-from-aks-cluster.png" alt-text="Képernyőkép a házirendek (előzetes verzió) csomópontról a Kubernetes szolgáltatás lapján." border="false":::
+  1. A Kubernetes szolgáltatás oldalának bal oldalán válassza a **házirendek** elemet.
 
   1. A Főoldalon kattintson a **bővítmény engedélyezése** gombra.
 
-     :::image type="content" source="../media/policy-for-kubernetes/enable-policy-add-on.png" alt-text="Az Azure Kubernetes Services (A K) oldalának bevezetési Azure Policyének engedélyezése gomb képernyőképe.":::
-
      <a name="migrate-from-v1"></a>
      > [!NOTE]
-     > Ha a **bővítmény engedélyezése** gomb szürkén jelenik meg, az előfizetés még nem lett hozzáadva az előzetes verzióhoz. Ha a **bővítmény letiltása** gomb engedélyezve van, és az áttelepítési figyelmeztetés v2 üzenet jelenik meg, a v1 bővítmény telepítve van, és a v2 házirend-definíciók kiosztása előtt el kell távolítani. Az _elavult_ v1 bővítményt a rendszer automatikusan lecseréli a v2 bővítmény 2020. augusztus 24-én kezdődően. Ezután hozzá kell rendelni a házirend-definíciók új v2-verzióit. A frissítéshez kövesse az alábbi lépéseket:
+     > Ha a **bővítmény letiltása** gomb engedélyezve van, és az áttelepítési figyelmeztetés v2 üzenet jelenik meg, a v1 bővítmény telepítve van, és a v2 házirend-definíciók kiosztása előtt el kell távolítani. Az _elavult_ v1 bővítményt a rendszer automatikusan lecseréli a v2. augusztus 24-én kezdődő bővítményre.
+     > 2020. Ezután hozzá kell rendelni a házirend-definíciók új v2-verzióit. A frissítéshez kövesse az alábbi lépéseket:
      >
-     > 1. Ellenőrizze, hogy az AK-fürtön telepítve van-e a v1-bővítmény, ha meglátogatja a **szabályzatok (előzetes verzió)** lapot az AK-fürtön, és az "aktuális fürt a Azure Policy bővítmény v1-es verzióját használja..." üzenetet.
+     > 1. Ellenőrizze, hogy az AK-fürtön telepítve van-e a v1-bővítmény, ha felkeresi a **szabályzatok** lapot az AK-fürtön, és "az aktuális fürt használja Azure Policy bővítmény v1..." üzenetet.
      > 1. [Távolítsa el a bővítményt](#remove-the-add-on-from-aks).
      > 1. Kattintson a **bővítmény engedélyezése** gombra a bővítmény v2-verziójának telepítéséhez.
      > 1. [A v1 beépített szabályzat-definíciók v2 verziójának kiosztása](#assign-a-built-in-policy-definition)
@@ -173,11 +176,11 @@ Végül ellenőrizze, hogy a legújabb bővítmény telepítve van-e az Azure CL
 }
 ```
 
-## <a name="install-azure-policy-add-on-for-azure-arc-enabled-kubernetes"></a>Azure Policy bővítmény telepítése az Azure arc-kompatibilis Kubernetes
+## <a name="install-azure-policy-add-on-for-azure-arc-enabled-kubernetes-preview"></a><a name="install-azure-policy-add-on-for-azure-arc-enabled-kubernetes"></a>Azure Policy bővítmény telepítése az Azure arc használatára képes Kubernetes (előzetes verzió)
 
 A Azure Policy bővítmény telepítése vagy a szolgáltatás bármely funkciójának engedélyezése előtt az előfizetésnek engedélyeznie kell a **Microsoft. PolicyInsights** erőforrás-szolgáltatót, és létre kell hoznia egy szerepkör-hozzárendelést a fürtszolgáltatási rendszerbiztonsági tag számára.
 
-1. Szüksége lesz az Azure CLI-verzió 2.0.62 vagy újabb verziójára, és konfigurálva van. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket.
+1. Szüksége lesz az Azure CLI-verzió 2.12.0 vagy újabb verziójára, és konfigurálva van. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket.
 
 1. Az erőforrás-szolgáltató engedélyezéséhez kövesse az erőforrás- [szolgáltatók és-típusok](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) lépéseit, vagy futtassa az Azure CLI vagy a Azure PowerShell parancsot:
 
@@ -277,7 +280,7 @@ kubectl get pods -n kube-system
 kubectl get pods -n gatekeeper-system
 ```
 
-## <a name="install-azure-policy-add-on-for-aks-engine"></a>Azure Policy-bővítmény telepítése az KABAi motorhoz
+## <a name="install-azure-policy-add-on-for-aks-engine-preview"></a><a name="install-azure-policy-add-on-for-aks-engine"></a>Azure Policy-bővítmény telepítése az KABAi motorhoz (előzetes verzió)
 
 A Azure Policy bővítmény telepítése vagy a szolgáltatás bármely funkciójának engedélyezése előtt az előfizetésnek engedélyeznie kell a **Microsoft. PolicyInsights** erőforrás-szolgáltatót, és létre kell hoznia egy szerepkör-hozzárendelést a fürtszolgáltatási rendszerbiztonsági tag számára.
 
@@ -410,7 +413,7 @@ A következő lépésekkel megkeresheti a fürt kezelésére szolgáló beépít
 
    - Ha ki szeretné zárni a Kubernetes-névtereket a szabályzat kiértékelése alól, a névtér **kizárása**paraméterben határozza meg a névterek listáját. Azt javasoljuk, hogy zárja ki a következőket: _Kube-System_, _forgalomirányító-System_és _Azure-arc_.
 
-1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
+1. Válassza az **Áttekintés + létrehozás** lehetőséget.
 
 Másik megoldásként használja a [szabályzat társítása – portál](../assign-policy-portal.md) rövid útmutatót a Kubernetes szabályzat megkereséséhez és hozzárendeléséhez. Keressen egy Kubernetes házirend-definíciót a "naplózási virtuális gépek" minta helyett.
 
@@ -430,7 +433,7 @@ Kubernetes-fürtben, ha a névtér a következő címkék valamelyikével rendel
 > [!NOTE]
 > Habár a fürt rendszergazdája jogosult lehet megkötési sablonok létrehozására és frissítésére, és a Azure Policy bővítmény által telepített erőforrások megkötésére, ezek a nem támogatott forgatókönyvek, mert a manuális frissítések felül vannak írva. A forgalomirányító továbbra is kiértékeli azokat a házirendeket, amelyek a bővítmény telepítése és a Azure Policy szabályzat-definíciók kiosztása előtt léteztek.
 
-A bővítmény 15 percenként meghívja a fürt teljes vizsgálatát. Miután összegyűjtötte a teljes vizsgálat részleteit és minden valós idejű értékelést a fürtön történt megkísérelt módosításokat, a bővítmény jelentést készít az eredményről Azure Policy a [megfelelőségi adatokba](../how-to/get-compliance-data.md) , például bármely Azure Policy hozzárendelésbe való felvételhez. A naplózási ciklusban csak az aktív házirend-hozzárendelések eredményeit adja vissza a rendszer. A naplózási eredmények a sikertelen korlátozás állapota mezőjében megjelenő [szabálysértésként](https://github.com/open-policy-agent/gatekeeper#audit) is megtekinthetők.
+A bővítmény 15 percenként meghívja a fürt teljes vizsgálatát. Miután összegyűjtötte a teljes vizsgálat részleteit és minden valós idejű értékelést a fürtön történt megkísérelt módosításokat, a bővítmény jelentést készít az eredményről Azure Policy a [megfelelőségi adatokba](../how-to/get-compliance-data.md) , például bármely Azure Policy hozzárendelésbe való felvételhez. A naplózási ciklusban csak az aktív házirend-hozzárendelések eredményeit adja vissza a rendszer. A naplózási eredmények a sikertelen korlátozás állapota mezőjében megjelenő [szabálysértésként](https://github.com/open-policy-agent/gatekeeper#audit) is megtekinthetők. A _nem megfelelő_ erőforrásokkal kapcsolatos részletekért tekintse meg [az erőforrás-szolgáltatói módok megfelelőségi részleteit](../how-to/determine-non-compliance.md#compliance-details-for-resource-provider-modes).
 
 > [!NOTE]
 > A Kubernetes-fürtök Azure Policy összes megfelelőségi jelentése magában foglalja az elmúlt 45 percen belüli összes jogsértést. Az időbélyegző azt jelzi, hogy mikor történt megsértés.
@@ -464,13 +467,9 @@ Ha el szeretné távolítani a Azure Policy-bővítményt az AK-fürtből, haszn
 
   1. Válassza ki az AK-fürtöt, ahol le szeretné tiltani a Azure Policy-bővítményt.
 
-  1. A Kubernetes szolgáltatás oldalának bal oldalán válassza a **házirendek (előzetes verzió)** lehetőséget.
-
-     :::image type="content" source="../media/policy-for-kubernetes/policies-preview-from-aks-cluster.png" alt-text="Képernyőkép a házirendek (előzetes verzió) csomópontról a Kubernetes szolgáltatás lapján." border="false":::
+  1. A Kubernetes szolgáltatás oldalának bal oldalán válassza a **házirendek** elemet.
 
   1. A Főoldalon kattintson a **bővítmény letiltása** gombra.
-
-     :::image type="content" source="../media/policy-for-kubernetes/disable-policy-add-on.png" alt-text="Képernyőkép a bővítmény letiltása gombra a bevezetési Azure Policy az Azure Kubernetes Services (A K) oldalához." border="false":::
 
 - Azure CLI
 

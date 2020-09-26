@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 07/16/2020
+ms.date: 09/24/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 359c2a27099ca298076edc255b8c30e226af0a18
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 07f5fef0103e674af1c5f73b3f09bdf759e592cb
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90882943"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91355975"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>Azure Machine Learning következtetési környezet biztonságossá tétele virtuális hálózatokkal
 
@@ -108,11 +108,24 @@ aks_target = ComputeTarget.create(workspace=ws,
 
 A létrehozási folyamat befejezésekor futtathat következtetéseket vagy modell-pontozást egy virtuális hálózat mögötti AK-fürtön. További információ: [üzembe helyezés az AK](how-to-deploy-and-where.md)-ban.
 
-## <a name="private-aks-cluster"></a>Privát AK-fürt
+## <a name="secure-vnet-traffic"></a>Biztonságos VNet-forgalom
+
+Az AK-fürt és a virtuális hálózat közötti forgalom elkülönítésére két módszer áll rendelkezésre:
+
+* __Privát AK-fürt__: Ez a módszer az Azure Private link használatával hoz létre egy privát végpontot az AK-fürt számára a VNet belül.
+* __Belső AK-Load Balancer__: Ez a módszer konfigurálja a terheléselosztást a fürt számára, hogy belső IP-címet használjon a VNet.
+
+> [!WARNING]
+> Mindkét konfiguráció különböző módon valósítható meg ugyanazon cél eléréséhez (a VNet belül az AK-fürt felé irányuló adatforgalom biztonságossá tétele). **Használjon egyet vagy a másikat, de ne mindkettőt**.
+
+### <a name="private-aks-cluster"></a>Privát AK-fürt
 
 Alapértelmezés szerint az AK-fürtök vezérlési síkon vagy API-kiszolgálóval rendelkeznek nyilvános IP-címekkel. Egy privát AK-fürt létrehozásával beállíthatja, hogy az AK privát vezérlési síkot használjon. További információt a [privát Azure Kubernetes Service-fürt létrehozása](../aks/private-clusters.md)című témakörben talál.
 
 Miután létrehozta a privát AK-fürtöt, [csatolja a fürtöt a virtuális hálózathoz](how-to-create-attach-kubernetes.md) Azure Machine Learninghoz való használathoz.
+
+> [!IMPORTANT]
+> Mielőtt egy magánhálózati kapcsolattal rendelkező AK-fürtöt Azure Machine Learning-mel használ, meg kell nyitnia egy támogatási eseményt a funkció engedélyezéséhez. További információ: a [kvóták kezelése és növelése](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases).
 
 ## <a name="internal-aks-load-balancer"></a>Belső AK-Load Balancer
 
@@ -120,7 +133,7 @@ Alapértelmezés szerint az AK-ban üzemelő példányok [nyilvános Load balanc
 
 A privát terheléselosztó úgy van beállítva, hogy az AK-t _belső terheléselosztó_használatára konfigurálja. 
 
-### <a name="network-contributor-role"></a>Hálózati közreműködő szerepkör
+#### <a name="network-contributor-role"></a>Hálózati közreműködő szerepkör
 
 > [!IMPORTANT]
 > Ha AK-fürtöt hoz létre vagy csatol egy korábban létrehozott virtuális hálózattal, akkor meg kell adnia a szolgáltatásnév (SP) vagy a felügyelt identitást az AK-fürt számára a _hálózati közreműködő_ szerepkört a virtuális hálózatot tartalmazó erőforráscsoporthoz. Ezt a belső terheléselosztó magánhálózati IP-re való módosítása előtt kell elvégezni.
@@ -152,16 +165,17 @@ A privát terheléselosztó úgy van beállítva, hogy az AK-t _belső terhelés
     ```
 A belső terheléselosztó az AK-val való használatáról további információt a [belső Load Balancer használata az Azure Kubernetes szolgáltatással](/azure/aks/internal-lb)című témakörben talál.
 
-### <a name="enable-private-load-balancer"></a>Privát Load Balancer engedélyezése
+#### <a name="enable-private-load-balancer"></a>Privát Load Balancer engedélyezése
 
 > [!IMPORTANT]
-> Az Azure Kubernetes Service-fürt létrehozásakor nem engedélyezheti a magánhálózati IP-címet. Engedélyezni kell egy meglévő fürt frissítését.
+> Az Azure Kubernetes Service-fürt Azure Machine Learning Studióban való létrehozásakor nem engedélyezhető a magánhálózati IP-cím. Létrehozhat egyet belső terheléselosztó használatával, ha a Python SDK-t vagy az Azure CLI-bővítményt használja a gépi tanuláshoz.
 
-A következő kódrészlet bemutatja, hogyan __hozhat létre egy új AK-fürtöt__, majd hogyan frissítheti egy magánhálózati IP-/belső terheléselosztó használatára:
+Az alábbi példák bemutatják, hogyan __hozhat létre egy új AK-fürtöt privát IP-/belső terheléselosztó__ használatával az SDK és a parancssori felület segítségével:
+
+# <a name="python"></a>[Python](#tab/python)
 
 ```python
 import azureml.core
-from azureml.core.compute.aks import AksUpdateConfiguration
 from azureml.core.compute import AksCompute, ComputeTarget
 
 # Verify that cluster does not exist already
@@ -175,7 +189,7 @@ except:
     # Subnet to use for AKS
     subnet_name = "default"
     # Create AKS configuration
-    prov_config = AksCompute.provisioning_configuration(location = "eastus2")
+    prov_config=AksCompute.provisioning_configuration(load_balancer_type="InternalLoadBalancer")
     # Set info for existing virtual network to create the cluster in
     prov_config.vnet_resourcegroup_name = "myvnetresourcegroup"
     prov_config.vnet_name = "myvnetname"
@@ -188,44 +202,21 @@ except:
     aks_target = ComputeTarget.create(workspace = ws, name = "myaks", provisioning_configuration = prov_config)
     # Wait for the operation to complete
     aks_target.wait_for_completion(show_output = True)
-    
-    # Update AKS configuration to use an internal load balancer
-    update_config = AksUpdateConfiguration(None, "InternalLoadBalancer", subnet_name)
-    aks_target.update(update_config)
-    # Wait for the operation to complete
-    aks_target.wait_for_completion(show_output = True)
 ```
 
-__Azure CLI__
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-```azurecli-interactive
-az rest --method put --uri https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.MachineLearningServices/workspaces/<workspace>/computes/<compute>?api-version=2018-11-19 --body @body.json
+```azurecli
+az ml computetarget create aks -n myaks --load-balancer-type InternalLoadBalancer
 ```
 
-A `body.json` parancs által hivatkozott fájl tartalma hasonló a következő JSON-dokumentumhoz:
+További információ: az [ml computetarget Create AK](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-computetarget-create-aks) Reference.
 
-```json
-{ 
-    "location": "<region>", 
-    "properties": { 
-        "resourceId": "/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.ContainerService/managedClusters/<aks-resource-name>", 
-        "computeType": "AKS", 
-        "provisioningState": "Succeeded", 
-        "properties": { 
-            "loadBalancerType": "InternalLoadBalancer", 
-            "agentCount": <agent-count>, 
-            "agentVmSize": "vm-size", 
-            "clusterFqdn": "<cluster-fqdn>" 
-        } 
-    } 
-} 
-```
+---
 
-Amikor __meglévő fürtöt csatol__ a munkaterülethez, meg kell várnia, amíg a csatlakoztatási művelet be nem konfigurálja a terheléselosztó-t.
+Amikor __meglévő fürtöt csatol__ a munkaterülethez, meg kell várnia, amíg a csatlakoztatási művelet be nem konfigurálja a terheléselosztó-t. A fürtök csatlakoztatásával kapcsolatos információkért lásd: [meglévő AK-fürt csatolása](how-to-create-attach-kubernetes.md).
 
-A fürtök csatlakoztatásával kapcsolatos információkért lásd: [meglévő AK-fürt csatolása](how-to-create-attach-kubernetes.md).
-
-A meglévő fürt csatolása után frissítheti a fürtöt egy magánhálózati IP-cím használatára.
+A meglévő fürt csatolása után frissítheti a fürtöt belső terheléselosztó/magánhálózati IP-cím használatára:
 
 ```python
 import azureml.core
@@ -260,7 +251,7 @@ Ha egy virtuális hálózatban szeretné használni az ACI-t a munkaterületére
     > [!IMPORTANT]
     > A delegálás engedélyezésekor használja `Microsoft.ContainerInstance/containerGroups` a __meghatalmazott alhálózatot a szolgáltatás__ értékéhez.
 
-2. Telepítse a modellt a [AciWebservice. deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none--vnet-name-none--subnet-name-none-&preserve-view=true)használatával, használja a `vnet_name` és a `subnet_name` paramétereket. Állítsa be ezeket a paramétereket a virtuális hálózat nevére és az alhálózatra, ahol engedélyezte a delegálást.
+2. Telepítse a modellt a [AciWebservice. deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py&preserve-view=true#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none--vnet-name-none--subnet-name-none-&preserve-view=true)használatával, használja a `vnet_name` és a `subnet_name` paramétereket. Állítsa be ezeket a paramétereket a virtuális hálózat nevére és az alhálózatra, ahol engedélyezte a delegálást.
 
 
 ## <a name="next-steps"></a>Következő lépések

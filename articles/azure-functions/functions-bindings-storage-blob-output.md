@@ -1,17 +1,17 @@
 ---
 title: Az Azure Blob Storage kimeneti kötése Azure Functions
-description: Ismerje meg, hogyan biztosíthat Azure-beli blob Storage-információkat egy Azure-függvénynek.
+description: Ismerje meg, hogyan biztosíthatja az Azure Blob Storage kimeneti kötési adatokat egy Azure-függvénynek.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 9596e6a6fd32994f782125c9bd4b8ca6d5a94b03
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 56d8078347b5de775b30c8db2c9412598070046c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213072"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91285366"
 ---
 # <a name="azure-blob-storage-output-binding-for-azure-functions"></a>Az Azure Blob Storage kimeneti kötése Azure Functions
 
@@ -350,7 +350,7 @@ Az `StorageAccount` attribútummal megadhatja a Storage-fiókot az osztály, a m
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `Blob` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
 |**típusa** | n.a. | Értékre kell állítani `blob` . |
 |**irányba** | n.a. | `out`Kimeneti kötéshez be kell állítani. A kivételek a [használat](#usage) szakaszban vannak feltüntetve. |
@@ -392,7 +392,7 @@ Az `@BlobOutput` attribútum hozzáférést biztosít a függvényt kiváltó bl
 
 ## <a name="exceptions-and-return-codes"></a>Kivételek és visszatérési kódok
 
-| Kötés |  Hivatkozás |
+| Kötés |  Referencia |
 |---|---|
 | Blob | [BLOB-hibakódok](/rest/api/storageservices/fileservices/blob-service-error-codes) |
 | BLOB, tábla, üzenetsor |  [Tárolási hibakódok](/rest/api/storageservices/fileservices/common-rest-api-error-codes) |

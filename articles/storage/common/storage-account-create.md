@@ -1,27 +1,27 @@
 ---
 title: Tárfiók létrehozása
 titleSuffix: Azure Storage
-description: Megtudhatja, hogyan hozhat létre egy Storage-fiókot a Azure Portal, Azure PowerShell vagy az Azure CLI használatával. Az Azure Storage-fiók egy egyedi névteret biztosít a Microsoft Azure az adatai tárolásához és eléréséhez.
+description: Útmutató a Blobok, fájlok, várólisták és táblák tárolására szolgáló Storage-fiók létrehozásához. Az Azure Storage-fiók egy egyedi névteret biztosít a Microsoft Azureban az adatai olvasásához és írásához.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 02/07/2020
+ms.date: 09/24/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 8b6f5f302465d075b7a0bcb0e6b12c75b1379bb5
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 9b993e5a7c5b3ee2327fe26437414d8ce74f7369
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89069833"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333579"
 ---
-# <a name="create-an-azure-storage-account"></a>Azure Storage-fiók létrehozása
+# <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
 Egy Azure Storage-fiók tartalmazza az összes Azure Storage-adatobjektumot: blobokat, fájlokat, várólistákat, táblákat és lemezeket. A Storage-fiók egy egyedi névteret biztosít az Azure Storage-adatok számára, amely a világon bárhonnan elérhető HTTP-vagy HTTPS-kapcsolaton keresztül. Az Azure Storage-fiókban tárolt adatai tartósak, a biztonságos és a nagy mértékben méretezhetők.
 
-Ebben a útmutatóban megtudhatja, hogyan hozhat létre egy Storage-fiókot a [Azure Portal](https://portal.azure.com/), a [Azure PowerShell](https://docs.microsoft.com/powershell/azure/), az [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest)vagy egy [Azure Resource Manager sablon](../../azure-resource-manager/management/overview.md)használatával.  
+Ebben a útmutatóban megtudhatja, hogyan hozhat létre egy Storage-fiókot a [Azure Portal](https://portal.azure.com/), a [Azure PowerShell](https://docs.microsoft.com/powershell/azure/), az [Azure CLI](https://docs.microsoft.com/cli/azure)vagy egy [Azure Resource Manager sablon](../../azure-resource-manager/management/overview.md)használatával.  
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -64,7 +64,7 @@ A gomb egy interaktív felületet indít el, amelyet a jelen útmutatóban ismer
 
 ### <a name="install-the-cli-locally"></a>A parancssori felület helyi telepítése
 
-Az Azure CLI-t helyben is telepítheti és használhatja. Ehhez a cikkhez az Azure CLI 2.0.4 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket. 
+Az Azure CLI-t helyben is telepítheti és használhatja. A cikkben szereplő példákhoz az Azure CLI 2.0.4 vagy újabb verziójára van szükség. Futtassa `az --version` a parancsot a telepített verzió megkereséséhez. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket.
 
 # <a name="template"></a>[Sablon](#tab/template)
 
@@ -98,17 +98,15 @@ az login
 
 # <a name="template"></a>[Sablon](#tab/template)
 
-N/A
+N.A.
 
 ---
 
 ## <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
-Most már készen áll egy Storage-fiók létrehozására.
-
 Minden tárfióknak egy Azure-erőforráscsoporthoz kell tartoznia. Az erőforráscsoport egy logikai tároló az Azure-szolgáltatások csoportosításához. A tárfiók létrehozásakor lehetősége van létrehozni egy új erőforráscsoportot, vagy választhat egy meglévő erőforráscsoportot. Ez a cikk bemutatja, hogyan hozhat létre egy új erőforráscsoportot.
 
-Az **általános célú v2**-tárfiókok az összes Azure Storage-szolgáltatáshoz (blobokhoz, fájlokhoz, üzenetsorokhoz, táblákhoz és lemezekhez) hozzáférést biztosítanak. Az itt leírt lépések egy általános célú v2-es Storage-fiókot hoznak létre, de a bármilyen típusú Storage-fiók létrehozásának lépései hasonlóak.
+Az **általános célú v2**-tárfiókok az összes Azure Storage-szolgáltatáshoz (blobokhoz, fájlokhoz, üzenetsorokhoz, táblákhoz és lemezekhez) hozzáférést biztosítanak. Az itt leírt lépések egy általános célú v2-es Storage-fiókot hoznak létre, de a bármilyen típusú Storage-fiók létrehozásának lépései hasonlóak. További információ a tárfiókok típusairól és a tárfiókok egyéb beállításairól: [Az Azure Storage-fiókok áttekintése](storage-account-overview.md).
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
@@ -186,7 +184,7 @@ az storage account create \
 ```
 
 > [!IMPORTANT]
-> Ha azt tervezi, hogy [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)használ, vegye `--enable-hierarchical-namespace true` fel a következő paraméterekbe. 
+> Ha azt tervezi, hogy [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)használ, vegye `--enable-hierarchical-namespace true` fel a következő paraméterekbe.
 
 Egy másik replikációs lehetőséggel rendelkező általános célú v2 Storage-fiók létrehozásához helyettesítse be a kívánt értéket az alábbi táblázatban az **SKU** paraméterhez.
 
@@ -231,8 +229,6 @@ A sablon módosításával vagy újak létrehozásával kapcsolatos további inf
 
 ---
 
-Az elérhető replikációs beállításokkal kapcsolatban további információt a [Storage replikálási lehetőségeit](storage-redundancy.md) ismertető szakaszban talál.
-
 ## <a name="delete-a-storage-account"></a>Tárfiók törlése
 
 A Storage-fiók törlése törli a teljes fiókot, beleértve a fiókban lévő összes adattal, és nem vonható vissza.
@@ -240,7 +236,7 @@ A Storage-fiók törlése törli a teljes fiókot, beleértve a fiókban lévő 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
 1. Navigáljon a [Azure Portal](https://portal.azure.com)Storage-fiókjához.
-1. Kattintson a **Delete** (Törlés) gombra.
+1. Kattintson a **Törlés** gombra.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -287,26 +283,6 @@ Másik lehetőségként törölheti az erőforráscsoportot, amely törli a Stor
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a útmutatóban egy általános célú v2 standard Storage-fiókot hozott létre. Ha meg szeretné tudni, hogyan tölthet fel és tölthet le blobokat a Storage-fiókjába, folytassa a blob Storage egyik rövid útmutatójának használatával.
-
-# <a name="portal"></a>[Portál](#tab/azure-portal)
-
-> [!div class="nextstepaction"]
-> [Blobok használata az Azure Portal segítségével](../blobs/storage-quickstart-blobs-portal.md)
-
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-
-> [!div class="nextstepaction"]
-> [Blobok használata a PowerShell segítségével](../blobs/storage-quickstart-blobs-powershell.md)
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-> [!div class="nextstepaction"]
-> [Blobok használata az Azure parancssori felületének használatával](../blobs/storage-quickstart-blobs-cli.md)
-
-# <a name="template"></a>[Sablon](#tab/template)
-
-> [!div class="nextstepaction"]
-> [Blobok használata az Azure Portal segítségével](../blobs/storage-quickstart-blobs-portal.md)
-
----
+- [A Storage-fiók áttekintése](storage-account-overview.md)
+- [Frissítés általános célú v2-tárfiókra](storage-account-upgrade.md)
+- [Azure Storage-fiók áthelyezése másik régióba](storage-account-move.md)

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: a1dc42815167da308fd87b541c0f21d02b47329b
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b6f2e8ff6689a3817ecf9eb43c7cea4a0632fc25
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022513"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297664"
 ---
 # <a name="tutorial-explore-azure-digital-twins-with-a-sample-client-app"></a>Oktatóanyag: az Azure Digital ikrek megismerése egy minta ügyfélalkalmazás alkalmazásával
 
@@ -219,8 +219,8 @@ Az alábbi parancsokkal is ellenőrizheti a kapcsolatokat, amelyek az Azure Digi
     ```
 * Ha ezeket a kapcsolatokat egyenként szeretné lekérdezni, 
     ```cmd/sh
-    GetRelationship floor0 contains relationship0
-    GetRelationship floor1 contains relationship1
+    GetRelationship floor0 relationship0
+    GetRelationship floor1 relationship1
     ```
 
 Az ebben az oktatóanyagban beállított ikrek és kapcsolatok a következő koncepcionális diagramot alkotják:
@@ -242,7 +242,7 @@ Az Azure Digital Twins egyik fő funkciója, hogy könnyen és hatékonyan [lek�
     :::image type="content" source="media/tutorial-command-line-app/output-query-all.png" alt-text="A kettős lekérdezés részleges eredménye, amely megjeleníti a room0 és a floor1":::
 
     >[!NOTE]
-    >A parancs a `Query` további argumentumok nélkül is egyenértékű `Query SELECT * FROM DIGITALTWINS` .
+    >A minta projektben a parancs a `Query` további argumentumok nélkül is megegyezik `Query SELECT * FROM DIGITALTWINS` . Ha a példányban lévő összes ikreket le szeretné kérdezni a [lekérdezési API](how-to-use-apis-sdks.md) -k vagy a [CLI-parancsok](how-to-use-cli.md)használatával, használja a hosszú (teljes) lekérdezést.
 
 * **Mik azok a szobák a saját környezetben?** (lekérdezés modell alapján)
 

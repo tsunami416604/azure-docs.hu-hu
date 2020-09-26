@@ -3,14 +3,14 @@ title: Alkalmazás-hozzáférés biztosítása más Azure-erőforrásokhoz
 description: Ez a cikk azt ismerteti, hogyan biztosítható a felügyelt identitást támogató Service Fabric alkalmazásokhoz való hozzáférés más Azure-erőforrásokhoz Azure Active Directory-alapú hitelesítés támogatásával.
 ms.topic: article
 ms.date: 12/09/2019
-ms.openlocfilehash: 638176ca2665146a64fb7a6bd83253eba3434a7f
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: a1d963c49f9522000028b00c138b2e5731a9ccca
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258961"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333630"
 ---
-# <a name="granting-a-service-fabric-applications-managed-identity-access-to-azure-resources-preview"></a>Service Fabric alkalmazás felügyelt identitás-hozzáférésének megadása az Azure-erőforrásokhoz (előzetes verzió)
+# <a name="granting-a-service-fabric-applications-managed-identity-access-to-azure-resources"></a>Service Fabric alkalmazás felügyelt identitás-hozzáférésének megadása az Azure-erőforrásokhoz
 
 Ahhoz, hogy az alkalmazás a felügyelt identitásával hozzáférhessen más erőforrásokhoz, engedélyeket kell adni ahhoz az identitáshoz a védett Azure-erőforráson. Az engedélyek megadása általában a Azure Resource Manageron keresztül átirányított védett erőforrást birtokló Azure-szolgáltatás vezérlési síkon található felügyeleti művelet, amely az összes vonatkozó szerepköralapú hozzáférés-ellenőrzést kikényszeríti.
 

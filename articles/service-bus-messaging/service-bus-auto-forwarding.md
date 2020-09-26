@@ -4,12 +4,12 @@ description: Ez a cikk egy Azure Service Bus üzenetsor vagy előfizetés egy m�
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: af1c8a8e043ae964c4917a58ea67275e8379817f
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 34b73967813abdcb811221aa4a3a4ac96dce0664
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021714"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333681"
 ---
 # <a name="chaining-service-bus-entities-with-autoforwarding"></a>Service Bus entitások láncolása az autoforwarding révén
 
@@ -29,11 +29,11 @@ A cél entitásnak léteznie kell a forrás entitás létrehozásakor. Ha a cél
 
 Az egyéni témakört az autoforwarding használatával bővítheti. Service Bus az [adott témakör előfizetéseit](service-bus-quotas.md) 2 000-re korlátozza. További előfizetéseket is megadhat a második szintű témakörök létrehozásával. Még ha nem köti az előfizetések számának Service Bus korlátozását, a témakörök második szintjének hozzáadásával növelheti a témakör teljes átviteli sebességét.
 
-![Automatikus továbbítási forgatókönyv][0]
+![Egy olyan, az Orders (megrendelések) témakörben feldolgozott üzenet, amely a három második szintű megrendeléssel kapcsolatos témakörök bármelyikére képes.][0]
 
 Az üzenetek küldői a fogadók való elválasztására is használható. Vegyünk például egy olyan ERP-rendszer, amely három modulból áll: a rendelések feldolgozása, a Készletkezelés és az Ügyfélkapcsolatok kezelése. Ezen modulok mindegyike egy megfelelő témakörbe várólistán lévő üzeneteket hoz létre. Alice és Bob olyan értékesítési képviselők, akik az ügyfelekhez kapcsolódó összes üzenetet érdeklik. Az üzenetek fogadásához Alice és Bob minden egyes ERP-témakörhöz hozzon létre egy személyes várólistát és egy előfizetést, amely automatikusan továbbítja az összes üzenetet a várólistára.
 
-![Automatikus továbbítási forgatókönyv][1]
+![Az autotovábbítási forgatókönyv ábrája három feldolgozó modult mutat be, amely három kapcsolódó témakörből két külön várólistára küld üzeneteket.][1]
 
 Ha Alice a vakációra kerül, az ERP-témakör helyett a személyes üzenetsor jelenik meg. Ebben az esetben, mivel egy értékesítési képviselő nem kapott üzenetet, egyetlen ERP-témakör sem éri el a kvótát.
 

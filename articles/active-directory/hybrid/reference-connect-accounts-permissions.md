@@ -17,12 +17,12 @@ ms.date: 05/18/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28fc05be7a5b54713aec8c4f830eeb2f7e6a251c
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: a1efafd353bea20ea1ada0b5e92a9e6df00deb78
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662330"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273600"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Fiókok és engedélyek
 
@@ -102,7 +102,7 @@ A következő összefoglalás az expressz telepítővarázsló lapjairól, a gy�
 
 | Varázsló lapja | Összegyűjtött hitelesítő adatok | Szükséges engedélyek | Használatban |
 | --- | --- | --- | --- |
-| N/A |A telepítő varázslót futtató felhasználó |A helyi kiszolgáló rendszergazdája |<li>Létrehozza a szinkronizálási szolgáltatás futtatásához használt ADSync-szolgáltatásfiókot. |
+| N.A. |A telepítő varázslót futtató felhasználó |A helyi kiszolgáló rendszergazdája |<li>Létrehozza a szinkronizálási szolgáltatás futtatásához használt ADSync-szolgáltatásfiókot. |
 | Csatlakozás az Azure AD szolgáltatáshoz |Azure AD-címtár hitelesítő adatai |Globális rendszergazdai szerepkör az Azure AD-ben |<li>A szinkronizálás engedélyezése az Azure AD-címtárban.</li>  <li>A folyamatban lévő szinkronizálási műveletekhez használt Azure AD Connector-fiók létrehozása az Azure AD-ben.</li> |
 | Csatlakozás az AD DS szolgáltatáshoz |Helyszíni Active Directory hitelesítő adatok |A vállalati rendszergazdák (EA) csoport tagja Active Directory |<li>Létrehozza a AD DS-összekötő fiókot a Active Directoryban, és engedélyt ad hozzá. Ez a létrehozott fiók a címtáradatok olvasására és írására szolgál a szinkronizálás során.</li> |
 
@@ -115,11 +115,11 @@ Az egyéni beállítások telepítésével a varázsló további lehetőségeket
 
 A következő összefoglalja az egyéni telepítővarázsló oldalait, a gyűjtött hitelesítő adatokat és azok használati feladatait.
 
-![Expressz telepítés](./media/reference-connect-accounts-permissions/customize.png)
+![Képernyőkép, amely az egyéni telepítővarázsló lapjait jeleníti meg.](./media/reference-connect-accounts-permissions/customize.png)
 
 | Varázsló lapja | Összegyűjtött hitelesítő adatok | Szükséges engedélyek | Használatban |
 | --- | --- | --- | --- |
-| N/A |A telepítő varázslót futtató felhasználó |<li>A helyi kiszolgáló rendszergazdája</li><li>Ha teljes SQL Server használ, a felhasználónak rendszergazda (SA) értékűnek kell lennie az SQL-ben</li> |Alapértelmezés szerint a a szinkronizálási motor szolgáltatásfiókként használt helyi fiókot hozza létre. A fiók csak akkor jön létre, ha a rendszergazda nem ad meg egy adott fiókot. |
+| N.A. |A telepítő varázslót futtató felhasználó |<li>A helyi kiszolgáló rendszergazdája</li><li>Ha teljes SQL Server használ, a felhasználónak rendszergazda (SA) értékűnek kell lennie az SQL-ben</li> |Alapértelmezés szerint a a szinkronizálási motor szolgáltatásfiókként használt helyi fiókot hozza létre. A fiók csak akkor jön létre, ha a rendszergazda nem ad meg egy adott fiókot. |
 | Szinkronizálási szolgáltatások telepítése, szolgáltatásfiók beállítás |AD-vagy helyi felhasználói fiók hitelesítő adatai |Felhasználó, a telepítővarázsló engedélyeket kap |Ha a rendszergazda megad egy fiókot, a rendszer ezt a fiókot használja a szinkronizálási szolgáltatáshoz. |
 | Csatlakozás az Azure AD szolgáltatáshoz |Azure AD-címtár hitelesítő adatai |Globális rendszergazdai szerepkör az Azure AD-ben |<li>A szinkronizálás engedélyezése az Azure AD-címtárban.</li>  <li>A folyamatban lévő szinkronizálási műveletekhez használt Azure AD Connector-fiók létrehozása az Azure AD-ben.</li> |
 | Csatlakoztassa a címtárakat |Helyszíni Active Directory hitelesítő adatok az Azure AD-hez csatlakozó összes erdőhöz |Az engedélyek attól függnek, hogy mely szolgáltatásokat engedélyezte, és hol található az AD DS-összekötő fiók létrehozása |Ez a fiók a címtár adatainak a szinkronizálás során történő olvasására és írására szolgál. |
@@ -141,7 +141,7 @@ Emellett meg kell adni a szükséges engedélyeket is. A telepítővarázsló ne
 
 A szükséges engedélyek a választható funkcióktól függenek. Ha több tartománnyal rendelkezik, az engedélyeket az erdő összes tartományához meg kell adni. Ha nem engedélyezi ezen funkciók bármelyikét, az alapértelmezett **tartományi felhasználói** engedélyek elegendőek.
 
-| Jellemző | Engedélyek |
+| Funkció | Engedélyek |
 | --- | --- |
 | MS-DS-ConsistencyGuid funkció |Írási engedélyek a tervezési fogalmakban dokumentált ms-DS-ConsistencyGuid attribútumhoz [– MS-DS-ConsistencyGuid használata sourceAnchor](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor). | 
 | Jelszó kivonatának szinkronizálása |<li>Címtárbeli módosítások replikálása</li>  <li>A címtár összes módosításának replikálása |
@@ -175,7 +175,7 @@ Ha egyéni beállításokat használ, akkor a telepítés megkezdése előtt Ön
 ### <a name="adsync-service-account"></a>ADSync-szolgáltatásfiók
 A szinkronizálási szolgáltatás más fiókokban is futhat. Egy **virtuális szolgáltatásfiók** (VSA), egy **csoportosan felügyelt szolgáltatásfiók** (gMSA/önállóan felügyelt szolgáltatásfiókot) vagy egy normál felhasználói fiók használatával futtatható. A támogatott beállítások a csatlakozás április 2017-os verziójával módosultak, amikor új telepítést végez. Ha Azure AD Connect korábbi kiadásáról frissít, ezek a további beállítások nem érhetők el.
 
-| Fiók típusa | Telepítési lehetőség | Description |
+| Fiók típusa | Telepítési lehetőség | Leírás |
 | --- | --- | --- |
 | [Virtual Service-fiók](#virtual-service-account) | Express és Custom, 2017 április és újabb | Ez a beállítás az összes expressz telepítéshez használatos, a tartományvezérlőn lévő telepítések kivételével. Egyéni esetén ez az alapértelmezett beállítás, kivéve, ha egy másik lehetőség van használatban. |
 | [Csoportosan felügyelt szolgáltatásfiók](#group-managed-service-account) | Custom, 2017 április és újabb | Ha távoli SQL Servert használ, javasoljuk, hogy egy csoportosan felügyelt szolgáltatásfiókot használjon. |
@@ -208,7 +208,7 @@ Jelmagyarázat:
 #### <a name="virtual-service-account"></a>Virtual Service-fiók
 A virtuális szolgáltatásfiók olyan speciális fióktípus, amely nem rendelkezik jelszóval, és a Windows felügyeli.
 
-![VSA](./media/reference-connect-accounts-permissions/aadsyncvsa.png)
+![A virtuális szolgáltatásfiókot (VSA) megjelenítő képernyőkép.](./media/reference-connect-accounts-permissions/aadsyncvsa.png)
 
 A VSA olyan forgatókönyvekkel használható, amelyekben a Szinkronizáló motor és az SQL ugyanazon a kiszolgálón található. Ha a távoli SQL-t használja, azt javasoljuk, hogy ehelyett egy csoportosan felügyelt szolgáltatásfiókot használjon.
 
@@ -241,7 +241,7 @@ A fiók a fájlokhoz, a kulcsokhoz és a szinkronizálási motorhoz kapcsolódó
 ### <a name="azure-ad-connector-account"></a>Azure AD Connector-fiók
 Létrejön egy fiók az Azure AD-ben a szinkronizálási szolgáltatás használatára. Ezt a fiókot a megjelenített nevével lehet azonosítani.
 
-![AD-fiók](./media/reference-connect-accounts-permissions/aadsyncserviceaccount2.png)
+![Képernyőkép, amely az Azure AD-fiókot jeleníti meg.](./media/reference-connect-accounts-permissions/aadsyncserviceaccount2.png)
 
 Annak a kiszolgálónak a neve, amelyen a fiók használatban van, a Felhasználónév második részében azonosítható. A képen a kiszolgálónév a DC1. Ha átmeneti kiszolgálóval rendelkezik, az egyes kiszolgálók saját fiókkal rendelkeznek.
 

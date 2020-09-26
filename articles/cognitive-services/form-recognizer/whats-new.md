@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: ddd1f61ada539ebb00341dd83919f1c851a0f3e1
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 16bdb0d8ed421763895e61a6e1173fc7c5a48d4d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816371"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297946"
 ---
 # <a name="whats-new-in-form-recognizer"></a>A Form Recognizer újdonságai
 
@@ -38,7 +38,8 @@ Az űrlap-felismerő szolgáltatás folyamatosan frissül. Ebből a cikkből meg
 
 
 a 2.0-s **verzió** a következő frissítést tartalmazza:
--   A NET, a Python, a Java és a JavaScript [ügyféloldali kódtárai](quickstarts/client-library.md) általánosan elérhetővé léptek. 
+
+- A NET, a Python, a Java és a JavaScript [ügyféloldali kódtárai](quickstarts/client-library.md) általánosan elérhetővé léptek. 
 
 
 Az **új minták** a githubon érhetők el. 
@@ -174,6 +175,10 @@ Az értékesítési visszaigazolások olvasására szolgáló API-k átnevezve l
 
 A JSON-válaszok minden API-híváshoz új formátumok tartoznak. Egyes kulcsok és értékek hozzá lettek adva, el lettek távolítva vagy átnevezve lettek. Tekintse meg az aktuális JSON-formátumok példáit.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Fejezze be [a gyors](quickstarts/curl-train-extract.md) üzembe helyezési útmutatót az [űrlap-felismerő API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)-k használatának megkezdéséhez.
+Töltse ki az [ügyféloldali kódtár](quickstarts/client-library.md) gyors kezdését, hogy megkezdje az űrlapok feldolgozását az űrlap felismerővel az Ön által választott nyelven.
+
+## <a name="see-also"></a>Lásd még
+
+* [Mi a Form Recognizer?](./overview.md)

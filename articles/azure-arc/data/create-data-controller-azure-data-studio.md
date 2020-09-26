@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 71678977f899b910a97dbb552233f36ca5a51f26
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f6fd8169c587e928da9946d74335ddc758889144
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90939996"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273143"
 ---
 # <a name="create-data-controller-in-azure-data-studio"></a>Adatkezelő létrehozása Azure Data Studioban
 
@@ -42,7 +42,7 @@ Az alábbi lépéseket követve létrehozhat egy Azure arc-adatkezelőt a közpo
 9. Adja meg az adatvezérlő nevét, valamint azt a névteret, amelyhez az adatkezelőt létre kívánja hozni.  
 
 > [!NOTE]
-> Ha a névtér már létezik, akkor a rendszer akkor fogja használni, ha a névtér még nem tartalmaz más Kubernetes objektumokat – hüvelyeket stb.  Ha a névtér nem létezik, a rendszer kísérletet tesz a névtér létrehozására.  A névtér Kubernetes-fürtben való létrehozásához a Kubernetes-fürt rendszergazdai jogosultságai szükségesek.  Ha nem rendelkezik Kubernetes-fürt rendszergazdai jogosultságokkal, kérje meg a Kubernetes-fürt rendszergazdáját, hogy hajtsa végre az első néhány lépést az [adatkezelő létrehozása a Kubernetes natív eszközökkel](./create-data-controller-using-k8s-native-tools.md) című cikkben, amelyet egy Kubernetes-rendszergazdának kell elvégeznie a varázsló befejezése előtt.
+> Ha a névtér már létezik, akkor a rendszer akkor fogja használni, ha a névtér még nem tartalmaz más Kubernetes objektumokat – hüvelyeket stb.  Ha a névtér nem létezik, a rendszer kísérletet tesz a névtér létrehozására.  A névtér Kubernetes-fürtben való létrehozásához a Kubernetes-fürt rendszergazdai jogosultságai szükségesek.  Ha nem rendelkezik Kubernetes-fürt rendszergazdai jogosultságokkal, kérje meg a Kubernetes-fürt rendszergazdáját, hogy hajtsa végre az első néhány lépést az [adatkezelő létrehozása a Kubernetes natív eszközökkel](./create-data-controller-using-kubernetes-native-tools.md) című cikkben, amelyet egy Kubernetes-rendszergazdának kell elvégeznie a varázsló befejezése előtt.
 
 > [!NOTE]
 > Megjegyzés: a Kubernetes-fürtben az adatkezelő és a névtér neve alapján hozhat létre egyéni erőforrást, így meg kell felelnie a [Kubernetes elnevezési konvencióknak](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names).

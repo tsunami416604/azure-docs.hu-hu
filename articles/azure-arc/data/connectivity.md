@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 44c1c1860cbea20a7a00da5a396e4d82d79efd8b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 4364ed916e2b2783ab09f9d61ae63197d001ad42
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90940005"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273181"
 ---
 # <a name="connectivity-modes-and-requirements"></a>Csatlakozási módok és követelmények
 
@@ -86,6 +86,7 @@ Jelenleg az előzetes verzió fázisában csak a közvetetten csatlakoztatott m�
 |**Azure Resource Manager API-k**|Azure Data Studio, Azure-adatcli vagy Azure CLI-t futtató számítógép, amely az Azure-hoz csatlakozik.|`login.microsoftonline.com`<br/>`management.azure.com`<br/>`san-af-eastus-prod.azurewebsites.net`<br/>`san-af-eastus2-prod.azurewebsites.net`<br/>`san-af-australiaeast-prod.azurewebsites.net`<br/>`san-af-centralus-prod.azurewebsites.net`<br/>`san-af-westus2-prod.azurewebsites.net`<br/>`san-af-westeurope-prod.azurewebsites.net`<br/>`san-af-southeastasia-prod.azurewebsites.net`<br/>`san-af-koreacentral-prod.azurewebsites.net`<br/>`san-af-northeurope-prod.azurewebsites.net`<br/>`san-af-westeurope-prod.azurewebsites.net`<br/>`san-af-uksouth-prod.azurewebsites.net`<br/>`san-af-francecentral-prod.azurewebsites.net`|HTTPS|443|Yes|Azure Active Directory|Azure Data Studio, az Azure-adatcli és az Azure CLI a Azure Resource Manager API-khoz csatlakozik, és az Azure-ba irányuló adatok küldésére és lekérésére bizonyos funkciókhoz.|
 |**Azure Monitor API-k**|Azure-adatcli-t vagy Azure CLI-t futtató számítógép, amely figyeli a figyelési metrikákat vagy naplókat a Azure Monitor.|`login.microsoftonline.com`<br/>`management.azure.com`<br/>`*.ods.opinsights.azure.com`<br/>`*.oms.opinsights.azure.com`<br/>`*.monitoring.azure.com`|HTTPS|443|Yes|Azure Active Directory|Azure Data Studio, az Azure-adatcli és az Azure CLI a Azure Resource Manager API-khoz csatlakozik, és az Azure-ba irányuló adatok küldésére és lekérésére bizonyos funkciókhoz.|
 
-> **Megjegyzés:** Egyelőre a Grafana-és Kibana-irányítópultokhoz, valamint az Azure-beli adatcli-ből az adatkezelő API-hoz tartozó összes böngésző HTTPS/443 kapcsolata önaláírt tanúsítványokkal titkosítva van.  A jövőben a szolgáltatás elérhető lesz, amely lehetővé teszi saját tanúsítványok megadását az SSL-kapcsolatok titkosításához.
+> [!NOTE]
+> Egyelőre a Grafana-és Kibana-irányítópultokhoz, valamint az Azure-beli adatcli-ből az adatkezelő API-hoz tartozó összes böngésző HTTPS/443 kapcsolata önaláírt tanúsítványokkal titkosítva van.  A jövőben a szolgáltatás elérhető lesz, amely lehetővé teszi saját tanúsítványok megadását az SSL-kapcsolatok titkosításához.
 
 A Azure Data Studio és az Azure-beli adatok parancssori felületéről a Kubernetes API-kiszolgálóhoz való kapcsolódás a létrehozott Kubernetes-hitelesítést és-titkosítást használja.  Minden Azure Data Studiot használó felhasználónak és az Azure-beli adatcli-nek hitelesített kapcsolattal kell rendelkeznie a Kubernetes API-val, hogy az Azure arc-kompatibilis adatszolgáltatásokkal kapcsolatos számos műveletet végrehajtsa.

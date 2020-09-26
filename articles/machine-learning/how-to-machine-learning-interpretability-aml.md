@@ -11,12 +11,12 @@ ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: dc07d2826d3c27fad1eee644da36cb7b4f85ea3c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c23522911bd0c8dc9726a62cced839a1c4be37a6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897461"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333834"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>Az adatelemzési csomag használata a Python (előzetes verzió) &i előrejelzésekben
 
@@ -42,10 +42,9 @@ További információ a támogatott értelmező módszerekről és a gépi tanul
 ## <a name="generate-feature-importance-value-on-your-personal-machine"></a>A szolgáltatás fontossági értékének előállítása a személyes gépen 
 Az alábbi példa azt mutatja be, hogyan használható a értelmező csomag a személyes gépen anélkül, hogy az Azure-szolgáltatásokkal kellene kapcsolatba lépnie.
 
-1. Telepítés `azureml-interpret` és `azureml-contrib-interpret` csomagok.
+1. Telepítse az `azureml-interpret` csomagot.
     ```bash
     pip install azureml-interpret
-    pip install azureml-contrib-interpret
     ```
 
 2. Egy minta modell betanítása egy helyi Jupyter jegyzetfüzetbe.
@@ -239,15 +238,14 @@ Az alábbi példa bemutatja, hogyan használható az `ExplanationClient` osztál
 * `ExplanationClient`Töltse fel a értelmező környezetet a távoli Futtatás paranccsal.
 * A környezet későbbi letöltése helyi környezetben.
 
-1. Telepítés `azureml-interpret` és `azureml-contrib-interpret` csomagok.
+1. Telepítse az `azureml-interpret` csomagot.
     ```bash
     pip install azureml-interpret
-    pip install azureml-contrib-interpret
     ```
 1. Hozzon létre egy képzési parancsfájlt egy helyi Jupyter jegyzetfüzetben. Például: `train_explain.py`.
 
     ```python
-    from azureml.contrib.interpret.explanation.explanation_client import ExplanationClient
+    from azureml.interpret import ExplanationClient
     from azureml.core.run import Run
     from interpret.ext.blackbox import TabularExplainer
 
@@ -280,7 +278,7 @@ Az alábbi példa bemutatja, hogyan használható az `ExplanationClient` osztál
 1. Töltse le a magyarázatot a helyi Jupyter notebookon.
 
     ```python
-    from azureml.contrib.interpret.explanation.explanation_client import ExplanationClient
+    from azureml.interpret import ExplanationClient
     
     client = ExplanationClient.from_run(run)
     
@@ -304,7 +302,7 @@ Miután letöltötte a magyarázatokat a helyi Jupyter notebookon, a vizualizác
 
 A következő mintaterületek átfogó képet nyújtanak a betanított modellről, valamint az előrejelzéseit és magyarázatait.
 
-|Telek|Leírás|
+|Telek|Description|
 |----|-----------|
 |Adatelemzés| Az adatkészlet áttekintését jeleníti meg az előrejelzési értékekkel együtt.|
 |Globális fontosság|Az összesítések az egyes datapoints fontossági értékeit jelenítik meg a modell általános felső K (a konfigurálható K) fontos funkcióinak megjelenítéséhez. Segít az alapul szolgáló modell általános működésének megértésében.|
@@ -318,7 +316,7 @@ A következő mintaterületek átfogó képet nyújtanak a betanított modellrő
 
 Bármilyen adatponthoz betöltheti az egyes funkció fontossági területét, ha az összes adatpontra kattint a teljes mintaterületeken.
 
-|Telek|Leírás|
+|Telek|Description|
 |----|-----------|
 |Helyi fontosság|Megjeleníti az egyes előrejelzésekhez tartozó legfontosabb funkciókat (K). Segít bemutatni az alapul szolgáló modell helyi viselkedését egy adott adatponton.|
 |Perturbáció-feltárás (mi a teendő, ha elemzés)|Lehetővé teszi a kijelölt adatponthoz tartozó szolgáltatások értékének módosítását, és megfigyelheti az előrejelzés értékének változásait.|
@@ -332,29 +330,12 @@ Bármilyen adatponthoz betöltheti az egyes funkció fontossági területét, ha
 
 [![Vizualizációs irányítópult jég ábrázolása](./media/how-to-machine-learning-interpretability-aml/ice-plot.png)](./media/how-to-machine-learning-interpretability-aml/ice-plot.png#lightbox)
 
-> [!NOTE]
-> A Jupyter-kernel elindítása előtt győződjön meg róla, hogy engedélyezi a vizualizációk irányítópultjának widget-bővítményeit.
-
-* Jupyter-notebookok
-
-    ```shell
-    jupyter nbextension install --py --sys-prefix azureml.contrib.interpret.visualize
-    jupyter nbextension enable --py --sys-prefix azureml.contrib.interpret.visualize
-    ```
-
-* JupyterLab
-
-    ```shell
-    jupyter labextension install @jupyter-widgets/jupyterlab-manager
-    jupyter labextension install microsoft-mli-widget
-    ```
-
 A vizualizációs irányítópult betöltéséhez használja a következő kódot.
 
 ```python
 from interpret_community.widget import ExplanationDashboard
 
-ExplanationDashboard(global_explanation, model, dataset=x_test)
+ExplanationDashboard(global_explanation, model, datasetX=x_test)
 ```
 
 ### <a name="visualization-in-azure-machine-learning-studio"></a>Vizualizáció a Azure Machine Learning Studióban
@@ -370,7 +351,7 @@ Kövesse az alábbi elérési utakat a vizualizációs irányítópult elérés�
   1. Válasszon ki egy adott kísérletet a kísérlet összes futtatásának megtekintéséhez.
   1. Válasszon egy futtatást, majd a **magyarázatok lapot a** magyarázatok vizualizációs irányítópultján.
 
-   [![Vizualizációs irányítópult helyi funkciójának fontossága](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png)](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png#lightbox)
+   [![Vizualizációs irányítópult helyi funkciójának fontossága a AzureML Studióban a kísérletek során](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png)](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png#lightbox)
 
 * **Modellek** panel
   1. Ha regisztrálta az eredeti modelljét a [modellek Azure Machine learning használatával történő üzembe helyezésének](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where)lépéseivel, a bal oldali ablaktáblán kiválaszthatja a **modelleket** , és megtekintheti.

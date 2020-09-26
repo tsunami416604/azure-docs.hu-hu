@@ -1,18 +1,18 @@
 ---
-title: Új, Azure Application Gateway-példánnyal rendelkező új AK-fürthöz tartozó bejövő vezérlő-bővítmény engedélyezése
-description: Ismerje meg, hogyan használhatja az Azure CLI-t az új, Application Gateway példánnyal rendelkező új AK-fürt bemenő vezérlő bővítményének engedélyezéséhez.
+title: 'Oktatóanyag: a bejövő adatkezelő beépülő modul engedélyezése egy új, Azure Application Gateway-példánnyal rendelkező új AK-fürthöz'
+description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure CLI-t az új, Application Gateway példánnyal rendelkező új AK-fürthöz tartozó bejövő vezérlő-bővítmény engedélyezéséhez.
 services: application-gateway
 author: caya
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 06/10/2020
+ms.date: 09/24/2020
 ms.author: caya
-ms.openlocfilehash: 620fe5851f9dbde01b2206595fa79b61f62deb66
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: ab917fe476a40eb8ea559bc08e52d4bbf16a8436
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89595920"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91285587"
 ---
 # <a name="tutorial-enable-the-ingress-controller-add-on-preview-for-a-new-aks-cluster-with-a-new-application-gateway-instance"></a>Oktatóanyag: az új, Application Gateway példánnyal rendelkező új AK-fürthöz tartozó bejövő vezérlő bővítmény (előzetes verzió) engedélyezése
 
@@ -30,11 +30,12 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Helyezzen üzembe egy minta alkalmazást a AGIC használatával az AK-fürtön történő bejövő forgalomhoz.
 > * Győződjön meg arról, hogy az alkalmazás elérhető Application Gatewayon keresztül.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+## <a name="prerequisites"></a>Előfeltételek
+
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>Előfeltételek
 
 Ha a parancssori felület helyi telepítését és használatát választja, az oktatóanyaghoz az Azure CLI 2.0.4 vagy újabb verzióját kell futtatnia. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket.
 
@@ -134,7 +135,7 @@ az group delete --name myResourceGroup
 ```
 
 ## <a name="next-steps"></a>Következő lépések
-* [További információ a AGIC-bővítmény letiltásáról](./ingress-controller-disable-addon.md)
-* [A AGIC által támogatott megjegyzések ismertetése](./ingress-controller-annotations.md)
-* [AGIC kapcsolatos hibák elhárítása](./ingress-controller-troubleshoot.md)
+
+> [!div class="nextstepaction"]
+> [További információ a AGIC-bővítmény letiltásáról](./ingress-controller-disable-addon.md)
 

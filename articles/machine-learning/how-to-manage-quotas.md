@@ -11,12 +11,12 @@ ms.author: nigup
 ms.date: 05/08/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperfq4
-ms.openlocfilehash: c86397b20a95f045ac5edfeb2cfa4833982df990
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a25dcc187c1bb172106a3972c1cb57dfd473bc2f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897423"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322376"
 ---
 # <a name="manage--increase-quotas-for-resources-with-azure-machine-learning"></a>Erőforrások kezelése & az erőforrásokra vonatkozó kvóták növelése Azure Machine Learning
 
@@ -136,6 +136,29 @@ Ha a kvóta megnövekedését kéri, ki kell választania azt a szolgáltatást,
 
 > [!NOTE]
 > Az [ingyenes próbaverziós előfizetések](https://azure.microsoft.com/offers/ms-azr-0044p) nem jogosultak a korlát vagy a kvóta növelésére. Ha [ingyenes próbaverziós előfizetéssel](https://azure.microsoft.com/offers/ms-azr-0044p)rendelkezik, [az utólagos](https://azure.microsoft.com/offers/ms-azr-0003p/) elszámolású előfizetésre válthat. További információ: az [Azure ingyenes próbaverziójának frissítése az](../billing/billing-upgrade-azure-subscription.md) utólagos elszámolású és az  [ingyenes próbaverziós előfizetésre vonatkozó gyakori kérdések](https://azure.microsoft.com/free/free-account-faq).
+
+## <a name="private-endpoint-and-private-dns-quota-increases"></a>A magánhálózati végpont és a magánhálózati DNS-kvóta növekszik
+
+Az előfizetésben létrehozható privát végpontok és saját DNS-zónák száma korlátozott. Míg a Azure Machine Learning erőforrásokat hoz létre az (ügyfél-) előfizetésben, bizonyos esetekben létrehozhat erőforrásokat egy Microsoft tulajdonú előfizetésben. A következő esetekben előfordulhat, hogy kvótát kell igényelnie a Microsoft tulajdonában lévő előfizetésben:
+
+* __Privát hivatkozás engedélyezve munkaterülete ügyfél által felügyelt kulccsal (CMK)__
+* __Azure Container Registry a virtuális hálózat mögötti munkaterülethez__
+* Az __Azure Kubernetes Service-fürt saját munkaterülethez való csatolása__.
+
+Ezen forgatókönyvek esetében a következő lépések végrehajtásával igényelhet támogatást:
+
+1. [Hozzon létre egy Azure-támogatási kérést](/azure/azure-portal/supportability/how-to-create-azure-support-request#create-a-support-request) , és válassza ki az alábbi beállításokat az __alapok__ szakaszban:
+
+    | Mező | Kiválasztás |
+    | ----- | ----- |
+    | Probléma típusa | Technikai |
+    | Szolgáltatás | Saját szolgáltatások. A legördülő listában válassza a __Machine learning__ lehetőséget. |
+    | Probléma típusa | Munkaterület beállítása, SDK és parancssori felület |
+    | Probléma altípusa | Probléma a munkaterület kiépítésével vagy kezelésével |
+
+2. A __részletek__ szakaszban a __Leírás__ mező használatával adja meg a használni kívánt Azure-régiót és a használni kívánt forgatókönyvet. Ha több előfizetés esetében is kvótát kell megnövelnie, akkor ebben a mezőben az előfizetési azonosítók is szerepelnek.
+
+3. A kérelem létrehozásához használja a __create (létrehozás__ ) lehetőséget.
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -1,5 +1,5 @@
 ---
-title: Helyszíni SSIS számítási feladatok migrálása a Azure Data Factory SSIS
+title: Helyszíni SQL Server Integration Services (SSIS) számítási feladatok migrálása Azure Data Factory (ADF) SSIS
 description: Telepítse át a helyszíni SSIS számítási feladatokat az ADF-SSIS.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 9/3/2019
-ms.openlocfilehash: 53085544be9477c03fdbbc27e709bd80dea25b92
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: c2b95108b8c6b1e4db9d5a494e64774609ed5574
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88186063"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322648"
 ---
 # <a name="migrate-on-premises-ssis-workloads-to-ssis-in-adf"></a>Helyszíni SSIS számítási feladatok migrálása az ADF-SSIS
 
@@ -36,16 +36,16 @@ A teljes áttelepítési terv létrehozásához alapos értékelés segít azono
 
 A Data Migration Assistant (DMA) egy ingyenesen letölthető eszköz erre a célra, amelyet helyileg lehet telepíteni és végrehajtani. Az **integrációs szolgáltatások** típusú DMA-értékelési projekt hozható létre a kötegekben lévő SSIS-csomagok értékeléséhez, valamint a következő kategóriákban bemutatott kompatibilitási problémák azonosításához:
 
-- Áttelepítési blokkolók: ezek a kompatibilitási problémák, amelyek letiltják az áttelepítési forrás csomagjainak futtatását Azure-SSIS IRon. A DMA útmutatást nyújt a problémák megoldásához.
+- Áttelepítési blokkolók: kompatibilitási problémák, amelyek letiltják az áttelepítési forrás csomagjainak futtatását Azure-SSIS IRon. A DMA útmutatást nyújt a problémák megoldásához.
 
-- Informatív problémák: ezek részben támogatott vagy elavult funkciók, amelyek a forrás csomagjaiban használatosak. A DMA a javaslatok átfogó készletét, az Azure-ban elérhető alternatív megközelítéseket és a megoldási lépések enyhítését teszi lehetővé.
+- Informatív problémák: a forrás-csomagokban használt részben támogatott vagy elavult funkciók. A DMA a javaslatok átfogó készletét, az Azure-ban elérhető alternatív megközelítéseket és a megoldási lépések enyhítését teszi lehetővé.
 
 ### <a name="four-storage-types-for-ssis-packages"></a>Négy tárolási típus a SSIS-csomagokhoz
 
-- SSIS-katalógus (SSISDB). Ez a SQL Server 2012-es kiadásban jelent meg, és a SSIS-projektek/csomagok kezeléséhez használt tárolt eljárásokat, nézeteket és táblázat értékű függvényeket tartalmaz.
+- SSIS-katalógus (SSISDB). A SQL Server 2012-ben jelent meg, és tárolt eljárásokat, nézeteket és táblázat értékű függvényeket tartalmaz, amelyek a SSIS-projektek/-csomagok használatával működnek.
 - Fájlrendszer.
 - SQL Server rendszeradatbázis (MSDB).
-- SSIS-csomag tárolója. Ez a csomag-felügyeleti réteg két altípuson felül van:
+- SSIS-csomag tárolója. Két altípusra épülő csomagkezelő réteg:
   - A MSDB, amely a SSIS-csomagok tárolására használt SQL Server rendszeradatbázisa.
   - Felügyelt fájlrendszer, amely a SSIS-csomagok tárolására szolgáló SQL Server telepítési útvonal adott mappája.
 
@@ -53,12 +53,14 @@ A DMA jelenleg támogatja a **fájlrendszerben**, a **Package Store**-ban és a 
 
 Szerezze be a [DMA](https://docs.microsoft.com/sql/dma/dma-overview)-t, és [végezze el a csomag értékelését](https://docs.microsoft.com/sql/dma/dma-assess-ssis).
 
-## <a name="migration"></a>Migrálás
+## <a name="migration"></a>Áttelepítés
 
 [A forrás](#four-storage-types-for-ssis-packages) SSIS csomagjainak és az adatbázis-munkaterhelések áttelepítési célhelyének függvényében a **SSIS-csomagok** áttelepítésének lépései, valamint a SSIS-csomagok végrehajtásának elvégzésére szolgáló **SQL Server Agent feladatok** eltérőek lehetnek. Két forgatókönyv létezik:
 
 - [Az **Azure SQL felügyelt példánya** adatbázis-munkaterhelési célként](#azure-sql-managed-instance-as-database-workload-destination)
 - [**Azure SQL Database** adatbázis-munkaterhelés célhelyként](#azure-sql-database-as-database-workload-destination)
+
+Emellett praktikus módszer a [SSIS DevOps-eszközök](https://docs.microsoft.com/sql/integration-services/devops/ssis-devops-overview)használatára is, így a Batch-csomagok újratelepítése az áttelepítési célhelyre.  
 
 ### <a name="azure-sql-managed-instance-as-database-workload-destination"></a>Az **Azure SQL felügyelt példánya** adatbázis-munkaterhelési célként
 
@@ -67,7 +69,7 @@ Szerezze be a [DMA](https://docs.microsoft.com/sql/dma/dma-overview)-t, és [vé
 |SSISDB|[**SSISDB** migrálása](scenario-ssis-migration-ssisdb-mi.md)|<li>[SSIS-feladatok migrálása az Azure SQL felügyelt példány-ügynökére](scenario-ssis-migration-ssisdb-mi.md#ssis-jobs-to-sql-managed-instance-agent) <li>Konvertálja őket ADF-folyamatokba/tevékenységekbe/eseményindítókkal parancsfájlok/SSMS/ADF-portálon keresztül. További információ: SSMS- [ütemezési funkció](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms).|
 |Fájlrendszer|Az dtinstall/dtutil/manuális másolással, vagy a fájlrendszerben a VNet/saját üzemeltetésű integrációs modulon keresztüli eléréshez való hozzáférés érdekében telepítse újra azokat a fájlmegosztás/Azure Files számára. További információ: [dtutil segédprogram](https://docs.microsoft.com/sql/integration-services/dtutil-utility).|<li>[SSIS-feladatok migrálása az Azure SQL felügyelt példány-ügynökére](scenario-ssis-migration-ssisdb-mi.md#ssis-jobs-to-sql-managed-instance-agent) <li> Migrálás a [SSIS-feladatok áttelepítése varázslóval a SSMS-ben](how-to-migrate-ssis-job-ssms.md) <li>Konvertálja őket ADF-folyamatokba/tevékenységekbe/eseményindítókkal parancsfájlok/SSMS/ADF-portálon keresztül. További információ: SSMS- [ütemezési funkció](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms).|
 |SQL Server (MSDB)|Exportálja őket a fájlrendszerekbe/fájlmegosztásba/Azure Filesba a SSMS/dtutil használatával. További információ: SSIS- [csomagok exportálása](https://docs.microsoft.com/sql/integration-services/service/package-management-ssis-service#import-and-export-packages).|Konvertálja őket ADF-folyamatokba/tevékenységekbe/eseményindítókkal parancsfájlok/SSMS/ADF-portálon keresztül. További információ: SSMS- [ütemezési funkció](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms).|
-|Package Store|Exportálja őket a fájlrendszerek/fájlmegosztás/Azure Files SSMS/dtutil keresztül, vagy telepítse azokat a fájlmegosztás/Azure Files a dtinstall/dtutil/manuális másolással, vagy tartsa azokat a fájlrendszerekben a VNet/saját üzemeltetésű integrációs modulon keresztül való hozzáféréshez. További információ: dtutil segédprogram. További információ: [dtutil segédprogram](https://docs.microsoft.com/sql/integration-services/dtutil-utility).|<li>[SSIS-feladatok migrálása az Azure SQL felügyelt példány-ügynökére](scenario-ssis-migration-ssisdb-mi.md#ssis-jobs-to-sql-managed-instance-agent) <li> Konvertálja őket ADF-folyamatokba/tevékenységekbe/eseményindítókkal parancsfájlok/SSMS/ADF-portálon keresztül. További információ: SSMS- [ütemezési funkció](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms).|
+|Package Store|Exportálja őket a Package Store-ba a SSMS/dtutil-n keresztül, vagy telepítse újra a csomagokat a dtinstall/dtutil/manuális másolás használatával. További információ: [csomagok kezelése Azure-SSIS Integration Runtime Package Store](azure-ssis-integration-runtime-package-store.md)-ban.|<li>[SSIS-feladatok migrálása az Azure SQL felügyelt példány-ügynökére](scenario-ssis-migration-ssisdb-mi.md#ssis-jobs-to-sql-managed-instance-agent) <li> Konvertálja őket ADF-folyamatokba/tevékenységekbe/eseményindítókkal parancsfájlok/SSMS/ADF-portálon keresztül. További információ: SSMS- [ütemezési funkció](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms).|
 
 ### <a name="azure-sql-database-as-database-workload-destination"></a>**Azure SQL Database** adatbázis-munkaterhelés célhelyként
 
@@ -82,9 +84,18 @@ Szerezze be a [DMA](https://docs.microsoft.com/sql/dma/dma-overview)-t, és [vé
 
 - [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/introduction)
 - [Database Migration Assistant](https://docs.microsoft.com/sql/dma/dma-overview)
-- [A SSIS számítási feladatainak átemelése és áthelyezése a felhőbe](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-lift-shift-ssis-packages-overview?view=sql-server-2017)
+- [A SSIS számítási feladatainak átemelése és áthelyezése a felhőbe](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-lift-shift-ssis-packages-overview)
+- [SSIS DevOps-eszközök](https://docs.microsoft.com/sql/integration-services/devops/ssis-devops-overview)
 - [SSIS-csomagok migrálása a felügyelt Azure SQL-példányra](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages-managed-instance)
 - [Csomagok újbóli üzembe helyezése Azure SQL Database](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages)
+
+- [Helyszíni adatokhoz való hozzáférés Azure-SSIS Integration Runtime](https://techcommunity.microsoft.com/t5/sql-server-integration-services/vnet-or-no-vnet-secure-data-access-from-ssis-in-azure-data/ba-p/1062056)
+- [Azure-SSIS Integration Runtime beállításainak testreszabása](how-to-configure-azure-ssis-ir-custom-setup.md)
+- [Adattárak és fájlmegosztások elérése Windows-hitelesítéssel, Azure-beli SSIS-csomagokból](ssis-azure-connect-with-windows-auth.md)
+- [Felügyelt identitások hitelesítésének használata](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-storage-connection-manager#managed-identities-for-azure-resources-authentication)
+- [Az Azure Key Vault használata](store-credentials-in-key-vault.md)
+- [A Azure-SSIS Integration Runtime konfigurálása nagy teljesítményhez](configure-azure-ssis-integration-runtime-performance.md)
+- [Azure-SSIS integrációs modul indítása és leállítása ütemezés szerint](how-to-schedule-azure-ssis-integration-runtime.md)
 
 ## <a name="next-steps"></a>Következő lépések
 

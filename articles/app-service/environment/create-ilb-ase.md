@@ -4,15 +4,15 @@ description: Megtudhatja, hogyan hozhat létre App Service környezetet belső t
 author: ccompy
 ms.assetid: 0f4c1fa4-e344-46e7-8d24-a25e247ae138
 ms.topic: quickstart
-ms.date: 08/05/2019
+ms.date: 09/16/2020
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: f2124dd77e3e5d9828ea457a6bccdf7d1bc05405
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 1bda52227737b082927dd1449fa6469cf849ff15
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961771"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273262"
 ---
 # <a name="create-and-use-an-internal-load-balancer-app-service-environment"></a>Belső Load Balancer létrehozása és használata App Service Environment 
 
@@ -100,15 +100,26 @@ Az ILB ASE támogatja a Functionst és a WebJobs-feladatokat is, de ahhoz, hogy 
 
 ## <a name="dns-configuration"></a>DNS-konfiguráció 
 
-Külső virtuális IP-cím használata esetén az Azure kezeli a DNS-t. Az ASE környezetben létrehozott összes alkalmazás automatikusan hozzáadódik Azure DNS-hez, amely egy nyilvános DNS. Az ILB ASE környezetben Önnek kell kezelnie a saját DNS-ét. A ILB-előállítók által használt tartomány utótagja a kiegészítő csomag nevétől függ. A tartomány utótagja a * &lt; &gt; appserviceenvironment.net neve.* A ILB IP-címe a portálon az **IP-címek**területen található. 
+Ha külső beadást használ, a szolgáltatón keresztül készített alkalmazások regisztrálva vannak Azure DNSban. Az alkalmazások nyilvánosan elérhetővé tételéhez nincs szükség további lépésekre. A ILB bevezetésével a saját DNS-t kell kezelnie. Ezt megteheti a saját DNS-kiszolgálójában vagy Azure DNS privát zónában.
 
-A DNS konfigurálása:
+A DNS konfigurálása a saját DNS-kiszolgálójában a ILB-alapú központtal:
 
-- hozzon létre egy zónát a benyújtó * &lt; neve számára &gt; . appserviceenvironment.net*
-- hozzon létre egy olyan rekordot az adott zónában, amely * a ILB IP-címére mutat.
-- hozzon létre egy olyan rekordot az adott zónában, amely a @-t a ILB IP-címére mutat.
-- hozzon létre egy zónát a központhoz tartozó * &lt; név &gt; . appserviceenvironment.net* neve: SCM
-- hozzon létre egy olyan rekordot az SCM-zónában, amely * a ILB IP-címére mutat.
+1. zóna létrehozása a <ASE name> . appserviceenvironment.net
+2. hozzon létre egy olyan rekordot az adott zónában, amely * a ILB IP-címére mutat.
+3. hozzon létre egy olyan rekordot az adott zónában, amely a @-t a ILB IP-címére mutat.
+4. zóna létrehozása a <ASE name> . appserviceenvironment.net, SCM néven
+5. hozzon létre egy olyan rekordot az SCM-zónában, amely * a ILB IP-címére mutat.
+
+A DNS konfigurálása Azure DNS privát zónában:
+
+1. hozzon létre egy appserviceenvironment.net nevű Azure DNS privát zónát <ASE name>
+2. hozzon létre egy olyan rekordot az adott zónában, amely * a ILB IP-címére mutat.
+3. hozzon létre egy olyan rekordot az adott zónában, amely a @-t a ILB IP-címére mutat.
+4. hozzon létre egy olyan rekordot az adott zónában, amely a *. SCM-t a ILB IP-címére mutat.
+
+A szolgáltatói alapértelmezett tartomány utótagjának DNS-beállításai nem korlátozzák, hogy az alkalmazások csak az adott nevek számára legyenek elérhetők. Egyéni tartománynevet az alkalmazások érvényesítése nélkül is beállíthat egy ILB-ben. Ha ezután létre szeretne hozni egy contoso.net nevű zónát, ezt megteheti, és rámutathat a ILB IP-címére. Az Egyéni tartománynév az alkalmazásra vonatkozó kérelmek esetében működik, de nem az SCM-helyhez. Az SCM-hely csak. SCM-ben érhető el. <appname> <asename> appserviceenvironment.net.
+
+A ( <asename> z) nevű zóna. a appserviceenvironment.net globálisan egyedi. A 2019. május előtt az ügyfelek megadhatják a ILB beadásának tartományi utótagját. Ha a. contoso.com-t szeretné használni a tartománynév-utótaghoz, akkor ezt megteheti, és ez magában foglalja az SCM-helyet. A modellel kapcsolatos kihívások is megtalálhatók; az alapértelmezett SSL-tanúsítvány kezelése, az egyszeri bejelentkezés hiánya az SCM-hellyel, valamint a helyettesítő tanúsítvány használatára vonatkozó követelmény. A ILB-ben használt alapértelmezett tanúsítvány-frissítési folyamat megszakadt, és az alkalmazás újraindítását is okozta. Ezeknek a problémáknak a megoldásához a ILB-bevezetési viselkedés úgy módosult, hogy a szolgáltató neve és a Microsoft tulajdonában lévő utótag alapján egy tartományi utótagot használjon. A ILB-beli beváltási viselkedés változása csak a 2019 májusi ILB-ASE érinti. A meglévő ILB-ASE továbbra is kezelni kell a bevezetési és DNS-konfigurációjuk alapértelmezett tanúsítványát.
 
 ## <a name="publish-with-an-ilb-ase"></a>Közzététel ILB ASE környezetben
 
@@ -130,7 +141,7 @@ Ha többet szeretne megtudni arról, hogyan konfigurálhatja a ILB a WAF eszköz
 
 Az 2019. május előtt elkészített ILB-ASE a tartomány utótagjának a központilag történő létrehozása során történő beállításához szükséges. Emellett az adott tartományi utótagon alapuló alapértelmezett tanúsítvány feltöltésére is szükség van. Emellett egy régebbi ILB-benyújtó használatával nem végezheti el az egyszeri bejelentkezést a kudu-konzolon a ILB-elősegítő alkalmazásokkal. Ha a DNS-t egy régebbi ILB-alapú központhoz konfigurálja, akkor egy olyan rekordot kell beállítania egy olyan zónában, amely megfelel a tartomány utótagjának. 
 
-## <a name="get-started"></a>Bevezetés ##
+## <a name="get-started"></a>Első lépések ##
 
 * Az ASE használatával kapcsolatos első lépésekről [Az App Service Environment bemutatása][Intro] témakörben olvashat. 
 
