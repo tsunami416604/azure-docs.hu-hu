@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: 1bbb410b3aac7d1e30db075003eb30ec27b11a38
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 20e20968b6367e0a8c0131d6e7e8d15e56c06d63
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926586"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91363222"
 ---
 # <a name="how-to-protect-private-dns-zones-and-records"></a>Privát DNS-zónák és-rekordok elleni védelem
 
@@ -102,9 +102,9 @@ Az engedélyek a rekord beállítása szintjén lesznek alkalmazva.  A felhaszn�
 
 A Record-set szintű RBAC engedélyek a Azure Portalon keresztül konfigurálhatók a **Access Control (iam)** gomb használatával a rekord beállítása lapon:
 
-![Rögzített szintű RBAC a Azure Portal használatával](./media/dns-protect-private-zones-recordsets/rbac3.png)
+![A képernyőképen a Access Control (I M) gomb látható.](./media/dns-protect-private-zones-recordsets/rbac3.png)
 
-![Rögzített szintű RBAC a Azure Portal használatával](./media/dns-protect-private-zones-recordsets/rbac4.png)
+![A képernyőképen Access Control a szerepkör-hozzárendelés hozzáadása lehetőség látható.](./media/dns-protect-private-zones-recordsets/rbac4.png)
 
 A Record-set szintű RBAC engedélyek [a Azure PowerShell használatával](../role-based-access-control/role-assignments-powershell.md)is megadhatók:
 
@@ -164,8 +164,8 @@ Az alábbi példa egy egyéni szerepkör-definíciót mutat be kizárólag a CNA
 
 A műveletek tulajdonság a következő DNS-specifikus engedélyeket határozza meg:
 
-* `Microsoft.Network/privateDnsZones/CNAME/*`teljes hozzáférést biztosít a CNAME-rekordokhoz
-* `Microsoft.Network/privateDNSZones/read`engedélyt ad a DNS privát zónák olvasására, de nem módosítja őket, így megtekintheti azt a zónát, amelyben a CNAME létrejött.
+* `Microsoft.Network/privateDnsZones/CNAME/*` teljes hozzáférést biztosít a CNAME-rekordokhoz
+* `Microsoft.Network/privateDNSZones/read` engedélyt ad a DNS privát zónák olvasására, de nem módosítja őket, így megtekintheti azt a zónát, amelyben a CNAME létrejött.
 
 > [!NOTE]
 > Egy egyéni Azure-szerepkör használatával megakadályozhatja a rekordhalmazok törlését, miközben továbbra is lehetővé teszi a frissítések frissítését. Megakadályozza a rekordhalmazok törlését, de nem akadályozza meg őket a módosításban.  Az engedélyezett módosítások közé tartoznak a rekordok hozzáadása és eltávolítása a rekordhalmazból, beleértve az összes rekord eltávolítását is, ha üres rekordhalmazt szeretne hagyni. Ennek ugyanaz a hatása, mint a rekord DNS-feloldási nézőpontból való törlése.
@@ -285,7 +285,7 @@ Az egyéni szerepkör a fiókok által elért összes zónára vonatkozóan műk
 
 Mindkét módszert – erőforrás-zárolásokat és egyéni szerepköröket – egyszerre is használhatja, a DNS-zónák védelmének mélyreható megközelítésével.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a RBAC használatáról: [a Azure Portal hozzáférés-kezelésének első lépései](../role-based-access-control/overview.md).
 * További információ az erőforrás-zárolások használatáról: [erőforrások zárolása Azure Resource Managersal](../azure-resource-manager/management/lock-resources.md).

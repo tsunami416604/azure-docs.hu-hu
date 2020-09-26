@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: tutorial
 ms.date: 11/29/2018
 ms.author: philmea
-ms.openlocfilehash: eaca93ac8a4e8c660be9618aefb27921a4e0a2eb
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 8309b625a590131c5f521335e180967ab2c2667c
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "77565578"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91363154"
 ---
 # <a name="tutorial-manage-your-connected-devices-in-bulk"></a>Oktatóanyag: a csatlakoztatott eszközök tömeges kezelése
 
@@ -147,7 +147,7 @@ Használja Azure Storage-fiókját az új belső vezérlőprogram-fájl Felhőbe
 
 1. A feltöltés befejeződése után a IoT fejlesztői készlet-eszköz újraindul. Ha az újraindítás befejeződött, a IoT fejlesztői készlet képernyője a következőt jeleníti meg **: az FW verziója: 1.0.0**, és az új belső vezérlőprogram ellenőrzése:
 
-    ![OTA-1](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-1.jpg)
+    ![A fénykép az I o T fejlesztői készlet eszközt jeleníti meg a belső vezérlőprogram verziójának megjelenítésével és az új belső vezérlőprogram ellenőrzésével.](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-1.jpg)
 
 ## <a name="create-a-device-configuration"></a>Eszköz konfigurációjának létrehozása
 
@@ -248,23 +248,23 @@ Ebben a szakaszban olyan központi telepítést hoz létre és hajt végre, amel
 
 Néhány perc elteltével a IoT fejlesztői készlet lekéri az új belső vezérlőprogram adatait, és megkezdi a letöltését az eszközre:
 
-![OTA – 2](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-2.jpg)
+![A fénykép az I o T fejlesztői készlet eszközt jeleníti meg az új belső vezérlőprogram-verzió letöltését megjelenítő képernyővel.](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-2.jpg)
 
 A hálózat sebességétől függően a letöltés akár néhány percet is igénybe vehet. A belső vezérlőprogram letöltése után az eszköz ellenőrzi a fájl méretét és a CRC-értéket. **Ha az** ellenőrzés sikeres, a MXChip megjelenített képernyő jelenik meg.
 
-![OTA-3](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-3.jpg)
+![A fénykép az I o T fejlesztői készlet eszközt jeleníti meg a belső vezérlőprogram verziójának megjelenítésével és sikeres ellenőrzés céljából.](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-3.jpg)
 
 Ha az ellenőrzések sikeresek, az eszköz újraindul. Az újraindítás előtt egy **5** és **0** közötti visszaszámlálást fog látni.
 
-![OTA-4](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-4.jpg)
+![A fénykép az I o T fejlesztői készlet-eszköz újraindításra való felkészülését mutatja.](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-4.jpg)
 
 Az újraindítás után a IoT fejlesztői készlet bootloader frissíti a belső vezérlőprogramot az új verzióra. A frissítés több másodpercig is eltarthat. Ebben a szakaszban az RGB-eszköz LED-je piros, a képernyő pedig üres.
 
-![OTA-5](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-5.jpg)
+![A fénykép a frissítést végző I o T fejlesztői készlet-eszközt jeleníti meg. Nincs megjeleníthető kijelző, de R G B L E D izzó vörös.](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-5.jpg)
 
 Ha az újraindítás befejeződött, a IoT fejlesztői készlet-eszköz mostantól a belső vezérlőprogram 1.0.1-es verzióját futtatja.
 
-![OTA-6](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-6.jpg)
+![A fénykép az I o T fejlesztői készlet eszközt jeleníti meg az új belső vezérlőprogram-verzió megjelenítésével.](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-6.jpg)
 
 A **központi telepítések** lapon kattintson a központi telepítésre, és tekintse meg az eszközök állapotát a frissítéskor. Megtekintheti az egyes eszközök állapotát az eszköz csoportjában, valamint a definiált egyéni metrikákat is.
 

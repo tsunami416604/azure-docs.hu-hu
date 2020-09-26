@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: reference
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: fcc43caf895dadfaf832a47c3254f9b828bcb71a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e42d9713d1d61bb681c0ee51e46cc52eb0bcc807
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77430805"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91363188"
 ---
 # <a name="swagger-documentation"></a>A Swagger dokumentációja
 
@@ -32,7 +32,7 @@ Be kell állítania a hencegő szolgáltatást ugyanahhoz a régióhoz, mint a b
 
 1. Nyissa meg a következőt: https://editor.swagger.io
 2. Kattintson a **fájl**, majd az **Importálás** elemre.
-3. Adja meg a felvágási URL-címet, beleértve a Speech Service-előfizetés régióját`https://<your-region>.cris.ai/docs/v2.0/swagger`
+3. Adja meg a felvágási URL-címet, beleértve a Speech Service-előfizetés régióját `https://<your-region>.cris.ai/docs/v2.0/swagger`
 4. Kattintson az **ügyfél előállítása** és a Python elemre.
 5. Az ügyféloldali kódtár mentése
 
@@ -44,7 +44,7 @@ Használhatja a [githubon a Speech Service-mintákkal](https://aka.ms/csspeech/s
 * [REST API: beszéd – szöveg](rest-speech-to-text.md)
 * [REST API: szövegről beszédre](rest-text-to-speech.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Speech Service-minták a githubon](https://aka.ms/csspeech/samples).
-* [Beszédfelismerési szolgáltatás előfizetési kulcsának beszerzése ingyenesen](get-started.md)
+* [Beszédfelismerési szolgáltatás előfizetési kulcsának beszerzése ingyenesen](overview.md#try-the-speech-service-for-free)
