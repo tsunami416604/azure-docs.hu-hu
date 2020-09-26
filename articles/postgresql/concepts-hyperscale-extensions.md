@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: de2579868ad72bdf4cf78c552e9553f289ecabd0
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: ed023f17e19c6a018f55cb95df6447c6e5474ce8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259063"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314878"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql--hyperscale-citus"></a>PostgreSQL-bővítmények Azure Database for PostgreSQLban – nagy kapacitású (Citus)
 
@@ -31,7 +31,7 @@ A következő táblázat a Azure Database for PostgreSQL által jelenleg támoga
 ### <a name="data-types-extensions"></a>Adattípusok bővítményei
 
 > [!div class="mx-tableFixed"]
-> | **Kiterjesztés** | **Leírás** |
+> | **Mellék** | **Leírás** |
 > |---|---|
 > | [citext](https://www.postgresql.org/docs/current/static/citext.html) | Kis-és nagybetűket nem megkülönböztető karakterlánc-típust biztosít. |
 > | [adatkocka](https://www.postgresql.org/docs/current/static/cube.html) | Adattípust biztosít a többdimenziós kockákhoz. |
@@ -46,7 +46,7 @@ A következő táblázat a Azure Database for PostgreSQL által jelenleg támoga
 ### <a name="full-text-search-extensions"></a>Teljes szöveges keresési bővítmények
 
 > [!div class="mx-tableFixed"]
-> | **Kiterjesztés** | **Leírás** |
+> | **Mellék** | **Leírás** |
 > |---|---|
 > | [dict \_ int](https://www.postgresql.org/docs/current/static/dict-int.html) | Szöveges keresési szótári sablont biztosít az egész számokhoz. |
 > | [dict \_ xsyn](https://www.postgresql.org/docs/current/dict-xsyn.html) | Szöveges keresési szótár sablon a kiterjesztett szinonimák feldolgozásához. |
@@ -55,7 +55,7 @@ A következő táblázat a Azure Database for PostgreSQL által jelenleg támoga
 ### <a name="functions-extensions"></a>Functions-bővítmények
 
 > [!div class="mx-tableFixed"]
-> | **Kiterjesztés** | **Leírás** |
+> | **Mellék** | **Leírás** |
 > |---|---|
 > | [autoinc](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.7) | Függvények az automatikusan növekvő mezőkhöz. |
 > | [earthdistance](https://www.postgresql.org/docs/current/static/earthdistance.html) | Lehetővé teszi a nagy kör alakú távolságok kiszámítását a Föld felszínén. |
@@ -74,10 +74,10 @@ A következő táblázat a Azure Database for PostgreSQL által jelenleg támoga
 > | [timetravel](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.6) | Az időutazás megvalósításához szükséges függvények. |
 > | [UUID – ossp](https://www.postgresql.org/docs/current/static/uuid-ossp.html) | Univerzálisan egyedi azonosítókat (UUID-ket) generál. |
 
-### <a name="hyperscale-extensions"></a>Nagy kapacitású-bővítmények
+### <a name="hyperscale-citus-extensions"></a>Nagy kapacitású (Citus) bővítmények
 
 > [!div class="mx-tableFixed"]
-> | **Kiterjesztés** | **Leírás** |
+> | **Mellék** | **Leírás** |
 > |---|---|
 > | [citus](https://github.com/citusdata/citus) | Citus elosztott adatbázis. |
 > | szegmens- \_ újrakiegyensúlyozó | A kiszolgálókon tárolt adatok biztonságos átszámolása csomópontok hozzáadása vagy eltávolítása esetén. |
@@ -85,7 +85,7 @@ A következő táblázat a Azure Database for PostgreSQL által jelenleg támoga
 ### <a name="index-types-extensions"></a>Index típusú bővítmények
 
 > [!div class="mx-tableFixed"]
-> | **Kiterjesztés** | **Leírás** |
+> | **Mellék** | **Leírás** |
 > |---|---|
 > | [Bloom](https://www.postgresql.org/docs/current/bloom.html) | A Bloom hozzáférési módszere – aláírási fájl alapú index. |
 > | [fa \_ gin](https://www.postgresql.org/docs/current/static/btree-gin.html) | Olyan minta GIN operátori osztályokat biztosít, amelyek bizonyos adattípusok esetén B-fa viselkedést implementálnak. |
@@ -94,14 +94,14 @@ A következő táblázat a Azure Database for PostgreSQL által jelenleg támoga
 ### <a name="language-extensions"></a>Nyelvi bővítmények
 
 > [!div class="mx-tableFixed"]
-> | **Kiterjesztés** | **Leírás** |
+> | **Mellék** | **Leírás** |
 > |---|---|
 > | [plpgsql](https://www.postgresql.org/docs/current/static/plpgsql.html) | PL/pgSQL betölthető eljárási nyelv. |
 
 ### <a name="miscellaneous-extensions"></a>Egyéb bővítmények
 
 > [!div class="mx-tableFixed"]
-> | **Kiterjesztés** | **Leírás** |
+> | **Mellék** | **Leírás** |
 > |---|---|
 > | [AdminPack](https://www.postgresql.org/docs/current/adminpack.html) | A PostgreSQL-hez készült felügyeleti függvények. |
 > | [amcheck](https://www.postgresql.org/docs/current/amcheck.html) | Függvények a kapcsolatok integritásának ellenőrzéséhez. |
@@ -127,7 +127,7 @@ A következő táblázat a Azure Database for PostgreSQL által jelenleg támoga
 ### <a name="postgis-extensions"></a>PostGIS-bővítmények
 
 > [!div class="mx-tableFixed"]
-> | **Kiterjesztés** | **Leírás** |
+> | **Mellék** | **Leírás** |
 > |---|---|
 > | [PostGIS](https://www.postgis.net/), PostGIS \_ topológia, PostGIS \_ Tiger \_ geocoder, PostGIS \_ sfcgal | A PostgreSQL térbeli és földrajzi objektumai. |
 > | \_a címek szabványosítása, a \_ szabványosítási adatkezelési \_ szolgáltatás \_ | A címek összetevőire való elemzéséhez használatos. A helymeghatározáshoz-címek normalizálása lépésének támogatásához használatos. |

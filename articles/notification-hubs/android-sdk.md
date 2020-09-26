@@ -1,6 +1,6 @@
 ---
 title: Leküldéses értesítések küldése Androidra az Azure Notification Hubs és a Firebase SDK-verzió 1.0.0-Preview1
-description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure Notification Hubs és a Google Firebase Cloud Messaging szolgáltatást leküldéses értesítések küldésére Android-eszközökre.
+description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure Notification Hubs és a Google Firebase Cloud Messaging szolgáltatást leküldéses értesítések küldésére Android-eszközökre (a 1.0.0-Preview1 verzióra).
 author: sethmanheim
 ms.author: sethm
 ms.date: 5/28/2020
@@ -9,12 +9,12 @@ ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 05/27/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ae1d2dfaf7d83d3b2323812f637bddd91b9a2ea2
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 63841bd603373d0fb325bcf82511ce3fb07b4136
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018229"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91315191"
 ---
 # <a name="tutorial-send-push-notifications-to-android-devices-using-firebase-sdk-version-100-preview1"></a>Oktatóanyag: leküldéses értesítések küldése Android-eszközökre a Firebase SDK-Preview1 használatával
 

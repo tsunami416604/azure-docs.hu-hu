@@ -1,6 +1,6 @@
 ---
 title: Leküldéses értesítések küldése adott Android-alkalmazásoknak az Azure Notification Hubs
-description: Ebből az anyagból megtudhatja, hogyan küldhet leküldéses értesítéseket meghatározott felhasználóknak az Azure Notification Hubs használatával.
+description: Megtudhatja, hogyan küldhet leküldéses értesítéseket adott Android-alkalmazásokba az Azure Notification Hubs használatával.
 documentationcenter: android
 services: notification-hubs
 author: sethmanheim
@@ -17,12 +17,12 @@ ms.date: 09/11/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 09/11/2019
-ms.openlocfilehash: fae8e4d57f8b0fc1b89309d68bf7e21dce86f3fa
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 870842074bb4a0012a48115586a8ad571275d470
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317518"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91281031"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-android-apps-using-azure-notification-hubs"></a>Oktatóanyag: leküldéses értesítések küldése adott Android-alkalmazásoknak az Azure Notification Hubs
 
@@ -493,7 +493,7 @@ A következő lépés az oktatóanyagban létrehozott Android-alkalmazás friss�
 6. Adjon meg egy üzenetet, amelyet a felhasználó leküldéses értesítés formájában fog megkapni.
 7. Kattintson a **Send Notification** (Értesítés küldése) gombra.  A leküldéses értesítés minden olyan eszközre megérkezik, amely rendelkezik a megfelelő felhasználónév-címkével ellátott regisztrációval.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban elsajátította, hogy hogyan küldhet leküldéses értesítéseket olyan adott felhasználóknak, akik a regisztrációjukhoz társított címkével rendelkeznek. Ha szeretné megtudni, hogy hogyan küldhet helyalapú értesítéseket, lépjen tovább a következő oktatóanyagra:
 

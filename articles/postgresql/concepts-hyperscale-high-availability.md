@@ -7,22 +7,22 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 10679ab02826fb606af65c72621f2afb609bc81b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 406b4f2ada665d65ee0452579e24744d1f7cfc63
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74975533"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314853"
 ---
 # <a name="high-availability-in-azure-database-for-postgresql--hyperscale-citus"></a>Magas rendelkezésre állás Azure Database for PostgreSQL – nagy kapacitású (Citus)
 
-A magas rendelkezésre állás (HA) elkerüli az adatbázis leállását azáltal, hogy a csoport minden csomópontjának készenléti replikáit megtartja. Ha egy csomópont leáll, a nagy kapacitású bekapcsolja a bejövő kapcsolatokat a meghibásodott csomópontról a készenléti állapotba. A feladatátvétel néhány percen belül megtörténik, és a támogatott csomópontok mindig friss adattal rendelkeznek a PostgreSQL szinkron adatfolyam-továbbítási replikálásával.
+A magas rendelkezésre állás (HA) elkerüli az adatbázis leállását azáltal, hogy a csoport minden csomópontjának készenléti replikáit megtartja. Ha egy csomópont leáll, a nagy kapacitású (Citus) bekapcsolja a bejövő kapcsolatokat a meghibásodott csomópontról a készenléti állapotba. A feladatátvétel néhány percen belül megtörténik, és a támogatott csomópontok mindig friss adattal rendelkeznek a PostgreSQL szinkron adatfolyam-továbbítási replikálásával.
 
 Ha a koordinátor csomóponton szeretné kihasználni a szolgáltatást, az adatbázis-alkalmazásoknak meg kell ismerniük és újra kell próbálnia a kapcsolatokat és a sikertelen tranzakciókat. Az újonnan előléptetett koordinátor ugyanazzal a kapcsolatok sztringtel lesz elérhető.
 
-A helyreállítás három szakaszra bontható: észlelés, feladatátvétel és teljes helyreállítás.  A nagy kapacitású rendszeres állapot-ellenőrzéseket futtat minden csomóponton, és négy sikertelen ellenőrzés után meghatározza, hogy a csomópont le van-e kapcsolva. A nagy kapacitású ezután elősegíti a készenléti állapotot az elsődleges csomópont állapota (feladatátvétel) számára, és új készenléti állapotot biztosít.
+A helyreállítás három szakaszra bontható: észlelés, feladatátvétel és teljes helyreállítás.  A nagy kapacitású (Citus) rendszeres állapot-ellenőrzéseket futtat minden csomóponton, és négy sikertelen ellenőrzés után meghatározza, hogy a csomópont le van-e kapcsolva. A nagy kapacitású (Citus) támogatja a készenléti állapotot az elsődleges csomópont állapota (feladatátvétel) számára, és új készenléti állapotot biztosít.
 A folyamatos átviteli replikáció megkezdődik, így az új csomópont naprakész állapotba kerül.  Ha minden adat replikálódik, a csomópont elérte a teljes helyreállítást.
 
-### <a name="next-steps"></a>További lépések
+### <a name="next-steps"></a>Következő lépések
 
-- Megtudhatja, hogyan [engedélyezheti a magas rendelkezésre állást](howto-hyperscale-high-availability.md) egy nagy kapacitású-kiszolgáló csoportban.
+- Megtudhatja, hogyan [engedélyezheti a magas rendelkezésre állást](howto-hyperscale-high-availability.md) egy nagy kapacitású-(Citus-) kiszolgálócsoport számára.

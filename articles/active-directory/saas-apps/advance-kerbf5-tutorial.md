@@ -1,6 +1,6 @@
 ---
 title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses integráció az F5-mel | Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és F5 között.
+description: Ebből a cikkből megtudhatja, milyen lépéseket kell elvégeznie az F5 és a Azure Active Directory (Azure AD) integrálásához.
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 2e0e727e73fa1eff21a4b2e481738be49306676a
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: cbcbcb6a649969c5348c3ad445ff43f10372faeb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542980"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306174"
 ---
 # <a name="tutorial-azure-active-directory-ad-single-sign-on-sso-integration-with-f5"></a>Oktatóanyag: Azure Active Directory (AD) egyszeri bejelentkezéses (SSO) integráció az F5-mel
 
@@ -39,8 +39,9 @@ Első lépésként a következő elemeket kell megadnia:
 
 Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
-* F5 **az SP és a identitásszolgáltató** által kezdeményezett egyszeri bejelentkezés támogatása
-* Az F5 SSO három különböző módon konfigurálható.
+Az F5 **az SP és a identitásszolgáltató** által kezdeményezett egyszeri bejelentkezést támogatja.
+
+Az F5 SSO három különböző módon konfigurálható:
 
 - [Az F5 egyszeri bejelentkezés konfigurálása a speciális Kerberos-alkalmazáshoz](#configure-f5-single-sign-on-for-advanced-kerberos-application)
 
@@ -113,7 +114,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

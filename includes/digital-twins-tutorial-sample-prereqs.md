@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: c00daccfaf31e455a1ff5e055489b19f4ca4203d
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: d8741ced0ea829da6912a85db10f881e23fa4530
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262342"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91292683"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -19,5 +19,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt **hozzon létre egy [
 Mielőtt elkezdené, **telepítse a [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/), 16,5-es vagy újabb verzióját** a fejlesztői gépére. Ha már telepítve van egy régebbi verziója, megnyithatja a *Visual Studio Installer* alkalmazást a gépen, és az utasításokat követve frissítheti a telepítést.
 
 Az oktatóanyagot C# nyelven írt minta projekt vezérli. A minta itt található: [Azure digitális Twins-minták](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples). **Szerezze be a minta projektet** a gépen a minta hivatkozásra való navigálással, majd a cím alatt található *zip letöltése* gombra kattintva.
+
+Ezzel letölti a-t *. A ZIP* -mappát **Azure_Digital_Twins_samples.zipként **. Bontsa ki a mappát, és bontsa ki a fájlokat.
 
 [!INCLUDE [Azure Digital Twins tutorials: instance prereq](digital-twins-tutorial-prereq-instance.md)]

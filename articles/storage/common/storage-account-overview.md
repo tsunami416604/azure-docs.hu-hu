@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 4fe353467a11e9581db76ec495194878414f4dfb
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: c93508bebdcfce35a89b3d5e2a8abecc7ac84722
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230687"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280147"
 ---
 # <a name="storage-account-overview"></a>Tárfiókok áttekintése
 
@@ -32,7 +32,7 @@ Az általános célú v2 Storage-fiókok támogatják az Azure Storage legújabb
 
 - Blobok (az összes típus: letiltás, Hozzáfűzés, lap)
 - Data Lake Gen2
-- Fájlok
+- Files
 - Lemezek
 - Üzenetsorok
 - Táblák
@@ -49,7 +49,7 @@ Az általános célú v2 Storage-fiókok több hozzáférési szintet is kínál
 Az általános célú v1 Storage-fiókok hozzáférést biztosítanak az összes Azure Storage-szolgáltatáshoz, de nem rendelkezhetnek a legújabb szolgáltatásokkal, illetve a legalacsonyabb/gigabájt díjszabással. Az általános célú v1 Storage-fiókok támogatják ezeket az Azure Storage-szolgáltatásokat:
 
 - Blobok (az összes típus)
-- Fájlok
+- Files
 - Lemezek
 - Üzenetsorok
 - Táblák
@@ -108,7 +108,7 @@ Az elérhető hozzáférési szintek a következők:
 
 - A **gyors** elérési szint. Ez a szintet a Storage-fiókban lévő objektumok gyakori elérésére optimalizáltuk. A gyors elérésű rétegben az adatok elérése a leghatékonyabb, a tárolási költségek pedig magasabbak. Alapértelmezés szerint a rendszer új Storage-fiókokat hoz létre a gyors elérésű rétegben.
 - A **lassú** elérési szint. Ez a csomag olyan nagy mennyiségű, ritkán használt és tárolt adatok tárolására van optimalizálva, amelyek legalább 30 napig vannak tárolva. Az adatok lassú elérésű szinten való tárolása költséghatékonyabb, de az adatokhoz való hozzáférés drágább lehet, mint a gyors elérésű rétegben lévő adatok elérése.
-- Az **archiválási** szint. Ez a szintet csak az egyes blokkos Blobok esetében érhető el. Az archiválási szint olyan adatokra van optimalizálva, amelyek több órányi lekérési késést tudnak tolerálni, és amelyek legalább 180 napig maradnak az archiválási szinten. Az archiválási szint az adatok tárolására leginkább költséghatékony megoldás. Azonban az adatokhoz való hozzáférés drágább, mint az adatokhoz való hozzáférés a gyors vagy a lassú elérésű szinteken.
+- Az **archív tárolási** szint. Ez a szintet csak az egyes blokkos Blobok esetében érhető el. Az archiválási szint olyan adatokra van optimalizálva, amelyek több órányi lekérési késést tudnak tolerálni, és amelyek legalább 180 napig maradnak az archiválási szinten. Az archiválási szint az adatok tárolására leginkább költséghatékony megoldás. Azonban az adatokhoz való hozzáférés drágább, mint az adatokhoz való hozzáférés a gyors vagy a lassú elérésű szinteken.
 
 Ha módosul az adatok használati mintája, akkor bármikor válthat a hozzáférési szintek között. A hozzáférési szintekkel kapcsolatos további információkért lásd [: Azure Blob Storage: gyakori, ritka elérésű és archív hozzáférési szintek](../blobs/storage-blob-storage-tiers.md).
 
@@ -133,6 +133,7 @@ Ha például az általános célú Storage-fiók neve *mystorageaccount*, akkor 
 - Tábla tárterülete: `https://*mystorageaccount*.table.core.windows.net`
 - Üzenetsor-tárolás: `https://*mystorageaccount*.queue.core.windows.net`
 - Azure Files: `https://*mystorageaccount*.file.core.windows.net`
+- Azure Data Lake Storage Gen2: `https://*mystorageaccount*.dfs.core.windows.net` (a [kifejezetten a Big datahoz optimalizált ABFS-illesztőt](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction#key-features-of-data-lake-storage-gen2)használja.)
 
 > [!NOTE]
 > A blob-és blob Storage-fiókok csak a Blob service végpontot teszik elérhetővé.

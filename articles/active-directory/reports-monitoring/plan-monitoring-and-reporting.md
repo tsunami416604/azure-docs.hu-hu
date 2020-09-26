@@ -12,12 +12,12 @@ ms.date: 11/13/2018
 ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a75cc77b45d41d7fd63eadce34265ca54b663e14
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: cf8ceb308fbcc2156a6df43e0167f4cb544b2d3d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90030990"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331199"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>Azure Active Directory jelentéskészítés és figyelés üzembe helyezésének megtervezése
 
@@ -91,7 +91,7 @@ A jelenlegi infrastruktúrája és szabályzata a jelentéskészítési és figy
 
 ## <a name="plan-an-azure-ad-reporting-and-monitoring-deployment"></a>Az Azure AD jelentéskészítési és figyelési üzembe helyezésének megtervezése
 
-A jelentéskészítés és a monitorozás az üzleti igények kielégítésére szolgál, betekintést nyerhet a használati mintákba, és t növelheti szervezete biztonsági helyzetét.
+A jelentéskészítés és a monitorozás az üzleti igények kielégítésére szolgál, betekintést nyerhet a használati mintákba, és növelheti a szervezet biztonsági helyzetét.
 
 ### <a name="business-use-cases"></a>Üzleti használati esetek
 

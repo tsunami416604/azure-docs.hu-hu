@@ -1210,6 +1210,8 @@
           href: database/database-import-export-hang.md
     - name: Szolgáltatási hírek
       items:
+        - name: Az SSL-főtanúsítvány lejár
+          href: updates/ssl-root-certificate-expiring.md
         - name: Átjáró IP-címének frissítései
           href: database/gateway-migration.md
         - name: Rendszeres karbantartási események

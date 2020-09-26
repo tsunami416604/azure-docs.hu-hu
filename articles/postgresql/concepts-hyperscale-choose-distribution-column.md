@@ -1,22 +1,22 @@
 ---
 title: Terjesztési oszlopok kiválasztása – nagy kapacitású (Citus) – Azure Database for PostgreSQL
-description: Megtudhatja, hogyan választhat terjesztési oszlopokat a gyakori nagy kapacitású-forgatókönyvekben Azure Database for PostgreSQLban.
+description: Megtudhatja, hogyan választhat terjesztési oszlopokat az Azure Database for PostgreSQL-nagy kapacitású (Citus) gyakori forgatókönyvekben.
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 8ced9767d81affceef851820ee587f4f3dd24deb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f3c86f4b194e6d3935434b35cae958dfcf772986
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74975669"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314912"
 ---
 # <a name="choose-distribution-columns-in-azure-database-for-postgresql--hyperscale-citus"></a>Terjesztési oszlopok kiválasztása Azure Database for PostgreSQL – nagy kapacitású (Citus)
 
-Az egyes táblák terjesztési oszlopának kiválasztása a legfontosabb modellezési döntések egyike. Azure Database for PostgreSQL – a nagy kapacitású (Citus) a sorok eloszlás oszlopának értéke alapján a szegmensekben lévő sorokat tárolja.
+Az egyes táblák elosztási oszlopának kiválasztása az egyik legfontosabb modellezési döntés. Azure Database for PostgreSQL – a nagy kapacitású (Citus) a sorok eloszlás oszlopának értéke alapján a szegmensekben lévő sorokat tárolja.
 
 A megfelelő választás a kapcsolódó adatokkal együtt ugyanazon fizikai csomópontokon csoportosítja a lekérdezéseket, így a lekérdezések gyorsak, és az összes SQL-funkció támogatását biztosítja. Helytelen választás miatt a rendszer lassan fut, és nem támogatja az összes csomóponton futó SQL-funkciót.
 
@@ -74,5 +74,5 @@ A nagy kapacitású (Citus) modellezési idősorozat-információinak leggyakori
 
 Tekintse meg az [idősorozat-oktatóanyagot](https://aka.ms/hyperscale-tutorial-timeseries) , amely bemutatja, hogyan építhet ki ilyen típusú alkalmazást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Ismerje meg [, hogy az](concepts-hyperscale-colocation.md) elosztott adattárolás hogyan segíti a lekérdezéseket a gyors futásban.

@@ -8,14 +8,17 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 66a322d4f60d9553a68207136ae609c1f9b50dbc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 715ed204e28d6260c28fa099b40fc78aa12de44d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73826203"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91281541"
 ---
 # <a name="what-is-opc-vault"></a>Mi az az OPC Vault?
+
+> [!IMPORTANT]
+> A cikk frissítését követően tekintse meg az [Azure Industrial IoT](https://azure.github.io/Industrial-IoT/) a legfrissebb tartalomhoz című cikket.
 
 Az OPC-tár egy olyan szolgáltatás, amely a tanúsítványok életciklusát konfigurálhatja, regisztrálhatja és kezelheti a felhőben lévő OPC UA-kiszolgáló és ügyfélalkalmazások számára. Ez a cikk az OPC-tár egyszerű felhasználási eseteit ismerteti.
 
@@ -31,9 +34,8 @@ Az alábbi ábra az OPC-tár architektúráját mutatja be.
 
 ![OPC-tár architektúrája](media/overview-opc-vault-architecture/opc-vault.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte az OPC-tárolót és annak felhasználási lehetőségeit, itt látható a következő lépés:
 
-> [!div class="nextstepaction"]
-> [OPC-tár architektúrája](overview-opc-vault-architecture.md)
+[OPC-tár architektúrája](overview-opc-vault-architecture.md)

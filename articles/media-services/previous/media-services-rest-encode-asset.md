@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: d2e7be89b3319445a69d5b91990e9888cccd484a
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: b0bff0c6b3ef7934188b548bd06c35d83b323fde
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268621"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91359596"
 ---
 # <a name="how-to-encode-an-asset-by-using-media-encoder-standard"></a>Eszköz kódolása Media Encoder Standard használatával
 
@@ -101,7 +101,7 @@ Az alábbi példa bemutatja, hogyan állíthatja be a assetName attribútumot:
 { "TaskBody" : "<?xml version=\"1.0\" encoding=\"utf-8\"?><taskBody><inputAsset>JobInputAsset(0)</inputAsset><outputAsset assetName=\"CustomOutputAssetName\">JobOutputAsset(0)</outputAsset></taskBody>"}`
 ```
 
-## <a name="considerations"></a>Megfontolandó szempontok
+### <a name="considerations"></a>Megfontolandó szempontok
 * A TaskBody tulajdonságainak literál XML-t kell használniuk a feladat által használt bemeneti vagy kimeneti eszközök definiálásához. A feladat cikke tartalmazza az XML-séma XML-sémájának definícióját.
 * A TaskBody-definícióban minden belső értéknek `<inputAsset>` `<outputAsset>` JobInputAsset (Value) vagy JobOutputAsset (Value) értékűnek kell lennie.
 * Egy feladat több kimeneti eszközzel is rendelkezhet. Egy JobOutputAsset (x) csak egyszer használható egy feladat tevékenységének kimenetében.
@@ -292,7 +292,7 @@ HTTP/1.1 201 Created
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most, hogy már tudja, hogyan hozhat létre egy adategység kódolására szolgáló feladatot, tekintse meg a következő témakört: [a feladatok előrehaladásának ellenőrzéséhez Media Services](media-services-rest-check-job-progress.md).
 
 ## <a name="see-also"></a>Lásd még

@@ -10,13 +10,13 @@ ms.custom: troubleshooting
 ms.reviewer: jmartens, larryfr, vaidyas, laobri, tracych
 ms.author: trmccorm
 author: tmccrmck
-ms.date: 07/16/2020
-ms.openlocfilehash: 010843f4249909e23ffac3b41fb3acaf9c91eb17
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/23/2020
+ms.openlocfilehash: 7866f2dcaebe396759eb7f6315c457bfce307723
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90889998"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91315575"
 ---
 # <a name="debug-and-troubleshoot-parallelrunstep"></a>ParallelRunStep – hibakeresés és hibaelhárítás
 
@@ -35,13 +35,17 @@ A naplófájl például a `70_driver_log.txt` vezérlőből származó adatokat 
 
 A ParallelRunStep-feladatok elosztott jellegéből adódóan számos különböző forrásból származó naplók találhatók. A rendszer azonban két konszolidált fájlt hoz létre, amelyek magas szintű információkat biztosítanak:
 
-- `~/logs/overview.txt`: Ez a fájl magas szintű információt nyújt a mini-batchs (más néven feladatoknak) számáról, amely az eddig feldolgozott mini-batchek számát tartalmazza. Ezen a helyen a feladatok eredményét jeleníti meg. Ha a feladatainak végrehajtása sikertelen volt, a hibaüzenet jelenik meg, és a hibaelhárítás elindításának helye.
+- `~/logs/job_progress_overview.txt`: Ez a fájl magas szintű információt nyújt a mini-batchs (más néven feladatoknak) számáról, amely az eddig feldolgozott mini-batchek számát tartalmazza. Ezen a helyen a feladatok eredményét jeleníti meg. Ha a feladatainak végrehajtása sikertelen volt, a hibaüzenet jelenik meg, és a hibaelhárítás elindításának helye.
 
-- `~/logs/sys/master.txt`: Ez a fájl a futó feladathoz tartozó fő csomópontot (más néven Orchestrator) jeleníti meg. Magában foglalja a feladatok létrehozását, a folyamat figyelését, a Futtatás eredményét.
+- `~/logs/sys/master_role.txt`: Ez a fájl a futó feladathoz tartozó fő csomópontot (más néven Orchestrator) jeleníti meg. Magában foglalja a feladatok létrehozását, a folyamat figyelését, a Futtatás eredményét.
 
 A EntryScript Helper és Print utasítások használatával generált naplók a következő fájlokban találhatók:
 
-- `~/logs/user/<ip_address>/<node_name>.log.txt`: Ezek a fájlok entry_script a EntryScript Helper használatával írt naplók. A entry_script a Print utasítást (StdOut) is tartalmazza.
+- `~/logs/user/entry_script_log/<ip_address>/<process_name>.log.txt`: Ezek a fájlok entry_script a EntryScript Helper használatával írt naplók.
+
+- `~/logs/user/stdout/<ip_address>/<process_name>.stdout.txt`: Ezek a fájlok az stdout-ból (pl. Print utasítás) származó naplók a entry_script.
+
+- `~/logs/user/stderr/<ip_address>/<process_name>.stderr.txt`: Ezek a fájlok a entry_script stderr származó naplók.
 
 A parancsfájlban található hibák tömör megismeréséhez a következőt kell tennie:
 
@@ -49,17 +53,17 @@ A parancsfájlban található hibák tömör megismeréséhez a következőt kel
 
 A parancsfájl hibáit a következő témakörben találhatja meg:
 
-- `~/logs/user/error/`: Tartalmazza az összes dobott hibát, valamint a csomópont által rendezett teljes verem nyomkövetését.
+- `~/logs/user/error/`: A betöltési parancsfájl betöltésekor és futtatásakor eldobott kivételek teljes verem-nyomkövetését tartalmazza.
 
 Ha teljes mértékben meg kell ismernie, hogy az egyes csomópontok hogyan hajtották végre a pontszám-parancsfájlt, tekintse meg az egyes csomópontok egyes folyamatainak naplóit. A folyamat naplófájljai a `sys/node` mappában találhatók, munkavégző csomópontok szerint csoportosítva:
 
-- `~/logs/sys/node/<node_name>.txt`: Ez a fájl részletes információkat nyújt az egyes mini-kötegekről, mivel azokat a feldolgozók felvettek vagy elvégezték. Minden egyes mini-batch esetében ez a fájl a következőket tartalmazza:
+- `~/logs/sys/node/<ip_address>/<process_name>.txt`: Ez a fájl részletes információkat nyújt az egyes mini-kötegekről, mivel azokat a feldolgozók felvettek vagy elvégezték. Minden egyes mini-batch esetében ez a fájl a következőket tartalmazza:
 
     - A munkavégző folyamat IP-címe és PID-je. 
     - Az elemek teljes száma, a sikeresen feldolgozott elemek száma és a sikertelen elemek száma.
     - A kezdési idő, az időtartam, a feldolgozási idő és a futtatási módszer ideje.
 
-Az egyes feldolgozókhoz tartozó folyamatok erőforrás-használatáról is talál információt. Ez az információ CSV formátumú, és a következő helyen található: `~/logs/sys/perf/overview.csv` . Az egyes folyamatokra vonatkozó információk a alatt találhatók `~logs/sys/processes.csv` .
+Az egyes feldolgozókhoz tartozó folyamatok erőforrás-használatáról is talál információt. Ez az információ CSV formátumú, és a következő helyen található: `~/logs/sys/perf/<ip_address>/node_resource_usage.csv` . Az egyes folyamatokra vonatkozó információk a alatt találhatók `~logs/sys/perf/<ip_address>/processes_resource_usage.csv` .
 
 ### <a name="how-do-i-log-from-my-user-script-from-a-remote-context"></a>A felhasználói szkriptből Hogyan a naplót egy távoli környezetből?
 A ParallelRunStep process_count_per_node alapján több folyamatot is futtathat egy csomóponton. Az egyes folyamatok naplófájljainak a csomóponton való rendszerezéséhez és a Print és a log utasítás összevonásához javasoljuk, hogy az alább látható módon használja a ParallelRunStep naplózó használatát. Egy adatgyűjtő-EntryScript kap, és a naplók megjelennek a **naplók/felhasználói** mappában a portálon.
@@ -112,6 +116,28 @@ parser.add_argument('--labels_dir', dest="labels_dir", required=True)
 args, _ = parser.parse_known_args()
 
 labels_path = args.labels_dir
+```
+
+### <a name="how-to-use-input-datasets-with-service-principal-authentication"></a>A bemeneti adatkészletek használata egyszerű szolgáltatás hitelesítésével
+
+A felhasználó átadhat bemeneti adatkészleteket a munkaterületen használt egyszerű szolgáltatás-hitelesítéssel. Az ilyen adatkészletek ParallelRunStep való használata megköveteli, hogy az adatkészlet regisztrálva legyen az ParallelRunStep-konfiguráció összeállításához.
+
+```python
+service_principal = ServicePrincipalAuthentication(
+    tenant_id="***",
+    service_principal_id="***",
+    service_principal_password="***")
+ 
+ws = Workspace(
+    subscription_id="***",
+    resource_group="***",
+    workspace_name="***",
+    auth=service_principal
+    )
+ 
+default_blob_store = ws.get_default_datastore() # or Datastore(ws, '***datastore-name***') 
+ds = Dataset.File.from_files(default_blob_store, '**path***')
+registered_ds = ds.register(ws, '***dataset-name***', create_new_version=True)
 ```
 
 ## <a name="next-steps"></a>Következő lépések

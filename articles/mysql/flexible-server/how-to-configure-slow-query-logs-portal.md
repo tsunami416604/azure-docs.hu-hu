@@ -1,17 +1,17 @@
 ---
 title: Lassú lekérdezési naplók konfigurálása – Azure Portal-Azure Database for MySQL – rugalmas kiszolgáló
-description: Ez a cikk bemutatja, hogyan konfigurálhatja és érheti el Azure Database for MySQL rugalmas kiszolgáló lassú naplóit a Azure Portal.
+description: Ez a cikk azt ismerteti, hogyan lehet konfigurálni és elérni a lassú lekérdezési naplókat Azure Database for MySQL rugalmas kiszolgálóról a Azure Portal.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: 1416efaa325ced623b5c7514f2f9953dc0bd2781
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 1a829f4e5f45394d9c5bbed0db9289727b816917
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90940497"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91315031"
 ---
 # <a name="configure-and-access-slow-query-logs-for-azure-database-for-mysql---flexible-server-using-the-azure-portal"></a>Lassú lekérdezési naplók konfigurálása és elérése Azure Database for MySQL rugalmas kiszolgálóhoz a Azure Portal használatával
 
@@ -44,6 +44,9 @@ Konfigurálja a MySQL lassú lekérdezési napló elérését.
 A **kiszolgáló paraméterei** lapon a lap bezárásával visszatérhet a naplók listájához.
 
 ## <a name="set-up-diagnostics"></a>Diagnosztika beállítása
+
+> [!NOTE]
+> A naplók eléréséhez Azure Monitor diagnosztikai beállításokkal való integráció az üzembe helyezés és a teljes funkcionalitás hamarosan elérhető lesz.
 
 A lassú lekérdezési naplók integrálva vannak Azure Monitor diagnosztikai beállításokkal, amelyek lehetővé teszik a naplók Azure Monitor naplókba, Event Hubs vagy Azure Storage-ba történő átadását.
 

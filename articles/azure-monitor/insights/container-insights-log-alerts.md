@@ -3,12 +3,12 @@ title: Riasztások naplózása Azure Monitorről a tárolók számára | Microso
 description: Ez a cikk bemutatja, hogyan hozhat létre egyéni naplózási riasztásokat a memóriához és a CPU-használathoz a Azure Monitor for containers szolgáltatásban.
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: 2d86edc5994070ba909c6e3a0da2cf76e8359773
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 8c02442fef9b174075065e7852b7a25233899c48
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90973716"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91294546"
 ---
 # <a name="how-to-create-log-alerts-from-azure-monitor-for-containers"></a>Naplóbeli riasztások létrehozása Azure Monitorból tárolók számára
 
@@ -275,7 +275,7 @@ InsightsMetrics
 
 ## <a name="create-an-alert-rule"></a>Riasztási szabály létrehozása
 
-Ez a szakasz egy mérőszám-mérési riasztási szabály létrehozását mutatja be a Azure Monitorről származó teljesítményadatok használatával. Ezt az alapszintű folyamatot számos különböző naplózási lekérdezéssel használhatja, amelyek riasztást küldenek a különböző teljesítményszámlálók esetében. Az első lépésekhez használja a korábban megadott log keresési lekérdezések egyikét. ARM-sablon használatával történő létrehozáshoz lásd: [példa a naplóbeli riasztások létrehozására az Azure Resource template használatával](../platform/alerts-log.md#sample-log-alert-creation-using-azure-resource-template).
+Ez a szakasz egy mérőszám-mérési riasztási szabály létrehozását mutatja be a Azure Monitorről származó teljesítményadatok használatával. Ezt az alapszintű folyamatot számos különböző naplózási lekérdezéssel használhatja, amelyek riasztást küldenek a különböző teljesítményszámlálók esetében. Az első lépésekhez használja a korábban megadott log keresési lekérdezések egyikét. ARM-sablon használatával történő létrehozáshoz tekintse meg [Az Azure-erőforrás-sablon használatával történő naplózási riasztások létrehozásának mintáit](../platform/alerts-log-create-templates.md).
 
 >[!NOTE]
 >A tárolók erőforrás-felhasználására vonatkozó riasztási szabály létrehozásához a következő eljárással kell váltania egy új naplózási riasztási API-ra, amelyet a [váltás API-beállítások a naplók számára](../platform/alerts-log-api-switch.md)című témakörben talál.

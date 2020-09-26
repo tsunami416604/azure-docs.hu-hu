@@ -4,12 +4,12 @@ description: 'Oktatóanyag: a Azure Event Grid és a Event Hubs használatával 
 ms.topic: tutorial
 ms.date: 07/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d45fcedb570e384b851a7ac815ca175c67cc00a0
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 64d4b9769e1a228294bd7d8741f6f4b1260fb0dd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89435031"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91270559"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>Oktatóanyag: stream big data adattárházba
 Az Azure [Event Grid](overview.md) egy intelligens esemény-útválasztási szolgáltatás, amely lehetővé teszi, hogy az alkalmazásokból és szolgáltatásokból érkező értesítésekre (eseményekre) reagáljon. Például elindíthat egy Azure-függvényt az Azure Blob Storage-ba vagy Azure Data Lake Storageba rögzített Event Hubs-adat feldolgozásához, és áttelepítheti azokat más adattárakba. Ez a [Event Hubs és Event Grid integrációs minta](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) azt mutatja be, hogyan használhatók a Event Hubs és a Event Grid a blob Storage-ból származó rögzített Event Hubs adatok zökkenőmentes áttelepítésére az Azure szinapszis analyticsbe (korábban SQL Data Warehouse).
@@ -40,7 +40,7 @@ Ebben a cikkben a következő lépéseket hajtja végre:
 
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt nekikezdene a feladatok elvégzésének.
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
 * A [Visual studio 2019](https://www.visualstudio.com/vs/) a következő számítási feladatokkal rendelkezik: .net Desktop-fejlesztés, Azure-fejlesztés, ASP.net és webfejlesztés, Node.js fejlesztés és Python-fejlesztés.
 * Töltse le a [EventHubsCaptureEventGridDemo minta projektet](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) a számítógépre.
 
@@ -66,7 +66,7 @@ Ebben a lépésben üzembe helyezi a szükséges infrastruktúrát egy [Resource
 4. Ha a Cloud Shell a **bash** és a **PowerShell**közötti választás lehetőséget látja, válassza a **bash**elemet. 
 5. Ha első alkalommal használja a Cloud Shell, hozzon létre egy Storage-fiókot a **tároló létrehozása**lehetőség kiválasztásával. Azure Cloud Shell szükség van egy Azure Storage-fiókra néhány fájl tárolásához. 
 
-    ![Tároló létrehozása a Cloud shellhez](media/event-grid-event-hubs-integration/create-storage-cloud-shell.png)
+    ![Képernyőfelvétel: "nincs tárterülettel csatlakoztatva" párbeszédpanel a "tároló létrehozása" gomb kiválasztásával.](media/event-grid-event-hubs-integration/create-storage-cloud-shell.png)
 6. Várjon, amíg a Cloud Shell inicializálása be nem fejeződik. 
 
     ![Tároló létrehozása a Cloud shellhez](media/event-grid-event-hubs-integration/cloud-shell-initialized.png)
@@ -209,7 +209,7 @@ Hozzon létre egy táblázatot az adattárházban a [CreateDataWarehouseTable. S
    ![Függvényalkalmazás közzététele](media/event-grid-event-hubs-integration/publish-function-app.png)
 4. Ha a következő képernyő jelenik meg, kattintson a **Start**gombra. 
 
-   ![Közzététel indítása gomb](media/event-grid-event-hubs-integration/start-publish-button.png) 
+   ![A közzétételi szakaszban a "Start" gombbal a Visual studiókat bemutató képernyőkép.](media/event-grid-event-hubs-integration/start-publish-button.png) 
 5. A **Közzététel** párbeszédpanelen válassza az **Azure** a **cél**számára lehetőséget, majd kattintson a **Tovább gombra**. 
 
    ![Közzététel indítása gomb](media/event-grid-event-hubs-integration/publish-select-azure.png)

@@ -1,6 +1,6 @@
 ---
 title: SAP HANA a SLES-vel való Azure NetApp Files a készenléti állapottal | Microsoft Docs
-description: Magas rendelkezésre állási útmutató az SAP NetWeaver-hez a SUSE Linux Enterprise Server Azure NetApp Files SAP-alkalmazásokhoz
+description: Megtudhatja, hogyan helyezhet üzembe egy SAP HANA kibővíthető rendszerét készenléti csomóponttal az Azure-beli virtuális gépeken a SUSE Linux Enterprise Server Azure NetApp Files használatával.
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: rdeltcheva
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/24/2020
 ms.author: radeltch
-ms.openlocfilehash: adc57b213a177e227fe446a4dd24e53dea1cd2fc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 21d4af6985dbe246e60fe95f8f03de7f8aa0501b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87068633"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314062"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-suse-linux-enterprise-server"></a>SAP HANA kibővíthető rendszer üzembe helyezése készenléti csomóponttal Azure-beli virtuális gépeken Azure NetApp Files használatával SUSE Linux Enterprise Server 
 
@@ -106,10 +106,10 @@ Az Azure NetApp-kötetek külön alhálózatban találhatók, [Azure NetApp File
 
 Ebben a példában az alhálózatok a következők:  
 
-  - `client`10.23.0.0/24  
-  - `storage`10.23.2.0/24  
-  - `hana`10.23.3.0/24  
-  - `anf`10.23.1.0/26  
+  - `client` 10.23.0.0/24  
+  - `storage` 10.23.2.0/24  
+  - `hana` 10.23.3.0/24  
+  - `anf` 10.23.1.0/26  
 
 ## <a name="set-up-the-azure-netapp-files-infrastructure"></a>A Azure NetApp Files-infrastruktúra beállítása 
 
@@ -236,7 +236,7 @@ A következő utasítások feltételezik, hogy már létrehozta az erőforráscs
 
 3. Hozzon létre három hálózati adaptert, egyet az egyes virtuális gépekhez a virtuális hálózat alhálózatához `storage` (ebben a példában a **hanadb1**, a **hanadb2**és a **hanadb3-** tárolót).  
 
-4. Hozzon létre három hálózati adaptert, egyet az egyes virtuális gépekhez a virtuális hálózat alhálózatához `hana` (ebben a példában a **hanadb1-Hana**, a **hanadb2-Hana**és a **hanadb3-Hana**).  
+4. Hozzon létre három hálózati adaptert, egyet az egyes virtuális gépekhez a virtuális hálózat alhálózatához `hana`  (ebben a példában a **hanadb1-Hana**, a **hanadb2-Hana**és a **hanadb3-Hana**).  
 
 5. Csatlakoztassa az újonnan létrehozott virtuális hálózati adaptereket a megfelelő virtuális gépekhez az alábbi lépések végrehajtásával:  
 
@@ -248,9 +248,9 @@ A következő utasítások feltételezik, hogy már létrehozta az erőforráscs
 
     d. Válassza a **hálózatkezelés**lehetőséget, majd csatlakoztassa a hálózati adaptert. A **hálózati adapter csatolása** legördülő listában válassza ki a már létrehozott hálózati adaptereket és az `storage` `hana` alhálózatokat.  
     
-    e. Válassza a **Mentés** lehetőséget. 
+    e. Kattintson a **Mentés** gombra. 
  
-    f. Ismételje meg a b – e lépéseket a fennmaradó virtuális gépek esetében (példánkban a **hanadb2** és a **hanadb3**).
+    f. Ismételje meg a b – e lépéseket a fennmaradó virtuális gépek esetében (példánkban a  **hanadb2** és a **hanadb3**).
  
     : A virtuális gépeket most leállított állapotban hagyja. Ezután engedélyezzük a [gyorsított hálózatkezelést](../../../virtual-network/create-vm-accelerated-networking-cli.md) az újonnan csatlakoztatott hálózati adapterek esetében.  
 
@@ -561,7 +561,7 @@ Ebben a példában a SAP HANA üzembe helyezéséhez az Azure-ban készenléti c
      * **Vesszővel tagolt állomásnevek**esetén adja meg a következőt: **hanadb2, hanadb3**
      * A **gyökér felhasználónévnél** [root]: nyomja le az ENTER billentyűt az alapértelmezett érték elfogadásához
      * A **gyökér felhasználói jelszava**: írja be a root felhasználó jelszavát
-     * A gazdagépek hanadb2 tartozó szerepkörök esetében: **1** megadása (feldolgozói)
+     * A gazdagépek hanadb2 tartozó szerepkörök esetében: **1**  megadása (feldolgozói)
      * A gazdagép hanadb2 tartozó **feladatátvételi csoport** esetében [alapértelmezett]: az ENTER billentyű lenyomásával fogadja el az alapértelmezett értéket.
      * A gazdagép hanadb2 [<>] **tárolási partíciójának száma** <assign automatically> : az ENTER billentyű lenyomásával fogadja el az alapértelmezett értéket.
      * A gazdagép hanadb2 tartozó **munkavégző csoport** esetében [alapértelmezett]: az ENTER billentyű lenyomásával fogadja el az alapértelmezett értéket.
@@ -852,7 +852,7 @@ Ebben a példában a SAP HANA üzembe helyezéséhez az Azure-ban készenléti c
     | hanadb3 | no     | ignore |          |        |         0 |         0 | default  | default  | master 3   | slave      | standby     | standby     | standby | standby | default | -       |
    </code></pre>
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Virtual Machines az SAP tervezéséhez és megvalósításához][planning-guide]
 * [Azure Virtual Machines üzembe helyezés az SAP-ban][deployment-guide]

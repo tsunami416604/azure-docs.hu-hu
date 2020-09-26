@@ -10,14 +10,14 @@ ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019,fasttrack-edit, devx-track-azurepowershell
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/20/2020
-ms.openlocfilehash: 37d61a5c199b59a13b54344f5ffaf69d7b369a1b
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: c82acb66266fd36e5b7155adbfa5bd5ade1b765c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89078061"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91291987"
 ---
 # <a name="migrate-sql-server-to-sql-managed-instance-with-powershell--azure-database-migration-service"></a>SQL Server migrálása az SQL felügyelt példányára PowerShell-& Azure Database Migration Service
 
@@ -59,7 +59,7 @@ A lépések elvégzéséhez a következőkre lesz szüksége:
 
 Jelentkezzen be az Azure-előfizetésbe a PowerShell használatával. További információkért tekintse meg a következő cikket: [bejelentkezés Azure PowerShell](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Az Azure-erőforráscsoport olyan logikai tároló, amelyben az Azure-erőforrások üzembe helyezése és kezelése történik.
 
@@ -416,7 +416,7 @@ Az áttelepítés befejezése után törölheti az Azure Database Migration Serv
 Remove-AzDms -ResourceGroupName myResourceGroup -ServiceName MyDMS
 ```
 
-## <a name="additional-resources"></a>További erőforrások
+## <a name="additional-resources"></a>További források
 
 További információkat a további áttelepítési forgatókönyvekről (forrás/cél párok) a Microsoft [Database áttelepítési útmutatójában](https://datamigration.microsoft.com/)talál.
 
