@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: oslake
 ms.author: moslake
-ms.reviewer: carlrab
-ms.date: 7/31/2020
-ms.openlocfilehash: d8055c89af8adcb88a2055e617e27c030e05d5ae
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.reviewer: sstein
+ms.date: 09/16/2020
+ms.openlocfilehash: 2792a93748600d71c37972058c8e496928543c9b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87504381"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330706"
 ---
 # <a name="scale-elastic-pool-resources-in-azure-sql-database"></a>Rugalmas készlet erőforrásainak méretezése Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -44,12 +44,12 @@ Egy rugalmas készlet szolgáltatási rétegének vagy számítási méretének 
 
 ### <a name="latency-of-changing-service-tier-or-rescaling-compute-size"></a>A szolgáltatási réteg módosításának késése vagy a számítási méret átméretezése
 
-A szolgáltatási réteg módosításának becsült késése vagy egy önálló adatbázis vagy rugalmas készlet számítási méretének átméretezése a következő paraméterekkel történik:
+A szolgáltatási réteg módosításának becsült késése, az önálló adatbázis vagy a rugalmas készlet számítási méretének skálázása, a rugalmas készleten belüli vagy kívüli adatbázis áthelyezése, illetve a rugalmas készletek közötti adatbázis áthelyezése a következőképpen történik:
 
 |Szolgáltatási szint|Alapszintű önálló adatbázis,</br>Standard (S0-S1)|Alapszintű rugalmas készlet,</br>Standard (S2-S12), </br>Önálló adatbázis vagy rugalmas készlet általános célú|Prémium vagy üzletileg kritikus önálló adatbázis vagy rugalmas készlet|Rugalmas skálázás
 |:---|:---|:---|:---|:---|
 |**Alapszintű önálló adatbázis, </br> Standard (S0-S1)**|&bull;&nbsp;Állandó időbeli késés a felhasznált területtől függetlenül</br>&bull;&nbsp;Általában kevesebb, mint 5 perc|&bull;Az &nbsp; Adatmásolás miatt használt adatbázis-területtel arányos késés</br>&bull;&nbsp;Általában kevesebb, mint 1 perc/GB felhasznált lemezterület|&bull;Az &nbsp; Adatmásolás miatt használt adatbázis-területtel arányos késés</br>&bull;&nbsp;Általában kevesebb, mint 1 perc/GB felhasznált lemezterület|&bull;Az &nbsp; Adatmásolás miatt használt adatbázis-területtel arányos késés</br>&bull;&nbsp;Általában kevesebb, mint 1 perc/GB felhasznált lemezterület|
-|**Alapszintű rugalmas készlet, </br> Standard (S2-S12), </br> általános célú önálló adatbázis vagy rugalmas készlet**|&bull;Az &nbsp; Adatmásolás miatt használt adatbázis-területtel arányos késés</br>&bull;&nbsp;Általában kevesebb, mint 1 perc/GB felhasznált lemezterület|&bull;&nbsp;Állandó időbeli késés a felhasznált területtől függetlenül</br>&bull;&nbsp;Általában kevesebb, mint 5 perc|&bull;Az &nbsp; Adatmásolás miatt használt adatbázis-területtel arányos késés</br>&bull;&nbsp;Általában kevesebb, mint 1 perc/GB felhasznált lemezterület|&bull;Az &nbsp; Adatmásolás miatt használt adatbázis-területtel arányos késés</br>&bull;&nbsp;Általában kevesebb, mint 1 perc/GB felhasznált lemezterület|
+|**Alapszintű rugalmas készlet, </br> Standard (S2-S12), </br> általános célú önálló adatbázis vagy rugalmas készlet**|&bull;Az &nbsp; Adatmásolás miatt használt adatbázis-területtel arányos késés</br>&bull;&nbsp;Általában kevesebb, mint 1 perc/GB felhasznált lemezterület|&bull;&nbsp;Önálló adatbázisok esetén a felhasznált területtől független állandó késleltetési idő</br>&bull;&nbsp;Az önálló adatbázisok esetében általában kevesebb, mint 5 perc</br>&bull;&nbsp;Rugalmas készletek esetén az adatbázisok számával arányos|&bull;Az &nbsp; Adatmásolás miatt használt adatbázis-területtel arányos késés</br>&bull;&nbsp;Általában kevesebb, mint 1 perc/GB felhasznált lemezterület|&bull;Az &nbsp; Adatmásolás miatt használt adatbázis-területtel arányos késés</br>&bull;&nbsp;Általában kevesebb, mint 1 perc/GB felhasznált lemezterület|
 |**Prémium vagy üzletileg kritikus önálló adatbázis vagy rugalmas készlet**|&bull;Az &nbsp; Adatmásolás miatt használt adatbázis-területtel arányos késés</br>&bull;&nbsp;Általában kevesebb, mint 1 perc/GB felhasznált lemezterület|&bull;Az &nbsp; Adatmásolás miatt használt adatbázis-területtel arányos késés</br>&bull;&nbsp;Általában kevesebb, mint 1 perc/GB felhasznált lemezterület|&bull;Az &nbsp; Adatmásolás miatt használt adatbázis-területtel arányos késés</br>&bull;&nbsp;Általában kevesebb, mint 1 perc/GB felhasznált lemezterület|&bull;Az &nbsp; Adatmásolás miatt használt adatbázis-területtel arányos késés</br>&bull;&nbsp;Általában kevesebb, mint 1 perc/GB felhasznált lemezterület|
 |**Rugalmas skálázás**|N.A.|N.A.|N.A.|&bull;&nbsp;Állandó időbeli késés a felhasznált területtől függetlenül</br>&bull;&nbsp;Általában kevesebb, mint 2 perc|
 
@@ -57,7 +57,7 @@ A szolgáltatási réteg módosításának becsült késése vagy egy önálló 
 >
 > - A szolgáltatási szint vagy a rugalmas készletre vonatkozó számítási kapacitás módosítása esetén a készletben lévő összes adatbázisban használt terület összesítését kell használni a becslés kiszámításához.
 > - Ha az adatbázist egy rugalmas készletre vagy-re helyezi át, csak az adatbázis által használt terület befolyásolja a késést, nem a rugalmas készlet által használt területet.
-> - A standard és a általános célú rugalmas készletek esetében a rugalmas készletből vagy a rugalmas készletekből álló adatbázisok késése az adatbázis méretétől függ, ha a rugalmas készlet prémium szintű fájlmegosztást ([PFS](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)) használó tárterületet használ. Annak megállapításához, hogy egy készlet PFS-tárolót használ-e, hajtsa végre a következő lekérdezést a készletben lévő bármelyik adatbázis környezetében. Ha a AccountType oszlopban a érték szerepel `PremiumFileStorage` , a készlet PFS-tárolót használ.
+> - A standard és a általános célú rugalmas készletek esetében a rugalmas készletből vagy a rugalmas készletekből álló adatbázisok késése az adatbázis méretétől függ, ha a rugalmas készlet prémium szintű fájlmegosztást ([PFS](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)) használó tárterületet használ. Annak megállapításához, hogy egy készlet PFS-tárolót használ-e, hajtsa végre a következő lekérdezést a készletben lévő bármelyik adatbázis környezetében. Ha a AccountType oszlopban a vagy a érték `PremiumFileStorage` szerepel `PremiumFileStorage-ZRS` , a készlet PFS-tárolót használ.
 
 ```sql
 SELECT s.file_id,
@@ -106,6 +106,6 @@ Az adatbázis óránkénti számlázása az adott órában alkalmazott legmagasa
 > [!IMPORTANT]
 > Bizonyos körülmények között előfordulhat, hogy az adatbázist fel kell zsugorodnia a fel nem használt területek visszaigényléséhez. További információ: [a tárterület kezelése Azure SQL Databaseban](file-space-manage.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A teljes erőforrás-korlátokkal kapcsolatban lásd: [SQL Database virtuális mag-alapú erőforrás-korlátok – rugalmas készletek](resource-limits-vcore-elastic-pools.md) és [SQL Database DTU-alapú erőforrás-korlátok – rugalmas készletek](resource-limits-dtu-elastic-pools.md).

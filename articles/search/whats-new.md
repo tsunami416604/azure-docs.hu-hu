@@ -8,20 +8,18 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: 4526e4916a89b53ae13a31bcdef6cd4715dd7e8c
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 8c6cb08f8236ab6164a71b710656951203be3d19
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90979595"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314573"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Az Azure Cognitive Search újdonságai
 
 Ismerje meg a szolgáltatás újdonságait. Könyvjelző ezen az oldalon naprakészen tarthatja a szolgáltatást.
 
-## <a name="feature-announcements-in-2020"></a>Szolgáltatások hirdetményei a 2020-ben
-
-### <a name="september-2020"></a>2020. szeptember
+## <a name="september-2020"></a>2020. szeptember
 
 Hozzon létre egy Azure Active Directory keresési szolgáltatás identitását, majd a RBAC engedélyek használatával adja meg az identitás írásvédett engedélyeit az Azure-adatforrásoknak. Ha az IP-szabályok nem választhatók, válassza a [megbízható szolgáltatás kivételének](search-indexer-howto-access-trusted-service-exception.md) lehetőségét.
 
@@ -34,13 +32,13 @@ Hozzon létre egy Azure Active Directory keresési szolgáltatás identitását,
 | [Felügyeleti REST API (2020-08-01 – előzetes verzió)](https://docs.microsoft.com/rest/api/searchmanagement/management-api-versions) | REST | Megosztott privát kapcsolati erőforrást hoz létre Azure Functions és az Azure SQL for MySQL-adatbázisokhoz. | Nyilvános előzetes verzió. |
 | [Felügyelet .NET SDK 4,0](https://docs.microsoft.com/dotnet/api/overview/azure/search/management) | .NET SDK | Az Azure SDK frissítése a Management SDK-hoz, az 2020-08-01-es verzió megcélozva REST API. | Általánosan elérhető. |
 
-### <a name="august-2020"></a>2020. augusztus
+## <a name="august-2020"></a>2020. augusztus
 
 |Vonás&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategória | Leírás | Rendelkezésre állás  |
 |---------|------------------|-------------|---------------|
 | [dupla titkosítás](search-security-overview.md#encryption) | Biztonság | Engedélyezze a dupla titkosítást a tárolási rétegben az ügyfél által felügyelt kulcs (CMK) titkosításának az új keresési szolgáltatásokban történő konfigurálásával. Hozzon létre egy új szolgáltatást, [konfigurálja és alkalmazza az ügyfél által felügyelt kulcsokat](search-security-manage-encryption-keys.md) indexekre vagy szinonimára, és használja ki az adott tartalomra vonatkozó kettős titkosítás előnyeit. | Általánosan elérhető minden olyan keresési szolgáltatáshoz, amely 2020. augusztus 1-től a következő régiókban lett létrehozva: USA 2. nyugati régiója, USA keleti régiója, USA déli középső régiója, US Gov Virginia, US Gov Arizona. A szolgáltatás létrehozásához használja a portált, a felügyeleti REST API-kat vagy az SDK-kat. |
 
-### <a name="july-2020"></a>2020. július
+## <a name="july-2020"></a>2020. július
 
 |Vonás&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategória | Leírás | Rendelkezésre állás  |
 |---------|------------------|-------------|---------------|
@@ -48,7 +46,7 @@ Hozzon létre egy Azure Active Directory keresési szolgáltatás identitását,
 | [azure.search.documents ügyféloldali kódtár](/python/api/overview/azure/search-documents-readme)  | Azure SDK for Python| Az Azure SDK csapata által kiadott Python ügyféloldali kódtár, amely más Python-ügyfél-kódtárakkal való konzisztencia kialakítására szolgál. <br/><br/>A 11-es verzió célja a keresési REST API-verzió = 2020-06-30. | Általánosan elérhető. </br> Telepítse az [Azure-Search-Documents csomagot](https://pypi.org/project/azure-search-documents/) a PyPI webhelyről. |
 | [@azure/search-documents ügyféloldali kódtár](/javascript/api/overview/azure/search-documents-readme)  | Azure SDK for JavaScript | Az Azure SDK csapata által kiadott JavaScript ügyféloldali kódtár, amely az egyéb JavaScript-ügyfél-kódtárakkal való konzisztencia biztosítására szolgál. <br/><br/>A 11-es verzió célja a keresési REST API-verzió = 2020-06-30. | Általánosan elérhető. </br> Telepítse a [ @azure/search-documents csomagot](https://www.npmjs.com/package/@azure/search-documents) a NPM-ből. |
 
-### <a name="june-2020"></a>2020. június
+## <a name="june-2020"></a>2020. június
 
 |Vonás&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategória | Leírás | Rendelkezésre állás  |
 |---------|------------------|-------------|---------------|
@@ -57,7 +55,7 @@ Hozzon létre egy Azure Active Directory keresési szolgáltatás identitását,
 | [**Okapi BM25 relevanciás algoritmus**](https://en.wikipedia.org/wiki/Okapi_BM25) | Lekérdezés | Az új relevancia-rangsorolási algoritmus automatikusan használatban van minden új, július 15. után létrehozott keresési szolgáltatáshoz. A korábban létrehozott szolgáltatások esetében a `similarity` tulajdonságot a tárgymutató mezőinek beállításával engedélyezheti. | Általánosan elérhető. </br> Használja a [Search REST API 2020-06-30](/rest/api/searchservice/) vagy újabb, vagy REST API 2019-05-06. |
 | **executionEnvironment** | Biztonság (indexelő) | Explicit módon állítsa be ezt az indexelő konfigurációs tulajdonságot úgy, hogy az a `private` külső adatforrásokhoz való összes kapcsolatot egy privát végponton keresztül kényszerítse. Csak olyan keresési szolgáltatásokra vonatkozik, amelyek az Azure Private link szolgáltatást használják. | Általánosan elérhető. </br> Ezt az általános konfigurációs paramétert a [Search REST API 2020-06-30](/rest/api/searchservice/) paranccsal állíthatja be. |
 
-### <a name="may-2020-microsoft-build"></a>Május 2020 (Microsoft Build)
+## <a name="may-2020-microsoft-build"></a>Május 2020 (Microsoft Build)
 
 |Vonás&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategória | Leírás | Rendelkezésre állás  |
 |---------|------------------|-------------|---------------|
@@ -68,21 +66,21 @@ Hozzon létre egy Azure Active Directory keresési szolgáltatás identitását,
 | [**munkamenet-lekérdezési paraméter**](index-similarity-and-scoring.md), [scoringStatistics = globális paraméter](index-similarity-and-scoring.md#scoring-statistics) | Lekérdezés (relevancia) | Adja hozzá a munkamenet-azonosítókat egy lekérdezéshez, és hozzon létre egy munkafolyamatot a számítástechnikai keresési pontszámok számára, és a scoringStatistics = Global (pontszámok gyűjtése az összes szegmensből) a további konzisztens keresési pontszám kiszámítása | Általánosan elérhető. </br> Használja a [Search REST API 2020-06-30](/rest/api/searchservice/) vagy újabb, vagy REST API 2019-05-06. |
 | [**featuresMode (előzetes verzió)**](index-similarity-and-scoring.md#featuresMode-param) | Lekérdezés | Adja hozzá ezt a lekérdezési paramétert a relevancia pontszám kibontásához a további részletek megjelenítéséhez: mező szerinti hasonlósági pontszám, mező szerinti kifejezés gyakorisága, valamint az egyedi tokenek által egyeztetve. Ezeket az adatpontokat egyéni pontozási algoritmusokban is felhasználhatja. A képességet bemutató minta: a [Machine learning (LearnToRank) hozzáadása a relevancia kereséséhez](https://github.com/Azure-Samples/search-ranking-tutorial). | Nyilvános előzetes verzió. </br> Használja a [Search REST API 2020-06-30 – Preview](/rest/api/searchservice/index-preview) vagy REST API 2019-05-06-Preview lehetőséget. |
 
-### <a name="march-2020"></a>2020. március
+## <a name="march-2020"></a>2020. március
 
 |Vonás&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategória | Leírás | Rendelkezésre állás  |
 |---------|------------------|-------------|---------------|
 | [**Natív blob – Soft Delete (előzetes verzió)**](search-howto-indexing-azure-blob-storage.md#incremental-indexing-and-deletion-detection) | Indexelők | Egy Azure Blob Storage indexelő az Azure-ban Cognitive Search felismeri a törölt állapotban lévő blobokat, és eltávolítja a megfelelő keresési dokumentumot az indexelés során. | Nyilvános előzetes verzió. </br> A [Search REST API 2020-06-30 – Preview](/rest/api/searchservice/index-preview) és a REST API 2019-05-06-Preview, a Run indexelő paranccsal olyan Azure Blob-adatforrást használhat, amelyen engedélyezve van a "Soft Delete" elem. |
 | [**Felügyeleti REST API (2020-03-13)**](/rest/api/searchmanagement/management-api-versions) | REST | Új stabil REST API keresési szolgáltatás létrehozásához és kezeléséhez. IP-tűzfal és privát hivatkozás támogatása | Általánosan elérhető. |
 
-### <a name="february-2020"></a>2020. február
+## <a name="february-2020"></a>2020. február
 
 |Vonás&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategória | Leírás | Rendelkezésre állás  |
 |---------|------------------|-------------|---------------|
 | [**Személyes adatok észlelése (előzetes verzió)**](cognitive-search-skill-pii-detection.md) | MI-bővítés | Új kognitív képesség az indexelés során, amely a személyazonosításra alkalmas adatokat egy bemeneti szövegből kigyűjti, és lehetővé teszi, hogy az adott szövegtől különböző módokon maszkot adjon. | Nyilvános előzetes verzió. </br> Használja a portált vagy a [Search REST API 2020-06-30 – Preview](/rest/api/searchservice/index-preview) vagy REST API 2019-05-06-preview. |
 | [**Egyéni entitások keresése (előzetes verzió)**](cognitive-search-skill-custom-entity-lookup.md )| MI-bővítés | Új kognitív képesség, amely szövegeket keres a szavak és kifejezések egyéni, felhasználó által meghatározott listájából. Ezzel a listával minden olyan dokumentumot felcímkéz, amely minden egyező entitással rendelkezik. A képesség a hasonló, de nem pontos egyezések keresésére is használható. | Nyilvános előzetes verzió. </br> Használja a portált vagy a [Search REST API 2020-06-30 – Preview](/rest/api/searchservice/index-preview) vagy REST API 2019-05-06-preview. |
 
-### <a name="january-2020"></a>2020. január
+## <a name="january-2020"></a>2020. január
 
 |Vonás&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategória | Leírás | Rendelkezésre állás  |
 |---------|------------------|-------------|---------------|
@@ -90,7 +88,7 @@ Hozzon létre egy Azure Active Directory keresési szolgáltatás identitását,
 | [**A kötött tűzfalak támogatásának IP-szabályai (előzetes verzió)**](service-configure-firewall.md) | Biztonság | Egy keresési szolgáltatási végpont elérésének korlátozása adott IP-címekre. Az előzetes verziójú API új **IpRule** és **NetworkRuleSet** tulajdonságokkal rendelkezik a [CreateOrUpdate API](/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service)-ban. Ez az előzetes verziójú funkció a kiválasztott régiókban érhető el. |  Nyilvános előzetes verzió az API-Version = 2019-10 -01-Preview használatával.  |
 | [**Azure Private-hivatkozás privát keresési végponthoz (előzetes verzió)**](service-create-private-endpoint.md) | Biztonság| Egy keresési szolgáltatást a nyilvános internetről privát kapcsolati erőforrásként futtatva, amely csak az ügyfélalkalmazások és más Azure-szolgáltatások számára érhető el ugyanazon a virtuális hálózaton. | Nyilvános előzetes verzió az API-Version = 2019-10 -01-Preview használatával.  |
 
-## <a name="feature-announcements-in-2019"></a>Szolgáltatások hirdetményei a 2019-ben
+## <a name="features-in-2019"></a>Funkciók a 2019-ban
 
 ### <a name="december-2019"></a>2019. december
 

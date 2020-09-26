@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/08/2020
-ms.openlocfilehash: ea5f2d5838c926fa8ee7b92278b0854264346a7b
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 7d36984e7117305b22381e4266575e998c080ae5
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543758"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360191"
 ---
 # <a name="import-or-export-an-azure-sql-database-without-allowing-azure-services-to-access-the-server"></a>Azure SQL Database importálása vagy exportálása az Azure-szolgáltatások a kiszolgálóhoz való hozzáférésének engedélyezése nélkül
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -44,9 +44,9 @@ A következő lépések bemutatják, hogyan csatlakozhat a virtuális géphez t�
 
 1. Ha az üzembe helyezés elkészült, lépjen a virtuális gép erőforráshoz.
 
-   ![VM](./media/database-import-export-azure-services-off/vm.png)  
+   ![A képernyőfelvételen egy virtuális gép áttekintő lapja látható egy csatlakozási gombbal.](./media/database-import-export-azure-services-off/vm.png)  
 
-2. Kattintson a **Csatlakozás** gombra.
+2. Válassza a **Kapcsolódás** lehetőséget.
 
    A virtuális gép nyilvános IP-címét és portszámát tartalmazó RDP protokoll fájl (. rdp fájl) űrlap jelenik meg.
 
@@ -151,7 +151,7 @@ A feltöltéshez vagy a letöltéshez. BACPAC-fájlok: az [adatok átvitele a Az
 
 A környezettől függően előfordulhat, hogy [konfigurálnia kell az Azure Storage-tűzfalakat és a virtuális hálózatokat](../../storage/common/storage-network-security.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az importált SQL Databasehoz való kapcsolódással és lekérdezéssel kapcsolatos információkért lásd: gyors útmutató [: Azure SQL Database: a SQL Server Management Studio használata a kapcsolódáshoz és az adatlekérdezéshez](connect-query-ssms.md).
 - További információ a BACPAC-fájlokkal végzett migrálásról az SQL Server ügyféltanácsadói csapat blogján: [Migrálás SQL Serverről az Azure SQL Database-re BACPAC-fájlokkal](https://techcommunity.microsoft.com/t5/DataCAT/Migrating-from-SQL-Server-to-Azure-SQL-Database-using-Bacpac/ba-p/305407).

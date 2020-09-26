@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/16/2019
 ms.author: victorh
-ms.openlocfilehash: 953be98de855162127fd8b8b8273fe9817668db7
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: ff3e9db4dcfe0bedc348323dbbddd1e66124fc5d
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934820"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360157"
 ---
 # <a name="create-application-gateway-custom-error-pages"></a>Egyéni hibaüzenetek Application Gateway létrehozása
 
@@ -48,7 +48,7 @@ Miután megadta a hibaüzenetet, az Application Gateway letölti a tárolási bl
 
 1. Navigáljon Application Gateway a portálon, és válasszon egy Application Gateway-t.
 
-    ![AG – áttekintés](media/custom-error/ag-overview.png)
+    ![A képernyőképen az Application Gateway Áttekintés lapja látható.](media/custom-error/ag-overview.png)
 2. Kattintson a **figyelők** elemre, és navigáljon egy adott figyelőhöz, ahol egy hibaüzenetet szeretne megadni.
 
     ![Application Gateway figyelők](media/custom-error/ag-listener.png)
@@ -83,6 +83,6 @@ $updatedlistener = Add-AzApplicationGatewayHttpListenerCustomError -HttpListener
 
 További információ: [Add-AzApplicationGatewayCustomError](https://docs.microsoft.com/powershell/module/az.network/add-azapplicationgatewaycustomerror?view=azps-1.2.0) és [Add-AzApplicationGatewayHttpListenerCustomError](https://docs.microsoft.com/powershell/module/az.network/add-azapplicationgatewayhttplistenercustomerror?view=azps-1.3.0).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Application Gateway diagnosztika használatáról: [a háttér állapota, a diagnosztikai naplók és a Application Gateway metrikái](application-gateway-diagnostics.md).

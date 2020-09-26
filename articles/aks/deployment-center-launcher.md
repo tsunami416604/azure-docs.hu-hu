@@ -5,12 +5,12 @@ ms.author: puagarw
 ms.topic: tutorial
 ms.date: 07/12/2019
 author: pulkitaggarwl
-ms.openlocfilehash: 42bdde45b3a289a35c5bf4c4651e5a50a639f049
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 36b2e829e56cf4d3b5ace64af989fa7f71725c44
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86251773"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360837"
 ---
 # <a name="deployment-center-for-azure-kubernetes"></a>Az Azure Kubernetes üzembe helyezési központja
 
@@ -54,7 +54,7 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
 1. Válassza ki az AK-fürtöt, majd a bal oldali panelen válassza a **Deployment Center (előzetes verzió)** lehetőséget. Válassza az első **lépések**lehetőséget.
 
-   ![beállítások](media/deployment-center-launcher/settings.png)
+   ![A képernyőfelvételen a központi telepítési központra mutató nyíl látható Azure Portal.](media/deployment-center-launcher/settings.png)
 
 1. Válassza ki a kód helyét, és kattintson a **Tovább gombra**. Ezután válassza ki az egyik jelenleg támogatott tárházat: **[Azure Repos](/azure/devops/repos/index?view=azure-devops)** vagy **GitHub**.
 
@@ -66,7 +66,7 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
     - **GitHub**: engedélyezze és válassza ki a GitHub-fiók adattárát.
 
-        ![GitHub](media/deployment-center-launcher/github.gif)
+        ![Az animáció egy olyan folyamatot mutat be a GitHubon, amely a GitHubot kiválasztja forrásként, majd kiválasztja a tárházat.](media/deployment-center-launcher/github.gif)
 
 
 1. A központi telepítési központ elemzi a tárházat, és észleli a Docker. Ha frissíteni szeretné a Docker, módosíthatja az azonosított portszámot.
@@ -75,7 +75,7 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
     Ha a tárház nem tartalmazza a Docker, a rendszer megjelenít egy üzenetet, amelyet véglegesíteni kell.
 
-    ![Dockerfile](media/deployment-center-launcher/dockerfile.png)
+    ![Képernyőfelvétel: a központi telepítési központ egy üzenettel nem található Docker a tárházban.](media/deployment-center-launcher/dockerfile.png)
 
 1. Válasszon ki egy meglévő tároló-beállításjegyzéket, vagy hozzon létre egyet, majd kattintson a **Befejezés gombra**. A folyamat automatikusan létrejön, és egy Build az [Azure-folyamatokban](/azure/devops/pipelines/index?view=azure-devops).
 
@@ -87,7 +87,7 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
 1. Az üzembe helyezés befejezése után megjelenik a sikeres naplók.
 
-    ![Naplók](media/deployment-center-launcher/logs.png)
+    ![Képernyőfelvétel: az 1-es kiadású, zöld pipa ikonnal jelölt üzembehelyezési központ.](media/deployment-center-launcher/logs.png)
 
 ## <a name="examine-the-ci-pipeline"></a>A CI-folyamat vizsgálata
 
@@ -137,6 +137,6 @@ A Deployment Center automatikusan létrehozza és konfigurálja az Azure DevOps-
 
 A létrehozott kapcsolódó erőforrásokat törölheti, ha már nincs rájuk szükség. Használja a DELETE funkciót a DevOps Projects irányítópulton.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A csapat igényeihez igazodva módosíthatja ezt a buildet és a kiadási folyamatokat. Másik lehetőségként ezt a CI/CD modellt is használhatja sablonként a többi folyamathoz.

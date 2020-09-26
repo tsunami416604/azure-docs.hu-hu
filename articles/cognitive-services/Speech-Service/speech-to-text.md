@@ -12,12 +12,12 @@ ms.date: 09/01/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: beszéd – szöveg, beszéd – szöveges szoftver
-ms.openlocfilehash: 804acd17f3df91cc3df949d6d9ccac0450bb225f
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: f4392881c2f572b1e53d7c283ef5c1debc1d20ea
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89569220"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91359936"
 ---
 # <a name="what-is-speech-to-text"></a>Mi az a diktálás?
 
@@ -34,7 +34,7 @@ A szövegbeviteli és a beszéd-szöveges szolgáltatás további hivatkozásokk
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-## <a name="get-started"></a>Bevezetés
+## <a name="get-started"></a>Első lépések
 
 Tekintse [meg a gyors](get-started-speech-to-text.md) üzembe helyezési útmutatót. A szolgáltatás a [SPEECH SDK](speech-sdk.md), a [REST API](rest-speech-to-text.md#pronunciation-assessment-parameters)és a [Speech CLI](spx-overview.md)használatával érhető el.
 
@@ -58,5 +58,5 @@ A Batch átírása REST API művelet, amely lehetővé teszi nagy mennyiségű h
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Beszédfelismerési szolgáltatás előfizetési kulcsának beszerzése ingyenesen](get-started.md)
+- [Beszédfelismerési szolgáltatás előfizetési kulcsának beszerzése ingyenesen](overview.md#try-the-speech-service-for-free)
 - [A Speech SDK beszerzése](speech-sdk.md)

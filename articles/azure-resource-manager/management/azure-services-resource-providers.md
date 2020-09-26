@@ -3,12 +3,12 @@ title: Erőforrás-szolgáltatók az Azure-szolgáltatások által
 description: Felsorolja a Azure Resource Manager összes erőforrás-szolgáltatói névterét, és megjeleníti az adott névtérhez tartozó Azure-szolgáltatást.
 ms.topic: conceptual
 ms.date: 09/04/2020
-ms.openlocfilehash: 34b2476b8194b8ad6f8e7e86e2644a1c0d0bbb4b
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: b740c8ee7c28bfeeaecc42121d0c7ce4a323ab3e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89484001"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330825"
 ---
 # <a name="resource-providers-for-azure-services"></a>Erőforrás-szolgáltatók az Azure-szolgáltatásokhoz
 
@@ -18,7 +18,7 @@ Ez a cikk bemutatja, hogyan képezhetők le az erőforrás-szolgáltatói névte
 
 | Erőforrás-szolgáltatói névtér | Azure-szolgáltatás |
 | --------------------------- | ------------- |
-| Microsoft. HRE | [Azure Active Directory Domain Services](../../active-directory-domain-services/index.yml) |
+| Microsoft. HRE | [Azure Active Directory tartományi szolgáltatások](../../active-directory-domain-services/index.yml) |
 | Microsoft. addons | Core |
 | Microsoft. ADHybridHealthService<sup>1</sup> | [Azure Active Directory](../../active-directory/index.yml) |
 | Microsoft. Advisor | [Azure Advisor](../../advisor/index.yml) |
@@ -55,7 +55,7 @@ Ez a cikk bemutatja, hogyan képezhetők le az erőforrás-szolgáltatói névte
 | Microsoft. ClassicSubscription<sup>1</sup> | Klasszikus üzemi modell |
 | Microsoft. CognitiveServices | [Cognitive Services](../../cognitive-services/index.yml) |
 | Microsoft. Commerce<sup>1</sup> | Core |
-| Microsoft.Compute | [Virtuális gépek](../../virtual-machines/index.yml)<br />[Virtual Machine Scale Sets](../../virtual-machine-scale-sets/index.yml) |
+| Microsoft.Compute | [Virtual Machines](../../virtual-machines/index.yml)<br />[Virtual Machine Scale Sets](../../virtual-machine-scale-sets/index.yml) |
 | Microsoft.<sup>1</sup> . felhasználás | [Költségkezelés](/azure/cost-management/) |
 | Microsoft. ContainerInstance | [Container Instances](../../container-instances/index.yml) |
 | Microsoft. ContainerRegistry | [Container Registry](../../container-registry/index.yml) |
@@ -78,7 +78,7 @@ Ez a cikk bemutatja, hogyan képezhetők le az erőforrás-szolgáltatói névte
 | Microsoft. DBforMySQL | [Azure Database for MySQL](../../mysql/index.yml) |
 | Microsoft. DBforPostgreSQL | [Azure Database for PostgreSQL](../../postgresql/index.yml) |
 | Microsoft. DeploymentManager | [Azure-telepítéskezelő](../templates/deployment-manager-overview.md) |
-| Microsoft. DesktopVirtualization | [Windows Virtual Desktop](../../virtual-desktop/index.yml) |
+| Microsoft. DesktopVirtualization | [Windows virtuális asztal](../../virtual-desktop/index.yml) |
 | Microsoft.Devices | [Azure IoT Hub](../../iot-hub/index.yml)<br />[Azure IoT Hub Device Provisioning Service](../../iot-dps/index.yml) |
 | Microsoft. DevOps | [Azure DevOps](/azure/devops/) |
 | Microsoft. DevSpaces | [Azure Dev Spaces](../../dev-spaces/index.yml) |
@@ -98,7 +98,7 @@ Ez a cikk bemutatja, hogyan képezhetők le az erőforrás-szolgáltatói névte
 | Microsoft. HealthcareApis | [Azure API for FHIR](../../healthcare-apis/index.yml) |
 | Microsoft. HybridCompute | [Azure Arc](../../azure-arc/index.yml) |
 | Microsoft. HybridData | [StorSimple](../../storsimple/index.yml) |
-| Microsoft. HybridNetwork  | Stack Edge-támogatás |
+| Microsoft. HybridNetwork  | [Saját peremhálózati zónák](../../networking/edge-zones-overview.md) |
 | Microsoft. ImportExport | [Azure Import/Export](../../storage/common/storage-import-export-service.md) |
 | Microsoft. bepillantások | [Azure Monitor](../../azure-monitor/index.yml) |
 | Microsoft. IoTCentral | [Azure IoT Central](../../iot-central/index.yml) |
@@ -116,7 +116,7 @@ Ez a cikk bemutatja, hogyan képezhetők le az erőforrás-szolgáltatói névte
 | Microsoft. ManagedIdentity | [Azure-erőforrások felügyelt identitásai](../../active-directory/managed-identities-azure-resources/index.yml) |
 | Microsoft. ManagedNetwork | A Pásti Services által felügyelt virtuális hálózatok |
 | Microsoft. ManagedServices | [Azure Lighthouse](../../lighthouse/index.yml) |
-| Microsoft. Management | [Management Groups](../../governance/management-groups/index.yml) |
+| Microsoft. Management | [Felügyeleti csoportok](../../governance/management-groups/index.yml) |
 | Microsoft. Maps | [Azure Maps](../../azure-maps/index.yml) |
 | Microsoft. Marketplace | Core |
 | Microsoft. MarketplaceApps | Core |
@@ -188,4 +188,4 @@ Ez a cikk bemutatja, hogyan képezhetők le az erőforrás-szolgáltatói névte
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az erőforrás-szolgáltatókkal kapcsolatos további információkért, beleértve az erőforrás-szolgáltatók regisztrálásának módját, lásd: [Azure erőforrás-szolgáltatók és-típusok](resource-providers-and-types.md)
+Az erőforrás-szolgáltatókkal kapcsolatos további információkért, beleértve az erőforrás-szolgáltatók regisztrálásának módját, tekintse meg az [Azure erőforrás-szolgáltatók és típusok](resource-providers-and-types.md)című témakört.

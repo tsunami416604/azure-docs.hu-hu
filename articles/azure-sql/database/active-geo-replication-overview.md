@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mathoma, carlrab
+ms.reviewer: mathoma, sstein
 ms.date: 08/27/2020
-ms.openlocfilehash: a269796c072a235e4ecd47731ca37a774750a3cf
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 3526510e4cbd77ffe1f468512e1128dcebe9b1da
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018365"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330842"
 ---
 # <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>Active geo-Replication-Azure SQL Database létrehozása és használata
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -210,13 +210,13 @@ Javasoljuk, hogy az [adatbázis-szintű IP-tűzfalszabályok](firewall-configure
 
 ## <a name="upgrading-or-downgrading-primary-database"></a>Elsődleges adatbázis frissítése vagy visszaminősítése
 
-A másodlagos adatbázisok leválasztása nélkül frissítheti vagy visszaminősítheti az elsődleges adatbázist más számítási méretre (ugyanazon a szolgáltatási szinten belül, általános célú és üzletileg kritikus között). A frissítéskor javasoljuk, hogy először frissítse a másodlagos adatbázist, majd frissítse az elsődlegest. Ha a rendszer visszaminősíti a visszalépést, a sorrend megfordításakor a rendszer visszaminősíti az elsődlegest, majd lecseréli a másodlagost. Ha az adatbázist egy másik szolgáltatási szintre frissíti vagy visszaminősíti, ez a javaslat érvénybe lép.
+A másodlagos adatbázisok leválasztása nélkül frissítheti vagy visszaminősítheti az elsődleges adatbázist más számítási méretre (ugyanazon a szolgáltatási szinten belül, általános célú és üzletileg kritikus között). A frissítéskor javasoljuk, hogy először frissítse a másodlagos adatbázist, majd frissítse az elsődlegest. Ha alacsonyabb számítási méretre vált, fordított sorrendben végezze el a módosítást: először az elsődleges adatbázist, majd a másodlagos adatbázist módosítsa. Ha egy alacsonyabb vagy magasabb szolgáltatási szintre módosítja az adatbázist, a rendszer kikényszeríti ezt az ajánlást.
 
 > [!NOTE]
-> Ha a másodlagos adatbázist a feladatátvételi csoport konfigurációjának részeként hozta létre, a másodlagos adatbázis visszalépéséhez nem ajánlott. Ezzel biztosíthatja, hogy az adatmennyiség elegendő kapacitással legyen feldolgozva a rendszeres számítási feladatok elvégzése után a feladatátvétel aktiválása után.
+> Ha a feladatátvételi csoport konfigurációjának részeként hozta létre a másodlagos adatbázist, nem ajánlott alacsonyabb szintre módosítani a másodlagos adatbázist. Ezzel biztosíthatja, hogy az adatmennyiség elegendő kapacitással legyen feldolgozva a rendszeres számítási feladatok elvégzése után a feladatátvétel aktiválása után.
 
 > [!IMPORTANT]
-> A feladatátvételi csoportban lévő elsődleges adatbázis nem méretezhető magasabb szintűre, kivéve, ha a másodlagos adatbázist először a magasabb szintűre méretezi. Ha az elsődleges adatbázist a másodlagos adatbázis skálázása előtt próbálja meg méretezni, a következő hibaüzenet jelenhet meg:
+> A feladatátvételi csoportban lévő elsődleges adatbázis nem skálázható magasabb szintűre, kivéve, ha először a másodlagos adatbázist skálázza magasabb szintre. Ha az elsődleges adatbázist a másodlagos adatbázis skálázása előtt próbálja meg méretezni, a következő hibaüzenet jelenhet meg:
 >
 > `Error message: The source database 'Primaryserver.DBName' cannot have higher edition than the target database 'Secondaryserver.DBName'. Upgrade the edition on the target before upgrading the source.`
 >
@@ -248,9 +248,9 @@ Amint azt korábban már említettük, az aktív geo-replikáció programozott m
 
 | Parancs | Leírás |
 | --- | --- |
-| [ADATBÁZIS MÓDOSÍTÁSA](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Másodlagos adatbázis hozzáadása egy meglévő adatbázishoz, és az adatreplikálás elindításához használja a másodlagos kiszolgáló hozzáadása argumentumot. |
-| [ADATBÁZIS MÓDOSÍTÁSA](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Feladatátvétel vagy FORCE_FAILOVER_ALLOW_DATA_LOSS használatával váltson át másodlagos adatbázist elsődlegesre a feladatátvétel indításához |
-| [ADATBÁZIS MÓDOSÍTÁSA](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Használja a másodlagos eltávolítása a kiszolgálón lehetőséget a SQL Database és a megadott másodlagos adatbázis közötti adatreplikáció megszakításához. |
+| [ADATBÁZIS MÓDOSÍTÁSA](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current&preserve-view=true) |Másodlagos adatbázis hozzáadása egy meglévő adatbázishoz, és az adatreplikálás elindításához használja a másodlagos kiszolgáló hozzáadása argumentumot. |
+| [ADATBÁZIS MÓDOSÍTÁSA](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current&preserve-view=true) |Feladatátvétel vagy FORCE_FAILOVER_ALLOW_DATA_LOSS használatával váltson át másodlagos adatbázist elsődlegesre a feladatátvétel indításához |
+| [ADATBÁZIS MÓDOSÍTÁSA](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current&preserve-view=true) |Használja a másodlagos eltávolítása a kiszolgálón lehetőséget a SQL Database és a megadott másodlagos adatbázis közötti adatreplikáció megszakításához. |
 | [sys. geo_replication_links](/sql/relational-databases/system-dynamic-management-views/sys-geo-replication-links-azure-sql-database) |A kiszolgálón található egyes adatbázisokhoz tartozó összes meglévő replikációs hivatkozás információit adja vissza. |
 | [sys. dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) |Lekéri a legutóbbi replikálási időt, a legutóbbi replikálási késést és az adott adatbázis replikációs hivatkozásával kapcsolatos egyéb információkat. |
 | [sys. dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) |Megjeleníti az összes adatbázis-művelet állapotát, beleértve a replikációs hivatkozások állapotát is. |

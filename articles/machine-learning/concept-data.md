@@ -11,12 +11,12 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 08/31/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 85aa78223b8db76cfb430341b19878bc6bbe87d7
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: ac0b3c151b379096ffb60e049d18b8f6219b1445
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651171"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91359681"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Adatelérés védelme Azure Machine Learning
 
@@ -48,7 +48,7 @@ Ha készen áll a felhőalapú tárolási megoldásban tárolt adatfelhasználá
 
 Az alábbi ábra a javasolt munkafolyamat vizuális bemutatását mutatja be.
 
-![Adatkoncepció – diagram](./media/concept-data/data-concept-diagram.svg)
+![A diagram megjeleníti az Azure Storage szolgáltatást, amely egy adatkészletbe áramló adattárba kerül. Az adatkészlet a modell betanításba kerül, amely adateltolódásba kerül, és az adatkészletbe kerül vissza.](./media/concept-data/data-concept-diagram.svg)
 
 ## <a name="datastores"></a>Adattárak
 
