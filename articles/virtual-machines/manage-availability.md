@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cynthn
-ms.openlocfilehash: 4dc3e128ac1c611a8527c3044bfac566edc24c74
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: fe89b58f71b14b211863fd46ba523e8c866764f1
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91344291"
+ms.locfileid: "91361789"
 ---
 # <a name="manage-the-availability-of-linux-virtual-machines"></a>Linux rendszerű virtuális gépek rendelkezésre állásának kezelése
 
@@ -36,7 +36,7 @@ Az ilyen események okozta állásidő hatásainak csökkentése érdekében jav
 
 * Availabiilty zónák használata az adatközpont hibái elleni védelemhez
 * Több virtuális gép rendelkezésre állási csoportba konfigurálása a redundancia biztosítása érdekében
-* Felügyelt lemezek használata rendelkezésre állási csoportba tartozó virtuális gépekhez]
+* Felügyelt lemezek használata rendelkezésre állási csoporthoz tartozó virtuális gépekkel
 * Ütemezett események használatával proaktív módon válaszolhat a virtuális gépeket érintő eseményekre
 * Az egyes alkalmazásrétegek külön rendelkezésre állási csoportokba konfigurálása
 * Terheléselosztó kombinálása rendelkezésre állási zónákkal vagy készletekkel

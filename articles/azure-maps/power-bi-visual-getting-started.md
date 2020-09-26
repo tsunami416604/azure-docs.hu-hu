@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 9f7f44e053cfb26cbf7d897b8a1df1ad2861fd07
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: aecda5ed9b87ba2345a52923a574919d6a08594f
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87551999"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362671"
 ---
 # <a name="getting-started-with-the-azure-maps-power-bi-visual"></a>Bevezetés a Azure Maps Power BI vizualizáció használatába
 
-<Token>**a következőkre vonatkozik:** ![ igen ](media/power-bi-visual/yes.png) Power bi szolgáltatás a ***felhasználóknak*** ![ igen ](media/power-bi-visual/yes.png) Power bi szolgáltatás a tervezők & a fejlesztők számára ![ Igen, ](media/power-bi-visual/yes.png) Power bi Desktop ![ nem ](media/power-bi-visual/no.png) igényel Pro vagy Premium licencet</Token>
+<Token>**a következőkre vonatkozik:** ![ Zöld pipa. ](media/power-bi-visual/yes.png) Power BI szolgáltatás a ***fogyasztók*** ![ zöld pipa jelzéssel. ](media/power-bi-visual/yes.png) Power BI szolgáltatás tervezők számára & a fejlesztők ![ zöld pipa jel. ](media/power-bi-visual/yes.png) Power BI Desktop ![ X, amely nem. ](media/power-bi-visual/no.png) Pro vagy Premium licenc szükséges </Token>
 
 Ez a cikk bemutatja, hogyan használható a Power BI Microsoft Azure Maps-vizualizációja.
 
@@ -135,7 +135,7 @@ A Azure Maps vizualizáció a következő szolgáltatásokban és alkalmazásokb
 | Power BI mobilalkalmazások             | Igen          |
 | Power BI webes közzététel                  | Nem           |
 | Power BI Embedded                        | Nem           |
-| Power BI szolgáltatás beágyazása (PowerBI.com) | Igen          |
+| Power BI szolgáltatás beágyazása (PowerBI.com) | Yes          |
 
 További Power BI szolgáltatások/alkalmazások támogatása a jövőbeli frissítésekben lesz hozzáadva.
 

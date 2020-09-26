@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 06/17/2020
 ms.author: absha
-ms.openlocfilehash: 64f2abd2a42fb15b994803a48b97679ee8927233
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 69d388b12e564b307cd117c3a86ae960dabaa937
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89594424"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362712"
 ---
 # <a name="create-certificates-to-allow-the-backend-with-azure-application-gateway"></a>Tanúsítványok létrehozása a háttér Azure Application Gateway való engedélyezéséhez
 
@@ -37,7 +37,7 @@ A TLS/SSL-tanúsítványból exportálja a nyilvános kulcsú. cer fájlt (ne a 
 
 1. A .cer fájl tanúsítványból történő beszerzéséhez nyissa meg a **Felhasználói tanúsítványok kezelése** elemet. Keresse meg a tanúsítványt, amely jellemzően a "Certificates-current User\Personal\Certificates" elemben található, és kattintson a jobb gombbal. Kattintson a **Minden feladat**, majd az **Exportálás** elemre. Megnyílik a **Tanúsítványexportáló varázsló**. Ha nem találja a tanúsítványt a jelenlegi User\Personal\Certificates alatt, előfordulhat, hogy véletlenül megnyitotta a "tanúsítványok – helyi számítógép" kifejezést, és nem a "tanúsítványok – aktuális felhasználó" beállítást. Ha a Tanúsítványkezelőt a jelenlegi felhasználói hatókörben szeretné megnyitni a PowerShell használatával, írja be a *certmgr* a konzol ablakba.
 
-   ![Exportálás](./media/certificates-for-backend-authentication/export.png)
+   ![Képernyőfelvétel: a Tanúsítványkezelő a kiválasztott tanúsítványokkal, valamint az összes feladattal rendelkező környezetfüggő menü, majd a kijelöltek exportálása.](./media/certificates-for-backend-authentication/export.png)
 
 2. A varázslóban kattintson a **Tovább** gombra.
 
@@ -53,19 +53,19 @@ A TLS/SSL-tanúsítványból exportálja a nyilvános kulcsú. cer fájlt (ne a 
 
 5. A **fájl exportálásához** **tallózással keresse** meg azt a helyet, ahová exportálni kívánja a tanúsítványt. A **Fájlnév** mezőben nevezze el a tanúsítványfájlt. Ezután kattintson a **tovább**gombra.
 
-   ![Tallózás](./media/certificates-for-backend-authentication/browse.png)
+   ![Képernyőfelvétel: a tanúsítvány-Exportálás varázsló, amelyen az exportálandó fájlt meg kell adni.](./media/certificates-for-backend-authentication/browse.png)
 
 6. Kattintson a **Befejezés** gombra a tanúsítvány exportálásához.
 
-   ![Befejezés](./media/certificates-for-backend-authentication/finish.png)
+   ![A fájl exportálásának befejezése után a képernyőképen a tanúsítvány-Exportálás varázsló látható.](./media/certificates-for-backend-authentication/finish.png)
 
 7. A tanúsítvány exportálása sikeresen megtörtént.
 
-   ![Success](./media/certificates-for-backend-authentication/success.png)
+   ![A képernyőkép a tanúsítvány-exportálás varázslót jeleníti meg a sikert jelző üzenettel.](./media/certificates-for-backend-authentication/success.png)
 
    Az exportált tanúsítvány ehhez hasonlóan néz ki:
 
-   ![Exportált](./media/certificates-for-backend-authentication/exported.png)
+   ![A képernyőképen a tanúsítvány szimbóluma látható.](./media/certificates-for-backend-authentication/exported.png)
 
 8. Ha a Jegyzettömb használatával nyitja meg az exportált tanúsítványt, az ehhez hasonló példához hasonlóan jelenik meg. A kék szakasz az Application Gateway szolgáltatásba feltöltött információkat tartalmazza. Ha a tanúsítványt a Jegyzettömbben nyitja meg, és nem hasonlít ehhez, ez általában azt jelenti, hogy nem exportálta az alap-64 kódolású X. 509 (. CER) formátum. Emellett, ha egy másik szövegszerkesztőt szeretne használni, ismerkedjen meg azzal, hogy egyes szerkesztők nem kívánt formázást tudnak bevezetni a háttérben. Ez problémákat okozhat a tanúsítvány szövegének az Azure-ba való feltöltésekor.
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: c4d0639831d2f6f60a719637c5158fba5caf6f43
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8391202e991c240b03bd79b947c1c3c6dcc9afd7
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83659349"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362537"
 ---
 # <a name="configure-rules"></a>Szabályok konfigurálása
 
@@ -33,7 +33,7 @@ A feltételek alapján a szabályok aktiválva lesznek. Jelenleg, ha több felt�
 
 A következő képernyőképen a feltételek azt állapítják meg, hogy a hőmérséklet nagyobb-e, mint 70 &deg; F, a páratartalom pedig kevesebb, mint 10. Ha mindkét utasítás igaz, a szabály igaz értéket ad vissza, és elindítja a műveletet.
 
-![Feltételek](media/howto-configure-rules/conditions.png)
+![A képernyőfelvétel a hőmérséklet és a páratartalom meghatározására szolgáló, a hűtőszekrények figyelőjét jeleníti meg.](media/howto-configure-rules/conditions.png)
 
 ### <a name="use-a-cloud-property-in-a-value-field"></a>Felhőbeli tulajdonság használata érték mezőben
 
@@ -51,6 +51,6 @@ A szabályok kiértékelik a Windows összesített időkorlátját. Az alábbi k
 
 Korlátozás vonatkozik a IoT Edge modulokra alkalmazott szabályokra. A különböző modulok telemetria vonatkozó szabályok nem érvényes szabályokként vannak kiértékelve. Példaként végezze el az alábbiakat. A szabály első feltétele az A modul egy hőmérsékleti telemetria. A szabály második feltétele a B modul nedvességtartalmának telemetria. Mivel a két feltétel különböző modulokból származik, ez a feltételek érvénytelenek. A szabály nem érvényes, és a rendszer hibát jelez a szabály mentésekor.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte, hogyan konfigurálhat egy szabályt az Azure IoT Central alkalmazásban, megtudhatja, hogyan [konfigurálhat speciális szabályokat](howto-configure-rules-advanced.md) a Power automatizálás vagy a Azure Logic Apps használatával.
