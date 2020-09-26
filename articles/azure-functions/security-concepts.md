@@ -3,12 +3,12 @@ title: Azure Functions biztonságossá tétele
 description: Ismerje meg, hogyan teheti meg az Azure-ban futó funkció kódját az általános támadásokkal szemben.
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9bec32c4c3d8005ef0d3c9fc5732785a5fa19a0c
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: e48991788307a47d0e01a7921e0c94d77ddcd5ad
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850712"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91294750"
 ---
 # <a name="securing-azure-functions"></a>Azure Functions biztonságossá tétele
 
@@ -60,7 +60,7 @@ A következő táblázat a különböző típusú hozzáférési kulcsok haszná
 
 | Művelet                                        | Hatókör                    | Érvényes kulcsok         |
 |-----------------------------------------------|--------------------------|--------------------|
-| Függvény végrehajtása                            | Adott függvény        | Függvény           |
+| Függvény végrehajtása                            | Adott függvény        | Funkció           |
 | Függvény végrehajtása                            | Bármely függvény             | Függvény vagy gazdagép   |
 | Rendszergazdai végpont meghívása                        | Függvényalkalmazás             | Gazdagép (csak Master) |
 | Tartós feladat-kiterjesztési API-k hívása              | <sup>1</sup> . funkció alkalmazás | <sup>2</sup> . System |
@@ -80,7 +80,7 @@ Alapértelmezés szerint a kulcsok tárolása blob Storage-tárolóban történi
 |---------|---------|---------|---------|
 |Eltérő Storage-fiók     |  `AzureWebJobsSecretStorageSas`       | `<BLOB_SAS_URL` | Egy második Storage-fiók blob Storage-tárolójában tárolja a kulcsokat a megadott SAS URL-cím alapján. A kulcsok titkosítva vannak, mielőtt a rendszer a Function-alkalmazáshoz tartozó titkos kulcs használatával tárolja őket. |
 |Fájlrendszer   | `AzureWebJobsSecretStorageType`   |  `files`       | A kulcsok megmaradnak a fájlrendszerben, és a rendszer titkosítja a tárterületet a Function alkalmazás titkos kódjának egyedi titkát használva. |
-|Azure Key Vault  | `AzureWebJobsSecretStorageType`<br/>`AzureWebJobsSecretStorageKeyVaultName` | `keyvault`<br/>`<VAULT_NAME>` | A tárolónak rendelkeznie kell egy olyan hozzáférési házirenddel, amely megfelel az üzemeltetési erőforrás rendszerhez rendelt felügyelt identitásának. A hozzáférési házirendnek a következő titkos engedélyeket kell megadnia a személyazonossághoz:,, `Get` `Set` `List` és `Delete` . <br/>Helyi futtatásakor a rendszer a fejlesztői identitást használja, és a beállításoknak a [fájllocal.settings.js](functions-run-local.md#local-settings-file)kell lenniük. | 
+|Azure Key Vault  | `AzureWebJobsSecretStorageType`<br/>`AzureWebJobsSecretStorageKeyVaultName` | `keyvault`<br/>`<VAULT_NAME>` | A tárolónak rendelkeznie kell egy olyan hozzáférési házirenddel, amely megfelel az üzemeltetési erőforrás rendszerhez rendelt felügyelt identitásának. A hozzáférési házirendnek a következő titkos engedélyeket kell megadnia a személyazonossághoz:,, `Get` `Set` `List` és `Delete` . <br/>Helyi futtatásakor a rendszer a fejlesztői identitást használja, és a beállításoknak a [ fájllocal.settings.js](functions-run-local.md#local-settings-file)kell lenniük. | 
 |A Kubernetes titkos kódjai  |`AzureWebJobsSecretStorageType`<br/>`AzureWebJobsKubernetesSecretName` (nem kötelező) | `kubernetes`<br/>`<SECRETS_RESOURCE>` | Csak akkor támogatott, ha a functions futtatókörnyezetet futtatja a Kubernetes-ben. Ha `AzureWebJobsKubernetesSecretName` nincs beállítva, a tárház írásvédettnak minősül. Ebben az esetben az értékeket az üzembe helyezés előtt kell létrehozni. A Azure Functions Core Tools automatikusan hozza létre az értékeket a Kubernetes való üzembe helyezéskor.|
 
 ### <a name="authenticationauthorization"></a>Hitelesítés/engedélyezés
@@ -128,6 +128,8 @@ Alapértelmezés szerint a Function app és a kötések alkalmazás-beállítás
 Például minden Function alkalmazáshoz hozzá kell rendelni egy társított Storage-fiókot, amelyet a futtatókörnyezet használ. Alapértelmezés szerint a rendszer a Storage-fiókhoz való kapcsolódást egy nevű alkalmazás-beállításban tárolja `AzureWebJobsStorage` .
 
 Az Alkalmazásbeállítások és a kapcsolatok karakterláncai titkosítva tárolódnak az Azure-ban. A visszafejtésük csak az alkalmazás folyamatának memóriába való beadása előtt történik meg, amikor az alkalmazás elindul. A titkosítási kulcsok elforgatása rendszeresen történik. Ha inkább a titkos kulcsok biztonságos tárolását szeretné felügyelni, az alkalmazás beállításának Ehelyett a Azure Key Vaultra kell hivatkoznia. 
+
+A beállításokat a helyi számítógépen lévő függvények fejlesztésekor alapértelmezés szerint a local.settings.jsfájlban is titkosíthatja. További információért tekintse meg a `IsEncrypted` tulajdonságot a [helyi beállítások fájlban](functions-run-local.md#local-settings-file).  
 
 #### <a name="key-vault-references"></a>Key Vault referenciák
 

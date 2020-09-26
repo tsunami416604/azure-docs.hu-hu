@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: reference
 ms.date: 08/31/2020
 ms.author: aahi
-ms.openlocfilehash: 5d2ff25762f28c19b6d389a779fb455de3c84f3e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2a24433389e738bf5d0ecb7ecac6bf369c8ba183
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91253768"
+ms.locfileid: "91369484"
 ---
 # <a name="azure-cognitive-services-container-image-tags"></a>Azure Cognitive Services tároló képcímkék
 
@@ -1131,22 +1131,22 @@ Ez a tároló-rendszerkép a következő címkéket tartalmazhatja:
 | Képcímkék                                  | Jegyzetek                                                                      |
 |---------------------------------------------|:---------------------------------------------------------------------------|
 | `latest`                                    | A tároló képe a `en-US` területi beállítással és a `en-US-AriaNeural` hanggal.      |
-| `1.1.0-amd64-de-de-katjaneural-preview`     | A tároló képe a `de-DE` területi beállítással és a `de-DE-KatjaNeural` hanggal.     |
-| `1.1.0-amd64-en-au-natashaneural-preview`   | A tároló képe a `en-AU` területi beállítással és a `en-AU-NatashaNeural` hanggal.   |
-| `1.1.0-amd64-en-ca-claraneural-preview`     | A tároló képe a `en-CA` területi beállítással és a `en-CA-ClaraNeural` hanggal.     |
-| `1.1.0-amd64-en-gb-libbyneural-preview`     | A tároló képe a `en-GB` területi beállítással és a `en-GB-LibbyNeural` hanggal.     |
-| `1.1.0-amd64-en-gb-mianeural-preview`       | A tároló képe a `en-GB` területi beállítással és a `en-GB-MiaNeural` hanggal.       |
-| `1.1.0-amd64-en-us-arianeural-preview`      | A tároló képe a `en-US` területi beállítással és a `en-US-AriaNeural` hanggal.      |
-| `1.1.0-amd64-en-us-guyneural-preview`       | A tároló képe a `en-US` területi beállítással és a `en-US-GuyNeural` hanggal.       |
-| `1.1.0-amd64-es-es-elviraneural-preview`    | A tároló képe a `es-ES` területi beállítással és a `es-ES-ElviraNeural` hanggal.    |
-| `1.1.0-amd64-es-mx-dalianeural-preview`     | A tároló képe a `es-MX` területi beállítással és a `es-MX-DaliaNeural` hanggal.     |
-| `1.1.0-amd64-fr-ca-sylvieneural-preview`    | A tároló képe a `fr-CA` területi beállítással és a `fr-CA-SylvieNeural` hanggal.    |
-| `1.1.0-amd64-fr-fr-deniseneural-preview`    | A tároló képe a `fr-FR` területi beállítással és a `fr-FR-DeniseNeural` hanggal.    |
-| `1.1.0-amd64-it-it-elsaneural-preview`      | A tároló képe a `it-IT` területi beállítással és a `it-IT-ElsaNeural` hanggal.      |
-| `1.1.0-amd64-ja-jp-nanamineural-preview`    | A tároló képe a `ja-JP` területi beállítással és a `ja-JP-NanamiNeural` hanggal.    |
-| `1.1.0-amd64-ko-kr-sunhineural-preview`     | A tároló képe a `ko-KR` területi beállítással és a `ko-KR-SunHiNeural` hanggal.     |
-| `1.1.0-amd64-pt-br-franciscaneural-preview` | A tároló képe a `pt-BR` területi beállítással és a `pt-BR-FranciscaNeural` hanggal. |
-| `1.1.0-amd64-zh-cn-xiaoxiaoneural-preview`  | A tároló képe a `zh-CN` területi beállítással és a `zh-CN-XiaoxiaoNeural` hanggal.  |
+| `1.2.0-amd64-de-de-katjaneural-preview`     | A tároló képe a `de-DE` területi beállítással és a `de-DE-KatjaNeural` hanggal.     |
+| `1.2.0-amd64-en-au-natashaneural-preview`   | A tároló képe a `en-AU` területi beállítással és a `en-AU-NatashaNeural` hanggal.   |
+| `1.2.0-amd64-en-ca-claraneural-preview`     | A tároló képe a `en-CA` területi beállítással és a `en-CA-ClaraNeural` hanggal.     |
+| `1.2.0-amd64-en-gb-libbyneural-preview`     | A tároló képe a `en-GB` területi beállítással és a `en-GB-LibbyNeural` hanggal.     |
+| `1.2.0-amd64-en-gb-mianeural-preview`       | A tároló képe a `en-GB` területi beállítással és a `en-GB-MiaNeural` hanggal.       |
+| `1.2.0-amd64-en-us-arianeural-preview`      | A tároló képe a `en-US` területi beállítással és a `en-US-AriaNeural` hanggal.      |
+| `1.2.0-amd64-en-us-guyneural-preview`       | A tároló képe a `en-US` területi beállítással és a `en-US-GuyNeural` hanggal.       |
+| `1.2.0-amd64-es-es-elviraneural-preview`    | A tároló képe a `es-ES` területi beállítással és a `es-ES-ElviraNeural` hanggal.    |
+| `1.2.0-amd64-es-mx-dalianeural-preview`     | A tároló képe a `es-MX` területi beállítással és a `es-MX-DaliaNeural` hanggal.     |
+| `1.2.0-amd64-fr-ca-sylvieneural-preview`    | A tároló képe a `fr-CA` területi beállítással és a `fr-CA-SylvieNeural` hanggal.    |
+| `1.2.0-amd64-fr-fr-deniseneural-preview`    | A tároló képe a `fr-FR` területi beállítással és a `fr-FR-DeniseNeural` hanggal.    |
+| `1.2.0-amd64-it-it-elsaneural-preview`      | A tároló képe a `it-IT` területi beállítással és a `it-IT-ElsaNeural` hanggal.      |
+| `1.2.0-amd64-ja-jp-nanamineural-preview`    | A tároló képe a `ja-JP` területi beállítással és a `ja-JP-NanamiNeural` hanggal.    |
+| `1.2.0-amd64-ko-kr-sunhineural-preview`     | A tároló képe a `ko-KR` területi beállítással és a `ko-KR-SunHiNeural` hanggal.     |
+| `1.2.0-amd64-pt-br-franciscaneural-preview` | A tároló képe a `pt-BR` területi beállítással és a `pt-BR-FranciscaNeural` hanggal. |
+| `1.2.0-amd64-zh-cn-xiaoxiaoneural-preview`  | A tároló képe a `zh-CN` területi beállítással és a `zh-CN-XiaoxiaoNeural` hanggal.  |
 
 ## <a name="key-phrase-extraction"></a>Kulcskifejezések kinyerése
 

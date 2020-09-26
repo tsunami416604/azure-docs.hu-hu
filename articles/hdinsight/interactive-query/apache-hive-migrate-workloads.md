@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/13/2019
-ms.openlocfilehash: 313b6afb8bd96f8ae507118cd552110d5f07ff78
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 26dfe8d134f9f38d8272895583ba2eff614d78e4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087518"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91308384"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Az Azure HDInsight 3,6 kaptár számítási feladatait áttelepítheti HDInsight 4,0
 
@@ -70,7 +70,7 @@ További információ a Storage-fiókok HDInsight-fürtökhöz való hozzáadás
 
 A felügyelt tábláknak a HDInsight 4,0-es, alapértelmezés szerint sav-kompatibilisnek kell lenniük. Miután elvégezte a metaadattár áttelepítését, futtasson egy verziófrissítés utáni eszközt, hogy a korábban nem savas felügyelt táblák kompatibilisek legyenek a HDInsight 4,0-fürttel. Ez az eszköz a következő átalakítást fogja alkalmazni:
 
-|3,6 |4.0 |
+|3,6 |4,0 |
 |---|---|
 |Külső táblák|Külső táblák|
 |Nem savas felügyelt táblák|Külső táblák a következő tulajdonsággal: "External. table. Purge" = "true"|
@@ -79,7 +79,7 @@ A felügyelt tábláknak a HDInsight 4,0-es, alapértelmezés szerint sav-kompat
 Hajtsa végre a kaptár frissítés utáni eszközét az HDInsight 4,0-fürtön az SSH-rendszerhéj használatával:
 
 1. Csatlakozzon a fürt átjárócsomóponthoz SSH használatával. Útmutatásért lásd: [Kapcsolódás a HDInsight az SSH használatával](../hdinsight-hadoop-linux-use-ssh-unix.md)
-1. Bejelentkezési rendszerhéj megnyitása kaptár-felhasználóként a futtatásával`sudo su - hive`
+1. Bejelentkezési rendszerhéj megnyitása kaptár-felhasználóként a futtatásával `sudo su - hive`
 1. Futtassa a következő parancsot a rendszerhéjból.
 
     ```bash
@@ -103,7 +103,7 @@ A HDInsight 3,6-es és 4,0-es fürtöknek ugyanazt a Storage-fiókot kell haszn�
 >
 > * A szkript befejezése után feltételezhető, hogy a régi fürtöt a rendszer többé nem fogja használni a parancsfájlban hivatkozott táblák vagy adatbázisok eléréséhez.
 >
-> * Az összes felügyelt tábla tranzakciós lesz a HDInsight 4,0-ben. Ha szeretné, megtarthatja a tábla nem tranzakciós beállításait úgy, hogy az adatexportálást egy külső táblába exportálja a "External. table. Purge" = "true" tulajdonsággal. Példa:
+> * Az összes felügyelt tábla tranzakciós lesz a HDInsight 4,0-ben. Ha szeretné, megtarthatja a tábla nem tranzakciós beállításait úgy, hogy az adatexportálást egy külső táblába exportálja a "External. table. Purge" = "true" tulajdonsággal. Például:
 >
 >    ```SQL
 >    create table tablename_backup like tablename;
@@ -208,32 +208,11 @@ Miután meggyőződött arról, hogy a kiadás elkészült és teljes mértékbe
 
 ## <a name="query-execution-across-hdinsight-versions"></a>Lekérdezés végrehajtása HDInsight-verziókon keresztül
 
-A HDInsight 3,6-fürtön belül két módon hajtható végre a kaptár/LLAP lekérdezések. A HiveCLI parancssori felületet biztosít, a TEZ nézet/struktúra nézet pedig grafikus felhasználói felületen alapuló munkafolyamatot biztosít.
+A HDInsight 3,6-fürtön belül két módon hajtható végre a kaptár/LLAP lekérdezések. A HiveCLI parancssori felületet biztosít, a [TEZ nézet/struktúra nézet](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-use-hive-ambari-view) pedig grafikus felhasználói felületen alapuló munkafolyamatot biztosít.
 
-A HDInsight 4,0-ben a HiveCLI lecserélte a Beeline elemre. A HiveCLI egy takarékossági ügyfél az 1. Hiveserver, a Beeline pedig egy JDBC-ügyfél, amely hozzáférést biztosít a 2. Hiveserver. A Beeline bármely más JDBC-kompatibilis adatbázis-végponthoz való kapcsolódáshoz is használható. A Beeline a 4,0-es HDInsight-on keresztül érhető el anélkül, hogy telepítésre lenne szükség.
+A HDInsight 4,0-ben a HiveCLI lecserélte a Beeline elemre. A TEZ nézet/struktúra nézet egy GUI-alapú munkafolyamatot biztosít. A HiveCLI egy takarékossági ügyfél az 1. Hiveserver, a Beeline pedig egy JDBC-ügyfél, amely hozzáférést biztosít a 2. Hiveserver. A Beeline használatával bármely más JDBC-kompatibilis adatbázis-végponthoz csatlakozhat. A Beeline a 4,0-es HDInsight-on keresztül érhető el anélkül, hogy telepítésre lenne szükség.
 
-A HDInsight 3,6-ben a kaptár-kiszolgálóval való interakcióra szolgáló grafikus felhasználói felület a Ambari struktúra nézet. A HDInsight 4,0 nem Ambari nézettel rendelkezik. Lehetőséget biztosítunk ügyfeleinknek az adatelemzési Studio (DAS) használatára, amely nem alapvető HDInsight szolgáltatás. A DAS nem támogatja a HDInsight-fürtöket, és nem hivatalosan támogatott csomag. A DAS azonban a következő módon telepíthető a fürtre a [parancsfájl](../hdinsight-hadoop-customize-cluster-linux.md) használatával:
-
-|Tulajdonság | Érték |
-|---|---|
-|Parancsfájl típusa|– Egyéni|
-|Name|DAS|
-|Bash-parancsfájl URI-ja|`https://hdiconfigactions.blob.core.windows.net/dasinstaller/LaunchDASInstaller.sh`|
-|Csomópont típusa (i)|Head|
-
-Várjon 10 – 15 percet, majd indítsa el az adatelemzési studiót az alábbi URL-cím használatával: `https://CLUSTERNAME.azurehdinsight.net/das/` .
-
-A DAS-hoz való hozzáférés előtt a Ambari felhasználói felületének frissítése és/vagy az összes Ambari-összetevő újraindítása szükséges lehet.
-
-Ha a DAS telepítve van, ha nem látja a futtatott lekérdezéseket a lekérdezések megjelenítőben, hajtsa végre a következő lépéseket:
-
-1. Állítsa be a kaptár, a TEZ és a DAS konfigurációit az útmutatóban ismertetett módon a [Das telepítésének hibaelhárítása](https://docs.hortonworks.com/HDPDocuments/DAS/DAS-1.2.0/troubleshooting/content/das_queries_not_appearing.html)című részben leírtak szerint.
-2. Győződjön meg arról, hogy a következő Azure Storage-címtár-konfiguráció a lapok blobja, és hogy azok szerepelnek a területen `fs.azure.page.blob.dirs` :
-    * `hive.hook.proto.base-directory`
-    * `tez.history.logging.proto-base-dir`
-3. Indítsa újra a HDFS, a kaptárt, a TEZ és a DAS-t mindkét átjárócsomópontokkal.
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [HDInsight 4,0 közlemény](../hdinsight-version-release.md)
 * [HDInsight 4,0 Deep Dive](https://azure.microsoft.com/blog/deep-dive-into-azure-hdinsight-4-0/)

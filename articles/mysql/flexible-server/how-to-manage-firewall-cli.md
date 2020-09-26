@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 9/21/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4279da10de92bc8bf9cd564eaae02db2fef76a64
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7fe0e91f30930b9aaf0fb484b3b1e74d707d8c21
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90940473"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91307806"
 ---
 # <a name="create-and-manage-azure-database-for-mysql---flexible-server-firewall-rules-using-the-azure-cli"></a>Azure Database for MySQL rugalmas kiszolgálói tűzfalszabályok létrehozása és kezelése az Azure CLI használatával
 
@@ -33,17 +33,17 @@ A [Azure Cloud Shell](../../cloud-shell/overview.md) egy ingyenes interaktív fe
 
 A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A Cloud Shell egy külön böngésző lapon is megnyithatja [https://shell.azure.com/bash](https://shell.azure.com/bash) . Válassza a **Másolás** lehetőséget a kód blokkok másolásához, illessze be a Cloud Shellba, majd válassza az **ENTER billentyűt** a futtatásához.
 
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz az Azure CLI 2,0-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz az Azure CLI 2,0-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az az [login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login) paranccsal be kell jelentkeznie a fiókjába. Jegyezze fel az **ID** tulajdonságot, amely az Azure-fiók **előfizetés-azonosítójára** utal.
+Az az [login](https://docs.microsoft.com/cli/azure/reference-index#az-login) paranccsal be kell jelentkeznie a fiókjába. Jegyezze fel az **ID** tulajdonságot, amely az Azure-fiók **előfizetés-azonosítójára** utal.
 
 ```azurecli-interactive
 az login
 ```
 
-Válassza ki az adott előfizetést a fiókja alatt az [az Account set](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-set) parancs használatával. Jegyezze fel az **azonosító** értéket az az **login** kimenetből, amelyet a parancs **előfizetés** argumentumának értékeként kíván használni. Ha több előfizetéssel rendelkezik válassza ki a megfelelő előfizetést, amelyre az erőforrást terhelni szeretné. Az összes előfizetés beszerzéséhez használja [az az Account List](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-list)lehetőséget.
+Válassza ki az adott előfizetést a fiókja alatt az [az Account set](https://docs.microsoft.com/cli/azure/account#az-account-set) parancs használatával. Jegyezze fel az **azonosító** értéket az az **login** kimenetből, amelyet a parancs **előfizetés** argumentumának értékeként kíván használni. Ha több előfizetéssel rendelkezik válassza ki a megfelelő előfizetést, amelyre az erőforrást terhelni szeretné. Az összes előfizetés beszerzéséhez használja [az az Account List](https://docs.microsoft.com/cli/azure/account#az-account-list)lehetőséget.
 
 ```azurecli
 az account set --subscription <subscription id>
@@ -53,7 +53,7 @@ az account set --subscription <subscription id>
 
 A `az mysql flexible-server --public access` paranccsal hozhatja létre a rugalmas kiszolgálót *nyilvános hozzáféréssel (engedélyezett IP-címekkel)* , és konfigurálhatja a tűzfalszabályok használatát a rugalmas kiszolgáló létrehozása során. A **--Public-Access** kapcsolóval megadhatja azokat az engedélyezett IP-címeket, amelyek képesek lesznek csatlakozni a kiszolgálóhoz. Megadhat egy vagy több IP-címet is, amelyet az IP-címek engedélyezett listája tartalmaz. Az IP-címtartomány kötőjelet kell elválasztani, és nem tartalmaz szóközt. Az alábbi példában látható módon létrehozhat egy rugalmas kiszolgálót a CLI használatával.
 
-Tekintse meg az Azure CLI dokumentációját <!--FIXME --> a konfigurálható CLI-paraméterek teljes listájához. Az alábbi parancsokban például megadhatja az erőforráscsoportot is.
+A konfigurálható CLI-paraméterek teljes listájáért tekintse meg az Azure CLI [dokumentációját](/cli/azure/mysql/flexible-server) . Az alábbi parancsokban például megadhatja az erőforráscsoportot is.
 
 - Hozzon létre egy rugalmas kiszolgálót nyilvános hozzáféréssel, és adja hozzá az ügyfél IP-címét a kiszolgálóhoz való hozzáféréshez
     ```azurecli-interactive
@@ -95,7 +95,7 @@ Parancsok
 - **Megjelenítés**: egy rugalmas kiszolgálói tűzfalszabály részleteit jeleníti meg.
 - **Törlés**: egy rugalmas kiszolgálói tűzfalszabály törlése.
 
-Tekintse meg az Azure CLI dokumentációját <!--FIXME --> a konfigurálható CLI-paraméterek teljes listájához. Az alábbi parancsokban például megadhatja az erőforráscsoportot is.
+A konfigurálható CLI-paraméterek teljes listájáért tekintse meg az Azure CLI [dokumentációját](/cli/azure/mysql/flexible-server) . Az alábbi parancsokban például megadhatja az erőforráscsoportot is.
 
 ### <a name="create-a-firewall-rule"></a>Tűzfalszabály létrehozása
 A `az mysql flexible-server firewall-rule create` parancs használatával hozzon létre új tűzfalszabály-szabályt a kiszolgálón.

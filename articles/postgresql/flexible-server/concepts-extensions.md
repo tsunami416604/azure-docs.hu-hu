@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: 1126c218f8e80b7d89183746890a3fae1357d29d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/23/2020
+ms.openlocfilehash: f38006e83be47142a6d7a6db25eefb3daccd0d92
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935687"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91307585"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---flexible-server"></a>PostgreSQL-bővítmények Azure Database for PostgreSQL – rugalmas kiszolgáló
 
@@ -33,6 +33,8 @@ A következő bővítmények érhetők el Azure Database for PostgreSQL rugalmas
 > [!div class="mx-tableFixed"]
 > | **Mellék**| **Bővítmény verziója** | **Leírás** |
 > |---|---|---|
+> |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 3.0.0           | A címek összetevőire való elemzéséhez használatos. |
+> |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 3.0.0           | Példa az USA-beli szabványosító adathalmazra|
 > |[amcheck](https://www.postgresql.org/docs/12/amcheck.html)                    | 1,2             | a kapcsolatok integritásának ellenőrzéséhez szükséges függvények|
 > |[Bloom](https://www.postgresql.org/docs/12/bloom.html)                    | 1,0             | Bloom hozzáférési módszer – aláírási fájl alapú index|
 > |[btree_gin](https://www.postgresql.org/docs/12/btree-gin.html)                    | 1.3             | gyakori adattípusok indexelésének támogatása a GIN-ben|
@@ -61,7 +63,11 @@ A következő bővítmények érhetők el Azure Database for PostgreSQL rugalmas
 > |[pgrowlocks](https://www.postgresql.org/docs/12/pgrowlocks.html)                   | 1,2             | sor szintű zárolási információk megjelenítése|
 > |[pgstattuple](https://www.postgresql.org/docs/12/pgstattuple.html)                  | 1.5             | rekord szintű statisztikák megjelenítése|
 > |[plpgsql](https://www.postgresql.org/docs/12/plpgsql.html)                      | 1,0             | PL/pgSQL eljárási nyelv|
-> |[PostGIS](https://www.postgis.net/)                      | 3.0.0           | Geometriai, földrajzi és raszteres térbeli típusok és függvények PostGIS|
+> |[PostGIS](https://www.postgis.net/)                      | 3.0.0           | PostGIS geometria, földrajz |
+> |[postgis_raster](https://www.postgis.net/)               | 3.0.0           | PostGIS raszteres típusok és függvények| 
+> |[postgis_sfcgal](https://www.postgis.net/)               | 3.0.0           | PostGIS SFCGAL függvények|
+> |[postgis_tiger_geocoder](https://www.postgis.net/)       | 3.0.0           | PostGIS Tiger geocoder és fordított geocoder|
+> |[postgis_topology](https://postgis.net/docs/Topology.html)             | 3.0.0           | PostGIS-topológia térbeli típusai és funkciói|
 > |[postgres_fdw](https://www.postgresql.org/docs/12/postgres-fdw.html)                 | 1,0             | idegen adatburkolók távoli PostgreSQL-kiszolgálókhoz|
 > |[sslinfo](https://www.postgresql.org/docs/12/sslinfo.html)                    | 1,2             | az SSL-tanúsítványokkal kapcsolatos információk|
 > |[tsm_system_rows](https://www.postgresql.org/docs/12/tsm-system-rows.html)                    | 1,0             |  TABLESAMPLE metódus, amely a sorok számát korlátozza|
@@ -76,6 +82,8 @@ A következő bővítmények érhetők el Azure Database for PostgreSQL rugalmas
 > [!div class="mx-tableFixed"]
 > | **Mellék**| **Bővítmény verziója** | **Leírás** |
 > |---|---|---|
+> |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.5.1           | A címek összetevőire való elemzéséhez használatos. |
+> |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.5.1           | Példa az USA-beli szabványosító adathalmazra|
 > |[amcheck](https://www.postgresql.org/docs/11/amcheck.html)                    | 1,1             | a kapcsolatok integritásának ellenőrzéséhez szükséges függvények|
 > |[Bloom](https://www.postgresql.org/docs/11/bloom.html)                    | 1,0             | Bloom hozzáférési módszer – aláírási fájl alapú index|
 > |[btree_gin](https://www.postgresql.org/docs/11/btree-gin.html)                    | 1.3             | gyakori adattípusok indexelésének támogatása a GIN-ben|
@@ -105,6 +113,9 @@ A következő bővítmények érhetők el Azure Database for PostgreSQL rugalmas
 > |[pgstattuple](https://www.postgresql.org/docs/11/pgstattuple.html)                  | 1.5             | rekord szintű statisztikák megjelenítése|
 > |[plpgsql](https://www.postgresql.org/docs/11/plpgsql.html)                      | 1,0             | PL/pgSQL eljárási nyelv|
 > |[PostGIS](https://www.postgis.net/)                      | 2.5.1           | Geometriai, földrajzi és raszteres térbeli típusok és függvények PostGIS|
+> |[postgis_sfcgal](https://www.postgis.net/)               | 2.5.1           | PostGIS SFCGAL függvények|
+> |[postgis_tiger_geocoder](https://www.postgis.net/)       | 2.5.1           | PostGIS Tiger geocoder és fordított geocoder|
+> |[postgis_topology](https://postgis.net/docs/Topology.html)             | 2.5.1           | PostGIS-topológia térbeli típusai és funkciói|
 > |[postgres_fdw](https://www.postgresql.org/docs/11/postgres-fdw.html)                 | 1,0             | idegen adatburkolók távoli PostgreSQL-kiszolgálókhoz|
 > |[sslinfo](https://www.postgresql.org/docs/11/sslinfo.html)                    | 1,2             | az SSL-tanúsítványokkal kapcsolatos információk|
 > |[tablefunc](https://www.postgresql.org/docs/11/tablefunc.html)                    | 1,0             | a teljes táblákat, például a kereszttáblás funkciókat kezelő függvények|
@@ -114,9 +125,21 @@ A következő bővítmények érhetők el Azure Database for PostgreSQL rugalmas
 > |[UUID – ossp](https://www.postgresql.org/docs/11/uuid-ossp.html)                    | 1,1             | univerzálisan egyedi azonosítók (UUID-EK) előállítása|
 
 
+## <a name="dblink-and-postgres_fdw"></a>dblink és postgres_fdw
+a [dblink](https://www.postgresql.org/docs/current/contrib-dblink-function.html) és a [postgres_fdw](https://www.postgresql.org/docs/current/postgres-fdw.html) lehetővé teszik, hogy az egyik PostgreSQL-kiszolgálóról egy másikra, vagy ugyanabban a kiszolgálón található másik adatbázishoz kapcsolódjon. A küldő kiszolgálónak engedélyeznie kell a kimenő kapcsolatokat a fogadó kiszolgálóval. A fogadó kiszolgálónak engedélyeznie kell a kapcsolódást a küldő kiszolgálótól.
+
+Javasoljuk, hogy a kiszolgálókat a [VNet-integrációval](concepts-networking.md) telepítse, ha azt tervezi, hogy ezt a két bővítményt használja. Alapértelmezés szerint a VNet-integráció lehetővé teszi a VNET-kiszolgálók közötti kapcsolatokat. Azt is megteheti, hogy a [VNet hálózati biztonsági csoportok](../../virtual-network/manage-network-security-group.md) használatával testreszabja a hozzáférést.
+
+
 ## <a name="pg_prewarm"></a>pg_prewarm
 
 A pg_prewarm-bővítmény a kapcsolatot a gyorsítótárba tölti be. A gyorsítótárak előmelegítése azt jelenti, hogy a lekérdezések az újraindítás után az első futtatáskor jobb válaszidőt rendelkeznek. Az automatikus előmelegítő funkció jelenleg nem érhető el Azure Database for PostgreSQL rugalmas kiszolgálón.
+
+## <a name="pg_stat_statements"></a>pg_stat_statements
+A [pg_stat_statements bővítmény](https://www.postgresql.org/docs/current/pgstatstatements.html) minden Azure Database for PostgreSQL rugalmas kiszolgálón előre be van töltve, így biztosítva az SQL-utasítások végrehajtási statisztikáinak nyomon követését.
+A beállítás `pg_stat_statements.track` , amely azt szabályozza, hogy a bővítmény mely utasításokat számítja ki, az alapértelmezett érték `top` , ami azt jelenti, hogy az ügyfelek által közvetlenül kiadott összes utasítás nyomon van követve. A két másik követési szint a `none` és a `all` . Ez a beállítás kiszolgálói paraméterként konfigurálható.
+
+Az egyes SQL-utasítások beolvasása során kompromisszumot pg_stat_statements a lekérdezés végrehajtási információi, valamint a kiszolgáló teljesítményére gyakorolt hatás. Ha nem használja aktívan a pg_stat_statements bővítményt, javasoljuk, hogy állítsa a következőre: `pg_stat_statements.track` `none` . Vegye figyelembe, hogy egyes harmadik féltől származó figyelési szolgáltatások felhasználhatják a lekérdezési teljesítménnyel kapcsolatos megállapítások kézbesítésének pg_stat_statementsét, így meggyőződhet arról, hogy ez a helyzet-e az Ön számára.
 
 
 ## <a name="next-steps"></a>Következő lépések

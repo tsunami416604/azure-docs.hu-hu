@@ -8,12 +8,12 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: tutorial
 ms.date: 09/21/2020
-ms.openlocfilehash: 99f3c2c05117fb537527f2a2bcb52f0f9843385a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 41dddd677b2060c6d5d605867adde3eb27a9a5eb
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91329635"
+ms.locfileid: "91369858"
 ---
 # <a name="tutorial-use-video-indexer-with-logic-app-and-power-automate"></a>Oktatóanyag: Video Indexer használata a Logic app és a Power automatizáló használatával
 
@@ -54,7 +54,7 @@ Az első folyamat beállításához meg kell adnia a Video Indexer API-kulcsot �
 ![Kapcsolat neve és API-kulcs](./media/logic-apps-connector-tutorial/connection-name-api-key.png)
 
 > [!TIP]
-> Ha korábban csatlakoztatott egy Video Indexer-vagy Storage-fiókot a Logic Apps a kapcsolat adatait tárolja, és a rendszer automatikusan csatlakoztatja. A kapcsolat szerkesztéséhez kattintson a **kapcsolat módosítása** lehetőségre az egyes műveletek alján.
+> Ha korábban csatlakoztatott egy Azure Storage-fiókot vagy Video Indexer fiókot egy logikai alkalmazáshoz, a kapcsolati adatok tárolódnak, és a rendszer automatikusan csatlakozik. <br/>A kapcsolat szerkesztéséhez kattintson a **kapcsolat módosítása** elemre az Azure Storage (a tárolási ablak) alján, vagy a video Indexer (a játékos ablak) művelettel.
 
 Miután kapcsolódhat az Azure Storage-hoz, és Video Indexer fiókokhoz, megkeresheti és kiválaszthatja a "blob hozzáadása vagy módosítása" triggert **Logic apps Designerben**.
 
@@ -80,7 +80,7 @@ Ekkor üresen hagyja a visszahívási URL-címet. A rendszer csak a visszahívá
 
 Használhatja az alapértelmezett értéket a többi paraméterhez, vagy beállíthatja az igényeinek megfelelően. 
 
-Kattintson a Save (Mentés) gombra, és térjünk át a második folyamat konfigurálásához, hogy a feltöltés és az indexelés befejezése után kinyerje a bepillantást. 
+Kattintson a **Save (Mentés**) gombra, és térjünk át a második folyamat konfigurálásához, hogy a feltöltés és az indexelés befejezése után kinyerje a bepillantást. 
 
 ## <a name="set-up-the-second-flow---json-extraction"></a>A második folyamat beállítása – JSON-Kibontás  
 

@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 06/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 7c98bfe4adb9cbbcc1009c530ba875511ea9ec01
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: fd7ba2eeddb3eddd98f97bda1a26c69c2cfa77c8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905122"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91315303"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Gépi tanulási modell üzembe helyezése Azure App Service (előzetes verzió)
 
@@ -40,7 +40,7 @@ A Azure App Service által nyújtott szolgáltatásokkal kapcsolatos további in
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Egy Azure Machine Learning-munkaterület. További információt a [Munkaterület létrehozása](how-to-manage-workspace.md) című cikkben talál.
-* Az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)-vel.
+* Az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)-vel.
 * A munkaterületen regisztrált, betanított gépi tanulási modell. Ha nem rendelkezik modellel, használja a [képbesorolási oktatóanyagot: a betanítási modell](tutorial-train-models-with-aml.md) betanítása és regisztrálása.
 
     > [!IMPORTANT]
@@ -101,7 +101,7 @@ További információ a konfigurációval kapcsolatban: [modellek üzembe helyez
 
 ## <a name="create-the-image"></a>A rendszerkép létrehozása
 
-A Azure App Service üzembe helyezett Docker-rendszerkép létrehozásához használja a [Model. package csomagot](https://docs.microsoft.com//python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#&preserve-view=truepackage-workspace--models--inference-config-none--generate-dockerfile-false-). A következő kódrészlet bemutatja, hogyan hozhat létre egy új rendszerképet a modellből és a következtetések konfigurálásával:
+A Azure App Service üzembe helyezett Docker-rendszerkép létrehozásához használja a [Model. package csomagot](https://docs.microsoft.com//python/api/azureml-core/azureml.core.model.model?view=azure-ml-py&preserve-view=true#&preserve-view=truepackage-workspace--models--inference-config-none--generate-dockerfile-false-). A következő kódrészlet bemutatja, hogyan hozhat létre egy új rendszerképet a modellből és a következtetések konfigurálásával:
 
 > [!NOTE]
 > A kódrészlet feltételezi, hogy `model` egy regisztrált modellt tartalmaz, amely `inference_config` tartalmazza a következtetési környezet konfigurációját. További információ: [modellek üzembe helyezése Azure Machine Learningsal](how-to-deploy-and-where.md).

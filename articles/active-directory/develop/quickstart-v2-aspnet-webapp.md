@@ -1,5 +1,5 @@
 ---
-title: Microsoft Identity platform-bejelentkezés hozzáadása egy ASP.NET Web App-alkalmazáshoz | Azure
+title: Bejelentkezés felvétele a Microsofttal egy ASP.NET webalkalmazásba | Azure
 description: Ismerje meg, hogyan implementálhat Microsoft-bejelentkezést egy ASP.NET-webalkalmazásban az OpenID Connect használatával.
 services: active-directory
 author: jmprieur
@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 04/11/2019
+ms.date: 09/25/2020
 ms.author: jmprieur
-ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 97a040ec166894197520b2e3a6dfc720262b7f1c
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, contperfq1
+ms.openlocfilehash: ada6e36e03f326ab3161306b0f5da2e097e57e0c
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88691292"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91369671"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>Gyors útmutató: Microsoft Identity platform-bejelentkezés hozzáadása egy ASP.NET-webalkalmazáshoz
 Ebből a rövid útmutatóból megtudhatja, hogyan ASP.NET webalkalmazások személyes fiókjait (hotmail.com, outlook.com, másokat) és munkahelyi és iskolai fiókokat bármely Azure Active Directory (Azure AD-példányból).  (Lásd: [Hogyan működik a minta](#how-the-sample-works) egy ábrán.)
@@ -156,7 +156,7 @@ public void Configuration(IAppBuilder app)
 }
 ```
 
-> |Ahol  | Leírás |
+> |Ahol  | Description |
 > |---------|---------|
 > | `ClientId`     | Az Azure Portalon regisztrált alkalmazás azonosítója |
 > | `Authority`    | A felhasználó által hitelesítendő STS-végpont. Általában `https://login.microsoftonline.com/{tenant}/v2.0` a nyilvános felhőknél, ahol a {tenant} a bérlő neve, a bérlő azonosítója, vagy *common* a közös végpontra való hivatkozáskor (több-bérlős alkalmazások esetében) |
@@ -195,7 +195,7 @@ public void SignIn()
 
 A vezérlők vagy a vezérlők műveletei az `[Authorize]` attribútummal védhetők. Ez az attribútum úgy korlátozza a vezérlőhöz és a műveleteihez való hozzáférést, hogy csak a hitelesített felhasználóknak engedélyezi a vezérlő műveleteinek elérését. Ezt azt jelenti, hogy a hitelesítő kérdés automatikusan megjelenik, ha egy *nem hitelesített* felhasználó megpróbál hozzáférni az `[Authorize]` attribútummal jelölt bármely művelethez vagy vezérlőhöz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Próbálja ki az ASP.NET-hez készült oktatóanyagot, amelyben teljes körű, részletes útmutatót talál az alkalmazások és új szolgáltatások létrehozásához, valamint megtalálja ennek a rövid útmutatónak a teljes magyarázatát is.
 

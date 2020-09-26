@@ -9,13 +9,13 @@ ms.devlang: nodejs
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 2c97a770dc10168284bebbc038d8c48145c2a385
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.custom: devx-track-js
+ms.openlocfilehash: 11979a09f0f55d4eaab3c8380f9f819162c630b4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88917890"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91307619"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-nodejs-using-rest-apis"></a>Gyors útmutató: Azure Cognitive Search index létrehozása a Node.js REST API-k használatával
 > [!div class="op_single_selector"]
@@ -699,7 +699,7 @@ A bal oldali navigációs panelen a **minden erőforrás** vagy **erőforráscso
 
 Ha ingyenes szolgáltatást használ, ne feledje, hogy Ön legfeljebb három indexet, indexelő és adatforrást használhat. A portálon törölheti az egyes elemeket, hogy a korlát alatt maradjon. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a Node.js rövid útmutatóban egy index létrehozásához, a dokumentumokkal való betöltéshez és a lekérdezések futtatásához kapcsolódó feladatok sorozatán keresztül dolgozott. Bizonyos lépések, például a konfiguráció olvasása és a lekérdezések meghatározása a lehető legegyszerűbb módon történt. Egy valós alkalmazásban ezeket a problémákat külön modulokban érdemes elhelyezni, amelyek rugalmasságot és beágyazást tesznek lehetővé. 
  

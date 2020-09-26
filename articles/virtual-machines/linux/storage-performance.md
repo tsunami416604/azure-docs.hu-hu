@@ -1,6 +1,6 @@
 ---
 title: Teljesítmény optimalizálása az Azure Lsv2-sorozatú virtuális gépeken – tárterület
-description: Ismerje meg, hogyan optimalizálhatja megoldásának teljesítményét a Lsv2-sorozatú virtuális gépeken.
+description: Ismerje meg, hogyan optimalizálhatja megoldásának teljesítményét a Lsv2 sorozatú virtuális gépeken egy Linux-példa használatával.
 services: virtual-machines-linux
 author: laurenhughes
 ms.service: virtual-machines-linux
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/05/2019
 ms.author: joelpell
-ms.openlocfilehash: cd9e539e01e8e11d866186552ab3b8dde7e03f91
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 650164556223a73a722bc91ecb31491ee98cb8a5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654769"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91307101"
 ---
 # <a name="optimize-performance-on-the-lsv2-series-linux-virtual-machines"></a>A Lsv2 sorozatú linuxos virtuális gépek teljesítményének optimalizálása
 
@@ -108,6 +108,6 @@ Ha többet szeretne megtudni a helyi tárolóban található adatbiztonsági men
 
    Azt is vegye figyelembe, hogy a legjobb teljesítmény akkor érhető el, ha az I/O-t közvetlenül a particionálás nélküli, a fájlrendszer nélküli, a RAID 0 konfigurációval nem rendelkező NVMe-eszközökön hajtja végre. A tesztelési munkamenet megkezdése előtt győződjön meg arról, hogy a konfiguráció ismert, friss/tiszta állapotban van, `blkdiscard` és mindegyik NVMe-eszközön fut.
    
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tekintse meg az Azure [tárolási teljesítményére optimalizált összes virtuális gép](../sizes-storage.md) specifikációit

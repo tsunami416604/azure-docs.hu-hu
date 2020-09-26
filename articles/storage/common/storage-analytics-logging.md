@@ -9,12 +9,12 @@ ms.date: 07/23/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 7010e47dd9272ce620f8e057fbfb36e1fd5b26c9
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5b4e2fa95b9a5eebf393d7c64feecd3997b7ecfd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021170"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280028"
 ---
 # <a name="azure-storage-analytics-logging"></a>Az Azure Storage Analytics naplózása
 
@@ -206,7 +206,7 @@ azcopy copy 'https://mystorageaccount.blob.core.windows.net/$logs/queue' 'C:\Log
 
 Ha többet szeretne megtudni az egyes fájlok letöltéséről, tekintse meg az [adott fájlok letöltése](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-blobs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#download-specific-files)című témakört.
 
-Ha letöltötte a napló adatait, megtekintheti a bejegyzéseket a fájlokban. Ezek a naplófájlok olyan tagolt szöveges formátumot használnak, amelyet számos napló-olvasási eszköz képes elemezni, beleértve a Microsoft Message Analyzert (további információért lásd: útmutató a [figyeléshez, a diagnosztizáláshoz és a hibaelhárításhoz Microsoft Azure Storage](storage-monitoring-diagnosing-troubleshooting.md)). A különböző eszközök különböző lehetőségekkel rendelkeznek a naplófájlok tartalmának formázásához, szűréséhez, rendezéséhez, valamint az ad-kereséshez. További információ a tárolási naplózási naplófájl formátumáról és tartalmáról: [Storage Analytics naplózási formátum](/rest/api/storageservices/storage-analytics-log-format) és [Storage Analytics naplózott műveletek és állapotüzenetek](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages).
+Ha letöltötte a napló adatait, megtekintheti a bejegyzéseket a fájlokban. Ezek a naplófájlok olyan tagolt szöveges formátumot használnak, amelyet számos napló-olvasási eszköz képes elemezni (további információt az útmutató [figyelése, diagnosztizálása és hibaelhárítása Microsoft Azure Storage](storage-monitoring-diagnosing-troubleshooting.md)) című témakörben talál. A különböző eszközök különböző lehetőségekkel rendelkeznek a naplófájlok tartalmának formázásához, szűréséhez, rendezéséhez, valamint az ad-kereséshez. További információ a tárolási naplózási naplófájl formátumáról és tartalmáról: [Storage Analytics naplózási formátum](/rest/api/storageservices/storage-analytics-log-format) és [Storage Analytics naplózott műveletek és állapotüzenetek](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages).
 
 ## <a name="next-steps"></a>Következő lépések
 

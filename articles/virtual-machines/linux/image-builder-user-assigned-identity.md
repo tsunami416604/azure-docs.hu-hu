@@ -5,14 +5,14 @@ author: cynthn
 ms.author: cynthn
 ms.date: 05/02/2019
 ms.topic: how-to
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: 79349f9da45a623581c40276c8e69d490c1dd253
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f5734d4b1871dd285fc83a72631f7d645e0b72ff
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085554"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91307262"
 ---
 # <a name="create-an-image-and-use-a-user-assigned-managed-identity-to-access-files-in-azure-storage"></a>Rendszerkép létrehozása és felhasználó által hozzárendelt felügyelt identitás használata az Azure Storage-beli fájlokhoz való hozzáféréshez 
 
@@ -254,6 +254,6 @@ az group delete -n $imageResourceGroup
 az group delete -n $strResourceGroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ha bármilyen probléma merül fel az Azure rendszerkép-készítővel való együttműködés során, olvassa el a [hibaelhárítást](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md?toc=%2fazure%2fvirtual-machines%context%2ftoc.json)ismertető témakört.
+Ha bármilyen probléma merül fel az Azure rendszerkép-készítővel való együttműködés során, olvassa el a [hibaelhárítást](image-builder-troubleshoot.md?toc=%2fazure%2fvirtual-machines%context%2ftoc.json)ismertető témakört.

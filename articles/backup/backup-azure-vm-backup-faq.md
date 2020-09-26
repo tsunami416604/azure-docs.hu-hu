@@ -4,12 +4,12 @@ description: Ebből a cikkből megismerheti az Azure-beli virtuális gépek Azur
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 7206a62e3148c1bbb8d2e3704d991025deeece37
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 8813794d44803a32bc6e156d3ca76360d84604c5
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89377318"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91370827"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Gyakori kérdések – Azure-beli virtuális gépek biztonsági mentése
 
@@ -20,6 +20,12 @@ Ez a cikk az Azure-beli virtuális gépek [Azure Backup](./backup-overview.md) s
 ### <a name="which-vm-images-can-be-enabled-for-backup-when-i-create-them"></a>Milyen virtuálisgép-rendszerképeket lehet engedélyezni a biztonsági mentéshez, amikor létrehozom őket?
 
 Virtuális gép létrehozásakor engedélyezheti a biztonsági mentést a [támogatott operációs rendszereket](backup-support-matrix-iaas.md#supported-backup-actions)futtató virtuális gépeken.
+
+### <a name="why-initial-backup-is-taking-lot-of-time-to-complete"></a>Miért érdemes a kezdeti biztonsági mentést készíteni a befejezéshez?
+
+A kezdeti biztonsági mentés mindig teljes biztonsági mentés, és az adatok méretétől és a biztonsági mentés feldolgozásának módjától függ. <br>
+A biztonsági mentési teljesítmény javítása érdekében tekintse meg a [biztonsági mentéssel kapcsolatos ajánlott eljárásokat](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction#best-practices). [Biztonsági mentési szempontok](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction#backup-and-restore-considerations) és [biztonsági mentési teljesítmény](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction#backup-performance)<br>
+Bár a növekményes biztonsági mentések teljes időtartama kevesebb mint 24 óra, az első biztonsági mentésre ez nem feltétlenül igaz.
 
 ### <a name="is-the-backup-cost-included-in-the-vm-cost"></a>A virtuális gép ára tartalmazza a biztonsági mentés költségeit?
 
@@ -154,6 +160,10 @@ Az olyan műveletek, mint a titkos kulcs/kulcsok átadása nem igénylik ezt a l
 ### <a name="can-i-access-the-vm-once-restored-due-to-a-vm-having-broken-relationship-with-domain-controller"></a>A virtuális gép a tartományvezérlővel megszakadt kapcsolattal rendelkező virtuális gépek miatt is elérhető a helyreállításhoz?
 
 Igen, a virtuális gépet a rendszer visszaállította a tartományvezérlővel megszakadt kapcsolatot biztosító virtuális gép miatt. További információkért tekintse meg ezt a [cikket](./backup-azure-arm-restore-vms.md#post-restore-steps)
+
+### <a name="why-restore-operation-is-taking-long-time-to-complete"></a>Miért tart hosszú ideig a visszaállítási művelet?
+
+A teljes visszaállítási idő a másodpercenkénti bemeneti/kimeneti műveletektől (IOPS) és a Storage-fiók átviteli sebességtől függ. A teljes visszaállítási idő hatással lehet, ha a célként megadott Storage-fiók betöltődik más alkalmazás-olvasási és írási műveletekkel. A visszaállítási művelet javításához válasszon olyan Storage-fiókot, amely nincs betöltve más alkalmazásadatok használatával.
 
 ## <a name="manage-vm-backups"></a>Virtuális gép biztonsági mentéseinek kezelése
 

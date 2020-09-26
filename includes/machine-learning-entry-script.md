@@ -6,68 +6,79 @@ ms.subservice: core
 ms.topic: include
 ms.date: 07/31/2020
 ms.author: gopalv
-ms.openlocfilehash: 2b4f768b25917e712380ca4a7f8ac58cb6140777
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 4975bb2a8ad384b8abc28f1d1835c2c9e98b8c54
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542786"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91315429"
 ---
 A bejegyzés parancsfájlja fogadja az üzembe helyezett webszolgáltatásnak küldött adatokat, majd továbbítja azokat a modellnek. Ezután a modell által visszaadott választ visszaküldi az ügyfélnek. *A szkript a modellre jellemző*. Ismernie kell a modell által várt és visszaadott adatok értékét.
 
-A szkript két olyan függvényt tartalmaz, amelyek betöltik és futtatják a modellt:
+A következő két dolog szükséges a beléptetési parancsfájlban:
 
-* `init()`: Ez a függvény általában egy globális objektumba tölti be a modellt. Ez a függvény csak egyszer fut, amikor a webszolgáltatás Docker-tárolója elindult.
+1. A modell betöltése (egy nevű függvény használatával `init()` )
+1. A modell futtatása bemeneti adatokon (a nevű függvény használatával `run()` )
 
-* `run(input_data)`: Ez a függvény a modellt használva előre jelez egy értéket a bemeneti adatok alapján. A futtatás be- és kimenetei általában JSON-fájlt használnak a szerializáláshoz és deszerializáláshoz. Nyers bináris adatokkal is dolgozhat. Az adatokat átalakíthatja, mielőtt elküldené őket a modellnek vagy visszaküldené az ügyfélnek.
+Nézzük végig ezeket a lépéseket részletesen.
 
-A REST API azt várja, hogy a kérelem törzse JSON-dokumentum legyen a következő szerkezettel:
+### <a name="writing-init"></a>Init () írása 
+
+#### <a name="loading-a-registered-model"></a>Regisztrált modell betöltése
+
+A regisztrált modelleket egy nevű környezeti változó által mutatott útvonalon tárolja a rendszer `AZUREML_MODEL_DIR` . A pontos címtár-struktúrával kapcsolatos további információkért lásd: [a modell fájljainak megkeresése a belépési parancsfájlban](../articles/machine-learning/how-to-deploy-advanced-entry-script.md#load-registered-models) .
+
+#### <a name="loading-a-local-model"></a>Helyi modell betöltése
+
+Ha úgy döntött, hogy regisztrálja a modellt, és a forrás könyvtára részeként adta át a modellt, akkor a helyileg is elolvashatja a modellt, ha a modell elérési útját a pontozási parancsfájlhoz viszonyítva átadja. Ha például a címtára a következőképpen lett strukturálva:
+
+```bash
+
+- source_dir
+    - score.py
+    - models
+        - model1.onnx
+
+```
+
+a modellek a következő Python-kóddal tölthetők be:
+
+```python
+import os
+
+model = open(os.path.join('.', 'models', 'model1.onnx'))
+```
+
+#### <a name="writing-run"></a>Futtatás írása ()
+
+`run()` minden alkalommal fut, amikor a modell egy pontozási kérést kap, és a kérelem törzsét arra kéri, hogy JSON-dokumentum legyen a következő szerkezettel:
 
 ```json
 {
-    "data":
-        [
-            <model-specific-data-structure>
-        ]
+    "data": <model-specific-data-structure>
 }
+
 ```
+
+A bemenet `run()` egy Python-karakterlánc, amely az "adat" kulcsot követi.
 
 Az alábbi példa bemutatja, hogyan tölthető be a regisztrált scikit-modell, és hogyan szerezheti be a NumPy-információkkal:
 
 ```python
-#Example: scikit-learn and Swagger
 import json
 import numpy as np
 import os
 from sklearn.externals import joblib
-from sklearn.linear_model import Ridge
-
-from inference_schema.schema_decorators import input_schema, output_schema
-from inference_schema.parameter_types.numpy_parameter_type import NumpyParameterType
 
 
 def init():
     global model
-    # AZUREML_MODEL_DIR is an environment variable created during deployment. Join this path with the filename of the model file.
-    # It holds the path to the directory that contains the deployed model (./azureml-models/$MODEL_NAME/$VERSION).
-    # If there are multiple models, this value is the path to the directory containing all deployed models (./azureml-models).
     model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_mnist_model.pkl')
-
-    # If your model were stored in the same directory as your score.py, you could also use the following:
-    # model_path = os.path.abspath(os.path.join(os.path.dirname(__file_), 'sklearn_mnist_model.pkl')
-
-    # Deserialize the model file back into a sklearn model
     model = joblib.load(model_path)
 
-
-input_sample = np.array([[10, 9, 8, 7, 6, 5, 4, 3, 2, 1]])
-output_sample = np.array([3726.995])
-
-
-@input_schema('data', NumpyParameterType(input_sample))
-@output_schema(NumpyParameterType(output_sample))
 def run(data):
     try:
+        data = np.array(json.loads(data))
         result = model.predict(data)
         # You can return any data type, as long as it is JSON serializable.
         return result.tolist()
@@ -76,11 +87,4 @@ def run(data):
         return error
 ```
 
-További példákért tekintse meg a következő parancsfájlokat:
-
-* [PyTorch](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/pytorch)
-* [TensorFlow](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/tensorflow)
-* [Keras](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras)
-* [AutoML](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features)
-* [ONNX](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/onnx/)
-* [Bináris adatértékek](../articles/machine-learning/how-to-deploy-advanced-entry-script.md#binary-data)
+A speciális példákhoz, beleértve az automatikus hencegés sémájának generálását és bináris (pl. képfájlok) adatát, olvassa el [a következő cikket a speciális bejegyzés parancsfájl-létrehozásáról.](../articles/machine-learning/how-to-deploy-advanced-entry-script.md)

@@ -4,16 +4,16 @@ description: Megtudhatja, hogyan hozhat létre sablont az Azure rendszerkép-ké
 author: danielsollondon
 ms.author: danis
 ms.date: 08/13/2020
-ms.topic: conceptual
-ms.service: virtual-machines-linux
+ms.topic: reference
+ms.service: virtual-machines
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: 3c2dbf8c98901d5a4147939c42e289abf25f7d21
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 43f33093010aa6a70d02c58e9faa34f7f0e2dfee
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378371"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91307279"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Előzetes verzió: Azure rendszerkép-készítő sablon létrehozása 
 
@@ -96,7 +96,7 @@ Alapértelmezés szerint a képszerkesztő nem változtatja meg a rendszerkép m
 ```
 
 ## <a name="vnetconfig"></a>vnetConfig
-Ha nem ad meg VNET-tulajdonságokat, akkor a rendszerkép-szerkesztő létrehozza a saját VNET, a nyilvános IP-címet és a NSG. A nyilvános IP-cím a szolgáltatásnak a Build virtuális géppel folytatott kommunikációhoz használatos, azonban ha nem szeretne nyilvános IP-címet használni, vagy szeretné, hogy a rendszerkép-készítő hozzáférjen a meglévő VNET-erőforrásokhoz, például a konfigurációs kiszolgálókhoz (DSC, Chef, Puppet, Ansible), fájlmegosztás stb., akkor megadhat egy VNET. További információkért tekintse át a [hálózati dokumentációt](https://github.com/danielsollondon/azvmimagebuilder/blob/master/aibNetworking.md#networking-with-azure-vm-image-builder), ez nem kötelező.
+Ha nem ad meg VNET-tulajdonságokat, akkor a rendszerkép-szerkesztő létrehozza a saját VNET, a nyilvános IP-címet és a NSG. A nyilvános IP-cím a szolgáltatásnak a Build virtuális géppel folytatott kommunikációhoz használatos, azonban ha nem szeretne nyilvános IP-címet használni, vagy szeretné, hogy a rendszerkép-készítő hozzáférjen a meglévő VNET-erőforrásokhoz, például a konfigurációs kiszolgálókhoz (DSC, Chef, Puppet, Ansible), fájlmegosztás stb., akkor megadhat egy VNET. További információkért tekintse át a [hálózati dokumentációt](image-builder-networking.md), ez nem kötelező.
 
 ```json
     "vnetConfig": {
@@ -120,7 +120,7 @@ További információ: az [erőforrás-függőségek meghatározása](../../azur
 
 ## <a name="identity"></a>Identitás
 
-Kötelező – ahhoz, hogy a rendszerkép-készítő jogosult legyen a képek olvasására/írására, az Azure Storage-ban lévő parancsfájlok olvasására, létre kell hoznia egy Azure-felhasználó által hozzárendelt identitást, amely jogosult az egyes erőforrásokra. A rendszerkép-szerkesztő engedélyeinek működéséről és a vonatkozó lépésekről a [dokumentációban](https://github.com/danielsollondon/azvmimagebuilder/blob/master/aibPermissions.md#azure-vm-image-builder-permissions-explained-and-requirements)olvashat bővebben.
+Kötelező – ahhoz, hogy a rendszerkép-készítő jogosult legyen a képek olvasására/írására, az Azure Storage-ban lévő parancsfájlok olvasására, létre kell hoznia egy Azure-felhasználó által hozzárendelt identitást, amely jogosult az egyes erőforrásokra. A rendszerkép-szerkesztő engedélyeinek működéséről és a vonatkozó lépésekről a [dokumentációban](image-builder-user-assigned-identity.md)olvashat bővebben.
 
 
 ```json
@@ -233,7 +233,7 @@ Alapértelmezés szerint a rendszerkép-szerkesztő 240 percig fog futni. Ezt k�
 [ERROR] complete: 'context deadline exceeded'
 ```
 
-Ha nem ad meg buildTimeoutInMinutes értéket, vagy 0 értékre állítja, akkor ez az alapértelmezett értéket fogja használni. Növelheti vagy csökkentheti az értéket a maximális 960mins (16hrs). A Windows esetében nem ajánlott a 60 percnél régebbi beállítást beállítani. Ha megtalálta az időtúllépést, tekintse át a [naplókat](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#collecting-and-reviewing-aib-image-build-logs), és ellenőrizze, hogy a testreszabási lépés a felhasználói adatbevitelre vár-e. 
+Ha nem ad meg buildTimeoutInMinutes értéket, vagy 0 értékre állítja, akkor ez az alapértelmezett értéket fogja használni. Növelheti vagy csökkentheti az értéket a maximális 960mins (16hrs). A Windows esetében nem ajánlott a 60 percnél régebbi beállítást beállítani. Ha megtalálta az időtúllépést, tekintse át a [naplókat](image-builder-troubleshoot.md#customization-log), és ellenőrizze, hogy a testreszabási lépés a felhasználói adatbevitelre vár-e. 
 
 Ha úgy találja, hogy a testreszabások befejezéséhez több időre van szüksége, állítsa be ezt a kívánt értékre, és egy kis terheléssel. De ne állítsa túl magasra, mert előfordulhat, hogy meg kell várnia az időtúllépést, mielőtt hibaüzenetet lát. 
 
@@ -481,7 +481,7 @@ A parancsok felülbírálásához a PowerShell vagy a rendszerhéj parancsfájl-
 * Windows: c:\DeprovisioningScript.ps1
 * Linux:/tmp/DeprovisioningScript.sh
 
-A képszerkesztő beolvassa ezeket a parancsokat, ezeket a rendszer kiírja a "customization. log" AIB-naplókba. Lásd: a naplók gyűjtésével [kapcsolatos hibaelhárítás](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#collecting-and-reviewing-aib-logs) .
+A képszerkesztő beolvassa ezeket a parancsokat, ezeket a rendszer kiírja a "customization. log" AIB-naplókba. Lásd: a naplók gyűjtésével [kapcsolatos hibaelhárítás](image-builder-troubleshoot.md#customization-log) .
  
 ## <a name="properties-distribute"></a>Tulajdonságok: terjesztés
 
@@ -658,7 +658,7 @@ az resource invoke-action \
 ### <a name="cancelling-an-image-build"></a>Rendszerkép-Build megszakítása
 Ha olyan rendszerkép-buildet futtat, amely úgy véli, hogy helytelen, a felhasználói bevitelre vár, vagy ha úgy érzi, hogy soha nem fejeződik be, akkor megszakíthatja a fordítást.
 
-A Build bármikor megszakítható. Ha megkezdődött a terjesztési fázis, akkor továbbra is megszakítható, de az esetlegesen nem befejezett rendszerképeket törölni kell. A Mégse parancs nem várja meg a megszakítás befejeződését, figyelje `lastrunstatus.runstate` a folyamat megszakítását, ezekkel az állapot- [parancsokkal](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#get-statuserror-of-the-template-submission-or-template-build-status).
+A Build bármikor megszakítható. Ha megkezdődött a terjesztési fázis, akkor továbbra is megszakítható, de az esetlegesen nem befejezett rendszerképeket törölni kell. A Mégse parancs nem várja meg a megszakítás befejeződését, figyelje `lastrunstatus.runstate` a folyamat megszakítását, ezekkel az állapot- [parancsokkal](image-builder-troubleshoot.md#customization-log).
 
 
 Példák a `cancel` parancsokra:

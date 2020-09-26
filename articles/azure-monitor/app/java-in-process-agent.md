@@ -3,12 +3,12 @@ title: Java-alkalmazások figyelése bármilyen környezetben – Azure Monitor 
 description: Alkalmazások teljesítményének figyelése bármilyen környezetben futó Java-alkalmazásokhoz az alkalmazás kialakítása nélkül. Elosztott nyomkövetési és alkalmazás-hozzárendelés.
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: e1442d1b1fb1bf8fbef82354b8aa1d2354640aa9
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 08e5b68ea5e5ec63531bb4f9c6b4483e9afbb9bc
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87902082"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91370034"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>A Java Code unapplication monitoring Azure monitor Application Insights – nyilvános előzetes verzió
 
@@ -20,15 +20,17 @@ Az Application Insights Java SDK-nak az alkalmazáshoz való hozzáadása már n
 
 Továbbra is küldhet egyéni telemetria az alkalmazásból. Az 3,0-ügynök nyomon követheti és korrelálhatja azt az összes automatikusan összegyűjtött telemetria együtt.
 
-## <a name="quickstart"></a>Első lépések
+Az 3,0-ügynök támogatja a Java 8-as és újabb verzióit.
+
+## <a name="quickstart"></a>Gyorsútmutató
 
 **1. Töltse le az ügynököt**
 
-A [applicationinsights-Agent-3.0.0-preview. 5. jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.5/applicationinsights-agent-3.0.0-PREVIEW.5.jar) letöltése
+A [applicationinsights-Agent-3.0.0-preview. 7. jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.7/applicationinsights-agent-3.0.0-PREVIEW.7.jar) letöltése
 
 **2. irányítsa a JVM az ügynökre**
 
-Hozzáadás `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.5.jar` az alkalmazás JVM argumentumai
+Hozzáadás `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.7.jar` az alkalmazás JVM argumentumai
 
 A tipikus JVM argumentumok közé tartoznak `-Xmx512m` a és a `-XX:+UseG1GC` . Tehát ha tudja, hol adja hozzá ezeket, akkor már tudja, hová adja hozzá ezt a lehetőséget.
 
@@ -44,7 +46,7 @@ Mutasson az ügynököt a Application Insights erőforrásra, vagy egy környeze
 APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=00000000-0000-0000-0000-000000000000
 ```
 
-Vagy hozzon létre egy nevű konfigurációs fájlt `ApplicationInsights.json` , és helyezze ugyanabba a könyvtárba `applicationinsights-agent-3.0.0-PREVIEW.5.jar` , a következő tartalommal:
+Vagy hozzon létre egy nevű konfigurációs fájlt `ApplicationInsights.json` , és helyezze ugyanabba a könyvtárba `applicationinsights-agent-3.0.0-PREVIEW.7.jar` , a következő tartalommal:
 
 ```json
 {
@@ -132,12 +134,12 @@ Az alábbi táblázat a jelenleg támogatott egyéni telemetria-típusokat jelen
 
 |                     | Mikrométer | Log4j, logback, JUL | 2. x SDK |
 |---------------------|------------|---------------------|---------|
-| **Egyéni események**   |            |                     |  Igen    |
+| **Egyéni események**   |            |                     |  Yes    |
 | **Egyéni metrikák**  |  Igen       |                     |  Igen    |
-| **Függőségek**    |            |                     |  Igen    |
+| **Függőségek**    |            |                     |  Yes    |
 | **Kivételek**      |            |  Igen                |  Igen    |
-| **Lapok nézetei**      |            |                     |  Igen    |
-| **Kérelmek**        |            |                     |  Igen    |
+| **Lapok nézetei**      |            |                     |  Yes    |
+| **Kérelmek**        |            |                     |  Yes    |
 | **Hívásláncok**          |            |  Igen                |  Igen    |
 
 Jelenleg nem tervezzük Application Insights 3,0-es SDK kiadását.
@@ -225,6 +227,8 @@ Emellett a Application Insights Java SDK 2. x verzióját is használhatja:
 ## <a name="upgrading-from-application-insights-java-sdk-2x"></a>Frissítés Application Insights Java SDK 2. x verzióról
 
 Ha már használja a Application Insights Java SDK 2. x verzióját az alkalmazásban, nem kell eltávolítania. A Java 3,0-ügynök észlelni fogja, és rögzíti és korrelálja a Java SDK 2. x által küldött összes egyéni telemetria, miközben letiltja a Java SDK 2. x által végrehajtott automatikus gyűjtést a duplikált rögzítés megakadályozása érdekében.
+
+Ha Application Insights 2. x ügynököt használta, el kell távolítania a JVM ARG-t, `-javaagent:` amely a 2. x ügynökre mutat.
 
 > [!NOTE]
 > Megjegyzés: a Java SDK 2. x TelemetryInitializers és TelemetryProcessors nem fog futni az 3,0-ügynök használatakor.

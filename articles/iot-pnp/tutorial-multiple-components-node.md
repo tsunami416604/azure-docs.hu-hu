@@ -7,13 +7,13 @@ ms.date: 07/10/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.custom: devx-track-javascript
-ms.openlocfilehash: d26179ab82f29ce8f937f5b444463c1308d92047
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.custom: devx-track-js
+ms.openlocfilehash: 24bfbf4199671da497844444a57e566e66eb8c90
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904054"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91308214"
 ---
 # <a name="tutorial-connect-a-sample-iot-plug-and-play-preview-multiple-component-device-application-to-iot-hub-nodejs"></a>Oktatóanyag: minta-IoT csatlakoztatása Plug and Play előzetes verzió több összetevő-eszköz alkalmazása IoT Hub (Node.js)
 
@@ -60,7 +60,7 @@ az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --
 
 Ebben az oktatóanyagban egy fejlesztési környezetet készít elő, amellyel klónozott és felépítheti a Node.jshez készült Azure IoT Hub eszközoldali SDK-t.
 
-Nyisson meg egy parancssort az Ön által választott könyvtárban. Futtassa a következő parancsot a Node.jsGitHub-adattárhoz [tartozó Microsoft Azure IOT SDK](https://github.com/Azure/azure-iot-sdk-node) ezen a helyen történő klónozásához:
+Nyisson meg egy parancssort az Ön által választott könyvtárban. Futtassa a következő parancsot a Node.jsGitHub-adattárhoz [tartozó Microsoft Azure IOT SDK ](https://github.com/Azure/azure-iot-sdk-node) ezen a helyen történő klónozásához:
 
 ```cmd/sh
 git clone https://github.com/Azure/azure-iot-sdk-node

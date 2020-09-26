@@ -1,6 +1,6 @@
 ---
 title: Leküldéses értesítések küldése Androidra az Azure Notification Hubs és a Firebase SDK 0,6-es verziójának használatával | Microsoft Docs
-description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure Notification Hubs és a Google Firebase Cloud Messaging szolgáltatást leküldéses értesítések küldésére Android-eszközökre.
+description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure Notification Hubs és a Google Firebase Cloud Messaging szolgáltatást leküldéses értesítések küldésére Android-eszközökre (0,6-es verzió).
 services: notification-hubs
 documentationcenter: android
 keywords: leküldéses értesítések,leküldéses értesítés,android leküldéses értesítés,fcm,firebase cloud messaging
@@ -16,12 +16,12 @@ ms.date: 06/22/2020
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 09/11/2019
-ms.openlocfilehash: 3b32a61dcf8dfe403a44af236afad830472d1b8d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7e68e93e8a103ccf92c949df779d929ac4095d92
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321462"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268825"
 ---
 # <a name="tutorial-send-push-notifications-to-android-devices-using-firebase-sdk-version-06"></a>Oktatóanyag: leküldéses értesítések küldése Android-eszközökre a Firebase SDK 0,6-es verziójának használatával
 
@@ -542,7 +542,7 @@ Leküldéses értesítéseket a [Azure Portal] küldhet a következő lépések 
 
 1. A Azure Portal a központ értesítési központ lapján válassza a **küldési teszt** lehetőséget a **Hibaelhárítás** szakaszban.
 3. A **Platformok** beállításnál válassza az **Android** lehetőséget.
-4. Kattintson a **Küldés** gombra.  Az Android-eszközön még nem jelenik meg értesítés, mert nem futtatta rajta a Mobile alkalmazást. Miután futtatta a Mobile alkalmazást, kattintson ismét a **Küldés** gombra az értesítési üzenet megtekintéséhez.
+4. Válassza a **Küldés** lehetőséget.  Az Android-eszközön még nem jelenik meg értesítés, mert nem futtatta rajta a Mobile alkalmazást. Miután futtatta a Mobile alkalmazást, kattintson ismét a **Küldés** gombra az értesítési üzenet megtekintéséhez.
 5. A művelet eredményeit a lap alján található listában láthatja.
 
     ![Azure Notification Hubs – küldés tesztelése](./media/notification-hubs-android-push-notification-google-fcm-get-started/notification-hubs-test-send.png)
@@ -559,7 +559,7 @@ Mielőtt a leküldéses értesítéseket egy emulátoron belül teszteli, győz�
 
 Győződjön meg arról is, hogy hozzáadta Google-fiókját a futó emulátorhoz a **Beállítások**  >  **fiókok**területen. Ellenkező esetben az FCM-sel való regisztrációra tett kísérletek a ** \_ sikertelen hitelesítésre** vonatkozó kivételt okozhatnak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban a Firebase Cloud Messaging szolgáltatást használta az értesítések küldéséhez a szolgáltatásban regisztrált összes Android-eszközre. Ha szeretné megtudni, hogy hogyan küldhet leküldéses értesítéseket adott eszközökre, lépjen tovább a következő oktatóanyagra:
 

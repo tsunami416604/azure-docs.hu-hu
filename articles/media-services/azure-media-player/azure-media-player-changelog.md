@@ -5,15 +5,29 @@ author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
-ms.date: 07/27/2020
-ms.openlocfilehash: 9642f6d1090ef358cf86241640255c647dea52eb
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.date: 09/23/2020
+ms.openlocfilehash: c63a8efc4bbcf6e5a124d439e6f9f91397e2fa53
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432672"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91315082"
 ---
-# <a name="changelog"></a>Változásnapló #
+# <a name="changelog"></a>Változásnapló
+
+## <a name="236-official-update-september-21-2020"></a>2.3.6 (hivatalos frissítés, 21 2020. szeptember)
+
+### <a name="features-236"></a>Szolgáltatások 2.3.6
+
+A azureHtml5JS Tech (DASH) támogatása a hangvezérelt támogatáshoz – az élő átírások támogatásának késői megkezdése
+
+### <a name="bug-fixes-236"></a>Hibajavítások 2.3.6
+
+Ha az Apple-eszközökön a "playsinline" HLS-lejátszást használja, az "élő" gombra kattintva a videó újraindítja az AMP plakát képét, esetenként kivételt okoz a Volume gomb hiánya, amikor a HLS FairPlay [kisegítő lehetőség] a billentyűzet használatakor nincs meghatározva a gombokhoz. 1 a folyamatjelzőhöz [kisegítő lehetőségek] a billentyűzet fókusza időnként nem tér vissza a videó minősége gomb [kisegítő lehetőségek] vezérlői nem láthatók a videón képernyő, amely megakadályozza a Narrátor megkeresését
+
+### <a name="changes-236"></a>Változások 2.3.6
+
+Értelmes kézbesítési hibák visszaadása az alkalmazások meghívásához
 
 ## <a name="235-official-update-june-1-2020"></a>2.3.5 (hivatalos frissítés, 1 2020. június)
 
@@ -182,7 +196,7 @@ ms.locfileid: "87432672"
 - [Hibajavítás] AMP A (z) [Firefox] véget ért esemény nem fut a Firefox és a Chrome alkalmazásban az élő program leállításakor
 - [Hibajavítás] AMP A setsource után megjelenő vezérlőelemek akkor is, ha a vezérlők hamis értékre vannak állítva a lejátszó beállításainál
 
-### <a name="changes"></a>Változások ###
+### <a name="changes"></a>Módosítások ###
 
 - Módosítása [Élő felirat] A 608 és 708 közötti CEA-feliratok API-neve módosítva. További információ: CEA708- [feliratok beállításai](/javascript/api/azuremediaplayer/amp.player.cea708captionssettings)-->
 
