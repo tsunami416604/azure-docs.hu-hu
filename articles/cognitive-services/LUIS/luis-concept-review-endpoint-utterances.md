@@ -1,14 +1,16 @@
 ---
 title: Felhasználói kifejezés áttekintése – LUIS
 description: Az aktív tanulással a felülvizsgálati végpont hosszúságú kimondott szöveg a megfelelő szándékot és entitást. LUIS kiválasztja a végpont hosszúságú kimondott szöveg, ezért nem biztos benne.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 8d267fc441dc2cbf7f8ae3746486d5e7be55f135
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 82f228d5e6f801539c549e16faea371782ad4b59
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80546855"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316443"
 ---
 # <a name="concepts-for-enabling-active-learning-by-reviewing-endpoint-utterances"></a>Az aktív tanulás engedélyezésével kapcsolatos fogalmak a végpontok hosszúságú kimondott szöveg áttekintésével
 Az aktív tanulás a három stratégia egyike, amely javítja az előrejelzési pontosságot és a legegyszerűbb megvalósítást. Az aktív tanulással a felülvizsgálati végpont hosszúságú kimondott szöveg a megfelelő szándékot és entitást. LUIS kiválasztja a végpont hosszúságú kimondott szöveg, ezért nem biztos benne.
@@ -37,6 +39,6 @@ Használja a nem **[címkézett hosszúságú kimondott szöveg API törlését]
 
 Az aktív tanulás engedélyezéséhez naplóznia kell a felhasználói lekérdezéseket. Ezt úgy érheti el, ha meghívja a [végponti lekérdezést](luis-get-started-create-app.md#query-the-v3-api-prediction-endpoint) a `log=true` querystring paraméterrel és értékkel.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Útmutató az Endpoint hosszúságú kimondott szöveg [áttekintéséhez](luis-how-to-review-endpoint-utterances.md)

@@ -1,17 +1,17 @@
 ---
 title: Microsoft Threat Modeling Tool kiadás 03/22/2020 – Azure
-description: A veszélyforrások modellezése eszköz kibocsátási megjegyzéseit dokumentálja
+description: A veszélyforrások modellezése eszköz kiadási 7.3.00316.1 tartozó kibocsátási megjegyzések dokumentálása.
 author: jegeib
 ms.author: jegeib
 ms.service: security
 ms.topic: article
 ms.date: 03/22/2020
-ms.openlocfilehash: 6fea4d48b62d6ea429d37924ffd15855db6294cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 39963e9dadca0ee0be7bb8ad0ebf824c287bfee0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80146861"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317905"
 ---
 # <a name="threat-modeling-tool-update-release-73003161---03222020"></a>Threat Modeling Tool Update kiadás 7.3.00316.1-03/22/2020
 
@@ -38,7 +38,7 @@ Az Exportálás CSV-fájlba funkció inkonzisztensen ki lett választva, hogy me
 
 Új DiagramReader funkció lett hozzáadva a főmenüben, miközben a modell meg van nyitva. Ez a funkció átalakítja a modell grafikus ábrázolását egy szöveges elbeszélésbe. 
 
-## <a name="system-requirements"></a>System requirements (Rendszerkövetelmények)
+## <a name="system-requirements"></a>Rendszerkövetelmények
 
 - Támogatott operációs rendszerek:
   - [Microsoft Windows 10 évfordulós frissítés](https://blogs.windows.com/windowsexperience/2016/08/02/how-to-get-the-windows-10-anniversary-update/#HTkoK5Zdv0g2F2Zq.97) vagy újabb
@@ -51,6 +51,6 @@ Az Exportálás CSV-fájlba funkció inkonzisztensen ki lett választva, hogy me
 
 - A Threat Modeling Tool dokumentációja a [docs.microsoft.com](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool)található, és [az eszköz használatával](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool-getting-started)kapcsolatos információkat tartalmaz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Töltse le a [Microsoft Threat Modeling Tool](https://aka.ms/threatmodelingtool)legújabb verzióját.

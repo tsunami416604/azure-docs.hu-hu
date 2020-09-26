@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 1/8/2019
-ms.openlocfilehash: 84f5a8f638e4a9525b330277ff1eaa26ba035e1a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 3d23ee6119b625e11ce44bb9ad11ce4b3ee0280d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907415"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295736"
 ---
 # <a name="create-users-in-azure-database-for-postgresql---hyperscale-citus"></a>Felhasználók létrehozása a Azure Database for PostgreSQL-nagy kapacitású (Citus)
 
@@ -28,7 +28,7 @@ A PostgreSQL-motor [szerepköröket](https://www.postgresql.org/docs/current/sql
 * `postgres`
 * `citus`
 
-Mivel a nagy kapacitású egy felügyelt Pásti szolgáltatás, csak a Microsoft tud bejelentkezni a `postgres` felügyelői szerepkörbe. A korlátozott rendszergazdai hozzáférés esetén a nagy kapacitású biztosítja a `citus` szerepkört.
+Mivel a nagy kapacitású (Citus) egy felügyelt Pásti szolgáltatás, csak a Microsoft tud bejelentkezni a `postgres` felügyelői szerepkörbe. A korlátozott rendszergazdai hozzáféréshez a nagy kapacitású (Citus) biztosítja a `citus` szerepkört.
 
 A szerepkör engedélyei `citus` :
 
@@ -46,7 +46,7 @@ A `citus` szerepkörnek például vannak korlátai:
 
 Ahogy említettük, a `citus` rendszergazdai fióknak nincs engedélye további felhasználók létrehozására. Felhasználó hozzáadásához használja a Azure Portal felületet.
 
-1. Lépjen a nagy kapacitású-kiszolgálócsoport **szerepkörök** lapjára, majd kattintson a **+ Hozzáadás**gombra:
+1. Lépjen a nagy kapacitású (Citus) csoport **szerepkörök** lapjára, majd kattintson a **+ Hozzáadás**gombra:
 
    :::image type="content" source="media/howto-hyperscale-create-users/1-role-page.png" alt-text="A szerepkörök lap":::
 
@@ -75,7 +75,7 @@ GRANT SELECT ON ALL TABLES IN SCHEMA public TO db_user;
 
 ## <a name="how-to-delete-a-user-role-or-change-their-password"></a>Felhasználói szerepkör törlése vagy jelszavuk módosítása
 
-Egy felhasználó frissítéséhez keresse fel a nagy kapacitású-kiszolgálócsoport **szerepkörök** lapját, és kattintson a felhasználó melletti három pontra. **..** Az ellipszisek menüt nyitnak meg a felhasználó törléséhez vagy a jelszavuk alaphelyzetbe állításához.
+Egy felhasználó frissítéséhez keresse fel a nagy kapacitású (Citus) kiszolgálócsoport **szerepkörök** lapját, és kattintson a felhasználó melletti három pontra. **..** Az ellipszisek menüt nyitnak meg a felhasználó törléséhez vagy a jelszavuk alaphelyzetbe állításához.
 
    :::image type="content" source="media/howto-hyperscale-create-users/edit-role.png" alt-text="Szerepkör szerkesztése":::
 

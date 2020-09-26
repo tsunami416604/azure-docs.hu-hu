@@ -2,7 +2,7 @@
 title: Dinamikus csomagolás a Azure Media Services v3-ban
 titleSuffix: Azure Media Services
 description: Ez a cikk áttekintést nyújt a Azure Media Services dinamikus csomagolásáról.
-author: IngridAtMicrosoft
+author: myoungerman
 manager: femila
 editor: ''
 services: media-services
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/31/2020
-ms.author: inhenkel
-ms.openlocfilehash: dfa87921bc6a5a6c34b4dec33f4aae1907507730
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.author: v-myoung
+ms.openlocfilehash: 3607ecb7d1ef01b968b67c704e12136cc1888b69
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89291619"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296229"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Dinamikus csomagolás a Media Services v3-ban
 
@@ -27,7 +27,7 @@ ms.locfileid: "89291619"
 
 A Microsoft Azure Media Services számos médiafájl-formátum kódolására használható. A szolgáltatás különböző streaming protokollokon keresztül érhető el, tartalom védelme nélkül vagy anélkül, hogy elérje az összes jelentős eszközt (például az iOS és az Android rendszerű eszközöket). Ezek az ügyfelek megismerhetik a különböző protokollokat. Az iOS esetében például HTTP Live Streaming (HLS) formátumban kell továbbítani a streameket, és az Android-eszközök támogatják a HLS, valamint az MPEG DASH-t.
 
-Media Services a streaming- [végpont](streaming-endpoint-concept.md) (forrás) egy dinamikus (igény szerinti) csomagolási és forrás-szolgáltatást jelent, amely az élő és igény szerinti tartalmat közvetlenül az ügyfél-lejátszó alkalmazásnak kézbesíti. A következő szakaszban említett Common Streaming Media-protokollok egyikét használja. A *dinamikus csomagolás* egy olyan szolgáltatás, amely minden streaming végponton (standard vagy prémium) szabványos.
+Media Services a streaming- [végpont](streaming-endpoint-concept.md) (forrás) egy dinamikus (igény szerinti) csomagolási és forrás-szolgáltatást jelent, amely az élő és igény szerinti tartalmat közvetlenül az ügyfél-lejátszó alkalmazásnak kézbesíti. A következő szakaszban említett Common Streaming Media-protokollok egyikét használja. A *dinamikus csomagolás* egy olyan szolgáltatás, amely minden folyamatos átviteli végponton szabványos.
 
 > [!NOTE]
 > A [Azure Portal](https://portal.azure.com/) a v3 [élő események](live-events-outputs-concept.md)kezelésére, a v3- [eszközök](assets-concept.md)megtekintésére, az API-k elérésére vonatkozó információk beszerzésére használható. Az összes többi felügyeleti feladathoz (például átalakításokhoz és feladatokhoz) használja a [REST API](/rest/api/media/), a [CLI](https://aka.ms/ams-v3-cli-ref)vagy az egyik támogatott [SDK](media-services-apis-overview.md#sdks)-t.
@@ -132,7 +132,7 @@ További információ a Media Services v3 élő közvetítéséről: [élő köz
 A dinamikus csomagolás támogatja az MP4-tároló fájlformátumában lévő videofájlokat, és a [h. 264](https://en.m.wikipedia.org/wiki/H.264/MPEG-4_AVC) (MPEG-4 AVC vagy AVC1) és [h. 265](https://en.m.wikipedia.org/wiki/High_Efficiency_Video_Coding) (HEVC, hev1 vagy hvc1) kódolású videókat tartalmaz.
 
 > [!NOTE]
-> Akár 4K-ig terjedő, akár 60-es képkockákból álló és a frame sebességű, *dinamikus csomagolással*tesztelt felbontások is megoldhatók. A [prémium szintű kódoló](../previous/media-services-encode-asset.md#media-encoder-premium-workflow) támogatja a H. 265 kódolást az örökölt v2 API-kon keresztül.
+> Akár 4K-ig terjedő, akár 60-es képkockákból álló és a frame sebességű, *dinamikus csomagolással*tesztelt felbontások is megoldhatók.
 
 ## <a name="audio-codecs-supported-by-dynamic-packaging"></a>Dinamikus csomagolás által támogatott hangkodekek
 
@@ -326,6 +326,6 @@ Tekintse meg [Azure Media Services közösségét](media-services-community.md) 
 
 A támogatási jegyet az [új támogatási kérelemre](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)való navigálással nyithatja meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Videók feltöltése, kódolása és streamelése](stream-files-tutorial-with-api.md)

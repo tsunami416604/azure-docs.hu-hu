@@ -3,12 +3,12 @@ title: Offline biztonsági mentés a DPM és a MABS Azure Data Box
 description: A Azure Data Box használatával a kezdeti biztonsági mentési adatok a DPM és a MABS offline állapotba helyezhetők.
 ms.topic: conceptual
 ms.date: 08/12/2020
-ms.openlocfilehash: 3755a4cc77455b37ae1545247992a3c8c4f25653
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 2fd8a137abf8b76d1587894bfa3fe8447e0d646b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89177686"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271494"
 ---
 # <a name="offline-seeding-using-azure-data-box-for-dpm-and-mabs-preview"></a>Offline előkészítés a DPM és a MABS Azure Data Box használatával (előzetes verzió)
 
@@ -110,7 +110,7 @@ Alternatív forrás meghatározása: *wim: D: \Sources\Install.wim: 4*
 
 ## <a name="transfer-initial-backup-data-to-azure-data-box-devices"></a>A kezdeti biztonsági mentési adatok átvitele Azure Data Box eszközökre
 
-1. A DPM/MABS-kiszolgálón hajtsa végre az [új védelmi csoport létrehozásának](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-2019)lépéseit. Ha online védelmet ad a meglévő védelmi csoportnak, kattintson a jobb gombbal a meglévő védelmi csoportra, és válassza az **online védelem hozzáadása** lehetőséget, és kezdje a **8. lépéssel**.
+1. A DPM/MABS-kiszolgálón hajtsa végre az [új védelmi csoport létrehozásának](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups)lépéseit. Ha online védelmet ad a meglévő védelmi csoportnak, kattintson a jobb gombbal a meglévő védelmi csoportra, és válassza az **online védelem hozzáadása** lehetőséget, és kezdje a **8. lépéssel**.
 2. A **csoporttagok kiválasztása** lapon adja meg azokat a számítógépeket és forrásokat, amelyekről biztonsági másolatot szeretne készíteni.
 3. Az **adatvédelmi módszer kiválasztása** lapon adja meg, hogyan szeretné kezelni a rövid és a hosszú távú biztonsági mentést. Győződjön meg arról, hogy az **online védelem** lehetőséget választotta.
 
@@ -262,6 +262,6 @@ A DPM/MABS-kiszolgálóról, amelyen az offline biztonsági mentést kívánja k
 
    ![Ujjlenyomat értéke](./media/offline-backup-azure-data-box-dpm-mabs/certificate.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Offline előkészítés saját lemez használatával (az Azure import/export szolgáltatás használatával)](backup-azure-backup-server-import-export.md)

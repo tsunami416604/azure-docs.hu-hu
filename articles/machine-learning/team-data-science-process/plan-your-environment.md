@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 29190cee748db17caee32497de5512bee736bae0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 603628e24d7ccdffeafea392ab56aa7e47781a37
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87047714"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296484"
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>Forgatókönyvek azonosítása és a bővített analitika adatfeldolgozása
 
@@ -66,7 +66,7 @@ Hol kell az adatai feldolgozásához vagy modellezéséhez?
 Az olyan eljárások és erőforrások esetében, amelyek különböző tárolási és feldolgozási környezetekben töltik be vagy töltenek be adatot, tekintse meg a következőt:
 
 * [Adatok betöltése a tárolási környezetekbe elemzés céljából](ingest-data.md)
-* [Betanítási adatok importálása Azure Machine Learning Studioba (klasszikus) különböző adatforrásokból](../studio/import-data.md)
+* [Betanítási adatok importálása Azure Machine Learning Studioba (klasszikus) különböző adatforrásokból](../classic/import-data.md)
 
 ### <a name="does-the-data-need-to-be-moved-on-a-regular-schedule-or-modified-during-migration"></a>Át kell-e helyezni az adatátvitelt rendszeres időközönként, vagy módosítani kell az áttelepítés során?
 
@@ -108,7 +108,7 @@ Ezek a kérdések kulcsfontosságúak a tárolási és feldolgozási környezete
 
 Használja például a Azure Machine Learning Studio (klasszikus) környezetet:
 
-* A Azure Machine Learning Studio által támogatott adatformátumok és típusok listáját az [adatformátumok és az adattípusok támogatottak](../studio/import-data.md#supported-data-formats-and-data-types) című szakaszban találja.
+* A Azure Machine Learning Studio által támogatott adatformátumok és típusok listáját az [adatformátumok és az adattípusok támogatottak](../classic/import-data.md#supported-data-formats-and-data-types) című szakaszban találja.
 * Az elemzési folyamatban használt egyéb Azure-szolgáltatások korlátaival kapcsolatos információkért lásd: Azure- [előfizetések és-szolgáltatások korlátai, kvótái és megkötései](../../azure-resource-manager/management/azure-subscription-service-limits.md).
 
 ## <a name="data-quality-questions-exploration-and-pre-processing"></a>Adatminőségi kérdések: feltárás és előzetes feldolgozás
@@ -146,7 +146,7 @@ A nyelvekhez, a fejlesztési környezetekhez és az eszközökhöz számos lehet
 ### <a name="what-tools-should-you-use-for-data-analysis"></a>Milyen eszközöket érdemes használni az adatelemzéshez?
 
 * [Microsoft Azure PowerShell](/powershell/azure/) – az Azure-erőforrások parancsfájl-nyelven való felügyeletéhez használt parancsfájl nyelve
-* [Azure Machine Learning Studio](../studio/what-is-ml-studio.md)
+* [Azure Machine Learning Studio](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 * [Revolution Analytics](https://www.microsoft.com/sql-server/machinelearningserver)
 * [RStudio](https://www.rstudio.com)
 * [Python Tools for Visual Studio](https://aka.ms/ptvsdocs)
@@ -158,7 +158,7 @@ A nyelvekhez, a fejlesztési környezetekhez és az eszközökhöz számos lehet
 
 Miután megválaszolta az előző szakaszban leírtakat, készen áll annak meghatározására, hogy melyik forgatókönyv felel meg legjobban az esetnek. A példákat a [Azure Machine learning speciális elemzési forgatókönyvei](plan-sample-scenarios.md)ismertetik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Mi az a csoportos adatelemzési folyamat (TDSP)?](overview.md)

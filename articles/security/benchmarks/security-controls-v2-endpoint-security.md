@@ -4,17 +4,17 @@ description: Azure Security teljesítményteszt v2 Endpoint Security
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/13/2020
+ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: c04e4233ded34ceaeec9cd9afb240d3d1ac864e0
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: 3eab0080f80b26fc7074d8a64885148c0568d8b1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90059261"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280622"
 ---
-# <a name="security-control-endpoint-security"></a>Biztonsági ellenőrzés: Endpoint Security
+# <a name="security-control-v2-endpoint-security"></a>Biztonsági vezérlő v2: Endpoint Security
 
 A Endpoint Security a végpontok észlelésével és válaszával kapcsolatos vezérlőket fedi le. Ez magában foglalja a végpontok észlelését és válaszát (EDR) és a kártevők elleni szolgáltatást az Azure-környezetekben található végpontokhoz.
 
@@ -36,7 +36,7 @@ A Microsoft Defender komplex veszélyforrások elleni védelem a nagyvállalati 
 
 **Felelősség**: ügyfél
 
-**Ügyfelek biztonsági résztvevői**:
+**Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Infrastruktúra és végpontbiztonság](/azure/cloud-adoption-framework/organize/cloud-security)
 
@@ -64,7 +64,7 @@ A Microsoft antimalware for Azure Cloud Services a Windows rendszerű virtuális
 
 **Felelősség**: ügyfél
 
-**Ügyfelek biztonsági résztvevői**:
+**Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Infrastruktúra és végpontbiztonság](/azure/cloud-adoption-framework/organize/cloud-security)
 
@@ -88,7 +88,7 @@ Kövesse az Azure Security Center: "számítási alkalmazások" című témakör
 
 **Felelősség**: ügyfél
 
-**Ügyfelek biztonsági résztvevői**:
+**Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Infrastruktúra és végpontbiztonság](/azure/cloud-adoption-framework/organize/cloud-security)
 

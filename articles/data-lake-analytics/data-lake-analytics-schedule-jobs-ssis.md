@@ -8,12 +8,12 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.workload: big-data
 ms.date: 07/17/2018
-ms.openlocfilehash: ac747b87cf1a0f2d7c85d05975a31f953bfa5aae
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: a5c7b9fb6a3431534d743f1ebd0b21f1da9fab7b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132500"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318704"
 ---
 # <a name="schedule-u-sql-jobs-using-sql-server-integration-services-ssis"></a>U-SQL-feladatok ütemezett SQL Server Integration Services (SSIS) használatával
 
@@ -56,7 +56,7 @@ Kövesse az alábbi lépéseket a Azure Data Lake Store fájlrendszer feladatán
 
 A SSIS-csomag Tervező nézetében adjon hozzá egy **Azure Data Lake Store fájlrendszerbeli feladatot**, egy **foreach loop-tárolót** és egy **Azure Data Lake Analytics feladatot** a foreach loop-tárolóban. A Azure Data Lake Store fájlrendszer feladat segít az U-SQL-fájlok letöltésében a ADLS-fiókban egy ideiglenes mappába. Az foreach loop tároló és a Azure Data Lake Analytics feladat segítséget nyújt az ideiglenes mappában lévő összes U-SQL-fájl küldéséhez U-SQL-feladatként az Azure Data Lake Analytics-fiókhoz.
 
-![U-SQL-fájlok használata a Azure Data Lake Storeban](./media/data-lake-analytics-schedule-jobs-ssis/use-u-sql-files-in-azure-data-lake-store.png)
+![A foreach loop-tárolóba felvenni kívánt Azure Data Lake Store fájlrendszerbeli feladatot bemutató diagram.](./media/data-lake-analytics-schedule-jobs-ssis/use-u-sql-files-in-azure-data-lake-store.png)
 
 ### <a name="configure-azure-data-lake-store-file-system-task"></a>Azure Data Lake Store fájlrendszer feladat konfigurálása
 
@@ -77,7 +77,7 @@ A SSIS-csomag Tervező nézetében adjon hozzá egy **Azure Data Lake Store fáj
 
 3. Állítsa be a **fájlokat** a **számbavételi konfiguráció** területen `*.usql` úgy, hogy a hurok tárolója csak a-val végződő fájlokat kapja meg `.usql` .
 
-    ![Foreach hurok tárolójának konfigurálása](./media/data-lake-analytics-schedule-jobs-ssis/configure-foreach-loop-container-collection.png)
+    ![Képernyőkép, amely megjeleníti a foreach hurok-szerkesztőt, a "gyűjtemény" elemet, és kiemelte a számbavételi és enumerálási konfigurációs szakaszt.](./media/data-lake-analytics-schedule-jobs-ssis/configure-foreach-loop-container-collection.png)
 
 4. A **változó-hozzárendelések** lapon adjon hozzá egy felhasználó által definiált változót az egyes U-SQL-fájlok fájlnevének lekéréséhez. Állítsa az **indexet** 0-ra a fájl nevének lekéréséhez. Ebben a példában a nevű változót definiáljuk `User::FileName` . Ez a változó a U-SQL parancsfájl-kapcsolódás dinamikus beszerzésére és az U-SQL-feladat nevének Azure Data Lake Analytics feladatban való beállítására szolgál.
 
@@ -94,7 +94,7 @@ A SSIS-csomag Tervező nézetében adjon hozzá egy **Azure Data Lake Store fáj
    1. Válassza **\<New Connection...>** a FileConnection beállítást.
    2. Állítsa a **használati típust** **meglévő fájl**értékre, és állítsa a **fájlt** bármely létező fájl elérési útjára.
 
-       ![Foreach hurok tárolójának konfigurálása](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-for-foreach-loop-container.png)
+       ![Képernyőfelvétel: a "meglévő fájl" beállítással rendelkező fájlkezelő szerkesztő a "használat típusa" lehetőségre.](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-for-foreach-loop-container.png)
 
    3. A **Csatlakozáskezelő** nézetben kattintson a jobb gombbal a most létrehozott fájlra, majd válassza a **Tulajdonságok**lehetőséget.
 
@@ -164,7 +164,7 @@ Bizonyos esetekben érdemes lehet dinamikusan beállítani az U-SQL változó é
 
 [További információ a U-SQL-szkript paramétereinek megadásáról](https://docs.microsoft.com/sql/integration-services/control-flow/azure-data-lake-analytics-task?view=sql-server-2017#parameter-mapping-page-configuration).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [SSIS-csomagok futtatása az Azure-ban](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)
 - [Azure Feature Pack integrációs szolgáltatásokhoz (SSIS)](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis?view=sql-server-2017#scenario-managing-data-in-the-cloud)

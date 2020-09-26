@@ -1,14 +1,16 @@
 ---
 title: Szószedet – LUIS
 description: A Szószedet a LUIS API szolgáltatással való munka során felmerülő feltételeket ismerteti.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 05/08/2020
-ms.openlocfilehash: 44749648559994d986e4d84b06f38369850de6ca
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 0f17e489cabb047ca2e9f0ad7406c34cd292e556
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836411"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91309489"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Nyelvi ismeretek a gyakori szószedetekről és fogalmakról
 A Language Understanding (LUIS) Szószedet a LUIS szolgáltatással való munka során felmerülő feltételeket ismerteti.
@@ -192,7 +194,7 @@ LUIS-ban egy szót vagy kifejezést kell [megcímkézni](label-entity-example-ut
 
 Tekintse meg az [alkalmazás definícióját (alkalmazás)](#application-app).
 
-## <a name="model"></a>Modell
+## <a name="model"></a>Modellezés
 
 A (gépi megtanult) modell egy olyan függvény, amely előrejelzést készít a bemeneti adatokról. A LUIS-ben a szándék-osztályozók és az entitás-kiállítók általános módon "modellként" szerepelnek, és az "alkalmazásként" együtt betanított, közzétett és lekérdezett modellek gyűjteményét nevezzük.
 
@@ -309,7 +311,7 @@ Az **angol nyelv**esetén a token folytonos span (szóközök vagy írásjelek n
 |--|--|--|
 |`Dog`|1|Egyetlen szó, írásjelek és szóközök nélkül.|
 |`RMT33W`|1|A rekord lokátorának száma. Előfordulhat, hogy számok és betűk is lehetnek, de nincs írásjele.|
-|`425-555-5555`|5|Egy telefonszám. Minden írásjel egyetlen jogkivonat, ezért `425-555-5555` 5 token lenne:<br>`425`<br>`-`<br>`555`<br>`-`<br>`5555` |
+|`425-555-5555`|5|Egy telefonszám. Minden írásjel egyetlen jogkivonat, ezért  `425-555-5555` 5 token lenne:<br>`425`<br>`-`<br>`555`<br>`-`<br>`5555` |
 |`https://luis.ai`|7|`https`<br>`:`<br>`/`<br>`/`<br>`luis`<br>`.`<br>`ai`<br>|
 
 ## <a name="train"></a>Betanítás

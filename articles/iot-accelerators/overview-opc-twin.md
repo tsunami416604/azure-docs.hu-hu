@@ -8,14 +8,17 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 169a3149a2d8d02d486bc126071b17e9a4f7ed72
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 9825e5e85c8da27b0f3fc2b9d78fcc9ca3513389
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167470"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91281694"
 ---
 # <a name="what-is-opc-twin"></a>Mi az OPC Twin?
+
+> [!IMPORTANT]
+> A cikk frissítését követően tekintse meg az [Azure Industrial IoT](https://azure.github.io/Industrial-IoT/) a legfrissebb tartalomhoz című cikket.
 
 Az OPC Twin olyan szolgáltatásokból áll, amelyek Azure IoT Edge és IoT Hub használnak a felhő és a gyári hálózat összekapcsolásához. Az OPC Twin a REST API-kon keresztül biztosítja az ipari eszközök felderítését, regisztrálását és távvezérlését. Az OPC Twin nem igényel egy OPC Unified Architecture (OPC UA) SDK-t, a programozási nyelv agnosztikus, és a kiszolgáló nélküli munkafolyamatban is szerepelhet. Ez a cikk több OPC kettős használati esetet ismertet.
 
@@ -37,9 +40,8 @@ Az OPC Twin Azure Active Directory (HRE) alapú hitelesítést és naplózást h
 ### <a name="simple-developer-experience"></a>Egyszerű fejlesztői élmény 
 Az OPC Twin a REST API-kon keresztül bármilyen programozási nyelven írt alkalmazásokkal használható. Mivel a fejlesztők egy OPC UA-ügyfelet integrálnak egy megoldásba, nem szükséges az OPC UA SDK ismerete. Az OPC Twin zökkenőmentesen integrálható állapot nélküli, kiszolgáló nélküli architektúrába. Például egy teljes stack webfejlesztő, aki egy riasztási és esemény-irányítópultot fejleszt, megírhatja a logikát, hogy válaszoljon a JavaScript vagy az írógéppel szolgáltatásbeli eseményekre a C, C# vagy a teljes OPC UA stack implementáció nélkül. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte az OPC Twin és annak felhasználási lehetőségeit, itt látható a következő lépés:
 
-> [!div class="nextstepaction"]
-> [Mi az az OPC-tároló?](overview-opc-vault.md)
+[Mi az az OPC-tároló?](overview-opc-vault.md)

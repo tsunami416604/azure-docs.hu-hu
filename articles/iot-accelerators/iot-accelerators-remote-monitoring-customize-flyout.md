@@ -8,13 +8,13 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/05/2018
 ms.topic: conceptual
-ms.custom: devx-track-javascript
-ms.openlocfilehash: f10be59501368012b0e4269f402fe258da552e25
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: afd8c5b01b9f36606bf6bd43fbed747ca83ba320
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422742"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318415"
 ---
 # <a name="add-a-custom-flyout-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Egyéni menü hozzáadása a távoli figyelési megoldás webes felhasználói felületéhez
 
@@ -60,7 +60,7 @@ Másolja a **src/walkthrough/Components/Pages/pageWithFlyout/a menüket** tartal
 
 ### <a name="add-the-flyout-to-the-page"></a>A képernyő hozzáadása az oldalhoz
 
-Módosítsa az **src/Components/Pages/example/basicPage.jselemet** a következő érték hozzáadásához:.
+Módosítsa az **src/Components/Pages/example/basicPage.jselemet ** a következő érték hozzáadásához:.
 
 Adja hozzá a **BTN** az **összetevők/megosztott** importálások és a **svgs** és a **ExampleFlyoutContainer**importálásához:
 

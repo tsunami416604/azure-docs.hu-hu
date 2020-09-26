@@ -1,6 +1,6 @@
 ---
 title: Fájlok feltöltése egy Azure Media Services-fiókba REST használatával | Microsoft Docs
-description: Megtudhatja, hogyan szerezhet be médiatartalmakat Media Servicesba eszközök létrehozásával és feltöltésével.
+description: Megtudhatja, hogyan szerezhet be médiatartalmakat a Media Servicesba az eszközök REST használatával történő létrehozásával és feltöltésével.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 68968cdbc512df527b70d0a314c90ce45ebaf7e2
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: bc0369e99552859393da206e791477040681ccc4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89264181"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91281065"
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>Fájlok feltöltése Media Services-fiókba a REST használatával
 
@@ -227,7 +227,7 @@ A válasz a méretet, a nevet és az egyéb adatokat fogja tartalmazni.
 "ParentAssetId": "nb:cid:UUID:0b8f3b04-72fb-4f38-8e7b-d7dd78888938",
 ```
   
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most már kódolhatja a feltöltött adategységeket. További információ: [Encode Assets](media-services-portal-encode.md) (Adategységek kódolása).
 

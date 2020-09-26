@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
-ms.openlocfilehash: 4487772aba22f1ce577e6a0d8263ce1200b6345f
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: c707f6108c73a268bcac18c45afb70ae17185bb8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90019903"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91308112"
 ---
 # <a name="conceptual-understanding-of-x509-ca-certificates-in-the-iot-industry"></a>Az X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok fogalmi megértése a IoT-iparágban
 
@@ -87,7 +87,7 @@ Az X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány feltöltési folyamata csak
 
 ### <a name="proof-of-possession-of-the-certificate"></a>A tanúsítvány igazolása
 
-Az X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány, mint bármely digitális tanúsítvány, a lehallgatásra fogékony nyilvános információ. Ilyen esetben a lehallgatási folyamat feltartóztathat egy tanúsítványt, és megpróbálhatja saját maga feltölteni. A példánkban IoT Hub szeretné meggyőződni arról, hogy a HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány vállalata-X feltöltése valóban a vállalati X-hez tartozik. Ezt úgy teszi, hogy kihívást jelentő vállalat – X, hogy igazolja, hogy valóban rendelkeznek a tanúsítvánnyal egy [igazoló (POP) folyamaton](https://tools.ietf.org/html/rfc5280#section-3.1)keresztül. A megtartást igazoló folyamat a saját titkos kulcsával IoT Hub véletlenszerű szám létrehozásával jár. Ha a Company-X a PKI ajánlott eljárásait követte, és a titkos kulcsát megvédte, akkor csak abban az esetben kellene helyesen válaszolni az igazoló kihívásra. IoT Hub folytatja az X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány regisztrálását, miután a rendszer sikeres választ adott a birtokukban lévő kihívásra.
+Az X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány, mint bármely digitális tanúsítvány, a lehallgatásra fogékony nyilvános információ. Ilyen esetben a lehallgatási folyamat feltartóztathat egy tanúsítványt, és megpróbálhatja saját maga feltölteni. A példánkban IoT Hub szeretné meggyőződni arról, hogy a HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány vállalata-X feltöltése valóban a vállalati X-hez tartozik. Ezt úgy teheti meg, hogy kihívást jelentő vállalat – X, hogy igazolja, hogy valóban rendelkeznek a tanúsítvánnyal a tanúsítványon alapuló [(POP) folyamaton](https://tools.ietf.org/html/rfc5280#section-3.1)keresztül. A megtartást igazoló folyamat a saját titkos kulcsával IoT Hub véletlenszerű szám létrehozásával jár. Ha a Company-X a PKI ajánlott eljárásait követte, és a titkos kulcsát megvédte, akkor csak abban az esetben kellene helyesen válaszolni az igazoló kihívásra. IoT Hub folytatja az X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány regisztrálását, miután a rendszer sikeres választ adott a birtokukban lévő kihívásra.
 
 IoT Hub befejezte az X. 509 HITELESÍTÉSSZOLGÁLTATÓI regisztrációt, és sikeres választ kapott a betartást igazoló kihívásra.
 

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 678b7571d54c8938c163801a584ad813c6e5963f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 9e7ac5afb176e58ce47f918ddcbab742ecb90baf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551166"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317446"
 ---
 # <a name="tutorial-configure-concur-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés megadásának beállítása
 
@@ -23,7 +23,7 @@ Ennek az oktatóanyagnak a célja, hogy megmutassa, milyen lépéseket kell elv�
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő elemekkel:
+Az ebben az oktatóanyagban felvázolt forgatókönyv feltételezi, hogy már rendelkezik a következőkkel:
 
 *   Egy Azure Active Directory-bérlő.
 *   Egy egyetértő egyszeri bejelentkezésre engedélyezett előfizetés.
@@ -94,9 +94,9 @@ A következő okok miatt ez a művelet nem hajtható végre a normál T&E felüg
 
 8. Válassza ki a egyetértő példányát, majd válassza a **kiépítés** fület.
 
-9. Állítsa a **kiépítési módot** **automatikus**értékre. 
+9. Állítsa a **Kiépítési mód** mezőt **Automatikus** értékre. 
  
-    ![kiépítési](./media/concur-provisioning-tutorial/provisioning.png)
+    ![Képernyőkép a kiépítés lapról a Azure Portal. A kiépítési mód értéke automatikus, a test (kapcsolódás) gomb pedig ki van emelve.](./media/concur-provisioning-tutorial/provisioning.png)
 
 10. A **rendszergazdai hitelesítő adatok** szakaszban adja meg az Ön által a egyetértő rendszergazda **felhasználónevét** és **jelszavát** .
 
@@ -108,7 +108,7 @@ A következő okok miatt ez a művelet nem hajtható végre a normál T&E felüg
 
 14. A leképezések szakaszban válassza a **szinkronizálás Azure Active Directory a felhasználók egyetértenek.**
 
-15. Az **attribútum-hozzárendelések** szakaszban tekintse át az Azure ad-ből szinkronizált felhasználói attribútumokat. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a frissítési műveletek során a felhasználói fiókok egyeztetésére szolgálnak. A módosítások elvégzéséhez kattintson a Save (Mentés) gombra.
+15. Az **attribútum-hozzárendelések** szakaszban tekintse át az Azure ad-ből szinkronizált felhasználói attribútumokat. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a frissítési műveletek során a felhasználói fiókok egyeztetésére szolgálnak. A módosítások véglegesítéséhez válassza a Mentés gombot.
 
 16. Ahhoz, hogy az Azure AD-kiépítési szolgáltatás egyetért, a **Beállítások** szakaszban módosítsa a **kiépítési állapotot** **a** következőre:
 
@@ -118,7 +118,7 @@ Most már létrehozhat egy teszt fiókot is. Várjon akár 20 percet, és ellen�
 
 ## <a name="additional-resources"></a>További források
 
-* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](tutorial-list.md)
+* [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 * [Egyszeri bejelentkezés konfigurálása](concur-tutorial.md)
 

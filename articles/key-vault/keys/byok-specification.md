@@ -10,18 +10,18 @@ ms.subservice: keys
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: ambapat
-ms.openlocfilehash: 80796d852c07952b7100c6dd7802bc9279f3218c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: feef35ef86a933f32949468366fea85eb87d4866
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84198999"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91315779"
 ---
 # <a name="bring-your-own-key-specification"></a>Saját kulcs használatának specifikációja
 
 Ez a dokumentum ismerteti a HSM-védelemmel ellátott kulcsok az ügyfelek helyszíni HSM a Key Vaultba való importálásának specifikációit.
 
-## <a name="scenario"></a>Forgatókönyv
+## <a name="scenario"></a>Használati eset
 
 A Key Vault ügyfél biztonságosan átviheti a kulcsot az Azure-on kívüli helyszíni HSM-ből a HSM-alapú biztonsági Azure Key Vaultba. Key Vaulton kívül generált kulcs importálásának folyamata általában Bring Your Own Key (BYOK) néven ismert.
 
@@ -119,7 +119,7 @@ Ha CKM_RSA_AES_KEY_WRAP_PAD van használatban, az átviteli blob JSON-szerializ�
 
 ```
 
-* Kid = KEK kulcs azonosítója. A következőhöz hasonló Key Vault kulcsok:https://ContosoKeyVaultHSM.vault.azure.net/keys/mykek/eba63d27e4e34e028839b53fac905621
+* Kid = KEK kulcs azonosítója. A következőhöz hasonló Key Vault kulcsok: https://ContosoKeyVaultHSM.vault.azure.net/keys/mykek/eba63d27e4e34e028839b53fac905621
 * ALG = algoritmus. 
 * a dir = Direct mód, azaz a hivatkozott kölyök a rejtjelezett közvetlen védelemmel való ellátására szolgál, amely a CKM_RSA_AES_KEY_WRAP pontos ábrázolása.
 * Generator = egy tájékoztató mező, amely a BYOK eszköz nevét és verzióját, valamint a forrás HSM gyártóját és modelljét jelöli. Ezek az információk hibaelhárítási és támogatási célokra szolgálnak.
@@ -159,20 +159,8 @@ Kérés törzse:
 a "key_hsm" érték a KeyTransferPackage-ContosoFirstHSMkey. byok teljes tartalma Base64 formátumban kódolva.
 
 ## <a name="references"></a>Hivatkozások
+- [Key Vault fejlesztői útmutató](../general/developers-guide.md)
 
-### <a name="azure-key-vault-rest-api"></a>Azure Key Vault REST API
-
-* [Kulcs létrehozása](https://docs.microsoft.com/rest/api/keyvault/createkey/createkey)
-* [Kulcs lekérése (csak a fő attribútumok és a nyilvános kulcs)](https://docs.microsoft.com/rest/api/keyvault/getkey/getkey)
-* [Kulcs importálása](https://docs.microsoft.com/rest/api/keyvault/importkey/importkey)
-
-
-### <a name="azure-cli-commands"></a>Az Azure parancssori felület parancsai
-* [az keyvault key create](https://docs.microsoft.com/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-create)
-* [az kulcstartó kulcs letöltése](https://docs.microsoft.com/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-download)
-* [az kulcstartó kulcs importálása](https://docs.microsoft.com/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-import)
-
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Részletes BYOK utasítások: [HSM-védelemmel ellátott kulcsok importálása Key Vaultba (BYOK)](hsm-protected-keys-byok.md)
 

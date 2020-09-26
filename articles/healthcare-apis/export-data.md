@@ -7,45 +7,35 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 8/26/2020
 ms.author: matjazl
-ms.openlocfilehash: 83509b5f452ab7cf88774561c12d7aa2cf3b46cf
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: ecc2134d1a528ee22710cb447f996e0c5e31a8de
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89482317"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91308180"
 ---
 # <a name="how-to-export-fhir-data"></a>FHIR-adatexportálás
 
-Az exportálási beállítások konfigurálásához és az Azure Storage-fiók létrehozásához tekintse meg a következőt [:.](configure-export-data.md)
+$Export használata előtt meg kell győződnie arról, hogy a FHIR készült Azure API használatára van konfigurálva. Az exportálási beállítások konfigurálásához és az Azure Storage-fiók létrehozásához tekintse meg [Az adatexportálás konfigurálása lapot](configure-export-data.md).
 
-## <a name="exporting-fhir-resources-using-export-command"></a>FHIR-erőforrások exportálása a $export paranccsal
+## <a name="using-export-command"></a>$export parancs használata
 
-Miután konfigurálta az Azure API-t a FHIR exportáláshoz, most már megteheti a $export parancsot, hogy exportálja a szolgáltatásból kifelé irányuló adatmennyiséget az Exportálás konfigurálásakor megadott Storage-fiókba. Ha szeretné megtudni, hogyan hívhat meg $export parancsot a FHIR-kiszolgálón, tekintse meg a dokumentációt a $export-specifikációról a következő címen: [https://hl7.org/Fhir/uv/bulkdata/export/index.html](https://hl7.org/Fhir/uv/bulkdata/export/index.html) . 
+Miután konfigurálta az Azure API-t a FHIR-hoz az exportáláshoz, a $export paranccsal exportálhatja a szolgáltatásból az adatkészletet. Az adattárolási szolgáltatás az Exportálás konfigurálásakor megadott Storage-fiókba kerül. Ha meg szeretné tudni, hogyan hívhat meg $export parancsot a FHIR-kiszolgálón, olvassa el a [$export specifikáció](https://hl7.org/Fhir/uv/bulkdata/export/index.html)dokumentációját. 
 
-A FHIR készült Azure API $export parancsa egy opcionális _ \_ Conatiner_ paramétert is igénybe vehet, amely segítségével megadhatja a tárolót a konfigurált Storage-fiókon belül, amelybe exportálni kívánja az adatexportálást.
+A FHIR készült Azure API-ban található $export parancs egy opcionális _ \_ tároló_ paramétert használ, amely meghatározza azt a tárolót, amely a konfigurált Storage-fiókban található, ahol az adatexportálást el kell helyezni.
 
 `https://<<FHIR service base URL>>/$export?_container=<<container_name>>`
 
-> [!IMPORTANT]
-> Vegye figyelembe, hogy a FHIR-hez készült Azure API jelenleg csak a rendszerszintű exportálást támogatja $export specifikációban meghatározottak szerint [https://hl7.org/Fhir/uv/bulkdata/export/index.html](https://hl7.org/Fhir/uv/bulkdata/export/index.html) . Emellett csak a _ \_ _ lekérdezési paraméter használata támogatott.
+## <a name="supported-scenarios"></a>Támogatott esetek
 
-## <a name="exporting-de-identified-data-preview"></a>De azonosított adatexportálás (előzetes verzió)
+A FHIR készült Azure API a rendszer, a beteg és a csoport szintjén támogatja a $export. A csoportos exportálás esetében az összes kapcsolódó erőforrást exportáljuk, de a csoport jellemzőit nem exportáljuk.
 
-A $export parancs a FHIR-kiszolgálóról származó, de azonosított adatok exportálására is használható. A névtelenítésével motort használja a [névtelenítésével FHIR eszközökről](https://github.com/microsoft/FHIR-Tools-for-Anonymization), és a lekérdezési paraméterekben a névtelenítésével konfiguráció részleteit veszi igénybe. Létrehozhatja saját névtelenítésével-konfigurációs fájlját, vagy kiindulási pontként használhatja a HIPAA Safe Harbor metódusának [minta konfigurációs fájlját](https://github.com/microsoft/FHIR-Tools-for-Anonymization#sample-configuration-file-for-hipaa-safe-harbor-method) . 
-
- `https://<<FHIR service base URL>>/$export?_container=<<container_name>>&_anonymizationConfig=<<config file name>>&_anonymizationConfigEtag=<<ETag on storage>>`
-
-|Lekérdezési paraméter            | Példa |Nem kötelező| Description|
-|---------------------------|---------|-----------|------------|
-| _\_anonymizationConfig_   |DemoConfig.jsbekapcsolva|A deazonosított exportáláshoz szükséges |A konfigurációs fájl neve. Tekintse meg a konfigurációs fájlformátumot [itt](https://github.com/microsoft/FHIR-Tools-for-Anonymization#configuration-file-format). Ezt a fájlt egy **névtelenítésével** nevű tárolóban kell tárolni, amely az exportálási helyként konfigurált Azure Storage-fiókban található. |
-| _\_anonymizationConfigEtag_|"0x8D8494A069489EC"|Nem kötelező a azonosított exportáláshoz|Ez a konfigurációs fájl ETAG. A ETAG Azure Storage Explorer használatával szerezheti be a blob tulajdonságból|
-
-> [!IMPORTANT]
-> Vegye figyelembe, hogy mind a nyers, mind a nem azonosított Exportálás az exportálási konfiguráció részeként megadott Azure Storage-fiókra is vonatkozik. Azt javasoljuk, hogy a különböző, de azonosított konfigurációnak megfelelő tárolókat használjon, és kezelje a felhasználói hozzáférést a tároló szintjén.
+> [!Note] 
+> $export akkor exportálja az ismétlődő erőforrásokat, ha az erőforrás egynél több erőforrás rekeszében van, vagy több csoportban van.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a cikkben megtanulta, hogyan exportálhatja a FHIR-erőforrásokat $export paranccsal, beleértve az azonosított adatforrásokat is. Ezután beállíthatja az exportálási adatait:
+Ebben a cikkben megtanulta, hogyan exportálhatja a FHIR-erőforrásokat $export parancs használatával. Következő lépésként tekintse át a támogatott funkciókat
  
 >[!div class="nextstepaction"]
->[Az adatexportálás konfigurálása](configure-export-data.md)
+>[Támogatott funkciók](fhir-features-supported.md)

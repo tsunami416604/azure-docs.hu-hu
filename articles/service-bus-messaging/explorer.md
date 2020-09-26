@@ -3,12 +3,12 @@ title: Azure Service Bus Explorer használata adatműveletek végrehajtásához 
 description: Ez a cikk azt ismerteti, hogyan használható a portálon alapuló Azure Service Bus Explorer a Azure Service Bus adatok eléréséhez.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 3fa619334f1918e16c487269fe3715f5338adf85
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e5e97c6860c2cc01048f4f7caf9f40f9e07592d0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340538"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295600"
 ---
 # <a name="use-service-bus-explorer-to-perform-data-operations-on-service-bus-preview"></a>Service Bus Explorer használata adatműveletek végrehajtásához Service Bus (előzetes verzió)
 
@@ -104,7 +104,7 @@ A Service Bus Explorer fogadási funkciója lehetővé teszi, hogy egyszerre egy
 
 Ha a fogadási művelet sikeres, az üzenet adatai a rácson az alábbiak szerint jelennek meg. A részletek megjelenítéséhez kiválaszthatja az üzenetet a rácsból.
 
-:::image type="content" source="./media/service-bus-explorer/receive-message-from-queue-2.png" alt-text="ReceiveMessageFromQueue":::
+:::image type="content" source="./media/service-bus-explorer/receive-message-from-queue-2.png" alt-text="Képernyőkép a Azure Service Bus Explorerben a várólisták ablakról, amelyen megjelenik egy üzenet, amely a várólistában kiválasztott aktív üzenetre mutat.":::
 
 
 ### <a name="peeking-a-message-from-a-queue"></a>Üzenet bepillantása egy várólistából
@@ -156,7 +156,7 @@ A várólistához hasonlóan a ***fogadási*** művelet is elvégezhető egy el�
 
 Ha a fogadási művelet sikeres, a fogadott üzenet az alábbi módon jelenik meg a rácson. Az üzenet részleteinek megtekintéséhez kattintson az üzenetre.
 
-:::image type="content" source="./media/service-bus-explorer/receive-message-from-subscription.png" alt-text="ReceiveMessageFromQueue":::
+:::image type="content" source="./media/service-bus-explorer/receive-message-from-subscription.png" alt-text="Képernyőfelvétel a Azure Service Bus Explorer Receive (fogadás) lapjáról, amelyen a kapott aktív üzenet részletei jelennek meg.":::
 
 ### <a name="peeking-a-message-from-a-subscription"></a>Üzenet bepillantása egy előfizetésből
 

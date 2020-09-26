@@ -11,18 +11,18 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: diberry
-ms.openlocfilehash: 25b360f90a0920aad2ea5e68cda31a68be5d37a9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ccd732c644cf0a5641099a9731f65dd7b03bf374
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73486682"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316409"
 ---
 # <a name="testing-example-utterances-in-luis"></a>Tesztelési példa a LUIS hosszúságú kimondott szöveg
 
 A tesztelés a hosszúságú kimondott szöveg és a LUIS által elismert szándékok és entitások válaszának beszerzésének folyamata. 
 
-A LUIS-t interaktívan, egy Kimondás útján, vagy hosszúságú kimondott szöveg is megadhatja. A tesztelés során összehasonlíthatja az aktuális aktív modell előrejelzési válaszát a közzétett modell előrejelzési válaszával. 
+A LUIS-t interaktívan, egy Kimondás útján, vagy hosszúságú kimondott szöveg-készletet is megadhat. A tesztelés során összehasonlíthatja az aktuális aktív modell előrejelzési válaszát a közzétett modell előrejelzési válaszával. 
 
 <a name="A-test-score"></a>
 <a name="Score-all-intents"></a>
@@ -56,6 +56,6 @@ A modell módosítása után ne felejtse el [betanítani](luis-how-to-train.md) 
 ## <a name="best-practices"></a>Ajánlott eljárások
 Ismerje meg az [ajánlott eljárásokat](luis-concept-best-practices.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a hosszúságú kimondott szöveg [teszteléséről](luis-interactive-test.md) .

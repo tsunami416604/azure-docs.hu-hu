@@ -3,18 +3,18 @@ title: Azure Backup helyreállítható törlés
 description: Megtudhatja, hogyan teheti biztonságosabbá a biztonsági mentéseket a Azure Backup biztonsági funkciói segítségével.
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 76928b98bdb21ffa79fce8435bfe4dda92e0c72d
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: d7998c7f9def6ce9965ded3b6ec700f7975891eb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89179963"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271545"
 ---
 # <a name="soft-delete-for-azure-backup"></a>Azure Backup helyreállítható törlés
 
 A biztonsági problémákkal, például a kártevővel, a ransomware és a behatolással kapcsolatos problémák egyre nagyobbak. Ezek a biztonsági problémák költségesek lehetnek a pénz és az adatmennyiség tekintetében. Az ilyen támadások elleni védelem érdekében Azure Backup mostantól biztonsági funkciókat biztosít a biztonsági mentési adatainak a törlés után még a védelme érdekében.
 
-Az egyik ilyen funkció a Soft delete. A helyreállítható törléssel akkor is, ha egy rosszindulatú színész töröl egy biztonsági másolatot (vagy véletlenül törli a biztonsági mentési adatmennyiséget), a biztonsági mentési adat 14 további napig tart, így a biztonsági mentési elem helyreállítása adatvesztés nélkül történik. A "Soft Delete" állapotban lévő biztonsági mentési adatok megőrzésének további 14 napja nem jár költséggel az Ön számára.
+Az egyik ilyen funkció a Soft delete. A helyreállítható törléssel akkor is, ha egy rosszindulatú színész töröl egy biztonsági másolatot (vagy véletlenül törli a biztonsági mentési adatmennyiséget), a biztonsági mentési adat 14 további napig tart, így a biztonsági mentési elem helyreállítása adatvesztés nélkül történik. A "Soft Delete" állapotban lévő biztonsági mentési adatok megőrzésének további 14 napja nem jár semmilyen költséggel.
 
 A következő szolgáltatások esetében érhető el a Soft delete Protection:
 
@@ -29,7 +29,7 @@ Ez a folyamatábra a biztonsági mentési elemek különböző lépéseit és á
 
 A Soft delete alapértelmezés szerint engedélyezve van az újonnan létrehozott tárolókban a biztonsági mentési adatok véletlen vagy rosszindulatú törlésből való védelme érdekében.  A funkció letiltása nem ajánlott. Ha a védett elemek új tárolóba való áthelyezését tervezi, és a törlés és az ismételt védelem (például egy tesztkörnyezetben) esetében nem várhatja el a szükséges 14 napot, az egyetlen olyan körülmény, amelyben érdemes megfontolni a Soft delete letiltását. Csak a tár tulajdonosa tilthatja le ezt a funkciót. Ha letiltja ezt a funkciót, a védett elemek minden jövőbeli törlése azonnali eltávolítást eredményez, a visszaállítási lehetőség nélkül. A szolgáltatás letiltását megelőzően a törölt állapotban lévő biztonsági mentési adatmennyiséget a rendszer 14 napig változatlanul törli. Ha véglegesen törölni kívánja ezeket a fájlokat, törölnie kell a törlést, majd újra törölnie kell őket a végleges törléshez.
 
- Fontos megjegyezni, hogy ha a Soft delete le van tiltva, a szolgáltatás le van tiltva a számítási feladatok összes típusához, beleértve az SQL Servert és a SAP HANA munkaterheléseket is. Ha például a [SQL Server/SAP HANA előzetes](./soft-delete-sql-saphana-in-azure-vm.md#steps-to-enroll-in-preview) verzió engedélyezve van egy előfizetéshez, akkor nem lehet letiltani a csak az SQL Server vagy a SAP HANA-adatbázisok helyreállítható törlését, miközben az azonos tárolóban lévő virtuális gépek számára engedélyezve van. A részletes szabályozáshoz külön tárolókat is létrehozhat.
+Fontos megjegyezni, hogy ha a Soft delete le van tiltva, a szolgáltatás le van tiltva a számítási feladatok összes típusához. Például nem lehet letiltani a helyreállítható törlést csak az SQL Server-vagy SAP HANA-adatbázisok esetében, miközben az azonos tárolóban lévő virtuális gépek esetében engedélyezve van. A részletes szabályozáshoz külön tárolókat is létrehozhat.
 
 ### <a name="disabling-soft-delete-using-azure-portal"></a>A Soft delete letiltása a Azure Portal használatával
 
@@ -178,6 +178,6 @@ Nem. Nem lehet kényszeríteni a nem törölt elemek törlését. A rendszer 14 
 
 A helyreállítható törlési műveletek a PowerShell használatával végezhetők el. A CLI jelenleg nem támogatott.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A Azure Backup biztonsági funkcióinak áttekintése](security-overview.md)

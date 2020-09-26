@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 897c0f3c51d6d9bea1f90a66ccf50aa51e22f118
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: c46d977b6ce4eaa62aefc6874ce2b855a4711670
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90088306"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317512"
 ---
 # <a name="troubleshoot-azure-ad-connectivity"></a>Az Azure AD-kapcsolat hibáinak megoldása
 Ez a cikk azt ismerteti, hogyan működik a Azure AD Connect és az Azure AD közötti kapcsolat, és hogyan lehet elhárítani a kapcsolódási problémákat. Ezeket a problémákat legvalószínűbben a proxykiszolgáló fogja látni a környezetben.
@@ -85,7 +85,7 @@ Annak ellenőrzéséhez, hogy a Azure AD Connect-kiszolgáló rendelkezik-e tén
 
 A PowerShell a machine.config fájl konfigurációját használja a proxyval való kapcsolatfelvételhez. A WinHTTP/Netsh beállításai nincsenek hatással ezekre a parancsmagokra.
 
-Ha a proxy megfelelően van konfigurálva, akkor sikeres állapotot kell kapnia: ![ proxy200](./media/tshoot-connect-connectivity/invokewebrequest200.png)
+Ha a proxy megfelelően van konfigurálva, akkor sikeres állapotot kell kapnia: ![ képernyőfelvétel, amely a sikeres állapotot jeleníti meg, ha a proxy megfelelően van konfigurálva.](./media/tshoot-connect-connectivity/invokewebrequest200.png)
 
 Ha nem **tud csatlakozni a távoli kiszolgálóhoz**, a PowerShell a proxy vagy a DNS használata nélkül próbál közvetlen hívást végrehajtani, és nem megfelelően van konfigurálva. Győződjön meg arról, hogy a **machine.config** fájl megfelelően van konfigurálva.
 ![unabletoconnect](./media/tshoot-connect-connectivity/invokewebrequestunable.png)

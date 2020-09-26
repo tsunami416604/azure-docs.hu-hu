@@ -10,12 +10,12 @@ ms.workload: identity
 ms.service: active-directory
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e105d4909705622a931c51bcb7cf0a9db4179525
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 58b4bbcac110398ee4ff132b76ce8c4868ee17f8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279601"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317591"
 ---
 # <a name="azure-ad-userprincipalname-population"></a>Az Azure AD UserPrincipalName feltöltése
 
@@ -54,7 +54,7 @@ Az alternatív bejelentkezési azonosító lehetővé teszi a bejelentkezési é
 
 Ha engedélyezni szeretné az alternatív bejelentkezési azonosítót az Azure AD-ben, akkor a Azure AD Connect használatakor nincs szükség további konfigurációs lépésekre. A másodlagos azonosító közvetlenül a varázslóból is konfigurálható. Tekintse meg a felhasználók Azure AD bejelentkezési konfigurációját a szinkronizálás szakasza alatt. Az **egyszerű felhasználónév** legördülő menüben válassza ki az alternatív bejelentkezési azonosító attribútumát.
 
-![Nem ellenőrzött tartományok](./media/plan-connect-userprincipalname/altloginid.png)  
+![Képernyőkép, amely kiemeli az egyszerű felhasználónevek listáját, ahol kiválaszthatja a másodlagos bejelentkezési azonosító attribútumot.](./media/plan-connect-userprincipalname/altloginid.png)  
 
 További információ: [alternatív bejelentkezési azonosító konfigurálása](/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) és [Azure ad bejelentkezési konfiguráció](how-to-connect-install-custom.md#azure-ad-sign-in-configuration)
 

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 08/03/2020
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 94caa879aa005f8f41e44b8a56400e87f6174247
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d67b0c89fbec8da9a3057164aa59d458a85c41d7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90908349"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280589"
 ---
 # <a name="quickstart-build-and-deploy-apps-to-azure-spring-cloud"></a>Gyors útmutató: alkalmazások létrehozása és üzembe helyezése az Azure Spring Cloud-ban
 
@@ -162,7 +162,7 @@ Az alkalmazás teszteléséhez küldjön egy böngészőből egy HTTP GET-kéré
 
 ## <a name="test-the-application"></a>Az alkalmazás tesztelése
 
-Küldjön egy GET kérelmet az `solar-system-weather` alkalmazásnak. Egy böngészőben nyissa meg a nyilvános URL-címet, amely a `/weatherforecast` végéhez van hozzáfűzve. Például:
+Küldjön egy GET kérelmet az `solar-system-weather` alkalmazásnak. Egy böngészőben nyissa meg a nyilvános URL-címet, amely a `/weatherforecast` végéhez van hozzáfűzve. Példa:
 
 ```
 https://servicename-solar-system-weather.azuremicroservices.io/weatherforecast
@@ -353,23 +353,9 @@ Az URL-cím megkereséséhez navigáljon a Azure Portal is.
 
 ::: zone-end
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-
-Ha folytatni kívánja a sorozat következő rövid útmutatóját, ugorja át ezt a lépést.
-
-Ezekben a gyors útmutatókban olyan Azure-erőforrásokat hozott létre, amelyek továbbra is felhalmozzák a díjakat, ha az előfizetésben maradnak. Ha nem kívánja folytatni a következő rövid útmutatót, és nem várható, hogy a jövőben szüksége lenne ezekre az erőforrásokra, törölje az erőforráscsoportot a portál használatával, vagy futtassa a következő parancsot a Cloud Shellban:
-
-```azurecli
-az group delete --name <your resource group name; for example: helloworld-1558400876966-rg> --yes
-```
-
-Egy korábbi rövid útmutatóban az erőforráscsoport alapértelmezett nevét is megadhatja. Ha nem kívánja folytatni a következő rövid útmutatót, törölje az alapértelmezett beállítást az alábbi CLI-parancs futtatásával:
-
-```azurecli
-az configure --defaults group=
-```
-
 ## <a name="next-steps"></a>Következő lépések
+
+Ebben a rövid útmutatóban olyan Azure-erőforrásokat hozott létre, amelyek továbbra is felhalmozzák a díjakat, ha az előfizetésben maradnak. Ha nem szeretne továbblépni a következő rövid útmutatóra, tekintse meg az [erőforrások tisztítása](spring-cloud-quickstart-logs-metrics-tracing.md#clean-up-resources)című témakört. Ellenkező esetben folytassa a következő rövid útmutatóval:
+
 > [!div class="nextstepaction"]
 > [Naplók, metrikák és nyomkövetés](spring-cloud-quickstart-logs-metrics-tracing.md)
-

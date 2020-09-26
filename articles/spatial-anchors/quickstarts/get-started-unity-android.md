@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 07/31/2020
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 608b488a04eafd01e6702850445801705f6dac81
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 7e92da72e8125c22655a7eb9986f0554963aefeb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810353"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280894"
 ---
 # <a name="quickstart-create-a-unity-android-app-with-azure-spatial-anchors"></a>Gyors útmutató: Unity Android-alkalmazás létrehozása az Azure térbeli Horgonyokkal
 
@@ -34,7 +34,7 @@ A következőket fogja megtanulni:
 
 A rövid útmutató elvégzéséhez győződjön meg arról, hogy rendelkezik az alábbiakkal:
 
-- Egy olyan Windows vagy macOS rendszerű gép, amelynek <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019,4 (LTS)</a> , beleértve az Android Build support és az android SDK & NDK Tools modulokat.
+- Egy olyan Windows vagy macOS rendszerű gép, amely az <a href="https://unity3d.com/get-unity/download" target="_blank">2019,4 (LTS) egységgel</a>rendelkezik, **beleértve az Android** SDK-val **& NDK-eszközökkel** és **OpenJDK** -modulokkal.
   - Ha Windows rendszeren fut, <a href="https://git-scm.com/download/win" target="_blank">a git for Windows</a> és a <a href="https://git-lfs.github.com/">git LFS</a>is szüksége lesz.
   - Ha macOS rendszeren fut, a git a HomeBrew használatával telepíthető. Írja be a következő parancsot a terminál egyetlen sorába: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"` . Ezután futtassa `brew install git` a és a parancsot `brew install git-lfs` .
 - A <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">fejlesztők számára engedélyezett</a> és <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore alkalmas</a> Android-eszköz.
@@ -57,6 +57,10 @@ A rövid útmutató elvégzéséhez győződjön meg arról, hogy rendelkezik az
 [!INCLUDE [Export Unity Project](../../../includes/spatial-anchors-unity-export-project-snip.md)]
 
 Válassza ki az eszközt az **eszköz futtatása** területen, majd válassza a **Létrehozás és Futtatás**lehetőséget. A rendszer megkéri, hogy mentsen egy `.apk` fájlt, amelyből bármilyen nevet kiválaszthat.
+
+Az alkalmazás elindítása után a következőhöz hasonló képernyő jelenik meg:
+
+![Alkalmazás képernyő](./media/get-started-unity-android/demo-app-screen.png)
 
 A horgonyok elhelyezéséhez és felidézéséhez kövesse az alkalmazás utasításait.
 

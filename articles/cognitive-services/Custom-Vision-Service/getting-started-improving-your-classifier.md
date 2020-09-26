@@ -10,12 +10,13 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: pafarley
-ms.openlocfilehash: c2858d5f9bca662cbbcd48b2345a7dc2c7ae48b2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: cog-serv-seo-aug-2020
+ms.openlocfilehash: a77d3d5c1225fdd85e27db20cdae23e0c77a5e28
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73718542"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271358"
 ---
 # <a name="how-to-improve-your-classifier"></a>Az osztályozó javítása
 
@@ -65,7 +66,7 @@ A probléma megoldásához több rendszerkép is használható, amelyek biztosí
 
     ![Méret minták képe](./media/getting-started-improving-your-classifier/size.png)
 
-* __Kamera szöge:__ Különböző kamera-szögek által készített lemezképek megadása. Ha az összes fényképet rögzített kamerákkal (például a térfigyelő kamerákkal) kell elvégezni, ügyeljen arra, hogy egy másik címkét rendeljen minden rendszeresen előforduló objektumhoz, hogy elkerülje a&mdash;nem kapcsolódó objektumok (például a lámpaoszlopok) a fő szolgáltatásként való értelmezését.
+* __Kamera szöge:__ Különböző kamera-szögek által készített lemezképek megadása. Ha az összes fényképet rögzített kamerákkal (például a térfigyelő kamerákkal) kell elvégezni, ügyeljen arra, hogy egy másik címkét rendeljen minden rendszeresen előforduló objektumhoz, hogy elkerülje &mdash; a nem kapcsolódó objektumok (például a lámpaoszlopok) a fő szolgáltatásként való értelmezését.
 
     ![Szög minták képe](./media/getting-started-improving-your-classifier/angle.png)
 
@@ -106,7 +107,7 @@ A képelőrejelzések vizsgálatához lépjen a __betanítási képek__ lapra, v
 
 Előfordulhat, hogy a vizuális vizsgálat olyan mintákat azonosít, amelyeket később további betanítási adatok hozzáadásával vagy a meglévő betanítási adatok módosításával lehet kijavítani. Például az Apples és a Limes-osztályozók nem megfelelően címkézik az összes zöld almát. Ezt a problémát a zöld alma címkézett képeit tartalmazó betanítási adatok hozzáadásával és biztosításával orvosolhatja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az útmutatóban számos technikát tanult meg az egyéni képbesorolási modell pontosabb elvégzéséhez. Következő lépésként megtudhatja, hogyan tesztelheti a képeket programozott módon az előrejelzési API-ba való küldéssel.
 

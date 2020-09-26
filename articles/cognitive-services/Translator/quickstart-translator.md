@@ -12,12 +12,12 @@ ms.date: 09/14/2020
 ms.author: erhopf
 ms.custom: cog-serv-seo-aug-2020
 keywords: Translator, Translator Service, szöveg lefordítása, átbetűzés-szöveg, nyelvfelismerés
-ms.openlocfilehash: 65f16c9689984a493e3fed041545557688fbc279
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: e5b0bc17e8df1d82fb23a098f857be4fea13b982
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90602251"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318840"
 ---
 # <a name="quickstart-get-started-with-translator"></a>Gyors útmutató: a fordító használatának első lépései
 
@@ -102,7 +102,7 @@ Ha a Translator szolgáltatást a REST használatával hívja meg, meg kell győ
 
 <table width="100%">
   <th width="20%">Fejlécek</th>
-  <th>Leírás</th>
+  <th>Description</th>
   <tr>
     <td>Hitelesítési fejléc (ek)</td>
     <td><em>Kötelező kérelem fejléce</em><br/>Tekintse <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">meg a hitelesítés elérhető beállításait</a>.</td>
@@ -2228,9 +2228,9 @@ import (
 )
 
 func main() {
-    subscriptionKey := "151526a0d75d472fa4aef87aa4cf3bd9"
     endpoint := "https://api.cognitive.microsofttranslator.com/"
-    uri := endpoint + "/dictionary/lookup?api-version=3.0"
+    uri := endpoint + "/dictionary/examples?api-version=3.0"
+    subscriptionKey := "YOUR_SUBSCRIPTION_KEY"
 
     // Build the request URL. See: https://golang.org/pkg/net/url/#example_URL_Parse
     u, _ := url.Parse(uri)
@@ -2241,12 +2241,12 @@ func main() {
 
     // Create an anonymous struct for your request body and encode it to JSON
     body := []struct {
-        Text string
+        Text        string
         Translation string
     }{
         {
-          Text: "How are you? I am fine. What did you do today?",
-          Translation: "¿Cómo estás? Estoy bien. ¿Qué hiciste hoy?",
+            Text:        "Shark",
+            Translation: "tiburón",
         },
     }
     b, _ := json.Marshal(body)
@@ -2441,12 +2441,12 @@ Sikeres hívás után a következő választ kell látnia. További információ
 ]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Ismerje meg, hogy az API hogyan számolja a karaktereket](character-counts.md)
 * [A fordítás testreszabása és javítása](customization.md)
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 * [Translator V3 API-referenciák](reference/v3-0-reference.md)
 * [Nyelvi támogatás](language-support.md)

@@ -1,14 +1,16 @@
 ---
 title: Tervezés modellekből – LUIS
 description: A Language Understanding számos típusú modellt biztosít. Egyes modellek több módon is használhatók.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: bbb1f0d43b2a3fd2e8a2dff2201a09622ecaf977
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 576ba945018d13db9cd24888f3c41a2215857694
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683937"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316511"
 ---
 # <a name="design-with-intent-and-entity-models"></a>Tervezés a szándék és az entitás modelljeivel
 
@@ -24,7 +26,7 @@ A LUIS gépi tanítási módszere lehetővé teszi, hogy könnyedén tanítson f
 
 <a name="v3-authoring-model-decomposition"></a>
 
-## <a name="intents-classify-utterances"></a>Szándékok osztályozása hosszúságú kimondott szöveg
+## <a name="intents-classify-utterances"></a>A szándékok beszédelemeket sorolnak be
 
 A szándék egy példaként osztályozza a hosszúságú kimondott szöveg, hogy megtanítsa LUISt a szándékról. Egy szándékon belüli hosszúságú kimondott szöveg például pozitív példaként szolgál a kiértékeléshez. Ugyanezek a hosszúságú kimondott szöveg az összes többi szándékban negatív példákként használatosak.
 
@@ -34,7 +36,7 @@ A következő Kimondás **pozitív példa** a `OrderBook` szándékra és **nega
 
 `Buy the top-rated book on bot architecture.`
 
-## <a name="entities-extract-data"></a>Az entitások kinyerik az adatok
+## <a name="entities-extract-data"></a>Az entitások adatokat nyernek ki
 
 Az entitás a kinyert adatok adategységét jelöli. A gépi tanulási entitások olyan legfelső szintű entitások, amelyek alentitásokat tartalmaznak, amelyek szintén gépi tanulási entitások.
 
@@ -86,7 +88,7 @@ A [minták](luis-concept-patterns.md) úgy vannak kialakítva, hogy javítsák a
 
 Az alkalmazás sémája (modelljei és funkciói) ki van tanítva, és közzé van téve az előrejelzési végponton. Az előrejelzési végponthoz [új információkat](schema-change-prediction-runtime.md)adhat meg, valamint a felhasználó teljes kifejezését is.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A [szándékok](luis-concept-intent.md) és az [entitások](luis-concept-entity-types.md)ismertetése.
 * További információ a [funkciókról](luis-concept-feature.md)

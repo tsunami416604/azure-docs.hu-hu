@@ -14,12 +14,12 @@ ms.date: 07/06/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0306ae3193dc53f25a1e82eae1eb09c7d26ba9b6
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 2a2c3c112183e102f6c3c4a0bebb83376c7e8d85
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90055452"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317537"
 ---
 # <a name="activate-my-azure-ad-roles-in-pim"></a>Saját Azure AD-szerepkörök aktiválása a PIM-ben
 
@@ -40,7 +40,7 @@ A 2019-es verziótól kezdődően a Privileged Identity Management Azure AD-szer
 
 # <a name="new-version"></a>[Új verzió](#tab/new)
 
-## <a name="activate-a-role"></a>Szerepkör aktiválása
+## <a name="activate-a-role-for-new-version"></a>Új verzió szerepkörének aktiválása
 
 Ha egy Azure AD-szerepkört kell feltételezni, az aktiválást az Privileged Identity Management-ban megjelenő **saját szerepkörök** megnyitásával kérheti le.
 
@@ -80,7 +80,7 @@ Ha egy Azure AD-szerepkört kell feltételezni, az aktiválást az Privileged Id
 
     ![Aktiválási kérelem függőben lévő jóváhagyási értesítés](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate-notification.png)
 
-## <a name="view-the-status-of-your-requests"></a>A kérések állapotának megtekintése
+## <a name="view-the-status-of-your-requests-for-new-version"></a>Az új verzióra vonatkozó kérések állapotának megtekintése
 
 A függőben lévő kérések állapotát az aktiváláshoz tekintheti meg.
 
@@ -92,7 +92,7 @@ A függőben lévő kérések állapotát az aktiváláshoz tekintheti meg.
 
 1. Görgessen jobbra a **kérelem állapota** oszlop megtekintéséhez.
 
-## <a name="cancel-a-pending-request"></a>Függőben lévő kérelem megszakítása
+## <a name="cancel-a-pending-request-for-new-version"></a>Új verzióra vonatkozó függőben lévő kérelem megszakítása
 
 Ha nem igényel olyan szerepkör aktiválását, amely jóváhagyást igényel, bármikor lemondhatja a függőben lévő kéréseket.
 
@@ -106,7 +106,7 @@ Ha nem igényel olyan szerepkör aktiválását, amely jóváhagyást igényel, 
 
    ![Saját kérések listája a Mégse művelettel kiemelve](./media/pim-resource-roles-activate-your-roles/resources-my-requests-cancel.png)
 
-## <a name="troubleshoot"></a>Hibaelhárítás
+## <a name="troubleshoot-for-new-version"></a>Az új verzióval kapcsolatos hibák
 
 ### <a name="permissions-are-not-granted-after-activating-a-role"></a>A szerepkör aktiválását követően az engedélyek kiosztása nem történik meg
 

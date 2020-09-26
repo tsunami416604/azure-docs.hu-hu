@@ -1,16 +1,16 @@
 ---
 title: Az első tartós függvény létrehozása Azure Functions a PowerShell használatával
-description: Azure tartós függvény létrehozása és közzététele a Visual Studio Code használatával.
+description: Azure tartós függvény létrehozása és közzététele a PowerShellben a Visual Studio Code használatával.
 author: anthonychu
 ms.topic: quickstart
 ms.date: 08/10/2020
 ms.reviewer: azfuncdf, antchu
-ms.openlocfilehash: 11ae695a898e011fd287730d894394eff013a0ca
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: edd02085abe63b124082255247362f096248ba82
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88273402"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317259"
 ---
 # <a name="create-your-first-durable-function-in-powershell"></a>Az első tartós függvény létrehozása a PowerShellben
 
@@ -40,7 +40,7 @@ Ebben a szakaszban a Visual Studio Code használatával hozzon létre egy helyi 
 
 1. A Visual Studio Code-ban nyomja le az F1 billentyűt (vagy a CTRL/cmd + SHIFT + P billentyűkombinációt) a parancs paletta megnyitásához. A parancs palettáján keresse meg és válassza ki a következőt: `Azure Functions: Create New Project...` .
 
-    ![Create függvény](media/quickstart-js-vscode/functions-create-project.png)
+    ![Függvény létrehozása](media/quickstart-js-vscode/functions-create-project.png)
 
 1. Válasszon egy üres mappát a projekthez, és válassza a **kiválasztás**lehetőséget.
 
@@ -238,7 +238,7 @@ Ebben a szakaszban egy Function-alkalmazást és egy kapcsolódó erőforrást h
 
 2. Illessze be a HTTP-kérelem új URL-címét a böngésző címsorába. Ugyanezt az állapot-választ kell megadnia, mint korábban a közzétett alkalmazás használatakor.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Visual Studio Code használatával egy PowerShell tartós Function-alkalmazást hozhat létre és tehet közzé.
 

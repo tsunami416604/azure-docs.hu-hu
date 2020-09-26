@@ -11,12 +11,12 @@ manager: eliotgra
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 450d0675f81f161e68a207fbe0460c68fcafef29
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: e3fce15cdeb1792749224299167b52fc2311d04e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526374"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318278"
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>Eszközregisztráció az Azure IoT Hub Device Provisioning Service használatával
 A Microsoft Azure integrált nyilvános felhőszolgáltatások széles skáláját biztosítja, az IoT-megoldásokkal kapcsolatos igények teljes körű kielégítése céljából. A IoT Hub Device Provisioning Service (DPS) egy olyan IoT Hub segítő szolgáltatása, amely lehetővé teszi, hogy az emberi beavatkozás nélkül, a megfelelő IoT hub-ra való leválasztást, valamint a jobb oldali üzembe helyezést. A DPS lehetővé teszi, hogy több millió eszköz biztonságos és skálázható módon legyen kiépítve.
@@ -123,7 +123,9 @@ A DPS automatizálja az eszköz kiépítési folyamatát az Azure IoT Hub. Tová
 
 ## <a name="next-steps"></a>Következő lépések
 Mostanra nagyjából átlátja az IoT-eszközök Azure-ban való kiépítését. A következő lépés egy teljes körű IoT-forgatókönyv kipróbálása.
-> [!div class="nextstepaction"]
-> [IoT hub Device Provisioning Service beállítása a Azure Portal](quick-setup-auto-provision.md) 
->  [Szimulált eszköz](quick-create-simulated-device.md) 
->  létrehozása és kiépítése [Eszköz beállítása az üzembe helyezéshez](tutorial-set-up-device.md)
+
+[IoT Hub Device Provisioning Service beállítása a Azure Portal](quick-setup-auto-provision.md)
+
+[Szimulált eszköz létrehozása és kiépítése](quick-create-simulated-device.md)
+
+[Eszköz beállítása a kiépítéshez](tutorial-set-up-device.md)

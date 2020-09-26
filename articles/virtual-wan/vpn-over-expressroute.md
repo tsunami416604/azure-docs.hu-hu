@@ -5,14 +5,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 03/19/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: d3a2c85540a4efa2f934605c4c056b458e2879ca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fe8cf0da6cb6542646f3107980b49fb6fef9cb45
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84749598"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317633"
 ---
 # <a name="expressroute-encryption-ipsec-over-expressroute-for-virtual-wan"></a>ExpressRoute-titkosítás: IPsec a ExpressRoute-en keresztül a virtuális WAN-hoz
 
@@ -97,7 +97,7 @@ A hely erőforrása megegyezik a virtuális WAN-hoz nem ExpressRoute VPN-helyekk
    
    A helyszíni BGP-társ címe *nem* egyezhet meg a VPN-hely IP-címével vagy a VPN-hely virtuális hálózati címével. Használjon egy másik IP-címet a VPN-eszközön a BGP-társ IP-címéhez. Ez lehet egy olyan cím is, amely az eszköz visszacsatolási hálózatához van rendelve. Azonban *nem* lehet APIPA (169,254).* x*. *x*) címe. Adja meg ezt a címlistát a helyet jelölő megfelelő helyi hálózati átjáróban. A BGP-előfeltételeket lásd: [a BGP és az Azure VPN Gateway](../vpn-gateway/vpn-gateway-bgp-overview.md).
 
-1. Válassza a **Next (tovább): Áttekintés + >létrehozása** elemet a beállítási értékek ellenőrzéséhez és a VPN-hely létrehozásához. Ha a csatlakozáshoz a **hubok** lehetőséget választotta, a kapcsolat létrejön a helyszíni hálózat és a hub VPN-átjáró között.
+1. Válassza a **Next (tovább): Áttekintés + >létrehozása ** elemet a beállítási értékek ellenőrzéséhez és a VPN-hely létrehozásához. Ha a csatlakozáshoz a **hubok** lehetőséget választotta, a kapcsolat létrejön a helyszíni hálózat és a hub VPN-átjáró között.
 
 ## <a name="3-update-the-vpn-connection-setting-to-use-expressroute"></a><a name="hub"></a>3. frissítse a VPN-kapcsolat beállítását a ExpressRoute használatára
 
@@ -237,6 +237,6 @@ Ha már nincs szüksége ezekre az erőforrásokra, a [Remove-AzResourceGroup](/
 Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre VPN-kapcsolatot a ExpressRoute magánhálózati kapcsolaton keresztül a virtuális WAN használatával. Ha többet szeretne megtudni a virtuális WAN-ról és a kapcsolódó szolgáltatásokról, tekintse meg a [virtuális WAN áttekintése](virtual-wan-about.md)című témakört.

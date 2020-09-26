@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 006e312e67f5f4014248c44a799c2dde826801c2
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.custom: devx-track-js
+ms.openlocfilehash: 71bfff1b2ef75a13a3898d2fd9760dd60b83e3a5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89258843"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318313"
 ---
 # <a name="tutorial-end-to-end-content-protection-using-azure-ad"></a>Oktatóanyag: végpontok közötti tartalomvédelem az Azure AD használatával
 
@@ -173,7 +173,7 @@ Válasszon ki egy Azure AD-bérlőt, amelyet teljes mintaként használhat. Erre
 | Rendszergazdai engedély leírása * * | *DRM-licenc kézbesítési háttér erőforrás-hatóköre* | A hatókör részletes leírása, amely akkor jelenik meg, ha a bérlői rendszergazdák kibővítik a hatókört a beleegyezési képernyőn. |
 | Felhasználói jóváhagyás megjelenítendő neve | *DRM. Licenc. Delivery* | A hatókör a beleegyezési képernyőn lesz meghívva, amikor a felhasználók beleegyeznek ehhez a hatókörhöz. |
 | Felhasználói jóváhagyás leírása | *DRM-licenc kézbesítési háttér erőforrás-hatóköre* | Ez a hatókör részletes leírása, amely akkor jelenik meg, amikor a felhasználók kibontanak egy hatókört a beleegyezési képernyőn. |
-| Állapot | *Engedélyezve* | Meghatározza, hogy a hatókör elérhető legyen-e az ügyfelek számára. Állítsa "Letiltva" értékre azon hatókörök esetében, amelyeket nem szeretne látni az ügyfelek számára. A rendszer csak a letiltott hatóköröket törölheti, és azt javasoljuk, hogy legalább egy hetet várjon a hatókör letiltását követően, hogy az ügyfelek ne használják tovább. |
+| Állam | *Engedélyezve* | Meghatározza, hogy a hatókör elérhető legyen-e az ügyfelek számára. Állítsa "Letiltva" értékre azon hatókörök esetében, amelyeket nem szeretne látni az ügyfelek számára. A rendszer csak a letiltott hatóköröket törölheti, és azt javasoljuk, hogy legalább egy hetet várjon a hatókör letiltását követően, hogy az ügyfelek ne használják tovább. |
 
 ## <a name="register-the-client-app"></a>Az ügyfélalkalmazás regisztrálása
 
@@ -263,7 +263,7 @@ A Player alkalmazás beállítása két lehetőség közül választhat:
 
 ### <a name="option-1"></a>1\. lehetőség
 
-1. A Visual Studio Code elindítása.
+1. Indítsa el a Visual Studio Code-ot.
 1. A projekt megnyitásához kattintson a fájl-> mappa megnyitása lehetőségre, > tallózással keresse meg és válassza ki a fájl *package.jsjának* szülő mappáját.
 1. Nyissa meg a JavaScript *-fájl nyilvános/JavaScript/constants.js*.
 1. Cserélje le `OAUTH2_CONST.CLIENT_ID` a `client_id` regisztrált ÜGYFÉLALKALMAZÁS a HRE-bérlőben.  A `client_id` Azure Portal található regisztrált alkalmazás Áttekintés szakaszában talál. Megjegyzés: ez az ügyfél-azonosító, nem objektumazonosító.
@@ -379,7 +379,7 @@ Előfordulhat, hogy a Microsoft-előfizetéssel rendelkező Microsoft-bérlőben
 > [!WARNING]
 > Ha nem folytatja az alkalmazás használatát, törölje az oktatóanyag követése során létrehozott erőforrásokat. Ellenkező esetben fizetni kell rájuk.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Gyors útmutató: tartalom titkosítása](encrypt-content-quickstart.md)
