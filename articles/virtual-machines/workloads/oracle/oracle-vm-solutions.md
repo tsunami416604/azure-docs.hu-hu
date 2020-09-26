@@ -3,7 +3,7 @@ title: Oracle-megoldások az Azure Virtual Machines szolgáltatásban | Microsof
 description: Ismerkedjen meg az Oracle virtuálisgép-rendszerképek támogatott konfigurációinak és korlátaival Microsoft Azureon.
 services: virtual-machines-linux
 documentationcenter: ''
-author: rgardler
+author: dbakevlar
 manager: ''
 tags: azure-resource-management
 ms.assetid: ''
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/12/2020
-ms.author: rogardle
-ms.openlocfilehash: c22c5fa9c1a1680734a8cf5d8f4079e8c7b5c5f7
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.author: kegorman
+ms.openlocfilehash: 352c8c887899a2e15eed9736e8885c1b2cffec2b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723416"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331369"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Oracle VM-rendszerképek és azok üzembe helyezése Microsoft Azure
 
@@ -179,7 +179,7 @@ A kapcsolódó információkról a TUDÁSBÁZISCIKK **860340,1** -es cikkében o
    A JDK 6 és 7 lemezképben elérhető JDK, valamint a belőlük származtatott virtuális gépek és képek csak az Azure-on belül használhatók.
 - **64 bites JDK.** Az Oracle WebLogic Server virtuálisgép-lemezképek és az Azure által biztosított Oracle JDK virtuálisgép-lemezképek a Windows Server és a JDK 64 bites verzióit tartalmazzák.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most áttekintheti az aktuális Oracle-megoldásokat a Microsoft Azure virtuális gépek rendszerképei alapján. A következő lépés az első Oracle-adatbázis üzembe helyezése az Azure-ban.
 

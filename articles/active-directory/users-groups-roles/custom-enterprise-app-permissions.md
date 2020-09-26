@@ -12,12 +12,12 @@ ms.date: 09/22/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 1d196ea33eafbfae0d9db68588c0adb131a383f4
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 2ebba2bb957a1c05fd591181f0a784ed778c6c57
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "91000986"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333375"
 ---
 # <a name="enterprise-application-permissions-for-custom-roles-in-azure-active-directory"></a>Vállalati alkalmazások engedélyei a Azure Active Directory egyéni szerepköreihez
 
@@ -119,7 +119,7 @@ Az alkalmazás-hozzáférés engedélyezésének engedélyezése az üzembe hely
 
 ## <a name="full-list-of-permissions"></a>Engedélyek teljes listája
 
-Engedély | Leírás
+Engedély | Description
 ---------- | -----------
 Microsoft. Directory/applicationPolicies/allProperties/READ | Az alkalmazás-házirendek összes tulajdonságának olvasása.
 Microsoft. Directory/applicationPolicies/allProperties/Update | Az alkalmazás-házirendek összes tulajdonságának frissítése.
@@ -138,7 +138,6 @@ Microsoft. Directory/servicePrincipals/appRoleAssignedTo/READ | Az egyszerű szo
 Microsoft. Directory/servicePrincipals/appRoleAssignedTo/Update | Egyszerű szolgáltatás szerepkör-hozzárendeléseinek frissítése.
 Microsoft. Directory/servicePrincipals/appRoleAssignments/READ | Az egyszerű szolgáltatásokhoz hozzárendelt szerepkör-hozzárendelések olvasása.
 Microsoft. Directory/servicePrincipals/hallgatóság/frissítés | A célközönség tulajdonságainak frissítése az egyszerű szolgáltatásokban.
-Microsoft. Directory/servicePrincipals/hitelesítés/olvasás |  
 Microsoft. Directory/servicePrincipals/hitelesítés/frissítés | Az egyszerű szolgáltatásnév hitelesítési tulajdonságainak frissítése.
 Microsoft. Directory/servicePrincipals/Basic/Update | Egyszerű tulajdonságok frissítése az egyszerű szolgáltatásokban.
 Microsoft. Directory/servicePrincipals/Create | Egyszerű szolgáltatásnév létrehozása.

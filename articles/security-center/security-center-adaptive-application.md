@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2020
 ms.author: memildin
-ms.openlocfilehash: bbabceeea2fd009efe1098e37a0b1c9dcb8a48aa
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 17a3d0364f3085e4baf4e0faa40f117d9fbbb04f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90894720"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268162"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Az adaptív alkalmazás-vezérlőelemek használatával csökkentheti a gépek támadási felületét
 
@@ -229,4 +229,4 @@ A REST API elérhető függvények:
 Ebből a dokumentumból megtudhatta, hogyan használhatja az adaptív alkalmazások vezérlését Azure Security Center az Azure-beli és nem Azure-alapú gépeken futó alkalmazások engedélyezési listájainak definiálásához. Ha többet szeretne megtudni Security Center más felhőalapú munkaterhelés-védelmi funkcióival kapcsolatban, tekintse meg a következőt:
 
 * [Igény szerinti (JIT) VM-hozzáférés ismertetése](just-in-time-explained.md)
-* [Az Azure Kubernetes-fürtök védelme](azure-kubernetes-service-integration.md)
+* [Az Azure Kubernetes-fürtök védelme](defender-for-kubernetes-introduction.md)

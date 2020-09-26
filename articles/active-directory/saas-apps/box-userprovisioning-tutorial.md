@@ -10,19 +10,19 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: jeedes
-ms.openlocfilehash: 76c0f4f021646b4cbf1a09559e085176353a4a3c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 44f2195fb68b5a17eab3980f72cbc5374e1c033a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88525612"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91312906"
 ---
 # <a name="tutorial-configure-box-for-automatic-user-provisioning"></a>Oktatóanyag: a felhasználók automatikus üzembe helyezésének beállítása
 
 Ennek az oktatóanyagnak a célja, hogy megmutassa a box-ban elvégzendő lépéseket, valamint az Azure AD-t, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat az Azure AD-ből a Box-ba.
 
 > [!NOTE]
-> Ez az oktatóanyag az Azure AD-beli felhasználói kiépítési szolgáltatásra épülő összekötőt ismerteti. A szolgáltatás működésének, működésének és gyakori kérdéseinek részletes ismertetését lásd: a felhasználók üzembe helyezésének [automatizálása és az SaaS-alkalmazások kiépítése Azure Active Directory használatával](../app-provisioning/user-provisioning.md).
+> Ez az oktatóanyag az Azure AD-beli felhasználói kiépítési szolgáltatásra épülő összekötőt ismerteti. A szolgáltatás funkcióival, működésével és a gyakori kérdésekkel kapcsolatos fontos részletekért lásd: [Felhasználók átadásának és megszüntetésének automatizálása a SaaS-alkalmazásokban az Azure Active Directoryval](../app-provisioning/user-provisioning.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -91,19 +91,19 @@ Ennek a szakasznak a célja annak ismertetése, hogyan engedélyezhető Active D
 
 3. Válassza ki a Box-példányát, majd válassza a **kiépítés** lapot.
 
-4. Állítsa a **kiépítési módot** **automatikus**értékre. 
+4. Állítsa a **Kiépítési mód** mezőt **Automatikus** értékre. 
 
-    ![kiépítési](./media/box-userprovisioning-tutorial/provisioning.png)
+    ![Képernyőkép a kiépítés lapról a Azure Portal. A kiépítési mód beállítása automatikus, és az engedélyezés beállítás a rendszergazdai hitelesítő adatokban van kiemelve.](./media/box-userprovisioning-tutorial/provisioning.png)
 
 5. A **rendszergazdai hitelesítő adatok** szakaszban kattintson az **Engedélyezés** elemre egy új böngészőablakban a Box bejelentkezési párbeszédpanel megnyitásához.
 
 6. A **belépés a Box** -ba lapon adja meg a szükséges hitelesítő adatokat, majd kattintson az **Engedélyezés**gombra. 
    
-    ![Automatikus felhasználó-kiépítés engedélyezése](./media/box-userprovisioning-tutorial/IC769546.png "Automatikus felhasználó-kiépítés engedélyezése")
+    ![Képernyőkép a bejelentkezéshez, hogy hozzáférést biztosítson a Box képernyőhöz, amely megjeleníti az e-mailek és a jelszó bejegyzését, valamint az Engedélyezés gombot.](./media/box-userprovisioning-tutorial/IC769546.png "Automatikus felhasználó-kiépítés engedélyezése")
 
 7. A művelet engedélyezéséhez és a Azure Portalhoz való visszatéréshez kattintson a **hozzáférés engedélyezése jelölőnégyzetre** . 
    
-    ![Automatikus felhasználó-kiépítés engedélyezése](./media/box-userprovisioning-tutorial/IC769549.png "Automatikus felhasználó-kiépítés engedélyezése")
+    ![Képernyőkép: a hozzáférés engedélyezése képernyő a box-ban, egy magyarázó üzenet és a hozzáférés engedélyezése a Box-hoz gombra.](./media/box-userprovisioning-tutorial/IC769549.png "Automatikus felhasználó-kiépítés engedélyezése")
 
 8. A Azure Portal kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad csatlakozhasson a Box-alkalmazáshoz. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a Box-fiókja rendelkezik rendszergazdai jogosultságokkal, majd próbálja megismételni az **"engedélyezés"** lépést.
 
@@ -113,7 +113,7 @@ Ennek a szakasznak a célja annak ismertetése, hogyan engedélyezhető Active D
 
 11. A leképezések szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása jelölőnégyzetet.**
 
-12. Az **attribútum-hozzárendelések** szakaszban tekintse át az Azure ad-ből a Box-ba szinkronizált felhasználói attribútumokat. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a frissítési műveletekhez használt felhasználói fiókokkal egyeznek meg. A módosítások elvégzéséhez kattintson a Save (Mentés) gombra.
+12. Az **attribútum-hozzárendelések** szakaszban tekintse át az Azure ad-ből a Box-ba szinkronizált felhasználói attribútumokat. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a frissítési műveletekhez használt felhasználói fiókokkal egyeznek meg. A módosítások véglegesítéséhez válassza a Mentés gombot.
 
 13. Ha engedélyezni szeretné az Azure AD-kiépítési szolgáltatást a Box számára, módosítsa a **kiépítési állapotot** **a következőre** a Settings (beállítások) szakaszban.
 
@@ -130,6 +130,6 @@ A Box-bérlőben a szinkronizált felhasználók a **felügyelt felhasználók**
 
 ## <a name="additional-resources"></a>További források
 
-* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](tutorial-list.md)
+* [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 * [Egyszeri bejelentkezés konfigurálása](box-tutorial.md)

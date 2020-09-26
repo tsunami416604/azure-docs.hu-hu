@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 06/29/2020
 ms.author: pafarley
-ms.openlocfilehash: 550cec535343d48ad74dd35e6886af78bdd15701
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 7be14c07a08d58f02890a48d39dd0a8010101374
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85563283"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332627"
 ---
 # <a name="quickstart-try-content-moderator-on-the-web"></a>Gyors útmutató: Content Moderator kipróbálása a weben
 
@@ -64,7 +64,7 @@ A tartalom moderálás céljából történő elküldése. Belsőleg a felülviz
 
 Tekintse át az alkalmazott moderálási címkéket. Láthatja, hogy mely címkék lettek alkalmazva a tartalomra, és hogy a pontszám milyen kategóriában volt. A [képekkel](image-moderation-api.md), [szövegekkel](text-moderation-api.md)és [videó](video-moderation-api.md) -moderálással kapcsolatos témakörökből megtudhatja, hogy mit jelez a különböző tartalmi címkék.
 
-![Eredmények áttekintése](images/reviewresults_text.png)
+![Az eredmények áttekintése](images/reviewresults_text.png)
 
 Egy projektben Ön vagy a felülvizsgálati csapat módosíthatja ezeket a címkéket, vagy szükség szerint további címkéket is hozzáadhat. Ezeket a módosításokat a **Next (tovább** ) gombbal küldheti el. Ahogy az üzleti alkalmazás meghívja a moderátori API-kat, a címkézett tartalom itt fog megjelenni, és készen áll az emberi felülvizsgálati csapatok általi felülvizsgálatra. Ezt a módszert követve gyorsan áttekintheti a nagy mennyiségű tartalmat.
 
@@ -79,7 +79,7 @@ Ha többet szeretne megtudni a Content Moderator felülvizsgálati eszköz haszn
 
 Vagy folytassa a következő lépésekkel a kód moderálási API-jai használatának megkezdéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan használhatja saját maga a moderálási API-kat az alkalmazásban.
 - Rendszerkép-moderálás implementálása. Az [API-konzollal](try-image-api.md) vagy a [.net SDK](dotnet-sdk-quickstart.md) gyors üzembe helyezésével ellenőrizheti a képeket, és felderítheti a potenciális felnőtteket és a zamatos tartalmakat címkék, megbízhatósági pontszámok és egyéb kinyert adatok használatával.

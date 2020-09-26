@@ -4,12 +4,12 @@ description: Összefoglalja az Azure-beli virtuális gépek Azure Backup szolgá
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: c50a19acceeb68ead4d86a59bbe8275ae97ecb5f
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b576b5e15461f34468bd7c2d512ac7a636b73ac9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019589"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332729"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure-beli virtuális gépek biztonsági mentésének támogatási mátrixa
 
@@ -155,7 +155,7 @@ Azure-beli virtuális gépek biztonsági mentése zárolásokkal | Nem felügyel
 
 **Összetevő** | **Támogatás**
 --- | ---
-Azure-beli VM-adatlemezek | A legfeljebb 32 lemezzel rendelkező Azure-beli virtuális gépek biztonsági mentésének támogatása minden régióban nyilvános előzetes verzióban érhető el.<br><br> Az Azure-beli virtuális gépek nem felügyelt lemezekkel vagy klasszikus virtuális gépekkel történő biztonsági mentésének támogatása legfeljebb 16 lemezből áll.
+Azure-beli VM-adatlemezek | Legfeljebb 32 lemezzel rendelkező Azure-beli virtuális gépek biztonsági mentésének támogatása.<br><br> Az Azure-beli virtuális gépek nem felügyelt lemezekkel vagy klasszikus virtuális gépekkel történő biztonsági mentésének támogatása legfeljebb 16 lemezből áll.
 Adatlemez mérete | Az egyes lemezek mérete legfeljebb 32 TB lehet, és a virtuális gép összes lemezének maximális 256 TB-os kombinációja.
 Tárolási típus | Standard HDD, standard SSD, prémium SSD.
 Felügyelt lemezek | Támogatott.

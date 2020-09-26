@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 100e1b974e54d8c0065194bc7beb18f458011434
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b02c669439c54f34afb4212949b20f6793784103
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77616865"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91359425"
 ---
 # <a name="os-backup-and-restore-for-type-ii-skus-of-revision-3-stamps"></a>Az operációs rendszer biztonsági mentése és visszaállítása a 3. típusú bélyegzők II. típusához
 
@@ -69,7 +69,7 @@ A következő parancs egy fájl visszaállítását mutatja be a Backup *. tar. 
 
 A következő képernyőfelvétel a teljes biztonsági mentés visszaállítását mutatja be:
 
-![HowtoRestoreaBackup.PNG](media/HowToHLI/OSBackupTypeIISKUs/HowtoRestoreaBackup.PNG)
+![Képernyőfelvétel: a visszaállítást kérő parancssori ablak.](media/HowToHLI/OSBackupTypeIISKUs/HowtoRestoreaBackup.PNG)
 
 ## <a name="how-to-install-the-rear-tool-and-change-the-configuration"></a>Hogyan kell telepíteni a hátsó eszközt, és módosítani a konfigurációt? 
 
@@ -86,7 +86,7 @@ A **hátsó** biztonsági mentési csomagok telepítéséhez használja a követ
 ```
 #yum install rear -y
 ```
-A hátsó eszköz konfigurálásához frissítenie kell a paramétereket **OUTPUT_URL** és **BACKUP_URL** a *fájl/etc/Rear/local.conf*.
+A hátsó eszköz konfigurálásához frissítenie kell a paramétereket **OUTPUT_URL**  és **BACKUP_URL**  a *fájl/etc/Rear/local.conf*.
 ```
 OUTPUT=ISO
 ISO_MKISOFS_BIN=/usr/bin/ebiso
@@ -99,4 +99,4 @@ EXCLUDE_VG=( vgHANA-data-HC2 vgHANA-data-HC3 vgHANA-log-HC2 vgHANA-log-HC3 vgHAN
 BACKUP_PROG_EXCLUDE=("${BACKUP_PROG_EXCLUDE[@]}" '/media' '/var/tmp/*' '/var/crash' '/hana' '/usr/sap'  ‘/proc’)
 ```
 
-A következő képernyőképen a teljes biztonsági mentés visszaállítása látható: ![RearToolConfiguration.PNG](media/HowToHLI/OSBackupTypeIISKUs/RearToolConfiguration.PNG)
+Az alábbi képernyőfelvételen a teljes biztonsági mentés visszaállítása látható: a ![ képernyőképen egy parancssori ablak jelenik meg, amely a hátsó eszköz használatával a visszaállítást végzi.](media/HowToHLI/OSBackupTypeIISKUs/RearToolConfiguration.PNG)

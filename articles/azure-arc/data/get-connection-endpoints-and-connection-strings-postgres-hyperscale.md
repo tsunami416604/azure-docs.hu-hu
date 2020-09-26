@@ -10,12 +10,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 93b0547ba25f6534593a0a016ebfa5cbe4d2be2e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 4087d618209ab4db46f89ef4e6db7ac87ca4cf57
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90940797"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331012"
 ---
 # <a name="get-connection-endpoints-and-form-connection-strings-for-your-arc-enabled-postgresql-hyperscale-server-group"></a>Kapcsolatok végpontok és űrlap-kapcsolatok karakterláncok beolvasása az ív használatára képes PostgreSQL nagy kapacitású-kiszolgálócsoport számára
 
@@ -77,7 +77,7 @@ postgres=#
 ```
 > [!NOTE]
 >
-> - A "_PostgreSQL-példány_ " nevű végponton _a PostgreSQL-felhasználó jelszava_ a kiszolgálócsoport létrehozásakor választott jelszó.
+> - A "_PostgreSQL-példány_" nevű végponton megadott _postgres_ -felhasználó jelszava a kiszolgálócsoport telepítésekor választott jelszó.
 > - A azdata névjegye: a kapcsolódáshoz társított bérlet 10 órát vesz igénybe. Ezután újra kell csatlakoznia. Ha a bérlet lejárt, a következő hibaüzenet jelenik meg, amikor megpróbál végrehajtani egy parancsot a azdata (a azdata-bejelentkezésen kívül): _hiba: (401)_ 
 >  _OK: jogosulatlan_ 
 >  _http-válasz fejlécek: HTTPHeaderDict ({"date": "Sun, 06 Sep 2020 16:58:38 GMT", "Content-Length": "0", "www-Authenticate": "_ 

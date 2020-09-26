@@ -1,15 +1,15 @@
 ---
 title: Biztonságos üzembe helyezés régiók között – Azure telepítéskezelő
-description: Ismerteti, hogyan helyezhet üzembe egy szolgáltatást több régióban az Azure telepítéskezelő használatával. A biztonságos üzembe helyezési eljárásokat mutatja be a telepítés stabilitásának ellenőrzéséhez, mielőtt az összes régióba bekerül.
+description: Megtudhatja, hogyan helyezhet üzembe egy szolgáltatást számos régióban az Azure telepítéskezelő és a biztonságos üzembe helyezési gyakorlatokkal kapcsolatban.
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 27e8c9c0aa2ee86b490d266fc6ff76f263eee7ef
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 8b950fdc36fe3fbea1ce9436bdd7f7372c64c055
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87130222"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333205"
 ---
 # <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>Biztonságos üzembe helyezési eljárások engedélyezése az Azure telepítéskezelő (nyilvános előzetes verzió)
 
@@ -332,7 +332,7 @@ Ezután használja a (z) paramétert a sablonban:
 
 A verzióval ellátott központi telepítéseket új mappák létrehozásával és a gyökérbe való átadással kezelheti a bevezetés során. Az elérési út az erőforrásokat központilag telepítő sablonra áramlik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta a telepítéskezelő. A következő cikkből megtudhatja, hogyan helyezheti üzembe a telepítéskezelő használatával.
 

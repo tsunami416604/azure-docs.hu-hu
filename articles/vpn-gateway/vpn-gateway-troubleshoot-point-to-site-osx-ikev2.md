@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 03/27/2018
 ms.author: alzam
-ms.openlocfilehash: 33e67df5ad68a78cc35f7168813716d1d794d527
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: be7b6349a7bf51a4fb99e3604a04f9d95403b74f
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442802"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91359324"
 ---
 # <a name="troubleshoot-point-to-site-vpn-connections-from-mac-os-x-vpn-clients"></a>Pont – hely típusú VPN-kapcsolatok hibakeresése Mac OS X VPN-ügyfelektől
 
@@ -34,7 +34,7 @@ Ez a cikk segítséget nyújt a Mac OS X pont – hely kapcsolati problémák hi
 4. A **helyi azonosítónak** meg kell egyeznie az ügyféltanúsítvány **tárgyával** .
 5. Kattintson a **hitelesítési beállítások** elemre a hitelesítési beállítások lap megnyitásához.
 
-   ![Hitelesítési beállítások](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/ikev2auth2.jpg)
+   ![Képernyőfelvétel: a hitelesítési beállítások párbeszédpanel, amelyen a tanúsítvány van kijelölve.](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/ikev2auth2.jpg)
 6. Ellenőrizze, hogy a **tanúsítvány** ki van-e választva a legördülő listából.
 7. Kattintson a **kiválasztás** gombra, és ellenőrizze, hogy a megfelelő tanúsítvány van-e kiválasztva. A módosítások mentéséhez kattintson **az OK** gombra.
 
@@ -48,7 +48,7 @@ Ez a cikk segítséget nyújt a Mac OS X pont – hely kapcsolati problémák hi
 4. A **helyi azonosító** üres is lehet.
 5. Kattintson a **hitelesítési beállítások** gombra, és ellenőrizze, hogy a "username" lehetőség ki van-e választva a legördülő listából.
 
-   ![Hitelesítési beállítások](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/ikev2auth4.png)
+   ![Képernyőfelvétel: a hitelesítési beállítások párbeszédpanel, amelyen a Felhasználónév van kiválasztva.](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/ikev2auth4.png)
 6. Ellenőrizze, hogy a helyes hitelesítő adatok meg vannak-e adva.
 
 ## <a name="additional-steps"></a><a name="additional"></a>További lépések

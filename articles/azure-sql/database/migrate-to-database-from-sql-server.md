@@ -1,5 +1,5 @@
 ---
-title: SQL Server adatbázis áttelepítése Azure SQL Databasere
+title: SQL Server-adatbázisok migrálása az Azure SQL Database-be
 description: Ismerkedjen meg a Azure SQL Database SQL Server adatbázis-áttelepítéssel.
 keywords: adatbázis-áttelepítés,sql server-adatbázis áttelepítése,adatbázis-áttelepítési eszközök,adatbázis áttelepítése,sql database áttelepítése
 services: sql-database
@@ -10,16 +10,16 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: carlrab
+ms.reviewer: ''
 ms.date: 02/11/2019
-ms.openlocfilehash: 106337fb4756052ee682624290620093bf4a70b3
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 275ad3f2dfa04241b1f2a5687cb5dc32b7a31e75
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86081944"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333171"
 ---
-# <a name="sql-server-database-migration-to-azure-sql-database"></a>SQL Server adatbázis áttelepítése Azure SQL Databasere
+# <a name="sql-server-database-migration-to-azure-sql-database"></a>SQL Server-adatbázisok migrálása az Azure SQL Database-be
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Ebből a cikkből megtudhatja, hogyan telepíthet át egy SQL Server 2005-es vagy újabb verziójú adatbázist Azure SQL Databasere. A felügyelt Azure SQL-példányra való áttelepítéssel kapcsolatos információkért lásd: [SQL Server példány áttelepítése az Azure SQL felügyelt példányára](../managed-instance/migrate-to-instance-from-sql-server.md). A más platformokról való áttelepítéssel kapcsolatos információkért lásd: az [Azure Database áttelepítési útmutatója](https://datamigration.microsoft.com/).
@@ -119,7 +119,7 @@ Az interneten való keresés és ezen erőforrások használata mellett a [Micro
 > [!IMPORTANT]
 > Az Azure SQL felügyelt példánya lehetővé teszi, hogy a meglévő SQL Server-példányokat és annak adatbázisait minimálisan, kompatibilitási problémák nélkül áttelepítse. Lásd: [Mi az a felügyelt példány](../managed-instance/sql-managed-instance-paas-overview.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az Azure SQL EMEA Engineers blogon lévő szkripttel [monitorozhatja a Tempdb-adatbázis felhasználását a migrálás közben](https://blogs.msdn.microsoft.com/azuresqlemea/2016/12/28/lesson-learned-10-monitoring-tempdb-usage/).
 - Az Azure SQL EMEA Engineers blogon lévő szkripttel [monitorozhatja az adatbázis tranzakciósnapló-területét a migrálás időtartama alatt](https://docs.microsoft.com/archive/blogs/azuresqlemea/lesson-learned-7-monitoring-the-transaction-log-space-of-my-database).

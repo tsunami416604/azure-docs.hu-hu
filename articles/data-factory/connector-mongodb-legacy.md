@@ -1,6 +1,6 @@
 ---
 title: Adatok másolása a MongoDB örökölt használatával
-description: Megtudhatja, hogyan másolhat adatmásolási tevékenységet a Mongo DB-ből a Azure Data Factory-folyamat másolási tevékenységének használatával.
+description: Megtudhatja, hogyan másolhat adatmásolási tevékenységet a Mongo DB-ből egy örökölt Azure Data Factory-folyamat másolási tevékenységének használatával.
 services: data-factory
 author: linda33wj
 ms.author: jingwang
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 08/12/2019
-ms.openlocfilehash: ce1419c7dbb2cdecfd653995707fd1ece7798557
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7cf4be078a7bee0bedbeac4326acb9ca290cde88
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84558185"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331981"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory-legacy"></a>Adatok másolása a MongoDB Azure Data Factory használatával (örökölt)
 
@@ -62,14 +62,14 @@ A MongoDB társított szolgáltatás a következő tulajdonságokat támogatja:
 | port |A MongoDB-kiszolgáló által az ügyfélkapcsolatok figyeléséhez használt TCP-port. |Nem (az alapértelmezett érték 27017) |
 | databaseName |Az elérni kívánt MongoDB-adatbázis neve. |Yes |
 | authenticationType | A MongoDB-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa.<br/>Az engedélyezett értékek: **Basic**és **Anonymous**. |Yes |
-| felhasználónév |Felhasználói fiók a MongoDB eléréséhez. |Igen (ha alapszintű hitelesítést használ). |
+| username |Felhasználói fiók a MongoDB eléréséhez. |Igen (ha alapszintű hitelesítést használ). |
 | jelszó |A felhasználó jelszava. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). |Igen (ha alapszintű hitelesítést használ). |
 | authSource |Annak a MongoDB-adatbázisnak a neve, amelyet a hitelesítés hitelesítő adatainak ellenőrzéséhez használni kíván. |Nem. Az alapszintű hitelesítéshez az alapértelmezett érték a databaseName tulajdonsággal megadott rendszergazdai fiók és adatbázis használata. |
 | enableSsl | Megadja, hogy a kiszolgálóval létesített kapcsolatok titkosítva vannak-e a TLS protokollal. Az alapértelmezett érték a hamis.  | No |
 | allowSelfSignedServerCert | Megadja, hogy engedélyezi-e az önaláírt tanúsítványokat a kiszolgálóról. Az alapértelmezett érték a hamis.  | No |
 | Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. |No |
 
-**Példa:**
+**Példa**
 
 ```json
 {
@@ -103,7 +103,7 @@ Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdon
 | típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **MongoDbCollection** | Yes |
 | collectionName |A gyűjtemény neve a MongoDB adatbázisban. |Yes |
 
-**Példa:**
+**Példa**
 
 ```json
 {
@@ -134,7 +134,7 @@ A másolási tevékenység **forrása** szakasz a következő tulajdonságokat t
 | típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **MongoDbSource** | Yes |
 | lekérdezés |Az egyéni SQL-92 lekérdezés használatával olvashatja el az adatolvasást. Például: select * from Sajáttábla. |Nem (ha meg van adva a "collectionName" az adatkészletben) |
 
-**Példa:**
+**Példa**
 
 ```json
 "activities":[
@@ -167,7 +167,7 @@ A másolási tevékenység **forrása** szakasz a következő tulajdonságokat t
 ```
 
 > [!TIP]
-> Az SQL-lekérdezés megadásakor figyeljen a DateTime formátumra. Például: `SELECT * FROM Account WHERE LastModifiedDate >= '2018-06-01' AND LastModifiedDate < '2018-06-02'` vagy a paraméter használata`SELECT * FROM Account WHERE LastModifiedDate >= '@{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-dd HH:mm:ss')}' AND LastModifiedDate < '@{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-dd HH:mm:ss')}'`
+> Az SQL-lekérdezés megadásakor figyeljen a DateTime formátumra. Például: `SELECT * FROM Account WHERE LastModifiedDate >= '2018-06-01' AND LastModifiedDate < '2018-06-02'` vagy a paraméter használata `SELECT * FROM Account WHERE LastModifiedDate >= '@{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-dd HH:mm:ss')}' AND LastModifiedDate < '@{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-dd HH:mm:ss')}'`
 
 ## <a name="schema-by-data-factory"></a>Séma Data Factory szerint
 
@@ -182,7 +182,7 @@ Az adatok MongoDB-ből való másolása során a rendszer a következő leképez
 | Bináris |Bájt [] |
 | Logikai érték |Logikai |
 | Dátum |DateTime |
-| NumberDouble |Double |
+| NumberDouble |Dupla |
 | NumberInt |Int32 |
 | NumberLong |Int64 |
 | ObjectID |Sztring |
@@ -208,14 +208,14 @@ A virtuális táblák a valós táblázatba tartozó, az illesztőprogramnak a d
 
 Például a ExampleTable itt egy olyan MongoDB-táblázat, amely egyetlen oszloppal rendelkezik, és az egyes cellákban található objektumok tömbje, valamint egy skaláris típusú tömbvel rendelkező oszlop – értékelések.
 
-| _id | Ügyfél neve | Számlák | Szolgáltatási szint | Minősítések |
+| _id | Ügyfél neve | Számlák | Szolgáltatásszint | Minősítések |
 | --- | --- | --- | --- | --- |
 | 1111 |ABC |[{invoice_id: "123", elem: "kenyérpirító", Ár: "456", kedvezmény: "0.2"}, {invoice_id: "124", elem: "sütő", Ár: "1235", kedvezmény: "0,2"}] |Ezüst |[5, 6] |
 | 2222 |XYZ |[{invoice_id: "135", elem: "hűtőszekrény", Ár: "12543", kedvezmény: "0,0"}] |Arany |[1, 2] |
 
 Az illesztőprogram több virtuális táblát fog előállítani, hogy ezt az egyetlen táblát képviseljék. Az első virtuális tábla a "ExampleTable" nevű alaptábla, amely a példában látható. Az alaptábla az eredeti tábla összes adatát tartalmazza, de a tömbökből származó adatok ki lettek hagyva, és ki lettek bontva a virtuális táblákban.
 
-| _id | Ügyfél neve | Szolgáltatási szint |
+| _id | Ügyfél neve | Szolgáltatásszint |
 | --- | --- | --- |
 | 1111 |ABC |Ezüst |
 | 2222 |XYZ |Arany |
@@ -243,5 +243,5 @@ A következő táblázatok a példában szereplő eredeti tömböket képviselő
 | 2222 |0 |1 |
 | 2222 |1 |2 |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Azure Data Factory a másolási tevékenység által forrásként és nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

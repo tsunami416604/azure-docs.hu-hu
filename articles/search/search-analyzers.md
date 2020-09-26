@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/20/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f9db8a50e670e3c6af7adce0a8efcf3ce569ac89
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b1206d9e4d6eec7b2bf029310360f563849d61d6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89009627"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268300"
 ---
 # <a name="analyzers-for-text-processing-in-azure-cognitive-search"></a>Az Azure Cognitive Searchban való szövegszerkesztés elemzői
 
@@ -147,7 +147,7 @@ A következő példa:
 * Ebben az esetben az egyéni analizátor "my_analyzer", amely egy testreszabott standard tokenizer "my_standard_tokenizer" és két jogkivonat-szűrőt használ: kisbetűs és testreszabott asciifolding szűrő "my_asciifolding".
 * Emellett 2 egyéni char-szűrőt is definiál: "map_dash" és "remove_whitespace". Az első lecseréli az aláhúzással ellátott kötőjeleket, míg a másodikban az összes szóköz el lett távolítva. A szóközöknek UTF-8 kódolással kell rendelkezniük a leképezési szabályokban. A char szűrők a jogkivonatok létrehozása előtt lesznek alkalmazva, és hatással vannak az eredményül kapott jogkivonatokra (a normál tokenizer kötőjeleken és szóközökön, de nem aláhúzáson).
 
-~~~~
+```json
   {
      "name":"myindex",
      "fields":[
@@ -206,7 +206,7 @@ A következő példa:
         }
      ]
   }
-~~~~
+```
 
 <a name="Per-field-analyzer-assignment-example"></a>
 
@@ -216,7 +216,7 @@ A standard Analyzer az alapértelmezett. Tegyük fel, hogy az alapértelmezett �
 
 A "Analyzer" elem felülbírálja a standard elemzőt egy mező – mező alapján. Nincs globális felülbírálás. Ebben a példában `text1` a minta analizátort használja `text2` , amely nem ad meg elemzőt, az alapértelmezett értéket használja.
 
-~~~~
+```json
   {
      "name":"myindex",
      "fields":[
@@ -239,7 +239,7 @@ A "Analyzer" elem felülbírálja a standard elemzőt egy mező – mező alapj�
         }
      ]
   }
-~~~~
+```
 
 <a name="Mixing-analyzers-for-indexing-and-search-operations"></a>
 
@@ -248,7 +248,7 @@ A "Analyzer" elem felülbírálja a standard elemzőt egy mező – mező alapj�
 Az API-k további index-attribútumokkal rendelkeznek a különböző elemzők indexeléshez és kereséshez való megadásához. A **searchAnalyzer** és a **indexAnalyzer** attribútumot párosítva kell megadni, az egyetlen **elemző** attribútum helyett.
 
 
-~~~~
+```json
   {
      "name":"myindex",
      "fields":[
@@ -267,7 +267,7 @@ Az API-k további index-attribútumokkal rendelkeznek a különböző elemzők i
         },
      ],
   }
-~~~~
+```
 
 <a name="Language-analyzer-example"></a>
 
@@ -275,7 +275,7 @@ Az API-k további index-attribútumokkal rendelkeznek a különböző elemzők i
 
 A különböző nyelvű karakterláncokat tartalmazó mezők nyelvi elemzőt is használhatnak, míg más mezők megőrzik az alapértelmezett értéket (vagy más előre definiált vagy egyéni elemzőt használnak). Ha nyelvi elemzőt használ, azt az indexelési és a keresési műveletekhez is használni kell. A Language Analyzert használó mezők nem rendelkezhetnek különböző elemzővel az indexeléshez és a kereséshez.
 
-~~~~
+```json
   {
      "name":"myindex",
      "fields":[
@@ -300,7 +300,7 @@ A különböző nyelvű karakterláncokat tartalmazó mezők nyelvi elemzőt is 
         }
      ],
   }
-~~~~
+```
 
 ## <a name="c-examples"></a>C#-példák
 

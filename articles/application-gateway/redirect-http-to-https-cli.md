@@ -1,19 +1,19 @@
 ---
 title: HTTP – HTTPS-átirányítás a parancssori felület használatával
 titleSuffix: Azure Application Gateway
-description: Ismerje meg, hogyan hozhat létre Application Gateway-tanúsítványt, és hogyan adhat hozzá tanúsítványokat a TLS-lezáráshoz az Azure CLI használatával.
+description: Megtudhatja, hogyan hozhat létre HTTP-alapú HTTPS-átirányítást, és hogyan adhat hozzá tanúsítványokat a TLS-lezáráshoz az Azure CLI használatával.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: how-to
-ms.date: 11/15/2019
+ms.date: 09/24/2020
 ms.author: victorh
-ms.openlocfilehash: 828012e7e41f8710dc57f1c830b81d403507d27d
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 7dbfa877f634256c86166892a38d048a95e56baa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89594246"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331029"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-cli"></a>Application Gateway létrehozása HTTP-vel HTTPS-átirányításhoz az Azure CLI használatával
 
@@ -221,15 +221,8 @@ Ha önaláírt tanúsítványt használt, a biztonsági figyelmeztetés elfogad�
 
 ![Az alap URL-cím tesztelése az alkalmazásátjáróban](./media/redirect-http-to-https-cli/application-gateway-nginxtest.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
-
-> [!div class="checklist"]
-> * Önaláírt tanúsítvány létrehozása
-> * Hálózat beállítása
-> * Alkalmazásátjáró létrehozása a tanúsítvánnyal
-> * Figyelő és átirányítási szabály hozzáadása
-> * Virtuálisgép-méretezési csoport létrehozása az alapértelmezett háttérkészlettel
+- [Application Gateway létrehozása belső átirányítás használatával az Azure CLI-vel](redirect-internal-site-cli.md)
 
 

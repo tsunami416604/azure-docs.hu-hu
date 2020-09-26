@@ -5,13 +5,13 @@ ms.topic: conceptual
 author: MSNev
 ms.author: newylie
 ms.date: 06/05/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 83f518326b38e9832c46997a0a2791eb9f35705e
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.custom: devx-track-js
+ms.openlocfilehash: 30c7caef4143b1a7cdba959971ff7689f986cb9e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371634"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333256"
 ---
 # <a name="troubleshooting-sdk-load-failure-for-javascript-web-apps"></a>Az SDK betöltési hibáinak elhárítása JavaScript-webalkalmazásokhoz
 
@@ -115,7 +115,7 @@ Ha ezt a minimális konfigurációt használja, továbbra is JavaScript-kivétel
 
 Ha a kivétel eltűnik, a problémát valószínűleg egy típus nem egyezik vagy váratlan érték okozza. Először adja meg a konfigurációs beállításokat, és tesztelje, amíg a kivétel újra be nem következik. Ezután jelölje be a problémát okozó tétel dokumentációját. Ha a dokumentáció nem egyértelmű, vagy segítségre van szüksége, [a githubon](https://github.com/Microsoft/ApplicationInsights-JS/issues)teheti fel a problémát.
 
-Ha korábban már üzembe helyezte a konfigurációt, de éppen elkezdte jelenteni ezt a kivételt, akkor az egy újonnan telepített verzióval kapcsolatos probléma lehet, ellenőrizze, hogy csak a felhasználók vagy a böngésző egy kis készletét érinti-e, vagy a [githubon](https://github.com/Microsoft/ApplicationInsights-JS/issues) vagy [egy új támogatási jegyet hoz létre](https://azure.microsoft.com/support/create-ticket/).
+Ha korábban már üzembe helyezte a konfigurációt, de éppen elkezdte jelenteni ezt a kivételt, akkor az egy újonnan telepített verzióval kapcsolatos probléma lehet, ellenőrizze, hogy csak a felhasználók vagy a böngésző egy kis készletét érinti-e, vagy a [githubon](https://github.com/Microsoft/ApplicationInsights-JS/issues) vagy  [egy új támogatási jegyet hoz létre](https://azure.microsoft.com/support/create-ticket/).
 
 ### <a name="enable-console-debugging"></a>Konzol hibakeresésének engedélyezése
 
@@ -207,6 +207,6 @@ A kódrészlet és a nyilvános CDN-végpontok használata helyett használhatja
 A kódrészlethez hasonlóan az is előfordulhat, hogy a saját parancsfájlokat (az SDK-NPM csomagok használatával vagy anélkül) érintheti az itt felsorolt blokkoló problémák, így az alkalmazástól, a felhasználóktól és a keretrendszertől függően érdemes lehet megfontolni a kódrészlet logikájának megvalósítását, hogy észlelje és jelentse ezeket a problémákat.
 
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 - [További segítség kérése a GitHubon történt probléma bejelentésével](https://github.com/Microsoft/ApplicationInsights-JS/issues)
 - [Weblap használatának figyelése](javascript.md)

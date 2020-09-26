@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 6/6/2019
 ms.author: srrengar
-ms.openlocfilehash: e2fcbd07c105885da4180b06fa27ec13045940a6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 0b6258e160794eaf7d0c05775f8fd3b796e3ba47
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247642"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91354819"
 ---
 # <a name="eventstore-overview"></a>A EventStore áttekintése
 
@@ -26,7 +26,7 @@ A EventStore olyan állapot-nyilvántartó Service Fabric szolgáltatás, amely 
 * Győződjön meg arról, hogy a fürtön végzett felügyeleti műveletek megfelelően vannak feldolgozva
 * Az Service Fabric egy adott entitással való interakciójának pillanatképe
 
-![EventStore](media/service-fabric-diagnostics-eventstore/eventstore.png)
+![Képernyőfelvétel: a csomópontok ablaktábla események lapja, amely több eseményt is magában foglal, például egy NodeDown eseményt.](media/service-fabric-diagnostics-eventstore/eventstore.png)
 
 A EventStore elérhető események teljes listájának megjelenítéséhez tekintse meg a [Service Fabric eseményeket](service-fabric-diagnostics-event-generation-operational.md).
 
@@ -36,14 +36,14 @@ A EventStore elérhető események teljes listájának megjelenítéséhez tekin
 A EventStore szolgáltatás lekérdezhető olyan eseményekhez, amelyek elérhetők az egyes entitások és entitások típusához a fürtben. Ez azt jelenti, hogy az események lekérdezése a következő szinteken végezhető el:
 * Fürt: magához a fürthöz tartozó események (például a fürt frissítése)
 * Csomópontok: az összes csomópont szintű esemény
-* Csomópont: egy csomóponthoz tartozó, az által azonosított események`nodeName`
+* Csomópont: egy csomóponthoz tartozó, az által azonosított események `nodeName`
 * Alkalmazások: az összes alkalmazás szintű esemény
-* Alkalmazás: az egy alkalmazás által azonosított eseményekre vonatkozó események`applicationId`
+* Alkalmazás: az egy alkalmazás által azonosított eseményekre vonatkozó események `applicationId`
 * Szolgáltatások: a fürtök összes szolgáltatásának eseményei
-* Szolgáltatás: adott szolgáltatás által azonosított események`serviceId`
+* Szolgáltatás: adott szolgáltatás által azonosított események `serviceId`
 * Partíciók: az összes partíció eseményei
-* Partition: a által azonosított adott partíció eseményei`partitionId`
-* Partíciós replikák: az adott partíción belüli összes replika/példány eseményei`partitionId`
+* Partition: a által azonosított adott partíció eseményei `partitionId`
+* Partíciós replikák: az adott partíción belüli összes replika/példány eseményei `partitionId`
 * Partíciós replika: a és a által azonosított adott replika/példány eseményei `replicaId``partitionId`
 
 Ha többet szeretne megtudni az API-ról, tekintse meg a [EVENTSTORE API-referenciát](/rest/api/servicefabric/sfclient-index-eventsstore).
@@ -54,7 +54,7 @@ A EventStore szolgáltatásnak lehetősége van a fürt eseményeinek összekapc
 
 ### <a name="local-cluster"></a>Helyi fürt
 
-A [fürtfabricSettings.jsjában](service-fabric-cluster-fabric-settings.md)adja hozzá a EventStoreService addOn-szolgáltatásként, és hajtson végre egy fürt frissítését.
+A [ fürtfabricSettings.jsjában](service-fabric-cluster-fabric-settings.md)adja hozzá a EventStoreService addOn-szolgáltatásként, és hajtson végre egy fürt frissítését.
 
 ```json
     "addOnFeatures": [

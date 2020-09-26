@@ -4,14 +4,14 @@ description: Megtudhatja, hogyan kezelheti Azure Cosmos DB erőforrásait a Azur
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 04/30/2020
+ms.date: 09/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: 35659eba274b4b93ca74e480f6ad2b5edfd2e293
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6b09c51c68586f6e55b4238b7420460f3f2b4ac3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85116757"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330564"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Azure Cosmos-fiók kezelése
 
@@ -228,7 +228,7 @@ Lásd: [a manuális feladatátvétel elindítása az Azure CLI-vel](manage-with-
 
 Lásd: [a manuális feladatátvétel elindítása a PowerShell](manage-with-powershell.md#trigger-manual-failover) -lel
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure Cosmos-fiók, valamint az adatbázis és a tárolók kezelésével kapcsolatos további információkért és példákért olvassa el a következő cikkeket:
 

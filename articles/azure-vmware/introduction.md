@@ -3,14 +3,14 @@ title: Bevezetés
 description: Ismerje meg az Azure VMware-megoldás funkcióit és előnyeit a VMware-alapú számítási feladatok Azure-beli üzembe helyezéséhez és kezeléséhez.
 ms.topic: overview
 ms.date: 05/04/2020
-ms.openlocfilehash: 3d6801a6cdec7600cc6003711a08e6af8c86483e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: c01f7a21b4a7c46469c3b6a63b0c426715da896d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89005054"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332797"
 ---
-# <a name="what-is-azure-vmware-solution-preview"></a>Mi az Azure VMware-megoldás előzetes verziója?
+# <a name="what-is-azure-vmware-solution"></a>Mi az az Azure VMware Solution?
 
 Az Azure VMware megoldás saját felhőket biztosít az Azure-ban. A magánfelhők olyan vSphere-fürtöket tartalmaznak, amelyek dedikált, operációs rendszer nélküli Azure-infrastruktúrából épülnek fel. A magánfelhőbeli fürtöket 3–16 gazdagépre skálázhatja, és több fürttel is rendelkezhet egyetlen magánfelhőben. Az összes privát felhők vCenter Server, vSAN, vSphere és NSX-T-vel vannak kiépítve. A számítási feladatokat migrálhatja a helyszíni környezetekről, új virtuális gépeket hozhat létre vagy helyezhet üzembe, és az Azure-szolgáltatásokat a magánfelhőkből is felhasználhatja.
 
@@ -26,11 +26,9 @@ Az Azure VMware-megoldás privát felhők és fürtök egy operációs rendszer 
 
 Az új privát felhők üzembe helyezése a Azure Portal vagy az Azure CLI használatával történik.
 
-## <a name="networking"></a>Hálózat
+## <a name="networking"></a>Hálózatkezelés
 
-Privát felhő telepítésekor a rendszer létrehoz egy magánhálózati hálózatot a felügyelethez, a létesítéshez és a vMotion. Ezek a magánhálózatok a vCenter és a NSX-T kezelőhöz, valamint a virtuális gépek vMotion vagy üzembe helyezéséhez használhatók. Az összes magánhálózat elérhető egy Azure-beli VNet vagy helyszíni környezetből. A ExpressRoute Global Reach a privát felhőknek a helyszíni környezetekhez való csatlakoztatására szolgál, és ehhez a kapcsolathoz az előfizetésben ExpressRoute áramkört igénylő VNet van szükség.
-
-Az internethez és az Azure-szolgáltatásokhoz való hozzáférés kiépítése a privát felhő telepítésekor történik. A hozzáférés úgy van megadva, hogy az éles munkaterhelésű hálózatokon lévő virtuális gépek képesek legyenek az Azure-vagy Internet-alapú szolgáltatások használatára. Az Internet-hozzáférés alapértelmezés szerint le van tiltva az új privát felhők esetében, és bármikor engedélyezhető vagy letiltható.
+[!INCLUDE [avs-networking-description](includes/avs-networking-description.md)]
 
 A hálózatkezeléssel és az összekapcsolással kapcsolatos további információkért tekintse meg a [hálózatkezelési fogalmakat](concepts-networking.md) ismertető cikket.
 
@@ -46,7 +44,7 @@ Az Azure VMware-megoldás saját felhő-és VMware-szoftverének rendszeres fris
 
 ## <a name="monitoring-your-private-cloud"></a>Saját felhő figyelése
 
-A [Azure monitor naplók](../azure-monitor/overview.md) segítségével gyűjthet naplókat az Azure VMware-megoldás privát felhőben futó virtuális gépeken. Az [MMA-ügynököt letöltheti és telepítheti](../azure-monitor/platform/log-analytics-agent.md#installation-options) az Azure VMware-megoldás privát felhőkben futtatott Linux és Windows rendszerű virtuális gépeken, a helyszíni virtuális gépeken futtatott lekérdezések használatával. Ugyanazokat a lekérdezéseket futtathatja, amelyeket általában a virtuális gépeken is futtatnak. További információ a lekérdezések létrehozásáról: [lekérdezések írása](../azure-monitor/log-query/log-query-overview.md#how-can-i-learn-how-to-write-queries).
+Miután telepítette az Azure VMware-megoldást az előfizetésbe, [Azure monitor naplók](../azure-monitor/overview.md) automatikusan létrejönnek. Emellett a saját felhőben lévő virtuális gépekről is gyűjthet naplókat. Az [MMA-ügynököt letöltheti és telepítheti](../azure-monitor/platform/log-analytics-agent.md#installation-options) az Azure VMware-megoldás privát felhőkben futtatott Linux és Windows rendszerű virtuális gépeken, valamint engedélyezheti az [Azure Diagnostics bővítményt](../azure-monitor/platform/diagnostics-extension-overview.md)is. Futtathatja ugyanazokat a lekérdezéseket is, amelyeket általában a virtuális gépeken futtat. További információ a lekérdezések létrehozásáról: [lekérdezések írása](../azure-monitor/log-query/log-query-overview.md#how-can-i-learn-how-to-write-queries). Az Azure VMware-megoldáson belüli figyelési minták hasonlóak az Azure Virtual Machineshoz a IaaS platformon belül. További információk és útmutatók: Azure-beli [virtuális gépek figyelése Azure monitorokkal](../azure-monitor/insights/monitor-vm-azure.md).
 
 ## <a name="next-steps"></a>Következő lépések
 
