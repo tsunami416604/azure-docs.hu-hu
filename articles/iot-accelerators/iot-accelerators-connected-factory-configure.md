@@ -8,14 +8,17 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 5fa3d4d4fdfa0dd81cd8ab8772ffb3903dda289f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e015c6761b920ef37af2bbfd67ced5fc3218d532
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73820121"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91290687"
 ---
 # <a name="configure-the-connected-factory-solution-accelerator"></a>A csatlakoztatott gyári megoldás-gyorsító konfigurálása
+
+> [!IMPORTANT]
+> A cikk frissítését követően tekintse meg az [Azure Industrial IoT](https://azure.github.io/Industrial-IoT/) a legfrissebb tartalomhoz című cikket.
 
 A csatlakoztatott Factory megoldás-gyorsító egy szimulált irányítópultot mutat egy kitalált vállalati contoso számára. Ez a vállalat számos globális helyen rendelkezik gyárakkal világszerte.
 
@@ -109,13 +112,13 @@ A `<factory_configuration>` és az `<production_line_configuration>` elemek tula
 
   Egyedileg azonosítja a topológia csomópontját.
 
-`<factory_configuration>`tulajdonsága:
+`<factory_configuration>` tulajdonsága:
 
 * **Hely** (típus `<location_definition>` )
 
   Megadja, hogy a gyár hol található.
 
-`<station_configuration>`tulajdonságok:
+`<station_configuration>` tulajdonságok:
 
 * **OpcUri** (Type string)
 
@@ -124,7 +127,7 @@ A `<factory_configuration>` és az `<production_line_configuration>` elemek tula
 
 * **OpcNodes**, amely OPC ua-csomópontok tömbje (típus `<opc_node_description>` )
 
-`<location_definition>`tulajdonságok:
+`<location_definition>` tulajdonságok:
 
 * **Város** (Type string)
 
@@ -142,7 +145,7 @@ A `<factory_configuration>` és az `<production_line_configuration>` elemek tula
 
   A hely földrajzi hosszúsága
 
-`<performance_definition>`tulajdonságok:
+`<performance_definition>` tulajdonságok:
 
 * **Minimum** (dupla típus)
 
@@ -188,7 +191,7 @@ A `<factory_configuration>` és az `<production_line_configuration>` elemek tula
   * **CallOpcMethod**: az OPC ua metódus csomópont-információi és paraméterei "a NodeId, a NodeId, az OPC ua-kiszolgáló URI-ja" formátumban hívható meg.
   * **OpenWebPage**: a böngészőablakban megjelenítendő URL-cím.
 
-`<opc_node_description>`az állomáson található OPC UA-csomópontokról tartalmaz információkat (OPC UA-kiszolgáló). Azok a csomópontok, amelyek nem rendelkeznek meglévő OPC UA-csomópontokkal, de a csatlakoztatott gyár számítási logikájában tárolóként használatosak, szintén érvényesek. A következő tulajdonságokkal rendelkezik:
+`<opc_node_description>` az állomáson található OPC UA-csomópontokról tartalmaz információkat (OPC UA-kiszolgáló). Azok a csomópontok, amelyek nem rendelkeznek meglévő OPC UA-csomópontokkal, de a csatlakoztatott gyár számítási logikájában tárolóként használatosak, szintén érvényesek. A következő tulajdonságokkal rendelkezik:
 
 * **NodeId** (Type string)
 
@@ -262,10 +265,10 @@ A konfigurációs fájlban használt összes tulajdonság különböző kategór
 
 ### <a name="visual-appearance"></a>Vizuális megjelenés
 
-A kategória tulajdonságai a csatlakoztatott gyári irányítópult vizualizációs megjelenését határozzák meg. Példák:
+A kategória tulajdonságai a csatlakoztatott gyári irányítópult vizualizációs megjelenését határozzák meg. Példák erre vonatkozóan:
 
-* Name
-* Description
+* Név
+* Leírás
 * Kép
 * Hely
 * Egység
@@ -338,6 +341,6 @@ A **NumberOfManufactureredProducts** csomópont értékének egyik jellemzője, 
 
 A konfigurációban lévő **műveleti kód** úgy konfigurálja a számítási logikát, hogy kiszámítsa a maximális és a minimális érték különbözetének eredményét. Ezeket az eredményeket a rendszer a legfelső szintű (globális) szintre összesíti, és az irányítópulton jelenik meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Egy javasolt következő lépés a [csatlakoztatott gyári megoldás testreszabásának](iot-accelerators-connected-factory-customize.md)megismerése.

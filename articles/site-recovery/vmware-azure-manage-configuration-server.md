@@ -6,14 +6,14 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 83535fde7f577c4cd5d0b3866afcc0a916c16337
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 5748ff87e94daef80b140e015371eb7a334fffac
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134815"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361483"
 ---
-# <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>A VMware virtuális gép/fizikai kiszolgáló vész-helyreállítási konfigurációs kiszolgálójának kezelése
+# <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>VMware virtuális gép/fizikai kiszolgáló vészhelyreállítási konfigurációs kiszolgálójának kezelése
 
 Ha [Azure site Recoveryt](site-recovery-overview.md) használ a VMWare virtuális gépek és fizikai kiszolgálók Azure-ba való vész-helyreállításához, a helyszíni konfigurációs kiszolgálót kell beállítania. A konfigurációs kiszolgáló koordinálja a helyszíni VMware és az Azure közötti kommunikációt, és felügyeli az adatreplikációt. Ez a cikk összefoglalja a konfigurációs kiszolgáló üzembe helyezése után történő felügyeletének gyakori feladatait.
 
@@ -71,7 +71,7 @@ Ha kihagyta a hitelesítő adatok hozzáadását a konfigurációs kiszolgáló 
 
 1. [Bejelentkezés](#access-configuration-server)után válassza a **virtuális gép hitelesítő adatainak kezelése**lehetőséget.
 2. Kattintson a **virtuális gép hitelesítő adatainak hozzáadása**lehetőségre.
-    ![a-Mobility-hitelesítő adatok hozzáadása](media/vmware-azure-manage-configuration-server/add-mobility-credentials.png)
+    ![Képernyőfelvétel: a virtuális gép hitelesítő adatainak hozzáadása panel a virtuális gép hitelesítő adatainak hozzáadása hivatkozással látható.](media/vmware-azure-manage-configuration-server/add-mobility-credentials.png)
 3. Adja meg az új hitelesítő adatokat, és kattintson a **Hozzáadás**gombra.
 
 CSPSConfigtool.exe használatával is hozzáadhat hitelesítő adatokat.
@@ -212,7 +212,7 @@ Futtassa a telepítőfájlt a következőképpen:
 
 ### <a name="parameters"></a>Paraméterek
 
-|Paraméter neve| Típus | Leírás| Értékek|
+|Paraméter neve| Típus | Description| Értékek|
 |-|-|-|-|
 | /ServerMode|Kötelező|Megadja, hogy a konfigurációs és folyamatkiszolgálót is, vagy csak a folyamatkiszolgálót kell-e telepíteni.|CS<br>PS|
 |/InstallLocation|Kötelező|Az összetevők telepítési mappája| A számítógép bármely mappája|

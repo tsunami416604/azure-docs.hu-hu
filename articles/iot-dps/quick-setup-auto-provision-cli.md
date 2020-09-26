@@ -1,5 +1,5 @@
 ---
-title: Azure-IoT Hub Device Provisioning Service beállítása az Azure CLI-vel
+title: Rövid útmutató – Azure-IoT Hub Device Provisioning Service beállítása az Azure CLI-vel
 description: Rövid útmutató – az Azure IoT Hub Device Provisioning Service (DPS) beállítása az Azure CLI használatával
 author: wesmc7777
 ms.author: wesmc
@@ -8,18 +8,18 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 64250863e5bab4776c129935e56db190e5bd36ee
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 157bd0a0a40ce6a935d13bb10a84c814ba1018bf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90602608"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330247"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-azure-cli"></a>Rövid útmutató: a IoT Hub Device Provisioning Service beállítása az Azure CLI-vel
 
 Az Azure CLI az Azure-erőforrások parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható. Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy IoT hubot és egy IoT Hub Device Provisioning Servicet az Azure CLI használatával, és hogyan kapcsolhatja össze a két szolgáltatást. 
 
-Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 > [!IMPORTANT]
 > Az IoT hub és az ebben a rövid útmutatóban létrehozott kiépítési szolgáltatás a DNS-végpontként nyilvánosan felderíthetővé válik. Ha úgy dönt, hogy megváltoztatja ezen erőforrások nevét, ügyeljen arra, hogy ne adjon meg bizalmas adatokat.
@@ -43,7 +43,7 @@ az group create --name my-sample-resource-group --location westus
 >
 >
 
-## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
+## <a name="create-an-iot-hub"></a>IoT-központ létrehozása
 
 Egy IoT Hubot az [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) paranccsal hozhat létre.
 
@@ -137,7 +137,7 @@ Erőforráscsoport és az ahhoz tartozó összes erőforrás törléséhez futta
 az group delete --name my-sample-resource-group
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban üzembe helyezett egy IoT hubot és egy eszköz kiépítési szolgáltatási példányát, és összekapcsolta a két erőforrást. Ha szeretné megtudni, hogyan lehet szimulált eszközt kiépíteni a telepítővel, folytassa a szimulált eszköz létrehozására szolgáló rövid útmutatóval.
 

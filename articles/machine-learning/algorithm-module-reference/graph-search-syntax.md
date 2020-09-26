@@ -1,5 +1,5 @@
 ---
-title: Gráf keresési lekérdezési szintaxisa
+title: Gráfkeresés lekérdezési szintaxisa
 titleSuffix: Azure Machine Learning
 description: Megtudhatja, hogyan használhatja a keresési lekérdezési szintaxist a csomópontok kereséséhez a folyamat gráfban.
 services: machine-learning
@@ -9,14 +9,14 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 8/24/2020
-ms.openlocfilehash: 122da78206ef2055b4867727b174293e74133c05
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 166b87159b5ac2434c3ce7a7c66529a4b61ee565
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88817554"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91290500"
 ---
-# <a name="graph-search-query-syntax"></a>Gráf keresési lekérdezési szintaxisa
+# <a name="graph-search-query-syntax"></a>Gráfkeresés lekérdezési szintaxisa
 
 Ebben a cikkben megismerheti a Graph keresési lekérdezés szintaxisát Azure Machine Learning. A gráf keresési funkciója lehetővé teszi a csomópontok keresését a név és a tulajdonságok alapján. 
 
@@ -49,7 +49,7 @@ A Graph Search a Lucene egyszerű lekérdezést használja teljes szöveges kere
  
 - Helyettesítő karakter: 
     - `machi?e learning`
-    -   `mach*ing`
+    - `mach*ing`
  
 >[!NOTE]
 > "*" Karaktert tartalmazó Lucene-lekérdezés nem indítható el.
@@ -59,7 +59,7 @@ A Graph Search a Lucene egyszerű lekérdezést használja teljes szöveges kere
  
 A szűrési lekérdezések a következő mintát használják:
  
-    **[key1] [operator1] [value1]; [key2] [operator1] [value2];**
+`**[key1] [operator1] [value1]; [key2] [operator1] [value2];**`
 
  
 A következő csomópont-tulajdonságokat használhatja kulcsként:

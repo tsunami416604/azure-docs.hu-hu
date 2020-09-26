@@ -1,5 +1,5 @@
 ---
-title: Felhasználók hozzáadása, eltávolítása és listázása egy felügyeleti egységben (előzetes verzió) – Azure Active Directory | Microsoft Docs
+title: Felhasználók hozzáadása, eltávolítása és listázása egy felügyeleti egységben – Azure Active Directory | Microsoft Docs
 description: A felhasználók és a szerepkörük engedélyeinek kezelése egy felügyeleti egységben Azure Active Directory
 services: active-directory
 documentationcenter: ''
@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.topic: how-to
 ms.subservice: users-groups-roles
 ms.workload: identity
-ms.date: 04/16/2020
+ms.date: 09/22/2020
 ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9b76ac103b873026dce3d3f8f92e54dc3afc14c
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 37e1ac36df35fabb9709cfecadcfb0e7330df5da
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85850930"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265130"
 ---
 # <a name="add-and-manage-users-in-an-administrative-unit-in-azure-active-directory"></a>Felhasználók hozzáadása és kezelése egy felügyeleti egységben Azure Active Directory
 
@@ -35,11 +35,11 @@ A felhasználókat kétféleképpen rendelheti hozzá felügyeleti egységekhez.
 
 1. Egyéni hozzárendelés
 
-    1. Nyissa meg az Azure AD-t a portálon, és válassza a felhasználók lehetőséget, majd válassza ki a felügyeleti egységhez hozzárendelni kívánt felhasználót. Ezután a bal oldali panelen kiválaszthatja a felügyeleti egységeket. A felhasználó hozzárendelhető egy vagy több felügyeleti egységhez, ha a hozzárendelés felügyeleti egységhez lehetőségre kattint, és kiválasztja azokat a felügyeleti egységeket, amelyekhez a felhasználót hozzá szeretné rendelni.
+    1. Nyissa meg az Azure AD-t a portálon, és válassza a felhasználók lehetőséget, majd válassza ki a felügyeleti egységhez hozzárendelni kívánt felhasználót. Ezután a bal oldali panelen kiválaszthatja a felügyeleti egységeket. A felhasználó egy vagy több felügyeleti egységhez is hozzárendelhető, ha a * * hozzárendelés felügyeleti egységhez gombra kattint, és kiválasztja azokat a felügyeleti egységeket, amelyekhez a felhasználót hozzá szeretné rendelni.
 
        ![Válassza a Hozzáadás lehetőséget, majd adja meg a felügyeleti egység nevét.](./media/roles-admin-units-add-manage-users/assign-users-individually.png)
 
-    1. Nyissa meg az Azure AD-t a portálon, és válassza a felügyeleti egységek lehetőséget a bal oldali ablaktáblán, majd válassza ki azt a felügyeleti egységet, amelyben a felhasználókat hozzá szeretné rendelni. Válassza a minden felhasználó lehetőséget a bal oldali ablaktáblán, majd válassza a tag hozzáadása elemet. Ezután a jobb oldali panelen kiválaszthat egy vagy több felhasználót a felügyeleti egységhez való hozzárendeléshez.
+    1. Nyissa meg az Azure AD-t a portálon, és válassza a felügyeleti egységek lehetőséget a bal oldali ablaktáblán, majd válassza ki azt a felügyeleti egységet, amelyben a felhasználókat hozzá szeretné rendelni. Válassza **a minden felhasználó** lehetőséget, majd válassza a **tag hozzáadása**elemet. Ezután a jobb oldali panelen kiválaszthat egy vagy több felhasználót a felügyeleti egységhez való hozzárendeléshez.
 
         ![Válasszon ki egy felügyeleti egységet, majd válassza a tag hozzáadása elemet.](./media/roles-admin-units-add-manage-users/assign-to-admin-unit.png)
 
@@ -82,13 +82,15 @@ Példa:
 
 ### <a name="azure-portal"></a>Azure Portal
 
-A Azure Portal megnyithatja a felhasználó profilját az Azure AD >-felhasználók lehetőséggel. A felhasználó profiljának megnyitásához kattintson a felhasználóra.
+A Azure Portal a következőket teheti meg a felhasználó profiljának megnyitásával:
 
-![Felhasználói profil megnyitása Azure Active Directory](./media/roles-admin-units-add-manage-users/user-profile-admin-units.png)
+1. **Azure ad**-  >  **felhasználók**megnyitása.
 
-A bal oldali panelen válassza a **felügyeleti egységek** lehetőséget, hogy megtekintse azoknak a felügyeleti egységeknek a listáját, amelyekhez a felhasználó hozzá lett rendelve.
+1. Válassza ki a felhasználót a felhasználó profiljának megnyitásához.
 
-![Felhasználó felügyeleti egységének listázása](./media/roles-admin-units-add-manage-users/list-user-admin-units.png)
+1. Válassza ki a **felügyeleti egységek** elemet azon felügyeleti egységek listájának megtekintéséhez, amelyekben a felhasználó hozzá van rendelve.
+
+   ![Felhasználó felügyeleti egységének listázása](./media/roles-admin-units-add-manage-users/list-user-admin-units.png)
 
 ### <a name="powershell"></a>PowerShell
 
@@ -136,7 +138,7 @@ Miután mentette a fájlban szereplő bejegyzéseket, töltse fel a fájlt, majd
 
 ![A tömeges feltöltési fájl elküldése](./media/roles-admin-units-add-manage-users/bulk-user-remove.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Szerepkör társítása egy felügyeleti egységhez](roles-admin-units-assign-roles.md)
 - [Csoportok hozzáadása egy felügyeleti egységhez](roles-admin-units-add-manage-groups.md)

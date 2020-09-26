@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 09/15/2020
+ms.date: 09/23/2020
 ms.author: victorh
-ms.openlocfilehash: 6dc22086ed97a301e225518465482e9cd7300e11
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 6768da698838856582d29e9f302acae2bc6c28bd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563828"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91252221"
 ---
 # <a name="what-is-azure-firewall-manager"></a>Mi az az Azure Firewall Manager?
 
@@ -87,9 +87,10 @@ Azure Firewall Manager a következő ismert problémákkal rendelkezik:
 |Az azonos virtuális WAN-t megosztó biztonságos virtuális huboknak ugyanabban az erőforráscsoporthoz kell tartoznia.|Ez a viselkedés a virtuális WAN-Hubokkal van összhangban ma.|Hozzon létre több virtuális WAN-t, amely lehetővé teszi, hogy a biztonságos virtuális hubok különböző erőforráscsoportok jöjjenek létre.|
 |A tömeges IP-cím hozzáadása nem sikerül|Ha több nyilvános IP-címet ad hozzá, a biztonságos központ tűzfala sikertelen állapotba kerül.|Kisebb nyilvános IP-cím növekmények hozzáadása. Például adjon hozzá 10-et egyszerre.|
 |Az alkalmazási szabályok nem működnek olyan biztonságos központban, amelyben az egyéni DNS (előzetes verzió) konfigurálva van.|Az egyéni DNS (előzetes verzió) nem működik olyan biztonságos központi telepítések és központi virtuális hálózati telepítések esetén, ahol a kényszerített bújtatás engedélyezve van.|Javítás a vizsgálat alatt.|
-|A DDoS Protection standard nem támogatott a biztonságos virtuális hubok esetében|A DDoS Protection standard nincs integrálva a vWANs.|Kivizsgálás
+|A DDoS Protection standard nem támogatott a biztonságos virtuális hubok esetében|A DDoS Protection standard nincs integrálva a vWANs.|Kivizsgálás|
+|A tevékenységek naplói nem teljes mértékben támogatottak|A tűzfalszabályok jelenleg nem támogatják a tevékenységek naplóit.|Kivizsgálás|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át a [Azure Firewall Manager üzembe helyezésének áttekintését](deployment-overview.md)
 - A [biztonságos virtuális hubok](secured-virtual-hub.md)megismerése.

@@ -10,14 +10,14 @@ ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/20/2020
-ms.openlocfilehash: 13fcda03f3ccd0c28e1dce594c46b8c0d9449054
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 7f7bc16658733a7200d29fae22d96a2157b73065
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086568"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91292132"
 ---
 # <a name="migrate-sql-server-integration-services-packages-to-an-azure-sql-managed-instance"></a>SQL Server Integration Services csomagok migrálása egy felügyelt Azure SQL-példányra
 Ha SQL Server Integration Servicest (SSIS) használ, és szeretné áttelepíteni a SSIS-projekteket/csomagokat a SQL Server által üzemeltetett SSISDB a felügyelt Azure SQL-példányok által üzemeltetett cél SSISDB, használhatja a Azure Database Migration Service.
@@ -134,7 +134,7 @@ Keresse meg a létrehozott szolgáltatáspéldányt az Azure Portalon, nyissa me
 
      ![Cél részletei](media/how-to-migrate-ssis-packages-mi/dms-target-details2.png)
 
-2. Kattintson a **Mentés** gombra.
+2. Válassza a **Mentés** lehetőséget.
 
 ## <a name="review-the-migration-summary"></a>A migrálás összefoglalásának áttekintése
 
@@ -150,6 +150,6 @@ Keresse meg a létrehozott szolgáltatáspéldányt az Azure Portalon, nyissa me
 
 * Válassza a **Migrálás futtatása** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tekintse át az áttelepítési útmutatót a Microsoft [Database áttelepítési útmutatójában](https://datamigration.microsoft.com/).

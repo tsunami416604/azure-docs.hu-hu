@@ -11,24 +11,24 @@ ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: fe847dfa24e618d2e837943309475f0a436d3a44
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 4c07ad2aaf6c682dc370e3223dba1f199242ca2f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89459300"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289231"
 ---
 # <a name="best-practices-for-loading-data-for-data-warehousing"></a>Ajánlott adatbetöltési eljárások adatraktározáshoz
 
-Javaslatok és teljesítmény-optimalizálás az adat betöltéséhez
+Ebből a cikkből megtudhatja, milyen javaslatokat és teljesítmény-optimalizálást talál az adat betöltéséhez.
 
 ## <a name="prepare-data-in-azure-storage"></a>Az Azure Storage-ban való adatelőkészítés
 
-A késés minimalizálása érdekében helyezze egymás mellé a tárolási réteget és az adattárházat.
+A késés minimalizálásához helyezze a tárolási réteget és az adattárházat.
 
 Az adatok ORC fájlformátumba való exportálásakor Java memóriahiány-hibák jelentkezhetnek, ha a szövegoszlopok túl nagyok. Ezt a korlátozást úgy küszöbölheti ki, ha az oszlopok csak egy részhalmazát exportálja.
 
-A PolyBase nem képes 1 000 000 bájtnál több adatot tartalmazó sorok betöltésére. Az Azure Blob Storage-ba vagy az Azure Data Lake Store-ba helyezett szöveges fájlok nem tartalmazhatnak 1 000 000 bájtnál több adatot. Ez a bájtkorlátozás a táblasémától függetlenül érvényes.
+A nem tudja betölteni a 1 000 000 bájtnál több adattal rendelkező sorokat. Az Azure Blob Storage-ba vagy az Azure Data Lake Store-ba helyezett szöveges fájlok nem tartalmazhatnak 1 000 000 bájtnál több adatot. Ez a bájtkorlátozás a táblasémától függetlenül érvényes.
 
 Minden fájlformátum eltérő teljesítményjellemzővel rendelkezik. A leggyorsabb betöltés érdekében használjon tömörített, tagolt szövegfájlokat. Az UTF-8 és UTF-16 formátum teljesítménye között minimális a különbség.
 
@@ -64,7 +64,7 @@ A betöltéseket inkább statikus, mint dinamikus erőforrásosztályokkal futta
 
 ## <a name="allow-multiple-users-to-load"></a>Több felhasználó betöltésének engedélyezése
 
-Gyakran van szükség több olyan felhasználóra, akik adatokat töltenek egy adattárházba. A [(Transact-SQL) CREATE TABLE](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) betöltéséhez az ADATBÁZISnak vezérlési engedélyekkel kell rendelkeznie.  A CONTROL engedély az összes séma vezérlését biztosítja. Előfordulhat, hogy nem szeretné, hogy minden betöltést végző felhasználó vezérelési jogot kapjon az összes sémához. Az engedélyek korlátozására használja a DENY CONTROL utasítást.
+Gyakran van szükség több olyan felhasználóra, akik adatokat töltenek egy adattárházba. A [(Transact-SQL) CREATE TABLE](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) betöltéséhez az ADATBÁZISnak vezérlési engedélyekkel kell rendelkeznie.  A CONTROL engedély az összes séma vezérlését biztosítja. Előfordulhat, hogy nem szeretné, hogy minden betöltést végző felhasználó vezérelési jogot kapjon az összes sémához. Az engedélyek korlátozására használja a DENY CONTROL utasítást.
 
 Vegyünk például két adatbázissémát: schema_A az A részleghez, és schema_B a B részleghez. Legyen user_A és user_B két PolyBase-betöltést végző adatbázis-felhasználó az A, illetve a B részlegen. Mindkét felhasználó kapott adatbázisszintű CONTROL jogosultságokat. Az A és B séma létrehozói zárolják a sémáikat a DENY utasítás segítségével:
 
@@ -83,14 +83,14 @@ Vegye figyelembe, hogy a betöltés általában két lépésből álló folyamat
 
 ## <a name="load-to-a-columnstore-index"></a>Betöltés egy oszlopcentrikus indexbe
 
-Az oszlopcentrikus indexek sok memóriát igényelnek az adatok jó minőségű sorcsoportokba való tömörítéséhez. A legjobb tömörítési és indexelési hatékonyság érdekében az oszlopcentrikus indexnek a maximális 1 048 576 sort kell tömörítenie az egyes sorcsoportokba. Ha korlátozott a rendelkezésre álló memória mennyisége, előfordulhat, hogy az oszlopcentrikus index nem éri el a maximális tömörítési sebességet. Ez hatással van a lekérdezés teljesítményére. A témakör részletes bemutatása: [Oszloptár memóriájának optimalizálása](data-load-columnstore-compression.md).
+Az oszlopcentrikus indexek sok memóriát igényelnek az adatok jó minőségű sorcsoportokba való tömörítéséhez. A legjobb tömörítési és indexelési hatékonyság érdekében az oszlopcentrikus indexnek a maximális 1 048 576 sort kell tömörítenie az egyes sorcsoportokba. Ha korlátozott a rendelkezésre álló memória mennyisége, előfordulhat, hogy az oszlopcentrikus index nem éri el a maximális tömörítési sebességet. Ez a hatás lekérdezési teljesítményt nyújt. A témakör részletes bemutatása: [Oszloptár memóriájának optimalizálása](data-load-columnstore-compression.md).
 
 - Annak érdekben, hogy elég memória álljon a betöltést végző felhasználók rendelkezésére a maximális tömörítési sebesség eléréséhez, használjon olyan betöltést végző felhasználókat, akik közepes vagy nagy erőforrásosztály tagjai.
-- Töltsön be elég sort az új sorcsoportok teljes feltöltéséhez. Kötegelt betöltés során minden 1 048 576. sor teljes sorcsoportként közvetlenül az oszloptárba van tömörítve. A 102 400 sornál kisebb betöltések a deltatárba küldik a sorokat, ahol a sorok B-fában vannak tárolva. Ha kevesebb sort tölt be, előfordulhat, hogy mind a deltatárba kerül, és a rendszer nem tömöríti azokat azonnal oszloptár formátumba.
+- Töltsön be elég sort az új sorcsoportok teljes feltöltéséhez. Tömeges betöltés során minden 1 048 576-sor a teljes sorcsoport közvetlenül a oszlopcentrikus tömöríti. A 102 400 sornál kisebb betöltések a deltatárba küldik a sorokat, ahol a sorok B-fában vannak tárolva. Ha kevesebb sort tölt be, előfordulhat, hogy mind a deltatárba kerül, és a rendszer nem tömöríti azokat azonnal oszloptár formátumba.
 
 ## <a name="increase-batch-size-when-using-sqlbulkcopy-api-or-bcp"></a>A Batch méretének növeléséhez a SQLBulkCopy API vagy a BCP használata esetén
 
-Ahogy korábban említettük, a "Base" betöltéssel a legmagasabb átviteli sebesség lesz elérhető a szinapszis SQL-készlettel. Ha a SQLBulkCopy API-t (vagy BCP-t) nem lehet betöltésre használni, érdemes megfontolnia a köteg méretének növelését a jobb teljesítmény érdekében – a jó ökölszabály a 100 000 – 1 000-es sorok közötti batch-méret.
+Ahogy korábban említettük, a "Base" betöltéssel a legmagasabb átviteli sebesség lesz elérhető a szinapszis SQL-készlettel. Ha a SQLBulkCopy API-t (vagy a BCP-t) nem lehet betöltésre használni, érdemes megfontolnia a köteg méretének növelését a jobb teljesítmény érdekében – a jó ökölszabály a 100 000 – 1 000-es sorok közötti batch-méret.
 
 ## <a name="manage-loading-failures"></a>Betöltési hibák kezelése
 
@@ -100,13 +100,13 @@ A szabálytalan rekordok kijavításához győződjön meg arról, hogy a küls�
 
 ## <a name="insert-data-into-a-production-table"></a>Adatbeszúrás éles táblába
 
-A kis táblák [INSERT utasítással](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) végzett egyszeri feltöltése vagy akár egy keresés rendszeres újratöltése is megfelelő lehet, ha egy, a következőhöz hasonló utasítást használ: `INSERT INTO MyLookup VALUES (1, 'Type 1')`.  Az egyszeres beszúrásoknál azonban hatékonyabb egy kötegelt betöltés végrehajtása.
+A kis táblák [INSERT utasítással](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) végzett egyszeri feltöltése vagy akár egy keresés rendszeres újratöltése is megfelelő lehet, ha egy, a következőhöz hasonló utasítást használ: `INSERT INTO MyLookup VALUES (1, 'Type 1')`.  Az egyszeres lapkák azonban nem annyira hatékonyak, mint a tömeges betöltés.
 
 Ha több ezer egyszeres beszúrást hajt végre egy nap, kötegelje a beszúrásokat, hogy kötegelve tölthesse be őket.  Fejlesszen folyamatokat, amelyek az egyszeres beszúrásokat egy fájlhoz fűzik, majd hozzon létre egy másik folyamatot, amely időszakosan betölti a fájlt.
 
 ## <a name="create-statistics-after-the-load"></a>Statisztika létrehozása a betöltés után
 
-A lekérdezési teljesítmény javításához fontos létrehozni statisztikákat a táblák összes oszlopához az első betöltés után, illetve az adatok minden lényeges módosítását követően.  Ezt manuálisan is megteheti, vagy engedélyezheti az [automatikus létrehozási statisztikát](../sql-data-warehouse/sql-data-warehouse-tables-statistics.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+A lekérdezési teljesítmény javítása érdekében fontos, hogy az első betöltést követően az összes tábla összes oszlopának statisztikát hozzon létre, vagy az adatokban jelentős változások történnek. A statisztikák létrehozása manuálisan is elvégezhető, vagy engedélyezheti az [automatikus létrehozási statisztikát](../sql-data-warehouse/sql-data-warehouse-tables-statistics.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 
 A statisztika részletes ismertetése: [Statisztika](develop-tables-statistics.md). Az alábbi példa bemutatja, hogyan hozhat létre manuálisan statisztikákat a Customer_Speed tábla öt oszlopán.
 
@@ -124,7 +124,7 @@ Biztonsági szempontból érdemes rendszeresen módosítani a Blob Storage hozz�
 
 Az Azure Storage-fiók kulcsainak rotálása:
 
-Adja ki az [ALTER DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/alter-database-scoped-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) parancsot minden olyan tárfiókhoz, amelynek módosult a kulcsa.
+Adja ki az [ALTER DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/alter-database-scoped-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) parancsot minden olyan tárfiókhoz, amelynek módosult a kulcsa.
 
 Példa:
 

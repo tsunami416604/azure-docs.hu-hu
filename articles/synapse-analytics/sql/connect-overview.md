@@ -10,12 +10,12 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a9a9b8b9ed3e65ae9b8500017b838dc320ecbaac
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: bbd82f856213bb36e71625eabc8bce9999ccd53f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89005020"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289395"
 ---
 # <a name="connect-to-synapse-sql"></a>Kapcsolódás a szinapszis SQL-hez
 Kapcsolódjon a szinapszis SQL-képességhez az Azure szinapszis Analytics szolgáltatásban.
@@ -37,8 +37,8 @@ Az SQL igény szerinti kiszolgálójának neve a következő példában: showdem
 A teljes kiszolgálónév lekérdezése:
 
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
-2. Kattintson a **szinapszis-munkaterületek**elemre.
-3. Kattintson arra a munkaterületre, amelyhez csatlakozni szeretne.
+2. Válassza a **szinapszis-munkaterületek**lehetőséget.
+3. Válassza ki azt a munkaterületet, amelyhez csatlakozni szeretne.
 4. Ugrás az áttekintéshez.
 5. Keresse meg a teljes kiszolgálónevet.
 
@@ -51,7 +51,7 @@ A teljes kiszolgálónév lekérdezése:
 ![Teljes kiszolgálónév SQL igény szerint](./media/connect-overview/server-connect-example-sqlod.png)
 
 ## <a name="supported-drivers-and-connection-strings"></a>Támogatott illesztők és kapcsolati sztringek
-A szinapszis SQL támogatja a [ADO.net](https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx), az [ODBC](https://msdn.microsoft.com/library/jj730314.aspx), a [php](https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396)és a [JDBC](https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx)használatát. A legújabb verzió és dokumentáció megkereséséhez kattintson a fenti illesztőprogramok egyikére. A Azure Portal használt illesztőprogramhoz tartozó kapcsolati karakterlánc automatikus létrehozásához kattintson az előző példában az **adatbázis-kapcsolati karakterláncok megjelenítése** elemre. A következő néhány példa bemutatja, hogy néz ki a kapcsolati sztring az egyes illesztők esetében.
+A szinapszis SQL támogatja a [ADO.net](https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx), az [ODBC](https://msdn.microsoft.com/library/jj730314.aspx), a [php](https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396)és a [JDBC](https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx)használatát. A legújabb verzió és dokumentáció megkereséséhez válasszon egyet az előző illesztőprogramok közül. Ha az illesztőprogramhoz tartozó kapcsolati karakterláncot szeretné automatikusan létrehozni a Azure Portalból, válassza az előző példában az **adatbázis-kapcsolati karakterláncok megjelenítése** lehetőséget. A következő néhány példa bemutatja, hogy néz ki a kapcsolati sztring az egyes illesztők esetében.
 
 > [!NOTE]
 > Javasoljuk, hogy a kapcsolat időkorlátjának 300 másodpercet adjon meg, hogy a kapcsolat rövid idejű kimaradások esetén is fennmaradjon.
@@ -81,14 +81,14 @@ jdbc:sqlserver://yourserver.sql.azuresynapse.net:1433;database=yourdatabase;user
 ```
 
 ## <a name="connection-settings"></a>Kapcsolati beállítások
-A szinapszis SQL bizonyos beállításokat a kapcsolatok és az objektumok létrehozása során Szabványosít. Ezeket a beállításokat nem lehet felülírni, és a következők lehetnek:
+A szinapszis SQL bizonyos beállításokat a kapcsolatok és az objektumok létrehozása során Szabványosít. Ezek a beállítások nem lehetnek felülbírálva, és a következők:
 
 | Adatbázis-beállítások | Érték |
 |:--- |:--- |
-| [ANSI_NULLS](/sql/t-sql/statements/set-ansi-nulls-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) |ON |
-| [QUOTED_IDENTIFIERS](/sql/t-sql/statements/set-quoted-identifier-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) |ON |
-| [DATEFORMAT](/sql/t-sql/statements/set-dateformat-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) |hné |
-| [DATEFIRST](/sql/t-sql/statements/set-datefirst-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) |7 |
+| [ANSI_NULLS](/sql/t-sql/statements/set-ansi-nulls-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |ON |
+| [QUOTED_IDENTIFIERS](/sql/t-sql/statements/set-quoted-identifier-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |ON |
+| [DATEFORMAT](/sql/t-sql/statements/set-dateformat-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |hné |
+| [DATEFIRST](/sql/t-sql/statements/set-datefirst-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |7 |
 
 ## <a name="recommendations"></a>Javaslatok
 

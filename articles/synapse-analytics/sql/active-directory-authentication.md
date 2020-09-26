@@ -8,16 +8,16 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9c1b694d3a50759dcf49222f4e6b27ac7b34f9e5
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4f1d955999ce44e8ef3d511d67d6a64c98120b62
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502154"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289412"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-synapse-sql"></a>Azure Active Directory hitelesítés használata a szinapszis SQL-sel való hitelesítéshez
 
-Azure Active Directory hitelesítés a Azure Active Directory (Azure AD) identitások használatával történő csatlakozásának mechanizmusa az [Azure szinapszis Analytics szolgáltatáshoz](../overview-faq.md) .
+Azure Active Directory hitelesítés olyan mechanizmus, amely az [Azure szinapszis analyticshez](../overview-faq.md) kapcsolódik az Azure Active Directory (Azure ad) identitások használatával.
 
 Az Azure AD-hitelesítés segítségével központilag kezelheti az Azure Szinapszishoz hozzáférő felhasználói identitásokat az engedélyek kezelésének egyszerűsítése érdekében. Ez az alábbi előnyökkel jár:
 
@@ -28,8 +28,8 @@ Az Azure AD-hitelesítés segítségével központilag kezelheti az Azure Szinap
 - Az integrált Windows-hitelesítés és a Azure Active Directory által támogatott hitelesítés más formáinak engedélyezésével megtörölheti a jelszavak tárolását.
 - Az Azure AD az Azure Szinapszishoz csatlakozó alkalmazások jogkivonat-alapú hitelesítését támogatja.
 - Az Azure AD-hitelesítés támogatja az ADFS (tartományi összevonás) vagy a natív felhasználói/jelszavas hitelesítést egy helyi Azure Active Directory tartományi szinkronizálás nélkül.
-- Az Azure AD támogatja az SQL Server Management Studióból érkező azon kapcsolatokat, amelyek az Active Directory univerzális hitelesítést használják, amelynek része a többtényezős hitelesítés (MFA) is.  A számos egyszerű ellenőrzési lehetőségnek (telefonhívás, SMS, intelligens kártya PIN-kóddal vagy mobilalkalmazásos értesítés) köszönhetően az MFA erős hitelesítést kínál. További információ: SSMS- [támogatás az Azure ad MFA-hoz a SZINAPSZIS SQL-szel](mfa-authentication.md).
-- Az Azure AD támogatja az SQL Server Data Toolsból (SSDT) érkező, az Active Directory interaktív hitelesítést használó hasonló kapcsolatokat. További információért tekintse meg [az Azure Active Directory SQL Server Data Tools (SSDT) általi támogatását](/sql/ssdt/azure-active-directory?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) ismertető cikket.
+- Az Azure AD támogatja az SQL Server Management Studióból érkező azon kapcsolatokat, amelyek az Active Directory univerzális hitelesítést használják, amelynek része a többtényezős hitelesítés (MFA) is.  Az MFA erős hitelesítést tartalmaz számos egyszerű ellenőrzési lehetőséggel, beleértve a telefonhívást, a szöveges üzenetet, a PIN-kóddal ellátott intelligens kártyákat vagy a Mobile apps-értesítéseket. További információ: SSMS- [támogatás az Azure ad MFA-hoz a SZINAPSZIS SQL-szel](mfa-authentication.md).
+- Az Azure AD támogatja az SQL Server Data Toolsból (SSDT) érkező, az Active Directory interaktív hitelesítést használó hasonló kapcsolatokat. További információért tekintse meg [az Azure Active Directory SQL Server Data Tools (SSDT) általi támogatását](/sql/ssdt/azure-active-directory?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) ismertető cikket.
 
 A konfigurációs lépések a következő eljárásokat ismertetik Azure Active Directory hitelesítés konfigurálásához és használatához.
 
@@ -42,7 +42,7 @@ A konfigurációs lépések a következő eljárásokat ismertetik Azure Active 
 
 Az Azure szinapszis Analytics lehetővé teszi, hogy a Azure Active Directory identitásával hozzáférhessen az adatokhoz a Lake-ben.
 
-A különböző adatmotorokban tiszteletben lévő fájlokra és adatforrásokra vonatkozó hozzáférési jogosultságok meghatározása lehetővé teszi az Ön számára, hogy egy olyan helyen egyszerűsítse az adatkezelési megoldásokat, amelyben az engedélyek definiálva lesznek, ahelyett, hogy több helyen kellene meghatározni őket.
+A különböző adatmotorokban tiszteletben lévő fájlokra és adatforrásokra vonatkozó hozzáférési jogosultságok meghatározása lehetővé teszi, hogy a rendszer egy olyan helyet helyezzen el az adatkezelési megoldások számára, amely az engedélyek meghatározását választja ahelyett, hogy több helyen kellene meghatározni őket.
 
 ## <a name="trust-architecture"></a>Megbízhatósági architektúra
 
@@ -82,10 +82,10 @@ Minden Azure AD-hitelesítés csak akkor lehetséges, ha az Azure AD-rendszergaz
 
   - Natív tagok: az Azure AD-ben létrehozott tag a felügyelt tartományban vagy az ügyfél tartományában. További információ: [saját tartománynév hozzáadása az Azure ad](../../active-directory/fundamentals/add-custom-domain.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)-hez.
   - Összevont tartomány tagjai: az Azure AD-ben egy összevont tartománnyal létrehozott tag. További információ: [Microsoft Azure mostantól támogatja a Windows Server Active Directory való összevonást](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/).
-  - A többi Azure AD-ből származó, natív vagy összevont tartományi tagokból importált tagok.
+  - Más Azure-hirdetésekből származó, natív vagy összevont tartományi tagokból importált tagok.
   - Active Directory biztonsági csoportként létrehozott csoportokat.
 
-- A kiszolgálói szerepkörrel rendelkező csoportok részét képező Azure AD-felhasználók `db_owner` nem használhatják az **[ADATBÁZISHOZ tartozó hatókörrel rendelkező hitelesítő adatok létrehozása](/sql/t-sql/statements/create-database-scoped-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)** a szinapszis SQL-re. A következő hibaüzenet jelenik meg:
+- A kiszolgálói szerepkörrel rendelkező csoport részét képező Azure AD-felhasználók `db_owner` nem használhatják az **[ADATBÁZISHOZ tartozó hatókörrel rendelkező hitelesítő adatok létrehozása](/sql/t-sql/statements/create-database-scoped-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)** a szinapszis SQL-re. A következő hibaüzenet jelenik meg:
 
     `SQL Error [2760] [S0001]: The specified schema name 'user@mydomain.com' either does not exist or you do not have permission to use it.`
 
@@ -121,15 +121,15 @@ Az Azure AD Server-rendszerbiztonsági tag (Logins) (**nyilvános előzetes**ver
   - Az SQL on-demand (előzetes verzió) Azure AD-kiszolgálói rendszerbiztonsági tagjainak (bejelentkezési funkcióinak) hozzáadásával több Azure AD-kiszolgáló rendszerbiztonsági tag (bejelentkezés) hozható létre, amelyek hozzáadhatók a `sysadmin` szerepkörhöz.
 - A szinapszis SQL-hez csak egy Azure AD-rendszergazda csatlakozhat a szinapszis SQL-hez egy Azure Active Directory fiók használatával. A Active Directory rendszergazda konfigurálhatja a következő Azure AD-adatbázis felhasználóit.
 - Javasoljuk, hogy a kapcsolat időtúllépését 30 másodpercre állítsa be.
-- SQL Server 2016 Management Studio és SQL Server Data Tools a Visual Studio 2015 (14.0.60311.1 április 2016-ös vagy újabb verziója) támogatja a Azure Active Directory hitelesítést. (Az Azure AD-hitelesítést a **.NET-keretrendszer SQLServer-adatszolgáltatója**támogatja; legalább a .NET-keretrendszer 4,6-es verziója). Ezért az eszközök és az adatrétegbeli alkalmazások legújabb verziói (DAC és. A BACPAC) az Azure AD-hitelesítést is használhatja.
-- A 15.0.1 verziótól kezdődően a [Sqlcmd segédprogram](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) és a [BCP segédprogram](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) támogatja a többtényezős hitelesítés (MFA) Active Directoryét.
-- A Visual Studio 2015 SQL Server Data Tools használatához legalább az Adateszközök (14.0.60311.1-verzió) április 2016-es verziója szükséges. Az Azure AD-felhasználók jelenleg nem jelennek meg a SSDT Object Explorerban. Megkerülő megoldásként tekintse meg a [sys. database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)felhasználóit.
-- [A SQL Server rendszerhez készült Microsoft JDBC-6,0 illesztőprogram támogatja az](https://www.microsoft.com/download/details.aspx?id=11774) Azure ad-hitelesítést. Lásd még: [a kapcsolatok tulajdonságainak beállítása](/sql/connect/jdbc/setting-the-connection-properties?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
+- SQL Server 2016 Management Studio és SQL Server Data Tools a Visual Studio 2015 (14.0.60311.1 április 2016-ös vagy újabb verziója) támogatja a Azure Active Directory hitelesítést. (Az Azure AD-hitelesítést a **.NET-keretrendszer SQLServer-adatszolgáltatója**támogatja; legalább a .NET-keretrendszer 4,6-es verziója). Így az eszközök és adatrétegbeli alkalmazások legújabb verziói (DAC és. A BACPAC) az Azure AD-hitelesítést is használhatja.
+- A 15.0.1 verziótól kezdődően a [Sqlcmd segédprogram](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) és a [BCP segédprogram](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) támogatja a többtényezős hitelesítés (MFA) Active Directoryét.
+- A Visual Studio 2015 SQL Server Data Tools használatához legalább az Adateszközök (14.0.60311.1-verzió) április 2016-es verziója szükséges. Az Azure AD-felhasználók jelenleg nem jelennek meg a SSDT Object Explorerban. Megkerülő megoldásként tekintse meg a [sys. database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)felhasználóit.
+- [A SQL Server rendszerhez készült Microsoft JDBC-6,0 illesztőprogram támogatja az](https://www.microsoft.com/download/details.aspx?id=11774) Azure ad-hitelesítést. Lásd még: [a kapcsolatok tulajdonságainak beállítása](/sql/connect/jdbc/setting-the-connection-properties?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A szinapszis SQL hozzáférésének és vezérlésének áttekintését lásd: [SZINAPSZIS SQL-hozzáférés-vezérlés](../sql/access-control.md).
-- További információ az adatbázis résztvevőivel kapcsolatban: [Résztvevők](/sql/relational-databases/security/authentication-access/principals-database-engine?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
-- További információ az adatbázis-szerepkörökkel kapcsolatban: [Adatbázis-szerepkörök](/sql/relational-databases/security/authentication-access/database-level-roles?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
+- További információ az adatbázis résztvevőivel kapcsolatban: [Résztvevők](/sql/relational-databases/security/authentication-access/principals-database-engine?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
+- További információ az adatbázis-szerepkörökkel kapcsolatban: [Adatbázis-szerepkörök](/sql/relational-databases/security/authentication-access/database-level-roles?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
  

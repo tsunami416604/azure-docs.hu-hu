@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 3cb35cdf217d497b612dee12aedb869b0583e464
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 556177b0f3eb156f5b128995cb81555aa77bc8d2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986687"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289905"
 ---
 # <a name="whats-new-in-azure-security-center"></a>A Azure Security Center újdonságai
 
@@ -288,7 +288,7 @@ A biztonsági alapértékek előre konfigurált identitás-biztonsági beállít
 
 Security Center mostantól biztonsági javaslatot nyújt, ha az Azure-előfizetést az alapértelmezett biztonsági beállítások nélkül azonosítja. Eddig Security Center javasolt a többtényezős hitelesítés engedélyezése a feltételes hozzáférés használatával, amely a Azure Active Directory (AD) prémium szintű licenc részét képezi. Az ingyenes Azure AD-t használó ügyfeleink számára a biztonsági alapértékek engedélyezését javasoljuk. 
 
-Célunk, hogy minél több ügyfelet ösztönözzön a Felhőbeli környezetek védelmére az MFA-val, és hogy enyhítse az egyik legnagyobb kockázatot is, amely a legjelentősebb a [biztonságos pontszám](https://docs.microsoft.com/azure/security-center/secure-score-security-controls)szempontjából.
+Célunk, hogy minél több ügyfelet ösztönözzön a Felhőbeli környezetek védelmére az MFA-val, és hogy enyhítse az egyik legnagyobb kockázatot is, amely a legjelentősebb a [biztonságos pontszám](secure-score-security-controls.md)szempontjából.
 
 További információ a [biztonsági alapbeállításokról](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults).
 
@@ -429,7 +429,7 @@ A javaslatok a gyors javítás lehetőségét is tartalmazzák.
 
 További információt ezekről a [biztonsági javaslatok hivatkozását ismertető oldalon](recommendations-reference.md)olvashat.
 
-További információ a [veszélyforrások elleni védelemről Azure Security Center](https://docs.microsoft.com/azure/security-center/threat-protection).
+További információ a [veszélyforrások elleni védelemről Azure Security Center](azure-defender.md).
 
 
 
@@ -442,13 +442,13 @@ A Azure Security Center tárolójának biztonsági képességeivel kapcsolatos e
 
 A Security Center tárolójának biztonságáról a következő cikkekben tájékozódhat:
 
-- [A Security Center tárolójának biztonsági funkcióinak áttekintése](https://docs.microsoft.com/azure/security-center/container-security)
-- [Az Azure Container Registry-nal való integráció részletei](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration)
-- [Az Azure Kubernetes szolgáltatással való integráció részletei](https://docs.microsoft.com/azure/security-center/azure-kubernetes-service-integration)
-- [Útmutató a beállításjegyzékek vizsgálatához és a Docker-gazdagépek megerősítéséhez](https://docs.microsoft.com/azure/security-center/monitor-container-security)
-- [Biztonsági riasztások az Azure Kubernetes Service-fürtök veszélyforrások elleni védelmi funkcióiról](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-akscluster)
-- [Biztonsági riasztások az Azure Kubernetes Service-gazdagépek veszélyforrások elleni védelmi funkcióiról](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-containerhost)
-- [Biztonsági javaslatok tárolók számára](https://docs.microsoft.com/azure/security-center/recommendations-reference#recs-containers)
+- [A Security Center tárolójának biztonsági funkcióinak áttekintése](container-security.md)
+- [Az Azure Container Registry-nal való integráció részletei](defender-for-container-registries-introduction.md)
+- [Az Azure Kubernetes szolgáltatással való integráció részletei](defender-for-kubernetes-introduction.md)
+- [Útmutató a beállításjegyzékek vizsgálatához és a Docker-gazdagépek megerősítéséhez](container-security.md)
+- [Biztonsági riasztások az Azure Kubernetes Service-fürtök veszélyforrások elleni védelmi funkcióiról](alerts-reference.md#alerts-akscluster)
+- [Biztonsági riasztások az Azure Kubernetes Service-gazdagépek veszélyforrások elleni védelmi funkcióiról](alerts-reference.md#alerts-containerhost)
+- [Biztonsági javaslatok tárolók számára](recommendations-reference.md#recs-containers)
 
 
 
@@ -537,10 +537,9 @@ A javaslatok az üzembe helyezési folyamat felgyorsításához szükséges gyor
 
 Ebből a két új javaslatból megismerheti a [számítási és alkalmazási javaslatok](recommendations-reference.md#recs-computeapp) táblázatát.
 
-További információ arról, hogy a Azure Security Center hogyan használja az ügynököt a [log Analytics Agent](https://docs.microsoft.com/azure/security-center/faq-data-collection-agents#what-is-the-log-analytics-agent)ügynökben?.
+További információ arról, hogy a Azure Security Center hogyan használja az ügynököt a [log Analytics Agent](faq-data-collection-agents.md#what-is-the-log-analytics-agent)ügynökben?.
 
-További tudnivalók az [Azure arc-gépek bővítményeiről](https://docs.microsoft.com/azure/azure-arc/servers/manage-vm-extensions#enable-extensions-from-the-portal).
-
+További tudnivalók az [Azure arc-gépek bővítményeiről](../azure-arc/servers/manage-vm-extensions.md#enable-extensions-from-the-portal).
 
 
 ### <a name="new-policies-to-create-continuous-export-and-workflow-automation-configurations-at-scale"></a>Új szabályzatok folyamatos exportálási és munkafolyamat-automatizálási konfigurációk létrehozásához nagy méretekben
@@ -597,7 +596,7 @@ A szabályzatok az Azure Policy szolgáltatásban találhatók:
 | [A komplex veszélyforrások elleni védelemnek engedélyezve kell lennie Virtual Machines](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f4da35fc9-c9e7-4960-aec9-797fe7d9051d)           | 4da35fc9-c9e7-4960-aec9-797fe7d9051d |
 |                                                                                                                                                                                                                                                                       |                                      |
 
-További információ a [veszélyforrások elleni védelemről Azure Security Center](https://docs.microsoft.com/azure/security-center/threat-protection).
+További információ a [veszélyforrások elleni védelemről Azure Security Center](azure-defender.md).
 
 
 
@@ -721,7 +720,7 @@ További információk az [Egyéni javaslatok részletes információkkal tört�
 
 ### <a name="crash-dump-analysis-capabilities-migrating-to-fileless-attack-detection"></a>Összeomlási memóriakép-elemzési képességek migrálása a fájlok közötti támadás észlelése érdekében 
 
-Integráljuk a Windows Crash dump Analysis (CDA) észlelési funkcióit a [fájlok közötti támadás észlelésére](https://docs.microsoft.com/azure/security-center/threat-protection#windows-fileless). A fájlok közötti támadás észlelésének elemzése a következő biztonsági riasztások továbbfejlesztett verzióit biztosítja a Windows rendszerű gépekhez: kód befecskendezése felderített, álcázott Windows-modul, észlelt Héjkód, és gyanús kódrészletet észlelt.
+Integráljuk a Windows Crash dump Analysis (CDA) észlelési funkcióit a [fájlok közötti támadás észlelésére](defender-for-servers-introduction.md#what-are-the-benefits-of-azure-defender-for-servers). A fájlok közötti támadás észlelésének elemzése a következő biztonsági riasztások továbbfejlesztett verzióit biztosítja a Windows rendszerű gépekhez: kód befecskendezése felderített, álcázott Windows-modul, észlelt Héjkód, és gyanús kódrészletet észlelt.
 
 Az áttérés néhány előnye:
 

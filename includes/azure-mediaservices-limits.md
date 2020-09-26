@@ -2,14 +2,14 @@
 author: rothja
 ms.service: media-services
 ms.topic: include
-ms.date: 11/09/2018
+ms.date: 09/16/2020
 ms.author: jroth
-ms.openlocfilehash: e24c345bfee216dd240f0c283402ad43c8f45c29
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c315c071aeb36eea0bd1af84b1344cf2fef5f703
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85838709"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329659"
 ---
 >[!NOTE]
 >A nem rögzített erőforrások esetében nyisson meg egy támogatási jegyet, amely a kvóták növekedését kéri. Ne hozzon létre további Azure Media Services fiókokat a magasabb korlátok beszerzésére tett kísérlet során.
@@ -29,7 +29,7 @@ ms.locfileid: "85838709"
 | Futó állapotú programok csatornánként |3|
 | Leállított vagy futó adatfolyam-végpontok Media Services fiókban|2|
 | Streamelési egységek streamvégpontonként |10 |
-| Tárfiókok | 1000<sup>5</sup> (rögzített) |
+| Tárfiókok | 100<sup>5</sup> (rögzített) |
 | Házirendek | 1,000,000<sup>6</sup> |
 | Fájlméret| Bizonyos esetekben a Media Services feldolgozásához támogatott maximális fájlméret megengedett. <sup>7</sup> |
 

@@ -6,15 +6,15 @@ services: virtual-wan
 author: reyandap
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 06/29/2020
+ms.date: 09/22/2020
 ms.author: reyandap
 ms.custom: references_pricing
-ms.openlocfilehash: 2d2234ec333746c6f1da59346bdb74247deb616c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b4025990a1a62351d3971d788558dea8ecb390ba
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85568715"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327957"
 ---
 # <a name="about-virtual-wan-pricing"></a>A Virtual WAN díjszabása
 
@@ -95,7 +95,7 @@ A Virtual WAN két változatban érhető el:
 
    :::image type="content" source="./media/pricing-concepts/figure-1.png" alt-text="Példa":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A virtuális WAN-ról további információt a [Gyakori kérdések](virtual-wan-faq.md)című témakörben talál.
 

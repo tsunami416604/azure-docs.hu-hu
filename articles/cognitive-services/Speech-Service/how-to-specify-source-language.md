@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: qiohu
 zone_pivot_groups: programming-languages-set-two
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 820e0b78b986a8836e173513e1508641ac450333
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1b134fd3d09eeda340e7323638a36b68336242c2
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91282929"
+ms.locfileid: "91362027"
 ---
 # <a name="specify-source-language-for-speech-to-text"></a>Forrás nyelvének megadása beszédhez szövegként
 
@@ -27,20 +27,20 @@ Ebből a cikkből megtudhatja, hogyan határozhatja meg a beszédfelismeréshez 
 
 ## <a name="how-to-specify-source-language-in-c"></a>A forrás nyelvének meghatározása a C-ban #
 
-Ebben a példában a forrás nyelve explicit módon paraméterként van megadva a `SpeechRecognizer` konstrukció használatával.
+A következő példában a forrás nyelve explicit módon paraméterként van megadva a konstrukció használatával `SpeechRecognizer` .
 
 ```csharp
 var recognizer = new SpeechRecognizer(speechConfig, "de-DE", audioConfig);
 ```
 
-Ebben a példában a forrás nyelvét kell megadnia a következővel: `SourceLanguageConfig` . Ezt követően a `sourceLanguageConfig` rendszer paraméterként adja át a értékét a `SpeechRecognizer` létrehozáshoz.
+A következő példában a forrás nyelvét használjuk `SourceLanguageConfig` . Ezt követően a `sourceLanguageConfig` rendszer paraméterként adja át a értékét a `SpeechRecognizer` létrehozáshoz.
 
 ```csharp
 var sourceLanguageConfig = SourceLanguageConfig.FromLanguage("de-DE");
 var recognizer = new SpeechRecognizer(speechConfig, sourceLanguageConfig, audioConfig);
 ```
 
-Ebben a példában a forrás nyelvét és az egyéni végpontot a használatával biztosítjuk `SourceLanguageConfig` . Ezt követően a `sourceLanguageConfig` rendszer paraméterként adja át a értékét a `SpeechRecognizer` létrehozáshoz.
+A következő példában a forrás nyelvét és az egyéni végpontot a használatával biztosítjuk `SourceLanguageConfig` . Ezt követően a `sourceLanguageConfig` rendszer paraméterként adja át a értékét a `SpeechRecognizer` létrehozáshoz.
 
 ```csharp
 var sourceLanguageConfig = SourceLanguageConfig.FromLanguage("de-DE", "The Endpoint ID for your custom model.");
@@ -57,20 +57,20 @@ var recognizer = new SpeechRecognizer(speechConfig, sourceLanguageConfig, audioC
 
 ## <a name="how-to-specify-source-language-in-c"></a>Forrás nyelvének meghatározása C++ nyelven
 
-Ebben a példában a forrás nyelvét explicit módon kell megadni paraméterként a metódus használatával `FromConfig` .
+A következő példában a forrás nyelve explicit módon paraméterként van megadva a `FromConfig` metódus használatával.
 
 ```C++
 auto recognizer = SpeechRecognizer::FromConfig(speechConfig, "de-DE", audioConfig);
 ```
 
-Ebben a példában a forrás nyelvét kell megadnia a következővel: `SourceLanguageConfig` . Ezt követően a `sourceLanguageConfig` rendszer paraméterként adja át a értékét a `FromConfig` létrehozásakor `recognizer` .
+A következő példában a forrás nyelvét használjuk `SourceLanguageConfig` . Ezt követően a `sourceLanguageConfig` rendszer paraméterként adja át a értékét a `FromConfig` létrehozásakor `recognizer` .
 
 ```C++
 auto sourceLanguageConfig = SourceLanguageConfig::FromLanguage("de-DE");
 auto recognizer = SpeechRecognizer::FromConfig(speechConfig, sourceLanguageConfig, audioConfig);
 ```
 
-Ebben a példában a forrás nyelvét és az egyéni végpontot a használatával biztosítjuk `SourceLanguageConfig` . A a (z `sourceLanguageConfig` ) paraméterként lesz átadva `FromConfig` a következő létrehozásakor: `recognizer` .
+A következő példában a forrás nyelvét és az egyéni végpontot a használatával biztosítjuk `SourceLanguageConfig` . A a (z `sourceLanguageConfig` ) paraméterként lesz átadva `FromConfig` a következő létrehozásakor: `recognizer` .
 
 ```C++
 auto sourceLanguageConfig = SourceLanguageConfig::FromLanguage("de-DE", "The Endpoint ID for your custom model.");
@@ -86,20 +86,20 @@ auto recognizer = SpeechRecognizer::FromConfig(speechConfig, sourceLanguageConfi
 
 ## <a name="how-to-specify-source-language-in-java"></a>Forrás nyelvének meghatározása Java-ban
 
-Ebben a példában a forrás nyelvét explicit módon kell megadnia új létrehozásakor `SpeechRecognizer` .
+A következő példában a forrás nyelvét explicit módon kell megadnia új létrehozásakor `SpeechRecognizer` .
 
 ```Java
 SpeechRecognizer recognizer = new SpeechRecognizer(speechConfig, "de-DE", audioConfig);
 ```
 
-Ebben a példában a forrás nyelvét kell megadnia a következővel: `SourceLanguageConfig` . Ezt követően a `sourceLanguageConfig` rendszer paraméterként adja át a függvényt új létrehozásakor `SpeechRecognizer` .
+A következő példában a forrás nyelvét használjuk `SourceLanguageConfig` . Ezt követően a `sourceLanguageConfig` rendszer paraméterként adja át a függvényt új létrehozásakor `SpeechRecognizer` .
 
 ```Java
 SourceLanguageConfig sourceLanguageConfig = SourceLanguageConfig.fromLanguage("de-DE");
 SpeechRecognizer recognizer = new SpeechRecognizer(speechConfig, sourceLanguageConfig, audioConfig);
 ```
 
-Ebben a példában a forrás nyelvét és az egyéni végpontot a használatával biztosítjuk `SourceLanguageConfig` . Ezt követően a `sourceLanguageConfig` rendszer paraméterként adja át a függvényt új létrehozásakor `SpeechRecognizer` .
+A következő példában a forrás nyelvét és az egyéni végpontot a használatával biztosítjuk `SourceLanguageConfig` . Ezt követően a `sourceLanguageConfig` rendszer paraméterként adja át a függvényt új létrehozásakor `SpeechRecognizer` .
 
 ```Java
 SourceLanguageConfig sourceLanguageConfig = SourceLanguageConfig.fromLanguage("de-DE", "The Endpoint ID for your custom model.");
@@ -115,14 +115,14 @@ SpeechRecognizer recognizer = new SpeechRecognizer(speechConfig, sourceLanguageC
 
 ## <a name="how-to-specify-source-language-in-python"></a>A forrás nyelvének meghatározása a Pythonban
 
-Ebben a példában a forrás nyelve explicit módon paraméterként van megadva a `SpeechRecognizer` konstrukció használatával.
+A következő példában a forrás nyelve explicit módon paraméterként van megadva a konstrukció használatával `SpeechRecognizer` .
 
 ```Python
 speech_recognizer = speechsdk.SpeechRecognizer(
         speech_config=speech_config, language="de-DE", audio_config=audio_config)
 ```
 
-Ebben a példában a forrás nyelvét kell megadnia a következővel: `SourceLanguageConfig` . Ezt követően a `SourceLanguageConfig` rendszer paraméterként adja át a értékét a `SpeechRecognizer` létrehozáshoz.
+A következő példában a forrás nyelvét használjuk `SourceLanguageConfig` . Ezt követően a `SourceLanguageConfig` rendszer paraméterként adja át a értékét a `SpeechRecognizer` létrehozáshoz.
 
 ```Python
 source_language_config = speechsdk.languageconfig.SourceLanguageConfig("de-DE")
@@ -130,7 +130,7 @@ speech_recognizer = speechsdk.SpeechRecognizer(
         speech_config=speech_config, source_language_config=source_language_config, audio_config=audio_config)
 ```
 
-Ebben a példában a forrás nyelvét és az egyéni végpontot a használatával biztosítjuk `SourceLanguageConfig` . Ezt követően a `SourceLanguageConfig` rendszer paraméterként adja át a értékét a `SpeechRecognizer` létrehozáshoz.
+A következő példában a forrás nyelvét és az egyéni végpontot a használatával biztosítjuk `SourceLanguageConfig` . Ezt követően a `SourceLanguageConfig` rendszer paraméterként adja át a értékét a `SpeechRecognizer` létrehozáshoz.
 
 ```Python
 source_language_config = speechsdk.languageconfig.SourceLanguageConfig("de-DE", "The Endpoint ID for your custom model.")
@@ -139,7 +139,7 @@ speech_recognizer = speechsdk.SpeechRecognizer(
 ```
 
 >[!Note]
-> `speech_recognition_language``endpoint_id`a és a tulajdonságok elavultak a `SpeechConfig` Python osztályból. Ezeknek a tulajdonságoknak a használata nem ajánlott, és nem használható az a összeállításakor `SpeechRecognizer` .
+> `speech_recognition_language``endpoint_id`a és a tulajdonságok elavultak a `SpeechConfig` Python osztályból. Ezeknek a tulajdonságoknak a használata nem ajánlott, és nem használhatók fel az a összeállításakor `SpeechRecognizer` .
 
 ::: zone-end
 
@@ -167,14 +167,14 @@ speechConfig.endpointId = "The Endpoint ID for your custom model.";
 
 ## <a name="how-to-specify-source-language-in-objective-c"></a>A forrás nyelvének meghatározása a Objective-C-ben
 
-Ebben a példában a forrás nyelve explicit módon paraméterként van megadva a `SPXSpeechRecognizer` konstrukció használatával.
+A következő példában a forrás nyelve explicit módon paraméterként van megadva a konstrukció használatával `SPXSpeechRecognizer` .
 
 ```Objective-C
 SPXSpeechRecognizer* speechRecognizer = \
     [[SPXSpeechRecognizer alloc] initWithSpeechConfiguration:speechConfig language:@"de-DE" audioConfiguration:audioConfig];
 ```
 
-Ebben a példában a forrás nyelvét kell megadnia a következővel: `SPXSourceLanguageConfiguration` . Ezt követően a `SPXSourceLanguageConfiguration` rendszer paraméterként adja át a értékét a `SPXSpeechRecognizer` létrehozáshoz.
+A következő példában a forrás nyelvét használjuk `SPXSourceLanguageConfiguration` . Ezt követően a `SPXSourceLanguageConfiguration` rendszer paraméterként adja át a értékét a `SPXSpeechRecognizer` létrehozáshoz.
 
 ```Objective-C
 SPXSourceLanguageConfiguration* sourceLanguageConfig = [[SPXSourceLanguageConfiguration alloc]init:@"de-DE"];
@@ -183,7 +183,7 @@ SPXSpeechRecognizer* speechRecognizer = [[SPXSpeechRecognizer alloc] initWithSpe
                                                                               audioConfiguration:audioConfig];
 ```
 
-Ebben a példában a forrás nyelvét és az egyéni végpontot a használatával biztosítjuk `SPXSourceLanguageConfiguration` . Ezt követően a `SPXSourceLanguageConfiguration` rendszer paraméterként adja át a értékét a `SPXSpeechRecognizer` létrehozáshoz.
+A következő példában a forrás nyelvét és az egyéni végpontot a használatával biztosítjuk `SPXSourceLanguageConfiguration` . Ezt követően a `SPXSourceLanguageConfiguration` rendszer paraméterként adja át a értékét a `SPXSpeechRecognizer` létrehozáshoz.
 
 ```Objective-C
 SPXSourceLanguageConfiguration* sourceLanguageConfig = \
@@ -195,7 +195,7 @@ SPXSpeechRecognizer* speechRecognizer = [[SPXSpeechRecognizer alloc] initWithSpe
 ```
 
 >[!Note]
-> `speechRecognitionLanguage` és `endpointId` a tulajdonságok elavultak az `SPXSpeechConfiguration` Objective-C osztályban. Ezeknek a tulajdonságoknak a használata nem ajánlott, és nem használható az a összeállításakor `SPXSpeechRecognizer` .
+> `speechRecognitionLanguage` és `endpointId` a tulajdonságok elavultak az `SPXSpeechConfiguration` Objective-C osztályban. Ezeknek a tulajdonságoknak a használata nem ajánlott, és nem használhatók fel az a összeállításakor `SPXSpeechRecognizer` .
 
 ::: zone-end
 

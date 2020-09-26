@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/16/2020
-ms.openlocfilehash: 1493a15a97ca88d0ed914f78b1906088c03dff10
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: a0cc70f5bf994e03088511a0d10796746a434bd7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037409"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91300309"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-studio-classic-functions"></a>A Stream Analytics-feladatok skálázása Azure Machine Learning Studio (klasszikus) függvényekkel
 
@@ -25,7 +25,7 @@ Ez a cikk azt ismerteti, hogyan lehet hatékonyan méretezni Azure Stream Analyt
 
 A Stream Analytics Machine Learning függvénye, például a Stream Analytics lekérdezési nyelvben egy normál függvény hívásához is használható. A színfalak mögött azonban ezek a függvények ténylegesen Azure Machine Learning webszolgáltatási kérelmeket.
 
-Az Machine Learning webszolgáltatási kérelmek átviteli sebességét a "batching" több sorból is javíthatja ugyanabban a webszolgáltatás API-hívásban. Ezt a csoportosítást mini-batch-nek nevezzük. További információ: [Azure Machine learning Studio (klasszikus) webszolgáltatások](../machine-learning/studio/consume-web-services.md). A Stream Analytics Azure Machine Learning Studio (klasszikus) támogatása előzetes verzióban érhető el.
+Az Machine Learning webszolgáltatási kérelmek átviteli sebességét a "batching" több sorból is javíthatja ugyanabban a webszolgáltatás API-hívásban. Ezt a csoportosítást mini-batch-nek nevezzük. További információ: [Azure Machine learning Studio (klasszikus) webszolgáltatások](../machine-learning/classic/consume-web-services.md). A Stream Analytics Azure Machine Learning Studio (klasszikus) támogatása előzetes verzióban érhető el.
 
 ## <a name="configure-a-stream-analytics-job-with-machine-learning-functions"></a>Stream Analytics-feladatok konfigurálása Machine Learning függvényekkel
 
@@ -58,7 +58,7 @@ A ***"b"*** köteg mérete, a webszolgáltatási késés a (z) "b" köteg méret
 
 Az Machine Learning webszolgáltatáson az "egyidejű hívások maximális száma" beállítás is megadható. Ajánlott ezt a paramétert a maximális értékre beállítani (jelenleg 200).
 
-A beállítással kapcsolatos további információkért tekintse át [Machine learning webszolgáltatások méretezési cikkét](../machine-learning/studio/create-endpoint.md).
+A beállítással kapcsolatos további információkért tekintse át [Machine learning webszolgáltatások méretezési cikkét](../machine-learning/classic/create-endpoint.md).
 
 ## <a name="example--sentiment-analysis"></a>Példa – Hangulatelemzés
 Az alábbi példa egy Stream Analytics feladatot tartalmaz az a [Stream Analytics Machine learning Integration oktatóanyagban](stream-analytics-machine-learning-integration-tutorial.md)ismertetett, a hangulat elemzése Machine learning függvénnyel.
@@ -106,12 +106,12 @@ Alább látható a különböző SUs-és batch-méretekhez tartozó Stream Analy
 
 | köteg mérete (ML késleltetés) | 500 (200 MS) | 1 000 (200 MS) | 5 000 (250 MS) | 10 000 (300 MS) | 25 000 (500 MS) |
 | --- | --- | --- | --- | --- | --- |
-| **1 SU** |2500 |5000 |20000 |30 000 |50,000 |
-| **3 SUs** |2500 |5000 |20000 |30 000 |50,000 |
-| **6 SUs** |2500 |5000 |20000 |30 000 |50,000 |
+| **1 SU** |2500 |5000 |20 000 |30 000 |50,000 |
+| **3 SUs** |2500 |5000 |20 000 |30 000 |50,000 |
+| **6 SUs** |2500 |5000 |20 000 |30 000 |50,000 |
 | **12 SUs** |5000 |10,000 |40,000 |60.000 |100.000 |
 | **18 SUs** |7500 |15 000 |60.000 |90,000 |150 000 |
-| **24 SUs** |10,000 |20000 |80,000 |120 000 |200,000 |
+| **24 SUs** |10,000 |20 000 |80,000 |120 000 |200,000 |
 | **…** |… |… |… |… |… |
 | **60 SUs** |25,000 |50,000 |200,000 |300 000 |500 000 |
 
@@ -142,7 +142,7 @@ Stream Analytics feladatok Machine Learning függvényekkel való méretezéséh
 
 Példaként egy teljesen particionált Stream Analytics lekérdezést használtak. Ha összetettebb lekérdezésre van szükség, a [Microsoft Q&a Azure stream Analytics egy kérdés oldalát](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html) , amellyel további segítséget kaphat a stream Analytics csapattól.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Stream Analyticsról további információt a következő témakörben talál:
 
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)

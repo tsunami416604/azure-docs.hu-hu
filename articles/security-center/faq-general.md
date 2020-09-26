@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 782884f53f0ec17c47b79cf66504d0e3ad3fc29d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5695f9fa090419d803f4f3603b45b771321e5ce9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84783214"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301448"
 ---
 # <a name="faq---general-questions-about-azure-security-center"></a>GYIK – általános kérdések Azure Security Center
 
@@ -70,7 +70,6 @@ Az Azure Security Center elemzi az Azure-erőforrások biztonsági állapotát. 
 Itt csak a biztonsági házirendekben engedélyezett javaslatok jelennek meg.
 
 
-
 ## <a name="what-triggers-a-security-alert"></a>Mi váltja fel a biztonsági riasztást?
 Azure Security Center automatikusan gyűjti, elemzi és megtagadja az Azure-erőforrások, a hálózat és a partneri megoldások, például az antimalware és a tűzfalak naplózási adatait. Fenyegetések észlelése esetén a központ biztonsági riasztást hoz létre. Példák fenyegetés észlelésére:
 
@@ -78,10 +77,6 @@ Azure Security Center automatikusan gyűjti, elemzi és megtagadja az Azure-erő
 * A Windows hibajelentés használatával észlelt speciális kártevők
 * Virtuális gépek elleni, a teljes kipróbálás módszerén alapuló támadások
 * Biztonsági riasztások olyan integrált partneri biztonsági megoldásokból, mint például a kártevők elleni védelem vagy a webalkalmazási tűzfalak
-
-
-## <a name="why-did-secure-score-values-change"></a>Miért változnak a biztonsági pontszám értékei? <a name="secure-score-faq"></a>
-Február 2019-én a súlyosságuk jobb illeszkedése érdekében Security Center néhány javaslat pontszámát. Ennek a beállításnak az eredményeképpen előfordulhat, hogy a biztonsági pontszámok teljes értékei módosulnak.  További információ a biztonságos pontszámról: [Azure Security Center továbbfejlesztett biztonságos pontszáma](secure-score-security-controls.md).
 
 
 ## <a name="whats-the-difference-between-threats-detected-and-alerted-on-by-microsoft-security-response-center-versus-azure-security-center"></a>Mi a különbség az észlelt fenyegetések és a riasztások között a Microsoft Security Response Center és a Azure Security Center között?

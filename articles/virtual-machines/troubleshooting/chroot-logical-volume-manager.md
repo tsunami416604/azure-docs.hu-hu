@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/24/2019
 ms.author: vilibert
-ms.openlocfilehash: 03e6f51d2ab7138675f7d79c04faa2e4dffec60c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 98514bad6a04e0c3058faf3133fc44333039ce53
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825684"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361466"
 ---
 # <a name="troubleshooting-a-linux-vm-when-there-is-no-access-to-the-azure-serial-console-and-the-disk-layout-is-using-lvm-logical-volume-manager"></a>Linux rendszerű virtuális gép hibaelhárítása, ha nincs hozzáférés az Azure soros konzolhoz, és a lemez elrendezése az LVM (logikai kötet kezelője) használatával történik.
 
@@ -143,7 +143,7 @@ mount  /dev/mapper/rootvg-usrlv /rescue/usr
 A parancsok segítségével telepítheti, eltávolíthatja és frissítheti a szoftvereket. A virtuális gépek hibaelhárítása a hibák elhárítása érdekében.
 
 
-Futtassa a lsblk parancsot, és a/Rescue most/és/Rescue/boot ![ van/boot](./media/chroot-logical-volume-manager/chrooted.png)
+Hajtsa végre a lsblk parancsot, és a/Rescue most/és/Rescue/boot is/boot ![ képernyőfelvételen egy konzolablak látható az l s BLK paranccsal és annak kimeneti fájával.](./media/chroot-logical-volume-manager/chrooted.png)
 
 ## <a name="perform-fixes"></a>Javítások végrehajtása
 
@@ -169,7 +169,7 @@ grub2-mkconfig -o /boot/grub2/grub.cfg
 *útmutató*
 
 A **grep** -parancs felsorolja azokat a kerneleket, amelyekkel a **grub. cfg** tisztában van.
-![Kernelek](./media/chroot-logical-volume-manager/kernels.png)
+![A képernyőképen egy olyan konzolablak látható, amely a kernelek grep-keresésének eredményét jeleníti meg.](./media/chroot-logical-volume-manager/kernels.png)
 
 **GRUB2 – a editenv listája** megjeleníti, hogy melyik kernel lesz betöltve a következő rendszerindítási ![ kernel alapértelmezett beállításakor](./media/chroot-logical-volume-manager/kernel-default.png)
 
@@ -190,7 +190,7 @@ Futtassa a **LVS** parancsot annak ellenőrzéséhez, hogy mely **LVS** érhető
 
 Kilépés a **kromát** -környezetből a szükséges **lv** -vel
 
-![Felsőfokú](./media/chroot-logical-volume-manager/advanced.png)
+![Képernyőfelvétel: a konzol ablaka egy l-s paranccsal, majd egy L V csatlakoztatása.](./media/chroot-logical-volume-manager/advanced.png)
 
 Most futtassa ismét a **kromát** -környezetet
 
@@ -269,7 +269,7 @@ Hajtsa végre a mezőket a **kiválasztott lemez** az előző lépésben levála
 Ha a virtuális gép futtatja a lemezes cserét, állítsa le, indítsa újra a virtuális gépet a lemezes swap művelet befejeződése után.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ
 
  [Azure soros konzol]( ./serial-console-linux.md)

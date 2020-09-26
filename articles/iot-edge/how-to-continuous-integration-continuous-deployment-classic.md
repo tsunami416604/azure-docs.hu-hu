@@ -1,19 +1,19 @@
 ---
 title: Folyamatos integráció és folyamatos üzembe helyezés Azure IoT Edge eszközökön (klasszikus szerkesztő) – Azure IoT Edge
 description: Folyamatos integráció és folyamatos üzembe helyezés beállítása a klasszikus szerkesztő-Azure IoT Edge az Azure DevOps, az Azure-folyamatok használatával
-author: shizn
+author: kgremban
 manager: philmea
-ms.author: xshi
+ms.author: kgremban
 ms.date: 08/26/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9cb1a2074e7ec64ed16f1f7c9a1f70bf2307b5c3
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 427d72b2a8531fa4dafa0040266249b138b6edf3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90033489"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91291078"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge-devices-classic-editor"></a>Folyamatos integráció és folyamatos üzembe helyezés Azure IoT Edge eszközökön (klasszikus szerkesztő)
 
@@ -103,7 +103,7 @@ Ebben a szakaszban egy új Build-folyamatot hoz létre. A folyamat automatikusan
     | Paraméter | Leírás |
     | --- | --- |
     | Megjelenített név | A művelet mező megváltozásakor a megjelenítendő név automatikusan frissül. |
-    | Műveletek | Válassza a **modul-lemezképek létrehozása**lehetőséget. |
+    | Művelet | Válassza a **modul-lemezképek létrehozása**lehetőséget. |
     | Fájl .template.js | Kattintson a három pontra (**..**.), és navigáljon a IoT Edge-megoldást tartalmazó tárházban található fájl **deployment.template.js** . |
     | Alapértelmezett platform | Válassza ki a megfelelő operációs rendszert a modulok számára a célként megadott IoT Edge eszköz alapján. |
     | Kimeneti változók | Adja meg a fájl elérési útjával társítandó hivatkozási nevet, ahol a deployment.jsfájl generál, például **Edge**. |
@@ -119,7 +119,7 @@ Ebben a szakaszban egy új Build-folyamatot hoz létre. A folyamat automatikusan
     | Paraméter | Leírás |
     | --- | --- |
     | Megjelenített név | A művelet mező megváltozásakor a megjelenítendő név automatikusan frissül. |
-    | Műveletek | Válassza ki a **leküldéses modul lemezképeit**. |
+    | Művelet | Válassza ki a **leküldéses modul lemezképeit**. |
     | Tároló beállításjegyzékének típusa | Használja az alapértelmezett típust: `Azure Container Registry` . |
     | Azure-előfizetés | Válassza ki az előfizetését. |
     | Azure Container Registry | Válassza ki a modul rendszerképeinek tárolására használt tároló-beállításjegyzék típusát. Attól függően, hogy melyik beállításjegyzék-típust választja, az űrlap megváltoznak. Ha a **Azure Container Registry**lehetőséget választja, a legördülő listák használatával válassza ki az Azure-előfizetést és a tároló-beállításjegyzék nevét. Ha az **általános Container Registry**lehetőséget választja, akkor az **új** elemre kattintva hozzon létre egy beállításjegyzék-szolgáltatáshoz való kapcsolódást. |

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 08/25/2020
-ms.openlocfilehash: ec7fc5cec7d8ba63d9a628c3ede978818a2c3012
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 14229af9766f6604e71713f835935d43f6c7fcc6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90031024"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330145"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Mi az az Azure Machine Learning számítási példány?
 
@@ -69,7 +69,7 @@ Ezek az eszközök és környezetek a számítási példányra vannak telepítve
 |Anaconda Python||
 |Jupyter és-bővítmények||
 |Jupyterlab és-bővítmények||
-[Pythonhoz készült Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)</br>PyPI|A legtöbb azureml extra csomagot tartalmazza.  A teljes lista megtekintéséhez nyisson meg [egy terminál ablakot a számítási példányon](how-to-run-jupyter-notebooks.md#terminal) , és futtassa a következőt: <br/> `conda list -n azureml_py36 azureml*` |
+[Pythonhoz készült Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)</br>PyPI|A legtöbb azureml extra csomagot tartalmazza.  A teljes lista megtekintéséhez nyisson meg [egy terminál ablakot a számítási példányon](how-to-run-jupyter-notebooks.md#terminal) , és futtassa a következőt: <br/> `conda list -n azureml_py36 azureml*` |
 |Egyéb PyPI-csomagok|`jupytext`</br>`tensorboard`</br>`nbconvert`</br>`notebook`</br>`Pillow`|
 |Conda-csomagok|`cython`</br>`numpy`</br>`ipykernel`</br>`scikit-learn`</br>`matplotlib`</br>`tqdm`</br>`joblib`</br>`nodejs`</br>`nb_conda_kernels`|
 |Deep learning-csomagok|`PyTorch`</br>`TensorFlow`</br>`Keras`</br>`Horovod`</br>`MLFlow`</br>`pandas-ml`</br>`scrapbook`|
@@ -91,6 +91,30 @@ Vagy a következő módokon érheti el a terminál-ablakokat:
 * Jupyter labor: válassza ki a **terminál** csempét az indító lap **másik** címsorában.
 * Jupyter: a fájlok lapon válassza a jobb felső sarokban található **új>terminál** elemet.
 * SSH-t a gépre.  Ezután telepítse a Python-csomagokat a **python 3,6-AzureML-** környezetbe.  Telepítse az R-csomagokat az **r** -környezetbe.
+
+### <a name="add-new-kernels"></a>Új kernelek hozzáadása
+
+Új Jupyter-kernel hozzáadása a számítási példányhoz:
+
+1. Új terminál létrehozása Jupyter, JupyterLab vagy jegyzetfüzetből vagy SSH-ból a számítási példányba
+2. Hozzon létre egy új környezetet a terminálablak használatával.  Az alábbi kód például a következőt hozza létre `newenv` :
+    ```shell
+    conda create --name newenv
+    ```
+3. Aktiválja a környezetet.  Például a létrehozása után `newenv` :
+
+    ```shell
+    conda activate newenv
+    ```
+4. Telepítse a pip és a ipykernel csomagot az új környezetbe, és hozzon létre egy kernelt az adott Conda env számára
+
+    ```shell
+    conda install pip
+    conda install ipykernel
+    python -m ipykernel install --user --name newenv --display-name "Python (newenv)"
+    ```
+
+A [rendelkezésre álló Jupyter-kernelek](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels) bármelyike telepíthető.
 
 ## <a name="accessing-files"></a>Fájlok elérése
 
@@ -136,7 +160,7 @@ Ezeket a műveleteket a RBAC is vezérelheti:
 * *Microsoft. MachineLearningServices/munkaterületek/számítások/leállítás/művelet*
 * *Microsoft. MachineLearningServices/munkaterületek/számítások/újraindítás/művelet*
 
-### <a name="create-a-compute-instance"></a><a name="create"></a>Számítási példány létrehozása
+### <a name="create-a-compute-instance"></a><a name="create"></a>Új számítási példány létrehozása
 
 A Azure Machine Learning Studio munkaterületén [hozzon létre egy új számítási példányt](how-to-create-attach-compute-studio.md#compute-instance) a **számítási** szakaszból vagy a **jegyzetfüzetek** szakaszban, amikor készen áll az egyik jegyzetfüzet futtatására. 
 
@@ -153,7 +177,7 @@ A számítási példányok létrehozásakor a dedikált magok régiónként, a v
 ### <a name="create-on-behalf-of-preview"></a>Létrehozás a következő nevében (előzetes verzió)
 
 Rendszergazdaként létrehozhat egy számítási példányt egy adattudós nevében, és hozzárendelheti a példányt a következőhöz:
-* [Azure Resource Manager sablon](https://docs.microsoft.com/azure/templates/microsoft.machinelearningservices/2020-06-01/workspaces/computes).  A sablonban szükséges TenantID és ObjectID megkeresésével kapcsolatos részletekért lásd a [hitelesítési konfiguráció azonosító objektum-azonosítóinak megkeresése](../healthcare-apis/find-identity-object-ids.md)című témakört.  Ezeket az értékeket a Azure Active Directory portálon is megtalálhatja.
+* [Azure Resource Manager sablon](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/preview/2020-09-01-preview/examples/createComputeInstance.json).  A sablonban szükséges TenantID és ObjectID megkeresésével kapcsolatos részletekért lásd a [hitelesítési konfiguráció azonosító objektum-azonosítóinak megkeresése](../healthcare-apis/find-identity-object-ids.md)című témakört.  Ezeket az értékeket a Azure Active Directory portálon is megtalálhatja.
 * REST API
 
 A számítási példányt létrehozó adattudósnak a következő RBAC engedélyekkel kell rendelkeznie: 

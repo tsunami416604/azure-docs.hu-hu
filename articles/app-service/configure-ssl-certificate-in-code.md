@@ -2,15 +2,15 @@
 title: TLS/SSL-tanúsítvány használata a kódban
 description: Ismerje meg, hogyan használhatja az Ügyféltanúsítványok használatát a kódban. Hitelesítse magát a távoli erőforrásokkal egy ügyféltanúsítvány használatával, vagy futtasson titkosítási feladatokat.
 ms.topic: article
-ms.date: 11/04/2019
+ms.date: 09/22/2020
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: b62352d09419de11135f4d7a2740e0e74b80255d
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: e791e4ca3481bc0aea931abe946751415f1e1614
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962128"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91311818"
 ---
 # <a name="use-a-tlsssl-certificate-in-your-code-in-azure-app-service"></a>TLS/SSL-tanúsítvány használata a kódban Azure App Service
 
@@ -107,29 +107,6 @@ PrivateKey privKey = (PrivateKey) ks.getKey("<subject-cn>", ("<password>").toCha
 
 Azokon a nyelveken, amelyeken nem támogatott vagy nem nyújt elegendő támogatást a Windows tanúsítványtárolóhoz, lásd: [tanúsítvány betöltése fájlból](#load-certificate-from-file).
 
-## <a name="load-certificate-in-linux-apps"></a>Tanúsítvány betöltése Linux-alkalmazásokban
-
-Az `WEBSITE_LOAD_CERTIFICATES` Alkalmazásbeállítások lehetővé teszik, hogy a megadott tanúsítványok elérhetők legyenek a Linux által üzemeltetett alkalmazások számára (beleértve az egyéni tároló alkalmazásait is) fájlként. A fájlok a következő könyvtárakban találhatók:
-
-- Privát tanúsítványok – `/var/ssl/private` ( `.p12` fájlok)
-- Nyilvános tanúsítványok – `/var/ssl/certs` ( `.der` fájlok)
-
-A tanúsítványfájl neve a tanúsítvány ujjlenyomatai megfelelnek. A következő C#-kód bemutatja, hogyan tölthető be egy nyilvános tanúsítvány egy Linux-alkalmazásban.
-
-```csharp
-using System;
-using System.IO;
-using System.Security.Cryptography.X509Certificates;
-
-...
-var bytes = File.ReadAllBytes("/var/ssl/certs/<thumbprint>.der");
-var cert = new X509Certificate2(bytes);
-
-// Use the loaded certificate
-```
-
-Ha szeretné megtekinteni, hogyan tölthető be a TLS/SSL-tanúsítvány egy Node.js, PHP, Python, Java vagy Ruby fájlból, tekintse meg a megfelelő nyelvi vagy webes platform dokumentációját.
-
 ## <a name="load-certificate-from-file"></a>Tanúsítvány betöltése fájlból
 
 Ha manuálisan feltöltött tanúsítványfájl betöltését szeretné elvégezni, akkor jobb, ha például a [git](deploy-local-git.md)helyett a [FTPS](deploy-ftp.md) használatával tölti fel a tanúsítványt. A bizalmas adatokat, például egy privát tanúsítványt a forrás-ellenőrzésen kívül kell tartania.
@@ -152,6 +129,39 @@ using System.Security.Cryptography.X509Certificates;
 
 ...
 var bytes = File.ReadAllBytes("~/<relative-path-to-cert-file>");
+var cert = new X509Certificate2(bytes);
+
+// Use the loaded certificate
+```
+
+Ha szeretné megtekinteni, hogyan tölthető be a TLS/SSL-tanúsítvány egy Node.js, PHP, Python, Java vagy Ruby fájlból, tekintse meg a megfelelő nyelvi vagy webes platform dokumentációját.
+
+## <a name="load-certificate-in-linuxwindows-containers"></a>Tanúsítvány betöltése Linux/Windows-tárolókban
+
+Az `WEBSITE_LOAD_CERTIFICATES` Alkalmazásbeállítások lehetővé teszi, hogy a megadott tanúsítványok elérhetők legyenek a Windows-vagy Linux-tárolós alkalmazások számára (beleértve a beépített Linux-tárolókat) fájlokként. A fájlok a következő könyvtárakban találhatók:
+
+| Tároló platform | Nyilvános tanúsítványok | Privát tanúsítványok |
+| - | - | - |
+| Windows-tárolók | `C:\appservice\certificates\public` | `C:\appservice\certificates\private` |
+| Linux-tárolók | `/var/ssl/certs` | `/var/ssl/private` |
+
+A tanúsítványfájl neve a tanúsítvány ujjlenyomatai megfelelnek. 
+
+> [!NOTE]
+> App Service a tanúsítvány elérési útját a Windows-tárolókban adja meg a következő környezeti változók `WEBSITE_PRIVATE_CERTS_PATH` ,, `WEBSITE_INTERMEDIATE_CERTS_PATH` `WEBSITE_PUBLIC_CERTS_PATH` és `WEBSITE_ROOT_CERTS_PATH` . Érdemes a tanúsítvány elérési útját a rögzítjük helyett a környezeti változókkal hivatkozni, ha a tanúsítvány elérési útjai a jövőben változnak.
+>
+
+Emellett a [Windows Server Core tárolók](configure-custom-container.md#supported-parent-images) automatikusan betöltik a tanúsítványokat a tanúsítványtárolóba a **LocalMachine\My**-ben. A tanúsítványok betöltéséhez kövesse ugyanazt a mintát, mint a [Windows-alkalmazások betöltési tanúsítványa](#load-certificate-in-windows-apps). Windows Nano-alapú tárolók esetén a fent megadott fájlelérési utak használatával [töltse be a tanúsítványt közvetlenül a fájlból](#load-certificate-from-file).
+
+A következő C#-kód bemutatja, hogyan tölthető be egy nyilvános tanúsítvány egy Linux-alkalmazásban.
+
+```csharp
+using System;
+using System.IO;
+using System.Security.Cryptography.X509Certificates;
+
+...
+var bytes = File.ReadAllBytes("/var/ssl/certs/<thumbprint>.der");
 var cert = new X509Certificate2(bytes);
 
 // Use the loaded certificate

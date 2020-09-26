@@ -8,18 +8,18 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 12/16/2019
 ms.reviewer: sngun
-ms.openlocfilehash: d6be74e5748d364fd9f56f4af96bb3229ddb61c3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50d077c1d7c9e4e421a43a4e0379b57608d1192c
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85113688"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361766"
 ---
 # <a name="understanding-the-differences-between-nosql-and-relational-databases"></a>A NoSQL és a kapcsolati adatbázisok közötti különbségek megértése
 
 Ez a cikk a NoSQL-adatbázisok a kapcsolati adatbázisokkal kapcsolatos főbb előnyeit sorolja fel. A NoSQL használatának néhány kihívását is tárgyaljuk. Ha részletesen meg kívánja nézni a különböző adattárakat, tekintse meg a [megfelelő adattár kiválasztásával](https://docs.microsoft.com/azure/architecture/guide/technology-choices/data-store-overview)foglalkozó cikket.
 
-## <a name="high-throughput"></a>Magas teljesítmény
+## <a name="high-throughput"></a>Nagy átviteli sebesség
 
 A viszonyítási adatbázisrendszer fenntartásának egyik legnyilvánvalóbb kihívása, hogy a legtöbb összekapcsolási motor zárolásokat és zárakat alkalmaz a szigorú [sav-szemantika](https://en.wikipedia.org/wiki/ACID)kikényszerített állapotának biztosítására. Ennek a megközelítésnek az az előnye, hogy az adatbázison belül konzisztens adatállapotot biztosítanak. A párhuzamosságok, a késések és a rendelkezésre állás tekintetében azonban jelentős kompromisszumok állnak fenn. Az alapvető építészeti korlátozások miatt a nagy tranzakciós kötetek esetében szükség lehet az adatszegmensek manuális szétosztására. A manuális horizontális bevezetése időigényes és fájdalmas gyakorlat lehet.
 
@@ -29,7 +29,7 @@ Ezekben az esetekben az [elosztott adatbázisok](https://en.wikipedia.org/wiki/D
 
 Ha a tranzakciós kötetek extrém szintekhez kapcsolódnak, például több ezer tranzakció másodpercenként, érdemes fontolóra venni egy elosztott NoSQL-adatbázist. Vegye figyelembe Azure Cosmos DB a maximális hatékonyságot, a könnyű karbantartást és a korlátozott teljes tulajdonlási költségeket.
 
-:::image type="content" source="./media/relational-or-nosql/backend-scaled.png" alt-text="Háttérrendszer" border="false":::
+:::image type="content" source="./media/relational-or-nosql/backend-scaled.png" alt-text="Backend" border="false":::
 
 ## <a name="hierarchical-data"></a>Hierarchikus adatok
 
@@ -49,7 +49,7 @@ A "hálózati" adatbázisok különböző formái a viszonyítási adatbázisok 
 
 Ha egy összetett hálózati kapcsolatot tart fenn az adatbázisban, érdemes lehet egy gráf-adatbázist, például az [Azure Cosmos db GREMLIN API](https://docs.microsoft.com/azure/cosmos-db/graph-introduction) -t használni az adatkezeléshez.
 
-:::image type="content" source="./media/relational-or-nosql/graph.png" alt-text="Gráf":::
+:::image type="content" source="./media/relational-or-nosql/graph.png" alt-text="Az adatbázisábrán számos alkalmazott és részleg látható egymáshoz.":::
 
 Azure Cosmos DB egy többmodelles adatbázis-szolgáltatás, amely API-kivetítést biztosít az összes főbb NoSQL-modellhez; Oszlop – család, dokumentum, gráf és kulcs-érték. A [Gremlin (gráf)](https://docs.microsoft.com/azure/cosmos-db/gremlin-support) és az SQL (Core) Document API-rétegek teljes mértékben interoperábilisak. Ez előnyökkel jár a különböző modellek közötti váltáshoz a programozhatóság szintjén. A Graph-áruházak a komplex hálózati bejárásokat, valamint az ugyanazon tárolóban található dokumentum-rekordként modellezhető tranzakciók esetében is lekérdezhető.
 
@@ -88,7 +88,7 @@ Az erős konzisztencia szempontjából ritkán fordul elő, hogy ez a teljes ada
 
 A Azure Cosmos DB ismét nagyobb rugalmasságot biztosít, mint a különböző, itt releváns kompromisszumok, de a kis léptékű implementációk esetében ez a megközelítés további tervezési szempontokat is felvehet. Ennek a témakörnek a részletes ismertetését a [konzisztencia, a rendelkezésre állás és a teljesítménybeli kompromisszumok](https://docs.microsoft.com/azure/cosmos-db/consistency-levels-tradeoffs) című cikkben tekintheti meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan kezelheti Azure Cosmos-fiókját és egyéb fogalmait:
 

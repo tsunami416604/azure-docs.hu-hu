@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mathoma, carlrab
+ms.reviewer: mathoma, sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 3699191229a53735a62235cf8688cdfab9335339
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: e9724462dc5f94908a1071f7039b20cca1c97e69
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963648"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330775"
 ---
 # <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>Azure SQL Database biztonsági beállítások konfigurálása és kezelése geo-visszaállításhoz vagy feladatátvételhez
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -103,7 +103,7 @@ SID = <desired login SID>
 >
 > A LETILTÁS nem módosítja a jelszót, így szükség esetén bármikor engedélyezheti.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az adatbázis-hozzáférés és a bejelentkezések kezelésével kapcsolatos további információkért lásd [: SQL Database biztonság: az adatbázis-hozzáférés és a bejelentkezési biztonság kezelése](logins-create-manage.md).
 * További információ a tárolt adatbázis-felhasználókról: [tárolt adatbázis-felhasználók – az adatbázis hordozhatóvé tétele](https://msdn.microsoft.com/library/ff929188.aspx).

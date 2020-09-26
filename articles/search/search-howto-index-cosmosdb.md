@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
-ms.openlocfilehash: 9402b1d38457c979f00d05f56b8ed45d2d37dfca
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 9b3353d3ba1af572b118001691e38af497f6f1fd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90971686"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91290041"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>Cosmos DB-adatok indexelése indexelővel az Azure Cognitive Searchben 
 
@@ -72,9 +72,11 @@ A [varázsló elindításához](search-import-data-portal.md) a parancssáv az A
 
 + A **név** az adatforrás-objektum neve. A létrehozás után kiválaszthatja más számítási feladatokhoz is.
 
-+ **Cosmos db a fióknak** az elsődleges vagy a másodlagos kapcsolatok sztringnek kell lennie Cosmos db a következő formátumban: `AccountEndpoint=https://<Cosmos DB account name>.documents.azure.com;AccountKey=<Cosmos DB auth key>;` .
-    + A 3,2-es és a 3,6-es verziójú **MongoDB gyűjtemények** a következő formátumot használják a Azure Portal Cosmos db fiókjához: `AccountEndpoint=https://<Cosmos DB account name>.documents.azure.com;AccountKey=<Cosmos DB auth key>;ApiKind=MongoDb`
-    + A **Gremlin gráfok és a Cassandra-táblázatok**esetében regisztráljon a [GateD indexelő előzetes](https://aka.ms/azure-cognitive-search/indexer-preview) verziójára, és kérjen hozzáférést az előzetes verzióhoz, és tájékozódjon a hitelesítő adatok formázásáról.
++ **Cosmos db fióknak** a következő formátumok egyikében kell lennie:
+    1. Az elsődleges vagy másodlagos kapcsolatok karakterlánca Cosmos DB a következő formátumban: `AccountEndpoint=https://<Cosmos DB account name>.documents.azure.com;AccountKey=<Cosmos DB auth key>;` .
+        + A 3,2-es és a 3,6-es verziójú **MongoDB gyűjtemények** a következő formátumot használják a Azure Portal Cosmos db fiókjához: `AccountEndpoint=https://<Cosmos DB account name>.documents.azure.com;AccountKey=<Cosmos DB auth key>;ApiKind=MongoDb`
+        + A **Gremlin gráfok és a Cassandra-táblázatok**esetében regisztráljon a [GateD indexelő előzetes](https://aka.ms/azure-cognitive-search/indexer-preview) verziójára, és kérjen hozzáférést az előzetes verzióhoz, és tájékozódjon a hitelesítő adatok formázásáról.
+    1.  Felügyelt identitás-kapcsolatok karakterlánca, amelynek a következő formátuma nem tartalmazza a fiók kulcsát: `ResourceId=/subscriptions/<your subscription ID>/resourceGroups/<your resource group name>/providers/Microsoft.DocumentDB/databaseAccounts/<your cosmos db account name>/;(ApiKind=[api-kind];)` . A kapcsolódási karakterlánc formátumának használatához kövesse a következő utasításokat: [Indexelő-kapcsolatok beállítása egy Cosmos db adatbázishoz felügyelt identitás használatával](search-howto-managed-identities-cosmos-db.md).
 
 + Az **adatbázis** egy meglévő adatbázis a fiókból. 
 
@@ -183,7 +185,7 @@ A kérelem törzse tartalmazza az adatforrás definícióját, amelynek tartalma
 |---------|-------------|
 | **név** | Kötelező. Válasszon egy tetszőleges nevet az adatforrás-objektum megjelenítéséhez. |
 |**típusa**| Kötelező. Kell lennie `cosmosdb` . |
-|**hitelesítő adatok** | Kötelező. Cosmos DB-kapcsolatok karakterláncának kell lennie.<br/><br/>**SQL-gyűjtemények**esetén a kapcsolatok karakterláncai ebben a formátumban vannak:`AccountEndpoint=https://<Cosmos DB account name>.documents.azure.com;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`<br/><br/>A 3,2-es és a 3,6-es verziójú **MongoDB gyűjtemények** a következő formátumot használják a kapcsolatok karakterláncához: `AccountEndpoint=https://<Cosmos DB account name>.documents.azure.com;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`<br/><br/>A **Gremlin gráfok és a Cassandra-táblázatok**esetében regisztráljon a [GateD indexelő előzetes](https://aka.ms/azure-cognitive-search/indexer-preview) verziójára, és kérjen hozzáférést az előzetes verzióhoz, és tájékozódjon a hitelesítő adatok formázásáról.<br/><br/>Kerülje a portok számát a végpont URL-címében. Ha a portszámot is tartalmazza, az Azure Cognitive Search nem tudja indexelni a Azure Cosmos DB-adatbázist.|
+|**hitelesítő adatok** | Kötelező. A Cosmos DB a kapcsolatok karakterlánc-formátumát vagy a felügyelt identitás-kapcsolatok karakterlánc-formátumát kell követnie.<br/><br/>**SQL-gyűjtemények**esetén a kapcsolatok karakterláncai az alábbi formátumok bármelyikét követhetik: <li>`AccountEndpoint=https://<Cosmos DB account name>.documents.azure.com;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`<li>Felügyelt identitás-kapcsolatok karakterlánca, amelynek a következő formátuma nem tartalmazza a fiók kulcsát: `ResourceId=/subscriptions/<your subscription ID>/resourceGroups/<your resource group name>/providers/Microsoft.DocumentDB/databaseAccounts/<your cosmos db account name>/;` . A kapcsolódási karakterlánc formátumának használatához kövesse a következő utasításokat: [Indexelő-kapcsolatok beállítása egy Cosmos db adatbázishoz felügyelt identitás használatával](search-howto-managed-identities-cosmos-db.md).<br/><br/>A 3,2-es és a 3,6-es verziójú **MongoDB gyűjtemények** a következő formátumok valamelyikét használják a kapcsolatok karakterláncához: <li>`AccountEndpoint=https://<Cosmos DB account name>.documents.azure.com;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`<li>Felügyelt identitás-kapcsolatok karakterlánca, amelynek a következő formátuma nem tartalmazza a fiók kulcsát: `ResourceId=/subscriptions/<your subscription ID>/resourceGroups/<your resource group name>/providers/Microsoft.DocumentDB/databaseAccounts/<your cosmos db account name>/;ApiKind=MongoDb;` . A kapcsolódási karakterlánc formátumának használatához kövesse a következő utasításokat: [Indexelő-kapcsolatok beállítása egy Cosmos db adatbázishoz felügyelt identitás használatával](search-howto-managed-identities-cosmos-db.md).<br/><br/>A **Gremlin gráfok és a Cassandra-táblázatok**esetében regisztráljon a [GateD indexelő előzetes](https://aka.ms/azure-cognitive-search/indexer-preview) verziójára, és kérjen hozzáférést az előzetes verzióhoz, és tájékozódjon a hitelesítő adatok formázásáról.<br/><br/>Kerülje a portok számát a végpont URL-címében. Ha a portszámot is tartalmazza, az Azure Cognitive Search nem tudja indexelni a Azure Cosmos DB-adatbázist.|
 | **tároló** | A következő elemeket tartalmazza: <br/>**név**: kötelező. Az indexelni kívánt adatbázis-gyűjtemény AZONOSÍTÓjának meghatározása.<br/>**lekérdezés**: nem kötelező. Megadhat egy lekérdezést, amely egy tetszőleges JSON-dokumentumot lelapul egy olyan egyszerű sémába, amelyet az Azure Cognitive Search tud indexelni.<br/>A MongoDB API, a Gremlin API és a Cassandra API esetében a lekérdezések nem támogatottak. |
 | **dataChangeDetectionPolicy** | Ajánlott. Lásd: [módosított dokumentumok indexelése](#DataChangeDetectionPolicy) szakasz.|
 |**dataDeletionDetectionPolicy** | Választható. Lásd: [törölt dokumentumok indexelése](#DataDeletionDetectionPolicy) szakasz.|

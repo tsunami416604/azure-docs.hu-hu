@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 services: iot-fundamentals
 ms.topic: overview
 ms.date: 6/10/2020
-ms.openlocfilehash: b41e3d729fa6e5b0be9a55cc45de38f81bed494b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ea4ecbbeaa4ad016e32aa9301d6f6ac49a6d342e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87061140"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330179"
 ---
 # <a name="azure-iot-support-and-help-options"></a>Azure IoT – Támogatási és súgólehetőségek
 
@@ -63,7 +63,7 @@ Ha új kérdést küld Stack Overflownek, a kérdés létrehozásakor használja
  - [Azure IoT SDK-k](https://stackoverflow.com/questions/tagged/azure-iot-sdk)
  - [Azure Digital Twins](https://stackoverflow.com/questions/tagged/azure-digital-twins)
  - [Azure RTOS](https://stackoverflow.com/questions/tagged/azure-rtos)
- - [Azure Sphere](https://stackoverflow.com/questions/tagged/azuresphere)
+ - [Azure Sphere](https://stackoverflow.com/questions/tagged/azure-sphere)
  - [Azure Time Series Insights](https://stackoverflow.com/questions/tagged/azure-timeseries-insights)
  - [Azure Maps](https://stackoverflow.com/questions/tagged/azure-maps)
 
@@ -99,7 +99,7 @@ Az Azure IoT kapcsolatos hírek és információk az [Azure blogban](https://azu
 
 Ossza meg tapasztalatait, ismerkedjen meg a [eszközök internetes hálózata technikai Közösség](https://techcommunity.microsoft.com/t5/Internet-of-Things-IoT/ct-p/IoT)szakértőitől.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Mi az az Azure IoT?](iot-introduction.md)

@@ -3,12 +3,12 @@ title: Szabályzatok megfelelőségi állapotának beolvasása
 description: Azure Policy értékelések és hatások határozzák meg a megfelelőséget. Ismerje meg, hogyan kérheti le Azure-erőforrásai megfelelőségi adatait.
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 2ab75bdab0dcf910da91eb60b5f0cf23892d6c51
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 83bf00710346193a89b59c6a72a0e4840dd5abfb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90895429"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91291019"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Azure-erőforrások megfelelőségi információk beolvasása
 
@@ -605,12 +605,17 @@ PolicyDefinitionAction     : deny
 PolicyDefinitionCategory   : tbd
 ```
 
-Példa: olyan nem megfelelő virtuális hálózati erőforrásokhoz kapcsolódó események beszerzése, amelyek egy adott dátum után történtek.
+Példa: olyan nem megfelelő virtuális hálózati erőforrásokhoz kapcsolódó események beszerzése, amelyek egy adott dátum után lettek átalakítva, és egy CSV-objektumra lettek konvertálva, és fájlba exportálhatók.
 
 ```azurepowershell-interactive
-PS> Get-AzPolicyEvent -Filter "ResourceType eq '/Microsoft.Network/virtualNetworks'" -From '2018-05-19'
+$policyEvents = Get-AzPolicyEvent -Filter "ResourceType eq '/Microsoft.Network/virtualNetworks'" -From '2020-09-19'
+$policyEvents | ConvertTo-Csv | Out-File 'C:\temp\policyEvents.csv'
+```
 
-Timestamp                  : 5/19/2018 5:18:53 AM
+Az objektum kimenete a `$policyEvents` következőhöz hasonlóan néz ki:
+
+```output
+Timestamp                  : 9/19/2020 5:18:53 AM
 ResourceId                 : /subscriptions/{subscriptionId}/resourceGroups/RG-Tags/providers/Mi
                              crosoft.Network/virtualNetworks/RG-Tags-vnet
 PolicyAssignmentId         : /subscriptions/{subscriptionId}/resourceGroups/RG-Tags/providers/Mi
@@ -642,7 +647,7 @@ Trent Baker
 
 ## <a name="azure-monitor-logs"></a>Azure Monitor-naplók
 
-Ha [Log Analytics workspace](../../../azure-monitor/log-query/log-query-overview.md) `AzureActivity` az előfizetéshez kötött [Activity Log Analytics megoldásból](../../../azure-monitor/platform/activity-log.md) származó log Analytics munkaterülettel rendelkezik, a kiértékelési ciklusból az egyszerű Kusto lekérdezések és a tábla használatával is megtekintheti a nem megfelelőségi eredményeket `AzureActivity` . Azure Monitor naplók részleteivel a riasztások úgy konfigurálhatók, hogy megfigyeljék a nem megfelelőséget.
+Ha [Log Analytics workspace](../../../azure-monitor/log-query/log-query-overview.md) `AzureActivity` az előfizetéshez kötött [Activity Log Analytics megoldással](../../../azure-monitor/platform/activity-log.md) rendelkező log Analytics munkaterülettel rendelkezik, az új és frissített erőforrások kiértékelésével is megtekintheti az egyszerű Kusto-lekérdezések és a `AzureActivity` tábla segítségével. Azure Monitor naplók részleteivel a riasztások úgy konfigurálhatók, hogy megfigyeljék a nem megfelelőséget.
 
 :::image type="content" source="../media/getting-compliance-data/compliance-loganalytics.png" alt-text="A AzureActivity tábla Azure Policy műveleteit bemutató Azure Monitor naplók képernyőképe." border="false":::
 

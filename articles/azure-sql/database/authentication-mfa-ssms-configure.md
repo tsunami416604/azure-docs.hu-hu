@@ -12,12 +12,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/27/2019
-ms.openlocfilehash: b1dbd66e34790599020233c5b1249593a4c0472d
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 8f72b9e9dfc2aa35960f9f81219a4c8973e2fe5b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442649"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91277920"
 ---
 # <a name="configure-multi-factor-authentication-for-sql-server-management-studio-and-azure-ad"></a>Többtényezős hitelesítés konfigurálása SQL Server Management Studio és az Azure AD-hez
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -40,22 +40,22 @@ A következő lépések bemutatják, hogyan csatlakozhat a legújabb SSMS haszn�
 
 1. Az univerzális hitelesítéssel való kapcsolódáshoz a SQL Server Management Studio (SSMS) **Kapcsolódás a kiszolgálóhoz** párbeszédpanelén válassza a **Active Directory-Universal lehetőséget az MFA támogatásával**. (Ha **Active Directory univerzális hitelesítést** látja, akkor nem a SSMS legújabb verziójával rendelkezik.)
 
-   ![1mfa – univerzális – kapcsolat](./media/authentication-mfa-ssms-configure/mfa-no-tenant-ssms.png)  
+   ![Képernyőkép a Kapcsolódás a kiszolgálóhoz párbeszédpanel kapcsolat tulajdonságai lapjáról, ahol a "MyDatabase" elem ki van választva a Kapcsolódás az adatbázishoz legördülő menüben.](./media/authentication-mfa-ssms-configure/mfa-no-tenant-ssms.png)  
 2. Töltse ki a **Felhasználónév** mezőt a Azure Active Directory hitelesítő adataival a (z `user_name@domain.com` ) formátumban.
 
-   ![1mfa – univerzális – kapcsolat – felhasználó](./media/authentication-mfa-ssms-configure/1mfa-universal-connect-user.png)
+   ![Képernyőkép a Kapcsolódás a kiszolgálóhoz párbeszédpanelen a kiszolgáló típusa, a kiszolgáló neve, a hitelesítés és a Felhasználónév beállításnál.](./media/authentication-mfa-ssms-configure/1mfa-universal-connect-user.png)
 3. Ha vendég felhasználóként csatlakozik, már nem kell végrehajtania az AD-tartománynév vagy a bérlői azonosító mezőt a vendég felhasználók számára, mert a SSMS 18. x vagy újabb automatikusan felismeri. További információ: [univerzális hitelesítés SQL Database, SQL felügyelt példánnyal és Azure szinapszis (SSMS-támogatás az MFA-hoz)](../database/authentication-mfa-ssms-overview.md).
 
-   ![MFA-No-bérlő-SSMS](./media/authentication-mfa-ssms-configure/mfa-no-tenant-ssms.png)
+   ![Képernyőkép a Kapcsolódás a kiszolgálóhoz párbeszédpanel kapcsolat tulajdonságai lapjáról, ahol a "MyDatabase" elem ki van választva a Kapcsolódás az adatbázishoz legördülő menüben.](./media/authentication-mfa-ssms-configure/mfa-no-tenant-ssms.png)
 
    Ha azonban vendég felhasználóként csatlakozik a 17. x vagy régebbi SSMS használatával, kattintson a **Beállítások**elemre, majd a **kapcsolat tulajdonságai** párbeszédpanelen adja meg az **ad-tartománynév vagy a bérlői azonosító mező nevét** .
 
-   ![MFA-bérlő – SSMS](./media/authentication-mfa-ssms-configure/mfa-tenant-ssms.png)
+   ![Képernyőfelvétel a kapcsolat tulajdonságai lapról a Kapcsolódás a kiszolgálóhoz párbeszédpanelen az s S M s-ben. az AD-tartománynév vagy a bérlői azonosító tulajdonság kitöltése megtörténik.](./media/authentication-mfa-ssms-configure/mfa-tenant-ssms.png)
 
 4. Válassza a **Beállítások** lehetőséget, majd adja meg az adatbázist a **Beállítások** párbeszédpanelen. (Ha a csatlakoztatott felhasználó egy vendég felhasználó (azaz joe@outlook.com ), jelölje be a jelölőnégyzetet, és adja hozzá az aktuális ad-tartománynevet vagy a bérlő azonosítóját a beállítások részeként. Lásd: [univerzális hitelesítés a SQL Database és az Azure szinapszis Analytics használatával (SSMS-támogatás az MFA-hoz)](../database/authentication-mfa-ssms-overview.md). Ezután kattintson a **Csatlakozás** gombra.  
 5. Amikor megjelenik a **Bejelentkezés a fiókba** párbeszédpanel, adja meg a Azure Active Directory identitásának fiókját és jelszavát. Nincs szükség jelszóra, ha a felhasználó az Azure AD-vel összevont tartomány tagja.
 
-   ![2mfa – bejelentkezés](./media/authentication-mfa-ssms-configure/2mfa-sign-in.png)  
+   ![Képernyőfelvétel a Azure SQL Database és az adattárházhoz tartozó fiók párbeszédpanelre való bejelentkezésről. A fiók és a jelszó ki van töltve.](./media/authentication-mfa-ssms-configure/2mfa-sign-in.png)  
 
    > [!NOTE]
    > Ha az univerzális hitelesítéshez olyan fiókra van szükség, amely nem igényel MFA-t, akkor ezen a ponton kapcsolódhat. Az MFA-t igénylő felhasználók esetében folytassa a következő lépésekkel:
@@ -63,14 +63,14 @@ A következő lépések bemutatják, hogyan csatlakozhat a legújabb SSMS haszn�
 
 6. Előfordulhat, hogy két MFA beállítási párbeszédpanel jelenik meg. Ez az egyszeri művelet az MFA rendszergazdai beállításától függ, ezért opcionális lehet. Az MFA-kompatibilis tartományokban ez a lépés néha előre definiálva van (például a tartomány megköveteli, hogy a felhasználók intelligens kártyát és PIN-kódot használjanak).
 
-   ![3mfa – telepítés](./media/authentication-mfa-ssms-configure/3mfa-setup.png)
+   ![Képernyőkép a bejelentkezés a fiókba párbeszédpanelről Azure SQL Database és az adatraktárhoz, és a rendszer felszólítja a további biztonsági ellenőrzés beállítására.](./media/authentication-mfa-ssms-configure/3mfa-setup.png)
   
 7. A második lehetőség egy alkalommal párbeszédpanel segítségével kiválaszthatja a hitelesítési módszer részleteit. A rendszergazda konfigurálja a lehetséges beállításokat.
 
-   ![4mfa – ellenőrzés – 1](./media/authentication-mfa-ssms-configure/4mfa-verify-1.png)  
+   ![Képernyőkép a további biztonsági ellenőrzési párbeszédpanelről a hitelesítési módszer kiválasztására és konfigurálására szolgáló beállításokkal.](./media/authentication-mfa-ssms-configure/4mfa-verify-1.png)  
 8. A Azure Active Directory elküldi a megerősítési adatokat. Amikor megkapja az ellenőrző kódot, adja meg az **ENTER ellenőrző kód megadása** mezőbe, és kattintson a **Bejelentkezés**elemre.
 
-   ![5mfa – ellenőrzés – 2](./media/authentication-mfa-ssms-configure/5mfa-verify-2.png)  
+   ![Képernyőkép a bejelentkezés a fiókba párbeszédpanelről Azure SQL Database és az adatraktárhoz egy ellenőrző kód megadására vonatkozó kéréssel.](./media/authentication-mfa-ssms-configure/5mfa-verify-2.png)  
 
 Az ellenőrzés befejezésekor a SSMS általában feltételezi az érvényes hitelesítő adatokat és a tűzfal elérését.
 

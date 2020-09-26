@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: 80658839e804112ae9c8a049943bca54441b015b
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: cd80f0b2a5e2ad1fd4c2cff73728d57a2beafc7e
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89437394"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361517"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>Több-bérlős elemzés a kinyert adategységek használatával – egybérlős alkalmazás
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -36,7 +36,7 @@ Ezen oktatóanyag segítségével megtanulhatja a következőket:
 > - Az elemzési adatbázis lekérdezése.
 > - Az adatvizualizációk Power BI használatával kiemelheti a bérlői adattrendeket, és javaslatokat tehet a tökéletesítésekhez.
 
-![architectureOverView](./media/saas-tenancy-tenant-analytics/architectureOverview.png)
+![A diagram a cikkben használt architektúra áttekintését jeleníti meg.](./media/saas-tenancy-tenant-analytics/architectureOverview.png)
 
 ## <a name="offline-tenant-analytics-pattern"></a>Offline bérlői elemzési minta
 
@@ -138,7 +138,7 @@ Az egyes feladatok kinyerik az adataikat, és beolvasják azokat az Analytics-t�
 4. Az F5 billentyű lenyomásával futtathatja a parancsfájlt, amely létrehozza és futtatja a jegyeket és az ügyfelek adatait az egyes bérlői adatbázisokból. A művelet elmenti az adatok elemzését az Analytics-tárolóba.
 5. A tenantanalytics-adatbázis TicketsRawData táblájának lekérdezése annak biztosítására, hogy a tábla az összes bérlőről származó jegyek adataival legyen feltöltve.
 
-![ticketExtracts](./media/saas-tenancy-tenant-analytics/ticketExtracts.png)
+![A képernyőképen a ExtractTickets-adatbázis jelenik meg, amelyen az Object Explorer d b o van kiválasztva.](./media/saas-tenancy-tenant-analytics/ticketExtracts.png)
 
 Ismételje meg az előző lépéseket, a 2. lépésben lecserélve a **\ExtractTickets.SQL** a **\ExtractVenuesEvents.SQL** elemre.
 
@@ -177,7 +177,7 @@ A következő lépésekkel csatlakozhat a Power BIhoz, és importálhatja a kor�
 
 5. Válassza ki az **adatbázist** a bal oldali ablaktáblán, majd írja be a Felhasználónév = *fejlesztő*nevet, majd írja be a Password = *P \@ ssword1*értéket. Kattintson a **Csatlakozás** gombra.  
 
-    ![databasesignin](./media/saas-tenancy-tenant-analytics/databaseSignIn.PNG)
+    ![Képernyőfelvétel: a SQL Server adatbázis párbeszédpanel, amelyen megadhatja a felhasználónevet és a jelszót.](./media/saas-tenancy-tenant-analytics/databaseSignIn.PNG)
 
 6. A **navigátor** ablaktábla elemzési adatbázis területén válassza ki a csillag-séma táblákat: fact_Tickets, dim_Events, dim_Venues, dim_Customers és dim_Dates. Ezután válassza a **Betöltés**lehetőséget. 
 
@@ -185,13 +185,13 @@ Gratulálunk! Sikeresen betöltötte az adatPower BIba. Most már megkezdheti az
 
 Első lépésként elemezze a jegyek értékesítési adatait, hogy megtekintse a különböző helyszíneken használatos változást. Válassza ki az alábbi beállításokat a Power BI az egyes helyszíneken eladott jegyek teljes számát ábrázoló sávdiagram ábrázolásához. A Ticket Generator véletlenszerű variációja miatt előfordulhat, hogy az eredmények eltérőek.
  
-![TotalTicketsByVenues](./media/saas-tenancy-tenant-analytics/TotalTicketsByVenues.PNG)
+![Képernyőfelvétel: a Power B I vizualizáció és a jobb oldalon látható adatvizualizációk vezérlői.](./media/saas-tenancy-tenant-analytics/TotalTicketsByVenues.PNG)
 
 Az előző ábra megerősíti, hogy az egyes helyszínek által eladott jegyek száma változó. A több jegyet értékesítő helyszínek sokkal nagyobb mértékben használják a szolgáltatást, mint a kevesebb jegyet értékesítő helyszíneken. Lehetőség van arra, hogy az erőforrás-kiosztást a különböző bérlői igényeknek megfelelően testre lehessen szabni.
 
 Tovább elemezheti az adatelemzést, hogy megtudja, hogyan változnak a jegyek forgalma az idő múlásával. Válassza ki az alábbi beállításokat a Power BIban az egyes napokon a 60 napos időszakra eladott jegyek teljes számának ábrázolásához.
  
-![SaleVersusDate](./media/saas-tenancy-tenant-analytics/SaleVersusDate.PNG)
+![Képernyőfelvétel: a Power B I vizualizáció a jegyek értékesítésének eloszlása és az értékesítés napján látható.](./media/saas-tenancy-tenant-analytics/SaleVersusDate.PNG)
 
 Az előző diagramon látható, hogy egyes helyszíneken a Ticket Sales Spike szerepel. Ezek a tüskék erősítik azt a gondolatot, hogy egyes helyszínek aránytalanul nagy mennyiségű rendszererőforrást fogyasztanak. Eddig nem látható mintázat a tüskék előfordulásakor.
 
@@ -217,7 +217,7 @@ AverageTicketsSold = AVERAGEX( SUMMARIZE( TableName, TableName[Venue Name] ), CA
 
 A következő vizualizációs beállítások kiválasztásával ábrázolhatja az egyes helyszíneken eladott jegyek százalékos arányát a relatív sikeresség megállapításához.
 
-![AvgTicketsByVenues](./media/saas-tenancy-tenant-analytics/AvgTicketsByVenues.PNG)
+![Képernyőfelvétel: a Power B I vizualizáció az egyes helyszíneken eladott jegyek átlagát mutatja.](./media/saas-tenancy-tenant-analytics/AvgTicketsByVenues.PNG)
 
 Az előző ábrán látható, hogy bár a legtöbb helyszín több mint 80%-át értékesíti a jegyeket, néhányan azért küzd, hogy több mint felet töltsön ki a helyükre. Az egyes helyszínekre eladott jegyek maximális vagy minimális százalékos arányának kiválasztásához az értékekkel is játszhat.
 

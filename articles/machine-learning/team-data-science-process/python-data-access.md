@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, devx-track-python, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: dcbaaeb2868a421a41227e1b5d9fdd84a96248eb
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 6c8e6fee2b9f01b8d7ab48990760aa4c4d6e11b2
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852361"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361500"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>Hozzáférés az adathalmazokhoz Python segítségével, az Azure Machine Learning Python ügyfélkönyvtárat használva
 Microsoft Azure Machine Learning Python ügyféloldali kódtár előzetes verziója lehetővé teszi a Azure Machine Learning adatkészletek biztonságos elérését egy helyi Python-környezetből, és lehetővé teszi a munkaterületen lévő adatkészletek létrehozását és kezelését.
@@ -71,7 +71,7 @@ A Python ügyféloldali kódtár számára a Azure Machine Learning Studio (klas
 
 Biztonsági okokból a kódrészlet funkció csak olyan felhasználók számára érhető el, akiknek a szerepkörük **tulajdonosként** van beállítva a munkaterületen. A szerepkör a **felhasználók** lapon, a **Beállítások**területen jelenik meg Azure Machine learning Studio (klasszikus).
 
-![Biztonság][security]
+![A képernyőkép a Azure Machine Learning Studio felhasználók lapján megjeleníti a beállításokat.][security]
 
 Ha a szerepkör nem **tulajdonosként**van beállítva, kérheti, hogy a rendszer visszahívja tulajdonosként, vagy kérje meg a munkaterület tulajdonosát, hogy megadja a kódrészletet.
 
@@ -92,7 +92,7 @@ Az engedélyezési jogkivonatok kezelése az **engedélyezési JOGkivonatok** la
 2. Válassza ki az elérni kívánt adatkészletet. Bármelyik adatkészletet kiválaszthatja a **saját ADATkészletek** listából vagy a **minták** listából.
 3. Az alsó eszköztáron kattintson az **adatelérési kód előállítása**elemre. Ha az adatformátum nem kompatibilis a Python ügyféloldali függvénytárával, ez a gomb le lesz tiltva.
    
-    ![Adathalmazok][datasets]
+    ![A képernyőfelvételen az adatelérési kóddal GENERÁLT adatkészletek láthatók.][datasets]
 4. Válassza ki a kódrészletet a megjelenő ablakban, és másolja a vágólapra.
    
     ![Adatelérési kód előállítása gomb][dataset-access-code]
@@ -348,7 +348,7 @@ print(ws.datasets['existing dataset'].name)    # IndexError
 
 A `data_type_id` `name` és `description` paraméterek nem kötelezőek, és alapértelmezés szerint az előző értékük. A `dataframe` paramétert mindig kötelező megadni.
 
-Ha az adatai már szerializálva vannak, `update_from_raw_data` a helyett használja a parancsot `update_from_dataframe` . Ha a helyett csak a-t adja át `raw_data` `dataframe` , akkor hasonló módon működik.
+Ha az adatai már szerializálva vannak, `update_from_raw_data` a helyett használja a parancsot `update_from_dataframe` . Ha a helyett csak a-t adja át `raw_data`  `dataframe` , akkor hasonló módon működik.
 
 <!-- Images -->
 [security]:./media/python-data-access/security.png
