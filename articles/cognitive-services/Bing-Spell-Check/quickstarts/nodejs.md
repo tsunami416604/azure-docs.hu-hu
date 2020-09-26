@@ -1,7 +1,7 @@
 ---
 title: 'Gyors útmutató: helyesírás ellenőrzése a REST API és Node.js-Bing Spell Check'
 titleSuffix: Azure Cognitive Services
-description: Ismerkedjen meg a Bing Spell Check REST API használatával a helyesírás és a nyelvtan ellenőrzéséhez ezzel a rövid útmutatóval.
+description: A Bing Spell Check REST API és a Node.js használatának első lépései a helyesírás és a nyelvtan ellenőrzéséhez.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,13 +10,13 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 05/21/2020
 ms.author: aahi
-ms.custom: devx-track-javascript
-ms.openlocfilehash: aaaa571928556a6972d3136ef4cacaa3bd4cb798
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: 050e06a389ec1deb019677b0bd6ecc92c51d0762
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87405007"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330689"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-nodejs"></a>Gyors útmutató: helyesírás ellenőrzése a Bing Spell Check REST API és Node.js
 

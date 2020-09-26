@@ -1,6 +1,6 @@
 ---
 title: Teljesítmény-finomhangolás tényleges táblán alapuló nézetekkel
-description: 'A lekérdezési teljesítmény javítása érdekében a következő ajánlásokat és szempontokat érdemes ismernie:'
+description: A lekérdezési teljesítmény javítására szolgáló, a lényeges nézetekre vonatkozó javaslatok és megfontolások.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: d476bef6faa19defad1d2e1ef1a90f7e5d83def5
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 1f04f8b447f07f62561f56722df3b9502ad58d41
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495692"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289038"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>Teljesítmény-finomhangolás tényleges táblán alapuló nézetekkel
 
@@ -29,7 +29,7 @@ A normál nézet minden alkalommal kiszámítja az adatmegjelenítést, amikor a
 
 Egy anyagilag megtekinthető nézet előre kiszámítja, tárolja és karbantartja az adataikat az SQL-készletben, ugyanúgy, mint egy tábla.  A rendszer minden alkalommal nem igényel újraszámítást, amikor egy anyagbeli nézet van használatban.  Ezért az olyan lekérdezések, amelyek az összes vagy az adatok egy részhalmazát használják az anyagilag megtekintett nézetekben, gyorsabb teljesítményt tudnak nyerni.  Még jobb is, ha a lekérdezések egy anyagbeli nézetet is használhatnak közvetlen hivatkozás nélkül, ezért nincs szükség az alkalmazás kódjának módosítására.  
 
-A szabványos nézetre vonatkozó követelmények többsége továbbra is érvényes egy anyagbeli nézetre. Az anyag nézet szintaxisának és egyéb követelményeinek részletes ismertetését a következő témakörben találja: [anyagelszámolású nézet létrehozása a Select](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)utasítással.
+A szabványos nézetre vonatkozó követelmények többsége továbbra is érvényes egy anyagbeli nézetre. Az anyag nézet szintaxisának és egyéb követelményeinek részletes ismertetését a következő témakörben találja: [anyagelszámolású nézet létrehozása a Select](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)utasítással.
 
 | Összehasonlítás                     | Nézet                                         | Materialized View
 |:-------------------------------|:---------------------------------------------|:--------------------------------------------------------------|
@@ -55,10 +55,10 @@ A megfelelően megtervezett, jelentős nézet a következő előnyöket biztosí
 Az egyéb adattárház-szolgáltatókhoz képest az SQL-készletben megvalósított, jelentős méretű nézetek a következő előnyöket is biztosítják:
 
 - Automatikus és szinkron Adatfrissítés az alaptáblákban tárolt adatváltozásokkal. Nincs szükség felhasználói beavatkozásra.
-- Széleskörű összesítő függvények támogatása. Lásd: [anyagelszámolású nézet létrehozása Select (Transact-SQL) néven](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
-- A lekérdezés-specifikus, jelentős megjelenítésre vonatkozó javaslat támogatása.  Lásd: [Magyarázat (Transact-SQL)](/sql/t-sql/queries/explain-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
+- Széleskörű összesítő függvények támogatása. Lásd: [anyagelszámolású nézet létrehozása Select (Transact-SQL) néven](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
+- A lekérdezés-specifikus, jelentős megjelenítésre vonatkozó javaslat támogatása.  Lásd: [Magyarázat (Transact-SQL)](/sql/t-sql/queries/explain-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
-## <a name="common-scenarios"></a>Gyakori forgatókönyvek  
+## <a name="common-scenarios"></a>Gyakori helyzetek  
 
 A rendszer általában az alábbi helyzetekben használja az anyagilag látható nézeteket:
 
@@ -117,7 +117,7 @@ A kimutatott nézetek számának csökkentésére szolgáló beállítások:
 
 - Dobja el az alacsony kihasználtságú vagy már nem szükséges anyagbeli nézeteket.  A letiltott anyagbeli nézet nem tart fenn, de továbbra is A tárolási költségekkel jár.  
 
-- Összekapcsolhatja az azonos vagy hasonló alaptáblákon létrehozott, az adatok átfedését még akkor is, ha az adatok nem fedik át egymást.  A jelentős nézetek kombinálásával a különálló nézetek összege nagyobb méretű nézetet eredményezhet, a karbantartási költségeket azonban csökkenteni kell.  Például:
+- Összekapcsolhatja az azonos vagy hasonló alaptáblákon létrehozott, az adatok átfedését még akkor is, ha az adatok nem fedik át egymást.  A jelentős nézetek kombinálásával a különálló nézetek összege nagyobb méretű nézetet eredményezhet, a karbantartási költségeket azonban csökkenteni kell.  Példa:
 
 ```sql
 -- Query 1 would benefit from having a materialized view created with this SELECT statement
@@ -143,13 +143,17 @@ Az adatraktár-optimalizáló a lekérdezések teljesítményének növelése é
 
 **A lényeges nézetek figyelése**
 
-A rendszer az adatraktárban egy, a fürtözött oszlopcentrikus indextel (CCI) rendelkező táblához hasonlóan egy anyagbeli nézetet tárol.  Az adatok egy anyagbeli nézetből történő beolvasása magában foglalja az index vizsgálatát és a változások a különbözeti tárolóból való alkalmazását.  Ha a különbözeti tárolóban lévő sorok száma túl magas, a lekérdezés egy anyagbeli nézetből való feloldása hosszabb időt vehet igénybe, mint az alaptáblák közvetlen lekérdezése.  A lekérdezési teljesítmény romlásának elkerülése érdekében célszerű a [DBCC PDW_SHOWMATERIALIZEDVIEWOVERHEAD](/sql/t-sql/database-console-commands/dbcc-pdw-showmaterializedviewoverhead-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) futtatni a nézet overhead_ratio (total_rows/base_view_row) figyeléséhez.  Ha a overhead_ratio túl magas, érdemes lehet újraépíteni az anyagbeli nézetet, hogy a különbözeti tároló összes sora át legyen helyezve a oszlopcentrikus indexbe.  
+A rendszer az adatraktárban egy, a fürtözött oszlopcentrikus indextel (CCI) rendelkező táblához hasonlóan egy anyagbeli nézetet tárol.  Az adatok egy anyagbeli nézetből történő beolvasása magában foglalja az index vizsgálatát és a változások a különbözeti tárolóból való alkalmazását.  Ha a különbözeti tárolóban lévő sorok száma túl magas, a lekérdezés egy anyagbeli nézetből való feloldása hosszabb időt vehet igénybe, mint az alaptáblák közvetlen lekérdezése.  
+
+A lekérdezési teljesítmény romlásának elkerülése érdekében célszerű a [DBCC PDW_SHOWMATERIALIZEDVIEWOVERHEAD](/sql/t-sql/database-console-commands/dbcc-pdw-showmaterializedviewoverhead-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) futtatni a nézet overhead_ratio (total_rows/base_view_row) figyeléséhez.  Ha a overhead_ratio túl magas, érdemes lehet újraépíteni az anyagbeli nézetet, hogy a különbözeti tároló összes sora át legyen helyezve a oszlopcentrikus indexbe.  
 
 **Anyagelszámolású nézet és eredményhalmaz gyorsítótárazása**
 
 Ez a két funkció az SQL-készletben, a lekérdezési teljesítmény finomhangolása során is bevezethető. Az eredményhalmaz gyorsítótárazása a statikus adatokkal való ismétlődő lekérdezések magas párhuzamossági és gyors reagálási idejének elérésére szolgál.  
 
-A gyorsítótárazott eredmény használatához a lekérdezést kérő gyorsítótárnak egyeznie kell azzal a lekérdezéssel, amely a gyorsítótárat hozta létre.  Emellett a gyorsítótárazott eredményt is a teljes lekérdezésre kell alkalmazni.  A jelentős nézetek lehetővé teszik az alaptáblákban lévő adatváltozásokat.  Az anyagilag megtekintett nézetekben tárolt adatok alkalmazhatók egy adott lekérdezésre.  Ez a támogatás lehetővé teszi, hogy ugyanazokat a különböző lekérdezéseket használja, amelyek a gyorsabb teljesítmény érdekében több számítási feladattal rendelkeznek.
+A gyorsítótárazott eredmény használatához a lekérdezést kérő gyorsítótárnak egyeznie kell azzal a lekérdezéssel, amely a gyorsítótárat hozta létre.  Emellett a gyorsítótárazott eredményt is a teljes lekérdezésre kell alkalmazni.  
+
+A jelentős nézetek lehetővé teszik az alaptáblákban lévő adatváltozásokat.  Az anyagilag megtekintett nézetekben tárolt adatok alkalmazhatók egy adott lekérdezésre.  Ez a támogatás lehetővé teszi, hogy ugyanazokat a különböző lekérdezéseket használja, amelyek a gyorsabb teljesítmény érdekében több számítási feladattal rendelkeznek.
 
 ## <a name="example"></a>Példa
 
@@ -352,13 +356,13 @@ GROUP BY c_customer_id
 
 ```
 
-Vizsgálja meg újra az eredeti lekérdezés végrehajtási tervét.  Most az összekapcsolások száma 17 és 5 között változik, és többé nem áll rendelkezésre shuffle.  Kattintson a csomag szűrési művelet ikonjára. A kimeneti lista azt mutatja, hogy az adatok beolvasása az alaptáblák helyett az anyagot ábrázoló nézetből történik.  
+Vizsgálja meg újra az eredeti lekérdezés végrehajtási tervét.  Most az összekapcsolások száma 17 és 5 között változik, és többé nem áll rendelkezésre shuffle.  Válassza ki a szűrő művelet ikont a tervben. A kimeneti lista azt mutatja, hogy az adatok beolvasása az alaptáblák helyett az anyagot ábrázoló nézetből történik.  
 
  ![Plan_Output_List_with_Materialized_Views](./media/develop-materialized-view-performance-tuning/output-list.png)
 
 A nagy mennyiségű nézetekkel ugyanaz a lekérdezés sokkal gyorsabban fut a kód módosítása nélkül.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További fejlesztési tippek: a [SZINAPSZIS SQL-fejlesztés áttekintése](develop-overview.md).
  

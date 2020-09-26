@@ -11,12 +11,12 @@ ms.date: 05/06/2020
 ms.author: mimart
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abd6423ebbdba11cd1b0e0c2d00cfd36aa745e72
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 93b2b5538df894e17449e173baa3e402d6c59654
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908494"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91354989"
 ---
 # <a name="language-customization-in-azure-active-directory-preview"></a>Nyelvi Testreszabás a Azure Active Directoryban (előzetes verzió)
 
@@ -83,7 +83,7 @@ Cserélje le `<ExtensionAttributeValue>` a szöveget a megjelenítendő új sztr
 
 ### <a name="provide-a-list-of-values-by-using-localizedcollections"></a>Adja meg az értékek listáját a LocalizedCollections használatával
 
-Ha meg szeretné adni a válaszok értékeinek listáját, létre kell hoznia egy `LocalizedCollections` attribútumot. `LocalizedCollections`a és a párok tömbje `Name` `Value` . Az elemek sorrendje a megjelenő sorrendben jelenik meg. A hozzáadáshoz `LocalizedCollections` használja a következő formátumot:
+Ha meg szeretné adni a válaszok értékeinek listáját, létre kell hoznia egy `LocalizedCollections` attribútumot. `LocalizedCollections` a és a párok tömbje `Name` `Value` . Az elemek sorrendje a megjelenő sorrendben jelenik meg. A hozzáadáshoz `LocalizedCollections` használja a következő formátumot:
 
 ```JSON
 {
@@ -107,9 +107,9 @@ Ha meg szeretné adni a válaszok értékeinek listáját, létre kell hoznia eg
 }
 ```
 
-* `ElementId`a felhasználó attribútuma, amelyhez ez az `LocalizedCollections` attribútum válaszol.
-* `Name`a felhasználó számára megjelenített érték.
-* `Value`Ha ez a beállítás be van jelölve, a rendszer a jogcímben visszaadott értéket adja vissza.
+* `ElementId` a felhasználó attribútuma, amelyhez ez az `LocalizedCollections` attribútum válaszol.
+* `Name` a felhasználó számára megjelenített érték.
+* `Value` Ha ez a beállítás be van jelölve, a rendszer a jogcímben visszaadott értéket adja vissza.
 
 ### <a name="upload-your-changes"></a>A módosítások feltöltése
 
@@ -150,56 +150,56 @@ Az Azure AD az alábbi nyelvek támogatását tartalmazza. A felhasználói foly
 
 | Nyelv              | Nyelvkód | Felhasználói folyamatok         | MFA-értesítések  |
 |-----------------------| :-----------: | :----------------: | :----------------: |
-| Arab                | AR            | ![nem](./media/user-flow-customize-language/no.png) | ![igen](./media/user-flow-customize-language/yes.png) |
-| Bolgár             | BG            | ![nem](./media/user-flow-customize-language/no.png) | ![igen](./media/user-flow-customize-language/yes.png) |
-| Bangla                | Mrd USD            | ![igen](./media/user-flow-customize-language/yes.png) | ![nem](./media/user-flow-customize-language/no.png) |
-| Katalán               | CA            | ![nem](./media/user-flow-customize-language/no.png) | ![igen](./media/user-flow-customize-language/yes.png) |
-| Cseh                 | CS            | ![igen](./media/user-flow-customize-language/yes.png) | ![igen](./media/user-flow-customize-language/yes.png) |
-| Dán                | da            | ![igen](./media/user-flow-customize-language/yes.png) | ![igen](./media/user-flow-customize-language/yes.png) |
-| Német                | de            | ![igen](./media/user-flow-customize-language/yes.png) | ![igen](./media/user-flow-customize-language/yes.png) |
-| Görög                 | el            | ![igen](./media/user-flow-customize-language/yes.png) | ![igen](./media/user-flow-customize-language/yes.png) |
-| Angol               | hu            | ![igen](./media/user-flow-customize-language/yes.png) | ![igen](./media/user-flow-customize-language/yes.png) |
-| Spanyol               | Igen            | ![igen](./media/user-flow-customize-language/yes.png) | ![igen](./media/user-flow-customize-language/yes.png) |
-| Észt              | et            | ![nem](./media/user-flow-customize-language/no.png) | ![igen](./media/user-flow-customize-language/yes.png) |
-| Baszk                | EU            | ![nem](./media/user-flow-customize-language/no.png) | ![igen](./media/user-flow-customize-language/yes.png) |
-| Finn               | Fi            | ![igen](./media/user-flow-customize-language/yes.png) | ![igen](./media/user-flow-customize-language/yes.png) |
-| Francia                | fr            | ![igen](./media/user-flow-customize-language/yes.png) | ![igen](./media/user-flow-customize-language/yes.png) |
-| Gallego              | GL            | ![nem](./media/user-flow-customize-language/no.png) | ![igen](./media/user-flow-customize-language/yes.png) |
-| gudzsaráti              | Gu            | ![igen](./media/user-flow-customize-language/yes.png) | ![nem](./media/user-flow-customize-language/no.png) |
-| Héber                | ő            | ![nem](./media/user-flow-customize-language/no.png) | ![igen](./media/user-flow-customize-language/yes.png) |
-| Hindi                 | szia            | ![igen](./media/user-flow-customize-language/yes.png) | ![igen](./media/user-flow-customize-language/yes.png) |
-| Horvát              | ó            | ![igen](./media/user-flow-customize-language/yes.png) | ![igen](./media/user-flow-customize-language/yes.png) |
-| Magyar             | hu            | ![igen](./media/user-flow-customize-language/yes.png) | ![igen](./media/user-flow-customize-language/yes.png) |
-| Indonéz            | id            | ![nem](./media/user-flow-customize-language/no.png) | ![igen](./media/user-flow-customize-language/yes.png) |
-| Olasz               | Ez            | ![igen](./media/user-flow-customize-language/yes.png) | ![igen](./media/user-flow-customize-language/yes.png) |
-| Japán              | Japán            | ![igen](./media/user-flow-customize-language/yes.png) | ![igen](./media/user-flow-customize-language/yes.png) |
-| Kazak                | KK            | ![nem](./media/user-flow-customize-language/no.png) | ![igen](./media/user-flow-customize-language/yes.png) |
-| kannada               | KN            | ![igen](./media/user-flow-customize-language/yes.png) | ![nem](./media/user-flow-customize-language/no.png) |
-| Koreai                | Ko            | ![igen](./media/user-flow-customize-language/yes.png) | ![igen](./media/user-flow-customize-language/yes.png) |
-| Litván            | lt            | ![nem](./media/user-flow-customize-language/no.png) | ![igen](./media/user-flow-customize-language/yes.png) |
-| Lett               | lv            | ![nem](./media/user-flow-customize-language/no.png) | ![igen](./media/user-flow-customize-language/yes.png) |
-| malajálam             | ml            | ![igen](./media/user-flow-customize-language/yes.png) | ![nem](./media/user-flow-customize-language/no.png) |
-| marathi               | Mr            | ![igen](./media/user-flow-customize-language/yes.png) | ![nem](./media/user-flow-customize-language/no.png) |
-| Maláj                 | MS            | ![igen](./media/user-flow-customize-language/yes.png) | ![igen](./media/user-flow-customize-language/yes.png) |
-| Norvég bokmal      | NB            | ![igen](./media/user-flow-customize-language/yes.png) | ![nem](./media/user-flow-customize-language/no.png) |
-| Holland                 | nl            | ![igen](./media/user-flow-customize-language/yes.png) | ![igen](./media/user-flow-customize-language/yes.png) |
-| Norvég             | nem            | ![nem](./media/user-flow-customize-language/no.png) | ![igen](./media/user-flow-customize-language/yes.png) |
-| pandzsábi               | PA            | ![igen](./media/user-flow-customize-language/yes.png) | ![nem](./media/user-flow-customize-language/no.png) |
-| Lengyel                | pl            | ![igen](./media/user-flow-customize-language/yes.png) | ![igen](./media/user-flow-customize-language/yes.png) |
-| Portugál - Brazília   | pt-br         | ![igen](./media/user-flow-customize-language/yes.png) | ![igen](./media/user-flow-customize-language/yes.png) |
-| Portugál - Portugália | pt-pt         | ![igen](./media/user-flow-customize-language/yes.png) | ![igen](./media/user-flow-customize-language/yes.png) |
-| Román              | ro            | ![igen](./media/user-flow-customize-language/yes.png) | ![igen](./media/user-flow-customize-language/yes.png) |
-| Orosz               | ru            | ![igen](./media/user-flow-customize-language/yes.png) | ![igen](./media/user-flow-customize-language/yes.png) |
-| Szlovák                | sk            | ![igen](./media/user-flow-customize-language/yes.png) | ![igen](./media/user-flow-customize-language/yes.png) |
-| Szlovén             | SL            | ![nem](./media/user-flow-customize-language/no.png) | ![igen](./media/user-flow-customize-language/yes.png) |
-| Szerb – cirillbetűs    | SR-cryl-cs    | ![nem](./media/user-flow-customize-language/no.png) | ![igen](./media/user-flow-customize-language/yes.png) |
-| Szerb – latinbetűs       | SR-Latn-cs    | ![nem](./media/user-flow-customize-language/no.png) | ![igen](./media/user-flow-customize-language/yes.png) |
-| Svéd               | Sv            | ![igen](./media/user-flow-customize-language/yes.png) | ![igen](./media/user-flow-customize-language/yes.png) |
-| tamil                 | ta            | ![igen](./media/user-flow-customize-language/yes.png) | ![nem](./media/user-flow-customize-language/no.png) |
-| telugu                | ttelepítése            | ![igen](./media/user-flow-customize-language/yes.png) | ![nem](./media/user-flow-customize-language/no.png) |
-| Thai                  | adik            | ![igen](./media/user-flow-customize-language/yes.png) | ![igen](./media/user-flow-customize-language/yes.png) |
-| Török               | TR            | ![igen](./media/user-flow-customize-language/yes.png) | ![igen](./media/user-flow-customize-language/yes.png) |
-| Ukrán             | uk            | ![nem](./media/user-flow-customize-language/no.png) | ![igen](./media/user-flow-customize-language/yes.png) |
-| Vietnámi            | VI            | ![nem](./media/user-flow-customize-language/no.png) | ![igen](./media/user-flow-customize-language/yes.png) |
-| Kínai – egyszerűsített  | zh-Hans       | ![igen](./media/user-flow-customize-language/yes.png) | ![igen](./media/user-flow-customize-language/yes.png) |
-| Kínai – hagyományos | zh-Hant       | ![igen](./media/user-flow-customize-language/yes.png) | ![igen](./media/user-flow-customize-language/yes.png) |
+| Arab                | AR            | ![X, jelezve: nem.](./media/user-flow-customize-language/no.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
+| Bolgár             | BG            | ![X, jelezve: nem.](./media/user-flow-customize-language/no.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
+| Bangla                | Mrd USD            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![X, jelezve: nem.](./media/user-flow-customize-language/no.png) |
+| Katalán               | CA            | ![X, jelezve: nem.](./media/user-flow-customize-language/no.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
+| Cseh                 | CS            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
+| Dán                | da            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
+| Német                | de            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
+| Görög                 | el            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
+| Angolul               | hu            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
+| spanyol               | es            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
+| Észt              | et            | ![X, jelezve: nem.](./media/user-flow-customize-language/no.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
+| Baszk                | EU            | ![X, jelezve: nem.](./media/user-flow-customize-language/no.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
+| Finn               | Fi            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
+| Francia                | fr            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
+| Gallego              | GL            | ![X, jelezve: nem.](./media/user-flow-customize-language/no.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
+| gudzsaráti              | Gu            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![X, jelezve: nem.](./media/user-flow-customize-language/no.png) |
+| Héber                | ő            | ![X, jelezve: nem.](./media/user-flow-customize-language/no.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
+| Hindi                 | szia            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
+| Horvát              | ó            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
+| Magyar             | hu            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
+| Indonéz            | id            | ![X, jelezve: nem.](./media/user-flow-customize-language/no.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
+| Olasz               | Ez            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
+| Japán              | Japán            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
+| Kazak                | KK            | ![X, jelezve: nem.](./media/user-flow-customize-language/no.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
+| kannada               | KN            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![X, jelezve: nem.](./media/user-flow-customize-language/no.png) |
+| Koreai                | Ko            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
+| Litván            | lt            | ![X, jelezve: nem.](./media/user-flow-customize-language/no.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
+| Lett               | lv            | ![X, jelezve: nem.](./media/user-flow-customize-language/no.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
+| malajálam             | ml            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![X, jelezve: nem.](./media/user-flow-customize-language/no.png) |
+| marathi               | Mr            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![X, jelezve: nem.](./media/user-flow-customize-language/no.png) |
+| Maláj                 | MS            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
+| Norvég bokmal      | NB            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![X, jelezve: nem.](./media/user-flow-customize-language/no.png) |
+| Holland                 | nl            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
+| Norvég             | nem            | ![X, jelezve: nem.](./media/user-flow-customize-language/no.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
+| pandzsábi               | PA            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![X, jelezve: nem.](./media/user-flow-customize-language/no.png) |
+| Lengyel                | pl            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
+| Portugál - Brazília   | pt-br         | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
+| Portugál - Portugália | pt-pt         | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
+| Román              | ro            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
+| Orosz               | ru            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
+| Szlovák                | sk            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
+| Szlovén             | SL            | ![X, jelezve: nem.](./media/user-flow-customize-language/no.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
+| Szerb – cirillbetűs    | SR-cryl-cs    | ![X, jelezve: nem.](./media/user-flow-customize-language/no.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
+| Szerb – latinbetűs       | SR-Latn-cs    | ![X, jelezve: nem.](./media/user-flow-customize-language/no.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
+| Svéd               | Sv            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
+| tamil                 | ta            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![X, jelezve: nem.](./media/user-flow-customize-language/no.png) |
+| telugu                | ttelepítése            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![X, jelezve: nem.](./media/user-flow-customize-language/no.png) |
+| Thai                  | adik            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
+| Török               | TR            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
+| Ukrán             | uk            | ![X, jelezve: nem.](./media/user-flow-customize-language/no.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
+| Vietnámi            | VI            | ![X, jelezve: nem.](./media/user-flow-customize-language/no.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
+| Kínai – egyszerűsített  | zh-Hans       | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
+| Kínai – hagyományos | zh-Hant       | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |

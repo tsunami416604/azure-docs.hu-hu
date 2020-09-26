@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 08/12/2020
-ms.openlocfilehash: 9454cb83d535d97a3dd95cd9f5d0636769797d08
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: eb62cf099d7ccc133a207a843a8be3debf5c5454
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88166943"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91308418"
 ---
 # <a name="use-apache-spark-to-read-and-write-apache-hbase-data"></a>Az Apache Spark használata Apache HBase-adatok írására és olvasására
 
@@ -94,11 +94,11 @@ __Megjegyzés__: a továbblépés előtt győződjön meg róla, hogy a Spark-f�
     |Tulajdonság | Érték |
     |---|---|
     |Bash-parancsfájl URI-ja|`https://hdiconfigactions.blob.core.windows.net/hbasesparkconnectorscript/connector-hbase.sh`|
-    |Csomópont típusa (i)|Régió|
+    |Csomópont típusa (i)|Region|
     |Paraméterek|`-s SECONDARYS_STORAGE_URL`|
     |Kitartott|igen|
 
-    * `SECONDARYS_STORAGE_URL`a Spark oldal alapértelmezett tárolójának URL-címe. Példa paraméterre:`-s wasb://sparkcon-2020-08-03t18-17-37-853z@sparkconhdistorage.blob.core.windows.net`
+    * `SECONDARYS_STORAGE_URL` a Spark oldal alapértelmezett tárolójának URL-címe. Példa paraméterre: `-s wasb://sparkcon-2020-08-03t18-17-37-853z@sparkconhdistorage.blob.core.windows.net`
 
 
 2.  A következő szempontok alapján alkalmazza a módosításokat a Spark-fürtön a parancsfájl művelet használatával:
@@ -107,7 +107,7 @@ __Megjegyzés__: a továbblépés előtt győződjön meg róla, hogy a Spark-f�
     |---|---|
     |Bash-parancsfájl URI-ja|`https://hdiconfigactions.blob.core.windows.net/hbasesparkconnectorscript/connector-spark.sh`|
     |Csomópont típusa (i)|Head, Worker, Zookeeper|
-    |Paraméterek|`-s "SPARK-CRON-SCHEDULE"`(nem kötelező) `-h "HBASE-CRON-SCHEDULE"` választható|
+    |Paraméterek|`-s "SPARK-CRON-SCHEDULE"` (nem kötelező) `-h "HBASE-CRON-SCHEDULE"` választható|
     |Kitartott|igen|
 
 
@@ -162,8 +162,8 @@ Az alábbi táblázat a HDInsight csapat által jelenleg használt két verziót
 
     |Spark-verzió| HDI HBase verziója  | SHC verziója    |  Parancs  |
     | :-----------:| :----------: | :-----------: |:----------- |
-    |      2.1    | HDI 3,6 (HBase 1,1) | 1.1.0.3.1.2.2 – 1    | `spark-shell --packages com.hortonworks:shc-core:1.1.1-2.1-s_2.11 --repositories https://repo.hortonworks.com/content/groups/public/` |
-    |      2,4    | HDI 4,0 (HBase 2,0) | 1.1.1-2.1 – s_2.11  | `spark-shell --packages com.hortonworks.shc:shc-core:1.1.0.3.1.2.2-1 --repositories http://repo.hortonworks.com/content/groups/public/` |
+    |      2.1    | HDI 3,6 (HBase 1,1) | 1.1.1-2.1 – s_2.11    | `spark-shell --packages com.hortonworks:shc-core:1.1.1-2.1-s_2.11 --repositories https://repo.hortonworks.com/content/groups/public/` |
+    |      2,4    | HDI 4,0 (HBase 2,0) | 1.1.0.3.1.2.2 – 1  | `spark-shell --packages com.hortonworks.shc:shc-core:1.1.0.3.1.2.2-1 --repositories http://repo.hortonworks.com/content/groups/public/` |
 
 2. Tartsa nyitva a Spark Shell-példányt, és folytassa a [katalógus és a lekérdezés definiálásával](#define-a-catalog-and-query). Ha nem találja azokat a tégelyeket, amelyek megfelelnek a SHC Core adattárban található verzióinak, folytassa az olvasást. 
 
@@ -343,6 +343,6 @@ Ebben a lépésben olyan katalógus-objektumot határoz meg, amely a sémát Apa
     :q
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Apache Spark HBase-összekötő](https://github.com/hortonworks-spark/shc)

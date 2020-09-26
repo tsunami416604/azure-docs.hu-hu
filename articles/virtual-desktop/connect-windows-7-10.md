@@ -3,33 +3,24 @@ title: Kapcsolódás a Windows rendszerű virtuális asztali Windows 10 vagy 7-e
 description: Kapcsolódás a Windows rendszerű virtuális asztalhoz a Windows asztali ügyfélprogram használatával.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 07/16/2020
+ms.date: 09/22/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0e4f41cb23ec4a9463b983049f5f37d09d1b8c71
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: c9da2acac0957d7fe06d0249775fbed73b5f458d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226709"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287338"
 ---
 # <a name="connect-with-the-windows-desktop-client"></a>Kapcsolódás a Windows asztali ügyféllel
 
-> A következőkre vonatkozik: Windows 7, Windows 10 és Windows 10 IoT Enterprise
+> A következőkre vonatkozik: Windows 10, Windows 10 IoT Enterprise és Windows 7
 
 >[!IMPORTANT]
 >Ez a tartalom a Windows rendszerű virtuális asztali Azure Resource Manager Windows virtuális asztali objektumokkal vonatkozik. Ha a Windowsos virtuális asztalt (klasszikus) Azure Resource Manager objektumok nélkül használja, tekintse meg [ezt a cikket](./virtual-desktop-fall-2019/connect-windows-7-10-2019.md).
 
-A Windows rendszerű virtuális asztali erőforrásokat Windows 7, Windows 10 és Windows 10 IoT Enterprise rendszerű eszközökön érheti el a Windows asztali ügyfélprogram használatával. Az ügyfél nem támogatja a 8. vagy a Windows 8,1 rendszert.
-
->[!NOTE]
->A Windows-ügyfél automatikusan alapértéke a Windows Virtual Desktop (klasszikus). Ha azonban az ügyfél észleli, hogy a felhasználó Azure Resource Manager erőforrásokkal is rendelkezik, automatikusan hozzáadja az erőforrásokat, vagy értesíti a felhasználót, hogy elérhetők.
-
-> [!IMPORTANT]
-> A Windows virtuális asztal nem támogatja a RemoteApp-és asztali kapcsolatok (RADC) ügyfelet vagy a Távoli asztali kapcsolat (MSTSC) ügyfelet.
-
-> [!IMPORTANT]
-> A Windows virtuális asztal jelenleg nem támogatja a Távoli asztal ügyfelet a Windows áruházból.
+A Windows rendszerű virtuális asztali erőforrásait Windows 10, Windows 10 IoT Enterprise és Windows 7 operációs rendszert használó eszközökön érheti el a Windows asztali ügyfélprogram használatával. Az ügyfél nem támogatja a 8. vagy a Windows 8,1 rendszert.
 
 ## <a name="install-the-windows-desktop-client"></a>A Windows asztali ügyfél telepítése
 
@@ -43,6 +34,9 @@ Telepítheti az aktuális felhasználóhoz tartozó ügyfelet, amely nem követe
 
 A telepítést követően a-ügyfél a Start menüből indítható el **Távoli asztal**keresésével.
 
+> [!IMPORTANT]
+> A Windows virtuális asztal nem támogatja a RemoteApp-és asztali kapcsolatok (RADC) ügyfelet vagy a Távoli asztali kapcsolat (MSTSC) ügyfelet.
+
 ## <a name="subscribe-to-a-workspace"></a>Előfizetés munkaterületre
 
 A munkaterületekre kétféleképpen lehet előfizetni. Az ügyfél megpróbálhatja felderíteni a munkahelyi vagy iskolai fiókja által elérhető erőforrásokat, vagy közvetlenül megadhatja az URL-címet, ahol az erőforrások olyan esetekre vonatkoznak, amikor az ügyfél nem találja őket. Miután előfizetett egy munkaterületre, az alábbi módszerek egyikével indíthatja el az erőforrásokat:
@@ -55,6 +49,9 @@ A munkaterületekre kétféleképpen lehet előfizetni. Az ügyfél megpróbálh
 1. Az ügyfél főoldalán válassza az **előfizetés**lehetőséget.
 2. Ha a rendszer kéri, jelentkezzen be a felhasználói fiókjával.
 3. Az erőforrások megjelennek a kapcsolatok központjában, és a munkaterület szerint vannak csoportosítva.
+
+>[!NOTE]
+>A Windows-ügyfél automatikusan alapértéke a Windows Virtual Desktop (klasszikus). Ha azonban az ügyfél észleli, hogy a felhasználó Azure Resource Manager erőforrásokkal is rendelkezik, automatikusan hozzáadja az erőforrásokat, vagy értesíti a felhasználót, hogy elérhetők.
 
 ### <a name="subscribe-with-a-url"></a>Előfizetés URL-címmel
 

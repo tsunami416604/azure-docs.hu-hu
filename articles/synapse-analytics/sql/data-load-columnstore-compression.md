@@ -11,12 +11,12 @@ ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 25ab7d275957aff03ad76bf2e946a98fc6cd8821
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: fecb78b240f5c983580d4bdb34535a879ffe3e2e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032962"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289276"
 ---
 # <a name="maximize-rowgroup-quality-for-columnstore-index-performance"></a>Maximalizálja a sorcsoport minőségét a oszlopcentrikus index teljesítményéhez
 
@@ -26,7 +26,7 @@ A sorcsoport minőségét a sorcsoport sorainak száma határozza meg. A rendelk
 
 Mivel a oszlopcentrikus-indexek egy táblázatot vizsgálnak az egyes sorcsoportokba való tömörítéséhez oszlopainak vizsgálatával, az egyes sorcsoport sorainak maximális száma növeli a lekérdezési teljesítményt. Ha a sorcsoportokba való tömörítéséhez nagy számú sort tartalmaz, az adattömörítés javítja azt, ami azt jelenti, hogy a lemezből kevesebb adatok olvashatók be.
 
-További információ a sorcsoportokba való tömörítéséhez: [Oszlopcentrikus indexek útmutató](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
+További információ a sorcsoportokba való tömörítéséhez: [Oszlopcentrikus indexek útmutató](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
 ## <a name="target-size-for-rowgroups"></a>Sorcsoportokba való tömörítéséhez-cél mérete
 
@@ -38,11 +38,11 @@ Tömeges betöltés vagy oszlopcentrikus index újraépítése során előfordul
 
 Ha nincs elegendő memória ahhoz, hogy legalább 10 000 sort tömörítenek az egyes sorcsoport, a rendszer hibát generál.
 
-A tömeges betöltéssel kapcsolatos további információkért lásd: [tömeges betöltés fürtözött oszlopcentrikus indexbe](/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#Bulk ).
+A tömeges betöltéssel kapcsolatos további információkért lásd: [tömeges betöltés fürtözött oszlopcentrikus indexbe](/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#Bulk&preserve-view=true ).
 
 ## <a name="how-to-monitor-rowgroup-quality"></a>A sorcsoport minőségének figyelése
 
-A DMV sys. dm_pdw_nodes_db_column_store_row_group_physical_stats ([sys. dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) tartalmazza a View definition Matching SQL db), amelyek hasznos információkat tesznek elérhetővé, például a sorok számát a sorcsoportokba való tömörítéséhez-ban, valamint a vágás okát, ha a vágás megtörtént. A következő nézetet praktikus módon is létrehozhatja a DMV lekérdezéséhez, hogy információkat kapjon a sorcsoport-vágásról.
+A DMV sys. dm_pdw_nodes_db_column_store_row_group_physical_stats ([sys. dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) tartalmazza a View definition Matching SQL db), amelyek hasznos információkat tesznek elérhetővé, például a sorok számát a sorcsoportokba való tömörítéséhez-ban, valamint a vágás okát, ha a vágás megtörtént. A következő nézetet praktikus módon is létrehozhatja a DMV lekérdezéséhez, hogy információkat kapjon a sorcsoport-vágásról.
 
 ```sql
 create view dbo.vCS_rg_physical_stats
@@ -77,14 +77,15 @@ A trim_reason_desc megadja, hogy a sorcsoport-e (trim_reason_desc = NO_TRIM azt 
 
 ## <a name="how-to-estimate-memory-requirements"></a>A memória követelményeinek becslése
 
-Egy sorcsoport tömörítéséhez szükséges maximális memória körülbelül
+Az egy sorcsoport tömörítéséhez szükséges maximális memória körülbelül a következő:
 
 - 72 MB +
 - \#sorok \* \# oszlopai \* 8 bájt +
 - \#sorok \* \# rövid-karakterlánc-oszlopok \* 32 bájt +
 - \#hosszú karakterlánc – \* 16 MB méretű oszlop a tömörítési szótárhoz
 
-ahol a rövid karakterlánc-oszlopok karakterlánc adattípusokat használnak <= 32 bájt és hosszú karakterlánc típusú oszlopokban, a > 32 bájtos karakterlánc-adattípusokat használnak.
+> [!NOTE]
+> Ahol a rövid karakterlánc-oszlopok karakterlánc adattípusokat használnak <= 32 bájt és hosszú karakterlánc típusú oszlopokban, a > 32 bájtos karakterlánc-adattípusokat használnak.
 
 A hosszú karakterláncok tömörítve lettek a szöveg tömörítésére szolgáló tömörítési módszerrel. Ez a tömörítési módszer *szótárt* használ a szöveges mintázatok tárolásához. A szótár maximális mérete 16 MB. A sorcsoport minden hosszú sztring oszlopához csak egy szótár van.
 

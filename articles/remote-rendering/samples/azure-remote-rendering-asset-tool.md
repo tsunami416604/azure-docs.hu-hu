@@ -1,16 +1,16 @@
 ---
 title: Azure Remote Rendering eszköz
-description: A Showcase-alkalmazást tároló GitHub-adattárra mutató hivatkozás
+description: További információ az Azure Remote rendering Asset (ARRT) eszközről, amely a C++/QT. fejlesztett, nyílt forráskódú asztali alkalmazás
 author: mafranc
 ms.author: mafranc
 ms.date: 06/09/2020
 ms.topic: sample
-ms.openlocfilehash: c02bb46cfdfa37fed7f9c9cc2ad3c2a426547ce8
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: e20d21f1f8b58b69ee760fd4e95d6f194e13105a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84637149"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322172"
 ---
 # <a name="azure-remote-rendering-asset-tool-arrt"></a>Azure távoli renderelési eszköz (ARRT)
 
@@ -18,7 +18,7 @@ Az Azure távoli renderelési eszköz (ARRT) egy, a C++/QT.-ben kifejlesztett, n
 
 ![ARRT](./media/azure-remote-rendering-asset-tool.png "ARRT képernyőkép")
 
-## <a name="features"></a>Szolgáltatások
+## <a name="features"></a>Funkciók
 
 Az alkalmazás az alábbiakra használható:
 
