@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a4ab403ebafbf078accd2ee2256c0c5bb69548e9
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c837a4020ab1aaad1798d6b19e72e09edafea1f5
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288269"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360352"
 ---
 # <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>Magas rendelkezésre állású architektúra és forgatókönyvek az SAP NetWeaver-hoz
 
@@ -320,7 +320,7 @@ További információ: [Azure Storage-replikáció][azure-storage-redundancy].
 ### <a name="azure-managed-disks"></a>Azure Managed Disks
 A Managed Disks Azure Resource Manager, amelyet az Azure Storage-fiókokban tárolt virtuális merevlemezek (VHD-k) helyett ajánlott használni. A felügyelt lemezek automatikusan a virtuális gép Azure-beli rendelkezésre állási készletével csatlakoznak. Megnövelik a virtuális gép és a rajta futó szolgáltatások rendelkezésre állását.
 
-További információ: az [Azure Managed Disks áttekintése][azure-storage-managed-disks-overview].
+További információ: az  [Azure Managed Disks áttekintése][azure-storage-managed-disks-overview].
 
 Javasoljuk, hogy felügyelt lemezeket használjon, mivel ezek egyszerűbbé teszik a virtuális gépek üzembe helyezését és felügyeletét.
 
@@ -332,7 +332,7 @@ Ha úgy dönt, hogy nem használ olyan funkciókat, mint például a WSFC vagy a
 
 További információ erről a megközelítésről: [Az Azure-infrastruktúra virtuális gépek újraindításának használata az SAP-rendszer magasabb rendelkezésre állásának eléréséhez][sap-higher-availability].
 
-## <a name="high-availability-of-sap-applications-on-azure-iaas"></a><a name="baed0eb3-c662-4405-b114-24c10a62954e"></a>SAP-alkalmazások magas rendelkezésre állása az Azure IaaS
+## <a name="high-availability-of-sap-applications-on-azure-iaas"></a><a name="baed0eb3-c662-4405-b114-24c10a62954e"></a> SAP-alkalmazások magas rendelkezésre állása az Azure IaaS
 
 Az SAP-rendszerek teljes körű rendelkezésre állásának eléréséhez meg kell felelnie az összes kritikus fontosságú SAP-rendszerösszetevőnek. Például:
   * Redundáns SAP-alkalmazás-kiszolgálók.
@@ -344,7 +344,7 @@ A következő részekben azt mutatjuk be, hogyan lehet magas rendelkezésre áll
 
 > Ez a szakasz a következőkre vonatkozik:
 >
-> ![Windows][Logo_Windows] Windows és ![Linux][Logo_Linux] Linux
+> ![Windows-embléma.][Logo_Windows] Windows és ![Linux-embléma.][Logo_Linux] Linux
 >
 
 Általában nincs szükség speciális, magas rendelkezésre állású megoldásra az SAP-alkalmazáskiszolgáló és a párbeszédpanel-példányok esetében. A redundancia révén magas rendelkezésre állást érhet el, és az Azure Virtual Machines különböző példányain több párbeszédpanel-példányt is konfigurálhat. Legalább két, az Azure-beli virtuális gépek két példányán telepített SAP-alkalmazás példányának kell lennie.
@@ -382,7 +382,7 @@ További információ: az Azure Virtual Machines tervezésének és megvalósít
 
 ### <a name="high-availability-architecture-for-an-sap-ascsscs-instance-on-windows"></a>Magas rendelkezésre állású architektúra egy SAP ASCS/SCS-példányhoz Windows rendszeren
 
-> ![Windows][Logo_Windows] Windows
+> ![Windows-embléma.][Logo_Windows] Windows
 >
 
 WSFC-megoldás használatával biztosíthatja az SAP ASCS/SCS-példányok elleni védekezést. A megoldás két változattal rendelkezik:
@@ -395,7 +395,7 @@ WSFC-megoldás használatával biztosíthatja az SAP ASCS/SCS-példányok elleni
 
 ### <a name="high-availability-architecture-for-an-sap-ascsscs-instance-on-linux"></a>Magas rendelkezésre állású architektúra egy SAP ASCS/SCS-példányhoz Linux rendszeren
 
-> ![Linux][Logo_Linux] Linux
+> ![Linux-embléma.][Logo_Linux] Linux
 > 
 > Az SAP ASCS/SCS-példány SLES-keretrendszerrel való fürtözésével kapcsolatos további információkért lásd: [magas rendelkezésre állás az SAP NetWeaver Azure-beli virtuális gépeken az SAP-alkalmazások SUSE Linux Enterprise Server][sap-suse-ascs-ha]. A magas rendelkezésre állású NFS-SLES esetében, amely nem igényel magas rendelkezésre állású NFS-t, az SAP [NetWeaver SUSE Linux Enterprise Server Azure NETAPP Files SAP-alkalmazásokhoz című témakör magas rendelkezésre állású útmutatója][sap-suse-ascs-ha-anf].
 
@@ -404,7 +404,7 @@ Az SAP ASCS/SCS-példány Red Hat cluster Framework használatával történő f
 
 ### <a name="sap-netweaver-multi-sid-configuration-for-a-clustered-sap-ascsscs-instance"></a>SAP NetWeaver multi-SID konfiguráció egy fürtözött SAP ASCS/SCS-példányhoz
 
-> ![Windows][Logo_Windows] Windows
+> ![Windows-embléma.][Logo_Windows] Windows
 > 
 > A többszörös SID a WSFC és a megosztott lemez használatával támogatott.
 > 
@@ -414,7 +414,7 @@ Az SAP ASCS/SCS-példány Red Hat cluster Framework használatával történő f
 
 * [SAP ASCS/SCS instance multi-SID magas rendelkezésre állás a Windows Server feladatátvételi fürtszolgáltatás és a megosztott lemez számára][sap-ascs-ha-multi-sid-wsfc-shared-disk]
 
-> ![Linux][Logo_Linux] Linux
+> ![Linux-embléma.][Logo_Linux] Linux
 > 
 > A többszörös SID-fürtszolgáltatás támogatott a Linux pacemaker-fürtökön az SAP ASCS/ERS számára, amely ugyanazon a fürtön **öt** SAP-SID-re korlátozódik.
 > A több SID magas rendelkezésre állású architektúrával kapcsolatos további információkért lásd:

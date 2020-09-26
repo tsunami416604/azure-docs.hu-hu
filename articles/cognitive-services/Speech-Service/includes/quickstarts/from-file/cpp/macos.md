@@ -4,19 +4,19 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: fb0174f831d99d3088171448c7b23163eb1d9fc8
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 1dfe1e24b61326a8b131efd81f79f3d86f10711c
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88226309"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91377166"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az első lépések előtt ügyeljen a következőre:
 
 > [!div class="checklist"]
-> * [Azure Speech-erőforrás létrehozása](../../../../get-started.md)
+> * [Azure Speech-erőforrás létrehozása](../../../../overview.md#try-the-speech-service-for-free)
 > * [Állítsa be a fejlesztési környezetet, és hozzon létre egy üres projektet](../../../../quickstarts/setup-platform.md?tabs=macos&pivots=programming-language-cpp)
 
 [!INCLUDE [Audio input format](~/articles/cognitive-services/speech-service/includes/audio-input-format-chart.md)]
@@ -68,6 +68,6 @@ Az első lépések előtt ügyeljen a következőre:
    We recognized: What's the weather like?
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [Speech recognition basics](../../speech-to-text-next-steps.md)]

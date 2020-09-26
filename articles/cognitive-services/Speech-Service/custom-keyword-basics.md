@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/20/2019
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d80f244f7b5e17d730451093070b971e9aa041b9
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 188824b9c43387cf106a3cdd53a09fd6bcb198b8
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88919012"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360667"
 ---
 # <a name="custom-keyword-basics"></a>Az egyéni kulcsszavak alapjai
 
@@ -24,7 +24,7 @@ Ebből a cikkből megtudhatja, hogyan használhatja az egyéni kulcsszavakat a S
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A cikkben ismertetett lépések egy beszédfelismerési előfizetést és a Speech SDK-t igénylik. Ha még nem rendelkezik előfizetéssel, [próbálja ki ingyenesen a Speech szolgáltatást](get-started.md). Az SDK beszerzéséhez tekintse meg a platform [telepítési útmutatóját](quickstarts/setup-platform.md) .
+A cikkben ismertetett lépések egy beszédfelismerési előfizetést és a Speech SDK-t igénylik. Ha még nem rendelkezik előfizetéssel, [próbálja ki ingyenesen a Speech szolgáltatást](overview.md#try-the-speech-service-for-free). Az SDK beszerzéséhez tekintse meg a platform [telepítési útmutatóját](quickstarts/setup-platform.md) .
 
 ## <a name="create-a-keyword-in-speech-studio"></a>Kulcsszó létrehozása a Speech Studióban
 
@@ -84,6 +84,6 @@ KeywordRecognitionResult result = await keywordRecognizer.RecognizeOnceAsync(key
 > [!NOTE]
 > Az itt látható példa a helyi kulcsszavas felismerést használja, mert nincs szükség `SpeechConfig` objektumra a hitelesítési környezethez, és nem lép kapcsolatba a háttérrel. A kulcsszó-felismerést és az ellenőrzést azonban [folyamatos háttérbeli kapcsolatok](https://docs.microsoft.com/azure/cognitive-services/speech-service/tutorial-voice-enable-your-bot-speech-sdk#view-the-source-code-that-enables-keyword)használatával is futtathatja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tesztelje egyéni kulcsszavait a [Speech Devices SDK](https://aka.ms/sdsdk-quickstart)rövid útmutatójában.

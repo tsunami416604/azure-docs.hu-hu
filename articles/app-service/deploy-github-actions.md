@@ -7,12 +7,12 @@ ms.date: 10/25/2019
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: devx-track-python
-ms.openlocfilehash: 264976fdfe514a8778c60fe9242ac555f268718d
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 54e4ce409eb9f2a6bedd7861b3e268311f886b49
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962570"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273245"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>Üzembe helyezés a App Service GitHub-műveletek használatával
 
@@ -24,12 +24,28 @@ A [GitHub-műveletek](https://help.github.com/en/articles/about-github-actions) 
 
 A munkafolyamatot egy YAML-(. YML) fájl határozza meg a `/.github/workflows/` tárház elérési útjában. Ez a definíció a munkafolyamatot alkotó különböző lépéseket és paramétereket tartalmazza.
 
+## <a name="use-the-deployment-center"></a>A központi telepítési központ használata
+
+Gyorsan megkezdheti a GitHub-műveleteket a App Service Deployment Center használatával. Ez automatikusan létrehozza a munkafolyamat-fájlt az alkalmazás verem alapján, és véglegesíti azt a GitHub-tárházban a megfelelő könyvtárban.
+
+1. Navigáljon a webapphoz az Azure Portalon
+1. A bal oldalon kattintson a **központi telepítési központ** elemre.
+1. A **folyamatos üzembe helyezés (CI/CD)** alatt válassza a **GitHub** elemet.
+1. Ezután válassza a **GitHub-műveletek** elemet.
+1. A legördülő lista használatával kiválaszthatja a GitHub-tárházat, az ág és az alkalmazás veremét
+    - Ha a kiválasztott ág védett, továbbra is hozzáadhatja a munkafolyamat-fájlt. A folytatás előtt tekintse át a fiókirodák védelmét.
+1. Az utolsó képernyőn áttekintheti a beállításokat, és megtekintheti a tárházban véglegesíteni kívánt munkafolyamat-fájlt. Ha a beállítások helyesek, kattintson a **Befejezés** gombra.
+
+Ezzel véglegesíti a munkafolyamat-fájlt a tárházban. Az alkalmazás létrehozásához és üzembe helyezéséhez szükséges munkafolyamat azonnal elindul.
+
+## <a name="add-the-workflow-manually"></a>Manuálisan adja hozzá a munkafolyamatot
+
 Azure App Service munkafolyamathoz a fájl három szakaszt tartalmaz:
 
 |Section  |Feladatok  |
 |---------|---------|
 |**Hitelesítés** | 1. Adjon meg egy szolgáltatásnevet. <br /> 2. hozzon létre egy GitHub-titkot. |
-|**Építeni** | 1. Állítsa be a környezetet. <br /> 2. hozza létre a webalkalmazást. |
+|**Létrehozás** | 1. Állítsa be a környezetet. <br /> 2. hozza létre a webalkalmazást. |
 |**Telepítés** | 1. Telepítse a webalkalmazást. |
 
 ## <a name="generate-deployment-credentials"></a>Központi telepítési hitelesítő adatok előállítása
@@ -75,7 +91,7 @@ A [githubon](https://github.com/)tallózzon a tárházban, válassza a **beáll�
 
 [Felhasználói szintű hitelesítő adatok](#generate-deployment-credentials)használatához illessze be a teljes JSON-kimenetet az Azure CLI-parancsból a titkos kulcs érték mezőjébe. Adja meg a titkot a nevet, például: `AZURE_CREDENTIALS` .
 
-Amikor később konfigurálja a munkafolyamat-fájlt, az `creds` Azure bejelentkezési művelethez tartozó titkos kulcsot használja. Például:
+Amikor később konfigurálja a munkafolyamat-fájlt, az `creds` Azure bejelentkezési művelethez tartozó titkos kulcsot használja. Példa:
 
 ```yaml
 - uses: azure/login@v1
@@ -89,7 +105,7 @@ A [githubon](https://github.com/)tallózzon a tárházban, válassza a **beáll�
 
 Az [alkalmazás szintű hitelesítő adatok](#generate-deployment-credentials)használatához illessze be a letöltött közzétételi profil tartalmát a titkos kulcs érték mezőjébe. Adja meg a titkot a nevet, például: `azureWebAppPublishProfile` .
 
-Ha később konfigurálja a munkafolyamat-fájlt, az `publish-profile` Azure-webalkalmazás üzembe helyezése művelet titkát kell használnia. Például:
+Ha később konfigurálja a munkafolyamat-fájlt, az `publish-profile` Azure-webalkalmazás üzembe helyezése művelet titkát kell használnia. Példa:
     
 ```yaml
 - uses: azure/webapps-deploy@v2

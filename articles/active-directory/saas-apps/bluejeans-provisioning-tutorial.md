@@ -11,19 +11,19 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 0b90389f6ae88a073f3961cc2f0957d22e190fe0
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7d3aafe93c92a1c756358dfb60a2ca976036d8b8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545454"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273688"
 ---
 # <a name="tutorial-configure-bluejeans-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés BlueJeans konfigurálása
 
 Az oktatóanyag célja annak bemutatása, hogy milyen lépéseket kell végrehajtani a BlueJeans és a Azure Active Directory (Azure AD) szolgáltatásban az Azure AD konfigurálásához, hogy a felhasználók és/vagy csoportok automatikusan kiépítsék és kiépítsék a BlueJeans.
 
 > [!NOTE]
-> Ez az oktatóanyag az Azure AD-beli felhasználói kiépítési szolgáltatásra épülő összekötőt ismerteti. A szolgáltatás működésének, működésének és gyakori kérdéseinek részletes ismertetését lásd: a felhasználók üzembe helyezésének [automatizálása és az SaaS-alkalmazások kiépítése Azure Active Directory használatával](../app-provisioning/user-provisioning.md).
+> Ez az oktatóanyag az Azure AD-beli felhasználói kiépítési szolgáltatásra épülő összekötőt ismerteti. A szolgáltatás funkcióival, működésével és a gyakori kérdésekkel kapcsolatos fontos részletekért lásd: [Felhasználók átadásának és megszüntetésének automatizálása a SaaS-alkalmazásokban az Azure Active Directoryval](../app-provisioning/user-provisioning.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -89,13 +89,13 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Az BlueJeans hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. Válassza ki a **kiépítés** lapot.
+3. Válassza a **Kiépítés** lapot.
 
-    ![BlueJeans kiépítés](./media/bluejeans-provisioning-tutorial/BluejeansProvisioningTab.png)
+    ![Képernyőkép a BlueJeans Enterprise Application Sidebarról a Kiemelt kiépítési lehetőséggel és a kihívással.](./media/bluejeans-provisioning-tutorial/BluejeansProvisioningTab.png)
 
-4. Állítsa a **kiépítési módot** **automatikus**értékre.
+4. Állítsa a **Kiépítési mód** mezőt **Automatikus** értékre.
 
-    ![BlueJeans kiépítés](./media/bluejeans-provisioning-tutorial/Bluejeans1.png)
+    ![A kiépítési mód és a rendszergazdai hitelesítő adatok című rész képernyőképe.](./media/bluejeans-provisioning-tutorial/Bluejeans1.png)
 
 5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a BlueJeans-fiókjának **rendszergazdai felhasználónevét**és **rendszergazdai jelszavát** . Ilyen értékek például a következők:
 
@@ -105,35 +105,35 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 6. Az 5. lépésben megjelenő mezők kitöltése után kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad képes legyen csatlakozni a BlueJeans. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a BlueJeans-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
-    ![BlueJeans kiépítés](./media/bluejeans-provisioning-tutorial/BluejeansTestConnection.png)
+    ![Képernyőkép a rendszergazdai hitelesítő adatokról című szakaszban, az elnevezett kapcsolatok tesztelése lehetőséggel.](./media/bluejeans-provisioning-tutorial/BluejeansTestConnection.png)
 
 7. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
 
-    ![BlueJeans kiépítés](./media/bluejeans-provisioning-tutorial/BluejeansNotificationEmail.png)
+    ![Képernyőkép az értesítő e-mailek szövegmezőről.](./media/bluejeans-provisioning-tutorial/BluejeansNotificationEmail.png)
 
 8. Kattintson a **Mentés** gombra.
 
 9. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a BlueJeans**lehetőséget.
 
-    ![BlueJeans kiépítés](./media/bluejeans-provisioning-tutorial/BluejeansMapping.png)
+    ![A leképezések szakasz képernyőképe a Azure Active Directory felhasználók szinkronizálása a BlueJeans lehetőségre kiemelve.](./media/bluejeans-provisioning-tutorial/BluejeansMapping.png)
 
 10. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelési** szakaszban található BlueJeans. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a BlueJeans felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-    ![BlueJeans kiépítés](./media/bluejeans-provisioning-tutorial/BluejeansUserMappingAtrributes.png)
+    ![Képernyőfelvétel: az attribútum-hozzárendelések szakasz, amelyen hét leképezés látható.](./media/bluejeans-provisioning-tutorial/BluejeansUserMappingAtrributes.png)
 
-11. A hatóköri szűrők konfigurálásához tekintse meg az alábbi utasításokat a [hatókör szűrője oktatóanyagban](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+11. Hatókörszűrők konfigurálásához tekintse meg a [hatókörszűrővel kapcsolatos oktatóanyagban](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) szereplő következő utasításokat.
 
 12. Az Azure AD-kiépítési szolgáltatás BlueJeans való engedélyezéséhez módosítsa a **kiépítési állapotot** **a** **Beállítások** szakaszban.
 
-    ![BlueJeans kiépítés](./media/bluejeans-provisioning-tutorial/BluejeansProvisioningStatus.png)
+    ![Képernyőfelvétel a beállítások szakaszról a létesítési állapot beállítás értéke: on.](./media/bluejeans-provisioning-tutorial/BluejeansProvisioningStatus.png)
 
 13. Adja meg a BlueJeans kiépíteni kívánt felhasználókat és/vagy csoportokat a **Settings (beállítások** ) szakasz **hatókörében** a kívánt értékek kiválasztásával.
 
-    ![BlueJeans kiépítés](./media/bluejeans-provisioning-tutorial/UserGroupSelection.png)
+    ![Képernyőfelvétel a hatókör beállításról a kijelölt felhasználók és csoportok szinkronizálása lehetőség kiemelve.](./media/bluejeans-provisioning-tutorial/UserGroupSelection.png)
 
-14. Ha készen áll a létesítésre, kattintson a **Mentés**gombra.
+14. Amikor készen áll az átadásra, kattintson a **Mentés** gombra.
 
-    ![BlueJeans kiépítés](./media/bluejeans-provisioning-tutorial/SaveProvisioning.png)
+    ![Képernyőkép a BlueJeans Enterprise Application Sidebarról a Save nevű mentés lehetőséggel.](./media/bluejeans-provisioning-tutorial/SaveProvisioning.png)
 
 Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghatározott összes felhasználó és/vagy csoport kezdeti szinkronizálását. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg az Azure AD kiépítési szolgáltatás fut. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenységre mutató hivatkozásokat, amelyek az Azure ad-kiépítési szolgáltatás által a BlueJeans-on végrehajtott összes műveletet ismertetik.
 
@@ -145,12 +145,12 @@ Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további informáci
 
 ## <a name="additional-resources"></a>További források
 
-* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>További lépések
 
-* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../app-provisioning/check-status-user-account-provisioning.md)
+* [Tudnivalók a naplók áttekintéséről és az átadási tevékenységekkel kapcsolatos jelentések lekéréséről](../app-provisioning/check-status-user-account-provisioning.md)
 
 <!--Image references-->
 

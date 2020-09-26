@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/25/2019
 ms.author: jafreebe
 ms.reviewer: ushan
-ms.openlocfilehash: 6af23aba28ce3cda9982878ed08ec515aa25633a
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 7f2824f4dcacb26d8941f51db6129aea0bb5f915
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962604"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273279"
 ---
 # <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>Egyéni tároló üzembe helyezése a GitHub-műveletek használatával App Service
 
@@ -28,7 +28,7 @@ Azure App Service tároló munkafolyamathoz a fájl három szakaszt tartalmaz:
 |Section  |Feladatok  |
 |---------|---------|
 |**Hitelesítés** | 1. Adjon meg egy szolgáltatásnevet. <br /> 2. hozzon létre egy GitHub-titkot. |
-|**Építeni** | 1. Állítsa be a környezetet. <br /> 2. hozza létre a tároló rendszerképét. |
+|**Létrehozás** | 1. Állítsa be a környezetet. <br /> 2. hozza létre a tároló rendszerképét. |
 |**Telepítés** | 1. Telepítse a tároló lemezképét. |
 
 ## <a name="create-a-service-principal"></a>Egyszerű szolgáltatás létrehozása
@@ -62,7 +62,7 @@ A [githubon](https://github.com/)tallózzon a tárházban, válassza a **beáll�
 
 Illessze be a JSON-kimenet tartalmát az [egyszerű szolgáltatásnév létrehozása](#create-a-service-principal) a titkos változó értékeként. Adja meg a titkot a nevet, például: `AZURE_CREDENTIALS` .
 
-Amikor később konfigurálja a munkafolyamat-fájlt, az `creds` Azure bejelentkezési művelethez tartozó titkos kulcsot használja. Például:
+Amikor később konfigurálja a munkafolyamat-fájlt, az `creds` Azure bejelentkezési művelethez tartozó titkos kulcsot használja. Példa:
 
 ```yaml
 - uses: azure/login@v1
@@ -110,7 +110,7 @@ jobs:
 
 ## <a name="deploy-to-an-app-service-container"></a>Üzembe helyezés App Service tárolón
 
-Ha a lemezképet a App Serviceban lévő egyéni tárolóba szeretné telepíteni, használja a `azure/webapps-container-deploy@v1` műveletet. Ehhez a művelethez öt paraméter tartozik:
+Ha a lemezképet a App Serviceban lévő egyéni tárolóba szeretné telepíteni, használja a `azure/webapps-container-deploy@v2` műveletet. Ehhez a művelethez öt paraméter tartozik:
 
 | **Paraméter**  | **Magyarázat**  |
 |---------|---------|
@@ -150,7 +150,7 @@ jobs:
         docker build . -t contoso.azurecr.io/nodejssampleapp:${{ github.sha }}
         docker push contoso.azurecr.io/nodejssampleapp:${{ github.sha }} 
       
-    - uses: azure/webapps-container-deploy@v1
+    - uses: azure/webapps-container-deploy@v2
       with:
         app-name: 'node-rnc'
         images: 'contoso.azurecr.io/nodejssampleapp:${{ github.sha }}'

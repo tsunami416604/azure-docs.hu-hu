@@ -1,6 +1,6 @@
 ---
 title: 'Oktatóanyag: biztonsági fejlécek hozzáadása a szabályok motorral – Azure bejárati ajtó'
-description: Ebből a cikkből megtudhatja, hogyan konfigurálhat egy biztonsági fejlécet az Azure-beli előtérben található Rules Engine használatával
+description: Ebből az oktatóanyagból megtudhatja, hogyan konfigurálhat biztonsági fejléceket az Azure-beli előtérben található Rules Engine használatával
 services: frontdoor
 documentationcenter: ''
 author: duongau
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/14/2020
 ms.author: duau
-ms.openlocfilehash: 204a7676fd03466929fc67a0879ff28e0318d21d
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 1727193faa028a1d681f2a74df950afeb9570ec9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085236"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91270049"
 ---
 # <a name="tutorial-add-security-headers-with-rules-engine"></a>Oktatóanyag: biztonsági fejlécek hozzáadása a Rules Engine szolgáltatással
 

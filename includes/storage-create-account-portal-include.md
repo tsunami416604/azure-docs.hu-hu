@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 09/24/2020
+ms.date: 09/25/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 9eff9b5356f3201f151cc959a96b070d2afaa267
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: bed8475e5d6c7bf26003672b6cf9ce51a82384ad
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91283452"
+ms.locfileid: "91377174"
 ---
 Kövesse az alábbi lépéseket egy általános célú v2-tárfiók létrehozásához az Azure Portalon:
 
@@ -27,7 +27,7 @@ Kövesse az alábbi lépéseket egy általános célú v2-tárfiók létrehozás
 1. Állítsa a **Fiók típusa** mezőt a *Storage v2 (általános célú v2)* értékre.
 1. Annak meghatározása, hogy a rendszer hogyan replikálja a Storage-fiókot. Az alapértelmezett replikációs beállítás a következő: *olvasási hozzáférés geo-redundáns tárolás (ra-GRS)*. Az elérhető replikációs lehetőségekkel kapcsolatos további információkért lásd: [Azure Storage redundancia](../articles/storage/common/storage-redundancy.md).
 1. Határozza meg a Blobok hozzáférési szintjét a Storage-fiókban. Az alapértelmezett szint a *gyors*. A blob-hozzáférési rétegekkel kapcsolatos további információkért lásd: gyakori [, ritka elérésű és archív hozzáférési szintek a blobokhoz](../articles/storage/blobs/storage-blob-storage-tiers.md).
-1. A [Azure Data Lake Storage](/services/storage/data-lake-storage/)használatához válassza a **speciális** fület, majd állítsa be a **hierarchikus névteret** **engedélyezve**értékre.
+1. A Azure Data Lake Storage használatához válassza a **speciális** fület, majd állítsa be a **hierarchikus névteret** **engedélyezve**értékre. További információ: [Azure Data Lake Storage Gen2 bevezetés](../articles/storage/blobs/data-lake-storage-introduction.md)
 1. A tárfiók beállításainak áttekintéséhez és a fiók létrehozásához válassza a **Felülvizsgálat + létrehozás** elemet.
 1. Kattintson a **Létrehozás** gombra.
 

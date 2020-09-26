@@ -9,14 +9,14 @@ ms.devlang: PowerShell
 ms.topic: sample
 author: stevestein
 ms.author: sstein
-ms.reviewer: carlrab
+ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 432f9a3e6af60beda9dd8a8dd1237cb93cc40639
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 194c2466e29c15ac35cf0bd88b90bf9f816e9035
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084928"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91284465"
 ---
 # <a name="use-powershell-to-sync-data-between-sql-database-and-sql-server"></a>Az SQL Database és SQL Server közötti adatszinkronizálás a PowerShell használatával
 
@@ -305,7 +305,7 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | [Get-AzSqlSyncGroupLog](/powershell/module/az.sql/Get-azSqlSyncGroupLog) |  Ellenőrzi a szinkronizálási naplót. |
 |||
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure PowerShellről [az Azure PowerShell dokumentációjában](/powershell/azure/) talál további információt.
 

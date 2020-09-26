@@ -11,19 +11,19 @@ ms.topic: include
 ms.date: 04/02/2020
 ms.author: erhopf
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 48a80d7367943c2c86fd3822a5c236b0cdf11846
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: f89bdbfd144fb327c1daae020a1e371c00045859
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88926425"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91377610"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az első lépések előtt:
 
 > [!div class="checklist"]
-> * [Azure Speech-erőforrás létrehozása](../../../../get-started.md)
+> * [Azure Speech-erőforrás létrehozása](../../../../overview.md#try-the-speech-service-for-free)
 > * [Állítsa be a fejlesztési környezetet, és hozzon létre egy üres projektet](../../../../quickstarts/setup-platform.md?tabs=xamarin&pivots=programming-language-csharp)
 > * Győződjön meg arról, hogy van hozzáférése egy mikrofonhoz a hangrögzítéshez
 
@@ -145,6 +145,6 @@ Most adja hozzá a C#-kódot, amely meghatározza az alkalmazás UWP-specifikus 
 
 Az Android-és iOS-alkalmazások kiépítése és futtatása az eszközön vagy a szimulátoron hasonló módon történik a UWP. Győződjön meg arról, hogy az összes SDK megfelelően van telepítve a jelen cikk "Előfeltételek" szakaszában.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [Speech recognition basics](../../speech-to-text-next-steps.md)]
