@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 09/01/2020
+ms.date: 09/21/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.workload: identity
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12aa400d6ca44043d3d90e78a93ae49d97a927e8
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: d281b0ecd38ebbb76e093fd4f85213da4fc7d713
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89270150"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265789"
 ---
 # <a name="billing-model-for-azure-ad-external-identities"></a>Számlázási modell az Azure AD külső identitásokhoz
 
@@ -43,11 +43,11 @@ A vendég felhasználóinak díjszabási szintje az Azure AD-bérlőhöz rendelt
 
 ## <a name="link-your-azure-ad-tenant-to-a-subscription"></a>Az Azure AD-bérlő összekapcsolása egy előfizetéssel
 
-Egy Azure AD-bérlőt egy Azure-előfizetéshez kell kapcsolni a megfelelő számlázáshoz és a funkciókhoz való hozzáféréshez.
+Egy Azure AD-bérlőt egy Azure-előfizetéshez kell kapcsolni a megfelelő számlázáshoz és a funkciókhoz való hozzáféréshez. Ha a címtár még nem rendelkezik olyan előfizetéssel, amelyhez csatolva van, lehetősége lesz hozzáadni egyet a folyamat során.
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com/) egy olyan Azure-fiókkal, amely legalább a [közreműködő](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) szerepkörhöz van rendelve az előfizetésben vagy az előfizetésben található erőforráscsoporthoz.
 
-2. Válassza ki az előfizetést tartalmazó könyvtárat: a Azure Portal eszköztáron válassza ki a **címtár + előfizetés** ikont, majd válassza ki az előfizetést tartalmazó könyvtárat.
+2. Válassza ki a csatolni kívánt könyvtárat: a Azure Portal eszköztáron válassza ki a **címtár + előfizetés** ikont, majd válassza ki a könyvtárat.
 
     ![Válassza ki a címtár + előfizetés ikont](media/external-identities-pricing/portal-mau-pick-directory.png)
 
@@ -63,10 +63,13 @@ Egy Azure AD-bérlőt egy Azure-előfizetéshez kell kapcsolni a megfelelő szá
 
 7. Az előfizetés csatolása ablaktáblán válassza ki az **előfizetést** és az **erőforráscsoportot**. Ezután válassza az **Alkalmaz** lehetőséget.
 
+   > [!NOTE]
+   > Ha nincsenek felsorolt előfizetések, hozzárendelhet [egy előfizetést a bérlőhöz](../fundamentals/active-directory-how-subscriptions-associated-directory.md). Másik lehetőségként új előfizetést is hozzáadhat, ha még **nincs előfizetése, akkor**a hivatkozásra kattintva létrehozhat egyet.
+
     ![Előfizetés és erőforráscsoport kiválasztása](media/external-identities-pricing/link-subscription-resource.png)
 
 A lépések elvégzése után az Azure-előfizetését az Azure Direct vagy a Nagyvállalati Szerződés részletei alapján számítjuk fel, ha van ilyen.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A legfrissebb díjszabási információkért lásd: [Azure Active Directory díjszabása](https://azure.microsoft.com/pricing/details/active-directory/).

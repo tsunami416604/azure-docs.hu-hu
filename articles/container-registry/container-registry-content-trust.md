@@ -3,12 +3,12 @@ title: Aláírt lemezképek kezelése
 description: Megtudhatja, hogyan engedélyezheti a tartalom megbízhatóságát az Azure Container registryben, valamint leküldheti és lekérheti az aláírt képeket. A tartalom megbízhatósága a prémium szintű szolgáltatási szint egyik funkciója.
 ms.topic: article
 ms.date: 09/06/2019
-ms.openlocfilehash: 34bb56bab869cb1f12541b65c59b06a73b215377
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 36d2a8ddef184804facdace2d517d7e2fdf1b24c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076853"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253479"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>A tartalmak megbízhatósága az Azure Container Registryben
 
@@ -40,7 +40,7 @@ Első lépésként az adatbázis szintjén kell engedélyezni a tartalommegbízh
 
 A tartalommegbízhatóság az adatbázisban való engedélyezéséhez először lépjen az adatbázishoz az Azure Portalon. A **házirendek**területen válassza a **tartalom-megbízhatóság**  >  **engedélyezve**  >  **Mentés**lehetőséget. Az Azure CLI-ben az az [ACR config Content-Trust Update][az-acr-config-content-trust-update] parancsot is használhatja.
 
-![Tartalommegbízhatóság engedélyezése egy adatbázishoz az Azure Portalon][content-trust-01-portal]
+![A képernyőképen látható, hogy a Azure Portal beállításjegyzékében engedélyezve van-e a tartalom megbízhatósága.][content-trust-01-portal]
 
 ## <a name="enable-client-content-trust"></a>A tartalommegbízhatóság engedélyezése az ügyfeleken
 
@@ -194,7 +194,7 @@ A tartalommegbízhatóság az adatbázisban való letiltásához lépjen az adat
 
 ![Tartalommegbízhatóság letiltása egy adatbázisban az Azure Portalon][content-trust-03-portal]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A tartalom megbízhatóságával kapcsolatos további információkért tekintse meg a [tartalom megbízhatósága a Docker-ben][docker-content-trust] című témakört. Bár több lényeges pontot is érintettünk ebben a cikkben, a tartalommegbízhatóság egy kiterjedtebb téma, amellyel részletesebben a Docker dokumentációja foglalkozik.
 
