@@ -17,12 +17,12 @@ ms.date: 03/24/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99e15c6d1ca33623151b7a2d75e3e28878f673ef
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 2791b62d8abb1ade199ae3eb72deaf4db56f3725
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90603594"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361296"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Bejelentkezési tevékenységre vonatkozó jelentések az Azure Active Directory portálon
 
@@ -142,18 +142,18 @@ A **hely** – a hálózatról kezdeményezett hely:
 ![Ügyfélalkalmazás-szűrő](./media/concept-sign-ins/client-app-filter.png)
 
 
-|Name|Modern hitelesítés|Leírás|
+|Name|Modern hitelesítés|Description|
 |---|:-:|---|
 |Hitelesített SMTP| |Az e-mail-üzenetek küldéséhez használja a POP és az IMAP-ügyfél.|
 |Automatikus észlelési| |Az Outlook és az EAS-ügyfelek használják a postaládák keresésére és az Exchange Online-ban való kapcsolódására.|
 |Exchange ActiveSync| |Ez a szűrő az összes olyan bejelentkezési kísérletet megjeleníti, ahol az EAS-protokollt megkísérelték.|
-|Böngésző|![Pipa](./media/concept-sign-ins/check.png)|Az összes bejelentkezési kísérlet megjelenítése a felhasználóktól a böngészőben|
+|Böngésző|![Kék pipa.](./media/concept-sign-ins/check.png)|Az összes bejelentkezési kísérlet megjelenítése a felhasználóktól a böngészőben|
 |Exchange ActiveSync| | Az Exchange ActiveSync használatával az Exchange Online-hoz való kapcsolódáshoz szükséges összes bejelentkezési kísérletet megjeleníti a felhasználóktól|
 |Exchange Online PowerShell| |Az Exchange Online-hoz távoli PowerShell-lel való kapcsolódáshoz használatos. Ha letiltja az Exchange Online PowerShell alapszintű hitelesítését, a kapcsolódáshoz az Exchange Online PowerShell-modult kell használnia. Útmutatásért lásd: [Kapcsolódás az Exchange Online powershellhez a multi-Factor Authentication használatával](/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell).|
 |Webes Exchange-szolgáltatások| |Az Outlook, az Outlook for Mac és a harmadik féltől származó alkalmazások által használt programozási felület.|
 |IMAP4| |Egy örökölt levelezési ügyfélprogram, amely az IMAP használatával kéri le az e-maileket.|
 |MAPI HTTP-n keresztül| |Az Outlook 2010 és újabb verziók használják.|
-|Mobile apps és asztali ügyfelek|![Kék pipa](./media/concept-sign-ins/check.png)|Megjeleníti a felhasználók által a Mobile apps és az asztali ügyfelek használatával történő bejelentkezési kísérleteket.|
+|Mobile apps és asztali ügyfelek|![Kék pipa.](./media/concept-sign-ins/check.png)|Megjeleníti a felhasználók által a Mobile apps és az asztali ügyfelek használatával történő bejelentkezési kísérleteket.|
 |Kapcsolat nélküli címjegyzék| |Az Outlook által letöltött és használt címlista-gyűjtemények másolata.|
 |Outlook bárhol (RPC HTTP-n keresztül)| |Az Outlook 2016 és korábbi verziók használják.|
 |Outlook-szolgáltatás| |A Windows 10 rendszerhez készült mail és naptár alkalmazás használja.|
@@ -275,7 +275,7 @@ A [Microsoft 365 felügyeleti központban](/office365/admin/admin-overview/about
 
 Az [Office 365 felügyeleti API](/office/office-365-management-api/office-365-management-apis-overview)-k használatával programozott módon is elérheti a Microsoft 365 tevékenység naplóit.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Bejelentkezési tevékenység jelentésének hibakódja](reference-sign-ins-error-codes.md)
 * [Az Azure AD adatmegőrzési szabályzatai](reference-reports-data-retention.md)

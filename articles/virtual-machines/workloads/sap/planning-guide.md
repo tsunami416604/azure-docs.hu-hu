@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 08/17/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3050d0c61b6278b32b8e9272f228a863c9a0a244
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 8884711bbb32054ca1d8e4d9f9e7dee753f0c629
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89458688"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361925"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines az SAP NetWeaver tervezése és megvalósítása
 
@@ -314,7 +314,7 @@ A tanulmány kiegészíti az SAP-telepítési dokumentációt és az SAP-megjegy
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 A felhő-számítástechnika egy széles körben használt kifejezés, amely egyre nagyobb jelentőséggel bír az informatikai iparban, a kisvállalkozásoktól egészen a nagy és a multinacionális vállalatokig.
 
 A Microsoft Azure a Microsoft Cloud Services platformja, amely az új lehetőségek széles spektrumát kínálja. Mostantól az ügyfelek gyorsan üzembe helyezhetik és kioszthatják az alkalmazásokat a felhőben, így azok nem korlátozódnak technikai vagy költségvetési korlátozásokra. Az idő és a költségvetés hardveres infrastruktúrába való befektetése helyett a vállalatok az alkalmazásra, az üzleti folyamatokra, valamint az ügyfelek és a felhasználók számára nyújtott előnyökre is koncentrálnak.
@@ -348,7 +348,7 @@ A dokumentum teljes egészében a következő kifejezéseket használjuk:
 
 
 
-### <a name="resources"></a><a name="e55d1e22-c2c8-460b-9897-64622a34fdff"></a>További források
+### <a name="resources"></a><a name="e55d1e22-c2c8-460b-9897-64622a34fdff"></a>Források
 [Itt](./get-started.md)található az Azure dokumentációjában az SAP-számítási feladatok belépési pontja. Ettől a belépési ponttól kezdve számos cikket talál, amelyek a következő témaköröket fedik le:
 
 - SAP NetWeaver és Business One az Azure-ban
@@ -365,7 +365,7 @@ A dokumentum teljes egészében a következő kifejezéseket használjuk:
 
 A következő SAP-megjegyzések az Azure-beli SAP-vel kapcsolatos témakörhöz kapcsolódnak:
 
-| Megjegyzés száma | Title |
+| Megjegyzés száma | Cím |
 | --- | --- |
 | [1928533] |SAP-alkalmazások az Azure-ban: támogatott termékek és méretezés |
 | [2015553] |SAP on Microsoft Azure: támogatási előfeltételek |
@@ -514,11 +514,11 @@ Microsoft Azure Virtual Machines eltérő tárolási típusokat használ. Az SAP
 Az Azure-beli virtuális gépek nem állandó lemezeket kínálnak a virtuális gép üzembe helyezése után. A virtuális gépek újraindításakor a rendszer a meghajtókon lévő összes tartalmat törli. Ezért az is előfordulhat, hogy az adatfájlok és az adatbázisok naplófájljainak naplózása vagy visszaállítása semmilyen körülmények között nem található meg a nem megőrzött meghajtókon. Előfordulhat, hogy egyes adatbázisok esetében kivételek vannak, ahol ezek a nem megőrzött meghajtók alkalmasak lehetnek a tempdb és a temp tablespaces-hez. Ne használja azonban ezeket a meghajtókat A-sorozatú virtuális gépekhez, mivel ezek a nem megőrzött meghajtók korlátozottak az adott virtuálisgép-családdal való átviteli sebességben. További részletekért olvassa el a [Windows rendszerű virtuális gépek ideiglenes meghajtójának ismertetése az Azure-ban](/archive/blogs/mast/understanding-the-temporary-drive-on-windows-azure-virtual-machines) című cikket.
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows-embléma.][Logo_Windows] Windows
 >
 > Meghajtó D:\ egy Azure-beli virtuális gépen egy nem megőrzött meghajtó, amelyet az Azure számítási csomópontján található egyes helyi lemezek támogatnak. Mivel ez nem tartható fenn, ez azt jelenti, hogy a D:\ található tartalomon végrehajtott módosítások a meghajtó elvész a virtuális gép újraindításakor. A "minden változás", például a tárolt fájlok, a létrehozott könyvtárak, a telepített alkalmazások stb. alapján.
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux-embléma.][Logo_Linux] Linux
 >
 > A Linux Azure virtuális gépek automatikusan csatlakoztatnak egy meghajtót a/mnt/Resource-on, amely az Azure számítási csomópontján helyi lemezek által támogatott, nem megőrzött meghajtó. Mivel ez nem tartható fenn, ez azt jelenti, hogy a/mnt/Resource lévő tartalmakon végrehajtott módosítások elvesznek a virtuális gép újraindításakor. Bármilyen módosítással, például tárolt fájlokkal, létrehozott könyvtárakkal, telepített alkalmazásokkal stb.
 >
@@ -774,12 +774,12 @@ Egy másik lehetőség, amelyet a jelen útmutató nem tárgyal részletesen, Az
 Az operációs rendszer vagy az adatbázis-kezelő verziója adott javítási követelményei miatt előfordulhat, hogy az Azure piactéren megadott lemezképek nem felelnek meg az igényeinek. Ezért előfordulhat, hogy létre kell hoznia egy virtuális gépet a saját privát operációs rendszer/adatbázis-kezelő virtuális gép rendszerképével, amely később többször is üzembe helyezhető. A privát rendszerképek ismétlődésre való előkészítéséhez a következő elemeket kell figyelembe venni:
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows-embléma.][Logo_Windows] Windows
 >
 > További részletek: <https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed> a Windows-beállításokat (például a Windows SID-t és az állomásnévt) a Sysprep parancs használatával kell absztrakt/általánosítani a helyszíni virtuális gépen.
 >
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux-embléma.][Logo_Linux] Linux
 >
 > A virtuális merevlemezek Azure-ba való feltöltésének előkészítéséhez kövesse a következő cikkben ismertetett lépéseket: [SUSE][virtual-machines-linux-create-upload-vhd-suse], [Red Hat][virtual-machines-linux-redhat-create-upload-vhd]vagy [Oracle Linux][virtual-machines-linux-create-upload-vhd-oracle].
 >
@@ -809,13 +809,13 @@ A saját Azure-beli virtuális gép lemezének előkészítéséhez szükséges 
 * Vegyen fel más helyi fiókokat, amelyek szükségesek lehetnek az adott telepítési forgatókönyvhöz.
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows-embléma.][Logo_Windows] Windows
 >
 > Ebben az esetben a virtuális gép az Azure-ban való feltöltéséhez és üzembe helyezéséhez nincs szükség a virtuális gép általánosítására (Sysprep).
 > Győződjön meg arról, hogy a meghajtó D:\ nincs használatban.
 > Állítsa be a lemez automatikus csatlakoztatását a csatolt lemezekhez a jelen dokumentum [csatolt lemezek automatikus csatlakoztatásának beállítása][planning-guide-5.5.3] című részében leírtak szerint.
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux-embléma.][Logo_Linux] Linux
 >
 > Ebben a forgatókönyvben a virtuális gép az Azure-ban való feltöltéséhez és üzembe helyezéséhez nem szükséges az általánosítás (waagent).
 > Győződjön meg arról, hogy a/mnt/Resource nincs használatban, és hogy az összes lemez az UUID használatával van csatlakoztatva. Az operációsrendszer-lemez esetében ügyeljen arra, hogy a rendszerbetöltő bejegyzés az UUID-alapú csatlakoztatást is tükrözze.
@@ -836,11 +836,11 @@ A saját Azure-beli virtuálisgép-rendszerkép előkészítésének követelmé
 * Ha a rendszerkép tartalmazza az SAP NetWeaver telepítését, és az állomásnév átnevezése az eredeti név alapján az Azure-beli központi telepítés pontján, ajánlott az SAP szoftveres kiépítési kezelő DVD legújabb verziójának másolása a sablonba. Ezzel a beállítással egyszerűen használhatja az SAP által megadott átnevezési funkciót a módosított állomásnév és/vagy az SAP-rendszer biztonsági azonosítójának az üzembe helyezett VM-lemezképen belüli módosításához, amint az új másolat elindult.
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows-embléma.][Logo_Windows] Windows
 >
 > Győződjön meg arról, hogy a meghajtó D:\ a nem használja a csatlakoztatott lemezek automatikus csatlakoztatásának beállítása a jelen dokumentum [csatolt lemezek automatikus csatlakoztatásának beállítása][planning-guide-5.5.3] című részében leírtak szerint.
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux-embléma.][Logo_Linux] Linux
 >
 > Győződjön meg arról, hogy a/mnt/Resource nincs használatban, és hogy az összes lemez az UUID használatával van csatlakoztatva. Az operációsrendszer-lemez esetében ügyeljen arra, hogy a rendszerbetöltő bejegyzés az UUID-alapú csatlakoztatást is tükrözze.
 >
@@ -854,13 +854,13 @@ Ha a virtuális gép az Azure-beli üzembe helyezési forgatókönyvben nem elé
 
 ##### <a name="generalizing-a-vm"></a>Virtuális gép általánosítása
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows-embléma.][Logo_Windows] Windows
 >
 > Utolsó lépésként jelentkezzen be egy virtuális gépre egy rendszergazdai fiókkal. Nyisson meg egy Windows-parancssorablakot *rendszergazdaként*. Lépjen a%windir%\Windows\System32\Sysprep, és hajtsa végre sysprep.exe.
 > Egy kis ablak jelenik meg. Fontos, hogy ellenőrizzék az **általánosítási** beállítást (az alapértelmezett beállítás nincs bejelölve), és az alapértelmezett "újraindítás" értékről a "Leállítás" értékre módosítsa a leállítási lehetőséget. Ez az eljárás azt feltételezi, hogy a Sysprep folyamat a helyszínen fut a virtuális gép vendég operációs rendszerében.
 > Ha az eljárást az Azure-ban már futó virtuális géppel szeretné elvégezni, kövesse a [jelen cikkben](../../windows/capture-image-resource.md)ismertetett lépéseket.
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux-embléma.][Logo_Linux] Linux
 >
 > [Linuxos virtuális gép rögzítése Resource Manager-sablonként][capture-image-linux-step-2-create-vm-image]
 >
@@ -1123,13 +1123,13 @@ Ideális esetben a virtuális gép szerkezetének és a kapcsolódó lemezeknek 
 
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows-embléma.][Logo_Windows] Windows
 >
 > Számos ügyfelünk láttuk a konfigurációt, ahol például az SAP és az adatbázis-kezelő bináris fájljai nem voltak telepítve a c:\ az operációs rendszer telepítési helyéül szolgáló meghajtó. Ennek több oka is volt, de amikor a gyökérbe mentünk, általában az volt, hogy a meghajtók kicsik voltak, és az operációs rendszer frissítésére a 10-15 évvel ezelőtt további lemezterület szükséges. Ezek a napok túl gyakran nem vonatkoznak mindkét feltételre. Ma a c:\ a meghajtó nagy mennyiségű lemezen vagy virtuális gépen képezhető le. Az üzembe helyezések struktúrában való egyszerű megtartásához ajánlott az Azure-beli SAP NetWeaver-rendszerek következő üzembe helyezési mintájának követése:
 >
 > A Windows operációs rendszer lapozófájljának a D: meghajtón kell lennie (nem állandó lemez)
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux-embléma.][Logo_Linux] Linux
 >
 > Az [ebben a cikkben][virtual-machines-linux-agent-user-guide]leírtak szerint helyezze a Linux-swapfile a Linux/mnt/mnt/Resource alá. A swap-fájl konfigurálható a Linux-ügynök/etc/waagent.conf. konfigurációs fájljában. Adja hozzá vagy módosítsa a következő beállításokat:
 >
@@ -1156,11 +1156,11 @@ Az SAP üzemelő példányok tapasztalatai az elmúlt két évben néhány leck�
 * A különböző adatfájlokra irányuló adatforgalom nem mindig azonos, mivel a meglévő IOPS eltérő méretű adatfájlok lehetnek, amelyek az SAP-adatbázis (ok) t jelképezik. Ennek eredményeképpen a több lemezről származó RAID-konfiguráció jobb használatát eredményezte, hogy az adatfájlok a logikai egységek kifaragva legyenek. Voltak olyan helyzetek, különösen az Azure standard Storage-ban, ahol a IOPS ráta egyetlen lemez kvótáját éri el az adatbázis-kezelői tranzakciónaplóban. Ilyen esetekben a Premium Storage használata javasolt, vagy ha több standard tárolóeszközt is összevon a szoftveres szalagok használatával.
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows-embléma.][Logo_Windows] Windows
 >
 > * [Ajánlott eljárások az SQL Server teljesítményének Azure Virtual Machines szolgáltatásbeli növeléséhez][virtual-machines-sql-server-performance-best-practices]
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux-embléma.][Logo_Linux] Linux
 >
 > * [Szoftveres RAID konfigurálása Linuxon][virtual-machines-linux-configure-raid]
 > * [Az LVM konfigurálása Linux rendszerű virtuális gépen az Azure-ban][virtual-machines-linux-configure-lvm]
@@ -1189,13 +1189,13 @@ Ezután el kell döntenie, hogy létre kell-e hoznia egy új és egy üres lemez
 **Fontos**: a gazdagépek gyorsítótárazását **nem** érdemes az Azure standard Storage szolgáltatással használni. A gazdagép-gyorsítótár beállításait a NONE (alapértelmezett) értéknél hagyja meg. Az Azure Premium Storage használata esetén engedélyeznie kell az olvasási gyorsítótárazást, ha az I/O-jellemző többnyire olvasási, például az adatbázis-adatfájlokkal kapcsolatos jellemző I/O-forgalom. Adatbázis-tranzakciós naplófájl esetén nem ajánlott a gyorsítótárazás.
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows-embléma.][Logo_Windows] Windows
 >
 > [Adatlemez csatolása a Azure Portal][virtual-machines-linux-attach-disk-portal]
 >
 > Ha lemez van csatlakoztatva, be kell jelentkeznie a virtuális gépre, hogy megnyissa a Windows Disk Managert. Ha az automatikus csatlakoztatás nincs engedélyezve a [csatolt lemezek automatikus csatlakoztatásának beállítása][planning-guide-5.5.3]című fejezetben leírtak szerint, az újonnan csatolt kötetet online állapotba kell hozni, és inicializálni kell.
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux-embléma.][Logo_Linux] Linux
 >
 > Ha lemez van csatlakoztatva, be kell jelentkeznie a virtuális gépre, és inicializálnia kell a lemezeket a [jelen cikkben][virtual-machines-linux-how-to-attach-disk-how-to-initialize-a-new-data-disk-in-linux] leírtak szerint.
 >
@@ -1212,7 +1212,7 @@ Az Azure geo-Replication helyileg működik a virtuális gépek mindegyik virtu�
 
 #### <a name="setting-automount-for-attached-disks"></a><a name="17e0d543-7e8c-4160-a7da-dd7117a1ad9d"></a>A csatlakoztatott lemezek automatikus csatlakoztatásának beállítása
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows-embléma.][Logo_Windows] Windows
 >
 > A saját lemezképből vagy lemezből létrehozott virtuális gépek esetében szükség van az automatikus csatlakoztatási paraméter ellenőrzésére és beállítására. A paraméter beállítása lehetővé teszi, hogy a virtuális gép újraindítás vagy az Azure-beli újratelepítése után automatikusan csatlakoztassa a csatlakoztatott/csatlakoztatott meghajtókat.
 > A paraméter a Microsoft által az Azure piactéren biztosított rendszerképekhez van beállítva.
@@ -1226,7 +1226,7 @@ Az Azure geo-Replication helyileg működik a virtuális gépek mindegyik virtu�
 >
 > Ha lemez van csatlakoztatva, be kell jelentkeznie a virtuális gépre, hogy megnyissa a Windows Disk Managert. Ha az automatikus csatlakoztatás nincs engedélyezve a [csatolt lemezek automatikus csatlakoztatásának beállítása][planning-guide-5.5.3]című fejezetben leírtak szerint, az újonnan csatolt kötetet >kell online állapotba hozni és inicializálni.
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux-embléma.][Logo_Linux] Linux
 >
 > Inicializálnia kell egy újonnan csatolt üres lemezt a [jelen cikkben][virtual-machines-linux-how-to-attach-disk-how-to-initialize-a-new-data-disk-in-linux]leírtak szerint.
 > Új lemezeket is fel kell vennie a/etc/fstab.
@@ -1264,7 +1264,7 @@ Tekintse meg ezt a témakört, amely részletesen ismerteti a témakör részlet
 Előfordulhat, hogy a tűzfalat úgy kell konfigurálnia a virtuális gépeken, hogy engedélyezze a bejövő forgalmat az SAP-rendszeren.
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows-embléma.][Logo_Windows] Windows
 >
 > Alapértelmezés szerint az Azure-beli üzembe helyezett virtuális gépen belüli Windows tűzfal be van kapcsolva. Most engedélyeznie kell az SAP-port megnyitását, ellenkező esetben az SAP GUI nem fog tudni csatlakozni.
 > Ehhez tegye a következőket:
@@ -1281,7 +1281,7 @@ Előfordulhat, hogy a tűzfalat úgy kell konfigurálnia a virtuális gépeken, 
 >
 > ![Portszabály definíciója][planning-guide-figure-1600]
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux-embléma.][Logo_Linux] Linux
 >
 > Az Azure Marketplace-en található Linux-lemezképek alapértelmezés szerint nem engedélyezik az iptables tűzfalat, és az SAP-rendszerhez való kapcsolódásnak működnie kell. Ha engedélyezte az iptables-t vagy egy másik tűzfalat, tekintse meg az iptables vagy a használt tűzfal dokumentációját, hogy engedélyezze a bejövő TCP-forgalmat a port 32xx (ahol XX az SAP-rendszer rendszerszáma).
 >
@@ -1588,7 +1588,7 @@ Más biztonsági intézkedések a virtuális gépek ilyen esetekben történő t
 A helyszíni TCP/IP-alapú hálózati nyomtatók Azure-beli virtuális gépen való beállítása megegyezik a vállalati hálózattal, feltételezve, hogy rendelkezik egy VPN-helyek közötti alagút-vagy ExpressRoute-kapcsolattal.
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows-embléma.][Logo_Windows] Windows
 >
 > Ehhez tegye a következőket:
 >
@@ -1599,7 +1599,7 @@ A helyszíni TCP/IP-alapú hálózati nyomtatók Azure-beli virtuális gépen va
 > * Printer port standard 9100
 > * Ha szükséges, telepítse manuálisan a megfelelő nyomtatóillesztőt.
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux-embléma.][Logo_Linux] Linux
 >
 > * a Windowshoz hasonlóan a standard eljárást követve telepítheti a hálózati nyomtatót
 > * csak kövesse a [SUSE](https://www.suse.com/documentation/sles-12/book_sle_deployment/data/sec_y2_hw_print.html) vagy [a Red Hat nyilvános Linux-útmutatóját, és Oracle Linux](https://access.redhat.com/documentation/red_hat_enterprise_linux/6/html/deployment_guide/sec-printer_configuration) a nyomtató hozzáadásával.
@@ -1623,13 +1623,13 @@ A nyomtató megosztását a hálózat egy egyedi neve azonosítja:
 Útmutató:
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows-embléma.][Logo_Windows] Windows
 >
 > Ossza meg a helyi nyomtatót.
 > Az Azure-beli virtuális gépen nyissa meg a Windows Intézőt, és írja be a nyomtató megosztási nevét.
 > A nyomtató telepítővarázslója végigvezeti a telepítési folyamaton.
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux-embléma.][Logo_Linux] Linux
 >
 > Íme néhány példa arra a dokumentációra, amely a hálózati nyomtatók Linux rendszerben történő konfigurálását, illetve a Linuxon történő nyomtatással kapcsolatos fejezetet tartalmaz. Ugyanúgy működik, mint egy Azure Linux rendszerű virtuális gépen, ha a virtuális gép egy VPN része:
 >
@@ -1644,7 +1644,7 @@ A nyomtató megosztását a hálózat egy egyedi neve azonosítja:
 Az Azure-ban a Távoli asztali szolgáltatások azon képessége, hogy a felhasználók számára a távoli munkamenetben lévő helyi nyomtatóeszköz elérését ne lehessen elérni.
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows-embléma.][Logo_Windows] Windows
 >
 > A Windows rendszerrel való nyomtatásról további részleteket itt talál: <https://technet.microsoft.com/library/jj590748.aspx> .
 >
@@ -1890,7 +1890,7 @@ A magas rendelkezésre állás és a vész-helyreállítási funkciók általáb
 Csak a nem felügyelt lemezek: az alább ismertetett fogalmakat a számos SAP-rendszer központi telepítésekor, valamint a telepített virtuális gépek számának meghaladása után kell megsérteni. Ilyen esetekben a virtuális gépeket egy Storage-fiókon belül kell egyesíteni. Ezt általában úgy teheti meg, hogy kombinálja a különböző SAP-rendszerekben futó SAP-alkalmazási rétegbeli virtuális merevlemezeket.  Egy Azure Storage-fiókban különböző SAP-rendszerekkel rendelkező különböző adatbázis-kezelői virtuális gépek eltérő virtuális merevlemezeit is kombináljuk. Az Azure Storage-fiókok IOPS korlátainak megőrzése ( <https://azure.microsoft.com/documentation/articles/storage-scalability-targets> )
 
 
-##### <a name="windowslogo_windows-ha-on-windows"></a>![Windows][Logo_Windows] HA Windows rendszeren
+##### <a name="windows-logologo_windows-ha-on-windows"></a>![Windows-embléma.][Logo_Windows] HA Windows rendszeren
 
 ![SAP NetWeaver Application HA architektúra SQL Server az Azure IaaS][planning-guide-figure-3200]
 
@@ -1912,7 +1912,7 @@ A következő ábra ugyanazt a tájat mutatja Managed Disks használatával.
 
 ![SAP NetWeaver Application HA architektúra SQL Server az Azure IaaS][planning-guide-figure-3201]
 
-##### <a name="linuxlogo_linux-ha-on-linux"></a>![Linux][Logo_Linux] HA Linuxon
+##### <a name="linux-logologo_linux-ha-on-linux"></a>![Linux-embléma.][Logo_Linux] HA Linuxon
 
 A Linuxon az Azure-on futó SAP HA architektúrája alapvetően ugyanaz, mint a fentiekben leírtak szerint. Tekintse meg a támogatott magas rendelkezésre állású megoldások listáját a [1928533] -es SAP-megjegyzésben.
 
@@ -1963,7 +1963,7 @@ Az SAP-rendszeren belüli más virtuális gépek biztonsági mentését az Azure
 > [!NOTE]
 > A virtuális gépek biztonsági mentésének használatakor a DEC 2015 nem őrzi meg az SAP licenceléshez használt egyedi VM-azonosítót. Ez azt jelenti, hogy egy virtuális gép biztonsági mentésének visszaállításához új SAP-licenckulcs telepítését kell megadnia, mivel a visszaállított virtuális gép új virtuális gép, és nem helyettesíti a korábban mentett példányt.
 >
-> ![Windows][Logo_Windows] Windows
+> ![Windows-embléma.][Logo_Windows] Windows
 >
 > Elméletileg az adatbázisokat futtató virtuális gépeket konzisztens módon lehet biztonsági másolatot készíteni, és ha az adatbázis-kezelő rendszer támogatja a Windows VSS (Kötet árnyékmásolata szolgáltatás <https://msdn.microsoft.com/library/windows/desktop/bb968832(v=vs.85).aspx> ) rendszert, például SQL Server.
 > Vegye azonban figyelembe, hogy az Azure-beli virtuális gépek biztonsági mentései időponthoz tartozó adatbázis-visszaállítások nem lehetségesek. Ezért az ajánlott, hogy az adatbázisok biztonsági másolatait az Azure virtuális gépek biztonsági mentésének használata helyett az adatbázis-KEZELŐi funkcióval végezze.
@@ -1972,7 +1972,7 @@ Az SAP-rendszeren belüli más virtuális gépek biztonsági mentését az Azure
 >
 > A többi lehetőség az Azure-beli virtuális gépeken telepített Microsoft Data Protection Manager kombinációjának használata, valamint az adatbázisok biztonsági mentésének és visszaállításának Azure Backup. További információt itt találhat: <https://docs.microsoft.com/azure/backup/backup-azure-dpm-introduction> .
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux-embléma.][Logo_Linux] Linux
 >
 > A Linux rendszerben a Windows VSS nem megfelelő. Ezért csak a fájl-konzisztens biztonsági mentések lehetségesek, de nem az alkalmazás-konzisztens biztonsági másolatok. Az SAP adatbázis-kezelői biztonsági mentését az adatbázis-kezelői funkciók használatával kell elvégezni. Az SAP-vel kapcsolatos adatait tartalmazó fájlrendszer menthető például a Tar használatával az itt leírtak szerint: <https://help.sap.com/saphelp_nw70ehp2/helpdata/en/d3/c0da3ccbb04d35b186041ba6ac301f/content.htm>
 >
@@ -1984,7 +1984,7 @@ Az SAP-rendszeren belüli más virtuális gépek biztonsági mentését az Azure
 
 A megoldás üzembe helyezésének részletes leírását itt találja: <https://docs.microsoft.com/archive/blogs/saponsqlserver/protecting-sap-solutions-with-azure-site-recovery> .
 
-## <a name="summary"></a>Összegzés
+## <a name="summary-for-high-availability-for-sap-systems"></a>Az SAP-rendszerek magas rendelkezésre állásának összefoglalása
 
 Az Azure-beli SAP-rendszerek magas rendelkezésre állásának legfontosabb pontjai a következők:
 

@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13b020f633adc2e2286cc14b01c6d248fc2c1e3e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7f34355f790b56c43c2e9fae7ce23b6344b4739d
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84759888"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362146"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>Az alkalmazások távoli Azure-AD Application Proxy való elérésének biztonsági szempontjai
 
@@ -83,7 +83,7 @@ Az Azure AD Application Proxy által közzétett alkalmazások biztonságának j
 
 #### <a name="azure-ddos-protection-service"></a>Azure DDoS Protection szolgáltatás
 
-Az Application proxyn keresztül közzétett alkalmazások védve vannak az elosztott szolgáltatásmegtagadási (DDoS) támadások ellen. Az Azure **DDoS Protection** szolgáltatás az Azure platformmal biztosít védelmet az Azure-erőforrások számára a szolgáltatásmegtagadási támadások ellen. Az alapszintű szolgáltatási szint automatikusan engedélyezve van, **így a forgalom** folyamatos figyelését és a gyakori hálózati szintű támadások valós idejű enyhítését teszi lehetővé. Egy **standard** szintű csomag is elérhető, amely további, kifejezetten az Azure Virtual Network-erőforrásokra hangolt enyhítő képességeket kínál. Részletekért lásd: [Azure DDoS Protection standard Overview](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview).
+Az Application proxyn keresztül közzétett alkalmazások védve vannak az elosztott szolgáltatásmegtagadási (DDoS) támadások ellen. Az Azure **DDoS Protection** szolgáltatás az Azure platformmal biztosít védelmet az Azure-erőforrások számára a szolgáltatásmegtagadási támadások ellen. Az alapszintű szolgáltatási szint automatikusan engedélyezve van, **így a forgalom** folyamatos figyelését és a gyakori hálózati szintű támadások valós idejű enyhítését teszi lehetővé. Részletekért lásd: [Azure DDoS Protection standard Overview](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview).
 
 ## <a name="under-the-hood"></a>technikai részletek
 
@@ -178,7 +178,7 @@ Miután a kapott választ, az összekötő kimenő kapcsolattal csatlakozik az a
 Az alkalmazás egyes feldolgozása itt fordulhat elő. Ha úgy konfigurálta az alkalmazásproxy-t, hogy az alkalmazásban fejléceket vagy URL-címeket fordítson le, akkor ez a lépés a szükséges módon történik.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Hálózati topológiai megfontolások az Azure AD Application Proxy használatakor](application-proxy-network-topology.md)
 

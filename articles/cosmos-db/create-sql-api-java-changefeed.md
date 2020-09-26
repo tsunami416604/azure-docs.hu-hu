@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 06/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 3f2dcefa8ed2f4b80ec66851cdc67ee2283a6ac7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 86fcdde72145cf25ee289ef3869976fecd628707
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322822"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362044"
 ---
 # <a name="how-to-create-a-java-application-that-uses-azure-cosmos-db-sql-api-and-change-feed-processor"></a>Azure Cosmos DB SQL API-t használó Java-alkalmazás létrehozása és a hírcsatorna-feldolgozó módosítása
 
@@ -75,7 +75,7 @@ mvn clean package
     Ezután térjen vissza a böngészőben a Azure Portal Adatkezelő. Látni fogja, hogy egy adatbázis- **GroceryStoreDatabase** három üres tárolóval lett hozzáadva: 
 
     * **InventoryContainer** – a példaként szolgáló áruház leltározási rekordja, ```id``` amely egy UUID-t tartalmazó elemre van particionálva.
-    * **InventoryContainer-pktype** – az elemre irányuló lekérdezésekre optimalizált leltári rekord anyagilag látható nézete```type```
+    * **InventoryContainer-pktype** – az elemre irányuló lekérdezésekre optimalizált leltári rekord anyagilag látható nézete ```type```
     * **InventoryContainer – bérletek** – a változási hírcsatornára mindig a bérletek tárolója szükséges. a bérletek nyomon követik az alkalmazás előrehaladását a változási hírcsatorna olvasásakor.
 
     :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_account_resources_lease_empty.JPG" alt-text="Üres tárolók":::
@@ -92,7 +92,7 @@ mvn clean package
 
     [!code-java[](~/azure-cosmos-java-sql-app-example/src/main/java/com/azure/cosmos/workedappexample/SampleGroceryStore.java?name=InitializeCFP)]
 
-    ```"SampleHost_1"```a a változási csatorna feldolgozó feldolgozójának neve. ```changeFeedProcessorInstance.start()```valójában elindítja a Change feed processzort.
+    ```"SampleHost_1"``` a a változási csatorna feldolgozó feldolgozójának neve. ```changeFeedProcessorInstance.start()``` valójában elindítja a Change feed processzort.
 
     Térjen vissza a böngészőben a Azure Portal Adatkezelő. A **InventoryContainer-bérletek** tárolóban kattintson az **elemek elemre** a tartalmának megtekintéséhez. Látni fogja, hogy a változási hírcsatorna processzora feltöltte a címbérleti tárolót, azaz a processzor a ```SampleHost_1``` **InventoryContainer**egyes partícióinak bérletét rendelte hozzá a feldolgozóhoz.
 
@@ -110,11 +110,11 @@ mvn clean package
 
 1. Most Adatkezelő navigáljon a **InventoryContainer-pktype > elemekhez**. Ez az anyagbeli nézet – az ebben a tárolóban lévő elemek tükrözött **InventoryContainer** , mert programozott módon szúrták be a hírcsatorna módosításával. Jegyezze fel a partíciós kulcsot ( ```type``` ). Így ez az anyagbeli nézet a lekérdezési szűrésre van optimalizálva ```type``` , ami nem hatékony a **InventoryContainer** , mert particionálva van ```id``` .
 
-    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_materializedview2.JPG" alt-text="Tényleges táblán alapuló nézet":::
+    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_materializedview2.JPG" alt-text="Képernyőfelvétel: az Azure Cosmos D B-fiók Adatkezelő lapja, amelyen elemek vannak kiválasztva.":::
 
 1. A **InventoryContainer** és a **InventoryContainer-pktype** dokumentumból csak egyetlen hívást fogunk törölni ```upsertItem()``` . Először tekintse meg Azure Portal Adatkezelő. Töröljük azt a dokumentumot, amelynek ```/type == "plums"``` ; a következő piros színnel van Bekerítve:
 
-    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_materializedview-emph-todelete.JPG" alt-text="Tényleges táblán alapuló nézet":::
+    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_materializedview-emph-todelete.JPG" alt-text="Képernyőfelvétel: az Azure Cosmos D B-fiók Adatkezelő lapja, amely egy adott elemet kiválasztott. D.":::
 
     Nyomja meg ismét az ENTER billentyűt a függvény meghívásához ```deleteDocument()``` a példában szereplő kódban. Ez a függvény az alább látható módon upsert a dokumentum egy új verzióját ```/ttl == 5``` , amely a dokumentumot élettartam (TTL) értékre állítja a 5Sec. 
     

@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: b27711158c10b0f7fa78875aec7f9c63c166258c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 5825c7d751781181794900cecab1487ed44a997f
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327174"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361449"
 ---
 # <a name="tutorial-monitor-your-service-fabric-applications-using-elk"></a>Oktatóanyag: Service Fabric-alkalmazások monitorozása az ELK-val
 
@@ -142,7 +142,7 @@ Az oktatóanyag lépéseit egy előre konfigurált ELK-környezetben is végreha
 
 8. Nyissa meg a Kibana irányítópultját a **http: \/ /Server-IP** címen, és adja meg a Kibana felhasználónevét és jelszavát. Amennyiben az Azure-ban található ELK-rendszerképet használta, az alapértelmezett felhasználónév „user”, a jelszó pedig az, amit a **Rendszerindítási diagnosztika** futtatásakor kapott.
 
-    ![Kibana](./media/service-fabric-tutorial-java-elk/kibana.png)
+    ![A képernyőképen egy Kibana-irányítópult látható, amely megjeleníti a platform és az alkalmazás naplófájljait.](./media/service-fabric-tutorial-java-elk/kibana.png)
 
 ## <a name="next-steps"></a>További lépések
 

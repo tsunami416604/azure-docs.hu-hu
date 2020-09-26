@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse, devx-track-csharp
-ms.openlocfilehash: 2edb3060437080e528d41d4af5f4affd4fbf3316
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: d32a51e391edbfd32cf57265562d4e0cb8fe0681
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89010188"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362180"
 ---
 # <a name="troubleshooting-connectivity-issues-in-synapse-sql-pool"></a>A szinapszis SQL-készlet kapcsolódási problémáinak elhárítása
 
@@ -34,13 +34,14 @@ Az SQL-készlet állapota itt jelenik meg. Ha a szolgáltatás nem **elérhetők
 
 Ha az erőforrás állapota azt mutatja, hogy az SQL Pool-példány szüneteltetve van vagy méretezést végez, kövesse az útmutatást a példány folytatásához.
 
-![A szolgáltatás szüneteltette ](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health-pausing.png) a Resource Health további információit itt találja.
+![A képernyőfelvételen az SQL-adattárház egy olyan példánya látható, amely szüneteltetve vagy méretezhető.](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health-pausing.png)
+Resource Health további információ itt található.
 
 ## <a name="check-for-paused-or-scaling-operation"></a>Szüneteltetett vagy skálázási művelet keresése
 
 Ellenőrizze a portálon, hogy az SQL Pool-példány szüneteltetve van-e, illetve hogy van-e skálázás.
 
-![Szolgáltatás szüneteltetve](./media/sql-data-warehouse-troubleshoot-connectivity/overview-paused.png)
+![A képernyőfelvétel azt mutatja be, hogy az adatraktár szüneteltetve van-e.](./media/sql-data-warehouse-troubleshoot-connectivity/overview-paused.png)
 
 Ha úgy látja, hogy a szolgáltatás szüneteltetve van vagy méretezést végez, ellenőrizze, hogy nem a karbantartási ütemterv alatt van-e. Az SQL-készlet *áttekintését*bemutató portálon láthatja a választott karbantartási ütemtervet.
 

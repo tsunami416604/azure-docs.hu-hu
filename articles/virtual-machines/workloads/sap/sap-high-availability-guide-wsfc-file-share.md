@@ -16,16 +16,16 @@ ms.workload: infrastructure-services
 ms.date: 07/24/2019
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bf9e00e8acba241f1445977dcc53724b9981039f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 721389b557fde41b1461654b03299601e2384108
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87068683"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361330"
 ---
 # <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-file-share-in-azure"></a>SAP ASCS-/SCS-példány fürthöz való fürtözése Windows feladatátvevő fürtön egy Azure-beli fájlmegosztás használatával
 
-> ![Windows][Logo_Windows] Windows
+> ![Windows-embléma.][Logo_Windows] Windows
 >
 
 A Windows Server feladatátvételi fürtszolgáltatás a magas rendelkezésre állású SAP ASCS/SCS-telepítés és az adatbázis-kezelő rendszer alapja a Windows rendszerben.
@@ -137,7 +137,7 @@ A kibővített fájlmegosztás használatához a rendszernek meg kell felelnie a
 * A virtuális gépek közötti megfelelő hálózati teljesítmény érdekében, amely Közvetlen tárolóhelyek lemezes szinkronizáláshoz szükséges, használjon olyan virtuálisgép-típust, amely legalább egy "magas" hálózati sávszélességgel rendelkezik.
     További információ: a [DSv2 sorozat][dv2-series] és a [DS-sorozat][ds-series] specifikációja.
 * Javasoljuk, hogy foglaljon le néhány le nem foglalt kapacitást a tárolóban. Ha a tárolóhelyen nem foglalt kapacitást ad meg, a kötetek lemezterületet biztosítanak a "helyben" javításhoz, ha a meghajtó meghibásodik. Ez javítja az adatbiztonságot és a teljesítményt.  További információ: a [kötet méretének kiválasztása][choosing-the-size-of-volumes-s2d].
-* Nem kell konfigurálnia az Azure belső Load balancert a kibővített fájlmegosztás hálózati neveként, például: \<SAP global host\> . Ez az \<ASCS/SCS virtual host name\> SAP ASCS/SCS példány vagy az adatbázis-kezelő rendszer esetében történik. A kibővített fájlmegosztás az összes fürtcsomóponton kibővíti a terhelést. \<SAP global host\>a a fürt összes csomópontjának helyi IP-címét használja.
+* Nem kell konfigurálnia az Azure belső Load balancert a kibővített fájlmegosztás hálózati neveként, például: \<SAP global host\> . Ez az \<ASCS/SCS virtual host name\> SAP ASCS/SCS példány vagy az adatbázis-kezelő rendszer esetében történik. A kibővített fájlmegosztás az összes fürtcsomóponton kibővíti a terhelést. \<SAP global host\> a a fürt összes csomópontjának helyi IP-címét használja.
 
 
 > [!IMPORTANT]
@@ -168,7 +168,7 @@ Az általános fájlmegosztás egy másik lehetőség a kiválóan elérhető f�
 
 Ebben az esetben egy külső gyártótól származó SIOS-megoldást is használhat fürt megosztott lemezként.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Készítse elő az Azure-infrastruktúrát az SAP-hez HA egy Windows feladatátvevő fürt és fájlmegosztás használatával egy SAP ASCS/SCS-példányhoz][sap-high-availability-infrastructure-wsfc-file-share]
 * [SAP NetWeaver HA telepítése Windows feladatátvevő fürtön és fájlmegosztás esetén SAP ASCS/SCS-példány esetén][sap-high-availability-installation-wsfc-shared-disk]

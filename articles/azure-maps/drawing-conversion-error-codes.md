@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: d79c42f3bdf84efcdf2187741ac270087be05272
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 14cf5238d29ede1ea229604316eee875b417e50e
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83682006"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361534"
 ---
 # <a name="drawing-conversion-errors-and-warnings"></a>Rajz átalakítási hibái és figyelmeztetései
 
@@ -35,9 +35,9 @@ A konverziós szolgáltatás nem tud létrehozni leképezési szolgáltatást é
 
 * Az alábbi két kép az önmetsző sokszögek példáit mutatja be.
 
-     ![Példa önmetsző sokszögre](./media/drawing-conversion-error-codes/geometry-warning-1.png)
+     ![Példa egy önmetsző sokszögre, például egy.](./media/drawing-conversion-error-codes/geometry-warning-1.png)
 
-     ![Példa önmetsző sokszögre](./media/drawing-conversion-error-codes/geometry-warning-2.png)
+     ![Példa egy önmetsző sokszögre, például kettő.](./media/drawing-conversion-error-codes/geometry-warning-2.png)
 
 * Alább látható egy olyan rendszerkép, amely nem lezárt vonalláncot mutat be. Tegyük fel, hogy a réteg csak a zárt geometriát támogatja.
 
@@ -225,7 +225,7 @@ A **unitOutsideLevel** figyelmeztetés kijavításához bontsa ki a szint határ
 
 #### <a name="example-scenarios-partiallyoverlappingunit"></a>*Példák partiallyOverlappingUnit*
 
-Az alábbi képen az átfedésben lévő egység piros színnel van kiemelve. `UNIT110`és `HALLWAY` a rendszer elveti.
+Az alábbi képen az átfedésben lévő egység piros színnel van kiemelve. `UNIT110` és `HALLWAY` a rendszer elveti.
 
 ![Átfedésben lévő egységek – példa](./media/drawing-conversion-error-codes/partially-overlapping-unit.png)
 
@@ -350,7 +350,7 @@ A **dwgError** akkor következik be, amikor a RAJZFÁJL olyan DWG-fájlt tartalm
 A **dwgError**kijavításához tekintse meg a _manifest.jsa_ fájlban ellenőrizze, hogy:
 
 * A ZIP-archívumban található összes DWG-fájl érvényes AutoCAD DWG formátumú rajzok, amelyek mindegyikét az AutoCADben nyitják meg. Távolítsa el vagy javítsa ki az összes érvénytelen rajzot.
-* A _manifest.js_ található DWG-fájlok listája megegyezik a ZIP-archívumban található DWG-fájlokkal.
+* A _manifest.js_  található DWG-fájlok listája megegyezik a ZIP-archívumban található DWG-fájlokkal.
 
 ## <a name="manifest-errors"></a>Jegyzékfájl-hibák
 
@@ -422,7 +422,7 @@ Az átalakítási szolgáltatás **ütközési** hibát ad vissza, ha egynél t�
 
 #### <a name="how-to-fix-conflict"></a>*Az ütközés elhárítása*
 
-Az **ütközési** hibák elhárításához vizsgálja _meg amanifest.jst_ , és távolítsa el az ütköző információkat.
+Az **ütközési** hibák elhárításához vizsgálja _ meg amanifest.jst_ , és távolítsa el az ütköző információkat.
 
 ### <a name="invalidgeoreference"></a>**invalidGeoreference**
 
@@ -500,7 +500,7 @@ Az alábbi képen egy vertikális behatolási hely látható, amely átfedésben
 
 A **verticalPenetrationError** hibáinak kijavításához olvassa el a vertikális bevezetési funkció használata a [rajzolási csomag követelményei](drawing-requirements.md) című cikket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [A Azure Maps Rajzolási hibák megjelenítésének használata](drawing-error-visualizer.md)

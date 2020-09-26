@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 07/07/2020
+ms.date: 09/25/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions
-ms.openlocfilehash: 36d3d84949e44719474656d07da9c7b7c46a4e98
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 1690d4b236fce53e033f08fa6825eefe6359d9e9
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90893188"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362214"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>Virtual Network elkülönítés és Adatvédelem – áttekintés
 
@@ -80,10 +80,20 @@ A lépések végrehajtásával kapcsolatos részletes útmutatásért lásd: [Az
 ### <a name="limitations"></a>Korlátozások
 
 A munkaterület és a kapcsolódó erőforrások virtuális hálózaton belüli biztonságossá tétele a következő korlátozásokkal jár:
-- A munkaterület privát hivatkozása csak a következő régiókban érhető el: eastus, westus2, southcentralus
-    - Ez a korlátozás nem vonatkozik a kapcsolódó erőforrásokra. Engedélyezheti például a VNet a Storage szolgáltatáshoz bármely Azure Machine Learning régióban.
+- A munkaterület privát hivatkozása csak a következő régiókban érhető el:
+    - **USA keleti régiója**
+    - **USA déli középső régiója**
+    - **USA nyugati régiója**
+    - **USA 2. nyugati régiója**
+    - **Közép-Kanada**
+    - **Délkelet-Ázsia**
+    - **Kelet-Japán**
+    - **Észak-Európa**
+    - **Kelet-Ausztrália**
+    - **Az Egyesült Királyság déli régiója**
+    
+    Ez a korlátozás nem vonatkozik a kapcsolódó erőforrásokra. Engedélyezheti például a VNet a Storage szolgáltatáshoz bármely Azure Machine Learning régióban.
 - Minden erőforrásnak azonos VNet kell lennie. Az azonos VNet lévő alhálózatok azonban engedélyezettek.
-- Egyes Studio-funkciók, például a tervező, a AutoML, a címkézés és az adatprofilkészítés nem használhatók privát végpont használatára konfigurált Storage-fiókokkal. Ha ezeket a Studio-funkciókat kell használnia, használja helyette a szolgáltatási végpontokat.
 
 ## <a name="secure-the-training-environment"></a>A képzési környezet biztonságossá tétele
 
@@ -150,7 +160,7 @@ Bár a Studio egy szolgáltatás-végponttal konfigurált Storage-fiókban fér 
 * AutoML-kísérlet küldése.
 * Címkéző projekt elindítása.
 
-A Storage szolgáltatásbeli végpontok használatának teljes funkcionalitásának engedélyezéséhez lásd: [Azure Machine learning Studio használata virtuális hálózaton](how-to-enable-studio-virtual-network.md#access-data-using-the-studio). Jelenleg a Studio nem támogatja a Storage Private-végpontokat.
+A Storage szolgáltatásbeli végpontok használatának teljes funkcionalitásának engedélyezéséhez lásd: [Azure Machine learning Studio használata virtuális hálózaton](how-to-enable-studio-virtual-network.md#access-data-using-the-studio). A Studio mindkét szolgáltatási végpontot és privát végpontot támogatja a Storage-fiókok esetében.
 
 ### <a name="limitations"></a>Korlátozások
 - A Studio nem fér hozzá a privát végpontok használatára konfigurált Storage-fiókokban tárolt információhoz. A teljes funkcionalitás érdekében szolgáltatási végpontokat kell használnia a tároláshoz, és felügyelt identitást kell használnia.

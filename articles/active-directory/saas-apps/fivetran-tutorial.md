@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/01/2020
 ms.author: jeedes
-ms.openlocfilehash: 9cf8a76f74e6dda6ade98ea348f5401eab15c53e
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.openlocfilehash: 9d6951456593c57f9def80990e582a5ff54cc5d9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500845"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91312611"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fivetran"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Fivetran
 
@@ -31,7 +31,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Fivetran a Azure
 Első lépésként a következő elemeket kell megadnia:
 
 * Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
-* Fivetran egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
+* Egy Fivetran-fiók.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
@@ -87,7 +87,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A fentiek mellett a Fivetran alkalmazás néhány további attribútumot vár az SAML-válaszban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
     
-    | Név |  Forrás attribútum|
+    | Name |  Forrás attribútum|
     | -------------- | --------- |
     | FirstName | User. givenName |
     | LastName | felhasználó. vezetéknév |
@@ -96,7 +96,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
-1. A **Fivetran beállítása** szakaszban másolja a megfelelő URL-címeket a követelmények alapján.
+1. A **Fivetran beállítása** szakaszban másolja a **bejelentkezési URL-címet** és az **Azure ad-azonosító** értékeit.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
@@ -126,7 +126,22 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 ## <a name="configure-fivetran-sso"></a>Fivetran SSO konfigurálása
 
-Ha az egyszeri bejelentkezést szeretné konfigurálni a **Fivetran** oldalon, el kell küldenie a letöltött **tanúsítványt (Base64)** és a megfelelő másolt url-címeket a Azure Portalról a [Fivetran támogatási csapatához](mailto:support@fivetran.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
+Ebben a szakaszban az egyszeri bejelentkezést a **Fivetran** oldalon konfigurálhatja.
+
+1. Egy másik böngészőablakban jelentkezzen be a Fivetran-fiókjába a fiók tulajdonosaként.
+1. Kattintson a nyílra az ablak bal felső sarkában, majd válassza a **fiók kezelése** lehetőséget a legördülő listából.
+
+   ![Képernyőkép, amely a fiók kezelése menüpontot jeleníti meg.](media/fivetran-tutorial/fivetran-1.png)
+
+1. Nyissa meg a **Beállítások** lap **SAML-konfiguráció** szakaszát.
+
+   ![Képernyőkép, amely megjeleníti az SAML konfigurációs ablaktáblát, és kiemelte a konfigurációs beállításokat.](media/fivetran-tutorial/fivetran-2.png)
+
+   1. Az **SAML-hitelesítés engedélyezéséhez**válassza **a be**lehetőséget.
+   1. A **bejelentkezési URL-cím**mezőben illessze be a **bejelentkezési URL-cím**értékét, amelyet a Azure Portal másolt.
+   1. A **kiállítóban**illessze be a Azure Portalból másolt **Azure ad-azonosító**értékét.
+   1. Nyissa meg a letöltött tanúsítványfájl egy szövegszerkesztőben, másolja a tanúsítványt a vágólapra, majd illessze be a **nyilvános tanúsítvány** szövegmezőbe.
+   1. Válassza a **konfiguráció mentése**lehetőséget.
 
 ### <a name="create-fivetran-test-user"></a>Fivetran-tesztelési felhasználó létrehozása
 
@@ -140,7 +155,7 @@ Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egysze
 
 2. Használhatja a Microsoft Access panelt. Ha a hozzáférési panelen a Fivetran csempére kattint, automatikusan be kell jelentkeznie arra a Fivetran, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Fivetran konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 

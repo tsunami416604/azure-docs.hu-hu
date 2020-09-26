@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 8d6aad3107acbeaa76f1cf7e5d9c631a2a5aa8b6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: ac7879590424fa921425dcd077503733affeb634
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327820"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361747"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-sync-java-sdk-v2"></a>Teljesítménnyel kapcsolatos tippek Azure Cosmos DB Sync Java SDK v2-hez
 
@@ -35,7 +35,7 @@ A Azure Cosmos DB egy gyors és rugalmas elosztott adatbázis, amely zökkenőme
 
 Tehát ha a "Hogyan javíthatom az adatbázis teljesítményét?" című témakört kérdezi le? vegye figyelembe a következő lehetőségeket:
 
-## <a name="networking"></a>Hálózat
+## <a name="networking"></a>Hálózatkezelés
 <a id="direct-connection"></a>
 
 1. **Csatlakoztatási mód: DirectHttps használata**
@@ -65,14 +65,14 @@ Tehát ha a "Hogyan javíthatom az adatbázis teljesítményét?" című témak�
       DocumentClient client = new DocumentClient(HOST, MASTER_KEY, connectionPolicy, null);
       ```
 
-      :::image type="content" source="./media/performance-tips-java/connection-policy.png" alt-text="A Azure Cosmos DB-kapcsolatok házirendjének ábrája" border="false":::
+      :::image type="content" source="./media/performance-tips-java/connection-policy.png" alt-text="A diagram az Azure Cosmos D B-kapcsolatok házirendjét mutatja." border="false":::
 
    <a id="same-region"></a>
 2. **Az ügyfeleket ugyanabban az Azure-régióban helyezze el a jobb teljesítmény érdekében**
 
     Ha lehetséges, helyezzen minden olyan alkalmazást, amely a Azure Cosmos DBt hívja meg ugyanabban a régióban, mint az Azure Cosmos Database. A hozzávetőleges összehasonlításhoz az azonos régióban lévő Azure Cosmos DB a 1-2 MS-on belül fejeződik be, de az USA nyugati és keleti partja közötti késés >50 MS. Ez a késés valószínűleg a kérelemtől függ attól függően, hogy a kérés milyen útvonalon halad át az ügyféltől az Azure Datacenter-határig. A lehető legalacsonyabb késést úgy érheti el, hogy a hívó alkalmazás ugyanabban az Azure-régióban található, mint a kiépített Azure Cosmos DB végpont. Az elérhető régiók listáját az [Azure-régiók](https://azure.microsoft.com/regions/#services)című részben tekintheti meg.
 
-    :::image type="content" source="./media/performance-tips/same-region.png" alt-text="A Azure Cosmos DB-kapcsolatok házirendjének ábrája" border="false":::
+    :::image type="content" source="./media/performance-tips/same-region.png" alt-text="A diagram két régióban jeleníti meg a kérelmeket és a válaszokat, ahol a számítógépek a középső rétegbeli szolgáltatásokon keresztül csatlakoznak a Cosmos D B-fiókhoz." border="false":::
    
 ## <a name="sdk-usage"></a>SDK-használat
 1. **A legújabb SDK telepítése**
@@ -141,7 +141,7 @@ Tehát ha a "Hogyan javíthatom az adatbázis teljesítményét?" című témak�
 
     További információ: [Azure Cosmos db indexelési házirendek](indexing-policies.md).
 
-## <a name="throughput"></a>Átviteli sebesség
+## <a name="throughput"></a>Teljesítmény
 <a id="measure-rus"></a>
 
 1. **Az alacsonyabb kérelmek egységének mérése és finomhangolása/második használat**
@@ -183,5 +183,5 @@ Tehát ha a "Hogyan javíthatom az adatbázis teljesítményét?" című témak�
 
     Egy adott műveletre vonatkozó kérelem díja (a kérelmek feldolgozási díja) közvetlenül összefügg a dokumentum méretével. A nagyméretű dokumentumokon végzett műveletek többek között a kis méretű dokumentumok műveleteinél nagyobb mértékben járnak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha többet szeretne megtudni az alkalmazás méretezési és nagy teljesítményű kialakításáról, tekintse meg [a particionálás és skálázás Azure Cosmos DBban](partition-data.md)című témakört.

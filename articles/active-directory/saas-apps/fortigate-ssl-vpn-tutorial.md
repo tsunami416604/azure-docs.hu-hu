@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure AD SSO-integráció a FortiGate SSL VPN-sel'
-description: Ebből az oktatóanyagból megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és FortiGate SSL VPN között.
+title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a FortiGate SSL VPN használatával | Microsoft Docs'
+description: Megtudhatja, milyen lépéseket kell végrehajtania a FortiGate SSL VPN integrálásához Azure Active Directory (Azure AD) használatával.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 08/11/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abe92218d6bb20274e916089c15df8c1f44c4fd6
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 187903bfbf75ada45b9a539acd1157dfe730747a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986444"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331114"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fortigate-ssl-vpn"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a FortiGate SSL VPN-lel
 
@@ -94,16 +94,29 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO-t a Azure Portal
     > [!NOTE]
     > Ezek az értékek csak minták. A tényleges **bejelentkezési URL-címet**, **azonosítót**, **Válasz URL**-címet és **kijelentkezési URL-** címet kell használnia. A tényleges értékek lekéréséhez lépjen kapcsolatba a [FORTIGATE SSL VPN-ügyfél támogatási csapatával](mailto:tac_amer@fortinet.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-1. A FortiGate SSL VPN elvárja, hogy az SAML-kijelentések meghatározott formátumban legyenek. Ezért egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. A képernyőképen az alapértelmezett attribútumok láthatók:
+1. A FortiGate SSL VPN-alkalmazás meghatározott formátumban várja az SAML-jogcímeket, így egyéni attribútum-hozzárendeléseket kell hozzáadnia a konfigurációhoz. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható.
 
     ![Az alapértelmezett attribútumokat megjelenítő képernyőkép.](common/default-attributes.png)
 
-1. A FortiGate SSL VPN Emellett néhány további attribútumot is vár az SAML-válaszban. Ezek az attribútumok az alábbi táblázatban láthatók. Emellett előre fel vannak töltve, de a követelmények figyelembevételével is megtekintheti őket.
-    
-    | Name |  Forrás attribútum|
-    | ------------ | --------- |
-    | username | User. userPrincipalName |
-    | csoport | User. groups |
+1. A FortiGate SSL VPN által igényelt két további jogcím az alábbi táblázatban látható. A jogcímek nevének meg kell egyeznie az oktatóanyag **végrehajtás FortiGate parancssori konfiguráció** szakaszában használt nevekkel. 
+
+   | Name |  Forrás attribútum|
+   | ------------ | --------- |
+   | username | User. userPrincipalName |
+   | csoport | User. groups |
+   
+   A további jogcímek létrehozásához:
+   
+   1. A **felhasználói attribútumok & jogcímek**elem mellett válassza a **Szerkesztés**lehetőséget.
+   1. Válassza az **új jogcím hozzáadása**lehetőséget.
+   1. A **név**mezőben adja meg a **username**nevet.
+   1. A **forrás attribútumnál**válassza a **User. userPrincipalName**elemet.
+   1. Kattintson a **Mentés** gombra.
+   1. Válassza **a csoport hozzáadása**lehetőséget.
+   1. Válassza a **Minden csoport** lehetőséget.
+   1. Seect a **csoport nevének testreszabása** jelölőnégyzetet.
+   1. A **név**mezőbe írja be a következőt: **Group**.
+   1. Kattintson a **Mentés** gombra.   
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban válassza a **tanúsítvány (Base64)** melletti **Letöltés** hivatkozást a tanúsítvány letöltéséhez és a számítógépbe való mentéséhez:
 
@@ -251,7 +264,7 @@ Amikor kiválasztja a FortiGate SSL VPN-csempét a hozzáférési panelen, autom
 
 A Microsoft és a FortiGate javasolja, hogy a Fortinet VPN-ügyfelet, a FortiClient-t használja a legjobb végfelhasználói élmény érdekében.
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 - [Útmutatók az SaaS-alkalmazások Azure Active Directory-nal való integrálásához](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

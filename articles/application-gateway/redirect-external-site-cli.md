@@ -1,18 +1,18 @@
 ---
 title: Külső forgalom átirányítása CLI használatával – Azure Application Gateway
-description: Megtudhatja, hogyan hozhat létre olyan Application Gatewayt, amely az Azure CLI használatával átirányítja a belső webes forgalmat a megfelelő készletbe.
+description: Megtudhatja, hogyan hozhat létre olyan Application Gatewayt, amely az Azure CLI használatával átirányítja a külső webes forgalmat a megfelelő készletbe.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: how-to
-ms.date: 11/13/2019
+ms.date: 09/24/2020
 ms.author: victorh
-ms.openlocfilehash: 7566122e4edf4357562e830197fade746f18a16f
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 5a8d7aff6a030b3adbb5370caa166bbd290e09bc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89594243"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331046"
 ---
 # <a name="create-an-application-gateway-with-external-redirection-using-the-azure-cli"></a>Application Gateway létrehozása külső átirányítással az Azure CLI használatával
 
@@ -129,10 +129,6 @@ Az alkalmazásátjáró nyilvános IP-címének lekéréséhez használhatja az 
 
 A böngészőben megjelenik a *Bing.com* .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
-
-> * A hálózat beállítása
-> * Figyelő és átirányítási szabály létrehozása
-> * Application Gateway létrehozása
+- [Application Gateway létrehozása belső átirányítás használatával az Azure CLI-vel](redirect-internal-site-cli.md)
