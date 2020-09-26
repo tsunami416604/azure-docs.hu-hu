@@ -1,6 +1,6 @@
 ---
-title: BLOB-index kihasználása az Azure Blob Storage-ban tárolt adatkezeléshez és-kereséshez
-description: Tekintse át, hogyan használhatja a blob-indexelési címkéket a blob-objektumok felderítéséhez, kezeléséhez és lekérdezéséhez.
+title: Az Azure Blob Storage szolgáltatásban tárolt adatkezelési és-keresési blob-indexek címkéi
+description: Tekintse át, hogyan használhat blob-indexelési címkéket a blob-objektumok kategorizálásához, kezeléséhez és lekérdezéséhez.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 04/24/2020
@@ -9,18 +9,18 @@ ms.subservice: blobs
 ms.topic: how-to
 ms.reviewer: hux
 ms.custom: devx-track-csharp
-ms.openlocfilehash: adc510ef89a912e6d76949794aacbf130a8f066d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 41a21545939c5d15c8e2c4034a9648e98aa5a73e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018875"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280283"
 ---
 # <a name="utilize-blob-index-tags-preview-to-manage-and-find-data-on-azure-blob-storage"></a>Az Azure Blob Storage-ban lévő blob-indexek (előzetes verzió) használatával kezelheti és keresheti meg az adatkeresést
 
 A blob index címkék kategorizálják az adatait a Storage-fiókban a kulcs-érték címke attribútumainak felhasználásával. Ezeket a címkéket a rendszer automatikusan indexeli, és lekérdezhető többdimenziós indexként teszi elérhetővé az adatkereséshez. Ebből a cikkből megtudhatja, hogyan állíthat be, kérhet le és kereshet meg a blob-indexek címkéi használatával.
 
-További információ a blob indexről: az [Azure Blob Storage adatainak kezelése és keresése a blob indexével (előzetes verzió)](storage-manage-find-blobs.md).
+A blob index szolgáltatással kapcsolatos további információkért lásd: az [Azure Blob Storage-beli adatkezelés és-keresés a blob-indexszel (előzetes verzió)](storage-manage-find-blobs.md).
 
 > [!NOTE]
 > A blob index nyilvános előzetes verzióban érhető el, és a **Közép**-Kanada, **Kelet-Kanada**, **Közép** -Franciaország és **Dél-Franciaország déli** régiójában érhető el. Ha többet szeretne megtudni erről a szolgáltatásról, valamint az ismert problémákról és a korlátozásokról, tekintse meg [Az Azure Blob Storage a blob index (előzetes verzió) használatával történő kezelésével és keresésével](storage-manage-find-blobs.md)kapcsolatos információkat.
@@ -56,7 +56,7 @@ using System.Threading.Tasks;
 
 1. A [Azure Portal](https://portal.azure.com/)válassza ki a Storage-fiókját. 
 
-2. Navigáljon a containers ( **tárolók** ) lehetőségre a **blob Service**alatt, válassza ki a tárolót
+2. Navigáljon a containers ( **tárolók** ) lehetőségre **blob Service**alatt, és válassza ki a tárolót
 
 3. Kattintson a **feltöltés** gombra a feltöltés panel megnyitásához, és tallózással keresse meg a helyi fájlrendszert, és keresse meg a blokkoló blobként feltölteni kívánt fájlt.
 
@@ -86,7 +86,7 @@ static async Task BlobIndexTagsOnCreate()
           // Create an append blob
           AppendBlobClient appendBlobWithTags = container.GetAppendBlobClient("myAppendBlob0.logs");
 
-          // Blob Index tags to upload
+          // Blob index tags to upload
           CreateAppendBlobOptions appendOptions = new CreateAppendBlobOptions();
           appendOptions.Tags = new Dictionary<string, string>
           {
@@ -139,7 +139,7 @@ static async Task BlobIndexTagsExample()
           AppendBlobClient appendBlob = container.GetAppendBlobClient("myAppendBlob1.logs");
           await appendBlob.CreateAsync();
 
-          // Set or Update Blob Index tags on existing blob
+          // Set or update blob index tags on existing blob
           Dictionary<string, string> tags = new Dictionary<string, string>
           {
               { "Project", "Contoso" },
@@ -148,7 +148,7 @@ static async Task BlobIndexTagsExample()
           };
           await appendBlob.SetTagsAsync(tags);
 
-          // Get Blob Index tags
+          // Get blob index tags
           Response<IDictionary<string, string>> tagsResponse = await appendBlob.GetTagsAsync();
           Console.WriteLine(appendBlob.Name);
           foreach (KeyValuePair<string, string> tag in tagsResponse.Value)
@@ -156,7 +156,7 @@ static async Task BlobIndexTagsExample()
               Console.WriteLine($"{tag.Key}={tag.Value}");
           }
 
-          // List Blobs with all options returned including Blob Index tags
+          // List blobs with all options returned including blob index tags
           await foreach (BlobItem blobItem in container.GetBlobsAsync(BlobTraits.All))
           {
               Console.WriteLine(Environment.NewLine + blobItem.Name);
@@ -166,7 +166,7 @@ static async Task BlobIndexTagsExample()
               }
           }
 
-          // Delete existing Blob Index tags by replacing all tags
+          // Delete existing blob index tags by replacing all tags
           Dictionary<string, string> noTags = new Dictionary<string, string>();
           await appendBlob.SetTagsAsync(noTags);
 
@@ -187,7 +187,7 @@ A Azure Portalon belül a blob-index címkék szűrő automatikusan alkalmazza a
 
 1. A [Azure Portal](https://portal.azure.com/)válassza ki a Storage-fiókját. 
 
-2. Navigáljon a containers ( **tárolók** ) lehetőségre a **blob Service**alatt, válassza ki a tárolót
+2. Navigáljon a containers ( **tárolók** ) lehetőségre **blob Service**alatt, és válassza ki a tárolót
 
 3. Válassza a **blob index címkék szűrő** gombot a kiválasztott tárolón belüli szűréshez
 
@@ -205,7 +205,7 @@ static async Task FindBlobsByTagsExample()
       BlobContainerClient container1 = serviceClient.GetBlobContainerClient("mycontainer");
       BlobContainerClient container2 = serviceClient.GetBlobContainerClient("mycontainer2");
 
-      // Blob Index queries and selection
+      // Blob index queries and selection
       String singleEqualityQuery = @"""Archive"" = 'false'";
       String andQuery = @"""Archive"" = 'false' AND ""Priority"" = '01'";
       String rangeQuery = @"""Date"" >= '2020-04-20' AND ""Date"" <= '2020-04-30'";
@@ -227,7 +227,7 @@ static async Task FindBlobsByTagsExample()
           AppendBlobClient appendBlobWithTags4 = container2.GetAppendBlobClient("myAppendBlob04.logs");
           AppendBlobClient appendBlobWithTags5 = container2.GetAppendBlobClient("myAppendBlob05.logs");
            
-          // Blob Index tags to upload
+          // Blob index tags to upload
           CreateAppendBlobOptions appendOptions = new CreateAppendBlobOptions();
           appendOptions.Tags = new Dictionary<string, string>
           {
@@ -286,7 +286,7 @@ static async Task FindBlobsByTagsExample()
 
 3. Válassza a *szabály hozzáadása* lehetőséget, majd töltse ki a műveleti készlet űrlap mezőket.
 
-4. Válassza a szűrő beállítása lehetőséget a választható szűrő hozzáadásához az előtag egyeztetéséhez és a blob-index egyeztetéséhez ![ blob-index címkézése az életciklus-felügyelethez](media/storage-blob-index-concepts/blob-index-match-lifecycle-filter-set.png)
+4. Válassza a **szűrő** beállítása lehetőséget a választható szűrő hozzáadásához az előtag egyeztetéséhez és a blob-index egyeztetéséhez ![ blob-index címkézése az életciklus-felügyelethez](media/storage-blob-index-concepts/blob-index-match-lifecycle-filter-set.png)
 
 5. Válassza a **felülvizsgálat + Hozzáadás** elemet, és tekintse át a szabály beállításai ![ életciklus-kezelési szabályt a blob index címkék szűrővel példa](media/storage-blob-index-concepts/blob-index-lifecycle-management-example.png)
 
@@ -299,6 +299,5 @@ Az [életciklus-kezelési](storage-lifecycle-management-concepts.md) szabályzat
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ a blob-indexről. Lásd: az [Azure Blob Storage-beli adatkezelés és-keresés a blob-indextel (előzetes verzió)](storage-manage-find-blobs.md )
-
-További információ az életciklus-kezelésről. Lásd: [Az Azure Blob Storage életciklusának kezelése](storage-lifecycle-management-concepts.md)
+ - További információ a blob indexről: az [Azure Blob Storage adatainak kezelése és keresése a blob-indextel (előzetes verzió)](storage-manage-find-blobs.md )
+ - További információ az életciklus-kezelésről. Lásd: [Az Azure Blob Storage életciklusának kezelése](storage-lifecycle-management-concepts.md)

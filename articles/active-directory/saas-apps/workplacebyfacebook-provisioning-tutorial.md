@@ -1,6 +1,6 @@
 ---
 title: 'Oktatóanyag: a munkahelyi konfiguráció konfigurálása a Facebookban a felhasználók automatikus kiépítés Azure Active Directory használatával | Microsoft Docs'
-description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést a Azure Active Directory és a munkahely között a Facebook használatával.
+description: Megtudhatja, milyen lépéseket kell elvégeznie a munkahelyen a Facebook és a Azure Active Directory (Azure ad) segítségével a felhasználók automatikus kiépítés konfigurálásához.
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/28/2020
 ms.author: jeedes
-ms.openlocfilehash: ae13e062f50e1e8eefeaa886c67c636cf6230c18
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: c72ca7cb521c5c7e7ed33e9a0539de0df252ac92
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90973883"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321900"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>Oktatóanyag: a munkahelyi környezet konfigurálása a Facebook használatával a felhasználók automatikus üzembe helyezéséhez
 
@@ -81,11 +81,11 @@ Az Azure AD átadási szolgáltatása lehetővé teszi az átadott személyek ha
 
 3. Válassza a **Kiépítés** lapot.
 
-    ![Kiépítés lap](common/provisioning.png)
+    ![Képernyőkép a felügyeleti lehetőségek kezeléséről a kiépítési lehetőséggel.](common/provisioning.png)
 
 4. Állítsa a **Kiépítési mód** mezőt **Automatikus** értékre.
 
-    ![Kiépítés lap](common/provisioning-automatic.png)
+    ![Képernyőkép a kiépítési mód legördülő listájáról az automatikus lehetőséggel.](common/provisioning-automatic.png)
 
 5. A **rendszergazdai hitelesítő adatok** szakaszban kattintson az **Engedélyezés**elemre. A rendszer átirányítja a munkahelyre a Facebook engedélyezési oldalán. Adja meg a munkahelyi Facebook-felhasználónevet, majd kattintson a **Continue (folytatás** ) gombra. Kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad a Facebook segítségével csatlakozhasson a munkahelyhez. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a munkahelyi Facebook-fiók rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
@@ -166,7 +166,7 @@ Az átadás konfigurálása után a következő erőforrásokkal monitorozhatja 
 
 * 09/10/2020 – a (z) "Division", "Organization", "costCenter" és "employeeNumber" vállalati attribútumok támogatása. A "startDate", a "auth_method" és a "Frontline" egyéni attribútumok támogatása
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

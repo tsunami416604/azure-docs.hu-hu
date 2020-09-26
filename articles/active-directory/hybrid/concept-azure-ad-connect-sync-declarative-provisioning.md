@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 543c1a6706f794b81c4f93fc6fff3a61ed3fb9e3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 59dc94e37dfa1ef8b0b079bf5d78d0504e0cb8c7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60246321"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91313620"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Azure AD Connect szinkronizálás: a deklaratív kiépítés ismertetése
 Ez a témakör a Azure AD Connect konfigurációs modelljét ismerteti. A modell neve deklaratív kiépítés, amely lehetővé teszi a konfiguráció módosítását könnyedén. A témakörben leírt számos dolog speciális, és nem szükséges a legtöbb felhasználói forgatókönyvhöz.
@@ -29,11 +29,11 @@ Ez a témakör a Azure AD Connect konfigurációs modelljét ismerteti. A modell
 ## <a name="overview"></a>Áttekintés
 A deklaratív kiépítés a forráshoz csatlakoztatott címtárból érkező objektumokat dolgozza fel, és meghatározza, hogy az objektum és az attribútumok hogyan alakíthatók át forrásról a célhelyre. Egy objektum egy szinkronizálási folyamatban van feldolgozva, és a folyamat a bejövő és kimenő szabályok esetében azonos. Egy bejövő szabály egy összekötő területről a metaverse-re, a Kimenő szabály pedig a metaverse és egy összekötő terület között van.
 
-![Szinkronizálási folyamat](./media/concept-azure-ad-connect-sync-declarative-provisioning/sync1.png)  
+![A szinkronizálási folyamat példáját bemutató diagram.](./media/concept-azure-ad-connect-sync-declarative-provisioning/sync1.png)  
 
 A folyamat több különböző modullal rendelkezik. Mindegyik az objektum-szinkronizálás egyik koncepciójának felel.
 
-![Szinkronizálási folyamat](./media/concept-azure-ad-connect-sync-declarative-provisioning/pipeline.png)  
+![A folyamat moduljait ábrázoló diagram.](./media/concept-azure-ad-connect-sync-declarative-provisioning/pipeline.png)  
 
 * Forrás, a Forrásobjektum
 * [Hatókör](#scope), megkeresi a hatókörben lévő összes szinkronizálási szabályt
@@ -44,7 +44,7 @@ A folyamat több különböző modullal rendelkezik. Mindegyik az objektum-szink
 
 ## <a name="scope"></a>Hatókör
 A hatókör-modul kiértékel egy objektumot, és meghatározza a hatókörben található szabályokat, és a feldolgozás részét képezi. Az objektum attribútumainak értékétől függően a rendszer kiértékeli a különböző szinkronizálási szabályokat a hatókörben. Az Exchange-postaládát nem tartalmazó letiltott felhasználók például eltérő szabályokkal rendelkeznek, mint egy postaládával rendelkező felhasználó.  
-![Hatókör](./media/concept-azure-ad-connect-sync-declarative-provisioning/scope1.png)  
+![Egy objektum hatókör-modulját megjelenítő diagram.](./media/concept-azure-ad-connect-sync-declarative-provisioning/scope1.png)  
 
 A hatókör csoportokként és záradékként van definiálva. A záradékok egy csoporton belül találhatók. Egy logikai és egy csoport összes záradéka között használatos. Például: (részleg = IT és ország = Dánia). A logikai vagy a csoportok között használatos.
 
@@ -53,7 +53,7 @@ A kép hatókörét a következőként kell olvasni: (részleg = IT és ország 
 
 A hatókör-modul a következő műveleteket támogatja.
 
-| Művelet | Leírás |
+| Művelet | Description |
 | --- | --- |
 | EGYENLŐ, NOTEQUAL |Karakterlánc-összehasonlítás, amely kiértékeli, hogy az érték egyenlő-e az attribútum értékével. A többértékű attribútumok esetében lásd: ISIN és ISNOTIN. |
 | LESSTHAN, LESSTHAN_OR_EQUAL |Karakterlánc-összehasonlítás, amely kiértékeli, hogy az érték kisebb-e, mint az attribútumban szereplő érték. |
@@ -78,7 +78,7 @@ Az illesztések egy vagy több csoportként vannak meghatározva. Egy csoporton 
 A képen lévő illesztések felülről lefelé haladva lesznek feldolgozva. Először a szinkronizálási folyamat látja, hogy van-e egyezés az Alkalmazottkód-ben. Ha nem, a második szabály azt látja, hogy a fiók neve használható-e az objektumok összekapcsolásához. Ha ez nem egyezik, a harmadik és a végső szabály a felhasználó nevével megegyezőnek tekintendő.
 
 Ha az összes csatlakozási szabály ki lett értékelve, és nincs pontosan egy egyezés, a **Leírás** lapon a **hivatkozás típusa** lesz használatban. Ha ez a beállítás a **kiépítés**értékre van állítva, a rendszer létrehoz egy új objektumot a célhelyen.  
-![Kiépítés vagy csatlakozás](./media/concept-azure-ad-connect-sync-declarative-provisioning/join3.png)  
+![A "hivatkozás típusa" legördülő menü megnyitására szolgáló képernyőkép.](./media/concept-azure-ad-connect-sync-declarative-provisioning/join3.png)  
 
 Az objektumnak csak egyetlen szinkronizálási szabállyal kell rendelkeznie a hatókörben lévő csatlakoztatási szabályokkal. Ha több szinkronizálási szabály van megadva a csatlakozáshoz, hiba történik. A kapcsolódási ütközések feloldásához a rendszer nem használja a prioritást. Egy objektumnak rendelkeznie kell egy JOIN szabálysal a hatókörben ahhoz, hogy az attribútumok ugyanazzal a bejövő/kimenő irányba haladjanak. Ha a bejövő és a kimenő attribútumokat is ugyanarra az objektumra kell átadnia, akkor a bejövő és a kimenő szinkronizálási szabállyal is csatlakoznia kell.
 
@@ -101,7 +101,7 @@ Az **alkalmazás egyszer** jelölőnégyzet azt határozza meg, hogy az attribú
 ### <a name="merging-attribute-values"></a>Attribútumok értékeinek egyesítése
 Az attribútum folyamataiban van egy beállítás, amely meghatározza, hogy a többértékű attribútumok egyesítve legyenek-e több különböző Összekötőből. Az alapértelmezett érték a **frissítés**, amely azt jelzi, hogy a legmagasabb prioritású szinkronizálási szabálynak nyernie kell.
 
-![Egyesítési típusok](./media/concept-azure-ad-connect-sync-declarative-provisioning/mergetype.png)  
+![Képernyőkép: az "átalakítások hozzáadása" szakasz "Merge Types" (egyesítési típusok) legördülő menüjének megnyitása.](./media/concept-azure-ad-connect-sync-declarative-provisioning/mergetype.png)  
 
 **Egyesítés** és **MergeCaseInsensitive**is. Ezek a beállítások lehetővé teszik különböző forrásokból származó értékek egyesítését. Használhatja például a tag vagy a proxyAddresses attribútum egyesítését több különböző erdőből. Ha ezt a beállítást használja, az objektum hatókörében lévő összes szinkronizálási szabálynak ugyanazt az egyesítési típust kell használnia. Nem határozhat meg **frissítést** egyetlen összekötőről, és **egyesítheti** azt egy másikból. Ha megpróbálja, hibaüzenetet kap.
 
@@ -120,7 +120,7 @@ A literál **AuthoritativeNull** hasonló a **nullához** , de azzal a különbs
 
 Az **IgnoreThisFlow**is használhatnak. Hasonló a NULL értékhez abban az értelemben, hogy az azt jelzi, hogy semmi nem járul hozzá. A különbség az, hogy nem távolítja el a már meglévő értéket a célhelyen. Olyan, mint az attribútum folyamata még soha nem volt ott.
 
-Például:
+Alább bemutatunk egy példát:
 
 Az *ad-User Exchange Hybrid* szolgáltatásban a következő folyamat található:  
 `IIF([cloudSOAExchMailbox] = True,[cloudMSExchSafeSendersHash],IgnoreThisFlow)`  
@@ -146,12 +146,12 @@ Az összekötők között megadható a prioritás. Ez lehetővé teszi, hogy a j
 
 ### <a name="multiple-objects-from-the-same-connector-space"></a>Több objektum ugyanabból az összekötő területből
 Ha ugyanahhoz az összekötőhöz több objektum van csatlakoztatva ugyanahhoz a metaverse-objektumhoz, a prioritást módosítani kell. Ha több objektum van ugyanazon szinkronizálási szabály hatókörében, akkor a szinkronizálási motor nem tudja meghatározni a sorrendet. Nem egyértelmű, hogy melyik forrásobjektum-objektumnak kell a metaverse számára az értéket felvennie. Ez a konfiguráció nem egyértelmű, akkor is, ha a forrás attribútumai azonos értékűek.  
-![Több objektum ugyanahhoz az MV-objektumhoz csatlakoztatva](./media/concept-azure-ad-connect-sync-declarative-provisioning/multiple1.png)  
+![Diagram, amely egy átlátszó piros X átfedéssel rendelkező ugyanahhoz az MV-objektumhoz csatlakoztatott több objektumot mutat be. ](./media/concept-azure-ad-connect-sync-declarative-provisioning/multiple1.png)  
 
 Ebben a forgatókönyvben módosítania kell a szinkronizálási szabályok hatókörét, hogy a Forrásobjektum különböző szinkronizálási szabályokkal rendelkezzen a hatókörben. Ez lehetővé teszi a különböző prioritások meghatározását.  
 ![Több objektum ugyanahhoz az MV-objektumhoz csatlakoztatva](./media/concept-azure-ad-connect-sync-declarative-provisioning/multiple2.png)  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ a kifejezés nyelvéről a [deklaratív kiépítési kifejezések ismertetése](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)című cikkből.
 * Tekintse meg, hogyan használható a deklaratív kiépítés az [alapértelmezett konfiguráció megismeréséhez](concept-azure-ad-connect-sync-default-configuration.md).
 * Tekintse meg, hogyan lehet [módosítani az alapértelmezett konfigurációt](how-to-connect-sync-change-the-configuration.md)a deklaratív kiépítés használatával.
