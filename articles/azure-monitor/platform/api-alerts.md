@@ -4,21 +4,21 @@ description: A Log Analytics riasztási REST API lehetővé teszi a riasztások 
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 07/29/2018
-ms.openlocfilehash: eec7aeab32aa071ce9d4476b15740c89210f0606
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: dce340db90c1528c46c1be0bc172751a04feaf31
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322329"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91294075"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Riasztási szabályok létrehozása és kezelése a Log Analyticsban REST API 
 
+> [!IMPORTANT]
+> Amint [bejelentettük](https://azure.microsoft.com/updates/switch-api-preference-log-alerts/), a *2019. június 1* . után létrehozott log Analytics-munkaterületek a riasztási szabályok kezelése a jelenlegi [scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules/)-val. Javasoljuk, hogy a régebbi munkaterületeken található [aktuális API](./alerts-log-api-switch.md) -ra váltson Azure monitor scheduledQueryRules [előnyök](./alerts-log-api-switch.md#benefits)kihasználása érdekében. Ez a cikk a riasztási szabályok a régi API-val történő kezelését ismerteti.
+
 A Log Analytics riasztási REST API lehetővé teszi a riasztások létrehozását és kezelését Log Analyticsban.  Ez a cikk részletesen ismerteti az API-t és számos példát a különböző műveletek végrehajtásához.
 
-> [!IMPORTANT]
-> Amint azt [korábban bejelentettük](https://azure.microsoft.com/updates/switch-api-preference-log-alerts/), a *2019. június 1* . után létrehozott log Analytics-munkaterület (ek) a riasztási szabályokat **csak** az Azure ScheduledQueryRules [REST API](/rest/api/monitor/scheduledqueryrules/), az [Azure Resource Mananger-sablon](./alerts-log.md#managing-log-alerts-using-azure-resource-template) és a PowerShell- [parancsmag](./alerts-log.md#managing-log-alerts-using-powershell)használatával tudják kezelni. Az ügyfelek könnyedén [válthatnak a riasztási szabályok kezeléséhez](./alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) a régebbi munkaterületek számára, hogy Azure monitor scheduledQueryRules használják az alapértelmezettként, és számos [új előnyt](./alerts-log-api-switch.md#benefits-of-switching-to-new-azure-api) szerezzenek, mint például a natív PowerShell-parancsmagok használata, a szabályok megnövelt lookback időszaka, a szabályok létrehozása külön erőforráscsoport vagy előfizetés esetén, és még sok minden más.
-
-A Log Analytics keresési REST API REST-vel rendelkezik, és a Azure Resource Manager REST API keresztül érhető el. Ebben a dokumentumban olyan példákat talál, amelyekben az API egy PowerShell-parancssorból érhető el az [ARMClient](https://github.com/projectkudu/ARMClient)használatával, amely leegyszerűsíti a Azure Resource Manager API meghívását. A ARMClient és a PowerShell használata számos lehetőség a Log Analytics Search API eléréséhez. Ezekkel az eszközökkel a REST-Azure Resource Manager API-val hívásokat indíthat Log Analytics munkaterületekre, és keresési parancsokat hajthat végre rajtuk. Az API JSON formátumban jeleníti meg a keresési eredményeket, így a keresési eredmények többféleképpen is használhatók.
+A Log Analytics keresési REST API REST-vel rendelkezik, és a Azure Resource Manager REST API keresztül érhető el. Ebben a dokumentumban olyan példákat talál, amelyekben az API egy PowerShell-parancssorból érhető el az  [ARMClient](https://github.com/projectkudu/ARMClient)használatával, amely leegyszerűsíti a Azure Resource Manager API meghívását. A ARMClient és a PowerShell használata számos lehetőség a Log Analytics Search API eléréséhez. Ezekkel az eszközökkel a REST-Azure Resource Manager API-val hívásokat indíthat Log Analytics munkaterületekre, és keresési parancsokat hajthat végre rajtuk. Az API JSON formátumban jeleníti meg a keresési eredményeket, így a keresési eredmények többféleképpen is használhatók.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Jelenleg a riasztásokat csak Log Analytics mentett kereséssel lehet létrehozni.  További információért tekintse meg a [naplóbeli keresés REST API](../log-query/log-query-overview.md) .
@@ -139,7 +139,7 @@ Az ütemtervnek egy és csak egy riasztási művelettel kell rendelkeznie.  A ri
 | Section | Leírás | Használat |
 |:--- |:--- |:--- |
 | Küszöbérték |A művelet futtatásának feltételei.| Minden riasztáshoz szükséges, az Azure-ra való kiterjesztés előtt vagy után. |
-| Severity |Az aktiváláskor a riasztás osztályozásához használt címke.| Minden riasztáshoz szükséges, az Azure-ra való kiterjesztés előtt vagy után. |
+| Súlyosság |Az aktiváláskor a riasztás osztályozásához használt címke.| Minden riasztáshoz szükséges, az Azure-ra való kiterjesztés előtt vagy után. |
 | Elnyomják |Az értesítések riasztásból való leállításának lehetősége. | Nem kötelező minden riasztáshoz, az Azure-ra való kiterjesztés előtt vagy után. |
 | Műveletcsoportok |Az Azure ActionGroup azonosítói, ahol a szükséges műveletek, például az e-mailek, az SMS-hívások, a hanghívások, a webhookok, az Automation Runbookok, a ITSM-összekötők stb.| A riasztások az Azure-ra való kiterjesztése kötelező|
 | Műveletek testreszabása|A Select műveletek standard kimenetének módosítása a ActionGroup| Minden riasztás esetében választható, ha a riasztások kiterjeszthetők Az Azure-ra. |
@@ -185,7 +185,7 @@ $thresholdJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','p
 armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdJson
 ```
 
-#### <a name="severity"></a>Severity
+#### <a name="severity"></a>Súlyosság
 Log Analytics lehetővé teszi a riasztások kategóriákba osztályozását, így könnyebben kezelhető és osztályozható. A riasztás súlyossága definiálva: tájékoztatási, figyelmeztetési és kritikus. Ezek az Azure-riasztások normalizált súlyossági skálájának megfelelően vannak leképezve:
 
 |Súlyossági szint Log Analytics  |Azure-riasztások súlyossági szintje  |
@@ -385,7 +385,7 @@ $AzNsJson = "{'etag': 'datetime'2017-12-13T10%3A52%3A21.1697364Z'\"', 'propertie
 armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A [REST API használatával hajthat végre naplóbeli keresést](../log-query/log-query-overview.md) a log Analytics.
 * További tudnivalók a [naplózási riasztásokról az Azure monitorban](./alerts-unified-log.md)
