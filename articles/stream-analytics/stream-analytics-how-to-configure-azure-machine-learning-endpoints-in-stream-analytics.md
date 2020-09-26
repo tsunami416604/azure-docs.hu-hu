@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/11/2019
-ms.openlocfilehash: 33d1e73523ca85a21c032729b6537ee3297ea23e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f54245013b6a57c02120c0e97ecf5f39094148b0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87020831"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317735"
 ---
 # <a name="azure-machine-learning-studio-classic-integration-in-stream-analytics-preview"></a>Azure Machine Learning Studio (klasszikus) integráció Stream Analytics (előzetes verzió)
 Stream Analytics támogatja a felhasználó által definiált függvényeket, amelyek Azure Machine Learning Studio (klasszikus) végpontokat hívnak meg. A szolgáltatás REST API támogatását a [Stream Analytics REST API könyvtárban](https://msdn.microsoft.com/library/azure/dn835031.aspx)részletesen ismertetjük. Ez a cikk a funkció sikeres megvalósításához szükséges kiegészítő információkat nyújt Stream Analyticsban. Egy oktatóanyag is közzé lett téve, és [itt](stream-analytics-machine-learning-integration-tutorial.md)érhető el.
@@ -25,7 +25,7 @@ A Microsoft Azure Machine Learning Studio (klasszikus) együttműködésen alapu
 * **Végpont**: a *végpontok* a funkciók bemenetként való elvégzéséhez használt Azure Machine learning Studio (klasszikus) objektum, amely egy adott gépi tanulási modellt alkalmaz, és a mutató kimenetet adja vissza.
 * **Pontozási webszolgáltatás**: a *pontozási webszolgáltatás* a fent említett végpontok gyűjteménye.
 
-Mindegyik végpont API-kat tartalmaz a kötegelt végrehajtáshoz és a szinkron végrehajtáshoz. Stream Analytics szinkron végrehajtást használ. Az adott szolgáltatás neve a [kérelem/válasz szolgáltatás](../machine-learning/studio/consume-web-services.md) Azure Machine learning Studio (klasszikus).
+Mindegyik végpont API-kat tartalmaz a kötegelt végrehajtáshoz és a szinkron végrehajtáshoz. Stream Analytics szinkron végrehajtást használ. Az adott szolgáltatás neve a [kérelem/válasz szolgáltatás](../machine-learning/classic/consume-web-services.md) Azure Machine learning Studio (klasszikus).
 
 ## <a name="machine-learning-resources-needed-for-stream-analytics-jobs"></a>Stream Analytics feladatokhoz szükséges erőforrások Machine Learning
 Stream Analytics a feladatok feldolgozását, a kérelem/válasz végpontot, egy [apikey](https://docs.microsoft.com/azure/machine-learning/studio/consume-web-services)és egy hencegő definíciót a sikeres végrehajtáshoz. Stream Analytics rendelkezik egy további végponttal, amely létrehozza a hencegő végpont URL-címét, megkeresi a felületet, és egy alapértelmezett UDF-definíciót ad vissza a felhasználónak.
@@ -190,7 +190,7 @@ Most kérdezze le az UDF-t (itt scoreTweet) minden bemeneti eseménynél, és í
 ## <a name="get-help"></a>Segítség kérése
 További segítségért próbálja ki a [Microsoft Q&egy kérdés oldalt Azure stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
 * [Scale Azure Stream Analytics jobs (Azure Stream Analytics-feladatok méretezése)](stream-analytics-scale-jobs.md)

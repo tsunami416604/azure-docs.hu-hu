@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: e845136c4fed5a3d2e6863fdab0aa9f70fb30b5d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: fb628df5151f9124d7b7f319ff109ffca030ee90
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90939921"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317344"
 ---
 # <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Azure arc-kompatibilis PostgreSQL nagy kapacitású-kiszolgálócsoport létrehozása
 
@@ -59,7 +59,7 @@ Logged in successfully to `https://10.0.0.4:30080` in namespace `arc`. Setting a
 A következő lépésre való áttérés előtt implementálja ezt a lépést. Ha a PostgreSQL nagy kapacitású-kiszolgáló csoportját nem az alapértelmezett értékre szeretné telepíteni a Red Hat OpenShift, az alábbi parancsokat kell futtatnia a fürtön a biztonsági megkötések frissítéséhez. Ez a parancs megadja a szükséges jogosultságokat a PostgreSQL nagy kapacitású-kiszolgálói csoportot futtató szolgáltatásfiókok számára. Az Azure arc-adatkezelő üzembe helyezése során felvette a biztonsági környezeti megkötés (SCC) **_ív-adathalmazát_** .
 
 ```console
-oc adm policy add-scc-to-group arc-data-scc -z <server-group-name> -n <namespace name>
+oc adm policy add-scc-to-user arc-data-scc -z <server-group-name> -n <namespace name>
 ```
 
 _A **kiszolgáló-csoport neve** a következő lépésben létrehozandó kiszolgálócsoport neve._
@@ -72,7 +72,7 @@ Most már megvalósíthatja a következő lépést.
 Azure Database for PostgreSQL nagy kapacitású-kiszolgálócsoport létrehozásához az Azure-ív esetében használja a következő parancsot:
 
 ```console
-azdata arc postgres server create -n <name> --workers 2 --storage-class-data <storage class name> --storage-class-logs <storage class name> --storage-class-backups <storage class name>
+azdata arc postgres server create -n <name> --workers <# worker nodes with #>=2> --storage-class-data <storage class name> --storage-class-logs <storage class name> --storage-class-backups <storage class name>
 
 #Example
 #azdata arc postgres server create -n postgres01 --workers 2
@@ -80,25 +80,14 @@ azdata arc postgres server create -n <name> --workers 2 --storage-class-data <st
 
 > [!NOTE]
 > - **Más parancssori paraméterek is elérhetők.  A lehetőségek teljes listáját a futtatásával tekintheti meg `azdata arc postgres server create --help` .**
-> - Az előzetes verzióban a biztonsági mentéshez és a visszaállításhoz meg kell adnia egy tárolási osztályt a biztonsági mentésekhez (_--Storage-Class-Backups-SCB_), amikor létrehoz egy kiszolgálói csoportot.
+> - A biztonsági mentéshez használt tárolási osztály (_--Storage-Class-Backups-SCB_) alapértelmezett értéke az adatkezelő adattároló osztálya, ha nincs megadva.
 > - A--Volume-size-* paraméterek által elfogadott egység egy Kubernetes-erőforrás mennyisége (egy egész szám, amelyet a fenti SI-K egyike is elegendő (T, G, M, K, m), vagy a két megfelelője (ti, GI, mi, ki)).
-> - A névnek 10 karakternél rövidebbnek kell lennie, és meg kell felelnie a DNS elnevezési konvencióinak.
+> - A névnek 12 vagy kevesebb karakterből kell állnia, és meg kell felelnie a DNS elnevezési konvencióinak.
 > - A rendszer kérni fogja, hogy adja meg a _postgres_ standard rendszergazdai jogú felhasználó jelszavát.  Az interaktív kérdés kihagyható úgy, hogy a `AZDATA_PASSWORD` create parancs futtatása előtt beállítja a munkamenet környezeti változóját.
-> - Ha a AZDATA_USERNAME és AZDATA_PASSWORD használatával telepítette az adatvezérlőt ugyanazon a terminál-munkamenetben, akkor a rendszer az AZDATA_USERNAME és AZDATA_PASSWORD értékeit is felhasználja a PostgreSQL nagy kapacitású-kiszolgálócsoport telepítéséhez. A PostgreSQL nagy kapacitású adatbázismotor alapértelmezett rendszergazda felhasználójának neve _PostgreSQL_ , és ezen a ponton nem módosítható.
+> - Ha a AZDATA_USERNAME és AZDATA_PASSWORD munkamenet-környezeti változók használatával telepítette az adatvezérlőt ugyanabban a terminál-munkamenetben, akkor a rendszer az AZDATA_PASSWORD értékeit is felhasználja a PostgreSQL nagy kapacitású-kiszolgálócsoport telepítéséhez. Ha inkább egy másik jelszót szeretne használni, vagy (1) frissítse a AZDATA_PASSWORD értékét, vagy (2) törölje a AZDATA_PASSWORD környezeti változót, vagy törölje annak értékét, hogy a rendszer egy kiszolgálócsoport létrehozásakor interaktív módon adjon meg egy jelszót.
+> - A PostgreSQL nagy kapacitású-adatbázismotor alapértelmezett rendszergazda felhasználójának neve _postgres_ , és ezen a ponton nem módosítható.
 > - A PostgreSQL nagy kapacitású-kiszolgálócsoport létrehozása nem fogja azonnal regisztrálni az erőforrásokat az Azure-ban. Az [erőforrás-leltár](upload-metrics-and-logs-to-azure-monitor.md)  vagy a [használati adatok](view-billing-data-in-azure.md) Azure-ba való feltöltése során az erőforrások az Azure-ban lesznek létrehozva, és az erőforrások megjelennek a Azure Portalban.
-> - A--Port paraméter nem módosítható ezen a ponton.
-> - Ha nem rendelkezik alapértelmezett tárolási osztállyal a Kubernetes-fürtben, a--metadataStorageClass paraméterrel kell megadnia egyet. Ha ezt nem teszi meg, a Create parancs meghibásodását fogja eredményezni. Annak ellenőrzéséhez, hogy rendelkezik-e a Kubernetes-fürtön deklarált alapértelmezett tárolási osztállyal, a következő parancsot kell megállapítania: 
->
->   ```console
->   kubectl get sc
->   ```
->
-> - Ha a tárolási osztály alapértelmezett tárolási osztályként van konfigurálva, akkor az **(alapértelmezett)** érték jelenik meg a tárolási osztály nevéhez. Például:
->
->   ```output
->   NAME                       PROVISIONER                        AGE
->   local-storage (default)    kubernetes.io/no-provisioner       4d18h
->   ```
+
 
 
 ## <a name="list-your-azure-database-for-postgresql-server-groups-created-in-your-arc-setup"></a>Az ív-telepítőben létrehozott Azure Database for PostgreSQL-kiszolgálócsoportok listázása

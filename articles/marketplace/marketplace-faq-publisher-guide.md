@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 09/11/2020
-ms.openlocfilehash: fa8ee205952d1bd39e932ca6c91e3cffe608bf95
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 5bf94faff86edf954c687ca3024c63229829ca04
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032112"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91369722"
 ---
 # <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>Gyakori kérdések a Microsoft kereskedelmi piactérről
 
@@ -229,7 +229,7 @@ A felhasználói fióknak *tulajdonosi* vagy *közreműködői* engedélyekkel k
 
 Az ügyfelek az 141-es helyszíneken szerezhetik be a kereskedelmi piactér megoldásait világszerte.
 
-A helyszínek listájának áttekintéséhez nyissa meg a [kereskedelmi piactér-közzétevők adózási adatait](partner-center-portal/tax-details-paid-transactions.md).
+A helyszínek listájának áttekintéséhez nyissa meg a [kereskedelmi piactér-közzétevők adózási adatait](/partner-center/tax-details-marketplace?context=/azure/marketplace/context/context).
 
 ### <a name="what-currencies-are-supported-with-the-commercial-marketplace"></a>Milyen pénznemek támogatottak a kereskedelmi piactéren?
 
@@ -274,38 +274,38 @@ Az ügyfeleket általában havonta kell fizetni az előző számlázási ciklusb
 
 ### <a name="how-often-will-i-receive-payouts-for-sales-through-the-commercial-marketplace"></a>Milyen gyakran kapok kifizetéseket a kereskedelmi piactéren?
 
-A kifizetések havonta történnek. A fizetési ütemtervekkel kapcsolatos részletekért, a soron következő kifizetések megkereséséhez a partner Centerben, valamint az ügyfelek nem teljesített fizetések kezelésével kapcsolatban lásd a [kifizetési szabályzat részleteit](partner-center-portal/payout-policy-details.md).
+A kifizetések havonta történnek. A fizetési ütemtervekkel kapcsolatos részletekért, a soron következő kifizetések megkereséséhez a partner Centerben, valamint az ügyfelek nem teljesített fizetések kezelésével kapcsolatban lásd a [kifizetési szabályzat részleteit](/partner-center/payout-policy-details?context=/azure/marketplace/context/context).
 
 - Azon tranzakciók esetében, amelyekben az ügyfél a Nagyvállalati Szerződés használta, a kifizetések a következő kifizetési ciklusban lesznek kiadva az ügyfél-számlázás után. 
 - Azon tranzakciók esetében, amelyekben az ügyfél bankkártyát használt, további 30 napos letéti időszakra van szükség, miután megkapta a kifizetést, és nincsenek jóváírások vagy csalás gyanúja.
 
 A kifizetések csak akkor jelennek meg, ha a Sales szolgáltatás elérte az $50,00-os minimális összesített értéket.
 
-További információ: [fizetési küszöbértékek, metódusok és időbeli keretek](partner-center-portal/payment-thresholds-methods-timeframes.md).
+További információ: [fizetési küszöbértékek, metódusok és időbeli keretek](/partner-center/payment-thresholds-methods-timeframes?context=/azure/marketplace/context/context).
 
 ### <a name="in-what-countriesregions-are-taxes-managed-on-my-behalf"></a>Milyen országokban/régiókban történik az adók kezelése az Ön nevében?
 
 Az ügyfelek a világ különböző pontjain találhatják meg a kereskedelmi piactéren elérhető megoldásokat, és számos helyen kezeljük az adókat. 
 
-A helyszínek teljes listájának áttekintéséhez tekintse meg a [kereskedelmi piactér-közzétevők adózási adatait](partner-center-portal/tax-details-paid-transactions.md).
+A helyszínek teljes listájának áttekintéséhez tekintse meg a [kereskedelmi piactér-közzétevők adózási adatait](/partner-center/tax-details-marketplace?context=/azure/marketplace/context/context).
 
 ### <a name="where-can-i-find-payout-reporting-for-the-commercial-marketplace"></a>Hol találom a kereskedelmi piactéren a kifizetési jelentéseket?
 
 A partner centeren belül a *tulajdonosi* vagy *pénzügyi közreműködői* engedélyekkel rendelkező felhasználó megtekintheti a kifizetési jelentéseket. Ezek a felhasználók a jobb felső sarokban érhetik el a jelentéseket, ha kijelöli a számlát betöltő kéz ikonját.
 
-További információ: [kifizetési jelentéskészítés](partner-center-portal/payout-summary.md).
+További információ: [kifizetési utasítások](/partner-center/payout-statement?context=/azure/marketplace/context/context).
 
 ### <a name="how-do-i-configure-my-payout-method-and-destination"></a>Hogyan a kifizetési módszer és a cél konfigurálása?
 
 A partneri központban a *tulajdonosi* engedélyekkel rendelkező felhasználók beállíthatja a kifizetési fiókot és az adózási űrlapokat. A felhasználók ezt úgy teheti meg, hogy a jobb felső sarokban lévő **Beállítások** gombra (fogaskerék ikon) kattint.
 
-További információért lépjen a [kifizetési fiók és a Tax Forms](partner-center-portal/set-up-your-payout-account-tax-forms.md)elemre.
+További információ: [a kifizetési fiók és az adózási űrlapok beállítása](/partner-center/set-up-your-payout-account?context=/azure/marketplace/context/context).
 
 ### <a name="are-returns-and-refunds-supported-with-the-commercial-marketplace"></a>A visszaadja és a kereskedelmi piactéren támogatott visszatérítéseket?
 
 A visszatérítések fogadásához az ügyfelek egy megadott időkereten belül törölhetik az előfizetéseket. Havi előfizetések esetén 24 óra, éves előfizetések esetén pedig 14 nap. Az olyan ajánlatok, amelyeknek a használata a megoldás alkalmazása után történik, nem jogosultak a visszatérítésre.
 
-## <a name="resources"></a>További források
+## <a name="resources"></a>Források
 
 ### <a name="where-can-i-find-more-information-about-the-commercial-marketplace"></a>Hol találhatok további információt a kereskedelmi piactérről?
 
@@ -340,7 +340,7 @@ A Microsoft felügyeleti központtal kapcsolatos információkért lásd: a [kü
 ### <a name="where-can-i-learn-about-azure-government-and-the-azure-government-marketplace"></a>Hol tudhatok meg többet a Azure Governmentról és a Azure Government Marketplace-ről?
 
 - [Azure Government](https://azure.microsoft.com/global-infrastructure/government)
-- [Microsoft adatvédelmi központ](https://www.microsoft.com/trust-center)
+- [Microsoft Adatvédelmi központ](https://www.microsoft.com/trust-center)
 - [Az Azure Government dokumentációja](../azure-government/index.yml)
 - [Azure Government piactér](../azure-government/documentation-government-manage-marketplace.md)
 - [Azure Government megfelelőség](../azure-government/documentation-government-plan-compliance.md)

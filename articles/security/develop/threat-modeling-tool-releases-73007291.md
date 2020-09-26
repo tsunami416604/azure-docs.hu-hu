@@ -1,17 +1,17 @@
 ---
 title: Microsoft Threat Modeling Tool kiadás 07/29/2020 – Azure
-description: A veszélyforrások modellezése eszköz kibocsátási megjegyzéseit dokumentálja
+description: A veszélyforrások modellezése eszköz kiadási 7.3.00729.1 tartozó kibocsátási megjegyzések dokumentálása.
 author: jegeib
 ms.author: jegeib
 ms.service: security
 ms.topic: article
 ms.date: 07/29/2020
-ms.openlocfilehash: 47ffe753d661bb8c9a181148ea235b2a0eb54400
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: fc343f292fa32ed2db67dd74aba7a66dbc00d6ab
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87839873"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317837"
 ---
 # <a name="threat-modeling-tool-update-release-73007291---07292020"></a>Threat Modeling Tool Update kiadás 7.3.00729.1-07/29/2020
 
@@ -50,6 +50,6 @@ Ez a hiba továbbra is megjelenik, ha a Threat Modeling Tool elindul, ha duplán
 
 - A Threat Modeling Tool dokumentációja a [docs.microsoft.com](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool)található, és [az eszköz használatával](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool-getting-started)kapcsolatos információkat tartalmaz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Töltse le a [Microsoft Threat Modeling Tool](https://aka.ms/threatmodelingtool)legújabb verzióját.

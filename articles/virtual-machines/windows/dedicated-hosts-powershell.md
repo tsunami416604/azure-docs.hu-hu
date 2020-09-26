@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 08/01/2019
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: 599d13daac2e062c8f71f5f7d7133646a1447123
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: ac915aa3baba910895e10d21148b899347e8ae4e
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87266588"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91370487"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Virtuális gépek üzembe helyezése dedikált gazdagépeken a Azure PowerShell használatával
 
@@ -49,6 +49,14 @@ $hostGroup = New-AzHostGroup `
    -ResourceGroupName $rgName `
    -Zone 1
 ```
+
+
+Adja hozzá a `-SupportAutomaticPlacement true` paramétert, hogy a virtuális gépek és a méretezési csoport példányai automatikusan a gazdagépekre kerüljenek a gazdagépen belül. További információ: manuális és [automatikus elhelyezés ](../dedicated-hosts.md#manual-vs-automatic-placement).
+
+> [!IMPORTANT]
+> Az automatikus elhelyezés jelenleg nyilvános előzetes verzióban érhető el.
+> Az előzetes verzióban való részvételhez végezze el az előzetes verziójú előkészítési felmérést a következő címen: [https://aka.ms/vmss-adh-preview](https://aka.ms/vmss-adh-preview) .
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="create-a-host"></a>Gazdagép létrehozása
 
@@ -165,6 +173,32 @@ Location               : eastus
 Tags                   : {}
 ```
 
+## <a name="create-a-scale-set-preview"></a>Méretezési csoport létrehozása (előzetes verzió)
+
+> [!IMPORTANT]
+> A dedikált gazdagépeken lévő Virtual Machine Scale Sets jelenleg nyilvános előzetes verzióban érhető el.
+> Az előzetes verzióban való részvételhez végezze el az előzetes verziójú előkészítési felmérést a következő címen: [https://aka.ms/vmss-adh-preview](https://aka.ms/vmss-adh-preview) .
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Méretezési csoport telepítésekor meg kell adnia a gazdagépet.
+
+```azurepowershell-interactive
+New-AzVmss `
+  -ResourceGroupName "myResourceGroup" `
+  -Location "EastUS" `
+  -VMScaleSetName "myDHScaleSet" `
+  -VirtualNetworkName "myVnet" `
+  -SubnetName "mySubnet" `
+  -PublicIpAddressName "myPublicIPAddress" `
+  -LoadBalancerName "myLoadBalancer" `
+  -UpgradePolicyMode "Automatic"`
+  -HostGroupId $hostGroup.Id
+```
+
+Ha manuálisan szeretné kiválasztani a méretezési csoport üzembe helyezéséhez szükséges gazdagépet, adja hozzá a `--host` nevet és a gazdagép nevét.
+
+
+
 ## <a name="add-an-existing-vm"></a>Meglévő virtuális gép hozzáadása 
 
 Hozzáadhat egy meglévő virtuális gépet egy dedikált gazdagéphez, de a virtuális gépnek először Stop\Deallocated. kell lennie. Mielőtt áthelyezi a virtuális gépet egy dedikált gazdagépre, győződjön meg arról, hogy a virtuális gép konfigurációja támogatott:
@@ -211,7 +245,7 @@ Start-AzVM `
 ```
 
 
-## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
+## <a name="clean-up"></a>A feleslegessé vált elemek eltávolítása
 
 A dedikált gazdagépekre akkor is díjat számítunk fel, ha nincsenek virtuális gépek üzembe helyezése. Minden olyan gazdagépet törölni kell, amelyet jelenleg nem használ a költségek megtakarítására.  
 
@@ -240,7 +274,7 @@ Remove-AzResourceGroup -Name $rgName
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Itt](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)található egy minta sablon, amely mindkét zónát és tartalék tartományt használja a maximális rugalmasság érdekében egy régióban.
 

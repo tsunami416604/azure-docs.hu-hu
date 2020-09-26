@@ -16,12 +16,12 @@ ms.date: 03/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dbc9e5a9187f9ef16ea03cfa6c97e438c2b26c99
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 77271679306b0fbde10c748afc7535f3ad3d0945
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807604"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317565"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>A jelszókivonat szinkronizálásának hibaelhárítása Azure AD Connect-szinkronizálással
 
@@ -120,7 +120,7 @@ Minden helyszíni Active Directory-összekötőhöz tartozik egy saját jelszó-
 
 Ha a helyszíni Active Directory-összekötő által a jelszó-kivonatok szinkronizálásához használt AD DS fiók nem rendelkezik a megfelelő engedélyekkel, a rendszer a következő hibaüzenetet adja vissza:
 
-![Helytelen hitelesítő adat](./media/tshoot-connect-password-hash-synchronization/phsglobalaccountincorrectpermission.png)
+![A AD DS-fiók helytelen felhasználónevével vagy jelszavával visszaadott hibaüzenetet bemutató képernyőkép.](./media/tshoot-connect-password-hash-synchronization/phsglobalaccountincorrectpermission.png)
 
 #### <a name="incorrect-ad-ds-account-username-or-password"></a>Helytelen AD DS fiók felhasználóneve vagy jelszava
 
@@ -206,9 +206,9 @@ A jelszavak szinkronizálása nélküli hibák elhárítása:
 
 2. Futtassa a vagy a parancsot `Set-ExecutionPolicy RemoteSigned` `Set-ExecutionPolicy Unrestricted` .
 
-3. Futtassa az `Import-Module ADSyncDiagnostics` parancsot.
+3. Futtatja a `Import-Module ADSyncDiagnostics` parancsot.
 
-4. Futtassa az `Invoke-ADSyncDiagnostics -PasswordSync` parancsot.
+4. Futtatja a `Invoke-ADSyncDiagnostics -PasswordSync` parancsot.
 
 
 
@@ -338,11 +338,11 @@ Az objektumok állapotának áttekintésével könnyedén elháríthatja a jelsz
 
     i. A felhasználói attribútumok listájának megjelenítéséhez kattintson a **metaverse-objektum tulajdonságai** elemre.  
 
-    ![Metaverse-információk](./media/tshoot-connect-password-hash-synchronization/mvpasswordsync.png)  
+    ![A metaverse-objektum tulajdonságainak felhasználói attribútumainak listáját megjelenítő képernyőkép.](./media/tshoot-connect-password-hash-synchronization/mvpasswordsync.png)  
 
     Ellenőrizze, hogy nincs-e **cloudFiltered** attribútum. Győződjön meg arról, hogy a tartományi attribútumok (domainFQDN és domainNetBios) a várt értékekkel rendelkeznek.
 
-    j. Kattintson az **Összekötők** lapra. Ellenőrizze, hogy az összekötők a helyszíni Active Directory és az Azure ad-hez is megjelennek-e.
+    j. Kattintson az **Összekötők** fülre. Győződjön meg arról, hogy az összekötők a helyszíni Active Directory és az Azure AD-vel egyaránt láthatók.
 
     ![Metaverse-információk](./media/tshoot-connect-password-hash-synchronization/mvconnectors.png)  
 
@@ -356,7 +356,7 @@ Az Állapot oszlopban a következő értékek szerepelhetnek:
 
 | Állapot | Leírás |
 | --- | --- |
-| Sikeres |A jelszó szinkronizálása sikeresen megtörtént. |
+| Success |A jelszó szinkronizálása sikeresen megtörtént. |
 | FilteredByTarget |A jelszó beállítása a **következő bejelentkezéskor a felhasználónak kell megváltoztatnia a jelszót**. A jelszó nincs szinkronizálva. |
 | NoTargetConnection |Nincs objektum a metaverse-ban vagy az Azure AD-összekötőben. |
 | SourceConnectorNotPresent |Nem található objektum a helyszíni Active Directory-összekötő területén. |
@@ -445,7 +445,7 @@ Set-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector -TargetConn
 Set-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector -TargetConnector $aadConnector -Enable $true
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Jelszó-kivonatolási szinkronizálás megvalósítása Azure AD Connect szinkronizálással](how-to-connect-password-hash-synchronization.md)
 * [Azure AD Connect Sync: szinkronizálási beállítások testreszabása](how-to-connect-sync-whatis.md)

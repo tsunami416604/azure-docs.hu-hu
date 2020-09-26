@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan futtathatja a VMware virtuális gépek ügynök
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: MVC
-ms.openlocfilehash: bf33c61783b6d7399cd880f53009033a97625bca
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: f437c0f3b9f786863d3b58f10d1a7384b0f1e8ba
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378848"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296144"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>VMware virtuális gépek migrálása az Azure-ba (ügynök-alapú)
 
@@ -27,9 +27,9 @@ Ebből a cikkből megtudhatja, hogyan telepítheti át a helyszíni VMware virtu
 > * Futtasson teljes áttelepítést az Azure-ba.
 
 > [!NOTE]
-> Az oktatóanyagok bemutatják a forgatókönyvek legegyszerűbb telepítési útvonalát, így gyorsan beállíthatja a rendszer megvalósíthatóságát. Az oktatóanyagok az alapértelmezett beállításokat használják, ahol lehetséges, és nem jelennek meg az összes lehetséges beállítás és elérési út. 
+> Az oktatóanyagok bemutatják a forgatókönyvek legegyszerűbb telepítési útvonalát, így gyorsan beállíthatja a rendszer megvalósíthatóságát. Ahol lehet, az oktatóanyagok az alapértelmezett beállításokat használják, és nem mutatják be az összes lehetséges beállítást és módot. 
 
-Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/), mielőtt nekikezdene a feladatok elvégzésének.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/), mielőtt hozzákezd.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -42,7 +42,7 @@ A táblázatban szereplő feladatok végrehajtásával készítse elő az Azure-
 
 **Feladat** | **Részletek**
 --- | ---
-**Azure Migrate projekt létrehozása** | Az Azure-fióknak közreműködői vagy tulajdonosi engedélyekkel kell rendelkeznie a projekt létrehozásához.
+**Azure Migrate-projekt létrehozása** | Az Azure-fióknak közreműködői vagy tulajdonosi engedélyekkel kell rendelkeznie a projekt létrehozásához.
 **Azure-fiók engedélyeinek ellenőrzése** | Az Azure-fióknak rendelkeznie kell a virtuális gép létrehozásához szükséges engedélyekkel, és írnia kell egy Azure-beli felügyelt lemezre.
 **Azure-hálózat beállítása** | Hozzon létre egy hálózatot, amelyet az Azure-beli virtuális gépek a Migrálás után csatlakozni fognak.
 
@@ -50,12 +50,12 @@ A táblázatban szereplő feladatok végrehajtásával készítse elő az Azure-
 Ha nem rendelkezik Azure Migrate-projekttel, ellenőrizze az engedélyek létrehozását.
 
 
-1. A Azure Portal nyissa meg az előfizetést, és válassza a **hozzáférés-vezérlés (iam)** lehetőséget.
+1. Az Azure Portalon nyissa meg az előfizetést, majd válassza a **Hozzáférés-vezérlés (IAM)** lehetőséget.
 2. A **hozzáférés engedélyezése**területen keresse meg a megfelelő fiókot, és kattintson rá az engedélyek megtekintéséhez.
 3. Győződjön meg arról, hogy **közreműködői** vagy **tulajdonosi** engedélyekkel rendelkezik.
 
-    - Ha csak az ingyenes Azure-fiókot hozta létre, akkor Ön az előfizetés tulajdonosa.
-    - Ha nem Ön az előfizetés tulajdonosa, a tulajdonossal társítsa a szerepkört.
+    - Ha most hozott létre egy ingyenes Azure-fiókot, akkor Ön az előfizetés tulajdonosa.
+    - Ha nem Ön az előfizetés tulajdonosa, akkor a tulajdonossal együttműködve rendelje hozzá a szerepkört.
     
 ### <a name="assign-azure-account-permissions"></a>Azure-fiók engedélyeinek kiosztása
 
@@ -150,13 +150,13 @@ Ha van projektje, adja hozzá az eszközt az alábbiak szerint:
 3. Az **Áttekintés** területen kattintson a **Kiszolgálók értékelése és migrálása** lehetőségre.
 4. A **kiszolgálók felderítése, felmérése és migrálása**területen kattintson a **kiszolgálók felmérése és migrálása**elemre.
 
-    ![Kiszolgálók felderítése és értékelése](./media/tutorial-migrate-vmware-agent/assess-migrate.png)
+    ![Kiszolgálók felderítése és kiértékelése](./media/tutorial-migrate-vmware-agent/assess-migrate.png)
 
 1. A **Kiszolgálók felderítése, értékelése és migrálása** területen kattintson az **Eszközök hozzáadása** lehetőségre.
 2. A **Projekt migrálása** területen válassza ki az Azure-előfizetését, majd hozzon létre egy erőforráscsoportot, ha még nem rendelkezik eggyel.
 3. A **Projekt részletei** területen adja meg a projekt nevét és a földrajzi területet, ahol létre szeretné hozni a projektet, majd kattintson a **Következő** gombra. Tekintse át a nyilvános és a [kormányzati felhők](migrate-support-matrix.md#supported-geographies-azure-government)támogatott földrajzi [területeit](migrate-support-matrix.md#supported-geographies-public-cloud) .
 
-    ![Azure Migrate projekt létrehozása](./media/tutorial-migrate-vmware-agent/migrate-project.png)
+    ![Azure Migrate-projekt létrehozása](./media/tutorial-migrate-vmware-agent/migrate-project.png)
 
 
 4. Az **Értékelési eszköz kiválasztása** területen válassza **Az értékelési eszköz hozzáadásának mellőzése egyelőre** > **Tovább** lehetőséget.
@@ -223,7 +223,7 @@ A replikációs berendezés beállításának és regisztrálásának befejezés
 
 1. A készülék beállítása területen válassza a **kapcsolat beállítása**lehetőséget.
 2. Válassza ki a hálózati adaptert (alapértelmezés szerint csak egy hálózati adapter van), amelyet a replikációs berendezés használ a virtuális gépek felderítéséhez, és a mobilitási szolgáltatás leküldéses telepítését a forrásszámítógépen.
-3. Válassza ki azt a hálózati adaptert, amelyet a replikációs berendezés az Azure-hoz való kapcsolódáshoz használ. Kattintson a **Mentés** gombra. Ez a beállítás a konfigurálás után nem módosítható.
+3. Válassza ki azt a hálózati adaptert, amelyet a replikációs berendezés az Azure-hoz való kapcsolódáshoz használ. Ez után válassza a **Mentés** lehetőséget. Ez a beállítás a konfigurálás után nem módosítható.
 4. Ha a készülék proxykiszolgáló mögött található, meg kell adnia a proxybeállításokat.
     - Adja meg a proxy nevét a következőképpen: **http://ip-address** vagy **http://FQDN** . A HTTPS-proxy kiszolgálók nem támogatottak.
 5. Ha a rendszer rákérdez az előfizetés, az erőforráscsoport és a tár részleteire, adja meg a berendezés sablonjának letöltésekor feljegyzett adatokat.
@@ -251,7 +251,7 @@ Válassza ki a virtuális gépeket az áttelepítéshez.
 
 1. A Azure Migrate projekt > **kiszolgálók**, **Azure Migrate: kiszolgáló áttelepítése**elemre, majd kattintson a **replikálás**gombra.
 
-    ![Virtuális gépek replikálása](./media/tutorial-migrate-vmware-agent/select-replicate.png)
+    ![Képernyőkép a Azure Migrate kiszolgálók képernyőjéről. A replikálás gomb a Azure Migrate: kiszolgáló áttelepítése áttelepítési eszközök területen van kiválasztva.](./media/tutorial-migrate-vmware-agent/select-replicate.png)
 
 2. A **Replikálás**, > **Forrásbeállítások** > **Virtualizáltak a gépek?** területen válassza az **Igen, a VMware vSphere szolgáltatással** lehetőséget.
 3. A helyszíni **készülék**területen válassza ki a beállított Azure Migrate berendezés nevét.
@@ -259,7 +259,7 @@ Válassza ki a virtuális gépeket az áttelepítéshez.
 5. A **Process Server**lapon válassza ki a replikációs berendezés nevét.
 6. A **vendég hitelesítő adatai**területen határozza meg a mobilitási szolgáltatás leküldéses telepítéséhez használni kívánt virtuális gép rendszergazdai fiókját. Ezután kattintson a **Tovább gombra: Virtual Machines**.
 
-    ![Virtuális gépek replikálása](./media/tutorial-migrate-vmware-agent/source-settings.png)
+    ![Képernyőfelvétel a replikálás képernyő forrásoldali beállítások lapján. A vendég hitelesítő adatok mező kiemelve értékre van állítva, és a beállítás a VM-admin-Account.](./media/tutorial-migrate-vmware-agent/source-settings.png)
 
 7. **Virtual Machines**válassza ki a replikálni kívánt gépeket.
 

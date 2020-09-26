@@ -4,13 +4,13 @@ description: Ismerje meg, hogyan fejlesztheti a függvényeket a JavaScript hasz
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 6ff56ba6dc85901c8cdc7a9b06fbc261feb8792d
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.custom: devx-track-js
+ms.openlocfilehash: bd5eea6d97ca5ff20622c651b2c6ee75f9014d55
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89055328"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317176"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript fejlesztői útmutató
 
@@ -201,7 +201,7 @@ module.exports = (context) => {
 
 A függvénynek átadott környezet egy tulajdonságot tesz elérhetővé `executionContext` , amely egy olyan objektum, amely a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság neve  | Típus  | Leírás |
+| Tulajdonság neve  | Típus  | Description |
 |---------|---------|---------|
 | `invocationId` | Sztring | Egyedi azonosítót biztosít az adott függvény meghívásához. |
 | `functionName` | Sztring | A futó függvény nevét adja meg. |

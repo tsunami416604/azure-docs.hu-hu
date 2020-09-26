@@ -4,14 +4,14 @@ description: A Azure Cosmos DB Explorer egy önálló, webalapú felület, amell
 author: deborahc
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 05/23/2019
+ms.date: 09/23/2020
 ms.author: dech
-ms.openlocfilehash: 918f5a4a572f5518e5ae1b08db3d88d559571ed7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ebfb175de67d7bb8ea011ac340b57f5d62d9e223
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261885"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318806"
 ---
 # <a name="work-with-data-using-azure-cosmos-explorer"></a>Adatok kezelése az Azure Cosmos Explorerrel 
 
@@ -39,7 +39,7 @@ A Azure Cosmos DB Explorer egy önálló, webalapú felület, amellyel megtekint
 
    **Olvasás** – ha a csak olvasási URL-címet más felhasználókkal osztja meg, megtekintheti az adott fiókhoz társított adatbázisokat, gyűjteményeket, lekérdezéseket és egyéb erőforrásokat. Ha például egy lekérdezés eredményét szeretné megosztani a csapattársakkal, akik nem férnek hozzá a Azure Portalhoz vagy a Azure Cosmos DB-fiókjához, akkor megadhatja az URL-címet.
 
-   Válassza ki azt a hozzáférési típust, amelyhez meg szeretné nyitni a fiókot, és kattintson a **Megnyitás**gombra. Az Explorer megnyitása után a felhasználói élmény ugyanaz, mint a Azure Portal Adatkezelő lapján.   
+   Válassza ki azt a hozzáférési típust, amelyhez meg szeretné nyitni a fiókot, és kattintson a **Megnyitás**gombra. Az Explorer megnyitása után a felhasználói élmény ugyanaz, mint a Azure Portal Adatkezelő lapján.
 
    :::image type="content" source="./media/data-explorer/open-data-explorer-with-access-url.png" alt-text="Azure Cosmos DB Explorer megnyitása":::
 
@@ -49,7 +49,10 @@ Jelenleg a **nyílt teljes képernyős** élmény lehetővé teszi, hogy az idei
 
 Az UUID-t tartalmazó dokumentumok jelenleg nem támogatottak Adatkezelőban. Ez nem befolyásolja a gyűjtemények betöltését, csak az ezeket a dokumentumokat tartalmazó egyes dokumentumokat vagy lekérdezéseket tekinti meg. A dokumentumok megtekintéséhez és kezeléséhez a felhasználóknak továbbra is az eredetileg a dokumentumok létrehozásához használt eszközt kell használniuk.
 
-## <a name="next-steps"></a>További lépések
+Előfordulhat, hogy a HTTP-401 hibákat fogadó ügyfelek nem rendelkeznek elegendő RBAC engedéllyel az ügyfél Azure-fiókjához, különösen akkor, ha a fiók egyéni RBAC szerepkörrel rendelkezik. Minden egyéni szerepkörnek rendelkeznie kell a `Microsoft.DocumentDB/databaseAccounts/listKeys/*` adatkezelő használatára, ha Azure Active Directory hitelesítő adataival jelentkezik be.
+
+## <a name="next-steps"></a>Következő lépések
+
 Most, hogy megtanulta, hogyan használhatja a Azure Cosmos DB Explorer alkalmazást az adatai kezeléséhez, a következő lépésként:
 
 * Megkezdheti a [lekérdezések](sql-api-query-reference.md) definiálását az SQL-szintaxis használatával, és [kiszolgálóoldali programozást](stored-procedures-triggers-udfs.md) hajthat végre tárolt eljárások, UDF, eseményindítók használatával. 

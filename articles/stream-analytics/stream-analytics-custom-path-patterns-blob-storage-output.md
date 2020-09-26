@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: b6d6838779d4f219a8ce10b2cf3ae6cd620762a3
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 1d651f3136b096eae957f0271e33cd11b1fb5571
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88869813"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317854"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Egyéni blob kimeneti particionálás Azure Stream Analytics
 
@@ -25,7 +25,7 @@ Az egyéni mezők vagy a bemeneti attribútumok javítják az adatfeldolgozási 
 
 ### <a name="partition-key-options"></a>Partíciós kulcs beállításai
 
-A bemeneti adatok particionálásához használt partíciós kulcs vagy oszlopnév a kötőjeleket, aláhúzásokat és szóközöket tartalmazó alfanumerikus karaktereket tartalmazhat. A beágyazott mezőket nem lehet partíciós kulcsként használni, kivéve, ha aliasokkal együtt használják. A partíció kulcsának NVARCHAR (MAX) kell lennie.
+A bemeneti adatok particionálásához használt partíciós kulcs vagy oszlopnév a kötőjeleket, aláhúzásokat és szóközöket tartalmazó alfanumerikus karaktereket tartalmazhat. A beágyazott mezőket nem lehet partíciós kulcsként használni, kivéve, ha aliasokkal együtt használják. A partíció kulcsának NVARCHAR (MAX), BIGINT, FLOAT vagy BIT értékűnek kell lennie (1,2 kompatibilitási szint vagy magasabb). További információ: [Azure stream Analytics adattípusok](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics).
 
 ### <a name="example"></a>Példa
 
@@ -71,7 +71,7 @@ Az egyéni DateTime elérésiút-minták lehetővé teszik olyan kimeneti formá
 
 A következő formátumú megadási jogkivonatok használhatók önállóan vagy kombinálva egyéni DateTime formátumok eléréséhez:
 
-|Megadási formátum   |Leírás   |Az eredmények például 2018-01-02T10:06:08|
+|Megadási formátum   |Description   |Az eredmények például 2018-01-02T10:06:08|
 |----------|-----------|------------|
 |{datetime: ÉÉÉÉ}|Az év egy négyjegyű számként|2018|
 |{datetime: PP}|Hónap, 01 és 12 között|01|

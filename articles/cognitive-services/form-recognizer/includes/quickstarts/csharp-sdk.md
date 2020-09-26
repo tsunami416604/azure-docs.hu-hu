@@ -1,20 +1,20 @@
 ---
 title: 'Gyors útmutató: űrlap-felismerő ügyféloldali kódtára a .NET-hez'
-description: Ebben a rövid útmutatóban megismerheti a .NET-hez készült űrlap-felismerő ügyféloldali kódtárat.
+description: A .NET-hez készült űrlap-felismerő ügyféloldali kódtára használatával létrehozhat egy űrlap-feldolgozó alkalmazást, amely Kinyeri a kulcs/érték párokat és a tábla adatait az egyéni dokumentumokból.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
-ms.date: 08/17/2020
+ms.date: 09/21/2020
 ms.author: pafarley
-ms.openlocfilehash: f924347b99d270ac97da5f6d6f4edf7a13efacee
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: fc7b435d3abdd2e04f8beabf35b7ed337c5ff68b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89449625"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318903"
 ---
 > [!IMPORTANT]
 > * Az űrlap-felismerő SDK jelenleg a from felismerő szolgáltatás v 2.0-s verzióját célozza meg.
@@ -105,7 +105,8 @@ Az űrlap-felismerő használatával két különböző típusú ügyfél hozhat
 
 Tekintse át a [modell betanítására](#train-a-custom-model) és az [egyéni modellek kezelésére](#manage-custom-models)szolgáló példákat.
 
-Vegye figyelembe, hogy a modellek grafikus felhasználói felülettel is betanítható, például az [űrlap-felismerő címkéző eszköz](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/label-tool)használatával.
+> [!NOTE]
+> A modellek grafikus felhasználói felülettel is betanítható, például az [űrlap-felismerő címkéző eszköz](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/label-tool)használatával.
 
 ## <a name="code-examples"></a>Kódpéldák
 
@@ -138,13 +139,13 @@ static private FormRecognizerClient AuthenticateClient(){
 }
 ```
 
-## <a name="assets-for-testing"></a>Tesztelési eszközök 
+## <a name="get-assets-for-testing"></a>Eszközök beszerzése teszteléshez 
 
 Az útmutatóban szereplő kódrészletek az URL-címek által elért távoli űrlapokat használják. Ha ehelyett a helyi űrlapos dokumentumokat szeretné feldolgozni, tekintse meg a kapcsolódó módszereket a [dokumentációban](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer) és a [mintákban](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples).
 
 Emellett a képzési és tesztelési adatok URL-címeihez is hozzá kell adnia a hivatkozásokat.
 
-* Az egyéni modell betanítási adataihoz tartozó SAS URL-cím lekéréséhez nyissa meg a Microsoft Azure Storage Explorer, kattintson a jobb gombbal a tárolóra, majd válassza a **közös hozzáférésű aláírás beolvasása**elemet. Győződjön meg arról, hogy az **olvasási** és a **listázási** engedély be van jelölve, majd kattintson a **Létrehozás**gombra. Ezután másolja az értéket az **URL** szakaszban. A formátumnak a következőket kell tartalmaznia: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` .
+* Az egyéni modell betanítási adataihoz tartozó SAS URL-cím lekéréséhez nyissa meg a Microsoft Azure Storage Explorer, kattintson a jobb gombbal a tárolóra, majd válassza a **közös hozzáférésű aláírás beolvasása**elemet. Győződjön meg arról, hogy az **olvasási** és a **listázási** engedély be van jelölve, majd kattintson a **Létrehozás**gombra. Ezután másolja az értéket az **URL** szakaszban. A következő formátumban kell lennie: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
 * Használja az alábbi mintákban található minta-és beérkezési képeket (a [githubon](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms) is elérhetők), vagy a fenti lépésekkel lekérheti az egyes dokumentumok sas URL-címét a blob Storage-ban. 
 
 > [!NOTE]
@@ -620,6 +621,19 @@ static async Task RecognizeContentCustomModel()
 
             Console.WriteLine($"    Value: '{field.ValueData.Text}");
             Console.WriteLine($"    Confidence: '{field.Confidence}");
+        }
+        Console.WriteLine("Table data:");
+        foreach (FormPage page in form.Pages.Values)
+        {
+            for (int i = 0; i < page.Tables.Count; i++)
+            {
+                FormTable table = page.Tables[i];
+                Console.WriteLine($"Table {i} has {table.RowCount} rows and {table.ColumnCount} columns.");
+                foreach (FormTableCell cell in table.Cells)
+                {
+                    Console.WriteLine($"    Cell ({cell.RowIndex}, {cell.ColumnIndex}) contains {(cell.IsHeader ? "header" : "text")}: '{cell.Text}'");
+                }
+            }
         }
     }
 }

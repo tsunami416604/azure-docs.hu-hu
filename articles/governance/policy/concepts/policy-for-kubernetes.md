@@ -3,12 +3,12 @@ title: A Kubernetes Azure Policy megismerése
 description: Ismerje meg, hogyan használja a Azure Policy a Rego-t és a nyílt házirend-ügynököt az Azure-ban vagy a helyszínen futó Kubernetes futtató fürtök kezelésére.
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: dbe7257b577f0526e0d34c13e0102305e58cc656
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: bb4345426eddb8b0b5250980eb46cf0509a22cff
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322461"
+ms.locfileid: "91369994"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>A Kubernetes-fürtökhöz tartozó Azure Policy ismertetése
 
@@ -85,9 +85,6 @@ A következő javaslat csak az AK-ra és a Azure Policy bővítményre vonatkozi
 ## <a name="install-azure-policy-add-on-for-aks"></a>Azure Policy bővítmény telepítése az AK-hoz
 
 A Azure Policy bővítmény telepítése vagy a szolgáltatás bármely funkciójának engedélyezése előtt az előfizetésnek engedélyeznie kell a **Microsoft. tárolószolgáltatás** és a **Microsoft. PolicyInsights** erőforrás-szolgáltatót.
-
-> [!IMPORTANT]
-> Az AK-beli Azure Policy általánosan elérhető (GA) minden régióban aktívan felszabadítva. A GA-kiadás várható globális befejezése 9/29/2020. A GA kiadás nélküli régiókban való használat előzetes regisztrációs lépéseket igényel. Ez azonban automatikusan frissül a GA kiadásban, ha az elérhető a régióban.
 
 1. Szüksége lesz az Azure CLI-verzió 2.12.0 vagy újabb verziójára, és konfigurálva van. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket.
 

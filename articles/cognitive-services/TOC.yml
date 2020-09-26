@@ -23,7 +23,7 @@
       href: cognitive-services-apis-create-account-client-library.md
     - name: Új erőforrás létrehozása ARM-sablonnal
       displayName: Resource Manager
-      href: resource-manager-template.md
+      href: create-account-resource-manager-template.md
     - name: Diagnosztikai naplózás
       href: diagnostic-logging.md
 - name: Biztonság

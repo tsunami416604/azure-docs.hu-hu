@@ -8,19 +8,19 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: 98d50dd8-48ad-444f-9031-5378d8270d7b
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 94ac7282375660308f8dab37ae5bd874828f778a
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: bb3fd9136f78a332a22f973d211dec748c4fb260
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89074746"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317072"
 ---
 # <a name="how-to-use-azure-powershell-to-provision-sql-server-on-azure-virtual-machines"></a>A Azure PowerShell használata az Azure-beli SQL Server kiépítéséhez Virtual Machines
 
@@ -28,7 +28,7 @@ ms.locfileid: "89074746"
 
 Ez az útmutató a PowerShell használatának azon lehetőségeit ismerteti, amelyekkel az Azure Virtual Machines (VM) SQL Server kiépíthető. Az alapértelmezett értékekre támaszkodó, egyszerűsített Azure PowerShell például az [SQL VM Azure PowerShell](sql-vm-create-powershell-quickstart.md)gyors útmutatójában talál.
 
-Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt nekikezdene a feladatok elvégzésének.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 [!INCLUDE [updated-for-az.md](../../../../includes/updated-for-az.md)]
 
@@ -141,7 +141,7 @@ A következő változók használatával határozhatja meg a virtuális géphez 
    $Sku = "SQLDEV"
    ```
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 A Resource Manager-alapú üzemi modellben az elsőként létrehozott objektum az erőforráscsoport. A [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) parancsmag használatával hozzon létre egy Azure-erőforráscsoportot és annak erőforrásait. Adja meg az erőforráscsoport nevének és helyének korábban inicializált változóit.
 

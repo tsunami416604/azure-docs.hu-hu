@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: bea34b2a8b8827b709cc637c0a33132477419a83
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b3cd69876eb5fa18d9763bd7f89233d7608384ef
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545737"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317523"
 ---
 # <a name="tutorial-configure-zscaler-two-for-automatic-user-provisioning"></a>Oktatóanyag: a Zscaler két beállítása a felhasználók automatikus üzembe helyezéséhez
 
@@ -111,7 +111,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Értesítő e-mail beállítása](./media/zscaler-two-provisioning-tutorial/notification.png)
 
-9. Válassza a **Mentés** lehetőséget.
+9. Kattintson a **Mentés** gombra.
 
 10. A **leképezések** szakaszban válassza a **szinkronizálás Azure Active Directory felhasználók ZscalerTwo**:
 
@@ -119,7 +119,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 11. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az attribútum- **hozzárendelések** szakasz Zscaler. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Zscaler két felhasználói fiókjainak a frissítési műveletekhez való egyeztetésére szolgálnak. A módosítások elvégzéséhez válassza a **Mentés** lehetőséget.
 
-    ![Attribútumok hozzárendelése](./media/zscaler-two-provisioning-tutorial/user-attribute-mappings.png)
+    ![Képernyőfelvétel: az attribútum-hozzárendelések szakasz, amelyen hét leképezés látható.](./media/zscaler-two-provisioning-tutorial/user-attribute-mappings.png)
 
 12. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása ZscalerTwo**lehetőséget:
 
@@ -127,7 +127,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 13. Tekintse át az Azure AD-ből szinkronizált Zscaler az attribútumok **leképezései** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Zscaler két csoportjának a frissítési műveletekhez való egyeztetésére szolgálnak. A módosítások elvégzéséhez válassza a **Mentés** lehetőséget.
 
-    ![Attribútumok hozzárendelése](./media/zscaler-two-provisioning-tutorial/group-attribute-mappings.png)
+    ![Képernyőfelvétel: az attribútum-hozzárendelések szakasz, amelyen három leképezés látható.](./media/zscaler-two-provisioning-tutorial/group-attribute-mappings.png)
 
 14. A hatóköri szűrők konfigurálásához tekintse meg a [hatóköri szűrő oktatóanyagának](./../active-directory-saas-scoping-filters.md)utasításait.
 
@@ -154,7 +154,7 @@ További információ az Azure AD-kiépítési naplók olvasásához: [jelentés
 
 ## <a name="next-steps"></a>További lépések
 
-* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../active-directory-saas-provisioning-reporting.md)
+* [Tudnivalók a naplók áttekintéséről és az átadási tevékenységekkel kapcsolatos jelentések lekéréséről](../active-directory-saas-provisioning-reporting.md)
 
 <!--Image references-->
 [1]: ./media/zscaler-two-provisioning-tutorial/tutorial-general-01.png

@@ -6,14 +6,14 @@ ms.service: signalr
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.date: 03/04/2019
+ms.date: 09/25/2020
 ms.author: zhshang
-ms.openlocfilehash: 02a9ed6b0e11aeb4f50b145cff6c747f09f1c2bd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: be26fdafe0a8a52669fe41fd5514c808f10df745
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91294036"
+ms.locfileid: "91369127"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-c"></a>Gyors útmutató: csevegési helyiség létrehozása Azure Functions és a Signaler szolgáltatással C használatával\#
 
@@ -21,11 +21,11 @@ Az Azure SignalR szolgáltatás használatával egyszerűen adhat hozzá valós 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha még nincs telepítve a Visual Studio 2019, letöltheti és használhatja az **ingyenes** [Visual Studio 2019 Community Edition verziót](https://www.visualstudio.com/downloads/). Ügyeljen arra, hogy engedélyezze az **Azure Development** használatát a Visual Studio telepítése során.
+Ha még nincs telepítve a Visual Studio 2019, letöltheti és használhatja az **ingyenes** [Visual Studio 2019 Community Edition verziót](https://www.visualstudio.com/downloads). Ügyeljen arra, hogy engedélyezze az **Azure Development** használatát a Visual Studio telepítése során.
 
 Ezt az oktatóanyagot a parancssorban (macOS, Windows vagy Linux) is futtathatja a [Azure functions Core Tools (v2)](https://github.com/Azure/azure-functions-core-tools#installing), a [.net Core SDK](https://dotnet.microsoft.com/download)és a kedvenc Kódszerkesztő használatával.
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egyet ingyen a](https://azure.microsoft.com/free/dotnet) Kezdés előtt.
 
 [Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qscsharp)
 
@@ -55,13 +55,13 @@ Jelentkezzen be az Azure Portalra a <https://portal.azure.com/> webhelyen az Azu
 
 1. Válassza ki és másolja a vágólapra az elsődleges kapcsolati sztring értékét.
 
-1. A Visual Studio Megoldáskezelőjében nevezze át a *local.settings.sample.json* fájlt a következőre: *local.settings.json*.
+1. Vissza a Visual Studio- **Megoldáskezelőba**, nevezze át *local.settings.sample.jst a* következőre: *local.settings.js*.
 
-1. A **local.settings.json** fájlban illessze be a kapcsolati sztringet az **AzureSignalRConnectionString** beállítás értékéhez. Mentse a fájlt.
+1. A *local.settings.json* fájlban illessze be a kapcsolati sztringet az **AzureSignalRConnectionString** beállítás értékéhez. Mentse a fájlt.
 
-1. Nyissa meg a **Functions.cs** alkalmazást. Ebben a függvényalkalmazásban két HTTP által indított függvény található:
+1. Nyissa meg a *Functions.cs* alkalmazást. Ebben a függvényalkalmazásban két HTTP által indított függvény található:
 
-    - **GetSignalRInfo** – A *SignalRConnectionInfo* bemeneti kötést használja érvényes kapcsolatadatok létrehozásához és visszaadásához.
+    - **GetSignalRInfo** – a `SignalRConnectionInfo` bemeneti kötést használja az érvényes kapcsolati adatok létrehozásához és visszaadásához.
     - **SendMessage** – A kéréstörzsben fogadja a csevegés üzenetét, és a *SignalR* kimeneti kötés használatával továbbítja azt az összes csatlakoztatott ügyfélalkalmazás számára.
 
 1. Az Azure Function app helyi elindításához használja az alábbi lehetőségek egyikét.

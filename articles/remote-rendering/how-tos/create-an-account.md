@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
-ms.openlocfilehash: cf74322725c6e86ee455f83aadc4aade07000835
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 7a4e6d80d80441a1b94c1fb2bd8f82f247235fe3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057670"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318092"
 ---
 # <a name="create-an-azure-remote-rendering-account"></a>Azure Remote Rendering-fiók létrehozása
 
@@ -57,7 +57,7 @@ A (z) és a (z) értékeit a **`arrAccountId`** **`arrAccountKey`** portálon ta
 
 ![Előfizetés-szűrő](./media/azure-subscription-filter.png)
 
-Ha a fiókjára kattint, megjelenik a képernyő, amely azonnal megjeleníti a **fiók azonosítóját** :
+Ha a fiókjára kattint, megjelenik a képernyő, amely azonnal megjeleníti a  **fiók azonosítóját** :
 
 ![Azure-fiók azonosítója](./media/azure-account-id.png)
 
@@ -83,7 +83,7 @@ Most feltételezzük, hogy van egy Storage-fiókja. Keresse meg a Storage-fióko
 
  Az első szerepkör hozzáadásához kattintson a "szerepkör-hozzárendelés hozzáadása" csempére a **Hozzáadás** gombra:
 
-![A Storage-fiók IAM](./media/azure-add-role-assignment.png)
+![A Storage-fiók IAM szerepkör-hozzárendelés hozzáadása](./media/azure-add-role-assignment.png)
 
 * A hozzárendelni kívánt első szerepkör **tulajdonosa** a fenti képernyőképen látható.
 * Válassza a **távoli renderelési fiók** lehetőséget a **hozzáférés kiosztása** legördülő listához.
@@ -95,13 +95,15 @@ Most feltételezzük, hogy van egy Storage-fiókja. Keresse meg a Storage-fióko
 Ismételje meg az új szerepkörök hozzáadását még egyszer a **szerepkör** legördülő menüjéből származó megfelelő beállításokhoz:
 
 * **Tárfiók-közreműködő**
-* **Storage blob adatközreműködői**
+* **Storage-blobadatok közreműködője**
 
 A többi legördülő lista az első lépésben van kiválasztva.
 
 Ha mindhárom szerepkört hozzáadta, az Azure távoli renderelési fiókja a rendszerhez rendelt felügyelt szolgáltatás-identitások használatával fér hozzá a Storage-fiókhoz.
+> [!IMPORTANT]
+> Az Azure-beli szerepkör-hozzárendeléseket az Azure Storage gyorsítótárazza, így akár 30 percet is igénybe vehet, amikor hozzáférést biztosít a távoli renderelési fiókjához, és amikor hozzáfér a Storage-fiókhoz. A részletekért tekintse meg a [szerepkör alap hozzáférés-vezérlési dokumentációját](https://docs.microsoft.com/azure/role-based-access-control/troubleshooting#role-assignment-changes-are-not-being-detected) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Hitelesítés](authentication.md)
 * [Az Azure frontend API-k használata a hitelesítéshez](frontend-apis.md)

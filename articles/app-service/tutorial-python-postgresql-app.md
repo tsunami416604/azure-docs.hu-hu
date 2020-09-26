@@ -11,12 +11,12 @@ ms.custom:
 - cli-validate
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: 255f4e28cf4f3ed3f6e99afa0333989a2afffd95
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a630387a41b6def67141a423249c3347ff034e2e
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91311716"
+ms.locfileid: "91369620"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>Oktatóanyag: Django-webalkalmazás üzembe helyezése a PostgreSQL-sel Azure App Service
 
@@ -188,15 +188,13 @@ Ez a parancs a következő műveleteket hajtja végre, ami eltarthat néhány pe
 - Ha nem létezik, hozza létre a App Service alkalmazást.
 - Az alkalmazás alapértelmezett naplózásának engedélyezése, ha még nincs engedélyezve.
 - Töltse fel az adattárat a ZIP-telepítéssel a Build Automation használatával.
+- Gyorsítótárazza az általános paramétereket, például az erőforráscsoport nevét és a App Service tervet a fájlba *. Azure/config*. Ennek eredményeképpen nem kell megadnia ugyanazt a paramétert a későbbi parancsokkal. Ha például a módosítások elvégzése után szeretné újból üzembe helyezni az alkalmazást, egyszerűen futtathatja `az webapp up` azokat paraméterek nélkül. A CLI-bővítményből származó parancsok, például a `az postgres up` (z) azonban nem a gyorsítótárban jelennek meg, ezért az erőforráscsoport és a hely megadására van szükség a kezdeti használatával `az webapp up` .
 
 Sikeres telepítés esetén a parancs a következő példához hasonló JSON-kimenetet hoz létre:
 
 ![Példa az WebApp up Command output](./media/tutorial-python-postgresql-app/az-webapp-up-output.png)
 
 [Problémák léptek fel? Tudassa velünk.](https://aka.ms/DjangoCLITutorialHelp)
-
-> [!TIP]
-> Számos Azure CLI-parancs gyorsítótárazza az általános paramétereket, például az erőforráscsoport nevét és a App Service tervet a fájlba *. Azure/config*. Ennek eredményeképpen nem kell megadnia ugyanazt a paramétert a későbbi parancsokkal. Ha például a módosítások elvégzése után szeretné újból üzembe helyezni az alkalmazást, egyszerűen futtathatja `az webapp up` azokat paraméterek nélkül. A CLI-bővítményből származó parancsok, például a `az postgres up` (z) azonban nem a gyorsítótárban jelennek meg, ezért az erőforráscsoport és a hely megadására van szükség a következővel: `az webapp up` .
 
 > [!NOTE]
 > Ha ezen a ponton megpróbálja felkeresni az alkalmazás URL-címét, akkor a "DisallowedHost at/" hibaüzenet jelenik meg. Ez a hiba azért fordul elő, mert még nem konfigurálta az alkalmazást a korábban tárgyalt éles beállítások használatára, amelyet a következő szakaszban végez.
@@ -253,6 +251,8 @@ A Django-adatbázis áttelepítése biztosítja, hogy az Azure Database-ben tal�
     ```
     
 1. A `createsuperuser` parancs a rendszergazdai hitelesítő adatok megadását kéri. Ebben az oktatóanyagban használja az alapértelmezett felhasználónevet `root` , nyomja le az **ENTER** billentyűt az e-mail-címre, hogy üresen hagyja, és adja meg a `Pollsdb1` jelszót.
+
+1. Ha hibaüzenet jelenik meg, hogy az adatbázis zárolva van, ellenőrizze, hogy az előző szakaszban futtatta-e a `az webapp settings` parancsot. Ezen beállítások nélkül az áttelepíthető parancs nem tud kommunikálni az adatbázissal, ami a hibát eredményezi.
 
 [Problémák léptek fel? Tudassa velünk.](https://aka.ms/DjangoCLITutorialHelp)
     

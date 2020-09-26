@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2932bfc2f9606326ae38711237e5e10912d41aca
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 1c3143dac79b37ff6dac04856311394440dec9a1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90053769"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317412"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>Felhőalapú csoportok használata a szerepkör-hozzárendelések kezeléséhez Azure Active Directory (előzetes verzió)
 
@@ -64,7 +64,7 @@ A következő forgatókönyvek jelenleg nem támogatottak:
   - A szerepkör-hozzárendelés befejezési időpontja helytelenül jelenhet meg.
   - A PIM-portálon a **saját szerepkörök** csak egy szerepkör-hozzárendelést tudnak megjeleníteni, függetlenül attól, hogy a hozzárendelés hány módszerből áll (egy vagy több csoporton és közvetlenül).
 - *Azure ad P2 licenccel rendelkező ügyfeleinknek* Még a csoport törlése után is megjelenik a szerepkör jogosult tagja a PIM felhasználói felületén. Funkcionálisan nincs probléma; Ez csak egy gyorsítótár-probléma a Azure Portalban.  
-- Az Exchange felügyeleti központ még nem ismeri fel a szerepkör-tagságot, de a PowerShell-parancsmag működni fog.
+- A szerepkör-hozzárendelésekhez használja az új [Exchange felügyeleti központot](https://admin.exchange.microsoft.com/) csoporttagság használatával. A régi Exchange felügyeleti központ még nem támogatja ezt a funkciót. Az Exchange PowerShell-parancsmagok a várt módon fognak működni.
 - Azure Information Protection portálon (a klasszikus portálon) még nem ismeri fel a szerepkör-tagságot a csoporton keresztül. [Áttelepítheti az egységes érzékenységű címkézési platformra](/azure/information-protection/configure-policy-migrate-labels) , majd az Office 365 biztonsági & megfelelőségi központjának használatával csoportos hozzárendeléseket használhat a szerepkörök kezeléséhez.
 
 Ezeket a problémákat kijavítja.

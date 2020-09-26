@@ -9,12 +9,12 @@ ms.author: umajay
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 782a046b92c9d6cf755bfea0551d7f8153faa859
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c1560325f21fd60e6bdb2a64eb987359a7246ff2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936089"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317327"
 ---
 # <a name="storage-configuration"></a>Tárolási konfiguráció
 
@@ -151,10 +151,11 @@ Az adatvezérlő hüvelyének tárolási osztályának kiválasztásakor megfont
 
 - Távoli, megosztott tárolási osztályt **kell** használnia az adattartósság biztosításához, így ha egy Pod vagy csomópont meghal, hogy amikor a pod biztonsági mentést végez, újra csatlakozhat az állandó kötethez.
 - A vezérlő SQL-példányára, a metrikák adatbázisára és a naplók adatbázisára írt adatok jellemzően meglehetősen alacsony mennyiségű, és nem érzékenyek a késésre, így az ultra-Fast teljesítményű tárterület nem kritikus fontosságú. Ha olyan felhasználókkal rendelkezik, akik gyakran használják a Grafana és a Kibana felületet, és nagy számú adatbázis-példánya van, akkor előfordulhat, hogy a felhasználók gyorsabban végeznek tárterületet.
-- A szükséges tárolási kapacitás változó a telepített adatbázis-példányok számával, mivel az egyes adatbázis-példányok naplóit és metrikáit gyűjti. Az adatokat a rendszer 2 hétig megőrzi a naplók és a metrikák DB-ben a tisztítás előtt. TEENDŐ: mennyi tárterületre van szükség az adatbázis-példányok esetében?
+- A szükséges tárolási kapacitás változó a telepített adatbázis-példányok számával, mivel az egyes adatbázis-példányok naplóit és metrikáit gyűjti. Az adatokat a rendszer 2 hétig megőrzi a naplók és a metrikák DB-ben a tisztítás előtt. 
 - Az üzembe helyezés utáni tárolási osztály módosítása nagyon nehéz, nem dokumentált, és nem támogatott. Ügyeljen arra, hogy a tárolási osztályt helyesen válassza ki a központi telepítés ideje alatt.
 
-> **Megjegyzés:** Ha nincs megadva tárolási osztály, a rendszer az alapértelmezett tárolási osztályt fogja használni. Kubernetes-fürtön csak egy alapértelmezett tárolási osztály lehet. [Módosíthatja az alapértelmezett tárolási osztályt](https://kubernetes.io/docs/tasks/administer-cluster/change-default-storage-class/).
+> [!NOTE]
+> Ha nincs megadva tárolási osztály, a rendszer az alapértelmezett tárolási osztályt fogja használni. Kubernetes-fürtön csak egy alapértelmezett tárolási osztály lehet. [Módosíthatja az alapértelmezett tárolási osztályt](https://kubernetes.io/docs/tasks/administer-cluster/change-default-storage-class/).
 
 ### <a name="database-instance-storage-configuration"></a>Adatbázis-példány tárolási konfigurációja
 
@@ -162,7 +163,8 @@ Minden adatbázis-példányhoz tartozik az adatmennyiség, a naplók és a bizto
 
 Egy példánynak a vagy parancs használatával történő létrehozásakor `azdata arc sql mi create` `azdata arc postgres server create` két paraméter használható a tárolási osztályok beállításához:
 
-> **Megjegyzés:** Ezen paraméterek némelyike fejlesztés alatt áll, és a `azdata arc sql mi create` `azdata arc postgres server create` közelgő kiadásokban elérhetővé válik.
+> [!NOTE]
+> Ezen paraméterek némelyike fejlesztés alatt áll, és a `azdata arc sql mi create` `azdata arc postgres server create` közelgő kiadásokban elérhetővé válik.
 
 |Paraméter neve, rövid név|Alkalmazási cél|
 |---|---|
@@ -173,14 +175,14 @@ Egy példánynak a vagy parancs használatával történő létrehozásakor `azd
 
 Az alábbi táblázat felsorolja az Azure SQL felügyelt példány tárolóján belüli elérési utakat, amelyek az adatforgalom és a naplók állandó kötetére vannak leképezve:
 
-|Paraméter neve, rövid név|Az MSSQL-MIAA tárolón belüli elérési út|Leírás|
+|Paraméter neve, rövid név|Az MSSQL-MIAA tárolón belüli elérési út|Description|
 |---|---|---|
 |`--storage-class-data`, `-scd`|/var/opt|Az MSSQL-telepítéshez és más rendszerfolyamatokhoz tartozó címtárakat tartalmaz. Az MSSQL-címtár alapértelmezett (beleértve a tranzakciós naplókat is), a hibanapló & a biztonsági mentési könyvtárakat tartalmazza|
 |`--storage-class-logs`, `-scl`|/var/log|A konzol kimenetét (stderr, StdOut) tároló könyvtárakat, a tárolón belüli folyamatok egyéb naplózási információit tartalmazza.|
 
 Az alábbi táblázat felsorolja a PostgreSQL-példány tárolóján belüli elérési utakat, amelyek az adatforgalom és a naplók állandó kötetére vannak leképezve:
 
-|Paraméter neve, rövid név|Elérési út a postgres-tárolón belül|Leírás|
+|Paraméter neve, rövid név|Elérési út a postgres-tárolón belül|Description|
 |---|---|---|
 |`--storage-class-data`, `-scd`|/var/opt/postgresql|A postgres-telepítéshez szükséges adatés naplózási könyvtárakat tartalmazza|
 |`--storage-class-logs`, `-scl`|/var/log|A konzol kimenetét (stderr, StdOut) tároló könyvtárakat, a tárolón belüli folyamatok egyéb naplózási információit tartalmazza.|

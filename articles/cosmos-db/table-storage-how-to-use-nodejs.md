@@ -1,6 +1,6 @@
 ---
 title: Az Azure Table Storage vagy a Azure Cosmos DB Table API használata a Node.js
-description: Az Azure Table Storage vagy az Azure Cosmos DB Table API használatával strukturált adatok tárolhatók a felhőben.
+description: Strukturált adatok tárolása a felhőben az Azure Table Storage vagy a Node.js Azure Cosmos DB Table API használatával.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: nodejs
@@ -8,13 +8,13 @@ ms.topic: sample
 ms.date: 07/23/2020
 author: sakash279
 ms.author: akshanka
-ms.custom: devx-track-javascript
-ms.openlocfilehash: cfcb5645a6284214e233758705537486f32967c6
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.custom: devx-track-js
+ms.openlocfilehash: 6ce4354faec73f8fe42a936e677bee473796701d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079297"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318772"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>Az Azure Table Storage és az Azure Cosmos DB Table API használata a Node.js segítségével
 
@@ -192,10 +192,10 @@ Példaválasz:
 
 Több metódus is rendelkezésre áll a meglévő entitások frissítéséhez:
 
-* `replaceEntity`-Egy meglévő entitás frissítése a helyére.
-* `mergeEntity`-Egy meglévő entitás frissítése új tulajdonságértékek meglévő entitásba való egyesítésével.
-* `insertOrReplaceEntity`-Egy meglévő entitás frissítése a helyére. Ha még nincsen entitás, beszúr egy újat.
-* `insertOrMergeEntity`-Egy meglévő entitás frissítése új tulajdonságértékek meglévőbe való egyesítésével. Ha még nincsen entitás, beszúr egy újat.
+* `replaceEntity` -Egy meglévő entitás frissítése a helyére.
+* `mergeEntity` -Egy meglévő entitás frissítése új tulajdonságértékek meglévő entitásba való egyesítésével.
+* `insertOrReplaceEntity` -Egy meglévő entitás frissítése a helyére. Ha még nincsen entitás, beszúr egy újat.
+* `insertOrMergeEntity` -Egy meglévő entitás frissítése új tulajdonságértékek meglévőbe való egyesítésével. Ha még nincsen entitás, beszúr egy újat.
 
 Az alábbi példa egy entitás frissítését mutatja be a használatával `replaceEntity` :
 
@@ -477,7 +477,7 @@ Miután beállította az ACL-t, létrehozzon egy SAS-t egy szabályzat azonosít
 tableSAS = tableSvc.generateSharedAccessSignature('hometasks', { Id: 'user2' });
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információkért lásd a következő forrásanyagokat.
 

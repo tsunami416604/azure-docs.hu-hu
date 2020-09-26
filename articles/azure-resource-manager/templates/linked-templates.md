@@ -3,12 +3,12 @@ title: Sablonok csatolása az üzembe helyezéshez
 description: Azt ismerteti, hogyan használhatók a Azure Resource Manager sablonban található csatolt sablonok a moduláris sablonok megoldásához. Bemutatja, hogyan adhatók át a paraméterek értékei, meghatározhatók egy paraméterérték és dinamikusan létrehozott URL-címek.
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.openlocfilehash: f1fe07faeaddae3367fb1f8b4a37f7b0630b6e83
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: fb742ed4fabd6630d2d27f5876719e2e2b1a9a4d
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89535558"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91369314"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Kapcsolt és beágyazott sablonok használata Azure-erőforrások üzembe helyezésekor
 
@@ -369,7 +369,7 @@ Nem használhat egyszerre beágyazott paramétereket és egy paraméterre mutat�
 
 ## <a name="template-specs"></a>Sablonspecifikációk
 
-A csatolt sablonok egy elérhető végponton való fenntartása helyett létrehozhat egy olyan [sablont](template-specs.md) , amely a fő sablont és a hozzá tartozó sablonokat egyetlen olyan entitásba csomagolja, amelyet üzembe helyezhet. A sablon spec az Azure-előfizetés egyik erőforrása. Megkönnyíti a sablon biztonságos megosztását a szervezetben lévő felhasználókkal. Szerepköralapú hozzáférés-vezérlés (RBAC) használatával biztosít hozzáférést a sablonhoz. Ez a funkció jelenleg előzetes verzióban érhető el.
+A csatolt sablonok egy elérhető végponton való fenntartása helyett létrehozhat egy olyan [sablont](template-specs.md) , amely a fő sablont és a hozzá tartozó sablonokat egyetlen olyan entitásba csomagolja, amelyet üzembe helyezhet. A sablon spec az Azure-előfizetés egyik erőforrása. Megkönnyíti a sablon biztonságos megosztását a szervezetben lévő felhasználókkal. Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával hozzáférést biztosíthat a sablon specifikációjának. Ez a funkció jelenleg előzetes verzióban érhető el.
 
 További információkért lásd:
 
@@ -731,7 +731,7 @@ A paraméter fájlja az SAS-tokenen keresztüli hozzáférésre is korlátozhat�
 Jelenleg nem lehet olyan sablonhoz csatolni, amely egy [Azure Storage-tűzfal](../../storage/common/storage-network-security.md)mögött található Storage-fiókban van.
 
 > [!IMPORTANT]
-> A csatolt sablon SAS-tokenhez való biztonságossá tétele helyett érdemes lehet létrehozni egy [sablon-specifikációt](template-specs.md). A sablon specifikációja biztonságosan tárolja a fő sablont és a hozzá tartozó sablonokat erőforrásként az Azure-előfizetésében. A RBAC használatával biztosíthatja a hozzáférést azokhoz a felhasználókhoz, akiknek szükségük van a sablon üzembe helyezésére.
+> A csatolt sablon SAS-tokenhez való biztonságossá tétele helyett érdemes lehet létrehozni egy [sablon-specifikációt](template-specs.md). A sablon specifikációja biztonságosan tárolja a fő sablont és a hozzá tartozó sablonokat erőforrásként az Azure-előfizetésében. Az Azure RBAC használatával biztosíthatja a hozzáférést azokhoz a felhasználókhoz, akiknek szükségük van a sablon üzembe helyezésére.
 
 Az alábbi példa bemutatja, hogyan lehet átadni egy SAS-tokent egy sablonhoz való csatoláskor:
 

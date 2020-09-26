@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: 49ab515c265b4b4444e7d4ca5b93c4e898e4cf54
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: a4186909db3d784938ada4baaaf08aba02b31d30
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90527309"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317123"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Az Azure Monitor-naplók üzembe helyezésének megtervezése
 
@@ -131,22 +131,31 @@ A Azure Monitor egy nagy léptékű adatszolgáltatás, amely több ezer ügyfel
 
 Ha olyan munkaterületre küldi az adatmennyiséget, amely a munkaterületen konfigurált küszöbérték 80%-ánál nagyobb, akkor az eseményt 6 óránként küldi el a munkaterület *műveleti* táblájába, amíg a küszöbérték továbbra is meghalad. Ha a betöltött mennyiség meghaladja a küszöbértéket, a rendszer bizonyos adatvesztést végez, és az eseményt 6 óránként küldi el a munkaterület *műveleti* táblájába, amíg a küszöbérték továbbra is túllépve lesz. Ha a betöltési mennyiség aránya továbbra is meghaladja a küszöbértéket, vagy hamarosan várhatóan nem éri el, kérheti, hogy egy támogatási kérelem megnyitásával növelje azt. 
 
-Ahhoz, hogy értesítést kapjon a munkaterületen a approching vagy a betöltési mennyiség arányának elérésekor, hozzon létre egy [napló-riasztási szabályt](alerts-log.md) a következő lekérdezéssel a riasztási logika alapján a nullánál nagyobb eredmények száma, 5 perces próbaidőszak és 5 perc gyakorisága alapján.
+Ha értesítést szeretne kapni a munkaterületen lévő betöltési mennyiség korlátozásáról vagy eléréséről, hozzon létre egy [napló-riasztási szabályt](alerts-log.md) a következő lekérdezés és a riasztási logika alapján, a nullánál nagyobb eredmények száma, 5 perces próbaidőszak és 5 perc gyakorisága alapján.
 
-A betöltési mennyiség elérte a küszöbérték 80%-át:
+A betöltési mennyiség túllépte a küszöbértéket
 ```Kusto
 Operation
-|where OperationCategory == "Ingestion"
-|where Detail startswith "The data ingestion volume rate crossed 80% of the threshold"
+| where Category == "Ingestion"
+| where OperationKey == "Ingestion rate limit"
+| where Level == "Error"
 ```
 
-A betöltési mennyiség elérte a küszöbértéket:
+A betöltési mennyiség aránya a küszöbérték 80%-át meghaladta
 ```Kusto
 Operation
-|where OperationCategory == "Ingestion"
-|where Detail startswith "The data ingestion volume rate crossed the threshold"
+| where Category == "Ingestion"
+| where OperationKey == "Ingestion rate limit"
+| where Level == "Warning"
 ```
 
+A betöltési mennyiség aránya a küszöbérték 70%-át meghaladta
+```Kusto
+Operation
+| where Category == "Ingestion"
+| where OperationKey == "Ingestion rate limit"
+| where Level == "Info"
+```
 
 ## <a name="recommendations"></a>Javaslatok
 
