@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/15/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: fc77d8cbb88385d9be65ccb8df80e922704640a4
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 59c899d2450e9d439426239384945258e8df694a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563805"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266649"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>SCIM-végpont létrehozása és a felhasználók üzembe helyezésének konfigurálása az Azure AD-vel
 
@@ -53,12 +53,12 @@ Minden alkalmazáshoz különböző attribútumok szükségesek egy felhasznál�
 | 1. lépés: az alkalmazás által igényelt attribútumok meghatározása| 2. lépés: az alkalmazásra vonatkozó követelmények leképezése a SCIM standard értékre| 3. lépés: SCIM-attribútumok leképezése az Azure AD-attribútumokra|
 |--|--|--|
 |loginName|userName (Felhasználónév)|userPrincipalName|
-|firstName|név. givenName|givenName|
+|firstName|name.givenName|givenName|
 |lastName|név. lastName|lastName|
 |workMail|E-mailek [type EQ "work"]. Value|Mail|
 |manager|manager|manager|
 |címke|urn: IETF: params: scim: sémák: bővítmény: 2.0: CustomExtension: címke|extensionAttribute1|
-|status|Active|isSoftDeleted (nem a felhasználó által tárolt számított érték)|
+|status|active|isSoftDeleted (nem a felhasználó által tárolt számított érték)|
 
 A fent definiált séma az alábbi JSON-adattartalommal lesz ábrázolva. Vegye figyelembe, hogy az alkalmazáshoz szükséges attribútumok mellett a JSON-ábrázolás magában foglalja a szükséges `id` , `externalId` és `meta` attribútumokat is.
 
@@ -94,23 +94,23 @@ Ezután az alábbi táblázat segítségével megismerheti, hogy az alkalmazás 
 
 | Azure Active Directory felhasználó | "urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: user" |
 | --- | --- |
-| IsSoftDeleted |Active |
+| IsSoftDeleted |active |
 |Részleg|urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: felhasználó: részleg|
 | displayName |displayName |
 |Alkalmazottkód|urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: felhasználó: employeeNumber|
 | Fax – TelephoneNumber |phoneNumbers [type EQ "fax"]. Value |
-| givenName |név. givenName |
+| givenName |name.givenName |
 | Beosztás |cím |
-| Levelezés |e-mailek [type EQ "work"]. Value |
+| Levelezés |emails[type eq "work"].value |
 | mailNickname |externalId |
 | manager |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: User: Manager |
-| mobil |phoneNumbers [type EQ "Mobile"]. Value |
+| mobil |phoneNumbers[type eq "mobile"].value |
 | Irányítószám |címek [type EQ "work"]. irányítószám |
 | proxy – címek |e-mailek [type EQ "other"]. Érték |
 | fizikai kézbesítés – OfficeName |címek [type EQ "other"]. Formázott |
 | streetAddress |címek [type EQ "work"]. streetAddress |
-| surname |név. familyName |
-| telefonszám |phoneNumbers [type EQ "work"]. Value |
+| surname |name.familyName |
+| telefonszám |phoneNumbers[type eq "work"].value |
 | felhasználó – egyszerű név |userName (Felhasználónév) |
 
 
@@ -119,7 +119,7 @@ Ezután az alábbi táblázat segítségével megismerheti, hogy az alkalmazás 
 | Azure Active Directory csoport | urn: IETF: params: scim: sémák: Core: 2.0: Group |
 | --- | --- |
 | displayName |displayName |
-| Levelezés |e-mailek [type EQ "work"]. Value |
+| Levelezés |emails[type eq "work"].value |
 | mailNickname |displayName |
 | tagok |tagok |
 | objectId |externalId |
@@ -1193,7 +1193,7 @@ A SCIM spec nem határoz meg SCIM-specifikus sémát a hitelesítéshez és az e
 |--|--|--|--|
 |Felhasználónév és jelszó (az Azure AD nem javasolja vagy támogatja)|Könnyen megvalósítható|Nem biztonságos – [a PA $ $Word nem számít](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/your-pa-word-doesn-t-matter/ba-p/731984)|A Gallery-alkalmazások eseti alapon támogatottak. Nem Gallery-alkalmazások esetében nem támogatott.|
 |Hosszú élettartamú tulajdonosi jogkivonat|A hosszú élettartamú tokenek nem igénylik a felhasználó jelenlétét. A rendszergazdák egyszerűen használhatók a kiépítés beállításakor.|A hosszú élettartamú tokenek nehezen oszthatók meg rendszergazdaként anélkül, hogy nem biztonságos módszereket, például e-maileket kellene használnia. |A katalógus és a nem Gallery-alkalmazások esetében támogatott. |
-|OAuth engedélyezési kód engedélyezése|A hozzáférési tokenek sokkal rövidebbek, mint a jelszavak, és olyan automatikus frissítési mechanizmussal rendelkeznek, amelyet a hosszú élettartamú tulajdonosi jogkivonatok nem rendelkeznek.  Egy valós felhasználónak jelen kell lennie a kezdeti engedélyezés során, és hozzá kell adnia egy szintű elszámoltathatóságot. |A felhasználónak jelen kell lennie. Ha a felhasználó elhagyja a szervezetet, a jogkivonat érvénytelen, és az engedélyezést újra el kell végezni.|A Gallery-alkalmazások esetében támogatott, de nem Gallery-alkalmazások. A nem katalógus támogatása a várakozó fájlok esetében is támogatott.|
+|OAuth engedélyezési kód engedélyezése|A hozzáférési tokenek sokkal rövidebbek, mint a jelszavak, és olyan automatikus frissítési mechanizmussal rendelkeznek, amelyet a hosszú élettartamú tulajdonosi jogkivonatok nem rendelkeznek.  Egy valós felhasználónak jelen kell lennie a kezdeti engedélyezés során, és hozzá kell adnia egy szintű elszámoltathatóságot. |A felhasználónak jelen kell lennie. Ha a felhasználó elhagyja a szervezetet, a jogkivonat érvénytelen, és az engedélyezést újra el kell végezni.|A Gallery-alkalmazások esetében támogatott, de nem Gallery-alkalmazások. A felhasználói felületen azonban egy hozzáférési tokent is megadhat titkos jogkivonatként rövid távú tesztelési célokra. A OAuth-kód támogatásának támogatása a nem katalógusban a várakozó fájlok esetében.|
 |OAuth-ügyfél hitelesítő adatainak megadása|A hozzáférési tokenek sokkal rövidebbek, mint a jelszavak, és olyan automatikus frissítési mechanizmussal rendelkeznek, amelyet a hosszú élettartamú tulajdonosi jogkivonatok nem rendelkeznek. Az engedélyezési kód és az ügyfél hitelesítő adatai is azonos típusú hozzáférési tokent hoznak létre, így a módszerek közötti váltás az API-ra is átlátható.  A kiépítés teljesen automatizált lehet, és az új tokenek felhasználói beavatkozás nélkül is csendesen kérhetők. ||Katalógus-és nem katalógus-alkalmazások esetén nem támogatott. A támogatás a várakozó fájlok között található.|
 
 > [!NOTE]
@@ -1210,6 +1210,17 @@ Vegye figyelembe, hogy az OAuth v1 nem támogatott az ügyfél titkos kulcsa mia
 Ajánlott eljárások (javasolt, de nem kötelező):
 * Több átirányítási URL-cím támogatása. A rendszergazdák a "portal.azure.com" és a "aad.portal.azure.com" típusból is konfigurálhatják az üzembe helyezést. Több átirányítási URL-cím támogatása biztosítja, hogy a felhasználók bármelyik portálról engedélyezzék a hozzáférést.
 * Több titkot is támogat, hogy az állásidő nélkül zökkenőmentes legyen a titkos kulcs megújítása. 
+
+A OAuth-kód engedélyezési folyamatának lépései:
+1. A felhasználó bejelentkezik a Azure Portal > vállalati alkalmazások > válassza az alkalmazás > kiépítés > kattintson az engedélyezés elemre.
+2. Azure Portal átirányítja a felhasználót az engedélyezési URL-címre (bejelentkezési oldal a harmadik féltől származó alkalmazáshoz).
+3. A rendszergazda hitelesítő adatokat biztosít a harmadik féltől származó alkalmazás számára. 
+4. A harmadik féltől származó alkalmazás visszairányítja a felhasználót a Azure Portalre, és megadja a kódot 
+5. Az Azure AD-kiépítési szolgáltatások meghívja a jogkivonat URL-címét, és megadja a kód megadását. A harmadik féltől származó alkalmazás a hozzáférési jogkivonattal, a frissítési jogkivonattal és a lejárati dátummal válaszol.
+6. A kiépítési ciklus megkezdésekor a szolgáltatás ellenőrzi, hogy az aktuális hozzáférési jogkivonat érvényes-e, és szükség esetén egy új jogkivonatra cseréli-e. A hozzáférési jogkivonatot az alkalmazásra vonatkozó minden kérelemben meg kell adni, és a kérelem érvényessége minden kérelem előtt be van jelölve.
+
+> [!NOTE]
+> Habár jelenleg nem lehet beállítani a OAuth a katalóguson kívüli alkalmazásban, manuálisan is létrehozhat egy hozzáférési jogkivonatot az engedélyezési kiszolgálóról, és beírhatja azt a nem katalógus alkalmazás titkos token mezőjébe. Ez lehetővé teszi a SCIM-kiszolgáló és az Azure AD SCIM-ügyfél kompatibilitásának ellenőrzését az alkalmazás-katalógusba való beléptetés előtt, amely támogatja a OAuth-kód engedélyezését.  
 
 **Hosszú élettartamú OAuth tulajdonosi jogkivonatok:** Ha az alkalmazás nem támogatja a OAuth-engedélyezési kód engedélyezésének folyamatát, hosszú élettartamú OAuth tulajdonosi jogkivonatot is létrehozhat, mint amennyit a rendszergazda a kiépítési integráció beállításához használhat. A tokennek véglegesnek kell lennie, különben a kiépítési feladatot a jogkivonat lejárta után [karanténba](application-provisioning-quarantine-status.md) helyezi a rendszer. Ennek a tokennek a méretnél kisebbnek kell lennie a 1KB.  
 

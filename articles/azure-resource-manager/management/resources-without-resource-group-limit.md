@@ -2,13 +2,13 @@
 title: 800-os korláttal nem rendelkező erőforrások száma
 description: Azokat az Azure-erőforrásokat sorolja fel, amelyek több mint 800 példányt tartalmazhatnak egy erőforráscsoporthoz.
 ms.topic: conceptual
-ms.date: 05/04/2020
-ms.openlocfilehash: 6f7b45ec3691bc3a48d9aa3dfa072c1c68189007
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/21/2020
+ms.openlocfilehash: e7a15607b144f1d7916f310948f15dc28d76a205
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87040758"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330757"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Az erőforrások nem korlátozódnak 800 példányra az erőforráscsoport esetében
 
@@ -16,12 +16,15 @@ Alapértelmezés szerint az egyes erőforráscsoportok esetében akár 800 péld
 
 Egyes erőforrástípusok esetében kapcsolatba kell lépnie az ügyfélszolgálattal, hogy el lehessen távolítani az 800-es példány korlátját. Ezek az erőforrástípusok ebben a cikkben vannak feltüntetve.
 
+
 ## <a name="microsoftautomation"></a>Microsoft. Automation
 
 * automationAccounts
 
 ## <a name="microsoftazurestack"></a>Microsoft. AzureStack
 
+* edgeSubscriptions
+* linkedSubscriptions
 * regisztrációk
 * regisztrációk/customerSubscriptions
 * regisztrációk/termékek
@@ -38,6 +41,7 @@ Egyes erőforrástípusok esetében kapcsolatba kell lépnie az ügyfélszolgál
 * galériák/lemezképek/verziók
 * images
 * pillanatképek
+* virtualMachineScaleSets – alapértelmezés szerint 800 példányra korlátozódik. Ezt a korlátot a támogatási szolgálattal növelheti.
 * virtualMachines
 
 ## <a name="microsoftcontainerinstance"></a>Microsoft. ContainerInstance
@@ -55,24 +59,29 @@ Egyes erőforrástípusok esetében kapcsolatba kell lépnie az ügyfélszolgál
 * kibocsátásiegység-forgalmi jegyzékek/feladatok
 * kibocsátásiegység-forgalmi jegyzékek/webhookok
 
+## <a name="microsoftd365customerinsights"></a>Microsoft. D365CustomerInsights
+
+* esetben
+
 ## <a name="microsoftdbformariadb"></a>Microsoft. DBforMariaDB
 
 * kiszolgálók
 
 ## <a name="microsoftdbformysql"></a>Microsoft. DBforMySQL
 
+* flexibleServers
 * kiszolgálók
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft. DBforPostgreSQL
 
+* flexibleServers
 * serverGroups
 * kiszolgálók
 * serversv2
-* singleServers
 
 ## <a name="microsoftdevtestlab"></a>Microsoft. segédösszetevője
 
-* Schedules – alapértelmezés szerint 800 példányra korlátozódik. Ezt a korlátot a támogatási szolgálattal növelheti.
+* menetrend
 
 ## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft. EnterpriseKnowledgeGraph
 
@@ -104,6 +113,10 @@ Egyes erőforrástípusok esetében kapcsolatba kell lépnie az ügyfélszolgál
 
 * integrationAccounts
 * munkafolyamatok
+
+## <a name="microsoftmedia"></a>Microsoft. Media
+
+* Mediaservices/liveEvents
 
 ## <a name="microsoftnetapp"></a>Microsoft. NetApp
 
@@ -190,6 +203,6 @@ Egyes erőforrástípusok esetében kapcsolatba kell lépnie az ügyfélszolgál
 * apiManagementAccounts/API-k
 * helyek
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A kvóták és korlátok teljes listáját az Azure- [előfizetés és a szolgáltatás korlátai, kvótái és megkötései](azure-subscription-service-limits.md)című témakörben tekintheti meg.

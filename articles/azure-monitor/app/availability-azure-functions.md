@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/04/2020
-ms.openlocfilehash: e2603d921973aefdcc1a6f4a76bdf70d69dcb68f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7c7aba1c1f091efa0ddd4417ef0a03f3f4ca4d36
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320629"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361007"
 ---
 # <a name="create-and-run-custom-availability-tests-using-azure-functions"></a>Egyéni rendelkezésre állási tesztek létrehozása és futtatása Azure Functions használatával
 
@@ -32,7 +32,7 @@ Ez a cikk bemutatja, hogyan hozhat létre egy Azure-függvényt a TrackAvailabil
 
             ![Meglévő Application Insights erőforrás kiválasztása](media/availability-azure-functions/app-insights-resource.png)
 
-        - Válassza a **felülvizsgálat + létrehozás** lehetőséget
+        - Válassza a **Felülvizsgálat + létrehozás** lehetőséget
 - Ha még nem rendelkezik olyan Application Insights erőforrással, amelyet az időzítő által aktivált függvényhez még nem hozott létre:
     - Alapértelmezés szerint a Azure Functions-alkalmazás létrehozásakor létrejön egy Application Insights erőforrás.
     - Kövesse az [Azure functions erőforrás és időzítő által aktivált függvény létrehozásával](../../azure-functions/functions-create-scheduled-function.md) kapcsolatos utasításokat (leállítás a tisztítás előtt).
@@ -183,9 +183,9 @@ A naplók (Analitika) használatával megtekintheti a rendelkezésre állási er
 >![Rendelkezésre állási eredmények](media/availability-azure-functions/availabilityresults.png)
 
 >[!div class="mx-imgBorder"]
->![Függőségek](media/availability-azure-functions/dependencies.png)
+>![Képernyőfelvétel: az új lekérdezés lap, amelynek függőségei a 50-ra korlátozódnak.](media/availability-azure-functions/dependencies.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Alkalmazástérkép](./app-map.md)
 - [Tranzakció diagnosztikája](./transaction-diagnostics.md)

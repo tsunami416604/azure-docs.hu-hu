@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: aahi
-ms.openlocfilehash: 00bca2d0c7e267bef8cd4a917463c5e7db159792
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 8e951e6cb18596b19f49bf42179297f656e3fa5f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935113"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91304294"
 ---
 # <a name="camera-placement-guide"></a>Kamera elhelyezése – útmutató
 
@@ -56,7 +56,7 @@ A következő ábrán a személy gyaloglás irányának emelési nézete láthat
 
 ## <a name="camera-to-focal-point-distance"></a>Kameráról a fókuszra mutató távolság
 
-A _kamera és_ a középpont közötti távolság a kamera felé irányuló fókuszpont (vagy középső fókuszpont) lineáris távolsága.
+A _kamera és a fókusztávolság közötti távolság a középponton_ mért kamera (vagy a kamera-rendszerkép középpontja) közötti lineáris távolság.
 
 ![Kamera és gyújtópont közötti távolság](./media/spatial-analysis/camera-focal-point.png)
 

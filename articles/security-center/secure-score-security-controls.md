@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/12/2020
+ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: b7cbba051dd0833a039d378cd73a59314c0221c8
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 3aab1329dc7bbcc70621684b3f1ac2362f4bc458
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905569"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268264"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Biztonságos pontszám Azure Security Center
 
@@ -179,7 +179,7 @@ Az alábbi táblázat a Azure Security Center biztonsági vezérlőit sorolja fe
     <td class="tg-lboi"; width=55%>- Az SQL Server naplózását engedélyezni kell<br>- A App Services lévő diagnosztikai naplókat engedélyezni kell<br>- A Azure Data Lake Store lévő diagnosztikai naplókat engedélyezni kell<br>- A Azure Stream Analytics lévő diagnosztikai naplókat engedélyezni kell<br>- A Batch-fiókokban lévő diagnosztikai naplókat engedélyezni kell<br>- A Data Lake Analytics lévő diagnosztikai naplókat engedélyezni kell<br>- Az Event hub diagnosztikai naplóit engedélyezni kell<br>- A IoT Hub lévő diagnosztikai naplókat engedélyezni kell<br>- A Key Vault lévő diagnosztikai naplókat engedélyezni kell<br>- A Logic Apps lévő diagnosztikai naplókat engedélyezni kell<br>- A keresési szolgáltatásban engedélyezni kell a diagnosztikai naplókat.<br>- A Service Bus lévő diagnosztikai naplókat engedélyezni kell<br>- A Virtual Machine Scale Sets lévő diagnosztikai naplókat engedélyezni kell<br>- A metrika riasztási szabályait a Batch-fiókokon kell konfigurálni<br>- Az SQL naplózási beállításainak a kritikus tevékenységek rögzítéséhez konfigurált műveleti csoportokkal kell rendelkezniük<br>- Az SQL-kiszolgálókat az 90 napnál hosszabb naplózási megőrzési napokon kell konfigurálni.</td>
   </tr>
   <tr>
-    <td class="tg-lboi"><strong><p style="font-size: 16px">Komplex veszélyforrások elleni védelem engedélyezése (0 pontszám max.)</p></strong>Azure Security Center fenyegetés elleni védelme átfogó védelmet biztosít a környezet számára. Ha Security Center fenyegetést észlel a környezet bármely területén, riasztást hoz létre. Ezek a riasztások ismertetik az érintett erőforrások részleteit, a javasolt szervizelési lépéseket, valamint bizonyos esetekben a logikai alkalmazások válaszként való aktiválásának lehetőségét.<br>Minden veszélyforrások elleni védelmi csomag egy különálló, választható ajánlat, amelyet a biztonsági ellenőrzéshez kapcsolódó javaslat alapján engedélyezhet.<br><a href="https://docs.microsoft.com/azure/security-center/threat-protection">További információ a veszélyforrások elleni védelemről Security Center</a>.</td>
+    <td class="tg-lboi"><strong><p style="font-size: 16px">Komplex veszélyforrások elleni védelem engedélyezése (0 pontszám max.)</p></strong>Azure Security Center opcionális Azure Defender Threat Protection-csomagok átfogó védelmet biztosítanak a környezet számára. Ha Security Center fenyegetést észlel a környezet bármely területén, riasztást hoz létre. Ezek a riasztások ismertetik az érintett erőforrások részleteit, a javasolt szervizelési lépéseket, valamint bizonyos esetekben a logikai alkalmazások válaszként való aktiválásának lehetőségét.<br>Minden Azure Defender-csomag egy különálló, opcionális ajánlat, amelyet a jelen biztonsági ellenőrzéshez kapcsolódó javaslat alapján engedélyezhet.<br><a href="https://docs.microsoft.com/azure/security-center/threat-protection">További információ a veszélyforrások elleni védelemről Security Center</a>.</td>
     <td class="tg-lboi"; width=55%>- A speciális adatbiztonságot engedélyezni kell Azure SQL Database-kiszolgálókon<br>- A speciális adatbiztonságot engedélyezni kell a gépeken futó SQL-kiszolgálókon<br>- A komplex veszélyforrások elleni védelemnek engedélyezve kell lennie Virtual Machines<br>- A komplex veszélyforrások elleni védelemnek engedélyezve kell lennie Azure App Service-csomagokon<br>- Az összetett veszélyforrások elleni védelemnek engedélyezve kell lennie az Azure Storage-fiókokban<br>- Az összetett veszélyforrások elleni védelemnek engedélyezve kell lennie az Azure Kubernetes Service-fürtökön<br>- A komplex veszélyforrások elleni védelemnek engedélyezve kell lennie Azure Container Registry-jegyzékeken<br>- A komplex veszélyforrások elleni védelemnek engedélyezve kell lennie Azure Key Vault-tárolón</td>
   </tr>
   <tr>
@@ -197,14 +197,8 @@ Az alábbi táblázat a Azure Security Center biztonsági vezérlőit sorolja fe
 
 ## <a name="secure-score-faq"></a>Biztonságos pontszám – gyakori kérdések
 
-### <a name="why-has-my-secure-score-gone-down"></a>Miért esett le a biztonságos pontszám?
-Security Center egy fokozottan biztonságos pontszámra váltott, amely a pontszám kiszámításának módját is magában foglalja. Most meg kell oldania az erőforrásra vonatkozó összes javaslatot a pontok fogadására. A pontszámok a 0-10-es méretre is módosultak.
-
 ### <a name="if-i-address-only-three-out-of-four-recommendations-in-a-security-control-will-my-secure-score-change"></a>Ha egy biztonsági ellenőrzésben csak három négy javaslat közül hármat találok, akkor a biztonságos pontszámom módosul?
 Nem. Ez addig nem változik meg, amíg az egyetlen erőforráshoz tartozó összes ajánlást nem szervizeli. Egy vezérlőelem maximális pontszámának lekéréséhez az összes erőforrásra vonatkozóan az összes javaslatot szervizelni kell.
-
-### <a name="is-the-previous-experience-of-the-secure-score-still-available"></a>Továbbra is elérhető a biztonságos pontszám korábbi tapasztalata? 
-Nem. Egy ideig, amikor egymás mellett szaladtak, hogy megkönnyítsék az átmenetet. Az előző modell már elavult. 
 
 ### <a name="if-a-recommendation-isnt-applicable-to-me-and-i-disable-it-in-the-policy-will-my-security-control-be-fulfilled-and-my-secure-score-updated"></a>Ha egy javaslat nem alkalmazható a számomra, és letiltom a szabályzatban, akkor a biztonsági ellenőrzésem teljesül, és a biztonságos pontszám frissítve lett?
 Igen. Javasoljuk, hogy tiltsa le a javaslatokat, ha azok nem alkalmazhatók a környezetben. A konkrét javaslatok letiltásával kapcsolatos utasításokért lásd: [biztonsági szabályzatok letiltása](https://docs.microsoft.com/azure/security-center/tutorial-security-policy#disable-security-policies).

@@ -7,12 +7,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 55b789363397945e01d02d76cb0e573660d18b67
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: cb24ff0f2e09d98bf4a8cc4a502399fd9b38e350
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607508"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91369909"
 ---
 # <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>Gyakori kérdések az Cloud Partner Portalról a partneri központba való áttérésről
 
@@ -28,7 +28,7 @@ Folytathatja az üzleti tevékenységet a partner Centerben:
 | Ajánlat-közzétételi és ajánlat-kezelési élmény | Áthelyezte az ajánlat adatait a Cloud Partner Portalról a partneri központba. Mostantól elérhetővé teszi az ajánlatokat a partner Centerben, amely továbbfejlesztett felhasználói élményt és intuitív felületet biztosít. Megtudhatja, hogyan [frissíthet egy meglévő ajánlatot a kereskedelmi piactéren](partner-center-portal/update-existing-offer.md). |
 | Az ajánlatok elérhetősége a kereskedelmi piactéren | Nincs változás. Ha az ajánlata a kereskedelmi piacon él, továbbra is élőben fog működni. |
 | Új vásárlások és központi telepítések | Nincs változás. Az ügyfelek megszakítás nélkül folytathatják az ajánlatok megvásárlását és üzembe helyezését. |
-| Kifizetések | A vásárlások és az üzembe helyezések továbbra is a megszokott módon lesznek kifizetve. További információ [a kereskedelmi piactéren való fizetésről](partner-center-portal/get-paid.md). |
+| Kifizetések | A vásárlások és az üzembe helyezések továbbra is a megszokott módon lesznek kifizetve. További információ [a kereskedelmi piactéren való fizetésről](/partner-center/marketplace-get-paid?context=/azure/marketplace/context/context). |
 | API-integrációk meglévő [Cloud Partner Portal API](cloud-partner-portal-api-overview.md) -kkal | A meglévő Cloud Partner Portal API-k továbbra is támogatottak, és a meglévő integrációk továbbra is működnek. További információ: [a Cloud Partner Portal REST API-k támogatottak?](#are-the-cloud-partner-portal-rest-apis-still-supported) |
 | Elemzés | Továbbra is figyelheti az értékesítéseket, kiértékelheti a teljesítményt, és optimalizálhatja ajánlatait a kereskedelmi piactéren az elemzések megtekinthető a partner Centerben. Az analitikai jelentések a CPP-ben és a partner Centerben is megjelennek. Például a CPP-beli **értékesítői** elemzések olyan **Orders & használati** lapokkal rendelkeznek, amelyek a használati és a nem használatos ajánlatok adatait jelenítik meg, míg a partner Centerben a **megrendelések** oldalon külön lap található az SaaS-ajánlatok számára. További információ: [hozzáférés analitikus jelentései a kereskedelmi piactéren a partner Centerben](partner-center-portal/analytics.md). |
 |||
@@ -162,7 +162,9 @@ Előfordulhat, hogy a Cloud Partner Portal egyetlen lapján a SKU-ban korábban 
 - Terv beállítása lap
 - A lista megtervezése lap
 - Csomag rendelkezésre állása lap
-- Tervezze meg a technikai konfiguráció oldalát, ahogy az itt látható: ![ ! [ Képernyőfelvétel: a partner Center technikai konfigurációjának lapja.] (Media/CPP-PC-FAQ/technical-configuration.png "a partner Center technikai konfiguráció oldalát jeleníti meg")](media/cpp-pc-faq/technical-configuration.png#lightbox)
+- Tervezze meg a technikai konfiguráció oldalát, ahogy az itt látható:
+
+![! [Képernyőfelvétel: a partner Center technikai konfigurációjának lapja.] (Media/CPP-PC-FAQ/technical-configuration.png "a partner Center technikai konfiguráció oldalát jeleníti meg")](media/cpp-pc-faq/technical-configuration.png#lightbox)
 
 Az ajánlat azonosítója mostantól az ajánlat bal oldali navigációs sávján látható:
 

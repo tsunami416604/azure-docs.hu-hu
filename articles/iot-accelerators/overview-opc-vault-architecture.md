@@ -8,14 +8,17 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 1e08968034134e2b9ab3b8064387d18663d5c866
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: eb558d967ad657d14158684fba92b13979ea5fe2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "71200158"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91281588"
 ---
 # <a name="opc-vault-architecture"></a>OPC-tár architektúrája
+
+> [!IMPORTANT]
+> A cikk frissítését követően tekintse meg az [Azure Industrial IoT](https://azure.github.io/Industrial-IoT/) a legfrissebb tartalomhoz című cikket.
 
 Ez a cikk áttekintést nyújt az OPC Vault-szolgáltatásról és az OPC-tároló IoT Edge modulról.
 
@@ -81,7 +84,7 @@ Végezetül a frissített CRL-ket elérhetővé kell tenni a résztvevő OPC UA-
 ## <a name="opc-vault-iot-edge-module"></a>OPC-tároló IoT Edge modulja
 A gyári hálózat globális felderítési kiszolgálójának támogatásához az OPC-tároló modult a peremhálózat szélén helyezheti üzembe. Futtassa helyi .NET Core-alkalmazásként, vagy indítsa el egy Docker-tárolóban. Vegye figyelembe, hogy a jelenlegi OPC UA .NET Standard szintű Auth2 érték-hitelesítési támogatás hiánya miatt az OPC-tároló peremhálózati moduljának funkciói az olvasói szerepkörre korlátozódnak. Egy felhasználót nem lehet megszemélyesíteni az Edge-modulból a szolgáltatásba az OPC UA GDS standard interfész használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte az OPC Vault architektúráját, a következőket teheti:
 

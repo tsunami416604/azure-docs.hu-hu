@@ -7,12 +7,12 @@ ms.service: application-gateway
 services: application-gateway
 ms.topic: conceptual
 ms.date: 11/16/2019
-ms.openlocfilehash: baa02c4d946a121f26f421af99835ae2bea18847
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 59ca7708b24d2e75381290b80adeb671e2b49822
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74130331"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362695"
 ---
 # <a name="overview-of-websocket-support-in-application-gateway"></a>A WebSocket-támogatás áttekintése Application Gateway
 
@@ -28,7 +28,7 @@ A szolgáltatás olyan alkalmazásokban használatos, amelyek a gyors és valós
 
 WebSocket-kapcsolat létrehozásához a rendszer egy adott HTTP-alapú kézfogást cserél ki az ügyfél és a kiszolgáló között. Ha a művelet sikeres, az alkalmazás-réteg protokoll a HTTP-ről a WebSockets-re frissül, a korábban létesített TCP-kapcsolat használatával. Ha ez bekövetkezik, a HTTP teljesen ki van a képről; az adatküldés vagy fogadás a WebSocket protokollal mindkét végponton keresztül történhet, amíg a WebSocket-kapcsolat be nem zárul. 
 
-![WebSocket](./media/application-gateway-websocket/websocket.png)
+![A diagram összehasonlítja a webkiszolgálóval kommunikáló ügyfelet, és kétszer csatlakozik a két válasz beszerzéséhez, és egy WebSocket-interakcióval, ahol az ügyfél több válasz beszerzéséhez csatlakozik egy kiszolgálóhoz.](./media/application-gateway-websocket/websocket.png)
 
 ### <a name="listener-configuration-element"></a>Figyelő konfigurációs elem
 
@@ -121,6 +121,6 @@ A háttérnek a WebSocket működéséhez konfigurált porton (általában 80/44
 
 Ennek egy másik oka, hogy az Application Gateway backend Health mintavétel csak a HTTP és a HTTPS protokoll használatát támogatja. Ha a háttér-kiszolgáló nem válaszol a HTTP-vagy HTTPS-tesztekre, a rendszer kiveszi a háttér-készletből.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A WebSocket-támogatás megismerése után lépjen az [Application Gateway létrehozása lehetőségre](quick-create-powershell.md) egy WebSocket-kompatibilis webalkalmazás használatának megkezdéséhez.

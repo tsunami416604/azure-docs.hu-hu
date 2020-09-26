@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 08/26/2020
 ms.author: b-juche
-ms.openlocfilehash: fb83b30f0844b9bf0e362e6f1e3a3822ba0044d1
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 9050982338c4a6096ef180b34c0d0a0dca931427
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88950000"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278311"
 ---
 # <a name="dynamically-change-the-service-level-of-a-volume"></a>Kötetek szolgáltatásszintjének dinamikus módosítása
 
@@ -53,7 +53,7 @@ A kötetek egy másik kapacitási készletbe való áthelyezésének funkciója 
     ```azurepowershell-interactive
     Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFTierChange
     ```
-Használhatja az Azure CLI-parancsokat is, [`az feature register`](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-register) és [`az feature show`](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-show) regisztrálhatja a funkciót, és megjelenítheti a regisztrációs állapotot. 
+Használhatja az [Azure CLI-parancsokat](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest&preserve-view=true) is, `az feature register` és `az feature show` regisztrálhatja a funkciót, és megjelenítheti a regisztrációs állapotot. 
 
 ## <a name="move-a-volume-to-another-capacity-pool"></a>Kötet áthelyezése másik kapacitási készletbe
 

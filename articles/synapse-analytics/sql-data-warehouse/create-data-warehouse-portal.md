@@ -11,12 +11,12 @@ ms.date: 05/28/2019
 ms.author: Kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 4972e843394cac3b4a4f7c08a27f9d1a9e19cee5
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 19de7900cf46a5c372b051fc76d594fd4b4dfb8f
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89459385"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91369637"
 ---
 # <a name="quickstart-create-and-query-a-synapse-sql-pool-using-the-azure-portal"></a>Rövid útmutató: szinapszis SQL-készlet létrehozása és lekérdezése a Azure Portal használatával
 
@@ -76,9 +76,9 @@ Az alábbi lépéseket követve létrehozhat egy SQL-készletet, amely tartalmaz
 
    ![létrehozás kiválasztása](./media/create-data-warehouse-portal/create-sql-pool-create.png)
 
-7. Az eszköztáron válassza az **értesítések** lehetőséget a telepítési folyamat figyeléséhez.
+7. Az eszköztáron válassza az **Értesítések** elemet az üzembehelyezési folyamat monitorozásához.
 
-   ![értesítés](./media/create-data-warehouse-portal/notification.png)
+   ![A képernyőképen a telepítés folyamatban állapotú értesítések láthatók.](./media/create-data-warehouse-portal/notification.png)
 
 ## <a name="create-a-server-level-firewall-rule"></a>Kiszolgálószintű tűzfalszabály létrehozása
 
@@ -136,7 +136,7 @@ Ez a szakasz [SQL Server Management Studio](/sql/ssms/download-sql-server-manage
 
    | Beállítás | Ajánlott érték | Leírás |
    | :------ | :-------------- | :---------- |
-   | Kiszolgáló típusa | Adatbázismotor | Kötelezően megadandó érték |
+   | Server type (Kiszolgáló típusa) | Adatbázismotor | Kötelezően megadandó érték |
    | Kiszolgálónév | A teljes kiszolgálónév | Íme egy példa: **sqlpoolservername.database.Windows.net**. |
    | Hitelesítés | SQL Server-hitelesítés | Ebben az oktatóanyagban az SQL-hitelesítésen kívül más hitelesítéstípus nincs konfigurálva. |
    | Bejelentkezés | A kiszolgálói rendszergazdafiók | A kiszolgáló létrehozásakor megadott fiók. |
@@ -204,6 +204,6 @@ Szeretné optimalizálni és menteni a Felhőbeli kiadásait?
 
 [!INCLUDE [cost-management-horizontal](../../../includes/cost-management-horizontal.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni az SQL-készletbe való betöltésről, folytassa az [adatgyűjtés az SQL-készletbe](load-data-from-azure-blob-storage-using-polybase.md) című cikket.

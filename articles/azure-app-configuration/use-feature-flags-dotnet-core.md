@@ -11,15 +11,15 @@ ms.service: azure-app-configuration
 ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
-ms.date: 08/12/2020
+ms.date: 09/17/2020
 ms.author: lcozzens
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 3f8a43a1ff28206a4bcc5fd059f69492c83eb34d
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: f863ca855ca36603085ed96b5aa17d277ae00516
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88224713"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317310"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>Oktatóanyag: funkció-jelzők használata egy ASP.NET Core alkalmazásban
 
@@ -231,6 +231,12 @@ Ha egy MVC vezérlő vagy művelet le van tiltva, mert a vezérlő funkció jelz
 
 ## <a name="mvc-views"></a>MVC-nézetek
 
+Nyissa meg a *_ViewImports. cshtml* mappát a *views (nézetek* ) könyvtárban, és adja hozzá a Feature Manager tag helpert:
+
+```html
+@addTagHelper *, Microsoft.FeatureManagement.AspNetCore
+```
+
 Az MVC-nézetek esetében `<feature>` címkével jelenítheti meg a tartalmakat, attól függően, hogy engedélyezve van-e a funkció jelzője:
 
 ```html
@@ -275,7 +281,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-## <a name="middleware"></a>Közbenső szoftver
+## <a name="middleware"></a>Köztes szoftverek
 
 A funkciók jelzőit is használhatja az alkalmazás-ágak és a köztes alkalmazások feltételes hozzáadásához. A következő kód csak akkor szúr be egy middleware-összetevőt a kérelmek folyamatában, ha `FeatureA` az engedélyezve van:
 
@@ -291,7 +297,7 @@ app.UseForFeature(featureName, appBuilder => {
 });
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan implementálhatja a szolgáltatás-jelzőket a ASP.NET Core alkalmazásban a `Microsoft.FeatureManagement` kódtárak használatával. A ASP.NET Core és az alkalmazások konfigurációjának funkció-kezelési támogatásáról az alábbi forrásokban talál további információt:
 

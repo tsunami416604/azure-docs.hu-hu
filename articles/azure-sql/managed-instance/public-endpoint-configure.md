@@ -10,12 +10,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto, sstein
 ms.date: 05/07/2019
-ms.openlocfilehash: 498d00b4f6a0ca16d07663641a46f30109b39d5f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a9bf3fbf28d8ac525f2937812742e850a5427cc9
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325062"
+ms.locfileid: "91360820"
 ---
 # <a name="configure-public-endpoint-in-azure-sql-managed-instance"></a>Nyilvános végpont konfigurálása az Azure SQL felügyelt példányában
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -45,7 +45,7 @@ A felügyelt példányban lévő adatérzékenység miatt a felügyelt példány
 1. A **biztonsági** beállítások lapon válassza a **virtuális hálózat** lapot.
 1. A virtuális hálózat konfigurációja lapon válassza az **Engedélyezés** , majd a **Mentés** ikont a konfiguráció frissítéséhez.
 
-![mi-vnet-config.png](./media/public-endpoint-configure/mi-vnet-config.png)
+![A képernyőképen az SQL felügyelt példányának virtuális hálózati lapja látható, amelyen engedélyezve van a nyilvános végpont.](./media/public-endpoint-configure/mi-vnet-config.png)
 
 ## <a name="enabling-public-endpoint-for-a-managed-instance-using-powershell"></a>Felügyelt példány nyilvános végpontjának engedélyezése a PowerShell használatával
 
@@ -84,11 +84,11 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 
 1. Ha a felügyelt példány konfigurációs lapja továbbra is nyitva van, navigáljon az **Áttekintés** lapra. Ellenkező esetben lépjen vissza az **SQL felügyelt példányának** erőforrására. Válassza ki a **virtuális hálózat/alhálózat** hivatkozást, amely a virtuális hálózat konfigurációja lapra kerül.
 
-    ![mi-overview.png](./media/public-endpoint-configure/mi-overview.png)
+    ![Képernyőfelvétel: a virtuális hálózat konfigurációja oldal, ahol megtalálhatja a virtuális hálózat/alhálózat értékét.](./media/public-endpoint-configure/mi-overview.png)
 
 1. Válassza az **alhálózatok** fület a virtuális hálózat bal oldali konfigurációs paneljén, és jegyezze fel a felügyelt példány **biztonsági csoportját** .
 
-    ![mi-vnet-subnet.png](./media/public-endpoint-configure/mi-vnet-subnet.png)
+    ![A képernyőképen az alhálózat lap látható, ahol megtekintheti a felügyelt példány biztonsági CSOPORTját.](./media/public-endpoint-configure/mi-vnet-subnet.png)
 
 1. Lépjen vissza a felügyelt példányt tartalmazó erőforráscsoporthoz. Ekkor meg kell jelennie a **hálózati biztonsági csoport** fent említett nevének. Válassza ki a hálózati biztonsági csoport konfigurációs lapjára felvenni kívánt nevet.
 
@@ -104,7 +104,7 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
     |**Művelet**     |Engedélyezés         |Felügyelt példány bejövő forgalmának engedélyezése a nyilvános végponton keresztül |
     |**Prioritás**     |1300         |Győződjön meg arról, hogy ez a szabály magasabb prioritású, mint a **deny_all_inbound** szabály |
 
-    ![mi-nsg-rules.png](./media/public-endpoint-configure/mi-nsg-rules.png)
+    ![A képernyőképen a beérkező biztonsági szabályok a deny_all_inbound szabály fölötti új public_endpoint_inbound szabállyal láthatók.](./media/public-endpoint-configure/mi-nsg-rules.png)
 
     > [!NOTE]
     > Az 3342-es port a felügyelt példányhoz tartozó nyilvános végponti kapcsolatokhoz használatos, és ezen a ponton nem módosítható.
@@ -114,7 +114,7 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 1. Navigáljon a felügyelt példány konfigurálása lapra, amelyen engedélyezve van a nyilvános végpont. Válassza a **kapcsolatok karakterláncok** lapot a **Beállítások** konfiguráció alatt.
 1. Vegye figyelembe, hogy a nyilvános végpont állomásneve <mi_name> formátumban jön. **Public**. <dns_zone>. database.Windows.net és a csatlakozáshoz használt port 3342.
 
-    ![mi-public-endpoint-conn-string.png](./media/public-endpoint-configure/mi-public-endpoint-conn-string.png)
+    ![A képernyőképen a nyilvános és a privát végpontokhoz tartozó kapcsolatok karakterláncai láthatók.](./media/public-endpoint-configure/mi-public-endpoint-conn-string.png)
 
 ## <a name="next-steps"></a>Következő lépések
 

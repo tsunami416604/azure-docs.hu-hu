@@ -7,13 +7,13 @@ author: amotley
 ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 142c6b4315eb1862dd116647f4396835c7286591
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.date: 09/23/2020
+ms.openlocfilehash: 8ceb6d4dddb76148be1e82ebc8c1994886a11da3
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378355"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362814"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Általános indexelő hibák és figyelmeztetések hibaelhárítása Az Azure Cognitive Search
 
@@ -35,7 +35,7 @@ Az API-verziótól kezdődően az `2019-05-06` elemszintű indexelő hibái és 
 | Tulajdonság | Leírás | Példa |
 | --- | --- | --- |
 | kulcs | A hibát vagy figyelmeztetést érintő dokumentum AZONOSÍTÓját. | https: \/ /coromsearch.blob.core.windows.net/jfk-1k/docid-32112954.pdf |
-| name | Annak a műveletnek a neve, amelyben a hiba vagy a figyelmeztetés történt. Ezt a következő struktúra hozza létre: [category]. [Alkategória]. [resourceType]. ResourceName | DocumentExtraction. azureblob. myBlobContainerName alkoholtartalom-növelés. WebApiSkill. mySkillName vetítés. SearchIndex. OutputFieldMapping. myOutputFieldName vetítés. SearchIndex. MergeOrUpload. myIndexName vetítés. KnowledgeStore. table. myTableName |
+| név | Annak a műveletnek a neve, amelyben a hiba vagy a figyelmeztetés történt. Ezt a következő struktúra hozza létre: [category]. [Alkategória]. [resourceType]. ResourceName | DocumentExtraction. azureblob. myBlobContainerName alkoholtartalom-növelés. WebApiSkill. mySkillName vetítés. SearchIndex. OutputFieldMapping. myOutputFieldName vetítés. SearchIndex. MergeOrUpload. myIndexName vetítés. KnowledgeStore. table. myTableName |
 | message | A hiba vagy figyelmeztetés magas szintű leírása. | A képesség nem hajtható végre, mert a webes API-kérelem sikertelen volt. |
 | Részletek | További részletek, amelyek hasznosak lehetnek a probléma diagnosztizálásához, például a WebApi-válaszhoz, ha az egyéni képességet nem sikerült végrehajtani. | `link-cryptonyms-list - Error processing the request record : System.ArgumentNullException: Value cannot be null. Parameter name: source at System.Linq.Enumerable.All[TSource](IEnumerable`1 forrás, függvény `2 predicate) at Microsoft.CognitiveSearch.WebApiSkills.JfkWebApiSkills.` ... fennmaradó verem nyomkövetése... |
 | documentationLink | A kapcsolódó dokumentációra mutató hivatkozás, amely részletes információkat tartalmaz a hibakereséshez és a probléma megoldásához. Ez a hivatkozás gyakran a lap alábbi részeinek egyikére mutat. | https://go.microsoft.com/fwlink/?linkid=2106475 |
@@ -59,9 +59,9 @@ A blob-adatforrással rendelkező indexelő nem tudta kinyerni a tartalmat vagy 
 
 | Ok | Részletek/példa | Feloldás |
 | --- | --- | --- |
-| a blob mérete meghaladja a méretkorlátot | A dokumentum mérete `'150441598'` bájt, ami meghaladja az `'134217728'` aktuális szolgáltatási szinten a dokumentumok kinyeréséhez szükséges maximális bájtot. | [BLOB-indexelési hibák](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
-| a blob nem támogatott tartalomtípust tartalmaz | A dokumentum típusa nem támogatott. `'image/png'` | [BLOB-indexelési hibák](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
-| a blob titkosított | A dokumentumot nem lehetett feldolgozni – titkosított vagy jelszóval védett. | A blobot a blob- [beállításokkal](search-howto-indexing-azure-blob-storage.md#controlling-which-parts-of-the-blob-are-indexed)lehet kihagyni. |
+| a blob mérete meghaladja a méretkorlátot | A dokumentum mérete `'150441598'` bájt, ami meghaladja az `'134217728'` aktuális szolgáltatási szinten a dokumentumok kinyeréséhez szükséges maximális bájtot. | [BLOB-indexelési hibák](search-howto-indexing-azure-blob-storage.md#DealingWithErrors) |
+| a blob nem támogatott tartalomtípust tartalmaz | A dokumentum típusa nem támogatott. `'image/png'` | [BLOB-indexelési hibák](search-howto-indexing-azure-blob-storage.md#DealingWithErrors) |
+| a blob titkosított | A dokumentumot nem lehetett feldolgozni – titkosított vagy jelszóval védett. | A blobot a blob- [beállításokkal](search-howto-indexing-azure-blob-storage.md#PartsOfBlobToIndex)lehet kihagyni. |
 | átmeneti problémák | "Hiba történt a blob feldolgozásakor: a kérés megszakadt: a kérést megszakították." "A dokumentum időkorlátja lejárt a feldolgozás során." | Esetenként váratlan kapcsolódási problémák léptek fel. Próbálja meg később futtatni a dokumentumot az indexelő használatával. |
 
 <a name="could-not-parse-document"></a>
@@ -175,7 +175,7 @@ Ebben az esetben tekintse át a [támogatott adattípusokat](/rest/api/searchser
 
 ## <a name="error-integrated-change-tracking-policy-cannot-be-used-because-table-has-a-composite-primary-key"></a>Hiba: az integrált módosítás-követési szabályzat nem használható, mert a tábla összetett elsődleges kulccsal rendelkezik.
 
-Ez az SQL-táblákra vonatkozik, és általában akkor fordul elő, ha a kulcs vagy összetett kulcsként van definiálva, vagy ha a tábla egyedi fürtözött indexet definiált (például egy SQL-indexben, nem Azure Search index). A fő ok az, hogy a Key attribútum úgy módosul, hogy egy [egyedi fürtözött index](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?view=sql-server-ver15)esetében az összetett elsődleges kulcs legyen. Ebben az esetben győződjön meg arról, hogy az SQL-táblához nem tartozik egyedi fürtözött index, vagy ha a Key mezőt egy olyan mezőhöz rendeli, amely garantáltan nem rendelkezik ismétlődő értékekkel.
+Ez az SQL-táblákra vonatkozik, és általában akkor fordul elő, ha a kulcs vagy összetett kulcsként van definiálva, vagy ha a tábla egyedi fürtözött indexet definiált (például egy SQL-indexben, nem Azure Search index). A fő ok az, hogy a Key attribútum úgy módosul, hogy egy [egyedi fürtözött index](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described)esetében az összetett elsődleges kulcs legyen. Ebben az esetben győződjön meg arról, hogy az SQL-táblához nem tartozik egyedi fürtözött index, vagy ha a Key mezőt egy olyan mezőhöz rendeli, amely garantáltan nem rendelkezik ismétlődő értékekkel.
 
 <a name="could-not-process-document-within-indexer-max-run-time"></a>
 

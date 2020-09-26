@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/24/2020
-ms.openlocfilehash: a5047e4e63f71c482cd1bcc98152ae35e10e94b1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 407183837f7be01f5182ff0890426170da223161
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91291639"
+ms.locfileid: "91363171"
 ---
 # <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>Oktatóanyag: Oracle migrálása Azure Database for PostgreSQL online-ba a DMS használatával (előzetes verzió)
 
@@ -186,7 +186,7 @@ A ora2pg futtatásával exportálhatja az egyes adatbázis-objektumokat. SQL-fá
 psql -f [FILENAME] -h [AzurePostgreConnection] -p 5432 -U [AzurePostgreUser] -d database 
 ```
 
-Példa:
+Például:
 
 ```
 psql -f %namespace%\schema\sequences\sequence.sql -h server1-server.postgres.database.azure.com -p 5432 -U username@server1-server -d database
@@ -214,11 +214,11 @@ Ha a PostgreSQL-sémát olyan eszközökkel hozza létre, mint például a ora2p
 
 1. Amikor új Oracle-t hoz létre Azure Database for PostgreSQL áttelepítési projekthez, a sémák kiválasztása lépésben meg kell adnia a céladatbázis és a célként megadott séma elemet. Töltse ki a célként megadott adatbázist és a célként megadott sémát.
 
-   ![Portál-előfizetések megtekintése](media/tutorial-oracle-azure-postgresql-online/dms-map-to-target-databases.png)
+   ![A képernyőképen látható a cél-adatbázisok leképezése.](media/tutorial-oracle-azure-postgresql-online/dms-map-to-target-databases.png)
 
 2. Az **áttelepítési beállítások** képernyő az Oracle-forrás tábláinak listáját jeleníti meg. Azure Database Migration Service a tábla neve alapján a forrásban és a célként megadott táblákban lévő táblákat próbálja meg egyeztetni. Ha a különböző burkolattal rendelkező több egyező céltábla létezik, kiválaszthatja, hogy melyik cél tábla legyen leképezve.
 
-    ![Portál-előfizetések megtekintése](media/tutorial-oracle-azure-postgresql-online/dms-migration-settings.png)
+    ![Képernyőfelvétel: áttelepítési beállítások.](media/tutorial-oracle-azure-postgresql-online/dms-migration-settings.png)
 
 > [!NOTE]
 > Ha különböző névvel rendelkező táblákhoz szeretné leképezni a forrástábla nevét, e-mail-címet, [dmsfeedback@microsoft.com](mailto:dmsfeedbac@microsoft.com) és a folyamat automatizálására szolgáló parancsfájlt is megadhat.
@@ -239,7 +239,7 @@ Első lépések:
 
     Ha a séma neve az Oracle-forrásban található, és megfelel a Azure Database for PostgreSQLban szereplőnek, akkor Azure Database Migration Service a *tábla sémáját a célként megadott módon hozza létre*.
 
-    Példa:
+    Például:
 
     | Forrás Oracle-séma | Cél PostgreSQL-adatbázis. séma | DMS létrehozva Schema. table. Column |
     | ------------- | ------------- | ------------- |

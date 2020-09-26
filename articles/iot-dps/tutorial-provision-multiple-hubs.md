@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: e1a66da52eea6d5da711fa6def58eba65d0960ed
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 6cca34774038156cfb01e872e751338c1c96efaa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "74976740"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316000"
 ---
 # <a name="tutorial-provision-devices-across-load-balanced-iot-hubs"></a>Oktatóanyag: eszközök kiépítése elosztott terhelésű IoT hubok között
 
@@ -67,8 +67,6 @@ Kapcsolja össze a Device Provisioning Service-t és az IoT hubot, hogy a Device
 4. A **Hivatkozás hozzáadása IoT-központhoz** lapon a választógombok segítségével adja meg, hogy a csatolt IoT-központ az aktuális előfizetésben vagy egy másik előfizetésben található. Ezután válassza ki az IoT-központ nevét az **IoT-központ** mezőben.
 5. Kattintson a **Mentés** gombra.
 
-## <a name="next-steps"></a>További lépések
-
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
@@ -76,6 +74,8 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > * Regisztrációs listabejegyzés hozzáadása a második eszközhöz
 > * A Device Provisioning Service kiosztási szabályzatának beállítása **egyenletes eloszláshoz**
 > * Az új IoT hub csatolása a Device Provisioning Service-hez
+
+## <a name="next-steps"></a>Következő lépések
 
 <!-- Advance to the next tutorial to learn how to 
  Replace this .md

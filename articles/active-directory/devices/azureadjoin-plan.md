@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0863a782b7f4531b900bc3c005a39387c83d983
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: a8a70097cbae3bc5ebf48c0358faa32aea0a6be5
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268227"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91370177"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Útmutató: az Azure AD JOIN megvalósításának megtervezése
 
@@ -184,7 +184,7 @@ Az Azure AD-hez csatlakoztatott eszközök nem támogatják a számítógép-hit
 
 Az Azure AD-hez csatlakoztatott eszközökhöz való távoli asztali kapcsolathoz a gazdagépnek Azure AD-hez csatlakoztatott vagy hibrid Azure AD-csatlakozásra van szüksége. A távoli asztal nem csatlakoztatott vagy nem Windows rendszerű eszközről nem támogatott. További információ: [Csatlakozás távoli Azure ad-hez csatlakoztatott számítógéphez](/windows/client-management/connect-to-remote-aadj-pc)
 
-A Windows 10 2004 frissítésének indítása után a felhasználók a Távoli asztalt használhatják egy Azure AD-beli regisztrált Windows 10-es eszközről egy Azure AD-hez csatlakoztatott eszközre. 
+A Windows 10 2004 frissítésének indítása után a felhasználók a Távoli asztalt is használhatják egy Azure AD-beli regisztrált Windows 10-es eszközről egy Azure AD-hez csatlakoztatott eszközre. 
 
 ## <a name="understand-your-provisioning-options"></a>A kiépítési lehetőségek megismerése
 
@@ -293,7 +293,7 @@ Ha rendelkezik egy, az Azure AD-hez csatlakoztatott eszközökhöz konfigurált 
 
 Ezzel a megvalósítással [feltételes hozzáféréssel rendelkező felügyelt eszközöket igényelhet a Cloud app Access számára](../conditional-access/require-managed-devices.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Új Windows 10-es eszköz csatlakoztatása az Azure ad-vel az első futtatás során](azuread-joined-devices-frx.md) 
