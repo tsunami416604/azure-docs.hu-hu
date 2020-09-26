@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 04/10/2019
 ms.author: sbowles
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 06c353cf5fbd5c2b1058d99e7f91e9fcc3853cb1
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 3643fad1c9e821a78df6d78edeede2341ec79ea8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88929043"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91303761"
 ---
 # <a name="add-faces-to-a-persongroup"></a>Arcok hozzáadása egy PersonGroup
 
@@ -121,7 +121,7 @@ Parallel.For(0, PersonCount, async i =>
 });
 ```
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Ebben az útmutatóban megtanulta, hogyan hozhat létre egy PersonGroup nagy számú személlyel és arcával. Több emlékeztető:
 
@@ -138,6 +138,5 @@ A következő funkciókat ismertetjük és mutatták be:
 
 ## <a name="related-topics"></a>Kapcsolódó témakörök
 
-- [Képeken lévő arcok azonosítása](HowtoIdentifyFacesinImage.md)
 - [Arcok felismerése a képeken](HowtoDetectFacesinImage.md)
 - [A nagy léptékű funkció használata](how-to-use-large-scale.md)

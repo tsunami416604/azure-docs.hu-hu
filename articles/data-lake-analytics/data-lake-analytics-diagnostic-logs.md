@@ -5,12 +5,12 @@ services: data-lake-analytics
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 02/12/2018
-ms.openlocfilehash: c8c24134c4694a9a2df36ac278452a532a5125ad
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: f1f4320f0bfb924883eb7ae4807dcb714cd89983
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132602"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331930"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>Az Azure Data Lake Analytics diagnosztikai naplóinak elérése
 
@@ -26,7 +26,7 @@ A diagnosztikai naplózás lehetővé teszi az adathozzáférés-naplózási nyo
 
 2. Nyissa meg Data Lake Analytics-fiókját, és válassza a **diagnosztikai naplók** lehetőséget a __figyelő__ szakaszban. Ezután válassza __a diagnosztika bekapcsolása__elemet.
 
-    ![Diagnosztika bekapcsolása a naplózási és a kérési naplók összegyűjtéséhez](./media/data-lake-analytics-diagnostic-logs/turn-on-logging.png)
+    ![Képernyőfelvétel: a "diagnosztikai naplók" művelet be van jelölve, és "a diagnosztika bekapcsolása a következő naplók összegyűjtéséhez" kiemelve.](./media/data-lake-analytics-diagnostic-logs/turn-on-logging.png)
 
 3. A __diagnosztikai beállítások__területen adja meg a naplózási konfiguráció __nevét__ , majd válassza a naplózási beállítások lehetőséget.
 
@@ -149,7 +149,7 @@ A naplózási és a kérési naplók strukturált JSON formátumúak.
 | StartTime |Sztring |Az az idő, amikor a kiszolgáló megkapta a kérést |
 | EndTime |Sztring |Az az idő, amikor a kiszolgáló választ küldött |
 
-### <a name="audit-logs"></a>Naplók
+### <a name="audit-logs"></a>Auditnaplók
 
 Íme egy minta bejegyzés a JSON-formátumú naplóban. Mindegyik blob egyetlen **, a log** objektumokat tartalmazó tömböt tartalmazó főobjektummal rendelkezik.
 
@@ -211,6 +211,6 @@ A naplózási és a kérési naplók strukturált JSON formátumúak.
 
 Azure Data Lake Analytics a naplófájlok feldolgozásának és elemzésének módját mutatja be. A minta a következő címen található: [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Az Azure Data Lake Analytics áttekintése](data-lake-analytics-overview.md)

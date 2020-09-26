@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/03/2018
 ms.author: memildin
-ms.openlocfilehash: 3a3dd1c0df32e7d6a67e63c9e148327d30f0082c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 52ea6f862b7ef6190348743a128912131e6a9609
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904722"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314487"
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Azure Security Center készültségi ütemterv
 Ez a dokumentum egy készültségi ütemtervet tartalmaz, amely az Azure Security Center használatának első lépéseiben nyújt segítséget.
@@ -29,8 +29,8 @@ Az Azure Security Center egységes biztonsági felügyeletet és fejlett fenyege
 Használja az alábbi erőforrásokat a Security Center használatának elkezdéséhez.
 
 Cikkek
-- [Az Azure Security Center bemutatása](https://docs.microsoft.com/azure/security-center/security-center-intro)
-- [Azure Security Center – rövid útmutató](https://docs.microsoft.com/azure/security-center/security-center-get-started)
+- [Az Azure Security Center bemutatása](security-center-introduction.md)
+- [Azure Security Center – rövid útmutató](security-center-get-started.md)
 
 Videók
 - [Rövid bemutatóvideó](https://azure.microsoft.com/resources/videos/introduction-to-azure-security-center/)
@@ -42,7 +42,7 @@ Ahhoz, hogy a lehető legnagyobb mértékben kihasználhassa a Security Center �
 
 A következő forrásanyagok segítségére lehetnek a tervezési és műveleti folyamatok során.
 
-- [Útmutató az Azure Security Center tervezéséhez és működtetéséhez](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide)
+- [Útmutató az Azure Security Center tervezéséhez és működtetéséhez](security-center-planning-and-operations-guide.md)
 
 
 ### <a name="onboarding-computers-to-security-center"></a>Számítógépek regisztrációja a Security Centerben
@@ -100,7 +100,7 @@ Cikkek
 * [Webalkalmazási tűzfal (WAF) javasolt forgatókönyve a Security Centerben](https://gallery.technet.microsoft.com/ASC-Playbook-Protect-38bd47ff)
 * [Azure Security Center-forgatókönyv: Biztonsági riasztások](https://gallery.technet.microsoft.com/Azure-Security-Center-f621a046)
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 * [Security Center – dokumentációs oldal](https://docs.microsoft.com/azure/security-center/)
 * [Security Center – REST API-dokumentációs oldal](https://msdn.microsoft.com/library/mt704034.aspx)
 * [Azure Security Center – gyakori kérdések (GYIK)](https://docs.microsoft.com/azure/security-center/security-center-faq)

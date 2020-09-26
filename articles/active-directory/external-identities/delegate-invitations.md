@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 09/15/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae8bb66141e4cc4e67f1502b208cf519d37c0374
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: bb0147af559d9de4a8589344d61b06368086dd20
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705993"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278787"
 ---
 # <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>Külső B2B-együttműködés engedélyezése és a vendégmeghívási jogosultság kezelése
 
@@ -24,7 +24,7 @@ Ez a cikk bemutatja, hogyan engedélyezheti a Azure Active Directory (Azure AD) 
 
 Alapértelmezés szerint a címtárban lévő összes felhasználó és vendég meghívhatja a vendégeket, még akkor is, ha nincsenek rendszergazdai szerepkörhöz rendelve. A külső együttműködési beállítások lehetővé teszik a vendég meghívások be-és kikapcsolását a szervezet különböző típusaihoz. Az egyes felhasználóknak küldött meghívókat olyan szerepkörök hozzárendelésével is delegálhatja, amelyek lehetővé teszik a vendégek meghívását.
 
-Az Azure AD lehetővé teszi az Azure ad-címtárban lévő külső vendégek által megjelenített felhasználók korlátozását. Alapértelmezés szerint a vendég felhasználók korlátozott jogosultsági szintre vannak beállítva, amelyek letiltják a felhasználók, csoportok vagy más címtárbeli erőforrások számbavételét, de lehetővé teszi, hogy a nem rejtett csoportok tagságát lássák. Az új előzetes verzió lehetővé teszi, hogy a vendég hozzáférését még tovább korlátozza, hogy a vendégek csak a saját profiljuk adatait tudják megtekinteni. 
+Az Azure AD lehetővé teszi az Azure ad-címtárban lévő külső vendégek által megjelenített felhasználók korlátozását. Alapértelmezés szerint a vendég felhasználók korlátozott jogosultsági szintre vannak beállítva, amelyek letiltják a felhasználók, csoportok vagy más címtárbeli erőforrások számbavételét, de lehetővé teszi, hogy a nem rejtett csoportok tagságát lássák. Az új előzetes verzió lehetővé teszi, hogy a vendég hozzáférését még tovább korlátozza, hogy a vendégek csak a saját profiljuk adatait tudják megtekinteni. Részletekért lásd: a [vendég hozzáférési engedélyeinek korlátozása (előzetes verzió)](../users-groups-roles/users-restrict-guest-permissions.md).
 
 ## <a name="configure-b2b-external-collaboration-settings"></a>B2B külső együttműködési beállítások konfigurálása
 
@@ -44,9 +44,6 @@ Alapértelmezés szerint az összes felhasználó, köztük a vendégek is megh�
 3. Külső **identitások**  >  **külső együttműködési beállítások**kiválasztása.
 
 4. A **vendég felhasználói hozzáférési korlátozások (előzetes verzió)** területen válassza ki azt a hozzáférési szintet, amelyet a vendég felhasználóknak szeretne:
-
-   > [!IMPORTANT]
-   > Rövid idő alatt ezek az új portál-vezérlők a vendég felhasználói engedélyekhez csak az URL-cím használatával lesznek láthatók [https://aka.ms/AADRestrictedGuestAccess](https://aka.ms/AADRestrictedGuestAccess) . További információ: a [vendég hozzáférési engedélyeinek korlátozása (előzetes verzió)](https://aka.ms/exid-users-restrict-guest-permissions).
 
    - **A vendég felhasználók ugyanazokkal a hozzáféréssel rendelkeznek, mint a tagok (a legtöbb szolgáltató)**: Ez a beállítás lehetővé teszi, hogy a felhasználók ugyanazt az Azure ad-erőforrásokhoz és a címtáradatok eléréséhez férhessenek hozzá.
 
@@ -85,7 +82,7 @@ Az alábbi példa bemutatja, hogyan adhat hozzá felhasználót a vendég meghí
 Add-MsolRoleMember -RoleObjectId 95e79109-95c0-4d8e-aee3-d01accf2d47b -RoleMemberEmailAddress <RoleMemberEmailAddress>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg a következő cikkeket az Azure AD B2B együttműködésről:
 

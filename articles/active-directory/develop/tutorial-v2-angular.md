@@ -11,13 +11,13 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
-ms.custom: aaddev, identityplatformtop40, devx-track-javascript
-ms.openlocfilehash: a58da8b11876d662173ae83de43d8ed74ab43e93
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.custom: aaddev, identityplatformtop40, devx-track-js
+ms.openlocfilehash: 76e82a474d2575325b09e6e82c7319b22f451715
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88118292"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91256925"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>Oktatóanyag: bejelentkezés a felhasználókba és a Microsoft Graph API meghívása egy szögletes egyoldalas alkalmazásból
 
@@ -43,7 +43,7 @@ Ebben az esetben a felhasználó bejelentkezése után hozzáférési jogkivonat
 
 Ez az oktatóanyag a következő könyvtárat használja:
 
-|Kódtár|Leírás|
+|Kódtár|Description|
 |---|---|
 |[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|Microsoft Authentication Library JavaScript szögletes Burkolóhoz|
 
@@ -267,8 +267,8 @@ Ebben a kódban az `scopes` API hozzáférési jogkivonatában visszaadott ható
 
 Például:
 
-* `["user.read"]`Microsoft Graph
-* `["<Application ID URL>/scope"]`egyéni webes API-khoz (azaz `api://<Application ID>/access_as_user` )
+* `["user.read"]` Microsoft Graph
+* `["<Application ID URL>/scope"]` egyéni webes API-khoz (azaz `api://<Application ID>/access_as_user` )
 
 #### <a name="get-a-user-token-interactively"></a>Felhasználói jogkivonat interaktív lekérése
 
@@ -341,7 +341,7 @@ Ha egy háttérbeli API-nak nincs szüksége hatókörre (nem ajánlott), a *cli
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha most ismerkedik az identitás-és hozzáférés-kezeléssel, számos cikk segít a modern hitelesítési fogalmak megismerésében, a hitelesítés és az [Engedélyezés](authentication-vs-authorization.md)megkezdése előtt.
 

@@ -7,14 +7,14 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: raynew
-ms.openlocfilehash: 4b1b8a0cfa98d48d7cb92474c1572f17c79ffd0d
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 217e3b9de7c9a46174c6ce6d1a3b151c904a7bf2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498952"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314113"
 ---
-# <a name="vmware-to-azure-disaster-recovery-architecture"></a>VMware – Azure vész-helyreállítási architektúra
+# <a name="vmware-to-azure-disaster-recovery-architecture"></a>VMware-ről Azure-ba történő vészhelyreállítás architektúrája
 
 Ez a cikk azokat az architektúrákat és folyamatokat ismerteti, amelyeket a rendszer a helyszíni VMware-hely és az Azure között a [Azure site Recovery](site-recovery-overview.md) szolgáltatás használatával végez a helyreállítási replikáció, a feladatátvétel és a VMWare virtuális gépek (VM-EK) helyreállítási folyamatainak telepítésekor.
 
@@ -45,10 +45,12 @@ Ha URL-alapú tűzfal-proxyt használ a kimenő kapcsolatok vezérléséhez, eng
 
 | **Név**                  | **Kereskedelmi**                               | **Államigazgatás**                                 | **Leírás** |
 | ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
-| Storage                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`              | Lehetővé teszi az adatok írását a virtuális gépről a forrásrégió gyorsítótárjának tárfiókjába. |
+| Tárolás                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`              | Lehetővé teszi az adatok írását a virtuális gépről a forrásrégió gyorsítótárjának tárfiókjába. |
 | Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Hitelesítést és engedélyezést biztosít a Site Recovery szolgáltatás URL-címeihez. |
 | Replikáció               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | Lehetővé teszi a virtuális gép és a Site Recovery szolgáltatás közötti kommunikációt. |
 | Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | Lehetővé teszi a virtuális gép számára a Site Recovery monitorozási és diagnosztikai adatainak írását. |
+
+A helyszíni Azure Site Recovery infrastruktúra és az Azure-szolgáltatások közötti kommunikációhoz szükséges URL-címek teljes listájáért tekintse meg [a hálózati követelmények szakaszt az előfeltételek című cikkben](vmware-azure-deploy-configuration-server.md#prerequisites).
 
 ## <a name="replication-process"></a>Replikációs folyamat
 
@@ -83,6 +85,54 @@ Ha URL-alapú tűzfal-proxyt használ a kimenő kapcsolatok vezérléséhez, eng
 6. Ha az alapértelmezett újraszinkronizálási művelet munkaidőn kívül esik, és manuális beavatkozásra van szükség, akkor a rendszer hibát generál az adott gépen Azure Portal. Feloldhatja a hibát, és manuálisan is aktiválhatja az újraszinkronizálást.
 7. Az Újraszinkronizálás befejezése után a különbözeti módosítások replikálása folytatódik.
 
+## <a name="replication-policy"></a>Replikációs szabályzat 
+
+Az Azure-beli virtuális gépek replikálásának engedélyezésekor a Site Recovery alapértelmezés szerint létrehoz egy új replikációs házirendet a táblázatban összegzett alapértelmezett beállításokkal.
+
+**Házirend-beállítás** | **Részletek** | **Alapértelmezett**
+--- | --- | ---
+**Helyreállítási pont megőrzése** | Meghatározza, hogy a Site Recovery mennyi ideig tart a helyreállítási pontok | 24 óra
+**Alkalmazás-konzisztens pillanatkép gyakorisága** | Milyen gyakran Site Recovery egy alkalmazás-konzisztens pillanatképet. | Négy óránként
+
+### <a name="managing-replication-policies"></a>Replikációs házirendek kezelése
+
+Az alapértelmezett replikációs házirendek beállításait a következőképpen kezelheti és módosíthatja:
+- A beállításokat a replikálás engedélyezése után módosíthatja.
+- Bármikor létrehozhat egy replikációs szabályzatot, majd alkalmazhatja azt a replikálás engedélyezésekor.
+
+### <a name="multi-vm-consistency"></a>Több virtuális gépre kiterjedő konzisztencia
+
+Ha azt szeretné, hogy a virtuális gépek együtt replikálják őket, és megosztott összeomlás-konzisztens és alkalmazás-konzisztens helyreállítási pontokat biztosítanak a feladatátvétel során, akkor egyesítheti őket egy replikációs csoportba. A több virtuális gépre kiterjedő konzisztencia hatással van a számítási feladatok teljesítményére, és csak olyan munkaterheléseket futtató virtuális gépek esetében használható, amelyek az összes gépen konzisztencia szükségesek. 
+
+
+
+## <a name="snapshots-and-recovery-points"></a>Pillanatképek és helyreállítási pontok
+
+A helyreállítási pontok a virtuálisgép-lemezek egy adott időpontban vett pillanatképei alapján jönnek létre. Ha feladatátvételt végez egy virtuális gépen, egy helyreállítási pont használatával állíthatja vissza a virtuális gépet a célhelyen.
+
+A feladatátvétel során általában biztosítani szeretnénk, hogy a virtuális gép ne legyen sérülés vagy adatvesztés nélkül, és hogy a virtuális gép adatai konzisztensek legyenek az operációs rendszer és a virtuális gépen futó alkalmazások esetében. Ez az elkészített Pillanatképek típusától függ.
+
+A Site Recovery a következőképpen veszi fel a pillanatképeket:
+
+1. Az Site Recovery alapértelmezés szerint az összeomlás-konzisztens pillanatképeket és az alkalmazással konzisztens pillanatképeket vesz igénybe, ha megadja a gyakoriságot.
+2. A helyreállítási pontok a pillanatképek alapján jönnek létre, és a replikációs házirend megőrzési beállításoknak megfelelően tárolódnak.
+
+### <a name="consistency"></a>Konzisztencia
+
+A következő táblázat a konzisztencia különböző típusait ismerteti.
+
+### <a name="crash-consistent"></a>Összeomlás – konzisztens
+
+**Leírás** | **Részletek** | **Ajánlás**
+--- | --- | ---
+Az összeomlás-konzisztens Pillanatképek rögzítik a lemezen lévő, a pillanatkép elkészítéséhez szükséges adatok mennyiségét. Nem tartalmaz semmit a memóriában.<br/><br/> Tartalmazza a lemezen lévő adatok megfelelőjét, amely akkor jelenik meg, ha a virtuális gép összeomlott vagy a tápkábelt a kiszolgálóról húzta le a pillanattól kezdve, hogy a pillanatkép elkészítése megtörtént.<br/><br/> Az összeomlás-konzisztens érték nem garantálja az operációs rendszer vagy a virtuális gépen futó alkalmazások adatkonzisztenciáját. | A Site Recovery alapértelmezés szerint öt percenként hoz létre összeomlás-konzisztens helyreállítási pontokat. Ez a beállítás nem módosítható.<br/><br/>  | Napjainkban a legtöbb alkalmazás jól helyreállítható az összeomlás-konzisztens pontokból.<br/><br/> Az összeomlás-konzisztens helyreállítási pontok általában elegendőek az operációs rendszerek és az alkalmazások, például a DHCP-kiszolgálók és a nyomtatókiszolgálók replikálásához.
+
+### <a name="app-consistent"></a>Alkalmazás – konzisztens
+
+**Leírás** | **Részletek** | **Ajánlás**
+--- | --- | ---
+Az alkalmazással konzisztens helyreállítási pontok az alkalmazással konzisztens Pillanatképek alapján jönnek létre.<br/><br/> Az alkalmazás-konzisztens Pillanatképek tartalmazzák az összeomlás-konzisztens Pillanatképek összes adatát, valamint a memóriában lévő összes adatot és a folyamatban lévő tranzakciókat. | Az alkalmazással konzisztens Pillanatképek a Kötet árnyékmásolata szolgáltatást (VSS) használják:<br/><br/>   1.) Azure Site Recovery a csak másolás biztonsági mentési (VSS_BT_COPY) metódust használja, amely nem módosítja a Microsoft SQL tranzakciós naplójának biztonsági mentésének idejét és sorszámát. </br></br> 2) Ha pillanatképet kezdeményez, a VSS a köteten egy másolási írási (COW) műveletet hajt végre.<br/><br/>   3) mielőtt elvégezte a TEHENEt, a VSS tájékoztatja a gépen lévő összes alkalmazást, hogy a memóriájában tárolt adatok lemezre ürítése szükséges.<br/><br/>   4.) a VSS ezután lehetővé teszi a biztonsági mentési/vész-helyreállítási alkalmazás (ebben az esetben Site Recovery) számára a pillanatkép-adatok olvasását és a folytatást. | Az alkalmazással konzisztens Pillanatképek a megadott gyakoriságnak megfelelően készülnek. A gyakoriságnak mindig kisebbnek kell lennie, mint a helyreállítási pontok megőrzéséhez. Ha például megőrzi a helyreállítási pontokat a 24 órás alapértelmezett beállítással, a gyakoriságot 24 óránál rövidebb ideig kell beállítania.<br/><br/>Összetettebbek, és hosszabb időt is igénybe vehetik, mint az összeomlás-konzisztens Pillanatképek.<br/><br/> Hatással vannak a replikálásra engedélyezett virtuális gépeken futó alkalmazások teljesítményére. 
+
 ## <a name="failover-and-failback-process"></a>Feladatátvételi és feladat-visszavételi folyamat
 
 Miután beállította a replikálást, és elvégezte a vész-helyreállítási részletezést (feladatátvételi teszt) annak ellenőrzéséhez, hogy minden a vártnak megfelelően működik-e, futtathatja a feladatátvételt és a feladat-visszavételt.
@@ -108,6 +158,6 @@ Miután beállította a replikálást, és elvégezte a vész-helyreállítási 
 ![Az Azure-ból VMware-feladat-visszavételt ábrázoló ábra](./media/vmware-azure-architecture/enhanced-failback.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Ezt az oktatóanyagot](vmware-azure-tutorial.md) követve engedélyezheti a VMware – Azure replikálást.

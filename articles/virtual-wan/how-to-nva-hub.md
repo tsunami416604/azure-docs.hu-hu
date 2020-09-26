@@ -5,21 +5,24 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 07/14/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a Network Virtual Appliance (NVA) in my Virtual WAN hub.
-ms.openlocfilehash: c5f120d6d9d80db4eaa9cf6f68e8dd27d45c8aea
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 83267b1bebd501871277ea3e40b7fa9ba38f33cd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87098596"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91313756"
 ---
 # <a name="how-to-create-a-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>Hálózati virtuális berendezés létrehozása Azure-beli virtuális WAN-központban (előzetes verzió)
 
 Ez az oktatóanyag bemutatja, hogyan használható a Virtual WAN az Azure-beli erőforrásokhoz való kapcsolódáshoz egy **hálózati virtuális berendezésen** (NVA) keresztül az Azure-ban. Az ilyen típusú kapcsolatokhoz egy helyszíni VPN-eszközre van szükség, amelyhez hozzá van rendelve egy kifelé irányuló, nyilvános IP-cím. A Virtual WAN-nal kapcsolatos további információkért lásd a [Virtual WAN áttekintését](virtual-wan-about.md).
 
 A cikkben ismertetett lépések segítséget nyújtanak a **Barracuda CLOUDGEN WAN** hálózati virtuális berendezés létrehozásában a virtuális WAN-központban. Ennek a gyakorlatnak a végrehajtásához a Barracuda Cloud bevezetési eszközt (CPE) és a Barracuda CloudGen WAN-berendezés licencét kell megadnia, mielőtt megkezdené a központi telepítést.
+
+A **Cisco SD-WAN** Azure Virtual WAN-on belüli üzembe helyezési dokumentációjában küldjön e-mailt a Cisco-nak a következő e-mail-címre: vwan_public_preview@cisco.com .
+
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -46,7 +49,7 @@ A hub olyan virtuális hálózat, amely átjárókat tartalmazhat a helyek köz�
 1. Keresse meg a létrehozott virtuális WAN-t. A **virtuális WAN** lapon a **kapcsolat** szakaszban válassza a **hubok**lehetőséget.
 1. A **hubok** lapon válassza az + új hub lehetőséget a **virtuális központ létrehozása** lap megnyitásához.
 
-   :::image type="content" source="./media/how-to-nva-hub/vwan-hub.png" alt-text="Alapbeállítások":::
+   :::image type="content" source="./media/how-to-nva-hub/vwan-hub.png" alt-text="Alapvető beállítások":::
 1. A **virtuális központ létrehozása** lap **alapjai** lapon végezze el a következő mezőket:
 
    **Projekt részletei**
@@ -93,7 +96,7 @@ Ebben a lépésben egy hálózati virtuális berendezést fog létrehozni a köz
 
 [!INCLUDE [Connect](../../includes/virtual-wan-connect-vnet-hub-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Virtual WAN-nal kapcsolatos további információkért lásd a [Virtual WAN áttekintő](virtual-wan-about.md) lapját.
 * Ha többet szeretne megtudni a virtuális WAN-központban található NVA, tekintse meg [a virtuális WAN-központ (előzetes verzió) hálózati virtuális berendezéssel](about-nva-hub.md)foglalkozó témakörét.

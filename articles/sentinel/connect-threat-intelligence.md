@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/22/2019
 ms.author: yelevin
-ms.openlocfilehash: 8036203e33fd63a25ecfa7c4ea720e01259be04a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d794b0a33eabedd3e6e309f291543ba23bc40f79
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84769873"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362746"
 ---
 # <a name="connect-data-from-threat-intelligence-providers"></a>Adatok összekötése a veszélyforrások felderítését biztosító szolgáltatóktól
 
@@ -59,13 +59,13 @@ A veszélyforrások indikátorait az Azure Sentinel szolgáltatásba továbbíth
 
 ## <a name="connect-azure-sentinel-to-your-threat-intelligence-platform"></a>Az Azure Sentinel összekapcsolhatók a veszélyforrások elleni intelligencia platformmal
 
-## <a name="prerequisites"></a>Előfeltételek  
+### <a name="prerequisites"></a>Előfeltételek  
 
 - A globális rendszergazda vagy a biztonsági rendszergazda Azure AD szerepköre, hogy engedélyeket adjon a tipp termékének vagy egyéni alkalmazásának, amely közvetlen integrációt használ a Microsoft Graph Security tiIndicators API-val.
 
 - Olvasási és írási engedélyek az Azure Sentinel-munkaterülethez a veszélyforrások mutatóinak tárolásához.
 
-## <a name="instructions"></a>Utasítások
+### <a name="instructions"></a>Utasítások
 
 1. Azure Active Directory [alkalmazás regisztrálása](/graph/auth-v2-service#1-register-your-app) az alkalmazás-azonosító, az alkalmazás titkos kódjának és a Azure Active Directory bérlői azonosító beszerzéséhez. Ezekre az értékekre akkor van szükség, amikor az integrált tipp termékét vagy alkalmazását a Microsoft Graph Security tiIndicators API-val való közvetlen integrációt használó alkalmazáshoz konfigurálja.
 
@@ -89,13 +89,13 @@ A veszélyforrások indikátorait az Azure Sentinel szolgáltatásba továbbíth
 
 ## <a name="connect-azure-sentinel-to-taxii-servers"></a>Az Azure Sentinel és a TAXII-kiszolgálók összekötése
 
-## <a name="prerequisites"></a>Előfeltételek  
+### <a name="prerequisites"></a>Előfeltételek
 
 - Olvasási és írási engedélyek az Azure Sentinel-munkaterülethez a veszélyforrások mutatóinak tárolásához.
 
 - TAXII 2,0-kiszolgáló URI-ja és a gyűjtemény azonosítója.
 
-## <a name="instructions"></a>Utasítások
+### <a name="instructions"></a>Utasítások
 
 1. A Azure Portal navigáljon az **Azure Sentinel**  >  -**adatösszekötők** elemre, majd válassza ki a **Threat Intelligence-TAXII (előzetes verzió)** összekötőt.
 
@@ -109,7 +109,7 @@ A veszélyforrások indikátorait az Azure Sentinel szolgáltatásba továbbíth
 
 6. Az Azure sentinelbe importált veszélyforrások mutatóinak megtekintéséhez navigáljon az **Azure Sentinel-logs**  >  **SecurityInsights**, majd bontsa ki a **ThreatIntelligenceIndicator**csomópontot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a dokumentumból megtudhatta, hogyan csatlakoztatható a veszélyforrások elleni intelligencia szolgáltatója az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket.
 

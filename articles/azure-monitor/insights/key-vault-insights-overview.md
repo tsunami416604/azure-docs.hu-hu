@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/10/2020
-ms.openlocfilehash: 4aeb97f112f0c95329b1449fe9c1423fdd5bd0d6
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 4b91a9a73035b3add309e72ce544375520cf279e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90894514"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278617"
 ---
 # <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault"></a>A Key Vault szolgáltatás figyelése a Azure Monitor for Key Vault
 A Key Vault Azure Monitor a Key Vault kérelmek, a teljesítmény, a hibák és a késés egységes áttekintésével biztosítja a kulcstartók átfogó figyelését.
@@ -25,21 +25,6 @@ Mielőtt beugrott a felületre, tisztában kell lennie azzal, hogyan mutatja be 
 -    **Testreszabható** , ahol megváltoztathatja, hogy mely metrikákat szeretné megtekinteni, módosítani vagy beállítani a korlátozásokhoz illeszkedő küszöbértékeket, és mentheti a saját munkafüzetét. A munkafüzetben található diagramok az Azure-irányítópultokon rögzíthetők.
 
 A Key Vault Azure Monitor a naplók és a metrikák összeadásával globális figyelési megoldást biztosít. Az összes felhasználó hozzáférhet a metrika-alapú figyelési adatokhoz, azonban a naplókon alapuló vizualizációk belefoglalása esetén a felhasználóknak [engedélyezniük kell a Azure Key Vault naplózását](../../key-vault/general/logging.md).
-
-## <a name="configuring-your-key-vaults-for-monitoring"></a>Kulcstartók konfigurálása figyeléshez
-
-> [!NOTE]
-> A naplók engedélyezése olyan fizetős szolgáltatás, amely további figyelési képességeket biztosít.
-
-1. Az Operations & késés lapon meghatározhatja, hogy hány és melyik kulcstároló engedélyezett. A gyűjtés megkezdéséhez válassza az **Engedélyezés** gombot, amely egy külön munkafüzetbe kerül, amely felsorolja a diagnosztikai naplók engedélyezését igénylő kulcstartókat.
-
-    ![Képernyőfelvétel a műveletek és a késések lapról a kék engedélyezés gomb megnyomásával](./media/key-vaults-insights-overview/enable-logging.png)
-
-2. A diagnosztikai naplók engedélyezéséhez kattintson az **Engedélyezés** hivatkozásra a műveletek oszlop alatt, és hozzon létre egy új diagnosztikai beállítást, amely naplókat küld egy log Analytics munkaterületre. Azt javasoljuk, hogy az összes naplót ugyanabba a munkaterületre küldje el.
-
-3. A diagnosztikai beállítások mentése után megtekintheti az összes log-alapú diagramot és vizualizációt a Key Vault-adatfelismerések alatt. Vegye figyelembe, hogy a naplók feltöltésének megkezdése több percet is igénybe vehet.
-
-4. Ha további segítségre van a Key Vault szolgáltatás diagnosztikai naplóinak engedélyezéséhez, olvassa el a [teljes útmutatót](../../key-vault/general/logging.md).
 
 ## <a name="view-from-azure-monitor"></a>Nézet Azure Monitor
 
@@ -165,10 +150,6 @@ A kiválasztható és megtekinthető 200 kulcstartók száma. A kiválasztott el
 Csak azokat az előfizetéseket mutatjuk be, amelyek a kiválasztott előfizetési szűrőből kiválasztott Key vaultokat tartalmaznak, amelyek a Azure Portal fejlécben a "címtár + előfizetés" lehetőségre vannak kiválasztva.
 
 ![Az előfizetés-szűrő képernyőképe](./media/key-vaults-insights-overview/Subscriptions.png)
-
-### <a name="i-am-getting-an-error-message-that-the-query-exceeds-the-maximum-number-of-workspacesregions-allowed-what-to-do-now"></a>Hibaüzenet jelenik meg, miszerint a "lekérdezés meghaladja az engedélyezett munkaterületek és régiók maximális számát", mi a teendő most
-
-Jelenleg a 25 régióra és az 200-es munkaterületekre korlátozza az adatait, ezért csökkentenie kell az előfizetések és/vagy az erőforráscsoportok számát.
 
 ### <a name="i-want-to-make-changes-or-add-additional-visualizations-to-key-vault-insights-how-do-i-do-so"></a>Szeretném módosítani vagy további vizualizációkat hozzáadni Key Vault az információkhoz
 

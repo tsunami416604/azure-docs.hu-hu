@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: e3b666ca7418a11bba3091a5ae8191e9c7b33411
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: e1b76c9b6a442e3be23ddd54c926b13601287d7f
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90705809"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91354938"
 ---
 # <a name="quickstart-call-an-aspnet-web-api-thats-protected-by-microsoft-identity-platform"></a>Rövid útmutató: a Microsoft Identity platform által védett ASP.NET webes API meghívása
 
@@ -162,7 +162,7 @@ Az egyik lehetőség, hogy más címtárakból származó felhasználók is hozz
 1. A **jogosultsági hatókörök** szakaszban válassza ki a `api://<Application ID>/access_as_user` webes API hatókörét.
 1. Válassza az **alkalmazás hozzáadása**lehetőséget.
 
-## <a name="run-your-project"></a>A projekt futtatása
+### <a name="run-your-project"></a>A projekt futtatása
 
 1. A projekt futtatásához nyomja le az F5 billentyűt. A TodoListClient alkalmazásnak nyitva kell lennie.
 1. A jobb felső sarokban válassza a **Bejelentkezés**lehetőséget, majd jelentkezzen be egy személyes Microsoft-fiók, például a Live.com vagy a hotmail.com, vagy egy munkahelyi vagy iskolai fiók használatával.
@@ -186,7 +186,7 @@ Egyéni módszert is alkalmazhat a kiállítók érvényesítésére a paraméte
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a Microsoft Identity platform által támogatott védett webes API-forgatókönyvről:
 > [!div class="nextstepaction"]
 > [Védett webes API-forgatókönyv](scenario-protected-web-api-overview.md)

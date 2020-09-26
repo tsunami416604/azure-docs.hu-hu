@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/03/2019
+ms.date: 09/16/2020
 ms.author: kenwith
-ms.openlocfilehash: 5040fca85857cd131731d67c543c08fb1114ccee
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 666c4e52ed521c169ff80b33e2ab0e83b13e4d03
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235224"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266700"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>A felhasználó kiépítési attribútumának testreszabása – SaaS-alkalmazások leképezése Azure Active Directory
 
@@ -276,8 +276,8 @@ Az alábbi lépésekkel szerepköröket hozhat létre az alkalmazáshoz. Vegye f
 ## <a name="provisioning-a-multi-value-attribute"></a>Többértékű attribútum kiépítés
 Bizonyos attribútumok, például a phoneNumbers és az e-mailek olyan többértékű attribútumok, amelyekben különböző típusú telefonszámokat vagy e-maileket kell megadnia. Használja az alábbi kifejezést a többértékű attribútumok esetében. Lehetővé teszi az attribútum típusának és leképezésének megadását az értékhez tartozó Azure AD felhasználói attribútumhoz. 
 
-* phoneNumbers [type EQ "work"]. Value
-* phoneNumbers [type EQ "Mobile"]. Value
+* phoneNumbers[type eq "work"].value
+* phoneNumbers[type eq "mobile"].value
 * phoneNumbers [type EQ "fax"]. Value
 
    ```json
@@ -316,8 +316,9 @@ Ha ezt a beállítást választja, a kiépítési szolgáltatás futása közben
 - Az Azure ad-kiépítési szolgáltatás nem támogatja a null értékek kiépítés.
 - Az elsődleges kulcs (általában az "ID") nem szerepelhet célként megadott attribútumként az attribútum-hozzárendelésekben. 
 - A szerepkör attribútumot általában egy kifejezéssel kell leképezni, nem közvetlen hozzárendelést. A szerepkör-hozzárendeléssel kapcsolatos további részletekért lásd a fenti szakaszt. 
+- Noha letilthatja a csoportokat a leképezésekről, a felhasználók letiltása nem támogatott. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A felhasználók üzembe helyezésének és megszüntetésének automatizálása az SaaS-alkalmazásokban](user-provisioning.md)
 - [Kifejezések írása attribútum-leképezésekhez](../app-provisioning/functions-for-customizing-application-data.md)

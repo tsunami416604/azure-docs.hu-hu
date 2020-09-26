@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 07/16/2020
+ms.date: 09/23/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 051d88494049662891e1891f900aa580a005ffe4
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 00771f950271cfbc86994c01b6d866c5983f1b34
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799468"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278668"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>Gyakran ismételt kérdések (GYIK) a Microsoft Authenticator alkalmazásról
 
@@ -29,6 +29,7 @@ Az Microsoft Authenticator alkalmazás felváltotta a Azure Authenticator alkalm
 
 | Kérdés | Válasz |
 | -------- | ------ |
+| Miért probléma merült fel az Apple Watch a watchOS 7 rendszeren? | Probléma van az értesítések jóváhagyásával a watchOS 7 rendszeren, és az Apple-szel dolgozunk, hogy megszerezze ezt a hibát. Addig is a Microsoft Authenticator watchOS alkalmazást igénylő értesítéseket a telefonon jóvá kell hagyni.  |
 | Az eszköz regisztrálása egyetért a vállalat vagy a szolgáltatás hozzáférésének megadásával az eszközön? | Az eszköz regisztrálása biztosítja az eszköz hozzáférését a szervezet szolgáltatásaihoz, és nem teszi lehetővé a szervezet számára az eszköz hozzáférését. |
 | Mi az az App Lock, és hogyan használhatom, hogy segítsenek a biztonságban? | Az alkalmazás zárolásával biztonságosabbá teheti az egyszeri PIN-kódot, az alkalmazás adatait és az alkalmazás beállításait. Ha az alkalmazás zárolása engedélyezve van, az eszköz PIN-kódjának vagy a biometrikus adatoknak a hitelesítő minden megnyitásakor meg kell adnia a hitelesítést. Az alkalmazás-zárolás azt is lehetővé teszi, hogy Ön az egyetlen, aki jóváhagyhatja az értesítéseket a PIN-kód vagy a biometrikus adatoknak a bejelentkezési értesítések jóváhagyásakor történő megadásával. Az alkalmazás-zárolás be-és kikapcsolása a hitelesítő beállítások oldalon végezhető el. Alapértelmezés szerint az alkalmazás zárolása be van kapcsolva az eszközön található PIN-kód vagy biometrika beállításakor.<br><br>Sajnos nincs garancia arra, hogy az alkalmazás zárolása leállítja valakinek a hitelesítő számára való hozzáférését. Ennek az az oka, hogy az eszköz regisztrációja a hitelesítő kívül más helyekre is megtörténhet, például az Android-Fiókbeállítások vagy a céges portál alkalmazásban. |
 | Windows Mobile-eszközem van, és a Windows Mobile rendszerű Microsoft Authenticator elavultak. Folytatható a hitelesítés az alkalmazás használatával? | A Windows Mobile Microsoft Authenticatort használó összes hitelesítés 2020. július 15-én megszűnik. Azt javasoljuk, hogy használjon egy alternatív hitelesítési módszert a fiókok zárolásának elkerülése érdekében.<br>A vállalati felhasználók alternatív lehetőségei a következők:<br><ul><li>Az [Android](https://play.google.com/store/apps/details?id=com.azure.authenticator) vagy [iOS](https://apps.apple.com/app/microsoft-authenticator/id983156458)rendszerhez készült Microsoft Authenticator beállítása.</li><li>Az [SMS beállítása](multi-factor-authentication-setup-phone-number.md) az ellenőrző kódok fogadására.</li><li>A telefonszám beállítása a telefonhívások fogadására az [identitásuk ellenőrzéséhez](multi-factor-authentication-setup-office-phone.md).</li></ul><br>A személyes Microsoft-fiók felhasználók alternatív beállításai a következők:<br><ul><li>Az [Android](https://play.google.com/store/apps/details?id=com.azure.authenticator) vagy [iOS](https://apps.apple.com/app/microsoft-authenticator/id983156458)rendszerhez készült Microsoft Authenticator beállítása.</li><li>Alternatív bejelentkezési módszer (SMS vagy e-mail) beállítása a biztonsági adatok [Microsoft-fiók biztonsága lapról](https://account.microsoft.com/security/)történő frissítésével.</li></ul> |

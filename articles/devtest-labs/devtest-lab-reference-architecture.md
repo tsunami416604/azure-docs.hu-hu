@@ -4,12 +4,12 @@ description: Ez a cikk a vállalat Azure DevTest Labsához nyújt útmutatást.
 ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 8b71774d9a833adefdd25214ea4f0e8bdaaba485
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e0791fb6c4de3da8108ffbd296c681f993c6b6cb
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85480184"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91367750"
 ---
 # <a name="azure-devtest-labs-reference-architecture-for-enterprises"></a>Azure DevTest Labs a vállalatok hivatkozási architektúrája
 Ez a cikk olyan hivatkozási architektúrát tartalmaz, amely a vállalatok Azure DevTest Labs alapján történő központi telepítésében nyújt segítséget. A következőket tartalmazza:
@@ -46,7 +46,7 @@ Bár a DevTest Labs nem rendelkezik beépített kvótákkal vagy korlátozásokk
     - **Megosztott nyilvános IP**-címek használata: az azonos méretű és régiót használó virtuális gépek ugyanabba az erőforráscsoporthoz kerülnek. Ez a konfiguráció "középutat" az erőforráscsoport-kvóták és az erőforrás-típus/erőforrás-csoport kvótái között, ha a virtuális gépek számára engedélyezett a nyilvános IP-címek használata.
 - **Erőforrások**erőforráscsoport szerinti erőforrásai: az erőforrás-csoportonként az erőforrások alapértelmezett korlátja [800](../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits).  Ha az *összes virtuális gépet ugyanarra az erőforráscsoport* -konfigurációra használja, a felhasználók sokkal hamarabb elérik ezt az előfizetést, különösen akkor, ha a virtuális gépek sok további lemezzel rendelkeznek.
 - **Storage-fiókok**: a DevTest Labs egyik laborja tartalmaz egy Storage-fiókot. A [Storage-fiókok régiónként megadott számú](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits)Azure-kvóta 250. Az azonos régióban található DevTest-laborok maximális száma szintén 250.
-- **Szerepkör-hozzárendelések**: a szerepkör-hozzárendeléssel megadhatja, hogy egy felhasználó vagy egy elsődleges hozzáférés legyen egy erőforráshoz (tulajdonos, erőforrás, jogosultsági szint). Az Azure-ban az [előfizetés legfeljebb 2 000 szerepkör-hozzárendelést](../azure-resource-manager/management/azure-subscription-service-limits.md#role-based-access-control-limits)foglal le. Alapértelmezés szerint a DevTest Labs szolgáltatás minden virtuális géphez létrehoz egy erőforráscsoportot. A tulajdonos *tulajdonosi* engedélyt kap a DevTest Labs virtuálisgép-és *olvasói* engedélye számára az erőforráscsoporthoz. Ily módon minden létrehozott új virtuális gép két szerepkör-hozzárendelést használ azon hozzárendelések mellett, amelyeket akkor használ, amikor a felhasználók engedélyt adnak a labornak.
+- **Szerepkör-hozzárendelések**: a szerepkör-hozzárendeléssel megadhatja, hogy egy felhasználó vagy egy elsődleges hozzáférés legyen egy erőforráshoz (tulajdonos, erőforrás, jogosultsági szint). Az Azure-ban az [előfizetés legfeljebb 2 000 szerepkör-hozzárendelést](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-role-based-access-control-limits)foglal le. Alapértelmezés szerint a DevTest Labs szolgáltatás minden virtuális géphez létrehoz egy erőforráscsoportot. A tulajdonos *tulajdonosi* engedélyt kap a DevTest Labs virtuálisgép-és *olvasói* engedélye számára az erőforráscsoporthoz. Ily módon minden létrehozott új virtuális gép két szerepkör-hozzárendelést használ azon hozzárendelések mellett, amelyeket akkor használ, amikor a felhasználók engedélyt adnak a labornak.
 - **API-olvasások/írások**: többféleképpen automatizálható az Azure és a DevTest Labs, beleértve a REST API-kat, a PowerShellt, az Azure CLI-t és az Azure SDK-t. Az Automation segítségével az API-kérelmek egy másik korlátja is megjelenhet: minden előfizetés legfeljebb [12 000 olvasási kérést és 1 200 írási kérést](../azure-resource-manager/management/request-limits-and-throttling.md)tesz lehetővé. A DevTest Labs automatizálásakor vegye figyelembe a korlátot.
 
 ## <a name="manageability-considerations"></a>Felügyeleti szempontok
@@ -62,5 +62,5 @@ Fontos megjegyezni, hogy a DevTest Labs a mögöttes Azure-erőforrásokat haszn
 ## <a name="security-considerations"></a>Biztonsági szempontok
 Azure DevTest Labs a meglévő erőforrásokat használja az Azure-ban (számítás, hálózatkezelés stb.). Így automatikusan kihasználhatja a platform beépített biztonsági funkcióit. Ahhoz például, hogy a bejövő távoli asztali kapcsolatok csak a vállalati hálózatról származzanak, egyszerűen vegyen fel egy hálózati biztonsági csoportot a virtuális hálózatra a távoli asztali átjárón. Az egyetlen további biztonsági szempont azon engedélyek szintje, amelyeket a laborokat a napi rendszerességgel használó csapattagoknak biztosítanak. A leggyakoribb engedélyek a [ *tulajdonos* és a *felhasználó*](devtest-lab-add-devtest-user.md). További információ ezekről a szerepkörökről: [tulajdonosok és felhasználók hozzáadása Azure DevTest Labsban](devtest-lab-add-devtest-user.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse meg a következő cikket ebben a sorozatban: [a Azure DevTest Labs infrastruktúra vertikális Felskálázása](devtest-lab-guidance-scale.md).

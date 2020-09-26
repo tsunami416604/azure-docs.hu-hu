@@ -1,0 +1,36 @@
+---
+title: A ExpressRoute és a virtuális hálózati átjáró összekötése
+description: A ExpressRoute virtuális hálózati átjáróhoz való kapcsolódásának lépései.
+ms.topic: include
+ms.date: 09/21/2020
+ms.openlocfilehash: cc17de4ad9c16100a75d5ca2527b8cb0e7eef628
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254779"
+---
+<!-- Used in avs-deployment.md and tutorial-configure-networking.md -->
+
+1. Navigáljon az előző oktatóanyagban létrehozott saját felhőhöz, és válassza a **kezelés**alatt a **kapcsolat** lehetőséget, és válassza a **ExpressRoute** lapot.
+
+1. Másolja az engedélyezési kulcsot. Ha nincs engedélyezési kulcs, létre kell hoznia egyet, majd **az engedélyezési kulcs kérése**lehetőséget kell választania.
+
+   :::image type="content" source="../media/expressroute-global-reach/start-request-auth-key.png" alt-text="Másolja az engedélyezési kulcsot. Ha nincs engedélyezési kulcs, létre kell hoznia egyet, majd az engedélyezési kulcs kérése lehetőséget kell választania." border="true":::
+
+1. Lépjen az előző lépésben létrehozott Virtual Network átjáróra, és a **Beállítások**területen válassza a **kapcsolatok**lehetőséget. A **kapcsolatok** lapon válassza a **+ Hozzáadás**lehetőséget.
+
+1. A **kapcsolatok hozzáadása** lapon adja meg a mezők értékeit, majd kattintson az **OK gombra**. 
+
+   | Mező | Érték |
+   | --- | --- |
+   | **Név**  | Adjon egy nevet a kapcsolatnak.  |
+   | **Kapcsolat típusa**  | Válassza a **ExpressRoute**lehetőséget.  |
+   | **Engedély beváltása**  | Győződjön meg arról, hogy a jelölőnégyzet be van jelölve.  |
+   | **Virtuális hálózati átjáró** | A korábban létrehozott Virtual Network átjáró.  |
+   | **Engedélyezési kulcs**  | Másolja és illessze be az engedélyezési kulcsot az erőforráscsoport ExpressRoute lapjáról. |
+   | **Társ áramkör URI-ja**  | Másolja és illessze be a ExpressRoute-azonosítót az erőforráscsoport ExpressRoute lapjáról.  |
+
+   :::image type="content" source="../media/expressroute-global-reach/open-cloud-shell.png" alt-text="A kapcsolatok hozzáadása lapon adja meg a mezők értékeit, majd kattintson az OK gombra." border="true":::
+
+Létrejön a ExpressRoute-áramkör és a Virtual Network közötti kapcsolat.

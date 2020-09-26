@@ -16,17 +16,17 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef1e988bef3876fafdee4f7f6f109858e85d75d0
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: efb332cf8d5e34a435010a39a12b38f87cff5875
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89278734"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91313365"
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>Az Azure AD Connect-szinkronizálás megfigyelése az Azure AD Connect Health szolgáltatással
 Az alábbi dokumentáció az Azure AD Connect (szinkronizálási) szolgáltatás Azure AD Connect Health szolgáltatással végzett megfigyelésére vonatkozik.  Az AD FS az Azure AD Connect Health használatával történő megfigyelésére vonatkozó információkat lásd: [Az Azure AD Connect Health használata az AD FS szolgáltatással](how-to-connect-health-adfs.md). Az Active Directory tartományi szolgáltatások az Azure AD Connect Health használatával történő megfigyelésével kapcsolatos információkat pedig a [Using Azure AD Connect Health with AD DS](how-to-connect-health-adds.md) (Az Azure AD Connect Health használata az AD DS szolgáltatással) című témakörben találja.
 
-![Azure AD Connect Health szinkronizálási szolgáltatás](./media/how-to-connect-health-sync/syncsnapshot.png)
+![A szinkronizálási oldal Azure AD Connect Health képernyőképe.](./media/how-to-connect-health-sync/syncsnapshot.png)
 
 ## <a name="alerts-for-azure-ad-connect-health-for-sync"></a>Az Azure AD Connect Health szinkronizálási szolgáltatás riasztásai
 Az Azure AD Connect Health szinkronizálási szolgáltatás riasztásai szakaszban az aktív riasztások listáját láthatja. Minden egyes riasztás tartalmazza a fontos információkat, a megoldás lépéseit, valamint a kapcsolódó dokumentációra mutató hivatkozásokat. Egy aktív vagy egy megoldott riasztás kiválasztása esetén egy új panel további információkat, a riasztás megoldását segítő lépéseket és további dokumentációkra mutató hivatkozásokat jelenít meg. A már megoldott riasztások esetében az előzményadatokat is megtekintheti.
@@ -40,11 +40,11 @@ Ha az Azure AD Connect NEM az alapértelmezett konfigurációt használja (péld
 
 Ez korlátozza a riasztások kiértékelését a szolgáltatás által. Az Azure Portalban a szolgáltatás alatt ilyenkor megjelenik egy szalagcím, amely ezt az állapotot jelzi.
 
-![Azure AD Connect Health szinkronizálási szolgáltatás](./media/how-to-connect-health-sync/banner.png)
+![Képernyőfelvétel: a riasztások kiértékelését jelző riasztási szalagcím. Frissítse a beállításokat az összes riasztás engedélyezéséhez.](./media/how-to-connect-health-sync/banner.png)
 
 Ezt úgy módosíthatja, ha a „Beállítások” elemre kattint, és engedélyezi, hogy az Azure AD Connect Health-ügynök minden hibanaplót feltöltsön.
 
-![Azure AD Connect Health szinkronizálási szolgáltatás](./media/how-to-connect-health-sync/banner2.png)
+![Képernyőkép: a beállítások lehetőség, valamint a beállítások szakasz a Mentés lehetőséggel és a bekapcsolt lehetőséggel.](./media/how-to-connect-health-sync/banner2.png)
 
 ## <a name="sync-insight"></a>Szinkronizálási elemzés
 A rendszergazdák általában tudni szeretnék, mennyi időt vesz igénybe a változások Azure AD-be való szinkronizálása, és hogy milyen mennyiségű változásokról van szó. Ezzel a funkcióval mindez az információ egyszerűen megjeleníthető az alábbi grafikonokon:   
@@ -55,14 +55,14 @@ A rendszergazdák általában tudni szeretnék, mennyi időt vesz igénybe a vá
 ### <a name="sync-latency"></a>Szinkronizálási késések
 Ez a funkció egy tendenciagrafikont hoz létre az összekötőkhöz kapcsolódó szinkronizálási műveletek (importálás, exportálás stb.) késéseiről.  Így egyrészt könnyen és gyorsan megjeleníthető a műveletek késési időmennyisége (ez nagy mennyiségű változás esetén nagyobb), másrészt lehetővé válik a késéseknél előforduló, esetlegesen további vizsgálatot igénylő rendellenességek észlelése is.
 
-![Szinkronizálási késések](./media/how-to-connect-health-sync/synclatency02.png)
+![Képernyőkép a futtatási profil késéséről az elmúlt 3 napban gráfból.](./media/how-to-connect-health-sync/synclatency02.png)
 
 Alapértelmezés szerint csak az Azure AD-összekötő „Exportálás” műveletének késései jelennek meg.  Az összekötő további műveleteinek és más összekötők műveleteinek megtekintéséhez kattintson a jobb egérgombbal a diagramra, válassza a Diagram szerkesztése lehetőséget vagy kattintson a „Késési diagram szerkesztése” gombra, és válassza ki a kívánt műveletet és összekötőt.
 
 ### <a name="sync-object-changes"></a>Szinkronizálási objektumok módosításai
 Ez a funkció egy tendenciagrafikonon jeleníti meg a kiértékelt és az Azure AD-ba exportált módosítások számát.  Napjainkban az ilyen jellegű információkat nehéz a szinkronizálási naplófájlokból összegyűjteni.  A diagram nemcsak leegyszerűsíti a környezetében bekövetkező változások számának követését, de megjeleníti az előforduló hibákat is.
 
-![Szinkronizálási késések](./media/how-to-connect-health-sync/syncobjectchanges02.png)
+![Képernyőkép az exportálási statisztikákról az Azure AD-re az elmúlt 3 napban gráfból.](./media/how-to-connect-health-sync/syncobjectchanges02.png)
 
 ## <a name="object-level-synchronization-error-report"></a>Objektum szintű szinkronizációs hibajelentés
 Ez a funkció olyan szinkronizálási hibákról készít jelentést, amelyek a Windows Server AD és az Azure AD közötti, Azure AD Connect használatával történő identitásszinkronizálás közben jelentkeznek.

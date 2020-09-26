@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: alzam
-ms.openlocfilehash: f77d17881054440b01e30e738a8c38407c38b4a4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a54397fe7cfecef6813105645b7f2b218894875e
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91306548"
+ms.locfileid: "91367852"
 ---
 # <a name="prepare-azure-active-directory-tenant-for-user-vpn-openvpn-protocol-connections"></a>Azure Active Directory bérlő előkészítése a felhasználói VPN OpenVPN protokoll kapcsolataihoz
 
@@ -76,7 +76,7 @@ Az [ebben a cikkben](../active-directory/fundamentals/add-users-azure-active-dir
 
 4. Ha a rendszer kéri, válassza az **elfogadás** lehetőséget.
 
-    ![Elfogadás](./media/openvpn-create-azure-ad-tenant/accept.jpg)
+    ![Képernyőfelvétel: a szervezete és további információi elfogadását kérő párbeszédpanel.](./media/openvpn-create-azure-ad-tenant/accept.jpg)
 
 5. Az Azure AD-ben a **vállalati alkalmazásokban**most látnia kell az **Azure VPN** listáját.
 

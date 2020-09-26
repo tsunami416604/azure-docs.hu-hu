@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 0e24c08c9689394fa6efdbc03d960c597496e8ad
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: b1bb22b702cae77ba40fbeeaca1c11c9063bffe8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231248"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331607"
 ---
 # <a name="azure-security-baseline-for-azure-ddos-protection-standard"></a>Az Azure biztonsági alapterve Azure DDoS Protection standard szintű
 
@@ -96,7 +96,7 @@ Egy Log Analytics munkaterület bevezetését az Azure Sentinelbe, mivel ez egy 
 
 Emellett a Azure Active Directory (AD) beépített szerepkörökkel rendelkezik, amelyeket explicit módon kell hozzárendelni, és lekérdezhető. Az Azure AD PowerShell-modullal ad hoc lekérdezéseket hajthat végre a felügyeleti csoportok tagjait futtató fiókok felderítéséhez.
 
-- [Az Azure DDoS Protection engedélyeinek megismerése](../../virtual-network/manage-ddos-protection.md#permissions)
+- [Az Azure DDoS Protection engedélyeinek megismerése](../../virtual-network/manage-ddos-protection.md#permissions-and-restrictions)
 
 - [Címtárbeli szerepkör beszerzése az Azure AD-ben a PowerShell-lel](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 

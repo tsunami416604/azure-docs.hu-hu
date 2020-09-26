@@ -16,12 +16,12 @@ ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 268cf61596366d451057861db1fa5ac2d35e87d0
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: d1d364089d5df24cfc4e7a75c3fd6b81248f0cd6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662405"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91313314"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>Identitásszinkronizálás és ismétlődő attribútumok rugalmassága
 A duplikált attribútum-rugalmasság a Azure Active Directory egyik funkciója, amely megszünteti a **userPrincipalName** és az SMTP- **ProxyAddress** ütközések okozta súrlódást a Microsoft szinkronizálási eszközeinek valamelyikének futtatásakor.
@@ -124,7 +124,7 @@ A széles sztringek kereséséhez használja a **-KeresendoString** jelzőt. Ez 
 ## <a name="microsoft-365-admin-center"></a>Microsoft 365 felügyeleti központ
 A címtár-szinkronizálási hibákat a Microsoft 365 felügyeleti központban tekintheti meg. A Microsoft 365 felügyeleti központban található jelentés csak azokat a **felhasználói** objektumokat jeleníti meg, amelyek rendelkeznek ezekkel a hibákkal. Nem jeleníti meg a **csoportok** és a **névjegyek**közötti ütközésekkel kapcsolatos információkat.
 
-![Aktív felhasználók](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/1234.png "Aktív felhasználók")
+![Képernyőkép, amely a címtár-szinkronizálási hibákat mutatja a Microsoft 365 felügyeleti központban.](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/1234.png "Aktív felhasználók")
 
 A címtár-szinkronizálási hibák a Microsoft 365 felügyeleti központban való megtekintésével kapcsolatos útmutatásért lásd: [a címtár-szinkronizálási hibák azonosítása a Microsoft 365ban](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067).
 
@@ -132,7 +132,7 @@ A címtár-szinkronizálási hibák a Microsoft 365 felügyeleti központban val
 Ha egy duplikált attribútummal rendelkező objektumot kezel ezzel az új viselkedéssel, akkor a rendszer értesítést küld a normál identitás-szinkronizálási hibajelentés e-mail-címéről, amelyet a bérlőnek szóló technikai értesítési kapcsolattartó kap. Ez a viselkedés azonban fontos változást mutat be. A múltban a duplikált attribútumokra vonatkozó Adatütközések az ütközés feloldása előtt minden további hibajelentésben szerepelni fognak. Ezzel az új viselkedéssel az adott ütközésre vonatkozó hibaüzenet csak egyszer jelenik meg, amikor az ütköző attribútum Karanténba kerül.
 
 Íme egy példa arra, hogy az e-mail-értesítés hogyan néz ki a ProxyAddress ütközés esetén:  
-    ![Aktív felhasználók](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/6.png "Aktív felhasználók")  
+    ![Képernyőkép, amely egy ProxyAddress ütközésre vonatkozó e-mailes értesítést mutat be.](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/6.png "Aktív felhasználók")  
 
 ## <a name="resolving-conflicts"></a>Ütközések feloldása
 A hibákkal kapcsolatos hibaelhárítási stratégiák és a megoldási taktikák nem térhetnek el az ismétlődő attribútumokra vonatkozó hibák múltbeli kezelésének módjától. Az egyetlen különbség, hogy az időzítő feladat a szolgáltatás oldalán lévő bérlőn keresztül fut, hogy az ütközés feloldása után automatikusan hozzáadja a szóban forgó attribútumot a megfelelő objektumhoz.

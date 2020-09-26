@@ -1,6 +1,6 @@
 ---
 title: Workday-attribútumok referenciája
-description: Megtudhatja, hogy a SuccessFactors mely attribútumait támogatja a SuccessFactors-HR-vezérelt kiépítés
+description: Megtudhatja, hogy mely attribútumok közül lehet beolvasni az XPATH-lekérdezések használatával.
 services: active-directory
 author: kenwith
 manager: celestedg
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/25/2020
 ms.author: kenwith
 ms.reviewer: celested
-ms.openlocfilehash: 4d6e5fb765125a4cf68c4939e7350feb84509bf2
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 5892100140c6022763453a4141d87e6a7ba4ed75
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90068098"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266564"
 ---
 # <a name="workday-attribute-reference"></a>Workday-attribútumok referenciája
 
@@ -63,7 +63,7 @@ Az alábbi táblázat rögzíti a munkanapokhoz tartozó attribútumok és a hoz
 | 29 | LocationIdentifier                    | WD: Worker/WD: Worker \_ adatai/WD: Working \_ adatai/WD: position \_ adatai/WD: Business \_ site \_ Összefoglaló \_ adatai/WD: Location \_ Reference/WD: ID \[ @wd:type = ' Location \_ ID ' \] /Text\(\)                                                                                                                                                                                                                                            |
 | 30 | ManagerReference                      | WD: Worker/WD: Worker \_ adatai/WD: felügyeleti \_ lánc \_ adatai/WD: Worker \_ felügyeleti felügyeleti \_ \_ lánc \_ \[ adatpozíciója \( \) = 1 \] /WD: felügyeleti \_ lánc \_ adatai \[ utolsó \( \) = pozíció \( \) \] /WD: vezető \_ hivatkozás/WD: ID \[ @wd:type = ' wid ' \] /Text\(\)                                                                                                                                                                            |
 | 31 | MiddleName                            | WD: Worker/WD: Worker- \_ adatok/WD: személyes \_ adatok/WD: név \_ adat/WD: jogi \_ név \_ adatai/WD: név \_ részletes \_ adatok/WD: középső \_ név/szöveg\(\)                                                                                                                                                                                                                                                                                |
-| 32 | Mobil                                | WD: Worker/WD: Worker- \_ adatok/WD: személyes \_ adatok/WD: kapcsolattartási \_ adatok/WD: telefonos \_ \[ adatfordítási \( karakterlánc \( WD: telefon \_ eszköz \_ típusa \_ Reference/@wd:Descriptor \) , "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "ABCDEFGHIJKLMNOPQRSTUVWXYZ" \) = "mobil" és fordítási \( sztring \( WD: használati \_ adatok/WD: Type \_ adatok/WD: Type \_ Reference/@wd:Descriptor \) , "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "ABCDEFGHIJKLMNOPQRSTUVWXYZ" \) = "work" \] /@wd:Formatted \_ Phone    |
+| 32 | Mobiltelefon                                | WD: Worker/WD: Worker- \_ adatok/WD: személyes \_ adatok/WD: kapcsolattartási \_ adatok/WD: telefonos \_ \[ adatfordítási \( karakterlánc \( WD: telefon \_ eszköz \_ típusa \_ Reference/@wd:Descriptor \) , "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "ABCDEFGHIJKLMNOPQRSTUVWXYZ" \) = "mobil" és fordítási \( sztring \( WD: használati \_ adatok/WD: Type \_ adatok/WD: Type \_ Reference/@wd:Descriptor \) , "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "ABCDEFGHIJKLMNOPQRSTUVWXYZ" \) = "work" \] /@wd:Formatted \_ Phone    |
 | 33 | Önkormányzat                          | WD: Worker/WD: Worker \_ adatai/WD: Working \_ adatai/WD: position \_ adatai/WD: Business \_ site \_ Összefoglaló \_ adatai/WD: címadatok \_ /WD: önkormányzat/szöveg\(\)                                                                                                                                                                                                                                                                   |
 | 34 | PositionID                            | WD: Worker/WD: Worker-vagy WD-beli adatfeldolgozási/WD: elhelyezési adatraktár/ \_ \_ \_ WD: pozíció \_ azonosítója/szöveg\(\)                                                                                                                                                                                                                                                                                                                     |
 | 35 | PositionTitle                         | WD: Worker/WD: Worker-vagy WD-beli \_ \_ adatfeldolgozási/WD: position \_ /WD: pozíció \_ cím/szöveg\(\)                                                                                                                                                                                                                                                                                                                  |
@@ -158,7 +158,7 @@ További XPATH-beállítások konfigurálásához tekintse meg az [oktatóanyag:
 | 29 | LocationIdentifier                    | WD: Worker/WD: Worker- \_ adatok/WD: Working- \_ adatok/WD: Worker \_ Job \_ adatai \[ @wd:Primary_Job = 1]/WD: pozíció \_ adatok/WD: üzleti \_ hely \_ Összefoglaló \_ adatok/WD: Location \_ Reference/WD: ID \[ @wd:type = ' Location \_ ID ' \] /Text\(\)                                                                                                                                                                           |
 | 30 | ManagerReference                      | WD: Worker/WD: Worker \_ adatai/WD: felügyeleti \_ lánc \_ adatai/WD: Worker \_ felügyeleti felügyeleti \_ \_ lánc \_ \[ adatpozíciója \( \) = 1 \] /WD: felügyeleti \_ lánc \_ adatai \[ utolsó \( \) = pozíció \( \) \] /WD: vezető \_ hivatkozás/WD: ID \[ @wd:type = ' wid ' \] /Text\(\)                                                                                                                                                      |
 | 31 | MiddleName                            | WD: Worker/WD: Worker- \_ adatok/WD: személyes \_ adatok/WD: név \_ adat/WD: jogi \_ név \_ adatai/WD: név \_ részletes \_ adatok/WD: középső \_ név/szöveg\(\)                                                                                                                                                                                                                                                          |
-| 32 | Mobil                                | WD: Worker/WD: Worker- \_ adatfeldolgozó/WD: személyes \_ adatok/WD: kapcsolattartási \_ adatok/WD: telefonos \_ adatok \[ WD: használat \_ Data/@wd:Public = "1" és string \( WD: használati \_ adatok/WD: Type \_ adatok/WD: Type \_ Reference/WD: ID \[ @wd:type = ' kommunikációs \_ használati \_ típus \_ azonosítója ' \] \) = ' Work ' és string \( WD: telefonos \_ eszköz \_ típusa \_ hivatkozás/WD: azonosító \[ @wd:type = ' telefonos \_ eszköz \_ Type \_ ID ' \] \) = ' Mobile '\]/@wd:Workday_Traditional_Formatted_Phone   |
+| 32 | Mobiltelefon                                | WD: Worker/WD: Worker- \_ adatfeldolgozó/WD: személyes \_ adatok/WD: kapcsolattartási \_ adatok/WD: telefonos \_ adatok \[ WD: használat \_ Data/@wd:Public = "1" és string \( WD: használati \_ adatok/WD: Type \_ adatok/WD: Type \_ Reference/WD: ID \[ @wd:type = ' kommunikációs \_ használati \_ típus \_ azonosítója ' \] \) = ' Work ' és string \( WD: telefonos \_ eszköz \_ típusa \_ hivatkozás/WD: azonosító \[ @wd:type = ' telefonos \_ eszköz \_ Type \_ ID ' \] \) = ' Mobile '\]/@wd:Workday_Traditional_Formatted_Phone   |
 | 33 | Önkormányzat                          | WD: Worker/WD: Worker- \_ adatok/WD: foglalkoztatási \_ adatok/WD: Worker \_ Job \_ adatok \[ @wd:Primary_Job = 1]/WD: pozíció \_ adatok/WD: üzleti \_ hely \_ Összefoglaló \_ adatok/WD: címadatok \_ /WD: település/szöveg\(\)                                                                                                                                                                                                  |
 | 34 | PositionID                            | WD: Worker/WD: Worker- \_ adatok/WD: foglalkoztatási \_ adatok/WD: Worker \_ Job \_ adatok \[ @wd:Primary_Job = 1]/WD: position \_ adatok/WD: pozíció \_ azonosítója/szöveg\(\)                                                                                                                                                                                                                                                    |
 | 35 | PositionTitle                         | WD: Worker/WD: Worker- \_ adatok/WD: foglalkoztatási \_ adatok/WD: Worker \_ Job \_ adatok \[ @wd:Primary_Job = 1]/WD: position \_ adatok/WD: pozíció \_ címe/szöveg\(\)                                                                                                                                                                                                                                                 |
@@ -226,7 +226,7 @@ Ha további attribútumokat szeretne hozzáadni az XPATH-táblázathoz az integr
 ## <a name="supported-xpath-functions"></a>Támogatott XPATH-függvények
 Az alábbi lista a [Microsoft .net XPath-függvénytár](/previous-versions/dotnet/netframework-4.0/ms256138(v=vs.100)) által támogatott XPath-függvények listáját tartalmazza, amelyeket az XPath API-kifejezés létrehozásakor használhat. 
 
-* name
+* név
 * utolsó
 * pozíció
 * sztring

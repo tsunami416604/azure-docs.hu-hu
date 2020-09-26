@@ -7,12 +7,12 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 09/14/2020
 tags: connectors
-ms.openlocfilehash: 5f6328144760b3c55c55fbef13917359fa9e1a62
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: f005bdfa5643ea187fb2973cac065563c4cc2ee6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526746"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91292455"
 ---
 # <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>Szolgáltatásvégpontok HTTP-n vagy HTTPS-en keresztül történő meghívása az Azure Logic Appsből
 
@@ -104,7 +104,7 @@ Ez a beépített művelet HTTP-hívást kezdeményez egy végpont megadott URL-c
 
 Itt talál további információt a HTTP-triggerből vagy-műveletből származó kimenetekről, ami visszaadja ezt az információt:
 
-| Tulajdonság | Típus | Description |
+| Tulajdonság | Típus | Leírás |
 |----------|------|-------------|
 | `headers` | JSON-objektum | A kérelemben szereplő fejlécek |
 | `body` | JSON-objektum | A kérelem szövegtörzsét tartalmazó objektum |
@@ -247,7 +247,7 @@ Egyes végpontok, szolgáltatások, rendszerek vagy API-k "202 elfogadott" vála
 
 Ha egy HTTP-trigger vagy-művelet tartalmazza ezeket a fejléceket, Logic Apps eltávolítja ezeket a fejléceket a generált kérési üzenetből a figyelmeztetés vagy a hiba megjelenítése nélkül:
 
-* `Accept-*`
+* `Accept-*` fejlécek, kivéve a következőt: `Accept-version`
 * `Allow`
 * `Content-*` a következő kivételekkel: `Content-Disposition` , `Content-Encoding` és `Content-Type`
 * `Cookie`

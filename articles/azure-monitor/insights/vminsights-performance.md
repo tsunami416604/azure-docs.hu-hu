@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/31/2020
-ms.openlocfilehash: 1ea6d09609d1b7b3f7ba7297a040447d1fc24756
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f9578fadfbe057b723af63e338bf8bda63cf6f21
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83684396"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330910"
 ---
 # <a name="how-to-chart-performance-with-azure-monitor-for-vms"></a>A teljesítmény diagram Azure Monitor for VMs
 
@@ -21,7 +21,7 @@ Azure Monitor for VMs olyan teljesítménymutatókat tartalmaz, amelyek több f�
 A következő a teljesítményadatok korlátozásai a Azure Monitor for VMs.
 
 - A Red Hat Linux (RHEL) 6-os verzióját futtató virtuális gépek számára nem érhető **el a rendelkezésre álló memória** . Ezt a metrikát a 3,14-es kernel- [verzióban](http://www.man7.org/linux/man-pages/man1/free.1.html)bevezetett **MemAvailable** számítjuk ki.
-- A metrikák csak a Linux rendszerű virtuális gépeken lévő adatlemezek esetében érhetők el, az EXT fájlrendszert (EXT2, EXT3, EXT4) használva.
+- A metrikák csak a Linux rendszerű virtuális gépeken található adatlemezeken érhetők el XFS fájlrendszer vagy EXT fájlrendszer (EXT2, EXT3, EXT4) használatával.
 
 ## <a name="multi-vm-perspective-from-azure-monitor"></a>Több virtuális gépre kiterjedő perspektíva Azure Monitor
 
@@ -126,7 +126,7 @@ Az egyik diagram jobb felső sarkában található rögzítés ikonra kattintva 
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan használhatók a Azure Monitor for VMsban található [munkafüzetek](vminsights-workbooks.md) a teljesítmény-és hálózati metrikák további elemzéséhez.  
 

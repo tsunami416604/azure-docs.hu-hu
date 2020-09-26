@@ -11,12 +11,12 @@ ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c87a965c96920ea2ce90dae0333147338c99018a
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: f02ec2220827fbec8c981ab3a1859d633675a6f4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279142"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91313263"
 ---
 # <a name="tutorial--integrate-a-single-ad-forest-using-pass-through-authentication-pta"></a>Oktatóanyag: egyetlen AD-erdő integrálása átmenő hitelesítéssel (PTA ESP)
 
@@ -187,8 +187,8 @@ Most létre kell hozni egy Azure AD-bérlőt, hogy szinkronizálni lehessen a fe
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com), és jelentkezzen be egy Azure-előfizetéssel rendelkező fiókkal.
 2. Válassza ki a **plusz ikont (+)** és keresse meg az **Azure Active Directoryt**.
 3. Válassza ki az **Azure Active Directoryt** a keresési eredmények közül.
-4. Válassza a **Létrehozás** lehetőséget.</br>
-![Létrehozás](media/tutorial-password-hash-sync/create1.png)</br>
+4. Kattintson a **Létrehozás** gombra.</br>
+![Képernyőkép, amely bemutatja, hogyan hozhat létre egy Azure AD-bérlőt.](media/tutorial-password-hash-sync/create1.png)</br>
 5. Adja meg a **szervezet nevét** a **kezdeti tartománynevet**. Ezután válassza a **Létrehozás** elemet. Ezzel létrejön a címtár.
 6. Miután ez befejeződik, kattintson az **ide** hivatkozásra a címtár kezeléséhez.
 
@@ -196,10 +196,10 @@ Most létre kell hozni egy Azure AD-bérlőt, hogy szinkronizálni lehessen a fe
 Most, hogy rendelkezünk egy Azure AD-Bérlővel, globális rendszergazdai fiókot hozunk létre.  Ezzel a fiókkal lehet létrehozni az Azure AD Connector-fiókot Azure AD Connect telepítés közben.  Az Azure AD Connector-fiók az információk Azure AD-be való írásához használatos.   A globális rendszergazdai fiók létrehozásához tegye a következőket.
 
 1.  A **Kezelés** menüpontban válassza a **Felhasználók** lehetőséget.</br>
-![Létrehozás](media/tutorial-password-hash-sync/gadmin1.png)</br>
+![Képernyőfelvétel: a kezelés szakaszban kiválasztott felhasználói lehetőség, amelyben globális rendszergazda hozható létre az Azure AD-ben.](media/tutorial-password-hash-sync/gadmin1.png)</br>
 2.  Válassza a **Minden felhasználó**, majd az **+ Új felhasználó** lehetőséget.
 3.  Adjon meg egy nevet és egy felhasználónevet ennek a felhasználónak. Ez lesz a bérlő globális rendszergazdája. A **címtárbeli szerepkört** a **globális rendszergazdára** is módosítani kívánja. Megjelenítheti az ideiglenes jelszót is. Ha elkészült, kattintson a **Létrehozás** gombra.</br>
-![Létrehozás](media/tutorial-password-hash-sync/gadmin2.png)</br>
+![Képernyőfelvétel: az Azure AD-ben globális rendszergazda létrehozásakor kiválasztott létrehozás gomb látható.](media/tutorial-password-hash-sync/gadmin2.png)</br>
 4. Ha ez befejeződik, nyisson meg egy új webböngészőt, és jelentkezzen be a myapps.microsoft.com-be az új globális rendszergazdai fiókkal és az ideiglenes jelszóval.
 5. Módosítsa a globális rendszergazda jelszavát úgy, hogy megjegyezzen.
 
@@ -209,12 +209,12 @@ Most, hogy van egy bérlőnk és egy globális rendszergazda, hozzá kell adnia 
 1. Lépjen vissza a [Azure Portal](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) a **minden felhasználó** panel bezárásához.
 2. A bal oldalon válassza az **Egyéni tartománynevek** elemet.
 3. Válassza az **egyéni tartomány hozzáadása**lehetőséget.</br>
-![Egyéni](media/tutorial-federation/custom1.png)</br>
+![Képernyőfelvétel: az egyéni tartomány hozzáadása gomb kiemelve.](media/tutorial-federation/custom1.png)</br>
 4. Az **Egyéni tartománynevek**mezőben adja meg az egyéni tartomány nevét a mezőbe, majd kattintson a **tartomány hozzáadása**lehetőségre.
 5. Az Egyéni tartománynév képernyőn TXT-vagy MX-információkkal fog ellátni.  Ezeket az adatokat hozzá kell adni a tartományhoz tartozó tartományregisztráló DNS-adataihoz.  Ezért a tartományregisztráló a tartomány DNS-beállításaiban adja meg a TXT vagy az MX információt.  Ez lehetővé teszi, hogy az Azure ellenőrizze a tartományt.  Ez akár 24 órát is igénybe vehet az Azure számára az ellenőrzéshez.  További információt az [egyéni tartomány hozzáadása](../../active-directory/fundamentals/add-custom-domain.md) dokumentációban talál.</br>
-![Egyéni](media/tutorial-federation/custom2.png)</br>
+![Képernyőkép, amely megjeleníti a TXT-vagy MX-adatok hozzáadásának helyét.](media/tutorial-federation/custom2.png)</br>
 6. A hitelesítés ellenőrzéséhez kattintson az ellenőrzés gombra.</br>
-![Egyéni](media/tutorial-federation/custom3.png)</br>
+![Az ellenőrzés után a sikeres ellenőrző üzenetet bemutató képernyőkép.](media/tutorial-federation/custom3.png)</br>
 
 ## <a name="download-and-install-azure-ad-connect"></a>Azure AD Connect letöltése és telepítése
 Most itt az ideje, hogy letöltse és telepítse Azure AD Connect.  A telepítés után az expressz telepítéssel fogunk futni.  Tegye a következőket:
@@ -251,7 +251,7 @@ Most ellenőrizzük, hogy a helyszíni címtárban található felhasználók sz
 
 ## <a name="test-signing-in-with-one-of-our-users"></a>Bejelentkezés az egyik felhasználóval
 
-1. Tallózással keresse meg a [https://myapps.microsoft.com](https://myapps.microsoft.com)
+1. Nyissa meg a következő címet a böngészőben: [https://myapps.microsoft.com](https://myapps.microsoft.com)
 2. Jelentkezzen be egy olyan felhasználói fiókkal, amely az új bérlőben lett létrehozva.  A következő formátumban kell bejelentkeznie: ( user@domain.onmicrosoft.com ). Ugyanazt a jelszót használja, amelyet a felhasználó a helyszíni bejelentkezéshez használ.
    ![Ellenőrzés](media/tutorial-password-hash-sync/verify1.png)
 
