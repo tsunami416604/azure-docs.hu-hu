@@ -3,12 +3,12 @@ title: Ajánlott biztonsági eljárások
 description: Az Azure Lighthouse használatakor fontos figyelembe venni a biztonságot és a hozzáférés-vezérlést.
 ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: ddc4d2c69e7aacc49c5309bc407aecd9bc8e572f
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 097611837e3bba2d1a44ec521862e03cc467d707
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163271"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399380"
 ---
 # <a name="recommended-security-practices"></a>Ajánlott biztonsági eljárások
 
@@ -28,7 +28,7 @@ Javasoljuk, hogy kérje ügyfeleit, hogy az Azure-Multi-Factor Authentication is
 A felügyelet egyszerűbbé tételéhez használja a Azure Active Directory (Azure AD) csoportokat az ügyfelek erőforrásainak kezeléséhez szükséges minden szerepkörhöz. Ez lehetővé teszi, hogy az egyes felhasználókat szükség szerint vegye fel vagy távolítsa el a csoportba ahelyett, hogy közvetlenül az egyes felhasználókhoz rendeljen engedélyeket.
 
 > [!IMPORTANT]
-> Az Azure AD-csoport engedélyeinek hozzáadásához a **csoport típusának** **biztonsági** és nem **Office 365**-nek kell lennie. Ez a beállítás a csoport létrehozásakor van kiválasztva. További információkért lásd: [alapszintű csoport létrehozása és Tagok hozzáadása Azure Active Directory használatával](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
+> Az Azure AD-csoport engedélyeinek hozzáadásához a **csoport típusát** **biztonsági**értékre kell állítani. Ez a beállítás a csoport létrehozásakor van kiválasztva. További információkért lásd: [alapszintű csoport létrehozása és Tagok hozzáadása Azure Active Directory használatával](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
 Az engedélyezési struktúra létrehozásakor ügyeljen arra, hogy kövesse a legalacsonyabb jogosultsági szint elvét, hogy a felhasználók csak a feladat elvégzéséhez szükséges engedélyekkel rendelkezzenek, ami segít csökkenteni a véletlen hibák esélyét.
 

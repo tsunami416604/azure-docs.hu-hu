@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: agummadi
-ms.openlocfilehash: 2912488286745bf8d2e567d09e445b0a44dc7c39
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e2d3f0b5abcd7a9dcd4f49c120353adacffcb31
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67672178"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399652"
 ---
 # <a name="network-monitoring-solutions"></a>Hálózati figyelési megoldások 
 
@@ -65,12 +65,12 @@ A NPM for ExpressRoute átfogó ExpressRoute-figyelést biztosít az Azure-beli 
 * Hálózati topológia észlelése a helyszíni környezetből a Felhőbeli alkalmazásokba
 * Kapacitás megtervezése, sávszélesség-kihasználtság elemzése
 * Figyelés és riasztás mind az elsődleges, mind a másodlagos útvonalon
-* Az Azure-szolgáltatásokhoz, például az Office 365-hez, a Dynamics 365-hoz és... több mint ExpressRoute
+* Az Azure-szolgáltatásokkal való kapcsolat figyelése, például Microsoft 365, Dynamics 365,... több mint ExpressRoute
 * A virtuális hálózatok való kapcsolat romlásának észlelése
 
 ![Régiók közötti forgalmat mutató geo-Térkép](./media/network-monitoring-overview/expressroute-topology-map.png) 
 
-További információért tekintse át a következő cikkeket:
+További információkért tekintse át a következő cikkeket:
 
 * [Network Performance Monitor for ExpressRoute konfigurálása](../expressroute/how-to-npm.md)
 * [Blogbejegyzés](https://aka.ms/NPMExRmonitorGA)
@@ -84,9 +84,9 @@ A szolgáltatás-kapcsolat figyelésével mostantól tesztelheti az alkalmazáso
 * Alkalmazások elérhetőségének tesztelése több felhasználói helyről szerte a világon
 * Az üzletági és SaaS-alkalmazások hálózati késésének és a csomagok elvesztésének meghatározása
 * A hálózatban található gyors elérésű pontok meghatározása, amelyek gyenge alkalmazások teljesítményét okozhatják
-* Az Office 365-alkalmazások elérhetőségének monitorozása a Microsoft Office 365, a Dynamics 365, a Skype vállalati verzió és más Microsoft-szolgáltatások beépített tesztek használatával
+* A Microsoft 365, a Dynamics 365, a Skype vállalati verzió és más Microsoft-szolgáltatások számára elérhető beépített tesztek használatával megfigyelhető az alkalmazások elérhetősége Microsoft 365
 
-További információért tekintse át a következő cikkeket:
+További információkért tekintse át a következő cikkeket:
 
 * [Network Performance Monitor konfigurálása a figyelési szolgáltatás végpontjai számára](../azure-monitor/insights/network-performance-monitor-service-connectivity.md#configuration)
 * [Blogbejegyzés](https://aka.ms/svcendptmonitor)
@@ -122,6 +122,6 @@ A DNS-rendszergazdák számára készült megoldás a DNS-naplókat gyűjti, ele
 Kapcsolódó hivatkozások:
 * [Blogbejegyzés](https://blogs.technet.microsoft.com/msoms/2017/04/19/introducing-oms-dns-analytics/), [dokumentáció](https://docs.microsoft.com/azure/log-analytics/log-analytics-dns)
 
-## <a name="miscellaneous"></a>Egyéb
+## <a name="miscellaneous"></a>Különböző veszélyes anyagok és tárgyak
 
 * [Új díjszabás](https://docs.microsoft.com/azure/log-analytics/log-analytics-network-performance-monitor-pricing-faq)

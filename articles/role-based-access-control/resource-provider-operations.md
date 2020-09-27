@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 09/22/2020
 ms.custom: generated
-ms.openlocfilehash: 973426c6d9d3a4c642e5f37aebe60acce54d581b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ade4a6b791a8aca963a056800bd8c58767aeb766
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326405"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400094"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure erőforrás-szolgáltatói műveletek
 
@@ -22,7 +22,7 @@ Ez a szakasz a beépített szerepkörökben használt Azure-erőforrás-szolgál
 
 A műveletek listájának megtekintéséhez kattintson az erőforrás-szolgáltató nevére a következő táblázatban.
 
-## <a name="all"></a>Mind
+## <a name="all"></a>Az összes
 
 | Általános kérdések |
 | --- |
@@ -625,7 +625,7 @@ Azure-szolgáltatás: [Service Fabric](../service-fabric/index.yml)
 > | Microsoft. ServiceFabric/Locations/Operations/READ | Bármilyen művelet beolvasása hely szerint |
 > | Microsoft. ServiceFabric/Operations/READ | Az összes elérhető művelet beolvasása |
 
-## <a name="networking"></a>Hálózatkezelés
+## <a name="networking"></a>Hálózat
 
 ### <a name="microsoftcdn"></a>Microsoft. CDN
 
@@ -1854,7 +1854,7 @@ Azure-szolgáltatás: [StorSimple](../storsimple/index.yml)
 > | Microsoft. StorSimple/Managers/storageDomains/operationResults/READ | A művelet eredményeinek megjelenítése vagy beolvasása |
 > | Microsoft. StorSimple/Operations/READ | A műveletek listája vagy beolvasása |
 
-## <a name="web"></a>Webes
+## <a name="web"></a>Web
 
 ### <a name="microsoftcertificateregistration"></a>Microsoft. CertificateRegistration
 
@@ -5098,7 +5098,7 @@ Azure-szolgáltatás: [Cognitive Services](../cognitive-services/index.yml)
 
 ### <a name="microsoftmachinelearning"></a>Microsoft. MachineLearning
 
-Azure-szolgáltatás: [Machine learning Studio (klasszikus)](../machine-learning/studio/index.yml)
+Azure-szolgáltatás: [Machine learning Studio (klasszikus)](../machine-learning/classic/index.yml)
 
 > [!div class="mx-tableFixed"]
 > | Művelet | Leírás |
@@ -5242,36 +5242,6 @@ Azure-szolgáltatás: [Machine learning szolgáltatás](../machine-learning/inde
 > | Microsoft. MachineLearningServices/munkaterületek/szolgáltatások/AK/listkeys műveletének beolvasása/művelet | A Machine Learning Services munkaterületen található AK-szolgáltatásokhoz tartozó kulcsok listázása |
 > | Microsoft. MachineLearningServices/munkaterületek/szolgáltatások/AK/törlés | AK-szolgáltatások törlése Machine Learning Services munkaterületen |
 > | Microsoft. MachineLearningServices/munkaterületek/szolgáltatások/AK/pontszám/művelet | Machine Learning Services munkaterületen található AK-szolgáltatások |
-
-
-### <a name="microsoftmachinelearning"></a>Microsoft. MachineLearning
-
-Azure-szolgáltatás: [Machine learning Studio (klasszikus)](../machine-learning/classic/index.yml)
-
-> [!div class="mx-tableFixed"]
-> | Művelet | Leírás |
-> | --- | --- |
-> | Microsoft. MachineLearning/regisztráció/művelet | Regisztrálja az előfizetést a Machine learning webszolgáltatás erőforrás-szolgáltatója számára, és lehetővé teszi a webszolgáltatások létrehozását. |
-> | Microsoft. MachineLearning/webszolgáltatások/művelet | Regionális webszolgáltatás tulajdonságainak létrehozása a támogatott régiók számára |
-> | Microsoft. MachineLearning/commitmentPlans/READ | Machine Learning kötelezettségvállalási terv beolvasása |
-> | Microsoft. MachineLearning/commitmentPlans/Write | Machine Learning kötelezettségvállalási terv létrehozása vagy frissítése |
-> | Microsoft. MachineLearning/commitmentPlans/delete | Machine Learning kötelezettségvállalási terv törlése |
-> | Microsoft. MachineLearning/commitmentPlans/JOIN/Action | Csatlakozás bármely Machine Learning kötelezettségvállalási tervhez |
-> | Microsoft. MachineLearning/commitmentPlans/commitmentAssociations/READ | Bármely Machine Learning kötelezettségvállalási terv társításának beolvasása |
-> | Microsoft. MachineLearning/commitmentPlans/commitmentAssociations/Move/Action | Bármely Machine Learning kötelezettségvállalási terv társításának áthelyezése |
-> | Microsoft. MachineLearning/Locations/operationresults/READ | Machine Learning művelet eredményének beolvasása |
-> | Microsoft. MachineLearning/Locations/operationsstatus/READ | Folyamatban lévő Machine Learning művelet állapotának beolvasása |
-> | Microsoft. MachineLearning/Operations/READ | Machine Learning műveletek beolvasása |
-> | Microsoft. MachineLearning/SKU/READ | Machine Learning kötelezettségvállalási terv beszerzése |
-> | Microsoft. MachineLearning/webszolgáltatások/olvasás | Bármely Machine Learning webszolgáltatás beolvasása |
-> | Microsoft. MachineLearning/webszolgáltatások/írás | Machine Learning webszolgáltatás létrehozása vagy frissítése |
-> | Microsoft. MachineLearning/webszolgáltatások/törlés | Machine Learning webszolgáltatás törlése |
-> | Microsoft. MachineLearning/webszolgáltatás/listkeys műveletének beolvasása/READ | Kulcsok beolvasása egy Machine Learning webszolgáltatáshoz |
-> | Microsoft. MachineLearning/munkaterületek/olvasás | Bármilyen Machine Learning-munkaterület beolvasása |
-> | Microsoft. MachineLearning/munkaterületek/írás | Tetszőleges Machine Learning-munkaterület létrehozása vagy frissítése |
-> | Microsoft. MachineLearning/munkaterületek/törlés | Tetszőleges Machine Learning-munkaterület törlése |
-> | Microsoft. MachineLearning/munkaterületek/listworkspacekeys/művelet | Machine Learning-munkaterület kulcsainak listázása |
-> | Microsoft. MachineLearning/munkaterületek/resyncstoragekeys/művelet | Machine Learning-munkaterület konfigurált Storage-fiók kulcsainak újraszinkronizálása |
 
 ## <a name="internet-of-things"></a>Eszközök internetes hálózata
 
@@ -8239,7 +8209,7 @@ Azure-szolgáltatás: [Azure Policy](../governance/policy/overview.md), [azure R
 > | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. Authorization/elevateAccess/művelet | A hívónak felhasználói hozzáférésű rendszergazdai hozzáférést engedélyez a bérlői hatókörben |
-> | Microsoft. Authorization/classicAdministrators/olvasás | Az előfizetés rendszergazdáinak beolvasása. |
+> | Microsoft. Authorization/classicAdministrators/olvasás | Az előfizetés rendszergazdáinak beolvasása. Nem befolyásolja, hogy egy egyéni szerepkörben nincs-e használatban. |
 > | Microsoft. Authorization/classicAdministrators/írás | Egy előfizetéshez tartozó rendszergazda hozzáadása vagy módosítása. |
 > | Microsoft. Authorization/classicAdministrators/delete | Eltávolítja a rendszergazdát az előfizetésből. |
 > | Microsoft. Authorization/classicAdministrators/operationstatuses/READ | Az előfizetés rendszergazdai műveleti állapotának beolvasása. |
@@ -9478,7 +9448,7 @@ Azure-szolgáltatás: [Bing Maps](https://docs.microsoft.com/BingMaps/)
 > | Microsoft. BingMaps/mapApis/listUsageMetrics/művelet | A Microsoft. BingMaps/mapApis metrikáinak listázása |
 > | Microsoft. BingMaps/Operations/READ | A Microsoft. BingMaps műveleteinek listázása |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Erőforrás-szolgáltató egyeztetése a szolgáltatással](../azure-resource-manager/management/azure-services-resource-providers.md)
 - [Beépített Azure-szerepkörök](built-in-roles.md)

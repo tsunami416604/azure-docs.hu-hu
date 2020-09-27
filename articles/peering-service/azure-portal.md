@@ -10,16 +10,16 @@ ms.tgt_pltfrm: na
 ms.workload: Infrastructure-services
 ms.date: 05/18/2020
 ms.author: derekol
-ms.openlocfilehash: 6646016a4529f46431ecb622c7546140a93a5d88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 596f06d6dc3ad33f2794dfe0e3ed7822a4820adb
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84872145"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399015"
 ---
 # <a name="register-peering-service-by-using-the-azure-portal"></a>A Azure Portal használatával regisztrálja a társ-nyilvántartó szolgáltatást
 
-Az Azure társközi szolgáltatás olyan hálózati szolgáltatás, amely a Microsoft felhőalapú szolgáltatásaihoz, például az Office 365, a Dynamics 365, a szolgáltatott szoftver (SaaS) szolgáltatásokhoz, az Azure-hoz vagy bármely, a nyilvános interneten keresztül elérhető Microsoft-szolgáltatáshoz nyújt felhasználói kapcsolatot.
+Az Azure társközi szolgáltatás olyan hálózati szolgáltatás, amely a Microsoft Cloud Services, például a Microsoft 365, a Dynamics 365, a szolgáltatott szoftver (SaaS) szolgáltatásai, az Azure vagy bármely, a nyilvános interneten keresztül elérhető Microsoft-szolgáltatás számára teszi lehetővé az ügyfelek kapcsolódását.
 
 Ebből a cikkből megtudhatja, hogyan regisztrálhat egy társ-szolgáltatási kapcsolatot a Azure Portal használatával.
 

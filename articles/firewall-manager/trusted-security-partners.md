@@ -7,12 +7,12 @@ services: firewall-manager
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 34da82510f96ef7bde65ceec397b048c941e3234
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3c09e75a98e5342ab54710e05466755d86705b2a
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85563611"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399431"
 ---
 # <a name="what-are-security-partner-providers"></a>Mik azok a biztonságipartner-szolgáltatók?
 
@@ -44,7 +44,7 @@ A következő forgatókönyvek támogatottak:
 
 ## <a name="best-practices-for-internet-traffic-filtering-in-secured-virtual-hubs"></a>Ajánlott eljárások az internetes forgalom szűréséhez a biztonságos virtuális hubokban
 
-Az internetes forgalom jellemzően webes forgalmat tartalmaz. Emellett magában foglalja az olyan SaaS-alkalmazásokra irányuló forgalmat is, mint az Office 365 (O365) és az Azure nyilvános Pásti-szolgáltatások, mint például az Azure Storage, az Azure SQL stb. A következő ajánlott eljárásokat ajánljuk a szolgáltatások forgalmának kezelésére:
+Az internetes forgalom jellemzően webes forgalmat tartalmaz. Emellett olyan SaaS-alkalmazásokra irányuló forgalmat is magában foglal, mint például a Microsoft 365 és az Azure-beli nyilvános Pásti-szolgáltatások, például az Azure Storage, az Azure SQL stb. A következő ajánlott eljárásokat ajánljuk a szolgáltatások forgalmának kezelésére:
 
 ### <a name="handling-azure-paas-traffic"></a>Az Azure Pásti-forgalom feldolgozása
  
@@ -54,15 +54,15 @@ Az internetes forgalom jellemzően webes forgalmat tartalmaz. Emellett magában 
 
 ![A Azure Firewall Manager összes forgatókönyve](media/trusted-security-partners/all-scenarios.png)
 
-## <a name="handling-office-365-o365-traffic"></a>Office 365-(O365-) forgalom kezelésére
+## <a name="handling-microsoft-365-traffic"></a>Microsoft 365 forgalom kezelését
 
-Globálisan elosztott fiókirodai helyzetekben az Office 365 forgalmat közvetlenül a fiókirodában kell átirányítani, mielőtt elküldi az Azure-beli védett központ fennmaradó internetes forgalmát.
+Globálisan elosztott fiókirodai helyzetekben érdemes átirányítani Microsoft 365 forgalmat közvetlenül a fiókirodában, mielőtt elküldené az Azure-beli biztonságos központ fennmaradó internetes forgalmát.
 
-Az Office 365 esetében a hálózati késés és a teljesítmény kritikus fontosságú a sikeres felhasználói élmény érdekében. Az optimális teljesítmény-és felhasználói élmény érdekében az ügyfeleknek az Azure-on keresztül az internetes forgalom további forgalmának megfontolása előtt be kell vezetniük az Office 365 Direct és a local Escape szolgáltatást.
+Microsoft 365 esetében a hálózati késés és a teljesítmény kritikus fontosságú a sikeres felhasználói élmény érdekében. Az optimális teljesítmény-és felhasználói élmény érdekében az ügyfeleknek Microsoft 365 közvetlen és helyi Escape-megoldást kell alkalmazniuk, mielőtt fontolóra vennék a többi internetes forgalom Azure-on keresztüli átirányítását.
 
-Az [office 365 hálózati kapcsolati alapelveket](https://docs.microsoft.com/office365/enterprise/office-365-network-connectivity-principles) hívja a key Office 365 hálózati kapcsolatainak helyi továbbítására a felhasználói ágban vagy a mobileszközön, és közvetlenül az interneten keresztül a legközelebbi Microsoft hálózati pontra.
+[Microsoft 365 hálózati kapcsolat alapelveinek](/microsoft-365/enterprise/microsoft-365-network-connectivity-principles) meghívásával a kulcsfontosságú Microsoft 365 hálózati kapcsolatok helyileg irányíthatók a felhasználói ágban vagy mobileszközökön, illetve közvetlenül az interneten keresztül a legközelebbi Microsoft hálózati pontra.
 
-Emellett az Office 365-kapcsolatok titkosítva vannak, és hatékony, védett protokollokat használnak a teljesítmény szempontjából. Ez a hagyományos hálózati szintű biztonsági megoldásokhoz való csatlakozást nem teszi lehetővé. Ezeknek az okoknak az az oka, hogy az ügyfelek közvetlenül az ágakból küldik el az Office 365 forgalmat, mielőtt elküldik a forgalmat az Azure-on keresztül. A Microsoft több, az Azure-ral és az Office 365-nal integrált SD-WAN-megoldási szolgáltatóval együttműködik, és megkönnyíti az ügyfelek számára, hogy az Office 365 Direct és a helyi internetes breakout szolgáltatást is engedélyezzék. További részletek: [Hogyan saját O365-szabályzatok beállítása virtuális WAN](https://docs.microsoft.com/azure/virtual-wan/virtual-wan-office365-overview) -kapcsolaton keresztül?
+Emellett a Microsoft 365 kapcsolatok titkosítva vannak, és hatékony, védett protokollokat használnak a teljesítménnyel kapcsolatos okokból. Ez a hagyományos hálózati szintű biztonsági megoldásokhoz való csatlakozást nem teszi lehetővé. Ezen okok miatt javasoljuk, hogy az ügyfelek közvetlenül az ágakból küldjenek Microsoft 365 forgalmat az Azure-on keresztüli adatforgalom elküldése előtt. A Microsoft több, az Azure-ral és a Microsoft 365-nal integrált SD-WAN-megoldással rendelkezik, és megkönnyíti az ügyfelek számára Microsoft 365 közvetlen és helyi internetes kitörés engedélyezését. Részletekért lásd: [Mi az az Azure Virtual WAN?](../virtual-wan/virtual-wan-about.md)
 
 ## <a name="next-steps"></a>További lépések
 

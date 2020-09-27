@@ -6,14 +6,14 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: fba6943adb18675bc804a3881042fe9d68f5b331
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: abd18132c7489153566042b0b7e3557662864f30
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85114741"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399465"
 ---
-# <a name="global-data-distribution-with-azure-cosmos-db---overview"></a>Globális adatterjesztés az Azure Cosmos DB-vel – áttekintés
+# <a name="distribute-your-data-globally-with-azure-cosmos-db"></a>Globális adatterjesztés az Azure Cosmos DB-vel
 
 A mai alkalmazások nagyon rugalmasak és mindig online állapotban vannak. Az alacsony késés és a magas rendelkezésre állás érdekében ezeknek az alkalmazásoknak a példányait a felhasználókhoz közel lévő adatközpontokban kell központilag telepíteni. Ezeket az alkalmazásokat jellemzően több adatközpontba helyezik üzembe, és globálisan elosztottnak nevezzük őket. A globálisan elosztott alkalmazásoknak globálisan elosztott adatbázisra van szükségük, amely transzparens módon tudja replikálni az adatokat a világ bármely pontján, hogy az alkalmazások a felhasználóikhoz közel lévő adatpéldányt használhassák. 
 

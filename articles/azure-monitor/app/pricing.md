@@ -7,12 +7,12 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 5/7/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 5dd1fd1209be29774d19a155b6e585fa6ebcc036
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: b695205c08f9039fbf91eaeddb7622b784d81d12
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88930485"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400587"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Használat és költségek kezelése az Application Insights szolgáltatásban
 
@@ -264,7 +264,7 @@ Application Insights erőforrások alapértelmezett megőrzése 90 nap. Minden A
 
 Az adatmegőrzés módosításához a Application Insights erőforrásból lépjen a **használati és becsült költségek** lapra, és válassza ki az **adatmegőrzési** beállítást:
 
-![A napi telemetria mennyiségi korlátjának módosítása](./media/pricing/pricing-005.png)
+![Képernyőfelvétel: az adatmegőrzési időszak módosításának helye.](./media/pricing/pricing-005.png)
 
 A megőrzési idő csökkentése után a legrégebbi adatok eltávolítása előtt több napos türelmi időszakot is megtarthat.
 
@@ -320,7 +320,7 @@ Mivel ez a csomag csak az Operations Management Suite-előfizetéssel rendelkez�
 
 ### <a name="examples-of-how-to-determine-distinct-node-count"></a>Példák a különböző csomópontok számának meghatározására
 
-| Forgatókönyv                               | Csomópontok napi száma összesen |
+| Használati eset                               | Csomópontok napi száma összesen |
 |:---------------------------------------|:----------------:|
 | 1 alkalmazás 3 Azure App Service példány és 1 virtuális kiszolgáló használatával | 4 |
 | 3 alkalmazás 2 virtuális gépen; az alkalmazások Application Insights erőforrásai ugyanahhoz az előfizetéshez tartoznak, és a csomóponti szinten | 2 | 

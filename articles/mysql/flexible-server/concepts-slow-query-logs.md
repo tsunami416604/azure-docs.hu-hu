@@ -6,20 +6,17 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: 8b413b82ceb148374bd89fd2baec7d4db13f54d5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 512a103f5ac116f1f4eb18631cdc8e4a8b9380c9
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91329548"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399210"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql-flexible-server-preview"></a>Lassú lekérdezési naplók Azure Database for MySQL rugalmas kiszolgálóban (előzetes verzió)
 
 > [!IMPORTANT] 
 > Azure Database for MySQL – a rugalmas kiszolgáló jelenleg nyilvános előzetes verzióban érhető el.
-
-> [!NOTE]
-> A naplók eléréséhez Azure Monitor diagnosztikai beállításokkal való integráció az üzembe helyezés és a teljes funkcionalitás hamarosan elérhető lesz.
 
 Azure Database for MySQL rugalmas kiszolgáló esetében a lassú lekérdezési napló elérhető a felhasználók számára a konfiguráláshoz és a hozzáféréshez. A lassú lekérdezési naplók alapértelmezés szerint le vannak tiltva, és a hibaelhárítás során a teljesítménnyel kapcsolatos szűk keresztmetszetek azonosítására is lehetőségük van.
 
@@ -42,10 +39,7 @@ A lassú lekérdezési napló paramétereinek teljes leírását a MySQL [lassú
 
 ## <a name="access-slow-query-logs"></a>Lassú lekérdezési naplók elérése
 
-> [!NOTE]
-> A naplók eléréséhez Azure Monitor diagnosztikai beállításokkal való integráció az üzembe helyezés és a teljes funkcionalitás hamarosan elérhető lesz.
-
-A lassú lekérdezési naplók integrálva vannak Azure Monitor diagnosztikai beállításokkal. Miután engedélyezte a naplók használatát a MySQL rugalmas kiszolgálón, kibocsáthatja őket Azure Monitor naplókba, Event Hubs vagy Azure Storage-ba. A diagnosztikai beállításokkal kapcsolatos további tudnivalókért tekintse meg a [diagnosztikai naplók dokumentációját](../../azure-monitor/platform/platform-logs-overview.md). Ha többet szeretne megtudni arról, hogyan engedélyezheti a diagnosztikai beállításokat a Azure Portalban, tekintse meg a [lassú lekérdezési napló-portált ismertető cikket](how-to-configure-slow-query-logs-portal.md#set-up-diagnostics).
+A lassú lekérdezési naplók integrálva vannak Azure Monitor diagnosztikai beállításokkal. Miután engedélyezte a lassú lekérdezési naplókat a MySQL rugalmas kiszolgálón, kibocsáthatja őket Azure Monitor naplókba, Event Hubsba vagy az Azure Storage szolgáltatásba. A diagnosztikai beállításokkal kapcsolatos további tudnivalókért tekintse meg a [diagnosztikai naplók dokumentációját](../../azure-monitor/platform/platform-logs-overview.md). Ha többet szeretne megtudni arról, hogyan engedélyezheti a diagnosztikai beállításokat a Azure Portalban, tekintse meg a [lassú lekérdezési napló-portált ismertető cikket](how-to-configure-slow-query-logs-portal.md#set-up-diagnostics).
 
 A következő táblázat a lassú lekérdezési napló kimenetét ismerteti. A kimeneti módszertől függően a befoglalt mezők és a megjelenő sorrend eltérő lehet.
 
@@ -135,7 +129,7 @@ Ha a lassú lekérdezési naplók a diagnosztikai naplókon keresztül Azure Mon
     | where query_time_d > 10
     ```    
     
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - További információ a [naplókról](concepts-audit-logs.md)
 - Lassú lekérdezési naplók konfigurálása a [Azure Portal](how-to-configure-slow-query-logs-portal.md)
 <!-- - [How to configure slow query logs from the Azure CLI](howto-configure-server-logs-in-cli.md). -->

@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.devlang: python
 ms.topic: tutorial
-ms.date: 06/12/2020
+ms.date: 09/25/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 39891b69cdb8e7f392657514d255f5f85b3eba60
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 9289002188373a91affb5829b4fd7b3de6cb152b
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936027"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399856"
 ---
 # <a name="tutorial-use-python-and-ai-to-generate-searchable-content-from-azure-blobs"></a>Oktatóanyag: kereshető tartalom előállítása az Azure-blobokból a Python és a AI használatával
 
@@ -59,13 +59,13 @@ Ha lehetséges, hozzon létre mindkettőt ugyanabban a régióban és erőforrá
 
 1. Keressen rá a *Storage-fiókra* , és válassza ki a Microsoft Storage-fiók ajánlatát.
 
-   ![Storage-fiók létrehozása](media/cognitive-search-tutorial-blob/storage-account.png "Storage-fiók létrehozása")
+   :::image type="content" source="media/cognitive-search-tutorial-blob/storage-account.png" alt-text="Storage-fiók létrehozása" border="false":::
 
 1. Az alapok lapon a következő elemek szükségesek. Minden más esetében fogadja el az alapértelmezett értékeket.
 
    + **Erőforráscsoport**. Válasszon ki egy meglévőt, vagy hozzon létre egy újat, de ugyanazt a csoportot használja az összes szolgáltatáshoz, hogy együtt lehessen kezelni őket.
 
-   + A **Storage-fiók neve**. Ha úgy gondolja, hogy több erőforrása is van ugyanazzal a típussal, használja a nevet típus és régió szerint egyértelműsítse, például *blobstoragewestus*. 
+   + **Tárfiók neve**. Ha úgy gondolja, hogy több erőforrása is van ugyanazzal a típussal, használja a nevet típus és régió szerint egyértelműsítse, például *blobstoragewestus*. 
 
    + **Hely**. Ha lehetséges, válassza ki ugyanazt a helyet, amelyet az Azure Cognitive Search és Cognitive Services használ. Egyetlen hely érvényteleníti A sávszélességgel kapcsolatos díjakat.
 
@@ -81,7 +81,7 @@ Ha lehetséges, hozzon létre mindkettőt ugyanabban a régióban és erőforrá
 
 1. Válassza a *fogaskerék-keresés-bemutató* lehetőséget, majd kattintson a **feltöltés** gombra, és nyissa meg azt a mappát, ahová a letöltött fájlokat mentette. Válassza ki az összes nem képfájlt. 7 fájlnak kell lennie. A feltöltéshez kattintson **az OK** gombra.
 
-   ![Minta fájlok feltöltése](media/cognitive-search-tutorial-blob/sample-files.png "Minta fájlok feltöltése")
+   :::image type="content" source="media/cognitive-search-tutorial-blob/sample-files.png" alt-text="Minta fájlok feltöltése" border="false":::
 
 1. Mielőtt elkezdené az Azure Storage-t, szerezzen be egy kapcsolatok karakterláncot, hogy az Azure Cognitive Searchban is létrehozhat egy kapcsolatokat. 
 
@@ -117,7 +117,7 @@ Ahogy az Azure Blob Storage-hoz, szánjon egy kis időt a hozzáférési kulcs g
 
    Kérje le a lekérdezési kulcsot is. Ajánlott a lekérdezési kérelmeket csak olvasási hozzáféréssel kibocsátani.
 
-   ![A szolgáltatás nevének és a rendszergazda és a lekérdezési kulcsok beszerzése](media/search-get-started-nodejs/service-name-and-keys.png)
+   :::image type="content" source="media/search-get-started-nodejs/service-name-and-keys.png" alt-text="A szolgáltatás nevének és a rendszergazda és a lekérdezési kulcsok beszerzése" border="false":::
 
 Minden kérelemhez API-kulcs szükséges a szolgáltatásnak küldött összes kérelem fejlécében. Egy érvényes kulcs a kérést küldő alkalmazás és az azt kezelő szolgáltatás közötti megbízhatósági kapcsolatot hoz létre a kérelmek alapján.
 
@@ -190,7 +190,7 @@ A kérelemnek 201-as állapotkódot kell visszaadnia.
 
 A Azure Portal keresési szolgáltatás irányítópultján ellenőrizze, hogy az **adatforrások** listában megjelenik-e az cogsrch-adatforrás. A lap frissítéséhez kattintson a **frissítés** gombra.
 
-![Adatforrások csempéje a portálon](./media/cognitive-search-tutorial-blob-python/py-data-source-tile.png "Adatforrások csempéje a portálon")
+:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-data-source-tile.png" alt-text="Adatforrások csempéje a portálon" border="false":::
 
 ### <a name="step-2-create-a-skillset"></a>2. lépés: készségkészlet létrehozása
 
@@ -303,7 +303,7 @@ Minden képesség a dokumentum tartalmán fut le. A feldolgozás során az Azure
 
 Alább a képességcsoport grafikai ábrázolása látható.
 
-![Készségkészlet megismerése](media/cognitive-search-tutorial-blob/skillset.png "Készségkészlet megismerése")
+:::image type="content" source="media/cognitive-search-tutorial-blob/skillset.png" alt-text="Készségkészlet megismerése" border="false":::
 
 A kimenetek leképezhetők egy indexre, amely bemenetként használható egy alsóbb rétegbeli képességhez vagy mindkettőhöz, akárcsak a nyelvi kóddal. Az indexben a nyelvkód a szűréskor lehet hasznos. A nyelvkódot bemenetként a szövegelemzési képességek használják, a szótördeléssel kapcsolatos nyelvi szabályok megadásához.
 
@@ -472,11 +472,11 @@ pprint(json.dumps(r.json(), indent=1))
 
 A válaszban figyelje a `"lastResult"` `"status"` `"endTime"` értékét és értékeit. Rendszeresen futtassa a parancsfájlt az állapot vizsgálatához. Az indexelő befejeződése után az állapot a "sikeres" értékre lesz állítva, a "Befejezés" értéket adja meg, és a válasz tartalmazni fog minden olyan hibát és figyelmeztetést, amely a dúsítás során történt.
 
-![Az indexelő létrejött](./media/cognitive-search-tutorial-blob-python/py-indexer-is-created.png "Az indexelő létrejött")
+:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-indexer-is-created.png" alt-text="Az indexelő létrejött" border="false":::
 
 A figyelmeztetések bizonyos forrásfájl- és képességkombinációk esetében gyakoriak, és nem mindig utalnak hibára. Számos figyelmeztetés jóindulatú. Ha például olyan JPEG-fájlt indexel, amely nem rendelkezik szöveggel, akkor a figyelmeztetés megjelenik a képernyőképen.
 
-![Példa indexelő figyelmeztetésre](./media/cognitive-search-tutorial-blob-python/py-indexer-warning-example.png "Példa indexelő figyelmeztetésre")
+:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-indexer-warning-example.png" alt-text="Példa indexelő figyelmeztetésre" border="false":::
 
 ## <a name="5---search"></a>5 – keresés
 
@@ -493,7 +493,7 @@ pprint(json.dumps(r.json(), indent=1))
 
 Az eredményeknek az alábbi példához hasonlóan kell kinéznie. A képernyőkép csak a válasz egy részét jeleníti meg.
 
-![Lekérdezési index az összes mezőhöz](./media/cognitive-search-tutorial-blob-python/py-query-index-for-fields.png "Az összes mező indexének lekérdezése")
+:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-query-index-for-fields.png" alt-text="Lekérdezési index az összes mezőhöz" border="false":::
 
 A kimenet az egyes mezők nevét, típusát és attribútumait tartalmazó indexséma.
 
@@ -508,7 +508,7 @@ pprint(json.dumps(r.json(), indent=1))
 
 Az eredményeknek az alábbi példához hasonlóan kell kinéznie. A képernyőkép csak a válasz egy részét jeleníti meg.
 
-![A szervezetek tartalmának lekérdezési indexe](./media/cognitive-search-tutorial-blob-python/py-query-index-for-organizations.png "Az index lekérdezése a szervezetek tartalmának visszaküldéséhez")
+:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-query-index-for-organizations.png" alt-text="A szervezetek tartalmának lekérdezési indexe" border="false":::
 
 Ismételje meg a további mezőket:,, `content` `languageCode` és ebben `keyPhrases` `organizations` a gyakorlatban. Egyszerre több mezőt is lekérhet a vesszővel elválasztott listát használó `$select` megadásával.
 
@@ -522,7 +522,7 @@ A fejlesztés korai kísérleti szakaszaiban a tervezési iteráció legalkalmas
 
 A portál használatával törölhet indexeket, indexelő fájlokat, adatforrásokat és szakértelmével. Az indexelő törlésekor lehetősége van arra is, hogy az indexet, az készségkészlet és az adatforrást szelektíven törölje egyszerre.
 
-![Keresési objektumok törlése](./media/cognitive-search-tutorial-blob-python/py-delete-indexer-delete-all.png "Keresési objektumok törlése a portálon")
+:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-delete-indexer-delete-all.png" alt-text="Keresési objektumok törlése a portálon" border="false":::
 
 Parancsfájl használatával is törölheti őket. A következő szkript bemutatja, hogyan törölhet egy készségkészlet. 
 

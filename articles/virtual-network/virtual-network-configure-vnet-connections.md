@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: dddf402455292e19bf0fcda3c50d9ce10d5888d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f25e42b1785f83e0b93c346e260055247a4ab29d
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71099055"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400706"
 ---
 # <a name="configure-and-validate-virtual-network-or-vpn-connections"></a>Virtuális hálózati vagy VPN-kapcsolatok konfigurálása és ellenőrzése
 
@@ -64,7 +64,7 @@ A társítás konfigurációjának vizsgálatához használja a következő met�
 
 ![A virtuális hálózat társítási konfigurációjának ellenőrzéséhez kiválasztott beállítások](./media/virtual-network-configure-vnet-connections/4034496_en_1.png)
  
-Azure PowerShell esetén futtassa a [Get-AzureRmVirtualNetworkPeering](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermvirtualnetworkpeering?view=azurermps-4.1.0) parancsot a virtuális hálózat társításának beszerzéséhez. Íme egy példa:
+Azure PowerShell esetén futtassa a [Get-AzureRmVirtualNetworkPeering](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermvirtualnetworkpeering?view=azurermps-4.1.0) parancsot a virtuális hálózat társításának beszerzéséhez. Bemutatunk egy példát:
 
 ```
 PS C:\Users\User1> Get-AzureRmVirtualNetworkPeering -VirtualNetworkName Vnet10-01 -ResourceGroupName dev-vnets
@@ -182,7 +182,7 @@ Ez a forgatókönyv akkor támogatott, ha a BGP engedélyezve van a helyek köz�
 
 ### <a name="configure-transit-routing-in-an-expressroute-connection"></a>ExpressRoute-kapcsolat átviteli útvonalának konfigurálása
 
-Az Azure ExpressRoute használatával kiterjesztheti helyszíni hálózatait a Microsoft-felhőbe egy dedikált privát kapcsolaton keresztül, amelyet egy kapcsolatszolgáltató biztosít. Az ExpressRoute használatával kapcsolatokat létesíthet olyan Microsoft-felhőszolgáltatásokkal, mint például a Microsoft Azure, az Office 365 és a Dynamics 365. További információkat az [ExpressRoute áttekintésében](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) találhat.
+Az Azure ExpressRoute használatával kiterjesztheti helyszíni hálózatait a Microsoft-felhőbe egy dedikált privát kapcsolaton keresztül, amelyet egy kapcsolatszolgáltató biztosít. Az ExpressRoute-tal kapcsolatokat létesíthet a Microsoft-felhőszolgáltatásokkal, például a Microsoft Azure-ral, a Microsoft 365-tel és a Dynamics 365-tel. További információkat az [ExpressRoute áttekintésében](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) találhat.
 
 ![ExpressRoute az Azure-beli virtuális hálózatokhoz](./media/virtual-network-configure-vnet-connections/4034395_en_1.png)
 

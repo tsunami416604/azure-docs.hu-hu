@@ -1,23 +1,23 @@
 ---
 title: Azure Cosmos DB Gremlin korlátai
 description: A Graph Engine futásidejű korlátozásait ismertető dokumentáció
-author: LuisBosquez
+author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: reference
 ms.date: 10/04/2019
-ms.author: lbosq
-ms.openlocfilehash: 76ad787990c355d29613c05ca9fce31885a2eccc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: sngun
+ms.openlocfilehash: 4ac5222e735e0699e507ca1392dc5dd42fc77105
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72029849"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400468"
 ---
 # <a name="azure-cosmos-db-gremlin-limits"></a>Az Azure Cosmos DB Gremlin korlátai
 Ez a cikk a Azure Cosmos DB Gremlin motor korlátairól beszél, és ismerteti, hogy miként befolyásolhatják az ügyfelek bejárásokat.
 
-Cosmos DB Gremlin Cosmos DB-infrastruktúrára épül. Ennek következtében a [Azure Cosmos db szolgáltatási korlátokban](https://docs.microsoft.com/azure/cosmos-db/concepts-limits) ismertetett összes korlát továbbra is érvényes. 
+Cosmos DB Gremlin Cosmos DB-infrastruktúrára épül. Ennek következtében a [Azure Cosmos db szolgáltatási korlátokban](https://docs.microsoft.com/azure/cosmos-db/concepts-limits) ismertetett összes korlát továbbra is érvényes.
 
 ## <a name="limits"></a>Korlátok
 
@@ -34,5 +34,5 @@ Ha elérte a Gremlin korlátot, a bejárási művelet megszakad a 429 **x-MS-Sta
 *Erőforrás-jogkivonat óránként* | **100** | A Gremlin-ügyfelek által egy régióban lévő Gremlin-fiókhoz való csatlakozáshoz használt egyedi erőforrás-jogkivonatok száma. Ha az alkalmazás túllépi az óránkénti egyedi token korlátot, a `"Exceeded allowed resource token limit of 100 that can be used concurrently"` rendszer a következő hitelesítési kérelemben adja vissza.
 
 ## <a name="next-steps"></a>További lépések
-* [Azure Cosmos DB Gremlin-válasz fejlécei](gremlin-headers.md) 
+* [Azure Cosmos DB Gremlin-válasz fejlécei](gremlin-headers.md)
 * [Erőforrás-tokenek Azure Cosmos DB Gremlin](how-to-use-resource-tokens-gremlin.md)

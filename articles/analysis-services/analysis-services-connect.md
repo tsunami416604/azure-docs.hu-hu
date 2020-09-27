@@ -8,12 +8,12 @@ ms.date: 09/04/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 71caad8ce650b86f4350b32974bb8d980538b223
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 10e091ed58146d992d7b9c1f65b8b64f881a41b9
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89489017"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400281"
 ---
 # <a name="connecting-to-servers"></a>Kapcsolódás kiszolgálókhoz
 
@@ -23,7 +23,7 @@ Ez a cikk a kiszolgálóhoz való csatlakozást ismerteti adatmodellezési és-k
 
 [A legújabb ügyféloldali kódtárak beszerzése](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current)
 
-A kiszolgálóhoz való minden kapcsolat, a típustól függetlenül, frissített AMO-, ADOMD.NET-és OLEDB-ügyféloldali kódtárak szükségesek a Analysis Services-kiszolgálóval való csatlakozáshoz és az ahhoz való kapcsolódáshoz. A SSMS, a Visual studióhoz, az Excel 2016-es és újabb verzióihoz, valamint Power BI a legújabb ügyféloldali kódtárakat a rendszer a havi kiadásokkal telepíti vagy frissíti. Bizonyos esetekben azonban lehetséges, hogy egy alkalmazás nem rendelkezik a legújabbal. Például ha a házirendek késleltetik a frissítéseket, vagy az Office 365 frissítései a késleltetett csatornán vannak.
+A kiszolgálóhoz való minden kapcsolat, a típustól függetlenül, frissített AMO-, ADOMD.NET-és OLEDB-ügyféloldali kódtárak szükségesek a Analysis Services-kiszolgálóval való csatlakozáshoz és az ahhoz való kapcsolódáshoz. A SSMS, a Visual studióhoz, az Excel 2016-es és újabb verzióihoz, valamint Power BI a legújabb ügyféloldali kódtárakat a rendszer a havi kiadásokkal telepíti vagy frissíti. Bizonyos esetekben azonban lehetséges, hogy egy alkalmazás nem rendelkezik a legújabbal. Ha például a házirendek késleltetik a frissítéseket, vagy Microsoft 365 a frissítések a késleltetett csatornán vannak.
 
 > [!NOTE]
 > Az ügyfél-kódtárak nem tudnak csatlakozni a Azure Analysis Services a felhasználónevet és jelszót igénylő proxykiszolgálók használatával. 
@@ -96,7 +96,7 @@ Cannot initialize the data source object of OLE DB provider "MSOLAP" for linked 
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Az Excelben való kapcsolat](analysis-services-connect-excel.md)    
 [Kapcsolat Power BI](analysis-services-connect-pbi.md)   

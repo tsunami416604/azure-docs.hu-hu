@@ -1,5 +1,5 @@
 ---
-title: Az Azure Networking Services áttekintése
+title: Az Azure hálózati szolgáltatásai – áttekintés
 description: Ismerje meg az Azure hálózatkezelési szolgáltatásait, beleértve a kapcsolódást, az alkalmazások védelmét, az alkalmazások kézbesítését és a hálózati figyelési szolgáltatásokat.
 services: networking
 documentationcenter: na
@@ -10,14 +10,14 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 03/12/2020
 ms.author: kumud
-ms.openlocfilehash: 39601da6cc8e10ba8f4a24eeddb97cfe677c031f
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 364f4f38599508e4dfb455f1336d4a6978cdf5b6
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651734"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400451"
 ---
-# <a name="azure-networking-services-overview"></a>Az Azure Networking Services áttekintése
+# <a name="azure-networking-services-overview"></a>Az Azure hálózati szolgáltatásai – áttekintés
 
 Az Azure hálózati szolgáltatásai különféle hálózati funkciókat biztosítanak, amelyek együtt vagy külön is használhatók. A következő főbb képességek bármelyikére kattintva további információkat tudhat meg róluk:
 - [**Csatlakozási szolgáltatások**](#connect): az Azure-erőforrások és a helyszíni erőforrások összekapcsolása az azure-Virtual Network (VNet), a Virtual WAN, a ExpressRoute, a VPN Gateway, a Virtual Network NAT Gateway, a Azure DNS, a peering Service és az Azure Bastion használatával.
@@ -33,7 +33,7 @@ Ez a szakasz azokat a szolgáltatásokat ismerteti, amelyek kapcsolatot biztosí
 |---|---|---|
 |[Virtuális hálózat](#vnet)|Lehetővé teszi az Azure-erőforrások számára, hogy biztonságosan kommunikáljanak egymással, az internettel és a helyszíni hálózatokkal.| <p>[Hálózati forgalom szűrése](../virtual-network/tutorial-filter-network-traffic.md)</p> <p>[Hálózati forgalom továbbítása](../virtual-network/tutorial-create-route-table-portal.md)</p> <p>[Erőforrások hálózati hozzáférésének korlátozása](../virtual-network/tutorial-restrict-network-access-to-resources.md)</p> <p>[Virtuális hálózatok csatlakoztatása](../virtual-network/tutorial-connect-virtual-networks-portal.md)</p>|
 |[ExpressRoute](#expressroute)|Kiterjesztheti helyszíni hálózatait a Microsoft-felhőbe egy olyan privát kapcsolaton keresztül, amely egy kapcsolati szolgáltató által könnyíti meg.|<p>[Az ExpressRoute-kapcsolatcsoport létrehozása és módosítása](../expressroute/expressroute-howto-circuit-portal-resource-manager.md)</p> <p>[ExpressRoute-kapcsolatcsoport társviszonyának létrehozása és módosítása](../expressroute/expressroute-howto-routing-portal-resource-manager.md)</p> <p>[VNet csatlakoztatása egy ExpressRoute-kapcsolatcsoporthoz](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)</p> <p>[ExpressRoute-áramkörök útválasztási szűrőinek konfigurálása és kezelése](../expressroute/how-to-routefilter-portal.md)</p>|
-|[VPN Gateway](#vpngateway)|Titkosított forgalmat küld egy Azure-beli virtuális hálózat és egy helyszíni hely között a nyilvános interneten keresztül.|<p>[Helyek közötti kapcsolatok](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)</p> <p>[Virtuális hálózatok közötti kapcsolatok](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)</p> <p>[Pont – hely kapcsolatok](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md)</p>|
+|[VPN Gateway](#vpngateway)|Titkosított forgalmat küld egy Azure-beli virtuális hálózat és egy helyszíni hely között a nyilvános interneten keresztül.|<p>[Helyek közötti kapcsolatok](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)</p> <p>[Virtuális hálózatok közötti kapcsolatok](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)</p> <p>[Pont-hely típusú kapcsolatok](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md)</p>|
 |[Virtual WAN](#virtualwan)|Optimalizálja és automatizálja az Azure-ra és az-ra irányuló ág-kapcsolatot. Az Azure-régiók olyan hubok, amelyekhez az ágakat összekapcsolhatjuk.|<p>[Helyek közötti kapcsolatok](../virtual-wan/virtual-wan-site-to-site-portal.md), [ExpressRoute kapcsolatok](../virtual-wan/virtual-wan-expressroute-portal.md)</p>|
 |[Azure DNS](#dns)|Olyan DNS-tartományokat üzemeltet, amelyek Microsoft Azure infrastruktúra használatával biztosítják a névfeloldást.|<p>[Üzemeltessen saját tartományt az Azure DNS-ben](../dns/dns-delegate-domain-azure-dns.md)</p><p>[DNS-rekordok létrehozása egy webalkalmazáshoz](../dns/dns-web-sites-custom-domain.md)</p> <p>[Alias-rekord létrehozása a Traffic Managerhoz](../dns/tutorial-alias-tm.md)</p> <p>[Alias-rekord létrehozása nyilvános IP-címhez](../dns/tutorial-alias-pip.md)</p> <p>[Alias-rekord létrehozása a zóna erőforrásrekord számára](../dns/tutorial-alias-rr.md)</p>|
 |[Azure Bastion](#bastion)|Biztonságos és zökkenőmentes RDP/SSH-kapcsolatot konfigurálhat a virtuális gépekhez közvetlenül a TLS-Azure Portal. Amikor az Azure Bastion-n keresztül kapcsolódik, a virtuális gépeknek nincs szükségük nyilvános IP-címekre|<p>[Azure Bastion-gazdagép létrehozása](../bastion/bastion-create-host-portal.md)</p><p>[Kapcsolódás az SSH-val Linux rendszerű virtuális géphez](../bastion/bastion-connect-vm-ssh.md)</p><p>[Kapcsolódás RDP használatával Windows rendszerű virtuális géphez](../bastion/bastion-connect-vm-rdp.md)</p>|
@@ -53,7 +53,7 @@ Az Azure Virtual Network (VNet) az Azure-beli magánhálózat alapvető építő
 További információ: [Mi az az Azure Virtual Network?](../virtual-network/virtual-networks-overview.md)
 
 ### <a name="expressroute"></a><a name="expressroute"></a>ExpressRoute
-A ExpressRoute lehetővé teszi, hogy a helyszíni hálózatait a Microsoft-felhőben a kapcsolati szolgáltató által biztosított privát kapcsolaton keresztül bővítse. Ez a kapcsolat nem nyilvános. A forgalom nem az interneten keresztül halad át. Az ExpressRoute használatával kapcsolatokat létesíthet olyan Microsoft-felhőszolgáltatásokkal, mint például a Microsoft Azure, az Office 365 és a Dynamics 365.  További információ: [What is ExpressRoute?](../expressroute/expressroute-introduction.md).
+A ExpressRoute lehetővé teszi, hogy a helyszíni hálózatait a Microsoft-felhőben a kapcsolati szolgáltató által biztosított privát kapcsolaton keresztül bővítse. Ez a kapcsolat nem nyilvános. A forgalom nem az interneten keresztül halad át. Az ExpressRoute-tal kapcsolatokat létesíthet a Microsoft-felhőszolgáltatásokkal, például a Microsoft Azure-ral, a Microsoft 365-tel és a Dynamics 365-tel.  További információ: [What is ExpressRoute?](../expressroute/expressroute-introduction.md).
 
 ![Azure ExpressRoute](./media/networking-overview/expressroute-connection-overview.png)
 
@@ -84,13 +84,13 @@ Virtual Network NAT (hálózati címfordítás) egyszerűbbé teszi a csak kimen
 ![Virtuális hálózati NAT-átjáró](./media/networking-overview/flow-map.png)
 
 ### <a name="azure-peering-service"></a><a name="azurepeeringservice"></a> Azure-partneri szolgáltatás
-Az Azure-alapú szolgáltatások a Microsoft Cloud Services, például az Office 365, a Dynamics 365, a szolgáltatott szoftver (SaaS) szolgáltatásai, az Azure vagy bármely, a nyilvános interneten keresztül elérhető Microsoft-szolgáltatás számára növelik az ügyfelek kapcsolódását. További információ: [Mi az Azure-partneri szolgáltatás?](../peering-service/about.md).
+Az Azure-alapú szolgáltatások a Microsoft Cloud Services, például a Microsoft 365, a Dynamics 365, a szolgáltatott szoftver (SaaS) szolgáltatások, az Azure vagy bármely, a nyilvános interneten keresztül elérhető Microsoft-szolgáltatás számára lehetővé teszik az ügyfelek kapcsolódását. További információ: [Mi az Azure-partneri szolgáltatás?](../peering-service/about.md).
 
 ## <a name="application-protection-services"></a><a name="protect"></a>Alkalmazás-védelmi szolgáltatások
 
 Ez a szakasz az Azure-beli hálózati szolgáltatásokat ismerteti, amelyek segítenek a hálózati erőforrások védelmében – az alkalmazások védelmét az Azure-Private link, a DDoS Protection, a tűzfal, a hálózati biztonsági csoportok, a webalkalmazási tűzfal és a Virtual Network végpontok használatával.
 
-|Szolgáltatás|Miért érdemes használni?|Forgatókönyv|
+|Szolgáltatás|Miért érdemes használni?|Használati eset|
 |---|---|---|
 |[DDoS-védelem](#ddosprotection) |Magas rendelkezésre állás az alkalmazások számára a felesleges IP-forgalom elleni védelem ellenében|[Azure DDoS Protection kezelése](../virtual-network/manage-ddos-protection.md)|
 |[Webalkalmazási tűzfal](#waf)|<p>Az [Azure WAF és a Application Gateway](../web-application-firewall/ag/ag-overview.md) helyi védelmet biztosít a nyilvános és privát címtartománybeli entitásoknak</p><p>A [bejárati ajtóval rendelkező Azure-WAF](../web-application-firewall/afds/afds-overview.md) a hálózat peremén a nyilvános végpontok számára biztosít védelmet.</p>|<p>[A robot védelmi szabályainak konfigurálása](../frontdoor/waf-front-door-policy-configure-bot-protection.md)</p> <p>[Egyéni válaszkód konfigurálása](../frontdoor/waf-front-door-configure-custom-response-code.md)</p> <p>[IP-korlátozási szabályok konfigurálása](../frontdoor/waf-front-door-configure-ip-restriction.md)</p> <p>[A díjszabási korlát konfigurálása szabály](../frontdoor/waf-front-door-rate-limit-powershell.md)</p> |
@@ -120,10 +120,10 @@ A Azure Firewallról további információt a [Azure Firewall dokumentációjáb
 
 ![Tűzfal áttekintése](./media/networking-overview/firewall-threat.png)
 
-### <a name="network-security-groups"></a><a name="nsg"></a>Network security groups (Hálózati biztonsági csoportok)
+### <a name="network-security-groups"></a><a name="nsg"></a>Hálózati biztonsági csoportok
 Az Azure-beli virtuális hálózatokban az Azure-erőforrások bejövő és kimenő hálózati forgalmát hálózati biztonsági csoportokkal szűrheti. További információ: [biztonsági áttekintés](../virtual-network/security-overview.md).
 
-### <a name="service-endpoints"></a><a name="serviceendpoints"></a>Szolgáltatásvégpontok
+### <a name="service-endpoints"></a><a name="serviceendpoints"></a>Szolgáltatási végpontok
 A virtuális hálózatok (VNet) szolgáltatásvégpontjai egy közvetlen kapcsolaton keresztül kiterjesztik a virtuális hálózat magáncímterét és a VNet identitását az Azure-szolgáltatásokra. A végpontok segítségével biztosíthatja, hogy kritikus fontosságú Azure-szolgáltatási erőforrásai csak a virtuális hálózatain legyenek elérhetőek. A VNet felől az Azure-szolgáltatás felé irányuló forgalom mindig a Microsoft Azure gerinchálózatán halad át. További információ: [Virtual Network szolgáltatás-végpontok](../virtual-network/virtual-network-service-endpoints-overview.md).
 
 ![Virtuális hálózati szolgáltatásvégpontok](./media/networking-overview/vnet-service-endpoints-overview.png)
@@ -139,7 +139,7 @@ A virtuális hálózat és a szolgáltatás közötti forgalom a Microsoft gerin
 
 Ez a szakasz az Azure-ban elérhető hálózati szolgáltatásokat ismerteti, amelyek segítenek az alkalmazások – Content Delivery Network, az Azure bejárati szolgáltatás, a Traffic Manager, a Load Balancer és a Application Gateway szolgáltatás nyújtásában.
 
-|Szolgáltatás|Miért érdemes használni?|Forgatókönyv|
+|Szolgáltatás|Miért érdemes használni?|Használati eset|
 |---|---|---|
 |[Content Delivery Network](#cdn)|Nagy sávszélességű tartalmat biztosít a felhasználóknak. A CDNs tárolja a gyorsítótárazott tartalmakat a végfelhasználók számára közel álló (POP) helyen található peremhálózati kiszolgálókon a késés csökkentése érdekében|<p>[CDN hozzáadása egy webalkalmazáshoz](../cdn/cdn-add-to-web-app.md)</p> <p>[-A Storage-Blobok elérése egy Azure CDN egyéni tartománnyal HTTPS-kapcsolaton keresztül](..//cdn/cdn-storage-custom-domain-https.md)</p> <p>[Egyéni tartomány hozzáadása az Azure CDN-végponthoz](../cdn/cdn-map-content-to-custom-domain.md)</p> <p>[HTTPS konfigurálása egyéni Azure CDN-tartományon](../cdn/cdn-custom-ssl.md?tabs=option-1-default-enable-https-with-a-cdn-managed-certificate)</p>|
 |[Azure Front Door Service](#frontdoor)|Lehetővé teszi a webes forgalom globális útválasztásának meghatározását, kezelését és figyelését azáltal, hogy optimalizálja a legjobb teljesítményt és azonnali globális feladatátvételt a magas rendelkezésre állás érdekében.|<p>[Egyéni tartomány hozzáadása az Azure Front Door Service-hez](../frontdoor/front-door-custom-domain.md)</p> <p>[HTTPS konfigurálása egyéni Front Door-tartományon](../frontdoor/front-door-custom-domain-https.md)</p><p>[A Geo-szűrés webalkalmazási tűzfal házirendjének beállítása](../frontdoor/front-door-tutorial-geo-filtering.md)|
@@ -185,7 +185,7 @@ Az alábbi ábra az URL-alapú útválasztást Application Gatewaysal mutatja.
 ## <a name="network-monitoring-services"></a><a name="monitor"></a>Hálózati figyelési szolgáltatások
 Ez a szakasz az Azure hálózati szolgáltatásait ismerteti, amelyek segítenek a hálózati erőforrások figyelésében – Network Watcher, ExpressRoute-figyelő, Azure Monitor és Virtual Network KOPPINTanak.
 
-|Szolgáltatás|Miért érdemes használni?|Forgatókönyv|
+|Szolgáltatás|Miért érdemes használni?|Használati eset|
 |---|---|---|
 |[Network Watcher](#networkwatcher)|Segíti a kapcsolódási problémák figyelését és hibaelhárítását, segít a VPN-, NSG-és útválasztási problémák diagnosztizálásában, a csomagok rögzítésében a virtuális gépen, automatizálja a diagnosztikai eszközök aktiválását Azure Functions és Logic Apps használatával|<p>[A virtuális gép forgalomszűrési problémáinak diagnosztizálása](../network-watcher/diagnose-vm-network-traffic-filtering-problem.md)</p><p>[A virtuális gép útválasztási problémáinak diagnosztizálása](../network-watcher/diagnose-vm-network-routing-problem.md)</p><p>[Virtuális gépek közötti kommunikáció figyelése](../network-watcher/connection-monitor.md)</p><p>[Hálózatok közötti kommunikációs problémák diagnosztizálása](../network-watcher/diagnose-communication-problem-between-networks.md)</p><p>[Virtuális gép be- és kimenő forgalmának naplózása](../network-watcher/network-watcher-nsg-flow-logging-portal.md)</p>|
 |[ExpressRoute-figyelő](#expressroutemonitor)|Valós idejű monitorozást biztosít a hálózati teljesítmény, a rendelkezésre állás és a kihasználtság terén, segíti a hálózati topológia automatikus felderítését, gyorsabbá teszi a hibák elkülönítését, észleli az átmeneti hálózati problémákat, segíti a korábbi hálózati teljesítménnyel kapcsolatos jellemzők elemzését, támogatja a többszörös előfizetést.|<p>[Network Performance Monitor for ExpressRoute konfigurálása](../expressroute/how-to-npm.md)</p><p>[Az ExpressRoute monitorozása, mérőszámai és riasztásai](../expressroute/expressroute-monitoring-metrics-alerts.md)</p>|
@@ -208,7 +208,7 @@ Az alábbi képen látható, hogyan működik a virtuális hálózati KOPPINTÁS
 
 További információ: [Mi az Virtual Network koppint](../virtual-network/virtual-network-tap-overview.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Hozza létre az első VNet, és kapcsolódjon néhány virtuális géphez a [létrehozásához az első virtuális hálózat létrehozása](../virtual-network/quick-create-portal.md?toc=%2fazure%2fnetworking%2ftoc.json) című cikkben ismertetett lépések végrehajtásával.
 - A számítógép csatlakoztatása egy VNet a [pont – hely kapcsolat konfigurálása című cikkben](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)ismertetett lépések végrehajtásával.

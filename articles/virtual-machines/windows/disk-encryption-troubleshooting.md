@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: b3b83899ad21cf125105881a7ffb526f5c607c6d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e48c6cfd1160406d55ffdc3c9bafe733a6e5e4a6
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322210"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400077"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Azure Disk Encryption hibaelhárítási útmutató
 
@@ -29,12 +29,12 @@ Az alábbi lépések bármelyikének megkezdése előtt győződjön meg arról,
 
 Ha a kapcsolatot tűzfal, proxy vagy hálózati biztonsági csoport (NSG) beállításai korlátozzák, előfordulhat, hogy a bővítménynek a szükséges feladatok elvégzésére való képessége megszakad. Ez a megszakítás olyan állapotüzenetek elvégzését eredményezheti, mint például a "bővítmény állapota nem érhető el a virtuális gépen". A várt helyzetekben a titkosítás nem fejeződik be. Az alábbi szakaszokban néhány gyakori tűzfallal kapcsolatos probléma merülhet fel.
 
-### <a name="network-security-groups"></a>Hálózati biztonsági csoportok
+### <a name="network-security-groups"></a>Network security groups (Hálózati biztonsági csoportok)
 Az alkalmazott hálózati biztonsági csoportok beállításai továbbra is lehetővé teszik, hogy a végpont megfeleljen a lemez titkosításának dokumentált hálózati konfigurációs [előfeltételeinek](disk-encryption-overview.md#networking-requirements) .
 
 ### <a name="azure-key-vault-behind-a-firewall"></a>Azure Key Vault tűzfal mögött
 
-Ha engedélyezve van a titkosítás az [Azure ad hitelesítő adataival](disk-encryption-windows-aad.md#), a CÉLKÉNT megadott virtuális gépnek Azure Active Directory végpontokhoz és Key Vault végpontokhoz is engedélyeznie kell a kapcsolatot. Az aktuális Azure Active Directory hitelesítési végpontok az [Office 365 URL-címeinek és IP-címtartományok](/office365/enterprise/urls-and-ip-address-ranges) dokumentációjának 56-es és 59-es szakaszában maradnak. Key Vault útmutatást a [tűzfal mögötti Azure Key Vault elérésének](../../key-vault/general/access-behind-firewall.md)dokumentációjában talál.
+Ha engedélyezve van a titkosítás az [Azure ad hitelesítő adataival](disk-encryption-windows-aad.md#), a CÉLKÉNT megadott virtuális gépnek Azure Active Directory végpontokhoz és Key Vault végpontokhoz is engedélyeznie kell a kapcsolatot. Az aktuális Azure Active Directory hitelesítési végpontok a [Microsoft 365 URL-címek és az IP-címtartományok](/microsoft-365/enterprise/urls-and-ip-address-ranges) dokumentációjának 56-es és 59-es szakaszában maradnak. Key Vault útmutatást a [tűzfal mögötti Azure Key Vault elérésének](../../key-vault/general/access-behind-firewall.md)dokumentációjában talál.
 
 ### <a name="azure-instance-metadata-service"></a>Azure Instance Metadata szolgáltatás 
 A virtuális gépnek képesnek kell lennie elérni az [Azure-példány metaadatainak szolgáltatási](../windows/instance-metadata-service.md) végpontját, amely egy jól ismert, nem irányítható IP-címet ( `169.254.169.254` ) használ, amely csak a virtuális gépről érhető el.  A helyi HTTP-forgalmat az erre a címmé megváltoztató proxy-konfigurációk nem támogatottak.

@@ -7,12 +7,12 @@ services: firewall-manager
 ms.topic: overview
 ms.date: 09/23/2020
 ms.author: victorh
-ms.openlocfilehash: 6768da698838856582d29e9f302acae2bc6c28bd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 74d83ecc240fa4b48421dbaa1c5cc9e62990655d
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91252221"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399448"
 ---
 # <a name="what-is-azure-firewall-manager"></a>Mi az az Azure Firewall Manager?
 
@@ -78,7 +78,7 @@ Azure Firewall Manager a következő ismert problémákkal rendelkezik:
 
 |Probléma  |Leírás  |Kockázatcsökkentés  |
 |---------|---------|---------|
-|Forgalom felosztása|Az Office 365 és az Azure nyilvános Pásti forgalom-elosztás jelenleg nem támogatott. Így például a V2I vagy a B2I harmadik féltől származó szolgáltatójának kiválasztásával az összes Azure nyilvános és az Office 365-alapú forgalmat a partneri szolgáltatáson keresztül küldi el.|A forgalom felosztásának kivizsgálása a központban.
+|Forgalom felosztása|A Microsoft 365 és az Azure nyilvános Pásti forgalom felosztása jelenleg nem támogatott. Így például a V2I vagy a B2I harmadik féltől származó szolgáltatójának kiválasztásával az összes Azure nyilvános Pásti és Microsoft 365 forgalmat a partner szolgáltatáson keresztül küldi el.|A forgalom felosztásának kivizsgálása a központban.
 |Egy biztonságos virtuális központ régiónként|Régiónként legfeljebb egy biztonságos virtuális központ lehet.|Több virtuális WAN-t hozhat létre egy régióban.|
 |Az alapházirendeknek ugyanabban a régióban kell lenniük, mint a helyi házirendnek.|Hozza létre az összes helyi házirendet az alapházirenddel azonos régióban. Továbbra is alkalmazhat egy olyan házirendet, amely egy másik régióban található biztonságos központ egyik régiójában lett létrehozva.|Kivizsgálás|
 |A csomópontok közötti forgalom szűrése a biztonságos virtuális központú üzemelő példányokban|A biztonságos virtuális központ a biztonságos virtuális hubhoz való kommunikációs szűrés még nem támogatott. A hub és a hub közötti kommunikáció azonban továbbra is működik, ha az Azure Firewallon keresztüli privát forgalom szűrése nem engedélyezett.|Kivizsgálás|
@@ -90,7 +90,7 @@ Azure Firewall Manager a következő ismert problémákkal rendelkezik:
 |A DDoS Protection standard nem támogatott a biztonságos virtuális hubok esetében|A DDoS Protection standard nincs integrálva a vWANs.|Kivizsgálás|
 |A tevékenységek naplói nem teljes mértékben támogatottak|A tűzfalszabályok jelenleg nem támogatják a tevékenységek naplóit.|Kivizsgálás|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse át a [Azure Firewall Manager üzembe helyezésének áttekintését](deployment-overview.md)
 - A [biztonságos virtuális hubok](secured-virtual-hub.md)megismerése.

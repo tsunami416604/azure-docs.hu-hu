@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
-ms.openlocfilehash: a6e5ae96d097dab9c416f7e1f737cf4fe8a62aea
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 2f606a2ff036c6bc3b4e3c508632d48ae8d40f15
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87279219"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400043"
 ---
 # <a name="storsimple-for-cloud-solutions-provider-program-frequently-asked-questions"></a>StorSimple a Cloud Solutions szolgáltatói programhoz: gyakori kérdések
 
@@ -40,10 +40,10 @@ A kérdések és válaszok a következő kategóriákba vannak rendezve:
 
 További információkért keresse fel a [StorSimple a CSP programban című részt](https://www.microsoft.com/en-us/server-cloud/products/storsimple/). 
 
-### <a name="is-storsimple-a-usage-based-or-based-on-seat-licenses-like-office-365-and-enterprise-mobility-suite-ems"></a>A StorSimple-alapú vagy az Office 365-es és a nagyvállalati mobilitási csomag (EMS) által használt munkaállomásonkénti licenceken alapul?
+### <a name="is-storsimple-a-usage-based-or-based-on-seat-licenses-like-microsoft-365-and-enterprise-mobility-suite-ems"></a>A StorSimple használaton alapul, vagy a Microsoft 365 és a nagyvállalati mobilitási csomag (EMS) alapján?
 A StorSimple egy használaton alapuló szolgáltatás. Azok az ügyfelek, akik a CSP útvonalon keresztül szerzik be a StorSimple virtuális tömböt, a virtuális tömb és az Azure használati díját kell megfizetniük, külön sorban, a CSP-számlán. 
 
-### <a name="is-the-storsimple-business-model-similar-to-that-of-other-services-such-as-the-office-365-and-the-enterprise-mobility-suite"></a>A StorSimple üzleti modellje hasonló más szolgáltatásokhoz, például az Office 365-hez és a nagyvállalati mobilitási csomaghoz? 
+### <a name="is-the-storsimple-business-model-similar-to-that-of-other-services-such-as-the-microsoft-365-and-the-enterprise-mobility-suite"></a>A StorSimple üzleti modellje hasonló más szolgáltatásokhoz, például a Microsoft 365 és a nagyvállalati mobilitási csomaghoz? 
 Igen. A modell egy nagykereskedelmi kedvezmény modell, ugyanúgy, mint az Azure más, használati alapú szolgáltatásai. A StorSimple nagykereskedelmi kedvezménye hasonló a többi Azure-szolgáltatáshoz. Ez a modell lehetővé teszi a CSP-partnereink számára, hogy a StorSimple Virtual Array használatával több és több Azure-beli felhasználást is értékesítsenek.  
 
 ### <a name="which-storsimple-skus-are-available-at-launch"></a>Mely StorSimple SKU-i érhető el a Launch?

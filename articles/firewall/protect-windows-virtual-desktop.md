@@ -7,12 +7,12 @@ services: firewall
 ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: victorh
-ms.openlocfilehash: c725673281b564958bb081fb47fe51a0ad66bea2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ae33d763bda49756e9f90a05feda5089b63ef28b
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611135"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400162"
 ---
 # <a name="use-azure-firewall-to-protect-window-virtual-desktop-deployments"></a>Az Azure Firewall használata a Windows Virtual Desktop üzemelő példányainak védelméhez
 
@@ -61,7 +61,7 @@ A Windows rendszerű virtuális asztali környezethez létrehozott Azure-beli vi
 
 ## <a name="host-pool-outbound-access-to-the-internet"></a>A gazdagép kimenő hozzáférése az internethez
 
-A szervezet igényeitől függően érdemes lehet biztonságos kimenő internet-hozzáférést biztosítani a végfelhasználók számára. Azokban az esetekben, amikor az engedélyezett célhelyek listája megfelelően van definiálva (például [Office 365-hozzáférés](https://docs.microsoft.com/Office365/Enterprise/office-365-ip-web-service)), a szükséges hozzáférés konfigurálásához Azure Firewall alkalmazás-és hálózati szabályok használhatók. Ez a végfelhasználói forgalmat közvetlenül az internetre irányítja a legjobb teljesítmény érdekében.
+A szervezet igényeitől függően érdemes lehet biztonságos kimenő internet-hozzáférést biztosítani a végfelhasználók számára. Azokban az esetekben, amikor az engedélyezett célhelyek listája megfelelően van definiálva (például [Microsoft 365 hozzáférés](/microsoft-365/enterprise/microsoft-365-ip-web-service)), Azure Firewall alkalmazás-és hálózati szabályok használatával konfigurálhatja a szükséges hozzáférést. Ez a végfelhasználói forgalmat közvetlenül az internetre irányítja a legjobb teljesítmény érdekében.
 
 Ha egy meglévő helyszíni biztonságos webes átjáróval szeretné szűrni a kimenő felhasználói internetes forgalmat, akkor a Windows virtuális asztali gazdagépen futó, explicit módon konfigurált webböngészőket vagy más alkalmazásokat is konfigurálhat. Lásd például a következő témakört: [a Microsoft Edge parancssori kapcsolóinak használata a proxybeállítások konfigurálásához](https://docs.microsoft.com/deployedge/edge-learnmore-cmdline-options-proxy-settings). Ezek a proxybeállítások csak a végfelhasználói internet-hozzáférést befolyásolják, így a Windows rendszerű virtuális asztali platform kimenő forgalma közvetlenül Azure Firewallon keresztül érhető el.
 

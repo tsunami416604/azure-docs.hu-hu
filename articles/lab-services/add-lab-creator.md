@@ -3,12 +3,12 @@ title: Felhasználó hozzáadása tesztkörnyezet létrehozójának Azure Lab Se
 description: Ez a cikk bemutatja, hogyan adhat hozzá felhasználót a labor létrehozói szerepkörhöz egy Azure Lab Services-beli labor-fiókhoz. A labor létrehozói létrehozhatnak laborokat ebben a laborban.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 34fbf9085f36d008607b648825585d3435cc2895
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5fdeb33dab60a2fb9f1680295c355e2c7c0e775a
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85444284"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399482"
 ---
 # <a name="add-lab-creators-to-a-lab-account-in-azure-lab-services"></a>Tesztkörnyezet-készítők hozzáadása labor-fiókhoz Azure Lab Services
 Ebből a cikkből megtudhatja, hogyan adhat hozzá felhasználókat labor-készítőként Azure Lab Services-beli labor-fiókhoz. Ezek az alkalmazások ezután létrehozhatnak tantermi laborokat a labor-fiókban. 
@@ -31,7 +31,7 @@ Ahhoz, hogy a pedagógusok számára engedélyt adjon a Labs létrehozásához a
 ## <a name="add-a-non-microsoft-account-user-as-a-lab-creator"></a>Nem Microsoft-fiók felhasználó hozzáadása labor creatorként
 Ha egy felhasználót labor creatorként szeretne felvenni, használja az e-mail-fiókját. A következő típusú e-mail-fiókokat lehet használni:
 
-- Az egyetemi Office 365 Azure Active Directory (HRE) által biztosított e-mail-fiók. 
+- Az egyetemi Azure Active Directory (HRE) által biztosított e-mail-fiók.
 - Egy Microsoft e-mail-fiók, például,,, `@outlook.com` `@hotmail.com` `@msn.com` vagy `@live.com` .
 - Egy nem a Microsofttól származó e-mail-fiók, például a Yahoo vagy a Google által biztosított. Az ilyen típusú fiókoknak azonban Microsoft-fiókhoz kell kapcsolódniuk.
 - Egy GitHub-fiók. Ennek a fióknak egy Microsoft-fiók-vel kell összekapcsolnia.

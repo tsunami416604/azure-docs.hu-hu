@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 1522d143f2837a57481a4d678911e7a3c44d084d
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 78043e3d95a94d0e9be810164b31ef031234d620
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541022"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399601"
 ---
 # <a name="azure-advanced-threat-detection"></a>Azure fejlett fenyegetésészlelés
 
@@ -64,13 +64,13 @@ Néhány példa az Azure Identity Protection által a fiókok és identitások b
 
 ### <a name="azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management
 
-A [Azure Active Directory Privileged Identity Management (PIM)](../../active-directory/privileged-identity-management/pim-configure.md)segítségével felügyelheti, vezérelheti és figyelheti a szervezeten belüli hozzáférését. Ez a funkció magában foglalja az Azure AD-ban és más Microsoft-online szolgáltatásokban található erőforrásokhoz való hozzáférést, például az Office 365-et vagy Microsoft Intune.
+A [Azure Active Directory Privileged Identity Management (PIM)](../../active-directory/privileged-identity-management/pim-configure.md)segítségével felügyelheti, vezérelheti és figyelheti a szervezeten belüli hozzáférését. Ez a funkció magában foglalja az Azure AD-ban és más Microsoft-online szolgáltatásokban található erőforrásokhoz való hozzáférést, például Microsoft 365 vagy Microsoft Intune.
 
 ![Azure AD Privileged Identity Management diagram](./media/threat-detection/azure-threat-detection-fig2.png)
 
 A PIM a következőket teszi lehetővé:
 
--   Riasztások és jelentések beszerzése az Azure AD-rendszergazdákkal és az igény szerinti (JIT) rendszergazdai hozzáférés a Microsoft online szolgáltatások, például az Office 365 és az Intune szolgáltatáshoz.
+-   Riasztások és jelentések beszerzése az Azure AD-rendszergazdákkal és az igény szerinti (JIT) rendszergazdai hozzáférés a Microsoft online szolgáltatásokokhoz, például a Microsoft 365hoz és az Intune-hoz.
 
 -   A rendszergazdai hozzáférési előzményekkel és a rendszergazdai hozzárendelések változásaival kapcsolatos jelentések beolvasása.
 
@@ -155,7 +155,7 @@ A Security Center olyan fejlett biztonsági elemzéseket alkalmaz, amelyek messz
 
 A Microsoft a globális fenyegetést jelentő intelligenciát jelentős mértékben elérheti.
 
-A telemetria több forrásból, például az Azure-ból, az Office 365-ból, a Microsoft CRM Online-ból, a Microsoft Dynamics AX-ből, a outlook.com, a MSN.com, a Microsoft Digital Crimes Unit (DCU) és a Microsoft Security Response Center (MSRC) szolgáltatásból zajlik.
+A telemetria több forrásból, például az Azure-ból, Microsoft 365ból, a Microsoft CRM Online-ból, a Microsoft Dynamics AX-ból, a outlook.com, a MSN.com, a Microsoft Digital Crimes Unit (DCU) és a Microsoft Security Response Center (MSRC) szolgáltatásból áramlik.
 
 ![Fenyegetések felderítésének eredményei](./media/threat-detection/azure-threat-detection-fig10.jpg)
 
@@ -190,7 +190,7 @@ Néhány példa:
 
 -   **Rosszindulatú PowerShell-parancsfájlok**: a támadók különböző célokra kártékony kódokat futtathatnak a célként szolgáló virtuális gépeken. A Security Center megvizsgálja a PowerShell tevékenységeit, hogy megtalálja a gyanús tevékenységek nyomait.
 
--   **Kimenő támadások**: a támadók gyakran felhőbeli erőforrásokat céloznak meg azzal a szándékkal, hogy ezeket az erőforrásokat használják fel a további támadások kibontakoztatásához. A feltört virtuális gépek például felhasználhatók más virtuális gépek elleni találgatásos támadásokra, levélszemét küldésére, vagy nyitott portok és egyéb eszközök vizsgálatára az interneten. A hálózati forgalomra irányított gépi tanulás alkalmazásával a Security Center észlelni tudja, ha a szokásosnál nagyobb mértékű a kimenő hálózati kommunikáció. Ha a rendszer levélszemét észlelését észleli, Security Center a szokatlan e-mail-forgalmat is összekapcsolja az Office 365 intelligenciával annak megállapítása érdekében, hogy a levél valószínűleg aljas vagy egy legitim e-mail-kampány eredménye-e.
+-   **Kimenő támadások**: a támadók gyakran felhőbeli erőforrásokat céloznak meg azzal a szándékkal, hogy ezeket az erőforrásokat használják fel a további támadások kibontakoztatásához. A feltört virtuális gépek például felhasználhatók más virtuális gépek elleni találgatásos támadásokra, levélszemét küldésére, vagy nyitott portok és egyéb eszközök vizsgálatára az interneten. A hálózati forgalomra irányított gépi tanulás alkalmazásával a Security Center észlelni tudja, ha a szokásosnál nagyobb mértékű a kimenő hálózati kommunikáció. Ha a rendszer levélszemét észlelését észleli, Security Center a Microsoft 365 intelligenciával kapcsolatos szokatlan e-mail-forgalmat is összekapcsolja annak megállapítása érdekében, hogy a levél valószínűleg aljas vagy egy megbízható e-mail-kampány eredménye-e.
 
 ### <a name="anomaly-detection"></a>Rendellenességek észlelése
 
@@ -365,7 +365,7 @@ Az ezekből a forrásokból származó adatok összegyűjtésekor Cloud App Secu
 
 ## <a name="third-party-advanced-threat-detection-capabilities-through-the-azure-marketplace"></a>Harmadik féltől származó komplex veszélyforrások észlelési képességei az Azure Marketplace-en keresztül
 
-### <a name="web-application-firewall"></a>Web Application Firewall (Webalkalmazási tűzfal)
+### <a name="web-application-firewall"></a>Webalkalmazási tűzfal
 
 A webalkalmazási tűzfal ellenőrzi a bejövő webes forgalmat, és blokkolja az SQL-injektálásokat, a helyek közötti parancsfájlkezelést, a kártevők feltöltését, az alkalmazások DDoS-támadásait, valamint a webalkalmazásokra irányuló más támadásokat. Emellett megvizsgálja a háttér-webkiszolgálók válaszait az adatveszteség-megelőzési (DLP) szolgáltatáshoz. Az integrált hozzáférés-vezérlési motor lehetővé teszi, hogy a rendszergazdák részletes hozzáférés-vezérlési házirendeket hozzanak létre a hitelesítéshez, engedélyezéshez és nyilvántartáshoz (AAA), amely erős hitelesítést és felhasználói vezérlést biztosít a szervezeteknek
 

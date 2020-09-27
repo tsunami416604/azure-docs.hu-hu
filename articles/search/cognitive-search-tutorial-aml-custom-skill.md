@@ -7,13 +7,13 @@ author: tchristiani
 ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 06/10/2020
-ms.openlocfilehash: a4e686fe7adcc7e990a26484bc5850de977e862a
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/25/2020
+ms.openlocfilehash: 3ecef629e38e2823bea101af47899f9b7d6845f0
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88924588"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399839"
 ---
 # <a name="tutorial-build-and-deploy-a-custom-skill-with-azure-machine-learning"></a>Oktatóanyag: egyéni szakértelem létrehozása és üzembe helyezése Azure Machine Learning 
 
@@ -82,8 +82,7 @@ A jegyzetfüzet 4. szakasza négy olyan cellával rendelkezik, amelyek frissíti
 
 A portálon lépjen a Készségkészlet elemre, és válassza ki a Készségkészlet-definíció (JSON) hivatkozást. A portál megjeleníti a készségkészlet tartozó JSON-t, amely a jegyzetfüzet első cellájában lett létrehozva. A megjelenítéstől jobbra legördülő menü látható, ahol kiválaszthatja a szakértelem-definíciós sablont. Válassza ki a Azure Machine Learning (pénzmosás) sablont. adja meg az Azure ML-munkaterület nevét és a végpontot, amelyet a rendszer a következtetési fürtön üzembe helyezett modellhez használt. A sablon a végpont URI-ja és kulcsa alapján lesz frissítve.
 
-> [!div class="mx-imgBorder"]
-> ![Készségkészlet-definíciós sablon](media/cognitive-search-aml-skill/portal-aml-skillset-definition.png)
+> :::image type="content" source="media/cognitive-search-aml-skill/portal-aml-skillset-definition.png" alt-text="Készségkészlet-definíciós sablon":::
 
 Másolja a készségkészlet sablont az ablakból, és illessze be a készségkészlet-definícióba a bal oldalon. Szerkessze a sablont, hogy a hiányzó értékeket adja meg a következőhöz:
 

@@ -1,19 +1,19 @@
 ---
 title: Adatparticionálás Azure Cosmos DB Gremlin API-ban
 description: Megtudhatja, hogyan használható particionált gráf a Azure Cosmos DBban. Ez a cikk a particionált gráfokra vonatkozó követelményeket és ajánlott eljárásokat is ismerteti.
-author: luisbosquez
-ms.author: lbosq
+author: SnehaGunda
+ms.author: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 06/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 78c15da1ea9fe5f6307ce388e4d64d372e9eb8c8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a993779bc47f1a9b2be8851fafe628ae4286f4a
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261766"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400502"
 ---
 # <a name="using-a-partitioned-graph-in-azure-cosmos-db"></a>Particionált gráfok használata az Azure Cosmos DB-ben
 
@@ -33,39 +33,39 @@ Az alábbi irányelvek azt írják le, hogyan működik a Azure Cosmos DB partic
 
 - Az **élek a forrás csúcspontjának megfelelően lesznek tárolva**. Más szóval a partíciós kulcs minden csúcspontján meghatározza, hogy a rendszer hol tárolja azokat a kimenő élekkel együtt. Ez az optimalizálás elkerüli a több partíciós lekérdezések használatát a `out()` diagramos lekérdezésekben felhasznált kardinális használatakor.
 
-- **Az élek a csúcspontokra mutató hivatkozásokat tartalmaznak**. Az összes élek tárolása a csúcspontok partíciós kulcsaival és azonosítói történik. Ez a számítás lehetővé teszi, hogy az összes `out()` irány lekérdezése mindig hatókörrel rendelkező particionált lekérdezés legyen, és ne egy vak, több partíciós lekérdezést. 
+- **Az élek a csúcspontokra mutató hivatkozásokat tartalmaznak**. Az összes élek tárolása a csúcspontok partíciós kulcsaival és azonosítói történik. Ez a számítás lehetővé teszi, hogy az összes `out()` irány lekérdezése mindig hatókörrel rendelkező particionált lekérdezés legyen, és ne egy vak, több partíciós lekérdezést.
 
 - **A Graph-lekérdezéseknek partíciós kulcsot kell megadniuk**. A Azure Cosmos DB vízszintes particionálásának teljes kihasználása érdekében a partíciós kulcsot meg kell adni, ha egyetlen csúcspont van kiválasztva, amikor lehetséges. A következő lekérdezések egy vagy több csúcspont kiválasztására szolgálnak egy particionált gráfban:
 
-    - `/id`a és a `/label` nem támogatottak a GREMLIN API-hoz tartozó tárolók partíciós kulcsaként.
+    - `/id` a és a `/label` nem támogatottak a GREMLIN API-hoz tartozó tárolók partíciós kulcsaként.
 
 
-    - Jelölje ki az azonosító alapján egy csúcspontot, majd **a `.has()` lépés használatával adja meg a Partition Key tulajdonságot**: 
-    
+    - Jelölje ki az azonosító alapján egy csúcspontot, majd **a `.has()` lépés használatával adja meg a Partition Key tulajdonságot**:
+
         ```java
         g.V('vertex_id').has('partitionKey', 'partitionKey_value')
         ```
-    
-    - Csúcspont kiválasztása **egy olyan rekord megadásával, amely tartalmazza a partíciós kulcs értékét és azonosítóját**: 
-    
+
+    - Csúcspont kiválasztása **egy olyan rekord megadásával, amely tartalmazza a partíciós kulcs értékét és azonosítóját**:
+
         ```java
         g.V(['partitionKey_value', 'vertex_id'])
         ```
-        
+
     - **Rekordok-értékek és-azonosítók tömbjét**határozza meg:
-    
+
         ```java
         g.V(['partitionKey_value0', 'verted_id0'], ['partitionKey_value1', 'vertex_id1'], ...)
         ```
-        
-    - A csúcspontok és az azonosítóik kiválasztásával **megadhatja a partíciós kulcs értékeinek listáját**: 
-    
+
+    - A csúcspontok és az azonosítóik kiválasztásával **megadhatja a partíciós kulcs értékeinek listáját**:
+
         ```java
         g.V('vertex_id0', 'vertex_id1', 'vertex_id2', …).has('partitionKey', within('partitionKey_value0', 'partitionKey_value01', 'partitionKey_value02', …)
         ```
 
-    - A **partíciós stratégia** használata a lekérdezés elején, valamint egy partíció megadása a Gremlin-lekérdezés további részének hatóköréhez: 
-    
+    - A **partíciós stratégia** használata a lekérdezés elején, valamint egy partíció megadása a Gremlin-lekérdezés további részének hatóköréhez:
+
         ```java
         g.withStrategies(PartitionStrategy.build().partitionKey('partitionKey').readPartitions('partitionKey_value').create()).V()
         ```

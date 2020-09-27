@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: d05670d55d8a4f9ad7ab691da3f05f1c3e0cd177
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: a8fa14999c75528171fbe811ee64f65b913ed820
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386146"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399805"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Öt lépés a személyazonossági infrastruktúra biztonságossá tételéhez
 
@@ -82,7 +82,7 @@ A PowerShell használatával [megakadályozhatja, hogy a jelszavak lejárjanak](
 Ha a szervezet hibrid identitási megoldást használ átmenő hitelesítéssel vagy összevonással, akkor a jelszó-kivonatolási szinkronizálást a következő két okból kell engedélyeznie:
 
 * A [kiszivárgott hitelesítő adatokkal rendelkező felhasználók](../../active-directory/reports-monitoring/concept-risk-events.md) az Azure ad-ben figyelmeztetnek a Felhasználónév és a jelszó párokra, amelyek elérhetők a "Dark web"-ben. A rendszer az adathalászat, a kártevők és a jelszavak újbóli felhasználását a későbbiekben megsértő külső webhelyeken végezheti el. A Microsoft megkeresi ezeket a kiszivárgott hitelesítő adatokat, és tájékoztatja Önt a jelentésben, ha megfelelnek a szervezet hitelesítő adatainak, de csak akkor, ha [engedélyezi a jelszó-kivonatok szinkronizálását](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md).
-* Helyszíni leállás esetén (például egy ransomware támadás esetében) a [jelszó-kivonatolási szinkronizálás használatával](choose-ad-authn.md)átválthat a Felhőbeli hitelesítés használatára. Ez a biztonsági mentési hitelesítési módszer lehetővé teszi, hogy továbbra is hozzáférjen a hitelesítéshez konfigurált alkalmazások Azure Active Directory, például az Office 365-hez. Ebben az esetben az informatikai részlegnek nem kell személyes e-mail-fiókokat használnia az adatmegosztáshoz, amíg a helyszíni leállás megoldódik.
+* Helyszíni leállás esetén (például egy ransomware támadás esetében) a [jelszó-kivonatolási szinkronizálás használatával](choose-ad-authn.md)átválthat a Felhőbeli hitelesítés használatára. Ez a biztonsági mentési hitelesítési módszer lehetővé teszi, hogy továbbra is hozzáférjen a hitelesítéshez konfigurált alkalmazások Azure Active Directory, például a Microsoft 365hoz. Ebben az esetben az informatikai részlegnek nem kell személyes e-mail-fiókokat használnia az adatmegosztáshoz, amíg a helyszíni leállás megoldódik.
 
 További információ a [jelszó-kivonatolási szinkronizálás](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md) működéséről.
 
@@ -193,13 +193,13 @@ Az Azure AD önkiszolgáló [jelszó-visszaállítási szolgáltatása (SSPR)](.
 
 ### <a name="implement-self-service-group-and-application-access"></a>Önkiszolgáló csoport és alkalmazás-hozzáférés megvalósítása
 
-Az Azure AD lehetővé teszi a nem rendszergazdák számára az erőforrásokhoz való hozzáférést, a biztonsági csoportok, az Office 365-csoportok, az alkalmazási szerepkörök és a hozzáférési csomagok katalógusának kezelését.  Az [önkiszolgáló csoportok felügyelete](../../active-directory/users-groups-roles/groups-self-service-management.md) lehetővé teszi, hogy a csoport tulajdonosai a saját Csoportjaikat kezelhesse, anélkül, hogy rendszergazdai szerepkört kellene hozzárendelni. A felhasználók az Office 365-csoportok létrehozását és felügyeletét anélkül is létrehozhatják és kezelhetik, hogy a rendszergazdákra támaszkodnak a kéréseik kezelésére, a nem használt csoportok pedig automatikusan lejárnak.  Az [Azure ad-jogosultságok kezelése](../../active-directory/governance/entitlement-management-overview.md) lehetővé teszi a delegálást és a láthatóságot, átfogó hozzáférési kérelmek munkafolyamataival és automatikus lejáratával.  A nem rendszergazdai jogosultsággal rendelkező felhasználók a saját hozzáférési csomagjaikat a saját csoportjaihoz, csoportjaihoz, alkalmazásaihoz és a saját SharePoint Online-webhelyekhez is konfigurálhatják, a hozzáférés jóváhagyásához szükséges egyéni szabályzatokkal, többek között az alkalmazottak felettesei és az üzleti partneri szponzorok konfigurálása jóváhagyóként.
+Az Azure AD lehetővé teszi a nem rendszergazdák számára az erőforrásokhoz való hozzáférés kezelését, a biztonsági csoportok, Microsoft 365 csoportok, az alkalmazás szerepkörei és a hozzáférési csomagok katalógusának használatát.  Az [önkiszolgáló csoportok felügyelete](../../active-directory/users-groups-roles/groups-self-service-management.md) lehetővé teszi, hogy a csoport tulajdonosai a saját Csoportjaikat kezelhesse, anélkül, hogy rendszergazdai szerepkört kellene hozzárendelni. A felhasználók Microsoft 365 csoportokat is létrehozhatnak és kezelhetnek anélkül, hogy a rendszergazdákra támaszkodnia kellene a kéréseik kezelésére, és a nem használt csoportok automatikusan lejárnak.  Az [Azure ad-jogosultságok kezelése](../../active-directory/governance/entitlement-management-overview.md) lehetővé teszi a delegálást és a láthatóságot, átfogó hozzáférési kérelmek munkafolyamataival és automatikus lejáratával.  A nem rendszergazdai jogosultsággal rendelkező felhasználók a saját hozzáférési csomagjaikat a saját csoportjaihoz, csoportjaihoz, alkalmazásaihoz és a saját SharePoint Online-webhelyekhez is konfigurálhatják, a hozzáférés jóváhagyásához szükséges egyéni szabályzatokkal, többek között az alkalmazottak felettesei és az üzleti partneri szponzorok konfigurálása jóváhagyóként.
 
 ### <a name="implement-azure-ad-access-reviews"></a>Azure AD hozzáférési felülvizsgálatok megvalósítása
 
 Az [Azure ad hozzáférési felülvizsgálatok](../../active-directory/governance/access-reviews-overview.md)segítségével kezelheti a hozzáférési csomagokat és a csoporttagságok, a vállalati alkalmazásokhoz való hozzáférést és a Kiemelt szerepkör-hozzárendeléseket, így biztosítva a biztonsági szabványok fenntartását.  A felhasználók saját maguk, az erőforrás-tulajdonosok és az egyéb felülvizsgálók rendszeres felügyelete biztosítja, hogy a felhasználók ne tartsanak meg hosszabb ideig a hozzáférést, amikor már nincs rá szükségük.
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 A biztonságos identitás-infrastruktúrának számos aspektusa van, de ez az öt lépésből álló ellenőrzőlista segítséget nyújt a biztonságosabb és biztonságos identitás-infrastruktúra gyors megvalósításához:
 
@@ -211,7 +211,7 @@ A biztonságos identitás-infrastruktúrának számos aspektusa van, de ez az ö
 
 Nagyra értékeljük, hogy milyen komolyan vesszük a személyazonossági biztonságot, és reméljük, hogy ez a dokumentum hasznos útiterv a szervezete számára biztonságosabb testhelyzethez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha segítségre van szüksége a javaslatok megtervezéséhez és üzembe helyezéséhez, tekintse meg az [Azure ad projekt üzembe helyezési terveit](https://aka.ms/deploymentplans) .
 

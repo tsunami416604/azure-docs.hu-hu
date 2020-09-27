@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2020
 ms.author: terrylan
-ms.openlocfilehash: d861388c8c7a5ff64a17607736d4c8a292343dec
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3dd209d90947ebef7eb7b074992a55305005e7bb
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87071586"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399533"
 ---
 # <a name="azure-security-technical-capabilities"></a>Az Azure biztonságtechnikai képességei
 Ez a cikk az Azure-beli biztonsági szolgáltatások bevezetését ismerteti, amelyek segítségével megvédheti adatait, erőforrásait és alkalmazásait a felhőben, és teljesítheti a vállalata biztonsági igényeit.
@@ -84,7 +84,7 @@ A következő alapvető Azure Identity Management-képességek:
 
 Az [egyszeri bejelentkezés (SSO)](https://azure.microsoft.com/documentation/videos/overview-of-single-sign-on/) azt jelenti, hogy csak egyszer kell bejelentkeznie az összes olyan alkalmazáshoz és erőforráshoz, amelyre üzleti tevékenységet kell végeznie, csak egyszer, egyetlen felhasználói fiók használatával. A bejelentkezést követően az összes szükséges alkalmazáshoz hozzáférhet a hitelesítéshez (például egy jelszó megadásához).
 
-Számos szervezet olyan szoftveres (SaaS) alkalmazásokra támaszkodik, mint például az Office 365, a Box és a Salesforce a végfelhasználói hatékonyság érdekében. Az informatikai részlegnek az egyes SaaS-alkalmazásokban egyenként kell létrehoznia és frissítenie a felhasználói fiókokat, és a felhasználóknak minden SaaS-alkalmazáshoz meg kellett emlékezniük a jelszót.
+Számos szervezet olyan szoftveres (SaaS) alkalmazásokra támaszkodik, mint például a Microsoft 365, a Box és a Salesforce a végfelhasználói hatékonyság érdekében. Az informatikai részlegnek az egyes SaaS-alkalmazásokban egyenként kell létrehoznia és frissítenie a felhasználói fiókokat, és a felhasználóknak minden SaaS-alkalmazáshoz meg kellett emlékezniük a jelszót.
 
 [Az Azure ad kiterjeszti a helyszíni Active Directory a felhőbe](../../active-directory/manage-apps/what-is-single-sign-on.md), lehetővé téve a felhasználók számára, hogy az elsődleges szervezeti fiókját ne csak a tartományhoz csatlakoztatott eszközökre és a vállalati erőforrásokra jelentkezzen be, hanem a feladatokhoz szükséges összes webes és SaaS-alkalmazást is.
 
@@ -126,15 +126,15 @@ A [mobileszköz-kezelési (Mdm)](https://www.microsoft.com/itshowcase/Article/Co
 
 #### <a name="privileged-identity-management"></a>Privileged Identity Management
 
-[Azure Active Directory (ad) Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md) lehetővé teszi a Kiemelt identitások kezelését, vezérlését és figyelését, valamint az Azure ad-ben és más Microsoft-online szolgáltatások, például az Office 365-as vagy Microsoft Intune-beli erőforrásokhoz való hozzáférést.
+[Azure Active Directory (ad) Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md) lehetővé teszi a Kiemelt identitások kezelését, vezérlését és figyelését, valamint az Azure ad-ben és más Microsoft-online szolgáltatások, például Microsoft 365 vagy Microsoft Intune található erőforrásokhoz való hozzáférést.
 
-Bizonyos esetekben a felhasználóknak az Azure-ban vagy az Office 365-erőforrásokban vagy más SaaS-alkalmazásokban kell privilegizált műveleteket végezniük. Ez gyakran azt jelenti, hogy a szervezeteknek állandó jogosultsági szintű hozzáférést kell biztosítaniuk az Azure AD-ben. Ez egyre nagyobb biztonsági kockázatot jelent a felhőben üzemeltetett erőforrások esetében, mivel a szervezetek nem tudják eléggé figyelni, hogy a felhasználók hogyan használják a rendszergazdai jogosultságokat. Emellett, ha egy emelt szintű hozzáféréssel rendelkező felhasználói fiók biztonsága sérül, az egyik szabálysértés hatással lehet az általános Felhőbeli biztonságra. Azure AD Privileged Identity Management segít feloldani ezt a kockázatot.
+Időnként a felhasználóknak az Azure-ban, illetve Microsoft 365 erőforrásokban vagy más SaaS-alkalmazásokban kell megadniuk az emelt szintű műveleteket. Ez gyakran azt jelenti, hogy a szervezeteknek állandó jogosultsági szintű hozzáférést kell biztosítaniuk az Azure AD-ben. Ez egyre nagyobb biztonsági kockázatot jelent a felhőben üzemeltetett erőforrások esetében, mivel a szervezetek nem tudják eléggé figyelni, hogy a felhasználók hogyan használják a rendszergazdai jogosultságokat. Emellett, ha egy emelt szintű hozzáféréssel rendelkező felhasználói fiók biztonsága sérül, az egyik szabálysértés hatással lehet az általános Felhőbeli biztonságra. Azure AD Privileged Identity Management segít feloldani ezt a kockázatot.
 
 A Azure AD Privileged Identity Management a következőket teszi lehetővé:
 
 - Az Azure AD-rendszergazdák által megtekinthető felhasználók
 
-- A Microsoft Online szolgáltatásaihoz, például az Office 365-hez és az Intune-hoz való igény szerinti rendszergazdai hozzáférés engedélyezése
+- Igény szerinti, "igény szerinti" rendszergazdai hozzáférés engedélyezése a Microsoft Online szolgáltatásaihoz (például Microsoft 365 és Intune)
 
 - A rendszergazdai hozzáférési előzményekkel és a rendszergazdai hozzárendelések változásaival kapcsolatos jelentések beolvasása
 
@@ -210,7 +210,7 @@ Az [adatbesorolásra](https://download.microsoft.com/download/0/A/3/0A3BE969-85C
 ## <a name="secure-your-application"></a>Az alkalmazás biztonságossá tétele
 Míg az Azure felelős az alkalmazás által futtatott infrastruktúra és platform védelméért, az Ön felelőssége, hogy saját maga is biztonságossá tegye az alkalmazást. Más szóval az alkalmazás kódjának és tartalmának biztonságos módon történő fejlesztését, üzembe helyezését és kezelését kell végeznie. Ennek hiányában az alkalmazás kódja vagy tartalma továbbra is sebezhető lehet a fenyegetésekkel szemben.
 
-### <a name="web-application-firewall"></a>Webalkalmazási tűzfal
+### <a name="web-application-firewall"></a>Web application firewall (Webalkalmazási tűzfal)
 A [webalkalmazási tűzfal (WAF)](../../application-gateway/waf-overview.md) a [Application Gateway](../../application-gateway/overview.md) szolgáltatása, amely központosított védelmet biztosít a webalkalmazások számára a gyakori biztonsági rések és sebezhetőségek ellen.
 
 A webalkalmazási tűzfal az [alapvető OWASP-szabálykészletek](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3.0-s vagy 2.2.9-es verzióinak szabályai alapján működik. A webalkalmazások egyre inkább ki vannak téve rosszindulatú támadásoknak, amelyek az ismert biztonsági réseket használják ki. Az ilyen jellegű támadások között például gyakoriak az SQL-injektálásos és a webhelyek közötti, parancsprogramot alkalmazó támadások. Az ilyen támadások megakadályozása az alkalmazás kódjában kihívást jelenthet, és szigorú felügyeletet, javítást és megfigyelést igényelhet az alkalmazás topológiájának több rétegén. A központosított webalkalmazási tűzfal egyszerűbbé teszi a biztonságfelügyeletet, és segít az alkalmazás-rendszergazdáknak a fenyegetések vagy a behatolások elleni védekezésben. Emellett a WAF-megoldás gyorsabban képes kezelni a biztonsági fenyegetéseket azáltal, hogy kijavítja az ismert biztonsági réseket egy központi helyen, ahelyett hogy az egyes webalkalmazások védelmét biztosítaná. A meglévő alkalmazásátjárókat egyszerűen át lehet alakítani webalkalmazási tűzfallal rendelkező alkalmazásátjárókká.
@@ -339,7 +339,7 @@ Ezzel a módszerrel különböző forrásokból is összevonhatja az adatait, í
 
 A Security Center a potenciális biztonsági hiányosságok azonosítása érdekében elemzi az Azure-erőforrások biztonsági állapotát. A javaslatok listája végigvezeti Önt a szükséges szabályozási folyamatok konfigurálásának folyamatán.
 
-Erre példák a következők:
+Példák erre vonatkozóan:
 
 - Kártevőirtók kiépítése a kártékony szoftverek azonosításához és eltávolításához
 

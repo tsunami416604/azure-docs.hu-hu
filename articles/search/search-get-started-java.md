@@ -8,14 +8,14 @@ ms.author: heidist
 ms.devlang: java
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 06/23/2020
+ms.date: 09/25/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: e9a2ff5d46557ddf8f5f62b456e8a3d54bf90c55
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 6be511029221e1f7bd1e58ad111503a43ee157fb
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89290344"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400655"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-java-using-rest-apis"></a>Rövid útmutató: Azure Cognitive Search index létrehozása javában a REST API-k használatával
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.locfileid: "89290344"
 
 Hozzon létre egy Java-konzolos alkalmazást, amely a [IntelliJ](https://www.jetbrains.com/idea/), a [Java 11 SDK](/java/azure/jdk/?view=azure-java-stable)és az [Azure Cognitive Search REST API](/rest/api/searchservice/)használatával hoz létre, tölt be és kérdez le egy keresési indexet. Ez a cikk részletes útmutatást nyújt az alkalmazás létrehozásához. Azt is megteheti, hogy [letölti és futtatja a teljes alkalmazást](/samples/azure-samples/azure-search-java-samples/java-sample-quickstart/).
 
-Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt nekikezdene a feladatok elvégzésének.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -53,7 +53,7 @@ A szolgáltatás felé irányuló hívások URL-végpontot és hozzáférési ku
 
    Hozzon létre egy lekérdezési kulcsot is. Ajánlott a lekérdezési kérelmeket csak olvasási hozzáféréssel kibocsátani.
 
-![A szolgáltatás nevének és a rendszergazda és a lekérdezési kulcsok beszerzése](media/search-get-started-nodejs/service-name-and-keys.png)
+:::image type="content" source="media/search-get-started-nodejs/service-name-and-keys.png" alt-text="A szolgáltatás nevének és a rendszergazda és a lekérdezési kulcsok beszerzése" border="false":::
 
 A szolgáltatásnak eljuttatott minden kérelemhez API-kulcs szükséges. Érvényes kulcs birtokában kérelmenként létesíthető megbízhatósági kapcsolat a kérést küldő alkalmazás és az azt kezelő szolgáltatás között.
 
@@ -67,7 +67,7 @@ Első lépésként nyissa meg a IntelliJ IDEA-t, és állítson be egy új proje
 1. Válassza a **Maven**lehetőséget.
 1. A **Project SDK** listában válassza ki a Java 11 SDK-t.
 
-    ![Maven-projekt létrehozása](media/search-get-started-java/java-quickstart-create-new-maven-project.png) 
+    :::image type="content" source="media/search-get-started-java/java-quickstart-create-new-maven-project.png" alt-text="Maven-projekt létrehozása" border="false":::
 
 1. A **GroupID** és a **ArtifactId**mezőbe írja be a következőt: `AzureSearchQuickstart` .
 1. Fogadja el a fennmaradó alapértékeket a projekt megnyitásához.
@@ -78,7 +78,7 @@ Első lépésként nyissa meg a IntelliJ IDEA-t, és állítson be egy új proje
 1. A **Beállítások** ablakban válassza a **Létrehozás, végrehajtás, üzembe helyezés**  >  **eszközök**  >  **Maven**-  >  **Importálás**lehetőséget.
 1. Jelölje be a  **Maven-projektek automatikus importálása** jelölőnégyzetet, majd kattintson az **OK** gombra az ablak bezárásához. A Maven beépülő modulok és egyéb függőségek mostantól automatikusan szinkronizálva lesznek, amikor a következő lépésben frissíti a pom.xml fájlt.
 
-    ![A Maven importálási lehetőségei a IntelliJ-beállításokban](media/search-get-started-java/java-quickstart-settings-import-maven-auto.png)
+    :::image type="content" source="media/search-get-started-java/java-quickstart-settings-import-maven-auto.png" alt-text="A Maven importálási lehetőségei a IntelliJ-beállításokban" border="false":::
 
 1. Nyissa meg a pom.xml fájlt, és cserélje le a tartalmát a következő Maven-konfigurációs részletekre. Ezek közé tartoznak az [exec Maven beépülő modulra](https://www.mojohaus.org/exec-maven-plugin/) és egy [JSON Interface API](https://javadoc.io/doc/org.glassfish/javax.json/1.0.2) -ra vonatkozó hivatkozások
 
@@ -140,7 +140,7 @@ Első lépésként nyissa meg a IntelliJ IDEA-t, és állítson be egy új proje
 
     Ha elkészült, a projekt fájának az alábbi képhez hasonlóan kell kinéznie.
 
-    ![Projekt könyvtárának szerkezete](media/search-get-started-java/java-quickstart-basic-code-tree.png)
+    :::image type="content" source="media/search-get-started-java/java-quickstart-basic-code-tree.png" alt-text="Projekt könyvtárának szerkezete" border="false":::
 
 1. Kattintson az **OK** gombra az ablak bezárásához.
 
@@ -373,10 +373,10 @@ Első lépésként nyissa meg a IntelliJ IDEA-t, és állítson be egy új proje
 
 1. Ellenőrizze, hogy a projekt a következő szerkezettel rendelkezik-e.
 
-    ![Project Directory-struktúra plusz osztályok](media/search-get-started-java/java-quickstart-basic-code-tree-plus-classes.png)
+    :::image type="content" source="media/search-get-started-java/java-quickstart-basic-code-tree-plus-classes.png" alt-text="Project Directory-struktúra plusz osztályok" border="false":::
 
 1. Nyissa meg a **Maven** eszköz ablakát, és hajtsa végre a következő Maven-célt: `verify exec:java` 
- ![ Maven-cél végrehajtása: az exec ellenőrzése: Java](media/search-get-started-java/java-quickstart-execute-maven-goal.png)
+ :::image type="content" source="media/search-get-started-java/java-quickstart-execute-maven-goal.png" alt-text="Maven-cél végrehajtása: az exec ellenőrzése: Java" border="false":::
 
 A feldolgozás befejezésekor keressen egy sikeres BUILD-üzenetet, amelyet egy nulla (0) kilépési kód követ.
 
@@ -515,7 +515,7 @@ A Hotels index definíciója egyszerű mezőket és egy összetett mezőt tartal
     
     Az `Description` indexben lévő mező a választható `analyzer` tulajdonságot használja az alapértelmezett Lucene nyelvi elemző felülbírálásához. A `Description_fr` mező a francia Lucene Analyzert használja, `fr.lucene` mert francia nyelvű szöveget tárol. A a `Description` választható Microsoft Language Analyzer en. Lucene használja. További információ az elemzők használatáról: az [Azure Cognitive Searchban végzett szövegszerkesztés elemzői](search-analyzers.md).
 
-1. Adja hozzá a következő kódot a `SearchServiceClient` osztályhoz. Ezek a módszerek létrehozzák az Azure Cognitive Search REST szolgáltatás URL-címét, amelyek indexet hoznak létre és törölnek, és amelyek meghatározzák, hogy létezik-e index. A metódusok a HTTP-kérést is elvégzik.
+1. Adja hozzá az alábbi kódot a `SearchServiceClient` osztályhoz. Ezek a módszerek létrehozzák az Azure Cognitive Search REST szolgáltatás URL-címét, amelyek indexet hoznak létre és törölnek, és amelyek meghatározzák, hogy létezik-e index. A metódusok a HTTP-kérést is elvégzik.
 
     ```java
     public boolean indexExists() throws IOException, InterruptedException {
@@ -695,7 +695,7 @@ A Hotels index definíciója egyszerű mezőket és egy összetett mezőt tartal
 
 Most, hogy betöltötte a szállodák dokumentumait, létrehozhat keresési lekérdezéseket a szállások eléréséhez.
 
-1. Adja hozzá a következő kódot a `SearchServiceClient` osztályhoz. Ez a kód az Azure Cognitive Search REST-szolgáltatás URL-címeit építi fel az indexelt adatok keresésére és a keresési eredmények kinyomtatására.
+1. Adja hozzá az alábbi kódot a `SearchServiceClient` osztályhoz. Ez a kód az Azure Cognitive Search REST-szolgáltatás URL-címeit építi fel az indexelt adatok keresésére és a keresési eredmények kinyomtatására.
 
     Az `SearchOptions` osztály és a `createSearchOptions` metódus lehetővé teszi az elérhető Azure-Cognitive Search REST API lekérdezési beállítások részhalmazának megadását. További információ a REST API lekérdezési lehetőségekről: [dokumentumok keresése (Azure Cognitive Search REST API)](/rest/api/searchservice/search-documents).
 

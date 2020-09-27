@@ -10,16 +10,16 @@ ms.tgt_pltfrm: na
 ms.workload: Infrastructure-services
 ms.date: 05/18/2020
 ms.author: derekol
-ms.openlocfilehash: 548d4f90bd9632e4807547120ac1be589668e8fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 03ece391b6f33b47f34705cec1c5907602ac7b23
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84872035"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400179"
 ---
 # <a name="azure-peering-service-overview"></a>Az Azure-partneri szolgáltatás áttekintése
 
-Az Azure társközi szolgáltatás olyan hálózati szolgáltatás, amely a Microsoft felhőalapú szolgáltatásaihoz, például az Office 365, a Dynamics 365, a szolgáltatott szoftver (SaaS) szolgáltatásokhoz, az Azure-hoz vagy bármely, a nyilvános interneten keresztül elérhető Microsoft-szolgáltatáshoz nyújt felhasználói kapcsolatot. A Microsoft az Internet szolgáltatók (internetszolgáltatók), az internetes Exchange-partnerek (IXPs-EK) és a szoftveresen definiált Cloud Interconnect-(SDCI-) szolgáltatókkal együttműködve megbízható és nagy teljesítményű nyilvános kapcsolatot biztosít az ügyfél és a Microsoft hálózata közötti optimális útválasztással.
+Az Azure társközi szolgáltatás olyan hálózati szolgáltatás, amely a Microsoft Cloud Services, például a Microsoft 365, a Dynamics 365, a szolgáltatott szoftver (SaaS) szolgáltatásai, az Azure vagy bármely, a nyilvános interneten keresztül elérhető Microsoft-szolgáltatás számára teszi lehetővé az ügyfelek kapcsolódását. A Microsoft az Internet szolgáltatók (internetszolgáltatók), az internetes Exchange-partnerek (IXPs-EK) és a szoftveresen definiált Cloud Interconnect-(SDCI-) szolgáltatókkal együttműködve megbízható és nagy teljesítményű nyilvános kapcsolatot biztosít az ügyfél és a Microsoft hálózata közötti optimális útválasztással.
 
 A partneri szolgáltatással az ügyfelek kiválaszthatnak egy megfelelően csatlakoztatott partner-szolgáltatót az adott régióban. A nyilvános kapcsolat nagy megbízhatóságra és minimális késésre van optimalizálva a felhőalapú szolgáltatásokból a végfelhasználói helyre.
 
@@ -50,7 +50,7 @@ Az egyenrangú szolgáltatás nem egy magánhálózati kapcsolati termék, péld
 
 ## <a name="background"></a>Háttér
 
-Az Office 365, a Dynamics 365 és bármely más Microsoft SaaS-szolgáltatás több Microsoft-adatközpontban is üzemel, és bármely földrajzi helyről elérhető. A Microsoft globális hálózata a világ bármely pontján található Microsoft Edge (PoP) hellyel rendelkezik, ahol a felhasználók a szolgáltatókon keresztül csatlakozhatnak a végfelhasználóhoz. 
+A Microsoft 365, a Dynamics 365 és bármely más Microsoft SaaS-szolgáltatás több Microsoft-adatközpontban is üzemel, és bármely földrajzi helyről elérhető. A Microsoft globális hálózata a világ bármely pontján található Microsoft Edge (PoP) hellyel rendelkezik, ahol a felhasználók a szolgáltatókon keresztül csatlakozhatnak a végfelhasználóhoz. 
 
 A Microsoft és a partner szolgáltatók gondoskodnak arról, hogy a társ-szolgáltatási kapcsolattal regisztrált előtagok forgalma a Microsoft globális hálózatának legközelebbi Microsoft Edge PoP-helyeiről lépjen be. A Microsoft biztosítja, hogy a egressing a társ-létesítési szolgáltatás kapcsolataiban regisztrált előtagok hálózati forgalma a Microsoft globális hálózatának legközelebbi Microsoft Edge PoP-helyeire kerül.
 
@@ -80,13 +80,13 @@ A társítási szolgáltatás két típusú redundanciát használ:
 
    Minden egyes társítási hely redundáns és sokrétű kapcsolattal van kiépítve.
 
-- **Geo-redundancia**
+- **Georedundancia**
 
    A Microsoft több Metro-helyen is csatlakoztatta a szolgáltatókat, így ha az egyik peremhálózati csomópontnál a teljesítmény csökken, a forgalom a Microsoft felé irányuló és onnan érkező adatforgalmat is elvégezheti a másik helyen. A Microsoft az optimális teljesítmény érdekében az SDN-alapú útválasztási szabályzatok használatával irányítja át a forgalmat a globális hálózatában.
 
     Az ilyen típusú redundancia a legrövidebb útválasztási útvonalat használja, ha mindig kiválasztja a legközelebbi Microsoft Edge-PoP-t a végfelhasználóhoz, és biztosítja, hogy az ügyfél egy hálózati ugrás (ugrás) legyen a Microsofttól.
 
-   ![Geo-redundancia](./media/peering-service-about/peering-service-geo-shortest.png)
+   ![Georedundancia](./media/peering-service-about/peering-service-geo-shortest.png)
 
 ### <a name="optimal-routing"></a>Optimális Útválasztás
 

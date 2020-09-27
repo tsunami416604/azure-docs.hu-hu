@@ -7,18 +7,18 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 07/14/2020
-ms.openlocfilehash: 51f4c9a5748896eff9e9f3ae9719b2e7e7cdd4e7
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 247a5c89b52c6b58f2e1d04723f4f73b85aeb153
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607489"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400740"
 ---
 # <a name="cloud-solution-provider-program"></a>Cloud Solution Provider program
 
 Ez a cikk azt ismerteti, hogyan konfigurálható az ajánlat, hogy elérhető legyen a Cloud Solution Provider (CSP) program számára. Az ajánlatoknak a [kereskedelmi piactér online áruházakon](comparing-appsource-azure-marketplace.md)keresztüli közzétételén kívül a CSP programon keresztül is elérhetővé teheti, hogy a program által kiszolgált, több millió minősített Microsoft-ügyfelet is elérhet.
 
-Az új vagy meglévő ajánlatokat a CSP programban is konfigurálhatja, amely lehetővé teszi, hogy a CSP-partnerek eladják termékeiket, és kötegelt megoldásokat hozzanak létre az ügyfeleknek.
+Az új vagy meglévő ajánlatokat a CSP programban is konfigurálhatja, amely lehetővé teszi, hogy a CSP-partnerek eladják termékeiket, és csomagolt megoldásokat hozzanak létre az ügyfeleknek.
 
 A kiadók feladata, hogy a végfelhasználók szüntesse meg a hibajavítást, és hogy a CSP-programban és/vagy az ügyfeleknél olyan mechanizmust biztosítson, amely segítséget nyújt a partnereknek. Az ajánlott eljárás az, hogy partnereket biztosítson a CSP programban a felhasználói dokumentációval, a képzéssel és a szolgáltatás állapotával/KIMARADÁSÁVAL kapcsolatos értesítésekkel (ha vannak ilyenek), hogy a CSP programban részt vevő partnerek az 1. szintű támogatási kérések kezelésére alkalmasak legyenek.  
 
@@ -174,7 +174,7 @@ Ha kiválasztotta a CSP-csatornát a partner Centerben, a kiadónak meg kell adn
 
 ![A partner Center CSP-biztosítékokkal kapcsolatos információi](media/marketplace-publishers-guide/pc-csp-channel.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Látogasson el az [Azure Marketplace és a AppSource kiadói útmutatóba](marketplace-publishers-guide.md).
 

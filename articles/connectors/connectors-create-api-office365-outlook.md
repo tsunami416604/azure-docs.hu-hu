@@ -7,16 +7,16 @@ ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 07/27/2020
 tags: connectors
-ms.openlocfilehash: e0e152b3c0e10c34bc6213ddf867b79c58d1d767
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 9b10778e665675e9e033953e2a8b9df16dd636d3
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87832977"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400774"
 ---
 # <a name="manage-email-contacts-and-calendars-in-office-365-outlook-by-using-azure-logic-apps"></a>E-mailek, partneradatok és naptárak kezelése az Office 365 Outlookban az Azure Logic Apps használatával
 
-A [Azure Logic apps](../logic-apps/logic-apps-overview.md) és az [Office 365 Outlook Connector](/connectors/office365connector/)használatával a logikai alkalmazások létrehozásával automatizált feladatokat és munkafolyamatokat hozhat létre, amelyek az Office 365-fiókját kezelik. Automatizálhatja például ezeket a feladatokat:
+A [Azure Logic apps](../logic-apps/logic-apps-overview.md) és az [Office 365 Outlook Connector](/connectors/office365connector/)használatával a logikai alkalmazások létrehozásával automatizált feladatokat és munkafolyamatokat hozhat létre, amelyek a munkahelyi vagy iskolai fiókját kezelik. Automatizálhatja például ezeket a feladatokat:
 
 * Az e-mailek lekérése, küldése és megválaszolása. 
 * Értekezletek ütemezhetnek a naptárban.
@@ -31,9 +31,9 @@ Bármely eseményindítóval elindíthatja a munkafolyamatot, például amikor �
 
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 
-* [Office 365-fiók](https://www.office.com/)
+* [Munkahelyi vagy iskolai fiók](https://www.office.com/)
 
-* Az a logikai alkalmazás, amelyhez el szeretné érni az Office 365 Outlook-fiókját. Ha a munkafolyamatot Office 365 Outlook-triggerrel szeretné elindítani, [üres logikai alkalmazásra](../logic-apps/quickstart-create-first-logic-app-workflow.md)van szükség. Ha Office 365 Outlook-műveletet szeretne hozzáadni a munkafolyamathoz, a logikai alkalmazásnak már rendelkeznie kell egy triggerrel.
+* A logikai alkalmazás, amelyhez el szeretné érni munkahelyi vagy iskolai fiókját. Ha a munkafolyamatot Office 365 Outlook-triggerrel szeretné elindítani, [üres logikai alkalmazásra](../logic-apps/quickstart-create-first-logic-app-workflow.md)van szükség. Ha Office 365 Outlook-műveletet szeretne hozzáadni a munkafolyamathoz, a logikai alkalmazásnak már rendelkeznie kell egy triggerrel.
 
 ## <a name="add-a-trigger"></a>Eseményindító hozzáadása
 
@@ -45,7 +45,7 @@ Az [eseményindító](../logic-apps/logic-apps-overview.md#logic-app-concepts) e
    
    ![Válassza ki az triggert a logikai alkalmazás indításához](./media/connectors-create-api-office365-outlook/office365-trigger.png)
 
-1. Ha a rendszer kéri, hogy jelentkezzen be, adja meg az Office 365 hitelesítő adatait, hogy a logikai alkalmazás csatlakozhasson a fiókjához. Ellenkező esetben, ha a hálózat már létezik, adja meg az aktiváló tulajdonságok információit.
+1. Ha a rendszer kéri, hogy jelentkezzen be, adja meg a munkahelyi vagy iskolai hitelesítő adatait, hogy a logikai alkalmazás csatlakozhasson a fiókjához. Ellenkező esetben, ha a hálózat már létezik, adja meg az aktiváló tulajdonságok információit.
 
    > [!NOTE]
    > A szolgáltatás nem jár le a visszavonás előtt, még akkor is, ha módosítja a bejelentkezési hitelesítő adatait. További információ: [konfigurálható jogkivonatok élettartama Azure Active Directoryban](../active-directory/develop/active-directory-configurable-token-lifetimes.md).
@@ -78,7 +78,7 @@ A [művelet](../logic-apps/logic-apps-overview.md#logic-app-concepts) egy olyan 
 
    ![Válassza ki a logikai alkalmazásban futtatandó műveletet](./media/connectors-create-api-office365-outlook/office365-actions.png) 
 
-1. Ha a rendszer kéri, hogy jelentkezzen be, adja meg az Office 365 hitelesítő adatait, hogy a logikai alkalmazás csatlakozhasson a fiókjához. Ellenkező esetben, ha a kapcsolat már létezik, adja meg a művelet tulajdonságaira vonatkozó információkat.
+1. Ha a rendszer kéri, hogy jelentkezzen be, adja meg a munkahelyi vagy iskolai hitelesítő adatait, hogy a logikai alkalmazás csatlakozhasson a fiókjához. Ellenkező esetben, ha a kapcsolat már létezik, adja meg a művelet tulajdonságaira vonatkozó információkat.
 
    > [!NOTE]
    > A szolgáltatás nem jár le a visszavonás előtt, még akkor is, ha módosítja a bejelentkezési hitelesítő adatait. További információ: [konfigurálható jogkivonatok élettartama Azure Active Directoryban](../active-directory/develop/active-directory-configurable-token-lifetimes.md).

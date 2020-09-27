@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: 0cb51cd224145e7fe359e2b14a87ed2b87b18c26
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: f331c62060b2d8a39a87bab95b00225f363b4a56
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563024"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400247"
 ---
 # <a name="network-connectivity-monitoring-with-connection-monitor-preview"></a>Hálózati kapcsolat figyelése a kapcsolat figyelője (előzetes verzió)
 
@@ -30,7 +30,7 @@ A kapcsolódási figyelő (előzetes verzió) egységes, végpontok közötti ka
 
 - Az előtér-webkiszolgáló virtuális gépe egy adatbázis-kiszolgáló virtuális géppel kommunikál egy többrétegű alkalmazásban. Szeretné megtekinteni a két virtuális gép közötti hálózati kapcsolatot.
 - Azt szeretné, hogy az USA keleti régiójában lévő virtuális gépek Pingelje a virtuális gépeket az USA középső régiójában, és szeretné összehasonlítani a régiók közötti hálózati késéseket.
-- Több helyszíni Office-telephelye is van Seattle-ben, Washingtonban és Ashburn-ben, Virginia államban. Az Office-helyek az Office 365 URL-címekhez csatlakoznak. Az Office 365 URL-címeinek felhasználói számára hasonlítsa össze a Seattle és a Ashburn közötti késéseket.
+- Több helyszíni Office-telephelye is van Seattle-ben, Washingtonban és Ashburn-ben, Virginia államban. Az Office-helyek Microsoft 365 URL-címekhez csatlakoznak. Microsoft 365 URL-címek felhasználói számára hasonlítsa össze a Seattle és a Ashburn közötti késéseket.
 - A hibrid alkalmazásnak kapcsolódnia kell egy Azure Storage-végponthoz. A helyszíni hely és az Azure-alkalmazás ugyanahhoz az Azure Storage-végponthoz csatlakozik. Össze szeretné hasonlítani a helyszíni hely késéseit az Azure-alkalmazás késésével.
 - Szeretné megtekinteni a helyszíni telepítések és a felhőalapú alkalmazást futtató Azure-beli virtuális gépek közötti kapcsolatot.
 
@@ -87,7 +87,7 @@ További információ: [Network Watcher engedélyezése](https://docs.microsoft.
 
 A kapcsolati figyelő rendszeres időközönként figyeli a kommunikációt. Tájékoztatja Önt a Elérhetőség és a késés változásairól. A forrás-és a cél végpontok közötti aktuális és korábbi hálózati topológiát is megtekintheti.
 
-A források lehetnek olyan Azure-beli virtuális gépek vagy helyszíni számítógépek, amelyeken telepítve van egy felügyeleti ügynök. A célként megadott végpontok lehetnek Office 365 URL-címek, Dynamics 365 URL-címek, egyéni URL-címek, Azure-beli virtuális gépek erőforrás-azonosítói, IPv4, IPv6, FQDN vagy bármely tartománynév.
+A források lehetnek olyan Azure-beli virtuális gépek vagy helyszíni számítógépek, amelyeken telepítve van egy felügyeleti ügynök. A cél végpontok lehetnek Microsoft 365 URL-címek, Dynamics 365 URL-címek, egyéni URL-címek, Azure-beli virtuális gépek erőforrás-azonosítói, IPv4, IPv6, FQDN vagy bármely tartománynév.
 
 ### <a name="access-connection-monitor-preview"></a>Elérési kapcsolat figyelője (előzetes verzió)
 
@@ -124,18 +124,18 @@ A tesztelési csoportba felvett összes forrás, cél és tesztelési konfigurá
 
 | Teszt száma | Forrás | Cél | Konfiguráció tesztelése |
 | --- | --- | --- | --- |
-| 1 | A | D | 1. konfiguráció |
-| 2 | A | D | 2. konfiguráció |
+| 1 | A | T | 1. konfiguráció |
+| 2 | A | T | 2. konfiguráció |
 | 3 | A | E | 1. konfiguráció |
 | 4 | A | E | 2. konfiguráció |
-| 5 | B | D | 1. konfiguráció |
-| 6 | B | D | 2. konfiguráció |
+| 5 | B | T | 1. konfiguráció |
+| 6 | B | T | 2. konfiguráció |
 | 7 | B | E | 1. konfiguráció |
 | 8 | B | E | 2. konfiguráció |
-| 9 | C# | D | 1. konfiguráció |
-| 10 | C# | D | 2. konfiguráció |
-| 11 | C# | E | 1. konfiguráció |
-| 12 | C# | E | 2. konfiguráció |
+| 9 | C | T | 1. konfiguráció |
+| 10 | C | T | 2. konfiguráció |
+| 11 | C | E | 1. konfiguráció |
+| 12 | C | E | 2. konfiguráció |
 
 ### <a name="scale-limits"></a>Skálázási korlátok
 
@@ -280,8 +280,8 @@ Metrikák használata esetén állítsa be az erőforrástípust a Microsoft. Ne
 | --- | --- | --- | --- | --- | --- |
 | ProbesFailedPercent | %-Os mintavétel sikertelen | Százalék | Átlag | A kapcsolat figyelési mintavételének százalékos aránya meghiúsult. | Nincsenek méretek |
 | AverageRoundtripMs | Átlagos menetidő (MS) | Ezredmásodpercben | Átlag | A forrás és a cél között eljuttatott kapcsolat-figyelési mintavételek átlagos hálózati RTT. |             Nincsenek méretek |
-| ChecksFailedPercent (előzetes verzió) | %-Os ellenőrzés sikertelen (előzetes verzió) | Százalék | Átlag | A teszt sikertelen ellenőrzésének százalékos aránya. | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>Sourceresourceid azonosítónak <br>SourceType <br>Protokoll <br>DestinationAddress <br>DestinationName <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Régió |
-| RoundTripTimeMs (előzetes verzió) | Oda-és visszaút időpontja (MS) (előzetes verzió) | Ezredmásodpercben | Átlag | A forrás és a cél között továbbított ellenőrzések RTT. Ez az érték nem átlag. | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>Sourceresourceid azonosítónak <br>SourceType <br>Protokoll <br>DestinationAddress <br>DestinationName <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Régió |
+| ChecksFailedPercent (előzetes verzió) | %-Os ellenőrzés sikertelen (előzetes verzió) | Százalék | Átlag | A teszt sikertelen ellenőrzésének százalékos aránya. | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>Sourceresourceid azonosítónak <br>SourceType <br>Protokoll <br>DestinationAddress <br>DestinationName <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Region |
+| RoundTripTimeMs (előzetes verzió) | Oda-és visszaút időpontja (MS) (előzetes verzió) | Ezredmásodpercben | Átlag | A forrás és a cél között továbbított ellenőrzések RTT. Ez az érték nem átlag. | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>Sourceresourceid azonosítónak <br>SourceType <br>Protokoll <br>DestinationAddress <br>DestinationName <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Region |
 
 #### <a name="metric-alerts-in-azure-monitor"></a>Metrikus riasztások Azure Monitor
 

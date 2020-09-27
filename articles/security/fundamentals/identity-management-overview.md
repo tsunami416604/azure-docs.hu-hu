@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: c9483363dcf6b4a5c05d71daa75d680dd25b8308
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 54c14f1ef78694055c567ded0fdccede062605ba
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002683"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400315"
 ---
 # <a name="azure-identity-management-security-overview"></a>Az Azure Identity Management biztonsági áttekintése
 
@@ -54,7 +54,7 @@ A cikk a következő alapvető Azure Identity Management-képességekre összpon
 
 Az SSO azt jelenti, hogy az összes szükséges alkalmazáshoz és erőforráshoz csak egyszer kell bejelentkeznie egyetlen felhasználói fiók használatával. A bejelentkezést követően az összes szükséges alkalmazáshoz hozzáférhet a hitelesítéshez (például egy jelszó megadásához).
 
-Számos szervezet olyan SaaS-alkalmazásokra támaszkodik, mint az Office 365, a Box és a Salesforce a felhasználói hatékonyság érdekében. Az informatikai részlegnek az egyes SaaS-alkalmazásokban egyenként kell létrehoznia és frissítenie a felhasználói fiókokat, és a felhasználóknak minden SaaS-alkalmazáshoz meg kellett emlékezniük a jelszót.
+Számos szervezet SaaS-alkalmazásokra (például Microsoft 365, Box és Salesforce) támaszkodik a felhasználói hatékonyság érdekében. Az informatikai részlegnek az egyes SaaS-alkalmazásokban egyenként kell létrehoznia és frissítenie a felhasználói fiókokat, és a felhasználóknak minden SaaS-alkalmazáshoz meg kellett emlékezniük a jelszót.
 
 Az Azure AD kiterjeszti a helyszíni Active Directory környezeteket a felhőbe, így a felhasználók az elsődleges szervezeti fiók használatával nem csak a tartományhoz csatlakoztatott eszközökre és a vállalati erőforrásokra, hanem a feladatokhoz szükséges webes és SaaS-alkalmazásokra is bejelentkezhetnek.
 
@@ -87,14 +87,14 @@ További információ:
 * [Mi az az Azure Multi-Factor Authentication?](/azure/active-directory/authentication/multi-factor-authentication)
 * [Az Azure Multi-Factor Authentication működése](../../active-directory/authentication/concept-mfa-howitworks.md)
 
-## <a name="azure-rbac"></a>Azure-RBAC
+## <a name="azure-rbac"></a>Azure RBAC-vel
 
 Az Azure RBAC egy Azure Resource Managerra épülő engedélyezési rendszer, amely részletes hozzáférés-kezelést biztosít az Azure-beli erőforrásokhoz. Az Azure RBAC segítségével részletesen szabályozhatja a felhasználók hozzáférésének szintjét. Például korlátozhatja, hogy egy felhasználó csak a virtuális hálózatokat és egy másik felhasználót kezelje az erőforráscsoport összes erőforrásának kezeléséhez. Az Azure számos beépített szerepkört biztosít, amelyeket használhat. Az alábbiakban négy alapvető beépített szerepkört sorolunk fel. Az első három minden erőforrástípusra alkalmazható.
 
-- [Tulajdonos](/azure/role-based-access-control/built-in-roles#owner) – teljes körű hozzáféréssel rendelkezik az összes erőforráshoz, beleértve a másokhoz való hozzáférés delegálására vonatkozó jogosultságot is. 
-- [Közreműködő](/azure/role-based-access-control/built-in-roles#contributor) – az összes típusú Azure-erőforrást létrehozhatja és kezelheti, de mások számára nem biztosít hozzáférést.
+- [Tulajdonos](/azure/role-based-access-control/built-in-roles#owner) – teljes hozzáféréssel rendelkezik az összes erőforráshoz, beleértve a hozzáférés mások számára való delegálásának jogát is. 
+- [Közreműködő](/azure/role-based-access-control/built-in-roles#contributor) – Bármilyen típusú Azure-erőforrást létrehozhat és felügyelhet, hozzáférést azonban nem adhat mások számára.
 - [Olvasó](/azure/role-based-access-control/built-in-roles#reader) – megtekintheti a meglévő Azure-erőforrásokat.
-- [Felhasználói hozzáférés rendszergazdája](/azure/role-based-access-control/built-in-roles#user-access-administrator) – lehetővé teszi az Azure-erőforrásokhoz való felhasználói hozzáférés kezelését.
+- [Felhasználói hozzáférés rendszergazdája](/azure/role-based-access-control/built-in-roles#user-access-administrator) – kezelheti a felhasználók Azure-erőforrásokhoz való hozzáférését.
 
 További információ:
 
@@ -147,14 +147,14 @@ További információ:
 
 ## <a name="privileged-identity-management"></a>Privileged Identity Management
 
-A Azure AD Privileged Identity Management segítségével felügyelheti, felügyelheti és figyelheti a Kiemelt identitásokat, és hozzáférhet az Azure AD-beli erőforrásokhoz, valamint más Microsoft-online szolgáltatásokokhoz, például az Office 365-hez és a Microsoft Intunehoz.
+A Azure AD Privileged Identity Management segítségével felügyelheti, felügyelheti és figyelheti a Kiemelt identitásokat, és hozzáférhet az Azure AD-beli erőforrásokhoz, valamint más Microsoft-online szolgáltatásokokhoz, például a Microsoft 365hoz és a Microsoft Intunehoz.
 
-A felhasználóknak időnként magas jogosultsági szintű műveleteket kell végrehajtaniuk az Azure-ban vagy az Office 365-erőforrásokban vagy más SaaS-alkalmazásokban. Ez gyakran azt jelenti, hogy a szervezeteknek állandó jogosultsági szintű hozzáférést kell biztosítaniuk a felhasználóknak az Azure AD-ben. Az ilyen hozzáférés egyre nagyobb biztonsági kockázatot jelent a felhőben üzemeltetett erőforrások számára, mivel a szervezetek nem tudják eléggé megfigyelni, hogy a felhasználók hogyan használják a rendszergazdai jogosultságokat. Emellett, ha egy emelt szintű hozzáféréssel rendelkező felhasználói fiók biztonsága sérül, az egyik megszegés befolyásolhatja a szervezet teljes Felhőbeli biztonságát. Azure AD Privileged Identity Management segít csökkenteni ezt a kockázatot.
+A felhasználóknak időnként magas jogosultsági szintű műveleteket kell végezniük az Azure-ban vagy Microsoft 365 erőforrásokban vagy más SaaS-alkalmazásokban. Ez gyakran azt jelenti, hogy a szervezeteknek állandó jogosultsági szintű hozzáférést kell biztosítaniuk a felhasználóknak az Azure AD-ben. Az ilyen hozzáférés egyre nagyobb biztonsági kockázatot jelent a felhőben üzemeltetett erőforrások számára, mivel a szervezetek nem tudják eléggé megfigyelni, hogy a felhasználók hogyan használják a rendszergazdai jogosultságokat. Emellett, ha egy emelt szintű hozzáféréssel rendelkező felhasználói fiók biztonsága sérül, az egyik megszegés befolyásolhatja a szervezet teljes Felhőbeli biztonságát. Azure AD Privileged Identity Management segít csökkenteni ezt a kockázatot.
 
 A Azure AD Privileged Identity Management a következőket teheti:
 
 * Megtekintheti, hogy mely felhasználók Azure AD-rendszergazdák.
-* Igény szerinti (JIT) rendszergazdai hozzáférés engedélyezése a Microsoft-szolgáltatásokhoz, például az Office 365-hez és az Intune-hoz.
+* Igény szerinti (JIT) rendszergazdai hozzáférés engedélyezése a Microsoft-szolgáltatásokhoz, például a Microsoft 365hoz és az Intune-hoz.
 * A rendszergazdai hozzáférési előzményekkel és a rendszergazdai hozzárendelések változásaival kapcsolatos jelentések beolvasása.
 * Riasztást kaphat a Kiemelt szerepkörhöz való hozzáférésről.
 
@@ -174,7 +174,7 @@ További információ:
 
 ## <a name="hybrid-identity-managementazure-ad-connect"></a>Hibrid Identitáskezelés/Azure AD-kapcsolat
 
-A Microsoft identitáskezelési megoldásai kiterjednek a helyszíni és felhőalapú képességekre is, így egyetlen felhasználói identitás jön létre hitelesítés és engedélyezés céljából az összes erőforráshoz, helytől függetlenül. Ezt hibrid identitásnak nevezzük. A Microsoft Azure AD Connect eszköze segítségével teljesítheti a hibrid identitáskezelési célokat. Így közös identitást biztosíthat a felhasználóinak az Azure AD-vel integrált Office 365-, Azure- és SaaS-alkalmazásokhoz. Ez a tevékenység a következő jellemzőkkel bír:
+A Microsoft identitáskezelési megoldásai kiterjednek a helyszíni és felhőalapú képességekre is, így egyetlen felhasználói identitás jön létre hitelesítés és engedélyezés céljából az összes erőforráshoz, helytől függetlenül. Ezt hibrid identitásnak nevezzük. A Microsoft Azure AD Connect eszköze segítségével teljesítheti a hibrid identitáskezelési célokat. Így közös identitást biztosíthat a felhasználóinak az Azure AD-vel integrált Microsoft 365-, Azure- és SaaS-alkalmazásokhoz. Ez a tevékenység a következő jellemzőkkel bír:
 
 * Szinkronizálás
 * AD FS és összevonás-integráció

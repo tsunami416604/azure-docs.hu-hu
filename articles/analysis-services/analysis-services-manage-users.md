@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 15ae1ca6902c27732812a591f492430150c84ecb
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: c44ac820349973240328fbb92dea14668b019a12
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926178"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400791"
 ---
 # <a name="authentication-and-user-permissions"></a>Hitelesítés és felhasználói engedélyek
 
@@ -28,13 +28,13 @@ Minden ügyfélalkalmazás és eszköz egy vagy több Analysis Services [ügyfé
 
 Mindhárom ügyfél-függvénytár támogatja az Azure AD interaktív folyamatot és a nem interaktív hitelesítési módszereket. A AMOMD-t és MSOLAP-t használó alkalmazásokban a két nem interaktív módszer, Active Directory jelszó és a Active Directory integrált hitelesítési módszer is használható. Ez a két módszer soha nem eredményez előugró párbeszédpanelt.
 
-Az olyan ügyfélalkalmazások, mint az Excel és a Power BI Desktop, valamint a Visual studióhoz készült SSMS és Analysis Services projects bővítmény a legújabb verzióra való frissítéskor telepíti a kódtárak legújabb verzióit. A Power BI Desktop, a SSMS és a Analysis Services projects bővítmény havonta frissül. Az Excel [frissítve van az Office 365](https://support.office.com/article/When-do-I-get-the-newest-features-in-Office-2016-for-Office-365-da36192c-58b9-4bc9-8d51-bb6eed468516)-mel. Az Office 365 frissítései kevésbé gyakoriak, és egyes szervezetek a késleltetett csatornát használják, azaz a frissítések három hónapra vannak késleltetve.
+Az olyan ügyfélalkalmazások, mint az Excel és a Power BI Desktop, valamint a Visual studióhoz készült SSMS és Analysis Services projects bővítmény a legújabb verzióra való frissítéskor telepíti a kódtárak legújabb verzióit. A Power BI Desktop, a SSMS és a Analysis Services projects bővítmény havonta frissül. Az Excel [Microsoft 365tel frissül](https://support.microsoft.com/office/when-do-i-get-the-newest-features-for-microsoft-365-da36192c-58b9-4bc9-8d51-bb6eed468516). Microsoft 365 frissítések kevésbé gyakoriak, és egyes szervezetek a késleltetett csatornát használják, ami azt jelenti, hogy a frissítések három hónapra vannak késleltetve.
 
 Az ügyfélalkalmazás vagy az Ön által használt eszköztől függően a hitelesítés típusa és a bejelentkezés módja eltérő lehet. Az egyes alkalmazások különböző funkciókat is támogatnak a felhőalapú szolgáltatásokhoz, például a Azure Analysis Serviceshoz való csatlakozáshoz.
 
 A Power BI Desktop, a Visual Studio és a SSMS támogatja a Active Directory univerzális hitelesítést, amely az Azure Multi-Factor Authentication (MFA) támogató interaktív metódust is támogatja. Az Azure MFA lehetővé teszi az adathozzáférést és az alkalmazásokhoz való hozzáférést, miközben egyszerű bejelentkezési folyamatot biztosít. Erős hitelesítést biztosít több ellenőrzési lehetőséggel (telefonhívás, szöveges üzenet, PIN-kóddal ellátott intelligens kártya vagy mobil alkalmazás értesítése). Az interaktív MFA az Azure AD-vel az ellenőrzés előugró párbeszédpanelét eredményezheti. **Az univerzális hitelesítés ajánlott**.
 
-Ha Windows-fiókkal jelentkezik be az Azure-ba, és az univerzális hitelesítés nincs kiválasztva vagy elérhető (Excel), [Active Directory összevonási szolgáltatások (AD FS) (AD FS)](../active-directory/hybrid/how-to-connect-fed-azure-adfs.md) szükséges. Az összevonás, az Azure AD és az Office 365-felhasználók hitelesítése a helyszíni hitelesítő adatok használatával történik, és hozzáférhet az Azure-erőforrásokhoz.
+Ha Windows-fiókkal jelentkezik be az Azure-ba, és az univerzális hitelesítés nincs kiválasztva vagy elérhető (Excel), [Active Directory összevonási szolgáltatások (AD FS) (AD FS)](../active-directory/hybrid/how-to-connect-fed-azure-adfs.md) szükséges. Az összevonás, az Azure AD és a Microsoft 365 felhasználók hitelesítése helyszíni hitelesítő adatokkal történik, és hozzáférhet az Azure-erőforrásokhoz.
 
 ### <a name="sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS)
 

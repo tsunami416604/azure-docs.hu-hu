@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 06/11/2020
-ms.openlocfilehash: 4876c5cb0490a96d5a77da9ced83e1650e98379a
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 23e6834f4850cc8f44f563a12f4704fec2e13ef7
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89488830"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400808"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Az Azure Logic Apps összekötői
 
@@ -66,7 +66,7 @@ Azon logikai alkalmazások esetében, amelyeknek közvetlen hozzáférésre van 
 > [!NOTE]
 > Az ISE-ben és azok összekötői futó Logic apps, függetlenül attól, hogy az összekötők hol futnak, a rögzített díjszabási csomagot és a fogyasztáson alapuló díjszabást kell követnie. További információ: [Logic apps díjszabási modell](../logic-apps/logic-apps-pricing.md) és [Logic apps díjszabása](https://azure.microsoft.com/pricing/details/logic-apps/).
 
-| Címke | Példa | Description |
+| Címke | Példa | Leírás |
 |-------|---------|-------------|
 | **CORE** | ![Példa CORE-összekötőre](./media/apis-list/example-core-connector.png) | Az ezzel a címkével rendelkező beépített eseményindítók és műveletek a logikai alkalmazásokkal megegyező ISE-ben futnak. |
 | **ISE** | ![Példa ISE-összekötőre](./media/apis-list/example-ise-connector.png) | Az ezzel a címkével rendelkező felügyelt összekötők ugyanabban az ISE-ben futnak, mint a Logic apps. Ha egy Azure-beli virtuális hálózathoz csatlakoztatott helyszíni rendszerrel rendelkezik, az ISE lehetővé teszi, hogy a logikai alkalmazások közvetlenül hozzáférhessenek a rendszerhez a [helyszíni adatátjáró](../logic-apps/logic-apps-gateway-connection.md)nélkül. Ehelyett használhatja a rendszer **ISE** -összekötőjét, ha van ilyen, http-művelet vagy [egyéni összekötő](#custom). Az **ISE** -összekötőket nem tartalmazó helyszíni rendszerekhez használja a helyszíni adatátjárót. Az elérhető ISE-összekötők áttekintését lásd: [ISE-összekötők](#ise-connectors). |
@@ -136,7 +136,7 @@ A Logic Apps ezeket a népszerű szabványos összekötőket biztosítja a felad
 | [![Azure Service Bus felügyelt összekötő ][azure-service-bus-icon]<br> **Azure Service Bus**][azure-service-bus-doc] | A Logic Apps leggyakrabban használt összekötőjével aszinkron üzeneteket, munkameneteket és témakör-előfizetéseket kezelhet. |
 | [![SQL Server felügyelt összekötő ][sql-server-icon]<br> **SQL Server**][sql-server-doc] | Kapcsolódjon SQL Server a felhőben, vagy egy Azure SQL Database a felhőben, így kezelheti a rekordokat, futtathatja a tárolt eljárásokat vagy lekérdezéseket végezhet. |
 | [![Azure Blob Storage felügyelt összekötő ][azure-blob-storage-icon]<br> **Azure Blob <br> Storage**][azure-blob-storage-doc] | Kapcsolódjon a Storage-fiókhoz a blob-tartalmak létrehozásához és kezeléséhez. |
-| [![Office 365 Outlook által felügyelt összekötő ][office-365-outlook-icon]<br> **Office 365 <br> Outlook**][office-365-outlook-doc] | Kapcsolódjon az Office 365 e-mail-fiókjához, így e-maileket, feladatokat, naptári eseményeket és értekezleteket, névjegyeket, kéréseket és egyebeket hozhat létre és kezelhet. |
+| [![Office 365 Outlook által felügyelt összekötő ][office-365-outlook-icon]<br> **Office 365 <br> Outlook**][office-365-outlook-doc] | A munkahelyi vagy iskolai e-mail-fiókjához csatlakozhat, így e-maileket, feladatokat, naptári eseményeket és értekezleteket, névjegyeket, kéréseket és egyebeket hozhat létre és kezelhet. |
 | [![SFTP – SSH által felügyelt összekötő ][sftp-ssh-icon]<br> **SFTP – SSH**][sftp-ssh-doc] | Olyan SFTP-kiszolgálókhoz csatlakozhat, amelyek az internetről az SSH használatával érhetők el, hogy a fájlok és mappák is működjenek. |
 | [![SharePoint Online felügyelt összekötő – ][sharepoint-online-icon]<br> **SharePoint <br> online**][sharepoint-online-doc] | Kapcsolódjon a SharePoint Online-hoz, hogy kezelje a fájlokat, a mellékleteket, a mappákat és egyebeket. |
 | [![Azure Queues felügyelt összekötő ][azure-queues-icon]<br> **Azure- <br> várólisták**][azure-queues-doc] | Kapcsolódjon az Azure Storage-fiókjához, hogy várólistákat és üzeneteket lehessen létrehozni és kezelni. |
@@ -412,7 +412,7 @@ Ha a szervezete nem engedélyezi a kapcsolódást bizonyos erőforrásokhoz a Az
 
 Bár a logikai alkalmazásokból hoz létre kapcsolatokat, a kapcsolatok külön Azure-erőforrások, saját erőforrás-definíciókkal rendelkeznek. A kapcsolódási erőforrás-definíciók áttekintéséhez [töltse le a logikai alkalmazást az Azure-ból a Visual studióba](../logic-apps/manage-logic-apps-with-visual-studio.md), amely a legegyszerűbben az üzembe helyezésre kész, érvényes paraméteres Logic app-sablon létrehozása.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A [teljes összekötő listájának](/connectors) megtekintése
 * [Az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)
@@ -588,7 +588,7 @@ Bár a logikai alkalmazásokból hoz létre kapcsolatokat, a kapcsolatok külön
 [instagram-doc]: ./connectors-create-api-instagram.md "Kapcsolódjon a Instagram. Események elindítása vagy művelet"
 [mandrill-doc]: ./connectors-create-api-mandrill.md "Csatlakozhat a Mandrillhoz, ha azon keresztül szeretne kommunikálni"
 [mysql-doc]: /connectors/mysql/ "Kapcsolódjon a helyszíni MySQL-adatbázishoz, hogy el tudja olvasni és írni az adatait"
-[office-365-outlook-doc]: ./connectors-create-api-office365-outlook.md "Kapcsolódjon az Office 365-fiókjához, így e-maileket küldhet és fogadhat, kezelheti naptárát és névjegyeit, és így tovább"
+[office-365-outlook-doc]: ./connectors-create-api-office365-outlook.md "Csatlakozhat munkahelyi vagy iskolai fiókjához, így e-maileket küldhet és fogadhat, kezelheti a naptárt és a névjegyeket, és így tovább"
 [onedrive-doc]: ./connectors-create-api-onedrive.md "Csatlakozhat a személyes Microsoft-OneDrive, így feltöltheti, törölheti és listázhatja a fájlokat"
 [onedrive-for-business-doc]: ./connectors-create-api-onedriveforbusiness.md "Kapcsolódjon vállalata Microsoft-OneDrive, így feltöltheti, törölheti és listázhatja a fájlokat, és így tovább"
 [oracle-db-doc]: ./connectors-create-api-oracledatabase.md "Csatlakozhat egy Oracle-adatbázishoz, így hozzáadhat, beszúrhat, törölhet sorokat és egyéb műveleteket is"

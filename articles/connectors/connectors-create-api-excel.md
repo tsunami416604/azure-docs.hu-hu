@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 08/23/2018
 tags: connectors
-ms.openlocfilehash: b1df1219590aa94331a4404b1315eb7231c59699
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 097db6683127b410e713be53e6de838cf7734ddc
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75445882"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400723"
 ---
 # <a name="manage-excel-online-data-with-azure-logic-apps"></a>Az Excel online-beli adatkezelési Azure Logic Apps
 
@@ -33,7 +33,7 @@ Ha most ismerkedik a Logic apps szolgáltatással, tekintse át [a mi az Azure L
 
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/).
 
-* [Office 365-fiók](https://www.office.com/) munkahelyi fiókjához vagy személyes Microsoft-fiók
+* [Munkahelyi vagy iskolai fiók](https://www.office.com/) a munkahelyi fiókhoz vagy a személyes Microsoft-fiók
 
   Az Excel-adatok vesszővel tagolt (CSV) fájlként is létezhetnek egy tárolási mappában, például a OneDrive-ben. 
   Ugyanezt a CSV-fájlt is használhatja a [sima fájl összekötővel](../logic-apps/logic-apps-enterprise-integration-flatfile.md).
@@ -53,7 +53,7 @@ Ha most ismerkedik a Logic apps szolgáltatással, tekintse át [a mi az Azure L
    > [!NOTE]
    > A Logic app Designer nem tud betölteni 100 vagy több oszlopot tartalmazó táblákat. Ha lehetséges, csökkentse a kiválasztott tábla oszlopainak számát, hogy a tervező betöltse a táblát.
 
-1. Ha a rendszer kéri, jelentkezzen be az Office 365-fiókjába.
+1. Ha a rendszer kéri, jelentkezzen be a munkahelyi vagy iskolai fiókjába.
 
    A hitelesítő adataival engedélyezheti a logikai alkalmazásnak, hogy kapcsolatot hozzon létre az Excel online-ban, és hozzáférhessen az adataihoz.
 

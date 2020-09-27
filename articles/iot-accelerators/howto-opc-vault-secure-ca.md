@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: d702a3cca6a24819d2d184dc6df09153c9dcc860
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 01213cd4d04783d0d877b4565493f06fa3718f8d
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91281881"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399635"
 ---
 # <a name="run-the-opc-vault-certificate-management-service-securely"></a>Az OPC Vault tanúsítványkezelő szolgáltatás biztonságos futtatása
 
@@ -94,7 +94,7 @@ Minden rendszert folyamatosan figyelni és frissíteni kell a legújabb biztons�
 
 ### <a name="security-monitoring"></a>A biztonság monitorozása
 
-Előfizetés a megfelelő biztonsági figyelésre vagy megvalósításra. Tegyük fel például, hogy előfizet egy központi figyelési megoldásra (például Azure Security Center vagy Office 365 monitoring megoldásra), és konfigurálja megfelelően annak biztosítására, hogy a biztonsági események továbbítva legyenek a figyelési megoldásnak.
+Előfizetés a megfelelő biztonsági figyelésre vagy megvalósításra. Tegyük fel például, hogy előfizet egy központi figyelési megoldásra (például Azure Security Center vagy Microsoft 365 figyelési megoldásra), és konfigurálja megfelelően annak biztosításához, hogy a biztonsági események továbbítva legyenek a figyelési megoldásnak.
 
 > [!IMPORTANT]
 > Alapértelmezés szerint az OPC Vault szolgáltatás üzembe helyezése az [Azure Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/devops) figyelési megoldásként történik. A [Azure Security Centerhoz](https://azure.microsoft.com/services/security-center/) hasonló biztonsági megoldás hozzáadása kifejezetten ajánlott.
@@ -240,7 +240,7 @@ A HITELESÍTÉSSZOLGÁLTATÓI kulcs generálási ünnepségét olyan dokumentál
   - A tároláshoz szükséges anyagok előkészítése.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megismerte az OPC-tároló biztonságos kezelését, a következőket teheti:
 

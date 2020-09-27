@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: b354fda4d23d13b8defed4381335ab147bbece5d
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 69aac7dff80b7c85212602f1c03957a117628737
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835901"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400332"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Az Azure Identity Management és a hozzáférés-vezérlés biztonsága – ajánlott eljárások
 
@@ -229,7 +229,7 @@ Az emelt szintű hozzáférés biztonságossá tétele kulcsfontosságú az üzl
 
 A Kiemelt jogosultságú fiókok olyan fiókok, amelyek az informatikai rendszereket felügyelik és kezelik. A Cyber-támadók megcélozzák ezeket a fiókokat, hogy hozzáférjenek a szervezet adateszközeihez és rendszereihez. A rendszerjogosultságú hozzáférés biztonságossá tételéhez el kell különíteni a fiókokat és a rendszereket a rosszindulatú felhasználók számára elérhető kockázattól.
 
-Javasoljuk, hogy fejlesszen és kövessen egy olyan ütemtervet, amely biztonságos hozzáférést biztosít a Cyber-támadók ellen. További információ az Azure AD-ben, az Microsoft Azure, az Office 365-ben és más felhőalapú szolgáltatásokban kezelt vagy jelentett identitások és hozzáférések védelméről, valamint az Azure [ad-ben a hibrid és Felhőbeli üzemelő példányok védelméről](/azure/active-directory/users-groups-roles/directory-admin-roles-secure).
+Javasoljuk, hogy fejlesszen és kövessen egy olyan ütemtervet, amely biztonságos hozzáférést biztosít a Cyber-támadók ellen. További információ az Azure AD-ben, Microsoft Azure, Microsoft 365 és más felhőalapú szolgáltatásokban kezelt vagy jelentett identitások és hozzáférések védelméről, valamint az Azure AD-ben történő [hibrid és Felhőbeli üzemelő példányok védelméről](/azure/active-directory/users-groups-roles/directory-admin-roles-secure).
 
 A következő összefoglalja az [Azure ad-ben az emelt szintű hozzáférés biztonságossá tételével kapcsolatos](/azure/active-directory/users-groups-roles/directory-admin-roles-secure)ajánlott eljárásokat:
 
@@ -240,7 +240,7 @@ A következő összefoglalja az [Azure ad-ben az emelt szintű hozzáférés biz
 **Részletek**: távolítsa el a felhasználói fiókokat a kritikus rendszergazdai szerepkörökből (például Microsoft-fiókok, például hotmail.com, live.com és Outlook.com).
 
 **Ajánlott eljárás**: gondoskodjon arról, hogy az összes kritikus rendszergazdai szerepkör külön fiókkal rendelkezzen a felügyeleti feladatokhoz, hogy elkerülje az adathalászatot és más támadásokat a rendszergazdai jogosultságokkal szemben.
-**Részletek**: hozzon létre egy külön rendszergazdai fiókot, amely a rendszergazdai feladatok végrehajtásához szükséges jogosultságokat rendeli hozzá. Ezen rendszergazdai fiókok használatának letiltása a napi hatékonyságnövelő eszközökhöz, például Microsoft Office 365 e-mailekhez vagy tetszőleges webes böngészéshez.
+**Részletek**: hozzon létre egy külön rendszergazdai fiókot, amely a rendszergazdai feladatok végrehajtásához szükséges jogosultságokat rendeli hozzá. Ezen rendszergazdai fiókok használatának letiltása a napi hatékonyságnövelő eszközökhöz, például Microsoft 365 e-mailekhez vagy tetszőleges webböngészéshez.
 
 **Ajánlott eljárás**: a magas jogosultsági szintű szerepkörökben lévő fiókok azonosítása és kategorizálása.   
 **Részletek**: Azure ad Privileged Identity Management bekapcsolása után megtekintheti a globális rendszergazda, a Kiemelt szerepkörű rendszergazda és más magas jogosultsági szintű szerepkörök felhasználóit. Távolítsa el azokat a fiókokat, amelyekre már nincs szükség ezekben a szerepkörökben, és kategorizálja a rendszergazdai szerepkörökhöz rendelt többi fiókot:
@@ -281,7 +281,7 @@ Az Azure Multi-Factor Authentication bejelentkezni az összes olyan felhasznál�
 **Részletek**: olyan folyamattal rendelkezik, amely letiltja vagy törli a rendszergazdai fiókokat, amikor az alkalmazottak elhagyják a szervezetét.
 
 **Ajánlott eljárás**: a rendszergazdai fiókok rendszeres tesztelése a jelenlegi támadási technikák használatával.
-**Részletek**: az Office 365 Attack Simulator vagy egy harmadik féltől származó ajánlat használata reális támadási forgatókönyvek futtatásához a szervezetben. Ez segít a veszélyeztetett felhasználók megtalálásában a valódi támadás előtt.
+**Részletek**: Microsoft 365 Attack Simulator vagy egy harmadik féltől származó ajánlat használatával reális támadási forgatókönyveket futtathat a szervezetben. Ez segít a veszélyeztetett felhasználók megtalálásában a valódi támadás előtt.
 
 **Ajánlott**eljárás: lépéseket tesz a leggyakrabban használt módszerek enyhítésére.  
 **Részletek**: [azonosítsa a Microsoft-fiókokat olyan rendszergazdai szerepkörökben, amelyeket munkahelyi vagy iskolai fiókokra kell váltani](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#identify-microsoft-accounts-in-administrative-roles-that-need-to-be-switched-to-work-or-school-accounts)  
@@ -294,11 +294,11 @@ Az Azure Multi-Factor Authentication bejelentkezni az összes olyan felhasznál�
 
 [Multi-Factor Authentication megkövetelése minden Kiemelt szerepkörrel rendelkező és a felhasználók számára elérhető felhasználók számára](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#require-multi-factor-authentication-mfa-for-users-in-all-privileged-roles-as-well-as-exposed-users)  
 
-[Az Office 365 biztonságos pontszámának beszerzése (az Office 365 használata esetén)](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#obtain-your-office-365-secure-score-if-using-office-365)  
+[A Microsoft 365 biztonságos pontszámának beszerzése (ha Microsoft 365 használ)](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#obtain-your-office-365-secure-score-if-using-office-365)  
 
-[Tekintse át az Office 365 biztonsági és megfelelőségi útmutatóját (ha az Office 365-at használja)](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#review-the-office-365-security-and-compliance-guidance-if-using-office-365)  
+[Tekintse át a Microsoft 365 biztonsági útmutatást (ha Microsoft 365 használ)](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#review-the-office-365-security-and-compliance-guidance-if-using-office-365)  
 
-[Office 365-tevékenységek figyelése (az Office 365 használata esetén)](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#configure-office-365-activity-monitoring-if-using-office-365)  
+[Microsoft 365 tevékenység figyelésének konfigurálása (ha Microsoft 365 használ)](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#configure-office-365-activity-monitoring-if-using-office-365)  
 
 [Incidens/vészhelyzeti válasz terv tulajdonosainak létrehozása](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#establish-incidentemergency-response-plan-owners)  
 

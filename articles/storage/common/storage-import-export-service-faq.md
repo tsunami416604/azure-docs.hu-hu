@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: f3a41fbd3cbd5b7c8eccfbea8833fdfedee97510
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 08c105bd8ae9b5e0667ef5279e6c9484c631bd48
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512397"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399040"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Azure import/export szolgáltatás: gyakori kérdések
 
@@ -23,7 +23,7 @@ A következő kérdések és válaszok, amelyek akkor merülhetnek fel, ha az Az
 - A lemezek előkészítése importálásra/exportálásra
 - Importálási/exportálási feladatok
 - Szállítási lemezek
-- Egyéb
+- Különböző veszélyes anyagok és tárgyak
 
 ## <a name="about-importexport-service"></a>Az import/export szolgáltatás ismertetése
 
@@ -35,9 +35,9 @@ Igen. Az Azure import/export szolgáltatás támogatja az Azure File Storageba v
 
 Igen. Az Azure import/export szolgáltatás támogatja a Cloud Solution Providers (CSP) előfizetéseket.
 
-### <a name="can-i-use-the-azure-importexport-service-to-copy-pst-mailboxes-and-sharepoint-data-to-o365"></a>Használhatom az Azure import/export szolgáltatást a PST-postaládák és a SharePoint-alapú O365 másolására?
+### <a name="can-i-use-the-azure-importexport-service-to-copy-pst-mailboxes-and-sharepoint-data-to-microsoft-365"></a>Használhatom az Azure import/export szolgáltatást a PST-postaládák és a SharePoint-alapú adatMicrosoft 365ek másolására?
 
-Igen. További információért látogasson el a [PST-fájlok vagy SharePoint-adatok importálása az Office 365](https://technet.microsoft.com/library/ms.o365.cc.ingestionhelp.aspx)-ba című témakörbe.
+Igen. További információkért tekintse meg a [szervezete PST-fájljainak importálását ismertető](/microsoft-365/compliance/importing-pst-files-to-office-365)cikket.
 
 ### <a name="can-i-use-the-azure-importexport-service-to-copy-my-backups-offline-to-the-azure-backup-service"></a>Használhatom az Azure import/export szolgáltatást a biztonsági másolatok offline másolásához a Azure Backup szolgáltatásba?
 
@@ -120,7 +120,7 @@ Egyes tárolási fiókok helyei másodlagos szállítási helyszínekre vannak l
 
 A telefonszám és a tartományvezérlő címe a feladatok létrehozásának részeként van megadva.
 
-## <a name="miscellaneous"></a>Egyéb
+## <a name="miscellaneous"></a>Különböző veszélyes anyagok és tárgyak
 
 ### <a name="what-happens-if-i-accidentally-send-an-hdd-that-does-not-conform-to-the-supported-requirements"></a>Mi történik, ha véletlenül olyan HDD-t küldek, amely nem felel meg a támogatott követelményeknek?
 

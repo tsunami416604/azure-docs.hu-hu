@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 02/27/2019
 ms.author: aahi
-ms.openlocfilehash: b9e6561c1ed9870b669ec5e9825a376f8bd03c4d
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: b67de07777fa3f4f2b6190d8b003eb0495e66d15
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145708"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400485"
 ---
 # <a name="extract-information-in-excel-using-text-analytics-and-power-automate"></a>Adatok kinyerése az Excelben a Text Analytics és a Power automatizálás használatával 
 
@@ -23,7 +23,7 @@ Ebben az oktatóanyagban létre fog hozni egy automatizálási folyamatot egy Ex
 
 Ez a folyamat egy adott apartmankomplexum által jelentett problémák táblázatát veszi figyelembe, és két kategóriába sorolja azokat: a víz-és egyéb csoportokba. Emellett Kinyeri a nekik elküldett bérlők nevét és telefonszámát. Végül a folyamat hozzáfűzi ezt az információt az Excel-laphoz. 
 
-Az oktatóanyag segítségével megtanulhatja a következőket:
+Ebből az oktatóanyagból az alábbiakat sajátíthatja el:
 
 > [!div class="checklist"]
 > * Folyamat létrehozása a Power automatizálás használatával
@@ -37,7 +37,7 @@ Az oktatóanyag segítségével megtanulhatja a következőket:
 - Egy Text Analytics erőforrás. Ha még nem rendelkezik ilyennel, [létrehozhat egyet a Azure Portalban](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) , és az oktatóanyag elvégzéséhez használhatja az ingyenes szintet is.
 - A regisztráció során létrehozott [kulcs és végpont](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) .
 - Bérlői problémákat tartalmazó táblázat. Példa a GitHubon tárolt információkra
-- Office 365, a OneDrive for Business szolgáltatással.
+- Microsoft 365 a OneDrive for Business szolgáltatással.
 
 ## <a name="add-the-excel-file-to-onedrive-for-business"></a>Az Excel-fájl hozzáadása a OneDrive for Business szolgáltatáshoz
 
@@ -218,7 +218,7 @@ A **Ha nincs** feltételben kattintson a **művelet hozzáadása**lehetőségre,
 
 ## <a name="test-the-workflow"></a>A munkafolyamat tesztelése
 
-A képernyő jobb felső sarkában kattintson a **Mentés**, majd a **teszt**elemre. Jelölje be **az trigger művelet végrehajtása műveletet**. Kattintson a **mentés & teszt**, **folyamat futtatása**, majd a **kész**lehetőségre.
+A képernyő jobb felső sarkában kattintson a **Mentés**, majd a **teszt**elemre. Jelölje be  **az trigger művelet végrehajtása műveletet**. Kattintson a **mentés & teszt**, **folyamat futtatása**, majd a **kész**lehetőségre.
 
 Az Excel-fájl frissülni fog a OneDrive-fiókjában. A következőhöz hasonlóan fog kinézni.
 

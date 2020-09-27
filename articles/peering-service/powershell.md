@@ -8,18 +8,18 @@ ms.topic: tutorial
 ms.date: 05/18/2020
 ms.author: derekol
 Customer intent: Customer wants to measure their connection telemetry per prefix to Microsoft services with Azure Peering Service .
-ms.openlocfilehash: 163f93ab93890f27eb2a9b18cc23804595fcb822
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: a12bfa042c8741814cedc70f1dcb67dedbfd331e
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84872712"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400434"
 ---
 # <a name="tutorial-register-a-peering-service-connection-using-azure-powershell"></a>Oktatóanyag: társ-szolgáltatási kapcsolatok regisztrálása Azure PowerShell használatával
 
 Ebből az oktatóanyagból megtudhatja, hogyan regisztrálhat Azure PowerShell használatával a társ-nyilvántartó szolgáltatást.
 
-Az Azure társközi szolgáltatás olyan hálózati szolgáltatás, amely a Microsoft felhőalapú szolgáltatásaihoz, például az Office 365, a Dynamics 365, a szolgáltatott szoftver (SaaS) szolgáltatásokhoz, az Azure-hoz vagy bármely, a nyilvános interneten keresztül elérhető Microsoft-szolgáltatáshoz nyújt felhasználói kapcsolatot. Ebből a cikkből megtudhatja, hogyan regisztrálhat egy társ-szolgáltatási kapcsolatot Azure PowerShell használatával.
+Az Azure társközi szolgáltatás olyan hálózati szolgáltatás, amely a Microsoft Cloud Services, például a Microsoft 365, a Dynamics 365, a szolgáltatott szoftver (SaaS) szolgáltatásai, az Azure vagy bármely, a nyilvános interneten keresztül elérhető Microsoft-szolgáltatás számára teszi lehetővé az ügyfelek kapcsolódását. Ebből a cikkből megtudhatja, hogyan regisztrálhat egy társ-szolgáltatási kapcsolatot Azure PowerShell használatával.
 
 Ha nem rendelkezik Azure-előfizetéssel, hozzon létre most egy [fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 

@@ -10,16 +10,16 @@ ms.tgt_pltfrm: na
 ms.workload: Infrastructure-services
 ms.date: 05/2/2020
 ms.author: derekol
-ms.openlocfilehash: fbb9a6237aafe1c1b7c94d9dd23ad4c3665c0c73
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ef573817927cf732da3426d802f8f26e2e9cd4ec
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84872131"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398997"
 ---
 # <a name="register-a-peering-service-connection-by-using-the-azure-cli"></a>Társ-szolgáltatási kapcsolatok regisztrálása az Azure CLI használatával
 
-Az Azure társközi szolgáltatás olyan hálózati szolgáltatás, amely a Microsoft felhőalapú szolgáltatásaihoz, például az Office 365, a Dynamics 365, a szolgáltatott szoftver (SaaS) szolgáltatásokhoz, az Azure-hoz vagy bármely, a nyilvános interneten keresztül elérhető Microsoft-szolgáltatáshoz nyújt felhasználói kapcsolatot. Ebből a cikkből megtudhatja, hogyan regisztrálhat egy társ-szolgáltatási kapcsolatot az Azure CLI használatával.
+Az Azure társközi szolgáltatás olyan hálózati szolgáltatás, amely a Microsoft Cloud Services, például a Microsoft 365, a Dynamics 365, a szolgáltatott szoftver (SaaS) szolgáltatásai, az Azure vagy bármely, a nyilvános interneten keresztül elérhető Microsoft-szolgáltatás számára teszi lehetővé az ügyfelek kapcsolódását. Ebből a cikkből megtudhatja, hogyan regisztrálhat egy társ-szolgáltatási kapcsolatot az Azure CLI használatával.
 
 Ha nem rendelkezik Azure-előfizetéssel, hozzon létre most egy [fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 

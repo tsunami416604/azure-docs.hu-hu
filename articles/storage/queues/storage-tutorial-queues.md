@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: tutorial
 ms.reviewer: dineshm
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7474cfbd0182797bd62e97979e83e2aeb5244cbc
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 23684dbbc5cb8c2d5fc4880ae8fe1999450928e0
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89008794"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400570"
 ---
 # <a name="tutorial-work-with-azure-storage-queues-in-net"></a>Oktatóanyag: az Azure Storage-várólisták használata a .NET-ben
 
@@ -227,6 +227,8 @@ Hozzon létre egy új metódust egy üzenet lekéréséhez a várólistából. A
    # <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
 
    Ez a metódus a [ReceiveMessagesAsync](/dotnet/api/azure.storage.queues.queueclient.receivemessagesasync)meghívásával kap egy üzenetet a várólistából, amely az első paraméter 1 értékét adja vissza, így csak a következő üzenet jelenik meg a várólistán. Az üzenet fogadása után törölje azt a sorból a [DeleteMessageAsync](/dotnet/api/azure.storage.queues.queueclient.deletemessageasync)meghívásával.
+
+   Ha egy üzenetet küld a rendszer az SDK-nak a V12-es verzióval megelőzően, akkor az automatikusan Base64 kódolású lesz. A V12-es verziótól kezdve a funkciók el lettek távolítva. Ha a V12 SDK használatával kér le egy üzenetet, az nem lesz automatikusan Base64-kódolású. Explicit módon [Base64-dekódolja](/dotnet/api/system.convert.frombase64string) a tartalmat.
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v12/QueueApp/Initial.cs" id="snippet_InitialRetrieveMessage":::
 

@@ -7,16 +7,16 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: sukishen
-ms.openlocfilehash: d95330c14e0d088bdee03c0edbc2eb9d1deb12cb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 83cc7757f31a631af755155b49c7c26753618426
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91329227"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399108"
 ---
 # <a name="interconnect-with-china-using-azure-virtual-wan-and-secure-hub"></a>Interconnect Kínával az Azure Virtual WAN és a Secure hub használatával
 
-A közös autóipari, gyártási, logisztikai vagy egyéb intézmények, például a nagykövetségek esetében gyakran a Kínával való összekapcsolással kapcsolatos kérdésekkel foglalkozunk. Ezek a tökéletesítések elsősorban a Cloud Services, például az Office 365, az Azure Global Services vagy a kínai összekötő-ágaknak az ügyfél gerincével való használatához szükségesek.
+A közös autóipari, gyártási, logisztikai vagy egyéb intézmények, például a nagykövetségek esetében gyakran a Kínával való összekapcsolással kapcsolatos kérdésekkel foglalkozunk. Ezek a tökéletesítések elsősorban a Cloud Services, például a Microsoft 365, az Azure globális szolgáltatásainak vagy a kínai összekötő-ágaknak a felhasználói gerinctel való használatához szükségesek.
 
 A legtöbb esetben az ügyfelek nagy késéssel, alacsony sávszélességgel, instabil kapcsolattal és a Kínával (például Európa vagy a Egyesült Államok) való kapcsolódás magas költségeivel küzdenek.
 
@@ -95,7 +95,7 @@ Az alábbi ábrán a forgatókönyv mindkét példája látható.
 
 ![Global Reach](./media/interconnect-china/global.png)
 
-## <a name="secure-internet-breakout-for-office-365"></a><a name="secure"></a>Biztonságos internetes breakout az Office 365-hoz
+## <a name="secure-internet-breakout-for-microsoft-365"></a><a name="secure"></a>Biztonságos internetes kitörési Microsoft 365
 
 Egy másik szempont a hálózati biztonság, valamint a kínai és a virtuális WAN által létesített, valamint az ügyfél gerince közötti belépési pont naplózása. A legtöbb esetben szükség van arra, hogy Hongkongban az interneten keresztül közvetlenül elérje a Microsoft Edge hálózatot, és ezzel a Microsoft 365-szolgáltatásokhoz használt Azure-beli előtérben lévő kiszolgálókat.
 
@@ -109,7 +109,7 @@ Az alábbi ábrán egy példa látható erre a forgatókönyvre:
 
 A Hongkonghoz való kapcsolódásra vonatkozó döntéstől függően az általános architektúra némileg megváltozhat. Ez a szakasz három elérhető architektúrát mutat be különböző, VPN-vagy SDWAN-és/vagy ExpressRoute-kombinációkkal.
 
-Az összes lehetőség az Azure Virtual WAN biztonságos hub használatát használja a közvetlen M365-kapcsolathoz Hongkongban. Ezek az architektúrák az [office 365 multi-geo](https://docs.microsoft.com/office365/enterprise/office-365-multi-geo) megfelelőségi követelményeit is támogatják, és a forgalmat a következő Office 365 bejárati hely közelében tartják. Ennek eredményeképpen a Microsoft 365 Kínában való használatának is javulást jelent.
+Az összes lehetőség elérhetővé teszi az Azure Virtual WAN biztonságos hubot a közvetlen Microsoft 365 kapcsolathoz Hongkongban. Ezek az architektúrák támogatják a [Microsoft 365 multi-geo](/microsoft-365/enterprise/microsoft-365-multi-geo) megfelelőségi követelményeit is, és a forgalmat a következő Azure bejárati hely közelében tartja. Ennek eredményeképpen a Microsoft 365 Kínában való használatának is javulást jelent.
 
 Ha az Azure Virtual WAN-t internetkapcsolattal együtt használja, minden kapcsolat kihasználhatja az olyan további szolgáltatásokat, mint a [Microsoft Azure-társas szolgáltatások (Maps)](https://docs.microsoft.com/azure/peering-service/about). A MAPS szolgáltatás a Microsoft globális hálózata felé irányuló forgalom optimalizálására készült a harmadik féltől származó internetszolgáltatótól.
 
@@ -141,7 +141,7 @@ Jelenleg a ExpressRoute Global Reach minden országban/régióban nem érhető e
 
 Beállíthat például egy ExpressRoute a Microsoft-partnerekkel, és egy VPN-alagutat is összekapcsolhat az Azure Virtual WAN-hoz. Most, hogy engedélyezte, újra áthaladt a VPN és a ExpressRoute közötti átvitel Global Reach és külső szolgáltató és szolgáltatás nélkül, például a Megaport Cloud.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információt a következő cikkekben talál:
 

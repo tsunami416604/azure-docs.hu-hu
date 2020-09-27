@@ -4,12 +4,12 @@ description: Ez a cikk azt ismerteti, hogyan használhatja az Azure AD-t az Azur
 services: automation
 ms.date: 03/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: c17c9cdc02c87037a39b8d6029bc4506afa8ad28
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bbd1f977b548c2b8e7980709ea125c07e22b1fa2
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87064385"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400672"
 ---
 # <a name="use-azure-ad-to-authenticate-to-azure"></a>Az Azure AD használata az Azure-beli hitelesítéshez
 
@@ -21,7 +21,7 @@ Az Azure AD-t a következő PowerShell-modulok használatával engedélyezheti:
 
 * Azure Active Directory PowerShell a Graphhoz (AzureRM és az modulok). Azure Automation a AzureRM modult és a legutóbbi frissítését, az az modult. A funkció magában foglalja az Azure nem interaktív hitelesítését az Azure AD User (OrgId) hitelesítőadat-alapú hitelesítés használatával. Lásd: [Azure ad-2.0.2.76](https://www.powershellgallery.com/packages/AzureAD/2.0.2.76).
 
-* Microsoft Azure Active Directory a Windows PowerShellhez (MSOnline modul). Ez a modul lehetővé teszi az interakciót a Microsoft Online-ral, beleértve az Office 365-et is.
+* Microsoft Azure Active Directory a Windows PowerShellhez (MSOnline modul). Ez a modul lehetővé teszi az interakciót a Microsoft Online-ral, beleértve a Microsoft 365.
 
 >[!NOTE]
 >A PowerShell Core nem támogatja a MSOnline modult. A modul-parancsmagok használatához futtatnia kell őket a Windows PowerShellből. Javasoljuk, hogy a MSOnline modul helyett használja az újabb Azure Active Directory PowerShell-t a Graph-modulokhoz. 
@@ -46,7 +46,7 @@ Mielőtt telepítené az Azure AD-modulokat a számítógépre:
 ### <a name="install-the-msonline-module"></a>A MSOnline modul telepítése
 
 >[!NOTE]
->A MSOnline modul telepítéséhez az Office 365 rendszergazdai szerepkör tagjának kell lennie. Lásd: [Tudnivalók a rendszergazdai szerepkörökről](/microsoft-365/admin/add-users/about-admin-roles?view=o365-worldwide).
+>A MSOnline modul telepítéséhez rendszergazdai szerepkör tagjának kell lennie. Lásd: [Tudnivalók a rendszergazdai szerepkörökről](/microsoft-365/admin/add-users/about-admin-roles).
 
 1. Győződjön meg arról, hogy a Microsoft .NET Framework 3.5. x funkciója engedélyezve van a számítógépen. Valószínűleg a számítógép újabb verziója van telepítve, de a .NET-keretrendszer régebbi verzióival való visszamenőleges kompatibilitás engedélyezhető vagy letiltható. 
 

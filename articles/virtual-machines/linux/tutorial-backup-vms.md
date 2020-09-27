@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 1865d307e7b79e7e40b0e98f2dcfa2535b0313fd
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 08e6491e1d8d94e8e6e9112e5a19682018103325
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551707"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400349"
 ---
 # <a name="tutorial-back-up-and-restore-files-for-linux-virtual-machines-in-azure"></a>Oktatóanyag: Linux rendszerű virtuális gépek fájljainak biztonsági mentése és visszaállítása az Azure-ban
 
@@ -70,7 +70,7 @@ Ebben a példában bemutatjuk, hogyan állíthatja vissza az alapértelmezett /v
  
 1. A helyi számítógépen nyisson meg egy böngészőt, és írja be a virtuális gép nyilvános IP-címét az alapértelmezett nginx-weblap megtekintéséhez.
 
-    ![Alapértelmezett nginx-weblap](./media/tutorial-backup-vms/nginx-working.png)
+    ![Képernyőkép, amely az alapértelmezett Nginx-weboldalt jeleníti meg.](./media/tutorial-backup-vms/nginx-working.png)
 
 1. Jelentkezzen be a virtuális gépre SSH-val.
 
@@ -86,7 +86,7 @@ Ebben a példában bemutatjuk, hogyan állíthatja vissza az alapértelmezett /v
     
 4. A helyi számítógépen frissítse a böngészőt a CTRL + F5 billentyűkombináció lenyomásával. Láthatja, hogy az alapértelmezett nginx-lap eltűnt.
 
-    ![Alapértelmezett nginx-weblap](./media/tutorial-backup-vms/nginx-broken.png)
+    ![Az alapértelmezett Nginx-lapot megjelenítő képernyőkép eltűnik.](./media/tutorial-backup-vms/nginx-broken.png)
     
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) a helyi számítógépen.
 6. A bal oldali menüben válassza a **Virtuális gépek** elemet. 

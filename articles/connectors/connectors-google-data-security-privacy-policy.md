@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: conceptual
 ms.date: 06/05/2020
-ms.openlocfilehash: b82b79d076871b961d5c496bc70beac1b5067b2d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 2a5204be638f108b40e431b148c9cb97788c4a52
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288113"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400757"
 ---
 # <a name="data-security-and-privacy-policies-for-google-connectors-in-azure-logic-apps"></a>Adatbiztonsági és adatvédelmi szabályzatok a Google-összekötők számára Azure Logic Apps
 
@@ -40,7 +40,7 @@ Ebben a szabályzatban, ha egy Gmail fogyasztói fiókot használ, akkor a Gmail
 
 * Google Services: gmail, Google Naptár, Google Contacts, Google Drive, Google Sheets és Google feladatok
 
-* Jóváhagyott Microsoft-szolgáltatások: Dynamics 365, Excel online, Microsoft Teams, Office 365, OneDrive és SharePoint Online
+* Jóváhagyott Microsoft-szolgáltatások: Dynamics 365, Excel online, Microsoft Teams, Microsoft 365, OneDrive és SharePoint Online
 
 * Ügyfelek által felügyelt adatforrásokhoz kapcsolódó összekötők: FTP, RSS, SFTP, SMTP és SQL Server
 

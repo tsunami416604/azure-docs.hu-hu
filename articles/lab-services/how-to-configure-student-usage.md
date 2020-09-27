@@ -3,12 +3,12 @@ title: Használati beállítások konfigurálása a tanterem Labs-ban Azure Lab 
 description: Megtudhatja, hogyan konfigurálhatja a tanulók számát a laborban, regisztrálhatja őket a laborban, meghatározhatja, hogy hány órát használhatnak a virtuális gép, és így tovább.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 229147891d1456d7b7b11fd5297755842d85e600
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 742fcd2b504bce7ad2257edd559e4b66a9172d24
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445950"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399669"
 ---
 # <a name="add-and-manage-lab-users"></a>Tesztkörnyezeti felhasználók létrehozása és felügyelete
 
@@ -166,7 +166,7 @@ További kvóták beállításához tegye a következőket:
 
 Ha tanulókat szeretne felvenni egy osztályterem laborba, használja az e-mail-fiókjait. A diákok a következő típusú e-mail-fiókokkal rendelkezhetnek:
 
-- A Student-féle e-mail-fiók, amelyet az egyetemi Azure Active Directory Office 365-példánya biztosít. 
+- Az Egyetem Azure Active Directory példánya által biztosított tanulói e-mail-fiók.
 - Egy Microsoft-tartományi e-mail-fiók, például a *Outlook.com*, a *hotmail.com*, a *MSN.com*vagy a *Live.com*.
 - Nem a Microsofttól származó e-mail-fiók, például egy Yahoo! által biztosított vagy a Google. Az ilyen típusú fiókoknak azonban Microsoft-fiókhoz kell kapcsolódniuk.
 - Egy GitHub-fiók. Ennek a fióknak egy Microsoft-fiók-vel kell összekapcsolnia.

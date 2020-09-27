@@ -4,21 +4,21 @@ description: Ismerje meg, hogyan állíthatja be és kérheti le a rendszertulaj
 services: storage
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 08/12/2020
+ms.date: 09/25/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b1501b61e930b7554063356335b967583c0a3ff5
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 19d20a208672667e5a4354fd1b7d185d0c00f8d9
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89008437"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399125"
 ---
 # <a name="manage-blob-properties-and-metadata-with-net"></a>BLOB-tulajdonságok és-metaadatok kezelése a .NET-tel
 
-A bennük található adatokon kívül a Blobok támogatják a rendszer tulajdonságait és a felhasználó által definiált metaadatokat. Ez a cikk bemutatja, hogyan kezelheti a rendszertulajdonságokat és a felhasználó által definiált metaadatokat az [Azure Storage .net-hez készült ügyféloldali kódtár](/dotnet/api/overview/azure/storage?view=azure-dotnet)szolgáltatásával.
+A bennük található adatokon kívül a Blobok támogatják a rendszer tulajdonságait és a felhasználó által definiált metaadatokat. Ez a cikk bemutatja, hogyan kezelheti a rendszertulajdonságokat és a felhasználó által definiált metaadatokat az [Azure Storage .net-hez készült ügyféloldali kódtár](/dotnet/api/overview/azure/storage)szolgáltatásával.
 
 ## <a name="about-properties-and-metadata"></a>A tulajdonságok és a metaadatok
 
@@ -168,7 +168,7 @@ A következő kódrészlet egy blob metaadatait olvassa be.
 
 # <a name="net-v12"></a>[.NET V12](#tab/dotnet)
 
-A metaadatok lekéréséhez hívja meg a [GetProperties](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.getproperties) vagy a [GetPropertiesAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.getpropertiesasync) metódust a blobon vagy a tárolón a [metaadatok](/dotnet/api/azure.storage.blobs.models.blobproperties.metadata) gyűjteményének feltöltéséhez, majd olvassa el az értékeket az alábbi példában látható módon.
+A metaadatok lekéréséhez hívja meg a [GetProperties](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.getproperties) vagy a [GetPropertiesAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.getpropertiesasync) metódust a blobon vagy a tárolón a [metaadatok](/dotnet/api/azure.storage.blobs.models.blobproperties.metadata) gyűjteményének feltöltéséhez, majd olvassa el az értékeket az alábbi példában látható módon. A **GetProperties** metódusok egyetlen hívásban lekérik a blob tulajdonságait és a metaadatokat. Ez különbözik a REST API-kkal, amelyek külön hívásokat igényelnek a [blob tulajdonságainak lekéréséhez](/rest/api/storageservices/get-blob-properties) és a [blob metaadatainak lekéréséhez](/rest/api/storageservices/get-blob-metadata).
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Metadata.cs" id="Snippet_ReadBlobMetadata":::
 

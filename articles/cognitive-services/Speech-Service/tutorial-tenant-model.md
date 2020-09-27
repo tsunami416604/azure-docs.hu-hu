@@ -1,7 +1,7 @@
 ---
 title: Bérlői modell létrehozása (előzetes verzió) – beszédfelismerési szolgáltatás
 titleSuffix: Azure Cognitive Services
-description: A biztonságos, kompatibilis bérlői modell (Custom Speech Office 365-adataival) automatikus létrehozása, amely az Office 365-adatait használja a szervezetre vonatkozó feltételek optimális beszédfelismeréséhez.
+description: A biztonságos, kompatibilis bérlői modell (Custom Speech Microsoft 365 adataival) automatikus létrehozása, amely a Microsoft 365 adatait használja a szervezetre vonatkozó feltételek optimális beszédfelismeréséhez.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,19 +11,19 @@ ms.topic: tutorial
 ms.date: 06/25/2020
 ms.author: erhopf
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 52e4271fca02dc9b0eab45ca98581ecd85119b59
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 5e861182ee57a0b49d3e62a858fc97dbf0890ea3
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934480"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399703"
 ---
 # <a name="tutorial-create-a-tenant-model-preview"></a>Oktatóanyag: bérlői modell létrehozása (előzetes verzió)
 
-A bérlői modell (Custom Speech Office 365-adatokkal) egy, az Office 365 vállalati ügyfelei számára elérhető, a szervezet Office 365-adataiból automatikusan egyéni beszédfelismerési modellt generáló szolgáltatás. A modell a technikai feltételekre, a zsargonra és az emberek nevére van optimalizálva, mindezt biztonságos és megfelelő módon.
+A bérlői modell (Custom Speech Microsoft 365 adatokkal) olyan Microsoft 365 vállalati ügyfelek számára érhető el, amelyek automatikusan létrehoznak egy egyéni beszédfelismerési modellt a szervezet Microsoft 365 adataiból. A modell a technikai feltételekre, a zsargonra és az emberek nevére van optimalizálva, mindezt biztonságos és megfelelő módon.
 
 > [!IMPORTANT]
-> Ha a szervezet a bérlői modell szolgáltatással regisztrálja magát, a beszédfelismerési szolgáltatás elérheti a szervezet nyelvi modelljét. A modell az Office 365 nyilvános csoportbeli e-mailek és dokumentumok alapján jön létre, amelyeket bárki láthat a szervezetében. A szervezet Office 365-rendszergazdája be-és kikapcsolhatja a szervezeti szintű nyelvi modell használatát az Office 365 felügyeleti portálján.
+> Ha a szervezet a bérlői modell szolgáltatással regisztrálja magát, a beszédfelismerési szolgáltatás elérheti a szervezet nyelvi modelljét. A modell Microsoft 365 nyilvános csoportbeli e-mailekről és dokumentumokból jön létre, amelyeket bárki láthat a szervezetében. A szervezet rendszergazdája be-és kikapcsolhatja a szervezeti szintű nyelvi modell használatát a felügyeleti portálról.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -36,7 +36,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="enroll-in-the-tenant-model-service"></a>Regisztrálás a bérlői modell szolgáltatásban
 
-A bérlői modell üzembe helyezése előtt regisztrálni kell a bérlői modell szolgáltatásban. A regisztráció a Microsoft 365 felügyeleti központban végezhető el, és csak a Microsoft 365 rendszergazdája végezhető el.
+A bérlői modell üzembe helyezése előtt regisztrálni kell a bérlői modell szolgáltatásban. A regisztráció a Microsoft 365 felügyeleti központban végezhető el, és csak a rendszergazda által végezhető el.
 
 1. Jelentkezzen be a [Microsoft 365 Felügyeleti központba](https://admin.microsoft.com).
 
@@ -63,13 +63,13 @@ Ha a Speech SDK-val szeretné használni a bérlői modellt, szüksége lesz egy
 1. Az erőforrás létrehozásához kövesse a képernyőn megjelenő utasításokat. Ügyeljen a következőkre:
    * A **hely** a **eastus** vagy a **westus**értékre van beállítva.
    * A **díjszabás** a **S0**értékre van állítva.
-1. Válassza a **Létrehozás** lehetőséget.
+1. Kattintson a **Létrehozás** gombra.
 
    Néhány perc elteltével létrejön az erőforrás. Az előfizetési kulcs az erőforrás **Áttekintés** szakaszában érhető el.
 
 ## <a name="create-a-language-model"></a>Nyelvi modell létrehozása
 
-Miután a rendszergazda engedélyezte a bérlői modellt a szervezet számára, létrehozhatja az Office 365-adatain alapuló nyelvi modellt.
+Miután a rendszergazda engedélyezte a bérlői modellt a szervezet számára, létrehozhat egy nyelvi modellt, amely a Microsoft 365 adatain alapul.
 
 1. Jelentkezzen be a [Speech studióba](https://speech.microsoft.com/).
 1. A jobb felső sarokban válassza a **Beállítások** (fogaskerék ikon) lehetőséget, majd válassza ki a **bérlői modell beállításait**.
@@ -79,7 +79,7 @@ Miután a rendszergazda engedélyezte a bérlői modellt a szervezet számára, 
    A Speech Studio megjelenít egy üzenetet, amelyből megtudhatja, hogy jogosult-e a bérlői modell létrehozására.
 
    > [!NOTE]
-   > Az Office 365 Enterprise ügyfelei Észak-Amerika jogosultak a bérlői modell (angol) létrehozására. Ha Ön Ügyfélszéf, az ügyfél kulcsa vagy az Office 365 Government-ügyfél, akkor ez a funkció nem érhető el. A következő témakörben találhatja meg, hogy Ügyfélszéf vagy az ügyfél kulcsának ügyfele-e:
+   > A Észak-Amerika vállalati ügyfelei jogosultak a bérlői modell (angol) létrehozására. Ha Ön Ügyfélszéf, az ügyfél kulcsa vagy az Office 365 Government-ügyfél, akkor ez a funkció nem érhető el. A következő témakörben találhatja meg, hogy Ügyfélszéf vagy az ügyfél kulcsának ügyfele-e:
    > * [Ügyfélszéf](/microsoft-365/compliance/customer-lockbox-requests)
    > * [Ügyfél kulcsa](/microsoft-365/compliance/customer-key-overview)
    > * [Office 365-kormány](https://www.microsoft.com/microsoft-365/government)
@@ -296,13 +296,13 @@ Ezután újra kell építenie és futtatnia a projektet a parancssorból. A para
    ```
    "wss://{your region}.online.princeton.customspeech.ai/msgraphcustomspeech/conversation/v1".
    ```
-1. Futtassa a következő parancsot:
+1. Futtassa az alábbi parancsot:
 
    ```bash
    dotnet TenantLMSample.dll --Username=<Username> --Password=<Password> --SubscriptionKey=<Subscription-Key> --EndpointUri=<Endpoint-Uri>
    ```
 
-Ebben az oktatóanyagban megtanulta, hogyan hozhat létre egyéni beszédfelismerési modellt az Office 365-ben, hogyan helyezheti üzembe, és hogyan használhatja azt a Speech SDK-val.
+Ebben az oktatóanyagban megtanulta, hogyan használhatja a Microsoft 365-adatelemzést egy egyéni beszédfelismerési modell létrehozásához, üzembe helyezéséhez és a Speech SDK-val való használathoz.
 
 ## <a name="next-steps"></a>További lépések
 

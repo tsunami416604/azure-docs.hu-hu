@@ -9,18 +9,18 @@ ms.author: magoedte
 ms.date: 11/25/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2149fd68cdf5f2991d6035f245f70515e920045c
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 4fcd3d143cf2dbb529a8c9c78a769165621e2e89
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187200"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400417"
 ---
 # <a name="troubleshoot-hybrid-runbook-worker-issues"></a>Hibrid runbook-feldolgozó hibáinak elhárítása
 
 Ez a cikk a Azure Automation Hybrid Runbook-feldolgozókkal kapcsolatos problémák elhárításával és megoldásával kapcsolatos információkat tartalmaz. Általános információk: a [hibrid Runbook Worker áttekintése](../automation-hybrid-runbook-worker.md).
 
-## <a name="general"></a>Általános
+## <a name="general"></a>Általános kérdések
 
 A hibrid Runbook-feldolgozó attól függ, hogy az ügynök kommunikál-e a Azure Automation fiókjával a feldolgozó regisztrálásához, a Runbook-feladatok fogadásához és a jelentés állapotához. Windows esetén ez az ügynök a Windows Log Analytics ügynöke. Linux esetén ez az Log Analytics-ügynök Linux rendszerhez.
 
@@ -234,11 +234,11 @@ A naplók tárolása helyileg történik minden hibrid feldolgozón a következ�
 
 A hibrid feldolgozók a [Runbook kimenetét és üzeneteit](../automation-runbook-output-and-messages.md) ugyanúgy küldik el Azure Automationnak, mint a felhőben futó Runbook-feladatok kimenetének és üzeneteinek küldése. A részletes és a folyamat-adatfolyamokat ugyanúgy engedélyezheti, mint a runbookok.
 
-### <a name="scenario-orchestratorsandboxexe-cant-connect-to-office-365-through-proxy"></a><a name="no-orchestrator-sandbox-connect-O365"></a>Forgatókönyv: Orchestrator.Sandbox.exe nem tud kapcsolódni az Office 365-hez proxyn keresztül
+### <a name="scenario-orchestratorsandboxexe-cant-connect-to-microsoft-365-through-proxy"></a>Forgatókönyv: a Orchestrator.Sandbox.exe nem tud kapcsolódni a proxyn keresztüli Microsoft 365hoz
 
 #### <a name="issue"></a>Probléma
 
-Egy Windows Hybrid Runbook Worker-példányon futó parancsfájl nem tud a várt módon csatlakozni az Office 365-Orchestrator a homokozóban. A szkript a [MsolService](/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) kapcsolatot használja a kapcsolathoz. 
+Egy Windows hibrid Runbook-feldolgozón futó parancsfájl nem tud a várt módon csatlakozni a Orchestrator-homokozóban Microsoft 365. A szkript a [MsolService](/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) kapcsolatot használja a kapcsolathoz. 
 
 Ha úgy módosítja **Orchestrator.Sandbox.exe.config** a proxy és a mellőzési lista beállításához, a sandbox továbbra sem csatlakozik megfelelően. Úgy tűnik, hogy a várt módon működik egy **Powershell_ise.exe.config** -fájl, amely azonos proxy-és megkerülési lista-beállításokkal rendelkezik. A Service Management Automation (SMA) naplók és a PowerShell-naplók nem biztosítanak semmilyen információt a proxyval kapcsolatban.
 

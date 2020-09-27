@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: 1a829f4e5f45394d9c5bbed0db9289727b816917
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a73a2bc82c7f4e77808f751bb8ba24adcacd2e31
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91315031"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400383"
 ---
 # <a name="configure-and-access-slow-query-logs-for-azure-database-for-mysql---flexible-server-using-the-azure-portal"></a>Lassú lekérdezési naplók konfigurálása és elérése Azure Database for MySQL rugalmas kiszolgálóhoz a Azure Portal használatával
 
@@ -45,9 +45,6 @@ A **kiszolgáló paraméterei** lapon a lap bezárásával visszatérhet a napl�
 
 ## <a name="set-up-diagnostics"></a>Diagnosztika beállítása
 
-> [!NOTE]
-> A naplók eléréséhez Azure Monitor diagnosztikai beállításokkal való integráció az üzembe helyezés és a teljes funkcionalitás hamarosan elérhető lesz.
-
 A lassú lekérdezési naplók integrálva vannak Azure Monitor diagnosztikai beállításokkal, amelyek lehetővé teszik a naplók Azure Monitor naplókba, Event Hubs vagy Azure Storage-ba történő átadását.
 
 1. Az oldalsáv **figyelés** szakaszában válassza a **diagnosztikai beállítások**  >  **Hozzáadás diagnosztikai beállítások**elemet.
@@ -66,9 +63,9 @@ A lassú lekérdezési naplók integrálva vannak Azure Monitor diagnosztikai be
 
 1. A lassú lekérdezési naplók eléréséhez vizsgálja meg őket a konfigurált adattárolók között. A naplók megjelenése akár 10 percet is igénybe vehet.
 
-Ha a naplókat Azure Monitor naplókba (Log Analytics) használja, tekintse meg az elemzéshez használható [példákat](concepts-audit-logs.md#analyze-logs-in-azure-monitor-logs) . 
+Ha a naplókat Azure Monitor naplókba (Log Analytics) használja, tekintse meg az elemzéshez használható [példákat](concepts-slow-query-logs.md#analyze-logs-in-azure-monitor-logs) . 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 <!-- - See [Access slow query Logs in CLI](howto-configure-server-logs-in-cli.md) to learn how to download slow query logs programmatically.-->
 - További információ a [lassú lekérdezési naplókról](concepts-slow-query-logs.md)
 - A paraméter-definíciókkal és a MySQL-naplózással kapcsolatos további információkért tekintse meg a MySQL dokumentációját a [naplókon](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html).

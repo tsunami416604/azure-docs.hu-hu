@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 05/30/2019
-ms.openlocfilehash: 6fca3429ab96a63b01eaa7e9d1f0ae83dc46e9c7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 246fbcd9bc72683e41489daf105f174f9380c029
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119752"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400264"
 ---
 # <a name="company-work-accounts-and-partner-center"></a>Vállalati munkahelyi fiókok és partner központ
 
@@ -20,7 +20,7 @@ A partner Center vállalati munkahelyi fiókokat, más néven Azure Active Direc
 
 ## <a name="check-whether-your-company-already-has-a-work-account"></a>Győződjön meg arról, hogy a vállalata már rendelkezik munkahelyi fiókkal
 
-Ha vállalata előfizetett egy Microsoft Cloud Service-szolgáltatásra (például Azure, Microsoft Intune vagy Office 365), akkor már rendelkezik egy munkahelyi e-mail-fiókkal (más néven Azure Active Directory Bérlővel), amelyet a partner centerrel együtt használhat.
+Ha vállalata előfizetett egy Microsoft Cloud Service-re, például az Azure-ra, Microsoft Intunera vagy Microsoft 365ra, akkor már rendelkezik egy munkahelyi e-mail-fiókkal (más néven a Azure Active Directory Bérlővel), amelyet a partner Center használatával lehet használni.
 
 A következő lépésekkel ellenőrizheti:
 1. Jelentkezzen be az Azure felügyeleti portálján a következő címen: https://portal.azure.com .
@@ -52,6 +52,6 @@ Ha nem sikerül bejelentkeznie a munkahelyi fiókjába (más néven az Azure AD-
 
 ![A munkahelyi fiók bejelentkezési hibaelhárításának ábrája](./media/onboarding-aad-flow.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A kereskedelmi piactér-fiók kezelése a partner Centerben](./manage-account.md) 

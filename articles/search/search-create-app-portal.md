@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 07/01/2020
-ms.openlocfilehash: 6adbd83ddfbdb82d1054d4e74dd9492d08583ede
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.date: 09/25/2020
+ms.openlocfilehash: b69feec7249c80fc63d803a14f360614bcf880fa
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89292537"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399822"
 ---
 # <a name="quickstart-create-a-demo-app-in-the-portal-azure-cognitive-search"></a>Rövid útmutató: bemutató alkalmazás létrehozása a portálon (Azure Cognitive Search)
 
@@ -35,7 +35,7 @@ Mielőtt elkezdené, a következőkkel kell rendelkeznie:
 
   Ez a rövid útmutató a beépített ingatlan-mintaadatok és-indexet használja, mivel miniatűr képekkel rendelkezik (a varázsló támogatja a képek hozzáadását az eredmények laphoz). Az ebben a gyakorlatban használt index létrehozásához futtassa az **adat importálása** varázslót, és válassza az *Realestate-US-Sample* adatforrást.
 
-  ![adatforrások lapja mintaadatok esetén](media/search-create-app-portal/import-data-realestate.png)
+  :::image type="content" source="media/search-create-app-portal/import-data-realestate.png" alt-text="adatforrások lapja mintaadatok esetén" border="false":::
 
 Ha az index használatra kész, lépjen tovább a következő lépésre.
 
@@ -61,7 +61,7 @@ A varázsló alapvető elrendezést biztosít a megjelenített keresési eredmé
 
 1. A Description (Leírás) mezőben válasszon ki egy olyan mezőt, amely segítséget nyújthat valakinek annak eldöntésében, hogy az adott dokumentumra kattint-e.
 
-   ![Mintaadatok eredményeinek konfigurálása](media/search-create-app-portal/configure-results.png)
+   :::image type="content" source="media/search-create-app-portal/configure-results.png" alt-text="Mintaadatok eredményeinek konfigurálása" border="false":::
 
 ## <a name="add-a-sidebar"></a>Oldalsáv hozzáadása
 
@@ -83,7 +83,7 @@ A javaslatok meghatározott mező-definíciókban engedélyezettek. A varázsló
 
 Az alábbi képernyőfelvételen a varázsló azon beállításai láthatók, amelyek az alkalmazás megjelenített oldalával vannak összefoglalva. Megtekintheti a mezők kiválasztásának módját, valamint azt, hogy a rendszer hogyan használja a "mezőnév megjelenítése" kifejezést a javaslaton belüli címkézés befoglalására vagy kizárására.
 
-![Lekérdezési javaslat konfigurálása](media/search-create-app-portal/suggestions.png)
+:::image type="content" source="media/search-create-app-portal/suggestions.png" alt-text="Lekérdezési javaslat konfigurálása":::
 
 ## <a name="create-download-and-execute"></a>Létrehozás, letöltés és végrehajtás
 
@@ -95,7 +95,7 @@ Az alábbi képernyőfelvételen a varázsló azon beállításai láthatók, am
 
 Az alapul szolgáló index olyan fiktív, generált adatokból áll, amelyek a dokumentumok között duplikálva vannak, és a leírások időnként nem egyeznek meg a képpel. Az alkalmazások saját indexek alapján történő létrehozásakor több összetartó élményre számíthat.
 
-![Az alkalmazás futtatása](media/search-create-app-portal/run-app.png)
+:::image type="content" source="media/search-create-app-portal/run-app.png" alt-text="Az alkalmazás futtatása":::
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: damendo
-ms.openlocfilehash: 4d07feb54a689c32e119d997275416a5dd8f0aad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ec4b9343efab9ae501b2b3dcc606e6e3f5fe826
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84725086"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399686"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-using-network-watcher-and-grafana"></a>Hálózati biztonsági csoport folyamatábráinak kezelése és elemzése Network Watcher és Grafana használatával
 
@@ -27,7 +27,7 @@ A [hálózati biztonsági csoport (NSG) folyamatábrája](network-watcher-nsg-fl
 
 A hálózatban számos NSG engedélyezheti a flow naplózását. A naplózási adatok mennyisége nehézkesen elemezheti és betekintést nyerhet a naplókba. Ez a cikk megoldást nyújt ezen NSG-naplók központi felügyeletére a Grafana, egy nyílt forráskódú gráf-kezelő eszköz, egy ElasticSearch, egy elosztott keresési és elemzési motor, valamint a Logstash, amely egy nyílt forráskódú kiszolgálóoldali adatfeldolgozási folyamat.  
 
-## <a name="scenario"></a>Forgatókönyv
+## <a name="scenario"></a>Használati eset
 
 A NSG-flow naplói engedélyezve vannak a Network Watcher használatával, és az Azure Blob Storage-ban tárolódnak. A Logstash beépülő modul a blob Storage-ból való kapcsolódáshoz és feldolgozáshoz, valamint a ElasticSearch való elküldéséhez használható.  A flow-naplók ElasticSearch való tárolása után a rendszer elemezheti és testre szabhatja a Grafana testreszabott irányítópultján.
 
@@ -199,7 +199,7 @@ Most, hogy sikeresen konfigurálta a Grafana, hogy beolvassa a NSG flow-naplóka
 
 Az alábbi képernyőképen egy gráf és egy diagram látható, amely a felső folyamatokat és azok gyakoriságát mutatja. A folyamatokat a NSG-szabályok és a folyamatok döntés szerint is mutatják. A Grafana kifejezetten testreszabható, ezért javasoljuk, hogy irányítópultokat hozzon létre az adott figyelési igényeknek megfelelően. Az alábbi példa egy tipikus irányítópultot mutat be:
 
-![Irányítópult-gráf](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig4.png)
+![Képernyőkép, amely a NSG-szabály által szegmentált folyamatokat ábrázoló minta gráf-konfigurációt jeleníti meg.](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig4.png)
 
 ## <a name="conclusion"></a>Összegzés
 
