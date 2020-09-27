@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 06/07/2020
-ms.openlocfilehash: 8f004ff8118829ebf2d245a136cf22cdde23accc
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/25/2020
+ms.openlocfilehash: adcd07ad370ad9f1301caa41c494a33958743dd8
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88929788"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398408"
 ---
 # <a name="quickstart-use-search-explorer-to-run-queries-in-the-portal"></a>Gyors útmutató: lekérdezések futtatása a portálon a keresési tallózó használatával
 
@@ -37,11 +37,11 @@ Mielőtt elkezdené, a következőkkel kell rendelkeznie:
 
 1. Nyissa meg a keresési Explorert a parancssorból:
 
-   ![Keresési Explorer parancs a portálon](./media/search-explorer/search-explorer-cmd2.png "Keresési Explorer parancs a portálon")
+   :::image type="content" source="media/search-explorer/search-explorer-cmd2.png" alt-text="Keresési Explorer parancs a portálon" border="false":::
 
     Vagy használja a beágyazott **keresési Explorer** fület egy megnyitott indexen:
 
-   ![Keresési Explorer lap](./media/search-explorer/search-explorer-tab.png "Keresési Explorer lap")
+   :::image type="content" source="media/search-explorer/search-explorer-tab.png" alt-text="Keresési Explorer lap" border="false":::
 
 ## <a name="unspecified-query"></a>Meghatározatlan lekérdezés
 
@@ -55,7 +55,7 @@ Ha először a tartalmat kívánja megtekinteni, hajtson végre egy üres keres�
 
    **Results (Eredmények)**
    
-   ![Üres lekérdezési példa](./media/search-explorer/search-explorer-example-empty.png "Nem minősített vagy üres lekérdezési példa")
+   :::image type="content" source="media/search-explorer/search-explorer-example-empty.png" alt-text="Nem minősített vagy üres lekérdezési példa" border="false":::
 
 ## <a name="free-text-search"></a>Ingyenes szöveges keresés
 
@@ -71,7 +71,7 @@ Figyelje meg, hogy a keresési feltételek, például a lekérdezési feltétele
 
    A CTRL-F billentyűkombinációval adott feltételek alapján kereshet az eredmények között.
 
-   ![Példa ingyenes szöveges lekérdezésre](./media/search-explorer/search-explorer-example-freetext.png "Példa ingyenes szöveges lekérdezésre")
+   :::image type="content" source="media/search-explorer/search-explorer-example-freetext.png" alt-text="Példa ingyenes szöveges lekérdezésre" border="false":::
 
 ## <a name="count-of-matching-documents"></a>Egyező dokumentumok száma 
 
@@ -83,7 +83,7 @@ Adja hozzá a **$Count = True** értéket az indexben található egyezések sz�
 
    **Results (Eredmények)**
 
-   ![Dokumentumok száma – példa](./media/search-explorer/search-explorer-example-count.png "A megfelelő dokumentumok száma az indexben")
+   :::image type="content" source="media/search-explorer/search-explorer-example-count.png" alt-text="A megfelelő dokumentumok száma az indexben" border="false":::
 
 ## <a name="limit-fields-in-search-results"></a>Mezők korlátozása a keresési eredmények között
 
@@ -95,7 +95,7 @@ Adja hozzá a **$Count = True** értéket az indexben található egyezések sz�
 
    **Results (Eredmények)**
 
-   ![Példa a mezők korlátozására](./media/search-explorer/search-explorer-example-selectfield.png "Mezők korlátozása a keresési eredmények között")
+   :::image type="content" source="media/search-explorer/search-explorer-example-selectfield.png" alt-text="Mezők korlátozása a keresési eredmények között" border="false":::
 
 ## <a name="return-next-batch-of-results"></a>Az eredmények következő kötegének visszaküldése
 
@@ -107,7 +107,7 @@ Az Azure Cognitive Search a keresési rangsor alapján a legfontosabb 50-as egye
 
    **Results (Eredmények)**
 
-   ![A Batch keresési eredményei](./media/search-explorer/search-explorer-example-topskip.png "Keresési eredmények következő kötegének visszaküldése")
+   :::image type="content" source="media/search-explorer/search-explorer-example-topskip.png" alt-text="Keresési eredmények következő kötegének visszaküldése" border="false":::
 
 ## <a name="filter-expressions-greater-than-less-than-equal-to"></a>Szűrési kifejezések (nagyobb, mint, kisebb, mint, egyenlő)
 
@@ -119,7 +119,7 @@ Ha a szabadszöveges keresés helyett pontos feltételeket szeretne megadni, has
    
    **Results (Eredmények)**
 
-   ![Szűrő kifejezése](./media/search-explorer/search-explorer-example-filter.png "Szűrés feltételek szerint")
+   :::image type="content" source="media/search-explorer/search-explorer-example-filter.png" alt-text="Szűrés feltételek szerint" border="false":::
 
 ## <a name="order-by-expressions"></a>Rendezési kifejezések
 
@@ -131,7 +131,7 @@ Ha a szabadszöveges keresés helyett pontos feltételeket szeretne megadni, has
    
    **Results (Eredmények)**
 
-   ![OrderBy kifejezés](./media/search-explorer/search-explorer-example-ordery.png "Rendezési sorrend módosítása")
+   :::image type="content" source="media/search-explorer/search-explorer-example-ordery.png" alt-text="Rendezési sorrend módosítása" border="false":::
 
 **$Filter** és **$OrderBy** kifejezések is OData-konstrukciók. További információk: [OData-szűrőszintaxis](/rest/api/searchservice/odata-expression-syntax-for-azure-search).
 

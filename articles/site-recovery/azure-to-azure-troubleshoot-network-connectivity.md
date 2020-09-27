@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/06/2020
-ms.openlocfilehash: 8be0349bfff9ebc858d76928344039b6879d2b80
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 59bbca9461ff174ebe2451a6c01d84dee404cf56
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91357063"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398306"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>Az Azure – Azure virtuálisgép-hálózat csatlakozási problémáinak elhárítása
 
@@ -51,16 +51,16 @@ Próbálja meg elérni a DNS-kiszolgálót a virtuális gépről. Ha a DNS-kiszo
 ### <a name="issue-2-site-recovery-configuration-failed-151196"></a>2. probléma: Site Recovery konfiguráció nem sikerült (151196)
 
 > [!NOTE]
-> Ha a virtuális gépek **szabványos** belső terheléselosztó mögött vannak, alapértelmezés szerint nem férnek hozzá az Office 365 IP-címeihez, például a következőhöz: `login.microsoftonline.com` . Módosítsa az **alapszintű** belső terheléselosztó típusára, vagy hozzon létre kimenő hozzáférést a [standard Load Balancer terheléselosztás és kimenő szabályok konfigurálása az Azure CLI használatával](../load-balancer/quickstart-load-balancer-standard-public-cli.md?tabs=option-1-create-load-balancer-standard#create-outbound-rule-configuration)című cikkben említettek szerint.
+> Ha a virtuális gépek **szabványos** belső terheléselosztó mögött vannak, alapértelmezés szerint nem férhet hozzá a Microsoft 365 IP-címekhez, például a következőhöz: `login.microsoftonline.com` . Módosítsa az **alapszintű** belső terheléselosztó típusára, vagy hozzon létre kimenő hozzáférést a [standard Load Balancer terheléselosztás és kimenő szabályok konfigurálása az Azure CLI használatával](../load-balancer/quickstart-load-balancer-standard-public-cli.md?tabs=option-1-create-load-balancer-standard#create-outbound-rule-configuration)című cikkben említettek szerint.
 
 #### <a name="possible-cause"></a>Lehetséges ok
 
-Nem hozhatók összefüggésbe az Office 365-hitelesítés és az Identity IP4-végpontok.
+Nem lehet csatlakozni a hitelesítéshez és az Identity IP4-végpontok Microsoft 365ához.
 
 #### <a name="resolution"></a>Feloldás
 
-- A Azure Site Recovery hozzáférést igényel az Office 365 IP-tartományokhoz a hitelesítéshez.
-- Ha az Azure hálózati biztonsági csoport (NSG) szabályait/tűzfal proxyját használja a kimenő hálózati kapcsolat vezérléséhez a virtuális gépen, ügyeljen arra, hogy az Office 365 IP-tartományokhoz való kommunikációt engedélyezze. Hozzon létre egy [Azure Active Directory (Azure ad) Service tag](../virtual-network/security-overview.md#service-tags) -alapú NSG-szabályt, amely lehetővé teszi az Azure ad-nek megfelelő összes IP-cím elérését.
+- A Azure Site Recovery hozzáférést igényel a Microsoft 365 IP-tartományokhoz a hitelesítéshez.
+- Ha az Azure hálózati biztonsági csoport (NSG) szabályai/tűzfal proxyja segítségével vezérli a kimenő hálózati kapcsolatot a virtuális gépen, győződjön meg arról, hogy engedélyezi a kommunikációt a Microsoft 365 IP-címtartományok számára. Hozzon létre egy [Azure Active Directory (Azure ad) Service tag](../virtual-network/security-overview.md#service-tags) -alapú NSG-szabályt, amely lehetővé teszi az Azure ad-nek megfelelő összes IP-cím elérését.
 - Ha a jövőben új címeket adnak hozzá az Azure AD-hoz, létre kell hoznia új NSG-szabályokat.
 
 ### <a name="example-nsg-configuration"></a>Példa NSG-konfigurációra
@@ -139,6 +139,6 @@ Az egyéni proxybeállítások érvénytelenek, és a Azure Site Recovery mobili
 
 [A szükséges URL-címek](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) vagy a [szükséges IP-tartományok](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags)engedélyezéséhez kövesse a [hálózatkezelési útmutató dokumentum](./azure-to-azure-about-networking.md)lépéseit.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Azure-beli virtuális gépek replikálása másik Azure-régióba](azure-to-azure-how-to-enable-replication.md)

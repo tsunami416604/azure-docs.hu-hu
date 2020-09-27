@@ -10,16 +10,16 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 62a2ffeea1d15a16c4ec4aa6a2b88c8e34763064
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 88069c6ac90fce7e33cac6ed3c30accb18ded8bf
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87480407"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396399"
 ---
 # <a name="resource-forest-concepts-and-features-for-azure-active-directory-domain-services"></a>Az erőforrás-erdőhöz kapcsolódó fogalmak és szolgáltatások Azure Active Directory Domain Services
 
-A Azure Active Directory Domain Services (Azure AD DS) bejelentkezési élményt nyújt az örökölt, helyszíni és üzletági alkalmazásokhoz. A helyszíni és a Felhőbeli felhasználók felhasználóinak, csoportjainak és jelszavainak kivonatai szinkronizálva lesznek az Azure AD DS felügyelt tartományával. Ezek a szinkronizált jelszó-kivonatok lehetővé teszi a felhasználók számára, hogy a helyszíni AD DS, az Office 365 és a Azure Active Directory számára egyetlen hitelesítő adatot használjanak.
+A Azure Active Directory Domain Services (Azure AD DS) bejelentkezési élményt nyújt az örökölt, helyszíni és üzletági alkalmazásokhoz. A helyszíni és a Felhőbeli felhasználók felhasználóinak, csoportjainak és jelszavainak kivonatai szinkronizálva lesznek az Azure AD DS felügyelt tartományával. Ezek a szinkronizált jelszó-kivonatok lehetővé teszi a felhasználók számára, hogy a helyszíni AD DS, Microsoft 365 és Azure Active Directory számára egyetlen hitelesítő adatot használjanak.
 
 Bár a biztonságos és további biztonsági előnyöket biztosít, egyes szervezetek nem tudják szinkronizálni ezeket a felhasználói jelszavakat az Azure AD-be vagy az Azure AD DSba. Előfordulhat, hogy a szervezetben lévő felhasználók nem ismerik a jelszavukat, mert csak az intelligens kártyás hitelesítést használják. Ezek a korlátozások megakadályozzák, hogy egyes szervezetek az Azure AD DS használatával felemelik és áthelyezhetik a helyi klasszikus alkalmazásokat az Azure-ba.
 

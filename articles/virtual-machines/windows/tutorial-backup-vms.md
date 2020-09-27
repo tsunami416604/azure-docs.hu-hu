@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/06/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b5b3d1240c621a1bcdc135825e70fe164452a428
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5dc41522add580b96e178328f47bd88fc1fbf052
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86500395"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397062"
 ---
 # <a name="tutorial-back-up-and-restore-files-for-windows-virtual-machines-in-azure"></a>Oktatóanyag: A Windows rendszerű virtuális gépek fájljainak biztonsági mentése és visszaállítása az Azure-ban
 
@@ -59,7 +59,7 @@ Ebben a példában bemutatjuk, hogyan állíthatja helyre az IIS alapértelmezet
 
 1. Nyisson meg egy böngészőt, és kapcsolódjon a virtuális gép IP-címéhez, hogy megjelenjen az alapértelmezett IIS-oldal.
 
-    ![Alapértelmezett IIS-weboldal](./media/tutorial-backup-vms/iis-working.png)
+    ![Az alapértelmezett IIS-weblapot megjelenítő képernyőkép.](./media/tutorial-backup-vms/iis-working.png)
 
 1. Csatlakozzon a virtuális géphez.
 1. A virtuális gépen nyissa meg a **Fájlkezelőt**, navigáljon az \inetpub\wwwroot helyre, és törölje az **iisstart.png** fájlt.

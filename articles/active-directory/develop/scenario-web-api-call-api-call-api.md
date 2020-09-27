@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 09/26/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: b1582af2bbd97579852ead0d4462f80f3a50fe6a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9212e99ae317a3abec4bebfc7fb131c6774f8e4d
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91257146"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396195"
 ---
 # <a name="a-web-api-that-calls-web-apis-call-an-api"></a>Webes API-kat meghívó webes API: az API meghívása
 
@@ -28,11 +28,11 @@ A jogkivonat meghívása után meghívhat egy védett webes API-t. Általában a
 
 A *Microsoft. Identity. Web*használatakor három felhasználási forgatókönyv áll rendelkezésre:
 
-- [Hívás Microsoft Graph](#call-microsoft-graph)
-- [A Microsoft Graphtól eltérő webes API meghívása](#call-web-api-other-than-microsoft-graph)
-- [Token manuális beszerzése](#acquire-a-token-manually)
+- [1. lehetőség: a Microsoft Graph meghívása az Microsoft Graph SDK-val](#option-1-call-microsoft-graph-with-the-sdk)
+- [2. lehetőség: alárendelt webes API meghívása a segítő osztállyal](#option-2-call-a-downstream-web-api-with-the-helper-class)
+- [3. lehetőség: alárendelt webes API meghívása a segítő osztály nélkül](#option-3-call-a-downstream-web-api-without-the-helper-class)
 
-#### <a name="call-microsoft-graph"></a>Hívás Microsoft Graph
+#### <a name="option-1-call-microsoft-graph-with-the-sdk"></a>1. lehetőség: a Microsoft Graph meghívása az SDK-val
 
 Ebben a forgatókönyvben a Startup.cs- `.AddMicrosoftGraph()` ben *Startup.cs* megadott módon adta hozzá a [kódot](scenario-web-api-call-api-app-configuration.md#option-1-call-microsoft-graph), és közvetlenül a vezérlőben vagy az oldal konstruktorában is befecskendezheti a `GraphServiceClient` műveleteket a műveletekben való használatra. A következő példában a borotva oldal a bejelentkezett felhasználó fényképét jeleníti meg.
 
@@ -68,7 +68,7 @@ Ebben a forgatókönyvben a Startup.cs- `.AddMicrosoftGraph()` ben *Startup.cs* 
  }
 ```
 
-#### <a name="call-web-api-other-than-microsoft-graph"></a>A Microsoft Graph webes API hívása
+#### <a name="option-2-call-a-downstream-web-api-with-the-helper-class"></a>2. lehetőség: alárendelt webes API meghívása a segítő osztállyal
 
 Ebben a forgatókönyvben a Startup.cs- `.AddDownstreamWebApi()` ben *Startup.cs* megadott módon adta hozzá a [kódot](scenario-web-api-call-api-app-configuration.md#option-2-call-a-downstream-web-api-other-than-microsoft-graph), és közvetlenül is befecskendezheti a `IDownstreamWebApi` szolgáltatást a vezérlőbe vagy az oldal konstruktorba, és használhatja azokat a műveletekben:
 
@@ -115,7 +115,7 @@ A `CallWebApiForUserAsync` metódus olyan általános felülbírálásokat is ta
  }
 ```
 
-#### <a name="acquire-a-token-manually"></a>Token manuális beszerzése
+#### <a name="option-3-call-a-downstream-web-api-without-the-helper-class"></a>3. lehetőség: alárendelt webes API meghívása a segítő osztály nélkül
 
 Ha úgy döntött, hogy a tokent manuálisan szerzi be a `ITokenAcquisition` szolgáltatás használatával, most a tokent kell használnia. Ebben az esetben a következő kód továbbra is a webes API-kat meghívó webes API-kon megjelenő példa kódját mutatja be [: az alkalmazáshoz tartozó jogkivonat beszerzése](scenario-web-api-call-api-acquire-token.md). A kódot az API-vezérlők műveleteiben hívják meg. Egy *ToDoList*nevű alsóbb RÉTEGbeli API-t hív meg.
 
@@ -162,7 +162,7 @@ A folyamatot bemutató minta a MSAL Python-val még nem érhető el.
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Webes API-kat meghívó webes API: áthelyezés éles környezetbe](scenario-web-api-call-api-production.md)

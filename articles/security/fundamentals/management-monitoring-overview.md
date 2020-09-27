@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 7e6fe4f0db31687d402f960f2752fe021d3ec9d3
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: c5525fc43f23ecd1760c5a869d8171aee0e9415d
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448349"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91395770"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Az Azure biztonsági felügyeletének és figyelésének áttekintése
 Ez a cikk áttekintést nyújt az Azure által biztosított biztonsági szolgáltatásokról és szolgáltatásokról az Azure Cloud Services és a Virtual Machines felügyeletének és figyelésének támogatásához.
@@ -66,7 +66,7 @@ További információ:
 
 ## <a name="expressroute"></a>ExpressRoute
 
-Az Azure ExpressRoute használatával kiterjesztheti helyszíni hálózatait a Microsoft Cloud egy olyan dedikált privát kapcsolaton keresztül, amelyet egy kapcsolat szolgáltatója is megnyit. A ExpressRoute használatával kapcsolatokat létesíthet olyan Microsoft Cloud Services-szolgáltatásokkal, mint például az Azure, az Office 365 és a CRM Online. A kapcsolat a következő lehet:
+Az Azure ExpressRoute használatával kiterjesztheti helyszíni hálózatait a Microsoft Cloud egy olyan dedikált privát kapcsolaton keresztül, amelyet egy kapcsolat szolgáltatója is megnyit. A ExpressRoute használatával kapcsolatokat létesíthet olyan Microsoft Cloud Services-szolgáltatásokkal, mint például az Azure, a Microsoft 365 és a CRM Online. A kapcsolat a következő lehet:
 
 * Bármilyen típusú (IP VPN-) hálózat.
 * Pont-pont típusú Ethernet-hálózat.

@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 09/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: ecfb569f2791b674fe842e1c21cba972a8e9d2a7
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 61732f66aef58f5a9edcb9e095782e19e8aaffdd
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89443007"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397215"
 ---
 # <a name="vpn-gateway-design"></a>VPN Gateway kialakítás
 
@@ -77,7 +77,7 @@ A kapcsolat létrehozására használhat virtuális hálózatok közötti társv
 
 ## <a name="expressroute-private-connection"></a><a name="ExpressRoute"></a>ExpressRoute (privát kapcsolat)
 
-Az ExpressRoute használatával kiterjesztheti helyszíni hálózatait a Microsoft Cloudba egy privát kapcsolaton keresztül, amelyet egy kapcsolatszolgáltató biztosít. Az ExpressRoute használatával kapcsolatokat létesíthet a Microsoft-felhőszolgáltatásokkal, például a Microsoft Azure-ral, az Office 365-tel és a CRM Online-nal. A kapcsolat lehet egy bármely-a-bármelyik (IP VPN) hálózatból, egy pont-pont típusú Ethernet hálózatból vagy egy közös elhelyezési létesítményben lévő kapcsolati szolgáltatón keresztüli virtuális kapcsolat.
+Az ExpressRoute használatával kiterjesztheti helyszíni hálózatait a Microsoft Cloudba egy privát kapcsolaton keresztül, amelyet egy kapcsolatszolgáltató biztosít. A ExpressRoute használatával kapcsolatokat létesíthet a Microsoft Cloud Services, például a Microsoft Azure, a Microsoft 365 és a CRM Online számára. A kapcsolat lehet egy bármely-a-bármelyik (IP VPN) hálózatból, egy pont-pont típusú Ethernet hálózatból vagy egy közös elhelyezési létesítményben lévő kapcsolati szolgáltatón keresztüli virtuális kapcsolat.
 
 Az ExpressRoute-kapcsolatok nem a nyilvános interneten haladnak át. Így az ExpressRoute-kapcsolatok a tipikus internetes kapcsolatoknál megbízhatóbbak, gyorsabbak, gyorsabb a válaszidejük, és biztonságosabbak.
 
@@ -99,7 +99,7 @@ A helyek közötti VPN-t konfigurálhatja biztonságos feladatátvételi útvona
 
 A magasan elérhető kapcsolatok tervezéséhez és kialakításához tekintse meg a [magasan elérhető kapcsolatok](vpn-gateway-highlyavailable.md)című témakört.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információkért tekintse meg [A VPN Gatewayjel kapcsolatos gyakori kérdések](vpn-gateway-vpn-faq.md) című szakaszt.
 

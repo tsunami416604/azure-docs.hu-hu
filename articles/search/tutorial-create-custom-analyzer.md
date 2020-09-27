@@ -7,13 +7,13 @@ author: dereklegenzoff
 ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 06/22/2020
-ms.openlocfilehash: e714c58827ebb4ee7e50696db27644fa65a73af1
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.date: 09/25/2020
+ms.openlocfilehash: ac7cee2c1d72b4102fb397aa8093c2d38686fc88
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89290310"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397266"
 ---
 # <a name="tutorial-create-a-custom-analyzer-for-phone-numbers"></a>Oktatóanyag: egyéni analizátor létrehozása telefonszámokhoz
 
@@ -59,7 +59,7 @@ Minden kérelem esetén a következőket kell tennie:
 
 1. Cserélje le a `<YOUR-ADMIN-API-KEY>` kifejezést a keresési szolgáltatás elsődleges vagy másodlagos kulcsára.
 
-  ![Poster-kérelem URL-címe és fejléce](media/search-get-started-postman/postman-url.png "Poster-kérelem URL-címe és fejléce")
+  :::image type="content" source="media/search-get-started-postman/postman-url.png" alt-text="Poster-kérelem URL-címe és fejléce" border="false":::
 
 Ha nem ismeri a Poster-t, olvassa el az [Azure Cognitive Search REST API-k megismerése a Poster használatával](search-get-started-postman.md)című témakört.
 
@@ -239,11 +239,11 @@ Az elemzők három összetevőből állnak:
 
 Az alábbi ábrán láthatja, hogy a három összetevő hogyan működik együtt, hogy tokenize egy mondatot:
 
-  ![Elemzői folyamat diagramja tokenize](media/tutorial-create-custom-analyzer/analyzers-explained.png)
+  :::image type="content" source="media/tutorial-create-custom-analyzer/analyzers-explained.png" alt-text="Elemzői folyamat diagramja tokenize":::
 
 Ezeket a jogkivonatokat egy fordított index tárolja, amely lehetővé teszi a gyors, teljes szöveges kereséseket.  Egy fordított index lehetővé teszi a teljes szöveges keresést a lexikális analízis során kinyert összes egyedi kifejezés hozzárendelésével azokon a dokumentumokon, amelyekben azok bekövetkeznek. Az alábbi ábrán egy példa látható:
 
-  ![Példa invertált indexre](media/tutorial-create-custom-analyzer/inverted-index-explained.png)
+  :::image type="content" source="media/tutorial-create-custom-analyzer/inverted-index-explained.png" alt-text="Példa invertált indexre":::
 
 Az összes keresés megkeresi az invertált indexben tárolt feltételeket. Amikor egy felhasználó kiadja a lekérdezést:
 
@@ -251,7 +251,7 @@ Az összes keresés megkeresi az invertált indexben tárolt feltételeket. Amik
 1. Ekkor a rendszer megkeresi a fordított indexet, és a megfelelő feltételekkel rendelkező dokumentumokat vizsgálja.
 1. Végül a lekért dokumentumokat a [hasonlósági algoritmus](index-ranking-similarity.md)rangsorolja.
 
-  ![Elemzői folyamat rangsorolási hasonlóságának ábrája](media/tutorial-create-custom-analyzer/query-architecture-explained.png)
+  :::image type="content" source="media/tutorial-create-custom-analyzer/query-architecture-explained.png" alt-text="Elemzői folyamat rangsorolási hasonlóságának ábrája":::
 
 Ha a lekérdezési feltételek nem egyeznek meg a fordított index feltételeivel, az eredmények nem lesznek visszaadva. Ha többet szeretne megtudni a lekérdezések működéséről, tekintse meg a [teljes szöveges keresésről](search-lucene-query-architecture.md)szóló cikket.
 

@@ -15,12 +15,12 @@ ms.date: 07/07/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: 8809b5fdce382b7c8f913823ca8e176226d5837b
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: b85f1d8bd7249ad26ff957a72a9cc7285158caba
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89536174"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397725"
 ---
 # <a name="classic-subscription-administrator-roles-azure-roles-and-azure-ad-roles"></a>Klasszikus előfizetés-rendszergazdai szerepkörök, Azure-szerepkörök és Azure AD-szerepkörök
 
@@ -122,7 +122,7 @@ Az Azure-szerepkörök magas szinten szabályozzák az Azure-erőforrások kezel
 
 Alapértelmezés szerint az Azure-szerepkörök és az Azure AD-szerepkörök nem fedik át az Azure-t és az Azure AD-t. Ha azonban a globális rendszergazda megemeli a hozzáférését az **Azure-erőforrások hozzáférés-kezelésének** kiválasztásával a Azure Portalban, a globális rendszergazda a [felhasználói hozzáférés rendszergazdai](built-in-roles.md#user-access-administrator) szerepkört (Azure-szerepkör) kapja az adott bérlő összes előfizetéséhez. A felhasználói hozzáférés rendszergazdája szerepkörrel a felhasználó hozzáférést biztosíthat mások számára Azure-erőforrásokhoz. Ez a kapcsoló az előfizetésekhez való hozzáférés visszanyeréséhez lehet hasznos. További információ: jogosultságszint- [emelési hozzáférés az összes Azure-előfizetés és-felügyeleti csoport kezeléséhez](elevate-access-global-admin.md).
 
-Számos Azure AD-szerepkör az Azure AD-t és a Microsoft Office 365-et, például a globális rendszergazdai és a felhasználói rendszergazdai szerepköröket öleli fel. Ha például Ön a globális rendszergazda szerepkör tagja, akkor globális rendszergazdai képességekkel rendelkezik az Azure AD-ben és Office 365-ben, például módosításokat végezhet a Microsoft Exchange-ben és a Microsoft SharePointon. Alapértelmezés szerint azonban a globális rendszergazda nem rendelkezik hozzáféréssel az Azure-erőforrásokhoz.
+Számos Azure AD-szerepkör az Azure AD-t és Microsoft 365-t, például a globális rendszergazdai és a felhasználói rendszergazdai szerepköröket öleli fel. Ha például a globális rendszergazdai szerepkör tagja, globális rendszergazdai képességekkel rendelkezik az Azure AD-ben és a Microsoft 365ban, például a Microsoft Exchange és a Microsoft SharePoint módosításával. Alapértelmezés szerint azonban a globális rendszergazda nem rendelkezik hozzáféréssel az Azure-erőforrásokhoz.
 
 ![Azure RBAC és Azure AD-szerepkörök](./media/rbac-and-directory-admin-roles/azure-office-roles.png)
 

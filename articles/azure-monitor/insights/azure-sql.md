@@ -7,12 +7,12 @@ author: danimir
 ms.author: danil
 ms.date: 09/19/2020
 ms.reviewer: carlrab
-ms.openlocfilehash: 663c852574667e45a39241575d6b50038495c33d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0015138f4da9f66e2f9148e468dd1b5543ae0c4b
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91319588"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397079"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Azure SQL Database figyelése Azure SQL Analytics használatával (előzetes verzió)
 
@@ -31,7 +31,7 @@ A Azure SQL Analytics megoldás használatáról és a tipikus használati forga
 
 A Azure SQL Analytics egy Felhőbeli figyelési megoldás, amely támogatja az összes Azure SQL-adatbázis diagnosztikai telemetria folyamatos átvitelét. Mivel Azure SQL Analytics nem használ ügynököket Azure Monitorhoz való kapcsolódásra, nem támogatja a helyszíni vagy virtuális gépeken üzemeltetett SQL Server figyelését.
 
-| Összekapcsolt forrás | Támogatott | Description |
+| Összekapcsolt forrás | Támogatott | Leírás |
 | --- | --- | --- |
 | [Diagnosztikai beállítások](../platform/diagnostic-settings.md) | **Igen** | Az Azure metrika és a naplózási adatok közvetlenül az Azure-ban érkeznek Azure Monitor naplókra. |
 | [Azure Storage-fiók](../platform/resource-logs.md#send-to-log-analytics-workspace) | No | Azure Monitor nem olvassa be a Storage-fiók adatait. |
@@ -43,7 +43,7 @@ A Azure SQL Analytics egy Felhőbeli figyelési megoldás, amely támogatja az �
 
 Az alábbi táblázat a Azure SQL Analytics irányítópult két verziójának támogatott lehetőségeit ismerteti, amelyek közül az egyiket Azure SQL Database, a másikat pedig az Azure SQL felügyelt példány-adatbázisaihoz.
 
-| Azure SQL Analytics lehetőség | Description | SQL Database támogatás | Az SQL Managed Instance támogatása |
+| Azure SQL Analytics lehetőség | Leírás | SQL Database támogatás | Az SQL Managed Instance támogatása |
 | --- | ------- | ----- | ----- |
 | Erőforrás típus szerint | Az összes figyelt erőforrást megszámoló perspektíva. | Igen | Igen |
 | Insights | Hierarchikus részletezést biztosít a Intelligent Insightsba a teljesítményig. | Igen | Igen |
@@ -90,11 +90,11 @@ Ha egyes mérőszámok vagy naplók nem áramlanak be Azure Monitorba, a Azure S
 
 Miután kiválasztotta az adatbázis Azure SQL Analytics csempét, megjelenik a figyelési irányítópult.
 
-![Azure SQL Analytics áttekintése](./media/azure-sql/azure-sql-sol-overview.png)
+![A figyelési irányítópultot bemutató képernyőkép.](./media/azure-sql/azure-sql-sol-overview.png)
 
 A csempék bármelyikének kiválasztásával megnyithatja a részletezési jelentést az adott perspektívában. A perspektíva kiválasztását követően megnyílik a részletezési jelentés.
 
-![Azure SQL Analytics időtúllépések](./media/azure-sql/azure-sql-sol-metrics.png)
+![Képernyőkép, amely megjeleníti a részletezési jelentést az adott perspektívában.](./media/azure-sql/azure-sql-sol-metrics.png)
 
 Az ebben a nézetben szereplő összes perspektíva összefoglalókat biztosít az előfizetés, a kiszolgáló, a rugalmas készlet és az adatbázis szintjén. Emellett minden perspektívában látható a jelentésre vonatkozó perspektíva a jobb oldalon. Ha kijelöli az előfizetést, a kiszolgálót, a készletet vagy az adatbázist a listából, folytatja a részletezést.
 
@@ -295,7 +295,7 @@ AzureDiagnostics
 
 Míg a Azure SQL Analytics ingyenesen használható, a diagnosztika telemetria az egyes hónapokban lefoglalt ingyenes adatfeldolgozási egységeken felüli felhasználást lásd: [log Analytics díjszabása](https://azure.microsoft.com/pricing/details/monitor). Az adatfeldolgozás ingyenes egysége lehetővé teszi, hogy minden hónapban több adatbázis ingyenes figyelése legyen elérhető. Nagyobb mennyiségű aktív adatbázis több adatot és üresjárati adatbázist is felhasznál. A Azure SQL Analytics navigációs menüjében a OMS munkaterület elem kiválasztásával, majd a használat és a becsült költségek lehetőség kiválasztásával egyszerűen figyelheti az adatok betöltésének felhasználását Azure SQL Analytics.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A Azure Monitorban található [naplók](../log-query/log-query-overview.md) használatával részletes Azure SQL-információk jeleníthetők meg.
 - [Saját irányítópultokat hozhat létre](../learn/tutorial-logs-dashboards.md) , amelyek az Azure SQL-adatait jelenítik meg.

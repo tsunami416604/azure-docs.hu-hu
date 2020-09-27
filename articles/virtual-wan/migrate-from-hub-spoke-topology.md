@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 4c39a24664d36e4a69a44b7fe06835572e0cfe75
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b07ed4589a54948ef87f516ac4bb97ef8492283e
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91329244"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398835"
 ---
 # <a name="migrate-to-azure-virtual-wan"></a>Migrálás az Azure Virtual WAN-ba
 
@@ -72,7 +72,7 @@ Az alábbi ábra az Azure Virtual WAN használatával az előző szakaszban rés
 - A hubok VPN-lezárást is biztosítanak a barangoló felhasználók számára több ügyfélen keresztül, a globális Mesh hálózattal való OpenVPN-kapcsolat használatával, amely lehetővé teszi, hogy ne csak az Azure-ba migrált alkalmazások, hanem a helyszínen maradó erőforrások is elérhetők legyenek.
 - Internetkapcsolat az Azure Virtual WAN által biztosított virtuális hálózaton belüli erőforrásokhoz.
 
-Az Azure Virtual WAN által is biztosított távoli helyek internetkapcsolata. A helyi Internet breakout a partner-integráción keresztül támogatott a SaaS-szolgáltatásokhoz, például az Office 365-hoz való optimalizált hozzáféréshez.
+Az Azure Virtual WAN által is biztosított távoli helyek internetkapcsolata. A helyi Internet breakout a partner-integráción keresztül támogatott a SaaS-szolgáltatásokhoz, például a Microsoft 365hoz való optimalizált hozzáféréshez.
 
 ## <a name="migrate-to-virtual-wan"></a>Migrálás virtuális WAN-ba
 
@@ -280,6 +280,6 @@ A forgalom a következőképpen lesz átirányítva:
 
 ![8. folyamat](./media/migrate-from-hub-spoke-topology/flow8.png) 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az [Azure Virtual WAN](virtual-wan-about.md) -ról

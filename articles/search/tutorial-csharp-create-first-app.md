@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 06/20/2020
+ms.date: 09/25/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: adcd6aa2c232bf87dc82284acbe2815484660ca7
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 49dc551039e0fd82ddb4374713c59fca2f493b62
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88998560"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397946"
 ---
 # <a name="tutorial-create-your-first-search-app-using-the-net-sdk"></a>Oktatóanyag: az első keresőalkalmazás létrehozása a .NET SDK használatával
 
@@ -42,7 +42,7 @@ DocumentSearchResult<Hotel> results  = await _indexClient.Documents.SearchAsync<
 
 Ez az egy hívás az Azure-adatok keresését kezdeményezi, és visszaadja az eredményeket.
 
-![A "pool" kifejezés keresése](./media/tutorial-csharp-create-first-app/azure-search-pool.png)
+:::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-pool.png" alt-text="A * Pool * keresése" border="false":::
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -58,7 +58,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 1. A Visual Studióban navigáljon a alkalmazáshoz, és nyissa meg a megoldást az alapszintű keresés oldalra, majd válassza a **Start hibakeresés nélkül** lehetőséget (vagy nyomja le az F5 billentyűt).
 1. Írjon be néhány szót (például "WiFi", "View", "Bar", "parkoló"), és vizsgálja meg az eredményeket.
 
-    ![A "WiFi" kifejezés keresése](./media/tutorial-csharp-create-first-app/azure-search-wifi.png)
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-wifi.png" alt-text="* WiFi * keresése" border="false":::
 
 Remélhetőleg ez a projekt zökkenőmentesen fog futni, és az Azure-alkalmazás fut. Ebben az alkalmazásban sok olyan alapvető összetevő található, amely kifinomultabb kereséseket tartalmaz, ezért érdemes átmenni rajta, és újra létrehozni lépésről lépésre.
 
@@ -68,15 +68,15 @@ Ha a projektet a semmiből szeretné létrehozni, és így segít megerősíteni
 
 1. A Visual Studio 2017 vagy újabb verziójában válassza az **új/projekt** , majd **ASP.net Core webalkalmazás**lehetőséget. Adjon nevet a projektnek, például "FirstAzureSearchApp".
 
-    ![Felhőbeli projekt létrehozása](./media/tutorial-csharp-create-first-app/azure-search-project1.png)
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-project1.png" alt-text="Felhőbeli projekt létrehozása" border="false":::
 
 2. Miután rákattintott az **OK gombra** ehhez a projekthez, a rendszer a projektre vonatkozó második beállításokat kap. Válassza a **webalkalmazás (Model-View-Controller)** lehetőséget.
 
-    ![MVC-projekt létrehozása](./media/tutorial-csharp-create-first-app/azure-search-project2.png)
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-project2.png" alt-text="MVC-projekt létrehozása":::
 
 3. Ezután a Tools ( **eszközök** ) menüben válassza a **NuGet csomagkezelő** elemet, majd az **NuGet-csomagok kezelése a megoldáshoz..**. lehetőséget. A telepítéshez egy csomagra van szükség. Válassza a **Tallózás** fület, majd írja be az "Azure Cognitive Search" kifejezést a keresőmezőbe. Telepítse a **Microsoft. Azure. Search** programot, ha az megjelenik a listában (9.0.1 vagy újabb verzió). A telepítés befejezéséhez kattintson néhány további párbeszédpanelre.
 
-    ![Azure-kódtárak hozzáadása a NuGet használatával](./media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png)
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png" alt-text="Azure-kódtárak hozzáadása a NuGet használatával" border="false":::
 
 ### <a name="initialize-azure-cognitive-search"></a>Azure-Cognitive Search inicializálása
 
@@ -93,7 +93,7 @@ Ebben a példában nyilvánosan elérhető szállodai adatszolgáltatásokat has
 
 2. Ezt a fájlt még nem tesszük elérhetővé, válassza ki a fájl tulajdonságait, és módosítsa a **Másolás a kimeneti könyvtárba** beállítást, **Ha újabb**értékre kíván másolni.
 
-    ![Az alkalmazás beállításainak másolása a kimenetre](./media/tutorial-csharp-create-first-app/azure-search-copy-if-newer.png)
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-copy-if-newer.png" alt-text="Az alkalmazás beállításainak másolása a kimenetre" border="false":::
 
 ## <a name="model-data-structures"></a>Adatstruktúrák modellezése
 
@@ -513,11 +513,11 @@ Most ellenőrizzük, hogy az alkalmazás megfelelően fut-e.
 
 1. Válassza a **hibakeresés/indítás hibakeresés nélkül** lehetőséget, vagy nyomja le az F5 billentyűt. Ha helyesen kódolta a megfelelő dolgokat, a kezdeti index nézet jelenik meg.
 
-     ![Az alkalmazás megnyitása](./media/tutorial-csharp-create-first-app/azure-search-index.png)
+     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-index.png" alt-text="Az alkalmazás megnyitása" border="false":::
 
 2. Írjon be egy szöveget (például "Beach") (vagy bármilyen szöveget, amely szóba jöhet), majd kattintson a keresés ikonra. Némi eredményt kell kapnia.
 
-     ![A "Beach" kifejezés keresése](./media/tutorial-csharp-create-first-app/azure-search-beach.png)
+     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-beach.png" alt-text="A * Beach * keresése" border="false":::
 
 3. Próbálja meg beírni a "Five Star" kifejezést. Vegye figyelembe, hogy az eredmények nem jelennek meg. A kifinomultabb keresés a "Five Star" kifejezést fogja kezelni a "luxus" szinonimája, és visszaküldi az eredményeket. A Szinonimák használata az Azure Cognitive Searchban érhető el, de az első oktatóanyagokban nem jelennek meg.
  
@@ -533,7 +533,7 @@ Fontos ellenőrizni, hogy a hibakezelés funkciói működnek-e, még akkor is, 
 
 2. Futtassa az alkalmazást, írja be a "sáv" kifejezést keresési szövegként, majd kattintson a keresés ikonra. A kivételnek a hiba nézetet kell eredményeznie.
 
-     ![Hiba kényszerítése](./media/tutorial-csharp-create-first-app/azure-search-error.png)
+     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-error.png" alt-text="Hiba kényszerítése" border="false":::
 
     > [!Important]
     > Biztonsági kockázatnak számít a belső hibák számának visszaküldése a hibás lapokon. Ha az alkalmazást általános használatra szánják, végezzen vizsgálatot a biztonságos és ajánlott eljárások között, amelyekkel a hiba bekövetkezésekor vissza lehet térni.
@@ -548,7 +548,7 @@ Vegye figyelembe az alábbi elvihetőket a projektből:
 * Az aszinkron hívások kis bonyolultságot adhatnak a vezérlőhöz, de az ajánlott eljárás, ha minőségi alkalmazásokat szeretne fejleszteni.
 * Az alkalmazás egyszerű szöveges keresést hajtott végre, amelyet a **searchParameters**-ben beállított beállítások határoznak meg. Ez az osztály azonban számos olyan taggal feltölthető, amely kifinomultságot ad a kereséshez. Nem sok további munka szükséges ahhoz, hogy ez az alkalmazás lényegesen nagyobb teljesítményű legyen.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure Cognitive Search használatának legjobb felhasználói élménye érdekében további funkciókat kell hozzáadnia, például a lapozást (oldalszámok vagy végtelen görgetés használatával), valamint az automatikus kiegészítés/javaslatok lehetőséget. A kifinomultabb keresési paramétereket is érdemes megfontolni (például egy adott pont egy adott sugarán belüli földrajzi keresések és a keresési eredmények rendezése).
 

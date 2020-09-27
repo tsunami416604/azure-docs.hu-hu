@@ -5,12 +5,12 @@ author: EMaher
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
-ms.openlocfilehash: 5e1d772deb71e03311489ea61d012415860cbe54
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cf1b9db8de2c0f2c852a41d1e30343c5cef1b20b
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445321"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396688"
 ---
 # <a name="guide-to-setting-up-a-windows-template-machine-in-azure-lab-services"></a>Útmutató Windows-sablonok számítógépének beállításához Azure Lab Services
 
@@ -61,7 +61,7 @@ Ha olyan gépen van, amely nem Active Directory használ, a felhasználók manu�
 
 Ha a virtuális gép csatlakoztatva van Active Directoryhoz, beállíthatja, hogy a sablon számítógépe automatikusan rákérdezzen a tanulók számára az ismert mappák OneDrive való áthelyezésére.  
 
-Először le kell kérnie az Office-bérlő AZONOSÍTÓját.  További útmutatásért tekintse meg [az Office 365-bérlő azonosítójának megkeresése](https://docs.microsoft.com/onedrive/find-your-office-365-tenant-id)című témakört.  Az Office 365-bérlő AZONOSÍTÓját az alábbi PowerShell használatával is lekérheti.
+Először le kell kérnie a szervezet AZONOSÍTÓját.  További útmutatásért lásd [a Microsoft 365 szervezet azonosítójának megkeresése](https://docs.microsoft.com/onedrive/find-your-office-365-tenant-id)című témakört.  A szervezet AZONOSÍTÓját a következő PowerShell használatával is lekérheti.
 
 ```powershell
 Install-Module MSOnline -Confirm
@@ -71,7 +71,7 @@ $officeTenantID = Get-MSOLCompanyInformation |
     Select-Object -expand Guid
 ```
 
-Miután megtörtént az Office 365-bérlő azonosítója, állítsa be a OneDrive-t, hogy a következő PowerShell használatával Kérdezzen rá az ismert mappák OneDrive való áthelyezésére.
+A szervezet AZONOSÍTÓjának megadását követően állítsa be a OneDrive-t, hogy az ismert mappákat a következő PowerShell használatával helyezze át a OneDrive.
 
 ```powershell
 if ($officeTenantID -eq $null)
@@ -95,7 +95,7 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive"
 
 ### <a name="silently-sign-in-users-to-onedrive"></a>Felhasználók csendes bejelentkezésének OneDrive
 
-A OneDrive beállítható úgy, hogy automatikusan bejelentkezzen a bejelentkezett felhasználó Windows-hitelesítő adataival.  Az automatikus bejelentkezés olyan osztályok esetében hasznos, ahol a tanuló az Office 365 iskolai hitelesítő adataival jelentkezik be.
+A OneDrive beállítható úgy, hogy automatikusan bejelentkezzen a bejelentkezett felhasználó Windows-hitelesítő adataival.  Az automatikus bejelentkezés olyan osztályok esetében hasznos, ahol a tanuló az iskolai hitelesítő adataival jelentkezik be.
 
 ```powershell
 New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive"
@@ -115,7 +115,7 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive"
 
 ### <a name="set-the-maximum-size-of-a-file-that-to-be-download-automatically"></a>Az automatikusan letölteni kívánt fájl maximális méretének beállítása
 
-Ezt a beállítást a rendszer a felhasználók beavatkozás nélküli bejelentkezéséhez használja a OneDrive-szinkronizálási ügyfélhez a Windows hitelesítő adataival azokon az eszközökön, amelyeken az igény szerinti OneDrive-fájlok nincsenek engedélyezve. A rendszer a megadott küszöbértéknél nagyobb OneDrive rendelkező felhasználókat kéri a szinkronizálni kívánt mappák kiválasztására, mielőtt a OneDrive Sync ügyfél (OneDrive.exe) letölti a fájlokat.  A példánkban a "1111-2222-3333-4444" az Office 365-bérlő azonosítója, az 0005000 pedig 5 GB-os küszöbértéket állít be.
+Ezt a beállítást a rendszer a felhasználók beavatkozás nélküli bejelentkezéséhez használja a OneDrive-szinkronizálási ügyfélhez a Windows hitelesítő adataival azokon az eszközökön, amelyeken az igény szerinti OneDrive-fájlok nincsenek engedélyezve. A rendszer a megadott küszöbértéknél nagyobb OneDrive rendelkező felhasználókat kéri a szinkronizálni kívánt mappák kiválasztására, mielőtt a OneDrive Sync ügyfél (OneDrive.exe) letölti a fájlokat.  A példánkban a "1111-2222-3333-4444" a szervezeti azonosító, a 0005000 pedig 5 GB-os küszöbértéket állít be.
 
 ```powershell
 New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive"
@@ -124,23 +124,23 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive\DiskSpaceChec
     -Name "1111-2222-3333-4444" -Value "0005000" -PropertyType DWORD
 ```
 
-## <a name="install-and-configure-microsoft-office-365"></a>Microsoft Office telepítése és konfigurálása 365
+## <a name="install-and-configure-microsoft-365"></a>Microsoft 365 telepítése és konfigurálása
 
-### <a name="install-microsoft-office-365"></a>Telepítés Microsoft Office 365
+### <a name="install-microsoft-365"></a>Microsoft 365 telepítése
 
-Ha a sablon számítógépének szüksége van az Office-ra, javasoljuk, hogy az Office üzembe helyezését az Office [Deployment Tool (ODT)](https://www.microsoft.com/download/details.aspx?id=49117 )használatával. Létre kell hoznia egy újrafelhasználható konfigurációs fájlt az [office 365 ügyfél-konfigurációs szolgáltatás](https://config.office.com/) használatával, amely kiválaszthatja, hogy melyik architektúrára, milyen funkciókra lesz szüksége az Office-től, és milyen gyakran frissíti őket.
+Ha a sablon számítógépének szüksége van az Office-ra, javasoljuk, hogy az Office üzembe helyezését az Office [Deployment Tool (ODT)](https://www.microsoft.com/download/details.aspx?id=49117)használatával. Létre kell hoznia egy újrafelhasználható konfigurációs fájlt a [Microsoft 365 apps felügyeleti központban](https://config.office.com/) , amellyel kiválaszthatja, hogy melyik architektúra, milyen funkciókra lesz szüksége az Office-től, és milyen gyakran frissül.
 
-1. Nyissa meg az [Office 365 ügyfél-konfigurációs szolgáltatást](https://config.office.com/) , és töltse le a saját konfigurációs fájlját.
+1. Nyissa meg [Microsoft 365 alkalmazások felügyeleti központját](https://config.office.com/) , és töltse le a saját konfigurációs fájlját.
 2. Töltse le az [Office üzembehelyezési eszközét](https://www.microsoft.com/download/details.aspx?id=49117).  A letöltött fájl lesz `setup.exe` .
 3. `setup.exe /download configuration.xml`Az Office-összetevők letöltéséhez futtassa a parancsot.
 4. `setup.exe /configure configuration.xml`Az Office-összetevők telepítéséhez futtassa a parancsot.
 
-### <a name="change-the-microsoft-office-365-update-channel"></a>A Microsoft Office 365 frissítési csatorna módosítása
+### <a name="change-the-microsoft-365-update-channel"></a>A Microsoft 365 frissítési csatorna módosítása
 
-Az Office konfigurációs eszköz használatával beállíthatja, hogy az Office milyen gyakran kapjon frissítéseket. Ha azonban módosítania kell, hogy az Office milyen gyakran kapja meg a frissítéseket a telepítés után, módosíthatja a frissítési csatorna URL-címét. A frissítési csatorna URL-címei az [Office 365 ProPlus frissítési csatornájának módosítása a szervezeten belüli eszközökhöz](https://docs.microsoft.com/deployoffice/change-update-channels)című részében találhatók. Az alábbi példa bemutatja, hogyan állíthatja be az Office 365-et a havi frissítési csatorna használatára.
+Az Office konfigurációs eszköz használatával beállíthatja, hogy az Office milyen gyakran kapjon frissítéseket. Ha azonban módosítania kell, hogy az Office milyen gyakran kapja meg a frissítéseket a telepítés után, módosíthatja a frissítési csatorna URL-címét. A frissítési csatorna URL-címei a [Microsoft 365 alkalmazások frissítési csatornájának módosítása a szervezet eszközeire](https://docs.microsoft.com/deployoffice/change-update-channels)című részében találhatók. Az alábbi példa bemutatja, hogyan állíthatja be Microsoft 365 a havi frissítési csatorna használatára.
 
 ```powershell
-# Update to the Office 365 Monthly Channel
+# Update to the Microsoft 365 Monthly Channel
 Set-ItemProperty
     -Path "HKLM:\SOFTWARE\Microsoft\Office\ClickToRun\Configuration\CDNBaseUrl"
     -Name "CDNBaseUrl"
@@ -228,7 +228,7 @@ Telepítsen más alkalmazásokat, amelyeket gyakran használnak a Windows áruh�
 
 ## <a name="conclusion"></a>Összegzés
 
-Ez a cikk a Windows-sablonos virtuális gép hatékony osztályra történő előkészítésének opcionális lépéseit mutatja be.  A lépések közé tartozik a OneDrive telepítése és az Office 365 telepítése, a Windows frissítéseinek telepítése és a frissítések telepítése Microsoft Store alkalmazásokhoz.  Azt is ismertetjük, hogyan állíthatja be a frissítéseket egy olyan ütemtervre, amely az osztály számára a legjobban működik.  
+Ez a cikk a Windows-sablonos virtuális gép hatékony osztályra történő előkészítésének opcionális lépéseit mutatja be.  A lépések közé tartozik például a OneDrive telepítése és a Microsoft 365 telepítése, a Windows frissítéseinek telepítése és a frissítések telepítése Microsoft Store alkalmazásokhoz.  Azt is ismertetjük, hogyan állíthatja be a frissítéseket egy olyan ütemtervre, amely az osztály számára a legjobban működik.  
 
 ## <a name="next-steps"></a>További lépések
 Tekintse meg a Windows leállítási viselkedésének szabályozása a költségek kezeléséhez: [útmutató a Windows leállítási viselkedésének szabályozásához](how-to-windows-shutdown.md) .

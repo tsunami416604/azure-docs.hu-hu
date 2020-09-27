@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan hívhat meg üzleti folyamatokat a App Service 
 ms.topic: tutorial
 ms.date: 04/08/2020
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: ddd57bfe653766d133824f42098d9ad9adb1e56b
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 5aa563e55c64893d57522dd1154a64c7e90a1690
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962196"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397436"
 ---
 # <a name="tutorial-send-email-and-invoke-other-business-processes-from-app-service"></a>Oktatóanyag: e-mail küldése és más üzleti folyamatok meghívása App Service
 
@@ -84,7 +84,8 @@ Helyezzen üzembe egy alkalmazást az Ön által választott nyelvi keretrendsze
 1. A tervező alján kattintson az **új lépés**gombra, írja be a **Gmail** kifejezést a műveletek keresőmezőbe, és keresse meg és válassza az **e-mail küldése (v2)** lehetőséget.
     
     > [!TIP]
-    > Más típusú integrációkat is kereshet, például a SendGrid, a MailChimp, az Office 365 és a SalesForce. További információ: [Logic apps dokumentáció](../logic-apps/index.yml).
+    > Más típusú integrációkat is kereshet, például a SendGrid, a MailChimp, a Microsoft 365 és a SalesForce. További információ: [Logic apps dokumentáció](../logic-apps/index.yml).
+
 1. A **Gmail** párbeszédpanelen válassza a **Bejelentkezés** lehetőséget, és jelentkezzen be arra a Gmail-fiókba, ahová el szeretné küldeni az e-mailt.
 
     ![Képernyőkép, amely a Gmail-fiókba való bejelentkezéshez használt Gmail-párbeszédpanelt jeleníti meg, amelyről e-mailt szeretne küldeni.](./media/tutorial-send-email/gmail-sign-in.png)

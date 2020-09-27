@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 06/17/2020
-ms.openlocfilehash: 6ca03e56d49d26fcd34a25ce1e3734db65b19b65
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 7b42c12499977b5f7bc1704c57904e90be2e8466
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646841"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398014"
 ---
 # <a name="create-a-consulting-service-offer"></a>Tanácsadási szolgáltatásajánlat létrehozása
 
@@ -25,7 +25,7 @@ Az ajánlat létrehozása előtt tekintse át az előfeltételeket a [tanácsad�
 A kereskedelmi piactéren való közzététel előnyei:
 
 - Népszerűsítse vállalatát a Microsoft Brand használatával.
-- Az Azure Marketplace-en több mint 100 000 000 Office 365-és Dynamics 365-felhasználó érhető el AppSource és több mint 200 000 szervezeten keresztül.
+- Az Azure Marketplace-en keresztül akár több mint 100 000 000 Microsoft 365 és Dynamics 365 felhasználó is elérhető a AppSource és több mint 200 000 szervezeten keresztül.
 - Kiváló minőségű érdeklődőket fogadhat ezekből a Piactérről.
 - A szolgáltatásait a Microsoft és a kereskedelmi csapatok népszerűsítik
 
@@ -101,7 +101,7 @@ Ezen a lapon állíthatja be azt az elsődleges terméket, amelyet a tanácsadá
     - Elemzés
     - Alkalmazások modernizálása
     - Archívum
-    - AI + Machine Learning
+    - Mesterséges intelligencia és gépi tanulás
     - Backup
     - Big Data
     - Adatplatform
@@ -110,7 +110,7 @@ Ezen a lapon állíthatja be azt az elsődleges terméket, amelyet a tanácsadá
     - Vészhelyreállítás
     - Identitás
     - Eszközök internetes hálózata
-    - Migrálás
+    - Áttelepítés
     - Hálózatkezelés
     - Biztonság
     - Tárolás
@@ -141,7 +141,7 @@ Itt megadhatja a piactéren megjelenő ajánlat részleteit. Ebbe beletartozik a
 4. Iparágak
 5. Ajánlat neve
 6. Összegzés
-7. Description
+7. Leírás
 8. Képernyőképek/videók
 
 <br>Íme egy példa arra, hogyan jelennek meg az ajánlati információk a Microsoft AppSourceban (a felsorolt árak kizárólag a tényleges költségekkel kapcsolatos célokat szolgálnak):
@@ -156,11 +156,11 @@ Itt megadhatja a piactéren megjelenő ajánlat részleteit. Ebbe beletartozik a
 4. Iparágak
 5. Ajánlat neve
 6. Összegzés
-7. Description
+7. Leírás
 8. Képernyőképek/videók
 9. Dokumentumok
 
-### <a name="name"></a>Name
+### <a name="name"></a>Név
 
 Az itt megadott név az ajánlat címeként jelenik meg. Ez a mező előre ki van töltve az ajánlat- **alias** mezőben megadott szöveggel az ajánlat létrehozásakor. A nevet később módosíthatja.
 
@@ -174,7 +174,7 @@ A név:
 
 Adja meg az ajánlat rövid leírását. Ez akár 100 karakter hosszú lehet, és a piactér keresési eredményeiben használható.
 
-### <a name="description"></a>Description
+### <a name="description"></a>Leírás
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 

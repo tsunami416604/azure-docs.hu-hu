@@ -6,12 +6,12 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/09/2020
-ms.openlocfilehash: b5bf29969f8b6d54215e2b2f1a2d0b1587faad6f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b2fc13158d197aaa2e870d1b772386628ee3f9bc
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91332185"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398801"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Gyakori kérdések az Azure Cosmos DB-hez készült Azure Synapse Linkkel kapcsolatban
 
@@ -21,7 +21,7 @@ A Azure Cosmos DB Azure szinapszis-hivatkozása szoros integrációt hoz létre 
 
 ### <a name="is-synapse-link-supported-for-all-azure-cosmos-db-apis"></a>Támogatott-e a szinapszis-hivatkozás az összes Azure Cosmos DB API-hoz?
 
-A nyilvános előzetes kiadásban a szinapszis hivatkozás a Azure Cosmos DB SQL (Core) API és a MongoDB Azure Cosmos DB API esetében támogatott. A Cassandra API támogatása jelenleg a GateD Preview-ban érhető el. Ha hozzáférést szeretne kérni a megtekintett előzetes verzióhoz, nyissa meg a [Azure Cosmos db csapatot](mailto:cosmosdbsynapselink@microsoft.com).
+A nyilvános előzetes kiadásban a szinapszis hivatkozás a Azure Cosmos DB SQL (Core) API és a MongoDB Azure Cosmos DB API esetében támogatott. 
 
 ### <a name="is-synapse-link-supported-for-multi-region-azure-cosmos-accounts"></a>Támogatott-e a szinapszis-hivatkozás a többrégiós Azure Cosmos-fiókok esetében?
 
@@ -156,7 +156,7 @@ A rendszer a következő ikonnal fogja megjeleníteni a tranzakciós tároló t�
 
 Jelenleg Azure Cosmos DB hitelesítő adatokat a rendszer a társított szolgáltatásnak a Azure Cosmos DB adatbázisokhoz hozzáféréssel rendelkező felhasználó általi létrehozásakor adja át. A tárolóhoz való hozzáférés a munkaterülethez hozzáférő más felhasználók számára is elérhető.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Tudnivalók a [szinapszis-hivatkozás előnyeiről](synapse-link.md#synapse-link-benefits)
 

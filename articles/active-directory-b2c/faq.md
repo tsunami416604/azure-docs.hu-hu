@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 85ce79644ead939eaeffa5cfffeb495da15e7fe5
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: e701ac8cee15a338c363ec2697e02e82bb4f4e68
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88270665"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396433"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: gyakori kérdések (GYIK)
 
@@ -29,9 +29,9 @@ Két gyakori oka van annak, hogy az Azure AD-bővítmény miért nem működik. 
 
 Az Azure AD és a Azure AD B2C külön termék-ajánlat, és nem létezhet egyszerre ugyanabban a bérlőben. Egy Azure AD-bérlő a szervezetet jelöli. Az Azure AD B2C bérlők a függő entitások alkalmazásaival használható identitások gyűjteményét jelölik. Ha **új OpenID Connect-szolgáltatót** ad hozzá a **Azure ad B2C >-identitás-szolgáltatóhoz** vagy egyéni szabályzatokhoz, a Azure ad B2C összevonása az Azure ad-be, amely lehetővé teszi a szervezet alkalmazottainak hitelesítését.
 
-### <a name="can-i-use-azure-ad-b2c-to-provide-social-login-facebook-and-google-into-office-365"></a>Használhatom a közösségi bejelentkezést (Facebook és Google +) az Office 365-be Azure AD B2C?
+### <a name="can-i-use-azure-ad-b2c-to-provide-social-login-facebook-and-google-into-microsoft-365"></a>Használhatom a Azure AD B2Ct a közösségi bejelentkezés (Facebook és a Google +) megadására a Microsoft 365ba?
 
-Azure AD B2C nem használható a felhasználók Microsoft Office 365-hez való hitelesítéséhez. Az Azure AD a Microsoft megoldás az SaaS-alkalmazásokhoz való alkalmazottak hozzáférésének kezelésére, és olyan funkciókkal rendelkezik, amelyek erre a célra lettek kialakítva, például licencelés és feltételes hozzáférés. A Azure AD B2C identitás-és hozzáférés-kezelési platformot biztosít a webes és mobil alkalmazások létrehozásához. Ha Azure AD B2C úgy van konfigurálva, hogy az Azure AD-bérlőre összevonása, az Azure AD-bérlő kezeli az alkalmazottak hozzáférését a Azure AD B2C-on alapuló alkalmazásokhoz.
+Azure AD B2C nem használható a Microsoft 365 felhasználók hitelesítéséhez. Az Azure AD a Microsoft megoldás az SaaS-alkalmazásokhoz való alkalmazottak hozzáférésének kezelésére, és olyan funkciókkal rendelkezik, amelyek erre a célra lettek kialakítva, például licencelés és feltételes hozzáférés. A Azure AD B2C identitás-és hozzáférés-kezelési platformot biztosít a webes és mobil alkalmazások létrehozásához. Ha Azure AD B2C úgy van konfigurálva, hogy az Azure AD-bérlőre összevonása, az Azure AD-bérlő kezeli az alkalmazottak hozzáférését a Azure AD B2C-on alapuló alkalmazásokhoz.
 
 ### <a name="what-are-local-accounts-in-azure-ad-b2c-how-are-they-different-from-work-or-school-accounts-in-azure-ad"></a>Mik a Azure AD B2C helyi fiókjai? Miben különböznek a munkahelyi vagy iskolai fiókok az Azure AD-ben?
 

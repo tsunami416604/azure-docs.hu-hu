@@ -8,12 +8,12 @@ ms.service: azure
 ms.topic: overview
 ms.workload: infrastructure
 ms.date: 08/24/2018
-ms.openlocfilehash: 0a383e8e2c38dbd00e0a55f9debb9b4daf40fa9c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 0f67939358a4395416ea28c1c459d4890ab0351d
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87832756"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397810"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Első lépések az Azure IT-kezelők számára
 
@@ -68,7 +68,7 @@ Az Azure számos, a többek között elérhető, a Azure App Service és az Azur
 
 Az SaaS egy központilag üzemeltetett és felügyelt szoftver. Általában egy több-bérlős architektúrán alapulnak – az alkalmazás egyetlen verzióját használja a rendszer az összes ügyfél számára. Több példányra is méretezhető, így biztosítható a legjobb teljesítmény az összes helyen. Az SaaS-szoftverek általában havi vagy éves előfizetésen keresztüli licenccel rendelkeznek. A SaaS-szoftvergyártók felelősek a szoftver összes összetevőjéért, így minden Ön által kezelt szolgáltatás.
 
-A Microsoft Office 365 egy SaaS-ajánlat jó példája. Az előfizetők havi vagy éves előfizetési díjat fizetnek, és a Microsoft Exchange, a Microsoft OneDrive, valamint a Microsoft Office csomag többi részét szolgáltatásként kapják meg. Az előfizetők mindig a legújabb verziót kapják meg, az Exchange-kiszolgálót pedig felügyeli. Az Office minden évben történő telepítéséhez és frissítéséhez képest ez olcsóbb, és kevesebb erőfeszítést igényel.
+Microsoft 365 egy SaaS-ajánlat jó példája. Az előfizetők havi vagy éves előfizetési díjat fizetnek, és a Microsoft Exchange, a Microsoft OneDrive, valamint a Microsoft Office csomag többi részét szolgáltatásként kapják meg. Az előfizetők mindig a legújabb verziót kapják meg, az Exchange-kiszolgálót pedig felügyeli. Az Office minden évben történő telepítéséhez és frissítéséhez képest ez olcsóbb, és kevesebb erőfeszítést igényel.
 
 ## <a name="azure-services"></a>Azure-szolgáltatások
 
@@ -144,7 +144,7 @@ Az Azure használatának egyik előnye, hogy az alkalmazásait különböző ada
 
 A Azure Portal egy webalapú alkalmazás, amely Azure-erőforrások és-szolgáltatások létrehozásához, kezeléséhez és eltávolításához használható. A Azure Portal a következő helyen található: [Portal.Azure.com](https://portal.azure.com). Tartalmaz egy testreszabható irányítópultot és az Azure-erőforrások kezelésére szolgáló eszközöket. Emellett számlázási és előfizetési információkat is biztosít. További információ: [Microsoft Azure Portal áttekintése](https://azure.microsoft.com/documentation/articles/azure-portal-overview/) és az [Azure-erőforrások kezelése a portálon keresztül](https://docs.microsoft.com/azure/azure-portal/resource-group-portal).
 
-### <a name="resources"></a>További források
+### <a name="resources"></a>Források
 
 Az Azure-erőforrások az Azure-előfizetésbe telepített egyéni számítási, hálózati, adatkezelési és alkalmazás-üzemeltetési szolgáltatások. Néhány gyakori erőforrás a virtuális gépek, a Storage-fiókok vagy az SQL-adatbázisok. Az Azure-szolgáltatások gyakran több kapcsolódó Azure-erőforrásból állnak. Előfordulhat például, hogy egy Azure-beli virtuális gép tartalmaz egy virtuális gépet, egy Storage-fiókot, egy hálózati adaptert és egy nyilvános IP-címet. Ezek az erőforrások egyenként vagy csoportként hozhatók létre, kezelhetők és törölhetők. Az Azure-erőforrásokat az útmutató későbbi részében részletesebben tárgyaljuk.
 
@@ -308,7 +308,7 @@ A hozzáférés biztosításához rendeljen hozzá egy szerepkört a felhasznál
 
 További információkért lásd [a hozzáférés az RBAC és az Azure Portal használatával történő kezelését](../../role-based-access-control/role-assignments-portal.md) ismertető cikket.
 
-## <a name="azure-virtual-machines"></a>Azure-alapú virtuális gépek
+## <a name="azure-virtual-machines"></a>Azure Virtual Machines
 
 Az Azure Virtual Machines az egyik központi IaaS-szolgáltatás az Azure-ban. Az Azure Virtual Machines támogatja a Windows-vagy Linux-alapú virtuális gépek Microsoft Azure adatközpontban való telepítését. Az Azure Virtual Machines teljes körűen szabályozhatja a virtuális gép konfigurációját, és felelős a szoftverek telepítésével, konfigurálásával és karbantartásával.
 
@@ -481,7 +481,7 @@ A virtuális hálózatok telepítéséhez több lehetőség is rendelkezésre á
 
 A hálózati biztonsági csoport segítségével biztonságossá teheti az Azure-beli virtuális hálózatokat. A NSG a hozzáférés-vezérlési listák (ACL) azon szabályainak listáját tartalmazza, amelyek engedélyezik vagy megtagadják a virtuális hálózatban lévő virtuálisgép-példányok hálózati forgalmát. A NSG társíthatja az alhálózatokhoz vagy az alhálózaton belüli egyedi virtuálisgép-példányokhoz is. Ha alhálózattal társít egy NSG, az ACL-szabályok az alhálózat összes virtuálisgép-példányára érvényesek lesznek. Emellett tovább korlátozhatja az egyes virtuális gépek forgalmát úgy, hogy közvetlenül az adott virtuális géppel társít egy NSG. További információ: [Hálózati forgalom szűrése hálózati biztonsági csoportokkal](../../virtual-network/security-overview.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Windows rendszerű virtuális gép létrehozása](../../virtual-machines/windows/quick-create-portal.md)
 - [Linux rendszerű virtuális gép létrehozása](../../virtual-machines/linux/quick-create-portal.md)

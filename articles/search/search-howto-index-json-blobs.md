@@ -8,13 +8,13 @@ ms.author: heidist
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/11/2020
-ms.openlocfilehash: 6a5a3634f1d5ddc7af2af2e27c2b1d7c8ce9a2af
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/25/2020
+ms.openlocfilehash: c3aa813c671e9755b6ab65ba1e2967876bd170ca
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88917992"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398340"
 ---
 # <a name="how-to-index-json-blobs-using-a-blob-indexer-in-azure-cognitive-search"></a>JSON-Blobok indexelése blob indexelő használatával az Azure-ban Cognitive Search
 
@@ -45,7 +45,7 @@ Az **adatimportálás** varázslóban szüksége lesz a Storage-fiók nevére, a
 
 A keresési szolgáltatás áttekintés lapján [elindíthatja a varázslót](search-import-data-portal.md) a parancssáv használatával.
 
-   ![Adatimportálási parancs a portálon](./media/search-import-data-portal/import-data-cmd2.png "Az adatimportálás varázsló elindítása")
+   :::image type="content" source="media/search-import-data-portal/import-data-cmd2.png" alt-text="Adatimportálási parancs a portálon" border="false":::
 
 ### <a name="3---set-the-data-source"></a>3 – az adatforrás beállítása
 
@@ -63,7 +63,7 @@ A keresési szolgáltatás áttekintés lapján [elindíthatja a varázslót](se
    
 + A **Storage-tárolónak** meg kell adnia a Storage-fiókot és-tárolót, vagy egy olyan kapcsolódási karakterláncot, amely a tárolóra van feloldva. A Blob service portál lapon lekérheti a kapcsolatok karakterláncait.
 
-   ![BLOB-adatforrás definíciója](media/search-howto-index-json/import-wizard-json-data-source.png)
+   :::image type="content" source="media/search-howto-index-json/import-wizard-json-data-source.png" alt-text="BLOB-adatforrás definíciója" border="false":::
 
 ### <a name="4---skip-the-enrich-content-page-in-the-wizard"></a>4 – a "tartalom gazdagítása" lap kihagyása a varázslóban
 
@@ -81,7 +81,7 @@ További információkért tekintse át az [index attribútumainak](/rest/api/se
 
 Szánjon egy kis időt a kiválasztott elemek áttekintésére. A varázsló futtatása után a rendszer létrehozza a fizikai adatstruktúrákat, és nem tudja szerkeszteni ezeket a mezőket az összes objektum eldobása és újbóli létrehozása nélkül.
 
-   ![BLOB-index definíciója](media/search-howto-index-json/import-wizard-json-index.png)
+   :::image type="content" source="media/search-howto-index-json/import-wizard-json-index.png" alt-text="BLOB-index definíciója" border="false":::
 
 ### <a name="6---create-indexer"></a>6 – indexelő létrehozása
 
@@ -89,7 +89,7 @@ Teljes mértékben meg van adva, a varázsló három különböző objektumot ho
 
 Ha nem ismeri az indexelő funkciót, az *Indexelő* egy olyan erőforrás az Azure Cognitive Searchban, amely egy külső adatforrást mutat be a kereshető tartalomhoz. Az **adatimportálás** varázsló kimenete egy indexelő, amely feltérképezi a JSON-adatforrást, Kinyeri a kereshető tartalmat, és importálja azokat egy Azure-Cognitive Search indexbe.
 
-   ![BLOB indexelő definíciója](media/search-howto-index-json/import-wizard-json-indexer.png)
+   :::image type="content" source="media/search-howto-index-json/import-wizard-json-indexer.png" alt-text="BLOB indexelő definíciója" border="false":::
 
 A varázsló futtatásához és az összes objektum létrehozásához kattintson **az OK** gombra. Az indexelés azonnal megkezdődik.
 

@@ -7,12 +7,12 @@ ms.date: 05/12/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 07e5ce5cb6fee11e3f55ce808da51ccad59b9ff2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 037598212773ca75abbdd086fe0577e0660f2218
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85801359"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398578"
 ---
 # <a name="use-workflows-to-integrate-your-azure-iot-central-application-with-other-cloud-services"></a>Munkafolyamatok használata az Azure IoT Central alkalmazás integrálásához más felhőalapú szolgáltatásokkal
 
@@ -22,12 +22,12 @@ Olyan IoT Central szabályokat hozhat létre, amelyek olyan műveleteket aktivá
 
 A Power automatizálás és a Azure Logic Apps Azure IoT Central v3-összekötője lehetővé teszi, hogy fejlettebb szabályokat hozzon létre a IoT Central-műveletek automatizálásához:
 
-- Ha egy szabály az Azure IoT Central-alkalmazásban következik be, akkor kiválthat egy munkafolyamatot a Power automatizálásban vagy Azure Logic Apps. Ezek a munkafolyamatok más felhőalapú szolgáltatásokban, például az Office 365-ben vagy egy harmadik féltől származó szolgáltatásokban is futtathatnak műveleteket.
-- Egy másik felhőalapú szolgáltatásban, például az Office 365-ben egy esemény aktiválhat egy munkafolyamatot az automatizálásban vagy Azure Logic Appsban. Ezek a munkafolyamatok futtathatják a műveleteket, vagy lekérhetik az adatok beolvasását a IoT Central alkalmazásból.
+- Ha egy szabály az Azure IoT Central-alkalmazásban következik be, akkor kiválthat egy munkafolyamatot a Power automatizálásban vagy Azure Logic Apps. Ezek a munkafolyamatok más felhőalapú szolgáltatásokban, például Microsoft 365 vagy külső szolgáltatásokban is futtathatnak műveleteket.
+- Egy másik felhőalapú szolgáltatásban (például Microsoft 365) lévő esemény aktiválhat egy munkafolyamatot az automatizálásban vagy Azure Logic Apps. Ezek a munkafolyamatok futtathatják a műveleteket, vagy lekérhetik az adatok beolvasását a IoT Central alkalmazásból.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A jelen útmutató lépéseinek végrehajtásához aktív Azure-előfizetésre van szükség. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+A jelen útmutató lépéseinek végrehajtásához aktív Azure-előfizetésre van szükség. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 A megoldás beállításához a 3. verziójú IoT Central alkalmazásra van szükség. Az alkalmazás verziószámának megismeréséhez tekintse meg [az alkalmazásról szóló](./howto-get-app-info.md)témakört. IoT Central alkalmazások létrehozásával kapcsolatos további információkért lásd: [Azure IoT Central-alkalmazás létrehozása](./quick-deploy-iot-central.md).
 
@@ -66,14 +66,14 @@ Az **Azure IoT Central v3 – előzetes** verziójú összekötő hozzáadása m
 1. A energiagazdálkodás automatizálása területen a **művelet kiválasztása** panelen válassza az **Egyéni** lapot.
 1. Keresse meg *IoT Central* , és válassza ki az **Azure IoT Central v3-Preview** összekötőt.
 1. A műveletek listájában válassza ki a használni kívánt IoT Central műveletet.
-1. A művelet lépésben fejezze be a kiválasztott művelet konfigurációját. Kattintson a **Mentés** gombra.
+1. A művelet lépésben fejezze be a kiválasztott művelet konfigurációját. Ez után válassza a **Mentés** lehetőséget.
 
 Az **Azure IoT Central v3 – Preview** összekötő hozzáadása műveletként a Azure Logic Appsban:
 
 1. **Logic apps Designerben**a **művelet kiválasztása** panelen válassza az **Egyéni** lapot.
 1. Keresse meg *IoT Central*, majd válassza ki az **Azure IoT Central v3-Preview** összekötőt.
 1. A műveletek listájában válassza ki a használni kívánt IoT Central műveletet.
-1. A művelet lépésben fejezze be a kiválasztott művelet konfigurációját. Kattintson a **Mentés** gombra.
+1. A művelet lépésben fejezze be a kiválasztott művelet konfigurációját. Ez után válassza a **Mentés** lehetőséget.
 
 :::image type="content" source="./media/howto-configure-rules-advanced/actions.png" alt-text="Keresse meg az Azure IoT Central v3-összekötőt, és válasszon egy műveletet":::
 
@@ -85,7 +85,7 @@ A következő lista az **Azure IoT Central v3 – előzetes** verziójú összek
 
 Ezzel a művelettel hozhat létre vagy frissíthet egy eszközt a IoT Central alkalmazásban.
 
-| Mező | Description |
+| Mező | Leírás |
 | ----- | ----------- |
 | Alkalmazás | Válasszon a IoT Central alkalmazások listájából. |
 | Eszköz | A létrehozandó vagy frissítendő eszköz egyedi azonosítója. |
@@ -99,7 +99,7 @@ Ezzel a művelettel hozhat létre vagy frissíthet egy eszközt a IoT Central al
 
 Ezzel a művelettel törölhet egy eszközt a IoT Central alkalmazásból.
 
-| Mező | Description |
+| Mező | Leírás |
 | ----- | ----------- |
 | Alkalmazás | Válasszon a IoT Central alkalmazások listájából. |
 | Eszköz | A törlendő eszköz egyedi azonosítója. |
@@ -108,7 +108,7 @@ Ezzel a művelettel törölhet egy eszközt a IoT Central alkalmazásból.
 
 Ezzel a művelettel az eszköz egyik felületén definiált parancsot hajthat végre.
 
-| Mező | Description |
+| Mező | Leírás |
 | ----- | ----------- |
 | Alkalmazás | Válasszon a IoT Central alkalmazások listájából. |
 | Eszköz | A törlendő eszköz egyedi azonosítója. |
@@ -124,7 +124,7 @@ Ezzel a művelettel az eszköz egyik felületén definiált parancsot hajthat v�
 
 Ezzel a művelettel kérheti le az eszköz részleteit.
 
-| Mező | Description |
+| Mező | Leírás |
 | ----- | ----------- |
 | Alkalmazás | Válasszon a IoT Central alkalmazások listájából. |
 | Eszköz | A törlendő eszköz egyedi azonosítója. |
@@ -135,7 +135,7 @@ A visszaadott adatokat a dinamikus kifejezésekben is használhatja más művele
 
 Ezzel a művelettel kérheti le egy adott eszközhöz tartozó Cloud Property értékeit.
 
-| Mező | Description |
+| Mező | Leírás |
 | ----- | ----------- |
 | Alkalmazás | Válasszon a IoT Central alkalmazások listájából. |
 | Eszköz | A törlendő eszköz egyedi azonosítója. |
@@ -147,7 +147,7 @@ A visszaadott felhő tulajdonság értékeit a dinamikus kifejezésekben haszná
 
 Ezzel a művelettel egy adott eszközhöz tartozó tulajdonságértékek olvashatók be.
 
-| Mező | Description |
+| Mező | Leírás |
 | ----- | ----------- |
 | Alkalmazás | Válasszon a IoT Central alkalmazások listájából. |
 | Eszköz | A törlendő eszköz egyedi azonosítója. |
@@ -159,7 +159,7 @@ A visszaadott tulajdonságértékek a dinamikus kifejezésekben is használható
 
 Ezzel a művelettel kérheti le egy adott eszköz telemetria-értékeit.
 
-| Mező | Description |
+| Mező | Leírás |
 | ----- | ----------- |
 | Alkalmazás | Válasszon a IoT Central alkalmazások listájából. |
 | Eszköz | A törlendő eszköz egyedi azonosítója. |
@@ -171,18 +171,18 @@ Használhatja a visszaadott telemetria értékeket a dinamikus kifejezésekben m
 
 Ezzel a művelettel frissítheti egy adott eszköz Cloud Property értékeit.
 
-| Mező | Description |
+| Mező | Leírás |
 | ----- | ----------- |
 | Alkalmazás | Válasszon a IoT Central alkalmazások listájából. |
 | Eszköz | A törlendő eszköz egyedi azonosítója. |
 | Eszköz sablonja | Válasszon az IoT Central alkalmazásban található eszközök sablonjai közül. |
-| Felhő tulajdonságai | Miután kiválasztotta az eszköz sablonját, a rendszer hozzáad egy mezőt a sablonban definiált minden egyes felhőalapú tulajdonsághoz. |
+| Felhőtulajdonságok | Miután kiválasztotta az eszköz sablonját, a rendszer hozzáad egy mezőt a sablonban definiált minden egyes felhőalapú tulajdonsághoz. |
 
 ### <a name="update-device-properties"></a>Eszköz tulajdonságainak frissítése
 
 Ezzel a művelettel frissítheti egy adott eszköz írható tulajdonságainak értékeit.
 
-| Mező | Description |
+| Mező | Leírás |
 | ----- | ----------- |
 | Alkalmazás | Válasszon a IoT Central alkalmazások listájából. |
 | Eszköz | A törlendő eszköz egyedi azonosítója. |

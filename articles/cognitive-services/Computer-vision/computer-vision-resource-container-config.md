@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: a2469768c2207210e17035a67d4b05fb0cc6bb6c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 28116a373b66aa5bfa6d3ebbf027c2db6d24ba5d
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91254176"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397130"
 ---
 # <a name="configure-computer-vision-docker-containers"></a>Computer Vision Docker-tárolók konfigurálása
 
@@ -33,10 +33,12 @@ A tároló a következő tároló-specifikus konfigurációs beállításokkal i
 
 |Kötelező|Beállítás|Rendeltetés|
 |--|--|--|
-|No|ReadEngineConfig:ResultExpirationPeriod|Az eredmény lejárati ideje (óra). Az alapértelmezett érték 48 óra. A beállítás azt határozza meg, hogy a rendszeren Mikor kell törölni a felismerési eredményeket. Ha például a `resultExpirationPeriod=1` rendszer a folyamat után 1 órával törli a felismerés eredményét. Ha `resultExpirationPeriod=0` a rendszer törli az eredmény beolvasása után az elismerés eredményét.|
-|No|Gyorsítótár: Redis|Lehetővé teszi az Redis tárolását az eredmények tárolásához. *Szükség* van gyorsítótárra, ha több olvasási tároló van elhelyezve egy terheléselosztó mögött.|
-|No|Üzenetsor: RabbitMQ|Lehetővé teszi a RabbitMQ számára a feladatok elküldését. A beállítás akkor hasznos, ha több olvasási tároló van elhelyezve egy terheléselosztó mögött.|
-|No|Tárolás::D ocumentStore:: MongoDB|Engedélyezi a MongoDB az állandó eredményű tároláshoz.|
+|No|ReadEngineConfig:ResultExpirationPeriod| csak a v 2.0 tárolók. Az eredmény lejárati ideje (óra). Az alapértelmezett érték 48 óra. A beállítás azt határozza meg, hogy a rendszeren Mikor kell törölni a felismerési eredményeket. Ha például a `resultExpirationPeriod=1` rendszer a folyamat után 1 órával törli a felismerés eredményét. Ha `resultExpirationPeriod=0` a rendszer törli az eredmény beolvasása után az elismerés eredményét.|
+|No|Gyorsítótár: Redis| csak a v 2.0 tárolók. Lehetővé teszi az Redis tárolását az eredmények tárolásához. *Szükség* van gyorsítótárra, ha több olvasási tároló van elhelyezve egy terheléselosztó mögött.|
+|No|Üzenetsor: RabbitMQ|csak a v 2.0 tárolók. Lehetővé teszi a RabbitMQ számára a feladatok elküldését. A beállítás akkor hasznos, ha több olvasási tároló van elhelyezve egy terheléselosztó mögött.|
+|No|Üzenetsor: Azure: QueueVisibilityTimeoutInMilliseconds | csak v3. x tárolók. Az az idő, ameddig az üzenet láthatatlan lesz, ha egy másik feldolgozó feldolgozza azt. |
+|No|Tárolás::D ocumentStore:: MongoDB|csak a v 2.0 tárolók. Engedélyezi a MongoDB az állandó eredményű tároláshoz. |
+|No|Storage: ObjectStore: AzureBlob: ConnectionString| csak v3. x tárolók. Azure Blob Storage-beli kapcsolatok karakterlánca. |
 
 ## <a name="apikey-configuration-setting"></a>ApiKey konfigurációs beállítás
 
@@ -118,29 +120,6 @@ Cserélje le a {_argument_name_} értéket a saját értékeire:
 A következő Docker-példák az olvasási tárolóra vonatkoznak.
 
 
-# <a name="version-30-preview"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
-
-### <a name="basic-example"></a>Alapszintű példa
-
-```bash
-docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
-mcr.microsoft.com/azure-cognitive-services/vision/read:3.0-preview \
-Eula=accept \
-Billing={ENDPOINT_URI} \
-ApiKey={API_KEY}
-```
-
-### <a name="logging-example"></a>Példa naplózásra 
-
-```bash
-docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
-mcr.microsoft.com/azure-cognitive-services/vision/read:3.0-preview \
-Eula=accept \
-Billing={ENDPOINT_URI} \
-ApiKey={API_KEY}
-Logging:Console:LogLevel:Default=Information
-```
-
 # <a name="version-31-preview"></a>[3,1-es verzió – előzetes verzió](#tab/version-3-1)
 
 ### <a name="basic-example"></a>Alapszintű példa
@@ -165,8 +144,55 @@ ApiKey={API_KEY}
 Logging:Console:LogLevel:Default=Information
 ```
 
+# <a name="version-30-preview"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
+
+### <a name="basic-example"></a>Alapszintű példa
+
+```bash
+docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.0-preview \
+Eula=accept \
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
+```
+
+### <a name="logging-example"></a>Példa naplózásra 
+
+```bash
+docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.0-preview \
+Eula=accept \
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
+Logging:Console:LogLevel:Default=Information
+```
+
+# <a name="version-20-preview"></a>[2,0-es verzió – előzetes verzió](#tab/version-2)
+
+### <a name="basic-example"></a>Alapszintű példa
+
+```bash
+docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview \
+Eula=accept \
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
+
+```
+
+### <a name="logging-example"></a>Példa naplózásra 
+
+```bash
+docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview \
+Eula=accept \
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
+Logging:Console:LogLevel:Default=Information
+```
+
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A tárolók telepítésének és futtatásának](computer-vision-how-to-install-containers.md)áttekintése.

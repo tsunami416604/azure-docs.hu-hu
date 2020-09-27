@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 06/08/2020
 ms.author: iainfou
-ms.openlocfilehash: 1ed1305939f4f8a9de62de85a2f09c323a2636b1
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: af4ebcac38d4714b8a133087fe328b4d2f6c4872
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489588"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396365"
 ---
 # <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>Az önállóan felügyelt Active Directory tartományi szolgáltatások, Azure Active Directory és felügyelt Azure Active Directory Domain Services összehasonlítása
 
@@ -26,7 +26,7 @@ Habár a három Active Directory-alapú identitási megoldás közös nevet és 
 * **Active Directory tartományi szolgáltatások (AD DS)** – nagyvállalati használatra kész Lightweight Directory Access Protocol (LDAP) kiszolgáló, amely olyan kulcsfontosságú funkciókat biztosít, mint például az identitás és a hitelesítés, a számítógép-objektumok kezelése, a csoportházirend és a megbízhatósági kapcsolatok.
     * AD DS a helyszíni informatikai környezettel rendelkező számos szervezet központi összetevője, amely a felhasználói fiókok hitelesítését és a számítógép-felügyeleti funkciókat biztosítja.
     * További információ: [Active Directory tartományi szolgáltatások áttekintése a Windows Server dokumentációjában][overview-adds].
-* **Azure Active Directory (Azure ad)** – felhőalapú identitás-és mobileszköz-kezelés, amely felhasználói fiókokat és hitelesítési szolgáltatásokat biztosít olyan erőforrásokhoz, mint az Office 365, az Azure Portal vagy az SaaS-alkalmazásokhoz.
+* **Azure Active Directory (Azure ad)** – felhőalapú identitás-és mobileszköz-kezelés, amely felhasználói fiókokat és hitelesítési szolgáltatásokat biztosít olyan erőforrásokhoz, mint például a Microsoft 365, a Azure Portal vagy az SaaS-alkalmazás.
     * Az Azure AD szinkronizálható helyszíni AD DS környezettel, így egyetlen identitást biztosíthat a felhőben natív módon működő felhasználóknak.
     * További információ az Azure AD-ről: [Mi az Azure Active Directory?][whatis-azuread]
 * **Azure Active Directory Domain Services (Azure AD DS)** – felügyelt tartományi szolgáltatásokat biztosít a teljes mértékben kompatibilis, hagyományos AD DS-funkciók, például a tartományhoz való csatlakozás, a csoportházirend, az LDAP és a KERBEROS/NTLM hitelesítés részeként.

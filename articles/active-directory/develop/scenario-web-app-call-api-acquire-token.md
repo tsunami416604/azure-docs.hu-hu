@@ -1,5 +1,6 @@
 ---
-title: Token beszerzése webes API-kat meghívó webalkalmazásban – Microsoft Identity platform | Azure
+title: Token beszerzése webes API-kat meghívó webalkalmazásban | Azure
+titleSuffix: Microsoft identity platform
 description: Útmutató a webes API-kat meghívó webalkalmazások jogkivonatának beszerzéséhez
 services: active-directory
 author: jmprieur
@@ -8,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 07/14/2020
+ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 4904cd95dc81aad959c88c1dfdb09416923046e6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4fe3744f3f8cb39a7493ce788ee9badc1b31b75e
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518181"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396178"
 ---
 # <a name="a-web-app-that-calls-web-apis-acquire-a-token-for-the-app"></a>Webes API-kat meghívó webalkalmazás: az alkalmazás jogkivonatának beszerzése
 
@@ -27,7 +28,11 @@ Létrehozott egy ügyfélalkalmazás-objektumot. Most ezt a lehetőséget fogja 
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-A vezérlő módszereit olyan attribútum védi `[Authorize]` , amely arra kényszeríti a felhasználókat, hogy a webalkalmazás használatára legyenek hitelesítve. A Microsoft Graph meghívására szolgáló kód:
+A *Microsoft. Identity. Web* olyan bővítményi metódusokat ad meg, amelyek kényelmi szolgáltatásokat biztosítanak Microsoft Graph vagy alsóbb rétegbeli webes API meghívásához. Ezeket a módszereket részletesen ismertetjük [egy webes API-t meghívó webalkalmazásban: az API meghívása](scenario-web-app-call-api-call-api.md). Ezekkel a segítő módszerekkel nem kell manuálisan megvásárolnia a tokent.
+
+Ha azonban a tokent manuálisan szeretné beszerezni, a következő kód egy példát mutat be a *Microsoft. Identity. Web* használatára egy otthoni vezérlőben. Meghívja a Microsoft Grapht a REST API használatával (az Microsoft Graph SDK helyett). Ahhoz, hogy egy jogkivonat meghívja az alárendelt API-t, be kell szúrnia a `ITokenAcquisition` szolgáltatást függőségi befecskendezéssel a vezérlő konstruktorában (vagy az oldal konstruktorában, ha a Blazer-t használja), és használja a vezérlő műveleteiben, a felhasználó ( `GetAccessTokenForUserAsync` ) vagy az alkalmazás () jogkivonatának lekérése `GetAccessTokenForAppAsync` egy démoni forgatókönyvben.
+
+A vezérlő módszereit olyan attribútumok védik `[Authorize]` , amelyek biztosítják, hogy csak a hitelesített felhasználók használhatják a webalkalmazást.
 
 ```csharp
 [Authorize]
@@ -82,7 +87,7 @@ A ASP.NET kódja hasonló a ASP.NET Corehoz megjelenített kódhoz:
 - Egy [engedélyezés] attribútum által védett vezérlő művelet kibontja a vezérlő tagjának bérlői AZONOSÍTÓját és felhasználói AZONOSÍTÓját `ClaimsPrincipal` . (A ASP.NET használja `HttpContext.User` .)
 - Innentől kezdve létrehoz egy MSAL.NET `IConfidentialClientApplication` objektumot.
 - Végezetül meghívja a `AcquireTokenSilent` bizalmas ügyfélalkalmazás metódusát.
-- Ha interakcióra van szükség, a webalkalmazásnak meg kell vitatnia a felhasználót (újra be kell jelentkeznie), és további jogcímeket kell kérnie.
+- Ha interakcióra van szükség, a webalkalmazásnak meg kell vitatnia a felhasználót (újra be kell jelentkeznie), és további jogcímeket kell megadnia.
 
 A következő kódrészletet a rendszer kinyeri a [HomeController. cs # L157-L192](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/257c8f96ec3ff875c351d1377b36403eed942a18/WebApp/Controllers/HomeController.cs#L157-L192) az [MS-Identity-ASPNET-webapp-openidconnect](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect) ASP.net MVC kód minta:
 
@@ -196,7 +201,7 @@ def graphcall():
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Webes API-hívás](scenario-web-app-call-api-call-api.md)

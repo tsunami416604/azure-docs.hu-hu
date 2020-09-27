@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 09/19/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 61b6d5ea903d00519c58556bc99da7065741a6e3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7126cd38a9d0f9ed0079a73e1235cb08a99bcbcf
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78184060"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396535"
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>Mi az az Azure Active Directory B2C?
 
@@ -105,7 +105,7 @@ Ha a **Létrehozás** gombra kattint, a Azure ad B2C átirányítja a felhaszná
 
 Amikor az ügyfél kiválasztja az egyik lehetőséget az **üzleti ügyfelek**területen, a WoodGrove élelmiszerboltok webhely más Azure ad B2C szabályzatot hív meg, mint az egyes ügyfelek esetében.
 
-Ez a szabályzat bemutatja a felhasználónak, hogy a regisztrációhoz és a bejelentkezéshez a vállalati hitelesítő adatait használja. A WoodGrove példában a felhasználóknak minden Office 365-vagy Azure AD-fiókkal be kell jelentkezniük. Ez a szabályzat egy [több-bérlős Azure ad](../active-directory/develop/howto-convert-app-to-be-multi-tenant.md) -alkalmazást `/common` és az Azure ad-végpontot használja, hogy a világ bármely Office 365-ügyfelével összevonása Azure ad B2C.
+Ez a szabályzat bemutatja a felhasználónak, hogy a regisztrációhoz és a bejelentkezéshez a vállalati hitelesítő adatait használja. A WoodGrove-példában a felhasználók a munkahelyi vagy iskolai fiókkal való bejelentkezést kérik. Ez a szabályzat egy [több-bérlős Azure ad-alkalmazást](../active-directory/develop/howto-convert-app-to-be-multi-tenant.md) és az `/common` Azure ad-végpontot használja, hogy a világ bármely Microsoft 365 ügyfelével összevonása Azure ad B2C.
 
 ### <a name="authenticate-partners"></a>Partnerek hitelesítése
 

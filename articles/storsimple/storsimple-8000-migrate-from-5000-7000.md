@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/23/2018
+ms.date: 09/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 0fc18c6d67935889b0ba0c306dc326eca3b888f5
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: f6fffadd3c53f67af2e4c833a6a1d442c18efa0b
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88184295"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398186"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-8000-series-device"></a>Adatok migrálása a StorSimple 5000-7000 sorozatból az 8000 Series eszközre
 
@@ -80,8 +80,8 @@ Az áttelepítés megkezdése előtt győződjön meg a következőket:
 
     ![Az örökölt eszközön lévő szoftververzió keresése](media/storsimple-8000-migrate-from-5000-7000/check-version-legacy-device1.png)
 
-    * Ha az élő eszköz nem a v 2.1.1.518 vagy újabb verzióját futtatja, frissítse a rendszert a szükséges minimális verzióra. Részletes útmutatást a [rendszer frissítése a v 2.1.1.518](http://onlinehelp.storsimple.com/111_Appliance/6_System_Upgrade_Guides/Current_(v2.1.1)/000_Software_Patch_Upgrade_Guide_v2.1.1.518)című témakörben talál.
-    * Ha a v 2.1.1.518-t futtatja, nyissa meg a webes felhasználói felületet, és ellenőrizze, hogy van-e értesítés a beállításjegyzék-visszaállítási hibákról. Ha a beállításjegyzék-visszaállítás sikertelen volt, futtassa a beállításjegyzék-visszaállítást. További információ: a [beállításjegyzék-visszaállítás futtatása](http://onlinehelp.storsimple.com/111_Appliance/2_User_Guides/1_Current_(v2.1.1)/1_Web_UI_User_Guide_WIP/2_Configuration/4_Cloud_Accounts/1_Cloud_Credentials#Restoring_Backup_Registry).
+    * Ha az élő eszköz nem a v 2.1.1.518 vagy újabb verzióját futtatja, frissítse a rendszert a szükséges minimális verzióra. Előfordulhat, hogy a frissítés végrehajtásához a Microsoft ügyfélszolgálata segítségével kell dolgoznia.
+    * Ha a v 2.1.1.518-t futtatja, nyissa meg a webes felhasználói felületet, és ellenőrizze, hogy van-e értesítés a beállításjegyzék-visszaállítási hibákról. Ha a beállításjegyzék-visszaállítás sikertelen volt, futtassa a beállításjegyzék-visszaállítást. Előfordulhat, hogy a Microsoft ügyfélszolgálata használatával kell dolgoznia, hogy segítsen visszaállítani a beállításjegyzéket.
     * Ha nem a v 2.1.1.518-t futtató eszközt használ, végezzen feladatátvételt a v 2.1.1.518-t futtató helyettesítő eszközön. Részletes utasításokért tekintse meg a 5000/7000 sorozatú StorSimple-eszköz DR.
     * Készítsen biztonsági másolatot az eszköz adatairól egy Felhőbeli pillanatkép elkészítése révén.
     * Keresse meg a forrásoldali eszközön futó egyéb aktív biztonsági mentési feladatokat. Ez magában foglalja a StorSimple-adatvédelmi konzol gazdagépének feladatait. Várjon, amíg az aktuális feladatok befejeződik.
@@ -136,12 +136,12 @@ A StorSimple áttelepítési eszköz telepítéséhez hajtsa végre a következ�
     ```
 2. Szerkessze a kulcsoknak megfelelő értékeket, és cserélje le a következőre:
 
-    * `UserName`– A Felhasználónév Azure Portalba való bejelentkezéshez.
-    * `SubscriptionName and SubscriptionId`– Az Azure-előfizetés neve és azonosítója. A StorSimple Eszközkezelő szolgáltatás kezdőlapjának **általános**területén kattintson a **Tulajdonságok**elemre. Másolja a szolgáltatáshoz társított előfizetés nevét és előfizetési AZONOSÍTÓját.
-    * `ResourceName`– A StorSimple Eszközkezelő szolgáltatás neve a Azure Portalban. A szolgáltatás tulajdonságai területen is látható.
-    * `ResourceGroup`– A StorSimple Eszközkezelő szolgáltatáshoz társított erőforráscsoport neve a Azure Portal. A szolgáltatás tulajdonságai területen is látható.
+    * `UserName` – A Felhasználónév Azure Portalba való bejelentkezéshez.
+    * `SubscriptionName and SubscriptionId` – Az Azure-előfizetés neve és azonosítója. A StorSimple Eszközkezelő szolgáltatás kezdőlapjának **általános**területén kattintson a **Tulajdonságok**elemre. Másolja a szolgáltatáshoz társított előfizetés nevét és előfizetési AZONOSÍTÓját.
+    * `ResourceName` – A StorSimple Eszközkezelő szolgáltatás neve a Azure Portalban. A szolgáltatás tulajdonságai területen is látható.
+    * `ResourceGroup` – A StorSimple Eszközkezelő szolgáltatáshoz társított erőforráscsoport neve a Azure Portal. A szolgáltatás tulajdonságai területen is látható.
     ![Cél eszköz szolgáltatás tulajdonságainak megtekintése](media/storsimple-8000-migrate-from-5000-7000/check-service-properties1.png)
-    * `TenantId`– Azure Active Directory a bérlő AZONOSÍTÓját a Azure Portalban. Jelentkezzen be Microsoft Azure rendszergazdaként. A Microsoft Azure Portal kattintson az **Azure Active Directory**elemre. A **Kezelés** területen kattintson a **Tulajdonságok** elemre. A bérlő azonosítója a **címtár-azonosító** mezőben látható.
+    * `TenantId` – Azure Active Directory a bérlő AZONOSÍTÓját a Azure Portalban. Jelentkezzen be Microsoft Azure rendszergazdaként. A Microsoft Azure Portal kattintson az **Azure Active Directory**elemre. A **Kezelés** területen kattintson a **Tulajdonságok** elemre. A bérlő azonosítója a **címtár-azonosító** mezőben látható.
     ![Azure Active Directory bérlői AZONOSÍTÓjának megkeresése](media/storsimple-8000-migrate-from-5000-7000/check-tenantid-aad.png)
 
 3.  Mentse a konfigurációs fájlban végrehajtott módosításokat.
@@ -149,5 +149,5 @@ A StorSimple áttelepítési eszköz telepítéséhez hajtsa végre a következ�
 5.  Megjelenik a StorSimple áttelepítési eszköz felhasználói felülete.
   
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Töltse le az [adatok StorSimple 5000-7000-sorozatból egy 8000 sorozatú eszközre történő áttelepítésének](https://gallery.technet.microsoft.com/Azure-StorSimple-50007000-c1a0460b)lépésenkénti útmutatóját.

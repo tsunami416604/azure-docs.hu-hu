@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/16/2020
 ms.author: duau
-ms.openlocfilehash: 221627a756c69d11ec5385b12970bb835d6a0a0c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9279b3e77147449ae0ede0cc0b76e57f130c9a44
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91318454"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398031"
 ---
 # <a name="caching-with-azure-front-door"></a>Gyorsítótárazás az Azure bejárati ajtaján
 A következő dokumentum a bejárati ajtó működésének módját határozza meg az olyan útválasztási szabályokkal, amelyeken engedélyezve van a gyorsítótárazás. A bejárati ajtó egy modern Content Delivery Network (CDN), és a dinamikus hely gyorsításával és a terheléselosztással együtt a gyorsítótárazási viselkedést is támogatja, ugyanúgy, mint bármely más CDN.
@@ -83,7 +83,7 @@ Ha egy adategységre vonatkozó kérelem meghatározza a tömörítést, és a k
 
 ## <a name="query-string-behavior"></a>Lekérdezési karakterlánc viselkedése
 A bejárati ajtó segítségével szabályozhatja, hogy a rendszer hogyan gyorsítótárazza a fájlokat a lekérdezési karakterláncot tartalmazó webes kérelmek esetében. Lekérdezési karakterláncot tartalmazó webes kérelem esetén a lekérdezési karakterlánc a kérelemnek a kérdőjel (?) utáni részét jelöli. A lekérdezési karakterláncok tartalmazhatnak egy vagy több kulcs-érték párokat, amelyekben a mező nevét és értékét egy egyenlőségjel (=) választja el egymástól. A kulcs-érték párokat egy jel (&) választja el egymástól. Például: `http://www.contoso.com/content.mov?field1=value1&field2=value2`. Ha egy kérelem lekérdezési karakterláncában egynél több kulcs-érték pár szerepel, a rendelésük nem számít.
-- **Lekérdezési karakterláncok figyelmen kívül hagyása**: alapértelmezett mód. Ebben a módban a bejárati ajtó továbbítja a lekérdezési karakterláncokat a kérelmezőtől az első kérelemben található háttérbe, és gyorsítótárazza az eszközt. Az eszköz bejárati környezetből kiszolgált összes további kérelme figyelmen kívül hagyja a lekérdezési karakterláncokat, amíg a gyorsítótárazott eszköz le nem jár.
+- **Lekérdezési karakterláncok figyelmen kívül hagyása**: ebben a módban a bejárati ajtó továbbítja a lekérdezési karakterláncokat a kérelmezőtől az első kérelemben található háttérbe, és gyorsítótárazza az eszközt. Az eszköz bejárati környezetből kiszolgált összes további kérelme figyelmen kívül hagyja a lekérdezési karakterláncokat, amíg a gyorsítótárazott eszköz le nem jár.
 
 - **Gyorsítótár – minden egyedi URL-cím**: ebben a módban minden egyedi URL-címmel rendelkező kérelem, beleértve a lekérdezési karakterláncot, a saját gyorsítótárral rendelkező egyedi objektumként lesz kezelve. Például a rendszer a (z) rendszerre irányuló kérelem esetében a háttérbeli választ `www.example.ashx?q=test1` gyorsítótárazza a bejárati ajtó környezetében, és ugyanezen lekérdezési karakterlánccal visszaadja a későbbi gyorsítótárak esetében. A szolgáltatásra irányuló kérelmet `www.example.ashx?q=test2` külön eszközként gyorsítótárazza a saját élettartama beállítással.
 
@@ -127,7 +127,7 @@ A gyorsítótár időtartama a bejárati tervezőben és a szabályok motorjába
 
 A gyorsítótár időtartamának beállítása a Rules Engine használatával igaz gyorsítótár-felülbírálás, ami azt jelenti, hogy a felülbírálási értéket fogja használni, függetlenül attól, hogy mi a forrás válasz fejléce.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Útmutató a [Front Door létrehozásához](quickstart-create-front-door.md).
 - A [Front Door működésének](front-door-routing-architecture.md) ismertetése.

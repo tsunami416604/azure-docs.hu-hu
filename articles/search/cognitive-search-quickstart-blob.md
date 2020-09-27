@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 06/07/2020
-ms.openlocfilehash: 8fba7245475c9873a3e2d3abeda4806d1376e7ca
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.date: 09/25/2020
+ms.openlocfilehash: be45292552a7ac62c7131c637b044edc477328e2
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89300034"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396790"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-cognitive-skillset-in-the-azure-portal"></a>Gyors útmutató: Azure Cognitive Search kognitív készségkészlet létrehozása a Azure Portal
 
@@ -50,7 +50,7 @@ A következő lépésekben hozzon létre egy BLOB-tárolót az Azure Storage-ban
 
 1. A tárolóban kattintson a **feltöltés** gombra, és töltse fel az első lépésben letöltött minta fájlokat. Figyelje meg, hogy számos tartalomtípust tartalmaz, beleértve a képeket és az alkalmazás fájljait, amelyek nem teljes szöveges kereshetők a natív formátumokban.
 
-   ![Forrásfájlok az Azure Blob Storage-ban](./media/cognitive-search-quickstart-blob/sample-data.png)
+   :::image type="content" source="media/cognitive-search-quickstart-blob/sample-data.png" alt-text="Forrásfájlok az Azure Blob Storage-ban" border="false":::
 
 Most már készen áll az adatimportálás varázsló áthelyezésére.
 
@@ -60,13 +60,13 @@ Most már készen áll az adatimportálás varázsló áthelyezésére.
 
 1. [Keresse meg a keresési szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) , és az Áttekintés lapon kattintson az **adatimportálás** parancsra a parancssávban, és állítsa be a kognitív dúsítást négy lépésben.
 
-   ![Adatok importálása parancs](media/cognitive-search-quickstart-blob/import-data-cmd2.png)
+   :::image type="content" source="media/cognitive-search-quickstart-blob/import-data-cmd2.png" alt-text="Adatok importálása parancs" border="false":::
 
 ### <a name="step-1---create-a-data-source"></a>1. lépés – adatforrás létrehozása
 
 1. A **Kapcsolódás az adataihoz**lapon válassza az **Azure Blob Storage**lehetőséget, majd válassza ki a létrehozott Storage-fiókot és-tárolót. Adjon nevet az adatforrásnak, a többi beállításnál pedig használja az alapértelmezett értékeket. 
 
-   ![Azure Blob-konfiguráció](./media/cognitive-search-quickstart-blob/blob-datasource.png)
+   :::image type="content" source="media/cognitive-search-quickstart-blob/blob-datasource.png" alt-text="Azure Blob-konfiguráció" border="false":::
 
     Folytassa a következő oldallal.
 
@@ -76,7 +76,7 @@ Ezután konfigurálja az AI-bővítést az OCR, a képelemzés és a természete
 
 1. Ebben a rövid útmutatóban az **ingyenes** Cognitive Services erőforrást használjuk. A mintaadatok 14 fájlból állnak, így az Cognitive Services 20 tranzakció ingyenes kiosztása elegendő ehhez a rövid útmutatóhoz. 
 
-   ![Csatolás Cognitive Services csatolása alapszolgáltatáshoz](media/cognitive-search-quickstart-blob/cog-search-attach.png)
+   :::image type="content" source="media/cognitive-search-quickstart-blob/cog-search-attach.png" alt-text="Csatolás Cognitive Services csatolása alapszolgáltatáshoz" border="false":::
 
 1. Bontsa ki a bővítések **hozzáadása** lehetőséget, és adjon meg négy választ. 
 
@@ -86,7 +86,7 @@ Ezután konfigurálja az AI-bővítést az OCR, a képelemzés és a természete
 
    Válassza az entitások felismerése (személyek, szervezetek, helyszínek) és a képelemzési képességek elemet.
 
-   ![Csatolás Cognitive Services készségkészlet-szolgáltatások kiválasztása](media/cognitive-search-quickstart-blob/skillset.png)
+   :::image type="content" source="media/cognitive-search-quickstart-blob/skillset.png" alt-text="Csatolás Cognitive Services készségkészlet-szolgáltatások kiválasztása" border="false":::
 
    Folytassa a következő oldallal.
 
@@ -102,9 +102,9 @@ Ebben a rövid útmutatóban a varázsló észszerű alapértelmezett beállít�
 
 + Az alapértelmezett attribútumok **megkereshetők és** **kereshetők**. A **kereshető** szöveg teljes szöveges keresést tesz lehetővé a mezőkben. Lekérhető **értékek: a** mezőértékek visszaadhatók az eredményekben. A varázsló feltételezi, hogy ezek a mezők lekérhető és kereshetők, mert egy készségkészlet keresztül hozta létre őket.
 
-  ![Indexmezők](media/cognitive-search-quickstart-blob/index-fields.png)
+  :::image type="content" source="media/cognitive-search-quickstart-blob/index-fields.png" alt-text="Indexmezők" border="false":::
 
-Figyelje meg a **lekéréses** attribútum áthúzott és kérdőjel `content` értékét a mező alapján. Szöveg – nagy méretű blob-dokumentumok esetén a `content` mező a fájl nagy részét tartalmazza, amely akár több ezer sorra is futhat. Az ehhez hasonló mező nem a keresési eredményekben, hanem a bemutatóban kizárható. 
+Figyelje **meg a lekérdezhető attribútumon** a mező alapján a sztrájk és a kérdés jelölését `content` . Szöveg – nagy méretű blob-dokumentumok esetén a `content` mező a fájl nagy részét tartalmazza, amely akár több ezer sorra is futhat. Az ehhez hasonló mező nem a keresési eredményekben, hanem a bemutatóban kizárható. 
 
 Ha azonban meg kell adnia a fájl tartalmát az ügyfél kódjához, győződjön meg arról, hogy a **beolvasható** marad lehetőség ki van választva. Ellenkező esetben érdemes lehet törölni ezt az attribútumot, `content` Ha a kinyert elemek (például,, stb `people` `organizations` `locations` .) elegendőek.
 
@@ -118,7 +118,7 @@ Az indexelő az indexelési folyamatot irányító magas szintű erőforrás. Me
 
 1. Az **Indexelő** lapon fogadja el az alapértelmezett nevet, majd kattintson az **egyszeres** ütemterv lehetőségre, hogy azonnal fusson. 
 
-   ![Az indexelő definíciója](media/cognitive-search-quickstart-blob/indexer-def.png)
+   :::image type="content" source="media/cognitive-search-quickstart-blob/indexer-def.png" alt-text="Az indexelő definíciója" border="false":::
 
 1. Kattintson a **Submit (Küldés** ) gombra az indexelő létrehozásához és egyidejű futtatásához.
 
@@ -126,7 +126,7 @@ Az indexelő az indexelési folyamatot irányító magas szintű erőforrás. Me
 
 A kognitív képességek indexelése hosszabb időt vesz igénybe, mint a szokásos szöveges indexelés, különösen az OCR és a képelemzés. A folyamat figyeléséhez nyissa meg az Áttekintés lapot, és kattintson a lap közepén található **Indexelő** elemre.
 
-  ![Azure Cognitive Search értesítés](./media/cognitive-search-quickstart-blob/indexer-notification.png)
+  :::image type="content" source="media/cognitive-search-quickstart-blob/indexer-notification.png" alt-text="Azure Cognitive Search értesítés" border="false":::
 
 A figyelmeztetések a tartalomtípusok széles köre miatt normálisak. Egyes tartalomtípusok nem érvényesek bizonyos szakismeretekhez és alacsonyabb szinten, mint az [Indexelő korlátainak](search-limits-quotas-capacity.md#indexer-limits)megtapasztalása. A 32 000 karakterből álló csonkolt értesítések például az ingyenes szinten indexelő korlátot képeznek. Ha a bemutatót egy magasabb szintű szinten futtatta, sok csonkolt figyelmeztetés fog elindulni.
 
@@ -134,11 +134,11 @@ A figyelmeztetések és hibák vizsgálatához kattintson a figyelmeztetési ál
 
 Ezen az oldalon kattintson ismét a figyelmeztetési állapot elemre az alább láthatóhoz hasonló figyelmeztetések listájának megtekintéséhez. 
 
-  ![Indexelő figyelmeztetési lista](./media/cognitive-search-quickstart-blob/indexer-warnings.png)
+  :::image type="content" source="media/cognitive-search-quickstart-blob/indexer-warnings.png" alt-text="Indexelő figyelmeztetési lista" border="false":::
 
 A részletek akkor jelennek meg, amikor egy adott állapotjelző sorra kattint. Ez a figyelmeztetés azt mondja, hogy az egyesítés leállt a maximális küszöb elérése után (ez az adott PDF-fájl nagy).
 
-  ![Figyelmeztetés részletei](./media/cognitive-search-quickstart-blob/warning-detail.png)
+  :::image type="content" source="media/cognitive-search-quickstart-blob/warning-detail.png" alt-text="Figyelmeztetés részletei" border="false":::
 
 ## <a name="query-in-search-explorer"></a>Lekérdezés a Keresési ablakban
 
@@ -157,7 +157,7 @@ Az eredményeket JSON-ként adja vissza, amely részletes és nehezen olvasható
 
 A lekérdezési karakterláncok megkülönböztetik a kis-és nagybetűket, így ha "ismeretlen mező" üzenetet kap, a név és az eset ellenőrzéséhez ellenőrizze a **mezők** vagy az **index definícióját (JSON)** . 
 
-  ![Keresési ablak – példa](./media/cognitive-search-quickstart-blob/search-explorer.png)
+  :::image type="content" source="media/cognitive-search-quickstart-blob/search-explorer.png" alt-text="Keresési ablak – példa" border="false":::
 
 ## <a name="takeaways"></a>Legfontosabb ismeretek
 

@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 06/23/2020
-ms.openlocfilehash: 8a615dc02b78993a18a86def9d8f496ba0bba922
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/25/2020
+ms.openlocfilehash: f501b9f4215b9eeb48aa8bc80d492d55cf940404
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88929703"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397385"
 ---
 # <a name="tutorial-index-json-blobs-from-azure-storage-using-rest"></a>Oktatóanyag: JSON-Blobok indexelése az Azure Storage-ból REST használatával
 
@@ -54,13 +54,13 @@ Ha lehetséges, hozzon létre mindkettőt ugyanabban a régióban és erőforrá
 
 1. Keressen rá a *Storage-fiókra* , és válassza ki a Microsoft Storage-fiók ajánlatát.
 
-   ![Storage-fiók létrehozása](media/cognitive-search-tutorial-blob/storage-account.png "Storage-fiók létrehozása")
+   :::image type="content" source="media/cognitive-search-tutorial-blob/storage-account.png" alt-text="Storage-fiók létrehozása" border="false":::
 
 1. Az alapok lapon a következő elemek szükségesek. Minden más esetében fogadja el az alapértelmezett értékeket.
 
    + **Erőforráscsoport**. Válasszon ki egy meglévőt, vagy hozzon létre egy újat, de ugyanazt a csoportot használja az összes szolgáltatáshoz, hogy együtt lehessen kezelni őket.
 
-   + A **Storage-fiók neve**. Ha úgy gondolja, hogy több erőforrása is van ugyanazzal a típussal, használja a nevet típus és régió szerint egyértelműsítse, például *blobstoragewestus*. 
+   + **Tárfiók neve**. Ha úgy gondolja, hogy több erőforrása is van ugyanazzal a típussal, használja a nevet típus és régió szerint egyértelműsítse, például *blobstoragewestus*. 
 
    + **Hely**. Ha lehetséges, válassza ki ugyanazt a helyet, amelyet az Azure Cognitive Search és Cognitive Services használ. Egyetlen hely érvényteleníti A sávszélességgel kapcsolatos díjakat.
 
@@ -76,11 +76,11 @@ Ha lehetséges, hozzon létre mindkettőt ugyanabban a régióban és erőforrá
 
 1. A tároló létrehozása után nyissa meg, majd válassza a parancssáv **feltöltés** elemét.
 
-   ![Feltöltés a parancssáv](media/search-semi-structured-data/upload-command-bar.png "Feltöltés a parancssáv")
+   :::image type="content" source="media/search-semi-structured-data/upload-command-bar.png" alt-text="Feltöltés a parancssáv" border="false":::
 
 1. Navigáljon a minta fájlokat tartalmazó mappához. Jelölje ki az összeset, majd kattintson a **feltöltés**elemre.
 
-   ![Fájlok feltöltése](media/search-semi-structured-data/clinicalupload.png "Fájlok feltöltése")
+   :::image type="content" source="media/search-semi-structured-data/clinicalupload.png" alt-text="Fájlok feltöltése" border="false":::
 
 Ha befejeződött a feltöltés, a fájlok a saját almappájukban jelennek meg az adattárolóban.
 
@@ -98,7 +98,7 @@ A REST-hívásokhoz minden kérésének tartalmaznia kell a szolgáltatás URL-c
 
 1. A **Beállítások**  >  **kulcsaiban**kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó összes jogosultsághoz. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
 
-![HTTP-végpont és elérési kulcs beszerzése](media/search-get-started-postman/get-url-key.png "HTTP-végpont és elérési kulcs beszerzése")
+:::image type="content" source="media/search-get-started-postman/get-url-key.png" alt-text="HTTP-végpont és elérési kulcs beszerzése" border="false":::
 
 Minden kérelemhez API-kulcs szükséges a szolgáltatásnak küldött összes kéréshez. Érvényes kulcs birtokában kérelmenként létesíthető megbízhatósági kapcsolat a kérést küldő alkalmazás és az azt kezelő szolgáltatás között.
 
@@ -110,7 +110,7 @@ Az oktatóanyag minden hívására vonatkozó kérési metódusok **post** és *
 
 A fejlécekben a "Content-Type" értéket állítsa be, `application/json` és állítsa `api-key` az Azure Cognitive Search szolgáltatás felügyeleti API-kulcsára. Miután beállította a fejléceket, használhatja azokat minden kérelemhez ebben a gyakorlatban.
 
-  ![Poster-kérelem URL-címe és fejléce](media/search-get-started-postman/postman-url.png "Poster-kérelem URL-címe és fejléce")
+  :::image type="content" source="media/search-get-started-postman/postman-url.png" alt-text="Poster-kérelem URL-címe és fejléce" border="false":::
 
 Az URI-k API-verziót kell megadni, és minden hívásnak egy **201**-as értéket kell visszaadnia. A JSON-tömbök használatának általánosan elérhető API-verziója a következő: `2020-06-30` .
 
@@ -315,11 +315,11 @@ Az első dokumentum betöltését követően megkezdheti a keresést.
 
 1. Adja hozzá a `$select` lekérdezési paramétert az eredmények kevesebb mezőre való korlátozásához: `https://[service name].search.windows.net/indexes/clinical-trials-json-index/docs?search=*&$select=Gender,metadata_storage_size&api-version=2020-06-30&$count=true` .  Ehhez a lekérdezéshez a 100-es dokumentumok egyeznek, de alapértelmezés szerint az Azure Cognitive Search csak a 50 értéket adja vissza az eredményekben.
 
-   ![Paraméteres lekérdezés](media/search-semi-structured-data/lastquery.png "Paramterized-lekérdezés")
+   :::image type="content" source="media/search-semi-structured-data/lastquery.png" alt-text="Paraméteres lekérdezés" border="false":::
 
 1. Példa összetettebb lekérdezésre `$filter=MinimumAge ge 30 and MaximumAge lt 75` , amely csak azokat az eredményeket adja vissza, amelyekben a paraméterek minimális értéke nagyobb vagy egyenlő, mint 30, a maximális érték pedig 75. Cserélje le a `$select` kifejezést a `$filter` kifejezésre.
 
-   ![Részben strukturált keresés](media/search-semi-structured-data/metadatashort.png)
+   :::image type="content" source="media/search-semi-structured-data/metadatashort.png" alt-text="Részben strukturált keresés" border="false":::
 
 A logikai operátorok (és, vagy, nem) és az összehasonlító operátorok (EQ, ne, gt, lt, GE, le) is használhatók. A sztring-összehasonlítások megkülönböztetik a kis- és nagybetűket. További információkat és példákat az [egyszerű lekérdezés létrehozása](search-query-simple-examples.md)című témakörben talál.
 

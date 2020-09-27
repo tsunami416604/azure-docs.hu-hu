@@ -1,5 +1,6 @@
 ---
-title: Webes API meghívása egy webalkalmazásból – Microsoft Identity platform | Azure
+title: Webes API meghívása egy webalkalmazásból | Azure
+titleSuffix: Microsoft identity platform
 description: Ismerje meg, hogyan hozhat létre olyan webalkalmazást, amely webes API-kat hív meg (védett webes API-t hív meg)
 services: active-directory
 author: jmprieur
@@ -8,19 +9,19 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 07/14/2019
+ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 1e448f52f4e8c24dd8552cae873edac841e57fc6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 815b1789c54d1ce505c16dc89e199d451ae9a588
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87058442"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396127"
 ---
 # <a name="a-web-app-that-calls-web-apis-call-a-web-api"></a>Webes API-kat meghívó webalkalmazás: webes API meghívása
 
-Most, hogy rendelkezik egy jogkivonattal, meghívhat egy védett webes API-t.
+Most, hogy rendelkezik egy jogkivonattal, meghívhat egy védett webes API-t. Általában egy alsóbb rétegbeli API-t hív meg a webalkalmazás vezérlője vagy lapja.
 
 ## <a name="call-a-protected-web-api"></a>Védett webes API meghívása
 
@@ -28,20 +29,103 @@ A védett webes API-k meghívása a választott nyelvtől és keretrendszertől 
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Íme a művelethez tartozó egyszerűsített kód `HomeController` . Ez a kód lekéri a Microsoft Graph meghívására szolgáló tokent. A kód hozzá lett adva, hogy megmutassa, hogyan hívhatja meg Microsoft Graph REST APIként. A Microsoft Graph API URL-címe megtalálható a fájl appsettings.jsjában, és a következő nevű változóban olvasható `webOptions` :
+A *Microsoft. Identity. Web*használatakor három felhasználási lehetőség áll rendelkezésre az API meghívásához:
 
-```json
+- [1. lehetőség: a Microsoft Graph meghívása az Microsoft Graph SDK-val](#option-1-call-microsoft-graph-with-the-sdk)
+- [2. lehetőség: alárendelt webes API meghívása a segítő osztállyal](#option-2-call-a-downstream-web-api-with-the-helper-class)
+- [3. lehetőség: alárendelt webes API meghívása a segítő osztály nélkül](#option-3-call-a-downstream-web-api-without-the-helper-class)
+
+#### <a name="option-1-call-microsoft-graph-with-the-sdk"></a>1. lehetőség: a Microsoft Graph meghívása az SDK-val
+
+Meg szeretné hívni Microsoft Graph. Ebben a forgatókönyvben a Startup.cs- `AddMicrosoftGraph` ben *Startup.cs* megadott módon adta hozzá a [kódot](scenario-web-app-call-api-app-configuration.md#option-1-call-microsoft-graph), és közvetlenül a vezérlőben vagy az oldal konstruktorában is befecskendezheti a `GraphServiceClient` műveleteket a műveletekben való használatra. A következő példában a borotva oldal a bejelentkezett felhasználó fényképét jeleníti meg.
+
+```CSharp
+[Authorize]
+[AuthorizeForScopes(Scopes = new[] { "user.read" })]
+public class IndexModel : PageModel
 {
-  "AzureAd": {
-    "Instance": "https://login.microsoftonline.com/",
-    ...
-  },
-  ...
-  "GraphApiUrl": "https://graph.microsoft.com"
+ private readonly GraphServiceClient _graphServiceClient;
+
+ public IndexModel(GraphServiceClient graphServiceClient)
+ {
+    _graphServiceClient = graphServiceClient;
+ }
+
+ public async Task OnGet()
+ {
+  var user = await _graphServiceClient.Me.Request().GetAsync();
+  try
+  {
+   using (var photoStream = await _graphServiceClient.Me.Photo.Content.Request().GetAsync())
+   {
+    byte[] photoByte = ((MemoryStream)photoStream).ToArray();
+    ViewData["photo"] = Convert.ToBase64String(photoByte);
+   }
+   ViewData["name"] = user.DisplayName;
+  }
+  catch (Exception)
+  {
+   ViewData["photo"] = null;
+  }
+ }
 }
 ```
 
-```csharp
+#### <a name="option-2-call-a-downstream-web-api-with-the-helper-class"></a>2. lehetőség: alárendelt webes API meghívása a segítő osztállyal
+
+Nem Microsoft Graph webes API-t szeretne meghívni. Ebben az esetben az `AddDownstreamWebApi` *Startup.cs* -ben megadott módon adta hozzá a [kódot](scenario-web-app-call-api-app-configuration.md#option-2-call-a-downstream-web-api-other-than-microsoft-graph), és közvetlenül is beadhat egy `IDownstreamWebApi` szolgáltatást a vezérlőben vagy az oldal konstruktorában, és használhatja azokat a műveletekben:
+
+```CSharp
+[Authorize]
+[AuthorizeForScopes(ScopeKeySection = "TodoList:Scopes")]
+public class TodoListController : Controller
+{
+  private IDownstreamWebApi _downstreamWebApi;
+  private const string ServiceName = "TodoList";
+
+  public TodoListController(IDownstreamWebApi downstreamWebApi)
+  {
+    _downstreamWebApi = downstreamWebApi;
+  }
+
+  public async Task<ActionResult> Details(int id)
+  {
+    var value = await _downstreamWebApi.CallWebApiForUserAsync(
+      ServiceName,
+      options =>
+      {
+        options.RelativePath = $"me";
+      });
+      return View(value);
+  }
+}
+```
+
+A `CallWebApiForUserAsync` szintén erősen begépelt általános felülbírálásokat tartalmaz, amelyek lehetővé teszik egy objektum közvetlen fogadását. A következő metódus például egy `Todo` példányt kap, amely a webes API által visszaadott JSON szigorúan beírt ábrázolása.
+
+```CSharp
+    // GET: TodoList/Details/5
+    public async Task<ActionResult> Details(int id)
+    {
+        var value = await _downstreamWebApi.CallWebApiForUserAsync<object, Todo>(
+            ServiceName,
+            null,
+            options =>
+            {
+                options.HttpMethod = HttpMethod.Get;
+                options.RelativePath = $"api/todolist/{id}";
+            });
+        return View(value);
+    }
+   ```
+
+#### <a name="option-3-call-a-downstream-web-api-without-the-helper-class"></a>3. lehetőség: alárendelt webes API meghívása a segítő osztály nélkül
+
+Úgy döntött, hogy a tokent manuálisan szerzi be a `ITokenAcquisition` szolgáltatás használatával, és most a tokent kell használnia. Ebben az esetben a következő kód folytatja a webes [API-kat meghívó webalkalmazásban megjelenő példa kódját: az alkalmazás jogkivonatának beszerzése](scenario-web-app-call-api-acquire-token.md). A kód a webalkalmazás-vezérlők műveleteiben hívható meg.
+
+A token beszerzése után az alárendelt API meghívásához használja tulajdonosi jogkivonatként, ebben az esetben Microsoft Graph.
+
+ ```csharp
 public async Task<IActionResult> Profile()
 {
  // Acquire the access token.
@@ -65,11 +149,10 @@ public async Task<IActionResult> Profile()
   return View();
 }
 ```
-
 > [!NOTE]
 > Ugyanezt az elvet használhatja bármely webes API meghívásához.
 >
-> A legtöbb Azure-beli webes API egy SDK-t biztosít, amely leegyszerűsíti az API meghívását. Ez Microsoft Graph is igaz. A következő cikkben megtudhatja, hol találhat egy olyan oktatóanyagot, amely bemutatja az API-használatot.
+> A legtöbb Azure-beli webes API-k olyan SDK-t biztosítanak, amely leegyszerűsíti az API meghívását, mint a Microsoft Graph esetén. Lásd például: [hozzon létre egy webalkalmazást, amely engedélyezi a blob Storage-hoz való hozzáférést az Azure ad-vel](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-app?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=dotnet) egy, a Microsoft. Identity. web és az Azure Storage SDK-t használó webalkalmazás számára.
 
 # <a name="java"></a>[Java](#tab/java)
 

@@ -1,19 +1,19 @@
 ---
-title: Azure Cosmos DB konzisztenciáji szintjei
+title: Konzisztenciaszintek az Azure Cosmos DB-ben
 description: Azure Cosmos DB öt konzisztencia-szinttel rendelkezik a végleges konzisztencia, a rendelkezésre állás és a késések kompromisszumának kiegyensúlyozásához.
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 5ba3fc70a2ccfbe342e222dbb475658629ec60a4
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 8f482c4fe6817c75079ceb98e981c846c395ad13
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851704"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396025"
 ---
-# <a name="consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB konzisztenciáji szintjei
+# <a name="what-are-consistency-levels-in-azure-cosmos-db"></a>Mik a Azure Cosmos DB konzisztenciáji szintjei?
 
 A magas rendelkezésre állásra, kis késésre vagy mindkettőre támaszkodó elosztott adatbázisok esetében az olvasási konzisztencia és a rendelkezésre állás, a késés és az átviteli sebesség közötti alapvető kompromisszumot kell biztosítani. A legtöbb kereskedelmi forgalomban kapható elosztott adatbázis arra kéri a fejlesztőket, hogy válasszon a két szélsőséges konzisztencia-modell közül: *erős* konzisztencia és *végleges* konzisztencia. Az erős konzisztencia-modell linearizability az adatprogramozási szabvány. Ugyanakkor a magasabb írási késés (állandó állapotú) és a rendelkezésre állási idő (a hibák során) csökkentett árát adja hozzá. Másfelől a végső konzisztencia magasabb rendelkezésre állást és jobb teljesítményt nyújt, de megnehezíti az alkalmazások programozását.
 
@@ -91,12 +91,12 @@ A következő ábra a konzisztencia-előtagot ábrázolja a zenei megjegyzésekk
 
   :::image type="content" source="media/consistency-levels/consistent-prefix.gif" alt-text="videó":::
 
-- **Végleges**: nem áll rendelkezésre rendelési garancia a beolvasáshoz. A további írások hiányában a replikák végül konvergálnak.  
+- **Végleges**: nem áll rendelkezésre rendelési garancia a beolvasáshoz. Ha nincsenek további írások, a replikák végül konvergálnak.  
 A végleges konzisztencia a konzisztencia leggyengébb formája, mivel előfordulhat, hogy az ügyfél elolvashatja azokat az értékeket, amelyek régebbiek, mint a korábban olvasottak. A végleges konzisztencia ideális, ha az alkalmazás nem igényel rendelési garanciát. Ilyenek például a retweets, a Like vagy a nem többszálú megjegyzések száma. Az alábbi ábrán a zenei megjegyzésekkel való végleges konzisztencia látható.
 
   :::image type="content" source="media/consistency-levels/eventual-consistency.gif" alt-text="videó":::
 
-## <a name="additional-reading"></a>További olvasnivaló
+## <a name="additional-reading"></a>További információ
 
 Ha többet szeretne megtudni a konzisztencia-fogalmakról, olvassa el a következő cikkeket:
 

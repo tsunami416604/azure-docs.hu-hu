@@ -1,5 +1,6 @@
 ---
-title: Webes API-kat meghívó webalkalmazás konfigurálása – Microsoft Identity platform | Azure
+title: Webes API-kat meghívó webalkalmazás konfigurálása | Azure
+titleSuffix: Microsoft identity platform
 description: Megtudhatja, hogyan konfigurálhatja a webes API-kat meghívó webalkalmazások kódját
 services: active-directory
 author: jmprieur
@@ -8,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 07/14/2020
+ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 8827d413144d8bc6f00c3948a99be3ee3aa2264e
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 27926c687871180da78930be8e0968febcd77869
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855431"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396314"
 ---
 # <a name="a-web-app-that-calls-web-apis-code-configuration"></a>Webes API-kat meghívó webalkalmazás: kód konfigurálása
 
@@ -33,7 +34,7 @@ A Microsoft Authentication Library (MSAL) következő kódtárai támogatják a 
 
 | MSAL-könyvtár | Leírás |
 |--------------|-------------|
-| ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | A .NET-keretrendszer és a .NET Core platform támogatása. A Univerzális Windows-platform (UWP), a Xamarin. iOS és a Xamarin. Android nem támogatott, mivel ezek a platformok nyilvános ügyfélalkalmazások létrehozására használhatók. ASP.NET Core webalkalmazások és webes API-k esetében a MSAL.NET a [Microsoft. Identity. Web](https://aka.ms/ms-identity-web) nevű magasabb szintű könyvtárban van beágyazva.|
+| ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | A .NET-keretrendszer és a .NET Core platform támogatása. A Univerzális Windows-platform (UWP), a Xamarin. iOS és a Xamarin. Android nem támogatott, mivel ezek a platformok nyilvános ügyfélalkalmazások létrehozására használhatók. <br/><br/>ASP.NET Core webalkalmazások és webes API-k esetében a MSAL.NET a [Microsoft. Identity. Web](https://aka.ms/ms-identity-web)nevű magasabb szintű könyvtárban van beágyazva. |
 | ![MSAL Python](media/sample-v2-code/logo_python.png) <br/> Pythonhoz készült MSAL | Python-webalkalmazások támogatása. |
 | ![MSAL Java](media/sample-v2-code/logo_java.png) <br/> Javához készült MSAL | Java-webalkalmazások támogatása. |
 
@@ -41,32 +42,153 @@ Válassza ki az Önt érdeklő platform lapját:
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Ha engedélyezni szeretné a webalkalmazás számára a védett API-k meghívását a Microsoft. Identity. Web használatakor, csak hívnia kell, `AddWebAppCallsProtectedWebApi` és meg kell adnia a jogkivonat-gyorsítótár szerializálási formátumát (például memóriabeli jogkivonat-gyorsítótárban):
+## <a name="client-secrets-or-client-certificates"></a>Ügyfél-titkok vagy Ügyféltanúsítványok
 
-```C#
-// This method gets called by the runtime. Use this method to add services to the container.
-public void ConfigureServices(IServiceCollection services)
+Mivel a webalkalmazás most egy alárendelt webes API-t hív meg, meg kell adnia egy ügyfél-titkos vagy ügyféltanúsítványt a fájl *appsettings.js* . Hozzáadhat egy szakaszt is, amely meghatározza a következőket:
+
+- Az alárendelt webes API URL-címe
+- Az API meghívásához szükséges hatókörök
+
+A következő példában a `GraphBeta` szakasz ezeket a beállításokat adja meg.
+
+```JSON
 {
-    // more code here
+  "AzureAd": {
+    "Instance": "https://login.microsoftonline.com/",
+    "ClientId": "[Client_id-of-web-app-eg-2ec40e65-ba09-4853-bcde-bcb60029e596]",
+    "TenantId": "common"
 
-    services.AddMicrosoftIdentityWebAppAuthentication(Configuration,
-                                                      "AzureAd")
-            .EnableTokenAcquisitionToCallDownstreamApi(
-                    initialScopes: new string[] { "user.read" })
-                .AddInMemoryTokenCaches();
-
-    // more code here
+   // To call an API
+   "ClientSecret": "[Copy the client secret added to the app from the Azure portal]",
+   "ClientCertificates": [
+  ]
+ },
+ "GraphBeta": {
+    "BaseUrl": "https://graph.microsoft.com/beta",
+    "Scopes": "user.read"
+    }
 }
 ```
 
-Ha szeretné jobban megismerni a jogkivonat-gyorsítótárat, tekintse meg a [jogkivonat-gyorsítótár szerializálási beállításai](#token-cache) című témakört.
+Az ügyfél titkos kulcsa helyett megadhat egy ügyféltanúsítványt. A következő kódrészlet a Azure Key Vaultban tárolt tanúsítvány használatát mutatja be.
+
+```JSON
+{
+  "AzureAd": {
+    "Instance": "https://login.microsoftonline.com/",
+    "ClientId": "[Client_id-of-web-app-eg-2ec40e65-ba09-4853-bcde-bcb60029e596]",
+    "TenantId": "common"
+
+   // To call an API
+   "ClientCertificates": [
+      {
+        "SourceType": "KeyVault",
+        "KeyVaultUrl": "https://msidentitywebsamples.vault.azure.net",
+        "KeyVaultCertificateName": "MicrosoftIdentitySamplesCert"
+      }
+   ]
+  },
+  "GraphBeta": {
+    "BaseUrl": "https://graph.microsoft.com/beta",
+    "Scopes": "user.read"
+  }
+}
+```
+
+A *Microsoft. Identity. Web* számos módszert kínál a tanúsítványok leírására, a konfiguráció vagy a kód alapján. Részletekért lásd: [Microsoft. Identity. Web – tanúsítványok használata](https://github.com/AzureAD/microsoft-identity-web/wiki/Using-certificates) a githubon.
+
+## <a name="startupcs"></a>Startup.cs
+
+A webalkalmazásnak meg kell adnia egy jogkivonatot az alsóbb rétegbeli API-hoz. Ezt úgy adhatja meg, hogy a sort a következő után adja hozzá `.EnableTokenAcquisitionToCallDownstreamApi()` `.AddMicrosoftIdentityWebApi(Configuration)` . Ez a sor teszi elérhetővé a `ITokenAcquisition` vezérlő és az oldal műveleteiben használható szolgáltatást. A következő két lehetőség esetében azonban egyszerűen megteheti. Ki kell választania egy jogkivonat-gyorsítótár implementációját is, például `.AddInMemoryTokenCaches()` a *Startup.cs*-ben:
+
+   ```csharp
+   using Microsoft.Identity.Web;
+
+   public class Startup
+   {
+     // ...
+     public void ConfigureServices(IServiceCollection services)
+     {
+     // ...
+     services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+             .AddMicrosoftIdentityWebApp(Configuration, Configuration.GetSection("AzureAd"))
+               .EnableTokenAcquisitionToCallDownstreamApi(new string[]{"user.read" })
+               .AddInMemoryTokenCaches();
+      // ...
+     }
+     // ...
+   }
+   ```
+
+Az átadott hatókörök `EnableTokenAcquisitionToCallDownstreamApi` nem kötelezőek, és lehetővé teszik, hogy a webalkalmazás a hatóköröket és a felhasználó beleegyezik a hatókörökbe a bejelentkezéskor. Ha nem adja meg a hatóköröket, a *Microsoft. Identity. Web* lehetővé teszi a növekményes beleegyező felhasználói élmény meglétét.
+
+Ha nem szeretné saját magának megkapni a jogkivonatot, a *Microsoft. Identity. Web* két mechanizmust biztosít a webes API-k egy webalkalmazásból való meghívásához. A választott lehetőség attól függ, hogy Microsoft Graph vagy egy másik API-t szeretne meghívni.
+
+### <a name="option-1-call-microsoft-graph"></a>1. lehetőség: hívás Microsoft Graph
+
+Ha meg szeretné hívni Microsoft Graph, a *Microsoft. Identity. Web* lehetővé teszi, hogy közvetlenül használja a `GraphServiceClient` (az Microsoft Graph SDK által közzétett) API-műveleteket. Microsoft Graph közzététele:
+
+1. Adja hozzá a [Microsoft. Identity. Web. MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Identity.Web.MicrosoftGraph) NuGet-csomagot a projekthez.
+1. Adja `.AddMicrosoftGraph()` hozzá `.EnableTokenAcquisitionToCallDownstreamApi()` a következőt a *Startup.cs* -fájlhoz. `.AddMicrosoftGraph()` több felülbírálással rendelkezik. A konfigurációs szakaszt paraméterként tartalmazó felülbírálás használatával a kód a következőképpen fog megjelenni:
+
+   ```csharp
+   using Microsoft.Identity.Web;
+
+   public class Startup
+   {
+     // ...
+     public void ConfigureServices(IServiceCollection services)
+     {
+     // ...
+     services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+             .AddMicrosoftIdentityWebApp(Configuration, Configuration.GetSection("AzureAd"))
+               .EnableTokenAcquisitionToCallDownstreamApi(new string[]{"user.read" })
+                  .AddMicrosoftGraph(Configuration.GetSection("GraphBeta"))
+               .AddInMemoryTokenCaches();
+      // ...
+     }
+     // ...
+   }
+   ```
+
+### <a name="option-2-call-a-downstream-web-api-other-than-microsoft-graph"></a>2. lehetőség: a Microsoft Graphtól eltérő alárendelt webes API meghívása
+
+Ha a Microsoft Graphtól eltérő webes API-t szeretne meghívni, a *Microsoft. Identity. Web* biztosítja `.AddDownstreamWebApi()` , amely jogkivonatokat kér le, és meghívja az alárendelt webes API-t.
+
+   ```csharp
+   using Microsoft.Identity.Web;
+
+   public class Startup
+   {
+     // ...
+     public void ConfigureServices(IServiceCollection services)
+     {
+     // ...
+     services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+             .AddMicrosoftIdentityWebApp(Configuration, "AzureAd")
+               .EnableTokenAcquisitionToCallDownstreamApi(new string[]{"user.read" })
+                  .AddDownstreamWebApi("MyApi", Configuration.GetSection("GraphBeta"))
+               .AddInMemoryTokenCaches();
+      // ...
+     }
+     // ...
+   }
+   ```
+
+### <a name="summary"></a>Összegzés
+
+A webes API-khoz hasonlóan különböző jogkivonat-gyorsítótár-implementációkat is választhat. Részletekért lásd: [Microsoft. Identity. Web-token cache szerializálás](https://aka.ms/ms-id-web/token-cache-serialization) a githubon.
+
+Az alábbi képen a *Microsoft. Identity. Web* különböző lehetőségei láthatók, valamint a *Startup.cs* fájlra gyakorolt hatásuk:
+
+:::image type="content" source="media/scenarios/microsoft-identity-web-startup-cs.png" alt-text="Webes API létrehozásakor dönthet úgy, hogy meghívja az alsóbb rétegbeli API-t és a jogkivonat-gyorsítótár implementációit.":::
 
 > [!NOTE]
 > Az itt található programkódok teljes megértéséhez ismernie kell [ASP.net Core alapjait](/aspnet/core/fundamentals), és különösen a [függőségi befecskendezést](/aspnet/core/fundamentals/dependency-injection) és a [beállításokat](/aspnet/core/fundamentals/configuration/options).
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-Mivel a felhasználói bejelentkezés delegálva van az Open ID kapcsolódási (OIDC) köztes, a OIDC folyamattal kell kommunikálni. Az interakció módja a használt keretrendszertől függ.
+Mivel a felhasználói bejelentkezés az OpenID Connect (OIDC) middleware-hez van delegálva, a OIDC folyamattal kell kommunikálnia. Az interakció módja a használt keretrendszertől függ.
 
 A ASP.NET esetében előfizethet a köztes OIDC eseményekre:
 

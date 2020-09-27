@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: Infrastructure-services
 ms.date: 05/18/2020
 ms.author: derekol
-ms.openlocfilehash: df337736a676c40f1345310afb9a2e685ddc1d5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0540fa9c7a29456aaf343adce83509b2d0e390e4
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84872021"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398920"
 ---
 # <a name="peering-service-connection"></a>Társ-szolgáltatási kapcsolatok
 
@@ -29,7 +29,7 @@ A kapcsolatok általában egy logikai adatkészletre hivatkoznak, amely egy tár
 Az ügyfél a követelménynek megfelelően egyetlen kapcsolatot vagy több kapcsolatot hozhat létre. A rendszer a telemetria-gyűjtemények egységét is használja. Ha például telemetria-riasztásokat szeretne használni, akkor az ügyfélnek meg kell határoznia a figyelni kívánt kapcsolatokat.
 
 > [!Note]
-> Ha regisztrál a partneri szolgáltatásra, a Windows és az Office 365 telemetria elemezzük, hogy a kiválasztott előtagok késési mérőszámait is meg lehessen adni.
+> Amikor regisztrál a partneri szolgáltatásra, elemezzük a Windows-és Microsoft 365 telemetria, hogy a megadott előtagok késési mérőszámait is meg lehessen adni.
 >A kapcsolódási telemetria kapcsolatos további információkért tekintse meg a társítási [szolgáltatás kapcsolódási telemetria](connection-telemetry.md).
 >
 

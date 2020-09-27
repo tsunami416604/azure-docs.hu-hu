@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 4cc8f2c90e74b5b3ab6df3169df0524f1134b66e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 94b5b3d2ab1f576f87ead23b389252ec96a20f11
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85113602"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397351"
 ---
-# <a name="globally-scale-provisioned-throughput"></a>Kiosztott átviteli sebesség globális skálázása 
+# <a name="how-does-azure-cosmos-db-globally-scale-the-provisioned-throughput"></a>Hogyan Azure Cosmos DB a kiosztott átviteli sebesség globális skálázása?
 
 Azure Cosmos DB a kiépített átviteli sebesség a kérelmek egység/másodperc (RU/s vagy a többes számú RUs) formájában jelenik meg. A RUs az olvasási és írási műveletek költségeit a Cosmos-tárolón méri, ahogy az alábbi képen is látható:
 

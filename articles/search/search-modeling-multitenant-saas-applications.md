@@ -7,13 +7,13 @@ author: LiamCavanagh
 ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: ea0dac74d4f995e41513b3451dd28d177040e672
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/25/2020
+ms.openlocfilehash: cd21197d6d1559b681ae622b974f6eb7ba95ad3d
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935024"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397368"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-cognitive-search"></a>Tervezési minták a több-bérlős SaaS-alkalmazásokhoz és az Azure Cognitive Search
 
@@ -76,7 +76,8 @@ Több-bérlős forgatókönyv esetén az alkalmazás fejlesztői egy vagy több 
 3. *Kettő* kombinációja: Nagyobb, aktívabb bérlők dedikált szolgáltatásokat kapnak, míg a kisebb bérlők egyedi indexeket kapnak a megosztott szolgáltatásokon belül.
 
 ## <a name="1-index-per-tenant"></a>1. index/bérlő
-![Az index/bérlői modell ábrázolása](./media/search-modeling-multitenant-saas-applications/azure-search-index-per-tenant.png)
+
+:::image type="content" source="media/search-modeling-multitenant-saas-applications/azure-search-index-per-tenant.png" alt-text="Az index/bérlői modell ábrázolása" border="false":::
 
 Egy index/bérlői modellben több bérlő is foglal el egyetlen Azure Cognitive Search szolgáltatást, ahol mindegyik bérlő saját indextel rendelkezik.
 
@@ -93,7 +94,8 @@ Az Azure Cognitive Search lehetővé teszi az egyéni indexek és a növekedő i
 Ha az indexek teljes száma túl nagyra nő egyetlen szolgáltatás esetében, egy másik szolgáltatást kell kiépíteni az új bérlők befogadásához. Ha az indexeket új szolgáltatások hozzáadásakor kell áthelyezni a keresési szolgáltatások között, az indexből származó adatoknak kézzel kell átmásolnia az egyik indexből a másikba, mivel az Azure Cognitive Search nem engedélyezi az index áthelyezését.
 
 ## <a name="2-service-per-tenant"></a>2. szolgáltatás/bérlő
-![A szolgáltatás/bérlői modell ábrázolása](./media/search-modeling-multitenant-saas-applications/azure-search-service-per-tenant.png)
+
+:::image type="content" source="media/search-modeling-multitenant-saas-applications/azure-search-service-per-tenant.png" alt-text="A szolgáltatás/bérlői modell ábrázolása" border="false":::
 
 A szolgáltatás-bérlői architektúrában minden bérlő saját keresési szolgáltatással rendelkezik.
 

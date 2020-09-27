@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
-ms.openlocfilehash: acb5171048b5a12310b6c0af5d652b7e615a71f5
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 8664efd40bb5392f56803515f09cccc800fdf21c
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087809"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397113"
 ---
 # <a name="connect-excel-to-apache-hadoop-by-using-power-query"></a>Az Excel és a Apache Hadoop összekötése Power Query használatával
 
@@ -23,7 +23,7 @@ A Microsoft Big-adatok megoldásának egyik fő funkciója a Microsoft Business 
 
 * Egy Apache Hadoop-fürt a HDInsight-on. Lásd: Ismerkedés [a HDInsight Linux rendszeren](./apache-hadoop-linux-tutorial-get-started.md).
 * Windows 10, 7, Windows Server 2008 R2 vagy újabb operációs rendszert futtató munkaállomás.
-* Office 2016, Office 2013 Professional Plus, Office 365 ProPlus, Excel 2013 önálló vagy Office 2010 Professional Plus.
+* Microsoft 365 alkalmazások nagyvállalati, Office 2016, Office 2013 Professional Plus, Excel 2013 önálló vagy Office 2010 Professional Plus rendszerhez.
 
 ## <a name="install-microsoft-power-query"></a>A Microsoft Power Query telepítése
 
@@ -57,7 +57,7 @@ Az Excelhez készült Power Query beépülő modul megkönnyíti az adatok impor
 
        **Megjegyzés:** A Power Query lehetővé teszi az adatok HDFS történő importálását **más forrásokból**való kiválasztással.
 
-1. Az **Azure HDInsight (HDFS)** párbeszédpanel **fiók neve vagy URL** szövege mezőjébe írja be a fürthöz társított Azure Blob Storage-fiók nevét. Ezután kattintson az **OK** gombra. Ez a fiók lehet az alapértelmezett Storage-fiók vagy egy társított Storage-fiók.  A formátum `https://StorageAccountName.blob.core.windows.net/`.
+1. Az **Azure HDInsight (HDFS)** párbeszédpanel **fiók neve vagy URL** szövege mezőjébe írja be a fürthöz társított Azure Blob Storage-fiók nevét. Ezután válassza az **OK** gombot. Ez a fiók lehet az alapértelmezett Storage-fiók vagy egy társított Storage-fiók.  A formátum `https://StorageAccountName.blob.core.windows.net/`.
 
 1. A **fiók kulcsa**mezőben adja meg a blob Storage-fiók kulcsát, majd válassza a **kapcsolat**lehetőséget. (A fiók adatait csak akkor kell megadnia, amikor először fér hozzá ehhez a tárolóhoz.)
 
@@ -73,7 +73,7 @@ Az Excelhez készült Power Query beépülő modul megkönnyíti az adatok impor
 
 ## <a name="next-steps"></a>További lépések
 
-Ebből a cikkből megtudhatta, hogyan használhatja a Power Queryt adatok lekéréséhez a HDInsight-ből az Excelbe. Hasonlóképpen lekérheti a HDInsight adatait a Azure SQL Databaseba. Az adatok a HDInsight is feltölthetők. További információt a következő cikkekben talál:
+Ebből a cikkből megtudhatta, hogyan használhatja a Power Queryt adatok lekéréséhez a HDInsight-ből az Excelbe. Hasonlóképpen lekérheti a HDInsight adatait a Azure SQL Databaseba. Az adatok a HDInsight is feltölthetők. További tudnivalókért olvassa el a következő cikket:
 
 * Az [Azure HDInsight-ban a Microsoft Power BI Apache Hivei az adatmegjelenítést](apache-hadoop-connect-hive-power-bi.md).
 * [Interaktív lekérdezési struktúra-adatmegjelenítés az Azure HDInsight Power BIával](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md).

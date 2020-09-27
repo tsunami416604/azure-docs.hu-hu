@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/07/2019
-ms.openlocfilehash: 23d799f84cb3ac3ca911a5669041b0a25394a7ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e25299c2ce5d31da8f3caa5b02ab8def816b31ee
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81414763"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398220"
 ---
 # <a name="migrate-data-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Adatok migrálása az Amazon S3-ból Azure Data Lake Storage Gen2ba
 
@@ -109,23 +109,23 @@ A sablon két paramétert tartalmaz:
 
 3. Ugrás a **korábbi adatok migrálása az AWS S3-ból Azure Data Lake Storage Gen2** sablonba. Adja meg a külső vezérlő táblával létesített kapcsolatokat, az AWS S3-t, mint az adatforrás-tárolót, és Azure Data Lake Storage Gen2 a célként megadott tárolóként. Vegye figyelembe, hogy a külső vezérlő tábla és a tárolt eljárás ugyanarra a kapcsolódásra hivatkozik.
 
-    ![Új kapcsolat létrehozása](media/solution-template-migration-s3-azure/historical-migration-s3-azure1.png)
+    ![Képernyőfelvétel: az AWS S3 korábbi adatainak átmigrálása Azure Data Lake Storage Gen2 sablonba.](media/solution-template-migration-s3-azure/historical-migration-s3-azure1.png)
 
 4. Válassza **a sablon használata**lehetőséget.
 
-    ![Sablon használata](media/solution-template-migration-s3-azure/historical-migration-s3-azure2.png)
+    ![Képernyőfelvétel: a sablon használata gomb.](media/solution-template-migration-s3-azure/historical-migration-s3-azure2.png)
     
 5. Ekkor megjelenik a két folyamat és 3 adatkészlet, ahogy az a következő példában is látható:
 
-    ![A folyamat áttekintése](media/solution-template-migration-s3-azure/historical-migration-s3-azure3.png)
+    ![A sablon használatával létrehozott két folyamatot és három adatkészletet bemutató képernyőkép.](media/solution-template-migration-s3-azure/historical-migration-s3-azure3.png)
 
 6. Válassza a **hibakeresés**lehetőséget, adja meg a **paramétereket**, majd kattintson a **Befejezés gombra**.
 
-    ![Kattintson * * hibakeresés * *](media/solution-template-migration-s3-azure/historical-migration-s3-azure4.png)
+    ![Képernyőkép, amely bemutatja, hol válassza ki a hibakeresést, és adja meg a paramétereket a Befejezés gombra kattintva.](media/solution-template-migration-s3-azure/historical-migration-s3-azure4.png)
 
 7. A következő példához hasonló eredmények jelennek meg:
 
-    ![Az eredmény áttekintése](media/solution-template-migration-s3-azure/historical-migration-s3-azure5.png)
+    ![Képernyőkép, amely a visszaadott eredményeket jeleníti meg.](media/solution-template-migration-s3-azure/historical-migration-s3-azure5.png)
 
 
 ### <a name="for-the-template-to-copy-changed-files-only-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Ahhoz, hogy a sablon csak az Amazon S3-ból Azure Data Lake Storage Gen2ba másolja a módosított fájlokat
@@ -192,7 +192,7 @@ A sablon két paramétert tartalmaz:
 
 8. A vezérlő tábla eredményeit a *"select * from s3_partition_delta_control_table"* lekérdezéssel is ellenőrizheti, így az alábbi példához hasonló kimenet jelenik meg:
 
-    ![Az eredmény áttekintése](media/solution-template-migration-s3-azure/delta-migration-s3-azure6.png)
+    ![Képernyőkép, amely a lekérdezés futtatása után megjeleníti az eredményeket a vezérlő táblából.](media/solution-template-migration-s3-azure/delta-migration-s3-azure6.png)
     
 ## <a name="next-steps"></a>További lépések
 

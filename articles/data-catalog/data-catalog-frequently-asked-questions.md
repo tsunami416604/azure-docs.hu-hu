@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 7dbb1b4a8b85350b8bf8a6df0c9035a19055444c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3af8a7de7dad3ce20d4f0247892bca83f06c9d22
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79409019"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397300"
 ---
 # <a name="azure-data-catalog-frequently-asked-questions"></a>Azure Data Catalog gyakori kérdések
 Ez a cikk a Azure Data Catalog szolgáltatással kapcsolatos gyakori kérdésekre adott válaszokat tartalmazza.
@@ -55,7 +55,7 @@ A szolgáltatásra vonatkozó kérések és egyéb visszajelzések elküldéséh
 
 ## <a name="why-do-i-get-an-error-catalog-already-exists-when-i-try-to-create-a-new-catalog"></a>Miért kapok hibaüzenetet *, amikor megpróbálok új katalógust* létrehozni?
 
-Az Office 365 E5 Power BI Pro licenccel való megvásárlásakor a Microsoft automatikusan létrehoz egy alapértelmezett katalógust az előfizetés régiójában. Ez a katalógus az ingyenes SKU-t használja. Az Office 365/Power BI felhasználói licenc az Office 365 felügyeleti lapján van kezelve. 
+Az Office 365 E5 Power BI Pro licenccel való megvásárlásakor a Microsoft automatikusan létrehoz egy alapértelmezett katalógust az előfizetés régiójában. Ez a katalógus az ingyenes SKU-t használja. Az Office 365/Power BI felhasználói licenc kezelése az adminisztráció oldalon történik. 
 
 Ez a típusú adatkatalógus azonban nem rendelkezik **rendszergazdai lehetőséggel** , és nem látható a **Azure Portalban**. Ez a típusú adatkatalógus nem törölhető. Hasonlóképpen nem lehet átnevezni a adatkatalógust, és nem helyezhető át másik régióba. 
 
@@ -75,7 +75,7 @@ Az Data Catalog-ban lévő adatai regisztrálása:
 Az adott tulajdonságok eltérnek az adatforrástól az adatforrástól, de általánosságban a Data Catalog közzétételi szolgáltatás a következő információkat bontja ki:
 
 * Eszköz neve
-* Eszköz típusa
+* Objektumtípus
 * Eszköz leírása
 * Attribútum/oszlopnevek
 * Attribútum/oszlop adattípusai

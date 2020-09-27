@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: d833a4cf26ee8ab69d16cbd1d776ca49a2df4bc4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 273e9f7ce65cdd15000b1cc4ac7c19cde5992992
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738215"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396773"
 ---
 # <a name="monitor-vpn-gateways-with-network-watcher-troubleshooting"></a>VPN-átjárók figyelése Network Watcher hibaelhárítással
 
 A hálózati teljesítmény alapos betekintést biztosít a megbízható szolgáltatások biztosításához az ügyfeleknek. Ezért fontos, hogy gyorsan felderítse a hálózati leállás feltételeit, és javítsa a kiesési feltétel enyhítését. A Azure Automation lehetővé teszi a feladatok programozott módon történő megvalósítását és futtatását a runbookok használatával. A Azure Automation használata tökéletes receptet hoz létre a folyamatos és proaktív hálózati figyelés és riasztások elkészítése során.
 
-## <a name="scenario"></a>Forgatókönyv
+## <a name="scenario"></a>Használati eset
 
 Az alábbi képen egy többrétegű alkalmazás található, amely VPN Gateway és alagút használatával létesített helyszíni kapcsolattal rendelkezik. A VPN Gateway működésének biztosítása kritikus fontosságú az alkalmazások teljesítményében.
 
@@ -42,7 +42,7 @@ A forgatókönyv elindítása előtt a következő előfeltételeknek kell megfe
 
 - Azure Automation-fiók az Azure-ban. Győződjön meg arról, hogy az Automation-fiók rendelkezik a legújabb modulokkal, és rendelkezik a AzureRM. Network modullal is. Ha hozzá szeretné adni az Automation-fiókhoz, a AzureRM. Network modul a modul-galériában érhető el.
 - A Azure Automationban konfigurálnia kell a hitelesítő adatok készletét. További információ: [Azure Automation biztonság](../automation/automation-security-overview.md)
-- Érvényes SMTP-kiszolgáló (Office 365, helyszíni e-mail-cím vagy más) és a Azure Automationban definiált hitelesítő adatok
+- Érvényes SMTP-kiszolgáló (Microsoft 365, a helyszíni e-mail-cím vagy egy másik) és a Azure Automationban definiált hitelesítő adatok
 - Egy konfigurált Virtual Network átjáró az Azure-ban.
 - Meglévő Storage-fiók meglévő tárolóval a naplók tárolásához.
 
@@ -53,7 +53,7 @@ A forgatókönyv elindítása előtt a következő előfeltételeknek kell megfe
 
 A példa konfigurálásának első lépése a runbook létrehozása. Ez a példa egy futtató fiókot használ. A futtató fiókokkal kapcsolatos további információkért látogasson el a [Runbookok hitelesítése Azure-beli futtató fiókkal](../automation/automation-create-runas-account.md) című témakörre.
 
-### <a name="step-1"></a>1\. lépés
+### <a name="step-1"></a>1. lépés
 
 Navigáljon Azure Automation a [Azure Portal](https://portal.azure.com) , majd kattintson a **runbookok** elemre.
 
@@ -85,7 +85,7 @@ Használja a következő kódot, kattintson a **Mentés** gombra.
 
 ```powershell
 # Set these variables to the proper values for your environment
-$o365AutomationCredential = "<Office 365 account>"
+$automationCredential = "<work or school account>"
 $fromEmail = "<from email address>"
 $toEmail = "<to email address>"
 $smtpServer = "<smtp.office365.com>"
@@ -99,8 +99,8 @@ $storageAccountName = "<storage account name>"
 $storageAccountResourceGroup = "<resource group name>"
 $storageAccountContainer = "<container name>"
 
-# Get credentials for Office 365 account
-$cred = Get-AutomationPSCredential -Name $o365AutomationCredential
+# Get credentials for work or school account
+$cred = Get-AutomationPSCredential -Name $automationCredential
 
 # Get the connection "AzureRunAsConnection "
 $servicePrincipalConnection=Get-AutomationConnection -Name $runAsConnectionName
@@ -155,7 +155,7 @@ Létre kell hozni egy új ütemtervet. Kattintson az **ütemterv csatolása a ru
 
 ![7. lépés][7]
 
-### <a name="step-1"></a>1\. lépés
+### <a name="step-1"></a>1. lépés
 
 Az **ütemterv** panelen kattintson az **új ütemterv létrehozása** lehetőségre.
 

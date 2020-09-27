@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: 71c1306d1516d8af3fb16c0ba353ab8144de2562
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 03c783b5a475f0a49fe94d33aa866654e9c9f5f1
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202589"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397827"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Apache Hive-szabályzatok konfigurálása a HDInsightban az Enterprise Security Package csomaggal
 
@@ -22,7 +22,7 @@ Megtudhatja, hogyan konfigurálhatja a Apache Hive Apache Ranger-szabályzatait.
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Enterprise Security Package-t tartalmazó HDInsight-fürt. Lásd: [HDInsight-fürtök beállítása az ESP-vel](apache-domain-joined-configure.md).
-* Office 2016, Office 2013 Professional Plus, Office 365 Pro Plus, az Excel 2013 Standalone vagy Office 2010 Professional Plus rendszert futtató munkaállomás.
+* A nagyvállalati, Office 2016, Office 2013 Professional Plus, Excel 2013 önálló vagy Office 2010 Professional Plus Microsoft 365 alkalmazásokkal rendelkező munkaállomás.
 
 ## <a name="connect-to-apache-ranger-admin-ui"></a>Csatlakozás az Apache Ranger felügyeleti felhasználói felületéhez
 **Csatlakozás az Apache Ranger felügyeleti felhasználói felületéhez**
@@ -92,7 +92,7 @@ Az utasítások a [Hive ODBC-adatforrás létrehozása](../hadoop/apache-hadoop-
  | Hive Server típusa | Válassza ki a **Hive Server 2** típust |
  | Mechanizmus | Válassza ki az **Azure HDInsight szolgáltatást** |
  | HTTP elérési útja | Hagyja üresen. |
- | Felhasználónév | Írja be a következő szöveget: hiveuser1@contoso158.onmicrosoft.com Ha az eltérő, frissítse a tartománynevet. |
+ | Felhasználónév | Írja be a következő szöveget: hiveuser1@contoso158.onmicrosoft.com. Ha az eltérő, frissítse a tartománynevet. |
  | Jelszó | Adja meg a hiveuser1 jelszavát. |
 
 Az adatforrás mentése előtt kattintson a **Tesztelés** gombra.

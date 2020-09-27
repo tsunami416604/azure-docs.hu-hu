@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 06/05/2015
 ms.author: wpickett
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: ad77278d593e4b2165708e0c9110a9ffff19a255
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 71114b6663d010437e5778d288eacf4e120b3da5
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017702"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91395974"
 ---
 # <a name="multitenant-applications-in-azure"></a>Több-bérlős alkalmazások az Azure-ban
-A több-bérlős alkalmazás olyan megosztott erőforrás, amely lehetővé teszi a "felhasználók számára a különböző bérlők számára", hogy megtekintsék az alkalmazást, mintha a tulajdonosa lenne. Egy tipikus forgatókönyv, amely egy több-bérlős alkalmazáshoz rendeli, a különböző bérlők által az alkalmazás összes felhasználója testreszabhatja a felhasználói élményt, de egyébként ugyanazok az alapvető üzleti követelmények. Többek között a nagyméretű több-bérlős alkalmazások például az Office 365, a Outlook.com és a visualstudio.com.
+A több-bérlős alkalmazás olyan megosztott erőforrás, amely lehetővé teszi a "felhasználók számára a különböző bérlők számára", hogy megtekintsék az alkalmazást, mintha a tulajdonosa lenne. Egy tipikus forgatókönyv, amely egy több-bérlős alkalmazáshoz rendeli, a különböző bérlők által az alkalmazás összes felhasználója testreszabhatja a felhasználói élményt, de egyébként ugyanazok az alapvető üzleti követelmények. Többek között a nagyméretű több-bérlős alkalmazások Microsoft 365, a Outlook.com és a visualstudio.com.
 
 Az alkalmazás-szolgáltató szemszögéből a bérlős előnyei többnyire a működési és a költséghatékonysági előnyökkel kapcsolatosak. Az alkalmazás egyik verziója képes kielégíteni számos bérlő vagy ügyfél igényeit, így lehetővé teszi a rendszerfelügyeleti feladatok, például a figyelés, a teljesítmény finomhangolása, a szoftveres karbantartás és az adatok biztonsági mentéseinak összevonását.
 

@@ -7,14 +7,14 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/07/2020
 ms.author: rochakm
-ms.openlocfilehash: d3e70384a99e2dad3f19825cb85b83861e4647e9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ab3597ddba3e41e88c8b2b575ed5857aca01e610
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083820"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397963"
 ---
-# <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>Az Azure-ról az Azure-ba irányuló virtuális gépek replikációs hibáinak elhárítása
+# <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>Azure-ból Azure-ba történő virtuálisgép-replikációval kapcsolatos hibák elhárítása
 
 Ez a cikk az Azure Virtual Machines (VM) egyik régióból a másikba történő replikálásának és helyreállításának során Azure Site Recovery gyakori hibáinak elhárítását ismerteti. További információ a támogatott konfigurációkról: Azure-beli [virtuális gépek replikálásának támogatási mátrixa](azure-to-azure-support-matrix.md).
 
@@ -197,11 +197,11 @@ Próbálja meg elérni a DNS-kiszolgálót a virtuális gépről. Ha a DNS-kiszo
 
 #### <a name="possible-cause"></a>Lehetséges ok
 
-Nem hozhatók összefüggésbe az Office 365-hitelesítés és az Identity IP4-végpontok.
+Nem lehet csatlakozni a hitelesítéshez és az Identity IP4-végpontok Microsoft 365ához.
 
 #### <a name="fix-the-problem"></a>A probléma javítása
 
-Azure Site Recovery szükséges az Office 365 IP-tartományokhoz való hozzáférés hitelesítéshez.
+Azure Site Recovery szükséges hozzáférés Microsoft 365 IP-tartományokhoz a hitelesítéshez.
 Ha az Azure hálózati biztonsági csoport (NSG) szabályai/tűzfal proxyja segítségével vezérli a kimenő hálózati kapcsolatot a virtuális gépen, ügyeljen arra, hogy [Azure Active Directory (HRE)](../virtual-network/security-overview.md#service-tags) NSG-szabályt használjon a HRE való hozzáférés engedélyezéséhez. Az IP-cím alapú NSG-szabályok már nem támogatottak.
 
 ### <a name="issue-3-site-recovery-configuration-failed-151197"></a>3. probléma: Site Recovery konfiguráció nem sikerült (151197)
@@ -225,8 +225,8 @@ Az egyéni proxybeállítások érvénytelenek, és a mobilitási szolgáltatás
 1. A mobilitási szolgáltatás ügynöke észleli a proxybeállításokat az IE-ből a Windows és `/etc/environment` Linux rendszeren.
 1. Ha a proxyt csak a mobilitási szolgáltatáshoz szeretné beállítani, akkor a proxy részleteit a _ProxyInfo. conf fájlban_ adhatja meg a következő helyen:
 
-   - **Linux**:`/usr/local/InMage/config/`
-   - **Windows**:`C:\ProgramData\Microsoft Azure Site Recovery\Config`
+   - **Linux**: `/usr/local/InMage/config/`
+   - **Windows**: `C:\ProgramData\Microsoft Azure Site Recovery\Config`
 
 1. A _ProxyInfo. conf_ _fájlnak_ a következő ini-formátumúnak kell lennie.
 

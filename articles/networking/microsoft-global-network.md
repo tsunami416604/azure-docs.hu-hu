@@ -13,18 +13,18 @@ ms.workload: infrastructure-services
 ms.date: 06/13/2019
 ms.author: kumud
 ms.reviewer: ypitsch
-ms.openlocfilehash: 9420d52cf7d88ff84fd23928f92cdc62e9627619
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 00199f81e2dc8ca699fabf312955bf7a8a2b5cbd
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87280902"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398389"
 ---
 # <a name="microsoft-global-network"></a>Microsoft globális hálózat
 
 A Microsoft a világ egyik legnagyobb gerinces hálózatát birtokolja és üzemelteti. Ez a globális és kifinomult architektúra, amely több mint 160 000 mérföldet ölel fel, összekapcsolja az adatközpontokat és az ügyfeleket. 
  
-Minden nap a világ minden napján csatlakozik, és a Microsoft Azure, a Bing, a Dynamics 365, az Office 365, az XBox és sok más számára több ezer kérést továbbít. A típustól függetlenül az ügyfelek azonnali megbízhatóságot és rugalmasságot várnak a szolgáltatásainktól. 
+Minden nap, a világ minden napján csatlakozik, és a Microsoft Azure, a Bing, a Dynamics 365, a Microsoft 365, az XBox és sok más számára több ezer kérést továbbít. A típustól függetlenül az ügyfelek azonnali megbízhatóságot és rugalmasságot várnak a szolgáltatásainktól. 
  
 A [Microsoft Global Network](https://azure.microsoft.com/global-infrastructure/global-network/) (WAN) a nagyszerű felhőalapú élmény megvalósításának központi része. A Microsoft- [adatközpontok](https://azure.microsoft.com/global-infrastructure/) 54 Azure-régiókban és a világ minden pontján stratégiai módon elhelyezett nagy szembőségű, globális hálózatban egyaránt elérhetővé teszi a rendelkezésre állást, a kapacitást és a rugalmasságot, hogy megfeleljenek az igényeknek.
 

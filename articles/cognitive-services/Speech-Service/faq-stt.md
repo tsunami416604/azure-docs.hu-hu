@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: panosper
-ms.openlocfilehash: 50ca6eacc7e75a3ff391401e7ced0e3583f1a285
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 0fe5b1350fdcf53eeda11f6de430d8d02a24fdbf
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91357573"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397759"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Beszéd szöveggel kapcsolatos gyakori kérdések
 
@@ -152,19 +152,19 @@ Válasz **: attól**függ, hogy az alkalmazásban használt szókincs és kifeje
 
 **A**: a szavak listájának feltöltése felveszi a szavakat a szókincsbe, de nem fogja tanítani a rendszerre, hogy a szavakat általában hogyan használják. Ha teljes vagy részleges hosszúságú kimondott szöveg (mondatokat vagy kifejezéseket) biztosít a felhasználók számára, akkor a nyelvi modell megismerheti az új szavakat és azok használatát. Az egyéni nyelvi modell nem csupán az új szavak a rendszerhez való hozzáadására, hanem az alkalmazáshoz tartozó ismert szavak valószínűségének módosítására is jó. A teljes hosszúságú kimondott szöveg biztosítása segít a rendszeren a jobb megismerésben.
 
-## <a name="tenant-model-custom-speech-with-office-365-data"></a>Bérlői modell (Custom Speech Office 365-adattal)
+## <a name="tenant-model-custom-speech-with-microsoft-365-data"></a>Bérlői modell (Custom Speech Microsoft 365 adattal)
 
 **K: milyen információk szerepelnek a bérlői modellben, és hogyan jön létre?**
 
-**A:** A bérlői modell olyan [nyilvános csoportos](https://support.office.com/article/learn-about-office-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2) e-mailek és dokumentumok használatával készült, amelyeket bárki láthat a szervezetében.
+**A:** A bérlői modell olyan [nyilvános csoportos](https://support.microsoft.com/office/learn-about-microsoft-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2) e-mailek és dokumentumok használatával készült, amelyeket bárki láthat a szervezetében.
 
 **K: milyen beszédfelismerési élményt fejlesztenek a bérlői modell?**
 
 **A:** Ha a bérlői modell engedélyezése, létrehozása és közzététele megtörténik, a rendszer a beszédfelismerési szolgáltatással létrehozott vállalati alkalmazások felismerését javítja. Ez egy felhasználói Azure AD-tokent is továbbít, amely a vállalati tagságot jelzi.
 
-Az Office 365-ben beépített beszédfelismerési élmények, például a diktálás és a PowerPoint-feliratok, nem változnak, amikor létrehoz egy bérlői modellt a Speech Service-alkalmazásokhoz.
+A Microsoft 365 beépített beszédfelismerési élmények, például a diktálás és a PowerPoint-feliratok nem változnak, amikor létrehoz egy bérlői modellt a Speech Service-alkalmazásokhoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Hibaelhárítás](troubleshooting.md)
 - [Kibocsátási megjegyzések](releasenotes.md)

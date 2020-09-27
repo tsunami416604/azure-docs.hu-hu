@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/22/2020
 ms.author: cynthn
-ms.openlocfilehash: 4232f4cd39c3f6dd6efa0bf78959798ea842e2dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b174e2631131e6bf26d7b1cb62442c8a99102e2e
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84676046"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397283"
 ---
 # <a name="control-updates-with-maintenance-control-and-the-azure-portal"></a>Frissítések vezérlése a karbantartási és a Azure Portal
 
@@ -76,7 +76,7 @@ Két módon is ellenőrizhető, hogy a frissítések függőben vannak-e karbant
 
 Egy adott gazdagépet a dedikált gazdagép **Virtual Machines** vagy tulajdonságaival is megadhat. 
 
-![A gazdagép karbantartásának ellenőrzését bemutató képernyőkép](media/virtual-machines-maintenance-control-portal/maintenance-configurations-pending-vm.png)
+![A kijelölt karbantartási állapotot bemutató képernyőkép.](media/virtual-machines-maintenance-control-portal/maintenance-configurations-pending-vm.png)
 
 ## <a name="apply-updates"></a>Frissítések alkalmazása
 
@@ -94,7 +94,7 @@ A frissítések állapotát a **karbantartási konfigurációk** konfigurációj
 
 Konfiguráció törléséhez nyissa meg a konfigurációs adatokat, és kattintson a **Törlés**gombra.
 
-![A gazdagép karbantartásának ellenőrzését bemutató képernyőkép](media/virtual-machines-maintenance-control-portal/maintenance-configurations-delete.png)
+![A konfiguráció törlését bemutató képernyőkép.](media/virtual-machines-maintenance-control-portal/maintenance-configurations-delete.png)
 
 
 ## <a name="next-steps"></a>További lépések

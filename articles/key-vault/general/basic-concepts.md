@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: mbaldwin
-ms.openlocfilehash: e0bb3c3f3a6a1a38f974acf361937928ad4e2cfd
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: b537fecefd0b8b00967894daa94881a084d5c8f2
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983287"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398510"
 ---
 # <a name="azure-key-vault-basic-concepts"></a>Azure Key Vault alapvető fogalmak
 
@@ -23,7 +23,7 @@ A Azure Key Vault egy felhőalapú szolgáltatás a titkok biztonságos tárolá
 
 További fontos feltételek:
 
-- **Bérlő**: A bérlő az a cég vagy intézmény, amely egy Microsoft-felhőszolgáltatás egy adott példányát birtokolja és kezeli. Leggyakrabban az Azure-beli és az Office 365-szolgáltatások használatára használják a szervezet számára.
+- **Bérlő**: A bérlő az a cég vagy intézmény, amely egy Microsoft-felhőszolgáltatás egy adott példányát birtokolja és kezeli. Leggyakrabban a szervezet Azure-és Microsoft 365 szolgáltatásaira utal.
 
 - **Kulcstartó-tulajdonos**: Létrehozhat egy Key Vaultot, amely felett teljes körű hozzáféréssel és irányítással rendelkezik. Emellett naplózást is beállíthat, amellyel naplózhatja a titkos kulcsok és a kulcsok elérését. A kulcsok életciklusát a rendszergazdák kezelhetik. Kiadhatnak új kulcsverziókat, biztonsági másolatokat készíthetnek, és elvégezhetik a kapcsolódó feladatokat.
 
@@ -81,7 +81,7 @@ Ez a rendszergazda ezután lehetővé teszi a fejlesztők URI-k számára, hogy 
 
 A fejlesztők közvetlenül is kezelhetik a kulcsokat API-k használatával. További információkért tekintse meg a [Key Vault fejlesztői útmutatóját](developers-guide.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Megtudhatja, hogyan [védheti meg a](secure-your-key-vault.md)tárolót.
 - Ismerje meg, hogyan [védheti meg felügyelt HSM-készleteit](../managed-hsm/access-control.md)

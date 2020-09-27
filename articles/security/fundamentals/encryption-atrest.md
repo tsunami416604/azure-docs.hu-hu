@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 337deec076a25183a4dd866362c7dc55a485834d
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: ec81a8f7f9d9f45f1d068a415a599ce30a0d4581
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88224492"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397249"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Inaktív adatok titkosítása az Azure-ban
 
@@ -81,13 +81,13 @@ A titkosítási kulcsokkal titkosított adattitkosítási kulcsokat a rendszer k
 
 Microsoft Cloud szolgáltatásokat mindhárom Felhőbeli modellben használják: IaaS, Pásti, SaaS. Az alábbiakban néhány példát láthat arra, hogyan illeszkednek az egyes modellekhez:
 
-- A szoftver, amelyet kiszolgálóként vagy SaaS-ként, a felhő által biztosított alkalmazással, például az Office 365-vel biztosítanak.
+- A szoftver, amelyet kiszolgálóként vagy SaaS-ként, a felhő által nyújtott alkalmazásokkal (például Microsoft 365) rendelkező szoftverek.
 - Azok a platform-szolgáltatások, amelyekkel az ügyfelek a felhőt használják alkalmazásaikban, például a Storage, az Analytics és a Service Bus funkcióinak használatával.
 - Infrastruktúra-szolgáltatások vagy infrastruktúra-szolgáltatás (IaaS), amelyben az ügyfél üzembe helyezi a felhőben üzemeltetett operációs rendszereket és alkalmazásokat, és esetleg más felhőalapú szolgáltatásokat hasznosít.
 
 ### <a name="encryption-at-rest-for-saas-customers"></a>Inaktív adatok titkosítása SaaS-ügyfelek számára
 
-A szolgáltatott szoftverként (SaaS) használó ügyfelek jellemzően inaktív titkosítással rendelkeznek, vagy az egyes szolgáltatásokban elérhetők. Az Office 365 számos lehetőséget kínál az ügyfelek számára, hogy ellenőrizze vagy engedélyezze a titkosítást a nyugalmi állapotban. Az Office 365-szolgáltatásokkal kapcsolatos információkért lásd: [titkosítás az office 365-ben](https://docs.microsoft.com/office365/securitycompliance/encryption).
+A szolgáltatott szoftverként (SaaS) használó ügyfelek jellemzően inaktív titkosítással rendelkeznek, vagy az egyes szolgáltatásokban elérhetők. Microsoft 365 több lehetősége van arra, hogy az ügyfelek ellenőrizzék vagy engedélyezzék a titkosítást a nyugalmi állapotban. Microsoft 365 szolgáltatásokkal kapcsolatos információkért lásd: [titkosítás a Microsoft 365ban](/microsoft-365/compliance/encryption).
 
 ### <a name="encryption-at-rest-for-paas-customers"></a>Inaktív titkosítás a Pásti-ügyfelek számára
 
@@ -132,7 +132,7 @@ A kiszolgálói titkosítás támogatását jelenleg a transzparens adattitkosí
 
 A Azure SQL Database-adat ügyféloldali titkosítása támogatott a [Always encrypted](https://msdn.microsoft.com/library/mt163865.aspx) funkción keresztül. A Always Encrypted az ügyfél által létrehozott és tárolt kulcsot használja. Az ügyfelek a főkulcsot egy Windows tanúsítványtárolóban, Azure Key Vaultban vagy egy helyi hardveres biztonsági modulban tárolhatják. A SQL Server Management Studio használatával az SQL-felhasználók kiválaszthatják, hogy milyen kulcsot szeretnének használni az oszlop titkosításához.
 
-## <a name="conclusion"></a>Tanulság
+## <a name="conclusion"></a>Összegzés
 
 Az Azure-szolgáltatásokon belül tárolt ügyféladatok védelme kiemelkedő fontosságú a Microsoft számára. Az összes Azure-beli üzemeltetett szolgáltatás elkötelezett amellett, hogy titkosítást biztosítson a REST-beállításokban. Az Azure-szolgáltatások a szolgáltatás által felügyelt kulcsokat, az ügyfél által felügyelt kulcsokat vagy az ügyféloldali titkosítást támogatják. Az Azure-szolgáltatások széles körben javítják a titkosítást a REST rendelkezésre állása során, és az új lehetőségek az előzetes verzióra és az általános elérhetőségre vannak tervezve a következő hónapokban.
 

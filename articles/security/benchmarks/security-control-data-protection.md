@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 2622d7a2e54dac710ac09d61dee639ab1d104f02
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: f2162ee6df551e1bc64741229aec99d5e697fd29
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89078996"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91395991"
 ---
 # <a name="security-control-data-protection"></a>Biztonság-ellenőrzés: Adatvédelem
 
@@ -74,7 +74,7 @@ Kövesse Azure Security Center a inaktív adatok titkosítására és az átvite
 
 Ha az Azure-ban egyetlen szolgáltatás sem érhető el, egy külső gyártótól származó aktív felderítési eszköz használatával azonosíthatja a szervezet technológiai rendszerei által tárolt, feldolgozott vagy továbbított összes bizalmas információt, beleértve a helyszínen vagy egy távoli szolgáltatón keresztül, valamint a szervezet bizalmas információinak leltározását.
 
-Az Office 365-dokumentumokban lévő bizalmas adatok azonosításához használja a Azure Information Protection.
+A bizalmas adatok Microsoft 365 dokumentumokon belüli azonosításához használja a Azure Information Protection.
 
 Az Azure SQL Information Protection használatával segítheti a Azure SQL Database tárolt információk besorolását és címkézését.
 
@@ -98,7 +98,7 @@ Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával 
 
 | Azure-azonosító | CIS-azonosítók | Felelősséget |
 |--|--|--|
-| 4,7 | 14,7 | Megosztott |
+| 4.7 | 14,7 | Megosztott |
 
 Ha a megfelelőség szükséges a számítási erőforrásokon, hozzon létre egy harmadik féltől származó eszközt, például egy automatizált gazdagép-alapú adatvesztés-megelőzési megoldást, hogy az adatokra akkor is kényszerítse a hozzáférés-vezérlést, ha az adatok egy rendszerből lettek átmásolva.
 
@@ -129,6 +129,6 @@ A Azure Monitor és az Azure-tevékenység naplójának használatával riasztá
 - [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse meg a következő biztonsági szabályozást:  [sebezhetőségek kezelése](security-control-vulnerability-management.md)

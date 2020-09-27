@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 09/15/2020
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8dc229b366a7816c861da665c73d6421e67545c6
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 06900483598e1c03bd56cd8ac8c905f885012f08
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985914"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91395889"
 ---
 # <a name="identity-data-storage-for-european-customers-in-azure-active-directory"></a>Identitás-adattárolás a Azure Active Directory európai ügyfelei számára
 Az identitás adatait az Azure AD tárolja földrajzi helyen a szervezete által megadott, a Microsoft Online szolgáltatásra (például Microsoft 365 és az Azure-ra való feliratkozáskor) alapuló címen. További információ a személyazonossági adatok tárolásáról: a Microsoft adatvédelmi központjának hol található az [adatai?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) szakasza.
@@ -35,6 +35,10 @@ Felhőalapú Azure-Multi-Factor Authentication esetén a hitelesítés a felhasz
 * Az EU-adatközpontokból származó eskü kódokat használó multi-Factor Authentication-kérelmek ellenőrzése az EU-ban történik.
 
 További információ arról, hogy az Azure Multi-Factor Authentication-kiszolgáló (MFA-kiszolgáló) és a felhőalapú Azure MFA milyen felhasználói adatokat gyűjt, lásd: [azure multi-Factor Authentication felhasználói adatok gyűjtése](../authentication/howto-mfa-reporting-datacollection.md).
+
+## <a name="password-based-single-sign-on-for-enterprise-applications"></a>Jelszó-alapú egyszeri bejelentkezés vállalati alkalmazásokhoz
+ 
+Ha egy ügyfél létrehoz egy új vállalati alkalmazást (akár az Azure AD-katalóguson, akár a nem katalóguson keresztül), és engedélyezi a jelszó-alapú egyszeri bejelentkezést, az alkalmazás bejelentkezési URL-címe és az egyéni rögzítési bejelentkezési mezők a Egyesült Államok tárolódnak. A szolgáltatással kapcsolatos további információkért tekintse meg a [jelszó alapú egyszeri bejelentkezés konfigurálását](../manage-apps/configure-password-single-sign-on-non-gallery-applications.md) ismertető témakört.
 
 ## <a name="microsoft-azure-active-directory-b2c-azure-ad-b2c"></a>Microsoft Azure Active Directory B2C (Azure AD B2C)
 
@@ -63,7 +67,7 @@ Az Azure AD-vel integrált szolgáltatások és alkalmazások hozzáférhetnek a
 
 A Microsoft-szolgáltatások adattárolási helyével kapcsolatban a Microsoft biztonsági és adatkezelési központ [az adatok tárolási helyével](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) foglalkozó szakaszában találhat további információt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A fent ismertetett szolgáltatásokkal és funkciókkal kapcsolatos további információkért tekintse meg a következő cikkeket:
 - [Mi az a többtényezős hitelesítés?](../authentication/concept-mfa-howitworks.md)
 

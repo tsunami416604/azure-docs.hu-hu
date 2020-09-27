@@ -1,17 +1,17 @@
 ---
-title: Bevezetés a Azure Cosmos DBba
+title: Az Azure Cosmos DB bemutatása
 description: Az Azure Cosmos DB ismertetése. Ez a globálisan elosztott, többmodelles adatbázis az alacsony késés, a rugalmas skálázhatóság és a magas rendelkezésre állás jegyében készült, valamint natív támogatást biztosít a NoSQL-adatokhoz.
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 10/23/2019
-ms.openlocfilehash: bfac783fcb8ce88977fc8d97f821a7350f57aab8
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 4e9d632880b792d16ffe752a55396c649c6688e5
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118576"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398818"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Üdvözli az Azure Cosmos DB
 
@@ -56,7 +56,7 @@ Az adatbázis-séma és az indexek szinkronizálása az alkalmazás sémájával
 
 ### <a name="battle-tested-database-service"></a>A tesztelt adatbázis-szolgáltatás csata
 
-Cosmos DB egy alapszintű szolgáltatás az Azure-ban. Közel egy évtizednél Cosmos DBt számos Microsoft-termék felhasználta a kritikus fontosságú alkalmazások globális méretekben történő felhasználásához, többek között a Skype, az Xbox, az Office 365, az Azure és sok más szolgáltatáshoz. Napjainkban Cosmos DB az egyik leggyorsabban bővülő szolgáltatás az Azure-ban, amelyet számos külső ügyfél és olyan kritikus fontosságú alkalmazás használ, amely rugalmas skálázást, kulcsrakész globális elosztást, több főkiszolgálós replikációt igényel az olvasási és írási műveletek alacsony késése és magas rendelkezésre állása érdekében.
+A Cosmos DB az Azure alapvető szolgáltatása. Közel egy évtizednél Cosmos DBt számos Microsoft-termék felhasználta a kritikus fontosságú alkalmazások globális méretekben történő felhasználásához, többek között a Skype, az Xbox, a Microsoft 365, az Azure és sok más szolgáltatáshoz. Napjainkban Cosmos DB az egyik leggyorsabban bővülő szolgáltatás az Azure-ban, amelyet számos külső ügyfél és olyan kritikus fontosságú alkalmazás használ, amely rugalmas skálázást, kulcsrakész globális elosztást, több főkiszolgálós replikációt igényel az olvasási és írási műveletek alacsony késése és magas rendelkezésre állása érdekében.
 
 ### <a name="ubiquitous-regional-presence"></a>Mindennapos regionális jelenlét
 
@@ -64,7 +64,7 @@ A Cosmos DB az összes Azure-régióban elérhető, beleértve a nyilvános felh
 
 ### <a name="secure-by-default-and-enterprise-ready"></a>Alapértelmezés szerint biztonságos, vállalati használatra kész
 
-A Cosmos DB a [megfelelőségi szabványok széles körének](compliance.md)tanúsítására szolgál. Emellett a Cosmos DBban lévő összes adatforgalom inaktív és mozgásban van titkosítva. A Cosmos DB a sorok szintjének engedélyezését és szigorú biztonsági normák betartását biztosítja.
+A Cosmos DB a [megfelelőségi szabványok széles körének](compliance.md)tanúsítására szolgál. Emellett a Cosmos DB-ben lévő összes adat titkosítva van inaktív állapotban és átvitel közben is. A Cosmos DB sorszintű engedélyezést biztosít, és szigorú biztonsági normáknak is megfelel.
 
 ### <a name="significant-tco-savings"></a>Jelentős TCO-megtakarítás
 

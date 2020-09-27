@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/28/2020
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: de41d9c1dc69726f5f7f031616462b2d1d330476
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a7edbbb50777cc2d91332260c9ebe72be042874b
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333188"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396246"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>A Azure SQL Database és az Azure szinapszis Analytics naplózása
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -86,7 +86,7 @@ A következő szakasz ismerteti a naplózás konfigurációját a Azure Portal h
 2. Navigáljon a **naplózás** elemre az SQL- **adatbázis** vagy az **SQL Server** -ablaktábla biztonsági fejléce alatt.
 3. Ha a kiszolgáló naplózási szabályzatát szeretné beállítani, akkor az adatbázis naplózása lapon kiválaszthatja a **kiszolgáló beállításainak megtekintése** hivatkozást. Ezután megtekintheti vagy módosíthatja a kiszolgáló naplózási beállításait. A kiszolgáló naplózási házirendjei a kiszolgálón lévő összes meglévő és újonnan létrehozott adatbázisra érvényesek.
 
-    ![Navigációs panel](./media/auditing-overview/2_auditing_get_started_server_inherit.png)
+    ![Az adatbázis-naplózás lapon a kiszolgáló beállításainak megtekintése hivatkozás jelenik meg.](./media/auditing-overview/2_auditing_get_started_server_inherit.png)
 
 4. Ha azt szeretné, hogy az adatbázis szintjén engedélyezze a naplózást, kapcsolja be a **naplózást** **a**következőre:. Ha a kiszolgáló naplózása engedélyezve van, az adatbázis által konfigurált naplózás párhuzamosan, a kiszolgáló auditálásával fog létezni.
 
@@ -163,7 +163,7 @@ Ha úgy döntött, hogy naplózza a naplókat egy Azure Storage-fiókba, a napl�
 
 - Használja az [Azure Portalt](https://portal.azure.com).  Nyissa meg a megfelelő adatbázist. Az adatbázis **naplózási** lapjának felső részén kattintson a **naplók megtekintése**elemre.
 
-    ![Navigációs panel](./media/auditing-overview/7_auditing_get_started_blob_view_audit_logs.png)
+    ![Képernyőkép: az adatbázis naplózási lapján Kiemelt naplók megtekintése gomb.](./media/auditing-overview/7_auditing_get_started_blob_view_audit_logs.png)
 
     Megnyílik a **naplózási rekordok** , amelyekről megtekintheti a naplókat.
 
@@ -171,14 +171,14 @@ Ha úgy döntött, hogy naplózza a naplókat egy Azure Storage-fiókba, a napl�
   - A naplózási **forrás**váltásával válthat a *kiszolgálói naplózási házirend* és az adatbázis- *naplózási házirend* által létrehozott naplózási rekordok között.
   - Csak az SQL-injektálással kapcsolatos naplózási rekordokat tekintheti meg, ha az  **SQL-injektálások csak naplózási rekordok megjelenítése** jelölőnégyzetét ellenőrzi.
 
-       ![Navigációs panel]( ./media/auditing-overview/8_auditing_get_started_blob_audit_records.png)
+       ![A naplózási rekordok megtekintésének beállításait bemutató képernyőkép.]( ./media/auditing-overview/8_auditing_get_started_blob_audit_records.png)
 
 - Használja a System Function **sys. fn_get_audit_file** (T-SQL) függvényt a naplózott adat táblázatos formátumban való visszaküldéséhez. További információ a függvény használatáról: [sys. fn_get_audit_file](/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql).
 
 - A **naplófájlok egyesítése** SQL Server Management Studio (a SSMS 17-től kezdődően):
     1. A SSMS menüben válassza a **fájl**  >  **nyitott**  >  **fájlok egyesítése naplózása**elemet.
 
-        ![Navigációs panel](./media/auditing-overview/9_auditing_get_started_ssms_1.png)
+        ![A fájlok egyesítése menüpontot megjelenítő képernyőkép.](./media/auditing-overview/9_auditing_get_started_ssms_1.png)
     2. Megnyílik a naplófájlok **hozzáadása** párbeszédpanel. Válassza ki a **hozzáadási** lehetőségek egyikét, és válassza ki, hogy szeretné-e egyesíteni a naplófájlokat egy helyi lemezről, vagy importálni őket az Azure Storage-ból. Meg kell adnia az Azure Storage adatait és a fiók kulcsát.
 
     3. Miután az összes egyesíteni kívánt fájl hozzá lett adva, kattintson az **OK** gombra az egyesítési művelet befejezéséhez.
@@ -218,7 +218,7 @@ A földrajzilag replikált adatbázisok esetében, ha engedélyezi a naplózást
 
 1. Nyissa meg a **tároló adatait**. A **tárolási hozzáférési kulcs** mezőben válassza a **másodlagos**lehetőséget, majd kattintson **az OK**gombra. Ezután kattintson a **Mentés** gombra a naplózási konfiguráció lap tetején.
 
-    ![Navigációs panel](./media/auditing-overview/5_auditing_get_started_storage_key_regeneration.png)
+    ![A másodlagos Storage-hozzáférési kulcs kiválasztásának folyamatát bemutató képernyőkép.](./media/auditing-overview/5_auditing_get_started_storage_key_regeneration.png)
 2. Nyissa meg a tárolási konfiguráció lapot, és újból létrehozza az elsődleges hozzáférési kulcsot.
 
     ![Navigációs panel](./media/auditing-overview/6_auditing_get_started_regenerate_key.png)

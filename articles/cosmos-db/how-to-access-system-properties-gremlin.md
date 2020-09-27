@@ -5,14 +5,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 09/10/2019
-author: luisbosquez
-ms.author: lbosq
-ms.openlocfilehash: a0feac9bbd98dc4c67464e84e9a3204bd9730355
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+author: SnehaGunda
+ms.author: sngun
+ms.openlocfilehash: c03e4db30d590df21a8ceb3c483ece4b59e548d8
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390346"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397317"
 ---
 # <a name="system-document-properties"></a>Rendszerdokumentum tulajdonságai
 
@@ -32,7 +32,7 @@ g.withStrategies(ProjectionStrategy.build().IncludeSystemProperties('_etag').cre
 
 ## <a name="time-to-live-ttl"></a>Élettartam (TTL)
 
-Ha a gyűjteményben engedélyezve van a dokumentum lejárata ```ttl``` , és a dokumentumok tulajdonsága be van állítva, akkor ez a tulajdonság a Gremlin bejárásakor lesz elérhető a normál csúcspont vagy Edge tulajdonságként. ```ProjectionStrategy```nincs szükség az élettartam-tulajdonság expozíciójának engedélyezésére.
+Ha a gyűjteményben engedélyezve van a dokumentum lejárata ```ttl``` , és a dokumentumok tulajdonsága be van állítva, akkor ez a tulajdonság a Gremlin bejárásakor lesz elérhető a normál csúcspont vagy Edge tulajdonságként. ```ProjectionStrategy``` nincs szükség az élettartam-tulajdonság expozíciójának engedélyezésére.
 
 Az alábbi bejárással létrehozott csúcs **123 másodperc** múlva automatikusan törölve lesz.
 

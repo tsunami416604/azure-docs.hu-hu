@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: ec38f16c5a658848eab505794ed1a2d072f22aea
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 6e2b3badcda872db3ddb1d237b813615a1332ad0
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88749613"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396331"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-active-directory-domain-services"></a>A virtuális hálózat kialakításával kapcsolatos szempontok és a Azure Active Directory Domain Services konfigurációs beállításai
 
@@ -108,13 +108,15 @@ A [hálózati biztonsági csoport (NSG)](../virtual-network/security-overview.md
 
 A következő hálózati biztonsági csoportokra vonatkozó szabályokra van szükség ahhoz, hogy a felügyelt tartomány hitelesítő és felügyeleti szolgáltatásokat nyújtson. Ne szerkessze vagy törölje ezeket a hálózati biztonsági csoportokra vonatkozó szabályokat arra a virtuális hálózati alhálózatra, amelyet a felügyelt tartomány üzembe helyez.
 
-| Portszám | Protokoll | Forrás                             | Cél | Műveletek | Kötelező | Rendeltetés |
+| Portszám | Protokoll | Forrás                             | Cél | Művelet | Kötelező | Szerep |
 |:-----------:|:--------:|:----------------------------------:|:-----------:|:------:|:--------:|:--------|
-| 443         | TCP      | AzureActiveDirectoryDomainServices | Bármelyik         | Engedélyezés  | Igen      | Szinkronizálás az Azure AD-Bérlővel. |
-| 3389        | TCP      | CorpNetSaw                         | Bármelyik         | Engedélyezés  | Igen      | A tartomány kezelése. |
-| 5986        | TCP      | AzureActiveDirectoryDomainServices | Bármelyik         | Engedélyezés  | Igen      | A tartomány kezelése. |
+| 443         | TCP      | AzureActiveDirectoryDomainServices | Bármelyik         | Engedélyezés  | Yes      | Szinkronizálás az Azure AD-Bérlővel. |
+| 3389        | TCP      | CorpNetSaw                         | Bármelyik         | Engedélyezés  | Yes      | A tartomány kezelése. |
+| 5986        | TCP      | AzureActiveDirectoryDomainServices | Bármelyik         | Engedélyezés  | Yes      | A tartomány kezelése. |
 
 Létrejön egy Azure standard Load Balancer, amely megköveteli a szabályok elhelyezését. Ez a hálózati biztonsági csoport biztosítja az Azure AD DSét, és szükséges a felügyelt tartomány megfelelő működéséhez. Ne törölje ezt a hálózati biztonsági csoportot. A terheléselosztó nem fog megfelelően működni.
+
+Ha szükséges, [a szükséges hálózati biztonsági csoportot és szabályokat a Azure PowerShell használatával hozhatja létre](powershell-create-instance.md#create-a-network-security-group).
 
 > [!WARNING]
 > Ne szerkessze kézzel ezeket a hálózati erőforrásokat és konfigurációkat. Ha helytelenül konfigurált hálózati biztonsági csoportot vagy egy felhasználó által megadott útválasztási táblázatot társít az alhálózathoz, amelyben a felügyelt tartomány telepítve van, akkor előfordulhat, hogy a Microsoft képes a tartomány kiszolgálására és felügyeletére. Az Azure AD-bérlő és a felügyelt tartomány közötti szinkronizálás is megszakad.

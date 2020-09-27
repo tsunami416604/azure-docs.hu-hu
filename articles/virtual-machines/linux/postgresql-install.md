@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: cynthn
-ms.openlocfilehash: 321f6bd6324613967001139e365d96521217d50b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: fdde7613627c9fec0694f3985f78cf10e52f59c2
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87267251"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397096"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>A PostgreSQL telepítése és konfigurálása az Azure-ban
 A PostgreSQL egy fejlett, nyílt forráskódú adatbázis, amely az Oracle és a DB2 számára is hasonló. Olyan nagyvállalati használatra kész funkciókat tartalmaz, mint például a teljes sav megfelelősége, a megbízható tranzakciós feldolgozás és a többverziós Egyidejűség-vezérlés. Emellett olyan szabványokat is támogat, mint például az ANSI SQL és az SQL/MED (beleértve az Oracle, a MySQL, a MongoDB és számos más adatburkolót is). A szolgáltatás nagyszámú, több mint 12 eljárási nyelv, a GIN és a lényegi indexek, a térbeli adattámogatás, valamint a JSON-vagy kulcs-érték alapú alkalmazások több NoSQL funkciójának támogatásával bővíthető.
@@ -164,7 +164,7 @@ Kapcsolódjon a PuTTY használatával létrehozott linuxos virtuális géphez. H
 
     A következő kimenetnek kell megjelennie:
 
-![image](./media/postgresql-install/no1.png)
+![Képernyőkép, amely az adatbázis inicializálását követően jeleníti meg a kimenetet.](./media/postgresql-install/no1.png)
 
 ## <a name="set-up-postgresql"></a>A PostgreSQL beállítása
 <!--    [postgres@ test ~]$ exit -->
@@ -185,7 +185,7 @@ Módosítsa két változót a/etc/init.d/PostgreSQL fájlban. Az előtag a Postg
 # sed -i '35s#usr/local/pgsql/data#opt/pgsql_data#' /etc/init.d/postgresql
 ```
 
-![image](./media/postgresql-install/no2.png)
+![A telepítési előtagot és az adatkönyvtárat bemutató képernyőkép.](./media/postgresql-install/no2.png)
 
 Módosítsa a fájlt úgy, hogy végrehajtható legyen:
 
@@ -207,7 +207,7 @@ Ellenőrizze, hogy a PostgreSQL végpontja be van-e kapcsolva:
 
 A következő kimenetnek kell megjelennie:
 
-![image](./media/postgresql-install/no3.png)
+![A PostgreSQL végpontját bemutató képernyőkép.](./media/postgresql-install/no3.png)
 
 ## <a name="connect-to-the-postgres-database"></a>Kapcsolódás a postgres-adatbázishoz
 Váltson újra a postgres-felhasználóra:
@@ -246,11 +246,11 @@ Most már beállított egy négy oszlopos táblázatot a következő oszlopnevek
 
 Ha sikeresen létrejött a tábla, a következőnek kell megjelennie:
 
-![image](./media/postgresql-install/no4.png)
+![A tábla sikeres létrehozásakor megjelenő üzenetet bemutató képernyőkép.](./media/postgresql-install/no4.png)
 
 A tábla szerkezetét a következő parancs használatával is megtekintheti:
 
-![image](./media/postgresql-install/no5.png)
+![Képernyőkép, amely a tábla szerkezetének ellenőrzéséhez szükséges parancsot mutatja.](./media/postgresql-install/no5.png)
 
 ### <a name="add-data-to-a-table"></a>Az adattábla hozzáadása
 Először szúrjon be adatokat egy sorba:
@@ -261,7 +261,7 @@ INSERT INTO potluck (name, food, confirmed, signup_date) VALUES('John', 'Cassero
 
 A következő kimenetnek kell megjelennie:
 
-![image](./media/postgresql-install/no6.png)
+![Képernyőkép, amely a hozzáadott sor információit jeleníti meg.](./media/postgresql-install/no6.png)
 
 Több személyt is hozzáadhat a táblához. Itt talál néhány lehetőséget, vagy létrehozhat saját:
 
@@ -282,7 +282,7 @@ select * from potluck;
 
 A kimenet a következő:
 
-![image](./media/postgresql-install/no7.png)
+![Képernyőkép, amely megjeleníti a parancs kimenetét egy tábla megjelenítéséhez.](./media/postgresql-install/no7.png)
 
 ### <a name="delete-data-in-a-table"></a>Táblákban lévő adattörlés
 A következő paranccsal törölhet egy táblában lévő adatoszlopokat:

@@ -7,14 +7,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 4de696e2538bf1fa4823aafe30f931b7852535a7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5046e40ea15a27e80f4e92ebf36488dedeee1821
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82191736"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396008"
 ---
-# <a name="consistency-availability-and-performance-tradeoffs"></a>Kompromisszumok a konzisztencia, a rendelkezésre állás és a teljesítmény között
+# <a name="latency-availability-and-performance-tradeoffs-with-different-azure-cosmos-db-consistency-levels"></a>Késés, rendelkezésre állás és teljesítménybeli kompromisszumok különböző Azure Cosmos DB konzisztencia-szintekkel
 
 Az olyan elosztott adatbázisok esetében, amelyek replikációt használnak a magas rendelkezésre állás, az alacsony késleltetés vagy mindkettő eléréséhez, kompromisszumokra van szükség. Ezek az olvasási konzisztenciára, illetve a rendelkezésre állásra, a késleltetésre és az átviteli sebességre vonatkoznak.
 
@@ -24,7 +24,7 @@ A Azure Cosmos DB az adatkonzisztencia a választási lehetőségek spektrumát 
 - *Kötött elavultság*
 - *Munkamenet*
 - *Konzisztens előtag*
-- *Végleges*
+- *Esetleges*
 
 Minden szint rendelkezésre állási és teljesítménybeli kompromisszumokat biztosít, és átfogó SLA-kat támogat.
 
@@ -49,13 +49,13 @@ A pontos RTT késés a fénysebességi távolság és az Azure hálózati topol�
 
 - Egy adott írási művelet (például INSERT, replace, upsert és DELETE) esetében az írási sebesség a kérelmek egységeinek esetében azonos minden konzisztencia-szinten.
 
-|**Konzisztenciaszint**|**Kvórum olvasási**|**Kvórum írása**|
+|**Konzisztencia szintje**|**Kvórum olvasási**|**Kvórum írása**|
 |--|--|--|
 |**Erős**|Helyi kisebbség|Globális többség|
-|**Kötött elavulás**|Helyi kisebbség|Helyi többség|
+|**Kötött elavultság**|Helyi kisebbség|Helyi többség|
 |**Munkamenet**|Egyetlen replika (munkamenet-jogkivonat használatával)|Helyi többség|
 |**Konzisztens előtag**|Egyetlen replika|Helyi többség|
-|**Végleges**|Egyetlen replika|Helyi többség|
+|**Esetleges**|Egyetlen replika|Helyi többség|
 
 ## <a name="consistency-levels-and-data-durability"></a><a id="rto"></a>A konzisztencia szintjei és az adattartósság
 
@@ -63,14 +63,14 @@ Egy globálisan elosztott adatbázis-környezeten belül közvetlen kapcsolat á
 
 Az alábbi táblázat a konzisztencia-modell és az adattartósság közötti kapcsolatot határozza meg egy régióra kiterjedő leállás jelenlétében. Fontos megjegyezni, hogy egy elosztott rendszeren, még erős konzisztencia esetén is előfordulhat, hogy a CAP-tétel miatt nem lehet RPO és nulla RTO rendelkező elosztott adatbázis. Ha többet szeretne megtudni arról, hogy miért, tekintse meg [a Azure Cosmos db egységességi szintjei](consistency-levels.md)című témakört.
 
-|**Régió (k)**|**Replikálási mód**|**Konzisztencia szintje**|**RPO**|**RTO**|
+|**Régió (k)**|**Replikálási mód**|**Konzisztenciaszint**|**RPO**|**RTO**|
 |---------|---------|---------|---------|---------|
 |1|Egy vagy több főkiszolgáló|Bármely konzisztencia-szint|< 240 perc|<1 hét|
 |>1|Egyetlen főkiszolgáló|Munkamenet, konzisztens előtag, végleges|< 15 perc|< 15 perc|
-|>1|Egyetlen főkiszolgáló|Kötött elavulás|*K*  &  *T*|< 15 perc|
+|>1|Egyetlen főkiszolgáló|Korlátozott frissesség|*K*  &  *T*|< 15 perc|
 |>1|Egyetlen főkiszolgáló|Erős|0|< 15 perc|
 |>1|Több főkiszolgáló|Munkamenet, konzisztens előtag, végleges|< 15 perc|0|
-|>1|Több főkiszolgáló|Kötött elavulás|*K*  &  *T*|0|
+|>1|Több főkiszolgáló|Korlátozott frissesség|*K*  &  *T*|0|
 
 *K* = egy elem *"k"* verziója (azaz frissítései) száma.
 
