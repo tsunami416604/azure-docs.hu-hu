@@ -28,7 +28,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan indíthat el hívást az Andr
 
 Android Studio válassza az új Android Studio projekt indítása lehetőséget.
 
-:::image type="content" source="../media/android/studio-new-project.png" alt-text="Képernyőfelvétel: az "új Android Studio projekt indítása" gomb, amely a Android Studioban van kiválasztva.":::
+:::image type="content" source="../media/android/studio-new-project.png" alt-text="Képernyőfelvétel: az új Android Studio projekt indítása gomb, amely a Android Studioban van kiválasztva.":::
 
 Válassza a "üres tevékenység" projekt sablont a "telefon és a tábla" alatt.
 
@@ -36,7 +36,7 @@ Válassza a "üres tevékenység" projekt sablont a "telefon és a tábla" alatt
 
 Válassza ki az "API 26: Android 8,0 (Oreo)" minimális ügyféloldali kódtárat.
 
-:::image type="content" source="../media/android/studio-calling-min-api.png" alt-text="Képernyőfelvétel: az "üres tevékenység" lehetőség van kiválasztva a Project template 2. képernyőn.":::
+:::image type="content" source="../media/android/studio-calling-min-api.png" alt-text="Képernyőfelvétel: az üres tevékenység lehetőség van kiválasztva a Project template 2. képernyőn.":::
 
 
 ### <a name="install-the-package"></a>A csomag telepítése
