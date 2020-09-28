@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: quickstart
 ms.date: 04/23/2020
 ms.author: JenCook
-ms.openlocfilehash: 476b93400b69063590c12ed38037c0bf6c6d1714
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4723bce8f3721833ae80b233f7b346fe69363b0b
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281072"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409544"
 ---
 # <a name="quickstart-deploy-an-azure-confidential-computing-vm-in-the-azure-portal"></a>Gyors útmutató: Azure-beli bizalmas számítástechnikai virtuális gép üzembe helyezése a Azure Portal
 
@@ -144,7 +144,7 @@ A Linux rendszerű virtuális gépekhez való csatlakozásról további informá
 > [!NOTE]
 > Ha a kiszolgáló gazdagép-kulcsát nem gyorsítótárazza a beállításjegyzékben, a következő lehetőségek közül választhat: Putty biztonsági riasztás. Ha megbízik a gazdagépen, válassza az **Igen** lehetőséget a kulcs a PuTTY gyorsítótárba való felvételéhez és a csatlakozás folytatásához. Ha csak egyszer szeretné csatlakoztatni a csatlakozást, anélkül, hogy a kulcsot a gyorsítótárba venné, válassza a **nem**lehetőséget. Ha nem bízik meg a gazdagépen, kattintson a **Mégse** gombra a kapcsolat megszakításához.
 
-## <a name="install-the-open-enclave-sdk-oe-sdk"></a>Az Open enklávé SDK (OE SDK) telepítése<a id="Install"></a>
+## <a name="install-the-open-enclave-sdk-oe-sdk"></a>Az Open enklávé SDK (OE SDK) telepítése <a id="Install"></a>
 
 Az [OE SDK](https://github.com/openenclave/openenclave) telepítését a DCsv2 sorozatú virtuális gépre, amely Ubuntu 18,04 LTS Gen 2 rendszerképet futtat. 
 
@@ -195,13 +195,11 @@ Ha már nincs rájuk szükség, törölheti az erőforráscsoportot, a virtuáli
 
 Válassza ki a virtuális géphez tartozó erőforráscsoportot, majd válassza a **Törlés**lehetőséget. Erősítse meg az erőforráscsoport nevét az erőforrások törlésének befejezéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban egy bizalmas számítástechnikai virtuális gépet helyezett üzembe, és telepítette az Open enklávé SDK-t. Az Azure-beli bizalmas számítástechnikai virtuális gépekkel kapcsolatos további információkért lásd: [Virtual Machines-megoldások](virtual-machine-solutions.md). 
 
-Ha telepített egy Windows rendszerű virtuális gépet, Ismerje meg, hogyan hozhat létre alkalmazásokat a GitHubon a [Windows rendszerhez készült OE SDK-mintákkal](https://github.com/openenclave/openenclave/blob/master/samples/README_Windows.md) . 
-
-Ismerje meg, hogyan hozhat létre bizalmas számítástechnikai alkalmazásokat Linux rendszeren, ha folytatja az Open enklávé SDK Linux-mintákat a GitHubon. 
+Ismerje meg, hogyan hozhat létre bizalmas számítástechnikai alkalmazásokat, ha folytatja az Open enklávé SDK-mintákat a GitHubon. 
 
 > [!div class="nextstepaction"]
-> [Open enklávé SDK-minták készítése Linux rendszeren](https://github.com/openenclave/openenclave/blob/master/samples/README_Linux.md)
+> [Open enklávé SDK-minták építése](https://github.com/openenclave/openenclave/blob/master/samples/README.md)

@@ -1,5 +1,5 @@
 ---
-title: SQL Database lekérdezése a Azure Portal a lekérdezés-szerkesztő használatával
+title: SQL Database lekérdezése a Azure Portal lekérdezési szerkesztőjével (előzetes verzió)
 description: Megtudhatja, hogyan futtathat Transact-SQL-(T-SQL-) lekérdezéseket a lekérdezéstervező használatával a Azure SQL Database adatbázisán.
 titleSuffix: Azure SQL Database
 keywords: Kapcsolódás az SQL Database-hez, SQL Database lekérdezése, Azure Portal, portál, lekérdezés-szerkesztő
@@ -13,14 +13,14 @@ author: Ninarn
 ms.author: ninarn
 ms.reviewer: sstein
 ms.date: 05/29/2020
-ms.openlocfilehash: 2b6a54c25430cd2c1e68c42571f0f9039449ce96
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4eb02c65a8ce486ea152863d8b6c6d0600280893
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91335092"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409586"
 ---
-# <a name="quickstart-use-the-azure-portals-query-editor-to-query-an-azure-sql-database"></a>Rövid útmutató: a Azure Portal lekérdezési szerkesztőjének használata Azure SQL Database
+# <a name="quickstart-use-the-azure-portals-query-editor-preview-to-query-an-azure-sql-database"></a>Gyors útmutató: a Azure Portal lekérdezési szerkesztőjének (előzetes verzió) használata Azure SQL Database lekérdezéséhez
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 A lekérdezés-szerkesztő egy eszköz a Azure Portalban, amellyel SQL-lekérdezéseket futtathat az adatbázisában az Azure szinapszis Analyticsben Azure SQL Database vagy adattárházban. 

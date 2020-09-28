@@ -2,19 +2,19 @@
 title: A Azure Cosmos DB Gremlin API-ban található lekérdezések kiértékeléséhez használja a végrehajtási profilt
 description: Ismerje meg, hogyan oldhatja meg és javíthatja a Gremlin-lekérdezéseket a végrehajtási profil lépésével.
 services: cosmos-db
-author: luisbosquez
+author: jasonwhowell
 manager: kfile
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 03/27/2019
-ms.author: lbosq
-ms.openlocfilehash: faacaf6700b14ba068d5cf0a48ea851f562e2302
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: jasonh
+ms.openlocfilehash: 841d2bcc50b62554fac8643048a3b3534e82dfa3
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261800"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91408232"
 ---
 # <a name="how-to-use-the-execution-profile-step-to-evaluate-your-gremlin-queries"></a>Gremlin-lekérdezések kiértékelése a végrehajtási profil lépés segítségével
 
@@ -155,7 +155,7 @@ A executionProfile () függvény válasza a JSON-objektumok hierarchiáját fogj
     - `storeOps.count`: A tárolási művelet által visszaadott eredmények számát jelöli.
     - `storeOps.size`: Egy adott tárolási művelet eredményének mérete bájtban kifejezve.
 
-Cosmos DB Gremlin Runtime operátor|Description
+Cosmos DB Gremlin Runtime operátor|Leírás
 ---|---
 `GetVertices`| Ez a lépés egy predikátum-készletet szerez be az adatmegőrzési rétegből. 
 `GetEdges`| Ez a lépés a csúcspontok egy halmazához szomszédos éleket szerzi be. Ez a lépés egy vagy több tárolási művelethez vezethet.
@@ -387,6 +387,6 @@ Ez a két lekérdezés ugyanahhoz az eredményhez vezetett, azonban az elsőnek 
 - Az `metrics[0].time` érték nagyobb az első válaszban, ami azt jelzi, hogy ez az egyetlen lépés már nem volt feloldva.
 - Az `metrics[0].counts.resultsCount` érték nagyobb, mint az első válasznál is, amely azt jelzi, hogy a kezdeti munkaadatkészlet nagyobb volt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * A Azure Cosmos DB [támogatott Gremlin szolgáltatásainak](gremlin-support.md) megismerése. 
 * További információ a [Azure Cosmos db GREMLIN API-](graph-introduction.md)ról.

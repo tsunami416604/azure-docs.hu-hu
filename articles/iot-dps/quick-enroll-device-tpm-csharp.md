@@ -3,18 +3,18 @@ title: 'Gyors útmutató – TPM-eszköz regisztrálása az Azure Device kiépí
 description: Gyors útmutató – TPM-eszköz regisztrálása az Azure IoT Hub Device Provisioning Serviceba (DPS) a C# Service SDK használatával. Ez a rövid útmutató egyéni regisztrációkat használ.
 author: wesmc7777
 ms.author: wesmc
-ms.date: 11/08/2019
+ms.date: 09/28/2020
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 7d6a8fe0d5d0524331c97221db777774d5db6b10
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 872d1f43f1e9dc180e41a2bf625ca18b74522b40
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91323826"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409510"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-c-service-sdk"></a>Gyors útmutató: TPM-eszköz regisztrálása a IoT Hub Device Provisioning Service a C# Service SDK-val
 
@@ -128,12 +128,15 @@ Ebből a szakaszból megtudhatja, hogyan hozhat létre egy olyan .NET Core Conso
    }
    ```
 
-1. Végül cserélje le a metódus törzsét a `Main` következő sorokra:
+1. Végül cserélje le a `Main` metódust a következő sorokra:
 
    ```csharp
-   RunSample().GetAwaiter().GetResult();
-   Console.WriteLine("\nHit <Enter> to exit ...");
-   Console.ReadLine();
+    static async Task Main(string[] args)
+    {
+        await RunSample();
+        Console.WriteLine("\nHit <Enter> to exit ...");
+        Console.ReadLine();
+    }
    ```
 
 1. Hozza létre a megoldást.

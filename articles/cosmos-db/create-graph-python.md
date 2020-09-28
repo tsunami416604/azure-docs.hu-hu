@@ -1,20 +1,20 @@
 ---
 title: 'Gyors útmutató: Gremlin API Python-Azure Cosmos DB'
 description: Ez a rövid útmutató azt ismerteti, hogy miként használható az Azure Cosmos DB Gremlin API konzolalkalmazások az Azure Portal és a Python használatával történő létrehozására.
-author: luisbosquez
+author: jasonwhowell
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2019
-ms.author: lbosq
+ms.author: jasonh
 ms.custom: devx-track-python
-ms.openlocfilehash: b927a0a64256283536a73002cc5915bcaddd2efc
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 624aa946df5e637c98a11ada3b455c50dec896f5
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873143"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409340"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-python-and-the-azure-portal"></a>Gyors útmutató: Graph-adatbázis létrehozása Azure Cosmos DB a Python és a Azure Portal használatával
 
@@ -186,7 +186,7 @@ A csúcspontok és élek beszúrása után visszatérhet a Adatkezelőra, és me
 
 5. Válassza a **tulajdonság hozzáadása** lehetőséget a következő tulajdonságok hozzáadásához. Egyedi tulajdonságokat hozhat létre a gráfban található minden egyes személy számára. Csak az id kulcsot kötelező megadni.
 
-    key|value|Megjegyzések
+    kulcs|value|Jegyzetek
     ----|----|----
     PK|/pk| 
     id|ashley|A csúcspont egyedi azonosítója. Ha nem ad meg azonosítót, a rendszer létrehoz egyet.
@@ -204,7 +204,7 @@ A csúcspontok és élek beszúrása után visszatérhet a Adatkezelőra, és me
 
 9. Válassza a **tulajdonság hozzáadása** lehetőséget a következő tulajdonságok hozzáadásához:
 
-    key|value|Megjegyzések
+    kulcs|value|Jegyzetek
     ----|----|----
     PK|/pk| 
     id|rakesh|A csúcspont egyedi azonosítója. Ha nem ad meg azonosítót, a rendszer létrehoz egyet.
@@ -235,7 +235,7 @@ Ezzel befejezte az oktatóanyag erőforrások létrehozásra vonatkozó részét
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 

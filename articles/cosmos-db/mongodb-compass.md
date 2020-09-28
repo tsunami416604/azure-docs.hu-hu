@@ -5,14 +5,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 06/05/2020
-author: LuisBosquez
-ms.author: lbosq
-ms.openlocfilehash: 2f461ebbd84a66470eba012660db3aefebc8c5e7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+author: jasonwhowell
+ms.author: jasonh
+ms.openlocfilehash: 15b4e6515f98a4d5a65bb5a56bdd5a5f40f90fe8
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85260780"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91408611"
 ---
 # <a name="use-mongodb-compass-to-connect-to-azure-cosmos-dbs-api-for-mongodb"></a>A MongoDB Compass használata a Azure Cosmos DB API-MongoDB való kapcsolódáshoz
 
@@ -54,7 +54,7 @@ Ha Cosmos DB-fiókját az iránytűhöz szeretné kapcsolni, kövesse az alábbi
 
 6. Kattintson a lap alján található **kapcsolat** elemre. A Cosmos DB fiókjának és adatbázisainak most már láthatónak kell lenniük a MongoDB-iránytűn belül.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan [használhatja a Studio 3T](mongodb-mongochef.md) Azure Cosmos db API-ját a MongoDB.
 - Ismerkedjen meg a MongoDB- [mintákkal](mongodb-samples.md) Azure Cosmos db API-val a MongoDB.

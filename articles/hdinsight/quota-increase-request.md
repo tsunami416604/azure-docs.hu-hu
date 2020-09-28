@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 05/07/2020
-ms.openlocfilehash: f8411176e0979bdb894983bcf866abd0e1109e21
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 999be38e413288d2eb2f6342874e692972f300ad
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89291667"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409714"
 ---
 # <a name="requesting-quota-increases-for-azure-hdinsight"></a>Kvóta-növelés az Azure HDInsight
 
 A CPU Core-kvóták segítségével biztosítható, hogy az erőforrás-használat méltányos legyen az adott Azure-régióban lévő összes ügyfél között. Bizonyos esetekben azonban előfordulhat, hogy az üzleti követelmények több fürterőforrás-t igényelnek, mint a jelenlegi kvótája. Ilyen esetekben kérheti a CPU Core-kvóta növelését, hogy olyan fürtöket telepítsen, amelyek megfelelnek az adatfeldolgozási követelményeknek.
 
-Ha eléri a kvóta korlátját, nem telepíthet új fürtöket, illetve nem bővítheti a meglévő fürtöket további feldolgozói csomópontok hozzáadásával. Az egyetlen kvóta a CPU magok kvótája, amely az egyes előfizetések régiójának szintjén található. Az előfizetés például az USA keleti régiójában 30 CPU-korláttal rendelkezhet, és az USA 2. keleti régiójában további 30 CPU-magot is használhat.
+Ha eléri a kvóta korlátját, nem telepíthet új fürtöket, illetve nem bővítheti a meglévő fürtöket további feldolgozói csomópontok hozzáadásával. Az egyetlen kvóta a CPU magok kvótája, amely az egyes előfizetések régiójának szintjén található. Az előfizetés például az USA keleti régiójában 30 CPU-korláttal rendelkezhet, és az USA keleti régiójában egy másik 30 CPU-mag is engedélyezett.
 
 ## <a name="gather-required-information"></a>A szükséges információk összegyűjtése
 

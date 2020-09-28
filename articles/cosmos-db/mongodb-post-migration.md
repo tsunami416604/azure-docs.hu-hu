@@ -1,22 +1,22 @@
 ---
 title: Áttelepítés utáni optimalizálás lépései Azure Cosmos DB API-MongoDB
 description: Ez a dokumentum áttelepítés utáni optimalizálási technikákat biztosít a MongoDB Azure Cosmos DB APi-hoz a Mongo DB-hez.
-author: LuisBosquez
+author: jasonwhowell
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 03/20/2020
-ms.author: lbosq
-ms.openlocfilehash: 93a9058dec66ffe2e1c7ad4b15d9bf4eba12c647
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.author: jasonh
+ms.openlocfilehash: f21aa30de2b2dfcf85e45c7ed4d5c485fe45eed7
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91358525"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409697"
 ---
 # <a name="post-migration-optimization-steps-when-using-azure-cosmos-dbs-api-for-mongodb"></a>Áttelepítés utáni optimalizálási lépések Azure Cosmos DB API-MongoDB való használatakor
 
-Miután áttelepítette a MongoDB-adatbázisban tárolt adatAzure Cosmos DB API-ját a MongoDB-hez, csatlakozhat Azure Cosmos DBhoz, és kezelheti az adatkezelési lehetőséget. Ez az útmutató az áttelepítés után megfontolandó lépéseket ismerteti. Az áttelepítési lépésekhez tekintse [meg a MongoDB áttelepítése a Azure Cosmos db API-ját a MongoDB oktatóanyagban](../dms/tutorial-mongodb-cosmos-db.md) .
+Miután a MongoDB-adatbázisban tárolt adatokat a MongoDB-hez készült Azure Cosmos DB API-ba migrálta, csatlakozhat az Azure Cosmos DB-hez és kezelheti az adatokat. Ez az útmutató a migrálás utáni javasolt teendőket ismerteti. Az áttelepítési lépésekhez tekintse [meg a MongoDB áttelepítése a Azure Cosmos db API-ját a MongoDB oktatóanyagban](../dms/tutorial-mongodb-cosmos-db.md) .
 
 Ebből az útmutatóból a következőket tudhatja meg:
 

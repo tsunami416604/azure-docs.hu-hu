@@ -1,20 +1,20 @@
 ---
 title: A Graph tömeges végrehajtó .NET-kódtár használata Azure Cosmos DB Gremlin API-val
 description: Megtudhatja, hogyan használhatja a tömeges végrehajtó függvénytárat a Graph-beli adatAzure Cosmos DB Gremlin API-tárolóba való tömeges importálásához.
-author: luisbosquez
+author: jasonwhowell
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 05/28/2019
-ms.author: lbosq
+ms.author: jasonh
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6fd81a844832fbe6ad7410ec786baa431ca9930c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: dbb2ce5c7765e9b2784e5a60f94919b3ee855a39
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004102"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91408064"
 ---
 # <a name="using-the-graph-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>A Graph tömeges végrehajtó .NET-kódtár használata tömeges műveletek végrehajtásához Azure Cosmos DB Gremlin API-ban
 

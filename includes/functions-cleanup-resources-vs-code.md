@@ -2,18 +2,18 @@
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 01/12/2020
+ms.date: 09/28/2020
 ms.author: glenga
-ms.openlocfilehash: 2eb8b988d7d65b444fe41ecb21dddfab4ff4cfa1
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 0d83f3a92efe7bddcefdeebb5b6d580caf749206
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125840"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91408555"
 ---
-1. A Visual Studio Code-ban nyomja le az F1 billentyűt a parancs paletta megnyitásához. A parancs palettáján keresse meg és válassza ki a következőt: `Azure Functions: Open in portal` .
+1. A Visual Studio Code-ban nyomja le az <kbd>F1</kbd> billentyűt a parancs paletta megnyitásához. A parancs palettáján keresse meg és válassza ki a következőt: `Azure Functions: Open in portal` .
 
-1. Válassza ki a Function alkalmazást, és nyomja le az ENTER billentyűt. Megnyílik a Function app (alkalmazás) lap a Azure Portal.
+1. Válassza ki a Function alkalmazást, és nyomja le az <kbd>ENTER</kbd>billentyűt. Megnyílik a Function app (alkalmazás) lap a Azure Portal.
 
 1. Az **Áttekintés** lapon válassza ki az **erőforráscsoport**melletti elnevezett hivatkozást.
 

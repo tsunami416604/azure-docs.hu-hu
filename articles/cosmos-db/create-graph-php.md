@@ -1,19 +1,19 @@
 ---
 title: 'Gyors útmutató: Gremlin API PHP-Azure Cosmos DB'
 description: Ez a rövid útmutató azt ismerteti, hogy miként használható az Azure Cosmos DB Gremlin API konzolalkalmazások az Azure Portal és a PHP használatával történő létrehozására.
-author: luisbosquez
+author: jasonwhowell
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.devlang: php
 ms.topic: quickstart
 ms.date: 01/05/2019
-ms.author: lbosq
-ms.openlocfilehash: 4a979fd4b3947be62f77bbd6d7c046c6af78466c
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.author: jasonh
+ms.openlocfilehash: e8848ee0a1fe5755316b59432c465b3836a0bab1
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118299"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409357"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-php-and-the-azure-portal"></a>Gyors útmutató: Graph-adatbázis létrehozása Azure Cosmos DB a PHP és a Azure Portal használatával
 
@@ -209,7 +209,7 @@ Ezután visszaléphet az Adatkezelőbe, és megtekintheti a gráfhoz hozzáadott
 
     Kulcs | Érték | Jegyzetek
     ----|----|----
-    **ID** | ashley | A csúcspont egyedi azonosítója. Ha nem ad meg azonosítót, a rendszer létrehoz egyet.
+    **id** | ashley | A csúcspont egyedi azonosítója. Ha nem ad meg azonosítót, a rendszer létrehoz egyet.
     **nemek** | female | 
     **tech** | java | 
 
@@ -226,7 +226,7 @@ Ezután visszaléphet az Adatkezelőbe, és megtekintheti a gráfhoz hozzáadott
     
     Kulcs | Érték | Jegyzetek
     ----|----|----
-    **ID** | rakesh | A csúcspont egyedi azonosítója. Ha nem ad meg azonosítót, a rendszer létrehoz egyet.
+    **id** | rakesh | A csúcspont egyedi azonosítója. Ha nem ad meg azonosítót, a rendszer létrehoz egyet.
     **nemek** | male | 
     **school** | MIT | 
 
@@ -254,11 +254,11 @@ Ezután visszaléphet az Adatkezelőbe, és megtekintheti a gráfhoz hozzáadott
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban bemutattuk, hogyan lehet Azure Cosmos DB-fiókot létrehozni, hogyan lehet az Adatkezelő segítségével gráfot készíteni, és hogyan lehet futtatni az alkalmazást. Az útmutató információira támaszkodva összetett lekérdezéseket hozhat létre és hatékony gráfbejárási logikákat helyezhet üzembe a Gremlin használatával. 
 

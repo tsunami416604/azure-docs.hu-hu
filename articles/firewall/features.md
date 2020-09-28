@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 06/18/2020
+ms.date: 09/28/2020
 ms.author: victorh
-ms.openlocfilehash: eb7cf1899b24ed225941f0a02040206504e6486b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16e128fd61c8b0aeae017e5298ae1d8aed6e97e9
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85095583"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91408507"
 ---
 # <a name="azure-firewall-features"></a>Az Azure Firewall funkciói
 
@@ -23,7 +23,7 @@ A [Azure Firewall](overview.md) felügyelt, felhőalapú hálózati biztonsági 
 Azure Firewall a következő funkciókat tartalmazza:
 
 - [Beépített magas rendelkezésre állás](#built-in-high-availability)
-- [Availability Zones](#availability-zones)
+- [Rendelkezésre állási zónák](#availability-zones)
 - [Korlátlan felhőalapú skálázhatóság](#unrestricted-cloud-scalability)
 - [Alkalmazások teljes tartománynevére vonatkozó szűrési szabályok](#application-fqdn-filtering-rules)
 - [Hálózati forgalomra vonatkozó szűrési szabályok](#network-traffic-filtering-rules)
@@ -62,11 +62,11 @@ Az Azure Firewall akármeddig felskálázható a változó hálózati forgalom k
 
 ## <a name="application-fqdn-filtering-rules"></a>Alkalmazások teljes tartománynevére vonatkozó szűrési szabályok
 
-A kimenő HTTP/S-forgalom vagy az Azure SQL-forgalom (előzetes verzió) a teljes tartománynevek (FQDN) megadott listájára korlátozható, beleértve a Wild kártyákat is. Ez a funkció nem igényli a TLS-megszakítást.
+A kimenő HTTP/S forgalom vagy az Azure SQL-forgalom a teljes tartománynevek (FQDN) egy adott listájára korlátozható, beleértve a Wild kártyákat is. Ez a funkció nem igényli a TLS-megszakítást.
 
 ## <a name="network-traffic-filtering-rules"></a>Hálózati forgalomra vonatkozó szűrési szabályok
 
-Központilag hozhat létre *engedélyező* vagy *tiltó* hálózatszűrési szabályokat forrás és cél IP-cím, port és protokoll alapján. Az Azure Firewall teljes mértékben állapotalapú, így képes megkülönböztetni különböző típusú kapcsolatok érvényes csomagjait. A szabályok több előfizetésen és virtuális hálózaton érvényesíthetők és naplózhatók.
+A hálózati szűrési szabályok a forrás *deny* és a cél IP-cím, a port és a protokoll alapján központilag hozhatók *létre.* Az Azure Firewall teljes mértékben állapotalapú, így képes megkülönböztetni különböző típusú kapcsolatok érvényes csomagjait. A szabályok több előfizetésen és virtuális hálózaton érvényesíthetők és naplózhatók.
 
 ## <a name="fqdn-tags"></a>FQDN-címkék
 
@@ -78,7 +78,7 @@ A [szolgáltatási címke](service-tags.md) az IP-címek egy csoportját jelöli
 
 ## <a name="threat-intelligence"></a>Fenyegetésészlelési intelligencia
 
-A [fenyegetésekkel kapcsolatos intelligencia](threat-intel.md)-alapú szűrés engedélyezhető a tűzfal számára, hogy riasztást kapjon, és megtagadja a forgalmat az ismert kártékony IP-címekre és tartományokra. Az IP-címek és tartományok forrása a Microsoft Threat Intelligence-hírcsatorna.
+A [fenyegetésekkel kapcsolatos intelligencia](threat-intel.md)-alapú szűrés engedélyezhető a tűzfal számára, hogy riasztást kapjon, és megtagadja a forgalmat az ismert kártékony IP-címekre és tartományokra. Az IP-címek és -tartományok forrása a Microsoft veszélyforrás-felderítési hírcsatornája.
 
 ## <a name="outbound-snat-support"></a>Kimenő SNAT-támogatás
 
@@ -96,8 +96,8 @@ A tűzfallal [több nyilvános IP-címet](deploy-multi-public-ip-powershell.md) 
 
 Ez a következő forgatókönyveket teszi lehetővé:
 
-- **DNAT** – a háttér-kiszolgálókra több szabványos port-példányt is lefordíthat. Ha például két nyilvános IP-címmel rendelkezik, akkor mindkét IP-cím esetében lefordíthatja a 3389-es TCP-portot.
-- **SNAT** – további portok érhetők el a kimenő SNAT-kapcsolatokhoz, ami csökkenti a SNAT-portok kimerülésének lehetséges lehetőségét. Ekkor Azure Firewall véletlenszerűen kiválasztja a forrás nyilvános IP-címét, amelyet a rendszer a kapcsolódáshoz használ. Ha a hálózaton bármilyen alsóbb rétegbeli szűrés van, engedélyeznie kell a tűzfalhoz társított összes nyilvános IP-címet. Érdemes lehet egy [nyilvános IP-cím előtagot](../virtual-network/public-ip-address-prefix.md) használni a konfiguráció egyszerűsítéséhez.
+- **DNAT** – a háttér-kiszolgálókra több szabványos port-példányt is lefordíthat. Ha például két nyilvános IP-címmel rendelkezik, akkor mindkét IP-címhez lefordíthatja a 3389-es (RDP) TCP-portot.
+- **SNAT** – további portok érhetők el a kimenő SNAT-kapcsolatokhoz, ami csökkenti a SNAT-portok kimerülésének lehetséges lehetőségét. Ekkor Azure Firewall véletlenszerűen kiválasztja a forrás nyilvános IP-címét, amelyet a rendszer a kapcsolódáshoz használ. Ha a hálózaton bármilyen lefelé irányuló szűrés van érvényben, engedélyeznie kell a tűzfalhoz társított összes nyilvános IP-címet. Érdemes lehet egy [nyilvános IP-cím előtagot](../virtual-network/public-ip-address-prefix.md) használni a konfiguráció egyszerűsítéséhez.
 
 ## <a name="azure-monitor-logging"></a>Azure Monitor-naplózás
 
@@ -111,6 +111,6 @@ A Azure Firewall konfigurálható úgy, hogy az összes internetes forgalmat a k
 
 A Azure Firewall a Payment Card Industry (PCI), a Service Organization Controls (SOC), a Nemzetközi Szabványügyi Szervezet (ISO) és a ICSA Labs megfelelője. További információ: [Azure Firewall megfelelőségi tanúsítványok](compliance-certifications.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure Firewall szabályfeldolgozási logikája](rule-processing.md)

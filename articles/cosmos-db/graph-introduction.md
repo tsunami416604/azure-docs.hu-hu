@@ -1,18 +1,18 @@
 ---
 title: A Azure Cosmos DB Gremlin API bemutatása
 description: Ez a cikk azt ismerteti, hogy miként használható az Azure Cosmos DB közel valós idejű adateléréssel nagy méretű gráfok tárolására, lekérdezésére és bejárására az Apache TinkerPop gráflekérdezési nyelve, a Gremlin használatával.
-author: LuisBosquez
+author: jasonwhowell
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 07/10/2020
-ms.author: lbosq
-ms.openlocfilehash: 1a372fad6d5b6f3f6906c07062f07971e7882b70
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.author: jasonh
+ms.openlocfilehash: 67a2c9537851343e8e5dad4a3654b31082e83d11
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89669558"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409612"
 ---
 # <a name="introduction-to-gremlin-api-in-azure-cosmos-db"></a>A Gremlin API bemutatása Azure Cosmos DB
 
@@ -150,7 +150,7 @@ A gráfok különösen akkor hasznosak, ha olyan kérdéseket kell megválaszoln
 :> g.V('thomas.1').out('knows').out('uses').out('runsos').group().by('name').by(count())
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A gráfok Azure Cosmos DB általi támogatásával kapcsolatos további információkért lásd:
 

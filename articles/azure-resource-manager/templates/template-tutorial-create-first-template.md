@@ -2,20 +2,20 @@
 title: Oktatóanyag – & üzembe helyezési sablon létrehozása
 description: Hozza létre az első Azure Resource Manager-sablonját. Az oktatóanyagban megismerheti a sablonfájl szintaxisát és a Storage-fiók központi telepítését.
 author: mumian
-ms.date: 06/10/2020
+ms.date: 09/28/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 124df19287062a7fc8a6b9cf8b9d32eb3863b581
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 6eb2cf792eb5a458bff8508bc21e1e0690e2e1f3
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069237"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409216"
 ---
 # <a name="tutorial-create-and-deploy-your-first-arm-template"></a>Oktatóanyag: az első ARM-sablon létrehozása és üzembe helyezése
 
-Ez az oktatóanyag bemutatja Azure Resource Manager (ARM) sablonokat. Bemutatja, hogyan hozhat létre kezdő sablont, és hogyan helyezheti üzembe az Azure-ban. Megismerheti a sablon felépítését és a sablonokkal való munkához szükséges eszközöket. Az oktatóanyag elvégzése körülbelül **12 percet** vesz igénybe, de a tényleges idő attól függően változik, hogy hány eszközt kell telepítenie.
+Ez az oktatóanyag bemutatja, hogyan Azure Resource Manager sablonokat (ARM-sablonok). Bemutatja, hogyan hozhat létre kezdő sablont, és hogyan helyezheti üzembe az Azure-ban. Megismerheti a sablon felépítését és a sablonokkal való munkához szükséges eszközöket. Az oktatóanyag elvégzése körülbelül **12 percet** vesz igénybe, de a tényleges idő attól függően változik, hogy hány eszközt kell telepítenie.
 
 Ez az oktatóanyag egy sorozat első része. Ahogy halad a sorozaton, módosítja a sablon indítása lépésről lépésre, amíg meg nem tárja az ARM-sablonok összes alapvető részét. Ezek az elemek a sokkal összetettebb sablonok építőelemei. Reméljük, hogy a sorozat végén biztos lehet abban, hogy saját sablonokat hoz létre, és készen áll a sablonokkal való üzembe helyezések automatizálására.
 
@@ -25,7 +25,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 ## <a name="get-tools"></a>Eszközök beolvasása
 
-Először is győződjön meg arról, hogy rendelkezik a sablonok létrehozásához és üzembe helyezéséhez szükséges eszközökkel.
+Először is győződjön meg arról, hogy rendelkezik a sablonok létrehozásához és üzembe helyezéséhez szükséges eszközökkel. Telepítse ezeket az eszközöket a helyi gépre.
 
 ### <a name="editor"></a>Szerkesztő
 

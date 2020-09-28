@@ -1,19 +1,19 @@
 ---
 title: Azure Cosmos DB Graph-adatbázis regionális végpontjai
 description: Megtudhatja, hogyan csatlakozhat az alkalmazáshoz a legközelebbi gráf-adatbázis-végponthoz
-author: luisbosquez
-ms.author: lbosq
+author: jasonwhowell
+ms.author: jasonh
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 09/09/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8f9d46c2f5cce397c2aa6ebbcd38d7fbb5786412
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 3dd7df738f49b14a16be8a9741fb2c82ed3bf97c
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997251"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409009"
 ---
 # <a name="regional-endpoints-for-azure-cosmos-db-graph-account"></a>Regionális végpontok Azure Cosmos DB Graph-fiókhoz
 Azure Cosmos DB Graph-adatbázis [globálisan elosztott](distribute-data-globally.md) , így az alkalmazások több olvasási végpontot is használhatnak. A több helyen írási hozzáféréssel rendelkező alkalmazásoknak engedélyezniük kell a [több főkiszolgálós](how-to-multi-master.md) funkciót.

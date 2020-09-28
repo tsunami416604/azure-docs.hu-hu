@@ -6,19 +6,18 @@ ms.service: signalr
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.date: 11/04/2019
+ms.date: 09/28/2020
 ms.author: zhshang
-ms.openlocfilehash: 6c330b201c74a2ce56283e30be90cd117b1022f6
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 77ab19296d1e310e48cdf3609c9f109dc42f6ec1
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050522"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91408299"
 ---
 # <a name="quickstart-create-a-chat-room-by-using-signalr-service"></a>Rövid útmutató: csevegési hely létrehozása a Signaler szolgáltatás használatával
 
-
-Az Azure SignalR szolgáltatás egy olyan Azure-szolgáltatás, amely segítségével a fejlesztők könnyen hozhatnak létre webalkalmazásokat valós idejű funkciókkal. Ez a szolgáltatás a [ASP.NET Core 2,1-es jelzőn](https://docs.microsoft.com/aspnet/core/signalr/introduction?view=aspnetcore-2.1)alapul, de támogatja [a ASP.net Core 3,0 jelzőjét](https://docs.microsoft.com/aspnet/core/signalr/introduction?view=aspnetcore-3.0)is.
+Az Azure SignalR szolgáltatás egy olyan Azure-szolgáltatás, amely segítségével a fejlesztők könnyen hozhatnak létre webalkalmazásokat valós idejű funkciókkal. A szolgáltatás eredetileg [ASP.NET Core 2,1-es jelzőn](https://docs.microsoft.com/aspnet/core/signalr/introduction?preserve-view=true&view=aspnetcore-2.1)alapult, de mostantól támogatja a későbbi verziókat.
 
 Ez a cikk segítséget nyújt az első lépések megtételében az Azure SignalR szolgáltatás használatakor. Ebben a rövid útmutatóban egy ASP.NET Core MVC-webalkalmazás használatával hoz létre csevegési alkalmazást. Az alkalmazás kapcsolatot létesít az Azure SignalR szolgáltatási erőforrással a valós idejű tartalomfrissítések engedélyezéséhez. A webalkalmazást helyileg fogja üzemeltetni, és több böngésző-ügyféllel is csatlakozhat. Minden ügyfél képes lesz tartalomfrissítéseket küldeni a többi ügyfélnek. 
 
@@ -26,8 +25,7 @@ A rövid útmutató lépései bármilyen szövegszerkesztővel elvégezhetők. A
 
 Az oktatóanyag kódja letölthető az [AzureSignalR-minták GitHub-adattárjából](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/ChatRoom). Emellett az ebben a rövid útmutatóban használt Azure-erőforrásokat is létrehozhatja a [Signal Service-parancsfájl létrehozása](scripts/signalr-cli-create-service.md)című lépéssel.
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note-dotnet.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -64,20 +62,20 @@ Ebben a szakaszban a [Secret Manager eszközt](https://docs.microsoft.com/aspnet
 
     ```xml
     <Project Sdk="Microsoft.NET.Sdk.Web">
+
     <PropertyGroup>
-        <TargetFramework>netcoreapp2.0</TargetFramework>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
         <UserSecretsId>SignalRChatRoomEx</UserSecretsId>
     </PropertyGroup>
+
     <ItemGroup>
-        <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
+        <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.4" />
+        <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="2.0.2" />
     </ItemGroup>
-    <ItemGroup>
-        <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
-        <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="2.0.0" />
-    </ItemGroup>
-    </Project>    
+
+    </Project>
     ```
-    
+
 [Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsnetcore)
 
 ## <a name="add-azure-signalr-to-the-web-app"></a>Az Azure SignalR hozzáadása a webalkalmazáshoz
@@ -101,80 +99,68 @@ Ebben a szakaszban a [Secret Manager eszközt](https://docs.microsoft.com/aspnet
     Ezt a parancsot a *. csproj* fájllal megegyező könyvtárba kell futtatnia.
 
     ```dotnetcli
-    dotnet user-secrets set Azure:SignalR:ConnectionString "<Your connection string>"    
+    dotnet user-secrets set Azure:SignalR:ConnectionString "<Your connection string>"
     ```
 
     A Secret Manager csak a webalkalmazás helyi tesztelésére szolgál. Egy későbbi oktatóanyagban üzembe helyezheti a csevegési webalkalmazást az Azure-ban. Miután telepítette a webalkalmazást az Azure-ba, a kapcsolati sztring a Secret Managerrel való tárolása helyett egy alkalmazás-beállítást fog használni.
 
-    Ez a titok a konfigurációs API-val érhető el. Egy kettőspont (:) a konfiguráció neve a konfigurációs API-val minden támogatott platformon használható. Lásd: [konfiguráció környezet alapján](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/index?tabs=basicconfiguration&view=aspnetcore-2.0). 
+    Ez a titok a konfigurációs API-val érhető el. Egy kettőspont (:) a konfiguráció neve a konfigurációs API-val minden támogatott platformon használható. Lásd: [konfiguráció környezet alapján](/dotnet/core/extensions/configuration-providers#environment-variable-configuration-provider).
 
 
-4. Nyissa meg a *Startup.cs* fájlt, és frissítse a `ConfigureServices` metódust úgy, hogy a `services.AddSignalR().AddAzureSignalR()` metódus meghívásával használja az Azure SignalR szolgáltatást:
+4. Nyissa meg a *Startup.cs* fájlt, és frissítse a `ConfigureServices` metódust úgy, hogy a `AddSignalR()` metódus meghívásával használja az Azure SignalR szolgáltatást:
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
     {
-        services.AddMvc();
-        services.AddSignalR().AddAzureSignalR();
+        services.AddSignalR();
     }
     ```
 
-    Ha nem küldi el a paramétert a rendszernek `AddAzureSignalR()` , ez a kód a jelző szolgáltatás erőforrás-kapcsolódási karakterláncának alapértelmezett konfigurációs kulcsát használja. Az alapértelmezett konfigurációs kulcs az *Azure: signaler: ConnectionString*.
+    Ha nem küldi el a paramétert a rendszernek `AddSignalR()` , ez a kód a jelző szolgáltatás erőforrás-kapcsolódási karakterláncának alapértelmezett konfigurációs kulcsát használja. Az alapértelmezett konfigurációs kulcs az *Azure: signaler: ConnectionString*.
 
-5. A *Startup.cs*-ben is frissítse a `Configure` metódust úgy, hogy lecseréli a hívást a `app.UseStaticFiles()` következő kódra, és elmenti a fájlt a csak ASP.net Core 2 értékre.
-
-    ```csharp
-    app.UseFileServer();
-    app.UseAzureSignalR(routes =>
-    {
-        routes.MapHub<Chat>("/chat");
-    });
-    ```            
-    ASP.NET Core 3 + esetében cserélje le a fenti kódot a következőre:
+5. A *Startup.cs*frissítse a `Configure` metódust úgy, hogy a következő kóddal helyettesíti.
 
     ```csharp
-    app.UseFileServer();
-    app.UseRouting();
-    app.UseAuthorization();
-
-    app.UseEndpoints(routes =>
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
-        routes.MapHub<Chat>("/chat");
-    });
+        app.UseRouting();
+        app.UseFileServer();
+        app.UseEndpoints(endpoints =>
+        {
+            endpoints.MapHub<ChatHub>("/chat");
+        });
+    }
     ```
 
 ### <a name="add-a-hub-class"></a>Központosztály hozzáadása
 
-A jelzőben a hub egy olyan alapvető összetevő, amely az ügyféltől hívható metódusok készletét teszi lehetővé. Ebben a szakaszban meghatároz egy központosztályt két metódussal: 
+A jelzőben a hub egy olyan alapvető összetevő, amely az ügyféltől hívható metódusok készletét teszi lehetővé. Ebben a szakaszban meghatároz egy központosztályt két metódussal:
 
 * `Broadcast`: Ez a metódus üzenetet küld az összes ügyfélnek.
 * `Echo`: Ez a metódus visszaküld egy üzenetet a hívónak.
 
 Mindkét módszer a `Clients` ASP.net Core a signaler SDK által biztosított felületet használja. Ez az interfész hozzáférést biztosít az összes csatlakoztatott ügyfélhez, így tartalmat küldhet az ügyfeleknek.
 
-1. A projektkönyvtárban adjon hozzá egy új, *Hub* nevű mappát. Az új mappához adjon hozzá egy új, *Chat.cs* nevű központkódfájlt.
+1. A projektkönyvtárban adjon hozzá egy új, *Hub* nevű mappát. Vegyen fel egy új, *ChatHub.cs* nevű hub-kódrészletet az új mappába.
 
-2. Adja hozzá a következő kódot a *chat.cs* a hub osztály definiálásához és a fájl mentéséhez. 
+2. Adja hozzá a következő kódot a *ChatHub.cs* a hub osztály definiálásához és a fájl mentéséhez.
 
-    Ha nem a *chattest* projektnevet használta, frissítse az osztály névterét.
+    Frissítse az osztály névterét, ha olyan projekt nevét használta, amely eltér a *signaler. MVC*-től.
 
     ```csharp
     using Microsoft.AspNetCore.SignalR;
-
-    namespace chattest
+    using System.Threading.Tasks;
+    
+    namespace SignalR.Mvc
     {
-
-        public class Chat : Hub
+        public class ChatHub : Hub
         {
-            public void BroadcastMessage(string name, string message)
-            {
+            public Task BroadcastMessage(string name, string message) =>
                 Clients.All.SendAsync("broadcastMessage", name, message);
-            }
-
-            public void Echo(string name, string message)
-            {
-                Clients.Client(Context.ConnectionId).SendAsync("echo", name, message + " (echo from server)");
-            }
+    
+            public Task Echo(string name, string message) =>
+                Clients.Client(Context.ConnectionId)
+                       .SendAsync("echo", name, $"{message} (echo from server)");
         }
     }
     ```
@@ -183,23 +169,153 @@ Mindkét módszer a `Clients` ASP.net Core a signaler SDK által biztosított fe
 
 A csevegő alkalmazás ügyfél-felhasználói felülete HTML és JavaScript formátumú lesz egy *index.html* nevű fájlban a *wwwroot* könyvtárban.
 
-Másolja a *index.html* fájlt, a *CSS* mappát és a *Scripts* mappát a [Samples adattár](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/ChatRoom/wwwroot) *wwwroot* mappájából. Illessze be őket a projekt *wwwroot* mappájába.
+Másolja a *CSS/site. css* fájlt a [Samples adattár](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/ChatRoom/wwwroot) *wwwroot* mappájából. Cserélje le a projekt *CSS-vagy site. css-* fájlját a vágólapra.
 
-*index.html*fő kódja: 
+*index.html*fő kódja:
 
-```javascript
-var connection = new signalR.HubConnectionBuilder()
-                            .withUrl('/chat')
-                            .build();
-bindConnectionMessage(connection);
-connection.start()
-    .then(function () {
-        onConnected(connection);
-    })
-    .catch(function (error) {
-        console.error(error.message);
-    });
-```    
+Hozzon létre egy új fájlt a *wwwroot* könyvtárban *index.html*, másolja, majd ILLESSZE be az alábbi HTML-fájlt az újonnan létrehozott fájlba:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/site.css" rel="stylesheet" />
+    <title>Azure SignalR Group Chat</title>
+</head>
+<body>
+    <h2 class="text-center" style="margin-top: 0; padding-top: 30px; padding-bottom: 30px;">Azure SignalR Group Chat</h2>
+    <div class="container" style="height: calc(100% - 110px);">
+        <div id="messages" style="background-color: whitesmoke; "></div>
+        <div style="width: 100%; border-left-style: ridge; border-right-style: ridge;">
+            <textarea id="message"
+                      style="width: 100%; padding: 5px 10px; border-style: hidden;"
+                      placeholder="Type message and press Enter to send..."></textarea>
+        </div>
+        <div style="overflow: auto; border-style: ridge; border-top-style: hidden;">
+            <button class="btn-warning pull-right" id="echo">Echo</button>
+            <button class="btn-success pull-right" id="sendmessage">Send</button>
+        </div>
+    </div>
+    <div class="modal alert alert-danger fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div>Connection Error...</div>
+                    <div><strong style="font-size: 1.5em;">Hit Refresh/F5</strong> to rejoin. ;)</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Reference the SignalR library. -->
+    <script src="https://cdn.jsdelivr.net/npm/@microsoft/signalr@3.1.8/dist/browser/signalr.min.js"></script>
+
+    <!--Add script to update the page and send messages.-->
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+
+            const generateRandomName = () =>
+                Math.random().toString(36).substring(2, 10);
+
+            let username = generateRandomName();
+            const promptMessage = 'Enter your name:';
+            do {
+                username = prompt(promptMessage, username);
+                if (!username || username.startsWith('_') || username.indexOf('<') > -1 || username.indexOf('>') > -1) {
+                    username = '';
+                    promptMessage = 'Invalid input. Enter your name:';
+                }
+            } while (!username)
+
+            const messageInput = document.getElementById('message');
+            messageInput.focus();
+
+            function createMessageEntry(encodedName, encodedMsg) {
+                var entry = document.createElement('div');
+                entry.classList.add("message-entry");
+                if (encodedName === "_SYSTEM_") {
+                    entry.innerHTML = encodedMsg;
+                    entry.classList.add("text-center");
+                    entry.classList.add("system-message");
+                } else if (encodedName === "_BROADCAST_") {
+                    entry.classList.add("text-center");
+                    entry.innerHTML = `<div class="text-center broadcast-message">${encodedMsg}</div>`;
+                } else if (encodedName === username) {
+                    entry.innerHTML = `<div class="message-avatar pull-right">${encodedName}</div>` +
+                        `<div class="message-content pull-right">${encodedMsg}<div>`;
+                } else {
+                    entry.innerHTML = `<div class="message-avatar pull-left">${encodedName}</div>` +
+                        `<div class="message-content pull-left">${encodedMsg}<div>`;
+                }
+                return entry;
+            }
+
+            function bindConnectionMessage(connection) {
+                var messageCallback = function (name, message) {
+                    if (!message) return;
+                    var encodedName = name;
+                    var encodedMsg = message.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+                    var messageEntry = createMessageEntry(encodedName, encodedMsg);
+
+                    var messageBox = document.getElementById('messages');
+                    messageBox.appendChild(messageEntry);
+                    messageBox.scrollTop = messageBox.scrollHeight;
+                };
+                connection.on('broadcastMessage', messageCallback);
+                connection.on('echo', messageCallback);
+                connection.onclose(onConnectionError);
+            }
+
+            function onConnected(connection) {
+                console.log('connection started');
+                connection.send('broadcastMessage', '_SYSTEM_', username + ' JOINED');
+                document.getElementById('sendmessage').addEventListener('click', function (event) {
+                    if (messageInput.value) {
+                        connection.send('broadcastMessage', username, messageInput.value);
+                    }
+
+                    messageInput.value = '';
+                    messageInput.focus();
+                    event.preventDefault();
+                });
+                document.getElementById('message').addEventListener('keypress', function (event) {
+                    if (event.keyCode === 13) {
+                        event.preventDefault();
+                        document.getElementById('sendmessage').click();
+                        return false;
+                    }
+                });
+                document.getElementById('echo').addEventListener('click', function (event) {
+                    connection.send('echo', username, messageInput.value);
+
+                    messageInput.value = '';
+                    messageInput.focus();
+                    event.preventDefault();
+                });
+            }
+
+            function onConnectionError(error) {
+                if (error && error.message) {
+                    console.error(error.message);
+                }
+                var modal = document.getElementById('myModal');
+                modal.classList.add('in');
+                modal.style = 'display: block;';
+            }
+
+            const connection = new signalR.HubConnectionBuilder()
+                .withUrl('/chat')
+                .build();
+            bindConnectionMessage(connection);
+            connection.start()
+                .then(() => onConnected(connection))
+                .catch(error => console.error(error.message));
+        });
+    </script>
+</body>
+</html>
+```
 
 A *index.html* -ben található kód az `HubConnectionBuilder.build()` Azure signaler-erőforráshoz való http-kapcsolódást kezdeményez.
 
@@ -217,14 +333,11 @@ Ebben a szakaszban a ASP.NET Core fejlesztési futtatókörnyezeti környezetét
 
     ```json
     {
-        "profiles" : 
-        {
-            "ChatRoom": 
-            {
+        "profiles" : {
+            "ChatRoom": {
                 "commandName": "Project",
                 "launchBrowser": true,
-                "environmentVariables": 
-                {
+                "environmentVariables": {
                     "ASPNETCORE_ENVIRONMENT": "Development"
                 },
                 "applicationUrl": "http://localhost:5000/"
@@ -243,7 +356,7 @@ Ebben a szakaszban a ASP.NET Core fejlesztési futtatókörnyezeti környezetét
     dotnet build
     ```
 
-2. A létrehozás sikeres befejeződése után futtassa a következő parancsot a webalkalmazás helyi futtatásához:
+1. A létrehozás sikeres befejeződése után futtassa a következő parancsot a webalkalmazás helyi futtatásához:
 
     ```dotnetcli
     dotnet run
@@ -252,14 +365,19 @@ Ebben a szakaszban a ASP.NET Core fejlesztési futtatókörnyezeti környezetét
     Az alkalmazás az 5000-as porton, a fejlesztői futtatókörnyezeti profilban konfigurált módon lesz helyileg üzemeltetve:
 
     ```output
-    E:\Testing\chattest>dotnet run
-    Hosting environment: Development
-    Content root path: E:\Testing\chattest
-    Now listening on: http://localhost:5000
-    Application started. Press Ctrl+C to shut down.    
+    info: Microsoft.Hosting.Lifetime[0]
+          Now listening on: https://localhost:5001
+    info: Microsoft.Hosting.Lifetime[0]
+          Now listening on: http://localhost:5000
+    info: Microsoft.Hosting.Lifetime[0]
+          Application started. Press Ctrl+C to shut down.
+    info: Microsoft.Hosting.Lifetime[0]
+          Hosting environment: Development
+    info: Microsoft.Hosting.Lifetime[0]
+          Content root path: E:\Testing\chattest
     ```
 
-3. Nyisson meg két böngészőablakot. A böngészőben nyissa meg a következőt: `http://localhost:5000` . A rendszer kéri, hogy adja meg a nevét. Adja meg az ügyfél nevét mindkét ügyfél számára, és tesztelje az üzenetek tartalmát mindkét ügyfél között a **Küldés** gomb használatával.
+1. Nyisson meg két böngészőablakot. A böngészőben nyissa meg a következőt: `http://localhost:5000` . A rendszer kéri, hogy adja meg a nevét. Adja meg az ügyfél nevét mindkét ügyfél számára, és tesztelje az üzenetek tartalmát mindkét ügyfél között a **Küldés** gomb használatával.
 
     ![Példa Azure-beli szignáló csoport csevegésére](media/signalr-quickstart-dotnet-core/signalr-quickstart-complete-local.png)
 
@@ -273,19 +391,15 @@ Ha elkészült a gyors üzembe helyezési minta alkalmazással, törölheti az e
 
 > [!IMPORTANT]
 > Egy erőforráscsoport törlése nem vonható vissza, és tartalmazza az adott csoport összes erőforrását. Figyeljen, nehogy véletlenül rossz erőforráscsoportot vagy erőforrásokat töröljön. Ha a minta tárolására szolgáló erőforrásokat olyan meglévő erőforráscsoporthoz hozta létre, amely a megőrizni kívánt erőforrásokat tartalmazza, akkor az erőforráscsoport törlése helyett az egyes erőforrásokat egyenként törölheti a paneljéről.
-> 
-> 
 
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com), és válassza az **Erőforráscsoportok** elemet.
 
 A **szűrés név alapján** szövegmezőbe írja be az erőforráscsoport nevét. Ebben a rövid útmutatóban a *SignalRTestResources* nevű erőforráscsoportot használtuk. Az erőforráscsoport az eredmény listán válassza a három pontot (**..**.) > az **erőforráscsoport törlése**elemet.
 
-   
 ![Erőforráscsoport törlésének kiválasztása](./media/signalr-quickstart-dotnet-core/signalr-delete-resource-group.png)
 
-
 A rendszer az erőforráscsoport törlésének megerősítését kéri. Adja meg a megerősíteni kívánt erőforráscsoport nevét, majd válassza a **Törlés**lehetőséget.
-   
+
 A rendszer néhány pillanaton belül törli az erőforráscsoportot és annak erőforrásait.
 
 [Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsnetcore)
@@ -298,4 +412,3 @@ Ebben a rövid útmutatóban létrehozott egy új Azure Signal Service-erőforr�
 > [Azure SignalR szolgáltatás – hitelesítés](./signalr-concept-authenticate-oauth.md)
 
 [Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsnetcore)
-

@@ -11,14 +11,14 @@ author: srinia
 ms.author: srinia
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 62202946193c111921c97dc95a7ec7955a63804f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2aa2c0c8cbd8b826444dc5420685aaa9731cddab
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85251168"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409585"
 ---
-# <a name="create-configure-and-manage-elastic-jobs"></a>Rugalmas feladatok létrehozása, konfigurálása és kezelése
+# <a name="create-configure-and-manage-elastic-jobs-preview"></a>Rugalmas feladatok létrehozása, konfigurálása és kezelése (előzetes verzió)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre, konfigurálhat és kezelhet rugalmas feladatokat.
@@ -98,7 +98,7 @@ Ehhez hasonlóan a szkriptnek sikeresen végrehajthatónak kell lennie az észle
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Rugalmas feladatok létrehozása és kezelése a PowerShell-lel](elastic-jobs-powershell-create.md)
 - [Rugalmas feladatok létrehozása és kezelése a Transact-SQL (T-SQL) használatával](elastic-jobs-tsql-create-manage.md)

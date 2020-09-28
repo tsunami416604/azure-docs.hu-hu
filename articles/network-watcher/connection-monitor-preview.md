@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: f331c62060b2d8a39a87bab95b00225f363b4a56
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 31733abc945fe7c751f786649fb05b753a7c243d
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91400247"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91408874"
 ---
 # <a name="network-connectivity-monitoring-with-connection-monitor-preview"></a>Hálózati kapcsolat figyelése a kapcsolat figyelője (előzetes verzió)
 
@@ -34,7 +34,7 @@ A kapcsolódási figyelő (előzetes verzió) egységes, végpontok közötti ka
 - A hibrid alkalmazásnak kapcsolódnia kell egy Azure Storage-végponthoz. A helyszíni hely és az Azure-alkalmazás ugyanahhoz az Azure Storage-végponthoz csatlakozik. Össze szeretné hasonlítani a helyszíni hely késéseit az Azure-alkalmazás késésével.
 - Szeretné megtekinteni a helyszíni telepítések és a felhőalapú alkalmazást futtató Azure-beli virtuális gépek közötti kapcsolatot.
 
-Az előzetes verzióban a kapcsolati figyelő a két funkció közül a legjobbat ötvözi: a Network Watcher a [kapcsolat figyelője](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#monitor-communication-between-a-virtual-machine-and-an-endpoint) funkciót és a Network Performance monitor (NPM) [szolgáltatás-kapcsolat figyelője](https://docs.microsoft.com/azure/azure-monitor/insights/network-performance-monitor-service-connectivity) funkciót.
+Az előzetes verzióban a kapcsolati figyelő a két funkció közül a legjobbat ötvözi: a Network Watcher- [kapcsolat figyelője](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#monitor-communication-between-a-virtual-machine-and-an-endpoint) szolgáltatás és a Network Performance monitor (NPM) [szolgáltatás kapcsolódási figyelője](https://docs.microsoft.com/azure/azure-monitor/insights/network-performance-monitor-service-connectivity), a [ExpressRoute figyelése](https://docs.microsoft.com/azure/expressroute/how-to-npm)és a [Teljesítményfigyelő](https://docs.microsoft.com/azure/azure-monitor/insights/network-performance-monitor-performance-monitor) funkció.
 
 Íme néhány előny a Csatlakozáskezelő (előzetes verzió) szolgáltatáshoz:
 
@@ -94,9 +94,8 @@ A források lehetnek olyan Azure-beli virtuális gépek vagy helyszíni számít
 1. A Azure Portal kezdőlapján válassza a **Network Watcher**lehetőséget.
 1. A bal oldalon a **figyelés** szakaszban válassza a **Csatlakozáskezelő (előzetes verzió)** lehetőséget.
 1. Megjelenik az összes, a Csatlakozáskezelő (előzetes verzió) szolgáltatásban létrehozott figyelő. A kapcsolódási figyelő klasszikus felhasználói felületén létrehozott kapcsolódási figyelők megtekintéséhez lépjen a **Csatlakozáskezelő** lapra.
-
-    ![A Csatlakozáskezelő (előzetes verzió) szolgáltatásban létrehozott kapcsolatok figyelőit bemutató képernyőfelvétel](./media/connection-monitor-2-preview/cm-resource-view.png)
-
+    
+  :::image type="content" source="./media/connection-monitor-2-preview/cm-resource-view.png" alt-text="A Csatlakozáskezelő (előzetes verzió) szolgáltatásban létrehozott kapcsolatok figyelőit bemutató képernyőfelvétel" lightbox="./media/connection-monitor-2-preview/cm-resource-view.png":::
 
 ### <a name="create-a-connection-monitor"></a>Kapcsolatfigyelő létrehozása
 
@@ -132,10 +131,10 @@ A tesztelési csoportba felvett összes forrás, cél és tesztelési konfigurá
 | 6 | B | T | 2. konfiguráció |
 | 7 | B | E | 1. konfiguráció |
 | 8 | B | E | 2. konfiguráció |
-| 9 | C | T | 1. konfiguráció |
-| 10 | C | T | 2. konfiguráció |
-| 11 | C | E | 1. konfiguráció |
-| 12 | C | E | 2. konfiguráció |
+| 9 | C# | T | 1. konfiguráció |
+| 10 | C# | T | 2. konfiguráció |
+| 11 | C# | E | 1. konfiguráció |
+| 12 | C# | E | 2. konfiguráció |
 
 ### <a name="scale-limits"></a>Skálázási korlátok
 
@@ -156,7 +155,7 @@ A kapcsolati figyelő létrehozása után a források a tesztelési konfiguráci
 
 A tesztelési konfigurációban kiválasztott protokoll alapján a kapcsolat figyelője (előzetes verzió) a forrás-cél párokhoz tartozó ellenőrzések sorozatát futtatja. Az ellenőrzések a választott tesztelési gyakoriságnak megfelelően futnak.
 
-Ha HTTP-t használ, a szolgáltatás kiszámítja a válasz kódját visszaadó HTTP-válaszok számát. Az eredmény meghatározza a sikertelen ellenőrzések százalékos arányát. A RTT kiszámításához a szolgáltatás a HTTP-hívás és a válasz közötti időt méri.
+Ha HTTP-t használ, a szolgáltatás kiszámítja, hogy hány HTTP-válasz érkezett vissza egy érvényes válasz kódját. Az érvényes válasz kódokat a PowerShell és a parancssori felület használatával lehet beállítani. Az eredmény meghatározza a sikertelen ellenőrzések százalékos arányát. A RTT kiszámításához a szolgáltatás a HTTP-hívás és a válasz közötti időt méri.
 
 Ha a TCP vagy az ICMP protokollt használja, a szolgáltatás kiszámítja a csomagok elvesztésének százalékos arányát a sikertelen ellenőrzések százalékos arányának megállapításához. A RTT kiszámításához a szolgáltatás megméri az elküldött csomagok nyugtájának (ACK) fogadására tett időt. Ha engedélyezte a traceroute-adatelemzést a hálózati tesztek számára, a helyszíni hálózatra vonatkozó ugrások közötti adatvesztést és késést láthatja.
 
@@ -166,7 +165,11 @@ A csekkek által visszaadott adathalmazok alapján a tesztek a következő álla
 
 * **Pass** – a sikertelen ellenőrzések és RTT százalékos arányának tényleges értékei a megadott küszöbértékeken belül vannak.
 * **Fail (sikertelen** ) – a sikertelen ellenőrzések százalékos arányának tényleges értékei, vagy a RTT túllépte a megadott küszöbértéket. Ha nem ad meg küszöbértéket, akkor a teszt meghiúsul, ha a sikertelen ellenőrzések százalékaránya 100.
-* **Figyelmeztetés** – a sikertelen ellenőrzések százalékarányához nem adtak meg feltételeket. A megadott feltételek hiányában a Csatlakozáskezelő (előzetes verzió) automatikusan hozzárendel egy küszöbértéket. Ha túllépi a küszöbértéket, a teszt állapota figyelmeztetésre változik.
+* **Figyelmeztetés** – 
+     * Ha a küszöbérték meg van adva, és a Csatlakozáskezelő (előzetes verzió) megállapítja, hogy az ellenőrzések aránya a küszöbérték 80%-ánál nagyobb, akkor a teszt figyelmeztetésként van megjelölve.
+     * A megadott küszöbértékek hiányában a Csatlakozáskezelő (előzetes verzió) automatikusan hozzárendel egy küszöbértéket. Ha túllépi a küszöbértéket, a teszt állapota figyelmeztetésre változik.A TCP-vagy ICMP-tesztek esetében a küszöbérték 750msec. Sikertelen ellenőrzések esetén a küszöbérték 10%. 
+* **Meghatározatlan**   – A Log Analytics munkaterületen nincsenek adathalmazok.Metrikák keresése 
+* **Nem fut**   – Letiltva a test Group letiltásával  
 
 ### <a name="data-collection-analysis-and-alerts"></a>Adatgyűjtés, elemzés és riasztások
 
@@ -192,77 +195,71 @@ Az irányítópulton kibonthatja az egyes kapcsolati figyelőket a tesztelési c
 
 A listát a következő alapján szűrheti:
 
-* **Legfelső szintű szűrők** – válassza az előfizetések, a régiók, az időbélyegző-források és a célhelyek lehetőséget. Lásd a 2. négyzetet az alábbi képen.
-* **Állapot-alapú szűrők** – a Csatlakozáskezelő, a test Group vagy a test állapota alapján szűrhet. Lásd az alábbi képen látható 3. nyilat.
-* **Egyéni szűrők** – válassza az **összes kijelölése** lehetőséget egy általános keresés végrehajtásához. Egy adott entitás általi kereséshez válassza ki a elemet a legördülő listából. Lásd az alábbi képen látható 4. nyilat.
+* **Legfelső szintű szűrők** – keresési lista szöveg szerint, entitás típusa (Csatlakozáskezelő, tesztelési csoport vagy teszt) időbélyeg és hatókör. A hatókör magában foglalja az előfizetéseket, a régiókat, a forrásokat és a rendeltetési típusokat. Az alábbi képen az 1. mező jelenik meg.
+* **Állapot-alapú szűrők** – a Csatlakozáskezelő, a test Group vagy a test állapota alapján szűrhet. Lásd a 2. négyzetet az alábbi képen.
+* **Riasztáson alapuló szűrő** – a figyelő erőforráson alapuló riasztások szűrése. Az alábbi képen látható 3. mező.
 
-![A kapcsolódási figyelők, a tesztelési csoportok és a tesztek nézeteinek szűrését bemutató képernyőkép (előzetes verzió)](./media/connection-monitor-2-preview/cm-view.png)
-
+  :::image type="content" source="./media/connection-monitor-2-preview/cm-view.png" alt-text="A kapcsolódási figyelők, a tesztelési csoportok és a tesztek nézeteinek szűrését bemutató képernyőkép (előzetes verzió)" lightbox="./media/connection-monitor-2-preview/cm-view.png":::
+    
 Ha például meg szeretné tekinteni az összes tesztet a 10.192.64.56 (előzetes verzió), ahol a forrás IP-címe a következő:
 1. Módosítsa a nézetet a **tesztre**.
 1. A Keresés mezőbe írja be a következőt: *10.192.64.56*
-1. A legördülő listában válassza a **források**elemet.
+1. A legfelső szintű szűrő **hatókörében** válassza a **források**elemet.
 
 Csak a sikertelen tesztek megjelenítése a 10.192.64.56 (előzetes verzió), ahol a forrás IP-címe a következő:
 1. Módosítsa a nézetet a **tesztre**.
 1. Az állapot-alapú szűrő esetében válassza a **sikertelen**lehetőséget.
 1. A Keresés mezőbe írja be a következőt: *10.192.64.56*
-1. A legördülő listában válassza a **források**elemet.
+1. A legfelső szintű szűrő **hatókörében** válassza a **források**elemet.
 
 Csak a sikertelen tesztek megjelenítése a outlook.office365.com (előzetes verzió), ahol a cél a következő:
 1. Váltás a nézetre a **teszteléshez**.
 1. Az állapot-alapú szűrő esetében válassza a **sikertelen**lehetőséget.
 1. A Keresés mezőbe írja be a *Outlook.office365.com*
-1. A legördülő listában válassza a **Célhelyek**lehetőséget.
+1. A legfelső szintű szűrő **hatókörében** válassza a **Célhelyek**lehetőséget.
+  
+  :::image type="content" source="./media/connection-monitor-2-preview/tests-view.png" alt-text="Képernyőfelvétel: a szűrt nézetet megjelenítő nézet, amely csak a Outlook.Office365.com célhelyének sikertelen teszteit jeleníti meg" lightbox="./media/connection-monitor-2-preview/tests-view.png":::
 
-   ![Képernyőfelvétel: a szűrt nézetet megjelenítő nézet, amely csak a Outlook.Office365.com célhelyének sikertelen teszteit jeleníti meg](./media/connection-monitor-2-preview/tests-view.png)
-
+Ha tudni szeretné, hogy a Csatlakozáskezelő vagy a tesztelési csoport vagy a teszt meghibásodása miért nem sikerült, kattintson az OK nevű oszlopra.  Ez azt jelzi, hogy a (z)%-os vagy RTT sikertelen ellenőrzések milyen küszöbértéket észleltek, és kapcsolódó diagnosztikai üzenetek
+  
+  :::image type="content" source="./media/connection-monitor-2-preview/cm-reason-of-failure.png" alt-text="A Csatlakozáskezelő, tesztelési vagy tesztelési csoport meghibásodásának okát bemutató képernyőkép" lightbox="./media/connection-monitor-2-preview/cm-reason-of-failure.png":::
+    
 A RTT trendjeinek és a sikertelen ellenőrzések százalékos arányának megtekintéséhez:
-1. Válassza ki a vizsgálni kívánt kapcsolódási figyelőt. Alapértelmezés szerint a figyelési adatcsoportot a rendszer a test Group alapján rendezi.
+1. Válassza ki a vizsgálni kívánt kapcsolódási figyelőt.
 
-   ![A Csatlakozáskezelő metrikáit bemutató képernyőkép, amelyet a test Group megjelenít](./media/connection-monitor-2-preview/cm-drill-landing.png)
+    :::image type="content" source="./media/connection-monitor-2-preview/cm-drill-landing.png" alt-text="A Csatlakozáskezelő metrikáit bemutató képernyőkép, amelyet a test Group megjelenít" lightbox="./media/connection-monitor-2-preview/cm-drill-landing.png":::
 
-1. Válassza ki a vizsgálni kívánt tesztelési csoportot.
+1. A következő részeket fogja látni  
+    1. Essentials – a kiválasztott figyelő erőforrás-specifikus tulajdonságai 
+    1. Összegzése 
+        1. Összesített trendvonalak a RTT és a sikertelen ellenőrzések százalékos arányához a Csatlakozáskezelő összes tesztje esetében. Megadhat egy adott időpontot a részletek megtekintéséhez.
+        1. Az első 5 – a tesztelési csoportok, a források és a célhelyek között a sikertelen ellenőrzések RTT vagy százaléka alapján. 
+    1. A tesztelési csoportok, a források, a célhelyek és a tesztelési konfigurációk lapjai – a Csatlakozáskezelő tesztelési csoportjait, forrásait vagy célhelyeit sorolja fel. A tesztek ellenőrzése nem sikerült, az összesített RTT és az ellenőrzések sikertelenek voltak% érték.  Az adatgyűjtés ideje alatt is visszatérhet. 
+    1. Problémák – a kapcsolati figyelő egyes teszteléseinak ugrási szintű problémái. 
 
-   ![A tesztelési csoport kiválasztásának helyét bemutató képernyőkép](./media/connection-monitor-2-preview/cm-drill-select-tg.png)
+    :::image type="content" source="./media/connection-monitor-2-preview/cm-drill-landing-2.png" alt-text="A kapcsolati figyelő metrikáit ábrázoló képernyőkép, a 2. rész tesztelési csoport" lightbox="./media/connection-monitor-2-preview/cm-drill-landing-2.png":::
 
-    A tesztelési csoport első öt sikertelen tesztjét láthatja a sikertelen ellenőrzések RTT vagy százaléka alapján. Minden tesztnél megjelenik a RTT és a trend sorok a sikertelen ellenőrzések százalékos arányához.
-1. Válasszon ki egy tesztet a listából, vagy válasszon egy másik tesztet a vizsgálathoz. Az időintervallum és a sikertelen ellenőrzések százalékos aránya a küszöbértéket és a tényleges értékeket jeleníti meg. A RTT a küszöbérték, az átlag, a minimum és a maximum értékek láthatók.
+1. képes vagy
+    * Kattintson az összes teszt megtekintése lehetőségre a kapcsolódási figyelő összes tesztének megtekintéséhez
+    * Kattintson az összes tesztelési csoport megtekintése, konfigurációk tesztelése, források és célhelyek elemre, hogy megtekinthesse a részleteket. 
+    * Válasszon ki egy tesztelési csoportot, ellenőrizze a konfigurációt, a forrást vagy a célhelyet – az entitás összes tesztjét megtekintheti.
 
-   ![A teszt eredményeit bemutató képernyőkép a RTT és a sikertelen ellenőrzések százalékos arányáról](./media/connection-monitor-2-preview/cm-drill-charts.png)
-
-1. Módosítsa az időintervallumot a további adatértékek megtekintéséhez.
-1. A nézet módosításával megtekintheti a forrásokat, a célhelyeket és a tesztelési konfigurációkat. 
-1. Válasszon egy forrást a sikertelen tesztek alapján, és vizsgálja meg az első öt sikertelen tesztet. Válassza például a **View by**  >  **Sources** (megtekintés forrás szerint) lehetőséget, és **tekintse meg**  >  **célhelyként** a kapcsolódó tesztek vizsgálatához a kapcsolódási figyelőben.
-
-   ![Képernyőfelvétel: az első öt sikertelen teszt teljesítmény-mérőszámai](./media/connection-monitor-2-preview/cm-drill-select-source.png)
+1. Az összes teszt nézetből a következőket teheti:
+    * Válassza a tesztek lehetőséget, majd kattintson az összehasonlítás gombra.
+    
+    :::image type="content" source="./media/connection-monitor-2-preview/cm-compare-test.png" alt-text="2 teszt összehasonlítását bemutató képernyőkép" lightbox="./media/connection-monitor-2-preview/cm-compare-test.png":::
+    
+    * A fürt használatával bontsa ki az összetett erőforrásokat, például a VNET, az alhálózatokat a gyermek erőforrásaihoz
+    * Az összes teszt topológiájának megtekintése a topológia lehetőségre kattintva.
 
 A RTT trendjeinek és a tesztelési csoport sikertelen ellenőrzésének százalékos arányának megtekintéséhez:
-
 1. Válassza ki a vizsgálni kívánt tesztelési csoportot. 
-
-    Alapértelmezés szerint a figyelési adatforrások, a célhelyek és a tesztelési konfigurációk (tesztek) szerint vannak rendezve. Később megváltoztathatja a nézetet a tesztelési csoportokból a forrásokra, a célhelyekre vagy a tesztelési konfigurációkra. Ezután válasszon ki egy entitást az első öt sikertelen teszt kivizsgálásához. Például módosítsa a nézetet a forrásokra és a célhelyekre, hogy kivizsgálja a megfelelő teszteket a kiválasztott figyelőben.
-1. Válassza ki a vizsgálni kívánt tesztet.
-
-   ![A teszt kiválasztásának helyét bemutató képernyőkép](./media/connection-monitor-2-preview/tg-drill.png)
-
-    Az adott időintervallumban és a sikertelen ellenőrzések százalékos arányában a küszöbértékek és a tényleges értékek láthatók. A RTT esetében a küszöbérték, az átlag, a minimum és a maximum értékek láthatók. A kiválasztott teszthez kilőtt riasztásokat is láthat.
-1. Módosítsa az időintervallumot a további adatértékek megtekintéséhez.
+1. A következőhöz hasonlóan fog megjelenni: a kapcsolatkezelő – Essentials, Summary, Table for test groups, sources, Destinations és test konfigurációk. Navigáljon hozzájuk, mint a kapcsolatok figyelője
 
 A RTT trendjeinek és a tesztek sikertelen ellenőrzésének százalékos arányának megtekintéséhez:
-1. Válassza ki a vizsgálni kívánt forrás-, cél-és tesztelési konfigurációt.
+1. Válassza ki a vizsgálni kívánt tesztet. A rendszer a hálózati topológiát és a végpontok közötti trend-diagramokat fogja látni a következő ellenőrzésekhez: nem sikerült% és a kerekítési idő. Az azonosított problémák megjelenítéséhez a topológiában válassza ki az ugrást az elérési úton. (Ezek a komló Azure-erőforrások.) Ez a funkció jelenleg nem érhető el a helyszíni hálózatokhoz
 
-    Az adott időintervallumban és a sikertelen ellenőrzések százalékos arányában a küszöbértékek és a tényleges értékek láthatók. A RTT esetében a küszöbérték, az átlag, a minimum és a maximum értékek láthatók. A kiválasztott teszthez kilőtt riasztásokat is láthat.
-
-   ![A teszt mérőszámait bemutató képernyőkép](./media/connection-monitor-2-preview/test-drill.png)
-
-1. A hálózati topológia megtekintéséhez válassza a **topológia**lehetőséget.
-
-   ![A hálózati topológia lapot ábrázoló képernyőfelvétel](./media/connection-monitor-2-preview/test-topo.png)
-
-1. Az azonosított problémák megjelenítéséhez a topológiában válassza ki az ugrást az elérési úton. (Ezek a komló Azure-erőforrások.) Ez a funkció jelenleg nem érhető el a helyszíni hálózatokhoz.
-
-   ![A topológia lapon a kiválasztott ugrási hivatkozásra mutató képernyőkép](./media/connection-monitor-2-preview/test-topo-hop.png)
+  :::image type="content" source="./media/connection-monitor-2-preview/cm-test-topology.png" alt-text="Egy teszt topológiai nézetét bemutató képernyőkép" lightbox="./media/connection-monitor-2-preview/cm-test-topology.png":::
 
 #### <a name="log-queries-in-log-analytics"></a>Lekérdezések naplózása Log Analytics
 
@@ -272,7 +269,7 @@ A Log Analytics használatával egyéni nézeteket hozhat létre a figyelési ad
 
 A Csatlakozáskezelő (előzetes verzió) felhasználói felülete előtt létrehozott AverageRoundtripMs a következő négy metrika érhető el:% Probes sikertelen,, ChecksFailedPercent (előzetes) és RoundTripTimeMs (előzetes verzió). A Csatlakozáskezelő (előzetes verzió) szolgáltatásban létrehozott hálózati figyelők esetében az adatok csak a *(előzetes)* címkével megjelölt mérőszámokhoz érhetők el.
 
-![A Csatlakozáskezelő metrikáit bemutató képernyőkép (előzetes verzió)](./media/connection-monitor-2-preview/monitor-metrics.png)
+  :::image type="content" source="./media/connection-monitor-2-preview/monitor-metrics.png" alt-text="A Csatlakozáskezelő metrikáit bemutató képernyőkép (előzetes verzió)" lightbox="./media/connection-monitor-2-preview/monitor-metrics.png":::
 
 Metrikák használata esetén állítsa be az erőforrástípust a Microsoft. Network/networkWatchers/connectionMonitors
 
@@ -283,24 +280,27 @@ Metrikák használata esetén állítsa be az erőforrástípust a Microsoft. Ne
 | ChecksFailedPercent (előzetes verzió) | %-Os ellenőrzés sikertelen (előzetes verzió) | Százalék | Átlag | A teszt sikertelen ellenőrzésének százalékos aránya. | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>Sourceresourceid azonosítónak <br>SourceType <br>Protokoll <br>DestinationAddress <br>DestinationName <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Region |
 | RoundTripTimeMs (előzetes verzió) | Oda-és visszaút időpontja (MS) (előzetes verzió) | Ezredmásodpercben | Átlag | A forrás és a cél között továbbított ellenőrzések RTT. Ez az érték nem átlag. | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>Sourceresourceid azonosítónak <br>SourceType <br>Protokoll <br>DestinationAddress <br>DestinationName <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Region |
 
-#### <a name="metric-alerts-in-azure-monitor"></a>Metrikus riasztások Azure Monitor
+#### <a name="metric-based-alerts-for-connection-monitor"></a>Metrika-alapú riasztások a kapcsolatok figyelője számára
 
-Riasztás létrehozása Azure Monitorban:
+A következő módszerekkel metrikai riasztásokat hozhat létre a kapcsolatok figyelője esetén 
 
-1. Válassza ki a Csatlakozáskezelő (előzetes verzió) eszközben létrehozott Csatlakozáskezelő-erőforrást.
-1. Győződjön meg arról, hogy a **metrika** a Csatlakozáskezelő jel típusaként jelenik meg.
-1. A **feltétel hozzáadása**területen a **jel neveként**válassza a **ChecksFailedPercent (előzetes verzió)** vagy a **RoundTripTimeMs (előzetes verzió)** lehetőséget.
-1. A **jel típusa**beállításnál válassza a **metrikák**lehetőséget. Válassza például a **ChecksFailedPercent (előzetes verzió)** lehetőséget.
-1. Megjelenik a metrika összes dimenziója. Válassza ki a dimenzió nevét és a dimenzió értékét. Válassza például a **forrás címe** lehetőséget, majd adja meg a Csatlakozáskezelő bármelyik FORRÁSÁNAK IP-címét.
-1. A **riasztási logikában**adja meg a következő adatokat:
-   * **Feltétel típusa**: **statikus**.
-   * **Feltétel** és **küszöbérték**.
-   * **Összesítés részletessége és a kiértékelés gyakorisága: a**Csatlakozáskezelő (előzetes verzió) minden percben frissíti az adatokat.
-1. A **műveletek**területen válassza ki a műveleti csoportot.
-1. Adja meg a riasztás részleteit.
-1. Hozzon létre egy riasztási szabályt.
+1. A csatlakozás figyelője (előzetes verzió), a Csatlakozáskezelő létrehozása során [Azure Portal használatával](connection-monitor-preview-create-using-portal.md#) 
+1. A kapcsolatkezelő (előzetes verzió), a "riasztások konfigurálása" használatával az irányítópulton 
+1. Azure Monitor – riasztás létrehozása a Azure Monitorban: 
+    1. Válassza ki a Csatlakozáskezelő (előzetes verzió) eszközben létrehozott Csatlakozáskezelő-erőforrást.
+    1. Győződjön meg arról, hogy a **metrika** a Csatlakozáskezelő jel típusaként jelenik meg.
+    1. A **feltétel hozzáadása**területen a **jel neveként**válassza a **ChecksFailedPercent (előzetes verzió)** vagy a **RoundTripTimeMs (előzetes verzió)** lehetőséget.
+    1. A **jel típusa**beállításnál válassza a **metrikák**lehetőséget. Válassza például a **ChecksFailedPercent (előzetes verzió)** lehetőséget.
+    1. Megjelenik a metrika összes dimenziója. Válassza ki a dimenzió nevét és a dimenzió értékét. Válassza például a **forrás címe** lehetőséget, majd adja meg a Csatlakozáskezelő bármelyik FORRÁSÁNAK IP-címét.
+    1. A **riasztási logikában**adja meg a következő adatokat:
+        * **Feltétel típusa**: **statikus**.
+        * **Feltétel** és **küszöbérték**.
+        * **Összesítés részletessége és a kiértékelés gyakorisága: a**Csatlakozáskezelő (előzetes verzió) minden percben frissíti az adatokat.
+    1. A **műveletek**területen válassza ki a műveleti csoportot.
+    1. Adja meg a riasztás részleteit.
+    1. Hozzon létre egy riasztási szabályt.
 
-   ![Képernyőfelvétel a szabály létrehozása területén Azure Monitor; A "forrás címe" és a "forrás végpont neve" ki van emelve](./media/connection-monitor-2-preview/mdm-alerts.jpg)
+  :::image type="content" source="./media/connection-monitor-2-preview/mdm-alerts.jpg" alt-text="Képernyőfelvétel a Azure Monitor szabály létrehozása területén. A forrás címe és a forrás végpontjának neve kiemelve" lightbox="./media/connection-monitor-2-preview/mdm-alerts.jpg":::
 
 ## <a name="diagnose-issues-in-your-network"></a>A hálózatban felmerülő problémák diagnosztizálása
 
@@ -347,3 +347,8 @@ Az Azure-beli virtuális gépeket forrásként szolgáló hálózatok esetében 
 * A forgalom a rendszerútvonalak vagy a UDR miatt leállt.
 * A BGP nincs engedélyezve az átjáró-kapcsolatban.
 * A DIP-mintavétel le van töltve a terheléselosztó számára.
+
+## <a name="next-steps"></a>Következő lépések
+    
+   * Ismerje meg [, hogyan hozhatja létre a kapcsolódási figyelőt (előzetes verzió) a Azure Portal használatával](connection-monitor-preview-create-using-portal.md)  
+   * Megtudhatja [, hogyan hozhat létre ARMClient használatával a kapcsolódási figyelőt (előzetes verzió)](connection-monitor-preview-create-using-arm-client.md)  

@@ -1,20 +1,20 @@
 ---
 title: Graph-adatbázis létrehozása Javával Azure Cosmos DB
 description: Egy Java-kódmintát mutat be, amellyel az Azure Cosmos DB-hez csatlakozhat, és a Gremlin használatával gráfadatokat kérdezhet le.
-author: luisbosquez
+author: jasonwhowell
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 03/26/2019
-ms.author: lbosq
+ms.author: jasonh
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 05fc7a7a5bd7e045125cb303e1f5c29d550c58ef
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: ad00fcc0c7b871210b29400821808b6729d953f6
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323672"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409408"
 ---
 # <a name="quickstart-build-a-graph-database-with-the-java-sdk-and-the-azure-cosmos-db-gremlin-api"></a>Gyors útmutató: Graph-adatbázis létrehozása a Java SDK-val és a Azure Cosmos DB Gremlin API-val
 
@@ -212,7 +212,7 @@ Ezután visszaléphet az Adatkezelőbe, és megtekintheti a gráfhoz hozzáadott
 
     Ha további adatokat ad meg, szűrőkkel csökkentheti a találatok számát. Az Adatkezelő alapértelmezés szerint a `g.V()` lekérdezést használja a gráf összes csúcspontjának lekéréséhez. Ezt más [gráflekérdezésre](tutorial-query-graph.md) is módosíthatja, például a `g.V().count()` lekérdezésre, ha azt szeretné, hogy a rendszer JSON formátumban adja vissza a gráf csúcspontjainak számát. Ha módosította a szűrőt, váltson vissza a szűrőre, `g.V()` és válassza a **szűrő alkalmazása** lehetőséget az összes eredmény ismételt megjelenítéséhez.
 
-12. Most már összekapcsolhatja a rakesh és az ashley elemet. Győződjön meg arról, hogy az **Ashley** ki van választva az **eredmények** listájában, majd jelölje be :::image type="content" source="./media/create-graph-java/edit-pencil-button.png" alt-text="a csúcspontok céljainak módosítása egy gráfban"::: a jobb alsó sarokban lévő **célok** mellett. Előfordulhat, hogy szélesebbre kell állítania az ablakot a gomb megjelenítéséhez.
+12. Most már összekapcsolhatja a rakesh és az ashley elemet. Győződjön meg arról, hogy az **Ashley** ki van választva az **eredmények** listájában, majd jelölje be :::image type="content" source="./media/create-graph-java/edit-pencil-button.png" alt-text="a csúcspontok céljainak módosítása egy gráfban":::  a jobb alsó sarokban lévő **célok** mellett. Előfordulhat, hogy szélesebbre kell állítania az ablakot a gomb megjelenítéséhez.
 
     :::image type="content" source="./media/create-graph-java/azure-cosmosdb-data-explorer-edit-target.png" alt-text="Csúcspont céljának módosítása egy gráfban – Azure CosmosDB":::
 
@@ -234,7 +234,7 @@ Ezzel befejezte az oktatóanyag erőforrások létrehozásra vonatkozó részét
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a rövid útmutatóból megtudhatta, hogyan hozhat létre egy Azure Cosmos DB fiókot, hogyan hozhat létre egy gráfot a Adatkezelő használatával, és hogyan futtathat olyan Java-alkalmazást, amely a gráfhoz is felveszi az adataikat Az útmutató információira támaszkodva összetett lekérdezéseket hozhat létre és hatékony gráfbejárási logikákat helyezhet üzembe a Gremlin használatával. 
 

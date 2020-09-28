@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB Gremlin-támogatás
 description: Tudnivalók az Apache TinkerPop Gremlin nyelvéről. Megismerheti, milyen funkciók és lépések érhetők el az Azure Cosmos DB-ben.
-author: LuisBosquez
+author: jasonwhowell
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 04/23/2020
-ms.author: lbosq
-ms.openlocfilehash: 75a796a860acbd4279938b315fafccb9333906bd
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.author: jasonh
+ms.openlocfilehash: 2629cfc40a9f3c0745df78d9a22883be8476beb9
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89567265"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409744"
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>A Gremlin-gráfok Azure Cosmos DB általi támogatása
 Azure Cosmos DB támogatja az [Apache Tinkerpop](https://tinkerpop.apache.org) Graph bejárási nyelvét, amely [Gremlin](https://tinkerpop.apache.org/docs/3.3.2/reference/#graph-traversal-steps)néven ismert. A Gremlin nyelv segítségével létrehozhat gráfentitásokat (csúcspontokat és éleket), módosíthatja ezen entitások tulajdonságait, végrehajthat lekérdezéseket és bejárásokat, és törölhet entitásokat. 
@@ -162,6 +162,6 @@ Most pedig tekintsük át az Azure Cosmos DB által támogatott Gremlin-lépése
 
 Az Azure Cosmos DB által biztosított, írásra optimalizált motor alapértelmezés szerint támogatja a csúcspontokon és éleken belüli összes tulajdonság automatikus indexelését. Ezért a szűrővel rendelkező lekérdezéseket, a tartománylekérdezéseket, a rendezéseket és a tulajdonságösszesítések mindegyikét a rendszer közvetlenül az indexből dolgozza fel a hatékony kiszolgálás érdekében. Az indexelésnek az Azure Cosmos DB-ben való működésével kapcsolatban a [sémafüggetlen indexelésről](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf) szóló tanulmányunkban tekinthet meg további információt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Bevezetés egy gráfalkalmazás létrehozásába [az SDK-k használatával](create-graph-dotnet.md) 
 * További információk a [gráfok támogatásáról](graph-introduction.md) az Azure Cosmos DB-ben

@@ -1,5 +1,5 @@
 ---
-title: Elosztott tranzakciók több felhőalapú adatbázisban
+title: Elosztott tranzakciók felhőalapú adatbázisok között (előzetes verzió)
 description: A Azure SQL Databaseokkal Elastic Database tranzakciók áttekintése.
 services: sql-database
 ms.service: sql-database
@@ -11,17 +11,17 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 5c94234644fcefb70a40ba0b2c21e6e205be0e65
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 60f6863bbe051338308c30e22c6969d84670dc64
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85829414"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409731"
 ---
-# <a name="distributed-transactions-across-cloud-databases"></a>Elosztott tranzakciók több felhőalapú adatbázisban
+# <a name="distributed-transactions-across-cloud-databases-preview"></a>Elosztott tranzakciók felhőalapú adatbázisok között (előzetes verzió)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-A Azure SQL Database rugalmas adatbázis-tranzakciói lehetővé teszik, hogy olyan tranzakciókat futtasson, amelyek SQL Database több adatbázisára is kiterjednek. A SQL Database rugalmas adatbázis-tranzakciói elérhetők az ADO .NET-et használó .NET-alkalmazások számára, és az ismerős programozási felülettel integrálhatók a [System. Transaction](https://msdn.microsoft.com/library/system.transactions.aspx) osztályok használatával. A könyvtár beszerzéséhez tekintse meg a [.NET-keretrendszer 4.6.1 (web Installer)](https://www.microsoft.com/download/details.aspx?id=49981)című témakört.
+A Azure SQL Database rugalmas adatbázis-tranzakciói lehetővé teszik, hogy olyan tranzakciókat futtasson, amelyek SQL Database több adatbázisára is kiterjednek. A SQL Database rugalmas adatbázis-tranzakciói elérhetők a ADO.NET-t használó .NET-alkalmazások számára, és a [rendszer. Transaction](https://msdn.microsoft.com/library/system.transactions.aspx) osztályok használatával integrálva vannak a megszokott programozási felülettel. A könyvtár beszerzéséhez tekintse meg a [.NET-keretrendszer 4.6.1 (web Installer)](https://www.microsoft.com/download/details.aspx?id=49981)című témakört.
 
 A helyszínen egy ilyen forgatókönyvhöz általában a Microsoft Elosztott tranzakciók koordinátora (MSDTC) futtatására van szükség. Mivel az MSDTC nem érhető el az Azure-beli platform-szolgáltatás alkalmazáshoz, az elosztott tranzakciók koordinálásának lehetősége mostantól közvetlenül a SQL Databaseba integrálható. Az alkalmazások a SQL Database bármely adatbázisához csatlakozhatnak az elosztott tranzakciók elindításához, és az egyik adatbázis transzparens módon koordinálja az elosztott tranzakciót, ahogy az az alábbi ábrán is látható.
 
@@ -162,7 +162,7 @@ A következő korlátozások jelenleg a rugalmas adatbázis-tranzakciókra vonat
 * Csak az ügyfél által koordinált tranzakciók támogatottak a .NET-alkalmazásokból. A T-SQL kiszolgálóoldali támogatása, például a BEGIN DISTRIBUTed TRANSACTION terv, de még nem érhető el.
 * A WCF-szolgáltatások közötti tranzakciók nem támogatottak. Tegyük fel, hogy van egy WCF szolgáltatási metódusa, amely tranzakciót hajt végre. A hívás tranzakciós hatókörön belüli befoglalása sikertelen lesz, mint a [System. ServiceModel. ProtocolException](https://msdn.microsoft.com/library/system.servicemodel.protocolexception).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha kérdése van, kérjük, lépjen kapcsolatba velünk a [Microsoft Q&a SQL Database vonatkozó kérdés oldalán](https://docs.microsoft.com/answers/topics/azure-sql-database.html). A szolgáltatási kérelmek esetében vegye fel őket a [SQL Database visszajelzési fórumba](https://feedback.azure.com/forums/217321-sql-database/).
 

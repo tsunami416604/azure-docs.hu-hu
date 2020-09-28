@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/25/2020
+ms.date: 09/28/2020
 ms.author: allensu
-ms.openlocfilehash: 3180fa34b85c3ec5f7cb1d2d9da8c2e1b528bd69
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 5efcf944f5d22759f9d448da5862bcf1f19e2efe
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855795"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409561"
 ---
 # <a name="what-is-virtual-network-nat"></a>Mi az Virtual Network NAT?
 
@@ -32,7 +32,7 @@ Virtual Network NAT (hálózati címfordítás) egyszerűbbé teszi a csak kimen
 -->
 
 <p align="center">
-  <img src="./media/nat-overview/flow-map.svg" alt="Figure depicts a NAT receiving traffic from internal subnets and directing it to a public IP and an IP prefix." width="256" title="Virtual Network NAT">
+  <img src="./media/nat-overview/flow-map.svg" alt="Figure depicts a NAT receiving traffic from internal subnets and directing it to a public IP (PIP) and an IP prefix." width="256" title="Virtual Network NAT">
 </p>
 
 
@@ -51,11 +51,11 @@ Az alhálózat összes kimenő forgalmát a NAT automatikusan dolgozza fel az ü
 
 A NAT a "port hálózati címfordítást" (PNAT vagy PAT) használja, és a legtöbb munkaterheléshez ajánlott. A dinamikus vagy eltérő munkaterhelések könnyen elhelyezhetők az igény szerinti kimenő forgalom lefoglalásával. A rendszer elkerüli a részletes előzetes tervezést, előzetes kiosztást, és végül a kimenő erőforrások túlzott kiépítését. A SNAT-portok erőforrásai megosztva és minden alhálózaton elérhetők egy adott NAT Gateway-erőforrás használatával, és szükség esetén rendelkezésre állnak.
 
-A NAT-hoz csatlakoztatott nyilvános IP-címek akár 64 000 egyidejű folyamatot biztosítanak az UDP és a TCP számára. Elkezdheti egyetlen IP-cím megadását, és akár 16 nyilvános IP-címet is felméretezhető.
+A NAT-hoz csatlakoztatott nyilvános IP-címek akár 64 000 egyidejű folyamatot biztosítanak az UDP és a TCP számára. Elkezdheti egyetlen IP-cím használatát, és akár 16 IP-címet is felhasználhat nyilvános IP-címekkel vagy nyilvános IP-előtagokkal vagy mindkettővel.  A NAT-átjáró erőforrás az erőforráshoz társított összes IP-címet az azonos NAT-átjáró erőforrással konfigurált összes alhálózatról kimenő kapcsolatokra fogja használni.
 
 A NAT lehetővé teszi, hogy a folyamatok a virtuális hálózatról az internetre jöjjenek létre. Az internetről érkező adatforgalom csak aktív folyamatra adott válaszként engedélyezett.
 
-A terheléselosztó kimenő SNAT eltérően a NAT nem rendelkezik korlátozásokkal, amelyek esetében a virtuálisgép-példányok magánhálózati IP-címe kimenő kapcsolatokat hajthat végre.  A másodlagos IP-konfigurációk kimenő internetkapcsolatot hozhatnak létre a NAT használatával.
+A terheléselosztó kimenő SNAT eltérően a NAT nem rendelkezik korlátozásokkal, amelyek esetében a virtuálisgép-példányok magánhálózati IP-címe kimenő kapcsolatokat hajthat végre.  Az elsődleges és másodlagos IP-konfigurációk kimenő internetkapcsolatot hozhatnak létre a NAT használatával.
 
 ## <a name="coexistence-of-inbound-and-outbound"></a>A bejövő és a kimenő együttes létezése
 
@@ -141,7 +141,7 @@ Szeretnénk tudni, hogyan lehet javítani a szolgáltatást. Javasolja és szava
 * Az IPv4-címek családja támogatott.  A NAT nem támogatja az IPv6-cím családját.  A NAT nem helyezhető üzembe IPv6-előtaggal rendelkező alhálózaton.
 * A NAT nem tud több virtuális hálózatot kifogni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [NAT-átjáró erőforrásáról](./nat-gateway-resource.md).
 * [Ossza meg velünk a következőt Virtual Network NAT UserVoice-ben való létrehozásához](https://aka.ms/natuservoice).

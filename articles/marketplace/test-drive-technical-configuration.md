@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/13/2019
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: 9ba3d25a07e4d6c32bd14c315018f0d008032b73
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7d22226721d4fc09b4f5affc15047b6799ed0d19
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91250487"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409476"
 ---
 # <a name="test-drive-technical-configuration"></a>Tesztverzió műszaki konfigurálása
 
@@ -30,7 +30,7 @@ A Microsoft el tudja távolítani a tesztelési meghajtó beállításának öss
 
 - Egyidejű **tesztelési meghajtók maximális** száma (kötelező) – állítsa be a tesztelési meghajtót egyszerre használó ügyfelek maximális számát. Az egyidejű felhasználók egy Dynamics 365-licencet használnak, amíg a tesztvezetés aktív, ezért győződjön meg arról, hogy elegendő licenc áll rendelkezésre a maximálisan engedélyezett készlet támogatásához. Az ajánlott érték 3-5.
 
-- **Tesztelési meghajtó időtartama** (kötelező) – Itt adhatja meg, hogy hány óra elteltével marad aktív a tesztvezetés. Ezt követően a munkamenet véget ért, és már nem fogja használni az egyik licencét. Az ajánlat bonyolultsága alapján 2-24 óra értékű értéket ajánlunk. Ez az időtartam csak egész órában állítható be (például "2" óra érvényes). "1,5" nem). Ha elfogynak az idő, a felhasználó új munkamenetet igényelhet, és újra el szeretné érni a teszt meghajtót.
+- **Tesztelési meghajtó időtartama** (kötelező) – Itt adhatja meg, hogy hány óra elteltével maradjon aktív a tesztvezetés (legalább egy óra). Ezt követően a munkamenet véget ért, és már nem fogja használni az egyik licencét. Az ajánlat bonyolultsága alapján 2-24 óra értékű értéket ajánlunk. Ez az időtartam csak egész órában állítható be (például "2" óra érvényes). "1,5" nem). Ha elfogynak az idő, a felhasználó új munkamenetet igényelhet, és újra el szeretné érni a teszt meghajtót.
 
 - **Példány URL-címe** (kötelező) – az az URL-cím, amelyben az ügyfél elkezdi a tesztelési meghajtót. Általában a Dynamics 365-példány URL-címe, amely az alkalmazást az alkalmazással együtt futtatja (például: `https://testdrive.crm.dynamics.com` ).
 
@@ -48,7 +48,7 @@ Ezt a típusú tesztelési meghajtót nem a Microsoft üzemelteti. Használatáv
 
 - Egyidejű **tesztelési meghajtók maximális** száma (kötelező) – állítsa be a tesztelési meghajtót egyszerre használó ügyfelek maximális számát. Ezek a tesztelési meghajtók már telepítve vannak, és lehetővé teszik, hogy az ügyfelek azonnal hozzáférjenek az üzembe helyezésre való várakozás nélkül.
 
-- **Tesztelési meghajtó időtartama** (kötelező) – Itt adhatja meg, hogy a tesztvezetés hány óra alatt maradjon aktív állapotban. A tesztelési meghajtó automatikusan leáll az adott időszak lejárta után.
+- **Tesztelési meghajtó időtartama** (kötelező) – Itt adhatja meg, hogy hány óra elteltével maradjon aktív a tesztvezetés (legalább egy óra). A tesztelési meghajtó automatikusan leáll az adott időszak lejárta után.
 
 - **Azure-erőforráscsoport neve** (kötelező) – Itt adhatja meg az [Azure-erőforráscsoport](../azure-resource-manager/resource-group-overview.md#resource-groups)nevét, ahol a logikai alkalmazás tesztelési meghajtója mentve lesz.
 

@@ -10,12 +10,12 @@ ms.custom: how-to
 ms.author: mithigpe
 author: minthigpen
 ms.date: 07/09/2020
-ms.openlocfilehash: 7cb40df6a4619e11694e65020bfcb560cf695795
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 35bf66549cedba22ec14999c4fea62a2c449416e
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897452"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91408015"
 ---
 # <a name="interpretability-model-explanations-in-automated-machine-learning-preview"></a>Értelmező: a modell magyarázatai az automatikus gépi tanulásban (előzetes verzió)
 
@@ -33,7 +33,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Értelmező funkciók. Futtassa `pip install azureml-interpret azureml-contrib-interpret` a parancsot a szükséges csomagok beszerzéséhez.
+- Értelmező funkciók. Futtassa `pip install azureml-interpret` a parancsot a szükséges csomag beszerzéséhez.
 - Az automatizált ML-kísérletek létrehozásának ismerete. További információ az Azure Machine Learning SDK használatáról: a [regressziós modell oktatóanyagának](tutorial-auto-train-models.md) elvégzése, vagy az [automatikus ml-kísérletek konfigurálása](how-to-configure-auto-train.md).
 
 ## <a name="interpretability-during-training-for-the-best-model"></a>A legjobb modell képzésének értelmezése
@@ -53,7 +53,7 @@ Kérje le a magyarázatot a alkalmazásból `best_run` , amely a megtervezett fu
 A ( `ExplanationClient` ) használatával letöltheti a megtervezett funkció magyarázatait az összetevő-tárolóból `best_run` . 
 
 ```python
-from azureml.explain.model._internal.explanation_client import ExplanationClient
+from azureml.interpret import ExplanationClient
 
 client = ExplanationClient.from_run(best_run)
 engineered_explanations = client.download_model_explanation(raw=False)
@@ -99,7 +99,7 @@ A AutoML-modellek magyarázatának létrehozásához használja a `MimicWrapper`
 A MimicWrapper arra az objektumra is kerül, `automl_run` ahol a megtervezett magyarázatok fel lesznek töltve.
 
 ```python
-from azureml.explain.model.mimic_wrapper import MimicWrapper
+from azureml.interpret import MimicWrapper
 
 # Initialize the Mimic Explainer
 explainer = MimicWrapper(ws, automl_explainer_setup_obj.automl_estimator,

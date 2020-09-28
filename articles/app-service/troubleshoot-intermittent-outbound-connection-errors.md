@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 07/24/2020
 ms.author: ramakoni
 ms.custom: security-recommendations,fasttrack-edit
-ms.openlocfilehash: b38ba59b3efc7e5869eecbc84879a6c0a4ce7369
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: ee1b4da6f02623346d078b9812c99e5093dc2691
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91360208"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91408215"
 ---
 # <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>Az időszakos kimenő kapcsolatok hibáinak elhárítása a Azure App Serviceban
 
@@ -93,16 +93,6 @@ Habár a PHP nem támogatja a kapcsolatok készletezését, kipróbálhatja az �
 
    * [PHP-kapcsolatok kezelése](https://www.php.net/manual/en/pdo.connections.php)
 
-#### <a name="python"></a>Python
-
-* [MySQL](https://github.com/mysqljs/mysql#pooling-connections)
-* [MongoDB](https://blog.mlab.com/2017/05/mongodb-connection-pooling-for-express-applications/)
-* [PostgreSQL](https://node-postgres.com/features/pooling)
-* [SQL Server](https://github.com/tediousjs/node-mssql#connection-pools) (Megjegyzés: a SQLAlchemy a MicrosoftSQL-kiszolgálón kívül más adatbázisokkal is használható)
-* [Http életben tartás](https://requests.readthedocs.io/en/master/user/advanced/#keep-alive)(életben tartási munkamenet [-objektumok](https://requests.readthedocs.io/en/master/user/advanced/#keep-alive)használata esetén a Keep-Alive automatikus).
-
-Más környezetek esetén tekintse át a szolgáltatót vagy az illesztőprogram-specifikus dokumentumokat a kapcsolatok készletezésének megvalósításához az alkalmazásokban.
-
 ### <a name="modify-the-application-to-reuse-connections"></a>Az alkalmazás módosítása a kapcsolatok újrafelhasználásához
 
 *  További mutatókkal és példákkal az Azure functions kapcsolatainak kezeléséhez tekintse át a [Azure functions a kapcsolatok kezelése című részt](../azure-functions/manage-connections.md).
@@ -124,7 +114,7 @@ Más környezetek esetén tekintse át a szolgáltatót vagy az illesztőprogram
 
 A kimenő TCP-korlátok elkerülése könnyebben megoldható, mivel a korlátokat a feldolgozók mérete határozza meg. Megtekintheti a [homokozóban futó virtuális gépek numerikus korlátait – TCP-kapcsolatok](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits)
 
-|Korlát neve|Description|Kicsi (a1)|Közepes (a2)|Nagyméretű (a3)|Elkülönített rétegek|
+|Korlát neve|Leírás|Kicsi (a1)|Közepes (a2)|Nagyméretű (a3)|Elkülönített rétegek|
 |---|---|---|---|---|---|
 |Kapcsolatok|Kapcsolatok száma a teljes virtuális gépen|1920|3968|8064|16000|
 
@@ -156,7 +146,7 @@ A TCP-kapcsolatok és a SNAT portok nem közvetlenül kapcsolódnak egymáshoz. 
 * A TCP-kapcsolatok korlátja a feldolgozói példány szintjén történik. Az Azure hálózati kimeneti terheléselosztás nem használja a TCP-kapcsolatok metrikáját a SNAT-portok korlátozásához.
 * A TCP-kapcsolatok korlátozásait a [homokozóban futó virtuális gépek numerikus korlátai – TCP-kapcsolatok](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits) című cikk írja le.
 
-|Korlát neve|Description|Kicsi (a1)|Közepes (a2)|Nagyméretű (a3)|Elkülönített rétegek|
+|Korlát neve|Leírás|Kicsi (a1)|Közepes (a2)|Nagyméretű (a3)|Elkülönített rétegek|
 |---|---|---|---|---|---|
 |Kapcsolatok|Kapcsolatok száma a teljes virtuális gépen|1920|3968|8064|16000|
 
