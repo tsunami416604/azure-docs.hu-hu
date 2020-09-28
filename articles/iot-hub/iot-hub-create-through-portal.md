@@ -9,12 +9,12 @@ ms.date: 09/06/2018
 ms.author: robinsh
 ms.custom:
 - 'Role: Cloud Development'
-ms.openlocfilehash: 8f7555129f5f514d1954ac56cf87872a85ca91d0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c7414728ab65258f73f80ee7fb303c7e6b961052
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326732"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91404958"
 ---
 # <a name="create-an-iot-hub-using-the-azure-portal"></a>IoT hub létrehozása a Azure Portal használatával
 
@@ -24,7 +24,7 @@ Ez a cikk bemutatja, hogyan hozhat létre és kezelhet IoT-hubokat a [Azure Port
 
 Az oktatóanyag lépéseinek használatához Azure-előfizetésre van szükség. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
-## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
+## <a name="create-an-iot-hub"></a>IoT-központ létrehozása
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -78,7 +78,7 @@ Az útvonalak az üzenet-útválasztási ablaktábla első lapja. Új útvonal h
 
 ![Új útvonal hozzáadását bemutató képernyőkép](./media/iot-hub-create-through-portal/iot-hub-add-route-storage-endpoint.png)
 
-Nevezze el a hubot. A névnek egyedinek kell lennie az adott hubhoz tartozó útvonalak listáján belül. 
+Nevezze el az útvonalat. Az útvonal nevének egyedinek kell lennie az adott hubhoz tartozó útvonalak listáján belül. 
 
 A **végpont**esetében választhat egyet a legördülő listából, vagy hozzáadhat egy újat. Ebben a példában a Storage-fiók és a tároló már elérhető. Ha végpontként szeretné hozzáadni őket, kattintson a +**Hozzáadás** elemre a végpont legördülő menüben, majd válassza a **blob Storage**lehetőséget. Az alábbi képernyőn látható, hol vannak megadva a Storage-fiók és a tároló.
 
@@ -120,7 +120,7 @@ Az alábbi két módon találhat egy adott IoT hubot az előfizetésében:
 
 IOT hub törléséhez keresse meg a törölni kívánt IoT hub-t, majd kattintson a IoT hub neve alatti **Törlés** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alábbi hivatkozásokat követve további információkat tudhat meg az Azure IoT Hub kezeléséről:
 

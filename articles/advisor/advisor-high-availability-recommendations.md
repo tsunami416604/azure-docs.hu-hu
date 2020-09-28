@@ -2,13 +2,13 @@
 title: Az Advisor-alkalmazás megbízhatóságának javítása
 description: A Azure Advisor használatával biztosíthatja és javíthatja a megbízhatóságot az üzleti szempontból kritikus fontosságú Azure-környezetekben.
 ms.topic: article
-ms.date: 01/29/2019
-ms.openlocfilehash: 3e556f8bc672705e6c83daced2c82a884e3ddf46
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/27/2020
+ms.openlocfilehash: 1e256d99f8d78ddff318f963dcb21e9b4537f110
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91264592"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91405190"
 ---
 # <a name="improve-the-reliability-of-your-application-by-using-azure-advisor"></a>Az alkalmazás megbízhatóságának javítása Azure Advisor használatával
 
@@ -109,6 +109,12 @@ Azure Advisor azonosítja Azure Cosmos DB a Azure Cosmos DB Spark-összekötő r
 ## <a name="enable-virtual-machine-replication"></a>Virtuális gépek replikálásának engedélyezése
 Azok a virtuális gépek, amelyeken nincs engedélyezve a replikáció egy másik régióban, nem rugalmasak a regionális kimaradások terén. A virtuális gépek replikálása csökkenti az Azure-régiók leállása során fellépő hátrányos üzleti hatásokat. Az Advisor észleli azokat a virtuális gépeket, amelyeken nincs engedélyezve a replikáció, és azt javasolja, hogy engedélyezze. Ha engedélyezi a replikációt, a virtuális gépek gyorsan üzembe helyezhetők egy távoli Azure-régióban. [További információ a virtuális gépek replikálásáról.](../site-recovery/azure-to-azure-quickstart.md)
 
+## <a name="upgrade-to-the-latest-version-of-the-azure-connected-machine-agent"></a>Frissítés az Azure Connected Machine ügynök legfrissebb verziójára
+Az [Azure-beli csatlakoztatott gépi ügynök](https://docs.microsoft.com/azure/azure-arc/servers/manage-agent) rendszeresen frissül a hibajavítások, a stabilitási fejlesztések és az új funkciók segítségével. Azonosítjuk azokat az erőforrásokat, amelyek nem működnek a Machine Agent legújabb verziójával, és ez az Advisor javaslat arra utal, hogy az ügynököt az Azure-beli legjobb felület legújabb verziójára frissítse.
+
+## <a name="do-not-override-hostname-to-ensure-website-integrity"></a>Az állomásnév felülbírálásának mellőzése a webhelyek integritásának biztosítása érdekében
+Az Advisor azt ajánlja, hogy a Application Gateway konfigurálásakor ne felülbírálja az állomásnév felülbírálását. Ha egy másik tartomány van a Application Gateway előtérén, mint amelyik a háttér eléréséhez használatos, előfordulhat, hogy a cookie-k vagy az átirányítási URL-címek megszakadnak. Vegye figyelembe, hogy ez a helyzet nem minden helyzetben lehetséges, és a háttérrendszer bizonyos kategóriái (például a REST API) általában kevésbé érzékenyek erre. Győződjön meg arról, hogy a háttérrendszer képes kezelni vagy frissíteni a Application Gateway konfigurációt, hogy az állomásnév ne legyen felülírva a háttér felé. App Service használatával való használat esetén csatoljon egy egyéni tartománynevet a webalkalmazáshoz, és ne használja a *. azurewebsites.net állomásnevet a háttér felé.* [További információ az egyéni tartományról](https://aka.ms/appgw-advisor-usecustomdomain).
+
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Magas rendelkezésre állási javaslatok elérése az Advisorban
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), majd nyissa meg az [Advisor alkalmazást](https://aka.ms/azureadvisordashboard).
@@ -120,6 +126,7 @@ Azok a virtuális gépek, amelyeken nincs engedélyezve a replikáció egy mási
 Az Advisor ajánlásaival kapcsolatos további információkért lásd:
 * [Az Advisor bemutatása](advisor-overview.md)
 * [Bevezetés az Advisor használatába](advisor-get-started.md)
+* [Advisor-pontszám](azure-advisor-score.md)
 * [Az Advisor költségekkel kapcsolatos javaslatai](advisor-cost-recommendations.md)
 * [Az Advisor teljesítményével kapcsolatos javaslatok](advisor-performance-recommendations.md)
 * [Advisor biztonsági javaslatok](advisor-security-recommendations.md)

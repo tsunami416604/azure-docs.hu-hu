@@ -497,14 +497,16 @@
               href: platform/alerts-troubleshoot-metric.md
         - name: Naplóriasztási szabályok
           items:
-            - name: Riasztások konfigurálása elemzési lekérdezésekhez
+            - name: Naplóriasztások kezelése
               href: platform/alerts-log.md
-            - name: Lekérdezések
+            - name: Riasztások lekérdezéseinek optimalizálása
               href: platform/alerts-log-query.md
-            - name: Webhook-műveletek
-              href: platform/alerts-log-webhook.md
+            - name: Resource Manager-sablon használata
+              href: platform/alerts-log-create-templates.md
             - name: Naplóriasztások hibaelhárítása
               href: platform/alerts-troubleshoot-log.md
+            - name: Webhook-műveletek
+              href: platform/alerts-log-webhook.md
         - name: Tevékenységnapló-riasztási szabályok
           items:
             - name: Riasztás tevékenységnapló-eseményhez
@@ -1145,6 +1147,8 @@
               href: platform/workbooks-tree-visualizations.md
             - name: Graph
               href: platform/workbooks-graph-visualizations.md
+            - name: Méhsejt
+              href: platform/workbooks-honey-comb.md
             - name: Összetett sáv
               href: platform/workbooks-composite-bar.md
         - name: Adatforrások
@@ -1245,8 +1249,6 @@
           href: app/auto-collect-dependencies.md
         - name: Telemetriai korreláció
           href: app/correlation.md
-        - name: NuGet-csomagok
-          href: app/nuget.md
         - name: Platformtámogatás
           href: app/platforms.md
         - name: Végpont felülbírálásai
@@ -1324,7 +1326,7 @@
           href: ./platform/classic-api-retirement-metrics-autoscale.md
         - name: Klasszikus riasztás és monitorozás
           href: platform/monitoring-classic-retirement.md
-        - name: Naplóriasztás API-beállításának váltása
+        - name: Váltás az aktuális naplóriasztási API-ra
           href: platform/alerts-log-api-switch.md
         - name: Web App Analytics-megoldás
           href: insights/azure-web-apps-analytics.md

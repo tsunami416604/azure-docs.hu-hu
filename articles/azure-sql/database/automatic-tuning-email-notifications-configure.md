@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, sstein
 ms.date: 06/03/2019
-ms.openlocfilehash: 01daf0af039a00f6a81b850b07cfcf6d901a7732
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 606d3c78e96491a92b2e09aa74801247369ba0ab
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91284635"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403296"
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>Automatikus hangolással kapcsolatos e-mail-értesítések
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -187,7 +187,7 @@ A megoldás befejezéséhez az utolsó lépésként hozzon létre egy automatiz�
 
 - "**Azure Automation-Create Job**" – a PowerShell-szkript végrehajtásához használható a Azure Automation runbook lévő Automatikus hangolási javaslatok lekéréséhez.
 - "**Azure Automation – a feladatok kimenetének**beolvasása" – a végrehajtott PowerShell-parancsfájl kimenetének lekérésére szolgál.
-- "**Office 365 Outlook – E-mail küldése**" – e-mailek küldésére szolgál. Az e-maileket a folyamat létrehozásakor az Office 365-fiókkal küldi el a rendszer.
+- "**Office 365 Outlook – E-mail küldése**" – e-mailek küldésére szolgál. Az e-maileket a folyamat létrehozásához használt egyéni munkahelyi vagy iskolai fiókkal küldi el a rendszer.
 
 Microsoft Flow képességekkel kapcsolatos további tudnivalókért tekintse meg a [Microsoft flow első lépéseivel foglalkozó](https://docs.microsoft.com/flow/getting-started)témakört.
 
@@ -248,7 +248,7 @@ A PowerShell-szkript módosításával beállíthatja az automatikus e-mailek ki
 
 Előfordulhat, hogy a megoldás egy adott hangolási eseményen, illetve több címzettnél, több előfizetéshez vagy adatbázishoz való kiépítéséhez az egyéni forgatókönyvek függvényében tovább testreszabja a megoldást.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ arról, hogy az automatikus hangolás hogyan segít az adatbázisok teljesítményének javításában: [Azure SQL Database automatikus finomhangolása](automatic-tuning-overview.md).
 - A számítási feladatok kezeléséhez Azure SQL Database automatikus hangolásának engedélyezéséhez tekintse meg az [automatikus hangolás engedélyezése](automatic-tuning-enable.md)című témakört.

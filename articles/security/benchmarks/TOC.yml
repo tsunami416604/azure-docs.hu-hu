@@ -145,6 +145,8 @@
       href: ../../network-watcher/security-baseline.md
     - name: A Security Center alapkonfigurációja
       href: ../../security-center/security-baseline.md
+    - name: A Service Bus alapkonfigurációja
+      href: ../../service-bus-messaging/security-baseline.md
     - name: A Service Fabric alapkonfigurációja
       href: ../../service-fabric/security-baseline.md
     - name: A Stream Analytics alapkonfigurációja

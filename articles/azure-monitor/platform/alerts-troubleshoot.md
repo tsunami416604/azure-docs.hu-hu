@@ -6,12 +6,12 @@ ms.author: ofmanor
 ms.topic: reference
 ms.date: 03/16/2020
 ms.subservice: alerts
-ms.openlocfilehash: c3eed095d87d1e1fa1f210b360822ceefdbe0521
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d86c6d8b67546aede86a3fc3c905f6feb40d92db
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87045239"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403415"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-alerts"></a>Azure Monitor riasztásokkal kapcsolatos problémák elhárítása
 
@@ -61,7 +61,7 @@ Ha látja az aktivált riasztást az Azure Portalon, de nem kapta meg a hozzá b
     Emellett ellenőrizze az alábbiakat:
 
    - Levelezőprogramja (Outlook, Gmail) levélszemét-beállításait
-      - E-mail-kiszolgálója (például Exchange, Office 365, G-Suite) feladóra / levélszemétre / karanténozásra vonatkozó beállításait
+      - a feladó korlátozza/levélszemét beállítások/karantén beállítások az e-mail kiszolgáló (például Exchange, Microsoft 365, G-Suite)
       - az e-mail-biztonsági berendezés beállításai, ha vannak ilyenek (például a Barracuda, a Cisco).
 
 1. **Véletlenül leiratkozott a műveleti csoportból?**
@@ -203,7 +203,7 @@ Ha látja az aktivált riasztást a portálon, de a kapcsolódó műveleti szab�
 
     A szolgáltatásállapot-riasztásokat (monitorozási szolgáltatás = „Service Health”) nem befolyásolják a műveleti szabályok. 
 
-1. **A műveleti szabály a riasztásra reagál?** 
+1. **Reagált a riasztásra a műveleti szabály?** 
 
     Ellenőrizze, hogy a műveleti szabály feldolgozta-e a riasztást. Ehhez kattintson az aktivált riasztásra a portálon, és tekintse meg az előzménylapot.
 
@@ -216,7 +216,7 @@ Ha látja az aktivált riasztást a portálon, de a kapcsolódó műveleti szab�
     ![Több műveleti csoportban ismétlődő művelet](media/alerts-troubleshoot/action-repeated-multi-action-groups.png)
  
 
-1. **A műveleti szabály hatóköre és a szűrő megfelel a kilőtt riasztásnak?** 
+1. **Megfelel a műveleti szabály hatóköre és szűrője az aktív riasztásnak?** 
 
     Ha úgy gondolja, hogy a műveleti szabálynak aktiválódnia kellett volna, de nem aktiválódott vagy fordítva, vizsgálja meg alaposan a műveleti szabály hatókörét és szűrőfeltételeit, és hasonlítsa össze őket az aktivált riasztás tulajdonságaival. 
 

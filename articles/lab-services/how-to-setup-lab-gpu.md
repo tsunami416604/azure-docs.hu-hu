@@ -5,12 +5,12 @@ author: nicolela
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: nicolela
-ms.openlocfilehash: f41ad80e0e39d66020d039d6229a4b0fc62627f1
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: abd182339719f19a521feed95f7cfbed6942b3e8
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286002"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91404782"
 ---
 # <a name="set-up-a-lab-with-gpu-virtual-machines"></a>Tesztkörnyezet beállítása GPU virtuális gépekkel
 
@@ -28,16 +28,19 @@ Ebben a folyamatban lehetősége van a **vizualizációk** vagy a **számítási
 
 Az alábbi táblázatban leírtak szerint a *számítási* GPU-méret nagy számítási igényű alkalmazások számára készült.  A [természetes nyelvi feldolgozási osztály mély tanulása](./class-type-deep-learning-natural-language-processing.md) például a **kis GPU (számítási)** méretet használja.  A számítási GPU megfelelő az ilyen típusú osztályok számára, mivel a tanulók olyan mély tanulási keretrendszerek és eszközök használatát használják, amelyeket az [Data Science Virtual Machine-rendszerkép](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804) biztosít a nagy adatkészletekkel rendelkező mély tanulási modellek betanításához.
 
-| Méret | Cores | RAM | Leírás | 
+| Méret | Cores | RAM | Description | 
 | ---- | ----- | --- | ----------- | 
-| Kis GPU (számítás) | -&nbsp;6 &nbsp; mag<br>-&nbsp;56 &nbsp; GB &nbsp; RAM  | [Standard_NC6](https://docs.microsoft.com/azure/virtual-machines/nc-series) |Ez a méret a legmegfelelőbb a számítógép-igényes alkalmazások, például a mesterséges intelligencia (AI) és a Deep learning számára. |
+| Kis GPU (számítás) | -&nbsp;6 &nbsp; mag<br>-&nbsp;56 &nbsp; GB &nbsp; RAM  | [Standard_NC6](https://docs.microsoft.com/azure/virtual-machines/nc-series) |Ez a méret kiválóan alkalmas olyan nagy számítási igényű alkalmazások számára, mint a mesterséges intelligencia (AI) és a Deep learning. |
 
 A *vizualizációs* GPU-méretek a nagy grafikai igényű alkalmazások számára készültek.  A [SOLIDWORKS mérnöki osztályának típusa](./class-type-solidworks.md) például a **kis GPU (vizualizáció)** méretet mutatja.  A vizualizációs GPU alkalmas az ilyen típusú osztályok számára, mivel a tanulók a SOLIDWORKS 3D számítógépes tervezési (CAD) környezetet használják a Solid Objects modellezéséhez és megjelenítéséhez.
 
-| Méret | Cores | RAM | Leírás | 
+| Méret | Cores | RAM | Description | 
 | ---- | ----- | --- | ----------- | 
 | Kis GPU (vizualizáció) | -&nbsp;6 &nbsp; mag<br>-&nbsp;56 &nbsp; GB &nbsp; RAM  | [Standard_NV6](https://docs.microsoft.com/azure/virtual-machines/nv-series) | Ez a méret a távoli vizualizációk, a folyamatos átvitel, a játékok és az OpenGL-t és a DirectX-t használó keretrendszereket használó kódoláshoz ideális. |
 | Közepes GPU (vizualizáció) | -&nbsp;12 &nbsp; mag<br>-&nbsp;112 &nbsp; GB &nbsp; RAM  | [Standard_NV12](https://docs.microsoft.com/azure/virtual-machines/nv-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Ez a méret a távoli vizualizációk, a folyamatos átvitel, a játékok és az OpenGL-t és a DirectX-t használó keretrendszereket használó kódoláshoz ideális. |
+
+> [!NOTE]
+> Az egyes virtuálisgép-méretek nem jelennek meg a listában a tantermi labor létrehozásakor. A lista a tesztkörnyezet helyének aktuális kapacitása alapján töltődik fel. Ha a labor-fiók létrehozója [lehetővé teszi, hogy a labor-készítők kiválasszák a labor helyét](allow-lab-creator-pick-lab-location.md), próbáljon meg egy másik helyet választani a laborhoz, és ellenőrizze, hogy elérhető-e a virtuális gép mérete. A virtuális gépek rendelkezésre állását lásd: [régiónként elérhető termékek](https://azure.microsoft.com/regions/services/?products=virtual-machines).
 
 ## <a name="ensure-that-the-appropriate-gpu-drivers-are-installed"></a>Győződjön meg arról, hogy a megfelelő GPU-illesztőprogramok telepítve vannak
 A laboratóriumi virtuális gépek GPU-képességeinek kihasználásához győződjön meg arról, hogy a megfelelő GPU-illesztőprogramok telepítve vannak.  A tesztkörnyezet létrehozása varázslóban a GPU-s virtuális gép méretének kiválasztásakor válassza a **GPU-illesztőprogramok telepítése** lehetőséget.  
@@ -109,7 +112,7 @@ Ez a szakasz azt ismerteti, hogyan ellenőrizhető, hogy a GPU-illesztőprogramo
 #### <a name="linux-images"></a>Linux-rendszerképek
 Kövesse az [NVIDIA GPU-illesztőprogramok telepítése a Linux rendszerű N sorozatú virtuális gépekre](https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup#verify-driver-installation)című témakör "az illesztőprogramok telepítésének ellenőrzése" című szakaszának utasításait.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Lásd az alábbi cikkeket:
 
 - [Osztálytermi tesztkörnyezetek létrehozása és kezelése](how-to-manage-classroom-labs.md)

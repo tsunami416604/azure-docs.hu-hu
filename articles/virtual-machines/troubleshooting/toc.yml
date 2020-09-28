@@ -115,6 +115,8 @@
           href: windows-stop-error-bad-system-config-info.md
         - name: Windows leállási hiba – „nincs memória” állapot
           href: troubleshoot-windows-stop-error.md
+        - name: Windows leállási hiba – Félbeszakadt rendszerfolyamat
+          href: windows-stop-error-system-process-terminated.md
 - name: Nem tudok csatlakozni a virtuális gépemhez
   items:
     - name: RDP

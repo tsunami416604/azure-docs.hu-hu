@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 8347ca5a33790d0b35176be47a0fa4811a19e3f1
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 1ab366cddbabf7e6d574189892e779ab49f6fad8
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935466"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403381"
 ---
 # <a name="tips-for-ai-enrichment-in-azure-cognitive-search"></a>Tippek az AI-bővítéshez az Azure Cognitive Search
 
@@ -110,12 +110,11 @@ A portálon alapuló indexeléshez (a gyors útmutatóban leírtak szerint) a "F
 ## <a name="tip-8-increase-indexing-throughput"></a>8. tipp: az indexelési teljesítmény növelése
 
 [Párhuzamos indexeléshez](search-howto-large-index.md)helyezze az adatait több tárolóba vagy több virtuális mappába ugyanabban a tárolóban. Ezután hozzon létre több DataSource és indexelő párokat. Az összes indexelő használhatja ugyanazt a készségkészlet, és az azonos keresési indexbe írhat, így a keresési alkalmazásnak nem kell megismernie ezt a particionálást.
-További információ: [nagyméretű adathalmazok indexelése](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets).
 
 ## <a name="see-also"></a>Lásd még
+
 + [Rövid útmutató: AI-dúsítási folyamat létrehozása a portálon](cognitive-search-quickstart-blob.md)
 + [Oktatóanyag: az AI-gazdagítás REST API-k megismerése](cognitive-search-tutorial-blob.md)
 + [Adatforráshoz tartozó hitelesítő adatok megadása](search-howto-indexing-azure-blob-storage.md#how-to-specify-credentials)
-+ [Nagyméretű adathalmazok indexelése](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets)
 + [Készségkészlet definiálása](cognitive-search-defining-skillset.md)
 + [A dúsított mezők indexhez való leképezése](cognitive-search-output-field-mapping.md)

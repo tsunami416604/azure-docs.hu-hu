@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/23/2020
 ms.author: memildin
-ms.openlocfilehash: faa61dc351bebd3d2a85ad229036e5b9fba9256e
-ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
+ms.openlocfilehash: c0494fe39f8ae64ba65db4e3cd728069aa4a5052
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89514611"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403211"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>A DNS-bejegyzések letiltásának és a tartományon belüli átvétel elkerülésének megakadályozása
 
@@ -117,14 +117,7 @@ Ha Ön a szervezete bérlője globális rendszergazdája, emelje ki a fiókját,
 
 ### <a name="run-the-script"></a>A szkript futtatása
 
-A parancsfájlnak két verziója van, mindkettő ugyanazokat a bemeneti paramétereket adja meg, és hasonló kimenetet hoz létre:
-
-|Script  |Tájékoztatás  |
-|---------|---------|
-|**Get-DanglingDnsRecordsPsCore.ps1**    |A Parallel mód csak a 7. PowerShell 7-es vagy újabb verziójában támogatott, máskülönben a soros üzemmódot fogja futtatni.|
-|**Get-DanglingDnsRecordsPsDesktop.ps1** |Csak a 6-nál alacsonyabb PowerShell-asztal/-verzió esetén támogatott, mivel ez a parancsfájl [Windows-munkafolyamatot](https://docs.microsoft.com/dotnet/framework/windows-workflow-foundation/overview)használ.|
-
-További információt és a PowerShell-szkriptek letöltését a GitHubról: https://aka.ms/DanglingDNSDomains .
+Tudjon meg többet a PowerShell-parancsfájlról, **Get-DanglingDnsRecords.ps1**és töltse le a githubról: https://aka.ms/DanglingDNSDomains .
 
 ## <a name="remediate-dangling-dns-entries"></a>A lógó DNS-bejegyzések szervizelése 
 
@@ -203,7 +196,7 @@ Ez gyakran a fejlesztők és az operatív csapatok számára a kitakarítási fo
     - Törölje a DNS-rekordot, ha már nincs használatban, vagy mutasson a szervezete tulajdonában lévő megfelelő Azure-erőforrásra (FQDN).
  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha többet szeretne megtudni a kapcsolódó szolgáltatásokról és az Azure-beli szolgáltatásokkal szembeni védelemről, tekintse meg a következő lapokat.
 

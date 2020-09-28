@@ -1,4 +1,4 @@
-- name: Az Azure IoT Hub eszközkiépítési szolgáltatás dokumentációja
+- name: Az Azure IoT Hub Device Provisioning szolgáltatás dokumentációja
   href: index.yml
 - name: Áttekintés
   items:

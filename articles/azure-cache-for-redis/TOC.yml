@@ -70,10 +70,14 @@
           href: cache-how-to-premium-clustering.md
         - name: A gyorsítótár megőrzése a Redis adatmegőrzési funkciójával
           href: cache-how-to-premium-persistence.md
+        - name: További replikák hozzáadása
+          href: cache-how-to-multi-replicas.md
         - name: A gyorsítótár védelme virtuális hálózattal
           href: cache-how-to-premium-vnet.md
         - name: Privát csatlakozás gyorsítótárhoz
           href: cache-private-link.md
+        - name: Zónaredundancia engedélyezése
+          href: cache-how-to-zone-redundancy.md
         - name: Georeplikáció beállítása
           href: cache-how-to-geo-replication.md
         - name: Mentés lefoglalt kapacitással

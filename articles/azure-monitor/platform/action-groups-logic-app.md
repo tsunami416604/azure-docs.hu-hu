@@ -6,12 +6,12 @@ ms.author: dukek
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.subservice: alerts
-ms.openlocfilehash: f6d5cbfc8d781e96a4d348f31f4a5d175ebd5a3d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f76d28018fdf55314593dabc44ef1e9a1dab9494
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321887"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403126"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Összetett műveletek elindítása Azure Monitor riasztásokkal
 
@@ -108,7 +108,7 @@ A folyamat hasonló, ha azt szeretné, hogy a logikai alkalmazás más művelete
 
     ![Microsoft Teams-műveletek](media/action-groups-logic-app/microsoft-teams-actions.png "Microsoft Teams-műveletek")
 
-12. Konfigurálja a Microsoft Teams műveletet. A **Logic apps Designer** megkéri, hogy hitelesítse az Office 365-fiókját. Válassza ki a **csoport azonosítóját** és a **csatorna azonosítóját** , hogy elküldje az üzenetet.
+12. Konfigurálja a Microsoft Teams műveletet. A **Logic apps Designer** arra kéri, hogy végezzen hitelesítést a munkahelyi vagy iskolai fiókjával. Válassza ki a **csoport azonosítóját** és a **csatorna azonosítóját** , hogy elküldje az üzenetet.
 
 13. Konfigurálja az üzenetet statikus szöveg kombinációjának használatával, és a \<fields\> dinamikus tartalomra mutató hivatkozásokat. Másolja és illessze be a következő szöveget az **üzenet** mezőbe:
 

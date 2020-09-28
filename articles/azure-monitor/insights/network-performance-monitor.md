@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: 34e81076c27086ad838cca23de0e150a3c1b076c
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: c5a442a3d3711b85c0bad30218cb1ffab92558d9
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798907"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403721"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Network Performance Monitor megoldás az Azure-ban
 
@@ -28,7 +28,7 @@ A Network Performance Monitor három széles körű képességgel rendelkezik:
 
 * [Szolgáltatás-kapcsolódási figyelő](network-performance-monitor-service-connectivity.md): a felhasználók és a hozzájuk tartozó szolgáltatások közötti kapcsolatot figyelheti, meghatározhatja, hogy milyen infrastruktúra van az elérési úton, és azonosítsa a hálózati szűk keresztmetszeteket. A leállásokat a felhasználók előtt ismerheti meg, és megtekintheti a problémák pontos helyét a hálózati elérési út mentén. 
 
-    Ez a funkció segítséget nyújt a HTTP-, HTTPS-, TCP-és ICMP-alapú tesztek végrehajtásához a közel valós idejű figyeléshez, illetve a szolgáltatás rendelkezésre állásának és válaszidőának megtartásához. A hálózat hozzájárulását a csomagok elvesztésével és késésével is figyelheti. Hálózati topológiai térképpel elkülönítheti a hálózati lassulást. A csomópont és a szolgáltatás közötti hálózati elérési út mentén megjelenő problémás helyeket azonosíthatja az egyes ugrások késési adatainak használatával. A beépített tesztek segítségével az Office 365 és a Dynamics CRM hálózati kapcsolatait előre konfiguráció nélkül figyelheti. Ezzel a képességgel bármilyen TCP-kompatibilis végponthoz, például webhelyekhez, SaaS-alkalmazásokhoz, Pásti-alkalmazásokhoz és SQL-adatbázisokhoz is figyelheti a hálózati kapcsolatot.
+    Ez a funkció segítséget nyújt a HTTP-, HTTPS-, TCP-és ICMP-alapú tesztek végrehajtásához a közel valós idejű figyeléshez, illetve a szolgáltatás rendelkezésre állásának és válaszidőának megtartásához. A hálózat hozzájárulását a csomagok elvesztésével és késésével is figyelheti. Hálózati topológiai térképpel elkülönítheti a hálózati lassulást. A csomópont és a szolgáltatás közötti hálózati elérési út mentén megjelenő problémás helyeket azonosíthatja az egyes ugrások késési adatainak használatával. A beépített tesztek segítségével megfigyelheti Microsoft 365 és a Dynamics CRM hálózati kapcsolatát az előkonfigurálás nélkül. Ezzel a képességgel bármilyen TCP-kompatibilis végponthoz, például webhelyekhez, SaaS-alkalmazásokhoz, Pásti-alkalmazásokhoz és SQL-adatbázisokhoz is figyelheti a hálózati kapcsolatot.
 
 * [ExpressRoute-figyelő](network-performance-monitor-expressroute.md): végpontok közötti kapcsolat és teljesítmény figyelése a fiókirodák és az Azure között az Azure ExpressRoute-en keresztül.  
 
@@ -82,7 +82,7 @@ Az alapfolyamatok segítségével ügynököket telepíthet a [Windows rendszer�
 
     Hálózati kapcsolat figyeléséhez telepítse az ügynököket a hivatkozás mindkét végpontján. Ha nem biztos abban, hogy a hálózat topológiáját használja, telepítse az ügynököket olyan kiszolgálókon, amelyek kritikus fontosságú számítási feladatait a hálózati teljesítmény figyelésére kívánja használni. Ha például a webkiszolgáló és az SQL-t futtató kiszolgáló közötti hálózati kapcsolatot szeretné figyelni, telepítsen egy ügynököt mindkét kiszolgálón. Az ügynökök hálózati kapcsolatot (hivatkozásokat) figyelnek a gazdagépek között, nem maguk a gazdagépek. 
 
-* **Szolgáltatás-kapcsolódási figyelő**: telepítsen egy log Analytics-ügynököt minden olyan csomópontra, amelyről figyelni szeretné a szolgáltatás-végponttal létesített hálózati kapcsolatot. Ilyen például, ha az Office 365 hálózati kapcsolatát az O1, az O2 és az O3 címkével rendelkező Office-helyekről szeretné figyelni. Telepítse a Log Analytics-ügynököt legalább egy csomópontra az O1, O2 és O3 nyelven. 
+* **Szolgáltatás-kapcsolódási figyelő**: telepítsen egy log Analytics-ügynököt minden olyan csomópontra, amelyről figyelni szeretné a szolgáltatás-végponttal létesített hálózati kapcsolatot. Ilyen eset például, ha a hálózati kapcsolatot szeretné figyelni az O1, O2 és O3 nevű Office-helyekről Microsoft 365. Telepítse a Log Analytics-ügynököt legalább egy csomópontra az O1, O2 és O3 nyelven. 
 
 * **ExpressRoute-figyelő**: telepítsen legalább egy log Analytics-ügynököt az Azure Virtual Networkben. Telepítsen legalább egy ügynököt a helyszíni alhálózaton is, amely a ExpressRoute-alapú privát kapcsolaton keresztül csatlakozik.  
 
@@ -128,7 +128,7 @@ A Network Performance Monitor szintetikus tranzakciókat használ a forrás-és 
 
    ![Teljesítményfigyelő nézet](media/network-performance-monitor/npm-synthetic-transactions.png)
     
-   **Szolgáltatás-kapcsolódási figyelő**: a funkció beépített előre konfigurált teszteket biztosít az Office 365 és a Dynamics 365 hálózati kapcsolatának figyeléséhez az ügynököktől. Válassza ki a figyelni kívánt Office 365-és Dynamics 365-szolgáltatásokat. Ehhez jelölje be a jelölőnégyzeteket. A figyelni kívánt ügynökök kiválasztásához válassza az **ügynökök hozzáadása**lehetőséget. Ha nem szeretné használni ezt a funkciót, vagy később szeretné beállítani, ne válassza a semmit, és válassza a **mentés & folytatás**lehetőséget.
+   **Szolgáltatás-kapcsolódási figyelő**: a funkció beépített előre konfigurált teszteket biztosít a Microsoft 365 és a Dynamics 365 hálózati kapcsolatának figyeléséhez az ügynököktől. Válassza ki a figyelni kívánt Microsoft 365-és Dynamics 365-szolgáltatásokat. Ehhez jelölje be a jelölőnégyzeteket. A figyelni kívánt ügynökök kiválasztásához válassza az **ügynökök hozzáadása**lehetőséget. Ha nem szeretné használni ezt a funkciót, vagy később szeretné beállítani, ne válassza a semmit, és válassza a **mentés & folytatás**lehetőséget.
 
    ![Szolgáltatás-csatlakozási figyelő nézet](media/network-performance-monitor/npm-service-endpoint-monitor.png)
 
@@ -292,6 +292,6 @@ A díjszabással kapcsolatos információk [online állapotban](network-performa
 
 * **Csatlakozzon a kohorszhoz:** Mindig érdeklik, hogy az új ügyfelek csatlakozzanak a kohorszhoz. Ennek részeként korai hozzáférést kap az új funkciókhoz, és lehetőséget nyújt a Network Performance Monitor javítására. Ha érdekli a csatlakozás, töltse ki ezt a [gyors kérdőívet](https://aka.ms/npmcohort). 
 
-## <a name="next-steps"></a>Következő lépések 
+## <a name="next-steps"></a>További lépések 
 További információ a [Teljesítményfigyelőről](network-performance-monitor-performance-monitor.md), a [szolgáltatás-csatlakozási figyelőről](network-performance-monitor-performance-monitor.md)és a [ExpressRoute-figyelőről](network-performance-monitor-expressroute.md). 
 

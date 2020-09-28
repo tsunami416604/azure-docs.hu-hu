@@ -9,6 +9,10 @@
   items:
     - name: Belépési pont létrehozása – Portal
       href: quickstart-create-front-door.md
+    - name: Belépési pont létrehozása – PowerShell
+      href: quickstart-create-front-door-powershell.md
+    - name: Belépési pont létrehozása – parancssori felület
+      href: quickstart-create-front-door-cli.md
     - name: Belépési pont létrehozása – ARM-sablon
       href: quickstart-create-front-door-template.md
 - name: Oktatóanyagok

@@ -7,12 +7,12 @@ ms.date: 9/23/2020
 ms.topic: conceptual
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: d0e75ab8a2e4d853fa2edc66174502dd3a7930e9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5e4244c0526dbac3bb8e9b2d3856eb01e1b2a2b7
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91301669"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403493"
 ---
 # <a name="introduction-to-azure-defender-for-servers"></a>Bevezetés az Azure Defender for Servers szolgáltatásba
 
@@ -41,7 +41,7 @@ Az Azure Defender for Servers szolgáltatáshoz biztosított fenyegetések észl
 
 - **Adaptív alkalmazás-vezérlőelemek (AAC)** – az adaptív alkalmazások intelligens és automatizált megoldást biztosítanak a gépek ismert biztonságos alkalmazásainak engedélyezési listájához.
 
-    Ha engedélyezte és konfigurálta az adaptív alkalmazások vezérlőit, akkor biztonsági riasztásokat fog kapni, ha bármely alkalmazás a biztonságosként definiált beállításoktól eltérő módon fut. [További információ](security-center-adaptive-network-hardening.md).
+    Ha engedélyezte és konfigurálta az adaptív alkalmazások vezérlőit, akkor biztonsági riasztásokat fog kapni, ha bármely alkalmazás a biztonságosként definiált beállításoktól eltérő módon fut. [További információ](security-center-adaptive-application.md).
 
 - **Adaptív hálózat megerősítése (** NSG) – a hálózati biztonsági csoportok (-ek) alkalmazása az erőforrások felé irányuló és onnan érkező forgalom szűrésére, javítja a hálózat biztonsági helyzetét. Azonban továbbra is előfordulhatnak olyan esetek, amikor a NSG keresztül áramló tényleges forgalom a definiált NSG-szabályok részhalmaza. Ezekben az esetekben a NSG-szabályoknak a tényleges forgalmi minták alapján történő megerősítése révén a biztonsági helyzet további javítása is megvalósítható.
 
@@ -58,7 +58,7 @@ Az Azure Defender for Servers szolgáltatáshoz biztosított fenyegetések észl
 
 - **Fájlok nélküli támadás észlelése (csak Windows)** – a fájl nélküli támadások rosszindulatú hasznos adatokat szúrnak be a memóriába a lemezes ellenőrzési módszerek észlelése érdekében. A támadó adattartalma a feltört folyamatok memóriájában marad, és számos kártékony tevékenységet hajt végre.
 
-  A fájlok közötti támadás észlelése, az automatizált memória kriminalisztikai módszerei azonosítják a fájlokra vonatkozó támadási segédanyagokat, technikákat és viselkedéseket. Ez a megoldás rendszeres időközönként ellenőrzi a gépet, és kinyeri az eredményeket közvetlenül a folyamatok memóriájában. A Linux-specifikus megállapítások a következők azonosítását tartalmazzák: 
+  A fájlok közötti támadás észlelése, az automatizált memória kriminalisztikai módszerei azonosítják a fájlokra vonatkozó támadási segédanyagokat, technikákat és viselkedéseket. Ez a megoldás rendszeres időközönként ellenőrzi a gépet, és kinyeri az eredményeket közvetlenül a folyamatok memóriájában. Az adott megállapítások közé tartozik a következők azonosítása: 
 
   - Jól ismert eszközkészletek és kriptográfiai adatbányászati szoftverek 
 
@@ -88,7 +88,7 @@ A riasztások szimulálása a következő forgatókönyvek egyikének letöltés
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből a cikkből megtudhatta, hogyan használható az Azure Defender a kiszolgálókhoz. 
 

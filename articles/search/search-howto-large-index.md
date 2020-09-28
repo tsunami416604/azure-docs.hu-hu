@@ -7,13 +7,13 @@ author: dereklegenzoff
 ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/05/2020
-ms.openlocfilehash: 80307c97464e61d7b7d338703de90d1199adc819
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/25/2020
+ms.openlocfilehash: 081f073fa4933d67604173d2169a7abdc3ac7c3f
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88927017"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403568"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-cognitive-search"></a>Nagyméretű adathalmazok indexelése az Azure-ban Cognitive Search
 
@@ -25,34 +25,37 @@ Ugyanezek a technikák a hosszan futó folyamatokra is érvényesek. A [párhuza
 
 A következő részekben ismertetjük a nagy mennyiségű, a leküldéses API-val és az indexelő szolgáltatással való indexeléshez szükséges technikákat.
 
-## <a name="push-api"></a>Leküldéses API
+## <a name="use-the-push-api"></a>A leküldéses API használata
 
-Ha egy indexbe küldi az adatküldést, számos fontos szempontot kell figyelembe vennie, amely hatással van a leküldéses API indexelési sebességére. Ezeket a tényezőket az alábbi szakasz ismerteti. 
+Amikor a [dokumentumok hozzáadása REST API](/rest/api/searchservice/addupdate-or-delete-documents) vagy az [index metódus](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index)használatával küldi el az információkat egy indexbe, számos fontos szempontot figyelembe kell venni az indexelési sebesség hatására. Ezeket a tényezőket az alábbi szakaszban ismertetjük, és a szolgáltatás kapacitásának beállítása a kód optimalizálására.
 
-Az ebben a cikkben található információk mellett az [indexelési sebesség optimalizálása oktatóanyagban](tutorial-optimize-indexing-push-api.md) is kihasználhatja a kód mintáit, és további információkat is megtudhat.
+A leküldéses modell indexelését bemutató további információkat és kódokat a következő témakörben talál [: oktatóanyag: az indexelési sebesség optimalizálása](tutorial-optimize-indexing-push-api.md).
 
-### <a name="service-tier-and-number-of-partitionsreplicas"></a>Szolgáltatási szintek és partíciók/replikák száma
+### <a name="capacity-of-your-service"></a>A szolgáltatás kapacitása
 
-A partíciók hozzáadásával vagy a keresési szolgáltatás szintjeinek növelésével növelheti az indexelési sebességet is.
+Első lépésként tekintse át a szolgáltatás kiépített szintjeinek jellemzőit és [korlátait](search-limits-quotas-capacity.md) . Az árképzési szintek egyik kulcsfontosságú megkülönböztető tényezője a partíciók mérete és sebessége, amely közvetlen hatással van az indexelés sebességére. Ha olyan szinten helyezi üzembe a keresési szolgáltatást, amely nem elegendő a számítási feladatokhoz, az új szintre való frissítés a legegyszerűbb és leghatékonyabb megoldás az indexelési teljesítmény növeléséhez.
 
-További replikák hozzáadásával növelheti az indexelési sebességet is, de nem garantált. Másfelől a további replikák növelik a keresési szolgáltatás által kezelhető lekérdezési kötetet. A replikák szintén kulcsfontosságú összetevők az [SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/)beszerzéséhez.
+Ha elégedett a szintjével, a következő lépés lehet a partíciók számának emelése. A partíciók kiosztása a kezdeti indexelés futtatása után lefelé állítható le, hogy csökkentse a szolgáltatás futtatásának teljes költségeit.
 
-A partíciók/replikák hozzáadása vagy magasabb szintre való frissítése előtt vegye figyelembe a pénzügyi költségeket és a kiosztási időt. A partíciók hozzáadásával jelentősen növelheti az indexelési sebességet, de a Hozzáadás/Eltávolítás akár 15 perctől akár több óráig is eltarthat. További információ: a [kapacitás beállításának](search-capacity-planning.md)dokumentációja.
+> [!NOTE]
+> További replikák hozzáadásával növelheti az indexelési sebességet is, de nem garantált. Másfelől a további replikák növelik a keresési szolgáltatás által kezelhető lekérdezési kötetet. A replikák szintén kulcsfontosságú összetevők az [SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/)beszerzéséhez.
+>
+> A partíciók/replikák hozzáadása vagy magasabb szintre való frissítése előtt vegye figyelembe a pénzügyi költségeket és a kiosztási időt. A partíciók hozzáadásával jelentősen növelheti az indexelési sebességet, de a Hozzáadás/Eltávolítás akár 15 perctől akár több óráig is eltarthat. További információ: a [kapacitás beállításának](search-capacity-planning.md)dokumentációja.
+>
 
-### <a name="index-schema"></a>Index séma
+### <a name="review-index-schema"></a>Index-séma áttekintése
 
-Az index sémája fontos szerepet játszik az adatindexelésben. Mezők hozzáadásával és további tulajdonságok hozzáadásával ezekhez a mezőkhöz (például *kereshető*, *sokrétű*vagy *szűrhető*) az indexelési sebesség csökkentése érdekében.
-
-Általánosságban azt javasoljuk, hogy csak akkor adjon hozzá további tulajdonságokat a mezőkhöz, ha azokat használni kívánja.
+Az index sémája fontos szerepet játszik az adatindexelésben. Minél több mező van, és a további megadott tulajdonságok (például *kereshető*, *sokrétű*vagy *szűrhető*) mind hozzájárulnak az indexelési idő növeléséhez. Általánosságban elmondható, hogy csak olyan mezőket kell létrehoznia és megadnia, amelyekhez ténylegesen szüksége van a keresési indexben.
 
 > [!NOTE]
 > A dokumentumok méretének megőrzéséhez ne adjon hozzá nem lekérdezhető adatmennyiséget egy indexhez. A képek és más bináris adatfájlok nem kereshetők közvetlenül, és nem tárolhatók az indexben. A nem lekérdezhető adatmennyiség keresési eredményekbe való integrálásához meg kell adnia egy nem kereshető mezőt, amely az erőforrás URL-hivatkozását tárolja.
 
-### <a name="batch-size"></a>Köteg mérete
+### <a name="check-the-batch-size"></a>A köteg méretének keresése
 
-A nagyobb adatkészletek indexelésének egyik legegyszerűbb mechanizmusa több dokumentum vagy rekord küldése egyetlen kérelembe. Ha a teljes adattartalom 16 MB alatti, a kérések legfeljebb 1000 dokumentumot kezelhetnek tömeges feltöltési műveletekben. Ezek a korlátozások érvényesek, függetlenül attól, hogy a [dokumentumok hozzáadása REST API](/rest/api/searchservice/addupdate-or-delete-documents) vagy a .net SDK [index metódusát](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index?view=azure-dotnet) használja-e. Mindkét API esetében a 1000-es dokumentumokat az egyes kérések törzsébe csomagoljuk.
+A nagyobb adatkészletek indexelésének egyik legegyszerűbb mechanizmusa több dokumentum vagy rekord küldése egyetlen kérelembe. Ha a teljes adattartalom 16 MB alatti, a kérések legfeljebb 1000 dokumentumot kezelhetnek tömeges feltöltési műveletekben. Ezek a korlátozások érvényesek, függetlenül attól, hogy a [dokumentumok hozzáadása REST API](/rest/api/searchservice/addupdate-or-delete-documents) vagy a .net SDK [index metódusát](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index) használja-e. Mindkét API esetében a 1000-es dokumentumokat az egyes kérések törzsébe csomagoljuk.
 
 A batchs használatával a dokumentumok indexelése jelentősen javítja az indexelési teljesítményt. Az adathalmazok optimális méretének meghatározása az indexelési sebesség optimalizálásának egyik fő összetevője. Az optimális batch-méretet befolyásoló két elsődleges tényező a következők:
+
 + Az index sémája
 + Az adataik mérete
 
@@ -79,7 +82,7 @@ A keresési szolgáltatást elérve a kérések felfutásakor előfordulhat, hog
 + **503 a szolgáltatás nem érhető el** – ez a hiba azt jelenti, hogy a rendszer nagy terhelés alatt áll, és a kérés jelenleg nem dolgozható fel.
 + **207 többszörös állapot** – ez a hiba azt jelenti, hogy egyes dokumentumok sikeresek, de legalább egy sikertelen volt.
 
-### <a name="retry-strategy"></a>Újrapróbálkozási stratégia 
+### <a name="retry-strategy"></a>Újrapróbálkozási stratégia
 
 Ha hiba történik, a kérelmeket az [exponenciális leállítási újrapróbálkozási stratégiájának használatával újra](/dotnet/architecture/microservices/implement-resilient-applications/implement-retries-exponential-backoff)kell próbálkozni.
 
@@ -89,7 +92,7 @@ Az Azure Cognitive Search .NET SDK automatikusan újrapróbálkozik a 503s és m
 
 A hálózati adatátviteli sebesség korlátozó tényező lehet az adatok indexelése során. Az Azure-környezetből származó adatok indexelésével egyszerűen felgyorsíthatja az indexelést.
 
-## <a name="indexers"></a>Indexelők
+## <a name="use-indexers-pull-api"></a>Indexelő használata (lekéréses API)
 
 Az [Indexelő](search-indexer-overview.md) a támogatott Azure-adatforrások bejárására szolgál a kereshető tartalomhoz. Míg a nem kifejezetten a nagyméretű indexeléshez készült, több indexelő képesség különösen hasznos a nagyobb adatkészletek fogadásához:
 
@@ -100,7 +103,7 @@ Az [Indexelő](search-indexer-overview.md) a támogatott Azure-adatforrások bej
 > [!NOTE]
 > Az indexelő az adatforrás-specifikus, ezért az indexelő módszer használata csak az Azure-beli kiválasztott adatforrások esetén használható: [SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md), [blob Storage](search-howto-indexing-azure-blob-storage.md), [Table Storage](search-howto-indexing-azure-tables.md), [Cosmos db](search-howto-index-cosmosdb.md).
 
-### <a name="batch-size"></a>Köteg mérete
+### <a name="check-the-batchsize-argument-on-create-indexer"></a>A batchSize argumentum megtekintése a Create Indexer-ben
 
 A leküldéses API-hoz hasonlóan az indexelő is lehetővé teszi az elemek másodpercenkénti számának konfigurálását. Az indexelő [REST API létrehozásán](/rest/api/searchservice/Create-Indexer)alapuló indexek esetében beállíthatja az `batchSize` argumentumot úgy, hogy testreszabja ezt a beállítást, hogy jobban megfeleljen az adatok jellemzőinek. 
 
@@ -112,7 +115,7 @@ Az indexelő ütemezése fontos mechanizmus a nagyméretű adatkészletek feldol
 
 A tervezés szerint a ütemezett indexelés adott időközönként indul el, és a következő ütemezett időközön végzett folytatás előtt a feladatok általában befejeződik. Ha azonban a feldolgozás nem fejeződik be az intervallumon belül, az indexelő leáll (mert elfogyott az idő). A következő időszakban a feldolgozás folytatja az utolsó leállást, és a rendszer nyomon követi, hogy hol történik. 
 
-A gyakorlatban az indexelési terhelés több napra kiterjed, és az indexelő 24 órás időpontra állíthatja. Ha a következő 24 órás ciklusban folytatódik az indexelés, az újraindul az utolsó ismert jó dokumentumon. Így az indexelő az összes feldolgozatlan dokumentum feldolgozását követően több napon belül is dolgozhat a dokumentumon. További információ erről a megközelítésről: [nagyméretű adatkészletek indexelése az Azure Blob Storage-ban](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets). Az ütemtervek beállításával kapcsolatos további információkért tekintse meg az [indexelő REST API létrehozása](/rest/api/searchservice/Create-Indexer) című témakört, vagy tekintse át az [Azure Cognitive Search indexelő szolgáltatásának beütemezett módját](search-howto-schedule-indexers.md).
+A gyakorlatban az indexelési terhelés több napra kiterjed, és az indexelő 24 órás időpontra állíthatja. Ha a következő 24 órás ciklusban folytatódik az indexelés, az újraindul az utolsó ismert jó dokumentumon. Így az indexelő az összes feldolgozatlan dokumentum feldolgozását követően több napon belül is dolgozhat a dokumentumon. Az ütemtervek beállításával kapcsolatos további információkért tekintse meg az [indexelő REST API létrehozása](/rest/api/searchservice/Create-Indexer) című témakört, vagy tekintse át az [Azure Cognitive Search indexelő szolgáltatásának beütemezett módját](search-howto-schedule-indexers.md).
 
 <a name="parallel-indexing"></a>
 

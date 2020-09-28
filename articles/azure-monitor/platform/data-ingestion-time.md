@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
-ms.openlocfilehash: 99d5594dd3ebe3750cb0a09ea803065e2aeb5ba2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ced838d05ef9d8ca9f6c724d88fabdad010ed727
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77666637"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403551"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Naplóadatok feldolgozási ideje az Azure Monitorban
 A Azure Monitor egy nagy léptékű adatszolgáltatás, amely több ezer ügyfelet szolgál ki havonta több, mint havi terabájt adatküldéssel. A naplózási adatok begyűjtése után elérhetővé tételével kapcsolatban gyakran merül fel kérdések. Ez a cikk a késést befolyásoló különféle tényezőket ismerteti.
@@ -51,7 +51,7 @@ Ha a betöltési ponton elérhető, az adatmennyiség további 2-5 percet vesz i
 ### <a name="management-solutions-collection"></a>Felügyeleti megoldások gyűjteménye
 Egyes megoldások nem gyűjtik az adatokat az ügynöktől, és olyan gyűjteményi módszert használnak, amely további késleltetést mutat be. Egyes megoldások rendszeres időközönként gyűjtenek adatokat a közel valós idejű gyűjtés megkísérlése nélkül. Bizonyos példák a következők:
 
-- Az Office 365-megoldás a tevékenységek naplóit az Office 365 felügyeleti tevékenység API használatával kérdezi le, amely jelenleg nem biztosít közel valós idejű késési garanciát.
+- Microsoft 365 a megoldás a felügyeleti tevékenység API használatával kérdezi le a tevékenység naplóit, amely jelenleg nem biztosít közel valós idejű késési garanciát.
 - A megoldás napi gyakorisággal gyűjti össze a Windows Analytics-megoldásokat (Update Compliance például).
 
 A gyűjtemény gyakoriságának meghatározásához tekintse meg az egyes megoldások dokumentációját.

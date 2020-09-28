@@ -6,19 +6,47 @@
       href: expressroute-introduction.md
 - name: Első lépések
   items:
+    - name: ExpressRoute-kapcsolatcsoport létrehozása – Portal
+      href: expressroute-howto-circuit-portal-resource-manager.md
+    - name: ExpressRoute-kapcsolatcsoport létrehozása – PowerShell
+      href: expressroute-howto-circuit-arm.md
+    - name: ExpressRoute-kapcsolatcsoport létrehozása – parancssori felület
+      href: howto-circuit-cli.md
     - name: ExpressRoute-kapcsolatcsoport létrehozása – ARM-sablon
       href: quickstart-create-expressroute-vnet-template.md
   expanded: true
 - name: Oktatóanyagok
   items:
-    - name: Kapcsolatcsoport létrehozása és módosítása
-      href: expressroute-howto-circuit-portal-resource-manager.md
     - name: Társhálózati konfiguráció létrehozása és módosítása
-      href: expressroute-howto-routing-portal-resource-manager.md
+      items:
+        - name: Azure Portal
+          href: expressroute-howto-routing-portal-resource-manager.md
+        - name: Azure PowerShell
+          href: expressroute-howto-routing-arm.md
+        - name: Azure CLI
+          href: howto-routing-cli.md
+    - name: Az ExpressRoute virtuális hálózati átjáróinak konfigurálása
+      items:
+        - name: Azure Portal
+          href: expressroute-howto-add-gateway-portal-resource-manager.md
+        - name: Azure PowerShell
+          href: expressroute-howto-add-gateway-resource-manager.md
     - name: Virtuális hálózat összekapcsolása egy ExpressRoute-kapcsolatcsoporttal
-      href: expressroute-howto-linkvnet-portal-resource-manager.md
+      items:
+        - name: Azure Portal
+          href: expressroute-howto-linkvnet-portal-resource-manager.md
+        - name: Azure PowerShell
+          href: expressroute-howto-linkvnet-arm.md
+        - name: Azure CLI
+          href: howto-linkvnet-cli.md
     - name: Microsoft társviszony-létesítés útvonalszűrőinek konfigurálása
-      href: how-to-routefilter-portal.md
+      items:
+        - name: Azure Portal
+          href: how-to-routefilter-portal.md
+        - name: Azure PowerShell
+          href: how-to-routefilter-powershell.md
+        - name: Azure CLI
+          href: how-to-routefilter-cli.md
 - name: Alapelvek
   items:
     - name: Távmunka
@@ -27,20 +55,24 @@
           href: ../networking/working-remotely-support.md?toc=%2fazure%2fexpressroute%2ftoc.json
         - name: Hibrid kapcsolat távoli felhasználók számára
           href: work-remotely-support.md
-    - name: Kapcsolati modellek
-      href: expressroute-connectivity-models.md
+    - name: Teendők az ExpressRoute használatának megkezdése előtt
+      items:
+        - name: Előfeltételek
+          href: expressroute-prerequisites.md
+        - name: Kapcsolati modellek
+          href: expressroute-connectivity-models.md
+        - name: Munkafolyamatok
+          href: expressroute-workflows.md
+        - name: Útválasztási követelmények
+          href: expressroute-routing.md
     - name: Helyek és partnerek
       items:
         - name: Szolgáltatók hely alapján
           href: expressroute-locations-providers.md
         - name: Helyek szolgáltató alapján
           href: expressroute-locations.md
-    - name: Előfeltételek
-      href: expressroute-prerequisites.md
-    - name: Munkafolyamatok
-      href: expressroute-workflows.md
-    - name: Útválasztási követelmények
-      href: expressroute-routing.md
+    - name: ExpressRoute – Gyakori kérdések
+      href: expressroute-faqs.md
     - name: Kapcsolatcsoportok és társviszonyok
       items:
         - name: Kapcsolatcsoportok és társviszonyok ismertetése
@@ -49,10 +81,8 @@
           href: about-upgrade-circuit-bandwidth.md
         - name: Kapcsolatcsoportok módosítása klasszikusról Resource Manager-alapúra
           href: expressroute-move.md
-    - name: BFD ExpressRoute-on keresztül
-      href: expressroute-bfd.md
-    - name: QoS-követelmények
-      href: expressroute-qos.md
+    - name: Tudnivalók az ExpressRoute-átjárókról
+      href: expressroute-about-virtual-network-gateways.md
     - name: Az ExpressRoute FastPath ismertetése
       href: about-fastpath.md
     - name: Az ExpressRoute Direct ismertetése
@@ -61,28 +91,16 @@
       href: expressroute-global-reach.md
     - name: Az ExpressRoute-titkosítás ismertetése
       href: expressroute-about-encryption.md
-    - name: Biztonság
-      items:
-        - name: Biztonsági alapkonfiguráció
-          href: security-baseline.md
-        - name: Biztonsági attribútumok
-          href: expressroute-security-controls.md
-    - name: A virtuális hálózati átjárók ismertetése
-      href: expressroute-about-virtual-network-gateways.md
     - name: Kapcsolódás nyilvános felhőkhöz az Azure-ból
       href: expressroute-connect-azure-to-public-cloud.md
-    - name: Háttérkapcsolat együttműködési lehetőségei
-      items:
-        - name: Előtag- és tesztbeállítások
-          href: ../networking/connectivty-interoperability-preface.md?toc=%2fazure%2fexpressroute%2ftoc.json
-        - name: Tesztbeállítások konfigurálása
-          href: ../networking/connectivty-interoperability-configuration.md?toc=%2fazure%2fexpressroute%2ftoc.json
-        - name: Vezérlősík elemzése
-          href: ../networking/connectivty-interoperability-control-plane.md?toc=%2fazure%2fexpressroute%2ftoc.json
-        - name: Adatsík elemzése
-          href: ../networking/connectivty-interoperability-data-plane.md?toc=%2fazure%2fexpressroute%2ftoc.json
     - name: Hálózatok közötti kapcsolatok
       href: cross-network-connectivity.md
+    - name: Biztonsági attribútumok
+      href: expressroute-security-controls.md
+    - name: BFD ExpressRoute-on keresztül
+      href: expressroute-bfd.md
+    - name: QoS-követelmények
+      href: expressroute-qos.md
     - name: Magas rendelkezésre állás – tervezés
       href: designing-for-high-availability-with-expressroute.md
     - name: Vészhelyreállítás – tervezés
@@ -93,87 +111,24 @@
           href: use-s2s-vpn-as-backup-for-expressroute-privatepeering.md
 - name: Útmutatók
   items:
-    - name: Kapcsolatcsoport létrehozása és módosítása
+    - name: Az ExpressRoute Direct konfigurálása
       items:
-        - name: Azure Portal
-          href: expressroute-howto-circuit-portal-resource-manager.md
-        - name: Azure PowerShell
-          href: expressroute-howto-circuit-arm.md
-        - name: Azure CLI
-          href: howto-circuit-cli.md
-        - name: Azure Resource Manager-sablon
-          displayName: 'ARM,resource manager template'
-          href: expressroute-howto-circuit-resource-manager-template.md
-    - name: Társhálózati konfiguráció létrehozása és módosítása
-      items:
-        - name: Azure Portal
-          href: expressroute-howto-routing-portal-resource-manager.md
-        - name: Azure PowerShell
-          href: expressroute-howto-routing-arm.md
-        - name: Azure CLI
-          href: howto-routing-cli.md
-    - name: Virtuális hálózat összekapcsolása egy ExpressRoute-kapcsolatcsoporttal
-      items:
-        - name: Azure Portal
-          href: expressroute-howto-linkvnet-portal-resource-manager.md
-        - name: Azure PowerShell
-          href: expressroute-howto-linkvnet-arm.md
-        - name: Azure CLI
-          href: howto-linkvnet-cli.md
-    - name: Kapcsolatcsoportok forgalmának titkosítása
-      items:
-        - name: Helyek közötti VPN konfigurálása Microsoft társviszony-létesítésen keresztül
-          href: site-to-site-vpn-over-microsoft-peering.md
-        - name: IPsec átviteli mód konfigurálása Windows-gazdagépekhez
-          href: expressroute-howto-ipsec-transport-private-windows.md
+        - name: Az ExpressRoute Direct konfigurálása
+          items:
+            - name: Azure Portal
+              href: how-to-expressroute-direct-portal.md
+            - name: Azure PowerShell
+              href: expressroute-howto-erdirect.md
+            - name: Azure CLI
+              href: expressroute-howto-expressroute-direct-cli.md
+        - name: A MACsec konfigurálása ExpressRoute Direct-portokhoz
+          href: expressroute-howto-macsec.md
     - name: Az ExpressRoute Global Reach konfigurálása
       items:
         - name: Azure PowerShell
           href: expressroute-howto-set-global-reach.md
         - name: Azure CLI
           href: expressroute-howto-set-global-reach-cli.md
-    - name: Az ExpressRoute virtuális hálózati átjáróinak konfigurálása
-      items:
-        - name: Azure Portal
-          href: expressroute-howto-add-gateway-portal-resource-manager.md
-        - name: Azure PowerShell
-          href: expressroute-howto-add-gateway-resource-manager.md
-    - name: Párhuzamos ExpressRoute- és helyek közötti kapcsolatok konfigurálása
-      href: expressroute-howto-coexist-resource-manager.md
-    - name: Az ExpressRoute Direct konfigurálása
-      items:
-        - name: Azure Portal
-          href: how-to-expressroute-direct-portal.md
-        - name: Azure PowerShell
-          href: expressroute-howto-erdirect.md
-        - name: Azure CLI
-          href: expressroute-howto-expressroute-direct-cli.md
-    - name: A MACsec konfigurálása ExpressRoute Direct-portokhoz
-      href: expressroute-howto-macsec.md
-    - name: Microsoft társviszony-létesítés útvonalszűrőinek konfigurálása
-      items:
-        - name: Azure Portal
-          href: how-to-routefilter-portal.md
-        - name: Azure PowerShell
-          href: how-to-routefilter-powershell.md
-        - name: Azure CLI
-          href: how-to-routefilter-cli.md
-    - name: Társviszonyok engedélyezése és letiltása
-      href: expressroute-howto-reset-peering.md
-    - name: Váltás nyilvános társviszony-létesítésről Microsoft társviszony-létesítésre
-      href: how-to-move-peering.md
-    - name: Kapcsolatcsoportok módosítása klasszikusról Resource Manager-alapúra
-      href: expressroute-howto-move-arm.md
-    - name: Kapcsolódó virtuális hálózatok áttelepítése klasszikus üzemi modellből Resource Manager-alapú modellbe
-      href: expressroute-migration-classic-resource-manager.md
-    - name: Zónaredundáns virtuális hálózati átjáró létrehozása az Azure Availability Zones szolgáltatásban
-      href: ../vpn-gateway/create-zone-redundant-vnet-gateway.md?toc=%2fazure%2fexpressroute%2ftoc.json
-    - name: Útválasztó konfigurálása ExpressRoute-hoz
-      items:
-        - name: Útválasztó konfigurálása
-          href: expressroute-config-samples-routing.md
-        - name: Útválasztó-konfigurációs minták NAT-hoz
-          href: expressroute-config-samples-nat.md
     - name: Figyelés
       items:
         - name: 'Az ExpressRoute monitorozása, mérőszámai és riasztásai'
@@ -182,20 +137,32 @@
           href: how-to-npm.md
         - name: Egyéni riasztások konfigurálása a meghirdetett elérési utak figyeléséhez
           href: how-to-custom-route-alert.md
-    - name: Klasszikus és örökölt cikkek
+    - name: Társviszonyok kezelése
       items:
-        - name: Kapcsolatcsoport módosítása
-          href: expressroute-howto-circuit-classic.md
-        - name: Társhálózati konfiguráció létrehozása és módosítása
-          href: expressroute-howto-routing-classic.md
-        - name: Virtuális hálózat összekapcsolása egy ExpressRoute-kapcsolatcsoporttal
-          href: expressroute-howto-linkvnet-classic.md
-        - name: Párhuzamos ExpressRoute- és párhuzamos helyek közötti kapcsolatok konfigurálása
-          href: expressroute-howto-coexist-classic.md
-        - name: Átjáró hozzáadása virtuális hálózathoz
-          href: expressroute-howto-add-gateway-classic.md
-        - name: Nyilvános társviszony létrehozása és módosítása
-          href: about-public-peering.md
+        - name: Társviszonyok engedélyezése és letiltása
+          href: expressroute-howto-reset-peering.md
+        - name: Váltás nyilvános társviszony-létesítésről Microsoft társviszony-létesítésre
+          href: how-to-move-peering.md
+    - name: Kapcsolatcsoportok forgalmának titkosítása
+      items:
+        - name: Helyek közötti VPN konfigurálása Microsoft társviszony-létesítésen keresztül
+          href: site-to-site-vpn-over-microsoft-peering.md
+        - name: IPsec VPN privát társviszony-létesítéssel
+          href: ../vpn-gateway/site-to-site-vpn-private-peering.md?toc=%2fazure%2fexpressroute%2ftoc.json
+        - name: IPsec átviteli mód konfigurálása Windows-gazdagépekhez
+          href: expressroute-howto-ipsec-transport-private-windows.md
+    - name: Redundancia
+      items:
+        - name: Párhuzamos ExpressRoute- és helyek közötti kapcsolatok konfigurálása
+          href: expressroute-howto-coexist-resource-manager.md
+        - name: Zónaredundáns virtuális hálózati átjáró létrehozása az Azure Availability Zones szolgáltatásban
+          href: ../vpn-gateway/create-zone-redundant-vnet-gateway.md?toc=%2fazure%2fexpressroute%2ftoc.json
+    - name: Váltás klasszikusról Resource Manager-alapú környezetre
+      items:
+        - name: Kapcsolatcsoportok módosítása klasszikusról Resource Manager-alapúra
+          href: expressroute-howto-move-arm.md
+        - name: Kapcsolódó virtuális hálózatok áttelepítése klasszikus üzemi modellből Resource Manager-alapú modellbe
+          href: expressroute-migration-classic-resource-manager.md
     - name: Ajánlott eljárások
       items:
         - name: A hálózatbiztonság és a felhőszolgáltatások ajánlott eljárásai
@@ -233,8 +200,22 @@
       href: /azure/templates/microsoft.network/expressroutecircuits
 - name: További források
   items:
-    - name: ExpressRoute – Gyakori kérdések
-      href: expressroute-faqs.md
+    - name: Útválasztó konfigurálása ExpressRoute-hoz
+      items:
+        - name: Útválasztó konfigurálása
+          href: expressroute-config-samples-routing.md
+        - name: Útválasztó-konfigurációs minták NAT-hoz
+          href: expressroute-config-samples-nat.md
+    - name: Háttérkapcsolat együttműködési lehetőségei
+      items:
+        - name: Előtag- és tesztbeállítások
+          href: ../networking/connectivty-interoperability-preface.md?toc=%2fazure%2fexpressroute%2ftoc.json
+        - name: Tesztbeállítások konfigurálása
+          href: ../networking/connectivty-interoperability-configuration.md?toc=%2fazure%2fexpressroute%2ftoc.json
+        - name: Vezérlősík elemzése
+          href: ../networking/connectivty-interoperability-control-plane.md?toc=%2fazure%2fexpressroute%2ftoc.json
+        - name: Adatsík elemzése
+          href: ../networking/connectivty-interoperability-data-plane.md?toc=%2fazure%2fexpressroute%2ftoc.json
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/?category=networking'
     - name: Esettanulmányok
@@ -274,3 +255,19 @@
           href: 'https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit/'
         - name: Nyilvános társviszony-létesítés beállítása a kapcsolatcsoportokhoz
           href: 'https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit/'
+    - name: Klasszikus és örökölt cikkek
+      items:
+        - name: Kapcsolatcsoport módosítása
+          href: expressroute-howto-circuit-classic.md
+        - name: Társhálózati konfiguráció létrehozása és módosítása
+          href: expressroute-howto-routing-classic.md
+        - name: Virtuális hálózat összekapcsolása egy ExpressRoute-kapcsolatcsoporttal
+          href: expressroute-howto-linkvnet-classic.md
+        - name: Párhuzamos ExpressRoute- és párhuzamos helyek közötti kapcsolatok konfigurálása
+          href: expressroute-howto-coexist-classic.md
+        - name: Átjáró hozzáadása virtuális hálózathoz
+          href: expressroute-howto-add-gateway-classic.md
+        - name: Nyilvános társviszony létrehozása és módosítása
+          href: about-public-peering.md
+    - name: Biztonsági alapkonfiguráció
+      href: security-baseline.md

@@ -4,12 +4,12 @@ description: 'Összehasonlíthatja az integrációs feladatokhoz optimalizált M
 ms.topic: overview
 ms.date: 04/09/2018
 ms.custom: mvc
-ms.openlocfilehash: 2e0d8f356ec8da900b4a38399ba94434c3b1b93d
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 2c17b311811fd2cba46db379fcc766c04dd9d56d
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809969"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403075"
 ---
 # <a name="choose-the-right-integration-and-automation-services-in-azure"></a>A megfelelő integrációs és automatizálási szolgáltatások kiválasztása az Azure-ban
 
@@ -41,7 +41,7 @@ Az alábbi táblázat segít megállapítani, hogy az energiagazdálkodás vagy 
 | **Kialakítási eszköz** |Böngészőbeli és mobilalkalmazás, kizárólag felhasználói felület |Böngészőbeli, [Visual Studio](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md), [Kódnézet](../logic-apps/logic-apps-author-definitions.md) elérhető |
 | **Alkalmazások életciklus-felügyelete (ALM)** |Tervezés és tesztelés nem éles környezetekben, előléptetés éles környezetben, ha készen áll |Azure DevOps: verziókövetés, tesztelés, támogatás, automatizálás és kezelhetőség [Azure Resource Manager](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md) |
 | **Rendszergazdai felület** |A Power automatizáló környezetek és az adatveszteség-megelőzési (DLP) szabályzatok kezelése, licencelés nyomon követése: [felügyeleti központ](https://admin.flow.microsoft.com) |Erőforráscsoportok, kapcsolatok, hozzáférés-kezelés és naplózás kezelése: [Azure Portal](https://portal.azure.com) |
-| **Biztonság** |Office 365 biztonsági és megfelelőségi naplók, DLP, inaktív adatok [titkosítása](https://wikipedia.org/wiki/Data_at_rest#Encryption) bizalmas adatokhoz |Az Azure biztonsági garanciája: [Azure Security](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity), [Azure Security Center](https://azure.microsoft.com/services/security-center/), [naplók](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/) |
+| **Biztonság** |Microsoft 365 biztonsági naplók, DLP, inaktív [titkosítás](https://wikipedia.org/wiki/Data_at_rest#Encryption) a bizalmas adatokhoz |Az Azure biztonsági garanciája: [Azure Security](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity), [Azure Security Center](https://azure.microsoft.com/services/security-center/), [naplók](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/) |
 
 ## <a name="compare-azure-functions-and-azure-logic-apps"></a>Az Azure Functions és az Azure Logic Apps összehasonlítása
 
@@ -58,7 +58,7 @@ Ezeket a szolgáltatásokat használhatja vegyesen a vezénylések létrehozás�
 | **Műveletek** | Minden tevékenység egy Azure-függvény; kód írásával hozhat létre tevékenységfüggvényeket |[Használatra kész műveletek széles választéka](../logic-apps/logic-apps-workflow-actions-triggers.md)|
 | **Figyelés** | [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [Azure monitor naplók](../logic-apps/monitor-logic-apps.md)|
 | **Felügyelet** | [REST API](durable/durable-functions-http-api.md), [Visual Studio](/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view=vs-2019) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [REST API](/rest/api/logic/), [PowerShell](/powershell/module/az.logicapp), [Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md) |
-| **Végrehajtás környezete** | [Helyileg](functions-runtime-overview.md) vagy a felhőben is futtatható | Csak felhőben futtatható|
+| **Végrehajtási környezet** | [Helyileg](functions-runtime-overview.md) vagy a felhőben is futtatható | Csak felhőben futtatható|
 
 <a name="function"></a>
 
@@ -76,7 +76,7 @@ A WebJobs és a WebJobs SDK együtt működnek a leghatékonyabban, de használh
 
 Az Azure Functions a WebJobs SDK-ra épül, így sok, más Azure-szolgáltatásokkal közös eseményindítóval és kapcsolattal rendelkezik. Az alábbiakban néhány szempontot figyelembe kell venni, amikor a webjobs SDK-val Azure Functions és webjobs-feladatok közül választ:
 
-|  | Functions | WebJobs WebJobs SDK-val |
+|  | Függvények | WebJobs WebJobs SDK-val |
 | --- | --- | --- |
 |**[Kiszolgáló nélküli alkalmazás](https://azure.microsoft.com/solutions/serverless/) -modell [automatikus skálázással](functions-scale.md#how-the-consumption-and-premium-plans-work)**|✔||
 |**[Fejlesztés és tesztelés böngészőben](functions-create-first-azure-function.md)** |✔||
@@ -90,7 +90,7 @@ Az Azure Functions a WebJobs SDK-ra épül, így sok, más Azure-szolgáltatáso
 
 <sup>2</sup> a webjobs (a webjobs SDK nélkül) támogatja a NPM és a NuGet.
 
-### <a name="summary"></a>Összegzés
+### <a name="summary"></a>Összefoglalás
 
 Azure Functions nagyobb fejlesztői hatékonyságot biztosít, mint Azure App Service webjobs. Emellett több lehetőséget is kínál a programozási nyelvek, a fejlesztői környezetek, az Azure-szolgáltatások integrálására és a díjszabásra. A legtöbb forgatókönyvhöz ez a legjobb választás.
 

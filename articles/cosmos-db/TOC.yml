@@ -21,6 +21,8 @@
           href: create-sql-api-dotnet.md
         - name: Java-alkalmazás
           href: create-sql-api-java.md
+        - name: Spring Data-alkalmazás
+          href: create-sql-api-spring-data.md
         - name: Node.js-alkalmazás
           href: create-sql-api-nodejs.md
         - name: Python-alkalmazás
@@ -73,6 +75,8 @@
       href: sql-api-dotnet-v3sdk-samples.md
     - name: Java SDK v4-minták
       href: sql-api-java-sdk-samples.md
+    - name: Spring Data v3-minták
+      href: sql-api-spring-data-sdk-samples.md
     - name: Node.js-példák
       href: sql-api-nodejs-samples.md
     - name: Python-példák
@@ -1074,7 +1078,7 @@
               href: troubleshoot-not-found.md
             - name: Hibaelhárítás – Nem engedélyezett
               href: troubleshoot-unauthorized.md
-            - name: SDK rendelkezésre állása többrégiós környezetekben
+            - name: Rendelkezésreállási hibák többrégiós környezetekben
               href: troubleshoot-sdk-availability.md
         - name: .NET
           items:
@@ -1118,6 +1122,8 @@
           href: ../synapse-analytics/synapse-link/how-to-connect-synapse-link-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Lekérdezés az Azure Synapse Sparkkal
           href: ../synapse-analytics/synapse-link/how-to-query-analytical-store-spark.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+        - name: Lekérdezés kiszolgáló nélküli Synapse SQL-lel
+          href: ../synapse-analytics/sql/query-cosmos-db-analytical-store.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: A Power BI használata a Synapse Linkkel
           href: synapse-link-power-bi.md
     - name: Beépített elemzések az Apache Sparkkal

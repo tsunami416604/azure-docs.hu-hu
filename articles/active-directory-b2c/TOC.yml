@@ -474,7 +474,7 @@
       href: error-codes.md
     - name: Bővítményalkalmazás
       href: extensions-app.md
-    - name: IEF – kibocsátási megjegyzések
+    - name: Egyéni szabályzat (IEF) kibocsátási megjegyzései
       href: custom-policy-developer-notes.md
     - name: Microsoft Graph API-műveletek
       href: microsoft-graph-operations.md

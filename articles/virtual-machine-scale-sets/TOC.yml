@@ -214,6 +214,9 @@
         - name: vCPU-kvóták
           href: ../virtual-machines/windows/quotas.md
           maintainContext: true
+    - name: Létrehozási vagy frissítési műveletek PUT-hívásai
+      href: ../virtual-machines/put-calls-create-or-update.md
+      maintainContext: true
     - name: Méretezési csoport – gyakran ismételt kérdések
       href: virtual-machine-scale-sets-faq.md
 - name: Útmutató
@@ -274,6 +277,8 @@
             - name: Ügyfelek által felügyelt kulcsok használata
               displayName: 'SSE, CMK, encrypt'
               href: ../virtual-machines/image-version-encryption.md
+            - name: Alkalmazásregisztráció megosztás céljából
+              href: share-images-across-tenants.md
     - name: Sablon létrehozása
       items:
         - name: Információk a méretezési csoportok sablonjairól
@@ -326,6 +331,15 @@
           href: virtual-machine-scale-sets-placement-groups.md
         - name: Méretezési csoport sablonjának konvertálása felügyelt lemez használatához
           href: virtual-machine-scale-sets-convert-template-to-md.md
+        - name: Dedikált gazdagépek használata (előzetes verzió)
+          href: ../virtual-machines/dedicated-hosts.md
+          items:
+            - name: parancssori felület
+              href: ../virtual-machines/linux/dedicated-hosts-cli.md
+            - name: PowerShell
+              href: ../virtual-machines/windows/dedicated-hosts-powershell.md
+            - name: Portál
+              href: ../virtual-machines/dedicated-hosts-portal.md
         - name: Spot-példány használata
           href: use-spot.md
     - name: Kezelés
@@ -358,18 +372,6 @@
           href: virtual-machine-scale-sets-scale-in-policy.md
         - name: Megszűnésre figyelmeztető értesítés törléskor
           href: virtual-machine-scale-sets-terminate-notification.md
-        - name: Megosztott lemezkép-katalógusok
-          items:
-            - name: Áttekintés
-              href: shared-image-galleries.md
-            - name: parancssori felület
-              href: shared-images-cli.md
-            - name: PowerShell
-              href: shared-images-powershell.md
-            - name: Rendszerképek megosztása több bérlőn
-              href: share-images-across-tenants.md
-            - name: Megosztott rendszerképek hibaelhárítása
-              href: troubleshooting-shared-images.md
         - name: Közelségi elhelyezési csoport létrehozása
           href: proximity-placement-groups.md
         - name: Függőleges méretezés méretezési csoportban

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
-ms.openlocfilehash: dd8dcbe136558e997ca16a2d9754cbf1c4e7620b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: b7b6a7202392e083aaaa5cdc8adcf0c81cfb0e0d
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326103"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403704"
 ---
 # <a name="service-connectivity-monitor"></a>Szolgáltatáskapcsolati monitor
 
@@ -19,8 +19,8 @@ A [Network Performance monitor](network-performance-monitor.md) Service connecti
 
 A szolgáltatás-kapcsolódási figyelővel a következő függvényeket végezheti el: 
 
-- Az alkalmazásokhoz és a hálózati szolgáltatásokhoz való hálózati kapcsolat figyelése több fiókirodából vagy helyről. Az alkalmazások és a hálózati szolgáltatások közé tartoznak az Office 365, a Dynamics CRM, a belső üzletági alkalmazások és az SQL-adatbázisok.
-- A beépített tesztek segítségével figyelheti a hálózati kapcsolatot az Office 365 és a Dynamics 365-végpontokkal. 
+- Az alkalmazásokhoz és a hálózati szolgáltatásokhoz való hálózati kapcsolat figyelése több fiókirodából vagy helyről. Az alkalmazások és a hálózati szolgáltatások közé tartoznak a Microsoft 365, a Dynamics CRM, a belső üzletági alkalmazások és az SQL-adatbázisok.
+- A Microsoft 365 és a Dynamics 365-végpontok hálózati kapcsolatának figyeléséhez használjon beépített teszteket. 
 - A végponthoz való csatlakozáskor a válaszidő, a hálózati késés és a csomagok elvesztésének meghatározása.
 - Annak megállapítása, hogy a gyenge alkalmazások teljesítménye a hálózat vagy az alkalmazás-szolgáltató végén lévő probléma miatt történt-e.
 - Azonosítsa a hálózatban lévő olyan gyors helyeket, amelyek az alkalmazások gyenge teljesítményét okozhatják, ha megtekinti a topológiai Térkép egyes ugrásai által biztosított késést.

@@ -11,13 +11,13 @@ ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 09/15/2020
-ms.openlocfilehash: ff56ef55066fd0f56b5b8dc7507bfb63b8b8baa0
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.date: 09/28/2020
+ms.openlocfilehash: 4ef569864b27eff7f57aa2b0a922034fa28f587c
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090601"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91405241"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>Azure-SSIS Integration Runtime beállításainak testreszabása
 
@@ -154,6 +154,10 @@ Ha bejelöli a **licencelt összetevő** típusának telepítése az expressz eg
    * Ha kijelöli a **Theobald szoftver xtract** összetevőt, a [xtract az](https://theobald-software.com/en/xtract-is/) SAP-rendszerek (ERP, s/4HANA, BW) összekötői is telepíthetők a Theobald szoftverből a Azure-SSIS IR. Ehhez húzza a & eldobás/Feltöltés lehetőségre a **licencet** , amelyet korábban megvásárolt a licencfájl beviteli mezőjébe. Az aktuálisan integrált verzió a **6.1.1.3**.
 
    * Ha a **AecorSoft integrációs szolgáltatásának** összetevőjét választja, akkor az Salesforce-hez tartozó Azure-SSIS IR AecorSoft-k [integrációs szolgáltatási](https://www.aecorsoft.com/en/products/integrationservice) csomagját telepítheti az SAP és a rendszerekhez. Ehhez adja meg a **licenckulcs** szövegmezőben előre megvásárolt termék-licenckulcs. Az aktuálisan integrált verzió a **3.0.00**.
+
+   * Ha a **CDATA SSIS standard csomag** összetevőjét választja, telepítheti a legnépszerűbb [SSIS](https://www.cdata.com/kb/entries/ssis-adf-packages.rst#standard) (például Microsoft SharePoint-összekötők) a legtöbb népszerű összetevőjét a Azure-SSIS IR. Ehhez adja meg a **licenckulcs** szövegmezőben előre megvásárolt termék-licenckulcs. Az aktuálisan integrált verzió a **19,7354**.
+
+   * Ha a **CDATA SSIS kiterjesztett csomag** összetevőjét választja, akkor a [Azure-SSIS IR a CDATA](https://www.cdata.com/kb/entries/ssis-adf-packages.rst#extended) összes összetevője, például a Microsoft Dynamics 365 Business Central-összekötők és az **SSIS standard csomag**egyéb összetevői is telepíthetők a. Ehhez adja meg a **licenckulcs** szövegmezőben előre megvásárolt termék-licenckulcs. Az aktuálisan integrált verzió a **19,7354**. Nagy mérete miatt a telepítés időtúllépésének elkerülése érdekében győződjön meg arról, hogy a Azure-SSIS IR legalább 4 CPU-magot tartalmaz.
 
 A hozzáadott expressz egyéni telepítések a **Speciális beállítások** lapon jelennek meg. Ha el szeretné távolítani őket, jelölje be a jelölőnégyzeteket, majd válassza a **Törlés**lehetőséget.
 

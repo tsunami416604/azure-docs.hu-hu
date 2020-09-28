@@ -197,6 +197,8 @@
       items:
         - name: Házirendek beállítása vagy szerkesztése
           href: set-edit-policies.md
+        - name: Hibakeresési szabályzatok
+          href: api-management-debug-policies.md
         - name: Házirend-kifejezések
           href: api-management-policy-expressions.md
         - name: Egyedi gyorsítótárazás
@@ -221,6 +223,8 @@
           href: api-management-cross-domain-policies.md
         - name: Átalakítási szabályzatok
           href: api-management-transformation-policies.md
+        - name: A Distributed Application Runtime (Dapr) integrálási szabályzatai
+          href: api-management-dapr-policies.md
     - name: Kezelés éles környezetben
       items:
         - name: API-k exportálása a Power Platformra

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 06/12/2020
 ms.author: jodowns
 ms.custom: fasttrack-new
-ms.openlocfilehash: b099a6ea706482e25b2c37a87cf0a24f2fe475bb
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9a20a7966daff372cf5c0abc9b7b1dbbfd459838
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531596"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403238"
 ---
 # <a name="revisions-in-azure-api-management"></a>Változatok az Azure API Management
 
@@ -38,7 +38,7 @@ Az API-k minden változatát egy speciálisan formázott URL-cím használatáva
 
 `https://apis.contoso.com/customers;rev=3?customerId=123`
 
-Alapértelmezés szerint minden változat ugyanazokkal a biztonsági beállításokkal rendelkezik, mint az aktuális változat. Egy adott változatra vonatkozóan szándékosan módosíthatja a szabályzatokat, ha az egyes változatokra vonatkozóan eltérő biztonsági védelmet szeretne alkalmazni. Előfordulhat például, hogy egy [IP-engedélyezési házirendet](./api-management-access-restriction-policies.md#RestrictCallerIPs) szeretne hozzáadni, hogy megakadályozza a külső hívók számára a fejlesztés alatt álló változat elérését.
+Alapértelmezés szerint minden változat ugyanazokkal a biztonsági beállításokkal rendelkezik, mint az aktuális változat. Egy adott változatra vonatkozóan szándékosan módosíthatja a szabályzatokat, ha az egyes változatokra vonatkozóan eltérő biztonsági védelmet szeretne alkalmazni. Előfordulhat például, hogy hozzá szeretne adni egy [IP-szűrési házirendet](./api-management-access-restriction-policies.md#RestrictCallerIPs) , amely megakadályozza, hogy a külső hívók hozzáférjenek egy olyan változathoz, amely még fejlesztés alatt áll.
 
 Egy változat offline állapotba helyezhető, ami elérhetetlenné teszi a hívók számára, még akkor is, ha az URL-címén keresztül megpróbálják elérni a változatot. A változatot kapcsolat nélküli módban is megjelölheti a Azure Portal használatával. Ha a PowerShellt használja, használhatja a `Set-AzApiManagementApiRevision` parancsmagot, és állítsa be az argumentumot a következőre: `Path` `$null` .
 

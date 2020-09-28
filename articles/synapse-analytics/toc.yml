@@ -11,16 +11,16 @@
         - name: Introduction (Bevezetés)
           href: get-started.md
           displayName: 'get, started'
-        - name: 1. Synapse-munkaterület létrehozása
+        - name: 1. Munkaterület létrehozása
           href: get-started-create-workspace.md
           displayName: 'get, started'
-        - name: 2. Elemzés SQL-készlettel
+        - name: 2. SQL-készletek használata
           href: get-started-analyze-sql-pool.md
           displayName: 'get, started'
-        - name: 3. Elemzés a Spark használatával
+        - name: 3. A Spark használata
           href: get-started-analyze-spark.md
           displayName: 'get, started'
-        - name: 4. Elemzés igény szerinti SQL használatával
+        - name: 4. Az igény szerinti SQL használata
           href: get-started-analyze-sql-on-demand.md
           displayName: 'get, started'
         - name: 5. Tárfiók adatainak elemzése
@@ -84,6 +84,8 @@
   items:
     - name: Apache Spark-alkalmazások futtatása
       href: ./spark/intellij-tool-synapse.md
+    - name: PySpark-alkalmazások futtatása Spark-készletekhez
+      href: ./spark/vscode-tool-synapse.md
     - name: Spark-feladatdefiníciók
       href: ./spark/apache-spark-job-definitions.md
     - name: Power BI Desktop
@@ -210,6 +212,8 @@
               href: ../data-factory/concepts-data-flow-expression-builder.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Kifejezés nyelve
               href: ../data-factory/data-flow-expression-functions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Eltérések az Azure Data Factoryhoz képest
+              href: ./data-integration/concepts-data-factory-differences.md
     - name: Spark
       items:
         - name: Áttekintés

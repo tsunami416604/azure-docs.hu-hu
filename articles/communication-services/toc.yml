@@ -82,7 +82,13 @@
   items:
     - name: REST API – dokumentáció
       href: 'https://docs.microsoft.com/rest/api/azure/'
+    - name: Hívási kódtár (Android/Java)
+      href: 'https://docs.microsoft.com/java/api/com.azure.communication.calling?view=communication-services-java-android'
+    - name: Hívási kódtár (JS)
+      href: 'https://docs.microsoft.com/javascript/api/azure-communication-services/@azure/communication-calling/?view=azure-communication-services-js'
+    - name: Hívási kódtár (iOS)
+      href: 'https://docs.microsoft.com/objectivec/communication-services/calling/'
 - name: További források
   items:
     - name: Kibocsátási megjegyzések
-      href: release-notes.md
+      href: 'https://github.com/Azure/Communication/blob/master/releasenotes/2020-September-22.md'

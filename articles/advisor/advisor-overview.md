@@ -2,13 +2,13 @@
 title: Az Azure Advisor bemutatása
 description: Az Azure-beli üzembe helyezések optimalizálásához használja a Azure Advisor.
 ms.topic: article
-ms.date: 02/01/2019
-ms.openlocfilehash: 27e49fa28e7b02b873ca145d514920784689b407
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.date: 09/27/2020
+ms.openlocfilehash: 12e56bf44a29a32b2149bca14f7c99f319c9c4ea
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654021"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91405207"
 ---
 # <a name="introduction-to-azure-advisor"></a>Az Azure Advisor bemutatása
 
@@ -24,7 +24,7 @@ Az Advisor használatával a következőket teheti:
 
 Az Advisor a [Azure Portal](https://aka.ms/azureadvisordashboard)keresztül érhető el. Jelentkezzen be a [portálra](https://portal.azure.com), keresse meg az **Advisor** parancsot a navigációs menüben, vagy keresse meg a **minden szolgáltatás** menüben.
 
-Az Advisor irányítópultja személyre szabott javaslatokat jelenít meg az összes előfizetéséhez.  Szűrőket alkalmazhat az egyes előfizetésekhez és erőforrástípusokhöz tartozó javaslatok megjelenítéséhez.  A javaslatok öt kategóriába sorolhatók: 
+Az Advisor irányítópultja személyre szabott javaslatokat jelenít meg az összes előfizetéséhez.  Szűrőket alkalmazhat az egyes előfizetésekhez és erőforrástípusokhöz tartozó javaslatok megjelenítéséhez.  A javaslatok öt kategóriára vannak felosztva: 
 
 * **Megbízhatóság (korábbi nevén magas rendelkezésre állás)**: az üzleti szempontból kritikus fontosságú alkalmazások folytonosságának biztosításához és javításához. További információ: [Advisor megbízhatósági javaslatok](advisor-high-availability-recommendations.md).
 * **Biztonság**: az olyan fenyegetések és biztonsági rések észlelése, amelyek biztonsági réseket okozhatnak. További információ: [Advisor biztonsági javaslatok](advisor-security-recommendations.md).
@@ -63,12 +63,14 @@ A Azure Advisor a [Azure Security Center](../security-center/security-center-rec
 
 A javaslatok elhalasztásához vagy elvetéséhez kattintson az **elhalasztás** hivatkozásra. Megadhat egy elhalasztási időszakot, vagy kiválaszthatja, hogy **Soha ne** utasítsa el a javaslatot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Advisor ajánlásaival kapcsolatos további tudnivalókért tekintse meg a következő témakört:
 
 * [Bevezetés az Advisor használatába](advisor-get-started.md)
+* [Advisor-pontszám](azure-advisor-score.md)
 * [Advisor megbízhatósági javaslatok](advisor-high-availability-recommendations.md)
 * [Advisor biztonsági javaslatok](advisor-security-recommendations.md)
 * [Az Advisor teljesítményével kapcsolatos javaslatok](advisor-performance-recommendations.md)
 * [Advisor – Cost-javaslatok](advisor-cost-recommendations.md)
+* [Advisor működési kiválósági javaslatok](advisor-operational-excellence-recommendations.md)

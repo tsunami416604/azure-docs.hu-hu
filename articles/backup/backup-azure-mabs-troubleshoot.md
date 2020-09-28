@@ -4,12 +4,12 @@ description: Hibaelhárítás, Azure Backup Server regisztrációja, valamint az
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: d3b2ee87dda09fe1b5611d00ce567304aec33a6f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 09e5fe5da7e316257cbbdcb89074fe8a4bc692c0
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91298371"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403007"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Az Azure Backup Server hibaelhárítása
 
@@ -142,7 +142,7 @@ Reg query "HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Setup"
 
 | Művelet | A hiba részletei | Áthidaló megoldás |
 | --- | --- | --- |
-| E-mail-értesítések beállítása Office 365-fiók használatával |Hiba azonosítója: 2013| **Ok:**<br> Office 365-fiók használatának megkísérlése <br>**Javasolt művelet:**<ol><li> Az első dolog, hogy a "névtelen továbbító engedélyezése egy fogadási összekötőn" a DPM-kiszolgálóhoz az Exchange-kiszolgálón legyen beállítva. További információ a konfigurálásáról: [Névtelen továbbító engedélyezése fogadási összekötőn](/exchange/mail-flow/connectors/allow-anonymous-relay).</li> <li> Ha nem használ belső SMTP-továbbítót, és az Office 365-kiszolgáló használatával kell beállítania, beállíthatja, hogy az IIS továbbító legyen. Konfigurálja úgy a DPM-kiszolgálót, hogy [az IIS használatával továbbítsa az SMTP-t a O365](/exchange/mail-flow/test-smtp-with-telnet).<br><br>  Ügyeljen arra, hogy a felhasználói \@ domain.com formátumot használja, és *ne* megadásakor<br><br><li>A DPM pont a helyi kiszolgáló nevét használja SMTP-kiszolgálóként, 587-as porton. Ezután mutasson arra a felhasználói e-mailre, amelyről az e-mailek származnak.<li> A DPM SMTP-beállítás lapjának felhasználónevének és jelszavának a DPM tartományában lévő tartományi fiókhoz kell tartoznia. </li><br> Ha megváltoztatja az SMTP-kiszolgáló címe beállítást, végezze el a módosítást az új beállításokra, majd kattintson a beállítások mezőre, majd nyissa meg újra, hogy az tükrözze az új értéket.  Előfordulhat, hogy a módosítás és a tesztelés nem mindig okozza az új beállítások érvénybe léptetését, így a tesztelés így a legjobb megoldás.<br><br>A folyamat során bármikor törölheti ezeket a beállításokat a DPM-konzol bezárásával és a következő beállításkulcsok szerkesztésével: **HKLM\SOFTWARE\Microsoft\Microsoft adatvédelem Manager\Notification\ <br/> SMTPPassword és SMTPUserName kulcsok törlése**. Ha újra elindítják, a felhasználói felülethez is hozzáadhatók.
+| E-mail-értesítések beállítása munkahelyi vagy iskolai fiók használatával |Hiba azonosítója: 2013| **Ok:**<br> Munkahelyi vagy iskolai fiók használatának megkísérlése <br>**Javasolt művelet:**<ol><li> Az első dolog, hogy a "névtelen továbbító engedélyezése egy fogadási összekötőn" a DPM-kiszolgálóhoz az Exchange-kiszolgálón legyen beállítva. További információ a konfigurálásáról: [Névtelen továbbító engedélyezése fogadási összekötőn](/exchange/mail-flow/connectors/allow-anonymous-relay).</li> <li> Ha nem használ belső SMTP-továbbítót, és az Office 365-kiszolgáló használatával kell beállítania, beállíthatja, hogy az IIS továbbító legyen. Konfigurálja úgy a DPM-kiszolgálót, hogy [az IIS használatával továbbítsa az SMTP-t az Office 365](/exchange/mail-flow/test-smtp-with-telnet)-be.<br><br>  Ügyeljen arra, hogy a felhasználói \@ domain.com formátumot használja, és *ne* megadásakor<br><br><li>A DPM pont a helyi kiszolgáló nevét használja SMTP-kiszolgálóként, 587-as porton. Ezután mutasson arra a felhasználói e-mailre, amelyről az e-mailek származnak.<li> A DPM SMTP-beállítás lapjának felhasználónevének és jelszavának a DPM tartományában lévő tartományi fiókhoz kell tartoznia. </li><br> Ha megváltoztatja az SMTP-kiszolgáló címe beállítást, végezze el a módosítást az új beállításokra, majd kattintson a beállítások mezőre, majd nyissa meg újra, hogy az tükrözze az új értéket.  Előfordulhat, hogy a módosítás és a tesztelés nem mindig okozza az új beállítások érvénybe léptetését, így a tesztelés így a legjobb megoldás.<br><br>A folyamat során bármikor törölheti ezeket a beállításokat a DPM-konzol bezárásával és a következő beállításkulcsok szerkesztésével: **HKLM\SOFTWARE\Microsoft\Microsoft adatvédelem Manager\Notification\ <br/> SMTPPassword és SMTPUserName kulcsok törlése**. Ha újra elindítják, a felhasználói felülethez is hozzáadhatók.
 
 ## <a name="common-issues"></a>Gyakori problémák
 

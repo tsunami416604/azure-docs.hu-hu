@@ -2,13 +2,13 @@
 title: Az Azure-alkalmazások teljesítményének javítása az Advisor szolgáltatással
 description: Az üzleti szempontból kritikus fontosságú alkalmazások sebességének és reagálásának javítása érdekében Azure Advisor teljesítményre vonatkozó javaslatokat használhat.
 ms.topic: article
-ms.date: 01/29/2019
-ms.openlocfilehash: 9a8499e85a264488c756a3d497565398f2e1c229
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.date: 07/29/2020
+ms.openlocfilehash: 9625bb3b063234e9cadb20aacfcc5ca8a28b35cc
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651574"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91405156"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Az Azure-alkalmazások teljesítményének növelése Azure Advisor használatával
 
@@ -63,8 +63,6 @@ Az Advisor olyan táblákat azonosít, amelyek nem rendelkeznek naprakész [táb
 
 Az Advisor Analysis azt jelezheti, hogy az alkalmazás MySQL-kiszolgálóhoz való csatlakozása nem hatékony a kapcsolatok kezeléséhez. Ez az állapot szükségtelen erőforrás-felhasználást és általános, magasabb alkalmazások késését eredményezheti. A kapcsolatkezelés javítása érdekében javasoljuk, hogy csökkentse a rövid élettartamú kapcsolatok számát, valamint szüntesse meg a felesleges tétlen kapcsolatokat. Ezeket a funkciókat kiszolgálóoldali kapcsolatok Pooler, például a ProxySQL konfigurálásával végezheti el.
 
-## <a name="update-your-current-compute-management-sdk-version-to-the-most-recent-version"></a>Frissítse a Compute Management jelenlegi SDK-verzióját a legújabb verzióra.
-Az Advisor olyan előfizetéseket azonosít, amelyek elavult számítási felügyeleti SDK-verziókkal rendelkeznek. Ez hatással lehet a számítási feladatok biztonságára és teljesítményére, így az Advisor azt javasolja, hogy váltson a számítási felügyeleti SDK legújabb verziójára. 
 
 ## <a name="scale-up-to-optimize-cache-utilization-on-your-azure-synapse-analytics-tables-to-increase-query-performance"></a>Vertikális felskálázás a gyorsítótár kihasználtságának optimalizálásához az Azure szinapszis Analytics-táblázatokban a lekérdezési teljesítmény növeléséhez
 
@@ -170,6 +168,14 @@ Az Advisor Analysis azt jelzi, hogy a MySQL-kiszolgáló szükségtelen I/O-terh
 ## <a name="distribute-data-in-server-group-to-distribute-workload-among-nodes"></a>Kiszolgálócsoportban tárolt adatok kiosztása a számítási feladat csomópontok közötti elosztásához
 Az Advisor azon kiszolgálócsoportok azonosítására szolgál, amelyekben az adat nem lett elosztva, de a koordinátoron marad. Ennek alapján az Advisor azt javasolja, hogy a teljes nagy kapacitású (Citus) előnyök a kiszolgálói csoportok munkavégző csomópontjain legyenek kiterjesztve. Ez javítja a lekérdezési teljesítményt úgy, hogy kihasználja a kiszolgálócsoport egyes csomópontjainak erőforrásait. [További információ](https://go.microsoft.com/fwlink/?linkid=2135201) 
 
+## <a name="improve-user-experience-and-connectivity-by-deploying-vms-closer-to-windows-virtual-desktop-deployment-location"></a>A virtuális gépek a Windows rendszerű virtuális asztali környezetbe való központi telepítésével növelheti a felhasználói élményt és a kapcsolatokat.
+Megállapítottuk, hogy a virtuális gépek más régióban vagy messze vannak attól a régiótól, ahonnan a felhasználók a Windows Virtual Desktop (WVD) használatával csatlakoznak. Ez hosszabb kapcsolódási válaszidőkhöz vezethet és hatással van a WVD általános felhasználói élményére. Amikor virtuális gépeket hoz létre a gazdagépkészleteihez, próbáljon meg a felhasználóhoz közelebbi régiót használni. A közelség biztosítja a WVD szolgáltatás megfelelő működését és a jobb általános élményt. [További információ a kapcsolatok késéséről](https://docs.microsoft.com/azure/virtual-desktop/connection-latency).
+
+## <a name="upgrade-to-the-latest-version-of-the-immersive-reader-sdk"></a>Frissítsen a Modern olvasó SDK legfrissebb verziójára.
+Azt észleltük, hogy az előfizetésben lévő erőforrások a Modern olvasó elavult SDK-verzióit használják. A Modern olvasó legújabb SDK-verzióját javított biztonság és teljesítmény mellett használhatja, továbbá bővített funkciókészlettel rendelkezik az integráció testre szabása és fejlesztése érdekében.
+További információ a [magával ejtő olvasói SDK](https://aka.ms/ImmersiveReaderAzureAdvisorSDKLearnMore)-ról.
+
+
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Teljesítménnyel kapcsolatos javaslatok elérése az Advisorban
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), majd nyissa meg az [Advisor alkalmazást](https://aka.ms/azureadvisordashboard).
@@ -182,6 +188,7 @@ Az Advisor ajánlásaival kapcsolatos további tudnivalókért tekintse meg a k�
 
 * [Az Advisor bemutatása](advisor-overview.md)
 * [Bevezetés az Advisor használatába](advisor-get-started.md)
+* [Advisor-pontszám](azure-advisor-score.md)
 * [Az Advisor költségekkel kapcsolatos javaslatai](advisor-cost-recommendations.md)
 * [Advisor megbízhatósági javaslatok](advisor-high-availability-recommendations.md)
 * [Advisor biztonsági javaslatok](advisor-security-recommendations.md)

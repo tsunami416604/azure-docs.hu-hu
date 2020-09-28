@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 255e5533dc19036624042a0b82116c4dc107d762
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 420ab87591e230592ec8f728c6acb155266b5912
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91336224"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403526"
 ---
 # <a name="security-control-v2-governance-and-strategy"></a>Security Control v2: irányítási és stratégiai
 
@@ -28,21 +28,21 @@ Gondoskodjon róla, hogy a rendszerek és az információk folyamatos monitoroz�
 
 Ennek a stratégiának tartalmaznia kell a következő elemek dokumentált útmutatását, szabályzatát és szabványait: 
 
--   Az adatbesorolási szabvány az üzleti kockázatoknak megfelelően
+- Az adatbesorolási szabvány az üzleti kockázatoknak megfelelően
 
--   A biztonsági szervezet betekintést nyerhet a kockázatokra és az eszközök leltározására 
+- A biztonsági szervezet betekintést nyerhet a kockázatokra és az eszközök leltározására 
 
--   Az Azure-szolgáltatások használatának biztonsági szervezet általi jóváhagyása 
+- Az Azure-szolgáltatások használatának biztonsági szervezet általi jóváhagyása 
 
--   Az eszközök biztonsága életcikluson keresztül
+- Az eszközök biztonsága életcikluson keresztül
 
--   A szükséges hozzáférés-vezérlési stratégia a szervezeti adatbesorolásnak megfelelően
+- A szükséges hozzáférés-vezérlési stratégia a szervezeti adatbesorolásnak megfelelően
 
--   Az Azure Native és a harmadik féltől származó adatvédelmi képességek használata
+- Az Azure Native és a harmadik féltől származó adatvédelmi képességek használata
 
--   Adattitkosítási követelmények átvitel közbeni és nyugalmi használati esetekben
+- Adattitkosítási követelmények átvitel közbeni és nyugalmi használati esetekben
 
--   Megfelelő titkosítási szabványok
+- Megfelelő titkosítási szabványok
 
 További információkért tekintse meg a következő referenciákat:
 - [Azure biztonsági architektúra – javaslat – tárolás, adatkezelés és titkosítás](https://docs.microsoft.com/azure/architecture/framework/security/storage-data-encryption?toc=/security/compass/toc.json&amp;bc=/security/compass/breadcrumb/toc.json)
@@ -51,9 +51,9 @@ További információkért tekintse meg a következő referenciákat:
 
 - [Felhőalapú bevezetési keretrendszer – az Azure adatbiztonsági és-titkosítási ajánlott eljárásai](https://docs.microsoft.com/azure/security/fundamentals/data-encryption-best-practices?toc=/azure/cloud-adoption-framework/toc.json&amp;bc=/azure/cloud-adoption-framework/_bread/toc.json)
 
-- [Azure biztonsági teljesítményteszt – eszközkezelés](/azure/security/benchmarks/security-benchmark-v2-asset-management)
+- [Azure biztonsági teljesítményteszt – eszközkezelés](security-controls-v2-asset-management.md)
 
-- [Azure biztonsági teljesítményteszt – adatvédelem](/azure/security/benchmarks/security-benchmark-v2-data-protection)
+- [Azure biztonsági teljesítményteszt – adatvédelem](security-controls-v2-data-protection.md)
 
 **Felelősség**: ügyfél
 
@@ -93,7 +93,7 @@ Győződjön meg arról, hogy a szegmentálási stratégia következetesen van i
 
 Folyamatosan méri és csökkenti a kockázatokat az egyes eszközeivel és a bennük üzemeltetett környezettel kapcsolatban. Rangsorolja a nagy értékű eszközöket és a nagy teljesítményű támadási felületeket, például a közzétett alkalmazásokat, a hálózati bejövő és kimenő pontokat, a felhasználói és rendszergazdai végpontokat stb.
 
-- [Azure biztonsági teljesítményteszt – a testtartás és a sebezhetőségek kezelése](/azure/security/benchmarks/security-benchmark-v2-posture-vulnerability-management)
+- [Azure biztonsági teljesítményteszt – a testtartás és a sebezhetőségek kezelése](security-controls-v2-posture-vulnerability-management.md)
 
 **Felelősség**: ügyfél
 
@@ -131,23 +131,23 @@ Hozzon létre egy Azure-alapú hálózati biztonsági megközelítést a szervez
 
 Ennek a stratégiának tartalmaznia kell a következő elemek dokumentált útmutatását, szabályzatát és szabványait: 
 
--   Központosított Hálózatkezelés és biztonsági felelősség
+- Központosított Hálózatkezelés és biztonsági felelősség
 
--   A virtuális hálózat szegmentálási modellje a nagyvállalati szegmentálási stratégiához igazodik
+- A virtuális hálózat szegmentálási modellje a nagyvállalati szegmentálási stratégiához igazodik
 
--   Szervizelési stratégia a különböző veszélyforrások és támadási helyzetekben
+- Szervizelési stratégia a különböző veszélyforrások és támadási helyzetekben
 
--   Az Internet Edge és a bejövő forgalom és a kimenő forgalom stratégiája
+- Az Internet Edge és a bejövő forgalom és a kimenő forgalom stratégiája
 
--   Hibrid felhő és helyszíni összekapcsolási stratégia
+- Hibrid felhő és helyszíni összekapcsolási stratégia
 
--   Naprakész hálózati biztonsági összetevők (például hálózati diagramok, hivatkozási hálózati architektúra)
+- Naprakész hálózati biztonsági összetevők (például hálózati diagramok, hivatkozási hálózati architektúra)
 
 További információkért tekintse meg a következő referenciákat:
 
 - [Azure Security – ajánlott eljárás 11 – architektúra. Egyetlen egységes biztonsági stratégia](https://aka.ms/AzSec11)
 
-- [Azure biztonsági teljesítményteszt – hálózati biztonság](/azure/security/benchmarks/security-benchmark-v2-network-security)
+- [Azure biztonsági teljesítményteszt – hálózati biztonság](security-controls-v2-network-security.md)
 
 - [Az Azure hálózati biztonság áttekintése](../fundamentals/network-overview.md)
 
@@ -169,25 +169,25 @@ Hozzon létre egy Azure-identitást és egy emelt szintű hozzáférési megköz
 
 Ennek a stratégiának tartalmaznia kell a következő elemek dokumentált útmutatását, szabályzatát és szabványait: 
 
--   Központi identitás-és hitelesítési rendszer, valamint az egyéb belső és külső identitási rendszerekkel való kapcsolat
+- Központi identitás-és hitelesítési rendszer, valamint az egyéb belső és külső identitási rendszerekkel való kapcsolat
 
--   Erős hitelesítési módszerek különböző használati esetekben és kikötésekben
+- Erős hitelesítési módszerek különböző használati esetekben és kikötésekben
 
--   Magas jogosultsági szintű felhasználók védelme
+- Magas jogosultsági szintű felhasználók védelme
 
--   Felhasználói tevékenységek rendellenességének figyelése és feldolgozása  
+- Felhasználói tevékenységek rendellenességének figyelése és feldolgozása  
 
--   Felhasználói identitás és hozzáférés felülvizsgálata és egyeztetési folyamata
+- Felhasználói identitás és hozzáférés felülvizsgálata és egyeztetési folyamata
 
 További információkért tekintse meg a következő referenciákat:
 
-- [Azure biztonsági teljesítményteszt – Identitáskezelés](/azure/security/benchmarks/security-benchmark-v2-identity-management)
+- [Azure biztonsági teljesítményteszt – Identitáskezelés](security-controls-v2-identity-management.md)
 
-- [Azure biztonsági teljesítményteszt – emelt szintű hozzáférés](/azure/security/benchmarks/security-benchmark-v2-privileged-access)
+- [Azure biztonsági teljesítményteszt – emelt szintű hozzáférés](security-controls-v2-privileged-access.md)
 
 - [Azure Security – ajánlott eljárás 11 – architektúra. Egyetlen egységes biztonsági stratégia](https://aka.ms/AzSec11)
 
-- [Az Azure Identity Management biztonsági áttekintése](../fundamentals/identity-management-overview.md) 
+- [Az Azure Identity Management biztonsági áttekintése](../fundamentals/identity-management-overview.md)
 
 **Felelősség**: ügyfél
 
@@ -205,26 +205,26 @@ Hozzon létre egy naplózási és veszélyforrás-reagálási stratégiát a fen
 
 Ennek a stratégiának tartalmaznia kell a következő elemek dokumentált útmutatását, szabályzatát és szabványait: 
 
--   A biztonsági műveletek (SecOps) szervezet szerepköre és feladatai 
+- A biztonsági műveletek (SecOps) szervezet szerepköre és feladatai 
 
--   Egy jól definiált incidens-reagálási folyamat NIST vagy más iparági keretrendszerrel való összehangolása 
+- Egy jól definiált incidens-reagálási folyamat NIST vagy más iparági keretrendszerrel való összehangolása 
 
--   A fenyegetések észlelését, az incidensek megválaszolását és a megfelelőségi igényeket támogató napló rögzítése és megőrzése
+- A fenyegetések észlelését, az incidensek megválaszolását és a megfelelőségi igényeket támogató napló rögzítése és megőrzése
 
--   A fenyegetésekkel kapcsolatos központosított láthatóság és korrelációs információk a SIEM, a natív Azure-képességek és más források használatával 
+- A fenyegetésekkel kapcsolatos központosított láthatóság és korrelációs információk a SIEM, a natív Azure-képességek és más források használatával 
 
--   Kommunikációs és értesítési terv ügyfeleivel, szállítókkal és az érdekelt felekkel
+- Kommunikációs és értesítési terv ügyfeleivel, szállítókkal és az érdekelt felekkel
 
--   Az Azure Native és a harmadik féltől származó platformok használata az incidensek kezelésére, mint például a naplózás és a veszélyforrások észlelése, a kriminalisztika, valamint a támadási problémák elhárítása és felszámolása
+- Az Azure Native és a harmadik féltől származó platformok használata az incidensek kezelésére, mint például a naplózás és a veszélyforrások észlelése, a kriminalisztika, valamint a támadási problémák elhárítása és felszámolása
 
--   Az incidensek és az incidens utáni tevékenységek kezelésének folyamatai, például a tanulságok és a bizonyítékok megőrzése
+- Az incidensek és az incidens utáni tevékenységek kezelésének folyamatai, például a tanulságok és a bizonyítékok megőrzése
 
 További információkért tekintse meg a következő referenciákat:
-- [Azure biztonsági teljesítményteszt – naplózás és fenyegetések észlelése](/azure/security/benchmarks/security-benchmark-v2-logging-threat-detection)
+- [Azure biztonsági teljesítményteszt – naplózás és fenyegetések észlelése](security-controls-v2-logging-threat-detection.md)
 
-- [Azure biztonsági teljesítményteszt – incidens válasza](/azure/security/benchmarks/security-benchmark-v2-incident-response)
+- [Azure biztonsági teljesítményteszt – incidens válasza](security-controls-v2-incident-response.md)
 
-- [Azure Security – ajánlott eljárás 4 – folyamat. Incidensek frissítési folyamatainak frissítése a felhőben](https://aka.ms/AzSec11)
+- [Azure Security – ajánlott eljárás 4 – folyamat. Incidensek frissítési folyamatainak frissítése a felhőben](https://aka.ms/AzSec4)
 
 - [Azure bevezetési keretrendszer, naplózás és jelentéskészítési döntési útmutató](/azure/cloud-adoption-framework/decision-guides/logging-and-reporting/)
 
@@ -246,14 +246,14 @@ Hozzon létre egy Azure biztonsági mentési és helyreállítási stratégiát 
 
 Ennek a stratégiának tartalmaznia kell a következő elemek dokumentált útmutatását, szabályzatát és szabványait: 
 
--   A helyreállítási időre vonatkozó célkitűzés (RTO) és a helyreállítási pontok célkitűzése (RPO) meghatározása az üzleti rugalmassági célkitűzéseknek megfelelően
+- A helyreállítási időre vonatkozó célkitűzés (RTO) és a helyreállítási pontok célkitűzése (RPO) meghatározása az üzleti rugalmassági célkitűzéseknek megfelelően
 
--   Redundancia kialakítása az alkalmazások és az infrastruktúra beállításában
+- Redundancia kialakítása az alkalmazások és az infrastruktúra beállításában
 
--   A biztonsági mentés védelme a hozzáférés-vezérlés és az adattitkosítás használatával
+- A biztonsági mentés védelme a hozzáférés-vezérlés és az adattitkosítás használatával
 
 További információkért tekintse meg a következő referenciákat:
-- [Azure biztonsági teljesítményteszt – biztonsági mentés és helyreállítás](/azure/security/benchmarks/security-benchmark-v2-backup-recovery)
+- [Azure biztonsági teljesítményteszt – biztonsági mentés és helyreállítás](security-controls-v2-backup-recovery.md)
 
 - [Azure Well-Architecture Framework – biztonsági mentés és vész-helyreállítás Azure-alkalmazásokhoz](/azure/architecture/framework/resiliency/backup-and-recovery)
 

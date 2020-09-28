@@ -17,6 +17,9 @@
     - name: Szabályzat hozzárendelése – Azure PowerShell
       displayName: 'assign, compliance'
       href: ./assign-policy-powershell.md
+    - name: Szabályzat hozzárendelése – JavaScript
+      displayName: 'assign, compliance'
+      href: ./assign-policy-javascript.md
     - name: Szabályzat hozzárendelése – Python
       displayName: 'assign, compliance'
       href: ./assign-policy-python.md
@@ -112,10 +115,10 @@
       href: ./concepts/policy-as-code.md
     - name: Kubernetes-integráció
       items:
-        - name: Azure Policy a Kuberneteshez (előzetes verzió)
+        - name: Azure Policy a Kuberneteshez
           displayName: 'aks, engine, k8s, rego, opa, open policy agent, gatekeeper, v3, crd, constraints, arc'
           href: ./concepts/policy-for-kubernetes.md
-        - name: Podok biztonságossá tétele az Azure Policyval (előzetes verzió)
+        - name: Podok biztonságossá tétele az Azure Policyval
           displayName: 'aks, psp, rego, opa'
           href: ../../aks/use-pod-security-on-azure-policy.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
     - name: Vendégkonfigurációval rendelkező virtuális gépek naplózása

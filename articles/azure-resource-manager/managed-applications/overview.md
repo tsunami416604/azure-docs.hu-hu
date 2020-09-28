@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: overview
 ms.date: 07/12/2019
 ms.author: tomfitz
-ms.openlocfilehash: 9bb3f0d57f7d47e4cb754305627c52003273ca09
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: eb93321e0eb1b3d2dc7963f03715b1aedb4cfdcb
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89377012"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403687"
 ---
 # <a name="azure-managed-applications-overview"></a>Az Azure Managed Applications áttekintése
 
@@ -77,9 +77,9 @@ Ha az ügyfél törli a felügyelt alkalmazást, az erőforráscsoport is törl�
 
 ## <a name="azure-policy"></a>Azure Policy
 
-A felügyelt alkalmazások naplózásához [Azure Policy](../../governance/policy/overview.md) is alkalmazhat. A szabályzat-definíciók alkalmazásával gondoskodhat arról, hogy a felügyelt alkalmazás telepített példányai megfeleljenek az adat-és biztonsági követelményeknek. Ha az alkalmazás bizalmas adatokkal lép interakcióba, mindenképpen értékelje ki, hogyan kell védeni az adatokat. Ha például az alkalmazás az Office 365-ből származó adatokkal működik együtt, alkalmazza a házirend-definíciót, hogy az adatok titkosítása engedélyezve legyen.
+A felügyelt alkalmazások naplózásához [Azure Policy](../../governance/policy/overview.md) is alkalmazhat. A szabályzat-definíciók alkalmazásával gondoskodhat arról, hogy a felügyelt alkalmazás telepített példányai megfeleljenek az adat-és biztonsági követelményeknek. Ha az alkalmazás bizalmas adatokkal lép interakcióba, mindenképpen értékelje ki, hogyan kell védeni az adatokat. Ha például az alkalmazás a Microsoft 365ból származó adatokkal kommunikál, alkalmazza a házirend-definíciót, hogy az adatok titkosítása engedélyezve legyen.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megismerkedett a felügyelt alkalmazások használatának előnyeivel. A következő cikkben egy felügyelt alkalmazás definícióját hozza létre.
 

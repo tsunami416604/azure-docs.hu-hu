@@ -138,8 +138,6 @@
               href: point-to-site-how-to-vpn-client-install-azure-cert.md
             - name: A VPN-ügyfél konfigurációs fájljainak létrehozása és telepítése
               href: point-to-site-vpn-client-configuration-azure-cert.md
-            - name: Munkamenet-kezelés
-              href: p2s-session-management.md
         - name: RADIUS-hitelesítés
           items:
             - name: Pont–hely VPN-kapcsolat konfigurálása
@@ -170,6 +168,8 @@
               href: vpn-gateway-howto-openvpn-clients.md
             - name: Áttérés az OpenVPN-protokollra vagy az IKEv2-re az SSTP-ről
               href: ikev2-openvpn-from-sstp.md
+        - name: P2S-munkamenet kezelésének konfigurálása
+          href: p2s-session-management.md
         - name: Váltás nyilvános hitelesítésszolgáltatói átjárótanúsítványra a P2S-kapcsolatok esetében
           href: vpn-gateway-point-to-site-gateway-public-ca.md
         - name: AlwaysOn VPN-eszközalagút konfigurálása

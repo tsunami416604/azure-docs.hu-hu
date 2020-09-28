@@ -7,12 +7,12 @@ ms.topic: how-to
 author: emuench
 ms.author: mingshen
 ms.date: 08/07/2020
-ms.openlocfilehash: b9bacb352b3559c33a4a2ef92dc0c3af6ebbc7d6
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 9f48c06f075ccdc3c3c212e1ba7912707565cd87
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90029702"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91405054"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>Azure-beli virtuális gépek ajánlatának létrehozása az Azure Marketplace-en
 
@@ -402,7 +402,7 @@ A használati alapú havi számlás csomag esetében a következő három díjsz
 
 #### <a name="free-trial"></a>Ingyenes próba
 
-Az ügyfeleknek egy-vagy három hónapos *ingyenes próbaverziót* is kínálunk.
+Az ügyfeleknek egy-vagy három hónapos vagy hat hónapos *ingyenes próbaverziót* is kínálunk.
 
 #### <a name="visibility"></a>Visibility (Látótávolság)
 

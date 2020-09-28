@@ -354,6 +354,9 @@
           href: ../../bastion/bastion-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Állapotok és életciklus
       href: ../states-lifecycle.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+    - name: Létrehozási vagy frissítési műveletek PUT-hívásai
+      href: ../put-calls-create-or-update.md
+      maintainContext: true
     - name: Figyelés
       href: ../../azure-monitor/insights/monitor-vm-azure.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Rendszerindítási diagnosztika
@@ -373,7 +376,7 @@
             - name: PowerShell
               href: dedicated-hosts-powershell.md
             - name: Portál
-              href: dedicated-hosts-portal.md
+              href: ../dedicated-hosts-portal.md
         - name: Spot virtuális gépek üzembe helyezése
           items:
             - name: Portál
@@ -499,7 +502,7 @@
                 - name: Virtuális gép létrehozása rendszerképverzióból
                   href: 'https://azure.microsoft.com/resources/templates/101-vm-from-sig/'
             - name: Megosztott rendszerképek hibaelhárítása
-              href: troubleshooting-shared-images.md
+              href: ../troubleshooting-shared-images.md
             - name: Ügyfelek által felügyelt kulcsok használata
               displayName: 'SSE, CMK, encrypt'
               href: ../image-version-encryption.md
@@ -510,7 +513,7 @@
             - name: Az Image Builder használata
               items:
                 - name: parancssori felület
-                  href: ../linux/image-builder.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                  href: image-builder.md
                 - name: PowerShell
                   href: image-builder-powershell.md
             - name: VNET használata
@@ -525,8 +528,8 @@
                   href: ../linux/image-builder-permissions-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: DevOps-feladat
               href: ../linux/image-builder-devops-task.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-            - name: ARM-sablon referenciája
-              displayName: Azure Resource Manager
+            - name: Image Builder-sablonreferencia
+              displayName: json
               href: ../linux/image-builder-json.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Buildelés rendszerkép-katalógusokhoz
               href: image-builder-gallery.md
@@ -535,7 +538,7 @@
             - name: Szkriptek tárolása
               href: ../linux/image-builder-user-assigned-identity.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Hibaelhárítás
-              href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'
+              href: ../linux/image-builder-troubleshoot.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Rendszerképek keresése és használata
           href: cli-ps-findimage.md
         - name: Tervezett konstrukció információi
@@ -818,8 +821,9 @@
         - name: Virtual Machine Scale Sets
           href: ../../virtual-machine-scale-sets/overview.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json
         - name: Magas rendelkezésre állás
-          href: manage-availability.md
+          href: ../manage-availability.md
         - name: Közelségi elhelyezési csoport létrehozása
+          displayName: ppg aligned colocation co-location
           items:
             - name: Portál
               href: proximity-placement-groups-portal.md

@@ -9,6 +9,8 @@
   items:
     - name: Egyéni erőforrás-szolgáltató létrehozása
       href: create-custom-provider.md
+    - name: Egyéni erőforrás-szolgáltató – Azure PowerShell
+      href: create-custom-provider-quickstart-powershell.md
 - name: Oktatóanyagok
   items:
     - name: Az egyéni szolgáltatók alkalmazásának első lépései
@@ -45,6 +47,8 @@
       href: /rest/api/customproviders/
     - name: Azure CLI
       href: /cli/azure/ext/custom-providers/custom-providers/
+    - name: Azure PowerShell
+      href: /powershell/module/Az.CustomProviders/
     - name: Az Azure Policy beépített elemei
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md

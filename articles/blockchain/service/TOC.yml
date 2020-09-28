@@ -13,6 +13,8 @@
       href: create-member.md
     - name: Tag létrehozása a parancssori felület használatával
       href: create-member-cli.md
+    - name: Tag létrehozása az Azure PowerShell-lel
+      href: create-member-powershell.md
     - name: Tag létrehozása ARM-sablon használatával
       displayName: Resource Manager
       href: create-member-template.md
@@ -81,7 +83,7 @@
     - name: Közösségi támogatás
       href: 'https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain'
     - name: Stack Overflow-támogatás
-      href: 'https://stackoverflow.com/questions/tagged/AzureBlockchainService'
+      href: 'https://stackoverflow.com/questions/tagged/azure-blockchain-service'
     - name: Termékkel kapcsolatos visszajelzés
       href: 'https://feedback.azure.com/forums/921130-azure-blockchain-service'
     - name: Díjszabás

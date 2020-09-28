@@ -2,11 +2,14 @@
   href: index.yml
   items:
     - name: Áttekintés
+      expanded: true
       items:
         - name: External Identities számára készült megoldások összehasonlítása
           href: compare-with-b2c.md
         - name: Mi a B2B vendégfelhasználói hozzáférés?
           href: what-is-b2b.md
+        - name: Mi az az Azure AD B2C?
+          href: 'https://docs.microsoft.com/azure/active-directory-b2c/overview'
     - name: Rövid útmutatók
       items:
         - name: Vendégfelhasználók hozzáadása a portálon
@@ -15,15 +18,15 @@
           href: b2b-quickstart-invite-powershell.md
     - name: Oktatóanyagok
       items:
-        - name: Tömeges meghívás a PowerShellen keresztül
+        - name: Vendégfelhasználók tömeges meghívása a PowerShell-lel
           href: bulk-invite-powershell.md
-        - name: Tömeges meghívás a portálon keresztül
+        - name: Vendégfelhasználók tömeges meghívása a portállal
           href: tutorial-bulk-invite.md
-        - name: Többtényezős hitelesítés kényszerítése
+        - name: Többtényezős hitelesítés kényszerítése vendégfelhasználók számára
           href: b2b-tutorial-require-mfa.md
     - name: Példák
       items:
-        - name: Minták önkiszolgáló regisztrációhoz
+        - name: Példák a vendégfelhasználók önkiszolgáló regisztrációjára
           href: code-samples-self-service-sign-up.md
         - name: Kód- és Azure PowerShell-minták
           href: code-samples.md
@@ -63,9 +66,9 @@
     - name: Útmutatók
       expanded: true
       items:
-        - name: Külső megosztás konfigurálása
+        - name: Külső együttműködési beállítások konfigurálása
           href: delegate-invitations.md
-        - name: B2B-felhasználók meghívása
+        - name: Vendégfelhasználók meghívása
           items:
             - name: B2B felhasználók rendszergazdák általi hozzáadása
               href: add-users-administrator.md
@@ -91,7 +94,7 @@
               href: direct-federation-adfs.md
         - name: Hitelesítés egyszeri PIN-kóddal
           href: one-time-passcode.md
-        - name: Önkiszolgáló regisztráció (előzetes verzió)
+        - name: Vendégfelhasználók önkiszolgáló regisztrációja (előzetes verzió)
           items:
             - name: Önkiszolgáló regisztráció felhasználói folyamatának hozzáadása
               href: self-service-sign-up-user-flow.md
@@ -113,7 +116,7 @@
               href: user-properties.md
             - name: Azure AD B2B integrált alkalmazások
               href: configure-saas-apps.md
-        - name: Hozzáférés-kezelés hibrid szervezetek esetében
+        - name: Vendéghozzáférés kezelése hibrid szervezetekben
           items:
             - name: Helyi felhasználók hozzáférésének engedélyezése a felhőalkalmazásokhoz
               href: hybrid-on-premises-to-cloud.md

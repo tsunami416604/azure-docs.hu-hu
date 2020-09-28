@@ -277,19 +277,19 @@
     - name: Fizetés fogadása
       items:
         - name: Fizetés fogadása
-          href: partner-center-portal/get-paid.md
+          href: /partner-center/marketplace-get-paid?context=/azure/marketplace/context/context
         - name: Kifizetési számla és űrlapok beállítása
-          href: partner-center-portal/set-up-your-payout-account-tax-forms.md
-        - name: 'Fizetési küszöbértékek, módszerek és időkeretek'
-          href: partner-center-portal/payment-thresholds-methods-timeframes.md
-        - name: Fizetési összegzés áttekintése
-          href: partner-center-portal/payout-summary-overview.md
-        - name: Fizetési összegzések
-          href: partner-center-portal/payout-summary.md
+          href: /partner-center/set-up-your-payout-account?context=/azure/marketplace/context/context
+        - name: Fizetési küszöbértékek és időkeretek
+          href: /partner-center/payment-thresholds-methods-timeframes?context=/azure/marketplace/context/context
+        - name: Kifizetési utasítások
+          href: /partner-center/payout-statement?context=/azure/marketplace/context/context
         - name: Fizetési szabályzat részletei
-          href: partner-center-portal/payout-policy-details.md
+          href: /partner-center/payout-policy-details?context=/azure/marketplace/context/context
         - name: Adó részletei
-          href: partner-center-portal/tax-details-paid-transactions.md
+          href: /partner-center/tax-details-marketplace?context=/azure/marketplace/context/context
+        - name: Kifizetések – GYIK
+          href: /partner-center/payout-faq?context=/azure/marketplace/context/context
     - name: CPP API-referencia
       items:
         - name: Áttekintés

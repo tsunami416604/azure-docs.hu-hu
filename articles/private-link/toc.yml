@@ -24,6 +24,10 @@
     - name: Privát kapcsolati szolgáltatás létrehozása – ARM-sablon
       displayName: Resource Manager
       href: create-private-link-service-template.md
+- name: Oktatóanyagok
+  items:
+    - name: Csatlakozás egy tárfiókhoz
+      href: tutorial-private-endpoint-storage-portal.md
 - name: Alapelvek
   items:
     - name: Privát végpont
@@ -38,8 +42,6 @@
           href: security-baseline.md
 - name: Útmutató
   items:
-    - name: Privát csatlakozás tárfiókokhoz
-      href: create-private-endpoint-storage-portal.md
     - name: Privát csatlakozás Cosmos DB-fiókhoz
       href: create-private-endpoint-cosmosdb-portal.md
     - name: Privát csatlakozás webalkalmazáshoz

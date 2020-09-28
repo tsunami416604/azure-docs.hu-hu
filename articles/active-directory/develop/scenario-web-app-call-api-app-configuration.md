@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 27926c687871180da78930be8e0968febcd77869
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: c8d68a17b3b991b88e02cf056dcb46da2debfa71
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91396314"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403194"
 ---
 # <a name="a-web-app-that-calls-web-apis-code-configuration"></a>Webes API-kat meghívó webalkalmazás: kód konfigurálása
 
@@ -175,13 +175,13 @@ Ha a Microsoft Graphtól eltérő webes API-t szeretne meghívni, a *Microsoft. 
    }
    ```
 
-### <a name="summary"></a>Összegzés
+### <a name="summary"></a>Összefoglalás
 
 A webes API-khoz hasonlóan különböző jogkivonat-gyorsítótár-implementációkat is választhat. Részletekért lásd: [Microsoft. Identity. Web-token cache szerializálás](https://aka.ms/ms-id-web/token-cache-serialization) a githubon.
 
 Az alábbi képen a *Microsoft. Identity. Web* különböző lehetőségei láthatók, valamint a *Startup.cs* fájlra gyakorolt hatásuk:
 
-:::image type="content" source="media/scenarios/microsoft-identity-web-startup-cs.png" alt-text="Webes API létrehozásakor dönthet úgy, hogy meghívja az alsóbb rétegbeli API-t és a jogkivonat-gyorsítótár implementációit.":::
+:::image type="content" source="media/scenarios/microsoft-identity-web-startup-cs.svg" alt-text="A webes API-k meghívásához és a jogkivonat-gyorsítótár implementációjának megadásához szükséges, a szolgáltatás konfigurációs beállításait bemutató diagram letiltása":::
 
 > [!NOTE]
 > Az itt található programkódok teljes megértéséhez ismernie kell [ASP.net Core alapjait](/aspnet/core/fundamentals), és különösen a [függőségi befecskendezést](/aspnet/core/fundamentals/dependency-injection) és a [beállításokat](/aspnet/core/fundamentals/configuration/options).

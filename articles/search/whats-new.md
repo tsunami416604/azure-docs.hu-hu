@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: 8c6cb08f8236ab6164a71b710656951203be3d19
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ccc10327d4de4134dd15e0ed936f6b938cbe31dd
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91314573"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403670"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Az Azure Cognitive Search újdonságai
 
@@ -70,7 +70,7 @@ Hozzon létre egy Azure Active Directory keresési szolgáltatás identitását,
 
 |Vonás&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategória | Leírás | Rendelkezésre állás  |
 |---------|------------------|-------------|---------------|
-| [**Natív blob – Soft Delete (előzetes verzió)**](search-howto-indexing-azure-blob-storage.md#incremental-indexing-and-deletion-detection) | Indexelők | Egy Azure Blob Storage indexelő az Azure-ban Cognitive Search felismeri a törölt állapotban lévő blobokat, és eltávolítja a megfelelő keresési dokumentumot az indexelés során. | Nyilvános előzetes verzió. </br> A [Search REST API 2020-06-30 – Preview](/rest/api/searchservice/index-preview) és a REST API 2019-05-06-Preview, a Run indexelő paranccsal olyan Azure Blob-adatforrást használhat, amelyen engedélyezve van a "Soft Delete" elem. |
+| [**Natív blob – Soft Delete (előzetes verzió)**](search-howto-index-changed-deleted-blobs.md) | Indexelők | Egy Azure Blob Storage indexelő az Azure-ban Cognitive Search felismeri a törölt állapotban lévő blobokat, és eltávolítja a megfelelő keresési dokumentumot az indexelés során. | Nyilvános előzetes verzió. </br> A [Search REST API 2020-06-30 – Preview](/rest/api/searchservice/index-preview) és a REST API 2019-05-06-Preview, a Run indexelő paranccsal olyan Azure Blob-adatforrást használhat, amelyen engedélyezve van a "Soft Delete" elem. |
 | [**Felügyeleti REST API (2020-03-13)**](/rest/api/searchmanagement/management-api-versions) | REST | Új stabil REST API keresési szolgáltatás létrehozásához és kezeléséhez. IP-tűzfal és privát hivatkozás támogatása | Általánosan elérhető. |
 
 ## <a name="february-2020"></a>2020. február

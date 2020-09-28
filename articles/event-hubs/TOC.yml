@@ -10,6 +10,8 @@
       href: event-hubs-capture-overview.md
     - name: Dedikált Event Hubs
       href: event-hubs-dedicated-overview.md
+    - name: Azure Schema Registry az Event Hubsban (előzetes verzió)
+      href: schema-registry-overview.md
 - name: Rövid útmutatók
   expanded: true
   items:
@@ -125,6 +127,8 @@
       maintainContext: true
 - name: Útmutatók
   items:
+    - name: Sémajegyzék létrehozása
+      href: create-schema-registry.md
     - name: Áthelyezés
       items:
         - name: Névtér áthelyezése egy másik régióba
@@ -219,6 +223,8 @@
           href: troubleshoot-authentication-authorization.md
         - name: Kafka hibaelhárítási útmutató az Event Hubshoz
           href: apache-kafka-troubleshooting-guide.md
+        - name: EventHubsException
+          href: exceptions-dotnet.md
         - name: .NET-kivételek
           href: event-hubs-messaging-exceptions.md
         - name: Resource Manager-kivételek

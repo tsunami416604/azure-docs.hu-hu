@@ -40,6 +40,10 @@
           href: costs/understand-work-scopes.md
         - name: Csoportosítási és szűrési lehetőségek
           href: costs/group-filter.md
+        - name: Költségek kezelésének terve
+          href: understand/plan-manage-costs.md
+        - name: Váratlan költségek megelőzése
+          href: understand/analyze-unexpected-charges.md
         - name: Költségek kezelése automatizálással
           href: costs/manage-automation.md
         - name: Cost Management partnerek számára
@@ -114,6 +118,8 @@
           href: understand/mca-overview.md
         - name: A Microsoft Partnerszerződés számlázási fiókjai
           href: understand/mpa-overview.md
+        - name: Tudnivalók az előfizetések átviteléről
+          href: understand/subscription-transfer.md
         - name: Előfizetések átadása partnerek között (előzetes verzió)
           href: manage/azure-plan-subscription-transfer-partners.md
 - name: Útmutatók
@@ -124,7 +130,7 @@
           items:
             - name: Fiókadminisztrátori feladatok
               href: manage/account-admin-tasks.md
-            - name: Profil szerkesztése
+            - name: Számlázási kapcsolattartási adatok szerkesztése
               href: manage/change-azure-account-profile.md
             - name: Késedelmes egyenleg kezelése
               href: manage/resolve-past-due-balance.md
@@ -246,8 +252,6 @@
               href: manage/upgrade-azure-subscription.md
     - name: Kulcsfontosságú költségkezelési feladatok elvégzése
       items:
-        - name: Váratlan költségek megelőzése
-          href: manage/getting-started.md
         - name: Díjszabás kiszámítása
           href: 'https://azure.microsoft.com/pricing/calculator/'
         - name: Gyakori műveletek költségelemzése

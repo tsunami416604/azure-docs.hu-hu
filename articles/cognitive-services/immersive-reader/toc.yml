@@ -16,7 +16,7 @@
       href: tutorial-multiple-resources.md
 - name: Útmutató
   items:
-    - name: Erőforrás létrehozása a Modern olvasóhoz
+    - name: Modern olvasó-erőforrás létrehozása
       href: how-to-create-immersive-reader.md
     - name: A cookie-kra vonatkozó irányelv beállítása
       href: how-to/set-cookie-policy.md

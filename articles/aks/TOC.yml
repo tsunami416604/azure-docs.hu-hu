@@ -250,7 +250,7 @@
           href: control-kubeconfig-access.md
         - name: Podforgalom biztonságossá tétele hálózati szabályzatokkal
           href: use-network-policies.md
-        - name: Podok biztonságossá tétele az Azure Policyval (előzetes verzió)
+        - name: Podok biztonságossá tétele az Azure Policyval
           href: use-pod-security-on-azure-policy.md
         - name: Podbiztonsági szabályzatok használata
           href: use-pod-security-policies.md

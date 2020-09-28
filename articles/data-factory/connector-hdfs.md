@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/28/2020
+ms.date: 09/28/2020
 ms.author: jingwang
-ms.openlocfilehash: 2a0093ebb6e3214553cf5603151831d6ae53d862
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 96603de7014419b142cc35714b891f9e4b15ec99
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91332049"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91405084"
 ---
 # <a name="copy-data-from-the-hdfs-server-by-using-azure-data-factory"></a>Adatok másolása a HDFS-kiszolgálóról Azure Data Factory használatával
 
@@ -279,6 +279,34 @@ Két lehetőség áll rendelkezésre a helyszíni környezet beállítására Ke
 * 1. lehetőség: [Csatlakozás egy saját üzemeltetésű integrációs modulhoz a Kerberos-tartományban](#kerberos-join-realm)
 * 2. lehetőség: [kölcsönös megbízhatóság engedélyezése a Windows-tartomány és a Kerberos tartomány között](#kerberos-mutual-trust)
 
+Mindkét beállításnál ügyeljen arra, hogy bekapcsolja a webhdfs a Hadoop-fürthöz:
+
+1. Hozza létre a HTTP-rendszerbiztonsági tag és a keytab kiterjesztésű a webhdfs.
+
+    > [!IMPORTANT]
+    > A HTTP Kerberos-rendszerbiztonsági tag a Kerberos HTTP-SPNEGO specifikációjának megfelelően "**http/**" értékkel kell kezdődnie.
+
+    ```bash
+    Kadmin> addprinc -randkey HTTP/<namenode hostname>@<REALM.COM>
+    Kadmin> ktadd -k /etc/security/keytab/spnego.service.keytab HTTP/<namenode hostname>@<REALM.COM>
+    ```
+
+2. HDFS-konfigurációs beállítások: adja hozzá a következő három tulajdonságot a alkalmazásban `hdfs-site.xml` .
+    ```xml
+    <property>
+        <name>dfs.webhdfs.enabled</name>
+        <value>true</value>
+    </property>
+    <property>
+        <name>dfs.web.authentication.kerberos.principal</name>
+        <value>HTTP/_HOST@<REALM.COM></value>
+    </property>
+    <property>
+        <name>dfs.web.authentication.kerberos.keytab</name>
+        <value>/etc/security/keytab/spnego.service.keytab</value>
+    </property>
+    ```
+
 ### <a name="option-1-join-a-self-hosted-integration-runtime-machine-in-the-kerberos-realm"></a><a name="kerberos-join-realm"></a>1. lehetőség: csatlakozás egy saját üzemeltetésű integrációs modulhoz a Kerberos-tartományban
 
 #### <a name="requirements"></a>Követelmények
@@ -287,13 +315,24 @@ Két lehetőség áll rendelkezésre a helyszíni környezet beállítására Ke
 
 #### <a name="how-to-configure"></a>Konfigurálás
 
+**A KDC-kiszolgálón:**
+
+Hozzon létre egy rendszerbiztonsági tag számára a használni kívánt Azure Data Factory, és határozza meg a jelszót.
+
+> [!IMPORTANT]
+> A Felhasználónév nem tartalmazhatja a hostname nevet.
+
+```bash
+Kadmin> addprinc <username>@<REALM.COM>
+```
+
 **A saját üzemeltetésű Integration Runtime gépen:**
 
 1.  Futtassa a Ksetup segédprogramot a Kerberos kulcsszolgáltató (KDC) kiszolgáló és a tartomány konfigurálásához.
 
     A gépet egy munkacsoport tagjaként kell konfigurálni, mert egy Kerberos-tartomány eltér a Windows-tartománytól. Ezt a konfigurációt úgy érheti el, ha beállítja a Kerberos-tartományt, és hozzáadja a KDC-kiszolgálót a következő parancsok futtatásával. Cserélje le a *REALM.com* a saját tartománynevére.
 
-    ```console
+    ```cmd
     C:> Ksetup /setdomain REALM.COM
     C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
     ```
@@ -302,7 +341,7 @@ Két lehetőség áll rendelkezésre a helyszíni környezet beállítására Ke
 
 2.  Ellenőrizze a konfigurációt a `Ksetup` paranccsal. A kimenetnek az alábbihoz hasonlónak kell lennie:
 
-    ```output
+    ```cmd
     C:> Ksetup
     default realm = REALM.COM (external)
     REALM.com:

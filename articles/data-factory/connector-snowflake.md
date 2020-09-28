@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/28/2020
-ms.openlocfilehash: 255fa9e058fdbb3b7edb73e75fd53f4a2490bfca
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.openlocfilehash: 5bb5599c6ab6e630e0f26c6d4a13e9c9af8a15a7
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90023856"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91405173"
 ---
 # <a name="copy-and-transform-data-in-snowflake-by-using-azure-data-factory"></a>A hópehely adatmásolási és-átalakítási szolgáltatásának Azure Data Factory
 
@@ -39,7 +39,7 @@ A másolási tevékenységhez ez a hópehely összekötő a következő függvé
 
 A hópehely as mosogató nem támogatott az Azure szinapszis Analytics-munkaterület használata esetén.
 
-## <a name="get-started"></a>Bevezetés
+## <a name="get-started"></a>Első lépések
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -357,7 +357,7 @@ Ha a forrás-adattár és-formátum megfelel az ebben a szakaszban ismertetett f
 
 #### <a name="staged-copy-to-snowflake"></a>Előkészített másolás a hópehely-ba
 
-Ha a fogadó adattára vagy formátuma nem kompatibilis a hópehely MÁSOLÁSi paranccsal, ahogy azt az utolsó szakaszban is említettük, engedélyezze a beépített előkészített másolatot egy ideiglenes Azure Blob Storage-példány használatával. Az előkészített másolási funkció jobb átviteli sebességet is biztosít. A Data Factory automatikusan átalakítja a hópehely adatformátumra vonatkozó követelményeinek megfelelő adatmennyiséget. Ezután meghívja a MÁSOLÁSi parancsot, hogy betöltse az adatbevitelt a hópehely-ba. Végezetül törli az ideiglenes adatait a blob Storage-ból. Az adatok átmeneti használatával történő másolásával kapcsolatos részletekért tekintse meg a [Lépcsőzetes másolás című szakaszt](copy-activity-performance-features.md#staged-copy) .
+Ha a forrás adattára vagy formátuma nem kompatibilis a hópehely MÁSOLÁSi paranccsal, ahogy azt az utolsó szakaszban is említettük, engedélyezze a beépített előkészített másolatot egy ideiglenes Azure Blob Storage-példány használatával. Az előkészített másolási funkció jobb átviteli sebességet is biztosít. A Data Factory automatikusan átalakítja a hópehely adatformátumra vonatkozó követelményeinek megfelelő adatmennyiséget. Ezután meghívja a MÁSOLÁSi parancsot, hogy betöltse az adatbevitelt a hópehely-ba. Végezetül törli az ideiglenes adatait a blob Storage-ból. Az adatok átmeneti használatával történő másolásával kapcsolatos részletekért tekintse meg a [Lépcsőzetes másolás című szakaszt](copy-activity-performance-features.md#staged-copy) .
 
 A szolgáltatás használatához hozzon létre egy [Azure Blob Storage-beli társított szolgáltatást](connector-azure-blob-storage.md#linked-service-properties) , amely az Azure Storage-fiókra hivatkozik átmeneti előkészítésként. Ezután adja meg a `enableStaging` és a `stagingSettings` tulajdonságokat a másolási tevékenységben.
 

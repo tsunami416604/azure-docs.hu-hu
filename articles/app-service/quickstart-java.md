@@ -10,12 +10,12 @@ ms.date: 08/01/2020
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 7f8e87b22e3d8f6e265789f910863b2790024cbf
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 4041623d1c6ae464afd20e3beff753fb89e0a350
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90532409"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91405071"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service"></a>Gyors útmutató: Java-alkalmazás létrehozása Azure App Service
 
@@ -71,21 +71,24 @@ A Azure App Service üzembe helyezési folyamata automatikusan az Azure CLI-vel 
 Futtassa az alábbi Maven-parancsot az üzemelő példány konfigurálásához. Ez a parancs segítséget nyújt a App Service operációs rendszer, a Java-verzió és a Tomcat-verzió beállításához.
 
 ```bash
-mvn com.microsoft.azure:azure-webapp-maven-plugin:1.10.0:config
+mvn com.microsoft.azure:azure-webapp-maven-plugin:1.11.0:config
 ```
 
 ::: zone pivot="platform-windows"
 
 # <a name="java-se"></a>[Java SE](#tab/javase)
 
-1. Ha a rendszer kéri, válassza a **Windows** lehetőséget a beírásával `2` .
-2. Használja az alapértelmezett Java-verziót (1,8) az ENTER billentyű lenyomásával.
-3. Végül nyomja le az ENTER billentyűt az utolsó üzenetben, hogy erősítse meg a beállításokat.
+1. Ha a rendszer megkérdezi az **előfizetést** , válassza ki a megfelelő értéket, ha `Subscription` beírja a kívánt számú nyomtatást a sor elején.
+1. Ha a rendszer a **webalkalmazást** kéri, fogadja el a defaut lehetőséget az `<create>` ENTER billentyű lenyomásával.
+1. Ha a rendszer az **operációs rendszer** beállítását kéri, válassza a **Windows** lehetőséget a beírásával `2` .
+1. Használja az alapértelmezett Java-verziót (1,8) az ENTER billentyű lenyomásával.
+1. Végül nyomja le az ENTER billentyűt az utolsó üzenetben, hogy erősítse meg a beállításokat.
 
     Az összefoglalás kimenete az alább látható kódrészlethez hasonlóan fog kinézni.
 
     ```
     Please confirm webapp properties
+    Subscription Id : ********-****-****-****-************
     AppName : spring-boot-1599007390755
     ResourceGroup : spring-boot-1599007390755-rg
     Region : westeurope
@@ -106,7 +109,9 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.10.0:config
 
 # <a name="tomcat"></a>[Tomcat](#tab/tomcat)
 
-1. Ha a rendszer kéri, válassza a **Windows** lehetőséget a beírásával `2` .
+1. Ha a rendszer megkérdezi az **előfizetést** , válassza ki a megfelelő értéket, ha `Subscription` beírja a kívánt számú nyomtatást a sor elején.
+1. Ha a rendszer a **webalkalmazást** kéri, fogadja el a defaut lehetőséget az `<create>` ENTER billentyű lenyomásával.
+1. Ha a rendszer az **operációs rendszer** beállítását kéri, válassza a **Windows** lehetőséget a beírásával `2` .
 1. Használja az alapértelmezett Java-verziót (1,8) az ENTER billentyű lenyomásával.
 1. A Tomcat 8,5 alapértelmezett webes tárolót az ENTER billentyű lenyomásával használhatja.
 1. Végül nyomja le az ENTER billentyűt az utolsó üzenetben, hogy erősítse meg a beállításokat.
@@ -115,6 +120,7 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.10.0:config
 
     ```
     Please confirm webapp properties
+    Subscription Id : ********-****-****-****-************
     AppName : helloworld-1599003152123
     ResourceGroup : helloworld-1599003152123-rg
     Region : westeurope
@@ -140,12 +146,15 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.10.0:config
 
 ### <a name="java-se"></a>[Java SE](#tab/javase)
 
-1. Ha a rendszer kéri, válassza a **Linux** lehetőséget az ENTER billentyű lenyomásával.
-2. Használja az alapértelmezett Java-verziót (1,8) az ENTER billentyű lenyomásával.
-3. Végül nyomja le az ENTER billentyűt az utolsó üzenetben, hogy erősítse meg a beállításokat.
+1. Ha a rendszer megkérdezi az **előfizetést** , válassza ki a megfelelő értéket, ha `Subscription` beírja a kívánt számú nyomtatást a sor elején.
+1. Ha a rendszer a **webalkalmazást** kéri, fogadja el a defaut lehetőséget az `<create>` ENTER billentyű lenyomásával.
+1. Ha a rendszer az **operációs rendszer** beállítását kéri, az ENTER billentyű lenyomásával válassza a **Linux** lehetőséget.
+1. Használja az alapértelmezett Java-verziót (1,8) az ENTER billentyű lenyomásával.
+1. Végül nyomja le az ENTER billentyűt az utolsó üzenetben, hogy erősítse meg a beállításokat.
 
     ```
     Please confirm webapp properties
+    Subscription Id : ********-****-****-****-************
     AppName : spring-boot-1599007116351
     ResourceGroup : spring-boot-1599007116351-rg
     Region : westeurope
@@ -165,13 +174,16 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.10.0:config
 
 ### <a name="tomcat"></a>[Tomcat](#tab/tomcat)
 
-1. Ha a rendszer kéri, válassza a **Linux** lehetőséget az ENTER billentyű lenyomásával.
+1. Ha a rendszer megkérdezi az **előfizetést** , válassza ki a megfelelő értéket, ha `Subscription` beírja a kívánt számú nyomtatást a sor elején.
+1. Ha a rendszer a **webalkalmazást** kéri, fogadja el a defaut lehetőséget az `<create>` ENTER billentyű lenyomásával.
+1. Ha a rendszer az **operációs rendszer** beállítását kéri, az ENTER billentyű lenyomásával válassza a **Linux** lehetőséget.
 1. Használja az alapértelmezett Java-verziót (1,8) az ENTER billentyű lenyomásával.
 1. A Tomcat 8,5 alapértelmezett webes tárolót az ENTER billentyű lenyomásával használhatja.
 1. Végül nyomja le az ENTER billentyűt az utolsó üzenetben, hogy erősítse meg a beállításokat.
 
     ```
     Please confirm webapp properties
+    Subscription Id : ********-****-****-****-************
     AppName : helloworld-1599003744223
     ResourceGroup : helloworld-1599003744223-rg
     Region : westeurope
@@ -198,6 +210,7 @@ Szükség esetén közvetlenül is módosíthatja App Service konfigurációit `
 Tulajdonság | Kötelező | Leírás | Verzió
 ---|---|---|---
 `<schemaVersion>` | hamis | Határozza meg a konfigurációs séma verzióját. A támogatott értékek a következők: `v1` , `v2` . | 1.5.2
+`<subscriptionId>` | hamis | Határozza meg az előfizetés azonosítóját. | 0.1.0 +
 `<resourceGroup>` | true | Azure-erőforráscsoport a webalkalmazáshoz. | 0.1.0 +
 `<appName>` | true | A webalkalmazás neve. | 0.1.0 +
 `<region>` | true | Meghatározza azt a régiót, ahol a webalkalmazás üzemeltetve lesz; az alapértelmezett érték a **westeurope**. A [támogatott régiók](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme) szakaszban található összes érvényes régió. | 0.1.0 +

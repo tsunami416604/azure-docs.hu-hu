@@ -81,12 +81,16 @@
       items:
         - name: Eszközsablon beállítása
           href: howto-set-up-template.md
+        - name: Tulajdonságok használata
+          href: howto-use-properties.md
         - name: Azure Sphere DevKit előkészítése és csatlakoztatása
           href: howto-connect-sphere.md
         - name: RuuviTag eszköz előkészítése és csatlakoztatása
           href: howto-connect-ruuvi.md
         - name: Rigado Cascade 500 előkészítése és csatlakoztatása
           href: howto-connect-rigado-cascade-500.md
+        - name: Eszközök csatlakoztatása az X.509 használatával
+          href: how-to-connect-devices-x509.md
         - name: Más IoT-felhők csatlakoztatása
           href: howto-build-iotc-device-bridge.md
     - name: A kapcsolat fenntartása

@@ -16,6 +16,8 @@
       href: connectivity.md
     - name: Tároló konfigurálása
       href: storage-configuration.md
+    - name: Méretezési útmutató
+      href: sizing-guidance.md
 - name: Útmutatók
   items:
     - name: Eszközök telepítése
@@ -47,7 +49,7 @@
         - name: Adatkezelő létrehozása (azdata)
           href: create-data-controller-using-azdata.md
         - name: Adatkezelő létrehozása Kubernetes használatával
-          href: create-data-controller-using-k8s-native-tools.md
+          href: create-data-controller-using-kubernetes-native-tools.md
     - name: Az Azure Arc-kompatibilis adatszolgáltatások közös felületei
       items:
         - name: Monitorozás irányítópulttal (Azure Data Studio)
@@ -90,6 +92,8 @@
           href: create-postgresql-hyperscale-server-group.md
         - name: Rugalmas skálázású Postgres-kiszolgálócsoport létrehozása (Azure Data Studio)
           href: create-postgresql-hyperscale-server-group-azure-data-studio.md
+        - name: Rugalmas skálázású Postgres-kiszolgálócsoport létrehozása – natív Kubernetes-eszközök
+          href: create-postgresql-hyperscale-server-group-kubernetes-native-tools.md
         - name: Kapcsolódás
           href: get-connection-endpoints-and-connection-strings-postgres-hyperscale.md
     - name: Alapelvek
@@ -148,6 +152,8 @@
           href: create-sql-managed-instance.md
         - name: Felügyelt SQL-példány létrehozása (Azure Data Studio)
           href: create-sql-managed-instance-azure-data-studio.md
+        - name: Létrehozás Kubernetes-eszközökkel
+          href: create-sql-managed-instance-using-kubernetes-native-tools.md
         - name: Kapcsolódás
           href: connect-managed-instance.md
     - name: Használati útmutató

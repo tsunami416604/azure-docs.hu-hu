@@ -3,18 +3,17 @@ title: BLOB-indexelő konfigurálása
 titleSuffix: Azure Cognitive Search
 description: Állítson be egy Azure Blob indexelő, amely automatizálja a Blobok tartalmának indexelését a teljes szöveges keresési műveletekhez az Azure Cognitive Searchban.
 manager: nitinme
-author: mgottein
-ms.author: magottei
-ms.devlang: rest-api
+author: MarkHeff
+ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 9fccd731cee5044b36de9a0dba4a408a9a5b9a49
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: e3419711c9a7358914f85574f6dbd5af29def1cf
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91355278"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403610"
 ---
 # <a name="how-to-configure-a-blob-indexer-in-azure-cognitive-search"></a>BLOB-indexelő konfigurálása az Azure-ban Cognitive Search
 
@@ -29,6 +28,7 @@ A blob-indexelő a következő dokumentum-formátumokból tud szöveget kinyerni
 [!INCLUDE [search-blob-data-sources](../../includes/search-blob-data-sources.md)]
 
 ## <a name="set-up-blob-indexing"></a>BLOB-indexelés beállítása
+
 Beállíthat egy Azure Blob Storage indexelő a használatával:
 
 * [Azure Portal](https://ms.portal.azure.com)
@@ -42,13 +42,14 @@ Beállíthat egy Azure Blob Storage indexelő a használatával:
 Itt a REST API használatával mutatjuk be a folyamatot.
 
 ### <a name="step-1-create-a-data-source"></a>1. lépés: Adatforrás létrehozása
+
 Az adatforrás meghatározza az adatokhoz való hozzáféréshez szükséges hitelesítő adatokat, valamint a szabályzatokat az adatok változásainak hatékony azonosításához (új, módosított vagy törölt sorok). Egy adatforrást több indexelő is használhat ugyanabban a keresési szolgáltatásban.
 
 A blob-indexeléshez az adatforrásnak a következő szükséges tulajdonságokkal kell rendelkeznie:
 
 * a **Name** a keresési szolgáltatásban található adatforrás egyedi neve.
 * a **típusnak a következőnek** kell lennie: `azureblob`
-* a **hitelesítő adatok** a Storage-fiókhoz tartozó kapcsolatok karakterláncát adja meg `credentials.connectionString` paraméterként. A részletekért lásd: az alábbi [hitelesítő adatok megadása](#Credentials) .
+* * * a hitelesítő adatok a Storage-fiókhoz tartozó kapcsolatok karakterláncát adják meg `credentials.connectionString` paraméterként. A részletekért lásd: az alábbi [hitelesítő adatok megadása](#Credentials) .
 * a **Container** egy tárolót határoz meg a Storage-fiókban. Alapértelmezés szerint a tárolóban lévő összes blob beolvasható. Ha a blobokat csak egy adott virtuális könyvtárban szeretné indexelni, megadhatja a könyvtárat a választható **lekérdezési** paraméter használatával.
 
 Adatforrás létrehozása:
@@ -63,20 +64,32 @@ Adatforrás létrehozása:
         "type" : "azureblob",
         "credentials" : { "connectionString" : "DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=<account key>;" },
         "container" : { "name" : "my-container", "query" : "<optional-virtual-directory-name>" }
-    }   
+    }
 ```
 
 További információ a Create DataSource API-ról: [adatforrás létrehozása](/rest/api/searchservice/create-data-source).
 
 <a name="Credentials"></a>
-#### <a name="how-to-specify-credentials"></a>Hitelesítő adatok megadása ####
+
+#### <a name="how-to-specify-credentials"></a>Hitelesítő adatok megadása
 
 A blob-tároló hitelesítő adatait az alábbi módszerek egyikével adhatja meg:
 
-- **Felügyelt identitás kapcsolódási karakterlánca**: `ResourceId=/subscriptions/<your subscription ID>/resourceGroups/<your resource group name>/providers/Microsoft.Storage/storageAccounts/<your storage account name>/;` ehhez a kapcsolódási karakterlánchoz nem szükséges a fiók kulcsa, de a [felügyelt identitás használatával kell végrehajtania egy Azure Storage-fiókhoz való kapcsolódás beállításának](search-howto-managed-identities-storage.md)utasításait.
-- **Teljes hozzáférésű Storage-fiók kapcsolati karakterlánca**: a `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` kapcsolati karakterláncot lekérheti a Azure Portal a Storage-fiók panel > beállítások > kulcsok (klasszikus Storage-fiókok esetében) vagy a beállítások > hozzáférési kulcsok (Azure Resource Manager Storage-fiókok esetében) eléréséhez.
-- **Storage-fiók közös hozzáférésű aláírási** (SAS) kapcsolati karakterlánca: `BlobEndpoint=https://<your account>.blob.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=b&sp=rl` az SAS-nek szerepelnie kell a listán, és olvasási engedéllyel kell rendelkeznie a tárolók és objektumok (ebben az esetben Blobok).
--  **Tároló megosztott hozzáférésének aláírása**: `ContainerSharedAccessUri=https://<your storage account>.blob.core.windows.net/<container name>?sv=2016-05-31&sr=c&sig=<the signature>&se=<the validity end time>&sp=rl` az SAS-nek a tárolóban szerepelnie kell a listához és az olvasási engedéllyel.
+* **Felügyelt identitás-kapcsolatok karakterlánca**: `ResourceId=/subscriptions/<your subscription ID>/resourceGroups/<your resource group name>/providers/Microsoft.Storage/storageAccounts/<your storage account name>/;` 
+
+  Ehhez a kapcsolódási karakterlánchoz nem szükséges a fiók kulcsa, de a [felügyelt identitás használatával kell megadnia egy Azure Storage-fiókhoz való kapcsolódás beállításának](search-howto-managed-identities-storage.md)utasításait.
+
+* **Teljes hozzáférésű Storage-fiók kapcsolati sztringje**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>`
+
+  A kapcsolati karakterláncot a Azure Portal a Storage-fiók panel > beállítások > kulcsok (klasszikus Storage-fiókok esetében) vagy a beállítások > hozzáférési kulcsok (Azure Resource Manager Storage-fiókok esetében) lehetőségre kattintva érheti el.
+
+* A **Storage-fiók közös hozzáférésű aláírása** (SAS) kapcsolati karakterlánca:`BlobEndpoint=https://<your account>.blob.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=b&sp=rl`
+
+  Az SAS-nek szerepelnie kell a listán, és olvasási engedéllyel kell rendelkeznie a tárolók és objektumok számára (ebben az esetben Blobok).
+
+* **Tároló közös hozzáférésének aláírása**: `ContainerSharedAccessUri=https://<your storage account>.blob.core.windows.net/<container name>?sv=2016-05-31&sr=c&sig=<the signature>&se=<the validity end time>&sp=rl`
+
+  Az SAS-nek a tárolóban szerepelnie kell a listához és az olvasáshoz szükséges engedélyekkel.
 
 További információ a Storage közös hozzáférésű aláírásáról: a [közös hozzáférésű aláírások használata](../storage/common/storage-sas-overview.md).
 
@@ -84,9 +97,10 @@ További információ a Storage közös hozzáférésű aláírásáról: a [kö
 > Ha SAS hitelesítő adatokat használ, az adatforráshoz tartozó hitelesítő adatokat rendszeresen frissítenie kell megújított aláírásokkal a lejárat megakadályozása érdekében. Ha az SAS hitelesítő adatai lejárnak, az indexelő a következőhöz hasonló hibaüzenettel fog meghiúsulni: `Credentials provided in the connection string are invalid or have expired.` .  
 
 ### <a name="step-2-create-an-index"></a>2. lépés: Index létrehozása
+
 Az index meghatározza a dokumentumok, attribútumok és más, a keresési élményt formáló szerkezetek mezőit.
 
-Ebből a témakörből megtudhatja, hogyan hozhat létre egy kereshető mezőt tartalmazó indexet `content` a blobokból kinyert szöveg tárolásához:   
+Ebből a témakörből megtudhatja, hogyan hozhat létre egy kereshető mezőt tartalmazó indexet `content` a blobokból kinyert szöveg tárolásához:
 
 ```http
     POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
@@ -102,9 +116,10 @@ Ebből a témakörből megtudhatja, hogyan hozhat létre egy kereshető mezőt t
     }
 ```
 
-További információk az indexek létrehozásáról: [create index](/rest/api/searchservice/create-index)
+További információ: [create index (REST API)](/rest/api/searchservice/create-index).
 
 ### <a name="step-3-create-an-indexer"></a>3. lépés: indexelő létrehozása
+
 Az indexelő összekapcsolja az adatforrást a cél keresési indexszel, és az Adatfrissítés automatizálására szolgáló ütemtervet biztosít.
 
 Miután létrehozta az indexet és az adatforrást, készen áll az indexelő létrehozására:
@@ -124,9 +139,7 @@ Miután létrehozta az indexet és az adatforrást, készen áll az indexelő l�
 
 Ez az indexelő két óránként fut (az ütemezett időköz értéke "PT2H"). Az indexelő 30 percenkénti futtatásához állítsa az intervallumot "PT30M" értékre. A legrövidebb támogatott időköz 5 perc. Az ütemterv nem kötelező – ha nincs megadva, az indexelő csak egyszer fut a létrehozáskor. Az indexelő igény szerinti futtatása azonban bármikor elvégezhető.   
 
-Az indexelő API létrehozásával kapcsolatos további információkért tekintse meg az [Indexelő létrehozása](/rest/api/searchservice/create-indexer)című leírást.
-
-Az indexelő-ütemtervek definiálásával kapcsolatos további információkért lásd: [Az Azure Cognitive Search indexelő szolgáltatásának beosztása](search-howto-schedule-indexers.md).
+További információ: [create Indexer (REST API)](/rest/api/searchservice/create-indexer). Az indexelő-ütemtervek definiálásával kapcsolatos további információkért lásd: [Az Azure Cognitive Search indexelő szolgáltatásának beosztása](search-howto-schedule-indexers.md).
 
 <a name="how-azure-search-indexes-blobs"></a>
 
@@ -141,18 +154,25 @@ Az [Indexelő konfigurációjától](#PartsOfBlobToIndex)függően a blob indexe
 
 * A dokumentum szöveges tartalma kinyerve egy nevű karakterlánc-mezőbe `content` .
 
-> [!NOTE]
-> Az Azure Cognitive Search az árképzési szinttől függően Kinyeri a szöveg mennyiségét: 32 000 karakter az ingyenes szinthez, 64 000 az alapszintű, 4 000 000 a standard, a 8 000 000 a standard S2 és az 16 000 000 standard S3-hoz. A rendszer figyelmeztetést tartalmaz az indexelő állapotának a csonkolt dokumentumokra adott válaszában.  
+  > [!NOTE]
+  > Az Azure Cognitive Search az árképzési szinttől függően Kinyeri a szöveg mennyiségét: 32 000 karakter az ingyenes szinthez, 64 000 az alapszintű, 4 000 000 a standard, a 8 000 000 a standard S2 és az 16 000 000 standard S3-hoz. A rendszer figyelmeztetést tartalmaz az indexelő állapotának a csonkolt dokumentumokra adott válaszában.  
 
 * A blobon (ha van ilyen) a felhasználó által megadott metaadat-tulajdonságok szó szerint vannak kibontva. Vegye figyelembe, hogy ehhez az indexben meg kell adni egy olyan mezőt, amelynek a neve megegyezik a blob metaadat-kulcsával. Ha például a blob egy értékkel rendelkező metaadat-kulccsal rendelkezik `Sensitivity` `High` , akkor meg kell adnia egy nevű mezőt a `Sensitivity` keresési indexben, és az értékkel lesz feltöltve `High` .
+
 * A Blobok szabványos metaadat-tulajdonságainak kibontása a következő mezőkbe történik:
 
   * **metaadat- \_ tároló \_ neve** (EDM. String) – a blob fájlneve. Ha például egy blob/My-Container/My-Folder/subfolder/resume.pdf, a mező értéke `resume.pdf` .
+
   * **metaadat- \_ tároló \_ elérési útja** (EDM. String) – a blob teljes URI-ja, beleértve a Storage-fiókot is. Például: `https://myaccount.blob.core.windows.net/my-container/my-folder/subfolder/resume.pdf`
+
   * **metaadatok \_ tárolási \_ tartalmának \_ típusa** (EDM. String) – tartalomtípus, amelyet a blob feltöltéséhez használt kód határoz meg. Például: `application/octet-stream`.
+
   * **metaadat- \_ tároló \_ utolsó \_ módosítása** (EDM. DateTimeOffset) – a blob utolsó módosításának időbélyege. Az Azure Cognitive Search ezt az időbélyeget használja a módosított Blobok azonosításához, hogy ne legyenek újraindexelve a kezdeti indexelés után.
+
   * **metaadatok \_ tárolási \_ mérete** (EDM. Int64) – blob mérete bájtban.
+
   * **metaadat- \_ tároló \_ tartalma \_ Md5** (EDM. String) – a blob tartalmának MD5 kivonata, ha van ilyen.
+
   * **metaadat- \_ tároló \_ sas- \_ tokenje** (EDM. String) – ideiglenes sas-token, amelyet az [egyéni képességek](cognitive-search-custom-skill-interface.md) használhatnak a blobhoz való hozzáféréshez. Ezt a jogkivonatot nem szabad a későbbi használat céljából tárolni, mivel az lejáró lehet.
 
 * Az egyes dokumentum-formátumokra jellemző metaadat-tulajdonságokat a rendszer kinyeri az [itt](#ContentSpecificMetadata)felsorolt mezőkbe.
@@ -162,17 +182,20 @@ Nem kell mezőket meghatároznia a keresési index fenti tulajdonságaihoz – c
 > [!NOTE]
 > Gyakran előfordul, hogy a meglévő index mezőinek neve eltér a dokumentumok kinyerése során generált mezők neveitől. A mező- **hozzárendelések** segítségével leképezheti az Azure Cognitive Search által megadott tulajdonságokat a keresési index mezőinek neveihez. Ekkor megjelenik egy példa a mező-hozzárendelésekre, amelyeket az alábbiakban használ.
 >
->
 
 <a name="DocumentKeys"></a>
+
 ### <a name="defining-document-keys-and-field-mappings"></a>A dokumentumok kulcsainak és a mezők hozzárendelésének meghatározása
+
 Az Azure Cognitive Search a dokumentum kulcsa egyedileg azonosít egy dokumentumot. Minden keresési indexnek pontosan egy EDM. String típusú Key mezővel kell rendelkeznie. A Key mezőt kötelező megadni az indexhez hozzáadott összes dokumentumhoz (ez valójában az egyetlen kötelező mező).  
 
 Alaposan gondolja át, hogy melyik kibontott mező legyen leképezve az index Key mezőjére. A jelöltek a következők:
 
 * **metaadat- \_ tároló \_ neve** – ez lehet egy kényelmes jelölt, de vegye figyelembe, hogy 1) a nevek nem egyediek, mivel előfordulhat, hogy az azonos nevű Blobok eltérő mappákban találhatók, és 2) a név olyan karaktereket tartalmazhat, amelyek érvénytelenek a dokumentum kulcsaiban, például kötőjelek. Az érvénytelen karaktereket a `base64Encode` [mező-hozzárendelési függvény](search-indexer-field-mappings.md#base64EncodeFunction) használatával kezelheti – ha ezt teszi, ne felejtse el kódolni a dokumentum kulcsait, amikor azok API-hívásokban, például a kereséskor kerülnek továbbításra. (Például a .NET-ben a [UrlTokenEncode metódust](/dotnet/api/system.web.httpserverutility.urltokenencode) használhatja erre a célra).
+
 * **metaadat- \_ tárolási \_ útvonal** – a teljes elérési út használata biztosítja az egyediséget, de az elérési út határozottan olyan karaktereket tartalmaz, `/` amelyek [érvénytelenek a dokumentum kulcsában](/rest/api/searchservice/naming-rules).  A fentieknek megfelelően lehetősége van a kulcsok kódolására a `base64Encode` [függvény](search-indexer-field-mappings.md#base64EncodeFunction)használatával.
-* Ha a fenti lehetőségek egyike sem működik, hozzáadhat egy egyéni metaadat-tulajdonságot a blobokhoz. Ez a beállítás azonban megköveteli a blob feltöltési folyamatát, hogy hozzáadja a metaadat-tulajdonságot az összes blobhoz. Mivel a kulcs egy kötelező tulajdonság, a tulajdonságot nem tartalmazó Blobok nem lesznek indexelve.
+
+* A harmadik lehetőség egy egyéni metaadat-tulajdonság hozzáadása a blobokhoz. Ez a beállítás azonban megköveteli, hogy a blob feltöltési folyamata hozzáadja az összes blobhoz a metaadat-tulajdonságot. Mivel a kulcs egy kötelező tulajdonság, a tulajdonságot nem tartalmazó Blobok nem lesznek indexelve.
 
 > [!IMPORTANT]
 > Ha nincs explicit leképezés a kulcs mezőhöz az indexben, az Azure Cognitive Search automatikusan a kulcsként `metadata_storage_path` és az alap-64 kódolással kódolja a kulcs értékeit (a fenti második lehetőség).
@@ -206,10 +229,7 @@ A következő lépésekkel egyesítheti a mezőket, és engedélyezheti a kulcso
     }
 ```
 
-> [!NOTE]
-> A mezők hozzárendelésével kapcsolatos további tudnivalókért tekintse meg [ezt a cikket](search-indexer-field-mappings.md).
->
->
+További információ: [mező-hozzárendelések és átalakítások](search-indexer-field-mappings.md).
 
 #### <a name="what-if-you-need-to-encode-a-field-to-use-it-as-a-key-but-you-also-want-to-search-it"></a>Mi a teendő, ha olyan mezőt kell kódolni, amelyet kulcsként kíván használni, de azt is érdemes megkeresni?
 
@@ -231,6 +251,7 @@ Vannak olyan időpontok, amikor egy mező kódolású verzióját kell használn
     }
 ```
 <a name="WhichBlobsAreIndexed"></a>
+
 ## <a name="index-by-file-type"></a>Index fájltípus szerint
 
 Megadhatja, hogy mely Blobok indexelve legyenek, és melyeket a rendszer kihagyja.
@@ -268,6 +289,7 @@ A konfigurációs paraméter használatával kizárhat olyan blobokat, amelyek a
 Ha mindkettő `indexedFileNameExtensions` és `excludedFileNameExtensions` paraméter szerepel, az Azure Cognitive Search először a következőt tekinti meg: `indexedFileNameExtensions` `excludedFileNameExtensions` . Ez azt jelenti, hogy ha ugyanaz a fájlkiterjesztés szerepel mindkét listán, az indexelésből ki lesz zárva.
 
 <a name="PartsOfBlobToIndex"></a>
+
 ## <a name="index-parts-of-a-blob"></a>BLOB elemeinek indexe
 
 Megadhatja, hogy a Blobok mely részei legyenek indexelve a `dataToExtract` konfigurációs paraméter használatával. A következő értékeket veheti fel:
@@ -298,6 +320,33 @@ A fent ismertetett konfigurációs paraméterek az összes blobra érvényesek. 
 | AzureSearch_Skip |igaz |Arra utasítja a blob indexelő, hogy teljesen kihagyja a blobot. Sem a metaadatok, sem a tartalom kibontása nem történt meg. Ez akkor hasznos, ha egy adott blob többször meghiúsul, és megszakítja az indexelési folyamatot. |
 | AzureSearch_SkipContent |igaz |Ez egyenértékű a `"dataToExtract" : "allMetadata"` [fent](#PartsOfBlobToIndex) ismertetett beállítással egy adott blobon. |
 
+## <a name="index-from-multiple-sources"></a>Index több forrásból
+
+Előfordulhat, hogy az indexben több forrásból is össze kívánja állítani a dokumentumokat. Előfordulhat például, hogy a Blobok szövegét szeretné egyesíteni a Cosmos DBban tárolt egyéb metaadatokkal. A leküldéses indexelés API-t és a különböző indexelő elemeket is használhatja a keresési dokumentumok több részből való kiépítéséhez.
+
+Ahhoz, hogy működjön, minden indexelő és más összetevőnek meg kell egyeznie a dokumentum kulcsával. A témakörről további részleteket a [több Azure-adatforrások](./tutorial-multiple-data-sources.md) és a jelen blogbejegyzések indexelését ismertető cikkben talál, és az [Azure Cognitive Searchban található egyéb adatokkal egyesítheti a dokumentumokat](https://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html).
+
+## <a name="index-large-datasets"></a>Nagyméretű adathalmazok indexelése
+
+Az indexelési Blobok időigényes folyamat lehet. Abban az esetben, ha több millió blobot tartalmaz az indexeléshez, felgyorsíthatja az indexelést, ha particionálja az adatait, és több indexelő használatával dolgozza fel az adatait párhuzamosan. Ezt a következőképpen állíthatja be:
+
+* Az adatai particionálása több blob-tárolóba vagy virtuális mappába
+
+* Állítson be több Azure Cognitive Search adatforrást, egy tárolót vagy egy mappát. Ha egy blob mappára szeretne mutatni, használja a következő `query` paramétert:
+
+    ```json
+    {
+        "name" : "blob-datasource",
+        "type" : "azureblob",
+        "credentials" : { "connectionString" : "<your storage connection string>" },
+        "container" : { "name" : "my-container", "query" : "my-folder" }
+    }
+    ```
+
+* Hozzon létre egy megfelelő indexelő az egyes adatforrásokhoz. Az összes indexelő képes ugyanarra a cél keresési indexre mutatni.  
+
+* A szolgáltatás egy keresési egysége egy adott időpontban képes futtatni egy indexelő szolgáltatást. Több indexelő létrehozása a fent leírtak szerint csak akkor hasznos, ha ténylegesen párhuzamosan futnak. Több indexelő párhuzamos futtatásához bővítse a keresési szolgáltatást a megfelelő számú partíció és replika létrehozásával. Ha például a Search szolgáltatás 6 keresési egységgel rendelkezik (például 2 partíciós x 3 replika), akkor 6 indexelő is futhat egyszerre, ami az indexelési teljesítmény hat szorzott növekedését eredményezi. A méretezéssel és a kapacitás megtervezésével kapcsolatos további tudnivalókért tekintse meg [Az Azure Cognitive Search szolgáltatás kapacitásának módosítását](search-capacity-planning.md)ismertető témakört.
+
 <a name="DealingWithErrors"></a>
 
 ## <a name="handle-errors"></a>Hibakezelés
@@ -321,7 +370,7 @@ Egyes Blobok esetében az Azure Cognitive Search nem tudja meghatározni a tarta
       "parameters" : { "configuration" : { "failOnUnprocessableDocument" : false } }
 ```
 
-Az Azure Cognitive Search korlátozza az indexelt Blobok méretét. Ezek a korlátok az [Azure Cognitive Search szolgáltatási korlátaiban](./search-limits-quotas-capacity.md)vannak dokumentálva. A túlméretezett Blobok alapértelmezés szerint hibákként vannak kezelve. Azonban továbbra is indexelheti a túl nagy méretű Blobok tárolási metaadatait, ha `indexStorageMetadataOnlyForOversizedDocuments` a konfigurációs paraméter igaz értékre van állítva: 
+Az Azure Cognitive Search korlátozza az indexelt Blobok méretét. Ezek a korlátok az [Azure Cognitive Search szolgáltatási korlátaiban](./search-limits-quotas-capacity.md)vannak dokumentálva. A túlméretezett Blobok alapértelmezés szerint hibákként vannak kezelve. Azonban továbbra is indexelheti a túl nagy méretű Blobok tárolási metaadatait, ha `indexStorageMetadataOnlyForOversizedDocuments` a konfigurációs paraméter igaz értékre van állítva:
 
 ```http
     "parameters" : { "configuration" : { "indexStorageMetadataOnlyForOversizedDocuments" : true } }
@@ -336,138 +385,10 @@ Folytathatja az indexelést is, ha a hibák bármilyen feldolgozási ponton tör
     }
 ```
 
-## <a name="incremental-indexing-and-deletion-detection"></a>Növekményes indexelés és törlés észlelése
-
-Ha úgy állítja be a blob-indexelő, hogy az ütemterv szerint fusson, akkor csak a blob időbélyegzője által meghatározott módosított blobokat indexeli `LastModified` .
-
-> [!NOTE]
-> Nem kell megadnia a változás-észlelési házirendet – a növekményes indexelés automatikusan engedélyezve van.
-
-A dokumentumok törlésének támogatásához használjon "Soft Delete" megközelítést. Ha törli a blobokat, a megfelelő dokumentumokat nem távolítja el a rendszer a keresési indexből.
-
-A Soft delete módszert kétféleképpen lehet megvalósítani. Mindkettőről alább olvashat.
-
-### <a name="native-blob-soft-delete-preview"></a>Natív blob – Soft Delete (előzetes verzió)
-
-> [!IMPORTANT]
-> A natív Blobok Soft delete támogatása előzetes verzióban érhető el. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül érhetők el, és éles számítási feladatokhoz nem ajánlott. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A [REST API 2020-06-30-es verziójának előzetes verziója](./search-api-preview.md) biztosítja ezt a funkciót. Jelenleg nincs portál vagy .NET SDK-támogatás.
-
-> [!NOTE]
-> Ha a natív blob Soft delete szabályzatot használja, az index dokumentumaihoz tartozó dokumentum kulcsainak blob tulajdonságnak vagy blob-metaadatoknak kell lennie.
-
-Ebben a módszerben az Azure Blob Storage által kínált [natív blob-törlési](../storage/blobs/soft-delete-blob-overview.md) funkciót fogja használni. Ha a natív blobos törlés engedélyezve van a Storage-fiókban, az adatforrás natív törlési szabályzattal rendelkezik, és az indexelő olyan blobot talál, amely a törölt állapotba került, az indexelő eltávolítja a dokumentumot az indexből. A Blobok natív törlési szabályzata nem támogatott a Blobok Azure Data Lake Storage Gen2ból való indexelése során.
-
-Ehhez a következő lépések szükségesek:
-1. [Az Azure Blob Storage natív törlésének](../storage/blobs/soft-delete-blob-overview.md)engedélyezése. Azt javasoljuk, hogy az adatmegőrzési szabályzatot olyan értékre állítsa be, amely sokkal nagyobb, mint az indexelő intervallumának ütemezett értéke. Így ha probléma merül fel az indexelő futtatásakor, vagy ha nagy számú dokumentumot szeretne indexelni, akkor elég sok idő van arra, hogy az indexelő feldolgozza a puha törölt blobokat. Az Azure Cognitive Search-indexek csak akkor törölnek egy dokumentumot az indexből, ha a blobot feldolgozza, miközben a rendszer helyreállított állapotban van.
-1. Natív blobos törlési észlelési házirend konfigurálása az adatforráson. Erre mutat példát az alábbi ábra. Mivel ez a funkció előzetes verzióban érhető el, az előzetes verziójú REST API kell használnia.
-1. Az indexelő futtatása vagy az indexelő beállítása ütemezett futtatásra. Amikor az indexelő futtatja és feldolgozza a blobot, a rendszer eltávolítja a dokumentumot az indexből.
-
-    ```
-    PUT https://[service name].search.windows.net/datasources/blob-datasource?api-version=2020-06-30-Preview
-    Content-Type: application/json
-    api-key: [admin key]
-    {
-        "name" : "blob-datasource",
-        "type" : "azureblob",
-        "credentials" : { "connectionString" : "<your storage connection string>" },
-        "container" : { "name" : "my-container", "query" : null },
-        "dataDeletionDetectionPolicy" : {
-            "@odata.type" :"#Microsoft.Azure.Search.NativeBlobSoftDeleteDeletionDetectionPolicy"
-        }
-    }
-    ```
-
-#### <a name="reindexing-undeleted-blobs"></a>Nem törölt Blobok újraindexelése
-
-Ha töröl egy blobot az Azure Blob Storage-ból, és a natív törlés engedélyezve van a Storage-fiókban, a blob egy helyreállítható törölt állapotba kerül, amely lehetővé teszi a blob törlését a megőrzési időn belül. Ha egy Azure Cognitive Search adatforráshoz natív blob-törlési házirend tartozik, és az indexelő feldolgozza a törölt blobokat, azzal eltávolítja az adott dokumentumot az indexből. Ha a blob később törölve lett, az indexelő nem mindig fogja újraindexelni a blobot. Ennek az az oka, hogy az indexelő meghatározza, hogy mely Blobok legyenek indexelve a blob `LastModified` időbélyege alapján. Ha a rendszer nem frissíti a nem törölt blobokat `LastModified` , ezért ha az indexelő már feldolgozta a blobokat a nem `LastModified` törölt blobnál frissebb időbélyegekkel, akkor nem fogja újraindexelni a nem törölt blobot. A nem törölt Blobok újraindexelésének biztosításához frissítenie kell a blob `LastModified` időbélyegét. Ezt úgy teheti meg, ha átmenti a blob metaadatait. Nem kell módosítania a metaadatokat, de a metaadatok újramentése a blob `LastModified` időbélyegét fogja frissíteni, hogy az indexelő tudja, hogy újra kell indexelni ezt a blobot.
-
-### <a name="soft-delete-using-custom-metadata"></a>Soft delete egyéni metaadatok használatával
-
-Ebben a metódusban egy blob metaadatait fogja használni, amely jelzi, ha egy dokumentumot el kell távolítani a keresési indexből.
-
-Ehhez a következő lépések szükségesek:
-
-1. Adjon hozzá egy egyéni metaadat-érték párokat a blobhoz, hogy jelezze az Azure Cognitive Search, hogy logikailag törölve van.
-1. Állítsa be az adatforrásra vonatkozó, a törlési oszlop észlelésére szolgáló házirendet. Erre mutat példát az alábbi ábra.
-1. Miután az indexelő feldolgozta a blobot, és törölte a dokumentumot az indexből, törölheti az Azure Blob Storage-hoz tartozó blobot.
-
-Az alábbi szabályzat például egy olyan blobot tekint, amelyet törölni kell, ha a metaadatok tulajdonsága a következő `IsDeleted` értékkel rendelkezik `true` :
-
-```http
-    PUT https://[service name].search.windows.net/datasources/blob-datasource?api-version=2020-06-30
-    Content-Type: application/json
-    api-key: [admin key]
-
-    {
-        "name" : "blob-datasource",
-        "type" : "azureblob",
-        "credentials" : { "connectionString" : "<your storage connection string>" },
-        "container" : { "name" : "my-container", "query" : null },
-        "dataDeletionDetectionPolicy" : {
-            "@odata.type" :"#Microsoft.Azure.Search.SoftDeleteColumnDeletionDetectionPolicy",     
-            "softDeleteColumnName" : "IsDeleted",
-            "softDeleteMarkerValue" : "true"
-        }
-    }
-```
-
-#### <a name="reindexing-undeleted-blobs"></a>Nem törölt Blobok újraindexelése
-
-Ha az adatforráshoz állít be egy helyreállítható törlési házirendet, majd hozzáadja az egyéni metaadatokat egy blobhoz a jelölő értékkel, majd futtatja az indexelő, az indexelő eltávolítja ezt a dokumentumot az indexből. Ha szeretné átindexelni ezt a dokumentumot, egyszerűen módosítsa az adott blobhoz tartozó Soft delete metaadat értékét, és futtassa újra az indexelő.
-
-## <a name="indexing-large-datasets"></a>Nagyméretű adathalmazok indexelése
-
-Az indexelési Blobok időigényes folyamat lehet. Abban az esetben, ha több millió blobot tartalmaz az indexeléshez, felgyorsíthatja az indexelést, ha particionálja az adatait, és több indexelő használatával dolgozza fel az adatait párhuzamosan. Ezt a következőképpen állíthatja be:
-
-- Az adatai particionálása több blob-tárolóba vagy virtuális mappába
-- Állítson be több Azure Cognitive Search adatforrást, egy tárolót vagy egy mappát. Ha egy blob mappára szeretne mutatni, használja a következő `query` paramétert:
-
-    ```
-    {
-        "name" : "blob-datasource",
-        "type" : "azureblob",
-        "credentials" : { "connectionString" : "<your storage connection string>" },
-        "container" : { "name" : "my-container", "query" : "my-folder" }
-    }
-    ```
-
-- Hozzon létre egy megfelelő indexelő az egyes adatforrásokhoz. Az összes indexelő képes ugyanarra a cél keresési indexre mutatni.  
-
-- A szolgáltatás egy keresési egysége egy adott időpontban képes futtatni egy indexelő szolgáltatást. Több indexelő létrehozása a fent leírtak szerint csak akkor hasznos, ha ténylegesen párhuzamosan futnak. Több indexelő párhuzamos futtatásához bővítse a keresési szolgáltatást a megfelelő számú partíció és replika létrehozásával. Ha például a Search szolgáltatás 6 keresési egységgel rendelkezik (például 2 partíciós x 3 replika), akkor 6 indexelő is futhat egyszerre, ami az indexelési teljesítmény hat szorzott növekedését eredményezi. A méretezéssel és a kapacitás megtervezésével kapcsolatos további tudnivalókért lásd: [erőforrások szintjeinek méretezése lekérdezési és indexelési feladatokhoz az Azure Cognitive Searchban](search-capacity-planning.md).
-
-## <a name="indexing-documents-along-with-related-data"></a>Dokumentumok indexelése kapcsolódó adatokkal együtt
-
-Előfordulhat, hogy az indexben több forrásból is össze kívánja állítani a dokumentumokat. Előfordulhat például, hogy a Blobok szövegét szeretné egyesíteni a Cosmos DBban tárolt egyéb metaadatokkal. A leküldéses indexelés API-t és a különböző indexelő elemeket is használhatja a keresési dokumentumok több részből való kiépítéséhez. 
-
-Ahhoz, hogy működjön, minden indexelő és más összetevőnek meg kell egyeznie a dokumentum kulcsával. A témakörről további részleteket a [több Azure-adatforrások indexelését](./tutorial-multiple-data-sources.md)ismertető cikkben találhat. Részletes útmutatóért tekintse meg ezt a külső cikket: [dokumentumok összevonása az Azure Cognitive Searchban található egyéb információkkal](https://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html).
-
-<a name="IndexingPlainText"></a>
-## <a name="indexing-plain-text"></a>Egyszerű szöveg indexelése 
-
-Ha az összes blob egyszerű szöveget tartalmaz ugyanabban a kódolásban, akkor a **szöveges elemzési mód**használatával jelentősen javíthatja az indexelési teljesítményt. A szöveges elemzési mód használatához a következőt állítsa be a `parsingMode` konfigurációs tulajdonságra `text` :
-
-```http
-    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
-    Content-Type: application/json
-    api-key: [admin key]
-
-    {
-      ... other parts of indexer definition
-      "parameters" : { "configuration" : { "parsingMode" : "text" } }
-    }
-```
-
-Alapértelmezés szerint a `UTF-8` rendszer a kódolást feltételezi. Másik kódolás megadásához használja a következő `encoding` konfigurációs tulajdonságot: 
-
-```http
-    {
-      ... other parts of indexer definition
-      "parameters" : { "configuration" : { "parsingMode" : "text", "encoding" : "windows-1252" } }
-    }
-```
-
 <a name="ContentSpecificMetadata"></a>
+
 ## <a name="content-type-specific-metadata-properties"></a>Tartalomtípus-specifikus metaadatok tulajdonságai
+
 Az alábbi táblázat összefoglalja az egyes dokumentumok formátumának feldolgozását, valamint ismerteti az Azure Cognitive Search által kinyert metaadatok tulajdonságait.
 
 | Dokumentum formátuma/tartalmának típusa | Kinyert metaadatok | Feldolgozás részletei |
@@ -498,6 +419,8 @@ Az alábbi táblázat összefoglalja az egyes dokumentumok formátumának feldol
 | RTF (alkalmazás/RTF) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_character_count`<br/>`metadata_creation_date`<br/>`metadata_page_count`<br/>`metadata_word_count`<br/> | Szöveg kinyerése|
 | Egyszerű szöveg (szöveg/egyszerű) |`metadata_content_type`<br/>`metadata_content_encoding`<br/> | Szöveg kinyerése|
 
+## <a name="see-also"></a>Lásd még
 
-## <a name="help-us-make-azure-cognitive-search-better"></a>Segítsen nekünk, hogy jobban megtegyük az Azure Cognitive Search
-Ha a funkciókra vonatkozó kérések vagy ötletek vannak a tökéletesítésekhez, tudassa velünk a [UserVoice webhelyen](https://feedback.azure.com/forums/263029-azure-search/).
+* [Indexelők az Azure Cognitive Searchben](search-indexer-overview.md)
+* [Blobok ismertetése a mesterséges intelligenciával](search-blob-ai-integration.md)
+* [A blob indexelésének áttekintése](search-blob-storage-integration.md)

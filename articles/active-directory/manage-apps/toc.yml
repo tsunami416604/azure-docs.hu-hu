@@ -18,8 +18,10 @@
       href: add-application-portal-configure.md
     - name: Felhasználók hozzárendelése egy alkalmazáshoz
       href: add-application-portal-assign-users.md
-    - name: Egyszeri bejelentkezés beállítása
+    - name: SAML-alapú egyszeri bejelentkezés beállítása
       href: add-application-portal-setup-sso.md
+    - name: OIDC-alapú egyszeri bejelentkezés beállítása
+      href: add-application-portal-setup-oidc-sso.md
     - name: Alkalmazás törlése
       href: delete-application-portal.md
 - name: Oktatóanyagok

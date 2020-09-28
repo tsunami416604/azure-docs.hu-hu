@@ -20,8 +20,6 @@
       href: tutorial-nsx-t-network-segment.md
     - name: 7 – Helyszíni hálózat és magánfelhő közötti társviszony létesítése
       href: tutorial-expressroute-global-reach-private-cloud.md
-    - name: 8 – Virtuális gép üzembe helyezése a tartalomtáron keresztül
-      href: tutorial-deploy-vm-content-library.md
 - name: Alapelvek
   items:
     - name: Magánfelhők és -fürtök
@@ -36,6 +34,8 @@
       href: concepts-rbac.md
     - name: Magánfelhők frissítései
       href: concepts-upgrades.md
+    - name: Magánfelhők monitorozása és javítása
+      href: concepts-monitor-repair-private-cloud.md
 - name: Útmutatók
   items:
     - name: Az Azure VMware Solution engedélyezése
@@ -48,6 +48,8 @@
       href: manage-dhcp.md
     - name: Vészhelyreállítás
       href: disaster-recovery.md
+    - name: Virtuális gép üzembe helyezése a tartalomtáron keresztül
+      href: deploy-vm-content-library.md
     - name: Azure natív integrációja
       items:
         - name: API Management
@@ -68,10 +70,16 @@
           href: deploy-traffic-manager-to-balance-avs-workloads.md
         - name: NetApp Files
           href: net-app-files.md
+    - name: GitHub Enterprise Server
+      href: github-enterprise-server.md
     - name: VMware-megoldások
       items:
         - name: A vRealize Operations beállítása
           href: vrealize-operations-for-avs.md
+    - name: VMware-ökoszisztéma
+      items:
+        - name: Biztonsági mentési megoldások virtuális gépekhez
+          href: ecosystem-back-up-vms.md
 - name: Referencia
   items: null
 - name: További források

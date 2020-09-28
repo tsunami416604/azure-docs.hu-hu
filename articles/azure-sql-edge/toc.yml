@@ -46,8 +46,8 @@
           href: disconnected-deployment.md
         - name: Üzembe helyezés a Kubernetesben
           href: deploy-kubernetes.md
-        - name: SQL-eszközök
-          href: 'https://docs.microsoft.com/en-us/sql/tools/overview-sql-tools?toc=/azure/azure-sql-edge/toc.json'
+        - name: Üzembe helyezés az Azure Data Studióval
+          href: 'https://docs.microsoft.com/sql/azure-data-studio/deploy-azure-sql-edge?toc=/azure/azure-sql-edge/toc.json'
     - name: Gépi tanulás
       items:
         - name: Gépi tanulás és mesterséges intelligencia az ONNX-szel
