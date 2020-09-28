@@ -118,6 +118,8 @@
           href: ./security-controls-policy.md
         - name: Indexelő erőforrások biztonságossá tétele
           href: search-indexer-securing-resources.md
+        - name: Biztonsági alapkonfiguráció
+          href: security-baseline.md
 - name: Útmutatók
   items:
     - name: Indexek és szerkezetek létrehozása

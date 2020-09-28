@@ -311,8 +311,6 @@
           href: compute-benchmark-scores.md
     - name: Támogatott disztribúciók
       href: endorsed-distros.md
-    - name: Dedikált gazdagépek
-      href: dedicated-hosts.md
     - name: Karbantartás és frissítések
       href: ../maintenance-and-updates.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: Lemezes tárolás
@@ -391,11 +389,12 @@
         - name: Virtuális gép másolása vagy klónozása
           href: copy-vm.md
         - name: Dedikált gazdagépek használata
+          href: ../dedicated-hosts.md
           items:
             - name: parancssori felület
               href: dedicated-hosts-cli.md
             - name: Portál
-              href: dedicated-hosts-portal.md
+              href: ../dedicated-hosts-portal.md
         - name: Spot virtuális gépek üzembe helyezése
           items:
             - name: parancssori felület
@@ -858,6 +857,7 @@
         - name: Rendelkezésre állási csoport módosítása
           href: ../windows/change-availability-set.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Közelségi elhelyezési csoport létrehozása
+          displayName: PPG aligned colocation co-location
           items:
             - name: parancssori felület
               href: proximity-placement-groups.md
