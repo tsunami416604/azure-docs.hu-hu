@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 07/27/2020
 ms.author: aahi
 ms.reviewer: assafi
-ms.openlocfilehash: 8dbbdf16df62cd59e8a798fc547d8b171a6ee3e2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7e074bf898667bb0019d4147ec9abaea2c674d74
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91332318"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400956"
 ---
 <a name="HOLTop"></a>
 
@@ -252,6 +252,8 @@ Document sentiment: Positive
         Negative score: 0.02
         Neutral score: 0.77
 ```
+
+### <a name="opinion-mining"></a>Vélemény bányászata
 
 Hozzon létre egy nevű új függvényt `SentimentAnalysisWithOpinionMiningExample()` , amely a korábban létrehozott ügyfelet veszi át, és hívja meg a `AnalyzeSentimentBatch()` függvényt a `AdditionalSentimentAnalyses.OpinionMining` kapcsolóval. A visszaadott `AnalyzeSentimentResultCollection` objektum tartalmazza azt a gyűjteményt, `AnalyzeSentimentResult` amelyben a jelképezi `Response<DocumentSentiment>` . A és a közötti különbség, `SentimentAnalysis()` `SentimentAnalysisWithOpinionMiningExample()` hogy az utóbbi `MinedOpinion` minden mondatban tartalmazni fog, amely egy elemzett aspektust és a kapcsolódó vélemény (oka) t mutatja. Ha hiba történt, a rendszer a következőt fogja eldobni: `RequestFailedException` .
 

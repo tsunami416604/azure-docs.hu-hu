@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/10/2020
 ms.author: memildin
 ms.custom: include file
-ms.openlocfilehash: 0b6864c3304b86e80549297fc073a2e387000d64
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 55390a3eb2a074729b4a0868416a95e208325b76
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80272846"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91401085"
 ---
 ```json
 {
@@ -70,7 +70,7 @@ ms.locfileid: "80272846"
 |**Szándék**|Enumeráció|A riasztás mögötti, a kill lánchoz kapcsolódó szándék. A támogatott értékek listáját, valamint a Azure Security Center támogatott kill Chain-leképezésének magyarázatait lásd: [szándékok](../articles/security-center/alerts-reference.md#intentions).<br/>Ennek a mezőnek több értéke is lehet (vesszővel elválasztva).|
 |**IsIncident**|Logikai|Ez a mező határozza meg, hogy a riasztás incidens-e (több riasztás összetett csoportosítása) vagy egyetlen riasztás. A mező alapértelmezett értéke "false" (azaz egyetlen riasztás).|
 |**ProcessingEndTime**|DateTime|Az az idő, ameddig a riasztás elérhető volt a végfelhasználónak a riasztást birtokló eredeti termékben.|
-|**ProductName**|Sztring|A riasztást közzétevő termék neve (Azure Security Center, Azure ATP, Microsoft Defender ATP, O365 ATP, MCAS stb.).|
+|**ProductName**|Sztring|A riasztást közzétevő termék neve (Azure Security Center, Azure ATP, Microsoft Defender ATP, MCAS stb.).|
 |**RemediationSteps**|Listáját<String>|A riasztás kijavításához szükséges kézi műveleti elemek.|
 |**ResourceIdentifiers**|Lista (erőforrás-azonosítók)|A riasztáshoz tartozó erőforrás-azonosítók, amelyek segítségével a riasztást a megfelelő termék-expozíciós csoportba (bérlő, munkaterület, előfizetés stb.) lehet irányítani. A riasztások több különböző típusú azonosítóval is rendelkezhetnek.|
 |**Súlyosság**|Enumeráció|A szolgáltató által jelentett riasztás súlyossága. Lehetséges értékek: tájékoztató, alacsony, közepes és magas.|

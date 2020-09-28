@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 10/18/2018
 ms.author: dacurwin
 ms.custom: include file
-ms.openlocfilehash: 8586d90631e8d38fa020ff9dab3f626aaedb2760
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
-ms.translationtype: HT
+ms.openlocfilehash: c111752dcca03781dfb2a11fb100dafc4bad90f7
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87003833"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400949"
 ---
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
 
@@ -54,7 +54,7 @@ Recovery Services-tároló létrehozásához kövesse az alábbi lépéseket.
 
 1. Az értékek megadása után válassza a **Felülvizsgálat + létrehozás** elemet.
 
-    ![Recovery Services-tároló létrehozása](./media/backup-create-rs-vault/review-and-create.png)
+    ![A Recovery Services-tároló létrehozása folyamatban lévő felülvizsgálat + létrehozás gombot megjelenítő képernyőkép.](./media/backup-create-rs-vault/review-and-create.png)
 
 1. Amikor készen áll a Recovery Services-tároló létrehozására, válassza a **Létrehozás** elemet.
 

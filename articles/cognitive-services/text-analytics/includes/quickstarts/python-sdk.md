@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/21/2020
 ms.author: aahi
-ms.openlocfilehash: f8627d95ce432f5aeb80163f819efbd6f67f7927
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3fa9683b63f94f740c19d45865dab9b6d5a08d3f
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91332315"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400973"
 ---
 <a name="HOLTop"></a>
 
@@ -243,6 +243,8 @@ Neutral=0.77
 Negative=0.02
 ```
 
+## <a name="opinion-mining"></a>Vélemény bányászata
+
 Ha szeretné elkészíteni a véleményeket a vélemény kitermelésével kapcsolatban, hozzon létre egy nevű új függvényt, `sentiment_analysis_with_opinion_mining_example()` amely argumentumként fogadja az ügyfelet, majd hívja meg a `analyze_sentiment()` függvényt a Option jelzővel `show_opinion_mining=True` . A visszaadott válasz objektum nem csupán az összes mondat hangulatát és a teljes bemeneti dokumentum pontszámát fogja tartalmazni, az egyes mondatok esetében azonban a szempontok és a vélemények szintjének elemzését is.
 
 
@@ -254,7 +256,7 @@ def sentiment_analysis_with_opinion_mining_example(client):
         "The rooms were beautiful but dirty. The AC was good and quiet, but the elevator was broken"
     ]
 
-    result = text_analytics_client.analyze_sentiment(documents, show_opinion_mining=True)
+    result = client.analyze_sentiment(documents, show_opinion_mining=True)
     doc_result = [doc for doc in result if not doc.is_error]
 
     positive_reviews = [doc for doc in doc_result if doc.sentiment == "positive"]
