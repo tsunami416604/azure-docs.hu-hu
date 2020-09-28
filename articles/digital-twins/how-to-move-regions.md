@@ -88,7 +88,7 @@ Most meg kell jelennie a ADT Explorer-alkalmazásnak, amely egy böngészőben f
 
 A kapcsolat ellenőrzéséhez kattintson a *lekérdezés futtatása* gombra, és futtassa az alapértelmezett lekérdezést, amely az összes ikreket és kapcsolatot megjeleníti a Graph *Explorer* mezőben.
 
-:::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="Az ablak felső részén található "lekérdezés futtatása" gomb beolvasása megnyomva jelenik meg" lightbox="media/how-to-move-regions/run-query.png":::
+:::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="Az ablak felső részén található lekérdezés futtatása gomb beolvasása megnyomva jelenik meg" lightbox="media/how-to-move-regions/run-query.png":::
 
 A ADT Explorer futását elhagyhatja, mivel a cikk későbbi részében később újra fel fogja tölteni ezeket az elemeket az új példányba a célként megadott régióban.
 
@@ -168,7 +168,7 @@ A ADT Explorer most feltölti modelljeit és gráfját (beleértve az ikreket é
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-move-regions/import-success.png" alt-text="A Graph importálás sikerességét jelző párbeszédpanel. A sikeres importálást olvassa be. 2 modell importálva. 4 ikrek importálva. 2 kapcsolat importálva. "" lightbox="media/how-to-move-regions/import-success.png":::
+        :::image type="content" source="media/how-to-move-regions/import-success.png" alt-text="A Graph importálás sikerességét jelző párbeszédpanel. A sikeres importálást olvassa be. 2 modell importálva. 4 ikrek importálva. 2 kapcsolat importálva." lightbox="media/how-to-move-regions/import-success.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -178,11 +178,11 @@ A ADT Explorer most feltölti modelljeit és gráfját (beleértve az ikreket é
 
 Annak ellenőrzéséhez, hogy minden sikeresen feltöltve lett, a *Graph Explorerben* a *lekérdezés futtatása* gombra kattintva futtathatja az alapértelmezett lekérdezést, amely megjeleníti az összes ikreket és kapcsolatot a gráfban. Ez a *modell nézetben*is frissíti a modellek listáját.
 
-:::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="Az ablak felső részén látható "futtatási lekérdezés" gomb kiemelése a korábbi verziók között" lightbox="media/how-to-move-regions/run-query.png":::
+:::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="Az ablak felső részén látható futtatási lekérdezés gomb kiemelése a korábbi verziók között" lightbox="media/how-to-move-regions/run-query.png":::
 
 Meg kell jelennie a gráfnak a *Graph Explorerben* megjelenő összes ikrek és kapcsolat között. Emellett a *modell nézet* mezőben is megjelennek a modellek.
 
-:::image type="content" source="media/how-to-move-regions/post-upload.png" alt-text="A ADT Explorer nézete, amely a "Model View" (modell nézet) mezőben Kiemelt 2 modellt mutatja be, és egy gráfot jelölt ki a "Graph Explorer" mezőben." lightbox="media/how-to-move-regions/post-upload.png":::
+:::image type="content" source="media/how-to-move-regions/post-upload.png" alt-text="A ADT Explorer nézete, amely a Model View (modell nézet) mezőben Kiemelt 2 modellt mutatja be, és egy gráfot jelölt ki a Graph Explorer mezőben." lightbox="media/how-to-move-regions/post-upload.png":::
 
 Ezzel megerősíti, hogy a modelleket, az ikreket és a gráfot újra feltöltötte a célként megadott régióban lévő új példányra.
 
