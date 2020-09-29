@@ -9,12 +9,12 @@ ms.date: 04/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: dbd4a80c0f480e51ce7ec248c3b5d3dc523e9d74
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 13c15eeb98b13d0fe9a5b7797ec942209d403cc6
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530743"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447741"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>IoT Edge-eszköz létrehozása és kiépítése X. 509 tanúsítványok használatával
 
@@ -83,7 +83,7 @@ Amikor létrehoz egy regisztrációt a DPS-ben, lehetősége van bejelenteni a *
 További információ az eszközök kiépítési szolgáltatásának regisztrálásáról: az [eszközök regisztrálásának kezelése](../iot-dps/how-to-manage-enrollments.md).
 
    > [!TIP]
-   > Az Azure CLI-ben létrehozhat egy [beléptetést](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment) vagy egy [beléptetési csoportot](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment-group) , és az **Edge-kompatibilis** jelző használatával meghatározhatja, hogy egy eszköz vagy egy csoport IoT Edge eszköz-e.
+   > Az Azure CLI-ben létrehozhat egy [beléptetést](/cli/azure/ext/azure-iot/iot/dps/enrollment) vagy egy [beléptetési csoportot](/cli/azure/ext/azure-iot/iot/dps/enrollment-group) , és az **Edge-kompatibilis** jelző használatával meghatározhatja, hogy egy eszköz vagy egy csoport IoT Edge eszköz-e.
 
 1. A [Azure Portal](https://portal.azure.com)navigáljon a IoT hub Device Provisioning Service-példányához.
 
@@ -103,7 +103,7 @@ További információ az eszközök kiépítési szolgáltatásának regisztrál
 
    * **Válassza ki az eszközhöz hozzárendelni kívánt IoT hubokat**: válassza ki azt a társított IoT hubot, amelyhez csatlakoztatni szeretné az eszközt. Több hub is kiválasztható, és az eszköz a kiválasztott foglalási szabályzatnak megfelelően lesz hozzárendelve az egyikhez.
 
-   * **Kezdeti eszköz kettős állapota**: adjon hozzá egy címke értéket, amelyet hozzá szeretne adni az eszközhöz, ha szeretné. Az automatikus központi telepítéshez címkéket használhat az eszközök célcsoportjának célzásához. Például:
+   * **Kezdeti eszköz kettős állapota**: adjon hozzá egy címke értéket, amelyet hozzá szeretne adni az eszközhöz, ha szeretné. Az automatikus központi telepítéshez címkéket használhat az eszközök célcsoportjának célzásához. Példa:
 
       ```json
       {
@@ -116,7 +116,7 @@ További információ az eszközök kiépítési szolgáltatásának regisztrál
       }
       ```
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 Most, hogy az eszközhöz regisztrálva van, a IoT Edge futtatókörnyezet automatikusan kiépítheti az eszközt a telepítés során. A IoT Edge eszköz beállításához folytassa a [IoT Edge futtatókörnyezet telepítése](#install-the-iot-edge-runtime) című szakaszát.
 
@@ -142,7 +142,7 @@ Beléptetési csoport létrehozásakor lehetősége van ellenőrzött tanúsítv
 
    Ha a bemutató tanúsítványait használja, töltse fel a `<wrkdir>/certs/azure-iot-test-only.root.ca.cert.pem` tanúsítványt.
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 1. A tanúsítványnak mostantól szerepelnie kell a **tanúsítványok** lapon. Válassza ki a tanúsítvány adatainak megnyitásához.
 
@@ -188,7 +188,7 @@ További információ az eszközök kiépítési szolgáltatásának regisztrál
 
    * **Válassza ki az eszközhöz hozzárendelni kívánt IoT hubokat**: válassza ki azt a társított IoT hubot, amelyhez csatlakoztatni szeretné az eszközt. Több hub is kiválasztható, és az eszköz a kiválasztott foglalási szabályzatnak megfelelően lesz hozzárendelve az egyikhez.
 
-   * **Kezdeti eszköz kettős állapota**: adjon hozzá egy címke értéket, amelyet hozzá szeretne adni az eszközhöz, ha szeretné. Az automatikus központi telepítéshez címkéket használhat az eszközök célcsoportjának célzásához. Például:
+   * **Kezdeti eszköz kettős állapota**: adjon hozzá egy címke értéket, amelyet hozzá szeretne adni az eszközhöz, ha szeretné. Az automatikus központi telepítéshez címkéket használhat az eszközök célcsoportjának célzásához. Példa:
 
       ```json
       {
@@ -201,7 +201,7 @@ További információ az eszközök kiépítési szolgáltatásának regisztrál
       }
       ```
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 Most, hogy az eszközhöz regisztrálva van, a IoT Edge futtatókörnyezet automatikusan kiépítheti az eszközt a telepítés során. Folytassa a következő szakasszal a IoT Edge eszköz beállításához.
 
@@ -224,7 +224,7 @@ A következő hivatkozásra kattintva telepítheti az eszközön a Azure IoT Edg
 
 [A Azure IoT Edge Runtime telepítése Linux rendszeren](how-to-install-iot-edge-linux.md)
 
-Ha hozzáadja az X. 509 tanúsítványt és a legfontosabb adatokat a config. YAML fájlhoz, az elérési utakat fájl URI-ként kell megadni. Például:
+Ha hozzáadja az X. 509 tanúsítványt és a legfontosabb adatokat a config. YAML fájlhoz, az elérési utakat fájl URI-ként kell megadni. Példa:
 
 * `file:///<path>/identity_certificate_chain.pem`
 * `file:///<path>/identity_key.pem`

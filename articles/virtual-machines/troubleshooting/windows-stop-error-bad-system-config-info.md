@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 08/24/2020
 ms.author: v-miegge
-ms.openlocfilehash: 071b5786127af31a2ad3266c128dbfb7cacad656
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 4f2b338b8629209363acb7bbe0533831a089fe6f
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88942123"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447320"
 ---
 # <a name="windows-stop-error---0x00000074-bad-system-config-info"></a>Windows Stop Error-0x00000074 rossz rendszerkonfigurációs információ
 
@@ -61,10 +61,10 @@ A **BAD_SYSTEM_CONFIG_INFO** leállítási kód akkor fordul elő, ha **a beáll
 1. A virtuálisgép- [javítási parancsok](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) 1-3-es lépéseit használva készítse elő a javítási virtuális gépet.
 1. A kaptár sérülésének keresése.
 1. A Távoli asztali kapcsolat használatával csatlakozhat a javítási virtuális géphez.
-1. Másolja a `\windows\system32\config` mappát, és mentse azt az egészséges lemezpartíció vagy egy másik biztonságos helyen. A mappa biztonsági mentése óvintézkedésként, mivel a kritikus beállításjegyzék-fájlokat fogja szerkeszteni.
+1. Másolja a `<VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config` mappát, és mentse azt az egészséges lemezpartíció vagy egy másik biztonságos helyen. A mappa biztonsági mentése óvintézkedésként, mivel a kritikus beállításjegyzék-fájlokat fogja szerkeszteni. 
 
 > [!NOTE]
-> Készítsen másolatot a `\windows\system32\config` mappáról biztonsági másolatként abban az esetben, ha vissza kell állítania a beállításjegyzékben végzett módosításokat.
+> Készítsen másolatot a `<VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config` mappáról biztonsági másolatként abban az esetben, ha vissza kell állítania a beállításjegyzékben végzett módosításokat.
 
 ### <a name="check-for-hive-corruption"></a>A kaptár sérülésének keresése
 
@@ -72,7 +72,7 @@ Az alábbi utasítások segítenek megállapítani, hogy az ok a kaptár sérül
 
 1. A javítási virtuális gépen nyissa meg a **Rendszerleíróadatbázis-szerkesztő** alkalmazást. A megkereséséhez írja be a "regedit" kifejezést a Windows keresősávba.
 1. A Rendszerleíróadatbázis-szerkesztőben válassza a **HKEY_LOCAL_MACHINE** elemet a kiemeléséhez, majd válassza a **fájl > a struktúra betöltése..** . lehetőséget. a menüből.
-1. Tallózással keresse `\windows\system32\config\SYSTEM` meg és válassza a **Megnyitás**lehetőséget.
+1. Tallózással keresse `<VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config\SYSTEM` meg és válassza a **Megnyitás**lehetőséget.
 1. Amikor a rendszer kéri, hogy adjon meg egy nevet, adja meg a **BROKENSYSTEM**.
 
    1. Ha a struktúra nem nyílik meg, vagy ha üres, akkor a struktúra sérült. Ha a struktúra sérült, [Nyisson meg egy támogatási jegyet](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).

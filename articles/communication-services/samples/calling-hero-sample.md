@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 9bd203586d6a9da974604099d361d2908a39e1d9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5aa168c8f280859112f3ab317ef83d32260cead4
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91297987"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460594"
 ---
 # <a name="get-started-with-the-group-calling-hero-sample"></a>Ismerkedés a csoport meghívása Hero-mintával
 
@@ -38,21 +38,19 @@ A mintában ügyféloldali alkalmazás és kiszolgálóoldali alkalmazás is tal
 
 A minta így néz ki:
 
-:::image type="content" source="./media/calling/landing-page.png" alt-text="A minta alkalmazás kezdőlapját ábrázoló képernyőfelvétel":::
+:::image type="content" source="./media/calling/landing-page.png" alt-text="A minta alkalmazás kezdőlapját ábrázoló képernyőfelvétel&quot;:::
 
-Ha a "hívás indítása" gombra kattint, a webalkalmazás beolvas egy felhasználói hozzáférési jogkivonatot a kiszolgálóoldali alkalmazásból. Ezt a tokent ezután az ügyfélalkalmazás Azure kommunikációs szolgáltatásokhoz való összekapcsolására használják. A jogkivonat lekérése után a rendszer felszólítja a használni kívánt kamera és mikrofon megadására. Az eszközöket letilthatja/engedélyezheti a váltási vezérlőkkel:
+Ha a &quot;hívás indítása" gombra kattint, a webalkalmazás beolvas egy felhasználói hozzáférési jogkivonatot a kiszolgálóoldali alkalmazásból. Ezt a tokent ezután az ügyfélalkalmazás Azure kommunikációs szolgáltatásokhoz való összekapcsolására használják. A jogkivonat lekérése után a rendszer felszólítja a használni kívánt kamera és mikrofon megadására. Az eszközöket letilthatja/engedélyezheti a váltási vezérlőkkel:
 
-:::image type="content" source="./media/calling/pre-call.png" alt-text="A minta alkalmazás előhívási képernyőjét ábrázoló képernyőfelvétel.":::
+:::image type="content" source="./media/calling/pre-call.png" alt-text="A minta alkalmazás kezdőlapját ábrázoló képernyőfelvétel&quot;:::
+
+Ha a &quot;hívás indítása":::
 
 A megjelenítendő név és az eszközök konfigurálása után csatlakozhat a hívási munkamenethez. Most megjelenik a fő hívási vászon, ahol a legfontosabb hívási élmény él.
 
-:::image type="content" source="./media/calling/main-app.png" alt-text="A minta alkalmazás fő képernyőjét ábrázoló képernyőfelvétel.":::
+:::image type="content" source="./media/calling/main-app.png" alt-text="A minta alkalmazás kezdőlapját ábrázoló képernyőfelvétel&quot;:::
 
-A fő hívó képernyő összetevői:
-
-- **Media Gallery**: az a fő szakasz, ahol a résztvevők megjelennek. Ha a résztvevő kamerája engedélyezve van, a videó hírcsatornája itt jelenik meg. Minden résztvevő rendelkezik egy egyéni csempével, amely megjeleníti a megjelenítendő nevüket és a video streamet (ha van ilyen)
-- **Fejléc**: ez az a hely, ahol az elsődleges hívási vezérlők a beállítások és a résztvevő oldali sáv váltására, a videó bekapcsolására és a kikapcsolására, a megosztási képernyőre és a hívás elhagyása.
-- **Oldalsó sáv**: ebben az esetben a rendszer megjeleníti a résztvevők és a beállítások adatait, ha a fejlécben lévő vezérlők használatával váltanak ki. Az összetevőt a jobb felső sarokban található "X" használatával lehet elhagyni. A résztvevők oldali sáv megjeleníti a résztvevők listáját, valamint egy hivatkozást, amely további felhasználókat hívhat meg a csevegéshez. A beállítások oldal sáv lehetővé teszi a mikrofon és a kamera beállításainak konfigurálását.
+Ha a &quot;hívás indítása" használatával lehet elhagyni. A résztvevők oldali sáv megjeleníti a résztvevők listáját, valamint egy hivatkozást, amely további felhasználókat hívhat meg a csevegéshez. A beállítások oldal sáv lehetővé teszi a mikrofon és a kamera beállításainak konfigurálását.
 
 Az alábbiakban további információkat talál a minta beállításához szükséges előfeltételekről és lépésekről.
 
@@ -61,7 +59,7 @@ Az alábbiakban további információkat talál a minta beállításához szüks
 - Aktív előfizetéssel rendelkező Azure-fiók létrehozása. Részletekért lásd: [fiók létrehozása ingyen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 - [Node.js (12.18.4 és újabb)](https://nodejs.org/en/download/)
 - [Visual Studio (2019 vagy újabb)](https://visualstudio.microsoft.com/vs/)
-- [.Net Core 2,2](https://dotnet.microsoft.com/download/dotnet-core/2.2) (Ügyeljen arra, hogy a Visual Studio-példánynak megfelelő verziót telepítse, 32 vs 64 bit)
+- [.Net Core 3,1](https://dotnet.microsoft.com/download/dotnet-core/3.1) (Ügyeljen arra, hogy a Visual Studio-példánynak megfelelő verziót telepítse, 32 vs 64 bit)
 - Hozzon létre egy Azure kommunikációs szolgáltatások erőforrást. További információ: [Azure kommunikációs erőforrás létrehozása](../quickstarts/create-communication-resource.md). Ehhez a rövid útmutatóhoz fel kell jegyeznie az erőforrás- **kapcsolódási karakterláncot** .
 
 ## <a name="locally-deploy-the-service--client-applications"></a>A szolgáltatás helyileg történő üzembe helyezése & ügyfélalkalmazások számára
@@ -100,7 +98,7 @@ A mintát helyileg tesztelheti úgy, hogy több böngészős munkamenetet nyit m
 
 Ha törölni szeretné a kommunikációs szolgáltatások előfizetését, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek. További információ az [erőforrások tisztításáról](../quickstarts/create-communication-resource.md#clean-up-resources).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 >[!div class="nextstepaction"] 
 >[A minta letöltése a GitHubról](https://github.com/Azure/Communication/tree/master/samples/Group%20Calling%20Hero%20Sample/Web/Calling)

@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: fe5fe29a66483934ae47f70512a310a4ae6bb1b1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b97b80927739d9a8658213a00b415c0bf321528b
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91303240"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460560"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>Ismerkedés a Group chat Hero-mintával
 
@@ -38,15 +38,19 @@ A mintában ügyféloldali alkalmazás és kiszolgálóoldali alkalmazás is tal
 
 A minta így néz ki:
 
-:::image type="content" source="./media/chat/landing-page.png" alt-text="A minta alkalmazás kezdőlapját ábrázoló képernyőfelvétel":::
+:::image type="content" source="./media/chat/landing-page.png" alt-text="A minta alkalmazás kezdőlapját ábrázoló képernyőfelvétel&quot;:::
 
-A "csevegés indítása" gomb megnyomásakor a webalkalmazás a kiszolgálóoldali alkalmazásból lekéri a felhasználói hozzáférési tokent. Ezt a tokent ezután az ügyfélalkalmazás Azure kommunikációs szolgáltatásokhoz való összekapcsolására használják. A jogkivonat lekérése után meg kell adnia a nevét és a Emoji, amely a csevegésben fog megjelenni. 
+A &quot;csevegés indítása" gomb megnyomásakor a webalkalmazás a kiszolgálóoldali alkalmazásból lekéri a felhasználói hozzáférési tokent. Ezt a tokent ezután az ügyfélalkalmazás Azure kommunikációs szolgáltatásokhoz való összekapcsolására használják. A jogkivonat lekérése után meg kell adnia a nevét és a Emoji, amely a csevegésben fog megjelenni. 
 
-:::image type="content" source="./media/chat/pre-chat.png" alt-text="Az alkalmazás csevegés előtti képernyőjét ábrázoló képernyőkép.":::
+:::image type="content" source="./media/chat/pre-chat.png" alt-text="A minta alkalmazás kezdőlapját ábrázoló képernyőfelvétel&quot;:::
+
+A &quot;csevegés indítása":::
 
 A megjelenítendő név és a Emoji beállítása után csatlakozhat a csevegési munkamenethez. Most megjelenik a fő csevegési vászon, ahol az alapvető csevegési élmény él.
 
-:::image type="content" source="./media/chat/main-app.png" alt-text="A minta alkalmazás fő képernyőjét bemutató képernyőkép.":::
+:::image type="content" source="./media/chat/main-app.png" alt-text="A minta alkalmazás kezdőlapját ábrázoló képernyőfelvétel&quot;:::
+
+A &quot;csevegés indítása":::
 
 A fő csevegési képernyő összetevői:
 
@@ -61,7 +65,7 @@ Az alábbiakban további információkat talál a minta beállításához szüks
 - Aktív előfizetéssel rendelkező Azure-fiók létrehozása. Részletekért tekintse meg a [fiók ingyenes létrehozását](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)ismertető témakört.
 - [Node.js (8.11.2 és újabb)](https://nodejs.org/en/download/)
 - [Visual Studio (2017 vagy újabb)](https://visualstudio.microsoft.com/vs/)
-- [.Net Core 2,2](https://dotnet.microsoft.com/download/dotnet-core/2.2) (Ügyeljen arra, hogy a Visual Studio-példánynak megfelelő verziót telepítse, 32 vs 64 bit)
+- [.Net Core 3,1](https://dotnet.microsoft.com/download/dotnet-core/3.1) (Ügyeljen arra, hogy a Visual Studio-példánynak megfelelő verziót telepítse, 32 vs 64 bit)
 - Hozzon létre egy Azure kommunikációs szolgáltatások erőforrást. További információ: [Azure kommunikációs erőforrás létrehozása](../quickstarts/create-communication-resource.md). Ehhez a rövid útmutatóhoz fel kell jegyeznie az erőforrás- **kapcsolódási karakterláncot** .
 
 ## <a name="locally-deploying-the-service--client-app"></a>A szolgáltatás helyileg történő üzembe helyezése & ügyfélalkalmazás
@@ -101,7 +105,7 @@ A mintát helyileg is tesztelheti úgy, hogy több böngészős munkamenetet nyi
 
 Ha törölni szeretné a kommunikációs szolgáltatások előfizetését, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek. További információ az [erőforrások tisztításáról](../quickstarts/create-communication-resource.md#clean-up-resources).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 >[!div class="nextstepaction"] 
 >[A minta letöltése a GitHubról](https://github.com/Azure/Communication/tree/master/samples/Group%20Chat%20Hero%20Sample/Web/Chat)

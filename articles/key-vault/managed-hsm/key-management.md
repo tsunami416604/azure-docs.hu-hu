@@ -8,12 +8,12 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 9353750fdbbb52aff60fc41b7fd028ec4c5f0ec8
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 846153dd482130bbb3b35c38a3dbb791e0d0d32e
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "91000694"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448268"
 ---
 # <a name="manage-a-managed-hsm-using-the-azure-cli"></a>Felügyelt HSM kezelése az Azure CLI használatával
 
@@ -22,7 +22,7 @@ ms.locfileid: "91000694"
 
 A Managed HSM áttekintését lásd: [Mi a felügyelt HSM?](overview.md)
 
-Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -53,7 +53,7 @@ A parancssori felületről való bejelentkezéssel kapcsolatos további informá
 
 ### <a name="create-an-rsa-key"></a>RSA-kulcs létrehozása
 
-Az alábbi példa azt mutatja be, hogyan hozható létre egy 3070 bites **RSA** -kulcs, amely csak **wrapKey, unwrapKey** műveletekhez (--Ops) lesz használva. 
+Az alábbi példa azt mutatja be, hogyan hozható létre egy 3072 bites **RSA** -kulcs, amely csak **wrapKey, unwrapKey** műveletekhez (--Ops) lesz használva. 
 
 
 ```azurecli-interactive
@@ -82,7 +82,7 @@ az keyvault key create --id https://ContosoMHSM.managedhsm.azure.net/keys/myec25
 
 ### <a name="create-a-256-bit-symmetric-key"></a>256 bites szimmetrikus kulcs létrehozása
 
-Az alábbi példa azt mutatja be, hogyan hozható létre egy 3070 bites **szimmetrikus** kulcs, amely csak **titkosítási és visszafejtési** műveletekhez (--Ops) használható.
+Az alábbi példa azt mutatja be, hogyan hozható létre egy 256 bites **szimmetrikus** kulcs, amely csak **titkosítási és visszafejtési** műveletekhez (--Ops) használható.
 
 ```azurecli-interactive
 az keyvault key create --hsm-name ContosoMHSM --name myaeskey --ops encrypt decrypt  --tags --kty oct-HSM --size 256

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 04/08/2019
 ms.author: kwill
-ms.openlocfilehash: 5dd57a87658554bf59acf5cee1b6daf67b8692b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c427982854e1d328b5d1553aa86866ad298eea1
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71162146"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461315"
 ---
 #    <a name="workflow-of-windows-azure-classic-vm-architecture"></a>A klasszikus Windows Azure VM-architektúra munkafolyamata 
 Ez a cikk áttekintést nyújt az Azure-erőforrások, például virtuális gépek üzembe helyezése vagy frissítése során felmerülő munkafolyamat-folyamatokról. 
@@ -29,7 +29,7 @@ Ez a cikk áttekintést nyújt az Azure-erőforrások, például virtuális gép
 
 Az alábbi ábra az Azure-erőforrások architektúráját mutatja be.
 
-![Azure-munkafolyamat](./media/cloud-services-workflow-process/workflow.jpg)
+:::image type="content" source="./media/cloud-services-workflow-process/workflow.jpg" alt-text="<az Azure-munkafolyamattal kapcsolatos képet>":::
 
 ## <a name="workflow-basics"></a>A munkafolyamat alapjai
    
@@ -69,11 +69,9 @@ Az alábbi ábra az Azure-erőforrások architektúráját mutatja be.
 
 **I**. A WaWorkerHost a normál feldolgozói szerepkörök szabványos gazdagép-folyamata. Ez a gazdagép a szerepkör összes dll-fájlját és belépési pontjának kódját tárolja, például a OnStart és a Run műveletet.
 
-**J**. A WaWebHost a webes szerepkörök szabványos gazdagép-folyamata, ha az SDK 1,2-kompatibilis üzemeltethető WebCore (ÜZEMELTETHETŐ WEBMAG) használatára vannak konfigurálva. A szerepkörök a ÜZEMELTETHETŐ WEBMAG módot is engedélyezhetik, ha eltávolítják az elemet a szolgáltatás definíciójában (. csdef). Ebben a módban az összes szolgáltatás kódja és dll-jei a WaWebHost folyamatból futnak. Az IIS (w3wp) nincs használatban, és nincsenek AppPools konfigurálva az IIS-kezelőben, mert az IIS a WaWebHost.exeon belül van tárolva.
+**J**. A WaIISHost a teljes IIS-t használó webes szerepkörökhöz tartozó szerepkör-belépési pont kódjához tartozó gazdagép folyamata. Ez a folyamat betölti az első DLL-t, amely a **RoleEntryPoint** osztályt használja, és a kódot a következő osztályból hajtja végre (OnStart, Run, OnStop). A folyamat a RoleEntryPoint osztályban létrehozott összes **RoleEnvironment** eseményt (például a StatusCheck és a módosult) is megemeli.
 
-**K**. A WaIISHost a teljes IIS-t használó webes szerepkörökhöz tartozó szerepkör-belépési pont kódjához tartozó gazdagép folyamata. Ez a folyamat betölti az első DLL-t, amely a **RoleEntryPoint** osztályt használja, és a kódot a következő osztályból hajtja végre (OnStart, Run, OnStop). A folyamat a RoleEntryPoint osztályban létrehozott összes **RoleEnvironment** eseményt (például a StatusCheck és a módosult) is megemeli.
-
-**L**. A W3WP a szabványos IIS-munkavégző folyamat, amelyet akkor használ a rendszer, ha a szerepkör teljes IIS használatára van konfigurálva. Ezzel futtatja a IISConfigurator-ból konfigurált alkalmazáskészlet. Ebben a folyamatban az itt létrehozott RoleEnvironment-események (például a StatusCheck és a megváltozott) jelennek meg. Vegye figyelembe, hogy a RoleEnvironment-események mindkét helyen (WaIISHost és w3wp.exe) fognak tüzet, ha mindkét folyamat eseményeire előfizet.
+**K**. A W3WP a szabványos IIS-munkavégző folyamat, amelyet akkor használ a rendszer, ha a szerepkör teljes IIS használatára van konfigurálva. Ezzel futtatja a IISConfigurator-ból konfigurált alkalmazáskészlet. Ebben a folyamatban az itt létrehozott RoleEnvironment-események (például a StatusCheck és a megváltozott) jelennek meg. Vegye figyelembe, hogy a RoleEnvironment-események mindkét helyen (WaIISHost és w3wp.exe) fognak tüzet, ha mindkét folyamat eseményeire előfizet.
 
 ## <a name="workflow-processes"></a>Munkafolyamat-folyamatok
 
@@ -87,8 +85,7 @@ Az alábbi ábra az Azure-erőforrások architektúráját mutatja be.
 8. A teljes IIS-alapú webes szerepkörök esetében a WaHostBootstrapper közli a IISConfigurator, hogy konfigurálja az IIS-alkalmazáskészlet, és a helyet a következőre mutasson `E:\Sitesroot\<index>` , ahol a `<index>` 0 alapú index a `<Sites>` szolgáltatáshoz definiált elemek számával.
 9. A WaHostBootstrapper a szerepkör típusától függően elindítja a gazdagép folyamatát:
     1. **Feldolgozói szerepkör**: WaWorkerHost.exe elindítva. A WaHostBootstrapper végrehajtja a OnStart () metódust. A visszatérést követően a WaHostBootstrapper elindítja a Run () metódust, és egyszerre készként jelöli meg a szerepkört, és a terheléselosztó rotációjában (ha InputEndpoints van meghatározva). A WaHostBootsrapper ezután egy hurokba kerül a szerepkör állapotának ellenőrzéséhez.
-    1. **SDK 1,2 üzemeltethető webmag webes szerepkör**: a WaWebHost elindult. A WaHostBootstrapper végrehajtja a OnStart () metódust. A visszatérést követően a WaHostBootstrapper elkezdi végrehajtani a Run () metódust, majd egyidejűleg megjelöli a szerepkört, és a terheléselosztó rotációs állapotba helyezi azt. A WaWebHost kiadja a bemelegedési kérelmet (/do. rd_runtime_init). A rendszer az összes webkérést elküldi WaWebHost.exe. A WaHostBootsrapper ezután egy hurokba kerül a szerepkör állapotának ellenőrzéséhez.
-    1. **Teljes IIS webes szerepkör**: a aIISHost elindult. A WaHostBootstrapper végrehajtja a OnStart () metódust. A visszatérése után elindul a Run () metódus végrehajtása, majd egyidejűleg készként jelöli meg a szerepkört, és a terheléselosztó rotációs állapotba helyezi azt. A WaHostBootsrapper ezután egy hurokba kerül a szerepkör állapotának ellenőrzéséhez.
+    2. **Teljes IIS webes szerepkör**: a aIISHost elindult. A WaHostBootstrapper végrehajtja a OnStart () metódust. A visszatérése után elindul a Run () metódus végrehajtása, majd egyidejűleg készként jelöli meg a szerepkört, és a terheléselosztó rotációs állapotba helyezi azt. A WaHostBootsrapper ezután egy hurokba kerül a szerepkör állapotának ellenőrzéséhez.
 10. A teljes IIS webes szerepkörbe beérkező webes kérelmek elindítják az IIS-t a W3WP-folyamat elindításához és a kérelem kiszolgálásához, ugyanúgy, mint egy helyszíni IIS-környezetben.
 
 ## <a name="log-file-locations"></a>Naplófájl helyei
@@ -103,10 +100,6 @@ Ez a napló az állapot frissítéseit és a szívverési értesítéseket tarta
 **WaHostBootstrapper**
 
 `C:\Resources\Directory\<deploymentID>.<role>.DiagnosticStore\WaHostBootstrapper.log`
- 
-**WaWebHost**
-
-`C:\Resources\Directory\<guid>.<role>\WaWebHost.log`
  
 **WaIISHost**
 
@@ -123,7 +116,3 @@ Ez a napló az állapot frissítéseit és a szívverési értesítéseket tarta
 **Windows-eseménynaplók**
 
 `D:\Windows\System32\Winevt\Logs`
- 
-
-
-

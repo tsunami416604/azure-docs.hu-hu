@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: genli
-ms.openlocfilehash: cb2f08c4788c90f8bdb2af9c6ef95fd1ac43b994
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 42d994a9cdd0e2718d8c2288b6cc0b9618202b41
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87028668"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447450"
 ---
 # <a name="reset-local-windows-password-for-azure-vm-offline"></a>Azure-beli virtuális gép helyi Windows-jelszavának visszaállítása kapcsolat nélküli üzemmódban
 Alaphelyzetbe állíthatja az Azure-beli virtuális gép helyi Windows-jelszavát a [Azure Portal vagy Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) , ha telepítve van az Azure Guest Agent ügynök. Ez a módszer az Azure-beli virtuális gépek jelszavának alaphelyzetbe állításának elsődleges módja. Ha az Azure vendég ügynökével kapcsolatos problémákba ütközik, vagy ha az egyéni rendszerkép feltöltése után nem sikerül telepíteni, manuálisan is visszaállíthatja a Windows-jelszót. Ez a cikk részletesen ismerteti a helyi fiók jelszavának alaphelyzetbe állítását úgy, hogy a forrás operációs rendszer virtuális lemezét egy másik virtuális géphez csatolja. A cikkben ismertetett lépések nem vonatkoznak a Windows-tartományvezérlőkre. 
@@ -67,21 +67,21 @@ A következő lépések elvégzése előtt mindig próbálja meg alaphelyzetbe �
      
      ```
      [Startup]
-     0CmdLine=C:\Windows\System32\FixAzureVM.cmd
+     0CmdLine=FixAzureVM.cmd
      0Parameters=
      ```
      
-     ![scripts.ini létrehozása](./media/reset-local-password-without-agent/create-scripts-ini.png)
+     ![scripts.ini létrehozása](./media/reset-local-password-without-agent/create-scripts-ini-1.png)
 
-5. Hozzon létre a `FixAzureVM.cmd` -ben `\Windows\System32` a következő tartalommal, `<username>` és cserélje le a `<newpassword>` saját értékeit:
+5. Hozzon létre a `FixAzureVM.cmd` -ben `\Windows\System32\GroupPolicy\Machine\Scripts\Startup\` a következő tartalommal, `<username>` és cserélje le a `<newpassword>` saját értékeit:
    
     ```
-    net user <username> <newpassword> /add
+    net user <username> <newpassword> /add /Y
     net localgroup administrators <username> /add
     net localgroup "remote desktop users" <username> /add
     ```
 
-    ![FixAzureVM. cmd létrehozása](./media/reset-local-password-without-agent/create-fixazure-cmd.png)
+    ![FixAzureVM. cmd létrehozása](./media/reset-local-password-without-agent/create-fixazure-cmd-1.png)
    
     Az új jelszó meghatározásakor meg kell felelnie a virtuális gép konfigurált jelszó-bonyolultsági követelményeinek.
 
@@ -93,7 +93,7 @@ A következő lépések elvégzése előtt mindig próbálja meg alaphelyzetbe �
 
 9. A távoli munkamenetből az új virtuális gépre, távolítsa el a következő fájlokat a környezet tisztításához:
     
-    * A%windir%\System32ből
+    * %Windir%\System32\GroupPolicy\Machine\Scripts\Startup
       * a FixAzureVM. cmd fájl eltávolítása
     * %Windir%\System32\GroupPolicy\Machine\Scripts
       * scripts.ini eltávolítása
@@ -113,31 +113,31 @@ A következő lépések elvégzése előtt mindig próbálja meg alaphelyzetbe �
    
    * Válassza ki a virtuális gépet a Azure Portalon, majd kattintson a *Törlés*gombra:
      
-     ![Meglévő virtuális gép törlése](./media/reset-local-password-without-agent/delete-vm-classic.png)
+     ![Meglévő klasszikus virtuális gép törlése](./media/reset-local-password-without-agent/delete-vm-classic.png)
 
 2. Csatolja a forrás virtuális gép operációsrendszer-lemezét a hibaelhárítási virtuális géphez. A hibaelhárítási virtuális gépnek ugyanabban a régióban kell lennie, mint a forrás virtuális gép operációsrendszer-lemezének (például `West US` ):
    
    1. Válassza ki a hibaelhárítási virtuális gépet a Azure Portal. Kattintson a *lemezek*  |  *meglévő csatolása*lehetőségre:
      
-      ![Meglévő lemez csatolása](./media/reset-local-password-without-agent/disks-attach-existing-classic.png)
+      ![Meglévő lemez csatolása – klasszikus](./media/reset-local-password-without-agent/disks-attach-existing-classic.png)
      
    2. Válassza ki a *VHD-fájlt* , majd válassza ki a forrás virtuális gépet tartalmazó Storage-fiókot:
      
-      ![Adattároló fiók kiválasztása](./media/reset-local-password-without-agent/disks-select-storage-account-classic.png)
+      ![Storage-fiók kiválasztása – klasszikus](./media/reset-local-password-without-agent/disks-select-storage-account-classic.png)
      
    3. Jelölje be a *klasszikus Storage-fiókok megjelenítése*jelölőnégyzetet, majd válassza ki a forrás-tárolót. A forrás tároló általában *VHD*-k:
      
-      ![Storage-tároló kiválasztása](./media/reset-local-password-without-agent/disks-select-container-classic.png)
+      ![Storage-tároló kiválasztása – klasszikus](./media/reset-local-password-without-agent/disks-select-container-classic.png)
 
-      ![Storage-tároló kiválasztása](./media/reset-local-password-without-agent/disks-select-container-vhds-classic.png)
+      ![Storage-tároló kiválasztása – VHD – klasszikus](./media/reset-local-password-without-agent/disks-select-container-vhds-classic.png)
      
    4. Válassza ki a csatolni kívánt operációs rendszert tartalmazó virtuális merevlemezt. A folyamat befejezéséhez kattintson a *kiválasztás* gombra:
      
-      ![Forrás virtuális lemez kiválasztása](./media/reset-local-password-without-agent/disks-select-source-vhd-classic.png)
+      ![Forrás virtuális lemez kiválasztása – klasszikus](./media/reset-local-password-without-agent/disks-select-source-vhd-classic.png)
 
    5. A lemez csatolásához kattintson az OK gombra.
 
-      ![Meglévő lemez csatolása](./media/reset-local-password-without-agent/disks-attach-okay-classic.png)
+      ![Meglévő lemez csatolása – OK párbeszédpanel – klasszikus](./media/reset-local-password-without-agent/disks-attach-okay-classic.png)
 
 3. Kapcsolódjon a hibaelhárítási virtuális géphez Távoli asztal használatával, és győződjön meg arról, hogy a forrás virtuális gép operációsrendszer-lemeze látható:
 
@@ -163,7 +163,7 @@ A következő lépések elvégzése előtt mindig próbálja meg alaphelyzetbe �
      Version=1
      ```
      
-     ![gpt.ini létrehozása](./media/reset-local-password-without-agent/create-gpt-ini-classic.png)
+     ![Klasszikus gpt.ini létrehozása](./media/reset-local-password-without-agent/create-gpt-ini-classic.png)
 
 5. Létrehozás `scripts.ini` a alkalmazásban `\Windows\System32\GroupPolicy\Machines\Scripts\` . Győződjön meg arról, hogy a rejtett mappák láthatók. Szükség esetén hozza létre a `Machine` vagy a `Scripts` mappákat.
    
@@ -171,21 +171,21 @@ A következő lépések elvégzése előtt mindig próbálja meg alaphelyzetbe �
 
      ```
      [Startup]
-     0CmdLine=C:\Windows\System32\FixAzureVM.cmd
+     0CmdLine=FixAzureVM.cmd
      0Parameters=
      ```
      
-     ![scripts.ini létrehozása](./media/reset-local-password-without-agent/create-scripts-ini-classic.png)
+     ![Klasszikus scripts.ini létrehozása](./media/reset-local-password-without-agent/create-scripts-ini-classic-1.png)
 
-6. Hozzon létre a `FixAzureVM.cmd` -ben `\Windows\System32` a következő tartalommal, `<username>` és cserélje le a `<newpassword>` saját értékeit:
+6. Hozzon létre a `FixAzureVM.cmd` -ben `\Windows\System32\GroupPolicy\Machine\Scripts\Startup\` a következő tartalommal, `<username>` és cserélje le a `<newpassword>` saját értékeit:
    
     ```
-    net user <username> <newpassword> /add
+    net user <username> <newpassword> /add /Y
     net localgroup administrators <username> /add
     net localgroup "remote desktop users" <username> /add
     ```
 
-    ![FixAzureVM. cmd létrehozása](./media/reset-local-password-without-agent/create-fixazure-cmd-classic.png)
+    ![FixAzureVM. cmd létrehozása – klasszikus](./media/reset-local-password-without-agent/create-fixazure-cmd-classic-1.png)
    
     Az új jelszó meghatározásakor meg kell felelnie a virtuális gép konfigurált jelszó-bonyolultsági követelményeinek.
 
@@ -195,17 +195,17 @@ A következő lépések elvégzése előtt mindig próbálja meg alaphelyzetbe �
    
    2. Válassza ki a 2. lépésben csatolt adatlemezt, kattintson a **Leválasztás**elemre, majd **az OK**gombra.
 
-     ![Lemez leválasztása](./media/reset-local-password-without-agent/data-disks-classic.png)
+     ![Lemez leválasztása – virtuális gép hibaelhárítása – klasszikus](./media/reset-local-password-without-agent/data-disks-classic.png)
      
-     ![Lemez leválasztása](./media/reset-local-password-without-agent/detach-disk-classic.png)
+     ![Lemez leválasztása – hibaelhárítás virtuális gép – ok párbeszédpanel – klasszikus](./media/reset-local-password-without-agent/detach-disk-classic.png)
 
 8. Hozzon létre egy virtuális gépet a forrás virtuális gép operációsrendszer-lemezéről:
    
-     ![Virtuális gép létrehozása sablonból](./media/reset-local-password-without-agent/create-new-vm-from-template-classic.png)
+     ![Virtuális gép létrehozása sablonból – klasszikus](./media/reset-local-password-without-agent/create-new-vm-from-template-classic.png)
 
-     ![Virtuális gép létrehozása sablonból](./media/reset-local-password-without-agent/choose-subscription-classic.png)
+     ![Virtuális gép létrehozása sablonból – előfizetés kiválasztása – klasszikus](./media/reset-local-password-without-agent/choose-subscription-classic.png)
 
-     ![Virtuális gép létrehozása sablonból](./media/reset-local-password-without-agent/create-vm-classic.png)
+     ![Virtuális gép létrehozása sablonból – klasszikus virtuális gép létrehozása](./media/reset-local-password-without-agent/create-vm-classic.png)
 
 ## <a name="complete-the-create-virtual-machine-experience"></a>A virtuális gép létrehozási élményének befejezése
 
@@ -213,12 +213,12 @@ A következő lépések elvégzése előtt mindig próbálja meg alaphelyzetbe �
 
 2. A távoli munkamenetből az új virtuális gépre, távolítsa el a következő fájlokat a környezet tisztításához:
     
-    * A`%windir%\System32`
-      * eltávolítása`FixAzureVM.cmd`
-    * A`%windir%\System32\GroupPolicy\Machine\Scripts`
-      * eltávolítása`scripts.ini`
-    * A`%windir%\System32\GroupPolicy`
+    * A `%windir%\System32\GroupPolicy\Machine\Scripts\Startup\`
+      * eltávolítása `FixAzureVM.cmd`
+    * A `%windir%\System32\GroupPolicy\Machine\Scripts`
+      * eltávolítása `scripts.ini`
+    * A `%windir%\System32\GroupPolicy`
       * távolítsa el `gpt.ini` (ha `gpt.ini` korábban létezett, és `gpt.ini.bak` átnevezte a-re), nevezze át a fájlt a (z `.bak` ) névre `gpt.ini` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha továbbra sem tud kapcsolatot létesíteni Távoli asztal használatával, tekintse meg az [RDP-hibaelhárítási útmutatót](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Az [RDP-hibaelhárítás részletes útmutatója](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) az egyes lépések helyett a hibaelhárítási módszereket vizsgálja. [Egy Azure-támogatási kérést is megnyithat](https://azure.microsoft.com/support/options/) gyakorlati segítségért.

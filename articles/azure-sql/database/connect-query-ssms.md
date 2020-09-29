@@ -12,13 +12,13 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 05/29/2020
-ms.openlocfilehash: f1fad6554a347acb1de72bfe1e5c3413e6f74d9f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/28/2020
+ms.openlocfilehash: 35a637df85984bcfd20836bcd87aa5ecf1583170
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87004154"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461138"
 ---
 # <a name="quickstart-use-ssms-to-connect-to-and-query-azure-sql-database-or-azure-sql-managed-instance"></a>Gyors útmutató: Azure SQL Database vagy Azure SQL felügyelt példányhoz való kapcsolódás és lekérdezés a SSMS használatával
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -75,22 +75,25 @@ A SSMS-ben kapcsolódjon a kiszolgálóhoz.
 
    | Beállítás      | Ajánlott érték    | Leírás |
    | ------------ | ------------------ | ----------- |
-   | **Kiszolgáló típusa** | Adatbázismotor | Szükséges érték. |
-   | **Kiszolgálónév** | A teljes kiszolgálónév | Valami hasonló: **servername.database.Windows.net**. |
+   | **Server type (Kiszolgáló típusa)** | Adatbázismotor | Szükséges érték. |
+   | **Kiszolgáló neve** | A teljes kiszolgálónév | Valami hasonló: **servername.database.Windows.net**. |
    | **Hitelesítés** | SQL Server-hitelesítés | Ez az oktatóanyag SQL-hitelesítést használ. |
    | **Bejelentkezés** | Kiszolgáló-rendszergazdai fiók felhasználói azonosítója | A kiszolgáló létrehozásához használt kiszolgálói rendszergazdai fiók felhasználói azonosítója. |
-   | **Jelszó** | Kiszolgáló-rendszergazdai fiók jelszava | A kiszolgáló létrehozásához használt kiszolgáló-rendszergazdai fiók jelszava. |
+   | **Jelszó** | A kiszolgáló-rendszergazdai fiók jelszava | A kiszolgáló létrehozásához használt kiszolgáló-rendszergazdai fiók jelszava. |
    ||||
 
    ![kapcsolódás a kiszolgálóhoz](./media/connect-query-ssms/connect.png)  
+
+> [!NOTE]
+> Ez az oktatóanyag SQL Server hitelesítést használ.  Az MFA-n keresztüli Azure Active Directory való csatlakozáshoz azonban győződjön meg róla, hogy a [SSMS 18,6-as vagy újabb verzióját](https://aka.ms/ssms)használja. 
 
 3. A **Kapcsolódás a kiszolgálóhoz** párbeszédpanelen válassza a **Beállítások lehetőséget** . A **Kapcsolódás az adatbázishoz** legördülő menüben válassza a **mySampleDatabase**lehetőséget. Az [Előfeltételek szakaszban](#prerequisites) a rövid útmutató elvégzésével létrehoz egy MySampleDatabase nevű AdventureWorksLT-adatbázist. Ha a AdventureWorks-adatbázis munkapéldánya eltérő névvel rendelkezik, mint a mySampleDatabase, válassza ki helyette.
 
    ![csatlakozás kiszolgálón található adatbázishoz](./media/connect-query-ssms/options-connect-to-db.png)  
 
-4. Kattintson a **Csatlakozás** gombra. Megnyílik a Object Explorer ablak.
+4. Válassza a **Kapcsolódás** lehetőséget. Megnyílik az Object Explorer ablak.
 
-5. Az adatbázis objektumainak megtekintéséhez bontsa ki az **adatbázisok** elemet, majd bontsa ki az adatbázis csomópontot.
+5. Az adatbázis objektumainak megtekintéséhez bontsa ki a **Databases** (Adatbázisok) lehetőséget, majd az adatbázis-csomópontot.
 
    ![mySampleDatabase objektumok](./media/connect-query-ssms/connected.png)  
 
@@ -138,7 +141,7 @@ Futtassa ezt a [Insert](/sql/t-sql/statements/insert-transact-sql/) Transact-SQL
            ,GETDATE() );
    ```
 
-2. Válassza a **végrehajtás** elemet egy új sor táblázatba való beszúrásához `Product` . Megjelenik az **üzenetek** ablaktábla **(1 sor érintett)**.
+2. Válassza a **végrehajtás**  elemet egy új sor táblázatba való beszúrásához `Product` . Megjelenik az **üzenetek** ablaktábla **(1 sor érintett)**.
 
 #### <a name="view-the-result"></a>Az eredmény megtekintése
 
@@ -155,7 +158,7 @@ Futtassa ezt a [Insert](/sql/t-sql/statements/insert-transact-sql/) Transact-SQL
 
 ### <a name="update-data"></a>Adatok frissítése
 
-Futtassa ezt a [frissítési](/sql/t-sql/queries/update-transact-sql?view=sql-server-ver15) Transact-SQL-kódot az új termék módosításához.
+Futtassa ezt a [frissítési](/sql/t-sql/queries/update-transact-sql) Transact-SQL-kódot az új termék módosításához.
 
 1. Cserélje le az előző lekérdezést, amely a korábban létrehozott új rekordot adja vissza:
 

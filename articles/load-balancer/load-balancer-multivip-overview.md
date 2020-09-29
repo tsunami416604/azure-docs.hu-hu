@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: b24514ed477d1acd31dbc4ef0daa3aa89b8739f9
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 2e27b168087966701fb53cc8df19d264861257d6
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530828"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448112"
 ---
 # <a name="multiple-frontends-for-azure-load-balancer"></a>Több előtér Azure Load Balancer
 
@@ -64,8 +64,8 @@ Két szabályt definiálunk:
 
 | Szabály | Térkép előtér | Háttérbeli készlet |
 | --- | --- | --- |
-| 1 |![zöld frontend](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 |![háttér](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP1:80, ![háttér](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP2 EGYSÉGEK: 80 |
-| 2 |![VIP](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 |![háttér](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP1:81, ![háttér](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP2 EGYSÉGEK: 81 |
+| 1 |![zöld frontend](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 |![zöld háttérrendszer](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP1:80, ![zöld háttérrendszer](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP2 EGYSÉGEK: 80 |
+| 2 |![VIP](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 |![lila háttérrendszer](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP1:81, ![lila háttérrendszer](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP2 EGYSÉGEK: 81 |
 
 A Azure Load Balancer teljes leképezése mostantól a következő:
 
@@ -143,8 +143,8 @@ Két szabályt definiálunk:
 
 | Szabály | Előtér | Leképezés a háttérrendszer-készletre |
 | --- | --- | --- |
-| 1 |![szabály](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 |![háttér](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 (a VM1 és a VM2) |
-| 2 |![szabály](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 |![háttér](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 (a VM1 és a VM2) |
+| 1 |![zöld szabály](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 |![zöld háttérrendszer](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 (a VM1 és a VM2) |
+| 2 |![lila szabály](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 |![lila háttérrendszer](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 (a VM1 és a VM2) |
 
 A következő táblázat a terheléselosztó teljes leképezését tartalmazza:
 

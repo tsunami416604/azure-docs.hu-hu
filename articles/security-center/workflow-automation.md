@@ -5,15 +5,15 @@ services: security-center
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: f3a1dc716e4db51d9d8b488bd98fc254f8dad842
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3b87f25f9424e8afebe601d2ff15330881d2173b
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322155"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447711"
 ---
 # <a name="create-automatic-responses-to-alerts-and-recommendations-with-workflow-automation"></a>Automatikus válaszok létrehozása a riasztások és javaslatok számára a munkafolyamat-automatizálással
 
@@ -33,7 +33,7 @@ Ez a cikk a Azure Security Center munkafolyamat-automatizálási szolgáltatás�
 |Kiadás állapota:|Általánosan elérhető (GA)|
 |Árképzési|Ingyenes|
 |Szükséges szerepkörök és engedélyek:|**Biztonsági rendszergazdai szerepkör** vagy **tulajdonos** az erőforráscsoporthoz<br>A cél erőforráshoz is írási engedéllyel kell rendelkeznie<br><br>Azure Logic Apps munkafolyamatok használatához a következő Logic Apps szerepköröket/engedélyeket is meg kell adni:<br> - A [Logic app-operátor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-operator) engedélyei kötelezőek vagy logikai alkalmazások olvasási/aktiválási hozzáférése (ez a szerepkör nem tud logikai alkalmazásokat létrehozni vagy szerkeszteni, csak a meglévőket *futtathatja* )<br> - A logikai alkalmazás létrehozásához és módosításához a [Logic app közreműködői](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-contributor) engedélyei szükségesek<br>Ha logikai alkalmazás-összekötőket szeretne használni, további hitelesítő adatokra lehet szüksége a saját szolgáltatásaiba való bejelentkezéshez (például az Outlook/csapatok/Slack-példányok esetében)|
-|Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![Yes](./media/icons/yes-icon.png) Kínai gov, egyéb gov|
+|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) US Gov<br>![Igen](./media/icons/yes-icon.png) Kínai gov, egyéb gov|
 |||
 
 
@@ -42,7 +42,7 @@ Ez a cikk a Azure Security Center munkafolyamat-automatizálási szolgáltatás�
 
 1. A Security Center oldalsávján válassza a **munkafolyamat-automatizálás**elemet.
 
-    :::image type="content" source="./media/workflow-automation/list-of-workflow-automations.png" alt-text="Munkafolyamat-automatizálások listája":::
+    :::image type="content" source="./media/workflow-automation/list-of-workflow-automations.png" alt-text="Munkafolyamat-automatizálások listája&quot;:::
 
     Ebből a lapról új Automation-szabályokat hozhat létre, valamint engedélyezheti, letilthatja vagy törölheti a meglévőket.
 
@@ -50,10 +50,18 @@ Ez a cikk a Azure Security Center munkafolyamat-automatizálási szolgáltatás�
 
     Megjelenik egy ablaktábla az új automatizálási beállításokkal. Itt megadhatja a következőket:
     1. Az automatizálás neve és leírása.
-    1. Az automatikus munkafolyamatot kezdeményező eseményindítók. Előfordulhat például, hogy azt szeretné, hogy a logikai alkalmazás akkor fusson, amikor az "SQL" kifejezést tartalmazó biztonsági riasztást hoz létre.
+    1. Az automatikus munkafolyamatot kezdeményező eseményindítók. Előfordulhat például, hogy azt szeretné, hogy a logikai alkalmazás akkor fusson, amikor az &quot;SQL" kifejezést tartalmazó biztonsági riasztást hoz létre.
     1. Az a logikai alkalmazás, amely az aktiválási feltételek teljesülése esetén fog futni. 
 
-        :::image type="content" source="./media/workflow-automation/add-workflow.png" alt-text="Munkafolyamat-automatizálások ablaktábla hozzáadása":::
+        :::image type="content" source="./media/workflow-automation/add-workflow.png" alt-text="Munkafolyamat-automatizálások listája&quot;:::
+
+    Ebből a lapról új Automation-szabályokat hozhat létre, valamint engedélyezheti, letilthatja vagy törölheti a meglévőket.
+
+1. Új munkafolyamat definiálásához kattintson a **munkafolyamat-automatizálás hozzáadása**lehetőségre. 
+
+    Megjelenik egy ablaktábla az új automatizálási beállításokkal. Itt megadhatja a következőket:
+    1. Az automatizálás neve és leírása.
+    1. Az automatikus munkafolyamatot kezdeményező eseményindítók. Előfordulhat például, hogy azt szeretné, hogy a logikai alkalmazás akkor fusson, amikor az &quot;SQL":::
 
 1. A műveletek szakaszban kattintson az **új létrehozása** lehetőségre a logikai alkalmazás létrehozási folyamatának megkezdéséhez.
 

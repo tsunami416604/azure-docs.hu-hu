@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: alzam
-ms.openlocfilehash: 74df878baa6ed4e2ba902a73a7830c0b075c58ce
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 1905db8f28bde41dadbe619894cb76830efca992
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90981528"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445823"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>Azure Active Directory-bérlő létrehozása P2S OpenVPN-protokollkapcsolatokhoz
 
@@ -47,7 +47,7 @@ Az [ebben a cikkben](../active-directory/fundamentals/add-users-azure-active-dir
 
 1. Keresse meg a hitelesítéshez használni kívánt címtár AZONOSÍTÓját. A Active Directory lap Tulajdonságok szakaszában szerepel.
 
-    ![Könyvtár azonosítója](./media/openvpn-create-azure-ad-tenant/directory-id.png)
+    ![Képernyőkép, amely a "címtár-azonosító" nevű "könyvtár tulajdonságai" lapot jeleníti meg.](./media/openvpn-create-azure-ad-tenant/directory-id.png)
 
 2. Másolja ki a Címtár-azonosítót.
 
@@ -89,7 +89,7 @@ Az [ebben a cikkben](../active-directory/fundamentals/add-users-azure-active-dir
 
 7. Az Azure AD-ben a **vállalati alkalmazásokban**a felsorolt **Azure VPN** látható.
 
-    ![Azure VPN](./media/openvpn-create-azure-ad-tenant/azurevpn.png)
+    ![A "minden alkalmazás" oldalt megjelenítő képernyőkép.](./media/openvpn-create-azure-ad-tenant/azurevpn.png)
     
 8. Ha még nem rendelkezik működő pont – hely környezettel, kövesse az utasításokat, és hozzon létre egyet. Lásd: [pont – hely típusú VPN létrehozása](vpn-gateway-howto-point-to-site-resource-manager-portal.md) és konfigurálása pont – hely típusú VPN-átjáró létrehozásához és konfigurálásához. 
 

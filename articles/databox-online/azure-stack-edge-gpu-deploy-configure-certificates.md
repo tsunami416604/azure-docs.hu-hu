@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure certificates for Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 5be484c613c4a18e86df7b5a83f95ca75aec6077
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7854aff0b4194efae7c4df653dee18e2676fdd41
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903394"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446320"
 ---
 # <a name="tutorial-configure-certificates-for-your-azure-stack-edge-pro-with-gpu"></a>Oktatóanyag: a Azure Stack Edge Pro tanúsítványának konfigurálása GPU-val
 
@@ -51,11 +51,11 @@ Az Azure Stack Edge Pro-eszköz GPU-val való konfigurálása előtt győződjö
 
     - Ha módosította az eszköz nevét vagy a DNS-tartományt, a tanúsítványok **állapota érvénytelenként jelenik meg.** 
 
-        ![Helyi webes felhasználói felület "tanúsítványok" lapja](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-1.png)    
+        ![Helyi webes felhasználói felület "tanúsítványok" 2. lapja](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-1.png)    
 
         Válasszon ki egy tanúsítványt az állapot részleteinek megtekintéséhez.
 
-        ![Helyi webes felhasználói felület "tanúsítványok" lapja](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-1a.png)  
+        ![Helyi webes felhasználói felület "tanúsítványok" 3. oldala](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-1a.png)  
 
         Ennek az az oka, hogy a tanúsítványok nem tükrözik a frissített eszköznév és a DNS-tartományt (amelyek a tulajdonos nevében és a tulajdonos alternatív megoldásában használatosak). Az eszköz sikeres aktiválásához válasszon a következő lehetőségek közül: 
     
@@ -108,11 +108,11 @@ Ezekkel a lépésekkel újragenerált és letöltheti az Azure Stack Edge Pro-es
 
 4. Válassza ki a tanúsítvány letöltési hivatkozását, és amikor a rendszer kéri, mentse a tanúsítványt. 
 
-    ![Tanúsítvány készítése és letöltése 6](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-7.png)
+    ![Tanúsítvány készítése és letöltése 8](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-7.png)
 
 5. Ismételje meg a folyamatot a letölteni kívánt összes tanúsítvány esetében. 
     
-    ![A 7. tanúsítvány előállítása és letöltése](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-8.png)
+    ![A 9. tanúsítvány előállítása és letöltése](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-8.png)
 
     Az eszköz által generált tanúsítványok a következő formátumú DER-tanúsítványként lesznek mentve: 
 
@@ -135,31 +135,31 @@ A következő lépésekkel adhatja hozzá saját tanúsítványait, beleértve a
 
 1. A tanúsítvány feltöltéséhez a **tanúsítvány** lapon válassza a **+ tanúsítvány hozzáadása**elemet.
 
-    ![Helyi webes felhasználói felület "tanúsítványok" lapja](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-1.png)
+    ![Helyi webes felhasználói felület "tanúsítványok" – 4. oldal](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-1.png)
 
 2. Először töltse fel az aláíró láncot, és válassza az **érvényesítés & Hozzáadás**lehetőséget.
 
-    ![Helyi webes felhasználói felület "tanúsítványok" lapja](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-2.png)
+    ![Helyi webes felhasználói felület "tanúsítványok" 5. oldal](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-2.png)
 
 3. Most már tölthet fel más tanúsítványokat. Feltöltheti például a Azure Resource Manager és a blob Storage-végpont tanúsítványait.
 
-    ![Helyi webes felhasználói felület "tanúsítványok" lapja](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-3.png)
+    ![Helyi webes felhasználói felület "tanúsítványok" 6. oldal](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-3.png)
 
     Fel is töltheti a helyi webes felhasználói felület tanúsítványát. A tanúsítvány feltöltése után el kell indítania a böngészőt, és törölnie kell a gyorsítótárat. Ezután csatlakoznia kell az eszköz helyi webes felhasználói felületéhez.  
 
-    ![Helyi webes felhasználói felület "tanúsítványok" lapja](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-5.png)
+    ![Helyi webes felhasználói felület "tanúsítványok" 7. oldal](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-5.png)
 
     Fel is töltheti a csomópont-tanúsítványt.
 
-    ![Helyi webes felhasználói felület "tanúsítványok" lapja](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-4.png)
+    ![Helyi webes felhasználói felület "tanúsítványok", 8. oldal](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-4.png)
 
     Bármikor kiválaszthat egy tanúsítványt, és megtekintheti a részleteket, így biztosíthatja, hogy ezek egyeznek a feltöltött tanúsítvánnyal.
 
-    ![Helyi webes felhasználói felület "tanúsítványok" lapja](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-6.png)
+    ![Helyi webes felhasználói felület "tanúsítványok" 9. lapja](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-6.png)
 
     A tanúsítvány oldalának frissítenie kell, hogy tükrözze az újonnan hozzáadott tanúsítványokat.
 
-    ![Helyi webes felhasználói felület "tanúsítványok" lapja](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-7.png)  
+    ![Helyi webes felhasználói felület "tanúsítványok" – 10. oldal](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-7.png)  
 
     > [!NOTE]
     > Az Azure nyilvános felhő kivételével az összes felhőalapú konfiguráció (Azure Government vagy Azure Stack) aktiválása előtt be kell állítani az aláírási lánc tanúsítványait.

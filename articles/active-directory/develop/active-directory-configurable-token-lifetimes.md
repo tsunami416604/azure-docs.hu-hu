@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/17/2020
+ms.date: 09/25/2020
 ms.author: ryanwi
-ms.custom: aaddev, identityplatformtop40
+ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 2f6ade3a01022bf3bcc4d6b522e45ae98fe29b33
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c5866ddfee049499a4179505e0c1a206b1c68945
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91258416"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447298"
 ---
 # <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Konfigurálható jogkivonat-élettartamok a Microsoft Identity platformban (előzetes verzió)
 
@@ -46,11 +46,11 @@ Az ügyfelek hozzáférési jogkivonatokkal férnek hozzá egy védett erőforr�
 
 ### <a name="saml-tokens"></a>SAML-jogkivonatok
 
-Az SAML-jogkivonatokat számos web-alapú SAAS-alkalmazás használja, és a Azure Active Directory egy SAML2 protokoll-végpontján keresztül szerezhetők be. Ezeket a WS-Federationt használó alkalmazások is használják. A token alapértelmezett élettartama 1 óra. Egy alkalmazás szemszögéből a jogkivonat érvényességi idejét a `<conditions …>` jogkivonat elemének NotOnOrAfter értéke adja meg. A jogkivonat érvényességi időtartamának lejárta után az ügyfélnek új hitelesítési kérelmet kell kezdeményeznie, amely az egyszeri bejelentkezés (SSO) munkamenet-jogkivonatának eredményeképpen gyakran elégedett lesz az interaktív bejelentkezés nélkül.
+Az SAML-jogkivonatokat számos webalapú SAAS-alkalmazás használja, és a Azure Active Directory egy SAML2 protokoll-végpontján keresztül szerezhetők be. Ezeket a WS-Federationt használó alkalmazások is használják. A token alapértelmezett élettartama 1 óra. Egy alkalmazás szemszögéből a jogkivonat érvényességi idejét a `<conditions …>` jogkivonat elemének NotOnOrAfter értéke adja meg. A jogkivonat érvényességi időtartamának lejárta után az ügyfélnek új hitelesítési kérelmet kell kezdeményeznie, amely az egyszeri bejelentkezés (SSO) munkamenet-jogkivonatának eredményeképpen gyakran elégedett lesz az interaktív bejelentkezés nélkül.
 
 A NotOnOrAfter értéke az a paraméter használatával módosítható `AccessTokenLifetime` `TokenLifetimePolicy` . A házirendben megadott élettartamra lesz beállítva, ha van ilyen, valamint egy óra, amely öt percet vesz igénybe.
 
-Vegye figyelembe, hogy az elemben megadott tulajdonos megerősítő NotOnOrAfter `<SubjectConfirmationData>` nem érinti a jogkivonat élettartamának konfigurációja. 
+Az elemben megadott tulajdonos megerősítő NotOnOrAfter `<SubjectConfirmationData>` nem érinti a jogkivonat élettartamának konfigurációja. 
 
 ### <a name="refresh-tokens"></a>Tokenek frissítése
 
@@ -103,7 +103,7 @@ A jogkivonat élettartama házirend olyan házirend-objektum, amely a jogkivonat
 | Frissítési jogkivonat maximális inaktív ideje (bizalmas ügyfelek számára kiállítva) |Frissítési tokenek (bizalmas ügyfelek számára kiállítva) |90 nap |
 | Frissítési token maximális kora (bizalmas ügyfelek számára kiállítva) |Frissítési tokenek (bizalmas ügyfelek számára kiállítva) |Visszavonásig |
 
-* <sup>1</sup> a nem elegendő visszavonási információval rendelkező összevont felhasználók között szerepelnek azok a felhasználók, akik nem rendelkeznek szinkronizált "LastPasswordChangeTimestamp" attribútummal. Ezek a felhasználók ezt a rövid maximális kort kapják meg, mert a HRE nem tudja ellenőrizni, hogy mikor kell visszavonni a régi hitelesítő adatokhoz kötött jogkivonatokat (például a jelszó megváltozását), és gyakrabban kell visszakeresni, hogy a felhasználó és a társított jogkivonatok továbbra is jó helyzetben legyenek. A környezet javítása érdekében a bérlői rendszergazdáknak biztosítaniuk kell, hogy szinkronizálják a "LastPasswordChangeTimestamp" attribútumot (ezt a felhasználói objektumhoz a PowerShell vagy a AADSync használatával lehet beállítani).
+* <sup>1</sup> a nem elegendő visszavonási információval rendelkező összevont felhasználók között szerepelnek azok a felhasználók, akik nem rendelkeznek szinkronizált "LastPasswordChangeTimestamp" attribútummal. Ezek a felhasználók ezt a rövid maximális kort kapják meg, mert Azure Active Directory nem tudja ellenőrizni, hogy mikor kell visszavonni a régi hitelesítő adatokhoz kötött jogkivonatokat (például a jelszót, amelyet módosítottak), és gyakrabban kell ismét bejelentkeznie ahhoz, hogy a felhasználó és a társított jogkivonatok továbbra is jó helyzetben legyenek. A környezet javítása érdekében a bérlői rendszergazdáknak biztosítaniuk kell, hogy szinkronizálják a "LastPasswordChangeTimestamp" attribútumot (ezt a felhasználói objektumhoz a PowerShell vagy a AADSync használatával lehet beállítani).
 
 ### <a name="policy-evaluation-and-prioritization"></a>Szabályzat kiértékelése és rangsorolása
 Létrehozhat és hozzárendelhet egy jogkivonat-élettartam-szabályzatot egy adott alkalmazáshoz, a szervezetéhez és az egyszerű szolgáltatásokhoz. Egy adott alkalmazásra több házirend is alkalmazható. A jogkivonat élettartamára vonatkozó szabályzat a következő szabályokat követi:
@@ -382,170 +382,37 @@ Ebben a példában néhány szabályzatot hoz létre a prioritási rendszer műk
 
 ## <a name="cmdlet-reference"></a>Parancsmag-referencia
 
+Ezek a parancsmagok a [Azure Active Directory PowerShell a Graph Preview modulhoz](/powershell/module/azuread/?view=azureadps-2.0-preview#service-principals&preserve-view=true&preserve-view=true).
+
 ### <a name="manage-policies"></a>A szabályzatok kezelése
 
 A szabályzatok kezeléséhez a következő parancsmagokat használhatja.
 
-#### <a name="new-azureadpolicy"></a>Új – AzureADPolicy
-
-Létrehoz egy új szabályzatot.
-
-```powershell
-New-AzureADPolicy -Definition <Array of Rules> -DisplayName <Name of Policy> -IsOrganizationDefault <boolean> -Type <Policy Type>
-```
-
-| Paraméterek | Leírás | Példa |
-| --- | --- | --- |
-| <code>&#8209;Definition</code> |A szabályzat összes szabályát tartalmazó sztringesített JSON tömbje. | `-Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"20:00:00"}}')` |
-| <code>&#8209;DisplayName</code> |A szabályzat nevének karakterlánca |`-DisplayName "MyTokenPolicy"` |
-| <code>&#8209;IsOrganizationDefault</code> |Ha az értéke igaz, a szabályzatot a szervezet alapértelmezett házirendjé szerint állítja be. Hamis érték esetén nem. |`-IsOrganizationDefault $true` |
-| <code>&#8209;Type</code> |A házirend típusa. A jogkivonat élettartama esetén mindig használja a "TokenLifetimePolicy" értéket. | `-Type "TokenLifetimePolicy"` |
-| <code>&#8209;AlternativeIdentifier</code> Választható |A szabályzat alternatív AZONOSÍTÓjának beállítása. |`-AlternativeIdentifier "myAltId"` |
-
-</br></br>
-
-#### <a name="get-azureadpolicy"></a>Get-AzureADPolicy
-Lekéri az összes Azure AD-házirendet vagy egy megadott szabályzatot.
-
-```powershell
-Get-AzureADPolicy
-```
-
-| Paraméterek | Leírás | Példa |
-| --- | --- | --- |
-| <code>&#8209;Id</code> Választható |A kívánt szabályzat **ObjectId (azonosító)** . |`-Id <ObjectId of Policy>` |
-
-</br></br>
-
-#### <a name="get-azureadpolicyappliedobject"></a>Get-AzureADPolicyAppliedObject
-A Szabályzathoz kapcsolódó összes alkalmazás és szolgáltatásnév beolvasása.
-
-```powershell
-Get-AzureADPolicyAppliedObject -Id <ObjectId of Policy>
-```
-
-| Paraméterek | Leírás | Példa |
-| --- | --- | --- |
-| <code>&#8209;Id</code> |A kívánt szabályzat **ObjectId (azonosító)** . |`-Id <ObjectId of Policy>` |
-
-</br></br>
-
-#### <a name="set-azureadpolicy"></a>Set-AzureADPolicy
-Frissíti a meglévő szabályzatokat.
-
-```powershell
-Set-AzureADPolicy -Id <ObjectId of Policy> -DisplayName <string>
-```
-
-| Paraméterek | Leírás | Példa |
-| --- | --- | --- |
-| <code>&#8209;Id</code> |A kívánt szabályzat **ObjectId (azonosító)** . |`-Id <ObjectId of Policy>` |
-| <code>&#8209;DisplayName</code> |A szabályzat nevének karakterlánca |`-DisplayName "MyTokenPolicy"` |
-| <code>&#8209;Definition</code> Választható |A szabályzat összes szabályát tartalmazó sztringesített JSON tömbje. |`-Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"20:00:00"}}')` |
-| <code>&#8209;IsOrganizationDefault</code> Választható |Ha az értéke igaz, a szabályzatot a szervezet alapértelmezett házirendjé szerint állítja be. Hamis érték esetén nem. |`-IsOrganizationDefault $true` |
-| <code>&#8209;Type</code> Választható |A házirend típusa. A jogkivonat élettartama esetén mindig használja a "TokenLifetimePolicy" értéket. |`-Type "TokenLifetimePolicy"` |
-| <code>&#8209;AlternativeIdentifier</code> Választható |A szabályzat alternatív AZONOSÍTÓjának beállítása. |`-AlternativeIdentifier "myAltId"` |
-
-</br></br>
-
-#### <a name="remove-azureadpolicy"></a>Remove-AzureADPolicy
-A megadott házirend törlése.
-
-```powershell
- Remove-AzureADPolicy -Id <ObjectId of Policy>
-```
-
-| Paraméterek | Leírás | Példa |
-| --- | --- | --- |
-| <code>&#8209;Id</code> |A kívánt szabályzat **ObjectId (azonosító)** . | `-Id <ObjectId of Policy>` |
-
-</br></br>
+| Parancsmag | Leírás | 
+| --- | --- |
+| [Új – AzureADPolicy](/powershell/module/azuread/new-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) | Létrehoz egy új szabályzatot. |
+| [Get-AzureADPolicy](/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) | Lekéri az összes Azure AD-házirendet vagy egy megadott szabályzatot. |
+| [Get-AzureADPolicyAppliedObject](/powershell/module/azuread/get-azureadpolicyappliedobject?view=azureadps-2.0-preview&preserve-view=true) | A Szabályzathoz kapcsolódó összes alkalmazás és szolgáltatásnév beolvasása. |
+| [Set-AzureADPolicy](/powershell/module/azuread/set-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) | Frissíti a meglévő szabályzatokat. |
+| [Remove-AzureADPolicy](/powershell/module/azuread/remove-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) | A megadott házirend törlése. |
 
 ### <a name="application-policies"></a>Tanúsítványhasználati házirend
 Az alkalmazás-házirendekhez a következő parancsmagokat használhatja.</br></br>
 
-#### <a name="add-azureadapplicationpolicy"></a>Add-AzureADApplicationPolicy
-A megadott szabályzat csatolása egy alkalmazáshoz.
-
-```powershell
-Add-AzureADApplicationPolicy -Id <ObjectId of Application> -RefObjectId <ObjectId of Policy>
-```
-
-| Paraméterek | Leírás | Példa |
-| --- | --- | --- |
-| <code>&#8209;Id</code> |Az alkalmazás **ObjectId (azonosító)** . | `-Id <ObjectId of Application>` |
-| <code>&#8209;RefObjectId</code> |A szabályzat **ObjectId** . | `-RefObjectId <ObjectId of Policy>` |
-
-</br></br>
-
-#### <a name="get-azureadapplicationpolicy"></a>Get-AzureADApplicationPolicy
-Az alkalmazáshoz rendelt szabályzat beolvasása.
-
-```powershell
-Get-AzureADApplicationPolicy -Id <ObjectId of Application>
-```
-
-| Paraméterek | Leírás | Példa |
-| --- | --- | --- |
-| <code>&#8209;Id</code> |Az alkalmazás **ObjectId (azonosító)** . | `-Id <ObjectId of Application>` |
-
-</br></br>
-
-#### <a name="remove-azureadapplicationpolicy"></a>Remove-AzureADApplicationPolicy
-Eltávolít egy szabályzatot egy alkalmazásból.
-
-```powershell
-Remove-AzureADApplicationPolicy -Id <ObjectId of Application> -PolicyId <ObjectId of Policy>
-```
-
-| Paraméterek | Leírás | Példa |
-| --- | --- | --- |
-| <code>&#8209;Id</code> |Az alkalmazás **ObjectId (azonosító)** . | `-Id <ObjectId of Application>` |
-| <code>&#8209;PolicyId</code> |A szabályzat **ObjectId** . | `-PolicyId <ObjectId of Policy>` |
-
-</br></br>
+| Parancsmag | Leírás | 
+| --- | --- |
+| [Add-AzureADApplicationPolicy](/powershell/module/azuread/add-azureadapplicationpolicy?view=azureadps-2.0-preview&preserve-view=true) | A megadott szabályzat csatolása egy alkalmazáshoz. |
+| [Get-AzureADApplicationPolicy](/powershell/module/azuread/get-azureadapplicationpolicy?view=azureadps-2.0-preview&preserve-view=true) | Az alkalmazáshoz rendelt szabályzat beolvasása. |
+| [Remove-AzureADApplicationPolicy](/powershell/module/azuread/remove-azureadapplicationpolicy?view=azureadps-2.0-preview&preserve-view=true) | Eltávolít egy szabályzatot egy alkalmazásból. |
 
 ### <a name="service-principal-policies"></a>Egyszerű szolgáltatásnév házirendek
 A következő parancsmagokat használhatja az egyszerű szolgáltatásnév házirendjeihez.
 
-#### <a name="add-azureadserviceprincipalpolicy"></a>Add-AzureADServicePrincipalPolicy
-A megadott házirend csatolása egy egyszerű szolgáltatáshoz.
-
-```powershell
-Add-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal> -RefObjectId <ObjectId of Policy>
-```
-
-| Paraméterek | Leírás | Példa |
-| --- | --- | --- |
-| <code>&#8209;Id</code> |Az alkalmazás **ObjectId (azonosító)** . | `-Id <ObjectId of Application>` |
-| <code>&#8209;RefObjectId</code> |A szabályzat **ObjectId** . | `-RefObjectId <ObjectId of Policy>` |
-
-</br></br>
-
-#### <a name="get-azureadserviceprincipalpolicy"></a>Get-AzureADServicePrincipalPolicy
-Lekéri a megadott egyszerű szolgáltatáshoz kapcsolódó házirendet.
-
-```powershell
-Get-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal>
-```
-
-| Paraméterek | Leírás | Példa |
-| --- | --- | --- |
-| <code>&#8209;Id</code> |Az alkalmazás **ObjectId (azonosító)** . | `-Id <ObjectId of Application>` |
-
-</br></br>
-
-#### <a name="remove-azureadserviceprincipalpolicy"></a>Remove-AzureADServicePrincipalPolicy
-Eltávolítja a szabályzatot a megadott egyszerű szolgáltatásból.
-
-```powershell
-Remove-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal>  -PolicyId <ObjectId of Policy>
-```
-
-| Paraméterek | Leírás | Példa |
-| --- | --- | --- |
-| <code>&#8209;Id</code> |Az alkalmazás **ObjectId (azonosító)** . | `-Id <ObjectId of Application>` |
-| <code>&#8209;PolicyId</code> |A szabályzat **ObjectId** . | `-PolicyId <ObjectId of Policy>` |
+| Parancsmag | Leírás | 
+| --- | --- |
+| [Add-AzureADServicePrincipalPolicy](/powershell/module/azuread/add-azureadserviceprincipalpolicy?view=azureadps-2.0-preview&preserve-view=true) | A megadott házirend csatolása egy egyszerű szolgáltatáshoz. |
+| [Get-AzureADServicePrincipalPolicy](/powershell/module/azuread/get-azureadserviceprincipalpolicy?view=azureadps-2.0-preview&preserve-view=true) | Lekéri a megadott egyszerű szolgáltatáshoz kapcsolódó házirendet.|
+| [Remove-AzureADServicePrincipalPolicy](/powershell/module/azuread/remove-azureadserviceprincipalpolicy?view=azureadps-2.0-preview&preserve-view=true) | Eltávolítja a szabályzatot a megadott egyszerű szolgáltatásból.|
 
 ## <a name="license-requirements"></a>Licenckövetelmények
 

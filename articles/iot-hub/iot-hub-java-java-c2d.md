@@ -13,12 +13,12 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-java
-ms.openlocfilehash: 7f04483415253145cd485ccf870160e83a6e0e4b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f4e5880a39d6ad299fd6e7f29bd0e3aefadc3bcd
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319116"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446900"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-java"></a>Üzenetküldés a felhőből az eszközre IoT Hub (Java)
 
@@ -88,14 +88,25 @@ Ebben a szakaszban módosítania kell a szimulált eszközt, amelyet a [telemetr
     client.open();
     ```
 
-    > [!NOTE]
-    > Ha MQTT vagy AMQP helyett HTTPS-t használ, akkor a **DeviceClient** -példányok ritkán keresnek IoT hub üzeneteket (kevesebb, mint 25 percenként). A MQTT, a AMQP és a HTTPS támogatásával, valamint a szabályozás IoT Hubával kapcsolatos további információkért tekintse meg a [IoT hub fejlesztői útmutató üzenetkezelés című szakaszát](iot-hub-devguide-messaging.md).
-
 4. Ha a **simulated-device** alkalmazást a Maven használatával szeretné felépíteni, futtassa a következő parancsot a parancssorban a simulated-device mappában:
 
     ```cmd/sh
     mvn clean package -DskipTests
     ```
+
+A `execute` osztály metódusa `AppMessageCallback` visszaadja a értéket `IotHubMessageResult.COMPLETE` . Ez értesíti IoT Hub az üzenet sikeres feldolgozásáról, valamint arról, hogy az üzenet biztonságosan eltávolítható az eszköz-várólistából. Az eszköznek ezt az értéket kell visszaadnia, ha a feldolgozás sikeresen befejeződik, függetlenül attól, hogy milyen protokollt használ.
+
+A AMQP és a HTTPS használatával, de nem MQTT, az eszköz a következőket is elvégezheti:
+
+* Hagyjon ki egy üzenetet, amely IoT Hub az üzenet megtartását az eszköz várólistájában a későbbi felhasználás érdekében.
+* Egy üzenet elutasítása, amely véglegesen eltávolítja az üzenetet az eszköz várólistáról.
+
+Ha valami történik, amely megakadályozza, hogy az eszköz elvégezze, lemondsa vagy elutasítja az üzenetet, IoT Hub a rögzített időtúllépési időszak után az üzenetet újra kézbesíti. Emiatt az *idempotens*logikának kell lennie az eszköz alkalmazásában, hogy ugyanazt az üzenetet kapja többször is ugyanez az eredmény.
+
+További információ arról, hogy a IoT Hub hogyan dolgozza fel a felhőből az eszközre irányuló üzeneteket, beleértve a felhőből az eszközre irányuló üzenetek életciklusának részleteit is: a [felhőből az eszközre irányuló üzenetek küldése az IoT hub-ból](iot-hub-devguide-messages-c2d.md).
+
+> [!NOTE]
+> Ha MQTT vagy AMQP helyett HTTPS-t használ, akkor a **DeviceClient** -példányok ritkán keresnek IoT hub üzeneteket (legalább 25 percenként). További információ a MQTT, a AMQP és a HTTPS-támogatás közötti különbségekről: a [felhőből az eszközre irányuló kommunikációs útmutató](iot-hub-devguide-c2d-guidance.md) és [a kommunikációs protokoll kiválasztása](iot-hub-devguide-protocols.md).
 
 ## <a name="get-the-iot-hub-connection-string"></a>Az IoT hub-beli kapcsolatok karakterláncának beolvasása
 
@@ -210,7 +221,7 @@ Most már készen áll az alkalmazások futtatására.
 
     ![Futtassa a parancsot a felhőből az eszközre irányuló üzenet elküldéséhez](media/iot-hub-java-java-c2d/sendc2d.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan küldhet és fogadhat üzeneteket a felhőből az eszközre.
 

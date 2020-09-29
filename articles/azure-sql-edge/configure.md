@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: b2c52457972d94b2e999c137d19d3a434ff17a7d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6284e85d8c4e9ad9f9896081f04c6b7669b8e1c0
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90888376"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446943"
 ---
 # <a name="configure-azure-sql-edge"></a>Az Azure SQL Edge konfigurálása
 
@@ -33,7 +33,8 @@ Az Azure SQL Edge számos különböző környezeti változót tesz elérhetőv�
 A következő új környezeti változók lettek hozzáadva az Azure SQL Edge-hez. 
 
 | Környezeti változó | Leírás | Értékek |     
-|-----|-----| ---------- |   
+|-----|-----| ---------- | 
+| **PlanId** | Megadja az inicializálás során használandó Azure SQL Edge SKU-t. Ez a környezeti változó csak akkor szükséges, ha Azure IoT Edge használatával telepíti az Azure SQL Edge-t. | **asde-Developer-on-IOT-Edge** vagy **asde-Premium-on-IOT-Edge** | 
 | **MSSQL_TELEMETRY_ENABLED** | A használati és diagnosztikai adatok gyűjtésének engedélyezése vagy letiltása. | TRUE (igaz) vagy FALSE (hamis) |  
 | **MSSQL_TELEMETRY_DIR** | Beállítja a használati és diagnosztikai adatgyűjtési naplófájlok célhelyének könyvtárát. | Mappa helye az SQL Edge-tárolón belül. Ez a mappa csatlakoztatási pontok vagy adatmennyiségek használatával képezhető le egy gazdagép kötetére. | 
 | **MSSQL_PACKAGE** | Megadja a telepítendő dacpac vagy bacpac-csomag helyét. | A dacpac-vagy bacpac-csomagokat tartalmazó mappa, fájl vagy SAS URL-cím. További információkért lásd [: SQL Database DACPAC és BACPAC-csomagok üzembe helyezése az SQL Edge-ben](deploy-dacpac.md). |

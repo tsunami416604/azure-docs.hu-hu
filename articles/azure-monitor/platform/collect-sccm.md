@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/28/2019
-ms.openlocfilehash: 6d6431aa26637e4b956d5c334a2862f689f845bf
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 20d55de7ef0f7b7f49b922409f8cb61874fae0f6
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319320"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448153"
 ---
 # <a name="connect-configuration-manager-to-azure-monitor"></a>Configuration Manager összekötése a Azure Monitor
 A Microsoft Endpoint Configuration Manager-Azure Monitor környezet összekapcsolásával szinkronizálhatja az eszköz-gyűjtési adatait, és Azure Monitor és Azure Automation is hivatkozhat ezekre a gyűjteményekre.  
@@ -135,7 +135,7 @@ Miután befejezte a kezdeti konfigurációt, hogy importálja az eszközöket a 
 4. Válassza ki a **számítógépcsoportok** elemet, majd válassza a **SCCM**lehetőséget.  
 5. Válassza az **importálás Configuration Manager gyűjtemény tagságok** lehetőséget, majd kattintson a **Mentés**gombra.  
    
-    ![Számítógépcsoportok – SCCM lap](./media/collect-sccm/sccm-computer-groups01.png)
+    ![Képernyőkép a számítógép-csoportok speciális beállításairól, amelyek tartalmazzák az importálási Configuration Manager gyűjtemény tagságának lehetőségét.](./media/collect-sccm/sccm-computer-groups01.png)
 
 ## <a name="view-data-from-configuration-manager"></a>Adatok megtekintése Configuration Manager
 
@@ -143,11 +143,11 @@ Miután hozzáadta Log Analytics kapcsolatát az Configuration Managerhoz, és t
 
 A gyűjtemények importálása után láthatja, hány számítógépet észlelt a gyűjtemény tagsága. Az importált gyűjtemények számát is megtekintheti.
 
-![Számítógépcsoportok – SCCM lap](./media/collect-sccm/sccm-computer-groups02.png)
+![Képernyőfelvétel: a számítógép-csoportok speciális beállításai a C C M-hez, amely az importálási Configuration Manager gyűjteményi tagságok kiválasztásának lehetőségét mutatja.](./media/collect-sccm/sccm-computer-groups02.png)
 
 Ha rákattint valamelyikre, a naplófájl-szerkesztő megnyílik az összes importált csoport vagy az egyes csoportokhoz tartozó összes számítógép között. A [naplóbeli keresés](../log-query/log-query-overview.md)használatával további részletes elemzéseket végezhet a gyűjtemény tagsági adataiban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A [naplók keresési](../log-query/log-query-overview.md) funkciójának használatával megtekintheti a Configuration Manager adataival kapcsolatos részletes információkat.
 

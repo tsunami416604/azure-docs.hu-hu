@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: 7459d674cde123bc45544322347bc4c1fe89e820
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 1fb05b52bbe3e8f544b17537ef9070e5b2b0b77b
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009613"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460169"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Az Azure cache konfigurálása a Redis-hez
 Ez a témakör az Azure cache Redis-példányok számára elérhető konfigurációkat ismerteti. Ez a témakör az Azure cache alapértelmezett Redis-kiszolgáló-konfigurációját is ismerteti Redis-példányok esetén.
@@ -50,7 +50,7 @@ A következő beállításokat tekintheti meg és konfigurálhatja az **erőforr
     * [Zárolások](#locks)
     * [Automation-szkript](#automation-script)
 * Felügyelet
-    * [Adatimportálás](#importexport)
+    * [Adatok importálása](#importexport)
     * [Adatok exportálása](#importexport)
     * [Újraindítás](#reboot)
 * [Figyelés](#monitoring)
@@ -132,7 +132,7 @@ A **Speciális beállítások** panelen a **Maxmemory**szabályzat, a **Maxmemor
 
 A **Maxmemory házirend** konfigurálja a gyorsítótár kiürítési házirendjét, és lehetővé teszi a következő Kizárási szabályzatok kiválasztását:
 
-* `volatile-lru`– Ez az alapértelmezett kizárási házirend.
+* `volatile-lru` – Ez az alapértelmezett kizárási házirend.
 * `allkeys-lru`
 * `volatile-random`
 * `allkeys-random`
@@ -141,9 +141,9 @@ A **Maxmemory házirend** konfigurálja a gyorsítótár kiürítési házirendj
 
 A szabályzatokkal kapcsolatos további információkért `maxmemory` lásd: [kizárási szabályzatok](https://redis.io/topics/lru-cache#eviction-policies).
 
-A **maxmemory fenntartott** beállítás azt a memóriát állítja be MB-ban, amely nem gyorsítótárbeli műveletekhez van fenntartva, például feladatátvétel közbeni replikáláshoz. Ennek az értéknek a beállítása lehetővé teszi, hogy konzisztens Redis-kiszolgáló élményt biztosítson a terheléstől függően. Ezt az értéket magasabb értékre kell állítani a nagy írási feladatok esetében. Ha a memória le van foglalva az ilyen műveletekhez, nem érhető el a gyorsítótárazott adatok tárolása.
+A **maxmemory fenntartott** beállítás azt a memóriát konfigurálja, amely a fürt MB-ban megadott, a nem gyorsítótárazási műveletekhez, például a feladatátvétel során való replikáláshoz van fenntartva. Ennek az értéknek a beállítása lehetővé teszi, hogy konzisztens Redis-kiszolgáló élményt biztosítson a terheléstől függően. Ezt az értéket magasabb értékre kell állítani a nagy írási feladatok esetében. Ha a memória le van foglalva az ilyen műveletekhez, nem érhető el a gyorsítótárazott adatok tárolása.
 
-A **maxfragmentationmemory fenntartott** beállítás azt a memóriát adja meg MB-ban, amely a memória töredezettségének kielégítésére van fenntartva. Ennek az értéknek a beállítása lehetővé teszi, hogy konzisztens Redis-kiszolgáló élményt biztosítson, ha a gyorsítótár megtelt, vagy a teljes és a töredezettségi arány magas. Ha a memória le van foglalva az ilyen műveletekhez, nem érhető el a gyorsítótárazott adatok tárolása.
+A **maxfragmentationmemory fenntartott** beállítás azt a memóriát konfigurálja, amely a fürt MB-ban megadott mennyiségét tartalmazza, és amely a memória töredezettségének kielégítésére van fenntartva. Ennek az értéknek a beállítása lehetővé teszi, hogy konzisztens Redis-kiszolgáló élményt biztosítson, ha a gyorsítótár megtelt, vagy a teljes és a töredezettségi arány magas. Ha a memória le van foglalva az ilyen műveletekhez, nem érhető el a gyorsítótárazott adatok tárolása.
 
 Az új memória foglalási értékének (**maxmemory** vagy **maxfragmentationmemory**) kiválasztásakor figyelembe kell venni, hogy ez a változás milyen hatással lehet egy olyan gyorsítótárra, amely már fut nagy mennyiségű adattal. Ha például egy 53 GB-os gyorsítótárban 49 GB adat található, akkor a foglalás értékét 8 GB-ra kell módosítania, ez a módosítás a rendszer számára a maximális rendelkezésre álló memóriát is leállítja a 45 GB-ra. Ha a jelenlegi `used_memory` vagy az `used_memory_rss` értéke meghaladja az új 45 GB-os korlátot, akkor a rendszernek el kell zárnia az adatait, amíg mindkettő `used_memory` és `used_memory_rss` 45 GB alá nem kerül. A kizárás növelheti a kiszolgáló terhelését és a memória töredezettségét. A gyorsítótár-metrikákkal, például a-vel és a-vel kapcsolatos további információkért `used_memory` `used_memory_rss` lásd: [elérhető metrikák és jelentéskészítési időközök](cache-how-to-monitor.md#available-metrics-and-reporting-intervals).
 
@@ -290,7 +290,7 @@ A **felügyelet** szakaszban található beállítások lehetővé teszik a köv
 
 ![Felügyelet](./media/cache-configure/redis-cache-administration.png)
 
-* [Adatimportálás](#importexport)
+* [Adatok importálása](#importexport)
 * [Adatok exportálása](#importexport)
 * [Újraindítás](#reboot)
 
@@ -394,7 +394,7 @@ A Redis-példányok új Azure gyorsítótára a következő alapértelmezett Red
 | `maxmemory-samples` |3 |A memória mentéséhez a LRU és a minimális TTL-algoritmusokat a pontos algoritmusok helyett közelítő algoritmusok használják. Alapértelmezés szerint a Redis három kulcsot ellenőriz, és kiválasztja azt, amelyet a közelmúltban kevésbé használt. |
 | `lua-time-limit` |5000 |Lua-szkriptek maximális végrehajtási ideje ezredmásodpercben. Ha elérte a maximális végrehajtási időt, a Redis azt naplózza, hogy a parancsfájl még a maximálisan megengedett idő után is végrehajtás alatt áll, és a rendszer megkezdi a válaszadást a hibákkal rendelkező lekérdezésekre. |
 | `lua-event-limit` |500 |A parancsfájl-események várólistájának maximális mérete. |
-| `client-output-buffer-limit` `normalclient-output-buffer-limit` `pubsub` |0 0 032mb 8mb 60 |Az ügyfél kimeneti pufferének korlátai felhasználhatók az olyan ügyfelek leválasztásának kényszerítésére, amelyek nem elég gyorsan olvasni az adatokat a kiszolgálóról (ennek gyakori oka, hogy a pub/sub-ügyfél nem tud az üzeneteket olyan gyorsan használni, ahogy a közzétevő elő tudja állítani őket). További információ: [https://redis.io/topics/clients](https://redis.io/topics/clients) . |
+| `client-output-buffer-limit` `normalclient-output-buffer-limit` `pubsub` |0 0 032mb 8mb 60 |Az ügyfél kimeneti pufferének korlátai felhasználhatók az olyan ügyfelek leválasztásának kényszerítésére, amelyek nem elég gyorsan olvasni az adatokat a kiszolgálóról (ennek gyakori oka, hogy a pub/sub-ügyfél nem tud az üzeneteket olyan gyorsan használni, ahogy a közzétevő elő tudja állítani őket). További információ: [https://redis.io/topics/clients](https://redis.io/topics/clients). |
 
 <a name="databases"></a>
 <sup>1</sup> A `databases` Redis-díjszabási szinten az egyes Azure-gyorsítótárak esetében eltérő a korlát, és beállítható a gyorsítótár létrehozásakor. Ha nincs `databases` megadva beállítás a gyorsítótár létrehozásakor, az alapértelmezett érték 16.

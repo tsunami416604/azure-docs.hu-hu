@@ -6,13 +6,14 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
+ms.custom: contperfq1
 ms.date: 06/21/2019
-ms.openlocfilehash: de8b69cbe3117a3ec248cee4808b676b39c56658
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 271cae3504601ffa42c077029541cef8c7726053
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324794"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461036"
 ---
 # <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>Riasztások beállítása Azure Stream Analytics feladatokhoz
 
@@ -57,12 +58,12 @@ Az alábbi példa bemutatja, hogyan állíthatja be a riasztásokat, amikor a fe
 
 A következő riasztások ajánlottak a Stream Analyticsi feladatok teljesítményének figyeléséhez. Ezeket a metrikákat percenként kell kiértékelni az elmúlt 5 perces időszakban.
 
-|Metrika|Feltétel|Idő összesítése|Küszöbérték|Javítási műveletek|
+|Metrika|Condition (Állapot)|Idő összesítése|Küszöbérték|Javítási műveletek|
 |-|-|-|-|-|
-|SU% kihasználtsága|Nagyobb|Maximum|80|Több tényező is megnövelheti a SU%-os kihasználtságot. A lekérdezési párhuzamos méretezéssel vagy a folyamatos átviteli egységek számának növelésével bővíthető. További információért lásd [az Azure Stream Analytics-lekérdezések párhozamosításának előnyeit ismertető](stream-analytics-parallelization.md) cikket.|
-|Futásidejű hibák|Nagyobb|Összesen|0|Vizsgálja meg a tevékenység-vagy erőforrás-naplókat, és végezze el a megfelelő módosításokat a bemeneteken, lekérdezéseken vagy kimeneteken.|
-|Vízjel késleltetése|Nagyobb|Maximum|Ha a metrika átlagos értéke az elmúlt 15 percben meghaladja a késői érkezési toleranciát (másodpercben). Ha nem módosította a késői érkezési toleranciát, az alapértelmezett érték 5 másodperc.|Próbálja meg növelni a lekérdezés SUs-vagy tetszés számát. További információ az SUs szolgáltatásról: a [folyamatos átviteli egységek ismertetése és módosítása](stream-analytics-streaming-unit-consumption.md#how-many-sus-are-required-for-a-job). A lekérdezés tetszés kapcsolatos további információkért lásd: [a lekérdezési párhuzamos kihasználása a Azure stream Analyticsban](stream-analytics-parallelization.md).|
-|Bemeneti deszerializálási hibák|Nagyobb|Összesen|0|Vizsgálja meg a tevékenység vagy az erőforrás naplóit, és végezze el a megfelelő módosításokat a bemeneten. Az erőforrás-naplókkal kapcsolatos további információkért lásd: [Azure stream Analytics erőforrás-naplók használatával kapcsolatos hibák megoldása](stream-analytics-job-diagnostic-logs.md)|
+|SU% kihasználtsága|Nagyobb, mint|Maximum|80|Több tényező is megnövelheti a SU%-os kihasználtságot. A lekérdezési párhuzamos méretezéssel vagy a folyamatos átviteli egységek számának növelésével bővíthető. További információért lásd [az Azure Stream Analytics-lekérdezések párhozamosításának előnyeit ismertető](stream-analytics-parallelization.md) cikket.|
+|Futásidejű hibák|Nagyobb, mint|Összesen|0|Vizsgálja meg a tevékenység-vagy erőforrás-naplókat, és végezze el a megfelelő módosításokat a bemeneteken, lekérdezéseken vagy kimeneteken.|
+|Vízjel késleltetése|Nagyobb, mint|Maximum|Ha a metrika átlagos értéke az elmúlt 15 percben meghaladja a késői érkezési toleranciát (másodpercben). Ha nem módosította a késői érkezési toleranciát, az alapértelmezett érték 5 másodperc.|Próbálja meg növelni a lekérdezés SUs-vagy tetszés számát. További információ az SUs szolgáltatásról: a [folyamatos átviteli egységek ismertetése és módosítása](stream-analytics-streaming-unit-consumption.md#how-many-sus-are-required-for-a-job). A lekérdezés tetszés kapcsolatos további információkért lásd: [a lekérdezési párhuzamos kihasználása a Azure stream Analyticsban](stream-analytics-parallelization.md).|
+|Bemeneti deszerializálási hibák|Nagyobb, mint|Összesen|0|Vizsgálja meg a tevékenység vagy az erőforrás naplóit, és végezze el a megfelelő módosításokat a bemeneten. Az erőforrás-naplókkal kapcsolatos további információkért lásd: [Azure stream Analytics erőforrás-naplók használatával kapcsolatos hibák megoldása](stream-analytics-job-diagnostic-logs.md)|
 
 ## <a name="next-steps"></a>További lépések
 

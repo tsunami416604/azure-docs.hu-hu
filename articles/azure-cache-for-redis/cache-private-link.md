@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 932d138a4b594aa51b73c365cc3e753f49f886f6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1bf204cb1eddb86daee604f791601bbf44884d50
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328979"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460067"
 ---
 # <a name="azure-cache-for-redis-with-azure-private-link-public-preview"></a>Azure cache a Redis az Azure Private linkkel (nyilvános előzetes verzió)
 Ebből a cikkből megtudhatja, hogyan hozhat létre egy virtuális hálózatot és egy Azure cache-t a Redis-példányhoz egy privát végponttal a Azure Portal használatával. Azt is megtudhatja, hogyan adhat hozzá privát végpontot egy meglévő Azure cache-hez a Redis-példányhoz.
@@ -24,7 +24,7 @@ Az Azure Private Endpoint egy olyan hálózati adapter, amely az Azure-beli priv
 > [!NOTE]
 > Ez a szolgáltatás jelenleg nyilvános előzetes verzióban érhető el a korlátozott régiókban. Ha nem szeretne privát végpontot létrehozni, [lépjen kapcsolatba velünk](mailto:azurecache@microsoft.com). A privát végpontok használatához a Redis-példányhoz tartozó Azure cache-t a 2020. július 28-ig kell létrehozni.
 >
-> A nyilvános előzetes verzióval rendelkező régiók jelenleg a következőket jelentik: az USA nyugati középső régiója, az USA északi középső régiója, az USA nyugati régiója, 2. keleti régió, Kelet-Ausztrália, Észak-Európa, Kelet-Ázsia, Kelet-Japán
+> A nyilvános előzetes verzióval rendelkező régiók jelenleg a következőket használhatják: USA nyugati középső régiója, USA északi középső régiója, USA nyugati régiója, USA 2. nyugati régiója, USA keleti régiója, USA 2. keleti régiója, Norvégia keleti régiója, Nyugat-Európa, Nyugat-Európa, Nyugat-Európa, Kelet-Japán, Kelet-Japán, Észak-Svájc, Közép-india, egyesült Királyság középső régiója, Korea középső régiója Egyesült Királyság déli régiója Kelet-Ausztrália Észak-Németország és Dél-Brazília.
 >
 
 ## <a name="create-a-private-endpoint-with-a-new-azure-cache-for-redis-instance"></a>Privát végpont létrehozása új Azure cache-sel a Redis-példányhoz 
@@ -71,7 +71,7 @@ Gyorsítótár-példány létrehozásához kövesse az alábbi lépéseket.
    
 1. Az **új** lapon válassza az **adatbázisok** lehetőséget, majd válassza az Azure cache lehetőséget a **Redis számára**.
 
-    :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="Válassza ki az Azure cache-t a Redis.":::
+    :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="Válassza az erőforrás létrehozása lehetőséget.":::
    
 1. Az **új Redis cache** lapon adja meg az új gyorsítótár beállításait.
    
@@ -89,7 +89,7 @@ Gyorsítótár-példány létrehozásához kövesse az alábbi lépéseket.
 
 1. A privát végpont létrehozásához kattintson a **Hozzáadás** gombra.
 
-    :::image type="content" source="media/cache-private-link/3-add-private-endpoint.png" alt-text="A hálózatkezelés területen adjon hozzá egy privát végpontot.":::
+    :::image type="content" source="media/cache-private-link/3-add-private-endpoint.png" alt-text="Válassza az erőforrás létrehozása lehetőséget.":::
 
 1. A **magánhálózati végpont létrehozása** lapon konfigurálja a magánhálózati végpont beállításait az utolsó szakaszban létrehozott virtuális hálózattal és alhálózattal, és kattintson az **OK gombra**. 
 
@@ -153,7 +153,7 @@ Privát végpont létrehozásához kövesse az alábbi lépéseket.
 
 1. A Azure Portal keresse meg az **Azure cache-t a Redis** , majd nyomja le az ENTER billentyűt, vagy válassza ki a keresési javaslatok közül.
 
-    :::image type="content" source="media/cache-private-link/4-search-for-cache.png" alt-text="Keresse meg az Azure cache-t a Redis.":::
+    :::image type="content" source="media/cache-private-link/4-search-for-cache.png" alt-text="Válassza az erőforrás létrehozása lehetőséget.":::
 
 2. Válassza ki azt a gyorsítótár-példányt, amelyhez privát végpontot szeretne hozzáadni.
 
@@ -161,7 +161,7 @@ Privát végpont létrehozásához kövesse az alábbi lépéseket.
 
 4. Kattintson a **privát végpont** gombra a privát végpont létrehozásához.
 
-    :::image type="content" source="media/cache-private-link/5-add-private-endpoint.png" alt-text="Adja hozzá a privát végpontot.":::
+    :::image type="content" source="media/cache-private-link/5-add-private-endpoint.png" alt-text="Válassza az erőforrás létrehozása lehetőséget.":::
 
 5. A **magánhálózati végpont létrehozása lapon**konfigurálja a saját végpontjának beállításait.
 
@@ -189,7 +189,7 @@ Privát végpont létrehozásához kövesse az alábbi lépéseket.
 13. Ha megjelenik az **átadott zöld érvényesítés** üzenet, válassza a **Létrehozás**lehetőséget.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha többet szeretne megtudni az Azure Private linkről, tekintse meg az [Azure Private link dokumentációját](https://docs.microsoft.com/azure/private-link/private-link-overview). 
 

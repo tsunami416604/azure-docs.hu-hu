@@ -10,12 +10,12 @@ ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 09/10/2020
 ms.author: aahi
-ms.openlocfilehash: 80e6ffb79aae5ffc0fe1fd8c9d73d97cc3bdde1e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 93fdf2884ca6593cfdb4fb2878ba0dd21246266d
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935489"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446358"
 ---
 # <a name="how-to-configure-metrics-and-fine-tune-detecting-configuration"></a>Útmutató: mérőszámok konfigurálása és Finomhangolás észlelése – konfiguráció
 
@@ -45,7 +45,7 @@ A rendszer ezt a konfigurációt alkalmazza a metrika összes adatsorára, kivé
 
 További paraméterek, például **irány**és **érvényes anomália** használható a konfiguráció további finomhangolásához. A különböző észlelési módszerek is kombinálhatók. 
 
-:::image type="content" source="../media/configuration-combination.png" alt-text="Konfiguráció kombinációja" lightbox="../media/configuration-combination.png":::
+:::image type="content" source="../media/configuration-combination.png" alt-text="Metrika kiválasztása" lightbox="../media/configuration-combination.png":::
 
 ### <a name="tune-the-configuration-for-a-specific-series-or-group"></a>Egy adott adatsorozat vagy csoport konfigurációjának hangolása
 
@@ -53,7 +53,7 @@ A csoport szintjének konfigurálásához kattintson a metrikus szintű konfigur
 
 Ezt a konfigurációt a rendszer az adatsorozatok vagy az adott adatsorozatok csoportjára alkalmazza a metrikai szintű konfiguráció helyett. A csoport feltételeinek beállítása után mentse azt.
 
-:::image type="content" source="../media/advanced-configuration.png" alt-text="Speciális konfiguráció" lightbox="../media/advanced-configuration.png":::
+:::image type="content" source="../media/advanced-configuration.png" alt-text="Metrika kiválasztása" lightbox="../media/advanced-configuration.png":::
 
 ### <a name="anomaly-detection-methods"></a>Anomáliák észlelési módszerei
 
@@ -68,11 +68,11 @@ Az intelligens észlelési mód esetében az érzékenység és a határ verzió
 
 Az érzékenység hatással lehet az egyes pontok várható érték-tartományának szélességére. Ha növeli a határértéket, a várt értéktartomány szigorúbb lesz, és a rendszer több rendellenességet fog jelenteni:
 
-:::image type="content" source="../media/metrics/smart-detection-high-sensitivity.png" alt-text="Intelligens észlelés magas érzékenységgel":::
+:::image type="content" source="../media/metrics/smart-detection-high-sensitivity.png" alt-text="Metrika kiválasztása":::
 
 Az érzékenység kikapcsolásakor a várt értéktartomány szélesebb lesz, és a rendszer kevesebb rendellenességet fog jelenteni:
 
-:::image type="content" source="../media/metrics/smart-detection-low-sensitivity.png" alt-text="Intelligens észlelés alacsony érzékenységgel":::
+:::image type="content" source="../media/metrics/smart-detection-low-sensitivity.png" alt-text="Metrika kiválasztása":::
 
 **Küszöbérték módosítása** 
 
@@ -85,23 +85,23 @@ Használja ezt a módot a következő lépésekkel:
 
 1. Ha beállítja a mérőszámok és az idősorozatok anomália-észlelési konfigurációját, válassza a **küszöbérték módosítása** lehetőséget a rendellenesség észlelése módszernél.
     
-    :::image type="content" source="../media/metrics/change-threshold.png" alt-text="küszöbérték módosítása":::
+    :::image type="content" source="../media/metrics/change-threshold.png" alt-text="Metrika kiválasztása":::
 
 2. Válassza ki a **tartományt** vagy a **Range** paramétert a forgatókönyv alapján.
 
     Ha szeretné felderíteni az ingadozásokat, válassza ki **a tartományt**. Például az alábbi beállításokkal minden olyan adatpontot, amely a 10%-ot az előzőhöz képest változtatja, a rendszer kiugró adatként észleli.
-    :::image type="content" source="../media/metrics/out-of-the-range.png" alt-text="tartományon kívüli paraméter":::
+    :::image type="content" source="../media/metrics/out-of-the-range.png" alt-text="Metrika kiválasztása":::
 
     Ha az adataiban lévő vonalakat szeretné felderíteni, válassza **a tartomány**lehetőséget. Például az alábbi beállításokkal minden olyan adatpontot, amely az előzőhöz képest 0,01%-ot megváltoztat, a rendszer kiugró adatként észleli. Mivel a küszöbérték olyan kicsi (0,01%), amely az adatokat kiugróként észleli az adatsorokat.
 
-    :::image type="content" source="../media/metrics/in-the-range.png" alt-text="A Range paraméterben":::
+    :::image type="content" source="../media/metrics/in-the-range.png" alt-text="Metrika kiválasztása":::
 
 3. Állítsa be a változás százalékos arányát, amely anomáliának számít, és a korábban rögzített adatpontokat az összehasonlításhoz használja a rendszer. Ez az összehasonlítás mindig az aktuális adatpont és az előtte lévő egyetlen adatpont között van.
     
     Az **irány** csak akkor érvényes, ha a **tartományon kívüli** módot használja:
     
-    * A (z) **úgy állítja be** az észlelést, hogy csak az (aktuális adatpont) – (összehasonlító adatpont) > küszöbértéket észlelő rendellenességeket észlelje **+** .
-    * **Down** A (z) úgy konfigurálja az észlelést, hogy csak a rendellenességek észlelését (aktuális adatpont) – (adatpont összehasonlítása) < **-** küszöbértéket adja meg.
+    * Az **észlelés beállításával** csak a rendellenességek észlelhetők (az aktuális adatpontok) – (összehasonlító adatpont) > **+** küszöbérték százalékos arányát.
+    * Az **észlelés beállításával** a csak a rendellenességek észlelése (aktuális adatpont) – (az adatpont összehasonlítása) < a **-** küszöbérték százalékos arányát.
  
 **Rögzített küszöbérték**
 
@@ -117,7 +117,7 @@ Időnként a várt események és előfordulások (például ünnepek) rendellen
 
 Kattintson az **előre definiált esemény beállítása** gombra a metrikák legördülő lista mellett az egyes mérőszámok részletei lapon.
  
-:::image type="content" source="../media/metrics/preset-event-button.png" alt-text="előre beállított esemény gomb":::
+:::image type="content" source="../media/metrics/preset-event-button.png" alt-text="Metrika kiválasztása":::
 
 A megjelenő ablakban konfigurálja a beállításokat a használatnak megfelelően. A konfiguráció használatához győződjön meg arról, hogy az **ünnepi esemény engedélyezése** beállítás be van jelölve. 
 
@@ -136,7 +136,7 @@ Több más érték is konfigurálható:
 |**Kibontás napja**    |  A nyaralás előtti és utáni érintett napok.        |
 
 
-A **ciklus eseményei** szakasz bizonyos helyzetekben felhasználható, hogy az adatokban ciklikus minták használatával csökkentse a szükségtelen riasztásokat. Például: 
+A **ciklus eseményei** szakasz bizonyos helyzetekben felhasználható, hogy az adatokban ciklikus minták használatával csökkentse a szükségtelen riasztásokat. Példa: 
 
 - Több mintázattal vagy ciklussal rendelkező mérőszámok, mint például a heti és a havi minta. 
 - Azok a metrikák, amelyek nem rendelkeznek egyértelmű mintázattal, de az adatok az év során (YoY), a hónap (MoM), a hét (WoW) vagy a nap folyamán (DoD) is hasonlóak.
@@ -161,7 +161,7 @@ X – nem érhető el.
 
 A ciklus esemény a rendellenességek csökkentése érdekében használatos, ha egy ciklikus mintát követnek, de a rendszer anomáliát küld, ha több adatpont nem követi a mintát. A **szigorú mód** lehetővé teszi a anomália jelentéskészítését, ha még egy adatpont sem követi a mintát. 
 
-:::image type="content" source="../media/metrics/preset-events.png" alt-text="előre beállított esemény konfigurációja":::
+:::image type="content" source="../media/metrics/preset-events.png" alt-text="Metrika kiválasztása":::
 
 ## <a name="view-recent-incidents"></a>Legutóbbi incidensek megtekintése
 

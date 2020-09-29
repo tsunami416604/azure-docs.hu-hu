@@ -6,12 +6,12 @@ ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
-ms.openlocfilehash: 0e29b25f5d846cae1563ea90271cf007d02e248c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a17546f11db881ecacd39986bcd80d9d63b24644
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324267"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448201"
 ---
 # <a name="quickstart-monitor-an-azure-resource-with-azure-monitor"></a>Gyors útmutató: Azure-erőforrások figyelése Azure Monitor
 [Azure monitor](../overview.md) elindítja az adatok gyűjtését az Azure-erőforrásokból a létrehozásuk pillanatában. Ez a rövid útmutató egy adott erőforráshoz automatikusan összegyűjtött és a Azure Portalban megtekinthető adatokat ismerteti. Később további adatokat is hozzáadhat a konfigurációhoz, és a Azure Monitor menüben megtekintheti az előfizetéshez tartozó összes erőforráshoz gyűjtött adatokat.
@@ -40,11 +40,11 @@ A tevékenység naplója betekintést nyújt az egyes Azure-erőforrások művel
 1. Az erőforrás menüjének tetején válassza a **műveletnapló**lehetőséget.
 2. Az aktuális szűrő az erőforráshoz kapcsolódó eseményekre van beállítva. Ha nem lát eseményeket, próbálja meg módosítani a **TimeSpan** az idő hatókörének növeléséhez.
 
-    ![Tevékenységnapló](media/quick-monitor-azure-resource/activity-log-resource.png)
+    ![Képernyőkép az erőforrás-tevékenységekről a Azure Portal az alapértelmezett szűrési feltételek alapján generált erőforrás-műveletek listáját jeleníti meg.](media/quick-monitor-azure-resource/activity-log-resource.png)
 
 4. Ha az előfizetéshez tartozó más erőforrásokból származó eseményeket szeretne látni, módosítsa a feltételeket a szűrőben, vagy távolítsa el a szűrő tulajdonságait is.
 
-    ![Tevékenységnapló](media/quick-monitor-azure-resource/activity-log-all.png)
+    ![Képernyőfelvétel: az erőforrás-tevékenység naplója Azure Portal a módosított szűrési feltételek használatával generált erőforrás-műveletek listáját jeleníti meg.](media/quick-monitor-azure-resource/activity-log-all.png)
 
 
 
@@ -54,19 +54,19 @@ A metrikák olyan numerikus értékek, amelyek egy adott időpontban írják le 
 1. Az erőforrás menüjének **figyelés** területén válassza a **metrikák**lehetőséget. Ekkor megnyílik a metrikák kezelője az erőforráshoz beállított hatókörrel.
 2. A diagramhoz metrika hozzáadásához kattintson a **metrika hozzáadása** lehetőségre.
    
-   ![Metrikaböngésző](media/quick-monitor-azure-resource/metrics-explorer-01.png)
+   ![Képernyőkép a metrikák tallózóról Azure Portal az erőforrás metrikáinak megjelenítéséről. A metrika legördülő lista új metrikák hozzáadására van nyitva.](media/quick-monitor-azure-resource/metrics-explorer-01.png)
    
 4. Válasszon ki egy **mérőszámot** a legördülő listából, majd egy **összesítést**. Ez határozza meg, hogyan történjen az összegyűjtött értékek mintavételezése az egyes időintervallumokban.
 
-    ![Metrikaböngésző](media/quick-monitor-azure-resource/metrics-explorer-02.png)
+    ![Képernyőkép a metrikák tallózóról Azure Portal az erőforrás metrikáinak megjelenítéséről. Az Összesítés legördülő menüje meg van nyitva, és az AVG érték van kiválasztva.](media/quick-monitor-azure-resource/metrics-explorer-02.png)
 
 5. Kattintson a **metrika hozzáadása** lehetőségre további mérőszámok és összesítési kombinációk hozzáadásához a diagramhoz.
 
-    ![Metrikaböngésző](media/quick-monitor-azure-resource/metrics-explorer-03.png)
+    ![Képernyőkép a metrikák tallózóról Azure Portal az erőforrás metrikáinak megjelenítéséről.](media/quick-monitor-azure-resource/metrics-explorer-03.png)
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a rövid útmutatóban megtekintett egy Azure-erőforrás tevékenység-naplóját és metrikáit, amelyeket a Azure Monitor automatikusan gyűjt. Folytassa a következő rövid útmutatóval, amely bemutatja, hogyan gyűjtheti be a tevékenység naplóját egy Log Analytics munkaterületre, ahol a [naplózási lekérdezések](../log-query/log-query-overview.md)használatával elemezhetők.
 
 > [!div class="nextstepaction"]

@@ -3,34 +3,34 @@ title: Gyakori, ritka elérésű és archív hozzáférési szintek Blobok szám
 description: További információ az Azure Blob Storage-hoz készült gyakori, ritka elérésű és archív hozzáférési szintekről. Tekintse át a rétegek használatát támogató Storage-fiókokat. A blob tárolási beállításainak összehasonlítása.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 08/27/2020
+ms.date: 09/28/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 59a0433a3b22877808fbe2b8371258e00f214d10
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 569e785cd8fc3ec4bbf9960cef63258e83496847
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226182"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460730"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob Storage: A gyakori és ritka elérésű, valamint az archív hozzáférési szintek
 
-Az Azure Storage különböző hozzáférési szinteket kínál, amelyek lehetővé teszik a blob-objektumok-adattárolást a legköltséghatékonyabb módon. Az elérhető hozzáférési szintek a következők:
+Az Azure Storage különböző hozzáférési szinteket kínál, amelyek lehetővé teszik a blob-objektumok-adattárolást a legköltséghatékonyabb módon. A tárolási rétegek köre:
 
 - **Hot** A gyakran használt adatok tárolására optimalizált.
 - **Cool** A ritkán használt és a legalább 30 napig tárolt adatok tárolására optimalizált.
 - A ritkán használt és tárolt adatok tárolására optimalizált **archiválás** – legalább 180 napig, rugalmas késési követelményekkel (az órák sorrendje szerint).
 
-A különböző hozzáférési szinteket a következő szempontok vonatkoznak:
+Az egyes tárolási rétegek esetén a következő szempontokat érdemes figyelembe venni:
 
-- Csak a gyors és a lassú elérésű hozzáférési szint állítható be a fiók szintjén. Az archív hozzáférési szint nem érhető el a fiók szintjén.
-- A gyors és a lassú elérésű, valamint az archiválási szintek a feltöltéskor vagy a feltöltés után is megadhatók a blob szintjén.
-- A ritka elérésű hozzáférési szintben lévő adatok némileg alacsonyabb rendelkezésre állást biztosíthatnak, de továbbra is magas tartósságot, lekérési késést és átviteli sebességet igényelnek, hasonlóan a gyors adatokhoz. A ritkán használt adatok esetében a rendelkezésre állási szolgáltatói szerződés (SLA) és a gyakran használt adatokhoz képest magasabb hozzáférési költségek elfogadható kompromisszumot jelentenek az alacsonyabb tárolási költségek mellett.
-- Az archiválási tároló tárolja az adatok kapcsolat nélküli üzemmódját, és a legalacsonyabb tárolási költségeket, valamint a legmagasabb adattisztítási és-hozzáférési költségeket is biztosítja.
+- Fiókszinten csak a ritka és a gyakori elérésű tárolási szint állítható be. Az archív elérésű tárolási szint fiókszinten nem elérhető.
+- Blobszinten feltöltés közben vagy után mindhárom tárolási szint elérhető.
+- A ritka elérésű tárolási szinten tárolt adatok rendelkezésre állása alacsonyabb lehet, azonban a gyakori elérésű adatokhoz hasonlóan fontos a hosszú távú megőrizhetőségük, a lekérdezési idő alacsonyan tartása és a magas átviteli sebesség. A ritka elérésű adatok esetén alacsonyabb tárolási költségekkel kompenzáljuk a gyakori elérésű adatoknál alacsonyabb rendelkezésre állást biztosító szolgáltatásiszint-szerződést és a magasabb hozzáférési költségeket.
+- Az archív tárolási szint offline adattárolást valósít meg. Ez kínálja a legalacsonyabb tárolási költségeket, viszont az adatok rehidratálása és elérése költségesebb.
 
-A felhőben tárolt adatmennyiség exponenciális ütemben növekszik. A növekvő tárolási szükségletek költségeinek kezelése érdekében hasznos lehet az adatokat olyan attribútumok alapján szervezni, mint a hozzáférés gyakorisága vagy a tervezett megőrzési időtartam, így optimalizálhatók a költségek. A felhőben tárolt adat a létrehozás, a feldolgozás és a hozzáférés időtartama alapján különbözhet. Egyes adatokat aktívan használnak és módosítanak teljes élettartamuk során. Egyes adatokat élettartamuk korai szakaszában sokat használnak, az adatok életkorának növekedésével azonban a hozzáférések mennyisége drasztikusan csökken. Bizonyos adatforgalom üresjáratban van a felhőben, és ritkán fordul elő, hogy a tárolás után is hozzáférjen.
+A felhőben tárolt adatmennyiség exponenciális ütemben növekszik. A növekvő tárolási szükségletek költségeinek kezelése érdekében hasznos lehet az adatokat olyan attribútumok alapján szervezni, mint a hozzáférés gyakorisága vagy a tervezett megőrzési időtartam, így optimalizálhatók a költségek. A felhőben tárolt adatok különbözhetnek keletkezésük és feldolgozásuk módjában, valamint előfordulhat, hogy élettartamuk különböző szakaszaiban különböző módon kell elérni őket. Egyes adatokat aktívan használnak és módosítanak teljes élettartamuk során. Egyes adatokat élettartamuk korai szakaszában sokat használnak, az adatok életkorának növekedésével azonban a hozzáférések mennyisége drasztikusan csökken. Egyes felhőbeli adatok inaktívak maradnak, és tárolásuk során ritkán, vagy akár sohasem használják őket.
 
 Az adathozzáférési forgatókönyvek mindegyike egy másik hozzáférési szinten érhető el, amely egy adott hozzáférési mintára van optimalizálva. A gyakori, ritka elérésű és archív hozzáférési szintekkel az Azure Blob Storage ezt az igényt külön díjszabási modellel rendelkező, differenciált hozzáférési szintekhez szükséges.
 
@@ -44,14 +44,14 @@ A blob Storage és a GPv2-fiókok a **hozzáférési szint** attribútumot teszi
 
 ## <a name="hot-access-tier"></a>Gyakori elérésű tárolási szint
 
-A gyors elérési szint magasabb tárolási költséggel rendelkezik, mint a ritka elérésű és az archiválási szint, de a legalacsonyabb hozzáférési költségek. Példa használati forgatókönyvek a gyors elérési szinthez:
+A gyakori elérésű hozzáférési szint tárolási költségei magasabbak, mint a ritka és az archív szinté, viszont ennek a legalacsonyabbak az elérési költségei. Példa használati forgatókönyvek a gyakori hozzáférési szinthez:
 
-- Az aktív használatban lévő vagy várhatóan elérni kívánt adatok gyakran előfordulnak (olvasás és írás).
-- Az adatok feldolgozásra és végső áttelepítésre való előkészítése a lassú elérési szintre.
+- Adatok, amelyeket aktívan használnak, vagy amelyekhez várhatóan gyakran szeretnének hozzáférni (olvasás vagy írás formájában).
+- A feldolgozásra és a későbbiekben a ritka hozzáférési szintre való áttelepítésre előkészített adatok.
 
 ## <a name="cool-access-tier"></a>Ritka elérésű tárolási szint
 
-A lassú elérési szint alacsonyabb tárolási költségekkel és magasabb hozzáférési költségekkel jár, mint a gyors tárolás. Ezen a szinten olyan adatokat érdemes tárolni, amelyek legalább 30 napig maradnak a ritka elérésű szinten. Példa használati forgatókönyvek a ritka elérésű szinthez:
+A ritka hozzáférési szintnek a gyakori elérés tároláshoz képest alacsonyabbak a tárolási költségei, és magasabbak az elérési költségei. Ezen a szinten olyan adatokat érdemes tárolni, amelyek legalább 30 napig maradnak a ritka elérésű szinten. Példa használati forgatókönyvek a ritka hozzáférési szinthez:
 
 - Rövid távú biztonsági mentési és vészhelyreállítási adatkészletek.
 - Régebbi, már csak ritkán megtekintett médiatartalmak, amelyek elérésére igény esetén azonban azonnal szükség van.
@@ -121,7 +121,7 @@ Az alábbi táblázat a prémium szintű, a blob Storage és a gyakori, ritka el
 |                                           | **Prémium szintű teljesítmény**   | **Gyors elérési szint** | **Hűvös szint**       | **Archiválási szint**  |
 | ----------------------------------------- | ------------------------- | ------------ | ------------------- | ----------------- |
 | **Rendelkezésre állás**                          | 99.9%                     | 99.9%        | 99%                 | Offline           |
-| **Rendelkezésre állás** <br> **(RA-GRS olvasások)**  | N/A                       | 99,99%       | 99.9%               | Offline           |
+| **Rendelkezésre állás** <br> **(RA-GRS olvasások)**  | N.A.                       | 99,99%       | 99.9%               | Offline           |
 | **Használati díjak**                         | Magasabb tárolási költségek, alacsonyabb hozzáférés és tranzakciós költségek | Magasabb tárolási költségek, alacsonyabb hozzáférés és tranzakciós költségek | Alacsonyabb tárolási költségek, magasabb hozzáférési és tranzakciós költségek | Legalacsonyabb tárolási költségek, legmagasabb hozzáférési és tranzakciós költségek |
 | **Minimális objektumméret**                   | N.A.                       | N.A.          | N.A.                 | N.A.               |
 | **Minimális tárolási időtartam**              | N.A.                       | N.A.          | 30 nap<sup>1</sup> | 180 nap
@@ -249,6 +249,10 @@ Nem. Csak a gyakori és ritka elérésű hozzáférési szintek állíthatók be
 
 A gyors és a lassú elérési szint a blob szintű rétegek mellett minden régióban elérhető. Az archív tárolási szint eleinte csak bizonyos régiókban lesz elérhető. A teljes listát a [Régiónként elérhető Azure-termékek](https://azure.microsoft.com/regions/services/) című részben tekintheti meg.
 
+**Mely redundancia-beállítások támogatottak a gyors, a lassú elérésű és az archív hozzáférési szintekhez?**
+
+A gyakori és a ritka elérésű szintek támogatják az összes redundancia-beállítást. Az archiválási szint csak a LRS, a GRS és az RA-GRS használatát támogatja. Az archiválási szint nem támogatja a ZRS, a GZRS és az RA-GZRS használatát.
+
 **A ritka elérésű hozzáférési szinten lévő Blobok eltérően működnek, mint a gyakori elérésű hozzáférési szint?**
 
 A gyors elérésű rétegben lévő Blobok ugyanolyan késéssel rendelkeznek, mint a GPv1, a GPv2 és a blob Storage-fiókokban lévő Blobok. A ritka elérésű hozzáférési szinten lévő Blobok hasonló késéssel rendelkeznek (ezredmásodpercben), mint a GPv1, a GPv2 és a blob Storage-fiókokban. Az archív hozzáférési szinten lévő Blobok több órányi késéssel rendelkeznek a GPv1, a GPv2 és a blob Storage-fiókokban.
@@ -279,7 +283,7 @@ Az Azure Portal, a PowerShell, valamint a parancssori felület eszközei, illetv
 
 Az adattárolás és más korlátok a fiók szintjén vannak megadva, nem pedig hozzáférési szinten. Választhat, hogy az összes korlátot egy vagy mindhárom szinten használja-e. További információ: [a méretezhetőség és a teljesítményre vonatkozó célok a standard szintű Storage-fiókok esetében](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A GPv2-és blob Storage-fiókok gyors, ritka és archív verzióinak kiértékelése
 

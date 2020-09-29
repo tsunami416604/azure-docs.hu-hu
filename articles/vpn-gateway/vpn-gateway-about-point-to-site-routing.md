@@ -7,18 +7,18 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 09/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: a3603c7a4b704327f829588f0fc5827d97288be0
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 1e88afd91c0e0b344cc0eb8d82b637a88d5a1656
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440813"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447974"
 ---
 # <a name="about-point-to-site-vpn-routing"></a>Tudnivalók a pont–hely VPN-útválasztásról
 
 Ebből a cikkből megtudhatja, hogyan viselkedik az Azure pont – hely VPN-útválasztás. A P2S VPN-útválasztási viselkedés függ az ügyfél operációs rendszertől, a VPN-kapcsolathoz használt protokolltól, valamint arról, hogy a virtuális hálózatok (virtuális hálózatok) hogyan kapcsolódnak egymáshoz.
 
-Az Azure jelenleg két protokollt támogat a táveléréshez, a IKEv2 és az SSTP-hez. A IKEv2 számos ügyfél-operációs rendszeren támogatott, többek között Windows, Linux, MacOS, Android és iOS rendszereken. Az SSTP csak Windows rendszeren támogatott. Ha módosítja a hálózat topológiáját, és Windows VPN-ügyfeleket használ, a Windows-ügyfelekhez tartozó VPN-ügyfélszoftvert le kell tölteni és újra kell telepíteni ahhoz, hogy a módosítások érvénybe lépjenek az ügyfélen.
+Az Azure jelenleg két protokollt támogat a táveléréshez, a IKEv2 és az SSTP-hez. A IKEv2 számos ügyfél-operációs rendszeren támogatott, többek között Windows, Linux, macOS, Android és iOS rendszereken. Az SSTP csak Windows rendszeren támogatott. Ha módosítja a hálózat topológiáját, és Windows VPN-ügyfeleket használ, a Windows-ügyfelekhez tartozó VPN-ügyfélszoftvert le kell tölteni és újra kell telepíteni ahhoz, hogy a módosítások érvénybe lépjenek az ügyfélen.
 
 > [!NOTE]
 > Ez a cikk csak a IKEv2 vonatkozik.
@@ -195,7 +195,7 @@ Ebben a példában a pont – hely VPN Gateway-kapcsolat a VNet1. A VNet1 helyek
 
 Minden ügyfél csak a VNet1 fér hozzá.
 
-![Multi-VNet S2S és fiókirodák](./media/vpn-gateway-about-point-to-site-routing/7.jpg "Multi-VNet S2S és fiókirodák")
+![Diagram, amely egy több VNet S2S és egy fiókirodát mutat be.](./media/vpn-gateway-about-point-to-site-routing/7.jpg "Multi-VNet S2S és fiókirodák")
 
 ### <a name="address-space"></a>Címtér
 
@@ -249,6 +249,6 @@ A Windowst használó ügyfelek hozzáférhetnek a helyek közötti VPN-kapcsola
 
 * A nem Windows rendszerű ügyfelek hozzáférhetnek a VNet1, a Vnet2, a VNet3 és a hely1.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A P2S VPN létrehozásának megkezdéséhez tekintse meg [a P2S VPN létrehozása a Azure Portal használatával](vpn-gateway-howto-point-to-site-resource-manager-portal.md) című témakört.

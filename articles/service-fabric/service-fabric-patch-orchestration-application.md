@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: atsenthi
-ms.openlocfilehash: 43b6f5d4367cfc641183a17fda89cf1381c22a6c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 8f92501bdb8261a67d3dc2b8aefbe1fb1498ef1e
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258604"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445895"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>A Windows operációs rendszer javítása a Service Fabric-fürtben
 
@@ -235,7 +235,7 @@ A POA a REST API-kat teszi elérhetővé a felhasználók korábbi eredményeine
 
 A JSON-mezőket a következő táblázat ismerteti:
 
-Mező | Érték | Részletek
+Mező | Értékek | Részletek
 -- | -- | --
 Operationresult tevékenységen | 0 – sikeres<br> 1 – sikeres hibák<br> 2 – sikertelen<br> 3 – megszakítva<br> 4 – időtúllépés miatt megszakítva | A teljes művelet eredményét jelzi, amely általában egy vagy több frissítés telepítését jelenti.
 ResultCode | Ugyanaz, mint a Operationresult tevékenységen | Ez a mező egy egyedi frissítés telepítési műveletének eredményét jelzi.
@@ -296,9 +296,9 @@ Ha meg szeretné ismerni, hogy a frissítések hogyan folytatódnak egy adott cs
 
    A POA-verziók 1.4.0 és újabb verzióiban megtekintheti a frissítés állapotát, ha megtekinti az NodeAgentService és a WUOperationStatus-Property állapotú eseményeket \<NodeName> . A következő képek Kiemelt fejezetei a Windows-frissítések állapotát jelenítik meg a csomópontokon *poanode_0* és *poanode_2*:
 
-   [![Windows Update műveleti állapot képe](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png#lightbox)
+   [![A képernyőképen látható Windows Update műveleti állapot konzoljának ablaka poanode_0 kiemelve.](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png#lightbox)
 
-   [![Windows Update műveleti állapot képe](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png#lightbox)
+   [![A képernyőképen látható Windows Update műveleti állapot konzoljának ablaka poanode_1 kiemelve.](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png#lightbox)
 
    A részleteket a PowerShell használatával is lekérheti. Ehhez kapcsolódjon a fürthöz, és kérje le a javítási feladat állapotát a [Get-ServiceFabricRepairTask](/powershell/module/servicefabric/get-servicefabricrepairtask?view=azureservicefabricps)használatával. 
    
@@ -328,7 +328,7 @@ Ha meg szeretné ismerni, hogy a frissítések hogyan folytatódnak egy adott cs
 
 1. A POA-verziók 1.4.0 és újabb verzióiban a csomópont-frissítési kísérlet befejeződése után egy "WUOperationStatus-[csomópontnév]" tulajdonsággal rendelkező esemény jelenik meg a NodeAgentService, amely értesíti a felhasználót, ha a Windows-frissítések letöltésére és telepítésére vonatkozó következő kísérlet megkezdődik. Ez az alábbi képen látható:
 
-     [![Windows Update műveleti állapot képe](media/service-fabric-patch-orchestration-application/wuoperationstatusc.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusc.png#lightbox)
+     [![A képernyőképen látható a konzol ablaka Windows Update műveleti állapot a NodeAgentService.](media/service-fabric-patch-orchestration-application/wuoperationstatusc.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusc.png#lightbox)
 
 ### <a name="diagnostics-logs"></a>Diagnosztikai naplók
 

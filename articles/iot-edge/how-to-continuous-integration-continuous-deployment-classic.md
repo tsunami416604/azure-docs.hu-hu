@@ -8,12 +8,12 @@ ms.date: 08/26/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 427d72b2a8531fa4dafa0040266249b138b6edf3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c4a9d7fbfbda568c07a528e5a7eafd70b85add45
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91291078"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447793"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge-devices-classic-editor"></a>Folyamatos integráció és folyamatos üzembe helyezés Azure IoT Edge eszközökön (klasszikus szerkesztő)
 
@@ -160,7 +160,7 @@ Ez a folyamat most úgy van konfigurálva, hogy automatikusan fusson, amikor új
 >[!NOTE]
 >Ha rétegzett üzemelő **példányokat** kíván használni a folyamatában, a rétegzett központi telepítések még nem támogatottak az Azure DevOps Azure IoT Edge feladataiban.
 >
->Az [Azure DevOps-ben azonban Azure CLI-feladattal](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-cli) is létrehozhatja az üzembe helyezést rétegzett telepítésként. A **beágyazott parancsfájl** értéke az az [IOT Edge Deployment Create paranccsal](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment)végezhető el:
+>Az [Azure DevOps-ben azonban Azure CLI-feladattal](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-cli) is létrehozhatja az üzembe helyezést rétegzett telepítésként. A **beágyazott parancsfájl** értéke az az [IOT Edge Deployment Create paranccsal](/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment)végezhető el:
 >
 >   ```azurecli-interactive
 >   az iot edge deployment create -d {deployment_name} -n {hub_name} --content modules_content.json --layered true

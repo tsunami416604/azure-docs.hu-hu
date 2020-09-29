@@ -8,17 +8,17 @@ manager: rkarlin
 ms.assetid: 26b5dcb4-ce3f-4f22-8d56-d2bf743cfc90
 ms.service: security-center
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/11/2020
 ms.author: memildin
-ms.openlocfilehash: 9fbd63e1b46b837350be720fadf68777927f9bff
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: aa35d1325e339af515c8bfc052d1af524b464e09
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904763"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446011"
 ---
 # <a name="set-up-email-notifications-for-security-alerts"></a>E-mail-értesítések beállítása biztonsági riasztásokhoz 
 
@@ -42,7 +42,7 @@ A riasztások fáradtságának elkerülése érdekében Security Center korláto
 |Kiadás állapota:|Általánosan elérhető (GA)|
 |Árképzési|Ingyenes|
 |Szükséges szerepkörök és engedélyek:|**Biztonsági rendszergazda**<br>**Előfizetés tulajdonosa** |
-|Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Yes](./media/icons/yes-icon.png) US Gov (részleges)<br>![No](./media/icons/no-icon.png) Kínai gov, egyéb gov|
+|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) US Gov (részleges)<br>![Nem](./media/icons/no-icon.png) Kínai gov, egyéb gov|
 |||
 
 
@@ -60,7 +60,7 @@ E-mailes értesítéseket küldhet magánszemélyeknek vagy az adott Azure-szere
 1. A biztonsági kapcsolattartási adatok előfizetésre való alkalmazásához válassza a **Mentés**lehetőséget.
 
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 A biztonsági riasztásokkal kapcsolatos további tudnivalókért tekintse meg a következőket:
 
 * [Biztonsági riasztások – útmutató](alerts-reference.md) a Azure Security Center veszélyforrások elleni védelmi moduljában esetlegesen megjelenő biztonsági riasztások megismeréséhez

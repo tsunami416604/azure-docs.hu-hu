@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: b50f6c4b2ed86b950e68cf8c55b63af687ff9ead
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e0d6694d44fdac9958acdf70be067348fadde57f
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91298049"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461240"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Beszédfelismerési szolgáltatás nyelvi és hangalapú támogatása
 
@@ -41,13 +41,11 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | `ar-AE` | Arab (Egyesült Arab Emírségek)     | Nyelvi modell                                    |
 | `ar-BH` | Arab (Bahrein), modern standard | Nyelvi modell                                    |
 | `ar-EG` | Arab (Egyiptom)                    | Nyelvi modell                                    |
-| `ar-IL` | Arab (Izrael)                   | No                                                |
 | `ar-IQ` | Arab (Irak)                     | Nyelvi modell                                    |
 | `ar-JO` | Arab (Jordánia)                   | Nyelvi modell                                    |
 | `ar-KW` | Arab (Kuvait)                   | Nyelvi modell                                    |
 | `ar-LB` | Arab (Libanon)                  | Nyelvi modell                                    |
 | `ar-OM` | Arab (Omán)                     | Nyelvi modell                                    |
-| `ar-PS` | Arab (palesztin állam)       | No                                                |
 | `ar-QA` | Arab (Katar)                    | Nyelvi modell                                    |
 | `ar-SA` | Arab (Szaúd-Arábia)             | Nyelvi modell                                    |
 | `ar-SY` | Arab (Szíria)                    | Nyelvi modell                                    |
@@ -182,7 +180,7 @@ További információ a regionális elérhetőségről: [régiók](regions.md#st
 | `it-IT` <sup>Új</sup> | Olasz (Olaszország) | Férfi | `it-IT-DiegoNeural` | Általános kérdések |
 | `ja-JP` | Japán (Japán) | Nő | `ja-JP-NanamiNeural` | Általános kérdések |
 | `ja-JP` <sup>Új</sup> | Japán (Japán) | Férfi | `ja-JP-KeitaNeural` | Általános kérdések |
-| `ko-KR` | Koreai (Dél-Korea) | Nő | `ko-KR-SunHiNeural` | Általános kérdések |
+| `ko-KR` | Koreai (Korea) | Nő | `ko-KR-SunHiNeural` | Általános kérdések |
 | `ko-KR` <sup>Új</sup> | Koreai (Dél-Korea) | Férfi | `ko-KR-InJoonNeural` | Általános kérdések |
 | `ms-MY` <sup>Új</sup> | Maláj (Malajzia) | Nő | `ms-MY-YasminNeural` | Általános kérdések |
 | `nb-NO` | Norvég, (Norvégia) | Nő | `nb-NO-IselinNeural` | Általános kérdések |

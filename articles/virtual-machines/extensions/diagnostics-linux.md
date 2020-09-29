@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: 2ce2b7dab3e9eb4c9635ce4abc2933fd954844d5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a01f5d2d000ef6e177000828500ef2ab0e26c4ca
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326003"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448188"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Metrikák és naplók figyelése a Linux diagnosztikai bővítmény használatával
 
@@ -202,7 +202,7 @@ A konfigurációs adatok ezen készlete olyan bizalmas információkat tartalmaz
 }
 ```
 
-Name | Érték
+Név | Érték
 ---- | -----
 storageAccountName | Annak a Storage-fióknak a neve, amelybe az adatkiterjesztést írta.
 storageAccountEndPoint | választható A felhőt azonosító végpont, amelyben a Storage-fiók létezik. Ha ez a beállítás nem érhető el, a LAD alapértelmezett értéke az Azure nyilvános felhő `https://core.windows.net` . Ha Azure Germany-, Azure Government-vagy Azure China-beli Storage-fiókot szeretne használni, ennek megfelelően állítsa be ezt az értéket.
@@ -219,7 +219,7 @@ A szükséges SAS-tokent egyszerűen létrehozhatja a Azure Portalon keresztül.
 1. Tegye meg a megfelelő szakaszokat az előzőekben leírtak szerint
 1. Kattintson az "SAS előállítása" gombra.
 
-![image](./media/diagnostics-linux/make_sas.png)
+![Képernyőfelvétel: a közös hozzáférésű aláírás oldal, amely az S A S-t tartalmazza.](./media/diagnostics-linux/make_sas.png)
 
 Másolja a generált SAS-t a storageAccountSasToken mezőbe; eltávolítja a kezdő kérdőjelet ("?").
 
@@ -777,7 +777,7 @@ A `resourceId` konfigurációnak meg kell egyeznie a virtuális gép vagy a virt
 
 A Azure Portal használatával megtekintheti a teljesítményadatokat, vagy beállíthatja a riasztásokat:
 
-![image](./media/diagnostics-linux/graph_metrics.png)
+![Képernyőfelvétel: az Azure Portal, amely a felhasznált lemezterületet mutatja a metrika kiválasztott és az eredményül kapott diagramon.](./media/diagnostics-linux/graph_metrics.png)
 
 Az `performanceCounters` adattárolást mindig egy Azure Storage-táblában tárolja a rendszer. Az Azure Storage API-jai számos nyelven és platformon elérhetők.
 
@@ -786,7 +786,7 @@ A JsonBlob elküldhető adattárolók a [védett beállítások](#protected-sett
 Emellett használhatja ezeket a felhasználói felületi eszközöket az Azure Storage-ban tárolt adatok eléréséhez:
 
 * A Visual Studio Server Explorer.
-* [Microsoft Azure Storage Explorer](https://azurestorageexplorer.codeplex.com/ "Azure Storage Explorer").
+* [A képernyőképen a Azure Storage Explorer tárolók és táblák láthatók.](https://azurestorageexplorer.codeplex.com/ "Azure Storage Explorer")
 
 A Microsoft Azure Storage Explorer-munkamenet ezen pillanatképe a generált Azure Storage-táblákat és-tárolókat mutatja be egy, a teszt virtuális gépen megfelelően konfigurált, LAD 3,0-es bővítménnyel. A rendszerkép nem egyezik pontosan a [LAD 3,0-konfigurációval](#an-example-lad-30-configuration).
 

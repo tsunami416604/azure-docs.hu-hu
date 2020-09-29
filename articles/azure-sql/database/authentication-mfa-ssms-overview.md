@@ -11,25 +11,30 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 07/27/2020
+ms.date: 09/28/2020
 tags: azure-synapse
-ms.openlocfilehash: 15289727c3ee4d498fa50058ef98f0ae5b3d1b12
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e526b8e2e4f31187bb958ec37c2ffa4d30f0265b
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91277801"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461155"
 ---
 # <a name="using-multi-factor-azure-active-directory-authentication"></a>Multi-Factor Azure Active Directory hitelesítés használata
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 Azure SQL Database, az Azure SQL felügyelt példánya és az Azure szinapszis Analytics támogatja a [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) kapcsolatait a *Azure Active Directory-Universal és MFA* hitelesítés használatával. Ez a cikk a különböző hitelesítési lehetőségek közötti különbségeket ismerteti, valamint a Azure Active Directory (Azure AD) Azure SQL-hez való univerzális hitelesítéssel kapcsolatos korlátozásait is.
 
-**Töltse le a legújabb SSMS** -t az ügyfélszámítógépen, töltse le a SSMS legújabb verzióját a [Download SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx)webhelyről.
+**Töltse le a legújabb SSMS** -t az ügyfélszámítógépen, töltse le a SSMS legújabb verzióját a [Download SQL Server Management Studio (SSMS)](https://aka.ms/ssms)webhelyről. 
+
+> [!Note]
+> December 2021-én a 18,6-nál korábbi SSMS-kibocsátások többé nem lesznek hitelesítve Azure Active Directory MFA-val. Ha továbbra is Azure Active Directory hitelesítést kíván használni az MFA-val, telepítse vagy frissítse a SSMS 18,6-es vagy újabb verziójára.
 
 Az ebben a cikkben tárgyalt összes szolgáltatáshoz használja a 17,2-es vagy újabb 2017-es verziót. A legutóbbi kapcsolódás párbeszédpanelnek az alábbi képhez hasonlóan kell kinéznie:
 
-  ![Képernyőkép a Kapcsolódás a kiszolgálóhoz párbeszédpanelről SQL Server Management Studio, amely a kiszolgáló típusának, a kiszolgálónévnek és a hitelesítésnek a beállításait jeleníti meg.](./media/authentication-mfa-ssms-overview/1mfa-universal-connect.png)  
+  ![Képernyőkép a Kapcsolódás a kiszolgálóhoz párbeszédpanelről SQL Server Management Studio, amely a kiszolgáló típusának, a kiszolgálónévnek és a hitelesítésnek a beállításait jeleníti meg.](./media/authentication-mfa-ssms-overview/1mfa-universal-connect.png)
+  
+    
 
 ## <a name="authentication-options"></a>Hitelesítési lehetőségek
 
@@ -85,7 +90,7 @@ Az adatbázis-felhasználó létrehozása után a felhasználó `steve@gmail.com
 - Az univerzális hitelesítéshez nincs szükség további szoftverre Active Directory, kivéve, ha a SSMS támogatott verzióját kell használnia.  
 - Tekintse meg a következő hivatkozást az univerzális hitelesítés legújabb Active Directory-hitelesítési tár (ADAL) verziójához: [Microsoft. IdentityModel. clients. ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/).  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A konfigurációs lépésekért lásd: [Azure SQL Database multi-Factor Authentication konfigurálása SQL Server Management studiohoz](authentication-mfa-ssms-configure.md).
 - Mások hozzáférésének biztosítása az adatbázishoz: [SQL Database hitelesítés és engedélyezés: hozzáférés biztosítása](logins-create-manage.md)  

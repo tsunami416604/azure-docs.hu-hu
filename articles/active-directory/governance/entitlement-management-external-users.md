@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72ed8fede56385248415caf0438b190d5c191bbc
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 9ff683c7c3214be6ae60b5d00d4cd1c2becc32e2
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89460864"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447084"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management"></a>A külső felhasználók hozzáférésének szabályozása az Azure AD-jogosultságok kezelésében
 
@@ -83,7 +83,7 @@ Annak biztosítása érdekében, hogy a szervezeten kívüli személyek hozzáf�
 
 - Lehetővé teszi, hogy a vendégek meghívjanak más vendégeket a címtárba, ami azt jelenti, hogy a vendég meghívása a jogosultsági felügyeleten kívül történhet Azt javasoljuk, hogy a **vendégek meghívhatják** a **nem** értéket, hogy csak a megfelelően szabályozott meghívókat engedélyezzék.
 - Ha a B2B engedélyezési listát használja, gondoskodnia kell arról, hogy minden olyan tartomány hozzá legyen adva a jogosultságok kezelése szolgáltatással, amelyet a listához felvesznek. Ha a B2B megtagadási listát használja, meg kell győződnie arról, hogy a partnerrel nem rendelkező tartomány nincs felvéve a listára.
-- Ha az **összes felhasználóra** vonatkozóan létrehoz egy jogosultsági felügyeleti szabályzatot (minden csatlakoztatott szervezet + bármely új külső felhasználó), akkor a vállalatközi engedélyezési vagy megtagadási lista beállításai elsőbbséget élveznek. Ezért ügyeljen arra, hogy a szabályzatban szerepeltetni kívánt tartományokat az engedélyezési listára vegye fel, ha Ön használ egyet, és kizárhatja őket a megtagadási listáról, ha megtagadási listát használ.
+- Ha az **összes felhasználóra** vonatkozóan létrehoz egy jogosultsági felügyeleti szabályzatot (minden csatlakoztatott szervezet + bármely új külső felhasználó), és a felhasználó nem tartozik egy csatlakoztatott szervezethez a címtárban, akkor a rendszer automatikusan létrehoz egy csatlakoztatott szervezetet, amikor a csomagot kérik. Minden B2B engedélyezési vagy megtagadási lista beállításai elsőbbséget élveznek. Ezért ügyeljen arra, hogy a szabályzatban szerepeltetni kívánt tartományokat az engedélyezési listára vegye fel, ha Ön használ egyet, és kizárhatja őket a megtagadási listáról, ha megtagadási listát használ.
 - Ha olyan jogosultság-kezelési szabályzatot szeretne létrehozni, amely **minden felhasználót** tartalmaz (minden csatlakoztatott szervezet + bármely új külső felhasználó), először engedélyeznie kell az e-mailek egyszeri jelszavas hitelesítését a címtárban. További információ: az [e-mailek egyszeri jelszavas hitelesítése (előzetes verzió)](../external-identities/one-time-passcode.md#opting-in-to-the-preview).
 - Az Azure AD B2B külső együttműködési beállításaival kapcsolatos további információkért lásd: [B2B külső együttműködés engedélyezése és a vendégek meghívása](../external-identities/delegate-invitations.md)a felhasználók számára.
 

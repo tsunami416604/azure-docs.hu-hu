@@ -8,12 +8,12 @@ ms.date: 08/14/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: fe24cc79d749761b697a8d1a162ec2867da9a649
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: 4af63421e831318e6250825cffd1abad415b85bb
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88257476"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447840"
 ---
 # <a name="give-modules-access-to-a-devices-local-storage"></a>Hozzáférés biztosítása modulok számára egy eszköz helyi tárterületéhez
 
@@ -26,11 +26,11 @@ Ha a modul Storage-ból a gazdagépen lévő tárolóra mutató hivatkozást sze
 Ha például engedélyezni szeretné az IoT Edge hub számára az üzenetek tárolását az eszköz helyi tárolójában, és később lekéri őket, a környezeti változókat és a létrehozási beállításokat a Azure Portal a **futtatókörnyezet beállításai** szakaszban állíthatja be.
 
 1. A IoT Edge hub és a IoT Edge Agent esetében is adjon hozzá egy **storageFolder** nevű környezeti változót, amely a modul egyik könyvtárára mutat.
-1. A IoT Edge hub és a IoT Edge ügynök esetében adja hozzá a kötéseket, hogy a gazdagépen lévő helyi könyvtárat összekapcsolja a modul egyik könyvtárába. Például:
+1. A IoT Edge hub és a IoT Edge ügynök esetében adja hozzá a kötéseket, hogy a gazdagépen lévő helyi könyvtárat összekapcsolja a modul egyik könyvtárába. Példa:
 
    ![Létrehozási beállítások és környezeti változók hozzáadása a helyi tárolóhoz](./media/how-to-access-host-storage-from-module/offline-storage.png)
 
-A helyi tárolót közvetlenül a telepítési jegyzékben is konfigurálhatja. Például:
+A helyi tárolót közvetlenül a telepítési jegyzékben is konfigurálhatja. Példa:
 
 ```json
 "systemModules": {
@@ -85,10 +85,10 @@ További részleteket a [Docker docs](https://docs.docker.com/engine/api/v1.32/#
 
 ## <a name="encrypted-data-in-module-storage"></a>A modul Storage szolgáltatásban tárolt titkosított adatforgalom
 
-Amikor a modulok meghívja a IoT Edge démon számítási feladatok API-ját az adatok titkosítására, a titkosítási kulcs a modul azonosítója és a modul generálási azonosítója alapján történik. A rendszer egy létrehozási azonosítót használ a titkok védeleméhez, ha eltávolítanak egy modult a központi telepítésből, majd egy másik modult is telepítenek ugyanahhoz az eszközhöz. A modul generálási azonosítóját az Azure CLI parancs az [IOT hub Module-Identity show](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/module-identity?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-module-identity-show)paranccsal tekintheti meg.
+Amikor a modulok meghívja a IoT Edge démon számítási feladatok API-ját az adatok titkosítására, a titkosítási kulcs a modul azonosítója és a modul generálási azonosítója alapján történik. A rendszer egy létrehozási azonosítót használ a titkok védeleméhez, ha eltávolítanak egy modult a központi telepítésből, majd egy másik modult is telepítenek ugyanahhoz az eszközhöz. A modul generálási azonosítóját az Azure CLI parancs az [IOT hub Module-Identity show](/cli/azure/ext/azure-cli-iot-ext/iot/hub/module-identity#ext-azure-cli-iot-ext-az-iot-hub-module-identity-show)paranccsal tekintheti meg.
 
 Ha a több generáción belüli modulok között szeretné megosztani a fájlokat, azok nem tartalmazhatnak titkot, vagy nem lesznek visszafejtve.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További példa a gazdagépek egy modulból való elérésére: [adatok tárolása az Azure Blob Storage on IoT Edge](how-to-store-data-blob.md).

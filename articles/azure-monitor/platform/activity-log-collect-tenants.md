@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/06/2019
-ms.openlocfilehash: 7718bd5cbc3c3fc3c9632818f769c05cd1617361
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: cd0a510480673c48f23b25f48ead5d75e2d05c84
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321870"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447643"
 ---
 # <a name="collect-azure-activity-logs-into-azure-monitor-across-azure-active-directory-tenants-legacy"></a>Azure-beli tevékenységek naplóinak gyűjtése a Azure Monitor Azure Active Directory-bérlők között (örökölt)
 
@@ -102,7 +102,7 @@ A logikai alkalmazás a következőket tartalmazza:
 - Egy [Összeállítás műveletet](../../logic-apps/logic-apps-workflow-actions-triggers.md#compose-action) a JSON objektummá való átalakításához.
 - Az [adatösszekötő log Analytics küldése](/connectors/azureloganalyticsdatacollector/) az adatLog Analytics munkaterületre való közzétételhez.
 
-   ![eseményközpont-eseményindító Logic Appsben való hozzáadásának képe](media/collect-activity-logs-subscriptions/log-analytics-logic-apps-activity-log-overview.png)
+   ![Képernyőkép a Logic app Designerről, amely bemutatja, hogyan gyűjtheti be a tevékenységek naplóit az Event hub-ból, és hogyan írhatja azokat a Log Analytics munkaterületre.](media/collect-activity-logs-subscriptions/log-analytics-logic-apps-activity-log-overview.png)
 
 ### <a name="logic-app-requirements"></a>A logikai alkalmazás követelményei
 A logikai alkalmazás létrehozása előtt győződjön meg arról, hogy rendelkezik az alábbi információkkal az előző lépésekből:
@@ -133,7 +133,7 @@ Az eseményközpont nevének és a kapcsolati sztringjének lekéréséhez köve
    | Log Analytics  | Válassza ki, hogy szeretné-e naplózni a logikai alkalmazás egyes futtatásainak állapotát egy Log Analytics munkaterületen.  |
 
     
-3. Válassza a **Létrehozás** lehetőséget. Amikor megjelenik a **Sikeres üzembe helyezés** értesítés, kattintson az **Erőforrás megnyitása** lehetőségre a logikai alkalmazás megnyitásához.
+3. Kattintson a **Létrehozás** gombra. Amikor megjelenik a **Sikeres üzembe helyezés** értesítés, kattintson az **Erőforrás megnyitása** lehetőségre a logikai alkalmazás megnyitásához.
 
 4. A **Sablonok** területen válassza az **Üres logikai alkalmazás** elemet. 
 
@@ -145,9 +145,9 @@ A Logic Apps Designerben most az elérhető összekötők és azok eseményindí
 
 1. A Logic App Designer keresőmezőjébe írja be szűrőként az *event hubs* kifejezést. Válassza ki a következő eseményindítót: **Event Hubs – Amikor események válnak elérhetővé az eseményközpontban**.
 
-   ![eseményközpont-eseményindító Logic Appsben való hozzáadásának képe](media/collect-activity-logs-subscriptions/logic-apps-event-hub-add-trigger.png)
+   ![Képernyőfelvétel a Logic app Designerről "Event Hubs – ha az események elérhetők az Event hub-ban" eseményindító van kiválasztva a Event Hubs szolgáltatáshoz.](media/collect-activity-logs-subscriptions/logic-apps-event-hub-add-trigger.png)
 
-2. Amikor a rendszer hitelesítő adatokat kér, csatlakozzon az Event Hubs-névtérhez. Írja be a kapcsolat nevét, majd a kimásolt kapcsolati sztringet.  Válassza a **Létrehozás** lehetőséget.
+2. Amikor a rendszer hitelesítő adatokat kér, csatlakozzon az Event Hubs-névtérhez. Írja be a kapcsolat nevét, majd a kimásolt kapcsolati sztringet.  Kattintson a **Létrehozás** gombra.
 
    ![eseményközpont-kapcsolat Logic Appsben való hozzáadásának képe](media/collect-activity-logs-subscriptions/logic-apps-event-hub-add-connection.png)
 
@@ -315,7 +315,7 @@ Ha elkészült a munkafolyamat, a tervezőben való teszteléssel ellenőrizheti
 
 A Logic App Designerben kattintson a **Futtatás** gombra a logikai alkalmazás teszteléséhez. A logikai alkalmazásban minden lépésnél egy állapotikon látható, amelyeknél a zöld körön belüli fehér pipa jelzi a sikert.
 
-   ![A logikai alkalmazás tesztelése](media/collect-activity-logs-subscriptions/test-logic-app.png)
+   ![Képernyőkép a Logic app Designerről egy teszt futtatása után. A logikai alkalmazás egyes lépéseinél pipa jelzi a sikeres műveletet.](media/collect-activity-logs-subscriptions/test-logic-app.png)
 
 Ha meg szeretné tekinteni az egyes lépések részletes adatait, kattintson a lépés nevére annak kibontásához. Kattintson a **Nyers bemenetek megjelenítése** és a **Nyers kimenetek megjelenítése** lehetőségekre a lépéseknél fogadott és elküldött adatok további információinak megtekintéséhez.
 
@@ -333,9 +333,9 @@ Az utolsó lépés a Log Analytics-munkaterület ellenőrzése, hogy meggyőződ
 > A rendszer egy egyéni táblába írja a tevékenységnaplókat, és azok nem jelennek meg a [tevékenységnapló-megoldásban](./activity-log.md).
 
 
-![A logikai alkalmazás tesztelése](media/collect-activity-logs-subscriptions/log-analytics-results.png)
+![Képernyőkép a AzureActivity_CL kereséséről a naplóbeli keresés ablaktáblán, amely az eredmények egy táblázatát jeleníti meg, és egy eredmény kibontva jeleníti meg a tevékenység részleteit.](media/collect-activity-logs-subscriptions/log-analytics-results.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben létrehozott egy logikai alkalmazást, amely az Azure-beli tevékenységek naplóit olvassa be az Event hub-ból, és elküldi őket a Log Analytics munkaterületre elemzés céljából. Ha többet szeretne megtudni a munkaterület adatainak megjelenítéséről, beleértve az irányítópultok létrehozását, tekintse át az információk megjelenítésére szolgáló oktatóanyagot.
 

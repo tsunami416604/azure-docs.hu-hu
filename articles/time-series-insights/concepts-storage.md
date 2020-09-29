@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 09/28/2020
 ms.custom: seodec18
-ms.openlocfilehash: d8e3c7258a70902fe362ee73c2f366146484ce54
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b186c2d2c4b5efc8e1e052a63505549e860b5619
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91287539"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460828"
 ---
 # <a name="data-storage"></a>Adattárolás
 
@@ -26,15 +26,14 @@ Ez a cikk a Azure Time Series Insights Gen2 tárolt adattárolást ismerteti. A 
 Azure Time Series Insights Gen2-környezet létrehozásakor a következő lehetőségek közül választhat:
 
 * Hideg adattárolás:
-   * Hozzon létre egy új Azure Storage-erőforrást az előfizetésben és a régióban, amelyet kiválasztott a környezetéhez.
-   * Egy már meglévő Azure Storage-fiók csatolása. Ez a beállítás csak Azure Resource Manager [sablonból](https://docs.microsoft.com/azure/templates/microsoft.timeseriesinsights/allversions)telepíthető, és nem látható a Azure Portalban.
+  * Hozzon létre egy új Azure Storage-erőforrást az előfizetésben és a régióban, amelyet kiválasztott a környezetéhez.
+  * Egy már meglévő Azure Storage-fiók csatolása. Ez a beállítás csak Azure Resource Manager [sablonból](https://docs.microsoft.com/azure/templates/microsoft.timeseriesinsights/allversions)telepíthető, és nem látható a Azure Portalban.
 * Meleg adattárolás:
-   * A meleg tároló nem kötelező, és a kiépítés ideje alatt vagy után is engedélyezhető vagy letiltható. Ha úgy dönt, hogy egy későbbi időpontban engedélyezi a meleg tárolást, és a hűtőházi tárolóban már van [ilyen](concepts-storage.md#warm-store-behavior) , a várt működés megismeréséhez tekintse át az alábbi szakaszt. A meleg tároló adatmegőrzési ideje 7 – 31 nap lehet, és szükség szerint módosítható.
+  * A meleg tároló nem kötelező, és a kiépítés ideje alatt vagy után is engedélyezhető vagy letiltható. Ha úgy dönt, hogy egy későbbi időpontban engedélyezi a meleg tárolást, és a hűtőházi tárolóban már van [ilyen](concepts-storage.md#warm-store-behavior) , a várt működés megismeréséhez tekintse át az alábbi szakaszt. A meleg tároló adatmegőrzési ideje 7 – 31 nap lehet, és szükség szerint módosítható.
 
 Egy esemény betöltése esetén a rendszer a meleg tárolóban (ha engedélyezve van) és a hűtőházi tárolóban is indexelve van.
 
 [![A tárterület áttekintése](media/concepts-storage/pipeline-to-storage.png)](media/concepts-storage/pipeline-to-storage.png#lightbox)
-
 
 > [!WARNING]
 > Az Azure Blob Storage-fiók tulajdonosaként, ahol a hűtőházi adattárolási adat található, teljes hozzáférése van a fiókban lévő összes adathoz. Ez a hozzáférés írási és törlési engedélyeket is tartalmaz. Ne szerkessze vagy törölje azokat az adatAzure Time Series Insights Gen2, amelyek adatvesztést okozhatnak.
@@ -50,11 +49,11 @@ Azure Time Series Insights Gen2 partíciókat és indexeli az optimális lekérd
 
 A meleg tárolóban tárolt adatai csak a [Time Series lekérdezési API](./time-series-insights-update-tsq.md)-kon, az [Azure Time Series Insights ÁME explorerben](./time-series-insights-update-explorer.md)vagy az [Power bi-összekötőn](./how-to-connect-power-bi.md)keresztül érhetők el. A meleg áruházbeli lekérdezések ingyenesek, és nincs kvóta, de legfeljebb [30](https://docs.microsoft.com/rest/api/time-series-insights/reference-api-limits#query-apis---limits) egyidejű kérés van.
 
-### <a name="warm-store-behavior"></a>Meleg tárolási viselkedés 
+### <a name="warm-store-behavior"></a>Meleg tárolási viselkedés
 
 * Ha ez a beállítás engedélyezve van, a rendszer a környezetbe áramló összes adatfolyamot átirányítja a meleg tárolóba, függetlenül az esemény időbélyegzőtől. Vegye figyelembe, hogy a streaming betöltési folyamat közel valós idejű folyamatos átvitelhez készült, és a múltbeli események betöltése [nem támogatott](./concepts-streaming-ingestion-event-sources.md#historical-data-ingestion).
 * A megőrzési időtartamot attól függően számítjuk ki, hogy az eseményt a meleg tárolóban indexelték, nem az esemény időbélyegét. Ez azt jelenti, hogy az adatok már nem érhetők el a meleg tárolóban a megőrzési időszak lejárta után, még akkor is, ha az esemény időbélyege a jövőre vonatkozik.
-  - Példa: a 10 napos időjárás-előrejelzést tartalmazó esemény betöltése és indexelése egy 7 napos megőrzési időtartammal konfigurált meleg tárolóban történik. 7 nap elteltével az előrejelzés már nem érhető el a meleg áruházban, de a lekérdezhető a hidegtől. 
+  * Példa: a 10 napos időjárás-előrejelzést tartalmazó esemény betöltése és indexelése egy 7 napos megőrzési időtartammal konfigurált meleg tárolóban történik. 7 nap elteltével az előrejelzés már nem érhető el a meleg áruházban, de a lekérdezhető a hidegtől.
 * Ha olyan meglévő környezetben engedélyezi a meleg tárolást, amely már rendelkezik a legutóbbi, a hűtőházi tárolóban tárolt adataival, a meleg tároló nem lesz visszatöltve ezekkel az adataival.
 * Ha most engedélyezte a meleg tárolást, és problémákba ütközik a legutóbbi adatai megtekintésével a Explorerben, ideiglenesen válthat a meleg tárolási lekérdezések közül:
 
@@ -122,7 +121,7 @@ Azure Time Series Insights Gen2-események a következő módon vannak leképezv
 * A telemetria-adatként elküldett összes többi tulajdonság a `_bool` tulajdonság típusától függően (logikai), `_datetime` (időbélyegző), ( `_long` hosszú), `_double` (Double), ( `_string` String) vagy `dynamic` (dinamikus) oszlopokra van leképezve.  További információt a [támogatott adattípusokról](./concepts-supported-data-types.md)szóló témakörben olvashat.
 * Ez a leképezési séma a **(z) V = 1** néven hivatkozott fájlformátum első verziójára vonatkozik, és az azonos nevű alapmappában tárolódik. A szolgáltatás fejlődése során ez a leképezési séma változhat, és a hivatkozási név megnő.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ az [adatmodellezésről](./time-series-insights-update-tsm.md).
 

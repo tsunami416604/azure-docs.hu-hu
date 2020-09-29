@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: e5ab3800e2d20bec34f321e0992240be8624404c
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 4ad3aa7169fcf7eeda6e56a2eab6669b8783d77d
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91400857"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461461"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor a dedikált fürtöket naplózza
 
@@ -70,11 +70,10 @@ A fürtöket létrehozó felhasználói fióknak rendelkeznie kell a szabványos
 **PowerShell**
 
 ```powershell
-invoke-command -scriptblock { New-AzOperationalInsightsCluster -ResourceGroupName {resource-group-name} -ClusterName {cluster-name} -Location {region-name} -SkuCapacity {daily-ingestion-gigabyte} } -asjob
+New-AzOperationalInsightsCluster -ResourceGroupName {resource-group-name} -ClusterName {cluster-name} -Location {region-name} -SkuCapacity {daily-ingestion-gigabyte} -AsJob
 
 # Check when the job is done
-Get-Job
-
+Get-Job -Command "New-AzOperationalInsightsCluster*" | Format-List -Property *
 ```
 
 **REST**
@@ -106,13 +105,16 @@ Content-type: application/json
 
 ### <a name="check-provisioning-status"></a>Az átadási állapot ellenőrzése
 
-A Log Analytics-fürt üzembe helyezése eltarthat egy ideig. A kiépítési állapotot kétféleképpen tekintheti meg:
+A Log Analytics-fürt üzembe helyezése eltarthat egy ideig. A kiépítési állapotot többféleképpen is megtekintheti:
 
-1. Másolja az Azure-AsyncOperation URL értékét a válaszból, és kövesse az aszinkron műveletek állapotának ellenőrzését.
+- Futtassa a Get-AzOperationalInsightsCluster PowerShell-parancsot az erőforráscsoport nevével, és tekintse meg a ProvisioningState tulajdonságot. Az érték a kiépítés és a *sikeres* Befejezés *ProvisioningAccount* .
+  ```powershell
+  New-AzOperationalInsightsCluster -ResourceGroupName {resource-group-name} 
+  ```
 
-   VAGY
+- Másolja az Azure-AsyncOperation URL értékét a válaszból, és kövesse az aszinkron műveletek állapotának ellenőrzését.
 
-1. Küldjön egy GET-kérést a *fürterőforrás* számára, és tekintse meg a *provisioningState* értéket. Az érték a kiépítés és a *sikeres* Befejezés *ProvisioningAccount* .
+- Küldjön egy GET-kérést a *fürterőforrás* számára, és tekintse meg a *provisioningState* értéket. Az érték a kiépítés és a *sikeres* Befejezés *ProvisioningAccount* .
 
    ```rst
    GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
@@ -171,7 +173,7 @@ Update-AzOperationalInsightsCluster -ResourceGroupName {resource-group-name} -Cl
 > [!NOTE]
 > A *fürt* erőforrás- *SKU*-t, a *KeyVaultProperties* -t vagy a *billingType* -t a patch használatával frissítheti.
 
-Például: 
+Példa: 
 
 *Call*
 
@@ -275,10 +277,10 @@ Fürthöz való hivatkozáshoz használja a következő PowerShell-parancsot:
 $clusterResourceId = (Get-AzOperationalInsightsCluster -ResourceGroupName {resource-group-name} -ClusterName {cluster-name}).id
 
 # Link the workspace to the cluster
-invoke-command -scriptblock { Set-AzOperationalInsightsLinkedService -ResourceGroupName {resource-group-name} -WorkspaceName {workspace-name} -LinkedServiceName cluster -WriteAccessResourceId $clusterResourceId } -asjob
+Set-AzOperationalInsightsLinkedService -ResourceGroupName {resource-group-name} -WorkspaceName {workspace-name} -LinkedServiceName cluster -WriteAccessResourceId $clusterResourceId -AsJob
 
 # Check when the job is done
-Get-Job
+Get-Job -Command "Set-AzOperationalInsightsLinkedService" | Format-List -Property *
 ```
 
 

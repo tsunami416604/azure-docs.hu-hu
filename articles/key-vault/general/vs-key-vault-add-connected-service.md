@@ -9,12 +9,12 @@ ms.custom: vs-azure, devx-track-csharp
 ms.topic: how-to
 ms.date: 08/07/2019
 ms.author: ghogen
-ms.openlocfilehash: d0d0465e2e60945649958911c508e06aee877ac9
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: addccf337f82b1695c76ae975c4a33f44ba50f8a
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378865"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448136"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Key Vault hozzáadása a webalkalmazáshoz a Visual Studio csatlakoztatott szolgáltatásainak használatával
 
@@ -40,7 +40,7 @@ Mielőtt elkezdené, győződjön meg róla, hogy be van jelentkezve a Visual st
 
 1. Válassza ki a használni kívánt előfizetést, majd válasszon ki egy meglévő Key Vault, és kattintson a **Befejezés**gombra. 
 
-   ![Válassza ki az előfizetést](../media/vs-key-vault-add-connected-service/key-vault-connected-service-select-vault.png)
+   ![Az előfizetés kiválasztása](../media/vs-key-vault-add-connected-service/key-vault-connected-service-select-vault.png)
 
 Most már létrejött a kapcsolat a Key Vaultval, és a Titkok a kódban is elérhetők. A következő lépések eltérnek attól függően, hogy ASP.NET 4.7.1 vagy ASP.NET Core használ-e.
 
@@ -190,6 +190,9 @@ A Project file .NET-referenciákat és a `packages.config` (NuGet-hivatkozásoka
 | NET NuGet | Azure. Security. kulcstartó. kulcsok |
 | NET NuGet | Azure. Security. kulcstartó. Secrets |
 
+> [!IMPORTANT] 
+> Alapértelmezés szerint az Azure. Identity 1.1.1 telepítve van, amely nem támogatja a Visual Studio hitelesítő adatait. A csomag-referenciát manuálisan is frissítheti 1.2 + Visual Studio-hitelesítő adatok használatával.
+
 ### <a name="added-files-for-aspnet-framework"></a>Hozzáadott fájlok a ASP.NET-keretrendszerhez
 
 - `ConnectedService.json` hozzáadva, amely a csatlakoztatott szolgáltatóval, verziójával és a dokumentációra mutató hivatkozással kapcsolatos adatokat rögzíti.
@@ -199,7 +202,7 @@ A Project file .NET-referenciákat és a `packages.config` (NuGet-hivatkozásoka
 - Hozzáadta a csatlakoztatott szolgáltatások ItemGroup és ConnectedServices.jsa fájlhoz.
 - A [hozzáadott hivatkozások](#added-references-for-aspnet-framework) szakaszban leírt .net-szerelvényekre mutató hivatkozások.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha követte ezt az oktatóanyagot, a Key Vault engedélyei a saját Azure-előfizetéssel való futtatásra vannak beállítva, de előfordulhat, hogy éles környezetben nem kívánatos. Létrehozhat egy felügyelt identitást, amellyel kezelheti Key Vault hozzáférését az alkalmazáshoz. Tekintse meg, [Hogyan hitelesítheti Key Vault](/azure/key-vault/general/authentication) és [hozzárendelhet egy Key Vault hozzáférési szabályzatot](/azure/key-vault/general/assign-access-policy-portal).
 

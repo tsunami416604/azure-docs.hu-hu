@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 07/27/2020
+ms.date: 9/29/2020
 ms.author: b-juche
-ms.openlocfilehash: 05d173b715a8bc060e2f4d9cdcc7e3aef5630109
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: b683719fa2d0c1e7b5333c2ddf9c93f2797ade9b
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87535387"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461478"
 ---
 # <a name="configure-nfsv41-kerberos-encryption-for-azure-netapp-files"></a>A NFSv 4.1 Kerberos-titkosítás konfigurálása Azure NetApp Fileshoz
 
@@ -89,7 +89,7 @@ Az NFS-ügyfél konfigurálásához kövesse az [NFS-ügyfél konfigurálása Az
 
 2. Az utasítások megjelenítéséhez kattintson a kötet **csatlakoztatási utasításai** elemre.
 
-    Például: 
+    Példa: 
 
     ![A Kerberos-kötetek csatlakoztatására vonatkozó utasítások](../media/azure-netapp-files/mount-instructions-kerberos-volume.png)  
 
@@ -135,7 +135,7 @@ Ez a szakasz a különböző beállítások egyetlen ügyféloldali teljesítmé
 
 ### <a name="expected-performance-impact"></a>Várható teljesítmény-hatás 
 
-A fókusz két területből áll: a kis-és nagybetűkből álló terheléssel. Az alábbi listában a teljesítményre gyakorolt hatás biztonsági beállításai láthatók a biztonsági beállítások és forgatókönyvek szerint. Minden összehasonlítás a `sec=sys` biztonsági paraméterrel történik.
+A fókusz két területből áll: a kis-és nagybetűkből álló terheléssel. Az alábbi listában a teljesítményre gyakorolt hatás biztonsági beállításai láthatók a biztonsági beállítások és forgatókönyvek szerint. Minden összehasonlítás a `sec=sys` biztonsági paraméterrel történik. A teszt egyetlen köteten, egyetlen ügyfél használatával lett végrehajtva. 
 
 A krb5 teljesítményére gyakorolt hatás:
 
@@ -175,4 +175,4 @@ A krb5p teljesítményére gyakorolt hatás:
 * [Gyakori kérdések a Azure NetApp Files](azure-netapp-files-faqs.md)
 * [NFS-kötet létrehozása az Azure NetApp Files számára](azure-netapp-files-create-volumes.md)
 * [Active Directory-kapcsolatok létrehozása](azure-netapp-files-create-volumes-smb.md#create-an-active-directory-connection)
-* [NFS-ügyfél konfigurálása Azure NetApp Fileshoz](configure-nfs-clients.md) 
+* [NFS-ügyfél konfigurálása az Azure NetApp Fileshoz](configure-nfs-clients.md) 

@@ -7,12 +7,12 @@ ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.custom: devx-track-python, devx-track-csharp
-ms.openlocfilehash: b48b02d20ed3d0b731f04d2c6568274bc0262e2e
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: fd9299d49f42eb021d64ae25447fd13e7378ff3f
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88933358"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447864"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Telemetria korreláció a Application Insightsban
 
@@ -46,7 +46,7 @@ Az eredményül kapott telemetria a következő lekérdezés futtatásával elem
 
 Az eredmények között vegye figyelembe, hogy az összes telemetria-elem megosztja a gyökeret `operation_Id` . Ha a lapon Ajax-hívás történik, a rendszer új egyedi azonosítót ( `qJSXU` ) rendel a függőségi telemetria, és az OLDALMEGTEKINTÉS azonosítóját használja `operation_ParentId` . A kiszolgálói kérelem ezután az Ajax ID-t használja `operation_ParentId` .
 
-| itemType   | name                      | ID           | operation_ParentId | operation_Id |
+| itemType   | név                      | ID           | operation_ParentId | operation_Id |
 |------------|---------------------------|--------------|--------------------|--------------|
 | oldalmegtekintést   | Stock lap                |              | STYz               | STYz         |
 | függőségi | /Home/Stock beolvasása           | qJSXU        | STYz               | STYz         |
@@ -55,7 +55,7 @@ Az eredmények között vegye figyelembe, hogy az összes telemetria-elem megosz
 
 Ha a hívás `GET /api/stock/value` egy külső szolgáltatásra történik, ismernie kell a kiszolgáló identitását, hogy megfelelően be tudja állítani a `dependency.target` mezőt. Ha a külső szolgáltatás nem támogatja a figyelést, a a `target` szolgáltatás állomásneve (például) értékre van állítva `stock-prices-api.com` . Ha azonban a szolgáltatás egy előre meghatározott HTTP-fejléc visszaadásával azonosítja magát, `target` az tartalmazza azt a szolgáltatás-identitást, amely lehetővé teszi, hogy a Application Insights egy elosztott nyomkövetést hozzon létre a szolgáltatásból származó telemetria lekérdezésével.
 
-## <a name="correlation-headers"></a>Korrelációs fejlécek
+## <a name="correlation-headers-using-w3c-tracecontext"></a>Korrelációs fejlécek a W3C nyomkövetési környezet – használatával
 
 Application Insights a [W3C nyomkövetési kontextusra](https://w3c.github.io/trace-context/)vált, amely az alábbiakat határozza meg:
 
@@ -70,6 +70,18 @@ A [korrelációs HTTP protokoll, más néven a Request-ID is](https://github.com
 - `Correlation-Context`: Az elosztott nyomkövetési tulajdonságok név-érték párokból álló gyűjteményét adja meg.
 
 A Application Insights a korrelációs HTTP protokoll [bővítményét](https://github.com/lmolkova/correlation/blob/master/http_protocol_proposal_v2.md) is meghatározza. `Request-Context`Név-érték párokat használ a közvetlen hívó vagy a hívott által használt tulajdonságok gyűjteményének propagálásához. A Application Insights SDK ezt a fejlécet használja a `dependency.target` és a mezők beállításához `request.source` .
+
+A [W3C nyomkövetési környezet](https://w3c.github.io/trace-context/) és a Application Insights adatmodellek leképezése a következő módon történik:
+
+| Application Insights                   | W3C nyomkövetési környezet –                                      |
+|------------------------------------    |-------------------------------------------------    |
+| `Request`, `PageView`                  | `SpanKind` kiszolgáló, ha szinkron; `SpanKind` a fogyasztó, ha aszinkron                    |
+| `Dependency`                           | `SpanKind` az ügyfél, ha szinkron; `SpanKind` a gyártó, ha aszinkron                   |
+| `Id``Request`és`Dependency`     | `SpanId`                                            |
+| `Operation_Id`                         | `TraceId`                                           |
+| `Operation_ParentId`                   | `SpanId` a span szülő-tartománya. Ha ez egy gyökérszintű tartomány, akkor ennek a mezőnek üresnek kell lennie.     |
+
+További információ: [Application Insights telemetria adatmodell](../../azure-monitor/app/data-model.md).
 
 ### <a name="enable-w3c-distributed-tracing-support-for-classic-aspnet-apps"></a>A W3C elosztott nyomkövetési támogatásának engedélyezése klasszikus ASP.NET-alkalmazásokhoz
  
@@ -204,25 +216,11 @@ Ez a szolgáltatás a-ben érhető el `Microsoft.ApplicationInsights.JavaScript`
   </script>
   ```
 
-## <a name="opentracing-and-application-insights"></a>OpenTracing és Application Insights
-
-A [OpenTracing adatmodell-specifikációja](https://opentracing.io/) és Application Insights adatmodell-leképezése a következő módon történik:
-
-| Application Insights                   | OpenTracing                                        |
-|------------------------------------    |-------------------------------------------------    |
-| `Request`, `PageView`                  | `Span` a `span.kind = server`                    |
-| `Dependency`                           | `Span` a `span.kind = client`                    |
-| `Id``Request`és`Dependency`     | `SpanId`                                            |
-| `Operation_Id`                         | `TraceId`                                           |
-| `Operation_ParentId`                   | `Reference` típus `ChildOf` (a szülő span)     |
-
-További információ: [Application Insights telemetria adatmodell](../../azure-monitor/app/data-model.md).
-
-A OpenTracing-fogalmak definícióit lásd: OpenTracing- [specifikáció](https://github.com/opentracing/specification/blob/master/specification.md) és [szemantikai konvenciók](https://github.com/opentracing/specification/blob/master/semantic_conventions.md).
-
 ## <a name="telemetry-correlation-in-opencensus-python"></a>Telemetria korreláció a OpenCensus Pythonban
 
-A OpenCensus Python a `OpenTracing` korábban ismertetett adatmodell-specifikációkat követi. Emellett a [W3C nyomkövetési környezetét](https://w3c.github.io/trace-context/) is támogatja anélkül, hogy konfigurációt kellene igényelni.
+A OpenCensus Python további konfigurálás nélkül támogatja a [W3C nyomkövetési környezetet](https://w3c.github.io/trace-context/) .
+
+Hivatkozásként a OpenCensus adatmodellje [itt](https://github.com/census-instrumentation/opencensus-specs/tree/master/trace)található.
 
 ### <a name="incoming-request-correlation"></a>Bejövő kérelmek korrelációja
 

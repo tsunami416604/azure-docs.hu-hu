@@ -5,15 +5,15 @@ services: security-center
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.topic: conceptual
+ms.topic: quickstart
 ms.date: 04/27/2020
 ms.author: memildin
-ms.openlocfilehash: 132e21c861f50caca37fb6fc5df660ff413d07a5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 92c73fed84910e525378aa18e02456960acf9911
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905492"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447265"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Adatgyűjtés az Azure Security Centerben
 A Security Center adatokat gyűjt az Azure-beli virtuális gépekről (VM), a virtuálisgép-méretezési csoportokról, a IaaS-tárolók és a nem Azure-beli (beleértve a helyszíni) számítógépekről a biztonsági rések és fenyegetések figyeléséhez. Az adatok gyűjtése a Log Analytics ügynök használatával történik, amely beolvassa a különböző biztonsággal kapcsolatos konfigurációkat és eseménynaplókat a gépről, és az adatokat a munkaterületre másolja az elemzéshez. Ilyenek például a következők: az operációs rendszer típusa és verziója, az operációs rendszer naplói (Windows-eseménynaplók), a futó folyamatok, a gép neve, az IP-címek és a bejelentkezett felhasználó.
@@ -71,7 +71,7 @@ A Security Center automatikusan létre tud hozni egy alapértelmezett munkaterü
 Security Center által létrehozott munkaterület kiválasztása:
 
 1. Az **alapértelmezett munkaterület konfigurálása**területen jelölje be a Security Center által létrehozott munkaterület (ok) használata jelölőnégyzetet.
-   ![Árképzési szintek kiválasztása][10] 
+    :::image type="content" source="./media/security-center-enable-data-collection/workspace-selection.png" alt-text="Az log Analytics-ügynök automatikus kiépítés engedélyezése"::: 
 
 1. Kattintson a **Mentés** gombra.<br>
     Security Center létrehoz egy új erőforráscsoportot és egy alapértelmezett munkaterületet az adott földrajzi helyhez, és csatlakoztatja az ügynököt az adott munkaterülethez. A munkaterület és az erőforráscsoport elnevezési konvenciója a következő:<br>
@@ -99,8 +99,7 @@ A meglévő Log Analytics munkaterület használatához olvasási és írási en
 Meglévő Log Analytics munkaterület kiválasztása:
 
 1. Az **alapértelmezett munkaterület konfigurálása**területen válassza a **másik munkaterület használata**lehetőséget.
-
-   ![Másik munkaterület használata][2]
+    :::image type="content" source="./media/security-center-enable-data-collection/use-another-workspace.png" alt-text="Az log Analytics-ügynök automatikus kiépítés engedélyezése"::: 
 
 2. A legördülő menüben válasszon ki egy munkaterületet az összegyűjtött adatok tárolásához.
 
@@ -191,10 +190,10 @@ Itt látható az egyes készletekhez tartozó biztonsági és alkalmazás-zárol
 >
 
 A szűrési házirend kiválasztásához:
-1. Az **adatgyűjtés** lapon válassza ki a szűrési házirendet a **biztonsági események**alatt.
-2. Kattintson a **Mentés** gombra.
-
-   ![Szűrési házirend kiválasztása][5]
+1. Az **adatgyűjtés** lapon válassza ki a szűrési házirendet a **további nyers adat tárolása – Windows biztonsági események**.
+ 
+1. Kattintson a **Mentés** gombra.
+    :::image type="content" source="./media/security-center-enable-data-collection/data-collection-tiers.png" alt-text="Az log Analytics-ügynök automatikus kiépítés engedélyezése":::
 
 ### <a name="automatic-provisioning-in-cases-of-a-pre-existing-agent-installation"></a>Automatikus kiépítés egy korábban létező ügynök telepítése esetén <a name="preexisting"></a> 
 
@@ -224,7 +223,7 @@ A log Analytics ügynök automatikus kiépítés kikapcsolása:
 1. A portál Security Center menüjében válassza a **díjszabás & beállítások**lehetőséget.
 2. Válassza ki az adott előfizetést.
 
-   ![Előfizetés kiválasztása][7]
+    :::image type="content" source="./media/security-center-enable-data-collection/select-subscription.png" alt-text="Az log Analytics-ügynök automatikus kiépítés engedélyezése":::
 
 3. Válassza **az adatgyűjtés**lehetőséget.
 4. Az automatikus **kiépítés**területen válassza ki a **ki** lehetőséget az automatikus kiépítés letiltásához.
@@ -309,13 +308,7 @@ Ez a cikk bemutatja, hogyan működik az adatgyűjtés és az automatikus kiép�
 
 
 <!--Image references-->
-[1]: ./media/security-center-enable-data-collection/enable-automatic-provisioning.png
-[2]: ./media/security-center-enable-data-collection/use-another-workspace.png
 [3]: ./media/security-center-enable-data-collection/reconfigure-monitored-vm.png
-[5]: ./media/security-center-enable-data-collection/data-collection-tiers.png
-[7]: ./media/security-center-enable-data-collection/select-subscription.png
-[8]: ./media/security-center-enable-data-collection/manual-provision.png
 [9]: ./media/security-center-enable-data-collection/pricing-tier.png
-[10]: ./media/security-center-enable-data-collection/workspace-selection.png
 [11]: ./media/security-center-enable-data-collection/log-analytics.png
 [12]: ./media/security-center-enable-data-collection/log-analytics2.png

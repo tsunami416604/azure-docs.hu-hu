@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: ddb4a825dda704d818cbc8d3537775743b5b0b45
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: beafff2276d0b6dc525b586fa2d5943675012981
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91396722"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446108"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Rövid útmutató: belső terheléselosztó létrehozása a virtuális gépek terheléselosztásához a Azure Portal használatával
 
@@ -110,7 +110,7 @@ Ebben a szakaszban létre fog hozni egy virtuális hálózatot és alhálózatot
     | ---                     | ---                                                |
     | Előfizetés               | Válassza ki előfizetését.    |    
     | Erőforráscsoport         | Válassza ki az előző lépésben létrehozott **myresourcegrouplb erőforráscsoportban** .|
-    | Név                   | **MyLoadBalancer** megadása                                   |
+    | Name                   | **MyLoadBalancer** megadása                                   |
     | Region         | Válassza a **Nyugat-Európa** régiót.                                        |
     | Típus          | Válassza a **belső**lehetőséget.                                        |
     | Termékváltozat           | **Standard** kiválasztása |
@@ -123,7 +123,7 @@ Ebben a szakaszban létre fog hozni egy virtuális hálózatot és alhálózatot
 
 4. A **felülvizsgálat + létrehozás** lapon válassza a **Létrehozás**lehetőséget.   
     
-    :::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/create-standard-internal-load-balancer.png" alt-text="Standard belső terheléselosztó létrehozása" border="true":::
+    :::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/create-standard-internal-load-balancer.png" alt-text="Hozzon létre egy standard belső Load balancert." border="true":::
  
 ## <a name="create-load-balancer-resources"></a>Terheléselosztó erőforrásainak létrehozása
 
@@ -264,7 +264,7 @@ Ezek a virtuális gépek hozzáadódnak a korábban létrehozott terheléseloszt
 
     | Beállítás | VM 2|
     | ------- | ----- |
-    | Név |  **myVM2** |
+    | Name |  **myVM2** |
     | A rendelkezésre állási zóna | **2** |
     | Hálózati biztonsági csoport | Meglévő **myNSG** kiválasztása|
 
@@ -343,7 +343,7 @@ Ebben a szakaszban létre fog hozni egy virtuális hálózatot és alhálózatot
     | ---                     | ---                                                |
     | Előfizetés               | Válassza ki előfizetését.    |    
     | Erőforráscsoport         | Válassza ki az előző lépésben létrehozott **myresourcegrouplb erőforráscsoportban** .|
-    | Név                   | **MyLoadBalancer** megadása                                   |
+    | Name                   | **MyLoadBalancer** megadása                                   |
     | Region         | Válassza a **Nyugat-Európa** régiót.                                        |
     | Típus          | Válassza a **belső**lehetőséget.                                        |
     | Termékváltozat           | **Alapszintű** kiválasztása |
@@ -355,7 +355,7 @@ Ebben a szakaszban létre fog hozni egy virtuális hálózatot és alhálózatot
 
 4. A **felülvizsgálat + létrehozás** lapon válassza a **Létrehozás**lehetőséget.   
 
-    :::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/create-basic-internal-load-balancer.png" alt-text="Standard belső terheléselosztó létrehozása" border="true":::
+    :::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/create-basic-internal-load-balancer.png" alt-text="Hozzon létre egy standard belső Load balancert." border="true":::
 
 ## <a name="create-load-balancer-resources"></a>Terheléselosztó erőforrásainak létrehozása
 
@@ -499,7 +499,7 @@ Ezek a virtuális gépek hozzáadódnak a korábban létrehozott terheléseloszt
 
     | Beállítás | VM 2 |
     | ------- | ----- |
-    | Név |  **myVM2** |
+    | Name |  **myVM2** |
     | Rendelkezésre állási csoport| **MyAvailabilitySet** kiválasztása |
     | Hálózati biztonsági csoport | Meglévő **myNSG** kiválasztása|
 
@@ -614,7 +614,7 @@ Ebben a szakaszban létrehoz egy **myTestVM**nevű virtuális gépet.  Ezt a vir
 
 8. Az előző lépésben adja meg az IP-címet a böngésző címsorába. Az IIS-webkiszolgáló alapértelmezett oldala jelenik meg a böngészőben.
 
-    :::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/load-balancer-test.png" alt-text="Standard belső terheléselosztó létrehozása" border="true":::
+    :::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/load-balancer-test.png" alt-text="Hozzon létre egy standard belső Load balancert." border="true":::
    
 Ha látni szeretné, hogy a terheléselosztó mindkét virtuális gépen osztja el a forgalmat, testreszabhatja az egyes virtuális gépek IIS-webkiszolgálójának alapértelmezett oldalát, majd kényszerítheti a webböngésző frissítését az ügyfélgépről.
 
@@ -622,7 +622,7 @@ Ha látni szeretné, hogy a terheléselosztó mindkét virtuális gépen osztja 
 
 Ha már nincs rá szükség, törölje az erőforráscsoportot, a terheléselosztót és az összes kapcsolódó erőforrást. Ehhez válassza ki az erőforrásokat tartalmazó erőforráscsoportot, majd válassza a **Törlés**lehetőséget a **myresourcegrouplb erőforráscsoportban** .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban a következőket hajtja végre:
 

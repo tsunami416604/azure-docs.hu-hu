@@ -8,12 +8,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3ccb8d29d0ec52c31913a43358c7daa1c0693df7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a9d2116062dc45f3602bf5ee0efba31ad815c0c9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84308846"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447857"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>Lefelé irányuló eszköz hitelesítése az Azure IoT Hubon
 
@@ -69,7 +69,7 @@ Ugyanezen művelet végrehajtásához használhatja az [Azure CLI-hez készült 
 az iot hub device-identity create -n {iothub name} -d {new device ID} --pd {existing gateway device ID}
 ```
 
-Az eszközök létrehozásával és a szülő-gyermek felügyelettel kapcsolatos Azure CLI-parancsokkal kapcsolatos további információkért tekintse meg az az [IOT hub Device-Identity](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity?view=azure-cli-latest) parancsok hivatkozási tartalmát.
+Az eszközök létrehozásával és a szülő-gyermek felügyelettel kapcsolatos Azure CLI-parancsokkal kapcsolatos további információkért tekintse meg az az [IOT hub Device-Identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) parancsok hivatkozási tartalmát.
 
 Ezután [kérje le és módosítsa a kapcsolati karakterláncot](#retrieve-and-modify-connection-string) , hogy az eszköz képes legyen csatlakozni az átjárón keresztül.
 
@@ -126,7 +126,7 @@ Az [Azure CLI-hez készült IoT-bővítményt](https://github.com/Azure/azure-io
 az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway device ID} --am x509_thumbprint --ptp {primary thumbprint} --stp {secondary thumbprint}
 ```
 
-Az eszközök létrehozásával, a tanúsítványok létrehozásával, valamint a szülő-és alárendelt felügyelettel kapcsolatos Azure CLI-parancsokkal kapcsolatos további információkért tekintse meg az az [IOT hub Device-Identity](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity?view=azure-cli-latest) parancsok hivatkozási tartalmát.
+Az eszközök létrehozásával, a tanúsítványok létrehozásával, valamint a szülő-és alárendelt felügyelettel kapcsolatos Azure CLI-parancsokkal kapcsolatos további információkért tekintse meg az az [IOT hub Device-Identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) parancsok hivatkozási tartalmát.
 
 Ezután [kérje le és módosítsa a kapcsolati karakterláncot](#retrieve-and-modify-connection-string) , hogy az eszköz képes legyen csatlakozni az átjárón keresztül.
 
@@ -172,7 +172,7 @@ Az [Azure CLI-hez készült IoT-bővítményt](https://github.com/Azure/azure-io
 az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway device ID} --am x509_ca
 ```
 
-További információ: Azure CLI-hivatkozási tartalom az az [IOT hub Device-Identity](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity?view=azure-cli-latest) parancsok.
+További információ: Azure CLI-hivatkozási tartalom az az [IOT hub Device-Identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) parancsok.
 
 Ezután [kérje le és módosítsa a kapcsolati karakterláncot](#retrieve-and-modify-connection-string) , hogy az eszköz képes legyen csatlakozni az átjárón keresztül.
 
@@ -182,10 +182,12 @@ Miután létrehozta a IoT-eszköz identitását a portálon, lekérheti az első
 
 Az alsóbb rétegbeli eszközökhöz tartozó kapcsolatok karakterláncának a következő összetevőket kell megadnia:
 
-* Az a IoT hub, amelyhez az eszköz csatlakozik:`Hostname={iothub name}.azure-devices.net`
-* A központban regisztrált eszköz azonosítója:`DeviceID={device ID}`
-* Vagy az elsődleges vagy a másodlagos kulcs:`SharedAccessKey={key}`
-* Az az átjáró-eszköz, amelyhez az eszköz csatlakozik. Adja meg a **hostname** értéket az IoT Edge Gateway-eszköz config. YAML fájljában:`GatewayHostName={gateway hostname}`
+* Az a IoT hub, amelyhez az eszköz csatlakozik: `Hostname={iothub name}.azure-devices.net`
+* A központban regisztrált eszköz azonosítója: `DeviceID={device ID}`
+* A hitelesítési módszer, hogy a szimmetrikus kulcs vagy az X. 509 tanúsítvány
+  * Ha szimmetrikus kulcsos hitelesítést használ, adja meg az elsődleges vagy a másodlagos kulcsot: `SharedAccessKey={key}`
+  * Ha X. 509 tanúsítványalapú hitelesítést használ, adjon meg egy jelzőt: `x509=true`
+* Az az átjáró-eszköz, amelyhez az eszköz csatlakozik. Adja meg a **hostname** értéket az IoT Edge Gateway-eszköz config. YAML fájljában: `GatewayHostName={gateway hostname}`
 
 Az összes együtt egy teljes körű kapcsolatok karakterlánca a következőképpen néz ki:
 
@@ -193,7 +195,13 @@ Az összes együtt egy teljes körű kapcsolatok karakterlánca a következőké
 HostName=myiothub.azure-devices.net;DeviceId=myDownstreamDevice;SharedAccessKey=xxxyyyzzz;GatewayHostName=myGatewayDevice
 ```
 
-Ha létrehozott egy szülő/gyermek kapcsolatot ehhez az alárendelt eszközhöz, a kapcsolati karakterlánc leegyszerűsíthető úgy, hogy az átjárót közvetlenül a kapcsolati gazdagépként hívja meg. Az X. 509 hitelesítéshez szülő/gyermek kapcsolat szükséges, a szimmetrikus kulcsos hitelesítés azonban nem kötelező. Például:
+Vagy
+
+```
+HostName=myiothub.azure-devices.net;DeviceId=myDownstreamDevice;x509=true;GatewayHostName=myGatewayDevice
+```
+
+Ha létrehozott egy szülő/gyermek kapcsolatot ehhez az alárendelt eszközhöz, a kapcsolati karakterlánc leegyszerűsíthető úgy, hogy az átjárót közvetlenül a kapcsolati gazdagépként hívja meg. Az X. 509 hitelesítéshez szülő/gyermek kapcsolat szükséges, a szimmetrikus kulcsos hitelesítés azonban nem kötelező. Példa:
 
 ```
 HostName=myGatewayDevice;DeviceId=myDownstreamDevice;SharedAccessKey=xxxyyyzzz
@@ -201,7 +209,7 @@ HostName=myGatewayDevice;DeviceId=myDownstreamDevice;SharedAccessKey=xxxyyyzzz
 
 Ezt a módosított összekapcsolási karakterláncot az átlátszó átjáró sorozat következő cikkében fogja használni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ezen a ponton van egy IoT Edge eszköz regisztrálva az IoT hub-ban, és transzparens átjáróként van konfigurálva. Emellett egy alsóbb rétegbeli eszköz is regisztrálva van az IoT hub-ban, és az átjáró eszközére mutat.
 

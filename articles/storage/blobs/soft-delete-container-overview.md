@@ -10,12 +10,12 @@ ms.date: 08/25/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: f41caf61ac23b05ba0ff95d785be2e7449adf75d
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 3c6aa408ab3e89c367fca0701773b35fb9b41bb8
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89228630"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460798"
 ---
 # <a name="soft-delete-for-containers-preview"></a>Tárolók törlése (előzetes verzió)
 
@@ -42,11 +42,7 @@ A tárolók törlésének letiltása nem eredményezi végleges törlését a ko
 
 ## <a name="about-the-preview"></a>Az előzetes verzió ismertetése
 
-A tároló Soft Delete a következő régiókban érhető el az előzetes verzióban:
-
-- Közép-Franciaország
-- Kelet-Kanada
-- Közép-Kanada
+A tárolók Soft delete előzetes verzióban érhető el az összes nyilvános Azure-régióban.
 
 > [!IMPORTANT]
 > A tároló Soft delete előzetes verziója csak nem éles használatra készült. Az üzemi szolgáltatási szintű szerződések (SLA-kat) jelenleg nem érhetők el.
@@ -119,7 +115,7 @@ az feature show --namespace Microsoft.Storage --name ContainerSoftDelete
 
 A tárolók törlésének engedélyezése nem díjköteles. A helyreállított törölt tárolókban lévő adatforgalom az aktív adatforgalommal megegyező sebességgel történik.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Tároló helyreállítható törlésének konfigurálása](soft-delete-container-enable.md)
 - [Blobok helyreállítható törlése](soft-delete-blob-overview.md)

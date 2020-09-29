@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: quickstart
 ms.date: 09/04/2020
 ms.author: jushiman
-ms.openlocfilehash: f1dc37173dff8e694ba4d1e5aa9a1b14e462581a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d66c19ce3a9786a5ca0f1390acb398c2a9cf502f
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91311580"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445800"
 ---
 # <a name="quickstart-enable-azure-automanage-for-virtual-machines-in-the-azure-portal"></a>Gyors útmutató: az Azure automanage engedélyezése virtuális gépekhez a Azure Portal
 
@@ -49,34 +49,36 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
     1. Jelölje be a bevezetéshez használni kívánt virtuális gépek jelölőnégyzetét.
     1. Kattintson a **kiválasztás** gombra.
 
-    :::image type="content" source="media\quick-create-virtual-machine-portal\existing-vm-select-machine.png" alt-text="Válassza ki a meglévő virtuális gépet az elérhető virtuális gépek listájából.":::
+    :::image type="content" source="media\quick-create-virtual-machine-portal\existing-vm-select-machine.png" alt-text="Engedélyezés meglévő virtuális gépen.":::
 
 4. A **konfigurációs profil**területen kattintson a Tallózás gombra, és válassza a **profilok és beállítások módosítása**elemet.
 
-    :::image type="content" source="media\quick-create-virtual-machine-portal\existing-vm-quick-create.png" alt-text="Profilok és beállítások tallózása és módosítása.":::
+    :::image type="content" source="media\quick-create-virtual-machine-portal\existing-vm-quick-create.png" alt-text="Engedélyezés meglévő virtuális gépen.":::
 
 5. A **konfigurációs profil és beállítások kiválasztása panelen** :
     1. Válasszon ki egy profilt a bal oldalon: *fejlesztési/tesztelési* teszt *, éles* üzemi környezet.
     1. Kattintson a **kiválasztás** gombra.
 
-    :::image type="content" source="media\quick-create-virtual-machine-portal\browse-production-profile.png" alt-text="Tallózás a termelési konfigurációs profilban.":::
+    :::image type="content" source="media\quick-create-virtual-machine-portal\browse-production-profile.png" alt-text="Engedélyezés meglévő virtuális gépen.":::
 
 6. Kattintson az **Engedélyezés** gombra.
 
 
 ## <a name="enable-automanage-for-vms-on-a-new-vm"></a>Új virtuális gépen lévő virtuális gépek autokezelésének engedélyezése
 
+Egy új virtuális gép létrehozásához jelentkezzen be [a Azure Portalba, és](https://aka.ms/automanageportalnextstep) engedélyezze az autofelügyeletet.
+
 1. Kövesse a rövid útmutató [– Windows rendszerű virtuális gép létrehozása a Azure Portal](..\virtual-machines\windows\quick-create-portal.md).
 
 2. A virtuális gép üzembe helyezése után az üzembe helyezés állapota lapon a lenti javasolt **következő lépések** láthatók.
 
-    :::image type="content" source="media\quick-create-virtual-machine-portal\create-next-steps.png" alt-text="A következő lépések szakasz a telepítési oldal alján található.":::
+    :::image type="content" source="media\quick-create-virtual-machine-portal\create-next-steps.png" alt-text="Engedélyezés meglévő virtuális gépen.":::
 
 3. A **következő lépések**szakaszban jelölje be a **virtuális gépekkel kapcsolatos ajánlott eljárások engedélyezése**jelölőnégyzetet.
 
 4. Az automatikus **kezelés – Azure-beli virtuális gépek ajánlott eljárásai** lapon a **gépeket** automatikusan az újonnan létrehozott virtuális gép tölti fel.
 
-    :::image type="content" source="media\quick-create-virtual-machine-portal\create-new-enable-overview.png" alt-text="Az újonnan létrehozott virtuális gép a kiválasztott gépen jelenik meg.":::
+    :::image type="content" source="media\quick-create-virtual-machine-portal\create-new-enable-overview.png" alt-text="Engedélyezés meglévő virtuális gépen.":::
 
 5. A **konfigurációs profil**területen kattintson a Tallózás gombra, és válassza a **profilok és beállítások módosítása**elemet.
 
@@ -84,16 +86,15 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
     1. Válasszon ki egy profilt a bal oldalon: *fejlesztési/tesztelési* teszt *, éles* üzemi környezet.
     1. Kattintson a **kiválasztás** gombra.
 
-    :::image type="content" source="media\quick-create-virtual-machine-portal\browse-production-profile.png" alt-text="Tallózás a termelési konfigurációs profilban.":::
+    :::image type="content" source="media\quick-create-virtual-machine-portal\browse-production-profile.png" alt-text="Engedélyezés meglévő virtuális gépen.":::
 
 7. Kattintson az **Engedélyezés** gombra.
-
 
 ## <a name="disable-automanage-for-vms"></a>Virtuális gépek autokezelésének letiltása
 
 Az automanagement szolgáltatás letiltásával gyorsan leállíthatja a virtuális gépek Azure-beli autofelügyeletét.
 
-:::image type="content" source="media\automanage-virtual-machines\disable-step-1.png" alt-text="A virtuális gépeken az automanage szolgáltatás letiltása.":::
+:::image type="content" source="media\automanage-virtual-machines\disable-step-1.png" alt-text="Engedélyezés meglévő virtuális gépen.":::
 
 1. Nyissa meg az automatikus **kezelés – Azure virtuális gépekre vonatkozó ajánlott eljárásokat** tartalmazó oldalt, amely felsorolja az összes automatikusan felügyelt virtuális gépet.
 1. Jelölje be a letiltani kívánt virtuális gép melletti jelölőnégyzetet.

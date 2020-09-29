@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: d9f16b612b508a6237c748bd135ff32618015b0b
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 4deab6fcadda36ad729096ff2f38e40ce81c7ae9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86057007"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446103"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>Oktatóanyag: Virtuális gépek terhelésének elosuztása a rendelkezésre állási zónák között az Azure Portallal
 
@@ -56,7 +56,7 @@ A Standard Load Balancer csak a standard nyilvános IP-címeket támogatja. Ha a
     | ---                     | ---                                                |
     | Előfizetés               | Válassza ki előfizetését.    |    
     | Erőforráscsoport         | Válassza az **új létrehozása** lehetőséget, és írja be a *MyResourceGroupLBAZ* szöveget a szövegmezőbe.|
-    | Név                   | *myLoadBalancer*                                   |
+    | Name                   | *myLoadBalancer*                                   |
     | Region         | Válassza a **Nyugat-Európa** régiót.                                        |
     | Típus          | Válassza a **Nyilvános** lehetőséget.                                        |
     | Termékváltozat           | Válassza a **standard**lehetőséget.                          |
@@ -93,7 +93,7 @@ Hozzon létre hálózati biztonsági csoportot a virtuális hálózat bejövő k
     - A hálózati biztonsági csoport neve: *myNetworkSecurityGroup*.
     - A létező erőforráscsoport neve: *myResourceGroupBAZ*.
    
-![Virtuális hálózat létrehozása](./media/load-balancer-standard-public-availability-zones-portal/create-nsg.png)
+![A képernyőfelvétel a hálózati biztonsági csoport létrehozása panelt jeleníti meg.](./media/load-balancer-standard-public-availability-zones-portal/create-nsg.png)
 
 ### <a name="create-network-security-group-rules"></a>Hálózati biztonsági csoport szabályainak létrehozása
 
@@ -112,7 +112,7 @@ Ebben a szakaszban a hálózati biztonsági csoport szabályait fogja létrehozn
     - A terheléselosztási szabály leírása: *HTTP engedélyezése*.
 4. Kattintson az **OK** gombra.
  
-   ![Virtuális hálózat létrehozása](./media/load-balancer-standard-public-availability-zones-portal/8-load-balancer-nsg-rules.png)
+   ![A képernyőfelvétel a bejövő biztonsági szabály hozzáadása panelt jeleníti meg.](./media/load-balancer-standard-public-availability-zones-portal/8-load-balancer-nsg-rules.png)
 5. Ismételje meg a 2–4. lépéseket egy másik, *myRDPRule* nevű szabály létrehozásához, amely engedélyezi a 3389-es portot használó, bejövő RDP-kapcsolatokat. Ehhez adja meg az alábbi értékeket:
     - **Forrás**: *Szolgáltatáscímke*.
     - **Forrás szolgáltatáscímkéje**: *Internet*
@@ -233,6 +233,6 @@ Ha meg szeretné tekinteni, hogy hogyan osztja el a terheléselosztó a zónák 
 
 Ha már nincs rá szükség, törölje az erőforráscsoportot, a terheléselosztót és az összes kapcsolódó erőforrást. Ehhez válassza ki a terheléselosztót tartalmazó erőforráscsoportot, és kattintson a **Törlés** elemre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a [standard Load Balancerról](load-balancer-standard-overview.md).

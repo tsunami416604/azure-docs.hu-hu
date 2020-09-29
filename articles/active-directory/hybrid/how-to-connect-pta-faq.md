@@ -16,12 +16,12 @@ ms.date: 06/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7046ab3c30e120aaaf285c32e25fce03524a0cf4
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 6db477a288ef41c2946cd550af6ff87999eff2f0
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89280162"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461274"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory átmenő hitelesítés: gyakori kérdések
 
@@ -34,10 +34,6 @@ Tekintse át [ezt az útmutatót](./choose-ad-authn.md) a különböző Azure ad
 ## <a name="is-pass-through-authentication-a-free-feature"></a>Az áteresztő hitelesítés ingyenes szolgáltatás?
 
 Az átmenő hitelesítés ingyenes szolgáltatás. Nincs szüksége az Azure AD fizetős kiadásaira a használatához.
-
-## <a name="is-pass-through-authentication-available-in-the-microsoft-azure-germany-cloud-and-the-microsoft-azure-government-cloud"></a>Elérhető-e átmenő hitelesítés a [Microsoft Azure Germany felhőben](https://www.microsoft.de/cloud-deutschland) és a [Microsoft Azure Government felhőben](https://azure.microsoft.com/features/gov/)?
-
-Nem. Az átmenő hitelesítés csak az Azure AD világméretű példányában érhető el.
 
 ## <a name="does-conditional-access-work-with-pass-through-authentication"></a>Működik a [feltételes hozzáférés](../conditional-access/overview.md) átmenő hitelesítéssel?
 
@@ -174,7 +170,7 @@ A június 15-től 2015-ig létrehozott bérlők alapértelmezett viselkedése az
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Jelenlegi korlátozások](how-to-connect-pta-current-limitations.md): megtudhatja, hogy mely forgatókönyvek támogatottak, és melyek nem.
 - [Gyors üzembe helyezés](how-to-connect-pta-quick-start.md): megkezdheti az Azure ad átmenő hitelesítését.
 - [Migrálás ad FSról áteresztő hitelesítésre](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx?raw=true) – részletes útmutató a AD FS (vagy más összevonási technológiákból) áttelepített hitelesítéshez.

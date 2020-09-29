@@ -4,12 +4,12 @@ description: Ismerkedjen meg Azure Monitor partnereivel, és hogyan férhet hozz
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 80b60e9f93720d0e06c1df1576834c5f462e7358
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: b56b2386422d9f7f2fa598ff804a2206bf4b4d83
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/29/2020
-ms.locfileid: "91449433"
+ms.locfileid: "91460091"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor partner-integrációk
 
@@ -213,6 +213,17 @@ Az összes mérőszámot leküldheti Azure Monitorre, és felhasználhatja őket
 A Microsoft Azure DSM és Microsoft Azure Event hub protokoll letölthető [az IBM támogatási webhelyéről](https://www.ibm.com/support). Az Azure-nal való integrációról a [QRadar dokumentációjában](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0)olvashat bővebben.
 
 
+## <a name="rsa"></a>RSA
+
+![RSA-embléma](./media/partners/rsa.png)
+
+Az RSA NetWitness platform egy piacvezető fenyegetés-észlelési és-reagálási platform, amely összefoglalja a fejlett SIEM-és kiterjesztett észlelési és reagálási megoldásokat. A megoldások felülmúlhatatlan láthatóságot, elemzést és automatizált reagálási képességeket biztosítanak. Ezek az egyesített képességek segítenek a biztonsági csapatoknak a hatékonyabb és hatékony működésben, a fenyegetések vadászatával kapcsolatos ismereteik elvégzésében, valamint a fenyegetések gyorsabb kivizsgálásában és megválaszolásában a szervezet teljes infrastruktúráján, akár a felhőben, akár a helyszínen vagy a virtuális gépen. 
+
+Az RSA NetWitness platform Azure Monitor-integrációja lehetővé teszi az események és naplók betöltését a Azure Monitor natív módon az RSA NetWitness platformba, intuitív felhasználói felületen és robusztus natív elemzési képességeken keresztül. Gyors láthatóságot nyerhet a tevékenységek, a diagnosztika, a Active Directory események és az Event hub egyéb adatai között, és a többi vállalati biztonsági információ mellett megtekintheti ezeket az adatokat egy teljes fenyegetés észlelésével és megoldásával.
+
+[Részletek](https://community.rsa.com/docs/DOC-101239)
+
+
 ## <a name="sciencelogic"></a>ScienceLogic
 
 ![ScienceLogic embléma](./media/partners/sciencelogic.png)
@@ -290,7 +301,7 @@ A Turbonomic a teljesítmény, a költséghatékonyság és a megfelelőség val
 
 [Turbonomic bemutatása](https://turbonomic.com/)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [További információ a Azure Monitor](../overview.md)
 - [Metrikák elérése a REST API használatával](rest-api-walkthrough.md)

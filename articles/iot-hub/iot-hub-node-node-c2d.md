@@ -13,12 +13,12 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-js
-ms.openlocfilehash: 2956c06614d6c374df6b073567bf7de688ee67c7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e398138f12c38e5235a0004679d9574dbde607db
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91315983"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446873"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-nodejs"></a>A felhőből az eszközre irányuló üzenetek küldése IoT Hub (Node.js)
 
@@ -77,11 +77,20 @@ Ebben a szakaszban módosítania kell a szimulált eszközt, amelyet a [telemetr
     });
     ```
 
-    Ebben a példában az eszköz meghívja a **Complete** függvényt, hogy értesítse IoT hub arról, hogy feldolgozta az üzenetet. A **befejezési** hívás nem szükséges, ha MQTT-átvitelt használ, és nem lehet kihagyni. HTTPS-és AMQP esetén szükséges.
+Ebben a példában az eszköz meghívja a **Complete** függvényt, hogy értesítse IoT hub arról, hogy feldolgozta az üzenetet, és hogy biztonságosan el tudja távolítani az eszköz-várólistából. A **befejezési** hívás nem szükséges, ha MQTT-átvitelt használ, és nem lehet kihagyni. Ez a AMQP és a HTTPS esetében szükséges.
+
+A AMQP és a HTTPS használatával, de nem MQTT, az eszköz a következőket is elvégezheti:
+
+* Hagyjon ki egy üzenetet, amely IoT Hub az üzenet megtartását az eszköz várólistájában a későbbi felhasználás érdekében.
+* Egy üzenet elutasítása, amely véglegesen eltávolítja az üzenetet az eszköz várólistáról.
+
+Ha valami történik, amely megakadályozza, hogy az eszköz elvégezze, lemondsa vagy elutasítja az üzenetet, IoT Hub a rögzített időtúllépési időszak után az üzenetet újra kézbesíti. Emiatt az *idempotens*logikának kell lennie az eszköz alkalmazásában, hogy ugyanazt az üzenetet kapja többször is ugyanez az eredmény.
+
+További információ arról, hogy a IoT Hub hogyan dolgozza fel a felhőből az eszközre irányuló üzeneteket, beleértve a felhőből az eszközre irányuló üzenetek életciklusának részleteit is: a [felhőből az eszközre irányuló üzenetek küldése az IoT hub-ból](iot-hub-devguide-messages-c2d.md).
   
-   > [!NOTE]
-   > Ha MQTT vagy AMQP helyett HTTPS-t használ, akkor a **DeviceClient** -példányok ritkán keresnek IoT hub üzeneteket (kevesebb, mint 25 percenként). A MQTT, a AMQP és a HTTPS támogatásával, valamint a szabályozás IoT Hubával kapcsolatos további információkért tekintse meg a [IoT hub fejlesztői útmutató](iot-hub-devguide-messaging.md)című témakört.
-   >
+> [!NOTE]
+> Ha MQTT vagy AMQP helyett HTTPS-t használ, akkor a **DeviceClient** -példányok ritkán keresnek IoT hub üzeneteket (legalább 25 percenként). További információ a MQTT, a AMQP és a HTTPS-támogatás közötti különbségekről: a [felhőből az eszközre irányuló kommunikációs útmutató](iot-hub-devguide-c2d-guidance.md) és [a kommunikációs protokoll kiválasztása](iot-hub-devguide-protocols.md).
+>
 
 ## <a name="get-the-iot-hub-connection-string"></a>Az IoT hub-beli kapcsolatok karakterláncának beolvasása
 

@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/23/2020
+ms.date: 09/29/2020
 ms.author: memildin
-ms.openlocfilehash: c0494fe39f8ae64ba65db4e3cd728069aa4a5052
-ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
+ms.openlocfilehash: bde4b21f9dfff62ef43afc9c9d8e5a858631d304
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91403211"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447381"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>A DNS-bejegyzések letiltásának és a tartományon belüli átvétel elkerülésének megakadályozása
 
@@ -107,11 +107,13 @@ Futtassa a lekérdezést olyan felhasználóként, aki rendelkezik a következő
 - legalább olvasói szintű hozzáférés az Azure-előfizetésekhez
 - olvasási hozzáférés az Azure Resource graphhoz
 
-Ha Ön a szervezete bérlője globális rendszergazdája, emelje ki a fiókját, hogy hozzáférjen az összes szervezet előfizetéséhez a [jogosultságszint-emelési hozzáférés az összes Azure-előfizetéshez és a felügyeleti csoportokhoz](https://docs.microsoft.com/azure/role-based-access-control/elevate-access-global-admin)című témakör útmutatása alapján.
+Ha Ön a szervezete bérlője globális rendszergazdája, emelje ki a fiókját, hogy hozzáférjen az összes szervezet előfizetéséhez a [jogosultságszint-emelési hozzáférés az összes Azure-előfizetéshez és a felügyeleti csoportokhoz](../../role-based-access-control/elevate-access-global-admin.md)című témakör útmutatása alapján.
 
 
 > [!TIP]
-> Az Azure Resource Graph szabályozási és lapozási korlátokat tartalmaz, amelyeket érdemes figyelembe vennie, ha nagy Azure-környezettel rendelkezik. [További](https://docs.microsoft.com/azure/governance/resource-graph/concepts/work-with-data) információ a nagyméretű Azure Resource-adatkészletek használatáról. 
+> Az Azure Resource Graph szabályozási és lapozási korlátokat tartalmaz, amelyeket érdemes figyelembe vennie, ha nagy Azure-környezettel rendelkezik. 
+> 
+> [További információ a nagyméretű Azure Resource-adatkészletek használatáról](../../governance/resource-graph/concepts/work-with-data.md).
 > 
 > Az eszköz előfizetési kötegek használatával kerülheti el ezeket a korlátozásokat.
 
@@ -145,7 +147,7 @@ Néhány Azure-szolgáltatás olyan funkciókat kínál, amelyek a megelőző in
 
 ### <a name="use-azure-dns-alias-records"></a>Azure DNS alias-rekordok használata
 
-A Azure DNS [alias-rekordjai](https://docs.microsoft.com/azure/dns/dns-alias#scenarios) megakadályozhatja, hogy egy DNS-rekord életciklusát egy Azure-erőforrással összekapcsolja. Vegyünk például egy olyan DNS-rekordot, amely alias-rekordként van minősítve, hogy egy nyilvános IP-címre vagy egy Traffic Manager profilra mutasson. Ha törli a mögöttes erőforrásokat, a DNS-alias rekord üres halmaz lesz. A továbbiakban nem hivatkozik a törölt erőforrásra. Fontos megjegyezni, hogy az alias-rekordokkal védhető, hogy milyen korlátokat biztosít a védelem. A lista jelenleg a következőre korlátozódik:
+A Azure DNS [alias-rekordjai](../../dns/dns-alias.md#scenarios) megakadályozhatja, hogy egy DNS-rekord életciklusát egy Azure-erőforrással összekapcsolja. Vegyünk például egy olyan DNS-rekordot, amely alias-rekordként van minősítve, hogy egy nyilvános IP-címre vagy egy Traffic Manager profilra mutasson. Ha törli a mögöttes erőforrásokat, a DNS-alias rekord üres halmaz lesz. A továbbiakban nem hivatkozik a törölt erőforrásra. Fontos megjegyezni, hogy az alias-rekordokkal védhető, hogy milyen korlátokat biztosít a védelem. A lista jelenleg a következőre korlátozódik:
 
 - Azure Front Door
 - Traffic Manager-profilok
@@ -154,7 +156,7 @@ A Azure DNS [alias-rekordjai](https://docs.microsoft.com/azure/dns/dns-alias#sce
 
 A korlátozott szolgáltatási ajánlatok ellenére az alias-rekordok használatát javasoljuk, hogy amikor csak lehetséges, használjon alias-rekordokat.
 
-[További](https://docs.microsoft.com/azure/dns/dns-alias#capabilities) információ a Azure DNS alias-rekordjainak képességeiről.
+[További információ a Azure DNS alias-rekordjainak képességeiről](../../dns/dns-alias.md#capabilities).
 
 
 
@@ -164,7 +166,7 @@ Azure App Service DNS-bejegyzéseinek létrehozásakor hozzon létre egy asuid. 
 
 Ezek a rekordok nem akadályozzák meg, hogy valaki hozza létre a Azure App Servicet ugyanazzal a névvel, mint a CNAME-bejegyzésben. Anélkül, hogy bizonyítani tudja a tartománynév tulajdonjogát, a veszélyforrások nem fogadhatnak forgalmat, és nem vezérelhetik a tartalmat.
 
-[További](https://docs.microsoft.com/Azure/app-service/app-service-web-tutorial-custom-domain) információ arról, hogyan képezhető le egy meglévő egyéni DNS-név a Azure app Service.
+[További információ arról, hogyan képezhető le egy meglévő egyéni DNS-név a Azure app Service](../../app-service/app-service-web-tutorial-custom-domain.md).
 
 
 
@@ -178,13 +180,13 @@ Ez gyakran a fejlesztők és az operatív csapatok számára a kitakarítási fo
 
     - A szolgáltatások leszerelése után a szükséges ellenőrzések listájában helyezze el a "DNS-bejegyzés eltávolítása" lehetőséget.
 
-    - Helyezzen [törlési zárolásokat](https://docs.microsoft.com/azure/azure-resource-manager/management/lock-resources) minden olyan erőforrásra, amely egyéni DNS-bejegyzést tartalmaz. A törlési zárolás azt jelzi, hogy a leképezést el kell távolítani az erőforrás megszüntetése előtt. Az ehhez hasonló mértékek csak a belső oktatási programok együttes használata esetén működhetnek.
+    - Helyezzen [törlési zárolásokat](../../azure-resource-manager/management/lock-resources.md) minden olyan erőforrásra, amely egyéni DNS-bejegyzést tartalmaz. A törlési zárolás azt jelzi, hogy a leképezést el kell távolítani az erőforrás megszüntetése előtt. Az ehhez hasonló mértékek csak a belső oktatási programok együttes használata esetén működhetnek.
 
 - **Felderítési eljárások létrehozása:**
 
     - Rendszeresen tekintse át a DNS-rekordokat, és győződjön meg arról, hogy az altartományok mind le vannak képezve az Azure-erőforrásokra:
 
-        - Létezik – lekérdezheti a DNS-zónákat az Azure altartományokra mutató erőforrásokhoz, például *. azurewebsites.net vagy *. cloudapp.azure.com (lásd [a hivatkozási listát](azure-domains.md)).
+        - Létezik – lekérdezheti a DNS-zónákat az Azure altartományokra mutató erőforrásokhoz, például *. azurewebsites.net vagy *. cloudapp.azure.com (lásd az [Azure-tartományok hivatkozási listáját](azure-domains.md)).
         - Ön rendelkezik a saját DNS-altartományai által megcélzott összes erőforrással.
 
     - Az Azure-beli teljes tartománynevek (FQDN) végpontok és az alkalmazás tulajdonosai szolgáltatás-katalógus karbantartása. A szolgáltatás-katalógus létrehozásához futtassa az alábbi Azure Resource Graph lekérdezési parancsfájlt. Ez a szkript a teljes tartománynév-végponti információit, amelyekhez hozzáfér, és egy CSV-fájlba exportálja azokat. Ha rendelkezik hozzáféréssel a bérlő összes előfizetéséhez, a szkript az alábbi minta parancsfájlban látható összes előfizetést figyelembe veszi. Ha az eredményeket egy adott előfizetésre szeretné korlátozni, szerkessze a szkriptet az ábrán látható módon.
@@ -196,12 +198,12 @@ Ez gyakran a fejlesztők és az operatív csapatok számára a kitakarítási fo
     - Törölje a DNS-rekordot, ha már nincs használatban, vagy mutasson a szervezete tulajdonában lévő megfelelő Azure-erőforrásra (FQDN).
  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a kapcsolódó szolgáltatásokról és az Azure-beli szolgáltatásokkal szembeni védelemről, tekintse meg a következő lapokat.
 
-- [Azure DNS támogatja az egyéni tartományokhoz tartozó alias-rekordok használatát](https://docs.microsoft.com/azure/dns/dns-alias#prevent-dangling-dns-records)
+- [DNS-rekordok lelógó Azure DNS](../../dns/dns-alias.md#prevent-dangling-dns-records)
 
-- [A tartomány-ellenőrzési azonosító használata egyéni tartományok hozzáadásakor Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-domain#get-domain-verification-id) 
+- [Tartomány-ellenőrzési azonosító használata egyéni tartományok hozzáadásakor Azure App Service](../../app-service/app-service-web-tutorial-custom-domain.md#get-a-domain-verification-id)
 
-- [Rövid útmutató: az első Resource Graph-lekérdezés futtatása a Azure PowerShell használatával](https://docs.microsoft.com/azure/governance/resource-graph/first-query-powershell)
+- [Rövid útmutató: az első Resource Graph-lekérdezés futtatása a Azure PowerShell használatával](../../governance/resource-graph/first-query-powershell.md)

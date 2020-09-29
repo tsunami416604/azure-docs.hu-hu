@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: 089cf07854f1f29eda7028db614edb1028e5d66a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 54a81ac36fb0b99f6931b372543dc3e4bca6a12c
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91311563"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447902"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>Azure-beli automata felügyelet virtuális gépeken
 
@@ -46,6 +46,7 @@ Több előfeltételt kell figyelembe vennie, mielőtt az Azure-beli automanage-t
 - A virtuális gépeknek támogatott régióban kell lenniük
 - A felhasználónak megfelelő engedélyekkel kell rendelkeznie
 - A virtuális gépek nem csatolhatnak egy másik előfizetésben lévő log Analytics-munkaterülethez
+- Az automanage nem támogatja a homokozó-előfizetéseket.
 
 Rendelkeznie kell a **közreműködő** szerepkörrel, hogy engedélyezze az automanage-t egy meglévő automanage-fiók használatával. Ha új automanage-fiókkal engedélyezi az autofelügyeletet, a következő engedélyek szükségesek: **tulajdonosi** szerepkör vagy **közreműködő** a **felhasználói hozzáférés rendszergazdai** szerepköreivel együtt.
 
@@ -111,7 +112,7 @@ Ha a virtuális gépeken engedélyezi az automanage funkciót, az Azure Portal-�
 
 A Azure Portal nyissa meg az automatikus **kezelés – Azure virtuális gépek ajánlott eljárásai** lapot, amely felsorolja az összes automatikusan felügyelt virtuális gépet. Itt láthatja az egyes virtuális gépek általános állapotát.
 
-:::image type="content" source="media\automanage-virtual-machines\configured-status.png" alt-text="A konfigurált virtuális gépek listája.":::
+:::image type="content" source="media\automanage-virtual-machines\configured-status.png" alt-text="Intelligensen integrált szolgáltatások.":::
 
 Az egyes felsorolt virtuális gépeknél a következő részletek jelennek meg: név, konfigurációs profil, konfigurációs preferencia, állapot, fiók, előfizetés és erőforráscsoport.
 
@@ -129,7 +130,7 @@ Dönthet úgy is, hogy egy nap elteltével letiltja az automanage szolgáltatás
 
 Ehhez a Azure Portal nyissa meg az automatikus **kezelés – Azure virtuális gépek ajánlott eljárásai** lapot, amely felsorolja az összes automatikusan felügyelt virtuális gépet. Jelölje be az **automanagement** szolgáltatásból letiltani kívánt virtuális gép melletti jelölőnégyzetet, majd kattintson az önfelügyelet letiltása gombra.
 
-:::image type="content" source="media\automanage-virtual-machines\disable-step-1.png" alt-text="A virtuális gépeken az automanage szolgáltatás letiltása.":::
+:::image type="content" source="media\automanage-virtual-machines\disable-step-1.png" alt-text="Intelligensen integrált szolgáltatások.":::
 
 A **Letiltás**előtt olvassa el figyelmesen az üzenetküldést az eredményül kapott előugró ablakban.
 

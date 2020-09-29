@@ -11,12 +11,12 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 08/31/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: ac0b3c151b379096ffb60e049d18b8f6219b1445
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: a36c7076de0c4db64b67f4eba38de4daf4213bca
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91359681"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446686"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Adatelérés védelme Azure Machine Learning
 
@@ -67,7 +67,7 @@ Az Azure-ban támogatott felhőalapú tárolási szolgáltatások, amelyek adatt
 
 ## <a name="datasets"></a>Adathalmazok
 
-Azure Machine Learning adatkészletek olyan hivatkozások, amelyek a tárolási szolgáltatásban lévő adatokra mutatnak. Nem tartoznak a dataBy egy Azure Machine Learning adatkészletet létrehozó példánya, létrehoz egy hivatkozást az adatforrás helyére, valamint a metaadatok másolatát. 
+Azure Machine Learning adathalmazok nem másolják az adatokat. Adatkészlet létrehozásával a Storage szolgáltatásban lévő adatokra mutató hivatkozást, valamint a hozzá tartozó metaadatok másolatát is létrehozhatja. 
 
 Mivel az adathalmazok kiértékelése a lustán történik, és az adatokat a meglévő helyükön maradják,
 

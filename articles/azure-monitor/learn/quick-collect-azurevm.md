@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 08/19/2019
 ms.custom: mvc, sec-javascript-october2019
-ms.openlocfilehash: 91a4e2f6a770282e9d031c31fdf1af15f0cd00bf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fb7a32199117be76e411155910d558ef187398ab
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067545"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448250"
 ---
 # <a name="collect-data-from-an-azure-virtual-machine-with-azure-monitor"></a>Adatok gyűjtése egy Azure-beli virtuális gépről Azure Monitor
 
@@ -87,7 +87,7 @@ A Azure Monitor a hosszabb távú elemzésekhez és jelentéskészítéshez mega
 
 7. Amikor először konfigurálja egy új Log Analytics-munkaterület Windows-teljesítményszámlálóit, akkor gyorsan létrehozhat több gyakran használt számlálót. Ezek mindegyike mellett egy jelölőnégyzet található.
 
-    ![Alapértelmezett Windows-teljesítményszámlálók kiválasztva](media/quick-collect-azurevm/windows-perfcounters-default.png)
+    ![Képernyőfelvétel a Windows-teljesítményszámlálók panelről, a kiválasztott számlálók listájával és a kiválasztott teljesítményszámlálók hozzáadása gombbal.](media/quick-collect-azurevm/windows-perfcounters-default.png)
 
     Válassza **a kijelölt teljesítményszámlálók hozzáadása**lehetőséget.  A rendszer hozzáadja a kiválasztott számlálókat, és mindegyikhez beállít egy tíz másodperces mintagyűjtési időszakot.
   
@@ -107,7 +107,7 @@ A Azure Monitor a hosszabb távú elemzésekhez és jelentéskészítéshez mega
 
 6. Amikor először konfigurálja egy új Log Analytics-munkaterület Linux-teljesítményszámlálóit, akkor több gyakran használt számlálót is gyorsan létrehozhat. Ezek mindegyike mellett egy jelölőnégyzet található.
 
-    ![Alapértelmezett Windows-teljesítményszámlálók kiválasztva](media/quick-collect-azurevm/linux-perfcounters-azure-monitor.png)
+    ![Képernyőfelvétel a Linux-teljesítményszámlálók panelről, a kiválasztott számlálók listájával és a kiválasztott teljesítményszámlálók hozzáadása gombbal.](media/quick-collect-azurevm/linux-perfcounters-azure-monitor.png)
 
     Válassza az **alábbi konfiguráció alkalmazása a saját gépekre** lehetőséget, majd kattintson **a kijelölt teljesítményszámlálók hozzáadása**lehetőségre.  A rendszer hozzáadja a kiválasztott számlálókat, és mindegyikhez beállít egy tíz másodperces mintagyűjtési időszakot.  
 
@@ -127,14 +127,14 @@ Most, hogy engedélyezte az adatgyűjtést, futtasson le egy egyszerű naplóbel
 
     ![Log Analytics naplóbeli keresés eredménye](media/quick-collect-azurevm/log-analytics-search-perf.png)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rá szükség, törölje a Log Analytics-munkaterületet. Ehhez válassza ki a korábban létrehozott Log Analytics munkaterületet, és az erőforrás lapon válassza a **Törlés**lehetőséget.
 
 
 ![Log Analytics-erőforrás törlése](media/quick-collect-azurevm/log-analytics-portal-delete-resource.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy már gyűjti a működési és teljesítményadatokat a Windows vagy Linux rendszerű virtuális gépeiről, könnyen nekiláthat az *ingyenesen* gyűjtött adatok felfedezésének és elemzésének, és reagálhat a kapott eredményekre.  
 

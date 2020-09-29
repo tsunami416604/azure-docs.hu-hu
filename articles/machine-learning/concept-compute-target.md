@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2020
-ms.openlocfilehash: f75853a66c43c69ec191f28951f8f6ffc4353f93
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6b166e46c8ebb640e15c005e2ddae3161e141f10
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330162"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446780"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Mik azok a számítási célok Azure Machine Learning? 
 
@@ -101,6 +101,20 @@ A támogatott adatsorozatokkal és korlátozásokkal kapcsolatos további inform
 
 
 Habár a Azure Machine Learning támogatja ezeket a virtuálisgép-sorozatokat, előfordulhat, hogy az összes Azure-régióban nem érhetők el. A virtuálisgép-sorozatokat itt tekintheti meg: [régiónként elérhető termékek](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines).
+
+### <a name="compute-isolation"></a>Számítási elkülönítés
+
+Azure Machine Learning a számítás olyan virtuálisgép-méreteket kínál, amelyek egy adott hardvereszközhöz vannak elkülönítve, és egyetlen ügyfél számára vannak kijelölve. Az elkülönített virtuálisgép-méretek a legmegfelelőbbek olyan számítási feladatokhoz, amelyek nagy fokú elkülönítést igényelnek a többi ügyfél munkaterheléséhez olyan okokból, amelyek megfelelnek a megfelelőségi és szabályozási követelményeknek. Az elkülönített méret kihasználása garantálja, hogy a virtuális gép az adott kiszolgálópéldány esetében csak egy fut.
+
+A jelenlegi elkülönített virtuálisgép-ajánlatok a következők:
+* Standard_M128ms
+* Standard_F72s_v2
+* Standard_NC24s_v3
+* Standard_NC24rs_v3 *
+
+*RDMA-kompatibilis
+
+[Az Azure nyilvános felhőben való elkülönítéssel](https://docs.microsoft.com/azure/security/fundamentals/isolation-choices)kapcsolatos további információkért tekintse meg itt.
 
 ## <a name="unmanaged-compute"></a>Nem felügyelt számítás
 

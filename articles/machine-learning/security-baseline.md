@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: ffd374f650140b5b65988578756b25f5d0fb21cc
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: d29bef20bef6de576b9b531952c48173819a5fa1
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89657362"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461019"
 ---
 # <a name="azure-security-baseline-for-azure-machine-learning"></a>Azure Machine Learning Azure biztonsági alapterve
 
@@ -718,7 +718,7 @@ A jogosulatlan szoftverek eltávolításához saját eljárást is alkalmazhat. 
 
 Ha már nincs rájuk szükség, távolítsa el az Azure-erőforrásokat.
 
-- [A fájl integritás-figyelésének használata](../security-center/security-center-file-integrity-monitoring.md#using-file-integrity-monitoring)
+- [A fájl integritás-figyelésének használata](../security-center/security-center-file-integrity-monitoring.md)
 
 - [A Azure Automation Change Tracking és a leltár ismertetése](../automation/change-tracking.md)
 
@@ -1192,7 +1192,7 @@ Emellett megadhatja a címkéket használó előfizetéseket, és létrehozhat e
 
 **Felelősség**: megosztott
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](/azure/security/benchmarks/overview)
 - További információ az [Azure biztonsági alaptervekről](/azure/security/benchmarks/security-baselines-overview)

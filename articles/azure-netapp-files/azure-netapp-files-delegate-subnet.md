@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 07/28/2020
+ms.date: 09/28/2020
 ms.author: b-juche
-ms.openlocfilehash: da7aa0889940c560df705e3c47f5ccb1960aee2c
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: bed1375631c017d23ed53b6102c424533237099e
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91361024"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447559"
 ---
 # <a name="delegate-a-subnet-to-azure-netapp-files"></a>Alhálózat delegálása az Azure NetApp Fileshoz 
 
@@ -33,7 +33,8 @@ Az alhálózatot Azure NetApp Filesre kell delegálni.   Kötet létrehozásakor
    Egy VNet csak egyetlen delegált alhálózat tartozhat. A NetApp-fiókok több virtuális hálózatok is telepíthetnek köteteket, amelyek mindegyike saját delegált alhálózattal rendelkezik.  
 * A delegált alhálózatban nem lehet hálózati biztonsági csoportot vagy szolgáltatási végpontot kijelölni. Ennek hatására az alhálózat-delegálás sikertelen lesz.
 * A globálisan összetartozó virtuális hálózatokból származó kötetek hozzáférése jelenleg nem támogatott.
-* A [felhasználó által definiált egyéni útvonalak](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#custom-routes) létrehozása a (z) előtaggal rendelkező virtuálisgép-alhálózatokon a következőhöz delegált alhálózatok nem támogatottak: Azure NetApp files. Ez hatással lesz a virtuális gép kapcsolatára. Azure NetApp Files létrehoz egy rendszerútvonalat a delegált alhálózathoz. Ha hibaelhárításra van szüksége, az útvonal az útválasztási táblázat **tényleges útvonalak** területén jelenik meg.
+* A [felhasználó által megadott útvonalak](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#custom-routes) (UDR-EK) és hálózati biztonsági csoportok (NSG-EK) nem támogatottak a Azure NetApp Files delegált alhálózatokon. Azonban a UDR és a NSG más alhálózatokra is alkalmazhatja, akár a Azure NetApp Fileshoz delegált alhálózattal azonos VNet belül.  
+   Azure NetApp Files létrehoz egy rendszerútvonalat a delegált alhálózathoz. Ha hibaelhárításra van szüksége, az útvonal az útválasztási táblázat **tényleges útvonalak** területén jelenik meg.
 
 ## <a name="steps"></a>Lépések
 

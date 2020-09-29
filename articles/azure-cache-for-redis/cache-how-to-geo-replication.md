@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: yegu
-ms.openlocfilehash: 956e3e83686677f3eb9895354a008783df5f7dcd
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: e4739c0c550988e1639e89a647815e5dd86b17b7
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88003695"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461342"
 ---
 # <a name="how-to-set-up-geo-replication-for-azure-cache-for-redis"></a>Az Azure cache geo-replikációjának beállítása a Redis
 
@@ -145,8 +145,8 @@ Igen, a virtuális hálózatok-gyorsítótárak földrajzi replikálását a ren
 - Az azonos VNET lévő gyorsítótárak közötti földrajzi replikálás támogatott.
 - A különböző virtuális hálózatok található gyorsítótárak közötti földrajzi replikálás is támogatott.
   - Ha a virtuális hálózatok ugyanabban a régióban vannak, csatlakoztathatja őket a VNET- [társ](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) vagy egy [VPN Gateway VNET-VNET kapcsolat](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways#V2V)használatával.
-  - Ha a virtuális hálózatok különböző régiókban vannak, a VNET-társítást használó geo-replikáció nem támogatott a belső terheléselosztó alapszintű korlátozásai miatt. A VNET-társítási korlátozásokkal kapcsolatos további információkért lásd: [Virtual Network-peering-követelmények és megkötések](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering#requirements-and-constraints). Az ajánlott megoldás egy VPN Gateway VNET-VNET-kapcsolatok használata.
-
+  - Ha a virtuális hálózatok különböző régiókban találhatóak, a VNET-társítást használó geo-replikáció támogatott, de az 1. VNET (1. régió) egy ügyfél-virtuális gép nem fér hozzá a gyorsítótárhoz a (z) VNET 2 (2. régió) DNS-nevével, az alapszintű belső terheléselosztó korlátozásai miatt. A VNET-társítási korlátozásokkal kapcsolatos további információkért lásd: [Virtual Network-peering-követelmények és megkötések](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering#requirements-and-constraints). Az ajánlott megoldás egy VPN Gateway VNET-VNET-kapcsolatok használata.
+  
 [Ezzel az Azure-sablonnal](https://azure.microsoft.com/resources/templates/201-redis-vnet-geo-replication/)gyorsan üzembe helyezhet két földrajzi replikált gyorsítótárat egy VPN Gateway VNET – VNET kapcsolattal összekapcsolt VNET.
 
 ### <a name="what-is-the-replication-schedule-for-redis-geo-replication"></a>Mi a Redis földrajzi replikálásának replikációs ütemterve?

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
-ms.openlocfilehash: 719890447b976903e1c2419382ac9c9f81b4ae4a
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: d2a538cac1e8bcf9c67c88b206cacd928bfb73c8
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707713"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448216"
 ---
 # <a name="quickstart-configure-properties-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Gyors útmutató: alkalmazás tulajdonságainak konfigurálása a Azure Active Directory (Azure AD) bérlőben
 
@@ -86,7 +86,17 @@ Egyéni embléma használata:
 > [!TIP]
 > Az Graph API segítségével automatizálhatja az alkalmazások felügyeletét: az [alkalmazások kezelésének automatizálása Microsoft Graph API-val](https://docs.microsoft.com/graph/application-saml-sso-configure-api).
 
+## <a name="add-notes"></a>Megjegyzések hozzáadása
 
+A megjegyzések mezővel az alkalmazás Azure AD-ben való kezeléséhez kapcsolódó információkat adhat hozzá. A Notes egy ingyenes szövegmező, amelynek maximális mérete 1024 karakter.
+
+1. Az Azure AD-portálon válassza a **vállalati alkalmazások**lehetőséget. Ezután keresse meg és válassza ki a konfigurálni kívánt alkalmazást.
+2. A **kezelés** szakaszban válassza a **Tulajdonságok** lehetőséget a **Tulajdonságok** ablaktábla szerkesztéshez való megnyitásához.
+3. Frissítse a Megjegyzések mezőt, majd válassza a **Mentés**lehetőséget.
+
+    ![Képernyőfelvétel a tulajdonságok képernyőről, amely bemutatja, hogyan módosíthatja a megjegyzéseket](media/add-application-portal/notes-application.png)
+
+    
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha nem folytatja a gyors üzembe helyezési sorozatot, akkor érdemes lehet törölni az alkalmazást a tesztelési bérlő törléséhez. Az alkalmazás törlését a sorozat utolsó rövid útmutatója tartalmazza. [alkalmazás törlése](delete-application-portal.md).

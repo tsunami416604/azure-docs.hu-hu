@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/29/2020
-ms.openlocfilehash: 340eb1a983f074a5ab934a30c55649852ec08b62
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 06698ad3ab2ceb76278e23bc1ac0002b9c2284f9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325151"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445783"
 ---
 # <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Wire Data 2.0 (előzetes verzió) megoldás a Azure Monitor
 
@@ -115,7 +115,7 @@ A következő részben a Linux rendszeren futó függőségi ügynök támogatot
 
 | Operációs rendszer verziója | Kernel verziója |
 |:--|:--|
-| 7.4 | 3.10.0 – 693 |
+| 7,4 | 3.10.0 – 693 |
 | 7,5 | 3.10.0 – 862 |
 | 7.6 | 3.10.0 – 957 |
 
@@ -183,7 +183,7 @@ A függőségi ügynök telepítve van a Windows rendszerű számítógépeken I
 A következő lépésekkel telepítheti a függőségi ügynököt a Windows rendszerű számítógépekre:
 
 1. Telepítse a Log Analytics ügynököt az [adatok összegyűjtése a környezetben üzemeltetett Windows rendszerű számítógépekről](../platform/agent-windows.md)című témakör lépéseit követve.
-2. Töltse le a Windows-függőségi ügynököt az előző szakaszban található hivatkozás használatával, majd futtassa a következő paranccsal:`InstallDependencyAgent-Windows.exe`
+2. Töltse le a Windows-függőségi ügynököt az előző szakaszban található hivatkozás használatával, majd futtassa a következő paranccsal: `InstallDependencyAgent-Windows.exe`
 3. Az ügynök telepítéséhez kövesse a varázslót.
 4. Ha a függőségi ügynök nem indul el, ellenőrizze a naplókat a hibák részletes ismertetéséhez. Windows-ügynökök esetén a naplózási könyvtár a következő: %Programfiles%\Microsoft Dependency Agent\logs.
 
@@ -226,7 +226,7 @@ InstallDependencyAgent-Linux64.bin -help
 
 A függőségi ügynök fájljai a következő könyvtárakba kerülnek:
 
-| **Fájlokat** | **Hely** |
+| **Files** | **Hely** |
 | --- | --- |
 | Alapvető fájlok | /opt/microsoft/dependency-agent |
 | Naplófájlok | /var/opt/microsoft/dependency-agent/log |
@@ -364,15 +364,15 @@ Az Azure Portalon a Log Analytics-munkaterület **Áttekintés** területén kat
 
 A **Hálózati forgalmat rögzítő ügynökök** panellel megállapíthatja, mekkora hálózati sávszélességet használnak fel a számítógépek. A panel segítségével könnyen megtalálhatja a hálózat _legforgalmasabb_ számítógépét. Előfordulhat, hogy ezek a számítógépek túlterheltek, rendellenesen működnek vagy az átlagosnál több hálózati erőforrást használnak.
 
-![naplóbeli keresés példája](./media/wire-data/log-search-example01.png)
+![Képernyőfelvétel: az ügynökök a hálózati forgalom panelt rögzítik a Wire Data 2.0 irányítópultján, amely az egyes számítógépek által felhasznált hálózati sávszélességet mutatja.](./media/wire-data/log-search-example01.png)
 
 Ehhez hasonlóan a **Helyi alhálózatok** panel segítségével megállapíthatja, mekkora hálózati forgalom halad át az alhálózatokon. A felhasználók gyakran az alkalmazásaikhoz tartozó kritikus területek körül adnak meg alhálózatokat. Ez a panel ezekbe a területekbe kínál betekintést.
 
-![naplóbeli keresés példája](./media/wire-data/log-search-example02.png)
+![Képernyőkép a Wire Data 2.0 irányítópult helyi alhálózatok paneljéről, amely az egyes LocalSubnet által felhasznált hálózati sávszélességet mutatja.](./media/wire-data/log-search-example02.png)
 
 Az **Alkalmazásszintű protokollok** panel hasznos, mivel fontos lehet annak ismerete, hogy mely protokollok vannak használatban. Lehetséges például, hogy arra számít, hogy az SSH nincs használatban a hálózati környezetben. A panelen megjelenő információk ezt gyorsan megerősíthetik vagy megcáfolhatják.
 
-![naplóbeli keresés példája](./media/wire-data/log-search-example03.png)
+![Képernyőkép a Wire Data 2.0-irányítópulton az alkalmazás szintű protokollok panelről, amely az egyes protokollok által felhasznált hálózati sávszélességet mutatja.](./media/wire-data/log-search-example03.png)
 
 Ez akkor is hasznos, ha szeretné tudni, hogy a hálózati forgalom idővel növekszik vagy csökken. Például nem árt tudnia, vagy említésre méltónak találhatja, ha egy alkalmazás által továbbított adatok mennyisége növekszik.
 
@@ -395,7 +395,7 @@ A bemeneti adatok minden típusához létrejön egy _WireData_ típusú rekord. 
 | IPVersion | IP-cím verziója |
 | Irány | Bemeneti vagy kimeneti |
 | MaliciousIP | Ismert kártevő forrás IP-címe |
-| Severity | Gyanús kártevő súlyossága |
+| Súlyosság | Gyanús kártevő súlyossága |
 | RemoteIPCountry | A távoli IP-cím országa/régiója |
 | ManagementGroupName | Az Operations Manager felügyeleti csoportjának neve |
 | SourceSystem | A gyűjtött adatok forrása |
@@ -414,7 +414,7 @@ A bemeneti adatok minden típusához létrejön egy _WireData_ típusú rekord. 
 | RemoteIPLongitude | IP-cím hosszúsági értéke |
 | RemoteIPLatitude | IP-cím szélességi értéke |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Keresés a naplókban](../log-query/log-query-overview.md) az átviteli adatokhoz kapcsolódó részletes keresési rekordok megtekintéséhez.
 

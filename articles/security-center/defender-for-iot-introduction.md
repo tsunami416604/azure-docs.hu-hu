@@ -4,15 +4,15 @@ description: Tudnivalók a IoT készült Azure Defender szolgáltatásról
 author: memildin
 ms.author: memildin
 ms.date: 9/22/2020
-ms.topic: conceptual
+ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 307916680d9a05a5083aea057b2ef4b855a4ff57
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2f41aac085fef62e0356a93a07823f21d7ba3667
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91301805"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448350"
 ---
 # <a name="introduction-to-azure-defender-for-iot"></a>Bevezetés az Azure Defender for IoT használatába
 
@@ -32,7 +32,7 @@ A részletek a [dedikált dokumentációban](https://docs.microsoft.com/azure/as
 |Kiadás állapota:|Általánosan elérhető (GA)|
 |Árképzési|[Azure Defender](security-center-pricing.md) szükséges|
 |Szükséges szerepkörök és engedélyek:|Írási engedélyek a gép NSG|
-|Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Yes](./media/icons/yes-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
+|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
 |||
 
 ## <a name="what-devices-can-azure-defender-for-iot-secure"></a>Milyen eszközöket használhatnak az Azure Defender a IoT biztonsága érdekében?

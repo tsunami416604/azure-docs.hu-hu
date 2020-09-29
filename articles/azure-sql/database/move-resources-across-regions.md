@@ -7,17 +7,17 @@ ms.service: sql-db-mi
 ms.subservice: data-movement
 ms.custom: sqldbrb=2
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 06/25/2019
-ms.openlocfilehash: 9e7d2d08c7041b23f0eb02328367d07e72fe35eb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0b78419f4fb37bb96e2c71c89f740a35914ccede
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333069"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446382"
 ---
 # <a name="move-resources-to-new-region---azure-sql-database--azure-sql-managed-instance"></a>Erőforrások áthelyezése új régióba – Azure SQL Database & Azure SQL felügyelt példánya
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -170,7 +170,7 @@ Az egyes példányokon lévő összes adatbázis replikációja automatikusan me
 
 ### <a name="monitor-the-preparation-process"></a>Az előkészítési folyamat figyelése
 
-Rendszeres időközönként meghívhatja a [Get-AzSqlDatabaseFailoverGroup-](/powershell/module/az.sql/get-azsqldatabasefailovergroup?view=azps-2.3.2) t az adatbázisok replikációjának figyelésére a forrásról a célra. A kimeneti objektum `Get-AzSqlDatabaseFailoverGroup` tartalmazza a **ReplicationState**tulajdonságát:
+Rendszeres időközönként meghívhatja a [Get-AzSqlDatabaseFailoverGroup-](/powershell/module/az.sql/get-azsqldatabasefailovergroup) t az adatbázisok replikációjának figyelésére a forrásról a célra. A kimeneti objektum `Get-AzSqlDatabaseFailoverGroup` tartalmazza a **ReplicationState**tulajdonságát:
 
 - A **ReplicationState = 2** (CATCH_UP) azt jelzi, hogy az adatbázis szinkronizálva van, és a rendszer biztonságosan feladatátvételt hajt végre.
 - A **ReplicationState = 0** (beültetés) azt jelzi, hogy az adatbázis még nincs felszámítva, és a feladatátvételi kísérlet sikertelen lesz.
@@ -182,7 +182,7 @@ Ha **ReplicationState** `2` , kapcsolódjon az egyes adatbázisokhoz vagy az ada
 ### <a name="initiate-the-move"></a>Az áthelyezés kezdeményezése
 
 1. Kapcsolódjon a cél felügyelt példányhoz a másodlagos végpont használatával `<fog-name>.secondary.database.windows.net` .
-1. A [switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup?view=azps-2.3.2) használatával váltson át a másodlagos felügyelt példányra, hogy az elsődleges legyen teljes szinkronizálással. A művelet sikeres lesz, vagy visszaállítja.
+1. A [switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup) használatával váltson át a másodlagos felügyelt példányra, hogy az elsődleges legyen teljes szinkronizálással. A művelet sikeres lesz, vagy visszaállítja.
 1. Győződjön meg arról, hogy a parancs sikeresen befejeződött a használatával `nslook up <fog-name>.secondary.database.windows.net` annak megállapításához, hogy a DNS-CNAME bejegyzés a célként megadott régió IP-címére mutat. Ha a Switch parancs sikertelen, a CNAME nem frissül.
 
 ### <a name="remove-the-source-managed-instances"></a>A forrás felügyelt példányainak eltávolítása

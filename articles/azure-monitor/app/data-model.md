@@ -9,12 +9,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 69ed934e97d2726995a7a5cd122fadbd4a791942
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: fd5848eb44ecd32612943662b5a4fd0a5091cd9d
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320527"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461291"
 ---
 # <a name="application-insights-telemetry-data-model"></a>Application Insights telemetria adatmodell
 
@@ -46,7 +46,7 @@ Application Insights telemetria modell meghatározza a telemetria azon művelet�
 
 A Application Insights adatmodell egyszerű és alapszintű, mégis hatékony módja az alkalmazás telemetria modellezésének. Arra törekszünk, hogy a modell egyszerű és karcsú legyen, hogy támogassa az alapvető forgatókönyveket, és lehetővé tegye a séma speciális használatra való kiterjesztését.
 
-Az adatmodell vagy séma problémáinak és javaslatainak jelentéséhez használja a GitHub [ApplicationInsights-Home](https://github.com/Microsoft/ApplicationInsights-Home/issues) repositoryt.
+[Az adatmodell vagy séma problémáinak és javaslatainak jelentéséhez használja a GitHub-tárházat](https://github.com/microsoft/ApplicationInsights-dotnet/issues/new/choose).
 
 ## <a name="next-steps"></a>További lépések
 
