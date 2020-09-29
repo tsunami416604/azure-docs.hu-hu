@@ -7,13 +7,13 @@ services: security-center
 ms.author: memildin
 ms.date: 09/10/2020
 ms.service: security-center
-ms.topic: conceptual
-ms.openlocfilehash: 0d4c2ddc6b18d2f6767fb3a2761bc6a247e101a1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.topic: how-to
+ms.openlocfilehash: c4eb30df74e2a8d6748ede987df0b1c41cff0ca3
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904887"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448485"
 ---
 # <a name="suppress-alerts-from-azure-defender"></a>Riasztások letiltása az Azure Defenderből
 
@@ -26,7 +26,7 @@ Ez az oldal azt ismerteti, hogyan használhatja a riasztások letiltási szabál
 |Kiadás állapota:|Előnézet|
 |Árképzési|Ingyenes<br>(A legtöbb biztonsági riasztás csak az Azure Defenderrel érhető el)|
 |Szükséges szerepkörök és engedélyek:|A **biztonsági rendszergazda** és a **tulajdonos** létrehozhat/törölhet szabályokat.<br>A **biztonsági olvasó** és az **olvasó** megtekintheti a szabályokat.|
-|Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Yes](./media/icons/yes-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
+|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
 |||
 
 

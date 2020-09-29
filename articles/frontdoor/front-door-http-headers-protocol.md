@@ -9,29 +9,29 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/10/2018
+ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: 6864a854215d899043607b3d01cffbd343ee7751
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: e72443e33d1b6f097f61f4c027b5f547b43ee2a9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399514"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449224"
 ---
 # <a name="protocol-support-for-http-headers-in-azure-front-door"></a>A HTTP-fejlécek protokoll-támogatása az Azure-beli bejárati ajtón
 Ez a cikk azt a protokollt ismerteti, amelyet a bevezető ajtó támogat a hívási útvonal részeivel (lásd a képet). A következő szakaszokban további információkat talál a bejárati ajtó által támogatott HTTP-fejlécekről.
 
-![Azure bejárati ajtó HTTP-fejlécek protokollja][1]
+:::image type="content" source="./media/front-door-http-headers-protocol/front-door-protocol-summary.png" alt-text="Azure bejárati ajtó HTTP-fejlécek protokollja":::
 
 >[!IMPORTANT]
 >A bejárati ajtó nem tanúsít olyan HTTP-fejléceket, amelyek nincsenek dokumentálva.
 
 ## <a name="client-to-front-door"></a>Ügyfélről a bejárat felé
-A bejárati ajtó fogadja a legtöbb fejlécet a bejövő kérelemből a módosítás nélkül. Egyes fenntartott fejlécek el lesznek távolítva a bejövő kérelemből, ha el vannak küldve, beleértve az X-FD-* előtaggal rendelkező fejléceket is.
+A bejárati ajtó fogadja a legtöbb fejlécet a bejövő kérelem módosítása nélkül. Egyes fenntartott fejlécek el lesznek távolítva a bejövő kérelemből, ha el vannak küldve, beleértve az X-FD-* előtaggal rendelkező fejléceket is.
 
 ## <a name="front-door-to-backend"></a>A háttérbe való bejárati
 
-A bejárati ajtó a bejövő kérelmek fejléceit is tartalmazza, kivéve, ha a korlátozások miatt el van távolítva. A bejárati ajtó a következő fejléceket is hozzáadja:
+A bejárati ajtó a bejövő kérelmek fejléceit tartalmazza, kivéve, ha a korlátozások miatt el vannak távolítva. A bejárati ajtó a következő fejléceket is hozzáadja:
 
 | Fejléc  | Példa és leírás |
 | ------------- | ------------- |
@@ -52,12 +52,9 @@ A háttérbeli bejáratra küldött fejlécek is át lesznek adva az ügyfélnek
 
 | Fejléc  | Példa |
 | ------------- | ------------- |
-| X – Azure-ref |  *X-Azure-ref: 0zxV + XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz* </br> Ez egy egyedi hivatkozási karakterlánc, amely a bejárati ajtó által kiszolgált kéréseket azonosítja. Ez kritikus fontosságú a hibaelhárításhoz, mivel a hozzáférési naplók keresésére szolgál.|
+| X – Azure-ref |  *X-Azure-ref: 0zxV + XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz* </br> Ez egy egyedi hivatkozási karakterlánc, amely a bejárati ajtó által kiszolgált kéréseket azonosítja, ami kritikus fontosságú a hibaelhárításhoz, mivel a hozzáférési naplók keresésére szolgál.|
 
 ## <a name="next-steps"></a>Következő lépések
 
 - [Bejárati ajtó létrehozása](quickstart-create-front-door.md)
 - [Az előtérben működik](front-door-routing-architecture.md)
-
-<!--Image references-->
-[1]: ./media/front-door-http-headers-protocol/front-door-protocol-summary.png

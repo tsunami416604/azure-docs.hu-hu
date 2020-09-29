@@ -3,12 +3,12 @@ title: A szolgáltatási költségek csökkentése Azure Advisor használatával
 description: A Azure Advisor használatával optimalizálhatja az Azure-beli üzemelő példányok költségeit.
 ms.topic: article
 ms.date: 09/27/2020
-ms.openlocfilehash: 7576ccb478a4f221ae7d7f68b14787f6f8bf7e88
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.openlocfilehash: 3b7e57aa178380ff4cf0561718c292dc1e6c6aa9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91405224"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448180"
 ---
 # <a name="reduce-service-costs-by-using-azure-advisor"></a>A szolgáltatási költségek csökkentése Azure Advisor használatával
 
@@ -59,8 +59,8 @@ Az Advisor elemzi a használati mintákat az elmúlt 30 napban a következő er�
 ### <a name="azure-cosmos-db-reserved-capacity"></a>Azure Cosmos DB fenntartott kapacitás
 Az Advisor elemzi a Azure Cosmos DB használati mintáit az elmúlt 30 napban, és javaslatot tesz a fenntartott kapacitás vásárlására a költségek optimalizálása érdekében. A fenntartott kapacitás használatával előre megvásárolhatja Azure Cosmos DB óránkénti használatot, és az utólagos elszámolású költségek megtakarítását is elvégezheti. A fenntartott kapacitás számlázási juttatás, és automatikusan érvényes az új és a meglévő központi telepítésekre. Az Advisor 3 éves foglalási díjszabással és az elmúlt 30 napban megfigyelt használati minták kivetítésével számítja ki az egyéni előfizetések megtakarítási becsléseit. A megosztott hatókörre vonatkozó javaslatok elérhetők a fenntartott kapacitású vásárlásokhoz, és növelhetik a megtakarítást.
 
-### <a name="sql-paas-reserved-capacity"></a>SQL Péter lefoglalt kapacitása
-Az Advisor az SQL Péter rugalmas adatbázis-készleteit és az SQL felügyelt példányok használati mintáit az elmúlt 30 napban elemzi. Ezután javaslatot tesz a fenntartott kapacitások vásárlására a költségek optimalizálása érdekében. A fenntartott kapacitás használatával előre megvásárolhatja az SQL-adatbázis óránkénti használatát, és mentheti az SQL-számítási költségeket. Az SQL-licencet külön kell fizetni, és a foglalás nem kedvezményes. A fenntartott kapacitás számlázási juttatás, és automatikusan érvényes az új és a meglévő központi telepítésekre. Az Advisor 3 éves foglalási díjszabással és az elmúlt 30 napban megfigyelt használati minták kivetítésével számítja ki az egyéni előfizetések megtakarítási becsléseit. A megosztott hatókörre vonatkozó javaslatok elérhetők a fenntartott kapacitású vásárlásokhoz, és növelhetik a megtakarítást.
+### <a name="sql-database-and-sql-managed-instance-reserved-capacity"></a>SQL Database és az SQL felügyelt példányának fenntartott kapacitása
+Az Advisor a SQL Database és az SQL felügyelt példányok használati mintáit elemzi az elmúlt 30 napban. Ezután javaslatot tesz a fenntartott kapacitások vásárlására a költségek optimalizálása érdekében. A fenntartott kapacitás használatával előre megvásárolhatja az SQL-adatbázis óránkénti használatát, és mentheti az SQL-számítási költségeket. Az SQL-licencet külön kell fizetni, és a foglalás nem kedvezményes. A fenntartott kapacitás számlázási juttatás, és automatikusan érvényes az új és a meglévő központi telepítésekre. Az Advisor 3 éves foglalási díjszabással és az elmúlt 30 napban megfigyelt használati minták kivetítésével számítja ki az egyéni előfizetések megtakarítási becsléseit. A megosztott hatókörre vonatkozó javaslatok elérhetők a fenntartott kapacitású vásárlásokhoz, és növelhetik a megtakarítást. Részletekért lásd: [Azure SQL Database & SQL felügyelt példány fenntartott kapacitása](https://docs.microsoft.com/azure/azure-sql/database/reserved-capacity-overview).
 
 ### <a name="app-service-stamp-fee-reserved-capacity"></a>App Service Stamp díj számára fenntartott kapacitás
 Az Advisor az elmúlt 30 napban a Azure App Service izolált környezethez tartozó Stamp díjas használati mintát elemzi, és a fenntartott kapacitások vásárlását javasolja a költségek optimalizálása érdekében. A fenntartott kapacitás használatával előre megvásárolható óránkénti használat az elkülönített környezet pecsétje díj ellenében, és az utólagos elszámolású költségek megtakarítása is elérhető. Vegye figyelembe, hogy a fenntartott kapacitás csak a Stamp díjra vonatkozik, és nem App Service példányokra. A fenntartott kapacitás számlázási juttatás, és automatikusan érvényes az új és a meglévő központi telepítésekre. Az Advisor a használati minták alapján az elmúlt 30 napban kiszámítja az egyéni előfizetésekre vonatkozó becslések megtakarítását.
@@ -107,7 +107,7 @@ Az Advisor azonosítja azokat az erőforrásokat, amelyekben a tábla-gyorsító
 
 1. Az **Advisor** irányítópulton válassza a **Cost (Cost** ) lapot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Advisor ajánlásaival kapcsolatos további tudnivalókért tekintse meg a következő témakört:
 * [Az Advisor bemutatása](advisor-overview.md)

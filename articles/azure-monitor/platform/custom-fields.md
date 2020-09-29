@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/23/2019
-ms.openlocfilehash: ffe3d457d4827250418c9c2d838df35c11e01af7
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 496dab24f636c97e1c7b27b871e1fded9216277d
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90974714"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448566"
 ---
 # <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor-preview"></a>Egyéni mezők létrehozása Log Analytics munkaterületen Azure Monitor (előzetes verzió)
 
@@ -101,7 +101,7 @@ Kiemeljük a szolgáltatás nevét a **RenderedDescription** tulajdonságban, é
 
 Láthatjuk, hogy a szolgáltatás neve megfelelően van azonosítva egyes rekordokhoz, de mások számára nem.   A **keresési eredmények** azt mutatják, hogy a **WMI-teljesítmény adapter** neve nem lett kiválasztva.  Az **Összefoglalás** azt mutatja, hogy egy rekordban azonosított **modulok telepítője** a **Windows-modulok telepítője**helyett.  
 
-![Keresési eredmények](media/custom-fields/search-results-01.png)
+![Képernyőfelvétel: a keresési eredmények ablaktáblájában Kiemelt szolgáltatásnév, valamint az összegzésben az egyik helytelen szolgáltatásnév látható.](media/custom-fields/search-results-01.png)
 
 Először a **WMI Performance adapter** rekordját használjuk.  A Szerkesztés ikonra kattintunk, majd **módosítjuk ezt a kiemelést**.  
 
@@ -113,7 +113,7 @@ Növeljük a kiemelést, hogy belefoglalja a Word **WMI** -t, majd futtassa újr
 
 Láthatjuk, hogy a **WMI-teljesítmény adapterhez** tartozó bejegyzések ki lettek javítva, és log Analytics is használták ezeket az információkat, hogy javítsa a **Windows-modul telepítőjének**rekordjait.
 
-![Keresési eredmények](media/custom-fields/search-results-02.png)
+![Képernyőfelvétel: a keresési eredmények ablaktáblán Kiemelt teljes szolgáltatásnév, valamint az összegzésben Kiemelt helyes szolgáltatásnév.](media/custom-fields/search-results-02.png)
 
 Most már futtathatunk egy lekérdezést, amely ellenőrzi, hogy létrejött-e a **Service_CF** , de még nincs hozzáadva rekordokhoz. Ennek az az oka, hogy az egyéni mező nem működik a meglévő rekordokkal szemben, ezért meg kell várni az új rekordok gyűjtését.
 
@@ -127,7 +127,7 @@ Mostantól az egyéni mezőt is használhatja, mint bármely más rekord tulajdo
 
 ![Csoportosítás lekérdezés szerint](media/custom-fields/query-group.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További információ a [lekérdezések létrehozásáról a](../log-query/log-query-overview.md) lekérdezésekhez egyéni mezők használatával a feltételekhez.
 * Egyéni mezők használatával elemzett [Egyéni naplófájlok](data-sources-custom-logs.md) figyelése.
 

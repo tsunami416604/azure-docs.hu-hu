@@ -9,20 +9,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/10/2018
+ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: 7cdcef80ef2433d34b32589d2539089fb9801eb1
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 20d45f5966aca3df89e17e03aa6120a4ddf5c5b9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399429"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448692"
 ---
 # <a name="http2-support-in-azure-front-door"></a>HTTP/2 támogatás az Azure-beli bejárati ajtón
 
 Jelenleg a HTTP/2 támogatás aktív az összes Azure bejárati ajtó konfigurációjában. Az ügyfelektől nem szükséges további művelet.
 
-A HTTP/2 a HTTP/1.1 fő verziója. Gyorsabb webes teljesítményt, kisebb válaszidőt és továbbfejlesztett felhasználói élményt biztosít, miközben megtartja az ismerős HTTP-metódusokat, az állapot-kódokat és a szemantikai funkciókat. Bár a HTTP/2 a HTTP-vel és a HTTPS-vel való együttműködésre lett tervezve, sok ügyfél-webböngésző csak a HTTP/2 protokollt támogatja Transport Layer Security (TLS) protokollon keresztül.
+A HTTP/2 a HTTP/1.1 fő verziója, amely gyorsabb webes teljesítményt biztosít a válaszidő csökkentésével. A HTTP/2 az ismerős HTTP-metódusok, állapotkódok és szemantika megtartásával valósítható meg a felhasználói élmény javítása érdekében. Bár a HTTP/2 a HTTP-vel és a HTTPS-vel való együttműködésre lett tervezve, sok ügyfél-webböngésző csak a HTTP/2 protokollt támogatja Transport Layer Security (TLS) protokollon keresztül.
 
 > [!NOTE]
 > A HTTP/2 protokoll támogatása csak az ügyfelektől a bejáratig tartó kérelmek esetében érhető el. A háttérrendszer-végpontról a háttér felé irányuló kommunikáció a HTTP/1.1 protokollon keresztül történik. 
@@ -46,7 +46,7 @@ A HTTP/2 előnyei a következők:
 
 ## <a name="http2-browser-support"></a>HTTP/2 böngésző-támogatás
 
-Az összes fő böngésző implementálta a HTTP/2-támogatást a jelenlegi verzióiban. A nem támogatott böngészők automatikusan tartalék HTTP/1.1-re.
+Az összes fő böngésző implementálta a HTTP/2-támogatást a jelenlegi verzióiban. A nem támogatott böngészők automatikusan visszatérhetnek a HTTP/1.1-es verzióra.
 
 |Böngésző|Minimális verzió|
 |-------------|------------|

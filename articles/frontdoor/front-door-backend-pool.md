@@ -9,22 +9,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/10/2018
+ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: 66767d4329a0a757de99308e1f586b56b327a515
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 4beba141fec7a819df52e4c3a669312a4ad76998
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399922"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449299"
 ---
 # <a name="backends-and-backend-pools-in-azure-front-door"></a>Háttérrendszer és háttérbeli készletek az Azure-ban – bejárati ajtó
-Ez a cikk bemutatja, hogyan képezhető le az alkalmazás üzembe helyezése az Azure bejárati ajtóval. Emellett ismerteti a különböző használati feltételeket is az alkalmazási háttérrendszer-konfigurációban.
+Ez a cikk bemutatja, hogyan képezhető le a webalkalmazások üzembe helyezése az Azure bejárati ajtóval. Emellett az alkalmazási háttérrendszer körüli bejárati konfigurációban használt különböző fogalmakat is ismerteti.
 
 ## <a name="backends"></a>Háttérrendszerek
-A háttérrendszer egy adott régióban található alkalmazás telepítési példányával egyenlő. A bejárati ajtó az Azure-t és a nem Azure-beli háttereket is támogatja, így a régió nem csak az Azure-régiókra korlátozódik. Emellett lehet a helyszíni adatközpont vagy egy másik Felhőbeli alkalmazás-példány is.
+A háttérrendszer egy adott régióban található webalkalmazás-telepítésre hivatkozik. A bejárati ajtó támogatja mind az Azure-, mind a nem Azure-erőforrásokat a háttér-készletben. Az alkalmazás lehet a helyszíni adatközpontban, vagy egy másik felhőalapú szolgáltatóban található.
 
-Az előtérben lévő háttérrendszer az alkalmazás állomásneve vagy nyilvános IP-címére hivatkozik, amely az ügyfelek kéréseinek kiszolgálására szolgál. A háttérrendszer nem tévesztendő össze az adatbázis szintjével, a tárolási szintjével és így tovább. A háttereket az alkalmazás-háttér nyilvános végpontjának kell tekinteni. Amikor felvesz egy hátteret egy előtérben található háttér-készletbe, a következőket is hozzá kell adnia:
+Az előtérben futó háttérrendszer az alkalmazás állomásneve vagy nyilvános IP-címére hivatkozik, amely az ügyfelek kérelmeit szolgálja ki. A háttérrendszer nem tévesztendő össze az adatbázis szintjével, a tárolási szintjével és így tovább. A háttereket az alkalmazás-háttér nyilvános végpontjának kell tekinteni. Amikor felvesz egy háttérrendszer-háttérrendszer-készletet, a következőket is hozzá kell adnia:
 
 - **Háttérbeli gazdagép típusa** A hozzáadni kívánt erőforrás típusa. A bejárati ajtó támogatja az App Service, a Cloud Service vagy a Storage szolgáltatásból származó alkalmazás-hátterek automatikus észlelését. Ha egy másik erőforrást szeretne használni az Azure-ban, vagy akár egy nem Azure-beli hátteret is, válassza az **Egyéni gazdagép**lehetőséget.
 
@@ -41,13 +41,13 @@ Az előtérben lévő háttérrendszer az alkalmazás állomásneve vagy nyilvá
 
 ### <a name="backend-host-header"></a><a name = "hostheader"></a>Háttérbeli gazdagép fejléce
 
-A háttérben a háttérbe továbbított kérések közé tartozik egy állomásfejléc mező, amelyet a háttér a célként megadott erőforrás lekérésére használ. A mező értéke általában a háttér-URI-ból származik, és a gazdagép és a port.
+A háttérben a háttérbe továbbított kérések közé tartozik egy állomásfejléc mező, amelyet a háttér a célként megadott erőforrás lekérésére használ. A mező értéke általában a gazdagép fejlécével és portjával rendelkező háttér-URI-ből származik.
 
 A (z) rendszerre vonatkozó kérelem például `www.contoso.com` a gazdagép fejlécének www.contoso.com lesz. Ha Azure Portalt használ a háttér konfigurálásához, a mező alapértelmezett értéke a háttér állomásneve. Ha a háttérrendszer contoso-westus.azurewebsites.net, a Azure Portal a háttérbeli állomásfejléc automatikusan kitöltött értéke contoso-westus.azurewebsites.net lesz. Ha azonban Azure Resource Manager sablonokat vagy egy másik módszert használ a mező explicit beállítása nélkül, akkor a bejárati ajtó a gazdagép fejlécének értékeként elküldi a bejövő állomásnév nevét. Ha a kérést a www \. contoso.com, a háttér pedig olyan contoso-westus.azurewebsites.net, amely üres fejlécet tartalmaz, akkor a bejárati ajtó a következőt adja meg: www \. contoso.com.
 
 A legtöbb alkalmazás-háttér (az Azure Web Apps, a blob Storage és a Cloud Services) megköveteli, hogy a gazdagép fejléce megfeleljen a háttér tartományának. Ugyanakkor a háttér-gazdagép, amely a backend útvonalra mutat, egy másik állomásnevet fog használni, például www.contoso.net.
 
-Ha a háttérrendszer számára szükséges, hogy a gazdagép fejléce megfeleljen a háttérbeli állomásnévnek, győződjön meg arról, hogy a háttérbeli állomásfejléc tartalmazza az állomásnév-háttér nevet.
+Ha a háttérrendszer megköveteli, hogy a gazdagép fejléce megfeleljen a háttérbeli állomásnévnek, ellenőrizze, hogy a háttérbeli állomásfejléc tartalmazza-e a háttér állomásnevét.
 
 #### <a name="configuring-the-backend-host-header-for-the-backend"></a>A háttérrendszer-állomásfejléc konfigurálása a háttérrendszer számára
 

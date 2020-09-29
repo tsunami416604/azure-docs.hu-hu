@@ -6,15 +6,15 @@ author: joplum
 ms.author: joplum
 ms.service: sql-database
 ms.workload: data-services
-ms.topic: article
+ms.topic: tutorial
 ms.date: 01/08/2020
 ms.custom: sqldbrb=1
-ms.openlocfilehash: 551276895de0ba659349c20205fa21d3d2c6b43e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6e60403344a0341b4aee74a001287c09ba67e114
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84669569"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448904"
 ---
 # <a name="how-to-migrate-your-sqlite-database-to-azure-sql-database-serverless"></a>Az SQLite-adatbázis migrálása Azure SQL Database kiszolgáló nélkülire
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -106,7 +106,7 @@ Ha követte az alábbi lépéseket, az adatbázis Azure SQL Database kiszolgál�
 
 15. Jelölje ki az összes táblát a forrás SQLite-adatbázisból a jelölőnégyzetek használatával, és rendelje hozzá őket az Azure SQL-beli cél tábláihoz. Miután a feladatot futtatta, sikeresen áttelepítette az adatait az SQLite-ből az Azure SQL-be!
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Első lépésként tekintse meg a rövid útmutató [: önálló adatbázis létrehozása Azure SQL Database a Azure Portal használatával](single-database-create-quickstart.md)című témakört.
 - Az erőforrások korlátaival kapcsolatban lásd: [kiszolgáló nélküli számítási keret erőforrás-korlátai](../../sql-database/sql-database-vcore-resource-limits-single-databases.md#general-purpose---serverless-compute---gen5).

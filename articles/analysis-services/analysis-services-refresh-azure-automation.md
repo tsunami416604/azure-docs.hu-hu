@@ -6,12 +6,12 @@ ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: chlound
-ms.openlocfilehash: 31dc1973af42a1785a2a65cb1887f479e44af162
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 61679e1ee3843ed866ef12138a0edeff8877b1e6
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553903"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448605"
 ---
 # <a name="refresh-with-azure-automation"></a>Frissítés az Azure Automationnel
 
@@ -54,15 +54,15 @@ Az Ön által létrehozott egyszerű szolgáltatásnak kiszolgálói rendszergaz
 
 1. Az Automation-fiókban hozzon létre egy **hitelesítő adatokat** tartalmazó erőforrást, amelyet az egyszerű szolgáltatás biztonságos tárolására fog használni.
 
-    ![Hitelesítő adat létrehozása](./media/analysis-services-refresh-azure-automation/6.png)
+    ![Képernyőfelvétel: a "hitelesítő adatok hozzáadása" lapon a "hitelesítő adatok" művelet van kiválasztva.](./media/analysis-services-refresh-azure-automation/6.png)
 
 2. Adja meg a hitelesítő adatok részleteit. A **Felhasználónév**mezőben adja meg az egyszerű szolgáltatásnév (AppID) nevet, majd a **jelszó**mezőben adja meg az egyszerű szolgáltatás titkos kulcsát.
 
     ![Hitelesítő adat létrehozása](./media/analysis-services-refresh-azure-automation/7.png)
 
-3. Az Automation-Runbook importálása
+3. Importálja az Automation-Runbook.
 
-    ![Runbook importálása](./media/analysis-services-refresh-azure-automation/8.png)
+    ![Képernyőfelvétel: a "Runbookok" (runbook importálása) műveletet megjelenítő lap.](./media/analysis-services-refresh-azure-automation/8.png)
 
 4. Tallózással keresse meg a [Refresh-Model.ps1](#sample-powershell-runbook) fájlt, adjon meg egy **nevet** és egy **leírást**, majd kattintson a **Létrehozás**gombra.
 
@@ -80,7 +80,7 @@ Az Ön által létrehozott egyszerű szolgáltatásnak kiszolgálói rendszergaz
 
 6. A **Start**gombra kattintva tesztelje a runbook.
 
-    ![A Runbook elindítása](./media/analysis-services-refresh-azure-automation/11.png)
+    ![Képernyőkép: az "áttekintés" oldal, amelyen a "Start" művelet be van jelölve.](./media/analysis-services-refresh-azure-automation/11.png)
 
 7. Töltse ki a **databasename**, a **ANALYSISSERVER**és a **REFRESHTYPE** paramétert, majd kattintson **az OK**gombra. A **WEBHOOKDATA** paraméter nem szükséges, ha a Runbook futtatása manuálisan történik.
 
@@ -223,7 +223,7 @@ else
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Példák](analysis-services-samples.md)  
 [REST API](https://docs.microsoft.com/rest/api/analysisservices/servers)

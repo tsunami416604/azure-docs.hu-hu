@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein, danil
 ms.date: 09/26/2019
-ms.openlocfilehash: d95bf9ed50f819c5a92c7945827ee82a2c6ecdc9
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 23fdc69b59cc1415d06bd394fd9ef729b7ef4ce0
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371779"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448803"
 ---
 # <a name="recover-using-automated-database-backups---azure-sql-database--sql-managed-instance"></a>Helyreállítás automatikus adatbázis-biztonsági másolatokkal – Azure SQL Database & SQL felügyelt példánya
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -33,11 +33,6 @@ Ha a [biztonsági mentés hosszú távú megőrzését](long-term-retention-over
 
 > [!IMPORTANT]
 > A meglévő adatbázisok nem írhatók felül a visszaállítás során.
-
-Alapértelmezés szerint a rendszer a Azure SQL Database és az Azure SQL felügyelt példányainak biztonsági másolatait a Geo-replikált blob Storage-ban (RA-GRS Storage-típus) tárolja. Emellett az SQL felügyelt példány támogatja a helyileg redundáns (LRS) és a zóna-redundáns (ZRS) biztonsági mentési tárolót is. A redundancia biztosítja, hogy az adatok védve legyenek a tervezett és nem tervezett eseményektől, beleértve az átmeneti hardverek meghibásodását, a hálózati vagy áramkimaradást, valamint a súlyos természeti katasztrófákat. A Zone-redundáns tárolás (ZRS) csak [bizonyos régiókban](../../storage/common/storage-redundancy.md#zone-redundant-storage)érhető el.
-
-> [!IMPORTANT]
-> A tárterület-redundancia a biztonsági mentések számára csak felügyelt példány számára érhető el, és a létrehozási folyamat során engedélyezett. Az erőforrás kiépítése után nem módosítható a biztonságimásolat-tárolási redundancia beállítás.
 
 Ha a standard vagy prémium szintű szolgáltatási szintet használja, az adatbázis-visszaállítás további tárolási költséget eredményezhet. Az extra költségek akkor merülnek fel, ha a visszaállított adatbázis maximális mérete nagyobb, mint a céladatbázis szolgáltatási szintjéhez és a teljesítmény szintjéhez tartozó tárterület mennyisége. A további tárterület részletes díjszabását a [SQL Database díjszabását ismertető oldalon](https://azure.microsoft.com/pricing/details/sql-database/)tekintheti meg. Ha a felhasznált terület tényleges mennyisége kevesebb, mint a tárhelyek mennyisége, akkor ezt a többletköltséget elkerülheti, ha a maximális adatbázis méretét a befoglalt mennyiségre állítja.
 
@@ -143,7 +138,7 @@ A törölt példányok adatbázisának visszaállítását bemutató minta Power
 ## <a name="geo-restore"></a>Georedundáns visszaállítás
 
 > [!IMPORTANT]
-> A Geo-visszaállítás csak a Geo-redundáns (RA-GRS) biztonsági mentési tárolási típussal konfigurált felügyelt példányok esetén érhető el. A helyileg redundáns vagy a Zone-redundáns biztonsági mentési tárolási típusokkal konfigurált felügyelt példányok nem támogatják a Geo-visszaállítást.
+> A Geo-visszaállítás csak az SQL-adatbázisok vagy a Geo-redundáns [biztonsági mentési tárolóval](automated-backups-overview.md#backup-storage-redundancy)konfigurált felügyelt példányok esetén érhető el.
 
 A legutóbbi földrajzilag replikált biztonsági másolatokból bármely Azure-régióban felügyelt példányon visszaállíthat egy adatbázist bármely SQL Database-kiszolgálón vagy egy példány-adatbázison. A Geo-visszaállítás a forrásként egy földrajzilag replikált biztonsági mentést használ. Akkor is kérheti a Geo-visszaállítást, ha az adatbázis vagy az adatközpont egy leállás miatt nem érhető el.
 

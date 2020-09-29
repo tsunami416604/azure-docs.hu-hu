@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: e422b019dd17c8c56ba99b5826e9f6215459c382
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: f7268f698dcc26dbe99b517c9dd4584be67c3a82
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825361"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448465"
 ---
 # <a name="using-service-map-solution-in-azure"></a>A Service Map megoldás használata az Azure-ban
 
@@ -169,7 +169,7 @@ Bizonyos folyamatok adott szerepköröket szolgálnak ki a gépeken: webkiszolg�
 
 A sikertelen kapcsolatok Service Map Maps for folyamatok és számítógépek esetében jelennek meg, és szaggatott piros vonallal jelzi, hogy az ügyfélrendszer nem tud elérni egy folyamatot vagy portot. A sikertelen kapcsolatok bármely rendszerből származnak, egy telepített Service Map ügynökkel, ha ez a rendszer a sikertelen csatlakozást kísérli meg. Service Map méri ezt a folyamatot azáltal, hogy megfigyeli a kapcsolat létesítését sikertelen TCP-szoftvercsatornát. Ez a hiba a tűzfal, az ügyfél vagy a kiszolgáló helytelen konfigurációja, vagy a távoli szolgáltatás nem érhető el.
 
-![Sikertelen kapcsolatok](media/service-map/failed-connections.png)
+![Képernyőkép a Service Map egy részének egy szaggatott piros vonalára, amely a backup.pl folyamat és a 4475-es port közötti sikertelen kapcsolatot jelzi.](media/service-map/failed-connections.png)
 
 A sikertelen kapcsolatok ismertetése segíthet a hibaelhárításban, az áttelepítési ellenőrzésben, a biztonsági elemzésben és a teljes építészeti ismeretekben. A sikertelen kapcsolatok néha ártalmatlanok, de gyakran közvetlenül a problémára mutatnak, például egy feladatátvételi környezet, amely hirtelen elérhetetlenné válik, vagy két alkalmazási réteg nem tud kommunikálni a felhő áttelepítése után.
 
@@ -193,7 +193,7 @@ A kiszolgálói portok a függőségi ügynökkel nem rendelkező kiszolgálóko
 
 A kiszolgálók jobb felső sarkában található három pontra (...) kattintva megjelenik az adott kiszolgáló helyi menüje.
 
-![Sikertelen kapcsolatok](media/service-map/context-menu.png)
+![Képernyőfelvétel: a Service Map-kiszolgáló megnyitott helyi menüjének megjelenítése. A menüben megtalálhatók a kiszolgálók leképezése és az önálló hivatkozások megjelenítése lehetőség.](media/service-map/context-menu.png)
 
 ### <a name="load-server-map"></a>Kiszolgálói Térkép betöltése
 
@@ -258,7 +258,7 @@ Ha mindkét megoldás engedélyezve van és be van állítva a Log Analytics mun
 
 A **gép Change Tracking** panel felsorolja az összes módosítást, a legutóbbi elsővel együtt, valamint egy hivatkozást, amely részletesen ismerteti a naplóbeli keresés részleteit.
 
-![Számítógép Change Tracking panel](media/service-map/change-tracking.png)
+![Képernyőkép a Service Map számítógép Change Tracking paneljéről.](media/service-map/change-tracking.png)
 
 Az alábbi képen egy olyan konfigurációváltozás-esemény részletes nézete látható, amelyet a **log Analytics megjelenítésének**kiválasztása után láthat.
 
@@ -300,7 +300,7 @@ Ha mindkét megoldás engedélyezve van és be van állítva a Log Analytics mun
 
 A **számítógép frissítései** ablaktábla a kiválasztott kiszolgálóhoz tartozó Update Management megoldás adatait jeleníti meg. A panel felsorolja a kiszolgáló hiányzó frissítéseinek összegzését a kijelölt időtartományban.
 
-![Számítógép Change Tracking panel](media/service-map/machine-updates.png)
+![Képernyőkép a Service Map számítógép-frissítések paneljéről.](media/service-map/machine-updates.png)
 
 ## <a name="log-analytics-records"></a>Log Analytics-rekordok
 
@@ -571,7 +571,7 @@ A futásidejű kódtár telepítői a %LOCALAPPDATA%\temp mappában hozzák lét
 
 A következő táblázat felsorolja a kódok számát és a javasolt megoldásokat.
 
-| Kód | Leírás | Feloldás |
+| Code | Leírás | Feloldás |
 |:--|:--|:--|
 | 0x17 | A kódtártelepítőhöz olyan Windows-frissítés szükséges, amely még nincs telepítve. | Tekintse meg a legutóbbi kódtártelepítői naplót.<br><br>Ha egy hivatkozást egy olyan `Windows8.1-KB2999226-x64.msu` vonal követ, amely `Error 0x80240017: Failed to execute MSU package,` nem rendelkezik a KB2999226 telepítéséhez szükséges előfeltételekkel. Kövesse az [Universal C-futtatókörnyezet a Windowsban](https://support.microsoft.com/kb/2999226) című cikk előfeltételekről szóló szakaszában foglalt utasításokat. Lehetséges, hogy az előfeltételek telepítéséhez futtatnia kell a Windows Update-et, és többször újra kell indítania a számítógépet.<br><br>Futtassa újra a Microsoft függőségi ügynök telepítőjét. |
 

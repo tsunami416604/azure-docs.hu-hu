@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: chlound
 ms.custom: references_regions
-ms.openlocfilehash: 7412a28b53f3b17fb888e3877ecbe50a19c4a3d3
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: fd5c4043d417a99c7ffa57534fd7808f1710190a
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552237"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448574"
 ---
 # <a name="refresh-with-logic-apps"></a>Frissítés a Logic Apps használatával
 
@@ -53,9 +53,9 @@ Ez a lépés a logikai alkalmazás mentése után a HTTP POST URL-címével lesz
 
 2. Adjon hozzá egy új lépést, és keressen rá a **http**kifejezésre.  
 
-   ![HTTP-tevékenység hozzáadása](./media/analysis-services-async-refresh-logic-app/9.png)
+   ![Képernyőkép a "művelet kiválasztása" szakaszról a "HTTP" csempe kiválasztásával.](./media/analysis-services-async-refresh-logic-app/9.png)
 
-   ![HTTP-tevékenység hozzáadása](./media/analysis-services-async-refresh-logic-app/10.png)
+   ![Képernyőkép a "HTTP" ablakról, amelyen a "HTTP-HTTP" csempe van kiválasztva.](./media/analysis-services-async-refresh-logic-app/10.png)
 
 3. A művelet hozzáadásához válassza a **http** lehetőséget.
 
@@ -98,15 +98,15 @@ Ha nem tervezi a modell frissítésének elindításához szükséges hangvezér
 
 A fenti példa használatával törölje az első tevékenységet, és cserélje le egy **ütemezett** tevékenységre.
 
-![Ütemezett tevékenység](./media/analysis-services-async-refresh-logic-app/12.png)
+![A "Logic Apps" lapot tartalmazó képernyőkép, amelyen a "Schedule" csempe van kiválasztva.](./media/analysis-services-async-refresh-logic-app/12.png)
 
-![Ütemezett tevékenység](./media/analysis-services-async-refresh-logic-app/13.png)
+![Képernyőkép, amely megjeleníti az "eseményindítók" lapot.](./media/analysis-services-async-refresh-logic-app/13.png)
 
 Ez a példa az **ismétlődést**fogja használni.
 
 Miután hozzáadta a tevékenységet, konfigurálja az intervallumot és a gyakoriságot, majd adjon hozzá egy új paramétert, és válassza ki **ezeket az órákat**.
 
-![Ütemezett tevékenység](./media/analysis-services-async-refresh-logic-app/16.png)
+![Képernyőkép, amely az "Ismétlődés" szakaszt jeleníti meg a "on this Hours" paraméter kiválasztásával.](./media/analysis-services-async-refresh-logic-app/16.png)
 
 Válassza ki a kívánt órát.
 
@@ -114,7 +114,7 @@ Válassza ki a kívánt órát.
 
 Mentse a logikai alkalmazást.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Példák](analysis-services-samples.md)  
 [REST API](https://docs.microsoft.com/rest/api/analysisservices/servers)

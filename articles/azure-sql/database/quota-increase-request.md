@@ -4,24 +4,24 @@ description: Ez az oldal azt ismerteti, hogyan lehet támogatási kérést létr
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: service
-ms.topic: conceptual
+ms.topic: how-to
 author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: sstein
 ms.date: 06/04/2020
-ms.openlocfilehash: 4557d2ecdb49cd50396986f0ea30277f50ecf9f7
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: cfcdd143a26d36ed3c4646122fce7c19c41976d0
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85987285"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448852"
 ---
 # <a name="request-quota-increases-for-azure-sql-database-and-sql-managed-instance"></a>A kérelmek kvótájának növekedése Azure SQL Database és az SQL felügyelt példányainál
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 Ez a cikk a Azure SQL Database és az Azure SQL felügyelt példányaira vonatkozó kvóta-növelés igénylését ismerteti. Azt is ismerteti, hogyan engedélyezhető az előfizetés-hozzáférés egy adott régióhoz.
 
-## <a name="create-a-new-support-request"></a><a id="newquota"></a>Új támogatási kérelem létrehozása
+## <a name="create-a-new-support-request"></a><a id="newquota"></a> Új támogatási kérelem létrehozása
 
 A következő lépésekkel hozzon létre egy új támogatási kérést a SQL Database Azure Portal.
 
@@ -56,7 +56,7 @@ A következő lépésekkel hozzon létre egy új támogatási kérést a SQL Dat
 
 A **részletek megadása** elemre kattintva megjelenik a **kvóta részletei** ablak, amely lehetővé teszi további információk hozzáadását. A következő szakaszok a **felügyelt példányok** **SQL Database** és SQL Database különböző lehetőségeit ismertetik.
 
-## <a name="sql-database-quota-types"></a><a id="sqldbquota"></a>SQL Database kvóta típusai
+## <a name="sql-database-quota-types"></a><a id="sqldbquota"></a> SQL Database kvóta típusai
 
 A következő szakaszok ismertetik a kvóta-növelési lehetőségeket a **SQL Database** kvóták típusaihoz:
 
@@ -93,7 +93,7 @@ A következő lépések végrehajtásával növelheti a kiszolgálók számát a
 
 További információ: [SQL Database erőforrás-korlátozások és erőforrás-szabályozás](resource-limits-logical-server.md).
 
-### <a name="enable-subscription-access-to-a-region"></a><a id="region"></a>Előfizetés-hozzáférés engedélyezése egy régióhoz
+### <a name="enable-subscription-access-to-a-region"></a><a id="region"></a> Előfizetés-hozzáférés engedélyezése egy régióhoz
 
 Egyes ajánlati típusok nem érhetők el minden régióban. Előfordulhat, hogy a következő hibaüzenet jelenik meg:
 
@@ -107,9 +107,9 @@ Ha az előfizetéshez egy adott régióban hozzáférésre van szüksége, vála
 
 1. Adja meg a **vásárlási modellt**, és a **várt felhasználás** részleteit.
 
-   ![Kérelem régióhoz való hozzáférése](./media/quota-increase-request/quota-details-whitelisting.png)
+   ![Kérelem régióhoz való hozzáférése](./media/quota-increase-request/quota-request.png)
 
-### <a name="enable-m-series-access-to-a-region"></a><a id="mseries"></a>Az M-sorozat hozzáférésének engedélyezése egy régióhoz
+### <a name="enable-m-series-access-to-a-region"></a><a id="mseries"></a> Az M-sorozat hozzáférésének engedélyezése egy régióhoz
 
 Az M-sorozat hardverének az előfizetéshez és a régióhoz való engedélyezéséhez meg kell nyitni egy támogatási kérést.
 
@@ -118,9 +118,9 @@ Az M-sorozat hardverének az előfizetéshez és a régióhoz való engedélyez�
 1. A **válasszon helyet** listából válassza ki a használni kívánt Azure-régiót. Az egyes régiókban a kvóta/előfizetés.
 
 
-   ![Kérelem régióhoz való hozzáférése](./media/quota-increase-request/quota-m-series.png)
+   ![M sorozatú régió hozzáférésének kérése](./media/quota-increase-request/quota-m-series.png)
 
-## <a name="sql-managed-instance-quota-type"></a><a id="sqlmiquota"></a>SQL felügyelt példány kvótájának típusa
+## <a name="sql-managed-instance-quota-type"></a><a id="sqlmiquota"></a> SQL felügyelt példány kvótájának típusa
 
 A **felügyelt SQL-példányok** kvótájának típusához kövesse az alábbi lépéseket:
 

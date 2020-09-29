@@ -7,17 +7,17 @@ ms.service: sql-db-mi
 ms.subservice: performance
 ms.custom: sqldbrb=2
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: juliemsft
 ms.author: jrasnick
 ms.reviewer: sstein
 ms.date: 04/19/2020
-ms.openlocfilehash: 7ee876b1d65e71657cb1af857cdad9f62a32100e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 61160943fc5762fd492f61a75a44159f2ef9cab2
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333052"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448780"
 ---
 # <a name="monitoring-microsoft-azure-sql-database-and-azure-sql-managed-instance-performance-using-dynamic-management-views"></a>A Microsoft Azure SQL Database és a felügyelt Azure SQL-példány teljesítményének monitorozása dinamikus felügyeleti nézetekkel
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -56,7 +56,7 @@ Ez a cikk a következő típusú lekérdezési teljesítménnyel kapcsolatos pro
 - [Rendszerszintű és adatbázis-erőforrás-használati információk beolvasása](#monitor-resource-use)
 - [Lekérdezés teljesítményére vonatkozó információk beolvasása](#monitoring-query-performance)
 
-## <a name="identify-cpu-performance-issues"></a>CPU-teljesítménnyel kapcsolatos problémák azonosítása
+## <a name="identify-cpu-performance-issues"></a>A CPU-teljesítmény problémáinak azonosítása
 
 Ha a CPU-felhasználás hosszabb ideig 80%-nál nagyobb, vegye figyelembe a következő hibaelhárítási lépéseket:
 
@@ -769,6 +769,6 @@ CROSS APPLY sys.dm_exec_sql_text(plan_handle) AS q
 ORDER BY highest_cpu_queries.total_worker_time DESC;
 ```
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 [A Azure SQL Database és az Azure SQL felügyelt példányának bemutatása](sql-database-paas-overview.md)

@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 6390180052cb21bb0d2230a066b9f10d4eb99ca1
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: da0eeafc9d92bf08a2475d7676f1da8a4fa30da5
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447331"
+ms.locfileid: "91461404"
 ---
-# <a name="file-integrity-monitoring-in-azure-security-center"></a>Fájlintegritás monitorozása az Azure Security Centerben
+# <a name="file-integrity-monitoring-in-azure-security-center"></a>A fájlok integritásának figyelése Azure Security Center
 Ismerje meg, hogyan konfigurálhatja a fájlok integritásának figyelését (FIM) Azure Security Center az útmutató segítségével.
 
 
@@ -31,7 +31,7 @@ Ismerje meg, hogyan konfigurálhatja a fájlok integritásának figyelését (FI
 |Kiadás állapota:|Általánosan elérhető (GA)|
 |Árképzési|[Az Azure Defender for Servers](defender-for-servers-introduction.md) használatát igényli|
 |Szükséges szerepkörök és engedélyek:|A **munkaterület tulajdonosa** engedélyezheti vagy letilthatja a FIM-t (További információ: [log Analytics Azure-szerepkörök](https://docs.microsoft.com/services-hub/health/azure-roles#azure-roles)).<br>Az **olvasó** megtekintheti az eredményeket.|
-|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) US Gov<br>![Nem](./media/icons/no-icon.png) Kínai gov, egyéb gov|
+|Felhők|![Igen ](./media/icons/yes-icon.png) kereskedelmi felhők<br>![Igen ](./media/icons/yes-icon.png) US gov<br>![Nem ](./media/icons/no-icon.png) China gov, más gov<br>Csak olyan régiókban támogatott, ahol a Azure Automation Change Tracking megoldás elérhető.<br>Lásd: [a csatolt log Analytics munkaterület támogatott régiói](../automation/how-to/region-mappings.md).<br>[További információ a Change Tracking szolgáltatásról](../automation/change-tracking.md) |
 |||
 
 
@@ -95,45 +95,43 @@ A Security Center az alábbi, az ismert támadási minták alapján figyelt elem
 |||HKLM\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile|
 
 
-## <a name="using-file-integrity-monitoring"></a>A fájlok integritásának figyelése
+## <a name="enable-file-integrity-monitoring"></a>A fájlok integritásának figyelésének engedélyezése 
 
-1. Nyissa meg az **Azure Defender** irányítópultját.
+1. Az **Azure Defender** irányítópultjának **speciális védelmi** területén válassza a **fájl integritásának figyelése**elemet.
 
-1. A **Speciális védelem** területen válassza a **fájl integritásának figyelése**elemet.
+   :::image type="content" source="./media/security-center-file-integrity-monitoring/open-file-integrity-monitoring.png" alt-text="FIM indítása" lightbox="./media/security-center-file-integrity-monitoring/open-file-integrity-monitoring.png":::
 
-    :::image type="content" source="./media/security-center-file-integrity-monitoring/open-file-integrity-monitoring.png" alt-text="FIM indítása" lightbox="./media/security-center-file-integrity-monitoring/open-file-integrity-monitoring.png":::
+    Megnyílik a **fájl integritásának figyelése** konfiguráció oldal.
+
+    Az egyes munkaterületek esetében az alábbi információk szerepelnek:
+
+    - A múlt héten bekövetkezett módosítások teljes száma (egy kötőjelet láthat, ha a FIM nincs engedélyezve a munkaterületen)
+    - A munkaterületnek jelentett számítógépek és virtuális gépek teljes száma
+    - A munkaterület földrajzi helye
+    - Az Azure-előfizetés, amelyre a munkaterület tartozik
+
+1. Ezen a lapon a következőket használhatja:
+
+    - Az egyes munkaterületek állapotának és beállításainak elérése és megtekintése
+
+    - ![A Frissítési terv ikonja ][4] frissíti a munkaterületet az Azure Defender használatára. Ez az ikon azt jelzi, hogy a munkaterületet vagy előfizetést nem az Azure Defender védi. A FIM-funkciók használatához az előfizetését az Azure Defendernek kell védenie. [További információ](security-center-pricing.md).
+
+    - ![Engedélyezés ikon][3] Engedélyezze a FIM-t a munkaterület alá tartozó összes gépen, és konfigurálja a FIM beállításait. Ez az ikon azt jelzi, hogy a FIM nincs engedélyezve a munkaterületen – ezt a gombot a következőhöz használhatja:
+
+        :::image type="content" source="./media/security-center-file-integrity-monitoring/workspace-list-fim.png" alt-text="FIM indítása":::
 
 
-    Megnyílik a **fájl integritásának figyelése** .
-    ![A Security Center irányítópultja][2]
+    > [!TIP]
+    > Ha nincs engedélyezve vagy frissítés gomb, és a szóköz üres, az azt jelenti, hogy a FIM már engedélyezve van a munkaterületen.
 
-Az egyes munkaterületek esetében az alábbi információk szerepelnek:
 
-- A múlt héten bekövetkezett módosítások teljes száma (egy kötőjelet láthat, ha a FIM nincs engedélyezve a munkaterületen)
-- A munkaterületnek jelentett számítógépek és virtuális gépek teljes száma
-- A munkaterület földrajzi helye
-- Az Azure-előfizetés, amelyre a munkaterület tartozik
+1. Válassza az **Engedélyezés**lehetőséget. A munkaterület részletei, beleértve a munkaterületen található Windows és Linux rendszerű gépek számát is.
 
-A következő gombok is megjelenhetnek egy munkaterülethez:
-
-- ![Engedélyezés ikon][3] Azt jelzi, hogy a FIM nincs engedélyezve a munkaterületen. A munkaterület kiválasztásával engedélyezheti a FIM-t a munkaterület alá tartozó összes gépen.
-- ![Frissítési terv ikonja][4] Azt jelzi, hogy az Azure Defender nem védi a munkaterületet vagy az előfizetést. A FIM szolgáltatás használatához az előfizetését az Azure Defendernek kell védenie.  A munkaterület kiválasztása lehetővé teszi a frissítését.
-- Egy üres (nincs gomb) azt jelenti, hogy a FIM már engedélyezve van a munkaterületen.
-
-A **fájl integritásának figyelése**területen kiválaszthatja azt a munkaterületet, amely engedélyezi a FIM használatát az adott munkaterülethez, megtekintheti a munkaterület fájl integritás-figyelési irányítópultját, vagy a munkaterület [frissítését](security-center-pricing.md) az Azure Defender használatára.
-
-## <a name="enable-fim"></a>FIM engedélyezése
-A FIM engedélyezése munkaterületen:
-
-1. A **fájl integritásának figyelése**területen válasszon ki egy munkaterületet az **Engedélyezés** gombbal.
-
-1. A **fájlok integritásának figyelésének engedélyezése** megnyithatja a Windows és a Linux rendszerű gépek számát a munkaterületen.
-
-   ![A fájlok integritásának figyelésének engedélyezése][5]
+    :::image type="content" source="./media/security-center-file-integrity-monitoring/workspace-fim-status.png" alt-text="FIM indítása":::
 
    A Windows és a Linux ajánlott beállításai is szerepelnek a felsorolásban.  Bontsa ki a **Windows-fájlok**, a **beállításjegyzék**és a **Linux-fájlok** elemet a javasolt elemek teljes listájának megtekintéséhez.
 
-1. Törölje azokat az ajánlott entitásokat, amelyeket nem kíván alkalmazni a FIM használatával.
+1. Törölje a jelölőnégyzeteket azokhoz az ajánlott entitásokhoz, amelyeket nem szeretne a FIM által figyelni.
 
 1. A FIM engedélyezéséhez válassza a **Fájlszűrő-figyelés alkalmazása** lehetőséget.
 
@@ -141,10 +139,12 @@ A FIM engedélyezése munkaterületen:
 > Bármikor módosíthatja a beállításokat. További információért lásd: a [figyelt entitások szerkesztése](#edit-monitored-entities) .
 
 
-## <a name="view-the-fim-dashboard"></a>A FIM-irányítópult megtekintése
+
+## <a name="audit-monitored-workspaces"></a>Figyelt munkaterületek naplózása 
+
 A **fájl integritás-figyelési** irányítópultja megjeleníti azokat a munkaterületeket, amelyeken engedélyezve van a FIM. A FIM-irányítópult megnyílik, miután engedélyezte a FIM használatát egy munkaterületen, vagy ha kiválaszt egy munkaterületet a **fájl integritásának figyelése** ablakban, amelyen már engedélyezve van a FIM.
 
-![A fájl integritásának figyelése irányítópult][6]
+:::image type="content" source="./media/security-center-file-integrity-monitoring/fim-dashboard.png" alt-text="FIM indítása":::
 
 A munkaterület FIM-irányítópultja a következő adatokat jeleníti meg:
 
@@ -153,11 +153,11 @@ A munkaterület FIM-irányítópultja a következő adatokat jeleníti meg:
 - A változás típusának részletezése (fájlok, beállításjegyzék)
 - A módosítási kategória részletezése (módosított, hozzáadott, eltávolított)
 
-Az irányítópult tetején található szűrő kiválasztásával azt az időtartamot alkalmazhatja, amelyen a módosításokat látni szeretné.
+Az irányítópult tetején található **szűrő** lehetőségre kattintva módosíthatja azt az időtartamot, ameddig a módosítások megjelennek.
 
-![Időszak szűrője][7]
+:::image type="content" source="./media/security-center-file-integrity-monitoring/dashboard-filter.png" alt-text="FIM indítása":::
 
-A **számítógépek** lap (fent látható) felsorolja a munkaterületnek jelentett összes gépet. Az irányítópultok az egyes gépeknél a következőket sorolja fel:
+A **kiszolgálók** lap felsorolja a munkaterületnek jelentett gépeket. Az irányítópultok az egyes gépeknél a következőket sorolja fel:
 
 - A kiválasztott időszakban történt összes módosítás
 - A módosítások vagy a beállításjegyzék változásainak teljes változásainak részletezése
@@ -251,7 +251,7 @@ A FIM letiltható. A FIM az Azure Change Tracking megoldást használja a körny
 
 4. A letiltáshoz válassza az **Eltávolítás** lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a cikkben megtanulta, hogyan használhatja a fájlok integritásának figyelését (FIM) a Security Centerban. Ha többet szeretne megtudni a Security Centerről, tekintse meg a következő lapokat:
 
 * [Biztonsági házirendek beállítása](tutorial-security-policy.md) – megtudhatja, hogyan konfigurálhat biztonsági házirendeket az Azure-előfizetések és-erőforráscsoportok számára.
@@ -260,11 +260,9 @@ Ebben a cikkben megtanulta, hogyan használhatja a fájlok integritásának figy
 
 <!--Image references-->
 [1]: ./media/security-center-file-integrity-monitoring/security-center-dashboard.png
-[2]: ./media/security-center-file-integrity-monitoring/file-integrity-monitoring.png
 [3]: ./media/security-center-file-integrity-monitoring/enable.png
 [4]: ./media/security-center-file-integrity-monitoring/upgrade-plan.png
 [5]: ./media/security-center-file-integrity-monitoring/enable-fim.png
-[6]: ./media/security-center-file-integrity-monitoring/fim-dashboard.png
 [7]: ./media/security-center-file-integrity-monitoring/filter.png
 [8]: ./media/security-center-file-integrity-monitoring/log-search.png
 [9]: ./media/security-center-file-integrity-monitoring/changes-tab.png

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: ba079e76ea806bb12bff16eb636d0fa21b0e152b
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 292e446d5b713a43f77ee5e579d7e6dd5905ff69
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87461731"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448521"
 ---
 # <a name="delete-and-recover-azure-log-analytics-workspace"></a>Az Azure Log Analytics munkaterület törlése és helyreállítása
 
@@ -47,7 +47,7 @@ A munkaterületeket a [PowerShell](/powershell/module/azurerm.operationalinsight
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
 2. A Azure Portal válassza a **minden szolgáltatás**lehetőséget. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza **log Analytics munkaterületek**lehetőséget.
-3. A Log Analytics munkaterületek listájában válasszon ki egy munkaterületet, majd kattintson a középső ablaktábla tetején található **Törlés** elemre.
+3. A Log Analytics munkaterületek listájában válasszon ki egy munkaterületet, majd kattintson a középső ablaktábla tetején található **Törlés**  elemre.
 4. Megjelenik egy megerősítő lap, amely megjeleníti az adatfeldolgozást a munkaterületre az elmúlt héten. A megerősítéshez írja be a munkaterület nevét, majd kattintson a **Törlés**gombra.
 
    ![Munkaterület törlésének megerősítése](media/delete-workspace/workspace-delete.png)
@@ -78,7 +78,7 @@ A munkaterületet helyreállíthatja a Soft-delete időszakban, beleértve az ad
 - Előfizetés azonosítója
 - Erőforráscsoport neve
 - Munkaterület neve
-- Régió
+- Region
 
 ### <a name="azure-portal"></a>Azure Portal
 
@@ -86,11 +86,11 @@ A munkaterületet helyreállíthatja a Soft-delete időszakban, beleértve az ad
 2. A Azure Portal válassza a **minden szolgáltatás**lehetőséget. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza **log Analytics munkaterületek**lehetőséget. Megjelenik a kiválasztott hatókörben lévő munkaterületek listája.
 3. Kattintson a bal felső menü **helyreállítás** elemére egy olyan oldal megnyitásához, amelyben munkaterületek állíthatók helyre a helyreállítható törlési állapotban.
 
-   ![Munkaterület helyreállítása](media/delete-workspace/recover-menu.png)
+   ![Képernyőfelvétel a Log Analytics munkaterületek képernyőről Azure Portal a menüsávon Kiemelt kiemeléssel.](media/delete-workspace/recover-menu.png)
 
 4. Válassza ki a munkaterületet, majd kattintson a **helyreállítás** elemre a munkaterület helyreállításához.
 
-   ![Munkaterület helyreállítása](media/delete-workspace/recover-workspace.png)
+   ![Képernyőfelvétel a törölt Log Analytics-munkaterületek visszaállítása párbeszédpanelről Azure Portal és a kiválasztott munkaterület lehetőségre, valamint a helyreállítás gombra.](media/delete-workspace/recover-workspace.png)
 
 
 ### <a name="powershell"></a>PowerShell

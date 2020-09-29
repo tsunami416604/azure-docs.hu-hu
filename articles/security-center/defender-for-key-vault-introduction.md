@@ -4,16 +4,16 @@ description: Ismerje meg a Key Vault Azure Defender előnyeit és funkcióit.
 author: memildin
 ms.author: memildin
 ms.date: 9/22/2020
-ms.topic: conceptual
+ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 78a522922f8580003e2d2ff588cbf10dbf5fff9d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6649a8d470a75922aac423bf0b411163bdd79f71
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91301771"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449084"
 ---
 # <a name="introduction-to-azure-defender-for-key-vault"></a>A Key Vault Azure Defender bemutatása
 
@@ -27,7 +27,7 @@ Az Azure **Defender Key Vault** Azure-natív, komplex veszélyforrások elleni v
 |----|:----|
 |Kiadás állapota:|Általánosan elérhető (GA)|
 |Árképzési|Az **Azure Defender for Key Vault** számlázása [a díjszabási oldalon](security-center-pricing.md) látható|
-|Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![No](./media/icons/no-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
+|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Nem](./media/icons/no-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
 |||
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-key-vault"></a>Milyen előnyökkel jár az Azure Defender a Key Vault?

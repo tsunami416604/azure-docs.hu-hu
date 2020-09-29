@@ -4,15 +4,15 @@ description: Ismerje meg, hogy milyen lépésekkel lehet reagálni az Azure Defe
 author: memildin
 ms.author: memildin
 ms.date: 9/22/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: dd153eb1b0e96165bccc807a72bc3614ded49428
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e3eb6b750c805951a67a2e869c862f1285a342a8
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91301686"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448332"
 ---
 # <a name="respond-to-azure-defender-for-key-vault-alerts"></a>Válaszadás Key Vaulthoz készült Azure Defender-riasztásokra
 Ha értesítést kap a Key Vault Azure Defendertől, javasoljuk, hogy vizsgálja meg a riasztást, és válaszoljon az alább leírtak szerint. Az Azure Defender for Key Vault megvédi az alkalmazásokat és a hitelesítő adatokat, így még akkor is, ha már ismeri a riasztást kiváltó alkalmazást vagy felhasználót, fontos, hogy ellenőrizze az összes riasztást körülvevő helyzetet.  
@@ -66,7 +66,7 @@ Ha lefordította a gyanús felhasználó vagy alkalmazás által elért titkok, 
     1. Ha a feltört hitelesítő adatokat használták, az alkalmazás tulajdonosának azonosítania kell az elért adatokat, és csökkentenie kell a hatását.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oldal azt ismerteti, hogyan lehet reagálni az Azure Defender és a Key Vault közötti riasztásokra. A kapcsolódó információk a következő lapokon találhatók:
 

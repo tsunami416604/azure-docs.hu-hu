@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 08/27/2020
-ms.openlocfilehash: 3526510e4cbd77ffe1f468512e1128dcebe9b1da
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 33ad1deff4d543564db1b52bce986b11758042c9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330842"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445056"
 ---
 # <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>Active geo-Replication-Azure SQL Database létrehozása és használata
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -118,7 +118,7 @@ Annak biztosítása érdekében, hogy az alkalmazás azonnal hozzáférhessen az
 
 ## <a name="configuring-secondary-database"></a>Másodlagos adatbázis konfigurálása
 
-Mind az elsődleges, mind a másodlagos adatbázisnak azonos szolgáltatási szinten kell lennie. Javasoljuk továbbá, hogy a másodlagos adatbázis ugyanazzal a számítási mérettel (DTU vagy virtuális mag) legyen létrehozva, mint az elsődleges. Ha az elsődleges adatbázis nagy mennyiségű írási feladatot észlel, akkor előfordulhat, hogy az alacsonyabb számítási mérettel rendelkező másodlagos nem tud lépést tartani. Ennek hatására a rendszer visszakényszeríti a másodlagos, és lehetséges, hogy a másodlagos nem elérhető marad. A kockázatok enyhítése érdekében az aktív földrajzi replikálás az elsődleges tranzakciós naplók sebességét fogja szabályozni, ha szükséges, hogy a formátumú másodlagos zónák fellépjen.
+Mind az elsődleges, mind a másodlagos adatbázisnak azonos szolgáltatási szinten kell lennie. Azt is javasoljuk, hogy a másodlagos adatbázist ugyanazzal a biztonságimásolat-tárolási redundanciával és számítási mérettel (DTU vagy virtuális mag) hozza létre a rendszer elsődlegesként. Ha az elsődleges adatbázis nagy mennyiségű írási feladatot észlel, akkor előfordulhat, hogy az alacsonyabb számítási mérettel rendelkező másodlagos nem tud lépést tartani. Ennek hatására a rendszer visszakényszeríti a másodlagos, és lehetséges, hogy a másodlagos nem elérhető marad. A kockázatok enyhítése érdekében az aktív földrajzi replikálás az elsődleges tranzakciós naplók sebességét fogja szabályozni, ha szükséges, hogy a formátumú másodlagos zónák fellépjen.
 
 Egy kiegyensúlyozatlan másodlagos konfiguráció egy másik következménye, hogy a feladatátvételt követően az alkalmazás teljesítménye az új elsődleges számítási kapacitás hiánya miatt csökkenhet. Ebben az esetben szükség lesz az adatbázis-szolgáltatás céljának a szükséges szintre való skálázására, amely jelentős időt és számítási erőforrásokat is igénybe vehet, és a vertikális Felskálázási folyamat végén [magas rendelkezésre állású](high-availability-sla.md) feladatátvételre lesz szükség.
 
@@ -126,8 +126,13 @@ Ha úgy dönt, hogy az alacsonyabb számítási mérettel hozza létre a másodl
 
 A rendszer a tranzakciós napló sebességét az elsődlegesen a másodlagos számítási méret miatt a HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO WAIT típus használatával jelenti, amely a [sys. dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) és a [sys. dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) adatbázis-nézetekben látható.
 
+Alapértelmezés szerint a másodlagos biztonsági mentési tárterület-redundancia megegyezik az elsődleges adatbázissal. Dönthet úgy, hogy a másodlagost egy másik biztonságimásolat-tárolási redundancia segítségével konfigurálja. A biztonsági mentéseket mindig az elsődleges adatbázison kell elvégezni. Ha a másodlagos konfiguráció eltérő biztonsági mentési tárterülettel van konfigurálva, akkor a feladatátvételt követően a másodlagos előléptetés után a biztonsági mentések számlázása az új elsődleges (előző másodlagos) adattároló-redundancia alapján történik. 
+
 > [!NOTE]
 > A tranzakciós naplók aránya az elsődlegesnél szabályozható olyan okok miatt, amelyek nem kapcsolódnak alacsonyabb számítási mérethez a másodlagosnál. Ez a fajta szabályozás akkor is előfordulhat, ha a másodlagosnál az elsődlegesnél megegyező vagy magasabb számítási méret van. A részletekért, beleértve a különböző naplózási sebességek szabályozására vonatkozó várakozási típusokat, lásd: a [tranzakciós napló arányának szabályozása](resource-limits-logical-server.md#transaction-log-rate-governance).
+
+> [!NOTE]
+> Azure SQL Database konfigurálható biztonsági mentési tár redundancia jelenleg csak nyilvános előzetes verzióban érhető el a Délkelet-ázsiai Azure-régióban. Az előzetes verzióban, ha a forrásadatbázis a helyileg redundáns vagy a Zone-redundáns biztonsági mentési redundanciával jön létre, a másodlagos adatbázis egy másik Azure-régióban való létrehozása nem támogatott. 
 
 A SQL Database számítási méretekkel kapcsolatos további információkért lásd: [Mi a SQL Database szolgáltatási szintek](purchasing-models.md).
 
