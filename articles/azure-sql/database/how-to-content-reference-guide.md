@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: single-database
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: guide
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 01/14/2020
-ms.openlocfilehash: fa79af1047862e8694fa6342942ffd0793bafcb6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9b151e566f0cc3e086277c101a796e7dde059ef9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91335007"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442563"
 ---
 # <a name="configure-and-manage-content-reference---azure-sql-database"></a>Tartalmi referenciák konfigurálása és kezelése – Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -134,6 +134,6 @@ Ebben a cikkben a különböző útmutatókra, parancsfájlokra és magyarázato
 - [SaaS-videóindexelő](saas-tenancy-video-index-wingtip-brk3120-20171011.md)
 - [SaaS-alkalmazásbiztonság](saas-tenancy-elastic-tools-multi-tenant-row-level-security.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ [Az Azure SQL felügyelt példányaival kapcsolatos útmutatókról](../managed-instance/how-to-content-reference-guide.md)

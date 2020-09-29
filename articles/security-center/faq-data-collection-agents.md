@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 78668eaadca872d7c25ab909fad5b9838bbc01d3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 0a368e54c940ff580b7e8f49dd108fafddde5b17
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90894811"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441473"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>Gyakori kérdések – az adatgyűjtés, az ügynökök és a munkaterületek kérdései
 
@@ -166,7 +166,7 @@ Az előfizetésekhez tartozó automatikus kiépítés kikapcsolható a biztonsá
 
 1. Ha az előfizetéshez engedélyezve van az Azure Defender, nyissa meg az előfizetéshez tartozó biztonsági házirendet, és válassza ki az **Azure Defender**szolgáltatást.
 
-   ![Tarifacsomag][1]
+    :::image type="content" source="./media/security-center-platform-migration-faq/pricing-tier.png" alt-text="Az Azure Defender engedélyezése vagy letiltása":::
 
 1. Ezt követően kapcsolja ki az automatikus kiépítés szolgáltatást a **biztonsági házirend – adatgyűjtési** lapon a **kikapcsolás** lehetőség kiválasztásával.
    ![Adatgyűjtés][2]
@@ -200,7 +200,7 @@ Telepítse manuálisan a Log Analytics-ügynök bővítményét, hogy Security C
 
 Az ügynököt bármely meglévő egyéni munkaterülethez vagy Security Center létrehozott munkaterülethez is összekapcsolhatjuk. Ha egy egyéni munkaterületen nincs engedélyezve a "biztonság" vagy a "SecurityCenterFree" megoldás, akkor egy megoldást kell alkalmaznia. Az alkalmazáshoz válassza ki az egyéni munkaterületet vagy előfizetést, és alkalmazza a díjszabási szintet a **biztonsági házirend – díjszabási** csomag lapon.
 
-   ![Tarifacsomag][1]
+:::image type="content" source="./media/security-center-platform-migration-faq/pricing-tier.png" alt-text="Az Azure Defender engedélyezése vagy letiltása":::
 
 Security Center a kiválasztott díjszabási csomag alapján engedélyezi a megfelelő megoldást a munkaterületen.
 
@@ -271,7 +271,6 @@ Az ügynök a rendszererőforrások névleges mennyiségét használja fel, és 
 
 
 <!--Image references-->
-[1]: ./media/security-center-platform-migration-faq/pricing-tier.png
 [2]: ./media/security-center-platform-migration-faq/data-collection.png
 [3]: ./media/security-center-platform-migration-faq/remove-the-agent.png
 [4]: ./media/security-center-platform-migration-faq/use-another-workspace.png

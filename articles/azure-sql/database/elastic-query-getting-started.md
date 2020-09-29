@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scale-out
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 10/10/2019
-ms.openlocfilehash: e743d557f70aaa92e464244d0198debbc25a1e46
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 10be0fc28b53d114a8ff87f01980513ce1759dec
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956899"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91443316"
 ---
 # <a name="report-across-scaled-out-cloud-databases-preview"></a>A kibővített felhőalapú adatbázisok (előzetes verzió) közötti jelentés
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -133,12 +133,12 @@ Az **ügyfelek** tábla összes sora, amely különböző szegmensekben van tár
 
 Mostantól használhatja az Excel hatékony adatvizualizációs funkcióit. A kapcsolati sztringet használhatja a kiszolgáló nevével, az adatbázis nevével és a hitelesítő adatokkal a BI-és adatintegrációs eszközök a rugalmas lekérdezési adatbázishoz való csatlakoztatásához. Győződjön meg arról, hogy a SQL Server támogatott adatforrásként az eszköz számára. A rugalmas lekérdezési adatbázist és a külső táblákat ugyanúgy tekintheti meg, mint bármely más SQL Server adatbázishoz, és SQL Server táblákhoz, amelyeket az eszközhöz szeretne csatlakozni.
 
-### <a name="cost"></a>Költségek
+### <a name="cost"></a>Költség
 A Elastic Database lekérdezési funkció használata nem díjköteles.
 
 A díjszabással kapcsolatos információkért tekintse meg a [SQL Database díjszabását](https://azure.microsoft.com/pricing/details/sql-database/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A rugalmas lekérdezés áttekintését lásd: [rugalmas lekérdezés áttekintése](elastic-query-overview.md).
 * A vertikális particionálással kapcsolatos oktatóanyagért lásd: [Bevezetés az adatbázisok közötti lekérdezéssel (vertikális particionálás)](elastic-query-getting-started-vertical.md).

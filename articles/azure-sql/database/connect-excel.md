@@ -7,17 +7,17 @@ ms.service: sql-database
 ms.subservice: development
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: e0a413847142ee516a06f924dd058578047fb3a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 304ad51bc40c8165c2dc11bb70287491e3d6dfb9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84267511"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91444027"
 ---
 # <a name="connect-excel-to-a-database-in-azure-sql-database-or-azure-sql-managed-instance-and-create-a-report"></a>Az Excel csatolása Azure SQL Database vagy Azure SQL felügyelt példányban található adatbázishoz, és jelentés létrehozása
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -80,10 +80,10 @@ Ha véglegesen szeretné menteni a kapcsolat részleteit, létrehozhat egy. odc-
 
       ![Új kapcsolatok párbeszédpanel](./media/connect-excel/new-connection.png)
 
-2. Az **adatkapcsolatok varázslóban**adja meg a kiszolgáló nevét és a SQL Database hitelesítő adatait. Válassza a **Tovább** lehetőséget.
+2. Az **adatkapcsolatok varázslóban**adja meg a kiszolgáló nevét és a SQL Database hitelesítő adatait. Kattintson a **Tovább** gombra.
    1. Válassza ki azt az adatbázist, amely az adatait tartalmazza a legördülő listából.
    2. Válassza ki azt a táblát vagy nézetet, amelyre kíváncsi. VGetAllCategories választottunk.
-   3. Válassza a **Tovább** lehetőséget.
+   3. Kattintson a **Tovább** gombra.
 
       ![Adatkapcsolatok varázsló](./media/connect-excel/data-connection-wizard.png)
 
@@ -99,7 +99,7 @@ Ha véglegesen szeretné menteni a kapcsolat részleteit, létrehozhat egy. odc-
 
     ![Létező kapcsolatok](./media/connect-excel/existing-connection.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Megtudhatja, hogyan [csatlakozhat és lekérdezéseket SQL Server Management Studio](connect-query-ssms.md) a speciális lekérdezésekhez és elemzésekhez.
 * Tudjon meg többet a [rugalmas készletek](elastic-pool-overview.md) előnyeiről.

@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: performance
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, sstein
 ms.date: 12/19/2018
-ms.openlocfilehash: e96db18993dbb18ebf51d0b30e9172901d10df5b
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 0b7aab13871f1450a3c6907b30b446869b2fefa7
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91398272"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91443882"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Teljesítményre vonatkozó javaslatok keresése és alkalmazása
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -156,11 +156,11 @@ A javaslatok sikeres implementálása után (jelenleg csak az indexelési művel
 
 ![Teljesítmény-hatás figyelése](./media/database-advisor-find-recommendations-portal/query-insights.png)
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Azure SQL Database az adatbázis teljesítményének javítására vonatkozó ajánlásokat tartalmaz. A T-SQL-parancsfájlok nyújtásával segítséget nyújt az adatbázis optimalizálásában, és végül a lekérdezési teljesítmény javításában.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Figyelje a javaslatokat, és alkalmazza őket a teljesítmény pontosítására. Az adatbázis-számítási feladatok dinamikusak, és folyamatosan változnak. Azure SQL Database folytatja az adatbázis teljesítményének növelésére szolgáló javaslatok figyelését és megadását.
 

@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: alzam
-ms.openlocfilehash: aec5a08bf56cd9a9ba18159ffc28a129163571b0
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: c7f71d24ab516044a0ce48ad40f78bc659268866
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89426282"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442168"
 ---
 # <a name="transition-to-openvpn-protocol-or-ikev2-from-sstp"></a>Áttérés az OpenVPN protokollra vagy az SSTP-IKEv2
 
@@ -47,7 +47,7 @@ A IKEv2 meglévő SSTP VPN-átjáróhoz való hozzáadása nem érinti a meglév
 
 Ha IKEv2 szeretne hozzáadni egy meglévő átjáróhoz, egyszerűen nyissa meg a "pont – hely konfiguráció" lapot a portál Virtual Network Átjárójában, és válassza a **IKEv2 és az SSTP (SSL)** lehetőséget a legördülő listából.
 
-![pont – hely kapcsolat](./media/ikev2-openvpn-from-sstp/sstptoikev2.png "IKEv2")
+![A "pont – hely konfiguráció" oldalt megjelenítő képernyőkép, amely a "Tunnel Type" legördülő menüből, a "IKEv2 és az SSTP (SSL)" beállítással jelenik meg.](./media/ikev2-openvpn-from-sstp/sstptoikev2.png "IKEv2")
 
 
 ### <a name="option-2---remove-sstp-and-enable-openvpn-on-the-gateway"></a>2. lehetőség – az SSTP eltávolítása és az OpenVPN engedélyezése az átjárón

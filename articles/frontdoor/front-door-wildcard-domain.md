@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/10/2020
 ms.author: duau
-ms.openlocfilehash: 349c00b312ba7c3f18bab04fb059199732b4f1b3
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: edeaaf97c818831aa1eda5823ea491110f784549
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89398749"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442361"
 ---
 # <a name="wildcard-domains"></a>Helyettesítő karakteres tartományok
 
@@ -72,9 +72,9 @@ Ha nem szeretné, hogy egy WAF-házirend egy altartományhoz fusson, hozzon lét
 Útválasztási szabályok konfigurálásakor kiválaszthatja a helyettesítő karakteres tartományt előtér-gazdagépként. Eltérő útvonal-viselkedést is használhat a helyettesítő tartományokhoz és altartományokhoz. Az Azure-beli [bejárati útvonal egyeztetésének módja](front-door-route-matching.md)című cikkben leírtak szerint a tartományra vonatkozó, a különböző útválasztási szabályokban szereplő legpontosabb egyezés van kiválasztva futásidőben.
 
 > [!IMPORTANT]
-> Az útválasztási szabályokban meg kell egyeznie az elérésiút-mintázattal, vagy az ügyfelek hibaüzeneteket fognak látni. Tegyük fel, hogy két útválasztási szabálya van, például az 1. útvonal (az `*.foo.com/*` A háttér-készlethez leképezve) és a 2-es útvonal ( `bar.foo.com/somePath/*` a B háttér-készletre van leképezve). Ezt követően egy kérelem érkezik a következőre: `bar.foo.com/anotherPath/*` . Az Azure bejárati ajtaja kiválasztja a 2. útvonalat egy adott tartományi egyeztetés alapján, csak az útvonalakon nem talál egyező elérésiút-mintákat.
+> Az útválasztási szabályokban meg kell egyeznie az elérésiút-mintázattal, vagy az ügyfelek hibaüzeneteket fognak látni. Tegyük fel, hogy két útválasztási szabálya van, például az 1. útvonal (az `*.foo.com/*` A háttér-készlethez leképezve) és a 2-es útvonal ( `/bar.foo.com/somePath/*` a B háttér-készletre van leképezve). Ezt követően egy kérelem érkezik a következőre: `bar.foo.com/anotherPath/*` . Az Azure bejárati ajtaja kiválasztja a 2. útvonalat egy adott tartományi egyeztetés alapján, csak az útvonalakon nem talál egyező elérésiút-mintákat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerje meg, hogyan [hozhat létre Azure-beli bejárati profilt](quickstart-create-front-door.md).
 - Megtudhatja, hogyan [adhat hozzá egyéni tartományt az Azure](front-door-custom-domain.md)-beli előtérben.

@@ -6,17 +6,17 @@ ms.service: sql-db-mi
 ms.subservice: performance
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, sstein
 ms.date: 12/03/2019
-ms.openlocfilehash: dfd21a38c46238dbd9d58d3eae5b3f9414d3c5fc
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 35fc4b18ee5a98270f715a969354df2be5000150
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91284499"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91444093"
 ---
 # <a name="enable-automatic-tuning-in-the-azure-portal-to-monitor-queries-and-improve-workload-performance"></a>A Azure Portal automatikus hangolásának engedélyezése a lekérdezések figyeléséhez és a munkaterhelés teljesítményének növeléséhez
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -125,7 +125,7 @@ Az automatikus hangolás használatához a felhasználónak való megadáshoz mi
 
 Lásd az [e-mail értesítések automatikus finomhangolása](automatic-tuning-email-notifications-configure.md) útmutatót.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az automatikus hangolással kapcsolatos további információkért olvassa el az automatikus finomhangolásról szóló [cikket](automatic-tuning-overview.md) , és azt, hogy miként segíthet a teljesítmény javításában.
 - Tekintse meg a teljesítményre vonatkozó [javaslatokat](database-advisor-implement-performance-recommendations.md) a Azure SQL Database teljesítményével kapcsolatos javaslatok áttekintéséhez.

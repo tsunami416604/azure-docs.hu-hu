@@ -4,17 +4,17 @@ description: Azure AD Guest-felhasználók létrehozása és Azure ad-rendszerga
 ms.service: sql-db-mi
 ms.subservice: security
 ms.custom: azure-synapse
-ms.topic: conceptual
+ms.topic: how-to
 author: shohamMSFT
 ms.author: shohamd
 ms.reviewer: vanto
 ms.date: 07/27/2020
-ms.openlocfilehash: 2c8aa39b6819e135181e2d153825e89686359538
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: aa74489a962708a1d3d5e6835f684e5cb8fc548b
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053762"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91444353"
 ---
 # <a name="create-azure-ad-guest-users-and-set-as-an-azure-ad-admin"></a>Azure AD-vendégfelhasználók létrehozása és beállítása Azure AD-rendszergazdaként
 
@@ -137,7 +137,7 @@ A Azure Portal korlátozással rendelkezik, amely megakadályozza az Azure AD ve
 
 Ez a funkció a szolgáltatás általános elérhetősége előtt lesz engedélyezve az SQL felügyelt példánya számára.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure AD-hitelesítés konfigurálása és kezelése az Azure SQL-sel](authentication-aad-configure.md)
 - [Multi-Factor Azure Active Directory hitelesítés használata](authentication-mfa-ssms-overview.md)

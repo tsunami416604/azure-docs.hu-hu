@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 50f7af3bb1ad543dea0263304b82287225500a21
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 29187ef99ce6628359819739ab5e4b34213eeb8a
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526884"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441629"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Az Azure Multi-Factor Authentication beállításainak konfigurálása
 
@@ -31,7 +31,7 @@ A Azure Portal a következő Azure Multi-Factor Authentication beállítások é
 | [Felhasználók blokkolása/feloldása](#block-and-unblock-users) | Blokkolhatja, hogy bizonyos felhasználók képesek legyenek Azure Multi-Factor Authentication kérelmeket fogadni. A letiltott felhasználók összes hitelesítési kísérlete automatikusan el lesz utasítva. A felhasználók a blokkolt időponttól számítva 90 napig, vagy manuálisan feloldják a zárolást. |
 | [Csalási riasztás](#fraud-alert) | Olyan beállítások konfigurálása, amelyek lehetővé teszik a felhasználók számára a csalárd ellenőrzési kérelmek jelentését. |
 | [Értesítések](#notifications) | Az MFA-kiszolgálóról érkező események értesítéseinek engedélyezése. |
-| [ESKÜ tokenek](concept-authentication-oath-tokens.md) | Felhőalapú Azure MFA-környezetekben használatos a felhasználók eskü-jogkivonatának kezeléséhez. |
+| [OATH-jogkivonatok](concept-authentication-oath-tokens.md) | Felhőalapú Azure MFA-környezetekben használatos a felhasználók eskü-jogkivonatának kezeléséhez. |
 | [Telefonhívás beállításai](#phone-call-settings) | A Felhőbeli és a helyszíni környezetekhez kapcsolódó telefonhívások és üdvözlések beállításainak konfigurálása. |
 | Szolgáltatók | Ez megjeleníti a fiókjához esetlegesen hozzárendelt meglévő hitelesítési szolgáltatókat is. Az új hitelesítési szolgáltatók nem hozhatók létre szeptember 1-től 2018-ig |
 
@@ -57,7 +57,7 @@ A fiókzárolás beállításainak konfigurálásához hajtsa végre az alábbi 
 
 ## <a name="block-and-unblock-users"></a>Felhasználók blokkolása és feloldása
 
-Ha a felhasználó eszközét elvesztette vagy ellopták, letilthatja a társított fiók hitelesítési kísérleteit. A letiltott felhasználók összes hitelesítési kísérlete automatikusan el lesz utasítva. A felhasználók a letiltás időpontjától kezdve 90 napig letiltva maradnak.
+Ha a felhasználó eszközét elvesztette vagy ellopták, letilthatja a társított fiókhoz tartozó Azure Multi-Factor Authentication-kísérleteket. A rendszer a blokkolt felhasználókra vonatkozó összes Azure-Multi-Factor Authentication automatikusan megtagadja. A felhasználók a letiltás időpontjától kezdve 90 napig letiltva maradnak.
 
 ### <a name="block-a-user"></a>Felhasználó blokkolása
 
@@ -85,7 +85,7 @@ A csalások riasztási funkciója lehetővé teszi, hogy a felhasználók csalá
 
 A következő csalási riasztások konfigurációs beállításai érhetők el:
 
-* A **csalást bejelentő felhasználók automatikus letiltása**: Ha egy felhasználó csalást jelez, a fiókja 90 napig blokkolva van, vagy amíg a rendszergazda fel nem oldja a fiókját. A rendszergazdák a bejelentkezési jelentés segítségével ellenőrizhetik a bejelentkezéseket, és megtehetik a megfelelő lépéseket a jövőbeli csalások megelőzése érdekében. A rendszergazdák Ezután [letilthatják](#unblock-a-user) a felhasználó fiókját.
+* A **csalást bejelentő felhasználók automatikus letiltása**: Ha egy felhasználó csalást jelez, a felhasználói fiókhoz tartozó Azure MFA hitelesítési kísérletek 90 napig le vannak tiltva, vagy amíg a rendszergazda fel nem oldja a fiókját. A rendszergazdák a bejelentkezési jelentés segítségével ellenőrizhetik a bejelentkezéseket, és megtehetik a megfelelő lépéseket a jövőbeli csalások megelőzése érdekében. A rendszergazdák Ezután [letilthatják](#unblock-a-user) a felhasználó fiókját.
 * **Kód a csalás bejelentéséhez a kezdeti üdvözlés során**: Ha a felhasználók telefonhívást kapnak a többtényezős hitelesítés végrehajtásához, a rendszer általában megnyomja a **#** Bejelentkezés megerősítését. A csalások jelentéséhez a felhasználónak be kell írnia egy kódot a gomb megnyomása előtt **#** . Alapértelmezés szerint ez a kód **0** , de testre is szabhatja.
 
    > [!NOTE]
@@ -115,7 +115,7 @@ A csalások riasztási értesítéseinek konfigurálásához hajtsa végre az al
 1. Meglévő e-mail-cím eltávolításához válassza a kívánt e-mail-cím melletti **...** lehetőséget, majd válassza a **Törlés**lehetőséget.
 1. Ha elkészült, válassza a **Mentés**lehetőséget.
 
-## <a name="oath-tokens"></a>ESKÜ tokenek
+## <a name="oath-tokens"></a>OATH-jogkivonatok
 
 Az Azure AD az eskü-TOTP SHA-1 tokenek használatát támogatja, amelyek 30 vagy 60 másodpercenként frissítik a kódokat. Az ügyfelek megvásárolhatják ezeket a jogkivonatokat a választott gyártótól.
 
@@ -268,7 +268,7 @@ A következő lépések végrehajtásával feltételes hozzáférési szabályok
 1. Adja meg a hely nevét.
 1. Válassza **a megjelölés megbízható helyként**lehetőséget.
 1. Adja meg az IP-címtartományt CIDR-jelöléssel a környezethez, például *40.77.182.32/27*.
-1. Válassza a **Létrehozás** lehetőséget.
+1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="enable-the-trusted-ips-feature-by-using-conditional-access"></a>A megbízható IP-címek funkciójának engedélyezése feltételes hozzáférés használatával
 
@@ -287,7 +287,7 @@ A megbízható IP-címek feltételes hozzáférési házirendek használatával 
       * Egyetlen IP-cím esetén használjon olyan jelölést, mint a **xxx.xxx.xxx.xxx/32**.
       * Akár 50 IP-címtartományt is megadhat. Azok a felhasználók, akik ezen IP-címekről jelentkeznek be, megkerülik a többtényezős hitelesítést.
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 ### <a name="enable-the-trusted-ips-feature-by-using-service-settings"></a>A megbízható IP-címek funkció engedélyezése a szolgáltatás beállításai alapján
 
@@ -307,7 +307,7 @@ Ha nem kíván feltételes hozzáférési szabályzatokat használni a megbízha
       * Egyetlen IP-cím esetén használjon olyan jelölést, mint a **xxx.xxx.xxx.xxx/32**.
       * Akár 50 IP-címtartományt is megadhat. Azok a felhasználók, akik ezen IP-címekről jelentkeznek be, megkerülik a többtényezős hitelesítést.
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 ## <a name="verification-methods"></a>Ellenőrzési módszerek
 
@@ -368,12 +368,12 @@ A következő lépések végrehajtásával engedélyezheti és konfigurálhatja,
 1. A Multi-Factor Authentication területen válassza a **szolgáltatás beállításai**elemet.
 1. A **Szolgáltatásbeállítások** lapon, a **többtényezős hitelesítés megjegyzése**területen jelölje be a **többtényezős hitelesítés megadásának engedélyezése a felhasználóknak a megbízható eszközökön** jelölőnégyzetet.
 1. Állítsa be, hogy a rendszer hány napig engedélyezze a megbízható eszközök számára a többtényezős hitelesítés megkerülését. Az optimális felhasználói élmény érdekében az időtartamot *90* vagy több napra kell kiterjeszteni.
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 ### <a name="mark-a-device-as-trusted"></a>Eszköz megjelölése megbízhatóként
 
 Miután engedélyezte a Megjegyzés Multi-Factor Authentication funkciót, a felhasználók a bejelentkezéskor megbízhatóként jelölhetik meg az eszközöket, ha bejelöli a **ne Kérdezzen rá újra**lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha többet szeretne megtudni az Azure-Multi-Factor Authentication használható módszerekről, tekintse meg a [Azure Active Directory a hitelesítési és ellenőrzési módszerek](concept-authentication-methods.md) című témakört.

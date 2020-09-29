@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/12/2019
-ms.openlocfilehash: 049c30613c358bf22616eaa2042a7fd6e42b9f61
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 489b4bfee1eaa2c381b16e88dbcc0bcb7fd8555f
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326035"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441516"
 ---
 # <a name="integrate-system-center-operations-manager-with-azure-monitor-for-vms-map-feature"></a>System Center Operations Manager integrálása Azure Monitor for VMs Térkép funkcióval
 
@@ -73,11 +73,11 @@ Azure Monitor for VMs Map-integráció konfigurálásához tegye a következőke
 
 6. Nem kötelező: válassza a minden felügyeleti kiszolgáló erőforráskészlet elemet, hogy kommunikáljon Log Analyticsokkal, majd kattintson a **munkaterület hozzáadása**lehetőségre.
 
-    ![A Operations Manager konfigurációs erőforráskészlet](media/service-map-scom/scom-config-pool.png)
+    ![Képernyőfelvétel a Server Pool (kiszolgáló készlet) képernyőről a Microsoft Operations Management Suite munkaterület hozzáadása lehetőséggel az összes felügyeleti kiszolgáló erőforráskészlet kiválasztásával.](media/service-map-scom/scom-config-pool.png)
 
     A Log Analytics munkaterület konfigurálásához és regisztrálásához egy percet is igénybe vehet. A konfigurálást követően Operations Manager elindítja az első Térkép-szinkronizálást.
 
-    ![A Operations Manager konfigurációs erőforráskészlet](media/service-map-scom/scom-config-success.png)
+    ![Képernyőkép a befejezési képernyőről a Microsoft Operations Management Suite hozzáadása munkaterületen, amely megerősíti, hogy a munkaterület hozzá lett adva.](media/service-map-scom/scom-config-success.png)
 
 ## <a name="monitor-integration"></a>Integráció monitorozása
 
@@ -98,11 +98,11 @@ A Service Map mappa négy csomóponttal rendelkezik:
 
 * **Számítógép-függőségi nézetek**: a Térkép szolgáltatásból szinkronizált összes számítógépcsoport listája. A bármely csoportra kattintva megtekintheti az elosztott alkalmazás diagramját.
 
-    ![Az Operations Manager elosztott alkalmazás diagramja](media/service-map-scom/scom-group-dad.png)
+    ![Képernyőkép a Service Mapről, amely megjeleníti az egyes számítógépcsoport lemezképeit, valamint a közöttük fennálló függőségeket jelző sorokat.](media/service-map-scom/scom-group-dad.png)
 
 * **Kiszolgáló-függőségi nézetek**: felsorolja az összes olyan kiszolgálót, amely szinkronizálva van a Térkép szolgáltatásból. A bármely kiszolgálóra kattintva megtekintheti az elosztott alkalmazás diagramját.
 
-    ![Az Operations Manager elosztott alkalmazás diagramja](media/service-map-scom/scom-dad.png)
+    ![Képernyőkép a Service Mapről, amely az egyes kiszolgálók és a közöttük fennálló függőségeket jelző vonalakat ábrázoló képeket mutat be.](media/service-map-scom/scom-dad.png)
 
 ## <a name="edit-or-delete-the-workspace"></a>Munkaterület szerkesztése vagy törlése
 

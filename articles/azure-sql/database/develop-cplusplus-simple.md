@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: development
 ms.custom: sqldbrb=1
 ms.devlang: cpp
-ms.topic: conceptual
+ms.topic: how-to
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/12/2018
-ms.openlocfilehash: 610e21064c26734461ba8fd6639868dc930f926c
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 38e4839a41ad8e58e575e552e877303a5105ff36
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963937"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91443660"
 ---
 # <a name="connect-to-sql-database-using-c-and-c"></a>Kapcsolódás SQL Database C és C++ használatával
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -100,7 +100,7 @@ A következő lépésekkel telepítheti az SQL és az ODBC számára szükséges
     apt-get install unixodbc-dev-utf16 #this step is optional but recommended*
 ```
 
-Indítsa el a Visual Studiót. Az eszközök – > lehetőségek – > platformfüggetlen – > Csatlakozáskezelő, vegyen fel egy kapcsolódást a linuxos Box-hoz:
+Indítsa el a Visual studiót. Az eszközök – > lehetőségek – > platformfüggetlen – > Csatlakozáskezelő, vegyen fel egy kapcsolódást a linuxos Box-hoz:
 
 ![Eszközök beállításai](./media/develop-cplusplus-simple/tools.png)
 

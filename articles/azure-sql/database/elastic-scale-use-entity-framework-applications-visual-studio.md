@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scale-out
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: sample
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/04/2019
-ms.openlocfilehash: b53e37384ba85770b445f834c440075cd35b6eb2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8eafd99f07c64c20565a954216341f3dea9541b0
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84041874"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442657"
 ---
 # <a name="elastic-database-client-library-with-entity-framework"></a>Ügyféloldali kódtár Elastic Database Entity Framework
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -134,7 +134,7 @@ public DbSet<Blog> Blogs { get; set; }
   * A szegmenses Térkép létrehozza a nyitott kapcsolatokat a szegmenshez, amely az adott shardletbe tárolja.
   * Ezt a nyitott kapcsolatot a DbContext alaposztály-konstruktora adja vissza, amely azt jelzi, hogy a kapcsolatot az EF-nek kell használnia ahelyett, hogy az EF új kapcsolatot hozzon létre automatikusan. Ily módon a rendszer a rugalmas adatbázis-ügyfél API-val címkézte a kapcsolatokat, hogy az képes legyen a konzisztencia biztosítására a szegmensek közötti Térkép-felügyeleti műveletek során.
 
-A kódban szereplő alapértelmezett konstruktor helyett használja az új konstruktort a DbContext alosztályhoz. Például:
+A kódban szereplő alapértelmezett konstruktor helyett használja az új konstruktort a DbContext alosztályhoz. Alább bemutatunk egy példát:
 
 ```csharp
 // Create and save a new blog.

@@ -6,17 +6,17 @@ ms.service: sql-db-mi
 ms.subservice: migrate
 ms.custom: sqldbrb=1, devx-track-azurecli, devx-track-azurepowershell
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/20/2019
-ms.openlocfilehash: 574bc4721f83d60fdd8c75b4fedb824522968822
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 5f7aad271f04bcb4eb63472716ea2fe9f98a0e33
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89070044"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91443704"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Gyors útmutató: BACPAC-fájl importálása Azure SQL Database vagy Azure SQL felügyelt példányban található adatbázisba
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -147,6 +147,10 @@ az sql db import --resource-group "<resourceGroup>" --server "<server>" --name "
 
 - A rugalmas készletben lévő adatbázisokba importálás nem támogatott. Az adatokat importálhatja egy önálló adatbázisba, majd az adatbázist áthelyezheti egy rugalmas készletbe.
 - Az importálási exportálási szolgáltatás nem működik, ha az Azure-szolgáltatásokhoz való hozzáférés engedélyezése beállítás ki van kapcsolva. Azonban a probléma megoldásához manuálisan is futtathatja sqlpackage.exe egy Azure-beli virtuális gépről, vagy közvetlenül a kódban végezheti el az exportálást a DACFx API használatával.
+- Az importálás nem támogatja a biztonságimásolat-tárolási redundancia megadását egy új adatbázis létrehozásakor, és az alapértelmezett geo-redundáns biztonságimásolat-tárolási redundanciával hozza létre. A megkerülő megoldáshoz először hozzon létre egy üres adatbázist a kívánt biztonságimásolat-tárolási redundanciával Azure Portal vagy PowerShell használatával, majd importálja a BACPAC ebbe az üres adatbázisba. 
+
+> [!NOTE]
+> Azure SQL Database konfigurálható biztonsági mentési tár redundancia jelenleg csak nyilvános előzetes verzióban érhető el a Délkelet-ázsiai Azure-régióban.
 
 ## <a name="import-using-wizards"></a>Importálás varázslók használatával
 
@@ -155,7 +159,7 @@ Ezeket a varázslókat is használhatja.
 - [Adatrétegbeli alkalmazás importálása varázsló SQL Server Management Studioban](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database#using-the-import-data-tier-application-wizard).
 - [SQL Server Importálás és exportálás varázsló](https://docs.microsoft.com/sql/integration-services/import-export-data/start-the-sql-server-import-and-export-wizard).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ha meg szeretné tudni, hogyan csatlakozhat az adatbázishoz, és hogyan lehet lekérdezéseket Azure SQL Databaseban, tekintse meg a gyors útmutató [: Azure SQL Database: a SQL Server Management Studio használatával csatlakozhat az adatlekérdezéshez](connect-query-ssms.md).
 - További információ a BACPAC-fájlokkal végzett migrálásról az SQL Server ügyféltanácsadói csapat blogján: [Migrálás SQL Serverről az Azure SQL Database-re BACPAC-fájlokkal](https://techcommunity.microsoft.com/t5/DataCAT/Migrating-from-SQL-Server-to-Azure-SQL-Database-using-Bacpac/ba-p/305407).

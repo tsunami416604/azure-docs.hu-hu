@@ -15,12 +15,12 @@ ms.date: 09/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: e504a3ed2d9193bdc85fc08b3ea91c4f4f2c160c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2f96e48d0c7b14178185f751b8c708e75ab3f322
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91329504"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441834"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Az Azure RBAC hibáinak megoldása
 
@@ -63,7 +63,7 @@ $ras.Count
 
     Ez a hiba kétféleképpen oldható fel. Első lépésként rendelje hozzá a [címtár-olvasók](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) szerepkört az egyszerű szolgáltatáshoz, hogy az képes legyen az információk olvasására a címtárban.
 
-    A hiba megoldásának második módja, ha a szerepkör-hozzárendelést a (z `--assignee-object-id` ) helyett a paraméter használatával hozza létre `--assignee` . A használatával `--assignee-object-id` Az Azure CLI kihagyja az Azure ad-keresést. Meg kell kérnie annak a felhasználónak, csoportnak vagy alkalmazásnak az AZONOSÍTÓját, amelyhez hozzá szeretné rendelni a szerepkört. További információ: [Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása az Azure CLI használatával](role-assignments-cli.md#new-service-principal).
+    A hiba megoldásának második módja, ha a szerepkör-hozzárendelést a (z `--assignee-object-id` ) helyett a paraméter használatával hozza létre `--assignee` . A használatával `--assignee-object-id` Az Azure CLI kihagyja az Azure ad-keresést. Meg kell kérnie annak a felhasználónak, csoportnak vagy alkalmazásnak az AZONOSÍTÓját, amelyhez hozzá szeretné rendelni a szerepkört. További információ: [Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása az Azure CLI használatával](role-assignments-cli.md#add-role-assignment-for-a-new-service-principal-at-a-resource-group-scope).
 
     ```azurecli
     az role assignment create --assignee-object-id 11111111-1111-1111-1111-111111111111  --role "Contributor" --scope "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}"
@@ -150,7 +150,7 @@ Hasonlóképpen, ha az Azure CLI használatával sorolja fel ezt a szerepkör-ho
 }
 ```
 
-Nem jelent problémát, ha el szeretné hagyni ezeket a szerepkör-hozzárendeléseket, ahol a rendszerbiztonsági tag törölve lett. Ha szeretné, ezeket a szerepkör-hozzárendeléseket a többi szerepkör-hozzárendeléshez hasonló lépésekkel távolíthatja el. További információ a szerepkör-hozzárendelések eltávolításáról: [Azure Portal](role-assignments-portal.md#remove-a-role-assignment), [Azure POWERSHELL](role-assignments-powershell.md#remove-a-role-assignment)vagy [Azure CLI](role-assignments-cli.md#remove-a-role-assignment)
+Nem jelent problémát, ha el szeretné hagyni ezeket a szerepkör-hozzárendeléseket, ahol a rendszerbiztonsági tag törölve lett. Ha szeretné, ezeket a szerepkör-hozzárendeléseket a többi szerepkör-hozzárendeléshez hasonló lépésekkel távolíthatja el. További információ a szerepkör-hozzárendelések eltávolításáról: [Azure Portal](role-assignments-portal.md#remove-a-role-assignment), [Azure POWERSHELL](role-assignments-powershell.md#remove-a-role-assignment)vagy [Azure CLI](role-assignments-cli.md#remove-role-assignment)
 
 Ha a PowerShellben megpróbálja eltávolítani a szerepkör-hozzárendeléseket az objektumazonosító és a szerepkör-definíció neve alapján, és egynél több szerepkör-hozzárendelés felel meg a paramétereknek, a következő hibaüzenet jelenik meg: "a megadott információ nem képezhető le szerepkör-hozzárendelésre". A következő kimenet a hibaüzenet példáját mutatja be:
 
@@ -245,7 +245,7 @@ A [Azure functions](../azure-functions/functions-overview.md) egyes funkcióinak
 
 Egy olvasó rákattinthat a **platform szolgáltatásai** lapra, majd a **minden beállítás** elemre kattintva megtekintheti a Function alkalmazáshoz kapcsolódó beállításokat (a webalkalmazáshoz hasonlóan), de ezek a beállítások nem módosíthatók. A szolgáltatások eléréséhez szüksége lesz a [közreműködő](built-in-roles.md#contributor) szerepkörre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A vendég felhasználókkal kapcsolatos hibák](role-assignments-external-users.md#troubleshoot)
 - [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure Portal használatával](role-assignments-portal.md)

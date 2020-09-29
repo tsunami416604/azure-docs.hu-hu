@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: security
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/28/2020
-ms.openlocfilehash: bd8c2d68ae5c91f1319fba32ea0eb52ae389751a
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 1d4c29cdb9cf24f87df4acc3556b318a1079810a
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91398762"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91443610"
 ---
 # <a name="get-started-with-sql-database-dynamic-data-masking-with-the-azure-portal"></a>Ismerkedjen meg SQL Database dinamikus adatmaszkolással a Azure Portal
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -57,7 +57,7 @@ Ez a cikk bemutatja, hogyan valósítható meg a [dinamikus adatmaszkolás](dyna
 
 10. Az új vagy frissített maszkolási szabályzat mentéséhez kattintson a **Mentés** gombra az adatmaszkolás konfigurálása lapon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A dinamikus adatmaszkolás áttekintését lásd: [dinamikus adatmaszkolás](dynamic-data-masking-overview.md).
 - A dinamikus adatmaszkolást [Azure SQL Database parancsmagok](https://docs.microsoft.com/powershell/module/az.sql/) vagy a [REST API](https://docs.microsoft.com/rest/api/sql/)használatával is megvalósíthatja.

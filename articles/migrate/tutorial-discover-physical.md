@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan derítheti fel a helyszíni fizikai kiszolgál�
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: 0436ce3a02b6e271a62fe827d1a2d9a8b77dbfbe
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 00fb4073bc8a7b1375f92202b5a6bd0a59a23816
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90600738"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442290"
 ---
 # <a name="tutorial-discover-physical-servers-with-server-assessment"></a>Oktatóanyag: fizikai kiszolgálók felderítése kiszolgáló-értékeléssel
 
@@ -29,7 +29,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!NOTE]
 > Az oktatóanyagok a forgatókönyvek kipróbálásának leggyorsabb elérési útját mutatják be, és az alapértelmezett beállításokat használják.  
 
-Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/), mielőtt hozzákezd.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -37,7 +37,7 @@ Az oktatóanyag megkezdése előtt győződjön meg arról, hogy ezek az előfel
 
 **Követelmény** | **Részletek**
 --- | ---
-**Berendezés** | Szüksége van egy gépre, amelyen futtatni szeretné a Azure Migrate készüléket. A gépnek a következőket kell tartalmaznia:<br/><br/> – A Windows Server 2016 telepítve van. A készülék futtatása a Windows Server 2019 rendszerű gépen nem támogatott.<br/><br/> -16 GB RAM, 8 vCPU, körülbelül 80 GB lemezes tárterület, valamint egy külső virtuális kapcsoló.<br/><br/> -Statikus vagy dinamikus IP-cím, internet-hozzáféréssel, közvetlenül vagy proxyn keresztül.
+**Berendezés** | Szüksége van egy gépre, amelyen futtatni szeretné a Azure Migrate készüléket. A gépnek a következőket kell tartalmaznia:<br/><br/> – A Windows Server 2016 telepítve van. _(Jelenleg a készülék központi telepítése csak Windows Server 2016 rendszeren támogatott.)_<br/><br/> -16 GB RAM, 8 vCPU, körülbelül 80 GB lemezes tárterület<br/><br/> -Statikus vagy dinamikus IP-cím, internet-hozzáféréssel, közvetlenül vagy proxyn keresztül.
 **Windows-kiszolgálók** | Engedélyezze a bejövő kapcsolatokat a WinRM 5985-as porton (HTTP), hogy a készülék lekérje a konfiguráció és a teljesítmény metaadatait.
 **Linux-kiszolgálók** | Bejövő kapcsolatok engedélyezése a 22-es porton (TCP).
 
@@ -47,7 +47,7 @@ Azure Migrate projekt létrehozásához és a Azure Migrate berendezés regisztr
 - Közreműködő vagy tulajdonosi engedélyek egy Azure-előfizetéshez.
 - Azure Active Directory alkalmazások regisztrálásához szükséges engedélyek.
 
-Ha csak az ingyenes Azure-fiókot hozta létre, akkor Ön az előfizetés tulajdonosa. Ha nem Ön az előfizetés tulajdonosa, a tulajdonossal együtt az alábbi módon rendelheti hozzá az engedélyeket:
+Ha most hozott létre egy ingyenes Azure-fiókot, akkor Ön az előfizetés tulajdonosa. Ha nem Ön az előfizetés tulajdonosa, a tulajdonossal együtt az alábbi módon rendelheti hozzá az engedélyeket:
 
 1. A Azure Portal keressen rá az "előfizetések" kifejezésre, és a **szolgáltatások**területen válassza az **előfizetések**lehetőséget.
 
@@ -69,7 +69,7 @@ Ha csak az ingyenes Azure-fiókot hozta létre, akkor Ön az előfizetés tulajd
 
     ![A felhasználók által Active Directory alkalmazások regisztrálásához használt felhasználói beállítások ellenőrzése](./media/tutorial-discover-physical/register-apps.png)
 
-
+9. Másik lehetőségként a bérlő/globális rendszergazda hozzárendelheti az **alkalmazás fejlesztői** szerepkörét egy fiókhoz, hogy engedélyezze a HRE-alkalmazás (ok) regisztrációját. [További információ](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md).
 
 ## <a name="prepare-physical-servers"></a>Fizikai kiszolgálók előkészítése
 
@@ -113,7 +113,7 @@ A készülék beállítása:
 
 ### <a name="generate-the-azure-migrate-project-key"></a>A Azure Migrate projekt kulcsának előállítása
 
-1. Az **áttelepítési célok**  >  **kiszolgálói**  >  **Azure Migrate: kiszolgáló értékelése**területen válassza a **felderítés**lehetőséget.
+1. A **Migrálási célok** > **Kiszolgálók** > **Azure Migrate: Kiszolgáló értékelése** területen válassza a **Felderítés** lehetőséget.
 2. A **Discover Machines**szolgáltatásban  >  **a gépek virtualizáltak?**, válassza a **fizikai vagy egyéb (AWS, GCP, Xen stb.)** lehetőséget.
 3. **1.: Azure Migrate Project-kulcs létrehozásakor**adja meg a fizikai vagy virtuális kiszolgálók felderítéséhez beállítani kívánt Azure Migrate berendezés nevét. A névnek legfeljebb 14 karakterből kell állnia.
 1. Kattintson a **kulcs létrehozása** lehetőségre a szükséges Azure-erőforrások létrehozásának elindításához. Az erőforrások létrehozásakor ne zárja be a gépek felderítése lapot.
@@ -139,13 +139,13 @@ A telepítése előtt győződjön meg arról, hogy a tömörített fájl bizton
 
         **Forgatókönyv** | **Letöltés*** | **Kivonat értéke**
         --- | --- | ---
-        Fizikai (85 MB) | [Legújabb verzió](https://go.microsoft.com/fwlink/?linkid=2140334) | 207157bab39303dca1c2b93562d6f1deaa05aa7c992f480138e17977641163fb
+        Fizikai (85,8 MB) | [Legújabb verzió](https://go.microsoft.com/fwlink/?linkid=2140334) | ce5e6f0507936def8020eb7b3109173dad60fc51dd39c3bd23099bc9baaabe29
 
     - Azure Government esetén:
 
         **Forgatókönyv** | **Letöltés*** | **Kivonat értéke**
         --- | --- | ---
-        Fizikai (85 MB) | [Legújabb verzió](https://go.microsoft.com/fwlink/?linkid=2140338) | ca67e8dbe21d113ca93bfe94c1003ab7faba50472cb03972d642be8a466f78ce
+        Fizikai (85,8 MB) | [Legújabb verzió](https://go.microsoft.com/fwlink/?linkid=2140338) | ae132ebc574caf231bf41886891040ffa7abbe150c8b50436818b69e58622276
  
 
 ### <a name="run-the-azure-migrate-installer-script"></a>A Azure Migrate telepítő parancsfájl futtatása
@@ -239,7 +239,7 @@ Ez elindítja a felderítést. Kiszolgálónként körülbelül 2 percet vesz ig
 
 A felderítés befejeződése után ellenőrizheti, hogy a kiszolgálók megjelennek-e a portálon.
 
-1. Nyissa meg a Azure Migrate irányítópultot.
+1. Nyissa meg az Azure Migrate irányítópultját.
 2. A **Azure Migrate-Servers**  >  **Azure Migrate: kiszolgáló értékelése** lapon kattintson arra az ikonra, amely megjeleníti a **felderített kiszolgálók**darabszámát.
 ## <a name="next-steps"></a>További lépések
 

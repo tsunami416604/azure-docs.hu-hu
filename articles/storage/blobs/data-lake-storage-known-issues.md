@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/26/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: fd500b80f0c564fc0f4c7e311483790a83a4101a
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: c1e9e3d63e8a4f7fe461e2d33603da91d3d9bec6
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88923738"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441777"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Ismert problémák a Azure Data Lake Storage Gen2
 
@@ -96,7 +96,7 @@ Ha a tárolóhoz [Névtelen olvasási hozzáférés](storage-manage-access-to-re
 
 ### <a name="diagnostic-logs"></a>Diagnosztikai naplók
 
-A diagnosztikai naplók még nem engedélyezhetők a Azure Portal használatával. A PowerShell használatával is engedélyezheti őket. Például:
+A diagnosztikai naplók még nem engedélyezhetők a Azure Portal használatával. A PowerShell használatával is engedélyezheti őket. Példa:
 
 ```powershell
 #To login
@@ -113,11 +113,9 @@ A megőrzési napok beállítása még nem támogatott, de a naplókat manuális
 
 ### <a name="lifecycle-management-policies"></a>Életciklus-kezelési szabályzatok
 
-- Az életciklus-kezelési házirendek még nem támogatottak a Premium BlockBlobStorage Storage-fiókokban. 
+- Az életciklus-kezelési házirendek csak az általános célú v2-fiókok esetében támogatottak. A Premium BlockBlobStorage Storage-fiókokban még nem támogatottak.
+- Az adatok nem helyezhetők át a prémium szintről az alacsonyabb szintekre.
 
-- Az adatok nem helyezhetők át a prémium szintről az alacsonyabb szintekre. 
-
-- A **blob törlése** művelet jelenleg nem támogatott. 
 
 ### <a name="hdinsight-support"></a>HDInsight-támogatás
 

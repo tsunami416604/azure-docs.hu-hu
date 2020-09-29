@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scale-out
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: 1cd03814e1590abebb74db490a2692d492a9207d
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 02ec24677519902c299babb72e089f75dcf8b34b
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88064944"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91443032"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>Felosztási-egyesítési szolgáltatás üzembe helyezése a szilánkokra osztott adatbázisok közötti adatáthelyezéshez
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -68,7 +68,7 @@ A fájlok a **Microsoft. Azure. SqlDatabase. ElasticScale. Service. SplitMerge. 
 
 1. A **SplitMergeWorker** szerepkörhöz adjon meg egy érvényes kapcsolódási karakterláncot az Azure Storage-hoz az **WorkerRoleSynchronizationStorageAccountConnectionString** beállításhoz.
 
-### <a name="configure-security"></a>A biztonság konfigurálása
+### <a name="configure-security"></a>Biztonság konfigurálása
 
 A szolgáltatás biztonságának konfigurálásával kapcsolatos részletes utasításokért tekintse meg a [felosztás – egyesítés biztonsági konfigurációját](elastic-scale-split-merge-security-configuration.md).
 
@@ -141,7 +141,7 @@ Vegye figyelembe, hogy az éles üzembe helyezések esetében külön tanúsítv
 
 ## <a name="deploy-your-service"></a>A szolgáltatás üzembe helyezése
 
-1. Ugrás a [Azure Portal](https://portal.azure.com)
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com)
 2. Válassza ki a korábban létrehozott Cloud Service-t.
 3. Kattintson az **Áttekintés** elemre.
 4. Válassza ki az átmeneti környezetet, majd kattintson a **feltöltés**elemre.
@@ -182,7 +182,7 @@ A parancsfájl fájljai a következők:
 1. *SetupSampleSplitMergeEnvironment.ps1* – egy tesztelési adatréteget állít be a felosztáshoz/egyesítéshez (lásd az alábbi táblázatot a részletes leíráshoz)
 2. *ExecuteSampleSplitMerge.ps1* – tesztelési műveleteket hajt végre a teszt adatrétegen (lásd az alábbi táblázatot a részletes leíráshoz)
 3. *GetMappings.ps1* – legfelső szintű parancsfájl, amely kinyomtatja a szegmens leképezések aktuális állapotát.
-4. *ShardManagement. psm1* – segítő parancsfájl, amely a ShardManagement API-t csomagolja
+4. *ShardManagement. psm1*  – segítő parancsfájl, amely a ShardManagement API-t csomagolja
 5. *SqlDatabaseHelpers. psm1* – segítő parancsfájl az adatbázisok létrehozásához és kezeléséhez SQL Database
 
    <table style="width:100%">

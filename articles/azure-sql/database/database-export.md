@@ -10,13 +10,13 @@ ms.custom: sqldbrb=2
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 07/16/2019
-ms.topic: conceptual
-ms.openlocfilehash: 9fb638feb254d5789d26cd854c0dcb3ae70da472
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.topic: how-to
+ms.openlocfilehash: b91b7175fa4c7b91fec63a817206fa540813bdb7
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91284329"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91443804"
 ---
 # <a name="export-to-a-bacpac-file---azure-sql-database-and-azure-sql-managed-instance"></a>Exportálás BACPAC-fájlba – Azure SQL Database és az Azure SQL felügyelt példánya
 
@@ -104,7 +104,7 @@ while ($exportStatus.Status -eq "InProgress")
 $exportStatus
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az adatbázisok archiválási célú exportálásának alternatívájaként a biztonsági másolatok hosszú távú [megőrzése](long-term-retention-overview.md)című témakörből megismerheti az önálló adatbázisok és a készletezett adatbázisok hosszú távú biztonsági mentését. Az SQL-ügynök feladatainak használatával ütemezheti az [adatbázis-másolatok biztonsági mentését](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server) a hosszú távú biztonsági mentés alternatívájaként.
 - További információ a BACPAC-fájlokkal végzett migrálásról az SQL Server ügyféltanácsadói csapat blogján: [Migrálás SQL Serverről az Azure SQL Database-re BACPAC-fájlokkal](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/).

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 09/17/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 75d8b63328f71df2f8de22a95c106c5cc18dc28f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d9f7778d1dda159f3ab0c4548912370c85f94eff
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91275208"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441860"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Az Azure Import/Export szolgáltatás használata adatok Azure Blob-tárolóból való exportálására
 
@@ -119,7 +119,7 @@ Amikor az irányítópult jelentést készít a feladatokról, a rendszer elkül
 1. Miután az exportált adattal rendelkező meghajtókat kapott, a BitLocker-kulcsokat a meghajtók zárolásának feloldásához kell kérnie. Lépjen az exportálási feladatokhoz a Azure Portal. Kattintson az **Importálás/exportálás** fülre.
 2. Válassza ki, majd kattintson az exportálási feladatokra a listából. Nyissa meg a **titkosítást** , és másolja a kulcsokat.
 
-   ![Az exportálási feladatokhoz tartozó BitLocker-kulcsok megtekintése](./media/storage-import-export-data-from-blobs/export-from-blob7.png)
+   ![Az exportálási feladatokhoz tartozó BitLocker-kulcsok megtekintése](./media/storage-import-export-data-from-blobs/export-from-blob-7.png)
 
 3. A lemezek zárolásának feloldásához használja a BitLocker kulcsait.
 
@@ -217,7 +217,7 @@ A következő táblázat példákat mutat be a Blobok érvényes elérési útja
    | Egyenlő |$root/logo.bmp |A blob **logo.bmp** exportálása a gyökér tárolóba |
    | Egyenlő |videók/story.mp4 |BLOB- **story.mp4** exportálása a tároló- **videókban** |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A feladatok és a meghajtó állapotának megtekintése](storage-import-export-view-drive-status.md)
 - [Importálási/exportálási követelmények áttekintése](storage-import-export-requirements.md)

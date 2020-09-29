@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scale-out
 ms.custom: seoapril2019, seo-lt-2019, sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 02/07/2019
-ms.openlocfilehash: c4fddcaf786801e13e962c888a154adfdffae9f8
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 6038ec1d83957f20ca6e2759eeb5a88e66c2f77f
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85961829"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91443416"
 ---
 # <a name="create-performance-counters-to-track-performance-of-shard-map-manager"></a>Teljesítményszámlálók létrehozása a szegmenses Térkép kezelőjé teljesítményének nyomon követéséhez
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -66,7 +66,7 @@ A teljesítményszámlálókat a rendszer az összes gyorsítótárazási művel
 * A teljesítmény kategóriájának és számlálóinak létrehozását csak egyszer kell végrehajtani a ShardMapManager objektum létrehozása előtt. A CreatePerformanceCategoryAndCounters () parancs minden végrehajtása törli az előző számlálókat (az összes példány által jelentett adatvesztést), és újakat hoz létre.  
 * A teljesítményszámláló példányai folyamat alapján jönnek létre. A rendszer a gyorsítótárból a szegmensek összes összeomlását vagy eltávolítását eredményezi, és törli a teljesítményszámlálók példányainak törlését.  
 
-### <a name="see-also"></a>Lásd még
+### <a name="see-also"></a>További információ
 
 [Az Elastic Database szolgáltatásainak áttekintése](elastic-scale-introduction.md)  
 

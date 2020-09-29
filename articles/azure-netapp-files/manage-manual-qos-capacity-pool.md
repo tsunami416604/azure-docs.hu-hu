@@ -12,16 +12,16 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 09/28/2020
 ms.author: b-juche
-ms.openlocfilehash: 1bbd6ad9e33aab8d3564865b86485d70df5a108f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d2abb66684738e97ade2a2e67309a4e7b53c4734
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91343323"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442079"
 ---
-# <a name="manage-a-manual-qos-capacity-pool"></a>Manuális QoS-kapacitás készletének kezelése
+# <a name="manage-a-manual-qos-capacity-pool"></a>Manuális QoS-kapacitáskészlet kezelése
 
 Ez a cikk azt ismerteti, hogyan lehet felügyelni a kézi QoS-típust használó kapacitási készletet.  
 
@@ -84,9 +84,18 @@ Ha egy kötetet kézi QoS-kapacitású készletben tárol, igény szerint módos
 
     ![QoS átviteli sebességének módosítása](../media/azure-netapp-files/change-qos-throughput.png)
 
-## <a name="next-steps"></a>Következő lépések  
+## <a name="next-steps"></a>További lépések  
 
 * [Kapacitáskészlet beállítása](azure-netapp-files-set-up-capacity-pool.md)
 * [Az Azure NetApp Files metrikái](azure-netapp-files-metrics.md)
 * [Az Azure NetApp Files teljesítményével kapcsolatos szempontok](azure-netapp-files-performance-considerations.md)
 * [A kapacitási készlettel kapcsolatos problémák elhárítása](troubleshoot-capacity-pools.md)
+* [Az Azure NetApp Files tárhely-hierarchiája](azure-netapp-files-understand-storage-hierarchy.md)
+* [Az Azure NetApp Files szolgáltatásszintjei](azure-netapp-files-service-levels.md)
+* [Az Azure NetApp Files költségmodellje](azure-netapp-files-cost-model.md)
+* [Az Azure NetApp Files erőforráskorlátai](azure-netapp-files-resource-limits.md)
+* [NFS-kötet létrehozása](azure-netapp-files-create-volumes.md)
+* [SMB-kötet létrehozása](azure-netapp-files-create-volumes-smb.md)
+* [Kettős protokollú kötet létrehozása](create-volumes-dual-protocol.md)
+
+

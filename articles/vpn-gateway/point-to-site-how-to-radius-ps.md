@@ -1,18 +1,18 @@
 ---
 title: 'Számítógép összekötése virtuális hálózathoz pont – hely kapcsolat és RADIUS-hitelesítés használatával: PowerShell | Azure'
-description: A Windows és Mac OS X ügyfelek biztonságos csatlakoztatása a virtuális hálózathoz P2S és RADIUS-hitelesítés használatával.
+description: A Windows-és OS X-ügyfelek biztonságos csatlakoztatása a virtuális hálózathoz a P2S és a RADIUS-hitelesítés használatával.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 2a93f612f5aeb5c2d3a4b83d580b9548f45e4c05
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c8d7ae3cd40f118399e5ff60fa0738b07249c5ef
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91329159"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442402"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell"></a>Pont – hely kapcsolat konfigurálása VNet a RADIUS-hitelesítés használatával: PowerShell
 
@@ -28,7 +28,7 @@ A pont–hely VPN-kapcsolat indítása a Windows- és Mac-eszközökről törté
 
 Ez a cikk segítséget nyújt a P2S-konfiguráció konfigurálásához a RADIUS-kiszolgáló használatával történő hitelesítéssel. Ha ehelyett a generált tanúsítványok és a VPN-átjáró natív tanúsítvány-hitelesítés használatával szeretne hitelesítést végezni, tekintse meg [a pont – hely kapcsolat konfigurálása VNet a VPN Gateway natív tanúsítvány-hitelesítéssel](vpn-gateway-howto-point-to-site-rm-ps.md) vagy Azure Active Directory-bérlő létrehozása a Azure Active Directory hitelesítéshez a [P2S OpenVPN protokoll kapcsolataihoz](openvpn-azure-ad-tenant.md) című témakört.
 
-![Összekötő diagram – sugár](./media/point-to-site-how-to-radius-ps/p2sradius.png)
+![Olyan diagram, amely a P2S konfigurációját jeleníti meg a RADIUS-kiszolgáló használatával történő hitelesítéssel.](./media/point-to-site-how-to-radius-ps/p2sradius.png)
 
 A pont–hely kapcsolatok nem igényelnek VPN-eszközt vagy nyilvános IP-címet. A P2S a VPN-kapcsolatokat az SSTP (Secure Socket Tunneling Protocol), az OpenVPN vagy a IKEv2 protokollal hozza létre.
 
@@ -65,7 +65,7 @@ Győződjön meg arról, hogy rendelkezik Azure-előfizetéssel. Ha még nincs A
 
 ### <a name="working-with-azure-powershell"></a>A Azure PowerShell használata
 
-[!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
+[!INCLUDE [PowerShell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
 ### <a name="example-values"></a><a name="example"></a>Példaértékek
 

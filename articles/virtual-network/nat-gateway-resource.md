@@ -13,19 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/11/2020
+ms.date: 09/28/2020
 ms.author: allensu
-ms.openlocfilehash: ef1f8966497492f5a4969aca594c43abdf80945c
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 62c1b323899f03a043904f4b10d5fe3bb551e0f4
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89612907"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441766"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>Virtuális hálózatok tervezése NAT Gateway-erőforrásokkal
 
-A NAT-átjáró erőforrásai [Virtual Network NAT](nat-overview.md) részét képezik, és kimenő internetkapcsolatot biztosítanak a virtuális hálózatok egy vagy több alhálózatához. Annak a virtuális hálózatnak az alhálózata, amelyet a NAT-átjáró használni fog. A NAT a forrás hálózati címfordítást (SNAT) biztosítja egy alhálózat számára.  A NAT-átjáró erőforrásai határozzák meg, hogy a virtuális gépek mely statikus IP-címeket használják a kimenő folyamatok létrehozásakor. A statikus IP-címek a nyilvános IP-címek erőforrásaiból, a nyilvános IP-előtag erőforrásaiból vagy mindkettőből származnak. Ha egy nyilvános IP-előtag erőforrást használ, a rendszer a teljes nyilvános IP-előtag-erőforrás összes IP-címét egy NAT-átjáró erőforrása használja fel. A NAT-átjáró erőforrásai akár 16 statikus IP-címet is használhatnak.
-
+A NAT-átjáró erőforrásai [Virtual Network NAT](nat-overview.md) részét képezik, és kimenő internetkapcsolatot biztosítanak a virtuális hálózatok egy vagy több alhálózatához. Annak a virtuális hálózatnak az alhálózata, amelyet a NAT-átjáró használni fog. A NAT a forrás hálózati címfordítást (SNAT) biztosítja egy alhálózat számára.  A NAT-átjáró erőforrásai határozzák meg, hogy a virtuális gépek mely statikus IP-címeket használják a kimenő folyamatok létrehozásakor. A statikus IP-címek a nyilvános IP-címek erőforrásaiból (PIP), a nyilvános IP-előtag erőforrásaiból vagy mindkettőből származnak. Ha egy nyilvános IP-előtag erőforrást használ, a rendszer a teljes nyilvános IP-előtag-erőforrás összes IP-címét egy NAT-átjáró erőforrása használja fel. A NAT-átjáró erőforrásai akár 16 statikus IP-címet is használhatnak.
 
 <p align="center">
   <img src="media/nat-overview/flow-direction1.svg" alt="Figure depicts a NAT gateway resource that consumes all IP addresses for a public IP prefix and directs that traffic to and from two subnets of virtual machines and a virtual machine scale set." width="256" title="NAT Virtual Network az internet felé">
@@ -231,35 +230,47 @@ Amíg a forgatókönyv működni fog, az állapot modellje és a meghibásodási
 
 Az egyes NAT-átjáró-erőforrások akár 50 GB/s átviteli sebességet is biztosíthatnak. Az üzemelő példányokat több alhálózatra is feloszthatja, és az egyes alhálózatokat vagy alhálózatokat hozzárendelheti egy NAT-átjáróhoz a vertikális felskálázás érdekében.
 
-Az egyes NAT-átjárók a hozzárendelt kimenő IP-címek alapján 64 000-es kapcsolatokat támogatnak.  Tekintse át a következő, a forrásoldali hálózati címfordítással (SNAT) foglalkozó szakaszt, valamint a probléma megoldására vonatkozó útmutatást a [hibaelhárítási cikkben](https://docs.microsoft.com/azure/virtual-network/troubleshoot-nat) .
+Az egyes NAT-átjárók a TCP és az UDP 64 000 folyamatát támogatják a hozzárendelt kimenő IP-címekhez.  Tekintse át a következő, a forrásoldali hálózati címfordítással (SNAT) foglalkozó szakaszt, valamint a probléma megoldására vonatkozó útmutatást a [hibaelhárítási cikkben](https://docs.microsoft.com/azure/virtual-network/troubleshoot-nat) .
 
 ## <a name="source-network-address-translation"></a>Forrás hálózati címfordítás
 
 A forrás hálózati címfordítás (SNAT) egy másik IP-címről származó folyamat forrását írja le.  A NAT-átjáró erőforrásai a SNAT gyakran hivatkoznak a port címfordítás (PAT) használatára. A PAT újraírja a forrás és a forrás portját. A SNAT nem rendelkezik rögzített kapcsolattal a privát címek száma és a lefordított nyilvános címek között.  
 
-### <a name="fundamentals"></a>Alapismeretek
+### <a name="fundamentals"></a>Alapok
 
-Lássunk egy példát négy folyamatra, hogy megismertesse az alapvető koncepciót.  A NAT-átjáró a nyilvános IP-cím erőforrás-65.52.0.2 használja.
+Lássunk egy példát négy folyamatra, hogy megismertesse az alapvető koncepciót.  A NAT-átjáró nyilvános IP-cím típusú erőforrás-65.52.1.1 használ, és a virtuális gép kapcsolatot hoz a 65.52.0.1.
 
 | Folyamat | Forrás rekord | Cél rekord |
 |:---:|:---:|:---:|
 | 1 | 192.168.0.16:4283 | 65.52.0.1:80 |
 | 2 | 192.168.0.16:4284 | 65.52.0.1:80 |
 | 3 | 192.168.0.17.5768 | 65.52.0.1:80 |
-| 4 | 192.168.0.16:4285 | 65.52.0.2:80 |
 
 A folyamat a PAT megtörténte után is így néz ki:
 
 | Folyamat | Forrás rekord | SNAT'ed-forrás rekordja | Cél rekord | 
 |:---:|:---:|:---:|:---:|
-| 1 | 192.168.0.16:4283 | 65.52.0.2:234 | 65.52.0.1:80 |
-| 2 | 192.168.0.16:4284 | 65.52.0.2:235 | 65.52.0.1:80 |
-| 3 | 192.168.0.17.5768 | 65.52.0.2:236 | 65.52.0.1:80 |
-| 4 | 192.168.0.16:4285 | 65.52.0.2:237 | 65.52.0.2:80 |
+| 1 | 192.168.0.16:4283 | **65.52.1.1:1234** | 65.52.0.1:80 |
+| 2 | 192.168.0.16:4284 | **65.52.1.1:1235** | 65.52.0.1:80 |
+| 3 | 192.168.0.17.5768 | **65.52.1.1:1236** | 65.52.0.1:80 |
 
-A cél a folyamat forrását fogja látni a 65.52.0.2 (SNAT-forrás rekord), amely a hozzárendelt portot mutatja.  A PAT, ahogy az előző táblázatban is látható, a port maszkolása SNAT is nevezik.  A több privát forrás egy IP-cím és egy port mögött van.
+A cél a folyamat forrását fogja látni a 65.52.0.1 (SNAT-forrás rekord), amely a hozzárendelt portot mutatja.  A PAT, ahogy az előző táblázatban is látható, a port maszkolása SNAT is nevezik.  A több privát forrás egy IP-cím és egy port mögött van.  
 
-Ne vegyen fel függőséget az adott forrásoldali portok hozzárendelésekor.  Az előző az alapvető koncepció szemléltetése.
+#### <a name="source-snat-port-reuse"></a>forrás (SNAT) portjának újrafelhasználása
+
+A NAT-átjárók felhasználják a forrás-(SNAT-) portok használatát.  A következő példa bemutatja ezt a koncepciót a bájtértékre-készlethez kapcsolódó további folyamatként.  A példában szereplő virtuális gép a 65.52.0.2 folyamat.
+
+| Folyamat | Forrás rekord | Cél rekord |
+|:---:|:---:|:---:|
+| 4 | 192.168.0.16:4285 | 65.52.0.2:80 |
+
+Egy NAT-átjáró valószínűleg lefordítja a 4. folyamatot egy olyan portra, amely más célállomásokhoz is használható.  Az IP-címek kiosztásának megfelelő méretezésével kapcsolatban lásd: [Méretezés](https://docs.microsoft.com/azure/virtual-network/nat-gateway-resource#scaling) további megbeszélésekhez.
+
+| Folyamat | Forrás rekord | SNAT'ed-forrás rekordja | Cél rekord | 
+|:---:|:---:|:---:|:---:|
+| 4 | 192.168.0.16:4285 | 65.52.1.1:**1234** | 65.52.0.2:80 |
+
+A fenti példában nem kell függőséget kiosztani a forrás portjaihoz.  Az előző az alapvető koncepció szemléltetése.
 
 A NAT által biztosított SNAT számos szempontból eltér a [Load Balancer](../load-balancer/load-balancer-outbound-connections.md) .
 
@@ -292,7 +303,12 @@ A NAT méretezése elsősorban a megosztott, elérhető SNAT-készletek felügye
 
 A SNAT egy vagy több nyilvános IP-címre képezi le a magánhálózati címeket, a forrás-és a forrásport újraírásával a folyamatokban. A NAT-átjáró erőforrása a 64 000 portot (SNAT-port) konfigurált nyilvános IP-cím alapján fogja használni a fordításhoz. A NAT-átjáró erőforrásai legfeljebb 16 IP-címet és 1 millió SNAT-portot tudnak méretezni. Ha egy nyilvános IP-előtag-erőforrás van megadva, az előtagon belüli összes IP-cím biztosítja a SNAT-port leltározását. A több nyilvános IP-cím hozzáadása pedig növeli a rendelkezésre álló leltározási SNAT-portokat. A TCP és az UDP külön SNAT-portok és nem kapcsolódók.
 
-A NAT-átjáró erőforrásai felhasználhatják a forrás portjait. Skálázási célokra érdemes feltételezni, hogy minden folyamathoz új SNAT-port szükséges, és a kimenő forgalom számára elérhető IP-címek teljes számát meg kell méretezni.
+A NAT-átjáró erőforrásai felhasználják a forrás-(SNAT-) portok használatát. A skálázási célokra szolgáló tervezési útmutatásként feltételezni kell, hogy minden folyamathoz új SNAT-port szükséges, és a kimenő forgalom számára elérhető IP-címek teljes számát meg kell méretezni.  Alaposan gondolja át, hogy milyen méretezést tervez, és ennek megfelelően kiépíti az IP-címek mennyiségét.
+
+Ha lehetséges, a SNAT-portok a különböző célhelyekre való használata valószínűleg újra felhasználható. A SNAT-portok kimerülésének módszerei azonban sikertelenek lehetnek.  
+
+Lásd például a [SNAT alapjai](https://docs.microsoft.com/azure/virtual-network/nat-gateway-resource#source-network-address-translation) című témakört.
+
 
 ### <a name="protocols"></a>Protokollok
 
@@ -328,7 +344,7 @@ A SNAT-portok 5 másodperc elteltével újra felhasználhatók ugyanarra a cél 
 
 Szeretnénk tudni, hogyan lehet javítani a szolgáltatást. Hiányzik egy képesség? Tegyük fel, hogy mi a következő lépés a [UserVoice for NAT](https://aka.ms/natuservoice)esetében.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További tudnivalók a [Virtual Network NAT](nat-overview.md)-ról.
 * Tudnivalók a [NAT-átjáró erőforrásaira vonatkozó mérőszámokról és riasztásokról](nat-metrics.md).
@@ -344,11 +360,9 @@ Szeretnénk tudni, hogyan lehet javítani a szolgáltatást. Hiányzik egy képe
   - [Sablon](./quickstart-create-nat-gateway-template.md)
 * Tudnivalók a NAT Gateway Resource API-ról
   - [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/natgateways)
-  - [Azure CLI](https://docs.microsoft.com/cli/azure/network/nat/gateway?view=azure-cli-latest)
+  - [Azure CLI](https://docs.microsoft.com/cli/azure/network/nat/gateway)
   - [PowerShell](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway)
 * További információ a [rendelkezésre állási zónákról](../availability-zones/az-overview.md).
 * Ismerje meg a [standard Load balancert](../load-balancer/load-balancer-standard-overview.md).
 * További információ a [rendelkezésre állási zónákról és a standard Load balancerről](../load-balancer/load-balancer-standard-availability-zones.md).
 * [Ossza meg velünk a következőt Virtual Network NAT UserVoice-ben való létrehozásához](https://aka.ms/natuservoice).
-
-

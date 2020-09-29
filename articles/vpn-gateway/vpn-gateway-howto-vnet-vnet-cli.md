@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8ffad738a8f10816f26760fa34c5ce686fac5bad
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 428c24236aad9a57a9d52eb0a6ff3a7aeb9fe541
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401146"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442154"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-azure-cli"></a>Virtuális hálózatok közötti VPN Gateway-kapcsolat konfigurálása az Azure CLI használatával
 
@@ -70,7 +70,7 @@ Ebben a gyakorlatban igény szerint kombinálhatja a konfigurációkat, vagy csa
 
 * [Azonos előfizetésben található virtuális hálózatok](#samesub): a konfiguráció lépései a TestVNet1 és TestVNet4 hálózatot használják.
 
-  ![v2v ábra](./media/vpn-gateway-howto-vnet-vnet-cli/v2vrmps.png)
+  ![Olyan diagram, amely az ugyanazon előfizetésben található V hálók V net – V hálózati lépéseit mutatja.](./media/vpn-gateway-howto-vnet-vnet-cli/v2vrmps.png)
 
 * [Eltérő előfizetésben található virtuális hálózatok](#difsub): a konfiguráció lépései a TestVNet1 és TestVNet5 hálózatot használják.
 

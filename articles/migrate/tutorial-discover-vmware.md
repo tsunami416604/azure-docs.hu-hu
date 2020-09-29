@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan derítheti fel a helyszíni VMware virtuális g
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: cbe1561f58af8f65285ffb005b0232bff8225d3b
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: f39ad3cbc357575f735b963346c8a8b0cc95e7c8
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90604053"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442229"
 ---
 # <a name="tutorial-discover-vmware-vms-with-server-assessment"></a>Oktatóanyag: VMware virtuális gépek felderítése kiszolgáló értékelésével
 
@@ -29,7 +29,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!NOTE]
 > Az oktatóanyagok a forgatókönyvek kipróbálásának leggyorsabb útvonalát mutatják be, és az alapértelmezett beállításokat használják, ahol lehetséges.  
 
-Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/), mielőtt hozzákezd.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -50,7 +50,7 @@ Azure Migrate projekt létrehozásához és a Azure Migrate berendezés regisztr
 - Közreműködő vagy tulajdonosi engedélyek egy Azure-előfizetéshez.
 - Azure Active Directory alkalmazások regisztrálásához szükséges engedélyek.
 
-Ha csak az ingyenes Azure-fiókot hozta létre, akkor Ön az előfizetés tulajdonosa. Ha nem Ön az előfizetés tulajdonosa, a tulajdonossal együtt az alábbi módon rendelheti hozzá az engedélyeket:
+Ha most hozott létre egy ingyenes Azure-fiókot, akkor Ön az előfizetés tulajdonosa. Ha nem Ön az előfizetés tulajdonosa, a tulajdonossal együtt az alábbi módon rendelheti hozzá az engedélyeket:
 
 1. A Azure Portal keressen rá az "előfizetések" kifejezésre, és a **szolgáltatások**területen válassza az **előfizetések**lehetőséget.
 
@@ -72,6 +72,7 @@ Ha csak az ingyenes Azure-fiókot hozta létre, akkor Ön az előfizetés tulajd
 
     ![A felhasználók által Active Directory alkalmazások regisztrálásához használt felhasználói beállítások ellenőrzése](./media/tutorial-discover-vmware/register-apps.png)
 
+9. Másik lehetőségként a bérlő/globális rendszergazda hozzárendelheti az **alkalmazás fejlesztői** szerepkörét egy fiókhoz, hogy engedélyezze a HRE-alkalmazás (ok) regisztrációját. [További információ](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md).
 
 ## <a name="prepare-vmware"></a>A VMware előkészítése
 
@@ -144,7 +145,7 @@ Ha a készüléket a következő PETESEJT-sablonnal szeretné beállítani:
 
 ### <a name="generate-the-azure-migrate-project-key"></a>A Azure Migrate projekt kulcsának előállítása
 
-1. Az **áttelepítési célok**  >  **kiszolgálói**  >  **Azure Migrate: kiszolgáló értékelése**területen válassza a **felderítés**lehetőséget.
+1. A **Migrálási célok** > **Kiszolgálók** > **Azure Migrate: Kiszolgáló értékelése** területen válassza a **Felderítés** lehetőséget.
 2. A **felderítési gépeken**a  >  **gépek virtualizáltak?** területen válassza **az igen, VMware vSphere Hypervisort**.
 3. **1.: Azure Migrate projekt kulcsának létrehozásakor**adja meg a VMWare virtuális gépek felderítéséhez beállított Azure Migrate berendezés nevét. a névnek alfanumerikusnak kell lennie 14 karakternél vagy kevesebb értékkel.
 1. Kattintson a **kulcs létrehozása** lehetőségre a szükséges Azure-erőforrások létrehozásának elindításához. Az erőforrások létrehozásakor ne zárja be a gépek felderítése lapot.
@@ -165,7 +166,7 @@ A telepítése előtt győződjön meg arról, hogy a petesejtek fájlja biztons
   
    ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
    
-   Gyakorlati példa: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
+   Gyakorlati példa: ```C:\>CertUtil -HashFile C:\Users\Administrator\Desktop\MicrosoftAzureMigration.ova SHA256```
 
 3. Ellenőrizze a készülék legújabb verzióit és a kivonatoló értékeket:
 
@@ -173,13 +174,13 @@ A telepítése előtt győződjön meg arról, hogy a petesejtek fájlja biztons
     
         **Algoritmus** | **Letöltés** | **SHA256**
         --- | --- | ---
-        VMware (11,6 GB) | [Legújabb verzió](https://go.microsoft.com/fwlink/?linkid=2140333) | e9c9a1fe4f3ebae81008328e8f3a7933d78ff835ecd871d1b17f367621ce3c74
+        VMware (11,9 GB) | [Legújabb verzió](https://go.microsoft.com/fwlink/?linkid=2140333) | bd5c19eec93a62d52cc507a6b7b408d07f33f92b7d39b8a1e3dfec4ec62830d7
 
     - Azure Government esetén:
     
         **Algoritmus** | **Letöltés** | **SHA256**
         --- | --- | ---
-        VMware (85 MB) | [Legújabb verzió](https://go.microsoft.com/fwlink/?linkid=2140337) | 47179f47eba2842337bbe533c424dd1da56baccdcf68b1d87b71a5a4280108c2
+        VMware (85,8 MB) | [Legújabb verzió](https://go.microsoft.com/fwlink/?linkid=2140337) | 2daaa2a59302bf911e8ef195f8add7d7c8352de77a9af0b860e2a627979085ca
 
 
 

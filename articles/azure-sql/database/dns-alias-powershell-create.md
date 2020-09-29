@@ -7,17 +7,17 @@ services: sql-database
 ms.service: sql-database
 ms.subservice: operations
 ms.devlang: PowerShell
-ms.topic: conceptual
+ms.topic: how-to
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: genemi, amagarwa, maboja, jrasnick, vanto
 ms.date: 05/14/2019
-ms.openlocfilehash: 3acbdd5c933bc2010a26e2039ece378774055d30
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c1006cce4125adf67b9e3009bf8e27c0123acfd1
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84050400"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91443641"
 ---
 # <a name="powershell-for-dns-alias-to-azure-sql-database"></a>PowerShell DNS-aliashoz Azure SQL Database
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -103,7 +103,7 @@ A használt parancsok a következők:
 - az [SQL Server DNS-alias set](https://docs.microsoft.com/powershell/module/az.Sql/Set-azSqlServerDnsAlias): módosítja annak a kiszolgálónak a nevét, amelyre az alias hivatkozik, az 1. kiszolgálóról a 2. kiszolgálóra.
 - az [SQL Server DNS-alias delete](https://docs.microsoft.com/powershell/module/az.Sql/Remove-azSqlServerDnsAlias): távolítsa el az aliast a 2-es kiszolgálóról az alias nevével.
 
-A telepítéshez vagy a frissítéshez lásd: az [Azure CLI telepítése](/cli/azure/install-azure-cli).
+Telepítéshez vagy frissítéshez: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
 
 ```azurecli-interactive
 $subscriptionName = '<subscriptionName>';
@@ -140,6 +140,6 @@ az sql server dns-alias delete –-resource-group $resourceGroupName2 --server $
 
 * * *
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A SQL Database DNS-alias funkciójának részletes ismertetését lásd: [Azure SQL Database DNS-aliasa](../../sql-database/dns-alias-overview.md).

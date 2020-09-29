@@ -7,17 +7,17 @@ ms.service: sql-db-mi
 ms.subservice: high-availability
 ms.custom: sqldbrb=2
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 08/14/2019
-ms.openlocfilehash: a154f9a75a70ed46155424d676d2b2cd8c6df3bf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 42326247117c0710c93b45c896bb6e7cb3a8120f
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91277971"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91444384"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>Feladatátvételi csoport konfigurálása Azure SQL Databasehoz
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -679,7 +679,7 @@ A figyelő végpont formátuma a (z) `fog-name.database.windows.net` , és a Azu
 
 - Egyetlen vagy készletezett adatbázis feladatátvételi csoportjának eltávolítása nem állítja le a replikálást, és nem törli a replikált adatbázist. Manuálisan kell leállítania a Geo-replikálást, és törölnie kell az adatbázist a másodlagos kiszolgálóról, ha az eltávolítását követően egyetlen vagy készletezett adatbázist szeretne visszaadni egy feladatátvételi csoportnak. A művelet elvégzése sikertelen lehet, `The operation cannot be performed due to multiple errors` Ha az adatbázis feladatátvételi csoportba való hozzáadására tett kísérlet során hasonló hibaüzenetet eredményez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A feladatátvételi csoportok konfigurálásának részletes lépéseiért tekintse meg a következő oktatóanyagokat:
 

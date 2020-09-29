@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: data-movement
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: stevestein
 ms.author: sashan
 ms.reviewer: ''
 ms.date: 07/29/2020
-ms.openlocfilehash: f6a3ccbcdb3d29434b196dbf75dc61c4177de271
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 45544d246f1390271300d5ffa1fff1fdc5d9317f
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91284278"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91443790"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>Adatbázis tranzakciós szempontból konzisztens másolatának másolása Azure SQL Database
 
@@ -26,7 +26,10 @@ Azure SQL Database számos módszert biztosít egy meglévő [adatbázis](single
 
 ## <a name="overview"></a>Áttekintés
 
-Az adatbázis-másolat a forrásadatbázis tranzakciós szempontból konzisztens pillanatképe, amely a másolási kérelem elindítása utáni időpontra mutat. Ugyanezt a kiszolgálót vagy egy másik kiszolgálót is kiválaszthat a másoláshoz. Dönthet úgy is, hogy megtartja a szolgáltatási szintet és a forrás-adatbázis számítási méretét, vagy más számítási méretet használ ugyanazon vagy egy másik szolgáltatási szinten belül. A másolás befejezése után teljesen működőképes, független adatbázis lesz. A másolt adatbázisban a bejelentkezések, a felhasználók és az engedélyek a forrás-adatbázistól függetlenül kezelhetők. A másolás a Geo-replikációs technológiával jön létre. Ha a replika index-összehangolása befejeződött, a georeplikációs hivatkozás automatikusan megszűnik. A georeplikáció használatára vonatkozó követelmények az adatbázis-másolási műveletnél is érvényesülnek. Részletekért lásd: az [aktív geo-replikáció áttekintése](active-geo-replication-overview.md) .
+Az adatbázis-másolat a forrásadatbázis tranzakciós szempontból konzisztens pillanatképe, amely a másolási kérelem elindítása utáni időpontra mutat. Ugyanezt a kiszolgálót vagy egy másik kiszolgálót is kiválaszthat a másoláshoz. Dönthet úgy is, hogy megtartja a biztonsági mentési redundanciát, a szolgáltatási szintet és a forrás-adatbázis számítási méretét, vagy a biztonsági mentési tárhelyet, illetve az azonos vagy egy másik szolgáltatási szinten lévő számítási méretet használja. A másolás befejezése után teljesen működőképes, független adatbázis lesz. A másolt adatbázisban a bejelentkezések, a felhasználók és az engedélyek a forrás-adatbázistól függetlenül kezelhetők. A másolás a Geo-replikációs technológiával jön létre. Ha a replika index-összehangolása befejeződött, a georeplikációs hivatkozás automatikusan megszűnik. A georeplikáció használatára vonatkozó követelmények az adatbázis-másolási műveletnél is érvényesülnek. Részletekért lásd: az [aktív geo-replikáció áttekintése](active-geo-replication-overview.md) .
+
+> [!NOTE]
+> Azure SQL Database konfigurálható biztonsági mentési tár redundancia jelenleg csak nyilvános előzetes verzióban érhető el a Délkelet-ázsiai Azure-régióban. Az előzetes verzióban, ha a forrásadatbázis helyileg redundáns vagy Zone-redundáns biztonságimásolat-tárolási redundanciával jön létre, az adatbázis másolása egy másik Azure-régióban található kiszolgálóra nem támogatott. 
 
 ## <a name="logins-in-the-database-copy"></a>Bejelentkezések az adatbázis-másolatban
 
@@ -84,6 +87,9 @@ A forrásadatbázis másolásának megkezdése az [adatbázis létrehozása... A
 > [!NOTE]
 > A T-SQL-utasítás leállítása nem szakítja meg az adatbázis-másolási műveletet. A művelet befejezéséhez dobja el a céladatbázis-adatbázist.
 >
+
+> [!IMPORTANT]
+> Biztonságimásolat-tárolási redundancia kiválasztása a T-SQL CREATE DATABASE használata esetén... A parancs másolása még nem támogatott. 
 
 ### <a name="copy-to-the-same-server"></a>Másolás ugyanarra a kiszolgálóra
 

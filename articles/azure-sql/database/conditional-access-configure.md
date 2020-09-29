@@ -5,19 +5,19 @@ titleSuffix: Azure SQL Database & SQL Managed Instance & Azure Synapse Analytics
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: how-to
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.custom: sqldbrb=1
 ms.date: 04/28/2020
 tag: azure-synpase
-ms.openlocfilehash: 67fef7b192caf064cd7c3b4b6af8923b153ee5b1
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: ad80f68c1ab3b3583c5a22de49b77211571f345e
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985346"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91443981"
 ---
 # <a name="conditional-access-with-azure-sql-database-and-azure-synapse-analytics"></a>Feltételes hozzáférés a Azure SQL Database és az Azure szinapszis Analytics használatával
 
@@ -54,12 +54,12 @@ A következő lépések bemutatják, hogyan konfigurálhatja az Azure SQL Databa
 5. Válassza a **hozzáférés-vezérlés**lehetőséget, válassza a **támogatás**lehetőséget, majd jelölje ki az alkalmazni kívánt szabályzatot. Ebben a példában a **többtényezős hitelesítés megkövetelése**lehetőséget választjuk.  
    ![Válassza a hozzáférés engedélyezése lehetőséget](./media/conditional-access-configure/grant-access.png)  
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 A kiválasztott alkalmazás (Azure SQL Database) prémium szintű Azure AD használatával mostantól kikényszeríti a kiválasztott feltételes hozzáférési szabályzatot, a **szükséges multi-Factor Authentication hitelesítést.**
 
 A többtényezős hitelesítéssel kapcsolatos Azure SQL Database és az Azure szinapszis kérdéseivel kapcsolatban forduljon a következőhöz: <MFAforSQLDB@microsoft.com> .  
 
-## <a name="next-steps"></a>További lépések  
+## <a name="next-steps"></a>Következő lépések  
 
 Oktatóanyagért lásd: [az adatbázis biztonságossá tétele SQL Databaseban](secure-database-tutorial.md).

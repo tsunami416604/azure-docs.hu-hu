@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scale-out
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: anumjs
 ms.author: anjangsh
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 8a7efdee772c3a871fb8f26655dfc1160c275959
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 46eee878ba8cf1d12edf262241d5df8ef8ccc82f
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84044184"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442942"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>Ismerkedés a Elastic Database eszközökkel
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -116,7 +116,7 @@ Gratulálunk! Sikeresen felépítette és futtatta az első felhalmozott alkalma
 
 * A meglévő szegmensek **egyesítése**: a szegmens egyesítéseket a felosztási egyesítés eszköz használatával is elvégezheti. További információ: adatok áthelyezése a kibővített [felhőalapú adatbázisok között](elastic-scale-overview-split-and-merge.md).
 
-## <a name="cost"></a>Költségek
+## <a name="cost"></a>Költség
 
 A Elastic Database-eszközök könyvtára ingyenes. Elastic Database-eszközök használatakor az Azure-használat költségein túl semmilyen további díjat nem kell fizetnie.
 

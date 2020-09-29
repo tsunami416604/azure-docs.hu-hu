@@ -3,12 +3,12 @@ title: VMware-Migrálás támogatása Azure Migrateban
 description: További információ a VMware virtuális gépek áttelepítésének támogatásáról Azure Migrateban.
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: f7fd5b15d9671ed160166d16c1aceda818faa8e0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f41223e9dfa336fdbf64fcfdc56798511f3a5b21
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91318143"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442267"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>A VMware-Migrálás támogatási mátrixa
 
@@ -39,8 +39,8 @@ A táblázat összefoglalja a VMware hypervisor követelményeit.
 
 **VMware** | **Részletek**
 --- | ---
-**VMware vCenter Server** | 5,5, 6,0, 6,5 vagy 6,7.
-**VMware vSphere ESXI-gazdagép** | 5,5, 6,0, 6,5 vagy 6,7.
+**VMware vCenter Server** | Verzió: 5,5, 6,0, 6,5, 6,7, 7,0.
+**VMware vSphere ESXI-gazdagép** | Verzió: 5,5, 6,0, 6,5, 6,7, 7,0.
 **engedélyek vCenter Server** | Az ügynök nélküli áttelepítés az áttelepítési [készüléket](migrate-appliance.md)használja. A készüléknek az alábbi engedélyekkel kell rendelkeznie vCenter Serverban:<br/><br/> - **Adattár. Tallózás**: engedélyezi a virtuális gépek naplófájljainak böngészését a pillanatképek létrehozásával és törlésével kapcsolatos hibák megoldásához.<br/><br/> - **Adattár. FileManagement**: olvasási/írási/törlési/átnevezési műveletek engedélyezése az adattár böngészőben a pillanatképek létrehozásához és törléséhez.<br/><br/> - **VirtualMachine.Config. Változáskövetési**: engedélyezheti vagy letilthatja a virtuálisgép-lemezek módosításának nyomon követését, így a pillanatképek között megváltoztathatja az adatblokkokat.<br/><br/> - **VirtualMachine.Config. DiskLease**: engedélyezze a lemez címbérleti műveleteit a virtuális gépek számára a VMware vSphere Virtual Disk Development Kit (VDDK) használatával történő olvasáshoz.<br/><br/> - **VirtualMachine. kiépítés. DiskAccess**: (kifejezetten a vSphere 6,0-es és újabb verziók esetében) lehetővé teszi, hogy a virtuális gépen lévő lemez megnyitásával véletlenszerű olvasási hozzáférés legyen a LEMEZEN a VDDK használatával.<br/><br/> - **VirtualMachine. kiépítés. DiskRandomRead**: engedélyezze a lemez megnyitását egy virtuális gépen a lemez olvasásához a VDDK használatával.<br/><br/> - **VirtualMachine. kiépítés. DiskRandomAccess**: engedélyezze a lemez megnyitását egy virtuális gépen a lemez olvasásához a VDDK használatával.<br/><br/> - **VirtualMachine. kiépítés. GetVmFiles**: engedélyezi az olvasási műveleteket a virtuális géphez társított fájlokon, letölti a naplókat, és hiba esetén hibaelhárítást végez.<br/><br/> - **VirtualMachine. State. \* **: lehetővé teszi a virtuális gépek pillanatképek létrehozását és kezelését a replikáláshoz.<br/><br/> - **VirtualMachine. Interact. erő**: lehetővé teszi, hogy a virtuális gép ki legyen kapcsolva az Azure-ba való Migrálás során.
 
 
@@ -53,7 +53,7 @@ A táblázat összefoglalja a VMware virtuális gépek ügynök nélküli áttel
 --- | ---
 **Támogatott operációs rendszerek** | Áttelepítheti az Azure által támogatott [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) -és [Linux](../virtual-machines/linux/endorsed-distros.md) -operációs rendszereket.
 **Windows rendszerű virtuális gépek az Azure-ban** | Előfordulhat, hogy a Migrálás előtt [módosításokat kell végeznie](prepare-for-migration.md#verify-required-changes-before-migrating) a virtuális gépeken. 
-**Linux rendszerű virtuális gépek az Azure-ban** | Előfordulhat, hogy egyes virtuális gépek módosításokat igényelnek, hogy az Azure-ban is futtathatók legyenek.<br/><br/> A Linux rendszerben a Azure Migrate automatikusan végrehajtja a módosításokat a következő operációs rendszereken:<br/> -Red Hat Enterprise Linux 8,1, 8,0, 7,8, 7,7, 7,6, 7,5, 7,4, 7,0, 6. x<br/> -Cent OS 8,1, 8,0, 7,7, 7,6, 7,5, 7,4, 6. x</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> -SUSE Linux Enterprise Server 15 SP1 <br/>-Ubuntu 19,04, 19,10, 14.04 LTS, 16.04 LTS, 18.04 LTS<br/> -Debian 7, 8 <br/> Oracle Linux 7,7, 7,7-CI<br/> Más operációs rendszerekhez manuálisan végezze el a [szükséges módosításokat](prepare-for-migration.md#verify-required-changes-before-migrating) .
+**Linux rendszerű virtuális gépek az Azure-ban** | Előfordulhat, hogy egyes virtuális gépek módosításokat igényelnek, hogy az Azure-ban is futtathatók legyenek.<br/><br/> A Linux rendszerben a Azure Migrate automatikusan végrehajtja a módosításokat a következő operációs rendszereken:<br/> -Red Hat Enterprise Linux 7,8, 7,7, 7,6, 7,5, 7,4, 7,0, 6. x<br/> -Cent OS 7,7, 7,6, 7,5, 7,4, 6. x</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> -SUSE Linux Enterprise Server 15 SP1 <br/>-Ubuntu 19,04, 19,10, 14.04 LTS, 16.04 LTS, 18.04 LTS<br/> -Debian 7, 8 <br/> Oracle Linux 7,7, 7,7-CI<br/> Más operációs rendszerekhez manuálisan végezze el a [szükséges módosításokat](prepare-for-migration.md#verify-required-changes-before-migrating) .
 **Linux rendszerű rendszerindítás** | Ha a/boot dedikált partíción van, akkor az operációsrendszer-lemezen kell lennie, és nem szabad több lemezre osztania.<br/> Ha a/boot a gyökér (/) partíció része, akkor a "/" partíciónak az operációsrendszer-lemezen kell lennie, és nem szabad más lemezekre kiterjednie.
 **UEFI-rendszerindítás** | Támogatott. Az UEFI-alapú virtuális gépek migrálása az Azure 2. generációs virtuális gépekre történik. 
 **Lemezméret** | 2 TB-OS operációsrendszer-lemez (BIOS-rendszerindítás); 4 TB-OS operációsrendszer-lemez (UEFI-rendszerindítás); 8 TB adatlemezek esetében.
@@ -173,6 +173,6 @@ Kapcsolat az áttelepítés után – Windows | Kapcsolódás a Windows rendszer
 Kapcsolat Migrálás után – Linux | Kapcsolódás az Azure-beli virtuális gépekhez az SSH használatával történő áttelepítés után:<br/><br/> Az áttelepítés előtt a helyszíni gépen győződjön meg arról, hogy a Secure Shell szolgáltatás indításra van beállítva, és hogy a tűzfalszabályok engedélyezik az SSH-kapcsolatokat.<br/><br/> A feladatátvételt követően az Azure-beli virtuális gépen engedélyezze az SSH-porthoz való bejövő kapcsolatokat a hálózati biztonsági csoportra vonatkozó szabályokra vonatkozóan a feladatátvételen átesett virtuális gépen, valamint azt az Azure-alhálózatot, amelyhez csatlakoztatva van.<br/><br/> Továbbá adjon hozzá egy nyilvános IP-címet a virtuális géphez.  
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Válassza ki](server-migrate-overview.md) a VMware áttelepítési lehetőséget.

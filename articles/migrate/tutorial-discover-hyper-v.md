@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan derítheti fel a helyszíni Hyper-V virtuális 
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: eb17ba9fc1b68f09f60e857cd20a3f0885bfdb05
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: e62effc31ab5dbc687e0509617b89561c5f2a3b6
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90603951"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442317"
 ---
 # <a name="tutorial-discover-hyper-v-vms-with-server-assessment"></a>Oktatóanyag: Hyper-V virtuális gépek felderítése kiszolgáló-értékeléssel
 
@@ -29,7 +29,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!NOTE]
 > Az oktatóanyagok a forgatókönyvek kipróbálásának leggyorsabb elérési útját mutatják be, és az alapértelmezett beállításokat használják.  
 
-Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/), mielőtt hozzákezd.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -39,7 +39,7 @@ Az oktatóanyag megkezdése előtt győződjön meg arról, hogy ezek az előfel
 **Követelmény** | **Részletek**
 --- | ---
 **Hyper-V gazdagép** | Azok a Hyper-V-gazdagépek, amelyeken a virtuális gépek találhatók, önállóak vagy fürtben is.<br/><br/> A gazdagépen a Windows Server 2019, a Windows Server 2016 vagy a Windows Server 2012 R2 rendszernek kell futnia.<br/><br/> Ellenőrizze, hogy a bejövő kapcsolatok engedélyezve vannak-e a WinRM 5985-es portján (HTTP), hogy a készülék csatlakozni tud-e a lekéréses virtuális gépek metaadatainak és teljesítményadatait a CIM (CIM) munkamenet használatával.
-**Berendezések üzembe helyezése** | vCenter Server erőforrásokra van szükség ahhoz, hogy lefoglaljon egy virtuális gépet a készülékhez:<br/><br/> - Windows Server 2016<br/><br/> -32 GB RAM<br/><br/> – Nyolc vCPU<br/><br/> -Körülbelül 80 GB lemezes tárterület.<br/><br/> – Külső virtuális kapcsoló.<br/><br/> -Internet-hozzáférés a virtuális géphez közvetlenül vagy egy proxyn keresztül.
+**Berendezések üzembe helyezése** | A Hyper-v-gazdagépnek erőforrásokra van szüksége ahhoz, hogy lefoglaljon egy virtuális gépet a készülékhez:<br/><br/> - Windows Server 2016<br/><br/> – 16 GB RAM<br/><br/> – Nyolc vCPU<br/><br/> -Körülbelül 80 GB lemezes tárterület.<br/><br/> – Külső virtuális kapcsoló.<br/><br/> -Internet-hozzáférés a virtuális géphez közvetlenül vagy egy proxyn keresztül.
 **Virtuális gépek** | A virtuális gépek Windows vagy Linux operációs rendszert is használhatnak. 
 
 Mielőtt elkezdené, [áttekintheti a](migrate-appliance.md#collected-data---hyper-v) készülék által a felderítés során gyűjtött adatokat.
@@ -50,7 +50,7 @@ Azure Migrate projekt létrehozásához és a Azure Migrate berendezés regisztr
 - Közreműködő vagy tulajdonosi engedélyek egy Azure-előfizetéshez.
 - Azure Active Directory alkalmazások regisztrálásához szükséges engedélyek.
 
-Ha csak az ingyenes Azure-fiókot hozta létre, akkor Ön az előfizetés tulajdonosa. Ha nem Ön az előfizetés tulajdonosa, a tulajdonossal együtt az alábbi módon rendelheti hozzá az engedélyeket:
+Ha most hozott létre egy ingyenes Azure-fiókot, akkor Ön az előfizetés tulajdonosa. Ha nem Ön az előfizetés tulajdonosa, a tulajdonossal együtt az alábbi módon rendelheti hozzá az engedélyeket:
 
 
 1. A Azure Portal keressen rá az "előfizetések" kifejezésre, és a **szolgáltatások**területen válassza az **előfizetések**lehetőséget.
@@ -72,6 +72,8 @@ Ha csak az ingyenes Azure-fiókot hozta létre, akkor Ön az előfizetés tulajd
 8. A **felhasználói beállítások**területen ellenőrizze, hogy az Azure ad-felhasználók regisztrálhatják-e az alkalmazásokat (alapértelmezés szerint az **Igen** értékre van állítva).
 
     ![A felhasználók által Active Directory alkalmazások regisztrálásához használt felhasználói beállítások ellenőrzése](./media/tutorial-discover-hyper-v/register-apps.png)
+
+9. Másik lehetőségként a bérlő/globális rendszergazda hozzárendelheti az **alkalmazás fejlesztői** szerepkörét egy fiókhoz, hogy engedélyezze a HRE-alkalmazás (ok) regisztrációját. [További információ](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md).
 
 ## <a name="prepare-hyper-v-hosts"></a>Hyper-V-gazdagépek előkészítése
 
@@ -115,7 +117,7 @@ Ez az oktatóanyag egy Hyper-V virtuális gépen állítja be a készüléket, a
 
 ### <a name="generate-the-azure-migrate-project-key"></a>A Azure Migrate projekt kulcsának előállítása
 
-1. Az **áttelepítési célok**  >  **kiszolgálói**  >  **Azure Migrate: kiszolgáló értékelése**területen válassza a **felderítés**lehetőséget.
+1. A **Migrálási célok** > **Kiszolgálók** > **Azure Migrate: Kiszolgáló értékelése** területen válassza a **Felderítés** lehetőséget.
 2. A **felderítési gépek**a  >  **gépek virtualizáltak?** területen válassza **az igen, a Hyper-V**lehetőséget.
 3. **1.: Azure Migrate projekt kulcsának létrehozásakor**adja meg a Hyper-V virtuális gépek felderítéséhez beállított Azure Migrate berendezés nevét. a névnek alfanumerikusnak kell lennie 14 karakternél vagy kevesebb értékkel.
 1. Kattintson a **kulcs létrehozása** lehetőségre a szükséges Azure-erőforrások létrehozásának elindításához. Az erőforrások létrehozásakor ne zárja be a gépek felderítése lapot.
@@ -135,7 +137,7 @@ A telepítése előtt győződjön meg arról, hogy a tömörített fájl bizton
 
 2. Futtassa a következő PowerShell-parancsot a ZIP-fájl kivonatának létrehozásához
     - ```C:\>Get-FileHash -Path <file_location> -Algorithm [Hashing Algorithm]```
-    - Gyakorlati példa: ```C:\>Get-FileHash -Path ./AzureMigrateAppliance_v1.19.06.27.zip -Algorithm SHA256```
+    - Gyakorlati példa: ```C:\>Get-FileHash -Path ./AzureMigrateAppliance_v3.20.09.25.zip -Algorithm SHA256```
 
 3.  Ellenőrizze a készülék legújabb verzióit és a kivonatoló értékeket:
 
@@ -143,13 +145,13 @@ A telepítése előtt győződjön meg arról, hogy a tömörített fájl bizton
 
         **Forgatókönyv** | **Letöltés** | **SHA256**
         --- | --- | ---
-        Hyper-V (10,4 GB) | [Legújabb verzió](https://go.microsoft.com/fwlink/?linkid=2140422) |  79c151588de049cc102f61b910d6136e02324dc8d8a14f47772da351b46d9127
+        Hyper-V (8,91 GB) | [Legújabb verzió](https://go.microsoft.com/fwlink/?linkid=2140422) |  40aa037987771794428b1c6ebee2614b092e6d69ac56d48a2bbc75eeef86c99a
 
     - Azure Government esetén:
 
         **Forgatókönyv*** | **Letöltés** | **SHA256**
         --- | --- | ---
-        Hyper-V (85 MB) | [Legújabb verzió](https://go.microsoft.com/fwlink/?linkid=2140424) |  0769c5f8df1e8c1ce4f685296f9ee18e1ca63e4a111d9aa4e6982e069df430d7
+        Hyper-V (85,8 MB) | [Legújabb verzió](https://go.microsoft.com/fwlink/?linkid=2140424) |  cfed44bb52c9ab3024a628dc7a5d0df8c624f156ec1ecc3507116bae330b257f
 
 ### <a name="create-the-appliance-vm"></a>A berendezés virtuális gép létrehozása
 
@@ -214,7 +216,7 @@ Ha virtuális merevlemezeket futtat az SMB-n, engedélyeznie kell a hitelesítő
 1. Futtassa ezt a parancsot a készülék virtuális gépén. A HyperVHost1/HyperVHost2 például állomásnevek.
 
     ```
-    Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com HyperVHost2.contoso.com -Force
+    Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com, HyperVHost2.contoso.com, HyperVHost1, HyperVHost2 -Force
     ```
 
 2. Ezt is megteheti a berendezés Helyicsoportházirend-szerkesztőján:
@@ -252,7 +254,7 @@ Ez elindítja a felderítést. Gazdagépen körülbelül 2 percet vesz igénybe,
 
 A felderítés befejezését követően ellenőrizheti, hogy a virtuális gépek megjelennek-e a portálon.
 
-1. Nyissa meg a Azure Migrate irányítópultot.
+1. Nyissa meg az Azure Migrate irányítópultját.
 2. A **Azure Migrate-Servers**  >  **Azure Migrate: kiszolgáló értékelése** lapon kattintson arra az ikonra, amely megjeleníti a **felderített kiszolgálók**darabszámát.
 
 ## <a name="next-steps"></a>További lépések

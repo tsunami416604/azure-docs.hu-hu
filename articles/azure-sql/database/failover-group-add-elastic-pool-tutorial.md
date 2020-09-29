@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: high-availability
 ms.custom: seo-lt-2019 sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 08/27/2019
-ms.openlocfilehash: 0c4a3c97649f168d339f5209cc10a46f56e97381
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a9f5bac475fd019b294f79abf0acdfaff198f52b
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91335177"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442741"
 ---
 # <a name="tutorial-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>Oktatóanyag: Azure SQL Database rugalmas készlet hozzáadása egy feladatátvételi csoporthoz
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -412,7 +412,7 @@ Nincsenek elérhető parancsfájlok a Azure Portal számára.
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban egy Azure SQL Database rugalmas készletet adott hozzá egy feladatátvételi csoporthoz, és tesztelte a feladatátvételt. Megtanulta végrehajtani az alábbi műveleteket:
 
