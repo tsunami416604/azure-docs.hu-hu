@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/13/2019
-ms.openlocfilehash: 80e87d6fdab6ecf15c241581f8c19d36b30d7e30
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 09485d3279e4ca4fff5b6492bab432d8034d7e42
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327106"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449420"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights Connector felügyeleti megoldás (elavult)
 
@@ -83,20 +83,20 @@ A következő szakaszok azt ismertetik, hogyan használhatók a Application Insi
 
 A **Application Insights** csempére kattintva nyissa meg a **Application Insights** irányítópultot, és tekintse meg a következő pengéket.
 
-![Application Insights irányítópult](./media/app-insights-connector/app-insights-dash01.png)
+![Képernyőkép az Application Insights-irányítópultról, amely az alkalmazások, az adatmennyiség és a rendelkezésre álláshoz tartozó pengéket jeleníti meg.](./media/app-insights-connector/app-insights-dash01.png)
 
-![Application Insights irányítópult](./media/app-insights-connector/app-insights-dash02.png)
+![Képernyőkép a Application Insights-irányítópultról, amely a kiszolgálói kérések, hibák és kivételek pengéit mutatja.](./media/app-insights-connector/app-insights-dash02.png)
 
 Az irányítópulton szerepelnek a táblázatban látható pengék. Minden panelen legfeljebb 10 olyan elem jelenik meg, amely megfelel a panel hatóköri és időtartományi kritériumainak. Futtathat egy olyan naplóbeli keresést, amely az összes rekordot visszaadja, amikor az **összes** megjelenítése gombra kattint a panel alján, vagy amikor rákattint a panel fejlécére.
 
 
 | **Oszlop** | **Leírás** |
 | --- | --- |
-| Alkalmazások – alkalmazások száma | Az alkalmazás erőforrásaiban található alkalmazások számát jeleníti meg. Az alkalmazások neveinek, valamint az alkalmazások rekordjainak számát is felsorolja. Kattintson a számra a naplóbeli keresés futtatásához<code>ApplicationInsights &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName</code> <br><br>  Kattintson egy alkalmazás nevére, és futtassa az alkalmazás rekordjait a gazdagépen, a telemetria típusú rekordok és az összes adat típus szerint (az elmúlt nap alapján). |
-| Adatmennyiség – adatok küldésére szolgáló gazdagépek | Az adatokat küldő számítógép-gazdagépek számát jeleníti meg. Az egyes gazdagépek számítógép-gazdagépeit és rekordjainak darabszámát is felsorolja. Kattintson a számra a naplóbeli keresés futtatásához<code>ApplicationInsights &#124; summarize AggregatedValue = sum(SampledCount) by Host</code> <br><br> Kattintson egy számítógépnévre, és futtassa a naplót a gazdagépen, amely a gazdagépen, a rekordok szerint telemetria és az összes adat típus szerint (az elmúlt nap alapján) jeleníti meg az adatokat. |
-| Rendelkezésre állás – webteszt eredményei | Megjelenít egy perecdiagram a webes tesztek eredményeihez, amely jelzi a pass vagy a Fail argumentumot. Kattintson a diagramra a naplóbeli keresés futtatásához<code>ApplicationInsights &#124; where TelemetryType == "Availability" &#124; summarize AggregatedValue = sum(SampledCount) by AvailabilityResult</code> <br><br> Az eredmények az összes teszt menetének és hibáinak számát mutatják. Ez az összes Web Apps az elmúlt percben forgalmas forgalmat mutatja. Az alkalmazás nevére kattintva megtekintheti a naplóbeli keresést, amely a sikertelen webes tesztek részleteit jeleníti meg. |
+| Alkalmazások – alkalmazások száma | Az alkalmazás erőforrásaiban található alkalmazások számát jeleníti meg. Az alkalmazások neveinek, valamint az alkalmazások rekordjainak számát is felsorolja. Kattintson a számra a naplóbeli keresés futtatásához <code>ApplicationInsights &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName</code> <br><br>  Kattintson egy alkalmazás nevére, és futtassa az alkalmazás rekordjait a gazdagépen, a telemetria típusú rekordok és az összes adat típus szerint (az elmúlt nap alapján). |
+| Adatmennyiség – adatok küldésére szolgáló gazdagépek | Az adatokat küldő számítógép-gazdagépek számát jeleníti meg. Az egyes gazdagépek számítógép-gazdagépeit és rekordjainak darabszámát is felsorolja. Kattintson a számra a naplóbeli keresés futtatásához <code>ApplicationInsights &#124; summarize AggregatedValue = sum(SampledCount) by Host</code> <br><br> Kattintson egy számítógépnévre, és futtassa a naplót a gazdagépen, amely a gazdagépen, a rekordok szerint telemetria és az összes adat típus szerint (az elmúlt nap alapján) jeleníti meg az adatokat. |
+| Rendelkezésre állás – webteszt eredményei | Megjelenít egy perecdiagram a webes tesztek eredményeihez, amely jelzi a pass vagy a Fail argumentumot. Kattintson a diagramra a naplóbeli keresés futtatásához <code>ApplicationInsights &#124; where TelemetryType == "Availability" &#124; summarize AggregatedValue = sum(SampledCount) by AvailabilityResult</code> <br><br> Az eredmények az összes teszt menetének és hibáinak számát mutatják. Ez az összes Web Apps az elmúlt percben forgalmas forgalmat mutatja. Az alkalmazás nevére kattintva megtekintheti a naplóbeli keresést, amely a sikertelen webes tesztek részleteit jeleníti meg. |
 | Kiszolgálói kérelmek – kérelmek/óra | Megjeleníti a kiszolgálói kérelmek óránkénti sorát a különböző alkalmazásokhoz. Vigye a kurzort a diagram egyik sorára, és tekintse meg az adott időpontra vonatkozó kérelmeket fogadó első 3 alkalmazást. A kérelmeket fogadó alkalmazások és a kijelölt időszakra vonatkozó kérelmek számát is megjeleníti. <br><br>Kattintson a gráfra, hogy futtasson egy naplóbeli keresést, <code>ApplicationInsights &#124; where TelemetryType == "Request" &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code> amely a különböző alkalmazások óránkénti kiszolgálói kéréseinek részletes táblázatát jeleníti meg. <br><br> Kattintson egy alkalmazásra a listában egy olyan napló kereséséhez <code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true</code> , amely megjeleníti a kérelmek listáját, a kérelmekre vonatkozó diagramokat, valamint a kérelem időtartamát és a kérelmekre vonatkozó válaszi kódok listáját.   |
-| Hibák – sikertelen kérelmek/óra | Megjeleníti a sikertelen alkalmazás-kérelmek óránkénti diagramját. Vigye az egérmutatót a diagram fölé, és tekintse meg az első 3 alkalmazást egy adott időpontra vonatkozó sikertelen kérelmekkel. Az egyes alkalmazásokhoz tartozó sikertelen kérelmek számát tartalmazó alkalmazások listáját is megjeleníti. Kattintson a diagramra, hogy futtasson egy naplóbeli keresést, <code>ApplicationInsights &#124; where TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code> amely a sikertelen kérelmek részletesebb diagramját jeleníti meg. <br><br>Kattintson a lista egyik elemére, és futtasson egy naplóbeli keresést <code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true</code> , amely megjeleníti a sikertelen kérelmeket, a sikertelen kérelmekre vonatkozó diagramokat, valamint a kérelmek időtartamát és a sikertelen kérelmekre adott válaszokat tartalmazó listát. |
+| Hibák – sikertelen kérelmek/óra | Megjeleníti a sikertelen alkalmazás-kérelmek óránkénti diagramját. Vigye az egérmutatót a diagram fölé, és tekintse meg az első 3 alkalmazást egy adott időpontra vonatkozó sikertelen kérelmekkel. Az egyes alkalmazásokhoz tartozó sikertelen kérelmek számát tartalmazó alkalmazások listáját is megjeleníti. Kattintson a diagramra, hogy futtasson egy naplóbeli keresést, <code>ApplicationInsights &#124; where TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code> amely a sikertelen kérelmek részletesebb diagramját jeleníti meg. <br><br>Kattintson a lista egyik elemére, és futtasson egy naplóbeli keresést <code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true</code>  , amely megjeleníti a sikertelen kérelmeket, a sikertelen kérelmekre vonatkozó diagramokat, valamint a kérelmek időtartamát és a sikertelen kérelmekre adott válaszokat tartalmazó listát. |
 | Kivételek – kivételek óránként | Megjeleníti a kivételek óránkénti grafikonját. Vigye az egérmutatót a diagram fölé, és tekintse meg az első 3 alkalmazást, amely egy adott időpontra vonatkozó kivételeket mutat. Megjeleníti az alkalmazások listáját is, amely az egyes kivételek számát tartalmazza. Kattintson a diagramra, hogy futtasson egy naplóbeli keresést <code>ApplicationInsights &#124; where TelemetryType == "Exception" &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code> , amely a kivételek részletesebb diagramját jeleníti meg. <br><br>Kattintson a lista egyik elemére, és futtasson egy naplóbeli keresést, <code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Exception"</code> amely megjeleníti a kivételek listáját, a kivételek diagramját az idő és a sikertelen kérelmek esetében, valamint a kivétel típusok listáját.  |
 
 ### <a name="view-the-application-insights-perspective-with-log-search"></a>A Application Insights perspektívájának megtekintése a naplóbeli kereséssel
@@ -154,7 +154,7 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 
 A **mintavételes darabszám** mező minden bejegyzésben megtalálható, és a bejegyzés által reprezentált adatpontok számát jeleníti meg. Ha bekapcsolja a mintavételezést a Application Insights alkalmazáshoz, a mintavételi **szám** nagyobb, mint 1. Az alkalmazás által generált bejegyzések tényleges számának megszámlálásához összesítse a **mintavételes darabszám** mezőket.
 
-A mintavételezés csak az alkalmazás által generált bejegyzések teljes számát befolyásolja. Nem kell kijavítania a mintavételezést a metrika mezőihez (például **RequestDuration** vagy **AvailabilityDuration** ), mert ezek a mezők a megjelenített bejegyzések átlagát mutatják.
+A mintavételezés csak az alkalmazás által generált bejegyzések teljes számát befolyásolja. Nem kell kijavítania a mintavételezést a metrika mezőihez (például **RequestDuration** vagy **AvailabilityDuration**  ), mert ezek a mezők a megjelenített bejegyzések átlagát mutatják.
 
 ## <a name="input-data"></a>Bemeneti adatok
 
@@ -187,7 +187,7 @@ Minden típusú bemeneti adathoz létrejön egy *ApplicationInsights* *típusú*
 | Kontinens | Az a kontinens, ahol a kérelem származik |
 | Ország | Az ország/régió, ahol a kérés származik |
 | Tartomány | Tartomány, állam vagy területi beállítás, ahol a kérelem származik |
-| Település | A kérést kezdeményező város vagy város |
+| City | A kérést kezdeményező város vagy város |
 | isSynthetic | Azt jelzi, hogy a kérést egy felhasználó vagy egy automatikus metódus hozta-e létre. True = automatizált metódus vagy hamis = felhasználó által generált |
 | SamplingRate | A portálra eljuttatott SDK által generált telemetria százalékos aránya. Tartomány 0,0 – 100.0. |
 | SampledCount | 100/(SamplingRate). Például: 4 = &gt; 25% |

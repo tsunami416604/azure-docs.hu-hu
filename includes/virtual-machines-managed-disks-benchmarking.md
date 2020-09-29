@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/11/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: da5811abec889bcc47d08878a0950df7f0983663
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5fea0cb8c6ac3f706cfef5e4a153fbbf4ff465b8
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87010825"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91451465"
 ---
 *A gyorsítótár bemelegítése*  
 A írásvédett gazdagép gyorsítótárazásával rendelkező lemez magasabb IOPS tud adni, mint a lemez korlátja. A maximális olvasási teljesítmény eléréséhez a gazdagép-gyorsítótárból először be kell melegíteni a lemez gyorsítótárát. Ezzel biztosíthatja, hogy a teljesítményértékelési eszköz által a CacheReads-köteten lévő olvasási IOs legyen, valójában a gyorsítótárba kerül, nem pedig közvetlenül a lemezre. A gyorsítótárbeli találatok további IOPS eredményeznek az egyetlen gyorsítótárral kompatibilis lemezről.
@@ -25,7 +25,7 @@ A írásvédett gazdagép gyorsítótárazásával rendelkező lemez magasabb IO
 
 ### <a name="iometer"></a>Iometer
 
-[Töltse le a Iometer eszközt](https://sourceforge.net/projects/iometer/files/iometer-stable/2006-07-27/iometer-2006.07.27.win32.i386-setup.exe/download) a virtuális gépen.
+[Töltse le a Iometer eszközt](http://sourceforge.net/projects/iometer/files/iometer-stable/1.1.0/iometer-1.1.0-win64.x86_64-bin.zip/download) a virtuális gépen.
 
 #### <a name="test-file"></a>Fájl tesztelése
 
@@ -62,24 +62,24 @@ Hajtsa végre az alábbi lépéseket a gyorsítótár bemelegítéséhez
 
 1. Hozzon létre két hozzáférési specifikációt az alább látható értékekkel,
 
-   | Name | Kérelem mérete | Véletlenszerű | Olvasni |
+   | Név | Kérelem mérete | Véletlenszerű | Olvasni |
    | --- | --- | --- | --- |
    | RandomWrites \_ 1mb |1 MB |100 |0 |
    | RandomReads \_ 1mb |1 MB |100 |100 |
 1. Futtassa a Iometer tesztet a gyorsítótár-lemez inicializálásához a következő paraméterekkel. Használjon három munkavégző szálat a célként megadott kötethez, valamint egy 128-es üzenetsor-mélységet. Állítsa a teszt "futtatási idő" időtartamát 2 órára a "teszt beállítása" lapon.
 
-   | Forgatókönyv | Cél kötete | Name | Időtartam |
+   | Használati eset | Cél kötete | Név | Időtartam |
    | --- | --- | --- | --- |
    | Gyorsítótár lemezének inicializálása |CacheReads |RandomWrites \_ 1mb |2 óra |
 1. Futtassa a Iometer tesztet a gyorsítótár-lemez bemelegítéséhez a következő paraméterekkel. Használjon három munkavégző szálat a célként megadott kötethez, valamint egy 128-es üzenetsor-mélységet. Állítsa a teszt "futtatási idő" időtartamát 2 órára a "teszt beállítása" lapon.
 
-   | Forgatókönyv | Cél kötete | Name | Időtartam |
+   | Használati eset | Cél kötete | Név | Időtartam |
    | --- | --- | --- | --- |
    | Gyorsítótár-lemez bemelegítése |CacheReads |RandomReads \_ 1mb |2 óra |
 
 A gyorsítótár-lemez bemelegítése után folytassa az alább felsorolt tesztelési forgatókönyvekkel. A Iometer teszt futtatásához legalább három munkavégző szálat kell használnia **minden egyes** cél kötethez. Minden munkavégző szál esetében válassza ki a cél kötetet, állítsa be a várólista mélységét, és válassza ki a mentett tesztelési specifikációk egyikét az alábbi táblázatban látható módon a megfelelő tesztelési forgatókönyv futtatásához. Ezen tesztek futtatásakor a táblázat a IOPS és az átviteli sebesség várható eredményeit is megjeleníti. Az összes forgatókönyv esetében a rendszer a 8 KB-os kis i/o-méretet és a 128-es magas üzenetsor-mélységet használja.
 
-| Tesztelési forgatókönyv | Cél kötete | Name | Eredmény |
+| Tesztelési forgatókönyv | Cél kötete | Név | Eredmény |
 | --- | --- | --- | --- |
 | Legfeljebb IOPS olvasása |CacheReads |RandomWrites \_ 8K |50 000 IOPS |
 | Legfeljebb IOPS írása |NoCacheWrites |RandomReads \_ 8K |64 000 IOPS |

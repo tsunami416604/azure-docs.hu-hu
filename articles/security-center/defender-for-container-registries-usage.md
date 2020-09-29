@@ -4,15 +4,15 @@ description: Tudnivalók az Azure Defender for Container-beállításjegyzékek 
 author: memildin
 ms.author: memildin
 ms.date: 9/22/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 04a7b7f40e1591a919668e940a883dde9a6f4689
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1ff28b13d9adc120f8ee40bcd0119bf9b6883d6a
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91302009"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449117"
 ---
 # <a name="use-azure-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>A biztonsági rések vizsgálatához használja az Azure Defender for Container nyilvántartót
 
@@ -30,7 +30,7 @@ Ha a képolvasó Security Center biztonsági réseket, Security Center a megáll
 |Árképzési|Az **Azure Defender for Container** -beállításjegyzékek számlázása [a díjszabási oldalon](security-center-pricing.md) látható.|
 |Támogatott nyilvántartások és lemezképek:|![Igen, ](./media/icons/yes-icon.png) a nyilvános internetről elérhető és a rendszerhéj elérését biztosító, a Linux által üzemeltetett ACR-nyilvántartások.<br>![Nem található a ](./media/icons/no-icon.png) Windows által üzemeltetett ACR-jegyzék.<br>![Nincsenek ](./media/icons/no-icon.png) "privát" beállításjegyzékek – Security Center megköveteli, hogy a kibocsátásiegység-forgalmi jegyzékek elérhetők legyenek a nyilvános internetről. Security Center jelenleg nem tud csatlakozni a szolgáltatáshoz, vagy beolvasni azokat a beállításjegyzékeket, amelyekhez hozzáférés van korlátozva tűzfallal, szolgáltatási végponttal vagy privát végpontokkal, például az Azure Private-hivatkozással.<br>![Nincsenek olyan ](./media/icons/no-icon.png) Super minimalista képek, mint például a [Docker](https://hub.docker.com/_/scratch/) -lemezképek, vagy a "eltérítetlen" lemezképek, amelyek csak egy alkalmazást és annak futásidejű függőségeit tartalmazzák csomagkezelő, rendszerhéj vagy operációs rendszer nélkül.|
 |Szükséges szerepkörök és engedélyek:|**Biztonsági olvasó** és [Azure Container Registry olvasó szerepkör](https://docs.microsoft.com/azure/container-registry/container-registry-roles)|
-|Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![No](./media/icons/no-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
+|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Nem](./media/icons/no-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
 |||
 
 
@@ -150,11 +150,11 @@ Szabály létrehozása:
 1. Szabály megtekintése, felülbírálása vagy törlése: 
     1. Válassza a **szabály letiltása**lehetőséget.
     1. A hatókör listából az aktív szabályokkal rendelkező előfizetések **szabályként**jelennek meg.
-        :::image type="content" source="./media/remediate-vulnerability-findings-vm/modify-rule.png" alt-text="Meglévő szabály módosítása vagy törlése":::
+        :::image type="content" source="./media/remediate-vulnerability-findings-vm/modify-rule.png" alt-text="Letiltási szabály létrehozása a VA-eredményekhez a beállításjegyzékben":::
     1. A szabály megtekintéséhez vagy törléséhez válassza a három pontot ("...").
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [További információ az Azure Defenderről](azure-defender.md)

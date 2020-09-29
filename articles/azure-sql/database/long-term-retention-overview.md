@@ -12,18 +12,16 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 05/18/2019
-ms.openlocfilehash: c4c19850cda158afdb888188d3f99b7d93195aa5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 83d3bb78ef27af377b0a8c5edf75f658a0ca93e7
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91334854"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450231"
 ---
 # <a name="long-term-retention---azure-sql-database-and-azure-sql-managed-instance"></a>Hosszú távú adatmegőrzés – Azure SQL Database és az Azure SQL felügyelt példánya
 
-Számos alkalmazás rendelkezik olyan szabályozási, megfelelőségi vagy egyéb üzleti céllal, amely megköveteli, hogy az adatbázis biztonsági másolatait a Azure SQL Database és az Azure SQL felügyelt példányának [automatikus biztonsági mentései](automated-backups-overview.md)által biztosított 7-35 napon túl őrizze meg. A hosszú távú adatmegőrzés (LTR) szolgáltatással a megadott SQL Database és SQL felügyelt példányok teljes biztonsági másolatait tárolhatja az Azure Blob Storage-ban az olvasási hozzáférésű geo-redundáns tárolással akár 10 évig is. Ezután visszaállíthatja a biztonsági mentést új adatbázisként.
-
-Emellett az SQL felügyelt példánya [konfigurálható biztonsági mentési tárolási redundanciát](automated-backups-overview.md#backup-storage-redundancy) is tartalmaz, amely rugalmasságot biztosít a helyileg REDUNDÁNS (LRS), a Zone-REDUNDÁNS (ZRS) vagy a Geo-REDUNDÁNS (ra-GRS) [tárolási Blobok](../../storage/common/storage-redundancy.md)közötti választáshoz. Ez a lehetőség jelenleg csak a felügyelt példány létrehozása folyamat során érhető el, és az erőforrás kiépítés után nem módosítható.
+Számos alkalmazás rendelkezik olyan szabályozási, megfelelőségi vagy egyéb üzleti céllal, amely megköveteli, hogy az adatbázis biztonsági másolatait a Azure SQL Database és az Azure SQL felügyelt példányának [automatikus biztonsági mentései](automated-backups-overview.md)által biztosított 7-35 napon túl őrizze meg. A hosszú távú adatmegőrzés (LTR) szolgáltatással a megadott SQL Database és SQL felügyelt példányok teljes biztonsági mentéseit tárolhatja az Azure Blob Storage-ban, a [konfigurált redundanciával](automated-backups-overview.md#backup-storage-redundancy) akár 10 évig is. Ezután visszaállíthatja a biztonsági mentést új adatbázisként.
 
 A hosszú idejű adatmegőrzés engedélyezhető a Azure SQL Database számára, és az Azure SQL felügyelt példányának korlátozott nyilvános előzetes verziója. Ez a cikk a hosszú távú adatmegőrzés fogalmi áttekintését tartalmazza. A hosszú távú adatmegőrzés konfigurálásáról lásd: [Azure SQL Database ltr konfigurálása](long-term-backup-retention-configure.md) és az [Azure SQL felügyelt példányok ltr konfigurálása](../managed-instance/long-term-backup-retention-configure.md). 
 

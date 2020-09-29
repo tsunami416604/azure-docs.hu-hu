@@ -4,15 +4,15 @@ description: A GCP-erőforrások figyelése Azure Security Center
 author: memildin
 ms.author: memildin
 ms.date: 9/22/2020
-ms.topic: how-to
+ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: c4020bc5e96ff35fa2d04a872216e43abbba5323
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 71f1de7b4ff265a5740181a2bb2032f33a83abe3
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328309"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448984"
 ---
 #  <a name="connect-your-gcp-accounts-to-azure-security-center"></a>A GCP-fiókok összekapcsolásának Azure Security Center
 
@@ -39,7 +39,7 @@ Az alábbi képernyőképen megtekintheti az Security Center áttekintési irán
 |Kiadás állapota:|Előnézet|
 |Árképzési|[Az Azure Defender for Servers](defender-for-servers-introduction.md) használatát igényli|
 |Szükséges szerepkörök és engedélyek:|A kapcsolódó Azure-előfizetéshez tartozó **tulajdonos** vagy **közreműködő**|
-|Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![No](./media/icons/no-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
+|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Nem](./media/icons/no-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
 |||
 
 ## <a name="connect-your-gcp-account"></a>A GCP-fiók csatlakoztatása
@@ -80,7 +80,7 @@ További információ a [Security Command Center API](https://cloud.google.com/s
     1. Válassza a **Hozzáadás**lehetőséget.
     1. Az **új tagok** mezőben illessze be a korábban átmásolt **e-mail-értéket** .
     1. Adja meg a szerepkört **Security Center rendszergazda megjelenítőként** , majd válassza a mentés lehetőséget.
-        :::image type="content" source="./media/quickstart-onboard-gcp/iam-settings-gcp-permissions-admin-viewer.png" alt-text="A vonatkozó GCP engedélyek beállítása":::
+        :::image type="content" source="./media/quickstart-onboard-gcp/iam-settings-gcp-permissions-admin-viewer.png" alt-text="3 GCP-projekt szerepel a Security Center áttekintési irányítópultján":::
 
 
 ### <a name="step-4-create-a-private-key-for-the-dedicated-service-account"></a>4. lépés: Titkos kulcs létrehozása a dedikált szolgáltatásfiók számára
@@ -107,7 +107,7 @@ További információ a [Security Command Center API](https://cloud.google.com/s
 Ha az összekötő létrehozása sikeres volt, és a GCP biztonsági parancssori központ megfelelően van konfigurálva:
 
 - A GCP CIS standard a Security Center szabályozási megfelelőségi irányítópultján jelenik meg.
-- A GCP-erőforrásokra vonatkozó biztonsági javaslatok megjelennek a Security Center-Portálon és a szabályozási megfelelőségi irányítópulton 5-10 perccel a bevezetést követően: a :::image type="content" source="./media/quickstart-onboard-gcp/gcp-resources-in-recommendations.png" alt-text="Security Center ajánlásai oldalon található források és javaslatok"::: .
+- A GCP-erőforrásokra vonatkozó biztonsági javaslatok megjelennek a Security Center-Portálon és a szabályozási megfelelőségi irányítópulton 5-10 perccel a bevezetést követően: a :::image type="content" source="./media/quickstart-onboard-gcp/gcp-resources-in-recommendations.png" alt-text="3 GCP-projekt szerepel a Security Center áttekintési irányítópultján"::: .
 
 
 ## <a name="monitoring-your-gcp-resources"></a>A GCP-erőforrások figyelése
@@ -116,7 +116,7 @@ Ahogy fent látható, Azure Security Center biztonsági javaslatai oldalon a GCP
 
 Ha az erőforrás típusa szerint szeretné megtekinteni az összes aktív javaslatot az erőforrásokhoz, használja a Security Center eszköz leltározási lapját, és szűrje a GCP erőforrástípus, amelyben érdekli:
 
-:::image type="content" source="./media/quickstart-onboard-gcp/gcp-resource-types-in-inventory.png" alt-text="A tárgyieszköz-leltár oldal erőforrástípus-szűrője, amely a GCP beállításokat jeleníti meg"::: 
+:::image type="content" source="./media/quickstart-onboard-gcp/gcp-resource-types-in-inventory.png" alt-text="3 GCP-projekt szerepel a Security Center áttekintési irányítópultján"::: 
 
 
 ## <a name="next-steps"></a>Következő lépések

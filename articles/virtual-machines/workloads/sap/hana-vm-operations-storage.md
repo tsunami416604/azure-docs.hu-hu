@@ -7,20 +7,20 @@ author: msjuergent
 manager: bburns
 editor: ''
 tags: azure-resource-manager
-keywords: ''
+keywords: SAP, Azure HANA, Storage ultrakönnyű lemez, Premium Storage
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/03/2020
+ms.date: 09/28/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 60947a8138972834f30274715226648d1b2360a1
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 62faec3fd9ee36cb7a2b5da7e6bae07c6c8e06af
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440694"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449375"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure-beli virtuális gépek tárkonfigurációi
 
@@ -266,65 +266,9 @@ A javaslatok gyakran meghaladják az SAP minimális követelményeit a cikkben k
 
 
 ## <a name="nfs-v41-volumes-on-azure-netapp-files"></a>NFS-v 4.1 kötetek Azure NetApp Files
-A Azure NetApp Files olyan natív NFS-megosztásokat biztosít, amelyek a **/Hana/Shared**, a **/Hana/Data**és a **/Hana/log** kötetek esetében használhatók. A ANF-alapú NFS-megosztások használata a **/Hana/Data** és a **/Hana/log** kötetek esetében a v 4.1 NFS protokoll használatát igényli. A **/Hana/Data** és a **/Hana/log** kötetek használatakor a rendszer nem támogatja az NFS-protokoll v3-as verziójának használatát a ANF-megosztások létrehozásakor. 
-
-> [!IMPORTANT]
-> A Azure NetApp Fileson implementált NFS v3 protokoll **nem** támogatott a **/Hana/Data** és a **/Hana/log**. Az NFS 4,1 használata kötelező a **/Hana/Data** és a **/Hana/log** kötetek számára a funkcionális szempontból. Míg a **/Hana/Shared** -kötet esetében az NFS v3 vagy az NFS v 4.1 protokoll használható a funkcionális nézetből.
-
-### <a name="important-considerations"></a>Fontos szempontok
-Az SAP NetWeaver és SAP HANA Azure NetApp Filesének megfontolása során vegye figyelembe a következő fontos szempontokat:
-
-- A minimális kapacitási készlet 4 TiB.  
-- A minimális kötet mérete 100 GiB
-- Azure NetApp Files és az összes olyan virtuális gép, amelyben Azure NetApp Files köteteket csatlakoztatni kell, ugyanabban az Azure-Virtual Network vagy egymással azonos régióban lévő [virtuális hálózatokban](../../../virtual-network/virtual-network-peering-overview.md) kell lennie.  
-- A kiválasztott virtuális hálózatnak rendelkeznie kell egy, a Azure NetApp Files delegált alhálózattal.
-- Az Azure NetApp-kötetek átviteli sebessége a mennyiségi kvóta és a szolgáltatási szint függvénye, a [Azure NetApp Files szolgáltatási szintjén](../../../azure-netapp-files/azure-netapp-files-service-levels.md)dokumentálva. A HANA Azure NetApp-kötetek méretezése esetén győződjön meg arról, hogy az eredményül kapott átviteli sebesség megfelel a HANA rendszerkövetelményeinek.  
-- Azure NetApp Files az [exportálási szabályzatot](../../../azure-netapp-files/azure-netapp-files-configure-export-policy.md): szabályozhatja az engedélyezett ügyfeleket, a hozzáférési típust (olvasási&írás, csak olvasható stb.). 
-- Azure NetApp Files a szolgáltatás még nem ismeri a zónát. Jelenleg Azure NetApp Files funkció nincs telepítve az Azure-régió összes rendelkezésre állási zónájában. Vegye figyelembe, hogy egyes Azure-régiókban lehetséges a késés következményei.  
-- Fontos, hogy az Azure NetApp-tároló közelében üzembe helyezett virtuális gépek alacsony késéssel rendelkezzenek. 
-- A <b>SID</b>adm felhasználói azonosítójának és a virtuális gépekhez tartozó csoport azonosítójának `sapsys` meg kell egyeznie Azure NetApp Filesban található konfigurációval. 
-
-> [!IMPORTANT]
-> SAP HANA munkaterhelések esetében a kis késleltetés kritikus fontosságú. A Microsoft képviselőjével együttműködve biztosíthatja, hogy a virtuális gépek és a Azure NetApp Files kötetek központi telepítése közel legyen.  
-
-> [!IMPORTANT]
-> Ha eltérés van a <b>SID</b>adm felhasználói azonosítója és a `sapsys` virtuális gép és az Azure NetApp-konfiguráció közötti csoportazonosító között, akkor az Azure NetApp-köteteken található, a virtuális gépekhez csatlakoztatott fájlok engedélyei a következőként jelennek meg: `nobody` . Győződjön meg arról, hogy a megfelelő felhasználói azonosítót adta meg a <b>SID</b>adm számára, illetve a csoport azonosítóját `sapsys` , amikor [egy új rendszer](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxjSlHBUxkJBjmARn57skvdUQlJaV0ZBOE1PUkhOVk40WjZZQVJXRzI2RC4u) bekerül a Azure NetApp Filesba.
-
-### <a name="sizing-for-hana-database-on-azure-netapp-files"></a>HANA-adatbázis méretezése Azure NetApp Files
-
-Az Azure NetApp-kötetek átviteli sebessége a kötet méretének és a szolgáltatási szintnek a függvénye, amely a [Azure NetApp Files szolgáltatási szintjén](../../../azure-netapp-files/azure-netapp-files-service-levels.md)van dokumentálva. 
-
-Az Azure-beli SAP-infrastruktúra megtervezése során tisztában kell lennie azzal, hogy az SAP milyen minimális tárterület-átviteli sebességre vonatkozó követelményeket támaszt, ami a következők minimális átviteli teljesítményére fordítható le:
-
-- Írási/olvasási műveletek engedélyezése 250 MB/s **/Hana/log** 1 MB I/O-mérettel  
-- Legalább 400 MB/s olvasási tevékenység engedélyezése a **/Hana/Data** 16 MB és 64 MB I/O méret esetén  
-- Az írási tevékenység engedélyezése legalább 250 MB/s **/Hana/Data** 16 mb és 64 MB I/O méret esetén  
-
-A [Azure NetApp Files átviteli sebességre vonatkozó határértékek](../../../azure-netapp-files/azure-netapp-files-service-levels.md) 1 TiB-ra vetítve:
-- Premium Storage-szint – 64 MiB/s  
-- Ultra Storage-réteg – 128 MiB/s  
-
-> [!IMPORTANT]
-> Az egyetlen NFS-köteten üzembe helyezett kapacitástól függetlenül az átviteli sebesség várhatóan a virtuális gép egy fogyasztója által kihasználható 1,2 – 1,4 GB/s sávszélességű sávszélességet eredményez. Ennek a ANF-ajánlat és a kapcsolódó Linux-munkamenetek az NFS-re vonatkozó korlátai mögötti architektúrájának kell megfelelnie. A teljesítmény-és átviteli sebesség a cikk [teljesítményének teljesítményteszt-tesztelési eredményei a Azure NetApp Files esetében](../../../azure-netapp-files/performance-benchmarks-linux.md) egy megosztott NFS-köteten lettek elvégezve, több ügyfél virtuális géppel és több munkamenet eredményeként. Ez a forgatókönyv különbözik az SAP-ben mérhető forgatókönyvtől. Az átviteli sebességet egyetlen virtuális gépről egy NFS-kötetre mérjük. ANF-on üzemeltetve.
-
-Az adatokhoz és a naplóhoz tartozó minimális teljesítménybeli követelmények teljesítése érdekében az `/hana/shared` ajánlott méretek az alábbihoz hasonlóak:
-
-| Kötet | Méret<br /> Premium Storagei szintű | Méret<br /> Ultra Storage-rétegek | Támogatott NFS-protokoll |
-| --- | --- | --- |
-| /hana/log/ | 4 TiB | 2 tebibájt | v 4.1 |
-| /hana/data | 6,3 TiB | 3,2 TiB | v 4.1 |
-| /hana/shared | Max (512 GB, 1xRAM)/4 feldolgozó csomópont | Max (512 GB, 1xRAM)/4 feldolgozó csomópont | v3 vagy v 4.1 |
+A HANA ANF kapcsolatos részletekért olvassa el az [NFS-v 4.1-es kötetek Azure NetApp Files a SAP HANA](./hana-vm-operations-netapp.md)
 
 
-> [!NOTE]
-> Az itt ismertetett Azure NetApp Files méretezési javaslatok célja, hogy megfeleljenek az SAP expresss infrastruktúra-szolgáltatók felé irányuló minimális követelményeknek. A valós ügyfelek központi telepítései és munkaterhelési forgatókönyvek esetében nem lehet elég. Ezeket a javaslatokat kiindulási pontként és alkalmazkodva használhatja az adott számítási feladatra vonatkozó követelmények alapján.  
-
-Ezért érdemes lehet a ANF-kötetek hasonló átviteli sebességét üzembe helyezni az ultra Disk Storage-ban felsoroltak szerint. Azt is vegye figyelembe, hogy a kötetek mérete a különböző virtuálisgép-SKU-lemezeken a már megadottnál is elérhető.
-
-> [!TIP]
-> A Azure NetApp Files kötetek átméretezése dinamikusan, a kötetek szükségessége nélkül, a virtuális gépek leállításával `unmount` vagy a SAP HANA leállításával végezhető el. Ez lehetővé teszi a rugalmasságot, hogy megfeleljen az alkalmazás elvárásainak és a várhatóan nem várt átviteli igényeknek.
-
-A ANF szolgáltatásban üzemeltetett, a készenléti csomóponttal rendelkező SAP HANA kibővített konfiguráció üzembe helyezéséről szóló dokumentáció az [Azure-beli virtuális gépek készenléti csomópontján SAP HANA kibővítve, az Azure NetApp Files on SUSE Linux Enterprise Server](./sap-hana-scale-out-standby-netapp-files-suse.md)használatával érhető el.
 
 
 ## <a name="cost-conscious-solution-with-azure-premium-storage"></a>Cost tudatos megoldás az Azure Premium Storage szolgáltatással

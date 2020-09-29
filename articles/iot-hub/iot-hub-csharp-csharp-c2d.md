@@ -15,12 +15,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - devx-track-csharp
-ms.openlocfilehash: cf108e0e7036894e045028ec3fce8c2af6b9ce4f
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ff6153abb3e930e3268ed7768e4ab44c9b5824cc
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89008335"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449569"
 ---
 # <a name="send-messages-from-the-cloud-to-your-device-with-iot-hub-net"></a>Üzenetek küldése a felhőből az eszközre IoT Hub (.NET) használatával
 
@@ -91,13 +91,20 @@ Ebben a szakaszban a [telemetria küldése az eszközről az IoT hub](quickstart
 
 A `ReceiveAsync` metódus aszinkron módon visszaadja a kapott üzenetet, amikor az eszköz megkapja azt. Egy megadható időtúllépési időszak után *Null* értéket ad vissza. Ebben a példában az alapértelmezett érték egy perc. Ha az alkalmazás *Null értéket*kap, akkor továbbra is várnia kell az új üzeneteket. Ez a követelmény a `if (receivedMessage == null) continue` sor oka.
 
-Az `CompleteAsync()` üzenet sikeres feldolgozását IoT hub értesítési hívás. Az üzenet biztonságosan eltávolítható az eszköz várólistáról. Ha valami történt, amely meggátolta, hogy az eszköz nem teljesíti az üzenet feldolgozását, IoT Hub a szolgáltatás újra elérhetővé válik. Az *idempotens*logikának kell lennie az eszköz alkalmazásában, hogy ugyanazt az üzenetet kapja többször is ugyanez az eredmény.
+A IoT Hub értesíti az üzenetet, hogy a rendszer `CompleteAsync()` sikeresen feldolgozta-e az üzenetet, és hogy az üzenetet biztonságosan el lehet távolítani az eszköz-várólistából. Az eszköznek ezt a metódust kell meghívnia, ha a feldolgozása sikeresen befejeződött, függetlenül attól, hogy milyen protokollt használ.
 
-Egy alkalmazás átmenetileg is kihagyhat egy üzenetet, ami azt eredményezi, hogy a IoT hub a jövőbeli felhasználás érdekében megőrzi az üzenetet a várólistában. Vagy az alkalmazás elutasíthat egy üzenetet, amely véglegesen eltávolítja az üzenetet a várólistából. A felhőből az eszközre irányuló üzenetek életciklusával kapcsolatos további információkért lásd: [D2C és C2D-üzenetküldés a IoT hub használatával](iot-hub-devguide-messaging.md).
+A AMQP és a HTTPS használatával, de nem MQTT, az eszköz a következőket is elvégezheti:
 
-   > [!NOTE]
-   > Ha MQTT vagy AMQP helyett HTTPS protokollt használ, a `ReceiveAsync` metódus azonnal visszaadja. A HTTPS-alapú felhőből az eszközre irányuló üzenetek támogatott mintája időnként olyan eszközökhöz csatlakozik, amelyek ritkán keresik az üzeneteket (kevesebb, mint 25 percenként). Ha több HTTPS-t ad meg, a kérések szabályozása IoT Hub eredményez. A MQTT, a AMQP és a HTTPS támogatásával, valamint a szabályozás IoT Hubával kapcsolatos további információkért lásd: [D2C és C2D üzenetküldés a IoT hub](iot-hub-devguide-messaging.md).
-   >
+* Hagyjon ki egy üzenetet, amely IoT Hub az üzenet megtartását az eszköz várólistájában a későbbi felhasználás érdekében.
+* Egy üzenet elutasítása, amely véglegesen eltávolítja az üzenetet az eszköz várólistáról.
+
+Ha valami történik, amely megakadályozza, hogy az eszköz elvégezze, lemondsa vagy elutasítja az üzenetet, IoT Hub a rögzített időtúllépési időszak után az üzenetet újra kézbesíti. Emiatt az *idempotens*logikának kell lennie az eszköz alkalmazásában, hogy ugyanazt az üzenetet kapja többször is ugyanez az eredmény.
+
+További információ arról, hogy a IoT Hub hogyan dolgozza fel a felhőből az eszközre irányuló üzeneteket, beleértve a felhőből az eszközre irányuló üzenetek életciklusának részleteit is: a [felhőből az eszközre irányuló üzenetek küldése az IoT hub-ból](iot-hub-devguide-messages-c2d.md).
+
+> [!NOTE]
+> Ha MQTT vagy AMQP helyett HTTPS protokollt használ, a `ReceiveAsync` metódus azonnal visszaadja. A HTTPS-t használó felhőből az eszközre irányuló üzenetek támogatott mintája időnként olyan eszközökhöz csatlakozik, amelyek ritkán keresnek üzeneteket (legalább 25 percenként). Ha több HTTPS-t ad meg, a kérések szabályozása IoT Hub eredményez. További információ a MQTT, a AMQP és a HTTPS-támogatás közötti különbségekről: a [felhőből az eszközre irányuló kommunikációs útmutató](iot-hub-devguide-c2d-guidance.md) és [a kommunikációs protokoll kiválasztása](iot-hub-devguide-protocols.md).
+>
 
 ## <a name="get-the-iot-hub-connection-string"></a>Az IoT hub-beli kapcsolatok karakterláncának beolvasása
 
@@ -211,7 +218,7 @@ Ebben a szakaszban a **SendCloudToDevice** alkalmazást úgy módosítja, hogy v
 
 1. Futtassa az alkalmazásokat az **F5**billentyű lenyomásával. Mindkét alkalmazást látnia kell. Válassza ki a **SendCloudToDevice** ablakot, és nyomja le az **ENTER**billentyűt. Ekkor meg kell jelennie az eszköz által fogadott üzenetnek, és néhány másodperc elteltével a **SendCloudToDevice** -alkalmazás fogadja a visszajelzési üzenetet.
 
-   ![Üzenet fogadása](./media/iot-hub-csharp-csharp-c2d/sendc2d2.png)
+   ![Az üzenet és a szolgáltatás visszajelzését fogadó alkalmazás](./media/iot-hub-csharp-csharp-c2d/sendc2d2.png)
 
 > [!NOTE]
 > Az egyszerűség kedvéért ez az oktatóanyag nem valósít meg újrapróbálkozási házirendet. A termelési kódban az [átmeneti hibák kezelésére](/azure/architecture/best-practices/transient-faults)szolgáló újrapróbálkozási házirendeket (például exponenciális leállítási) kell végrehajtania.

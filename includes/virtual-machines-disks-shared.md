@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/14/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: cafde6ed66e5b636be60533abafcd6f221fe33a1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6f819d9b6ba4d74612da304aafea0118f9094bde
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502511"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91451573"
 ---
 Az Azure Shared Disks az Azure Managed Disks új funkciója, amely lehetővé teszi, hogy egyszerre több virtuális géphez (VM) csatolja a felügyelt lemezeket. A felügyelt lemezek több virtuális géphez való csatolásával új vagy meglévő fürtözött alkalmazásokat telepíthet át az Azure-ba.
 
@@ -57,7 +57,7 @@ Az Azure-beli megosztott lemezek a következő címen támogatottak:
 - [SUSE SLE az SAP és a SUSE SLE HA 15 SP1 és újabb verziókhoz](https://documentation.suse.com/sle-ha/15-SP1/single-html/SLE-HA-guide/index.html)
 - [Ubuntu 18,04 és újabb verziók](https://discourse.ubuntu.com/t/ubuntu-high-availability-corosync-pacemaker-shared-disk-environments/14874)
 - [A RHEL fejlesztői előzetes verziója bármely RHEL 8 verzióban](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_and_managing_high_availability_clusters/index)
-- [Oracle Enterprise Linux] (https://docs.oracle.com/en/operating-systems/oracle-linux/8/availability/hacluster-1.html)
+- [Oracle Enterprise Linux](https://docs.oracle.com/en/operating-systems/oracle-linux/8/availability/hacluster-1.html)
 
 A Linux-fürtök képesek kihasználni a fürtszolgáltatásokat, például a [pacemakert](https://wiki.clusterlabs.org/wiki/Pacemaker). A pacemaker a [Corosync](http://corosync.github.io/corosync/)-ra épül, és lehetővé teszi a fürtök kommunikációját a magasan elérhető környezetekben üzembe helyezett alkalmazásokhoz. Egyes gyakori fürtözött fájlrendszerek közé tartozik a [OCFS2](https://oss.oracle.com/projects/ocfs2/) és a [GFS2](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/global_file_system_2/ch-overview-gfs2). A SCSI állandó foglalás (SCSI PR) és/vagy STONITH blokk Device (SBD) alapú fürtszolgáltatási modellek használhatók a lemezhez való egyeztetéshez. Az SCSI PR használatakor a foglalásokat és a regisztrációkat a [fence_scsi](http://manpages.ubuntu.com/manpages/eoan/man8/fence_scsi.8.html) és [sg_persist](https://linux.die.net/man/8/sg_persist)segédprogramokkal is kezelheti.
 
@@ -91,7 +91,7 @@ A folyamat a következő:
 
 Az ultra-lemezek további szabályozást kínálnak, összesen két szabályozásra. Ennek köszönhetően az ultra-lemezek foglalási folyamata a korábbi szakaszban leírtak szerint működhet, vagy részletesebben szabályozhatja és terjesztheti a teljesítményt.
 
-:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-reservation-table.png" alt-text="Egy tábla képe, amely a ReadOnly vagy olvasási/írási hozzáférést ábrázolja a foglalási tulajdonos, a regisztrált és mások számára.":::
+:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-reservation-table.png" alt-text="Egy tábla képe, amely a &quot;ReadOnly&quot; vagy &quot;olvasási/írási&quot; hozzáférést ábrázolja a foglalási tulajdonos, a regisztrált és mások számára.":::
 
 ## <a name="performance-throttles"></a>Teljesítmény-szabályozások
 
@@ -111,7 +111,7 @@ Az ultra-lemezek egyedi képességgel rendelkeznek, amely lehetővé teszi a tel
 |DiskIOPSReadOnly*     |Az összes olyan virtuális gépen engedélyezett IOPS teljes száma, amely a megosztott lemezt csatlakoztatja `ReadOnly` .         |
 |DiskMBpsReadOnly*     |A teljes átviteli sebesség (MB/s) engedélyezett az összes olyan virtuális gépen, amely a megosztott lemezt csatlakoztatja `ReadOnly` .         |
 
-\*Csak a megosztott Ultra-lemezekre vonatkozik
+\* Csak a megosztott Ultra-lemezekre vonatkozik
 
 A következő képletek azt mutatják be, hogyan lehet beállítani a teljesítmény attribútumokat, mivel azok felhasználó által módosítható:
 
@@ -131,19 +131,19 @@ Az alábbi példák néhány forgatókönyvet mutatnak be, amelyek bemutatják, 
 
 A következő példa egy, a fürtözött megosztott köteteket használó 2 csomópontos WSFC. Ezzel a konfigurációval mindkét virtuális gépnek egyidejű írási hozzáférése van a lemezhez, ami azt eredményezi, `ReadWrite` hogy a szabályozás a két virtuális gép között oszlik el, és a `ReadOnly` szabályozás nincs használatban.
 
-:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-two-node-example.png" alt-text="Két csomópontos CSV-példa":::
+:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-two-node-example.png" alt-text="Egy tábla képe, amely a &quot;ReadOnly&quot; vagy &quot;olvasási/írási&quot; hozzáférést ábrázolja a foglalási tulajdonos, a regisztrált és mások számára.":::
 
 ##### <a name="two-node-cluster-without-cluster-share-volumes"></a>Két csomópontos fürt fürt megosztási kötetei nélkül
 
 A következő példa egy olyan 2 csomópontos WSFC mutat be, amely nem használ fürtözött megosztott köteteket. Ezzel a konfigurációval csak egy virtuális gép rendelkezik írási hozzáféréssel a lemezhez. Ez azt eredményezi, `ReadWrite` hogy a szabályozás kizárólag az elsődleges virtuális gép esetében használatos, és a `ReadOnly` szabályozás csak a másodlagosnál használatos.
 
-:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-two-node-no-csv.png" alt-text="CSV-fájl két csomópontja nem rendelkezik a CSV-vel – példa":::
+:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-two-node-no-csv.png" alt-text="Egy tábla képe, amely a &quot;ReadOnly&quot; vagy &quot;olvasási/írási&quot; hozzáférést ábrázolja a foglalási tulajdonos, a regisztrált és mások számára.":::
 
 ##### <a name="four-node-linux-cluster"></a>Négy csomópontos Linux-fürt
 
 A következő példa egy 4 csomópontos linuxos fürtöt mutat be egyetlen író és három kibővíthető olvasóval. Ezzel a konfigurációval csak egy virtuális gép rendelkezik írási hozzáféréssel a lemezhez. Ez azt eredményezi, hogy a `ReadWrite` szabályozás kizárólag az elsődleges virtuális gép esetében használatos, és a `ReadOnly` másodlagos virtuális gépek által feldarabolt szabályozás.
 
-:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-four-node-example.png" alt-text="Négy csomópontos Ultra-szabályozási példa":::
+:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-four-node-example.png" alt-text="Egy tábla képe, amely a &quot;ReadOnly&quot; vagy &quot;olvasási/írási&quot; hozzáférést ábrázolja a foglalási tulajdonos, a regisztrált és mások számára.":::
 
 #### <a name="ultra-pricing"></a>Ultra díjszabás
 

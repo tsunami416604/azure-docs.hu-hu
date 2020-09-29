@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00b5f39363e4c8b2fd3a0d74a8c013d315bff1fe
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0ae663b2c7a88e116315464c11b8d162135f0aff
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91264930"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450390"
 ---
 # <a name="assign-scoped-roles-to-an-administrative-unit"></a>Hatókörrel rendelkező szerepkörök társítása egy felügyeleti egységhez
 
@@ -38,6 +38,12 @@ Licenc rendszergazdája  |  Csak a felügyeleti egységen belül lehet hozzáren
 Jelszó-rendszergazda  |  A csak a hozzárendelt felügyeleti egységen belül állíthatja alaphelyzetbe a nem rendszergazdák és a jelszó-rendszergazdák jelszavát.
 Felhasználói rendszergazda  |  A a felhasználók és csoportok minden aspektusát képes kezelni, beleértve a korlátozott rendszergazdák jelszavainak alaphelyzetbe állítását a hozzárendelt felügyeleti egységen belül.
 
+## <a name="security-principals-that-can-be-assigned-to-an-au-scoped-role"></a>Az AU hatókörű szerepkörhöz hozzárendelhető rendszerbiztonsági tag
+Az alábbi rendszerbiztonsági tag rendelhető hozzá egy AU hatókörű szerepkörhöz:
+* Felhasználók
+* Szerepkörhöz rendelhető felhőalapú csoportok (előzetes verzió)
+* Egyszerű szolgáltatásnév (SPN)
+
 ## <a name="assign-a-scoped-role"></a>Hatókörrel rendelkező szerepkör kiosztása
 
 ### <a name="azure-portal"></a>Azure Portal
@@ -50,15 +56,19 @@ Válassza ki a hozzárendelni kívánt szerepkört, majd válassza a **hozzáren
 
 ![Válassza ki a hatókörhöz tartozó szerepkört, majd válassza a hozzárendelések hozzáadása elemet.](./media/roles-admin-units-assign-roles/select-add-assignment.png)
 
+> [!Note]
+>
+> Ha a PIM használatával szeretne szerepkört hozzárendelni egy felügyeleti egységhez, kövesse az [alábbi lépéseket.](/active-directory/privileged-identity-management/pim-how-to-add-role-to-user.md#assign-a-role-with-restricted-scope)
+
 ### <a name="powershell"></a>PowerShell
 
 ```powershell
 $AdminUser = Get-AzureADUser -ObjectId "Use the user's UPN, who would be an admin on this unit"
 $Role = Get-AzureADDirectoryRole | Where-Object -Property DisplayName -EQ -Value "User Account Administrator"
-$administrativeUnit = Get-AzureADAdministrativeUnit -Filter "displayname eq 'The display name of the unit'"
+$administrativeUnit = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'The display name of the unit'"
 $RoleMember = New-Object -TypeName Microsoft.Open.AzureAD.Model.RoleMemberInfo
 $RoleMember.ObjectId = $AdminUser.ObjectId
-Add-AzureADScopedRoleMembership -ObjectId $administrativeUnit.ObjectId -RoleObjectId $Role.ObjectId -RoleMemberInfo $RoleMember
+Add-AzureADMSScopedRoleMembership -ObjectId $administrativeUnit.ObjectId -RoleObjectId $Role.ObjectId -RoleMemberInfo $RoleMember
 ```
 
 A Kiemelt szakasz szükség szerint módosítható az adott környezetben.
@@ -67,7 +77,7 @@ A Kiemelt szakasz szükség szerint módosítható az adott környezetben.
 
 ```http
 Http request
-POST /administrativeUnits/{id}/scopedRoleMembers
+POST /directory/administrativeUnits/{id}/scopedRoleMembers
     
 Request body
 {
@@ -87,8 +97,8 @@ A felügyeleti egység hatókörével végzett összes szerepkör-hozzárendelé
 ### <a name="powershell"></a>PowerShell
 
 ```powershell
-$administrativeUnit = Get-AzureADAdministrativeUnit -Filter "displayname eq 'The display name of the unit'"
-Get-AzureADScopedRoleMembership -ObjectId $administrativeUnit.ObjectId | fl *
+$administrativeUnit = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'The display name of the unit'"
+Get-AzureADMSScopedRoleMembership -ObjectId $administrativeUnit.ObjectId | fl *
 ```
 
 A Kiemelt szakasz szükség szerint módosítható az adott környezetben.
@@ -97,7 +107,7 @@ A Kiemelt szakasz szükség szerint módosítható az adott környezetben.
 
 ```http
 Http request
-GET /administrativeUnits/{id}/scopedRoleMembers
+GET /directory/administrativeUnits/{id}/scopedRoleMembers
 Request body
 {}
 ```

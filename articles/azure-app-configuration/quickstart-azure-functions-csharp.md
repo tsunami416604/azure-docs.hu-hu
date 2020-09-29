@@ -6,14 +6,14 @@ author: lisaguthrie
 ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
 ms.topic: quickstart
-ms.date: 1/9/2019
+ms.date: 09/28/2020
 ms.author: lcozzens
-ms.openlocfilehash: e15c83504ee0eebb925c122d0efd4896e7b55916
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 7d4fe0f54ecd11c197f258d190e9eaef14bf2bb7
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590285"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91459923"
 ---
 # <a name="quickstart-create-an-azure-functions-app-with-azure-app-configuration"></a>Gyors útmutató: Azure Functions-alkalmazás létrehozása az Azure-alkalmazás konfigurálásával
 
@@ -21,7 +21,7 @@ Ebben a rövid útmutatóban beépíti az Azure app Configuration szolgáltatás
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
+- Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/dotnet)
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs) az **Azure-fejlesztési** számítási feladattal.
 - [Eszközök Azure Functions](../azure-functions/functions-develop-vs.md#check-your-tools-version)
 
@@ -37,7 +37,7 @@ Ebben a rövid útmutatóban beépíti az Azure app Configuration szolgáltatás
 
     Most hagyja üresen a **címke** és a **tartalom típusát** .
 
-7. Válassza az **Alkalmaz** lehetőséget.
+7. Kattintson az **Alkalmaz** gombra.
 
 ## <a name="create-a-functions-app"></a>Functions-alkalmazás létrehozása
 

@@ -7,14 +7,14 @@ ms.service: bastion
 ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: charwen
-ms.openlocfilehash: 82f92a6dc33173918102015c8cedea1755d77805
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e76fffd17ee565d4103ca8a7bf1523bbd16209d
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84744204"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445387"
 ---
-# <a name="enable-and-work-with-bastion-resource-logs"></a>Megerősített erőforrás-naplók engedélyezése és használata
+# <a name="enable-and-work-with-bastion-resource-logs"></a>A Bastion-erőforrásnaplók engedélyezése és használata
 
 Ahogy a felhasználók az Azure Bastion használatával csatlakoznak a munkaterhelésekhez, a Bastion naplózhatja a távoli munkamenetek diagnosztikát. Ezután a diagnosztika használatával megtekintheti, hogy mely felhasználók kapcsolódtak a munkaterhelésekhez, hogy milyen időpontban, hol és más hasonló naplózási információkkal. A diagnosztika használatához engedélyeznie kell a diagnosztikai naplókat az Azure Bastion-ben. Ennek a cikknek a segítségével engedélyezheti a diagnosztikai naplókat, majd megtekintheti a naplókat.
 
@@ -22,13 +22,13 @@ Ahogy a felhasználók az Azure Bastion használatával csatlakoznak a munkaterh
 
 1. A [Azure Portal](https://portal.azure.com)navigáljon az Azure Bastion-erőforráshoz, és válassza a **diagnosztikai beállítások** lehetőséget az Azure Bastion oldalon.
 
-   ![diagnosztikai beállítások](./media/diagnostic-logs/1diagnostics-settings.png)
+   ![A "diagnosztikai beállítások" oldalt megjelenítő képernyőkép.](./media/diagnostic-logs/1diagnostics-settings.png)
 2. Válassza a **diagnosztikai beállítások**, majd a **+ diagnosztikai beállítás hozzáadása** elemet a naplók célhelyének hozzáadásához.
 
-   ![diagnosztikai beállítás hozzáadása](./media/diagnostic-logs/2add-diagnostic-setting.png)
+   ![Képernyőkép, amely a "diagnosztikai beállítások hozzáadása" gomb kiválasztásával jelenik meg.](./media/diagnostic-logs/2add-diagnostic-setting.png)
 3. A **diagnosztikai beállítások** lapon válassza ki a diagnosztikai naplók tárolására szolgáló Storage-fiók típusát.
 
-   ![tárolási hely kiválasztása](./media/diagnostic-logs/3add-storage-account.png)
+   ![Képernyőfelvétel: a "diagnosztikai beállítások" oldal, amely a kijelölt tárolóhely kiválasztására szolgáló szakaszt tartalmazza.](./media/diagnostic-logs/3add-storage-account.png)
 4. A beállítások elvégzése után az alábbi példához hasonlóan fog kinézni:
 
    ![Példa beállításai](./media/diagnostic-logs/4example-settings.png)
@@ -77,6 +77,6 @@ A diagnosztikai naplók eléréséhez közvetlenül használhatja azt a Storage-
    }
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Olvassa el a [megerősített GYIK](bastion-faq.md)-t.

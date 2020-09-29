@@ -9,13 +9,13 @@ ms.topic: reference
 ms.custom: devx-track-python
 author: likebupt
 ms.author: keli19
-ms.date: 07/27/2020
-ms.openlocfilehash: 3a02581ab898fad0440f45626676ec6bdd7227eb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/29/2020
+ms.openlocfilehash: de372b9800f4b76b42624b30f05848bc570ae6e7
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91318263"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450126"
 ---
 # <a name="execute-python-script-module"></a>Python parancsfájl-modul végrehajtása
 
@@ -56,6 +56,9 @@ if spec is None:
 
 > [!NOTE]
 > Ha a folyamat több olyan Python parancsfájl-modult tartalmaz, amelyek olyan csomagokat igényelnek, amelyek nem az előre telepített listában vannak, telepítse a csomagokat az egyes modulokban.
+
+> [!WARNING]
+> A Excute Python parancsfájl-modulja nem támogatja olyan csomagok telepítését, amelyek olyan további natív kódtárak függenek, mint a "apt-get", például a Java, a PyODBC és az etc. Ennek az az oka, hogy ezt a modult egy egyszerű, csak a Python előre telepített és nem rendszergazdai engedéllyel rendelkező környezetben hajtja végre.  
 
 ## <a name="upload-files"></a>Fájlok feltöltése
 A Python parancsfájl végrehajtása modul támogatja a fájlok feltöltését a [Azure Machine learning PYTHON SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true#upload-file-name--path-or-stream-)használatával.
@@ -140,7 +143,10 @@ A Python-szkript végrehajtása modul olyan minta Python-kódot tartalmaz, amely
 
     Két adatkészletet lehet visszaadni a tervezőnek, amelynek típusú sorozatot kell megadni `pandas.DataFrame` . A Python-kódban más kimeneteket is létrehozhat, amelyeket közvetlenül az Azure Storage-ba írhat.
 
-6. Küldje el a folyamatot, vagy válassza ki a modult, és válassza a **kijelölt futtatása** lehetőséget, hogy csak a Python-szkriptet futtassa.
+    > [!WARNING]
+    > **Nem** ajánlott egy adatbázishoz vagy más külső tárolóhoz csatlakozni a **Python parancsfájl-modul végrehajtása**során. Használhatja az [adatimportálási modult](./import-data.md) , és [exportálhatja az adatmodult](./export-data.md)     
+
+6. A folyamat elküldése.
 
     Az összes adattal és kóddal betöltődik egy virtuális gépre, és a megadott Python-környezet használatával fut.
 
@@ -266,6 +272,6 @@ Az előre telepített csomagok a következők:
 -    Werkzeug = = 0.16.1
 -    Wheel = = 0.34.2
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

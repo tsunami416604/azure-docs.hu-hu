@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c24cef2cf9e4c54d16ebc75eb1a56273d8826355
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1bf2e3f07d9e5576f62ef9badd9c8a46ac92fad0
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84221404"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450168"
 ---
 # <a name="monitor-module-twins"></a>Ikermodulok monitorozása
 
 Az Azure-ban található modulok IoT Hub lehetővé teszik a IoT Edge üzemelő példányok kapcsolatának és állapotának figyelését. Az ikrek modul hasznos információkat tárol a IoT hub-ban a futó modulok teljesítményéről. A [IoT Edge ügynök](iot-edge-runtime.md#iot-edge-agent) és a [IoT Edge hub](iot-edge-runtime.md#iot-edge-hub) futtatókörnyezeti modulok mindegyike megtartja a modul ikreket, `$edgeAgent` illetve a `$edgeHub` következőket:
 
-* `$edgeAgent`a IoT Edge ügynökkel és IoT Edge hub futtatókörnyezeti modulokkal és az egyéni modulokkal kapcsolatos állapot-és kapcsolati információkat tartalmazza. A IoT Edge ügynök feladata a modulok üzembe helyezése, monitorozása és a kapcsolatok állapotának jelentése az Azure IoT hub-ban.
-* `$edgeHub`az eszközön és az Azure IoT hub-on futó IoT Edge hub közötti kommunikációval kapcsolatos adatokat tartalmaz. Ez magában foglalja az alárendelt eszközökről érkező üzenetek feldolgozását. IoT Edge hub feladata az Azure IoT Hub és a IoT Edge eszközök és modulok közötti kommunikáció feldolgozása.
+* `$edgeAgent` a IoT Edge ügynökkel és IoT Edge hub futtatókörnyezeti modulokkal és az egyéni modulokkal kapcsolatos állapot-és kapcsolati információkat tartalmazza. A IoT Edge ügynök feladata a modulok üzembe helyezése, monitorozása és a kapcsolatok állapotának jelentése az Azure IoT hub-ban.
+* `$edgeHub` az eszközön és az Azure IoT hub-on futó IoT Edge hub közötti kommunikációval kapcsolatos adatokat tartalmaz. Ez magában foglalja az alárendelt eszközökről érkező üzenetek feldolgozását. IoT Edge hub feladata az Azure IoT Hub és a IoT Edge eszközök és modulok közötti kommunikáció feldolgozása.
 
 Az adatok metaadatokba, címkékbe, valamint a kívánt és jelentett tulajdonságokra vannak rendezve a modul ikrek JSON-struktúrájában. A deployment.jsfájlon megadott kívánt tulajdonságokat a rendszer az ikrek modulba másolja. A IoT Edge ügynök és a IoT Edge hub mindegyike frissíti a modulok jelentett tulajdonságait.
 
@@ -100,7 +100,7 @@ A következő tulajdonságok fontosak a hibaelhárításhoz:
 
 * **runtimeStatus** – a következő értékek egyike lehet:
 
-    | Érték | Description |
+    | Érték | Leírás |
     | --- | --- |
     | ismeretlen | Az alapértelmezett állapot, amíg a telepítés nem jön létre. |
     | leállítási | A modul indításra van ütemezve, de jelenleg nem fut. Ez az érték akkor hasznos, ha az újraindításkor a modul állapota megváltozik. Ha egy hibás modul a leállási időszakban újraindításra vár, a modul leállítási állapotba kerül. |
@@ -213,12 +213,12 @@ Ha módosítja a módosításokat, válassza a szerkesztőben a kód fölötti *
 
 Ha szeretné megtekinteni, hogy a IoT Edge fut-e, használja az az [IoT hub meghívó-Module-Method](how-to-edgeagent-direct-method.md#ping) parancsot az IoT Edge-ügynök pingeléséhez.
 
-Az az [IOT hub Module-Twin](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/module-twin) Structure a következő parancsokat biztosítja:
+Az az [IOT hub Module-Twin](/cli/azure/ext/azure-cli-iot-ext/iot/hub/module-twin) Structure a következő parancsokat biztosítja:
 
 * **az IOT hub Module-Twin show** – modul kettős definíciójának megjelenítése.
 * **az IOT hub Module-Twin Update** – modul kettős definíciójának frissítése.
 * **az IOT hub Module-Twin replace** -Replace a Module Twin definition with a TARGET JSON.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan [kommunikálhat a EdgeAgent a beépített közvetlen metódusok használatával](how-to-edgeagent-direct-method.md).

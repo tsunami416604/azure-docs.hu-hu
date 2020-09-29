@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d2a62b55ce7f8cd408afeb2f10fd40f42b36d53d
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: ef7599441cbfa11c555453adea0ca135569524b5
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89393938"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91459829"
 ---
 # <a name="define-a-conditional-access-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Feltételes hozzáférési technikai profil definiálása egy Azure Active Directory B2C egyéni házirendben
 
@@ -53,7 +53,7 @@ Minden bejelentkezéskor Azure AD B2C kiértékel minden házirendet, és gondos
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| OperationType | Yes | **Kiértékelésnek**kell lennie.  |
+| OperationType | Igen | **Kiértékelésnek**kell lennie.  |
 
 ### <a name="input-claims"></a>Bemeneti jogcímek
 
@@ -61,10 +61,10 @@ A **szabályzattípushoz** elem tartalmazza a feltételes hozzáféréshez küld
 
 | ClaimReferenceId | Kötelező | Adattípus | Leírás |
 | --------- | -------- | ----------- |----------- |
-| UserId (Felhasználóazonosító) | Yes | sztring | Annak a felhasználónak az azonosítója, aki bejelentkezik. |
-| AuthenticationMethodsUsed | Yes |StringCollection stb | Azon metódusok listája, amelyeket a felhasználó a bejelentkezéshez használt. Lehetséges értékek: `Password` és `OneTimePasscode` . |
-| IsFederated | Yes |boolean | Azt jelzi, hogy egy felhasználó összevont fiókkal jelentkezett-e be. Az értéknek a számnak kell lennie `false` . |
-| IsMfaRegistered | Yes |boolean | Azt jelzi, hogy a felhasználó már regisztrált egy telefonszámot a többtényezős hitelesítéshez. |
+| UserId (Felhasználóazonosító) | Igen | sztring | Annak a felhasználónak az azonosítója, aki bejelentkezik. |
+| AuthenticationMethodsUsed | Igen |StringCollection stb | Azon metódusok listája, amelyeket a felhasználó a bejelentkezéshez használt. Lehetséges értékek: `Password` és `OneTimePasscode` . |
+| IsFederated | Igen |boolean | Azt jelzi, hogy egy felhasználó összevont fiókkal jelentkezett-e be. Az értéknek a számnak kell lennie `false` . |
+| IsMfaRegistered | Igen |boolean | Azt jelzi, hogy a felhasználó már regisztrált egy telefonszámot a többtényezős hitelesítéshez. |
 
 
 A **InputClaimsTransformations** elem olyan **InputClaimsTransformation** -elemek gyűjteményét is tartalmazhatja, amelyek a bemeneti jogcímek módosítására vagy újak létrehozására szolgálnak, mielőtt elküldené őket a feltételes hozzáférési szolgáltatásnak.
@@ -75,8 +75,8 @@ A **OutputClaims** elem tartalmazza a ConditionalAccessProtocolProvider által g
 
 | ClaimReferenceId | Kötelező | Adattípus | Leírás |
 | --------- | -------- | ----------- |----------- |
-| Problémák | Yes |StringCollection stb | Az azonosított fenyegetést szervizelő műveletek listája. Lehetséges értékek: `block` |
-| MultiConditionalAccessStatus | Yes | StringCollection stb |  |
+| Problémák | Igen |StringCollection stb | Az azonosított fenyegetést szervizelő műveletek listája. Lehetséges értékek: `block` |
+| MultiConditionalAccessStatus | Igen | StringCollection stb |  |
 
 A **OutputClaimsTransformations** elem olyan **OutputClaimsTransformation** -elemek gyűjteményét is tartalmazhatja, amelyek a kimeneti jogcímek módosítására vagy újak előállítására szolgálnak.
 
@@ -92,7 +92,7 @@ Az alábbi példa egy feltételes hozzáférési technikai profilt mutat be, ame
     <Item Key="OperationType">Evaluation</Item>
   </Metadata>
   <InputClaimsTransformations>
-    <InputClaimsTransformation ReferenceId="IsMfaRegistered" />
+    <InputClaimsTransformation ReferenceId="IsMfaRegisteredCT" />
   </InputClaimsTransformations>
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="UserId" />
@@ -115,7 +115,7 @@ A feltételes hozzáférés technikai profiljának **szervizelési** módja táj
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| OperationType | Yes | **Szervizelésnek**kell lennie.  |
+| OperationType | Igen | **Szervizelésnek**kell lennie.  |
 
 ### <a name="input-claims"></a>Bemeneti jogcímek
 
@@ -123,7 +123,7 @@ A **szabályzattípushoz** elem tartalmazza a feltételes hozzáféréshez küld
 
 | ClaimReferenceId | Kötelező | Adattípus | Leírás |
 | --------- | -------- | ----------- |----------- |
-| ChallengesSatisfied | Yes | StringCollection stb| Az azonosított fenyegetés kiértékelési módból való visszaadásával kapcsolatos elégedett kihívások listája, a kihívásokra vonatkozó jogcímek.|
+| ChallengesSatisfied | Igen | StringCollection stb| Az azonosított fenyegetés kiértékelési módból való visszaadásával kapcsolatos elégedett kihívások listája, a kihívásokra vonatkozó jogcímek.|
 
 
 A **InputClaimsTransformations** elem olyan **InputClaimsTransformation** -elemek gyűjteményét is tartalmazhatja, amelyek a bemeneti jogcímek módosítására vagy újak létrehozására szolgálnak a feltételes hozzáférési szolgáltatás meghívása előtt.
@@ -367,6 +367,7 @@ A TrustFrameworkPolicy elemben adja hozzá ezeket az alútvonalakat az alábbi p
         </OrchestrationStep>
       </OrchestrationSteps>
     </SubJourney>
+  </SubJourneys>
 
 ```
 
@@ -376,7 +377,7 @@ Vegyen fel egy olyan felhasználói utat, amely az új jogcímeket használja, a
   <UserJourneys>
     <UserJourney Id="SignUpOrSignInWithCA">
       <OrchestrationSteps>
-        <OrchestrationStep Order="1" Type="CombinedSignInAndSignUp" ContentDefinitionReferenceId="api.signuporsigninsam">
+        <OrchestrationStep Order="1" Type="CombinedSignInAndSignUp" ContentDefinitionReferenceId="api.signuporsignin">
           <ClaimsProviderSelections>
             <ClaimsProviderSelection ValidationClaimsExchangeId="LocalAccountSigninEmailExchange" />
 
@@ -412,20 +413,14 @@ Vegyen fel egy olyan felhasználói utat, amely az új jogcímeket használja, a
           </ClaimsExchanges>
         </OrchestrationStep>
 
-        <OrchestrationStep Order="4" Type="ClaimsExchange">
-          <ClaimsExchanges>
-            <ClaimsExchange Id="UserJourneyContext" TechnicalProfileReferenceId="SimpleUJContext" />
-          </ClaimsExchanges>
-        </OrchestrationStep>
-
-        <OrchestrationStep Order="5" Type="InvokeSubJourney">
+        <OrchestrationStep Order="4" Type="InvokeSubJourney">
           <JourneyList>
             <Candidate SubJourneyReferenceId="ConditionalAccess_Evaluation" />
           </JourneyList>
         </OrchestrationStep>
 
         <!--MFA based on Conditional Access-->
-        <OrchestrationStep Order="6" Type="ClaimsExchange">
+        <OrchestrationStep Order="5" Type="ClaimsExchange">
           <Preconditions>
             <Precondition Type="ClaimsExist" ExecuteActionsIf="false">
               <Value>CAChallengeIsMfa</Value>
@@ -443,7 +438,7 @@ Vegyen fel egy olyan felhasználói utat, amely az új jogcímeket használja, a
         </OrchestrationStep>
 
         <!--Save MFA phone number: The precondition verifies whether the user provided a new number in the previous step. If so, the phone number is stored in the directory for future authentication requests.-->
-        <OrchestrationStep Order="7" Type="ClaimsExchange">
+        <OrchestrationStep Order="6" Type="ClaimsExchange">
           <Preconditions>
             <Precondition Type="ClaimsExist" ExecuteActionsIf="false">
               <Value>newPhoneNumberEntered</Value>
@@ -455,7 +450,7 @@ Vegyen fel egy olyan felhasználói utat, amely az új jogcímeket használja, a
           </ClaimsExchanges>
         </OrchestrationStep>
 
-        <OrchestrationStep Order="8" Type="ClaimsExchange" >
+        <OrchestrationStep Order="7" Type="ClaimsExchange" >
           <Preconditions>
             <Precondition Type="ClaimsExist" ExecuteActionsIf="false">
               <Value>CAChallengeIsBlock</Value>
@@ -474,12 +469,12 @@ Vegyen fel egy olyan felhasználói utat, amely az új jogcímeket használja, a
 
         <!--If a user has reached this point, this means a remediation was applied-->
         <!--  You can add a precondition here to call remediation only if a Conditional Access challenge was issued-->
-        <OrchestrationStep Order="9" Type="InvokeSubJourney">
+        <OrchestrationStep Order="8" Type="InvokeSubJourney">
           <JourneyList>
             <Candidate SubJourneyReferenceId="ConditionalAccess_Remediation" />
           </JourneyList>
         </OrchestrationStep>
-        <OrchestrationStep Order="10" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="JwtIssuer" />
+        <OrchestrationStep Order="9" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="JwtIssuer" />
       </OrchestrationSteps>
       <ClientDefinition ReferenceId="DefaultWeb" />
     </UserJourney>

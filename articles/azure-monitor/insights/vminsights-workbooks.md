@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: a6ab126c3a5b0d2a82b17fac42dcc9e20f6aba3f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8ae8c633bdfca72d6e383715cac9b1bcdddd9d17
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79480453"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449786"
 ---
 # <a name="create-interactive-reports-azure-monitor-for-vms-with-workbooks"></a>Interaktív jelentések létrehozása (Azure Monitor virtuális gépekhez) munkafüzetek használatával
 
@@ -26,7 +26,7 @@ A munkafüzetek hasznosak a következő forgatókönyvekhez:
 
 A következő táblázat összefoglalja azokat a munkafüzeteket, amelyeket a Azure Monitor for VMs tartalmaz a kezdéshez.
 
-| Munkafüzet | Description | Hatókör |
+| Munkafüzet | Leírás | Hatókör |
 |----------|-------------|-------|
 | Teljesítmény | A Top N List és Diagrams nézet testreszabható verzióját jeleníti meg egyetlen munkafüzetben, amely az összes engedélyezett Log Analytics teljesítményszámlálókat kihasználja.| Skálán |
 | Teljesítményszámlálók | Felső N diagramos nézet a teljesítményszámlálók széles készletében. | Skálán |
@@ -66,7 +66,7 @@ A munkafüzetek egymástól függetlenül szerkeszthető diagramokat, táblázat
 
 A munkafüzeteknek két módja van: **szerkesztési mód**és **olvasási mód**. Új munkafüzet első indításakor a **szerkesztési módban**nyílik meg. Megjeleníti a munkafüzet összes tartalmát, beleértve az egyébként rejtett lépéseket és paramétereket is. Az **olvasási mód** egy egyszerűsített jelentési stílus nézetet jelenít meg. Az olvasási mód lehetővé teszi, hogy absztrakt legyen a jelentés létrehozása során felmerülő összetettség, miközben az alapul szolgáló mechanika még csak néhány kattintással elérhető, ha a módosításra szükség van.
 
-![Azure Monitor for VMs munkafüzetek szakasz szerkesztési vezérlői](media/vminsights-workbooks/workbook-new-workbook-editor-01.png)
+![Képernyőfelvétel: a Azure Monitor Virtual Machines munkafüzet szakasza, amely egy új munkafüzetet mutat be szerkesztési módban a szerkesztési vezérlők kiemelésével.](media/vminsights-workbooks/workbook-new-workbook-editor-01.png)
 
 1. Ha elkészült egy szakasz szerkesztésével, kattintson a **kész szerkesztés** gombra a szakasz bal alsó sarkában.
 
@@ -102,7 +102,7 @@ Adatok befoglalása más Log Analytics munkaterületekről vagy egy adott Applic
 
 Mindegyik szakasz saját speciális beállításokat tartalmaz, amelyek a ![ ](media/vminsights-workbooks/006-settings.png) **Paraméterek hozzáadása** gomb jobb oldalán található beállítások munkafüzetek szakasz szerkesztési vezérlők ikonján keresztül érhetők el.
 
-![Azure Monitor for VMs munkafüzetek szakasz szerkesztési vezérlői](media/vminsights-workbooks/007-settings-expanded.png)
+![Képernyőkép a Azure Monitor Virtual Machines munkafüzet szakaszának speciális beállítások párbeszédpaneléről. A párbeszédpanelt megnyitó ikon ki van emelve.](media/vminsights-workbooks/007-settings-expanded.png)
 
 |         |          |
 | ---------------- |:-----|
@@ -118,11 +118,11 @@ Az egyik előre elkészített munkafüzet – **TCP-forgalom**, amely a virtuál
 
 A munkafüzet első szakasza a naplózási lekérdezési adatmennyiségen alapul. A második szakasz a naplózási lekérdezési adatmennyiségen alapul, de az első táblázatban szereplő sorok interaktív módon frissülnek a diagramok tartalmával:
 
-![Azure Monitor for VMs munkafüzetek szakasz szerkesztési vezérlői](media/vminsights-workbooks/008-workbook-tcp-traffic.png)
+![Képernyőkép a Azure Monitor Virtual Machines szakaszáról, amely az előre elkészített munkafüzet TCP-forgalmát mutatja.](media/vminsights-workbooks/008-workbook-tcp-traffic.png)
 
 A viselkedés az **elem kiválasztásakor lehetséges, a paraméterek** speciális beállításainak exportálása, amelyek engedélyezve vannak a tábla naplójának lekérdezésében.
 
-![Azure Monitor for VMs munkafüzetek szakasz szerkesztési vezérlői](media/vminsights-workbooks/009-settings-export.png)
+![Képernyőkép a Virtual Machines-munkafüzet speciális beállítások párbeszédpaneléről, a "Ha egy elem van kiválasztva, a paraméter exportálása" lehetőség be van jelölve.](media/vminsights-workbooks/009-settings-export.png)
 
 A második naplózási lekérdezés ezt követően kijelöli az exportált értékeket, amikor egy sor kiválasztásával létrehoz egy olyan értéket, amelyet a szakasz fejléce és diagramjai használnak. Ha nincs kiválasztva sor, elrejti a szakasz fejlécét és a diagramokat. 
 
@@ -141,7 +141,7 @@ A metrikák részben teljes hozzáférést biztosítanak a Azure Monitor metrik�
 
 Itt látható egy példa arra, hogy a virtuális gép adatai egy munkafüzetbe kerüljenek, és a CPU-teljesítmény rácsos megjelenítését biztosítják:
 
-![Azure Monitor for VMs munkafüzetek szakasz szerkesztési vezérlői](media/vminsights-workbooks/010-metrics-grid.png)
+![Képernyőfelvétel a Azure Monitor található virtuálisgép-munkafüzetek metrikák szakaszáról. Az egyes virtuális gépek CPU-teljesítménye grafikusan látható.](media/vminsights-workbooks/010-metrics-grid.png)
 
 ## <a name="adding-parameter-sections"></a>Paraméterszakaszok hozzáadása
 
@@ -180,11 +180,11 @@ Ha az oszlop karakterlánc típusú, a null/üres karakterlánc hamisnak minős�
 
 Tekintsük át a kapcsolatok áttekintése jelentésben szereplő paramétereket. Kattintson a Szerkesztés szimbólumra az **irány**mellett.
 
-![Azure Monitor for VMs munkafüzetek szakasz szerkesztési vezérlői](media/vminsights-workbooks/011-workbook-using-dropdown.png)
+![A jelentés paramétereinek hozzáadására és szerkesztésére szolgáló szakasz képernyőképe Azure Monitor. A Direction paraméterhez tartozó szerkesztési ikon van kiválasztva.](media/vminsights-workbooks/011-workbook-using-dropdown.png)
 
 Ekkor elindul a **paraméter szerkesztése** menüelem.
 
-![Azure Monitor for VMs munkafüzetek szakasz szerkesztési vezérlői](media/vminsights-workbooks/012-workbook-edit-parameter.png)
+![Képernyőkép a paraméter szerkesztése párbeszédpanelről. A paraméter neve irány, a paraméter típusa legördülő lista, és a JSON-adatok beolvasása beállítás van kiválasztva.](media/vminsights-workbooks/012-workbook-edit-parameter.png)
 
 A JSON lehetővé teszi, hogy létrehoz egy tetszőleges táblát, amely tartalmakkal van feltöltve. A következő JSON például két értéket hoz létre a legördülő menüben:
 

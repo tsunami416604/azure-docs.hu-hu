@@ -9,18 +9,55 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: d89a5c951f2923f9e107dd2dabec7773f292fa02
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8df50096cc123003299b86da88f9230c95854775
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91290517"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450079"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning kibocsátási megjegyzések
 
 Ebben a cikkben megismerheti Azure Machine Learning kiadásait.  A teljes SDK-hivatkozási tartalomért keresse fel a Azure Machine Learning [**fő SDK for Python**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) -referenciát tartalmazó oldalt.
 
 Az ismert hibák és a megkerülő megoldások megismeréséhez tekintse meg [az ismert problémák listáját](resource-known-issues.md) .
+
+## <a name="2020-09-28"></a>2020-09-28
+
+### <a name="azure-machine-learning-sdk-for-python-v1150"></a>Azure Machine Learning SDK a Python v 1.15.0
++ **Hibajavítások és javítások**
+  + **azureml-contrib-interpret**
+    + A LIME-elmagyarázó a azureml-összevont értelmezéstől az értelmezhető – a közösségi csomag és a rendszerkép-magyarázat eltávolítása a azureml
+    + a vizualizációs irányítópult el lett távolítva a azureml-azureml-értelmező csomagból, a magyarázatot használó ügyfél áthelyezve a-tolmácsolási csomagba, és elavult a azureml-alapú csomagok és jegyzetfüzetek továbbfejlesztett API-val
+    + javítsa a PyPI-csomagok leírását a azureml, a azureml-magyarázza-Model, a azureml-azureml-értelmezze és a tensorboard-
+  + **azureml – egytörzsű – jegyzetfüzet**
+    + Rögzítse a nbcovert függőségét < 6-ra, hogy a Papermill 1. x továbbra is működjön.
+  + **azureml-core**
+    + Paraméterek hozzáadva a TensorflowConfiguration és a MpiConfiguration konstruktorhoz, amely lehetővé teszi az osztály attribútumainak egyszerűbb inicializálását anélkül, hogy a felhasználónak minden egyes attribútumot be kellene állítania. Hozzáadott egy PyTorchConfiguration osztályt az elosztott PyTorch-feladatok konfigurálásához a ScriptRunConfig-ben.
+    + Az Azure-mgmt-Resource verziójának rögzítése a hitelesítési hiba elhárítása érdekében.
+    + A Triton támogatásának hiánya programkód üzembe helyezése
+    + a Run. start_logging () paraméterben megadott kimeneti könyvtárakat a rendszer az interaktív forgatókönyvek használatakor nyomon követi. A futó fájlok ML Studio láthatók a Run. Complete () függvény hívásakor.
+    + A fájl kódolása mostantól az adatkészlet létrehozásakor `Dataset.Tabular.from_delimited_files` és `Dataset.Tabular.from_json_lines_files` az argumentum átadásával is megadható `encoding` . A támogatott kódolások "UTF8", "iso88591", "latin", "ASCII", "UTF16", "UTF32", "utf8bom" és "windows1252".
+    + Hibajavítás, ha a környezeti objektumot nem adja át a ScriptRunConfig konstruktornak.
+    + A Run. Cancel () frissített futtatása lehetővé teszi a helyi Futtatás megszakítását egy másik gépről.
+  + **azureml-dataprep**
+    +  Rögzített adatkészlet-csatlakoztatás időtúllépési problémái.
+  + **azureml – magyarázat – modell**
+    + javítsa a PyPI-csomagok leírását a azureml, a azureml-magyarázza-Model, a azureml-azureml-értelmezze és a tensorboard-
+  + **azureml-interpret**
+    + a vizualizációs irányítópult el lett távolítva a azureml-azureml-értelmező csomagból, a magyarázatot használó ügyfél áthelyezve a-tolmácsolási csomagba, és elavult a azureml-alapú csomagok és jegyzetfüzetek továbbfejlesztett API-val
+    + azureml – a csomag frissítése, hogy az értelmezhető közösségi 0.15.0 függ
+    + javítsa a PyPI-csomagok leírását a azureml, a azureml-magyarázza-Model, a azureml-azureml-értelmezze és a tensorboard-
+  + **azureml-pipeline-core**
+    +  A folyamatban lévő, rögzített folyamattal kapcsolatos probléma, `OutputFileDatasetConfig` Ha `register_on_complete` a `name` paramétert egy már létező adatkészlet neveként állítja be.
+  + **azureml-pipeline-steps**
+    + Elavult databricks-jegyzetfüzetek eltávolítva.
+  + **azureml-tensorboard**
+    + javítsa a PyPI-csomagok leírását a azureml, a azureml-magyarázza-Model, a azureml-azureml-értelmezze és a tensorboard-
+  + **azureml-train-automl-runtime**
+    + a vizualizációs irányítópult el lett távolítva a azureml-azureml-értelmező csomagból, a magyarázatot használó ügyfél áthelyezve a-tolmácsolási csomagba, és elavult a azureml-alapú csomagok és jegyzetfüzetek továbbfejlesztett API-val
+  + **azureml-widgets**
+    + a vizualizációs irányítópult el lett távolítva a azureml-azureml-értelmező csomagból, a magyarázatot használó ügyfél áthelyezve a-tolmácsolási csomagba, és elavult a azureml-alapú csomagok és jegyzetfüzetek továbbfejlesztett API-val
 
 ## <a name="2020-09-21"></a>2020-09-21
 
@@ -88,7 +125,7 @@ Az ismert hibák és a megkerülő megoldások megismeréséhez tekintse meg [az
     + Frissített AutoML-függőségek: `scikit-learn` (most 0.22.1), `pandas` (most 0.25.1), `numpy` (most 1.18.2).
   + **azureml-automl-DNN-előrejelzés**
     + Frissített AutoML-függőségek: `scikit-learn` (most 0.22.1), `pandas` (most 0.25.1), `numpy` (most 1.18.2).
-  + **azureml-contrib-fairness**
+  + **azureml – a méltányosság**
     + Adjon meg egy rövid leírást a azureml – a méltányosság érdekében.
   + **azureml-contrib-pipeline-steps**
     + Ez a csomag elavult, és a felhasználónak a azureml-pipeline-Steps lépéseket kell használnia.
@@ -313,7 +350,7 @@ Az ismert hibák és a megkerülő megoldások megismeréséhez tekintse meg [az
     + Ha a felhasználó letiltja a featurization-t, a rendszer nem engedélyezi az osztály-kiegyensúlyozást.  
   + **azureml – előtörzs – itp**
     + A CmAk számítási típusa támogatott. A munkaterülethez a betanítási feladatokhoz csatolhatja a saját AK-fürtöt.
-  + **azureml – egytörzsű – jegyzetfüzet**
+  + **azureml-contrib-notebook**
     + A azureml-untribal-notebook csomag dokumentációjának fejlesztése.
   + **azureml-contrib-pipeline-steps**
     + Doc-fejlesztések a azureml-rel--pipeline-Steps csomaghoz.
@@ -448,7 +485,7 @@ Az ismert hibák és a megkerülő megoldások megismeréséhez tekintse meg [az
       + Az process_count_per_node alapértelmezett értéke 1 értékre változik. A jobb teljesítmény érdekében a felhasználónak be kell hangolnia ezt az értéket. Ajánlott eljárás a GPU vagy a CPU-csomópontok számának beállítása.
       + A ParallelRunStep nem szúr be csomagokat, a felhasználónak tartalmaznia kell a **azureml** és a **azureml-adatelőkészítés [pandák, Fuse]** csomagokat a környezeti definícióban. Ha egyéni Docker-rendszerképet használ a user_managed_dependencies, akkor a felhasználónak telepítenie kell a Conda a képre.
       
-+ **Kompatibilitástörő változások**
++ **Változtatások megszakítása**
   + **azureml-pipeline-steps**
     + A azureml. dprep. adatfolyam használata a AutoMLConfig érvényes bemeneti típusaként elavult.
   + **azureml-train-automl-client**
@@ -652,7 +689,7 @@ A Studio alkalmazásban a következő webalapú szerzői eszközöket érheti el
   + A AmlCompute-fürtök mostantól támogatják a felügyelt identitás beállítását a fürtön a kiépítés időpontjában. Csak adja meg, hogy szeretné-e használni a rendszer által hozzárendelt identitást vagy a felhasználó által hozzárendelt identitást, és adjon meg egy Identitásazonosítója az utóbbi számára. Ezután beállíthatja a különböző erőforrásokhoz, például a tároláshoz vagy az ACR-hez való hozzáféréshez szükséges engedélyeket oly módon, hogy a számítási adatok biztonságosan hozzáférhessenek az adatokhoz, a AmlCompute által jelenleg használt jogkivonat-alapú megközelítés helyett. A paraméterekkel kapcsolatos további információkért tekintse meg az SDK-referenciát.
   
 
-+ **Kompatibilitástörő változások**
++ **Változtatások megszakítása**
   + A AmlCompute-fürtök a futtatáson alapuló létrehozást támogató előzetes szolgáltatást támogatnak, amely két hét alatt elavulttá válik. A Amlcompute osztály használatával továbbra is állandó számítási célokat hozhat létre, de a "Amlcompute" azonosító megadásának konkrét megközelítését a közeljövőben nem fogja támogatni a rendszer a futtatási konfigurációban. 
 
 + **Hibajavítások és javítások**
@@ -723,7 +760,7 @@ A Studio alkalmazásban a következő webalapú szerzői eszközöket érheti el
 
 ### <a name="azure-machine-learning-sdk-for-python-v120"></a>Azure Machine Learning SDK a Python v 1.2.0
 
-+ **Kompatibilitástörő változások**
++ **Változtatások megszakítása**
   + A Python 2,7 támogatásának eldobása
 
 + **Hibajavítások és javítások**
@@ -758,7 +795,7 @@ A Studio alkalmazásban a következő webalapú szerzői eszközöket érheti el
   + **Python 2,7**
     + A Python 2,7 támogatásának utolsó verziója
 
-+ **Kompatibilitástörő változások**
++ **Változtatások megszakítása**
   + **Szemantikus verziószámozás 2.0.0**
     + Az 1,1-es verziótól kezdődően az Azure ML Python SDK a szemantikai verziószámozási 2.0.0 alkalmazza. [Itt olvashat bővebben](https://semver.org/). Minden további verzió új számozási sémát és szemantikai verziószámozási szerződést fog követni. 
 
@@ -921,7 +958,7 @@ A Studio alkalmazásban a következő webalapú szerzői eszközöket érheti el
 
 ### <a name="azure-machine-learning-sdk-for-python-v110rc0-pre-release"></a>Azure Machine Learning SDK for Python v 1.1.0 RC0 (előzetes verzió)
 
-+ **Kompatibilitástörő változások**
++ **Változtatások megszakítása**
   + **Szemantikus verziószámozás 2.0.0**
     + Az 1,1-es verziótól kezdődően az Azure ML Python SDK a szemantikai verziószámozási 2.0.0 alkalmazza. [Itt olvashat bővebben](https://semver.org/). Minden további verzió új számozási sémát és szemantikai verziószámozási szerződést fog követni. 
   
@@ -1051,7 +1088,7 @@ A Studio alkalmazásban a következő webalapú szerzői eszközöket érheti el
 
 ### <a name="azure-machine-learning-sdk-for-python-v1076"></a>Azure Machine Learning SDK a Python v 1.0.76
 
-+ **Kompatibilitástörő változások**
++ **Változtatások megszakítása**
   + Azureml – AutoML frissítési problémák
     + Frissítés a azureml-Train-automl>= 1.0.76 from azureml-automl<1.0.76 részleges telepítéseket okozhat, ami miatt egyes AutoML-importálások sikertelenek lesznek. Ennek megoldásához futtassa a következő helyen található telepítési parancsfájlt: https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/automl_setup.cmd . Vagy ha közvetlenül a pip-et használja, a következőket teheti:
       + "pip install--upgrade azureml-Train-automl"
@@ -2023,6 +2060,6 @@ A [`PipelineEndpoint`](https://docs.microsoft.com/python/api/azureml-pipeline-co
   + Új naplófájlok megjelenítője
   + A műveletek lapon található kísérletekre, számításokra, modellekre, lemezképekre és központi telepítésekre mutató hivatkozások
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Olvassa el az [Azure Machine Learning](overview-what-is-azure-ml.md) áttekintését.

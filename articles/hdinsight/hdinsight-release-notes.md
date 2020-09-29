@@ -7,72 +7,59 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 08/25/2020
-ms.openlocfilehash: fd0412459e7d6e51b6abdccbc8782d157acee6b9
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.date: 09/27/2020
+ms.openlocfilehash: f6527a0c5712d68756310b699d214013e89f38e1
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89319797"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449586"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Az Azure HDInsight kibocsátási megjegyzései
 
 Ez a cikk az Azure HDInsight **legújabb** kiadási frissítéseivel kapcsolatos információkat tartalmaz. A korábbi kiadásokkal kapcsolatos információkért lásd: [HDInsight kibocsátási megjegyzések archívuma](hdinsight-release-notes-archive.md).
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Az Azure HDInsight az egyik legnépszerűbb szolgáltatás a nagyvállalati ügyfelek körében az Azure-beli nyílt forráskódú elemzésekhez.
 
-## <a name="release-date-08092020"></a>Kiadás dátuma: 08/09/2020
+## <a name="release-date-09282020"></a>Kiadás dátuma: 09/28/2020
 
-Ez a kiadás csak a 4,0-es HDInsight vonatkozik. A HDInsight-kiadás több napon keresztül elérhetővé válik minden régióban. A kiadás dátuma itt jelzi az első régió kiadásának dátumát. Ha nem látja az alábbi módosításokat, várja meg, amíg a kiadás több napon belül élő marad a régióban.
+Ez a kiadás a 3,6-es és a HDInsight 4,0-es HDInsight egyaránt érvényes. A HDInsight-kiadás több napon keresztül elérhetővé válik minden régióban. A kiadás dátuma itt jelzi az első régió kiadásának dátumát. Ha nem látja az alábbi módosításokat, várja meg, amíg a kiadás több napon belül élő marad a régióban.
 
 ## <a name="new-features"></a>Új funkciók
-### <a name="support-for-sparkcruise"></a>A SparkCruise támogatása
-A SparkCruise egy automatikus számítási rendszer a Spark számára. Kijelöli az általános alkifejezéseket, amelyeket a korábbi lekérdezési munkaterhelés alapján kell megvalósulni. A SparkCruise ezeket az alkifejezéseket a lekérdezés feldolgozásának részeként, a számítások újrafelhasználását pedig automatikusan alkalmazza a háttérben. A Spark-kód módosítása nélkül is élvezheti a SparkCruise.
- 
-### <a name="support-hive-view-for-hdinsight-40"></a>A HDInsight 4,0-es verziójának támogatási struktúra-nézete
-Az Apache Ambari kaptár nézet segítségével a webböngésző használatával hozhat létre, optimalizálhat és futtathat kaptár-lekérdezéseket. A kaptár nézet natív módon támogatott a HDInsight 4,0-fürtök esetében, ettől a kiadástól kezdve. A meglévő fürtökre nem vonatkozik. El kell dobnia, majd újra létre kell hoznia a fürtöt a beépített kaptár nézet beszerzéséhez.
- 
-### <a name="support-tez-view-for-hdinsight-40"></a>A HDInsight 4,0 TEZ-nézetének támogatása
-Az Apache TEZ View segítségével nyomon követheti és hibakeresést végezhet a kaptár TEZ-feladata végrehajtásában. A TEZ nézet natív módon támogatott a HDInsight 4,0-es verziójától kezdve. A meglévő fürtökre nem vonatkozik. El kell dobnia, majd újra létre kell hoznia a fürtöt a beépített TEZ nézet beszerzéséhez.
+### <a name="llap-cluster-auto-scale-general-available"></a>LLAP-fürt általános elérhető automatikus méretezése
+A LLAP-fürt típusának automatikus méretezése már általánosan elérhető (GA). Az 2020. augusztus 27. után létrehozott összes LLAP-fürt esetében az automatikus skálázást is támogatja.
+
+### <a name="hbase-cluster-supports-premium-adls-gen2"></a>A HBase-fürt támogatja a prémium szintű ADLS Gen2
+A HDInsight mostantól támogatja a prémium szintű ADLS Gen2 elsődleges HDInsight a HBase 3,6 és 4,0 fürtök esetében. A [gyorsított írásokkal](./hbase/apache-hbase-accelerated-writes.md)együtt jobb teljesítményt érhet el a HBase-fürtökhöz.
+
+### <a name="kafka-partition-distribution-on-azure-fault-domains"></a>Kafka-partíciók eloszlása az Azure tartalék tartományokban
+A tartalék tartomány az alapul szolgáló hardver logikai csoportosítása egy Azure-adatközpontban. Mindegyik tartalék tartomány közös áramforrással és hálózati kapcsolóval rendelkezik. A HDInsight Kafka a partíció replikáit ugyanabban a tartalék tartományban tárolja. Ettől a kiadástól kezdve a HDInsight mostantól támogatja a Kafka-partíciók automatikus terjesztését az Azure tartalék tartományok alapján. 
+
+### <a name="encryption-in-transit"></a>Titkosítás az átvitel során
+Az ügyfelek engedélyezhetik a fürt csomópontjai közötti átvitelt az IPSec-titkosítással a platform által felügyelt kulcsokkal. Ez a beállítás a fürt létrehozási idején engedélyezhető. További információ a [titkosítás engedélyezéséről az átvitel során](./domain-joined/encryption-in-transit.md).
+
+### <a name="encryption-at-host"></a>Titkosítás a gazdagépen
+Amikor engedélyezi a titkosítást a gazdagépen, a virtuálisgép-gazdagépen tárolt adatok titkosítva maradnak a tárolási szolgáltatásba titkosított adatforgalomban. Ebben a kiadásban **engedélyezheti a titkosítást a gazdagépen az ideiglenes adatlemezen** a fürt létrehozásakor. A gazdagépen lévő titkosítás csak [bizonyos, korlátozott régiókban lévő virtuális gépek esetében](https://docs.microsoft.com/azure/virtual-machines/linux/disks-enable-host-based-encryption-portal)támogatott. A HDInsight a [következő csomópont-konfigurációt és SKU-](./hdinsight-supported-node-configuration.md)t támogatja. További információ a [titkosítás engedélyezéséről a gazdagépen](https://docs.microsoft.com/azure/hdinsight/disk-encryption#encryption-at-host-using-platform-managed-keys).
+
+### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Áttérés Azure-beli virtuálisgép-méretezési csoportokra
+A HDInsight mostantól Azure-beli virtuális gépeket használ a fürt kiépítéséhez. Ettől a kiadástól kezdve a szolgáltatás fokozatosan migrálva lesz az [Azure virtuálisgép-méretezési csoportokra](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview). A teljes folyamat hónapokat is igénybe vehet. A régiók és az előfizetések migrálása után az újonnan létrehozott HDInsight-fürtök felhasználói műveletek nélkül futnak a virtuálisgép-méretezési csoportokban. A rendszer nem várt változást.
 
 ## <a name="deprecation"></a>Elavulás
-### <a name="deprecation-of-spark-21-and-22-in-hdinsight-36-spark-cluster"></a>A Spark 2.1 és 2.2 elavulása a HDInsight 3.6 Kafka-fürtjein
-Július 1 2020-től kezdődően az ügyfelek nem hozhatnak létre új Spark-fürtöket a Spark 2,1 és 2,2 HDInsight 3,6-ben. A meglévő fürtök a Microsoft támogatásának hiányában lesznek futtatva. Vegye figyelembe, hogy a Spark 2,3-ra való áttérés a HDInsight 30 2020 3,6-re, a lehetséges rendszer-és támogatási megszakítás elkerülése érdekében.
- 
-### <a name="deprecation-of-spark-23-in-hdinsight-40-spark-cluster"></a>A Spark 2.3 elavulása a HDInsight 4.0 Kafka-fürtjein
-Július 1 2020-től kezdődően az ügyfelek nem hozhatnak létre új Spark-fürtöket a Spark 2,3-mel a HDInsight 4,0-on. A meglévő fürtök a Microsoft támogatásának hiányában lesznek futtatva. Fontolja meg, hogy a HDInsight 4.0-ban átvált a Spark 2.4-re 2020. június 30-ig, a rendszerhasználat/támogatás esetleges megszakításának elkerülése érdekében.
- 
-### <a name="deprecation-of-kafka-11-in-hdinsight-40-kafka-cluster"></a>A Kafka 1.1 elavulása a HDInsight 4.0 Kafka-fürtjein
-Július 1 2020-től kezdődően az ügyfelek nem tudnak új Kafka-fürtöket létrehozni a HDInsight 4,0-on futó Kafka 1,1-mel. A meglévő fürtök a Microsoft támogatásának hiányában lesznek futtatva. Fontolja meg, hogy a HDInsight 4.0-ban átvált a Kafka 2.1-re 2020. június 30-ig, a rendszerhasználat/támogatás esetleges megszakításának elkerülése érdekében.
+Nincs elavulás ehhez a kiadáshoz.
 
 ## <a name="behavior-changes"></a>Viselkedési változások
-### <a name="ambari-stack-version-change"></a>Ambari-verem verziójának módosítása
-Ebben a kiadásban a Ambari verziója 2. x. x. x és 4,1 között változik. A Ambari: Ambari > felhasználói > verziójában ellenőrizheti a verem verzióját (HDInsight 4,1).
+Ebben a kiadásban nem változik a viselkedés.
 
 ## <a name="upcoming-changes"></a>Közelgő változások
-Nincs szükség a közelgő változtatásokra, amelyekre figyelnie kell.
+A következő módosítások a közelgő kiadásokban fognak történni.
+
+### <a name="ability-to-select-different-zookeeper-sku-for-spark-hadoop-and-ml-services"></a>Különböző Zookeeper SKU kiválasztásának lehetősége Spark, Hadoop és ML szolgáltatásokhoz
+A HDInsight jelenleg nem támogatja a Spark, a Hadoop és a ML szolgáltatások Zookeeperének módosítását. A2_v2/a2 SKU-t használ a Zookeeper-csomópontokhoz, és az ügyfelek számára nem számítunk fel díjat. A következő kiadásban az ügyfelek igény szerint módosíthatják a Spark, a Hadoop és a ML szolgáltatásokhoz tartozó Zookeeper SKU-t. A A2_v2/a2 eltérő SKU-val rendelkező Zookeeper-csomópontokat a rendszer felszámítja. Az alapértelmezett SKU továbbra is A2_V2/a2 és díjmentes.
 
 ## <a name="bug-fixes"></a>Hibajavítások
 A HDInsight továbbra is a fürt megbízhatóságának és teljesítményének növelését teszi elérhetővé. 
 
-Az alábbi JIRAs a struktúra számára:
-* [STRUKTÚRA – 23619](https://issues.apache.org/jira/browse/HIVE-23619)
-* [STRUKTÚRA – 21223](https://issues.apache.org/jira/browse/HIVE-21223)
-* [STRUKTÚRA – 22599](https://issues.apache.org/jira/browse/HIVE-22599)
-* [STRUKTÚRA – 22121](https://issues.apache.org/jira/browse/HIVE-22121)
-* [STRUKTÚRA – 22136](https://issues.apache.org/jira/browse/HIVE-22136)
-* [STRUKTÚRA – 18786](https://issues.apache.org/jira/browse/HIVE-18786)
-
-Az alábbi JIRAs a HBase-re vannak portolva:
-* [HBASE-21458](https://issues.apache.org/jira/browse/HBASE-21458)
-* [HBASE-24208](https://issues.apache.org/jira/browse/HBASE-24208)
-* [HBASE-24205](https://issues.apache.org/jira/browse/HBASE-24205)
-
 ## <a name="component-version-change"></a>Összetevő verziójának módosítása
 Ehhez a kiadáshoz nem módosult az összetevő verziószáma. A HDInsight 4,0 és a HDInsight 3,6 aktuális összetevő-verzióit ebben a [dokumentumban](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)találja.
-
-## <a name="known-issues"></a>Ismert problémák
-
-Javítva lett az Azure Portal azon hibája, amely miatt amikor a felhasználók Azure HDInsight-fürtöt hoztak létre SSH-hitelesítéses típusú nyilvános kulcs használatával, hibaüzenetet kaptak. Amikor a felhasználók rákattintottak a **Felülvizsgálat + létrehozás** gombra, „A jelszó nem tartalmazhatja az SSH-felhasználónév semmilyen egymást követő három karakterét” hibaüzenet jelent meg. Ezt a problémát megoldottuk, de előfordulhat, hogy a CTRL + F5 billentyűkombinációval frissítenie kell a böngésző gyorsítótárát a javított nézet betöltéséhez. A probléma megkerülő megoldása a fürt ARM-sablonnal történő létrehozása volt. 

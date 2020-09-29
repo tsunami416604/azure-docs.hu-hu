@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: high-availability
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 44005dafb1e3eee60f163f80ad2e4282147233e4
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 659a8a3b38a79cc9dcc97f6f1e9c4395426ef7a8
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91355618"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450258"
 ---
 # <a name="manage-rolling-upgrades-of-cloud-applications-by-using-sql-database-active-geo-replication"></a>Felhőalapú alkalmazások működés közbeni frissítésének kezelése SQL Database aktív földrajzi replikálás használatával
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -110,7 +110,7 @@ ALTER DATABASE <Prod_DB>
 SET (ALLOW_CONNECTIONS = NO)
 ```
 
-2. Zárja le a Geo-replikációt a másodlagos (11) kapcsolat leválasztásával. Ez a művelet létrehoz egy független, de teljesen szinkronizált példányt az éles adatbázisból. Ez az adatbázis frissülni fog. A következő példa Transact-SQL-t használ, de a [PowerShell](/powershell/module/az.sql/remove-azsqldatabasesecondary?view=azps-1.5.0) is elérhető. 
+2. Zárja le a Geo-replikációt a másodlagos (11) kapcsolat leválasztásával. Ez a művelet létrehoz egy független, de teljesen szinkronizált példányt az éles adatbázisból. Ez az adatbázis frissülni fog. A következő példa Transact-SQL-t használ, de a [PowerShell](/powershell/module/az.sql/remove-azsqldatabasesecondary?view=azps-1.5.0&preserve-view=true) is elérhető. 
 
 ```sql
 -- Disconnect the secondary, terminating geo-replication
@@ -145,7 +145,7 @@ Ennek a lehetőségnek a legfőbb előnye, hogy az alkalmazást és annak geo-re
 
 A fő kompromisszum az, hogy minden alkalmazás-összetevőnél kettős redundancia szükséges, ezért magasabb dollár-költségekkel jár. Emellett bonyolultabb munkafolyamatot is magában foglal.
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 A cikkben leírt két frissítési módszer különbözik az összetettség és a dollár díja között, de mindkettőre összpontosít, hogy a felhasználó mennyi ideig korlátozódik a csak olvasási műveletekre. Ezt az időt közvetlenül a Frissítési parancsfájl időtartama határozza meg. Ez nem függ az adatbázis méretétől, a választott szolgáltatási szinttől, a webhely konfigurációjától vagy más olyan tényezőktől, amelyeket nem tud egyszerűen szabályozni. Az előkészítési lépések elvesznek a frissítés lépéseitől, és nem befolyásolják az éles alkalmazást. A Frissítési parancsfájl hatékonysága kulcsfontosságú tényező, amely meghatározza a felhasználói élményt a frissítések során. Így a legjobb megoldás az, hogy a lehető leghatékonyabban fejlessze a frissítési szkriptet.
 

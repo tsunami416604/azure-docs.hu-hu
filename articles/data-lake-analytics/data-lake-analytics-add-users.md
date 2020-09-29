@@ -7,21 +7,21 @@ ms.reviewer: jasonh
 ms.assetid: db35f16e-1565-4873-a851-bd987accdc58
 ms.topic: how-to
 ms.date: 05/24/2018
-ms.openlocfilehash: 7f9af576640e6d269ff5a44d7b0e2a529c20c505
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4819b5cb252d2c646905d277fcbedc57a55fe692
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502936"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450214"
 ---
 # <a name="adding-a-user-in-the-azure-portal"></a>Felhasználó hozzáadása az Azure Portalon
 
 ## <a name="start-the-add-user-wizard"></a>A felhasználó hozzáadása varázsló elindítása
 1. Nyissa meg a Azure Data Lake Analyticst a használatával https://portal.azure.com .
 2. Kattintson a **felhasználó hozzáadása varázsló**elemre.
-3. A **felhasználó kiválasztása** lépésben keresse meg azt a felhasználót, akit hozzá kíván adni. Válassza a **Kiválasztás** lehetőséget.
+3. A **felhasználó kiválasztása** lépésben keresse meg azt a felhasználót, akit hozzá kíván adni. Kattintson a **Kiválasztás** elemre.
 4. a **szerepkör kiválasztása lépésben válassza ki** **Data Lake Analytics fejlesztőt**. Ez a szerepkör az U-SQL-feladatok elküldéséhez/figyeléséhez vagy kezeléséhez szükséges engedélyek minimális készletét határozza meg. Rendeljen hozzá ehhez a szerepkörhöz, ha a csoport nem az Azure-szolgáltatások kezelésére szolgál.
-5. A **katalógus engedélyeinek kiválasztása** lépésben válassza ki azokat az adatbázisokat, amelyekre a felhasználónak hozzá kell férnie. A feladatok elküldéséhez olvasási és írási hozzáférés szükséges a Master adatbázishoz. Amikor elkészült, kattintson az **OK** gombra.
+5. A **katalógus engedélyeinek kiválasztása** lépésben válassza ki azokat az adatbázisokat, amelyekre a felhasználónak hozzá kell férnie. A feladatok elküldéséhez a "Master" nevű alapértelmezett statikus adatbázishoz olvasási és írási hozzáférés szükséges. Amikor elkészült, kattintson az **OK** gombra.
 6. A **kiválasztott engedélyek hozzárendelésének** utolsó lépésében tekintse át a varázsló által végrehajtott módosításokat. Kattintson az **OK** gombra.
 
 
@@ -49,7 +49,7 @@ Az a minta parancs, amellyel felhasználói hozzáférést biztosíthat a felada
 `Add-AdlaJobUser.ps1 -Account myadlsaccount -EntityToAdd 546e153e-0ecf-417b-ab7f-aa01ce4a7bff -EntityType User -FullReplication`
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az Azure Data Lake Analytics áttekintése](data-lake-analytics-overview.md)
 * [A Data Lake Analytics használatának első lépései a Azure Portal](data-lake-analytics-get-started-portal.md)

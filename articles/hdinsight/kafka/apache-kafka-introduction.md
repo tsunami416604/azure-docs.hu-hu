@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: hdinsightactive
 ms.date: 02/25/2020
-ms.openlocfilehash: 8c22ff3cc79d326da09c44167519adbea48b5643
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: c6209ae985f8e59e1acae2d8fd6a1c821acae5a7
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88651335"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449553"
 ---
 # <a name="what-is-apache-kafka-in-azure-hdinsight"></a>Mi az Azure HDInsight Apache Kafka
 
@@ -33,7 +33,9 @@ A HDInsight-alapú Kafka jellegzetességei:
 
     További információ: [magas rendelkezésre állás Apache Kafka on HDInsight](apache-kafka-high-availability.md).
 
-* A HDInsight lehetővé teszi a feldolgozó csomópontok (amelyeken a Kafka-közvetítő fut) számának a fürt létrehozását követő módosítását. A méretezés elvégezhető az Azure Portal, az Azure PowerShell vagy egyéb Azure-kezelőfelületek segítségével. A Kafka esetében érdemes kiegyenlíteni a partíciók replikáit a méretezési műveleteket követően. A partíciók kiegyenlítése lehetővé teszi, hogy a Kafka kihasználja a feldolgozó csomópontok új mennyiségét.
+* A HDInsight lehetővé teszi a feldolgozó csomópontok (amelyeken a Kafka-közvetítő fut) számának a fürt létrehozását követő módosítását. A Azure Portal, a Azure PowerShell és más Azure felügyeleti felületekből is elvégezhető a növekvő skálázás. A Kafka esetében érdemes kiegyenlíteni a partíciók replikáit a méretezési műveleteket követően. A partíciók kiegyenlítése lehetővé teszi, hogy a Kafka kihasználja a feldolgozó csomópontok új mennyiségét.
+
+   A HDInsight Kafka nem támogatja a fürtön belüli közvetítők számának lefelé méretezését vagy csökkentését. Ha kísérlet történt a csomópontok számának csökkentésére, `InvalidKafkaScaleDownRequestErrorCode` hibaüzenetet ad vissza.
 
     További információ: [magas rendelkezésre állás Apache Kafka on HDInsight](apache-kafka-high-availability.md).
 
@@ -71,7 +73,7 @@ Néhány gyakori feladat és minta, amelyek a HDInsight-alapú Kafkával elvége
 |Összesítés|Az adatfolyam-feldolgozás használatával a különböző streamekről származó információk összevonhatók az adatoknak az operatív adatokba való összevonásához és központosításához.|
 |Átalakítás|Az adatfolyam-feldolgozás használatával több bemeneti témakörből származó adatok egyesíthetők és bővíthetők egy vagy több kimeneti témakörbe.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A HDInsighton futó Apache Kafka használatának megismeréséhez tekintse meg a következő hivatkozásokat:
 

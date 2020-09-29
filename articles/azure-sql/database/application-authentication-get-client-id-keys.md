@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: development
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 5aba4c690f91b515424eb866d387652ca9f40e7e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d88fa0e096557169a956a2ba33f72448676785e1
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84344611"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91444663"
 ---
 # <a name="get-the-required-values-for-authenticating-an-application-to-access-azure-sql-database-from-code"></a>Az alkalmazások kód Azure SQL Database való eléréséhez szükséges értékek beolvasása
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -100,7 +100,7 @@ Write-Output "_applicationSecret:" $secret
 
 * * *
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 [Adatbázis létrehozása Azure SQL Database C-vel #](design-first-database-csharp-tutorial.md)  
 [Kapcsolódás Azure SQL Databasehoz Azure Active Directory hitelesítés használatával](authentication-aad-overview.md)

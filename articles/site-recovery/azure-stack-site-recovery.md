@@ -3,12 +3,12 @@ title: Azure Stack virtuális gépek replikálása az Azure-ba Azure Site Recove
 description: Ismerje meg, hogyan állíthatja be a vész-helyreállítást az Azure-ba Azure Stack virtuális gépekre a Azure Site Recovery szolgáltatással.
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 5bc78dc5b01bb4790190268b303cb894de2b6f71
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a7e58f5b24786169c9d0c989b79a14c4115acca8
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333715"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448976"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Azure Stack rendszerű virtuális gépek replikálása az Azure-ba
 
@@ -314,26 +314,7 @@ Ezután futtassa a feladatátvételt az alábbiak szerint:
 
 ### <a name="fail-back-to-azure-stack"></a>Feladat-visszavétel Azure Stack
 
-Ha az elsődleges hely újra működik, az Azure-ból Azure Stackra is visszatérhet. Ehhez le kell töltenie az Azure virtuális gép virtuális merevlemezét, és fel kell töltenie Azure Stackba.
-
-1. Állítsa le az Azure-beli virtuális gépet, hogy a VHD letölthető legyen.
-2. A virtuális merevlemez letöltésének megkezdéséhez telepítse a [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/).
-3. Navigáljon a virtuális gépre az Azure Portalon (a virtuális gép nevének használatával).
-4. A **lemezek**területen kattintson a lemez nevére, és Gyűjtse össze a beállításokat.
-
-    - A tesztben használt VHD URI-azonosító például `https://502055westcentralus.blob.core.windows.net/wahv9b8d2ceb284fb59287/copied-3676553984.vhd` lebontható a virtuális merevlemez letöltéséhez használt következő bemeneti paraméterek beszerzéséhez.
-        - Storage-fiók: 502055westcentralus
-        - Tároló: wahv9b8d2ceb284fb59287
-        - VHD neve: copied-3676553984. vhd
-
-5. Most Azure Storage Explorer használatával töltse le a VHD-t.
-6. Töltse fel a virtuális merevlemezt Azure Stack a [következő lépésekkel](/azure-stack/user/azure-stack-manage-vm-disks#use-powershell-to-add-multiple-disks-to-a-vm).
-7. A meglévő virtuális gépen vagy az új virtuális gépen csatolja a feltöltött virtuális merevlemezeket.
-8. Győződjön meg arról, hogy az operációsrendszer-lemez helyes, és indítsa el a virtuális gépet.
-
-
-Ebben a fázisban a feladat-visszavétel befejeződött.
-
+Ha az elsődleges hely újra működik, az Azure-ból Azure Stackra is visszatérhet. Ehhez kövesse az [itt](https://docs.microsoft.com/azure-stack/operator/site-recovery-failback?view=azs-2005)ismertetett lépéseket.
 
 ## <a name="conclusion"></a>Összegzés
 

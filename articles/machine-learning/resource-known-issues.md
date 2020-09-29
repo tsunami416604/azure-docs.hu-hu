@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4
 ms.date: 08/13/2020
-ms.openlocfilehash: 67ab15a6b890bc5f28cd18fca8a35adbc7437778
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3a1d5c70913f7e2a56eaf04be333a931c1adbc3d
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91280980"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450061"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Ismert problémák és hibaelhárítás a Azure Machine Learningban
 
@@ -209,6 +209,9 @@ Ha más számítási feladatokhoz (például adatátvitelhez) használ fájlmego
     ```
 
     Ha nem tartalmazza a Lead Forward perjelet, a "/" előtagot kell létrehoznia a munkakönyvtárhoz, például a `/mnt/batch/.../tmp/dataset` számítási célra, hogy jelezze, hová szeretné csatlakoztatni az adatkészletet.
+
+### <a name="mount-dataset"></a>Csatlakoztatási adatkészlet
+* Az **adatkészlet inicializálása nem sikerült: várakozás a csatlakozási pont készenléti**állapotának megszakadása esetén: a `azureml-sdk >=1.12.0` probléma elhárításához próbálkozzon újra a logikával. Ha a korábbi azureml-SDK-verziókat használja, frissítsen a legújabb verzióra. Ha már be van kapcsolva `azureml-sdk>=1.12.0` , hozza létre újra a környezetet, hogy a javítással rendelkezzen a legújabb javítással.
 
 ### <a name="data-labeling-projects"></a>Adatcímkéző projektek
 
@@ -475,7 +478,7 @@ Az Azure szerepköralapú hozzáférés-vezérléssel korlátozható a Azure Mac
 
 További információ: [felhasználók és szerepkörök kezelése](how-to-assign-roles.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További hibaelhárítási cikkek a Azure Machine Learning:
 

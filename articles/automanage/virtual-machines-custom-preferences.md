@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 09/04/2020
 ms.author: jushiman
-ms.openlocfilehash: cf8e7340ce3554bf27364335457a5b7eadcdc049
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7a716ed9bca6d34ad4dbcd2566837a839f71153b
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935230"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450311"
 ---
 # <a name="create-a-custom-preference-in-azure-automanage-for-vms"></a>Egyéni preferencia létrehozása az Azure-beli automanage virtuális gépeken
 
@@ -34,7 +34,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy fi
 > Az ingyenes próbaverziós fiókok nem férnek hozzá az oktatóanyagban használt virtuális gépekhez. Váltson utólagos elszámolású előfizetésre.
 
 > [!IMPORTANT]
-> A következő RBAC engedély szükséges az automanage engedélyezéséhez: **tulajdonosi** szerepkör vagy **közreműködő** a **felhasználói hozzáférés rendszergazdai** szerepköreivel együtt.
+> A következő RBAC engedélyre van szükség az automanage engedélyezése: **tulajdonosi** szerepkör vagy **közreműködő** a **felhasználói hozzáférés rendszergazdai** szerepköreivel együtt.
 
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
@@ -57,11 +57,11 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 4. A **konfigurációs profil**területen kattintson a Tallózás gombra, és válassza a **profilok és beállítások módosítása**elemet.
 
-    :::image type="content" source="media\virtual-machine-custom-preferences\existing-vm-quick-create.png" alt-text="Profilok és beállítások tallózása és módosítása.":::
+    :::image type="content" source="media\virtual-machine-custom-preferences\existing-vm-quick-create.png" alt-text="Válassza ki a meglévő virtuális gépet az elérhető virtuális gépek listájából.":::
 
 5. A **konfigurációs profil és beállítások kiválasztása panelen** válasszon ki egy profilt a bal oldali oldalon: fejlesztés */* tesztelés tesztelésre *, éles* üzemi környezetben.
 
-    :::image type="content" source="media\virtual-machine-custom-preferences\browse-production-profile.png" alt-text="Tallózás a termelési konfigurációs profilban.":::
+    :::image type="content" source="media\virtual-machine-custom-preferences\browse-production-profile.png" alt-text="Válassza ki a meglévő virtuális gépet az elérhető virtuális gépek listájából.":::
 
 6. A kiválasztott profil **konfigurációs beállítások** területén található egy legördülő lista, amely bizonyos szolgáltatások esetében módosítható.
     1. Kattintson az **új beállítások létrehozása**elemre.
@@ -71,7 +71,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
         1. Preferencia neve
         1. Region
 
-    :::image type="content" source="media\virtual-machine-custom-preferences\create-preference.png" alt-text="Adja meg a konfigurációs beállításokat.":::
+    :::image type="content" source="media\virtual-machine-custom-preferences\create-preference.png" alt-text="Válassza ki a meglévő virtuális gépet az elérhető virtuális gépek listájából.":::
 
 7. Lépjen a Beállítások lapra, és állítsa be a kívánt konfigurációs beállításokat.
         
@@ -88,7 +88,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 Az automanagement szolgáltatás letiltásával gyorsan leállíthatja a virtuális gépek Azure-beli autofelügyeletét.
 
-:::image type="content" source="media\virtual-machine-custom-preferences\disable-step-1.png" alt-text="A virtuális gépeken az automanage szolgáltatás letiltása.":::
+:::image type="content" source="media\virtual-machine-custom-preferences\disable-step-1.png" alt-text="Válassza ki a meglévő virtuális gépet az elérhető virtuális gépek listájából.":::
 
 1. Nyissa meg az automatikus **kezelés – Azure virtuális gépekre vonatkozó ajánlott eljárásokat** tartalmazó oldalt, amely felsorolja az összes automatikusan felügyelt virtuális gépet.
 1. Jelölje be a letiltani kívánt virtuális gép melletti jelölőnégyzetet.

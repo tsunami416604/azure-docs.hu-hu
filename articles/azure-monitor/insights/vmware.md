@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/04/2018
-ms.openlocfilehash: dccd953d2a31b306994c06ae644959e18332f5da
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: be50deb836082354db899e84ef24d75c4d403432
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090176"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450401"
 ---
 # <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>VMware Monitoring (elavult) megoldás a Azure Monitor
 
@@ -50,14 +50,14 @@ Hozzon létre egy Linux operációs rendszer virtuális gépet az ESXi-gazdagép
     ![vspherefwproperties](./media/vmware/vsphere3.png)  
 1. A vSphere-konzolon ellenőrizze, hogy a syslog megfelelően van-e beállítva. Erősítse meg az ESXI-gazdagépen, hogy a **1514** -es port konfigurálva van.
 1. Töltse le és telepítse a Linux rendszerhez készült Log Analytics-ügynököt a Linux-kiszolgálón. További információkért tekintse meg a [Linux rendszerhez készült log Analytics-ügynök dokumentációját](https://github.com/Microsoft/OMS-Agent-for-Linux).
-1. A Linux rendszerhez készült Log Analytics-ügynök telepítése után nyissa meg a/etc/opt/Microsoft/omsagent/sysconf/omsagent.d könyvtárat, és másolja a vmware_esxi. conf fájlt a/etc/opt/Microsoft/omsagent/conf/omsagent.d könyvtárba, és módosítsa a fájl tulajdonosát, csoportját és engedélyeit. Például:
+1. A Linux rendszerhez készült Log Analytics-ügynök telepítése után nyissa meg a/etc/opt/Microsoft/omsagent/sysconf/omsagent.d könyvtárat, és másolja a vmware_esxi. conf fájlt a/etc/opt/Microsoft/omsagent/conf/omsagent.d könyvtárba, és módosítsa a fájl tulajdonosát, csoportját és engedélyeit. Példa:
 
     ```
     sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/vmware_esxi.conf /etc/opt/microsoft/omsagent/conf/omsagent.d
    sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf
     ```
 1. Indítsa újra a Log Analytics Linux-ügynököt a futtatásával `sudo /opt/microsoft/omsagent/bin/service_control restart` .
-1. Tesztelje a Linux-kiszolgáló és az ESXi-gazdagép közötti kapcsolatot az `nc` ESXi-gazdagépen található parancs használatával. Például:
+1. Tesztelje a Linux-kiszolgáló és az ESXi-gazdagép közötti kapcsolatot az `nc` ESXi-gazdagépen található parancs használatával. Példa:
 
     ```
     [root@ESXiHost:~] nc -z 123.456.789.101 1514
@@ -133,16 +133,16 @@ További részletezéshez kattintson egy ESXi-gazdagépre vagy egy esemény típ
 
 Az ESXi-állomásnévre kattintva megtekintheti az adott ESXi-gazdagép adatait. Ha az esemény típusával szeretné szűkíteni az eredményeket, vegye fel a `“ProcessName_s=EVENT TYPE”` kifejezést a keresési lekérdezésbe. A keresési szűrőben a **processname** is kiválaszthatja. Ez leszűkíti az adatokat.
 
-![részletezés](./media/vmware/eventhostdrilldown.png)
+![Képernyőfelvétel az ESXi-állomásról események száma és az esemény-típusok részletezése alapján a VMware Monitoring irányítópult nézetében.](./media/vmware/eventhostdrilldown.png)
 
 #### <a name="find-high-vm-activities"></a>Magas virtuális gépekkel kapcsolatos tevékenységek keresése
 A virtuális gépek bármelyik ESXi-gazdagépen létrehozhatók és törölhetők. A rendszergazdák számára hasznos lehet azonosítani, hogy hány virtuális gépet hoz létre ESXi-gazdagép. Ez pedig segít megérteni a teljesítményt és a kapacitás megtervezését. A virtuális gépek tevékenységi eseményeinek nyomon követése létfontosságú a környezet kezelésekor.
 
-![részletezés](./media/vmware/vmactivities1.png)
+![Képernyőfelvétel a VMware Monitoring irányítópulton található virtuálisgép-tevékenységek panelről, amely az ESXi-gazdagép által a virtuális gépek létrehozásának és törlésének gráfját mutatja.](./media/vmware/vmactivities1.png)
 
 Ha további ESXi-gazdagép virtuális gépek létrehozási információit szeretné látni, kattintson az ESXi-gazdagép nevére.
 
-![részletezés](./media/vmware/createvm.png)
+![Képernyőkép a VMware Monitoring-irányítópulton lévő panelről, amely egy ESXi-gazdagép által létrehozott összes virtuális gép adatait tartalmazó táblázatot mutat.](./media/vmware/createvm.png)
 
 #### <a name="common-log-queries"></a>Gyakori naplók lekérdezései
 A megoldás más hasznos lekérdezéseket is tartalmaz, amelyek segíthetnek az ESXi-gazdagépek, például a nagy tárterület, a tárolási késés és az elérési út meghibásodásának kezelésében.

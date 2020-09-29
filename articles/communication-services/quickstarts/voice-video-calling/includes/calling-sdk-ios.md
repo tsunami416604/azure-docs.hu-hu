@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 31f7e348a805c86964a8856fb81b83831c611de5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7ca15baffd3fac4a1f3635ac7377bac620673446
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91377475"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91451511"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -41,7 +41,7 @@ Adja hozzá az ügyféloldali függvénytárat hívó Azure kommunikációs szol
 5. Nyissa meg a Project Settings Editor **Build Settings (létrehozási beállítások** ) lapját, és görgessen a **keresési útvonalak** szakaszhoz. Adjon hozzá egy új **Framework keresési útvonalak** bejegyzést a **AzureCommunicationCalling. Framework**-t tartalmazó könyvtárhoz.
     1. Vegyen fel egy másik Framework keresési útvonal bejegyzést, amely a függőségeket tartalmazó mappára mutat.
 
-:::image type="content" source="../media/ios/xcode-framework-search-paths.png" alt-text="Képernyőfelvétel: a keretrendszer keresési útvonalainak frissítése a XCode belül.":::
+:::image type="content" source="../media/ios/xcode-framework-search-paths.png" alt-text="Képernyőfelvétel: az új projekt létrehozása ablak a Xcode belül.":::
 
 ### <a name="request-access-to-the-microphone"></a>Hozzáférés kérése a mikrofonhoz
 
@@ -113,7 +113,7 @@ A fent létrehozott CommunicationUserCredential objektum ACSCallClient
 callClient = ACSCallClient()
 callClient?.createCallAgent(userCredential!,
     withCompletionHandler: { (callAgent, error) in
-        if error != nil {
+        if error == nil {
             print("Create agent succeeded")
             self.callAgent = callAgent
         } else {
@@ -186,7 +186,7 @@ A mobil leküldéses értesítés a mobileszköz felugró értesítése. A hív�
 - 2. lépés: Xcode – > & képességeinek aláírása – > hozzáadási képesség – > "háttér mód"
 - 3. lépés: "háttérbeli üzemmódok" – > válassza a "Voice over IP" és a "távoli értesítések" lehetőséget.
 
-:::image type="content" source="../media/ios/xcode-push-notification.png" alt-text="Képernyőfelvétel: képességek hozzáadása a Xcode-ben." lightbox="../media/ios/xcode-push-notification.png":::
+:::image type="content" source="../media/ios/xcode-push-notification.png" alt-text="Képernyőfelvétel: az új projekt létrehozása ablak a Xcode belül." lightbox="../media/ios/xcode-push-notification.png":::
 
 #### <a name="register-for-push-notifications"></a>Regisztráció leküldéses értesítésekhez
 

@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: how-to
 ms.date: 05/04/2020
 ms.author: charwen
-ms.openlocfilehash: ad1476847874f7cea53c6e9c0c3d9f142c949dac
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 6835c5e1ecbf0fc99a14754d17bb6e6380eda6c8
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987712"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445354"
 ---
 # <a name="copy-and-paste-to-a-virtual-machine-azure-bastion"></a>Másolás és beillesztés virtuális gépre: Azure Bastion
 
@@ -35,13 +35,13 @@ Miután a [Azure Portal ](https://portal.azure.com)használatával kapcsolódott
 1. Másolja a szöveget/tartalmat a helyi eszközről a helyi vágólapra.
 1. A távoli munkamenet során a két nyíl kiválasztásával indítsa el a megerősített vágólap-hozzáférési eszköz palettáját. A nyilak a munkamenet bal középső részén találhatók.
 
-   ![eszközpaletta](./media/bastion-vm-manage/left.png)
+   ![Képernyőfelvétel: az ablak bal oldalán az eszközpaletta Kiemelt nyilait bemutató nyíl.](./media/bastion-vm-manage/left.png)
 
    ![A képernyőfelvételen a Bastion-ben másolt szöveg vágólapja látható.](./media/bastion-vm-manage/clipboard.png)
 1. A másolt szöveg általában automatikusan megjelenik a bástya másolási beillesztési palettáján. Ha a szöveg nem létezik, illessze be a szöveget a paletta szöveg területén.
 1. Miután a szöveg szerepel a szövegmezőben, beillesztheti a távoli munkamenetbe.
 
-   ![illessze be](./media/bastion-vm-manage/local.png)
+   ![Képernyőfelvétel: a másolás/beillesztés gomb kiemelve, valamint a távoli munkamenetbe másolt minta szöveges karakterlánc.](./media/bastion-vm-manage/local.png)
 
 ## <a name="copy-from-a-remote-session"></a><a name="from"></a>Másolás távoli munkamenetből
 

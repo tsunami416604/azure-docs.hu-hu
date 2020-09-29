@@ -9,18 +9,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/10/2018
+ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: 9593a6c4fa45d9810aabb2bbb3123428930c5891
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 67940db973f494cd4a12c2f16db528e0b113d656
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401571"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449208"
 ---
-# <a name="how-front-door-matches-requests-to-a-routing-rule"></a>Hogyan társítja a Front Door a kéréseket útválasztási szabályokhoz?
+# <a name="how-requests-are-matched-to-a-routing-rule"></a>A kérések egyeztetése egy útválasztási szabállyal
 
-A kapcsolat létesítése és a TLS-kézfogás végrehajtása után, amikor egy kérelem egy bejárati ajtón lévő környezetbe kerül, az egyik első lépés az összes konfigurációból származik, amely az adott útválasztási szabálynak megfelel a kérésnek, majd a megadott művelettel. Az alábbi dokumentum ismerteti, hogyan határozza meg, hogy a bejárati ajtó melyik útválasztási konfigurációt használja a HTTP-kérések feldolgozásához.
+A kapcsolat létesítése és a TLS-kézfogás elvégzése után, amikor egy kérelem a bejárati ajtón lévő egyik első dologra vonatkozik, a bejárati ajtón eldöntheti, hogy melyik útválasztási szabály felel meg a kérelemnek, majd végrehajtja a megadott műveletet a konfigurációban. Az alábbi dokumentum ismerteti, hogyan határozza meg, hogy a bejárati ajtó melyik útválasztási konfigurációt használja a HTTP-kérések feldolgozásához.
 
 ## <a name="structure-of-a-front-door-route-configuration"></a>Az előtérben lévő útvonal konfigurációjának szerkezete
 A bevezető ajtó útválasztási szabályának konfigurálása két fő részből áll: egy "bal oldali" és "jobb oldal". A bejövő kérelem az útvonal bal oldalán található, míg a jobb oldalon a kérés feldolgozásának módját határozzák meg.
@@ -41,7 +41,7 @@ A kérelem feldolgozásának döntése attól függ, hogy engedélyezve van-e a 
 Ez a szakasz az adott bejárati ajtó útválasztási szabályának megfelelő módon fog foglalkozni. Az alapszintű koncepció az, hogy mindig a legpontosabb **egyezésnek** felelnek meg, amelyet először csak a "bal oldali" oldalon tekintünk.  Először a HTTP protokoll, majd a előtér-gazdagép, majd az elérési út alapján egyeztetünk.
 
 ### <a name="frontend-host-matching"></a>Előtér-gazdagép egyeztetése
-A frontend-gazdagépek egyeztetése során a következő logikát használjuk:
+A frontend-gazdagépek egyeztetése során az alábbi logikát használjuk:
 
 1. Keresse meg a gazdagép pontos egyezését tartalmazó útválasztást.
 2. Ha nincs pontosan megfelelő előtér-gazdagép, utasítsa el a kérést, és küldjön egy 400 hibás kérési hibát.
@@ -125,7 +125,7 @@ A konfigurációtól függően a következő példában szereplő táblázat ere
 ### <a name="routing-decision"></a>Útválasztási döntés
 Miután egyeztetett egy bejárati ajtó útválasztási szabályával, ki kell választania, hogyan kell feldolgozni a kérést. Ha az egyeztetett útválasztási szabályhoz a bejárati ajtón van egy gyorsítótárazott válasz, akkor ugyanazt a rendszer visszaküldi az ügyfélnek. Ellenkező esetben a következő dolog lesz kiértékelve, hogy beállította-e az [URL-újraírást (egyéni továbbítási útvonalat)](front-door-url-rewrite.md) a megfeleltetett útválasztási szabályhoz. Ha nincs definiálva egyéni továbbítási útvonal, akkor a kérés a megfelelő háttérbe kerül a konfigurált háttérrendszer-készletben. Más esetben a kérés elérési útja a megadott [Egyéni továbbítási útvonalon](front-door-url-rewrite.md) , majd a háttér felé továbbítva lesz frissítve.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Útmutató a [Front Door létrehozásához](quickstart-create-front-door.md).
 - A [Front Door működésének](front-door-routing-architecture.md) ismertetése.

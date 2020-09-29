@@ -16,12 +16,12 @@ ms.date: 09/16/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 160137ca2d14e0012a524ee0818b7fb269fa7984
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: b7b70e8a408c22be0331bfd0dcbe01830b072ab8
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90980179"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449977"
 ---
 # <a name="change-request-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Hozzáférési csomagra vonatkozó kérelmek beállításainak módosítása az Azure AD-jogosultságok kezelésében
 
@@ -125,8 +125,8 @@ Kövesse az alábbi lépéseket, ha engedélyezni szeretné a címtárában lév
     |  |  |
     | --- | --- |
     | **Adott csatlakoztatott szervezetek** | Akkor válassza ezt a lehetőséget, ha ki szeretné választani a rendszergazda által korábban hozzáadott szervezetek listáját. A kiválasztott szervezetek összes felhasználója kérheti ezt a hozzáférési csomagot. |
-    | **Minden csatlakoztatott szervezet** | Akkor válassza ezt a lehetőséget, ha az összes csatlakoztatott szervezet összes felhasználója ezt a hozzáférési csomagot kéri. |
-    | **Minden felhasználó (minden csatlakoztatott szervezet + minden új külső felhasználó)** | Akkor válassza ezt a lehetőséget, ha az összes csatlakoztatott szervezet összes felhasználója kérheti ezt a hozzáférési csomagot, és a VÁLLALATKÖZI engedélyezési vagy megtagadási lista beállításai elsőbbséget élveznek az új külső felhasználók számára. |
+    | **Minden konfigurált csatlakoztatott szervezet** | Akkor válassza ezt a lehetőséget, ha az összes konfigurált csatlakoztatott szervezet összes felhasználója ezt a hozzáférési csomagot kéri. Csak a konfigurált csatlakoztatott szervezetek felhasználói igényelhetnek olyan hozzáférési csomagokat, amelyek minden konfigurált szervezet felhasználói számára láthatók. |
+    | **Minden felhasználó (minden csatlakoztatott szervezet + minden új külső felhasználó)** | Akkor válassza ezt a lehetőséget, ha az interneten található bármely felhasználó számára elérhetővé kell tenni ezt a hozzáférési csomagot.  Ha nem tartoznak a címtár egyik csatlakoztatott szervezetéhez sem, akkor a rendszer automatikusan létrehoz egy csatlakoztatott szervezetet, amikor a csomagot kérik. Az automatikusan létrehozott csatlakoztatott szervezet **javasolt** állapotban lesz. További információ a javasolt állapotról: [csatlakoztatott szervezetek állapotának tulajdonságai](entitlement-management-organization.md#state-properties-of-connected-organizations). |
 
     A csatlakoztatott szervezet egy külső Azure AD-címtár vagy-tartomány, amelyhez kapcsolata van.
 
@@ -204,7 +204,7 @@ Egy hozzáférési csomag kérésének és jóváhagyási beállításainak mód
 
 1. Ha szerkeszt egy házirendet, kattintson a **frissítés**gombra. Ha új szabályzatot ad hozzá, kattintson a **Létrehozás**gombra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Hozzáférési csomag jóváhagyási beállításainak módosítása](entitlement-management-access-package-approval-policy.md)
 - [Hozzáférési csomag életciklus-beállításainak módosítása](entitlement-management-access-package-lifecycle-policy.md)

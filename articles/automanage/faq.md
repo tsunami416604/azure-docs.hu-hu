@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: troubleshooting
 ms.date: 09/04/2020
 ms.author: deanwe
-ms.openlocfilehash: fa24c0db398c4c799d218ff5e8ec8e3d3e321742
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 348106c405e6e096f7bfd9a225fc783c4454b1ad
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91311546"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449768"
 ---
 # <a name="frequently-asked-questions-for-azure-automanage-for-vms"></a>Gyakori kérdések az Azure-beli automanage virtuális gépekről
 
@@ -33,12 +33,13 @@ Az alábbi előfeltételek az Azure automanage szolgáltatás engedélyezéséne
 - A felhasználónak megfelelő engedélyekkel kell rendelkeznie
 - Csak a nem méretezési csoportba tartozó virtuális gépek
 - A virtuális gépek nem csatolhatnak egy másik előfizetésben lévő log Analytics-munkaterülethez
+- Az automanage nem támogatja a homokozó-előfizetéseket.
 
 **Milyen RBAC engedélyre van szükség az automanage engedélyezéséhez?**
 
-Ha egy meglévő automanage-fiókkal rendelkező virtuális gépen engedélyezi az automanage-alapú felügyeletet, akkor közreműködői szerepkörrel kell rendelkeznie ahhoz az erőforráscsoporthoz, amelyben a virtuális gép található. 
+Ha egy meglévő automanage-fiókkal rendelkező virtuális gépen engedélyezi az automanage-alapú felügyeletet, akkor közreműködői szerepkörrel kell rendelkeznie ahhoz az erőforráscsoporthoz, amelyben a virtuális gép található.
 
-Ha a engedélyezésekor új automanage-fiókot használ, a felhasználóknak vagy a tulajdonos szerepkörrel kell rendelkezniük, vagy közreműködői + felhasználói hozzáférés rendszergazdai szerepkörrel kell rendelkezniük az előfizetéshez.
+Ha az engedélyezésekor új automanage-fiókot használ, rendelkeznie kell a tulajdonos szerepkörrel, vagy közreműködői + felhasználói hozzáférés rendszergazdai szerepkörrel kell rendelkeznie az előfizetéshez.
 
 
 **Mely régiók támogatottak?**
@@ -50,6 +51,9 @@ A következő régiókban működő virtuális gépek támogatottak: Nyugat-Eur�
 
 Az [itt](virtual-machines-best-practices.md)felsorolt szolgáltatások a virtuális gép életciklusa alatt beléptetések, konfigurálások és figyelők automatikus kezelése.
 
+**Az Azure automanage együttműködik az Azure arc-kompatibilis virtuális gépekkel?**
+
+Az automanage jelenleg nem támogatja az arc-kompatibilis virtuális gépeket.
 
 **Testreszabhatók a konfigurációk az Azure automanage szolgáltatásban?**
 
@@ -88,7 +92,7 @@ Az automatikus felügyelet fiók egy MSI (Managed Service Identity), amely bizto
 
 **Az automanage engedélyezése esetén a kiválasztott virtuális gép (ek) mellett további virtuális gépekre is hatással van?**
 
-Ha a virtuális gép egy meglévő Log Analytics-munkaterülethez van csatolva, a következő megoldások alkalmazásával fogjuk felhasználni a munkaterületet: Change Tracking, leltár és Update Management. Az adott munkaterülethez csatlakozó összes virtuális gépnek engedélyezve lesznek ezek a megoldások. 
+Ha a virtuális gép egy meglévő Log Analytics-munkaterülethez van csatolva, a következő megoldások alkalmazásával fogjuk felhasználni a munkaterületet: Change Tracking, leltár és Update Management. Az adott munkaterülethez csatlakozó összes virtuális gépnek engedélyezve lesznek ezek a megoldások.
 
 
 **Módosíthatom a virtuális gép konfigurációs profilját?**

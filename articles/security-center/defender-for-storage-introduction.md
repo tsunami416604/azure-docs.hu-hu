@@ -4,15 +4,15 @@ description: Ismerje meg az Azure Defender for Storage szolgáltatás előnyeit 
 author: memildin
 ms.author: memildin
 ms.date: 9/22/2020
-ms.topic: conceptual
+ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 1c47c1cd464c9dc0ac8dc78f5d6f91f33481922a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8b6faa6e2e8928e008370cb0eca00595712a679d
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91307517"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449028"
 ---
 # <a name="introduction-to-azure-defender-for-storage"></a>Bevezetés az Azure Defender for Storage használatába
 
@@ -28,7 +28,7 @@ Ez a védelmi réteg lehetővé teszi a fenyegetések kezelését *anélkül* , 
 |Kiadás állapota:|Általánosan elérhető (GA)|
 |Árképzési|A Storage-hoz készült **Azure Defender** számlázása [a díjszabási oldalon](security-center-pricing.md) látható.|
 |Védett tárolási típusok|[Blob Storage](https://azure.microsoft.com/services/storage/blobs/)<br>[Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)<br>[Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)|
-|Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Kínai gov, egyéb gov|
+|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) US Gov<br>![Nem](./media/icons/no-icon.png) Kínai gov, egyéb gov|
 |||
 
 

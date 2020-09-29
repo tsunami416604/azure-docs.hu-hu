@@ -10,12 +10,12 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: bc01c283fd4e2b6e3494c18c1908152aecee2c5f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4ff4d5a810eb79fb11e66591cd0b695062b1c9f6
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489112"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450184"
 ---
 # <a name="monitor-iot-edge-deployments"></a>Üzemelő IoT Edge-példányok monitorozása
 
@@ -25,7 +25,7 @@ Mindkét eszközhöz és modulhoz hasonló adatok tartoznak, például a kapcsol
 
 A IoT Hub szolgáltatás adatokat gyűjt az eszköz és a modul ikrek által jelentett adatokról, és az eszközök különböző állapotait is tartalmazza. A IoT Hub szolgáltatás az adatokat négy metrikai csoportba rendezi:
 
-| Típus | Description |
+| Típus | Leírás |
 | --- | ---|
 | Megcélzott | Megjeleníti a központi telepítésre vonatkozó megcélzott feltételnek megfelelő IoT Edge eszközöket. |
 | Alkalmazva | Azokat a célként IoT Edge eszközöket jeleníti meg, amelyeket a magasabb prioritású központi telepítés nem céloz meg. |
@@ -55,7 +55,7 @@ A központi telepítés részleteinek megtekintéséhez és az azt futtató eszk
     | Létrehozás ideje | A központi telepítés létrehozásának időbélyegzője. Ez az időbélyeg a kapcsolatok megszakítására szolgál, ha két üzemelő példány azonos prioritással rendelkezik. |
 
 1. Válassza ki a figyelni kívánt központi telepítést.  
-1. A **központi telepítés részletei** lapon görgessen le az alsó szakaszhoz, és válassza a **cél feltétel** fület. Válassza a **nézet** lehetőséget a célként megadott feltételnek megfelelő eszközök listázásához. Megváltoztathatja a feltételt és a **prioritást**is. Ha módosításokat végzett, válassza a **Mentés** lehetőséget.
+1. A **központi telepítés részletei** lapon görgessen le az alsó szakaszhoz, és válassza a **cél feltétel** lapot. Válassza a **nézet** lehetőséget a célként megadott feltételnek megfelelő eszközök listázásához. Megváltoztathatja a feltételt és a **prioritást**is. Ha módosításokat végzett, válassza a **Mentés** lehetőséget.
 
    ![Központi telepítéshez tartozó megtekintett eszközök megtekintése](./media/how-to-monitor-iot-edge-deployments/target-devices.png)
 
@@ -63,12 +63,11 @@ A központi telepítés részleteinek megtekintéséhez és az azt futtató eszk
 
    ![Központi telepítés metrikáinak megtekintése](./media/how-to-monitor-iot-edge-deployments/deployment-metrics-tab.png)
 
-
 Az üzembe helyezés módosításához lásd: [központi telepítés módosítása](how-to-deploy-at-scale.md#modify-a-deployment).
 
 ## <a name="monitor-a-deployment-with-azure-cli"></a>Üzemelő példány figyelése az Azure CLI-vel
 
-Egy központi telepítés részleteinek megjelenítéséhez használja az az [IoT Edge Deployment show](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/edge/deployment?view=azure-cli-latest#ext-azure-iot-az-iot-edge-deployment-show) parancsot:
+Egy központi telepítés részleteinek megjelenítéséhez használja az az [IoT Edge Deployment show](/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-show) parancsot:
 
 ```cli
 az iot edge deployment show --deployment-id [deployment id] --hub-name [hub name]
@@ -77,7 +76,7 @@ az iot edge deployment show --deployment-id [deployment id] --hub-name [hub name
 Az üzembe helyezési show parancs a következő paramétereket veszi figyelembe:
 
 * **--Deployment-ID** – az IoT hub-ban található központi telepítés neve. Szükséges paraméter.
-* **--hub-Name** -annak a IoT-hubhoz a neve, amelyben a központi telepítés létezik. A hubhoz a jelenlegi előfizetésben kell lennie. Váltson a kívánt előfizetésre a paranccsal`az account set -s [subscription name]`
+* **--hub-Name** -annak a IoT-hubhoz a neve, amelyben a központi telepítés létezik. A hubhoz a jelenlegi előfizetésben kell lennie. Váltson a kívánt előfizetésre a paranccsal `az account set -s [subscription name]`
 
 Vizsgálja meg a központi telepítést a parancsablakban.A **metrikák** tulajdonság felsorolja az egyes hubok által kiértékelt metrikák darabszámát:
 
@@ -86,7 +85,7 @@ Vizsgálja meg a központi telepítést a parancsablakban.A **metrikák** tulajd
 * **reportedSuccessfulCount** – az eszköz metrikája, amely meghatározza, hogy hány IoT Edge eszköz szerepel a központi telepítési jelentéskészítés sikerességében a IoT Edge ügyfél futtatókörnyezetében.
 * **reportedFailedCount** – az eszköz metrikája, amely meghatározza, hogy hány IoT Edge eszköz szerepel a központi telepítés jelentéskészítési hibájában a IoT Edge ügyfél futtatókörnyezetből.
 
-Az az [IoT Edge Deployment show-metrikus](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/edge/deployment?view=azure-cli-latest#ext-azure-iot-az-iot-edge-deployment-show-metric) paranccsal megjelenítheti az egyes mérőszámokhoz tartozó eszközök azonosítóit vagy objektumait.
+Az az [IoT Edge Deployment show-metrikus](/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-show-metric) paranccsal megjelenítheti az egyes mérőszámokhoz tartozó eszközök azonosítóit vagy objektumait.
 
 ```cli
 az iot edge deployment show-metric --deployment-id [deployment id] --metric-id [metric id] --hub-name [hub name]
@@ -100,6 +99,6 @@ Az üzembe helyezés megjelenítése-metrika parancs a következő paramétereke
 
 Az üzembe helyezés módosításához lásd: [központi telepítés módosítása](how-to-deploy-cli-at-scale.md#modify-a-deployment).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan [figyelheti az ikrek modult](how-to-monitor-module-twins.md), elsősorban a IoT Edge Agent és IoT Edge hub Runtime-modulokat a IoT Edge üzemelő példányok kapcsolatára és állapotára vonatkozóan.

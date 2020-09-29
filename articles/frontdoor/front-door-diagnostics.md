@@ -9,27 +9,27 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/18/2018
+ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: 6f5051dd7dedcc49320557f17148bcdc9bf539ab
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: a1e77b5f669d1b492f2d71063a6c77bec1178696
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399752"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449281"
 ---
 # <a name="monitoring-metrics-and-logs-in-azure-front-door"></a>Metrikák és naplók figyelése az Azure-beli bejárati ajtón
 
 Az Azure bejárati ajtót használva a következő módokon figyelheti az erőforrásokat:
 
-- **Metrikák**. Az Azure bejárati ajtajának jelenleg hét mérőszáma van a teljesítményszámlálók megtekintéséhez.
+- **Metrikák**. Az Azure bejárati ajtajának jelenleg nyolc mérőszáma van a teljesítményszámlálók megtekintéséhez.
 - **Naplók**. A tevékenység-és diagnosztikai naplók lehetővé teszik a teljesítmény, hozzáférés és egyéb adatok mentését, illetve az erőforrásokból való felhasználását figyelés céljából.
 
 ### <a name="metrics"></a>Mérőszámok
 
 A metrikák bizonyos Azure-erőforrások, amelyek lehetővé teszik a teljesítményszámlálók megtekintését a portálon. A következő elérhetők a bejárati ajtó metrikái:
 
-| Metrika | Metrika megjelenítendő neve | Unit (Egység) | Dimenziók | Description |
+| Metrika | Metrika megjelenítendő neve | Egység | Dimenziók | Leírás |
 | --- | --- | --- | --- | --- |
 | RequestCount | Kérelmek száma | Darabszám | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | A bejárati ajtó által kiszolgált ügyfél-kérelmek száma.  |
 | RequestSize | Kérelem mérete | Bájt | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Az ügyfelektől a befelé irányuló kérelmekként küldött bájtok száma. |
@@ -38,7 +38,7 @@ A metrikák bizonyos Azure-erőforrások, amelyek lehetővé teszik a teljesítm
 | BackendRequestCount | Háttérbeli kérelmek száma | Darabszám | HttpStatus</br>HttpStatusGroup</br>Háttérrendszer | A bejárati ajtóról a háttérbe küldött kérések száma. |
 | BackendRequestLatency | Háttérbeli kérelmek késése | Ezredmásodpercben | Háttérrendszer | A kérelemnek a háttérbe való beérkezése után kiszámított idő, amíg be nem érkezett az utolsó válasz bájtja a háttérből. |
 | BackendHealthPercentage | Háttér állapotának százalékos aránya | Százalék | Háttérrendszer</br>Háttérkészletek | A sikeres állapot-mintavételek százalékos aránya a bejárati ajtóról a háttérbe. |
-| WebApplicationFirewallRequestCount | Webalkalmazási tűzfalra vonatkozó kérelmek száma | Darabszám | PolicyName</br>RuleName</br>Műveletek | Az alkalmazási rétegben a bejárati ajtó biztonságával feldolgozott ügyfélalkalmazások száma |
+| WebApplicationFirewallRequestCount | Webalkalmazási tűzfalra vonatkozó kérelmek száma | Darabszám | PolicyName</br>RuleName</br>Művelet | Az alkalmazási rétegben a bejárati ajtó biztonságával feldolgozott ügyfélalkalmazások száma |
 
 ## <a name="activity-logs"></a><a name="activity-log"></a>Tevékenységnaplók
 
@@ -52,16 +52,16 @@ A hozzáférési tevékenység naplóit a bejárati ajtón vagy az Azure-erőfor
 1. Válassza ki az előtérben lévő példányt.
 2. Válassza a **műveletnapló**lehetőséget.
 
-    ![Tevékenységnapló](./media/front-door-diagnostics/activity-log.png)
+    :::image type="content" source="./media/front-door-diagnostics/activity-log.png" alt-text="Tevékenységnapló":::
 
 3. Válasszon egy szűrési hatókört, majd kattintson az **alkalmaz**gombra.
 
 ## <a name="diagnostic-logs"></a><a name="diagnostic-logging"></a>Diagnosztikai naplók
 A diagnosztikai naplók részletes információkat biztosítanak a naplózáshoz és a hibaelhárításhoz fontos műveletekről és hibákról. A diagnosztikai naplók eltérnek a tevékenység naplóitól.
 
-A Tevékenységnaplók betekintést nyújtanak az Azure-erőforrásokon végzett műveletekre. A diagnosztikai naplók betekintést nyújtanak az erőforrás által végrehajtott műveletekre. További információ: [Azure monitor diagnosztikai naplók](../azure-monitor/platform/platform-logs-overview.md).
+A Tevékenységnaplók betekintést nyújtanak az Azure-erőforrásokon végzett műveletekre. A diagnosztikai naplók betekintést nyújtanak az erőforrás által végzett műveletekre. További információ: [Azure monitor diagnosztikai naplók](../azure-monitor/platform/platform-logs-overview.md).
 
-![Diagnosztikai naplók](./media/front-door-diagnostics/diagnostic-log.png)
+:::image type="content" source="./media/front-door-diagnostics/diagnostic-log.png" alt-text="Tevékenységnapló":::
 
 Diagnosztikai naplók konfigurálása a bejárati ajtóhoz:
 
@@ -103,7 +103,6 @@ A bejárati ajtó jelenleg biztosít diagnosztikai naplókat (óránként köteg
 | Útválasztási szabály engedélyezve gyorsítótárazással. Gyorsítótár-találat a peremhálózati POP-on | 1 | Edge POP-kód | Üres | Hamis | HIT |
 | Útválasztási szabály engedélyezve gyorsítótárazással. Gyorsítótár-kihagyás az Edge POP-ban, de a gyorsítótár a szülő gyorsítótár POP-ban | 2 | 1. Edge POP-kód</br>2. szülő gyorsítótár POP-kódja | 1. szülő gyorsítótár POP-állomásnév</br>2. üres | 1. igaz</br>2. hamis | 1. MISS</br>2. PARTIAL_HIT |
 | Útválasztási szabály engedélyezve gyorsítótárazással. Gyorsítótár-kihagyás az Edge és a szülő gyorsítótár POP-ban | 2 | 1. Edge POP-kód</br>2. szülő gyorsítótár POP-kódja | 1. szülő gyorsítótár POP-állomásnév</br>2. a gyorsítótár feltöltését segítő háttérrendszer | 1. igaz</br>2. hamis | 1. MISS</br>2. MISS |
-
 
 ## <a name="next-steps"></a>Következő lépések
 

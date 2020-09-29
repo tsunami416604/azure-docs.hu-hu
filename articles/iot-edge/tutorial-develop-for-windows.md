@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: d4846a69f548c99de735cc9d9e06bd6bb263b4bd
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: a0bc934d32a2d09fcd6b52ec1f186855bf0da92c
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439690"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449616"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>Oktatóanyag: IoT Edge-modulok fejlesztése Windows-eszközökhöz
 
@@ -157,7 +157,7 @@ A IoT Edge futtatókörnyezetnek szüksége van a beállításjegyzékbeli hitel
 
 1. Nyissa meg a **deployment.template.js** fájlt a modul-megoldásban.
 
-1. Keresse meg a **registryCredentials** tulajdonságot a $edgeAgent kívánt tulajdonságban. A szolgáltatásnak a projekt létrehozásakor megadott információk alapján kell kitöltenie a beállításjegyzékbeli címeket, majd a Felhasználónév és a jelszó mezőben a változók nevét kell tartalmaznia. Például:
+1. Keresse meg a **registryCredentials** tulajdonságot a $edgeAgent kívánt tulajdonságban. A szolgáltatásnak a projekt létrehozásakor megadott információk alapján kell kitöltenie a beállításjegyzékbeli címeket, majd a Felhasználónév és a jelszó mezőben a változók nevét kell tartalmaznia. Példa:
 
    ```json
    "registryCredentials": {
@@ -275,13 +275,13 @@ Ha hibát tapasztal a modul rendszerképének létrehozásakor és leküldéseko
 
 Ellenőrizte, hogy a rendszer a tároló beállításjegyzékében tárolja a beépített tároló lemezképeit, ezért itt az ideje, hogy egy eszközre telepítse őket. Ellenőrizze, hogy a IoT Edge eszköz működik-e.
 
-1. Nyissa meg a Cloud Explorert a Visual Studióban, és bontsa ki az IoT hub részleteit.
+1. Nyissa meg a Cloud Explorer alkalmazást a Visual Studióban, és bontsa ki az IoT hub részleteit.
 
 2. Válassza ki a telepíteni kívánt eszköz nevét. A **műveletek** listában válassza a **központi telepítés létrehozása**elemet.
 
    ![Üzemelő példány létrehozása egyetlen eszközhöz](./media/tutorial-develop-for-windows/create-deployment.png)
 
-3. A Fájlkezelőben navigáljon a projekt konfigurációs mappájához, és válassza ki a **deployment.windows-amd64.js** fájlt. Ez a fájl gyakran a következő helyen található:`C:\Users\<username>\source\repos\CSharpTutorialApp\CSharpTutorialApp\config\deployment.windows-amd64.json`
+3. A Fájlkezelőben navigáljon a projekt konfigurációs mappájához, és válassza ki a **deployment.windows-amd64.js** fájlt. Ez a fájl gyakran a következő helyen található: `C:\Users\<username>\source\repos\CSharpTutorialApp\CSharpTutorialApp\config\deployment.windows-amd64.json`
 
    Ne használja a deployment.template.jsa fájlon, amely nem rendelkezik a modul teljes rendszerképének értékével.
 

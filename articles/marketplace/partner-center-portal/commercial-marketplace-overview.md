@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 05/19/2020
-ms.openlocfilehash: 4c91e6396171511fa3b11b0295504f0ca0d75d15
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 0824275bcf53409764e3d3062e456d2e56590f4f
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88030861"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445375"
 ---
 # <a name="overview-of-the-commercial-marketplace-portal-in-partner-center"></a>A kereskedelmi piactér portál áttekintése a partner Centerben
 
@@ -52,7 +52,7 @@ A partner Center Analytics áttekintést nyújt az ajánlatok teljesítményér�
 
 További információ a legújabb és jövőbeli kiadásokról: a [Microsoft kereskedelmi Marketplace-útitervének](../marketplace-roadmap.md)meglátogatása, vagy a [Microsoft partner Közösségen](https://www.microsoftpartnercommunity.com/)belüli beszélgetés.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az új Microsoft-partnereknek, akik érdeklődnek az ajánlat közzétételére a piactéren, tekintse meg [a kereskedelmi piactér fiók létrehozása a partner Centerben](create-account.md)című témakört.
 - Azon meglévő partnerek esetében, akik korábban közzétett ajánlatokat Cloud Partner Portalban, [a kereskedelmi Marketplace-fiókot a partner Centerben kezelheti](manage-account.md).

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2018
-ms.openlocfilehash: ccdf5885dd1199ff8ed8000e5feaf80662aae42a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4dc5b84ff127aef173deecfd2be705004d92ee0c
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318062"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449920"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Azure hálózatkezelési figyelési megoldások Azure Monitor
 
@@ -87,10 +87,10 @@ Az Azure Application Gateway Analytics megoldás telepítéséhez és konfigurá
 1. A Azure Portal navigáljon a figyelni kívánt Application Gateway erőforráshoz.
 2. A következő lap megnyitásához válassza a *diagnosztikai naplók* lehetőséget.
 
-   ![Azure Application Gateway-erőforrás képe](media/azure-networking-analytics/log-analytics-appgateway-enable-diagnostics01.png)
+   ![Képernyőkép a diagnosztikai naplók oldaláról Application Gateway erőforráshoz, amely a diagnosztika bekapcsolásának lehetőségét mutatja.](media/azure-networking-analytics/log-analytics-appgateway-enable-diagnostics01.png)
 3. Kattintson a *diagnosztika bekapcsolása* elemre a következő oldal megnyitásához.
 
-   ![Azure Application Gateway-erőforrás képe](media/azure-networking-analytics/log-analytics-appgateway-enable-diagnostics02.png)
+   ![A diagnosztikai beállítások konfigurálására szolgáló lap képernyőképe. A Log Analytics küldésének lehetősége a következő három naplózási típus és egy metrika szerint van kiválasztva.](media/azure-networking-analytics/log-analytics-appgateway-enable-diagnostics02.png)
 4. A diagnosztika bekapcsolásához kattintson *az* *állapot*elemre.
 5. Kattintson a *küldés log Analyticsre*jelölőnégyzetre.
 6. Válasszon ki egy meglévő Log Analytics munkaterületet, vagy hozzon létre egy munkaterületet.
@@ -123,9 +123,9 @@ Miután rákattintott az **Azure Application Gateway Analytics** csempére az á
   * Application Gateway gazdagépének állapota
   * Maximális és 95. percentilis Application Gateway sikertelen kérelmek esetén
 
-![Az Azure Application Gateway Analytics-irányítópult képe](media/azure-networking-analytics/log-analytics-appgateway01.png)
+![Képernyőkép a Application Gateway hozzáférési naplók irányítópultján az átjáróval kapcsolatos hibákra, kérelmekre és sikertelen kérelmekre vonatkozó információkkal rendelkező csempéket jelenít meg.](media/azure-networking-analytics/log-analytics-appgateway01.png)
 
-![Az Azure Application Gateway Analytics-irányítópult képe](media/azure-networking-analytics/log-analytics-appgateway02.png)
+![Képernyőfelvétel: a Application Gateway hozzáférési naplók irányítópultja a felhasználói ügynök, a gazdagép állapota és a sikertelen kérelmek által jelzett hibákkal kapcsolatos csempéket jelenít meg.](media/azure-networking-analytics/log-analytics-appgateway02.png)
 
 Az **Azure Application Gateway Analytics** irányítópultján tekintse át az egyik penge összefoglaló adatait, majd kattintson az egyikre a részletes információk megtekintéséhez a naplóbeli keresés oldalon.
 
@@ -158,10 +158,10 @@ Az Azure Networking Analytics megoldás telepítéséhez és konfigurálásához
 1. A Azure Portal navigáljon a hálózati biztonsági csoport erőforrásához a figyeléshez.
 2. Válassza ki a *diagnosztikai naplókat* a következő oldal megnyitásához
 
-   ![Az Azure hálózati biztonsági csoport erőforrásának képe](media/azure-networking-analytics/log-analytics-nsg-enable-diagnostics01.png)
+   ![Képernyőfelvétel a hálózati biztonsági csoport erőforrásaihoz tartozó diagnosztikai naplók lapról, amely a diagnosztika bekapcsolásának lehetőségét mutatja.](media/azure-networking-analytics/log-analytics-nsg-enable-diagnostics01.png)
 3. Kattintson a *diagnosztika bekapcsolása* elemre a következő oldal megnyitásához
 
-   ![Az Azure hálózati biztonsági csoport erőforrásának képe](media/azure-networking-analytics/log-analytics-nsg-enable-diagnostics02.png)
+   ![A diagnosztikai beállítások konfigurálására szolgáló lap képernyőképe. Az állapot be értékre van állítva, a Küldés Log Analytics van kiválasztva, és két naplózási típus van kiválasztva.](media/azure-networking-analytics/log-analytics-nsg-enable-diagnostics02.png)
 4. A diagnosztika bekapcsolásához kattintson *az* *állapot* elemre.
 5. Kattintson a *küldés log Analyticsre* jelölőnégyzetre.
 6. Válasszon ki egy meglévő Log Analytics munkaterületet, vagy hozzon létre egy munkaterületet
@@ -189,9 +189,9 @@ Miután rákattintott az **Azure hálózati biztonsági csoport Analytics** csem
   * Hálózati biztonsági csoport szabályai engedélyezett folyamatokkal
   * MAC-címek engedélyezett folyamatokkal
 
-![Az Azure hálózati biztonsági csoport elemzési irányítópultjának képe](media/azure-networking-analytics/log-analytics-nsg01.png)
+![Képernyőfelvétel a hálózati biztonsági csoport letiltott folyamatainak adatait tartalmazó csempéről, beleértve a letiltott folyamatokkal és a blokkolt folyamatokkal rendelkező MAC-címekkel kapcsolatos szabályokat.](media/azure-networking-analytics/log-analytics-nsg01.png)
 
-![Az Azure hálózati biztonsági csoport elemzési irányítópultjának képe](media/azure-networking-analytics/log-analytics-nsg02.png)
+![Képernyőkép a hálózati biztonsági csoport által engedélyezett folyamatokkal rendelkező csempéről, beleértve az engedélyezett folyamatokkal rendelkező, engedélyezett folyamatokkal és MAC-címekkel rendelkező szabályokat is.](media/azure-networking-analytics/log-analytics-nsg02.png)
 
 Az **Azure hálózati biztonsági csoport** elemzése irányítópulton tekintse át az összegzési információkat az egyik pengében, majd kattintson az egyikre a részletes információk megtekintéséhez a naplóbeli keresés oldalon.
 
@@ -221,13 +221,13 @@ A frissített megoldások használata:
    + Minden olyan mezőnél, amely \_ \_ a névben s, d vagy g utótaggal rendelkezik \_ , módosítsa az első karaktert a kisbetű értékre.
    + Minden olyan mezőnél, amelynél a \_ név utótagja szerepel, az adat a beágyazott mezők nevei alapján egyedi mezőkbe van bontva.
 4. Távolítsa el az *Azure Networking Analytics (elavult)* megoldást.
-   + Ha a PowerShellt használja, használja a`Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "AzureNetwork" -Enabled $false`
+   + Ha a PowerShellt használja, használja a `Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "AzureNetwork" -Enabled $false`
 
 A módosítás előtt gyűjtött adatok nem láthatók az új megoldásban. Továbbra is lekérdezheti ezeket az adattípusokat a régi típusú és mezőnevek használatával.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 [!INCLUDE [log-analytics-troubleshoot-azure-diagnostics](../../../includes/log-analytics-troubleshoot-azure-diagnostics.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Az Azure-diagnosztika részletes adatait [a Azure monitorban található naplók](../log-query/log-query-overview.md) használatával tekintheti meg.
 

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22992f66d45b9bdb76383301cccff645c98a74d9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7f9af8ee3bf87cfd5d2e74adfce618c7cf8c7e63
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91264779"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450333"
 ---
 # <a name="azure-ad-administrative-units-troubleshooting-and-faq"></a>Azure AD felügyeleti egységek: Hibaelhárítás és gyakori kérdések
 
@@ -67,11 +67,11 @@ A Jogosultságszint-emelés megszerzésének megakadályozása érdekében a fel
 
 **K: a PowerShell és a Graph API támogatja a felügyeleti egységeket?**
 
-**V:** Igen. A felügyeleti egységek támogatását a PowerShell- [parancsmag dokumentációjában](/powershell/module/Azuread/?view=azureadps-2.0-preview&preserve-view=true) és a [minta parancsfájlokban](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0-preview&preserve-view=true)találja.
+**V:** Igen. A felügyeleti egységek támogatását a PowerShell- [parancsmag dokumentációjában](/powershell/module/Azuread/?view=azureadps-2.0&preserve-view=true) és a [minta parancsfájlokban](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0&preserve-view=true)találja.
 
-A [administrativeUnit erőforrástípus](/graph/api/resources/administrativeunit?view=graph-rest-beta&preserve-view=true) támogatásának keresése a Microsoft Graphban.
+A [administrativeUnit erőforrástípus](/graph/api/resources/administrativeunit?view=graph-rest-1.0&preserve-view=true) támogatásának keresése a Microsoft Graphban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Szerepkörök hatókörének korlátozása felügyeleti egységek használatával](directory-administrative-units.md)
 - [Felügyeleti egységek kezelése](roles-admin-units-manage.md)

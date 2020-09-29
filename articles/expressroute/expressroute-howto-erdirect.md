@@ -1,22 +1,22 @@
 ---
 title: 'Azure ExpressRoute: a ExpressRoute közvetlen konfigurálása'
-description: Megtudhatja, hogyan konfigurálhatja a Azure PowerShellt az Azure ExpressRoute Direct használatára, hogy közvetlenül kapcsolódjon a Microsoft globális hálózatához a világ különböző pontjain.
+description: Ismerje meg, hogyan konfigurálhatja az Azure ExpressRoute Direct szolgáltatást a Microsoft globális hálózatához való közvetlen kapcsolódáshoz Azure PowerShell használatával.
 services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 01/22/2020
+ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: c4ce764f50f85ef9979d5a14235759c16228f6b7
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 1748db76aa2d1f65ea21046bcff2fff43ca732b0
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89396029"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450200"
 ---
 # <a name="how-to-configure-expressroute-direct"></a>A ExpressRoute Direct konfigurálása
 
-A ExpressRoute Direct lehetővé teszi a közvetlen kapcsolódást a Microsoft globális hálózatához a világ bármely pontján elérhető, stratégiai módon elosztott helyen. További információ: [Az ExpressRoute Direct ismertetése](expressroute-erdirect-about.md).
+A közvetlen ExpressRoute lehetővé teszi a Microsoft globális hálózatának közvetlen kapcsolódását a világ különböző pontjain található, stratégiai módon terjesztett helyekről. További információ: [Az ExpressRoute Direct ismertetése](expressroute-erdirect-about.md).
 
 ## <a name="create-the-resource"></a><a name="resources"></a>Az erőforrás létrehozása
 
@@ -155,10 +155,20 @@ A ExpressRoute Direct lehetővé teszi a közvetlen kapcsolódást a Microsoft g
    Circuits                   : []
    ```
 
-## <a name="change-admin-state-of-links"></a><a name="state"></a>Hivatkozások rendszergazdai állapotának módosítása
+## <a name="generate-the-letter-of-authorization-loa"></a><a name="authorization"></a>Engedélyezési engedély (LOA) előállítása
 
-  Ezt a folyamatot kell használni az 1. rétegbeli tesztek elvégzéséhez, hogy az egyes kapcsolatok megfelelően legyenek kijavítani az egyes útválasztók számára az elsődleges és a másodlagos számára.
-1. ExpressRoute közvetlen részletek beolvasása.
+Hivatkozzon a nemrég létrehozott ExpressRoute Direct-erőforrásra, adja meg az ügyfél nevét az LOA és a (opcionális) érték megadásához a dokumentum tárolására szolgáló fájl helyét. Ha a fájl elérési útja nem hivatkozik rá, a rendszer letölti a dokumentumot az aktuális könyvtárba.
+
+  ```powershell 
+   New-AzExpressRoutePortLOA -ExpressRoutePort $ERDirect -CustomerName TestCustomerName -Destination "C:\Users\SampleUser\Downloads" 
+   ```
+ **Példa kimenetre**
+
+   ```powershell
+   Written Letter of Authorization To: C:\Users\SampleUser\Downloads\LOA.pdf
+
+  This process should be used to conduct a Layer 1 test, ensuring that each cross-connection is properly patched into each router for primary and secondary.
+1. Get ExpressRoute Direct details.
 
    ```powershell
    $ERDirect = Get-AzExpressRoutePort -Name $Name -ResourceGroupName $ResourceGroupName
@@ -227,13 +237,13 @@ A ExpressRoute Direct lehetővé teszi a közvetlen kapcsolódást a Microsoft g
 
 ## <a name="create-a-circuit"></a><a name="circuit"></a>Kapcsolatcsoport létrehozása
 
-Alapértelmezés szerint 10 áramkört hozhat létre az előfizetésben, ahol a ExpressRoute Direct erőforrás. Ezt a támogatás növelheti. A kiosztott és a felhasznált sávszélesség nyomon követése felelős. A kiépített sávszélesség a ExpressRoute közvetlen erőforrásban található összes áramkör sávszélességének összege, a felhasznált sávszélesség pedig az alapul szolgáló fizikai felületek fizikai használata.
+Alapértelmezés szerint 10 áramkört hozhat létre az előfizetésben, ahol a ExpressRoute Direct erőforrás. Ezt a korlátot támogatással növelheti. A kiosztott és a felhasznált sávszélesség nyomon követése felelős. A kiépített sávszélesség a ExpressRoute közvetlen erőforrásban található összes áramkör sávszélességének összege, a felhasznált sávszélesség pedig az alapul szolgáló fizikai felületek fizikai használata.
 
-A fentiekben ismertetett forgatókönyvek támogatásához további áramköri sávszélességek is használhatók, amelyek csak a ExpressRoute közvetlen használatával használhatók. Ezek a következők: 40Gbps és 100Gbps.
+További áramköri sávszélességek is használhatók a közvetlen ExpressRoute, hogy csak a fent ismertetett forgatókönyvek támogatására lehessen használni. Ezek a sávszélesség 40 GB/s és 100 GB/s.
 
 A **SkuTier** lehet helyi, standard vagy prémium.
 
-A **SkuFamily** csak MeteredData lehet, mert a ExpressRoute Direct nem támogatja.
+A **SkuFamily** csak MeteredData lehet. A ExpressRoute Direct nem támogatja a korlátlan használatát.
 
 Hozzon létre egy áramkört a ExpressRoute Direct erőforráson.
 

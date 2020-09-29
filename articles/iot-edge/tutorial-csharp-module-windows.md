@@ -9,12 +9,12 @@ ms.date: 08/03/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, amqp, devx-track-csharp
-ms.openlocfilehash: b904fcd03247f6e6ae01f51c5048c29826bb8e5a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 24a63a167f640646b9e07126a038663f4da3e23b
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018467"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449604"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Oktatóanyag: C# IoT Edge modul fejlesztése Windows-eszközökhöz
 
@@ -93,7 +93,7 @@ Az üzembe helyezési jegyzék megosztja a tároló beállításjegyzékének hi
 
 1. A Visual Studio Solution Explorerben nyissa meg a **deployment.template.js** fájlt.
 
-2. Keresse meg a **registryCredentials** tulajdonságot a $edgeAgent kívánt tulajdonságban. A szolgáltatásnak a projekt létrehozásakor megadott információk alapján kell kitöltenie a beállításjegyzékbeli címeket, majd a Felhasználónév és a jelszó mezőben a változók nevét kell tartalmaznia. Például:
+2. Keresse meg a **registryCredentials** tulajdonságot a $edgeAgent kívánt tulajdonságban. A szolgáltatásnak a projekt létrehozásakor megadott információk alapján kell kitöltenie a beállításjegyzékbeli címeket, majd a Felhasználónév és a jelszó mezőben a változók nevét kell tartalmaznia. Példa:
 
    ```json
    "registryCredentials": {
@@ -323,7 +323,7 @@ Ellenőrizze, hogy a IoT Edge eszköz működik-e.
 
 4. A Fájlkezelőben válassza ki a **deployment.windows-amd64.js** fájlt a megoldás konfigurációs mappájába.
 
-5. Frissítse a Cloud Explorert, és tekintse meg az eszköz alatt felsorolt telepített modulokat.
+5. Frissítse a Cloud Explorer alkalmazást, és tekintse meg az eszköz alatt felsorolt telepített modulokat.
 
 ## <a name="view-generated-data"></a>A létrejött adatok megtekintése
 

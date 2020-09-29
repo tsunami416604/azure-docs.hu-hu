@@ -9,36 +9,36 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/10/2018
+ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: 8f4a6283f762d9792f50651b9caee17795df6d55
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: eb5b4ab8a23a374aec54d65dd5390ab3fec3e905
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89398937"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445488"
 ---
 # <a name="url-rewrite-custom-forwarding-path"></a>URL-átírás (egyéni továbbítási útvonal)
-Az Azure bevezető ajtaja támogatja az URL-cím újraírását, mivel lehetővé teszi egy opcionális **Egyéni továbbítási útvonal** konfigurálását, amelyet a rendszer a háttérbe való továbbításra irányuló kérés összeállításakor használ. Ha nincs megadva egyéni továbbítási útvonal, a Front Door alapértelmezés szerint bemásolja a bejövő URL-útvonalat a továbbított kérelemben használt URL-címbe. A továbbított kérelemben használt állomásfejléc megegyezik a kiválasztott háttérrendszer számára konfigurált állomásfejléccel. Olvassa el a [háttérbeli állomásfejléc-fejlécet](front-door-backend-pool.md#hostheader) , hogy megtudja, mit csinál, és hogyan konfigurálhatja.
+Az Azure bevezető ajtaja támogatja az URL-átírást úgy, hogy egy opcionális **Egyéni továbbítási útvonalat** konfigurál, amelyet a rendszer a háttérbe való továbbításra irányuló kérés összeállításakor használ Alapértelmezés szerint, ha nincs megadva egyéni továbbítási útvonal, a bejárati ajtó a továbbított kérelemben használt URL-címhez másolja a bejövő URL-útvonalat. A továbbított kérelemben használt állomásfejléc megegyezik a kiválasztott háttérrendszer számára konfigurált állomásfejléccel. Olvassa el a [háttérbeli állomásfejléc-fejlécet](front-door-backend-pool.md#hostheader) , hogy megtudja, mit csinál, és hogyan konfigurálhatja.
 
-Az URL-cím az egyéni továbbítási útvonal használatával történő újraírásának nagy része az, hogy a bejövő elérési út bármely olyan részét átmásolja, amely megegyezik a továbbított útvonalhoz tartozó helyettesítő karakteres elérési úttal (ezek az elérésiút-szegmensek az alábbi példában szereplő **zöld** szegmensek):
+Az URL-cím újraírásának hatékony része az, hogy az egyéni továbbítási útvonal a bejövő elérési út bármely olyan részét másolja, amely a helyettesítő karakteres elérési útra illeszkedik a továbbított útvonalhoz (ezek az elérésiút-szegmensek az alábbi példában szereplő **zöld** szegmensek):
 </br>
-![Azure bejárati ajtó URL-címének újraírása][1]
+
+:::image type="content" source="./media/front-door-url-rewrite/front-door-url-rewrite-example.jpg" alt-text="Azure bejárati ajtó URL-címének újraírása":::
 
 ## <a name="url-rewrite-example"></a>URL-átírási példa
-Vegye fontolóra egy útválasztási szabályt a következő előtér-gazdagépekkel és elérési utakkal:
+Tekintse át az útválasztási szabályokat a következő, az előtér-gazdagépek és-elérési utak kombinációjával:
 
 | Hosts      | Elérési utak       |
 |------------|-------------|
-| www- \. contoso.com | /\*         |
+| www- \. contoso.com | /\*   |
 |            | /foo        |
 |            | foo\*     |
 |            | /foo/bar/\* |
 
-Az alábbi táblázat első oszlopa a beérkező kérelmekre mutat példákat, a második oszlop pedig azt mutatja be, hogy mi lenne a "legpontosabban egyező" útvonal.  A táblázat első sorában a harmadik és az azt követő oszlopok a konfigurált **Egyéni továbbítási útvonalakra**mutatnak, az oszlopok többi sora pedig példát mutat arra, hogy a továbbított kérések elérési útja hogyan illeszkedik az adott sorban található kérelemhez.
+Az alábbi táblázat első oszlopa a beérkező kérelmekre mutat példákat, a második oszlop pedig azt mutatja be, hogy mi lenne a "legpontosabban egyező" útvonal.  A táblázat harmadik és az azt követő oszlopai a konfigurált **Egyéni továbbítási útvonalakra**mutatnak példákat.
 
 Ha például beolvasjuk a második sort, azt mondja, hogy a bejövő kérelem esetében, `www.contoso.com/sub` Ha az egyéni továbbítási útvonal volt `/` , akkor a továbbított elérési út a következő lesz: `/sub` . Ha az egyéni továbbítási útvonal volt `/fwd/` , akkor a továbbított elérési út a következő lesz: `/fwd/sub` . És így tovább, a fennmaradó oszlopokhoz. Az alábbi elérési utak **Kiemelt** részei a helyettesítő karakteres egyezés részét képező részeket jelölik.
-
 
 | Bejövő kérelem       | A legpontosabb egyezési elérési út | /          | fwd          | foo          | /foo/bar/          |
 |------------------------|--------------------------|------------|----------------|----------------|--------------------|
@@ -49,18 +49,12 @@ Ha például beolvasjuk a második sort, azt mondja, hogy a bejövő kérelem es
 | www- \. contoso.com/foo/        | foo\*                  | /          | fwd          | foo          | /foo/bar/          |
 | www \. contoso.com/foo/**sáv** | foo\*                  | /**Bár**   | /fwd/**sáv**   | /foo/**sáv**   | /foo/Bar/**sáv**   |
 
-
 ## <a name="optional-settings"></a>Választható beállítások
 További választható beállítások is megadhatók a megadott útválasztási szabályok beállításaihoz:
 
-* **Gyorsítótár-konfiguráció** – ha le van tiltva vagy nincs megadva, akkor az ehhez az útválasztási szabályhoz illeszkedő kérelmek nem kísérlik meg a gyorsítótárazott tartalom használatát, hanem mindig a háttérből fognak beolvasni. További információ a [bejárati ajtók gyorsítótárazásáról](front-door-caching.md).
-
-
+* **Gyorsítótár-konfiguráció** – ha le van tiltva vagy nincs megadva, akkor az ezen útválasztási szabálynak megfelelő kérelmek nem kísérlik meg a gyorsítótárazott tartalom használatát, hanem mindig a háttérből fognak beolvasni. További információ a [bejárati ajtók gyorsítótárazásáról](front-door-caching.md).
 
 ## <a name="next-steps"></a>Következő lépések
 
 - Útmutató a [Front Door létrehozásához](quickstart-create-front-door.md).
 - A [Front Door működésének](front-door-routing-architecture.md) ismertetése.
-
-<!--Image references-->
-[1]: ./media/front-door-url-rewrite/front-door-url-rewrite-example.jpg

@@ -10,23 +10,23 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/21/2019
+ms.date: 09/28/2020
 ms.author: duau
 ms.reviewer: tyao
-ms.openlocfilehash: 558d1c098f07f8e09a6a68a065cac9b7b38cfbf3
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 42697a57d39f4a34eee4866b67e2cde947db1ff5
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399650"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449265"
 ---
 # <a name="geo-filtering-on-a-domain-for-azure-front-door"></a>Geo-szűrés egy tartományon az Azure bejárati ajtaján
 
-Alapértelmezés szerint az Azure-beli bejárati ajtó a kérést kérő felhasználó helyétől függetlenül válaszol a felhasználói kérésekre. Bizonyos esetekben azonban előfordulhat, hogy az ország/régió alapján korlátozni szeretné a webalkalmazásokhoz való hozzáférést. A webalkalmazási tűzfal (WAF) a bejárati ajtón lehetővé teszi, hogy egyéni hozzáférési szabályokkal Definiáljon egy házirendet a végpont megadott elérési útjához, hogy engedélyezze vagy tiltsa le a hozzáférést a megadott országokból/régiókból. 
+Alapértelmezés szerint az Azure bejárati ajtaja válaszol az összes felhasználói kérésre, függetlenül attól, hogy a kérés honnan származik. Bizonyos esetekben előfordulhat, hogy korlátozni szeretné a webalkalmazáshoz való hozzáférést országok/régiók szerint. A webalkalmazási tűzfal (WAF) a bejárati ajtón lehetővé teszi, hogy egyéni hozzáférési szabályokkal Definiáljon egy házirendet a végpont egy adott elérési útján, hogy engedélyezze vagy tiltsa le a hozzáférést a megadott országokból/régiókból. 
 
-A WAF szabályzat általában egyéni szabályok készletét tartalmazza. A szabályok egy egyeztetési feltételből, egy műveletből és egy prioritásból állnak. Az egyeztetési feltételben egy egyeztetési változót, egy operátort és egy egyeztetési értéket kell megadni.  Földrajzi szűrési szabály esetén a Match változó értéke REMOTE_ADDR, az operátor GeoMatch, az érték a két betűs ország/régió. Egy GeoMatch feltételt és egy REQUEST_URI sztringegyeztetési feltételt kombinálva elérésiút-alapú geoszűrési szabályokat hozhat létre.
+A WAF szabályzat egyéni szabályokat tartalmaz. A szabály egyezési feltételekből, műveletből és prioritásból áll. Egyeztetési feltételben definiálni kell egy egyezési változót, egy operátort és egy egyezési értéket. A földrajzi szűrési szabályok esetében REMOTE_ADDR az operátor GeoMatch, és az érték egy kétbetűs ország/régió. Egy GeoMatch-feltételt és egy REQUEST_URI karakterlánc-egyeztetési feltételt egyesítheti elérésiút-alapú geo-szűrési szabály létrehozásához.
 
-A Geo-szűrési házirendet az előtérben is konfigurálhatja [Azure PowerShell](front-door-tutorial-geo-filtering.md) vagy a rövid útmutató [sablonjának](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-geo-filtering)használatával.
+Az [Azure PowerShell](front-door-tutorial-geo-filtering.md) vagy egy rövid útmutató [sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-geo-filtering)használatával konfigurálhatja a Geo-szűrési szabályzatot az előtérben.
 
 ## <a name="countryregion-code-reference"></a>Ország/régió kódjának referenciája
 
@@ -103,7 +103,7 @@ A Geo-szűrési házirendet az előtérben is konfigurálhatja [Azure PowerShell
 | HR | Horvátország|
 | HT | Haiti|
 | HU | Magyarország|
-| ID (Azonosító) | Indonézia|
+| ID | Indonézia|
 | IE | Írország|
 | IL | Izrael|
 | IN | India|
@@ -212,5 +212,5 @@ A Geo-szűrési házirendet az előtérben is konfigurálhatja [Azure PowerShell
 
 ## <a name="next-steps"></a>Következő lépések
 
-- További információ az [Azure Front Door alkalmazási rétegbeli biztonságáról](front-door-application-security.md).
 - Útmutató a [Front Door létrehozásához](quickstart-create-front-door.md).
+- Ismerje meg, hogyan [állíthat be geo-szűrési WAF szabályzatot](front-door-tutorial-geo-filtering.md).

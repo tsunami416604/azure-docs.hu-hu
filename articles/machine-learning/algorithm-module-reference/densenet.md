@@ -8,19 +8,24 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 05/26/2020
-ms.openlocfilehash: 69c18c24ae9a8eb4c1fd54c1f8530e126a40b004
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/26/2020
+ms.openlocfilehash: d64933f7b2c8ebc8597b93cbd16b34158f936f96
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90898517"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450091"
 ---
 # <a name="densenet"></a>DenseNet
 
 Ez a cikk azt ismerteti, hogyan használható a **DenseNet** modul a Azure Machine learning Designerben, és hogyan hozható létre rendszerkép-besorolási modell a DenseNet algoritmus használatával.  
 
-Ez a besorolási algoritmus egy felügyelt tanulási módszer, amelyhez címkézett adatkészlet szükséges. A címkével ellátott Képkönyvtár beszerzésével kapcsolatos további útmutatásért tekintse meg az [átalakítás rendszerkép-](convert-to-image-directory.md) modulba című témakört. A modellt úgy is betaníthatja, hogy a modellt és a címkével ellátott képkönyvtárat bemenetként adja meg a [Pytorch-modell betanításához](train-pytorch-model.md). A betanított modell ezután felhasználható az új bemeneti példák értékeinek előrejelzésére a [score képmodell](score-image-model.md)használatával.
+Ez a besorolási algoritmus egy felügyelt tanulási módszer, és a címkével ellátott képkönyvtárat igényel. 
+
+> [!NOTE]
+> Ez a modul nem támogatja a Studióban található *Adatcímkéző* címkével ellátott adatkészlet használatát, de csak a [Konvertálás Képkönyvtár](convert-to-image-directory.md) -modulba létrehozott címkézett Képkönyvtár támogatása. 
+
+A modellt úgy is betaníthatja, hogy a modellt és a címkével ellátott képkönyvtárat bemenetként adja meg a [Pytorch-modell betanításához](train-pytorch-model.md). A betanított modell ezután felhasználható az új bemeneti példák értékeinek előrejelzésére a [score képmodell](score-image-model.md)használatával.
 
 ### <a name="more-about-densenet"></a>További információ a DenseNet
 
@@ -49,7 +54,7 @@ A folyamat futásának befejezése után a modell a pontozáshoz való használa
 
 ###  <a name="module-parameters"></a>Modul paramétereinek  
 
-| Name             | Tartomány | Típus    | Alapértelmezett     | Leírás                              |
+| Név             | Tartomány | Típus    | Alapértelmezett     | Leírás                              |
 | ---------------- | ----- | ------- | ----------- | ---------------------------------------- |
 | Modell neve       | Bármelyik   | Mód    | densenet201 | Egy bizonyos densenet-struktúra neve     |
 | Imagenet       | Bármelyik   | Logikai | Igaz        | Azt határozza meg, hogy az ImageNet-on előre betanított modellt használ-e |
@@ -61,6 +66,6 @@ A folyamat futásának befejezése után a modell a pontozáshoz való használa
 | --------------- | ----------------------- | ---------------------------------------- |
 | Nem betanított modell | UntrainedModelDirectory | Egy képzetlen densenet-modell, amely csatlakoztatható a Pytorch-modellhez. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

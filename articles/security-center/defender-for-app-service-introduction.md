@@ -4,15 +4,15 @@ description: Ismerje meg a App Service Azure Defender előnyeit és funkcióit.
 author: memildin
 ms.author: memildin
 ms.date: 9/22/2020
-ms.topic: conceptual
+ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: d15e881ca1246d463d8054fe5bd094efaff0cdd5
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: c53f7e712668f32766feaf76d6a08582bda9af22
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90977173"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449104"
 ---
 # <a name="introduction-to-azure-defender-for-app-service"></a>A App Service Azure Defender bemutatása
 
@@ -30,7 +30,7 @@ Az Azure felhőalapú szolgáltatóként való láthatóságának használatáva
 |Kiadás állapota:|Előnézet|
 |Árképzési|Az [Azure Defender for app Service](azure-defender.md) számlázása [a díjszabási oldalon](security-center-pricing.md) látható|
 |Támogatott App Service csomagok:|![Igen, ](./media/icons/yes-icon.png) alapszintű, standard, prémium, elkülönített vagy linuxos<br>![Nincs ](./media/icons/no-icon.png) ingyenes, közös vagy felhasználási<br>[További információ a App Service csomagokról](https://azure.microsoft.com/pricing/details/app-service/plans/)|
-|Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![No](./media/icons/no-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
+|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Nem](./media/icons/no-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
 |||
 
 ## <a name="what-does-azure-defender-for-app-service-protect"></a>Mit jelent az Azure Defender App Service védelem?

@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: ffd967797a4e586387a0385169672220727f78a7
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 683a3fc148d3521366beef4427e87200ea81a9f3
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90886763"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445726"
 ---
 # <a name="deploy-azure-sql-edge"></a>Az Azure SQL Edge üzembe helyezése 
 
@@ -62,7 +62,6 @@ Az Azure Marketplace egy online alkalmazások és szolgáltatások piaca, ahol a
 
    |**Paraméter**  |**Leírás**|
    |---------|---------|
-   | Name | A modul neve. |
    | MSSQL_SA_PASSWORD  | Módosítsa az alapértelmezett értéket úgy, hogy erős jelszót határozzon meg az SQL Edge rendszergazdai fiókjához. |
    | MSSQL_LCID   | Módosítsa az alapértelmezett értéket az SQL Edge-hez használni kívánt nyelvi azonosító megadásához. Például 1036 a francia. |
    | MSSQL_COLLATION | Módosítsa az alapértelmezett értéket az SQL Edge alapértelmezett rendezésének beállításához. Ez a beállítás felülbírálja a nyelvi azonosító (LCID) alapértelmezett leképezését a rendezéshez. |
@@ -110,7 +109,7 @@ Az Azure Marketplace egy online alkalmazások és szolgáltatások piaca, ahol a
    
 8. A **frissítés IoT Edge modul** ablaktáblán kattintson a **frissítés**elemre.
 9. Az **eszközön lévő modulok beállítása** lapon kattintson a **Tovább gombra: útvonalak >** , ha útvonalakat kell meghatároznia az üzemelő példányhoz. Ellenkező esetben kattintson a **felülvizsgálat + létrehozás**gombra. Az útvonalak konfigurálásával kapcsolatos további információkért lásd: [modulok telepítése és útvonalak létrehozása IoT Edgeban](../iot-edge/module-composition.md).
-11. A **IoT Edge frissítése** panelen kattintson a **Létrehozás**elemre.
+11. Az **eszközön található modulok beállítása** lapon kattintson a **Létrehozás**gombra.
 
 ## <a name="connect-to-azure-sql-edge"></a>Kapcsolódás az Azure SQL Edge-hez
 

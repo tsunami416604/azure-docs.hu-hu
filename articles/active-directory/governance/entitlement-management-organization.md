@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 06/18/2020
+ms.date: 09/28/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50c5c02327aa9f48a605607de901258827b14896
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 96106cc1d9f9040f98c7d9201f05b4cff87af7e5
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783943"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449840"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Csatlakoztatott szervezet hozzáadása az Azure AD-jogosultságok kezelésében
 
@@ -66,6 +66,8 @@ Külső Azure AD-címtár vagy-tartomány csatlakoztatott szervezetként való h
 
     ![A "csatlakoztatott szervezet hozzáadása" alapismeretek panel](./media/entitlement-management-organization/organization-basics.png)
 
+1. Ha új csatlakoztatott szervezetet hoz létre, az állapot automatikusan be **lesz állítva.** További információ az állapot tulajdonságairól: [csatlakoztatott szervezetek állapotának tulajdonságai](#state-properties-of-connected-organizations)
+
 1. Válassza a **címtár + tartomány** lapot, majd válassza a **könyvtár és tartomány hozzáadása**lehetőséget.
 
     Megnyílik a **könyvtárak és tartományok kiválasztása** panel.
@@ -109,7 +111,7 @@ Ha a csatlakoztatott szervezet egy másik tartományra vált, a szervezet neve m
 
 1. A bal oldali ablaktáblán válassza a **csatlakoztatott szervezetek**lehetőséget, majd válassza ki a csatlakoztatott szervezetet a megnyitásához.
 
-1. A szervezet nevének vagy leírásának módosításához a csatlakoztatott szervezet áttekintés paneljén válassza a **Szerkesztés** lehetőséget.  
+1. A csatlakoztatott szervezet áttekintés paneljén válassza a **Szerkesztés** lehetőséget a szervezet nevének, leírásának vagy állapotának módosításához.  
 
 1. A **címtár + tartomány** ablaktáblán válassza a **könyvtár** és tartomány frissítése lehetőséget egy másik könyvtárra vagy tartományra való váltáshoz.
 
@@ -135,6 +137,23 @@ Ha már nincs kapcsolata egy külső Azure AD-címtárral vagy-tartománnyal, ak
 ## <a name="managing-a-connected-organization-programmatically"></a>Csatlakoztatott szervezet programozott kezelése
 
 A csatlakoztatott szervezeteket Microsoft Graph használatával is létrehozhatja, listázhatja, frissítheti és törölheti. Egy megfelelő szerepkörrel rendelkező felhasználó, aki delegált engedéllyel rendelkezik, `EntitlementManagement.ReadWrite.All` meghívhatja az API-t a [connectedOrganization](/graph/api/resources/connectedorganization?view=graph-rest-beta) -objektumok kezelésére, és azokhoz is beállíthatja a szponzorokat.
+
+## <a name="state-properties-of-connected-organizations"></a>Csatlakoztatott szervezetek állapotának tulajdonságai
+
+Az Azure AD jogosultság-kezelési szolgáltatás jelenleg két különböző típusú állapotadatokat biztosít a csatlakoztatott szervezetekhez: 
+
+- Egy konfigurált csatlakoztatott szervezet egy teljes mértékben működőképes csatlakoztatott szervezet, amely lehetővé teszi, hogy a szervezeten belüli felhasználók hozzáférjenek a csomagokhoz. Amikor egy rendszergazda új csatlakoztatott szervezetet hoz létre a Azure Portalban, alapértelmezés szerint a **beállított** állapotban lesz, mivel a rendszergazda létrehozta, és szeretné használni ezt a csatlakoztatott szervezetet. Továbbá, ha egy csatlakoztatott szervezet programozott módon lett létrehozva az API-n keresztül, akkor az alapértelmezett állapotot úgy kell **konfigurálni** , hogy csak egy másik állapotra állítsa explicit. 
+
+    A konfigurált csatlakoztatott szervezetek megjelennek a csatlakoztatott szervezetekhez tartozó választókban, és az "összes" csatlakoztatott szervezetre vonatkozó szabályzatok hatókörében lesznek.
+
+- A javasolt csatlakoztatott szervezet egy automatikusan létrehozott csatlakoztatott szervezet, de nem volt rendszergazda létrehozni vagy jóváhagyni a szervezetet. Ha egy felhasználó egy konfigurált csatlakoztatott szervezeten kívüli hozzáférési csomagra jelentkezik be, akkor az automatikusan létrehozott csatlakoztatott szervezetek a **javasolt** állapotba kerülnek, mivel a bérlő nem rendelkezik a partneri kapcsolat beállításával. 
+    
+    A javasolt csatlakoztatott szervezetek nem jelennek meg a konfigurált csatlakoztatott szervezetekhez tartozó választókban, és nem tartoznak az "összes konfigurált csatlakoztatott szervezet" beállításra a szabályzatokban. 
+
+Csak a konfigurált csatlakoztatott szervezetek felhasználói igényelhetnek hozzáférési csomagokat, amelyek az összes konfigurált szervezet felhasználói számára elérhetők. A javasolt csatlakoztatott szervezetek felhasználói úgy rendelkeznek tapasztalattal, mintha az adott tartományhoz nincs csatlakoztatott szervezet, és nem férnek hozzá a hozzáférési csomaghoz, amíg a rendszergazda meg nem változtatja az állapotot.
+
+> [!NOTE]
+> Az új funkció bevezetésének részeként az 09/09/20 előtt létrehozott összes csatlakoztatott szervezet **konfigurálva**lett. Ha olyan hozzáférési csomaggal rendelkezett, amely bármely szervezet felhasználói számára engedélyezte a regisztrációt, tekintse át az ezen időpont előtt létrehozott csatlakoztatott szervezetek listáját, hogy a none **ne legyenek megfelelően**kategorizálva.  A rendszergazda szükség szerint frissítheti az **állapot** tulajdonságot. Útmutatásért lásd [a csatlakoztatott szervezet frissítése](#update-a-connected-organization)című témakört.
 
 ## <a name="next-steps"></a>Következő lépések
 

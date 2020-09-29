@@ -9,40 +9,38 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/10/2018
+ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: b36852e27f6aa3a909dd645c19a12c55e082b761
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 948cf3c65dfdc912f2f807dfac34076985f1bc89
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399327"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449196"
 ---
 # <a name="routing-architecture-overview"></a>Útválasztási architektúra – áttekintés
 
-Az Azure bejárati ajtaja, amikor megkapja az ügyfelek kérelmeit, megválaszolja őket (ha engedélyezve van a gyorsítótárazás), vagy továbbítja őket a megfelelő alkalmazás-háttérre (fordított proxyként).
-
-</br>Lehetőség van arra, hogy optimalizálja a forgalmat az Azure bejárati ajtóra történő útválasztás, valamint a háttérbe való útválasztás során.
+Amikor az Azure bejárati ajtaja megkapja az ügyfelek kérelmeit, két dolog közül kell elvégeznie. Ha engedélyezi a gyorsítótárazást, vagy megválaszolja őket a megfelelő alkalmazás-háttérre, fordított proxyként továbbítja őket.
 
 ## <a name="selecting-the-front-door-environment-for-traffic-routing-anycast"></a><a name = "anycast"></a>Az előtérben lévő környezet kiválasztása a forgalmi útválasztáshoz
 
-Az Azure bejárati környezetekhez való útválasztás a DNS (Tartománynévrendszer) és a HTTP-(Hypertext Transfer Protocol) [forgalom számára egyaránt](https://en.wikipedia.org/wiki/Anycast) kihasználja a többszintű konfigurációt, így a felhasználói forgalom a legközelebbi környezetbe kerül a hálózati topológia (a legkevesebb ugrás) szempontjából. Ez az architektúra általában a végfelhasználók számára biztosít jobb időigényt (a felosztott TCP előnyeit maximalizálva). A bejárati ajtó a környezeteket elsődleges és tartalék "gyűrűkre" rendezi.  A külső gyűrű olyan környezetekkel rendelkezik, amelyek közelebb vannak a felhasználókhoz, és kevesebb késést kínálnak.  A belső gyűrű olyan környezettel rendelkezik, amely képes kezelni a külső gyűrűs környezet feladatátvételét abban az esetben, ha probléma történik. A külső gyűrű az előnyben részesített cél az összes forgalom számára, de a belső gyűrű szükséges a külső gyűrűből származó forgalom túlcsordulásának kezeléséhez. A virtuális IP-címek (Virtual Internet Protocol Addresss), minden előtér-gazdagép vagy a bejárati ajtó által kiszolgált tartomány egy elsődleges VIP-t kap, amelyet a belső és külső gyűrűben, valamint egy tartalék VIP-ben jelent meg, amelyet csak a belső gyűrűben lévő környezetek jelentettek be. 
+Az Azure-beli bejárati környezetek felé [irányuló](https://en.wikipedia.org/wiki/Anycast) forgalom a DNS (Tartománynévrendszer) és a http-(Hypertext Transfer Protocol-) forgalom számára egyaránt biztosít lehetőséget, amely lehetővé teszi, hogy a felhasználók a legkevesebb hálózati ugrásban elérjék a legközelebbi környezetet. Ez az architektúra jobb időpontot biztosít a végfelhasználók számára azáltal, hogy maximalizálja a felosztott TCP előnyeit. A bejárati ajtó a környezeteket elsődleges és tartalék "gyűrűkre" rendezi. A külső gyűrű olyan környezetekkel rendelkezik, amelyek közelebb vannak a felhasználókhoz, és kevesebb késést kínálnak.  A belső gyűrű olyan környezettel rendelkezik, amely képes kezelni a külső gyűrűs környezet feladatátvételét abban az esetben, ha bármilyen probléma történne. A külső kör az összes forgalom előnyben részesített célja, a belső gyűrű pedig a forgalom túlcsordulásának kezelése a külső gyűrűből. Minden előtér-gazdagép vagy-tartomány egy elsődleges virtuális IP-címet (Virtual Internet Protocol címeket) kap, melyet a belső és külső gyűrűben lévő környezetek jelentenek. A tartalék VIP-t csak a belső gyűrűben lévő környezetek jelentették be. 
 
-</br>Ez az általános stratégia biztosítja, hogy a végfelhasználók kérései mindig elérjék a legközelebb bejárati ajtót, és akkor is, ha az előnyben részesített ajtós környezet állapota nem kifogástalan, a forgalom automatikusan a legközelebbi legközelebbi környezetbe kerül.
+Ez az architektúra biztosítja, hogy a végfelhasználók kérései mindig elérjék a legközelebb bejárati ajtós környezetet. Még akkor is, ha az elsődleges rendszerállapot-környezet állapota nem kifogástalan, a rendszer automatikusan a legközelebbi legközelebbi környezetbe helyezi át a forgalmat.
 
 ## <a name="connecting-to-front-door-environment-split-tcp"></a><a name = "splittcp"></a>Csatlakozás az előtérben lévő környezethez (Split TCP)
 
-A [felosztott TCP](https://en.wikipedia.org/wiki/Performance-enhancing_proxy) egy olyan módszer, amely csökkenti a késéseket és a TCP-problémákat azáltal, hogy egy olyan kapcsolódási ponttal szakítja meg a hozzáférést, amely a nagy adatátviteli idő kisebb  Ha az előtér-környezeteket közelebb helyezi el a végfelhasználók számára, és leállítja a TCP-kapcsolatokat az előtér-környezetben, akkor az alkalmazási háttérrendszer egy nagy, időponthoz (RTT) csatlakozó TCP-kapcsolat két TCP-kapcsolatra oszlik. A végfelhasználó és a bejárati ajtó környezete közötti rövid kapcsolat azt jelenti, hogy a kapcsolat három rövid körúton, a késések megtakarítása és a késleltetés időkerete között jön véget.  Az előtér-környezet és a háttér közötti hosszú kapcsolat előre kialakítható és többször is felhasználható több végfelhasználói hívás között, a TCP-kapcsolat időpontjának mentése után.  Ennek hatására az SSL/TLS (Transport Layer Security) kapcsolat létrehozásakor kerül sor, mivel a kapcsolat biztonságossá tételéhez több kör alakú út szükséges.
+A [felosztott TCP](https://en.wikipedia.org/wiki/Performance-enhancing_proxy) egy olyan módszer, amely csökkenti a késéseket és a TCP-problémákat azáltal, hogy egy olyan kapcsolódási ponttal szakítja meg a hozzáférést, amely a nagy adatátviteli idő kisebb Az előtér-környezetek a végfelhasználók számára közelebb vannak, a TCP-kapcsolatok az előtér-környezeten belül leállnak. Egy olyan TCP-kapcsolat, amely az alkalmazási háttér nagy időpontra (RTT) mutat, két különálló kapcsolatra oszlik. A "rövid kapcsolat" a végfelhasználó és az előtér-környezet között azt jelenti, hogy a kapcsolat három rövid oda-és bejárati idő alatt jön, és a késés megtakarítását eredményezi. A "hosszú kapcsolat" a bejárati ajtó környezete és a háttérrendszer között előre megnyitható, majd más végfelhasználók számára a kapcsolódási idő megtakarítása is felhasználható. Az SSL/TLS (Transport Layer Security) kapcsolat létesítése során a felosztott TCP hatása megszorul, mivel a kapcsolatok biztonságossá tételéhez több kör alakú út van.
 
 ## <a name="processing-request-to-match-a-routing-rule"></a>Útválasztási szabálynak megfelelő kérelem feldolgozása
-Miután létrehozta a csatlakozást, és TLS-kézfogást hajt végre, amikor egy kérelem egy bejárati ajtós környezetbe kerül, az első lépés az útválasztási szabály egyeztetése. Ez alapvetően megegyezik a bejárati ajtó összes konfigurációjának meghatározásával, amely az adott útválasztási szabálynak felel meg a kérelemnek. További információért olvassa el, hogy a bevezető ajtó hogyan felel meg a [megfelelő útvonalnak](front-door-route-matching.md) .
+A kapcsolatok létrehozása és a TLS-kézfogás elvégzése után az első lépés azt követően, hogy a kérelem egy bejárati környezetben landol, az az útválasztási szabálynak megfelelő. Az egyeztetést a bejárati ajtón lévő konfigurációk határozzák meg, amelyekhez az adott útválasztási szabálynak meg kell egyeznie a kérelemmel. További információért olvassa el, hogy a bevezető ajtó hogyan felel meg a [megfelelő útvonalnak](front-door-route-matching.md) .
 
 ## <a name="identifying-available-backends-in-the-backend-pool-for-the-routing-rule"></a>Az elérhető háttérrendszer meghatározása a háttér-készletben az útválasztási szabályhoz
-Ha a bevezető ajtó megfelel egy útválasztási szabálynak a bejövő kérelem alapján, és ha nincs gyorsítótárazás, a következő lépés az egyeztetett útvonalhoz társított háttér-készlet állapotának lekérése. További információért olvassa el, hogy a bejárati ajtó hogyan [figyeli a háttér](front-door-health-probes.md) -állapotot az állapotfigyelő tesztek használatával.
+Ha a bejárati ajtó megfelelt egy bejövő kérelem útválasztási szabályának, a következő lépés az útválasztási szabályhoz társított háttér-készlet állapotának lekérése, ha nincs gyorsítótárazás. További információért olvassa el, hogy a bejárati ajtó hogyan [figyeli a háttér](front-door-health-probes.md) -állapotot az állapotfigyelő tesztek használatával.
 
 ## <a name="forwarding-the-request-to-your-application-backend"></a>A kérelem továbbítása az alkalmazás-háttérbe
-Végül, feltéve, hogy nincs konfigurálva gyorsítótárazás, a felhasználói kérést a rendszer a "legjobb" háttérre továbbítja a rendszer a [bejárati útválasztási módszer](front-door-routing-methods.md) konfigurációja alapján.
+Végül, ha a gyorsítótárazás nincs konfigurálva, a rendszer továbbítja a felhasználói kérelmet az [útválasztási módszer](front-door-routing-methods.md) konfigurációja alapján a "legjobb" háttérbe.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Útmutató a [Front Door létrehozásához](quickstart-create-front-door.md).

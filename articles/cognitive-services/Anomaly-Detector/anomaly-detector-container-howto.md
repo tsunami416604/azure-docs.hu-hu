@@ -1,42 +1,47 @@
 ---
-title: Tárolók telepítése és futtatása anomália-detektor API-k használatával
+title: Docker-tárolók telepítése és futtatása az anomália-detektor API-hoz
 titleSuffix: Azure Cognitive Services
-description: Megtudhatja, hogyan telepítheti és használhatja a tárolót az anomáliák Kiderítő API speciális algoritmusai használatával.
+description: A rendellenesség-Kiderítő API algoritmusai segítségével a helyszíni adatrendellenességek a Docker-tároló használatával találhatók a helyszínen.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
-ms.date: 09/10/2020
+ms.date: 09/28/2020
 ms.author: aahi
-ms.openlocfilehash: 2a4ff7da16524e0706601e43dff39325952990ff
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.custom: cog-serv-seo-aug-2020
+keywords: helyszíni, Docker, tároló, streaming, algoritmusok
+ms.openlocfilehash: ff4d15b33cb261e71ea883c0245afe5781005e38
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903548"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460000"
 ---
-# <a name="install-and-run-anomaly-detector-containers"></a>Anomáliadetektor-tárolók telepítése és futtatása 
+# <a name="install-and-run-docker-containers-for-the-anomaly-detector-api"></a>Docker-tárolók telepítése és futtatása az anomália-detektor API-hoz 
 
 [!INCLUDE [container image location note](../containers/includes/image-location-note.md)]
 
-Az anomáliadetektor a következő tárolói szolgáltatásfunkciókkal rendelkezik:
+A tárolók lehetővé teszik a saját környezetében lévő anomália-detektor API használatát. A tárolók kiválóan alkalmasak adott biztonsági és adatszabályozási követelményekhez. Ebből a cikkből megtudhatja, hogyan töltheti le, telepítheti és futtathatja az anomália-detektor tárolóját.
 
-| Funkció | Funkciók |
-|--|--|
-| Anomália detektor | <li> Észleli a rendellenességeket, mivel azok valós időben történnek. <li> Az adatkészletben lévő összes adathalmazt a kötegben észleli. <li> Az adatkészletben lévő Trends-változási pontokat észleli kötegként.<li> Kikövetkezteti az adatai várható normál tartományát. <li> A anomáliák észlelésének érzékenységi beállítását támogatja, hogy jobban illeszkedjen az adataihoz. |
+Az anomália detektor egyetlen Docker-tárolót biztosít a helyszíni API használatához. A tároló használata a következőhöz:
+* Használja az adatrendellenesség-detektor algoritmusait az adataihoz
+* Figyelheti a folyamatos adatátvitelt, és észlelheti a rendellenességeket, mivel azok valós időben történnek.
+* Az adatkészletekben lévő rendellenességek észlelése kötegként. 
+* Az adatkészletben lévő trendek változási pontjainak kimutatása kötegként.
+* Állítsa be úgy a anomália-észlelési algoritmus érzékenységét, hogy jobban illeszkedjen az adataihoz.
 
-Az API-kkal kapcsolatos részletes információkért lásd:
+Az API-val kapcsolatos részletes információkért lásd:
 * [További információ az anomália-érzékelő API szolgáltatásáról](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)
 
-Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/), mielőtt hozzákezd.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 A következő előfeltételeknek kell megfelelnie az anomália-Kiderítő tárolók használata előtt:
 
-|Kötelező|Cél|
+|Kötelező|Szerep|
 |--|--|
 |A Docker-motor| A Docker-motornak telepítve kell lennie a [gazdagépen](#the-host-computer). A Docker csomagokat biztosít a Docker-környezet konfigurálásához [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) és [Linux](https://docs.docker.com/engine/installation/#supported-platforms) rendszereken. A Docker és a tárolók alapszintű ismertetéséért lásd a [Docker felhasználói útmutatóját](https://docs.docker.com/engine/docker-overview/).<br><br> A Docker-t úgy kell konfigurálni, hogy lehetővé tegye a tárolók számára az Azure-ba való kapcsolódást és a számlázási információk küldését. <br><br> **Windows rendszeren a**Docker-t is konfigurálni kell a Linux-tárolók támogatásához.<br><br>|
 |A Docker ismerete | Alapvető ismeretekkel kell rendelkeznie a Docker-fogalmakról, például a kibocsátásiegység-forgalmi jegyzékekről, a adattárakról, a tárolók és a tárolók lemezképéről, valamint az alapszintű `docker` parancsokról.|
@@ -54,7 +59,7 @@ A következő előfeltételeknek kell megfelelnie az anomália-Kiderítő tárol
 
 A következő táblázat az anomáliák kiosztásához szükséges minimális és ajánlott CPU-magokat és memóriát ismerteti.
 
-| QPS (lekérdezések másodpercenként) | Minimum | Ajánlott |
+| QPS (lekérdezések másodpercenként) | Minimális | Ajánlott |
 |-----------|---------|-------------|
 | 10 QPS | 4 mag, 1 GB memória | 8 magos, 2 GB-os memória |
 | 20 QPS | 8 mag, 2 GB memória | 16 magos, 4 GB-os memória |
@@ -187,7 +192,7 @@ Ebből a cikkből megtudhatta, milyen fogalmakat és munkafolyamatokat használ 
 > [!IMPORTANT]
 > Cognitive Services tárolók nem futtathatók az Azure-hoz való csatlakozás nélkül. Az ügyfeleknek engedélyeznie kell, hogy a tárolók a számlázási adatokat mindig a mérési szolgáltatással kommunikáljanak. Cognitive Services tárolók nem küldenek ügyféladatokat (pl. az elemzett idősoros adatgyűjtési időt) a Microsoftnak.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A [tárolók konfigurálásának](anomaly-detector-container-configuration.md) áttekintése konfigurációs beállításokhoz
 * [Rendellenesség-Kiderítő tároló üzembe helyezése Azure Container Instances](how-to/deploy-anomaly-detection-on-container-instances.md)

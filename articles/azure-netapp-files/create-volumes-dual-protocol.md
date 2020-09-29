@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/24/2020
+ms.date: 09/28/2020
 ms.author: b-juche
-ms.openlocfilehash: 972f9b1ac96ca180aa6eaeead7cde51b60ec0e93
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ce65d6f1806965a55a91117725d2232d4d6460bd
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91278488"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449632"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Hozzon létre egy Dual-Protocol (NFSv3 és SMB) kötetet Azure NetApp Files
 
@@ -38,6 +38,8 @@ Azure NetApp Files támogatja a kötetek NFS-t (NFSv3 és NFSv 4.1), SMBv3 vagy 
 * Győződjön meg arról, hogy megfelel a [Active Directory kapcsolatok követelményeinek](azure-netapp-files-create-volumes-smb.md#requirements-for-active-directory-connections). 
 * Hozzon létre egy névkeresési zónát a DNS-kiszolgálón, majd adjon hozzá egy mutató (PTR) rekordot a névkeresési zónában található AD-gazdagéphez. Ellenkező esetben a kettős protokollú kötet létrehozása sikertelen lesz.
 * Győződjön meg arról, hogy az NFS-ügyfél naprakész, és futtatja az operációs rendszer legújabb frissítéseit.
+* Győződjön meg arról, hogy a Active Directory (AD) LDAP-kiszolgáló működik és fut az AD-ben. Ezt az [Active Directory Lightweight Directory-szolgáltatások (AD LDS)](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/hh831593(v=ws.11)) szerepkör telepítésével és konfigurálásával teheti meg az ad-gépen.
+* Az önaláírt legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány létrehozásához és exportálásához a [Active Directory tanúsítványszolgáltatások (AD CS)](https://docs.microsoft.com/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority) szerepkör használatával győződjön meg arról, hogy a hitelesítésszolgáltató (CA) létrejött az ad-ben.   
 
 ## <a name="create-a-dual-protocol-volume"></a>Kettős protokollú kötet létrehozása
 
@@ -136,12 +138,17 @@ Az Active Directory felhasználók és számítógépek MMC beépülő modullal 
 
 ![Active Directory Attribute Editor](../media/azure-netapp-files/active-directory-attribute-editor.png) 
 
+A következő attribútumokat kell beállítania az LDAP-felhasználók és az LDAP-csoportok számára: 
+* Az LDAP-felhasználók kötelező attribútumai:   
+    `uid`: Alice, `uidNumber` : 139, `gidNumber` : 555, `objectClass` : posixAccount
+* Az LDAP-csoportok szükséges attribútumai:   
+    `objectClass`: "posixGroup", `gidNumber` : 555
 
 ## <a name="configure-the-nfs-client"></a>Az NFS-ügyfél konfigurálása 
 
 Az NFS-ügyfél konfigurálásához kövesse az [NFS-ügyfél konfigurálása Azure NetApp Fileshoz](configure-nfs-clients.md) című témakör útmutatását.  
 
-## <a name="next-steps"></a>Következő lépések  
+## <a name="next-steps"></a>További lépések  
 
 * [Dual-Protocol – gyakori kérdések](azure-netapp-files-faqs.md#dual-protocol-faqs)
 * [NFS-ügyfél konfigurálása az Azure NetApp Fileshoz](configure-nfs-clients.md) 

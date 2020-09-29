@@ -6,20 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 08/10/2020
+ms.date: 09/23/2020
 ms.author: alkohli
-ms.openlocfilehash: 7cac14708adecbdf3c809e3a9656d25c727d80e3
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 8455fafe9ce2465df450e9556e8b2442b01e4e23
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88206163"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449718"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>A helyi webes felhasználói felület használata a Data Box és Data Box Heavy felügyeletéhez
 
-Ez a cikk a Data Box és Data Box Heavy eszközökön végrehajtható konfigurációs és felügyeleti feladatokat ismerteti. A Data Box és Data Box Heavy eszközöket a Azure Portal felhasználói felületen és az eszköz helyi webes FELÜLETén keresztül kezelheti. A cikk a helyi webes felhasználói felülettel végrehajtható feladatokra összpontosít.
+Ez a cikk a Data Box és Data Box Heavy eszközökön végrehajtott konfigurációs és felügyeleti feladatokat ismerteti. A Data Box és Data Box Heavy eszközöket a Azure Portal felhasználói felületen és az eszköz helyi webes FELÜLETén keresztül kezelheti. Ez a cikk a helyi webes felhasználói felület használatával végrehajtott feladatokat ismerteti.
 
-A Data Box és Data Box Heavy helyi webes felhasználói felülete az eszköz kezdeti konfigurálására szolgál. A helyi webes felhasználói felület segítségével leállíthatja vagy újraindíthatja az eszközt, diagnosztikai teszteket futtathat, szoftvereket frissíthet, megtekintheti a naplók másolását, és létrehozhat egy naplófájlt Microsoft ügyfélszolgálatahoz. Két független csomóponttal rendelkező Data Box Heavy eszközön két különálló helyi webes felület érhető el, amely az eszköz egyes csomópontjainak felel meg.
+A Data Box és a Data Box Heavy helyi webes FELÜLETe az eszköz kezdeti konfigurálására szolgál. A helyi webes felhasználói felület segítségével leállíthatja vagy újraindíthatja az eszközt, diagnosztikai teszteket futtathat, szoftvereket frissíthet, megtekintheti a naplók másolását, és létrehozhat egy naplófájlt Microsoft ügyfélszolgálatahoz. Két független csomóponttal rendelkező Data Box Heavy eszközön két különálló helyi webes felület érhető el, amely az eszköz egyes csomópontjainak felel meg.
 
 A cikk az alábbi oktatóanyagokat tartalmazza:
 
@@ -53,7 +53,7 @@ Ha eszközproblémákat tapasztal, létrehozhat egy támogatási csomagot a rend
 
 ## <a name="shut-down-or-restart-your-device"></a>Az eszköz leállítása és újraindítása
 
-Az eszközt a helyi webes felhasználói felület használatával állíthatja le vagy indíthatja újra. Az újraindítás előtt ajánlott offline állapotba állítani a gazdagépen található megosztásokat, majd magát az eszközt is. Így a lehető legkisebbre csökkentheti az adatsérülés lehetőségét. Az eszköz leállításakor ellenőrizze, hogy nincs-e folyamatban adatmásolás.
+Az eszközt a helyi webes felhasználói felület használatával állíthatja le vagy indíthatja újra. Az újraindítás előtt ajánlott offline állapotba állítani a gazdagépen található megosztásokat, majd magát az eszközt is. Így a lehető legkisebbre csökkentheti az adatsérülés lehetőségét. Az eszköz leállításakor ügyeljen arra, hogy az Adatmásolás ne legyen folyamatban.
 
 Az eszköz leállításához hajtsa végre az alábbi lépéseket.
 
@@ -202,6 +202,49 @@ Az SMB-aláírás engedélyezése az Azure-eszközön:
 4. A helyi webes felhasználói felületen lépjen a **Shut down or restart** (Leállítás vagy újraindítás) lapra.
 5. Válassza az **Újraindítás**lehetőséget.
 
+## <a name="enable-backup-operator-privileges"></a>Biztonsági mentési operátori jogosultságok engedélyezése
+
+A webes felhasználói felület felhasználói biztonsági mentési operátori jogosultságokkal rendelkeznek az SMB-megosztásokon alapértelmezés szerint. Ha ezt nem szeretné, a jogosultságok letiltásához vagy engedélyezéséhez használja az **operátori jogosultságok engedélyezése** lehetőséget.
+
+További információ: Backup Operators in [Active Directory Security groups](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-security-groups#backup-operators).
+
+Biztonsági mentési operátori jogosultságok engedélyezése az Azure-eszközön:
+
+1. Az eszköz helyi webes FELÜLETének jobb felső sarkában válassza a **Beállítások**lehetőséget.
+
+   ![Data Box beállítások megnyitása](media/data-box-local-web-ui-admin/data-box-settings-1.png)
+
+2. **Engedélyezés** Biztonsági mentési operátori jogosultságok.
+
+   ![Biztonsági mentési operátori jogosultságok engedélyezése](media/data-box-local-web-ui-admin/data-box-backup-operator-privileges-1.png)
+
+3. **Válassza az alkalmaz lehetőséget**.
+4. A helyi webes felhasználói felületen lépjen a **Shut down or restart** (Leállítás vagy újraindítás) lapra.
+5. Válassza az **Újraindítás**lehetőséget.
+
+## <a name="enable-acls-for-azure-files"></a>ACL-ek engedélyezése Azure Fileshoz
+
+A fájlok metaadatait a rendszer alapértelmezés szerint átadja, amikor a felhasználók SMB-n keresztül töltenek fel adatokat a Data Box. A metaadatok közé tartoznak a hozzáférés-vezérlési listák (ACL-ek), a fájlattribútumok és az időbélyegek. Ha ezt nem szeretné, a funkció letiltásához vagy engedélyezéséhez használjon **ACL-eket az Azure Files** szolgáltatáshoz.
+
+<!--For more information about metadata that is transferred, see [Preserving the ACLs and metadata with Azure Data Box](./data-box-local-web-ui-admin.md#enable-backup-operator-privileges) - IN DEVELOPMENT-->
+
+> [!Note]
+> A metaadatok fájlokkal történő átviteléhez biztonságimásolat-felelősnek kell lennie. Ha ezt a szolgáltatást használja, ügyeljen arra, hogy a webes felhasználói felület helyi felhasználói a biztonságimásolat-felelősök legyenek. Lásd: a [biztonságimásolat-kezelő jogosultságának engedélyezése](#enable-backup-operator-privileges).
+
+Az ACL-ek átvitelének engedélyezése az Azure Files szolgáltatásban:
+
+1. Az eszköz helyi webes FELÜLETének jobb felső sarkában válassza a **Beállítások**lehetőséget.
+
+    ![Data Box beállítások megnyitása](media/data-box-local-web-ui-admin/data-box-settings-1.png)
+
+2. **Engedélyezés** Az Azure Files hozzáférés-vezérlési listái.
+
+     ![ACL-ek engedélyezése az Azure Files szolgáltatáshoz](media/data-box-local-web-ui-admin/data-box-acls-for-azure-files-1.png)
+  
+3. Kattintson az **Alkalmaz** gombra.
+4. A helyi webes felhasználói felületen lépjen a **Shut down or restart** (Leállítás vagy újraindítás) lapra.
+5. Válassza az **Újraindítás**lehetőséget.
+
 ## <a name="enable-tls-11"></a>TLS 1,1 engedélyezése
 
 Alapértelmezés szerint a Azure Data Box Transport Layer Security (TLS) 1,2 titkosítást használ, mivel az biztonságosabb, mint a TSL 1,1. Ha azonban Ön vagy az ügyfelei böngészőt használnak a TLS 1,2-et nem támogató adateléréshez, akkor engedélyezheti a TLS 1,1-et.
@@ -212,7 +255,7 @@ A TLS 1,1 engedélyezése az Azure-eszközön:
 
 1. Az eszköz helyi webes FELÜLETének jobb felső sarkában válassza a **Beállítások**lehetőséget.
 
-    ![Beállítások megnyitása](media/data-box-local-web-ui-admin/data-box-settings-1.png)
+    ![Data Box beállítások megnyitása](media/data-box-local-web-ui-admin/data-box-settings-1.png)
 
 2. **Engedélyezés** TLS 1,1.
 

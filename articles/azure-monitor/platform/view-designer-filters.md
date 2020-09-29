@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/22/2018
-ms.openlocfilehash: 4f4b914fe5851df0928df9ccc41ca3b20c5d3469
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: d428382493e15d2e0571f4cb4b6f090cf9056fe4
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955955"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449309"
 ---
 # <a name="filters-in-azure-monitor-views"></a>Szűrők Azure Monitor nézetekben
 A [Azure monitor nézetben](view-designer.md) lévő **szűrők** lehetővé teszik a felhasználók számára, hogy egy adott tulajdonság értékét a nézet módosítása nélkül szűrhetik.  Például engedélyezheti a nézet felhasználói számára, hogy csak egy adott számítógépről vagy számítógépekről származó adatokra szűrje a nézetet.  Egyetlen nézetben több szűrőt is létrehozhat, így a felhasználók több tulajdonság alapján szűrhetők.  Ez a cikk azt ismerteti, hogyan használható egy szűrő, és hogyan adhat hozzá egyet egyéni nézethez.
@@ -19,12 +19,12 @@ A [Azure monitor nézetben](view-designer.md) lévő **szűrők** lehetővé tes
 ## <a name="using-a-filter"></a>Szűrő használata
 Kattintson a nézet tetején látható dátum időtartományra a legördülő lista megnyitásához, ahol módosíthatja a nézet dátum-időtartományát.
 
-![Példa szűrésre](media/view-designer-filters/filters-example-time.png)
+![Képernyőkép az időtartomány legördülő menüjéről Azure Monitor nézetben, amely az utolsó 7 nap választógombját jeleníti meg.](media/view-designer-filters/filters-example-time.png)
 
 A gombra kattintva **+** hozzáadhat egy szűrőt a nézethez definiált egyéni szűrők használatával. Válasszon egy értéket a szűrőhöz a legördülő listából, vagy írjon be egy értéket. A gombra kattintva folytassa a szűrők hozzáadását **+** . 
 
 
-![Példa szűrésre](media/view-designer-filters/filters-example-custom.png)
+![Képernyőkép a Azure Monitor egyéni szűrő hozzáadásához. A számítógépek tulajdonság ki van választva a tulajdonságok kiválasztása legördülő menüből.](media/view-designer-filters/filters-example-custom.png)
 
 Ha eltávolít egy szűrő összes értékét, akkor a szűrő többé nem lesz alkalmazva.
 
@@ -37,7 +37,7 @@ Hozzon létre egy szűrőt a **szűrők** lapról a [nézet szerkesztésekor](vi
 
 A következő táblázat a szűrők beállításait ismerteti.
 
-| Beállítás | Description |
+| Beállítás | Leírás |
 |:---|:---|
 | Mezőnév | A szűréshez használt mező neve.  Ennek a mezőnek egyeznie kell az összesítő mezővel az **értékek lekérdezéséhez**. |
 | Értékek lekérdezése | A felhasználó számára a szűrő legördülő listájának feltöltéséhez futtatandó lekérdezés.  A lekérdezésnek [összegzést](/azure/kusto/query/summarizeoperator) vagy [megkülönböztetést](/azure/kusto/query/distinctoperator) kell használnia egy adott mező egyedi értékeinek megadásához, és meg kell egyeznie a **mező nevével**.  A [Rendezés](/azure/kusto/query/sortoperator) lehetőséggel rendezheti a felhasználó számára megjelenített értékeket. |
@@ -50,8 +50,8 @@ Az alábbi táblázat néhány példát tartalmaz a gyakori szűrőkre.
 | Mezőnév | Értékek lekérdezése | Címke |
 |:--|:--|:--|
 | Computer   | Szívverés &#124; eltérő számítógép &#124; rendezés a számítógép ASC alapján | Számítógépek |
-| EventLevelName | Az Event &#124; különböző EventLevelName | Severity |
-| SeverityLevel | Syslog &#124; különböző SeverityLevel | Severity |
+| EventLevelName | Az Event &#124; különböző EventLevelName | Súlyosság |
+| SeverityLevel | Syslog &#124; különböző SeverityLevel | Súlyosság |
 | SvcChangeType | Konfigurációváltozás &#124; különböző svcChangeType | ChangeType |
 
 
@@ -75,5 +75,5 @@ Ha egy súlyosság nevű másik szűrőt adott hozzá, akkor a következő leké
 Event | where ${Computers} | where ${Severity} | summarize count() by EventLevelName
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ az egyéni nézetbe felvehető [vizualizációs részekről](view-designer-parts.md) .

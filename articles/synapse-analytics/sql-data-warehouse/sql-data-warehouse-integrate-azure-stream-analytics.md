@@ -2,27 +2,27 @@
 title: Azure Stream Analytics használata
 description: Tippek az Azure Szinapszisban az adattárházban való Azure Stream Analytics használatára a valós idejű megoldások fejlesztéséhez.
 services: synapse-analytics
-author: mlee3gsd
+author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 2/5/2020
-ms.author: martinle
+ms.date: 9/25/2020
+ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 90e339ba8454dfdfc3f724ea12932a3e8e5912c2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 60fb258fe2c6063b9b9a3ced0f4ba5f71ffd9d7c
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213346"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449530"
 ---
 # <a name="use-azure-stream-analytics-with-azure-synapse-analytics"></a>Az Azure Stream Analytics használata az Azure Stream Analyticsszel
 
 A Azure Stream Analytics egy teljes körűen felügyelt szolgáltatás, amely kis késleltetésű, magasan elérhető, skálázható, összetett eseményt biztosít a felhőben tárolt adatfolyam-adatfeldolgozáshoz. Az alapvető tudnivalókat a [Azure stream Analytics bevezetésének](../../stream-analytics/stream-analytics-introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)olvasásával ismerheti meg. Ezt követően megtudhatja, hogyan hozhat létre teljes körű megoldást a Stream Analytics az [Azure stream Analytics oktatóanyag használatának első lépéseivel](../../stream-analytics/stream-analytics-real-time-fraud-detection.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) .
 
-Ebből a cikkből megtudhatja, hogyan használhatja az adattárházat kimeneti fogadóként a Azure Stream Analytics feladatokhoz.
+Ebből a cikkből megtudhatja, hogyan használhatja az adattárházat kimeneti fogadóként a nagy átviteli sebességű adatfeldolgozáshoz Azure Stream Analytics feladatokkal.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -32,19 +32,19 @@ Ebből a cikkből megtudhatja, hogyan használhatja az adattárházat kimeneti f
     2. Event Generator-alkalmazás konfigurálása és elindítása
     3. Stream Analytics-feladatok kiépítése
     4. A feladatok bemenetének és lekérdezésének megadása
-* Azure szinapszis SQL Pool adattárház – új adattárház létrehozásához kövesse a rövid útmutató lépéseit [egy új adattárház létrehozásához](create-data-warehouse-portal.md).
+* Azure szinapszis SQL-készlet az adattárházhoz – új adattárház létrehozásához kövesse a rövid útmutató lépéseit [egy új adattárház létrehozásához](create-data-warehouse-portal.md).
 
 ## <a name="specify-streaming-output-to-point-to-your-data-warehouse"></a>Adja meg az adatraktárra mutató folyamatos átviteli kimenetet
 
-### <a name="step-1"></a>1\. lépés
+### <a name="step-1"></a>1. lépés
 
 A Azure Portal lépjen a Stream Analytics feladatra, és kattintson a **kimenetek** elemre a **feladatok topológiai** menüjében.
 
 ### <a name="step-2"></a>2. lépés
 
-Kattintson a **Hozzáadás** gombra, és válassza a **SQL Database** elemet a legördülő menüből.
+Kattintson a **Hozzáadás** gombra, és válassza az **Azure szinapszis Analytics** elemet a legördülő menüből.
 
-![SQL Database kiválasztása](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asaoutput.png)
+![Az Azure szinapszis Analytics kiválasztása](./media/sql-data-warehouse-integrate-azure-stream-analytics/sql-pool-azure-stream-analytics-output.png)
 
 ### <a name="step-3"></a>3. lépés
 
@@ -52,15 +52,15 @@ Kattintson a **Hozzáadás** gombra, és válassza a **SQL Database** elemet a l
 
 * *Kimeneti alias*: adjon meg egy rövid nevet a feladatok kimenetének.
 * *Előfizetés*:
-  * Ha az adattárház ugyanabban az előfizetésben található, mint a Stream Analytics-feladatokkal, kattintson a SQL Database kiválasztása lehetőségre az ***előfizetésekben***.
-  * Ha az adatbázis egy másik előfizetésben található, kattintson az SQL Database beállításainak manuális megadása lehetőségre.
+  * Ha az adattárház ugyanabban az előfizetésben található, mint a Stream Analytics-feladatokkal, kattintson az ***Azure szinapszis Analytics kiválasztása az előfizetések közül***.
+  * Ha az adattárház egy másik előfizetésben található, kattintson az Azure szinapszis Analytics beállításainak manuális megadása lehetőségre.
 * *Adatbázis*: válassza ki a célként szolgáló adatbázist a legördülő listából.
 * *Felhasználónév*: adja meg egy olyan fiók felhasználónevét, amely rendelkezik írási engedéllyel az adatbázishoz.
 * *Password (jelszó*): adja meg a megadott felhasználói fiók jelszavát.
 * *Tábla*: adja meg a cél tábla nevét az adatbázisban.
 * kattintson a **Save (Mentés** ) gombra
 
-![Befejezett SQL Database űrlap](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asaoutputdbsettings.png)
+![Befejezett Azure szinapszis Analytics-űrlap](./media/sql-data-warehouse-integrate-azure-stream-analytics/sql-pool-azure-stream-analytics-output-db-settings.png)
 
 ### <a name="step-4"></a>4. lépés
 
@@ -120,7 +120,7 @@ Kattintson a ***Start gombra a kezdési*** feladatok ablaktáblán.
 
 ![Kattintson a Start gombra](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asastartconfirm.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az integráció áttekintését lásd: [egyéb szolgáltatások integrálása](sql-data-warehouse-overview-integrate.md).
 További fejlesztési tippek: [tervezési döntések és kódolási technikák az adattárházak számára](sql-data-warehouse-overview-develop.md).

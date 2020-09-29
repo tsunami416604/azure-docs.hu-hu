@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 06/27/2020
-ms.openlocfilehash: b310f195477f4cba83ef30c6fb5ea2fd24c4df9a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 46435ef773e90234538bb755e20035990bbf1066
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897385"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460033"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Jupyter-jegyzetfüzetek futtatása a munkaterületen
 
@@ -32,7 +32,7 @@ Ismerje meg, hogyan teheti meg:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://aka.ms/AMLFree).
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://aka.ms/AMLFree), mielőtt hozzákezd.
 * Machine Learning munkaterület. Lásd: [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md).
 
 ## <a name="create-notebooks"></a><a name="create"></a> Jegyzetfüzetek létrehozása
@@ -80,15 +80,20 @@ A terminál elérése:
 1. Válasszon ki egy **számítási** célt, vagy hozzon létre egy újat, és várjon, amíg fut.
 1. Válassza a **nyitott terminál** ikont.
 
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/open-terminal.png" alt-text="Terminál megnyitása":::
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/open-terminal.png" alt-text="Új fájl létrehozása":::
 
 1. Ha nem látja az ikont, válassza a **...** lehetőséget a számítási cél jobb oldalán, majd válassza a **terminál megnyitása**lehetőséget.
 
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/alt-open-terminal.png" alt-text="Terminál megnyitása a következőből:...":::
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/alt-open-terminal.png" alt-text="Új fájl létrehozása":::
 
 
 További információ a [git-adattáraknak a munkaterület-fájlrendszerbe való klónozásáról](concept-train-model-git-integration.md#clone-git-repositories-into-your-workspace-file-system).
 
+### <a name="copy-and-paste-in-terminal"></a>Másolás és beillesztés a terminálon
+
+> * Windows: `Ctrl-Insert` Másolás és használat `Ctrl-Shift-v` vagy `Shift-Insert` Beillesztés.
+> * Mac OS: `Cmd-c` a másoláshoz és `Cmd-v` a beillesztéshez.
+> * A FireFox/IE nem támogatja megfelelően a vágólap-engedélyeket.
 
 ### <a name="share-notebooks-and-other-files"></a>Jegyzetfüzetek és egyéb fájlok megosztása
 
@@ -121,8 +126,7 @@ A jegyzetfüzetek létrehozása során általában az adatfeltáráshoz vagy a h
 1. Futtassa az összes jegyzetfüzet-cellát.
 1. Válassza ki azt a cellát, amely tartalmazza az új jegyzetfüzet futtatásához használni kívánt kódot. Például egy kísérletet elküldő kód, vagy esetleg a modellt regisztráló kód.
 1. Válassza a cella eszköztárán megjelenő **összegyűjtési** ikont.
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/gather.png" alt-text="Képernyőfelvétel: a gyűjtés ikon kiválasztása":::
-1. Adja meg az új "összegyűjtött" jegyzetfüzet nevét.  
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/gather.png" alt-text="Új fájl létrehozása" jegyzetfüzet nevét.  
 
 Az új jegyzetfüzet csak programkódot tartalmaz, és az összes cellának ugyanazokat az eredményeket kell megadnia, mint a begyűjtéshez kiválasztott cella.
 
@@ -132,7 +136,7 @@ A Azure Machine Learning egy *ipynb*-fájl létrehozásakor létrehoz egy ellen
 
 A jegyzetfüzet eszköztárán válassza ki a menüt, majd a **fájl &gt; mentése és ellenőrzőpont** elemet a jegyzetfüzet manuális mentéséhez, és a rendszer hozzáadja a jegyzetfüzethez tartozó ellenőrzőpont-fájlt.
 
-:::image type="content" source="media/how-to-run-jupyter-notebooks/file-save.png" alt-text="Képernyőkép a Mentés eszközről a jegyzetfüzet eszköztárán":::
+:::image type="content" source="media/how-to-run-jupyter-notebooks/file-save.png" alt-text="Új fájl létrehozása":::
 
 Minden jegyzetfüzetet 30 másodpercenként kell megtakarítani.Az automatikus mentés szolgáltatás csak a kezdeti *ipynb*   -fájlt frissíti, nem az ellenőrzőpont-fájlt.
  
@@ -243,7 +247,7 @@ A **kernel** legördülő lista melletti kijelző megjeleníti az állapotát.
 
 A számítási példányok részleteit a [Studióban](https://ml.azure.com), a **számítási** oldalon találhatja meg.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Az első kísérlet futtatása](tutorial-1st-experiment-sdk-train.md)
 * [A file Storage biztonsági mentése pillanatképekkel](../storage/files/storage-snapshots-files.md)

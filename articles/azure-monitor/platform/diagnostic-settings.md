@@ -1,5 +1,5 @@
 ---
-title: Diagnosztikai beállítások létrehozása a platform naplófájljainak és metrikáinak különböző célhelyekre küldéséhez
+title: Diagnosztikai beállítások létrehozása a platformnaplók és -metrikák más célhelyekre való küldéséhez
 description: Diagnosztikai beállítás használatával Azure Monitor platform metrikáit és naplóit Azure Monitor naplókba, Azure Storage-ba vagy Azure-ba Event Hubs.
 author: bwren
 ms.author: bwren
@@ -7,14 +7,14 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
-ms.openlocfilehash: c0fdf256409608c2eb3c6490dc25342d9d324832
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 48d2a657059908417bc81fd8cc2a132d2d131530
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89614046"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449327"
 ---
-# <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>Diagnosztikai beállítások létrehozása a platform naplófájljainak és metrikáinak különböző célhelyekre küldéséhez
+# <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>Diagnosztikai beállítások létrehozása a platformnaplók és -metrikák más célhelyekre való küldéséhez
 Az Azure [platform-naplói](platform-logs-overview.md) , beleértve az Azure-tevékenység naplóját és az erőforrás-naplókat, részletes diagnosztikai és naplózási információkat biztosítanak az Azure-erőforrásokhoz és az Azure-platformtól függenek. A [platform metrikáit](data-platform-metrics.md) a rendszer alapértelmezés szerint gyűjti, és általában a Azure monitor metrikai adatbázisban tárolja. Ez a cikk a diagnosztikai beállítások létrehozásával és konfigurálásával kapcsolatos részletes információkat tartalmaz a platform metrikáinak és a platformok naplóinak különböző célhelyekre küldéséhez.
 
 > [!IMPORTANT]
@@ -43,7 +43,7 @@ Az alábbi videó végigvezeti az útválasztási platform naplófájljainak a d
 ## <a name="destinations"></a>Célhelyek
 A platform naplói és metrikái a következő táblázatban található célhelyekre küldhetők. 
 
-| Cél | Description |
+| Cél | Leírás |
 |:---|:---|
 | [Log Analytics munkaterület](design-logs-deployment.md) | A naplók és mérőszámok Log Analytics-munkaterületre való küldése lehetővé teszi, hogy a Azure Monitor által gyűjtött más figyelési adatokkal elemezze azokat a hatékony naplózási lekérdezésekkel, valamint más Azure Monitor funkciók, például riasztások és vizualizációk kihasználása érdekében. |
 | [Event Hubs](/azure/event-hubs/) | A naplók és metrikák küldésének Event Hubs lehetővé teszi az adatok továbbítását külső rendszerekre, például harmadik féltől származó SIEM-re és más log Analytics-megoldásokra.  |
@@ -73,15 +73,15 @@ A Azure Portal diagnosztikai beállításait a Azure Monitor menüből vagy az e
 
    - Egyetlen erőforrás esetén kattintson a **diagnosztikai beállítások** elemre az erőforrás menüjében a **figyelés** lehetőség alatt.
 
-        ![Diagnosztikai beállítások](media/diagnostic-settings/menu-resource.png)
+        ![Képernyőkép: Azure Portal erőforrás menüjének figyelés szakasza, Kiemelt diagnosztikai beállításokkal.](media/diagnostic-settings/menu-resource.png)
 
    - Egy vagy több erőforrás esetében kattintson a Azure Monitor menü **Beállítások** területén található **diagnosztikai beállítások** elemre, majd kattintson az erőforrásra.
 
-      ![Diagnosztikai beállítások](media/diagnostic-settings/menu-monitor.png)
+        ![Képernyőkép: a Azure Monitor menü Beállítások szakasza, a diagnosztikai beállítások kiemelten.](media/diagnostic-settings/menu-monitor.png)
 
    - A tevékenység naplójában kattintson a **Azure monitor** menüben a **tevékenység napló** elemre, majd a **diagnosztikai beállítások**lehetőségre. Győződjön meg arról, hogy letiltja a tevékenység naplójának örökölt konfigurációját. További részletek: a [meglévő beállítások letiltása](./activity-log.md#legacy-collection-methods) .
 
-        ![Diagnosztikai beállítások](media/diagnostic-settings/menu-activity-log.png)
+        ![Képernyőfelvétel a Azure Monitor menüjéről és a tevékenység naplójának kiválasztásáról, valamint a figyelési tevékenység naplója menüsorban Kiemelt diagnosztikai beállításokról.](media/diagnostic-settings/menu-activity-log.png)
 
 2. Ha nem találhatók beállítások a kiválasztott erőforráson, a rendszer kéri, hogy hozzon létre egy beállítást. Kattintson a **diagnosztikai beállítás hozzáadása**elemre.
 
