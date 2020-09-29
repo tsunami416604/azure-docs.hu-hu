@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 06/25/2020
+ms.date: 09/28/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: db377a933507f9a25b377ba52ebd956416a1dfd2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7b41105bafedb8eeaffe5f266f5dd824957c57e0
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328211"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441188"
 ---
 Jelenleg az ultra-lemezek további korlátozásokkal rendelkeznek, ezek a következők:
 
@@ -35,7 +35,9 @@ Az alábbi táblázat az ultra lemezek régióit ismerteti, valamint a hozzájuk
 |USA-beli államigazgatás – Arizona     |Csak egyetlen virtuális gép (a rendelkezésre állási készletek és a virtuálisgép-méretezési csoportok nem támogatottak)|
 |USA-beli államigazgatás – Virginia     |Csak egyetlen virtuális gép (a rendelkezésre állási készletek és a virtuálisgép-méretezési csoportok nem támogatottak)|
 |USA nyugati régiója     |Csak egyetlen virtuális gép (a rendelkezésre állási készletek és a virtuálisgép-méretezési csoportok nem támogatottak)        |
+|Ausztrália középső régiója    |Csak egyetlen virtuális gép (a rendelkezésre állási készletek és a virtuálisgép-méretezési csoportok nem támogatottak)|
 |Kelet-Ausztrália     |Három rendelkezésre állási zóna         |
+|Délkelet-Ázsia    |Három rendelkezésre állási zóna        |
 |Közép-Kanada *     |Három rendelkezésre állási zóna          |
 |Az USA középső régiója     |Három rendelkezésre állási zóna          |
 |USA keleti régiója     |Három rendelkezésre állási zóna          |

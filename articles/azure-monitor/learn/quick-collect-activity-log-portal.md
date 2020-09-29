@@ -6,25 +6,25 @@ ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2020
-ms.openlocfilehash: 6f13a465aa43f0c45fa99d2ea396a5ca92d75d66
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.openlocfilehash: 47cf0a1f1d40b9e8358d6bdb4a3ea6a501b67da2
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85446370"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439222"
 ---
 # <a name="send-azure-activity-log-to-log-analytics-workspace-using-azure-portal"></a>Azure-tevékenység naplójának küldése Log Analytics munkaterületre a Azure Portal használatával
 A műveletnapló egy Azure-beli platform-napló, amely betekintést nyújt az előfizetési szintű eseményekre. Ez olyan adatokat tartalmaz, mint amikor egy erőforrás módosul, vagy amikor a virtuális gép elindul. Megtekintheti a tevékenység naplóját a Azure Portal vagy beolvashatja a bejegyzéseket a PowerShell és a parancssori felület használatával. Ez a rövid útmutató azt ismerteti, hogyan használható a Azure Portal egy Log Analytics-munkaterület létrehozásához és egy diagnosztikai beállításhoz, hogy elküldje a tevékenység naplóját Azure Monitor naplókba, ahol elemezheti a [napló lekérdezések](../log-query/log-query-overview.md) használatával, és más funkciók, például a [naplók](../platform/alerts-log-query.md) és a [munkafüzetek](../platform/workbooks-overview.md)használatát is lehetővé teheti. 
 
-## <a name="sign-in-to-azure-portal"></a>Jelentkezzen be az Azure Portalon
+## <a name="sign-in-to-azure-portal"></a>Bejelentkezés az Azure portálra
 Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen. 
 
 
 
-## <a name="create-a-log-analytics-workspace"></a>A Log Analytics-munkaterület létrehozása
+## <a name="create-a-log-analytics-workspace"></a>Log Analytics-munkaterület létrehozása
 A Azure Portal keresse meg, majd válassza ki **log Analytics munkaterületek**lehetőséget. 
 
-![Azure Portal](media/quick-create-workspace/azure-portal-01.png)
+![Képernyőfelvétel a Azure Portal a "log Analytics-munkaterületek" kifejezésre, és a szolgáltatások területen Kiemelt Log Analytics-munkaterületekre mutat.](media/quick-create-workspace/azure-portal-01.png)
   
 Kattintson a **Hozzáadás**gombra, majd adja meg az **erőforráscsoport**, a munkaterület **neve**és a **hely**értékét. A munkaterület nevének egyedinek kell lennie az összes Azure-előfizetésen belül.
 
@@ -36,7 +36,7 @@ Kattintson a **felülvizsgálat + létrehozás** elemre, és tekintse át a beá
 ## <a name="create-diagnostic-setting"></a>Diagnosztikai beállítások létrehozása
 A Azure Portal keresse meg, majd válassza a **figyelő**elemet. 
 
-![Azure Portal](media/quick-collect-activity-log/azure-portal-monitor.png)
+![Képernyőfelvétel a Azure Portal a "monitor" elemre a keresőmezőbe, és a figyelés kiemelten látható a szolgáltatások területen.](media/quick-collect-activity-log/azure-portal-monitor.png)
 
 Válassza a **műveletnapló**lehetőséget. Az aktuális előfizetéshez tartozó közelmúltbeli eseményeket kell megjelennie. Az előfizetés diagnosztikai beállításainak megtekintéséhez kattintson a **diagnosztikai beállítások** elemre.
 
@@ -72,7 +72,7 @@ Bontsa ki az egyik rekordot a részletes tulajdonságainak megtekintéséhez.
 ![Összetett lekérdezés](media/quick-collect-activity-log/query-02.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a rövid útmutatóban úgy konfigurálta a tevékenység naplóját, hogy az Log Analytics munkaterületre legyen küldve. Mostantól más adatokat is konfigurálhat a munkaterületre, ahol elemezheti azt a Azure Monitor található [naplók](../log-query/log-query-overview.md) használatával, és olyan funkciókat használhat, mint például a [naplózási riasztások](../platform/alerts-log-query.md) és a [munkafüzetek](../platform/workbooks-overview.md). A következő lépésekkel gyűjtsön [erőforrás-naplókat](../platform/resource-logs.md) az Azure-erőforrásokból, amelyek a tevékenység naplójában lévő adatokat szolgáltatva betekintést nyújtanak az egyes erőforrásokon végrehajtott műveletekre.
 
 

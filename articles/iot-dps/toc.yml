@@ -46,7 +46,7 @@
         - name: Több-bérlős regisztráció
           href: how-to-provision-multitenant.md
         - name: Egyéni kiosztási szabályzatok használata
-          href: how-to-use-custom-allocation-policies.md
+          href: tutorial-custom-allocation-policies.md
 - name: Példák
   items:
     - name: Szimulált TPM-eszközigazolás mintája
@@ -109,6 +109,8 @@
   items:
     - name: Az MXChip IoT fejlesztői készlet csatlakoztatása az IoT Hubhoz
       href: how-to-connect-mxchip-iot-devkit.md
+    - name: eszközök üzembe helyezése egyéni kiosztási szabályzatokkal
+      href: how-to-use-custom-allocation-policies.md
     - name: Device Provisioning Service kezelése
       items:
         - name: Regisztrációk kezelése – portál

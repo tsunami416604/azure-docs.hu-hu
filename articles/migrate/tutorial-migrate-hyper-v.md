@@ -6,12 +6,12 @@ ms.date: 06/08/2020
 ms.custom:
 - MVC
 - fasttrack-edit
-ms.openlocfilehash: 10e17a4fba1adbccf71497c54060fda2f60088ab
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 842513536bf4dbfc0a3e3bd82905b397da9fa6c4
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90525337"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439082"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>A Hyper-V virtuális gépek migrálása az Azure-ba 
 
@@ -20,7 +20,7 @@ Ez a cikk bemutatja, hogyan telepítheti át a helyszíni Hyper-V virtuális gé
 Ez az oktatóanyag egy sorozat harmadik része, amely bemutatja, hogyan lehet felmérni és áttelepíteni a gépeket az Azure-ba. 
 
 > [!NOTE]
-> Az oktatóanyagok bemutatják a forgatókönyvek legegyszerűbb telepítési útvonalát, így gyorsan beállíthatja a rendszer megvalósíthatóságát. Az oktatóanyagok az alapértelmezett beállításokat használják, ahol lehetséges, és nem jelennek meg az összes lehetséges beállítás és elérési út. 
+> Az oktatóanyagok bemutatják a forgatókönyvek legegyszerűbb telepítési útvonalát, így gyorsan beállíthatja a rendszer megvalósíthatóságát. Ahol lehet, az oktatóanyagok az alapértelmezett beállításokat használják, és nem mutatják be az összes lehetséges beállítást és módot. 
 
  Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -31,7 +31,7 @@ Ez az oktatóanyag egy sorozat harmadik része, amely bemutatja, hogyan lehet fe
 > * Futtasson egy teszt-áttelepítést, és győződjön meg róla, hogy minden a várt módon működik-e.
 > * Futtasson egy teljes körű virtuálisgép-áttelepítést.
 
-Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/), mielőtt hozzákezd.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -133,7 +133,7 @@ A felderítés befejeződése után megkezdheti a Hyper-V virtuális gépek repl
 
     ![VIRTUÁLIS gépek számítási beállításai](./media/tutorial-migrate-hyper-v/compute-settings.png)
 
-12. A **Lemezek** területen adja meg, hogy a virtuálisgép-lemezek replikálva legyenek-e az Azure-ba, majd válassza ki a lemez típusát (standard SSD/HDD vagy prémium felügyelt lemez) az Azure-ban. Ezután kattintson a **Tovább** gombra.
+12. A **lemezek**területen határozza meg az Azure-ba replikálni kívánt virtuális gépek lemezeit. Ezután kattintson a **Tovább** gombra.
     - Kizárhat lemezeket a replikációból.
     - Ha kizárja a lemezeket, azok nem lesznek jelen az Azure-beli virtuális gépen a migrációt követően. 
 

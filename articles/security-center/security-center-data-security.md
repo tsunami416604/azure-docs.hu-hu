@@ -8,17 +8,17 @@ manager: rkarlin
 ms.assetid: 33f2c9f4-21aa-4f0c-9e5e-4cd1223e39d7
 ms.service: security-center
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2020
 ms.author: memildin
-ms.openlocfilehash: 97d3b5030ed0ddb29fc439f4a0f6bcc7ff98b6ce
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8a999e2b5706c04b426f758ba46f49fb9f7e3057
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91268026"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91438790"
 ---
 # <a name="azure-security-center-data-security"></a>Az Azure Security Center által nyújtott adatbiztonság
 A fenyegetések megelőzése, észlelése és elhárítása érdekében a Azure Security Center gyűjti és dolgozza fel a biztonsággal kapcsolatos adatokat, beleértve a konfigurációs információkat, a metaadatokat, az eseménynaplókat és egyebeket. A Microsoft szigorú megfelelőségi és biztonsági szabályokat követ, a kódolástól kezdve egészen a szolgáltatások üzemeltetéséig.
@@ -83,7 +83,7 @@ Az ügyfelek különböző adatstreamekből származó Security Center-adatokat 
 > [!NOTE]
 > A biztonsági javaslatok REST API-n keresztül is feldolgozhatók. További információk: [A biztonsági erőforrás-szolgáltató REST API-ja – referencia](https://msdn.microsoft.com/library/mt704034(Azure.100).aspx).
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 Ebből a dokumentumból megtudta, hogyan kezeli az Azure Security Center az adatokat, és hogyan gondoskodik azok védelméről. Az Azure Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
 * [Azure Security Center tervezési és üzemeltetési útmutató](security-center-planning-and-operations-guide.md) – megtudhatja, hogyan tervezheti meg és értelmezheti a Azure Security Center elfogadásához szükséges tervezési szempontokat.

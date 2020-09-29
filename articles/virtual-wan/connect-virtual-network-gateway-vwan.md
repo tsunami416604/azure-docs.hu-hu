@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6dac922f1a50dd54973f7eefff7011aab3b49994
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 29f5b549bd5f5dbc421487739bb1eb8c7f120bb0
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983760"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441038"
 ---
 # <a name="connect-a-vpn-gateway-virtual-network-gateway-to-virtual-wan"></a>VPN Gateway (virtuális hálózati átjáró) összekötése virtuális WAN-kapcsolattal
 
@@ -83,7 +83,7 @@ Ebben a szakaszban az előző szakaszban létrehozott összes helyhez letölti a
 
 1. A virtuális WAN **VPN-helyek** lap tetején válassza ki a **helyet**, majd válassza a **helyek közötti VPN-konfiguráció letöltése**lehetőséget. Az Azure konfigurációs fájlt hoz létre a beállításokkal.
 
-   ![konfigurációs fájl letöltése](./media/connect-virtual-network-gateway-vwan/download.png "letöltés")
+   ![Képernyőfelvétel: a "VPN-helyek" lap "a helyek közötti VPN-konfiguráció letöltése" művelet van kiválasztva.](./media/connect-virtual-network-gateway-vwan/download.png "letöltés")
 2. Töltse le és nyissa meg a konfigurációs fájlt.
 3. Ismételje meg ezeket a lépéseket a második helyen. Ha mindkét konfigurációs fájl meg van nyitva, folytassa a következő szakasszal.
 
@@ -98,7 +98,7 @@ Ebben a szakaszban két Azure VPN Gateway helyi hálózati átjárót hoz létre
    * Az **előfizetés, az erőforráscsoport és a hely** megegyezik a virtuális WAN-hubhoz.
 2. Tekintse át és hozza létre a helyi hálózati átjárót. A helyi hálózati átjárónak ehhez a példához hasonlóan kell kinéznie.
 
-   ![konfigurációs fájl letöltése](./media/connect-virtual-network-gateway-vwan/lng1.png "instance0")
+   ![Képernyőkép: a "Configuration" (konfiguráció) oldal, amely kiemelt IP-címmel és a "BGP-beállítások konfigurálása" beállítással jelenik meg.](./media/connect-virtual-network-gateway-vwan/lng1.png "instance0")
 3. Ismételje meg ezeket a lépéseket egy másik helyi hálózati átjáró létrehozásához, de ezúttal használja a "Peldany1" elemet "értékeket a konfigurációs fájl" Instance0 "értékei helyett.
 
    ![konfigurációs fájl letöltése](./media/connect-virtual-network-gateway-vwan/lng2.png "peldany1 "elemet")

@@ -1,22 +1,22 @@
 ---
 title: 'Azure VPN Gateway: létrehozás & VPN-ügyfél konfigurációs fájljainak telepítése – P2S RADIUS-kapcsolatok'
-description: Windows, Mac OS X és Linux VPN-ügyfél konfigurációs fájljainak létrehozása a RADIUS-hitelesítést használó kapcsolatokhoz.
+description: Windows, OS X és Linux VPN-ügyfél konfigurációs fájljainak létrehozása a RADIUS-hitelesítést használó kapcsolatokhoz.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 35631c8a0b66ade1457228ba16150f94f761f7b3
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: e6d811e19bb19c8c8bf96764cfcca2b1294f4a85
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89419911"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91440066"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>VPN-ügyfél konfigurációs fájljainak létrehozása és telepítése P2S RADIUS-hitelesítéshez
 
-Ha pont – hely (P2S) használatával szeretne csatlakozni egy virtuális hálózathoz, konfigurálnia kell azt az eszközt, amelyhez kapcsolódni fog. P2S VPN-kapcsolatokat hozhat létre Windows, Mac OS X és Linux rendszerű eszközökről. 
+Ha pont – hely (P2S) használatával szeretne csatlakozni egy virtuális hálózathoz, konfigurálnia kell azt az eszközt, amelyhez kapcsolódni fog. P2S VPN-kapcsolatokat hozhat létre Windows, OS X és Linux rendszerű eszközökről. 
 
 RADIUS-hitelesítés használatakor több hitelesítési lehetőség is létezik: felhasználónév/jelszó hitelesítés, tanúsítványalapú hitelesítés és egyéb hitelesítési típusok. A VPN-ügyfél konfigurációja különbözik az egyes hitelesítések típusaitól. A VPN-ügyfél konfigurálásához olyan ügyfél-konfigurációs fájlokat kell használnia, amelyek tartalmazzák a szükséges beállításokat. Ez a cikk segítséget nyújt a VPN-ügyfél konfigurációjának létrehozásához és telepítéséhez a használni kívánt RADIUS-hitelesítési típushoz.
 
@@ -36,7 +36,7 @@ A P2S RADIUS-hitelesítés konfigurációs munkafolyamata a következő:
 >
 >
 
-A cikk fejezeteinek használatához először döntse el, hogy milyen típusú hitelesítést kíván használni: felhasználónév/jelszó, tanúsítvány vagy más típusú hitelesítés. Mindegyik szakasz a Windows, Mac OS X és a Linux rendszerre vonatkozó lépésekkel rendelkezik (ez jelenleg csak korlátozott lépésekben érhető el).
+A cikk fejezeteinek használatához először döntse el, hogy milyen típusú hitelesítést kíván használni: felhasználónév/jelszó, tanúsítvány vagy más típusú hitelesítés. Mindegyik szakasz a Windows, az OS X és a Linux rendszerre vonatkozó lépésekkel rendelkezik (ebben az időben csak korlátozott lépések érhetők el).
 
 
 ## <a name="usernamepassword-authentication"></a><a name="adeap"></a>Felhasználónév/jelszó hitelesítése
@@ -144,7 +144,7 @@ A következő lépésekkel konfigurálhatja a natív Windows VPN-ügyfelet a tan
     ![A VPN-kapcsolat részletei](./media/point-to-site-vpn-client-configuration-radius/adconnection.png)
 11. Válassza a **hitelesítési beállítások**lehetőséget. A listában válassza a **username (Felhasználónév** ) lehetőséget, és adja meg a hitelesítő adatait. Ha korábban adta meg a hitelesítő adatokat, a rendszer automatikusan kiválasztja a **felhasználónevet** a listában, a Felhasználónév és a jelszó pedig előre fel van töltve. A beállítások mentéséhez kattintson **az OK gombra** .
 
-    ![Hitelesítési beállítások](./media/point-to-site-vpn-client-configuration-radius/adauthentication.png)
+    ![Képernyőkép, amely a "username" beállítással a "hitelesítő beállítások" legördülő listát jeleníti meg.](./media/point-to-site-vpn-client-configuration-radius/adauthentication.png)
 12. A **hálózat** párbeszédpanelen a módosítások mentéséhez kattintson az **alkalmaz** gombra. A kapcsolat kezdeményezéséhez válassza a **Kapcsolódás**lehetőséget.
 
 #### <a name="linux-vpn-client-setup-through-strongswan"></a><a name="adlinuxcli"></a>Linux VPN-ügyfél beállítása a alapú strongswan-on keresztül

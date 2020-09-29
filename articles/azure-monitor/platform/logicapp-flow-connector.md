@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/13/2020
-ms.openlocfilehash: 2ef7095d186902425adb5065c470325be1283023
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: d06501abe69ce9b06656cfa8949c42bb53a03983
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475736"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439240"
 ---
 # <a name="azure-monitor-logs-connector-for-logic-apps-and-power-automate"></a>Azure Monitor a naplók összekötőjét Logic Apps és a teljesítmény automatizálásához
 A [Azure Logic apps](../../logic-apps/index.yml) és a [Power automatizálása](https://flow.microsoft.com) lehetővé teszi, hogy több száz műveletet használó automatizált munkafolyamatokat hozzon létre különböző szolgáltatásokhoz. A Azure Monitor naplók összekötővel olyan munkafolyamatokat hozhat létre, amelyek egy Log Analytics-munkaterületről vagy egy Application Insights alkalmazásból kérik le az adatok lekérését Azure Monitor. Ez a cikk az összekötőhöz tartozó műveleteket ismerteti, és útmutatást nyújt a munkafolyamatok ezen az adatain keresztül történő létrehozásához.
@@ -68,7 +68,7 @@ Kattintson az **+ új lépés** gombra egy olyan művelet hozzáadásához, amel
 
 Kattintson **Az Azure log Analytics – lekérdezés futtatása elemre, és jelenítse meg az eredményeket**.
 
-![Lekérdezés futtatása és az eredmények megjelenítése művelet](media/logicapp-flow-connector/select-query-action-visualize.png)
+![Képernyőkép a Logic app Designer egyik lépéséhez hozzáadott új műveletről. Azure Monitor naplók ki vannak emelve a művelet kiválasztása lehetőség alatt.](media/logicapp-flow-connector/select-query-action-visualize.png)
 
 
 ### <a name="add-azure-monitor-logs-action"></a>Azure Monitor naplók hozzáadása művelet
@@ -87,7 +87,7 @@ Event
 
 Válassza az **időtartomány** és a **diagram típusához**tartozó **HTML-táblázat** *beállítása a lekérdezésben* lehetőséget.
    
-![Lekérdezés futtatása és az eredmények megjelenítése művelet](media/logicapp-flow-connector/run-query-visualize-action.png)
+![Képernyőfelvétel: az új Azure Monitor naplók futtatása művelet, futtatási lekérdezés, eredmények megjelenítése.](media/logicapp-flow-connector/run-query-visualize-action.png)
 
 A rendszer elküldi az e-mailt az aktuális kapcsolatban lévő fiókhoz. A **kapcsolatok módosítása**lehetőségre kattintva megadhat egy másik fiókot.
 
@@ -122,7 +122,7 @@ Ha a logikai alkalmazás befejeződik, tekintse meg a megadott címzett e-mail-c
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [Azure monitor lévő naplók lekérdezéséről](../log-query/log-query-overview.md).
 - További információ a [Logic apps](../../logic-apps/index.yml)

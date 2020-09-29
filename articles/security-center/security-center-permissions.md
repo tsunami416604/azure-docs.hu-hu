@@ -11,15 +11,15 @@ ms.service: security-center
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: overview
 ms.date: 07/02/2020
 ms.author: memildin
-ms.openlocfilehash: ed73c4781b9fd9926e12910ca1eb2f71d2b99245
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 2a66873d558495049c97b987dfb69bbf83b4e1d8
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904828"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439483"
 ---
 # <a name="permissions-in-azure-security-center"></a>Engedélyek az Azure Security Centerben
 
@@ -40,7 +40,7 @@ Ezen szerepkörök mellett két speciális Security Center-szerepkör van:
 
 A következő táblázat a szerepköröket és az engedélyezett műveleteket mutatja Security Centerban.
 
-|Műveletek|Biztonsági olvasó/ <br> Olvasó |Biztonsági rendszergazda  |Erőforráscsoport közreműködői/ <br> Erőforráscsoport tulajdonosa  |Előfizetés közreműködői  |Előfizetés tulajdonosa  |
+|Művelet|Biztonsági olvasó/ <br> Olvasó |Biztonsági rendszergazda  |Erőforráscsoport közreműködői/ <br> Erőforráscsoport tulajdonosa  |Előfizetés közreműködői  |Előfizetés tulajdonosa  |
 |:--- |:---:|:---:|:---:|:---:|:---:|
 |Biztonsági házirend szerkesztése|-|✔|-|-|✔|
 |Kezdeményezések hozzáadása/kiosztása (beleértve) szabályozási megfelelőségi szabványok)|-|-|-|-|✔|

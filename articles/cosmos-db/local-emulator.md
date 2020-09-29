@@ -6,13 +6,13 @@ ms.topic: how-to
 author: markjbrown
 ms.author: mjbrown
 ms.date: 09/22/2020
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 07a38e106b765fd28a8c3c1115e5fe84744ade62
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.custom: devx-track-csharp, contperfq1
+ms.openlocfilehash: eb148801011b2d1c8c1f975edb870ba594b085a7
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91303089"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91440699"
 ---
 # <a name="install-and-use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Az Azure Cosmos Emulator telepítése és használata helyi fejlesztéshez és teszteléshez
 
@@ -80,13 +80,13 @@ Alapértelmezés szerint az Azure Cosmos Emulator telepítve van a `C:\Program F
 
 Amikor az emulátor elindult, megjelenik egy ikon a Windows tálca értesítési területén. Az URL `https://localhost:8081/_explorer/index.html` -cím URL-címe automatikusan megnyitja az Azure Cosmos adatkezelőt a böngészőben.
 
-:::image type="content" source="./media/local-emulator/database-local-emulator-taskbar.png" alt-text="A helyi emulátor Azure Cosmos DB értesítése":::
+:::image type="content" source="./media/local-emulator/database-local-emulator-taskbar.png" alt-text="Kattintson a Start gombra, vagy nyomja le a Windows billentyűt, kezdje el beírni az Azure Cosmos emulatort, és válassza ki az emulátort az alkalmazások listájából.":::
 
 Az emulátort a parancssori vagy a PowerShell-parancsokkal is elindíthatja és leállíthatja. További információt a [parancssori eszköz dokumentációjában](emulator-command-line-parameters.md) talál.
 
 Az Azure Cosmos Emulator alapértelmezés szerint a helyi gépen ("localhost") fut a 8081-es porton. A cím a következőképpen jelenik meg: `https://localhost:8081/_explorer/index.html`. Ha bezárta a Explorert, és később újra meg szeretné nyitni, megnyithatja az URL-címet a böngészőben, vagy elindíthatja az Azure Cosmos emulatorban a Windows tálca ikonjában az alábbi ábrán látható módon.
 
-:::image type="content" source="./media/local-emulator/database-local-emulator-data-explorer-launcher.png" alt-text="Azure Cosmos helyi emulátor adatkezelő-indító":::
+:::image type="content" source="./media/local-emulator/database-local-emulator-data-explorer-launcher.png" alt-text="Kattintson a Start gombra, vagy nyomja le a Windows billentyűt, kezdje el beírni az Azure Cosmos emulatort, és válassza ki az emulátort az alkalmazások listájából.":::
 
 ## <a name="use-the-emulator-on-docker-for-windows"></a><a id="run-on-windows-docker"></a>A Windows rendszerhez készült Docker-emulátor használata
 
@@ -289,7 +289,7 @@ Ha Mac gépen dolgozik, kövesse az alábbi lépéseket:
 
 1. Nyissa meg az adott elemhez tartozó helyi menüt, válassza az *elem beolvasása* és a *megbízhatóság*a  >  *tanúsítvány használatakor* lehetőséget, majd válassza a *mindig megbízható*lehetőséget. 
 
-   :::image type="content" source="./media/local-emulator/mac-trust-certificate.png" alt-text="Nyissa meg az adott elemhez tartozó helyi menüt, válassza az elem beolvasása és a megbízhatóság alatt – ezen tanúsítvány használata esetén válassza a mindig megbízható lehetőséget.":::
+   :::image type="content" source="./media/local-emulator/mac-trust-certificate.png" alt-text="Kattintson a Start gombra, vagy nyomja le a Windows billentyűt, kezdje el beírni az Azure Cosmos emulatort, és válassza ki az emulátort az alkalmazások listájából.":::
   
 ### <a name="option-2-disable-the-ssl-validation-in-the-application"></a><a id="disable-ssl-validation"></a>2. lehetőség: az SSL-érvényesítés letiltása az alkalmazásban
 

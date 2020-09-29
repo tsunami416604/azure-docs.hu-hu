@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: f0ff647581447ad4436daf6c8b1d2ecbf817f7f8
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 78165e9c14d4a83dbc20cbccd2f31dc8ac4c79ed
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983628"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91440858"
 ---
 # <a name="azure-virtual-wan-logs-and-metrics"></a>Azure-beli virtuális WAN-naplók és-metrikák
 
@@ -66,7 +66,7 @@ A következő lépések segítségével megkeresheti és megtekintheti a metrik�
 
 4. A **metrikák** lapon megtekintheti az Önt érdeklő mérőszámokat.
 
-   :::image type="content" source="./media/logs-metrics/metrics-page.png" alt-text="metrikák lap":::
+   :::image type="content" source="./media/logs-metrics/metrics-page.png" alt-text="A képernyőképen egy olyan hely jelenik meg, amelyen a hely a V P N ablaktáblán látható, Azure Monitor kiválasztott nézettel.":::
 
 ## <a name="diagnostic-logs"></a><a name="diagnostic"></a>Diagnosztikai naplók
 
@@ -93,15 +93,15 @@ A következő lépések segítenek a diagnosztika megkeresésében és megtekint
 
 1. A portálon navigáljon a virtuális WAN-erőforráshoz. A portál virtuális WAN lapjának **Áttekintés** szakaszában válassza az **Essentials** elemet a nézet kibontásához és az erőforráscsoport adatainak beszerzéséhez. Másolja ki az erőforráscsoport adatait.
 
-   :::image type="content" source="./media/logs-metrics/3.png" alt-text="metrikák lap":::
+   :::image type="content" source="./media/logs-metrics/3.png" alt-text="A képernyőképen egy olyan hely jelenik meg, amelyen a hely a V P N ablaktáblán látható, Azure Monitor kiválasztott nézettel.":::
 
 2. A figyelés szakaszban navigáljon az erőforráscsoporthoz. Válassza a **diagnosztikai beállítások**lehetőséget, majd adja meg az erőforrás-információkat. Ez a cikk [korábbi részében](#metrics-steps) a 2. lépésben átmásolt erőforrás-információ.
 
-   :::image type="content" source="./media/logs-metrics/4.png" alt-text="metrikák lap":::
+   :::image type="content" source="./media/logs-metrics/4.png" alt-text="A képernyőképen egy olyan hely jelenik meg, amelyen a hely a V P N ablaktáblán látható, Azure Monitor kiválasztott nézettel.":::
 
 3. Az eredmények lapon válassza a **+ diagnosztikai beállítás hozzáadása**lehetőséget, majd válasszon egy beállítást. Dönthet úgy is, hogy elküldi Log Analytics, streamet egy Event hub-ba, vagy egyszerűen archiválja a Storage-fiókba.
 
-   :::image type="content" source="./media/logs-metrics/5.png" alt-text="metrikák lap":::
+   :::image type="content" source="./media/logs-metrics/5.png" alt-text="A képernyőképen egy olyan hely jelenik meg, amelyen a hely a V P N ablaktáblán látható, Azure Monitor kiválasztott nézettel.":::
 
 ### <a name="log-analytics-sample-query"></a><a name="sample-query"></a>Log Analytics minta lekérdezés
 

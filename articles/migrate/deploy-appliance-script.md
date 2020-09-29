@@ -3,12 +3,12 @@ title: Azure Migrate berendezés beállítása parancsfájlokkal
 description: Megtudhatja, hogyan állíthat be egy Azure Migrate készüléket parancsfájl használatával
 ms.topic: article
 ms.date: 04/16/2020
-ms.openlocfilehash: 5be6f161724b8ab555c406ebf6e75072d7902eda
-ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
+ms.openlocfilehash: 6b0637019e40308cf40dcdbb4dc78512a8aa91e8
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89514407"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91438913"
 ---
 # <a name="set-up-an-appliance-with-a-script"></a>Berendezés beállítása parancsfájlsal
 
@@ -26,7 +26,7 @@ A szkript beállítja a Azure Migrate készüléket egy meglévő fizikai gépre
 
 - A készülékként működni kívánó gépnek meg kell felelnie az alábbi hardver-és operációsrendszer-követelményeknek:
 
-Forgatókönyv | Követelmények
+Használati eset | Követelmények
 --- | ---
 VMware | Windows Server 2016, 32 GB memóriával, nyolc vCPU, körülbelül 80 GB lemezes tárolással
 Hyper-V | Windows Server 2016, 16 GB memóriával, nyolc vCPU, körülbelül 80 GB lemezes tárolással
@@ -46,12 +46,12 @@ A telepítése előtt győződjön meg arról, hogy a tömörített fájl bizton
 1. A gépen, amelyre a fájlt letöltötte, nyisson meg egy rendszergazdai parancsablakot.
 2. Futtassa a következő parancsot a tömörített fájl kivonatának létrehozásához.
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - Például: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public.zip SHA256```
+    - Például: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-VMware-Public.zip SHA256```
 3. Ellenőrizze a készülék legújabb verzióját és parancsfájlját az Azure nyilvános felhőhöz:
 
     **Algoritmus** | **Letöltés** | **SHA256**
     --- | --- | ---
-    VMware (85 MB) | [Legújabb verzió](https://go.microsoft.com/fwlink/?linkid=2116601) | 72fef66b8efd93106e626ea87354af0fb800893f9cb77edb5490490106c6a193
+    VMware (85,8 MB) | [Legújabb verzió](https://go.microsoft.com/fwlink/?linkid=2116601) | 85b74d93dfcee43412386141808d82147916330e6669df94c7969fe1b3d0fe72
 
 
 
@@ -94,13 +94,13 @@ A telepítése előtt győződjön meg arról, hogy a tömörített fájl bizton
 1. A gépen, amelyre a fájlt letöltötte, nyisson meg egy rendszergazdai parancsablakot.
 2. Futtassa a következő parancsot a tömörített fájl kivonatának létrehozásához.
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - Például: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public.zip SHA256```
+    - Például: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-HyperV.zip SHA256```
 
 3. Ellenőrizze a készülék legújabb verzióját és parancsfájlját az Azure nyilvános felhőhöz:
 
     **Forgatókönyv** | **Letöltés** | **SHA256**
     --- | --- | ---
-    Hyper-V (85 MB) | [Legújabb verzió](https://go.microsoft.com/fwlink/?linkid=2116657) |  bea013eab690ae3a476422c55becd87c369c14834e52f8cafe6ad0ed7f416b4f
+    Hyper-V (85,8 MB) | [Legújabb verzió](https://go.microsoft.com/fwlink/?linkid=2116657) |  9bbef62e2e22481eda4b77c7fdf05db98c3767c20f0a873114fb0dcfa6ed682a
 
 ### <a name="run-the-script"></a>A szkript futtatása
 

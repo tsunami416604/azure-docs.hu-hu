@@ -1,23 +1,23 @@
 ---
 title: 'Azure ExpressRoute: a ExpressRoute közvetlen konfigurálása: parancssori felület'
-description: Ismerje meg, hogyan konfigurálhatja az Azure ExpressRoute Directet az Azure CLI használatával közvetlenül a Microsoft globális hálózatához a világ különböző pontjain.
+description: Ismerje meg, hogyan konfigurálhatja az Azure ExpressRoute Direct szolgáltatást az Azure CLI használatával közvetlenül a Microsoft globális hálózatához való kapcsolódáshoz.
 services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 05/20/2019
+ms.date: 09/28/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4eea79d6166ef4beae3b2d61e47e7df0bc82624c
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: e8c305da074f3090ced0dfc16b4a3faa4c757699
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89395961"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91440211"
 ---
 # <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>ExpressRoute közvetlen konfigurálása az Azure CLI használatával
 
-Az Azure ExpressRoute Direct segítségével közvetlenül kapcsolódhat a Microsoft globális hálózatához a világ bármely pontján elérhető, stratégiai módon elosztott helyen. További információ: [About ExpressRoute Direct-kapcsolat](expressroute-erdirect-about.md).
+A közvetlen ExpressRoute lehetővé teszi a Microsoft globális hálózatának közvetlen kapcsolódását a világ különböző pontjain található, stratégiai módon terjesztett helyekről. További információ: [About ExpressRoute Direct-kapcsolat](expressroute-erdirect-about.md).
 
 ## <a name="create-the-resource"></a><a name="resources"></a>Az erőforrás létrehozása
 
@@ -209,7 +209,13 @@ Az Azure ExpressRoute Direct segítségével közvetlenül kapcsolódhat a Micro
    }  
    ```
 
-## <a name="change-adminstate-for-links"></a><a name="state"></a>Hivatkozások AdminState módosítása
+## <a name="generate-the-letter-of-authorization-loa"></a><a name="authorization"></a>Engedélyezési engedély (LOA) előállítása
+
+Adja meg a legutóbb létrehozott ExpressRoute közvetlen erőforrás nevét, az erőforráscsoport nevét és az ügyfél nevét, hogy az LOA-t és (opcionálisan) adja meg a dokumentum tárolására szolgáló fájl helyét. Ha a fájl elérési útja nem hivatkozik rá, a rendszer letölti a dokumentumot az aktuális könyvtárba.
+
+```azurecli
+az network express-route port generate-loa -n Contoso-Direct -g Contoso-Direct-rg --customer-name Contoso --destination C:\Users\SampleUser\Downloads\LOA.pdf
+```
 
 Ezt a folyamatot az 1. rétegbeli tesztek elvégzéséhez használhatja. Győződjön meg arról, hogy minden egyes kapcsolatok megfelelően vannak kialakítva az elsődleges és a másodlagos portok mindegyik útválasztóján.
 
@@ -287,7 +293,8 @@ Az itt vázolt forgatókönyvek támogatásához további áramköri sávszéles
 
 A **SkuTier** lehet helyi, standard vagy prémium.
 
-A **SkuFamily** csak MeteredData lehet, mert a ExpressRoute Direct nem támogatja.
+A **SkuFamily** csak MeteredData lehet. A ExpressRoute Direct nem támogatja a korlátlan használatát.
+
 Hozzon létre egy áramkört a ExpressRoute Direct erőforráson:
 
   ```azurecli

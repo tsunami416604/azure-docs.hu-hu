@@ -292,7 +292,7 @@
               href: log-query/query-optimization.md
             - name: Szövegadatok elemzése
               href: log-query/parse-text.md
-        - name: Munkaterületek
+        - name: Munkaterületek és fürtök
           items:
             - name: Munkaterület üzembe helyezésének megtervezése
               href: platform/design-logs-deployment.md
@@ -312,6 +312,8 @@
               href: platform/service-providers.md
             - name: Hozzáférés kezelése
               href: platform/manage-access.md
+            - name: Dedikált fürtök
+              href: log-query/logs-dedicated-clusters.md
     - name: Metrikaböngésző
       items:
         - name: Bevezetés a Metrikaböngésző használatába

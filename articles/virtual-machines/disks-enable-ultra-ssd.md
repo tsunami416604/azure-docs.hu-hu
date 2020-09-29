@@ -4,16 +4,16 @@ description: Tudnivalók az Azure-beli virtuális gépekhez használható Ultra-
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 09/28/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 681804eadc1f710eb5fbf6980fabca4beaaf5439
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e57317dce64b58e5c92684152d840955a30df660
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328213"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441186"
 ---
 # <a name="using-azure-ultra-disks"></a>Az Azure Ultra Disks használata
 
@@ -155,7 +155,7 @@ Ez a szakasz a virtuális gép adatlemezként való üzembe helyezését ismerte
 - Módosítsa az **Egyéni lemez méretének (GIB)**, a **lemez IOPS**és a **lemez átviteli sebességének** értékét.
 - Mindkét panelen válassza **az OK** lehetőséget.
 
-    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/ultra-disk-select-new-disk.png" alt-text="Képernyőkép a lemez méretének kiválasztása panelről, a tárolási típushoz kiválasztott Ultra lemezről, a többi Kiemelt értékről.":::
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/ultra-disk-select-new-disk.png" alt-text="Képernyőfelvétel: új lemez létrehozása panel, méret kiemelve.":::
 
 - Folytassa a virtuális gép üzembe helyezésével, ugyanúgy fog működni, mint bármely más virtuális gép üzembe helyezése esetén.
 
@@ -250,7 +250,7 @@ Ha a meglévő virtuális gép egy olyan régióban vagy rendelkezésre állási
 - Módosítsa a **fiók típusát** **Ultra-lemezre**.
 - Módosítsa az **Egyéni lemez méretének (GIB)**, a **lemez IOPS**és a **lemez átviteli sebességének** értékét.
 
-    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/ultra-disk-select-new-disk.png" alt-text="Képernyőkép a lemez méretének kiválasztása panelről, a tárolási típushoz kiválasztott Ultra lemezről, a többi Kiemelt értékről.":::
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/ultra-disk-select-new-disk.png" alt-text="Képernyőfelvétel: új lemez létrehozása panel, méret kiemelve.":::
 
 - Válassza **az OK** , majd a **Létrehozás**lehetőséget.
 - Miután visszatért a lemez paneljére, válassza a **Mentés**lehetőséget.
@@ -407,6 +407,7 @@ Update-AzDisk -ResourceGroupName $resourceGroup -DiskName $diskName -DiskUpdate 
 ```
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Lásd: az [Azure Ultra Disks használata az Azure Kubernetes Service-ben (előzetes verzió)](../aks/use-ultra-disks.md).
+- [Azure Ultra Disks használata az Azure Kubernetes Service-ben (előzetes verzió)](../aks/use-ultra-disks.md).
+- [Helyezze át a naplófájlt egy ultra-lemezre](../azure-sql/virtual-machines/windows/storage-migrate-to-ultradisk.md).

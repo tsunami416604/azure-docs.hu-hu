@@ -8,17 +8,17 @@ manager: rkarlin
 ms.assetid: b85c0e93-9982-48ad-b23f-53b367f22b10
 ms.service: security-center
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/19/2018
 ms.author: memildin
-ms.openlocfilehash: 43a6c10c8c73e8fb5189b6f085a6969c0d776593
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 6bbc38d79f51ba4ffcc3795718d276a7e9c0bf03
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534906"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91440771"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>A Azure Security Center teljes bérlőre kiterjedő láthatóságának megszerzése
 Ez a cikk bemutatja, hogyan kezelheti a szervezete biztonsági állapotát a Azure Active Directory bérlőhöz kapcsolódó összes Azure-előfizetésre vonatkozó biztonsági szabályzatok alkalmazásával.
@@ -49,7 +49,7 @@ Az előfizetéseket felügyeleti csoportokba rendezheti, és az irányítási sz
     - A megjelenítendő név mező a Azure Portal belül megjelenő név. A felügyeleti csoport létrehozásakor egy külön megjelenítendő név nem választható mező, és bármikor módosítható.  
 
       ![Létrehozás](./media/security-center-management-groups/create_context_menu.png)  
-5.  Kattintson a **Mentés** gombra
+5.  Válassza a **Mentés** lehetőséget
 
 ### <a name="view-management-groups-in-the-azure-portal"></a>Felügyeleti csoportok megtekintése a Azure Portal
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
@@ -185,7 +185,7 @@ Előfizetéseket adhat hozzá a létrehozott felügyeleti csoporthoz. Ezek a lé
    > [!NOTE]
    > A felügyeleti csoportok előfizetéseket és alárendelt felügyeleti csoportokat is tartalmazhatnak. Amikor egy felhasználóhoz egy Azure-szerepkört rendel a fölérendelt felügyeleti csoporthoz, a gyermek-felügyeleti csoport előfizetései öröklik a hozzáférést. A szülő felügyeleti csoportban beállított házirendeket a gyermekek is öröklik. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebből a cikkből megtudhatta, hogyan szerezhet Azure Security Center bérlői szintű láthatóságot. A Security Centerrel kapcsolatos további információkért olvassa el a következő cikkeket:
 
 > [!div class="nextstepaction"]

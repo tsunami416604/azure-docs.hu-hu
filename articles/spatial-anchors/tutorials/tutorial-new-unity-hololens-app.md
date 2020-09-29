@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 08/17/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: cd4ec60691344cef4030472b474a82e84c70244f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8c9e6462beb48e3326de3c2348b73053f717e032
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91261175"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441271"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-hololens-unity-app-using-azure-spatial-anchors"></a>Oktatóanyag: lépésenkénti útmutató új HoloLens Unity-alkalmazás létrehozásához az Azure térbeli horgonyok használatával
 
@@ -208,7 +208,7 @@ Végül Ismerkedjen meg egymással. A `CreateAndSaveSphere()` metódusban adja h
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=320-397&highlight=26-77)]
 
-Futtassa az alkalmazást a **Visual studióból** . Mozgassa a fejét, majd a levegőben koppintva helyezze el a gömbjét. Ha elegendő keret áll rendelkezésre, a gömb sárga színűre vált, a Felhőbeli feltöltés pedig elindul. Miután a feltöltés befejeződik, a gömb kék színűre vált. Igény szerint a [Kimenet ablakban](https://docs.microsoft.com/visualstudio/ide/reference/output-window) is használhatja a **Visual Studióban** történő hibakeresést az alkalmazás által küldött naplóüzenetek figyelésére. A feltöltés befejezése után megtekintheti a `RecommendedForCreateProgress` felhőből visszaadott horgony azonosítóját.
+Futtassa az alkalmazást a **Visual studióból** . Mozgassa a fejét, majd a levegőben koppintva helyezze el a gömbjét. Ha elegendő keret áll rendelkezésre, a gömb sárga színűre vált, a Felhőbeli feltöltés pedig elindul. Miután a feltöltés befejeződik, a gömb kék színűre vált. Igény szerint a [Kimenet ablakban](https://docs.microsoft.com/visualstudio/ide/reference/output-window) is használhatja a **Visual Studióban** történő hibakeresést az alkalmazás által küldött naplóüzenetek figyelésére. Győződjön meg arról, hogy az alkalmazás konfigurációját üzembe helyezi a `Debug` Visual Studióban a naplóüzenetek megtekintéséhez. A feltöltés befejezése után megtekintheti a `RecommendedForCreateProgress` felhőből visszaadott horgony azonosítóját.
 
 > [!NOTE]
 > Ha "DllNotFoundException: nem tölthető be a DLL-fájl" AzureSpatialAnchors ": a megadott modul nem található.", **törölje** , majd hozza **létre** újra a megoldást.

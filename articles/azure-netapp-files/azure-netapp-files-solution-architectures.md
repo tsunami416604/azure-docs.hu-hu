@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/08/2020
+ms.date: 09/28/2020
 ms.author: b-juche
-ms.openlocfilehash: ca17dccd8b17a2e0ff7e9b960c74b4c5a36018f5
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 9b44b27730fff888685ef7e0ad06d35e7bdc88c7
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89567319"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439734"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Megoldásarchitektúrák az Azure NetApp Filesszal
 Ez a cikk az ajánlott eljárásokra mutató hivatkozásokat tartalmaz, amelyek segítségével megismerheti a Azure NetApp Files használatának megoldási architektúráit.  
@@ -84,7 +84,7 @@ Ez a szakasz az SAP Azure-megoldásokra mutató hivatkozásokat tartalmaz.
 
 Ez a szakasz a virtuális asztali infrastruktúra-megoldásokra mutató hivatkozásokat tartalmaz.
 
-### <a name="windows-virtual-desktop"></a>Windows Virtual Desktop
+### <a name="windows-virtual-desktop"></a>Windows virtuális asztal
 
 * [Az Azure NetApp Files és a Windows Virtual Desktop használatának előnyei](solutions-windows-virtual-desktop.md)
 * [Tárolási beállítások a Windows rendszerű virtuális asztali FSLogix-profilok tárolói számára](https://docs.microsoft.com/azure/virtual-desktop/store-fslogix-profile#azure-platform-details)
@@ -114,6 +114,7 @@ Ez a szakasz a nagy teljesítményű számítástechnikai (HPC) megoldásokra mu
 ### <a name="analytics"></a>Elemzés
 
 * [Azure NetApp Files: új megosztott fájlrendszer, amelyet a SAS Grid használatával használok Microsoft Azure](https://communities.sas.com/t5/Architecture/Azure-NetApp-Files-A-new-shared-file-system-to-use-with-SAS-Grid/m-p/606978)
+* [Ajánlott eljárások a Microsoft Azure SAS-vel való használatához®](https://communities.sas.com/t5/Administration-and-Deployment/Best-Practices-for-Using-Microsoft-Azure-with-SAS/m-p/676833#M19680)
 
 ## <a name="azure-platform-services-solutions"></a>Azure platform Services-megoldások
 

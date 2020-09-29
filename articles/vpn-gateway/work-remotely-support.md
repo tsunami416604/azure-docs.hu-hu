@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: alzam
-ms.openlocfilehash: a70f7ccd1c3ca078bab0ff473283b505c0ded316
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 028250e25f4d67628c08970e25b4621e78526b6a
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89441561"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91440823"
 ---
 # <a name="remote-work-using-azure-vpn-gateway-point-to-site"></a>Távoli munka Azure VPN Gateway pont – hely kapcsolattal
 
@@ -30,13 +30,13 @@ A pont–hely (P2S) VPN-átjátókapcsolat lehetővé teszi biztonságos kapcsol
 
 Az alábbi táblázat az ügyfél operációs rendszereit és a számukra elérhető hitelesítési beállításokat mutatja be. Hasznos lehet a már használatban lévő ügyfél operációs rendszer alapján kiválasztani a hitelesítési módszert. Válassza például az OpenVPN tanúsítvány alapú hitelesítéssel lehetőséget, ha a csatlakozni kívánó ügyfél-operációs rendszerek keveréke van. Azt is vegye figyelembe, hogy a pont – hely VPN csak Route-alapú VPN-átjárók esetén támogatott.
 
-![pont – hely kapcsolat](./media/working-remotely-support/ostable.png "Operációs rendszer")
+![Képernyőkép, amely megjeleníti az ügyfél operációs rendszereit és a rendelkezésre álló hitelesítési beállításokat.](./media/working-remotely-support/ostable.png "Operációs rendszer")
 
 ## <a name="scenario-1---users-need-access-to-resources-in-azure-only"></a><a name="scenario1"></a>1. eset – a felhasználóknak csak az Azure-erőforrások elérésére van szükségük
 
 Ebben az esetben a távoli felhasználóknak csak az Azure-ban található erőforrásokhoz kell hozzáférnie.
 
-![pont – hely kapcsolat](./media/working-remotely-support/scenario1.png "1\. példa")
+![Diagram, amely egy pont – hely típusú forgatókönyvet mutat be azon felhasználók számára, akiknek csak az Azure erőforrásaihoz kell hozzáférést biztosítaniuk.](./media/working-remotely-support/scenario1.png "1\. példa")
 
 Magas szinten a következő lépések szükségesek ahhoz, hogy a felhasználók biztonságosan csatlakozhassanak az Azure-erőforrásokhoz:
 
@@ -55,7 +55,7 @@ Magas szinten a következő lépések szükségesek ahhoz, hogy a felhasználók
 
 Ebben az esetben a távoli felhasználóknak hozzá kell férniük az Azure-ban és a helyszíni adatközpont (ok) ban található erőforrásokhoz.
 
-![pont – hely kapcsolat](./media/working-remotely-support/scenario2.png "2\. példa")
+![Diagram, amely egy pont – hely típusú forgatókönyvet mutat be azon felhasználók számára, akiknek hozzáférésre van szükségük az Azure-beli erőforrásokhoz.](./media/working-remotely-support/scenario2.png "2\. példa")
 
 Magas szinten a következő lépések szükségesek ahhoz, hogy a felhasználók biztonságosan csatlakozhassanak az Azure-erőforrásokhoz:
 

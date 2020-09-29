@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 1b1cd0adb8581c7aa94f0de85a9f8beab38da112
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: edd9f9f3127178f168f6c768b092a7ec6311e7bf
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89398562"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91440934"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>Virtuális hálózatok közötti VPN Gateway-kapcsolat konfigurálása a PowerShell használatával
 
@@ -67,7 +67,7 @@ Ebben a gyakorlatban igény szerint kombinálhatja a konfigurációkat, vagy csa
 
 * [Azonos előfizetésben található virtuális hálózatok](#samesub): a konfiguráció lépései a TestVNet1 és a TestVNet4-t használják.
 
-  ![v2v ábra](./media/vpn-gateway-vnet-vnet-rm-ps/v2vrmps.png)
+  ![Olyan diagram, amely az ugyanazon előfizetésben található V hálók V net – V hálózati lépéseit mutatja.](./media/vpn-gateway-vnet-vnet-rm-ps/v2vrmps.png)
 
 * [Különböző előfizetésekben található virtuális hálózatok](#difsub): a konfiguráció lépései a TestVNet1 és a TestVNet5-t használják.
 
@@ -203,7 +203,7 @@ A példákban a következő értékeket használjuk:
    -VpnType RouteBased -GatewaySku VpnGw1
    ```
 
-A parancsok befejezése után az átjáró létrehozása akár 45 percet is igénybe vehet. Ha Azure Cloud Shell használ, a Cloud Shell terminál bal felső részén kattintson a Cloudshellben-munkamenet újraindításához, majd konfigurálja a TestVNet4. Nem kell megvárnia, amíg a TestVNet1-átjáró be nem fejeződik.
+A parancsok befejezése után az átjáró létrehozása akár 45 percet is igénybe vehet. Ha Azure Cloud Shell használ, a Cloud Shell terminál bal felső részén kattintson az Cloud Shell-munkamenet újraindításához, majd a TestVNet4 konfigurálása lehetőségre. Nem kell megvárnia, amíg a TestVNet1-átjáró be nem fejeződik.
 
 ### <a name="step-3---create-and-configure-testvnet4"></a>3. lépés – A TestVNet4 létrehozása és konfigurálása
 
@@ -475,7 +475,7 @@ Ebben a példában, mivel az átjárók különböző előfizetésekben találha
 
 [!INCLUDE [vpn-gateway-no-nsg-include](../../includes/vpn-gateway-no-nsg-include.md)]
 
-[!INCLUDE [verify connections powershell](../../includes/vpn-gateway-verify-connection-ps-rm-include.md)]
+[!INCLUDE [verify connections PowerShell](../../includes/vpn-gateway-verify-connection-ps-rm-include.md)]
 
 ## <a name="vnet-to-vnet-faq"></a><a name="faq"></a>Virtuális hálózatok közötti kapcsolat – gyakori kérdések
 

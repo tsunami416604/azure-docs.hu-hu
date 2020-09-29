@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 01/09/2020
-ms.openlocfilehash: 880d8ee0e6e2b3984f6bea4b994642724085d512
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 28afa98313ef1c9577e90ed161a1d20cbf5faf75
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90980550"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91440207"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-micro-fulfillment-center-application-template"></a>Oktatóanyag: üzembe helyezés és útmutató a Micro-teljesítési központ alkalmazás sablonja
 
@@ -62,11 +62,11 @@ Az irányítópulton a következőket teheti:
    * Megtekintheti a beteljesülés struktúrán belüli robot-szolgáltatók alapszintű tervét és helyét.
    * Trigger parancsok, például a vezérlőrendszer alaphelyzetbe állítása, a szolgáltató belső vezérlőprogram frissítése és a hálózat újrakonfigurálása.
 
-     ![A Northwind Traders Micro-beteljesülő központ irányítópultjának felső felét bemutató képernyőkép](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard1.png)
+     ![Képernyőfelvétel a Northwind Traders Micro-teljesítési központ irányítópultjának felső feléről.](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard1.png)
    * Tekintse meg az irányítópult azon példáját, amelyet az operátor a teljesítési központban lévő feltételek figyelésére használhat. 
    * Figyelje az átjáró eszközön futó hasznos adatok állapotát a teljesítési központban.    
 
-     ![Képernyőkép a Northwind Traders Micro-beteljesülő központ irányítópultjának aljáról](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard2.png)
+     ![Képernyőkép a Northwind Traders Micro-beteljesülő központ irányítópultjának alsó feléről.](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard2.png)
 
 ## <a name="device-template"></a>Eszköz sablonja
 Ha az eszközbeállítások lapot választja, akkor láthatja, hogy a sablonhoz két különböző típusú eszköz tartozik: 

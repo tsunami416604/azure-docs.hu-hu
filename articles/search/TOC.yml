@@ -162,8 +162,6 @@
       items:
         - name: Indexelők használata
           items:
-            - name: Indexelők konfigurálása
-              href: search-indexer-overview.md
             - name: Indexelők monitorozása
               href: search-howto-monitor-indexers.md
             - name: Indexelők ütemezése
@@ -188,8 +186,12 @@
               href: search-blob-ai-integration.md
             - name: Blobindexelő konfigurálása
               href: search-howto-indexing-azure-blob-storage.md
+            - name: Megváltozott index és törölt blobok
+              href: search-howto-index-changed-deleted-blobs.md
             - name: Egy-a-többhöz típusú blobok indexelése
               href: search-howto-index-one-to-many-blobs.md
+            - name: Egyszerű szöveg indexelése
+              href: search-howto-index-plaintext-blobs.md
             - name: CSV-blobok indexelése
               href: search-howto-index-csv-blobs.md
             - name: JSON-blobok indexelése

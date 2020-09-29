@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: 641ff13ec440bb8267e546c54b684ab4453f91a7
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 6807f3d4ef0596b4dbb51f6bc8c0348901e78d0e
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90052936"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439943"
 ---
 # <a name="ssltls-connectivity-in-azure-database-for-mysql"></a>SSL/TLS-kapcsolat a Azure Database for MySQL
 
@@ -61,6 +61,17 @@ Ha például a TLS 1,0-es minimális beállítás értéke a TLS, azt jelenti, h
 > Miután kikényszeríti a TLS minimális verzióját, később nem tilthatja le a minimális verzió-kényszerítést.
 
 Ha meg szeretné tudni, hogyan állíthatja be a TLS-beállítást a Azure Database for MySQLhoz, tekintse meg a [TLS-beállítás konfigurálását](howto-tls-configurations.md)ismertető témakört.
+
+## <a name="cipher-support-by-azure-database-for-mysql-single-server"></a>Titkosítási támogatás Azure Database for MySQL egyetlen kiszolgálóval
+
+Az SSL/TLS-kommunikáció részeként a titkosítási csomagok ellenőrzése megtörténik, és csak a titkosító öltönyök támogatása engedélyezett a serer adatbázissal való kommunikációhoz. A titkosító csomag érvényesítése az [átjáró rétegében](concepts-connectivity-architecture.md#connectivity-architecture) van szabályozva, és nem explicit módon a csomóponton. Ha a titkosítási csomagok nem felelnek meg az alább felsorolt lakosztályok egyikének, a rendszer elutasítja a bejövő ügyfélkapcsolatokat.
+
+### <a name="cipher-suite-supported"></a>Titkosítási csomag támogatott
+
+*   TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+*   TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+*   TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+*   TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
 
 ## <a name="next-steps"></a>Következő lépések
 

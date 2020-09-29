@@ -4,12 +4,16 @@
   items:
     - name: Mi a Service Fabric?
       href: service-fabric-overview.md
+    - name: Felügyelt Service Fabric-fürtök
+      href: overview-managed-cluster.md
 - name: Rövid útmutatók
   expanded: true
   items:
     - name: ARM-sablon
       displayName: Resource Manager
       href: quickstart-cluster-template.md
+    - name: Felügyelt fürtök
+      href: quickstart-managed-cluster-template.md
     - name: .NET-alkalmazás létrehozása
       href: service-fabric-quickstart-dotnet.md
     - name: Linux-alapú tárolóalkalmazás üzembe helyezése
@@ -64,6 +68,16 @@
           href: service-fabric-tutorial-package-containers.md
         - name: 3 – Feladatátadás és skálázás
           href: service-fabric-tutorial-containers-failover.md
+    - name: Felügyelt Service Fabric-fürt létrehozása
+      items:
+        - name: 1 – Felügyelt Service Fabric-fürt üzembe helyezése
+          href: tutorial-managed-cluster-deploy.md
+        - name: 2 – Felügyelt fürt típusú csomópont horizontális felskálázása
+          href: tutorial-managed-cluster-scale.md
+        - name: 3 – Felügyelt fürt típusú csomópontok hozzáadása és eltávolítása
+          href: tutorial-managed-cluster-add-remove-node-type.md
+        - name: 4 – Kapcsolódás felügyelt fürthöz és alkalmazás üzembe helyezése
+          href: tutorial-managed-cluster-deploy-app.md
     - name: Fürt létrehozása és felügyelete
       items:
         - name: 1 – Fürt létrehozása az Azure-ban
@@ -155,7 +169,7 @@
           items:
             - name: A tárolók áttekintése
               href: service-fabric-containers-overview.md
-            - name: Docker Compose (előzetes verzió)
+            - name: Docker Compose
               href: service-fabric-docker-compose.md
             - name: Mintavételek
               href: probes-codepackage.md
@@ -430,7 +444,7 @@
               href: service-fabric-deploy-existing-app.md
         - name: Tárolószolgáltatás készítése
           items:
-            - name: Docker Compose (előzetes verzió)
+            - name: Docker Compose
               href: service-fabric-docker-compose.md
             - name: Kötet- és naplózási illesztők
               href: service-fabric-containers-volume-logging-drivers.md
@@ -509,7 +523,7 @@
                   href: service-fabric-application-secret-management-windows.md
                 - name: Titkosítási tanúsítvány beállítása és titkos kódok titkosítása Linuxon
                   href: service-fabric-application-secret-management-linux.md
-                - name: A titkos kulcsok biztonságos tárolása KeyVaultReference használatával (előzetes verzió)
+                - name: A titkos kulcsok biztonságos tárolása KeyVaultReference használatával
                   href: service-fabric-keyvault-references.md
             - name: Fordított proxy konfigurálása biztonságos kommunikációhoz
               href: service-fabric-reverseproxy-configure-secure-communication.md
@@ -675,6 +689,8 @@
                   href: service-fabric-how-to-remove-node-type.md
             - name: Frissítés
               items:
+                - name: Virtuálisgép-méretezési csoport típusú bővítmény hozzáadása egy felügyelt fürt típusú csomóponthoz
+                  href: how-to-managed-cluster-vmss-extension.md
                 - name: A Service Fabric-verzió frissítése
                   href: service-fabric-cluster-upgrade-version-azure.md
                 - name: Fürtkonfiguráció frissítése
@@ -901,6 +917,8 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Gyakori kérdések
       href: service-fabric-common-questions.md
+    - name: Gyakori kérdések a felügyelt Service Fabric-fürtökről
+      href: faq-managed-cluster.md
     - name: Microsoft Q&A kérdések oldala
       href: /answers/topics/azure-service-fabric.html
     - name: Az Azure Resource Manager üzembehelyezési védőkorlátai

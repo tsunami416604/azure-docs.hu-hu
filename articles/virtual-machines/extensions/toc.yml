@@ -52,12 +52,14 @@
           href: vmsnapshot-linux.md
         - name: Windows
           href: vmsnapshot-windows.md
-    - name: Network Watcher-ügynök
+    - name: Network Watcher-bővítmény
       items:
         - name: Linux
           href: network-watcher-linux.md
         - name: Windows
           href: network-watcher-windows.md
+        - name: Frissítés a legújabb verzióra
+          href: network-watcher-update.md
     - name: InfiniBand-illesztőprogramok
       items:
         - name: Linux

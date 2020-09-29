@@ -6,14 +6,38 @@ metadata:
   ms.topic: landing-page
   author: erikadoyle
   ms.author: edoyle
-  ms.date: 12/04/2019
-  ms.openlocfilehash: a2651387a425439d09ad68b0e763ff0c6c3f7f27
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.date: 07/31/2020
+  ms.openlocfilehash: 9bce6570cef2703bf1ad63d92c55bb3794927a8b
+  ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "75452222"
+  ms.lasthandoff: 09/28/2020
+  ms.locfileid: "91408701"
 landingContent:
+- title: Felügyelt Service Fabric-fürtök kipróbálása (előzetes verzió)
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Mik a felügyelt Service Fabric-fürtök (előzetes verzió)
+      url: overview-managed-cluster.md
+    - text: Felügyelt fürt üzembe helyezése (előzetes verzió)
+      url: quickstart-managed-cluster-template.md
+  - linkListType: tutorial
+    links:
+    - text: Felügyelt fürt létrehozása (előzetes verzió)
+      url: tutorial-managed-cluster-deploy.md
+    - text: Felügyelt fürt típusú csomópont horizontális felskálázása (előzetes verzió)
+      url: tutorial-managed-cluster-scale.md
+    - text: Felügyelt fürt típusú csomópontok hozzáadása és eltávolítása (előzetes verzió)
+      url: tutorial-managed-cluster-add-remove-node-type.md
+    - text: Alkalmazás üzembe helyezése egy felügyelt fürtön (előzetes verzió)
+      url: tutorial-managed-cluster-deploy-app.md
+    - text: Virtuálisgép-méretezési csoport típusú bővítmény hozzáadása egy felügyelt fürt típusú csomóponthoz (előzetes verzió)
+      url: how-to-managed-cluster-vmss-extension.md
+  - linkListType: whats-new
+    links:
+    - text: Gyakori kérdések a felügyelt Service Fabric-fürtökről
+      url: faq-managed-cluster.md
 - title: A Service Fabric ismertetése
   linkLists:
   - linkListType: overview
@@ -138,7 +162,7 @@ landingContent:
       url: samples-cli.md
   - linkListType: whats-new
     links:
-    - text: Service Fabric – GYIK
+    - text: Service Fabric – gyakori kérdések
       url: service-fabric-common-questions.md
 - title: A Service Fabric helyszíni használata
   linkLists:

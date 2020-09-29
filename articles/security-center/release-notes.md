@@ -7,17 +7,17 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 556177b0f3eb156f5b128995cb81555aa77bc8d2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b1bd0ff28906f35ddc56afbd0287bbe29879deb4
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91289905"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91438947"
 ---
 # <a name="whats-new-in-azure-security-center"></a>A Azure Security Center újdonságai
 
@@ -245,7 +245,7 @@ Emellett az **előzetes** verzióra vonatkozó javaslatok nem teszik lehetővé 
 
 Példa az előzetes verziójú javaslatra:
 
-:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="Javaslat az előnézet jelölővel":::
+:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="Biztonsági megállapítások bekapcsolása a folyamatos exportálási konfigurációban":::
 
 [További információ a biztonságos pontszámról](secure-score-security-controls.md).
 
@@ -254,7 +254,7 @@ Példa az előzetes verziójú javaslatra:
 
 A javaslatok részleteit tartalmazó oldal mostantól tartalmazza a frissességi intervallum jelzőjét (ha van ilyen), valamint a javaslat súlyosságának egyértelmű megjelenítését.
 
-:::image type="content" source="./media/release-notes/recommendations-severity-freshness-indicators.png" alt-text="A frissességet és súlyosságot mutató javaslat oldal":::
+:::image type="content" source="./media/release-notes/recommendations-severity-freshness-indicators.png" alt-text="Biztonsági megállapítások bekapcsolása a folyamatos exportálási konfigurációban":::
 
 
 
@@ -678,7 +678,7 @@ A biztonsági vezérlők – és ez a váltás – az új biztonsági pontszám 
 
 További információ a biztonsági ellenőrzésekről a [Azure Security Center továbbfejlesztett biztonságos pontszám (előzetes verzió)](secure-score-security-controls.md)című témakörben.
 
-:::image type="content" source="./media/secure-score-security-controls/recommendations-group-by-toggle.gif" alt-text="Javaslatok csoportosítása vezérlőkkel":::
+:::image type="content" source="./media/secure-score-security-controls/recommendations-group-by-toggle.gif" alt-text="Biztonsági megállapítások bekapcsolása a folyamatos exportálási konfigurációban":::
 
 ### <a name="expanded-security-control-implement-security-best-practices"></a>Kibővített biztonsági szabályozás – az ajánlott biztonsági eljárások megvalósítása 
 

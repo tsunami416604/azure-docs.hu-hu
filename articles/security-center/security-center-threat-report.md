@@ -8,17 +8,17 @@ manager: rkarlin
 ms.assetid: 5662e312-e8c2-4736-974e-576eeb333484
 ms.service: security-center
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2020
 ms.author: memildin
-ms.openlocfilehash: a4fdbab4a69fac1376779f37d5fa69fef587bf52
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f9b3fd0000a1b5dbba00995c37f96a89319de0e1
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84888244"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91440490"
 ---
 # <a name="azure-security-center-threat-intelligence-report"></a>Azure Security Center fenyegetés intelligencia jelentés
 
@@ -71,9 +71,9 @@ Az ilyen típusú információk az incidensek válaszának folyamata során hasz
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oldal azt ismerteti, hogyan nyitható meg a veszélyforrások felderítésére vonatkozó jelentések a biztonsági riasztások kivizsgálása során. A kapcsolódó információkat a következő lapokon tekintheti meg:
 
-* [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md). A biztonsági riasztások kezelésének és a riasztásokra való válaszadás módját ismertető útmutató.
+* [Biztonsági riasztások kezelése és válaszadás a Azure Security Center](security-center-managing-and-responding-alerts.md). A biztonsági riasztások kezelésének és a riasztásokra való válaszadás módját ismertető útmutató.
 * [A biztonsági incidensek kezelésének Azure Security Center](security-center-incident.md)

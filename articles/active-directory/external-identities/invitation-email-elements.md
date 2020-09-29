@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 04/15/2020
+ms.date: 09/28/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0429cfb62c319675806d76b4759b776a7b32dbcb
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: d03391ba5a82c128197c86ea6ed84389552fadb9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87909335"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439850"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>A B2B együttműködés meghívójának e-mail-Azure Active Directory elemei
 
@@ -75,7 +75,21 @@ Az e-mail következő szakasza információt tartalmaz arról, hogy a meghívás
 A lábléc további információkat tartalmaz az elküldött meghívóról. Mindig lehetőség van a meghívásra, hogy letiltsa a jövőbeli meghívókat. Ha a szervezet [adatvédelmi nyilatkozatot állított be](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-properties-area), itt jelennek meg az utasításra mutató hivatkozás.  Ellenkező esetben egy megjegyzés azt jelzi, hogy a szervezet nem állított be adatvédelmi nyilatkozatot.
 
 ![Az e-mail lábléc szakaszának képe](media/invitation-email-elements/footer-section.png)
- 
+
+### <a name="blocking-an-organization-unsubscribing"></a>Szervezet blokkolása (leiratkozás)
+
+A szervezettől érkező meghívóban a lábléc egy lehetőséget tartalmaz a **jövőbeli meghívások blokkolására**. A vendég a hivatkozás kiválasztásával letilthatja a szervezeten belüli jövőbeli meghívásokat. Ezzel a művelettel a szervezetet is hozzáadja a felhasználó leiratkozott listájához [https://invitations.microsoft.com/unsubscribe/manage](https://invitations.microsoft.com/unsubscribe/manage) .
+
+### <a name="viewing-organizations-youve-blocked"></a>A blokkolt szervezetek megtekintése
+
+A vendég felhasználó a következő lépésekkel tekintheti meg vagy exportálhatja a blokkolt szervezeteket:
+
+1. Ugrás a következőre: [https://invitations.microsoft.com/unsubscribe/manage](https://invitations.microsoft.com/unsubscribe/manage) .
+2. Adja meg az e-mail-címét, és kövesse a bejelentkezési lépéseket az egyszeri jelszavas hitelesítéshez.
+3. Tekintse meg a blokkolt szervezeteket, vagy exportálja a neveket a másolás és Beillesztés paranccsal.
+   > [!NOTE]
+   > Ha engedélyezni szeretné, hogy egy szervezet letiltotta a meghívót, válassza ki a szervezetet, és válassza a **tovább**lehetőséget.
+
 ## <a name="how-the-language-is-determined"></a>A nyelv meghatározása
 
 A meghívó e-mailben a vendég felhasználó számára megadott nyelvet a következő beállítások határozzák meg. Ezek a Beállítások elsőbbségi sorrendben vannak felsorolva. Ha a beállítás nincs konfigurálva, a listában a következő beállítás határozza meg a nyelvet.

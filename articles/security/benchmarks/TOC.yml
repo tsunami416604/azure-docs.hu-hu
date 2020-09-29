@@ -69,6 +69,8 @@
       href: ../../backup/security-baseline.md
     - name: Az Azure Cache for Redis biztonsági alapkonfigurációja
       href: ../../azure-cache-for-redis/security-baseline.md
+    - name: Az Azure Cognitive Search biztonsági alapkonfigurációja
+      href: ../../search/security-baseline.md
     - name: Az Azure Data Box biztonsági alapkonfigurációja
       href: ../../databox/security-baseline.md
     - name: Az Azure Data Explorer biztonsági alapkonfigurációja
