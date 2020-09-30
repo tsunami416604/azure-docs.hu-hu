@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/13/2020
-ms.openlocfilehash: 19bf43cfd305e74aadaf16dddc7bce318e193c84
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: f08b7a49d961c3408af6e5360344bdf500a8ac07
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640242"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542325"
 ---
 # <a name="quickstart-create-interactive-query-cluster-in-azure-hdinsight-using-arm-template"></a>Rövid útmutató: interaktív lekérdezési fürt létrehozása az Azure HDInsight ARM-sablon használatával
 
@@ -73,11 +73,11 @@ A gyors üzembe helyezés befejezése után érdemes lehet törölni a fürtöt.
 
 A Azure Portal navigáljon a fürthöz, és válassza a **Törlés**lehetőséget.
 
-![Resource Manager-sablon HBase](./media/quickstart-resource-manager-template/azure-portal-delete-hive.png)
+![A képernyőfelvétel egy H D betekintési fürtöt mutat be a törölni kívánt erőforráscsoporthoz.](./media/quickstart-resource-manager-template/azure-portal-delete-hive.png)
 
 Az erőforráscsoport nevét kiválasztva is megnyílik az erőforráscsoport oldala, ahol kiválaszthatja az **Erőforráscsoport törlése** elemet. Az erőforráscsoport törlésével törli a HDInsight-fürtöt és az alapértelmezett Storage-fiókot is.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre interaktív lekérdezési fürtöt a HDInsight egy ARM-sablonnal. A következő cikkben megtudhatja, hogyan futtathat Apache Hive lekérdezéseket az Apache Zeppelin használatával.
 

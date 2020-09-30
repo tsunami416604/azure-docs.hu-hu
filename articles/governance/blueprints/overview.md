@@ -3,12 +3,12 @@ title: Az Azure Blueprints áttekintése
 description: Ismerje meg, hogyan hozhat létre, határozhat meg és helyezhet üzembe összetevőket az Azure-környezetben az Azure BluePrints szolgáltatásban.
 ms.date: 08/27/2020
 ms.topic: overview
-ms.openlocfilehash: a687bcbaff56fa1229794b6977e3565070c56e2a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 499f2c4afa55913b6af714d20ec1d52e2ecbbc47
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91302672"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541764"
 ---
 # <a name="what-is-azure-blueprints"></a>Mi az az Azure Blueprints?
 
@@ -47,7 +47,7 @@ A szabályzatok a tervrajzok definíciójában szereplő _számos összetevő_ e
 
 A tervek _tervelemekből_ állnak. Az Azure-tervezetek jelenleg a következő erőforrásokat támogatják összetevőkként:
 
-|Erőforrás  | Hierarchialehetőségek| Description  |
+|Erőforrás  | Hierarchialehetőségek| Leírás  |
 |---------|---------|---------|
 |Erőforráscsoportok | Előfizetés | Hozzon létre egy új erőforráscsoportot, amelyet a tervben szereplő többi tervelem fog használni.  Ezek a helyőrző erőforráscsoportok lehetővé teszik az erőforrások rendszerezését, és a benne foglalt szabályzatok és szerepkör-hozzárendelési összetevők és ARM-sablonok hatókör-korlátozását. |
 |ARM-sablon | Előfizetés, erőforráscsoport | A sablonok, beleértve a beágyazott és a csatolt sablonokat, összetett környezetek létrehozásához használatosak. Ilyen környezetek lehetnek például a SharePoint-farmok, az Azure Automation-állapotkonfigurációk vagy a Log Analytics-munkaterületek. |
@@ -78,7 +78,7 @@ A tervrajzok minden **közzétett** **verziója** hozzárendelhető (legfeljebb 
 
 ## <a name="permissions-in-azure-blueprints"></a>Engedélyek az Azure Blueprintsben
 
-A tervek használatához [szerepköralapú hozzáférés-vezérlésen (RBAC)](../../role-based-access-control/overview.md) kell megadni az engedélyeket. Ha Azure Portal tervét szeretné olvasni vagy megtekinteni, a fióknak olvasási hozzáféréssel kell rendelkeznie ahhoz a hatókörhöz, ahol a terv definíciója található.
+A tervrajzok használatához engedélyeket kell biztosítania az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/overview.md)használatával. Ha Azure Portal tervét szeretné olvasni vagy megtekinteni, a fióknak olvasási hozzáféréssel kell rendelkeznie ahhoz a hatókörhöz, ahol a terv definíciója található.
 
 Tervek létrehozásához a fióknak a következő engedélyekkel kell rendelkeznie:
 
@@ -105,7 +105,7 @@ Tervek hozzárendeléséhez vagy a hozzárendelés megszüntetéséhez a fiókna
 
 A következő beépített szerepkörök érhetők el:
 
-|Azure-szerepkör | Description |
+|Azure-szerepkör | Leírás |
 |-|-|
 |[Tulajdonos](../../role-based-access-control/built-in-roles.md#owner) | A többi engedélyen kívül minden Azure Blueprint kapcsolódó engedélyt tartalmaz. |
 |[Közreműködő](../../role-based-access-control/built-in-roles.md#contributor) | Más engedélyek mellett létrehozhat és törölhet tervrajz-definíciókat, de nem rendelkezik terv-hozzárendelési engedélyekkel. |
@@ -123,10 +123,10 @@ Bizonyos mezőkhöz a következő korlátozások vonatkoznak:
 
 |Objektum|Mező|Engedélyezett karakterek|Legfeljebb Hossz|
 |-|-|-|-|
-|Terv|Name|betűk, számok, kötőjelek és időszakok|48|
+|Terv|Név|betűk, számok, kötőjelek és időszakok|48|
 |Terv|Verzió|betűk, számok, kötőjelek és időszakok|20|
-|Tervek hozzárendelése|Name|betűk, számok, kötőjelek és időszakok|90|
-|Tervrajz-összetevő|Name|betűk, számok, kötőjelek és időszakok|48|
+|Tervek hozzárendelése|Név|betűk, számok, kötőjelek és időszakok|90|
+|Tervrajz-összetevő|Név|betűk, számok, kötőjelek és időszakok|48|
 
 ## <a name="video-overview"></a>Videó – áttekintés
 
@@ -134,7 +134,7 @@ Az Azure-tervezetek az alábbi áttekintést nyújtanak az Azure Fridays-ről. A
 
 > [!VIDEO https://www.youtube.com/embed/cQ9D-d6KkMY]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Terv létrehozása – portál](./create-blueprint-portal.md).
 - [Terv létrehozása – PowerShell](./create-blueprint-powershell.md).

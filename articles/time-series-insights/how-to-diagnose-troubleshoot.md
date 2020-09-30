@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: d9a4f7aa270aa4ed2b02e61da984e14379a241a9
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 106600b608586175cbab1098cf0eb7ac6fad94fa
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289937"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540302"
 ---
 # <a name="diagnose-and-troubleshoot-an-azure-time-series-insights-gen2-environment"></a>Azure Time Series Insights Gen2-környezet diagnosztizálása és megoldása
 
@@ -81,11 +81,11 @@ Ez a probléma akkor fordul elő, ha az eseményforrás létrehozásakor megadot
 
 Ha az új kulccsal szeretné frissíteni a Time Series Insights Gen2-környezetét, nyissa meg a hub-erőforrást a Azure Portal, és másolja az új kulcsot. Navigáljon az ÁME-erőforráshoz, és kattintson az események forrásai elemre. 
 
-   [![Kulcs frissítése.](media/preview-troubleshoot/update-hub-key-step-1.png)](media/preview-troubleshoot/update-hub-key-step-1.png#lightbox)
+   [![Képernyőfelvétel: a T S I erőforrás az eseményforrás menüpont kinevezett eleme.](media/preview-troubleshoot/update-hub-key-step-1.png)](media/preview-troubleshoot/update-hub-key-step-1.png#lightbox)
 
 Válassza ki azokat az eseményforrás (ka) t, amelyekről leállt a betöltés, illessze be az új kulcsot, és kattintson a Save (Mentés) gombra.
 
-   [![Kulcs frissítése.](media/preview-troubleshoot/update-hub-key-step-2.png)](media/preview-troubleshoot/update-hub-key-step-2.png#lightbox)
+   [![Képernyőfelvétel: a T S I erőforrás, amelyet a megadott I/o hub-szabályzat kulcsával mutat.](media/preview-troubleshoot/update-hub-key-step-2.png)](media/preview-troubleshoot/update-hub-key-step-2.png#lightbox)
 
 ## <a name="problem-my-event-sources-timestamp-property-name-doesnt-work"></a>Probléma: az esemény forrásának időbélyeg-tulajdonságának neve nem működik
 
@@ -129,7 +129,7 @@ Ez a probléma akkor fordulhat elő, ha a környezet nem rendelkezik meghatároz
 
 Ez a probléma akkor fordulhat elő, ha nem a Power BI-összekötő legújabb verzióját használja Power BI Desktop.
 
-[![A nem szülő példányok figyelmeztetést jelenítenek meg.](media/preview-troubleshoot/power-bi-unable-to-connect.png)](media/preview-troubleshoot/power-bi-unable-to-connect.png#lightbox)
+[![A képernyőfelvételen a nem lehet csatlakozni párbeszédpanel jelenik meg.](media/preview-troubleshoot/power-bi-unable-to-connect.png)](media/preview-troubleshoot/power-bi-unable-to-connect.png#lightbox)
 
 * Ellenőrizze a Power BI Desktop verzióját, és győződjön meg arról, hogy a júliusi 2020-es verziót használja. Ha nem, frissítse a Power BI Desktop, majd futtassa újra az összekötőt. 
 

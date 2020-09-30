@@ -7,16 +7,16 @@ ms.service: sql-db-mi
 ms.subservice: backup-restore
 ms.custom: references_regions
 ms.topic: conceptual
-author: anosov1960
-ms.author: sashan
-ms.reviewer: mathoma, carlrab, danil
+author: shkale-msft
+ms.author: shkale
+ms.reviewer: mathoma, stevestein, danil
 ms.date: 09/25/2020
-ms.openlocfilehash: b28c175656b0951980f861198c93ccd794605839
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 93370050b503875d670283b720088b0871377c09
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/29/2020
-ms.locfileid: "91444312"
+ms.locfileid: "91535083"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Automatikus biztonsági mentések – Azure SQL Database & SQL felügyelt példánya
 
@@ -415,6 +415,9 @@ Set-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -DatabaseName "Database01
 
 A részletekért látogasson el a [set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase)
 
+> [!NOTE]
+> Ha a-BackupStorageRedundancy paramétert adatbázis-visszaállítással, adatbázis-másolattal vagy másodlagos műveletekkel kívánja használni, használja az Azure PowerShell-verziót az az. SQL 2.11.0. 
+
 
 #### <a name="sql-managed-instance"></a>[SQL Managed Instance](#tab/managed-instance)
 
@@ -425,6 +428,8 @@ New-AzSqlInstance -Name managedInstance2 -ResourceGroupName ResourceGroup01 -Loc
 ```
 
 További részletekért látogasson el a [New-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstance)webhelyre.
+
+---
 
 ## <a name="use-azure-policy-to-enforce-backup-storage-redundancy"></a>A biztonsági mentési tár redundancia kikényszerített Azure Policy használata
 
@@ -440,11 +445,13 @@ Az új beépített szabályzatok hozzáadását követően az előfizetés vagy 
 
 A SQL Database és a felügyelt példány beépített szabályzat-definícióinak teljes listája [itt](https://docs.microsoft.com/azure/azure-sql/database/policy-reference)található.
 
-Ha szervezeti szinten szeretné kikényszeríteni az adattárolási követelményeket, ezeket a szabályzatokat hozzá lehet rendelni egy előfizetéshez. Miután ezek hozzá lettek rendelve egy előfizetési szinten, a megadott előfizetésben lévő felhasználók nem tudnak adatbázist vagy felügyelt példányt létrehozni a Geo-redundáns biztonsági mentési tárolóval Azure Portal vagy Azure PowerShell használatával. Vegye figyelembe, hogy az Azure-szabályzatok nem lesznek kikényszerítve az adatbázisok T-SQL-n keresztüli létrehozásakor. 
+Ha szervezeti szinten szeretné kikényszeríteni az adattárolási követelményeket, ezeket a szabályzatokat hozzá lehet rendelni egy előfizetéshez. Miután ezek hozzá lettek rendelve egy előfizetési szinten, a megadott előfizetésben lévő felhasználók nem tudnak adatbázist vagy felügyelt példányt létrehozni a Geo-redundáns biztonsági mentési tárolóval Azure Portal vagy Azure PowerShell használatával. 
+
+> [!IMPORTANT]
+> Az Azure-szabályzatok nem lesznek kikényszerítve az adatbázisok T-SQL-n keresztüli létrehozásakor. Ha T-SQL-T használó adatbázis létrehozásakor szeretné kényszeríteni az adattárolást, [használja a "local" vagy a "Zone" utasítást a Create Database utasításban BACKUP_STORAGE_REDUNDANCY ismerhető](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current#create-database-using-zone-redundancy-for-backups).
 
 Megtudhatja, hogyan rendelhet hozzá házirendeket a [Azure Portal](https://docs.microsoft.com/azure/governance/policy/assign-policy-portal) vagy [Azure PowerShell](https://docs.microsoft.com/azure/governance/policy/assign-policy-powershell) használatával
 
----
 
 ## <a name="next-steps"></a>További lépések
 

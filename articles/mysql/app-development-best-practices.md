@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.openlocfilehash: 93bd6972a89065832a20fbd66949cde5b7510534
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: dc9764ce68d54418578c293833c1fd38080ba0ef
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88794194"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538908"
 ---
 # <a name="best-practices-for-building-an-application-with-azure-database-for-mysql"></a>Ajánlott eljárások alkalmazások létrehozásához Azure Database for MySQL 
 
@@ -69,9 +69,9 @@ Előfordulhat, hogy az alkalmazás [átmeneti hibákat](https://docs.microsoft.c
 Egy jó gyakorlat az első újrapróbálkozás előtt 5 másodpercig várni. Ezután kövesse az egyes újrapróbálkozásokat a várakozás fokozatos növelésével, akár 60 másodpercre. Korlátozza az újrapróbálkozások maximális számát, amikor az alkalmazás úgy véli, hogy a művelet meghiúsult, így tovább vizsgálhatja. További információt [a kapcsolódási hibák elhárítása](https://docs.microsoft.com/azure/mysql/howto-troubleshoot-common-connection-issues) című témakörben talál. 
 
 ### <a name="enable-read-replication-to-mitigate-failovers"></a>Olvasási replikálás engedélyezése a feladatátvételek enyhítéséhez
-A feladatátvételi forgatókönyvekhez használhatja a [felhőbe irányuló replikálás](https://docs.microsoft.com/azure/mysql/howto-data-in-replication) . Ha olvasási replikákat használ, a fő-és a replika kiszolgálók közötti automatikus feladatátvétel nem történik meg. 
+A feladatátvételi forgatókönyvekhez használhatja a [felhőbe irányuló replikálás](https://docs.microsoft.com/azure/mysql/howto-data-in-replication) . Ha olvasási replikákat használ, a forrás-és a replika-kiszolgálók közötti automatikus feladatátvétel nem történik meg. 
 
-Megfigyelheti a főkiszolgáló és a replika közötti késést, mivel a replikáció aszinkron módon történik. A hálózati késést számos tényező befolyásolja, például a főkiszolgálón futó munkaterhelés mérete, valamint az adatközpontok közötti késleltetés. A legtöbb esetben a replika késése néhány másodperctől pár percig terjed.
+A forrás és a replika közötti késés tapasztalható, mert a replikáció aszinkron módon történik. A hálózati késést számos tényező befolyásolja, például a forráskiszolgálón futó munkaterhelés mérete, valamint az adatközpontok közötti késleltetés. A legtöbb esetben a replika késése néhány másodperctől pár percig terjed.
 
 ## <a name="database-deployment"></a>Adatbázis központi telepítése 
 

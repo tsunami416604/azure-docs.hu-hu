@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 649611b2e378cd43286b193c6d40b03b743905cd
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 06a31e61583ac28218b34195dd6e5b7f92776dce
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89000073"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541237"
 ---
 # <a name="how-to-monitor-azure-cognitive-search-indexer-status-and-results"></a>Az Azure Cognitive Search indexelő állapotának és eredményeinek figyelése
 
@@ -189,4 +189,4 @@ Az állapotkódok és az indexelő figyelési információkkal kapcsolatos tová
 
 A dokumentum-specifikus hibákra vagy figyelmeztetésekre vonatkozó részletek a lista és a felsorolás enumerálásával olvashatók be `IndexerExecutionResult.Errors` `IndexerExecutionResult.Warnings` .
 
-Az indexelő figyeléséhez használt .net SDK-osztályokkal kapcsolatos további információkért lásd: [IndexerExecutionInfo](/dotnet/api/microsoft.azure.search.models.indexerexecutioninfo?view=azure-dotnet) és [IndexerExecutionResult](/dotnet/api/microsoft.azure.search.models.indexerexecutionresult?view=azure-dotnet).
+Az indexelő figyeléséhez használt .net SDK-osztályokkal kapcsolatos további információkért lásd: [IndexerExecutionInfo](/dotnet/api/microsoft.azure.search.models.indexerexecutioninfo) és [IndexerExecutionResult](/dotnet/api/microsoft.azure.search.models.indexerexecutionresult).

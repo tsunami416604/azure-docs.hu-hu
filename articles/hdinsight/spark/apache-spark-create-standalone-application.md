@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: contperfq1
 ms.date: 08/21/2020
-ms.openlocfilehash: cfdb02b0a5942536a608fbc957ed69d1efd97e8e
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: deda7644d29fce5deb8d6c76f93da0caf0b22ff8
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88756894"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91536919"
 ---
 # <a name="tutorial-create-a-scala-maven-application-for-apache-spark-in-hdinsight-using-intellij"></a>Oktatóanyag: Scala Maven-alkalmazás létrehozása a HDInsight-hez Apache Spark a IntelliJ használatával
 
@@ -98,7 +98,7 @@ A Scala beépülő modul telepítéséhez hajtsa végre a következő lépéseke
 
 5. Az archetípusok listájából válassza a elemet **`org.scala-tools.archetypes:scala-archetype-simple`** . Ez az archetípus létrehozza a megfelelő címtár-struktúrát, és letölti a szükséges alapértelmezett függőségeket a Scala programba való íráshoz.
 
-    !["IntelliJ-ötlet létrehozása Maven-projekt"](./media/apache-spark-create-standalone-application/intellij-project-create-maven.png)
+    ![A képernyőképen a kiválasztott archetípus látható az új projekt ablakban.](./media/apache-spark-create-standalone-application/intellij-project-create-maven.png)
 
 6. Kattintson a **Tovább** gombra.
 
@@ -107,7 +107,7 @@ A Scala beépülő modul telepítéséhez hajtsa végre a következő lépéseke
     - **GroupID:** com. microsoft. Spark. példa
     - **ArtifactId:** SparkSimpleApp
 
-    !["IntelliJ-ötlet létrehozása Maven-projekt"](./media/apache-spark-create-standalone-application/intellij-artifact-coordinates.png)
+    ![Képernyőfelvétel: az új projekt ablakban látható az összetevők koordinátái lehetőség.](./media/apache-spark-create-standalone-application/intellij-artifact-coordinates.png)
 
 8. Kattintson a **Tovább** gombra.
 
@@ -179,7 +179,7 @@ A Scala beépülő modul telepítéséhez hajtsa végre a következő lépéseke
 
     Mentse a pom.xml fájl módosításait.
 
-22. Hozza létre a .jar kiterjesztésű fájlt. Az IntelliJ IDEA lehetővé teszi a JAR-fájlok projektösszetevőként való létrehozását. Hajtsa végre az alábbi lépéseket.
+22. Hozza létre a .jar kiterjesztésű fájlt. Az IntelliJ IDEA lehetővé teszi a JAR-fájlok projektösszetevőként való létrehozását. Tegye a következőket.
 
     1. A **fájl** menüben válassza a **projekt szerkezete...** lehetőséget.
 

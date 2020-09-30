@@ -3,26 +3,24 @@ title: Előre összeépített telefonszámok – LUIS
 titleSuffix: Azure Cognitive Services
 description: Ez a cikk a Language Understanding (LUIS) telefonszámmal előre elkészített entitási információit tartalmazza.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/27/2019
-ms.author: diberry
-ms.openlocfilehash: 4e2c8e27c6d4195252c6a5b423fa98b2a4247182
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 598ecaddbab3b70297a460521c7ec3386b390a8d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78270475"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91535389"
 ---
 # <a name="phone-number-prebuilt-entity-for-a-luis-app"></a>A LUIS-alkalmazáshoz tartozó előre összeépített entitás
-Az `phonenumber` entitás többféle telefonszámot is Kinyer, beleértve az országkódot is. Mivel ez az entitás már be van tanítva, nem kell hozzáadnia példa hosszúságú kimondott szöveg az alkalmazáshoz. Az `phonenumber` entitás csak a `en-us` kulturális környezetekben támogatott.
+Az `phonenumber` entitás többféle telefonszámot is Kinyer, beleértve az országkódot is. Mivel ez az entitás már be van tanítva, nem kell hozzáadnia példa hosszúságú kimondott szöveg az alkalmazáshoz. Az `phonenumber` entitás csak a kulturális környezetekben támogatott `en-us` .
 
 ## <a name="types-of-a-phone-number"></a>A telefonszám típusa
-`Phonenumber`felügyelt a [felismerők – Text GitHub-](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-PhoneNumbers.yaml) adattárból
+`Phonenumber` felügyelt a [felismerők – Text GitHub-](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-PhoneNumbers.yaml) adattárból
 
 ## <a name="resolution-for-this-prebuilt-entity"></a>Az előre elkészített entitás feloldása
 
@@ -32,7 +30,7 @@ A lekérdezés a következő entitás-objektumokat adja vissza:
 
 #### <a name="v3-response"></a>[V3 válasz](#tab/V3)
 
-A következő JSON a `verbose` paraméter értéke: `false`
+A következő JSON a `verbose` paraméter értéke `false` :
 
 ```json
 "entities": {
@@ -42,7 +40,7 @@ A következő JSON a `verbose` paraméter értéke: `false`
 }
 ```
 #### <a name="v3-verbose-response"></a>[V3 részletes válasz](#tab/V3-verbose)
-A következő JSON a `verbose` paraméter értéke: `true`
+A következő JSON a `verbose` paraméter értéke `true` :
 
 ```json
 "entities": {

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4d1e120073e5bf4306c89628fc4e2e9c9f7ed2cf
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 6c46dfb3f36c3ef7f67ce2f3b52c2ffe4c805a61
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89002419"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534794"
 ---
 # <a name="filters-in-azure-cognitive-search"></a>Szűrők az Azure Cognitive Search 
 
@@ -138,7 +138,7 @@ Az alábbi cikkekben részletes útmutatást talál az egyes használati esetekh
 
 A REST APIban az egyszerű mezők esetében a szűrhető beállítás alapértelmezés szerint be van *kapcsolva* . Szűrhető mezők: az index mérete növekszik; Ügyeljen arra, hogy `"filterable": false` a szűrőben ténylegesen használni kívánt mezőkhöz legyen beállítva. További információ a mezőértékek beállításairól: [create index](/rest/api/searchservice/create-index).
 
-A .NET SDK-ban a szűrhetőség alapértelmezés szerint *ki van kapcsolva* . A mező szűrhető úgy, hogy a megfelelő [mező](/dotnet/api/microsoft.azure.search.models.field?view=azure-dotnet) objektum [IsFilterable tulajdonságát](/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet) a értékre állítja `true` . Ezt a deklaratív [IsFilterable attribútum](/dotnet/api/microsoft.azure.search.isfilterableattribute)használatával is végrehajthatja. Az alábbi példában az attribútum `BaseRate` egy olyan modell osztály tulajdonságára van beállítva, amely az index definícióját képezi le.
+A .NET SDK-ban a szűrhetőség alapértelmezés szerint *ki van kapcsolva* . A mező szűrhető úgy, hogy a megfelelő [mező](/dotnet/api/microsoft.azure.search.models.field) objektum [IsFilterable tulajdonságát](/dotnet/api/microsoft.azure.search.models.field.isfilterable) a értékre állítja `true` . Ezt a deklaratív [IsFilterable attribútum](/dotnet/api/microsoft.azure.search.isfilterableattribute)használatával is végrehajthatja. Az alábbi példában az attribútum `BaseRate` egy olyan modell osztály tulajdonságára van beállítva, amely az index definícióját képezi le.
 
 ```csharp
     [IsFilterable, IsSortable, IsFacetable]
@@ -169,7 +169,7 @@ A numerikus mezők nincsenek `searchable` a teljes szöveges keresés kontextus�
 
 A numerikus mezőket (ár, méret, SKU, ID) tartalmazó dokumentumok a keresési eredményekben adják meg ezeket az értékeket, ha a mező meg van jelölve `retrievable` . Itt az a pont, hogy a teljes szöveges keresés önmagában nem vonatkozik a numerikus mezők típusára.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Először a portálon keresse meg a **keresési Explorert** , hogy **$Filter** paraméterekkel küldje el a lekérdezéseket. A [Real-Estate-Sample index](search-get-started-portal.md) érdekes eredményeket biztosít a következő szűrt lekérdezésekhez, amikor beilleszti őket a keresősávba:
 
@@ -196,7 +196,7 @@ search=John Leclerc&$count=true&$select=source,city,postCode,baths,beds&$filter=
 
 További Példákért lásd: [OData szűrési kifejezés szintaxisa > példák](./search-query-odata-filter.md#examples).
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 + [A teljes szöveges keresés működése az Azure Cognitive Searchben](search-lucene-query-architecture.md)
 + [Dokumentumok keresése – REST API](/rest/api/searchservice/search-documents)

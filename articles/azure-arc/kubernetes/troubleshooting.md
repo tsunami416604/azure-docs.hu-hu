@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Az arc-kompatibilis Kubernetes-fürtökkel kapcsolatos gyakori problémák elhárítása.
 keywords: Kubernetes, arc, Azure, tárolók
-ms.openlocfilehash: 404516778255409d56dd5c3a7d1fd96711cc981f
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 4a8f4c652f1ab73e0b9979f77d7de5014c8d31a8
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723673"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540608"
 ---
 # <a name="azure-arc-enabled-kubernetes-troubleshooting-preview"></a>Azure arc-kompatibilis Kubernetes-hibaelhárítás (előzetes verzió)
 
@@ -100,6 +100,34 @@ Command group 'connectedk8s' is in preview. It may be changed/removed in a futur
 Ensure that you have the latest helm version installed before proceeding to avoid unexpected errors.
 This operation might take a while...
 ```
+
+### <a name="helm-issue"></a>Helm-probléma
+
+A Helm `v3.3.0-rc.1` verziójának olyan [hibája](https://github.com/helm/helm/pull/8527) van, ahol a Helm install/upgrade (amelyet a motorháztető alatt használ a connectedk8s CLI bővítménnyel) a következő hibához vezető összes Hook futtatását eredményezi:
+
+```console
+$ az connectedk8s connect -n shasbakstest -g shasbakstest
+Command group 'connectedk8s' is in preview. It may be changed/removed in a future release.
+Ensure that you have the latest helm version installed before proceeding.
+This operation might take a while...
+
+Please check if the azure-arc namespace was deployed and run 'kubectl get pods -n azure-arc' to check if all the pods are in running state. A possible cause for pods stuck in pending state could be insufficientresources on the kubernetes cluster to onboard to arc.
+ValidationError: Unable to install helm release: Error: customresourcedefinitions.apiextensions.k8s.io "connectedclusters.arc.azure.com" not found
+```
+
+A probléma megoldásához kövesse az alábbi lépéseket:
+
+1. Törölje az Azure arc-kompatibilis Kubernetes-erőforrást a Azure Portal.
+2. Futtassa a következő parancsokat a gépen:
+    
+    ```console
+    kubectl delete ns azure-arc
+    kubectl delete clusterrolebinding azure-arc-operator
+    kubectl delete secret sh.helm.release.v1.azure-arc.v1
+    ```
+
+3. Telepítse a Helm 3 [stabil verzióját](https://helm.sh/docs/intro/install/) a gépen a kiadásra jelölt verzió helyett.
+4. Futtassa a `az connectedk8s connect` parancsot a megfelelő értékekkel, hogy csatlakozhasson a fürthöz az Azure-ív használatával.
 
 ## <a name="configuration-management"></a>Konfigurációkezelés
 

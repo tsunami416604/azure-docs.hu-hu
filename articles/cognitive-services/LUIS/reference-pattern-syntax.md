@@ -5,13 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/14/2020
-ms.author: diberry
-ms.openlocfilehash: 533dc87e50abc5a689d1157b294070ece39dab9f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3caccd6766226ce68b371856b081b052c1033f71
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322818"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542189"
 ---
 # <a name="pattern-syntax"></a>Minta szintaxisa
 
@@ -24,7 +23,7 @@ A mintákban lévő entitásokat kapcsos zárójelek veszik körül `{}` . A min
 
 A minta szintaxisa a következő szintaxist támogatja:
 
-|Funkció|Syntax|Beágyazási szint|Példa|
+|Függvény|Szintaxis|Beágyazási szint|Példa|
 |--|--|--|--|
 |entitás| {} – kapcsos zárójelek|2|Hol van a (z) {Entity-Name} űrlap?|
 |választható|[] – szögletes zárójelek<BR><BR>A választható és a csoportosítás bármely kombinációja esetében 3 korlát van |2|A kérdőjel nem kötelező [?]|
@@ -58,8 +57,8 @@ A **választható** szintaxisú **Csoportosítás** kombinációja legfeljebb 3 
 
 |Engedélyezve|Példa|
 |--|--|
-|Yes|([(test1 &#x7c; teszt2)] &#x7c; test3)|
-|No|([([test1] &#x7c; teszt2)] &#x7c; test3)|
+|Igen|([(test1 &#x7c; teszt2)] &#x7c; test3)|
+|Nem|([([test1] &#x7c; teszt2)] &#x7c; test3)|
 
 ## <a name="nesting-limits-for-groups-with-or-ing-syntax"></a>A vagy-ing szintaxissal rendelkező csoportok korlátainak beágyazásával
 
@@ -67,8 +66,8 @@ A **Group** with vagy a **-ing** szintaxisának kombinációja legfeljebb 2 füg
 
 |Engedélyezve|Példa|
 |--|--|
-|Yes|(test1 &#x7c; teszt2 &#x7c; (test3 &#x7c; test4))|
-|No|(test1 &#x7c; teszt2 &#x7c; test3 &#x7c; (test4 &#x7c; test5)) |
+|Igen|(test1 &#x7c; teszt2 &#x7c; (test3 &#x7c; test4))|
+|Nem|(test1 &#x7c; teszt2 &#x7c; test3 &#x7c; (test4 &#x7c; test5)) |
 
 ## <a name="syntax-to-add-an-entity-to-a-pattern-template"></a>Entitás hozzáadása egy minta sablonhoz
 Ha entitást szeretne hozzáadni a mintázat sablonhoz, az entitás nevét kapcsos zárójelekkel kell megadnia, például: `Who does {Employee} manage?` .
@@ -133,7 +132,7 @@ Megadhatja az opcionális szöveget a teljes szövegben a reguláris kifejezés 
 
 Az írásjeleket ( `?` , `!` , `.` ) figyelmen kívül kell hagyni, és a mintázat szögletes zárójelének szintaxisa alapján figyelmen kívül kell hagyni őket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a mintákról:
 

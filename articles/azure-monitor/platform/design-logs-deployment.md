@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: a4186909db3d784938ada4baaaf08aba02b31d30
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6bdc7a087e60791ba3e3367aca3ea3a4500478ab
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91317123"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534199"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Az Azure Monitor-naplók üzembe helyezésének megtervezése
 
@@ -26,6 +26,8 @@ A Log Analytics munkaterület A következőket biztosítja:
 * Az adattárolás földrajzi helye.
 * Az adatelkülönítés azáltal, hogy az ajánlott tervezési stratégiák alapján különböző felhasználói hozzáférési jogosultságokat biztosít.
 * A beállítások konfigurációjának hatóköre, például az [árképzési szintek](./manage-cost-storage.md#changing-pricing-tier), a [megőrzés](./manage-cost-storage.md#change-the-data-retention-period)és [az adatok maximális](./manage-cost-storage.md#manage-your-maximum-daily-data-volume)száma.
+
+A munkaterületek fizikai fürtökön futnak. Alapértelmezés szerint a rendszer létrehozza és kezeli ezeket a fürtöket. Azok az ügyfelek, akik több mint 4TB töltöttek be, saját dedikált fürtöket szeretnének létrehozni a munkaterületeik számára – lehetővé teszik, hogy jobb szabályozást és magasabb betöltési sebességet nyújtsanak.
 
 Ez a cikk részletes áttekintést nyújt a tervezési és áttelepítési megfontolásokról, a hozzáférés-vezérlés áttekintéséről, valamint az informatikai szervezet számára ajánlott tervezési megvalósítások megismeréséről.
 
@@ -62,7 +64,7 @@ A szerepköralapú hozzáférés-vezérlés (RBAC) segítségével a felhasznál
 
 A felhasználóhoz hozzáférő adatok az alábbi táblázatban felsorolt tényezők kombinációjával vannak meghatározva. Mindegyiket az alábbi szakasz ismerteti.
 
-| Szempont | Description |
+| Szempont | Leírás |
 |:---|:---|
 | [Hozzáférési mód](#access-mode) | A felhasználó által a munkaterület eléréséhez használt metódus.  Meghatározza az elérhető adatmennyiséget és az alkalmazott hozzáférés-vezérlési módot. |
 | [Hozzáférés-vezérlési mód](#access-control-mode) | A munkaterületre vonatkozó beállítás, amely meghatározza, hogy a rendszer az engedélyeket a munkaterületen vagy az erőforrás szintjén alkalmazza-e. |
@@ -125,37 +127,16 @@ A *hozzáférés-vezérlési mód* az egyes munkaterületeken olyan beállítás
 
 A hozzáférés-vezérlési mód a portálon, a PowerShell-lel vagy a Resource Manager-sablonok használatával történő módosításáról további információt a [hozzáférés-vezérlési mód konfigurálása](manage-access.md#configure-access-control-mode)című témakörben talál.
 
-## <a name="ingestion-volume-rate-limit"></a>Betöltési mennyiség maximális száma
+## <a name="scale-and-ingestion-volume-rate-limit"></a>Méretezési és betöltési mennyiség maximális száma
 
-A Azure Monitor egy nagy léptékű adatszolgáltatás, amely több ezer ügyfelet szolgál ki havonta több, mint havi terabájt adatküldéssel. A mennyiségi korlát a bérlős-környezetben a hirtelen betöltési tüskékkel Azure Monitor ügyfelek elkülönítését tervezi. Az alapértelmezett betöltési mennyiség 500 MB (tömörített), a munkaterületeken van definiálva, ez körülbelül **6 GB/perc** tömörítve van – a tényleges méret a napló hosszától és a tömörítési aránytól függően változhat. A mennyiségi díjszabási korlát minden betöltött adatokra vonatkozik, függetlenül attól, hogy az Azure-erőforrásoktól a [diagnosztikai beállítások](diagnostic-settings.md), [az adatgyűjtő API vagy az](data-collector-api.md) ügynökök használatával küldtek el.
+A Azure Monitor egy nagy léptékű adatszolgáltatás, amely több ezer ügyfelet kínál a havonta petabájt adatokat. A munkaterületek nem korlátozódnak a tárolóhelyre, és az petabájt is növekednek. A munkaterületek méretezés miatt nem szükségesek a felosztáshoz.
 
-Ha olyan munkaterületre küldi az adatmennyiséget, amely a munkaterületen konfigurált küszöbérték 80%-ánál nagyobb, akkor az eseményt 6 óránként küldi el a munkaterület *műveleti* táblájába, amíg a küszöbérték továbbra is meghalad. Ha a betöltött mennyiség meghaladja a küszöbértéket, a rendszer bizonyos adatvesztést végez, és az eseményt 6 óránként küldi el a munkaterület *műveleti* táblájába, amíg a küszöbérték továbbra is túllépve lesz. Ha a betöltési mennyiség aránya továbbra is meghaladja a küszöbértéket, vagy hamarosan várhatóan nem éri el, kérheti, hogy egy támogatási kérelem megnyitásával növelje azt. 
+Az ügyfelek és a háttér-infrastruktúra Azure Monitorának és elkülönítésének biztosításához egy alapértelmezett betöltési korlátot kell megszabni, amely a tüskékből és az árvizekből származó helyzetek elleni védelemre szolgál. A díjszabási korlát alapértelmezett értéke körülbelül **6 GB/perc** , és a normál betöltés lehetővé tételére szolgál. További részletek a betöltés mennyiségi korlátjának méréséről: [Azure monitor szolgáltatási korlátok](../service-limits.md#data-ingestion-volume-rate).
 
-Ha értesítést szeretne kapni a munkaterületen lévő betöltési mennyiség korlátozásáról vagy eléréséről, hozzon létre egy [napló-riasztási szabályt](alerts-log.md) a következő lekérdezés és a riasztási logika alapján, a nullánál nagyobb eredmények száma, 5 perces próbaidőszak és 5 perc gyakorisága alapján.
+Azok az ügyfelek, akik kevesebb mint 4TB/napot töltenek be, általában nem teljesítik ezeket a korlátozásokat. Azok az ügyfelek, akik a normál működésük részeként nagyobb mennyiségű vagy tüskékkel rendelkeznek, érdemes áthelyezni a [dedikált fürtökre](../log-query/logs-dedicated-clusters.md) , ahol a betöltési arány határértéke megnövelhető.
 
-A betöltési mennyiség túllépte a küszöbértéket
-```Kusto
-Operation
-| where Category == "Ingestion"
-| where OperationKey == "Ingestion rate limit"
-| where Level == "Error"
-```
+Ha a betöltési arány korlátja aktiválva van, vagy a küszöbérték 80%-ában megjelenik egy esemény a munkaterületen a *műveleti* táblába. Javasoljuk, hogy figyelje, és hozzon létre egy riasztást. További részleteket az [adatfeldolgozási kötetek száma](../service-limits.md#data-ingestion-volume-rate)című részben talál.
 
-A betöltési mennyiség aránya a küszöbérték 80%-át meghaladta
-```Kusto
-Operation
-| where Category == "Ingestion"
-| where OperationKey == "Ingestion rate limit"
-| where Level == "Warning"
-```
-
-A betöltési mennyiség aránya a küszöbérték 70%-át meghaladta
-```Kusto
-Operation
-| where Category == "Ingestion"
-| where OperationKey == "Ingestion rate limit"
-| where Level == "Info"
-```
 
 ## <a name="recommendations"></a>Javaslatok
 
@@ -180,7 +161,7 @@ A modellre való Migrálás megtervezése során vegye figyelembe a következők
 * Távolítsa el az alkalmazás-Teams engedélyt a munkaterület olvasásához és lekérdezéséhez.
 * Engedélyezheti és konfigurálhatja azokat a figyelési megoldásokat, például a tárolók és/vagy Azure Monitor for VMs Azure Monitorét, az Automation-fiók (ok) t, valamint az eredeti munkaterületen üzembe helyezett felügyeleti megoldásokat, például a Update Management, a virtuális gépek indítását és leállítását stb..
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az útmutatóban ajánlott biztonsági engedélyek és vezérlőelemek megvalósításához tekintse át a [naplók hozzáférésének kezelése](manage-access.md)című témakört.
 

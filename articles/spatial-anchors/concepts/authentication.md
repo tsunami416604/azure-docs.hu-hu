@@ -9,12 +9,12 @@ ms.date: 05/28/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e4d25637498bec223e294eecf2be6dc88fa2aa0d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 1726f3a1ddc62cbb76a65f1d284793e57ea2f2a8
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997166"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538245"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Hitelesítés és engedélyezés az Azure térbeli horgonyokhoz
 
@@ -22,7 +22,7 @@ Ebben a szakaszban az Azure térbeli horgonyok alkalmazásból vagy webszolgált
 
 ## <a name="overview"></a>Áttekintés
 
-![Az Azure térbeli horgonyok hitelesítésének áttekintése](./media/spatial-anchors-authentication-overview.png)
+![Az Azure térbeli horgonyokra való hitelesítés áttekintését bemutató diagram.](./media/spatial-anchors-authentication-overview.png)
 
 Egy adott Azure térbeli horgonyhoz tartozó fiók eléréséhez az ügyfeleknek először hozzáférési tokent kell beszerezniük az Azure Mixed Reality biztonságijogkivonat-szolgáltatásból (STS). Az STS Live-ból 24 órán keresztül beszerzett tokenek, valamint a térbeli horgonyok szolgáltatásaira vonatkozó információk, amelyek lehetővé teszik a fiók engedélyezési döntését, és biztosítják, hogy csak a jogosult résztvevői férhessenek hozzá a fiókhoz.
 
@@ -39,7 +39,7 @@ Az Azure AD-hitelesítési tokenek kétféleképpen érhetők el:
 
 Az első lépésekhez az Azure térbeli horgonyok fiókjához való hozzáféréshez használható fiókok kulcsai. A fiók kulcsait a Azure Portal fogja megtalálni. Navigáljon a fiókjához, és válassza a "kulcsok" fület.
 
-![Az Azure térbeli horgonyok hitelesítésének áttekintése](../../../includes/media/spatial-anchors-get-started-create-resource/view-account-key.png)
+![Képernyőkép, amely megjeleníti a "kulcs" lapot a "Primary Key" Kiemelt "másolás" gombjával.](../../../includes/media/spatial-anchors-get-started-create-resource/view-account-key.png)
 
 A rendszer két kulcsot tesz elérhetővé, amelyek egyszerre érvényesek a térbeli horgonyok fiókhoz való hozzáféréshez. Javasoljuk, hogy rendszeresen frissítse a fiók eléréséhez használt kulcsot. a két különálló érvényes kulcs lehetővé teszi az ilyen frissítések állásidő nélküli engedélyezését; csak az elsődleges kulcsot és a másodlagos kulcsot kell frissítenie.
 
@@ -260,7 +260,7 @@ Az alkalmazásokhoz, szolgáltatásokhoz vagy a szolgáltatás Azure AD-felhaszn
 - **Térbeli horgonyok fiókjának közreműködői**: a szerepkörrel rendelkező alkalmazások vagy felhasználók létrehozhatnak térbeli horgonyokat, lekérdezéseket végezhetnek, de nem törölhetik azokat.
 - **Térbeli horgonyok fiókjának olvasója**: azok az alkalmazások vagy felhasználók, akik ezt a szerepkört használják, csak a térbeli horgonyok lekérdezésére képesek, de újakat nem hozhatnak létre, törölhetik a meglévőket, vagy frissíthetik a metaadatokat a térbeli horgonyokon. Ez általában olyan alkalmazásokhoz használatos, ahol egyes felhasználók a környezetet használják, míg mások csak az adott környezetbe helyezett horgonyokat tudják visszahívni.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Hozza létre első alkalmazását az Azure térbeli Horgonyokkal.
 

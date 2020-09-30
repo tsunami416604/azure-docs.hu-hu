@@ -13,14 +13,14 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fea05ada52ba4281acb3451769446d7f0bad790d
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: e548e99cc60d67b477fd087b993764bf7f223592
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448719"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541186"
 ---
-# <a name="view-and-assign-administrator-roles-in-azure-active-directory"></a>Rendszergazdai szerepkörök megtekintése és kiosztása Azure Active Directory
+# <a name="view-and-assign-administrator-roles-in-azure-active-directory"></a>Rendszergazdai szerepkörök megtekintése és kiosztása az Azure Active Directoryban
 
 Most már megtekintheti és kezelheti a rendszergazdai szerepkörök összes tagját a Azure Active Directory-portálon. Ha gyakran felügyeli a szerepkör-hozzárendeléseket, valószínűleg ezt a folyamatot fogja előnyben részesíteni. És ha már megértette, hogy "mi a fene do ezek a szerepkörök?", az egyes Azure AD-rendszergazdai szerepkörök engedélyeinek részletes listáját láthatja.
 
@@ -55,7 +55,7 @@ Ha Ön globális rendszergazda vagy Kiemelt szerepkörű rendszergazda, egyszer�
 
 A szerepkör tagjainak megtekintésekor válassza a **Leírás** lehetőséget a szerepkör-hozzárendelés által biztosított engedélyek teljes listájának megtekintéséhez. A lap a kapcsolódó dokumentációra mutató hivatkozásokat tartalmaz, amelyek segítséget nyújtanak a címtár szerepköreinek kezelésében.
 
-![rendszergazdai szerepkör engedélyeinek listája](./media/directory-manage-roles-portal/role-description.png)
+![Képernyőkép, amely a "globális rendszergazda – Leírás" lapot jeleníti meg.](./media/directory-manage-roles-portal/role-description.png)
 
 ## <a name="download-role-assignments"></a>Szerepkör-hozzárendelések letöltése
 
@@ -71,7 +71,7 @@ Egy adott szerepkör összes hozzárendelésének letöltéséhez a **szerepkör
 
 1. Válasszon ki egy szerepkört a hozzárendelések megtekintéséhez.
 
-    ![rendszergazdai szerepkör engedélyeinek listája](./media/directory-manage-roles-portal/member-list.png)
+    ![Képernyőfelvétel: a "felhasználói rendszergazda – hozzárendelések" lap, amelyen a "Manage in PIM" művelet van kiválasztva.](./media/directory-manage-roles-portal/member-list.png)
 
 1. Válassza a **hozzárendelések hozzáadása** lehetőséget, és válassza ki a hozzárendelni kívánt szerepköröket. A felügyelet **a PIM-ben** lehetőségre kattintva további felügyeleti lehetőségeket biztosíthat. Ha az alábbi ábrán nem látható, olvassa el a [Kiemelt szerepkörök hozzárendelésének megtekintése](#view-assignments-for-privileged-roles) című témakört annak ellenőrzéséhez, hogy a PIM-ban van-e.
 

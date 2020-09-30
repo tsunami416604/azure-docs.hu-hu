@@ -13,12 +13,12 @@ ms.date: 04/14/2020
 ms.author: curtand
 ms.reviewer: sahenry
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: d692302df1f5c03a7dce60858b31e0ca66de4c80
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 56ee7df52abf97c920dfe2fa4ba5d1d858975f7d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83744538"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537090"
 ---
 # <a name="delegate-user-management-with-my-staff-preview"></a>Felhasználói felügyelet delegálása munkatársaival (előzetes verzió)
 
@@ -104,7 +104,7 @@ Ha a bejelentkezéskor a felhasználónévvel (SMS-alapú bejelentkezéssel) ren
 
 1. Ha elkészült, kattintson **az OK gombra** .
 
-    ![Munkatárs telefonszámának eltávolítása a munkatársaim számára](media/my-staff-team-manager/enableforms2.png)
+    ![Képernyőfelvétel: "a telefonszám engedélyezése a bejelentkezéshez?" ablak az "OK" gomb kiválasztásával.](media/my-staff-team-manager/enableforms2.png)
 
 ### <a name="remove-a-phone-number"></a>Telefonszám eltávolítása
 

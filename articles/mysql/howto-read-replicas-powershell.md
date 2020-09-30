@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 8/24/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c85af0f4078010fa5b6a1d116b3bfda942c0490c
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: e9c8ce7519c6e2c84ef47fc78897c4b67b89e56a
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816932"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541016"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-powershell"></a>Olvasási replikák létrehozása és kezelése a Azure Database for MySQL a PowerShell használatával
 
@@ -38,12 +38,12 @@ Ha a PowerShell helyi használatát választja, kapcsolódjon az Azure-fiókjáh
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 > [!IMPORTANT]
-> Az olvasási replika funkció csak a általános célú vagy a memória optimalizált árképzési szintjein Azure Database for MySQL-kiszolgálókon érhető el. Győződjön meg arról, hogy a főkiszolgáló a fenti díjszabási szintek egyikében van.
+> Az olvasási replika funkció csak a általános célú vagy a memória optimalizált árképzési szintjein Azure Database for MySQL-kiszolgálókon érhető el. Győződjön meg arról, hogy a forráskiszolgáló ezen díjszabási szintek egyikében található.
 
 ### <a name="create-a-read-replica"></a>Olvasási replika létrehozása
 
 > [!IMPORTANT]
-> Ha olyan mesteralakzathoz hoz létre replikát, amely nem rendelkezik meglévő replikákkal, a főkiszolgáló először újraindul, hogy felkészüljön a replikálásra. Ezt vegye figyelembe, és hajtsa végre ezeket a műveleteket egy leállási időszakon belül.
+> Ha olyan forráshoz hoz létre replikát, amely nem tartalmaz meglévő replikákat, a forrás először újraindul, hogy felkészüljön a replikálásra. Ezt vegye figyelembe, és hajtsa végre ezeket a műveleteket egy leállási időszakon belül.
 
 A következő paranccsal hozhat létre olvasási replika-kiszolgálót:
 
@@ -68,14 +68,14 @@ Get-AzMySqlServer -Name mrdemoserver -ResourceGroupName myresourcegroup |
 
 Ha többet szeretne megtudni arról, hogy mely régiókban hozhat létre replikát, látogasson el a [replika áttekintése című cikkben](concepts-read-replicas.md).
 
-Alapértelmezés szerint az olvasási replikák ugyanazzal a kiszolgáló-konfigurációval jönnek létre, mint a főkiszolgáló, kivéve ha meg van adva a **SKU** paraméter.
+Alapértelmezés szerint a rendszer az olvasási replikákat ugyanazzal a kiszolgáló-konfigurációval hozza létre, mint a forrást, kivéve, ha meg van adva az **SKU** paraméter.
 
 > [!NOTE]
-> Azt javasoljuk, hogy a replika-kiszolgáló konfigurációját a főkiszolgálónál egyenlő vagy nagyobb értékekkel kell megőrizni, hogy a replika képes legyen lépést tartani a főkiszolgálóval.
+> Azt javasoljuk, hogy a replika-kiszolgáló konfigurációját a forrásnál egyenlő vagy annál nagyobb értékekkel kell megőrizni, hogy a replika képes legyen lépést tartani a főkiszolgálóval.
 
-### <a name="list-replicas-for-a-master-server"></a>Főkiszolgáló replikáinak listázása
+### <a name="list-replicas-for-a-source-server"></a>Forráskiszolgáló replikáinak listázása
 
-Egy adott főkiszolgáló összes replikájának megtekintéséhez futtassa a következő parancsot:
+Egy adott forráskiszolgáló összes replikájának megtekintéséhez futtassa a következő parancsot:
 
 ```azurepowershell-interactive
 Get-AzMySqlReplica -ResourceGroupName myresourcegroup -ServerName mydemoserver
@@ -86,7 +86,7 @@ A `Get-AzMySqlReplica` parancshoz a következő paraméterek szükségesek:
 | Beállítás | Példaérték | Leírás  |
 | --- | --- | --- |
 | ResourceGroupName |  myResourceGroup |  Az az erőforráscsoport, amelybe a replika-kiszolgáló létre lesz hozva.  |
-| ServerName | mydemoserver | A főkiszolgáló neve vagy azonosítója. |
+| ServerName | mydemoserver | A forráskiszolgáló neve vagy azonosítója. |
 
 ### <a name="delete-a-replica-server"></a>Replika-kiszolgáló törlése
 
@@ -96,12 +96,12 @@ Az olvasási replika kiszolgáló törlését a parancsmag futtatásával teheti
 Remove-AzMySqlServer -Name mydemoreplicaserver -ResourceGroupName myresourcegroup
 ```
 
-### <a name="delete-a-master-server"></a>Főkiszolgáló törlése
+### <a name="delete-a-source-server"></a>Forráskiszolgáló törlése
 
 > [!IMPORTANT]
-> A főkiszolgáló törlése leállítja a replikálást az összes replikakiszolgálón, magát a főkiszolgálót pedig törli. A replikakiszolgálókból különálló kiszolgálók lesznek, amelyek az olvasási és írási műveleteket egyaránt támogatják.
+> A forráskiszolgáló törlése leállítja a replikálást az összes replikakiszolgálón, magát a forráskiszolgálót pedig törli. A replikakiszolgálókból különálló kiszolgálók lesznek, amelyek az olvasási és írási műveleteket egyaránt támogatják.
 
-A főkiszolgálók törléséhez futtathatja a `Remove-AzMySqlServer` parancsmagot.
+A forráskiszolgáló törléséhez futtathatja a `Remove-AzMySqlServer` parancsmagot.
 
 ```azurepowershell-interactive
 Remove-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup

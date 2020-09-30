@@ -3,14 +3,14 @@ title: Tesztkörnyezet létrehozása az adatelemzéshez Python-és Jupyter-jegyz
 description: Ismerje meg, hogyan állíthat be olyan labort, amely a Python és a Jupyter notebookok használatával tanítja az adatelemzést.
 author: emaher
 ms.topic: article
-ms.date: 06/26/2020
+ms.date: 09/29/2020
 ms.author: enewman
-ms.openlocfilehash: 25fd090f76c0aa11617b34503ea18d1b45a0e1ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4bbf4c9d4bc83b48b8ecc62946fa9bffa8af50bc
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445015"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533520"
 ---
 # <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>Tesztkörnyezet létrehozása az adatelemzéshez Python és Jupyter notebookokkal
 Ez a cikk azt ismerteti, hogyan állítható be a sablon virtuális gép (VM) a labor Servicesben a diákoknak a [Jupyter-jegyzetfüzetek](http://jupyter-notebook.readthedocs.io/)használatának megtanításához szükséges eszközökkel, valamint arról, hogy a tanulók hogyan kapcsolódhatnak a notebookokhoz a virtuális gépeken (VM-EK).
@@ -20,7 +20,7 @@ A Jupyter notebookok egy nyílt forráskódú projekt, amely lehetővé teszi, h
 ## <a name="set-up-the-lab"></a>A labor beállítása
 
 ### <a name="lab-configuration"></a>Tesztkörnyezet konfigurációja
-A tesztkörnyezet beállításához hozzá kell férnie egy Azure-előfizetéshez és egy labor-fiókhoz. A szervezet rendszergazdájával megtudhatja, hogy tud-e hozzáférni egy meglévő Azure-előfizetéshez. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
+A tesztkörnyezet beállításához hozzá kell férnie egy Azure-előfizetéshez és egy labor-fiókhoz. A szervezet rendszergazdájával megtudhatja, hogy tud-e hozzáférni egy meglévő Azure-előfizetéshez. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
 
 Ha rendelkezik Azure-előfizetéssel, hozzon létre egy új Labor-fiókot Azure Lab Services az oktatóanyag: [labor-fiók beállítása](tutorial-setup-lab-account.md)című témakörben leírtak szerint. Használhat meglévő labor-fiókot is.
 
@@ -112,7 +112,7 @@ Az **Data Science Virtual Machine – Ubuntu-** rendszerkép már ki van építv
 4. Miután elvégezte ezt az információt, nyissa meg a X2Go ügyfélalkalmazás alkalmazást, és hozzon létre egy új munkamenetet. 
 5.  Adja meg a következő értékeket a **munkamenet-beállítások** ablaktáblán:
     - **Munkamenet neve**: bármilyen igény szerint elvégezhető, de javasoljuk, hogy használja a tesztkörnyezet virtuális gépe nevét.
-     - **Gazdagép**:`ml-lab-00000000-0000-0000-0000-000000000000.eastus2.cloudapp.azure.com`
+     - **Gazdagép**: `ml-lab-00000000-0000-0000-0000-000000000000.eastus2.cloudapp.azure.com`
      - **Bejelentkezés**: tanuló
      - **SSH-port**: 12345
      - **Munkamenet típusa**: Xfce

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 6a3fa40eaae174d3616fd0318f81576b7c59eac7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e67130516410f64c32eadbf15857ca3ec4c976fc
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80067705"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542478"
 ---
 # <a name="azure-database-for-mysql-management-stored-procedures"></a>Azure Database for MySQL felügyelet tárolt eljárásai
 
@@ -21,17 +21,17 @@ A tárolt eljárások Azure Database for MySQL-kiszolgálókon érhetők el a My
 
 A beérkező adatokra épülő replikáció lehetővé teszi, hogy szinkronizálja egy helyszínen, virtuális gépeken vagy más felhőszolgáltatók által üzemeltetett adatbázis-szolgáltatásokban futó MySQL-kiszolgáló adatait az Azure Database for MySQL szolgáltatásba.
 
-A következő tárolt eljárások a főkiszolgálók és a replikák közötti felhőbe irányuló replikálás beállítására és eltávolítására szolgálnak.
+A következő tárolt eljárások a forrás és a replika közötti felhőbe irányuló replikálás beállítására és eltávolítására szolgálnak.
 
 |**Tárolt eljárás neve**|**Bemeneti paraméterek**|**Kimeneti paraméterek**|**Használati Megjegyzés**|
 |-----|-----|-----|-----|
 |*MySQL. az_replication_change_master*|master_host<br/>master_user<br/>master_password<br/>master_port<br/>master_log_file<br/>master_log_pos<br/>master_ssl_ca|N.A.|Az adatok SSL-móddal történő átviteléhez adja át a HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány környezetét a master_ssl_ca paraméternek. </br><br>Az adatok SSL nélküli átviteléhez adjon meg egy üres karakterláncot a master_ssl_ca paraméternek.|
 |*MySQL. az_replication _start*|N.A.|N.A.|Elindítja a replikálást.|
 |*MySQL. az_replication _stop*|N.A.|N.A.|Leállítja a replikálást.|
-|*MySQL. az_replication _remove_master*|N.A.|N.A.|Eltávolítja a replikálási kapcsolatot a fő és a replika között.|
+|*MySQL. az_replication _remove_master*|N.A.|N.A.|Eltávolítja a replikálási kapcsolatot a forrás és a replika között.|
 |*MySQL. az_replication_skip_counter*|N.A.|N.A.|Egy replikációs hiba kihagyása.|
 
-A Azure Database for MySQL a Master és a replika közötti felhőbe irányuló replikálás beállításához tekintse meg a [felhőbe irányuló replikálás konfigurálását ismertető témakört](howto-data-in-replication.md).
+A Azure Database for MySQL a forrás és a replika közötti felhőbe irányuló replikálás beállításához tekintse meg a [felhőbe irányuló replikálás konfigurálását ismertető témakört](howto-data-in-replication.md).
 
 ## <a name="other-stored-procedures"></a>Egyéb tárolt eljárások
 

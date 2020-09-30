@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: sagopal
 author: saachigopal
-ms.date: 08/11/2020
+ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: d90b56366cb22e80162983c982e861de608e4e9e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 8239d037d6bd68638998cbb36c47c7dac4bce30d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90893115"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537616"
 ---
 # <a name="train-a-model-using-a-custom-docker-image"></a>Modell betanítása egyéni Docker-rendszerkép használatával
 
@@ -29,7 +29,7 @@ Míg Azure Machine Learning biztosít egy alapértelmezett Docker-alapképet, a 
 Futtassa ezt a kódot ezen környezetek bármelyikén:
 * Azure Machine Learning számítási példány – nincs szükség letöltésre vagy telepítésre
     * Fejezze be a következő [oktatóanyagot: telepítési környezet és munkaterület](tutorial-1st-experiment-sdk-setup.md) egy dedikált notebook-kiszolgáló létrehozásához az SDK-val és a minta adattárral.
-    * A Azure Machine Learning [példák tárházában](https://github.com/Azure/azureml-examples)keressen egy befejezett jegyzetfüzetet a következő könyvtárra való navigálással: **jegyzetfüzetek > fastai > Train-pets-resnet34. ipynb** 
+    * A Azure Machine Learning [példák tárházában](https://github.com/Azure/azureml-examples)keressen egy befejezett jegyzetfüzetet a következő könyvtárra való navigálással: **útmutató – használat – azureml > ml-keretrendszerek > fastai >** 
 
 * Saját Jupyter Notebook-kiszolgáló
     * Hozzon létre egy [munkaterület-konfigurációs fájlt](how-to-configure-environment.md#workspace).
@@ -63,7 +63,7 @@ fastai_env = Environment("fastai2")
 fastai_env.docker.enabled = True
 ```
 
-Ez a megadott alaprendszerkép támogatja a fast.ai könyvtárat, amely lehetővé teszi az elosztott mély tanulási képességeket. További információ: [Fast.ai DockerHub](https://hub.docker.com/u/fastdotai). 
+Az alábbi alaprendszerkép támogatja a fast.ai könyvtárat, amely lehetővé teszi az elosztott mély tanulási képességeket. További információ: [Fast.ai DockerHub](https://hub.docker.com/u/fastdotai). 
 
 Ha egyéni Docker-rendszerképet használ, lehetséges, hogy már megfelelően beállította a Python-környezetet. Ebben az esetben állítsa igaz értékre a `user_managed_dependencies` jelzőt úgy, hogy kihasználja az egyéni rendszerkép beépített Python-környezetét. Alapértelmezés szerint az Azure ML Conda-környezetet hoz létre a megadott függőségekkel, és az adott környezetben futtatja a futtatást ahelyett, hogy az alapképre telepített Python-kódtárakat kellene használnia.
 
@@ -98,6 +98,8 @@ fastai_env.docker.base_dockerfile = dockerfile
 fastai_env.docker.base_image = None
 fastai_env.docker.base_dockerfile = "./Dockerfile"
 ```
+
+Az Azure ML-környezetek létrehozásával és kezelésével kapcsolatos további információkért lásd: [& szoftveres környezetek használata](how-to-use-environments.md). 
 
 ### <a name="create-or-attach-existing-amlcompute"></a>Meglévő AmlCompute létrehozása vagy csatolása
 Létre kell hoznia egy [számítási célt](concept-azure-machine-learning-architecture.md#compute-targets) a modell betanításához. Ebben az oktatóanyagban AmlCompute hoz létre a képzési számítási erőforrásként.
@@ -136,9 +138,10 @@ Ez a ScriptRunConfig a kívánt [számítási célra](how-to-set-up-training-tar
 ```python
 from azureml.core import ScriptRunConfig
 
-fastai_config = ScriptRunConfig(source_directory='fastai-example', script='train.py')
-fastai_config.run_config.environment = fastai_env
-fastai_config.run_config.target = compute_target
+src = ScriptRunConfig(source_directory='fastai-example',
+                      script='train.py',
+                      compute_target=compute_target,
+                      environment=fastai_env)
 ```
 
 ### <a name="submit-your-run"></a>A Futtatás beküldése
@@ -147,16 +150,14 @@ Ha egy ScriptRunConfig objektummal küld egy tanítási futtatást, a Submit met
 ```python
 from azureml.core import Experiment
 
-run = Experiment(ws,'fastai-custom-image').submit(fastai_config)
+run = Experiment(ws,'fastai-custom-image').submit(src)
 run.wait_for_completion(show_output=True)
 ```
 
 > [!WARNING]
 > Azure Machine Learning a teljes forrás könyvtár másolásával futtatja a betanítási parancsfájlokat. Ha olyan bizalmas adatokkal rendelkezik, amelyeket nem szeretne felvenni, használja a [. ignore fájlt](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots) , vagy ne adja meg a forrás könyvtárában. Ehelyett egy [adattár](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py&preserve-view=true)használatával férhet hozzá az adataihoz.
 
-A Python-környezet testreszabásával kapcsolatos további információkért lásd: [& szoftveres környezetek használata](how-to-use-environments.md). 
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a cikkben egy modellt egy egyéni Docker-rendszerkép használatával tanított ki. Ezekről a cikkekről további tudnivalókat talál a Azure Machine Learningról.
 * A [futtatási metrikák nyomon követése](how-to-track-experiments.md) a betanítás során
 * [Modell üzembe helyezése](how-to-deploy-custom-docker-image.md) egyéni Docker-rendszerkép használatával.

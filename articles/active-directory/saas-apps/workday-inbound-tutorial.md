@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: 87085d4a4911801933993720ae0ab23aeb19956d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 53132cc21b8298f951f2daa979ed433103ad0ac0
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90974368"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541288"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Oktatóanyag: munkanapok konfigurálása a felhasználók automatikus kiépítési felállításához
 
@@ -129,7 +129,7 @@ Ebben a lépésben létrehoz egy nem korlátozott vagy korlátozott integráció
 1. A keresőmezőbe írja be a biztonsági csoport létrehozása kifejezést, majd kattintson a **biztonsági csoport létrehozása**elemre.
 
    > [!div class="mx-imgBorder"]
-   > ![CreateSecurity csoport](./media/workday-inbound-tutorial/wd_isu_03.png "CreateSecurity csoport")
+   > ![A keresőmezőbe a "biztonsági csoport létrehozása" feliratot megjelenítő képernyőkép, a keresési eredmények között pedig a "biztonsági csoport létrehozása – feladat" szöveg látható.](./media/workday-inbound-tutorial/wd_isu_03.png)
 2. Fejezze be a **biztonsági csoport létrehozása** feladatot. 
 
    * A munkanapokon két típusú biztonsági csoport létezik:
@@ -154,7 +154,7 @@ Ebben a lépésben "tartományi biztonsági" házirend-engedélyeket ad a munkav
 
 1. A keresőmezőbe írja be a **tartomány biztonsági konfigurációját** , majd kattintson a **tartomány biztonsági konfigurációs jelentés**hivatkozására.  
    >[!div class="mx-imgBorder"]
-   >![Tartományi biztonsági házirendek](./media/workday-inbound-tutorial/wd_isu_06.png "Tartományi biztonsági házirendek")  
+   >![Képernyőfelvétel: "tartományi biztonsági konfiguráció" a keresőmezőbe, az eredmények között megjelenik a "tartományi biztonsági konfiguráció – jelentés".](./media/workday-inbound-tutorial/wd_isu_06.png "Tartományi biztonsági házirendek")  
 2. A **tartomány** szövegmezőben keresse meg a következő tartományokat, és adja hozzá őket a szűrőhöz eggyel.  
    * *Külső fiók kiépítés*
    * *Feldolgozói adatfeldolgozók: feldolgozók*
@@ -166,10 +166,10 @@ Ebben a lépésben "tartományi biztonsági" házirend-engedélyeket ad a munkav
    * *Munkanap-fiókok*
    
      >[!div class="mx-imgBorder"]
-     >![Tartományi biztonsági házirendek](./media/workday-inbound-tutorial/wd_isu_07.png "Tartományi biztonsági házirendek")  
+     >![A "tartomány" szövegmezőben a "külső fiók" nevű tartományi biztonsági konfigurációs jelentést megjelenítő képernyőkép.](./media/workday-inbound-tutorial/wd_isu_07.png "Tartományi biztonsági házirendek")  
 
      >[!div class="mx-imgBorder"]
-     >![Tartományi biztonsági házirendek](./media/workday-inbound-tutorial/wd_isu_08.png "Tartományi biztonsági házirendek") 
+     >![Képernyőfelvétel: a tartományi biztonsági konfigurációs jelentés megjelenítése a kiválasztott tartományok listájával.](./media/workday-inbound-tutorial/wd_isu_08.png "Tartományi biztonsági házirendek") 
 
      Kattintson az **OK** gombra.
 
@@ -179,7 +179,7 @@ Ebben a lépésben "tartományi biztonsági" házirend-engedélyeket ad a munkav
 
 4. A **tartomány biztonsági házirendjének szerkesztése** lapon görgessen le az **integrációs engedélyek**szakaszhoz. A "+" jelre kattintva adja hozzá az integrációs rendszer csoportot a biztonsági csoportok listájához a **Get** és a **put** integrációs engedélyekkel.
    >[!div class="mx-imgBorder"]
-   >![Szerkesztési engedély](./media/workday-inbound-tutorial/wd_isu_10.png "Szerkesztési engedély")  
+   >![Képernyőfelvétel: az "integrációs permissons" szakasz kiemelve.](./media/workday-inbound-tutorial/wd_isu_10.png "Szerkesztési engedély")  
 
 5. A "+" jelre kattintva adja hozzá az integrációs rendszer csoportot a biztonsági csoportok listájához a **Get** és a **put** integrációs engedélyekkel.
 
@@ -210,12 +210,12 @@ Ebben a lépésben az "üzleti folyamatok biztonsága" házirend engedélyeit fo
 1. A keresőmezőbe írja be az **üzleti folyamat házirendjét** , majd kattintson az **üzleti folyamat biztonsági házirendjének szerkesztése** feladat hivatkozásra.  
 
    >[!div class="mx-imgBorder"]
-   >![Üzleti folyamatok biztonsági házirendjei](./media/workday-inbound-tutorial/wd_isu_12.png "Üzleti folyamatok biztonsági házirendjei")  
+   >![Képernyőfelvétel: az "üzleti folyamat házirendje" a keresőmezőbe és az "üzleti folyamat biztonsági szabályzatának szerkesztése – feladat" beállítás.](./media/workday-inbound-tutorial/wd_isu_12.png "Üzleti folyamatok biztonsági házirendjei")  
 
 2. Az **üzleti folyamat típusa** szövegmezőben keresse meg a *kapcsolattartót* , és válassza a **munkahelyi kapcsolattartási** üzleti folyamat lehetőséget, majd kattintson **az OK**gombra.
 
    >[!div class="mx-imgBorder"]
-   >![Üzleti folyamatok biztonsági házirendjei](./media/workday-inbound-tutorial/wd_isu_13.png "Üzleti folyamatok biztonsági házirendjei")  
+   >![A "Business Process type" (üzleti folyamat típusa) menüből kiválasztva az "üzleti folyamat biztonsági szabályzatának szerkesztése" és a "munkahelyi kapcsolat módosítása" nevű képernyőkép.](./media/workday-inbound-tutorial/wd_isu_13.png "Üzleti folyamatok biztonsági házirendjei")  
 
 3. Az **üzleti folyamat biztonsági házirendjének szerkesztése** lapon görgessen a **munkahelyi kapcsolattartási adatok módosítása (webszolgáltatás)** szakaszra.
     
@@ -390,9 +390,9 @@ Ebben a lépésben kapcsolatot létesít a munkanapokkal, és Active Directory a
    
      | URL-formátum | WWS API-verzió használatban | XPATH-módosítások szükségesek |
      |------------|----------------------|------------------------|
-     | https://####.workday.com/ccx/service/tenantName | v 21.1 | No |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21.1 | No |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #. # | Yes |
+     | https://####.workday.com/ccx/service/tenantName | v 21.1 | Nem |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21.1 | Nem |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #. # | Igen |
 
       > [!NOTE]
      > Ha nem ad meg verziószámot az URL-címben, az alkalmazás a munkanap webszolgáltatások (WWS) v 21.1 verzióját használja, és nincs szükség módosításra az alkalmazáshoz mellékelt alapértelmezett XPATH API-kifejezésekhez. Ha egy adott WWS API-verziót szeretne használni, az URL-címben válassza a verziószám értéket. <br>
@@ -415,7 +415,7 @@ Ebben a lépésben kapcsolatot létesít a munkanapokkal, és Active Directory a
    * Kattintson a **kapcsolatok tesztelése** gombra. Ha a kapcsolatok tesztelése sikeres, kattintson a felül található **Save (Mentés** ) gombra. Ha nem sikerül, ellenőrizze, hogy a munkanapokhoz tartozó hitelesítő adatok és az ügynök telepítésére konfigurált AD hitelesítő adatok érvényesek-e.
 
      >[!div class="mx-imgBorder"]
-     >![Azure Portal](./media/workday-inbound-tutorial/wd_1.png)
+     >![Képernyőfelvétel: a "kiépítés" lap, amely a megadott hitelesítő adatokat tartalmazza.](./media/workday-inbound-tutorial/wd_1.png)
 
    * Miután a hitelesítő adatok mentése sikeresen megtörtént, a **leképezések** szakasz megjeleníti az alapértelmezett hozzárendelések **szinkronizálása munkanapokat a helyszíni munkatársaival Active Directory**
 
@@ -480,7 +480,7 @@ Ebben a szakaszban azt fogja beállítani, hogy a felhasználói adatok hogyan �
 
 1. A leképezések mentéséhez kattintson a **Save (Mentés** ) gombra az attribútum-leképezési szakasz tetején.
    >[!div class="mx-imgBorder"]
-   >![Azure Portal](./media/workday-inbound-tutorial/wd_2.png)
+   >![Képernyőkép, amely megjeleníti a kiválasztott "Mentés" műveletet tartalmazó "attribútum-hozzárendelés" lapot.](./media/workday-inbound-tutorial/wd_2.png)
 
 #### <a name="below-are-some-example-attribute-mappings-between-workday-and-active-directory-with-some-common-expressions"></a>Az alábbiakban néhány példát mutatunk be a munkanap és a Active Directory között, néhány gyakori kifejezéssel
 
@@ -942,11 +942,11 @@ Ha rákattint valamelyik naplóbeli rekordra, megnyílik a **tevékenység rész
 
   Keresse meg az exportálási művelet időbélyegének megfelelő HTTP-bejegyzést a következő azonosítójú *eseménynél: eseményazonosító = 2*. Ez a rekord a kiépítési szolgáltatás által a kiépítési ügynöknek elküldett attribútum-értékeket fogja tartalmazni.
 
-  [![SCIM hozzáadása](media/workday-inbound-tutorial/wd_event_viewer_05.png)](media/workday-inbound-tutorial/wd_event_viewer_05.png#lightbox)
+  :::image type="content" source="media/workday-inbound-tutorial/wd_event_viewer_05.png" alt-text="A &quot;HTTP POST&quot; rekordot az &quot;üzembe helyezési ügynök&quot; naplójában ábrázoló képernyőkép." lightbox="media/workday-inbound-tutorial/wd_event_viewer_05.png":::
 
   Közvetlenül a fenti eseményt követően egy másik eseménynek kell lennie, amely rögzíti az AD-fiók létrehozása művelet válaszát. Ez az esemény az AD-ben létrehozott új objectGuid adja vissza, és a kiépítési szolgáltatásban a TargetAnchor attribútumként van beállítva.
 
-  [![SCIM hozzáadása](media/workday-inbound-tutorial/wd_event_viewer_06.png)](media/workday-inbound-tutorial/wd_event_viewer_06.png#lightbox)
+  :::image type="content" source="media/workday-inbound-tutorial/wd_event_viewer_06.png" alt-text="A &quot;HTTP POST&quot; rekordot az &quot;üzembe helyezési ügynök&quot; naplójában ábrázoló képernyőkép." lightbox="media/workday-inbound-tutorial/wd_event_viewer_06.png":::
 
 ### <a name="understanding-logs-for-manager-update-operations"></a>A kezelői frissítési műveletek naplóinak ismertetése
 
@@ -1040,14 +1040,14 @@ Ennek a módosításnak a végrehajtásához a [munkanap Studio](https://communi
 
 5. Válassza a **külső**lehetőséget, majd válassza ki a 2. lépésben letöltött Human_Resources WSDL-fájlt.
 
-    ![Munkanap Studio](./media/workday-inbound-tutorial/wdstudio1.png)
+    ![Képernyőfelvétel: a "Human_Resources" fájl nyitva van a munkanap Studióban.](./media/workday-inbound-tutorial/wdstudio1.png)
 
 6. Állítsa a **Location (hely** ) mezőt a (z) értékre `https://IMPL-CC.workday.com/ccx/service/TENANT/Human_Resources` , de cserélje le a "IMPL-CC" értéket a tényleges példány típusára, a "bérlő" kifejezést pedig a valódi bérlő nevére.
 
 7. **Művelet** beállítása **Get_Workersre**
 
 8.    Kattintson a kis **Konfigurálás** hivatkozásra a kérelem/válasz ablaktáblán a munkanap hitelesítő adatainak megadásához. Győződjön meg a **hitelesítésről**, majd adja meg a munkanap-integrációs rendszer fiókjához tartozó felhasználónevet és jelszót. Ügyeljen arra, hogy a felhasználónevet \@ bérlőként formázza, és hagyja kiválasztva a **WS-Security UsernameToken** beállítást.
-   ![Munkanap Studio](./media/workday-inbound-tutorial/wdstudio2.png)
+   ![Képernyőfelvétel: a "username" és a "password" beírt "Security" (biztonság) lap van kijelölve, és "WS-Security username token".](./media/workday-inbound-tutorial/wdstudio2.png)
 
 9. Válassza az **OK** lehetőséget.
 
@@ -1086,7 +1086,7 @@ Ennek a módosításnak a végrehajtásához a [munkanap Studio](https://communi
 
 13. A munkanap Studio menüsávján válassza a **fájl > fájl megnyitása..** . lehetőséget, majd nyissa meg a mentett XML-fájlt. Ez a művelet megnyitja a fájlt a munkanap Studio XML-szerkesztőjében.
 
-    ![Munkanap Studio](./media/workday-inbound-tutorial/wdstudio3.png)
+    ![Képernyőfelvétel egy X M L fájlról a "munkanap Studio X M L szerkesztőben".](./media/workday-inbound-tutorial/wdstudio3.png)
 
 14. A fájl faszerkezetében navigáljon a **/env: boríték > env: Body > WD: Get_Workers_Response > WD: Response_Data > WD: Worker** a felhasználó adatai megkereséséhez.
 
@@ -1112,7 +1112,7 @@ Ennek a módosításnak a végrehajtásához a [munkanap Studio](https://communi
 
 5. Válassza **az attribútumok szerkesztése munkanapokhoz**elemet.
 
-    ![Munkanap Studio](./media/workday-inbound-tutorial/wdstudio_aad1.png)
+    ![Képernyőkép: a "munkanapokat az Azure-ban A D felhasználó üzembe helyezése – kiépítés" lap, amely az "attribútumok szerkesztése a munkanap számára" műveletet mutatja.](./media/workday-inbound-tutorial/wdstudio_aad1.png)
 
 6. Görgessen az attribútumok listájának aljára, ahol a beviteli mezők szerepelnek.
 

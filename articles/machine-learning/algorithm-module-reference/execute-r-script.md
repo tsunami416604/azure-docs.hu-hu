@@ -9,18 +9,18 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/27/2020
-ms.openlocfilehash: d5ef8d6a9b0c0039b500ce9d0238609e8a8edc93
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 252ea54cf6be9dd381648d67e56a7a5ff2c7acc6
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90908013"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542288"
 ---
 # <a name="execute-r-script-module"></a>R-parancsfájl végrehajtása modul
 
 Ez a cikk azt ismerteti, hogyan használható az r-parancsfájl végrehajtása a Azure Machine Learning Designer-folyamat R-kódjának futtatásához.
 
-Az R használatával olyan feladatokat hajthat végre, amelyeket a meglévő modulok jelenleg nem támogatnak, például a következőket: 
+Az R használatával a meglévő modulok által nem támogatott feladatokat végezhet, például: 
 - Egyéni adatátalakítások létrehozása
 - Saját mérőszámok használata az előrejelzések kiértékeléséhez
 - Modellek létrehozása a tervezőben nem önálló modulként megvalósított algoritmusok használatával
@@ -137,7 +137,7 @@ A következő mintakód a munkaterületén [regisztrált adatkészletekhez való
 
 ## <a name="how-to-configure-execute-r-script"></a>Az R-szkript végrehajtásának konfigurálása
 
-Az R-szkript végrehajtása modul olyan mintakód-kódot tartalmaz, amelyet kiindulási pontként használhat. Az R-parancsfájl végrehajtása modul konfigurálásához adja meg a futtatandó bemeneteket és kódokat.
+Az R-szkript végrehajtása modul kiindulási pontként tartalmazza a mintakód kódot.
 
 ![R-modul bemenetei diagramja](media/module/execute-r-script.png)
 
@@ -194,9 +194,12 @@ A tervezőben tárolt adatkészletek automatikusan egy R-adatkeretre lesznek kon
     > [!NOTE]
     > Előfordulhat, hogy a meglévő R-kódnak kisebb módosításokat kell futtatnia a tervezői folyamatokban. Például a CSV formátumban megadott bemeneti adatokat explicit módon át kell alakítani egy adatkészletbe, mielőtt használni lehetne a kódban. Az R nyelvben használt adatok és oszlopok különböző módokon különböznek a tervezőben használt adatok és oszlopok típusaitól.
 
-    Ha a szkript nagyobb a 16KB-nál, a **parancsfájl** -létrehozási port használatával elkerülhető, hogy a commandline (például *a 16597 karakternél*hosszabb) legyen. 
+    Ha a szkript mérete meghaladja a 16 KB-ot, a **parancsfájl** -létrehozási port használatával elkerülhető, hogy a *commandline érték meghaladja a 16597 karakteres korlátot*. 
     
-    Csomagolja a szkriptet és más egyéni erőforrásokat egy zip-fájlba, és töltse fel a zip-fájlt **fájl-adatkészletként** a studióba. Ezután húzza az adatkészlet modult a *saját adatkészletek* listájából a tervező szerzői műveletek oldal bal oldali modul paneljén. Az adatkészlet moduljának csatlakoztatása az **R-parancsfájl végrehajtása** modul **parancsfájl-köteg** portjához.
+    1. A szkriptet és más egyéni erőforrásokat csomagolja egy zip-fájlba.
+    1. Töltse fel a zip-fájlt **fájl adatkészletként** a studióba. 
+    1. Húzza az adatkészlet modult a *saját adatkészletek* listájából a tervező szerzői műveletek oldal bal oldali modul paneljén. 
+    1. Az adatkészlet moduljának csatlakoztatása az **R-parancsfájl végrehajtása** modul **parancsfájl-köteg** portjához.
     
     Az alábbi mintakód a szkriptet használja a parancsfájl-csomagban:
 
@@ -219,7 +222,7 @@ A tervezőben tárolt adatkészletek automatikusan egy R-adatkeretre lesznek kon
 
 ## <a name="results"></a>Results (Eredmények)
 
-Az R-parancsfájl-modulok végrehajtása több kimenetet is képes visszaadni, de R-adatkeretként kell megadni őket. Az adatkereteket a rendszer automatikusan átalakítja a tervezőben lévő adatkészletekbe a más modulokkal való kompatibilitás érdekében.
+Az R-parancsfájl-modulok végrehajtása több kimenetet is képes visszaadni, de R-adatkeretként kell megadni őket. A tervező automatikusan átalakítja az adatkereteket az adatkészletekbe más modulokkal való kompatibilitás érdekében.
 
 Az R standard üzeneteit és hibáit a rendszer visszaadja a modul naplójába.
 
@@ -236,7 +239,7 @@ Az R-szkript végrehajtása modul bemenetként támogatja a tetszőleges R-paran
 
 1. Ha R-kódot tartalmazó. zip-fájlt szeretne feltölteni a munkaterületre, ugorjon az **adatkészletek** eszköz oldalára. Válassza az **adatkészlet létrehozása**elemet, majd válassza a **helyi fájlból** és a **fájl** adatkészletének típusa lehetőséget.  
 
-1. Ellenőrizze, hogy a zip-fájl elérhető-e az **adatkészletek** listájában a bal oldali modul fájának **adatkészletek** kategóriája alatt.
+1. Ellenőrizze, hogy a tömörített fájl megjelenik-e az **adatkészletekben** a bal oldali modul fájának **adatkészletek** kategóriája alatt.
 
 1.  Kapcsolja össze az adatkészletet a **parancsfájl-csomag** bemeneti portjával.
 
@@ -500,6 +503,6 @@ Jelenleg a következő előre telepített R-csomagok érhetők el:
 | zeallot      | 0.1.0      | 
 | zoo          | 1.8-6      | 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: c49e92cda89cfc1d72a0550c2a53430f3e6f2844
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 351503db52e4c62414cd5dcbae1f750032a37eb7
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050330"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542274"
 ---
 # <a name="azure-api-management-faqs"></a>Azure API Management – gyakori kérdések
 Választ kaphat az Azure API Management gyakori kérdéseire, mintáinak és ajánlott eljárásaira.
@@ -53,7 +53,7 @@ Több lehetőség áll rendelkezésére a kapcsolat biztonságossá tételéhez 
 
 * HTTP alapszintű hitelesítés használata. További információ: [az első API importálása és közzététele](import-and-publish.md).
 * Használjon TLS kölcsönös hitelesítést a következő témakörben ismertetett módon: a [háttér-szolgáltatások biztonságossá tétele az ügyféltanúsítvány-alapú hitelesítés használatával az Azure API Managementban](api-management-howto-mutual-certificates.md).
-* Használja az IP-engedélyezési szolgáltatást a háttérben futó szolgáltatásban. Az API Management minden olyan szintjében, amely a felhasználási szintet is tartalmazza, az átjáró IP-címe állandó marad, és néhány, [az IP-dokumentációban](api-management-howto-ip-addresses.md)leírt figyelmeztetéssel rendelkezik.
+* Használjon IP-szűrést a háttér-szolgáltatáson. Az API Management minden olyan szintjében, amely a felhasználási szintet is tartalmazza, az átjáró IP-címe állandó marad, és néhány, [az IP-dokumentációban](api-management-howto-ip-addresses.md)leírt figyelmeztetéssel rendelkezik.
 * API Management példányának összekapcsolásához Azure-Virtual Network.
 
 ### <a name="how-do-i-copy-my-api-management-service-instance-to-a-new-instance"></a>Hogyan másolhatom át az API Management-szolgáltatáspéldányomat új példányra?

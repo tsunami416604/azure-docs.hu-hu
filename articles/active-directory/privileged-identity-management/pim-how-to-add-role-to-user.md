@@ -13,12 +13,12 @@ ms.subservice: pim
 ms.date: 09/16/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 919585d557a668e44f229451ab202fb8bcab9079
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 9f4d1e0d43758645d43843417eadf0ce21d43cb7
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985140"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533842"
 ---
 # <a name="assign-azure-ad-roles-in-privileged-identity-management"></a>Azure AD-szerepkörök kiosztása Privileged Identity Management
 
@@ -51,7 +51,7 @@ Kövesse az alábbi lépéseket, hogy egy felhasználó jogosult legyen egy Azur
 
 1. Válassza ki a **szerepkörök** elemet az Azure ad-engedélyek szerepköreinek megtekintéséhez.
 
-    ![Azure AD-szerepkörök](./media/pim-how-to-add-role-to-user/roles-list.png)
+    ![Képernyőkép a "szerepkörök" lapról a "hozzárendelések hozzáadása" művelet kiválasztásával.](./media/pim-how-to-add-role-to-user/roles-list.png)
 
 1. Válassza a **hozzárendelések hozzáadása** lehetőséget a **hozzárendelések hozzáadása** lap megnyitásához.
 
@@ -233,7 +233,7 @@ Az alábbi lépéseket követve rendelje hozzá a felhasználói hozzáférés r
 
  ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure AD rendszergazdai szerepkör beállításainak konfigurálása Privileged Identity Management](pim-how-to-change-default-settings.md)
 - [Azure-beli erőforrás-szerepkörök kiosztása Privileged Identity Management](pim-resource-roles-assign-roles.md)

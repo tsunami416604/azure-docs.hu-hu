@@ -3,20 +3,18 @@ title: Az összes előre összeépített entitás – LUIS
 titleSuffix: Azure Cognitive Services
 description: Ez a cikk a Language Understanding (LUIS) részét képező, előre elkészített entitások listáját tartalmazza.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 07/20/2020
-ms.author: diberry
-ms.openlocfilehash: 7ec9cd8aade1edb7d2df2bab5cec8de445af7e44
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 7a4654b8f389ad18010bb4ad211103f2816a18ee
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337976"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542002"
 ---
 # <a name="entities-per-culture-in-your-luis-model"></a>Entitások/kulturális elemek a LUIS-modellben
 
@@ -30,19 +28,19 @@ Az előre elkészített entitások működése nem módosítható, de javíthatj
 ## <a name="availability"></a>Rendelkezésre állás
 Ha másként nincs jelezve, az előre elkészített entitások az összes LUIS alkalmazás-területi beállításban (kulturális környezetekben) érhetők el. A következő táblázat az egyes kulturális környezetekben támogatott előre összeépített entitásokat tartalmazza.
 
-|Kulturális környezet|Szubkultúrák|Jegyzetek|
+|Kultúra|Szubkultúrák|Jegyzetek|
 |--|--|--|
 |Kínai|[zh-CN](#chinese-entity-support)||
-|holland|[nl-NL](#dutch-entity-support)||
-|angol|[en-US (amerikai)](#english-american-entity-support)||
-|francia|[fr-Ca (Kanada)](#french-canadian-entity-support), [fr-fr (Franciaország)](#french-france-entity-support), ||
-|német|[de-DE](#german-entity-support)||
-|olasz|[it-IT](#italian-entity-support)||
+|Holland|[nl-NL](#dutch-entity-support)||
+|Angol|[en-US (amerikai)](#english-american-entity-support)||
+|Francia|[fr-Ca (Kanada)](#french-canadian-entity-support), [fr-fr (Franciaország)](#french-france-entity-support), ||
+|Német|[de-DE](#german-entity-support)||
+|Olasz|[informatikai](#italian-entity-support)||
 |Japán|[ja-JP](#japanese-entity-support)||
-|koreai|[ko-KR](#korean-entity-support)||
-|portugál|[PT-BR (Brazília)](#portuguese-brazil-entity-support)||
-|spanyol|[es-es (Spanyolország)](#spanish-spain-entity-support), [es-MX (Mexikó)](#spanish-mexico-entity-support)||
-|török|[török](#turkish-entity-support)|Nem támogatott előre elkészített entitások a török nyelven|
+|Koreai|[ko-KR](#korean-entity-support)||
+|Portugál|[PT-BR (Brazília)](#portuguese-brazil-entity-support)||
+|Spanyol|[es-es (Spanyolország)](#spanish-spain-entity-support), [es-MX (Mexikó)](#spanish-mexico-entity-support)||
+|Török|[török](#turkish-entity-support)|Nem támogatott előre elkészített entitások a török nyelven|
 
 ## <a name="prediction-endpoint-runtime"></a>Előrejelzési végpont futtatókörnyezete
 
@@ -62,7 +60,7 @@ A következő entitások támogatottak:
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    -   |
 [Szám](luis-reference-prebuilt-number.md)   |    V2, V3   |
-[Sorszámok](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
+[Sorszám](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Százalék](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    V2, V3   |
@@ -84,7 +82,7 @@ A következő entitások támogatottak:
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
 [Szám](luis-reference-prebuilt-number.md)   |    V2, V3   |
-[Sorszámok](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
+[Sorszám](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Százalék](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
@@ -106,7 +104,7 @@ A következő entitások támogatottak:
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    V2, V3   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
 [Szám](luis-reference-prebuilt-number.md)   |    V2, V3   |
-[Sorszámok](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
+[Sorszám](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    V2, V3   |
 [Százalék](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    V2, V3   |
@@ -128,7 +126,7 @@ A következő entitások támogatottak:
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
 [Szám](luis-reference-prebuilt-number.md)   |    V2, V3   |
-[Sorszámok](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
+[Sorszám](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Százalék](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |   -   |
@@ -150,7 +148,7 @@ A következő entitások támogatottak:
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
 [Szám](luis-reference-prebuilt-number.md)   |    V2, V3   |
-[Sorszámok](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
+[Sorszám](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Százalék](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
@@ -172,7 +170,7 @@ A következő entitások támogatottak:
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
 [Szám](luis-reference-prebuilt-number.md)   |    V2, V3   |
-[Sorszámok](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
+[Sorszám](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Százalék](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
@@ -196,7 +194,7 @@ A következő entitások támogatottak:
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
 [Szám](luis-reference-prebuilt-number.md)   |    V2, V3   |
-[Sorszámok](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
+[Sorszám](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Százalék](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
@@ -218,7 +216,7 @@ A következő entitások támogatottak:
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
 [Szám](luis-reference-prebuilt-number.md)   |    V2,-   |
-[Sorszámok](luis-reference-prebuilt-ordinal.md)   |    V2,-   |
+[Sorszám](luis-reference-prebuilt-ordinal.md)   |    V2,-   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Százalék](luis-reference-prebuilt-percentage.md)   |    V2,-   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
@@ -240,7 +238,7 @@ A következő entitások támogatottak:
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
 [Szám](luis-reference-prebuilt-number.md)   |    -   |
-[Sorszámok](luis-reference-prebuilt-ordinal.md)   |    -   |
+[Sorszám](luis-reference-prebuilt-ordinal.md)   |    -   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Százalék](luis-reference-prebuilt-percentage.md)   |    -   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
@@ -262,7 +260,7 @@ A következő entitások támogatottak:
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
 [Szám](luis-reference-prebuilt-number.md)   |    V2, V3   |
-[Sorszámok](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
+[Sorszám](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Százalék](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
@@ -284,7 +282,7 @@ A következő entitások támogatottak:
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
 [Szám](luis-reference-prebuilt-number.md)   |    V2, V3   |
-[Sorszámok](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
+[Sorszám](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Százalék](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
@@ -306,7 +304,7 @@ A következő entitások támogatottak:
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
 [Szám](luis-reference-prebuilt-number.md)   |    V2, V3   |
-[Sorszámok](luis-reference-prebuilt-ordinal.md)   |    -   |
+[Sorszám](luis-reference-prebuilt-ordinal.md)   |    -   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Százalék](luis-reference-prebuilt-percentage.md)   |    -   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |

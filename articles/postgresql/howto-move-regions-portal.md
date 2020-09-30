@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/29/2020
-ms.openlocfilehash: 00cd291824eabfe8e1b43f35bc3618bfd793077d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c7c095aa710d97292afc7d2d8f633058c21fa4d0
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85568675"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91539231"
 ---
 # <a name="move-an-azure-database-for-azure-database-for-postgresql---single-server-to-another-region-by-using-the-azure-portal"></a>Azure-adatbázis áthelyezése Azure Database for PostgreSQL – egyetlen kiszolgáló egy másik régióba a Azure Portal használatával
 
@@ -33,7 +33,7 @@ Egy Azure Database for PostgreSQL régiók [közötti olvasási replikát](conce
 
 A forráskiszolgáló a Azure Portal használatával történő replikálásához kövesse az alábbi lépéseket: 
 
-1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 1. Válassza ki azt a meglévő Azure Database for PostgreSQL kiszolgálót, amelyet forráskiszolgálóként kíván használni. Ez a művelet megnyitja az **Áttekintés** lapot.
 1. A kiszolgáló menüjében válassza a **replikálás**lehetőséget. Ha az Azure-replikáció támogatásának értéke legalább **replika**, létrehozhat olvasási replikákat. 
 1. Ha az Azure-beli replikálás támogatása nem a legalább **replika**értékre van beállítva, állítsa be. Kattintson a **Mentés** gombra.
@@ -47,11 +47,11 @@ Ha a Azure Portal a régión belüli olvasási replika kiszolgálót kívánja l
 1. Válassza a **replikálás** lehetőséget a menü **Beállítások**területén.
 1. Válassza a **replika hozzáadása**lehetőséget.
 1. Adja meg a replika kiszolgáló nevét.
-1. Válassza ki a replika-kiszolgáló helyét. Az alapértelmezett hely megegyezik a főkiszolgálóval. Győződjön meg arról, hogy kiválasztotta azt a célhelyet, ahová a replikát telepíteni kívánja.
+1. Válassza ki a replika-kiszolgáló helyét. Az alapértelmezett hely ugyanaz, mint az elsődleges kiszolgáló. Győződjön meg arról, hogy kiválasztotta azt a célhelyet, ahová a replikát telepíteni kívánja.
 1. A replika létrehozásának jóváhagyásához kattintson **az OK gombra** . A replika létrehozásakor a rendszer az adatok átmásolását a forráskiszolgálóról a replikába. A létrehozási idő több percig is tarthat, a forráskiszolgáló méretének megfelelően.
 
 >[!NOTE]
-> A replika létrehozásakor nem örökli a főkiszolgáló tűzfalszabályok és VNet szolgáltatás-végpontját. Ezeket a szabályokat a replika egymástól függetlenül kell beállítani.
+> Replika létrehozásakor nem örökli az elsődleges kiszolgáló tűzfalszabályok és VNet-végpontját. Ezeket a szabályokat a replika egymástól függetlenül kell beállítani.
 
 ## <a name="move"></a>Áthelyezés
 
@@ -76,7 +76,7 @@ Ha le szeretné állítani a replikálást a Azure Portal a replikára, kövesse
 1. Írja be a forráskiszolgáló nevét annak megerősítéséhez, hogy törölni kívánja a kiszolgálót.
 1. Válassza a **Törlés** elemet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy Azure Database for PostgreSQL kiszolgálót helyezett át egyik régióból a másikba a Azure Portal használatával, majd megtisztította a szükségtelen forrás-erőforrásokat. 
 

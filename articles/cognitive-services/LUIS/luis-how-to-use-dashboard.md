@@ -3,20 +3,18 @@ title: Irányítópult – Language Understanding – LUIS
 titleSuffix: Azure Cognitive Services
 description: Javítsa ki a leképezéseket és az entitásokat a betanított alkalmazás irányítópultján. Az irányítópult az alkalmazás általános információit jeleníti meg, és kiemeli azokat a leképezéseket, amelyeket rögzíteni kell.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 11/08/2019
-ms.author: diberry
-ms.openlocfilehash: 0ff59819c3bfda6e19d14cbe2deaea43e1694375
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 4867a065a85fab1e4abc7f19401239e5b76e1da4
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84345240"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541407"
 ---
 # <a name="how-to-use-the-dashboard-to-improve-your-app"></a>Az alkalmazás fejlesztése az irányítópult használatával
 
@@ -34,7 +32,7 @@ Az irányítópulton a három probléma a következőkkel foglalkozik:
 |--|--|--|
 |Adategyensúlyhiány|-|Ez akkor fordul elő, ha a hosszúságú kimondott szöveg mennyisége jelentősen eltér. Az összes szándéknak _nagyjából_ azonos számú példát kell hosszúságú kimondott szöveg – kivéve a none szándékot. Az alkalmazásban a hosszúságú kimondott szöveg teljes mennyiségének 10%-15%-át kell tartalmaznia.<br><br> Ha az adatok kiegyensúlyozva vannak, de a cél pontossága bizonyos küszöbérték felett van, akkor ez az egyensúlyhiány nem jelent problémát.<br><br>**Kezdje ezzel a problémával – ez lehet a többi probléma kiváltó oka.**|
 |Nem egyértelmű előrejelzések|Narancssárga|Ez akkor fordulhat elő, ha a legfelső szintű szándék és a következő mutató pontszámai elég közel vannak ahhoz, hogy a következő képzésen is meghaladják őket, mert [negatív mintavételezés](luis-how-to-train.md#train-with-all-data) vagy több, a szándékhoz hozzáadott példa hosszúságú kimondott szöveg. |
-|Helytelen előrejelzések|Vörös|Ez akkor fordul elő, ha a címkével ellátott szándék (a szándéka) esetében nem várható meg a Kimondás.|
+|Helytelen előrejelzések|Piros|Ez akkor fordul elő, ha a címkével ellátott szándék (a szándéka) esetében nem várható meg a Kimondás.|
 
 A helyes előrejelzések a kék színnel jelennek meg.
 
@@ -130,11 +128,11 @@ A következő diagram egy jól kiegyensúlyozott alkalmazást mutat be, amely sz
 
 A következő diagram egy nem megfelelően kiegyensúlyozott alkalmazást mutat be, amely számos problémát orvosol.
 
-![A következő diagram egy jól kiegyensúlyozott alkalmazást mutat be, amely szinte nem oldja meg a problémát.](./media/luis-how-to-use-dashboard/utterance-per-intent-shows-data-imbalance.png)
+![A képernyőfelvételek alapján több nem egyértelmű vagy helytelenül előre jelzett eredmény jelenik meg.](./media/luis-how-to-use-dashboard/utterance-per-intent-shows-data-imbalance.png)
 
 Vigye az egérmutatót az egyes leképezési sávok fölé a szándékkal kapcsolatos információk lekéréséhez.
 
-![A következő diagram egy jól kiegyensúlyozott alkalmazást mutat be, amely szinte nem oldja meg a problémát.](./media/luis-how-to-use-dashboard/utterances-per-intent-with-details-of-errors.png)
+![A képernyőfelvételek a nem egyértelmű vagy helytelenül előre jelzett eredmények részleteivel jelenítik meg az előrejelzéseket.](./media/luis-how-to-use-dashboard/utterances-per-intent-with-details-of-errors.png)
 
 A **Rendezés** szempontja funkció használatával rendezheti a leképezéseket a probléma típusa alapján, így a problémával kapcsolatos problémákra koncentrálhat.
 
@@ -154,7 +152,7 @@ Határozza meg, hogy milyen százalékos arányt szeretne a vállalata számára
 
 A szűrő segítségével megtalálhatja az adott problémával kapcsolatos leképezéseket:
 
-|Szűrő|Javasolt százalék|Cél|
+|Szűrés|Javasolt százalék|Szerep|
 |--|--|--|
 |A legtöbb problémás szándék|-|**Kezdjen el ide** – a hosszúságú kimondott szöveg kijavításával az alkalmazás a többi javításnál nagyobb javulást tesz elérhetővé.|
 |Az alábbi helyes előrejelzések|60%|Ez a hosszúságú kimondott szöveg százalékos aránya a kiválasztott szándékban, amelyek helyesek, de a küszöbérték alatti megbízhatósági pontszámok. |
@@ -169,6 +167,6 @@ Mi az a biztos, hogy előrejelzési megbízhatósági pontszám? Az alkalmazásf
 
 Ez a két szűrő lehetővé teszi, hogy megkeresse a hosszúságú kimondott szöveg a küszöbértéken túli kiválasztott szándékban. Ezt a két százalékot a hiba százalékában tekintheti át. Ha a jóslatok 10-15%-os hibájának arányát szeretné megállapítani, állítsa a szűrési küszöbértéket 15%-ra az érték felett található összes hosszúságú kimondott szöveg megkereséséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Azure-erőforrások kezelése](luis-how-to-azure-subscription.md)

@@ -3,23 +3,21 @@ title: LUIS előre elkészített entitások e-mail-referenciája
 titleSuffix: Azure Cognitive Services
 description: Ez a cikk a Language Understanding (LUIS) e-mailes előkészített entitás-információit tartalmazza.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/27/2019
-ms.author: diberry
-ms.openlocfilehash: f7aa2a341a82d30f7022af49e626a3cd358854b7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 806357670bead54658f0b501ca20473293275d58
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78273483"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533366"
 ---
 # <a name="email-prebuilt-entity-for-a-luis-app"></a>E-mail-előkészített entitás egy LUIS-alkalmazáshoz
-Az e-mailek kinyerése magában foglalja a teljes e-mail-címet. Mivel ez az entitás már be van tanítva, nem kell felvennie például az hosszúságú kimondott szöveg tartalmazó e-mailt. Az e-mail- `en-us` entitás csak a kulturális környezetekben támogatott.
+Az e-mailek kinyerése magában foglalja a teljes e-mail-címet. Mivel ez az entitás már be van tanítva, nem kell felvennie például az hosszúságú kimondott szöveg tartalmazó e-mailt. Az e-mail-entitás csak a kulturális környezetekben támogatott `en-us` .
 
 ## <a name="resolution-for-prebuilt-email"></a>Előre elkészített e-mailek feloldása
 
@@ -29,7 +27,7 @@ A lekérdezés a következő entitás-objektumokat adja vissza:
 
 #### <a name="v3-response"></a>[V3 válasz](#tab/V3)
 
-A következő JSON a `verbose` paraméter értéke: `false`
+A következő JSON a `verbose` paraméter értéke `false` :
 
 ```json
 "entities": {
@@ -40,7 +38,7 @@ A következő JSON a `verbose` paraméter értéke: `false`
 ```
 #### <a name="v3-verbose-response"></a>[V3 részletes válasz](#tab/V3-verbose)
 
-A következő JSON a `verbose` paraméter értéke: `true`
+A következő JSON a `verbose` paraméter értéke `true` :
 
 ```json
 "entities": {

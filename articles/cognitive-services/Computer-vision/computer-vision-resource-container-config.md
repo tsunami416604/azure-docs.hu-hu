@@ -1,7 +1,7 @@
 ---
-title: Tárolók konfigurálása – Computer Vision
+title: OCR-tárolók olvasásának konfigurálása – Computer Vision
 titleSuffix: Azure Cognitive Services
-description: Ez a cikk bemutatja, hogyan konfigurálhatja a Computer Vision szövegfelismerés tárolók kötelező és választható beállításait.
+description: Ez a cikk bemutatja, hogyan konfigurálhatja az OCR-tárolók beolvasásához szükséges és választható beállításokat a Computer Visionban.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: 28116a373b66aa5bfa6d3ebbf027c2db6d24ba5d
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 00c96333e612c7f92d7c53630eaa006b060986ad
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91397130"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91536239"
 ---
-# <a name="configure-computer-vision-docker-containers"></a>Computer Vision Docker-tárolók konfigurálása
+# <a name="configure-read-ocr-docker-containers"></a>Az OCR Docker-tárolók olvasásának konfigurálása
 
-A Computer Vision tároló futásidejű környezetét a `docker run` parancs argumentumai segítségével állíthatja be. Ez a tároló számos kötelező beállítással rendelkezik, és néhány választható beállítás mellett. A parancshoz több [példa](#example-docker-run-commands) is rendelkezésre áll. A tárolóra jellemző beállítások a számlázási beállítások. 
+A parancs argumentumai segítségével konfigurálja a Computer Vision OCR-tároló futásidejű környezetét `docker run` . Ez a tároló számos kötelező beállítással rendelkezik, és néhány választható beállítás mellett. A parancshoz több [példa](#example-docker-run-commands) is rendelkezésre áll. A tárolóra jellemző beállítások a számlázási beállítások. 
 
 ## <a name="configuration-settings"></a>Konfigurációs beállítások
 
@@ -33,12 +33,12 @@ A tároló a következő tároló-specifikus konfigurációs beállításokkal i
 
 |Kötelező|Beállítás|Rendeltetés|
 |--|--|--|
-|No|ReadEngineConfig:ResultExpirationPeriod| csak a v 2.0 tárolók. Az eredmény lejárati ideje (óra). Az alapértelmezett érték 48 óra. A beállítás azt határozza meg, hogy a rendszeren Mikor kell törölni a felismerési eredményeket. Ha például a `resultExpirationPeriod=1` rendszer a folyamat után 1 órával törli a felismerés eredményét. Ha `resultExpirationPeriod=0` a rendszer törli az eredmény beolvasása után az elismerés eredményét.|
-|No|Gyorsítótár: Redis| csak a v 2.0 tárolók. Lehetővé teszi az Redis tárolását az eredmények tárolásához. *Szükség* van gyorsítótárra, ha több olvasási tároló van elhelyezve egy terheléselosztó mögött.|
-|No|Üzenetsor: RabbitMQ|csak a v 2.0 tárolók. Lehetővé teszi a RabbitMQ számára a feladatok elküldését. A beállítás akkor hasznos, ha több olvasási tároló van elhelyezve egy terheléselosztó mögött.|
-|No|Üzenetsor: Azure: QueueVisibilityTimeoutInMilliseconds | csak v3. x tárolók. Az az idő, ameddig az üzenet láthatatlan lesz, ha egy másik feldolgozó feldolgozza azt. |
-|No|Tárolás::D ocumentStore:: MongoDB|csak a v 2.0 tárolók. Engedélyezi a MongoDB az állandó eredményű tároláshoz. |
-|No|Storage: ObjectStore: AzureBlob: ConnectionString| csak v3. x tárolók. Azure Blob Storage-beli kapcsolatok karakterlánca. |
+|Nem|ReadEngineConfig:ResultExpirationPeriod| csak a v 2.0 tárolók. Az eredmény lejárati ideje (óra). Az alapértelmezett érték 48 óra. A beállítás azt határozza meg, hogy a rendszeren Mikor kell törölni a felismerési eredményeket. Ha például a `resultExpirationPeriod=1` rendszer a folyamat után 1 órával törli a felismerés eredményét. Ha `resultExpirationPeriod=0` a rendszer törli az eredmény beolvasása után az elismerés eredményét.|
+|Nem|Gyorsítótár: Redis| csak a v 2.0 tárolók. Lehetővé teszi az Redis tárolását az eredmények tárolásához. *Szükség* van gyorsítótárra, ha több olvasási tároló van elhelyezve egy terheléselosztó mögött.|
+|Nem|Üzenetsor: RabbitMQ|csak a v 2.0 tárolók. Lehetővé teszi a RabbitMQ számára a feladatok elküldését. A beállítás akkor hasznos, ha több olvasási tároló van elhelyezve egy terheléselosztó mögött.|
+|Nem|Üzenetsor: Azure: QueueVisibilityTimeoutInMilliseconds | csak v3. x tárolók. Az az idő, ameddig az üzenet láthatatlan lesz, ha egy másik feldolgozó feldolgozza azt. |
+|Nem|Tárolás::D ocumentStore:: MongoDB|csak a v 2.0 tárolók. Engedélyezi a MongoDB az állandó eredményű tároláshoz. |
+|Nem|Storage: ObjectStore: AzureBlob: ConnectionString| csak v3. x tárolók. Azure Blob Storage-beli kapcsolatok karakterlánca. |
 
 ## <a name="apikey-configuration-setting"></a>ApiKey konfigurációs beállítás
 

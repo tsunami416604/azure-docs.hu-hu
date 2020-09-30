@@ -1,16 +1,14 @@
 ---
 title: Azure Service Fabric alkalmazás-tervezési ajánlott eljárások
 description: Ajánlott eljárások és tervezési szempontok az alkalmazások és szolgáltatások Azure Service Fabric használatával történő fejlesztéséhez.
-author: markfussell
 ms.topic: conceptual
 ms.date: 06/18/2019
-ms.author: mfussell
-ms.openlocfilehash: 742cd9b1e7480fcc510b61d8987e42b499a1ff20
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: ddf846e9e3ac6add7cf3f584b702de5accfb22af
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261185"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538498"
 ---
 # <a name="azure-service-fabric-application-design-best-practices"></a>Azure Service Fabric alkalmazás-tervezési ajánlott eljárások
 
@@ -77,7 +75,7 @@ A Service Fabric Reliable Actors lehetővé teszi az állapot-nyilvántartó, vi
 Legyen alapos az [alkalmazások naplózásának](./service-fabric-diagnostics-event-generation-app.md) a szolgáltatási hívásokban való hozzáadásával kapcsolatban. Segít diagnosztizálni azokat a forgatókönyveket, amelyekben a szolgáltatások meghívja egymást. Ha például A "B" hívása C hívást hív meg, a hívás bárhol meghiúsulhat. Ha nem rendelkezik elegendő naplózással, a rendszer nehezen diagnosztizálja a hibákat. Ha a szolgáltatások a hívási kötetek miatt túl sokat jelentkeznek, ne felejtse el legalább a hibák és a figyelmeztetések naplózását.
 
 ## <a name="iot-and-messaging-applications"></a>IoT és üzenetkezelési alkalmazások
-Amikor az [azure IoT hub](../iot-hub/index.yml) vagy az [Azure Event Hubsról](../event-hubs/index.yml)olvas üzeneteket, használja a [ServiceFabricProcessor](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/ServiceFabricProcessor). A ServiceFabricProcessor integrálható Service Fabric Reliable Services, hogy megőrizze az Event hub-partíciók olvasásának állapotát, és az új üzeneteket leküldi a szolgáltatásoknak a `IEventProcessor::ProcessEventsAsync()` metódus segítségével.
+Amikor az [azure IoT hub](../iot-hub/index.yml) vagy az [Azure Event Hubsról](../event-hubs/index.yml)olvas üzeneteket, használja a  [ServiceFabricProcessor](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/ServiceFabricProcessor). A ServiceFabricProcessor integrálható Service Fabric Reliable Services, hogy megőrizze az Event hub-partíciók olvasásának állapotát, és az új üzeneteket leküldi a szolgáltatásoknak a `IEventProcessor::ProcessEventsAsync()` metódus segítségével.
 
 
 ## <a name="design-guidance-on-azure"></a>Tervezési útmutató az Azure-ban

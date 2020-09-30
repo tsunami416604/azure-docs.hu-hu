@@ -2,7 +2,6 @@
 title: Végponti kvóta emelése – LUIS
 titleSuffix: Azure Cognitive Services
 description: Language Understanding (LUIS) lehetővé teszi a végponti kérelmek kvótájának növelését egy adott kulcs kvótája után. Ezt úgy teheti meg, hogy több kulcsot hoz létre a LUIS számára, és hozzáadja őket a LUIS-alkalmazáshoz az **erőforrások és kulcsok** szakasz **Közzététel** lapján.
-author: diberry
 manager: nitinme
 ms.custom: seodec18, devx-track-js, devx-track-azurepowershell
 services: cognitive-services
@@ -10,13 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 08/20/2019
-ms.author: diberry
-ms.openlocfilehash: 827dec47fa6ea3925513b2b3aadfb103a2b58c72
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e37b35e3473b2da397904d01be5e65cf8cafbbe5
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91298388"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541118"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>A végpontok kvótájának kezelése Microsoft Azure Traffic Manager használatával a kulcsok között
 Language Understanding (LUIS) lehetővé teszi a végponti kérelmek kvótájának növelését egy adott kulcs kvótája után. Ezt úgy teheti meg, hogy több kulcsot hoz létre a LUIS számára, és hozzáadja őket a LUIS-alkalmazáshoz az **erőforrások és kulcsok** szakasz **Közzététel** lapján.
@@ -78,7 +76,7 @@ Az USA keleti Traffic Manager profiljának létrehozásához több lépés is va
 
     Ez a táblázat a parancsmag egyes változóit ismerteti:
 
-    |Konfigurációs paraméter|Változó neve vagy értéke|Rendeltetés|
+    |Konfigurációs paraméter|Változó neve vagy értéke|Szerep|
     |--|--|--|
     |-Name|Luis-profil-eastus|Traffic Manager neve Azure Portal|
     |– ResourceGroupName|Luis – Traffic Manager|Létrehozva az előző szakaszban|
@@ -97,7 +95,7 @@ Az USA keleti Traffic Manager profiljának létrehozásához több lépés is va
     ```
     Ez a táblázat a parancsmag egyes változóit ismerteti:
 
-    |Konfigurációs paraméter|Változó neve vagy értéke|Rendeltetés|
+    |Konfigurációs paraméter|Változó neve vagy értéke|Szerep|
     |--|--|--|
     |– Végpontneve|Luis – Kelet – végpont|A profil alatt megjelenő végpont neve|
     |-TrafficManagerProfile|$eastprofile|Az 1. lépésben létrehozott profil objektum használata|
@@ -146,7 +144,7 @@ Az USA nyugati Traffic Manager profiljának létrehozásához kövesse az alább
 
     Ez a táblázat a parancsmag egyes változóit ismerteti:
 
-    |Konfigurációs paraméter|Változó neve vagy értéke|Rendeltetés|
+    |Konfigurációs paraméter|Változó neve vagy értéke|Szerep|
     |--|--|--|
     |-Name|Luis-profil-westus|Traffic Manager neve Azure Portal|
     |– ResourceGroupName|Luis – Traffic Manager|Létrehozva az előző szakaszban|
@@ -166,7 +164,7 @@ Az USA nyugati Traffic Manager profiljának létrehozásához kövesse az alább
 
     Ez a táblázat a parancsmag egyes változóit ismerteti:
 
-    |Konfigurációs paraméter|Változó neve vagy értéke|Rendeltetés|
+    |Konfigurációs paraméter|Változó neve vagy értéke|Szerep|
     |--|--|--|
     |– Végpontneve|Luis-Nyugat-végpont|A profil alatt megjelenő végpont neve|
     |-TrafficManagerProfile|$westprofile|Az 1. lépésben létrehozott profil objektum használata|
@@ -213,7 +211,7 @@ Hozza létre a szülő Traffic Manager profilt, és csatolja a szülőhöz két 
 
     Ez a táblázat a parancsmag egyes változóit ismerteti:
 
-    |Konfigurációs paraméter|Változó neve vagy értéke|Rendeltetés|
+    |Konfigurációs paraméter|Változó neve vagy értéke|Szerep|
     |--|--|--|
     |-Name|Luis-profil-Parent|Traffic Manager neve Azure Portal|
     |– ResourceGroupName|Luis – Traffic Manager|Létrehozva az előző szakaszban|
@@ -233,7 +231,7 @@ Hozza létre a szülő Traffic Manager profilt, és csatolja a szülőhöz két 
 
     Ez a táblázat a parancsmag egyes változóit ismerteti:
 
-    |Konfigurációs paraméter|Változó neve vagy értéke|Rendeltetés|
+    |Konfigurációs paraméter|Változó neve vagy értéke|Szerep|
     |--|--|--|
     |– Végpontneve|gyermek-végpont – USEast|Kelet-profil|
     |-TrafficManagerProfile|$parentprofile|A végpont hozzárendeléséhez használandó profil|
@@ -270,7 +268,7 @@ Hozza létre a szülő Traffic Manager profilt, és csatolja a szülőhöz két 
 
     Ez a táblázat a parancsmag egyes változóit ismerteti:
 
-    |Konfigurációs paraméter|Változó neve vagy értéke|Rendeltetés|
+    |Konfigurációs paraméter|Változó neve vagy értéke|Szerep|
     |--|--|--|
     |– Végpontneve|gyermek-végpont – USWest|Nyugat-profil|
     |-TrafficManagerProfile|$parentprofile|A végpont hozzárendeléséhez használandó profil|
@@ -368,10 +366,10 @@ A végpontok közötti forgalom kezeléséhez be kell szúrnia egy hívást a Tr
 
 Engedélyezze a [diagnosztikai naplókat](../../traffic-manager/traffic-manager-diagnostic-logs.md) a Traffic Manager számára, hogy megtudja, miért romlik a végpont állapota.
 
-## <a name="clean-up"></a>A feleslegessé vált elemek eltávolítása
+## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 Távolítsa el a két LUIS Endpoint Key, a három Traffic Manager profilt és az öt erőforrást tartalmazó erőforráscsoportot. Ez a Azure Portalból történik. Törli az öt erőforrást az erőforrások listából. Ezután törölje az erőforráscsoportot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse át a Botframework témakörben v4 [middleware](https://docs.microsoft.com/azure/bot-service/bot-builder-create-middleware?view=azure-bot-service-4.0&tabs=csaddmiddleware%2Ccsetagoverwrite%2Ccsmiddlewareshortcircuit%2Ccsfallback%2Ccsactivityhandler) -beállításait, hogy megtudja, hogyan vehetők fel ez a Traffic Management kód egy botframework témakörben-robotba.
 

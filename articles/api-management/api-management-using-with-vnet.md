@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 07/22/2020
 ms.author: apimpm
 ms.custom: references_regions
-ms.openlocfilehash: ee23b2bc58f8c1f15a7e51b05dee954c1e584293
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 5b96ac9cf43782764e88039d736ba61454d65911
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489622"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91539197"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Az Azure API Management használata virtuális hálózatokkal
 Az Azure-beli virtuális hálózatokkal (VNET-ekkel) olyan nem internetalapú, irányítható hálózatokra helyezheti át Azure-erőforrásait, amelyekhez való hozzáférést Ön szabályozza. Ezek a hálózatok ezután különböző VPN-technológiákkal csatlakozhatnak a helyszíni hálózatokhoz. Az Azure Virtual Networks szolgáltatással kapcsolatos további információkért tekintse meg az alábbi információkat: [azure Virtual Network – áttekintés](../virtual-network/virtual-networks-overview.md).
@@ -145,7 +145,7 @@ A következő lista felsorolja azokat a gyakori konfigurációs problémákat, a
 
 + **Regionális szolgáltatás címkék**: a NSG-szabályok, amelyek engedélyezik a Storage, az SQL és a Event Hubs Service-címkék kimenő kapcsolatát, a API Management példányt tartalmazó régióhoz tartozó (például Storage. WestUS), az USA nyugati régiójában található API Management-példányhoz tartozó, az adott címkék regionális verzióit használhatják. A többrégiós környezetekben az egyes régiókban lévő NSG engedélyezni kell az adott régió és az elsődleges régió szolgáltatásbeli címkéi forgalmát.
 
-+ **SMTP-továbbító**: kimenő hálózati kapcsolat az SMTP-továbbítóhoz, amely a gazdagép, a `smtpi-co1.msn.com` , `smtpi-ch1.msn.com` `smtpi-db3.msn.com` `smtpi-sin.msn.com` és a`ies.global.microsoft.com`
++ **SMTP-továbbító**: kimenő hálózati kapcsolat az SMTP-továbbítóhoz, amely a gazdagép, a `smtpi-co1.msn.com` , `smtpi-ch1.msn.com` `smtpi-db3.msn.com` `smtpi-sin.msn.com` és a `ies.global.microsoft.com`
 
 + **Fejlesztői portál CAPTCHA**: kimenő hálózati kapcsolat a fejlesztői portál CAPTCHA-vel, amely a gazdagépeken és a-ben oldható fel `client.hip.live.com` `partner.hip.live.com` .
 
@@ -203,7 +203,7 @@ API Management minden további méretezési egységéhez két további IP-cím s
 
 ## <a name="control-plane-ip-addresses"></a><a name="control-plane-ips"> </a> Vezérlési sík IP-címei
 
-Az IP-címeket az Azure- **környezet**osztja el. Ha a bejövő kérések IP-címe **globálisan** van megjelölve, akkor a **régió** -specifikus IP-címmel együtt kell megadni.
+Az IP-címeket az Azure- **környezet**osztja el. Ha a **globálisan** megjelölt IP-címet engedélyezi a bejövő kérelmek számára, a **régió** adott IP-címével együtt kell engedélyezni.
 
 | **Azure-környezet**|   **Régió**|  **IP-cím**|
 |-----------------|-------------------------|---------------|
@@ -232,7 +232,7 @@ Az IP-címeket az Azure- **környezet**osztja el. Ha a bejövő kérések IP-cí
 | Azure Public| Délkelet-Ausztrália| 20.40.160.107|
 | Azure Public| Ausztrália középső régiója| 20.37.52.67|
 | Azure Public| Dél-India| 20.44.33.246|
-| Azure Public| USA középső régiója| 13.86.102.66|
+| Azure Public| Az USA középső régiója| 13.86.102.66|
 | Azure Public| Kelet-Ausztrália| 20.40.125.155|
 | Azure Public| USA 2. nyugati régiója| 51.143.127.203|
 | Azure Public| USA 2. keleti – EUAP| 52.253.229.253|

@@ -10,12 +10,12 @@ ms.author: minxia
 ms.date: 02/27/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: b6d4ac2727e558ed3d4538b6d325b7304d7928f8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2ed8910db8b903dab3b81d9db6c9b5798d2b6b69
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91250878"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542053"
 ---
 # <a name="visualize-experiment-runs-and-metrics-with-tensorboard-and-azure-machine-learning"></a>A kísérlet futtatásának és metrikáinak megjelenítése TensorBoard és Azure Machine Learning
 
@@ -39,8 +39,8 @@ A TensorBoard Azure Machine Learning kísérletekkel való elindításának mód
     * Azure Machine Learning számítási példány – nincs szükség letöltésre vagy telepítésre
         * Fejezze be a következő [oktatóanyagot: telepítési környezet és munkaterület](tutorial-1st-experiment-sdk-setup.md) egy dedikált notebook-kiszolgáló létrehozásához az SDK-val és a minta adattárral.
         * A notebook-kiszolgáló Samples (minták) mappájában keresse meg a két befejezett és kibontott jegyzetfüzetet a következő könyvtárakra való navigálás során:
-            * **útmutató – azureml > képzés – mélyreható tanulás > export-Run-History-to-tensorboard > exportálás-futtatási előzmények és tensorboard. ipynb**
-            * **útmutató – a azureml > nyomon követése és monitorozása – kísérletek > tensorboard. ipynb**
+            * **útmutató – a azureml > Track-and-monitor-kísérletek > tensorboard > exportálás-futtatási előzmények – tensorboard > exportálás-futtatási előzmények – tensorboard. ipynb**
+            * **útmutató – azureml > Track-and-monitor-kísérletek > tensorboard > tensorboard > tensorboard. ipynb**
     * Saját Juptyer notebook-kiszolgáló
        * [Telepítse a Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true) -t a `tensorboard` További
         * [Hozzon létre egy Azure Machine learning munkaterületet](how-to-manage-workspace.md).  
@@ -291,7 +291,7 @@ Ha elkészült, győződjön meg arról, hogy a TensorBoard objektum [Leállít�
 tb.stop()
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az útmutatóban két kísérletet hozott létre, és megtanulta, hogyan indíthat el TensorBoard a futtatási előzményekkel a lehetséges hangolási és újraképzési területek azonosítása érdekében. 
 

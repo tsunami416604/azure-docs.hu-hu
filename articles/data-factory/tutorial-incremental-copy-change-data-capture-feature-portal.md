@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: ''
 ms.date: 05/04/2020
-ms.openlocfilehash: e15ac501a0598ae81a295d5a04074beb33c860f6
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 6e41109c65a047990577d1f2c77bdcd5219b6ed3
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86085718"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537456"
 ---
 # <a name="incrementally-load-data-from-azure-sql-managed-instance-to-azure-storage-using-change-data-capture-cdc"></a>Adatok növekményes betöltése az Azure SQL felügyelt példányairól az Azure Storage-ba az adatváltozások rögzítése (CDC) használatával
 
@@ -124,13 +124,13 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
     Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/management/overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
 5. Válassza ki a Data Factory **helyét**. A legördülő listán csak a támogatott helyek jelennek meg. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
 6. Válassza ki a **git engedélyezése**lehetőséget.     
-7. Kattintson a **Create** (Létrehozás) gombra.
+7. Kattintson a **Létrehozás** lehetőségre.
 8. Miután az üzembe helyezés befejeződött, kattintson az **Ugrás erőforrásra** elemre.
 
-   ![Data factory kezdőlap](./media/tutorial-incremental-copy-change-data-capture-feature-portal/data-factory-deploy-complete.png)
+   ![A képernyőképen egy üzenet jelenik meg, amely szerint a telepítés befejeződött, és az erőforráshoz való ugrás lehetősége.](./media/tutorial-incremental-copy-change-data-capture-feature-portal/data-factory-deploy-complete.png)
 9. A létrehozás befejezése után a **Data Factory** lap a képen látható módon jelenik meg.
 
-   ![Data factory kezdőlap](./media/tutorial-incremental-copy-change-data-capture-feature-portal/data-factory-home-page.png)
+   ![Képernyőfelvétel: a telepített adatfeldolgozó.](./media/tutorial-incremental-copy-change-data-capture-feature-portal/data-factory-home-page.png)
 10. Az Azure Data Factory felhasználói felületének (UI) külön lapon történő elindításához kattintson a **Létrehozás és monitorozás** csempére.
 11. Az **első lépéseket bemutató** lapon váltson a **Szerkesztés** lapra a bal oldali panelen, ahogy az az alábbi képen látható:
 
@@ -221,7 +221,7 @@ Ebben a lépésben egy adatkészletet hoz létre, amely a forrásadattárból m�
 ## <a name="create-a-pipeline-to-copy-the-changed-data"></a>Folyamat létrehozása a módosított adatmásoláshoz
 Ebben a lépésben létrehoz egy folyamatot, amely először ellenőrzi a változási táblában található módosított rekordok számát egy **keresési tevékenység**használatával. Ha a feltétel típusú tevékenység ellenőrzi, hogy a módosult rekordok száma nagyobb-e nullánál, és **másolási tevékenységet** futtat a beszúrt/frissített/törölt adatoknak az Azure Blob Storageba való másolásához Azure SQL Database. Végül pedig egy kikapcsolt ablakos trigger van konfigurálva, és a kezdési és befejezési időpontokat a rendszer a kezdő és a záró ablak paraméterként adja át a tevékenységeknek. 
 
-1. A Data Factory felhasználói felületen váltson a **Szerkesztés** lapra. kattintson a bal oldali ablaktáblán a **+ (plusz)** jelre, majd a **folyamat**elemre.
+1. A Data Factory felhasználói felületen váltson a **Szerkesztés** lapra. Kattintson a **+ (plusz)** gombra a bal oldali ablaktáblán, majd kattintson a **folyamat**elemre.
 
     ![Új folyamat menü](./media/tutorial-incremental-copy-change-data-capture-feature-portal/new-pipeline-menu.png)
 2. Megjelenik egy új, a folyamat konfigurálására szolgáló lap. A folyamat fanézetben is megjelenik. A **Tulajdonságok** ablakban módosítsa a folyamat nevét a következőre: **IncrementalCopyPipeline**.
@@ -289,10 +289,10 @@ Ebben a lépésben létrehoz egy folyamatot, amely először ellenőrzi a válto
 
 11. Az Előnézet elemre kattintva ellenőrizheti, hogy a lekérdezés helyesen adja-e vissza a módosított sorokat.
 
-    ![Másolási tevékenység – fogadóbeállítások](./media/tutorial-incremental-copy-change-data-capture-feature-portal/copy-source-preview.png)
+    ![A képernyőképen a lekérdezés ellenőrzésének ellenőrzése látható.](./media/tutorial-incremental-copy-change-data-capture-feature-portal/copy-source-preview.png)
 12. Váltson a fogadó **lapra,** és válassza ki az Azure Storage-adatkészletet a fogadó **adatkészlet** mezőben.
 
-    ![Másolási tevékenység – fogadóbeállítások](./media/tutorial-incremental-copy-change-data-capture-feature-portal/copy-sink-settings.png)
+    ![Képernyőfelvétel: a fogadó lap.](./media/tutorial-incremental-copy-change-data-capture-feature-portal/copy-sink-settings.png)
 13. Kattintson a vissza a fő folyamat vászonra lehetőségre, és kapcsolja össze a **keresési** tevékenységet az **IF Condition** tevékenységgel eggyel. Húzza a **keresési** tevékenységhez csatolt **zöld** gombot az **IF Condition** tevékenységhez.
 
     ![A keresési és másolási tevékenységek összekapcsolása](./media/tutorial-incremental-copy-change-data-capture-feature-portal/connect-lookup-if.png)
@@ -322,7 +322,7 @@ Ebben a lépésben egy kieséses ablakos triggert hoz létre, amely rendszeres i
     SELECT count(1) changecount FROM cdc.fn_cdc_get_all_changes_dbo_customers(@from_lsn, @to_lsn, ''all'')')
     ```
 
-3. Navigáljon a **másolási** tevékenységhez az **IF feltétel** esetében, és kattintson a **forrás** lapra. másolja a következőt a lekérdezésbe:
+3. Navigáljon a **másolási** tevékenységhez az **IF Condition (IF** ) tevékenység igaz esetére, és kattintson a **forrás** fülre. Másolja a következőt a lekérdezésbe:
     ```sql
     @concat('DECLARE @begin_time datetime, @end_time datetime, @from_lsn binary(10), @to_lsn binary(10); 
     SET @begin_time = ''',pipeline().parameters.triggerStartTime,''';
@@ -333,7 +333,7 @@ Ebben a lépésben egy kieséses ablakos triggert hoz létre, amely rendszeres i
     ```
 4. Kattintson a **másolási** tevékenység **mosogató** fülére, majd kattintson a **Megnyitás** gombra az adatkészlet tulajdonságainak szerkesztéséhez. Kattintson a **Parameters (paraméterek** ) fülre, és adjon hozzá egy új, **triggerStart** nevű paramétert.    
 
-    ![Fogadó adatkészlet konfigurációja – 3](./media/tutorial-incremental-copy-change-data-capture-feature-portal/sink-dataset-configuration-2.png)
+    ![Képernyőfelvétel: új paraméter hozzáadása a parameters (paraméterek) laphoz.](./media/tutorial-incremental-copy-change-data-capture-feature-portal/sink-dataset-configuration-2.png)
 5. Ezután konfigurálja az adatkészlet tulajdonságait úgy, hogy egy **ügyfél/növekményes** alkönyvtárban lévő adatokat dátum-alapú partíciókkal tárolja.
    1. Kattintson a **kapcsolatok** lapfülre az adatkészlet tulajdonságainál, és adja hozzá a dinamikus tartalmat a **címtárhoz** és a **fájlokhoz** . 
    2. Adja meg a következő kifejezést a **címtár** szakaszban a szövegmező alatt található dinamikus tartalom hivatkozásra kattintva:
