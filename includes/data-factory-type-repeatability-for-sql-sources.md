@@ -4,12 +4,12 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
-ms.openlocfilehash: 24bb7a1fcb1569922fb34034fb3c0d003cdd7061
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9447cec55c53861ca57d5416a91ffefd35fdd20b
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67179586"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91571974"
 ---
 ## <a name="repeatability-during-copy"></a>Ismételhetőség a másolás során
 Az adatok Azure SQL/SQL Serverba más adattárakból való másolása során meg kell őrizni az ismételhetőséget a nem kívánt eredmények elkerülése érdekében. 
@@ -74,7 +74,7 @@ Nincs új teendője. A másolási tevékenység lefuttatta a törlési parancsf�
 
 ### <a name="mechanism-2"></a>2. mechanizmus
 > [!IMPORTANT]
-> jelenleg nem támogatott a sliceIdentifierColumnName Azure SQL Data Warehouse. 
+> a sliceIdentifierColumnName jelenleg nem támogatott az Azure szinapszis Analytics szolgáltatásban. 
 
 Egy másik mechanizmus az ismételhetőség eléréséhez egy dedikált oszlopot (**sliceIdentifierColumnName**) kell kijelölnie a cél táblában. Ezt az oszlopot a Azure Data Factory fogja használni a forrás és a célhely szinkronizálásának biztosítása érdekében. Ez a megközelítés akkor működik, ha a cél SQL-tábla sémájának módosítása vagy meghatározása rugalmas. 
 

@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
@@ -8,23 +8,26 @@ ms.topic: include
 ms.date: 01/27/2020
 ms.author: sngun
 ms.custom: include file
-ms.openlocfilehash: a6cfafd41d1632d99b7ca03bce2316ec679d7579
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1f36f2f26b65fc6078b99a43b6f0bae9a8a8e9f5
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77061812"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578383"
 ---
 1. Egy új böngészőablakban jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 2. A bal oldali menüben válassza az **erőforrás létrehozása**lehetőséget.
    
-   ![Erőforrás létrehozása a Azure Portalban](./media/cosmos-db-create-dbaccount-graph/create-nosql-db-databases-json-tutorial-0.png)
+   ![Erőforrás létrehozása az Azure Portalon](./media/cosmos-db-create-dbaccount-graph/create-nosql-db-databases-json-tutorial-0.png)
    
-3. Az **új** lapon válassza az **adatbázisok** > **Azure Cosmos db**elemet.
+3. Az **új** lapon válassza az **adatbázisok**  >  **Azure Cosmos db**elemet.
    
    ![Az Azure Portal Adatbázisok panelje](./media/cosmos-db-create-dbaccount-graph/create-nosql-db-databases-json-tutorial-1.png)
    
+   > [!TIP]
+   > Ha nem látja Azure Cosmos DB a listában, csak írja be a lap tetején található keresőmezőbe, majd nyomja le az _ENTER_ billentyűt. 
+
 3. A **Azure Cosmos db fiók létrehozása** lapon adja meg az új Azure Cosmos db-fiók beállításait. 
  
     Beállítás|Érték|Leírás
@@ -37,7 +40,7 @@ ms.locfileid: "77061812"
 
     Válassza a **felülvizsgálat + létrehozás**lehetőséget. Kihagyhatja a **hálózat** és **címkék** szakaszt. 
 
-    ![Az Azure Cosmos DB új fiók lapja](./media/cosmos-db-create-dbaccount-graph/azure-cosmos-db-create-new-account.png)
+    ![Az Azure Cosmos DB Új fiók lapja](./media/cosmos-db-create-dbaccount-graph/azure-cosmos-db-create-new-account.png)
 
 4. A fiók létrehozása eltarthat néhány percig. Várja meg, amíg a portálon megjelenik a **Gratulálunk! A Azure Cosmos DB fiók létrehozása** lap.
    
