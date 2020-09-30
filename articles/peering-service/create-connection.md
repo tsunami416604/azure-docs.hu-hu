@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 05/2/2020
 ms.author: derekol
 Customer intent: With Azure Peering service enhancing the customer connectivity to Microsoft cloud services .
-ms.openlocfilehash: f04ae0d2e541be0a7984e944298fa8d7b47fd126
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: f8f0ee71a8dd00498d868bb6dc11b3fa083df766
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84872700"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530218"
 ---
 # <a name="tutorial-create-a-peering-service-connection"></a>Oktatóanyag: egyenrangú szolgáltatási kapcsolatok létrehozása
 
@@ -43,13 +43,13 @@ Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy társ-szolgált
 
 1. Válassza ki az **előtag-kulcsot** , és adja hozzá a szolgáltató (ISP vagy IXP) által megadott előtag-kulcsot. Ez a kulcs lehetővé teszi, hogy az MS érvényesítse az IP-előtagot lefoglaló előtagot és szolgáltatót.
 
-    ![A társközi szolgáltatás konfigurációjának regisztrálása lap](./media/peering-service-portal/peering-serviceconfiguration.png)
+    ![Képernyőfelvétel: a társítási szolgáltatás kapcsolatainak létrehozása lap konfiguráció lapja, amelyen megadhatja az előtag kulcsát.](./media/peering-service-portal/peering-serviceconfiguration.png)
 
 1. Kattintson a lap bal alsó sarkában található **felülvizsgálat + létrehozás** gombra. Megjelenik a **felülvizsgálat + létrehozás** lap, és az Azure ellenőrzi a konfigurációt.
 
  1. Amikor megjelenik az **átadott üzenet ellenőrzése** az ábrán látható módon, válassza a **Létrehozás**lehetőséget.
 
-> ![A társközi szolgáltatás konfigurációjának regisztrálása lap](./media/peering-service-portal/peering-service-prefix.png)
+> ![A képernyőképen a peering Service-kapcsolatok létrehozása lap áttekintés + létrehozás lapja látható.](./media/peering-service-portal/peering-service-prefix.png)
 
 1. A társ-szolgáltatási kapcsolat regisztrálása után a rendszer további ellenőrzéseket hajt végre a befoglalt előtagokon. Az érvényesítési állapotot az erőforrás neve **előtagok** szakaszában tekintheti meg. Ha az ellenőrzés sikertelen, a következő hibaüzenetek egyike jelenik meg:
 

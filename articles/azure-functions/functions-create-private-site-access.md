@@ -6,12 +6,12 @@ ms.author: cshoe
 ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 06/17/2020
-ms.openlocfilehash: eb3096cadc8197aeda9258bd3123c2eb760a44af
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 948e4f74763efd641bc0f089c679cdaf7c2f784e
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540281"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530068"
 ---
 # <a name="tutorial-establish-azure-functions-private-site-access"></a>Oktatóanyag: Azure Functions Private site-hozzáférés létrehozása
 
@@ -67,13 +67,13 @@ Az oktatóanyag első lépése egy új virtuális gép létrehozása egy virtuá
     | _Előfizetés_ | Az Ön előfizetése | Az az előfizetés, amelyben az erőforrások létrejöttek. |
     | [_Erőforráscsoport_](../azure-resource-manager/management/overview.md) | myResourceGroup | Válassza ki az oktatóanyaghoz tartozó összes erőforrást tartalmazó erőforráscsoportot.  Ugyanezen erőforráscsoport használatával egyszerűbbé válik az erőforrások törlése, amikor ezzel az Oktatóanyaggal végzett. |
     | _Virtuális gép neve_ | myVM | A virtuális gép nevének egyedinek kell lennie az erőforráscsoporthoz |
-    | [_Régió_](https://azure.microsoft.com/regions/) | USA USA északi középső régiója | Válasszon egy Önhöz közeli régiót vagy az elérni kívánt funkciók közelében. |
+    | [_Region_](https://azure.microsoft.com/regions/) | USA USA északi középső régiója | Válasszon egy Önhöz közeli régiót vagy az elérni kívánt funkciók közelében. |
     | _Nyilvános bejövő portok_ | Nincs | Válassza a **nincs** lehetőséget, hogy a virtuális géphez ne legyen bejövő kapcsolat az internetről. A virtuális géphez való távoli hozzáférés az Azure Bastion szolgáltatáson keresztül lesz konfigurálva. |
 
 1. Válassza a _hálózatkezelés_ fület, és válassza az **új létrehozása** lehetőséget az új virtuális hálózat konfigurálásához.
 
     >[!div class="mx-imgBorder"]
-    >![Új virtuális hálózat létrehozása az új virtuális GÉPHEZ](./media/functions-create-private-site-access/create-vm-networking.png)
+    >![A "hálózatkezelés" fület a "virtuális hálózat" szakaszban Kiemelt "új létrehozás" művelettel ábrázoló képernyőkép.](./media/functions-create-private-site-access/create-vm-networking.png)
 
 1. A _virtuális hálózat létrehozása_területen használja az alábbi táblázatban található beállításokat a rendszerkép alatt:
 
@@ -144,14 +144,14 @@ A következő lépés egy Function-alkalmazás létrehozása az Azure-ban a [fel
     | _Futtatókörnyezet verme_ | Elsődleges nyelv | Válasszon egy olyan futtatókörnyezetet, amely támogatja a kedvenc függvényprogramozási nyelvét. |
     | _Régió_ | USA északi középső régiója | Válasszon egy Önhöz közeli [régiót](https://azure.microsoft.com/regions/) vagy a funkciókhoz tartozó egyéb szolgáltatások közelében. |
 
-    Válassza a **következő: >üzemeltetése** gombot.
+    Válassza a **következő: >üzemeltetése ** gombot.
 1. A _hoszting_ szakaszban válassza ki a megfelelő _Storage-fiókot_, _operációs rendszert_és _tervet_ a következő táblázatban leírtak szerint.
 
     | Beállítás      | Ajánlott érték  | Leírás      |
     | ------------ | ---------------- | ---------------- |
     | _Storage-fiók_ | Globálisan egyedi név | Hozzon létre egy tárfiókot a függvényalkalmazás számára. A tárfiókok neve 3–24 karakter hosszúságú lehet, és csak számokból és kisbetűkből állhat. Meglévő fiókot is használhat, amelynek meg kell felelnie a [Storage-fiókra vonatkozó követelményeknek](./functions-scale.md#storage-account-requirements). |
     | _Operációs rendszer_ | Előnyben részesített operációs rendszer | Az operációs rendszer előre ki van választva a futásidejű verem kiválasztása alapján, de szükség esetén módosíthatja a beállítást. |
-    | _Terv_ | Használat | A [üzemeltetési terv](./functions-scale.md) azt diktálja, hogy a függvény alkalmazás hogyan méretezhető, és az erőforrások elérhetők legyenek az egyes példányok számára. |
+    | _Terv_ | Felhasználás | A [üzemeltetési terv](./functions-scale.md) azt diktálja, hogy a függvény alkalmazás hogyan méretezhető, és az erőforrások elérhetők legyenek az egyes példányok számára. |
 1. Válassza a **felülvizsgálat + létrehozás** lehetőséget az alkalmazás-konfiguráció kiválasztásának áttekintéséhez.
 1. Kattintson a **Létrehozás** elemre a függvényalkalmazás kiépítéséhez és üzembe helyezéséhez.
 
@@ -223,7 +223,7 @@ A függvény elérése egy webböngészőn keresztül (az Azure Bastion szolgál
 
 [!INCLUDE [clean-up-section-portal](../../includes/clean-up-section-portal.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 
 > [!div class="nextstepaction"]

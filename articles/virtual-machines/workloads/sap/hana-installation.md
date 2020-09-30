@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 01/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ae4a7dc400b347a963e07a8c696e7581e2dcd703
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 60d889b232857ae69372df8ebabbd0edd01a2f17
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507845"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91529830"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>SAP HANA (nagyméretű példányok) telepítése és konfigurálása az Azure-ban
 
@@ -35,7 +35,7 @@ A HANA telepítésének megkezdése előtt ellenőrizze az alábbiakat:
 - [HLI egység (ek)](#validate-the-hana-large-instance-units)
 - [Operációs rendszer konfigurációja](#operating-system)
 - [Hálózati konfiguráció](#networking)
-- [Tárolási konfiguráció](#storage)
+- [Tároló konfigurálása](#storage)
 
 
 ## <a name="validate-the-hana-large-instance-units"></a>A HANA nagyméretű példány-egység (ek) ellenőrzése
@@ -124,7 +124,7 @@ SAP HANA az Azure-ban (nagyméretű példányok) az Azure-ban végzett időszink
 Ennek eredményeképpen be kell állítania egy külön időkiszolgálót, amelyet az Azure-beli virtuális gépeken futó SAP-alkalmazások és a HANA nagyméretű példányokon futó SAP HANA adatbázis-példányok használhatnak. A nagyméretű példányokban tárolt tárolási infrastruktúra időközben szinkronizálva van az NTP-kiszolgálókkal.
 
 
-## <a name="networking"></a>Hálózatkezelés
+## <a name="networking"></a>Hálózat
 Feltételezzük, hogy követte az Azure-beli virtuális hálózatok megtervezésének és a virtuális hálózatok a HANA nagyméretű példányokhoz való csatlakoztatásának javaslatait, az alábbi dokumentumokban leírtak szerint:
 
 - [SAP HANA (nagyméretű példány) áttekintése és architektúrája az Azure-ban](./hana-overview-architecture.md)
@@ -179,7 +179,7 @@ Ezek a csatlakoztatási pontok az/etc/fstab-ben vannak konfigurálva, ahogy az a
 
 A DF-h parancs kimenete a S72m HANA nagyméretű példány egységében a következőképpen néz ki:
 
-![csatlakoztatott kötetek fstab a HANA nagyméretű példány egységében](./media/hana-installation/image2_df_output.PNG)
+![A képernyőfelvételen a HANA nagyméretű példány-egység parancs kimenete látható.](./media/hana-installation/image2_df_output.PNG)
 
 
 A nagyméretű példányokban lévő tároló vezérlő és csomópontjai szinkronizálva vannak az NTP-kiszolgálókkal. Ha az Azure-ban (nagyméretű példányok) és az Azure-beli virtuális gépeken lévő SAP HANA az NTP-kiszolgálóval szinkronizálja, nem szabad jelentős időbeli eltolódást végezni az infrastruktúra és a számítási egységek között az Azure-ban vagy nagyméretű példányokban.

@@ -1,7 +1,7 @@
 ---
-title: Migrálás a v2 olvasási tárolóról v3-re
+title: Migrálás az olvasási v3. x OCR-tárolóba
 titleSuffix: Azure Cognitive Services
-description: Útmutató a v3 olvasási tárolóba való áttelepítéshez
+description: Útmutató a v3 olvasási OCR-tárolóba való áttelepítéshez
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,17 +10,16 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 09/21/2020
 ms.author: aahi
-ms.openlocfilehash: 7f701af86f2bca856169f6dcf0689d59930306f2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 714a4709eceea875798940de962716d34437f2a9
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91349014"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530459"
 ---
-# <a name="migrate-to-the-read-v3x-container"></a>Migrálás a Read v3. x tárolóba
+# <a name="migrate-to-the-read-v3x-ocr-containers"></a>Migrálás az olvasási v3. x OCR-tárolóba
 
-Ha a Computer Vision Read tároló 2. verzióját használja, a cikkből megtudhatja, hogyan frissítheti az alkalmazást a tároló 3. x verziójának használatára. 
-
+Ha az OCR-tároló Computer Vision 2. verzióját használja, ebből a cikkből megtudhatja, hogyan frissítheti az alkalmazást a tároló 3. x verziójának használatára. 
 
 
 ## <a name="configuration-changes"></a>Konfigurációs változások
@@ -90,7 +89,7 @@ A hozzáadott redundancia érdekében az olvasási v3. x tároló egy láthatós
 | 30000 |   120000 |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A [tárolók konfigurálásának](computer-vision-resource-container-config.md) áttekintése konfigurációs beállításokhoz
 * A nyomtatott és a kézírásos szöveg felismerésével kapcsolatos további információkért tekintse át [Computer Vision áttekintést](overview.md)

@@ -9,12 +9,12 @@ ms.author: deli
 ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 02/29/2020
-ms.openlocfilehash: dd61ac9751010d57cbf5b742a5081beb3ac560e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d161b287f9706473c96d25684fa23a2c94b8c3e
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83826060"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91532153"
 ---
 # <a name="migrate-azure-scheduler-jobs-to-azure-logic-apps"></a>Azure Scheduler-feladatok migrálása az Azure Logic Appsbe
 
@@ -96,7 +96,7 @@ Egyetlen logikai alkalmazás létrehozásával több egyszeri feladatot is futta
 
    Megadhat például egy HTTP-műveletet, amely egy kérést küld egy URL-címre, vagy olyan műveleteket, amelyek a tárolási várólistákkal, Service Bus várólistákkal vagy Service Bus témakörökkel működnek:
 
-   ![HTTP-művelet](./media/migrate-from-scheduler-to-logic-apps/request-http-action.png)
+   ![A képernyőfelvétel a művelet utáni késleltetést jeleníti meg, amelyet egy H T P művelet követett POST metódussal.](./media/migrate-from-scheduler-to-logic-apps/request-http-action.png)
 
 1. Ha elkészült, mentse a logikai alkalmazást.
 
@@ -127,9 +127,9 @@ A hívás elküldése után a logikai alkalmazás válasza megjelenik a **törzs
 
 > [!IMPORTANT]
 >
-> Ha később szeretné megszakítani a feladatot, válassza a **fejlécek** fület. Keresse meg és másolja az **x-MS-workflow-Run-ID** fejléc értékét a válaszban. 
+> Ha később szeretné megszakítani a feladatot, válassza a **fejlécek** lapot. Keresse meg és másolja az **x-MS-workflow-Run-ID** fejléc értékét a válaszban. 
 >
-> ![Válasz](./media/migrate-from-scheduler-to-logic-apps/postman-response.png)
+> ![Reagálás](./media/migrate-from-scheduler-to-logic-apps/postman-response.png)
 
 ## <a name="cancel-a-one-time-job"></a>Egyszeri feladat megszakítása
 
@@ -155,7 +155,7 @@ Logic Apps minden egyszeri feladatot egyetlen logikai alkalmazás futtatási pé
 
    Megadhat például egy HTTP-műveletet, amely egy kérést küld egy URL-címre, vagy olyan műveleteket, amelyek a tárolási várólistákkal, Service Bus várólistákkal vagy Service Bus témakörökkel működnek:
 
-   ![HTTP-művelet](./media/migrate-from-scheduler-to-logic-apps/recurrence-http-action.png)
+   ![A képernyőképen egy H T P művelet jelenik meg POST metódussal.](./media/migrate-from-scheduler-to-logic-apps/recurrence-http-action.png)
 
 1. Ha elkészült, mentse a logikai alkalmazást.
 
@@ -220,7 +220,7 @@ Válasz **: a**Feladatütemező és a feladatok összes futtatása leáll, és t
 **K**: Hol kaphatok támogatást a Scheduler-feladatok áttelepítéséhez? <br>
 **A**: Íme néhány lehetőség a támogatás megszerzésére:
 
-**Azure Portalra**
+**Azure Portal**
 
 Ha az Azure-előfizetése fizetős támogatási csomaggal rendelkezik, technikai támogatási kérést hozhat létre a Azure Portal. Ellenkező esetben választhat másik támogatási lehetőséget is.
 

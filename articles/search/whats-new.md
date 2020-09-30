@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: ccc10327d4de4134dd15e0ed936f6b938cbe31dd
-ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
+ms.openlocfilehash: 7714ec29b3cbe17c7700b48111ea2b455aa18b7e
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91403670"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91532227"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Az Azure Cognitive Search újdonságai
 
@@ -77,7 +77,7 @@ Hozzon létre egy Azure Active Directory keresési szolgáltatás identitását,
 
 |Vonás&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategória | Leírás | Rendelkezésre állás  |
 |---------|------------------|-------------|---------------|
-| [**Személyes adatok észlelése (előzetes verzió)**](cognitive-search-skill-pii-detection.md) | MI-bővítés | Új kognitív képesség az indexelés során, amely a személyazonosításra alkalmas adatokat egy bemeneti szövegből kigyűjti, és lehetővé teszi, hogy az adott szövegtől különböző módokon maszkot adjon. | Nyilvános előzetes verzió. </br> Használja a portált vagy a [Search REST API 2020-06-30 – Preview](/rest/api/searchservice/index-preview) vagy REST API 2019-05-06-preview. |
+| [**Személyes adatok észlelése (előzetes verzió)**](cognitive-search-skill-pii-detection.md) | MI-bővítés | Új kognitív képesség az indexelés során, amely Kinyeri a személyes adatokat egy bemeneti szövegből, és lehetővé teszi, hogy az adott szövegtől különböző módokon maszkot adjon. | Nyilvános előzetes verzió. </br> Használja a portált vagy a [Search REST API 2020-06-30 – Preview](/rest/api/searchservice/index-preview) vagy REST API 2019-05-06-preview. |
 | [**Egyéni entitások keresése (előzetes verzió)**](cognitive-search-skill-custom-entity-lookup.md )| MI-bővítés | Új kognitív képesség, amely szövegeket keres a szavak és kifejezések egyéni, felhasználó által meghatározott listájából. Ezzel a listával minden olyan dokumentumot felcímkéz, amely minden egyező entitással rendelkezik. A képesség a hasonló, de nem pontos egyezések keresésére is használható. | Nyilvános előzetes verzió. </br> Használja a portált vagy a [Search REST API 2020-06-30 – Preview](/rest/api/searchservice/index-preview) vagy REST API 2019-05-06-preview. |
 
 ## <a name="january-2020"></a>2020. január

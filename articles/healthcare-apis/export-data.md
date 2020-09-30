@@ -7,14 +7,16 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 8/26/2020
 ms.author: matjazl
-ms.openlocfilehash: ecc2134d1a528ee22710cb447f996e0c5e31a8de
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ee7ba96a7cc8789e1a949db80bc84c63b28f4518
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91308180"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531666"
 ---
 # <a name="how-to-export-fhir-data"></a>FHIR-adatexportálás
+
+A tömeges exportálás funkció lehetővé teszi az adatok exportálását a FHIR-kiszolgálóról a] FHIR-specifikáció] ( https://hl7.org/fhir/uv/bulkdata/export/index.html) . 
 
 $Export használata előtt meg kell győződnie arról, hogy a FHIR készült Azure API használatára van konfigurálva. Az exportálási beállítások konfigurálásához és az Azure Storage-fiók létrehozásához tekintse meg [Az adatexportálás konfigurálása lapot](configure-export-data.md).
 
@@ -22,7 +24,7 @@ $Export használata előtt meg kell győződnie arról, hogy a FHIR készült Az
 
 Miután konfigurálta az Azure API-t a FHIR-hoz az exportáláshoz, a $export paranccsal exportálhatja a szolgáltatásból az adatkészletet. Az adattárolási szolgáltatás az Exportálás konfigurálásakor megadott Storage-fiókba kerül. Ha meg szeretné tudni, hogyan hívhat meg $export parancsot a FHIR-kiszolgálón, olvassa el a [$export specifikáció](https://hl7.org/Fhir/uv/bulkdata/export/index.html)dokumentációját. 
 
-A FHIR készült Azure API-ban található $export parancs egy opcionális _ \_ tároló_ paramétert használ, amely meghatározza azt a tárolót, amely a konfigurált Storage-fiókban található, ahol az adatexportálást el kell helyezni.
+A FHIR készült Azure API-ban található $export parancs egy opcionális _ \_ tároló_ paramétert használ, amely meghatározza azt a tárolót, amely a konfigurált Storage-fiókban található, ahol az adatexportálást el kell helyezni. Ha meg van adva tároló, a rendszer az adott tárolóba exportálja a nevet egy új mappába. Ha nincs megadva tároló, a rendszer az új tárolóba exportálja az adott nevet
 
 `https://<<FHIR service base URL>>/$export?_container=<<container_name>>`
 
@@ -33,7 +35,9 @@ A FHIR készült Azure API a rendszer, a beteg és a csoport szintjén támogatj
 > [!Note] 
 > $export akkor exportálja az ismétlődő erőforrásokat, ha az erőforrás egynél több erőforrás rekeszében van, vagy több csoportban van.
 
-## <a name="next-steps"></a>Következő lépések
+Emellett az Exportálás állapotát a hely fejléce által visszaadott URL-cím alapján is ellenőrizheti, és a tényleges exportálási feladat megszakításával is támogatott.
+
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta, hogyan exportálhatja a FHIR-erőforrásokat $export parancs használatával. Következő lépésként tekintse át a támogatott funkciókat
  

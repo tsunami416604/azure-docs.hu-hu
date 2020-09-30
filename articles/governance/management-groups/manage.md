@@ -3,12 +3,12 @@ title: A felügyeleti csoportok használata – Azure-szabályozás
 description: Útmutató a felügyeleti csoport hierarchiájának megtekintéséhez, karbantartásához, frissítéséhez és törléséhez.
 ms.date: 08/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 765a3853bbd3ee21bfc2a4aca5d5adb03f413e30
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 82eeb2520815ddac69d27ddccd58c842c3e33deb
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89658761"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531037"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Erőforrások kezelése felügyeleti csoportokkal
 
@@ -41,9 +41,9 @@ A felügyeleti csoport nevét a portál, a PowerShell vagy az Azure CLI használ
 
 1. Amikor megnyílik a menü, írja be az új nevet, amelyet meg szeretne jeleníteni.
 
-   :::image type="content" source="./media/rename_context.png" alt-text="Képernyőfelvétel a csoport átnevezése ablakról és a felügyeleti csoportok átnevezési lehetőségeiről." border="false":::
+   :::image type="content" source="./media/rename_context.png" alt-text="Képernyőfelvétel a műveleti sáv és a csoport átnevezése gombra a felügyeleti csoport lapon." border="false":::
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 ### <a name="change-the-name-in-powershell"></a>A név módosítása a PowerShellben
 
@@ -68,7 +68,7 @@ Felügyeleti csoport törléséhez a következő követelményeknek kell teljes�
 1. A felügyeleti csoportban nincsenek alárendelt felügyeleti csoportok vagy előfizetések. Ha egy előfizetést vagy felügyeleti csoportot másik felügyeleti csoportba szeretne áthelyezni, tekintse meg [a felügyeleti csoportok és előfizetések áthelyezése a hierarchiába című részt](#moving-management-groups-and-subscriptions).
 
 1. Írási engedéllyel kell rendelkeznie a felügyeleti csoportra ("tulajdonos", "közreműködő" vagy "felügyeleti csoport közreműködője"). Ha szeretné megtekinteni, hogy milyen engedélyekkel rendelkezik, válassza ki a felügyeleti csoportot, majd válassza a **iam**lehetőséget. További információ az Azure-szerepkörökről:  
-   [Hozzáférés és engedélyek kezelése a RBAC-](../../role-based-access-control/overview.md)mel.
+   [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/overview.md).
 
 ### <a name="delete-in-the-portal"></a>Törlés a portálon
 
@@ -82,14 +82,14 @@ Felügyeleti csoport törléséhez a következő követelményeknek kell teljes�
 
 1. **Törlés** kiválasztása
 
-   :::image type="content" source="./media/delete.png" alt-text="Képernyőkép a felügyeleti csoport oldaláról, a Törlés gombbal kiemelve." border="false":::
+   :::image type="content" source="./media/delete.png" alt-text="Képernyőfelvétel a műveleti sáv és a csoport átnevezése gombra a felügyeleti csoport lapon." border="false":::
 
    > [!TIP]
    > Ha az ikon le van tiltva, az egérmutatót az ikon fölé húzva megjelenik az OK.
 
 1. Ekkor megnyílik egy ablak, amely megerősíti, hogy törölni szeretné a felügyeleti csoportot.
 
-   :::image type="content" source="./media/delete_confirm.png" alt-text="Képernyőkép a csoport törlése megerősítési párbeszédpanelről a felügyeleti csoportok törléséhez." border="false":::
+   :::image type="content" source="./media/delete_confirm.png" alt-text="Képernyőfelvétel a műveleti sáv és a csoport átnevezése gombra a felügyeleti csoport lapon." border="false":::
 
 1. Válassza az **Igen** lehetőséget.
 
@@ -123,7 +123,7 @@ Bármely olyan felügyeleti csoportot megtekintheti, amelyhez közvetlen vagy ö
 
 1. A felügyeleti csoport részleteinek megtekintéséhez kattintson a **(részletek)** hivatkozásra a felügyeleti csoport címe mellett. Ha ez a hivatkozás nem érhető el, nincs engedélye a felügyeleti csoport megtekintésére.
 
-   :::image type="content" source="./media/main.png" alt-text="Képernyőfelvétel a felügyeleti csoportok lapról alárendelt felügyeleti csoportok és előfizetések." border="false":::
+   :::image type="content" source="./media/main.png" alt-text="Képernyőfelvétel a műveleti sáv és a csoport átnevezése gombra a felügyeleti csoport lapon." border="false":::
 
 ### <a name="view-in-powershell"></a>Megtekintés a PowerShellben
 
@@ -213,7 +213,7 @@ Ha az áthelyezés műveletet végzi, a következőkre lesz szüksége:
 
 Ha az előfizetés tulajdonosi szerepköre az aktuális felügyeleti csoporttól örökölt, az áthelyezési célok korlátozottak. Az előfizetést csak egy másik felügyeleti csoportba helyezheti át, ahol a tulajdonosi szerepköre van. Nem helyezhető át olyan felügyeleti csoportba, ahol Ön közreműködő, mert elveszti az előfizetés tulajdonjogát. Ha közvetlenül az előfizetés tulajdonosi szerepköréhez van hozzárendelve (nem a felügyeleti csoporttól örökölt), akkor áthelyezheti azt bármely olyan felügyeleti csoportba, ahol Ön közreműködő.
 
-Ha szeretné megtekinteni, hogy milyen engedélyekkel rendelkezik a Azure Portalban, válassza ki a felügyeleti csoportot, majd válassza a **iam**lehetőséget. Ha többet szeretne megtudni az Azure-szerepkörökről, tekintse meg a [hozzáférés és engedélyek kezelése a RBAC](../../role-based-access-control/overview.md)című témakört.
+Ha szeretné megtekinteni, hogy milyen engedélyekkel rendelkezik a Azure Portalban, válassza ki a felügyeleti csoportot, majd válassza a **iam**lehetőséget. Az Azure-szerepkörökkel kapcsolatos további információkért lásd: [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/overview.md).
 
 ## <a name="move-subscriptions"></a>Előfizetések áthelyezése 
 
@@ -229,7 +229,7 @@ Ha szeretné megtekinteni, hogy milyen engedélyekkel rendelkezik a Azure Portal
 
 1. Válassza ki az előfizetést a listában a megfelelő AZONOSÍTÓval.
 
-   :::image type="content" source="./media/add_context_sub.png" alt-text="Képernyőkép az előfizetés hozzáadása lehetőségről a felügyeleti csoportba felvenni kívánt meglévő előfizetés kiválasztásához." border="false":::
+   :::image type="content" source="./media/add_context_sub.png" alt-text="Képernyőfelvétel a műveleti sáv és a csoport átnevezése gombra a felügyeleti csoport lapon." border="false":::
 
 1. Válassza a Save (Mentés) lehetőséget.
 
@@ -243,15 +243,15 @@ Ha szeretné megtekinteni, hogy milyen engedélyekkel rendelkezik a Azure Portal
 
 1. Válassza ki az előfizetéshez tartozó sor végén található ellipszist az áthelyezni kívánt listában.
 
-   :::image type="content" source="./media/move_small.png" alt-text="Képernyőkép az előfizetés alternatív menüjéről az áthelyezés lehetőség kiválasztásához." border="false":::
+   :::image type="content" source="./media/move_small.png" alt-text="Képernyőfelvétel a műveleti sáv és a csoport átnevezése gombra a felügyeleti csoport lapon." border="false":::
 
 1. Válassza az **Áthelyezés**lehetőséget.
 
 1. A megnyíló menüben válassza ki a **szülő felügyeleti csoportot**.
 
-   :::image type="content" source="./media/move_small_context.png" alt-text="Képernyőkép az áthelyezés ablakról és az előfizetés másik felügyeleti csoportba való áthelyezésének lehetőségeiről." border="false":::
+   :::image type="content" source="./media/move_small_context.png" alt-text="Képernyőfelvétel a műveleti sáv és a csoport átnevezése gombra a felügyeleti csoport lapon." border="false":::
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 ### <a name="move-subscriptions-in-powershell"></a>Előfizetések áthelyezése a PowerShellben
 
@@ -298,9 +298,9 @@ az account management-group subscription remove --name 'Contoso' --subscription 
    - Az új lehetőség kiválasztásával új felügyeleti csoport jön létre.
    - Ha kiválaszt egy meglévőt, az összes olyan felügyeleti csoport legördülő lista jelenik meg, amelyet át tud helyezni ebbe a felügyeleti csoportba.  
 
-   :::image type="content" source="./media/add_context_MG.png" alt-text="Képernyőkép a felügyeleti csoport hozzáadása lehetőségről az új felügyeleti csoport létrehozásához." border="false":::
+   :::image type="content" source="./media/add_context_MG.png" alt-text="Képernyőfelvétel a műveleti sáv és a csoport átnevezése gombra a felügyeleti csoport lapon." border="false":::
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 ### <a name="move-management-groups-in-powershell"></a>Felügyeleti csoportok áthelyezése a PowerShellben
 
@@ -323,7 +323,7 @@ az account management-group update --name 'Contoso' --parent ContosoIT
 
 A felügyeleti csoportok támogatottak az [Azure-tevékenységnaplóban](../../azure-monitor/platform/platform-logs-overview.md). A felügyeleti csoportba tartozó összes eseményt a többi Azure-erőforrással megegyező központi helyen kérdezheti le. Például megtekintheti egy adott felügyeleti csoporthoz tartozó összes szerepkör-hozzárendelés vagy szabályzat-hozzárendelés módosításait.
 
-:::image type="content" source="./media/al-mg.png" alt-text="Képernyőkép a kiválasztott felügyeleti csoporttal kapcsolatos tevékenységi naplókról és műveletekről." border="false":::
+:::image type="content" source="./media/al-mg.png" alt-text="Képernyőfelvétel a műveleti sáv és a csoport átnevezése gombra a felügyeleti csoport lapon." border="false":::
 
 Az Azure Portalon kívüli felügyeleti csoportok lekérdezésekor a felügyeleti csoportok célhatóköre a következőhöz hasonlóan néz ki: **"/ providers/Microsoft.Management/managementGroups/{yourMgID}"**.
 
@@ -345,7 +345,7 @@ Ugyanazt a hatókörbeli elérési utat használja a rendszer a házirend-defin�
 GET https://management.azure.com/providers/Microsoft.Management/managementgroups/MyManagementGroup/providers/Microsoft.Authorization/policyDefinitions/ResourceNaming?api-version=2019-09-01
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A felügyeleti csoportokkal kapcsolatos további tudnivalókért lásd:
 

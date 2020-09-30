@@ -11,12 +11,12 @@ ms.topic: end-user-help
 ms.date: 06/03/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 3148f8ba84674c79764d0fc69acdbc02e7a12dc4
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: e7608196c962a6918a90b91457f856f3e11b04f0
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798992"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530901"
 ---
 # <a name="back-up-and-recover-account-credentials-using-the-microsoft-authenticator-app"></a>Fiók hitelesítő adatainak biztonsági mentése és helyreállítása a Microsoft Authenticator alkalmazás használatával
 
@@ -83,21 +83,21 @@ Személyes Microsoft-fiókok esetén a jelszó megadásával, valamint egy máso
 
 1. A Microsoft Authenticator alkalmazás **fiókok** képernyőjén koppintson arra a fiókra, amelyet vissza szeretne állítani a fiók teljes képernyős nézetének megnyitásához.
 
-    :::image type="content" source="media/user-help-auth-app-backup-recovery/backup-and-recovery-arrow.png" alt-text="Microsoft Authenticator alkalmazás, amely az elérhető fiók csempéit jeleníti meg" border="true":::
+    :::image type="content" source="media/user-help-auth-app-backup-recovery/backup-and-recovery-arrow.png" alt-text="Képernyőkép, amely a Microsoft Authenticator alkalmazást jeleníti meg az elérhető fiók csempével." border="true":::
 
 1. Koppintson a helyreállítani kívánt fiók csempére, majd a helyreállításhoz koppintson a bejelentkezés lehetőségre. Adja meg a jelszavát, majd erősítse meg az e-mail-címét vagy telefonszámát további ellenőrzésként.
 
-    :::image type="content" source="media/user-help-auth-app-backup-recovery/backup-and-recovery-codes.png" alt-text="A hitelesítő egyszeri jelszót biztosít ellenőrző kódként" border="true":::
+    :::image type="content" source="media/user-help-auth-app-backup-recovery/backup-and-recovery-codes.png" alt-text="Képernyőkép, amely a Microsoft Authenticator alkalmazást jeleníti meg az elérhető fiók csempével." border="true":::
 
 ### <a name="to-provide-more-verification-for-work-or-school-accounts"></a>További ellenőrzés a munkahelyi vagy iskolai fiókok számára
 
 1. A Microsoft Authenticator alkalmazás **fiókok** képernyőjén koppintson arra a fiókra, amelyet vissza szeretne állítani a fiók teljes képernyős nézetének megnyitásához.
 
-    :::image type="content" source="media/user-help-auth-app-backup-recovery/work-or-school-recovery-arrow.png" alt-text="Microsoft Authenticator alkalmazás, amely az elérhető fiók csempéit jeleníti meg" border="true":::
+    :::image type="content" source="media/user-help-auth-app-backup-recovery/work-or-school-recovery-arrow.png" alt-text="Képernyőkép, amely a Microsoft Authenticator alkalmazást jeleníti meg az elérhető fiók csempével." border="true":::
 
 1. A teljes képernyős nézetben koppintson a QR-kód teljes helyreállításra való vizsgálatára szolgáló lehetőségre.
 
-    :::image type="content" source="media/user-help-auth-app-backup-recovery/work-or-school-recovery-qr-code.png" alt-text="A hitelesítő egyszeri jelszót biztosít ellenőrző kódként" border="true":::
+    :::image type="content" source="media/user-help-auth-app-backup-recovery/work-or-school-recovery-qr-code.png" alt-text="Képernyőkép, amely a Microsoft Authenticator alkalmazást jeleníti meg az elérhető fiók csempével." border="true":::
 
 >[!NOTE]
 >A QR-kódokról és annak beszerzéséről további információért lásd: Ismerkedés [a Microsoft Authenticator alkalmazással](./user-help-auth-app-download-install.md) vagy [biztonsági információk beállítása a hitelesítő alkalmazás használatára](./security-info-setup-auth-app.md), attól függően, hogy a rendszergazda bekapcsolta-e a biztonsági adatokat.
@@ -120,7 +120,7 @@ Előfordulhat, hogy a biztonsági mentés néhány oka nem érhető el
 
 - A **biztonsági mentés**elavult: Ha a biztonsági mentési információk elavultak, előfordulhat, hogy az adatok frissítését újra be kell jelentkeznie a Microsoft helyreállítási fiókjába. A helyreállítási fiók a személyes Microsoft-fiók, amelyet kezdetben használt a biztonsági másolat tárolására. Ha bejelentkezésre van szükség, egy piros pont jelenik meg a menüben vagy a műveleti sávon, vagy egy felkiáltójel ikon jelenik meg, amely felszólítja, hogy jelentkezzen be a biztonsági másolatból való visszaállítás befejezéséhez. Miután kiválasztotta a megfelelő ikont, a rendszer felszólítja az adatok frissítésére.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy biztonsági mentést készített, és visszaállította a fiókja hitelesítő adatait az új eszközre, továbbra is használhatja a Microsoft Authenticator alkalmazást a személyazonosságának ellenőrzéséhez. További információ: bejelentkezés a [fiókba a Microsoft Authenticator alkalmazás használatával](user-help-sign-in.md).
 

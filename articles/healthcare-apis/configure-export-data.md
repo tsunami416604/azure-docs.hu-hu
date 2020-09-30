@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 3/5/2020
 ms.author: matjazl
-ms.openlocfilehash: 7ed4e471764fbf8ecc9b82a7d614ae52b97360f1
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: e4adceea5c2cd2a36d7a867ca9b9d2ad7c33c155
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267258"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91529983"
 ---
 # <a name="configure-export-setting-and-set-up-the-storage-account"></a>Az exportálási beállítás konfigurálása és a Storage-fiók beállítása
 
@@ -40,11 +40,11 @@ Az Exportálás következő lépése a FHIR szolgáltatáshoz tartozó Azure API
 
 A Storage-fiók létrehozása után navigáljon a Storage-fiók Access Control (IAM) paneljére, és válassza a szerepkör-hozzárendelések hozzáadása elemet.
 
-![Felügyelt identitás engedélyezése](media/export-data/fhir-export-role-assignment.png)
+![Szerepkör-hozzárendelés exportálása](media/export-data/fhir-export-role-assignment.png)
 
 Itt hozzáadjuk a szerepkör-tároló blob-adatközreműködőjét a szolgáltatás nevéhez.
 
-![Felügyelt identitás engedélyezése](media/export-data/fhir-export-role-add.png)
+![Szerepkör hozzáadása](media/export-data/fhir-export-role-add.png)
 
 Most már készen áll a következő lépésre, ahol kiválaszthatja a Storage-fiókot az Azure API-ban a FHIR alapértelmezett Storage-fiókként a $export számára.
 
@@ -52,7 +52,7 @@ Most már készen áll a következő lépésre, ahol kiválaszthatja a Storage-f
 
 Utolsó lépésként hozzá kell rendelnie az Azure Storage-fiókot, amelyet az Azure API FHIR használ az adatexportáláshoz. Ehhez navigáljon az integráció panelre az Azure API-ban a FHIR szolgáltatáshoz Azure Portal és válassza ki a Storage-fiókot.
 
-![Felügyelt identitás engedélyezése](media/export-data/fhir-export-storage.png)
+![FHIR-exportálási tároló](media/export-data/fhir-export-storage.png)
 
 Ezután készen áll az adatexportálásra $export parancs használatával.
 

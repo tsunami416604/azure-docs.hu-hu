@@ -3,20 +3,18 @@ title: Kora előre elkészített entitás – LUIS
 titleSuffix: Azure Cognitive Services
 description: Ez a cikk az előre elkészített entitások adatait tartalmazza Language Understanding (LUIS).
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 10/04/2019
-ms.author: diberry
-ms.openlocfilehash: 1607b80276a9c35bf0ac2f0a00bd2226e2c07f97
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4e1a6b1b6fb99a2786de06e89960e8480a5e1338
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78270798"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91532924"
 ---
 # <a name="age-prebuilt-entity-for-a-luis-app"></a>A LUIS-alkalmazás kora előre összeépített entitása
 Az előre elkészített életkorú entitás számszerűen és napokon, heteken, hónapokban és években is rögzíti a kor értékét. Mivel ez az entitás már be van tanítva, nem kell felvennie az hosszúságú kimondott szöveg tartalmazó példát. Az Age entitást [számos kulturális](luis-reference-prebuilt-entities.md)környezet támogatja.
@@ -30,7 +28,7 @@ A kor kezelése a [felismerők – Text GitHub-](https://github.com/Microsoft/Re
 
 #### <a name="v3-response"></a>[V3 válasz](#tab/V3)
 
-A következő JSON a `verbose` paraméter értéke: `false`
+A következő JSON a `verbose` paraméter értéke `false` :
 
 ```json
 "entities": {
@@ -43,7 +41,7 @@ A következő JSON a `verbose` paraméter értéke: `false`
 }
 ```
 #### <a name="v3-verbose-response"></a>[V3 részletes válasz](#tab/V3-verbose)
-A következő JSON a `verbose` paraméter értéke: `true`
+A következő JSON a `verbose` paraméter értéke `true` :
 
 ```json
 "entities": {

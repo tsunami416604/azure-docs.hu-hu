@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
-ms.openlocfilehash: b77eaec0440aa4fcd22d7b35e7a205b0276164f2
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: dffa8393dcfebf1cb73e3ab72890999cfa633b80
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935823"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91532567"
 ---
 # <a name="how-to-schedule-indexers-in-azure-cognitive-search"></a>Indexelő ütemezhetnek az Azure Cognitive Search
 
@@ -110,10 +110,10 @@ Ha az **ütemterv** paraméter nincs megadva, az indexelő csak a létrehozás u
 
 A **kezdő időpont** paraméter a múltbeli időpontra állítható be. Ebben az esetben az első végrehajtás úgy van ütemezve, hogy az indexelő a megadott **kezdő időpont**óta folyamatosan fusson.
 
-Az ütemterv a [IndexingSchedule](/dotnet/api/microsoft.azure.search.models.indexingschedule?view=azure-dotnet) osztály használatával van definiálva. A **IndexingSchedule** konstruktorhoz egy **TimeSpan** objektum használatával megadott **intervallum** -paraméter szükséges. A legkisebb megengedett érték 5 perc, a legnagyobb pedig 24 óra. A **DateTimeOffset** objektumként megadott második **kezdő időpont** paraméter nem kötelező.
+Az ütemterv a [IndexingSchedule](/dotnet/api/microsoft.azure.search.models.indexingschedule) osztály használatával van definiálva. A **IndexingSchedule** konstruktorhoz egy **TimeSpan** objektum használatával megadott **intervallum** -paraméter szükséges. A legkisebb megengedett érték 5 perc, a legnagyobb pedig 24 óra. A **DateTimeOffset** objektumként megadott második **kezdő időpont** paraméter nem kötelező.
 
 A .NET SDK lehetővé teszi az indexelő műveletek vezérlését a [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient) osztály és az [Indexelő](/dotnet/api/microsoft.azure.search.searchserviceclient.indexers) tulajdonság használatával, amely metódusokat valósít meg a **IIndexersOperations** felületéről. 
 
 Az indexelő igény szerint bármikor futtatható a [Run](/dotnet/api/microsoft.azure.search.indexersoperationsextensions.run), a [RunAsync](/dotnet/api/microsoft.azure.search.indexersoperationsextensions.runasync)vagy a [RunWithHttpMessagesAsync](/dotnet/api/microsoft.azure.search.iindexersoperations.runwithhttpmessagesasync) metódusok egyikének használatával.
 
-Az indexelő létrehozásáról, frissítéséről és futtatásáról további információt a következő témakörben talál: [IIindexersOperations](/dotnet/api/microsoft.azure.search.iindexersoperations?view=azure-dotnet).
+Az indexelő létrehozásáról, frissítéséről és futtatásáról további információt a következő témakörben talál: [IIindexersOperations](/dotnet/api/microsoft.azure.search.iindexersoperations).

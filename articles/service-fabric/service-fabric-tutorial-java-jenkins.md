@@ -1,17 +1,15 @@
 ---
 title: A Jenkins konfigurálása Java-alkalmazásokhoz Service Fabric az Azure-ban
 description: Ez az oktatóanyag azt mutatja be, hogyan állíthat be folyamatos integrációt a Jenkins segítségével egy Java Service Fabric-alkalmazás üzembe helyezéséhez.
-author: suhuruli
 ms.topic: tutorial
 ms.date: 08/27/2018
-ms.author: suhuruli
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 42efc13d37ccfdaf60896f338b1a38384ef06568
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4e29104f0586a8e18afb7a640903c57ce988b692
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320714"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531972"
 ---
 # <a name="tutorial-configure-a-jenkins-environment-to-enable-cicd-for-a-java-application-on-service-fabric"></a>Oktatóanyag: Jenkins-környezet konfigurálása a CI/CD engedélyezéséhez Service Fabric-fürtön lévő Java-alkalmazás számára
 
@@ -109,7 +107,7 @@ A Jenkinst egy Service Fabric-fürtben vagy azon kívül is beállíthatja. Az a
 
     Az üzembe helyezéshez szükséges egyéb adatokat is megadhat. Az alábbi képernyőképen áttekintheti, hogy milyen alkalmazásadatokat lehet megadni:
 
-    ![Service Fabric, Jenkins felépítési művelet](./media/service-fabric-tutorial-java-jenkins/sfjenkins.png)
+    ![Felépítés utáni műveletek párbeszédpanel további Service Fabric projekt-telepítési lehetőségekkel](./media/service-fabric-tutorial-java-jenkins/sfjenkins.png)
 
     > [!NOTE]
     > Ha a Service Fabricet használja a Jenkins-tároló rendszerképének üzembe helyezéséhez, a fürtnek meg kell egyeznie azzal, ahol a Jenkins-tárolóalkalmazás található.
@@ -178,7 +176,7 @@ A Jenkinst egy Service Fabric-fürtben vagy azon kívül is beállíthatja. Az a
 
     ![Folyamatban lévő frissítés](./media/service-fabric-tutorial-create-java-app/upgradejava.png)
 
-1. Ha a **http:// \<Host-IP> : 8080** -as verzióhoz fér hozzá, a teljes funkcionalitással rendelkező szavazási alkalmazás már működik.
+1. Ha a **http:// \<Host-IP> : 8080**  -as verzióhoz fér hozzá, a teljes funkcionalitással rendelkező szavazási alkalmazás már működik.
 
     ![Szavazóalkalmazás – helyi](./media/service-fabric-tutorial-java-jenkins/votingv2.png)
 

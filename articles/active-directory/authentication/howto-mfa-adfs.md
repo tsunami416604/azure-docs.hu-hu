@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf57bea87fcb5e1d1f1bde4eada5a79d2fef52c8
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 555673d1496ac33642e04c09233ba554ee2cca95
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90706319"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531241"
 ---
 # <a name="securing-cloud-resources-with-azure-multi-factor-authentication-and-ad-fs"></a>A felhőerőforrások védelme Azure Multi-Factor Authentication hitelesítéssel és AD FS-sel
 
@@ -38,12 +38,12 @@ A felhőszolgáltatás biztosításához állítson be egy jogcímszabályt, hog
 
 5. Az Átalakítási jogcímszabály hozzáadása varázslóban válassza a **Bejövő jogcím továbbítása vagy szűrése** elemet a legördülő menüből, majd kattintson a **Tovább** gombra.
 
-   ![Átalakítási jogcímszabály hozzáadása varázsló](./media/howto-mfa-adfs/trustedip3.png)
+   ![Képernyőfelvétel: átalakítási jogcím szabályának hozzáadása varázsló, amelyben kiválaszthatja a jogcím-szabály sablonját.](./media/howto-mfa-adfs/trustedip3.png)
 
 6. Adjon nevet a szabálynak. 
 7. Válassza a **Hitelesítési módszerek hivatkozásai** lehetőséget a Bejövő jogcím típusaként.
 8. Válassza **Az összes jogcímérték továbbítása** lehetőséget.
-    ![Átalakítási jogcímszabály hozzáadása varázsló](./media/howto-mfa-adfs/configurewizard.png)
+    ![Képernyőfelvétel: az átalakítási jogcím szabályának hozzáadása varázsló, amely az összes jogcím értékének átadását választja.](./media/howto-mfa-adfs/configurewizard.png)
 9. Kattintson a **Befejezés** gombra. Zárja be az AD FS felügyeleti konzolt.
 
 ## <a name="trusted-ips-for-federated-users"></a>Megbízható IP-címek összevont felhasználók számára
@@ -63,7 +63,7 @@ Az első lépés az AD FS-jogcímek konfigurálása. Két jogcímszabályt hozzo
 4. A kiadás átalakítási szabályai területen kattintson a **szabály hozzáadása elemre.** 
     ![ Jogcím-szabály hozzáadása](./media/howto-mfa-adfs/trustedip2.png)
 5. Az Átalakítási jogcímszabály hozzáadása varázslóban válassza a **Bejövő jogcím továbbítása vagy szűrése** elemet a legördülő menüből, majd kattintson a **Tovább** gombra.
-   ![Átalakítási jogcímszabály hozzáadása varázsló](./media/howto-mfa-adfs/trustedip3.png)
+   ![Képernyőfelvétel: az átalakítási jogcím szabályának hozzáadása varázsló, amelyben a bejövő jogcím továbbítása vagy szűrése lehetőséget választja.](./media/howto-mfa-adfs/trustedip3.png)
 6. A Jogcímszabály neve melletti mezőben adjon nevet a szabálynak. Például: InsideCorpNet.
 7. A bejövő jogcím típusa melletti legördülő listából válassza a **vállalati hálózaton belül**lehetőséget.
    ![A vállalati hálózat jogcímen belüli Hozzáadás](./media/howto-mfa-adfs/trustedip4.png)

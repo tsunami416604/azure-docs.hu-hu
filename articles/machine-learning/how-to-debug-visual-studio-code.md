@@ -1,26 +1,84 @@
 ---
 title: Interaktív hibakeresés a Visual Studio Code-ban
 titleSuffix: Azure Machine Learning
-description: A Visual Studio Code használatával interaktív módon végezhet hibakeresést Azure Machine Learning kódokat, folyamatokat és üzembe helyezéseket
+description: Interaktív hibakeresés Azure Machine Learning kód, folyamatok és központi telepítések számára a Visual Studio Code használatával
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 08/06/2020
-ms.openlocfilehash: a16a8432f61e39a3e36aeb748cabfa2c4b60d796
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/30/2020
+ms.openlocfilehash: 374cc79b42d2dcaed0312c0ec205073906ce1fc5
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91315354"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530674"
 ---
 # <a name="interactive-debugging-with-visual-studio-code"></a>Interaktív hibakeresés a Visual Studio Code-ban
 
 
 
-Ismerje meg, hogyan lehet interaktív módon hibakeresést végezni Azure Machine Learning folyamatokat és üzembe helyezéseket a Visual Studio Code (VS Code) és a [depugpy](https://github.com/microsoft/debugpy/)használatával.
+Megtudhatja, hogyan lehet interaktív módon hibakeresést végezni Azure Machine Learning kísérleteket, folyamatokat és üzembe helyezéseket a Visual Studio Code (VS Code) és a [depugpy](https://github.com/microsoft/debugpy/)használatával.
+
+## <a name="run-and-debug-experiments-locally"></a>Kísérletek helyi futtatása és hibakeresése
+
+A Azure Machine Learning bővítmény használatával ellenőrizheti, futtathatja és hibakereséssel végezheti el a gépi tanulási kísérleteket, mielőtt elküldené őket a felhőbe.
+
+### <a name="prerequisites"></a>Előfeltételek
+
+* Azure Machine Learning VS Code bővítmény (előzetes verzió). További információkért lásd: [Azure Machine learning vs Code bővítmény beállítása](tutorial-setup-vscode-extension.md).
+* [Docker](https://www.docker.com/get-started)
+  * Docker Desktop Mac és Windows rendszerekhez
+  * A Linux rendszerhez készült Docker-motor.
+* [Python 3](https://www.python.org/downloads/)
+
+> [!NOTE]
+> Windows rendszeren a [Docker konfigurálása Linux-tárolók használatára](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers).
+
+> [!TIP]
+> A Windows esetében, bár nem szükséges, erősen ajánlott a [Docker használata a Linux Windows alrendszerével (WSL) 2](https://docs.microsoft.com/windows/wsl/tutorials/wsl-containers#install-docker-desktop).
+
+> [!IMPORTANT]
+> A kísérlet helyi futtatása előtt győződjön meg arról, hogy a Docker fut.
+
+### <a name="debug-experiment-locally"></a>Kísérletezés helyi hibakeresése
+
+1. A VS Code-ban nyissa meg a Azure Machine Learning bővítmény nézetet.
+1. Bontsa ki a munkaterületet tartalmazó előfizetés csomópontot. Ha még nem rendelkezik ilyennel, [létrehozhat egy Azure Machine learning munkaterületet](how-to-manage-resources-vscode.md#create-a-workspace) a bővítmény használatával.
+1. Bontsa ki a munkaterület csomópontot.
+1. Kattintson a jobb gombbal a **kísérletek** csomópontra, majd válassza a **kísérlet létrehozása**lehetőséget. Ha megjelenik a kérdés, adja meg a kísérlet nevét.
+1. Bontsa ki a **kísérletek** csomópontot, kattintson a jobb gombbal a futtatni kívánt kísérletre, és válassza a **kísérlet futtatása**parancsot.
+1. A kísérlet futtatásához válassza a **helyileg**lehetőséget a lehetőségek listájából.
+1. **Első alkalommal csak Windows rendszeren használható**. Amikor a rendszer kéri, hogy engedélyezze a fájlmegosztást, válassza az **Igen**lehetőséget. A fájlmegosztás engedélyezése lehetővé teszi a Docker számára a parancsfájlt tartalmazó könyvtár csatlakoztatását a tárolóhoz. Emellett lehetővé teszi a Docker számára a naplók és kimenetek tárolását a rendszer egy ideiglenes könyvtárába.
+1. A kísérlet hibakereséséhez válassza az **Igen** lehetőséget. Egyéb esetben a **Nem** választógombot jelölje be. A nem gombra kattintva helyileg futtathatja a kísérletet a hibakeresőhöz való csatolás nélkül.
+1. A futtatási konfiguráció létrehozásához válassza az **új futtatási konfiguráció létrehozása** lehetőséget. A futtatási konfiguráció határozza meg a futtatni kívánt parancsfájlt, a függőségeket és a használt adatkészleteket. Ha már rendelkezik ilyennel, válassza ki a legördülő menüből.
+    1. Válassza ki a környezetet. Bármelyik [Azure Machine learning](resource-curated-environments.md) közül választhat, vagy létrehozhatja a sajátját.
+    1. Adja meg a futtatni kívánt parancsfájl nevét. Az elérési út a VS Code-ban megnyitott könyvtárhoz képest relatív.
+    1. Válassza ki, hogy Azure Machine Learning adatkészletet kíván-e használni, vagy sem. A bővítmény használatával létrehozhat [Azure Machine learning adatkészleteket](how-to-manage-resources-vscode.md#create-dataset) .
+    1. Debugpy szükséges ahhoz, hogy a hibakeresőt a kísérletet futtató tárolóhoz csatolja. Ha függőségként szeretné hozzáadni a debugpy, válassza a **Debugpy hozzáadása**elemet. Ellenkező esetben válassza a **kihagyás**lehetőséget. Ha nem ad hozzá debugpy, a rendszer a hibakeresőhöz való csatolás nélkül futtatja a kísérletet.
+    1. A szerkesztőben megnyílik a futtatási konfigurációs beállításokat tartalmazó konfigurációs fájl. Ha elégedett a beállításokkal, válassza a **kísérlet küldése**lehetőséget. Azt is megteheti, hogy a menüsávban megnyitja a parancssort (**> a parancs-paletta megtekintése**), és a `Azure ML: Submit experiment` parancsot a szövegmezőbe írja be.
+1. Miután elküldte a kísérletet, a parancsfájlt tartalmazó Docker-rendszerkép és a futtatási konfigurációban megadott konfigurációk jönnek létre.
+
+    A Docker-rendszerkép létrehozási folyamatának megkezdése után a fájl tartalma a `60_control_log.txt` kimeneti konzolra kerül a vs Code-ban.
+
+    > [!NOTE]
+    > A Docker-rendszerkép első létrehozása több percet is igénybe vehet.
+
+1. A rendszerkép felépítése után megjelenik egy üzenet, amely elindítja a hibakeresőt. Állítsa be a töréspontokat a parancsfájlban, és válassza a hibakereső **elindítása** lehetőséget, amikor készen áll a hibakeresés elindítására. Ehhez csatolja a VS Code debuggert a kísérletet futtató tárolóhoz. Másik lehetőségként az Azure Machine Learning-bővítményben vigye a kurzort a jelenlegi Futtatás csomópontra, és válassza a lejátszás ikont a hibakereső elindításához.
+
+    > [!IMPORTANT]
+    > Egyetlen kísérlethez nem tartozhat több hibakeresési munkamenet. A két vagy több kísérletet egyszerre több VS Code-példány használatával is lehet debug.
+
+Ezen a ponton át kell lépnie a kódot, és hibakeresést végezhet a VS Code használatával.
+
+Ha bármikor le szeretné mondani a futtatást, kattintson a jobb gombbal a Futtatás csomópontra, és válassza a **Futtatás megszakítása**parancsot.
+
+A távoli kísérletekhez hasonlóan a Futtatás csomópont is kiterjeszthető a naplók és kimenetek vizsgálatához.
+
+> [!TIP]
+> A rendszer a környezetében definiált azonos függőségeket használó Docker-rendszerképeket újra felhasználja a futtatások között. Ha azonban új vagy eltérő környezet használatával futtat kísérletet, új rendszerkép jön létre. Mivel ezeket a lemezképeket a helyi tárolóba menti, javasoljuk, hogy távolítsa el a régi vagy fel nem használt Docker-lemezképeket. Ha el szeretné távolítani a rendszerképeket a rendszerből, használja a [Docker CLI](https://docs.docker.com/engine/reference/commandline/rmi/) -t vagy a [vs Code Docker-bővítményt](https://code.visualstudio.com/docs/containers/overview).
 
 ## <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Hibakeresés és hibaelhárítás a gépi tanulási folyamatokban
 
@@ -416,7 +474,7 @@ A helyi webszolgáltatás üzembe helyezéséhez a helyi rendszeren működő Do
 
 Ezen a ponton a VS Code a Docker-tárolón belül csatlakozik a debugpy-hez, és a korábban megadott törésponton leáll. Most már megkezdheti a kód futtatását, megtekintheti a változókat stb.
 
-A VS Code a Python hibakereséséhez való használatával kapcsolatos további információkért lásd [a Python-kód hibakeresését](https://docs.microsoft.com/visualstudio/python/debugging-python-in-visual-studio?view=vs-2019&preserve-view=true)ismertető témakört.
+A VS Code a Python hibakereséséhez való használatával kapcsolatos további információkért lásd [a Python-kód hibakeresését](https://code.visualstudio.com/docs/python/debugging)ismertető témakört.
 
 ### <a name="stop-the-container"></a>A tároló leállítása
 
@@ -426,8 +484,8 @@ A tároló leállításához használja a következő parancsot:
 docker stop debug
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Most, hogy beállította a Visual Studio Code Remote-t, a Visual Studio Code-ból távoli számításként használhat számítási példányt a kód interaktív hibakereséséhez. 
+Most, hogy beállította a VS Code Remote szolgáltatást, számítási példányt használhat távoli számításként a VS Code-ból a kód interaktív hibakereséséhez. 
 
 [Oktatóanyag: az első ml-modell betanítása](tutorial-1st-experiment-sdk-train.md) azt mutatja be, hogyan használható a számítási példány egy integrált jegyzetfüzettel.

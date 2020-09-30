@@ -11,23 +11,26 @@ ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 874978288a38ff56ce220dd13cb6f3dfec902b2d
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 98c42a61e65935446f948e35cb08ed2893dd0b7b
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934582"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91532517"
 ---
 # <a name="speech-to-text-rest-api"></a>Diktálás REST API
 
 A Speech [SDK](speech-sdk.md)alternatívájaként a beszédfelismerési szolgáltatás lehetővé teszi, hogy REST API használatával alakítsa át a beszédfelismerést a szöveggé. Minden elérhető végpont egy régióhoz van társítva. Az alkalmazáshoz szükség van egy előfizetési kulcsra a használni kívánt végponthoz. A REST API nagyon korlátozott, és csak abban az esetben használható, ha a [SPEECH SDK](speech-sdk.md) nem.
 
-A beszéd – szöveg REST API használata előtt értse fel a következőket:
+A beszéd – szöveg REST API használata előtt vegye figyelembe a következőket:
 
 * A REST APIt használó és a hang közvetlen továbbítására szolgáló kérelmek legfeljebb 60 másodperces hangot tartalmazhatnak.
 * A beszéd – szöveg REST API csak a végső eredményeket adja vissza. A részleges eredmények nincsenek megadva.
 
 Ha a hosszú hang küldése az alkalmazásra vonatkozó követelmény, érdemes lehet használni a [SPEECH SDK](speech-sdk.md) -t vagy egy file-alapú REST API, például a [Batch átírását](batch-transcription.md).
+
+> [!TIP]
+> Lásd: az Azure Government [dokumentációja](https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure) a Government Cloud (FairFax) végpontokhoz.
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-rest-auth.md)]
 
@@ -92,7 +95,7 @@ Ez a táblázat a kiejtés értékeléséhez szükséges és választható param
 | ReferenceText | A kiejtés kiértékeléséhez használandó szöveg | Kötelező |
 | GradingSystem | A pontszám kalibrációs pontjának rendszere. Az elfogadott értékek: `FivePoint` és `HundredMark` . Az alapértelmezett beállítás: `FivePoint`. | Választható |
 | Részletesség | A kiértékelés részletessége. Az elfogadott értékek a teljes szöveges `Phoneme` , a Word-és a fonéma-szinten látható pontszám, amely a teljes szöveg `Word` és a szó szintjén mutatja a pontszámot, amely a `FullText` teljes szöveges szint pontszámát mutatja. Az alapértelmezett beállítás: `Phoneme`. | Választható |
-| Dimenzió | Meghatározza a kimeneti feltételeket. Az elfogadott értékek `Basic` , amelyek csak a pontossági pontszámot mutatják, `Comprehensive` több dimenzióban jelenítik meg a pontszámokat (pl. a teljes szöveges szinten a teljességi pontszám és a teljesség pontszáma, a hiba típusa a szó szintjén). Ellenőrizze a [Válasz paramétereit](#response-parameters) , és tekintse meg a különböző pontszám-dimenziók és a Word-hibák definícióit. Az alapértelmezett beállítás: `Basic`. | Választható |
+| Méret | Meghatározza a kimeneti feltételeket. Az elfogadott értékek `Basic` , amelyek csak a pontossági pontszámot mutatják, `Comprehensive` több dimenzióban jelenítik meg a pontszámokat (pl. a teljes szöveges szinten a teljességi pontszám és a teljesség pontszáma, a hiba típusa a szó szintjén). Ellenőrizze a [Válasz paramétereit](#response-parameters) , és tekintse meg a különböző pontszám-dimenziók és a Word-hibák definícióit. Az alapértelmezett beállítás: `Basic`. | Választható |
 | EnableMiscue | Engedélyezi a gikszer számítását. Ha ez a beállítás engedélyezve van, a rendszer összehasonlítja a kiejtett szavakat a hivatkozási szöveggel, és az összehasonlítás alapján kihagyási/beszúrási művelettel jelöli meg őket. Az elfogadott értékek: `False` és `True` . Az alapértelmezett beállítás: `False`. | Választható |
 | ScenarioId | Egy testreszabott pont rendszerét jelző GUID. | Választható |
 

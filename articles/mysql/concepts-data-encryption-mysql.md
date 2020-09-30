@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 71657d45ce9c4cc6fb103b61235a282b3005b924
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 30c60dbe74835cb67879f7e0cf9bf403dca17fd8
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90884915"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531088"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>Adattitkosítás Azure Database for MySQL ügyfél által felügyelt kulccsal
 
@@ -80,7 +80,7 @@ Ha ügyfél által felügyelt kulccsal használja az adattitkosítást, a Key Va
 * Győződjön meg arról, hogy a Key Vault és a Azure Database for MySQL ugyanabban a régióban található, így biztosítva a gyorsabb hozzáférést a ADATTITKOSÍTÁSI kulcsot wrap és a kicsomagolási műveletek számára.
 * Az Azure kulcstartó zárolása csak **privát végpontok és kiválasztott hálózatok** számára, és csak *megbízható Microsoft* -szolgáltatások engedélyezése az erőforrások biztonságossá tételéhez.
 
-    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png" alt-text="megbízható szolgáltatás – AKV":::
+    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png" alt-text="A Bring Your Own Key áttekintését bemutató diagram":::
 
 Az ügyfél által felügyelt kulcs konfigurálására vonatkozó javaslatok:
 
@@ -121,9 +121,9 @@ Az adatbázis állapotának figyeléséhez, valamint az átlátható adattitkos�
 
 Miután Azure Database for MySQL titkosítása megtörténik a Key Vault tárolt ügyfél felügyelt kulcsával, a kiszolgáló minden újonnan létrehozott példánya is titkosítva lesz. Ezt az új másolatot helyi vagy geo-visszaállítási művelettel, illetve olvasási replikák használatával is elvégezheti. Azonban a másolat módosítható úgy, hogy az új ügyfél felügyelt kulcsát tükrözze a titkosításhoz. Az ügyfél által felügyelt kulcs megváltozása után a kiszolgáló régi biztonsági mentései a legújabb kulcsot használják.
 
-Ha el szeretné kerülni az ügyfél által felügyelt adattitkosítás beállításakor a visszaállítás vagy a replika olvasása során, fontos, hogy kövesse ezeket a lépéseket a fő és a visszaállított/replika kiszolgálókon:
+Ha el szeretné kerülni az ügyfél által felügyelt adattitkosítás beállításakor a visszaállítás vagy a replika olvasása során, fontos, hogy kövesse ezeket a lépéseket a forrás és a visszaállított/replika kiszolgálókon:
 
-* Kezdeményezzen helyreállítási vagy olvasási replika-létrehozási folyamatot a fő Azure Database for MySQL.
+* Kezdeményezzen helyreállítási vagy olvasási replika-létrehozási folyamatot a forrás Azure Database for MySQLról.
 * Az újonnan létrehozott kiszolgáló (visszaállított/replika) nem elérhető állapotban marad, mert az egyedi identitása még nem kapott engedélyt a Key Vault.
 * A visszaállított/replika kiszolgálón ellenőrizze, hogy az adattitkosítási beállításokban az ügyfél által felügyelt kulcs újbóli ellenőrzése megtörtént-e, hogy az újonnan létrehozott kiszolgáló a Key Vaultban tárolt kulcshoz becsomagolja és kicsomagolja az engedélyeket.
 
@@ -140,6 +140,6 @@ A Azure Database for MySQL esetében az ügyfelek által felügyelt kulcs (CMK) 
 
 * A titkosítás csak az RSA 2048 titkosítási kulccsal támogatott.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtudhatja, hogyan [állíthatja be az adattitkosítást a MySQL-hez készült Azure-adatbázishoz tartozó ügyfél által felügyelt kulccsal a Azure Portal használatával](howto-data-encryption-portal.md).

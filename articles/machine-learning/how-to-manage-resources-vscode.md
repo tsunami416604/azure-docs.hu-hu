@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
-ms.date: 09/03/2020
-ms.openlocfilehash: abdd04f59ee820585d58817297d161f68bd952f0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/30/2020
+ms.openlocfilehash: 1120a3636b7ce24dde0d33c213f9063f910123c4
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897400"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530629"
 ---
 # <a name="manage-azure-machine-learning-resources-with-the-vs-code-extension-preview"></a>Azure Machine Learning erőforrások kezelése a VS Code bővítménnyel (előzetes verzió)
 
@@ -201,6 +201,7 @@ További információ: [kísérletek](concept-azure-machine-learning-architectur
 1. Bontsa ki a **kísérletek** csomópontot a munkaterületen belül.
 1. Kattintson a jobb gombbal a futtatni kívánt kísérletre.
 1. Válassza a **kísérlet futtatása** ikont a tevékenység sávján.
+1. Válassza ki, hogy helyileg vagy távolról kívánja-e futtatni a kísérletet. A kísérletek helyi futtatásával és hibakeresésével kapcsolatos további információkért tekintse meg a [hibakeresési útmutatót](how-to-debug-visual-studio-code.md) .
 1. Válassza ki az előfizetését.
 1. Válassza ki az Azure-ML-munkaterület a kísérlet futtatásához.
 1. Válassza ki a kísérletet.
@@ -320,7 +321,7 @@ Futtatási konfiguráció létrehozása a bővítményben:
 
 1. Bontsa ki a munkaterületet tartalmazó előfizetés csomópontot.
 1. Bontsa ki a **számítási fürtök** csomópontot a munkaterületen belül.
-1. Kattintson a jobb gombbal arra a számítási célra, amelynek a futtatási konfigurációját létre szeretné hozni, majd válassza a **futtatási konfiguráció létrehozása**lehetőséget.
+1. Kattintson a jobb gombbal arra a számítási célra, amelyben a futtatási konfigurációt létre szeretné hozni, majd válassza a **futtatási konfiguráció létrehozása**lehetőséget.
 1. A parancssorban:
     1. Adja meg a számítási cél nevét
     1. Válasszon ki vagy hozzon létre egy új környezetet.
@@ -423,6 +424,6 @@ A központi telepítések létrehozása és törlése mellett megtekintheti és 
         - A központi telepítés konfigurációs fájlja megjelenik a szerkesztőben. Ha elégedett a konfigurációval, válassza a **Mentés és folytatás** lehetőséget, vagy nyissa meg a vs Code parancs-palettát (**tekintse meg > Command paletta**), és írja be az **Azure ml: mentés és folytatás**gombot.
     - A központi telepítés konfigurációs beállításainak megtekintéséhez válassza a **szolgáltatás tulajdonságainak megtekintése**lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Képbesorolási modell betanítása](tutorial-train-deploy-image-classification-model-vscode.md) a vs Code bővítménnyel.

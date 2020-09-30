@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2019
 ms.author: kumud
-ms.openlocfilehash: 6ba0caa2546fdb9d4845e2c7adf87a06d906dd12
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 61617777efa8241c93b2b5ffe42fc1d914b6ebcf
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87265160"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531870"
 ---
 # <a name="virtual-network-peering"></a>Virtuális hálózati társviszony
 
-A virtuális hálózatok társításával zökkenőmentesen csatlakoztathatók az [Azure Virtual Network](virtual-networks-overview.md)-beli hálózatok. A virtuális hálózatok a kapcsolati céloknak megfelelően jelennek meg. A virtuális gépek közötti forgalom a Microsoft gerinc-infrastruktúrát használja. Az azonos hálózatban lévő virtuális gépek közötti forgalomhoz hasonlóan a forgalmat csak a Microsoft *magánhálózati* hálózata irányítja át.
+A virtuális hálózatok közötti kapcsolat lehetővé teszi két vagy több [virtuális hálózat](virtual-networks-overview.md) zökkenőmentes összekapcsolását az Azure-ban. A virtuális hálózatok a kapcsolati céloknak megfelelően jelennek meg. A virtuális gépek közötti forgalom a Microsoft gerinc-infrastruktúrát használja. Az azonos hálózatban lévő virtuális gépek közötti forgalomhoz hasonlóan a forgalmat csak a Microsoft *magánhálózati* hálózata irányítja át.
 
 Az Azure a következő típusú társításokat támogatja:
 

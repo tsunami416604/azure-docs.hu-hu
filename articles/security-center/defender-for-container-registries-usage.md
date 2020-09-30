@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 1ff28b13d9adc120f8ee40bcd0119bf9b6883d6a
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 79a0db3b9f81368fbdaace5be3fd94ad29649291
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/29/2020
-ms.locfileid: "91449117"
+ms.locfileid: "91532601"
 ---
 # <a name="use-azure-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>A biztonsági rések vizsgálatához használja az Azure Defender for Container nyilvántartót
 
@@ -127,7 +127,7 @@ Ha a keresés megfelel a letiltási szabályokban definiált feltételeknek, az 
 > [!IMPORTANT]
 > Szabály létrehozásához engedélyekkel kell rendelkeznie a szabályzat szerkesztéséhez Azure Policy.
 >
-> További információ: [Azure Policy RBAC engedélyei](../governance/policy/overview.md#rbac-permissions-in-azure-policy).
+> További információ az [Azure RBAC engedélyeiről Azure Policy](../governance/policy/overview.md#azure-rbac-permissions-in-azure-policy).
 
 A következő feltételek bármelyike használható: 
 

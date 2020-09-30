@@ -9,16 +9,19 @@ manager: diviso
 ms.reviewer: v-mamcge
 ms.workload: big-data
 ms.topic: troubleshooting
-ms.date: 06/30/2020
+ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 0630e4dfcfc01e5c20fa6fcc3a516dbea6f6f53b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 231f2e4df1445c60378ac06aab0d0e56f410c1c8
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046447"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530136"
 ---
 # <a name="diagnose-and-solve-issues-in-your-azure-time-series-insights-gen1-environment"></a>A Azure Time Series Insights Gen1-környezet problémáinak diagnosztizálása és megoldása
+
+> [!CAUTION]
+> Ez egy Gen1-cikk.
 
 Ez a cikk a Azure Time Series Insights-környezetben felmerülő problémákat ismerteti. A cikk a megoldás lehetséges okait és megoldásait kínálja.
 
@@ -66,8 +69,8 @@ A [szabályozás](time-series-insights-environment-mitigate-latency.md) gyakori 
 
 Ha a régi események szerepelnek az eseményforrásban, kétféleképpen is megközelítheti a szabályozást:
 
-- Módosítsa az eseményforrás megőrzési korlátait, hogy eltávolítsa a régi, Azure Time Series Insightsban nem megjeleníteni kívánt eseményeket.
-- A régi események átviteli sebességének növeléséhez hozzon létre nagyobb méretű környezeti méretet (egységek száma). Az előző példában, ha ugyanazon S1-környezetet egy nap alatt öt egységre emeli, a környezetnek egy napon belül kell megjelennie. Ha az állandó állapotú események termelése naponta 1 000 000 vagy kevesebb eseményt használ, csökkentheti az esemény kapacitását egy egységre Azure Time Series Insights a fogások után.
+* Módosítsa az eseményforrás megőrzési korlátait, hogy eltávolítsa a régi, Azure Time Series Insightsban nem megjeleníteni kívánt eseményeket.
+* A régi események átviteli sebességének növeléséhez hozzon létre nagyobb méretű környezeti méretet (egységek száma). Az előző példában, ha ugyanazon S1-környezetet egy nap alatt öt egységre emeli, a környezetnek egy napon belül kell megjelennie. Ha az állandó állapotú események termelése naponta 1 000 000 vagy kevesebb eseményt használ, csökkentheti az esemény kapacitását egy egységre Azure Time Series Insights a fogások után.
 
 A kényszerített szabályozási korlát a környezet SKU-típusán és kapacitásán alapul. A környezetben lévő összes eseményforrás megosztja ezt a kapacitást. Ha az IoT hub vagy az Event hub eseményforrás a kényszerített határértékeken felül küldi az adatforrást, a szabályozás és a késés is megtapasztalható.
 
@@ -128,12 +131,12 @@ Az első oszlop fejlécének az időbélyeg-tulajdonságnév kell lennie. A Word
 
 A következő értékek nem jelennek meg:
 
-- *(ABC)*: azt jelzi, hogy Azure Time Series Insights karakterláncként olvassa be az adatértékeket.
-- *Naptár ikon*: azt jelzi, hogy Azure Time Series Insights az adatértékeket datetime értékként olvassa.
-- *#*: Azt jelzi, hogy Azure Time Series Insights az adatértékek egész számként való olvasására szolgál.
+* *(ABC)*: azt jelzi, hogy Azure Time Series Insights karakterláncként olvassa be az adatértékeket.
+* *Naptár ikon*: azt jelzi, hogy Azure Time Series Insights az adatértékeket datetime értékként olvassa.
+* *#*: Azt jelzi, hogy Azure Time Series Insights az adatértékek egész számként való olvasására szolgál.
 
 ## <a name="next-steps"></a>További lépések
 
-- Olvassa el a [Azure Time Series Insights késésének enyhítését](time-series-insights-environment-mitigate-latency.md)ismertető témakört.
+* Olvassa el a [Azure Time Series Insights késésének enyhítését](time-series-insights-environment-mitigate-latency.md)ismertető témakört.
 
-- Ismerje meg [, hogyan méretezheti Azure Time Series Insights-környezetét](time-series-insights-how-to-scale-your-environment.md).
+* Ismerje meg [, hogyan méretezheti Azure Time Series Insights-környezetét](time-series-insights-how-to-scale-your-environment.md).

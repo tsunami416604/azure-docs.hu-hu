@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/01/2020
-ms.openlocfilehash: 49eea969f987a72872cda58ae6a7c41e50a14c10
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2cda79e1b08e67e10d42acb5093230ce8450d67d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85830281"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530918"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>Teljesítmény figyelése a lekérdezési tárolóval
 
@@ -116,7 +116,7 @@ A lekérdezések normalizálása úgy történik, hogy a konstansok és konstans
 ### <a name="query_storeqs_view"></a>query_store. qs_view
 Ez a nézet a lekérdezési tárolóban lévő összes adathalmazt adja vissza. Minden különböző adatbázis-AZONOSÍTÓhoz, felhasználói AZONOSÍTÓhoz és lekérdezési AZONOSÍTÓhoz egy sor van. 
 
-|**Name (Név)**   |**Típus** | **Hivatkozások**  | **Leírás**|
+|**Név**   |**Típus** | **Referencia**  | **Leírás**|
 |---|---|---|---|
 |runtime_stats_entry_id |bigint | | AZONOSÍTÓ az runtime_stats_entries táblából|
 |user_id    |OID    |pg_authid. OID  |Az utasítást végrehajtó felhasználó OID azonosítója|
@@ -149,7 +149,7 @@ Ez a nézet a lekérdezési tárolóban lévő összes adathalmazt adja vissza. 
 ### <a name="query_storequery_texts_view"></a>query_store. query_texts_view
 Ez a nézet a lekérdezési tárolóban lévő szöveges adatok visszaadása. Minden különböző query_text egy sor van.
 
-|**Name (Név)**|  **Típus**|   **Leírás**|
+|**Név**|  **Típus**|   **Leírás**|
 |---|---|---|
 |query_text_id  |bigint     |A query_texts tábla azonosítója|
 |query_sql_text |Varchar (10000)     |Egy reprezentatív utasítás szövege. Az azonos struktúrával rendelkező különböző lekérdezések együtt vannak csoportosítva; Ez a szöveg a fürtben lévő lekérdezések első példányának szövege.|
@@ -157,7 +157,7 @@ Ez a nézet a lekérdezési tárolóban lévő szöveges adatok visszaadása. Mi
 ### <a name="query_storepgms_wait_sampling_view"></a>query_store. pgms_wait_sampling_view
 Ez a nézet visszaadja az események várakozási idejének értékét a lekérdezési tárolóban. Minden különböző adatbázis-AZONOSÍTÓhoz, felhasználói AZONOSÍTÓhoz, lekérdezési AZONOSÍTÓhoz és eseményhez egy sor van.
 
-|**Name (Név)**|  **Típus**|   **Hivatkozások**| **Leírás**|
+|**Név**|  **Típus**|   **Referencia**| **Leírás**|
 |---|---|---|---|
 |user_id    |OID    |pg_authid. OID  |Az utasítást végrehajtó felhasználó OID azonosítója|
 |db_id  |OID    |pg_database. OID    |Az utasítást elvégező adatbázis OID azonosítója|
@@ -170,11 +170,11 @@ Ez a nézet visszaadja az események várakozási idejének értékét a lekérd
 ### <a name="functions"></a>Functions
 Query_store. qs_reset () érvénytelen értéket ad vissza
 
-`qs_reset`a lekérdezési tároló által eddig összegyűjtött összes statisztika elvetése. Ezt a függvényt csak a kiszolgáló-rendszergazdai szerepkörrel lehet végrehajtani.
+`qs_reset` a lekérdezési tároló által eddig összegyűjtött összes statisztika elvetése. Ezt a függvényt csak a kiszolgáló-rendszergazdai szerepkörrel lehet végrehajtani.
 
 Query_store. staging_data_reset () érvénytelen értéket ad vissza
 
-`staging_data_reset`a lekérdezési tár által a memóriában összegyűjtött összes statisztikát elveti (azaz a memóriában lévő olyan adatokat, amelyek még nem lettek kiürítve az adatbázisba). Ezt a függvényt csak a kiszolgáló-rendszergazdai szerepkörrel lehet végrehajtani.
+`staging_data_reset` a lekérdezési tár által a memóriában összegyűjtött összes statisztikát elveti (azaz a memóriában lévő olyan adatokat, amelyek még nem lettek kiürítve az adatbázisba). Ezt a függvényt csak a kiszolgáló-rendszergazdai szerepkörrel lehet végrehajtani.
 
 
 ## <a name="azure-monitor"></a>Azure Monitor
@@ -250,7 +250,7 @@ A következő táblázatok a két naplózási típus mezőit ismertetik. A kivá
 ## <a name="limitations-and-known-issues"></a>Korlátozások és ismert problémák
 - Ha a PostgreSQL-kiszolgáló a default_transaction_read_only paraméterrel rendelkezik, a Query Store nem tudja rögzíteni az adatmennyiséget.
 - A lekérdezés-tárolási funkció megszakítható, ha hosszú Unicode-lekérdezéseket (>= 6000 bájt) tapasztal.
-- [Olvasási replikák](concepts-read-replicas.md) : a rendszer a főkiszolgálóról replikálja a lekérdezési tároló adatait. Ez azt jelenti, hogy egy olvasási replika lekérdezési tárolója nem biztosít statisztikát az olvasási replikán futó lekérdezésekről.
+- Az [olvasási replikák](concepts-read-replicas.md) a lekérdezési tároló adatait replikálják az elsődleges kiszolgálóról. Ez azt jelenti, hogy egy olvasási replika lekérdezési tárolója nem biztosít statisztikát az olvasási replikán futó lekérdezésekről.
 
 
 ## <a name="next-steps"></a>További lépések

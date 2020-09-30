@@ -1,17 +1,15 @@
 ---
 title: Hibák szimulálása az Azure Service Fabric-alkalmazásokban
 description: Ismerje meg, hogyan erősítheti meg Azure Service Fabric szolgáltatásait a kecses és a nem zökkenőmentes meghibásodások ellen.
-author: anmolah
 ms.topic: conceptual
 ms.date: 06/15/2017
-ms.author: anmola
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c193ef00d56b2d2fc7ad806cc795dcbe360db548
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: c714ae30c64ea073cbac521eac5e15a8d968b7ea
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022105"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531310"
 ---
 # <a name="simulate-failures-during-service-workloads"></a>Hibák szimulálása a szolgáltatás munkaterhelései során
 Az Azure Service Fabric tesztelési forgatókönyvei lehetővé teszik a fejlesztők számára, hogy ne aggódjanak az egyes hibák kezelésével kapcsolatban. Vannak azonban olyan forgatókönyvek, amelyekben szükség lehet az ügyfél-munkaterhelések és a hibák explicit módon történő elvégzésére. Az ügyfél-munkaterhelések és a hibák elhagyása biztosítja, hogy a szolgáltatás ténylegesen végezzen valamilyen műveletet, ha a hiba történik. A tesztelés által biztosított szabályozás szintje miatt ezek a számítási feladatok végrehajtásának pontos pontjai lehetnek. Az alkalmazás különböző állapotában lévő hibák levonása hibákat talál, és javíthatja a minőséget.
@@ -19,7 +17,7 @@ Az Azure Service Fabric tesztelési forgatókönyvei lehetővé teszik a fejlesz
 ## <a name="sample-custom-scenario"></a>Példa egyéni forgatókönyvre
 Ez a teszt egy olyan forgatókönyvet mutat be, amely összekapcsolja az üzleti munkaterhelést [kecses és zavartalan hibákkal](service-fabric-testability-actions.md#graceful-vs-ungraceful-fault-actions). A hibákat a szolgáltatási műveletek közepén vagy a legjobb eredmények érdekében kell kiszámítani.
 
-Ismerkedjen meg egy olyan szolgáltatás példáján, amely négy munkaterhelést tesz elérhetővé: A, B, C és D. az egyes munkafolyamatok egy csoportjának felelnek meg, amely lehet számítási, tárolási vagy vegyes. Az egyszerűség kedvéért a példában elküldjük a számítási feladatokat. Az ebben a példában szereplő különböző hibák a következők:
+Lássunk egy példát a szolgáltatásra, amely négy munkaterhelést tesz elérhetővé: A, B, C és D. Mindegyik a munkafolyamatok egy készletének felel meg, amely lehet számítási, tárolási vagy vegyes. Az egyszerűség kedvéért a példában elküldjük a számítási feladatokat. Az ebben a példában szereplő különböző hibák a következők:
 
 * RestartNode: nem megfelelő hiba a gép újraindításának szimulálása érdekében.
 * RestartDeployedCodePackage: hiba a Service Host-folyamat összeomlásának szimulálása közben.

@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: f3ac2f82882dfd7eb1e15e9a5287cf1d6f5b32d2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 87c16207f312479dcfe083ad9494d75b3538e18c
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91301533"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91532550"
 ---
 # <a name="exempt-a-resource-from-recommendations-and-secure-score"></a>Erőforrások kizárása a javaslatokból és a biztonságos pontszámból
 
@@ -32,8 +32,8 @@ Az erőforrás nem alkalmazhatóként jelenik meg, és az OK "kivételként" jel
 |----|:----|
 |Kiadás állapota:|Előnézet|
 |Árképzési|Ez egy prémium szintű Azure Policy-képesség, amely az Azure Defender-ügyfelek számára ingyenes, díjmentesen használható. Más felhasználók esetében a jövőben a díjak is vonatkozhatnak.|
-|Szükséges szerepkörök és engedélyek:|**Előfizetés tulajdonosának** vagy **szabályzatának közreműködője** a kivétel létrehozásához<br>Szabály létrehozásához engedélyekre van szükség a házirendek szerkesztéséhez Azure Policy.<br>További információ: [Azure Policy RBAC engedélyei](../governance/policy/overview.md#rbac-permissions-in-azure-policy).|
-|Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![No](./media/icons/no-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
+|Szükséges szerepkörök és engedélyek:|**Előfizetés tulajdonosának** vagy **szabályzatának közreműködője** a kivétel létrehozásához<br>Szabály létrehozásához engedélyekre van szükség a házirendek szerkesztéséhez Azure Policy.<br>További információ az [Azure RBAC engedélyeiről Azure Policy](../governance/policy/overview.md#azure-rbac-permissions-in-azure-policy).|
+|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Nem](./media/icons/no-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
 |||
 
 
@@ -45,7 +45,7 @@ Az erőforrás nem alkalmazhatóként jelenik meg, és az OK "kivételként" jel
 
     Megnyílik a kivétel létrehozása panel.
 
-    :::image type="content" source="./media/exempt-resource/exemption-rule-options.png" alt-text="Kivétel panel létrehozása":::
+    :::image type="content" source="./media/exempt-resource/exemption-rule-options.png" alt-text="Kivételi lehetőség létrehozása a helyi menüből":::
 
 1. Adja meg a feltételeket, és válasszon egy olyan feltételt, amely miatt az erőforrást mentesíteni kell:
     - **Enyhített** – ez a probléma nem vonatkozik az erőforrásra, mert egy másik eszköz vagy folyamat kezelte, mint a javasolt
@@ -56,11 +56,11 @@ Az erőforrás nem alkalmazhatóként jelenik meg, és az OK "kivételként" jel
     - Az erőforrás a javaslat részletei lap **nem alkalmazható** lapján jelenik meg.
     - A javaslat részletei oldal tetején található információs szalag a mentesített erőforrások számát sorolja fel:
         
-        :::image type="content" source="./media/exempt-resource/info-banner.png" alt-text="Mentesített erőforrások száma":::
+        :::image type="content" source="./media/exempt-resource/info-banner.png" alt-text="Kivételi lehetőség létrehozása a helyi menüből":::
 
 1. A mentesített erőforrások áttekintéséhez nyissa meg a **nem alkalmazható** lapot.
 
-    :::image type="content" source="./media/exempt-resource/modifying-exemption.png" alt-text="Kivétel módosítása":::
+    :::image type="content" source="./media/exempt-resource/modifying-exemption.png" alt-text="Kivételi lehetőség létrehozása a helyi menüből":::
 
     Az egyes kivételek okát a táblázat tartalmazza (1).
 
@@ -73,11 +73,11 @@ A kivételi szabályok az Azure Policy használatával hoznak létre kivételt a
 
 Azure Policy segítségével nyomon követheti az összes kivételt a **kivételek** oldalán:
 
-:::image type="content" source="./media/exempt-resource/policy-page-exemption.png" alt-text="Azure Policy kivételének lapja":::
+:::image type="content" source="./media/exempt-resource/policy-page-exemption.png" alt-text="Kivételi lehetőség létrehozása a helyi menüből":::
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből a cikkből megtudhatta, hogyan mentesített egy erőforrást egy javaslatból, hogy az ne befolyásolja a biztonságos pontszámot. A biztonságos pontszámról további információt a következő témakörben talál:
 

@@ -3,12 +3,12 @@ title: A beállításjegyzék hálózati problémáinak elhárítása
 description: Az Azure Container Registry virtuális hálózatban való elérésekor vagy tűzfal mögötti gyakori problémák tünetei, okai és megoldása
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 227eeeadb2aef4b4d3feb7923a198b129a6267d3
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 06c5b65537fd7d256010260bb3a93888721f643b
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88227224"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91532448"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>A beállításjegyzék hálózati problémáinak elhárítása
 
@@ -32,7 +32,7 @@ A következők közül egyet vagy többet is tartalmazhat:
 * Az ügyfél tűzfala vagy proxyja megakadályozza A hozzáférést – [megoldás](#configure-client-firewall-access)
 * A beállításjegyzék nyilvános hálózati hozzáférési szabályai akadályozzák a hozzáférést – [megoldás](#configure-public-access-to-registry)
 * A virtuális hálózati konfiguráció megakadályozza a hozzáférést – [megoldás](#configure-vnet-access)
-* A Azure Security Center a saját végponttal vagy szolgáltatási végponttal rendelkező beállításjegyzékkel kísérli meg integrálni [solution](#configure-image-scanning-solution) .
+* A Azure Security Center vagy bizonyos egyéb Azure-szolgáltatásokat olyan beállításjegyzékkel próbálja meg integrálni, amely rendelkezik saját végponttal, szolgáltatási végponttal vagy nyilvános IP-hozzáférési szabályokkal – [megoldás](#configure-service-access)
 
 ## <a name="further-diagnosis"></a>További diagnosztika 
 
@@ -96,17 +96,22 @@ Kapcsolódó hivatkozások:
 * [Kubernetes: DNS-feloldás hibakeresése](https://kubernetes.io/docs/tasks/administer-cluster/dns-debugging-resolution/)
 * [Virtuális hálózati szolgáltatás címkéi](../virtual-network/service-tags-overview.md)
 
-### <a name="configure-image-scanning-solution"></a>Rendszerkép-ellenőrzési megoldás konfigurálása
+### <a name="configure-service-access"></a>Szolgáltatás-hozzáférés konfigurálása
 
-Ha a beállításjegyzék magánhálózati végponttal vagy szolgáltatási végponttal van konfigurálva, a képkereséshez jelenleg nem integrálható Azure Security Center. Más, az Azure Marketplace-en elérhető képvizsgálati megoldásokat is konfigurálhat, beleértve a következőket:
+Jelenleg Azure Security Center nem tudja végrehajtani a [képbiztonsági rések vizsgálatát](../security-center/azure-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json) egy olyan beállításjegyzékben, amely korlátozza a privát végpontokhoz, a kiválasztott alhálózatokhoz vagy IP-címekhez való hozzáférést. Emellett a következő szolgáltatások erőforrásai nem férnek hozzá a tároló-beállításjegyzékhez hálózati korlátozásokkal:
 
-* [Aqua Cloud natív biztonsági platform](https://azuremarketplace.microsoft.com/marketplace/apps/aqua-security.aqua-security)
-* [Twistlock Enterprise Edition](https://azuremarketplace.microsoft.com/marketplace/apps/twistlock.twistlock)
+* Azure DevOps Services 
+* Azure Container Instances
+* Azure Container Registry Tasks
+
+Ha az Azure-szolgáltatások hozzáférése vagy integrálása szükséges a tároló beállításjegyzékével, távolítsa el a hálózati korlátozást. Távolítsa el például a beállításjegyzék saját végpontját, vagy távolítsa el vagy módosítsa a beállításjegyzék nyilvános hozzáférési szabályait.
 
 Kapcsolódó hivatkozások:
 
 * [Security Center Azure Container Registry képvizsgálat](../security-center/azure-container-registry-integration.md)
 * [Visszajelzés küldése](https://feedback.azure.com/forums/347535-azure-security-center/suggestions/41091577-enable-vulnerability-scanning-for-images-that-are)
+* [Nyilvános IP-hálózati szabályok konfigurálása](container-registry-access-selected-networks.md)
+* [Privát csatlakozás Azure Container registryhez az Azure Private link használatával](container-registry-private-link.md)
 
 
 ## <a name="advanced-troubleshooting"></a>Speciális hibaelhárítás
@@ -126,7 +131,7 @@ Ha itt nem oldja meg a problémát, tekintse meg a következő beállításokat.
 
 * A beállításjegyzék egyéb hibaelhárítási témakörei a következők:
   * [Beállításjegyzékbeli bejelentkezés – problémamegoldás](container-registry-troubleshoot-login.md) 
-  * [Beállításjegyzékbeli teljesítmény – problémamegoldás](container-registry-troubleshoot-performance.md)
+  * [Regisztrációs adatbázis teljesítményproblémáinak elhárítása](container-registry-troubleshoot-performance.md)
 * [Közösségi támogatási](https://azure.microsoft.com/support/community/) lehetőségek
 * [Microsoft Q&A](https://docs.microsoft.com/answers/products/)
 * [Támogatási jegy megnyitása](https://azure.microsoft.com/support/create-ticket/)

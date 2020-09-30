@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30a51f4b07f62b6e3491f74de78ea0d04bbb1775
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 0797ff744dbbf9fb139503d73be7d60118762ac2
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399973"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530731"
 ---
 # <a name="tutorial-enable-users-to-unlock-their-account-or-reset-passwords-using-azure-active-directory-self-service-password-reset"></a>Oktatóanyag: a felhasználók számára lehetővé teszi a fiók zárolásának feloldását vagy a jelszavak alaphelyzetbe állítását Azure Active Directory önkiszolgáló jelszó-visszaállítás használatával
 
@@ -116,7 +116,7 @@ Ha a felhasználóknak további segítségre van szüksége a SSPR folyamathoz, 
 Ha a SSPR engedélyezve és konfigurálva van, tesztelje a SSPR folyamatot egy olyan felhasználóval, aki az előző szakaszban kiválasztott csoport részét képezi, például *test-SSPR-Group*. A következő példában a rendszer a *tesztfelhasználó* fiókot használja. Adja meg saját felhasználói fiókját, amely az oktatóanyag első szakaszában a SSPR számára engedélyezett csoport részét képezi.
 
 > [!NOTE]
-> Amikor teszteli az önkiszolgáló jelszó-visszaállítást, használjon egy nem rendszergazdai fiókot. A rendszergazdák mindig engedélyezve vannak az önkiszolgáló jelszó-visszaállításhoz, és a jelszó alaphelyzetbe állításához két hitelesítési módszert kell használniuk.
+> Ha teszteli az önkiszolgáló jelszó-visszaállítást, használjon egy nem rendszergazdai fiókot. Alapértelmezés szerint a rendszergazdák engedélyezve vannak az önkiszolgáló jelszó-visszaállításhoz, és a jelszó alaphelyzetbe állításához két hitelesítési módszert kell használniuk. További információ: [rendszergazdai beállítások visszaállítása a szabályzatban](concept-sspr-policy.md#administrator-reset-policy-differences).
 
 1. A manuális regisztrációs folyamat megtekintéséhez nyisson meg egy új böngészőablakot InPrivate-vagy inkognitóban-módban, és keresse meg a következőt: [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup) . A felhasználókat a következő bejelentkezéskor a regisztrációs portálra kell irányítani.
 1. Jelentkezzen be egy nem rendszergazdai jogosultsággal rendelkező felhasználóval, például a *tesztfelhasználó*, és regisztrálja a hitelesítési módszereket a kapcsolattartási adatokhoz.
@@ -139,7 +139,7 @@ Ha már nem szeretné használni az oktatóanyag részeként konfigurált SSPR f
 1. A **Tulajdonságok** lapon, az *önkiszolgáló jelszó-visszaállítás engedélyezése*lehetőségnél válassza a **nincs**lehetőséget.
 1. A SSPR módosításának alkalmazásához válassza a **Mentés**lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban engedélyezte az Azure AD önkiszolgáló jelszó-visszaállítását egy kiválasztott felhasználói csoport számára. Megtanulta végrehajtani az alábbi műveleteket:
 

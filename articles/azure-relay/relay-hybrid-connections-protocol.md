@@ -3,12 +3,12 @@ title: Azure Relay Hibrid kapcsolatok Protocol-útmutató | Microsoft Docs
 description: Ez a cikk azokat az ügyféloldali interakciókat ismerteti, amelyekkel az Hibrid kapcsolatok Relay csatlakozik az ügyfelekhez a figyelő és a küldő szerepköreiben.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: fec021d961a17102f8d979c61ee46af6b938f073
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 893092124961ffa9df2535ca6de75def2930b797
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272009"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531445"
 ---
 # <a name="azure-relay-hybrid-connections-protocol"></a>Azure Relay Hibrid kapcsolatok protokoll
 
@@ -55,7 +55,7 @@ A kódolt információ csak rövid ideig érvényes, lényegében addig, amíg a
 
 A WebSocket-kapcsolatokon kívül a figyelő HTTP-kérési kereteket is fogadhat a küldőtől, ha ez a funkció explicit módon engedélyezve van a hibrid kapcsolaton.
 
-A HTTP-támogatással Hibrid kapcsolatokhoz csatolt figyelőknek kezelniük kell a `request` kézmozdulatot. Egy figyelő, amely nem kezeli a `request` szolgáltatást, ezért a csatlakozás során ismételt időtúllépési hibákat okoz, és a szolgáltatás a jövőben is feketelistára kerül.
+A HTTP-támogatással Hibrid kapcsolatokhoz csatolt figyelőknek kezelniük kell a `request` kézmozdulatot. Egy figyelő, amely nem kezeli a `request` szolgáltatást, ezért a csatlakozás során ismételt időtúllépési hibákat okoz, és a szolgáltatás a jövőben is blokkolhatja.
 
 A HTTP-keret fejlécének metaadatait a rendszer a JSON formátumba fordítja le, így egyszerűbben kezelhető a figyelő keretrendszer, mivel a HTTP-fejléc elemző kódtárak ritkábbak a JSON-elemzők esetében. A nem továbbítja a HTTP-metaadatokat, amelyek csak a küldő és a továbbító HTTP-átjáró közötti kapcsolatra vonatkoznak, beleértve az engedélyezési adatokat is. A HTTP-kérések szervei transzparens módon átvihetők bináris WebSocket-keretekként.
 
@@ -326,7 +326,7 @@ A JSON-tartalma a `request` következő:
 
 ##### <a name="responding-to-requests"></a>Válaszadás a kérelmekre
 
-A fogadónak válaszolnia kell. Ha a kérések megtartása közben többször nem válaszol a kérelmekre, a figyelő lekérése megszakadt.
+A fogadónak válaszolnia kell. A kérések megtartása melletti ismételt sikertelen reagálás miatt a figyelő blokkolva lehet.
 
 A válaszokat bármilyen sorrendben elküldheti, de az egyes kérelmeket 60 másodpercen belül kell megválaszolni, vagy a kézbesítés sikertelenként lesz jelezve. A 60 – második határidő akkor számít, ha a `response` szolgáltatás nem fogadta el a keretet. A több bináris kerettel rendelkező folyamatban lévő válasz több mint 60 másodpercig nem lehet üresjáratban, vagy leáll.
 

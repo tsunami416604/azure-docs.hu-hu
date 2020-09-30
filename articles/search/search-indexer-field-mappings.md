@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fe4d42fd74b4efd67a01f32611bd170862ec84d0
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: a20b6509973c7dc7e54d2e4f702175ad61e88da8
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89007128"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91532500"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>Mező-hozzárendelések és átalakítások az Azure Cognitive Search indexelő használatával
 
@@ -201,7 +201,7 @@ Az Azure Cognitive Search két különböző Base64-kódolást támogat. Ugyanez
 
 Az Azure Cognitive Search támogatja az URL-alapú biztonságos Base64-kódolást és a normál Base64-kódolást. Az indexelés során Base64 kódolású karakterláncot később kell dekódolni ugyanazzal a kódolási lehetőségekkel, különben az eredmény nem egyezik az eredetivel.
 
-Ha a `useHttpServerUtilityUrlTokenEncode` `useHttpServerUtilityUrlTokenDecode` kódoláshoz és a dekódoláshoz szükséges paraméterek a (z) értékre vannak beállítva `true` , akkor a következőképpen `base64Encode` viselkedik: [HttpServerUtility. UrlTokenEncode](/dotnet/api/system.web.httpserverutility.urltokenencode?view=netframework-4.8) , és `base64Decode` úgy viselkedik, mint a [HttpServerUtility. UrlTokenDecode](/dotnet/api/system.web.httpserverutility.urltokendecode?view=netframework-4.8).
+Ha a `useHttpServerUtilityUrlTokenEncode` `useHttpServerUtilityUrlTokenDecode` kódoláshoz és a dekódoláshoz szükséges paraméterek a (z) értékre vannak beállítva `true` , akkor a következőképpen `base64Encode` viselkedik: [HttpServerUtility. UrlTokenEncode](/dotnet/api/system.web.httpserverutility.urltokenencode) , és `base64Decode` úgy viselkedik, mint a [HttpServerUtility. UrlTokenDecode](/dotnet/api/system.web.httpserverutility.urltokendecode).
 
 > [!WARNING]
 > Ha `base64Encode` a kulcs értékének megadására szolgál, akkor igaz értékre kell `useHttpServerUtilityUrlTokenEncode` állítani. A kulcsok értékeihez csak az URL-alapú biztonságos Base64-kódolást lehet használni. Lásd: az [Azure Cognitive Search&#41;elnevezési szabályai &#40;](/rest/api/searchservice/naming-rules) az összes korlátozást a kulcsok értékeiben.

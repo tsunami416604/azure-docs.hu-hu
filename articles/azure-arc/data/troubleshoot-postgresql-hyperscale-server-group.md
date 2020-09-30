@@ -9,30 +9,55 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 9c0d3d9c74be8dabaec20ff5d4c7e7cfc74d8eef
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 8d1c9027b6a9a7b295ce83e26281832beca1bc33
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936052"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531955"
 ---
 # <a name="troubleshooting-postgresql-hyperscale-server-groups"></a>A PostgreSQL nagy kapacitású-kiszolgálócsoportok hibaelhárítása
+Ez a cikk néhány olyan technikát ismertet, amelyet a kiszolgálói csoport hibaelhárításához használhat. A cikken kívül érdemes elolvasnia, hogyan használhatja a [Kibana](monitor-grafana-kibana.md) -t a naplók megtekintéséhez vagy a [Grafana](monitor-grafana-kibana.md) használatával megjelenítheti a kiszolgálói csoport metrikáit. 
 
-A jegyzetfüzetek olyan eljárásokat is dokumentálnak, amelyek a Markdown-tartalmakat ismertetik, és leírják, hogy mi a teendő. Végrehajtható kódot is biztosít az eljárások automatizálásához.  Ez a minta minden esetben hasznos, ha a szokásos működési eljárások alapján hibaelhárítási útmutatók vannak.
+## <a name="getting-more-details-about-the-execution-of-an-azdata-command"></a>További részletek az azdata-parancsok végrehajtásáról
+A **--Debug** paramétert hozzáadhatja bármilyen azdata-parancshoz, amelyet végrehajt. Ekkor a konzolon további információk jelennek meg a parancs végrehajtásáról. Hasznos lehet az adott parancs működésének megértéséhez szükséges részletek beolvasása.
+Futtathatja például a következőt:
+```console
+azdata arc postgres server create -n postgres01 -w 2 --debug
+```
+
+vagy
+```console
+azdata arc postgres server edit -n postgres01 --extension SomeExtensionName --debug
+```
+
+Emellett a--help parancsot is használhatja bármely azdata-parancshoz egy adott parancs paramétereinek megjelenítéséhez. Példa:
+```console
+azdata arc postgres server create --help
+```
+
+
+## <a name="collecting-logs-of-the-data-controller-and-your-server-groups"></a>Adatkezelő és a kiszolgálócsoportok naplóinak összegyűjtése
+Olvassa el a [naplók Azure arc-kompatibilis adatszolgáltatásokhoz való](troubleshooting-get-logs.md) beolvasásáról szóló cikket.
+
+
+
+## <a name="interactive-troubleshooting-with-jupyter-notebooks-in-azure-data-studio"></a>Interaktív hibaelhárítás a Azure Data Studio Jupyter notebookokkal
+Jegyzetfüzetek használatával eljárásokat is dokumentálhat a teendőket/utasításokat ismertető Markdown-tartalmak belefoglalásával. Végrehajtható kódot is megadhat az eljárások automatizálásához.  Ez a minta az általános üzemeltetési eljárásoktól kezdve a hibaelhárítási útmutatókig jól használható.
 
 Tegyük fel például, hogy a PostgreSQL nagy kapacitású-kiszolgálócsoport hibaelhárítása során problémák merülhetnek fel Azure Data Studio használatával.
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="install-tools"></a>Eszközök telepítése
+### <a name="install-tools"></a>Eszközök telepítése
 
 Telepítse a Azure Data Studiot, `kubectl` és azon `azdata` az ügyfélszámítógépen, amelyet a jegyzetfüzetnek a Azure Data Studio-ben való futtatásához használ. Ehhez kövesse az [ügyféleszközök telepítése](install-client-tools.md) című témakör útmutatását.
 
-## <a name="update-the-path-environment-variable"></a>A PATH környezeti változó frissítése
+### <a name="update-the-path-environment-variable"></a>A PATH környezeti változó frissítése
 
 Győződjön meg arról, hogy ezek az eszközök bárhonnan meghívhatók ezen az ügyfélszámítógépen. Például egy Windows-ügyfélgépen frissítse a PATH rendszerkörnyezeti változót, és adja hozzá azt a mappát, amelyben a kubectl telepítette.
 
-## <a name="sign-in-with-azdata"></a>Bejelentkezés a `azdata`
+### <a name="sign-in-with-azdata"></a>Bejelentkezés a `azdata`
 
 Jelentkezzen be az ív-adatkezelőből erről az ügyfélszámítógépről, és a Azure Data Studio elindítása előtt. Ehhez a következőhöz hasonló parancsot kell futtatnia:
 
@@ -46,7 +71,7 @@ A helyére írja `<IP address>` be a Kubernetes-fürt IP-címét, valamint `<por
 azdata login --help
 ```
 
-## <a name="log-into-your-kubernetes-cluster-with-kubectl"></a>Jelentkezzen be a Kubernetes-fürtbe a kubectl
+### <a name="log-into-your-kubernetes-cluster-with-kubectl"></a>Jelentkezzen be a Kubernetes-fürtbe a kubectl
 
 Ehhez érdemes lehet az [ebben](https://blog.christianposta.com/kubernetes/logging-into-a-kubernetes-cluster-with-kubectl/) a blogbejegyzésben megadott példa parancsokat használni.
 A következőhöz hasonló parancsokat kell futtatnia:
@@ -59,7 +84,7 @@ kubectl config set-context default/my_kubeuser/ArcDataControllerAdmin --user=Arc
 kubectl config use-context default/my_kubeuser/ArcDataControllerAdmin
 ```
 
-### <a name="the-troubleshooting-notebook"></a>A hibaelhárítási jegyzetfüzet
+#### <a name="the-troubleshooting-notebook"></a>A hibaelhárítási jegyzetfüzet
 
 Indítsa el Azure Data Studio, és nyissa meg a hibaelhárítási jegyzetfüzetet. 
 
@@ -72,9 +97,9 @@ Hajtsa végre a következő témakörben ismertetett lépéseket:  [033-Manage-p
 
 :::image type="content" source="media/postgres-hyperscale/ads-controller-postgres-troubleshooting-notebook.jpg" alt-text="Azure Data Studio – a PostgreSQL hibaelhárítási Jegyzetfüzetének megnyitása":::
 
-A **TSG100 – az Azure arc-kompatibilis PostgreSQL nagy kapacitású hibaelhárító jegyzetfüzete** a következőket nyitja meg: :::image type="content" source="media/postgres-hyperscale/ads-controller-postgres-troubleshooting-notebook2.jpg" alt-text="Azure Data Studio – a PostgreSQL hibaelhárítási notebookjának használata":::
+A **TSG100 – az Azure arc-kompatibilis PostgreSQL nagy kapacitású hibaelhárító jegyzetfüzete** a következőket nyitja meg: :::image type="content" source="media/postgres-hyperscale/ads-controller-postgres-troubleshooting-notebook2.jpg" alt-text="Azure Data Studio – a PostgreSQL hibaelhárítási Jegyzetfüzetének megnyitása":::
 
-### <a name="run-the-scripts"></a>Parancsfájlok futtatása
+#### <a name="run-the-scripts"></a>Parancsfájlok futtatása
 Válassza az összes futtatása gombot a lap tetején, hogy egyszerre hajtsa végre a jegyzetfüzetet, vagy az egyes kódrészleteket egyenként is végrehajthatja.
 
 Megtekintheti a programkódok végrehajtásának kimenetét az esetleges problémákhoz.

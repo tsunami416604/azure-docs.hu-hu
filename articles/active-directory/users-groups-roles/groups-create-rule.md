@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f5c44f72021fa46352ae6ded8fe671ea4f1a4d60
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: a94d1a4fa717bbee9974f7218e704ba06dad530d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88797173"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531530"
 ---
 # <a name="create-or-update-a-dynamic-group-in-azure-active-directory"></a>Dinamikus csoport létrehozása vagy frissítése Azure Active Directory
 
@@ -40,7 +40,7 @@ Az Azure AD egy olyan szabályt biztosít, amellyel gyorsabban hozhat létre és
 > [!NOTE]
 > Előfordulhat, hogy a szabály-szerkesztő nem tudja megjeleníteni a szövegmezőben létrehozott egyes szabályokat. Előfordulhat, hogy egy üzenet jelenik meg, ha a szabály-szerkesztő nem tudja megjeleníteni a szabályt. A szabály-szerkesztő semmilyen módon nem módosítja a dinamikus csoport szabályainak támogatott szintaxisát, érvényesítését vagy feldolgozását.
 
-![Tagsági szabály hozzáadása dinamikus csoporthoz](./media/groups-create-rule/update-dynamic-group-rule.png)
+![Képernyőkép a "dinamikus tagsági szabályok" lap "kifejezés hozzáadása" műveletével, amely a "szabályok konfigurálása" lapon van kiválasztva.](./media/groups-create-rule/update-dynamic-group-rule.png)
 
 A tagsági szabályok szintaxisára, támogatott tulajdonságaira, operátorára és értékeire példákat a következő témakörben talál: [Azure Active Directory csoportok dinamikus tagsági szabályai](groups-dynamic-membership.md).
 
@@ -54,7 +54,7 @@ A tagsági szabályok szintaxisára, támogatott tulajdonságaira, operátorára
 
 1. A **csoport** lapon adja meg az új csoport nevét és leírását. Válasszon **tagsági típust** a felhasználók vagy eszközök számára, majd válassza a **dinamikus lekérdezés hozzáadása**lehetőséget. A szabály-szerkesztő legfeljebb öt kifejezést támogat. Ötnél több kifejezés hozzáadásához a szövegmezőt kell használnia.
 
-   ![Tagsági szabály hozzáadása dinamikus csoporthoz](./media/groups-create-rule/add-dynamic-group-rule.png)
+   ![Képernyőkép, amely a "minden csoport" lapot mutatja az "új csoport" művelet kiválasztásával.](./media/groups-create-rule/add-dynamic-group-rule.png)
 
 1. A tagsági lekérdezéshez elérhető egyéni kiterjesztési tulajdonságok megtekintéséhez:
    1. Válassza az **Egyéni bővítmény tulajdonságainak beolvasása** elemet.

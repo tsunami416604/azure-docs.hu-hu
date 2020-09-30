@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/12/2020
-ms.openlocfilehash: f72952737af9b76b76ac9a08138238138c54614b
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 45c9625f0a762a0879473cc64c38d791c804d087
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642180"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530663"
 ---
 # <a name="quickstart-create-apache-hbase-cluster-in-azure-hdinsight-using-arm-template"></a>Gyors útmutató: Apache HBase-fürt létrehozása az Azure HDInsight az ARM-sablon használatával
 
@@ -73,11 +73,11 @@ A gyors üzembe helyezés befejezése után érdemes lehet törölni a fürtöt.
 
 A Azure Portal navigáljon a fürthöz, és válassza a **Törlés**lehetőséget.
 
-![Resource Manager-sablon HBase](./media/quickstart-resource-manager-template/azure-portal-delete-hbase.png)
+![A képernyőfelvétel egy H D betekintési fürtöt mutat be a törölni kívánt erőforráscsoporthoz.](./media/quickstart-resource-manager-template/azure-portal-delete-hbase.png)
 
 Az erőforráscsoport nevét kiválasztva is megnyílik az erőforráscsoport oldala, ahol kiválaszthatja az **Erőforráscsoport törlése** elemet. Az erőforráscsoport törlésével törli a HDInsight-fürtöt és az alapértelmezett Storage-fiókot is.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre egy Apache HBase-fürtöt a HDInsight egy ARM-sablonnal. A következő cikkben megtudhatja, hogyan kérdezheti le a HBase a HDInsight-ben a HBase Shell használatával.
 

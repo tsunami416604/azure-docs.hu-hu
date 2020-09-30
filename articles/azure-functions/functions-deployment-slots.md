@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: cshoe
-ms.openlocfilehash: f84dc17c6c074fc4dbda8a13fad3586a397fdf10
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0361ba7bc67948c25b842a3fb7406d2999fdd725
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87055419"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530612"
 ---
 # <a name="azure-functions-deployment-slots"></a>Azure Functions üzembe helyezési pontok
 
@@ -73,15 +73,15 @@ A központi telepítési beállítás létrehozásához kövesse az alábbi lép
 
 1. Válassza a **konfiguráció**lehetőséget, majd válassza ki azt a nevet, amelyet az aktuális tárolóhelyhez szeretne ragasztani.
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-configure-deployment-slot.png" alt-text="Konfigurálja a Azure Portal egy tárolóhelyének alkalmazási beállításait." border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-configure-deployment-slot.png" alt-text="A Azure Portal található tárolóhelyek." border="true":::
 
 1. Válassza a **telepítési tárolóhely beállítása**lehetőséget, majd kattintson **az OK gombra**.
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-deployment-slot-setting.png" alt-text="Konfigurálja az üzembe helyezési tárolóhely beállítását." border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-deployment-slot-setting.png" alt-text="A Azure Portal található tárolóhelyek." border="true":::
 
 1. Ha a beállítás szakasz eltűnik, a módosítások megtartásához válassza a **Mentés** lehetőséget.
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-save-deployment-slot-setting.png" alt-text="Mentse az üzembe helyezési tárolóhely beállítását." border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-save-deployment-slot-setting.png" alt-text="A Azure Portal található tárolóhelyek." border="true":::
 
 ## <a name="deployment"></a>Üzembe helyezés
 
@@ -102,11 +102,11 @@ Hozzáadhat egy tárolóhelyet a [CLI](/cli/azure/functionapp/deployment/slot?vi
 
 1. Válassza az **üzembe helyezési**pontok lehetőséget, majd válassza a **+ tárolóhely hozzáadása**elemet.
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-deployment-slots-add.png" alt-text="Azure Functions üzembe helyezési pont hozzáadása." border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-deployment-slots-add.png" alt-text="A Azure Portal található tárolóhelyek." border="true":::
 
 1. Írja be a tárolóhely nevét, majd válassza a **Hozzáadás**lehetőséget.
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-deployment-slots-add-name.png" alt-text="Nevezze el a Azure Functions üzembe helyezési tárolóhelyet." border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-deployment-slots-add-name.png" alt-text="A Azure Portal található tárolóhelyek." border="true":::
 
 ## <a name="swap-slots"></a>Tárolóhelyek cseréje
 
@@ -115,11 +115,11 @@ A tárolóhelyeket a [CLI](/cli/azure/functionapp/deployment/slot?view=azure-cli
 1. Navigáljon a Function alkalmazáshoz.
 1. Válassza az **üzembe helyezési**pontok lehetőséget, majd kattintson a **Csere**elemre.
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-swap-deployment-slot.png" alt-text="Cserélje le az üzembe helyezési tárolóhelyet." border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-swap-deployment-slot.png" alt-text="A Azure Portal található tárolóhelyek." border="true":::
 
 1. Ellenőrizze a swap konfigurációs beállításait, és válassza a **Csere** lehetőséget.
     
-    :::image type="content" source="./media/functions-deployment-slots/azure-functions-deployment-slots-swap-config.png" alt-text="Cserélje le az üzembe helyezési tárolóhelyet." border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/azure-functions-deployment-slots-swap-config.png" alt-text="A Azure Portal található tárolóhelyek." border="true":::
 
 A művelet eltarthat egy kis ideig, amíg a rendszer végrehajtja a swap-műveletet.
 
@@ -137,15 +137,15 @@ Egy tárolóhelyet a [CLI](/cli/azure/functionapp/deployment/slot?view=azure-cli
 
 1. Válassza a **Törlés** elemet.
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-delete-deployment-slot.png" alt-text="Törölje a telepítési tárolóhelyet a Azure Portal." border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-delete-deployment-slot.png" alt-text="A Azure Portal található tárolóhelyek." border="true":::
 
 1. Írja be a törölni kívánt telepítési tárolóhely nevét, majd válassza a **Törlés**lehetőséget.
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-delete-deployment-slot-details.png" alt-text="Törölje a telepítési tárolóhelyet a Azure Portal." border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-delete-deployment-slot-details.png" alt-text="A Azure Portal található tárolóhelyek." border="true":::
 
 1. A Törlés megerősítése panel bezárásához.
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-deployment-slot-deleted.png" alt-text="Üzembe helyezési pont törlésének megerősítése." border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-deployment-slot-deleted.png" alt-text="A Azure Portal található tárolóhelyek." border="true":::
 
 ## <a name="automate-slot-management"></a>A tárolóhelyek kezelésének automatizálása
 
@@ -174,9 +174,9 @@ A tárolóhelyek App Service tervének módosításához kövesse az alábbi lé
 
 1. Válassza ki azt a csomagot, amelyre frissíteni kíván, vagy hozzon létre egy új csomagot.
 
-    :::image type="content" source="./media/functions-deployment-slots/azure-functions-deployment-slots-change-app-service-apply.png" alt-text="Módosítsa a Azure Portal App Service tervét." border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/azure-functions-deployment-slots-change-app-service-apply.png" alt-text="A Azure Portal található tárolóhelyek." border="true":::
 
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
 
 ## <a name="limitations"></a>Korlátozások
 

@@ -10,16 +10,19 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: troubleshooting
-ms.date: 06/30/2020
+ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9fa47c81aede9de5d083f16f9e1705f687ad39a4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e89189b22b144d9e92ee8315bc6fd9aabe699eec
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046440"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531649"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights-gen1"></a>A Azure Time Series Insights Gen1 késésének csökkentése a szabályozás monitorozásával és enyhítésével
+
+> [!CAUTION]
+> Ez egy Gen1-cikk.
 
 Ha a bejövő adatmennyiség meghaladja a környezete konfigurációját, késést vagy szabályozást tapasztalhat Azure Time Series Insightsban.
 
@@ -46,7 +49,7 @@ A riasztások segíthetnek a környezetében előforduló késési problémák d
 
    [![Riasztás hozzáadása a Azure Time Series Insights-környezethez](media/environment-mitigate-latency/mitigate-latency-add-alert.png)](media/environment-mitigate-latency/mitigate-latency-add-alert.png#lightbox)
 
-1. Válassza az **+ Új riasztási szabály** lehetőséget. Ekkor megjelenik a **szabály létrehozása** panel. Válassza a **Hozzáadás** lehetőséget a **feltétel**alatt.
+1. Válassza a **+ Új riasztási szabály** lehetőséget. Ekkor megjelenik a **szabály létrehozása** panel. Válassza a **Hozzáadás** lehetőséget a **feltétel**alatt.
 
    [![Riasztás panel hozzáadása](media/environment-mitigate-latency/mitigate-latency-add-pane.png)](media/environment-mitigate-latency/mitigate-latency-add-pane.png#lightbox)
 
@@ -74,17 +77,17 @@ A riasztások segíthetnek a környezetében előforduló késési problémák d
 
 ## <a name="throttling-and-ingress-management"></a>Szabályozás és bejövő forgalom kezelése
 
-* Ha szabályozza a szabályozást, akkor a rendszer a *beérkező üzenetek időkorlátja* értékének megadásával értesíti arról, hogy hány másodpercig tart a Azure Time Series Insights-környezete, és hogy az üzenet mikor kapja meg az esemény forrását (kivéve a Appx indexelési idejét. 30-60 másodperc).  
+- Ha szabályozza a szabályozást, akkor a rendszer a *beérkező üzenetek időkorlátja* értékének megadásával értesíti arról, hogy hány másodpercig tart a Azure Time Series Insights-környezete, és hogy az üzenet mikor kapja meg az esemény forrását (kivéve a Appx indexelési idejét. 30-60 másodperc).  
 
   A *bejövő fogadott üzenetek számának késési* értékének is szerepelnie kell, ami lehetővé teszi, hogy megtudja, hány üzenet mögött van.  A legkönnyebben elsajátítható, hogy növelje a környezet kapacitását olyan méretre, amely lehetővé teszi a különbség leküzdését.  
 
   Ha például az S1-környezet 5 000 000-üzenetek késését mutatja be, akkor a környezet méretét akár hat egységre is növelheti, hogy felkészüljön.  A gyorsabb felzárkózás érdekében még tovább növelheti. A felmerülési időszak gyakori esemény, amikor először telepítenek egy környezetet, különösen akkor, ha olyan eseménnyel csatlakozik, amely már rendelkezik eseményekkel, vagy ha nagy mennyiségű előzményt tölt fel.
 
-* Egy másik módszer egy **bejövő tárolt események** riasztásának beállítása >= egy küszöbérték kis mértékben a teljes környezeti kapacitás alatt 2 órán keresztül.  Ez a riasztás segít megismerni, hogy folyamatosan van-e kapacitása, ami nagy valószínűséggel jelzi a késést. 
+- Egy másik módszer egy **bejövő tárolt események** riasztásának beállítása >= egy küszöbérték kis mértékben a teljes környezeti kapacitás alatt 2 órán keresztül.  Ez a riasztás segít megismerni, hogy folyamatosan van-e kapacitása, ami nagy valószínűséggel jelzi a késést.
 
   Ha például három S1 egység van kiépítve (vagy 2100 eseményt percenként beáramló kapacitással), megadhat egy **bejövő tárolt események** riasztást >= 1900 eseményekhez 2 órán keresztül. Ha folyamatosan túllépi ezt a küszöbértéket, és így aktiválja a riasztást, valószínűleg kiosztották.  
 
-* Ha azt gyanítja, hogy a szabályozása folyamatban van, összehasonlíthatja a **bejövő beérkező üzeneteket** az eseményforrás egressed üzeneteivel.  Ha az Event hub-ba való belépés nagyobb, mint a **bejövő fogadott üzenetek**, a Azure Time Series Insights valószínűleg szabályozva lesznek.
+- Ha azt gyanítja, hogy a szabályozása folyamatban van, összehasonlíthatja a **bejövő beérkező üzeneteket** az eseményforrás egressed üzeneteivel.  Ha az Event hub-ba való belépés nagyobb, mint a **bejövő fogadott üzenetek**, a Azure Time Series Insights valószínűleg szabályozva lesznek.
 
 ## <a name="improving-performance"></a>A teljesítmény javítása
 

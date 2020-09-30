@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 98ef2b416c809789307f946ed90fb3138d9a20c1
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c28a3b0f445ca905a882a7ede3fcfed2c1e673a4
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325372"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531190"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>A Linuxhoz készült Log Analytics-ügynökkel kapcsolatos hibák elhárítása 
 
@@ -150,7 +150,7 @@ A kimeneti beépülő modul alatt törölje a következő szakasz megjegyzését
 
 ### <a name="probable-causes"></a>Lehetséges okok
 * Az előkészítés során megadott proxy helytelen
-* Az adatközpontban nem szerepel a Azure Monitor és az Azure Automation szolgáltatás végpontja 
+* A Azure Monitor és Azure Automation szolgáltatási végpontok nem szerepelnek az adatközpont jóváhagyott listáján 
 
 ### <a name="resolution"></a>Feloldás
 1. A következő parancs futtatásával Azure Monitor a Linuxra Log Analytics-ügynökkel `-v` . Lehetővé teszi az ügynök részletes kimenetét, amely a proxyn keresztül csatlakozik a Azure Monitor. 
@@ -211,7 +211,7 @@ A teljesítménnyel kapcsolatos hibák nem minden időben történnek, és nagyo
 - A Linux-alapú adatLog Analytics-ügynök biztonsági mentése
 
 ### <a name="resolution"></a>Feloldás
-1. Ellenőrizze, hogy sikeres volt-e a bevezetési Azure Monitor a következő fájl létezésének ellenőrzésével:`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`
+1. Ellenőrizze, hogy sikeres volt-e a bevezetési Azure Monitor a következő fájl létezésének ellenőrzésével: `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`
 2. Újratelepítés a `omsadmin.sh` parancssori utasítások használatával
 3. Ha proxyt használ, tekintse meg a korábban megadott proxy-feloldási lépéseket.
 4. Bizonyos esetekben, ha a Linux rendszerhez készült Log Analytics-ügynök nem tud kommunikálni a szolgáltatással, az ügynökön lévő adat a teljes puffer méretére, amely 50 MB. Az ügynököt újra kell indítani a következő parancs futtatásával: `/opt/microsoft/omsagent/bin/service_control restart [<workspace id>]` . 
@@ -394,13 +394,13 @@ Ez a hiba azt jelzi, hogy a Linux diagnosztikai bővítmény (LAD) a Log Analyti
 
 **Háttér:** A rendszerjogosultságú felhasználóként futó Linux-Log Analytics ügynök helyett `root` az ügynök `omsagent` felhasználóként fut. A legtöbb esetben a felhasználóknak explicit engedélyeket kell adni ahhoz, hogy bizonyos fájlokat el lehessen olvasni. Ha engedélyt szeretne adni a `omsagent` felhasználónak, futtassa a következő parancsokat:
 
-1. A `omsagent` felhasználó hozzáadása adott csoporthoz`sudo usermod -a -G <GROUPNAME> <USERNAME>`
-2. Univerzális olvasási hozzáférés biztosítása a szükséges fájlhoz`sudo chmod -R ugo+rx <FILE DIRECTORY>`
+1. A `omsagent` felhasználó hozzáadása adott csoporthoz `sudo usermod -a -G <GROUPNAME> <USERNAME>`
+2. Univerzális olvasási hozzáférés biztosítása a szükséges fájlhoz `sudo chmod -R ugo+rx <FILE DIRECTORY>`
 
 A Race feltétellel kapcsolatos ismert probléma a 1.1.0-217-nél korábbi Linux-verzió Log Analytics ügynöke. A legújabb ügynök frissítése után futtassa a következő parancsot a kimeneti beépülő modul legújabb verziójának beszerzéséhez `sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.conf /etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf` .
 
 ## <a name="issue-you-are-trying-to-reonboard-to-a-new-workspace"></a>Probléma: új munkaterületre próbál újra bejelentkezni
-Amikor egy ügynököt egy új munkaterületre próbál újra bevezetni, a Log Analytics-ügynök konfigurációját a telepítés előtt meg kell tisztítani. Ha törölni szeretné a régi konfigurációt az ügynöktől, futtassa a rendszerhéj-csomagot a következővel:`--purge`
+Amikor egy ügynököt egy új munkaterületre próbál újra bevezetni, a Log Analytics-ügynök konfigurációját a telepítés előtt meg kell tisztítani. Ha törölni szeretné a régi konfigurációt az ügynöktől, futtassa a rendszerhéj-csomagot a következővel: `--purge`
 
 ```
 sudo sh ./omsagent-*.universal.x64.sh --purge
@@ -444,4 +444,3 @@ A probléma megoldásához hajtsa végre az alábbi lépéseket.
     ```
 
 3. A csomagokat a végrehajtásával frissítheti `sudo sh ./omsagent-*.universal.x64.sh --upgrade` .
-

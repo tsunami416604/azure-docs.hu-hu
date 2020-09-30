@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 04/07/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: bf31ad3311d6cbfd82ad1071d28bb7fee1bb9d2b
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: bb2fff699b31d8b3b311180c4b85e2bfd1da892c
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876784"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530153"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>A Spark &-struktúra eszközeinek használata a Visual Studio Code-hoz
 
@@ -29,7 +29,7 @@ A cikk lépéseinek végrehajtásához a következő elemek szükségesek:
 - [Visual Studio Code](https://code.visualstudio.com/).
 - [Monó](https://www.mono-project.com/docs/getting-started/install/). A Mono csak Linux és macOS rendszerekhez szükséges.
 - [PySpark interaktív környezet a Visual Studio Code](set-up-pyspark-interactive-environment.md)-hoz.
-- Helyi könyvtár. Ez a cikk a **C:\HD\HDexample**-t használja.
+- Helyi könyvtár. Ez a cikk a  **C:\HD\HDexample**-t használja.
 
 ## <a name="install-spark--hive-tools"></a>A Spark & Kas eszközeinek telepítése
 
@@ -199,11 +199,11 @@ A PySpark interaktív parancs használatával küldje el a lekérdezéseket, kö
 
 4. A PySpark kernel telepítésére vonatkozó kérés az ablak jobb alsó sarkában jelenik meg. A PySpark telepítések folytatásához kattintson a **telepítés** gombra. vagy kattintson a **kihagyás** gombra a lépés kihagyásához.
 
-   ![a pyspark kernel telepítése](./media/hdinsight-for-vscode/install-the-pyspark-kernel.png)
+   ![A képernyőképen a PySpark telepítésének kihagyására szolgáló lehetőség látható.](./media/hdinsight-for-vscode/install-the-pyspark-kernel.png)
 
 5. Ha később is telepítenie kell, navigáljon a fájl beállításait **tartalmazó**  >  **Preference**  >  **Beállítások**területére, majd törölje a jelet a **Hdinsight: a Pyspark kihagyása** jelölőnégyzet bejelölésének engedélyezése lehetőségre. 
     
-    ![a pyspark kernel telepítése](./media/hdinsight-for-vscode/enable-skip-pyspark-installation.png)
+    ![A képernyőképen a Pyspark-telepítés kihagyásának engedélyezése látható.](./media/hdinsight-for-vscode/enable-skip-pyspark-installation.png)
 
 6. Ha a telepítés sikeres volt a 4. lépésben, a "PySpark telepítése sikeres" üzenet jelenik meg az ablak jobb alsó sarkában. Az ablak újratöltéséhez kattintson az **Újratöltés** gombra.
     ![a pyspark telepítése sikerült](./media/hdinsight-for-vscode/pyspark-kernel-installed-successfully.png)
@@ -214,7 +214,7 @@ A PySpark interaktív parancs használatával küldje el a lekérdezéseket, kö
 
     ![pyspark interaktív helyi menü](./media/hdinsight-for-vscode/pyspark-interactive-right-click.png)
 
-9. Ha nem adott meg alapértelmezett fürtöt, válassza ki a fürtöt. Néhány pillanat elteltével a **Python interaktív** eredményei egy új lapon jelennek meg. kattintson a PySpark elemre a rendszermag **PySpark**való átváltásához, és a kód sikeres futtatásához. Az eszközök lehetővé teszik a teljes parancsfájl helyett a kód egy blokkjának beküldését a helyi menü használatával:
+9. Ha nem adott meg alapértelmezett fürtöt, válassza ki a fürtöt. Néhány pillanat elteltével a **Python interaktív** eredményei egy új lapon jelennek meg. Kattintson a PySpark elemre a kernel **PySpark**való átváltásához, és a kód sikeres futtatásához. Az eszközök lehetővé teszik a teljes parancsfájl helyett a kód egy blokkjának beküldését a helyi menü használatával:
 
    ![pyspark interaktív Python interaktív ablak](./media/hdinsight-for-vscode/pyspark-interactive-python-interactive-window.png)
 
@@ -318,7 +318,7 @@ Az [Apache Livy](https://livy.incubator.apache.org/) -konfiguráció támogatott
 2. A **keresési beállítások** mezőbe írja be a **HDInsight Job beküldése: Livy conf**kifejezést.  
 3. A megfelelő keresési eredményhez válassza a szerkesztés lehetőséget a **settings.js** .
 
-A 2. módszer elküld egy fájlt, és megfigyelheti, hogy a `.vscode` rendszer automatikusan hozzáadja a mappát a munkahelyi mappához. A Livy konfigurációját a.vscode\settings.jsbejelölésével tekintheti **meg**.
+A 2. módszer elküld egy fájlt, és megfigyelheti, hogy a `.vscode` rendszer automatikusan hozzáadja a mappát a munkahelyi mappához. A Livy konfigurációját a.vscode\settings.jsbejelölésével tekintheti ** meg**.
 
 + A projekt beállításai:
 
@@ -331,7 +331,7 @@ A 2. módszer elküld egy fájlt, és megfigyelheti, hogy a `.vscode` rendszer a
 
     **/Batches közzététele** Kérelem törzse
 
-    | name | leírás | típus |
+    | név | leírás | típus |
     | --- | --- | --- |
     | file | A végrehajtandó alkalmazást tartalmazó fájl | Elérési út (kötelező) |
     | proxyUser | A felhasználó megszemélyesítése a feladatok futtatásakor | Sztring |
@@ -347,18 +347,18 @@ A 2. módszer elküld egy fájlt, és megfigyelheti, hogy a `.vscode` rendszer a
     | numExecutors | A munkamenet elindításához szükséges végrehajtók száma | Int |
     | Archívum | A munkamenetben használni kívánt archívumok | Karakterláncok listája |
     | üzenetsor | A beküldeni kívánt FONÁL-várólista neve| Sztring |
-    | name | A munkamenet neve | Sztring |
+    | név | A munkamenet neve | Sztring |
     | conf | Spark-konfiguráció tulajdonságai | Kulcs leképezése = val |
 
     Válasz törzse a létrehozott batch objektum.
 
-    | name | leírás | típus |
+    | név | leírás | típus |
     | --- | ---| --- |
     | ID | Munkamenet-azonosító | Int |
     | appId | A munkamenet alkalmazás-azonosítója | Sztring |
     | alkalmazásadatokat | Részletes alkalmazásadatok | Kulcs leképezése = val |
     | napló | Naplózási sorok | Karakterláncok listája |
-    | state |Köteg állapota | Sztring |
+    | állapot |Köteg állapota | Sztring |
 
     > [!NOTE]
     > A hozzárendelt Livy konfiguráció a kimenet ablaktáblán jelenik meg a parancsfájl elküldésekor.
@@ -438,7 +438,7 @@ Ha a feladatot egy HDInsight-fürtre küldi, a rendszer arra kéri, hogy kapcsol
   >
   >![Spark &-struktúra eszközei a Visual Studio Code Readerhez csatolt](./media/hdinsight-for-vscode/list-cluster-result1.png)
 
-## <a name="azure-data-lake-storage-gen2"></a>2\. generációs Azure Data Lake Storage
+## <a name="azure-data-lake-storage-gen2"></a>2. generációs Azure Data Lake Storage
 
 ### <a name="browse-a-data-lake-storage-gen2-account"></a>Data Lake Storage Gen2-fiók tallózása
 
@@ -473,6 +473,6 @@ A menüsávban válassza a parancs- **View**  >  **paletta**megtekintése elemet
 
 ![ismert problémák](./media/hdinsight-for-vscode/known-issue.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Spark & kaptár Visual Studio Code-hoz való használatát bemutató videó: [spark &-struktúra a Visual Studio Code](https://go.microsoft.com/fwlink/?linkid=858706)-hoz.

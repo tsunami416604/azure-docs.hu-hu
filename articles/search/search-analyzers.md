@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/20/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b1206d9e4d6eec7b2bf029310360f563849d61d6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 01b57526b15a806271d58b250f06a4372fe56b72
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91268300"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91532261"
 ---
 # <a name="analyzers-for-text-processing-in-azure-cognitive-search"></a>Az Azure Cognitive Searchban való szövegszerkesztés elemzői
 
@@ -317,7 +317,7 @@ Bármely, konfiguráció nélkül használt analizátor meg van adva egy mező d
 
 Ez a példa a Microsoft angol és francia elemzőit rendeli hozzá a Description (Leírás) mezőkhöz. Ez egy olyan kódrészlet, amely a [DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) minta Hotels.cs fájljában a Hotel osztály használatával jön létre.
 
-Hívja meg az [analizátort](/dotnet/api/microsoft.azure.search.models.analyzer?view=azure-dotnet), adja meg az Azure Cognitive Search által támogatott [AnalyzerName](/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet) -típust.
+Hívja meg az [analizátort](/dotnet/api/microsoft.azure.search.models.analyzer), adja meg az Azure Cognitive Search által támogatott [AnalyzerName](/dotnet/api/microsoft.azure.search.models.analyzername) -típust.
 
 ```csharp
     public partial class Hotel
@@ -343,7 +343,7 @@ Hívja meg az [analizátort](/dotnet/api/microsoft.azure.search.models.analyzer?
 
 Ha testreszabásra vagy konfigurálásra van szükség, hozzá kell adnia egy Analyzer-szerkezetet egy indexhez. A Definiálás után hozzáadhatja a mező definícióját az előző példában bemutatott módon.
 
-Hozzon létre egy [CustomAnalyzer](/dotnet/api/microsoft.azure.search.models.customanalyzer?view=azure-dotnet) objektumot. További Példákért lásd: [CustomAnalyzerTests.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Microsoft.Azure.Search/tests/Tests/CustomAnalyzerTests.cs).
+Hozzon létre egy [CustomAnalyzer](/dotnet/api/microsoft.azure.search.models.customanalyzer) objektumot. További Példákért lásd: [CustomAnalyzerTests.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Microsoft.Azure.Search/tests/Tests/CustomAnalyzerTests.cs).
 
 ```csharp
 {
@@ -365,7 +365,7 @@ Hozzon létre egy [CustomAnalyzer](/dotnet/api/microsoft.azure.search.models.cus
    serviceClient.Indexes.Create(definition);
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 + Tekintse át a [teljes szöveges keresés az Azure Cognitive Search-ban való működésének](search-lucene-query-architecture.md)részletes leírását. Ez a cikk példákat használ az olyan viselkedések magyarázatára, amelyek a felületen intuitív módon jelenhetnek meg.
 
@@ -375,7 +375,7 @@ Hozzon létre egy [CustomAnalyzer](/dotnet/api/microsoft.azure.search.models.cus
 
 + [Egyéni elemzők konfigurálása](index-add-custom-analyzers.md) az egyes mezők minimális feldolgozásához vagy speciális feldolgozásához.
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
  [Dokumentumok keresése – REST API](/rest/api/searchservice/search-documents) 
 

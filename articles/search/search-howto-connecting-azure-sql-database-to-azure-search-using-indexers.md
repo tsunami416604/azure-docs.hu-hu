@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
-ms.openlocfilehash: 631f5afbac4337cd0852f46ac4a336107f042397
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b1ad4ead83c9e07966f921a5b192f2791838e6ef
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331641"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530561"
 ---
 # <a name="connect-to-and-index-azure-sql-content-using-an-azure-cognitive-search-indexer"></a>Azure SQL-tartalomhoz való kapcsolódás és indexelés Azure Cognitive Search indexelő használatával
 
@@ -39,7 +39,7 @@ Egyetlen indexelő csak egyetlen táblát vagy nézetet használhat, de több in
 Beállíthatja és konfigurálhatja az Azure SQL indexelő a használatával:
 
 * Adatimportálás varázsló a [Azure Portal](https://portal.azure.com)
-* Azure Cognitive Search [.net SDK](/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
+* Azure Cognitive Search [.net SDK](/dotnet/api/microsoft.azure.search.models.indexer)
 * Azure Cognitive Search [REST API](/rest/api/searchservice/indexer-operations)
 
 Ebben a cikkben a REST API az **Indexelő** és az **adatforrások**létrehozásához használjuk.
@@ -333,7 +333,7 @@ A **softDeleteMarkerValue** karakterláncnak kell lennie – a tényleges érté
 ## <a name="configuration-settings"></a>Konfigurációs beállítások
 Az SQL indexelő számos konfigurációs beállítást tesz elérhetővé:
 
-| Beállítás | Adattípus | Rendeltetés | Alapértelmezett érték |
+| Beállítás | Adattípus | Szerep | Alapértelmezett érték |
 | --- | --- | --- | --- |
 | queryTimeout |sztring |Az SQL-lekérdezés végrehajtásának időtúllépését állítja be |5 perc ("00:05:00") |
 | disableOrderByHighWaterMarkColumn |logikai |Azt eredményezi, hogy a magas vízjelzési házirend által használt SQL-lekérdezés kihagyja a ORDER BY záradékot. Lásd: [magas vízjelek szabályzata](#HighWaterMarkPolicy) |hamis |

@@ -5,15 +5,15 @@ author: craigktreasure
 manager: vriveras
 services: azure-spatial-anchors
 ms.author: crtreasu
-ms.date: 08/17/2020
+ms.date: 09/29/2020
 ms.topic: how-to
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 57ead9636b7218ecfc7d72bb605b469d6a7d1ac6
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: da983719dc66656aa28cab4aea0bae558c2a7162
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89536355"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530416"
 ---
 # <a name="configuring-azure-spatial-anchors-in-a-unity-project"></a>Azure térbeli horgonyok konfigurálása Unity-projektben
 
@@ -57,7 +57,7 @@ Az Unity Azure térbeli Horgonyait jelenleg az Unity Package Manager (UPM) csoma
 1. Lépjen a **Edit**  >  **Project Settings**  >  **Player**szerkesztése menüpontra.
 2. A **Player-beállítások** **ellenőr paneljén** válassza az **Android** ikont.
 3. A **build (létrehozás** ) szakaszban jelölje be az **Egyéni Gradle-sablon** jelölőnégyzetet az egyéni Gradle-sablon létrehozásához a következő helyen: `Assets\Plugins\Android\mainTemplate.gradle` .
-4. Nyissa meg a `mainTemplate.gradle` fájlt egy szövegszerkesztőben. 
+4. Nyissa meg a `mainTemplate.gradle` fájlt egy szövegszerkesztőben.
 5. A `dependencies` szakaszban illessze be a következő függőségeket:
 
     ```gradle
@@ -72,14 +72,14 @@ Ha elkészült, a `dependencies` szakasznak a következőhöz hasonlóan kell ki
 ### <a name="import-the-asset-package"></a>[Az adategység importálása](#tab/UnityAssetPackage)
 
 > [!WARNING]
-> Az Azure térbeli horgonyok SDK Unity Asset csomagjának eloszlása elavulttá válik az SDK 2.5.0-es verziójának használata után.
+> Az Azure térbeli horgonyok SDK Unity Asset-csomagjának eloszlása elavult volt a 2.5.0-es verzióban, és már nem érhető el a 2.6.0-től.
 
-1. Töltse le a `AzureSpatialAnchors.unitypackage` [GitHub-kiadásokból](https://github.com/Azure/azure-spatial-anchors-samples/releases)célként használni kívánt verzióhoz tartozó fájlt. 
-2. Kövesse az [itt](https://docs.unity3d.com/Manual/AssetPackagesImport.html) található utasításokat az Unity Asset csomag projektbe történő importálásához.    
+1. Töltse le a `AzureSpatialAnchors.unitypackage` [GitHub-kiadásokból](https://github.com/Azure/azure-spatial-anchors-samples/releases)célként használni kívánt verzióhoz tartozó fájlt.
+2. Kövesse az [itt](https://docs.unity3d.com/Manual/AssetPackagesImport.html) található utasításokat az Unity Asset csomag projektbe történő importálásához.
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Útmutató: horgonyok létrehozása és megkeresése az egységben](./create-locate-anchors-unity.md)

@@ -14,12 +14,12 @@ ms.date: 01/07/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0a5a20498ccd0a133c6e02d366af690acf2665e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fe2f464791995b9168868f1661a3c303d46f7987
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84742266"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530119"
 ---
 # <a name="view-audit-history-for-azure-ad-roles-in-privileged-identity-management"></a>Azure AD-szerepkörök naplózási előzményeinek megtekintése Privileged Identity Management
 
@@ -32,7 +32,7 @@ A 2019-es verziótól kezdődően a Privileged Identity Management Azure AD-szer
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) egy olyan felhasználóval, aki tagja a [Kiemelt szerepkörű rendszergazda](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) szerepkörnek.
 1. Nyissa meg **Azure ad Privileged Identity Management**. Ha az Áttekintés oldal tetején található egy szalagcím, kövesse a jelen cikk **új verzió** lapján található utasításokat. Ellenkező esetben kövesse az **előző verzió** lapon megjelenő utasításokat.
 
-    [![Azure AD-szerepkörök új verziója](media/pim-how-to-use-audit-log/directory-roles-audit-history.png "Válassza ki a verzióhoz tartozó fület")](media/pim-how-to-use-audit-log/directory-roles-audit-history.png)
+    [![Az "Azure AD-szerepkörök – címtárbeli szerepkörök naplózási előzményei" lapot megjelenítő képernyőkép.](media/pim-how-to-use-audit-log/directory-roles-audit-history.png "Válassza ki a verzióhoz tartozó fület")](media/pim-how-to-use-audit-log/directory-roles-audit-history.png)
 
 # <a name="new-version"></a>[Új verzió](#tab/new)
 
@@ -88,7 +88,7 @@ Kövesse az alábbi lépéseket az Azure AD-szerepkörök naplózási előzmény
 
     A lap alján egy tábla jelenik meg, amely a rendelkezésre álló naplózási előzményekben szereplő egyes műveletekkel kapcsolatos információkat tartalmazza. Az oszlopok a következő jelentésekkel rendelkeznek:
 
-    | Oszlop | Description |
+    | Oszlop | Leírás |
     | --- | --- |
     | Idő | Ha a művelet bekövetkezett. |
     | Requestor (Kérelmező) | A szerepkör aktiválását vagy módosítását kérő felhasználó. Ha az érték az **Azure System**, további információért tekintse meg az Azure naplózási előzményeit. |
@@ -123,11 +123,11 @@ Kövesse az alábbi lépéseket az Azure AD-szerepkörök naplózási előzmény
     - Tekintse meg a naplózási esemény okát az **Állapot oka** oszlopban.
     - Tekintse meg a jóváhagyót a "tag hozzáadása a szerepkörhöz jóváhagyva" eseményhez a **kezdeményező (Actor)** oszlopban.
 
-    [![Azure AD-szerepkörök új verziója](media/pim-how-to-use-audit-log/filter-audit-logs.png "A PIM szolgáltatás naplójának szűrése")](media/pim-how-to-use-audit-log/filter-audit-logs.png)
+    [![A "naplók" nevű, "a kezdeményező (színész)" menü megnyitásával és a "PIM" beállítással megjelenített képernyőkép.](media/pim-how-to-use-audit-log/filter-audit-logs.png "A PIM szolgáltatás naplójának szűrése")](media/pim-how-to-use-audit-log/filter-audit-logs.png)
 
 1. Válassza ki a naplózási eseményt a **részletek** ablaktábla **tevékenység** lapján a jegy számának megtekintéséhez.
   
-    [![Azure AD-szerepkörök új verziója](media/pim-how-to-use-audit-log/audit-event-ticket-number.png "Ellenőrizze a naplózási esemény jegyének számát")](media/pim-how-to-use-audit-log/audit-event-ticket-number.png)
+    [![A "Részletek" panelen Kiemelt jegyek számát megjelenítő képernyőkép a "naplók" oldalon.](media/pim-how-to-use-audit-log/audit-event-ticket-number.png "Ellenőrizze a naplózási esemény jegyének számát")](media/pim-how-to-use-audit-log/audit-event-ticket-number.png)
 
 1. A naplózási esemény **részletek** ablaktáblájának **célok** lapján megtekintheti a kérelmezőt (a szerepkört aktiváló személyt). Az Azure AD-szerepkörökhöz két típusú cél létezik:
 

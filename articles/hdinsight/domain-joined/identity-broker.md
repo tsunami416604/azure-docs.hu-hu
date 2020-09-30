@@ -6,13 +6,13 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: how-to
-ms.date: 12/12/2019
-ms.openlocfilehash: 12d98406b21ed9a3ea27f9aa4abc0db6f536468d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/23/2020
+ms.openlocfilehash: 8f1e0a6aecc9702552a3dd66acc8dc7eb5bf1d85
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91251915"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91529931"
 ---
 # <a name="azure-hdinsight-id-broker-preview"></a>Azure HDInsight ID Broker (előzetes verzió)
 
@@ -30,11 +30,13 @@ A HIB olyan hitelesítési infrastruktúrát biztosít, amely lehetővé teszi a
 
 Az alábbi ábra a modern OAuth-alapú hitelesítési folyamatot mutatja az összes felhasználóra vonatkozóan, beleértve az összevont felhasználókat is, miután engedélyezte az azonosító-átvitelszervezőt:
 
-![Hitelesítési folyamat azonosítója-átvitelszervezővel](./media/identity-broker/identity-broker-architecture.png)
+:::image type="content" source="media/identity-broker/identity-broker-architecture.png" alt-text="Hitelesítési folyamat azonosítója-átvitelszervezővel":::
 
 Ebben a diagramban az ügyfélnek (azaz böngészőnek vagy alkalmazásnak) először be kell állítania az OAuth tokent, majd a tokent egy HTTP-kérelemben kell megadnia az átjárónak. Ha már bejelentkezett más Azure-szolgáltatásokba, például a Azure Portalba, bejelentkezhet az HDInsight-fürtbe egyszeri bejelentkezéses (SSO) felhasználói élményben.
 
 Még mindig sok olyan örökölt alkalmazás lehet, amely csak az alapszintű hitelesítést támogatja (például felhasználónév/jelszó). Ilyen esetekben továbbra is használhatja a HTTP alapszintű hitelesítést a fürt átjáróinak való kapcsolódáshoz. Ebben a telepítőben biztosítania kell, hogy a hálózati kapcsolat az átjáró-csomópontok között az összevonási végpont (ADFS-végpont) felé legyen biztosítva, így biztosítva az átjáró-csomópontok közvetlen vonalát.
+
+:::image type="content" source="media/identity-broker/basic-authentication.png" alt-text="Hitelesítési folyamat azonosítója-átvitelszervezővel":::
 
 A következő táblázat segítségével meghatározhatja a szervezete által igényelt legjobb hitelesítési lehetőséget:
 
@@ -129,7 +131,7 @@ Az OAuth token beszerzése után ezt a HTTP-kérelem engedélyezési fejlécébe
 curl -k -v -H "Authorization: Bearer Access_TOKEN" -H "Content-Type: application/json" -X POST -d '{ "file":"wasbs://mycontainer@mystorageaccount.blob.core.windows.net/data/SparkSimpleTest.jar", "className":"com.microsoft.spark.test.SimpleFile" }' "https://<clustername>-int.azurehdinsight.net/livy/batches" -H "X-Requested-By:<username@domain.com>"
 ``` 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [HDInsight-fürt konfigurálása Enterprise Security Package használatával Azure Active Directory Domain Services](apache-domain-joined-configure-using-azure-adds.md)
 * [Azure Active Directory-felhasználók HDInsight-fürttel való szinkronizálása](../hdinsight-sync-aad-users-to-cluster.md)

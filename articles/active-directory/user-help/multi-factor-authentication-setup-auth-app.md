@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: end-user-help
 ms.date: 08/12/2019
 ms.author: curtand
-ms.openlocfilehash: 953f74a18ae7874c8772cdc8179e5e5bdd1a86d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 10b6b788077eccda522c9e8c6e631939ca1819fc
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83738642"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530340"
 ---
 # <a name="set-up-an-authenticator-app-as-your-two-factor-verification-method"></a>Hitelesítő alkalmazás beállítása kétfaktoros ellenőrzési módszerként
 
@@ -33,7 +33,7 @@ Beállíthat egy hitelesítő alkalmazást, hogy értesítést küldjön a mobil
 
 2. Válassza az **értesítések fogadása az ellenőrzéshez** lehetőséget, **hogy a hogyan szeretné használni a mobileszköz-alkalmazást** , majd válassza a **beállítás**lehetőséget.
 
-    ![További biztonsági ellenőrzés lap a Mobile App és az értesítések lehetőséggel](media/multi-factor-authentication-verification-methods/multi-factor-authentication-auth-app-notification.png)
+    ![A "további biztonsági ellenőrzés" oldalt megjelenítő képernyőkép, amely a "Mobile App" és a "Receive Notifications for ellenőrzés" elemet mutatja.](media/multi-factor-authentication-verification-methods/multi-factor-authentication-auth-app-notification.png)
 
     Megjelenik a **Mobile App konfigurálása** oldal.
 
@@ -48,7 +48,7 @@ Beállíthat egy hitelesítő alkalmazást, hogy értesítést küldjön a mobil
 
 5. Térjen vissza a számítógéphez és a **további biztonsági ellenőrzés** lapra, győződjön meg arról, hogy a konfiguráció sikerességét jelző üzenet jelenik meg, majd kattintson a **tovább**gombra.
 
-    ![További biztonsági ellenőrzés oldal, sikeres üzenet](media/multi-factor-authentication-verification-methods/multi-factor-authentication-auth-app-notification-confirm.png)
+    ![A "további biztonsági ellenőrzés" oldalt megjelenítő képernyőkép a "Mobile App configured..." a sikeres üzenet kiemelve.](media/multi-factor-authentication-verification-methods/multi-factor-authentication-auth-app-notification-confirm.png)
 
     A hitelesítő alkalmazás tesztként küld értesítést a mobileszköz számára.
 
@@ -65,7 +65,7 @@ Beállíthat egy hitelesítő alkalmazást, hogy értesítést küldjön a mobil
     >[!Note]
     >További információ az alkalmazás jelszavának régebbi alkalmazásokkal való használatáról: [alkalmazások jelszavainak kezelése](multi-factor-authentication-end-user-app-passwords.md). Csak akkor kell használnia az alkalmazáshoz tartozó jelszavakat, ha továbbra is olyan régebbi alkalmazásokat használ, amelyek nem támogatják a kétfaktoros ellenőrzést.
 
-9. Válassza a **Done** (Kész) lehetőséget.
+9. Válassza a **Kész** lehetőséget.
 
 ## <a name="set-up-the-microsoft-authenticator-app-to-use-verification-codes"></a>Az Microsoft Authenticator alkalmazás beállítása az ellenőrző kódok használatára
 
@@ -107,7 +107,7 @@ Beállíthat egy hitelesítő alkalmazást, hogy értesítést küldjön a mobil
     >[!Note]
     >További információ az alkalmazás jelszavának régebbi alkalmazásokkal való használatáról: [alkalmazások jelszavainak kezelése](multi-factor-authentication-end-user-app-passwords.md). Csak akkor kell használnia az alkalmazáshoz tartozó jelszavakat, ha továbbra is olyan régebbi alkalmazásokat használ, amelyek nem támogatják a kétfaktoros ellenőrzést.
 
-9. Válassza a **Done** (Kész) lehetőséget.
+9. Válassza a **Kész** lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 

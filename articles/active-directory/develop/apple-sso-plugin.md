@@ -13,12 +13,12 @@ ms.date: 09/15/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: e43ce318ca9e9b14ad059dd296799667653e0f95
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: ec0ab4601e15129ecd8917e0e750a3e1661dc558
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90561346"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530697"
 ---
 # <a name="microsoft-enterprise-sso-plug-in-for-apple-devices-preview"></a>Microsoft Enterprise SSO beépülő modul Apple-eszközökhöz (előzetes verzió)
 
@@ -31,7 +31,7 @@ Az *Apple-eszközökhöz készült Microsoft Enterprise SSO beépülő modul* eg
 
 Ebben a nyilvános előzetes kiadásban a vállalati egyszeri bejelentkezési beépülő modul csak iOS-eszközökön érhető el, és bizonyos Microsoft-alkalmazásokban van elterjesztve.
 
-## <a name="features"></a>Szolgáltatások
+## <a name="features"></a>Funkciók
 
 Az Apple-eszközökhöz készült Microsoft Enterprise SSO beépülő modul a következő előnyöket kínálja:
 
@@ -93,7 +93,7 @@ Ehhez a listához nem kell hozzáadnia MSAL vagy ASWebAuthenticationSession-t ha
 
 Alapértelmezés szerint a Microsoft vállalati egyszeri bejelentkezés beépülő modulja csak akkor biztosít egyszeri bejelentkezést az engedélyezve lévő alkalmazásokhoz, ha az egyszeri bejelentkezési beépülő modul már rendelkezik megosztott hitelesítő adatokkal. A Microsoft Enterprise SSO beépülő modulja megosztott hitelesítő adatokat tud beszerezni, ha egy másik ADAL vagy MSAL-alapú alkalmazás hívja meg a token beszerzése során. A legtöbb Microsoft-alkalmazás Microsoft Authenticator vagy SSO beépülő modult használ. Ez azt jelenti, hogy a natív alkalmazások folyamatain kívüli alapértelmezett egyszeri bejelentkezés a legjobb megoldás.  
 
-`browser_sso_interaction_enabled`A Flag engedélyezése lehetővé teszi a nem MSAL alkalmazások és a Safari böngésző számára a kezdeti indítást és a megosztott hitelesítő adatok beszerzését. Ha a Microsoft vállalati egyszeri bejelentkezés beépülő modulja még nem rendelkezik megosztott hitelesítő adatokkal, akkor a rendszer megkísérli a bejelentkezést, amikor egy Azure AD-URL-címen, a Safari böngészőben, a ASWebAuthenticationSession, a SafariViewController-ban vagy más, engedélyezett natív alkalmazásból kér be egy bejelentkezési adatot.  
+`browser_sso_interaction_enabled`A Flag engedélyezése lehetővé teszi a nem MSAL alkalmazások és a Safari böngésző számára a kezdeti indítást és a megosztott hitelesítő adatok beszerzését. Ha a Microsoft vállalati egyszeri bejelentkezés beépülő modulja még nem rendelkezik megosztott hitelesítő adatokkal, akkor a rendszer megkísérli a bejelentkezést, amikor egy Azure AD-URL-címről kéri a Safari böngészőben, a ASWebAuthenticationSession-ban, a SafariViewController-ban vagy más engedélyezett natív alkalmazásban.  
 
 - **Kulcs**: `browser_sso_interaction_enabled`
 - **Írja be a következőt**: `Integer`
