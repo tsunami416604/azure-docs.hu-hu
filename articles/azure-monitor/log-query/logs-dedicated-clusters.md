@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: 4ad3aa7169fcf7eeda6e56a2eab6669b8783d77d
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: 714a43ec197ac150488d4443c1eb6fe1be1da232
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91461461"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575520"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor a dedikált fürtöket naplózza
 
@@ -19,7 +19,7 @@ Azure Monitor a dedikált fürtök a nagy mennyiségű ügyfelek jobb kiszolgál
 
 A nagy mennyiségű támogatáson kívül más előnyökkel is jár a dedikált fürtök használata:
 
-- **Díjszabási korlát** – az ügyfelek magasabb betöltési arányra vonatkozó korlátját csak dedikált fürtön lehet megszabni.
+- **Díjszabási korlát** – az ügyfelek magasabb betöltési [arányra vonatkozó korlátját](../service-limits.md#data-ingestion-volume-rate) csak dedikált fürtön lehet megszabni.
 - **Szolgáltatások** – bizonyos vállalati funkciók csak dedikált fürtökön érhetők el – különösen az ügyfél által felügyelt kulcsokra (CMK) és a kulcstároló-támogatásra. 
 - **Konzisztencia** – az ügyfelek saját dedikált erőforrásaikkal rendelkeznek, így az ugyanazon a megosztott infrastruktúrán futó többi ügyféltől sincs befolyása.
 - **Költséghatékonyság** – a dedikált fürt használata költséghatékonyabb lehet, mivel a hozzárendelt kapacitás foglalási szintjei figyelembe veszik az összes fürt betöltését, és az összes munkaterületére érvényesek, még akkor is, ha ezek némelyike kicsi, és nem jogosult a kapacitás foglalási kedvezményére.
@@ -38,14 +38,23 @@ A fürt létrehozása után konfigurálható és hozzárendelhető munkaterület
 
 A fürt szintjén lévő összes művelethez a `Microsoft.OperationalInsights/clusters/write` művelet engedély szükséges a fürtön. Ez az engedély a műveletet tartalmazó tulajdonos vagy közreműködő vagy `*/write` a műveletet tartalmazó log Analytics közreműködő szerepkör használatával adható meg `Microsoft.OperationalInsights/*` . Log Analytics engedélyekkel kapcsolatos további információkért lásd: [hozzáférés kezelése a naplózási adatokhoz és munkaterületekhez Azure monitor](../platform/manage-access.md). 
 
-## <a name="billing"></a>Számlázás
 
-A dedikált fürtök csak olyan munkaterületek esetében támogatottak, amelyek GB-os csomagokat használnak a kapacitás foglalási szintjeivel vagy anélkül. A dedikált fürtök esetében nem számítunk fel további díjat azon ügyfelek számára, akik az adott fürtnél több mint 1 TB-ot töltenek be. "Véglegesítés a betöltéshez" kifejezés azt jelenti, hogy a fürt szintjén legalább 1 TB/nap kapacitás-foglalási szintet rendeltek hozzá. Amíg a kapacitás foglalása a fürt szintjén van csatolva, az adatok tényleges kitöltésére két lehetőség áll rendelkezésre:
+## <a name="cluster-pricing-model"></a>Fürt díjszabási modellje
 
-- *Fürt* (alapértelmezett) – a fürt kapacitásának foglalási költségei a *fürterőforrás* számára vannak hozzárendelve.
-- *Munkaterületek* – a fürt kapacitásának foglalási költségei arányosak a fürt munkaterületeivel. Ha a nap teljes betöltött adata a kapacitás foglalása alatt van, akkor a *fürterőforrás* számlázása valamilyen használattal történik. A fürt árképzési modelljével kapcsolatos további tudnivalókért tekintse meg [log Analytics dedikált fürtök](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters) című témakört.
+Log Analytics dedikált fürtök kapacitás-foglalási díjszabási modellt használnak, amely legalább 1000 GB/nap. A foglalási szint feletti használati díjakat az utólagos elszámolású díjszabás szerint számítjuk fel.  A kapacitás foglalásának díjszabási információi a [Azure monitor díjszabási oldalon]( https://azure.microsoft.com/pricing/details/monitor/)érhetők el.  
 
-A dedikált fürtök számlázásával kapcsolatos további információkért lásd: [log Analytics dedikált fürt számlázása](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters).
+A fürt kapacitásának foglalási szintje programozott módon van konfigurálva a Azure Resource Manager használatával a (z `Capacity` ) paraméterrel `Sku` . A a `Capacity` GB egységben van megadva, és 1000 GB/nap vagy több értékkel rendelkezhet a 100 GB/nap növekményekben.
+
+A fürtön két számlázási mód van használatban. Ezeket a paraméter megadhatja a `billingType` fürt konfigurálásakor. 
+
+1. **Fürt**: ebben az esetben (ez az alapértelmezett beállítás) a betöltött adatmennyiség számlázása a fürt szintjén történik. A rendszer összesíti a fürthöz társított egyes munkaterületekről betöltött adatmennyiségeket a fürt napi számlájának kiszámításához. 
+
+2. **Munkaterületek**: a fürt kapacitás-foglalási költségei arányosak a fürtben lévő munkaterületekhez (az egyes munkaterületek esetében a [Azure Security Center](https://docs.microsoft.com/azure/security-center/) az egyes munkaterületek esetében a csomópontok közötti foglalások elszámolása után).
+
+Vegye figyelembe, hogy ha a munkaterület csomópont-díjszabási szinten használ örökölt, akkor a fürthöz való csatlakozáskor a rendszer a fürt kapacitásának lefoglalása során betöltött adatmennyiség alapján számlázza a díjat, és a csomópontok után már nem. A Azure Security Center-ból származó csomópont-adatfoglalások továbbra is érvényben lesznek.
+
+További részletek: Log Analytics dedikált fürtök számlázása [itt]( https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-dedicated-clusters)érhető el.
+
 
 ## <a name="creating-a-cluster"></a>Fürt létrehozása
 
@@ -155,8 +164,8 @@ Miután létrehozta a *fürterőforrás* -erőforrást, és teljes mértékben k
 
 - **keyVaultProperties**: a [Azure monitor ügyfél által felügyelt kulcs](../platform/customer-managed-keys.md#cmk-provisioning-procedure)kiépítéséhez használt Azure Key Vault konfigurálására szolgál. A következő paramétereket tartalmazza:  *KeyVaultUri*, *Kulcsnév*, *Version*. 
 - **billingType** – a *billingType* tulajdonság határozza meg a *fürterőforrás* és a hozzá tartozó adatforrások számlázási hozzárendelését:
-- **Fürt** (alapértelmezett) – a fürt kapacitásának foglalási költségei a *fürterőforrás* számára vannak hozzárendelve.
-- **Munkaterületek** – a fürt kapacitásának foglalási költségei arányosak a fürtben lévő munkaterületekhez, és a *fürt* erőforrása egy bizonyos használatot számláz ki, ha a napi teljes betöltött adat a kapacitás foglalása alatt van. A fürt árképzési modelljével kapcsolatos további tudnivalókért tekintse meg [log Analytics dedikált fürtök](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters) című témakört. 
+  - **Fürt** (alapértelmezett) – a fürt kapacitásának foglalási költségei a *fürterőforrás* számára vannak hozzárendelve.
+  - **Munkaterületek** – a fürt kapacitásának foglalási költségei arányosak a fürtben lévő munkaterületekhez, és a *fürt* erőforrása egy bizonyos használatot számláz ki, ha a napi teljes betöltött adat a kapacitás foglalása alatt van. A fürt árképzési modelljével kapcsolatos további tudnivalókért tekintse meg [log Analytics dedikált fürtök](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters) című témakört. 
 
 > [!NOTE]
 > A *billingType* tulajdonság nem támogatott a PowerShellben.
@@ -173,7 +182,7 @@ Update-AzOperationalInsightsCluster -ResourceGroupName {resource-group-name} -Cl
 > [!NOTE]
 > A *fürt* erőforrás- *SKU*-t, a *KeyVaultProperties* -t vagy a *billingType* -t a patch használatával frissítheti.
 
-Példa: 
+Például: 
 
 *Call*
 
@@ -185,7 +194,7 @@ Content-type: application/json
 {
    "sku": {
      "name": "capacityReservation",
-     "capacity": 1000
+     "capacity": <capacity-reservation-amount-in-GB>
      },
    "properties": {
     "billingType": "cluster",
@@ -265,8 +274,6 @@ A munkaterületek összekapcsolását csak a Log Analytics-fürt kiépítéséne
 > [!WARNING]
 > A munkaterület fürthöz való csatolásához több háttér-összetevő szinkronizálására és a gyorsítótár hidratációjának biztosítására van szükség. A művelet végrehajtása akár két órát is igénybe vehet. Javasoljuk, hogy aszinkron módon futtassa.
 
-
-### <a name="link-operations"></a>Kapcsolódási műveletek
 
 **PowerShell**
 
@@ -366,7 +373,36 @@ A munkaterületet leválaszthatja egy fürtről. A munkaterület fürtből való
 
 ## <a name="delete-a-dedicated-cluster"></a>Dedikált fürt törlése
 
-A dedikált fürterőforrás törölhető. A törlés előtt le kell szüntetnie a fürt összes munkaterületének összekapcsolását. A fürt erőforrásának törlése után a fizikai fürt kiürítési és törlési folyamatba kerül. A fürt törlése törli a fürtön tárolt összes adatmennyiséget. Az adatok olyan munkaterületekről származnak, amelyek korábban a fürthöz voltak társítva.
+A dedikált fürterőforrás törölhető. A törlés előtt le kell szüntetnie a fürt összes munkaterületének összekapcsolását. A művelet elvégzéséhez írási engedéllyel kell rendelkeznie a *fürt* erőforrásához. 
+
+A fürt erőforrásának törlése után a fizikai fürt kiürítési és törlési folyamatba kerül. A fürt törlése törli a fürtön tárolt összes adatmennyiséget. Az adatok olyan munkaterületekről származnak, amelyek korábban a fürthöz voltak társítva.
+
+Az elmúlt 14 napban törölt *fürterőforrás* törlési állapotban van, és visszaállítható az adott adattal. Mivel az összes munkaterület *a fürterőforrás* törlésével van társítva a *fürterőforrás* törlésekor, újra társítania kell a munkaterületeket a helyreállítás után. A felhasználó nem tudja elvégezni a helyreállítási műveletet, forduljon a Microsoft-csatornához, vagy támogassa a helyreállítási kérelmeket.
+
+A törlést követő 14 napon belül a fürterőforrás neve le van foglalva, és más erőforrások nem használhatják.
+
+**PowerShell**
+
+Fürt törléséhez használja a következő PowerShell-parancsot:
+
+  ```powershell
+  Remove-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name"
+  ```
+
+**REST**
+
+Fürt törléséhez használja a következő REST-hívást:
+
+  ```rst
+  DELETE https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
+  Authorization: Bearer <token>
+  ```
+
+  **Válasz**
+
+  200 OK
+
+
 
 ## <a name="next-steps"></a>További lépések
 

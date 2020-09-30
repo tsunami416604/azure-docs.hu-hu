@@ -5,14 +5,14 @@ ms.service: iot-central
 services: iot-central
 author: sarahhubbard
 ms.author: sahubbar
-ms.date: 09/10/2020
+ms.date: 09/30/2020
 ms.topic: how-to
-ms.openlocfilehash: ae8b830469a9b52ae68310dde2e65dcffdf4e3be
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.openlocfilehash: 5b8aba74cb0914cf26382e0d17a8ce2ba6bd4063
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90060815"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91573960"
 ---
 # <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>Feladatok létrehozása és futtatása az Azure IoT Central alkalmazásban
 
@@ -32,21 +32,29 @@ Az alábbi példa bemutatja, hogyan hozhat létre és futtathat egy feladatot eg
 
 1. A **Feladattípusként**válassza a **Cloud Property**, a **Property**vagy a **parancsot** :
 
-    A **Tulajdonságok** konfigurációjának beállításához válasszon ki egy tulajdonságot, és állítsa be az új értékét. A **parancs** -feladatok konfigurációjának beállításához válassza ki a futtatandó parancsot. A tulajdonság-feladatok több tulajdonságot is beállíthat.
+    Egy **tulajdonság** konfigurálásához válasszon ki egy tulajdonságot, és állítsa be az új értékét. A **parancssori** feladatok konfigurálásához válassza ki a futtatandó parancsot. A tulajdonság-feladatok több tulajdonságot is beállíthat.
 
     :::image type="content" source="media/howto-run-a-job/configure-job.png" alt-text="Képernyőkép, amely a set Light küszöbérték nevű tulajdonság-feladatok létrehozására szolgáló beállításokat jeleníti meg":::
 
     Válassza a **Mentés és kilépés** lehetőséget a feladat a **feladatok** lapon lévő mentett feladatok listájához való hozzáadásához. Később visszatérhet egy feladathoz a mentett feladatok listájából.
 
+    Kattintson a **tovább** gombra a **kézbesítési beállítások** lapra való áttéréshez. A **kézbesítési beállítások** lapon megadhatja a feladatok kézbesítési beállításait: **kötegek** és **lemondási küszöbérték**.
+
+    A kötegek lehetővé teszik a nagy mennyiségű eszközre vonatkozó feladatok lépcsőzetes kiosztását. A feladatoknak több kötegbe vannak osztva, és mindegyik köteg az eszközök egy részhalmazát tartalmazza. A kötegek várólistára kerülnek, és sorban futnak.
+
+    A lemondási küszöbérték lehetővé teszi, hogy automatikusan visszavonjon egy feladatot, ha a hibák száma meghaladja a beállított korlátot. A küszöbérték a feladatokban szereplő összes eszközre, illetve az egyes kötegekre is alkalmazható.
+
+    :::image type="content" source="media/howto-run-a-job/job-wizard-delivery-options.png" alt-text="Képernyőkép, amely a set Light küszöbérték nevű tulajdonság-feladatok létrehozására szolgáló beállításokat jeleníti meg":::
+
     Kattintson a **tovább** gombra a **felülvizsgálati** lapra való áttéréshez. A **felülvizsgálati** oldal a feladatok konfigurációjának részleteit jeleníti meg. Válassza a **Futtatás** lehetőséget a feladatok elküldéséhez.
 
-    :::image type="content" source="media/howto-run-a-job/job-wizard-review.png" alt-text="A feladatok varázsló Áttekintés lapjának képernyőképe":::
+    :::image type="content" source="media/howto-run-a-job/job-wizard-review.png" alt-text="Képernyőkép, amely a set Light küszöbérték nevű tulajdonság-feladatok létrehozására szolgáló beállításokat jeleníti meg":::
 
 1. A feladatok *függő*, *futó*és *befejezett* fázisokon haladnak át. A feladatok végrehajtásának részletei az eredmény mérőszámait, az időtartam részleteit és az eszközök listájának rácsát tartalmazzák.
 
     Ha a feladatok befejeződik, kiválaszthatja az **eredmények naplót** a feladatok részleteit tartalmazó CSV-fájl letöltéséhez, beleértve az eszközöket és az állapotukat is. Ez az információ hasznos lehet a hibaelhárításhoz.
 
-    :::image type="content" source="media/howto-run-a-job/download-details.png" alt-text="Az eszköz állapotát megjelenítő képernyőkép":::
+    :::image type="content" source="media/howto-run-a-job/download-details.png" alt-text="Képernyőkép, amely a set Light küszöbérték nevű tulajdonság-feladatok létrehozására szolgáló beállításokat jeleníti meg":::
 
 1. A feladat most a **feladatok** lap **utolsó 30 nap** listájában jelenik meg. Ez a lap a jelenleg futó feladatokat és a korábban futtatott vagy mentett feladatok előzményeit jeleníti meg.
 
@@ -57,17 +65,17 @@ Az alábbi példa bemutatja, hogyan hozhat létre és futtathat egy feladatot eg
 
 Futó feladatok leállításához nyissa meg, majd válassza a **Leállítás**lehetőséget. A feladatok állapota azt jelzi, hogy a feladatot leállították. Az **Összefoglalás** szakaszban látható, hogy mely eszközök lettek végrehajtva, sikertelenek, vagy még függőben vannak.
 
-:::image type="content" source="media/howto-run-a-job/manage-job.png" alt-text="Egy futó feladatot és a feladatok leállítására szolgáló gombot megjelenítő képernyőkép":::
+:::image type="content" source="media/howto-run-a-job/manage-job.png" alt-text="Képernyőkép, amely a set Light küszöbérték nevű tulajdonság-feladatok létrehozására szolgáló beállításokat jeleníti meg":::
 
 Ha egy feladattípus leállított állapotban van, a **Folytatás** gombra kattintva folytathatja a feladatok futtatását. A feladatok állapota úgy változik, hogy a feladatainak futása újra megtörténjen. Az **Összefoglalás** szakasz a legújabb folyamattal folytatja a frissítést.
 
-:::image type="content" source="media/howto-run-a-job/stopped-job.png" alt-text="A leállított feladatot megjelenítő képernyőkép és a feladatok folytatására szolgáló gomb":::
+:::image type="content" source="media/howto-run-a-job/stopped-job.png" alt-text="Képernyőkép, amely a set Light küszöbérték nevű tulajdonság-feladatok létrehozására szolgáló beállításokat jeleníti meg":::
 
 ## <a name="copy-a-job"></a>Feladatok másolása
 
 Meglévő feladatok másolásához válasszon ki egy végrehajtott feladatot. Válassza a **Másolás** elemet a feladat eredményei oldalon vagy a feladatok részletei lapon:
 
-:::image type="content" source="media/howto-run-a-job/job-details-copy.png" alt-text="A másolás gombot megjelenítő képernyőkép":::
+:::image type="content" source="media/howto-run-a-job/job-details-copy.png" alt-text="Képernyőkép, amely a set Light küszöbérték nevű tulajdonság-feladatok létrehozására szolgáló beállításokat jeleníti meg":::
 
 Ekkor megnyílik a feladatok konfigurációjának egy másolata, amelyet **a rendszer a** feladatok nevéhez hozzáfűz.
 
@@ -82,6 +90,7 @@ A feladatok létrehozása után az **állapot** oszlop a legutóbbi feladatok á
 | Függőben              | Ez a feladatok még nem kezdődött meg az eszközökön.         |
 | Futó              | Ez a feladatok jelenleg az eszközökön futnak.             |
 | Leállítva              | Egy felhasználó manuálisan leállította ezt a feladatot.           |
+| Megszakítva             | A feladat meg lett szakítva, mert túllépte a **kézbesítési beállítások** lapon beállított küszöbértéket. |
 
 Az állapotjelző üzenetet a feladatokban található eszközök áttekintése követi. A következő táblázat felsorolja a lehetséges *Eszközállapot* -értékeket:
 
@@ -104,13 +113,13 @@ Ha le szeretne tölteni egy CSV-fájlt, amely tartalmazza a feladatok részletei
 
 A szűrő ikonra kattintva szűrheti az eszközök listáját a **feladatok részletei** oldalon. Az **eszköz azonosítóját** vagy **állapotát** az alábbiak szerint szűrheti:
 
-:::image type="content" source="media/howto-run-a-job/filter.png" alt-text="Az eszközök listájának szűrésére szolgáló beállításokat megjelenítő képernyőkép.":::
+:::image type="content" source="media/howto-run-a-job/filter.png" alt-text="Képernyőkép, amely a set Light küszöbérték nevű tulajdonság-feladatok létrehozására szolgáló beállításokat jeleníti meg":::
 
 ## <a name="customize-columns-in-the-device-list"></a>Oszlopok testreszabása az eszközök listájában
 
 Oszlopokat adhat hozzá az eszközök listájához az oszlop beállításai ikon kiválasztásával:
 
-:::image type="content" source="media/howto-run-a-job/column-options.png" alt-text="Az oszlop beállításainak ikonját megjelenítő képernyőkép":::
+:::image type="content" source="media/howto-run-a-job/column-options.png" alt-text="Képernyőkép, amely a set Light küszöbérték nevű tulajdonság-feladatok létrehozására szolgáló beállításokat jeleníti meg":::
 
 Az **oszlop beállításai** párbeszédpanel segítségével kiválaszthatja az eszközök listájának oszlopait. Jelölje ki a megjeleníteni kívánt oszlopokat, válassza ki a jobbra mutató nyilat, majd kattintson az **OK gombra**. Az összes elérhető oszlop kiválasztásához válassza az **összes kijelölése**lehetőséget. A kijelölt oszlopok megjelennek az eszközök listájában.
 
@@ -120,7 +129,7 @@ A kijelölt oszlopok megmaradnak egy felhasználói munkamenetben vagy az alkalm
 
 Újrafuttathat egy hibás eszközöket tartalmazó feladatot. Válassza **az újrafuttatás sikertelen**:
 
-:::image type="content" source="media/howto-run-a-job/rerun.png" alt-text="Képernyőfelvétel: a feladatoknak a hibás eszközökön való újbóli futtatására szolgáló gomb.":::
+:::image type="content" source="media/howto-run-a-job/rerun.png" alt-text="Képernyőkép, amely a set Light küszöbérték nevű tulajdonság-feladatok létrehozására szolgáló beállításokat jeleníti meg":::
 
 Adja meg a feladatok nevét és leírását, majd válassza a **feladatok újrafuttatása**lehetőséget. A rendszer elküld egy új feladatot, hogy megismételje a műveletet a meghiúsult eszközökön.
 
@@ -129,7 +138,7 @@ Adja meg a feladatok nevét és leírását, majd válassza a **feladatok újraf
 >
 > Ha a feladatok befejeződik, és törli a feladathoz tartozó eszközök listáján szereplő eszközt, az eszköz neve törölve lesz az eszköz nevében. A részletek hivatkozás nem érhető el a törölt eszközhöz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megismerte, hogyan hozhat létre feladatokat az Azure IoT Central alkalmazásban, néhány további lépés:
 

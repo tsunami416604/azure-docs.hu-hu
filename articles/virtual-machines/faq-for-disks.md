@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: b8ee222b7d65fe9b6b9a605bf055e127aef58ff9
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: e375ce88b8e5bd96e19dc4f5da2143c3f9de53a9
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91439300"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575860"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Gyakori kérdések az Azure IaaS virtuálisgép-lemezekről, valamint a felügyelt és nem felügyelt prémium szintű lemezekről
 
@@ -396,13 +396,19 @@ Nem, csak a prémium szintű SSD által felügyelt lemezeken támogatott.
 
 Nem, a standard SSD által felügyelt lemezek bármilyen méretűek, nem használhatók nem felügyelt lemezekkel vagy Blobokkal.
 
-**Mi a legnagyobb felügyelt lemez mérete az operációs rendszer és az adatlemezek esetében?**
+**Mi a legnagyobb felügyelt lemez mérete a Gen1 virtuális gépeken futó operációs rendszerek és adatlemezek esetében?**
 
-Az Azure által az operációsrendszer-lemezre támogatott partíció típusa a fő rendszertöltő rekord (MBR) és a GUID partíciós tábla (GPT) az 1. és a 2. generációs virtuális gépekhez. Az MBR formátuma legfeljebb 2 TiB méretű lemez használatát támogatja. Az 1. generációs virtuális gépek esetében akár 4 TiB lefoglalására is lehetőség van, de legfeljebb 2 TiB-t használhat az operációs rendszer számára. A 2. generációs virtuális gépek esetében az operációsrendszer-lemezek számára kiosztható és használható legnagyobb méret 4 TiB. Az Azure a felügyelt adatlemezek esetében akár 32 TiB-t is támogat.
+Az Azure által a Gen1 operációsrendszer-lemezekhez támogatott partíciótípus a fő rendszertöltő rekord (MBR). Bár a Gen1 operációsrendszer-lemezek csak az MBR-t támogatják, az adatlemezek támogatják a GPT-t. Míg akár 4 TiB operációsrendszer-lemez is kiosztható, az MBR-partíció típusa legfeljebb 2 TiB-t használhat az operációs rendszer számára ezen a lemezterületen. Az Azure a felügyelt adatlemezek esetében akár 32 TiB-t is támogat.
+
+**Mi a legnagyobb felügyelt lemez mérete a Gen2 virtuális gépeken futó operációs rendszerek és adatlemezek esetében?**
+
+Az Azure által az Gen2 operációs rendszer lemezei által támogatott partíció típusa GUID partíciós tábla (GPT). A Gen2 virtuális gépek legfeljebb 4 TiB operációsrendszer-lemezt támogatnak. Az Azure a felügyelt adatlemezek esetében akár 32 TiB-t is támogat.
+
 
 **Mi az operációs rendszer és az adatlemezek esetében támogatott legnagyobb, nem felügyelt lemez mérete?**
 
-Az Azure által az operációsrendszer-lemezre támogatott partíció típusa a fő rendszertöltő rekord (MBR). Az MBR formátuma legfeljebb 2 TiB méretű lemez használatát támogatja. Az Azure által az operációs rendszer nem felügyelt lemezéhez támogatott legnagyobb méret 4 TiB. Az Azure legfeljebb 4 TiB-t támogat a nem felügyelt lemezekhez.
+A nem felügyelt lemezeket használó operációsrendszer-lemezeken az Azure által támogatott partíció típusa a fő rendszertöltő rekord (MBR).  Míg akár 4 TiB operációsrendszer-lemez is kiosztható, az MBR-partíció típusa legfeljebb 2 TiB-t használhat az operációs rendszer számára ezen a lemezterületen. Az Azure legfeljebb 4 TiB-t támogat a nem felügyelt adatlemezekhez.
+
 
 **Mi az a legnagyobb oldal blob-méret, amelyet támogat?**
 

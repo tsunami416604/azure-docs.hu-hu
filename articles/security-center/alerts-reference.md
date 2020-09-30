@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2020
 ms.author: memildin
-ms.openlocfilehash: e1cf6cb839d610fbf6e6188d257b2588d01f4df9
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 0e02a13db441bd4934bd84f66111924a77d0154f
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91448450"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575316"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Biztonsági riasztások – útmutató
 
@@ -391,11 +391,30 @@ A lap alján található egy táblázat, amely leírja a riasztások szándéká
 
 [További részletek és megjegyzések](other-threat-protections.md#azure-ddos)
 
-| Riasztás                                   | Leírás                                                          | Szándék (további[információ](#intentions)) | Súlyosság |
+| Riasztás                                   | Leírás                                                          | Szándék<br>([További információ](#intentions)) | Súlyosság |
 |-----------------------------------------|----------------------------------------------------------------------|:----------------------------------:|----------|
 | **DDoS-támadás észlelhető a nyilvános IP-címekhez**  | DDoS-támadás észlelhető a nyilvános IP-címhez (IP-cím) és az enyhítéshez. | Ellenőrzés                            | Magas     |
 | **A DDoS elleni támadás a nyilvános IP-címekre csökkent.** | DDoS-támadás kihasználva a nyilvános IP-címekhez (IP-cím).                    | Ellenőrzés                            | Alacsony      |
 |                                         |                                                                      |                                    |          |
+
+
+
+
+
+## <a name="security-incident-alerts"></a><a name="alerts-fusion"></a>Biztonsági incidensek riasztásai
+
+[További részletek és megjegyzések](security-center-alerts-cloud-smart.md)
+
+
+| Riasztás                                   | Leírás                                                          | Szándék<br>([További információ](#intentions)) | Súlyosság |
+|-----------------------------------------|----------------------------------------------------------------------|:----------------------------------:|----------|
+|**Megosztott folyamattal rendelkező biztonsági incidens észlelve**|A (z) {Time (UTC)} időpontban megkezdett és a legutóbbi {észlelési idő (UTC)} során észlelt incidens azt jelzi, hogy egy támadó {művelete} a (z) {Host} erőforrásban.|-|Magas|
+|**Több erőforráson észlelt biztonsági incidens**|A (z) {Time (UTC)} időpontban megkezdett és a legutóbbi {észlelési idő (UTC)} során észlelt incidens azt jelzi, hogy hasonló támadási módszerek történtek a (z) {Host} Felhőbeli erőforrásain.|-|Közepes|
+|**Azonos forrásból származó biztonsági incidens észlelve**|A (z) {Time (UTC)} időpontban megkezdett és a legutóbbi {észlelési idő (UTC)} során észlelt incidens azt jelzi, hogy egy támadó {művelete} a (z) {Host} erőforrásban.|-|Magas|
+|**Több gépen észlelt biztonsági incidens**|A (z) {Time (UTC)} időpontban megkezdett és a legutóbbi {észlelési idő (UTC)} során észlelt incidens azt jelzi, hogy egy támadó {művelete} erőforrást {Host}|-|Közepes|
+
+
+
 
 ## <a name="intentions"></a>Szándékok
 
@@ -423,7 +442,7 @@ A Security Center támogatott kill Chain-leképezések a következő táblázatb
 |                         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |  |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A riasztásokkal kapcsolatos további tudnivalókért tekintse meg a következőket:
 
 - [Biztonsági riasztások az Azure Security Centerben](security-center-alerts-overview.md)

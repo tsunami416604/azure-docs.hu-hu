@@ -3,12 +3,12 @@ title: Azure VMware-megoldás virtuális gépek életciklus-kezelése
 description: Ismerje meg, hogyan kezelheti az Azure VMware megoldás virtuális gépei életciklusának minden aspektusát Microsoft Azure natív eszközökkel.
 ms.topic: conceptual
 ms.date: 09/11/2020
-ms.openlocfilehash: 20948ec088d11468b5750ca89979050965246b58
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 10e721996b2e3186417a702d2d7473b36b11237f
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89664229"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575476"
 ---
 # <a name="lifecycle-management-of-azure-vmware-solution-vms"></a>Azure VMware-megoldás virtuális gépek életciklus-kezelése
 
@@ -38,7 +38,7 @@ Microsoft Azure natív eszközök lehetővé teszik a virtuális gépek (VM-EK) 
 
 Az alábbi ábrán az Azure VMware-megoldás virtuális gépei integrált figyelési architektúrája látható.
 
-![Integrált Azure monitorozási architektúra](media/lifecycle-mgmt-avs-vms/integrated-azure-monitoring-architecture.png)
+![Integrált Azure monitorozási architektúra](media/lifecycle-management-azure-vmware-solutions-virtual-machines/integrated-azure-monitoring-architecture.png)
 
 ## <a name="integrating-and-deploying-azure-native-services"></a>Az Azure Native Services integrálása és üzembe helyezése
 

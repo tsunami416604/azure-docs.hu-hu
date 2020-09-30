@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: alkohli
-ms.openlocfilehash: c2d971c2c9375f58fd5f41a46716fac4bff29f88
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 3181b88b0cf49516eb5230585460d0cc91bb4042
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90604308"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575299"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Oktatóanyag: Az Azure Data Box megrendelése
 
@@ -215,11 +215,11 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket a Azure Por
 1. Microsoft Azure hitelesítő adatai használatával jelentkezzen be ezen az URL-címen: [https://portal.azure.com](https://portal.azure.com).
 2. Válassza az **+ Erőforrás létrehozása** lehetőséget, és keressen rá az *Azure Data Box* kifejezésre. Válassza az **Azure Data Box** lehetőséget.
 
-   ![Azure Data Box kiválasztása](media/data-box-deploy-ordered/select-data-box-import-02.png)
+   ![Képernyőkép az új szakaszról Azure Data Box a keresőmezőbe.](media/data-box-deploy-ordered/select-data-box-import-02.png)
 
 3. Kattintson a **Létrehozás** gombra.
 
-   ![Azure Data Box kiválasztása](media/data-box-deploy-ordered/select-data-box-import-03.png)
+   ![Képernyőkép az Azure Data Box szakaszról, a Create (létrehozás) lehetőséggel.](media/data-box-deploy-ordered/select-data-box-import-03.png)
 
 4. Ellenőrizze, hogy a Data Box szolgáltatás elérhető-e a régióban. Adja meg vagy válassza ki a következő információkat, majd válassza az **Alkalmaz** lehetőséget.
 
@@ -235,7 +235,7 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket a Azure Por
 
 5. Válassza a **Data Box** lehetőséget. Egy megrendelés maximális felhasználható kapacitása 80 TB. Nagyobb mennyiségű adat esetén több rendelést is létrehozhat.
 
-    ![Az 1-es Data Box lehetőség kiválasztása](media/data-box-deploy-ordered/select-data-box-import-05.png)
+    ![Képernyőkép a választható adatméretekről: Data Box Disk 40 terabájt, Data Box 100 terabájt, Data Box Heavy, 1000 terabájt, és küldje el a saját lemezeit 1 terabájt.](media/data-box-deploy-ordered/select-data-box-import-05.png)
 
 6. A **sorrendben**válassza az **alapok** lapot. Adja meg vagy válassza ki a következő adatokat, majd válassza a **Tovább: adatok célhelye>** elemet.
 
@@ -245,7 +245,7 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket a Azure Por
     |Erőforráscsoport    | A korábban kiválasztott erőforráscsoport. |
     |Importálási rendelés neve | Adjon meg egy rövid nevet a megrendelés nyomon követéséhez. <br> A névnek 3-24 karakter hosszúságúnak kell lennie, és csak betűket, számokat és kötőjelet tartalmazhat. <br> A névnek betűvel vagy számmal kell kezdődnie és végződnie.    |
 
-    ![Az 1-es Data Box lehetőség kiválasztása](media/data-box-deploy-ordered/select-data-box-import-06.png)
+    ![Képernyőkép a varázsló alapjairól, amely a megfelelő információkkal bővült.](media/data-box-deploy-ordered/select-data-box-import-06.png)
 
     Alapértelmezés szerint az eszköz zárolásának feloldására szolgáló jelszó Microsoft által felügyelt kulccsal van titkosítva. A megrendelés befejezése után hozzáadhat egy ügyfél által felügyelt kulcsot. Az ügyfél által felügyelt kulcs lehetővé teszi, hogy az Azure Key Vault-kulcsból saját kulcsot használjon az eszköz feloldási jelszavának a megvédése érdekében. További információ: [az ügyfél által felügyelt kulcsok használata Azure Key Vaultban Azure Data Box](data-box-customer-managed-encryption-key-portal.md).
 
@@ -265,7 +265,7 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket a Azure Por
     |---------|---------|
     |Erőforráscsoportok     | Hozzon létre új erőforráscsoportokat, ha felügyelt lemezeket szeretne létrehozni helyszíni VHD-kből. Meglévő erőforráscsoportot csak akkor használhat, ha az erőforráscsoportot korábban hozták létre a felügyelt lemez Data Box szolgáltatás általi Data Box rendelésének létrehozásakor. <br> Adjon meg több erőforráscsoportot, pontosvesszővel elválasztva. Legfeljebb 10 erőforráscsoport használata támogatott.|
 
-    ![Felügyelt lemez Data Box sorrendje](media/data-box-deploy-ordered/select-data-box-import-07b.png)
+    ![Képernyőfelvétel: a varázsló adat célja lépését bemutató képernyőkép a megfelelő információval kitöltve.](media/data-box-deploy-ordered/select-data-box-import-07b.png)
 
     A felügyelt lemezekhez megadott tárfiókot előkészítési tárfiókként használja a rendszer. A Data Box szolgáltatás lapblobként tölti fel a VHD-ket az előkészítési tárfiókba, majd felügyelt lemezekké konvertálja, és áthelyezi az erőforráscsoportba. További információ: [Az Azure-ba történő adatfeltöltés ellenőrzése](data-box-deploy-picked-up.md#verify-data-upload-to-azure).
    > [!NOTE]
@@ -286,11 +286,11 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket a Azure Por
 
 8. A **kapcsolattartási adatok**területen válassza a **+ szállítási címek hozzáadása**elemet.
 
-    ![Felügyelt lemez Data Box sorrendje](media/data-box-deploy-ordered/select-data-box-import-08a.png)
+    ![Képernyőfelvétel: a varázsló kapcsolattartási adatokkal kapcsolatos lépése, amely a szállítási címek hozzáadása lehetőséggel jelenik meg.](media/data-box-deploy-ordered/select-data-box-import-08a.png)
 
 9. A **Szállítási cím** területen adja meg a vezeték- és utónevét, a vállalata nevét és postai címét, valamint egy érvényes telefonszámot. Válassza a **Cím ellenőrzése** lehetőséget. A rendszer ellenőrzi, hogy a szolgáltatás elérhető-e a megadott szállítási címen. Ha a szolgáltatás elérhető a megadott szállítási címen, értesítést fog kapni erről.
 
-   ![Felügyelt lemez Data Box sorrendje](media/data-box-deploy-ordered/select-data-box-import-10.png)
+   ![Képernyőkép a szállítási címek hozzáadása párbeszédpanelről, amelyen a szállítás lehetőség és a szállítási címek hozzáadása lehetőség látható.](media/data-box-deploy-ordered/select-data-box-import-10.png)
 
    Ha az önfelügyelt szállítást választotta, a megrendelés sikeres elhelyezése után e-mailben értesítést fog kapni. Az önfelügyelt szállítással kapcsolatos további információkért lásd: [saját üzemeltetésű szállítás használata](data-box-portal-customer-managed-shipping.md).
 
@@ -300,13 +300,13 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket a Azure Por
 
     Javasoljuk a csoportos e-mail-cím használatát, hogy az értesítéseket a rendszergazda távollétében is kézhez kaphassa.
 
-    ![Felügyelt lemez Data Box sorrendje](media/data-box-deploy-ordered/select-data-box-import-08c.png)
+    ![Képernyőkép az e-mail szakaszról a megrendelés varázsló kapcsolattartási adatok lépésében, az E-mail szövegmezővel és a Next: Review és Order lehetőséggel.](media/data-box-deploy-ordered/select-data-box-import-08c.png)
 
 12. Tekintse át a **felülvizsgálati** és a megrendeléssel kapcsolatos információkat a rendeléssel, kapcsolatfelvételsel, értesítéssel és adatvédelmi feltételekkel kapcsolatban. Jelölje ki az adatvédelmi feltételek elfogadásához tartozó jelölőnégyzetet.
 
 13. Válassza a **Megrendelés** lehetőséget. A megrendelés létrehozása néhány percet vesz igénybe.
 
-    ![Felügyelt lemez Data Box sorrendje](media/data-box-deploy-ordered/select-data-box-import-11.png)
+    ![A sorrend varázsló képernyőképe, amely a felülvizsgálati és a rendelési lépést, valamint a sorrendet mutatja.](media/data-box-deploy-ordered/select-data-box-import-11.png)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -317,7 +317,7 @@ Az alábbi lépéseket követve rendeljen egy eszközt az Azure CLI használatá
    | Beállítás (paraméter) | Leírás |  Mintaérték |
    |---|---|---|
    |resource-group| Használjon egy már létezőt, vagy hozzon létre újat. Az erőforráscsoport az együtt kezelhető vagy üzembe helyezhető erőforrások logikai tárolója. | myresourcegroup|
-   |name| A létrehozandó rendelés neve. | "mydataboxorder"|
+   |név| A létrehozandó rendelés neve. | "mydataboxorder"|
    |Kapcsolattartó neve| A szállítási címtől társított név. | "Gus Lengyelország"|
    |telefon| Annak a személynek vagy vállalatnak a telefonszáma, aki megkapja a rendelést.| "14255551234"
    |location| A legközelebbi Azure-régió, amely az eszköz szállítására kerül.| "USA nyugati régiója"|

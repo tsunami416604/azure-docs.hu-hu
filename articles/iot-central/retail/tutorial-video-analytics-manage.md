@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: 76e72e8fd134c65cc9334e635375cc25e9b09a75
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: dea009d6d246d68f0686c3dc85f3518ccb13705c
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719070"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575197"
 ---
 # <a name="tutorial-monitor-and-manage-a-video-analytics---object-and-motion-detection-application"></a>Oktatóanyag: video Analytics-objektum-és mozgásészlelési alkalmazás figyelése és kezelése
 
@@ -27,7 +27,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 A Kezdés előtt a következőket kell elvégeznie:
 
 * A [Live Video Analytics-alkalmazás létrehozása az Azure IoT Central](./tutorial-video-analytics-create-app.md) oktatóanyagban.
-* Az egyik előző [létrehoz egy IoT Edge példányt az élő videó elemzéséhez (Linux rendszerű virtuális gép)](tutorial-video-analytics-iot-edge-vm.md) , vagy [létrehoz egy IoT Edge példányt az élő video Analytics (Linux VM)](tutorial-video-analytics-iot-edge-nuc.md) oktatóanyagokhoz.
+* Az egyik előző [létrehoz egy IoT Edge példányt az élő videó elemzéséhez (linuxos virtuális gép)](tutorial-video-analytics-iot-edge-vm.md) , vagy [létrehoz egy IoT Edge-példányt az élő video Analytics (Intel NUC)](tutorial-video-analytics-iot-edge-nuc.md) oktatóanyagokhoz.
 
 A video Viewer alkalmazás futtatásához a [Docker](https://www.docker.com/products/docker-desktop) -t telepíteni kell a helyi gépre.
 
@@ -61,7 +61,7 @@ Ha két kamerája van a IoT Edge átjáró-eszközhöz csatlakoztatva, ismételj
 
 Válassza ki a **LVA Gateway 001** eszköz **alsóbb rétegbeli eszközök** lapját az imént hozzáadott kamera-eszközök megtekintéséhez:
 
-:::image type="content" source="media/tutorial-video-analytics-manage/inspect-downstream.png" alt-text="Vizsgálata":::
+:::image type="content" source="media/tutorial-video-analytics-manage/inspect-downstream.png" alt-text="Kamera hozzáadása":::
 
 A kamera eszközei az alkalmazás **eszközök** lapján is megjelennek a listában.
 
@@ -94,11 +94,11 @@ Használja az alapértelmezett értékeket, vagy módosítsa, ha testre kell sza
 | Megbízhatósági küszöb | A minősítés százalékos értéke annak megállapításához, hogy az objektum észlelése érvényes-e | 70 |
 | Következtetési keret mintavételi sebessége (FPS) | [Leírás itt] | 2 |
 
-Kattintson a **Mentés** gombra.
+Válassza a **Mentés** lehetőséget.
 
 Néhány másodperc elteltével megjelenik az egyes beállításokhoz tartozó **elfogadott** megerősítő üzenet:
 
-:::image type="content" source="media/tutorial-video-analytics-manage/object-detection.png" alt-text="Objektum észlelése":::
+:::image type="content" source="media/tutorial-video-analytics-manage/object-detection.png" alt-text="Kamera hozzáadása":::
 
 ## <a name="start-lva-processing"></a>LVA-feldolgozás indítása
 
@@ -108,13 +108,13 @@ Futtassa a **Start LVA Processing** parancsot.
 
 Ha a parancs befejeződik, tekintse meg a parancs előzményeit, és győződjön meg róla, hogy nincsenek hibák:
 
-:::image type="content" source="media/tutorial-video-analytics-manage/start-processing.png" alt-text="LVA-feldolgozási parancs elindítása":::
+:::image type="content" source="media/tutorial-video-analytics-manage/start-processing.png" alt-text="Kamera hozzáadása":::
 
 ## <a name="monitor-the-cameras"></a>A kamerák figyelése
 
 Navigáljon a **kamera-003** eszközhöz, és válassza az **irányítópult** fület:
 
-:::image type="content" source="media/tutorial-video-analytics-manage/camera-dashboard.png" alt-text="Kamera irányítópultja":::
+:::image type="content" source="media/tutorial-video-analytics-manage/camera-dashboard.png" alt-text="Kamera hozzáadása":::
 
 Az **észlelések száma** csempe a kiválasztott észlelési osztályok objektumainak átlagos észlelési számát jeleníti meg egy másodperces észlelési intervallumban.
 
@@ -157,7 +157,7 @@ docker run -it --rm -e amsAadClientId="<FROM_AZURE_PORTAL>" -e amsAadSecret="<FR
 
 Navigáljon a **kamera-003** eszközhöz, és válassza az **irányítópult** fület. Ezután kattintson az egyik rögzített objektum-észlelési hiperhivatkozásra a **következtetési esemény videó** csempén. A videó a helyi videolejátszó által megjelenített oldalon jelenik meg:
 
-:::image type="content" source="media/tutorial-video-analytics-manage/video-snippet.png" alt-text="Videó kódrészlet":::
+:::image type="content" source="media/tutorial-video-analytics-manage/video-snippet.png" alt-text="Kamera hozzáadása":::
 
 ## <a name="change-the-simulated-devices-in-application-dashboards"></a>Szimulált eszközök módosítása alkalmazás-irányítópultokon
 
@@ -178,11 +178,11 @@ Az alkalmazás-irányítópultok eredetileg a IoT Central szimulált eszközökr
     1. A **(z)% megbízhatósági%** az `AI Inference Interface/Inference/entity/tag/confidence` utolsó ismert értéket használja
     1. **Snapshot** A pillanatkép `AI Inference Interface/Inference Image` képként jelenik meg.
     1. A **következtetési esemény videó** `AI Inference Interface/Inference Event Video` hivatkozásként jelenik meg.
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 Az **igazi kamera-figyelő** irányítópultja mostantól megjeleníti a valódi kamera-eszköz értékeit:
 
-:::image type="content" source="media/tutorial-video-analytics-manage/update-real-cameras.png" alt-text="Valódi fényképezőgépek alkalmazás-irányítópult":::
+:::image type="content" source="media/tutorial-video-analytics-manage/update-real-cameras.png" alt-text="Kamera hozzáadása":::
 
 ## <a name="pause-processing"></a>Feldolgozás szüneteltetése
 

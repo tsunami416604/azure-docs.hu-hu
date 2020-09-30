@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/30/2018
 ms.author: twooley
-ms.openlocfilehash: 8ef3d7400b64617df8d81c7b84e680496776b5bd
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 4c289ecb1d8471a7b99f1d4c85a0163de4d0c593
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192153"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576217"
 ---
 # <a name="stream-data-from-azure-storage-blob-into-azure-data-lake-storage-gen1-using-azure-stream-analytics"></a>Adatok továbbítása Azure Storage Blobról Azure Data Lake Storage Gen1 a Azure Stream Analytics használatával
 Ebből a cikkből megtudhatja, hogyan használhatja a Azure Data Lake Storage Gen1 kimenetként egy Azure Stream Analytics feladatokhoz. Ez a cikk egy egyszerű forgatókönyvet mutat be, amely beolvassa az adatokat egy Azure Storage-blobból (bemenet), és az adatokat a Data Lake Storage Gen1ba (output) írja.
@@ -42,11 +42,11 @@ Első lépésként hozzon létre egy Stream Analytics feladatot, amely tartalmaz
 
 1. Nyissa meg a Stream Analytics-feladathoz tartozó lapot, a bal oldali panelen kattintson a **bemenetek** lapra, majd a **Hozzáadás**gombra.
 
-    ![Adjon hozzá egy bemenetet a feladathoz](./media/data-lake-store-stream-analytics/create.input.1.png "Adjon hozzá egy bemenetet a feladathoz")
+    ![Képernyőkép a Stream Analytics Job panelről, a bemenetek lehetőséggel és az adatfolyam-bevitel hozzáadása lehetőséggel.](./media/data-lake-store-stream-analytics/create.input.1.png "Adjon hozzá egy bemenetet a feladathoz")
 
 2. Az **új beviteli** panelen adja meg a következő értékeket.
 
-    ![Adjon hozzá egy bemenetet a feladathoz](./media/data-lake-store-stream-analytics/create.input.2.png "Adjon hozzá egy bemenetet a feladathoz")
+    ![Képernyőfelvétel a blob Storage-ról – új bemeneti panel.](./media/data-lake-store-stream-analytics/create.input.2.png "Adjon hozzá egy bemenetet a feladathoz")
 
    * A **bemeneti alias**mezőben adjon meg egy egyedi nevet a bevitt adathoz.
    * A **forrás típusa**beállításnál válassza az **adatfolyam**lehetőséget.
@@ -58,25 +58,25 @@ Első lépésként hozzon létre egy Stream Analytics feladatot, amely tartalmaz
    * A **határolójelek**beállításnál válassza a **Tab**lehetőséget.
    * A **kódoláshoz**válassza az **UTF-8**elemet.
 
-     Kattintson a **Create** (Létrehozás) gombra. A portál most hozzáadja a bemenetet, és teszteli a kapcsolódást.
+     Kattintson a **Létrehozás** lehetőségre. A portál most hozzáadja a bemenetet, és teszteli a kapcsolódást.
 
 
 ## <a name="create-a-data-lake-storage-gen1-output-for-the-job"></a>Data Lake Storage Gen1 kimenet létrehozása a feladatokhoz
 
 1. Nyissa meg az Stream Analytics feladatokhoz tartozó lapot, kattintson a **kimenetek** lapra, kattintson a **Hozzáadás**gombra, és válassza a **Data Lake Storage Gen1**lehetőséget.
 
-    ![Kimenet hozzáadása a feladatokhoz](./media/data-lake-store-stream-analytics/create.output.1.png "Kimenet hozzáadása a feladatokhoz")
+    ![Képernyőkép a Stream Analytics feladatok panelről, a kimenetek lehetőséggel, a Hozzáadás lehetőséggel és az 1. generációs Data Lake Storage.](./media/data-lake-store-stream-analytics/create.output.1.png "Kimenet hozzáadása a feladatokhoz")
 
 2. Az **új kimenet** panelen adja meg a következő értékeket.
 
-    ![Kimenet hozzáadása a feladatokhoz](./media/data-lake-store-stream-analytics/create.output.2.png "Kimenet hozzáadása a feladatokhoz")
+    ![Képernyőkép az 1. generációs Data Lake Storage – új kimenet panel, az Engedélyezés lehetőséggel.](./media/data-lake-store-stream-analytics/create.output.2.png "Kimenet hozzáadása a feladatokhoz")
 
     * A **kimeneti alias**mezőben adja meg a feladatok kimenetének egyedi nevét. Ez az a lekérdezésekben használt felhasználóbarát név, amely a lekérdezés kimenetét erre a Data Lake Storage Gen1 fiókra irányítja.
     * A rendszer kérni fogja, hogy engedélyezze a hozzáférést a Data Lake Storage Gen1 fiókhoz. Kattintson az **Engedélyezés**gombra.
 
 3. Az **új kimenet** panelen folytassa a következő értékek megadásával.
 
-    ![Kimenet hozzáadása a feladatokhoz](./media/data-lake-store-stream-analytics/create.output.3.png "Kimenet hozzáadása a feladatokhoz")
+    ![Képernyőkép a Data Lake Storage Gen 1 – New output panelről.](./media/data-lake-store-stream-analytics/create.output.3.png "Kimenet hozzáadása a feladatokhoz")
 
    * A **fióknév**mezőben válassza ki azt a Data Lake Storage Gen1 fiókot, amelyet már létrehozott, ahol a feladatok kimenetét el szeretné juttatni.
    * Az **elérésiút-előtag mintája**mezőben adja meg a fájloknak a megadott Data Lake Storage Gen1 fiókban való írásához használt elérési utat.
@@ -86,7 +86,7 @@ Első lépésként hozzon létre egy Stream Analytics feladatot, amely tartalmaz
    * A **határolójelek**beállításnál válassza a **Tab**lehetőséget.
    * A **kódoláshoz**válassza az **UTF-8**elemet.
     
-     Kattintson a **Create** (Létrehozás) gombra. A portál most hozzáadja a kimenetet, és teszteli a kapcsolódást.
+     Kattintson a **Létrehozás** lehetőségre. A portál most hozzáadja a kimenetet, és teszteli a kapcsolódást.
     
 ## <a name="run-the-stream-analytics-job"></a>Stream Analytics-feladat futtatása
 
@@ -112,5 +112,5 @@ Első lépésként hozzon létre egy Stream Analytics feladatot, amely tartalmaz
 
     A Adatkezelő ablaktáblán figyelje meg, hogy a kimenet a Data Lake Storage Gen1 output Settings () paraméterben megadott elérési út mappájába íródik `streamanalytics/job/output/{date}/{time}` .  
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 * [Data Lake Storage Gen1 használatára szolgáló HDInsight-fürt létrehozása](data-lake-store-hdinsight-hadoop-use-portal.md)

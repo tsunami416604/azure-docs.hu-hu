@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 08/28/2020
-ms.openlocfilehash: 469620456fecb7c0cb398988c4a4fc25da97f863
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 82a109dd5c2813861e21e11aa40774b6b868cfe3
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91357709"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576200"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Automatikus feladatátvételi csoportok használata több adatbázis átlátható és koordinált feladatátvételének engedélyezéséhez
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -76,9 +76,9 @@ A valós Üzletmenet-folytonosság eléréséhez az adatközpontok közötti ada
   
 - **Kezdeti előkészítés**
 
-  Adatbázisok, rugalmas készletek vagy felügyelt példányok feladatátvételi csoportba való felvételekor az adatreplikáció elindítása előtt kezdeti előkészítési fázis van. A kezdeti előkészítési fázis a leghosszabb és legdrágább művelet. A kezdeti beültetés befejezése után a rendszer szinkronizálja az adatokat, majd csak a további adatváltozásokat replikálja. A kezdeti vetõmag befejezéséhez szükséges idő az adatok méretétől, a replikált adatbázisok számától, valamint a feladatátvételi csoportban lévő entitások közötti kapcsolat sebességétől függ. Normál körülmények között a tipikus előkészítési sebesség 50-500 GB SQL Database, és 18-35 GB egy órán át felügyelt SQL-példány esetében. A rendszer az összes adatbázis párhuzamos előkészítését végzi. A jelzett előkészítési sebességet, valamint az adatbázisok számát és az adatmennyiség teljes méretét is használhatja, hogy megbecsülje, mennyi ideig tart a kezdeti előkészítési fázis az adatreplikáció megkezdése előtt.
+  Adatbázisok, rugalmas készletek vagy felügyelt példányok feladatátvételi csoportba való felvételekor az adatreplikáció elindítása előtt kezdeti előkészítési fázis van. A kezdeti előkészítési fázis a leghosszabb és legdrágább művelet. A kezdeti beültetés befejezése után a rendszer szinkronizálja az adatokat, majd csak a további adatváltozásokat replikálja. A kezdeti vetõmag befejezéséhez szükséges idő az adatok méretétől, a replikált adatbázisok számától, valamint a feladatátvételi csoportban lévő entitások közötti kapcsolat sebességétől függ. Normál körülmények között a lehetséges kivetési sebesség akár 500 GB SQL Database, és akár 360 GB is lehet egy óra az SQL felügyelt példányához. A rendszer az összes adatbázis párhuzamos előkészítését végzi.
 
-  SQL felügyelt példány esetén a két példány közötti expressz útvonal-kapcsolat sebességét is figyelembe kell venni a kezdeti előkészítési fázis idejének becslése során. Ha a két példány közötti kapcsolat sebessége lassabb a szükségesnél, a magokra adott idő valószínűleg különösen hatással van. Felhasználhatja a megadott előkészítési sebességet, az adatbázisok számát, az adatmennyiség teljes méretét, valamint a kapcsolat sebességét annak becsléséhez, hogy mennyi ideig tart a kezdeti előkészítési fázis az adatreplikálás megkezdése előtt. Egy 100 GB-os adatbázis esetében például a kezdeti vetőmag-fázis a 2,8-5,5 órán belül bárhol elveszik, ha a hivatkozás képes a 35 GB/óra lenyomására. Ha a hivatkozás csak 10 GB/óra átvitelt tud végezni, akkor a 100 GB-os adatbázis kivetése körülbelül 10 órát vesz igénybe. Ha több adatbázis replikálására van szükség, a rendszer párhuzamosan hajtja végre a bevezetést, és ha lassú kapcsolati sebességgel kombinálja, a kezdeti előkészítési fázis jóval hosszabb időt is igénybe vehet, különösen akkor, ha az összes adatbázisból származó adatok párhuzamos kiosztása meghaladja a rendelkezésre álló kapcsolat sávszélességét. Ha a két példány közötti hálózati sávszélesség korlátozott, és több felügyelt példányt ad hozzá egy feladatátvételi csoporthoz, érdemes egymás után több felügyelt példányt hozzáadni a feladatátvételi csoporthoz.
+  SQL felügyelt példány esetén vegye figyelembe az expressz útvonal kapcsolatának sebességét a két példány között a kezdeti előkészítési fázis idejének becslése során. Ha a két példány közötti kapcsolat sebessége lassabb a szükségesnél, a magokra adott idő valószínűleg különösen hatással van. Felhasználhatja a megadott előkészítési sebességet, az adatbázisok számát, az adatmennyiség teljes méretét, valamint a kapcsolat sebességét annak becsléséhez, hogy mennyi ideig tart a kezdeti előkészítési fázis az adatreplikálás megkezdése előtt. Egy 100 GB-os adatbázis esetében például a kezdeti vetőmag fázisa körülbelül 1,2 órát vesz igénybe, ha a hivatkozás 84 GB/óra lenyomására képes, és ha nincs más adatbázis bevetése. Ha a hivatkozás csak 10 GB/óra átvitelt tud végezni, akkor a 100 GB-os adatbázis kivetése körülbelül 10 órát vesz igénybe. Ha több adatbázis replikálására van szükség, a rendszer párhuzamosan hajtja végre a bevezetést, és ha lassú kapcsolati sebességgel kombinálja, a kezdeti előkészítési fázis jóval hosszabb időt is igénybe vehet, különösen akkor, ha az összes adatbázisból származó adatok párhuzamos kiosztása meghaladja a rendelkezésre álló kapcsolat sávszélességét. Ha a két példány közötti hálózati sávszélesség korlátozott, és több felügyelt példányt ad hozzá egy feladatátvételi csoporthoz, érdemes egymás után több felügyelt példányt hozzáadni a feladatátvételi csoporthoz. Ha a két felügyelt példány között megfelelő méretű átjáró SKU-t adott meg, és ha a vállalati hálózati sávszélesség lehetővé teszi, a sebességet 360 GB-os sebességgel lehet elérni.  
 
 - **DNS-zóna**
 
@@ -232,6 +232,10 @@ Annak biztosítása érdekében, hogy az elsődleges és a másodlagos példány
 > Az alhálózatban létrehozott első felügyelt példány határozza meg a DNS-zónát az azonos alhálózaton lévő összes további példányhoz. Ez azt jelenti, hogy az azonos alhálózatból származó két példány nem tartozhat különböző DNS-zónákhoz.
 
 További információ a másodlagos SQL felügyelt példány létrehozásáról az elsődleges példánnyal azonos DNS-zónában: [másodlagos felügyelt példány létrehozása](../managed-instance/failover-group-add-instance-tutorial.md#create-a-secondary-managed-instance).
+
+### <a name="using-geo-paired-regions"></a>Földrajzilag párosított régiók használata
+
+A felügyelt példányokat a [párosított régiók](../../best-practices-availability-paired-regions.md) számára is üzembe helyezheti teljesítménybeli okokból. A földrajzilag párosított régiókban található felügyelt példányok sokkal jobb teljesítményt biztosítanak a nem párosított régiókhoz képest. 
 
 ### <a name="enabling-replication-traffic-between-two-instances"></a>A replikálási forgalom engedélyezése két példány között
 
@@ -474,7 +478,7 @@ Ahogy azt korábban említettük, az automatikus feladatátvételi csoportok és
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Részletes oktatóanyagok:
   - [SQL Database hozzáadása feladatátvételi csoporthoz](failover-group-add-single-database-tutorial.md)

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
-ms.openlocfilehash: dda2676f258705ed833068c966bcc57115434b0d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 2134dde0fa0b92bec4519c0d6a24dcaad3792baa
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90967227"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575180"
 ---
 # <a name="configure-the-model-conversion"></a>A modellátalakítás konfigurálása
 
@@ -33,7 +33,6 @@ A fájl tartalmának meg kell felelnie a következő JSON-sémának:
         "scaling" : { "type" : "number", "exclusiveMinimum" : 0, "default" : 1.0 },
         "recenterToOrigin" : { "type" : "boolean", "default" : false },
         "opaqueMaterialDefaultSidedness" : { "type" : "string", "enum" : [ "SingleSided", "DoubleSided" ], "default" : "DoubleSided" },
-        "material-override" : { "type" : "string", "default" : "" },
         "gammaToLinearMaterial" : { "type" : "boolean", "default" : false },
         "gammaToLinearVertex" : { "type" : "boolean", "default" : false },
         "sceneGraphMode": { "type" : "string", "enum" : [ "none", "static", "dynamic" ], "default" : "dynamic" },
@@ -85,10 +84,6 @@ A modell középpontba való benyújtása segíthet ebben a helyzetben.
 
 * `opaqueMaterialDefaultSidedness` – A renderelési motor azt feltételezi, hogy az átlátszatlan anyagok kétoldalasak.
 Ha a feltételezés nem igaz egy adott modell esetében, akkor ezt a paramétert "SingleSided" értékre kell beállítani. További információ: [ :::no-loc text="single sided"::: rendering](../../overview/features/single-sided-rendering.md).
-
-### <a name="material-overrides"></a>Anyagok felülbírálása
-
-* `material-override` – Ez a paraméter lehetővé teszi, hogy az anyagok feldolgozása az [átalakítás során testreszabható](override-materials.md)legyen.
 
 ### <a name="material-de-duplication"></a>Anyag – ismétlődés
 
@@ -306,7 +301,9 @@ Ezekben a használati esetekben a modellek gyakran nagyon nagy részletességgel
 A nem modellre jellemző fájlnevet használó beállítások `conversionSettings.json` továbbra is támogatottak, de elavultak.
 Ehelyett használja a modell-specifikus fájlnevet `<modelName>.ConversionSettings.json` .
 
-## <a name="next-steps"></a>Következő lépések
+A `material-override` konverziós beállítások fájlban lévő [anyag-felülbírálási fájl](override-materials.md) azonosítására szolgáló beállítás használata továbbra is támogatott, de elavult. Ehelyett használja a modell-specifikus fájlnevet `<modelName>.MaterialOverrides.json` .
+
+## <a name="next-steps"></a>További lépések
 
 * [Modell átalakítása](model-conversion.md)
 * [Színes anyagok](../../overview/features/color-materials.md)

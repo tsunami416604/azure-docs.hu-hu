@@ -3,22 +3,22 @@ title: IoT Plug and Play architektúra | Microsoft Docs
 description: Megoldás-szerkesztőként megismerheti a IoT Plug and Play legfontosabb építészeti elemeit.
 author: ridomin
 ms.author: rmpablos
-ms.date: 07/06/2020
+ms.date: 09/15/2020
 ms.topic: conceptual
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: f656de0bb2e5244e137ae21a6d7af88f3430b12c
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 32e67bd7f30fecee3449935a35235844a047957b
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475685"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91574321"
 ---
-# <a name="iot-plug-and-play-preview-architecture"></a>Az IoT Plug and Play előzetes verziójának architektúrája
+# <a name="iot-plug-and-play-architecture"></a>IoT Plug and Play architektúra
 
-A IoT Plug and Play előzetes verziója lehetővé teszi a megoldás-építők számára, hogy manuális konfiguráció nélkül integrálják az intelligens eszközöket a megoldásaikkal. A IoT Plug and Play egy olyan eszköz _modellje_ , amely leírja az eszköz képességeit egy IoT Plug and Play-kompatibilis alkalmazás számára. Ez a modell illesztőfelület-készletként van strukturálva, amely az alábbiakat határozza meg:
+A IoT Plug and Play lehetővé teszi a megoldás-építők számára, hogy manuális konfiguráció nélkül integrálják az intelligens eszközöket a megoldásaikkal. A IoT Plug and Play egy olyan eszköz _modellje_ , amely leírja az eszköz képességeit egy IoT Plug and Play-kompatibilis alkalmazás számára. Ez a modell illesztőfelület-készletként van strukturálva, amely az alábbiakat határozza meg:
 
 - Egy eszköz vagy más entitás írásvédett vagy írható állapotát jelképező _Tulajdonságok_ . Előfordulhat például, hogy egy eszköz sorozatszáma csak olvasható tulajdonság, és a termosztát hőmérséklete írható tulajdonság lehet.
 - _Telemetria_ az eszköz által kibocsátott adatok, függetlenül attól, hogy az adatok az érzékelők normál streamje, egy alkalmi hiba vagy egy tájékoztató üzenet.
@@ -43,9 +43,27 @@ A Model repository a RBAC használatával korlátozza az illesztőfelület-defin
 Egy IoT intelligens eszközön a kód egy [Azure IoT-eszköz SDK](./libraries-sdks.md)-k használatával történő futtatását valósítja meg. Az eszköz SDK-k segítik az Eszközkezelőt a következőknek:
 
 - Biztonságos kapcsolódás egy IoT hubhoz.
-- Regisztrálja az eszközt az IoT hub-ban, és jelentse be az eszköz által megvalósított felületek gyűjteményét azonosító modell AZONOSÍTÓját.
-- Frissítse az eszköz által megvalósított DTDL-illesztőfelületekben definiált tulajdonságokat. Ezek a tulajdonságok olyan digitális ikrek használatával valósulnak meg, amelyek kezelik a szinkronizálást az IoT hubhoz.
-- Az eszköz által megvalósított DTDL-adapterekben definiált parancsokhoz tartozó parancs-kezelők hozzáadása.
+- Regisztrálja az eszközt az IoT hub-ban, és jelentse be az eszköz által megvalósított DTDL-felületek gyűjteményét azonosító modell AZONOSÍTÓját.
+- Szinkronizálja a DTDL-illesztőfelületekben definiált tulajdonságokat az eszköz és az IoT hub között.
+- Adja hozzá a DTDL felületeken definiált parancsokhoz tartozó parancssori kezelőket.
+- Telemetria küldése az IoT hub-nak.
+
+## <a name="iot-edge-gateway"></a>Átjáró IoT Edge
+
+Egy IoT Edge átjáró közvetítőként viselkedik a IoT Plug and Play olyan eszközök csatlakoztatásához, amelyek nem tudnak közvetlenül csatlakozni az IoT hubhoz. További információt a IoT Edge- [eszköz átjáróként való használatáról](../iot-edge/iot-edge-as-gateway.md)szóló témakörben talál.
+
+## <a name="iot-edge-modules"></a>IoT Edge-modulok
+
+Az _IoT Edge modul_ lehetővé teszi az üzleti logikák üzembe helyezését és kezelését a peremhálózat szélén. A Azure IoT Edge modulok a IoT Edge által kezelt számítási egységek legkisebb egységei, és tartalmazhatnak Azure-szolgáltatásokat (például Azure Stream Analytics) vagy a saját megoldásra vonatkozó kódokat.
+
+Az _IoT Edge hub_ az Azure IoT Edge futtatókörnyezetet alkotó modulok egyike. A IoT Hub helyi proxyként működik, ha a protokoll-végpontokat IoT Hubként teszi elérhetővé. Ez a konzisztencia azt jelenti, hogy az ügyfelek (függetlenül attól, hogy az eszközök vagy modulok) képesek-e csatlakozni a IoT Edge futtatókörnyezethez ugyanúgy, ahogy IoT Hub.
+
+Az eszköz SDK-k segítik a modul-szerkesztőt a következőhöz:
+
+- Az IoT Edge hub használatával biztonságosan csatlakozhat az IoT hubhoz.
+- Regisztrálja a modult az IoT hub-ban, és jelentse be a modell AZONOSÍTÓját, amely azonosítja az eszköz által megvalósított DTDL-felületek gyűjteményét.
+- Szinkronizálja a DTDL-illesztőfelületekben definiált tulajdonságokat az eszköz és az IoT hub között.
+- Adja hozzá a DTDL felületeken definiált parancsokhoz tartozó parancssori kezelőket.
 - Telemetria küldése az IoT hub-nak.
 
 ## <a name="iot-hub"></a>IoT Hub
@@ -80,4 +98,4 @@ Most, hogy áttekinti a IoT Plug and Play megoldás architektúráját, a követ
 
 - [A modell tárháza](./concepts-model-repository.md)
 - [Digitális kettős modell integrációja](./concepts-model-discovery.md)
-- [Fejlesztés a IoT Plug and Play](./concepts-developer-guide.md)
+- [Fejlesztés a IoT Plug and Play](./concepts-developer-guide-device-csharp.md)

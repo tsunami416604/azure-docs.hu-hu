@@ -3,12 +3,12 @@ title: Oktatóanyag – hálózati tervezési ellenőrzőlista
 description: Ismerje meg a hálózati követelményekre vonatkozó előfeltételeket, valamint a hálózati kapcsolattal és az Azure VMware-megoldás hálózati portjaival kapcsolatos információkat.
 ms.topic: tutorial
 ms.date: 09/21/2020
-ms.openlocfilehash: c9a3c18d69cb81ed2810c0516820a9ef348402f1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5538f9c5d6543ca312835f4ef6437e413dea231b
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91254397"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576677"
 ---
 # <a name="networking-planning-checklist-for-azure-vmware-solution"></a>Hálózatkezelési tervezési ellenőrzőlista az Azure VMware-megoldáshoz 
 
@@ -21,8 +21,6 @@ Ezen oktatóanyag segítségével elsajátíthatja a következőket:
 > * Útválasztási és alhálózati követelmények
 > * A szolgáltatásokkal való kommunikációhoz szükséges hálózati portok
 > * DHCP-és DNS-megfontolások az Azure VMware-megoldásban
-
-
 
 ## <a name="virtual-network-and-expressroute-circuit-considerations"></a>A Virtual Network és a ExpressRoute Circuit szempontjai
 Amikor létrehoz egy virtuális hálózati kapcsolatot az előfizetésében, a rendszer a ExpressRoute áramkört a társításon keresztül hozza létre, egy engedélyezési kulcsot használ, valamint egy, a Azure Portalban kért társ-AZONOSÍTÓt. A társítás egy privát, egy-az-egyhez kapcsolat a privát felhő és a virtuális hálózat között.
@@ -76,7 +74,7 @@ A privát felhőalapú környezetekben futó alkalmazások és munkaterhelések 
 A DHCP-szolgáltatás beépített használatával NSX vagy használhat helyi DHCP-kiszolgálót a privát felhőben ahelyett, hogy útválasztást továbbít a DHCP-forgalomnak a WAN-on keresztül a helyszíni környezetbe.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megismerte az Azure VMware-megoldás saját felhő üzembe helyezésének szempontjait és követelményeit. 
 

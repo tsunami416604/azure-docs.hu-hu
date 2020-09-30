@@ -1,6 +1,6 @@
 ---
-title: Az Azure IoT-megoldáshoz csatlakoztatott IoT Plug and Play előzetes verziójú eszköz használata (Node.js) | Microsoft Docs
-description: A Node.js használatával csatlakozhat az Azure IoT-megoldáshoz csatlakoztatott IoT-Plug and Play előnézeti eszközhöz, és együttműködhet velük.
+title: Az Azure IoT-megoldáshoz csatlakoztatott IoT Plug and Play-eszköz (Node.js) használata | Microsoft Docs
+description: A Node.js használatával csatlakozhat az Azure IoT-megoldáshoz csatlakoztatott IoT-Plug and Play-eszközhöz, és együttműködhet velük.
 author: elhorton
 ms.author: elhorton
 ms.date: 08/11/2020
@@ -8,22 +8,22 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 24c12425b7c8598f46f9a0891337129bcbabec40
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6ad6e48642e7b7df4b93b37b5ef66381833d8bbc
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91281235"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91574993"
 ---
-# <a name="quickstart-interact-with-an-iot-plug-and-play-preview-device-thats-connected-to-your-solution-nodejs"></a>Rövid útmutató: a megoldáshoz csatlakoztatott IoT Plug and Play előnézeti eszköz használata (Node.js)
+# <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-nodejs"></a>Gyors útmutató: interakció a megoldáshoz csatlakoztatott IoT Plug and Play eszközzel (Node.js)
 
 [!INCLUDE [iot-pnp-quickstarts-service-selector.md](../../includes/iot-pnp-quickstarts-service-selector.md)]
 
-A IoT Plug and Play Preview leegyszerűsíti a IoT azáltal, hogy lehetővé teszi, hogy a mögöttes eszköz megvalósításának ismerete nélkül kommunikáljon az eszköz képességeivel. Ez a rövid útmutató azt ismerteti, hogyan használható a Node.js a megoldáshoz csatlakoztatott IoT Plug and Play eszköz csatlakoztatásához és vezérléséhez.
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+A IoT Plug and Play leegyszerűsíti a IoT azáltal, hogy az eszköz képességeinek ismerete nélkül teszi lehetővé az eszközök képességeit. Ez a rövid útmutató azt ismerteti, hogyan használható a Node.js a megoldáshoz csatlakoztatott IoT Plug and Play eszköz csatlakoztatásához és vezérléséhez.
 
 ## <a name="prerequisites"></a>Előfeltételek
+
+[!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
 A rövid útmutató elvégzéséhez Node.jsra van szükség a fejlesztői gépen. A [NodeJS.org](https://nodejs.org)több platformon is letöltheti a legújabb ajánlott verziót.
 
@@ -33,29 +33,19 @@ A Node.js aktuális verzióját a következő paranccsal ellenőrizheti a fejles
 node --version
 ```
 
-[!INCLUDE [iot-pnp-prepare-iot-hub.md](../../includes/iot-pnp-prepare-iot-hub.md)]
-
-Futtassa a következő parancsot a hub _IoT hub-kapcsolódási karakterláncának_ lekéréséhez. Jegyezze fel ezt a összekapcsolási karakterláncot, amelyet később a rövid útmutatóban fog használni:
-
-```azurecli-interactive
-az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
-```
-
-A következő parancs futtatásával lekérheti a hubhoz felvett eszközhöz tartozó _eszköz-kapcsolódási karakterláncot_ . Jegyezze fel ezt a összekapcsolási karakterláncot, amelyet később a rövid útmutatóban fog használni:
-
-```azurecli-interactive
-az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --device-id <YourDeviceID> --output
-```
-
 ### <a name="clone-the-sdk-repository-with-the-sample-code"></a>Az SDK-tárház klónozása a mintakód használatával
 
-A Service SDK előzetes verzióban érhető el, ezért a mintákat a [Node SDK előzetes verziójú ágának](https://github.com/Azure/azure-iot-sdk-node/tree/pnp-preview-refresh)kell megadnia. Nyisson meg egy terminál-ablakot tetszőleges mappában. Futtassa a következő parancsot a Node.jsGitHub-adattárhoz készült [Microsoft Azure IOT SDK](https://github.com/Azure/azure-iot-sdk-node) **PnP-előnézet-frissítési** ágának klónozásához:
+A minták klónozása a [Node SDK-tárházból](https://github.com/Azure/azure-iot-sdk-node). Nyisson meg egy terminál-ablakot tetszőleges mappában. Futtassa a következő parancsot a Node.jsGitHub-adattárhoz [tartozó Microsoft Azure IOT SDK ](https://github.com/Azure/azure-iot-sdk-node) klónozásához:
 
 ```cmd/sh
-git clone https://github.com/Azure/azure-iot-sdk-node -b pnp-preview-refresh
+git clone https://github.com/Azure/azure-iot-sdk-node
 ```
 
 ## <a name="run-the-sample-device"></a>A minta eszköz futtatása
+
+[!INCLUDE [iot-pnp-environment](../../includes/iot-pnp-environment.md)]
+
+A minta-konfigurációval kapcsolatos további tudnivalókért tekintse meg a [minta](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/pnp/readme.md)információit.
 
 Ebben a rövid útmutatóban a IoT Plug and Play eszközként Node.jsban írt minta termosztát-eszközt használhat. A minta eszköz futtatása:
 
@@ -65,12 +55,6 @@ Ebben a rövid útmutatóban a IoT Plug and Play eszközként Node.jsban írt mi
 
     ```cmd/sh
     npm install
-    ```
-
-1. Az _eszköz-kapcsolatok karakterláncának_konfigurálása:
-
-    ```cmd/sh
-    set IOTHUB_DEVICE_CONNECTION_STRING=<YourDeviceConnectionString>
     ```
 
 1. Futtassa a minta termosztátos eszközt a következő paranccsal:
@@ -83,25 +67,19 @@ Ebben a rövid útmutatóban a IoT Plug and Play eszközként Node.jsban írt mi
 
 ## <a name="run-the-sample-solution"></a>A minta megoldás futtatása
 
+A [környezet beállítása a IoT Plug and Play rövid útmutatók és oktatóanyagok](set-up-environment.md) létrehozott két környezeti változót a minta konfigurálásához a IoT hub és az eszközhöz való kapcsolódáshoz:
+
+* **IOTHUB_CONNECTION_STRING**: a IoT hub-kapcsolatok karakterlánca korábban már jegyzett készített.
+* **IOTHUB_DEVICE_ID**: `"my-pnp-device"` .
+
 Ebben a rövid útmutatóban egy minta IoT megoldást használ a Node.jsban, hogy együttműködjön az imént beállított eszközzel.
 
-1. Nyisson meg egy másik Terminálablak **szolgáltatást a szolgáltatás** -terminálként való használatra. A Service SDK előzetes verzióban érhető el, ezért a mintákat a [Node SDK előzetes verziójú ágának](https://github.com/Azure/azure-iot-sdk-node/tree/pnp-preview-refresh)kell megadnia:
+1. Nyisson meg egy másik Terminálablak **szolgáltatást a szolgáltatás** -terminálként való használatra.
 
-    ```cmd/sh
-    git clone https://github.com/Azure/azure-iot-sdk-node -b pnp-preview-refresh
-    ```
-
-1. Lépjen a klónozott adattár-ág mappájába, és navigáljon a */Azure-IOT-SDK-Node/digitaltwins/Samples/Service/JavaScript* mappára. Telepítse az összes függőséget a következő parancs futtatásával:
+1. A klónozott Node SDK-adattárban navigáljon a */Azure-IOT-SDK-Node/Service/Samples/JavaScript* mappára. Telepítse az összes függőséget a következő parancs futtatásával:
 
     ```cmd/sh
     npm install
-    ```
-
-1. Adja meg az eszköz AZONOSÍTÓjának környezeti változóit, és _IoT hub a kapcsolatok karakterláncát_:
-
-    ```cmd/sh
-    set IOTHUB_CONNECTION_STRING=<YourIOTHubConnectionString>
-    set IOTHUB_DEVICE_ID=<Your device ID>
     ```
 
 ### <a name="read-a-property"></a>Tulajdonság beolvasása
@@ -163,7 +141,7 @@ Ebben az esetben a kimenete `Model Id: dtmi:com:example:Thermostat;1` .
 1. Az **eszköz** -terminálon láthatja, hogy az eszköz a következő frissítést kapta:
 
     ```cmd/sh
-    The following properties will be updated for root interface:
+    The following properties will be updated for the default component:
     {
       targetTemperature: {
         value: 42,
@@ -221,11 +199,9 @@ Ebben az esetben a kimenete `Model Id: dtmi:com:example:Thermostat;1` .
     Response to method 'getMaxMinReport' sent successfully.
     ```
 
-[!INCLUDE [iot-pnp-clean-resources.md](../../includes/iot-pnp-clean-resources.md)]
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan csatlakoztatható egy IoT Plug and Play-eszköz egy IoT-megoldáshoz. Ha többet szeretne megtudni a IoT Plug and Play eszköz modelljeiről, tekintse meg a következőt:
 
 > [!div class="nextstepaction"]
-> [IoT Plug and Play előzetes verzió modellezése – fejlesztői útmutató](concepts-developer-guide.md)
+> [IoT Plug and Play modellezési fejlesztői útmutató](concepts-developer-guide-device-csharp.md)

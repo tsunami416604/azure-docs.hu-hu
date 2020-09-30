@@ -1,81 +1,64 @@
 ---
-title: A IoT csatlakoztatása Plug and Play Preview minta C# összetevő-eszköz kódja a IoT Hubhoz | Microsoft Docs
-description: Hozzon létre és futtasson IoT Plug and Play előzetes minta C#-eszköz kódját, amely több összetevőt használ, és csatlakozik egy IoT hubhoz. Az Azure IoT Explorer eszköz használatával megtekintheti az eszköz által a hubhoz továbbított adatokat.
+title: A IoT csatlakoztatása Plug and Play minta C# összetevő-eszköz kódja a IoT Hubhoz | Microsoft Docs
+description: Hozzon létre és futtasson IoT Plug and Play minta C#-eszköz kódját, amely több összetevőt használ, és csatlakozik egy IoT hubhoz. Az Azure IoT Explorer eszköz használatával megtekintheti az eszköz által a hubhoz továbbított adatokat.
 author: ericmitt
 ms.author: ericmitt
 ms.date: 07/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 67b71399332fb29a277381a8c2806dbe7fb31d85
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: f6f87ed4ba74c3f7750e56d4bb8473cf4b1a4341
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552118"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575384"
 ---
 # <a name="tutorial-connect-an-iot-plug-and-play-multiple-component-device-application-running-on-windows-to-iot-hub-c"></a>Oktatóanyag: IoT csatlakoztatása a Windows rendszeren futó több összetevőt használó Plug and Play IoT Hub (C#)
 
 [!INCLUDE [iot-pnp-tutorials-device-selector.md](../../includes/iot-pnp-tutorials-device-selector.md)]
 
-Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy minta IoT Plug and Play eszköz-alkalmazást az összetevőkkel és a gyökérszintű felülettel, hogyan csatlakoztathatja az IoT hubhoz, és az Azure IoT Explorer eszköz használatával megtekintheti az általa az adott hubhoz küldött adatokat. A minta alkalmazás C# nyelven íródott, és a C#-hoz készült Azure IoT Device SDK tartalmazza. A megoldás-szerkesztő az Azure IoT Explorer eszköz használatával képes értelmezni egy IoT Plug and Play eszköz képességeit anélkül, hogy meg kellene tekintenie az eszköz kódját.
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre IoT Plug and Play-eszköz-alkalmazást összetevőkkel, hogyan csatlakoztathatja az IoT hubhoz, és az Azure IoT Explorer eszköz használatával megtekintheti a központnak küldött adatokat. A minta alkalmazás C# nyelven íródott, és a C#-hoz készült Azure IoT Device SDK tartalmazza. A megoldás-szerkesztő az Azure IoT Explorer eszköz használatával képes értelmezni egy IoT Plug and Play eszköz képességeit anélkül, hogy meg kellene tekintenie az eszköz kódját.
 
 ## <a name="prerequisites"></a>Előfeltételek
+
+[!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
 Az oktatóanyag Windows rendszeren történő elvégzéséhez telepítse a következő szoftvereket a helyi Windows-környezetbe:
 
 * [Visual Studio (Közösség, Professional vagy Enterprise)](https://visualstudio.microsoft.com/downloads/).
 * [Git](https://git-scm.com/download/).
-* [CMAK](https://cmake.org/download/).
 
-### <a name="azure-iot-explorer"></a>Azure IoT Explorer
+### <a name="clone-the-sdk-repository-with-the-sample-code"></a>Az SDK-tárház klónozása a mintakód használatával
 
-Az oktatóanyag második részében az **Azure IoT Explorer** eszköz használatával kommunikálhat a minta eszközzel. [Töltse le és telepítse az Azure IoT Explorer legújabb kiadását](./howto-use-iot-explorer.md) az operációs rendszeréhez.
+Ha befejezte a gyors üzembe helyezést [: csatlakoztasson egy IoT Plug and Play Windows rendszerű eszközt IoT hub (C#)](quickstart-connect-device-csharp.md), már klónozotta a tárházat.
 
-[!INCLUDE [iot-pnp-prepare-iot-hub.md](../../includes/iot-pnp-prepare-iot-hub.md)]
-
-Futtassa a következő parancsot a hub _IoT hub-kapcsolódási karakterláncának_ lekéréséhez. Jegyezze fel ezt a összekapcsolási karakterláncot, amelyet később az oktatóanyagban használ:
-
-```azurecli-interactive
-az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
-```
-
-> [!TIP]
-> Az Azure IoT Explorer eszközzel is megkeresheti az IoT hub kapcsolódási karakterláncát.
-
-A következő parancs futtatásával lekérheti a hubhoz felvett eszközhöz tartozó _eszköz-kapcsolódási karakterláncot_ . Jegyezze fel ezt a összekapcsolási karakterláncot, amelyet később az oktatóanyagban használ:
-
-```azurecli-interactive
-az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --device-id <YourDeviceID> --output table
-```
-
-[!INCLUDE [iot-pnp-download-models.md](../../includes/iot-pnp-download-models.md)]
-
-## <a name="download-the-code"></a>A kód letöltése
-
-Ebben az oktatóanyagban olyan fejlesztési környezetet készít elő, amellyel klónozott és felépítheti az Azure IoT Hub Device C# SDK-t.
-
-Nyisson meg egy parancssort az Ön által választott könyvtárban. Futtassa a következő parancsot az [Azure IoT C# SDK-k és könyvtárak GitHub-](https://github.com/Azure/azure-iot-sdk-csharp) tárházának klónozásához az alábbi helyre:
+A mintákat a .NET GitHub-tárház Microsoft Azure IoT SDK-ból klónozott. Nyisson meg egy parancssort egy tetszőleges mappában. Futtassa a következő parancsot a .NET GitHub-tárház [Microsoft Azure IoT-mintáinak](https://github.com/Azure-Samples/azure-iot-samples-csharp) klónozásához:
 
 ```cmd
-git clone https://github.com/Azure/azure-iot-sdk-csharp.git
+git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
 ```
 
-## <a name="build-the-code"></a>A kód létrehozása
+## <a name="run-the-sample-device"></a>A minta eszköz futtatása
 
-Nyissa meg a **azureiot. SLN** Solution fájlt a Visual Studio 2019-ben, és állítsa be a **TemperatureController** projektet indítási projektként. **Megoldáskezelő**a projektfájl a **iothub > Device > Samples**-ben található.
+Ebben a rövid útmutatóban egy olyan minta hőmérséklet-vezérlő eszközt használ, amelyet C# nyelven írt be a IoT Plug and Play eszközként. A minta eszköz futtatása:
 
-Most már létrehozhatja a mintát a Visual Studióban, és hibakeresési módban futtathatja.
+1. Nyissa meg a *Azure-IOT-Samples-csharp\iot-hub\Samples\device\PnpDeviceSamples\TemperatureController\TemperatureController.csproj* projektfájlt a Visual Studio 2019-ben.
 
-## <a name="run-the-device-sample"></a>Az eszköz mintájának futtatása
+1. A Visual Studióban navigáljon a **Project > TemperatureController tulajdonságok > hibakeresés**elemre. Ezután adja hozzá a következő környezeti változókat a projekthez:
 
-Hozzon létre egy **IOTHUB_DEVICE_CONNECTION_STRING** nevű környezeti változót, amely a korábban jegyzett eszköz-kapcsolódási karakterláncot tárolja.
+    | Név | Érték |
+    | ---- | ----- |
+    | IOTHUB_DEVICE_SECURITY_TYPE | DPS |
+    | IOTHUB_DEVICE_DPS_ENDPOINT | global.azure-devices-provisioning.net |
+    | IOTHUB_DEVICE_DPS_ID_SCOPE | Az érték, amelyet a [környezet beállításakor](set-up-environment.md) jegyzett készített |
+    | IOTHUB_DEVICE_DPS_DEVICE_ID | saját PnP-eszköz |
+    | IOTHUB_DEVICE_DPS_DEVICE_KEY | Az érték, amelyet a [környezet beállításakor](set-up-environment.md) jegyzett készített |
 
-A Visual Studióban a Windowson a kód végrehajtásának nyomon követéséhez adjon hozzá egy töréspontot a `main` függvényhez a program.cs fájlban.
 
-Az eszköz most már készen áll a parancsok és a tulajdonságok frissítéseinek fogadására, és megkezdte a telemetria adatok küldését a központba. A következő lépések elvégzése közben tartsa a mintát.
+1. Most már létrehozhatja a mintát a Visual Studióban, és hibakeresési módban futtathatja.
+
+1. Üzenet jelenik meg, amely közli, hogy az eszköz elküldött néhány információt, és online jelentett. Ezek az üzenetek azt jelzik, hogy az eszköz megkezdte a telemetria-adatok küldését a központba, és készen áll a parancsok és a tulajdonságok frissítéseinek fogadására. Ne zárd be a Visual Studiónak ezt a példányát, hogy erősítse meg, hogy a szolgáltatási minta működik-e.
 
 ## <a name="use-azure-iot-explorer-to-validate-the-code"></a>A kód érvényesítése az Azure IoT Explorer használatával
 
@@ -90,52 +73,57 @@ Ez a példa egy IoT Plug and Play hőmérséklet-vezérlő eszközt valósít me
 Az eszköz kódja a standard metódus használatával csatlakozik az IoT hubhoz `CreateFromConnectionString` . Az eszköz elküldi a DTDL modell AZONOSÍTÓját a kapcsolatkérelem számára. Egy IoT Plug and Play eszköz a modell AZONOSÍTÓját küldő eszköz:
 
 ```csharp
-private static void InitializeDeviceClientAsync()
+private static DeviceClient InitializeDeviceClient(string hostname, IAuthenticationMethod authenticationMethod)
 {
-  var options = new ClientOptions
-  {
-      ModelId = ModelId,
-  };
-  s_deviceClient = DeviceClient.CreateFromConnectionString(s_deviceConnectionString, TransportType.Mqtt, options);
-  s_deviceClient.SetConnectionStatusChangesHandler((status, reason) =>
-  {
-      s_logger.LogDebug($"Connection status change registered - status={status}, reason={reason}.");
-  });
+    var options = new ClientOptions
+    {
+        ModelId = ModelId,
+    };
+
+    var deviceClient = DeviceClient.Create(hostname, authenticationMethod, TransportType.Mqtt, options);
+    deviceClient.SetConnectionStatusChangesHandler((status, reason) =>
+    {
+        s_logger.LogDebug($"Connection status change registered - status={status}, reason={reason}.");
+    });
+
+    return deviceClient;
 }
 ```
 
 A modell AZONOSÍTÓját a kód a következő kódrészletben látható módon tárolja:
 
 ```csharp
-private const string ModelId = "dtmi:com:example:Thermostat;1";
+private const string ModelId = "dtmi:com:example:TemperatureController;1";
 ```
 
-Miután az eszköz csatlakozik az IoT hubhoz, a kód regisztrálja a parancs-kezelőket. A `reboot` parancs a gyökérszintű felületen van definiálva. A `getMaxMinReport` parancs a két termosztát-összetevőben van definiálva:
+Miután az eszköz csatlakozik az IoT hubhoz, a kód regisztrálja a parancs-kezelőket. A `reboot` parancs az alapértelmezett összetevőben van definiálva. A `getMaxMinReport` parancs a két termosztát-összetevőben van definiálva:
 
 ```csharp
-await s_deviceClient.SetMethodHandlerAsync("reboot", HandleRebootCommandAsync, s_deviceClient);
-await s_deviceClient.SetMethodHandlerAsync("thermostat1*getMaxMinReport", HandleMaxMinReportCommandAsync, Thermostat1);
-await s_deviceClient.SetMethodHandlerAsync("thermostat2*getMaxMinReport", HandleMaxMinReportCommandAsync, Thermostat2);
+await _deviceClient.SetMethodHandlerAsync("reboot", HandleRebootCommandAsync, _deviceClient, cancellationToken);
+await _deviceClient.SetMethodHandlerAsync("thermostat1*getMaxMinReport", HandleMaxMinReportCommandAsync, Thermostat1, cancellationToken);
+await _deviceClient.SetMethodHandlerAsync("thermostat2*getMaxMinReport", HandleMaxMinReportCommandAsync, Thermostat2, cancellationToken);
+
 ```
 
 A kívánt tulajdonság-frissítésekhez külön kezelők tartoznak a két termosztát-összetevőn:
 
 ```csharp
-s_desiredPropertyUpdateCallbacks.Add(Thermostat1, TargetTemperatureUpdateCallbackAsync);
-s_desiredPropertyUpdateCallbacks.Add(Thermostat2, TargetTemperatureUpdateCallbackAsync);
+_desiredPropertyUpdateCallbacks.Add(Thermostat1, TargetTemperatureUpdateCallbackAsync);
+_desiredPropertyUpdateCallbacks.Add(Thermostat2, TargetTemperatureUpdateCallbackAsync);
+
 ```
 
 A mintakód a telemetria az egyes termosztát-összetevőkből küldi el:
 
 ```csharp
-await SendTemperatureAsync(Thermostat1);
-await SendTemperatureAsync(Thermostat2);
+await SendTemperatureAsync(Thermostat1, cancellationToken);
+await SendTemperatureAsync(Thermostat2, cancellationToken);
 ```
 
-A `SendTemperature` metódus a `PnpHhelper` osztály használatával hoz létre üzeneteket az egyes összetevőkhöz:
+A `SendTemperatureTelemetryAsync` metódus a `PnpHhelper` osztály használatával hoz létre üzeneteket az egyes összetevőkhöz:
 
 ```csharp
-Message msg = PnpHelper.CreateIothubMessageUtf8(telemetryName, JsonConvert.SerializeObject(currentTemperature), componentName);
+using Message msg = PnpHelper.CreateIothubMessageUtf8(telemetryName, JsonConvert.SerializeObject(currentTemperature), componentName);
 ```
 
 Az `PnpHelper` osztály más mintavételi módszereket is tartalmaz, amelyek több összetevő-modellel is használhatók.
@@ -144,13 +132,11 @@ Az Azure IoT Explorer eszköz használatával megtekintheti a két termosztát-�
 
 :::image type="content" source="media/tutorial-multiple-components-csharp/multiple-component.png" alt-text="Több összetevős eszköz az Azure IoT Explorerben":::
 
-Az Azure IoT Explorer eszköz használatával a parancsok a két termosztát-összetevő vagy a gyökérszintű felületen is meghívhatók.
+Az Azure IoT Explorer eszköz használatával a parancsok a két termosztát-összetevő vagy az alapértelmezett összetevő egyikében is hívhatók.
 
-[!INCLUDE [iot-pnp-clean-resources.md](../../includes/iot-pnp-clean-resources.md)]
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan csatlakoztathat egy IoT Plug and Play-eszközt az összetevőkkel egy IoT hubhoz. Ha többet szeretne megtudni a IoT Plug and Play eszköz modelljeiről, tekintse meg a következőt:
 
 > [!div class="nextstepaction"]
-> [IoT Plug and Play előzetes verzió modellezése – fejlesztői útmutató](concepts-developer-guide.md)
+> [IoT Plug and Play modellezési fejlesztői útmutató](concepts-developer-guide-device-csharp.md)

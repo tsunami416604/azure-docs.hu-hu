@@ -12,12 +12,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 03/05/2020
 ms.author: alkohli
-ms.openlocfilehash: 1c9d4747b227c7ff83e4c43292badd65836edfef
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 5b9958f3dd497aa612a92947b8d968439ef9d0e4
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90052171"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575962"
 ---
 # <a name="install-update-51-on-your-storsimple-device"></a>Az 5,1-es frissítés telepítése a StorSimple-eszközön
 
@@ -60,15 +60,15 @@ Az alábbi lépések végrehajtásával frissítheti az eszközt az 5,1-es [fris
 
 2. Navigáljon az **eszközbeállítások**  >  **eszköz frissítései**menüpontra.
 
-    ![Kattintson az eszközök frissítései lehetőségre](./media/storsimple-8000-install-update-51/update2.png)
+    ![Képernyőkép a beállítások panelről, az eszköz frissítéseinek meghívása lehetőséggel.](./media/storsimple-8000-install-update-51/update2.png)
 
 3. Megjelenik egy értesítés, ha új frissítések érhetők el. Azt is megteheti, hogy az **eszköz frissítései** panelen a **frissítések keresése**lehetőségre kattint. Létrejön egy feladat, amely megkeresi az elérhető frissítéseket. A feladat sikeres befejezéséről értesítést kap.
 
-    ![Kattintson az eszközök frissítései lehetőségre](./media/storsimple-8000-install-update-51/update3.png)
+    ![Képernyőkép a beállítások panelről, ahol a rendszer meghívja a beállításokat, és az eszköz frissítései panel az új rendszeres frissítésekkel elérhető üzenet jelenik meg.](./media/storsimple-8000-install-update-51/update3.png)
 
 4. Azt javasoljuk, hogy mielőtt alkalmazná a frissítést az eszközön, tekintse át a kibocsátási megjegyzéseket. A frissítések alkalmazásához kattintson a **frissítések telepítése**elemre. A frissítések alkalmazása előtt tekintse át az előfeltételeket a **rendszeres frissítések megerősítése** panelen. Jelölje be a jelölőnégyzetet annak jelzéséhez, hogy készen áll az eszköz frissítésére, majd kattintson a **telepítés**gombra.
 
-    ![Kattintson az eszközök frissítései lehetőségre](./media/storsimple-8000-install-update-51/update4.png)
+    ![Képernyőkép az eszköz frissítései panelről, ahol a frissítések telepítése lehetőség ki van választva, valamint a rendszeres frissítések megerősítése az egyetértési lehetőséggel és a telepítési lehetőséggel.](./media/storsimple-8000-install-update-51/update4.png)
 
 5. Megkezdődik az előfeltételek ellenőrzése. Ezekbe az ellenőrzésekbe a következők tartoznak:
    
@@ -80,17 +80,17 @@ Az alábbi lépések végrehajtásával frissítheti az eszközt az 5,1-es [fris
 
 7. Az előzetes ellenőrzések sikeres befejeződése után létrejön egy frissítési feladatok. A frissítési feladat sikeres létrehozásáról értesítést kap.
    
-    ![Frissítési feladat létrehozása](./media/storsimple-8000-install-update-51/update6.png)
+    ![Képernyőkép a következőről: "a szoftverfrissítési feladatok indítása".](./media/storsimple-8000-install-update-51/update6.png)
    
     A rendszer ezután alkalmazza a frissítést az eszközre.
 
 9. A frissítés elvégzése néhány órát igényel. Válassza ki a frissítési feladatot, és kattintson a **Részletek** gombra, így bármikor megtekintheti a feladat részleteit.
 
-    ![Frissítési feladat létrehozása](./media/storsimple-8000-install-update-51/update8.png)
+    ![Képernyőkép az eszköz frissítései panelről, amelyen a szoftverfrissítések letöltése és telepítése folyamatban van, és a frissítések telepítése panel van kiválasztva.](./media/storsimple-8000-install-update-51/update8.png)
 
      Nyomon követheti a frissítési feladat előrehaladását az **eszközbeállítások > feladatokból**is. A **feladatok** panelen láthatja a frissítés folyamatát.
 
-     ![Frissítési feladat létrehozása](./media/storsimple-8000-install-update-51/update7.png)
+     ![Képernyőkép a beállítások panelről, ahol a feladatok felhívhatók, a feladatok panel pedig a frissítés előrehaladását mutatja.](./media/storsimple-8000-install-update-51/update7.png)
 
 10. A feladatok befejezése után navigáljon az eszközbeállítások **> eszköz frissítései**elemre. A szoftver verzióját most frissíteni kell.
 
@@ -166,6 +166,6 @@ Perform the following steps to download and install the hotfixes.
 [!INCLUDE [storsimple-8000-install-troubleshooting](../../includes/storsimple-8000-install-troubleshooting.md)]
 -->
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az 5,1-es [frissítésről](storsimple-update51-release-notes.md).

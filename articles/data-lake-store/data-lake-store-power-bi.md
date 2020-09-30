@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 282ac6f87d5ecff75e77b075ee1092f79b4923ad
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: bcc561cd5eea4372d798fff4580362ba0879c3a4
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192858"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91574194"
 ---
 # <a name="analyze-data-in-azure-data-lake-storage-gen1-by-using-power-bi"></a>Azure Data Lake Storage Gen1i adatelemzés Power BI használatával
 Ebből a cikkből megtudhatja, hogyan elemezheti és jelenítheti meg a Azure Data Lake Storage Gen1ban tárolt információkat a Power BI Desktop használatával.
@@ -27,7 +27,7 @@ Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 1. Power BI Desktop elindítása a számítógépen.
 2. A **Kezdőlap** menüszalagon kattintson az **adatok lekérése**elemre, majd kattintson a továbbiak elemre. Az **adatlekérdezés** párbeszédpanelen kattintson az **Azure**elemre, majd a **Azure Data Lake Store**elemre, végül a **kapcsolat**elemre.
    
-    ![Kapcsolódás Data Lake Storage Gen1hoz](./media/data-lake-store-power-bi/get-data-lake-store-account.png "Kapcsolódás Data Lake Storage Gen1hoz")
+    ![Képernyőkép az adatlekérdezés párbeszédpanelről, a Kiemelt Azure Data Lake Store lehetőséggel és a csatlakozási lehetőséggel.](./media/data-lake-store-power-bi/get-data-lake-store-account.png "Kapcsolódás Data Lake Storage Gen1hoz")
 3. Ha megjelenik egy párbeszédpanel arról, hogy az összekötő egy fejlesztési fázisban van, a folytatáshoz válassza a következőt:.
 4. A **Azure Data Lake Store** párbeszédpanelen adja meg a Data Lake Storage Gen1-fiók URL-címét, majd kattintson az **OK**gombra.
    
@@ -37,7 +37,7 @@ Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
     ![Bejelentkezés Data Lake Storage Gen1](./media/data-lake-store-power-bi/get-data-lake-store-account-signin.png "Bejelentkezés Data Lake Storage Gen1")
 6. Miután sikeresen bejelentkezett, kattintson a **kapcsolat**gombra.
    
-    ![Kapcsolódás Data Lake Storage Gen1hoz](./media/data-lake-store-power-bi/get-data-lake-store-account-connect.png "Kapcsolódás Data Lake Storage Gen1hoz")
+    ![Képernyőkép a Azure Data Lake Store párbeszédpanelről, a csatlakozási lehetőséggel.](./media/data-lake-store-power-bi/get-data-lake-store-account-connect.png "Kapcsolódás Data Lake Storage Gen1hoz")
 7. A következő párbeszédpanel megjeleníti a Data Lake Storage Gen1-fiókjába feltöltött fájlt. Ellenőrizze az adatokat, majd kattintson a **Betöltés**elemre.
    
     ![Adatok betöltése a Data Lake Storage Gen1ból](./media/data-lake-store-power-bi/get-data-lake-store-account-load.png "Adatok betöltése a Data Lake Storage Gen1ból")
@@ -52,19 +52,19 @@ Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
     A következő lépésekben frissíteni fogjuk a lekérdezést, hogy az importált adattípusokat a kívánt formátumban alakítsa át.
 9. A **Kezdőlap** menüszalagon kattintson a **lekérdezések szerkesztése**elemre.
    
-    ![Lekérdezések szerkesztése](./media/data-lake-store-power-bi/edit-queries.png "Lekérdezések szerkesztése")
+    ![Képernyőkép a Kezdőlap menüszalagról a lekérdezések szerkesztése lehetőség kiválasztásával.](./media/data-lake-store-power-bi/edit-queries.png "Lekérdezések szerkesztése")
 10. A lekérdezés-szerkesztő **tartalom** oszlopában kattintson a **bináris**elemre.
     
-    ![Lekérdezések szerkesztése](./media/data-lake-store-power-bi/convert-query1.png "Lekérdezések szerkesztése")
+    ![Képernyőkép: a lekérdezés-szerkesztő és a kinevezett tartalom oszlop.](./media/data-lake-store-power-bi/convert-query1.png "Lekérdezések szerkesztése")
 11. Egy fájl ikon jelenik meg, amely a feltöltött **Drivers.txt** fájlt jelöli. Kattintson a jobb gombbal a fájlra, majd kattintson a **CSV**elemre.    
     
-    ![Lekérdezések szerkesztése](./media/data-lake-store-power-bi/convert-query2.png "Lekérdezések szerkesztése")
+    ![Képernyőkép a lekérdezési Szerkesztőről a CSV-beállítással.](./media/data-lake-store-power-bi/convert-query2.png "Lekérdezések szerkesztése")
 12. Az alább látható kimenetnek kell megjelennie. Az adatai mostantól a vizualizációk létrehozásához használható formátumban érhetők el.
     
-    ![Lekérdezések szerkesztése](./media/data-lake-store-power-bi/convert-query3.png "Lekérdezések szerkesztése")
+    ![Képernyőkép a lekérdezési Szerkesztőről a várt módon megjelenített kimenettel.](./media/data-lake-store-power-bi/convert-query3.png "Lekérdezések szerkesztése")
 13. A **Kezdőlap** menüszalagon kattintson a **Bezárás**gombra, majd kattintson a **Bezárás**gombra, és válassza az alkalmaz elemet.
     
-    ![Lekérdezések szerkesztése](./media/data-lake-store-power-bi/load-edited-query.png "Lekérdezések szerkesztése")
+    ![Képernyőkép a Kezdőlap menüszalagján a Bezárás és az alkalmaz lehetőséggel.](./media/data-lake-store-power-bi/load-edited-query.png "Lekérdezések szerkesztése")
 14. A lekérdezés frissítése után a **mezők** lapon megjelennek a vizualizációhoz elérhető új mezők.
     
     ![Frissített mezők](./media/data-lake-store-power-bi/updated-query-fields.png "Frissített mezők")
@@ -90,6 +90,6 @@ Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 ## <a name="publish-report-to-power-bi-service"></a>Jelentés közzététele Power BI szolgáltatás
 Miután létrehozta a vizualizációkat a Power BI Desktopban, megoszthatja másokkal, ha közzéteszi azt a Power BI szolgáltatás. Ennek módjával kapcsolatos útmutatásért lásd: [közzététel Power bi Desktopról](https://powerbi.microsoft.com/documentation/powerbi-desktop-upload-desktop-files/).
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 * [Data Lake Storage Gen1 adatai elemzése a Data Lake Analytics használatával](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 

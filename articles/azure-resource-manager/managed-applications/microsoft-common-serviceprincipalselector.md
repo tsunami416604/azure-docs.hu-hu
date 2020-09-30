@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 09/29/2020
 ms.author: tomfitz
-ms.openlocfilehash: 06fa5868cf0a907e268a347cfdfa2b5ee20908e3
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 73b242754bfae53b6df5abd9c2c8dee33b973dad
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/30/2020
-ms.locfileid: "91571361"
+ms.locfileid: "91575996"
 ---
 # <a name="microsoftcommonserviceprincipalselector-ui-element"></a>Microsoft. Common. ServicePrincipalSelector felhasználói felületi elem
 
@@ -148,7 +148,7 @@ Ha a legördülő listából nem készül kijelölés, a `newOrExisting` tulajdo
     "value": "<default guid>"
   },
   "objectId": {
-    "value": "<default guid>"
+    "value": ["<default guid>"]
   },
   "password": {
     "value": "<password>"
@@ -173,7 +173,7 @@ Az **új létrehozásakor** vagy egy meglévő alkalmazás azonosítójának kiv
     "value": "<guid>"
   },
   "objectId": {
-    "value": "<guid>"
+    "value": ["<guid>"]
   },
   "password": {
     "value": "<password>"
@@ -190,7 +190,7 @@ Az **új létrehozásakor** vagy egy meglévő alkalmazás azonosítójának kiv
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A felhasználói felületi definíciók létrehozásával kapcsolatban lásd: Bevezetés [a CreateUiDefinition](create-uidefinition-overview.md)használatába.
 - A felhasználói felületi elemek általános tulajdonságainak leírását lásd: [CreateUiDefinition-elemek](create-uidefinition-elements.md).

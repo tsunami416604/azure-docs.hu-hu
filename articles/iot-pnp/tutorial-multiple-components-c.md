@@ -1,28 +1,28 @@
 ---
-title: A IoT csatlakoztatása Plug and Play a C-eszköz kódjának előnézete IoT Hub | Microsoft Docs
-description: Hozzon létre és futtasson IoT Plug and Play Preview minta C-eszköz kódját, amely több összetevőt használ, és csatlakozik egy IoT hubhoz. Az Azure IoT Explorer eszköz használatával megtekintheti az eszköz által a hubhoz továbbított adatokat.
+title: IoT csatlakoztatása Plug and Play C-eszköz kódja a IoT Hubhoz | Microsoft Docs
+description: Hozzon létre és futtasson IoT Plug and Play minta C-eszköz kódját, amely több összetevőt használ, és csatlakozik egy IoT hubhoz. Az Azure IoT Explorer eszköz használatával megtekintheti az eszköz által a hubhoz továbbított adatokat.
 author: ericmitt
 ms.author: ericmitt
 ms.date: 07/22/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 29017ec11429b26018093980ca71c317b12085b5
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.openlocfilehash: 1873d2acb96c0c94c7e0d678e450596c60ca51fb
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89505887"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575401"
 ---
 # <a name="tutorial-connect-an-iot-plug-and-play-multiple-component-device-applications-running-on-linux-or-windows-to-iot-hub-c"></a>Oktatóanyag: IoT csatlakoztatása Plug and Play Linux vagy Windows rendszeren futó, több összetevőt használó eszköz-alkalmazás IoT Hub (C)
 
 [!INCLUDE [iot-pnp-tutorials-device-selector.md](../../includes/iot-pnp-tutorials-device-selector.md)]
 
-Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy minta IoT Plug and Play eszköz-alkalmazást az összetevőkkel és a gyökérszintű felülettel, hogyan csatlakoztathatja az IoT hubhoz, és az Azure IoT Explorer eszköz használatával megtekintheti az általa az adott hubhoz küldött adatokat. A minta alkalmazás C nyelven íródott, amely a C Azure IoT Device SDK-ban szerepel. A megoldás-szerkesztő az Azure IoT Explorer eszköz használatával képes értelmezni egy IoT Plug and Play eszköz képességeit anélkül, hogy meg kellene tekintenie az eszköz kódját.
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre IoT Plug and Play-eszköz-alkalmazást összetevőkkel, hogyan csatlakoztathatja az IoT hubhoz, és az Azure IoT Explorer eszköz használatával megtekintheti a központnak küldött adatokat. A minta alkalmazás C nyelven íródott, amely a C Azure IoT Device SDK-ban szerepel. A megoldás-szerkesztő az Azure IoT Explorer eszköz használatával képes értelmezni egy IoT Plug and Play eszköz képességeit anélkül, hogy meg kellene tekintenie az eszköz kódját.
 
 ## <a name="prerequisites"></a>Előfeltételek
+
+[!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
 Ezt az oktatóanyagot Linux vagy Windows rendszeren is elvégezheti. Az oktatóanyagban található rendszerhéj-parancsok követik a "" Path elválasztók Linux-egyezményét `/` , ha a Windows rendszerű számítógépeken is ezt követően szeretné felcserélni ezeket a elválasztókat a következőre: " `\` ".
 
@@ -52,34 +52,13 @@ gcc --version
 
 Az oktatóanyag Windows rendszeren történő elvégzéséhez telepítse a következő szoftvereket a helyi Windows-környezetbe:
 
-* [Visual Studio (közösségi, szakmai vagy vállalati)](https://visualstudio.microsoft.com/downloads/) – ügyeljen arra, hogy a Visual Studio [telepítésekor](https://docs.microsoft.com/cpp/build/vscpp-step-0-installation?view=vs-2019) a **C++** számítási feladatait is tartalmazza.
+* [Visual Studio (közösségi, szakmai vagy vállalati)](https://visualstudio.microsoft.com/downloads/) – ügyeljen arra, hogy a Visual Studio [telepítésekor](https://docs.microsoft.com/cpp/build/vscpp-step-0-installation?view=vs-2019&preserve-view=true) a **C++** számítási feladatait is tartalmazza.
 * [Git](https://git-scm.com/download/).
 * [CMAK](https://cmake.org/download/).
 
-### <a name="azure-iot-explorer"></a>Azure IoT Explorer
-
-Az oktatóanyag második részében az **Azure IoT Explorer** eszköz használatával kommunikálhat a minta eszközzel. [Töltse le és telepítse az Azure IoT Explorer legújabb kiadását](./howto-use-iot-explorer.md) az operációs rendszeréhez.
-
-[!INCLUDE [iot-pnp-prepare-iot-hub.md](../../includes/iot-pnp-prepare-iot-hub.md)]
-
-Futtassa a következő parancsot a hub _IoT hub-kapcsolódási karakterláncának_ lekéréséhez. Jegyezze fel ezt a összekapcsolási karakterláncot, amelyet később az oktatóanyagban használ:
-
-```azurecli-interactive
-az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
-```
-
-> [!TIP]
-> Az Azure IoT Explorer eszközzel is megkeresheti az IoT hub kapcsolódási karakterláncát.
-
-A következő parancs futtatásával lekérheti a hubhoz felvett eszközhöz tartozó _eszköz-kapcsolódási karakterláncot_ . Jegyezze fel ezt a összekapcsolási karakterláncot, amelyet később az oktatóanyagban használ:
-
-```azurecli-interactive
-az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --device-id <YourDeviceID> --output table
-```
-
-[!INCLUDE [iot-pnp-download-models.md](../../includes/iot-pnp-download-models.md)]
-
 ## <a name="download-the-code"></a>A kód letöltése
+
+Ha elvégezte a gyors üzembe helyezést [: csatlakoztasson egy minta IoT Plug and Play Linux vagy Windows rendszerű eszközön futó alkalmazást, hogy IoT hub (C)](quickstart-connect-device-c.md) már letöltötte a kódot.
 
 Ebben az oktatóanyagban olyan fejlesztési környezetet készít elő, amellyel klónozott és felépítheti az Azure IoT Hub Device C SDK-t.
 
@@ -102,7 +81,7 @@ A kódot a Visual Studióval vagy a parancssorból is létrehozhatja és futtath
 1. Nyissa meg a klónozott tárház gyökérkönyvtárát. Néhány másodperc elteltével a **CMAK** -támogatás a Visual Studióban csak a projekt futtatásához és hibakereséséhez szükséges.
 1. Ha a Visual Studio elkészült, a **Megoldáskezelőban**navigáljon a minta *iothub_client/Samples/PnP/pnp_temperature_controller/*.
 1. Kattintson a jobb gombbal a *pnp_temperature_controller. c* fájlra, majd válassza a **hibakeresési konfiguráció hozzáadása**elemet. Válassza az **alapértelmezett**lehetőséget.
-1. A Visual Studio megnyitja a *launch.vs.js* fájlt. Szerkessze a fájlt a következő kódrészletben látható módon a szükséges környezeti változók megadásához:
+1. A Visual Studio megnyitja a *launch.vs.js* fájlt. Szerkessze a fájlt a következő kódrészletben látható módon a szükséges környezeti változók megadásához. A hatókör-azonosító és a beléptetési elsődleges kulcs tudomásul jutott, amikor befejezte a [környezet beállítását a IoT Plug and Play rövid útmutatók és oktatóanyagok](set-up-environment.md):
 
     ```json
     {
@@ -115,8 +94,10 @@ A kódot a Visual Studióval vagy a parancssorból is létrehozhatja és futtath
           "projectTarget": "",
           "name": "pnp_temperature_controller.c",
           "env": {
-            "IOTHUB_DEVICE_SECURITY_TYPE": "connectionString",
-            "IOTHUB_DEVICE_CONNECTION_STRING": "<Your device connection string>"
+            "IOTHUB_DEVICE_SECURITY_TYPE": "DPS",
+            "IOTHUB_DEVICE_DPS_ID_SCOPE": "<Your ID scope>",
+            "IOTHUB_DEVICE_DPS_DEVICE_ID": "my-pnp-device",
+            "IOTHUB_DEVICE_DPS_DEVICE_KEY": "<Your enrollment primary key>"
           }
         }
       ]
@@ -148,12 +129,11 @@ A minta összeállítása:
     cmake --build .
     ```
 
+[!INCLUDE [iot-pnp-environment](../../includes/iot-pnp-environment.md)]
+
+A minta-konfigurációval kapcsolatos további tudnivalókért tekintse meg a [minta](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/samples/pnp/readme.md)információit.
+
 A minta futtatása:
-
-1. Hozzon létre két környezeti változót a minta konfigurálásához, hogy kapcsolati sztringet használjon az IoT hubhoz való kapcsolódáshoz:
-
-    * **IOTHUB_DEVICE_SECURITY_TYPE** az értékkel `"connectionString"`
-    * **IOTHUB_DEVICE_CONNECTION_STRING** a korábban létrehozott eszköz-kapcsolódási karakterláncot.
 
 1. A _CMAK_ mappában navigáljon a végrehajtható fájlt tartalmazó mappához, és futtassa a következőt:
 
@@ -165,7 +145,8 @@ A minta futtatása:
 
     ```cmd
     REM Windows
-    iothub_client\samples\pnp\pnp_temperature_controller\Debug\pnp_temperature_controller.exe
+    cd iothub_client\samples\pnp\pnp_temperature_controller\Debug
+    pnp_temperature_controller.exe
     ```
 
 Az eszköz most már készen áll a parancsok és a tulajdonságok frissítéseinek fogadására, és megkezdte a telemetria adatok küldését a központba. A következő lépések elvégzése közben tartsa a mintát.
@@ -311,9 +292,9 @@ A `main` függvény végül elpusztítja a különböző összetevőket, és bez
 
 [!INCLUDE [iot-pnp-clean-resources.md](../../includes/iot-pnp-clean-resources.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan csatlakoztathat egy IoT Plug and Play-eszközt az összetevőkkel egy IoT hubhoz. Ha többet szeretne megtudni a IoT Plug and Play eszköz modelljeiről, tekintse meg a következőt:
 
 > [!div class="nextstepaction"]
-> [IoT Plug and Play előzetes verzió modellezése – fejlesztői útmutató](concepts-developer-guide.md)
+> [IoT Plug and Play modellezési fejlesztői útmutató](concepts-developer-guide-device-csharp.md)

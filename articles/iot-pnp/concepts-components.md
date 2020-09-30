@@ -7,12 +7,12 @@ ms.date: 07/07/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: c4a32a5c929e74332e85ceb6f4cff787e237e385
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: e7b24dd9cdbd11b56545f85ac233665f8fa4adfe
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069645"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91574279"
 ---
 # <a name="iot-plug-and-play-components-in-models"></a>IoT Plug and Play-összetevők a modellekben
 
@@ -56,7 +56,7 @@ Az alábbi példa egy olyan egyszerű modell részét mutatja be, amely nem hasz
 ...
 ```
 
-Bár a modell nem definiál explicit módon egy összetevőt, úgy viselkedik, mintha egyetlen összetevővel rendelkezik az összes telemetria, tulajdonsággal és parancs-definícióval.
+Bár a modell nem definiál explicit módon egy összetevőt, úgy viselkedik, mintha egyetlen, _alapértelmezett összetevő_van, az összes telemetria, tulajdonsággal és parancs-definícióval.
 
 Az alábbi képernyőképen látható, hogyan jelenik meg a modell az Azure IoT Explorer eszközben:
 
@@ -64,9 +64,12 @@ Az alábbi képernyőképen látható, hogyan jelenik meg a modell az Azure IoT 
 
 A modell AZONOSÍTÓját a Device Twin tulajdonság tárolja, amely a következő képernyőképet mutatja:
 
-:::image type="content" source="media/concepts-components/twin-model-id.png" alt-text="Modell azonosítója a digitális Twin tulajdonságban":::
+:::image type="content" source="media/concepts-components/twin-model-id.png" alt-text="Alapértelmezett összetevő az Azure IoT Explorerben":::
 
-Az összetevők nélküli DTDL modellek hasznos egyszerűsítést biztosítanak egy olyan eszköz számára, amely egyetlen telemetria, tulajdonsággal és paranccsal rendelkezik. Az összetevőket nem használó modellek egyszerűen áttelepíthetik egy meglévő eszközt egy IoT Plug and Play eszközre – létrehoz egy DTDL modellt, amely leírja a tényleges eszközt anélkül, hogy meg kellene határoznia a kívánt összetevőket.
+Az összetevők nélküli DTDL modellek hasznos egyszerűsítést biztosítanak egy eszközhöz vagy IoT Edge modulhoz, amely egyetlen telemetria, tulajdonsággal és paranccsal rendelkezik. Az összetevőket nem használó modellek egyszerűen áttelepíthetik egy meglévő eszközt vagy modult IoT Plug and Play eszközre vagy modulra – létrehoz egy DTDL modellt, amely leírja a tényleges eszközt vagy modult anélkül, hogy meg kellene határoznia az összetevőket.
+
+> [!TIP]
+> A modul lehet egy eszköz [modul] (.. /IOT-hub/IOT-hub-devguide-Module-Twins.MD vagy [IoT Edge modul](../iot-edge/about-iot-edge.md).
 
 ## <a name="multiple-components"></a>Több összetevő
 
@@ -109,11 +112,12 @@ Több összetevővel rendelkező DTDL-modell esetén két vagy több összetevő
 ...
 ```
 
-Ebben a modellben három összetevő van definiálva a tartalom szakaszban – két `Thermostat` összetevő és egy `DeviceInformation` összetevő. Létezik egy alapértelmezett gyökérszintű összetevő is.
+Ebben a modellben három összetevő van definiálva a tartalom szakaszban – két `Thermostat` összetevő és egy `DeviceInformation` összetevő. Létezik egy alapértelmezett összetevő is.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megismerte a modell-összetevőket, néhány további erőforrást is talál:
 
+- [A DTDL authoring Tools telepítése és használata](howto-use-dtdl-authoring-tools.md)
 - [Digital Twins Definition Language v2 (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl)
 - [Modell adattárai](./concepts-model-repository.md)

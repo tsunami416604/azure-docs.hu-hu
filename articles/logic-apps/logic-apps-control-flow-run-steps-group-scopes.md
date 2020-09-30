@@ -6,20 +6,20 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.date: 10/03/2018
 ms.topic: article
-ms.openlocfilehash: ef8862ebbcdd1ee79178af56b7c6cc81c7a68a43
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1ee8c7eabd33ad2d8773d55041fcdf54a7dd489b
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91269284"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575010"
 ---
 # <a name="run-actions-based-on-group-status-by-using-scopes-in-azure-logic-apps"></a>Műveletek futtatása a csoport állapota alapján a Azure Logic Apps hatókörök használatával
 
 Ha csak a műveletek egy másik csoportjának sikeres vagy sikertelen végrehajtása után szeretne műveleteket futtatni, csoportosítsa ezeket a műveleteket egy *hatókörön*belül. Ez a struktúra akkor hasznos, ha a műveleteket logikai csoportként szeretné szervezni, kiértékeli a csoport állapotát, és végrehajtja a hatókör állapotán alapuló műveleteket. A hatókör összes műveletének futása után a hatókör a saját állapotát is lekéri. Például hatóköröket alkalmazhat, ha a [kivételt és a hibakezelés](../logic-apps/logic-apps-exception-handling.md#scopes)megvalósítását szeretné végrehajtani. 
 
-A hatókör állapotának vizsgálatához használhatja a logikai alkalmazások futtatási állapotának meghatározására használt feltételeket, például a "sikeres", a "sikertelen", a "megszakított" és így tovább. Alapértelmezés szerint a hatókör összes műveletének sikeressége esetén a hatókör állapota "sikeres" jelölésű. Ha azonban a hatókörben lévő bármelyik művelet meghiúsul vagy meg lett szakítva, a hatókör állapota "sikertelen" jelöléssel jelenik meg. A hatókörök korlátozásait lásd: [korlátok és konfiguráció](../logic-apps/logic-apps-limits-and-config.md). 
+A hatókör állapotának vizsgálatához használhatja a logikai alkalmazások futtatási állapotának meghatározására használt feltételeket, például **sikeres**, **sikertelen**, **megszakított**és így tovább. Alapértelmezés szerint ha a hatókör összes művelete sikeres, a hatókör állapota **sikeresként**van megjelölve. Ha azonban a hatókörben lévő bármelyik művelet meghiúsul vagy meg lett szakítva, a hatókör állapota **nem**megfelelőként van megjelölve. A hatókörök korlátozásait lásd: [korlátok és konfiguráció](../logic-apps/logic-apps-limits-and-config.md). 
 
-Íme például egy olyan magas szintű logikai alkalmazás, amely egy hatókör használatával futtat adott műveleteket és egy feltételt a hatókör állapotának vizsgálatához. Ha a hatókörben lévő bármelyik művelet meghiúsul vagy leáll, a hatókör "sikertelen" vagy "megszakított" értékre van állítva, és a logikai alkalmazás "sikertelen hatókör" üzenetet küld. Ha az összes hatókörrel rendelkező művelet sikeres, a logikai alkalmazás "hatókör sikeres" üzenetet küld.
+Íme például egy olyan magas szintű logikai alkalmazás, amely egy hatókör használatával futtat adott műveleteket és egy feltételt a hatókör állapotának vizsgálatához. Ha a hatókörben lévő műveletek végrehajtása sikertelen vagy váratlanul véget ért, akkor a hatókör **hibásként** van megjelölve vagy **megszakítva** , és a logikai alkalmazás "hatóköre sikertelen" üzenetet küld. Ha az összes hatókörrel rendelkező művelet sikeres, a logikai alkalmazás "hatókör sikeres" üzenetet küld.
 
 ![A diagram a Logic app-hatókör folyamatát mutatja be a "hatókör sikertelen" és a "hatókör sikeres" értékkel.](./media/logic-apps-control-flow-run-steps-group-scopes/scope-high-level.png)
 
@@ -77,12 +77,12 @@ A logikai alkalmazást bármikor mentheti, így gyakran mentheti a munkáját.
       | ------- | ----- | ----------- |
       | **1. útvonalpont** | <*Start*> | Adja meg az útvonal forrását. | 
       | **2. útvonalpont** | <*végén*> | Adja meg az útvonal célhelyét. | 
-      | **Elkerülés** | Nincsenek | Adja meg azokat az elemeket, amelyeket el szeretne kerülni az útvonalon, például autópályákon, útdíjon és így tovább. A lehetséges értékekért lásd: [útvonal kiszámítása](/bingmaps/rest-services/routes/calculate-a-route). | 
+      | **Elkerülés** | Nincs | Adja meg azokat az elemeket, amelyeket el szeretne kerülni az útvonalon, például autópályákon, útdíjon és így tovább. A lehetséges értékekért lásd: [útvonal kiszámítása](/bingmaps/rest-services/routes/calculate-a-route). | 
       | **Optimalizálás** | timeWithTraffic | Válasszon egy paramétert az útvonal optimalizálásához, például a távolságot, az aktuális forgalmi információkkal rendelkező időt és így tovább. Ez a példa a következő értéket használja: "timeWithTraffic" | 
       | **Távolság mértékegysége** | <*saját preferencia*> | Adja meg az útvonal kiszámításához használandó távolsági egységet. Ez a példa a következő értéket használja: "Mile" | 
       | **Közlekedési mód** | Vezetés | Adja meg az útvonal utazási módját. Ez a példa a "vezetés" értéket használja. | 
-      | **Tranzit dátuma és időpontja** | Nincsenek | Csak az átviteli módra vonatkozik. | 
-      | **Tranzit dátum-típus típusa** | Nincsenek | Csak az átviteli módra vonatkozik. | 
+      | **Tranzit dátuma és időpontja** | Nincs | Csak az átviteli módra vonatkozik. | 
+      | **Tranzit dátum-típus típusa** | Nincs | Csak az átviteli módra vonatkozik. | 
       ||||  
 
 1. [Adjon hozzá egy feltételt](../logic-apps/logic-apps-control-flow-conditional-statement.md) , amely ellenőrzi, hogy az aktuális utazási idő meghaladja-e a megadott időt. 
@@ -192,7 +192,7 @@ Ezután adjon hozzá egy hatókört, hogy csoportosítsa az adott műveleteket, 
    
       `result('Scope')[0]['status']`
 
-      ![Képernyőkép, amely a "kifejezés hozzáadása" ablakot mutatja a Kiemelt eredmény kifejezéssel.](./media/logic-apps-control-flow-run-steps-group-scopes/check-scope-status.png)
+      ![Képernyőkép, amely a "kifejezés" mezőt mutatja a Kiemelt eredmény kifejezéssel.](./media/logic-apps-control-flow-run-steps-group-scopes/check-scope-status.png)
 
    1. Mindkét sorban válassza a **egyenlő** , mint az operátor elemet. 
    
@@ -391,7 +391,7 @@ Ha kód nézetben dolgozik, a logikai alkalmazás JSON-definíciójában megadha
 * Ha kérdése van, látogasson el a [Microsoft Q&a Azure Logic apps vonatkozó kérdés oldalára](/answers/topics/azure-logic-apps.html).
 * A szolgáltatásokról és javaslatokról a [Azure Logic apps felhasználói visszajelzéseket ismertető webhelyről](https://aka.ms/logicapps-wish)küldhet vagy szavazhat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Lépések futtatása feltételek alapján (feltételes utasítások)](../logic-apps/logic-apps-control-flow-conditional-statement.md)
 * [Lépések futtatása különböző értékek alapján (switch utasítások)](../logic-apps/logic-apps-control-flow-switch-statement.md)

@@ -1,7 +1,7 @@
 ---
-title: Bejelentkezés felvétele a Microsoft Identity platform ASP.NET-webalkalmazásba
+title: 'Oktatóanyag: a Microsoft Identity platformot használó ASP.NET-Webalkalmazás létrehozása hitelesítéshez | Azure'
 titleSuffix: Microsoft identity platform
-description: Microsoft-bejelentkezés megvalósítása ASP.NET-megoldásban hagyományos webböngésző-alapú alkalmazás és OpenID Connect standard használatával
+description: Ebben az oktatóanyagban olyan ASP.NET-webalkalmazást hoz létre, amely a Microsoft Identity platformot és a OWIN middleware-t használja a felhasználói bejelentkezés engedélyezéséhez.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: 740d62136393cf0c9cf31d367735bffed1c05276
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 6a5fb517b3ea6626a929da10954bd58cc8e39ef0
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88165583"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91574228"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Bejelentkezés felvétele a Microsoftba ASP.NET-webalkalmazásba
 
@@ -25,10 +25,18 @@ Ez az útmutató bemutatja, hogyan valósítható meg a bejelentkezés a Microso
 
 Az útmutató elvégzése után az alkalmazás el tudja fogadni a személyes fiókok bejelentkezési adatait a outlook.com és a live.com. Továbbá a Microsoft Identity platformmal integrált bármely vállalattól vagy szervezettől származó munkahelyi és iskolai fiókok bejelentkezhetnek az alkalmazásba.
 
-> Ehhez az útmutatóhoz a Microsoft Visual Studio 2019 szükséges.  Nincs telepítve?  [Töltse le ingyen a Visual Studio 2019](https://www.visualstudio.com/downloads/)-es verzióját.
+Ebben az oktatóanyagban:
 
->[!NOTE]
-> Ha még nem ismeri a Microsoft Identity platformot, javasoljuk, hogy kezdje a [Microsoft Identity platform bejelentkezni a ASP.net webalkalmazásba](quickstart-v2-aspnet-webapp.md).
+> [!div class="checklist"]
+> * *ASP.net webalkalmazás* -projekt létrehozása a Visual Studióban
+> * A nyílt webes felület .NET-hez (OWIN) kapcsolódó összetevőinek hozzáadása
+> * Kód hozzáadása a felhasználói bejelentkezés és a kijelentkezés támogatásához
+> * Az alkalmazás regisztrálása a Azure Portalban
+> * Az alkalmazás tesztelése
+
+## <a name="prerequisites"></a>Előfeltételek
+
+* A [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) a **ASP.net és a webes fejlesztési** számítási feladattal van telepítve
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Az útmutató által létrehozott minta alkalmazás működése
 
@@ -264,7 +272,7 @@ A Visual Studióban hozzon létre egy új nézetet a bejelentkezési gomb hozzá
     ```
 
 ### <a name="more-information"></a>További információ
- Ez a lap hozzáad egy SVG formátumú bejelentkezés gombot, fekete háttérrel:<br/>![Bejelentkezés Microsoft-fiókkal](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> További bejelentkezési gombokért lépjen a [branding (védjegyezés) irányelvre](./howto-add-branding-in-azure-ad-apps.md "Védjegyzési útmutató").
+ Ez a lap hozzáad egy SVG formátumú bejelentkezés gombot, fekete háttérrel:<br/>![Bejelentkezés Microsoft-fiókkal gomb](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> További bejelentkezési gombokért lépjen a [branding (védjegyezés) irányelvre](./howto-add-branding-in-azure-ad-apps.md "Védjegyzési útmutató").
 
 ## <a name="add-a-controller-to-display-users-claims"></a>Vezérlő hozzáadása a felhasználói jogcímek megjelenítéséhez
 Ez a vezérlő bemutatja, hogy hogyan védheti meg a vezérlőt az `[Authorize]` attribútummal. Ez az attribútum csak a hitelesített felhasználók engedélyezésével korlátozza a hozzáférést a vezérlőhöz. A következő kód az attribútum használatával jeleníti meg a bejelentkezés részeként beolvasott felhasználói jogcímeket:
@@ -353,7 +361,7 @@ Az alkalmazás regisztrálásához és az alkalmazás regisztrációs adatainak 
 
 Az alkalmazás gyors regisztrálásához kövesse az alábbi lépéseket:
 
-1. Nyissa meg az új [Azure Portal-Alkalmazásregisztrációk](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs) ablaktáblát.
+1. Nyissa meg az új  [Azure Portal-Alkalmazásregisztrációk](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs) ablaktáblát.
 1. Adja meg az alkalmazás nevét, majd kattintson a **Regisztráció** elemre.
 1. Az új alkalmazás egyetlen kattintással való letöltéséhez és automatikus konfigurálásához kövesse az utasításokat.
 
@@ -392,7 +400,7 @@ Az alkalmazás Visual Studióban való teszteléséhez nyomja le az F5 billenty�
 
 Ha készen áll a teszt futtatására, használjon Azure AD-fiókot (munkahelyi vagy iskolai fiókot) vagy egy személyes Microsoft-fiók (<span>élő.</span> com vagy <span>Outlook.</span> com) a bejelentkezéshez.
 
-![Bejelentkezés Microsoft-fiókkal](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin.png)
+![Böngésző bejelentkezési oldalán látható Bejelentkezés Microsoft-fiókkal gomb a böngészőben](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin.png)
 <br/><br/>
 ![Jelentkezzen be a Microsoft-fiókba](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin2.png)
 
@@ -470,20 +478,11 @@ A bejelentkezési hozzáférést csak azokra a felhasználói fiókokra korláto
 
 A **IssuerValidator** paraméter használatával egyéni módszert alkalmazhat a kiállítók érvényesítésére. További információ a paraméter használatáról: [TokenValidationParameters](/dotnet/api/microsoft.identitymodel.tokens.tokenvalidationparameters) class.
 
+[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg, hogy a Web Apps hogyan hívhatja meg a webes API-kat.
-
-### <a name="learn-how-to-create-the-application-used-in-this-quickstart"></a>Ismerje meg, hogyan hozhatja létre az ebben a rövid útmutatóban használt alkalmazást
-
-További információ a webes API-kat hívó Microsoft Identity platformmal rendelkező webalkalmazásokról:
+Ismerje meg, hogyan hívhat meg védett webes API-kat a Web Apps szolgáltatásból a Microsoft Identity platformmal:
 
 > [!div class="nextstepaction"]
 > [Webes API-kat hívó webalkalmazások](scenario-web-app-sign-user-overview.md)
-
-Megtudhatja, hogyan hozhat létre Microsoft Graph hívó webalkalmazásokat:
-
-> [!div class="nextstepaction"]
-> [Microsoft Graph ASP.NET-oktatóanyag](/graph/tutorials/aspnet)
-
-[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

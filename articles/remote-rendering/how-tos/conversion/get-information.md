@@ -1,18 +1,18 @@
 ---
-title: A konverzióval kapcsolatos információk beolvasása
-description: A konverzióval kapcsolatos információk beolvasása
+title: Átalakításokkal kapcsolatos információk lekérése
+description: Átalakításokkal kapcsolatos információk lekérése
 author: malcolmtyrrell
 ms.author: matyrr
 ms.date: 03/05/2020
 ms.topic: how-to
-ms.openlocfilehash: 529bfb61b3af7040f3656c04071683841f5abe86
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 89ec0ad40822785457e988cf9e0f9bd6d00ed81f
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88870289"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576625"
 ---
-# <a name="get-information-about-conversions"></a>A konverzióval kapcsolatos információk beolvasása
+# <a name="get-information-about-conversions"></a>Átalakításokkal kapcsolatos információk lekérése
 
 ## <a name="information-about-a-conversion-the-result-file"></a>A konverzióval kapcsolatos információk: az eredmény fájl
 
@@ -65,6 +65,10 @@ Az átalakítási szolgáltatás által létrehozott arrAsset-fájl kizárólag 
         "numMeshUsagesInScene": 236,
         "maxNodeDepth": 3
     },
+    "materialOverrides": {
+        "numOverrides": 4,
+        "numOverriddenMaterials": 4
+    },
     "outputInfo": {
         "conversionToolVersion": "3b28d840de9916f9d628342f474d38c3ab949590",
         "conversionHash": "CCDB1F7A4C09F565"
@@ -115,6 +119,13 @@ Ez a szakasz a forrásfájl formátumával kapcsolatos adatokat rögzíti.
 * `sourceAssetFormatVersion`: A forrásfájl formátumának verziója.
 * `sourceAssetGenerator`: A forrásfájlt létrehozó eszköz neve, ha van ilyen.
 
+### <a name="the-materialoverrides-section"></a>A *materialOverrides* szakasz
+
+Ez a szakasz információkkal szolgál arról, hogy az [anyag](override-materials.md) felülbírálása mikor lett megadva a konverziós szolgáltatásnak.
+A következő adatokat tartalmazza:
+* `numOverrides`: Az anyag-felülbírálási fájlból beolvasott felülbírálási bejegyzések száma.
+* `numOverriddenMaterials`: A felülbírált anyagok száma.
+
 ### <a name="the-inputstatistics-section"></a>A *inputStatistics* szakasz
 
 Ez a szakasz a forrás jelenetről tartalmaz információkat. Az ebben a szakaszban szereplő értékek és a forrás modellt létrehozó eszköz egyenértékű értékei között gyakran előfordulnak eltérések. Ilyen eltérések várhatók, mert a modell az exportálási és átalakítási lépések során módosul.
@@ -150,7 +161,7 @@ Ez a szakasz a konvertált eszközről kiszámított adatokat rögzíti.
 A konverziós szolgáltatás a fájlokat `stdout.txt` és `stderr.txt` a kimeneti tárolót írja, és ezek a figyelmeztetések és hibák egyetlen forrása voltak.
 Ezek a fájlok már elavultak. Ehelyett használja az [eredményhalmaz fájljait](#information-about-a-conversion-the-result-file) erre a célra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Modell átalakítása](model-conversion.md)
 * [A modellátalakítás konfigurálása](configure-model-conversion.md)

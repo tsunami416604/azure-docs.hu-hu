@@ -1,6 +1,7 @@
 ---
-title: Ismerkedés a Microsoft Identity platform Windows asztalával
-description: Egy Windowsos asztali .NET-(XAML-) alkalmazás hozzáférési jogkivonatának beszerzése és a Microsoft Identity platform által védett API meghívása.
+title: 'Oktatóanyag: a Microsoft Identity platformot használó Windows megjelenítési alaprendszer-(WPF-) alkalmazás létrehozása hitelesítéshez | Azure'
+titleSuffix: Microsoft identity platform
+description: Ebben az oktatóanyagban olyan WPF-alkalmazást hoz létre, amely a Microsoft Identity platform használatával jelentkezik be a felhasználókba, és hozzáférési jogkivonatot kap a Microsoft Graph API nevében való meghívásához.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,24 +12,32 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: a865bab690c79288bdffcd7cebe424d1bb1969c0
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 7effb1592fb19f92958353a3333edf6fdf9a51af
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "82181536"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91574262"
 ---
 # <a name="call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>A Microsoft Graph API meghívása egy Windowsos asztali alkalmazásból
 
-Ez az útmutató azt mutatja be, hogy a natív Windowsos asztali .NET-(XAML-) alkalmazások hogyan használják a hozzáférési jogkivonatot a Microsoft Graph API meghívásához. Az alkalmazás más API-khoz is hozzáférhet, amelyek hozzáférési jogkivonatokat igényelnek a Microsoft Identity platform for Developers 2.0-s végpontján. Ezt a platformot korábban Azure AD-nek nevezték.
+Ez az útmutató azt mutatja be, hogy a natív Windowsos asztali .NET-(XAML-) alkalmazások hogyan használják a hozzáférési jogkivonatot a Microsoft Graph API meghívásához. Az alkalmazás más API-khoz is hozzáférhet, amelyekhez hozzáférési jogkivonatok szükségesek a Microsoft Identity platformon.
 
 Az útmutató befejezése után az alkalmazás képes lesz meghívni egy védett API-t, amely személyes fiókokat (például outlook.com, live.com és másokat) használ. Az alkalmazás a Azure Active Directoryt használó vállalattól vagy szervezettől származó munkahelyi és iskolai fiókokat is használni fogja.
 
-> [!NOTE]
-> Az útmutatóhoz a Visual Studio 2015 Update 3, a Visual Studio 2017 vagy a Visual Studio 2019 szükséges. Nem rendelkezik ezekkel a verziókkal? [Töltse le ingyen a Visual Studio 2019](https://www.visualstudio.com/downloads/)-es verzióját.
+Ebben az oktatóanyagban:
 
->[!NOTE]
-> Ha még nem ismeri a Microsoft Identity platformot, javasoljuk, hogy kezdje a [token beszerzése és a Microsoft Graph API meghívása egy Windows asztali alkalmazásból](quickstart-v2-windows-desktop.md).
+> [!div class="checklist"]
+> * *Windows megjelenítési alaprendszer (WPF)* projekt létrehozása a Visual Studióban
+> * A .NET-hez készült Microsoft Authentication Library (MSAL) telepítése
+> * Az alkalmazás regisztrálása a Azure Portalban
+> * Kód hozzáadása a felhasználói bejelentkezés és a kijelentkezés támogatásához
+> * Kód hozzáadása a Microsoft Graph API meghívásához
+> * Az alkalmazás tesztelése
+
+## <a name="prerequisites"></a>Előfeltételek
+
+* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Az útmutató által létrehozott minta alkalmazás működése
 
@@ -48,7 +57,7 @@ A MSAL kezeli a gyorsítótárazást és a hozzáférési jogkivonatok frissít�
 
 Ez az útmutató a következő NuGet-csomagokat használja:
 
-|Kódtár|Description|
+|Kódtár|Leírás|
 |---|---|
 |[Microsoft. Identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Microsoft Authentication Library (MSAL.NET)|
 
@@ -367,3 +376,10 @@ private void DisplayBasicTokenInfo(AuthenticationResult authResult)
 A Microsoft Graph API meghívásához használt hozzáférési tokenen kívül a felhasználó bejelentkezése után a MSAL szintén azonosító jogkivonatot kap. Ez a jogkivonat a felhasználókra vonatkozó információk kis részhalmazát tartalmazza. A `DisplayBasicTokenInfo` metódus megjeleníti a jogkivonatban található alapvető információkat. Például megjeleníti a felhasználó megjelenített nevét és AZONOSÍTÓját, valamint a jogkivonat lejárati dátumát és a hozzáférési jogkivonatot jelölő karakterláncot. Többször is kiválaszthatja a *Call Microsoft Graph API* -gombot, és láthatja, hogy ugyanazt a tokent használták újra a későbbi kérelmekhez. Azt is láthatja, hogy a lejárati dátum kiterjeszthető, amikor a MSAL úgy dönt, hogy ideje megújítani a jogkivonatot.
 
 [!INCLUDE [5. Test and Validate](../../../includes/active-directory-develop-guidedsetup-windesktop-test.md)]
+
+## <a name="next-steps"></a>További lépések
+
+További információ a védett webes API-kat meghívó asztali alkalmazások létrehozásáról a több részből álló forgatókönyvek sorozatában:
+
+> [!div class="nextstepaction"]
+> [Forgatókönyv: webes API-kat meghívó asztali alkalmazás](scenario-desktop-overview.md)

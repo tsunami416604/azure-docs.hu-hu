@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 5494c2dd57220888ad846aaf69fde2f7a59353e4
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 5c3f87620c8a2a2d2438d7a5630541c0f76f9f17
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90053054"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575571"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box-preview"></a>Oktatóanyag: Azure Data Box exportálási sorrendjének létrehozása (előzetes verzió)
 
@@ -159,34 +159,34 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket az Azure Po
 Ha **az XML-fájl használata**lehetőséget választja, megadhatja az exportálni kívánt tárolókat és blobokat (oldalt és blokkokat). Az XML formázásához a [minta XML-fájl táblázatának](#sample-xml-file) specifikációit kell követnie. Az alábbi lépések bemutatják, hogyan lehet XML-fájlt használni az adatai exportálásához:
 
 1. Az **Exportálás típusa**beállításnál válassza az **XML-fájl használata**lehetőséget. Ezt az XML-fájlt adja meg az exportálni kívánt blobok és Azure-fájlok megadásához. Az XML-fájl hozzáadásához jelölje be az **XML-fájl kiválasztásához kattintson ide**.
-     ![XML-fájl](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-01.png)
+     ![Képernyőfelvétel: válassza az Exportálás lehetőséget a kattintson ide az X M L fájl kiválasztásához.](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-01.png)
 
 2. A tároló létrehozásához kattintson a **+ tároló** elemre.
-    ![XML-fájl](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-02.png)
+    ![Képernyőfelvétel a tárolók szakaszról.](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-02.png)
 
 3. Az **új tároló** lapon, amely a Azure Portal jobb oldalán jelenik meg, adja meg a tároló nevét. A névnek kisebbnek kell lennie, és tartalmazhat számokat és kötőjeleket (-). Ezután válassza ki a **nyilvános hozzáférési szintet** a legördülő listából. Javasoljuk, hogy a **magánjellegű (névtelen hozzáférés)** beállítással megakadályozza, hogy mások hozzáférjenek az adatokhoz. A tárolók hozzáférési szintjeivel kapcsolatos további információkért lásd: [tárolók hozzáférési engedélyei](../storage/blobs/storage-manage-access-to-resources.md#grant-anonymous-users-permissions-to-containers-and-blobs).
 
-   ![XML-fájl](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-04.png)
+   ![Képernyőkép az új tároló lapról, amely a privát (nincs névtelen hozzáférés) beállítást jelöli.](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-04.png)
 
 4. Kattintson a **Létrehozás** gombra.
 
-   ![XML-fájl](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-07.png)
+   ![Képernyőkép az új tároló lapról a Create (létrehozás) lehetőséggel.](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-07.png)
 
    Ha a tároló létrehozása sikeresen megtörtént, a következő üzenet jelenik meg:
 
-   ![XML-fájl](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-09.png)
+   ![Képernyőkép a következő üzenetről: "a Storage tároló sikeresen létrehozva".](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-09.png)
 
 5. Válassza ki a létrehozott tárolót, és kattintson rá duplán.
 
-   ![XML-fájl](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-08.png)
+   ![Képernyőkép a tárolók szakaszról a saját Private test Container-tárolóval.](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-08.png)
 
 6. Ha duplán kattint a tárolóra, megjelenik a tároló tulajdonságai nézet. Most csatolnia kell (vagy meg kell keresnie) az XML-fájlt, amely tartalmazza az exportálni kívánt blobok és/vagy Azure-fájlok listáját. Válassza a **Feltöltés** lehetőséget.
 
-   ![XML-fájl](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-10c.png)
+   ![Képernyőkép a blob feltöltése párbeszédpanelről, a feltöltési lehetőséggel.](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-10c.png)
 
 7. Sikeresen felvette az XML-fájlt a tárolóba. Csak az ebben az XML-ben megadott blobok és Azure-fájlok lesznek exportálva.
 
-   ![XML-fájl](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-12.png)
+   ![A sorrend varázsló képernyőképe a következő: biztonsági lehetőség neve.](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-12.png)
 
 ## <a name="track-the-order"></a>A megrendelés nyomon követése
 
@@ -256,7 +256,7 @@ Néhány fontos pont az XML-fájlokra vonatkozóan:
 
 A következő táblázat példákat mutat be a Blobok érvényes elérési útjaira:
 
-   | Szelektor | BLOB elérési útja | Description |
+   | Szelektor | BLOB elérési útja | Leírás |
    | --- | --- | --- |
    | Ezzel kezdődik |/ |A Storage-fiókban lévő összes blob exportálása |
    | Ezzel kezdődik |/$root/ |A gyökér tárolóban lévő összes blob exportálása |

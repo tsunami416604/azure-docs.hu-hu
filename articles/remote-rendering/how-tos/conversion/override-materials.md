@@ -5,25 +5,25 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/13/2020
 ms.topic: how-to
-ms.openlocfilehash: 2e9cb216c100f1732230a90572284bd3f8462584
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 11bd79a1bc88d2605a20744f5a6b6536d754c100
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87433146"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576642"
 ---
 # <a name="override-materials-during-model-conversion"></a>Anyagok felülírása a modellátalakítás során
 
 A forrás modell anyag-beállításai a megjelenítő által használt pbr- [anyagok](../../overview/features/pbr-materials.md) meghatározására szolgálnak.
 Előfordulhat, hogy az [alapértelmezett konverzió](../../reference/material-mapping.md) nem adja meg a kívánt eredményeket, és módosítania kell a módosításokat.
-Ha egy modellt az Azure Remote rendering szolgáltatásban való használatra konvertál, megadhat egy anyag-felülbírálási fájlt, amellyel testreszabhatja, hogy a rendszer milyen módon végezze el az anyag-átalakítást.
-A [modell átalakításának konfigurálásáról](configure-model-conversion.md) szóló szakasz útmutatást nyújt az anyag felülbírálási fájlnevének deklarálása során.
+Ha egy modellt az Azure Remote rendering szolgáltatásban való használatra konvertál, megadhat egy anyag-felülbírálási fájlt, amellyel testre szabhatja, hogy a rendszer milyen módon végezze el az anyagok konverzióját.
+Ha egy nevű fájl található a bemeneti `<modelName>.MaterialOverrides.json` tárolóban a bemeneti modell mellett `<modelName>.<ext>` , akkor a rendszer az anyagként szolgáló felülbírálási fájlként fogja használni.
 
 ## <a name="the-override-file-used-during-conversion"></a>Az átalakítás során használt felülbírálási fájl
 
 Egyszerű Példaként tegyük fel, hogy egy box-modell egyetlen, "default" nevű anyagot tartalmaz.
 Emellett tegyük fel, hogy a albedó színét az ARR-ben való használathoz módosítani kell.
-Ebben az esetben a `box_materials_override.json` következő módon hozhat létre egy fájlt:
+Ebben az esetben a `box.MaterialOverrides.json` következő módon hozhat létre egy fájlt:
 
 ```json
 [
@@ -39,15 +39,7 @@ Ebben az esetben a `box_materials_override.json` következő módon hozhat létr
 ]
 ```
 
-A `box_materials_override.json` fájlt a rendszer a bemeneti tárolóba helyezi, a `box.ConversionSettings.json` pedig a mellé kerül `box.fbx` , amely megadja, hogy hol található a felülbírálási fájl (lásd: [a modell átalakításának konfigurálása](configure-model-conversion.md)):
-
-```json
-{
-    "material-override" : "box_materials_override.json"
-}
-```
-
-A modell átalakításakor az új beállítások lesznek érvényesek.
+A `box.MaterialOverrides.json` fájl a következő beviteli tárolóba kerül `box.fbx` , amely azt jelzi, hogy a konverziós szolgáltatás alkalmazza az új beállításokat.
 
 ### <a name="color-materials"></a>Színes anyagok
 
@@ -84,6 +76,36 @@ Az elv egyszerű. Csak vegyen fel egy nevű tulajdonságot `ignoreTextureMaps` ,
 ```
 
 Az figyelmen kívül hagyható textúratérkép teljes listájáért tekintse meg az alábbi JSON-sémát.
+
+### <a name="applying-the-same-overrides-to-multiple-materials"></a>Ugyanazon felülbírálások alkalmazása több anyagra
+
+Alapértelmezés szerint az anyag-felülbírálási fájlban szereplő bejegyzés akkor érvényes, ha a neve pontosan egyezik az anyag nevével.
+Mivel meglehetősen gyakori, hogy ugyanazt a felülbírálást több anyagra is alkalmazni kell, igény szerint megadhat egy reguláris kifejezést is a bejegyzés neveként.
+A mező `nameMatching` alapértelmezett értékkel rendelkezik `exact` , de úgy is beállítható, hogy `regex` a bejegyzés minden megfelelő anyagra vonatkozzon.
+A használt szintaxis ugyanaz, mint a JavaScript használatakor. Az alábbi példa egy felülbírálást mutat be, amely a "Material2", a "Material01" és a "Material999" nevű anyagokra vonatkozik.
+
+```json
+[
+    {
+        "name": "Material[0-9]+",
+        "nameMatching": "regex",
+        "albedoColor": {
+            "r": 0.0,
+            "g": 0.0,
+            "b": 1.0,
+            "a": 1.0
+        }
+    }
+]
+```
+
+Egy anyag-felülbírálási fájlban legfeljebb egy bejegyzés egyetlen anyagra vonatkozik.
+Ha pontos egyezés van (azaz `nameMatching` hiányzik vagy egyenlő `exact` ) az anyag nevéhez, akkor a rendszer a bejegyzést választja.
+Ellenkező esetben a fájl első olyan regex-bejegyzése van kiválasztva, amely megfelel az anyag nevének.
+
+### <a name="getting-information-about-which-entries-applied"></a>Információk beolvasása az alkalmazott bejegyzésekről
+
+A kimeneti tárolóba írt [információs fájl](get-information.md#information-about-a-converted-model-the-info-file) a megadott felülbírálások számával és a felülbírált anyagok számával kapcsolatos információkat tartalmaz.
 
 ## <a name="json-schema"></a>JSON-séma
 
@@ -154,6 +176,7 @@ Az anyagokhoz tartozó fájlok teljes JSON-sémája itt van megadva. A és a ese
         "properties":
         {
             "name": { "type" : "string"},
+            "nameMatching" : { "type" : "string", "enum" : ["exact", "regex"] },
             "unlit": { "type" : "boolean" },
             "albedoColor": { "$ref": "#/definitions/colorOrAlpha" },
             "roughness": { "type": "number" },
@@ -171,7 +194,7 @@ Az anyagokhoz tartozó fájlok teljes JSON-sémája itt van megadva. A és a ese
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Színes anyagok](../../overview/features/color-materials.md)
 * [PBR-anyagok](../../overview/features/pbr-materials.md)

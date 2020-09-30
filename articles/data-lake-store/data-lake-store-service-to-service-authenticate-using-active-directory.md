@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 03a32b37f5ca29c6a0dd6b810b4e097379c6c32e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9dc195f98310e63cbde06885effe86ea3c239249
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515148"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576098"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Szolgáltatások közötti hitelesítés Azure Data Lake Storage Gen1 használatával Azure Active Directory
 > [!div class="op_single_selector"]
@@ -65,12 +65,12 @@ Ha programozott módon jelentkezik be, szüksége lesz az alkalmazás AZONOSÍT�
     ![Csoport hozzáadása](./media/data-lake-store-authenticate-using-active-directory/adl.acl.3.png "Csoport hozzáadása")
 6. Kattintson az **engedélyek kiválasztása**elemre, jelölje ki az engedélyeket, valamint azt, hogy az engedélyeket alapértelmezett ACL-ként, hozzáférési ACL-ként vagy mindkettőként kívánja-e hozzárendelni. Kattintson az **OK** gombra.
    
-    ![Engedélyek kiosztása a csoportnak](./media/data-lake-store-authenticate-using-active-directory/adl.acl.4.png "Engedélyek kiosztása a csoportnak")
+    ![Képernyőkép az egyéni hozzáférés hozzáadása panelről, ahol az engedélyek kiválasztása lehetőség ki van választva, a Select permissions (engedélyek kiválasztása) panelen pedig az OK lehetőség.](./media/data-lake-store-authenticate-using-active-directory/adl.acl.4.png "Engedélyek kiosztása a csoportnak")
    
     A Data Lake Storage Gen1 engedélyeivel és az alapértelmezett/hozzáférési ACL-ekkel kapcsolatos további információkért lásd: [Access Control Data Lake Storage Gen1](data-lake-store-access-control.md).
 7. Az **Egyéni hozzáférés hozzáadása** panelen kattintson az **OK**gombra. A társított engedélyekkel rendelkező újonnan hozzáadott csoportok a **hozzáférés** panelen jelennek meg.
    
-    ![Engedélyek kiosztása a csoportnak](./media/data-lake-store-authenticate-using-active-directory/adl.acl.5.png "Engedélyek kiosztása a csoportnak")
+    ![Képernyőfelvétel a hozzáférés panelről az újonnan hozzáadott csoporttal az egyéni hozzáférés szakaszban.](./media/data-lake-store-authenticate-using-active-directory/adl.acl.5.png "Engedélyek kiosztása a csoportnak")
 
 > [!NOTE]
 > Ha azt tervezi, hogy a Azure Active Directory alkalmazást egy adott mappába korlátozza, ugyanezt az Azure Active Directory-alkalmazás **végrehajtási** engedélyének kell megadnia a gyökérkönyvtárhoz, hogy engedélyezze a fájl-létrehozási hozzáférést a .net SDK-n keresztül.
@@ -88,11 +88,11 @@ Ha programozott módon jelentkezik be, szüksége lesz az alkalmazás AZONOSÍT�
 
 3. A Alkalmazásregisztrációk panel felső részén kattintson a **végpontok**elemre.
 
-    ![OAuth jogkivonat-végpont](./media/data-lake-store-authenticate-using-active-directory/oauth-token-endpoint.png "OAuth jogkivonat-végpont")
+    ![Képernyőkép a Active Directoryről a Alkalmazásregisztrációk kapcsolóval és a végpontok lehetőséggel.](./media/data-lake-store-authenticate-using-active-directory/oauth-token-endpoint.png "OAuth jogkivonat-végpont")
 
 4. A végpontok listájából másolja a OAuth 2,0 jogkivonat-végpontot.
 
-    ![OAuth jogkivonat-végpont](./media/data-lake-store-authenticate-using-active-directory/oauth-token-endpoint-1.png "OAuth jogkivonat-végpont")   
+    ![Képernyőkép a végpontok panelről, az O AUTH 2 pont O JOGKIVONAT-VÉGPONT másolási ikonja.](./media/data-lake-store-authenticate-using-active-directory/oauth-token-endpoint-1.png "OAuth jogkivonat-végpont")   
 
 ## <a name="next-steps"></a>További lépések
 Ebben a cikkben egy Azure AD-webalkalmazást hozott létre, és összegyűjtötte a szükséges információkat a .NET SDK, a Java, a Python, a REST API stb. használatával létrehozott ügyfélalkalmazások számára. A következő cikkekkel megtudhatja, hogyan használhatja az Azure AD natív alkalmazást az első hitelesítéshez Data Lake Storage Gen1, majd más műveleteket hajthat végre az áruházban.

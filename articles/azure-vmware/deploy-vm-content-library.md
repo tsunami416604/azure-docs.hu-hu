@@ -3,12 +3,12 @@ title: Tartalom-függvénytár létrehozása virtuális gépek üzembe helyezés
 description: Hozzon létre egy kódtárat egy virtuális gép üzembe helyezéséhez egy Azure VMware-megoldás saját felhőben.
 ms.topic: how-to
 ms.date: 09/21/2020
-ms.openlocfilehash: a8e2f1911899e659724760cff514a33c8f0740a5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3a1b0a091dcdf9a225b4bf91ec83f542c2310285
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91344699"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575811"
 ---
 # <a name="create-a-content-library-to-deploy-vms-in-azure-vmware-solution"></a>Tartalom-függvénytár létrehozása virtuális gépek üzembe helyezéséhez az Azure VMware-megoldásban
 
@@ -90,9 +90,9 @@ Most, hogy létrehozta a kódtárat, hozzáadhat egy ISO-rendszerképet, amellye
 1. Ellenőrizze a beállításokat, majd kattintson a **Befejezés gombra**.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ha hibrid felhőalapú bővítményt (HCX) kíván használni a virtuális gépek számítási feladatainak saját felhőbe való áttelepítéséhez, használja az [Azure VMware megoldás telepítése HCX](hybrid-cloud-extension-installation.md) .
+Ha hibrid felhőalapú bővítményt (HCX) kíván használni a virtuális gépek számítási feladatainak saját felhőbe való áttelepítéséhez, használja az [Azure VMware megoldás telepítése HCX](tutorial-deploy-vmware-hcx.md) .
 
 <!-- LINKS - external-->
 

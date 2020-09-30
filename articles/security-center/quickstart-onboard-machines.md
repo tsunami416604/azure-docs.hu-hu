@@ -3,22 +3,47 @@ title: Nem Azure-beli gépek összekapcsolásának Azure Security Center
 description: Ismerje meg, hogyan csatlakoztathatók a nem Azure-beli gépek Security Center
 author: memildin
 ms.author: memildin
-ms.date: 9/22/2020
+ms.date: 9/30/2020
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 6f2889c298f525e1babf80f86d4ae140ef2ce96f
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 3cdff2b844aa68de7f07faf69710aeabb5513093
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91448959"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576061"
 ---
 #  <a name="connect-your-non-azure-machines-to-security-center"></a>Nem Azure-beli gépek összekapcsolásának Security Center
 
-A Security Center a nem Azure-számítógépek biztonsági állapotát is képes monitorozni, azonban ehhez elő kell készítenie ezeket az erőforrásokat. A nem Azure-beli számítógépeket az **első lépések** lapról vagy a **leltárból** is hozzáadhatja az alább leírtak szerint.
+A Security Center a nem Azure-számítógépek biztonsági állapotát is képes monitorozni, azonban ehhez elő kell készítenie ezeket az erőforrásokat. 
 
-## <a name="add-non-azure-computers"></a>Nem Azure-beli számítógépek hozzáadása 
+A nem Azure-beli számítógépeket a következő módokon adhatja hozzá:
+
+- Az Azure arc használata (**ajánlott**)
+- Security Center a Azure Portal oldalain (**első lépések** és **leltár**)
+
+Ezek mindegyike alább olvasható.
+
+## <a name="add-non-azure-machines-with-azure-arc"></a>Nem Azure-beli gépek hozzáadása az Azure Arcmal
+
+Az Azure arc használata a nem Azure-beli gépek Azure Security Centerhoz való hozzáadásának előnyben részesített módja.
+
+Az Azure arc engedélyezésével rendelkező gépek Azure-erőforrásként jelennek meg, és Security Center a többi Azure-erőforráshoz hasonló javaslatokkal jelennek meg. 
+
+Emellett az Azure arc olyan továbbfejlesztett képességeket biztosít, mint például a szabályzatok engedélyezése a gépen, a Log Analytics-ügynök telepítése bővítményként, a más Azure-szolgáltatásokkal való üzembe helyezés egyszerűsítése és egyebek. Az előnyök áttekintését lásd: [támogatott forgatókönyvek](../azure-arc/servers/overview.md#supported-scenarios).
+
+**Az Azure arc üzembe helyezése:**
+
+- Egy gépen kövesse a gyors útmutató [: hibrid gép összekapcsolása Azure arc-kompatibilis kiszolgálókkal](../azure-arc/servers/learn/quick-enable-hybrid-vm.md)című témakör utasításait.
+- Az Azure-ív nagy léptékű üzembe helyezésével kapcsolatban lásd: [hibrid gépek összekötése az Azure-ba méretezéssel](../azure-arc/servers/onboard-service-principal.md)
+
+További információ az [Azure arcről](../azure-arc/servers/overview.md).
+
+> [!TIP]
+> AWS-gépek bevezetéséhez az AWS-hez való Security Center összekötője transzparens módon kezeli az Azure arc-telepítést. További információ az [AWS-fiókok Azure Security Center való összekapcsolásáról](quickstart-onboard-aws.md).
+
+## <a name="add-non-azure-machines-from-security-centers-portal-pages"></a>Nem Azure-beli gépek hozzáadása Security Center portál oldalairól
 
 1. A Security Center menüjében nyissa meg az **első lépések** lapot.
 1. Válassza a **Bevezetés** lapot.
@@ -29,6 +54,8 @@ A Security Center a nem Azure-számítógépek biztonsági állapotát is képes
 
     > [!TIP]
     > Megnyithatja a gépek hozzáadása lehetőséget is a **leltár** lap **nem Azure-beli kiszolgálók hozzáadása** gombjával.
+    > 
+    > :::image type="content" source="./media/security-center-onboarding/onboard-inventory.png" alt-text="Első lépések lap a kezdeti lépések oldalon":::
 
     Megjelenik a Log Analytics-munkaterületek listája. Ha van ilyen, a lista tartalmazza azt az alapértelmezett munkaterületet is, amelyet a Security Center hozott létre, amikor az automatikus kiépítés engedélyezve volt. Válassza ki ezt a munkaterületet, vagy egy másik használni kívánt munkaterületet.
 
@@ -89,14 +116,15 @@ Az ügynök telepítésével és konfigurálásával kapcsolatos további inform
 
 
 ## <a name="verifying"></a>Ellenőrzése
-Gratulálunk! Az Azure-és a nem Azure-beli gépeket most már egyetlen helyen láthatja. Nyissa meg a [tárgyieszköz-leltár lapot](asset-inventory.md) , és a megfelelő erőforrástípusok alapján szűrje a szűrőt. Ez a két ikon megkülönbözteti a típusokat:
+Gratulálunk! Az Azure-és a nem Azure-beli gépeket most már egyetlen helyen láthatja. Nyissa meg a [tárgyieszköz-leltár lapot](asset-inventory.md) , és a megfelelő erőforrástípusok alapján szűrje a szűrőt. Ezek az ikonok megkülönböztetik a típusokat:
 
-  ![icon1](./media/quick-onboard-linux-computer/security-center-monitoring-icon1.png) Nem Azure-beli gép
+  ![A nem Azure-beli gép ASC ikonja](./media/quick-onboard-linux-computer/security-center-monitoring-icon1.png) Nem Azure-beli gép
 
-  ![icon2](./media/quick-onboard-linux-computer/security-center-monitoring-icon2.png) Azure VM
+  ![Az Azure Machine ASC ikonja](./media/quick-onboard-linux-computer/security-center-monitoring-icon2.png) Azure VM
 
+  ![Az Azure arc Machine ASC ikonja](./media/quick-onboard-linux-computer/arc-enabled-machine-icon.png) Azure arc-kompatibilis gép
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ezen az oldalon bemutatjuk, hogyan adhat hozzá a nem Azure-beli gépeket Azure Security Centerhoz. Az állapotuk figyeléséhez használja a leltári eszközöket a következő oldalon leírtak szerint:
 

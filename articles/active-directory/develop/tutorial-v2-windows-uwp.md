@@ -1,6 +1,7 @@
 ---
-title: Ismerkedés a Microsoft Identity platform UWP | Azure
-description: A Univerzális Windows-platform-(UWP-) alkalmazások olyan API-t hívhatnak meg, amely hozzáférési jogkivonatokat igényel a Microsoft Identity platform végpontja számára.
+title: 'Oktatóanyag: a Microsoft Identity platformot használó Univerzális Windows-platform-(UWP-) alkalmazás létrehozása hitelesítéshez | Azure'
+titleSuffix: Microsoft identity platform
+description: Ebben az oktatóanyagban olyan UWP-alkalmazást hoz létre, amely a Microsoft Identity platform használatával bejelentkezik a felhasználókba, és hozzáférési jogkivonatot kap a Microsoft Graph API nevében való meghívásához.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,26 +12,31 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: acdc23c664f84882916b91b8f8698ee36b1e6cd3
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: bee6f832476537a6d7dba3db98d9aada6c61a476
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88165549"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91574245"
 ---
-# <a name="call-the-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>A Microsoft Graph API meghívása Univerzális Windows-platform alkalmazásból (XAML)
-
-> [!div renderon="docs"]
+# <a name="call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>A Microsoft Graph API meghívása Univerzális Windows-platform- (UWP-) alkalmazásból
 
 Ez az útmutató azt ismerteti, hogyan kérhető le egy natív Univerzális Windows-platform (UWP) alkalmazás hozzáférési tokent. Az alkalmazás ezután meghívja a Microsoft Graph API-t. Az útmutató más API-kra is vonatkozik, amelyek hozzáférési jogkivonatokat igényelnek a Microsoft Identity platform végpontján.
 
 Az útmutató végén az alkalmazás személyes fiókok használatával meghívja a védett API-t. Ilyenek például a outlook.com, a live.com és mások. Az alkalmazás a munkahelyi és iskolai fiókokat is meghívja bármely olyan vállalattól vagy szervezettől, amely Azure Active Directory (Azure AD).
 
->[!NOTE]
-> Ehhez az útmutatóhoz telepíteni kell a Visual studiót Univerzális Windows-platform-fejlesztéssel. A Visual Studio Univerzális Windows-platform alkalmazások fejlesztéséhez való letöltésével és konfigurálásával kapcsolatos utasításokért tekintse [meg a bevezetés beállítása](/windows/uwp/get-started/get-set-up)című témakört.
+Ebben az oktatóanyagban:
 
->[!NOTE]
-> Ha most ismerkedik a Microsoft Identity platformmal, kezdje a [Microsoft Graph API meghívásával egy univerzális Windows-platform (UWP) alkalmazás](quickstart-v2-uwp.md)rövid útmutatójában.
+> [!div class="checklist"]
+> * *Univerzális Windows-platform (UWP)* projekt létrehozása a Visual Studióban
+> * Az alkalmazás regisztrálása a Azure Portalban
+> * Kód hozzáadása a felhasználói bejelentkezés és a kijelentkezés támogatásához
+> * Kód hozzáadása a Microsoft Graph API meghívásához
+> * Az alkalmazás tesztelése
+
+## <a name="prerequisites"></a>Előfeltételek
+
+* A [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) telepítve van a [univerzális Windows-platform fejlesztési](/windows/uwp/get-started/get-set-up) számítási feladattal
 
 ## <a name="how-this-guide-works"></a>Az útmutató működése
 
@@ -115,7 +121,7 @@ Ez a szakasz bemutatja, hogyan kérhető le jogkivonat a Microsoft Graph API-hoz
     ```csharp
     public sealed partial class MainPage : Page
     {
-       
+
         //Set the scope for API call to user.read
         private string[] scopes = new string[] { "user.read" };
 
@@ -316,7 +322,7 @@ private void DisplayBasicTokenInfo(AuthenticationResult authResult)
 
 #### <a name="more-information"></a>További információ<a name="more-information-1"></a>
 
-Az **OpenID Connect** használatával beszerzett azonosító tokenek a felhasználóhoz tartozó információk kis részhalmazát is tartalmazzák. `DisplayBasicTokenInfo`a jogkivonatban található alapvető információkat jeleníti meg. Ez az információ tartalmazza a felhasználó megjelenítendő nevét és AZONOSÍTÓját. Tartalmazza továbbá a jogkivonat lejárati dátumát és a hozzáférési jogkivonatot jelölő karakterláncot is. Ha többször is bejelöli a **hívás Microsoft Graph API** -t, látni fogja, hogy ugyanazt a tokent használták újra a későbbi kérésekhez. A lejárati dátumot is megtekintheti, ha a Microsoft Authentication Library úgy dönt, hogy ideje megújítani a jogkivonatot.
+Az **OpenID Connect** használatával beszerzett azonosító tokenek a felhasználóhoz tartozó információk kis részhalmazát is tartalmazzák. `DisplayBasicTokenInfo` a jogkivonatban található alapvető információkat jeleníti meg. Ez az információ tartalmazza a felhasználó megjelenítendő nevét és AZONOSÍTÓját. Tartalmazza továbbá a jogkivonat lejárati dátumát és a hozzáférési jogkivonatot jelölő karakterláncot is. Ha többször is bejelöli a **hívás Microsoft Graph API** -t, látni fogja, hogy ugyanazt a tokent használták újra a későbbi kérésekhez. A lejárati dátumot is megtekintheti, ha a Microsoft Authentication Library úgy dönt, hogy ideje megújítani a jogkivonatot.
 
 ### <a name="display-message"></a>Üzenet megjelenítése
 
@@ -350,7 +356,7 @@ Az alkalmazás hitelesítésének konfigurálása:
 
 1. A [Azure Portal](https://portal.azure.com)vissza a **kezelés**alatt válassza a **hitelesítés**lehetőséget.
 1. Az **átirányítási URI**-  |  **k javasolt átirányítási URI-k a nyilvános ügyfelekhez (mobil, asztali)** szakaszban, a következőt: https://login.microsoftonline.com/common/oauth2/nativeclient .
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 API-engedélyek konfigurálása az alkalmazáshoz:
 
@@ -427,16 +433,15 @@ Az aktuális példában a `WithRedirectUri("https://login.microsoftonline.com/co
             }
            ...
     }
-  
+
     ```
 
-    Futtassa az alkalmazást, majd másolja az értéket a `redirectUri` töréspont találata után. Az értéknek a következő értékhez hasonlóan kell kinéznie:  
-    `ms-app://s-1-15-2-1352796503-54529114-405753024-3540103335-3203256200-511895534-1429095407/`
+    Futtassa az alkalmazást, majd másolja az értéket a `redirectUri` töréspont találata után. Az értéknek a következő értékhez hasonlóan kell kinéznie: `ms-app://s-1-15-2-1352796503-54529114-405753024-3540103335-3203256200-511895534-1429095407/`
 
-    Ezután eltávolíthatja a kód sorát, mert csak egyszer szükséges, hogy beolvassa az értéket. 
+    Ezután eltávolíthatja a kód sorát, mert csak egyszer szükséges, hogy beolvassa az értéket.
 
 3. Az alkalmazás regisztrációs portálján adja hozzá a visszaadott értéket a **RedirectUri** -ben a **hitelesítés** ablaktáblán.
-   
+
 ## <a name="test-your-code"></a>A kód tesztelése
 
 Az alkalmazás teszteléséhez válassza az **F5** billentyűt a projekt futtatásához a Visual Studióban. Megjelenik a fő ablak:
@@ -496,3 +501,10 @@ Az [integrált hitelesítést az összevont tartományokon](#enable-integrated-a
 **Áthidaló megoldás:** Válassza **a bejelentkezés más beállításokkal lehetőséget**. Ezután válassza a **Bejelentkezés felhasználónévvel és jelszóval**lehetőséget. Válassza **a jelszó megadása**lehetőséget. Ezután folytassa a telefonos hitelesítési folyamaton.
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+
+## <a name="next-steps"></a>További lépések
+
+További információ a Microsoft Authentication Library (MSAL) használatáról a .NET-alkalmazásokban történő engedélyezéshez és hitelesítéshez:
+
+> [!div class="nextstepaction"]
+> [A Microsoft Authentication Library (MSAL) áttekintése](msal-overview.md)

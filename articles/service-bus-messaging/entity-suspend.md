@@ -2,13 +2,13 @@
 title: Azure Service Bus – üzenetkezelési entitások felfüggesztése
 description: Ez a cikk azt ismerteti, hogyan lehet ideiglenesen felfüggeszteni és újraaktiválni Azure Service Bus üzenet entitásait (várólisták, témakörök és előfizetések).
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 2dad0b774f271ed719ca09b1e749559d5e1868bd
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.date: 09/29/2020
+ms.openlocfilehash: f89e17e494cc777691b7f7ca47538cd29114d2dc
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88078860"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575242"
 ---
 # <a name="suspend-and-reactivate-messaging-entities-disable"></a>Üzenetkezelési entitások felfüggesztése és újraaktiválása (Letiltás)
 
@@ -18,28 +18,29 @@ Az entitások felfüggesztése általában sürgős adminisztratív okokból tö
 
 A felfüggesztés vagy az újraaktiválás a felhasználó vagy a rendszer által végezhető el. A rendszerek csak olyan súlyos adminisztratív okok miatt felfüggesztik az entitásokat, mint például az előfizetés költségkeretének korlátozása. A felhasználó nem tudja újraaktiválni a rendszer által letiltott entitásokat, de a felfüggesztés oka miatt visszaállnak.
 
-A portálon az adott entitás **Áttekintés** szakasza lehetővé teszi az állapot módosítását; az aktuális állapot hiperhivatkozásként jelenik meg az **állapot** alatt.
-
-A következő képernyőképen az elérhető állapotok láthatók, amelyekhez a hiperhivatkozás kiválasztásával az entitás módosítható: 
-
-![Képernyőkép az Service Bus funkcióról az áttekintésben az entitás-állapot beállításának módosításához.][1]
-
-A portál csak teljesen letiltja a várólistákat. A küldési és fogadási műveleteket külön is letilthatja a .NET-keretrendszer SDK-ban található Service Bus [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) API-kkal, vagy egy Azure Resource Manager sablonnal az Azure CLI vagy a Azure PowerShell használatával.
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-## <a name="suspension-states"></a>Felfüggesztési állapotok
-
+## <a name="queue-status"></a>Várólista állapota 
 A várólistára beállítható állapotok a következők:
 
 -   **Aktív**: a várólista aktív.
--   **Letiltva**: a várólista fel van függesztve.
+-   **Letiltva**: a várólista fel van függesztve. Ez egyenértékű a **SendDisabled** és a **ReceiveDisabled**beállításával. 
 -   **SendDisabled**: a várólista részlegesen fel van függesztve, és a fogadás engedélyezett.
 -   **ReceiveDisabled**: a várólista részlegesen fel van függesztve, és a küldés engedélyezett.
 
-Előfizetések és témakörök esetében csak az **aktív** és a **letiltott** lehetőség állítható be.
+### <a name="change-the-queue-status-in-the-azure-portal"></a>Módosítsa a várólista állapotát a Azure Portalban: 
 
-A [EntityStatus](/dotnet/api/microsoft.servicebus.messaging.entitystatus) enumerálás olyan átmeneti állapotokat is meghatároz, amelyeket csak a rendszer adhat meg. A várólista letiltására szolgáló PowerShell-parancs az alábbi példában látható. Az újraaktiválási parancs egyenértékű, aktív értékre van állítva `Status` . **Active**
+1. A Azure Portal navigáljon a Service Bus-névtérhez. 
+1. Válassza ki azt a várólistát, amelynek az állapotát módosítani szeretné. A várólisták a középső alsó ablaktáblán jelennek meg. 
+1. A **Service Bus üzenetsor** lapon tekintse meg a várólista aktuális állapotát hiperhivatkozásként. Ha az **Áttekintés** nincs kiválasztva a bal oldali menüben, válassza ki azt a várólista állapotának megtekintéséhez. Válassza ki a várólista aktuális állapotát a módosításhoz. 
+
+    :::image type="content" source="./media/entity-suspend/select-state.png" alt-text="Várólista állapotának kiválasztása":::
+4. Válassza ki a várólista új állapotát, és kattintson az **OK gombra**. 
+
+    :::image type="content" source="./media/entity-suspend/entity-state-change.png" alt-text="Várólista állapotának kiválasztása":::
+    
+A portál csak teljesen letiltja a várólistákat. A küldési és fogadási műveleteket külön is letilthatja a .NET-keretrendszer SDK-ban található Service Bus [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) API-kkal, vagy egy Azure Resource Manager sablonnal az Azure CLI vagy a Azure PowerShell használatával.
+
+### <a name="change-the-queue-status-using-azure-powershell"></a>A várólista állapotának módosítása a Azure PowerShell használatával
+A várólista letiltására szolgáló PowerShell-parancs az alábbi példában látható. Az újraaktiválási parancs egyenértékű, aktív értékre van állítva `Status` . **Active**
 
 ```powershell
 $q = Get-AzServiceBusQueue -ResourceGroup mygrp -NamespaceName myns -QueueName myqueue
@@ -48,6 +49,30 @@ $q.Status = "Disabled"
 
 Set-AzServiceBusQueue -ResourceGroup mygrp -NamespaceName myns -QueueName myqueue -QueueObj $q
 ```
+
+## <a name="topic-status"></a>Témakör állapota
+A témakör állapotának módosítása a Azure Portalban hasonló a várólista állapotának módosításához. A témakör aktuális állapotának kiválasztásakor a következő oldal jelenik meg, amely lehetővé teszi az állapot módosítását. 
+
+:::image type="content" source="./media/entity-suspend/topic-state-change.png" alt-text="Várólista állapotának kiválasztása":::
+
+A témakörben beállítható állapotok a következők:
+- **Aktív**: a témakör aktív.
+- **Letiltva**: a témakör fel van függesztve.
+- **SendDisabled**: ugyanaz a hatás, mint a **Letiltva**.
+
+## <a name="subscription-status"></a>Előfizetés állapota
+Az előfizetés állapotának módosítása a Azure Portalban hasonló egy témakör vagy várólista állapotának módosításához. Az előfizetés aktuális állapotának kiválasztásakor a következő oldal jelenik meg, amely lehetővé teszi az állapot módosítását. 
+
+:::image type="content" source="./media/entity-suspend/subscription-state-change.png" alt-text="Várólista állapotának kiválasztása":::
+
+A témakörben beállítható állapotok a következők:
+- **Aktív**: a témakör aktív.
+- **Letiltva**: a témakör fel van függesztve.
+- **ReceiveDisabled**: ugyanaz a hatás, mint a **Letiltva**.
+
+## <a name="other-statuses"></a>Egyéb állapotok
+A [EntityStatus](/dotnet/api/microsoft.servicebus.messaging.entitystatus) enumerálás olyan átmeneti állapotokat is meghatároz, amelyeket csak a rendszer adhat meg. 
+
 
 ## <a name="next-steps"></a>További lépések
 

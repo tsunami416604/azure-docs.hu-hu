@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: d264ead87e7fa638830bf25fdb07983b164334b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 10f2b44d00361885778a523109a8fcb05dabe9dd
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83698662"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91574347"
 ---
 # <a name="access-azure-cosmos-db-from-virtual-networks-vnet"></a>Az Azure Cosmos DB elérése virtuális hálózatról (VNet)
 
@@ -24,9 +24,9 @@ Alapértelmezés szerint az Azure Cosmos-fiók bármely forrásból elérhető, 
 
 Íme néhány gyakori kérdés a virtuális hálózatok hozzáférésének konfigurálásáról:
 
-### <a name="are-notebooks-and-mongo-shell-currently-compatible-with-virtual-network-enabled-accounts"></a>A jegyzetfüzetek és a Mongo-rendszerhéj jelenleg kompatibilis a Virtual Network engedélyezve fiókokkal?
+### <a name="are-notebooks-and-mongocassandra-shell-currently-compatible-with-virtual-network-enabled-accounts"></a>A notebookok és a Mongo/Cassandra shellek jelenleg kompatibilisek Virtual Network engedélyezett fiókokkal?
 
-A Cosmos DB Adatkezelő és a [Jupyter Notebooks szolgáltatás](https://docs.microsoft.com/azure/cosmos-db/cosmosdb-jupyter-notebooks) [Mongo-rendszerhéj-integrációja](https://devblogs.microsoft.com/cosmosdb/preview-native-mongo-shell/) jelenleg nem támogatott a VNET-hozzáférés esetén. Ez jelenleg aktív fejlesztés alatt áll.
+A [Mongo-rendszerhéj](https://devblogs.microsoft.com/cosmosdb/preview-native-mongo-shell/) és a [Cassandra Shell](https://devblogs.microsoft.com/cosmosdb/announcing-native-cassandra-shell-preview/) -integrációk a Cosmos db adatkezelő és a [Jupyter Notebooks szolgáltatás](https://docs.microsoft.com/azure/cosmos-db/cosmosdb-jupyter-notebooks)esetében nem támogatottak a VNET-hozzáférés esetén. Ez jelenleg aktív fejlesztés alatt áll.
 
 ### <a name="can-i-specify-both-virtual-network-service-endpoint-and-ip-access-control-policy-on-an-azure-cosmos-account"></a>Megadhatom a virtuális hálózati szolgáltatás végpontját és az IP-hozzáférés-vezérlési házirendet egy Azure Cosmos-fiókon? 
 

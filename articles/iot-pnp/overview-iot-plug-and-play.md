@@ -1,6 +1,6 @@
 ---
-title: A IoT Plug and Play előzetes verziójának bemutatása | Microsoft Docs
-description: További információ a IoT Plug and Play előzetes verzióról. A IoT Plug and Play egy nyílt modellezési nyelven alapul, amely lehetővé teszi, hogy az intelligens IoT-eszközök bejelentsenek képességeiket. A IoT-eszközök a deklarációt, az eszköz modelljét használják, amikor felhőalapú megoldásokhoz csatlakoznak. A felhőalapú megoldás ezután automatikusan megérti az eszközt, és megkezdheti a velük való interakciót, anélkül, hogy kódot kellene írnia.
+title: A IoT Plug and Play bemutatása | Microsoft Docs
+description: A IoT Plug and Play megismerése. A IoT Plug and Play egy nyílt modellezési nyelven alapul, amely lehetővé teszi, hogy az intelligens IoT-eszközök bejelentsenek képességeiket. A IoT-eszközök a deklarációt, az eszköz modelljét használják, amikor felhőalapú megoldásokhoz csatlakoznak. A felhőalapú megoldás ezután automatikusan megérti az eszközt, és megkezdheti a velük való interakciót, anélkül, hogy kódot kellene írnia.
 author: rido-min
 ms.author: rmpablos
 ms.date: 07/06/2020
@@ -9,16 +9,16 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: eliotgra
 ms.custom: references_regions
-ms.openlocfilehash: 32a873af3d287c3bd1e83de6db8e17ebc1d2958b
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 3f74c593cd44470efd231578fddcf53715a3979a
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855623"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575095"
 ---
-# <a name="what-is-iot-plug-and-play-preview"></a>Mi az az előzetes verziójú IoT Plug and Play?
+# <a name="what-is-iot-plug-and-play"></a>Mi az IoT Plug and Play?
 
-A IoT Plug and Play előzetes verziója lehetővé teszi a megoldás-építők számára, hogy manuális konfiguráció nélkül integrálják az intelligens eszközöket a megoldásaikkal. A IoT-Plug and Play középpontjában a egy eszköz _modellje_ , amelyet az eszköz használ a képességeinek egy IoT Plug and Play-kompatibilis alkalmazásba való reklámozásához. Ez a modell olyan elemek halmaza, amelyek a következőket határozzák meg:
+A IoT Plug and Play lehetővé teszi a megoldás-építők számára, hogy manuális konfiguráció nélkül integrálják az intelligens eszközöket a megoldásaikkal. A IoT-Plug and Play középpontjában a egy eszköz _modellje_ , amelyet az eszköz használ a képességeinek egy IoT Plug and Play-kompatibilis alkalmazásba való reklámozásához. Ez a modell olyan elemek halmaza, amelyek a következőket határozzák meg:
 
 - Egy eszköz vagy más entitás írásvédett vagy írható állapotát jelképező _Tulajdonságok_ . Előfordulhat például, hogy egy eszköz sorozatszáma csak olvasható tulajdonság, és a termosztát hőmérséklete írható tulajdonság lehet.
 - _Telemetria_ az eszköz által kibocsátott adatok, függetlenül attól, hogy az adatok az érzékelők normál streamje, egy alkalmi hiba vagy egy tájékoztató üzenet.
@@ -49,13 +49,15 @@ Megoldás-szerkesztőként olyan felhőalapú IoT-megoldást fejleszthet, amely 
 
 Amikor egy IoT Plug and Play eszközt csatlakoztat egy IoT hubhoz, az [Azure IoT Explorer](./howto-use-iot-explorer.md) eszköz használatával megtekintheti a modellt alkotó felületeken definiált telemetria, tulajdonságokat és parancsokat.
 
+Ha rendelkezik egy Windows-vagy Linux-átjáróhoz csatlakoztatott érzékelőkkel, akkor a [IoT Plug and Play Bridge](./concepts-iot-pnp-bridge.md)használatával csatlakoztathatja ezeket az érzékelőket, és létrehozhat IoT Plug and Play eszközöket anélkül, hogy az eszköz szoftverét vagy belső vezérlőprogramot kellene írnia ( [támogatott protokollok](./concepts-iot-pnp-bridge.md#supported-protocols-and-sensors) esetén).
+
 ## <a name="develop-an-iot-device-application"></a>IoT-eszköz alkalmazásának fejlesztése
 
 Eszköz-szerkesztőként olyan IoT-terméket fejleszthet, amely támogatja a IoT Plug and Play. A folyamat három fő lépést tartalmaz:
 
 1. Adja meg az eszköz modelljét. A [DTDL](https://github.com/Azure/opendigitaltwins-dtdl)használatával olyan JSON-fájlokat hozhat létre, amelyek meghatározzák az eszköz képességeit. A modell egy teljes entitást, például egy fizikai terméket ír le, és meghatározza az adott entitás által megvalósított felületek készletét. A felületek olyan megosztott szerződések, amelyek egyedileg azonosítják az eszköz által támogatott telemetria, tulajdonságokat és parancsokat. A felületek újra felhasználhatók különböző modellekben.
 
-1. Az eszköz szoftverét vagy a belső vezérlőprogramot úgy hozhatja létre, hogy a telemetria, tulajdonságaik és parancsaik kövessék a IoT Plug and Play konvenciókat.
+1. Az eszköz szoftverét vagy a belső vezérlőprogramot úgy hozhatja létre, hogy a telemetria, tulajdonságaik és parancsaik kövessék a IoT Plug and Play konvenciókat. Ha Windows vagy Linux rendszerű átjáróhoz csatlakoztatott meglévő érzékelőket csatlakoztat, a [IoT Plug and Play-híd](./concepts-iot-pnp-bridge.md) leegyszerűsítheti ezt a lépést.
 
 1. Az eszköz bejelenti a modell AZONOSÍTÓját a MQTT-kapcsolat részeként. Az Azure IoT SDK új szerkezeteket tartalmaz, amelyek a modell AZONOSÍTÓjának megadására szolgálnak a kapcsolódás időpontjában.
 
@@ -68,7 +70,7 @@ A [IoT Plug and Play eszköz minősítési program](howto-certify-device.md) ell
 
 ## <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
 
-Ez a IoT Plug and Play előzetes verzió frissítését az USA középső régiójában, Észak-Európában és Kelet-japán régióban létrehozott IoT-hubokon érhető el.
+Ez a IoT Plug and Play frissítés elérhető az USA középső régiójában, Észak-Európában és Kelet-japán régióban létrehozott IoT-hubokon.
 
 ## <a name="next-steps"></a>További lépések
 
