@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 3f882375197fa45cfbc74ff7a80ed33fd33f33a3
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 1f2e90f9391654d10332b9f1a21c56fd22e2307b
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91400298"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570801"
 ---
 # <a name="how-does-azure-cosmos-db-provide-high-availability"></a>Hogyan biztosítja a Azure Cosmos DB magas rendelkezésre állást? 
 
@@ -30,7 +30,7 @@ Ha az Azure Cosmos-fiókját *N* Azure-régióban osztják el, az összes adatna
 
 ## <a name="slas-for-availability"></a>SLA-kat a rendelkezésre álláshoz
 
-Globálisan elosztott adatbázisként Azure Cosmos DB átfogó SLA-kat biztosít, amelyek az átviteli sebességre, a esetek 99% percentilis, a konzisztencia és a magas rendelkezésre állásra vonatkozó késést foglalnak magukban. Az alábbi táblázat az egyes és a többrégiós fiókok Azure Cosmos DB által biztosított magas rendelkezésre állási garanciákat mutatja be. A magas rendelkezésre állás érdekében mindig konfigurálja az Azure Cosmos-fiókokat több írási régióval (más néven több főkiszolgálóval).
+Globálisan elosztott adatbázisként Azure Cosmos DB átfogó SLA-kat biztosít, amelyek az átviteli sebességre, a esetek 99% percentilis, a konzisztencia és a magas rendelkezésre állásra vonatkozó késést foglalnak magukban. Az alábbi táblázat az egyes és a többrégiós fiókok Azure Cosmos DB által biztosított magas rendelkezésre állási garanciákat mutatja be. A magas rendelkezésre állás érdekében mindig konfigurálja az Azure Cosmos-fiókokat több írási régióval.
 
 |Művelettípus  | Egyetlen régió |Több régió (egyrégiós írások)|Többrégiós (több régiós írások) |
 |---------|---------|---------|-------|
@@ -46,7 +46,7 @@ A regionális leállás ritka eseteiben Azure Cosmos DB biztosítja, hogy az ada
 
 - Ha Azure Cosmos DB, az írási művelet elfogadását megelőzően az ügyfél számára az adatok tartósan a régióban lévő replikák kvóruma végzi el, amely elfogadja az írási műveleteket.
 
-- Az írási és olvasási műveletek esetében a többrégiós fiókok több írható régióval vagy több főkiszolgálóval is elérhetők. A regionális feladatátvételek azonnaliek, és nem igényelnek semmilyen változást az alkalmazásból.
+- A több írható régióval konfigurált többrégiós fiókok esetében az írások és olvasások egyaránt nagyon elérhetők lesznek. A regionális feladatátvételek azonnaliek, és nem igényelnek semmilyen változást az alkalmazásból.
 
 - Az egyrégiós fiókok a regionális leállás után elveszíthetik a rendelkezésre állást. A magas rendelkezésre állás biztosítása érdekében mindig ajánlott **legalább két régiót** (lehetőleg legalább két írási régiót) beállítani az Azure Cosmos-fiókkal.
 
@@ -125,7 +125,7 @@ az cosmosdb create \
 
 Az Azure Cosmos-fiók létrehozásakor Azure Portal használatával engedélyezheti Availability Zones. Fiók létrehozásakor ügyeljen arra, hogy engedélyezze a **geo-redundancia**, a **többrégiós írások**használatát, és válasszon egy régiót, ahol a Availability Zones támogatott:
 
-:::image type="content" source="./media/high-availability/enable-availability-zones-using-portal.png" alt-text="Availability Zones engedélyezése a Azure Portal használatával"::: 
+:::image type="content" source="./media/high-availability/enable-availability-zones-using-portal.png" alt-text="Fizikai particionálás"::: 
 
 ## <a name="building-highly-available-applications"></a>Magasan elérhető alkalmazások fejlesztése
 
@@ -139,7 +139,7 @@ Az Azure Cosmos-fiók létrehozásakor Azure Portal használatával engedélyezh
 
 - Egy globálisan elosztott adatbázis-környezeten belül közvetlen kapcsolat áll fenn a konzisztencia szintje és az adattartósság között egy adott régióra kiterjedő leállás esetén. Az üzletmenet-folytonossági terv kidolgozása során meg kell ismernie a maximális elfogadható időtartamot, mielőtt az alkalmazás teljesen helyreállít egy zavaró esemény után. Az alkalmazás teljes helyreállításához szükséges idő a helyreállítási időre vonatkozó célkitűzés (RTO). Azt is meg kell ismernie, hogy a legutóbbi adatfrissítések maximális időtartama alatt az alkalmazás elveszítheti a zavaró események utáni helyreállítást. Az adatfrissítés-vesztés megengedhető időkorlátja a helyreállítási időkorlát (RPO). A Azure Cosmos DB RPO és RTO lásd: a [konzisztencia szintjei és az adattartósság](consistency-levels-tradeoffs.md#rto)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ezután olvassa el a következő cikkeket:
 

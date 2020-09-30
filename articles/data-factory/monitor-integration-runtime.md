@@ -10,12 +10,12 @@ ms.date: 08/11/2020
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: b8d3472eeedab72644456b4278d3b9f3625c5850
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 4a0c2813a45fab497173d0101f87b30288e93884
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88078204"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568901"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Integrációs modul monitorozása az Azure Data Factoryben
 
@@ -54,11 +54,11 @@ A következő táblázat az Azure Integration Runtime parancsmag által visszaad
 | ResourceGroupName | Azon erőforráscsoport neve, amelyhez az adatelőállító tartozik.  |
 | Leírás | Az Integration Runtime leírása.  |
 
-### <a name="status"></a>status
+### <a name="status"></a>Állapot
 
 Az alábbi táblázat az Azure Integration Runtime lehetséges állapotait tartalmazza:
 
-| status | Megjegyzések/forgatókönyvek | 
+| Állapot | Megjegyzések/forgatókönyvek | 
 | ------ | ------------------ |
 | Online | Az Azure Integration Runtime online állapotban van, és készen áll a használatra. | 
 | Offline | Az Azure Integration Runtime belső hiba miatt offline állapotban van. |
@@ -77,7 +77,7 @@ Az alábbi táblázat az **egyes csomópontok**figyelési tulajdonságainak leí
 | Tulajdonság | Leírás | 
 | -------- | ----------- | 
 | Név | A saját üzemeltetésű Integration Runtime és a hozzá társított csomópontok neve. A csomópont egy helyszíni Windows rendszerű számítógép, amelyen telepítve van a saját üzemeltetésű integrációs modul. |  
-| status | A saját üzemeltetésű integrációs modul általános és minden csomópontjának állapota. Példa: online/offline/korlátozott/stb. Ezekről az állapotokról további információt a következő szakaszban talál. | 
+| Állapot | A saját üzemeltetésű integrációs modul általános és minden csomópontjának állapota. Példa: online/offline/korlátozott/stb. Ezekről az állapotokról további információt a következő szakaszban talál. | 
 | Verzió | A saját üzemeltetésű Integration Runtime és az egyes csomópontok verziója. A saját üzemeltetésű integrációs modul verziója a csoportban lévő csomópontok többségének verziója alapján van meghatározva. Ha a saját üzemeltetésű integrációs modul telepítője eltérő verziójú csomópontokkal rendelkezik, akkor csak a logikai saját üzemeltetésű integrációs modulnak megfelelő verziószámmal rendelkező csomópontok működnek megfelelően. Mások korlátozott módban vannak, és manuálisan kell frissíteni (csak abban az esetben, ha az automatikus frissítés meghiúsul). | 
 | Igénybe vehető memória | Rendelkezésre álló memória a saját üzemeltetésű integrációs modul csomópontján. Ez az érték a közel valós idejű pillanatkép. | 
 | Processzorhasználat | Egy saját üzemeltetésű Integration Runtime-csomópont CPU-kihasználtsága. Ez az érték a közel valós idejű pillanatkép. |
@@ -196,7 +196,7 @@ A következő táblázat a Azure-SSIS IR a fenti parancsmag által visszaadott t
 | Típus                         | A Azure-SSIS IR IR-típusa (felügyelt/saját üzemeltetésű). |
 | ResourceGroupName            | Azon Azure-erőforráscsoport neve, amelyben az ADF és a Azure-SSIS IR létrejött. |
 | DataFactoryName              | Az ADF neve. |
-| Name (Név)                         | A Azure-SSIS IR neve. |
+| Név                         | A Azure-SSIS IR neve. |
 | Leírás                  | A Azure-SSIS IR leírása. |
   
 #### <a name="status-per-azure-ssis-ir-node"></a>Állapot (Azure-SSIS IR csomóponton)
@@ -258,13 +258,13 @@ Ha a Azure-SSIS IRt egy VNet csatlakoztatja, a Azure-SSIS IR figyelése lapon me
 
 A Azure-SSIS IR figyelése lap **kapcsolat diagnosztizálása** csempén a **kapcsolat tesztelése** hivatkozásra kattintva megtekintheti az ablakokat, ahol ellenőrizheti a Azure-SSIS IR és a kapcsolódó csomag/konfiguráció/adattárolók közötti kapcsolatokat, valamint a felügyeleti szolgáltatásokat a teljes tartománynév (FQDN) IP MCDREAMSCENE-címével és a kijelölt porttal (lásd: [kapcsolatok tesztelése a Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/ssis-integration-runtime-diagnose-connectivity-faq)).
 
-![Azure-SSIS IR figyelése – csempe DIAGNOSZTIZÁLása](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-diagnose.png)
+![Képernyőkép, amely bemutatja, hol tesztelheti a Azure-SSIS IR és a kapcsolódó csomag/konfiguráció/adattárak közötti kapcsolatokat.](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-diagnose.png)
 
 #### <a name="static-public-ip-addresses-tile"></a>STATIKUS nyilvános IP-címek csempe
 
 Ha a saját statikus nyilvános IP-címeit a Azure-SSIS IR számára teszi elérhetővé, megjelenik a **statikus nyilvános IP** -címek csempe a Azure-SSIS IR monitorozási oldalon (lásd: [saját statikus nyilvános IP-címek létrehozása a Azure-SSIS IRhoz](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network#publicIP)). Ezen a csempén kiválaszthatja az első/második statikus nyilvános IP-címeire mutató hivatkozásokat a Azure-SSIS IR számára egy ablak megnyitásához, ahol az erőforrás-azonosítót ( `/subscriptions/YourAzureSubscripton/resourceGroups/YourResourceGroup/providers/Microsoft.Network/publicIPAddresses/YourPublicIPAddress` ) egy szövegmezőből másolhatja. Az előugró ablakban bejelölheti az első/második statikus **nyilvános IP-cím beállításainak megjelenítése** hivatkozást is, amely az első/második statikus nyilvános IP-cím (Azure Portal) kezelésére használható.
 
-![Azure-SSIS IR figyelése – csempe DIAGNOSZTIZÁLása](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-static.png)
+![Képernyőfelvétel: az első/második statikus nyilvános IP-címek kijelölése.](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-static.png)
 
 #### <a name="package-stores-tile"></a>PACKAGE STOREs csempe
 
@@ -292,7 +292,7 @@ Az Azure-SSIS integrációs modulról további információt az alábbi cikkekbe
 - [Azure-SSIS integrációs modul kezelése](manage-azure-ssis-integration-runtime.md). Ez a cikk bemutatja, hogyan indíthatja el, állíthatja le vagy törölheti a Azure-SSIS IR. Emellett további csomópontok hozzáadásával is bemutatja, hogyan méretezheti azt ki. 
 - [Azure-SSIS integrációs modul csatlakoztatása virtuális hálózathoz](join-azure-ssis-integration-runtime-virtual-network.md). Ez a cikk útmutatást nyújt a Azure-SSIS IR virtuális hálózathoz való csatlakoztatásához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A folyamatok figyelésének különböző módjai a következő cikkekben találhatók: 
 
 - Gyors útmutató [: adatelőállító létrehozása](quickstart-create-data-factory-dot-net.md).

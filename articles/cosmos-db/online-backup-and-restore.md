@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/24/2020
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 6485df342bbe0b2378a67b90e448b2bd98c5e283
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 310fee91ed98409e5a724d1be8de7bc9ccb5601b
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91400400"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570916"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Online biztonsági mentési és igény szerinti adatvisszaállítás Azure Cosmos DB
 
@@ -26,7 +26,7 @@ A Azure Cosmos DB, nem csupán az adatai, hanem az adatbiztonsági másolatok is
 
 * Azure Cosmos DB tárolja ezeket a biztonsági másolatokat az Azure Blob Storage-ban, míg a tényleges adatok helyileg, Azure Cosmos DB belül találhatók.
 
-* A kis késleltetés garantálása érdekében a biztonsági másolat pillanatképét az Azure Blob Storage ugyanabban a régióban tárolja, mint az aktuális írási régió (vagy az írási régiók **egyike**, ha több főkiszolgálós konfigurációval rendelkezik). A regionális katasztrófákkal szembeni rugalmasság érdekében a rendszer az Azure Blob Storage-ban tárolt biztonsági mentési adatok minden pillanatképét újrareplikálja egy másik régióba a georedundáns tárolás (GRS) használatával. A biztonsági másolat replikálási régiója függ a forrásrégiótól és a forrásrégióhoz társított régiópártól. További információért tekintse meg a [geo-redundáns párok listáját az Azure-régiókról](../best-practices-availability-paired-regions.md) szóló cikkben. Ezt a biztonsági másolatot közvetlenül nem érheti el. Az Azure Cosmos DB csapatától támogatási kérésen keresztül igényelheti a biztonsági másolat visszaállítását.
+* A kis késleltetés garantálása érdekében a biztonsági mentés pillanatképét az Azure Blob Storage tárolja ugyanabban a régióban, mint az aktuális írási régió (vagy az írási régiók **egyike** ), ha többrégiós írási konfigurációval rendelkezik. A regionális katasztrófákkal szembeni rugalmasság érdekében a rendszer az Azure Blob Storage-ban tárolt biztonsági mentési adatok minden pillanatképét újrareplikálja egy másik régióba a georedundáns tárolás (GRS) használatával. A biztonsági másolat replikálási régiója függ a forrásrégiótól és a forrásrégióhoz társított régiópártól. További információért tekintse meg a [geo-redundáns párok listáját az Azure-régiókról](../best-practices-availability-paired-regions.md) szóló cikkben. Ezt a biztonsági másolatot közvetlenül nem érheti el. Az Azure Cosmos DB csapatától támogatási kérésen keresztül igényelheti a biztonsági másolat visszaállítását.
 
    Az alábbi képen látható, hogy az USA nyugati régiójában lévő három elsődleges fizikai partícióval rendelkező Azure Cosmos-tároló hogyan készül biztonsági mentésben egy távoli Azure Blob Storage-fiókban az USA nyugati régiójában, majd replikálva az USA keleti régiójába:
 
@@ -59,11 +59,11 @@ A következő lépésekkel módosíthatja egy meglévő Azure Cosmos-fiók alap�
 
    * **Megőrzött Adatmásolatok** – alapértelmezés szerint a rendszer díjmentesen két biztonsági másolatot készít az adatairól. Ha kettőnél több példányra van szüksége, további díjat számítunk fel. A további másolatok pontos díjszabását az [árképzést ismertető oldal](https://azure.microsoft.com/pricing/details/cosmos-db/) Felhasznált tárterület szakaszában tekintheti meg.
 
-   :::image type="content" source="./media/online-backup-and-restore/configure-backup-interval-retention.png" alt-text="A biztonsági mentés intervallumának és megőrzésének konfigurálása egy meglévő Azure Cosmos-fiókhoz" border="true":::
+   :::image type="content" source="./media/online-backup-and-restore/configure-backup-interval-retention.png" alt-text="Az Azure Storage GRS összes Cosmos DB entitásának rendszeres teljes biztonsági mentése" border="true":::
 
 Ha a fiók létrehozása során konfigurálja a biztonsági mentési beállításokat, beállíthatja a **biztonsági mentési szabályzatot**, amely akár **rendszeres** , akár **folyamatos**. Az időszakos házirend lehetővé teszi a biztonsági mentés intervallumának és a biztonsági másolatok megőrzésének konfigurálását. A folyamatos házirend jelenleg csak a regisztráláskor érhető el. A Azure Cosmos DB csapat felméri a munkaterhelést, és jóváhagyja a kérést.
 
-:::image type="content" source="./media/online-backup-and-restore/configure-periodic-continuous-backup-policy.png" alt-text="Rendszeres vagy folyamatos biztonsági mentési szabályzat konfigurálása az új Azure Cosmos-fiókokhoz" border="true":::
+:::image type="content" source="./media/online-backup-and-restore/configure-periodic-continuous-backup-policy.png" alt-text="Az Azure Storage GRS összes Cosmos DB entitásának rendszeres teljes biztonsági mentése" border="true":::
 
 ## <a name="restore-data-from-an-online-backup"></a>Adatok visszaállítása online biztonsági mentésből
 
@@ -104,7 +104,7 @@ Az alábbi módokon térhet vissza az eredeti Azure Cosmos-fiókba:
 
 Győződjön meg arról, hogy az adatok migrálása után azonnal törli a visszaállított fiókokat, mivel ezek után folyamatos költségek merülnek fel.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő témakörből megtudhatja, hogyan állíthatja vissza az Azure Cosmos-fiók adatait, vagy megismerheti az adatok áttelepítését egy Azure Cosmos-fiókba
 

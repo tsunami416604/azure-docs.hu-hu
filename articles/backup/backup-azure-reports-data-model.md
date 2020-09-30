@@ -3,12 +3,12 @@ title: Adatmodell a Azure Backup diagnosztikai eseményeihez
 description: Ez az adatmodell a diagnosztikai események Log Analyticsba (LA) történő küldésének erőforrás-specifikus módjára hivatkozik.
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: adc1442b674b9a6e947ef65967a2c2f1359e7d8a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: c2c5d37596be104c4b1dc7e865586a4728a27bae
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017583"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569592"
 ---
 # <a name="data-model-for-azure-backup-diagnostics-events"></a>Adatmodell a Azure Backup diagnosztikai eseményeihez
 
@@ -38,9 +38,9 @@ Ez a táblázat az alapszintű biztonsági mentési entitásokkal, például a t
 | BackupManagementServerOSVersion   | Szöveg          | A biztonságimásolat-felügyeleti kiszolgáló operációs rendszerének verziója                   |
 | BackupManagementServerVersion     | Szöveg          | A biztonságimásolat-felügyeleti kiszolgáló verziója                      |
 | LatestRecoveryPointLocation       | Szöveg          | A biztonsági mentési tétel legutóbbi helyreállítási pontjának helye    |
-| LatestRecoveryPointTime           | DateTime      | A biztonsági mentési tétel legutóbbi helyreállítási pontjának dátuma   |
+| LatestRecoveryPointTime           | Dátum/idő      | A biztonsági mentési tétel legutóbbi helyreállítási pontjának dátuma   |
 | OldestRecoveryPointLocation       | Szöveg          | A biztonsági mentési tétel legrégebbi helyreállítási pontjának helye    |
-| OldestRecoveryPointTime           | DateTime      | A biztonsági mentési tétel legutóbbi helyreállítási pontjának dátuma   |
+| OldestRecoveryPointTime           | Dátum/idő      | A biztonsági mentési tétel legutóbbi helyreállítási pontjának dátuma   |
 | PolicyUniqueId                    | Szöveg          | A szabályzat azonosítására szolgáló egyedi azonosító                             |
 | ProtectedContainerFriendlyName    | Szöveg          | A védett kiszolgáló rövid neve                        |
 | ProtectedContainerLocation        | Szöveg          | A védett tároló a helyszínen vagy az Azure-ban található-e |
@@ -55,7 +55,7 @@ Ez a táblázat az alapszintű biztonsági mentési entitásokkal, például a t
 | ResourceGroupName                 | Szöveg          | Az erőforrás erőforráscsoport (például Recovery Services tároló) az összegyűjtött adatokhoz |
 | Sémaverzióval                     | Szöveg          | Ez a mező a séma aktuális verzióját jelöli. **V2** |
 | SecondaryBackupProtectionState    | Szöveg          | Azt jelzi, hogy engedélyezve van-e a másodlagos védelem a biztonsági mentési elemmel kapcsolatban  |
-| Állapot                             | Szöveg          | A biztonságimásolat-elem objektumának állapota. Például: aktív, törölve |
+| Állam                             | Szöveg          | A biztonságimásolat-elem objektumának állapota. Például: aktív, törölve |
 | StorageReplicationType            | Szöveg          | A tár tárolási replikálásának típusa. Például: GeoRedundant |
 | SubscriptionId                    | Szöveg          | Az erőforrás (például Recovery Services tároló) előfizetés-azonosítója, amelybe az adatok gyűjtése történik |
 | VaultName                         | Szöveg          | A tároló neve                                            |
@@ -74,7 +74,7 @@ Ez a táblázat a riasztással kapcsolatos mezők részleteit tartalmazza.
 | Kategória                       | Szöveg          | Azure Monitor naplókba leküldett diagnosztikai adatkategóriák – AddonAzureBackupAlerts |
 | AlertCode                      | Szöveg          | Riasztás típusának egyedi azonosítására szolgáló kód                     |
 | AlertConsolidationStatus       | Szöveg          | Annak megállapítása, hogy a riasztás konszolidált riasztás-e, vagy sem         |
-| AlertOccurrenceDateTime        | DateTime      | A riasztás létrehozásának dátuma és időpontja                     |
+| AlertOccurrenceDateTime        | Dátum/idő      | A riasztás létrehozásának dátuma és időpontja                     |
 | AlertRaisedOn                  | Szöveg          | A riasztást kiváltó entitás típusa                        |
 | AlertSeverity                  | Szöveg          | A riasztás súlyossága. Például kritikus                 |
 | AlertStatus                    | Szöveg          | A riasztás állapota. Például: aktív                     |
@@ -88,7 +88,7 @@ Ez a táblázat a riasztással kapcsolatos mezők részleteit tartalmazza.
 | ProtectedContainerUniqueId     | Szöveg          | A riasztáshoz társított védett kiszolgáló egyedi azonosítója |
 | RecommendedAction              | Szöveg          | A riasztás feloldásához javasolt művelet                      |
 | Sémaverzióval                  | Szöveg          | A séma jelenlegi verziója, például **v2**            |
-| Állapot                          | Szöveg          | A riasztási objektum aktuális állapota, például aktív, törölve |
+| Állam                          | Szöveg          | A riasztási objektum aktuális állapota, például aktív, törölve |
 | StorageUniqueId                | Szöveg          | A tárolási entitás azonosítására használt egyedi azonosító                |
 | VaultUniqueId                  | Szöveg          | A riasztáshoz kapcsolódó tár azonosítására szolgáló egyedi azonosító    |
 | SourceSystem                   | Szöveg          | Az aktuális adatforrásrendszer – Azure                    |
@@ -108,7 +108,7 @@ Ez a táblázat az alapszintű védett példányokkal kapcsolatos mezőket tarta
 | ProtectedContainerUniqueId     | Szöveg          | A feladatot futtató védett tároló azonosítására szolgáló egyedi azonosító |
 | ProtectedInstanceCount         | Szöveg          | A társított biztonsági másolati elemhez vagy a védett tárolóhoz tartozó védett példányok száma az adott napon és időpontban |
 | Sémaverzióval                  | Szöveg          | A séma jelenlegi verziója, például **v2**            |
-| Állapot                          | Szöveg          | A biztonsági mentési elem objektumának állapota, például aktív, törölve |
+| Állam                          | Szöveg          | A biztonsági mentési elem objektumának állapota, például aktív, törölve |
 | VaultUniqueId                  | Szöveg          | A védett példányhoz társított védett tároló egyedi azonosítója |
 | SourceSystem                   | Szöveg          | Az aktuális adatforrásrendszer – Azure                    |
 
@@ -130,16 +130,16 @@ Ez a táblázat a feladatokkal kapcsolatos mezők részleteit tartalmazza.
 | JobFailureCode                 | Szöveg          | Hiba történt a hibakód karakterlánca miatt, mert a művelet sikertelen volt    |
 | JobOperation                   | Szöveg          | A művelet, amelynek a feladata fut, például biztonsági mentés, visszaállítás, biztonsági mentés konfigurálása |
 | JobOperationSubType            | Szöveg          | A feladat műveletének altípusa. Például: "log", a napló biztonsági mentési feladata esetén |
-| JobStartDateTime               | DateTime      | A feladatok futtatásának dátuma és időpontja                       |
+| JobStartDateTime               | Dátum/idő      | A feladatok futtatásának dátuma és időpontja                       |
 | Feladat állapota                      | Szöveg          | A Befejezett feladatok állapota, például befejezett, sikertelen   |
 | JobUniqueId                    | Szöveg          | A feladatot azonosító egyedi azonosító                                |
 | ProtectedContainerUniqueId     | Szöveg          | A feladathoz társított védett kiszolgáló egyedi azonosítója |
 | RecoveryJobDestination         | Szöveg          | A helyreállítási feladatok célja, amelyben az adatok helyreállítása történik   |
-| RecoveryJobRPDateTime          | DateTime      | A helyreállított helyreállítási pont létrehozásának dátuma és időpontja |
+| RecoveryJobRPDateTime          | Dátum/idő      | A helyreállított helyreállítási pont létrehozásának dátuma és időpontja |
 | RecoveryJobLocation            | Szöveg          | A helyreállított helyreállítási pont tárolási helye |
 | RecoveryLocationType           | Szöveg          | A helyreállítási hely típusa                                |
 | Sémaverzióval                  | Szöveg          | A séma jelenlegi verziója, például **v2**            |
-| Állapot                          | Szöveg          | A feladatütemezés aktuális állapota, például aktív, törölve |
+| Állam                          | Szöveg          | A feladatütemezés aktuális állapota, például aktív, törölve |
 | VaultUniqueId                  | Szöveg          | A feladathoz társított védett tároló egyedi azonosítója |
 | SourceSystem                   | Szöveg          | Az aktuális adatforrásrendszer – Azure                    |
 
@@ -177,7 +177,7 @@ Ez a táblázat a házirendekkel kapcsolatos mezőkről tartalmaz információka
 | RetentionDuration               | Szöveg           | Konfigurált biztonsági másolatok megőrzési időtartama                    |
 | RetentionType                   | Szöveg           | Megőrzés típusa                                            |
 | Sémaverzióval                   | Szöveg           | Ez a mező a séma aktuális verzióját jelöli, **v2** |
-| Állapot                           | Szöveg           | A házirend-objektum aktuális állapota. Például: aktív, törölve |
+| Állam                           | Szöveg           | A házirend-objektum aktuális állapota. Például: aktív, törölve |
 | SynchronisationFrequencyPerDay  | Egész szám   | Napok száma egy nap során a rendszer az SC DPM és a MABS esetében szinkronizálja a fájlok biztonsági mentését |
 | VaultUniqueId                   | Szöveg           | Azon tár egyedi azonosítója, amelyhez ez a szabályzat tartozik          |
 | WeeklyRetentionDaysOfTheWeek    | Szöveg           | A heti megőrzéshez kiválasztott hét napjai               |
@@ -207,7 +207,7 @@ Ez a táblázat a Storage szolgáltatással kapcsolatos mezők részleteit tarta
 | PreferredWorkloadOnVolume      | Szöveg          | A számítási feladatok, amelyekhez ez a kötet az előnyben részesített tároló      |
 | ProtectedContainerUniqueId     | Szöveg          | A biztonsági mentési elemmel társított védett tároló egyedi azonosítója |
 | Sémaverzióval                  | Szöveg          | A séma verziója. Például: **v2**                   |
-| Állapot                          | Szöveg          | A biztonságimásolat-elem objektumának állapota. Például: aktív, törölve |
+| Állam                          | Szöveg          | A biztonságimásolat-elem objektumának állapota. Például: aktív, törölve |
 | StorageAllocatedInMBs          | Szám        | A megfelelő biztonsági mentési tétel által lefoglalt tárterület a lemez típusú megfelelő tárolóban |
 | StorageConsumedInMBs           | Szám        | A megfelelő tároló biztonsági mentési eleme által felhasznált tárterület mérete |
 | StorageName                    | Szöveg          | A tárolási entitás neve. Például: E:\                      |
@@ -217,6 +217,29 @@ Ez a táblázat a Storage szolgáltatással kapcsolatos mezők részleteit tarta
 | VaultUniqueId                  | Szöveg          | A tárolási entitáshoz kapcsolódó tár azonosítására használt egyedi azonosító |
 | VolumeFriendlyName             | Szöveg          | A tárolási kötet rövid neve                          |
 | SourceSystem                   | Szöveg          | Az aktuális adatforrásrendszer – Azure                    |
+
+## <a name="valid-operation-names-for-each-table"></a>Az egyes táblák érvényes műveleti nevei
+
+A fenti táblázatokban szereplő összes rekordhoz tartozik egy társított **művelet neve**. A művelet neve leírja a rekord típusát (és azt is, hogy a tábla mely mezői vannak feltöltve a rekordhoz). Minden táblázat (kategória) egy vagy több különböző műveleti nevet támogat. Az alábbi táblázat az egyes fenti táblák támogatott műveleti neveit összegzi.
+
+| **Tábla neve/kategória**                   | **Támogatott műveletek nevei** | **Leírás**              |
+| ------------------------------------------- | ------------------------------|----------------------------- |
+| CoreAzureBackup | BackupItem | Egy olyan rekordot jelöl, amely egy adott biztonsági másolati elem összes adatát tartalmazza, például az azonosítót, a nevet, a típust stb. |
+| CoreAzureBackup | BackupItemAssociation | A biztonsági másolati elemek és a hozzá tartozó védett tároló (ha van ilyen) közötti leképezést jelöli. |
+| CoreAzureBackup | BackupItemFrontEndSizeConsumption | A biztonsági másolati elemek és az előtér-méret közötti leképezést jelöli. |
+| CoreAzureBackup | ProtectedContainer | Egy olyan rekordot jelöl, amely egy adott védett tároló összes adatát tartalmazza, például az azonosítót, a nevet, a típust stb. |
+| CoreAzureBackup | ProtectedContainerAssociation | Egy védett tároló és a biztonsági mentéshez használt tár közötti leképezést jelöl. |
+| CoreAzureBackup | Tároló | Egy olyan rekordot jelöl, amely az adott tár összes adatát tartalmazza. AZONOSÍTÓ, név, címkék, hely stb. |
+| CoreAzureBackup | RecoveryPoint | Egy olyan rekordot jelöl, amely egy adott biztonsági mentési tétel legrégebbi és utolsó helyreállítási pontját tartalmazza. |
+| AddonAzureBackupJobs | Feladat |  Egy olyan rekordot jelöl, amely egy adott feladat összes adatát tartalmazza. Például: feladatütemezés, Kezdési idő, állapot stb. |
+| AddonAzureBackupAlerts | Riasztás | Egy olyan rekordot jelöl, amely egy adott riasztás összes adatát tartalmazza. Például a riasztás létrehozásának ideje, súlyossága, állapota stb.  |
+| AddonAzureBackupStorage | Storage | Egy olyan rekordot jelöl, amely egy adott tárolási entitás összes adatát tartalmazza. Például: tárolási név, típus stb. |
+| AddonAzureBackupStorage | StorageAssociation | A biztonsági másolati elemek és a biztonsági mentési elemek által felhasznált teljes felhőalapú tárterület közötti leképezést jelöli. |
+| AddonAzureBackupProtectedInstance | ProtectedInstance | Egy olyan rekordot jelöl, amely az egyes tárolók vagy biztonsági másolati elemek védett példányainak darabszámát tartalmazza. Az Azure-beli virtuális gépek biztonsági mentése esetén a védett példányok száma a biztonsági mentési elem szintjén, a védett tároló szintjén elérhető egyéb munkaterhelések esetén is elérhető. |
+| AddonAzureBackupPolicy | Szabályzat |  Egy olyan rekordot jelöl, amely a biztonsági mentési és adatmegőrzési szabályzat összes adatát tartalmazza. Például: azonosító, név, megőrzési beállítások stb. |
+| AddonAzureBackupPolicy | PolicyAssociation | A biztonsági másolati elem és a rajta alkalmazott biztonsági mentési házirend közötti leképezést jelöli. |   
+
+Gyakran szükség van a különböző táblák közötti összekapcsolásra, valamint a különböző rekordokra, amelyek ugyanahhoz a táblához tartoznak (a művelet neve alapján megkülönböztetve) az elemzéshez szükséges összes mező beszerzéséhez. Az első lépésekhez tekintse meg a [minta lekérdezéseit](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor#sample-kusto-queries) . 
 
 ## <a name="next-steps"></a>Következő lépések
 

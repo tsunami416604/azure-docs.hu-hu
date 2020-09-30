@@ -1,5 +1,5 @@
 ---
-title: Azure-beli szinapszis-munkaterület létrehozása Azure Resource Manager sablon alapján
+title: 'Gyors útmutató: Azure szinapszis-munkaterület létrehozása Azure Resource Manager sablon alapján'
 description: Megtudhatja, hogyan hozhat létre egy szinapszis-munkaterületet Azure Resource Manager sablon használatával.
 services: azure-resource-manager
 author: julieMSFT
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: jrasnick
 ms.date: 08/07/2020
-ms.openlocfilehash: c64f3d835eeede79f937bbaadb0a54992176438d
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.openlocfilehash: dc6d36f2316e0ae19ce8b813fa9eb127b1a9cf1f
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500928"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569019"
 ---
 # <a name="quickstart-create-an-azure-synapse-workspace-using-a-deployment-template"></a>Rövid útmutató: Azure szinapszis-munkaterület létrehozása központi telepítési sablonnal
 
@@ -33,7 +33,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 A sablon áttekintéséhez válassza a **Megjelenítés** hivatkozást a következőképpen:
 
-[![Vizualizáció](../media/template-deployments/template-visualize-button.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2FSynapse%2Fmaster%2FManage%2FDeployWorkspace%2Fazuredeploy.json)
+[![Vizualizáció](../media/template-deployments/template-visualize-button.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2FSynapse%2Fmaster%2FManage%2FDeployWorkspace%2Fazuredeploy.json)
 
 A sablon két erőforrást határoz meg:
 
@@ -58,7 +58,7 @@ A sablon két erőforrást határoz meg:
    * **Áttekintés és létrehozás**: válassza a lehetőséget.
    * **Létrehozás**: válassza a lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni az Azure szinapszis Analyticsről és a Azure Resource Managerról, folytassa az alábbi cikkekkel.
 

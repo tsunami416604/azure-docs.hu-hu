@@ -1,18 +1,18 @@
 ---
 title: Megtudhatja, hogyan védheti meg Azure Cosmos DB az adathozzáférését
-description: Ismerje meg a Azure Cosmos DB hozzáférés-vezérlési fogalmait, beleértve a főkulcsokat, a csak olvasható kulcsokat, a felhasználókat és az engedélyeket.
+description: Ismerje meg a Azure Cosmos DB hozzáférés-vezérlési fogalmait, beleértve az elsődleges kulcsokat, a csak olvasható kulcsokat, a felhasználókat és az engedélyeket.
 author: thomasweiss
 ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4714ec9773b98887de483b7353eea9f4416eec19
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 0a5411a8fba8456deb59a5c9ede4e9314876dbdb
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017753"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569576"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Biztonságos hozzáférés az adatokhoz az Azure Cosmos DB-ben
 
@@ -20,12 +20,12 @@ Ez a cikk áttekintést nyújt a [Microsoft Azure Cosmos DBban](https://azure.mi
 
 Azure Cosmos DB kétféle kulcsot használ a felhasználók hitelesítéséhez és az adataihoz és erőforrásaihoz való hozzáférés biztosításához. 
 
-|Kulcs típusa|További források|
+|Kulcs típusa|Erőforrások|
 |---|---|
-|[Főkulcsok](#master-keys) |Felügyeleti erőforrásokhoz használatos: adatbázis-fiókok, adatbázisok, felhasználók és engedélyek|
+|[Főkulcsok](#primary-keys) |Felügyeleti erőforrásokhoz használatos: adatbázis-fiókok, adatbázisok, felhasználók és engedélyek|
 |[Erőforrás-tokenek](#resource-tokens)|Alkalmazás-erőforrásokhoz használatos: tárolók, dokumentumok, mellékletek, tárolt eljárások, eseményindítók és UDF|
 
-<a id="master-keys"></a>
+<a id="primary-keys"></a>
 
 ## <a name="master-keys"></a>Főkulcsok
 
@@ -38,15 +38,15 @@ A főkulcsok hozzáférést biztosítanak az adatbázis-fiókhoz tartozó össze
 
 Minden fiók két főkulcsból áll: egy elsődleges és egy másodlagos kulcsból. A kettős kulcsok célja, hogy újragenerálja vagy leállítsa a kulcsokat, és folyamatos hozzáférést biztosítson fiókjához és adataihoz.
 
-A Cosmos DB fiók két főkulcsán kívül két írásvédett kulcs is van. Ezek a csak olvasási jogosultsággal rendelkező kulcsok csak olvasási műveleteket engedélyeznek a fiókon. A csak olvasási jogosultsággal rendelkező kulcsok nem biztosítanak hozzáférést az olvasási engedélyek erőforrásaihoz.
+A Cosmos DB fiók két elsődleges kulcsa mellett két írásvédett kulcs is van. Ezek a csak olvasási jogosultsággal rendelkező kulcsok csak olvasási műveleteket engedélyeznek a fiókon. A csak olvasási jogosultsággal rendelkező kulcsok nem biztosítanak hozzáférést az olvasási engedélyek erőforrásaihoz.
 
-Az elsődleges, másodlagos, írásvédett és írható főkulcsok lekérhető és újragenerálható a Azure Portal használatával. Útmutatásért lásd: [hozzáférési kulcsok megtekintése, másolása és újragenerálása](manage-with-cli.md#regenerate-account-key).
+Az elsődleges, a másodlagos, az írásvédett és az írható-olvasható elsődleges kulcsok lekérhető és újragenerálható a Azure Portal használatával. Útmutatásért lásd: [hozzáférési kulcsok megtekintése, másolása és újragenerálása](manage-with-cli.md#regenerate-account-key).
 
 :::image type="content" source="./media/secure-access-to-data/nosql-database-security-master-key-portal.png" alt-text="Hozzáférés-vezérlés (IAM) a Azure Portal – NoSQL adatbázis biztonságának bemutatása":::
 
 ### <a name="key-rotation"></a>Kulcs elforgatása<a id="key-rotation"></a>
 
-A főkulcs elforgatásának folyamata egyszerű. 
+Az elsődleges kulcs elforgatásának folyamata egyszerű. 
 
 1. A másodlagos kulcs lekéréséhez navigáljon a Azure Portal.
 2. Cserélje le az elsődleges kulcsot a másodlagos kulcsára az alkalmazásban. Győződjön meg arról, hogy az összes központi telepítés összes Cosmos DB ügyfele azonnal újraindul, és megkezdi a frissített kulcs használatát.
@@ -54,11 +54,11 @@ A főkulcs elforgatásának folyamata egyszerű.
 4. Ellenőrzi, hogy az új elsődleges kulcs az összes erőforráson működik-e. A kulcsfontosságú rotációs folyamat a Cosmos DB fiók méretétől függően akár egy perctől akár órákig is elvégezhető.
 5. Cserélje le a másodlagos kulcsot az új elsődleges kulcsra.
 
-:::image type="content" source="./media/secure-access-to-data/nosql-database-security-master-key-rotate-workflow.png" alt-text="Főkulcs elforgatása a Azure Portalban – NoSQL adatbázis biztonságának bemutatása" border="false":::
+:::image type="content" source="./media/secure-access-to-data/nosql-database-security-master-key-rotate-workflow.png" alt-text="Hozzáférés-vezérlés (IAM) a Azure Portal – NoSQL adatbázis biztonságának bemutatása" border="false":::
 
-### <a name="code-sample-to-use-a-master-key"></a>Mintakód a főkulcs használatához
+### <a name="code-sample-to-use-a-primary-key"></a>Mintakód elsődleges kulcs használatára
 
-Az alábbi mintakód azt szemlélteti, hogyan használható egy Cosmos DB-fiók végpontja és főkulcsa egy DocumentClient létrehozásához és egy adatbázis létrehozásához:
+Az alábbi mintakód bemutatja, hogyan használható egy Cosmos DB-fiók végpontja és az elsődleges kulcs egy DocumentClient létrehozásához és egy adatbázis létrehozásához:
 
 ```csharp
 //Read the Azure Cosmos DB endpointUrl and authorization keys from config.
@@ -71,7 +71,7 @@ private static readonly string authorizationKey = ConfigurationManager.AppSettin
 CosmosClient client = new CosmosClient(endpointUrl, authorizationKey);
 ```
 
-Az alábbi mintakód azt szemlélteti, hogyan használható a Azure Cosmos DB fiók végpontja és főkulcsa egy objektum létrehozásához `CosmosClient` :
+Az alábbi mintakód azt szemlélteti, hogyan használható a Azure Cosmos DB fiók végpontja és az elsődleges kulcs egy objektum létrehozásához `CosmosClient` :
 
 :::code language="python" source="~/cosmosdb-python-sdk/sdk/cosmos/azure-cosmos/samples/access_cosmos_with_resource_token.py" id="configureConnectivity":::
 
@@ -84,17 +84,17 @@ Az erőforrás-tokenek hozzáférést biztosítanak az adatbázison belüli alka
 - Akkor jön létre újra, amikor egy engedélyezési erőforrást POST, GET vagy PUT hívás után végeznek el.
 - Használjon olyan kivonatoló erőforrás-tokent, amelyet kifejezetten a felhasználóhoz, erőforráshoz és engedélyhez alakítottak ki.
 - Az idő egy testreszabható érvényességi időtartammal van kötve. Az alapértelmezett érvényes időtartomány egy óra. A jogkivonat élettartama azonban explicit módon megadható, legfeljebb öt órára.
-- Adjon meg egy biztonságos alternatívát a főkulcs megadásához.
+- Adjon meg egy biztonságos alternatívát az elsődleges kulcs megadásához.
 - Lehetővé teszi az ügyfelek számára a Cosmos DB fiók erőforrásainak olvasását, írását és törlését a megadott engedélyek alapján.
 
-Erőforrás-tokent (Cosmos DB felhasználók és engedélyek létrehozásával) is használhat, ha hozzáférést szeretne biztosítani a Cosmos DB-fiókban lévő erőforrásokhoz egy olyan ügyfél számára, amely nem megbízható a főkulccsal.  
+Erőforrás-tokent (Cosmos DB felhasználók és engedélyek létrehozásával) is használhat, ha a Cosmos DB-fiókban lévő erőforrásokhoz hozzáférést szeretne biztosítani egy olyan ügyfél számára, amely nem megbízható az elsődleges kulccsal.  
 
-A Cosmos DB erőforrás-tokenek olyan biztonságos alternatívát biztosítanak, amely lehetővé teszi az ügyfelek számára, hogy az Ön által megadott engedélyek alapján beolvassák, írják és töröljék a Cosmos DB-fiókban lévő erőforrásokat, és nincs szükség fő vagy csak olvasható kulcsra.
+Cosmos DB erőforrás-tokenek olyan biztonságos alternatívát biztosítanak, amely lehetővé teszi az ügyfelek számára, hogy az Ön által megadott engedélyek alapján beolvassák, írják és töröljék a Cosmos DB-fiókban lévő erőforrásokat, és nincs szükség elsődleges vagy írásvédett kulcsra.
 
 Íme egy tipikus kialakítási minta, amely alapján az erőforrás-jogkivonatok az ügyfelek számára igényelhetők, hozhatók létre és továbbíthatók:
 
 1. A közepes szintű szolgáltatás úgy van beállítva, hogy kiszolgálja a felhasználók fényképeit használó mobileszköz-alkalmazásokat.
-2. A középső rétegbeli szolgáltatás rendelkezik a Cosmos DB fiók főkulcsával.
+2. A középső rétegbeli szolgáltatás rendelkezik az Cosmos DB fiók elsődleges kulcsával.
 3. A Photo alkalmazás telepítve van a végfelhasználói mobileszközökön.
 4. Bejelentkezéskor a Photo alkalmazás létrehozza a felhasználó identitását a középső rétegbeli szolgáltatással. Ez az identitás-létesítési mechanizmus kizárólag az alkalmazásra vonatkozik.
 5. Az identitás létrejötte után a középső rétegbeli szolgáltatás engedélyt kér az identitás alapján.
@@ -102,7 +102,7 @@ A Cosmos DB erőforrás-tokenek olyan biztonságos alternatívát biztosítanak,
 7. A telefonos alkalmazás továbbra is használhatja az erőforrás-jogkivonatot, hogy közvetlenül hozzáférhessen Cosmos DB erőforrásokhoz az erőforrás-jogkivonat által meghatározott engedélyekkel és az erőforrás-jogkivonat által engedélyezett intervallummal.
 8. Az erőforrás-jogkivonat lejárata után a további kérések 401 jogosulatlan kivételt kapnak.  Ezen a ponton a telefonos alkalmazás újból létrehozza az identitást, és új erőforrás-tokent kér.
 
-    :::image type="content" source="./media/secure-access-to-data/resourcekeyworkflow.png" alt-text="Azure Cosmos DB erőforrás-tokenek munkafolyamata" border="false":::
+    :::image type="content" source="./media/secure-access-to-data/resourcekeyworkflow.png" alt-text="Hozzáférés-vezérlés (IAM) a Azure Portal – NoSQL adatbázis biztonságának bemutatása" border="false":::
 
 Az erőforrás-jogkivonat létrehozását és felügyeletét a natív Cosmos DB ügyféloldali kódtárak kezelik; Ha azonban a REST-t használja, a kérelem/hitelesítés fejléceket kell létrehoznia. A REST-alapú hitelesítési fejlécek létrehozásával kapcsolatos további információkért lásd: [Access Control Cosmos db erőforrásokon](/rest/api/cosmos-db/access-control-on-cosmosdb-resources) vagy a [.net SDK](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos/src/AuthorizationHelper.cs) -hoz vagy a [Node.js SDK](https://github.com/Azure/azure-cosmos-js/blob/master/src/auth.ts)-hoz tartozó forráskódhoz.
 

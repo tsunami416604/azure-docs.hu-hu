@@ -1,21 +1,21 @@
 ---
 title: Az Adatterjesztés globálisan Azure Cosmos DB
-description: Ismerje meg a globálisan elosztott, többmodelles adatbázis-szolgáltatásokból származó, a világra kiterjedő geo-replikációt, több főkiszolgálót, feladatátvételt és adathelyreállítást Azure Cosmos DB
+description: Megtudhatja, hogyan hozhatja ki a globálisan elosztott, többmodelles adatbázis-szolgáltatást, amely az Azure Cosmos DB globális adatbázisait használó, a világra kiterjedő, a többrégiós és a feladatátvételi és adathelyreállítást is mutatja.
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: abd18132c7489153566042b0b7e3557662864f30
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 29917b0911fbab36fbb30a587ee7cac223b993f2
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91399465"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570184"
 ---
 # <a name="distribute-your-data-globally-with-azure-cosmos-db"></a>Globális adatterjesztés az Azure Cosmos DB-vel
 
-A mai alkalmazások nagyon rugalmasak és mindig online állapotban vannak. Az alacsony késés és a magas rendelkezésre állás érdekében ezeknek az alkalmazásoknak a példányait a felhasználókhoz közel lévő adatközpontokban kell központilag telepíteni. Ezeket az alkalmazásokat jellemzően több adatközpontba helyezik üzembe, és globálisan elosztottnak nevezzük őket. A globálisan elosztott alkalmazásoknak globálisan elosztott adatbázisra van szükségük, amely transzparens módon tudja replikálni az adatokat a világ bármely pontján, hogy az alkalmazások a felhasználóikhoz közel lévő adatpéldányt használhassák. 
+A mai alkalmazásoknak alacsony válaszidővel kell rendelkezniük, és mindig elérhetőnek kell lenniük a hálózaton keresztül. A kis késés és a magas rendelkezésre állás elérése érdekében ezeknek az alkalmazásoknak a példányait a felhasználókhoz közel lévő adatközpontokban kell üzembe helyezni. Ezeket az alkalmazásokat jellemzően több adatközpontba helyezik üzembe, és globálisan elosztottnak nevezzük őket. A globálisan elosztott alkalmazásoknak globálisan elosztott adatbázisra van szükségük, amely transzparens módon tudja replikálni az adatokat a világ bármely pontján, hogy az alkalmazások a felhasználóikhoz közel lévő adatpéldányt használhassák. 
 
 A Azure Cosmos DB egy globálisan elosztott adatbázis-szolgáltatás, amely alacsony késést, rugalmas méretezhetőséget és adatátvitelt, valamint jól definiált szemantikai adatkonzisztenciaet és magas rendelkezésre állást biztosít. Röviden, ha az alkalmazásnak a világ bármely pontján szükség van a gyors válaszidő biztosítására, és ha szükséges, hogy mindig online állapotba kerüljön, és az átviteli sebesség és a tárterület korlátlan és rugalmas méretezhetőségére van szüksége, az alkalmazást Azure Cosmos DB kell létrehoznia.
 
@@ -27,7 +27,7 @@ A Azure Cosmos DB segítségével bármikor hozzáadhat vagy eltávolíthat a fi
 
 ## <a name="key-benefits-of-global-distribution"></a>A globális terjesztés fő előnyei
 
-**Hozzon létre globális aktív-aktív alkalmazásokat.** Az új, több főkiszolgálós replikációs protokollal minden régió támogatja az írásokat és az olvasásokat is. A több főkiszolgálós képesség is lehetővé teszi a következőket:
+**Hozzon létre globális aktív-aktív alkalmazásokat.** Az új, többrégiós replikálási protokolljának írásával minden régió támogatja az írásokat és az olvasásokat is. A többrégiós írások funkció a következőket is lehetővé teszi:
 
 - Korlátlan rugalmas írási és olvasási méretezhetőség. 
 - 99,999%-os olvasási és írási rendelkezésre állás a világ minden tájáról.
@@ -45,12 +45,12 @@ Az Azure Cosmos DB többsoros API-k használatával az alkalmazás ismeri a legk
 
 **Számos jól meghatározott konzisztencia-modell közül választhat.** A Azure Cosmos DB replikációs protokoll öt jól definiált, gyakorlatias és intuitív konzisztencia-modellt kínál. Mindegyik modell kompromisszumot biztosít a konzisztencia és a teljesítmény között. Ezekkel a konzisztencia-modellekkel globálisan elosztott alkalmazásokat hozhat létre könnyedén.
 
-## <a name="next-steps"></a><a id="Next Steps"></a>További lépések
+## <a name="next-steps"></a><a id="Next Steps"></a>Következő lépések
 
 A globális terjesztésről a következő cikkekben olvashat bővebben:
 
 * [Globális terjesztés – technikai részletek](global-dist-under-the-hood.md)
-* [Több főkiszolgáló konfigurálása az alkalmazásokban](how-to-multi-master.md)
+* [Többrégiós írások konfigurálása az alkalmazásokban](how-to-multi-master.md)
 * [Ügyfelek konfigurálása a többhelyű-hez](how-to-manage-database-account.md#configure-multiple-write-regions)
 * [Régiók hozzáadása vagy eltávolítása a Azure Cosmos DB-fiókból](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
 * [Egyéni ütközés-feloldási szabályzat létrehozása SQL API-fiókokhoz](how-to-manage-conflicts.md#create-a-custom-conflict-resolution-policy)

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: b78c2b93a9427105ce2cc0ad8bd5d2b995c834ae
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 536d233a9c135b0b7dde6d6d80c705d2008226e6
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90976282"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569645"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan"></a>Oktatóanyag: ExpressRoute-társítás létrehozása az Azure Virtual WAN használatával
 
@@ -40,7 +40,7 @@ A konfigurálás megkezdése előtt győződjön meg a következő feltételek t
 
 * Igényeljen egy IP-címtartományt az elosztó régiójában. A hub egy virtuális WAN által létrehozott és használt virtuális hálózat. Az hubhoz megadott címtartomány nem fedi át a meglévő virtuális hálózatait, amelyhez csatlakozik. Emellett nem lehet átfedésben azokkal a címtartományokkal sem, amelyekhez a helyszínen csatlakozik. Ha nem ismeri a helyszíni hálózati konfigurációjában található IP-címtartományok körét, akkor egyeztessen valakivel, aki ezeket az adatokat megadhatja Önnek.
 
-* A ExpressRoute áramkörnek prémium szintű áramkörnek kell lennie ahhoz, hogy csatlakozhasson a hub-átjáróhoz.
+* A ExpressRoute áramkörnek prémium/standard áramkörnek kell lennie ahhoz, hogy csatlakozhasson a hub-átjáróhoz.
 
 * Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -105,7 +105,7 @@ Ebben a szakaszban a hub és a VNet közötti összekapcsolási kapcsolatot hozz
 
 ## <a name="connect-your-circuit-to-the-hub-gateway"></a><a name="connectcircuit"></a>Az áramkör összekapcsolása a hub-átjáróval
 
-Az átjáró létrehozása után összekapcsolhatja a [ExpressRoute áramkört](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) . A ExpressRoute Global Reach által támogatott helyszíneken elérhető ExpressRoute prémium szintű áramkörök csatlakozhatnak egy virtuális WAN ExpressRoute-átjáróhoz.
+Az átjáró létrehozása után összekapcsolhatja a [ExpressRoute áramkört](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) . A ExpressRoute Global Reach által támogatott helyszíneken elérhető prémium/standard szintű ExpressRoute a virtuális WAN ExpressRoute-átjáróhoz csatlakozhatnak, és az összes virtuális WAN-továbbítási funkciót (VPN-ről VPN-re, VPN-re és ExpressRoute-ra) is kihasználhatják. A nem Global Reach helyen található prémium/standard áramkörök ExpressRoute csatlakozhatnak az Azure-erőforrásokhoz, de nem fogják tudni használni a virtuális WAN-átviteli képességeket.
 
 ### <a name="to-connect-the-circuit-to-the-hub-gateway"></a>Az áramkör összekapcsolása a hub-átjáróval
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 051f6e6ef15cc94e2b607c74e666bae9c91c1160
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 75344204e03920c96d0868ad584b8701813fabf0
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401622"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569522"
 ---
 # <a name="azure-security-baseline-for-cosmos-db"></a>Cosmos DB Azure biztonsági alapterve
 
@@ -290,7 +290,7 @@ A Azure Cosmos DB beépített RBAC biztosít a gyakori felügyeleti forgatókön
 
 Az Azure AD PowerShell-modullal is elvégezheti az alkalmi lekérdezéseket a felügyeleti csoportok tagjait futtató fiókok felderítéséhez. 
 
-Emellett a Azure Cosmos DB egyes műveletei Azure Active Directory és fiók-specifikus főkulcsokkal is vezérelhetők.  A "disableKeyBasedMetadataWriteAccess" fiók beállításával vezérelheti a kulcsokhoz való hozzáférést.
+Emellett a Azure Cosmos DB egyes műveletei Azure Active Directory és fiók-specifikus elsődleges kulcsokkal is vezérelhetők.  A "disableKeyBasedMetadataWriteAccess" fiók beállításával vezérelheti a kulcsokhoz való hozzáférést.
 
 A szerepköralapú hozzáférés-vezérlés ismertetése a Azure Cosmos DBban: https://docs.microsoft.com/azure/cosmos-db/role-based-access-control
 
@@ -298,9 +298,9 @@ Saját egyéni szerepkörök létrehozása Azure Cosmos DB műveletek használat
 
 Új szerepkör létrehozása a Azure Active Directoryban: https://docs.microsoft.com/azure/role-based-access-control/custom-roles
 
-Címtárbeli szerepkör beszerzése Azure Active Directory a PowerShell használatával: https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0
+Címtárbeli szerepkör beszerzése Azure Active Directory a PowerShell használatával: https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0&preserve-view=true
 
-Címtárbeli szerepkör tagjainak beszerzése Azure Active Directory a PowerShell-lel: https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0
+Címtárbeli szerepkör tagjainak beszerzése Azure Active Directory a PowerShell-lel: https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&preserve-view=true
 
 Csak az adatműveletek felhasználói hozzáférésének korlátozása: https://docs.microsoft.com/azure/cosmos-db/how-to-restrict-user-data
 
@@ -310,7 +310,7 @@ Csak az adatműveletek felhasználói hozzáférésének korlátozása: https://
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3,2: az alapértelmezett jelszavak módosítása, ha alkalmazható
 
-**Útmutató**: az alapértelmezett vagy az üres jelszavak fogalma nem létezik az Azure ad-vel vagy a Azure Cosmos DBtel kapcsolatban. Ehelyett Azure Cosmos DB két típusú kulcsot használ a felhasználók hitelesítéséhez és az adataihoz és erőforrásaihoz való hozzáférés biztosításához. főkulcsok és erőforrás-tokenek. A kulcsok bármikor újra létrehozhatók.
+**Útmutató**: az alapértelmezett vagy az üres jelszavak fogalma nem létezik az Azure ad-vel vagy a Azure Cosmos DBtel kapcsolatban. Ehelyett Azure Cosmos DB két típusú kulcsot használ a felhasználók hitelesítéséhez és az adataihoz és erőforrásaihoz való hozzáférés biztosításához. elsődleges kulcsok és erőforrás-tokenek. A kulcsok bármikor újra létrehozhatók.
 
 A Azure Cosmos DB lévő adathozzáférés ismertetése: https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data
 
@@ -640,7 +640,7 @@ Bár a klasszikus Azure-erőforrások felderítése az erőforrás-gráfon keres
 
 Lekérdezések létrehozása az Azure Resource Graph használatával: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
-Az Azure-előfizetések megtekintése: https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
+Az Azure-előfizetések megtekintése: https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0&preserve-view=true
 
 Az Azure szerepköralapú hozzáférés-vezérlésének ismertetése: https://docs.microsoft.com/azure/role-based-access-control/overview
 
@@ -792,7 +792,7 @@ A feltételes hozzáférés konfigurálása a Azure Resource Managerhoz való ho
 
 - Cosmos DB virtuális hálózati szolgáltatás végpontját kell használnia
 
-Az elérhető Azure Policy aliasok megtekintése: https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
+Az elérhető Azure Policy aliasok megtekintése: https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0&preserve-view=true
 
 Azure Policy konfigurálása és kezelése: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
@@ -834,7 +834,7 @@ Azure Policy effektusok ismertetése: https://docs.microsoft.com/azure/governanc
 
 **Útmutató**: ha a Cosmos DBhoz vagy a kapcsolódó erőforrásokhoz egyéni Azure Policy definíciókat használ, az Azure Repos használatával biztonságosan tárolhatja és kezelheti a kódot.
 
-Az Azure Repos dokumentációja: https://docs.microsoft.com/azure/devops/repos/index?view=azure-devopshttps://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
+Az Azure Repos dokumentációja: https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops&preserve-view=truehttps://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&preserve-view=true
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -1003,7 +1003,7 @@ https://docs.microsoft.com/azure/cosmos-db/how-to-backup-and-restore
 
 Azure Key Vault titkos kódok visszaállítása:
 
-https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0
+https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0&preserve-view=true
 
 **Azure Security Center figyelés**: nem alkalmazható
 

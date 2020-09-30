@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/02/2020
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 7e315a7366793d355967f777cbc1dda0f9277087
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: c86207af51ebd1a9442afe6fa609598ec917bf15
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955913"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570450"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---under-the-hood"></a>Globális Adatterjesztés a Azure Cosmos DB-ben – a motorháztető alatt
 
@@ -30,7 +30,7 @@ Ha egy Cosmos DB rugalmasan méretezi az átviteli sebességet egy Cosmos-tárol
 
 Ahogy az az alábbi ábrán is látható, a tárolóban lévő adatok két dimenzión oszlanak el – egy régión belül és régiókban, a világ minden részén:  
 
-:::image type="content" source="./media/global-dist-under-the-hood/distribution-of-resource-partitions.png" alt-text="fizikai partíciók" border="false":::
+:::image type="content" source="./media/global-dist-under-the-hood/distribution-of-resource-partitions.png" alt-text="Rendszertopológia" border="false":::
 
 A fizikai partíciót replikák egy csoportja *hozza létre, amelyet replika-készletnek*neveznek. Mindegyik gép több száz replikát üzemeltet, amelyek a fenti képen látható különböző fizikai partíciókhoz tartoznak. A fizikai partícióknak megfelelő replikák dinamikusan helyezhetők el és töltődnek be a fürtben lévő gépek és a régión belüli adatközpontok között.  
 
@@ -52,7 +52,7 @@ A fizikai partíciók önfelügyelt és dinamikusan elosztott replikák, amelyek
 
 A fizikai partíciók egy csoportja, amelyek mindegyike a Cosmos adatbázis-régiókkal van konfigurálva, az összes konfigurált régióban replikált azonos kulcsok kezelésére szolgál. Ezt a magasabb szintű koordinációs primitívet *partíciós készletnek* nevezzük – a fizikai partíciók földrajzilag elosztott dinamikus átfedése, amely egy adott kulcsot kezel. Míg egy adott fizikai partíció (egy replika-készlet) egy fürtön belül van, a partíciók a fürtökön, az adatközpontokban és a földrajzi régiókban is kiterjedhetnek, ahogy az alábbi képen is látható:  
 
-:::image type="content" source="./media/global-dist-under-the-hood/dynamic-overlay-of-resource-partitions.png" alt-text="Particionálási készletek" border="false":::
+:::image type="content" source="./media/global-dist-under-the-hood/dynamic-overlay-of-resource-partitions.png" alt-text="Rendszertopológia" border="false":::
 
 Úgy gondolja, hogy a partíciók földrajzilag elszórtan szétszórt "Super Replica-set" típusúak, amely több replika-készletből áll, amelyek ugyanazt a kulcsot tartalmazza. Hasonlóan a másodpéldányhoz, a partíciós csoport tagsága is dinamikus – az implicit fizikai particionálási műveletek alapján ingadozik az új partíciók hozzáadására/eltávolítására egy adott partíción (például amikor egy tárolón kibővíti az átviteli sebességet, hozzáadhat/eltávolíthat egy régiót a Cosmos-adatbázishoz, vagy ha hiba történik). Azáltal, hogy az egyes partíciók (partíciók) a saját replikáján belül kezelik a particionálási tagságot, a tagság teljes mértékben decentralizált és magasan elérhető. Egy lemezpartíció újrakonfigurálása során a rendszer a fizikai partíciók közötti átfedés topológiáját is létrehozta. A topológia dinamikusan van kiválasztva a forrás és a cél fizikai partíciói között a konzisztencia, a földrajzi távolság és a rendelkezésre álló hálózati sávszélesség alapján.  
 
@@ -62,7 +62,7 @@ A szolgáltatás lehetővé teszi, hogy a Cosmos-adatbázisokat egyetlen írási
 
 A frissítés propagálásának, az ütközések feloldásának és az oksági viszonyok nyomon követésének kialakítását a [járványos algoritmusok](https://www.cs.utexas.edu/~lorenzo/corsi/cs395t/04S/notes/naor98load.pdf) és az [Bayou](https://zoo.cs.yale.edu/classes/cs422/2013/bib/terry95managing.pdf) rendszer korábbi munkája ihlette. Habár az ötletek kernelei megmaradtak, és a Cosmos DB rendszerkialakításával való kommunikációhoz hasznos hivatkozási keretet biztosítanak, az is jelentős átalakításon estek át, ahogy azokat a Cosmos DB rendszerre alkalmazták. Erre azért volt szükség, mert az előző rendszerek nem az erőforrás-szabályozáshoz, sem a Cosmos DB működéséhez szükséges mérethez, sem pedig a képességek biztosításához (például a határos elavulás következetességéhez), valamint a szigorú és átfogó SLA-ra, amelyet a Cosmos DB biztosít ügyfeleinek.  
 
-Ne felejtse el, hogy a partíciók több régióban vannak elosztva, és a Cosmos adatbázisok (Multi-Master) replikációs protokollt követve replikálják az adatok között az adott partíciós készletet alkotó fizikai partíciókat. Az egyes fizikai partíciók (egy partíciós készlet) elfogadják az írásokat, és általában az adott régióhoz tartozó ügyfelekre mutatnak olvasási műveleteket. Az adott régióban található fizikai partíció által elfogadott írásokat a rendszer tartósan véglegesíti, és a fizikai partíción belül, az ügyfélnek való nyugtázás előtt elvégzi. Ezek a feltételes írások, és a partíción belüli többi fizikai partícióra vannak propagálva egy anti-entrópia Channel használatával. Az ügyfelek feltételes vagy véglegesített írásokat is igényelhetnek a kérelem fejlécének átadásával. Az anti-entrópia-propagálás (beleértve a propagálás gyakoriságát is) dinamikus, a particionálás topológiája, a fizikai partíciók regionális közelsége és a beállított konzisztencia-szint alapján. Egy partíción belül a Cosmos DB egy elsődleges véglegesítő sémát követ egy dinamikusan kiválasztott döntőbíró-partícióval. A döntőbíró kiválasztása dinamikus, és az átfedések topológiája alapján szerves részét képezi a partíció újrakonfigurálásának. A véglegesített írások (beleértve a többsoros vagy kötegelt frissítéseket) garantáltan megrendelhetők. 
+Ne felejtse el, hogy a partíciók több régióban vannak elosztva, és a Cosmos-adatbázisok (többrégiós írások) replikációs protokollját követve replikálják az adatot az adott partíciós készletet alkotó fizikai partíciók között. Az egyes fizikai partíciók (egy partíciós készlet) elfogadják az írásokat, és általában az adott régióhoz tartozó ügyfelekre mutatnak olvasási műveleteket. Az adott régióban található fizikai partíció által elfogadott írásokat a rendszer tartósan véglegesíti, és a fizikai partíción belül, az ügyfélnek való nyugtázás előtt elvégzi. Ezek a feltételes írások, és a partíción belüli többi fizikai partícióra vannak propagálva egy anti-entrópia Channel használatával. Az ügyfelek feltételes vagy véglegesített írásokat is igényelhetnek a kérelem fejlécének átadásával. Az anti-entrópia-propagálás (beleértve a propagálás gyakoriságát is) dinamikus, a particionálás topológiája, a fizikai partíciók regionális közelsége és a beállított konzisztencia-szint alapján. Egy partíción belül a Cosmos DB egy elsődleges véglegesítő sémát követ egy dinamikusan kiválasztott döntőbíró-partícióval. A döntőbíró kiválasztása dinamikus, és az átfedések topológiája alapján szerves részét képezi a partíció újrakonfigurálásának. A véglegesített írások (beleértve a többsoros vagy kötegelt frissítéseket) garantáltan megrendelhetők. 
 
 A rendszer kódolt vektoros órákat alkalmaz (amelyek a régió-azonosítót és a logikai órákat tartalmazzák az egyes konszenzusi szintekhez a replika-set és a Partition-set esetében) a frissítési ütközések észlelése és megoldása érdekében. A topológia és a társ-kiválasztási algoritmus úgy lett kialakítva, hogy biztosítsa a rögzített és minimális tárterületet, valamint a verziók vektoros minimális hálózati terhelését. Az algoritmus garantálja a szigorú konvergencia-tulajdonságot.  
 
@@ -79,7 +79,7 @@ A határos állandósági konzisztencia garantálja, hogy az összes olvasás *K
 
 Az Cosmos DB öt konzisztencia-modelljének szemantikai leírását [itt](consistency-levels.md)találja, és matematikai módon ismertetjük a magas szintű tla [+ specifikációk](https://github.com/Azure/azure-cosmos-tla)segítségével.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkből megtudhatja, hogyan konfigurálhatja a globális eloszlást a következő cikkek használatával:
 

@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 8d795624097877d20f98a6fd205fb7136cf38007
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 11278f558f94fe358be94c914ecfeae6cfd5461e
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069124"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570755"
 ---
 # <a name="spring-data-azure-cosmos-db-v2-for-core-sql-api-release-notes-and-resources"></a>Spring-adatAzure Cosmos DB v2 for Core (SQL) API: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -53,7 +53,7 @@ Az [Azure Spring Cloud](https://azure.microsoft.com/services/spring-cloud/) -alk
 > * [Spring-adatGremlin Azure Cosmos DB](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db)
 >
 > Szeretne gyorsan eljutni?
-> 1. Telepítse a [minimális támogatott Java-futtatókörnyezetet (JDK 8](/java/azure/jdk/?view=azure-java-stable)), így használhatja az SDK-t is.
+> 1. Telepítse a [minimális támogatott Java-futtatókörnyezetet (JDK 8](/java/azure/jdk/?view=azure-java-stable&preserve-view=true)), így használhatja az SDK-t is.
 > 2. Hozzon létre egy Spring-adatAzure Cosmos DB alkalmazást a [Starter](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db)használatával. Egyszerű!
 > 3. A Spring- [adatokon keresztül Azure Cosmos db Fejlesztői útmutatóban](https://docs.microsoft.com/azure/developer/java/spring-framework/how-to-guides-spring-data-cosmosdb)dolgozhat, amely az alapszintű Azure Cosmos db kérelmeken keresztül halad.
 >
@@ -170,7 +170,7 @@ Az [Azure Spring Cloud](https://azure.microsoft.com/services/spring-cloud/) -alk
 
 ### <a name="211-march-7-2019"></a>2.1.1 (2019. március 7.)
 #### <a name="new-features"></a>Új funkciók
-* Frissíti a fő verziót 2.1.1-re.
+* Frissíti a fő verziót a 2.1.1-re.
 
 ### <a name="206-march-7-2019"></a>2.0.6 (2019. március 7.)
 #### <a name="new-features"></a>Új funkciók

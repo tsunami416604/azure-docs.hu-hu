@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 06/09/2020
 ms.reviewer: sngun
-ms.openlocfilehash: a68207b3e5390a26e8d62ee6b725b0768ea565a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7583e35cad03927d003de7a836de03af091b55eb
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85116077"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569702"
 ---
 # <a name="work-with-azure-cosmos-account"></a>Azure Cosmos-fiók használata
 
@@ -21,7 +21,7 @@ A Azure Cosmos DB egy teljes körűen felügyelt platform-szolgáltatás (Péter
 
 Az Azure Cosmos-fiók a globális terjesztés és a magas rendelkezésre állás alapvető egysége. Az adatok és az átviteli sebesség több Azure-régióban való globális elosztása érdekében bármikor hozzáadhat és eltávolíthat Azure-régiókat az Azure Cosmos-fiókjához. Beállíthatja, hogy az Azure Cosmos-fiók egyetlen vagy több írási régióval rendelkezzen. További információ: Azure- [régiók hozzáadása és eltávolítása Azure Cosmos-fiókjához](how-to-manage-database-account.md). Beállíthatja az [alapértelmezett konzisztencia](consistency-levels.md) -szintet az Azure Cosmos-fiókban. A Azure Cosmos DB átfogó SLA-kat biztosít, amely magában foglalja az átviteli sebességet, a késést a esetek 99% percentilis, a konzisztencia és a magas rendelkezésre állás érdekében. További információ: [Azure Cosmos db SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)-kat.
 
-Az Azure Cosmos-fiókban lévő összes adathoz való hozzáférés biztonságos kezeléséhez használhatja a fiókjához társított [főkulcsokat](secure-access-to-data.md) . Az adataihoz való további biztonságos hozzáféréshez konfigurálhat egy [VNET-szolgáltatási végpontot](vnet-service-endpoint.md) és egy [IP-tűzfalat](firewall-support.md) az Azure Cosmos-fiókjában. 
+Az Azure Cosmos-fiókban lévő összes információhoz való hozzáférés biztonságos kezeléséhez használhatja a fiókhoz társított [elsődleges kulcsokat](secure-access-to-data.md) . Az adataihoz való további biztonságos hozzáféréshez konfigurálhat egy [VNET-szolgáltatási végpontot](vnet-service-endpoint.md) és egy [IP-tűzfalat](firewall-support.md) az Azure Cosmos-fiókjában. 
 
 ## <a name="elements-in-an-azure-cosmos-account"></a>Elemek egy Azure Cosmos-fiókban
 
@@ -31,7 +31,7 @@ Jelenleg legfeljebb 100 Azure Cosmos-fiókot hozhat létre az Azure-előfizetés
 
 :::image type="content" source="./media/account-overview/hierarchy.png" alt-text="Azure Cosmos-fiók hierarchiája" border="false":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan kezelheti Azure Cosmos-fiókját és egyéb fogalmait:
 

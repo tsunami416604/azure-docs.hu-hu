@@ -1,6 +1,6 @@
 ---
 title: Az adatmegőrzés konfigurálása a környezetben – Azure Time Series Insights | Microsoft Docs
-description: Ismerje meg, hogyan konfigurálhatja az adatmegőrzést az Azure Azure Time Series Insights-környezetben.
+description: Megtudhatja, hogyan konfigurálhatja az adatmegőrzést a Azure Time Series Insights-környezetben.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -8,20 +8,23 @@ ms.author: dpalled
 manager: diviso
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9ee06501134515d9369e98e724e55a66f040fffa
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 468b4f7ca7b0af4abc32df5d9ef64a74154d3de1
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86495125"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569410"
 ---
 # <a name="configuring-retention-in-azure-time-series-insights-gen1"></a>Adatmegőrzés konfigurálása Azure Time Series Insights Gen1
 
+> [!CAUTION]
+> Ez egy Gen1-cikk.
+
 Ez a cikk azt ismerteti, hogyan konfigurálható az **adatmegőrzési idő** és a **tárolási korlát túllépte a Azure Time Series Insights viselkedését** .
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Az egyes Azure Time Series Insights környezetek az **adatmegőrzési idő**konfigurálására szolgáló beállítással rendelkeznek. Az érték 1 – 400 nap. Az adatok törlődnek a környezet tárolókapacitása vagy a megőrzési időtartam (1-400) alapján, attól függően, hogy melyik következik be először.
 

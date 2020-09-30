@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 7/14/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: c6c5c9b00ec3309638a7c5618e5995c8c5f07b11
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: f64e959536b4abea4f2facb5ae3238b4843e4611
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90564368"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569958"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>Az Azure Digital Twins integrálása Azure Time Series Insights
 
@@ -65,7 +65,7 @@ Az Azure Digital Twins [*oktatóanyaga: egy végpontok közötti megoldás össz
     az eventhubs eventhub authorization-rule create --rights Listen Send --resource-group <resource group name> --namespace-name <Event Hubs namespace from above> --eventhub-name <Twins event hub name from above> --name <name for your Twins auth rule>
     ```
 
-4. Hozzon létre egy Azure digitális Twins- [végpontot](concepts-route-events.md#create-an-endpoint) , amely az Event Grid-témakört az Azure Digital Twins-példánnyal csatolja.
+4. Hozzon létre egy Azure digitális Twins- [végpontot](concepts-route-events.md#create-an-endpoint) , amely az Event hub-t az Azure Digital Twins-példánnyal csatolja.
 
     ```azurecli
     az dt endpoint create eventhub --endpoint-name <name for your Event Hubs endpoint> --eventhub-resource-group <resource group name> --eventhub-namespace <Event Hubs namespace from above> --eventhub <Twins event hub name from above> --eventhub-policy <Twins auth rule from above> -n <your Azure Digital Twins instance name>
@@ -203,11 +203,11 @@ Ezután állítson be egy Time Series Insights-példányt, amely a második Even
     1. Válassza ki a **TB (előzetes verzió)** árképzési szintet.
     2. Ehhez a környezethez ki kell választania egy **idősorozat-azonosítót** . Az idősorozat-azonosító legfeljebb három olyan érték lehet, amelyet a Time Series Insightsban lévő adatok kereséséhez fog használni. Ebben az oktatóanyagban használhatja a **$dtId**. További információ az azonosító érték kiválasztásáról az [*ajánlott eljárásokban az idősorozat-azonosító kiválasztásához*](https://docs.microsoft.com/azure/time-series-insights/how-to-select-tsid).
     
-        :::image type="content" source="media/how-to-integrate-time-series-insights/create-twin-id.png" alt-text="A létrehozási portál UX Time Series Insights-környezethez. A TB (előzetes verzió) árképzési szintje be van jelölve, az idősorozat-azonosító tulajdonság neve pedig $dtId":::
+        :::image type="content" source="media/how-to-integrate-time-series-insights/create-twin-id.png" alt-text="Az Azure-szolgáltatások egy végpontok közötti forgatókönyvben, kiemelve Time Series Insights":::
 
 2. Válassza a **Next (tovább): eseményforrás** lehetőséget, és válassza ki a Event Hubs adatokat a fenti listából. Emellett új Event Hubs fogyasztói csoportot is létre kell hoznia.
     
-    :::image type="content" source="media/how-to-integrate-time-series-insights/event-source-twins.png" alt-text="A létrehozási portál UX Time Series Insights környezeti esemény forrásához. Az Event hub információi alapján hozza létre az eseményforrás adatait. Új fogyasztói csoportot is létrehoz.":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/event-source-twins.png" alt-text="Az Azure-szolgáltatások egy végpontok közötti forgatókönyvben, kiemelve Time Series Insights":::
 
 ## <a name="begin-sending-iot-data-to-azure-digital-twins"></a>IoT-adatok küldésének megkezdése az Azure Digital Twinsba
 
@@ -223,21 +223,21 @@ Az adatforgalom az Time Series Insights-példányba kerül, és készen áll az 
 
 1. Nyissa meg Time Series Insights-példányát a [Azure Portalban](https://portal.azure.com) (a példány nevét megkeresheti a portál keresési sávján). Látogasson el a példány áttekintésében látható *Time Series Insights Explorer URL-címére* .
     
-    :::image type="content" source="media/how-to-integrate-time-series-insights/view-environment.png" alt-text="A Time Series Insights-környezet áttekintés lapján válassza ki a Time Series Insights Explorer URL-címét":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/view-environment.png" alt-text="Az Azure-szolgáltatások egy végpontok közötti forgatókönyvben, kiemelve Time Series Insights":::
 
 2. Az Explorerben megjelenik a három ikrek a bal oldalon látható Azure digitális Ikrekből. Válassza a _**thermostat67**_ lehetőséget, válassza a **hőmérséklet**lehetőséget, és kattintson a **Hozzáadás gombra**.
 
-    :::image type="content" source="media/how-to-integrate-time-series-insights/add-data.png" alt-text="Válassza a * * thermostat67 * * elemet, válassza a * * hőmérséklet * * elemet, és a * * Hozzáadás * *":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/add-data.png" alt-text="Az Azure-szolgáltatások egy végpontok közötti forgatókönyvben, kiemelve Time Series Insights":::
 
 3. Ekkor látnia kell a termosztátból a kezdeti hőmérséklet-leolvasásokat az alább látható módon. Ugyanazt a hőmérséklet-olvasási értéket frissíti a rendszer a *room21* és a *floor1*, és párhuzamosan jelenítheti meg az adatfolyamokat.
     
-    :::image type="content" source="media/how-to-integrate-time-series-insights/initial-data.png" alt-text="A kezdeti hőmérsékleti adatai az ÁME Explorerben vannak ábrázolva. 68 és 85 közötti véletlenszerű értékek sora":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/initial-data.png" alt-text="Az Azure-szolgáltatások egy végpontok közötti forgatókönyvben, kiemelve Time Series Insights":::
 
 4. Ha lehetővé teszi, hogy a szimuláció jóval tovább fusson, a vizualizáció a következőképpen fog kinézni:
     
-    :::image type="content" source="media/how-to-integrate-time-series-insights/day-data.png" alt-text="Az egyes Twin-sorok hőmérsékleti értékeit három, különböző színű párhuzamos vonal ábrázolja.":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/day-data.png" alt-text="Az Azure-szolgáltatások egy végpontok közötti forgatókönyvben, kiemelve Time Series Insights":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A digitális ikreket alapértelmezés szerint a rendszer a Time Series Insightsban lévő, lapos hierarchiában tárolja, de a modell adataival és a szervezet többszintű hierarchiájának használatával gazdagíthatja őket. A folyamattal kapcsolatos további információkért olvassa el a következőt: 
 

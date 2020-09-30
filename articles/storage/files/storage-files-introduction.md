@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4590a881fbc42467d55c3440d09f4770f447e97f
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 2b5fa5211ad8d4de01f2b63e8267e297e13c4485
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563386"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570018"
 ---
 # <a name="what-is-azure-files"></a>Mi az Azure Files?
 A Azure Files teljes körűen felügyelt fájlmegosztást biztosít a felhőben, amely az iparági szabványnak megfelelő [SMB protokoll](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) vagy a [hálózati fájlrendszer (NFS) protokollon](https://en.wikipedia.org/wiki/Network_File_System)keresztül érhető el. Az Azure-fájlmegosztást a felhő vagy a helyszíni üzemelő példányok párhuzamosan is csatlakoztathatja. Azure Files SMB-fájlmegosztás elérhető Windows, Linux és macOS rendszerű ügyfelekről. Azure Files NFS-fájlmegosztás elérhető Linux vagy macOS rendszerű ügyfelekről. Emellett Azure Files az SMB-fájlmegosztás gyorsítótárazása a Windows-kiszolgálókon Azure File Sync a gyors elérés érdekében, ahol az adatforgalom használatban van.
@@ -56,6 +56,7 @@ Az Azure-fájlmegosztások az alábbiakra használhatók:
 * **Ismerős programozhatóság**. Az Azure-ban futó alkalmazások a [fájlrendszer adatátviteli API-jain](https://msdn.microsoft.com/library/system.io.file.aspx) keresztül férhetnek hozzá a megosztás adataihoz. A fejlesztők épp ezért meglévő kódjaik és képességeik felhasználásával áttelepíthetik az alkalmazásokat. A rendszer átviteli API-jai mellett az [Azure Storage ügyfélkódtárait](https://msdn.microsoft.com/library/azure/dn261237.aspx) vagy az [Azure Storage REST API-ját](/rest/api/storageservices/file-service-rest-api) is használhatja.
 
 ## <a name="next-steps"></a>Következő lépések
+* [További információ a rendelkezésre álló fájlmegosztási protokollokról](storage-files-compare-protocols.md)
 * [Azure-fájlmegosztás létrehozása](storage-how-to-create-file-share.md)
 * [SMB-megosztás csatlakoztatása és csatlakoztatása Windows rendszeren](storage-how-to-use-files-windows.md)
 * [SMB-megosztás csatlakoztatása és csatlakoztatása Linux rendszeren](storage-how-to-use-files-linux.md)

@@ -9,16 +9,19 @@ manager: diviso
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 02997b421a57363e04a0d988685b76f59954439e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 401d22ee68ba0652eb684b03b06fddf0b0fe3d72
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86495142"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569465"
 ---
 # <a name="create-a-new-azure-time-series-insights-gen1-environment-in-the-azure-portal"></a>Új Azure Time Series Insights Gen1-környezet létrehozása a Azure Portal
+
+> [!CAUTION]
+> Ez egy Gen1-cikk.
 
 Ez a cikk azt ismerteti, hogyan hozható létre új Azure Time Series Insights-környezet a Azure Portal használatával.
 

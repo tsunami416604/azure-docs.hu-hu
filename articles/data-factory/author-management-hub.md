@@ -9,12 +9,12 @@ author: djpmsft
 ms.author: daperlov
 manager: anandsub
 ms.date: 06/02/2020
-ms.openlocfilehash: bba49014fd6b082ea015da259402a8e87bf4afff
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: df5a13b3d7c3fea98cd571a241b9d25e36ffeea6
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87851986"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570635"
 ---
 # <a name="management-hub-in-azure-data-factory"></a>Felügyeleti központ Azure Data Factory
 
@@ -52,11 +52,11 @@ Ha szeretné felülbírálni a létrehozott Resource Manager-sablon paraméterei
 
 ## <a name="manage-authoring"></a>Szerzői műveletek kezelése
 
-### <a name="triggers"></a>Eseményindítók
+### <a name="triggers"></a>Triggerek
 
 Az eseményindítók határozzák meg, hogy a folyamat mikor fusson. Az eseményindítók jelenleg egy falióra-ütemezéssel, rendszeres időközönként működnek, vagy egy eseménytől függenek. További információért olvassa el az [trigger-végrehajtást](concepts-pipeline-execution-triggers.md#trigger-execution)ismertető témakört. A felügyeleti központban létrehozhat, szerkeszthet, törölhet vagy megtekintheti az trigger aktuális állapotát.
 
-![Egyéni paraméterek kezelése](media/author-management-hub/management-hub-triggers.png)
+![Képernyőkép, amely bemutatja, hol lehet létrehozni, szerkeszteni, törölni vagy megtekinteni egy trigger aktuális állapotát.](media/author-management-hub/management-hub-triggers.png)
 
 ### <a name="global-parameters"></a>Globális paraméterek
 

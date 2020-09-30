@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 0955cc8722c2a2b559935341cfd7e87bac6e4d3e
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 1e6d0343a68d502fb567f6010b8c8b3043e282a8
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954655"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569499"
 ---
 # <a name="total-cost-of-ownership-tco-with-azure-cosmos-db"></a>Teljes tulajdonlási költség (TCO) Azure Cosmos DB
 
@@ -26,7 +26,7 @@ A natív adatbázis-szolgáltatás Azure Cosmos DBával ellentétben az OSS NoSQ
 
 A Azure Cosmos DB kiszolgáló nélküli kiépítési modellje kiküszöböli az adatbázis-infrastruktúra túlzott kiépítésének szükségességét. A Azure Cosmos DB erőforrások speciális konfigurációk vagy licencelési igények nélkül érhetők el. Ennek eredményeképpen a Azure Cosmos DB által támogatott alkalmazások az OSS NoSQL-adatbázisokhoz képest akár 70%-os teljes tulajdonlási díjat is futtathatnak. A valós idejű példákért tekintse meg az [ügyfelek használati eseteit](https://customers.microsoft.com/en-us/search?sq=Cosmos%20DB&ff=&p=0&so=story_publish_date%20desc). A Azure Cosmos DB díjszabási modell egyéb előnyei a következők:
 
-* **Az ár nagy értéke:** A piaci elemzők, az ügyfelek és a partnerek megerősítették az összes olyan funkciót, amelyet a Azure Cosmos DB sokkal alacsonyabb áron kínál, mint az ügyfelek számára a megoldások saját vagy más gyártók általi megvalósítása során. Az adatbázis olyan szolgáltatásokkal rendelkezik, mint például a globális terjesztés, a több főkiszolgálós, valamint a jól definiált és intuitív konzisztencia-modellek, az Automatikus indexelés nagy mértékben egyszerűsíthető Azure Cosmos DB összetettség, terhelés vagy állásidő nélkül.
+* **Az ár nagy értéke:** A piaci elemzők, az ügyfelek és a partnerek megerősítették az összes olyan funkciót, amelyet a Azure Cosmos DB sokkal alacsonyabb áron kínál, mint az ügyfelek számára a megoldások saját vagy más gyártók általi megvalósítása során. Az adatbázis olyan funkciókkal rendelkezik, mint a globális terjesztés, a többrégiós írások, valamint a jól definiált és intuitív konzisztencia-modellek, az Automatikus indexelés nagy mértékben egyszerűsíthető Azure Cosmos DB összetettség, terhelés vagy állásidő nélkül.
 
 * **Nincs szükség NoSQL DevOps-felügyeletre:** Azure Cosmos DB az egyiknek nem kell DevOps használnia a központi telepítések kezeléséhez, karbantartás, méretezés vagy javítás végrehajtásához. Végrehajthatja az összes olyan munkaterhelést, amelyet a helyszíni vagy a felhőalapú infrastruktúrán üzemeltetett OSS NoSQL-fürtökkel tenne.
 
@@ -56,7 +56,7 @@ A Azure Cosmos DB kiszolgáló nélküli kiépítési modellje kiküszöböli az
 
 * A **fenntartott kapacitással akár 65%-ot is megtakaríthat:** Azure Cosmos DB [fenntartott kapacitással](cosmos-db-reserved-capacity.md) pénzt takaríthat meg, ha egy vagy három évig Azure Cosmos db erőforrásokra előre fizet. Jelentős mértékben csökkentheti a költségeket egy-vagy hároméves előzetes kötelezettségvállalásokkal, és a normál díjszabáshoz képest 20-65%-os kedvezményt takaríthat meg. A kritikus fontosságú számítási feladatokban jobb SLA-kat érhet el a kiépítési kapacitás szempontjából.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ arról [, hogy a Azure Cosmos db díjszabási modellje mennyire költséghatékony az ügyfelek számára](total-cost-ownership.md)
 * További információ a [fejlesztés és a tesztelés optimalizálásáról](optimize-dev-test.md)

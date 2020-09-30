@@ -4,17 +4,17 @@ description: Az adatmennyiség tömeges betöltésére szolgáló hitelesítési
 services: synapse-analytics
 author: kevinvngo
 ms.service: synapse-analytics
-ms.topic: overview
+ms.topic: quickstart
 ms.subservice: sql-dw
 ms.date: 07/10/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6f54a8993b602110e35c410338b6f0a51109738f
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: e3b22b831deca47eece70d337a99346ae472c7ee
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88603875"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569469"
 ---
 # <a name="securely-load-data-using-synapse-sql"></a>Adattárolás biztonságos betöltése a szinapszis SQL használatával
 
@@ -76,7 +76,7 @@ A felügyelt identitás hitelesítésére akkor van szükség, ha a Storage-fió
 3. Engedélyeznie kell, **hogy a megbízható Microsoft-szolgáltatások hozzáférjenek ehhez a Storage-fiókhoz** az Azure Storage **-fiók tűzfala és a virtuális hálózatok** beállítások menüjében. További információt ebben az [útmutatóban](../../storage/common/storage-network-security.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#exceptions) talál.
 #### <a name="steps"></a>Lépések
 
-1. A PowerShellben **regisztrálja az SQL servert** Azure Active Directory (HRE) használatával:
+1. A PowerShellben **regisztrálja az SQL servert** Azure Active Directory:
 
    ```powershell
    Connect-AzAccount
@@ -110,10 +110,10 @@ A felügyelt identitás hitelesítésére akkor van szükség, ha a Storage-fió
     )
     ```
 
-## <a name="d-azure-active-directory-authentication-aad"></a>D. Azure Active Directory hitelesítés (HRE)
+## <a name="d-azure-active-directory-authentication"></a>D. Azure Active Directory-hitelesítés
 #### <a name="steps"></a>Lépések
 
-1. A Storage-fiók területen navigáljon a **Access Control (iam)** elemre, és válassza a **szerepkör-hozzárendelés hozzáadása**elemet. Rendeljen **Storage blob-Adattulajdonost, közreműködőt vagy olvasó** Azure-szerepkört a HRE-felhasználóhoz. 
+1. A Storage-fiók területen navigáljon a **Access Control (iam)** elemre, és válassza a **szerepkör-hozzárendelés hozzáadása**elemet. Rendeljen **Storage blob-Adattulajdonost, közreműködőt vagy olvasó** Azure-szerepkört az Azure ad-felhasználóhoz. 
 
     > [!IMPORTANT]
     > A **Storage** **blob** -adattulajdonos, közreműködő vagy olvasó Azure-szerepkör meghatározása. Ezek a szerepkörök eltérnek a tulajdonos, közreműködő és olvasó Azure beépített szerepköreitől.
@@ -136,11 +136,11 @@ A felügyelt identitás hitelesítésére akkor van szükség, ha a Storage-fió
 ## <a name="e-service-principal-authentication"></a>E. Szolgáltatásnév-hitelesítés
 #### <a name="steps"></a>Lépések
 
-1. [Azure Active Directory-(HRE-) alkalmazás létrehozása](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application)
+1. [Azure Active Directory-alkalmazás létrehozása](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application)
 2. [Alkalmazás AZONOSÍTÓjának beolvasása](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)
 3. [A hitelesítési kulcs beszerzése](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-a-new-application-secret)
 4. [A v1 OAuth 2,0 token végpontjának beolvasása](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#step-4-get-the-oauth-20-token-endpoint-only-for-java-based-applications)
-5. [Olvasási, írási és végrehajtási engedélyek kiosztása a HRE-alkalmazáshoz](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#step-3-assign-the-azure-ad-application-to-the-azure-data-lake-storage-gen1-account-file-or-folder) a Storage-fiókban
+5. [Olvasási, írási és végrehajtási engedélyek kiosztása az Azure ad-alkalmazáshoz](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#step-3-assign-the-azure-ad-application-to-the-azure-data-lake-storage-gen1-account-file-or-folder) a Storage-fiókban
 6. Ezután futtathatja a COPY utasítást:
 
     ```sql

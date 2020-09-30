@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 406690eb1303a25002d3d787e746bd091dd83fc6
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 6db0965c0b5e28ac1e70da2cbeea276728f29822
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586128"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569936"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK for SQL API: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -49,12 +49,12 @@ Ez az eredeti Azure Cosmos DB Sync Java SDK v2 az SQL API-hoz, amely támogatja 
 |**Közreműködés az SDK-val**|[GitHub](https://github.com/Azure/azure-documentdb-java/)|
 |**Első lépések**|[Ismerkedés a Java SDK-val](sql-api-java-get-started.md)|
 |**Webalkalmazás-oktatóanyag**|[Webalkalmazás-fejlesztés Azure Cosmos DB](sql-api-java-application.md)|
-|**Minimális támogatott futtatókörnyezet**|[Java Development Kit (JDK) 7 +](/java/azure/jdk/?view=azure-java-stable)|
+|**Minimális támogatott futtatókörnyezet**|[Java Development Kit (JDK) 7 +](/java/azure/jdk/?view=azure-java-stable&preserve-view=true)|
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 
 ### <a name="251"></a><a name="2.5.1"></a>2.5.1
-* Kijavítja a fő partíció gyorsítótárának problémáját a documentCollection-lekérdezésben.
+* Kijavítja az elsődleges partíció gyorsítótárának problémáját a documentCollection-lekérdezésben.
 
 ### <a name="250"></a><a name="2.5.0"></a>2.5.0
 * Az 449-támogatás hozzáadva az egyéni konfigurációhoz.
@@ -329,6 +329,6 @@ A Microsoft legalább **12 hónappal** korábban értesítést küld az SDK kivo
 ## <a name="faq"></a>GYIK
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 További információ a Cosmos DBről: [Microsoft Azure Cosmos db](https://azure.microsoft.com/services/cosmos-db/) szolgáltatás lapja.
 

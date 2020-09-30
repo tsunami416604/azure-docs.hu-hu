@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 5046e40ea15a27e80f4e92ebf36488dedeee1821
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 3c82edd73921e11cd2f43a0d609624267af81575
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91396008"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570075"
 ---
 # <a name="latency-availability-and-performance-tradeoffs-with-different-azure-cosmos-db-consistency-levels"></a>Késés, rendelkezésre állás és teljesítménybeli kompromisszumok különböző Azure Cosmos DB konzisztencia-szintekkel
 
@@ -76,11 +76,11 @@ Az alábbi táblázat a konzisztencia-modell és az adattartósság közötti ka
 
 *T* = a legutóbbi frissítés óta eltelt idő *"t"* .
 
-## <a name="strong-consistency-and-multi-master"></a>Erős konzisztencia és több főkiszolgáló
+## <a name="strong-consistency-and-multiple-write-regions"></a>Erős konzisztencia és több írási régió
 
-A több főkiszolgálós rendszerhez konfigurált Cosmos-fiókok nem konfigurálhatók erős konzisztencia használatára, mert az elosztott rendszerek nem képesek nulla RPO és nulla RTO. Emellett nincs olyan írási késési előny, amely a több főkiszolgálóval való erős konzisztencia használatával történik, mivel bármely régióba való írást replikálni kell, és el kell véglegesíteni a fiókban lévő összes konfigurált régióban. Ez ugyanazokat az írási késést eredményezi, mint egyetlen fő fiók.
+A több írási régióval konfigurált Cosmos-fiókok nem konfigurálhatók erős konzisztencia elérésére, mert az elosztott rendszer nem tud nulla értékű RPO és nulla RTO megadni. Emellett nincsenek írási késési előnyök a több írási régióval való erős konzisztencia használata miatt, mivel a bármely régióba való írási kérelmet replikálni kell, és el kell véglegesíteni a fiókban lévő összes konfigurált régióban. Ez a művelet ugyanazt az írási késést eredményezi, mint egyetlen írási régióbeli fiók.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tudjon meg többet az elosztott rendszerek globális eloszlásáról és az általános konzisztencia-kompromisszumokról. Lásd az alábbi cikkeket:
 

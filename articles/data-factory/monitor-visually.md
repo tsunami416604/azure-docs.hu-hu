@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: b65b5b847712ce32c6723d725be9cf2ed1f99050
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fcbf48081484941fd93f209bee21eb14c2c38310
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85801526"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570142"
 ---
 # <a name="visually-monitor-azure-data-factory"></a>Az Azure Data Factory vizuális monitorozása
 
@@ -136,7 +136,7 @@ Egy adott folyamat futtatásához is megtekintheti az újrafuttatási előzmény
 
 A folyamat által használt erőforrásokat a Futtatás elem melletti fogyasztás ikonra kattintva tekintheti meg. 
 
-![Használat figyelése](media/monitor-visually/monitor-consumption-1.png)
+![Képernyőkép, amely megmutatja, hol láthatja a folyamat által felhasznált erőforrásokat.](media/monitor-visually/monitor-consumption-1.png)
 
 Az ikonra kattintva megnyithatja az adott folyamat által használt erőforrások felhasználási jelentését. 
 
@@ -190,7 +190,7 @@ A szolgáltatás hét perces bevezetéséhez és bemutatásához tekintse meg a 
 
     ![A célként megadott feltételekhez tartozó mező](media/monitor-visually/add-criteria-1.png)
 
-    ![Feltételek listája](media/monitor-visually/add-criteria-2.png)
+    ![Képernyőkép, amely megmutatja, hogy a riasztási feltétel beállításához hol válasszon ki egy metrikát.](media/monitor-visually/add-criteria-2.png)
 
     ![Feltételek listája](media/monitor-visually/add-criteria-3.png)
 
@@ -210,6 +210,6 @@ A szolgáltatás hét perces bevezetéséhez és bemutatásához tekintse meg a 
 
     ![Riasztási szabály létrehozásának lehetőségei](media/monitor-visually/create-alert-rule.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A folyamatok figyelésével és kezelésével kapcsolatos információkért tekintse meg a [folyamatok programozott figyelése és kezelése](https://docs.microsoft.com/azure/data-factory/monitor-programmatically) című cikket.

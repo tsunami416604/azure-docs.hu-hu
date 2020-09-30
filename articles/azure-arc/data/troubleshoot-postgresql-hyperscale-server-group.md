@@ -9,15 +9,15 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 8d1c9027b6a9a7b295ce83e26281832beca1bc33
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 8e91a611084d201e6609f7e203eaa08c81e19a00
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91531955"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570002"
 ---
 # <a name="troubleshooting-postgresql-hyperscale-server-groups"></a>A PostgreSQL nagy kapacitású-kiszolgálócsoportok hibaelhárítása
-Ez a cikk néhány olyan technikát ismertet, amelyet a kiszolgálói csoport hibaelhárításához használhat. A cikken kívül érdemes elolvasnia, hogyan használhatja a [Kibana](monitor-grafana-kibana.md) -t a naplók megtekintéséhez vagy a [Grafana](monitor-grafana-kibana.md) használatával megjelenítheti a kiszolgálói csoport metrikáit. 
+Ez a cikk néhány olyan technikát ismertet, amelyet a kiszolgálói csoport hibaelhárításához használhat. A cikk mellett érdemes elolvasnia, hogyan használhatja a [Kibana](monitor-grafana-kibana.md) a naplók keresésére vagy a [Grafana](monitor-grafana-kibana.md) használatával megjelenítheti a kiszolgálói csoport metrikáit. 
 
 ## <a name="getting-more-details-about-the-execution-of-an-azdata-command"></a>További részletek az azdata-parancsok végrehajtásáról
 A **--Debug** paramétert hozzáadhatja bármilyen azdata-parancshoz, amelyet végrehajt. Ekkor a konzolon további információk jelennek meg a parancs végrehajtásáról. Hasznos lehet az adott parancs működésének megértéséhez szükséges részletek beolvasása.
@@ -31,7 +31,7 @@ vagy
 azdata arc postgres server edit -n postgres01 --extension SomeExtensionName --debug
 ```
 
-Emellett a--help parancsot is használhatja bármely azdata-parancshoz egy adott parancs paramétereinek megjelenítéséhez. Példa:
+Emellett a--help parancsot is használhatja bármely azdata-parancshoz egy adott parancs paramétereinek megjelenítéséhez. Például:
 ```console
 azdata arc postgres server create --help
 ```

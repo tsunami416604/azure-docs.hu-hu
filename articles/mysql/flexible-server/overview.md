@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/21/2020
-ms.openlocfilehash: 4b79ee0999db0a19794cc167ae79ed6e58193b30
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 4b629ddeb1db8dd94c1c96ecb62fafb9ca7bfc60
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90947787"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569662"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL – rugalmas kiszolgáló (előzetes verzió)
 
@@ -20,7 +20,7 @@ A MySQL Community Edition Azure Database for MySQL a két üzembe helyezési mó
 - Önálló kiszolgáló 
 - Rugalmas kiszolgáló (előzetes verzió)
 
-Ebben a cikkben áttekintjük és bemutatjuk a rugalmas kiszolgáló üzembe helyezési modelljének alapvető fogalmait. 
+Ebben a cikkben áttekintjük és bemutatjuk a rugalmas kiszolgáló üzembe helyezési modelljének alapvető fogalmait. A számítási feladatokhoz megfelelő központi telepítési lehetőség eldöntéséről további információt a [megfelelő MySQL-kiszolgáló kiválasztása az Azure-ban](./../select-right-deployment-type.md)című témakörben talál.
 
 ## <a name="overview"></a>Áttekintés
 
@@ -50,7 +50,7 @@ Ha a zóna redundáns magas rendelkezésre állása be van állítva, a szolgál
 
 További részletekért tekintse meg a [magas rendelkezésre állással kapcsolatos fogalmakat](concepts-high-availability.md) .
 
-:::image type="content" source="media/overview/3-flexible-server-overview-zone-redundant-ha.png" alt-text="Zone redundáns magas rendelkezésre állás fogalmi diagramja"::: 
+:::image type="content" source="media/overview/3-flexible-server-overview-zone-redundant-ha.png" alt-text="Önálló zóna – magas rendelkezésre állás fogalmi diagramja"::: 
 
 ## <a name="automated-patching-with-managed-maintenance-window"></a>Automatizált javítás a felügyelt karbantartási időszakmal
 
@@ -106,12 +106,21 @@ A rugalmas kiszolgáló szolgáltatás beépített teljesítmény-figyelési és
 
 További információért tekintse meg a [figyelési fogalmakat](concepts-monitoring.md) .
 
-## <a name="migration"></a>Áttelepítés
+## <a name="migration"></a>Migrálás
 
 A szolgáltatás a MySQL közösségi verzióját futtatja. Ez lehetővé teszi az alkalmazások teljes kompatibilitását, és minimális újrabontási költségeket igényel a MySQL-motoron az egykiszolgálós szolgáltatáshoz fejlesztett meglévő alkalmazások áttelepítéséhez. Az egyetlen kiszolgálóra történő áttelepítés a következő lehetőségek egyikével végezhető el:
 
 - **Memóriakép és visszaállítás** – kapcsolat nélküli áttelepítések esetén, ahol a felhasználók bizonyos állásidőt, kiírást és visszaállítást biztosíthatnak olyan közösségi eszközökkel, mint a mysqldump/mydumper, a lehető leggyorsabb módon telepíthetik az áttelepítést. A részletekért lásd: az áttelepítés a dump és a Restore használatával. 
 - **Azure Database Migration Service** – az egykiszolgálós, minimális állásidővel rendelkező, zökkenőmentes és egyszerűsített áttelepítéshez [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online) is kihasználható. 
+
+## <a name="contacts"></a>Kapcsolattartók
+Ha bármilyen kérdése vagy javaslata van a Azure Database for MySQL használatáról, küldjön e-mailt a Azure Database for MySQL csapatnak ([ @Ask a MySQL-hez készült Azure-adatbázis](mailto:AskAzureDBforMySQL@service.microsoft.com)). Ez az e-mail-cím nem technikai támogatási alias.
+
+Ezenkívül a következő elérhetőségeken léphet velünk kapcsolatba:
+
+- Ha az Azure-támogatással szeretne kapcsolatba lépni, [nyújtson be igénylést az Azure Portalon](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+- Ha a fiókjával van probléma, nyújtson be [támogatási kérelmet](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) az Azure Portalon.
+- Ha visszajelzést szeretne küldeni vagy új szolgáltatásokat kérne, hozzon létre egy bejegyzést a [UserVoice-on](https://feedback.azure.com/forums/597982-azure-database-for-mysql).
 
 ## <a name="next-steps"></a>Következő lépések
 Most, hogy elolvasta Azure Database for MySQL egykiszolgálós üzembe helyezési mód bevezetését, készen áll a következőre:

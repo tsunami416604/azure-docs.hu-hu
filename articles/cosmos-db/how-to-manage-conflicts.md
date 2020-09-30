@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 2ebe4fbf776ffb3b4568f996f20ba721b0cc5fca
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c158bc176c329fb46d0acde64b043b1b3e669e18
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330514"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570674"
 ---
 # <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>Az ütközés-feloldási házirendek kezelése Azure Cosmos DB
 
@@ -513,9 +513,9 @@ while conflict:
 Ismerkedjen meg az alábbi Azure Cosmos DB fogalmakkal:
 
 - [Globális terjesztés – technikai részletek](global-dist-under-the-hood.md)
-- [Több főkiszolgáló konfigurálása az alkalmazásokban](how-to-multi-master.md)
+- [Többrégiós írások konfigurálása az alkalmazásokban](how-to-multi-master.md)
 - [Ügyfelek konfigurálása a többhelyű-hez](how-to-manage-database-account.md#configure-multiple-write-regions)
 - [Régiók hozzáadása vagy eltávolítása a Azure Cosmos DB-fiókból](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
-- [Több főkiszolgáló konfigurálása az alkalmazásokban](how-to-multi-master.md).
+- A [régióbeli írások configuremulti az alkalmazásokban](how-to-multi-master.md).
 - [Particionálás és adatelosztás](partition-data.md)
 - [Indexelés az Azure Cosmos DB-ben](indexing-policies.md)

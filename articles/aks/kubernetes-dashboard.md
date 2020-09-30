@@ -6,12 +6,12 @@ author: mlearned
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: mlearned
-ms.openlocfilehash: 35424c0a9e566a9dfa780c524e23945348335040
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 8fda67bea75e973b42aa7f1a9f32be906b1d3e83
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225988"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570818"
 ---
 # <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>A Kubernetes web Dashboard elérése az Azure Kubernetes szolgáltatásban (ak)
 
@@ -36,7 +36,7 @@ Szüksége lesz az Azure CLI-es vagy újabb verziójára is, amely telepítve va
 
 A Kube-irányítópult addon **alapértelmezés szerint engedélyezve van a K8s 1,18-nál régebbi fürtökön**. Az addon le lehet tiltani a következő parancs futtatásával.
 
-``` azure-cli
+``` azurecli
 az aks disable-addons -g myRG -n myAKScluster -a kube-dashboard
 ```
 
@@ -190,7 +190,7 @@ Néhány percet vesz igénybe, hogy az új hüvelyek létre legyenek hozva egy r
 
 ![A replikakészlet információinak megtekintése](./media/kubernetes-dashboard/view-replica-set.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Kubernetes-irányítópulttal kapcsolatos további információkért tekintse meg a [Kubernetes webes felhasználói felületének irányítópultját][kubernetes-dashboard].
 

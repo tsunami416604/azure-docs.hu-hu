@@ -9,16 +9,19 @@ manager: diviso
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: ea243ffd125a527949c4a264177e78de04a22aae
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 546c53334b7700ab73c22edb2d82b324bfad61a9
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046395"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569439"
 ---
 # <a name="plan-your-azure-time-series-insights-gen1-environment"></a>A Azure Time Series Insights Gen1-környezet megtervezése
+
+> [!CAUTION]
+> Ez egy Gen1-cikk.
 
 Ez a cikk azt ismerteti, hogyan tervezze meg Azure Time Series Insights Gen1-környezetét a várható bejövő forgalom és az adatmegőrzési követelmények alapján.
 
@@ -48,12 +51,12 @@ Alapértelmezés szerint a Azure Time Series Insights a kiépített tárterület
 
 ## <a name="data-retention"></a>Adatmegőrzés
 
-Módosíthatja az **adatmegőrzési idő** beállításait a Azure Time Series Insights-környezetben. Akár 400 napig is engedélyezheti a megőrzést. 
+Módosíthatja az **adatmegőrzési idő** beállításait a Azure Time Series Insights-környezetben. Akár 400 napig is engedélyezheti a megőrzést.
 
 Azure Time Series Insights két mód van:
 
-* Az egyik mód a legnaprakészebb adatokra optimalizált. Kikényszeríti a szabályzatot, hogy **kiürítse a korábbi** , a példánnyal elérhetővé vált adatvesztést. Alapértelmezés szerint ez a mód be van kapcsolva. 
-* A másik optimalizálja az adatoknak a beállított megőrzési korlátok alatt maradnak. A **Bejövő forgalom szüneteltetése** megakadályozza, hogy az új adatok ingressed legyenek, amikor a **tárolási korlát túllépte a tárterületet**.
+- Az egyik mód a legnaprakészebb adatokra optimalizált. Kikényszeríti a szabályzatot, hogy **kiürítse a korábbi** , a példánnyal elérhetővé vált adatvesztést. Alapértelmezés szerint ez a mód be van kapcsolva.
+- A másik optimalizálja az adatoknak a beállított megőrzési korlátok alatt maradnak. A **Bejövő forgalom szüneteltetése** megakadályozza, hogy az új adatok ingressed legyenek, amikor a **tárolási korlát túllépte a tárterületet**.
 
 Az adatmegőrzés és a váltás a Azure Portal környezet konfigurációs lapjának két módja között állítható be.
 
@@ -83,7 +86,7 @@ A Azure Time Series Insights-környezet megtervezésére koncentráló második 
 
 Egyetlen környezetben növelheti egy S1 vagy S2 SKU kapacitását 10 egységre. S1-környezetből S2-re nem lehet áttelepíteni. S2-környezetből S1-re nem lehet áttelepíteni.
 
-A beáramlási kapacitás esetében először határozza meg, hogy havonta hány bejövő forgalom szükséges. Ezután határozza meg a percenkénti igényeket. 
+A beáramlási kapacitás esetében először határozza meg, hogy havonta hány bejövő forgalom szükséges. Ezután határozza meg a percenkénti igényeket.
 
 A szabályozás és a késés percenkénti kapacitásban játszik szerepet. Ha van egy olyan csúcsa az adatforgalomban, amely 24 óránál rövidebb ideig tart, Azure Time Series Insights "felzárkózhat" az előző táblázatban felsorolt díjszabási arányban.
 
@@ -121,7 +124,7 @@ Ha szeretne többet megtudni arról, hogyan hozhatók létre, tölthetők fel é
 
 [!INCLUDE [business-disaster-recover](../../includes/time-series-insights-business-recovery.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Első lépésként hozzon létre [egy új Azure Time Series Insights környezetet a Azure Portal](time-series-insights-get-started.md).
 

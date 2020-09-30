@@ -9,14 +9,14 @@ ms.subservice: ''
 ms.date: 04/21/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 56b018326e8673e6ac9e625a5732a08238f982fd
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: ed717c2423b5336824bccd256bf43654c31a4c8a
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86274322"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568955"
 ---
-# <a name="connect-to-azure-synapse-link-for-azure-cosmos-db"></a>Csatlakozás az Azure szinapszis hivatkozásához Azure Cosmos DB
+# <a name="quickstart-connect-to-azure-synapse-link-for-azure-cosmos-db"></a>Gyors útmutató: csatlakozás az Azure szinapszis-hoz Azure Cosmos DB
 
 Ez a cikk bemutatja, hogyan férhet hozzá egy Azure Cosmos DB-adatbázishoz az Azure szinapszis Analytics Studio és a szinapszis hivatkozás használatával. 
 
@@ -44,7 +44,7 @@ Az adatok Object Explorer a következő lépések végrehajtásával közvetlen�
 1. Válassza ki ***+*** az ikont az adatközpont közelében
 2. **Külső adatkapcsolat** kiválasztása
 3. Válassza ki azt az API-t, amelyhez csatlakozni szeretne: SQL vagy MongoDB
-4. Válassza a ***Folytatás*** lehetőséget.
+4. Válassza a ***Folytatás*** elemet
 5. Nevezze el a társított szolgáltatást. A név megjelenik a Object Explorerban, és a szinapszis futtatási idejének használatával csatlakozik az adatbázishoz és a tárolóhoz. A felhasználóbarát név használatát javasoljuk.
 6. Válassza ki a **Cosmos db fiók nevét** és az **adatbázis nevét**
 7. Választható Ha nincs megadva régió, a szinapszis futásidejű műveletei a legközelebbi régió felé irányítva lesznek, ahol az analitikai tároló engedélyezve van. Manuálisan is beállíthatja, hogy mely régióhoz szeretné elérni a felhasználókat Cosmos DB analitikus tárolóban. Válassza a **további kapcsolatok tulajdonságai** lehetőséget, majd az **új**elemet. A **tulajdonságnév**területen írjon ***PreferredRegions*** , és állítsa be a kívánt régió **értékét** (például: WestUS2, nincs szóköz a szavak és a számok között)

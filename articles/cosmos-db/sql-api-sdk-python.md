@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-python
-ms.openlocfilehash: e9f9daea2c0d570efb81603784ee730b11668426
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 03c8f5acfc10738401f61de099f946c33497d705
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585984"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569822"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Python SDK for SQL API: kibocsátási megjegyzések és erőforrások
 
@@ -40,7 +40,7 @@ ms.locfileid: "88585984"
 | |  |
 |---|---|
 |**SDK letöltése**|[PyPI](https://pypi.org/project/azure-cosmos)|
-|**API-dokumentáció**|[Python API-referenciák dokumentációja](https://docs.microsoft.com/python/api/azure-cosmos/?view=azure-python)|
+|**API-dokumentáció**|[Python API-referenciák dokumentációja](https://docs.microsoft.com/python/api/azure-cosmos/?view=azure-python&preserve-view=true)|
 |**SDK telepítési utasítások**|[A Python SDK telepítési utasításai](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos)|
 |**Első lépések**|[Ismerkedés a Python SDK-val](create-sql-api-python.md)|
 |**Jelenleg támogatott platform**|[Python 2,7](https://www.python.org/downloads/) és [Python 3.5.3 +](https://www.python.org/downloads/)|
@@ -126,7 +126,7 @@ ms.locfileid: "88585984"
 
 * A (z) konstruktora `CosmosClient` frissítve lett:
 
-  * A `auth` paraméter át lett nevezve, `credential` és most közvetlenül a hitelesítési típust fogja végrehajtani. Ez azt jelenti, hogy a főkulcs értéke, az erőforrás-tokenek szótára vagy az engedélyek listája adható át. Azonban a régi szótár formátuma továbbra is támogatott.
+  * A `auth` paraméter át lett nevezve, `credential` és most közvetlenül a hitelesítési típust fogja végrehajtani. Ez azt jelenti, hogy az elsődleges kulcs értéke, az erőforrás-tokenek szótára vagy az engedélyek listája adható át. Azonban a régi szótár formátuma továbbra is támogatott.
 
   * A `connection_policy` paraméter csak a kulcsszót megadó paramétert adta meg, és a szolgáltatás továbbra is támogatott, a szabályzat egyes attribútumai mostantól explicit kulcsszó-argumentumként adhatók át:
 
@@ -357,6 +357,6 @@ A Microsoft legalább **12 hónappal** korábban értesítést küld az SDK kivo
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Cosmos DBről: [Microsoft Azure Cosmos db](https://azure.microsoft.com/services/cosmos-db/) szolgáltatás lapja. 

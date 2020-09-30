@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/1/2019
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 8fb9f422f2d2c4ed035b04b4abe4141bbb8ebfc7
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 81fceb210981e5755bcdd8e241b381d161d4f637
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299847"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570210"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb"></a>MongoDB-hez készült Azure Cosmos DB API
 
@@ -36,7 +36,7 @@ Az Cosmos DB fő előnye, hogy teljes körűen felügyelt, globálisan elosztott
 * Tartsa hordozható alkalmazásait, és folytassa továbbra is a Cloud vendor-agnosztikusot.
 * A Cosmos DB által működtetett, közös NoSQL API-kra vonatkozó piacvezető, pénzügyi támogatású SLA-k beszerzése.
 * Igény szerint rugalmasan méretezheti a Cosmos-adatbázisok kiépített átviteli sebességét és tárterületét, és csak a szükséges átviteli sebességért és tárterületért kell fizetnie. Ez jelentős költségmegtakarítást eredményez.
-* Kulcsrakész, globális elosztás a több főkiszolgálós replikációval.
+* Kulcsrakész, globális eloszlás a többrégiós replikációval.
 
 ## <a name="cosmos-dbs-api-for-mongodb"></a>Cosmos DB API-MongoDB
 
@@ -46,7 +46,7 @@ Kövesse a gyors útmutatókat, és hozzon létre egy Azure Cosmos-fiókot, és 
 * [Webalkalmazás létrehozása a MongoDB és a .NET SDK-hoz készült Azure Cosmos DB API-val](create-mongodb-dotnet.md)
 * [A MongoDB és a Java SDK Azure Cosmos DB API-ját használó konzolos alkalmazás létrehozása](create-mongodb-java.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Íme, pár hivatkozás az első lépések megtételéhez:
 

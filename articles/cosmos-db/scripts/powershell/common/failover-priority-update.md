@@ -1,19 +1,19 @@
 ---
-title: PowerShell-parancsfájl egy egyfő Azure Cosmos-fiók feladatátvételi prioritásának módosításához
-description: Azure PowerShell parancsfájl-minta – feladatátvételi prioritás módosítása vagy feladatátvételi trigger indítása Azure Cosmos DB egyetlen főkiszolgálós fiók esetén
+title: PowerShell-parancsfájl egy egyszeri írási régióval rendelkező Azure Cosmos-fiók feladatátvételi prioritásának módosításához
+description: Azure PowerShell parancsfájl-minta – feladatátvételi prioritás módosítása vagy feladatátvétel indítása egy Azure Cosmos-fiókhoz egyetlen írási régióval
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 03/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: a81938675e72d9ec3a18c920121951e38580b91e
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 07561de8236a06a3ac34aa8867a07890aaf0656f
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87506795"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570589"
 ---
-# <a name="change-failover-priority-or-trigger-failover-for-an-azure-cosmos-db-single-master-account-using-powershell"></a>Feladatátvételi prioritás módosítása vagy feladatátvételi trigger indítása egy Azure Cosmos DB egyetlen főkiszolgálós fiókhoz a PowerShell használatával
+# <a name="change-failover-priority-or-trigger-failover-for-an-azure-cosmos-account-with-single-write-region-by-using-powershell"></a>Feladatátvételi prioritás módosítása vagy feladatátvétel indítása egyetlen írási régióval rendelkező Azure Cosmos-fiókhoz a PowerShell használatával
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -49,7 +49,7 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 |||
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](https://docs.microsoft.com/powershell/).
 

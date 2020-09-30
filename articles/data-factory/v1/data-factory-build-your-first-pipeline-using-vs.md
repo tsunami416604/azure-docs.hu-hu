@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: vs-azure
 ms.date: 01/22/2018
-ms.openlocfilehash: f3c6364226288ffb6796664e89d0b7c2cc4dadf6
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 65309bbd70a6fda2bf725ce96cc5595cd9b55083
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543146"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569074"
 ---
 # <a name="tutorial-create-a-data-factory-by-using-visual-studio"></a>Oktatóanyag: adat-előállító létrehozása a Visual Studióval
 > [!div class="op_single_selector" title="Tools/SDKs"]
@@ -91,7 +91,7 @@ Az igény szerinti HDInsight társított szolgáltatással a HDInsight-fürt aut
 #### <a name="create-azure-storage-linked-service"></a>Azure Storage társított szolgáltatás létrehozása
 1. A Solution Explorerben (Megoldáskezelőben) kattintson a jobb gombbal a **Linked Services** (Társított szolgáltatások) elemre, mutasson az **Add** (Hozzáadás) parancsra, és kattintson a **New Item** (Új elem) elemre.      
 2. Az **Add New Item** (Új elem hozzáadása) párbeszédpanelen válassza ki a listából az **Azure Storage Linked Service** (Azure Storage társított szolgáltatás) elemet, és kattintson az **Add** (Hozzáadás) parancsra.
-    ![Azure Storage társított szolgáltatás](./media/data-factory-build-your-first-pipeline-using-vs/new-azure-storage-linked-service.png)
+    ![Képernyőkép, amely kiemeli az Azure Storage társított szolgáltatást a listában.](./media/data-factory-build-your-first-pipeline-using-vs/new-azure-storage-linked-service.png)
 3. Cserélje le az `<accountname>` és az `<accountkey>` kifejezést az Azure Storage-tárfiókja nevére, illetve kulcsára. A Storage-hozzáférési kulcs beszerzéséről a Storage- [fiók hozzáférési kulcsainak kezelése](../../storage/common/storage-account-keys-manage.md)című témakörben olvashat bővebben.
     ![Azure Storage társított szolgáltatás](./media/data-factory-build-your-first-pipeline-using-vs/azure-storage-linked-service.png)
 4. Mentse az **AzureStorageLinkedService1.json** fájlt.
@@ -368,7 +368,7 @@ Ebben a lépésben a data factory Diagramnézete használatával figyeli a folya
 7. Kattintson az **X** elemre az **AzureBlobInput** panel bezárásához.
 8. A **diagram nézetben**kattintson duplán az adatkészlet **AzureBlobOutput**. Látni fogja, hogy a szelet feldolgozás alatt áll.
 
-   ![Adathalmaz](./media/data-factory-build-your-first-pipeline-using-vs/dataset-blade.png)
+   ![A AzureBlobOutput adatkészletet kiemelő képernyőkép.](./media/data-factory-build-your-first-pipeline-using-vs/dataset-blade.png)
 9. A feldolgozás befejeztével a szelet **Ready** (Kész) állapotúra vált.
 
    > [!IMPORTANT]
@@ -565,7 +565,7 @@ Az oktatóanyag során létrehozott egy folyamatot egy adatátalakítási tevék
 
 | Témakör | Leírás |
 |:--- |:--- |
-| [Pipelines](data-factory-create-pipelines.md) |Ebből a cikkből megismerheti az Azure Data Factory folyamatait és tevékenységeit, és megtudhatja, hogyan hozhat létre velük teljes körű, adatvezérelt munkafolyamatokat saját forgatókönyvéhez vagy vállalkozásához. |
+| [Folyamatok](data-factory-create-pipelines.md) |Ebből a cikkből megismerheti az Azure Data Factory folyamatait és tevékenységeit, és megtudhatja, hogyan hozhat létre velük teljes körű, adatvezérelt munkafolyamatokat saját forgatókönyvéhez vagy vállalkozásához. |
 | [Adatkészletek](data-factory-create-datasets.md) |Ennek a cikknek a segítségével megismerheti az adatkészleteket az Azure Data Factoryban. |
 | [Adatátalakítási tevékenységek](data-factory-data-transformation-activities.md) |Ez a cikk felsorolja az Azure Data Factory által támogatott adatátalakítási tevékenységeket (mint például a jelen oktatóanyagban használt HDInsight Hive-átalakítás). |
 | [Ütemezés és végrehajtás](data-factory-scheduling-and-execution.md) |Ez a cikk ismerteti az Azure Data Factory-alkalmazásmodell ütemezési és végrehajtási aspektusait. |

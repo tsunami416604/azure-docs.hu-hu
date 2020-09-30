@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/22/2020
-ms.openlocfilehash: dfe48a1348929bbe8d4af6793d94d52514df9d74
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b0df55e59bd519a816c4022f2434edfcd4460780
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87001536"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570763"
 ---
 # <a name="exchange-edifact-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>EDIFACT-üzenetek váltása nagyvállalati integráció esetében az Azure Logic Appsben az Enterprise Integration Pack csomaggal
 
@@ -99,7 +99,7 @@ A szerződés most már készen áll a kiválasztott beállításoknak megfelel�
 | UNB 6.1 (címzettek hivatkozási jelszava) |Írjon be egy 1 és 14 karakter közötti alfanumerikus értéket. |
 | UNB 6.2 (címzettek hivatkozási minősítője) |Írjon be egy alfanumerikus értéket legalább egy karakterrel, és legfeljebb két karakterből állhat. |
 
-### <a name="acknowledgments"></a>Köszönetnyilvánítás
+### <a name="acknowledgments"></a>Elismerések
 
 | Tulajdonság | Leírás |
 | --- | --- |
@@ -247,7 +247,7 @@ Az egyes ellenőrzési sorok elvégzése után a rendszer automatikusan hozzáad
 
 2.  A szerződéseit az integrációs fiók áttekintésében is megtekintheti. Az integrációs fiók menüben válassza az **Áttekintés**, majd a **szerződések** csempét. 
 
-    ![Válassza a "szerződések" csempét](./media/logic-apps-enterprise-integration-edifact/edifact-4.png)   
+    ![Képernyőkép, amely a szerződések csempét jeleníti meg.](./media/logic-apps-enterprise-integration-edifact/edifact-4.png)   
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 
@@ -256,6 +256,6 @@ Az összekötő részletes technikai részleteit, például az összekötő henc
 > [!NOTE]
 > Az [integrációs szolgáltatási környezet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)logikai alkalmazásai esetében ez az összekötő ISE által címkézett verziója az [ISE B2B-üzenetek korlátait](../logic-apps/logic-apps-limits-and-config.md#b2b-protocol-limits)használja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

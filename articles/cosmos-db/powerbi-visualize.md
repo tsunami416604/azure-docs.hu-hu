@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: sngun
-ms.openlocfilehash: 3dcadd77866a6c57542a43657a1942791cc4d179
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: fc3ca5fdde464ba63671512a6ebecd2c314cb192
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027790"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570839"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>Azure Cosmos DB-adatok vizualizációja a Power BI-összekötő használatával
 
@@ -82,7 +82,7 @@ A vulkáni adatok beolvasása a Azure Cosmos DB-fiókból, és az adatok megjele
 
 4. Kattintson az **Azure**-ra, válassza a **Azure Cosmos db (bétaverzió)** lehetőséget, majd kattintson a **kapcsolat**gombra. 
 
-   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbigetdata.png" alt-text="Az adatPower BI-összekötő Power BI Desktop beolvasása":::
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbigetdata.png" alt-text="Power BI Desktop jelentés nézet – Power BI-összekötő":::
 
 5. Az **előnézeti összekötő** lapon kattintson a **Continue (folytatás**) gombra. Megjelenik a **Azure Cosmos db** ablak.
 
@@ -90,7 +90,7 @@ A vulkáni adatok beolvasása a Azure Cosmos DB-fiókból, és az adatok megjele
    
 7. Ha első alkalommal csatlakozik ehhez a végponthoz, a rendszer a fiók kulcsát kéri. Saját fiókja esetén a Azure Portal **írásvédett kulcsok** paneljének **elsődleges kulcs** mezőjéből kérje le a kulcsot. Adja meg a megfelelő kulcsot, majd kattintson a **kapcsolat**elemre.
    
-   Javasoljuk, hogy a jelentések készítésekor a csak olvasási kulcsot használja. Ez megakadályozza a főkulcs szükségtelen expozícióját a lehetséges biztonsági kockázatokkal szemben. A csak olvasható kulcs a Azure Portal **kulcsok** paneljéről érhető el. 
+   Javasoljuk, hogy a jelentések készítésekor a csak olvasási kulcsot használja. Ez megakadályozza az elsődleges kulcs szükségtelen expozícióját a lehetséges biztonsági kockázatokkal szemben. A csak olvasható kulcs a Azure Portal **kulcsok** paneljéről érhető el. 
     
 8. Ha a fiók sikeresen csatlakoztatva van, megjelenik a **navigátor** panel. A **navigátor** a fiókban lévő adatbázisok listáját jeleníti meg.
 
@@ -100,34 +100,34 @@ A vulkáni adatok beolvasása a Azure Cosmos DB-fiókból, és az adatok megjele
     
     A betekintő ablaktábla a **rekordok** listáját jeleníti meg.  A dokumentumok a Power BIban szereplő **bejegyzéstípusként** jelennek meg. Hasonlóképpen, a dokumentumban egy beágyazott JSON-blokk is **rekord**.
     
-    :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbinavigator.png" alt-text="Azure Cosmos DB Power BI Connector – navigátor ablak Power BI oktatóanyaga":::
+    :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbinavigator.png" alt-text="Power BI Desktop jelentés nézet – Power BI-összekötő":::
 
 12. A **Szerkesztés** gombra kattintva elindíthatja a lekérdezés-szerkesztőt egy új ablakban az adatátalakításhoz.
 
 ## <a name="flattening-and-transforming-json-documents"></a>JSON-dokumentumok összeolvasztása és átalakítása
 1. Váltson a Power BI lekérdezés-szerkesztő ablakára, ahol a középső ablaktábla **dokumentum** oszlopa látható.
 
-   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiqueryeditor.png" alt-text="Power BI Desktop Lekérdezésszerkesztő":::
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiqueryeditor.png" alt-text="Power BI Desktop jelentés nézet – Power BI-összekötő":::
 
 1. Kattintson a **dokumentum** -oszlop fejlécének jobb oldalán található Expander elemre.  Ekkor megjelenik a helyi menü a mezők listájával.  Válassza ki a jelentéshez szükséges mezőket, például a vulkán nevét, az országot, a régiót, a helyet, a jogosultságszint-emelést, a típust, az állapotot és az utolsó ismeret kitörését. Törölje az **eredeti oszlopnév használata előtagként** négyzet jelölését, majd kattintson az **OK**gombra.
    
-   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiqueryeditorexpander.png" alt-text="Power BI oktatóanyag a Azure Cosmos DB Power BI-összekötőhöz – dokumentumok kibontása":::
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiqueryeditorexpander.png" alt-text="Power BI Desktop jelentés nézet – Power BI-összekötő":::
 
 1. A középső ablaktábla az eredmény előnézetét jeleníti meg a kijelölt mezőkkel.
    
-   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiresultflatten.png" alt-text="Power BI oktatóanyag a Azure Cosmos DB Power BI-összekötőhöz – eredmények összeolvasztása":::
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiresultflatten.png" alt-text="Power BI Desktop jelentés nézet – Power BI-összekötő":::
 
 1. A példánkban a Location tulajdonság egy GeoJSON-blokk a dokumentumban.  Amint láthatja, a hely a Power BI Desktopban szereplő **bejegyzéstípusként** jelenik meg.  
 
 1. Kattintson a Document. location oszlopfejléc jobb oldalán található Expander elemre.  Megjelenik a típus és a koordináták mezőkkel rendelkező helyi menü.  Jelölje be a koordináták mezőt, ügyeljen arra, hogy az **eredeti oszlopnév használata előtagként** ne legyen kiválasztva, majd kattintson **az OK**gombra.
    
-   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbilocationrecord.png" alt-text="Power BI oktatóanyag a Azure Cosmos DB Power BI Connector-hely rekordhoz":::
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbilocationrecord.png" alt-text="Power BI Desktop jelentés nézet – Power BI-összekötő":::
 
 1. A középső ablaktábla ekkor egy **lista** típusú koordináták oszlopot jelenít meg.  Ahogy az oktatóanyag elején is látható, az ebben az oktatóanyagban található GeoJSON-adatok a koordináták tömbben rögzített szélességi és hosszúsági értékkel rendelkező pont típusúak.
    
    A koordináták [0] elem a hosszúságot jelöli, míg a koordináták [1] a szélességet jelöli.
 
-   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiresultflattenlist.png" alt-text="Power BI oktatóanyag a Azure Cosmos DB Power BI összekötőhöz – koordináták listája":::
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiresultflattenlist.png" alt-text="Power BI Desktop jelentés nézet – Power BI-összekötő":::
 
 1. A koordináták tömb összeolvasztásához hozzon létre egy LatLong nevű **Egyéni oszlopot** .  Válassza az **oszlop hozzáadása** menüszalagot, és kattintson az **Egyéni oszlop**elemre.  Megjelenik az **Egyéni oszlop** ablak.
 
@@ -137,21 +137,21 @@ A vulkáni adatok beolvasása a Azure Cosmos DB-fiókból, és az adatok megjele
    
    Az adatelemzési kifejezésekkel (DAX) kapcsolatos további információkért, beleértve a DAX-függvényeket is, tekintse meg a [DAX alapjai Power bi Desktop](https://docs.microsoft.com/power-bi/desktop-quickstart-learn-dax-basics).
    
-   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbicustomlatlong.png" alt-text="Power BI oktatóanyag a Azure Cosmos DB Power BI-összekötőhöz – egyéni oszlop hozzáadása":::
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbicustomlatlong.png" alt-text="Power BI Desktop jelentés nézet – Power BI-összekötő":::
 
 1. A középső ablaktábla mostantól megjeleníti az új LatLong oszlopokat, amelyek az értékekkel vannak feltöltve.
     
-    :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbicolumnlatlong.png" alt-text="Power BI oktatóanyag a Azure Cosmos DB Power BI connectorhoz – egyéni LatLong oszlop":::
+    :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbicolumnlatlong.png" alt-text="Power BI Desktop jelentés nézet – Power BI-összekötő":::
     
     Ha hibaüzenetet kap az új oszlopban, győződjön meg arról, hogy a lekérdezési beállítások alatt alkalmazott lépések megfelelnek a következő ábrának:
     
-    :::image type="content" source="./media/powerbi-visualize/power-bi-applied-steps.png" alt-text="Az alkalmazott lépések forrása, navigáció, kibontott dokumentum, kibontott dokumentum. hely, egyéni Hozzáadás":::
+    :::image type="content" source="./media/powerbi-visualize/power-bi-applied-steps.png" alt-text="Power BI Desktop jelentés nézet – Power BI-összekötő":::
     
     Ha a lépések eltérnek, törölje a további lépéseket, és próbálkozzon újra az egyéni oszlop hozzáadásával. 
 
 1. Kattintson a **Bezárás gombra, és alkalmazza** az adatmodell mentésére.
 
-   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbicloseapply.png" alt-text="Power BI oktatóanyag a Azure Cosmos DB Power BI-összekötőhöz – Bezárás & alkalmazás":::
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbicloseapply.png" alt-text="Power BI Desktop jelentés nézet – Power BI-összekötő":::
 
 <a id="build-the-reports"></a>
 ## <a name="build-the-reports"></a>A jelentések összeállítása
@@ -182,22 +182,22 @@ Az alábbi ábrán egy egyszerű interaktív térképes nézet létrehozásának
 A jelentés megosztásához fiókkal kell rendelkeznie a PowerBI.com-ben.
 
 1. A Power BI Desktop kattintson a **Kezdőlap** menüszalagra.
-1. Kattintson a **Publish** (Közzététel) gombra.  A rendszer felszólítja, hogy adja meg a PowerBI.com-fiókhoz tartozó felhasználónevet és jelszót.
+1. Kattintson a **Közzététel** gombra.  A rendszer felszólítja, hogy adja meg a PowerBI.com-fiókhoz tartozó felhasználónevet és jelszót.
 1. A hitelesítő adatok hitelesítése után a jelentést a rendszer közzéteszi a kiválasztott célhelyen.
 1. Kattintson a **Power bi PowerBITutorial. pbix** elemre a jelentés megtekintéséhez és megosztásához a PowerBI.com-on.
    
-   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_open_in_powerbi.png" alt-text="Power BI sikeres közzététel! Oktatóanyag megnyitása Power BI":::
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_open_in_powerbi.png" alt-text="Power BI Desktop jelentés nézet – Power BI-összekötő":::
 
 ## <a name="create-a-dashboard-in-powerbicom"></a>Hozzon létre egy irányítópultot a PowerBI.com webhelyen
 Most, hogy már van egy jelentés, lehetővé teszi a megosztást a PowerBI.com
 
 Amikor a jelentést Power BI Desktopról a PowerBI.com-be teszi közzé, egy **jelentést** és egy **adatkészletet** hoz létre a PowerBI.com-bérlőben. Ha például közzétett egy **PowerBITutorial** nevű jelentést a PowerBI.com-ben, akkor a PowerBITutorial a PowerBI.com-on található **jelentések** és **adatkészletek** szakaszban is megjelenik.
 
-   :::image type="content" source="./media/powerbi-visualize/powerbi-reports-datasets.png" alt-text="Képernyőkép az új jelentésről és adatkészletről a PowerBI.com-ben":::
+   :::image type="content" source="./media/powerbi-visualize/powerbi-reports-datasets.png" alt-text="Power BI Desktop jelentés nézet – Power BI-összekötő":::
 
 Megosztható irányítópult létrehozásához kattintson az **élő oldal rögzítése** gombra a PowerBI.com-jelentésben.
 
-   :::image type="content" source="./media/powerbi-visualize/power-bi-pin-live-tile.png" alt-text="Képernyőkép az új jelentésről és adatkészletről a PowerBI.com-ben":::
+   :::image type="content" source="./media/powerbi-visualize/power-bi-pin-live-tile.png" alt-text="Power BI Desktop jelentés nézet – Power BI-összekötő":::
 
 Ezután kövesse a [csempe rögzítése a jelentésből](https://powerbi.microsoft.com/documentation/powerbi-service-pin-a-tile-to-a-dashboard-from-a-report/#pin-a-tile-from-a-report) című témakör utasításait egy új irányítópult létrehozásához. 
 
@@ -208,13 +208,13 @@ There are two ways to refresh data, ad hoc and scheduled.
 
 For an ad hoc refresh, simply click on the eclipses (…) by the **Dataset**, e.g. PowerBITutorial. You should see a list of actions including **Refresh Now**. Click **Refresh Now** to refresh the data.
 
-:::image type="content" source="./media/powerbi-visualize/power-bi-refresh-now.png" alt-text="Screenshot of Refresh Now in PowerBI.com":::
+:::image type="content" source="./media/powerbi-visualize/power-bi-refresh-now.png" alt-text="Power BI Desktop jelentés nézet – Power BI-összekötő":::
 
 For a scheduled refresh, do the following.
 
 1. Click **Schedule Refresh** in the action list. 
 
-    :::image type="content" source="./media/powerbi-visualize/power-bi-schedule-refresh.png" alt-text="Screenshot of the Schedule Refresh in PowerBI.com":::
+    :::image type="content" source="./media/powerbi-visualize/power-bi-schedule-refresh.png" alt-text="Power BI Desktop jelentés nézet – Power BI-összekötő":::
 2. In the **Settings** page, expand **Data source credentials**. 
 3. Click on **Edit credentials**. 
    
@@ -223,7 +223,7 @@ For a scheduled refresh, do the following.
 5. Expand **Schedule Refresh** and set up the schedule you want to refresh the dataset. 
 6. Click **Apply** and you are done setting up the scheduled refresh.
 -->
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ a Power BIről: a [Power bi első lépései](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/).
 * Ha többet szeretne megtudni a Azure Cosmos DBről, tekintse meg a [Azure Cosmos db dokumentáció kezdőlapját](https://azure.microsoft.com/documentation/services/cosmos-db/).
 

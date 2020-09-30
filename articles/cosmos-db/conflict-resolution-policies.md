@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 91054318d4b030d9b2cb9bb80424ade80aeeca85
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 49400ad0da86eddf7bbbd51dd92101084cdf1ee1
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91395838"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570101"
 ---
 # <a name="conflict-types-and-resolution-policies-when-using-multiple-write-regions"></a>Ütközési típusok és feloldási házirendek több írási régió használata esetén
 
@@ -46,10 +46,10 @@ Azure Cosmos DB rugalmas, házirend által vezérelt mechanizmust kínál az ír
   > [!NOTE]
   > Az egyéni ütközés-feloldási szabályzat csak az SQL API-fiókok esetében érhető el.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan konfigurálhat ütközés-feloldási házirendeket:
 
-* [Több főkiszolgáló konfigurálása az alkalmazásokban](how-to-multi-master.md)
+* [Több írási régió konfigurálása az alkalmazásokhoz](how-to-multi-master.md)
 * [Az ütközés-feloldási házirendek kezelése](how-to-manage-conflicts.md)
 * [Az ütközések hírcsatornájának beolvasása](how-to-manage-conflicts.md#read-from-conflict-feed)

@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: v-erkel
-ms.openlocfilehash: 5b1062556f1f971690f835274be15c11b072eca9
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 5e17c55f8321ba0ad9a9686ada41413d64879d6c
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89612076"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570893"
 ---
 # <a name="create-an-azure-hpc-cache"></a>Azure HPC-gyorsítótár létrehozása
 
@@ -188,6 +188,97 @@ Az üzenet tartalmaz néhány hasznos információt, beleértve az alábbi eleme
 
 * Ügyfél-csatlakoztatási címek – ezeket az IP-címeket akkor használja, ha készen áll az ügyfelek csatlakoztatására a gyorsítótárhoz. További információért olvassa el [Az Azure HPC cache csatlakoztatása](hpc-cache-mount.md) című témakört.
 * Frissítési állapot – a szoftverfrissítés kiadása után ez az üzenet módosul. A [gyorsítótárazási szoftvert manuálisan is frissítheti](hpc-cache-manage.md#upgrade-cache-software) , de néhány nap múlva automatikusan alkalmazza.
+
+## <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+> [!CAUTION]
+> Az az. HPCCache PowerShell-modul jelenleg nyilvános előzetes verzióban érhető el. Ezt az előzetes verziót szolgáltatói szerződés nélkül biztosítjuk. Éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy egyes funkciók nem támogatottak, vagy korlátozott képességekkel rendelkeznek. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+## <a name="requirements"></a>Követelmények
+
+Ha a PowerShell helyi használatát választja, akkor ehhez a cikkhez telepítenie kell az az PowerShell-modult, és csatlakoznia kell az Azure-fiókjához a [AzAccount](/powershell/module/az.accounts/connect-azaccount) parancsmag használatával. Az az PowerShell-modul telepítésével kapcsolatos további információkért lásd: [Install Azure PowerShell](/powershell/azure/install-az-ps). Ha a Cloud Shell használatát választja, további információt [a Azure Cloud Shell áttekintése](https://docs.microsoft.com/azure/cloud-shell/overview) című témakörben talál.
+
+> [!IMPORTANT]
+> Míg az az **. HPCCache** PowerShell-modul előzetes verzióban érhető el, a parancsmaggal külön kell telepítenie `Install-Module` . Miután a PowerShell-modul általánosan elérhetővé válik, az a PowerShell-modul kiadásainak része lesz, és natív módon elérhető a Azure Cloud Shellon belülről.
+
+```azurepowershell-interactive
+Install-Module -Name Az.HPCCache
+```
+
+## <a name="create-the-cache-with-azure-powershell"></a>A gyorsítótár létrehozása Azure PowerShell
+
+> [!NOTE]
+> Azure PowerShell jelenleg nem támogatja az ügyfél által felügyelt titkosítási kulcsokkal rendelkező gyorsítótár létrehozását. Használja a Azure Portal.
+
+Új Azure HPC-gyorsítótár létrehozásához használja a [New-AzHpcCache](/powershell/module/az.hpccache/new-azhpccache) parancsmagot.
+
+Adja meg az alábbi értékeket:
+
+* Gyorsítótár-erőforráscsoport neve
+* Gyorsítótár neve
+* Azure-régió
+* Gyorsítótár-alhálózat, ebben a formátumban:
+
+  `-SubnetUri "/subscriptions/<subscription_id>/resourceGroups/<cache_resource_group>/providers/Microsoft.Network/virtualNetworks/<virtual_network_name>/sub
+nets/<cache_subnet_name>"`
+
+  A gyorsítótár-alhálózatnak legalább 64 IP-címet (/24) kell tartalmaznia, és semmilyen más erőforrást nem tud elhelyezni.
+
+* Gyorsítótár kapacitása. Két érték az Azure HPC-gyorsítótár maximális átviteli sebességét állítja be:
+
+  * A gyorsítótár mérete (GB)
+  * A gyorsítótár-infrastruktúrában használt virtuális gépek SKU-jának
+
+  A [Get-AzHpcCacheSku](/powershell/module/az.hpccache/get-azhpccachesku) megjeleníti a rendelkezésre álló SKU-ket és a gyorsítótár méretének érvényes beállításait. A gyorsítótár méretének beállításai 3 TB és 48 TB közé esnek, de csak néhány érték támogatott.
+
+  Ez a diagram azt jeleníti meg, hogy mely gyorsítótár-méret és SKU-kombináció érvényes a dokumentum előkészítésének időpontjában (július 2020).
+
+  | Gyorsítótár mérete | Standard_2G | Standard_4G | Standard_8G |
+  |------------|-------------|-------------|-------------|
+  | 3072 GB    | igen         | nem          | nem          |
+  | 6144 GB    | igen         | igen         | nem          |
+  | 12 288 GB   | igen         | igen         | igen         |
+  | 24 576 GB   | nem          | igen         | igen         |
+  | 49 152 GB   | nem          | nem          | igen         |
+
+  Olvassa el a **gyorsítótár kapacitásának beállítása** szakaszt a portál utasítások lapján, amely fontos információkat tartalmaz a díjszabásról, az átviteli sebességről és a gyorsítótárnak a munkafolyamathoz való megfelelő méretezéséről.
+
+Gyorsítótár-létrehozási példa:
+
+```azurepowershell-interactive
+$cacheParams = @{
+  ResourceGroupName = 'doc-demo-rg'
+  CacheName = 'my-cache-0619'
+  Location = 'eastus'
+  cacheSize = '3072'
+  SubnetUri = "/subscriptions/<subscription-ID>/resourceGroups/doc-demo-rg/providers/Microsoft.Network/virtualNetworks/vnet-doc0619/subnets/default"
+  Sku = 'Standard_2G'
+}
+New-AzHpcCache @cacheParams
+```
+
+A gyorsítótár létrehozása több percet vesz igénybe. Sikeres művelet esetén a Create parancs a következő kimenetet adja vissza:
+
+```Output
+cacheSizeGb       : 3072
+health            : @{state=Healthy; statusDescription=The cache is in Running state}
+id                : /subscriptions/<subscription-ID>/resourceGroups/doc-demo-rg/providers/Microsoft.StorageCache/caches/my-cache-0619
+location          : eastus
+mountAddresses    : {10.3.0.17, 10.3.0.18, 10.3.0.19}
+name              : my-cache-0619
+provisioningState : Succeeded
+resourceGroup     : doc-demo-rg
+sku               : @{name=Standard_2G}
+subnet            : /subscriptions/<subscription-ID>/resourceGroups/doc-demo-rg/providers/Microsoft.Network/virtualNetworks/vnet-doc0619/subnets/default
+tags              :
+type              : Microsoft.StorageCache/caches
+upgradeStatus     : @{currentFirmwareVersion=5.3.42; firmwareUpdateDeadline=1/1/0001 12:00:00 AM; firmwareUpdateStatus=unavailable; lastFirmwareUpdate=4/1/2020 10:19:54 AM; pendingFirmwareVersion=}
+```
+
+Az üzenet tartalmaz néhány hasznos információt, beleértve az alábbi elemeket is:
+
+* Ügyfél-csatlakoztatási címek – ezeket az IP-címeket akkor használja, ha készen áll az ügyfelek csatlakoztatására a gyorsítótárhoz. További információért olvassa el [Az Azure HPC cache csatlakoztatása](hpc-cache-mount.md) című témakört.
+* Frissítési állapot – a szoftverfrissítés megjelenésekor ez az üzenet módosul. A [gyorsítótárazási szoftvereket manuálisan is frissítheti](hpc-cache-manage.md#upgrade-cache-software) , de néhány nap múlva automatikusan alkalmazza.
 
 ---
 

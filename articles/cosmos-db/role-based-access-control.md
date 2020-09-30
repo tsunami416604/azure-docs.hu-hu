@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: mjbrown
-ms.openlocfilehash: e65c17be47cdc59f929aa539071cf1c758e271f7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 10713b264429b5588826421231e45194ebed33f0
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320880"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569185"
 ---
 # <a name="role-based-access-control-in-azure-cosmos-db"></a>Szerepköralapú hozzáférés-vezérlés az Azure Cosmos DB-ben
 
@@ -29,7 +29,7 @@ A Azure Cosmos DB által támogatott beépített szerepkörök a következők:
 |[Cosmos DB operátor](../role-based-access-control/built-in-roles.md#cosmos-db-operator)|Az Azure Cosmos-fiókokat,-adatbázisokat és-tárolókat is kiépítheti. Nem lehet hozzáférni semmilyen adattal, vagy nem használhatja a Adatkezelő.|
 
 > [!IMPORTANT]
-> A Azure Cosmos DB RBAC-támogatása csak a vezérlési sík műveleteire vonatkozik. Az adatsíkok műveletei a főkulcsok vagy az erőforrás-tokenek használatával biztonságosak. További információ: az [adathozzáférés biztonságossá tétele Azure Cosmos db](secure-access-to-data.md)
+> A Azure Cosmos DB RBAC-támogatása csak a vezérlési sík műveleteire vonatkozik. Az adatsíkok műveletei elsődleges kulcsok vagy erőforrás-tokenek használatával biztonságosak. További információ: az [adathozzáférés biztonságossá tétele Azure Cosmos db](secure-access-to-data.md)
 
 ## <a name="identity-and-access-management-iam"></a>Identitás-és hozzáférés-kezelés (IAM)
 

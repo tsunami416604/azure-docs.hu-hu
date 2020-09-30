@@ -6,12 +6,12 @@ ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: 20b0bcfe5043d4767199c36796fa1123ed779363
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 87112af870100859ae008f77eefc4b58eac1b0fb
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791146"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570730"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-with-autoscale-throughput"></a>Azure Cosmos-tárolók és-adatbázisok létrehozása az autoscale átviteli sebességgel
 
@@ -61,7 +61,7 @@ Az autoskálázás maximális átviteli sebességének belépési pontja `Tmax` 
 
 A [Azure Portal](how-to-provision-autoscale-throughput.md#enable-autoscale-on-existing-database-or-container) használatával engedélyezheti az autoskálázást egy meglévő adatbázison vagy tárolón. Az automatikus méretezés és a standard (manuális) kiépített átviteli sebesség között bármikor válthat. További információért tekintse meg ezt a [dokumentációt](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work) . Jelenleg az összes API esetében csak az Azure Portal használhatja az autoskálázást a meglévő erőforrásokon.
 
-## <a name="throughput-and-storage-limits-for-autoscale"></a><a id="autoscale-limits"></a>Átviteli sebesség és tárolási korlátok az autoskálázáshoz
+## <a name="throughput-and-storage-limits-for-autoscale"></a><a id="autoscale-limits"></a> Átviteli sebesség és tárolási korlátok az autoskálázáshoz
 
 Bármely érték esetén `Tmax` az adatbázis vagy a tároló a teljes összeget tárolhatja `0.01 * Tmax GB` . Ennek elérésekor a maximális RU/s érték automatikusan növekedni fog a tárterület új értékének megfelelően, és ez nincs hatással az alkalmazásra. 
 
@@ -77,10 +77,10 @@ További részletekért tekintse meg ezt a [dokumentációt](how-to-choose-offer
 | **Kiosztott átviteli sebesség (RU/s)** | Manuálisan kiépítve. | Automatikusan és azonnal méretezhető a munkaterhelés-használati minták alapján. |
 | **Kérelmek/műveletek korlátozása (429)**  | Előfordulhat, hogy a felhasználás meghaladja a kiosztott kapacitást. | Nem fog történni, ha az automatikusan beállított átviteli sebességi tartományon belül a RU/s-t használja.    |
 | **Kapacitástervezés** |  A kapacitás megtervezése és a szükséges pontos átviteli sebesség kiépítése szükséges. |    A rendszer automatikusan gondoskodik a kapacitás megtervezéséről és a kapacitások kezeléséről. |
-| **Díjszabás** | A manuálisan kiosztott RU/mp óradíjat kell fizetnie a [Standard (manuális) ru/s](https://azure.microsoft.com/pricing/details/cosmos-db/)óránkénti díjszabás alapján. | A legmagasabb RU/s esetében óránkénti fizetést kell fizetnie, a rendszer pedig az órán belül felskálázást. <br/><br/> Az egyszeri írási régió fiókjai esetében óradíjban kell fizetnie az RU/s esetében, az [autoscale ru/s](https://azure.microsoft.com/pricing/details/cosmos-db/)óradíjat használva. <br/><br/>Több írási régióval rendelkező fiókok esetében az autoskálázás díjmentes. Az óránkénti átviteli sebességért kell fizetnie, ugyanazzal a [több főkiszolgálós ru/s-díj](https://azure.microsoft.com/pricing/details/cosmos-db/)használatával. |
+| **Díjszabás** | A manuálisan kiosztott RU/mp óradíjat kell fizetnie a [Standard (manuális) ru/s](https://azure.microsoft.com/pricing/details/cosmos-db/)óránkénti díjszabás alapján. | A legmagasabb RU/s esetében óránkénti fizetést kell fizetnie, a rendszer pedig az órán belül felskálázást. <br/><br/> Az egyszeri írási régió fiókjai esetében óradíjban kell fizetnie az RU/s esetében, az [autoscale ru/s](https://azure.microsoft.com/pricing/details/cosmos-db/)óradíjat használva. <br/><br/>Több írási régióval rendelkező fiókok esetében az autoskálázás díjmentes. Az óránkénti átviteli sebességért kell fizetnie, ugyanazzal a [többrégiós írási ru/s](https://azure.microsoft.com/pricing/details/cosmos-db/)óradíjat használva. |
 | **Legmegfelelőbb a számítási feladatok típusaihoz** |  Kiszámítható és stabil számítási feladatok|   Kiszámíthatatlan és változó számítási feladatok  |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tekintse át az [autoscale – gyakori kérdések](autoscale-faq.md)című szakaszt.
 * Megtudhatja, hogyan [választhat a manuális és az automatikus skálázási sebesség közül](how-to-choose-offer.md).

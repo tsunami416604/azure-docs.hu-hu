@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: f6b2d081b0dc475e0950b12de31bab83cbe7da8b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4bd29ce3bf2cc7cd69f86dbf172d3cd9a2044e79
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213091"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570361"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Gyakori kérdések az Azure Cosmos DB különböző API-jaival kapcsolatban
 
@@ -34,7 +34,7 @@ Azure Cosmos DB rendelkezik egy séma agnosztikus indexelési motorral, amely k�
 
 ### <a name="can-i-use-multiple-apis-to-access-my-data"></a>Használhatok több API-t az adataim eléréséhez?
 
-Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása. Ahol a többmodelles Azure Cosmos DB több API-t és több adatmodellt is támogat, a különböző API-k különböző adatformátumokat használnak a Storage és a Wire protokoll számára. Például az SQL JSON-t használ, a MongoDB pedig az BSON-t használja, a Table a EDM-t használja, a Cassandra pedig a CQL, a Gremlin JSON formátumot használ Ennek eredményeképpen azt javasoljuk, hogy ugyanazt az API-t használja az adott fiókban lévő adathoz való hozzáféréshez.
+Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Ahol a többmodelles Azure Cosmos DB több API-t és több adatmodellt is támogat, a különböző API-k különböző adatformátumokat használnak a Storage és a Wire protokoll számára. Például az SQL JSON-t használ, a MongoDB pedig az BSON-t használja, a Table a EDM-t használja, a Cassandra pedig a CQL, a Gremlin JSON formátumot használ Ennek eredményeképpen azt javasoljuk, hogy ugyanazt az API-t használja az adott fiókban lévő adathoz való hozzáféréshez.
 
 Az egyes API-k egymástól függetlenül működnek, kivéve a Gremlin és az SQL API-t, amelyek együttműködnek egymással.
 
@@ -85,7 +85,7 @@ Próbálja meg Azure Cosmos DB előfizetéseket a felhasználói AZONOSÍTÓhoz 
 
 A Azure Cosmos DB-előfizetések kipróbálásához a következő feltételek érvényesek:
 
-* A fiókhoz való hozzáférés a személyes Microsoft-fiókokhoz (MSA) is biztosítható. Ne használjon Active Directory-(HRE-) fiókokat vagy a vállalati HRE-bérlőhöz tartozó fiókokat, azonban korlátozásokkal rendelkezhetnek, amelyek letiltják a hozzáférést a hozzáférés engedélyezéséhez.
+* A fiókhoz való hozzáférés a személyes Microsoft-fiókokhoz (MSA) is biztosítható. Ne használjon Azure Active Directory-(Azure AD-) fiókokat vagy a vállalati Azure AD-bérlőhöz tartozó fiókokat, ezért korlátozásokkal rendelkezhetnek, amelyek letiltják a hozzáférést a hozzáférés engedélyezéséhez.
 * Egy, az SQL, a Gremlin API és a Table accounts-előfizetések által [kiosztott tároló](./set-throughput.md#set-throughput-on-a-container) .
 * Akár három, a MongoDB-fiókokra vonatkozó előfizetéshez tartozó [kiosztott gyűjtemény](./set-throughput.md#set-throughput-on-a-container) .
 * Egy [átviteli sebesség kiépített adatbázisa](./set-throughput.md#set-throughput-on-a-database) előfizetéssel. Az átviteli sebesség kiépített adatbázisai tetszőleges számú tárolót tartalmazhatnak.
@@ -102,9 +102,9 @@ A Azure Cosmos DB-előfizetések kipróbálásához a következő feltételek é
 
 A Azure Cosmos DB a Azure Portalben érhető el. Először regisztráljon egy Azure-előfizetésre. A regisztráció után hozzáadhat egy Azure Cosmos DB fiókot az Azure-előfizetéséhez.
 
-### <a name="what-is-a-master-key"></a>Mi a főkulcs?
+### <a name="what-is-a-primary-key"></a>Mi az elsődleges kulcs?
 
-A főkulcs egy biztonsági jogkivonat, amellyel egy fiók összes erőforrása elérhető. A kulccsal rendelkező személyeknek olvasási és írási hozzáférésük van az adatbázis-fiók összes erőforrásához. A főkulcsok terjesztésekor körültekintően járjon el. Az elsődleges főkulcs és a másodlagos főkulcs a [Azure Portal][azure-portal] **kulcsok** paneljén érhető el. A kulcsokkal kapcsolatos további információkért lásd: [Hozzáférési kulcsok megtekintése, másolása és újragenerálása](manage-with-cli.md#list-account-keys).
+Az elsődleges kulcs egy biztonsági jogkivonat, amely hozzáfér a fiók összes erőforrásához. A kulccsal rendelkező személyeknek olvasási és írási hozzáférésük van az adatbázis-fiók összes erőforrásához. Az elsődleges kulcsok terjesztésekor körültekintően járjon el. Az elsődleges elsődleges kulcs és a másodlagos elsődleges kulcs a [Azure Portal][azure-portal] **kulcsok** paneljén érhető el. A kulcsokkal kapcsolatos további információkért lásd: [Hozzáférési kulcsok megtekintése, másolása és újragenerálása](manage-with-cli.md#list-account-keys).
 
 ### <a name="what-are-the-regions-that-preferredlocations-can-be-set-to"></a>Mik azok a régiók, amelyeknek a PreferredLocations beállítható?
 
@@ -212,7 +212,7 @@ Az engedélyek ResourceTokens használatával történő létrehozása a tárol�
 [azure-portal]: https://portal.azure.com
 [query]: sql-api-sql-query.md
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A más API-kkal kapcsolatos gyakori kérdések megismeréséhez lásd:
 

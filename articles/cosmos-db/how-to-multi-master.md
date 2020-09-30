@@ -1,29 +1,29 @@
 ---
-title: Több főkiszolgáló konfigurálása Azure Cosmos DBban
-description: Megtudhatja, hogyan konfigurálhat több főkiszolgálót az alkalmazásaihoz a Azure Cosmos DB különböző SDK-k használatával.
+title: Többrégiós írások konfigurálása Azure Cosmos DB
+description: Megtudhatja, hogyan konfigurálhat többrégiós írásokat az alkalmazásaihoz a Azure Cosmos DB különböző SDK-k használatával.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: mjbrown
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: 40d2e5f3d79fdc7725f04fbfd2c7f29f8db265a3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8079fb3ab04d5f613566816735491203d7df951a
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328530"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570668"
 ---
-# <a name="configure-multi-master-in-your-applications-that-use-azure-cosmos-db"></a>Több főkiszolgálós konfiguráció konfigurálása a Azure Cosmos DBt használó alkalmazásokban
+# <a name="configure-multi-region-writes-in-your-applications-that-use-azure-cosmos-db"></a>Többrégiós írások konfigurálása a Azure Cosmos DBt használó alkalmazásokban
 
-Ha egy fiók több írási régióval lett létrehozva, akkor az alkalmazásban két módosítást kell végeznie a DocumentClient ConnectionPolicy, hogy lehetővé váljon a több főkiszolgálós és több-önvezérlési funkció a Azure Cosmos DBban. A ConnectionPolicy belül állítsa a UseMultipleWriteLocations értéket True értékre, és adja meg annak a régiónak a nevét, ahol az alkalmazás telepítve van a SetCurrentLocation. Ezzel feltölti a PreferredLocations tulajdonságot az átadott hely földrajzi közelsége alapján. Ha az új régiót később hozzáadják a fiókhoz, az alkalmazást nem kell frissíteni vagy újratelepíteni, a rendszer automatikusan felismeri a szorosabb régiót, és lehetővé teszi, hogy a helyi esemény történjen.
+Ha egy fiók több írási régióval lett létrehozva, akkor az alkalmazásban két módosítást kell végeznie a DocumentClient ConnectionPolicy, hogy lehetővé váljon a többrégiós írások és a több-vezérelt vezérlési képesség a Azure Cosmos DB. A ConnectionPolicy belül állítsa a UseMultipleWriteLocations értéket True értékre, és adja meg annak a régiónak a nevét, ahol az alkalmazás telepítve van a SetCurrentLocation. Ezzel feltölti a PreferredLocations tulajdonságot az átadott hely földrajzi közelsége alapján. Ha az új régiót később hozzáadják a fiókhoz, az alkalmazást nem kell frissíteni vagy újratelepíteni, a rendszer automatikusan felismeri a szorosabb régiót, és lehetővé teszi, hogy a helyi esemény történjen.
 
 > [!Note]
-> Az egyírásos régióval eredetileg konfigurált Cosmos-fiókok több írási régióra (azaz több főkiszolgálóra) is konfigurálhatók a nulla leállási idővel. További információ: [több írási régió konfigurálása](how-to-manage-database-account.md#configure-multiple-write-regions)
+> Az egyetlen írási régióval konfigurált Cosmos-fiókok több írási régióra is konfigurálhatók, nulla leállási idővel. További információ: [több írási régió konfigurálása](how-to-manage-database-account.md#configure-multiple-write-regions)
 
 ## <a name="net-sdk-v2"></a><a id="netv2"></a>.NET SDK v2
 
-Ha engedélyezni szeretné a több főkiszolgálót az alkalmazásban, állítsa a következőre: `UseMultipleWriteLocations` `true` . Azt a régiót is állítsa be, amelyben `SetCurrentLocation` az alkalmazást telepíti, és ahol a Azure Cosmos db replikálja:
+Ha engedélyezni szeretné a többrégiós írásokat az alkalmazásban, állítsa a következőre: `UseMultipleWriteLocations` `true` . Azt a régiót is állítsa be, amelyben `SetCurrentLocation` az alkalmazást telepíti, és ahol a Azure Cosmos db replikálja:
 
 ```csharp
 ConnectionPolicy policy = new ConnectionPolicy
@@ -37,7 +37,7 @@ policy.SetCurrentLocation("West US 2");
 
 ## <a name="net-sdk-v3"></a><a id="netv3"></a>.NET SDK v3
 
-Ha engedélyezni szeretné a több főkiszolgálós alkalmazást az alkalmazásban, állítsa `ApplicationRegion` azt a régiót, amelyben az alkalmazást üzembe helyezi, és ahol a Cosmos db replikálja:
+Ha engedélyezni szeretné a többrégiós írásokat az alkalmazásban, állítsa `ApplicationRegion` azt a régiót, amelyben az alkalmazást üzembe helyezi, és ahol a Cosmos db replikálja:
 
 ```csharp
 CosmosClient cosmosClient = new CosmosClient(
@@ -56,9 +56,9 @@ CosmosClientBuilder cosmosClientBuilder = new CosmosClientBuilder("<connection-s
 CosmosClient client = cosmosClientBuilder.Build();
 ```
 
-## <a name="java-v4-sdk"></a><a id="java4-multi-master"></a> Java v4 SDK
+## <a name="java-v4-sdk"></a><a id="java4-multi-region-writes"></a> Java v4 SDK
 
-Ha engedélyezni szeretné a több főkiszolgálós alkalmazást az alkalmazásban, hívja meg a (z) és a (z `.multipleWriteRegionsEnabled(true)` `.preferredRegions(preferredRegions)` ) ügyfelet, ahol a egy `preferredRegions` `List` elemet tartalmaz – ez az a régió, amelyben az alkalmazás üzembe helyezése zajlik, és ahol a Cosmos db replikálódik:
+Ha engedélyezni szeretné a többrégiós írásokat az alkalmazásban, hívja meg a (z) és a (z `.multipleWriteRegionsEnabled(true)` `.preferredRegions(preferredRegions)` ) ügyfelet, ahol a egy `preferredRegions` `List` elemet tartalmaz – ez az a régió, amelyben az alkalmazás üzembe helyezése zajlik, és ahol a Cosmos db replikálódik:
 
 # <a name="async"></a>[Aszinkron](#tab/api-async)
 
@@ -74,9 +74,9 @@ Ha engedélyezni szeretné a több főkiszolgálós alkalmazást az alkalmazásb
 
 --- 
 
-## <a name="async-java-v2-sdk"></a><a id="java2-milti-master"></a> Aszinkron Java v2 SDK
+## <a name="async-java-v2-sdk"></a><a id="java2-multi-region-writes"></a> Aszinkron Java v2 SDK
 
-A Java v2 SDK a Maven [com. microsoft. Azure-t használta:: Azure-cosmosdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb). Ha engedélyezni szeretné a több főkiszolgálós alkalmazást az alkalmazásban, állítsa be `policy.setUsingMultipleWriteLocations(true)` és állítsa be `policy.setPreferredLocations` azt a régiót, amelyben az alkalmazást üzembe helyezi, és ahol a Cosmos db replikálja:
+A Java v2 SDK a Maven [com. microsoft. Azure-t használta:: Azure-cosmosdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb). Ha engedélyezni szeretné a többrégiós írásokat az alkalmazásban, állítsa be `policy.setUsingMultipleWriteLocations(true)` és állítsa be `policy.setPreferredLocations` azt a régiót, amelyben az alkalmazás telepítve van, valamint a Cosmos db replikálásának helyét:
 
 ```java
 ConnectionPolicy policy = new ConnectionPolicy();
@@ -93,7 +93,7 @@ AsyncDocumentClient client =
 
 ## <a name="nodejs-javascript-and-typescript-sdks"></a><a id="javascript"></a>Node.js, JavaScript és írógéppel SDK-k
 
-Ha engedélyezni szeretné a több főkiszolgálót az alkalmazásban, állítsa a következőre: `connectionPolicy.UseMultipleWriteLocations` `true` . Azt a régiót is állítsa be, amelyben `connectionPolicy.PreferredLocations` az alkalmazást telepíti, és ahol a Cosmos db replikálja:
+Ha engedélyezni szeretné a többrégiós írásokat az alkalmazásban, állítsa a következőre: `connectionPolicy.UseMultipleWriteLocations` `true` . Azt a régiót is állítsa be, amelyben `connectionPolicy.PreferredLocations` az alkalmazást telepíti, és ahol a Cosmos db replikálja:
 
 ```javascript
 const connectionPolicy: ConnectionPolicy = new ConnectionPolicy();
@@ -110,7 +110,7 @@ const client = new CosmosClient({
 
 ## <a name="python-sdk"></a><a id="python"></a>Python SDK
 
-Ha engedélyezni szeretné a több főkiszolgálót az alkalmazásban, állítsa a következőre: `connection_policy.UseMultipleWriteLocations` `true` . Állítsa be `connection_policy.PreferredLocations` azt a régiót is, amelyben az alkalmazást üzembe helyezi, és ahol a Cosmos db replikálva van.
+Ha engedélyezni szeretné a többrégiós írásokat az alkalmazásban, állítsa a következőre: `connection_policy.UseMultipleWriteLocations` `true` . Állítsa be `connection_policy.PreferredLocations` azt a régiót is, amelyben az alkalmazást üzembe helyezi, és ahol a Cosmos db replikálva van.
 
 ```python
 connection_policy = documents.ConnectionPolicy()

@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/06/2019
-ms.openlocfilehash: ff6bd1a52e05d55d43969644141f39aed8c8eb63
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 62c3d4533dd04dbb5a2ce0c73afa52b81d433913
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072643"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570780"
 ---
 # <a name="transform-xml-with-maps-in-azure-logic-apps-with-enterprise-integration-pack"></a>XML-átalakítás térképekkel az Azure Logic Appsben az Enterprise Integration Pack segítségével
 
@@ -69,7 +69,7 @@ Térképek létrehozásakor és hozzáadásakor nincs szükség logikai alkalmaz
 
 1. A **szerelvények** lap megnyitása után válassza a **Hozzáadás**lehetőséget.
 
-   ![Válassza a "Hozzáadás" lehetőséget.](./media/logic-apps-enterprise-integration-maps/add-assembly.png)
+   ![Képernyőfelvétel: a szerelvények lapon található Hozzáadás gomb kiemelése.](./media/logic-apps-enterprise-integration-maps/add-assembly.png)
 
 A szerelvény fájljának mérete alapján hajtsa végre az olyan szerelvények feltöltésének lépéseit, amelyek akár [2](#smaller-assembly) MB vagy [több mint 2 MB méretűek, de legfeljebb 8 MB](#larger-assembly)-ra.
 A szerelvények mennyiségi korlátozásai az integrációs fiókokban: [Azure Logic apps korlátai és konfigurálása](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits).
@@ -344,7 +344,7 @@ Egy meglévő Térkép frissítéséhez fel kell töltenie egy új leképezési 
 
 1. Annak megerősítéséhez, hogy törölni kívánja a térképet, válassza az **Igen**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [További információ a Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md)  
 * [További információ a sémákkal kapcsolatban](../logic-apps/logic-apps-enterprise-integration-schemas.md)

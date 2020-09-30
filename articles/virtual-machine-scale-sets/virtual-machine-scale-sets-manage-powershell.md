@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 05/29/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurepowershell
-ms.openlocfilehash: 45bace9ac174b353bb4662a27e800c0de4eada4b
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: eee4dd7fae872f6b3ddd01f60aba732edc170766
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89072723"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570588"
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-azure-powershell"></a>Virtuálisgép-méretezési csoport kezelése Azure PowerShell
 
@@ -45,6 +45,15 @@ Egy adott virtuálisgép-példányra vonatkozó további információk megtekint
 Get-AzVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId "0"
 ```
 
+Egy API-hívásban részletes *instanceView* információkat is megtudhat az összes példányról, ami segíthet elkerülni a nagyméretű TELEPÍTÉSEk API-szabályozását.
+
+```powershell
+Get-AzVmssVM -InstanceView -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
+```
+
+```rest
+GET "https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<resourceGroupName>/providers/Microsoft.Compute/virtualMachineScaleSets/<VMSSName>/virtualMachines?api-version=2019-03-01&%24expand=instanceView"
+```
 
 ## <a name="change-the-capacity-of-a-scale-set"></a>Méretezési csoport kapacitásának módosítása
 Az előző parancsok a méretezési csoportra és a virtuálisgép-példányokra vonatkozó információkat mutatták. A méretezési csoport példányainak számának növeléséhez vagy csökkentéséhez módosíthatja a kapacitást. A méretezési csoport automatikusan létrehozza vagy eltávolítja a szükséges virtuális gépek számát, majd konfigurálja a virtuális gépeket az alkalmazás forgalmának fogadására.

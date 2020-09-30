@@ -8,15 +8,15 @@ ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 09/09/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3dd7df738f49b14a16be8a9741fb2c82ed3bf97c
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.openlocfilehash: 5537b70f9852f5b5a17362c13e2c9b8e8e9fc43c
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91409009"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570618"
 ---
 # <a name="regional-endpoints-for-azure-cosmos-db-graph-account"></a>Regionális végpontok Azure Cosmos DB Graph-fiókhoz
-Azure Cosmos DB Graph-adatbázis [globálisan elosztott](distribute-data-globally.md) , így az alkalmazások több olvasási végpontot is használhatnak. A több helyen írási hozzáféréssel rendelkező alkalmazásoknak engedélyezniük kell a [több főkiszolgálós](how-to-multi-master.md) funkciót.
+Azure Cosmos DB Graph-adatbázis [globálisan elosztott](distribute-data-globally.md) , így az alkalmazások több olvasási végpontot is használhatnak. Azok az alkalmazások, amelyeknek több helyen írási hozzáféréssel kell rendelkezniük, engedélyezniük kell a [többrégiós](how-to-multi-master.md) írási képességet.
 
 Az egynél több régió kiválasztásának okai:
 1. **Horizontális olvasási méretezhetőség** – az alkalmazás terhelésének növekedésével körültekintő lehet az olvasási forgalom átirányítása különböző Azure-régiókba.

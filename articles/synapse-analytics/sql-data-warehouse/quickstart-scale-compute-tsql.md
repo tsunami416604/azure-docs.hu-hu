@@ -1,5 +1,5 @@
 ---
-title: Számítások méretezése az Azure szinapszis Analyticsben – T-SQL
+title: 'Gyors útmutató: számítási méretezés az Azure szinapszis Analyticsben – T-SQL'
 description: A számítások méretezése az Azure szinapszis Analyticsben T-SQL és SQL Server Management Studio (SSMS) használatával. Bővítéssel a számítások teljesítménye növelhető, szűkítéssel a költségek csökkenthetők.
 services: synapse-analytics
 author: Antvgski
@@ -11,18 +11,18 @@ ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: cb813c9a30b644459f3e586ed4313ca070b5a746
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: d11474a3f3b5d8c314f67260fddbbe0a98fe5196
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85212921"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569896"
 ---
 # <a name="quickstart-scale-compute-in-azure-synapse-analytics-using-t-sql"></a>Gyors útmutató: a számítások méretezése az Azure szinapszis Analyticsben T-SQL használatával
 
 A számítások méretezése az Azure szinapszis Analyticsben (korábban SQL DW) T-SQL és SQL Server Management Studio (SSMS) használatával. [Felskálázással](sql-data-warehouse-manage-compute-overview.md) a számítások teljesítménye növelhető, leskálázással a költségek csökkenthetők.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
+Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -42,8 +42,8 @@ Ebben a részben az [SQL Server Management Studio](/sql/ssms/download-sql-server
 
    | Beállítás       | Ajánlott érték | Leírás |
    | ------------ | ------------------ | ------------------------------------------------- |
-   | Kiszolgáló típusa | Adatbázismotor | Kötelezően megadandó érték |
-   | Kiszolgáló neve | A teljes kiszolgálónév | Íme egy példa: **mySampleDataWarehouseservername.database.Windows.net**. |
+   | Server type (Kiszolgáló típusa) | Adatbázismotor | Kötelezően megadandó érték |
+   | Kiszolgálónév | A teljes kiszolgálónév | Íme egy példa: **mySampleDataWarehouseservername.database.Windows.net**. |
    | Hitelesítés | SQL Server-hitelesítés | Ebben az oktatóanyagban az SQL-hitelesítésen kívül más hitelesítéstípus nincs konfigurálva. |
    | Bejelentkezés | A kiszolgálói rendszergazdafiók | Az a fiók, amely a kiszolgáló létrehozásakor lett megadva. |
    | Jelszó | A kiszolgálói rendszergazdai fiók jelszava | A kiszolgáló létrehozásakor megadott jelszó. |
@@ -63,7 +63,7 @@ A szolgáltatási cél beállítása tartalmazza az adattárház adattárházegy
 Az adattárház jelenlegi adattárházegység-számának megtekintéséhez:
 
 1. A **mySampleDataWarehouseservername.database.Windows.net**-hez való kapcsolódás alatt bontsa ki a **rendszeradatbázisok**csomópontot.
-2. Kattintson jobb gombbal a **master** elemre, és válassza a **New Query** (Új lekérdezés) lehetőséget. Megnyílik egy új lekérdezési ablak.
+2. Kattintson a jobb gombbal a **master** elemre, és válassza a **New Query** (Új lekérdezés) lehetőséget. Megnyílik egy új lekérdezési ablak.
 3. Futtassa a következő lekérdezést a sys.database_service_objectives dinamikus felügyeleti nézetből való választáshoz.
 
     ```sql
@@ -89,7 +89,7 @@ Az Azure Szinapszisban az adatraktár-egységek módosításával növelheti vag
 
 Az adattárházegységek számának módosításához:
 
-1. Kattintson jobb gombbal a **master** elemre, és válassza a **New Query** (Új lekérdezés) lehetőséget.
+1. Kattintson a jobb gombbal a **master** elemre, és válassza a **New Query** (Új lekérdezés) lehetőséget.
 2. Módosítsa a szolgáltatási célt az [ALTER DATABASE](/sql/t-sql/statements/alter-database-azure-sql-database?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL-utasítással. Az alábbi lekérdezést futtatva például beállíthatja a DW300 szolgáltatási célt.
 
     ```Sql
@@ -103,7 +103,7 @@ Az előző módosítási kérés állapotának megtekintéséhez használhatja a
 
 A szolgáltatásobjektum módosítási állapotának lekérdezése:
 
-1. Kattintson jobb gombbal a **master** elemre, és válassza a **New Query** (Új lekérdezés) lehetőséget.
+1. Kattintson a jobb gombbal a **master** elemre, és válassza a **New Query** (Új lekérdezés) lehetőséget.
 2. Futtassa az alábbi lekérdezést a sys.dm_operation_status DMV lekérdezéséhez.
 
     ```sql
@@ -132,7 +132,7 @@ A szolgáltatásobjektum módosítási állapotának lekérdezése:
 
 ## <a name="check-data-warehouse-state"></a>Az adattárház állapotának ellenőrzése
 
-A szüneteltetett adattárházakhoz nem tud T-SQL-utasításokkal csatlakozni. Az adattárház jelenlegi állapotát megtekintheti egy PowerShell-parancsmag használatával. A vonatkozó példát az [Adattárház állapotának ellenőrzése – Powershell](quickstart-scale-compute-powershell.md#check-data-warehouse-state) című cikkben találhatja meg.
+A szüneteltetett adattárházakhoz nem tud T-SQL-utasításokkal csatlakozni. Az adattárház jelenlegi állapotát megtekintheti egy PowerShell-parancsmag használatával. Példa: az [adatraktár állapotának megtekintése – PowerShell](quickstart-scale-compute-powershell.md#check-data-warehouse-state).
 
 ## <a name="check-operation-status"></a>Műveleti állapot ellenőrzése
 
@@ -148,7 +148,7 @@ AND
     major_resource_id = 'mySampleDataWarehouse'
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az útmutatóban megismerhette, hogyan skálázható egy adattárház számítási kapacitása. Ha többet szeretne megtudni az Azure Szinapszisról, folytassa az információk betöltésére vonatkozó oktatóanyaggal.
 

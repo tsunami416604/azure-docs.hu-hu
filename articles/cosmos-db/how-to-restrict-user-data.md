@@ -6,18 +6,19 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 12/9/2019
 ms.author: tvoellm
-ms.openlocfilehash: 16452337eeda86a9b019897954179bfe6db6e1b2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 44a62643c459fb61e7a2a95c2a9dd55ea4f19111
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87031992"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570641"
 ---
-# <a name="restrict-user-access-to-data-operations-only"></a>Felhasználói hozzáférés korlátozása az adatműveletekre
+# <a name="restrict-user-access-to-data-operations-in-azure-cosmos-db"></a>Az adatműveletekhez való felhasználói hozzáférés korlátozása Azure Cosmos DB
 
 Azure Cosmos DB két módon hitelesítheti az interakciókat az adatbázis-szolgáltatással:
+
 - a Azure Active Directory identitás használata a Azure Portal való interakció során
-- Azure Cosmos DB [kulcsok](secure-access-to-data.md#master-keys) vagy [erőforrás-tokenek](secure-access-to-data.md#resource-tokens) használata az API-k és SDK-k által kezdeményezett hívások kibocsátásakor.
+- Azure Cosmos DB [kulcsok](secure-access-to-data.md#primary-keys) vagy [erőforrás-tokenek](secure-access-to-data.md#resource-tokens) használata az API-k és SDK-k által kezdeményezett hívások kibocsátásakor.
 
 Az egyes hitelesítési módszerek különböző műveletekhez biztosítanak hozzáférést, néhány átfedéssel:
 
@@ -35,10 +36,10 @@ A cikk következő fejezetei bemutatják, hogyan hajthatja végre ezeket a lép�
 > A következő szakaszokban szereplő parancsok végrehajtásához telepítenie kell Azure PowerShell modul 3.0.0 vagy újabb verzióját, valamint az [Azure tulajdonosi szerepkört](../role-based-access-control/built-in-roles.md#owner) a módosítani kívánt előfizetéshez.
 
 A következő szakaszban található PowerShell-parancsfájlokban cserélje le a következő helyőrzőket a környezetre jellemző értékekre:
-- `$MySubscriptionId`– Az az előfizetés-azonosító, amely tartalmazza azt az Azure Cosmos-fiókot, amelyben korlátozni szeretné az engedélyeket. Például: `e5c8766a-eeb0-40e8-af56-0eb142ebf78e`.
-- `$MyResourceGroupName`– Az Azure Cosmos-fiókot tartalmazó erőforráscsoport. Például: `myresourcegroup`.
-- `$MyAzureCosmosDBAccountName`– Az Azure Cosmos-fiók neve. Például: `mycosmosdbsaccount`.
-- `$MyUserName`– Annak a felhasználónak a felhasználóneve ( username@domain ), akivel korlátozni kívánja a hozzáférést. Például: `cosmosdbuser@contoso.com`.
+- `$MySubscriptionId` – Az az előfizetés-azonosító, amely tartalmazza azt az Azure Cosmos-fiókot, amelyben korlátozni szeretné az engedélyeket. Például: `e5c8766a-eeb0-40e8-af56-0eb142ebf78e`.
+- `$MyResourceGroupName` – Az Azure Cosmos-fiókot tartalmazó erőforráscsoport. Például: `myresourcegroup`.
+- `$MyAzureCosmosDBAccountName` – Az Azure Cosmos-fiók neve. Például: `mycosmosdbsaccount`.
+- `$MyUserName` – Annak a felhasználónak a felhasználóneve ( username@domain ), akivel korlátozni kívánja a hozzáférést. Például: `cosmosdbuser@contoso.com`.
 
 ## <a name="select-your-azure-subscription"></a>Válassza ki az Azure-előfizetését
 
@@ -94,7 +95,7 @@ $cdba.Properties.disableKeyBasedMetadataWriteAccess="True"
 $cdba | Set-AzResource -Force
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [Cosmos db szerepköralapú hozzáférés-vezérléséről](role-based-access-control.md)
 - Áttekintés a [Cosmos db lévő adathozzáférések biztonságos eléréséről](secure-access-to-data.md)

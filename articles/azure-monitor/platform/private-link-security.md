@@ -1,19 +1,19 @@
 ---
-title: Hálózatok biztonságos csatlakoztatása az Azure privát hivatkozással Azure Monitor
-description: Hálózatok biztonságos csatlakoztatása az Azure privát hivatkozással Azure Monitor
+title: Hálózatok biztonságos csatlakoztatása az Azure Monitorhoz az Azure Private Linkkel
+description: Hálózatok biztonságos csatlakoztatása az Azure Monitorhoz az Azure Private Linkkel
 author: nkiest
 ms.author: nikiest
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.subservice: ''
-ms.openlocfilehash: 6045fa475b3bb112afee9ceacd8d6b136087feab
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2b94c782b5d7139fae7a01233bffd3b17cf43c7c
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077180"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570424"
 ---
-# <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Hálózatok biztonságos csatlakoztatása az Azure privát hivatkozással Azure Monitor
+# <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Hálózatok biztonságos csatlakoztatása az Azure Monitorhoz az Azure Private Linkkel
 
 > [!IMPORTANT]
 > Jelenleg a funkció használatához hozzáférést kell **kérnie** . A [feliratkozási űrlap](https://aka.ms/AzMonPrivateLinkSignup)használatával kérheti a hozzáférést.
@@ -31,7 +31,7 @@ A privát hivatkozással a következőket teheti:
 - A privát helyszíni hálózat biztonságos csatlakoztatása Azure Monitor ExpressRoute és privát kapcsolat használatával
 - Az Microsoft Azure gerinc hálózatán belüli összes forgalom megőrzése
 
-További információ: [a privát hivatkozás legfontosabb előnyei](../../private-link/private-link-overview.md#key-benefits).
+További információ:  [a privát hivatkozás legfontosabb előnyei](../../private-link/private-link-overview.md#key-benefits).
 
 ## <a name="how-it-works"></a>Működés
 
@@ -76,13 +76,13 @@ A magánhálózati kapcsolat beállításakor figyelembe kell venni néhány kor
 
 * Egy VNet csak 1 AMPLS objektumhoz tud csatlakozni. Ez azt jelenti, hogy a AMPLS objektumnak hozzáférést kell biztosítania az összes olyan Azure Monitor erőforráshoz, amelyhez a VNet hozzáféréssel kell rendelkeznie.
 * Egy Azure Monitor erőforrás (munkaterület vagy Application Insights összetevő) legfeljebb 5 AMPLSs tud csatlakozni.
-* Egy AMPLS-objektum legfeljebb 20 Azure Monitor erőforráshoz tud csatlakozni.
+* Egy AMPLS-objektum legfeljebb 50 Azure Monitor erőforráshoz tud csatlakozni.
 * Egy AMPLS-objektum legfeljebb 10 privát végponthoz tud csatlakozni.
 
 Az alábbi topológiában:
 * Minden VNet 1 AMPLS objektumhoz csatlakozik, így nem tud csatlakozni más AMPLSs.
 * A AMPLS 2 virtuális hálózatok csatlakozik: a lehetséges privát végpontok kapcsolatainak 2/10-as használatával.
-* A AMPLS 2 munkaterülethez és 1 alkalmazás-betekintési összetevőhöz csatlakozik: a lehetséges Azure Monitor erőforrásainak 3/20-es felhasználása.
+* A AMPLS 2 munkaterülethez és 1 alkalmazás-betekintési összetevőhöz csatlakozik: a lehetséges Azure Monitor erőforrásainak 3/50-es felhasználása.
 * A 2. munkaterület az A és A AMPLS AMPLS csatlakozik: a lehetséges AMPLS-kapcsolatok 2/5-as számú használatával.
 
 ![AMPLS-korlátok diagramja](./media/private-link-security/ampls-limits.png)
@@ -152,7 +152,7 @@ Most, hogy rendelkezik a AMPLS kapcsolódó erőforrásokkal, hozzon létre egy 
 
 Ezzel létrehozott egy új privát végpontot, amely ehhez a Azure Monitor privát kapcsolati hatókörhöz csatlakozik.
 
-## <a name="configure-log-analytics"></a>Log Analytics konfigurálása
+## <a name="configure-log-analytics"></a>A Log Analytics konfigurálása
 
 Nyissa meg az Azure Portalt. A Log Analytics munkaterület-erőforrásban található a bal oldali menüpont **hálózati elkülönítése** . Ebben a menüben két különböző állapotot is megadhat. 
 
@@ -162,10 +162,23 @@ Először is csatlakoztathatja ezt a Log Analytics-erőforrást bármely olyan A
 
 Másodszor, azt is szabályozhatja, hogy ez az erőforrás Hogyan érhető el a fent felsorolt privát kapcsolati hatókörökön kívülről. Ha a **nem**értékre állítja a **nyilvános hálózati hozzáférés engedélyezése lehetőséget** , akkor a csatlakoztatott hatókörökön kívüli gépek nem tölthetnek fel adatot erre a munkaterületre. Ha a **nyilvános hálózati hozzáférés engedélyezése a** **nem**értékre van állítva, akkor a hatókörön kívüli gépek nem férhetnek hozzá a munkaterületen lévő adatforrásokhoz. Ez az adat magában foglalja a munkafüzetek, irányítópultok, a lekérdezési API-alapú ügyfél-élmények, a Azure Portali elemzések és egyéb funkciók elérését. A Azure Portalon kívül futó tapasztalatok, és a lekérdezés Log Analytics az adatnak is futnia kell a privát csatolt VNET.
 
-A hozzáférés ilyen módon történő korlátozása csak a munkaterületen lévő adatértékekre vonatkozik. A konfiguráció módosításait, beleértve a hozzáférési beállítások be-és kikapcsolását is, Azure Resource Manager kezeli. A megfelelő szerepkörök, engedélyek, hálózati vezérlők és naplózás használatával korlátozhatja a hozzáférést a Resource Managerhez. További információ: [Azure monitor szerepkörök, engedélyek és biztonság](roles-permissions-security.md).
+A hozzáférés ilyen módon történő korlátozása nem vonatkozik a Azure Resource Managerra, ezért a következő korlátozások vonatkoznak rá:
+* Hozzáférés az adatokhoz – miközben blokkolja a nyilvános hálózatokból érkező lekérdezéseket, a legtöbb Log Analyticsi tapasztalatra vonatkozik, egyes funkciók a Azure Resource Manageron keresztül kérdezik le az adatait, ezért nem lesznek képesek az adatok lekérdezésére, kivéve, ha a privát kapcsolat beállításait a Resource Managerre is alkalmazza (a szolgáltatás hamarosan elérhető lesz). Ez magában foglalja például a Azure Monitor megoldásokat, a munkafüzeteket és az adattartalmakat, valamint az LogicApp-összekötőt.
+* A munkaterület-kezelés – a munkaterület beállítását és a konfiguráció módosításait (beleértve a hozzáférési beállítások be-és kikapcsolását) a Azure Resource Manager kezeli. Korlátozza a munkaterület-felügyelet elérését a megfelelő szerepkörök, engedélyek, hálózati vezérlők és naplózás használatával. További információ: [Azure monitor szerepkörök, engedélyek és biztonság](roles-permissions-security.md).
 
 > [!NOTE]
 > A munkaterületre a [diagnosztikai beállításokon](diagnostic-settings.md) keresztül feltöltött naplók és mérőszámok egy biztonságos privát Microsoft-csatornán haladnak át, és ezeket a beállításokat nem szabályozzák.
+
+### <a name="log-analytics-solution-packs-download"></a>Log Analytics a megoldás csomagjainak letöltése
+
+Ha engedélyezni szeretné, hogy a Log Analytics ügynök letöltse a megoldási csomagokat, adja hozzá a megfelelő teljes tartományneveket a tűzfal engedélyezési listájához. 
+
+
+| Felhőalapú környezet | Ügynök erőforrása | Portok | Irány |
+|:--|:--|:--|:--|
+|Azure Public     | scadvisorcontent.blob.core.windows.net         | 443 | Kimenő
+|Azure Government | usbn1oicore.blob.core.usgovcloudapi.net | 443 |  Kimenő
+|Azure China 21Vianet      | mceast2oicore.blob.core.chinacloudapi.cn| 443 | Kimenő
 
 ## <a name="configure-application-insights"></a>Application Insights konfigurálása
 
@@ -235,21 +248,10 @@ A címkék hozzáadásával olyan műveleteket hajthat végre, mint például a 
 
 Csomagolja be a JavaScript-kódot a parancsfájlba, hogy a böngésző ne kísérelje meg a kód letöltését a CDN-ből. Példa a [githubon](https://github.com/microsoft/ApplicationInsights-JS#npm-setup-ignore-if-using-snippet-setup)
 
-### <a name="log-analytics-solution-download"></a>Log Analytics megoldás letöltése
-
-Ha engedélyezni szeretné, hogy a Log Analytics ügynök letöltse a megoldási csomagokat, adja hozzá a megfelelő teljes tartományneveket a tűzfal engedélyezési listájához. 
-
-
-| Felhőalapú környezet | Ügynök erőforrása | Portok | Irány |
-|:--|:--|:--|:--|
-|Azure Public     | scadvisorcontent.blob.core.windows.net         | 443 | Kimenő
-|Azure Government | usbn1oicore.blob.core.usgovcloudapi.net | 443 |  Kimenő
-|Azure China 21Vianet      | mceast2oicore.blob.core.chinacloudapi.cn| 443 | Kimenő
-
 ### <a name="browser-dns-settings"></a>Böngésző DNS-beállításai
 
 Ha privát kapcsolaton keresztül csatlakozik a Azure Monitor-erőforrásokhoz, ezen erőforrás felé irányuló forgalomnak a hálózaton konfigurált privát végponton kell haladnia. A magánhálózati végpont engedélyezéséhez frissítse a DNS-beállításokat a [Kapcsolódás privát végponthoz](#connect-to-a-private-endpoint)című részben leírtak szerint. Egyes böngészők a beállított beállítások helyett a saját DNS-beállításait használják. Előfordulhat, hogy a böngésző megpróbál csatlakozni Azure Monitor nyilvános végpontokhoz, és teljesen megkerüli a privát hivatkozást. Győződjön meg arról, hogy a böngészők beállításai nem felülbírálják vagy gyorsítótárazzák a régi DNS-beállításokat. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tudnivalók a [privát tárterületről](private-storage.md)

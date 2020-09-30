@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: sngun
-ms.openlocfilehash: 31c3c02f2b32594e5b20450d0bb519f4cdf82807
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b9e6e1388465542e9fb3ac69540c981a1fd70d4b
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497760"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570121"
 ---
 # <a name="how-to-use-azure-kubernetes-with-azure-cosmos-db-preview"></a>Az Azure Kubernetes és a Azure Cosmos DB használata (előzetes verzió)
 
-A Azure Cosmos DB etcd API-val a Azure Cosmos DB használhatja a háttérbeli tárolóként az Azure Kubernetes. Azure Cosmos DB megvalósítja a etcd huzal protokollt, amely lehetővé teszi, hogy a főcsomópont API-kiszolgálói a Azure Cosmos DB ugyanúgy használják, mint a helyileg telepített etcd. a Azure Cosmos DB etcd API jelenleg előzetes verzióban érhető el. Ha az Azure Cosmos etcd API-t használja a Kubernetes-tárolóhoz, a következő előnyöket kapja: 
+A Azure Cosmos DB etcd API-val a Azure Cosmos DB használhatja a háttérbeli tárolóként az Azure Kubernetes. A Azure Cosmos DB megvalósítja a etcd huzal protokollt, amely lehetővé teszi, hogy az elsődleges csomópont API-kiszolgálói Azure Cosmos DB ugyanúgy használják, mint a helyileg telepített etcd. a Azure Cosmos DB etcd API jelenleg előzetes verzióban érhető el. Ha az Azure Cosmos etcd API-t használja a Kubernetes-tárolóhoz, a következő előnyöket kapja: 
 
 * Nincs szükség a etcd manuális konfigurálására és kezelésére.
 * A Cosmos által garantált etcd magas rendelkezésre állása (99,99% egyetlen régióban, 99,999% több régióban).
@@ -27,7 +27,7 @@ Ha többet szeretne megtudni a Azure Cosmos DB etcd API-ról, tekintse meg az [�
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-1. Telepítse az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)legújabb verzióját. Az Azure CLI-t az operációs rendszeréhez és a telepítéshez is letöltheti.
+1. Telepítse az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)legújabb verzióját. Az Azure CLI-t az operációs rendszeréhez és a telepítéshez is letöltheti.
 
 1. Telepítse az Azure Kubernetes Engine [legújabb verzióját](https://github.com/Azure/aks-engine/releases) . A különböző operációs rendszerekre vonatkozó telepítési utasítások az [Azure Kubernetes Engine](https://github.com/Azure/aks-engine/blob/master/docs/tutorials/quickstart.md#install-aks-engine) oldalon érhetők el. Ehhez csupán a csatolt doc-hoz tartozó **Kabai motor telepítése** szakasz lépéseit kell megadnia. A letöltés után bontsa ki a zip-fájlt.
 

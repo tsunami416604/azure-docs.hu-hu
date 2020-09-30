@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: peshultz
 ms.custom: references_regions
-ms.openlocfilehash: 6c6207e7f52e49b88dc8dc99e0bd20a2c774339d
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: e6922abb48e19157e6905d9ceb71817cfbaff767
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91541900"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570866"
 ---
 # <a name="create-an-azure-batch-pool-without-public-ip-addresses"></a>Azure Batch-készlet létrehozása nyilvános IP-címek nélkül
 
@@ -34,8 +34,11 @@ Ha korlátozni szeretné ezen csomópontok elérését, és csökkenti a csomóp
 - **Egy Azure-VNet**. Ha [virtuális hálózatban](batch-virtual-network.md)hozza létre a készletet, kövesse ezeket a követelményeket és konfigurációkat. Egy vagy több alhálózattal rendelkező VNet előkészítéséhez használhatja a Azure Portal, Azure PowerShell, az Azure parancssori felületét (CLI) vagy más metódusokat is.
   - A virtuális hálózatnak a Batch-fiókkal megegyező előfizetésben és régióban kell lennie.
   - A készlethez meghatározott alhálózatnak elegendő hozzá nem rendelt IP-címmel kell rendelkeznie ahhoz, hogy helyet tudjon adni a készlethez kijelölt számú virtuális gépnek. Ez a szám a készlet `targetDedicatedNodes` és `targetLowPriorityNodes` tulajdonságának összege. Ha az alhálózaton nincs elegendő hozzá nem rendelt IP-cím, akkor a készlet részlegesen lefoglalja a számítási csomópontokat, és átméretezési hiba következik be.
-  - Le kell tiltania a Private link Service és a végpont hálózati házirendjeit. Ezt az Azure CLI használatával végezheti el: ```az network vnet subnet update --vnet-name <vnetname> -n <subnetname> --disable-private-endpoint-network-policies --disable-private-link-service-network-policies```
-  
+  - Le kell tiltania a Private link Service és a végpont hálózati házirendjeit. Ezt az Azure CLI használatával végezheti el:
+    ```azurecli
+    az network vnet subnet update --vnet-name <vnetname> -n <subnetname> --disable-private-endpoint-network-policies --disable-private-link-service-network-policies
+    ```
+
 > [!IMPORTANT]
 > Minden 100 dedikált vagy alacsony prioritású csomópont esetében a Batch egy privát kapcsolati szolgáltatást és egy Load balancert foglal le. Ezekre az erőforrásokra az előfizetésben meghatározott [erőforráskvóták](../azure-resource-manager/management/azure-subscription-service-limits.md) vonatkoznak. Nagyméretű készletek esetén előfordulhat, hogy egy vagy több ilyen erőforráshoz [kvótát kell emelni](batch-quota-limit.md#increase-a-quota) . Emellett nem kell erőforrás-zárolást alkalmazni a Batch által létrehozott összes erőforrásra, mivel ez megakadályozhatja az erőforrások törlését a felhasználó által kezdeményezett műveletek eredményeképpen, például a készlet törlését vagy a nulla értékre való átméretezést.
 
@@ -113,7 +116,7 @@ Nyilvános IP-címek nélküli készlet esetén a virtuális gépek nem férhetn
 
 A kimenő kapcsolatok egy másik módja a felhasználó által megadott útvonal (UDR) használata. Ez lehetővé teszi, hogy a forgalmat egy olyan proxykiszolgálón keresztül irányítsa, amely nyilvános internet-hozzáféréssel rendelkezik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [készletek virtuális hálózatban való létrehozásáról](batch-virtual-network.md).
 - Ismerje meg, hogyan [használhatók a privát végpontok a Batch-fiókokkal](private-connectivity.md).

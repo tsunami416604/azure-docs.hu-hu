@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 371cfdc8bf2b09f703e1c7bd0153a433ff60ad16
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 4d1c68ba1e0b7db8afefa64abefc671d51e78bd4
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89298963"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569513"
 ---
 # <a name="develop-with-media-services-v3-apis"></a>Fejlesztés a Media Services v3 API-kkal
 
@@ -41,7 +41,7 @@ Szolgáltatásnév létrehozása helyett érdemes lehet az Azure-erőforrások f
 
 ### <a name="azure-ad-service-principal"></a>Azure AD egyszerű szolgáltatás
 
-Ha Azure AD-alkalmazást és egyszerű szolgáltatásnevet hoz létre, az alkalmazásnak a saját bérlőn kell lennie. Az alkalmazás létrehozása után adja meg az alkalmazás **közreműködői** vagy **tulajdonosi** szerepkörének hozzáférését az Media Services fiókhoz.
+Az Azure AD-alkalmazásnak és az egyszerű szolgáltatásnak ugyanabban a bérlőben kell lennie. Az alkalmazás létrehozása után adja meg az alkalmazás **közreműködői** vagy **tulajdonosi** szerepkörének hozzáférését az Media Services fiókhoz.
 
 Ha nem biztos abban, hogy rendelkezik-e engedéllyel az Azure AD-alkalmazás létrehozásához, tekintse meg a [szükséges engedélyeket](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app).
 
@@ -129,7 +129,7 @@ Egy adott élő esemény vagy bármely hozzá tartozó élő kimenet esetében c
 |[Go SDK](https://aka.ms/ams-v3-go-sdk) |[Go-referencia](https://aka.ms/ams-v3-go-ref)|
 |[Ruby SDK](https://aka.ms/ams-v3-ruby-sdk)||
 
-### <a name="see-also"></a>Lásd még
+### <a name="see-also"></a>További információ
 
 - [A Media Service-eseményeket tartalmazó EventGrid .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/)
 - [Media Services események definíciói](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/eventgrid/data-plane/Microsoft.Media/stable/2018-01-01/MediaServices.json)
@@ -148,7 +148,7 @@ Lásd: [Azure Media Services entitások szűrése, rendezése és lapozása](ent
 
 Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 Az összes szükséges érték beszerzéséhez tekintse meg a következőt: [hozzáférés Azure Media Services API](./access-api-howto.md)-hoz.
 

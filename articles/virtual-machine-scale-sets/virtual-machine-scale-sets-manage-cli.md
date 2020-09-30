@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 05/29/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 02f868417ef9feea1771174e62152708c1257425
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: d954f7cdda4cae65f822489828226e0364d0fc29
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502902"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570532"
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>Virtuálisgép-méretezési csoport kezelése az Azure CLI-vel
 A virtuálisgép-méretezési csoport életciklusa során egy vagy több felügyeleti feladat futtatására lehet szükség. Emellett előfordulhat, hogy különféle szkripteket is érdemes létrehozni az életciklus-feladatok automatizálására. Ez a cikk a leggyakoribb Azure CLI-parancsokat ismerteti, amelyek lehetővé teszik ezen feladatok elvégzését.
@@ -49,6 +49,20 @@ az vmss get-instance-view \
     --instance-id 0
 ```
 
+Egy API-hívásban részletes *instanceView* információkat is megtudhat az összes példányról, ami segíthet elkerülni a nagyméretű TELEPÍTÉSEk API-szabályozását. Adja meg a, a és a saját értékeit `--resource-group` `--subscription` `--name` .
+
+```azurecli
+az vmss list-instances \
+    --expand instanceView \
+    --select instanceView \
+    --resource-group <resourceGroupName> \
+    --subscription <subID> \
+    --name <vmssName>
+```
+
+```rest
+GET "https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<resourceGroupName>/providers/Microsoft.Compute/virtualMachineScaleSets/<VMSSName>/virtualMachines?api-version=2019-03-01&%24expand=instanceView"
+```
 
 ## <a name="list-connection-information-for-vms"></a>Virtuális gépekhez tartozó kapcsolatok adatainak listázása
 Ha egy méretezési csoportba tartozó virtuális gépekhez szeretne csatlakozni, SSH vagy RDP protokollt kell rendelnie egy hozzárendelt nyilvános IP-címhez és portszámhoz. Alapértelmezés szerint a hálózati címfordítási (NAT) szabályok hozzáadódnak az Azure Load Balancerhez, amely minden virtuális géphez továbbítja a távoli kapcsolatok forgalmát. A méretezési csoportokban lévő virtuálisgép-példányokhoz való csatlakozáshoz használandó címek és portok listázásához használja az [az vmss List-instance-kapcsolat-info](/cli/azure/vmss)parancsot. Az alábbi példa felsorolja a virtuálisgép-példányok a *myScaleSet* és a *myResourceGroup* erőforráscsoport nevű méretezési csoportban található virtuálisgép-példányokhoz való csatlakoztatási adatait. Adja meg a saját értékeit a következő nevekhez:
@@ -131,5 +145,5 @@ az vmss delete-instances --resource-group myResourceGroup --name myScaleSet --in
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A méretezési csoportokkal kapcsolatos egyéb gyakori feladatok közé tartozik az [alkalmazások központi telepítése](virtual-machine-scale-sets-deploy-app.md)és a virtuálisgép- [példányok frissítése](virtual-machine-scale-sets-upgrade-scale-set.md). Az Azure CLI-vel is [konfigurálhatja az automatikus skálázási szabályokat](virtual-machine-scale-sets-autoscale-overview.md).

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 08/28/2020
+ms.date: 09/29/2020
 ms.author: alkohli
-ms.openlocfilehash: 59924312fe0483d11d0f70ce83b8f6e4b0e198dc
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e5c8a496c60d3bba81040716c74bca7b5cb6095e
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90890753"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569431"
 ---
 # <a name="use-certificates-with-azure-stack-edge-pro-gpu-device"></a>Tanúsítványok használata Azure Stack Edge Pro GPU-eszközzel
 
@@ -61,7 +61,7 @@ Ezek a tanúsítványok lehetnek főtanúsítványok vagy közbenső tanúsítv�
 - A főtanúsítványoknak regisztrálniuk kell a tanúsítványlánc tanúsítványait.
 - A főtanúsítványok a következő formátumban tölthetők fel az eszközre: 
     - **Der** – ezek fájlkiterjesztésként érhetők el `.cer` .
-    - **Base-64 kódolású vagy PEM** – ezek a `.cer` bővítmények is elérhetők.
+    - **Base-64 kódolású** – ezek `.cer` fájlkiterjesztésként érhetők el.
     - **P7b** – ez a formátum csak olyan aláírási láncú tanúsítványokhoz használható, amelyek tartalmazzák a gyökér és a köztes tanúsítványokat.
 - Az aláíró lánc tanúsítványait a rendszer mindig feltölti az egyéb tanúsítványok feltöltése előtt.
 
@@ -275,11 +275,11 @@ Az eszközhöz létrehozott tanúsítványok alapértelmezés szerint az ügyfé
 
     1. Először töltse fel a főtanúsítványokat. A helyi webes KEZELŐFELÜLETen válassza a **tanúsítványok > + tanúsítvány hozzáadása**lehetőséget.
 
-        ![Aláíró lánc tanúsítványának hozzáadása](media/azure-stack-edge-series-manage-certificates/add-cert-1.png)
+        ![1. aláíró tanúsítványlánc hozzáadása](media/azure-stack-edge-series-manage-certificates/add-cert-1.png)
 
     2. Ezután töltse fel a végponti tanúsítványokat. 
 
-        ![Aláíró lánc tanúsítványának hozzáadása](media/azure-stack-edge-series-manage-certificates/add-cert-2.png)
+        ![2. aláíró tanúsítványlánc hozzáadása](media/azure-stack-edge-series-manage-certificates/add-cert-2.png)
 
         Válassza ki a tanúsítványfájlt *. pfx* formátumban, majd adja meg a tanúsítvány exportálásakor megadott jelszót. Az Azure Resource Manager-tanúsítvány alkalmazása több percet is igénybe vehet.
 
@@ -383,20 +383,20 @@ A. pfx-fájl biztonsági mentése mostantól a kiválasztott helyre lett mentve,
 
 1. A személyes tanúsítványtárolóban válassza ki a főtanúsítványt. Kattintson a jobb gombbal, és válassza **az összes feladat > exportálás..** . lehetőséget.
 
-    ![1. tanúsítvány exportálása](media/azure-stack-edge-series-manage-certificates/export-cert-cer-1.png)
+    ![Exportálja a DER 1 tanúsítványt](media/azure-stack-edge-series-manage-certificates/export-cert-cer-1.png)
 
 2. Megnyílik a tanúsítvány varázsló. Válassza ki a formátumot **der kódolású bináris X. 509 (. cer)** formátumban. Kattintson a **Tovább** gombra.
 
-    ![2. tanúsítvány exportálása](media/azure-stack-edge-series-manage-certificates/export-cert-cer-2.png)
+    ![A DER 2 tanúsítvány exportálása](media/azure-stack-edge-series-manage-certificates/export-cert-cer-2.png)
 
 3. Tallózással keresse meg és válassza ki azt a helyet, ahová exportálni kívánja a. cer formátumú fájlt.
 
-    ![3. tanúsítvány exportálása](media/azure-stack-edge-series-manage-certificates/export-cert-cer-3.png)
+    ![Exportálási tanúsítvány DER 3](media/azure-stack-edge-series-manage-certificates/export-cert-cer-3.png)
 
 
 4. Válassza a **Befejezés** lehetőséget.
 
-    ![4. tanúsítvány exportálása](media/azure-stack-edge-series-manage-certificates/export-cert-cer-4.png)
+    ![Exportálási tanúsítvány DER 4](media/azure-stack-edge-series-manage-certificates/export-cert-cer-4.png)
 
 
 ## <a name="supported-certificate-algorithms"></a>Támogatott tanúsítvány-algoritmusok
@@ -410,11 +410,11 @@ A. pfx-fájl biztonsági mentése mostantól a kiválasztott helyre lett mentve,
 
 Ha saját tanúsítványokat használ, a tanúsítványok általában 1 év vagy 6 hónap múlva lejárnak. A tanúsítvány lejárati dátumának megtekintéséhez nyissa meg a **tanúsítványok** lapot az eszköz helyi webes felületén. Ha kiválaszt egy adott tanúsítványt, megtekintheti a tanúsítvány lejárati dátumát.
 
-## <a name="rotate-certificates"></a>Tanúsítványok váltása
+<!--## Rotate certificates
 
-A tanúsítványok forgása ebben a kiadásban nincs implementálva. A tanúsítványon nem értesíti a függőben lévő lejárati dátumot is. 
+Rotation of certificates is not implemented in this release. You are also not notified of the pending expiration date on your certificate. 
 
-Tekintse meg a tanúsítvány lejárati dátumát a **tanúsítványok** lapon az eszköz helyi webes felületén. Ha a tanúsítvány lejárata közeledik, hozzon létre és töltsön fel új tanúsítványokat a [tanúsítványok létrehozása és feltöltése](azure-stack-edge-j-series-manage-certificates.md)párbeszédpanelen található részletes utasítások szerint.
+View the certificate expiration date on the **Certificates** page in the local web UI of your device. Once the certificate expiration is approaching, create and upload new certificates as per the detailed instructions in [Create and upload certificates](azure-stack-edge-j-series-manage-certificates.md).-->
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: de56ba1281d0f20c8be838fa1bc9ebc24905b26c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e378c1e25fb434e689eadd91e9e8562ffe7e61fd
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85846905"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570094"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>Azure Data Factory folyamatok monitorozása és kezelése a figyelési és felügyeleti alkalmazás használatával
 > [!div class="op_single_selector"]
@@ -124,7 +124,7 @@ A tevékenység ablakára kattintva megtekintheti a részleteket a jobb oldali a
 
 A jobb oldali ablaktáblán váltson a **tevékenység ablak Explorer** lapjára a további részletek megtekintéséhez.
 
-![Activity Window Explorer](./media/data-factory-monitor-manage-app/ActivityWindowExplorer.png)
+![Képernyőkép, amely bemutatja, hogyan lehet hozzáférni a tevékenység ablak Explorer lapjához.](./media/data-factory-monitor-manage-app/ActivityWindowExplorer.png)
 
 A **kísérletek** szakaszban a tevékenységekhez tartozó egyes Futtatási kísérletek **feloldott változói** is láthatók.
 
@@ -159,10 +159,10 @@ A tevékenység-Windows a következő állapotok egyike lehet:
 
 <table>
 <tr>
-    <th align="left">Állapot</th><th align="left">Részállapot</th><th align="left">Description</th>
+    <th align="left">Állapot</th><th align="left">Részállapot</th><th align="left">Leírás</th>
 </tr>
 <tr>
-    <td rowspan="8">Várakozás</td><td>ScheduleTime</td><td>A tevékenység ablak futtatásának ideje.</td>
+    <td rowspan="8">Várakozó</td><td>ScheduleTime</td><td>A tevékenység ablak futtatásának ideje.</td>
 </tr>
 <tr>
 <td>DatasetDependencies</td><td>A felsőbb rétegbeli függőségek nem állnak készen.</td>
@@ -180,7 +180,7 @@ A tevékenység-Windows a következő állapotok egyike lehet:
 <td>Ismét</td><td>A tevékenység végrehajtásának újrapróbálása folyamatban van.</td>
 </tr>
 <tr>
-<td>Ellenőrzés</td><td>Az érvényesítés még nincs elindítva.</td>
+<td>Érvényesítés</td><td>Az érvényesítés még nincs elindítva.</td>
 </tr>
 <tr>
 <td>ValidationRetry</td><td>Az érvényesítés az újrapróbálkozásra vár.</td>
@@ -199,7 +199,7 @@ A tevékenység-Windows a következő állapotok egyike lehet:
 <td>Megszakítva</td><td>A felhasználói művelet megszakította a tevékenység ablakát.</td>
 </tr>
 <tr>
-<td>Ellenőrzés</td><td>Az érvényesítés sikertelen volt.</td>
+<td>Érvényesítés</td><td>Az érvényesítés sikertelen volt.</td>
 </tr>
 <tr>
 <td>-</td><td>Nem sikerült létrehozni vagy érvényesíteni a tevékenység ablakát.</td>
@@ -210,14 +210,14 @@ A tevékenység-Windows a következő állapotok egyike lehet:
 <td>Kimarad</td><td>-</td><td>A tevékenység ablaka nem lett feldolgozva.</td>
 </tr>
 <tr>
-<td>None</td><td>-</td><td>Eltérő állapotú, de alaphelyzetbe állított tevékenységi időszak.</td>
+<td>Nincs</td><td>-</td><td>Eltérő állapotú, de alaphelyzetbe állított tevékenységi időszak.</td>
 </tr>
 </table>
 
 
 Ha a lista egy tevékenység ablakára kattint, a **tevékenység a Windows Intézőben** vagy a jobb oldalon található **Tulajdonságok** ablakban tekintheti meg.
 
-![Activity Window Explorer](./media/data-factory-monitor-manage-app/ActivityWindowExplorer-2.png)
+![Képernyőkép, amely bemutatja, hogyan lehet megtekinteni a tevékenység ablakának részleteit.](./media/data-factory-monitor-manage-app/ActivityWindowExplorer-2.png)
 
 ### <a name="refresh-activity-windows"></a>Frissítési tevékenység ablakai
 A részletek nem frissülnek automatikusan, ezért a parancssorban használja a frissítés gombot (a második gomb) a tevékenység Windows-listájának manuális frissítéséhez.  
@@ -238,7 +238,7 @@ A **tevékenység ablak Intéző** ablak a figyelési és felügyeleti alkalmaz�
 
 Az alsó ablaktáblán található eszköztárgombok használatával újra futtathatja a tevékenység ablakát, vagy frissítheti a részleteket a panelen.
 
-### <a name="script"></a>Parancsfájl
+### <a name="script"></a>Script
 A **parancsfájl** lapon megtekintheti a kijelölt Data Factory entitás (társított szolgáltatás, adatkészlet vagy folyamat) JSON-definícióját.
 
 ![Parancsfájl lap](./media/data-factory-monitor-manage-app/ScriptTab.png)

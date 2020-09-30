@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: 6b09c51c68586f6e55b4238b7420460f3f2b4ac3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 98210f26072504c129ba32f765cf6bab74fef604
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330564"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570717"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Azure Cosmos-fiók kezelése
 
@@ -31,7 +31,7 @@ Lásd: [Azure Cosmos db fiók létrehozása az Azure CLI-vel](manage-with-cli.md
 
 Tekintse meg [Azure Cosmos db fiók létrehozása a PowerShell használatával](manage-with-powershell.md#create-account) című témakört.
 
-### <a name="azure-resource-manager-template"></a><a id="create-database-account-via-arm-template"></a>Azure Resource Manager-sablon
+### <a name="azure-resource-manager-template"></a><a id="create-database-account-via-arm-template"></a>Azure Resource Manager sablon
 
 Tekintse meg [Azure Cosmos db fiók létrehozása Azure Resource Manager-sablonokkal](manage-sql-with-resource-manager.md) című témakört.
 
@@ -69,7 +69,7 @@ További információ: [régiók hozzáadása vagy eltávolítása a PowerShell]
 
 Nyissa meg az **adatreplikálás globálisan** lapot, és válassza az **Engedélyezés** lehetőséget a többrégiós írások engedélyezéséhez. Miután engedélyezte a többrégiós írást, az összes olyan olvasási régió, amelyre jelenleg a fiók tartozik, olvasási és írási régiók lesznek.
 
-:::image type="content" source="./media/how-to-manage-database-account/single-to-multi-master.png" alt-text="Az Azure Cosmos-fiók több főkiszolgálós képernyőképet konfigurál":::
+:::image type="content" source="./media/how-to-manage-database-account/single-to-multi-master.png" alt-text="Régiók hozzáadása vagy eltávolítása menü":::
 
 ### <a name="azure-cli"></a><a id="configure-multiple-write-regions-cli"></a>Azure CLI
 
@@ -77,11 +77,11 @@ Lásd: [több írási régió engedélyezése az Azure CLI-vel](manage-with-cli.
 
 ### <a name="azure-powershell"></a><a id="configure-multiple-write-regions-ps"></a>Azure PowerShell
 
-Lásd: [több írási régió engedélyezése a PowerShell](manage-with-powershell.md#multi-master) -lel
+Lásd: [több írási régió engedélyezése a PowerShell](manage-with-powershell.md#multi-region-writes) -lel
 
 ### <a name="resource-manager-template"></a><a id="configure-multiple-write-regions-arm"></a>Resource Manager-sablon
 
-A fiók a fiók és a beállítás létrehozásához használt Resource Manager-sablon üzembe helyezésével telepíthető át egyetlen főkiszolgálóról a több főkiszolgálóra `enableMultipleWriteLocations: true` . A következő Azure Resource Manager sablon egy egyszerű sablon, amely az SQL API-hoz két régióval és több írási hellyel rendelkező Azure Cosmos-fiókot helyez üzembe.
+Egy fiók a fiók és a beállítás létrehozásához használt Resource Manager-sablon üzembe helyezésével egyetlen írási régióból több írási régióba is telepíthető `enableMultipleWriteLocations: true` . A következő Azure Resource Manager sablon egy egyszerű sablon, amely az SQL API-hoz két régióval és több írási hellyel rendelkező Azure Cosmos-fiókot helyez üzembe.
 
 ```json
 {
@@ -149,13 +149,13 @@ Az automatikus feladatátvételi beállítás lehetővé teszi, hogy az Azure Co
 
 2. A panel tetején válassza az **automatikus feladatátvétel**lehetőséget.
 
-   :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="Adatok globális replikálása menü":::
+   :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="Régiók hozzáadása vagy eltávolítása menü":::
 
 3. Az **automatikus feladatátvétel** ablaktáblán **Győződjön meg arról**, hogy az **automatikus feladatátvétel engedélyezése** beállítás be értékre van állítva. 
 
-4. Kattintson a **Mentés** gombra.
+4. Válassza a **Mentés** lehetőséget.
 
-   :::image type="content" source="./media/how-to-manage-database-account/automatic-failover.png" alt-text="Automatikus feladatátvétel menü a portálon":::
+   :::image type="content" source="./media/how-to-manage-database-account/automatic-failover.png" alt-text="Régiók hozzáadása vagy eltávolítása menü":::
 
 ### <a name="azure-cli"></a><a id="enable-automatic-failover-via-cli"></a>Azure CLI
 
@@ -178,15 +178,15 @@ Ha egy Cosmos-fiók automatikus feladatátvételre van konfigurálva, a régiók
 
 2. A panel tetején válassza az **automatikus feladatátvétel**lehetőséget.
 
-   :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="Adatok globális replikálása menü":::
+   :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="Régiók hozzáadása vagy eltávolítása menü":::
 
 3. Az **automatikus feladatátvétel** ablaktáblán **Győződjön meg arról**, hogy az **automatikus feladatátvétel engedélyezése** beállítás be értékre van állítva.
 
 4. A feladatátvételi prioritás módosításához húzza az olvasási régiókat a sor bal oldalán lévő három pontra, amikor az egérmutatót a fölé viszi.
 
-5. Kattintson a **Mentés** gombra.
+5. Válassza a **Mentés** lehetőséget.
 
-   :::image type="content" source="./media/how-to-manage-database-account/automatic-failover.png" alt-text="Automatikus feladatátvétel menü a portálon":::
+   :::image type="content" source="./media/how-to-manage-database-account/automatic-failover.png" alt-text="Régiók hozzáadása vagy eltávolítása menü":::
 
 ### <a name="azure-cli"></a><a id="set-failover-priorities-via-cli"></a>Azure CLI
 
@@ -204,7 +204,7 @@ Lásd: [a feladatátvételi prioritás beállítása a PowerShell](manage-with-p
 A manuális feladatátvétel végrehajtásának folyamata magában foglalja a fiók írási régiójának (feladatátvételi prioritás = 0) a fiókhoz konfigurált másik régióba való módosítását.
 
 > [!NOTE]
-> A több főkiszolgálós fiókok feladatátvétele nem végezhető el manuálisan. Az Azure Cosmos SDK-t használó alkalmazások esetében az SDK felismeri, ha egy régió elérhetetlenné válik, majd automatikusan átirányítja a következő legközelebbi régióba, ha az SDK-ban több-vezérlési API-t használ.
+> A több írási régióval rendelkező fiókok feladatátvétele nem végezhető el manuálisan. Az Azure Cosmos SDK-t használó alkalmazások esetében az SDK felismeri, ha egy régió elérhetetlenné válik, majd automatikusan átirányítja a következő legközelebbi régióba, ha az SDK-ban több-vezérlési API-t használ.
 
 ### <a name="azure-portal"></a><a id="enable-manual-failover-via-portal"></a>Azure Portal
 
@@ -212,13 +212,13 @@ A manuális feladatátvétel végrehajtásának folyamata magában foglalja a fi
 
 2. A menü tetején válassza a **manuális feladatátvétel**lehetőséget.
 
-   :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="Adatok globális replikálása menü":::
+   :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="Régiók hozzáadása vagy eltávolítása menü":::
 
 3. A **manuális feladatátvétel** menüben válassza ki az új írási régiót. Jelölje be a jelölőnégyzetet, és jelezze, hogy ezt a lehetőséget az írási régió módosításakor adja meg.
 
 4. A feladatátvétel elindításához kattintson **az OK gombra**.
 
-   :::image type="content" source="./media/how-to-manage-database-account/manual-failover.png" alt-text="Manuális feladatátvétel menü a portálon":::
+   :::image type="content" source="./media/how-to-manage-database-account/manual-failover.png" alt-text="Régiók hozzáadása vagy eltávolítása menü":::
 
 ### <a name="azure-cli"></a><a id="enable-manual-failover-via-cli"></a>Azure CLI
 

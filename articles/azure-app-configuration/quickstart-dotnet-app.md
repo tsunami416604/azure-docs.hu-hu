@@ -7,14 +7,14 @@ author: lisaguthrie
 ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 09/28/2020
 ms.author: lcozzens
-ms.openlocfilehash: 6795d10950ddd7b03dfa505ab44d2f43837c9045
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 4edf48b73ee4d50679cbec377ed47749d2c94776
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590268"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569605"
 ---
 # <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>Gyors útmutató: .NET-keretrendszerbeli alkalmazás létrehozása az Azure app Configuration használatával
 
@@ -22,7 +22,7 @@ Ebben a rövid útmutatóban az Azure-alkalmazások konfigurációját egy .NET-
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
+- Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/dotnet)
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
 - [.NET-keretrendszer 4.7.2](https://dotnet.microsoft.com/download)
 
@@ -38,7 +38,7 @@ Ebben a rövid útmutatóban az Azure-alkalmazások konfigurációját egy .NET-
 
     Most hagyja üresen a **címke** és a **tartalom típusát** .
 
-7. Válassza az **Alkalmaz** lehetőséget.
+7. Kattintson az **Alkalmaz** gombra.
 
 ## <a name="create-a-net-console-app"></a>.NET-konzol alkalmazás létrehozása
 
@@ -88,29 +88,21 @@ Ebben a rövid útmutatóban az Azure-alkalmazások konfigurációját egy .NET-
         string message = System.Configuration.ConfigurationManager.AppSettings["TestApp:Settings:Message"];
 
         Console.WriteLine(message);
+        Console.ReadKey();
     }
     ```
 
 ## <a name="build-and-run-the-app-locally"></a>Az alkalmazás helyi létrehozása és futtatása
 
-1. Állítson be egy **ConnectionString** nevű környezeti változót az alkalmazás konfigurációs tárolójának kapcsolati karakterláncára. Ha Windows-parancssort használ, futtassa a következő parancsot:
+1. Frissítse a **App.config** fájlt úgy, hogy lecseréli a `${ConnectionString}` tényleges kapcsolódási karakterláncot az alkalmazás konfigurációs példányára. Az alkalmazás konfigurációs erőforrásának **hozzáférési kulcsok** lapján található az Azure Portalon.
 
-    ```cmd
-        setx ConnectionString "connection-string-of-your-app-configuration-store"
-    ```
-
-    Ha a Windows PowerShellt használja, futtassa a következő parancsot:
-
-    ```azurepowershell
-        $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
-    ```
-1. Indítsa újra a Visual studiót, hogy a módosítás érvénybe lépjen. A konzol alkalmazás létrehozásához és futtatásához nyomja le a CTRL + F5 billentyűkombinációt.
+1. A konzol alkalmazás létrehozásához és futtatásához nyomja le a CTRL + F5 billentyűkombinációt.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy új alkalmazás-konfigurációs tárolót, és felhasználta azt egy .NET Framework Console alkalmazással. Az `AppSettings` `ConfigurationManager` alkalmazás elindítása után nem változik az érték. Az App Configuration .NET Standard konfigurációs szolgáltatói könyvtára azonban .NET-keretrendszerbeli alkalmazásokban is használható. Ha szeretné megtudni, hogyan engedélyezheti a .NET-keretrendszer alkalmazását a konfigurációs beállítások dinamikus frissítéséhez, folytassa a következő oktatóanyaggal.
 

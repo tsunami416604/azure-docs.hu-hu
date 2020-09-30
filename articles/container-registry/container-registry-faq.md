@@ -3,14 +3,14 @@ title: Gyakori kérdések
 description: A Azure Container Registry szolgáltatással kapcsolatos gyakori kérdésekre adott válaszok
 author: sajayantony
 ms.topic: article
-ms.date: 03/18/2020
+ms.date: 09/18/2020
 ms.author: sajaya
-ms.openlocfilehash: 02facedda206a5621cabe62a07520303635dc3ff
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 499ef509fc9f8d9365d8db3f7058d12352db9bb2
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245366"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570518"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Gyakori kérdések a Azure Container Registry
 
@@ -19,7 +19,7 @@ Ez a cikk a Azure Container Registryával kapcsolatos gyakori kérdésekre és i
 A beállításjegyzék hibaelhárítási útmutatóját lásd:
 * [Beállításjegyzékbeli bejelentkezés – problémamegoldás](container-registry-troubleshoot-login.md)
 * [A beállításjegyzék hálózati problémáinak elhárítása](container-registry-troubleshoot-access.md)
-* [Beállításjegyzékbeli teljesítmény – problémamegoldás](container-registry-troubleshoot-performance.md)
+* [Regisztrációs adatbázis teljesítményproblémáinak elhárítása](container-registry-troubleshoot-performance.md)
 
 ## <a name="resource-management"></a>Erőforrás-kezelés
 
@@ -261,8 +261,8 @@ A kép karanténba helyezése jelenleg az ACR előzetes verziójú funkciója. E
 
 Az Azure Container Registry for Anonymous (nyilvános) lekéréses hozzáférés beállítása jelenleg előzetes verziójú szolgáltatás. Ha a beállításjegyzékben bármely [hatókör-hozzárendelési (felhasználó) vagy token-erőforrás](https://aka.ms/acr/repo-permissions) szerepel, törölje őket a támogatási jegy előléptetése előtt (a rendszer-hatóköri térképek figyelmen kívül hagyhatók). A nyilvános hozzáférés engedélyezéséhez nyisson meg egy támogatási jegyet a következő címen: https://aka.ms/acr/support/create-ticket . Részletekért tekintse meg az [Azure visszajelzési fórumát](https://feedback.azure.com/forums/903958-azure-container-registry/suggestions/32517127-enable-anonymous-access-to-registries).
 
-
-
+> [!NOTE]
+> Névtelenül csak az ismert rendszerképek lekéréséhez szükséges API-k érhetők el. Nem érhetők el más API-k olyan műveletekhez, mint a címkék vagy a Tárházak listája.
 
 ## <a name="diagnostics-and-health-checks"></a>Diagnosztika és állapot-ellenőrzések
 
@@ -443,7 +443,7 @@ Forduljon a hálózati rendszergazdához, vagy ellenőrizze a hálózati konfigu
 ### <a name="why-does-my-pull-or-push-request-fail-with-disallowed-operation"></a>Miért sikertelen a lekéréses vagy leküldéses kérelem a nem engedélyezett művelettel?
 
 Íme néhány forgatókönyv, ahol a műveletek nem lehetnek engedélyezve:
-* A klasszikus kibocsátásiegység-forgalmi jegyzékek már nem támogatottak. Frissítsen egy támogatott [szolgáltatási szintre](https://aka.ms/acr/skus) az [az ACR update](/cli/azure/acr?view=azure-cli-latest#az-acr-update) vagy a Azure Portal használatával.
+* A klasszikus kibocsátásiegység-forgalmi jegyzékek már nem támogatottak. Frissítsen egy támogatott [szolgáltatási szintre](https://aka.ms/acr/skus) az [az ACR update](/cli/azure/acr#az-acr-update) vagy a Azure Portal használatával.
 * Előfordulhat, hogy a rendszerkép vagy a tárház zárolva van, ezért nem törölhető vagy nem frissíthető. A jelenlegi attribútumok megtekintéséhez használja az az [ACR show adattár](./container-registry-image-lock.md) parancsot.
 * Néhány művelet nem engedélyezett, ha a rendszerkép karanténban van. További információ a [karanténba helyezésről](https://github.com/Azure/acr/tree/master/docs/preview/quarantine).
 * Lehetséges, hogy a beállításjegyzék elérte a [tárolási korlátot](container-registry-skus.md#service-tier-features-and-limits).
@@ -522,8 +522,8 @@ Jelenleg nem támogatjuk a GitLab a forrás-eseményindítók esetében.
 ## <a name="cicd-integration"></a>CI/CD-integráció
 
 - [CircleCI](https://github.com/Azure/acr/blob/master/docs/integration/CircleCI.md)
-- [GitHub-műveletek](https://github.com/Azure/acr/blob/master/docs/integration/github-actions/github-actions.md)
+- [GitHub Actions](https://github.com/Azure/acr/blob/master/docs/integration/github-actions/github-actions.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [További](container-registry-intro.md) információ a Azure Container Registryról.
