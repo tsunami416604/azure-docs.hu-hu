@@ -11,12 +11,12 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.custom: how-to
-ms.openlocfilehash: feb79a2a077f819cce22925f23f5ed640d05e8d3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5ddfa2adbc9ec39949d7352903445407ff8e8881
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91296671"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542155"
 ---
 # <a name="connect-to-data-with-the-azure-machine-learning-studio"></a>Kapcsolódás adatkapcsolathoz a Azure Machine Learning Studióval
 
@@ -24,7 +24,7 @@ Ebből a cikkből megtudhatja, hogyan férhet hozzá az adataihoz a [Azure Machi
 
 Az alábbi táblázat az adattárolók és adatkészletek előnyeit határozza meg és összegzi. 
 
-|Objektum|Description| Előnyök|   
+|Objektum|Leírás| Előnyök|   
 |---|---|---|
 |Adattárak| Biztonságos kapcsolódás a Storage szolgáltatáshoz az Azure-ban a kapcsolati adatok tárolásával, például az előfizetés-AZONOSÍTÓval és a jogkivonat-hitelesítéssel a munkaterülethez társított [Key Vaultban](https://azure.microsoft.com/services/key-vault/) | Mivel az adatok tárolása biztonságos, <br><br> <li> Ne &nbsp; helyezzen el a hitelesítő &nbsp; &nbsp; adatokat &nbsp; vagy &nbsp; &nbsp; az eredeti adatforrásokat veszélyben. <li> Már nem kell a parancsfájlokba felvennie a kódot.
 |Adathalmazok| Az adathalmazok létrehozásával az adatforrások helyére mutató hivatkozásokat és a metaadatok másolatait is létrehozza. Az adatkészletek segítségével <br><br><li> Az adathozzáférés a modell betanítása során.<li> Az adatmegosztás és együttműködés más felhasználókkal.<li> Kihasználhatja a nyílt forráskódú kódtárakat, például a pandat az adatfeltáráshoz. | Mivel az adathalmazok kiértékelése a lustán történik, és az adatokat a meglévő helyükön maradják, <br><br><li>Tároljon egyetlen másolatot az adattárolóban.<li> További tárolási költségek nem merülnek fel <li> Ne kockáztatja véletlenül az eredeti adatforrások módosítását.<li>Javítsa a ML-munkafolyamatok teljesítményének sebességét. 
@@ -112,7 +112,7 @@ Azure Machine Learning adatkészlet adatprofilja az alábbiakat tartalmazza:
 >[!NOTE]
 > A lényegtelen típusokkal rendelkező funkciók esetében üres bejegyzések jelennek meg.
 
-|Statisztikai adatok|Description
+|Statisztikai adatok|Leírás
 |------|------
 |Funkció| Az összesíteni kívánt oszlop neve.
 |Profil| Beágyazott vizualizáció a következtetett típus alapján. Például a karakterláncok, a logikai értékek és a dátumok értékének számít, míg a tizedesjegyek (numerikus értékek) közelítő hisztogramtal rendelkeznek. Ez lehetővé teszi az adateloszlás gyors megismerését.
@@ -166,10 +166,10 @@ Az Azure Blob Container és Azure Data Lake 2. generációs tárolók esetében 
 
 Az adatkészleteket a gépi tanulási kísérletekben használhatja a ML-modellek betanításához. [További információ az adatkészletek betanításáról](how-to-train-with-datasets.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Lépésenkénti példa a TabularDatasets és az automatizált gépi tanulással való képzésre](tutorial-first-experiment-automated-ml.md).
 
-* [Modell betanítása](how-to-train-ml-models.md).
+* [Modell betanítása](how-to-set-up-training-targets.md).
 
 * További példákat az adatkészlet betanításával kapcsolatban a [minta notebookok](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/work-with-data/)című témakörben talál.

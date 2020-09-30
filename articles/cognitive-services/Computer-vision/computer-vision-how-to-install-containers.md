@@ -1,7 +1,7 @@
 ---
-title: Docker-tárolók telepítése és futtatása a Computer Vision Read API-hoz
+title: Telepítse az OCR Docker-tárolók beolvasása Computer Vision
 titleSuffix: Azure Cognitive Services
-description: A Computer Vision Read API Docker-tárolójának használatával azonosíthatja és kinyerheti a képekből származó szövegeket a helyszínen.
+description: Használja az OCR Docker-tárolók beolvasása a Computer Visionból a szöveg kinyeréséhez a képekből és a douments a helyszínen.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,22 +11,23 @@ ms.topic: conceptual
 ms.date: 09/28/2020
 ms.author: aahi
 ms.custom: seodec18, cog-serv-seo-aug-2020
-keywords: helyszíni, Docker, tároló
-ms.openlocfilehash: 17aa0050ed3e2a2f5a2cc83964d032caa4b8c098
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+keywords: helyszíni, OCR, Docker, tároló
+ms.openlocfilehash: acf6a391965dcba20a2dabc18648076b88c5e7c5
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/29/2020
-ms.locfileid: "91460441"
+ms.locfileid: "91536375"
 ---
-# <a name="install-and-run-docker-containers-for-the-read-api-preview"></a>Docker-tárolók telepítése és futtatása az olvasási API-hoz (előzetes verzió) 
+# <a name="install-read-ocr-docker-containers-preview"></a>Az OCR Docker-tárolók beolvasása (előzetes verzió) 
 
 [!INCLUDE [container hosting on the Microsoft Container Registry](../containers/includes/gated-container-hosting.md)]
 
-A tárolók lehetővé teszik a Computer Vision API-k a saját környezetében való futtatását. A tárolók kiválóan alkalmasak adott biztonsági és adatszabályozási követelményekhez. Ez a cikk azt mutatja be, hogyan tölthet le, telepíthet és futtathat egy Computer Vision-tárolót.
+A tárolók lehetővé teszik a Computer Vision API-k a saját környezetében való futtatását. A tárolók kiválóan alkalmasak adott biztonsági és adatszabályozási követelményekhez. Ebből a cikkből megtudhatja, hogyan töltheti le, telepítheti és futtathatja Computer Vision tárolókat.
 
-Az *olvasási* tároló lehetővé teszi a *nyomtatott szövegek* észlelését és kinyerését különböző felületek és hátterek, például nyugták, plakátok és névjegykártyák képeiből. Az *olvasási* tároló emellett a *kézzel írt szövegeket* is észleli a képekben, és PDF-, TIFF-és többoldalas fájlok támogatását teszi lehetővé. További információ az API-k [olvasása dokumentációban](concept-recognizing-text.md#read-api)található.
+Az *olvasási* OCR-tároló lehetővé teszi a nyomtatott és a kézírásos szöveg kinyerését képekből és dokumentumokból JPEG-, PNG-, BMP-, PDF-és TIFF-fájlformátumok támogatásával. További információ az API-k [olvasása dokumentációban](concept-recognizing-text.md#read-api)található.
 
+## <a name="read-3x-containers"></a>3. x tároló olvasása
 A 3. x tároló két verziója érhető el előzetes verzióban. Mindkét verzió további pontosságot és funkciókat biztosít az előző tárolóban.
 
 A Read 3,0 – Preview tároló a következőket biztosítja:

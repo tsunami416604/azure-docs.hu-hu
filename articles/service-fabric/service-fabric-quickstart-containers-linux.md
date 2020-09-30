@@ -3,14 +3,13 @@ title: Linuxos Container-alkalmazás létrehozása Service Fabric az Azure-ban
 description: Ebben a rövid útmutatóban egy Docker-rendszerképet készít az alkalmazásával, amelyet leküld egy tárolóregisztrációs adatbázisba, majd üzembe helyezi a tárolót egy Service Fabric-fürtön.
 ms.topic: quickstart
 ms.date: 07/22/2019
-ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 652c5b7c2df4e1f8bd379390451886914628505d
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 27a21a685d8dc4aa92585ce49b21d1986a54209f
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88854983"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541509"
 ---
 # <a name="quickstart-deploy-linux-containers-to-service-fabric"></a>Rövid útmutató: Linux-tárolók üzembe helyezése a Service Fabricben
 
@@ -178,7 +177,7 @@ ResourceGroupName="containertestcluster"
 az group delete --name $ResourceGroupName
 ```
 
-Ha végzett a fürt használatával, eltávolíthatja a tanúsítványt a tanúsítványtárolóból. Például:
+Ha végzett a fürt használatával, eltávolíthatja a tanúsítványt a tanúsítványtárolóból. Példa:
 - Windows rendszeren: Használja a [Tanúsítványok MMC beépülő modult](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in). Ügyeljen arra, hogy a **Saját felhasználói fiókot** válassza a beépülő modul hozzáadásakor. Lépjen a `Certificates - Current User\Personal\Certificates` helyre, és távolítsa el a tanúsítványt.
 - Mac rendszeren: Használja a Keychain alkalmazást.
 - Ubuntu rendszeren: Kövesse a tanúsítványok megtekintéséhez használt lépéseket, majd távolítsa el a tanúsítványt.

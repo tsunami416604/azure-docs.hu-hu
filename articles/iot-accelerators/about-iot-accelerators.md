@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-accelerators
 services: iot-accelerators
 manager: timlt
-ms.openlocfilehash: 1a27d748e16f892a748cf18569c13ca3f9ead1dd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a8314fed43c8282c536fc6e95e6c3aa877408b09
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "71309517"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542495"
 ---
 # <a name="what-are-azure-iot-solution-accelerators"></a>Mik az Azure IoT-megoldásgyorsítók?
 
@@ -46,7 +46,7 @@ A [Connected Factory megoldás-gyorsító](iot-accelerators-connected-factory-fe
 
 A csatlakoztatott gyár irányítópultjának használatával a következő ipari eszközöket monitorozhatja és kezelheti:
 
-[![Csatlakoztatott gyári megoldás irányítópultja](./media/about-iot-accelerators/cf-dashboard-inline.png)](./media/about-iot-accelerators/cf-dashboard-expanded.png#lightbox)
+:::image type="content" source="./media/about-iot-accelerators/cf-dashboard-inline.png" alt-text="A csatlakoztatott gyári megoldás irányítópultját bemutató képernyőkép." lightbox="./media/about-iot-accelerators/cf-dashboard-expanded.png":::
 
 ### <a name="predictive-maintenance"></a>Prediktív karbantartás
 
@@ -54,7 +54,7 @@ A [prediktív karbantartási megoldás gyorsítása](iot-accelerators-predictive
 
 A prediktív karbantartási irányítópult a következő prediktív karbantartási elemzések megtekintésére használható:
 
-[![Csatlakoztatott gyári megoldás irányítópultja](./media/about-iot-accelerators/pm-dashboard-inline.png)](./media/about-iot-accelerators/pm-dashboard-expanded.png#lightbox)
+:::image type="content" source="./media/about-iot-accelerators/pm-dashboard-inline.png" alt-text="A csatlakoztatott gyári megoldás irányítópultját bemutató képernyőkép." lightbox="./media/about-iot-accelerators/pm-dashboard-expanded.png":::
 
 ### <a name="device-simulation"></a>Eszközszimuláció
 
@@ -87,7 +87,7 @@ Az eredeti megoldásgyorsítók a .NET és model-view-controller (MVC) architekt
 
 A Services architektúrával kapcsolatos további információkért lásd: [Bevezetés az Azure IoT Reference Architecture](https://docs.microsoft.com/azure/architecture/reference-architectures/iot/).
 
-## <a name="deployment-options"></a>Üzembe helyezési beállítások
+## <a name="deployment-options"></a>Üzembe helyezési lehetőségek
 
 A megoldásgyorsítókat a [Microsoft Azure IoT-megoldásgyorsítók](https://www.azureiotsolutions.com/Accelerators#) webhelyéről vagy a parancssorból helyezheti üzembe.
 

@@ -2,13 +2,13 @@
 title: Útmutató a Windows leállítási viselkedésének szabályozásához a Azure Lab Servicesban | Microsoft Docs
 description: A tétlen Windowsos virtuális gépek automatikus leállításának és a Windows leállítás parancs eltávolításának lépései.
 ms.topic: article
-ms.date: 06/26/2020
-ms.openlocfilehash: 3c20bc2bb79faf53c4f3fbd113c18c5c6d923e59
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/29/2020
+ms.openlocfilehash: c6021131787dde4fe23ec4caad107bda2e20158a
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91334021"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541560"
 ---
 # <a name="guide-to-controlling-windows-shutdown-behavior"></a>Útmutató a Windows leállítási viselkedésének szabályozásához
 
@@ -31,50 +31,6 @@ Ennek az útmutatónak a segítségével megakadályozhatja, hogy ezek a helyzet
 
 > [!NOTE]
 > Előfordulhat, hogy a virtuális gép váratlanul levonja a kvótát, ha a tanuló elindítja a virtuális gépet, de soha nem kapcsolódik az RDP használatával.  Ez az útmutató jelenleg *nem* foglalkozik ezzel a forgatókönyvvel.  Ehelyett a diákoknak emlékeztetni kell a virtuális géphez való azonnali kapcsolódásra RDP használatával az indítás után. vagy le kell állítania a virtuális gépet.
-
-## <a name="automatic-rdp-disconnect-and-shutdown-for-idle-vm"></a>Automatikus RDP-kapcsolat bontása és leállítása üresjárati virtuális gépen
-
-A Windows **helyi csoportházirend** beállításokat biztosít, amelyekkel időkorlátot állíthat be, amely automatikusan leválaszthatja az RDP-munkamenetet, amikor az üresjáratba kerül.  A munkamenet úgy van meghatározva, hogy üresjáratban *legyen, ha* nincs mouse\keyboard-bemenet.  A mouse\keyboard-bevitelt nem érintő hosszú ideig futó tevékenységek esetén a virtuális gép tétlen állapotban van.  Ez magában foglalja a hosszú lekérdezések végrehajtását, a videó lejátszását, fordítását stb.  Az osztály igényeitől függően dönthet úgy, hogy az üresjárati időkorlátot úgy állítja be, hogy elég hosszú legyen az ilyen típusú tevékenységek kezelésére.  Ha szükséges, beállíthatja például, hogy az Üresjárati időkorlát 1 vagy több óráig legyen.
-
-Itt látható a tanulói élmény, ha az **üresjárati munkamenet korlátját** a [**leválasztási beállítás automatikus leállításával**](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-enable-shutdown-disconnect) együtt konfigurálja:
- 1. A diák RDP használatával csatlakozik a Windows rendszerű virtuális géphez.
- 2. Ha a tanuló megnyitja az RDP-ablakát, és a virtuális gép üresjáratban van a megadott **tétlen munkamenet-korlátnál** (például 5 perc), a tanuló a következő párbeszédpanelt fogja látni:
-
-    ![Üresjárati időkorlát lejárt párbeszédpanele](./media/how-to-windows-shutdown/idle-time-expired.png)
-
-1. Ha a tanuló nem *kattint* az **OK**gombra, akkor az RDP-munkamenetük 2 perc elteltével automatikusan leszakad.
-2. Az RDP-munkamenet leválasztása után a rendszer automatikusan leállítja a virtuális gépet a **kapcsolat bontása** beállításnál megadott időkereten belül Azure Lab Services.
-
-### <a name="set-rdp-idle-session-time-limit-on-the-template-vm"></a>Az RDP üresjárati munkamenet időkorlátjának beállítása a sablon virtuális gépe számára
-
-Az RDP-munkamenet üresjárati időkorlátjának beállításához csatlakozhat a sablon virtuális géphez, és végrehajthatja az alábbi PowerShell-szkriptet.
-
-```powershell
-# The MaxIdleTime is in milliseconds; by default, this script sets MaxIdleTime to 15 minutes.
-$maxIdleTime = 15 * 60 * 1000
-
-Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" -Name "MaxIdleTime" -Value $maxIdleTime -Force
-```
-A következő manuális lépéseket is végrehajthatja a sablon virtuális gép használatával:
-
-1. Nyomja le a Windows billentyűt, írja be a következőt: **gpedit**, majd válassza a **csoportházirend szerkesztése (Vezérlőpult)** lehetőséget.
-
-1. Nyissa meg a **Számítógép konfigurációja > Felügyeleti sablonok > Windows-összetevők > távoli asztali szolgáltatások > távoli asztal munkamenet-állomás > munkamenetek időbeli korlátait**.  
-
-    ![Képernyőfelvétel: a "helyi csoportházirend-szerkesztő" a "munkamenet időkorlátai" beállítással látható.](./media/how-to-windows-shutdown/group-policy-idle.png)
-   
-1. Kattintson a jobb gombbal **az aktív, de üresjáratban lévő távoli asztali szolgáltatások munkamenetek időkorlátjának beállítása**elemre, majd kattintson a **Szerkesztés**elemre.
-
-1. Adja meg a következő beállításokat, majd kattintson **az OK**gombra:
-   1. Válassza az **Engedélyezve** lehetőséget.
-   1. A **Beállítások**területen határozza meg az **üresjárati munkamenet korlátját**.
-
-    ![Üresjárati munkamenet korlátja](./media/how-to-windows-shutdown/edit-idle-time-limit.png)
-
-1. Végül, ha ezt a viselkedést a **kapcsolat bontása beállítás automatikus leállításával** szeretné kombinálni, kövesse a útmutató cikk lépéseit: a [virtuális gépek automatikus leállításának engedélyezése a kapcsolat bontásakor](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-enable-shutdown-disconnect).
-
-> [!WARNING]
-> Ha ezt a beállítást a PowerShell használatával vagy a Csoportházirend-szerkesztővel közvetlenül vagy manuálisan módosítja a beállításjegyzék beállításával, akkor a beállítások érvénybe léptetéséhez először újra kell indítania a virtuális gépet.  Emellett, ha a beállításjegyzék használatával konfigurálja a beállítást, akkor a Csoportházirend-szerkesztő nem mindig frissül, hogy tükrözze a beállításjegyzék-beállítás módosításait; a beállításjegyzék-beállítás azonban továbbra is az elvárt módon lép érvénybe, és az RDP-munkamenet leválasztva állapotba kerül, amikor a megadott időtartamra üresjáratban van.
 
 ## <a name="remove-windows-shutdown-command-from-start-menu"></a>A Windows leállítás parancs eltávolítása a Start menüből
 
@@ -104,5 +60,5 @@ A következő manuális lépéseket is végrehajthatja a sablon virtuális gép 
 
     ![Leállítás parancs](./media/how-to-windows-shutdown/start-menu.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Tekintse meg a Windows-sablonos virtuális gép előkészítéséről szóló cikket: [útmutató a Windows-sablonok számítógépének beállításához Azure Lab Services](how-to-prepare-windows-template.md)

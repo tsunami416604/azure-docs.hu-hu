@@ -3,20 +3,18 @@ title: Előre elkészített modellek – LUIS
 titleSuffix: Azure Cognitive Services
 description: Az előre elkészített modellek tartományok, leképezések, hosszúságú kimondott szöveg és entitások biztosítására szolgálnak. Elindíthatja az alkalmazást egy előre elkészített tartománnyal, vagy hozzáadhat egy kapcsolódó tartományt az alkalmazáshoz később.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/10/2019
-ms.author: diberry
-ms.openlocfilehash: e0b5b95a7524b60a7c3367035a15a7158fa7908a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 32755ea9dccd2a7d4a0e727c7a006491d5ea3521
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74280835"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91535883"
 ---
 # <a name="prebuilt-models"></a>Előre összeállított modellek
 
@@ -28,7 +26,7 @@ A LUIS három típusú előre elkészített modellt biztosít. Minden modell bá
 
 |Modell típusa|Beágyazások|
 |--|--|
-|[Tartományi](luis-reference-prebuilt-domains.md)|Szándékok, hosszúságú kimondott szöveg, entitások|
+|[Tartomány](luis-reference-prebuilt-domains.md)|Szándékok, hosszúságú kimondott szöveg, entitások|
 |Leképezések|Szándékok, hosszúságú kimondott szöveg|
 |[Entitások](luis-reference-prebuilt-entities.md)|Csak entitások| 
 
@@ -40,7 +38,7 @@ Az előre elkészített tartományokat betanítják, és készen állnak a LUIS-
 
 > [!TIP]
 > Az előre elkészített tartományban található szándékok és entitások együtt működnek a legjobban. Jobb megoldás, ha lehetséges, az azonos tartományhoz tartozó leképezéseket és entitásokat érdemes kombinálni.
-> A segédprogramok előre elkészített tartománya olyan leképezéseket tartalmaz, amelyek bármely tartományban testreszabhatók. Hozzáadhatja `Utilities.Repeat` például az alkalmazáshoz, és betaníthatja, hogy a felhasználók milyen műveleteket végezhetnek el az alkalmazásban. 
+> A segédprogramok előre elkészített tartománya olyan leképezéseket tartalmaz, amelyek bármely tartományban testreszabhatók. Hozzáadhatja például az alkalmazáshoz `Utilities.Repeat` , és betaníthatja, hogy a felhasználók milyen műveleteket végezhetnek el az alkalmazásban. 
 
 ### <a name="changing-the-behavior-of-a-prebuilt-domain-intent"></a>Előre elkészített tartomány leképezése viselkedésének módosítása
 

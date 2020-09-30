@@ -2,14 +2,14 @@
 title: Privát végpontok használata Azure Batch-fiókokkal
 description: Megtudhatja, hogyan csatlakozhat egy Azure Batch-fiókhoz privát végpontok használatával.
 ms.topic: how-to
-ms.date: 08/07/2020
+ms.date: 09/28/2020
 ms.custom: references_regions
-ms.openlocfilehash: 0fd16e4e11d0b3f08a7ba0e2f425785e3cce7927
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 7dba3dd1d34421666821c6bc7320ef76ab77bb7f
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88814110"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542138"
 ---
 # <a name="use-private-endpoints-with-azure-batch-accounts"></a>Privát végpontok használata Azure Batch-fiókokkal
 
@@ -20,7 +20,7 @@ Az [Azure Private link](../private-link/private-link-overview.md)használatával
 A privát hivatkozás lehetővé teszi, hogy a felhasználók a virtuális hálózatról vagy bármely társ virtuális hálózatról hozzáférjenek Azure Batch fiókhoz. A privát kapcsolatra leképezett erőforrások a VPN-en vagy az [Azure-ExpressRoute](../expressroute/expressroute-introduction.md)keresztül is elérhetők a helyszínen keresztül. Az [automatikus vagy manuális jóváhagyási módszer](../private-link/private-endpoint-overview.md#access-to-a-private-link-resource-using-approval-workflow)használatával csatlakozhat egy privát kapcsolattal konfigurált Azure batch-fiókhoz.
 
 > [!IMPORTANT]
-> A Azure Batch-beli magánhálózati kapcsolat támogatása jelenleg a következő Azure-régiókban érhető el: az USA középső régiója, az USA északi középső régiója, az USA déli középső régiója, az USA nyugati középső régiója, az USA keleti régiója, az USA US Gov Kelet-Ausztrália Egyesült Királyság déli régiója Kelet-Ázsia 2. nyugati régiója, az USA nyugati régiója
+> A Azure Batch-beli magánhálózati kapcsolat támogatása jelenleg az összes nyilvános régióban elérhető, kivéve a németországi közép-és németországi északkeleti régiót.
 
 Ez a cikk azt ismerteti, hogyan hozható létre egy privát batch-fiók, és hogyan férhet hozzá egy privát végponton keresztül.
 
@@ -35,14 +35,14 @@ A következő lépésekkel hozzon létre egy privát batch-fiókot a Azure Porta
    :::image type="content" source="media/private-connectivity/private-endpoint-connections.png" alt-text="Magánhálózati végpontok kapcsolatai":::
 5. Az **alapvető beállítások** panelen adja meg vagy válassza ki az előfizetést, az erőforráscsoportot, a magánhálózati végpont erőforrásának nevét és a régió részleteit, majd válassza a **Tovább: erőforrás**elemet.
 6. Az **erőforrás** ablaktáblán állítsa be az **erőforrás típusát** **Microsoft.BatCH/batchAccounts**értékre. Válassza ki az elérni kívánt privát batch-fiókot, majd válassza a **Tovább: konfigurálás**lehetőséget.
-   :::image type="content" source="media/private-connectivity/create-private-endpoint.png" alt-text="Privát végpont – erőforrás ablaktábla létrehozása":::
+   :::image type="content" source="media/private-connectivity/create-private-endpoint.png" alt-text="Magánhálózati végpontok kapcsolatai":::
 7. A **konfiguráció** ablaktáblán adja meg vagy válassza ki az alábbi adatokat:
    - **Virtuális hálózat**: válassza ki a virtuális hálózatot.
    - **Alhálózat**: válassza ki az alhálózatot.
    - **Integráció a saját DNS-zónával**: válassza az **Igen**lehetőséget. A magánhálózati végponthoz való kapcsolódáshoz DNS-rekordra van szükség. Javasoljuk, hogy a privát végpontot egy privát DNS-zónával integrálja. Saját DNS-kiszolgálókat is használhat, vagy létrehozhat DNS-rekordokat a virtuális gépeken található gazdagép-fájlok használatával.
    - **Saját DNS zóna**: válassza a privatelink <region> lehetőséget. batch.azure.com. A magánhálózati DNS-zóna automatikusan meg van határozva. A Azure Portal használatával nem módosítható.
 8. Válassza a **felülvizsgálat + létrehozás**lehetőséget, majd várjon, amíg az Azure érvényesíti a konfigurációt.
-9. Amikor megjelenik az **átadott üzenet ellenőrzése** lehetőség, válassza a **Létrehozás**lehetőséget.
+9. Amikor megjelenik a **Megfelelt az ellenőrzésen** üzenet, válassza a **Létrehozás** lehetőséget.
 
 A magánhálózati végpont kiépítés után a Batch-fiókot a privát végpont használatával is elérheti ugyanazon a virtuális hálózaton lévő virtuális gépekről. A Azure Portal IP-címének megtekintése:
 
@@ -50,7 +50,7 @@ A magánhálózati végpont kiépítés után a Batch-fiókot a privát végpont
 2. Keresse meg a korábban létrehozott privát végpontot.
 3. A DNS-beállítások és az IP-címek megtekintéséhez válassza az **Áttekintés** lapot.
 
-:::image type="content" source="media/private-connectivity/access-private.png" alt-text="Magánhálózati végpont DNS-beállításai és IP-címei":::
+:::image type="content" source="media/private-connectivity/access-private.png" alt-text="Magánhálózati végpontok kapcsolatai":::
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager-sablon
 
@@ -106,5 +106,6 @@ A privát batch-fiók létrehozásakor vegye figyelembe a következőket:
 ## <a name="next-steps"></a>További lépések
 
 - Megtudhatja, hogyan [hozhat létre batch-készleteket virtuális hálózatokban](batch-virtual-network.md).
+- Útmutató a [Batch-készletek nyilvános IP-címek nélküli létrehozásához](batch-pool-no-public-ip-address.md)
 - Megtudhatja, hogyan [hozhat létre batch-készleteket a megadott nyilvános IP-címekkel](create-pool-public-ip.md).
 - További információ az [Azure Private linkről](../private-link/private-link-overview.md).

@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 02/13/2019
 ms.author: curtand
-ms.openlocfilehash: 0fe191ac827c76afd497896611430f6efc6283aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c68e01e0eb7c926f47c99b16efa87d23a10b6711
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83747239"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537033"
 ---
 # <a name="set-up-text-messaging-as-your-verification-method"></a>Szöveges üzenetküldés beállítása ellenőrzési módszerként
 
@@ -52,7 +52,7 @@ A szervezet beállításaitól függően előfordulhat, hogy a szöveges üzenet
 
 4. A **Phone (telefon** ) lapon írja be a mobileszköz telefonszámát, válassza ki a **kód szövegét**, majd kattintson a **tovább**gombra.
 
-    ![Telefonszám hozzáadása és szöveges üzenetek kiválasztása](media/security-info/securityinfo-myprofile-phonetext-addnumber.png)
+    ![A "Phone" (telefonos) lapot megjelenítő képernyőkép, amely a "szöveg nekem kód" lehetőséget választotta.](media/security-info/securityinfo-myprofile-phonetext-addnumber.png)
 
 5. Írja be a mobileszközön a szöveges üzenetben küldött kódot, majd válassza a **tovább**lehetőséget.
 

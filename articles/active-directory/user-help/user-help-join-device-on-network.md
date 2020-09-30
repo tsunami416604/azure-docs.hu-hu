@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 08/03/2018
 ms.author: curtand
 ms.reviewer: jairoc
-ms.openlocfilehash: 146b867f1075a7eac1b6817f5fc8dbcd7ba04b02
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: efb3ee24add847baf8264eccdf71278be5ee9496
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333409"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91536970"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>Munkahelyi eszköz csatlakoztatása a szervezet hálózatához
 Csatlakoztassa a munkahelyi Windows 10-es eszközét a szervezet hálózatához, hogy hozzáférhessen a potenciálisan korlátozott erőforrásokhoz.
@@ -48,7 +48,7 @@ Ha az eszköz teljesen új, és még nincs beállítva, átléphet a Windows be�
 
 4. A mobileszközön hagyja jóvá az eszközt, hogy hozzáférhessen a fiókjához. 
 
-    ![Mobil értesítési képernyő](./media/user-help-join-device-on-network/join-device-oobe-mobile.png)
+    ![Képernyőkép, amely a "jelszó megadása" értesítési képernyőt jeleníti meg.](./media/user-help-join-device-on-network/join-device-oobe-mobile.png)
 
 5. Fejezze be az OOBE folyamatát, beleértve az adatvédelmi beállítások megadását és a Windows Hello beállítását (ha szükséges).
 
@@ -63,7 +63,7 @@ Győződjön meg arról, hogy a beállításait megtekinti.
 
 2. Válassza a **hozzáférés munkahelyi vagy iskolai**rendszerhez lehetőséget, és győződjön meg arról, hogy az ** *\<your_organization>* Azure ad-hez kapcsolódóan**hasonló szöveg jelenik meg.
 
-    ![Munkahelyi vagy iskolai képernyő elérése csatlakoztatott contoso-fiókkal](./media/user-help-join-device-on-network/join-device-oobe-verify.png)
+    ![Képernyőfelvétel: a "Connected to (Your Organization) Azure AD" fiókot tartalmazó "hozzáférés munkahelyi vagy iskolai" ablak.](./media/user-help-join-device-on-network/join-device-oobe-verify.png)
 
 
 ## <a name="to-join-an-already-configured-windows-10-device"></a>Csatlakozás egy már konfigurált Windows 10-es eszközhöz
@@ -110,7 +110,7 @@ Győződjön meg arról, hogy a beállításait megtekinti.
 
     ![Munkahelyi vagy iskolai képernyő elérése csatlakoztatott contoso-fiókkal](./media/user-help-join-device-on-network/join-device-setup-verify.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Miután csatlakoztatta az eszközt a szervezete hálózatához, a munkahelyi vagy iskolai fiókja adataival férhet hozzá az összes erőforráshoz.
 
 - Ha a szervezete szeretné regisztrálni a személyes eszközét, például a telefont, tekintse meg a [személyes eszköz regisztrálása a szervezet hálózatán](user-help-register-device-on-network.md)című témakört.

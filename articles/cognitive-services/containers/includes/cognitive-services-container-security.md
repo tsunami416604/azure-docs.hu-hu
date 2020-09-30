@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: fd2a6cdad01302501e30ec60a4d3ccf6efd9c266
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 348fb301d1a36c8df405c641f7644889417b11ba
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80876824"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91545796"
 ---
 ## <a name="azure-cognitive-services-container-security"></a>Azure Cognitive Services tároló biztonsága
 
@@ -27,7 +27,7 @@ Az alábbi ábra az alapértelmezett és **nem biztonságos** megközelítést m
 
 ![Tárolóbiztonság](../media/container-security.svg)
 
-Alternatív és *biztonságos* megközelítésként a Cognitive Services tárolók felhasználói a tárolót egy előtérben lévő összetevővel bővíthetik, így a tároló végpontja magánjellegű marad. Vegyünk egy olyan forgatókönyvet, amelyben a [Istio][istio] -t bejövő átjáróként használjuk. A Istio támogatja a HTTPS/TLS-t és az ügyféltanúsítvány-alapú hitelesítést. Ebben a forgatókönyvben a Istio előtér teszi elérhetővé a tárolók hozzáférését, és bemutatja az Istio-mel előzetesen engedélyezett ügyféltanúsítványt.
+Alternatív és *biztonságos* megközelítésként a Cognitive Services tárolók felhasználói a tárolót egy előtérben lévő összetevővel bővíthetik, így a tároló végpontja magánjellegű marad. Vegyünk egy olyan forgatókönyvet, amelyben a [Istio][istio] -t bejövő átjáróként használjuk. A Istio támogatja a HTTPS/TLS-t és az ügyféltanúsítvány-alapú hitelesítést. Ebben a forgatókönyvben a Istio előtér teszi elérhetővé a tárolók hozzáférését, és bemutatja az Istio-mel előzetesen jóváhagyott ügyféltanúsítványt.
 
 [Nginx][nginx] egy másik népszerű választás ugyanabban a kategóriában. Mind a Istio, mind az Nginx Service meshként működik, és további funkciókat kínál, például a terheléselosztást, az útválasztást és a díjszabást.
 

@@ -3,19 +3,17 @@ title: Minta. bármely entitás típusa – LUIS
 titleSuffix: Azure Cognitive Services
 description: Minta. a változó hosszúságú helyőrző csak a minta sablonjának megjelölésére szolgál, amely jelzi, hogy az entitás hol kezdődik és végződik.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/29/2019
-ms.author: diberry
-ms.openlocfilehash: 5164bf55ef8233cf34a470524da3bc852678d79a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ec23be3709cebc534c059a21c52452abff683b18
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75979163"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542206"
 ---
 # <a name="patternany-entity"></a>Pattern.any entitás
 
@@ -29,7 +27,7 @@ Minta. minden entitást meg kell adni a [minta](luis-how-to-model-intent-pattern
 
 ## <a name="usage"></a>Használat
 
-Adott ügyfélalkalmazás, amely a title (cím) alapján keres könyveket, a minta. bármely Kinyeri a teljes címet. A sablon kimondása minta `Was {BookTitle} written by an American this year[?]`használatával
+Adott ügyfélalkalmazás, amely a title (cím) alapján keres könyveket, a minta. bármely Kinyeri a teljes címet. A sablon kimondása minta használatával `Was {BookTitle} written by an American this year[?]`
 
 A következő táblázatban az egyes sorok a teljes verzió két változatával rendelkeznek. A legelső Kimondás, hogy a LUIS kezdetben hogyan látja a megnyilatkozás módját. Nem egyértelmű, hogy a könyv címe hol kezdődik és végződik. Az alsó lemondás egy mintát használ. bármely entitás, amely az entitás kezdetét és végét jelöli.
 

@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 1be04c0617dc4ed235cc3f3bc29aa58f4c2cb1d2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7361355a81de019af90e908f11c4d283b7f16cc9
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90902143"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542121"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>Egyetlen kiszolgálóból álló adattitkosítás Azure Database for PostgreSQL ügyfél által felügyelt kulccsal
 
@@ -79,7 +79,7 @@ Ha ügyfél által felügyelt kulccsal használja az adattitkosítást, a Key Va
 * Győződjön meg arról, hogy az egyetlen kiszolgáló Key Vault és Azure Database for PostgreSQL ugyanabban a régióban található, így biztosítva, hogy a ADATTITKOSÍTÁSI kulcsot-wrap és a kicsomagolási műveletek gyorsabban hozzáférhessenek.
 * Az Azure kulcstartó zárolása csak **privát végpontok és kiválasztott hálózatok** számára, és csak *megbízható Microsoft* -szolgáltatások engedélyezése az erőforrások biztonságossá tételéhez.
 
-    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png" alt-text="megbízható szolgáltatás – AKV":::
+    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png" alt-text="A Bring Your Own Key áttekintését bemutató diagram":::
 
 Az ügyfél által felügyelt kulcs konfigurálására vonatkozó javaslatok:
 
@@ -121,9 +121,9 @@ Az adatbázis állapotának figyeléséhez, valamint az átlátható adattitkos�
 
 Miután Azure Database for PostgreSQL egy kiszolgálót a Key Vault tárolt ügyfél felügyelt kulcsával, a kiszolgáló minden újonnan létrehozott példánya is titkosítva lesz. Ezt az új másolatot helyi vagy geo-visszaállítási művelettel, illetve olvasási replikák használatával is elvégezheti. Azonban a másolat módosítható úgy, hogy az új ügyfél felügyelt kulcsát tükrözze a titkosításhoz. Az ügyfél által felügyelt kulcs megváltozása után a kiszolgáló régi biztonsági mentései a legújabb kulcsot használják.
 
-Ha el szeretné kerülni az ügyfél által felügyelt adattitkosítás beállításakor a visszaállítás vagy a replika olvasása során, fontos, hogy kövesse ezeket a lépéseket a fő és a visszaállított/replika kiszolgálókon:
+Ha el szeretné kerülni az ügyfél által felügyelt adattitkosítás beállításakor a visszaállítási vagy az olvasási replika létrehozása során felmerülő problémákat, fontos, hogy kövesse ezeket a lépéseket az elsődleges és a visszaállított/replika kiszolgálókon:
 
-* Kezdeményezzen visszaállítási vagy olvasási replika-létrehozási folyamatot a fő Azure Database for PostgreSQL egyetlen kiszolgálóról.
+* Kezdeményezzen visszaállítási vagy olvasási replika-létrehozási folyamatot az elsődleges Azure Database for PostgreSQL egyetlen kiszolgálóról.
 * Az újonnan létrehozott kiszolgáló (visszaállított/replika) nem elérhető állapotban marad, mert az egyedi identitása még nem kapott engedélyt a Key Vault.
 * A visszaállított/replika kiszolgálón ellenőrizze újra az ügyfél által felügyelt kulcsot az adattitkosítási beállításokban. Ez biztosítja, hogy az újonnan létrehozott kiszolgáló becsomagolja és kicsomagolja az engedélyeket a Key Vaultban tárolt kulcshoz.
 
@@ -140,7 +140,7 @@ Azure Database for PostgreSQL esetén az ügyfelek által felügyelt kulcs (CMK)
 
 * A titkosítás csak az RSA 2048 titkosítási kulccsal támogatott.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtudhatja, hogyan [állíthatja be az adattitkosítást egy ügyfél által felügyelt kulccsal a PostgreSQL-hez készült Azure-adatbázishoz a Azure Portal használatával](howto-data-encryption-portal.md).
 

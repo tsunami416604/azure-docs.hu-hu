@@ -15,12 +15,12 @@ ms.date: 07/27/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b3fbb92c2e3623f5fd9571cd94ae521a41139dd6
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 0a3b6dad33ce678478a201dc8b7b612f4b8507c0
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87505860"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91536987"
 ---
 # <a name="approve-activation-requests-for-privileged-access-group-members-and-owners-preview"></a>Aktiválási kérelmek jóváhagyása az emelt szintű hozzáférési csoport tagjai és tulajdonosainak számára (előzetes verzió)
 
@@ -46,7 +46,7 @@ Meghatalmazott jóváhagyóként e-mail-értesítést fog kapni, ha az Azure-er�
 
 1. Keresse meg és válassza ki a jóváhagyni kívánt kérést, és válassza a **jóváhagyás**lehetőséget.
 
-    ![Kérelmek jóváhagyása – jóváhagyás vagy megtagadás ablaktábla részletekkel és indoklással](./media/groups-approval-workflow/groups-confirm-approval.png)
+    ![Képernyőkép, amely a "jóváhagyás" és a "jóváhagyás" gombokat jeleníti meg a kiemelve.](./media/groups-approval-workflow/groups-confirm-approval.png)
 
 1. Az **indoklás** mezőben adja meg az üzleti indoklást.
 

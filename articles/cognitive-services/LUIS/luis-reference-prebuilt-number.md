@@ -3,20 +3,18 @@ title: Előre elkészített entitások száma – LUIS
 titleSuffix: Azure Cognitive Services
 description: Ez a cikk Language Understanding (LUIS) számmal előre elkészített entitással kapcsolatos információt tartalmaz.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/27/2019
-ms.author: diberry
-ms.openlocfilehash: 85e3589d7467691e2b9a11879510ab980bbd875a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 13594886b83d4474ee2531185db5868a5198ca64
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78273465"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541958"
 ---
 # <a name="number-prebuilt-entity-for-a-luis-app"></a>A LUIS-alkalmazáshoz tartozó előre összeépített entitások száma
 A numerikus értékek számos módon vannak meghatározva, kifejezve és leírják az információk részleteit. Ez a cikk csak néhány lehetséges példát tárgyal. LUIS a felhasználói hosszúságú kimondott szöveg lévő eltéréseket értelmezi, és konzisztens numerikus értékeket ad vissza. Mivel ez az entitás már be van tanítva, nem kell hozzáadnia például a számot tartalmazó hosszúságú kimondott szöveg az alkalmazás-leképezésekhez.
@@ -26,7 +24,7 @@ A számot a rendszer a [felismerők – Text GitHub-](https://github.com/Microso
 
 ## <a name="examples-of-number-resolution"></a>Példák a szám feloldására
 
-| Kimondott szöveg        | Entitás   | Megoldás: |
+| Kimondott szöveg        | Entitás   | Feloldás |
 | ------------- |:----------------:| --------------:|
 | ```one thousand times```  | ```"one thousand"``` |   ```"1000"```      |
 | ```1,000 people```        | ```"1,000"```    |   ```"1000"```      |
@@ -38,7 +36,7 @@ A számot a rendszer a [felismerők – Text GitHub-](https://github.com/Microso
 | ```buy two dozen eggs```    | ```"two dozen"``` | ```"24"``` |
 
 
-A LUIS a visszaadott JSON- **`builtin.number`** válasz `resolution` mezőjében szereplő entitás felismert értékét tartalmazza.
+A LUIS a visszaadott **`builtin.number`** JSON-válasz mezőjében szereplő entitás felismert értékét tartalmazza `resolution` .
 
 ## <a name="resolution-for-prebuilt-number"></a>Előre elkészített szám feloldása
 
@@ -48,7 +46,7 @@ A lekérdezés a következő entitás-objektumokat adja vissza:
 
 #### <a name="v3-response"></a>[V3 válasz](#tab/V3)
 
-A következő JSON a `verbose` paraméter értéke: `false`
+A következő JSON a `verbose` paraméter értéke `false` :
 
 ```json
 "entities": {
@@ -59,7 +57,7 @@ A következő JSON a `verbose` paraméter értéke: `false`
 ```
 #### <a name="v3-verbose-response"></a>[V3 részletes válasz](#tab/V3-verbose)
 
-A következő JSON a `verbose` paraméter értéke: `true`
+A következő JSON a `verbose` paraméter értéke `true` :
 
 ```json
 "entities": {

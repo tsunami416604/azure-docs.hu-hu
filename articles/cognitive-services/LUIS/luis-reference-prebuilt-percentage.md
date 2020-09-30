@@ -3,23 +3,21 @@ title: Előre elkészített entitás százalékos aránya – LUIS
 titleSuffix: Azure Cognitive Services
 description: Ez a cikk az előre elkészített entitások százalékos arányát tartalmazza Language Understanding (LUIS).
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/27/2019
-ms.author: diberry
-ms.openlocfilehash: 31ea1c36139abcb1e102161ad76a203073ba4dfd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bb64a32e2bdd3976fba3ce63433b13eb4891afc7
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78270512"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541696"
 ---
 # <a name="percentage-prebuilt-entity-for-a-luis-app"></a>A LUIS-alkalmazáshoz tartozó előre összeépített entitások százalékos aránya
-A százalékos számok töredékként `3 1/2`, vagy százalékként is megjelenhetnek `2%`. Mivel ez az entitás már be van tanítva, nem kell hozzáadnia például a százalékos értéket tartalmazó hosszúságú kimondott szöveg az alkalmazás-leképezésekhez. A százalékos entitások [számos kultúrában](luis-reference-prebuilt-entities.md)támogatottak.
+A százalékos számok töredékként, `3 1/2` vagy százalékként is megjelenhetnek `2%` . Mivel ez az entitás már be van tanítva, nem kell hozzáadnia például a százalékos értéket tartalmazó hosszúságú kimondott szöveg az alkalmazás-leképezésekhez. A százalékos entitások [számos kultúrában](luis-reference-prebuilt-entities.md)támogatottak.
 
 ## <a name="types-of-percentage"></a>A százalékos típusok
 A százalékos arányt a [felismerők – Text GitHub-](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml#L114) adattár kezeli
@@ -32,7 +30,7 @@ A lekérdezés a következő entitás-objektumokat adja vissza:
 
 #### <a name="v3-response"></a>[V3 válasz](#tab/V3)
 
-A következő JSON a `verbose` paraméter értéke: `false`
+A következő JSON a `verbose` paraméter értéke `false` :
 
 ```json
 "entities": {
@@ -42,7 +40,7 @@ A következő JSON a `verbose` paraméter értéke: `false`
 }
 ```
 #### <a name="v3-verbose-response"></a>[V3 részletes válasz](#tab/V3-verbose)
-A következő JSON a `verbose` paraméter értéke: `true`
+A következő JSON a `verbose` paraméter értéke `true` :
 
 ```json
 "entities": {
