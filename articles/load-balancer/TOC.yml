@@ -69,8 +69,10 @@
       href: load-balancer-tcp-reset.md
     - name: A Standard Load Balancer és a rendelkezésre állási zónák
       href: load-balancer-standard-availability-zones.md
-    - name: Beépített biztonsági vezérlők
-      href: load-balancer-security-controls.md
+    - name: Biztonság
+      items:
+        - name: Biztonsági alapkonfiguráció
+          href: security-baseline.md
     - name: Háttérkészlet kezelése
       href: backend-pool-management.md
     - name: A Standard Load Balancer és a Virtual Machine Scale Sets

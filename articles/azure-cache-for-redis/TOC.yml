@@ -4,6 +4,8 @@
   items:
     - name: Az Azure Cache for Redis névjegye
       href: cache-overview.md
+    - name: Újdonságok
+      href: cache-whats-new.md
 - name: Rövid útmutatók
   expanded: true
   items:
