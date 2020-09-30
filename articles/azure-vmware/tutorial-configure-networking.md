@@ -3,12 +3,12 @@ title: Oktatóanyag – a VMware Private Cloud hálózatkezelésének konfigurá
 description: Megtudhatja, hogyan hozhatja létre és konfigurálhatja a privát felhő üzembe helyezéséhez szükséges hálózatkezelést az Azure-ban
 ms.topic: tutorial
 ms.date: 09/21/2020
-ms.openlocfilehash: 503043391b717753ab054197508483827565ef39
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6aff39284f3ea786080055552ac001ac5dd7b394
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91254778"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578350"
 ---
 # <a name="tutorial-configure-networking-for-your-vmware-private-cloud-in-azure"></a>Oktatóanyag: az Azure-beli VMware Private-felhő hálózatkezelésének konfigurálása
 
@@ -76,7 +76,7 @@ Most, hogy létrehozott egy virtuális hálózatot, létre fog hozni egy virtuá
    | **Átjáró alhálózati címtartomány** | Ez az érték a virtuális hálózat kiválasztásakor lesz feltöltve. Ne módosítsa az alapértelmezett értéket. |
    | **Nyilvános IP-cím** | Válassza az **Új létrehozása** lehetőséget. |
 
-   :::image type="content" source="./media/tutorial-configure-networking/create-virtual-network-gateway.png" alt-text="Adja meg a mezők értékeit, majd válassza a felülvizsgálat + létrehozás elemet." border="true":::
+   :::image type="content" source="./media/tutorial-configure-networking/create-virtual-network-gateway.png" alt-text="Válassza a felülvizsgálat + létrehozás lehetőséget." border="true":::
 
 1. Ellenőrizze, hogy helyesek-e a részletek, majd válassza a **Létrehozás** lehetőséget a virtuális hálózati átjáró üzembe helyezésének elindításához. 
 1. Az üzembe helyezés befejezése után lépjen a következő szakaszra, hogy összekapcsolja a ExpressRoute-kapcsolatot a virtuális hálózati átjáróval, amely az Azure VMware-megoldás saját felhőjét tartalmazza.
@@ -85,7 +85,7 @@ Most, hogy létrehozott egy virtuális hálózatot, létre fog hozni egy virtuá
 
 Most, hogy telepített egy virtuális hálózati átjárót, hozzá fog adni egy kapcsolatot az IT és az Azure VMware-megoldás privát felhője között.
 
-[!INCLUDE [connect-expressroute-to-vnet](includes/connect-expressroute-to-vnet.md)]
+[!INCLUDE [connect-expressroute-to-vnet](includes/connect-expressroute-vnet.md)]
 
 
 ## <a name="locate-the-urls-for-vcenter-and-nsx-manager"></a>A vCenter és a NSX Manager URL-címeinek megkeresése
@@ -94,9 +94,9 @@ A vCenter és a NSX Manager alkalmazásba való bejelentkezéshez szüksége les
 
 Navigáljon az Azure VMware-megoldás saját felhőhöz, a **kezelés**alatt válassza az **identitás**lehetőséget, itt megtalálja a szükséges információkat.
 
-:::image type="content" source="./media/tutorial-configure-networking/locate-urls.png" alt-text="Navigáljon az Azure VMware-megoldás saját felhőhöz, a kezelés alatt válassza az identitás lehetőséget, itt megtalálja a szükséges információkat." border="true":::
+:::image type="content" source="./media/tutorial-configure-networking/locate-urls.png" alt-text="Válassza a felülvizsgálat + létrehozás lehetőséget." border="true":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

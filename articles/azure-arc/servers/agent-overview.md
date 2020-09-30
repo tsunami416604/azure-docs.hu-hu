@@ -1,18 +1,21 @@
 ---
 title: A csatlakoztatott számítógép Windows-ügynökének áttekintése
 description: Ez a cikk részletes áttekintést nyújt az Azure arc-kompatibilis kiszolgálók ügynökéről, amely támogatja a hibrid környezetekben üzemeltetett virtuális gépek figyelését.
-ms.date: 09/24/2020
+ms.date: 09/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 01f1b291fee57d94b95bdeeef5f9f24b011e9fca
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0fa406692ae0ff011c65a2683ea04ad969bdc3b5
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91255043"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577220"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Az Azure arc használatára képes kiszolgálók ügynökének áttekintése
 
 Az Azure arc-kompatibilis kiszolgálókhoz csatlakoztatott gépi ügynök lehetővé teszi az Azure-on kívül üzemeltetett Windows-és Linux-gépek kezelését a vállalati hálózaton vagy más felhőalapú szolgáltatón. Ez a cikk részletes áttekintést nyújt az ügynökről, a rendszerről és a hálózati követelményekről, valamint a különböző üzembe helyezési módszerekről.
+
+>[!NOTE]
+>Az Azure arc-kompatibilis kiszolgálók általános kiadásával kezdődően a 2020-es verzióban az Azure-beli csatlakoztatott gépi ügynök (a 1,0-nál kevesebb verziót használó ügynökök) összes előzetes verziójának **2021** **elavultnak** kell lennie.  Ebben az időkeretben a 1,0-es vagy újabb verzióra frissíthet, mielőtt az előzetesen kiadott ügynökök már nem tudnak kommunikálni az Azure arc-kompatibilis kiszolgálók szolgáltatással.
 
 ## <a name="agent-component-details"></a>Ügynök-összetevő részletei
 
@@ -44,7 +47,7 @@ A Windows és a Linux rendszerhez készült Azure-beli csatlakoztatott gépi üg
 
 ### <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
 
-A Windows és a Linux operációs rendszer következő verziói hivatalosan támogatottak az Azure-beli csatlakoztatott gépi ügynöknél: 
+A Windows és a Linux operációs rendszer következő verziói hivatalosan támogatottak az Azure-beli csatlakoztatott gépi ügynöknél:
 
 - Windows Server 2012 R2 és újabb verziók (beleértve a Windows Server Core-t)
 - Ubuntu 16,04 és 18,04 LTS (x64)
@@ -59,7 +62,7 @@ A Windows és a Linux operációs rendszer következő verziói hivatalosan tám
 
 * Egy gép olvasásához, módosításához, újravezetéséhez és törléséhez az **Azure Connected machine erőforrás-rendszergazdai** szerepkör tagja. 
 
-### <a name="azure-subscription-and-service-limits"></a>Azure-előfizetések és-szolgáltatások korlátai
+### <a name="azure-subscription-and-service-limits"></a>Az Azure-előfizetések és -szolgáltatások korlátozásai
 
 Mielőtt a gépeket az Azure arc-kompatibilis kiszolgálókhoz konfigurálja, tekintse át a Azure Resource Manager [előfizetési korlátait](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits) és az [erőforráscsoport korlátait](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits) , hogy megtervezze a csatlakoztatni kívánt gépek számát.
 
@@ -245,7 +248,7 @@ A Linux rendszerhez készült csatlakoztatott gépi ügynök telepítése után 
     * /var/opt/azcmagent
     * /opt/logs
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Az Azure arc-kompatibilis kiszolgálók kiértékelésének megkezdéséhez kövesse a [hibrid gépek az Azure-ba való összekapcsolását ismertető cikket a Azure Portal](onboard-portal.md).
 

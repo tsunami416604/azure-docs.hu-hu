@@ -1,23 +1,23 @@
 ---
 title: Az Azure IoT Explorer telepítése és használata | Microsoft Docs
-description: Telepítse az Azure IoT Explorer eszközt, és használja az IoT hub-hoz csatlakoztatott IoT Plug and Play előnézeti eszközökhöz való interakcióhoz.
+description: Telepítse az Azure IoT Explorer eszközt, és használja az IoT hub-hoz csatlakoztatott IoT Plug and Play-eszközök használatához.
 author: rido-min
 ms.author: rmpablos
-ms.date: 05/06/2020
+ms.date: 09/23/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 083dcde44e56af34f17d952c46e554b234818f27
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: e64586ced7a619de02ae3a9d6beda35660ca04a9
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352233"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577577"
 ---
 # <a name="install-and-use-azure-iot-explorer"></a>Az Azure IoT Explorer telepítése és használata
 
-Az Azure IoT Explorer egy grafikus eszköz a IoT Plug and Play előnézeti eszközökhöz való interakcióhoz és teszteléséhez. Miután telepítette az eszközt a helyi gépre, használhatja azt egy hubhoz való kapcsolódáshoz. Az eszköz segítségével megtekintheti az eszközök küldésének telemetria, az eszköz tulajdonságait, valamint parancsokat hívhat meg.
+Az Azure IoT Explorer egy grafikus eszköz a IoT Plug and Play-eszközökkel való interakcióhoz és teszteléséhez. Miután telepítette az eszközt a helyi gépre, használhatja azt egy hubhoz való kapcsolódáshoz. Az eszköz segítségével megtekintheti az eszközök küldésének telemetria, az eszköz tulajdonságait, valamint parancsokat hívhat meg.
 
 Ez a cikk a következőkhöz nyújt útmutatást:
 
@@ -28,23 +28,19 @@ Ez a cikk a következőkhöz nyújt útmutatást:
 
 Az Azure IoT Explorer eszköz használatához a következőkre lesz szüksége:
 
-- Egy Azure IoT hub. Az Azure-előfizetéshez többféleképpen is hozzáadhat egy IoT hubot, például [egy IoT hub létrehozását az Azure CLI használatával](../iot-hub/iot-hub-create-using-cli.md). Az Azure IoT Explorer eszköz futtatásához szüksége lesz az IoT hub kapcsolódási karakterláncára. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
-- Az IoT hub-ban regisztrált eszköz. Egy eszköz regisztrálásához használja az alábbi Azure CLI-parancsot. Ügyeljen rá, hogy a `{YourIoTHubName}` és a helyőrzőket cserélje le az `{YourDeviceID}` értékekre:
-
-    ```azurecli-interactive
-    az iot hub device-identity create --hub-name {YourIoTHubName} --device-id {YourDeviceID}
-    ```
+- Egy Azure IoT hub. Az Azure-előfizetéshez többféleképpen is hozzáadhat egy IoT hubot, például [egy IoT hub létrehozását az Azure CLI használatával](../iot-hub/iot-hub-create-using-cli.md). Az Azure IoT Explorer eszköz futtatásához szüksége lesz az IoT hub kapcsolódási karakterláncára. Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+- Az IoT hub-ban regisztrált eszköz. Az IoT Explorer használatával létrehozhat és kezelhet IoT Hubban lévő eszközök regisztrációját.
 
 ## <a name="install-azure-iot-explorer"></a>Az Azure IoT Explorer telepítése
 
 Nyissa meg az [Azure IoT Explorer](https://github.com/Azure/azure-iot-explorer/releases) kiadásait, és bontsa ki a legújabb kiadáshoz tartozó eszközök listáját. Töltse le és telepítse az alkalmazás legújabb verzióját.
 
 >[!Important]
->A 0.11.0 IoT Explorer verziója csak a Plug and Play IoT 2020-es verzióját támogatja. Ha az előző előzetes verzióban elérhető funkciókat szeretné használni, az augusztus 2019-as kiadásban, egy 0,10. x verziót kell telepítenie.
+>A 0.11.0 IoT Explorer verziója csak a IoT Plug and Play GA kiadását támogatja (2020. szeptember). Az előző előzetes verzióban elérhető funkciók használatához az augusztus 2019-as verzióban 0,10. x verziót telepítsen.
 
 ## <a name="use-azure-iot-explorer"></a>Az Azure IoT Explorer használata
 
-Egy eszközhöz csatlakozhat a saját eszközéhez, vagy használhatja a mintául szolgáló szimulált eszközök egyikét is. Kövesse [ezeket az utasításokat](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview/iothub_client/samples) a szimulált eszköz mintájának futtatásához.
+Egy eszközhöz csatlakozhat a saját eszközéhez, vagy használhatja a minta szimulált eszközök egyikét is. Kövesse [ezeket az utasításokat](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples) a szimulált eszköz mintájának futtatásához.
 
 ### <a name="connect-to-your-hub"></a>Kapcsolódás a hubhoz
 
@@ -65,7 +61,7 @@ Forrás eltávolítása:
 
 A forrás prioritásának módosítása:
 
-A modell definíciós forrásainak egyikét áthúzással áthelyezheti egy másik rangsorba a listában. 
+A modell definíciós forrásainak egyikét áthúzással áthelyezheti egy másik rangsorba a listában.
 
 ### <a name="view-devices"></a>Eszközök megtekintése
 
@@ -82,7 +78,7 @@ Az **eszközök** listája lapon válasszon ki egy értéket az **eszköz azonos
 
 ### <a name="device"></a>Eszköz
 
-Ebben a szakaszban az **eszköz identitása**, az **eszköz Twin**, a **telemetria**, a **Direct metódus**, a **felhőből az eszközre irányuló üzenet**, a **modul-identitás** lapok találhatók.
+Ebben a szakaszban az **eszköz identitása**, az  **eszköz Twin**, a **telemetria**, a **Direct metódus**, a **felhőből az eszközre irányuló üzenet**, a **modul-identitás**  lapok találhatók.
 
 - Az Eszközállapot **lapon** megtekintheti és frissítheti az [eszköz identitásának](../iot-hub/iot-hub-devguide-identity-registry.md) adatait.
 - A Device Twin **(eszközök Twin) lapon érheti** el az [eszköz két](../iot-hub/iot-hub-devguide-device-twins.md) adatát.
@@ -103,7 +99,7 @@ Az **összetevő** lapon megtekintheti az írásvédett tulajdonságokat, friss�
 
 #### <a name="properties"></a>Tulajdonságok
 
-:::image type="content" source="media/howto-use-iot-explorer/properties-iot-explorer.png" alt-text="Tulajdonságok megtekintése az Azure IoT Explorerben":::
+:::image type="content" source="media/howto-use-iot-explorer/properties-iot-explorer.png" alt-text="Összetevők megtekintése az Azure IoT Explorerben":::
 
 Megtekintheti a **Tulajdonságok (csak olvasható)** lapon lévő felületen megadott írásvédett tulajdonságokat. A **(z) tulajdonságok (írható)** lapon lévő illesztőfelületben definiált írható tulajdonságok frissíthetők:
 
@@ -127,6 +123,16 @@ Ha parancsot szeretne küldeni egy eszközre, lépjen a **parancsok** lapra:
 #### <a name="telemetry"></a>Telemetria
 
 A kiválasztott felület telemetria megtekintéséhez nyissa meg a **telemetria** lapot.
+
+#### <a name="known-issues"></a>Ismert problémák
+
+- IoT Edge támogatás: a jelenlegi verzió nem jeleníti meg IoT Edge eszközeit az eszközök listájában.
+- DTDL nyelvi funkciói: a IoT Explorer 0,12. x verziója nem teljes mértékben DTDL v2-kompatibilis, a funkciók nem támogatottak:
+  - Illesztőfelület öröklése a `extends`
+  - Térkép leképezése (beágyazott Térkép)
+  - Tömb típusa
+  - Egyéni sémák
+  - Egyéni szemantikai típusok
 
 ## <a name="next-steps"></a>További lépések
 

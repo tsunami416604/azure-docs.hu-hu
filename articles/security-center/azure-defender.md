@@ -1,31 +1,28 @@
 ---
 title: Az Azure Defender és a rendelkezésre álló csomagok áttekintése
-description: Ismerje meg az Azure Defender terveit, védelmét és riasztásait. Ezután folytassa az Azure Defender engedélyezését az előfizetésekben.
+description: Ismerje meg az Azure Defender terveit, védelmét és riasztásait. Ezután engedélyezze az Azure Defender számára a fokozott biztonságú előfizetéseket.
 author: memildin
 ms.author: memildin
-ms.date: 9/22/2020
+ms.date: 9/30/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 5a5b96d5a9ea6aa05da30238690b8f5fa745b3f3
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: bfff96666981a522cd6d91828604696a12ecad56
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91448431"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576854"
 ---
 # <a name="introduction-to-azure-defender"></a>Az Azure Defender bemutatása
 
 Azure Security Center funkciói a Felhőbeli biztonság két fő pillérét fedik le:
 
-- **Cloud Security testtartás-felügyelet (CSPM)**
-- **Felhőbeli számítási feladatok elleni védelem (CWP)**
+- **Cloud Security testtartás-felügyelet (CSPM)** – Security Center **ingyenesen** elérhető az összes Azure-felhasználó számára. Az ingyenes élmény olyan CSPM funkciókat tartalmaz, mint például a biztonságos pontszám, az Azure-gépek biztonsági konfigurációs beállításainak észlelése, az eszközök leltára stb. Ezekkel a CSPM funkciókkal erősítheti a hibrid Felhőbeli testtartást, és nyomon követheti a beépített szabályzatoknak való megfelelést.
 
-A Security Center CSPM funkciói, például a biztonságos pontszám, a Windows és a Linux rendszerű Azure-gépek biztonsági beállításainak észlelése, az összes Azure-felhasználó számára elérhető ingyenes Security Center élmény. Ezekkel a CSPM-funkciókkal erősítheti a testtartást, és biztosíthatja a szabályozásoknak való megfelelést.
+- **Cloud munkaterhelés Protection (CWP)** – a Security Center integrált felhőalapú munkaterhelés-védelmi platformja (CWPP), az **Azure Defender**, fejlett, intelligens, Azure-és hibrid erőforrások és számítási feladatok védelmét teszi lehetővé. Az Azure Defender engedélyezésének számos további biztonsági funkciója van, az ezen a lapon leírtak szerint. A beépített szabályzatok mellett, ha engedélyezte valamelyik Azure Defender-csomagot, egyéni szabályzatokat és kezdeményezéseket adhat hozzá. Hozzáadhat szabályozási szabványokat – például a NIST és az Azure CIS –, valamint az Azure biztonsági teljesítménytesztet a megfelelőségének valóban testreszabott nézetéhez.
 
-Az **Azure Defender** a felhőalapú munkaterhelés-védelmi platform (CWPP), amely a fejlett, intelligens, Azure-és hibrid számítási feladatok védelméhez Security Centeron belül integrált.
-
-Ez az Azure Defender irányítópultja Azure Security Centerban:
+Az Azure Defender irányítópultja Security Center a környezethez tartozó CWP-funkciók láthatóságát és felügyeletét teszi lehetővé:
 
 :::image type="content" source="./media/azure-defender/sample-defender-dashboard.png" alt-text="Példa az Azure Defender irányítópultra" lightbox="./media/azure-defender/sample-defender-dashboard.png":::
 
@@ -55,11 +52,13 @@ Az Azure-környezet védelme mellett hozzáadhat Azure Defender-képességeket i
 - A virtuális gépeket más felhőkben (például AWS és GCP) is védetté teheti
 - IoT-eszközök megóvása
 
-Az adott környezetnek megfelelően testre szabott veszélyforrásokat és prioritást jelentő riasztásokat kap, így a leginkább a legfontosabb dolgokra koncentrálhat
+Az adott környezetnek megfelelően testre szabott fenyegetési intelligenciát és rangsorolt riasztásokat kap, így a leginkább a legfontosabb dolgokra koncentrálhat.
 
-Az [Azure arc](https://azure.microsoft.com/services/azure-arc/) üzembe helyezésével és az Azure Defender szolgáltatással kiterjesztheti a védelmet a helyszíni és a többfelhős virtuális gépekre és az SQL-adatbázisokra. Az Azure arc for Servers egy ingyenes szolgáltatás, de az ív használatára képes kiszolgálókon használt szolgáltatások, például az Azure Defender a szolgáltatás díjszabása szerint lesznek felszámítva.
+A virtuális gépek és a más Felhőbeli vagy helyszíni SQL-adatbázisok védelmének kiterjesztéséhez telepítse az [Azure-ívet](https://azure.microsoft.com/services/azure-arc/) , és engedélyezze az Azure Defendert. Az Azure arc for Servers egy ingyenes szolgáltatás, de az ív használatára képes kiszolgálókon használt szolgáltatások, például az Azure Defender a szolgáltatás díjszabása szerint lesznek felszámítva. További információ: [nem Azure-beli gépek hozzáadása az Azure arc szolgáltatással](quickstart-onboard-machines.md#add-non-azure-machines-with-azure-arc).
 
-[További információ az Azure arcről](https://docs.microsoft.com/azure/azure-arc/overview).
+> [!TIP]
+> Az AWS natív összekötője transzparens módon kezeli az Azure arc üzembe helyezését. További információ az [AWS-fiókok Azure Security Center való összekapcsolásáról](quickstart-onboard-aws.md).
+
 
 
 ## <a name="azure-defender-alerts"></a>Azure Defender-riasztások 
@@ -93,7 +92,7 @@ További információ a következő lapokon:
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta az Azure Defender előnyeit. 
 

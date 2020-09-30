@@ -1,20 +1,20 @@
 ---
-title: Szószedet – IoT Plug and Play előzetes verzió | Microsoft Docs
-description: Fogalmak – a IoT Plug and Play előzetes verziójának általános feltételeinek glosszáriuma.
+title: A kifejezések glosszáriuma – IoT Plug and Play | Microsoft Docs
+description: Fogalmak – a IoT Plug and Play vonatkozó általános kifejezések glosszáriuma.
 author: dominicbetts
 ms.author: dobett
 ms.date: 07/22/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 2320bed07f574c096be1883a9d82da7311e92fa7
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: d44866e2d04ab1bab5d2eca01374350a7d73a0ea
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88854216"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577339"
 ---
-# <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>A IoT használati feltételeinek szószedete Plug and Play előzetes verzió
+# <a name="glossary-of-terms-for-iot-plug-and-play"></a>A IoT használati feltételeinek szószedete Plug and Play
 
 A IoT Plug and Play cikkeiben használt általános feltételek definíciói.
 
@@ -38,7 +38,7 @@ Az IoT Hub egy olyan felügyelt szolgáltatás, amely a felhőn fut, és amely a
 
 ## <a name="azure-iot-device-sdk"></a>Azure IoT-eszköz SDK
 
-Több nyelvhez is vannak eszközök SDK-k, amelyek segítségével IoT Plug and Play eszköz ügyfélalkalmazások hozhatók létre.
+Több nyelvhez is vannak eszközök SDK-k, amelyek segítségével IoT Plug and Play eszköz ügyfélalkalmazások hozhatók létre. **DeviceClient** használata eszközökhöz, valamint **ModuleClient** modulok és IoT Edge modulokhoz.
 
 ## <a name="commands"></a>Parancsok
 
@@ -55,13 +55,19 @@ A kapcsolati karakterláncok a végponthoz való kapcsolódáshoz szükséges ad
 - Az eszköz kapcsolati karakterláncai lehetővé teszik, hogy a [IoT Plug and Play eszközök](#iot-plug-and-play-device) csatlakozzanak az IoT hub eszközre irányuló végpontokhoz. Az eszközön a kapcsolati sztring használatával biztonságos kapcsolat hozható létre egy IoT hubhoz.
 - IoT Hub kapcsolati karakterláncok lehetővé teszik a háttér-megoldások és-eszközök számára, hogy biztonságosan kapcsolódjanak a IoT hub szolgáltatáshoz csatlakozó végpontokhoz. Ezek a megoldások és eszközök kezelik az IoT hubot és az ahhoz csatlakoztatott eszközöket.
 
+## <a name="default-component"></a>Alapértelmezett összetevő
+
+Minden [eszköz-modellhez](#device-model) tartozik egy alapértelmezett összetevő. Egy egyszerű eszköz-modellnek csak egy alapértelmezett összetevője van – ilyen modell más néven összetevő-eszköz. Az összetettebb modell több összetevőt tartalmaz, amelyek az alapértelmezett összetevő alá vannak ágyazva.
+
 ## <a name="device-certification"></a>Eszköz minősítése
 
 A IoT Plug and Play eszköz minősítési program ellenőrzi, hogy az eszköz megfelel-e a IoT Plug and Play minősítési követelményeinek. Hozzáadhat egy hitelesített eszközt az [Azure IoT-eszközök nyilvános minősítésére](https://aka.ms/devicecatalog).
 
 ## <a name="device-model"></a>Eszközmodell
 
-Az eszköz modellje leírja a [IoT Plug and Play eszközét](#iot-plug-and-play-device) , és meghatározza az eszközt alkotó [összetevőket](#component) . Egy egyszerű eszköz-modell nem rendelkezik külön összetevőkkel, és egyetlen gyökérszintű felület definícióját tartalmazza. Egy összetettebb eszköz-modell több összetevőt is tartalmaz. Az eszköz modellje általában egy fizikai eszköz, termék vagy SKU-nak felel meg. Az eszköz modelljét a [Digital Twins Definition Language 2-es verziójának](#digital-twins-definition-language) használatával határozhatja meg.
+Az eszköz modellje leírja a [IoT Plug and Play eszközét](#iot-plug-and-play-device) , és meghatározza az eszközt alkotó [összetevőket](#component) . Egy egyszerű eszköz-modell nem rendelkezik külön összetevőkkel, és egyetlen csatoló definícióját tartalmazza. Az Azure IoT Explorer eszköz egy egyszerű modellt mutat be, amely egyetlen [alapértelmezett összetevővel](#default-component)rendelkezik.
+
+Egy összetettebb eszköz-modell több összetevőt is tartalmaz. Az eszköz modellje általában egy fizikai eszköz, termék vagy SKU-nak felel meg. Az eszköz modelljét a [Digital Twins Definition Language 2-es verziójának](#digital-twins-definition-language) használatával határozhatja meg.
 
 ## <a name="device-builder"></a>Eszköz-szerkesztő
 
@@ -69,7 +75,7 @@ Az Eszközkezelő egy [eszköz modelljét](#device-model) és [felületét](#int
 
 ## <a name="device-modeling"></a>Eszköz modellezése
 
-Az [Eszközkezelő](#device-builder) a [digitális ikrek definíciós nyelvét](#digital-twins-definition-language) használja egy [IoT Plug and Play-eszköz](#iot-plug-and-play-device)képességeinek modellezéséhez. A [megoldás-szerkesztő](#solution-builder) konfigurálhat egy IoT-megoldást a modellből.
+Az [Eszközkezelő](#device-builder) vagy [modul-szerkesztő](#module-builder)a [digitális ikrek definíciós nyelvét](#digital-twins-definition-language) használja egy [IoT Plug and Play eszköz](#iot-plug-and-play-device)képességeinek modellezéséhez. A [megoldás-szerkesztő](#solution-builder) konfigurálhat egy IoT-megoldást a modellből.
 
 ## <a name="digital-twin"></a>Digitális Twin
 
@@ -89,15 +95,19 @@ Egy [IoT-hubhoz](#azure-iot-hub) beállított útvonal, amely a [digitális kett
 
 ## <a name="interface"></a>Interfész
 
-Az illesztőfelületek a [IoT Plug and Play eszköz](#iot-plug-and-play-device) vagy a [digitális Twin](#digital-twin)szolgáltatás által megvalósított kapcsolódó képességeket ismertetik. A különböző [eszközökön](#device-model)keresztül is felhasználhat felületeket. Ha egy illesztőfelületet egy eszköz modelljében használ, az meghatározza az eszköz [összetevőjét](#component) .
+Az illesztőfelületek a [IoT Plug and Play eszköz](#iot-plug-and-play-device) vagy a [digitális Twin](#digital-twin)szolgáltatás által megvalósított kapcsolódó képességeket ismertetik. A különböző [eszközökön](#device-model)keresztül is felhasználhat felületeket. Ha egy illesztőfelületet egy eszköz modelljében használ, az meghatározza az eszköz [összetevőjét](#component) . Egy egyszerű eszköz csak egy alapértelmezett felületet tartalmaz.
 
 ## <a name="iot-hub-query-language"></a>IoT Hub lekérdezés nyelve
 
 A IoT Hub lekérdezési nyelv több célra szolgál. Használhatja például a nyelvet az IoT hub-ban regisztrált eszközök keresésére, vagy a [digitális kettős útválasztási](#digital-twin-route) viselkedés pontosítására.
 
+## <a name="iot-plug-and-play-bridge"></a>IoT Plug and Play híd
+
+A IoT Plug and Play Bridge egy nyílt forráskódú alkalmazás, amely lehetővé teszi a Windows-vagy Linux-átjárók számára csatlakoztatott meglévő érzékelők és perifériák csatlakoztatását a [IoT Plug and Play-eszközökhöz](#iot-plug-and-play-device).
+
 ## <a name="iot-plug-and-play-device"></a>IoT Plug and Play eszköz
 
-A IoT Plug and Play-eszközök általában egy kis méretű, önálló számítástechnikai eszköz, amely adatokat gyűjt, vagy más eszközöket irányít, valamint az [eszköz modelljét](#device-model)implementáló szoftvert vagy belső vezérlőprogramot futtat.  Például egy IoT Plug and Play eszköz lehet környezeti figyelő eszköz vagy egy intelligens mezőgazdasági öntözési rendszer vezérlője. Felhőalapú IoT-megoldást is írhat a IoT Plug and Play eszközökről származó adatok parancsára, vezérlésére és fogadására.
+A IoT Plug and Play-eszközök általában egy kis méretű, önálló számítástechnikai eszköz, amely adatokat gyűjt, vagy más eszközöket irányít, valamint az [eszköz modelljét](#device-model)implementáló szoftvert vagy belső vezérlőprogramot futtat.  Például egy IoT Plug and Play eszköz lehet környezeti figyelő eszköz vagy egy intelligens mezőgazdasági öntözési rendszer vezérlője. Előfordulhat, hogy egy IoT Plug and Play eszköz közvetlenül vagy IoT Edge modulként van megvalósítva. Felhőalapú IoT-megoldást is írhat a IoT Plug and Play eszközökről származó adatok parancsára, vezérlésére és fogadására.
 
 ## <a name="iot-plug-and-play-conventions"></a>Az IoT Plug and Playhez kapcsolódó konvenciók
 
@@ -114,6 +124,10 @@ A [modell tárháza](concepts-model-repository.md) az [eszközök modelljeit](#d
 ## <a name="model-repository-rest-api"></a>Modell tárháza REST API
 
 API a modell adattárának kezeléséhez és interakcióhoz. Használhatja például az API-t az [eszközök modelljeinek](#device-model)hozzáadásához és kereséséhez.
+
+## <a name="module-builder"></a>Modul-szerkesztő
+
+Egy modul-szerkesztő [eszköz modelljét](#device-model) és [felületét](#interface) használja a kód [IoT Plug and Play eszközön](#iot-plug-and-play-device)való futtatásához. A modul-építők a kódot modulként vagy IoT Edge modulként implementálják az eszközön IoT Edge futtatókörnyezetbe való üzembe helyezéshez.
 
 ## <a name="properties"></a>Tulajdonságok
 

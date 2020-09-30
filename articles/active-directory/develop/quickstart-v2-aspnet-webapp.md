@@ -1,6 +1,7 @@
 ---
-title: Bejelentkezés felvétele a Microsofttal egy ASP.NET webalkalmazásba | Azure
-description: Ismerje meg, hogyan implementálhat Microsoft-bejelentkezést egy ASP.NET-webalkalmazásban az OpenID Connect használatával.
+title: 'Gyors útmutató: bejelentkezés felvétele a Microsofttal egy ASP.NET webalkalmazásba | Azure'
+titleSuffix: Microsoft identity platform
+description: Ebből a rövid útmutatóból megtudhatja, hogyan implementálhat Microsoft-bejelentkezést egy ASP.NET-webalkalmazásban az OpenID Connect használatával.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,16 +12,22 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, contperfq1
-ms.openlocfilehash: ada6e36e03f326ab3161306b0f5da2e097e57e0c
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: e621d50280adcccb8dbd82f4ceb0de7956e98e4b
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91369671"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576965"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>Gyors útmutató: Microsoft Identity platform-bejelentkezés hozzáadása egy ASP.NET-webalkalmazáshoz
 Ebből a rövid útmutatóból megtudhatja, hogyan ASP.NET webalkalmazások személyes fiókjait (hotmail.com, outlook.com, másokat) és munkahelyi és iskolai fiókokat bármely Azure Active Directory (Azure AD-példányból).  (Lásd: [Hogyan működik a minta](#how-the-sample-works) egy ábrán.)
 > [!div renderon="docs"]
+> ## <a name="prerequisites"></a>Előfeltételek
+>
+> * Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+> * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)
+> * [.NET-keretrendszer 4.7.2 +](https://dotnet.microsoft.com/download/visual-studio-sdks)
+>
 > ## <a name="register-and-download-your-quickstart-app"></a>A rövid útmutató mintaalkalmazásának regisztrálása és letöltése
 > A rövid útmutató mintaalkalmazását kétféleképpen indíthatja el:
 > * [Expressz] [1. lehetőség: Az alkalmazás regisztrálása és automatikus konfigurálása, majd a kódminta letöltése](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
@@ -69,7 +76,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan ASP.NET webalkalmazások szem
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>3. lépés: az alkalmazás konfigurálva van, és készen áll a futtatásra
-> A projektet az alkalmazás tulajdonságainak értékeivel konfiguráltuk. 
+> A projektet az alkalmazás tulajdonságainak értékeivel konfiguráltuk.
 
 > [!div renderon="docs"]
 > #### <a name="step-3-run-your-visual-studio-project"></a>3. lépés: a Visual Studio-projekt futtatása
@@ -114,7 +121,7 @@ Az ASP.NET-ben az OpenID Connecttel végzett, cookie-alapú hitelesítési folya
 ```powershell
 Install-Package Microsoft.Owin.Security.OpenIdConnect
 Install-Package Microsoft.Owin.Security.Cookies
-Install-Package Microsoft.Owin.Host.SystemWeb  
+Install-Package Microsoft.Owin.Host.SystemWeb
 ```
 
 ### <a name="owin-startup-class"></a>OWIN indítási osztály
@@ -156,7 +163,7 @@ public void Configuration(IAppBuilder app)
 }
 ```
 
-> |Ahol  | Description |
+> |Ahol  | Leírás |
 > |---------|---------|
 > | `ClientId`     | Az Azure Portalon regisztrált alkalmazás azonosítója |
 > | `Authority`    | A felhasználó által hitelesítendő STS-végpont. Általában `https://login.microsoftonline.com/{tenant}/v2.0` a nyilvános felhőknél, ahol a {tenant} a bérlő neve, a bérlő azonosítója, vagy *common* a közös végpontra való hivatkozáskor (több-bérlős alkalmazások esetében) |
@@ -195,13 +202,11 @@ public void SignIn()
 
 A vezérlők vagy a vezérlők műveletei az `[Authorize]` attribútummal védhetők. Ez az attribútum úgy korlátozza a vezérlőhöz és a műveleteihez való hozzáférést, hogy csak a hitelesített felhasználóknak engedélyezi a vezérlő műveleteinek elérését. Ezt azt jelenti, hogy a hitelesítő kérdés automatikusan megjelenik, ha egy *nem hitelesített* felhasználó megpróbál hozzáférni az `[Authorize]` attribútummal jelölt bármely művelethez vagy vezérlőhöz.
 
-## <a name="next-steps"></a>Következő lépések
+[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+
+## <a name="next-steps"></a>További lépések
 
 Próbálja ki az ASP.NET-hez készült oktatóanyagot, amelyben teljes körű, részletes útmutatót talál az alkalmazások és új szolgáltatások létrehozásához, valamint megtalálja ennek a rövid útmutatónak a teljes magyarázatát is.
 
-### <a name="learn-the-steps-to-create-the-application-used-in-this-quickstart"></a>A jelen rövid útmutatóban használt alkalmazás létrehozási lépéseinek ismertetése
-
 > [!div class="nextstepaction"]
-> [Bejelentkezési útmutató](./tutorial-v2-asp-webapp.md)
-
-[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+> [Bejelentkezés hozzáadása egy ASP.NET-webalkalmazáshoz](tutorial-v2-asp-webapp.md)

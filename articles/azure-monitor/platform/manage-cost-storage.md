@@ -11,17 +11,17 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/08/2020
+ms.date: 09/29/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 8d1e2454dc4b9a9fbc85d2e5edc5ba3ede33f9c0
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: af168fe4c4dca71077464fdb9caf30f27c4b9fe2
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89595651"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578257"
 ---
-# <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>A használat és a költségek kezelése Azure Monitor naplókkal    
+# <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>A használat és a költségek felügyelete Azure Monitor-naplókkal    
 
 > [!NOTE]
 > Ez a cikk azt ismerteti, hogyan értelmezhető és szabályozható a Azure Monitor naplók költségei. A kapcsolódó cikkek, a [monitorozási használat és a becsült költségek](usage-estimated-costs.md) azt írják le, hogyan lehet megtekinteni a használati és becsült költségeket több Azure-figyelési funkció között különböző díjszabási modellekhez. Az ebben a cikkben látható árak és költségek csak példaként szolgálnak. 
@@ -46,9 +46,9 @@ Azt is vegye figyelembe, hogy egyes megoldások, például az [Azure Security Ce
 
 ### <a name="log-analytics-dedicated-clusters"></a>Dedikált fürtök Log Analytics
 
-Log Analytics dedikált fürtök egyetlen felügyelt Azure Adatkezelő-fürtbe tartozó munkaterületek gyűjteményei, amelyek olyan speciális forgatókönyveket támogatnak, mint például az [ügyfél által felügyelt kulcsok](customer-managed-keys.md).  Log Analytics dedikált fürtök csak a kapacitás-foglalás díjszabási modelljét támogatják, amely 1000 GB/nap, az utólagos elszámolású díjszabáshoz képest 25%-os kedvezménnyel. A foglalási szint feletti használati díjakat az utólagos elszámolású díjszabás szerint számítjuk fel. A fürt kapacitásának foglalása a foglalási szint növelése után 31 napos kötelezettségvállalási időszakot tartalmaz. A kötelezettségvállalási időszak alatt a kapacitás foglalási szintje nem csökkenthető, de bármikor megnövelhető. További információ a [log Analytics-fürtök létrehozásáról](customer-managed-keys.md#create-cluster-resource) és [a munkaterületek társításáról](customer-managed-keys.md#workspace-association-to-cluster-resource).  
+Log Analytics dedikált fürtök egyetlen felügyelt Azure Adatkezelő-fürtbe tartozó munkaterületek gyűjteményei, amelyek olyan speciális forgatókönyveket támogatnak, mint például az [ügyfél által felügyelt kulcsok](customer-managed-keys.md).  Log Analytics dedikált fürtök kapacitása foglalási díjszabási modellt használnak, amelyet legalább 1000 GB/nap értékre kell konfigurálni. Ez a kapacitási szint 25%-os kedvezményt biztosít az utólagos elszámolású díjszabáshoz képest. A foglalási szint feletti használati díjakat az utólagos elszámolású díjszabás szerint számítjuk fel. A fürt kapacitásának foglalása a foglalási szint növelése után 31 napos kötelezettségvállalási időszakot tartalmaz. A kötelezettségvállalási időszak alatt a kapacitás foglalási szintje nem csökkenthető, de bármikor megnövelhető. Ha a munkaterületek egy fürthöz vannak társítva, a munkaterületek adatfeldolgozási számlázása a fürt szintjén történik a beállított kapacitás foglalási szintjének használatával. További információ a [log Analytics-fürtök létrehozásáról](customer-managed-keys.md#create-cluster-resource) és [a munkaterületek társításáról](customer-managed-keys.md#workspace-association-to-cluster-resource). A kapacitás foglalásának díjszabási információi a [Azure monitor díjszabási oldalon]( https://azure.microsoft.com/pricing/details/monitor/)érhetők el.  
 
-A fürt kapacitásának foglalási szintje a (z) paraméterrel a (z) programozott módon Azure Resource Manager használatával van konfigurálva `Capacity` `Sku` . A a `Capacity` GB egységben van megadva, és 1000 GB/nap vagy több értékkel rendelkezhet a 100 GB/nap növekményekben. Ezt [Azure monitor ügyfél által felügyelt kulcs](customer-managed-keys.md#create-cluster-resource)részletezi. Ha a fürtnek 2000 GB/nap feletti foglalásra van szüksége, lépjen kapcsolatba velünk a következő címen: [LAIngestionRate@microsoft.com](mailto:LAIngestionRate@microsoft.com) .
+A fürt kapacitásának foglalási szintje programozott módon van konfigurálva a Azure Resource Manager használatával a (z `Capacity` ) paraméterrel `Sku` . A a `Capacity` GB egységben van megadva, és 1000 GB/nap vagy több értékkel rendelkezhet a 100 GB/nap növekményekben. Ezt [Azure monitor ügyfél által felügyelt kulcs](customer-managed-keys.md#create-cluster-resource)részletezi. Ha a fürtnek 2000 GB/nap feletti foglalásra van szüksége, lépjen kapcsolatba velünk a következő címen: [LAIngestionRate@microsoft.com](mailto:LAIngestionRate@microsoft.com) .
 
 A fürtön két számlázási mód van használatban. Ezeket a paraméter megadhatja a `billingType` [fürt konfigurálásakor](customer-managed-keys.md#cmk-management). A két mód a következők: 
 
@@ -56,7 +56,7 @@ A fürtön két számlázási mód van használatban. Ezeket a paraméter megadh
 
 2. **Munkaterületek**: a fürt kapacitás-foglalási költségei arányosak a fürtben lévő munkaterületekhez (az egyes munkaterületek esetében a [Azure Security Center](https://docs.microsoft.com/azure/security-center/) az egyes munkaterületek esetében a csomópontok közötti foglalások elszámolása után). Ha egy adott munkaterületre betöltött teljes adatmennyiség kevesebb, mint a kapacitás foglalása, akkor az egyes munkaterületek díjait a rendszer a GB-os kapacitású foglalási díjszabás alapján számlázza, és a kapacitás foglalásának fel nem használt részét számlázza a fürt erőforrásának. Ha a napi munkaterületre betöltött teljes adatmennyiség meghaladja a kapacitás foglalását, akkor az egyes munkaterületek számlázása a kapacitás foglalásának töredékét határozza meg a napi betöltött adat töredéke alapján, valamint az egyes munkaterületek a kapacitás foglalása felett lévő betöltött adat töredékének megfelelően. A fürterőforrás nem számít fel díjat, ha a napi munkaterületre betöltött teljes adatmennyiség meghaladja a kapacitás foglalását.
 
-A fürt számlázási beállításainál az adatok megőrzése a munkaterület szintjén történik. Vegye figyelembe, hogy a fürt számlázása a fürt létrehozásakor kezdődik, függetlenül attól, hogy a munkaterületek hozzá lettek-e rendelve a fürthöz. Azt is vegye figyelembe, hogy a fürthöz társított munkaterületek már nem rendelkeznek díjszabási csomaggal.
+A fürt számlázási beállításaiban az adatmegőrzési díj a munkaterületen történik. Vegye figyelembe, hogy a fürt számlázása a fürt létrehozásakor kezdődik, függetlenül attól, hogy a munkaterületek hozzá lettek-e rendelve a fürthöz. Azt is vegye figyelembe, hogy a fürthöz társított munkaterületek már nem rendelkeznek díjszabási csomaggal.
 
 ## <a name="estimating-the-costs-to-manage-your-environment"></a>A környezet kezelésével kapcsolatos költségek becslése 
 
@@ -234,12 +234,12 @@ A napi korlát az ARM-ben konfigurálható úgy, hogy a `dailyQuotaGb` paraméte
 
 Noha a Azure Portal vizualizációs mutatót mutatunk be, amikor eléri az adatkorlátot, ez a viselkedés nem feltétlenül igazodik az azonnali beavatkozást igénylő működési problémák kezeléséhez.  Riasztási értesítés fogadásához létrehozhat egy új riasztási szabályt Azure Monitorban.  További információt a [riasztások létrehozása, megtekintése és kezelése](alerts-metric.md)című témakörben talál.
 
-Az első lépésekhez tekintse meg a riasztás ajánlott beállításait:
+A kezdéshez itt láthatók az ajánlott beállítások a táblában a függvény használatával történő lekérdezéséhez `Operation` `_LogOperation` . 
 
 - Cél: válassza ki a Log Analytics erőforrást
 - Kritériumok 
    - Jel neve: egyéni naplók keresése
-   - Keresési lekérdezés: művelet | ahol a Részletek "túlkvóta"
+   - Keresési lekérdezés: `_LogOperation | where Detail has 'OverQuota'`
    - A következő alapján: az eredmények száma
    - Feltétel: nagyobb, mint
    - Küszöbérték: 0
@@ -441,7 +441,7 @@ Néhány javaslat a gyűjtött naplók mennyiségének csökkentésére:
 
 | A nagy adatmennyiség forrása | Az adatmennyiség csökkentésének módja |
 | -------------------------- | ------------------------- |
-| Tároló-felismerések         | [Konfigurálja a tároló](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-cost#controlling-ingestion-to-reduce-cost) -elemzéseket úgy, hogy csak a szükséges adatokat gyűjtsön. |
+| Tárolóval kapcsolatos megállapítások         | [Konfigurálja a tároló](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-cost#controlling-ingestion-to-reduce-cost) -elemzéseket úgy, hogy csak a szükséges adatokat gyűjtsön. |
 | Biztonsági események            | Válassza a [gyakori vagy minimális biztonsági események](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection#data-collection-tier) lehetőséget <br> Módosítsa a biztonsági naplózási szabályzatot, hogy csak a szükséges eseményeket gyűjtse be. Tekintse át a következőkhöz való eseménygyűjtés szükségességét: <br> - [szűrőplatform naplózása](https://technet.microsoft.com/library/dd772749(WS.10).aspx) <br> - [beállításjegyzék naplózása](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941614(v%3dws.10))<br> - [fájlrendszer naplózása](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772661(v%3dws.10))<br> - [kernelobjektum naplózása](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941615(v%3dws.10))<br> - [leírókezelés naplózása](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772626(v%3dws.10))<br> – Cserélhető tároló naplózása |
 | Teljesítményszámlálók       | Módosítsa a [teljesítményszámlálók konfigurációját](data-sources-performance-counters.md): <br> – Csökkentse a gyűjtés gyakoriságát <br> – Csökkentse a teljesítményszámlálók számát |
 | Eseménynaplók                 | Módosítsa az [eseménynaplók konfigurációját](data-sources-windows-events.md): <br> – Csökkentse a gyűjtött eseménynaplók számát <br> – Csak a szükséges eseményszinteket gyűjtse. Ne gyűjtsön például *Tájékoztatás* szintű eseményeket |
@@ -618,7 +618,7 @@ Ha értesítést szeretne kapni az adatgyűjtés leállításakor, kövesse a *n
 Vannak további Log Analytics korlátok, amelyek némelyike a Log Analytics díjszabási szintjétől függ. Ezeket az Azure- [előfizetések és-szolgáltatások korlátozásai, kvótái és megkötései](../../azure-resource-manager/management/azure-subscription-service-limits.md#log-analytics-workspaces)dokumentálják.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A keresési nyelv használatának megismeréséhez tekintse meg a [naplóban megkeresett Azure monitor naplókat](../log-query/log-query-overview.md) . A keresési lekérdezésekkel további elemzéseket végezhet a használati adatokon.
 - Az [új naplózási riasztás létrehozásával kapcsolatos](alerts-metric.md) szakaszban leírt lépéseket követve beállíthatja, hogy értesítést kapjon, ha teljesül egy keresési feltétel.

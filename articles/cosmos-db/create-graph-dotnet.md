@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 02/21/2020
 ms.author: jasonh
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: f0d5043146288095be586892fbca85f6e465a9e6
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.openlocfilehash: 72b3f8a4e4a6da434ef20c8e505718ccd3e2deff
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91409425"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578384"
 ---
 # <a name="quickstart-build-a-net-framework-or-core-application-using-the-azure-cosmos-db-gremlin-api-account"></a>Gyors útmutató: .NET-keretrendszer vagy Core-alkalmazás létrehozása a Azure Cosmos DB Gremlin API-fiók használatával
 
@@ -110,7 +110,7 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
 
    **Gremlin-végpont** – Ezt az értéket akkor használja, ha Gremlin.Net-kódtárral kapcsolódik a gráffiókhoz.
 
-    :::image type="content" source="./media/create-graph-dotnet/endpoint.png" alt-text="A végpont másolása":::
+    :::image type="content" source="./media/create-graph-dotnet/endpoint.png" alt-text="A végpont másolása&quot;:::
 
    A minta futtatásához másolja a **Gremlin-végpont** értékét, törölje a végén található portszámot, amely az URI lesz `https://<your cosmos db account name>.gremlin.cosmosdb.azure.com` . A végpont értékének a következőhöz hasonlóan kell kinéznie: `testgraphacct.gremlin.cosmosdb.azure.com`
 
@@ -119,11 +119,11 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
 1. Miután átmásolta a fiókja URI-JÁT és elsődleges KULCSát, mentse azokat egy új környezeti változóba az alkalmazást futtató helyi gépen. A környezeti változó beállításához nyisson meg egy parancssorablakot, és futtassa a következő parancsot. Ügyeljen arra, hogy a <Your_Azure_Cosmos_account_URI> és <Your_Azure_Cosmos_account_PRIMARY_KEY> értékeket cserélje le.
 
    ```console
-   setx EndpointUrl "<your Azure Cosmos account name>.gremlin.cosmosdb.azure.com"
-   setx PrimaryKey "<Your_Azure_Cosmos_account_PRIMARY_KEY>"
+   setx Host &quot;<your Azure Cosmos account name>.gremlin.cosmosdb.azure.com&quot;
+   setx PrimaryKey &quot;<Your_Azure_Cosmos_account_PRIMARY_KEY>&quot;
    ```
 
-1. Nyissa meg a *program.cs* fájlt, és frissítse az "adatbázis és a" tároló "változókat az adatbázissal és a tárolóval (amely egyben a gráf neve is) a fent létrehozott nevekkel.
+1. Nyissa meg a *program.cs* fájlt, és frissítse az &quot;adatbázis és a" tároló "változókat az adatbázissal és a tárolóval (amely egyben a gráf neve is) a fent létrehozott nevekkel.
 
     `private static string database = "your-database-name";` `private static string container = "your-container-or-graph-name";`
 
@@ -147,7 +147,20 @@ Ezután visszaléphet az Adatkezelőbe az Azure Portalon, ahol tallózhatja és 
 
     Szabadon nagyíthatja és kicsinyítheti a gráfot, kibonthatja a gráf megjelenítési területét, további csúcspontokat vehet fel, illetve áthelyezheti a csúcspontokat a megjelenítési felületen.
 
-    :::image type="content" source="./media/create-graph-dotnet/graph-explorer.png" alt-text="A gráf megtekintése az Azure Portal Adatkezelőjében":::
+    :::image type="content" source="./media/create-graph-dotnet/graph-explorer.png" alt-text="A végpont másolása&quot;:::
+
+   A minta futtatásához másolja a **Gremlin-végpont** értékét, törölje a végén található portszámot, amely az URI lesz `https://<your cosmos db account name>.gremlin.cosmosdb.azure.com` . A végpont értékének a következőhöz hasonlóan kell kinéznie: `testgraphacct.gremlin.cosmosdb.azure.com`
+
+1. Ezután navigáljon a **kulcsok** lapra, és másolja az **elsődleges kulcs** értékét a Azure Portalból. 
+
+1. Miután átmásolta a fiókja URI-JÁT és elsődleges KULCSát, mentse azokat egy új környezeti változóba az alkalmazást futtató helyi gépen. A környezeti változó beállításához nyisson meg egy parancssorablakot, és futtassa a következő parancsot. Ügyeljen arra, hogy a <Your_Azure_Cosmos_account_URI> és <Your_Azure_Cosmos_account_PRIMARY_KEY> értékeket cserélje le.
+
+   ```console
+   setx Host &quot;<your Azure Cosmos account name>.gremlin.cosmosdb.azure.com&quot;
+   setx PrimaryKey &quot;<Your_Azure_Cosmos_account_PRIMARY_KEY>&quot;
+   ```
+
+1. Nyissa meg a *program.cs* fájlt, és frissítse az &quot;adatbázis és a":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>Tekintse át az SLA-kat az Azure Portalon
 
@@ -157,7 +170,7 @@ Ezután visszaléphet az Adatkezelőbe az Azure Portalon, ahol tallózhatja és 
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban bemutattuk, hogyan lehet Azure Cosmos DB-fiókot létrehozni, hogyan lehet az Adatkezelő segítségével gráfot készíteni, és hogyan lehet futtatni az alkalmazást. Az útmutató információira támaszkodva összetett lekérdezéseket hozhat létre és hatékony gráfbejárási logikákat helyezhet üzembe a Gremlin használatával. 
 

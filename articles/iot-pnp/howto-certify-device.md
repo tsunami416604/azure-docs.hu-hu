@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: bdb6bf166e84bb9134bbd14454899bcefbf0a887
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 6aa4273933190ccfe495bcaf243ee15a5ce823fb
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88949898"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577645"
 ---
 # <a name="how-to-certify-iot-plug-and-play-devices"></a>IoT Plug and Play-eszközök tanúsítása
 
@@ -42,18 +42,18 @@ A minősítési követelmények teljesítéséhez az eszköznek a következőket
 - Telemetria, tulajdonságok vagy parancsok implementálása a IoT Plug and Play konvenciót követve.
 - Írja le az eszköz interakcióit egy [DTDL v2](https://aka.ms/dtdl) -modellel.
 - Tegye közzé a modellt és az összes szükséges felületet az [Azure IoT nyilvános modell adattárában](https://devicemodels.azureiotsolutions.com/) .
-- Küldje el a modell AZONOSÍTÓját a DPS- [regisztráció](concepts-developer-guide.md#dps-payload) során a DPS kiépítési hasznos adattartalomban.
-- Bejelenti a modell AZONOSÍTÓját a [MQTT-kapcsolatban](concepts-developer-guide.md#model-id-announcement).
+- Küldje el a modell AZONOSÍTÓját a DPS- [regisztráció](concepts-developer-guide-device-csharp.md#dps-payload) során a DPS kiépítési hasznos adattartalomban.
+- Bejelenti a modell AZONOSÍTÓját a [MQTT-kapcsolatban](concepts-developer-guide-device-csharp.md#model-id-announcement).
 
 ## <a name="test-with-the-azure-iot-extension-cli"></a>Tesztelés az Azure IoT bővítmény parancssori felületével
 
-Az [Azure IOT CLI bővítményével](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/product?view=azure-cli-latest) ellenőrizheti, hogy az eszköz implementációja megfelel-e a modellnek, mielőtt beküldi az eszközt a minősítéshez az Azure Certified Device Portalon keresztül.
+Az [Azure IOT CLI bővítményével](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/product?view=azure-cli-latest&preserve-view=true) ellenőrizheti, hogy az eszköz implementációja megfelel-e a modellnek, mielőtt beküldi az eszközt a minősítéshez az Azure Certified Device Portalon keresztül.
 
 A következő lépések bemutatják, hogyan készítheti elő és futtathatja a minősítési teszteket a parancssori felület használatával:
 
 ### <a name="install-the-azure-iot-extension-for-the-azure-cli"></a>Az Azure IoT bővítmény telepítése az Azure CLI-hez
 
-Tekintse meg a telepítési utasításokat az [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) környezetbe állításához.
+Tekintse meg a telepítési utasításokat az [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest&preserve-view=true) környezetbe állításához.
 
 Az Azure IoT bővítmény telepítéséhez futtassa a következő parancsot:
 
@@ -61,7 +61,7 @@ Az Azure IoT bővítmény telepítéséhez futtassa a következő parancsot:
 az extension add --name azure-iot
 ```
 
-További információ: [Azure CLI az Azure IoT](https://docs.microsoft.com/cli/azure/azure-cli-reference-for-iot?view=azure-cli-latest)-hoz.
+További információ: [Azure CLI az Azure IoT](https://docs.microsoft.com/cli/azure/azure-cli-reference-for-iot?view=azure-cli-latest&preserve-view=true)-hoz.
 
 ### <a name="create-a-new-product-test"></a>Új termék tesztelésének létrehozása
 
@@ -75,7 +75,7 @@ az iot product test create --badge-type Pnp --at SymmetricKey --device-type Fini
 ```
 
 > [!NOTE]
-> A CLI használatakor be kell [jelentkeznie](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest) az előfizetésbe.
+> A CLI használatakor be kell [jelentkeznie](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest&preserve-view=true) az előfizetésbe.
 
 A parancs JSON-kimenete tartalmazza a `primaryKey` , `registrationId` , és az `scopeID` eszköz csatlakoztatásakor használni kívánt elemet.
 
@@ -166,9 +166,6 @@ Példa teszt futtatása kimenetre
 
 Az alábbi lépések bemutatják, hogyan használhatja az [Azure Certified Device Portalt](https://aka.ms/acdp) a bevezetéshez, a termék adatainak regisztrálásához, az első lépéseket ismertető útmutató elküldéséhez, valamint a minősítési tesztek futtatásához.
 
-> [!NOTE]
-> Az írás időpontjában a portál nem támogatja a [Certified for Azure IoT-eszközök](https://aka.ms/devicecatalog)közzétételét.
-
 ### <a name="onboarding"></a>Előkészítés
 
 A [minősítési portál](https://aka.ms/acdp)használatához Azure Active Directory kell használnia a munkahelyi vagy iskolai bérlőtől.
@@ -204,6 +201,14 @@ Három lépést kell végrehajtania:
 1. Tekintse át a csatolókat. Tekintse át az illesztőfelületet, és győződjön meg arról, hogy mindegyik rendelkezik olyan hasznos adatokkal, amelyek a tesztelés szempontjából ésszerűek.
 1. Teszt. A rendszer minden eszköz modelljét teszteli, és ellenőrzi, hogy a modellben ismertetett telemetria, tulajdonságok és parancsok követik-e a IoT Plug and Play konvencióit. Ha a teszt elkészült, a **naplók megtekintése** hivatkozásra kattintva megtekintheti a telemetria az eszközről és a nyers adatok IoT hub eszköz Twin tulajdonságai között.
 
-## <a name="next-steps"></a>Következő lépések
+### <a name="submit-and-publish"></a>Küldés és közzététel
+
+Az utolsó szükséges szakasz a projekt véleményezésre való elküldése. Ez a lépés értesíti az Azure Certified eszköz csapattagot, hogy áttekintse a projekt teljességét, beleértve az eszköz és a marketing részleteit, valamint az első lépéseket ismertető útmutatót. A csapattag felveheti Önnel a kapcsolatot a korábban a kérdésekkel vagy a kérések szerkesztése előtt megadott vállalati e-mail-címen a jóváhagyás előtt.
+
+Ha az eszközön további manuális ellenőrzésre van szükség a minősítés részeként, akkor a rendszer jelenleg értesítést fog kapni.
+
+Egy eszköz minősítése **esetén a termék** összegzése lapon közzéteheti a termék részleteit az Azure Certified-eszköz katalógusában.
+
+## <a name="next-steps"></a>További lépések
 
 Az eszköz beküldésének befejezése után a következő lépésekkel léphet kapcsolatba az eszköz minősítési csapatával, [iotcert@microsoft.com](mailto:iotcert@microsoft.com) amely tartalmazza a Microsoft Partner Network tagságának ellenőrzését és az első lépéseket ismertető útmutatók áttekintését. Ha az összes követelmény teljesül, dönthet úgy, hogy az eszközt belefoglalja az [Azure IoT-eszközökre tanúsított tanúsítvánnyal](https://aka.ms/devicecatalog).

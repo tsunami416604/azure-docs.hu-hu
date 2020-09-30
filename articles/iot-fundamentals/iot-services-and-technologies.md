@@ -7,12 +7,12 @@ services: iot-fundamentals
 ms.topic: overview
 ms.date: 01/15/2020
 ms.author: dobett
-ms.openlocfilehash: 0b04b5170c13f6f6c3fd74976461f03e4367060a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: dedb799121fcdbc6bab38865132ae46a78aa6494
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77046061"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578179"
 ---
 # <a name="azure-technologies-and-services-for-creating-iot-solutions"></a>Azure-technológiák és-szolgáltatások IoT-megoldások létrehozásához
 
@@ -55,9 +55,9 @@ Ha teljesen új IoT-megoldást szeretne létrehozni, vagy IoT Central vagy megol
 
 ### <a name="devices"></a>Eszközök
 
-Fejlessze IoT-eszközeit az [Azure IoT Starter-készletek](https://catalog.azureiotsolutions.com/kits) egyikével, vagy válasszon ki egy eszközt, [amelyet az Azure Certified for IoT Device Catalog](https://catalog.azureiotsolutions.com)használatával használhat. A beágyazott kód implementálása a nyílt forráskódú [eszköz SDK](../iot-hub/iot-hub-devguide-sdks.md)-k használatával. Az eszköz SDK-k több operációs rendszert támogatnak, mint például a Linux, a Windows és a valós idejű operációs rendszerek. Több programozási nyelvhez is vannak SDK-k, például [C](https://github.com/Azure/azure-iot-sdk-c), [Node. js](https://github.com/Azure/azure-iot-sdk-node), [Java](https://github.com/Azure/azure-iot-sdk-java), [.net](https://github.com/Azure/azure-iot-sdk-csharp)és [Python](https://github.com/Azure/azure-iot-sdk-python).
+Fejlessze IoT-eszközeit az [Azure IoT Starter-készletek](https://catalog.azureiotsolutions.com/kits) egyikével, vagy válasszon ki egy eszközt, [amelyet az Azure Certified for IoT Device Catalog](https://catalog.azureiotsolutions.com)használatával használhat. A beágyazott kód implementálása a nyílt forráskódú [eszköz SDK](../iot-hub/iot-hub-devguide-sdks.md)-k használatával. Az eszköz SDK-k több operációs rendszert támogatnak, mint például a Linux, a Windows és a valós idejű operációs rendszerek. Több programozási nyelvhez is vannak SDK-k, például a [C](https://github.com/Azure/azure-iot-sdk-c), a [Node.js](https://github.com/Azure/azure-iot-sdk-node), a [Java](https://github.com/Azure/azure-iot-sdk-java), a [.net](https://github.com/Azure/azure-iot-sdk-csharp)és a [Python](https://github.com/Azure/azure-iot-sdk-python).
 
-Tovább egyszerűsítheti az eszközök beágyazott kódjának létrehozását a [IoT Plug and Play előzetes](../iot-pnp/overview-iot-plug-and-play.md) verzió szolgáltatásával. A IoT Plug and Play lehetővé teszi, hogy a megoldások fejlesztői bármilyen beágyazott kód írása nélkül integrálják az eszközöket a megoldásaikkal. A IoT-Plug and Play középpontjában az eszköz képességeinek leírására szolgáló _eszköz-képességi modell_ séma található. Az eszköz képességeinek modellje segítségével létrehozza a beágyazott eszköz kódját, és konfigurálhat egy felhőalapú megoldást, például egy IoT Central alkalmazást.
+A [IoT Plug and Play](../iot-pnp/overview-iot-plug-and-play.md) szolgáltatás használatával tovább egyszerűsítheti az eszközök beágyazott kódjának létrehozását. A IoT Plug and Play lehetővé teszi, hogy a megoldások fejlesztői bármilyen beágyazott kód írása nélkül integrálják az eszközöket a megoldásaikkal. A IoT-Plug and Play középpontjában az eszköz képességeinek leírására szolgáló _eszköz-képességi modell_ séma található. Az eszköz képességeinek modellje segítségével létrehozza a beágyazott eszköz kódját, és konfigurálhat egy felhőalapú megoldást, például egy IoT Central alkalmazást.
 
 [Azure IoT Edge](../iot-edge/about-iot-edge.md) lehetővé teszi, hogy a IoT számítási feladatainak részeit az Azure Cloud servicesből az eszközeire kiossza. A IoT Edge csökkentheti a megoldás késését, csökkentheti a felhőben tárolt adatok mennyiségét, és lehetővé teheti az off-line forgatókönyvek kikapcsolását. IoT Edge-eszközöket kezelheti IoT Central és néhány megoldási gyorssegéd használatával.
 

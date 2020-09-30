@@ -10,38 +10,44 @@ ms.assetid: 6d42fb79-d9cf-48da-8445-f482c4c536af
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/10/2020
+ms.date: 09/10/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aed5dcf98e37b0d075804985355bdabe3b50b712
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: db10f53033e305aa2306bce230e7880140f35189
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91295345"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578282"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Az Azure AD Connect testreszabott telepítése
-Az Azure AD Connect **Custom settings** (Egyéni beállítások) menüje akkor használható, ha részletesebb beállításokra van szükség a telepítéshez. Akkor van rá szükség, ha több erdővel rendelkezik vagy ha választható szolgáltatásokat kíván konfigurálni, amelyeket a gyorstelepítés nem tartalmaz. Minden olyan esetben szükséges, ahol a [**gyorstelepítés**](how-to-connect-install-express.md) beállítás nem megfelelő az üzemelő példányhoz vagy a topológiához.
+Azure AD Connect **egyéni beállításokat** akkor használja a rendszer, ha további beállításokat szeretne használni a telepítéshez.  Ha például több erdővel rendelkezik, vagy ha választható szolgáltatásokat szeretne konfigurálni. Minden olyan esetben szükséges, ahol a [**gyorstelepítés**](how-to-connect-install-express.md) beállítás nem megfelelő az üzemelő példányhoz vagy a topológiához.
 
 Mielőtt elkezdené telepíteni az Azure AD Connect szolgáltatást, bizonyosodjon meg róla, hogy [letöltötte az Azure AD Connectet](https://go.microsoft.com/fwlink/?LinkId=615771), és elvégezte az [Azure AD Connect: Hardware and prerequisites](how-to-connect-install-prerequisites.md) (Azure AD Connect: hardver és előfeltételek) témakörben leírt lépéseket. Emellett győződjön meg róla, hogy a rendelkezésre állnak az [Azure AD Connect-fiókok és -engedélyek](reference-connect-accounts-permissions.md) szakaszban ismertetett fiókok.
 
-Ha az egyedi beállítások nem felelnek meg a topológiának, például a DirSync-frissítésnek, lásd az egyéb forgatókönyvek leírását a dokumentációban.
-
 ## <a name="custom-settings-installation-of-azure-ad-connect"></a>Az Azure AD Connect telepítése egyéni beállításokkal
+
 ### <a name="express-settings"></a>Express Settings (Gyorsbeállítások)
-Ezen az oldalon kattintson a **Customize** (Testreszabás) gombra a testre szabott beállításokkal végzett telepítések indításához.
+Ezen az oldalon kattintson a **Customize** (Testreszabás) gombra a testre szabott beállításokkal végzett telepítések indításához.  A dokumentum többi része végigvezeti Önt az egyéni telepítés varázsló különböző képernyőjén.  Az alábbi hivatkozásokra kattintva gyorsan megnyithatja az adott varázsló képernyőjének adatait.
+
+- [Szükséges összetevők telepítése](#install-required-components)
+- [Felhasználói bejelentkezés](#user-sign-in)
+- [Csatlakozás az Azure AD szolgáltatáshoz](#connect-to-azure-ad)
+- [Oldalak a Sync (Szinkronizálás) szakaszban](#pages-under-the-sync-section)
 
 ### <a name="install-required-components"></a>Szükséges összetevők telepítése
-Amikor a szinkronizálási szolgáltatásokat telepíti, a választható konfiguráció szakaszt bejelöletlenül hagyhatja, és ekkor az Azure AD Connect mindent automatikusan beállít. Beállít egy SQL Server 2012 Express LocalDB példányt, létrehozza a megfelelő csoportokat, és kiosztja az engedélyeket. Ha módosítani kívánja az alapértelmezett beállításokat, az alábbi táblázatban megtekintheti az elérhető választható konfigurációs beállításokat.
+Amikor a szinkronizálási szolgáltatásokat telepíti, a választható konfiguráció szakaszt bejelöletlenül hagyhatja, és ekkor az Azure AD Connect mindent automatikusan beállít. Beállítja a SQL Server 2012 Express LocalDB-példányt, létrehozza a megfelelő csoportokat, és hozzárendeli az engedélyeket. Ha módosítani szeretné az alapértelmezett beállításokat, a megfelelő mezők ellenőrzésével használhatja ezt a beállítást.  Az alábbi táblázat összefoglalja ezeket a beállításokat, és további információkra mutató hivatkozásokat tartalmaz. 
 
 ![Szükséges összetevők](./media/how-to-connect-install-custom/requiredcomponents2.png)
 
 | Választható konfiguráció | Leírás |
 | --- | --- |
+|Egyéni telepítési hely meghatározása| Lehetővé teszi a Azure AD Connect alapértelmezett telepítési útvonalának módosítását.|
 | Meglévő SQL Server használata |A használatával megadhatja az SQL Server nevét és a példány nevét. Válassza ezt a lehetőséget, ha már rendelkezik adatbázis-kiszolgálóval, amelyet használni kíván. Adja meg a példány nevét, majd vesszővel elválasztva egy portszámot az **Instance Name** (Példány neve) mezőben, ha az SQL Serveren nincs engedélyezve a tallózás.  Ezután adja meg a Azure AD Connect adatbázis nevét.  Az SQL-jogosultságok határozzák meg, hogy létrejön-e új adatbázis, vagy az SQL-rendszergazdának előre kell létrehoznia az adatbázist.  Ha rendelkezik SQL SA-engedélyekkel, tekintse meg [a telepítés meglévő adatbázis használatával](how-to-connect-install-existing-database.md)című témakört.  Ha delegált engedélyekkel (DBO) rendelkezik, tekintse meg [az SQL-delegált rendszergazdai engedélyekkel rendelkező Azure ad Connect telepítése](how-to-connect-install-sql-delegation.md)című témakört. |
 | Meglévő szolgáltatásfiók használata |Alapértelmezés szerint az Azure AD Connect egy helyi szolgáltatásfiókot használ, amelyet a szinkronizálási szolgáltatások használhatnak. Amennyiben távoli SQL-kiszolgálót vagy egy hitelesítést igénylő proxyt használ, egy **felügyelt szolgáltatásfiókra** lesz szüksége, vagy egy, a tartományban lévő szolgáltatásfiókra, és ismernie kell a jelszót. Ezekben az esetekben adja meg a használni kívánt fiókot. Bizonyosodjon meg róla, hogy a telepítést futtató felhasználó rendszergazda az SQL Serveren, hogy létre lehessen hozni bejelentkezési adatokat a szolgáltatásfiókhoz.  Lásd: [Azure ad Connect fiókok és engedélyek](reference-connect-accounts-permissions.md#adsync-service-account). </br></br>A legújabb buildben az SQL-rendszergazda sávon kívül kiépítheti az adatbázist, majd az Azure AD Connect-rendszergazda adatbázis-tulajdonosi jogosultságokkal telepítheti.  További információ: [Az Azure AD Connect telepítése SQL-lel delegált rendszergazdai engedélyekkel](how-to-connect-install-sql-delegation.md).|
 | Egyéni szinkronizálási csoportok megadása |Alapértelmezés szerint az Azure AD Connect létrehoz négy helyi csoportot a kiszolgálón a szinkronizálási szolgáltatások telepítésekor. Ezek a csoportok a következők: Administrators (Rendszergazdák) csoport, Operators (Operátorok) csoport, Browse (Tallózás) csoport és Password Reset (Jelszó-visszaállítás) csoport. Itt megadhatja a saját csoportjait. A csoportoknak helyi csoportoknak kell lenniük a kiszolgálón, és nem lehetnek a tartományban. |
+|Szinkronizálási beállítások importálása (előzetes verzió)|Lehetővé teszi a beállítások importálását a Azure AD Connect egy másik verziójából.  További információ: [Azure ad Connect konfigurációs beállítások importálása és exportálása](how-to-connect-import-export-config.md).|
 
 ### <a name="user-sign-in"></a>Felhasználói bejelentkezés
 A szükséges összetevők telepítését követően a rendszer megkéri, hogy válassza ki a felhasználók egyszeri bejelentkezésének módját. Az alábbi táblázat tartalmazza az elérhető beállítások rövid ismertetését. A bejelentkezési módok teljes leírásáért lásd: [Felhasználói bejelentkezés](plan-connect-user-signin.md).
@@ -167,7 +173,7 @@ A képernyő segítségével beállíthatja a választható szolgáltatásokat a
 >
 >Az Azure AD Connect legújabb verziójának letöltéséhez kattintson [ide](https://www.microsoft.com/download/details.aspx?id=47594).
 
-![Választható szolgáltatások](./media/how-to-connect-install-custom/optional2.png)
+ ![Választható szolgáltatások](./media/how-to-connect-install-custom/optional2a.png)
 
 > [!WARNING]
 > Amennyiben a DirSync vagy az Azure AD Sync jelenleg aktív, ne aktiválja az Azure AD Connect egyik visszaíró szolgáltatását sem.
@@ -410,7 +416,7 @@ Végül törölje az adatbázist.  Ehhez használja a **Microsoft SQL Server Man
 
 Miután törölte az **ADSync** adatbázist, a **Telepítés** gombra kattintva újból megkísérelheti a telepítést.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Miután a telepítés befejeződött, jelentkezzen ki, majd ismét jelentkezzen be a Windowsba, mielőtt a Synchronization Service Managert (Szinkronizálási szolgáltatás kezelőjét) vagy a Synchronization Rule Editort (Szinkronizálási szabályok szerkesztőjét) használná.
 
 Miután az Azure AD Connect telepítése megtörtént, [ellenőrizheti a telepítést, és hozzárendelheti a licenceket](how-to-connect-post-installation.md).

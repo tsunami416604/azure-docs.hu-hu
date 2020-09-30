@@ -1,15 +1,15 @@
 ---
 title: Ismerje meg, hogyan működnek a metrikus riasztások Azure Monitorban.
 description: Tekintse át, hogy mit tehet a metrikus riasztásokkal, és hogyan működnek Azure Monitorban.
-ms.date: 08/16/2020
+ms.date: 09/30/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 8e57ec698f96826f493d048490ac053672e45895
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 78ec5ff3fc87ef29d25e439b7d4c69bb3a10f3a7
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89595563"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578070"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>A metrikariasztások működése az Azure Monitorban
 
@@ -135,7 +135,7 @@ Eddig azt tapasztalta, hogy egyetlen metrikai riasztást is használhat egy vagy
 
 Ez a funkció jelenleg a platform metrikái (nem egyéni metrikák) esetén támogatott a következő szolgáltatásokhoz a következő Azure-felhőkben:
 
-| Szolgáltatás | Nyilvános Azure | Államigazgatás | Kína |
+| Szolgáltatás | Nyilvános Azure | Government | Kína |
 |:--------|:--------|:--------|:--------|
 | Virtuális gépek<sup>1</sup>  | **Igen** | Nem | Nem |
 | SQL Server-adatbázisok | **Igen** | **Igen** | **Igen** |
@@ -143,6 +143,7 @@ Ez a funkció jelenleg a platform metrikái (nem egyéni metrikák) esetén tám
 | NetApp-fájlok kapacitásának készletei | **Igen** | **Igen** | **Igen** |
 | NetApp-fájlok kötetei | **Igen** | **Igen** | **Igen** |
 | Kulcstartók | **Igen** | **Igen** | **Igen** |
+| Azure Cache for Redis | **Igen** | **Igen** | **Igen** |
 | Adatmező peremhálózati eszközei | **Igen** | **Igen** | **Igen** |
 
 <sup>1</sup> nem támogatott a virtuálisgép-hálózati metrikák esetében (összesen a hálózat, a hálózat teljes száma, a bejövő folyamatok, a kimenő folyamatok, a bejövő folyamatok maximális létrehozási sebessége, a kimenő forgalom maximális száma).
@@ -172,7 +173,7 @@ A metrikus riasztások esetében általában 5 percen belül értesítést fog k
 A támogatott erőforrástípusok teljes listáját ebben a [cikkben](./alerts-metric-near-real-time.md#metrics-and-dimensions-supported)találja.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Megtudhatja, hogyan hozhat létre, tekinthet meg és kezelhet metrikus riasztásokat az Azure-ban](alerts-metric.md)
 - [Megtudhatja, hogyan helyezhet üzembe metrikus riasztásokat Azure Resource Manager sablonok használatával](./alerts-metric-create-templates.md)

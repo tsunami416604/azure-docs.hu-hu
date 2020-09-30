@@ -1,28 +1,28 @@
 ---
-title: Korlátok és kvóták IoT Plug and Play előzetes verzió | Microsoft Docs
-description: Ismerje meg a IoT Plug and Play előzetes verziójának használatakor alkalmazandó korlátokat, kvótákat és szabályozásokat.
+title: Korlátok és kvóták IoT Plug and Play | Microsoft Docs
+description: Ismerje meg a IoT-Plug and Play használatakor alkalmazandó korlátokat, kvótákat és szabályozásokat.
 author: prashmo
 ms.author: prashmo
 ms.date: 07/21/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 5c4377120f61792b580225a22b9f5ff51b5e1b64
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: d965d9cb8b87ce0b67f4fe0c07b660fdfd69cc07
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337398"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577985"
 ---
-# <a name="iot-plug-and-play-preview-limits-quotas-and-throttles"></a>IoT Plug and Play előzetes verziójának korlátai, kvótái és szabályozásai
+# <a name="iot-plug-and-play-limits-quotas-and-throttles"></a>IoT Plug and Play korlátok, kvóták és szabályozások
 
-Ez a cikk ismerteti a nyilvános előzetes verzióban alkalmazandó, Plug and Play-specifikus korlátokat, kvótákat és IoT. Meglévő [IoT hub kvóták és szabályozás](../iot-hub/iot-hub-devguide-quotas-throttling.md) is érvényes.
+Ez a cikk a IoT Plug and Play-specifikus korlátait, kvótáit és szabályozását ismerteti. Meglévő [IoT hub kvóták és szabályozás](../iot-hub/iot-hub-devguide-quotas-throttling.md) is érvényes.
 
 ## <a name="iot-hub"></a>IoT Hub
 
-A nyilvános előzetes verzió esetében a következő korlátozások és kvóták érvényesek egy IoT hub-ra:
+A következő korlátozások és kvóták érvényesek egy IoT hubhoz:
 
-| Korlátok, korlátozások és szabályozások | Érték | Megjegyzések |
+| Korlátok, korlátozások és szabályozások | Érték | Jegyzetek |
 |-----|-----|-----|
 | A központ által regisztrálható felületek száma | 1500 ||
 | Az összetevő nevének maximális mérete | 1-64 karakter | Engedélyezett karakterek: a-z, A-Z, 0-9 (nem az első karakter), és az aláhúzás (nem az első vagy az utolsó karakter). |
@@ -35,6 +35,6 @@ A nyilvános előzetes verzió esetében a következő korlátozások és kvót�
 
 Az elemző könyvtár a [digitális Twins-definíciós nyelvre](https://github.com/Azure/opendigitaltwins-dtdl)vonatkozó korlátokat követi.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A javasolt következő lépés a [IoT Plug and Play architektúra](concepts-architecture.md)áttekintése.

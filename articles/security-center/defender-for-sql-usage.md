@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: ea0df1fb68697ceee55614510cc0295c73fec00e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6d19027cfd406f81d31696c5cd2c1a235574e400
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91301652"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577847"
 ---
 # <a name="azure-defender-for-sql-servers-on-machines"></a>Azure Defender a gépeken futó SQL-kiszolgálókon 
 
@@ -33,7 +33,7 @@ A riasztások akkor jelennek meg, ha gyanús adatbázis-tevékenységek, potenci
 |Kiadás állapota:|Előnézet|
 |Árképzési|A **gépeken futó Azure Defender szolgáltatás** számlázása [a díjszabási oldalon](security-center-pricing.md) látható módon történik.|
 |Védett SQL-verziók:|Azure SQL Server (a Microsoft támogatási szolgálata által érintett összes verzió)|
-|Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Kínai gov, egyéb gov|
+|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) US Gov<br>![Nem](./media/icons/no-icon.png) Kínai gov, egyéb gov|
 |||
 
 ## <a name="set-up-azure-defender-for-sql-servers-on-machines"></a>Azure Defender beállítása a gépeken futó SQL-kiszolgálókhoz
@@ -48,7 +48,7 @@ A fentiek mindegyikét alább találja.
 
 ### <a name="step-1-provision-the-log-analytics-agent-on-your-sql-servers-host"></a>1. lépés A Log Analytics-ügynök kiépítése az SQL Server gazdagépén:
 
-- **SQL Server Azure** -beli virtuális gépen – ha az SQL-gépe Azure-beli virtuális gépen üzemel, akkor [automatikusan kiépítheti a log Analytics-ügynököt](security-center-enable-data-collection.md#workspace-configuration). Azt is megteheti, hogy a manuális eljárást követi [Azure stack gépek hozzáadásához](quickstart-onboard-machines.md#add-non-azure-computers).
+- **SQL Server Azure** -beli virtuális gépen – ha az SQL-gépe Azure-beli virtuális gépen üzemel, akkor [automatikusan kiépítheti a log Analytics-ügynököt](security-center-enable-data-collection.md#workspace-configuration). Azt is megteheti, hogy a manuális eljárást követve bevezeti [a Azure stack virtuális gépeket](quickstart-onboard-machines.md#onboard-your-azure-stack-vms).
 - **SQL Server az Azure arc** -ban – ha a SQL Server egy [Azure arc](https://docs.microsoft.com/azure/azure-arc/) -gépen üzemel, akkor a log Analytics-ügynököt a Security Center javaslat használatával telepítheti: "log Analytics ügynökének telepítve kell lennie a Windows-alapú Azure arc-gépeken (előzetes verzió)". Azt is megteheti, hogy az [Azure arc dokumentációjában](https://docs.microsoft.com/azure/azure-arc/servers/manage-vm-extensions#enable-extensions-from-the-portal)követheti a manuális eljárást.
 
 - **Helyszíni SQL Server** – ha a SQL Server Azure arc nélküli helyszíni Windows-gépen üzemel, két lehetőség közül választhat az Azure-hoz való csatlakozáshoz:
@@ -97,7 +97,7 @@ A sebezhetőségi felmérés eredményei közvetlenül a Security Center tekinth
 
     Megjelenik a javaslat részletes nézete.
 
-    :::image type="content" source="./media/security-center-advanced-iaas-data/all-servers-view.png" alt-text="A javaslat részletes nézete":::
+    :::image type="content" source="./media/security-center-advanced-iaas-data/all-servers-view.png" alt-text="A biztonsági rések felmérésének eredményeit a gépeken lévő SQL-kiszolgálókon szervizelni kell (előzetes verzió)":::
 
 1. További részleteket a következő részletezésben talál:
 
@@ -124,7 +124,7 @@ Az Azure Defender-riasztások a Security Center riasztások lapján, az erőforr
     [További információ a riasztások kezeléséről és megválaszolásáról](security-center-managing-and-responding-alerts.md).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Kapcsolódó anyagok esetében tekintse meg a következő cikket:
 

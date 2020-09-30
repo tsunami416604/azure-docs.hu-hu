@@ -5,13 +5,15 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: jehollan
-ms.custom: references_regions
-ms.openlocfilehash: a650c6d5aeea28e800b1a4ce9db325a52d60d5cc
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.custom:
+- references_regions
+- fasttrack-edit
+ms.openlocfilehash: a037c903a72ba79b79c7e6b011fe025aefd7b51d
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91372221"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578036"
 ---
 # <a name="azure-functions-premium-plan"></a>Prémium csomag Azure Functions
 
@@ -43,7 +45,7 @@ Ha a használati tervben jelenleg nem fordulnak elő események és végrehajtá
 A prémium csomaggal az alkalmazás mindig egy adott számú példányon áll készen.  A mindig kész példányok maximális száma 20.  Amikor az események elkezdik elindítani az alkalmazást, először a mindig kész példányokra irányítják őket.  Ahogy a függvény aktívvá válik, a további példányok pufferként lesznek bemelegítve.  Ez a puffer megakadályozza, hogy a méretezés során új példányok ne legyenek hidegen.  Ezeket a pufferelt példányokat [előre bemelegítő példányoknak](#pre-warmed-instances)nevezzük.  Az Always Ready-példányok és az előre bemelegítő puffer együttes használatával az alkalmazás hatékonyan kiszűrheti a hidegindító-használatot.
 
 > [!NOTE]
-> Minden prémium csomagnak legalább egy aktív és számlázott példánya lesz.
+> Minden prémium csomagnak legalább egy aktív (számlázott) példánya lesz.
 
 A Azure Portal mindig kész példányok számát beállíthatja úgy, hogy kijelöli a **függvényalkalmazás**, majd a **platform szolgáltatásai** lapra kattint, majd kiválasztja a **kiskálázási** lehetőségeket. Az alkalmazás szerkesztése ablakban a mindig kész példányok az adott alkalmazásra vonatkoznak.
 
@@ -59,9 +61,9 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 
 Az előre bemelegítő példányok a méretezési és aktiválási események során pufferként beérkező példányok száma.  Az előre bemelegített példányok továbbra is a pufferig maradnak, amíg el nem éri a maximális kibővíthető korlátot.  Az alapértelmezett előre bemelegítő példányok száma 1, a legtöbb esetben pedig 1.  Ha egy alkalmazás hosszú bemelegítőt használ (például egy egyéni tároló képét), akkor érdemes lehet ezt a puffert emelni.  Egy előre bemelegített példány csak akkor válik aktívvá, ha az összes aktív példány megfelelően ki lett használva.
 
-Gondolja át ezt a példát arra, hogy a kész példányok és az előre bemelegítő példányok hogyan működnek együtt.  A prémium szintű Function alkalmazáshoz öt mindig kész példány van konfigurálva, és az alapértelmezett egy előre bemelegítő példány.  Ha az alkalmazás üresjáratban van, és nincs aktiválva esemény, az alkalmazás üzembe helyezése és futtatása öt példányban történik.  
+Gondolja át ezt a példát arra, hogy a kész példányok és az előre bemelegítő példányok hogyan működnek együtt.  A Premium Function alkalmazáshoz öt mindig kész példány van konfigurálva, és az alapértelmezett egy előre bemelegítő példány.  Ha az alkalmazás üresjáratban van, és nincs aktiválva esemény, az alkalmazás üzembe helyezése és futtatása öt példányban történik.  Jelenleg nem számítunk fel olyan előre bemelegítő példányt, amelyben a mindig kész példányok nincsenek használatban, és az előre felmelegedett példányok még nem lesznek lefoglalva.
 
-Amint az első trigger bekövetkezik, az öt mindig kész példány aktív lesz, és egy további előre bemelegítő példány van lefoglalva.  Az alkalmazás már hat kiosztott példányon fut: az öt most aktív, mindig kész példány, valamint a hatodik előre bemelegítő és inaktív puffer.  Ha a végrehajtások aránya továbbra is növekszik, az öt aktív példány végül fel lesz használva.  Amikor a platform úgy dönt, hogy öt példányon túli méretezést tesz elérhetővé, az előre bemelegített példányra lesz méretezve.  Ebben az esetben hat aktív példány lesz, és a rendszer azonnal kiépíti a hetedik példányt, és kitölti az előre bemelegítő puffert.  Ez a skálázási és előmelegítési folyamat folytatódni fog, amíg el nem éri az alkalmazáshoz tartozó példányok maximális számát.  Egyetlen példány sem lesz előre bemelegítve vagy aktiválva a maximumon túl.
+Amint az első trigger bekövetkezik, az öt mindig kész példány válik aktívvá, és egy előre bemelegítő példány van lefoglalva.  Az alkalmazás már hat kiosztott példányon fut: az öt most aktív, mindig kész példány, valamint a hatodik előre bemelegítő és inaktív puffer.  Ha a végrehajtások aránya továbbra is növekszik, az öt aktív példány végül fel lesz használva.  Amikor a platform úgy dönt, hogy öt példányon túli méretezést tesz elérhetővé, az előre bemelegített példányra lesz méretezve.  Ebben az esetben hat aktív példány lesz, és a rendszer azonnal kiépíti a hetedik példányt, és kitölti az előre bemelegítő puffert.  Ez a skálázási és előmelegítési folyamat folytatódni fog, amíg el nem éri az alkalmazáshoz tartozó példányok maximális számát.  Egyetlen példány sem lesz előre bemelegítve vagy aktiválva a maximumon túl.
 
 Az Azure CLI használatával módosíthatja az alkalmazások előre bemelegítő példányainak számát.
 
@@ -95,7 +97,7 @@ A Azure Functions a használati terv egyetlen végrehajtás esetén 10 percre va
 
 A terv létrehozásakor kétféle séma-beállítás létezik: a példányok minimális száma (vagy a csomag mérete) és a maximális burst korlát.
 
-Ha az alkalmazás a mindig kész példányokon túli példányokat igényel, akkor továbbra is kibővíthető, amíg a példányok száma eléri a maximális burst korlátot.  A csomagon kívüli példányok díját csak akkor számítjuk fel, ha a rendszert futtatják és bérbe adják.  A legjobb megoldás, ha az alkalmazást a megadott maximális korlátra szeretné méretezni.
+Ha az alkalmazás a mindig kész példányokon túli példányokat igényel, akkor továbbra is kibővíthető, amíg a példányok száma eléri a maximális burst korlátot.  A csomagon kívüli példányok számlázása csak akkor történik meg, ha az Ön által futtatott, illetve az Ön számára lefoglalt, másodpercenként.  A legjobb megoldás, ha az alkalmazást a megadott maximális korlátra szeretné méretezni.
 
 A csomag méretének és Azure Portal maximális értékének konfigurálásához válassza ki a csomag **kibővítő** lehetőségeit vagy az adott tervhez üzembe helyezett Function alkalmazást (a **platform szolgáltatásai**alatt).
 
@@ -120,9 +122,9 @@ az resource update -g <resource_group> -n <premium_plan_name> --set sku.capacity
 
 ### <a name="available-instance-skus"></a>Rendelkezésre álló példányok SKU-ban
 
-A csomag létrehozásakor vagy skálázásakor három példány mérete közül választhat.  A rendszer a másodpercenként felhasznált magok és memória teljes számát számlázza.  Az alkalmazás igény szerint automatikusan több példányra is kibővíthető.  
+A csomag létrehozásakor vagy skálázásakor három példány mérete közül választhat.  Az egyes példányok kiosztása után a rendszer a másodpercenként kiosztott magok és memóriák teljes számát számlázza.  Az alkalmazás igény szerint automatikusan több példányra is kibővíthető.  
 
-|Termékváltozat|Cores|Memória|Tárolás|
+|Termékváltozat|Cores|Memória|Storage|
 |--|--|--|--|
 |EP1|1|3.5 GB|250GB|
 |EP2|2|7GB|250GB|
@@ -179,7 +181,7 @@ Tekintse meg a függvények teljes regionális elérhetőségét itt: [Azure.com
 |USA nyugati régiója| 100 | 20 |
 |USA 2. nyugati régiója| 100 | 20 |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [A Azure Functions méretezési és üzemeltetési lehetőségeinek megismerése](functions-scale.md)

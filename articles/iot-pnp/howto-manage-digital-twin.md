@@ -1,24 +1,24 @@
 ---
 title: A IoT Plug and Play digitális ikrek kezelése
-description: IoT-Plug and Play előnézeti eszköz kezelése digitális Twin API-k használatával
+description: A IoT Plug and Play-eszköz kezelése digitális Twin API-k használatával
 author: prashmo
 ms.author: prashmo
 ms.date: 07/20/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: f86bf17c34d88fa48df4933e979a590fbc89820b
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: bfbfc6e5e4a0f5721d620c2936e5ea0aa685f8ad
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352238"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577594"
 ---
 # <a name="manage-iot-plug-and-play-digital-twins"></a>IoT-Plug and Play digitális ikrek kezelése
 
 A IoT Plug and Play **támogatja a digitális iker és** a digitális **dupla műveletek frissítését** a digitális ikrek kezelésére. Használhatja a [REST API-kat](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin) vagy az egyik [Service SDK](libraries-sdks.md)-t is.
 
-Az írás időpontjában a nyilvános előzetes verzióhoz készült Digital Twin API verziója a következő: `2020-05-31-preview` .
+Az írás időpontjában a digitális Twin API verziója a következő: `2020-09-30` .
 
 ## <a name="update-a-digital-twin"></a>Digitális iker frissítése
 
@@ -72,7 +72,7 @@ A tulajdonságot például a következőképpen frissítheti `targetTemperature`
 ]
 ```
 
-Az előző frissítés egy tulajdonság kívánt értékét állítja be a megfelelő gyökérszintű vagy összetevő-szinten `$metadata` , ahogy az alábbi kódrészletben látható. IoT Hub frissíti a tulajdonság kívánt verzióját:
+Az előző frissítés egy tulajdonság kívánt értékét állítja be a megfelelő összetevő-szinten `$metadata` , ahogy az a következő kódrészletben látható. IoT Hub frissíti a tulajdonság kívánt verzióját:
 
 ```json
 "thermostat1": {
@@ -130,7 +130,7 @@ A következő JSON-javítási minta bemutatja, hogyan adhat hozzá, cserélhet v
 
 A Hozzáadás vagy csere művelet beállítja egy tulajdonság kívánt értékét. Az eszköz szinkronizálhatja az állapotot, és a `ack` kóddal, a verzióval és a leírással együtt az érték frissítését is bejelentheti.
 
-A tulajdonság eltávolítása törli a tulajdonság kívánt értékét, ha be van állítva. Az eszköz ezután leállíthatja ezt a tulajdonságot, és a rendszer eltávolítja a legfelső szintű vagy az összetevőből. Ha ez a tulajdonság az utolsó az összetevőben, akkor a rendszer eltávolítja az összetevőt is.
+A tulajdonság eltávolítása törli a tulajdonság kívánt értékét, ha be van állítva. Az eszköz ezután leállíthatja a tulajdonság jelentését, és a rendszer eltávolítja az összetevőből. Ha ez a tulajdonság az utolsó az összetevőben, akkor a rendszer eltávolítja az összetevőt is.
 
 A következő JSON-javítási minta bemutatja, hogyan adhat hozzá, cserélhet vagy távolíthat el egy tulajdonságot egy összetevőn belül:
 
@@ -193,6 +193,6 @@ A frissítések sikertelenek lehetnek, ha egy eszköz jelentett értékei nem fe
 
 Most, hogy megismerte a digitális ikreket, íme néhány további erőforrás:
 
-- [Eszköz használata a megoldásból](quickstart-service-node.md)
+- [Kommunikáció egy eszközzel a megoldásból](quickstart-service-node.md)
 - [IoT Digital Twin REST API](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin)
 - [Azure IoT Explorer](howto-use-iot-explorer.md)

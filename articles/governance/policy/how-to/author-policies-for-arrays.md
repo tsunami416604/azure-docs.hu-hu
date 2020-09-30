@@ -1,14 +1,14 @@
 ---
 title: Szerzői szabályzatok a tömb tulajdonságaihoz az erőforrásokon
 description: Megismerheti a tömb paramétereinek és a tömb nyelvi kifejezéseknek a használatát, kiértékelheti a [*] aliast, és hozzáfűzheti az elemeket Azure Policy definíciós szabályokkal.
-ms.date: 08/17/2020
+ms.date: 09/30/2020
 ms.topic: how-to
-ms.openlocfilehash: 5b9392a943e264ae5eca989ee87eb9ff09b36972
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: c67982197c0161d99f29747d6fd11166cba86079
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89048482"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576897"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Az Azure-erőforrások tömb tulajdonságainak szerzői szabályzatai
 
@@ -183,7 +183,7 @@ Az alábbi példában szereplő összes feltételnél cserélje le a következő
 
 A következő eredmények a feltétel és a példaként megadott házirend-szabály kombinációjának eredményei, valamint a fenti meglévő értékek tömbje:
 
-|Condition (Állapot) |Eredmény | Használati eset |Magyarázat |
+|Condition (Állapot) |Eredmény | Forgatókönyv |Magyarázat |
 |-|-|-|-|
 |`{<field>,"notEquals":"127.0.0.1"}` |Semmit |Nincs egyezés |Az egyik tömb elem hamis (127.0.0.1! = 127.0.0.1) és egy True (127.0.0.1! = 192.168.1.1) értéket ad vissza, így a **notEquals** feltétel _hamis_ , és a hatás nincs aktiválva. |
 |`{<field>,"notEquals":"10.0.4.1"}` |Házirend hatása |Nincs egyezés |Mindkét tömb elem igaz értéket (10.0.4.1! = 127.0.0.1 és 10.0.4.1! = 192.168.1.1) is kiértékel, így a **notEquals** feltétel _igaz_ , és a hatás aktiválódik. |
@@ -194,16 +194,28 @@ A következő eredmények a feltétel és a példaként megadott házirend-szab�
 |`{<field>,"Equals":"127.0.0.1"}` |Semmit |Összes egyezés |Az egyik tömb elem igaz értéket (127.0.0.1 = = 127.0.0.1) és egy hamis (127.0.0.1 = = 192.168.1.1) értéket ad vissza, így az **egyenlő** állapot _hamis_ , és a hatás nem aktiválódik. |
 |`{<field>,"Equals":"10.0.4.1"}` |Semmit |Összes egyezés |Mindkét tömb elem hamis (10.0.4.1 = = 127.0.0.1 és 10.0.4.1 = = 192.168.1.1) értéket ad eredményként, így az **egyenlő** állapot _hamis_ , és a hatás nem aktiválódik. |
 
-## <a name="the-append-effect-and-arrays"></a>A hozzáfűzési effektus és tömbök
+## <a name="modifying-arrays"></a>Tömbök módosítása
 
-A [hozzáfűzési effektus](../concepts/effects.md#append) eltérő lehet attól függően, hogy a **részletek. mező** **\[\*\]** alias-e vagy sem.
+Az erőforrás [hozzáfűzési](../concepts/effects.md#append) és [módosítási](../concepts/effects.md#modify) tulajdonsága a létrehozás vagy a frissítés során. A tömb tulajdonságainak használatakor a hatások viselkedése attól függ, hogy a művelet megkísérli-e módosítani az  **\[\*\]** aliast, vagy sem:
 
-- Ha nem **\[\*\]** alias, a Hozzáfűzés a teljes tömböt helyettesíti a **Value** tulajdonsággal.
-- **\[\*\]** Alias esetén a Hozzáfűzés hozzáadja az **Value** tulajdonságot a meglévő tömbhöz, vagy létrehozza az új tömböt.
+> [!NOTE]
+> Az `modify` aliasokkal való hatás jelenleg **előzetes**verzióban érhető el.
+
+|Alias |Hatás | Eredmény |
+|-|-|-|
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules` | `append` | Ha hiányzik, a Azure Policy hozzáfűzi a hatás részleteiben megadott teljes tömböt. |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules` | `modify``add`művelettel | Ha hiányzik, a Azure Policy hozzáfűzi a hatás részleteiben megadott teljes tömböt. |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules` | `modify``addOrReplace`művelettel | Azure Policy hozzáfűzi az effektus részleteiben megadott teljes tömböt, ha hiányzik vagy lecseréli a meglévő tömböt. |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]` | `append` | Azure Policy hozzáfűzi a hatás részleteiben megadott tömböt. |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]` | `modify``add`művelettel | Azure Policy hozzáfűzi a hatás részleteiben megadott tömböt. |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]` | `modify``addOrReplace`művelettel | Azure Policy eltávolítja az összes meglévő tömbbeli tagot, és hozzáfűzi a hatás részletei között megadott tömböt. |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].action` | `append` | Azure Policy hozzáfűz egy értéket az `action` egyes tömb tagjainak tulajdonságához. |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].action` | `modify``add`művelettel | Azure Policy hozzáfűz egy értéket az `action` egyes tömb tagjainak tulajdonságához. |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].action` | `modify``addOrReplace`művelettel | Azure Policy hozzáfűzi vagy lecseréli az `action` egyes tömb tagjainak meglévő tulajdonságát. |
 
 További információ: [hozzáfűzési példák](../concepts/effects.md#append-examples).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse át a példákat [Azure Policy mintákon](../samples/index.md).
 - Tekintse meg az [Azure szabályzatdefiníciók struktúrája](../concepts/definition-structure.md) szakaszt.

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.custom: has-adal-ref
-ms.openlocfilehash: ac585f1c215e5eb7ad5a6628ac85b70e7c76b14e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0dd5d1da41c5fcc596e4c70f797e75c30997ce0b
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85511311"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578546"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Végfelhasználói hitelesítés Azure Data Lake Storage Gen1 használatával Azure Active Directory
 > [!div class="op_single_selector"]
@@ -97,17 +97,17 @@ Az átirányítási URI beolvasásához hajtsa végre a következő lépéseket.
 
 2. Az alkalmazás **Beállítások** paneljén kattintson a **szükséges engedélyek**elemre, majd a **Hozzáadás**gombra.
 
-    ![ügyfél-azonosító](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-1.png)
+    ![Képernyőkép a beállítások panelről, az átirányítási U R I kapcsolóval, valamint az átirányítási U R I panelen a tényleges U R-vel.](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-1.png)
 
 3. Az **API-hozzáférés hozzáadása** panelen kattintson az **API kiválasztása**elemre, majd a **Azure Data Lake**elemre, végül a **kiválasztás**gombra.
 
-    ![ügyfél-azonosító](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-2.png)
+    ![Képernyőkép az API-hozzáférés hozzáadása panelről, az API kiválasztása lehetőség kiválasztásával és az API kiválasztása panelen a Azure Data Lake lehetőséggel és a kinevezett Select lehetőséggel.](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-2.png)
 
 4.  Az **API-hozzáférés hozzáadása** panelen kattintson az **engedélyek kiválasztása**elemre, jelölje be a jelölőnégyzetet, hogy **teljes hozzáférést adjon a Data Lake Storehoz**, majd kattintson a **kiválasztás**gombra.
 
-    ![ügyfél-azonosító](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-3.png)
+    ![Képernyőkép az API-hozzáférés hozzáadása panelről, a kinevezett engedélyek kiválasztása lehetőséggel, a hozzáférés engedélyezése panelen pedig a teljes hozzáféréssel rendelkezik a Azure Data Lake szolgáltatás lehetőséghez, és a Select (kiválasztás) lehetőséget.](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-3.png)
 
-    Kattintson a **Done** (Kész) gombra.
+    Kattintson a **Kész** gombra.
 
 5. Ismételje meg az utolsó két lépést a **Windows Azure Service Management API** engedélyeinek megadásához is.
 

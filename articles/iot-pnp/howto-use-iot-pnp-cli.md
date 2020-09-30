@@ -1,5 +1,5 @@
 ---
-title: Használja az Azure IoT-bővítményt az Azure CLI-hez a IoT Plug and Play Preview-eszközökkel való kommunikációhoz | Microsoft Docs
+title: Használja az Azure IoT-bővítményt az Azure CLI-hez a IoT Plug and Play-eszközökkel való kommunikációhoz | Microsoft Docs
 description: Telepítse az Azure IoT-bővítményt az Azure CLI-hez, és használja az IoT hub-hoz csatlakoztatott IoT Plug and Play eszközök használatához.
 author: dominicbetts
 ms.author: dobett
@@ -7,18 +7,18 @@ ms.date: 07/20/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: dadb1f044547acd6e5f0d274143123e89d7dae46
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 680cd4ef4f73c63850a2137b344fd0af6b27c673
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475481"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577458"
 ---
 # <a name="install-and-use-the-azure-iot-extension-for-the-azure-cli"></a>Az Azure IoT bővítmény telepítése és használata az Azure CLI-hez
 
-[Az Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) egy nyílt forráskódú, többplatformos parancssori eszköz az Azure-erőforrások, például a IoT hub kezelésére. Az Azure CLI Windows, Linux és macOS rendszeren érhető el. Az Azure CLI-vel a bővítmények telepítése nélkül kezelheti az Azure IoT Hub erőforrásait, az eszközök kiépítési szolgáltatásának példányait és a társított hubokat.
+[Az Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest&preserve-view=true) egy nyílt forráskódú, többplatformos parancssori eszköz az Azure-erőforrások, például a IoT hub kezelésére. Az Azure CLI Windows, Linux és macOS rendszeren érhető el. Az Azure CLI-vel a bővítmények telepítése nélkül kezelheti az Azure IoT Hub erőforrásait, az eszközök kiépítési szolgáltatásának példányait és a társított hubokat.
 
-Az Azure CLI-hez készült Azure IoT-bővítmény parancssori eszköz a IoT Plug and Play előnézeti eszközökhöz való interakcióhoz és teszteléshez. A bővítmény a következőre használható:
+Az Azure CLI-hez készült Azure IoT-bővítmény parancssori eszköz a IoT Plug and Play-eszközökhöz való interakcióhoz és teszteléshez. A bővítmény a következőre használható:
 
 - Kapcsolódjon egy eszközhöz.
 - Az eszköz által küldött telemetria megtekintése.
@@ -34,11 +34,11 @@ Ez a cikk a következőkhöz nyújt útmutatást:
 
 ### <a name="step-1---install-the-azure-cli"></a>1. lépés – az Azure CLI telepítése
 
-Kövesse a [telepítési utasításokat](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) , és állítsa be az Azure CLI-t a környezetében. A legjobb megoldás, ha az Azure CLI-verziójának 2.9.1 vagy újabb verziójúnak kell lennie. A verziószámot az `az -–version` paranccsal ellenőrizheti.
+Kövesse a [telepítési utasításokat](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) , és állítsa be az Azure CLI-t a környezetében. A legjobb megoldás, ha az Azure CLI-verziójának 2.9.1 vagy újabb verziójúnak kell lennie. A verziószámot az `az -–version` paranccsal ellenőrizheti.
 
 ### <a name="step-2---install-iot-extension"></a>2. lépés – a IoT-bővítmény telepítése
 
-[Az IoT-bővítmény fontos (readme) fájlja](https://github.com/Azure/azure-iot-cli-extension) több módszert is ismertet a bővítmény telepítésére. A legegyszerűbb módszer az `az extension add --name azure-iot` futtatása. A telepítés után az `az extension list` paranccsal ellenőrizheti az aktuálisan telepített bővítményeket, az `az extension show --name azure-iot` paranccsal pedig megtekintheti az IoT-bővítmény adatait. Az írás időpontjában a bővítmény verziószáma `0.9.7` .
+[Az IoT-bővítmény fontos (readme) fájlja](https://github.com/Azure/azure-iot-cli-extension) több módszert is ismertet a bővítmény telepítésére. A legegyszerűbb módszer az `az extension add --name azure-iot` futtatása. A telepítés után az `az extension list` paranccsal ellenőrizheti az aktuálisan telepített bővítményeket, az `az extension show --name azure-iot` paranccsal pedig megtekintheti az IoT-bővítmény adatait. Az írás időpontjában a bővítmény verziószáma `0.10.0` .
 
 A bővítményt az `az extension remove --name azure-iot` paranccsal távolíthatja el.
 
@@ -54,7 +54,7 @@ az login
 
 Az Azure CLI-hez készült Azure IoT-bővítmény használatához a következők szükségesek:
 
-- Egy Azure IoT hub. Az Azure-előfizetéshez többféleképpen is hozzáadhat egy IoT hubot, például [létrehozhat egy IoT hubot az Azure CLI használatával](../iot-hub/iot-hub-create-using-cli.md). Az Azure IoT-bővítmény parancsainak futtatásához szüksége lesz az IoT hub kapcsolódási karakterláncára. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+- Egy Azure IoT hub. Az Azure-előfizetéshez többféleképpen is hozzáadhat egy IoT hubot, például [létrehozhat egy IoT hubot az Azure CLI használatával](../iot-hub/iot-hub-create-using-cli.md). Az Azure IoT-bővítmény parancsainak futtatásához szüksége lesz az IoT hub kapcsolódási karakterláncára. Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 - Az IoT hub-ban regisztrált eszköz. Az alábbi Azure CLI-parancs használatával regisztrálhat egy eszközt, és a helyőrzőket cserélje le az `{YourIoTHubName}` `{YourDeviceID}` értékekre:
 

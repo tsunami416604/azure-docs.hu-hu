@@ -7,22 +7,25 @@ ms.date: 07/24/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 7d736721e2676a42da90aead3144f8016329f730
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: c82858294054b50d6edae42a3d41e9fcb89ca89d
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475498"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577798"
 ---
 # <a name="azure-iot-model-repository"></a>Azure IoT-modell adattár
 
 Az Azure IoT Model repository lehetővé teszi az eszközök építői számára a IoT Plug and Play eszköz modelljeinek felügyeletét és megosztását. Az eszköz modelljei a [digitális Twins modellezési nyelv (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)használatával meghatározott JSON ld-dokumentumok. A Model repository szolgáltatásban tárolt modellek a hozzáférés-vezérléssel vagy nyilvánosan, a IoT Plug and Play felhőalapú megoldás integrálásához és fejlesztéséhez szükséges hitelesítés nélkül is megoszthatók a megoldás-fejlesztőknek.
 
+> [!NOTE]
+> Az eszközök építői dönthetnek úgy, hogy közvetlenül egy eszközön, modulok használatával vagy egy IoT Edge modulban implementálják a IoT Plug and Play eszköz modelljeit.
+
 A modell tárháza a használatával érhető el:
 
 - [Azure IoT Model adattár](https://aka.ms/iotmodelrepo) -portál
 - [Az Azure IoT Model repository REST API](https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/getmodelasync/getmodelasync)
-- [Azure CLI-IoT Model adattár parancsai](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp?view=azure-cli-latest)
+- [Azure CLI-IoT Model adattár parancsai](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp?view=azure-cli-latest&preserve-view=true)
 
 ## <a name="public-models"></a>Nyilvános modellek
 
@@ -45,10 +48,10 @@ var httpClient = new HttpClient();
 httpClient.BaseAddress = new Uri("https://repo.azureiotrepository.com");
 
 var modelId = "dtmi:com:mxchip:model;1";
-var response = await httpClient.GetAsync($"/models/{modelId}?api-version=2020-05-01-preview").ConfigureAwait(false);
+var response = await httpClient.GetAsync($"/models/{modelId}?api-version=2020-09-30").ConfigureAwait(false);
 ```
 
-Egy nyilvános modell parancssori felülettel való megtekintéséhez tekintse meg az Azure CLI [Get Model](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-show) parancsot.
+Egy nyilvános modell parancssori felülettel való megtekintéséhez tekintse meg az Azure CLI [Get Model](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-show&preserve-view=true) parancsot.
 
 ## <a name="company-models"></a>Vállalati modellek
 
@@ -115,10 +118,10 @@ Ha a REST API használatával szeretne megtekinteni egy vállalatot vagy közös
 
 ```csharp
 var modelId = "dtmi:com:mxchip:model;1";
-var response = await httpClient.GetAsync($"/models/{modelId}?api-version=2020-05-01-preview").ConfigureAwait(false);
+var response = await httpClient.GetAsync($"/models/{modelId}?api-version=2020-09-30").ConfigureAwait(false);
 ```
 
-Ha a parancssori felület használatával szeretné megtekinteni a vállalati modellt vagy a megosztott modellt, tekintse meg az Azure CLI [Get Model](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-show) parancsot.
+Ha a parancssori felület használatával szeretné megtekinteni a vállalati modellt vagy a megosztott modellt, tekintse meg az Azure CLI [Get Model](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-show&preserve-view=true) parancsot.
 
 ### <a name="manage-roles"></a>Szerepkörök kezelése
 
@@ -161,10 +164,10 @@ Modell feltöltéséhez a REST API használatával tekintse meg a [Model API lé
 ```csharp
 var httpContent = new StringContent(jsonLdModel, Encoding.UTF8, "application/json");
 var modelId = "dtmi:com:mxchip:model;1";
-var response = await httpClient.PutAsync($"/models/{modelId}?api-version=2020-05-01-preview", httpContent).ConfigureAwait(false);
+var response = await httpClient.PutAsync($"/models/{modelId}?api-version=2020-09-30", httpContent).ConfigureAwait(false);
 ```
 
-Ha a parancssori felület használatával szeretne feltölteni egy modellt, tekintse meg az Azure CLI [modell létrehozása](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-create) parancsot.
+Ha a parancssori felület használatával szeretne feltölteni egy modellt, tekintse meg az Azure CLI [modell létrehozása](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-create&preserve-view=true) parancsot.
 
 ### <a name="publish-a-model"></a>Modell közzététele
 
@@ -189,7 +192,10 @@ Modell közzététele a portál használatával:
 
 Ha a REST API használatával szeretne közzétenni egy modellt, tekintse meg a [modell közzététele](https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/createorupdateasync/createorupdateasync) REST API dokumentációját. Adja meg a lekérdezési karakterlánc paramétert `update-metadata=true` egy modell közzétételéhez a REST API használatával. Tekintse meg a [biztonsági jogkivonatok átadása a vállalati modellekhez való hozzáféréskor REST API](#passing-a-security-token-when-accessing-company-models-with-a-rest-api) információt arról, hogyan lehet a http-KÉRELEMben JWT-hitelesítési fejlécet továbbítani.
 
-Ha a parancssori felületen szeretné közzétenni a modelleket, tekintse meg a [modell közzététele](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-publish) az Azure CLI-ben című témakört.
+Ha a parancssori felületen szeretné közzétenni a modelleket, tekintse meg a [modell közzététele](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-publish&preserve-view=true) az Azure CLI-ben című témakört.
+
+> [!NOTE]
+> A minősítési tesztek futtatása előtt közzé kell tenni a modelleket a modell adattárában. További információ: [IoT Plug and Play-eszközök tanúsítása](howto-certify-device.md).
 
 ### <a name="share-a-model"></a>Modell megosztása
 

@@ -5,14 +5,14 @@ author: harelbr
 ms.author: harelbr
 services: monitoring
 ms.topic: conceptual
-ms.date: 8/20/2020
+ms.date: 9/30/2020
 ms.subservice: alerts
-ms.openlocfilehash: 8a608e43ef41abfb7002811df5629eb789c3ae22
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 96f0cda9bdf6a17adb4d8d50b63ef5588e52f700
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89595580"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578104"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>A metrikus riasztások által támogatott erőforrások Azure Monitor
 
@@ -37,14 +37,16 @@ Itt látható az újabb riasztások által támogatott Azure monitor metrikai fo
 |Microsoft. Automation/automationAccounts | Igen| Nem | [Automation-fiókok](./metrics-supported.md#microsoftautomationautomationaccounts) |
 |Microsoft. AVS/privateClouds | Nem | Nem | |
 |Microsoft.BatCH/batchAccounts | Igen | Nem | [Batch-fiókok](./metrics-supported.md#microsoftbatchbatchaccounts) |
-|Microsoft. cache/Redis | Igen | Nem | [Azure Cache for Redis](./metrics-supported.md#microsoftcacheredis) |
+|Microsoft. cache/Redis | Igen | Igen | [Azure Cache for Redis](./metrics-supported.md#microsoftcacheredis) |
+|Microsoft. ClassicCompute/tartománynév/bővítőhely/szerepkörök | Nem | Nem | [Klasszikus Cloud Services](./metrics-supported.md#microsoftclassiccomputedomainnamesslotsroles) |
+|Microsoft. ClassicCompute/virtualMachines | Nem | Nem | [Klasszikus Virtual Machines](./metrics-supported.md#microsoftclassiccomputevirtualmachines) |
 |Microsoft. ClassicStorage/storageAccounts | Igen | Nem | [Storage-fiókok (klasszikus)](./metrics-supported.md#microsoftclassicstoragestorageaccounts) |
 |Microsoft. ClassicStorage/storageAccounts/blobServices | Igen | Nem | |
 |Microsoft. ClassicStorage/storageAccounts/fileServices | Igen | Nem | |
 |Microsoft. ClassicStorage/storageAccounts/queueServices | Igen | Nem | |
 |Microsoft. ClassicStorage/storageAccounts/tableServices | Igen | Nem | |
 |Microsoft. CognitiveServices/fiókok | Igen | Nem | [Cognitive Services](./metrics-supported.md#microsoftcognitiveservicesaccounts) |
-|Microsoft.Compute/virtualMachines | Yes | Igen<sup>1</sup> | [Virtuális gépek](./metrics-supported.md#microsoftcomputevirtualmachines) |
+|Microsoft.Compute/virtualMachines | Igen | Igen<sup>1</sup> | [Virtual Machines](./metrics-supported.md#microsoftcomputevirtualmachines) |
 |Microsoft.Compute/virtualMachineScaleSets | Igen | Nem |[Virtuálisgép-méretezési csoportok](./metrics-supported.md#microsoftcomputevirtualmachinescalesets) |
 |Microsoft. ContainerInstance/containerGroups | Igen| Nem | [Tárolócsoportok](./metrics-supported.md#microsoftcontainerinstancecontainergroups) |
 |Microsoft. ContainerRegistry/nyilvántartók | Nem | Nem | [Tároló-nyilvántartók](./metrics-supported.md#microsoftcontainerregistryregistries) |
@@ -83,7 +85,7 @@ Itt látható az újabb riasztások által támogatott Azure monitor metrikai fo
 |Microsoft. Network/applicationGateways | Igen | Nem | [Application Gateway átjárók](./metrics-supported.md#microsoftnetworkapplicationgateways) |
 |Microsoft. Network/azurefirewalls | Igen | Nem | [Tűzfalak](./metrics-supported.md#microsoftnetworkazurefirewalls) |
 |Microsoft. Network/dnsZones | Nem | Nem | [DNS-zónák](./metrics-supported.md#microsoftnetworkdnszones) |
-|Microsoft. Network/expressRouteCircuits | N/A | No |[Express Route-kapcsolatcsoportok](./metrics-supported.md#microsoftnetworkexpressroutecircuits) |
+|Microsoft. Network/expressRouteCircuits | N.A. | Nem |[Express Route-kapcsolatcsoportok](./metrics-supported.md#microsoftnetworkexpressroutecircuits) |
 |Microsoft. Network/loadBalancers (csak standard SKU-hoz)| Igen| Nem | [Terheléselosztó](./metrics-supported.md#microsoftnetworkloadbalancers) |
 |Microsoft. Network/natGateways| Nem | Nem | |
 |Microsoft. Network/privateEndpoints| Nem | Nem | |
@@ -173,7 +175,7 @@ A POST művelet a következő JSON-adattartalomot és sémát tartalmazza az ös
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ az új [riasztási élményről](./alerts-overview.md).
 * További információ a [log-riasztásokról az Azure-ban](./alerts-unified-log.md).

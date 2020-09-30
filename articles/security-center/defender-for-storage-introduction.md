@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 8b6faa6e2e8928e008370cb0eca00595712a679d
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 4677426337a48d4fde74f61b8a4ad6fcb695f420
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91449028"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577815"
 ---
 # <a name="introduction-to-azure-defender-for-storage"></a>Bevezetés az Azure Defender for Storage használatába
 
@@ -27,7 +27,7 @@ Ez a védelmi réteg lehetővé teszi a fenyegetések kezelését *anélkül* , 
 |----|:----|
 |Kiadás állapota:|Általánosan elérhető (GA)|
 |Árképzési|A Storage-hoz készült **Azure Defender** számlázása [a díjszabási oldalon](security-center-pricing.md) látható.|
-|Védett tárolási típusok|[Blob Storage](https://azure.microsoft.com/services/storage/blobs/)<br>[Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)<br>[Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)|
+|Védett tárolási típusok:|[Blob Storage](https://azure.microsoft.com/services/storage/blobs/)<br>[Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)<br>[Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)|
 |Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) US Gov<br>![Nem](./media/icons/no-icon.png) Kínai gov, egyéb gov|
 |||
 
@@ -59,7 +59,7 @@ Ha egy fájl gyanúja szerint kártevőt tartalmaz, Security Center riasztást j
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta az Azure Defender for Storage szolgáltatással kapcsolatos tudnivalókat.
 

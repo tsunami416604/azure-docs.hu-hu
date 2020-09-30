@@ -1,18 +1,18 @@
 ---
 title: A IoT Plug and Play digitális Twins ismertetése
-description: Ismerje meg, hogyan használja a IoT Plug and Play Preview digitális ikreket
+description: Ismerje meg, hogyan használja a IoT Plug and Play a digitális ikreket
 author: prashmo
 ms.author: prashmo
 ms.date: 07/17/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 1908abfb3d0ea20c69a68344d54076c6760e9e63
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 5d5ffe4e7d92530f18e278382ab3637c3326e57c
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352273"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578053"
 ---
 # <a name="understand-iot-plug-and-play-digital-twins"></a>A IoT Plug and Play digitális Twins ismertetése
 
@@ -34,13 +34,13 @@ A digitális Twin API-k magas szintű szerkezetekben működnek a digitális Twi
 
 Egy különálló eszközön az írható tulajdonság állapota a kívánt és a jelentett szakaszokra oszlik. Az összes írásvédett tulajdonság a jelentett szakaszban található.
 
-A Digital Twin-ben a tulajdonság jelenlegi és kívánt állapotának egységes nézete látható. Egy adott tulajdonság szinkronizációs állapotát a megfelelő gyökérszintű vagy összetevő `$metadata` szakasz tárolja.
+A Digital Twin-ben a tulajdonság jelenlegi és kívánt állapotának egységes nézete látható. Egy adott tulajdonság szinkronizációs állapotát a megfelelő alapértelmezett összetevő szakaszban tárolja a rendszer `$metadata` .
 
 ### <a name="digital-twin-json-format"></a>Digitális kettős JSON formátum
 
 Ha JSON-objektumként jelenik meg, a digitális Twin a következő mezőket tartalmazza:
 
-| Mező neve | Description |
+| Mező neve | Leírás |
 | --- | --- |
 | `$dtId` | Egy felhasználó által megadott karakterlánc, amely az eszköz digitális Twin AZONOSÍTÓját jelöli |
 | `{propertyName}` | A JSON-tulajdonság értéke |
@@ -51,9 +51,9 @@ Ha JSON-objektumként jelenik meg, a digitális Twin a következő mezőket tart
 | `$metadata.{propertyName}.ackCode` | [Kötelező, csak írható tulajdonságok esetében] A `ack` digitális IKeret megvalósító eszköz alkalmazás által visszaadott kód |
 | `$metadata.{propertyName}.ackDescription` | [Nem kötelező, csak írható tulajdonságok esetében] A `ack` digitális IKeret megvalósító eszköz alkalmazás által visszaadott Leírás |
 | `$metadata.{propertyName}.lastUpdateTime` | IoT Hub fenntartja a tulajdonság utolsó frissítésének időbélyegét az eszközön. Az időbélyegek UTC szerint vannak kódolva, és a ISO8601 formátuma éééé-hh-NNTÓÓ: PP: SS. mmmZ |
-| `{componentName}` | Egy olyan JSON-objektum, amely a gyökérszintű objektumhoz hasonló tulajdonság-értékeket és metaadatokat tartalmaz. |
+| `{componentName}` | Egy JSON-objektum, amely tartalmazza az összetevő tulajdonságának értékeit és metaadatait. |
 | `{componentName}.{propertyName}` | Az összetevő tulajdonságának értéke a JSON-ban |
-| `{componentName}.$metadata` | Az összetevő metaadat-információi, a legfelső szintűhez hasonlóan`$metadata` |
+| `{componentName}.$metadata` | Az összetevő metaadat-információi. |
 
 #### <a name="device-twin-sample"></a>Eszköz kettős mintája
 
@@ -131,7 +131,7 @@ A tulajdonságok olyan adatmezők, amelyek egy entitás állapotát jelölik (p�
 
 #### <a name="read-only-property"></a>Írásvédett tulajdonság
 
-Séma
+Séma:
 
 ```json
 {
@@ -171,7 +171,7 @@ A következő kódrészletek a tulajdonság egymás melletti JSON-ábrázolásá
 
 #### <a name="writable-property"></a>Írható tulajdonság
 
-Tegyük fel, hogy az eszközön a következő írható tulajdonság is szerepel a gyökérszintű szinten:
+Tegyük fel, hogy az eszközön a következő írható tulajdonság is szerepelt az alapértelmezett összetevőben:
 
 ```json
 {
@@ -228,7 +228,7 @@ Tegyük fel, hogy az eszközön a következő írható tulajdonság is szerepel 
    :::column-end:::
 :::row-end:::
 
-Ebben a példában az `3.0` `fanSpeed` eszköz által jelentett tulajdonság aktuális értéke. `2.0`a megoldás által beállított kívánt érték. A gyökérszintű tulajdonság kívánt értékének és szinkronizálási állapotának beállítása a digitális Twin-ben a gyökérszintű szinten történik `$metadata` . Ha az eszköz online állapotba kerül, alkalmazza ezt a frissítést, és jelentse vissza a frissített értéket.
+Ebben a példában az `3.0` `fanSpeed` eszköz által jelentett tulajdonság aktuális értéke. `2.0` a megoldás által beállított kívánt érték. A gyökérszintű tulajdonság kívánt értékének és szinkronizálási állapotának beállítása a digitális Twin-ben a gyökérszintű szinten történik `$metadata` . Ha az eszköz online állapotba kerül, alkalmazza ezt a frissítést, és jelentse vissza a frissített értéket.
 
 ### <a name="components"></a>Összetevők
 
@@ -240,8 +240,8 @@ Egy különálló eszközön a jelölő azonosítja az összetevőket `{ "__t": 
 
 Ebben a példában `thermostat1` egy két tulajdonsággal rendelkező összetevő:
 
-- `maxTempSinceLastReboot`egy írásvédett tulajdonság.
-- `targetTemperature`az eszköz által sikeresen szinkronizált írható tulajdonság. Ezeknek a tulajdonságoknak a kívánt értéke és szinkronizálási állapota az összetevőben található `$metadata` .
+- `maxTempSinceLastReboot` egy írásvédett tulajdonság.
+- `targetTemperature` az eszköz által sikeresen szinkronizált írható tulajdonság. Ezeknek a tulajdonságoknak a kívánt értéke és szinkronizálási állapota az összetevőben található `$metadata` .
 
 Az alábbi kódrészletek az összetevő egymás melletti JSON-ábrázolását mutatják `thermostat1` :
 
@@ -374,7 +374,10 @@ content-encoding:utf-8
 ]
 ```
 
-## <a name="next-steps"></a>Következő lépések
+> [!NOTE]
+> A kettős módosítás értesítési üzenetei a két eszközön és a digitális kettős változási értesítésen is bekapcsolva jelennek meg.
+
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megismerte a digitális ikreket, íme néhány további erőforrás:
 

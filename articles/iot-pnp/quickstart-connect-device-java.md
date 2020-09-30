@@ -1,54 +1,33 @@
 ---
-title: A IoT csatlakoztatása Plug and Play a Java-eszköz kódjának betekintő mintája a IoT Hubhoz | Microsoft Docs
-description: Hozzon létre és futtasson IoT Plug and Play előzetes minta-eszköz kódját, amely egy IoT hubhoz csatlakozik. Az Azure IoT Explorer eszköz használatával megtekintheti az eszköz által a hubhoz továbbított adatokat.
+title: A IoT csatlakoztatása Plug and Play minta Java-eszköz kódja a IoT Hubhoz | Microsoft Docs
+description: Hozzon létre és futtasson IoT Plug and Play minta-eszköz kódját, amely egy IoT hubhoz csatlakozik. Az Azure IoT Explorer eszköz használatával megtekintheti az eszköz által a hubhoz továbbított adatokat.
 author: ericmitt
 ms.author: ericmitt
 ms.date: 07/14/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: b89c92e675ab505878f350e9716af95050ce28b2
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: b63e1c0bba4d6ac250119c2ac0d9a1cd0e4ee362
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352915"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577016"
 ---
-# <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-running-on-windows-to-iot-hub-java"></a>Rövid útmutató: a Windows rendszeren futó minta IoT Plug and Play előzetes verziójú eszközének csatlakoztatása IoT Hub (Java)
+# <a name="quickstart-connect-a-sample-iot-plug-and-play-device-application-running-on-windows-to-iot-hub-java"></a>Rövid útmutató: a Windows rendszeren futó IoT Plug and Play-eszköz csatlakoztatása IoT Hub (Java)
 
 [!INCLUDE [iot-pnp-quickstarts-device-selector.md](../../includes/iot-pnp-quickstarts-device-selector.md)]
 
 Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre IoT Plug and Play-alkalmazást, hogyan csatlakoztathatja az IoT hubhoz, és az Azure IoT Explorer eszköz használatával megtekintheti az általa küldött telemetria. A minta alkalmazás Java nyelven íródott, és megtalálható a Javához készült Azure IoT Device SDK-ban. A megoldás-szerkesztő az Azure IoT Explorer eszköz használatával képes értelmezni egy IoT Plug and Play eszköz képességeit anélkül, hogy meg kellene tekintenie az eszköz kódját.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
 ## <a name="prerequisites"></a>Előfeltételek
+
+[!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
 A rövid útmutató Windows rendszeren történő elvégzéséhez telepítse a következő szoftvereket a helyi Windows-környezetbe:
 
-* Java SE Development Kit 8. A [Java hosszú távú Azure-és Azure stack-támogatásában](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)a **hosszú távú támogatás**alatt válassza a **Java 8**lehetőséget.
+* Java SE Development Kit 8. A [Java hosszú távú Azure-és Azure stack-támogatásában](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable&preserve-view=true)a **hosszú távú támogatás**alatt válassza a **Java 8**lehetőséget.
 * [Apache Maven 3](https://maven.apache.org/download.cgi).
-
-### <a name="azure-iot-explorer"></a>Azure IoT Explorer
-
-Ha a rövid útmutató második részében a minta eszközzel szeretne kommunikálni, használja az **Azure IoT Explorer** eszközt. [Töltse le és telepítse az Azure IoT Explorer legújabb kiadását](./howto-use-iot-explorer.md) az operációs rendszeréhez.
-
-[!INCLUDE [iot-pnp-prepare-iot-hub.md](../../includes/iot-pnp-prepare-iot-hub.md)]
-
-Futtassa a következő parancsot a hub _IoT hub-kapcsolódási karakterláncának_ lekéréséhez. Jegyezze fel ezt a összekapcsolási karakterláncot, amelyet később a rövid útmutatóban fog használni:
-
-```azurecli-interactive
-az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
-```
-
-> [!TIP]
-> Az Azure IoT Explorer eszközzel is megkeresheti az IoT hub kapcsolódási karakterláncát.
-
-A következő parancs futtatásával lekérheti a hubhoz felvett eszközhöz tartozó _eszköz-kapcsolódási karakterláncot_ . Jegyezze fel ezt a összekapcsolási karakterláncot, amelyet később a rövid útmutatóban fog használni:
-
-```azurecli-interactive
-az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --device-id <YourDeviceID> --output table
-```
 
 ## <a name="download-the-code"></a>A kód letöltése
 
@@ -60,21 +39,23 @@ Nyisson meg egy parancssort az Ön által választott könyvtárban. Futtassa az
 git clone https://github.com/Azure/azure-iot-sdk-java.git
 ```
 
-[!INCLUDE [iot-pnp-download-models.md](../../includes/iot-pnp-download-models.md)]
-
 ## <a name="build-the-code"></a>A kód létrehozása
 
-Windows rendszeren navigáljon a klónozott Java SDK-tárház gyökérkönyvtárához. Ezután keresse meg a *\device\iot-Device-samples\pnp-Device-sample\thermostat-Device-Sample* mappát.
+Windows rendszeren navigáljon a klónozott Java SDK-tárház gyökérkönyvtárához.
 
 Futtassa a következő parancsot a minta alkalmazás létrehozásához:
 
 ```cmd
-mvn clean package
+mvn install -T 2C -DskipTests
 ```
 
 ## <a name="run-the-device-sample"></a>Az eszköz mintájának futtatása
 
-Hozzon létre egy **IOTHUB_DEVICE_CONNECTION_STRING** nevű környezeti változót, amely a korábban jegyzett eszköz-kapcsolódási karakterláncot tárolja.
+[!INCLUDE [iot-pnp-environment](../../includes/iot-pnp-environment.md)]
+
+A minta-konfigurációval kapcsolatos további tudnivalókért tekintse meg a [minta](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/pnp-device-sample/readme.md)információit.
+
+Navigáljon a *\device\iot-Device-samples\pnp-Device-sample\thermostat-Device-Sample* mappára.
 
 A minta alkalmazás futtatásához futtassa a következő parancsot:
 
@@ -132,8 +113,6 @@ import com.google.gson.Gson;
 
 Date since = new Gson().fromJson(jsonRequest, Date.class);
 ```
-
-[!INCLUDE [iot-pnp-clean-resources.md](../../includes/iot-pnp-clean-resources.md)]
 
 ## <a name="next-steps"></a>További lépések
 

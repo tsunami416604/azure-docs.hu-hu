@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: Operations'
-ms.openlocfilehash: 4ded10d9475c363c3f44032c7aa8cc7db03ab37f
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 725fc422bc11a19bebcbb8895cc0a9bedd58afed
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90033642"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577764"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>Egy adott megoldáshoz leginkább megfelelő IoT Hub-szint kiválasztása
 
@@ -40,7 +40,7 @@ A IoT Hub standard szintje lehetővé teszi az összes funkció használatát, �
 
 Egy adott rétegen belül csak egy [kiadást](https://azure.microsoft.com/pricing/details/iot-hub/) lehet kiválasztani IoT hub. Létrehozhat például egy, az S1 több egységgel rendelkező IoT Hub, de különböző kiadásokból (például S1 és S2) álló egységeket is.
 
-| A képességeik | Alapszint | Ingyenes/standard szint |
+| Képesség | Alapszint | Ingyenes/standard szint |
 | ---------- | ---------- | ------------- |
 | [Eszközről a felhőbe irányuló telemetria](iot-hub-devguide-messaging.md) | Igen | Igen |
 | [Eszközönkénti azonosító](iot-hub-devguide-identity-registry.md) | Igen | Igen |
@@ -48,11 +48,11 @@ Egy adott rétegen belül csak egy [kiadást](https://azure.microsoft.com/pricin
 | [HTTP-, AMQP-és MQTT-protokollok](iot-hub-devguide-protocols.md) | Igen | Igen |
 | [Device Provisioning Service](../iot-dps/about-iot-dps.md) | Igen | Igen |
 | [Monitorozás és diagnosztika](iot-hub-monitor-resource-health.md) | Igen | Igen |
-| [A felhőből az eszközre irányuló üzenetküldés](iot-hub-devguide-c2d-guidance.md) |   | Yes |
-| [Eszközök](iot-hub-devguide-device-twins.md), ikrek, [modulok](iot-hub-devguide-module-twins.md) [és eszközkezelés](iot-hub-device-management-overview.md) |   | Yes |
-| [Eszköz streamek (előzetes verzió)](iot-hub-device-streams-overview.md) |   | Yes |
-| [Azure IoT Edge](../iot-edge/about-iot-edge.md) |   | Yes |
-| [IoT Plug and Play előzetes verzió](../iot-pnp/overview-iot-plug-and-play.md) |   | Yes |
+| [A felhőből az eszközre irányuló üzenetküldés](iot-hub-devguide-c2d-guidance.md) |   | Igen |
+| [Eszközök](iot-hub-devguide-device-twins.md), ikrek, [modulok](iot-hub-devguide-module-twins.md) [és eszközkezelés](iot-hub-device-management-overview.md) |   | Igen |
+| [Eszköz streamek (előzetes verzió)](iot-hub-device-streams-overview.md) |   | Igen |
+| [Azure IoT Edge](../iot-edge/about-iot-edge.md) |   | Igen |
+| [IoT Plug and Play](../iot-pnp/overview-iot-plug-and-play.md) |   | Igen |
 
 A IoT Hub ingyenes szintet is biztosít teszteléshez és értékeléshez. Rendelkezik a standard csomag összes képességével, de korlátozott üzenetküldési támogatással. Az ingyenes szintről nem lehet alapszintű vagy standard szintűre frissíteni.
 
@@ -91,23 +91,23 @@ Az alapszintű és a standard szintű IoT Hub által támogatott képességek k�
 | [Eszköz eseményének küldése](https://docs.microsoft.com/rest/api/iothub/device/senddeviceevent) | Igen | Igen |
 | Modul küldése esemény | Csak AMQP és MQTT | Csak AMQP és MQTT |
 | [Fájlfeltöltés állapotának frissítése](https://docs.microsoft.com/rest/api/iothub/device/updatefileuploadstatus) | Igen | Igen |
-| [Tömeges eszköz művelete](https://docs.microsoft.com/javascript/api/azure-iot-digitaltwins-service/registrymanager?view=azure-node-latest#bulkdevicecrud-exportimportdevice----msrest-requestoptionsbase-) | Igen, a IoT Edge képességek kivételével | Yes |
+| [Tömeges eszköz művelete](https://docs.microsoft.com/javascript/api/azure-iot-digitaltwins-service/registrymanager?view=azure-node-latest#bulkdevicecrud-exportimportdevice----msrest-requestoptionsbase-) | Igen, a IoT Edge képességek kivételével | Igen |
 | [Importálási exportálási feladat megszakítása](https://docs.microsoft.com/rest/api/iothub/service/jobs/cancelimportexportjob) | Igen | Igen |
 | [Importálási exportálási feladatok létrehozása](https://docs.microsoft.com/rest/api/iothub/service/jobs/createimportexportjob) | Igen | Igen |
 | [Importálási exportálási feladatok beolvasása](https://docs.microsoft.com/rest/api/iothub/service/jobs/getimportexportjob) | Igen | Igen |
 | [Importálási exportálási feladatok beolvasása](https://docs.microsoft.com/rest/api/iothub/service/jobs/getimportexportjobs) | Igen | Igen |
-| [Parancssori várólista kiürítése](https://docs.microsoft.com/javascript/api/azure-iot-digitaltwins-service/registrymanager?view=azure-node-latest#purgecommandqueue-string--msrest-requestoptionsbase-) |   | Yes |
-| [Eszköz dupla beolvasása](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.deviceclient.getdevicetwin?view=azure-java-stable) |   | Yes |
-| [Dupla modul beolvasása](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-devicetwin-h/iothubdevicetwin-getmoduletwin) |   | Yes |
-| [Eszköz metódusának meghívása](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-direct-methods) |   | Yes |
-| [Eszköz dupla frissítése](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-device-twins) |   | Yes |
-| [Modul frissítése – Twin](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-devicetwin-h/iothubdevicetwin-updatemoduletwin) |   | Yes |
-| [Eszköz kötött értesítésének elhagyása](https://docs.microsoft.com/rest/api/iothub/device/abandondeviceboundnotification) |   | Yes |
-| [Eszköz kötött értesítésének befejezése](https://docs.microsoft.com/rest/api/iothub/device/completedeviceboundnotification) |   | Yes |
-| [Feladat megszakítása](https://docs.microsoft.com/rest/api/media/jobs/canceljob) |   | Yes |
-| [Feladat létrehozása](https://docs.microsoft.com/rest/api/media/jobs/create) |   | Yes |
-| [Feladatok beolvasása](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.service.jobs.jobclient.getjob?view=azure-java-stable) |   | Yes |
-| [Lekérdezési feladatok](https://docs.microsoft.com/javascript/api/azure-iot-digitaltwins-service/jobclient?view=azure-node-latest#queryjobs-jobclientqueryjobsoptionalparams--servicecallback-queryresult--) |   | Yes |
+| [Parancssori várólista kiürítése](https://docs.microsoft.com/javascript/api/azure-iot-digitaltwins-service/registrymanager?view=azure-node-latest#purgecommandqueue-string--msrest-requestoptionsbase-) |   | Igen |
+| [Eszköz dupla beolvasása](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.deviceclient.getdevicetwin?view=azure-java-stable) |   | Igen |
+| [Dupla modul beolvasása](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-devicetwin-h/iothubdevicetwin-getmoduletwin) |   | Igen |
+| [Eszköz metódusának meghívása](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-direct-methods) |   | Igen |
+| [Eszköz dupla frissítése](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-device-twins) |   | Igen |
+| [Modul frissítése – Twin](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-devicetwin-h/iothubdevicetwin-updatemoduletwin) |   | Igen |
+| [Eszköz kötött értesítésének elhagyása](https://docs.microsoft.com/rest/api/iothub/device/abandondeviceboundnotification) |   | Igen |
+| [Eszköz kötött értesítésének befejezése](https://docs.microsoft.com/rest/api/iothub/device/completedeviceboundnotification) |   | Igen |
+| [Feladat megszakítása](https://docs.microsoft.com/rest/api/media/jobs/canceljob) |   | Igen |
+| [Feladat létrehozása](https://docs.microsoft.com/rest/api/media/jobs/create) |   | Igen |
+| [Feladatok beolvasása](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.service.jobs.jobclient.getjob?view=azure-java-stable) |   | Igen |
+| [Lekérdezési feladatok](https://docs.microsoft.com/javascript/api/azure-iot-digitaltwins-service/jobclient?view=azure-node-latest#queryjobs-jobclientqueryjobsoptionalparams--servicecallback-queryresult--) |   | Igen |
 
 ## <a name="message-throughput"></a>Üzenet átviteli sebessége
 
@@ -139,7 +139,7 @@ Adott burst-teljesítményi számok esetében lásd: [IoT hub kvóták és szab�
 
 Ha közeledik az engedélyezett IoT hub-korláthoz, a következő [lépésekkel automatikusan méretezheti](https://azure.microsoft.com/resources/samples/iot-hub-dotnet-autoscale/) az IoT hub egységet ugyanazon a IoT hub szinten.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ a IoT Hub képességekről és a teljesítmény részleteiről: [IoT hub díjszabási](https://azure.microsoft.com/pricing/details/iot-hub) vagy [IoT hub kvóták és szabályozások](iot-hub-devguide-quotas-throttling.md).
 

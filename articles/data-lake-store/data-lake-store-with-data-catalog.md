@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 1484c4bf17d5f437d681e32559b7e6ed4115f5f5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a48b30d83e3e7e1667552d107cb457e49494c575
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515140"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578512"
 ---
 # <a name="register-data-from-azure-data-lake-storage-gen1-in-azure-data-catalog"></a>Adatok regisztrálása Azure Data Lake Storage Gen1ról Azure Data Catalog
 Ebből a cikkből megtudhatja, hogyan integrálhatja a Azure Data Lake Storage Gen1t a Azure Data Catalogekkel, hogy a szervezeten belül felfedjék az adatait a Data Catalog integrálásával. További információ az adatok katalogizálása: [Azure Data Catalog](../data-catalog/data-catalog-what-is-data-catalog.md). A Data Catalog használatára szolgáló forgatókönyvek megismeréséhez tekintse meg a [Azure Data Catalog gyakori forgatókönyvek](../data-catalog/data-catalog-common-scenarios.md)című témakört.
@@ -52,12 +52,12 @@ Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 
     c. A **regisztrálni kívánt objektumok** lista felsorolja azokat a fájlokat és mappákat, amelyeket regisztrálni szeretne Azure Data Catalogban.
 
-    ![Adatstruktúra megtekintése](./media/data-lake-store-with-data-catalog/view-data-structure.png "Adatstruktúra megtekintése")
+    ![Képernyőkép a Microsoft Azure Data Catalog – áruházbeli fiók párbeszédpanelről.](./media/data-lake-store-with-data-catalog/view-data-structure.png "Adatstruktúra megtekintése")
 1. Ebben az oktatóanyagban regisztrálnia kell a címtárban található összes fájlt. Ehhez kattintson a (![objektumok áthelyezése](./media/data-lake-store-with-data-catalog/move-objects.png "Objektumok áthelyezése")) gombra az összes fájlnak a **regisztrálni kívánt objektumba** való áthelyezéséhez.
 
     Mivel az adatok egy szervezetre kiterjedő adatkatalógusban lesznek regisztrálva, ajánlott olyan metaadatokat hozzáadni, amelyeket később az adatok gyors megkereséséhez használhat fel. Hozzáadhat például egy e-mail-címet az adattulajdonoshoz (például egy, aki feltölti az adatfájlokat), vagy hozzáadhat egy címkét az adatazonosításhoz. Az alábbi képernyőfelvételen egy olyan címke látható, amelyet az adatbevitelhez adott hozzá.
 
-    ![Adatstruktúra megtekintése](./media/data-lake-store-with-data-catalog/view-selected-data-structure.png "Adatstruktúra megtekintése")
+    ![Képernyőkép a Microsoft Azure Data Catalog-Store-fiók párbeszédpanelről, amely az elnevezett adatmennyiséghez hozzáadott címkével rendelkezik.](./media/data-lake-store-with-data-catalog/view-selected-data-structure.png "Adatstruktúra megtekintése")
 
     Kattintson a **Regisztrálás** parancsra.
 1. Az alábbi képernyőfelvétel azt jelzi, hogy az adatData Catalog sikeresen regisztrálva lettek.
@@ -71,7 +71,7 @@ Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
     * [Az adatforrások megjegyzései Data Catalog](../data-catalog/data-catalog-how-to-annotate.md)
     * [Adatforrások dokumentálása Data Catalog](../data-catalog/data-catalog-how-to-documentation.md)
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 * [Az adatforrások megjegyzései Data Catalog](../data-catalog/data-catalog-how-to-annotate.md)
 * [Adatforrások dokumentálása Data Catalog](../data-catalog/data-catalog-how-to-documentation.md)
 * [Data Lake Storage Gen1 integrálása más Azure-szolgáltatásokkal](data-lake-store-integrate-with-other-services.md)

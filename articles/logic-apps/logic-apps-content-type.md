@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/20/2018
-ms.openlocfilehash: 3a71c78dcbaa5fb02927e9a2cfdea40cd5b26130
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 04642e69adba82cf33b933829d72c51109ad2ee1
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91269097"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578181"
 ---
 # <a name="handle-content-types-in-azure-logic-apps"></a>Tartalomtípusok kezelése Azure Logic Appsban
 
@@ -59,9 +59,9 @@ A Logic Apps lehetővé teszi a JSON-tartalomban szereplő tulajdonságokat jelk
   
   1. A kérelem triggerben válassza a **minta hasznos adatok használata a séma létrehozásához**lehetőséget.  
   
-  2. Az **írja be vagy illessze be a minta JSON-adattartalmat**területen adja meg a minta hasznos adatait, majd válassza a **kész**lehetőséget. Példa: 
+  2. Az **írja be vagy illessze be a minta JSON-adattartalmat**területen adja meg a minta hasznos adatait, majd válassza a **kész**lehetőséget. Például: 
 
-     ![Képernyőkép, amely a "HTTP-kérelem fogadása" ablakot jeleníti meg egy minta JSON-adattartalommal.](./media/logic-apps-content-type/request-trigger.png)
+     ![Képernyőkép: "HTTP-kérelem fogadása" művelet, amely egy minta JSON-adattartalmat mutat be.](./media/logic-apps-content-type/request-trigger.png)
 
      A létrehozott séma most megjelenik az triggerben.
 

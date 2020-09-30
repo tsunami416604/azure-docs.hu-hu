@@ -18,12 +18,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 5888eeea98a80eeacb97e625d199a3b1912d1943
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 51ad23e67a77c28d0ad8a147168a0094f5de1796
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89015135"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578002"
 ---
 # <a name="tutorial-send-location-based-push-notifications-with-notification-hubs-and-bing-spatial-data"></a>Oktatóanyag: Location-alapú leküldéses értesítések küldése a Notification Hubs és a Bing térbeli adatainak
 
@@ -389,7 +389,7 @@ Ebben az oktatóanyagban a következő lépéseket hajtja végre:
 
     ![Képernyőkép a TESZTÜZENET megjelenítéséről a Windows asztalról.](./media/notification-hubs-geofence/notification-hubs-test-notification.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További lépésekre is szükség lehet, hogy a megoldás éles környezetben is használható legyen.
 

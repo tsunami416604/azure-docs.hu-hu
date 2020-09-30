@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sashan, sstein
 ms.date: 08/27/2019
-ms.openlocfilehash: 598bb30d21a17b2c39f69a845690c3c754ec2145
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 034940a0990fc97118e62caab051a5a9e2ffd3e7
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325249"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578563"
 ---
 # <a name="tutorial-add-sql-managed-instance-to-a-failover-group"></a>Oktatóanyag: SQL felügyelt példány hozzáadása feladatátvételi csoporthoz
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -55,6 +55,8 @@ Az oktatóanyag elvégzéséhez győződjön meg arról, hogy rendelkezik az al�
 ## <a name="create-a-resource-group-and-primary-managed-instance"></a>Erőforráscsoport és elsődleges felügyelt példány létrehozása
 
 Ebben a lépésben létrehozza az erőforráscsoportot és a feladatátvételi csoport elsődleges felügyelt példányát a Azure Portal vagy a PowerShell használatával. 
+
+A felügyelt példányokat a [párosított régiók](../../best-practices-availability-paired-regions.md) számára is üzembe helyezheti teljesítménybeli okokból. A földrajzilag párosított régiókban található felügyelt példányok sokkal jobb teljesítményt biztosítanak a nem párosított régiókhoz képest. 
 
 
 # <a name="portal"></a>[Portál](#tab/azure-portal) 
@@ -740,6 +742,8 @@ Két felügyelt példánynak a feladatátvételi csoportban való részvételhez
 
 Ez a cikk a két VPN-átjáró létrehozásának lépéseit és azok összekapcsolását ismerteti, de a feladatátvételi csoport létrehozásához a ExpressRoute konfigurálásakor ugorjon előre. 
 
+> [!NOTE]
+> Az átjáró SKU-jának hatással van az átviteli teljesítményre. Ez az oktatóanyag egy átjárót helyez üzembe a legalapvetőbb SKU ( `HwGw1` ) használatával. Helyezzen üzembe egy magasabb SKU-t (például: `VpnGw3` ) a nagyobb átviteli sebesség eléréséhez. Az összes elérhető lehetőség esetében lásd: [átjáró SKU](../../vpn-gateway/vpn-gateway-about-vpngateways.md#benchmark) -i
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
@@ -1150,7 +1154,7 @@ Nincsenek elérhető parancsfájlok a Azure Portal számára.
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban egy feladatátvételi csoportot konfigurált két felügyelt példány között. Megtanulta végrehajtani az alábbi műveleteket:
 

@@ -12,19 +12,19 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 08/14/2019
-ms.openlocfilehash: 42326247117c0710c93b45c896bb6e7cb3a8120f
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: ab057e1328efbff294faa1d68f2a27c5a1f03ade
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91444384"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577509"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>Feladatátvételi csoport konfigurálása Azure SQL Databasehoz
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 Ez a témakör bemutatja, hogyan konfigurálhat egy [automatikus feladatátvételi csoportot](auto-failover-group-overview.md) Azure SQL Database és az Azure SQL felügyelt példányaihoz.
 
-## <a name="single-database-in-azure-sql-database"></a>Önálló adatbázis Azure SQL Database
+## <a name="single-database"></a>Önálló adatbázis
 
 Hozza létre a feladatátvételi csoportot, és vegyen fel egyetlen adatbázist a Azure Portal vagy a PowerShell használatával.
 
@@ -192,7 +192,7 @@ A feladatátvételi csoport visszaállítása az elsődleges kiszolgálóra:
 > [!IMPORTANT]
 > Ha törölnie kell a másodlagos adatbázist, a törlése előtt távolítsa el a feladatátvételi csoportból. Ha egy másodlagos adatbázist töröl a feladatátvételi csoportból való eltávolítása előtt, akkor kiszámíthatatlan viselkedést okozhat.
 
-## <a name="elastic-pools-in-azure-sql-database"></a>Rugalmas készletek Azure SQL Database
+## <a name="elastic-pool"></a>Rugalmas készlet
 
 Hozza létre a feladatátvételi csoportot, és adjon hozzá egy rugalmas készletet a Azure Portal vagy a PowerShell használatával.  
 
@@ -346,7 +346,9 @@ Feladatátvétel a másodlagos kiszolgálóra:
 
 A Azure Portal vagy a PowerShell használatával hozzon létre egy feladatátvételi csoportot a felügyelt Azure SQL-példány két felügyelt példánya között.
 
-Konfigurálnia kell a [ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) -t, vagy létre kell hoznia egy átjárót az egyes FELÜGYELt SQL-példányok virtuális hálózatához, össze kell kapcsolnia a két átjárót, majd létre kell hoznia a feladatátvételi csoportot.
+Konfigurálnia kell a [ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) -t, vagy létre kell hoznia egy átjárót az egyes FELÜGYELt SQL-példányok virtuális hálózatához, össze kell kapcsolnia a két átjárót, majd létre kell hoznia a feladatátvételi csoportot. 
+
+A felügyelt példányokat a [párosított régiók](../../best-practices-availability-paired-regions.md) számára is üzembe helyezheti teljesítménybeli okokból. A földrajzilag párosított régiókban található felügyelt példányok sokkal jobb teljesítményt biztosítanak a nem párosított régiókhoz képest. 
 
 ### <a name="prerequisites"></a>Előfeltételek
 
@@ -360,6 +362,9 @@ Vegye figyelembe a következő előfeltételeket:
 ### <a name="create-primary-virtual-network-gateway"></a>Elsődleges virtuális hálózati átjáró létrehozása
 
 Ha még nem konfigurálta a [ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md), az elsődleges virtuális hálózati átjárót a Azure Portal vagy a PowerShell segítségével hozhatja létre.
+
+> [!NOTE]
+> Az átjáró SKU-jának hatással van az átviteli teljesítményre. Ez a cikk egy átjárót helyez üzembe a legalapvetőbb SKU ( `HwGw1` ) használatával. Helyezzen üzembe egy magasabb SKU-t (például: `VpnGw3` ) a nagyobb átviteli sebesség eléréséhez. Az összes elérhető lehetőség esetében lásd: [átjáró SKU](../../vpn-gateway/vpn-gateway-about-vpngateways.md#benchmark) -i 
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
