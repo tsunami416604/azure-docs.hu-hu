@@ -3,20 +3,18 @@ title: Hőmérséklet-előkészített entitás – LUIS
 titleSuffix: Azure Cognitive Services
 description: Ez a cikk Language Understanding (LUIS) hőmérséklettel előre felépített entitási információit tartalmazza.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 10/14/2019
-ms.author: diberry
-ms.openlocfilehash: 7e2b48c6353f56ab2269a8718146cb765797adba
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 46161a83d261ae23ca45b7293e48ff15e435f42d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78270364"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91535338"
 ---
 # <a name="temperature-prebuilt-entity-for-a-luis-app"></a>A hőmérséklet előre elkészített entitása egy LUIS-alkalmazáshoz
 A hőmérséklet különböző hőmérséklet-típusokat gyűjt. Mivel ez az entitás már be van tanítva, nem kell hozzáadnia az alkalmazáshoz hőmérsékletet tartalmazó hosszúságú kimondott szöveg. A hőmérsékleti entitások [számos kultúrában](luis-reference-prebuilt-entities.md)támogatottak.
@@ -33,7 +31,7 @@ A lekérdezés a következő entitás-objektumokat adja vissza:
 
 #### <a name="v3-response"></a>[V3 válasz](#tab/V3)
 
-A következő JSON a `verbose` paraméter értéke: `false`
+A következő JSON a `verbose` paraméter értéke `false` :
 
 ```json
 "entities": {
@@ -46,7 +44,7 @@ A következő JSON a `verbose` paraméter értéke: `false`
 }
 ```
 #### <a name="v3-verbose-response"></a>[V3 részletes válasz](#tab/V3-verbose)
-A következő JSON a `verbose` paraméter értéke: `true`
+A következő JSON a `verbose` paraméter értéke `true` :
 
 ```json
 "entities": {

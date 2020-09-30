@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/09/2020
 ms.author: b-juche
-ms.openlocfilehash: b8707b6fb006a45d63f1b2b426530a7e25f5b497
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: e2838b759a611cb55b9fd3fadf834c84eb74210d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87512924"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533638"
 ---
 # <a name="register-for-azure-netapp-files"></a>Regisztrálás az Azure NetApp Filesra
 
@@ -50,13 +50,13 @@ A szolgáltatás használatához regisztrálnia kell az Azure erőforrás-szolg�
 
       ![Azure Cloud Shell ikon](../media/azure-netapp-files/azure-netapp-files-azure-cloud-shell.png)
 
-2. Ha több előfizetéssel rendelkezik az Azure-fiókjában, válassza ki a Azure NetApp Files engedélyezési listán szereplőt:
+2. Ha több előfizetéssel rendelkezik az Azure-fiókjában, válassza ki a Azure NetApp Files jóváhagyva:
     
     ```azurepowershell
     az account set --subscription <subscriptionId>
     ```
 
-3. A Azure Cloud Shell-konzolon adja meg a következő parancsot az előfizetés engedélyezési listájának ellenőrzéséhez:
+3. A Azure Cloud Shell-konzolon adja meg a következő parancsot az előfizetés jóváhagyásának ellenőrzéséhez:
     
     ```azurepowershell
     az feature list | grep NetApp
@@ -69,7 +69,7 @@ A szolgáltatás használatához regisztrálnia kell az Azure erőforrás-szolg�
     "name": "Microsoft.NetApp/ANFGA" 
     ```
        
-   `<SubID>`az előfizetés-azonosítója.
+   `<SubID>` az előfizetés-azonosítója.
 
     Ha nem látja a szolgáltatás nevét `Microsoft.NetApp/ANFGA` , nem férhet hozzá a szolgáltatáshoz. Leállítás ebben a lépésben. A folytatás előtt kövesse a várólista-hozzáférés kérése a [szolgáltatáshoz](#waitlist) való hozzáféréshez szolgáltatás eléréséhez című témakör utasításait. 
 
@@ -97,7 +97,7 @@ A szolgáltatás használatához regisztrálnia kell az Azure erőforrás-szolg�
      "resourceTypes": […. 
     ```
 
-   `<SubID>`az előfizetés-azonosítója.  A `state` paraméter értéke a (z) értéket jelöli `Registered` .
+   `<SubID>` az előfizetés-azonosítója.  A `state` paraméter értéke a (z) értéket jelöli `Registered` .
 
 6. A Azure Portal kattintson az **előfizetések** panelre.
 7. Az előfizetések panelen kattintson az előfizetés-AZONOSÍTÓra. 

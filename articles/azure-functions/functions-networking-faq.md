@@ -4,12 +4,12 @@ description: Válaszok a Azure Functions-vel való hálózatkezeléssel kapcsola
 ms.topic: troubleshooting
 ms.date: 4/11/2019
 ms.reviewer: glenga
-ms.openlocfilehash: 52e0a6f9261d89ecd7c660be118162a898988526
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: d07484943f8ba85cc8e46737f3ef85b6e25d5187
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87385908"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538058"
 ---
 # <a name="frequently-asked-questions-about-networking-in-azure-functions"></a>Gyakori kérdések a hálózatkezeléssel kapcsolatban Azure Functions
 
@@ -27,7 +27,7 @@ Az Internet-hozzáférés több módon is korlátozható:
     * Az IP-korlátozások területen olyan [szolgáltatási végpontokat](../virtual-network/virtual-network-service-endpoints-overview.md)is konfigurálhat, amelyek korlátozzák a függvényt, hogy csak egy adott virtuális hálózatról fogadják el a bejövő forgalmat.
 * Az összes HTTP-eseményindító eltávolítása. Egyes alkalmazások esetében elég egyszerűen elkerülni a HTTP-eseményindítókat, és más eseményforrás használatával aktiválhatja a függvényt.
 
-Ne feledje, hogy a Azure Portal-szerkesztőnek közvetlen hozzáférésre van szüksége a futó függvényhez. A Azure Portalon végrehajtott bármely kód módosítása megköveteli, hogy az Ön által használt eszköz megkeresse a portálon, hogy az IP-címe engedélyezve legyen. De továbbra is használhatja a platform szolgáltatásai lapot a helyi hálózati korlátozásokkal.
+Ne feledje, hogy a Azure Portal-szerkesztőnek közvetlen hozzáférésre van szüksége a futó függvényhez. A Azure Portalon végrehajtott bármely kód módosítása megköveteli, hogy az Ön által használt eszköz megkeresse a portálon, hogy az IP-címe hozzá legyen adva a jóváhagyott listához. De továbbra is használhatja a platform szolgáltatásai lapot a helyi hálózati korlátozásokkal.
 
 ## <a name="how-do-i-restrict-my-function-app-to-a-virtual-network"></a>Hogyan korlátozza a saját Function alkalmazást egy virtuális hálózatra?
 
@@ -57,7 +57,7 @@ A App Service Environment való üzembe helyezés az egyetlen módszer egy olyan
 
 Olyan helyzetekben, ahol csak egyirányú hozzáférésre van szükség a virtuális hálózati erőforrásokhoz vagy kevésbé átfogó hálózati elkülönítéshez, tekintse meg a [függvények hálózatkezelésének áttekintése](functions-networking-options.md)című témakört.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a hálózatkezelésről és a függvényekről: 
 

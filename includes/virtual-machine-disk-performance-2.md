@@ -5,23 +5,61 @@ services: virtual-machines
 author: albecker1
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/07/2020
+ms.date: 09/25/2020
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 8882625d28871135223dd30e3fd96a385a13e8fe
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7a546c06e990d7fdb0fa7865c176f39772136539
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91376374"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540029"
 ---
 ![A Dsv3 dokumentációja](media/vm-disk-performance/dsv3-documentation.jpg)
 
-A nem **gyorsítótárazott** lemez maximális átviteli sebessége a virtuális gép által kezelhető alapértelmezett tárolási korlát. A **gyorsítótárazott** tárterület maximális átviteli sebessége a gazdagép gyorsítótárazásának engedélyezésekor külön korlát. A gazdagép-gyorsítótárazás engedélyezése a virtuális gép létrehozásakor és a lemezek csatlakoztatásakor végezhető el. Azt is megteheti, hogy be-és kikapcsolja az állomás gyorsítótárazza a lemezeket egy meglévő virtuális gépen:
+A nem **gyorsítótárazott** lemez maximális átviteli sebessége a virtuális gép által kezelhető alapértelmezett tárolási korlát. A **gyorsítótárazott** tárterület maximális átviteli sebessége a gazdagép gyorsítótárazásának engedélyezésekor külön korlát. A gazdagép gyorsítótárazása úgy működik, hogy a tárolót közelebb hozza a virtuális géphez, amely írható vagy olvasható. A virtuális gép számára a gazdagép gyorsítótárazásához elérhető tárterület a dokumentációban található. Láthatja például, hogy a Standard_D8s_v3 a gyorsítótár tárterületének 200 GiB. Lássuk 
+
+A gazdagép-gyorsítótárazás engedélyezése a virtuális gép létrehozásakor és a lemezek csatlakoztatásakor végezhető el. Azt is megteheti, hogy be-és kikapcsolja az állomás gyorsítótárazza a lemezeket egy meglévő virtuális gépen.
 
 ![Gazdagép gyorsítótárazása](media/vm-disk-performance/host-caching.jpg)
 
-A gazdagép gyorsítótárazása beállítható úgy, hogy az megfeleljen az egyes lemezek munkaterhelési követelményeinek. Beállíthatja, hogy a gazdagép gyorsítótárazása csak olvasható legyen az olyan munkaterhelések esetében, amelyek csak olvasási műveleteket hajtanak végre, és olvasási/írási műveleteket végeznek az olvasási és írási műveletek egyenlegét biztosító munkaterhelések esetében. Ha a munkaterhelés egyike sem követi ezeket a mintákat, sajnos nem fogja tudni használni a gazdagép gyorsítótárazását. 
+A gazdagép gyorsítótárazása beállítható úgy, hogy az megfeleljen az egyes lemezek munkaterhelési követelményeinek. Beállíthatja, hogy a gazdagép gyorsítótárazása csak olvasható legyen az olyan munkaterhelések esetében, amelyek csak olvasási műveleteket hajtanak végre, és olvasási/írási műveleteket végeznek az olvasási és írási műveletek egyenlegét biztosító munkaterhelések esetében. Ha a munkaterhelés egyike sem követi ezeket a mintákat, nem ajánlott a use Host cache használata. 
+
+Futtassunk néhány példát a gazdagép-gyorsítótár különböző beállításaira, és nézzük meg, hogyan gyakorolja az adatfolyamot és a teljesítményt. Ebben az első példában bemutatjuk, hogy mi történik az IO-kérelmekkel, ha a gazdagép gyorsítótárazási beállítása **csak olvasható**értékre van beállítva.
+
+Beállítás:
+- Standard_D8s_v3 
+    - Gyorsítótárazott IOPS: 16 000
+    - Nem gyorsítótárazott IOPS: 12 800
+- P30 adatlemez 
+    - IOPS: 5 000
+    - **Gazdagép gyorsítótárazása: csak olvasható** 
+
+Ha egy olvasás történik, és a kívánt adatok elérhetők a gyorsítótárban, a gyorsítótár visszaadja a kért adatait, és nem kell beolvasnia a lemezről. Ez az olvasási érték a virtuális gép gyorsítótárazott korlátaihoz igazodik.
+
+![Olvasási gazdagép gyorsítótárazásának olvasási találata](media/vm-disk-performance/host-caching-read-hit.jpg)
+
+Ha egy olvasás történik, és a kívánt információk **nem** érhetők el a gyorsítótárban, a rendszer továbbítja az olvasási kérést a lemezre, amely ezt követően a gyorsítótárba és a virtuális gépre is felfedi a felületet. Ez az olvasás a virtuális gép nem gyorsítótárazott korlátjának és a virtuális gép gyorsítótárazott korlátjának a része.
+
+![Olvasási gazdagép gyorsítótárazásának olvasási kihagyása](media/vm-disk-performance/host-caching-read-miss.jpg)
+
+Írás elvégzése esetén az írást a gyorsítótárba és a lemezre is meg kell írni, mielőtt a rendszer befejeződik. Ez az írás a virtuális gép gyorsítótár nélküli korlátjának és a virtuális gép gyorsítótárazott korlátjának a része.
+
+![Gazdagép-gyorsítótárazás írásának olvasása](media/vm-disk-performance/host-caching-write.jpg)
+
+Ebben a következő példában vessünk egy pillantást arra, hogy mi történik az IO-kérelmekkel, ha a gazdagép-gyorsítótár beállítása **írási/olvasási**értékre van állítva.
+
+Beállítás:
+- Standard_D8s_v3 
+    - Gyorsítótárazott IOPS: 16 000
+    - Nem gyorsítótárazott IOPS: 12 800
+- P30 adatlemez 
+    - IOPS: 5 000
+    - **Gazdagép gyorsítótárazása: olvasás/írás** 
+
+Az olvasások pontosan ugyanúgy kezelhetők, mint az írásvédett, az írások az egyetlen dolog, ami eltér az olvasási/írási gyorsítótárazástól. Ha írási/olvasási értékre állítja be a gazdagép-gyorsítótárazást, az írást csak a gazdagép gyorsítótárába kell írni, hogy az megfelelően legyen végrehajtva. Az írás ezután a háttérben a lemezre kerül. Ez azt jelenti, hogy az írásokat a rendszer a gyorsítótárazott IO-ra számítja, amikor a gyorsítótárba kerül, és amikor a lemezre írásra kerül, a gyorsítótárba kerülő IO-ra fog számítani.
+
+![Írási/olvasási gazdagép gyorsítótárazásának írása](media/vm-disk-performance/host-caching-read-write.jpg)
 
 Folytassa a Standard_D8s_v3 virtuális géppel folytatott példával. Ebben az esetben a gazdagépek gyorsítótárazását engedélyezjük a lemezeken, és most a virtuális gép IOPS korlátja 16 000 IOPS. A virtuális géphez csatolt három mögöttes P30-lemez, amely képes kezelni a 5 000 IOPS.
 
@@ -31,10 +69,10 @@ Beállítás:
     - Nem gyorsítótárazott IOPS: 12 800
 - P30 operációsrendszer-lemez 
     - IOPS: 5 000
-    - Gazdagép gyorsítótárazása engedélyezve 
+    - Gazdagép gyorsítótárazása: olvasás/írás 
 - 2 P30 adatlemez
     - IOPS: 5 000
-    - Gazdagép gyorsítótárazása engedélyezve
+    - Gazdagép gyorsítótárazása: olvasás/írás
 
 ![Gazdagép gyorsítótárazási példája](media/vm-disk-performance/host-caching-example-without-remote.jpg)
 
@@ -50,13 +88,13 @@ Beállítás:
     - Nem gyorsítótárazott IOPS: 12 800
 - P30 operációsrendszer-lemez 
     - IOPS: 5 000
-    - Gazdagép gyorsítótárazása engedélyezve 
+    - Gazdagép gyorsítótárazása: olvasás/írás
 - 2 P30 adatlemez X 2
     - IOPS: 5 000
-    - Gazdagép gyorsítótárazása engedélyezve
+    - Gazdagép gyorsítótárazása: olvasás/írás
 - 2 P30 adatlemez X 2
     - IOPS: 5 000
-    - Gazdagép gyorsítótárazása letiltva
+    - Gazdagép gyorsítótárazása: olvasás/írás
 
 ![Gazdagép-gyorsítótárazási példa távoli tárolóval](media/vm-disk-performance/host-caching-example-with-remote.jpg)
 
@@ -87,7 +125,8 @@ A lemez i/o-korlátjának diagnosztizálását segítő mérőszámok:
 - **Operációsrendszer-lemez sávszélességének** kihasználtsága (százalék) – az operációsrendszer-lemez átviteli sebessége által kiszámított százalék a kiépített operációsrendszer-lemez átviteli sebessége után. Ha ez az érték 100%-os, az alkalmazás futása az operációsrendszer-lemez sávszélesség-korlátja alapján lesz lekorlátozva.
 
 A virtuális gépek IO-korlátjának diagnosztizálását segítő mérőszámok:
-- A virtuális **gép gyorsítótárazott IOPS** kihasználtsága (%) – a teljes IOPS által kiszámított százalékos arány a virtuális gépek maximálisan gyorsítótárazott IOPS korlátja alapján. Ha ez az érték 100%-os, az alkalmazás futása a virtuális gép gyorsítótárazott IOPs-korlátja alapján lesz lekorlátozva.
+- A virtuális **gép gyorsítótárazott IOPS** kihasználtsága (%) – a teljes IOPS által kiszámított százalékos arány a virtuális gépek maximálisan gyorsítótárazott IOPS korlátja alapján. Ha ez az érték 100%-os, az alkalmazás futása a virtuális gép gyorsítótárazott IOPS-korlátja alapján lesz lekorlátozva.
 - A virtuális **gép gyorsítótárazott sávszélességének** kihasználtsága (%) – a teljes lemez átviteli sebessége által kiszámított százalék a maximálisan gyorsítótárazott virtuálisgép-átviteli sebességnél. Ha ez az érték 100%-os, az alkalmazás futása a virtuális gép gyorsítótárazott sávszélesség-korlátja alapján lesz lekorlátozva.
-- A virtuális gép nem **gyorsítótárazott IOPS** kihasználtsága (%) – a virtuális gépen lévő összes IOPS által kiszámított százalék a nem gyorsítótárazott virtuális gép maximális IOPS-korlátja alapján lett végrehajtva. Ha ez az érték 100%-os, az alkalmazás futása a virtuális gép nem gyorsítótárazott IOPs-korlátja alapján lesz lekorlátozva.
+- A virtuális gép nem **gyorsítótárazott IOPS** kihasználtsága (%) – a virtuális gépen lévő összes IOPS által kiszámított százalék a nem gyorsítótárazott virtuális gép maximális IOPS-korlátja alapján lett végrehajtva. Ha ez az érték 100%-os, az alkalmazás futása a virtuális gép nem gyorsítótárazott IOPS-korlátja alapján lesz lekorlátozva.
 - A virtuális gép nem **gyorsítótárazott sávszélességének** kihasználtsága (%) – a virtuális gépek teljes lemezének átviteli sebessége által kiszámított százalékos arány a virtuális gép maximálisan kiépített virtuálisgép-átviteli sebessége. Ha ez az érték 100%-os, az alkalmazás futása a virtuális gép nem gyorsítótárazott sávszélesség-korlátja alapján lesz korlátozva.
+

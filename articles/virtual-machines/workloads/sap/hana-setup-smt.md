@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: hermannd
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 699a8a69621642d07d3547c07bb20c0d32ca7686
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c186b73cb00d03b731cd015b3ee06bf8f2233fa4
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77616991"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541152"
 ---
 # <a name="set-up-smt-server-for-suse-linux"></a>Az SMT-kiszolgáló beállítása SUSE Linux rendszerhez
 SAP HANA nagyméretű példányai nem rendelkeznek közvetlen kapcsolattal az internettel. Ez nem egy egyszerű folyamat, amellyel regisztrálhatja az adott egységet az operációs rendszer szolgáltatójával, valamint letöltheti és alkalmazhatja a frissítéseket. A SUSE Linux rendszerhez készült megoldás egy SMT-kiszolgáló beállítása egy Azure-beli virtuális gépen. A virtuális gépet egy olyan Azure-beli virtuális hálózatban üzemelteti, amely a HANA Large-példányhoz csatlakozik. Ilyen SMT-kiszolgáló esetén a HANA nagyméretű példány egysége regisztrálhatja és letöltheti a frissítéseket. 
@@ -44,7 +44,7 @@ A telepített virtuális gép kisebb, és megkapta a belső IP-címet a 10.34.1.
 
 Adjon hozzá egy lemezt a virtuális géphez. Ezt a lemezt használja a frissítések tárolására, és maga a rendszerindító lemez túl kicsi lehet. Itt a lemez a/SRV/www/htdocs-hez van csatlakoztatva, ahogy az alábbi képernyőképen is látható. A 100 GB-os lemeznek elegendőnek kell lennie.
 
-![Képernyőfelvétel a virtuális gépekről az SMT-kiszolgáló üzembe helyezéséről](./media/hana-installation/image4_additional_disk_on_smtserver.PNG)
+![A képernyőfelvétel a PuTTY ablakban jeleníti meg a hozzáadott lemezt.](./media/hana-installation/image4_additional_disk_on_smtserver.PNG)
 
 Jelentkezzen be a HANA nagyméretű példány-egységbe vagy-egységbe, tartsa karban a/etc/hosts, és győződjön meg arról, hogy elérhető-e az az Azure-beli virtuális gép, amely az SMT-kiszolgálót a hálózaton keresztül futtatja.
 

@@ -3,20 +3,18 @@ title: v1 – v2 API-Migrálás
 titleSuffix: Azure Cognitive Services
 description: Az 1-es verziójú végpont és a szerzői Language Understanding API-k elavultak. Ebből az útmutatóból megtudhatja, hogyan telepítheti át a 2. verziójú végpontra és az API-k létrehozására.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 04/02/2019
-ms.author: diberry
-ms.openlocfilehash: c5880aac01e0611565afb825a61b682197baf5d6
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: e1e9ac4ceef843712cc2e39f26ff0aca5341e201
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344747"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541322"
 ---
 # <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>API v1 – v2 áttelepítési útmutató LUIS-alkalmazásokhoz
 Az 1-es verziójú [végpont](https://aka.ms/v1-endpoint-api-docs) és a [szerzői](https://aka.ms/v1-authoring-api-docs) API-k elavultak. Ebből az útmutatóból megtudhatja, hogyan telepítheti át a 2. verziójú [végpontra](https://go.microsoft.com/fwlink/?linkid=2092356) és az API-k [létrehozására](https://go.microsoft.com/fwlink/?linkid=2092087) .
@@ -28,7 +26,7 @@ A LUIS API-kkal új [régiók](https://aka.ms/LUIS-regions) vannak megadva. A LU
 A szerzői művelet API-útvonala megváltozott a **prog** útvonal használatával az **API** -útvonal használatával.
 
 
-| version | útvonal |
+| version | route |
 |--|--|
 |1|/Luis/v1.0/**prog**/apps|
 |2|/Luis/**API**-/v2.0/apps|
@@ -107,7 +105,7 @@ v2-végpont sikerességi válasza:
 ## <a name="key-management-no-longer-in-api"></a>A kulcskezelő szolgáltatás már nem az API-ban
 Az előfizetési végponti kulcs API-jai elavultak, a visszaadott 410.
 
-| version | útvonal |
+| version | route |
 |--|--|
 |1|/luis/v1.0/prog/subscriptions|
 |1|/luis/v1.0/prog/subscriptions/{subscriptionKey}|
@@ -117,7 +115,7 @@ Az Azure- [végpont kulcsai](luis-how-to-azure-subscription.md) a Azure Portalba
 ## <a name="new-versioning-route"></a>Új verziószámozási útvonal
 A v2 modell már egy [verzióban](luis-how-to-manage-versions.md)található. A verzió neve 10 karakter az útvonalon. Az alapértelmezett verzió: "0,1".
 
-| version | útvonal |
+| version | route |
 |--|--|
 |1|/Luis/v1.0/**prog**/apps/{AppID}/Entities|
 |2|/Luis/**API**/v2.0/apps/{AppID}/-**verziók**/{versionId}/Entities|
@@ -136,7 +134,7 @@ Számos, a LUIS-metaadatokat visszaadó API új névvel rendelkezik.
 ## <a name="sample-renamed-to-suggest"></a>"Sample" átnevezve erre: "javaslat"
 A LUIS a meglévő [végpontok hosszúságú kimondott szöveg](luis-how-to-review-endpoint-utterances.md) hosszúságú kimondott szöveg javasolja, amelyek növelhetik a modellt. Az előző verzióban a neve **minta**volt. Az új verzióban a név a **minta alapján módosul.** Ezt nevezzük **[felülvizsgálati végpont hosszúságú kimondott szöveg](luis-how-to-review-endpoint-utterances.md)** a Luis webhelyén.
 
-| version | útvonal |
+| version | route |
 |--|--|
 |1|/Luis/v1.0/**prog**/apps/{AppID}/Entities/{entityId}/**minta**|
 |1|/Luis/v1.0/**prog**/apps/{AppID}/intents/{intentId}/**minta**|
@@ -167,7 +165,7 @@ A v1 engedélyezett címkével ellátott hosszúságú kimondott szöveg a szó 
 ## <a name="common-reasons-for-http-response-status-codes"></a>A HTTP-válasz állapotkódok gyakori okai
 Lásd: [Luis API Response Codes](luis-reference-response-codes.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A v2 API dokumentációjának használatával frissítheti a meglévő REST-hívásokat a LUIS- [végpontra](https://go.microsoft.com/fwlink/?linkid=2092356) és a [szerzői](https://go.microsoft.com/fwlink/?linkid=2092087) API-kra.
 

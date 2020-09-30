@@ -1,21 +1,19 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.date: 05/05/2020
 ms.topic: include
-ms.author: diberry
-ms.openlocfilehash: da9388a3bd5f4d46ec34ed226e3ee23a96b2f494
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: fda9df6c7e9651bbd3b0b70ad9d47f23c0c19d01
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87375497"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541431"
 ---
 ## <a name="sign-in-to-luis-portal"></a>Bejelentkezés a LUIS portálra
 
@@ -29,7 +27,7 @@ A LUIS új felhasználójának a következő eljárást kell követnie:
 
 1. Adja meg az erőforrás részleteit.
 
-    ![Szerzői erőforrás létrehozása](../media/migrate-authoring-key/choose-authoring-resource-form.png)
+    ![A képernyőképen az új erőforrás létrehozása a szerzői Műveletek ablaktáblán látható.](../media/migrate-authoring-key/choose-authoring-resource-form.png)
 
     **Új authoring-erőforrás létrehozásakor**adja meg a következő információkat:
 
@@ -40,10 +38,10 @@ A LUIS új felhasználójának a következő eljárást kell követnie:
     * **Hely** – a hely kiválasztása az **erőforráscsoport** kiválasztása alapján történik.
     * **Árképzési szint** – az árképzési szint meghatározza a másodpercenkénti és havi maximális tranzakciót.
 
-1. Megjelenik a létrehozandó erőforrás összegzése. Válassza a **Tovább** lehetőséget.
+1. Megjelenik a létrehozandó erőforrás összegzése. Kattintson a **Tovább** gombra.
 
-    ![Szerzői erőforrás létrehozása](../media/sign-in/sign-in-confirm-key-selection.png)
+    ![A képernyőképen a kezdőlapon az Azure-fiókra mutató hivatkozást tartalmazó oldal látható.](../media/sign-in/sign-in-confirm-key-selection.png)
 
 1. Erősítse meg a **Folytatás**lehetőséget.
 
-    ![Szerzői erőforrás létrehozása](../media/sign-in/sign-in-confirm-continue.png)
+    ![A képernyőképen az Azure-fiókkal való összekapcsolást követően megjelenik a Kezdőlap.](../media/sign-in/sign-in-confirm-continue.png)

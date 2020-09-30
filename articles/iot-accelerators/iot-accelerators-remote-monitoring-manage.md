@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: e4236952bd41c4955e337813ff6d706263b8ef47
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 432386809596fb2ef040a05d1fe0d12294a1abef
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "73890907"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534522"
 ---
 # <a name="tutorial-configure-devices-connected-to-your-monitoring-solution"></a>Oktatóanyag: a figyelési megoldáshoz csatlakoztatott eszközök konfigurálása
 
@@ -66,7 +66,7 @@ Annak ellenőrzéséhez, hogy frissíthető-e a motor konfigurációs tulajdons�
 
 A motor földrajzi helyének frissítéséhez adja meg az **UpdateEngineLocation** nevet, állítsa be a **-122,15** hosszúsági és a **47,62** szélességi fokot, a helyszín legyen **Factory 2**, végül kattintson az **Apply** (Alkalmaz) gombra:
 
-[![Eszköz tulajdonság értékének frissítése](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigurephysical-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigurephysical-expanded.png#lightbox)
+[![Képernyőkép, amely a "feladatok" ablak "Device Explorer" lapját jeleníti meg.](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigurephysical-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigurephysical-expanded.png#lightbox)
 
 A feladatok állapotának nyomon követéséhez kattintson a **feladatok állapotának megtekintése**elemre:
 
@@ -113,7 +113,7 @@ Hozzon létre egy szöveges szűrőt, amely a **FieldService** címkenevet és a
 
 Hozzon létre egy szöveges szűrőt, amely a **FieldService** címkenevet és a **ConnectedVehicle** értéket használja feltételként. Mentse a szűrőt **Connected Vehicle** néven.
 
-[![Csatlakoztatott jármű szűrő létrehozása](./media/iot-accelerators-remote-monitoring-manage/connectedvehiclefilter-inline.png)](./media/iot-accelerators-remote-monitoring-manage/connectedvehiclefilter-expanded.png#lightbox)
+[![A "Device Explorer" oldalt megjelenítő képernyőkép, amely az "eszközbeállítások kezelése" ablakot mutatja.](./media/iot-accelerators-remote-monitoring-manage/connectedvehiclefilter-inline.png)](./media/iot-accelerators-remote-monitoring-manage/connectedvehiclefilter-expanded.png#lightbox)
 
 A Contoso operátora mostantól lekérdezheti az eszközöket az üzemeltetési csapat alapján:
 
@@ -121,7 +121,7 @@ A Contoso operátora mostantól lekérdezheti az eszközöket az üzemeltetési 
 
 [!INCLUDE [iot-accelerators-tutorial-cleanup](../../includes/iot-accelerators-tutorial-cleanup.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan konfigurálhatja és kezelheti a távoli monitorozási megoldásgyorsítóhoz csatlakoztatott eszközöket. A következő oktatóanyagból megtudhatja, hogyan használhatja a megoldásgyorsítót egy váratlan riasztás kiváltó okának elemzésére.
 

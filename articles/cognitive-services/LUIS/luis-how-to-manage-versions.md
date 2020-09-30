@@ -3,20 +3,18 @@ title: Verziók kezelése – LUIS
 titleSuffix: Azure Cognitive Services
 description: A verziók segítségével különböző modelleket hozhat létre és tehet közzé. A modell módosítása előtt célszerű a jelenlegi aktív modell klónozását az alkalmazás egy másik verziójára.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2020
-ms.author: diberry
-ms.openlocfilehash: 3aa7958ea4edf6cf3e3c1b170e2351f49f719983
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.openlocfilehash: 3cf4ce5dc7061065ea501ae1c00cd5b9e5404770
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84782840"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540863"
 ---
 # <a name="use-versions-to-edit-and-test-without-impacting-staging-or-production-apps"></a>Verziók használata az átmeneti vagy éles alkalmazások befolyásolása nélkül
 
@@ -65,7 +63,7 @@ Importálhatja `.json` az alkalmazás egy vagy `.lu` több verzióját is.
 
 ## <a name="other-actions"></a>Egyéb műveletek
 
-* Ha **törölni** szeretne egy verziót, válasszon ki egy verziót a listából, majd válassza a **Törlés** lehetőséget az eszköztárból. Kattintson **az OK gombra**.
+* Ha **törölni** szeretne egy verziót, válasszon ki egy verziót a listából, majd válassza a **Törlés** lehetőséget az eszköztárból. Kattintson az **OK** gombra.
 * Egy verzió **átnevezéséhez** válasszon egy verziót a listából, majd válassza az **Átnevezés** lehetőséget az eszköztárból. Adja meg az új nevet, és válassza a **kész**lehetőséget.
 * Egy verzió **exportálásához** válasszon ki egy verziót a listából, majd válassza az **alkalmazás exportálása** lehetőséget az eszköztárból. Válassza a JSON vagy a LU lehetőséget, ha biztonsági mentést szeretne exportálni, vagy a forrás vezérlőelemben szeretné menteni a fájlt, majd válassza az **Exportálás tárolóba** lehetőséget az [alkalmazás egy Luis-tárolóban való használatához](luis-container-howto.md)
 

@@ -8,12 +8,12 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/25/2020
-ms.openlocfilehash: 210a4a352f5130bc67d70f47bdf6305c5a992282
-ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
+ms.openlocfilehash: 2e73039418233c97fc20242ed7af7df14c5b47ee
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91403779"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534777"
 ---
 # <a name="how-to-set-up-change-and-deletion-detection-for-blobs-in-azure-cognitive-search-indexing"></a>Blobok módosítási és törlési észlelésének beállítása az Azure-ban Cognitive Search indexelés
 
@@ -100,7 +100,11 @@ Miután egy indexelő feldolgozza a törölt blobot, és eltávolítja a megfele
 
 Ha szeretné átindexelni a dokumentumot, módosítsa a `"softDeleteMarkerValue" : "false"` blobot, és futtassa újra az indexelő.
 
-## <a name="see-also"></a>Lásd még
+## <a name="help-us-make-azure-cognitive-search-better"></a>Segítsen nekünk, hogy jobban megtegyük az Azure Cognitive Search
+
+Ha a funkciókra vonatkozó kérések vagy ötletek vannak, adja meg a [UserVoice](https://feedback.azure.com/forums/263029-azure-search/). Ha segítségre van szüksége a meglévő szolgáltatás használatához, tegye fel a kérdését [stack Overflowra](https://stackoverflow.microsoft.com/questions/tagged/18870).
+
+## <a name="next-steps"></a>További lépések
 
 * [Indexelők az Azure Cognitive Searchben](search-indexer-overview.md)
 * [BLOB-indexelő konfigurálása](search-howto-indexing-azure-blob-storage.md)

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 9c745395026b8b7e8c58fcb4b7cc67971d971a7c
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: e8feb4f2012d323d954ba000323824bc157bcf87
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89300221"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534060"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>Nyelvi és területi támogatás szöveg-és beszédfelismerési fordításhoz
 
@@ -71,7 +71,6 @@ A fordító a következő nyelveket támogatja szöveg szöveggé fordításáho
 |Japán|  `ja`    |
 |kannada|`kn`|
 |Kazak|`kk`|
-|Kiswahili| `sw`    |
 |Klingon|   `tlh-Latn`  |
 |Klingon (plqaD)|   `tlh-Piqd`  |
 |Koreai |`ko`   |
@@ -102,6 +101,7 @@ A fordító a következő nyelveket támogatja szöveg szöveggé fordításáho
 |Szlovák|    `sk`    |
 |Szlovén| `sl`    |
 |Spanyol|   `es`    |
+|szuahéli|   `sw`    |
 |Svéd|   `sv`    |
 |Tahitian|  `ty`    |
 |tamil| `ta`    |
@@ -152,7 +152,6 @@ A Translator a következő nyelveket észleli fordításhoz és íráshoz.
 |Ír | `ga`|
 |Olasz|   `it`    |
 |Japán|  `ja`    |
-|Kiswahili| `sw`    |
 |Klingon|   `tlh-Latn`  |
 |Koreai |`ko`   |
 |Kurd (Közép)  |`ku-Arab`  |
@@ -173,6 +172,7 @@ A Translator a következő nyelveket észleli fordításhoz és íráshoz.
 |Szlovák|    `sk`    |
 |Szlovén| `sl`    |
 |Spanyol|   `es`    |
+|szuahéli|   `sw`    |
 |Svéd|   `sv`    |
 |Tahitian|  `ty`    |
 |Thai|  `th`    |
@@ -246,7 +246,6 @@ Tekintse meg a [szótári keresési](reference/v3-0-dictionary-lookup.md) és a 
 | Indonéz      | `id`          |
 | Olasz      | `it`          |
 | Japán      | `ja`          |
-| Kiswahili      | `sw`          |
 | Klingon      | `tlh`          |
 | Koreai      | `ko`          |
 | Lett      | `lv`          |
@@ -263,6 +262,7 @@ Tekintse meg a [szótári keresési](reference/v3-0-dictionary-lookup.md) és a 
 | Szlovák     | `sk`          |
 | Szlovén      | `sl`          |
 | Spanyol      | `es`          |
+| szuahéli      | `sw`          |
 | Svéd      | `sv`          |
 | tamil      | `ta`          |
 | Thai      | `th`          |
@@ -314,7 +314,6 @@ Az [Egyéni Translator](https://aka.ms/CustomTranslator)használatával a követ
 | Olasz      | `it`          |
 | Japán      | `ja`          |
 |kannada|`kn`|
-| Kiswahili|    `sw`    |
 | Koreai      | `ko`          |
 | Lett      | `lv`          |
 | Litván      | `lt`          |
@@ -335,6 +334,7 @@ Az [Egyéni Translator](https://aka.ms/CustomTranslator)használatával a követ
 | Szlovák     | `sk`          |
 | Szlovén      | `sl`          |
 | Spanyol      | `es`          |
+| szuahéli|  `sw`    |
 | Svéd      | `sv`          |
 |Tahitian|  `ty`    |
 | Thai      | `th`          |
@@ -345,7 +345,7 @@ Az [Egyéni Translator](https://aka.ms/CustomTranslator)használatával a követ
 | Vietnámi      | `vi`          |
 | walesi | `cy` |
 
-## <a name="speech-translation"></a>Speech Translation
+## <a name="speech-translation"></a>Beszédfordítás
 A fordítás a fordító és a Cognitive Services Speech Service használatával érhető el. A [beszédfelismerési szolgáltatás dokumentációjában](https://docs.microsoft.com/azure/cognitive-services/speech-service/) tájékozódhat a beszédfelismerés használatáról és az összes [elérhető nyelvi lehetőségről](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support).
 
 ### <a name="speech-to-text"></a>Diktálás

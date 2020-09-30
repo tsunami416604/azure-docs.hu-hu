@@ -3,12 +3,12 @@ title: Szabályzatok megfelelőségi állapotának beolvasása
 description: Azure Policy értékelések és hatások határozzák meg a megfelelőséget. Ismerje meg, hogyan kérheti le Azure-erőforrásai megfelelőségi adatait.
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 83bf00710346193a89b59c6a72a0e4840dd5abfb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5a308a23e84587eba69951081674d3525f083441
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91291019"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537950"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Azure-erőforrások megfelelőségi információk beolvasása
 
@@ -22,7 +22,7 @@ A szabályzat és a kezdeményezési hozzárendelések által létrehozott megfe
 Mielőtt megvizsgáljuk a megfelelőségi jelentés módszereit, nézzük meg, hogy mikor frissülnek a megfelelőségi információk, és milyen gyakorisággal és eseményekkel indítják el a kiértékelési ciklust.
 
 > [!WARNING]
-> Ha a megfelelőségi állapotot **nem regisztráltként**jelenti, ellenőrizze, hogy a **Microsoft. PolicyInsights** erőforrás-szolgáltató regisztrálva van-e, és hogy a felhasználó rendelkezik-e a megfelelő szerepköralapú hozzáférés-vezérlési (RBAC) engedélyekkel a következő cikkben leírtak szerint: [Azure Policy](../overview.md#rbac-permissions-in-azure-policy).
+> Ha a megfelelőségi állapotot **nem regisztráltként**jelenti, ellenőrizze, hogy a **Microsoft. PolicyInsights** erőforrás-szolgáltató regisztrálva van-e, és hogy a felhasználó rendelkezik-e a megfelelő Azure szerepköralapú hozzáférés-vezérlési (Azure RBAC) engedélyekkel az [Azure RBAC engedélyei](../overview.md#azure-rbac-permissions-in-azure-policy)című cikkben leírtak szerint Azure Policy.
 
 ## <a name="evaluation-triggers"></a>Próbaverziós eseményindítók
 
@@ -148,7 +148,7 @@ Tegyük fel például, hogy van egy erőforráscsoport – ContsoRG, és néhán
 
 Ebben a példában óvatosnak kell lennie a biztonsági kockázatokkal szemben. Most, hogy létrehozott egy szabályzat-hozzárendelést, a rendszer kiértékeli a ContosoRG erőforráscsoport összes belefoglalt és nem mentesített tárolási fiókját. A három nem megfelelő tárolási fiókot naplózza, így az állapotukat **nem megfelelőre** változtatja.
 
-:::image type="complex" source="../media/getting-compliance-data/resource-group03.png" alt-text="A Storage-fiók megfelelőségének diagramja a contoso R G-erőforráscsoporthoz." border="false":::
+:::image type="complex" source="../media/getting-compliance-data/resource-group03.png" alt-text="A contoso R G erőforráscsoporthoz tartozó nyilvános hálózatok számára elérhető Storage-fiókok diagramja." border="false":::
    Ábra, amely a contoso R G erőforráscsoporthoz tartozó öt Storage-fiókhoz tartozó képeket mutatja. A Storage-fiókok közül az egyik és a három már rendelkezik zöld pipa jellel, míg a Storage-fiókok két, négy és öt múlva piros figyelmeztető jelekkel rendelkeznek.
 :::image-end:::
 
@@ -164,7 +164,7 @@ Azure Policy a definíció **típus** és **név** mezőjét használja annak me
 A megfelelőség százalékos arányát úgy határozzák meg, hogy a **megfelelő** és a **mentesített** erőforrásokat az _összes erőforrás_alapján osztja el. Az _összes erőforrás_ a **megfelelő**, **nem megfelelő**, **mentesített**és **ütköző** erőforrások összegeként van meghatározva. Az összesített megfelelőségi számok a **megfelelő** vagy a **kivétel** alá eső különálló erőforrások összege, amely az összes különálló erőforrás összegével egyenlő. Az alábbi képen 20 különálló erőforrás áll rendelkezésre, és csak az egyik **nem megfelelő**.
 A teljes erőforrás-megfelelőség 95% (19 – 20).
 
-:::image type="content" source="../media/getting-compliance-data/simple-compliance.png" alt-text="Képernyőkép a szabályzatok megfelelőségi részleteiről a megfelelőségi lapról." border="false":::
+:::image type="content" source="../media/getting-compliance-data/simple-compliance.png" alt-text="A contoso R G erőforráscsoporthoz tartozó nyilvános hálózatok számára elérhető Storage-fiókok diagramja." border="false":::
 
 > [!NOTE]
 > A Azure Policy előzetes verziójának megfelelőségi funkciója. Az SDK és a portál oldalain lévő megfelelőségi tulajdonságok eltérnek az engedélyezett kezdeményezésekhez. További információ: a [szabályozások megfelelősége](../concepts/regulatory-compliance.md)
@@ -173,11 +173,11 @@ A teljes erőforrás-megfelelőség 95% (19 – 20).
 
 A Azure Portal grafikus élményt nyújt a környezet megfelelőségi állapotának megjelenítéséhez és megismeréséhez. **A szabályzat lapon az** **áttekintő** lehetőség a házirendek és kezdeményezések megfelelőségére vonatkozó rendelkezésre álló hatókörök részletes adatait tartalmazza. A megfelelőségi állapottal és a hozzárendelések számával együtt az elmúlt hét nap megfelelőségét bemutató diagramot tartalmaz. A **megfelelőségi** oldal ezen információk nagy részét tartalmazza (kivéve a diagramot), de további szűrési és rendezési lehetőségeket is biztosít.
 
-:::image type="content" source="../media/getting-compliance-data/compliance-page.png" alt-text="Képernyőkép a megfelelőség lapról, szűrési beállítások és részletek." border="false":::
+:::image type="content" source="../media/getting-compliance-data/compliance-page.png" alt-text="A contoso R G erőforráscsoporthoz tartozó nyilvános hálózatok számára elérhető Storage-fiókok diagramja." border="false":::
 
 Mivel egy házirend vagy kezdeményezés különböző hatókörökhöz rendelhető, a tábla tartalmazza az egyes hozzárendelések hatókörét és a hozzárendelt definíció típusát. A nem megfelelő erőforrások száma és az egyes hozzárendelésekhez nem megfelelő szabályzatok is rendelkezésre állnak. A táblázatban szereplő házirend vagy kezdeményezés kiválasztásával mélyebben megtekintheti az adott hozzárendelés megfelelőségét.
 
-:::image type="content" source="../media/getting-compliance-data/compliance-details.png" alt-text="Képernyőkép a megfelelőség részleteiről oldalról, beleértve a Counts és az erőforrás-megfelelőségi adatokat." border="false":::
+:::image type="content" source="../media/getting-compliance-data/compliance-details.png" alt-text="A contoso R G erőforráscsoporthoz tartozó nyilvános hálózatok számára elérhető Storage-fiókok diagramja." border="false":::
 
 Az **erőforrás-megfelelőség** lapon található erőforrások listája az aktuális hozzárendelés meglévő erőforrásainak kiértékelési állapotát jeleníti meg. A lap alapértelmezett értéke **nem megfelelő**, de szűrhető.
 Az erőforrás-létrehozási kérelem által aktivált események (Hozzáfűzés, naplózás, megtagadás, üzembe helyezés) az **események** lapon jelennek meg.
@@ -185,15 +185,15 @@ Az erőforrás-létrehozási kérelem által aktivált események (Hozzáfűzés
 > [!NOTE]
 > Az AK-motor házirendjének esetében a megjelenő erőforrás az erőforráscsoport.
 
-:::image type="content" source="../media/getting-compliance-data/compliance-events.png" alt-text="Képernyőkép a megfelelőségi részletek oldal események lapján." border="false":::
+:::image type="content" source="../media/getting-compliance-data/compliance-events.png" alt-text="A contoso R G erőforráscsoporthoz tartozó nyilvános hálózatok számára elérhető Storage-fiókok diagramja." border="false":::
 
 [Erőforrás-szolgáltatói mód](../concepts/definition-structure.md#resource-provider-modes) erőforrásai esetében az **erőforrás-megfelelőség** lapon válassza ki az erőforrást, vagy kattintson a jobb gombbal a sorra, és válassza a **megfelelőség megtekintése részletei** lehetőséget. Ekkor megnyílik az összetevő megfelelőségi adatai. Ez a lap lapokat is kínál az ehhez az erőforráshoz, eseményekhez, összetevő-eseményekhez és változási előzményekhez rendelt házirendek megtekintéséhez.
 
-:::image type="content" source="../media/getting-compliance-data/compliance-components.png" alt-text="Képernyőkép az összetevő-megfelelőség lapról, valamint az erőforrás-szolgáltatói mód hozzárendelésének megfelelőségi részleteiről." border="false":::
+:::image type="content" source="../media/getting-compliance-data/compliance-components.png" alt-text="A contoso R G erőforráscsoporthoz tartozó nyilvános hálózatok számára elérhető Storage-fiókok diagramja." border="false":::
 
 Az erőforrás-megfelelőség lapon kattintson a jobb gombbal az esemény azon sorára, amelyről további részleteket szeretne gyűjteni, majd válassza a **tevékenységi naplók megjelenítése**lehetőséget. Megnyílik a műveletnapló lap, és a rendszer előre szűri a hozzárendelés részleteit és az eseményeket. A műveletnapló további kontextust és információkat nyújt ezekről az eseményekről.
 
-:::image type="content" source="../media/getting-compliance-data/compliance-activitylog.png" alt-text="Képernyőkép a Azure Policy tevékenységekről és értékelésekről." border="false":::
+:::image type="content" source="../media/getting-compliance-data/compliance-activitylog.png" alt-text="A contoso R G erőforráscsoporthoz tartozó nyilvános hálózatok számára elérhető Storage-fiókok diagramja." border="false":::
 
 ### <a name="understand-non-compliance"></a>A nem megfelelőség megismerése
 
@@ -649,9 +649,9 @@ Trent Baker
 
 Ha [Log Analytics workspace](../../../azure-monitor/log-query/log-query-overview.md) `AzureActivity` az előfizetéshez kötött [Activity Log Analytics megoldással](../../../azure-monitor/platform/activity-log.md) rendelkező log Analytics munkaterülettel rendelkezik, az új és frissített erőforrások kiértékelésével is megtekintheti az egyszerű Kusto-lekérdezések és a `AzureActivity` tábla segítségével. Azure Monitor naplók részleteivel a riasztások úgy konfigurálhatók, hogy megfigyeljék a nem megfelelőséget.
 
-:::image type="content" source="../media/getting-compliance-data/compliance-loganalytics.png" alt-text="A AzureActivity tábla Azure Policy műveleteit bemutató Azure Monitor naplók képernyőképe." border="false":::
+:::image type="content" source="../media/getting-compliance-data/compliance-loganalytics.png" alt-text="A contoso R G erőforráscsoporthoz tartozó nyilvános hálózatok számára elérhető Storage-fiókok diagramja." border="false":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse át a példákat [Azure Policy mintákon](../samples/index.md).
 - Tekintse meg az [Azure szabályzatdefiníciók struktúrája](../concepts/definition-structure.md) szakaszt.

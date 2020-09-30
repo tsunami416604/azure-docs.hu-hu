@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 59d181d8f4c176a8fc00ac0fb8ab0216c6ae27f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 417cc13c4a201a0dd86a846c347cb395b8d81c43
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85080020"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91535525"
 ---
 # <a name="built-in-cognitive-skills-for-text-and-image-processing-during-indexing-azure-cognitive-search"></a>Beépített kognitív képességek a szöveg-és képfeldolgozáshoz az indexelés során (Azure Cognitive Search)
 
@@ -31,14 +31,14 @@ Ebből a cikkből megismerheti az Azure Cognitive Search által biztosított kog
 
 Az általuk felhasznált vagy előállított képességek számos képességgel rendelkeznek. Általánosságban elmondható, hogy a legtöbb ismeret az előre betanított modelleken alapul, ami azt jelenti, hogy a modellt nem lehet a saját betanítási adataival betanítani. A következő táblázat felsorolja és leírja a Microsoft által biztosított képességeket. 
 
-| Ügyességi | Description |
+| Ügyességi | Leírás |
 |-------|-------------|
 |[Microsoft. Skills. Text. CustomEntityLookupSkill](cognitive-search-skill-custom-entity-lookup.md)| Szöveget keres a szavak és kifejezések egyéni, felhasználó által meghatározott listájából.|
 | [Microsoft. Skills. Text. KeyPhraseSkill](cognitive-search-skill-keyphrases.md) | Ez a képesség egy előképzett modellt használ a fontos kifejezések elhelyezésére, a nyelvi szabályokra, a más feltételekhez való közelségre, valamint arra, hogy a kifejezés milyen szokatlanul legyen a forrásadatok között. |
 | [Microsoft. Skills. Text. LanguageDetectionSkill](cognitive-search-skill-language-detection.md)  | Ez a képesség egy előképzésen alapuló modellt használ a használt nyelv észleléséhez (dokumentum-azonosító egy nyelven). Ha az azonos szöveges szegmensekben több nyelv is használatos, a kimenet a túlnyomórészt használt nyelv LCID-je.|
 | [Microsoft. Skills. Text. MergeSkill](cognitive-search-skill-textmerger.md) | Egy mezőkből álló gyűjteményből származó szöveget egyesít egyetlen mezőbe.  |
 | [Microsoft. Skills. Text. EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md) | Ez a képesség egy előre betanított modellt használ a rögzített kategóriákhoz tartozó entitások létrehozásához: személyek, hely, szervezet, e-mailek, URL-címek, datetime-mezők. |
-| [Microsoft. Skills. Text. PIIDetectionSkill](cognitive-search-skill-pii-detection.md)  | Ez a képesség egy előképzett modellt használ a személyazonosításra alkalmas adatok egy adott szövegből való kinyeréséhez. A képesség számos lehetőséget is kínál az észlelt személyazonosításra alkalmas információk entitások szövegbe való maszkolására.  |
+| [Microsoft. Skills. Text. PIIDetectionSkill](cognitive-search-skill-pii-detection.md)  | Ez a képesség egy előképzett modellt használ a személyes adatok egy adott szövegből való kinyeréséhez. A képesség számos különböző lehetőséget is kínál az észlelt személyes információ entitások szövegben való maszkolására.  |
 | [Microsoft. Skills. Text. SentimentSkill](cognitive-search-skill-sentiment.md)  | Ez a képesség egy előre betanított modellt használ a rekordok pozitív vagy negatív ismeretének megértékelésére a rekord alapján. A pontszám 0 és 1 között van. Semleges pontszámok fordulnak elő mind a null eset esetében, ha a rendszer nem észleli a véleményét, és a semlegesnek minősülő szöveg.  |
 | [Microsoft. Skills. Text. SplitSkill](cognitive-search-skill-textsplit.md) | Feldarabolja a szöveget a lapokra, így Növekményesen bővítheti vagy kibővítheti a tartalmat. |
 | [Microsoft. Skills. Text. TranslationSkill](cognitive-search-skill-text-translation.md) | Ez a képesség egy előképzett modellt használ a bemeneti szöveg különböző nyelvekre való lefordításához a normalizálás vagy a honosítás használati eseteihez. |
@@ -53,7 +53,7 @@ Az általuk felhasznált vagy előállított képességek számos képességgel 
 
 Az [egyéni képességek](cognitive-search-custom-skill-web-api.md)létrehozásával kapcsolatos útmutatásért lásd: [Egyéni felület definiálása](cognitive-search-custom-skill-interface.md) és [példa: egyéni képesség létrehozása AI](cognitive-search-create-custom-skill-example.md)-bővítéshez.
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 + [Készségkészlet definiálása](cognitive-search-defining-skillset.md)
 + [Egyéni képességek kezelőfelületének definíciója](cognitive-search-custom-skill-interface.md)

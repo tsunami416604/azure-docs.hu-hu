@@ -3,21 +3,18 @@ title: Resource Health riasztások létrehozása az Azure Portal használatával
 description: Riasztás létrehozása Azure Portal használatával, amely értesíti Önt, ha az Azure-erőforrások elérhetetlenné válnak.
 ms.topic: conceptual
 ms.date: 6/23/2020
-ms.openlocfilehash: 3a0f4704880d040106a2e4112d621b6d8ffbede6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 127aad1691f7bb6b6c64332eefde734a809ab75f
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091572"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540676"
 ---
 # <a name="configure-resource-health-alerts-using-azure-portal"></a>Resource Health-riasztások konfigurálása az Azure Portal használatával
 
 Ebből a cikkből megtudhatja, hogyan állíthatja be a műveletnapló riasztásait az erőforrás-állapotra vonatkozó értesítésekhez a Azure Portal használatával.
 
 Azure Resource Health folyamatosan tájékoztat az Azure-erőforrások aktuális és korábbi állapotáról. Azure Resource Health riasztások közel valós időben értesítik Önt, ha az erőforrások állapota megváltozik. Resource Health riasztások létrehozása programozott módon lehetővé teszi a felhasználók számára a riasztások tömeges létrehozását és testreszabását.
-
-> [!NOTE]
-> Resource Health riasztás jelenleg előzetes verzióban érhető el.
 
 Az erőforrás-állapotra vonatkozó értesítések tárolása az [Azure-tevékenység naplójában](../azure-monitor/platform/platform-logs-overview.md) történik, mivel a tevékenység naplójában tárolt adatok valószínűleg nagy mennyiségű információval rendelkeznek, külön felhasználói felület áll rendelkezésre, amely megkönnyíti a riasztások megtekintését és beállítását az erőforrás-állapottal kapcsolatos értesítéseken.
 Riasztást kaphat, ha az Azure-erőforrás Resource Health-értesítéseket küld az Azure-előfizetésre. A riasztást a következő alapján állíthatja be:

@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: how-to
 ms.date: 5/18/2020
 ms.author: derekol
-ms.openlocfilehash: 57c38d3b6eeb26a38a36fb67da25bcf960cee2dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 22cb179925f95fd0762371cc904fcbd02675339a
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710847"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540268"
 ---
 # <a name="associate-peer-asn-to-azure-subscription-using-the-portal"></a>Társ ASN társítása Azure-előfizetéshez a portál használatával
 
@@ -70,12 +70,12 @@ Internetszolgáltatóként vagy internetes Exchange-szolgáltatóként létrehoz
 1. Ezután kattintson a **felülvizsgálat + létrehozás** lehetőségre, és figyelje meg, hogy a portál a beírt adatok alapszintű érvényesítését futtatja. Ez a felső menüszalagon jelenik meg, a *végső ellenőrzés futtatásával..*.
 
     > [!div class="mx-imgBorder"]
-    > ![PeerAsn áttekintése lap](./media/peerasn-review-tab-validation.png)
+    > ![A képernyőképen a társ A S N alapjai lap jelenik meg.](./media/peerasn-review-tab-validation.png)
 
 1. Miután a menüszalagon lévő üzenet bekapcsolta az *érvényesítést*, ellenőrizze az adatokat, és küldje el a kérést a **Létrehozás**gombra kattintva. Ha az ellenőrzés nem megy át, kattintson az **előző** gombra, és ismételje meg a fenti lépéseket a kérelem módosításához, és győződjön meg arról, hogy a megadott értékek nincsenek hibák.
 
     > [!div class="mx-imgBorder"]
-    > ![PeerAsn áttekintése lap](./media/peerasn-review-tab.png)
+    > ![A képernyőképen a társ-A S N alapismeretek lap és az érvényesítés átadása látható.](./media/peerasn-review-tab.png)
 
 1. A kérelem elküldése után várjon, amíg a telepítés befejeződött. Ha a telepítés sikertelen, forduljon a [Microsoft-partneri](mailto:peering@microsoft.com)kapcsolathoz. A sikeres üzembe helyezés az alábbi módon fog megjelenni.
 

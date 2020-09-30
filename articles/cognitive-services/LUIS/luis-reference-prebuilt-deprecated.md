@@ -3,20 +3,18 @@ title: Elavult előre összeépített entitások – LUIS
 titleSuffix: Azure Cognitive Services
 description: Ez a cikk a Language Understanding (LUIS) elavult, előre felépített entitási információit tartalmazza.
 services: cognitive-services
-author: diberry
 ms.custom: seodec18
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 07/29/2019
-ms.author: diberry
-ms.openlocfilehash: 46da828b7553fdf9cdded817febd3bb95cd4cbb9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6a050990c28b9137440ec05d918774d76f216be8
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78270681"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540846"
 ---
 # <a name="deprecated-prebuilt-entities-in-a-luis-app"></a>Egy LUIS-alkalmazás elavult, előre összeépített entitásai
 A következő előre összeépített entitások elavultak, és nem vehetők fel új LUIS-alkalmazásokba.
@@ -26,7 +24,7 @@ A következő előre összeépített entitások elavultak, és nem vehetők fel 
 * **Enciklopédia**: az **Encyclopedia** -t használó meglévő LUIS-alkalmazások a 2018. decemberig támogatottak.
 
 ## <a name="geography-culture"></a>Földrajz kulturális környezet
-A **földrajzi** hely csak a `en-us` területi beállításban érhető el.
+A **földrajzi** hely csak a területi beállításban érhető el `en-us` .
 
 #### <a name="3-geography-subtypes"></a>3 földrajzi altípusok
 

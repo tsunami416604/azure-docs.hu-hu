@@ -8,12 +8,12 @@ services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 08/26/2020
-ms.openlocfilehash: f15686cf07bae4aee41095c970cd8a474724c2ed
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 6825627b77e3ea227cad88e347dbbabd5e6f5d0c
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230976"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540336"
 ---
 # <a name="visualize-data-from-azure-time-series-insights-in-power-bi"></a>Adatok megjelenítése Azure Time Series Insightsról Power BI
 
@@ -110,13 +110,13 @@ Most, hogy importálta az adatPower BIba, ideje, hogy készítsen egy jelentést
 
 1. Győződjön meg arról, hogy az ablak bal oldalán a **jelentés** nézet van kiválasztva.
 
-    [![Jelentés nézet kiválasztása](media/how-to-connect-power-bi/select-the-report-view.png)](media/how-to-connect-power-bi/select-the-report-view.png#lightbox)
+    [![Képernyőfelvétel: a jelentés nézet ikonja.](media/how-to-connect-power-bi/select-the-report-view.png)](media/how-to-connect-power-bi/select-the-report-view.png#lightbox)
 
 1. A vizualizációk oszlopban válassza ki a kívánt **vizualizációt** . Válassza például a **vonal diagram**elemet. Ez egy üres vonalas diagramot ad hozzá a vászonhoz.
 
 1. A **mezők** listában válassza a **_Timestamp** lehetőséget, majd húzza a **tengely** mezőre az X tengely mentén megjelenített elemek megjelenítéséhez. Ügyeljen arra, hogy **_Timestampre** váltson a **tengely** értékeként (az alapértelmezett dátum- **hierarchia**).
 
-    [![Jelentés nézet kiválasztása](media/how-to-connect-power-bi/select-timestamp.png)](media/how-to-connect-power-bi/select-timestamp.png#lightbox)
+    [![Képernyőfelvétel: az időbélyegző menü _Timestamp kiválasztva.](media/how-to-connect-power-bi/select-timestamp.png)](media/how-to-connect-power-bi/select-timestamp.png#lightbox)
 
 1. A **mezők** listában kattintson a **TimeSeriesId** elemre, majd húzza a **Values (értékek** ) mezőbe az Y tengely melletti elemek megjelenítéséhez.
 
@@ -144,7 +144,7 @@ Ha már betöltött egy adatkészletet a Power BIban, de módosítani szeretné 
 
 A kezelőfelület ekkor az alkalmazott kívánt módosításokat tükrözi.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a Azure Time Series Insights [Power bi-összekötővel kapcsolatos fogalmakról](https://docs.microsoft.com/power-bi/desktop-query-overview) .
 

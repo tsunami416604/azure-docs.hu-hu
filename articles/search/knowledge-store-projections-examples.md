@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 18646fc92dda7cebb7a8c1030285956d8fe4df74
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: f40841887b8116ad1384dc2b827d8215ea659490
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88924162"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537497"
 ---
 # <a name="how-to-shape-and-export-enrichments"></a>A dúsítások formázása és exportálása
 
@@ -30,7 +30,7 @@ Az ebben a cikkben bemutatott példák ebben a [REST API mintában](https://gith
 Háromféle [kivetítési](knowledge-store-projection-overview.md)típus létezik:
 
 + Táblák
-+ Objektumok
++ Objektumokat
 + Files
 
 A táblázatos előrejelzések tárolása az Azure Table Storage szolgáltatásban történik. Az objektumok és a fájlok kivetítése blob Storage-ba történik, ahol az objektum-kivetítések JSON-fájlként lesznek mentve, és tartalmazhatnak tartalmakat a forrás dokumentumból, valamint bármilyen képességbeli kimenetet vagy dúsítást is. A dúsítási folyamat olyan bináris fájlokat is képes kinyerni, mint például a képek, ezek a bináris fájlok fájl-kivetítésként vannak kiválasztva. Ha egy bináris objektum kivetítése objektumként történik, csak a hozzá társított metaadatokat JSON-blobként menti a program. 
@@ -356,7 +356,7 @@ A szeletelés implicit módon létrehoz egy kapcsolatot a szülő és a gyermek 
 
 A ```generatedKeyName``` és a ```referenceKeyName``` Tulajdonságok a táblák közötti vagy akár a kivetítési típusok közötti összekötésére szolgálnak. A gyermektábla és a leképezés minden sorának egy tulajdonsága a szülőre mutat vissza. A gyermek oszlopának vagy tulajdonságának neve a ```referenceKeyName``` szülőből származik. Ha a ```referenceKeyName``` nincs megadva, a szolgáltatás alapértelmezés szerint a szülőtől a értékre kerül ```generatedKeyName``` . 
 
-A Power BI ezek a generált kulcsok a táblákon belüli kapcsolatok felderítésére támaszkodnak. Ha a gyermektábla oszlopát másképp kell elnevezni, állítsa be a ```referenceKeyName``` tulajdonságot a fölérendelt táblán. Az egyik példa az ```generatedKeyName``` as azonosító beállítása a pbiDocument táblában és a ```referenceKeyName``` as DocumentID. Ez azt eredményezi, hogy a pbiEntities és a pbiKeyPhrases tábla oszlopa a DocumentID nevű dokumentum azonosítóját tartalmazza.
+A Power BI ezek a generált kulcsok a táblákon belüli kapcsolatok felderítésére támaszkodnak. Ha a gyermektábla oszlopát másképp kell elnevezni, állítsa be a ```referenceKeyName``` tulajdonságot a fölérendelt táblán. Az egyik példa az ```generatedKeyName``` as azonosító beállítása a pbiDocument táblában és a ```referenceKeyName``` as DocumentID. Ez azt eredményezi, hogy a pbiEntities és a pbiKeyPhrases tábla oszlopa a DocumentID nevű dokumentum AZONOSÍTÓját tartalmazza.
 
 ## <a name="projecting-to-objects"></a>Kivetítés az objektumokra
 

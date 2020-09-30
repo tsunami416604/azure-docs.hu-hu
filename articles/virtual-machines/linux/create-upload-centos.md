@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 11/25/2019
 ms.author: guybo
-ms.openlocfilehash: 9097fb4aefe168ce36793d13f892fbbeab10ad56
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 90b29944315b8a72a4ef95adbfc681a0ab276b00
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372739"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533058"
 ---
 # <a name="prepare-a-centos-based-virtual-machine-for-azure"></a>CentOS-alapú virtuális gép előkészítése az Azure-beli használatra
 
@@ -163,7 +163,7 @@ Ez a cikk azt feltételezi, hogy már telepítette a CentOS (vagy hasonló szár
     sudo yum install microsoft-hyper-v
     ```
 
-    Azt is megteheti, hogy a [lis letöltési oldalon](https://www.microsoft.com/download/details.aspx?id=51612) a manuális telepítési utasításokat követve telepíti az RPM-t a virtuális gépre.
+    Azt is megteheti, hogy a [lis letöltési oldalon](https://www.microsoft.com/download/details.aspx?id=55106) a manuális telepítési utasításokat követve telepíti az RPM-t a virtuális gépre.
 
 12. Telepítse az Azure Linux-ügynököt és a függőségeket. A waagent szolgáltatás elindítása és engedélyezése:
 

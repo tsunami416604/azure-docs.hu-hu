@@ -3,20 +3,18 @@ title: Szolgáltatások használata a LUIS-szavak listájának fejlesztéséhez
 titleSuffix: Azure Cognitive Services
 description: A Language Understanding (LUIS) használatával olyan alkalmazás-funkciókat adhat hozzá, amelyek javítják a kategóriákat és a mintákat tartalmazó szándékok és entitások észlelését vagy előrejelzését
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2020
-ms.author: diberry
-ms.openlocfilehash: 25698fe2b05cbfb564e441e488bfa93221a9618a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 33435d2367b92f312d41f0e32fdbb3a93d59a9fd
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075203"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540880"
 ---
 # <a name="use-features-to-boost-signal-of-word-list"></a>Szolgáltatások használata a szólisták jelzésének növeléséhez
 

@@ -9,12 +9,12 @@ ms.author: mlearned
 description: Ez a cikk az Azure arc-kompatibilis Kubernetes áttekintését tartalmazza.
 keywords: Kubernetes, arc, Azure, tárolók
 ms.custom: references_regions
-ms.openlocfilehash: fb8a7b7c2e1e5b3de7d1ccdb4054e44825231458
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 61317f7f5f2bf17c88fc019294574993c1854e59
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90604801"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540642"
 ---
 # <a name="what-is-azure-arc-enabled-kubernetes-preview"></a>Mi az az Azure arc-kompatibilis Kubernetes előzetes verziója?
 
@@ -60,6 +60,21 @@ Az Azure arc-kompatibilis Kubernetes jelenleg a következő régiókban támogat
 * USA keleti régiója 
 * Nyugat-Európa
 
+## <a name="frequently-asked-questions"></a>Gyakori kérdések
+
+* Mi a különbség az Azure arc-kompatibilis Kubernetes és az Azure Kubernetes Service (ak) között?
+
+    Az Azure Kubernetes szolgáltatás (ak) az Azure által felügyelt Kubernetes-ajánlat. Az AK segítségével egyszerűen üzembe helyezhet egy felügyelt Kubernetes-fürtöt az Azure-ban. Az AKS egyszerűsíti a Kubernetes kezelését és csökkenti annak működési munkaterhelését azáltal, hogy a felelősség nagy részét az Azure-ra helyezi át. A Kubernetes fő csomópontokat az Azure felügyeli. Ön csak az ügynökcsomópontokat felügyeli és tartja karban.
+
+    Az Azure arc-kompatibilis Kubernetes lehetővé teszi a Kubernetes-fürtök összekapcsolását az Azure-ban az Azure felügyeleti képességeinek, például a Azure Monitor és Azure Policy kibővítéséhez. Maga a mögöttes Kubernetes-fürt karbantartását végzi.
+
+* Kell-e csatlakozni az Azure-ban futó Azure Kubernetes Service-fürtöket az Azure arc szolgáltatáshoz?
+
+    Nem. Az Azure arc-kompatibilis Kubernetes (például Azure Monitor, Azure Policy (forgalomirányító) összes funkciója natív módon elérhető az AK-val, amely már rendelkezik erőforrás-ábrázolással az Azure-ban. A fürtkonfiguráció (GitOps) natív módon is elérhető az AK-on, és jelenleg privát előzetes verzióban érhető el. Ezt a [regisztrációs űrlapot](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR5acO18Lmx5Bk_qao2CrOcFUQ0UyRllDR1BEV1BPNENYRERYN1pFWTQ4WC4u) használhatja a funkció eléréséhez.
+    
+* Össze kell kapcsolni az AK-fürtöt Azure Stack HCI-re az Azure arc-ra? Mi a helyzet a Azure Stack hub vagy Azure Stack motoron futó Kubernetes-fürtökkel?
+
+    Igen, a fürtök az Azure arc-hoz való csatlakoztatása előnyökkel jár. Erőforrás-ábrázolást biztosít ezen Kubernetes-fürtökhöz Azure Resource Managerban. Ezen erőforrás-ábrázolások, például a fürtkonfiguráció, Azure Monitor, Azure Policy (forgalomirányító) használatával bővíthetők ezekhez a Kubernetes-fürtökhöz
 
 ## <a name="next-steps"></a>További lépések
 

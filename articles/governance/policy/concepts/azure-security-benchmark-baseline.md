@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/02/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 6c6bd3ab87013aba04f43c95b3a986a64f2bc394
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 8b18da5e41e235b560918ad26117a0162078862c
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231469"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540982"
 ---
 # <a name="azure-policy-security-baseline-for-azure-security-benchmark"></a>Az Azure biztonsági teljesítményteszt Azure Policy biztonsági alapterve
 
@@ -76,7 +76,7 @@ Egy igény szerinti vagy elég hozzáférési megoldást is engedélyezhet [Azur
 
 **Útmutató**: az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használata a Azure Policyhoz való hozzáférés szabályozásához.
 
-* [Azure RBAC engedélyek a Azure Policyban](../overview.md#rbac-permissions-in-azure-policy)
+* [Azure RBAC engedélyek a Azure Policyban](../overview.md#azure-rbac-permissions-in-azure-policy)
 
 * [Az Azure RBAC konfigurálása](../../../role-based-access-control/role-assignments-portal.md)
 
@@ -132,7 +132,7 @@ Egy igény szerinti vagy elég hozzáférési megoldást is engedélyezhet [Azur
 
 **Felelősség**: ügyfél
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](../../../security/benchmarks/overview.md)
 - További információ az [Azure biztonsági alaptervekről](../../../security/benchmarks/security-baselines-overview.md)

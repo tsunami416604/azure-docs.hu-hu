@@ -3,26 +3,24 @@ title: Exportálás & adattörlés – LUIS
 titleSuffix: Azure Cognitive Services
 description: Teljes körűen szabályozhatja az adatmegjelenítését, exportálását és törlését. Az adatvédelem és a megfelelőség biztosítása érdekében törölje a vásárlói adatokat.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/02/2019
-ms.author: diberry
-ms.openlocfilehash: 4e3e0d04b0086905b80e26fb4f838c36b5b5545e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 868443e52b7159e6ee9478f64b7b2f376a10f604
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78273362"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541006"
 ---
 # <a name="export-and-delete-your-customer-data-in-language-understanding-luis-in-cognitive-services"></a>Ügyféladatok exportálása és törlése Language Understanding (LUIS) Cognitive Services
 
 Az adatvédelem és a megfelelőség biztosítása érdekében törölje a vásárlói adatokat.
 
-## <a name="summary-of-customer-data-request-features"></a>A vásárlói adatkérések funkcióinak összefoglalása
+## <a name="summary-of-customer-data-request-features"></a>Az ügyféladat-kérési funkciók összegzése
 Language Understanding Intelligent Service (LUIS) megőrzi az ügyfél tartalmát a szolgáltatás működtetésére, de a LUIS-felhasználó teljes körűen szabályozhatja az adatokat a megtekintéssel, az exportálással és a törléssel. Ezt a LUIS [webportálon](luis-reference-regions.md) vagy a [Luis authoring (más néven programozott) API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f)-kon keresztül teheti meg.
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
@@ -32,7 +30,7 @@ Az ügyfél tartalmát a Microsoft regionális Azure Storage tárolja, és a kö
 - A regisztráció során összegyűjtött felhasználói fiók tartalma
 - A modellek létrehozásához szükséges betanítási adatgyűjtés
 - Az [aktív tanulás](luis-concept-review-endpoint-utterances.md) által használt naplózott felhasználói lekérdezések segítenek a modell fejlesztésében
-  - A felhasználók a kérelemhez fűzött hozzáfűzéssel `&log=false` kapcsolhatják ki a lekérdezési naplózást, részletek [itt](troubleshooting.md#how-can-i-disable-the-logging-of-utterances) találhatók
+  - A felhasználók a kérelemhez fűzött hozzáfűzéssel kapcsolhatják ki a lekérdezési naplózást `&log=false` , részletek [itt](troubleshooting.md#how-can-i-disable-the-logging-of-utterances) találhatók
 
 ## <a name="deleting-customer-data"></a>Ügyféladatok törlése
 A LUIS-felhasználók teljes hozzáféréssel rendelkeznek a felhasználói tartalmak törléséhez, akár a LUIS webportálon, akár a LUIS authoring (más néven programozott) API-kon keresztül. A következő táblázat a mindkettőt segítő hivatkozásokat tartalmazza:

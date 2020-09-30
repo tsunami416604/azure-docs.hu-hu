@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
-ms.date: 03/18/2020
+ms.date: 09/28/2020
 ms.custom: seodec18, devx-track-python
-ms.openlocfilehash: 1af5ab33497ad8694752db17e874b883e60c942c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 40ee7ad74d1a1daaf6df5e76b5e51db52feea304
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906667"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91535069"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn"></a>Oktatóanyag: képosztályozási modellek betanítása MNIST-adatokkal és scikit-Learn 
 
@@ -34,10 +34,10 @@ Ismerje meg, hogyan végezheti el a következő műveleteket:
 
 Megtudhatja, hogyan választhatja ki a modelleket, és hogyan telepítheti azt az [oktatóanyag második részében](tutorial-deploy-models-with-aml.md).
 
-Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot, mielőtt hozzákezd. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
 >[!NOTE]
-> A cikkben ismertetett kód [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) 1.0.83-verzióval lett tesztelve.
+> A cikkben ismertetett kód [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) 1.13.0-verzióval lett tesztelve.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -117,7 +117,7 @@ from azureml.core.compute import ComputeTarget
 import os
 
 # choose a name for your cluster
-compute_name = os.environ.get("AML_COMPUTE_CLUSTER_NAME", "cpucluster")
+compute_name = os.environ.get("AML_COMPUTE_CLUSTER_NAME", "cpu-cluster")
 compute_min_nodes = os.environ.get("AML_COMPUTE_CLUSTER_MIN_NODES", 0)
 compute_max_nodes = os.environ.get("AML_COMPUTE_CLUSTER_MAX_NODES", 4)
 
@@ -223,7 +223,7 @@ Most már van elképzelése arról, hogy néznek ki ezek a képek, és milyen el
 Ehhez a feladathoz be kell nyújtania a feladatot a korábban beállított távoli képzési fürtön való futtatáshoz.  A feladat elküldésének menete:
 * Könyvtár létrehozása
 * Betanító szkript létrehozása
-* Kalkulátor-objektum létrehozása
+* Parancsfájl futtatási konfigurációjának létrehozása
 * Feladat küldése
 
 ### <a name="create-a-directory"></a>Könyvtár létrehozása
@@ -307,19 +307,19 @@ Figyelje meg, hogyan kéri le a szkript az adatokat, és menti a modelleket:
   shutil.copy('utils.py', script_folder)
   ```
 
-### <a name="create-an-estimator"></a>Becslő létrehozása
+### <a name="configure-the-training-job"></a>A betanítási feladatok konfigurálása
 
-A futtatás elküldése egy becslőobjektummal történik. Azure Machine Learning előre konfigurált becslések rendelkezik a gyakori gépi tanulási keretrendszerek, valamint az általános kalkulátorok számára. Hozzon létre egy kalkulátort a megadásával
+Hozzon létre egy [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) objektumot a betanítási feladatok konfigurációs adatainak megadásához, beleértve a betanítási parancsfájlt, a használni kívánt környezetet és a futtatáshoz szükséges számítási célt. Konfigurálja a ScriptRunConfig az alábbiak megadásával:
 
-
-* A becslőobjektum neve (`est`).
 * A szkripteket tartalmazó könyvtár. Az ebben a könyvtárban található összes fájl fel lesz töltve a fürtcsomópontokra végrehajtás céljából.
 * A számítási cél. Ebben az esetben a létrehozott Azure Machine Learning számítási fürtöt használja.
 * A betanítási szkript neve, **Train.py**.
 * A parancsfájl futtatásához szükséges kódtárakat tartalmazó környezet.
-* A betanítási szkript szükséges paraméterei.
+* A betanítási parancsfájlhoz szükséges argumentumok.
 
-Ebben az oktatóanyagban ez a cél a AmlCompute. A parancsfájl mappájában lévő összes fájl a fürt csomópontjaiba lesz feltöltve futtatásra. A **data_folder** az adatkészlet használatára van beállítva. "Először is hozzon létre egy környezetet, amely tartalmazza a következőket: a scikit-Learn Library, a azureml-adatelőkészítés, amely az adatkészlet eléréséhez szükséges, és a azureml – alapértékek, amelyek a naplózási metrikák függőségeit tartalmazzák. A azureml-alapértékek a modell webszolgáltatásként való üzembe helyezéséhez szükséges függőségeket is tartalmazzák az oktatóanyag 2. részében.
+Ebben az oktatóanyagban ez a cél a AmlCompute. A parancsfájl mappájában lévő összes fájl a fürt csomópontjaiba lesz feltöltve futtatásra. A **--data_folder** az adatkészlet használatára van beállítva.
+
+Először hozza létre a következőt tartalmazó környezetet: a scikit-Learn Library, a azureml-DataSet-Runtime, amely az adatkészlet eléréséhez szükséges, valamint a azureml – alapértékek, amelyek a naplózási metrikákkal kapcsolatos függőségeket tartalmazzák. A azureml-alapértékek a modell webszolgáltatásként való üzembe helyezéséhez szükséges függőségeket is tartalmazzák az oktatóanyag 2. részében.
 
 A környezet meghatározása után regisztrálja a munkaterületet, hogy újra használhassa azt az oktatóanyag 2. részében.
 
@@ -329,38 +329,34 @@ from azureml.core.conda_dependencies import CondaDependencies
 
 # to install required packages
 env = Environment('tutorial-env')
-cd = CondaDependencies.create(pip_packages=['azureml-dataprep[pandas,fuse]>=1.1.14', 'azureml-defaults'], conda_packages = ['scikit-learn==0.22.1'])
+cd = CondaDependencies.create(pip_packages=['azureml-dataset-runtime[pandas,fuse]', 'azureml-defaults'], conda_packages=['scikit-learn==0.22.1'])
 
 env.python.conda_dependencies = cd
 
 # Register environment to re-use later
-env.register(workspace = ws)
+env.register(workspace=ws)
 ```
 
-Ezután hozza létre a kalkulátort a következő kóddal.
+Ezután hozza létre a ScriptRunConfig a képzési parancsfájl, a számítási cél és a környezet megadásával.
 
 ```python
-from azureml.train.estimator import Estimator
+from azureml.core import ScriptRunConfig
 
-script_params = {
-    # to mount files referenced by mnist dataset
-    '--data-folder': mnist_file_dataset.as_named_input('mnist_opendataset').as_mount(),
-    '--regularization': 0.5
-}
+args = ['--data-folder', mnist_file_dataset.as_mount(), '--regularization', 0.5]
 
-est = Estimator(source_directory=script_folder,
-              script_params=script_params,
-              compute_target=compute_target,
-              environment_definition=env,
-              entry_script='train.py')
+src = ScriptRunConfig(source_directory=script_folder,
+                      script='train.py', 
+                      arguments=args,
+                      compute_target=compute_target,
+                      environment=env)
 ```
 
 ### <a name="submit-the-job-to-the-cluster"></a>Feladat küldése a fürtnek
 
-Futtassa a kísérletet a kalkulátor-objektum elküldésével:
+Futtassa a kísérletet a ScriptRunConfig objektum elküldésével:
 
 ```python
-run = exp.submit(config=est)
+run = exp.submit(config=src)
 run
 ```
 
@@ -372,7 +368,7 @@ Mivel a hívás aszinkron, egy **előkészítési** vagy **futtatási** állapot
 
 Mi történik a várakozás közben:
 
-- **Rendszerkép létrehozása**: a rendszer létrehoz egy Docker-rendszerképet, amely megfelel a kalkulátor által meghatározott Python-környezetnek. A rendszerkép feltöltődik a munkaterületre. A képek létrehozása és feltöltése **körülbelül öt percet**vesz igénybe.
+- **Rendszerkép létrehozása**: a rendszer létrehoz egy Docker-rendszerképet, amely megfelel az Azure ml-környezet által megadott Python-környezetnek. A rendszerkép feltöltődik a munkaterületre. A képek létrehozása és feltöltése **körülbelül öt percet**vesz igénybe.
 
   Ez a szakasz egyszer fordul elő minden Python-környezetben, mert a tároló gyorsítótárazva lesz a későbbi futtatásokhoz. A kép létrehozása során a rendszer a futási előzményekbe streameli a naplókat. A képlétrehozási folyamat nyomon követhető a naplók használatával.
 
@@ -451,7 +447,7 @@ A Azure Machine Learning számítási fürtöt is törölheti. Az autoskálázá
 compute_target.delete()
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a Azure Machine Learning oktatóanyagban a Pythont használtuk a következő feladatokhoz:
 

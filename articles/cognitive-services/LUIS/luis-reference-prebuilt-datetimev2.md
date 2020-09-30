@@ -3,20 +3,18 @@ title: DatetimeV2-előkészített entitások – LUIS
 titleSuffix: Azure Cognitive Services
 description: Ez a cikk a Language Understanding (LUIS) datetimeV2 előre elkészített entitási információit tartalmazta.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/13/2020
-ms.author: diberry
-ms.openlocfilehash: 33f8b787119e1c5d6d1a1bb28c94d9791a1c048e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 83522de9c00056a3808b002b3103f45c72553399
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81272610"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534182"
 ---
 # <a name="datetimev2-prebuilt-entity-for-a-luis-app"></a>DatetimeV2 előre összeépített entitása egy LUIS-alkalmazáshoz
 
@@ -116,11 +114,11 @@ A következő kifejezés és a részleges JSON-válasza alább látható.
 |Tulajdonság neve |Tulajdonság típusa és leírása|
 |---|---|
 |Entitás|**karakterlánc** – a kinyert szöveg a dátum, az idő, a dátumtartomány vagy az időtartomány típusával.|
-|type|**String** – a datetimeV2 egyik [altípusa](#subtypes-of-datetimev2)
+|típus|**String** – a datetimeV2 egyik [altípusa](#subtypes-of-datetimev2)
 |startIndex|**int** – az entitás megkezdésének teljes alapjául szolgáló index.|
 |endIndex|**int** – az az index, amelyben az entitás véget ér.|
 |felbontás|Olyan `values` tömbvel rendelkezik, amely egy, kettő vagy négy [feloldási értékkel](#values-of-resolution)rendelkezik.|
-|befejezés|Egy időpont vagy dátumtartomány záró értéke a formátummal megegyező formátumban `value`. Csak akkor használható `type` , `daterange`ha `timerange`a,, vagy`datetimerange`|
+|befejezés|Egy időpont vagy dátumtartomány záró értéke a formátummal megegyező formátumban `value` . Csak akkor használható, ha `type` a, `daterange` `timerange` , vagy `datetimerange`|
 
 * * *
 
@@ -141,14 +139,14 @@ A **datetimeV2** előre összeállított entitás a következő altípusokkal re
   * Dátum vagy dátumtartomány, amely nem egyértelmű az év értékében
   * Olyan idő-vagy időintervallum, amely nem egyértelmű vagy délután. Például 3:00 április 3.
 
-A `values` tömb minden eleme a következő mezőkkel rendelkezhet:
+A tömb minden eleme `values` a következő mezőkkel rendelkezhet:
 
 |Tulajdonság neve|Tulajdonság leírása|
 |--|--|
 |Timex|az idő, a dátum vagy a dátumtartomány TIMEX formátumban kifejezve, amely az [ISO 8601 szabványt](https://en.wikipedia.org/wiki/ISO_8601) követi, valamint a jegyzet TIMEX3 attribútumait a TimeML nyelv használatával.|
-|mod|az érték `before`(például: `after`) használatának leírására szolgáló kifejezés.|
-|type|Az altípus, amely a következő elemek `datetime`egyike lehet:, `date` `time`,, `daterange`, `timerange`, `datetimerange`, `duration`,. `set`|
-|érték|**Választható.** Egy datetime objektum a következő formátumban: éééé-hh-dd (Date), óó: PP: mm (Time) éééé-hh-nn óó: PP: mm (datetime). Ha `type` a `duration`értéke, akkor az érték a másodpercek száma (időtartam) <br/> Csak akkor használható `type` , `datetime` ha `date`az `time`a, a, vagy a időtartam.|
+|mod|az érték (például:) használatának leírására szolgáló kifejezés `before` `after` .|
+|típus|Az altípus, amely a következő elemek egyike lehet:,,, `datetime` `date` ,, `time` `daterange` `timerange` `datetimerange` , `duration` , `set` .|
+|value|**Választható.** Egy datetime objektum a következő formátumban: éééé-hh-dd (Date), óó: PP: mm (Time) éééé-hh-nn óó: PP: mm (datetime). Ha a értéke `type` `duration` , akkor az érték a másodpercek száma (időtartam) <br/> Csak akkor használható, ha `type` az a, a, `datetime` vagy a `date` `time` időtartam.|
 
 ## <a name="valid-date-values"></a>Érvényes dátumérték
 
@@ -170,7 +168,7 @@ Például a következő Kimondás miatt:
 * Ha a mai dátum május 1-től 2017, a LUIS értékként "2016-05-02" és "2017-05-02" értéket is biztosít.
 
 Az alábbi példa a "május 2nd" entitás feloldását mutatja be. Ez a megoldás azt feltételezi, hogy a mai dátum az 2017. május 2. és május 2018 1. között megjelenő dátum.
-A `X` `timex` mezővel rendelkező mezők azon dátum részei, amely nem explicit módon van meghatározva a teljes szövegben.
+A mezővel rendelkező mezők azon `X` `timex` dátum részei, amely nem explicit módon van meghatározva a teljes szövegben.
 
 ## <a name="date-resolution-example"></a>Példa a felbontásra
 
@@ -274,7 +272,7 @@ A következő kifejezés és a részleges JSON-válasza alább látható.
 
 ## <a name="date-range-resolution-examples-for-numeric-date"></a>Dátumtartomány-feloldási példák a numerikus dátumhoz
 
-Az `datetimeV2` entitás kibontja a dátum és idő tartományokat. A `start` és `end` a mezők a tartomány elejét és végét határozzák meg. A teljes `May 2nd to May 5th`támogatáshoz a Luis az aktuális évhez és a következő évhez is biztosít **daterange** értékeket. A `timex` mezőben az `XXXX` értékek jelzik az év kétértelmű értékét. `P3D`azt jelzi, hogy az időtartam három nap.
+Az `datetimeV2` entitás kibontja a dátum és idő tartományokat. A `start` és a `end` mezők a tartomány elejét és végét határozzák meg. A teljes támogatáshoz a `May 2nd to May 5th` Luis az aktuális évhez és a következő évhez is biztosít **daterange** értékeket. A `timex` mezőben az `XXXX` értékek jelzik az év kétértelmű értékét. `P3D` azt jelzi, hogy az időtartam három nap.
 
 A következő kifejezés és a részleges JSON-válasza alább látható.
 
@@ -378,7 +376,7 @@ A következő kifejezés és a részleges JSON-válasza alább látható.
 
 ## <a name="date-range-resolution-examples-for-day-of-week"></a>Dátumtartomány-feloldási példák a hét napja
 
-Az alábbi példa azt szemlélteti, hogyan használja a LUIS a **datetimeV2** - `Tuesday to Thursday`t a Kimondás feloldására. Ebben a példában az aktuális dátum június 19. A LUIS mindkét **daterange** tartalmazza, amelyek megelőzik és követik az aktuális dátumot.
+Az alábbi példa azt szemlélteti, hogyan használja a LUIS a **datetimeV2** -t a Kimondás feloldására `Tuesday to Thursday` . Ebben a példában az aktuális dátum június 19. A LUIS mindkét **daterange** tartalmazza, amelyek megelőzik és követik az aktuális dátumot.
 
 A következő kifejezés és a részleges JSON-válasza alább látható.
 
@@ -485,8 +483,8 @@ Az értékek tömbje két időponttal rendelkezik, ha az idő vagy az időtartom
 DatetimeV2 JSON-válasz módosult az API v3-ben. Az alábbi példa azt szemlélteti, hogyan használja a LUIS a **datetimeV2** -t az időtartományhoz tartozó teljes érték feloldásához.
 
 Változások az API v2-ből:
-* `datetimeV2.timex.type`a tulajdonságot a rendszer már nem adja vissza, `datetimev2.type`mert a szülő szinten adja vissza.
-* A `datetimeV2.value` tulajdonság át `datetimeV2.timex`lett nevezve a következőre:.
+* `datetimeV2.timex.type` a tulajdonságot a rendszer már nem adja vissza, mert a szülő szinten adja vissza `datetimev2.type` .
+* A `datetimeV2.value` tulajdonság át lett nevezve a következőre: `datetimeV2.timex` .
 
 A következő kifejezés és a részleges JSON-válasza alább látható.
 
@@ -494,7 +492,7 @@ A következő kifejezés és a részleges JSON-válasza alább látható.
 
 #### <a name="v3-response"></a>[V3 válasz](#tab/5-1)
 
-A következő JSON a `verbose` paraméter értéke: `false`
+A következő JSON a `verbose` paraméter értéke `false` :
 
 ```JSON
 
@@ -519,7 +517,7 @@ A következő JSON a `verbose` paraméter értéke: `false`
 ```
 #### <a name="v3-verbose-response"></a>[V3 részletes válasz](#tab/5-2)
 
-A következő JSON a `verbose` paraméter értéke: `true`
+A következő JSON a `verbose` paraméter értéke `true` :
 
 ```json
 
@@ -673,7 +671,7 @@ A következő kifejezés és a részleges JSON-válasza alább látható.
 
 Az `datetime` előre elkészített entitás elavult, és a **datetimeV2**váltja fel.
 
-Ha a `datetime` - `datetimeV2` t a Luis-alkalmazásban szeretné cserélni, hajtsa végre a következő lépéseket:
+Ha a `datetime` -t a `datetimeV2` Luis-alkalmazásban szeretné cserélni, hajtsa végre a következő lépéseket:
 
 1. Nyissa meg a LUIS webes felület **entitások** paneljét.
 2. Törölje a **datetime** előre elkészített entitást.

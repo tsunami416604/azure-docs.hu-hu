@@ -3,20 +3,18 @@ title: Előre elkészített tartományi hivatkozás – LUIS
 titleSuffix: Azure Cognitive Services
 description: Az előre elkészített tartományokra mutató hivatkozásokat, amelyek az Language Understanding intelligens szolgáltatásokból (LUIS) származó szándékok és entitások előre összeépített gyűjteményei.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/27/2019
-ms.author: diberry
-ms.openlocfilehash: d41ec3abfa2e562d5a6e11dd9ed0fcbcffead5c6
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: e93822f4a2992f619b598474082caa56562b6e36
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88191978"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538364"
 ---
 # <a name="prebuilt-domain-reference-for-your-luis-app"></a>Előre elkészített tartományi referenciák a LUIS-alkalmazáshoz
 Ez a hivatkozás az [előre elkészített tartományokra](luis-how-to-use-prebuilt-domains.md)vonatkozó információkat tartalmaz, amelyek a Luis által kínált szándékok és entitások előre összeépített gyűjteményei.
@@ -39,7 +37,7 @@ Az alábbi táblázat összefoglalja a jelenleg támogatott tartományokat. Az a
 | ToDo     | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
 | Segédprogramok      | ✓    | ✓        | ✓    | ✓      | ✓     | ✓       | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
 | Időjárás        | ✓    | ✓        | ✓    | ✓      | ✓     | ✓       | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
-| Web    | ✓    | ✓        | ✓    | ✓      | ✓     | ✓       | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
+| Webes    | ✓    | ✓        | ✓    | ✓      | ✓     | ✓       | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
 
 Az előre elkészített tartományok **nem támogatottak** a ben:
 
@@ -47,6 +45,6 @@ Az előre elkészített tartományok **nem támogatottak** a ben:
 * Hindi
 * Spanyol mexikói
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg az [egyszerű entitást](reference-entity-simple.md).

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 8/7/2020
-ms.openlocfilehash: a9d6c1b2438f20a06062842b96b147e094760238
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 9212142ff6f43a84b141b0781fbe9828eebcbd40
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88031217"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537157"
 ---
 # <a name="replicate-data-into-azure-database-for-mysql"></a>Az adatreplikálás Azure Database for MySQLba
 
@@ -25,26 +25,26 @@ A felhőbe irányuló replikálás használatának főbb forgatókönyvei:
  
 Áttelepítési forgatókönyvek esetén használja a [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/)(DMS).
 
-## <a name="limitations-and-considerations"></a>Korlátozások és szempontok
+## <a name="limitations-and-considerations"></a>Korlátozások és megfontolandó szempontok
 
 ### <a name="data-not-replicated"></a>Nem replikált adatértékek
-A főkiszolgálón található [*MySQL rendszeradatbázis*](https://dev.mysql.com/doc/refman/5.7/en/system-schema.html) nem replikálódik. Nem replikálódnak a fiókok és engedélyek módosításai a főkiszolgálón. Ha létrehoz egy fiókot a főkiszolgálón, és ennek a fióknak el kell érnie a másodpéldány-kiszolgálót, akkor manuálisan hozza létre ugyanazt a fiókot a replika-kiszolgáló oldalán. A rendszeradatbázisban található táblák megismeréséhez tekintse meg a [MySQL-kézikönyvet](https://dev.mysql.com/doc/refman/5.7/en/system-schema.html).
+A forráskiszolgáló [*MySQL rendszeradatbázisa*](https://dev.mysql.com/doc/refman/5.7/en/system-schema.html) nem replikálódik. A rendszer nem replikálja a fiókok és engedélyek módosításait a forráskiszolgálón. Ha létrehoz egy fiókot a forráskiszolgálón, és ennek a fióknak el kell érnie a másodpéldány-kiszolgálót, akkor manuálisan hozza létre ugyanazt a fiókot a replika-kiszolgáló oldalán. A rendszeradatbázisban található táblák megismeréséhez tekintse meg a [MySQL-kézikönyvet](https://dev.mysql.com/doc/refman/5.7/en/system-schema.html).
 
 ### <a name="filtering"></a>Szűrés
-A (helyszíni, virtuális gépeken üzemeltetett vagy más felhőalapú szolgáltatók által üzemeltetett adatbázis-szolgáltatás) tábláinak replikálásának kihagyásához a (z) `replicate_wild_ignore_table` paramétert a rendszer támogatja. Ha szükséges, frissítse ezt a paramétert az Azure-ban üzemeltetett replika-kiszolgálón a [Azure Portal](howto-server-parameters.md) vagy az [Azure CLI](howto-configure-server-parameters-using-cli.md)használatával.
+Ha ki szeretné hagyni a (helyszíni, virtuális gépeken tárolt vagy más felhőalapú szolgáltatók által üzemeltetett adatbázis-szolgáltatás) tábláinak replikálását, `replicate_wild_ignore_table` akkor a paraméter támogatott. Ha szükséges, frissítse ezt a paramétert az Azure-ban üzemeltetett replika-kiszolgálón a [Azure Portal](howto-server-parameters.md) vagy az [Azure CLI](howto-configure-server-parameters-using-cli.md)használatával.
 
 A paraméterrel kapcsolatos további információkért tekintse meg a [MySQL dokumentációját](https://dev.mysql.com/doc/refman/8.0/en/replication-options-replica.html#option_mysqld_replicate-wild-ignore-table) .
 
 ### <a name="requirements"></a>Követelmények
-- A főkiszolgáló verziójának legalább a MySQL 5,6-es verziójának kell lennie. 
-- A fő-és a replika-kiszolgáló verziószámának azonosnak kell lennie. Például mindkettőnek a MySQL 5,6-es vagy újabb verziójúnak kell lennie a MySQL 5,7-es verziójának.
+- A forráskiszolgáló verziójának legalább a MySQL 5,6-es verziójának kell lennie. 
+- A forrás-és a replika-kiszolgáló verziószámának azonosnak kell lennie. Például mindkettőnek a MySQL 5,6-es vagy újabb verziójúnak kell lennie a MySQL 5,7-es verziójának.
 - Minden táblának rendelkeznie kell egy elsődleges kulccsal.
-- A főkiszolgálónak a MySQL InnoDB motort kell használnia.
-- A felhasználónak rendelkeznie kell engedéllyel a bináris naplózás konfigurálásához és új felhasználók létrehozásához a főkiszolgálón.
-- Ha a főkiszolgálón engedélyezve van az SSL, ellenőrizze, hogy a tartományhoz megadott SSL HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány szerepel-e a `mysql.az_replication_change_master` tárolt eljárásban. Tekintse át az alábbi [példákat](https://docs.microsoft.com/azure/mysql/howto-data-in-replication#link-master-and-replica-servers-to-start-data-in-replication) és a `master_ssl_ca` paramétert.
-- Győződjön meg arról, hogy a fő kiszolgáló IP-címe hozzá lett adva az Azure Database for MySQL replikakiszolgálójának tűzfalszabályaihoz. A tűzfalszabályokat az [Azure Portallal](https://docs.microsoft.com/azure/mysql/howto-manage-firewall-using-portal) vagy az [Azure CLI-vel](https://docs.microsoft.com/azure/mysql/howto-manage-firewall-using-cli) frissítheti.
-- Győződjön meg arról, hogy a főkiszolgálót üzemeltető gép engedélyezi a bejövő és kimenő forgalmat is a 3306-os porton.
-- Győződjön meg arról, hogy a főkiszolgáló **nyilvános IP-címmel**rendelkezik, a DNS nyilvánosan elérhető, vagy rendelkezik teljes tartománynévvel (FQDN).
+- A forráskiszolgálón a MySQL InnoDB motort kell használnia.
+- A felhasználónak rendelkeznie kell engedéllyel a bináris naplózás konfigurálásához és új felhasználók létrehozásához a forráskiszolgálón.
+- Ha a forráskiszolgálón engedélyezve van az SSL, ellenőrizze, hogy a tartományhoz megadott SSL HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány szerepel-e a `mysql.az_replication_change_master` tárolt eljárásban. Tekintse át az alábbi [példákat](https://docs.microsoft.com/azure/mysql/howto-data-in-replication#link-master-and-replica-servers-to-start-data-in-replication) és a `master_ssl_ca` paramétert.
+- Győződjön meg arról, hogy a forráskiszolgáló IP-címe hozzá lett adva az Azure Database for MySQL-replika kiszolgálói tűzfalszabályok számára. A tűzfalszabályokat az [Azure Portallal](https://docs.microsoft.com/azure/mysql/howto-manage-firewall-using-portal) vagy az [Azure CLI-vel](https://docs.microsoft.com/azure/mysql/howto-manage-firewall-using-cli) frissítheti.
+- Győződjön meg arról, hogy a forráskiszolgáló üzemeltetése lehetővé teszi a bejövő és a kimenő forgalmat is a 3306-es porton.
+- Győződjön meg arról, hogy a forráskiszolgáló **nyilvános IP-címmel**rendelkezik, a DNS nyilvánosan elérhető, vagy rendelkezik teljes tartománynévvel (FQDN).
 
 ### <a name="other"></a>Egyéb
 - Az adatreplikálás csak általános célú és a memória optimalizált díjszabási szintjein támogatott.

@@ -9,16 +9,19 @@ manager: diviso
 ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 005725acf7270ff87ac9418f27941bdb205ae986
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4f236679d0662df852581a6a8408ed6bc0d4e3fe
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87059419"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91535689"
 ---
 # <a name="understand-data-retention-in-azure-time-series-insights-gen1"></a>Az adatmegőrzés ismertetése Azure Time Series Insights Gen1
+
+> [!CAUTION]
+> Ez egy Gen1-cikk.
 
 Ez a cikk két olyan elsődleges beállítást ismertet, amelyek hatással vannak az adatmegőrzésre a Azure Time Series Insights-környezetben.
 
@@ -37,7 +40,8 @@ Emellett a Azure Time Series Insights-környezet **tárolási korlátja túllép
 
 > [!NOTE]
 > Új környezet létrehozásakor alapértelmezés szerint a megőrzés a **régi adatok törlésére**van konfigurálva. Ez a beállítás a Azure Time Series Insights-környezet **configure (Konfigurálás** ) lapjának a Azure Portal használatával történő létrehozása után igény szerint állítható be.
-> * Az adatmegőrzési szabályzatok konfigurálásával kapcsolatos információkért olvassa el a [Azure Time Series Insights megőrzésének konfigurálása](time-series-insights-how-to-configure-retention.md)című témakört.
+>
+> - Az adatmegőrzési szabályzatok konfigurálásával kapcsolatos információkért olvassa el a [Azure Time Series Insights megőrzésének konfigurálása](time-series-insights-how-to-configure-retention.md)című témakört.
 
 Az adatmegőrzési szabályzatokat az alábbiakban részletesebben ismertetjük.
 
@@ -69,8 +73,8 @@ Ha a környezet napi beléptetési aránya meghaladja a napi 0,166 GB-ot, az ada
 - Segít az adatvesztés elleni védelemben, de létrehozhat egy lehetőséget a legutóbbi adatok elvesztésére, ha a bejövő forgalom szünetel az eseményforrás megőrzési időtartamán túl.
 - A környezet maximális kapacitásának elérésekor azonban a környezet szünetelteti az adatbevitelt, amíg a következő további műveletek nem történnek:
 
-   - A környezet maximális kapacitásának növelésével további méretezési egységeket adhat hozzá a [Azure Time Series Insights-környezet skálázása](time-series-insights-how-to-scale-your-environment.md)című témakörben leírtak szerint.
-   - A rendszer elérte az adatmegőrzési időszakot, és az adatok törlődnek, így a környezet a maximális kapacitás alatt marad.
+  - A környezet maximális kapacitásának növelésével további méretezési egységeket adhat hozzá a [Azure Time Series Insights-környezet skálázása](time-series-insights-how-to-scale-your-environment.md)című témakörben leírtak szerint.
+  - A rendszer elérte az adatmegőrzési időszakot, és az adatok törlődnek, így a környezet a maximális kapacitás alatt marad.
 
 ### <a name="example-three"></a>Harmadik példa
 

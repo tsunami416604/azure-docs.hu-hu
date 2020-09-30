@@ -2,20 +2,18 @@
 title: 'Modell lekérése REST-hívással C-ben #'
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: include
 ms.date: 06/03/2020
-ms.author: diberry
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bff332e462362d0eae74a4fdc1f46e7adafe1823
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: aaf7658796c50bb30305b5fda0527141cb820289
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91303918"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534609"
 ---
 [Dokumentáció](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c45)  |  [Minta](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/LanguageUnderstanding/csharp-model-with-rest/Program.cs)
 
@@ -54,7 +52,7 @@ ms.locfileid: "91303918"
 
 1. Cserélje le az értékeket a `YOUR-` saját értékeivel kezdődő értékekre.
 
-    |Tájékoztatás|Rendeltetés|
+    |Tájékoztatás|Szerep|
     |--|--|
     |`YOUR-APP-ID`| A LUIS-alkalmazás azonosítója. |
     |`YOUR-AUTHORING-KEY`|Az 32 karakteres szerzői kulcs.|
@@ -163,7 +161,7 @@ ms.locfileid: "91303918"
 
 Ha elkészült a rövid útmutatóval, törölje a Project mappát a fájlrendszerből.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Ajánlott eljárások az alkalmazásokhoz](../luis-concept-best-practices.md)

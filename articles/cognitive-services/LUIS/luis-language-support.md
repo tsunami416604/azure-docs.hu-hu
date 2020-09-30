@@ -3,20 +3,18 @@ title: Nyelvi támogatás – LUIS
 titleSuffix: Azure Cognitive Services
 description: A LUIS számos funkciót biztosít a szolgáltatáson belül. Egyes funkciók azonban nem érhetők el bizonyos nyelveken. Ellenőrizze, hogy az Önt érdeklő funkciók támogatottak-e a használni kívánt nyelvkultúrában. A LUIS-alkalmazás Culture-specifikus, és a beállítása után nem módosítható.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 12/09/2019
-ms.author: diberry
-ms.openlocfilehash: b60a777960f3c6f8a2415ca551217d35b7f3497d
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: e377f910e1c1ddda864ea312b40fe3608c166376
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88588022"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541390"
 ---
 # <a name="language-and-region-support-for-luis"></a>A LUIS nyelv és régió támogatása
 
@@ -90,7 +88,7 @@ A gépi tanulás elvégzéséhez LUIS a kulturális környezet alapján megszak�
 |Kínai||✔||
 |Holland|✔||✔|
 |Angol (en-us)|✔ |||
-|Francia (FR-FR)|✔|||
+|Francia (fr-FR)|✔|||
 |Francia (FR-CA)|✔|||
 |Német|✔||✔|
 |gudzsaráti|✔|||
@@ -111,7 +109,7 @@ A gépi tanulás elvégzéséhez LUIS a kulturális környezet alapján megszak�
 
 A következő kultúrákban egyéni tokenizer verziók szerepelnek:
 
-|Kultúra|Verzió|Cél|
+|Kultúra|Verzió|Szerep|
 |--|--|--|
 |Német<br>`de-de`|1.0.0|A szavakat Tokenizes egy gépi tanuláson alapuló tokenizer, amely az összetett szavakat egyetlen összetevőjére próbálja bontani.<br>Ha a felhasználó Kimondás lép fel, a rendszer a következőre `Ich fahre einen krankenwagen` vált: `Ich fahre einen kranken wagen` . A `kranken` és a `wagen` különböző entitások egymástól függetlenül történő megjelölésének engedélyezése.|
 |Német<br>`de-de`|1.0.2|Tokenizes a szavakat a szóközök felosztásával.<br> Ha egy felhasználó `Ich fahre einen krankenwagen` Kimondás lép fel, akkor egyetlen token marad. Így `krankenwagen` egyetlen entitásként van megjelölve. |

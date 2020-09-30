@@ -1,22 +1,22 @@
 ---
-title: Kísérletek futtatása az Azure automatizált ML-vel
-description: Gépi tanulási kísérletek futtatása a Apache Spark és az Azure automatizált ML használatával
+title: 'Oktatóanyag: kísérletek futtatása az Azure automatizált ML-vel'
+description: A Machine learning-kísérletek Apache Spark és az Azure automatikus ML használatával történő futtatásának oktatóanyaga
 services: synapse-analytics
 author: midesa
 ms.service: synapse-analytics
-ms.topic: conceptual
+ms.topic: tutorial
 ms.subservice: machine-learning
 ms.date: 06/30/2020
 ms.author: midesa
 ms.reviewer: jrasnick,
-ms.openlocfilehash: d4df4ea96f8dafa2f0eb26e27fcc08ab4ec89003
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: da4cef50610b219689e2271e9f70fd1adb1a235f
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90033574"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540506"
 ---
-# <a name="run-experiments-using-azure-automated-ml-and-apache-spark"></a>Kísérletek futtatása az Azure automatizált ML-vel és Apache Spark
+# <a name="tutorial-run-experiments-using-azure-automated-ml-and-apache-spark"></a>Oktatóanyag: kísérletek futtatása az Azure automatizált ML és Apache Spark használatával
 
 A Azure Machine Learning egy felhőalapú környezet, amely lehetővé teszi a gépi tanulási modellek betanítását, üzembe helyezését, automatizálását, kezelését és nyomon követését. 
 
@@ -341,6 +341,6 @@ Végül az iterációk eredményeinek eléréséhez navigáljon a Azure Machine 
 
 ![A pénzmosás-munkaterület képernyőképe.](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-aml-workspace.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)
 - [Apache Spark MLlib-oktatóanyag](./apache-spark-machine-learning-mllib-notebook.md)

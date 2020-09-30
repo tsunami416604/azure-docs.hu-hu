@@ -7,12 +7,12 @@ ms.topic: how-to
 author: navits09
 ms.author: navits
 ms.date: 06/17/2020
-ms.openlocfilehash: e5fb00eadaa8d1702b46a03c03b55bbd0ef693f6
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 10b5553bea1e275a3a3cc77380ed9e16898e903a
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646692"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533213"
 ---
 # <a name="create-a-dynamics-365-for-operations-offer"></a>Dynamics 365 for Operations-ajánlat létrehozása
 
@@ -39,7 +39,8 @@ A Kezdés előtt [hozzon létre egy kereskedelmi Piactéri fiókot a partner Cen
 Adja meg az **ajánlat azonosítóját**. Ez a fiókban található egyes ajánlatok egyedi azonosítója.
 
 - Ez az azonosító látható az ügyfelek számára a Piactéri ajánlathoz tartozó webcímek és Azure Resource Manager sablonok esetében, ha van ilyen.
-- Csak kisbetűket és számokat használjon. Tartalmazhat kötőjeleket és aláhúzásokat, de nem tartalmazhat szóközt, és legfeljebb 50 karakter hosszú lehet. Ha például a **test-Offer-1** értéket adja meg, az ajánlat webes címe lesz `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
+- A közzétevő AZONOSÍTÓval összevont ajánlat AZONOSÍTÓjának 40 karakternél rövidebbnek kell lennie.
+- Csak kisbetűket és számokat használjon. Kötőjeleket és aláhúzást tartalmazhat, de nem tartalmaz szóközt. Ha például a közzétevő azonosítója testpublisherid, és itt a **test-Offer-1** értéket adja meg, az ajánlat webcíme lesz `https://appsource.microsoft.com/product/dynamics-365/testpublisherid.test-offer-1` .
 - Az ajánlat azonosítója a **Létrehozás**gombra kattintva nem módosítható.
 
 Adjon meg egy **ajánlat-aliast**. Ez a partner Centerben az ajánlathoz használt név.
@@ -56,11 +57,11 @@ Válassza ki az ajánlathoz használni kívánt beállítást.
 
 #### <a name="get-it-now-free"></a>Letöltés (ingyenes)
 
-Az ajánlatát ingyenesen listázhatja, ha érvényes URL-címet ad meg (a *http* vagy a *https*-től kezdve), ahol elérheti az alkalmazást.  Például: `https://contoso.com/my-app`
+Ajánlatát ingyenesen kilistázhatja az ügyfeleknek.
 
 #### <a name="free-trial-listing"></a>Ingyenes próbaverzió (Listázás)
 
-Az ajánlatot az ingyenes próbaverzióra mutató hivatkozással listázhatja, ha egy érvényes URL-címet biztosít (a vagy a verziótól kezdve `http` `https` ), ahol próbaverziót kaphat. Például: `https://contoso.com/trial/my-app`. Az ingyenes próbaverziók listáját a szolgáltatás hozza létre, felügyeli és konfigurálja, és nem rendelkezik a Microsoft által kezelt előfizetésekkel.
+Az ingyenes próbaverzióra mutató hivatkozást tartalmazó ajánlat listázása az ügyfeleknek. Az ingyenes próbaverziók listáját a szolgáltatás hozza létre, felügyeli és konfigurálja, és nem rendelkezik a Microsoft által kezelt előfizetésekkel.
 
 > [!NOTE]
 > Az alkalmazás által a próbaverziós hivatkozáson keresztül fogadott jogkivonatok csak Azure Active Directory (Azure AD) használatával szerezhetik be a felhasználói adatokat, hogy automatizálják a fiókok létrehozását az alkalmazásban. A Microsoft-fiókok nem támogatottak a jogkivonat használatával történő hitelesítéshez.
@@ -144,7 +145,7 @@ Az itt megadott név jelenik meg az ügyfelek számára az ajánlati lista cím�
 
 Adja meg az ajánlat rövid leírását, amely legfeljebb 100 karakter hosszú lehet. Ez a leírás a piactér keresési eredményeiben használható.
 
-### <a name="description"></a>Description
+### <a name="description"></a>Leírás
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 

@@ -15,20 +15,34 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2018
 ms.author: apimpm
-ms.openlocfilehash: 7ef1c09b12d3c7e365f090391aa3fa8afa03749b
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: ad1ad622b354215e9837b1154a13bac148d54164
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88214004"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537344"
 ---
 # <a name="advanced-request-throttling-with-azure-api-management"></a>Speciális kérelemszabályozás az Azure API Managementtel
 A bejövő kérések szabályozása az Azure API Management kulcsfontosságú szerepe. A kérések sebességének vagy az átvitt kérelmeknek/adatoknak a szabályozásával API Management lehetővé teszi az API-szolgáltatók számára, hogy az API-kat felhasználják a visszaéléstől, és értéket hozzanak létre különböző API-termékekhez.
 
+## <a name="rate-limits-and-quotas"></a>A díjszabási korlátok és kvóták
+A díjszabási korlátok és a kvóták különböző célokra használatosak.
+
+### <a name="rate-limits"></a>Sebességkorlátok
+A díjszabási határértékek általában a rövid és az intenzív mennyiségű adattörések elleni védelemhez használatosak. Ha például ismeri a háttérrendszer szűk keresztmetszetét az adatbázisában, magas hívási kötettel, beállíthatja, `rate-limit-by-key` hogy a házirend ne engedélyezze a nagy hívási kötetet e beállítás használatával.
+
+### <a name="quotas"></a>Kvóták
+A kvóták általában hosszabb időn keresztül vezérlik a hívások sebességét. Megadhatják például, hogy az egyes előfizetők hány hívást végezhetnek egy adott hónapban. Az API-k bevétele érdekében a kvótákat különbözőképpen is megadhatja a többszintű előfizetések esetében. Előfordulhat például, hogy egy alapszintű csomag előfizetése legfeljebb 10 000 hívást tud készíteni havonta, de a prémium szint akár 100 000 000 hívást is felhasználhat havonta.
+
+Az Azure API Managementon belül a díjszabási korlátok általában gyorsabban továbbítódnak a csomópontok között a tüskékkel szembeni védelem érdekében. Ezzel szemben a használati kvóta adatait hosszabb távon használják, így a megvalósításuk eltérő.
+
+> [!CAUTION]
+> A szabályozási architektúra elosztott jellege miatt a díjszabási korlátozás soha nem teljesen pontos. A konfigurált és az engedélyezett kérelmek valós száma közötti különbség a kérés mennyisége és sebessége, a háttérbeli késés és egyéb tényezők alapján változhat.
+
 ## <a name="product-based-throttling"></a>Termék-alapú szabályozás
 Az eddigi díjszabási képességeket a rendszer a Azure Portalban definiált adott termék-előfizetésre korlátozta. Ez akkor hasznos, ha az API-szolgáltató korlátozásokat alkalmaz az API-t használó fejlesztőknek, azonban nem segít például az API egyes végfelhasználóinak szabályozásában. Lehetséges, hogy a fejlesztői alkalmazás egyetlen felhasználója használja fel a teljes kvótát, majd megakadályozza, hogy a fejlesztő más ügyfelei is használhassák az alkalmazást. Emellett a nagy mennyiségű kérést előidéző ügyfelek is korlátozhatják az alkalmi felhasználók hozzáférését.
 
-## <a name="custom-key-based-throttling"></a>Egyéni kulcs alapú szabályozás
+## <a name="custom-key-based-throttling"></a>Egyéni kulcs-alapú szabályozás
 
 > [!NOTE]
 > A `rate-limit-by-key` és a `quota-by-key` házirendek nem érhetők el, ha az Azure API Management felhasználási szintjében van. 
@@ -79,5 +93,5 @@ Ez lehetővé teszi a fejlesztői ügyfélalkalmazás számára, hogy kiválassz
 ## <a name="summary"></a>Összefoglalás
 Az Azure API Management díjszabást és árajánlatot biztosít a védelemhez, és értéket adhat hozzá az API-szolgáltatáshoz. Az új szabályozási szabályzatok egyéni hatóköri szabályokkal lehetővé teszik, hogy az ügyfelek még jobb alkalmazásokat hozzanak létre. A jelen cikkben szereplő példák a kulcsok az ügyfél IP-címeivel, a felhasználói identitással és az ügyfél által generált értékekkel való korlátozásával mutatják be az új szabályzatok használatát. Azonban az üzenet számos más része használható, például a felhasználói ügynök, az URL-cím elérési útja, az üzenet mérete.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Küldje el nekünk visszajelzését GitHub-problémaként ebben a témakörben. Érdemes meghallgatni azokat a lehetséges kulcsfontosságú értékeket, amelyek a forgatókönyvekben logikus választásnak bizonyultak.

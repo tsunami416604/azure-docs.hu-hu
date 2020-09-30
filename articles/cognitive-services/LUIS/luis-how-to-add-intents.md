@@ -3,20 +3,18 @@ title: Leképezések hozzáadása – LUIS
 titleSuffix: Azure Cognitive Services
 description: Vegyen fel szándékokat a LUIS-alkalmazásba, hogy azonosítsa az azonos szándékkal rendelkező kérdések vagy parancsok csoportjait.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2020
-ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: fe1c157d6847366a59739cd5128987127d01da94
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: c2802f1b41ed2842e12c808a8c380ebd646ffa03
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344424"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540931"
 ---
 # <a name="add-intents-to-determine-user-intention-of-utterances"></a>Leképezések hozzáadása a hosszúságú kimondott szöveg felhasználói szándékának meghatározásához
 
@@ -81,6 +79,6 @@ A környezeti eszköztár más műveleteket is tartalmaz:
 
 Miután hozzáadta, szerkeszti vagy eltávolítja a leképezéseket, [betanítja](luis-how-to-train.md) és [közzéteszi](luis-how-to-publish-app.md) az alkalmazást, hogy a módosítások a végponti lekérdezésekre legyenek alkalmazva. Ne végezze el a betanítást minden egyes módosítás után. Betanítás egy csoport módosítása után.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a [példa hosszúságú kimondott szöveg](luis-how-to-add-example-utterances.md) az entitásokkal való hozzáadásáról.

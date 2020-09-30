@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b297ee3d03d61b654e2b7fffa17141a1fd5268f3
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 93c97055c6e31050dbc545445ec144ba37abc865
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90971178"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91539894"
 ---
 # <a name="assign-a-role-to-a-group-using-privileged-identity-management"></a>Szerepkör társítása egy csoporthoz Privileged Identity Management használatával
 
@@ -35,7 +35,7 @@ Ez a cikk azt ismerteti, hogyan rendelhet hozzá Azure Active Directory (Azure A
 
 1. Válasszon ki egy szerepkört, majd válasszon ki egy csoportot. Csak a szerepkör-hozzárendelésre jogosult csoportok jelennek meg, nem minden csoport.
 
-    ![Válassza ki azt a felhasználót, akihez a szerepkört hozzárendeli](./media/roles-groups-pim-eligible/select-member.png)
+    ![Képernyőkép: a "hozzárendelések hozzáadása" lap, amely kiemelve a "szerepkör kiválasztása" és a "tag (ok)" szakaszban látható.](./media/roles-groups-pim-eligible/select-member.png)
 
 1. Válassza ki a kívánt tagsági beállítást. Az aktiválást igénylő szerepkörök esetében válassza a **jogosult**lehetőséget. Alapértelmezés szerint a felhasználó véglegesen jogosult lenne, de a felhasználó jogosultságának kezdési és befejezési idejét is megadhatja. Ha elkészült, kattintson a Mentés és Hozzáadás gombra a szerepkör-hozzárendelés befejezéséhez.
 
@@ -101,7 +101,7 @@ https://graph.microsoft.com/beta/privilegedAccess/aadroles/roleAssignmentRequest
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Felhőalapú csoportok használata a szerepkör-hozzárendelések kezeléséhez](roles-groups-concept.md)
 - [A felhőbeli csoportokhoz hozzárendelt szerepkörökkel kapcsolatos hibák elhárítása](roles-groups-faq-troubleshooting.md)

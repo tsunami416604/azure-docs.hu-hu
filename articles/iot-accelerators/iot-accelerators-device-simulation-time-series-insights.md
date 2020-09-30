@@ -8,12 +8,12 @@ ms.date: 08/20/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 2bbd7911a40d6a256d478e2533ad2469b8fd6973
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 88255e60593403951db5b984bb9c69b1060a93c2
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73889347"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540574"
 ---
 # <a name="use-time-series-insights-to-visualize-telemetry-sent-from-the-device-simulation-solution-accelerator"></a>Time Series Insights használata az eszköz-szimulációs megoldás-gyorsító által eljuttatott telemetria megjelenítéséhez
 
@@ -21,7 +21,7 @@ Az eszköz-szimulációs megoldás gyorsítása lehetővé teszi a szimulált es
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A jelen útmutató lépéseinek követéséhez aktív Azure-előfizetésre van szükség. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+A jelen útmutató lépéseinek követéséhez aktív Azure-előfizetésre van szükség. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 A útmutató lépései azt feltételezik, hogy telepítette az eszköz szimulációs megoldásának gyorssegédét az Azure-előfizetéséhez. Ha még nem telepítette a megoldás-gyorsító eszközt, kövesse a [felhőalapú eszköz-szimulációs megoldás üzembe helyezése és futtatása](quickstart-device-simulation-deploy.md) című rövid útmutatót.
 
@@ -72,7 +72,7 @@ A [Azure Time Series Insights](../../articles/time-series-insights/time-series-i
     | SKU |**S1** |
     | Kapacitás | **1** |
 
-    ![Time Series Insights létrehozása](./media/iot-accelerators-device-simulation-time-series-insights/new-time-series-insights-create.png)
+    ![A Time Series Insights létrehozása](./media/iot-accelerators-device-simulation-time-series-insights/new-time-series-insights-create.png)
 
     > [!NOTE]
     > Ha hozzáadja a Time Series Insights környezetet ugyanahhoz az erőforráscsoporthoz, mint a megoldás-gyorsító, azt jelenti, hogy törli a megoldás-gyorsító törlését.
@@ -137,7 +137,7 @@ A Time Series Insights Explorer egy webalkalmazás, amelyet a telemetria megjele
 
 1. A bal oldali feltételek panelen válassza a **hőmérséklet** lehetőséget a **mérték** és a **iothub-Device-ID** értékként a **felosztás** értékeként:
 
-    ![Time Series Insights Explorer-lekérdezés](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-query1.png)
+    ![A "feltételek" panelt Time Series Insights megjelenítő képernyőkép a "mérték" és a "Split by" értékek kiemelésével.](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-query1.png)
 
 1. Kattintson a jobb gombbal a diagramra, és válassza az **események feltárása**lehetőséget:
 
@@ -163,7 +163,7 @@ A Time Series Insights Explorer egy webalkalmazás, amelyet a telemetria megjele
 
     ![Time Series Insights Explorer irányítópult](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-dashboard.png)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha azt tervezi, hogy további felfedezést szeretne, hagyja üzembe a megoldás-gyorsító telepítését.
 

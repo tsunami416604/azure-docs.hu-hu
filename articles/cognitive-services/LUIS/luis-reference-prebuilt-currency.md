@@ -3,20 +3,18 @@ title: Pénznem előre elkészített entitás – LUIS
 titleSuffix: Azure Cognitive Services
 description: Ez a cikk Language Understanding (LUIS) pénznemben előre felépített entitásokra vonatkozó információkat tartalmaz.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 10/14/2019
-ms.author: diberry
-ms.openlocfilehash: 56d264fa976967ae4772f50b4aa6f58b30355d6f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c89de0ba74d04c510f3d5ba537f3a6dcc4819169
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78270777"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534336"
 ---
 # <a name="currency-prebuilt-entity-for-a-luis-app"></a>LUIS-alkalmazás pénznemének előre felépített entitása
 Az előre felépített pénznem entitások számos címletben és országban/régióban észlelik a pénznemet, függetlenül a LUIS-alkalmazás kulturális környezettől. Mivel ez az entitás már be van tanítva, nem kell hozzáadnia például a pénznemet tartalmazó hosszúságú kimondott szöveg az Application-leképezésekhez. A pénznem entitások [számos kultúrában](luis-reference-prebuilt-entities.md)támogatottak.
@@ -28,7 +26,7 @@ A pénznem kezelése a [felismerők – Text GitHub-](https://github.com/Microso
 
 #### <a name="v3-response"></a>[V3 válasz](#tab/V3)
 
-A következő JSON a `verbose` paraméter értéke: `false`
+A következő JSON a `verbose` paraméter értéke `false` :
 
 ```json
 "entities": {
@@ -41,7 +39,7 @@ A következő JSON a `verbose` paraméter értéke: `false`
 }
 ```
 #### <a name="v3-verbose-response"></a>[V3 részletes válasz](#tab/V3-verbose)
-A következő JSON a `verbose` paraméter értéke: `true`
+A következő JSON a `verbose` paraméter értéke `true` :
 
 ```json
 "entities": {

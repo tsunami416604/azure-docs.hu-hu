@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 09/25/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 6be511029221e1f7bd1e58ad111503a43ee157fb
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: ed44431af6d99daa5549d019f42efda4bbf9912b
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91400655"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540353"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-java-using-rest-apis"></a>Rövid útmutató: Azure Cognitive Search index létrehozása javában a REST API-k használatával
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.locfileid: "91400655"
 > * [Python](search-get-started-python.md)
 > * [Postman](search-get-started-postman.md)
 
-Hozzon létre egy Java-konzolos alkalmazást, amely a [IntelliJ](https://www.jetbrains.com/idea/), a [Java 11 SDK](/java/azure/jdk/?view=azure-java-stable)és az [Azure Cognitive Search REST API](/rest/api/searchservice/)használatával hoz létre, tölt be és kérdez le egy keresési indexet. Ez a cikk részletes útmutatást nyújt az alkalmazás létrehozásához. Azt is megteheti, hogy [letölti és futtatja a teljes alkalmazást](/samples/azure-samples/azure-search-java-samples/java-sample-quickstart/).
+Hozzon létre egy Java-konzolos alkalmazást, amely a [IntelliJ](https://www.jetbrains.com/idea/), a [Java 11 SDK](/java/azure/jdk/)és az [Azure Cognitive Search REST API](/rest/api/searchservice/)használatával hoz létre, tölt be és kérdez le egy keresési indexet. Ez a cikk részletes útmutatást nyújt az alkalmazás létrehozásához. Azt is megteheti, hogy [letölti és futtatja a teljes alkalmazást](/samples/azure-samples/azure-search-java-samples/java-sample-quickstart/).
 
 Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
@@ -37,7 +37,7 @@ A rövid útmutató összeállításához és teszteléséhez a következő szof
 
 + [IntelliJ IDEA](https://www.jetbrains.com/idea/)
 
-+ [Java 11 SDK](/java/azure/jdk/?view=azure-java-stable)
++ [Java 11 SDK](/java/azure/jdk/)
 
 + [Hozzon létre egy Azure Cognitive Search szolgáltatást](search-create-service-portal.md) , vagy [keressen egy meglévő szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) a jelenlegi előfizetése alatt. Ehhez a rövid útmutatóhoz ingyenes szolgáltatást is használhat.
 
@@ -67,7 +67,7 @@ Első lépésként nyissa meg a IntelliJ IDEA-t, és állítson be egy új proje
 1. Válassza a **Maven**lehetőséget.
 1. A **Project SDK** listában válassza ki a Java 11 SDK-t.
 
-    :::image type="content" source="media/search-get-started-java/java-quickstart-create-new-maven-project.png" alt-text="Maven-projekt létrehozása" border="false":::
+    :::image type="content" source="media/search-get-started-java/java-quickstart-create-new-maven-project.png" alt-text="A szolgáltatás nevének és a rendszergazda és a lekérdezési kulcsok beszerzése" border="false":::
 
 1. A **GroupID** és a **ArtifactId**mezőbe írja be a következőt: `AzureSearchQuickstart` .
 1. Fogadja el a fennmaradó alapértékeket a projekt megnyitásához.
@@ -78,7 +78,7 @@ Első lépésként nyissa meg a IntelliJ IDEA-t, és állítson be egy új proje
 1. A **Beállítások** ablakban válassza a **Létrehozás, végrehajtás, üzembe helyezés**  >  **eszközök**  >  **Maven**-  >  **Importálás**lehetőséget.
 1. Jelölje be a  **Maven-projektek automatikus importálása** jelölőnégyzetet, majd kattintson az **OK** gombra az ablak bezárásához. A Maven beépülő modulok és egyéb függőségek mostantól automatikusan szinkronizálva lesznek, amikor a következő lépésben frissíti a pom.xml fájlt.
 
-    :::image type="content" source="media/search-get-started-java/java-quickstart-settings-import-maven-auto.png" alt-text="A Maven importálási lehetőségei a IntelliJ-beállításokban" border="false":::
+    :::image type="content" source="media/search-get-started-java/java-quickstart-settings-import-maven-auto.png" alt-text="A szolgáltatás nevének és a rendszergazda és a lekérdezési kulcsok beszerzése" border="false":::
 
 1. Nyissa meg a pom.xml fájlt, és cserélje le a tartalmát a következő Maven-konfigurációs részletekre. Ezek közé tartoznak az [exec Maven beépülő modulra](https://www.mojohaus.org/exec-maven-plugin/) és egy [JSON Interface API](https://javadoc.io/doc/org.glassfish/javax.json/1.0.2) -ra vonatkozó hivatkozások
 
@@ -140,7 +140,7 @@ Első lépésként nyissa meg a IntelliJ IDEA-t, és állítson be egy új proje
 
     Ha elkészült, a projekt fájának az alábbi képhez hasonlóan kell kinéznie.
 
-    :::image type="content" source="media/search-get-started-java/java-quickstart-basic-code-tree.png" alt-text="Projekt könyvtárának szerkezete" border="false":::
+    :::image type="content" source="media/search-get-started-java/java-quickstart-basic-code-tree.png" alt-text="A szolgáltatás nevének és a rendszergazda és a lekérdezési kulcsok beszerzése" border="false":::
 
 1. Kattintson az **OK** gombra az ablak bezárásához.
 
@@ -148,7 +148,7 @@ Első lépésként nyissa meg a IntelliJ IDEA-t, és állítson be egy új proje
 
 1. A **projekt** ablakban bontsa ki a forrás fát a mappa eléréséhez `src`  >   `main`  > `resources`  >  `app` , és adjon hozzá egy `config.properties` fájlt. Ehhez válassza ki a `app` mappát, nyomja le az ALT + INSERT billentyűkombinációt, válassza a **fájl**lehetőséget, majd adja meg a fájl nevét.
 
-1. Másolja a következő beállításokat az új fájlba, és cserélje le a, a `<YOUR-SEARCH-SERVICE-NAME>` `<YOUR-ADMIN-KEY>` és a nevet a `<YOUR-QUERY-KEY>` szolgáltatás nevére és kulcsaira. Ha a szolgáltatás végpontja `https://mydemo.search.windows.net` , a szolgáltatás neve "mydemo" lesz.
+1. Másolja a következő beállításokat az új fájlba, és cserélje le a, a `<YOUR-SEARCH-SERVICE-NAME>` `<YOUR-ADMIN-KEY>` és a nevet a `<YOUR-QUERY-KEY>` szolgáltatás nevére és kulcsaira. Ha a szolgáltatási végpontja `https://mydemo.search.windows.net` , a szolgáltatás neve a következő lesz: `"mydemo"` .
 
     ```java
         SearchServiceName=<YOUR-SEARCH-SERVICE-NAME>
@@ -373,10 +373,10 @@ Első lépésként nyissa meg a IntelliJ IDEA-t, és állítson be egy új proje
 
 1. Ellenőrizze, hogy a projekt a következő szerkezettel rendelkezik-e.
 
-    :::image type="content" source="media/search-get-started-java/java-quickstart-basic-code-tree-plus-classes.png" alt-text="Project Directory-struktúra plusz osztályok" border="false":::
+    :::image type="content" source="media/search-get-started-java/java-quickstart-basic-code-tree-plus-classes.png" alt-text="A szolgáltatás nevének és a rendszergazda és a lekérdezési kulcsok beszerzése" border="false":::
 
 1. Nyissa meg a **Maven** eszköz ablakát, és hajtsa végre a következő Maven-célt: `verify exec:java` 
- :::image type="content" source="media/search-get-started-java/java-quickstart-execute-maven-goal.png" alt-text="Maven-cél végrehajtása: az exec ellenőrzése: Java" border="false":::
+ :::image type="content" source="media/search-get-started-java/java-quickstart-execute-maven-goal.png" alt-text="A szolgáltatás nevének és a rendszergazda és a lekérdezési kulcsok beszerzése" border="false":::
 
 A feldolgozás befejezésekor keressen egy sikeres BUILD-üzenetet, amelyet egy nulla (0) kilépési kód követ.
 

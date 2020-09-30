@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 937c5dbf3417e5914a0b4285c3bb114d7499e0fb
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: c7cc4065297c35164f1e37b187c6280b3d3546ee
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799060"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538840"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Forgatókönyvek, korlátozások és ismert problémák csoportok használatával a licencelés kezeléséhez Azure Active Directory
 
@@ -112,7 +112,7 @@ Rendszergazdaként áttekintheti a változás által érintett összes csoportot
 
 3. Lépjen a [**Azure Active Directory > licencek > minden termék**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products) panelre, és válassza az *Office 365 Enterprise E5*lehetőséget, majd válassza a **licencelt csoportok** lehetőséget az adott termékkel rendelkező csoportok listájának megtekintéséhez.
 
-4. Kattintson az áttekinteni kívánt csoportra (ebben az esetben az *O365 E5-Exchange-* re). Ekkor megnyílik a **licencek** lap. az E5-licencre kattintva megnyílik egy panel, amely felsorolja az összes engedélyezett szolgáltatást.
+4. Kattintson az áttekinteni kívánt csoportra (ebben az esetben az *O365 E5-Exchange-* re). Ekkor megnyílik a **licencek** lap. Ha az E5-licencre kattint, megnyílik egy panel, amely felsorolja az összes engedélyezett szolgáltatást.
    > [!NOTE]
    > A *Microsoft stream* szolgáltatás automatikusan lett hozzáadva és engedélyezve ebben a csoportban, az *Exchange Online* szolgáltatás mellett:
 
@@ -157,7 +157,7 @@ Az [Azure ad-naplók](../reports-monitoring/concept-audit-logs.md#audit-logs) ha
 
 Íme egy példa a legutóbbi csoport licencének változásaira, a részletekkel:
 
-![Képernyőfelvétel-csoport licencének változásai](./media/licensing-group-advanced/audit-group-license-change.png)
+![Képernyőkép, amely a "naplók" lapot jeleníti meg egy kijelölt listaelemtel, és megnyílik a "tevékenység részletei naplója" panel.](./media/licensing-group-advanced/audit-group-license-change.png)
 
 ### <a name="find-out-when-group-changes-started-and-finished-processing"></a>Annak megállapítása, hogy a csoport változásai megkezdődött és befejeződött-e
 
@@ -219,7 +219,7 @@ Ha Group-alapú licencelést használ, érdemes megismernie az alábbi korlátoz
 
   Az ilyen típusú korlátozások megkerülő megoldásként nyissa meg a **csoport** panelt az Azure ad-ben, és kattintson az **újrafeldolgozás**gombra. Ez a parancs feldolgozza a csoport összes felhasználóját, és ha lehetséges, feloldja a hibák állapotait.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A csoportalapú licencelés segítségével folytatott licenckezelés egyéb forgatókönyveivel kapcsolatos további tudnivalókért tekintse át az alábbi témaköröket:
 

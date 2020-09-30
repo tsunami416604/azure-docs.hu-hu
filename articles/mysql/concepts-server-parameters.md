@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/25/2020
-ms.openlocfilehash: e7ca86d0146f05d5171d5eae18aac81d75122bcc
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: bf87a61633706cb5db384e8a8ab957fa6a3f37f1
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258548"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533723"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>Kiszolgálói paraméterek a Azure Database for MySQL
 
@@ -214,7 +214,7 @@ Ha a "sor mérete túl nagy (> 8126)" hasonló hibaüzenetet kap, érdemes kikap
 Ez a paraméter a használatával állítható be a munkamenet szintjén `init_connect` . Ha **innodb_strict_modet** szeretne beállítani a munkamenet szintjén, a [beállítás paraméter nem jelenik](https://docs.microsoft.com/azure/mysql/howto-server-parameters#setting-parameters-not-listed)meg.
 
 > [!NOTE]
-> Ha rendelkezik olvasási replika-kiszolgálóval, akkor a főkiszolgálón lévő munkamenet szintjén a **innodb_strict_mode** kikapcsolásának beállítása megszakítja a replikációt. Javasoljuk, hogy a paramétert állítsa ki, ha olvasási replikával rendelkezik.
+> Ha rendelkezik olvasási replika-kiszolgálóval, akkor a forráskiszolgáló munkamenet-szintjének kikapcsolásához **innodb_strict_mode** beállítás megszakítja a replikálást. Javasoljuk, hogy a paramétert állítsa ki, ha olvasási replikával rendelkezik.
 
 ### <a name="sort_buffer_size"></a>sort_buffer_size
 

@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 07/22/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 8a7bb300bb634b342b1141d175b0046c7d2d7e2b
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: b7f9a83a3972ed0a5a635826b40e15c437da16b8
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810309"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540370"
 ---
 # <a name="quickstart-create-a-xamarin-android-app-with-azure-spatial-anchors"></a>Gyors útmutató: Xamarin Android-alkalmazás létrehozása az Azure térbeli Horgonyokkal
 
@@ -73,7 +73,7 @@ Kapcsolja be az androidos eszközt, jelentkezzen be, és csatlakoztassa a szám�
 
 # <a name="windows"></a>[Windows](#tab/deploy-windows)
 
-![Visual Studio-konfiguráció](./media/get-started-xamarin-android/visual-studio-windows-configuration.png)
+![Képernyőkép, amely megjeleníti a menüt a projekt és az eszköz kiválasztásához a Windowsban.](./media/get-started-xamarin-android/visual-studio-windows-configuration.png)
 
 **Debug**  >  Az alkalmazás üzembe helyezéséhez és elindításához válassza a hibakeresés**megkezdése** lehetőséget.
 

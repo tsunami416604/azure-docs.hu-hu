@@ -1,16 +1,14 @@
 ---
 title: Rendszeres biztonsági mentési konfiguráció ismertetése
 description: Az Service Fabric rendszeres biztonsági mentési és visszaállítási funkciójának használatával konfigurálhatja a megbízható állapot-nyilvántartó szolgáltatások vagy Reliable Actors rendszeres biztonsági mentését.
-author: hrushib
 ms.topic: article
 ms.date: 2/01/2019
-ms.author: hrushib
-ms.openlocfilehash: 53f63f341fe614f2287a09f37fafd2eedc614be7
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 852e430a9183d92e13536fd6499f3d1404985455
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530913"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538619"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>Az Azure Service Fabric rendszeres biztonsági mentési konfigurációjának ismertetése
 
@@ -239,7 +237,7 @@ Az alábbiakban a támogatott változatokkal kapcsolatos rövid információk sz
  
 - [Partíció biztonsági mentési listájának beolvasása](/rest/api/servicefabric/sfclient-api-getpartitionbackuplist): a megadott partícióhoz elérhető biztonsági másolatok listáját adja vissza.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Biztonsági mentés visszaállítása REST API referenciája](/rest/api/servicefabric/sfclient-index-backuprestore)
 
 [0]: ./media/service-fabric-backuprestoreservice/backup-policy-association-example.png

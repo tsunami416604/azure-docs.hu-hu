@@ -3,12 +3,12 @@ title: Egyesült Királyság hivatalos & Egyesült Királysági NHS-tervezeténe
 description: Az Egyesült Királyság hivatalos és az Egyesült Királysági NHS-tervezetek mintáinak szabályozása. Mindegyik vezérlő egy vagy több olyan Azure-szabályzatra van leképezve, amely segítséget nyújt az értékeléshez.
 ms.date: 07/13/2020
 ms.topic: sample
-ms.openlocfilehash: 360c6bc2e1f207ca2d4470ffe62a81f524ce2a73
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dd16e6e62e5df3bae083cc4df05207f1f518d560
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078996"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540387"
 ---
 # <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>Az Egyesült Királyság hivatalos és az Egyesült Királysági NHS-tervezetek mintáinak szabályozása
 
@@ -76,10 +76,10 @@ Ez a tervezet segítséget nyújt az információs rendszer eszközeinek védelm
 
 ## <a name="9-secure-user-management"></a>9 biztonságos felhasználói felügyelet 
 
-Az Azure szerepköralapú hozzáférés-vezérlést (RBAC) valósít meg, amellyel felügyelheti, hogy ki férhet hozzá az Azure-beli erőforrásokhoz. A Azure Portal használatával áttekintheti, hogy ki férhet hozzá az Azure-erőforrásokhoz és azok engedélyeihez. Ez a terv segít a hozzáférési jogosultságok korlátozásában és szabályozásában [Azure Policy](../../../policy/overview.md) definíciók kiosztásával, hogy a külső fiókokat a tulajdonossal és/vagy az olvasási/írási engedélyekkel és a tulajdonosi, olvasási és/vagy írási engedélyekkel rendelkező fiókokkal naplózza, amelyeken nincs engedélyezve a többtényezős hitelesítés
+Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) segítségével felügyelheti, hogy ki férhet hozzá az Azure-beli erőforrásokhoz. A Azure Portal használatával áttekintheti, hogy ki férhet hozzá az Azure-erőforrásokhoz és azok engedélyeihez. Ez a terv segít a hozzáférési jogosultságok korlátozásában és szabályozásában [Azure Policy](../../../policy/overview.md) definíciók kiosztásával, hogy a külső fiókokat a tulajdonossal és/vagy az olvasási/írási engedélyekkel és a tulajdonosi, olvasási és/vagy írási engedélyekkel rendelkező fiókokkal naplózza, amelyeken nincs engedélyezve a többtényezős hitelesítés
 
 - Az MFA-t engedélyezni kell az előfizetéshez tartozó tulajdonosi engedélyekkel rendelkező fiókokon
-- Az MFA-nak engedélyezve kell lennie az előfizetéséhez tartozó írási engedélyekkel rendelkező fiókoknak
+- Az MFA-t engedélyezni kell az előfizetés minden írási engedéllyel rendelkező fiókjában
 - Az MFA-t engedélyezni kell az előfizetésre vonatkozó olvasási engedéllyel rendelkező fiókokon
 - A tulajdonosi engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből
 - Az írási engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből
@@ -90,7 +90,7 @@ Az Azure szerepköralapú hozzáférés-vezérlést (RBAC) valósít meg, amelly
 Ez a terv segít a hozzáférési jogosultságok korlátozásában és szabályozásában [Azure Policy](../../../policy/overview.md) definíciók kiosztásával, hogy a külső fiókokat a tulajdonossal és/vagy az olvasási/írási engedélyekkel és a tulajdonosi, olvasási és/vagy írási engedélyekkel rendelkező fiókokkal naplózza, amelyeken nincs engedélyezve a többtényezős hitelesítés
 
 - Az MFA-t engedélyezni kell az előfizetéshez tartozó tulajdonosi engedélyekkel rendelkező fiókokon
-- Az MFA-nak engedélyezve kell lennie az előfizetéséhez tartozó írási engedélyekkel rendelkező fiókoknak
+- Az MFA-t engedélyezni kell az előfizetés minden írási engedéllyel rendelkező fiókjában
 - Az MFA-t engedélyezni kell az előfizetésre vonatkozó olvasási engedéllyel rendelkező fiókokon
 - A tulajdonosi engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből
 - Az írási engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből

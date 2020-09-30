@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: article
 ms.date: 04/23/2020
 ms.author: cshoe
-ms.openlocfilehash: 37f79d717b7ea0e26717e7b51f9e66b908b96521
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 79aebf7ed80fea370ff7a5d5cc40911da4144414
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640963"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537701"
 ---
 # <a name="manually-run-a-non-http-triggered-function"></a>Nem HTTP által aktivált függvény manuális futtatása
 
@@ -43,11 +43,11 @@ Ezt a kérést a Poster-ben, a függvény főkulcsával együtt használhatja az
 
 1. A **kulcs szerkesztése** szakaszban másolja a kulcs értékét a vágólapra, majd kattintson **az OK gombra**.
 
-    :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-functions-master-key-copy.png" alt-text="Másolja a főkulcsot a vágólapra." border="true":::
+    :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-functions-master-key-copy.png" alt-text="Keresse meg a másolandó főkulcsot." border="true":::
 
 1. A *_master* kulcs másolását követően válassza a **Code + test (kód + teszt**) lehetőséget, majd válassza a **naplók**lehetőséget. Az itt bejelentkezett függvény üzeneteit akkor láthatja, amikor manuálisan futtatja a függvényt a Poster szolgáltatásból.
 
-    :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-function-log.png" alt-text="Tekintse meg a naplókat a főkulcs tesztelési eredményeinek megtekintéséhez." border="true":::
+    :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-function-log.png" alt-text="Keresse meg a másolandó főkulcsot." border="true":::
 
 > [!CAUTION]  
 > A főkulcs által biztosított Function app emelt szintű engedélyei miatt ne ossza meg ezt a kulcsot harmadik felekkel, vagy terjessze azt egy alkalmazásban. A kulcsot csak HTTPS-végpontnak kell elküldeni.
@@ -62,24 +62,24 @@ Nyissa meg a Poster-t, és kövesse az alábbi lépéseket:
 1. Írja be az **x-functions-Key** értéket az első kulcsként, és illessze be a főkulcsot (a vágólapról) értékként.
 1. Írja be a **Content-Type** karakterláncot második kulcsként, és írja be az **Application/JSON** értéket.
 
-    :::image type="content" source="./media/functions-manually-run-non-http/functions-manually-run-non-http-headers.png" alt-text="A Poster-fejlécek beállításai." border="true":::
+    :::image type="content" source="./media/functions-manually-run-non-http/functions-manually-run-non-http-headers.png" alt-text="Keresse meg a másolandó főkulcsot." border="true":::
 
 1. Válassza a **törzs** fület.
 1. Írja be a (z) **{"input": "test"}** kifejezést a kérelem törzse.
 
-    :::image type="content" source="./media/functions-manually-run-non-http/functions-manually-run-non-http-body.png" alt-text="Poster-törzs beállításai." border="true":::
+    :::image type="content" source="./media/functions-manually-run-non-http/functions-manually-run-non-http-body.png" alt-text="Keresse meg a másolandó főkulcsot." border="true":::
 
-1. Kattintson a **Küldés** gombra.
+1. Válassza a **Küldés** lehetőséget.
         
-    :::image type="content" source="./media/functions-manually-run-non-http/functions-manually-run-non-http-send.png" alt-text="Kérelem küldése a Poster-nek." border="true":::
+    :::image type="content" source="./media/functions-manually-run-non-http/functions-manually-run-non-http-send.png" alt-text="Keresse meg a másolandó főkulcsot." border="true":::
 
     A Poster ekkor a 202-es állapotot **fogadja el**.
 
 1. Ezután térjen vissza a függvényhez a Azure Portal. Tekintse át a naplókat, és megtekintheti a függvénynek a kézi hívásból érkező üzeneteket.
 
-    :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-functions-master-key-logs.png" alt-text="Tekintse meg a naplókat a főkulcs tesztelési eredményeinek megtekintéséhez." border="true":::
+    :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-functions-master-key-logs.png" alt-text="Keresse meg a másolandó főkulcsot." border="true":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Kódtesztelési stratégiák az Azure Functions szolgáltatásban](./functions-test-a-function.md)
 - [Az Azure Function Event Grid helyi hibakeresést indít](./functions-debug-event-grid-trigger-local.md)

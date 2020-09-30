@@ -3,12 +3,12 @@ title: Az erőforrás-zárolás megismerése
 description: Ismerje meg az Azure-tervrajzok zárolási lehetőségeit, amelyekkel biztosíthatja az erőforrások számára a tervrajzok kiosztását.
 ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9d400abce5d428c01b43cdda38a5c6f0df2d4db8
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 30d5528b4613dc04d1e825d10e11b7eeadc57698
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651939"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534862"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Az erőforrások zárolásának megismerése az Azure-tervekben
 
@@ -33,7 +33,7 @@ A tervrajz-hozzárendelésekben az összetevők által létrehozott erőforráso
 
 ## <a name="overriding-locking-states"></a>Zárolási állapotok felülbírálása
 
-Általában előfordulhat, hogy valaki megfelelő [szerepköralapú hozzáférés-vezérléssel](../../../role-based-access-control/overview.md) (RBAC) rendelkezik az előfizetésben, például a "tulajdonos" szerepkört, amely lehetővé teszi az erőforrások módosítását vagy törlését. Ez a hozzáférés nem vonatkozik arra az esetre, amikor az Azure-tervrajzok egy üzembe helyezett hozzárendelés részeként zárolják a zárolást. Ha a hozzárendelés **csak olvasási** vagy nem **törlési** beállítással lett beállítva, akkor még az előfizetés tulajdonosa is elvégezheti a letiltott műveletet a védett erőforráson.
+Általában előfordulhat, hogy valaki a megfelelő [Azure szerepköralapú hozzáférés-vezérléssel (Azure RBAC)](../../../role-based-access-control/overview.md) rendelkezik az előfizetésben, például a "tulajdonos" szerepkört, amely lehetővé teszi bármely erőforrás módosítását vagy törlését. Ez a hozzáférés nem vonatkozik arra az esetre, amikor az Azure-tervrajzok egy üzembe helyezett hozzárendelés részeként zárolják a zárolást. Ha a hozzárendelés **csak olvasási** vagy nem **törlési** beállítással lett beállítva, akkor még az előfizetés tulajdonosa is elvégezheti a letiltott műveletet a védett erőforráson.
 
 Ez a biztonsági mérték védi a definiált terv és az olyan környezet egységességét, amelyet véletlen vagy programozott törlés vagy módosítás alapján hoztak létre.
 
@@ -101,7 +101,7 @@ A hozzárendelés eltávolításakor az Azure-tervrajzok által létrehozott zá
 
 ## <a name="how-blueprint-locks-work"></a>A terv zárolásának működése
 
-Egy RBAC [megtagadási hozzárendelések](../../../role-based-access-control/deny-assignments.md) megtagadási művelete a terv hozzárendelése során az összetevő-erőforrásokra vonatkozik, ha a hozzárendelés a **csak olvasható** vagy a **nem törlés** lehetőséget választotta. A megtagadási műveletet a terv-hozzárendelés felügyelt identitása adja hozzá, és csak azonos felügyelt identitással lehet eltávolítani az összetevő-erőforrásokból. Ez a biztonsági mérték kikényszeríti a zárolási mechanizmust, és megakadályozza az Azure-tervezeteken kívüli terv zárolásának eltávolítását.
+Egy olyan Azure-RBAC, amely [megtagadja a hozzárendelések](../../../role-based-access-control/deny-assignments.md) megtagadására vonatkozó műveletet a terv hozzárendelése során, ha a hozzárendelés a **csak olvasható** vagy a **nem törlés** lehetőséget választotta. A megtagadási műveletet a terv-hozzárendelés felügyelt identitása adja hozzá, és csak azonos felügyelt identitással lehet eltávolítani az összetevő-erőforrásokból. Ez a biztonsági mérték kikényszeríti a zárolási mechanizmust, és megakadályozza az Azure-tervezeteken kívüli terv zárolásának eltávolítását.
 
 :::image type="content" source="../media/resource-locking/blueprint-deny-assignment.png" alt-text="Képernyőfelvétel a hozzáférés-vezérlésről (I M) és egy erőforráscsoport megtagadási hozzárendeléseinek lapjáról." border="false":::
 
@@ -161,7 +161,7 @@ Bizonyos tervezési vagy biztonsági helyzetekben szükség lehet egy rendszerbi
 
 ## <a name="exclude-an-action-from-a-deny-assignment"></a>Művelet kizárása egy megtagadási hozzárendelésből
 
-Hasonlóan ahhoz, hogy kizárja a [rendszerbiztonsági tag](#exclude-a-principal-from-a-deny-assignment) egy [megtagadási hozzárendelését](../../../role-based-access-control/deny-assignments.md) egy terv-hozzárendelésben, kizárhatja az adott [RBAC műveleteket](../../../role-based-access-control/resource-provider-operations.md). A **Properties. Locks** blokkon belül, ugyanazon a helyen, ahol a **ExcludedPrincipals** , egy **excludedActions** is hozzáadhatók:
+Hasonlóan a [megtagadási hozzárendelések](../../../role-based-access-control/deny-assignments.md) [kizárásához](#exclude-a-principal-from-a-deny-assignment) egy tervrajz-hozzárendelésben, kizárhatja az [Azure erőforrás-szolgáltató adott műveleteit](../../../role-based-access-control/resource-provider-operations.md). A **Properties. Locks** blokkon belül, ugyanazon a helyen, ahol a **ExcludedPrincipals** , egy **excludedActions** is hozzáadhatók:
 
 ```json
 "locks": {
@@ -177,9 +177,9 @@ Hasonlóan ahhoz, hogy kizárja a [rendszerbiztonsági tag](#exclude-a-principal
 },
 ```
 
-Míg a **excludedPrincipals** explicitnek kell lennie, a **excludedActions** -bejegyzések a `*` RBAC műveletek helyettesítő karaktereit is használhatják.
+Míg a **excludedPrincipals** explicitnek kell lennie, a **excludedActions** -bejegyzések az `*` erőforrás-szolgáltatói műveletek helyettesítő karaktereit is használhatják.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Kövesse az [új erőforrások védelemmel](../tutorials/protect-new-resources.md) foglalkozó oktatóanyagot.
 - Tudnivalók a [tervek életciklusáról](./lifecycle.md).

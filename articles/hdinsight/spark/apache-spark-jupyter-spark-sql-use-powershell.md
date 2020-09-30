@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 06/12/2019
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: ea889f48aaf3218ad9f3f286d1cda4f8a761a7ac
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 47450b85412e75cf632d9c2873289e9a0820beb0
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89069969"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537769"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-powershell"></a>Rövid útmutató: Apache Spark-fürt létrehozása az Azure HDInsight a PowerShell használatával
 
@@ -142,11 +142,11 @@ A [Jupyter notebook](https://jupyter.org/) egy interaktív notebook-környezet, 
 
 1. A [Azure Portal](https://portal.azure.com)keresse meg és válassza ki a **HDInsight-fürtök**elemet.
    
-   ![HDInsight-fürt megnyitása a Azure Portal](./media/apache-spark-jupyter-spark-sql-use-powershell/azure-portal-search-hdinsight-cluster.png)
+   ![A képernyőképen látható a H D betekintés Azure Portal keresése.](./media/apache-spark-jupyter-spark-sql-use-powershell/azure-portal-search-hdinsight-cluster.png)
    
 1. A listából válassza ki a létrehozott fürtöt.
    
-   ![HDInsight-fürt megnyitása a Azure Portal](./media/apache-spark-jupyter-spark-sql-use-powershell/azure-portal-open-hdinsight-cluster.png)
+   ![A képernyőképen a H D Insight-fürtöket láthatja a létrehozott fürttel.](./media/apache-spark-jupyter-spark-sql-use-powershell/azure-portal-open-hdinsight-cluster.png)
    
 1. A fürt **áttekintése** lapon válassza a **fürt irányítópultok**lehetőséget, majd válassza a **Jupyter notebook**lehetőséget. Ha a rendszer kéri, adja meg a fürthöz tartozó bejelentkezési hitelesítő adatokat.
 
@@ -226,7 +226,7 @@ Remove-AzResourceGroup `
     -Name $resourceGroupName
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre Apache Spark-fürtöt a HDInsight-ben, és hogyan futtathat egy alapszintű Spark SQL-lekérdezést. Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan futtathat HDInsight-fürtöket interaktív lekérdezések futtatásához a mintaadatok használatával.
 

@@ -1,71 +1,156 @@
 ---
-title: Python fejlesztői környezet beállítása
+title: Fejlesztési környezet beállítása | Python
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogyan konfigurálhatja Azure Machine Learning fejlesztési környezetét. Használjon Conda-környezeteket, hozzon létre konfigurációs fájlokat, és konfigurálja saját felhőalapú notebook-kiszolgálóját, a Jupyter notebookokat, az Azure Databricks, az ide, a Code Editort és a Data Science Virtual Machine.
+description: Ismerje meg, hogyan állíthat be Azure Machine Learning Python-fejlesztési környezetet. Használjon Conda-környezeteket, hozzon létre konfigurációs fájlokat, és konfigurálja saját felhőalapú notebook-kiszolgálóját, a Jupyter notebookokat, az Azure Databricks, az ide, a Code Editort és a Data Science Virtual Machine.
 services: machine-learning
 author: rastala
 ms.author: roastala
 ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: larryfr
-ms.date: 12/27/2019
+ms.date: 09/30/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 4ccf89a4dcb2c91cfdd96b20d74b7f31596b6249
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.custom: how-to, devx-track-python, contperfq1
+ms.openlocfilehash: 54c607ebac02a9d7e534d24656a8687e9ff39725
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90898262"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533179"
 ---
-# <a name="configure-a-development-environment-for-azure-machine-learning"></a>Fejlesztési környezet konfigurálása Azure Machine Learninghoz
+# <a name="set-up-a-development-environment-for-azure-machine-learning"></a>Fejlesztési környezet beállítása Azure Machine Learninghoz
 
-
-Ebből a cikkből megtudhatja, hogyan konfigurálhat egy fejlesztési környezetet a Azure Machine Learning való együttműködéshez. Azure Machine Learning a platform agnosztikus. A fejlesztői környezetének egyetlen nehéz követelménye a Python 3. Egy elkülönített környezet (például anaconda vagy Virtualenv) is ajánlott.
+Megtudhatja, hogyan konfigurálhat Azure Machine Learning Python-fejlesztési környezetet.
 
 A következő táblázat a jelen cikkben tárgyalt összes fejlesztési környezetet tartalmazza, valamint az előnyeit és hátrányait.
 
 | Környezet | Előnyök | Hátrányok |
 | --- | --- | --- |
-| [Felhőalapú Azure Machine Learning számítási példány](#compute-instance) | A legegyszerűbb módszer a kezdéshez. A teljes SDK már telepítve van a munkaterület virtuális gépén, és a jegyzetfüzet-oktatóanyagok előre klónozottak, és készen állnak a futtatásra. | A fejlesztési környezet és a függőségek szabályozásának hiánya. A Linux rendszerű virtuális gépekkel kapcsolatos további költségek (a virtuális gép leállítható, ha nem használatban van a költségek elkerülése érdekében). Tekintse meg a [díjszabás részleteit](https://azure.microsoft.com/pricing/details/virtual-machines/linux/). |
 | [Helyi környezet](#local) | A fejlesztési környezet és a függőségek teljes körű vezérlése. Bármilyen felépíthető eszközzel, környezettel vagy tetszőleges IDE-val futtatható. | A kezdéshez tovább tart. Telepíteni kell a szükséges SDK-csomagokat, és a környezetnek is telepítve kell lennie, ha még nem rendelkezik ilyennel. |
+| [Azure Machine Learning számítási példány](#compute-instance) | A legegyszerűbb módszer a kezdéshez. A teljes SDK már telepítve van a munkaterület virtuális gépén, és a jegyzetfüzet-oktatóanyagok előre klónozottak, és készen állnak a futtatásra. | A fejlesztési környezet és a függőségek szabályozásának hiánya. A Linux rendszerű virtuális gépekkel kapcsolatos további költségek (a virtuális gép leállítható, ha nem használatban van a költségek elkerülése érdekében). Tekintse meg a [díjszabás részleteit](https://azure.microsoft.com/pricing/details/virtual-machines/linux/). |
 | [Azure Databricks](#aml-databricks) | Ideális megoldás a méretezhető Apache Spark platformon nagy léptékű, intenzív gépi tanulási munkafolyamatok futtatására. | A kísérleti gépi tanulás vagy a kisebb léptékű kísérletek és munkafolyamatok meggyilkolása. További költségek Azure Databricksért. Tekintse meg a [díjszabás részleteit](https://azure.microsoft.com/pricing/details/databricks/). |
 | [A Data Science Virtual Machine (DSVM)](#dsvm) | A felhőalapú számítási példányhoz hasonlóan (a Python és az SDK előre telepítve van), de további népszerű adatelemzési és gépi tanulási eszközökkel előre telepítve van. Egyszerűen méretezhető és kombinálható más egyéni eszközökkel és munkafolyamatokkal. | Lassabban megkezdhető a felhőalapú számítási példányhoz képest. |
 
 Ez a cikk további használati tippeket is tartalmaz a következő eszközökhöz:
 
-* [Jupyter-jegyzetfüzetek](#jupyter): Ha már használja a Jupyter notebook, az SDK-nak van néhány extrája, amelyet telepítenie kell.
+* Jupyter jegyzetfüzetek: Ha már használ Jupyter jegyzetfüzeteket, akkor az SDK-nak néhány extrával kell telepítenie.
 
-* [Visual Studio Code](#vscode): Ha Visual Studio Code-t használ, a [Azure Machine learning bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai) kiterjedt nyelvi támogatást nyújt a Pythonhoz, valamint olyan funkciókat is kínál, amelyek sokkal kényelmesebb és hatékonyabban használják a Azure Machine learning.
+* Visual Studio code: Ha Visual Studio Code-t használ, a [Azure Machine learning bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai) kiterjedt nyelvi támogatást nyújt a Pythonhoz, valamint olyan funkciókat is kínál, amelyek sokkal kényelmesebb és hatékonyabban használják a Azure Machine learning.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Egy Azure Machine Learning-munkaterület. A munkaterület létrehozásával kapcsolatban tekintse meg [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md)című témakört. A munkaterület csak a saját [felhőalapú notebook-kiszolgálóval](#compute-instance), a [DSVM](#dsvm)vagy a [Azure Databrickstel](#aml-databricks)kezdheti meg.
+* Azure Machine Learning munkaterület. Ha még nem rendelkezik ilyennel, létrehozhat egy Azure Machine Learning munkaterületet az [Azure Portal](how-to-manage-workspace.md), az [Azure CLI](how-to-manage-workspace-cli.md#create-a-workspace)és a [Azure Resource Manager sablonok](how-to-create-workspace-template.md)használatával.
 
-A [helyi számítógép](#local)SDK-környezetének telepítéséhez a [Jupyter notebook Server](#jupyter) vagy a [Visual Studio Code](#vscode) is szükséges:
+### <a name="local-and-dsvm-only-create-a-workspace-configuration-file"></a><a id="workspace"></a> (Csak helyi és DSVM) Munkaterület-konfigurációs fájl létrehozása
 
-- Vagy a [anaconda](https://www.anaconda.com/download/) vagy a [Miniconda](https://conda.io/miniconda.html) csomagkezelő.
+A munkaterület-konfigurációs fájl egy JSON-fájl, amely közli az SDK-val, hogyan kommunikálhat a Azure Machine Learning munkaterülettel. A fájl neve *config.json*, és a formátuma a következő:
 
-- Linux vagy macOS rendszeren a bash rendszerhéjra van szükség.
+```json
+{
+    "subscription_id": "<subscription-id>",
+    "resource_group": "<resource-group>",
+    "workspace_name": "<workspace-name>"
+}
+```
 
-    > [!TIP]
+A JSON-fájlnak a Python-szkripteket vagy Jupyter-jegyzetfüzeteket tartalmazó címtár-struktúrában kell lennie. Ez lehet ugyanabban a címtárban, egy *. azureml*nevű alkönyvtár vagy egy szülő könyvtárban.
+
+Ha ezt a fájlt a kódból szeretné használni, használja a [`Workspace.from_config`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#from-config-path-none--auth-none---logger-none---file-name-none-&preserve-view=true) metódust. Ez a kód betölti az adatokat a fájlból, és csatlakozik a munkaterülethez.
+
+Hozzon létre egy munkaterület-konfigurációs fájlt az alábbi módszerek egyikével:
+
+* Azure Portal
+
+    **Töltse le a fájlt**: a [Azure Portal](https://ms.portal.azure.com)válassza a  **config.jsletöltése** elemet a munkaterület **Áttekintés** szakaszában.
+
+    ![Azure Portal](./media/how-to-configure-environment/configure.png)
+
+* Python SDK Azure Machine Learning
+
+    Hozzon létre egy parancsfájlt a Azure Machine Learning munkaterülethez való kapcsolódáshoz, és a [`write_config`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#write-config-path-none--file-name-none-&preserve-view=true) metódus használatával hozza létre a fájlt, és mentse *. azureml/config.js*. Győződjön meg arról, hogy a, a `subscription_id` `resource_group` és a és a együtt van lecserélve `workspace_name` .
+
+    ```python
+    from azureml.core import Workspace
+
+    subscription_id = '<subscription-id>'
+    resource_group  = '<resource-group>'
+    workspace_name  = '<workspace-name>'
+
+    try:
+        ws = Workspace(subscription_id = subscription_id, resource_group = resource_group, workspace_name = workspace_name)
+        ws.write_config()
+        print('Library configuration succeeded')
+    except:
+        print('Workspace not found')
+    ```
+
+## <a name="local-computer"></a><a id="local"></a>Helyi számítógép
+
+Helyi fejlesztési környezet (amely lehet távoli virtuális gép is, például egy Azure Machine Learning számítási példány vagy DSVM) konfigurálása:
+
+1. Hozzon létre egy Python virtuális környezetet (virtualenv, Conda).
+
+    > [!NOTE]
+    > Bár ez nem kötelező, a [anaconda](https://www.anaconda.com/download/) vagy a [Miniconda](https://www.anaconda.com/download/) használata ajánlott a Python virtuális környezetek kezeléséhez és csomagok telepítéséhez.
+
+    > [!IMPORTANT]
     > Ha Linux vagy macOS rendszerű, és a bashtől eltérő (például zsh) rendszerhéjat használ, előfordulhat, hogy bizonyos parancsok futtatásakor hibák jelentkeznek. A probléma megkerüléséhez a `bash` paranccsal indítson el egy új bash-rendszerhéjat, és futtassa a parancsokat.
 
-- Windows rendszeren szükség van a parancssorra vagy az anaconda promptra (amelyet a anaconda és a Miniconda telepít).
+1. Aktiválja az újonnan létrehozott Python virtuális környezetet.
+1. Telepítse a [Azure Machine learning PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)-t.
+1. A helyi környezet a Azure Machine Learning munkaterület használatára való konfigurálásához [hozzon létre egy munkaterület-konfigurációs fájlt](#workspace) , vagy használjon egy meglévőt.
 
-## <a name="your-own-cloud-based-compute-instance"></a><a id="compute-instance"></a>Saját felhőalapú számítási példány
+Most, hogy beállította a helyi környezetét, készen áll a Azure Machine Learning használatának megkezdésére. A kezdéshez tekintse meg a [Azure Machine learning Python első lépések útmutatóját](tutorial-1st-experiment-sdk-setup-local.md) .
 
-A Azure Machine Learning [számítási példány](concept-compute-instance.md) egy biztonságos felhőalapú Azure-munkaállomás, amely Jupyter notebook-kiszolgálóval, JupyterLab és teljes mértékben előkészített ml-környezettel biztosítja az adatszakértőket.
+### <a name="jupyter-notebooks"></a><a id="jupyter"></a>Jupyter-notebookok
 
-A számítási példányok telepítése és konfigurálása nem szükséges.  Hozzon létre egyet bármikor a Azure Machine Learning munkaterületen belülről. Adjon meg csak egy nevet, és adjon meg egy Azure-beli virtuális gép típusát. Próbálja ki most ezt az [oktatóanyagot: telepítési környezet és munkaterület](tutorial-1st-experiment-sdk-setup.md).
+Helyi Jupyter Notebook-kiszolgáló futtatásakor javasoljuk, hogy hozzon létre egy IPython-rendszermagot a Python virtuális környezethez. Ez segít a várt kernel-és csomag-importálási viselkedés biztosításában.
+
+1. Környezet-specifikus IPython-kernelek engedélyezése
+
+    ```bash
+    conda install notebook ipykernel
+    ```
+
+1. Hozzon létre egy kernelt a Python virtuális környezethez. Ügyeljen arra, hogy a helyére `<myenv>` a Python-beli virtuális környezet nevét írja.
+
+    ```bash
+    ipython kernel install --user --name <myenv> --display-name "Python (myenv)"
+    ```
+
+1. A Jupyter Notebook-kiszolgáló elindítása
+
+A Azure Machine Learning és a Jupyter notebookok megismeréséhez tekintse meg a [Azure Machine learning notebook-tárházat](https://github.com/Azure/MachineLearningNotebooks) .
+
+### <a name="visual-studio-code"></a><a id="vscode"></a>Visual Studio Code
+
+A Visual Studio Code használata a fejlesztéshez:
+
+1. Telepítse a [Visual Studio Code](https://code.visualstudio.com/Download)-ot.
+1. Telepítse a [Azure Machine learning Visual Studio Code bővítményt](tutorial-setup-vscode-extension.md) (előzetes verzió).
+
+Miután telepítette a Visual Studio Code bővítményt, felügyelheti [Azure Machine learning erőforrásait](how-to-manage-resources-vscode.md), [futtathatja és hibakeresési kísérleteit](how-to-debug-visual-studio-code.md), valamint [betanított modelleket telepíthet](tutorial-train-deploy-image-classification-model-vscode.md).
+
+## <a name="azure-machine-learning-compute-instance"></a><a id="compute-instance"></a>Azure Machine Learning számítási példány
+
+A Azure Machine Learning [számítási példány](concept-compute-instance.md) egy biztonságos, felhőalapú Azure-munkaállomás, amely egy Jupyter notebook-kiszolgálóval, JupyterLab és egy teljes körűen felügyelt gépi tanulási környezettel biztosítja az adatszakértőket.
+
+A számítási példányok telepítése és konfigurálása nem szükséges.  
+
+Hozzon létre egyet bármikor a Azure Machine Learning munkaterületen belülről. Adjon meg csak egy nevet, és adjon meg egy Azure-beli virtuális gép típusát. Próbálja ki most ezt az [oktatóanyagot: telepítési környezet és munkaterület](tutorial-1st-experiment-sdk-setup.md).
 
 További információ a számítási példányokról, beleértve a csomagok telepítésének módját: [számítási példányok](concept-compute-instance.md).
 
-A számítási költségek kiszámításához [állítsa le a számítási példányt](tutorial-1st-experiment-bring-data.md#clean-up-resources).
+> [!TIP]
+> Ha meg szeretné akadályozni, hogy a nem használt számítási példányok ne kelljen fizetni, [állítsa le a számítási példányt](tutorial-1st-experiment-bring-data.md#clean-up-resources).
+
+A Jupyter Notebook-kiszolgáló és a JupyterLab mellett számítási példányokat is használhat az [integrált jegyzetfüzet szolgáltatásban Azure Machine learning Studióban](how-to-run-jupyter-notebooks.md).
+
+A Azure Machine Learning Visual Studio Code bővítmény használatával [egy Azure Machine learning számítási példányt is konfigurálhat távoli Jupyter notebook kiszolgálóként](how-to-set-up-vs-code-remote.md#configure-compute-instance-as-remote-notebook-server).
 
 ## <a name="data-science-virtual-machine"></a><a id="dsvm"></a>Adatelemzési virtuális gép
 
-A DSVM egy testreszabott virtuálisgép-(VM-) rendszerkép. Ez az adatelemzési munkához készült, amely előre konfigurálva van a következővel:
+A DSVM egy testreszabott virtuálisgép-(VM-) rendszerkép. Ez az adatelemzési munkák számára készült, amelyek előre konfigurált eszközök és szoftverek, például:
 
   - Csomagok, mint például a TensorFlow, a PyTorch, a Scikit-Learn, a XGBoost és a Azure Machine Learning SDK
   - Népszerű adatelemzési eszközök, mint például a Spark standalone és a drill
@@ -73,43 +158,37 @@ A DSVM egy testreszabott virtuálisgép-(VM-) rendszerkép. Ez az adatelemzési 
   - Integrált fejlesztői környezetek (ide), például a Visual Studio Code és a Notebookshoz
   - Jupyter Notebook kiszolgáló
 
-A Azure Machine Learning SDK a DSVM Ubuntu-vagy Windows-verziójával működik. Ha azonban azt tervezi, hogy a DSVM számítási célként is használja, akkor csak az Ubuntu támogatott.
+Az eszközök átfogóbb listáját a [DSVM mellékelt eszközök útmutatójában](data-science-virtual-machine/tools-included.md)találja.
 
-A DSVM használata fejlesztési környezetként:
+> [!IMPORTANT]
+> Ha azt tervezi, hogy a DSVM [számítási célként](concept-compute-target.md) használja a képzéshez vagy a feladatokhoz, csak az Ubuntu támogatott.
 
-1. Hozzon létre egy DSVM az alábbi környezetek egyikében:
+A DSVM használata fejlesztési környezetként
 
-    * A Azure Portal:
+1. Hozzon létre egy DSVM az alábbi módszerek egyikének használatával:
 
-        * [Ubuntu-Data Science Virtual Machine létrehozása](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro)
+    * [Ubuntu](data-science-virtual-machine/dsvm-ubuntu-intro.md) -vagy [Windows](data-science-virtual-machine/provision-vm.md) -DSVM létrehozásához használja a Azure Portal.
+    * [Hozzon létre egy DSVM ARM-sablonok használatával](data-science-virtual-machine/dsvm-tutorial-resource-manager.md).
+    * Az Azure parancssori felületének használata
 
-        * [Windows rendszerű adatelemzési virtuális gép létrehozása](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/provision-vm)
+        Ubuntu-DSVM létrehozásához használja a következő parancsot:
 
-    * Az Azure CLI:
+        ```azurecli-interactive
+        # create a Ubuntu DSVM in your resource group
+        # note you need to be at least a contributor to the resource group in order to execute this command successfully
+        # If you need to create a new resource group use: "az group create --name YOUR-RESOURCE-GROUP-NAME --location YOUR-REGION (For example: westus2)"
+        az vm create --resource-group YOUR-RESOURCE-GROUP-NAME --name YOUR-VM-NAME --image microsoft-dsvm:linux-data-science-vm-ubuntu:linuxdsvmubuntu:latest --admin-username YOUR-USERNAME --admin-password YOUR-PASSWORD --generate-ssh-keys --authentication-type password
+        ```
 
-        > [!IMPORTANT]
-        > * Ha az Azure CLI-t használja, először be kell jelentkeznie az Azure-előfizetésbe az `az login` parancs használatával.
-        >
-        > * Ha az ebben a lépésben szereplő parancsokat használja, meg kell adnia az erőforráscsoport nevét, a virtuális gép nevét, a felhasználónevet és a jelszót.
+        Windows DSVM létrehozásához használja a következő parancsot:
 
-        * Ubuntu Data Science Virtual Machine létrehozásához használja a következő parancsot:
+        ```azurecli-interactive
+        # create a Windows Server 2016 DSVM in your resource group
+        # note you need to be at least a contributor to the resource group in order to execute this command successfully
+        az vm create --resource-group YOUR-RESOURCE-GROUP-NAME --name YOUR-VM-NAME --image microsoft-dsvm:dsvm-windows:server-2016:latest --admin-username YOUR-USERNAME --admin-password YOUR-PASSWORD --authentication-type password
+        ```
 
-            ```azurecli-interactive
-            # create a Ubuntu DSVM in your resource group
-            # note you need to be at least a contributor to the resource group in order to execute this command successfully
-            # If you need to create a new resource group use: "az group create --name YOUR-RESOURCE-GROUP-NAME --location YOUR-REGION (For example: westus2)"
-            az vm create --resource-group YOUR-RESOURCE-GROUP-NAME --name YOUR-VM-NAME --image microsoft-dsvm:linux-data-science-vm-ubuntu:linuxdsvmubuntu:latest --admin-username YOUR-USERNAME --admin-password YOUR-PASSWORD --generate-ssh-keys --authentication-type password
-            ```
-
-        * Windows Data Science Virtual Machine létrehozásához használja a következő parancsot:
-
-            ```azurecli-interactive
-            # create a Windows Server 2016 DSVM in your resource group
-            # note you need to be at least a contributor to the resource group in order to execute this command successfully
-            az vm create --resource-group YOUR-RESOURCE-GROUP-NAME --name YOUR-VM-NAME --image microsoft-dsvm:dsvm-windows:server-2016:latest --admin-username YOUR-USERNAME --admin-password YOUR-PASSWORD --authentication-type password
-            ```
-
-2. A Azure Machine Learning SDK már telepítve van a DSVM. Az SDK-t tartalmazó Conda-környezet használatához használja a következő parancsok egyikét:
+1. Aktiválja a Azure Machine Learning SDK-t tartalmazó Conda-környezetet.
 
     * Ubuntu DSVM esetén:
 
@@ -123,157 +202,18 @@ A DSVM használata fejlesztési környezetként:
         conda activate AzureML
         ```
 
-1. Annak ellenőrzéséhez, hogy elérhető-e az SDK, és ellenőrizze a verziót, használja a következő Python-kódot:
+1. Ha a DSVM a Azure Machine Learning munkaterület használatára szeretné konfigurálni, [hozzon létre egy munkaterület-konfigurációs fájlt](#workspace) , vagy használjon egy meglévőt.
 
-    ```python
-    import azureml.core
-    print(azureml.core.VERSION)
-    ```
-
-1. Ha a DSVM a Azure Machine Learning munkaterület használatára szeretné konfigurálni, tekintse meg a [munkaterület-konfigurációs fájl létrehozása](#workspace) című szakaszt.
+A helyi környezetekhez hasonlóan a Visual Studio Code és a [Azure Machine learning Visual Studio Code bővítmény](#vscode) is használható a Azure Machine learning való interakcióhoz.
 
 További információ: [Adatelemzési Virtual Machines](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/).
 
-## <a name="local-computer"></a><a id="local"></a>Helyi számítógép
+## <a name="azure-databricks"></a><a name="aml-databricks"></a> Azure Databricks
 
-Ha helyi számítógépet használ (amely távoli virtuális gép is lehet), hozzon létre egy Anaconda-környezetet, és telepítse az SDK-t. Bemutatunk egy példát:
-
-1. Ha még nincs telepítve, töltse le és telepítse az [anacondat](https://www.anaconda.com/distribution/#download-section) (Python 3,7 verzió).
-
-1. Nyisson meg egy Anaconda-parancssort, és hozzon létre egy környezetet a következő parancsokkal:
-
-    Futtassa a következő parancsot a környezet létrehozásához.
-
-    ```bash
-    conda create -n myenv python=3.7.7
-    ```
-
-    Ezután aktiválja a környezetet.
-
-    ```bash
-    conda activate myenv
-    ```
-
-    Ez a példa egy, a Python 3.7.7 használatával létrehozott környezetet hoz létre, de az egyes alverziókat is kiválaszthatja. Előfordulhat, hogy az SDK kompatibilitása bizonyos főverziók esetében nem garantált (3,5 + ajánlott), és ha hibát tapasztal, érdemes egy másik verziót/alverziót kipróbálni az anaconda-környezetben. A környezet létrehozása több percet is igénybe vehet, miközben az összetevők és csomagok letöltődnek.
-
-1. Futtassa az alábbi parancsokat az új környezetben, hogy engedélyezze a környezet-specifikus I Python-kerneleket. Ez biztosítja a várt kernel-és csomag-importálási viselkedést a Jupyter-jegyzetfüzetek anaconda-környezeteken belüli használata esetén:
-
-    ```bash
-    conda install notebook ipykernel
-    ```
-
-    Ezután futtassa a következő parancsot a kernel létrehozásához:
-
-    ```bash
-    ipython kernel install --user --name myenv --display-name "Python (myenv)"
-    ```
-
-1. A csomagok telepítéséhez használja az alábbi parancsokat:
-
-    Ez a parancs telepíti az alap Azure Machine Learning SDK-t a jegyzetfüzettel és az `automl` extrákkal. Az `automl` extra egy nagyméretű telepítés, és a zárójelből is eltávolítható, ha nem szeretne automatizált gépi tanulási kísérleteket futtatni. Az `automl` extra a Azure Machine learning adat-előkészítési SDK-t is tartalmazza alapértelmezett függőségként.
-
-    ```bash
-    pip install azureml-sdk[notebooks,automl]
-    ```
-
-   > [!NOTE]
-   > * Ha olyan üzenetet kap, hogy a PyYAML nem távolítható el, használja inkább a következő parancsot:
-   >
-   >   `pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML`
-   >
-   > * A macOS Catalinatől kezdve a zsh (Z Shell) az alapértelmezett bejelentkezési rendszerhéj és az interaktív rendszerhéj. A zsh-ben használja az alábbi parancsot, amely a " \\ " (fordított perjel) karakterrel rendelkező zárójeleket követi:
-   >
-   >   `pip install --upgrade azureml-sdk\[notebooks,automl\]`
-
-   Az SDK telepítése több percet is igénybe vehet. További információ a telepítési lehetőségekről: telepítési [útmutató](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true).
-
-1. Telepítsen további csomagokat a Machine learning-kísérletezéshez.
-
-    Használja a következő parancsok egyikét, és cserélje le *\<new package>* a parancsot a telepíteni kívánt csomagra. A csomagok az-on keresztül történő telepítése `conda install` megköveteli, hogy a csomag az aktuális csatornák része legyen (az új csatornák hozzáadhatók az anaconda Cloud-ban).
-
-    ```bash
-    conda install <new package>
-    ```
-
-    Azt is megteheti, hogy csomagokat telepít a használatával `pip` .
-
-    ```bash
-    pip install <new package>
-    ```
-
-### <a name="jupyter-notebooks"></a><a id="jupyter"></a>Jupyter-notebookok
-
-A Jupyter-jegyzetfüzetek a [Jupyter projekt](https://jupyter.org/)részét képezik. Interaktív kódolási élményt biztosítanak, ahol olyan dokumentumokat hozhat létre, amelyek élő kódot és szövegeket és grafikákat vegyítenek. A Jupyter notebookok szintén nagyszerű megoldást nyújtanak az eredmények másokkal való megosztására, mivel a dokumentumban lévő kódrészletek kimenetét mentheti el. A Jupyter notebookok számos platformon telepíthetők.
-
-A [helyi számítógép](#local) szakasz eljárása telepíti a szükséges összetevőket a Jupyter-jegyzetfüzetek anaconda-környezetben való futtatásához.
-
-Az összetevők engedélyezése a Jupyter Notebook környezetben:
-
-1. Nyisson meg egy Anaconda-parancssort, és aktiválja a környezetet.
-
-    ```bash
-    conda activate myenv
-    ```
-
-1. [A GitHub-tárház](https://github.com/Azure/MachineLearningNotebooks) klónozása minta típusú jegyzetfüzetek készletében.
-
-    ```bash
-    git clone https://github.com/Azure/MachineLearningNotebooks.git
-    ```
-
-1. Indítsa el a Jupyter Notebook kiszolgálót a következő paranccsal:
-
-    ```bash
-    jupyter notebook
-    ```
-
-1. Annak ellenőrzéséhez, hogy Jupyter Notebook használhatja-e az SDK-t, hozzon létre egy **új** jegyzetfüzetet, válassza a **Python 3** lehetőséget a rendszermagként, majd futtassa a következő parancsot egy jegyzetfüzet-cellában:
-
-    ```python
-    import azureml.core
-    azureml.core.VERSION
-    ```
-
-1. Ha problémákba ütközik a modulok importálása és a fogadása `ModuleNotFoundError` során, győződjön meg arról, hogy a Jupyter-kernel a környezete megfelelő elérési útjához csatlakozik, ehhez futtassa a következő kódot egy jegyzetfüzet-cellában.
-
-    ```python
-    import sys
-    sys.path
-    ```
-
-1. A Jupyter Notebook a Azure Machine Learning munkaterület használatára való konfigurálásához lépjen a munkaterület- [konfigurációs fájl létrehozása](#workspace) szakaszra.
-
-### <a name="visual-studio-code"></a><a id="vscode"></a>Visual Studio Code
-
-A Visual Studio Code egy rendkívül népszerű platformfüggetlen Kódszerkesztő, amely a [Visual Studio Marketplace](https://marketplace.visualstudio.com/vscode)-en keresztül elérhető bővítmények széles körét támogatja a programozási nyelveken és eszközökön. A [Azure Machine learning bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai) telepíti a [Python-bővítményt](https://marketplace.visualstudio.com/items?itemName=ms-python.python) a Python-környezetek (virtuális, anaconda stb.) összes típusának kódolásához. Emellett kényelmi funkciókat biztosít a Azure Machine Learning erőforrásokkal való munkához és a Azure Machine Learning kísérletek futtatásához anélkül, hogy a Visual Studio Code-ot el kellene hagyni.
-
-A Visual Studio Code használata a fejlesztéshez:
-
-1. Telepítse a Azure Machine Learning-bővítményt a Visual Studio Code-hoz, lásd: [Azure Machine learning](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai).
-
-    További információ: [Azure Machine learning használata a Visual Studio Code](tutorial-setup-vscode-extension.md)-hoz.
-
-1. Ismerje meg, hogyan használható a Visual Studio Code bármilyen típusú Python-fejlesztéshez: [Bevezetés a Python használatába a VSCode-ben](https://code.visualstudio.com/docs/python/python-tutorial).
-
-    - Az SDK-t tartalmazó SDK Python-környezet kiválasztásához nyissa meg a VS Code parancsot, majd válassza a CTRL + SHIFT + P (Linux és Windows) vagy a Command + Shift + P (Mac) lehetőséget.
-        - Megnyílik a __parancs paletta__ .
-
-    - Írja be a __Python: Select tolmács elemet__, majd válassza ki a megfelelő környezetet
-
-1. Annak ellenőrzéséhez, hogy használhatja-e az SDK-t, hozzon létre egy új Python-fájlt (...), amely a következő kódot tartalmazza:
-
-    ```python
-    #%%
-    import azureml.core
-    azureml.core.VERSION
-    ```
-    Futtassa ezt a kódot a "cella futtatása" Codelensben kattintva, vagy egyszerűen nyomja le a SHIFT-ENTER billentyűkombinációt.
-<a name="aml-databricks"></a>
-
-## <a name="azure-databricks"></a>Azure Databricks
-A Azure Databricks egy Apache Spark-alapú környezet az Azure-felhőben. Együttműködik a notebookon alapuló, CPU-vagy GPU-alapú számítási fürttel.
+A Azure Databricks egy Apache Spark-alapú környezet az Azure-felhőben. Együttműködési jegyzetfüzet-alapú környezetet biztosít CPU vagy GPU-alapú számítási fürttel.
 
 Hogyan működik a Azure Databricks Azure Machine Learning:
+
 + A modelleket Spark MLlib használatával is betaníthatja, és a modellt ACI/AK-ba helyezheti el Azure Databricks belülről.
 + Az [automatizált gépi tanulási](concept-automated-ml.md) képességeket egy speciális Azure ml SDK-val is használhatja Azure Databricks.
 + A Azure Databricks számítási célként [Azure Machine learning folyamatból](concept-ml-pipelines.md)is használhatja.
@@ -297,6 +237,7 @@ Használja ezeket a beállításokat:
 A folytatás előtt várjon, amíg a fürt fut.
 
 ### <a name="install-the-correct-sdk-into-a-databricks-library"></a>A megfelelő SDK telepítése Databricks-tárba
+
 Ha a fürt fut, [hozzon létre egy függvénytárat](https://docs.databricks.com/user-guide/libraries.html#create-a-library) , hogy csatolja a megfelelő Azure Machine learning SDK-csomagot a fürthöz.
 
 1. Kattintson a jobb gombbal arra a munkaterület-mappára, ahol a könyvtárat tárolni szeretné. Válassza **Create**a  >  **könyvtár**létrehozása lehetőséget.
@@ -343,50 +284,7 @@ Próbálja ki:
 
 + Megtudhatja, hogyan [hozhat létre egy folyamatot a Databricks, mint a betanítási számításokat](how-to-create-your-first-pipeline.md).
 
-## <a name="create-a-workspace-configuration-file"></a><a id="workspace"></a>Munkaterület-konfigurációs fájl létrehozása
-
-A munkaterület-konfigurációs fájl egy JSON-fájl, amely közli az SDK-val, hogyan kommunikálhat a Azure Machine Learning munkaterülettel. A fájl neve *config.json*, és a formátuma a következő:
-
-```json
-{
-    "subscription_id": "<subscription-id>",
-    "resource_group": "<resource-group>",
-    "workspace_name": "<workspace-name>"
-}
-```
-
-A JSON-fájlnak a Python-szkripteket vagy Jupyter-jegyzetfüzeteket tartalmazó címtár-struktúrában kell lennie. Ez lehet ugyanabban a címtárban, egy *. azureml*nevű alkönyvtár vagy egy szülő könyvtárban.
-
-Ha ezt a fájlt a kódból szeretné használni, használja a következőt: `ws=Workspace.from_config()` . Ez a kód betölti az adatokat a fájlból, és csatlakozik a munkaterülethez.
-
-A konfigurációs fájlt háromféleképpen is létrehozhatja:
-
-* **A [ws. Write_config](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true): használatával**config.jsírhat *a* fájlra. A fájl a munkaterület konfigurációs adatait tartalmazza. A *config.jst* letöltheti vagy átmásolhatja más fejlesztői környezetbe.
-
-* **Töltse le a fájlt**: a [Azure Portal](https://ms.portal.azure.com)válassza a  **config.jsletöltése** elemet a munkaterület **Áttekintés** szakaszában.
-
-     ![Azure Portal](./media/how-to-configure-environment/configure.png)
-
-* **Hozza létre a fájlt programozott**módon: az alábbi kódrészletben az előfizetés-azonosító, az erőforráscsoport és a munkaterület nevének megadásával csatlakozhat egy munkaterülethez. Ezután menti a munkaterület konfigurációját a következő fájlba:
-
-    ```python
-    from azureml.core import Workspace
-
-    subscription_id = '<subscription-id>'
-    resource_group  = '<resource-group>'
-    workspace_name  = '<workspace-name>'
-
-    try:
-        ws = Workspace(subscription_id = subscription_id, resource_group = resource_group, workspace_name = workspace_name)
-        ws.write_config()
-        print('Library configuration succeeded')
-    except:
-        print('Workspace not found')
-    ```
-
-    Ez a kód a konfigurációs fájlt a *. azureml/config.js* fájlba írja.
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Modell Betanítása](tutorial-train-models-with-aml.md) Azure Machine learningre a MNIST adatkészlettel
 - A [Pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) -dokumentáció megtekintése

@@ -4,19 +4,17 @@ titleSuffix: Azure Cognitive Services
 description: Ez a cikk Language Understanding (LUIS) dimenzió előre felépített entitási információit tartalmazza.
 services: cognitive-services
 ms.custom: seodec18
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 10/14/2019
-ms.author: diberry
-ms.openlocfilehash: 3c7bebb38d0331c76eeaaa1d9d6464c568a61b83
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0b5f081dc8c0bc203ccafde4a513371d11e36879
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78270632"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538347"
 ---
 # <a name="dimension-prebuilt-entity-for-a-luis-app"></a>A dimenzió előre elkészített entitása egy LUIS-alkalmazáshoz
 Az előre elkészített dimenzió entitás különféle típusú dimenziókat észlel, függetlenül a LUIS alkalmazás kulturális környezettől. Mivel ez az entitás már be van tanítva, nem kell felvennie például a dimenziókat tartalmazó hosszúságú kimondott szöveg az alkalmazás-leképezésekhez. A dimenzió entitások [számos kultúrában](luis-reference-prebuilt-entities.md)támogatottak.
@@ -33,7 +31,7 @@ A lekérdezés a következő entitás-objektumokat adja vissza:
 
 #### <a name="v3-response"></a>[V3 válasz](#tab/V3)
 
-A következő JSON a `verbose` paraméter értéke: `false`
+A következő JSON a `verbose` paraméter értéke `false` :
 
 ```json
 "entities": {
@@ -46,7 +44,7 @@ A következő JSON a `verbose` paraméter értéke: `false`
 }
 ```
 #### <a name="v3-verbose-response"></a>[V3 részletes válasz](#tab/V3-verbose)
-A következő JSON a `verbose` paraméter értéke: `true`
+A következő JSON a `verbose` paraméter értéke `true` :
 
 ```json
 "entities": {

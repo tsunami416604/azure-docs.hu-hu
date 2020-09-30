@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: chlound
 ms.custom: references_regions
-ms.openlocfilehash: fd5c4043d417a99c7ffa57534fd7808f1710190a
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: c4908373035b1a3148cd77db513f4e6bd23a50d7
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/29/2020
-ms.locfileid: "91448574"
+ms.locfileid: "91540727"
 ---
 # <a name="refresh-with-logic-apps"></a>Frissítés a Logic Apps használatával
 
@@ -27,7 +27,7 @@ Az összes hívást érvényes Azure Active Directory (OAuth 2) jogkivonattal ke
 ## <a name="design-the-logic-app"></a>A logikai alkalmazás megtervezése
 
 > [!IMPORTANT]
-> Az alábbi példák azt feltételezik, hogy a Azure Analysis Services tűzfal le van tiltva. Ha a tűzfal engedélyezve van, a kérelem kezdeményezője számára a nyilvános IP-címet a Azure Analysis Services tűzfalon kell engedélyezni. A Azure Logic Apps IP-címtartományok régiónként való megismeréséhez tekintse meg [a Azure Logic apps korlátai és konfigurációs adatai](../logic-apps/logic-apps-limits-and-config.md#configuration)című témakört.
+> Az alábbi példák azt feltételezik, hogy a Azure Analysis Services tűzfal le van tiltva. Ha a tűzfal engedélyezve van, a kérelem kezdeményezője nyilvános IP-címét hozzá kell adni a Azure Analysis Services tűzfal jóváhagyott listájához. A Azure Logic Apps IP-címtartományok régiónként való megismeréséhez tekintse meg [a Azure Logic apps korlátai és konfigurációs adatai](../logic-apps/logic-apps-limits-and-config.md#configuration)című témakört.
 
 ### <a name="prerequisites"></a>Előfeltételek
 

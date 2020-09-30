@@ -1,17 +1,15 @@
 ---
 title: Az első megbízható szolgáltatás létrehozása javában
 description: Bevezetés egy Microsoft Azure Service Fabric alkalmazás létrehozására az állapot nélküli és állapot-nyilvántartó szolgáltatásokkal Java-ban.
-author: suhuruli
 ms.topic: conceptual
 ms.date: 11/02/2017
-ms.custom: devx-track-java
-ms.author: suhuruli
-ms.openlocfilehash: f74265c7b774e4b471c8621e99377a009f939ee1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.custom: devx-track-javai
+ms.openlocfilehash: f67957d711958febdb01dfad0b3c44a92cb0bcfa
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91250096"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91535236"
 ---
 # <a name="get-started-with-reliable-services-in-java"></a>Ismerkedés a Reliable Services Javával
 > [!div class="op_single_selector"]
@@ -262,6 +260,6 @@ Az alkalmazás telepítése után nyisson meg egy böngészőt, és keresse fel 
 > Ha az alkalmazást egy biztonságos Linux-fürtön szeretné üzembe helyezni az Azure-ban, konfigurálnia kell egy tanúsítványt, hogy érvényesítse az alkalmazást a Service Fabric futtatókörnyezettel. Ezzel lehetővé teszi, hogy a Reliable Services szolgáltatásai kommunikáljanak a mögöttes Service Fabric Runtime API-kkal. További információ: [Reliable Services alkalmazás konfigurálása Linux-fürtökön való futtatásra](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).  
 >
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A Service Fabric parancssori felület használatának első lépései](service-fabric-cli.md)

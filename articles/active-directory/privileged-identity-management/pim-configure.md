@@ -10,20 +10,23 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: pim
 ms.topic: overview
-ms.date: 08/08/2020
+ms.date: 09/29/2020
 ms.author: curtand
-ms.custom: pim
+ms.custom: pim ; azuread-video-2020
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9fe22d25be7f98bfb1d9f867b2081cd0489ce17c
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: a0b7bcfa6569edd93373f493cfaa7deff2976d35
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90018549"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540829"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Mi az az Azure AD Privileged Identity Management?
 
- A Privileged Identity Management (PIM) Azure Active Directory (Azure AD) szolgáltatása, amely lehetővé teszi a szervezet fontos erőforrásaihoz való hozzáférés kezelését, vezérlését és figyelését. Ezek az erőforrások az Azure AD-ben, az Azure-ban és más Microsoft Online Services-szolgáltatásokban (például Microsoft 365 vagy Microsoft Intune) lévő erőforrásokat tartalmaznak.
+ A Privileged Identity Management (PIM) Azure Active Directory (Azure AD) szolgáltatása, amely lehetővé teszi a szervezet fontos erőforrásaihoz való hozzáférés kezelését, vezérlését és figyelését. Ezek az erőforrások az Azure AD-ben, az Azure-ban és más Microsoft Online Services-szolgáltatásokban (például Microsoft 365 vagy Microsoft Intune) lévő erőforrásokat tartalmaznak. A következő videó ismerteti a PIM fontos fogalmait és funkcióit.
+<br><br>
+
+> [!VIDEO https://www.youtube.com/embed/f-0K7mRUPpQ]
 
 ## <a name="reasons-to-use"></a>Használat okai
 
@@ -80,13 +83,13 @@ A Privileged Identity Management a következő forgatókönyveket támogatja:
 
 A Privileged Identity Management és a dokumentációjának jobb megismeréséhez tekintse át a következő feltételeket.
 
-| Kifejezés vagy fogalom | Szerepkör-hozzárendelési kategória | Description |
+| Kifejezés vagy fogalom | Szerepkör-hozzárendelési kategória | Leírás |
 | --- | --- | --- |
 | támogatható | Típus | Szerepkör-hozzárendelés, amely megköveteli, hogy a felhasználó egy vagy több műveletet hajtson végre a szerepkör használatához. Ha egy felhasználó jogosult a szerepkörre, az azt jelenti, hogy aktiválhatja a szerepkört, amikor kiemelt feladatokat kell elvégeznie. A hozzáférés nem különbözik a jogosult szerepkör-hozzárendeléssel rendelkező valakinek. Az egyetlen különbség, hogy néhány embernek nincs szüksége arra, hogy minden alkalommal hozzáférjen. |
-| Active | Típus | Szerepkör-hozzárendelés, amely nem követeli meg, hogy a felhasználó bármilyen műveletet hajtson végre a szerepkör használatához. Az aktívként hozzárendelt felhasználók rendelkeznek a szerepkörhöz hozzárendelt jogosultságokkal. |
+| active | Típus | Szerepkör-hozzárendelés, amely nem követeli meg, hogy a felhasználó bármilyen műveletet hajtson végre a szerepkör használatához. Az aktívként hozzárendelt felhasználók rendelkeznek a szerepkörhöz hozzárendelt jogosultságokkal. |
 | aktiválás |  | Egy vagy több művelet végrehajtásának folyamata olyan szerepkör használatára, amelyhez a felhasználó jogosult. A műveletek tartalmazhatják a többtényezős hitelesítés (MFA) ellenőrzését, üzleti indoklást biztosítanak, vagy a kijelölt jóváhagyók jóváhagyását kérik. |
-| rendelt | Állapot | Aktív szerepkör-hozzárendeléssel rendelkező felhasználó. |
-| aktivált | Állapot | A jogosult szerepkör-hozzárendeléssel rendelkező felhasználók elvégezték a szerepkör aktiválásához szükséges műveleteket, és most aktívak.  Az aktiválás után a felhasználó használhatja a szerepkört egy előre konfigurált időszakra, mielőtt újra aktiválni kellene. |
+| rendelt | Állam | Aktív szerepkör-hozzárendeléssel rendelkező felhasználó. |
+| aktivált | Állam | A jogosult szerepkör-hozzárendeléssel rendelkező felhasználók elvégezték a szerepkör aktiválásához szükséges műveleteket, és most aktívak.  Az aktiválás után a felhasználó használhatja a szerepkört egy előre konfigurált időszakra, mielőtt újra aktiválni kellene. |
 | állandó jogosultság | Időtartam | Szerepkör-hozzárendelés, amelyben a felhasználó mindig jogosult a szerepkör aktiválásához. |
 | állandó aktív | Időtartam | Szerepkör-hozzárendelés, amelyben a felhasználók minden művelet végrehajtása nélkül bármikor használhatják a szerepkört. |
 | jogosultság lejárata | Időtartam | Szerepkör-hozzárendelés, amelyben a felhasználó jogosult a szerepkör aktiválására a megadott kezdési és befejezési dátumon belül. |
@@ -100,7 +103,7 @@ A Privileged Identity Management és a dokumentációjának jobb megismeréséhe
 
 További információ a felhasználók licencéről: a [Privileged Identity Management használatára vonatkozó licencfeltételek](subscription-requirements.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A Privileged Identity Management használatára vonatkozó licencfeltételek](subscription-requirements.md)
 - [Emelt szintű hozzáférés biztosítása Azure AD hibrid- és felhőkörnyezetekhez](../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)

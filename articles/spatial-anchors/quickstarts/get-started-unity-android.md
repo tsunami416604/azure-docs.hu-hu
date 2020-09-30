@@ -5,15 +5,15 @@ author: craigktreasure
 manager: vriveras
 services: azure-spatial-anchors
 ms.author: crtreasu
-ms.date: 07/31/2020
+ms.date: 09/29/2020
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 7e92da72e8125c22655a7eb9986f0554963aefeb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c84ebfe9752b8594e97c7c72d706ee25c4852f6e
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91280894"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538133"
 ---
 # <a name="quickstart-create-a-unity-android-app-with-azure-spatial-anchors"></a>Gyors útmutató: Unity Android-alkalmazás létrehozása az Azure térbeli Horgonyokkal
 
@@ -58,9 +58,11 @@ A rövid útmutató elvégzéséhez győződjön meg arról, hogy rendelkezik az
 
 Válassza ki az eszközt az **eszköz futtatása** területen, majd válassza a **Létrehozás és Futtatás**lehetőséget. A rendszer megkéri, hogy mentsen egy `.apk` fájlt, amelyből bármilyen nevet kiválaszthat.
 
-Az alkalmazás elindítása után a következőhöz hasonló képernyő jelenik meg:
+Az alkalmazásban válassza a **BasicDemo** lehetőséget a nyilak használatával, majd nyomja meg a **Go!** gombra a bemutató futtatásához. A horgonyok elhelyezéséhez és felidézéséhez kövesse az utasításokat.
 
-![Alkalmazás képernyő](./media/get-started-unity-android/demo-app-screen.png)
+![Képernyőfelvétel 1 ](./media/get-started-unity-android/screenshot-1.jpg)
+ ![ képernyőkép 2 ](./media/get-started-unity-android/screenshot-2.jpg)
+ ![ képernyőkép 3](./media/get-started-unity-android/screenshot-3.jpg)
 
 A horgonyok elhelyezéséhez és felidézéséhez kövesse az alkalmazás utasításait.
 

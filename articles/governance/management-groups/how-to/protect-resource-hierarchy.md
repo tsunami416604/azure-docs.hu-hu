@@ -3,12 +3,12 @@ title: Az erőforrás-hierarchia elleni védelem – Azure-szabályozás
 description: Ismerje meg, hogyan védhető az erőforrás-hierarchia olyan hierarchia-beállításokkal, amelyek tartalmazzák az alapértelmezett felügyeleti csoport beállítását.
 ms.date: 09/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 19d699b54a9979df1030c0f6e294d5a4492f2853
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.openlocfilehash: 8630562786da922a36baa3bec4863acbb21b197d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89469779"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533979"
 ---
 # <a name="how-to-protect-your-resource-hierarchy"></a>Az erőforrás-hierarchia elleni védelem
 
@@ -16,9 +16,9 @@ Az erőforrások, erőforráscsoportok, előfizetések, felügyeleti csoportok �
 
 A felügyeleti csoportok már rendelkeznek hierarchia-beállításokkal, amelyek segítségével a bérlői rendszergazda vezérelheti ezeket a viselkedéseket. Ez a cikk ismerteti az összes rendelkezésre álló hierarchia-beállítást és azok beállításának módját.
 
-## <a name="rbac-permissions-for-hierarchy-settings"></a>RBAC engedélyek a hierarchia beállításaihoz
+## <a name="azure-rbac-permissions-for-hierarchy-settings"></a>Az Azure RBAC engedélyei a hierarchia beállításaihoz
 
-A hierarchia beállításainak konfigurálásához a következő két RBAC művelet szükséges a legfelső szintű felügyeleti csoportban:
+A hierarchia beállításainak konfigurálásához a következő két erőforrás-szolgáltató művelet szükséges a legfelső szintű felügyeleti csoportban:
 
 - `Microsoft.Management/managementgroups/settings/write`
 - `Microsoft.Management/managementgroups/settings/read`
@@ -27,7 +27,7 @@ Ezek a műveletek csak a hierarchia beállításainak olvasását és frissíté
 
 ## <a name="setting---default-management-group"></a>Alapértelmezett felügyeleti csoport beállítása
 
-Alapértelmezés szerint a rendszer a bérlőn belül hozzáadott új előfizetést adja hozzá a gyökérszintű felügyeleti csoport tagjaként. Ha a szabályzat-hozzárendelések, a szerepköralapú hozzáférés-vezérlés (RBAC) és más irányítási szerkezetek hozzá vannak rendelve a legfelső szintű felügyeleti csoporthoz, azonnal érvénybe lépnek az új előfizetések. Emiatt számos szervezet nem alkalmazza ezeket a szerkezeteket a legfelső szintű felügyeleti csoportba, még akkor is, ha ez a kívánt hely a hozzárendeléshez. Más esetekben az új előfizetések esetében szigorúbban korlátozó vezérlőkre van szükség, de az összes előfizetéshez nem rendelhető hozzá. Ez a beállítás mindkét használati esetet támogatja.
+Alapértelmezés szerint a rendszer a bérlőn belül hozzáadott új előfizetést adja hozzá a gyökérszintű felügyeleti csoport tagjaként. Ha a szabályzat-hozzárendelések, az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) és más irányítási szerkezetek hozzá vannak rendelve a legfelső szintű felügyeleti csoporthoz, azonnal érvénybe lépnek az új előfizetések. Emiatt számos szervezet nem alkalmazza ezeket a szerkezeteket a legfelső szintű felügyeleti csoportba, még akkor is, ha ez a kívánt hely a hozzárendeléshez. Más esetekben az új előfizetések esetében szigorúbban korlátozó vezérlőkre van szükség, de az összes előfizetéshez nem rendelhető hozzá. Ez a beállítás mindkét használati esetet támogatja.
 
 Azáltal, hogy lehetővé teszi az új előfizetések alapértelmezett felügyeleti csoportjának meghatározását, a szervezeti szintű irányítási szerkezetek alkalmazhatók a legfelső szintű felügyeleti csoportra, és egy külön felügyeleti csoport, amelynek a szabályzat-hozzárendelései vagy egy új előfizetéshez jobban illeszkedő Azure-szerepkör-hozzárendelések adhatók meg.
 
@@ -111,7 +111,7 @@ A beállítás REST APIsal való konfigurálásához a [hierarchia-beállításo
 
 Ha vissza szeretné kapcsolni a beállítást, használja ugyanazt a végpontot, és állítsa a **requireAuthorizationForGroupCreation** értéket **hamis**értékre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A felügyeleti csoportokkal kapcsolatos további tudnivalókért lásd:
 
