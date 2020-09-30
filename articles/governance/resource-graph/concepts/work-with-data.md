@@ -1,15 +1,15 @@
 ---
 title: Nagy méretű adathalmazok kezelése
 description: Megtudhatja, hogyan kérheti le, formázhatja, lapozhatja és kihagyhatja a nagyméretű adatkészletek rekordjait az Azure Resource Graph használata közben.
-ms.date: 08/10/2020
+ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5f3073986e424c641d884e1c2427d3d519658d37
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ee552908696aa652931bf3555391adcfec0fc6d3
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89005938"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578495"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Nagyméretű Azure-beli erőforrás-adatkészletek használata
 
@@ -48,7 +48,7 @@ Az **első** jelenleg a maximálisan engedélyezett _5000_-as értékkel rendelk
 A nagyméretű adatkészletek használatának következő lehetősége a **kihagyás** vezérlőelem. Ez a vezérlő lehetővé teszi, hogy a lekérdezés átugorjon vagy kihagyja a megadott számú rekordot, mielőtt visszaadná az eredményeket. A **skip (kihagyás** ) olyan lekérdezések esetében hasznos, amelyek értelmes módon jelenítik meg az eredményeket. Ha a szükséges eredmények a visszaadott adathalmaz végén találhatók, akkor hatékonyabb, ha más rendezési konfigurációt használ, és az eredményeket az adathalmaz elejéről kéri le.
 
 > [!NOTE]
-> Ha a **kihagyást**használja, azt javasoljuk, hogy az eredményeket legalább egy, a vagy a oszlop alapján rendelje `asc` `desc` . Rendezés nélkül a visszaadott eredmények véletlenszerűek, és nem ismételhetők.
+> Ha a **kihagyást**használja, azt javasoljuk, hogy az eredményeket legalább egy, a vagy a oszlop alapján rendelje `asc` `desc` . Rendezés nélkül a visszaadott eredmények véletlenszerűek, és nem ismételhetők. Ha `limit` vagy `take` használatban van a lekérdezésben, a **kihagyás** figyelmen kívül lesz hagyva.
 
 Az alábbi példák azt mutatják be, hogyan lehet kihagyni az első _10_ rekordot, amely a lekérdezés eredményét eredményezi, ehelyett a visszaadott eredményhalmaz 11. rekorddal való megadásával:
 
@@ -168,7 +168,7 @@ request = QueryRequest(query="Resources | limit 1", subscriptions=subs_list, opt
 response = client.resources(request)
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse meg az [alapszintű lekérdezésekben](../samples/starter.md)használt nyelvet.
 - Lásd: speciális alkalmazások a [speciális lekérdezésekben](../samples/advanced.md).

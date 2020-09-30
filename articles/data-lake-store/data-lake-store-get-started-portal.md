@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: 7dac5976904263de40c7bc240bdb7deac1ec3df6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 428ed96c3223e644b0c78712723231a5fabbdc77
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85509200"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578580"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-portal"></a>A Azure Data Lake Storage Gen1 használatának első lépései a Azure Portal
 
@@ -50,7 +50,7 @@ Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
      * **Data Lake Storage Gen1 által felügyelt kulcsok használata**, ha azt szeretné, hogy a Data Lake Storage Gen1 kezelje a titkosítási kulcsokat.
      * **Saját tulajdonú Key Vault-kulcsok használata**. Kiválaszthat egy meglévő Azure Key Vault-tárolót, vagy létrehozhat egy újat. Ha egy Key Vault kulcsait szeretné használni, akkor a Azure Key Vault eléréséhez engedélyeket kell rendelnie a Data Lake Storage Gen1 fiókhoz. Az utasításokért lásd [az engedélyek az Azure Key Vaulthoz történő hozzárendelését](#assign-permissions-to-azure-key-vault) ismertető cikket.
 
-        ![Titkosítás Data Lake Storage Gen1](./media/data-lake-store-get-started-portal/adls-encryption-2.png "Titkosítás Data Lake Storage Gen1")
+        ![Képernyőkép az új Data Lake Storage Gen 1 panelről és a titkosítási beállítások panelről.](./media/data-lake-store-get-started-portal/adls-encryption-2.png "Titkosítás Data Lake Storage Gen1")
 
         Kattintson az **OK** gombra a **Titkosítási beállítások** panelen.
 
@@ -64,10 +64,10 @@ Ha egy Azure Key Vault kulcsait használta a titkosítás konfigurálásához a 
 
 1. Ha a Azure Key Vault kulcsait használta, a Data Lake Storage Gen1 fiók paneljén egy figyelmeztetés jelenik meg a tetején. Kattintson a figyelmeztetésre a **Titkosítás** panel megnyitásához.
 
-    ![Titkosítás Data Lake Storage Gen1](./media/data-lake-store-get-started-portal/adls-encryption-3.png "Titkosítás Data Lake Storage Gen1")
+    ![Képernyőkép a Data Lake Storage Gen1 fiók panelről, amely a következő figyelmeztetést jeleníti meg: "Key Vault engedély konfigurálása szükséges. Kattintson ide a beállításhoz.](./media/data-lake-store-get-started-portal/adls-encryption-3.png "Titkosítás Data Lake Storage Gen1")
 2. A panelen két lehetőség szerepel a hozzáférés konfigurálásához.
 
-    ![Titkosítás Data Lake Storage Gen1](./media/data-lake-store-get-started-portal/adls-encryption-4.png "Titkosítás Data Lake Storage Gen1")
+    ![Képernyőkép a titkosítás panelről.](./media/data-lake-store-get-started-portal/adls-encryption-4.png "Titkosítás Data Lake Storage Gen1")
 
    * Az első lehetőségnél kattintson az **Engedélyek megadása** gombra a hozzáférés konfigurálásához. Az első beállítás csak akkor engedélyezett, ha a Data Lake Storage Gen1 fiókot létrehozó felhasználó a Azure Key Vault is rendszergazdai jogosultságokkal rendelkezik.
    * A másik lehetőség a panelen megjelenő PowerShell parancsmag futtatása. Az Azure Key Vault tulajdonosának kell lennie, vagy képesnek kell lennie engedélyeket hozzárendelni az Azure Key Vaulton. A parancsmag futtatása után térjen vissza a panelre, és kattintson az **Engedélyezés** gombra a hozzáférés konfigurálásához.
@@ -87,10 +87,10 @@ Az adatkezeléshez és az adattároláshoz a Data Lake Storage Gen1 fiók alatt 
 1. Nyissa meg a létrehozott Data Lake Storage Gen1 fiókot. A bal oldali panelen kattintson a **minden erőforrás**lehetőségre, majd a **minden erőforrás** panelen kattintson arra a fiók nevére, amelyben mappákat kíván létrehozni. Ha rögzítette a fiókot a kezdőpulton, kattintson a fiók csempéjére.
 2. A Data Lake Storage Gen1-fiók paneljén kattintson az **adatkezelő**elemre.
 
-    ![Mappák létrehozása Data Lake Storage Gen1 fiókban](./media/data-lake-store-get-started-portal/ADL.Create.Folder.png "Mappák létrehozása Data Lake Storage Gen1 fiókban")
+    ![Képernyőkép a Data Lake Storage Gen 1 fiók panelről, az adatkezelő lehetőségével.](./media/data-lake-store-get-started-portal/ADL.Create.Folder.png "Mappák létrehozása Data Lake Storage Gen1 fiókban")
 3. A Data Explorer (Adatkezelő) panelen kattintson a **New Folder** (Új mappa) elemre, adjon nevet az új mappának, majd kattintson az **OK** gombra.
 
-    ![Mappák létrehozása Data Lake Storage Gen1 fiókban](./media/data-lake-store-get-started-portal/ADL.Folder.Name.png "Mappák létrehozása Data Lake Storage Gen1 fiókban")
+    ![Képernyőkép a Adatkezelő panelről az új mappa lehetőséggel és az új mappa létrehozása szövegmezőből.](./media/data-lake-store-get-started-portal/ADL.Folder.Name.png "Mappák létrehozása Data Lake Storage Gen1 fiókban")
 
     Az újonnan létrehozott mappa megjelenik az **Adatkezelő** panelen lévő listában. Beágyazott mappákat bármilyen szinten létrehozhat.
 
