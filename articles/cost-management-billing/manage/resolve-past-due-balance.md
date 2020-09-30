@@ -9,18 +9,18 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 8c792ae1b6ac43ead15fd4f27d2468c517153354
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 3c42db58017dc3a692c227f6eb454cf7b597e77b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684813"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297584"
 ---
 # <a name="resolve-past-due-balance-for-your-azure-subscription"></a>Az Azure-előfizetés lejárt esedékességű tartozásának rendezése
 
 Ez a cikk olyan ügyfelekre vonatkozik, akik hitelkártyával regisztráltak online az Azure-ra, és rendelkeznek számlázási fiókkal a Microsoft Online Services Programhoz kapcsolódóan. Ismerje meg, hogyan [ellenőrizheti számlázási fiókjának típusát](#check-the-type-of-your-account). Ha rendelkezik Microsoft Ügyfélszerződéshez tartozó számlázási fiókkal, tekintse meg a [Microsoft Azure-számlák befizetése](../understand/pay-bill.md) című szakaszt.
 
-Ha a kifizetése nem érkezik meg, vagy azt nem tudjuk feldolgozni, e-mailt fog kapni, és megjelenik egy értesítés az Azure Portalon, amely arról tájékoztatja, hogy az előfizetése lejárt. Amennyiben az alapértelmezett fizetési mód a bankkártyás fizetés, a [fiókadminisztrátor](billing-subscription-transfer.md#whoisaa) az Azure Portalon rendezheti a ki nem egyenlített díjakat. Számlás (csekkes/átutalásos) fizetés esetén küldje az utalást a számla alján megadott helyre.
+Ha a kifizetése nem érkezik meg, vagy azt nem tudjuk feldolgozni, e-mailt fog kapni, és megjelenik egy értesítés az Azure Portalon, amely arról tájékoztatja, hogy az előfizetése lejárt. Amennyiben az alapértelmezett fizetési mód a bankkártyás fizetés, a [fiókadminisztrátor](../understand/subscription-transfer.md#whoisaa) az Azure Portalon rendezheti a ki nem egyenlített díjakat. Számlás (csekkes/átutalásos) fizetés esetén küldje az utalást a számla alján megadott helyre.
 
 > [!IMPORTANT]
 > * Ha ugyanahhoz a bankkártyájához több előfizetés is tartozik, és mindegyik befizetése lejárt esedékességű, a teljes fennmaradó egyenleget egyszerre kell kifizetnie.

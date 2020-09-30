@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: tutorial
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: a91f3781b490ee6f724e7d28a6be9a96c853426f
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 0c93375abd57ff5e96906ef7befbbb546a3a1caf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684626"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91270525"
 ---
 # <a name="tutorial-review-your-individual-azure-bill"></a>Oktatóanyag: Saját Azure-számla áttekintése
 
@@ -22,7 +22,7 @@ Ez a cikk segítséget nyújt Azure-számlájának értelmezésében és átteki
 
 Ez az oktatóanyag csak azokra az Azure-ügyfelekre vonatkozik, akik egyéni szerződéssel rendelkeznek. Az általános egyéni előfizetésekre használatalapú díjszabás vonatkozik, és közvetlenül az Azure webhelyén vásárolhatók meg.
 
-Ha segítségre van szüksége a váratlan költségek értelmezéséhez: [Váratlan költségek elemzése](https://docs.microsoft.com/azure/cost-management-billing/manage/getting-started#analyze-unexpected-charges). Ha le szeretné mondani Azure-előfizetését, tekintse meg [Az Azure-előfizetés lemondása](../manage/cancel-azure-subscription.md) című témakört.
+Ha segítségre van szüksége a váratlan költségek értelmezéséhez: [Váratlan költségek elemzése](analyze-unexpected-charges.md). Ha le szeretné mondani Azure-előfizetését, tekintse meg [Az Azure-előfizetés lemondása](../manage/cancel-azure-subscription.md) című témakört.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 

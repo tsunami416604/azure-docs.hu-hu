@@ -9,18 +9,18 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: banders
-ms.openlocfilehash: 0f1b4751ae2448b519387d57e4dbfa1eecf8a576
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 8366c0681f1ac29d9e265225dfaeeab44aa4b8ca
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90984310"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91252969"
 ---
 # <a name="add-or-update-a-credit-card-for-azure"></a>Hitelkártya hozzáadása vagy frissítése az Azure-ban
 
 Ez a cikk olyan ügyfelekre vonatkozik, akik hitelkártyával regisztráltak az Azure online-ra.
 
-Az Azure Portalon módosíthatja a fizetés alapértelmezett módját új hitelkártyára, vagy frissítheti a meglévő hitelkártya adatait. A módosítások végrehajtásához [fiókadminisztrátornak](billing-subscription-transfer.md#whoisaa) kell lennie.
+Az Azure Portalon módosíthatja a fizetés alapértelmezett módját új hitelkártyára, vagy frissítheti a meglévő hitelkártya adatait. A módosítások végrehajtásához [fiókadminisztrátornak](../understand/subscription-transfer.md#whoisaa) kell lennie.
 
 Hitelkártya törléséhez lásd [Az Azure számlázásos fizetési módjának törlése](delete-azure-payment-method.md) szakaszt.
 
@@ -116,7 +116,7 @@ Hitelkártya szerkesztéséhez kövesse az alábbi lépéseket:
    ![Képernyőkép a menü fizetési módok eleméről](./media/change-credit-card/payment-methods-tab-mca.png)
 1. A **Saját hitelkártyák** szakaszban keresse meg a szerkeszteni kívánt hitelkártyát.
 1. Válassza ki a sor végén található három pontot (`...`).  
-    :::image type="content" source="./media/change-credit-card/edit-delete-credit-card-mca.png" alt-text="Képernyőkép a három pontról" :::
+    :::image type="content" source="./media/change-credit-card/edit-delete-credit-card-mca.png" alt-text="Képernyőkép a Csere lehetőségről" :::
 1. A hitelkártya adatainak szerkesztéséhez válassza a **Szerkesztés** lehetőséget a helyi menüből.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
