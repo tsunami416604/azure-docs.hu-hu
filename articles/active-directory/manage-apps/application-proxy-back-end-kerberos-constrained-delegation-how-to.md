@@ -2,26 +2,21 @@
 title: Kerberos által korlátozott delegálás – alkalmazásproxy
 description: A Kerberos által korlátozott delegálási konfigurációk hibaelhárítása alkalmazásproxy esetében
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 04/23/2019
 ms.author: kenwith
-ms.reviewer: asteen
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d086d816be17699989aafda144493d80837188b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.reviewer: asteen, japere
+ms.openlocfilehash: 3ca3df010426347846b29734426edfad4536516b
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84760439"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568721"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>A Kerberos által korlátozott delegálási konfigurációk hibaelhárítása alkalmazásproxy esetében
 
@@ -165,9 +160,9 @@ Ha továbbra sem tudja elérni a folyamatot, a Microsoft támogatási szolgálat
 
 ## <a name="other-scenarios"></a>Egyéb forgatókönyvek
 
-- Az Azure Application proxy egy Kerberos-jegyet kér, mielőtt elküldené a kérelmét egy alkalmazásnak. Egyes harmadik féltől származó alkalmazások nem szeretik ezt a hitelesítési módszert. Ezek az alkalmazások a hagyományosabb tárgyalásokra várnak. Az első kérelem névtelen, amely lehetővé teszi az alkalmazás számára, hogy válaszoljon az általa támogatott hitelesítési típusokra 401-en keresztül.
+- Az Azure Application proxy egy Kerberos-jegyet kér, mielőtt elküldené a kérelmét egy alkalmazásnak. Egyes harmadik féltől származó alkalmazások nem szeretik ezt a hitelesítési módszert. Ezek az alkalmazások a hagyományosabb tárgyalásokra várnak. Az első kérelem névtelen, amely lehetővé teszi az alkalmazás számára, hogy válaszoljon az általa támogatott hitelesítési típusokra 401-en keresztül. Az ilyen típusú Kerberos-egyeztetés a jelen dokumentumban ismertetett lépések használatával engedélyezhető: a Kerberos által [korlátozott delegálás az egyszeri bejelentkezéshez](application-proxy-configure-single-sign-on-with-kcd.md).
 - A Többugrásos hitelesítés általában olyan esetekben használatos, amikor egy alkalmazás többszintű, háttér-és előtér-szolgáltatással rendelkezik, ahol mindkét esetben hitelesítés szükséges, például SQL Server Reporting Services. A Többugrásos forgatókönyv konfigurálását lásd: a Kerberos által korlátozott delegálás támogatását ismertető cikk a [több ugrásos forgatókönyvekben történő protokoll-áttérést is szükségessé teheti](https://support.microsoft.com/help/2005838/kerberos-constrained-delegation-may-require-protocol-transition-in-mul).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [KCD konfigurálása felügyelt tartományon](../../active-directory-domain-services/deploy-kcd.md).

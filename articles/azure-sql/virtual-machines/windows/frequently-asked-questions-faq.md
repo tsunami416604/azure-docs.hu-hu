@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: a5f4ff3dade381cf1a68ac5e9e820be153acf5ee
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: e1d1ffbf198a4e4c2574f93919ef98e36a90004a
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89483745"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91566992"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-azure-vms"></a>Gyakori kérdések az Azure-beli virtuális gépek SQL Serveréről
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -56,7 +56,7 @@ Ez a cikk a [Windows Azure Virtual Machines (VM) SQL Server](https://azure.micro
 
 1. **Hogyan általánosíthatja SQL Server az Azure-beli virtuális gépen, és felhasználhatja az új virtuális gépek üzembe helyezéséhez?**
 
-   Telepítheti a Windows Server rendszerű virtuális gépeket (SQL Server nélkül), és az [SQL Sysprep](/sql/database-engine/install-windows/install-sql-server-using-sysprep?view=sql-server-ver15) folyamat használatával általánosíthatja SQL Server az Azure-beli virtuális gépen (Windows) az SQL Server telepítési adathordozóval. A frissítési [garanciával](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot%3aprimaryr3) rendelkező ügyfelek a [mennyiségi licencelési központból](https://www.microsoft.com/Licensing/servicecenter/default.aspx)szerezhetik be a telepítési adathordozót. Azok az ügyfelek, akik nem rendelkeznek frissítési garanciával, a kívánt kiadással rendelkező Azure Marketplace SQL Server VM-rendszerkép telepítési adathordozóját használhatják.
+   Telepítheti a Windows Server rendszerű virtuális gépeket (SQL Server nélkül), és az [SQL Sysprep](/sql/database-engine/install-windows/install-sql-server-using-sysprep) folyamat használatával általánosíthatja SQL Server az Azure-beli virtuális gépen (Windows) az SQL Server telepítési adathordozóval. A frissítési [garanciával](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot%3aprimaryr3) rendelkező ügyfelek a [mennyiségi licencelési központból](https://www.microsoft.com/Licensing/servicecenter/default.aspx)szerezhetik be a telepítési adathordozót. Azok az ügyfelek, akik nem rendelkeznek frissítési garanciával, a kívánt kiadással rendelkező Azure Marketplace SQL Server VM-rendszerkép telepítési adathordozóját használhatják.
 
    Azt is megteheti, hogy az Azure Marketplace-en található SQL Server rendszerképek egyikét használja az Azure-beli virtuális gépen lévő SQL Server általánosításához. Vegye figyelembe, hogy a saját rendszerkép létrehozása előtt törölnie kell a következő beállításkulcsot a forrás rendszerképben. Ennek elmulasztása miatt a SQL Server telepítő rendszerindítási mappájának és/vagy az SQL IaaS-bővítménynek a meghibásodási állapotában való közelítése sikertelen volt.
 
@@ -179,13 +179,21 @@ Ez a cikk a [Windows Azure Virtual Machines (VM) SQL Server](https://azure.micro
    
    Igen, ha a megnevezett példány az egyetlen példány a SQL Serveron, és az eredeti alapértelmezett példány [eltávolítása megfelelő](sql-server-iaas-agent-extension-automate-management.md#install-on-a-vm-with-a-single-named-sql-server-instance)volt. Ha nincs alapértelmezett példány, és több megnevezett példány van egyetlen SQL Server VM, akkor a SQL Server IaaS-ügynök bővítmény telepítése sikertelen lesz. 
 
-1. **Eltávolíthatom teljesen az SQL Servert egy SQL Server-alapú virtuális gépről?**
+1. **Eltávolíthatom SQL Server és a kapcsolódó licencek számlázását egy SQL Server VMból?**
 
-   Igen, de továbbra is a SQL Server VMért kell fizetnie, az [SQL Server Azure-beli virtuális gépek díjszabási útmutatójában](pricing-guidance.md)leírtak szerint. Ha már nincs szüksége az SQL Serverre, üzembe helyezhet egy új virtuális gépet, majd oda migrálhatja az adatokat és az alkalmazásokat. Ezt követően már eltávolíthatja az SQL Servert futtató virtuális gépet.
+   Igen, de további lépéseket kell tennie, hogy elkerülje a SQL Server-példány díját a [díjszabási útmutatóban](pricing-guidance.md)leírtak szerint. Ha teljes mértékben el szeretné távolítani a SQL Server példányt, áttelepítheti egy másik Azure-beli virtuális gépre anélkül, hogy SQL Server előre telepíteni a virtuális gépre, és törölni kívánja az aktuális SQL Server VM. Ha szeretné megtartani a virtuális gépet, de SQL Server számlázását, kövesse az alábbi lépéseket: 
+
+   1. Ha szükséges, biztonsági mentést készíthet az összes adatairól, beleértve a rendszeradatbázisokat is. 
+   1. Távolítsa el SQL Server teljesen, beleértve az SQL IaaS bővítményt (ha van).
+   1. Telepítse az ingyenes [SQL Express kiadást](https://www.microsoft.com/sql-server/sql-server-downloads).
+   1. Az SQL VM erőforrás-szolgáltatót [egyszerűsített módban](sql-vm-resource-provider-register.md)regisztrálja.
+   1. választható Tiltsa le az expressz SQL Server szolgáltatást a szolgáltatás indításának letiltásával. 
 
 1. **Az Azure Portal használható egyszerre több példány ugyanazon a virtuális gépen történő kezelésére?**
+
    Nem. A portál felügyeletét az SQL VM erőforrás-szolgáltató biztosítja, amely a SQL Server IaaS-ügynök bővítményére támaszkodik. Így ugyanazok a korlátozások vonatkoznak az erőforrás-szolgáltatóra, mint a bővítményre. A portálon csak egy alapértelmezett példány, vagy egy elnevezett példány kezelhető, ha megfelelően van konfigurálva. További információ: [SQL Server IaaS-ügynök bővítménye](sql-server-iaas-agent-extension-automate-management.md) 
-   
+
+
 ## <a name="updating-and-patching"></a>Frissítés és javítás
 
 1. **Hogyan egy Azure-beli virtuális gépen SQL Server egy másik verziójára/kiadására váltani?**
@@ -231,7 +239,7 @@ Ez a cikk a [Windows Azure Virtual Machines (VM) SQL Server](https://azure.micro
    
     Igen. A helyi DTC SQL Server 2016 SP2 és újabb rendszereken támogatott. Az Always On rendelkezésre állási csoportok használatakor azonban meg kell vizsgálni az alkalmazásokat, mivel a feladatátvétel során a repülés során végzett tranzakciók sikertelenek lesznek, és újra kell próbálkozni. A fürtözött DTC a Windows Server 2019-től kezdődően érhető el. 
 
-## <a name="resources"></a>További források
+## <a name="resources"></a>Erőforrások
 
 **Windows rendszerű virtuális gépek**:
 

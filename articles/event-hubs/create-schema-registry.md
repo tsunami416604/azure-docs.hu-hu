@@ -4,18 +4,19 @@ description: Ebből a cikkből megtudhatja, hogyan hozhat létre egy séma-beál
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: 691279ea4fbadf5a905de4bab0304a1ad526146d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b977ed8d6b4444daa1e125c61a8d38b2a6512e44
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91344739"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91566363"
 ---
 # <a name="create-an-azure-event-hubs-schema-registry-preview"></a>Azure Event Hubs séma-beállításjegyzék létrehozása (előzetes verzió)
 Ez a cikk bemutatja, hogyan hozhat létre sémákkal rendelkező sémákat az Azure Event Hubs által üzemeltetett séma-beállításjegyzékben. Az Azure Event Hubs séma-beállításjegyzékbeli funkciójának áttekintését lásd: [Az Azure Schema Registry in Event Hubs](schema-registry-overview.md).
 
 > [!NOTE]
-> - A **séma-beállításjegyzék** szolgáltatás jelenleg **előzetes** verzióban érhető el, és csak a **standard** és a **dedikált** szinteken érhető el, nem az alapszintű **szinten** .
+> - A **séma-beállításjegyzék** szolgáltatás jelenleg **előzetes**verzióban érhető el, és éles számítási feladatokhoz nem ajánlott.
+> - A szolgáltatás csak **standard** és **dedikált** szinten érhető el, nem az alapszintű **csomagokban** .
 > - Ez az előzetes verzió jelenleg csak az **USA nyugati középső** régiójában érhető el. 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -33,10 +34,10 @@ Ez a cikk bemutatja, hogyan hozhat létre sémákkal rendelkező sémákat az Az
     1. Ezután válassza a **Létrehozás** elemet a séma csoport létrehozásához. 
 1. Válassza ki a **séma csoport** nevét a séma-csoportok listájában.
 
-    :::image type="content" source="./media/create-schema-registry/select-schema-group.png" alt-text="Válassza ki a séma csoportját a listában":::    
+    :::image type="content" source="./media/create-schema-registry/select-schema-group.png" alt-text="Séma beállításjegyzékének lapja":::    
 1. Megjelenik a csoport **sémakezelő** lapja.
 
-    :::image type="content" source="./media/create-schema-registry/schema-group-page.png" alt-text="Séma-csoport lap":::
+    :::image type="content" source="./media/create-schema-registry/schema-group-page.png" alt-text="Séma beállításjegyzékének lapja":::
     
 
 ## <a name="add-a-schema-to-the-schema-group"></a>Séma hozzáadása a séma csoportjához
@@ -67,27 +68,27 @@ Ebben a szakaszban egy sémát ad hozzá a séma csoportjához a Azure Portal ha
     1. Kattintson a **Létrehozás** gombra. 
 1. Válassza ki a **sémát** a sémák listájából. 
 
-    :::image type="content" source="./media/create-schema-registry/select-schema.png" alt-text="Séma kiválasztása":::
+    :::image type="content" source="./media/create-schema-registry/select-schema.png" alt-text="Séma beállításjegyzékének lapja":::
 1. Megjelenik a séma **áttekintő** lapja a sémához. 
 
-    :::image type="content" source="./media/create-schema-registry/schema-overview-page.png" alt-text="Séma – Áttekintés lap":::    
+    :::image type="content" source="./media/create-schema-registry/schema-overview-page.png" alt-text="Séma beállításjegyzékének lapja":::    
 1. Ha a séma több verziója is létezik, a **verziók** legördülő listában láthatók. Válassza ki az adott verzióra váltani kívánt verziót. 
 
 ## <a name="create-a-new-version-of-schema"></a>A séma új verziójának létrehozása
 
 1. Frissítse a sémát a szövegmezőben, és válassza az **Érvényesítés**lehetőséget. A következő példában egy új mező `id` lett hozzáadva a sémához. 
 
-    :::image type="content" source="./media/create-schema-registry/update-schema.png" alt-text="Séma frissítése":::    
+    :::image type="content" source="./media/create-schema-registry/update-schema.png" alt-text="Séma beállításjegyzékének lapja":::    
     
 1. Tekintse át az érvényesítési állapotot és a módosításokat, majd kattintson a **Mentés**gombra. 
 
-    :::image type="content" source="./media/create-schema-registry/compare-save-schema.png" alt-text="Az érvényesítési állapot, a módosítások és a Mentés áttekintése":::     
+    :::image type="content" source="./media/create-schema-registry/compare-save-schema.png" alt-text="Séma beállításjegyzékének lapja":::     
 1. Ekkor megjelenik a `2` **séma áttekintő** oldalának **verziószáma** . 
 
-    :::image type="content" source="./media/create-schema-registry/new-version.png" alt-text="A séma új verziója":::    
+    :::image type="content" source="./media/create-schema-registry/new-version.png" alt-text="Séma beállításjegyzékének lapja":::    
 1. Válassza ki a `1` séma 1. verzióját. 
 
-    :::image type="content" source="./media/create-schema-registry/select-version.png" alt-text="Verzió kiválasztása":::    
+    :::image type="content" source="./media/create-schema-registry/select-version.png" alt-text="Séma beállításjegyzékének lapja":::    
 
 
 ## <a name="next-steps"></a>Következő lépések

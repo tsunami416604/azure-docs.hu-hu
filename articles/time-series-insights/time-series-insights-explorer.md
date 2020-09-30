@@ -10,16 +10,19 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1bcf8ec2395dbc94154072c1c4d839bf45125a3e
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 49a763af8d936ec9fd15c59c908ba9015f803930
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89487300"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568638"
 ---
 # <a name="azure-time-series-insights-gen1-explorer"></a>Azure Time Series Insights Gen1 Explorer
+
+> [!CAUTION]
+> Ez egy Gen1-cikk.
 
 Ez a cikk a Azure Time Series Insights Gen1 [Explorer webalkalmazás](https://insights.timeseries.azure.com/)funkcióit és beállításait ismerteti. A Azure Time Series Insights Explorer bemutatja a szolgáltatás által biztosított hatékony adatvizualizációs képességeket, és a saját környezetében érhető el.
 
@@ -108,7 +111,7 @@ Az eseményforrás a Azure Time Series Insights-környezethez való csatlakoztat
 
 1. A **hő** segítségével gyorsan kipróbálhatja az egyedi vagy rendellenes adatsorozatokat egy adott lekérdezésben. Hő csak egy keresési kifejezés látható.
 
-    [![Time Series Insights Explorer hő-diagramok ](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png)](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png#lightbox)
+    [Time Series Insights Explorer hő-diagramok](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png)] (média/idő-sorozat – betekintés – Explorer/tsi-ga-example-heatmap-charting.png # Lightbox)
 
 1. Ha az eseményeket a jobb gombbal kattintva tárja fel, az **események** panel elérhetővé válik. Itt áttekintheti az összes nyers eseményt, és az eseményeket JSON-vagy CSV-fájlként is exportálhatja. Azure Time Series Insights az összes nyers adathalmazt tárolja.
 

@@ -1,5 +1,5 @@
 ---
-title: Rendszerhez rendelt felügyelt identitás használata Azure Cosmos DB adatok eléréséhez
+title: Hozzáférés az Azure Cosmos DB adataihoz egy rendszer által hozzárendelt felügyelt identitással
 description: Megtudhatja, hogyan konfigurálhat egy Azure Active Directory (Azure AD) rendszerhez rendelt felügyelt identitást (felügyelt szolgáltatás identitása) a kulcsok Azure Cosmos DBból való eléréséhez.
 author: j-patrick
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.date: 03/20/2020
 ms.author: justipat
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 25ec74f3638ce857e4472d73a51e45f24c4df5ec
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 07bfaabf051a016ca9617245ba8628ef6c7e80c0
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997727"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91566618"
 ---
 # <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>A rendszer által hozzárendelt felügyelt identitások használata Azure Cosmos DB-adat eléréséhez
 
@@ -35,7 +35,7 @@ Ebben a lépésben hozzárendel egy rendszerhez rendelt felügyelt identitást a
 
 1. Az **identitás** **lapon kapcsolja be** a rendszeridentitás **állapotát** , majd válassza a **Mentés**lehetőséget. Az **identitás** ablaktáblájának a következőképpen kell kinéznie:  
 
-   :::image type="content" source="./media/managed-identity-based-authentication/identity-tab-system-managed-on.png" alt-text="Képernyőfelvétel: a rendszeridentitás állapotának beállítása a következőre:.":::
+   :::image type="content" source="./media/managed-identity-based-authentication/identity-tab-system-managed-on.png" alt-text="A Function alkalmazás platform-funkcióit és identitási beállításait bemutató képernyőkép.":::
 
 ## <a name="grant-access-to-your-azure-cosmos-account"></a>Hozzáférés biztosítása az Azure Cosmos-fiókhoz
 
@@ -47,7 +47,7 @@ Ebben a lépésben hozzárendel egy szerepkört a Function alkalmazás rendszerh
 |[Cosmos DB fiók-olvasó szerepkör](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|Azure Cosmos DB fiókadatok olvasása. Lehetővé teszi az olvasási kulcsok lekérését. |
 
 > [!IMPORTANT]
-> A Azure Cosmos DB szerepköralapú hozzáférés-vezérlésének támogatása csak a vezérlési sík műveleteire vonatkozik. Az adatsíkok műveletei a főkulcsok vagy az erőforrás-tokenek segítségével biztonságosak. További információ: [biztonságos hozzáférés az adatkezeléshez](secure-access-to-data.md) cikk.
+> A Azure Cosmos DB szerepköralapú hozzáférés-vezérlésének támogatása csak a vezérlési sík műveleteire vonatkozik. Az adatsíkok műveletei az elsődleges kulcsok vagy az erőforrás-tokenek révén biztonságosak. További információ: [biztonságos hozzáférés az adatkezeléshez](secure-access-to-data.md) cikk.
 
 > [!TIP] 
 > Szerepkörök hozzárendeléséhez csak a szükséges hozzáférést rendelje hozzá. Ha a szolgáltatás csak az adatok olvasását igényli, akkor rendelje hozzá a **Cosmos db fiók-olvasó** szerepkört a felügyelt identitáshoz. A minimális jogosultsági szintű hozzáférés fontosságával kapcsolatos további információkért tekintse meg a [privilegizált fiókok alacsonyabb kitettségét](../security/fundamentals/identity-management-best-practices.md#lower-exposure-of-privileged-accounts) ismertető cikket.
@@ -58,19 +58,19 @@ Ebben az esetben a Function alkalmazás beolvassa az akvárium hőmérsékletét
 
 1. Jelentkezzen be a Azure Portalba, és lépjen a Azure Cosmos DB-fiókjához. Nyissa meg a **hozzáférés-vezérlés (iam)** ablaktáblát, majd a **szerepkör-hozzárendelések** lapot:
 
-   :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab.png" alt-text="Képernyőfelvétel: a hozzáférés-vezérlés ablaktábla és a szerepkör-hozzárendelések lap.":::
+   :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab.png" alt-text="A Function alkalmazás platform-funkcióit és identitási beállításait bemutató képernyőkép.":::
 
 1. Válassza a **+ Hozzáadás** > **Szerepkör-hozzárendelés hozzáadása** lehetőséget.
 
 1. Megnyílik a **szerepkör-hozzárendelés hozzáadása** panel a jobb oldalon:
 
-   :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane.png" alt-text="A szerepkör-hozzárendelés hozzáadása panelt ábrázoló képernyőfelvétel.":::
+   :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane.png" alt-text="A Function alkalmazás platform-funkcióit és identitási beállításait bemutató képernyőkép.":::
 
    * **Szerepkör**: válassza ki a **DocumentDB fiók közreműködőjét**
    * **Hozzáférés hozzárendelése**: a **rendszerhez rendelt felügyelt identitás kiválasztása** szakaszban válassza a **függvényalkalmazás**lehetőséget.
    * **Select (kiválasztás**): a panel az előfizetésben található összes Function-alkalmazással lesz feltöltve, és **felügyelt rendszeridentitással**rendelkezik. Ebben az esetben válassza ki a **FishTankTemperatureService** Function alkalmazást: 
 
-      :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane-filled.png" alt-text="A szerepkör-hozzárendelés hozzáadása ablaktábla példákkal való feltöltését bemutató képernyőkép.":::
+      :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane-filled.png" alt-text="A Function alkalmazás platform-funkcióit és identitási beállításait bemutató képernyőkép.":::
 
 1. Miután kiválasztotta a Function alkalmazást, válassza a **Mentés**lehetőséget.
 

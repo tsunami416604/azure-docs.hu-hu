@@ -1,6 +1,6 @@
 ---
-title: Elérhető Azure Files protokollok
-description: Az Azure-fájlmegosztás létrehozása előtt megismerheti az elérhető protokollokat.
+title: Elérhető Azure Files protokollok – NFS és SMB
+description: Ismerje meg az elérhető protokollokat az Azure-fájlmegosztás létrehozása előtt, beleértve a kiszolgálói üzenetblokk (SMB) és a hálózati fájlrendszer (NFS) létrehozását.
 author: roygara
 ms.service: storage
 ms.topic: conceptual
@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 8082e694c4282759c9c38560c14eb3659fcd55ec
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 5149024f8621754451520e0ae249ed61f0b07f99
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90708138"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568471"
 ---
 # <a name="azure-file-share-protocols"></a>Azure fájlmegosztás protokollok
 
@@ -25,8 +25,8 @@ Azure Files két protokollt biztosít az Azure-fájlmegosztás csatlakoztatásá
 |---------|---------|---------|
 |Hozzáférési protokollok     |NFS 4,1         |SMB 2,1, SMB 3,0         |
 |Támogatott operációs rendszer     |Linux kernel 4.3-as és újabb verziója         |Windows 2008 R2 +, Linux kernel 4.11 +         |
-|Elérhető szintek     |Prémium szintű Storage         |Premium Storage, standard szintű tárolás, gyors elérésű, ritka elérésű         |
-|Replikáció     |LRS         |LRS, ZRS, GRS         |
+|[Elérhető szintek](storage-files-planning.md#storage-tiers)     |Prémium szintű Storage         |Premium Storage, tranzakciós optimalizált, gyors elérésű, ritka elérésű         |
+|[Redundancia](storage-files-planning.md#redundancy)     |LRS         |LRS, ZRS, GRS         |
 |Hitelesítés     |Csak gazdagép-alapú hitelesítés        |Identitás-alapú hitelesítés, felhasználó alapú hitelesítés         |
 |Engedélyek     |UNIX-stílusú engedélyek         |NTFS-stílusú engedélyek         |
 |Fájlrendszer-szemantika     |POSIX-kompatibilis         |Nem POSIX-kompatibilis         |
@@ -74,7 +74,7 @@ Az elérhető hálózati beállításokkal kapcsolatos további információkér
 
 Az SMB-vel csatlakoztatott Azure-fájlmegosztás további Azure Files funkciókat kínál, és nem rendelkezik Azure Files szolgáltatás korlátozásával, mivel általánosan elérhető.
 
-### <a name="features"></a>Szolgáltatások
+### <a name="features"></a>Funkciók
 
 - Azure-fájlok szinkronizálása
 - Identitás-alapú hitelesítés
@@ -90,7 +90,7 @@ Az SMB Azure Files a következőkhöz ideális:
 - Éles környezetek
 - A [funkciókban](#features) felsorolt funkciók bármelyikét igénylő ügyfelek
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [NFS-fájlmegosztás létrehozása](storage-files-how-to-create-nfs-shares.md)
 - [SMB-fájlmegosztás létrehozása](storage-how-to-create-file-share.md)

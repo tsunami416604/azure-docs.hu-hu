@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/10/2017
-ms.openlocfilehash: 3b618513965298889fb656750419dedd79729f7f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1e006dd690e9c008afada8a490da6c3238bc0791
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536470"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91565411"
 ---
 # <a name="set-up-cross-region-disaster-recovery-for-integration-accounts-in-azure-logic-apps"></a>Régiók közötti vész-helyreállítás beállítása a Azure Logic Apps integrációs fiókjaihoz
 
@@ -98,15 +98,15 @@ A bejövő üzenetek vész-helyreállításának engedélyezéséhez válassza a
 
 3. Adja meg a kapcsolatok nevét, válassza ki az *elsődleges régió integrációs fiókját* a listából, és válassza a **Létrehozás**lehetőséget.   
 
-   ![Elsődleges régió integrációs fiókjának neve](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn2.png)
+   ![Képernyőkép, amely megjeleníti a kapcsolódási név megadásának helyét, és kiválasztja az elsődleges régió integrációs fiókját. ](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn2.png)
 
 4. A **vezérlési szám szinkronizálásának megkezdéséhez szükséges dátum és** idő beállítás nem kötelező. A **gyakoriság** beállítható **nap**, **óra**, **perc**vagy **másodperc** értékre egy intervallummal.   
 
-   ![DateTime és gyakoriság](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn3.png)
+   ![Képernyőkép, amely a vezérlési szám szinkronizálási beállításának megkezdéséhez szükséges DateTime értéket mutatja.](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn3.png)
 
 5. Válassza az **Új lépés** > **Művelet hozzáadása** lehetőséget.
 
-   ![Új lépés, művelet hozzáadása](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn4.png)
+   ![Képernyőkép, amely az új lépés gombot és a művelet hozzáadása lehetőséget jeleníti meg.](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn4.png)
 
 6. Keressen rá a **X12**, és válassza a **X12**lehetőséget.   
 
@@ -114,11 +114,11 @@ A bejövő üzenetek vész-helyreállításának engedélyezéséhez válassza a
 
 7. Ha egy műveletet másodlagos régió integrációs fiókjához szeretne csatlakoztatni, válassza a **kapcsolat módosítása**  >  **új kapcsolat hozzáadása** lehetőséget az elérhető integrációs fiókok listájához. Adja meg a kapcsolatok nevét, válassza ki a *másodlagos régió integrációs fiókját* a listából, és válassza a **Létrehozás**lehetőséget. 
 
-   ![Másodlagos régió integrációs fiókjának neve](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn6.png)
+   ![Képernyőkép a másodlagos régió integrációs fiókjának nevének hozzáadásáról.](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn6.png)
 
 8. Váltson a nyers bemenetekre a jobb felső sarokban lévő ikonra kattintva.
 
-   ![Váltás nyers bemenetekre](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12rawinputs.png)
+   ![Képernyőkép, amely megjeleníti a nyersre váltáshoz használandó ikont.](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12rawinputs.png)
 
 9. Válassza ki a dinamikus tartalom-választó törzsét, és mentse a logikai alkalmazást.
 
@@ -140,7 +140,7 @@ Az EDI-EDIFACT dokumentumok üzleti folytonossága a vezérlőelemek számán al
 
 A bejövő üzenetek vész-helyreállításának engedélyezéséhez válassza a EDIFACT-szerződés fogadási beállításai között található ismétlődő ellenőrzési beállításokat.
 
-![Ismétlődő ellenőrzési beállítások kiválasztása](./media/logic-apps-enterprise-integration-b2b-business-continuity/edifactdupcheck.png)  
+![A EDIFACT-szerződés fogadási beállításaiban található duplikált ellenőrzési beállításokat bemutató képernyőkép.](./media/logic-apps-enterprise-integration-b2b-business-continuity/edifactdupcheck.png)  
 
 1. [Logikai alkalmazás](../logic-apps/quickstart-create-first-logic-app-workflow.md) létrehozása másodlagos régióban.    
 
@@ -157,27 +157,27 @@ A bejövő üzenetek vész-helyreállításának engedélyezéséhez válassza a
 
 4. A **vezérlési szám szinkronizálásának megkezdéséhez szükséges dátum és** idő beállítás nem kötelező. A **gyakoriság** beállítható **nap**, **óra**, **perc**vagy **másodperc** értékre egy intervallummal.    
 
-   ![DateTime és gyakoriság](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn3.png)
+   ![A DateTime és a Frequency beállításait megjelenítő képernyőkép.](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn3.png)
 
 6. Válassza az **Új lépés** > **Művelet hozzáadása** lehetőséget.    
 
-   ![Új lépés, művelet hozzáadása](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn4.png)
+   ![Képernyőfelvétel: válassza ki a művelet hozzáadása lehetőséget.](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn4.png)
 
 7. Keressen rá a **EDIFACT**, és válassza a **EDIFACT**lehetőséget.   
 
-   ![Vezérlőelem-számok hozzáadása vagy frissítése](./media/logic-apps-enterprise-integration-b2b-business-continuity/EdifactChooseAction.png)
+   ![Képernyőkép, amely megjeleníti a vezérlőelem-számok hozzáadásának és frissítésének helyét.](./media/logic-apps-enterprise-integration-b2b-business-continuity/EdifactChooseAction.png)
 
 8. Ha egy műveletet másodlagos régió integrációs fiókjához szeretne csatlakoztatni, válassza a **kapcsolat módosítása**  >  **új kapcsolat hozzáadása** lehetőséget az elérhető integrációs fiókok listájához. Adja meg a kapcsolatok nevét, válassza ki a *másodlagos régió integrációs fiókját* a listából, és válassza a **Létrehozás**lehetőséget.
 
-   ![Másodlagos régió integrációs fiókjának neve](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn6.png)
+   ![Hozzon létre egy másodlagos régió integrációs fiókjának nevét.](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn6.png)
 
 9. Váltson a nyers bemenetekre a jobb felső sarokban lévő ikonra kattintva.
 
-   ![Váltás nyers bemenetekre](./media/logic-apps-enterprise-integration-b2b-business-continuity/Edifactrawinputs.png)
+   ![Képernyőkép, amely kiemeli az ikont, ha a nyers bemenetekre szeretne váltani.](./media/logic-apps-enterprise-integration-b2b-business-continuity/Edifactrawinputs.png)
 
 10. Válassza ki a dinamikus tartalom-választó törzsét, és mentse a logikai alkalmazást.   
 
-   ![Dinamikus tartalom mezői](./media/logic-apps-enterprise-integration-b2b-business-continuity/X12CN7.png)
+   ![Képernyőfelvétel: a dinamikus tartalom választója, ahol kiválaszthatja a törzs lehetőséget.](./media/logic-apps-enterprise-integration-b2b-business-continuity/X12CN7.png)
 
    Az adott időintervallum alapján az trigger lekérdezi az elsődleges régió vezérlési szám tábláját, és lekéri az új rekordokat.
    A művelet frissíti a rekordokat a másodlagos régió integrációs fiókjába. 
@@ -205,7 +205,7 @@ Az AS2 protokollt használó dokumentumok üzletmenet-folytonossága az üzenet 
    
 3. Adja meg a kapcsolatok nevét, válassza ki az *elsődleges régió integrációs fiókját* a listából, és válassza a **Létrehozás**lehetőséget.
 
-   ![Elsődleges régió integrációs fiókjának neve](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid2.png)
+   ![Képernyőkép, amely azt mutatja be, hogy hol kell megadni a kapcsolódási nevet egy MIC-érték létrehozásakor.](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid2.png)
 
 4. A **MIC-érték szinkronizálásának kezdési dátuma** nem kötelező. A **gyakoriság** beállítható **nap**, **óra**, **perc**vagy **másodperc** értékre egy intervallummal.   
 

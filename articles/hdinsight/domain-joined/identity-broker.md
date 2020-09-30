@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 09/23/2020
-ms.openlocfilehash: 8f1e0a6aecc9702552a3dd66acc8dc7eb5bf1d85
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 24f15b8a4d5a5afd3a2794fe686d3acb0036cdd8
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91529931"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91565326"
 ---
 # <a name="azure-hdinsight-id-broker-preview"></a>Azure HDInsight ID Broker (előzetes verzió)
 
@@ -28,16 +28,6 @@ A HIB a következő helyzetekben egyszerűsíti az összetett hitelesítési be�
 
 A HIB olyan hitelesítési infrastruktúrát biztosít, amely lehetővé teszi a OAuth (modern) és a Kerberos (örökölt) protokoll közötti áttérést anélkül, hogy a jelszó-kivonatokat a HRE-DS-be kellene szinkronizálnia. Ez az infrastruktúra egy Windows Server rendszerű virtuális gépen (ID Broker-csomóponton) futó összetevőkből áll, valamint a fürt átjárójának csomópontjaival.
 
-Az alábbi ábra a modern OAuth-alapú hitelesítési folyamatot mutatja az összes felhasználóra vonatkozóan, beleértve az összevont felhasználókat is, miután engedélyezte az azonosító-átvitelszervezőt:
-
-:::image type="content" source="media/identity-broker/identity-broker-architecture.png" alt-text="Hitelesítési folyamat azonosítója-átvitelszervezővel":::
-
-Ebben a diagramban az ügyfélnek (azaz böngészőnek vagy alkalmazásnak) először be kell állítania az OAuth tokent, majd a tokent egy HTTP-kérelemben kell megadnia az átjárónak. Ha már bejelentkezett más Azure-szolgáltatásokba, például a Azure Portalba, bejelentkezhet az HDInsight-fürtbe egyszeri bejelentkezéses (SSO) felhasználói élményben.
-
-Még mindig sok olyan örökölt alkalmazás lehet, amely csak az alapszintű hitelesítést támogatja (például felhasználónév/jelszó). Ilyen esetekben továbbra is használhatja a HTTP alapszintű hitelesítést a fürt átjáróinak való kapcsolódáshoz. Ebben a telepítőben biztosítania kell, hogy a hálózati kapcsolat az átjáró-csomópontok között az összevonási végpont (ADFS-végpont) felé legyen biztosítva, így biztosítva az átjáró-csomópontok közvetlen vonalát.
-
-:::image type="content" source="media/identity-broker/basic-authentication.png" alt-text="Hitelesítési folyamat azonosítója-átvitelszervezővel":::
-
 A következő táblázat segítségével meghatározhatja a szervezete által igényelt legjobb hitelesítési lehetőséget:
 
 |Hitelesítési lehetőségek |HDInsight-konfiguráció | Megfontolandó tényezők |
@@ -45,6 +35,18 @@ A következő táblázat segítségével meghatározhatja a szervezete által ig
 | Teljes OAuth | ESP + HIB | 1. a legtöbb biztonságos beállítás (MFA támogatott) 2.    NINCS szükség pass hash-szinkronizálásra. 3.  Nincs SSH/kinit parancsot/keytab kiterjesztésű hozzáférés a helyszíni fiókokhoz, amelyek nem rendelkeznek jelszó-kivonattal a HRE-DS-ben. 4.   A csak Felhőbeli fiókok továbbra is SSH/kinit parancsot/keytab kiterjesztésű. 5. Web-alapú hozzáférés a Ambari-hez a OAuth 6 használatával.  A OAuth támogatásához a régi alkalmazások (JDBC/ODBC stb.) frissítésére van szükség.|
 | OAuth + alapszintű hitelesítés | ESP + HIB | 1. webalapú hozzáférés a Ambari-hez a OAuth 2 használatával. Az örökölt alkalmazások továbbra is az alapszintű hitelesítést használják. 3. Az MFA-t le kell tiltani az alapszintű hitelesítéshez való hozzáféréshez. 4. NINCS szükség pass hash-szinkronizálásra. 5. Nincs SSH/kinit parancsot/keytab kiterjesztésű hozzáférés a helyszíni fiókokhoz, amelyek nem rendelkeznek jelszó-kivonattal a HRE-DS-ben. 6. A csak Felhőbeli fiókok továbbra is SSH/kinit parancsot. |
 | Teljesen egyszerű hitelesítés | ESP | 1. a legtöbb hasonló a helyszíni telepítésekhez. 2. Jelszó-kivonat szinkronizálása a HRE – DS-re van szükség. 3. A helyszíni fiókok SSH-/kinit parancsot-vagy keytab kiterjesztésű-t is használhatnak. 4. Az MFA-t le kell tiltani, ha a biztonsági másolati tároló ADLS Gen2 |
+
+Az alábbi ábra a modern OAuth-alapú hitelesítési folyamatot mutatja az összes felhasználóra vonatkozóan, beleértve az összevont felhasználókat is, miután engedélyezte az azonosító-átvitelszervezőt:
+
+:::image type="content" source="media/identity-broker/identity-broker-architecture.png" alt-text="Hitelesítési folyamat azonosítója-átvitelszervezővel":::
+
+Ebben a diagramban az ügyfélnek (azaz böngészőnek vagy alkalmazásnak) először be kell állítania az OAuth tokent, majd a tokent egy HTTP-kérelemben kell megadnia az átjárónak. Ha már bejelentkezett más Azure-szolgáltatásokba, például a Azure Portalba, bejelentkezhet az HDInsight-fürtbe egyszeri bejelentkezéses (SSO) felhasználói élményben.
+
+Még mindig sok olyan örökölt alkalmazás lehet, amely csak az alapszintű hitelesítést támogatja (például felhasználónév/jelszó). Ilyen esetekben továbbra is használhatja a HTTP alapszintű hitelesítést a fürt átjáróinak való kapcsolódáshoz. Ebben a telepítőben biztosítania kell, hogy a hálózati kapcsolat az átjáró-csomópontok között az összevonási végponthoz (AD FS végpont) legyen biztosítva, hogy az átjáró-csomópontok közvetlenül lássák. 
+
+Az alábbi ábrán az összevont felhasználók alapszintű hitelesítési folyamata látható. Először is az átjáró megkísérli befejezni a hitelesítést a [ROPC flow](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth-ropc) használatával, és ha nincs jelszó-kivonat szinkronizálva az Azure ad-vel, akkor visszaesik AD FS végpont észlelésére és a hitelesítés befejezésére az AD FS végponthoz való hozzáféréssel.
+
+:::image type="content" source="media/identity-broker/basic-authentication.png" alt-text="Hitelesítési folyamat azonosítója-átvitelszervezővel":::
 
 
 ## <a name="enable-hdinsight-id-broker"></a>HDInsight-azonosító-átvitelszervező engedélyezése
@@ -131,7 +133,7 @@ Az OAuth token beszerzése után ezt a HTTP-kérelem engedélyezési fejlécébe
 curl -k -v -H "Authorization: Bearer Access_TOKEN" -H "Content-Type: application/json" -X POST -d '{ "file":"wasbs://mycontainer@mystorageaccount.blob.core.windows.net/data/SparkSimpleTest.jar", "className":"com.microsoft.spark.test.SimpleFile" }' "https://<clustername>-int.azurehdinsight.net/livy/batches" -H "X-Requested-By:<username@domain.com>"
 ``` 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [HDInsight-fürt konfigurálása Enterprise Security Package használatával Azure Active Directory Domain Services](apache-domain-joined-configure-using-azure-adds.md)
 * [Azure Active Directory-felhasználók HDInsight-fürttel való szinkronizálása](../hdinsight-sync-aad-users-to-cluster.md)

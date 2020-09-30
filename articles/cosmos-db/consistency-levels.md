@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: aa09b1ec1e3f73547d211fab0907c9e3388c008b
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 27c1a896d25a0db00ff5f263d949f6657a658e3d
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91445338"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567202"
 ---
 # <a name="what-are-consistency-levels-in-azure-cosmos-db"></a>Mik a Azure Cosmos DB konzisztenciáji szintjei?
 
@@ -47,10 +47,10 @@ Az öt konzisztencia-szint szemantikai leírása itt található:
 
 Az elavultság ablakon belül a határértékek a következő konzisztencia-garanciákat biztosítják:
 
-- Azonos régióban lévő ügyfelek konzisztenciája egyetlen főkiszolgálós fiók esetén = erős
-- A különböző régiókban lévő ügyfelek konzisztenciája egyetlen főkiszolgálós fiók esetében = konzisztens előtag
-- Több főkiszolgálós fiók esetében egyetlen régióba írt ügyfelek konzisztenciája = konzisztens előtag
-- Több főkiszolgálós fiók esetében a különböző régiókba írt ügyfelek konzisztenciája = végleges
+- Azonos régióban lévő ügyfelek konzisztenciája egyetlen írási régióval rendelkező fiók esetén = erős
+- Különböző régiókban lévő ügyfelek konzisztenciája egyetlen írási régióval rendelkező fiók esetén = konzisztens előtag
+- A több írási régióval rendelkező fiókok esetében egyetlen régióba írt ügyfelek konzisztenciája = konzisztens előtag
+- A különböző régiókba írt ügyfelek konzisztenciája több írási régióval rendelkező fiók esetén = végleges
 
   A kötött elavulás gyakran olyan globálisan elosztott alkalmazások által van kiválasztva, amelyek alacsony írási késést várnak, de teljes globális rendelési garanciát igényelnek. A kötött elavulás kiválóan használható a csoportos együttműködést és megosztást, a tőzsdei előfizetést, a közzétételt és a várakozási sort is tartalmazó alkalmazások esetében. Az alábbi ábrán látható, hogy a megkötött elavultság konzisztens legyen a zenei megjegyzésekkel. Az adatok az "USA nyugati régiója 2" régiójába való beírása után az "USA 2. keleti régiója" és a "Kelet-Ausztrália" régiók a beállított maximális késési idő vagy a maximális műveletek alapján olvassák el a megírt értéket:
 
@@ -58,10 +58,10 @@ Az elavultság ablakon belül a határértékek a következő konzisztencia-gara
 
 A munkamenet-végrehajtón kívüli ügyfelek a következő garanciákat fogják látni:
 
-- Azonos régióban lévő ügyfelek konzisztenciája egyetlen főkiszolgálós fiók esetében = konzisztens előtag
-- A különböző régiókban lévő ügyfelek konzisztenciája egyetlen főkiszolgálós fiók esetében = konzisztens előtag
-- Több főkiszolgálós fiók esetében egyetlen régióba írt ügyfelek konzisztenciája = konzisztens előtag
-- Több főkiszolgálós fiók esetében több régióba írt ügyfelek konzisztenciája = végleges
+- Azonos régióban lévő ügyfelek konzisztenciája egyetlen írási régióval rendelkező fiók esetén = konzisztens előtag
+- Különböző régiókban lévő ügyfelek konzisztenciája egyetlen írási régióval rendelkező fiók esetén = konzisztens előtag
+- A több írási régióval rendelkező fiókok esetében egyetlen régióba írt ügyfelek konzisztenciája = konzisztens előtag
+- Több régióba írt ügyfelek konzisztenciája több írási régióval rendelkező fiók esetén = végleges
 
   A munkamenet konzisztenciája a legszélesebb körben használt konzisztencia-szint mind az egyetlen régió, mind a globálisan elosztott alkalmazások esetében. Az írási késleltetést, rendelkezésre állást és olvasási sebességet biztosít a végleges konzisztencia szempontjából, de biztosítja a konzisztencia-garanciát is, amely megfelel a felhasználó környezetében való működésre írt alkalmazások igényeinek. A következő ábra a munkamenetek konzisztenciáját mutatja be hangjegyzetekkel. Az "USA nyugati régiója 2 írója" és az "USA nyugati régiója 2 olvasója" ugyanazt a munkamenetet használja (A-munkamenet), hogy egyszerre ugyanazokat az adatfájlokat olvassák. Míg a "Kelet-Ausztrália" régió "B munkamenetet" használ, a rendszer később, de az írásokkal megegyező sorrendben fogadja az adatot.
 
@@ -73,10 +73,10 @@ Ha az írások sorrendben lettek elvégezve, akkor az ügyfél a következőt l�
 
 Az alábbi konzisztens előtagok konzisztencia-garanciái:
 
-- Azonos régióban lévő ügyfelek konzisztenciája egyetlen főkiszolgálós fiók esetében = konzisztens előtag
-- A különböző régiókban lévő ügyfelek konzisztenciája egyetlen főkiszolgálós fiók esetében = konzisztens előtag
-- Több főkiszolgálós fiók esetében egyetlen régióba írt ügyfelek konzisztenciája = konzisztens előtag
-- Több főkiszolgálós fiók esetében több régióba írt ügyfelek konzisztenciája = végleges
+- Azonos régióban lévő ügyfelek konzisztenciája egyetlen írási régióval rendelkező fiók esetén = konzisztens előtag
+- Különböző régiókban lévő ügyfelek konzisztenciája egyetlen írási régióval rendelkező fiók esetén = konzisztens előtag
+- A több írási régióval rendelkező fiókok esetében egyetlen régióba írt ügyfelek konzisztenciája = konzisztens előtag
+- Több régióba írt ügyfelek konzisztenciája több írási régióval rendelkező fiók esetén = végleges
 
 A következő ábra a konzisztencia-előtagot ábrázolja a zenei megjegyzésekkel. Az összes régióban az olvasások soha nem láthatók az írások sorrendjében:
 

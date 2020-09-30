@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 08/06/2020
+ms.date: 09/29/2020
 ms.author: duau
-ms.openlocfilehash: 52aba71ba289a1b5479a6a9eaef7e07418b563fd
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: c4021fbf87cc7cff8dde8e759423eb52c705cf97
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986375"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568335"
 ---
 # <a name="create-expressroute-direct-using-the-azure-portal"></a>Közvetlen ExpressRoute létrehozása a Azure Portal használatával
 
@@ -26,7 +26,7 @@ Ellenőrizze, hogy a **Microsoft. Network** erőforrás-szolgáltató regisztrá
 1. Nyissa meg az előfizetési beállításokat az [Azure Resource Providers és types](../azure-resource-manager/management/resource-providers-and-types.md)című témakörben leírtak szerint.
 1. Az előfizetésben az **erőforrás-szolgáltatóknál**ellenőrizze, hogy a **Microsoft. Network** szolgáltató **regisztrált** állapotot jelenít meg. Ha a Microsoft. Network erőforrás-szolgáltató nem szerepel a regisztrált szolgáltatók listáján, adja hozzá.
 
-## <a name="1-create-expressroute-direct"></a><a name="create-erdir"></a>1. ExpressRoute közvetlen létrehozása
+## <a name="create-expressroute-direct"></a><a name="create-erdir"></a>Közvetlen ExpressRoute létrehozása
 
 1. A [Azure Portal](https://portal.azure.com) menüben vagy a **Kezdőlap** lapon válassza az **erőforrás létrehozása**lehetőséget.
 
@@ -47,7 +47,7 @@ Ellenőrizze, hogy a **Microsoft. Network** erőforrás-szolgáltató regisztrá
 
 1. Ezután fejezze be a mezőket a **konfiguráció** lapon.
 
-    :::image type="content" source="./media/how-to-expressroute-direct-portal/configuration.png" alt-text="Konfigurációs lap":::
+    :::image type="content" source="./media/how-to-expressroute-direct-portal/configuration.png" alt-text="Alapismeretek lap":::
 
     * **Egyenrangú hely**: az a társítási hely, ahol csatlakozni fog a ExpressRoute Direct-erőforráshoz. További információ a [ExpressRoute helyeiről](expressroute-locations-providers.md).
    * **Sávszélesség**: a lefoglalni kívánt port pár sávszélessége. A ExpressRoute Direct a 10 GB-os és 100 GB-os sávszélesség-beállításokat egyaránt támogatja. Ha a kívánt sávszélesség nem érhető el a megadott egyenrangú helyen, [Nyisson meg egy támogatási kérést a Azure Portal](https://aka.ms/azsupt).
@@ -61,21 +61,25 @@ Ellenőrizze, hogy a **Microsoft. Network** erőforrás-szolgáltató regisztrá
 
 1. Adja meg az összes erőforrás címkéjét, majd válassza a **felülvizsgálat + létrehozás** lehetőséget a ExpressRoute közvetlen erőforrás-beállításainak ellenőrzéséhez.
 
-    :::image type="content" source="./media/how-to-expressroute-direct-portal/validate.png" alt-text="Áttekintés és létrehozás":::
+    :::image type="content" source="./media/how-to-expressroute-direct-portal/validate.png" alt-text="Alapismeretek lap":::
 
 1. Kattintson a **Létrehozás** gombra. Megjelenik egy üzenet, amely tájékoztatja, hogy a telepítés folyamatban van. Az állapot ekkor megjelenik ezen a lapon az erőforrások létrehozásakor. 
 
-## <a name="2-change-admin-state-of-links"></a><a name="state"></a>2. a hivatkozások rendszergazdai állapotának módosítása
+## <a name="generate-the-letter-of-authorization-loa"></a><a name="authorization"></a>Engedélyezési engedély (LOA) előállítása
+
+Az engedélyezési levél létrehozása jelenleg nem érhető el a portálról. Az engedélyezési levél beszerzéséhez használja a **[Azure PowerShell](expressroute-howto-erdirect.md#authorization)** vagy az **[Azure CLI](expressroute-howto-expressroute-direct-cli.md#authorization)** -t.
+
+## <a name="change-admin-state-of-links"></a><a name="state"></a>Hivatkozások rendszergazdai állapotának módosítása
 
 Ezt a folyamatot kell használni az 1. rétegbeli tesztek elvégzéséhez, hogy az egyes kapcsolatok megfelelően legyenek kijavítani az egyes útválasztók számára az elsődleges és a másodlagos számára.
 
 1. A ExpressRoute közvetlen erőforrásának **áttekintése** lap **hivatkozások** területén válassza a **link1**lehetőséget.
 
-    :::image type="content" source="./media/how-to-expressroute-direct-portal/link.png" alt-text="1. hivatkozás" lightbox="./media/how-to-expressroute-direct-portal/link-expand.png":::
+    :::image type="content" source="./media/how-to-expressroute-direct-portal/link.png" alt-text="Alapismeretek lap" lightbox="./media/how-to-expressroute-direct-portal/link-expand.png":::
 
 1. Állítsa be a **rendszergazdai állapot** beállítást **engedélyezve**értékre, majd válassza a **Mentés**lehetőséget.
 
-    :::image type="content" source="./media/how-to-expressroute-direct-portal/state.png" alt-text="Rendszergazdai állapot":::
+    :::image type="content" source="./media/how-to-expressroute-direct-portal/state.png" alt-text="Alapismeretek lap":::
 
     >[!IMPORTANT]
     >A számlázás akkor kezdődik, amikor a rendszergazdai állapot engedélyezve van bármelyik hivatkozáson.
@@ -83,7 +87,7 @@ Ezt a folyamatot kell használni az 1. rétegbeli tesztek elvégzéséhez, hogy 
 
 1. Ismételje meg ugyanezt a folyamatot a **link2**.
 
-## <a name="3-create-a-circuit"></a><a name="circuit"></a>3. áramkör létrehozása
+## <a name="create-a-circuit"></a><a name="circuit"></a>Kapcsolatcsoport létrehozása
 
 Alapértelmezés szerint 10 áramkört hozhat létre az előfizetésben, ahol a ExpressRoute Direct erőforrás. Ezt a számot támogatással növelheti. A kiosztott és a felhasznált sávszélesség nyomon követése felelős. A kiépített sávszélesség az összes áramkör sávszélességének összege a ExpressRoute közvetlen erőforráson. A felhasznált sávszélesség a mögöttes fizikai felületek fizikai használata.
 
@@ -97,15 +101,15 @@ Az alábbi lépések segítségével ExpressRoute-áramkört hozhat létre a Exp
 
 1. A ExpressRoute közvetlen **beállításai** szakaszban válassza az **áramkörök**, majd a **+ Hozzáadás**lehetőséget. 
 
-    :::image type="content" source="./media/how-to-expressroute-direct-portal/add.png" alt-text="Képernyőfelvétel: a ExpressRoute beállításai a kiválasztott áramkörökkel és a kijelöltek hozzáadása." lightbox="./media/how-to-expressroute-direct-portal/add-expand.png":::
+    :::image type="content" source="./media/how-to-expressroute-direct-portal/add.png" alt-text="Alapismeretek lap" lightbox="./media/how-to-expressroute-direct-portal/add-expand.png":::
 
 1. Konfigurálja a beállításokat a **konfiguráció** lapon.
 
-   :::image type="content" source="./media/how-to-expressroute-direct-portal/configuration2.png" alt-text="Konfigurációs lap":::
+   :::image type="content" source="./media/how-to-expressroute-direct-portal/configuration2.png" alt-text="Alapismeretek lap":::
 
 1. Adjon meg bármilyen erőforrás-címkét, majd az erőforrás létrehozása előtt válassza a **felülvizsgálat + létrehozás** lehetőséget az értékek érvényesítéséhez.
 
-   :::image type="content" source="./media/how-to-expressroute-direct-portal/review.png" alt-text="Áttekintés és létrehozás":::
+   :::image type="content" source="./media/how-to-expressroute-direct-portal/review.png" alt-text="Alapismeretek lap":::
 
 1. Kattintson a **Létrehozás** gombra. Megjelenik egy üzenet, amely tájékoztatja, hogy a telepítés folyamatban van. Az állapot ekkor megjelenik ezen a lapon az erőforrások létrehozásakor. 
 

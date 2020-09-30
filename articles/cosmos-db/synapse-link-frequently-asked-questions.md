@@ -6,12 +6,12 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/09/2020
-ms.openlocfilehash: b2fc13158d197aaa2e870d1b772386628ee3f9bc
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 34bc8e3775c2334b0cdbb22c8cad8f8d1dd5c732
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91398801"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568616"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Gyakori kérdések az Azure Cosmos DB-hez készült Azure Synapse Linkkel kapcsolatban
 
@@ -25,7 +25,7 @@ A nyilvános előzetes kiadásban a szinapszis hivatkozás a Azure Cosmos DB SQL
 
 ### <a name="is-synapse-link-supported-for-multi-region-azure-cosmos-accounts"></a>Támogatott-e a szinapszis-hivatkozás a többrégiós Azure Cosmos-fiókok esetében?
 
-Igen, a többrégiós Azure Cosmos-fiókok esetében az analitikus tárolóban tárolt adatforgalom is globálisan terjeszthető. Az Azure szinapszis Analytics szolgáltatásból származó, az egyetlen írási régióból (egyetlen főkiszolgálóból) vagy több írási régióból (más néven több főkiszolgálóból) származó analitikai lekérdezések a legközelebbi helyi régióból is kiszolgálható.
+Igen, a többrégiós Azure Cosmos-fiókok esetében az analitikus tárolóban tárolt adatforgalom is globálisan terjeszthető. Az Azure Synapse Analyticsről végzett elemzési lekérdezések a legközelebbi helyi régióról szolgálhatók ki, függetlenül attól, hogy egy vagy több írási régióról van szó.
 
 Ha többrégiós Azure Cosmos-fiókot szeretne konfigurálni az analitikai tár támogatásával, ajánlott az összes szükséges régiót hozzáadni a fiók létrehozásakor.
 
@@ -120,7 +120,7 @@ A [Azure Cosmos db Analytical Store](analytical-store-introduction.md) nyilváno
 
 ### <a name="what-are-the-ways-to-authenticate-with-the-analytical-store"></a>Milyen módon lehet hitelesíteni az analitikai tárolót?
 
-Az analitikai tárolóval való hitelesítés megegyezik a tranzakciós tárolóval. Egy adott adatbázis esetében a Master vagy a csak olvasható kulccsal végezheti el a hitelesítést. A szinapszis Studióban használhatja a társított szolgáltatást, hogy megakadályozza a Azure Cosmos DB kulcsok beillesztését a Spark-jegyzetfüzetekben. A társított szolgáltatáshoz való hozzáférés mindenki számára elérhető, aki hozzáfér a munkaterülethez.
+Az analitikai tárolóval való hitelesítés megegyezik a tranzakciós tárolóval. Egy adott adatbázis esetében az elsődleges vagy csak olvasható kulccsal végezheti el a hitelesítést. A szinapszis Studióban használhatja a társított szolgáltatást, hogy megakadályozza a Azure Cosmos DB kulcsok beillesztését a Spark-jegyzetfüzetekben. A társított szolgáltatáshoz való hozzáférés mindenki számára elérhető, aki hozzáfér a munkaterülethez.
 
 ## <a name="synapse-run-times"></a>Szinapszis-futtatási idő
 
@@ -150,13 +150,13 @@ Az analitikai tárolóval engedélyezett Azure Cosmos DB tárolóban a következ
 
 A rendszer a következő ikonnal fogja megjeleníteni a tranzakciós tároló tárolóját:
 
-:::image type="content" source="./media/synapse-link-frequently-asked-questions/transactional-store-icon.png" alt-text="Azure Cosmos DB tároló engedélyezve a tranzakciós tárolóval – ikon":::
+:::image type="content" source="./media/synapse-link-frequently-asked-questions/transactional-store-icon.png" alt-text="Azure Cosmos DB tároló engedélyezve az analitikai tárolóval – ikon":::
  
 ### <a name="how-do-you-pass-azure-cosmos-db-credentials-from-synapse-studio"></a>Hogyan továbbíthatja Azure Cosmos DB hitelesítő adatait a szinapszis studióból?
 
 Jelenleg Azure Cosmos DB hitelesítő adatokat a rendszer a társított szolgáltatásnak a Azure Cosmos DB adatbázisokhoz hozzáféréssel rendelkező felhasználó általi létrehozásakor adja át. A tárolóhoz való hozzáférés a munkaterülethez hozzáférő más felhasználók számára is elérhető.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tudnivalók a [szinapszis-hivatkozás előnyeiről](synapse-link.md#synapse-link-benefits)
 

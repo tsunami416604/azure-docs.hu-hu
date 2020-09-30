@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: rosouz
-ms.openlocfilehash: 75ad602eb6b9a0ce52b2b4c4115f351668327c43
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d27eb4dc6c4e4bd8f0a744ad925d91aee0faa8d0
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91253191"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567145"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>Mi a Azure Cosmos DB Analytical Store (előzetes verzió)?
 
@@ -52,7 +52,7 @@ Az analitikus tároló, amely egy oszlopos tároló, alkalmasabb az ilyen lekér
 
 Az alábbi képen a tranzakciós sor tárolója és az analitikai oszlop tárolója látható Azure Cosmos DBban:
 
-:::image type="content" source="./media/analytical-store-introduction/transactional-analytical-data-stores.png" alt-text="Tranzakciós sorok tárolása és analitikai oszlopainak tárolása Azure Cosmos DB" border="false":::
+:::image type="content" source="./media/analytical-store-introduction/transactional-analytical-data-stores.png" alt-text="Példa operatív táblázatra" border="false":::
 
 ### <a name="decoupled-performance-for-analytical-workloads"></a>Leválasztott teljesítmény az analitikai számítási feladatokhoz
 
@@ -91,7 +91,7 @@ A következő megkötések alkalmazhatók a Azure Cosmos DB lévő operatív ada
 
 ##### <a name="schema-representation"></a>Séma ábrázolása
 
-Az analitikai tárolóban két mód van a séma ábrázolására. Ezek a módok kompromisszumokat mutatnak az oszlopos ábrázolás egyszerűsége, a polimorf sémák kezelését és a lekérdezési élmény egyszerűségét illetően:
+Az elemzési tárban két módon lehet ábrázolni a sémákat. Mindkettő kompromisszumos megoldást jelent az oszlopos ábrázolás egyszerűsége, a polimorf sémák kezelése és a lekérdezés egyszerűsége szempontjából:
 
 * Jól definiált séma-ábrázolás
 * Teljes hűségű séma ábrázolása
@@ -155,7 +155,7 @@ Itt látható az összes tulajdonság adattípusa és az utótag-ábrázolások 
 |Null   | ". null"   | null|
 |Sztring|    ". String" | „ABC”|
 |Timestamp |    ". Timestamp" |  Időbélyeg (0, 0)|
-|DateTime   |". Date"    | ISODate ("2020-08-21T07:43:07.375 Z")|
+|Dátum/idő   |". Date"    | ISODate ("2020-08-21T07:43:07.375 Z")|
 |ObjectId   |". objectId"    | ObjectId ("5f3f7b59330ec25c132623a2")|
 |Dokumentum   |". Object" |    {"a": "a"}|
 
@@ -171,7 +171,7 @@ Ha globálisan elosztott Azure Cosmos DB-fiókkal rendelkezik, a tárolóhoz tar
 
 ### <a name="security"></a>Biztonság
 
-Az analitikai tárolóval megegyező hitelesítés megegyezik egy adott adatbázis tranzakciós tárolójával. A hitelesítéshez használhat Master vagy csak olvasható kulcsokat is. A szinapszis Studióban használhatja a társított szolgáltatást, hogy megakadályozza a Azure Cosmos DB kulcsok beillesztését a Spark-jegyzetfüzetekben. A társított szolgáltatáshoz való hozzáférés mindenki számára elérhető, aki hozzáfér a munkaterülethez.
+Az analitikai tárolóval megegyező hitelesítés megegyezik egy adott adatbázis tranzakciós tárolójával. A hitelesítéshez elsődleges vagy csak olvasható kulcsokat is használhat. A szinapszis Studióban használhatja a társított szolgáltatást, hogy megakadályozza a Azure Cosmos DB kulcsok beillesztését a Spark-jegyzetfüzetekben. A társított szolgáltatáshoz való hozzáférés mindenki számára elérhető, aki hozzáfér a munkaterülethez.
 
 ### <a name="support-for-multiple-azure-synapse-analytics-runtimes"></a>Több Azure szinapszis Analytics-futtatókörnyezet támogatása
 

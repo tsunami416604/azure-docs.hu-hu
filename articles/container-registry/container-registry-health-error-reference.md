@@ -1,14 +1,14 @@
 ---
-title: Hiba az állapot-ellenőrzésekhez
+title: Hiba a beállításjegyzék állapotának ellenőrzéséhez
 description: Hibakódok és lehetséges megoldások olyan problémákra, amelyek a Azure Container Registry
 ms.topic: article
 ms.date: 07/02/2019
-ms.openlocfilehash: a23b95ea0eaffc053c47b70107c95d2b1cdc0645
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9136d41097207bfb17776071e958308f36a9aadd
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82978314"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91565598"
 ---
 # <a name="health-check-error-reference"></a>Állapot-ellenőrzési hiba referenciája
 
@@ -90,7 +90,7 @@ Ez a hiba azt jelenti, hogy a beállításjegyzék bejelentkezési kiszolgálój
 
 Ez a hiba azt jelenti, hogy az ügyfél nem tudott biztonságos kapcsolatot létesíteni a tároló beállításjegyzékével. Ez a hiba általában akkor fordul elő, ha proxykiszolgálót futtat vagy használ.
 
-*Lehetséges megoldások*: [itt](https://github.com/Azure/azure-cli/blob/master/doc/use_cli_effectively.md#working-behind-a-proxy)találhat további információt a proxy mögötti használatáról.
+*Lehetséges megoldások*: [itt](/cli/azure/use-cli-effectively)találhat további információt a proxy mögötti használatáról.
 
 ## <a name="login_server_error"></a>LOGIN_SERVER_ERROR
 
@@ -102,7 +102,7 @@ Ez a hiba azt jelenti, hogy a CLI nem találta meg az adott beállításjegyzék
 
 Ez a hiba azt jelenti, hogy a CLI nem kompatibilis a Docker/közjegyző jelenleg telepített verziójával. A probléma megoldásához a Docker-telepítő közjegyző-ügyfelét manuálisan cserélje le a 0.6.0 korábbi verziójára a notary.exe verziójának a lefokozásához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A beállításjegyzék állapotának vizsgálatához tekintse meg [Az Azure Container Registry állapotának ellenőrzését](container-registry-check-health.md)ismertető témakört.
 

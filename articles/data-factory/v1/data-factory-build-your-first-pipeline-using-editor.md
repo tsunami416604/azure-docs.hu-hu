@@ -11,19 +11,19 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: 4b291dcc95e0beecb1fd9fbf038055d8a77c7b79
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 50e6ce9b4c206650de72d9cdd41bdd6dd555acd2
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85254973"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91566601"
 ---
 # <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>Oktatóanyag: Az első adat-előállító létrehozása az Azure Portal használatával
 > [!div class="op_single_selector"]
 > * [Áttekintés és előfeltételek](data-factory-build-your-first-pipeline.md)
 > * [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
 > * [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
-> * [Azure Resource Manager-sablon](data-factory-build-your-first-pipeline-using-arm.md)
+> * [Azure Resource Manager sablon](data-factory-build-your-first-pipeline-using-arm.md)
 > * [REST API](data-factory-build-your-first-pipeline-using-rest-api.md)
 
 
@@ -171,7 +171,7 @@ Ebben a lépésben egy igény szerinti HDInsight-fürtöt társít a data factor
 
 1. Győződjön meg arról, hogy a bal oldali fanézetben megjelenik az **AzureStorageLinkedService** és a **HDInsightOnDemandLinkedService**.
 
-    ![Fanézet a társított szolgáltatásokkal](./media/data-factory-build-your-first-pipeline-using-editor/tree-view-linked-services.png)
+    ![Képernyőkép, amely azt mutatja, hogy a AzureStorageLinkedService és a HDInsightOnDemandLinkedService össze vannak kapcsolva.](./media/data-factory-build-your-first-pipeline-using-editor/tree-view-linked-services.png)
 
 ## <a name="create-datasets"></a>Adatkészletek létrehozása
 Ebben a lépésben adatkészleteket hoz létre, amelyek a Hive-feldolgozás bemeneti és kimeneti adatait képviselik. Ezek az adatkészletek az oktatóanyagban előzőleg létrehozott AzureStorageLinkedService szolgáltatásra hivatkoznak. A társított szolgáltatás egy tárfiókra mutat. Az adatkészletek meghatározzák a bemeneti és kimeneti adatokat tartalmazó tárban lévő tárolót, mappát és fájlnevet.   
@@ -413,7 +413,7 @@ A folyamatok monitorozásához a Monitor & Manage alkalmazást is használhatja.
 
     ![Monitor & Manage csempe](./media/data-factory-build-your-first-pipeline-using-editor/monitor-and-manage-tile.png)
 
-1. A Monitor & Manage alkalmazásban módosítsa a **kezdési idő** és a **befejezési idő** értékét, hogy megfeleljen a folyamat kezdési és befejezési idejének. Válassza az **Alkalmaz** lehetőséget.
+1. A Monitor & Manage alkalmazásban módosítsa a **kezdési idő** és a **befejezési idő** értékét, hogy megfeleljen a folyamat kezdési és befejezési idejének. Kattintson az **Alkalmaz** gombra.
 
     ![Monitor & Manage alkalmazás](./media/data-factory-build-your-first-pipeline-using-editor/monitor-and-manage-app.png)
 
@@ -431,13 +431,13 @@ Az oktatóanyag során létrehozott egy adat-előállítót, amely egy HDInsight
 * Két adatkészlet létrehozása, amelyek leírják a bemeneti és kimeneti adatokat a folyamat HDInsight Hive-tevékenysége számára.
 * Egy HDInsight Hive-tevékenységgel rendelkező folyamat létrehozása.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az oktatóanyag során létrehozott egy folyamatot egy adatátalakítási tevékenységgel (HDInsight-tevékenység), amely egy Hive-szkriptet futtat egy igény szerinti HDInsight-fürtön. A másolási tevékenység a blob Storage-ból Azure SQL Databaseba való másolásával kapcsolatos információkért lásd [: oktatóanyag: adatok másolása blob Storage-ból a SQL Databaseba](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 | Témakör | Leírás |
 |:--- |:--- |
-| [Pipelines](data-factory-create-pipelines.md) |Ennek a cikknek a segítségével megismerheti a Data Factory folyamatait és tevékenységeit, és megtudhatja, hogyan hozhat létre velük teljes körű, adatvezérelt munkafolyamatokat saját forgatókönyvéhez vagy vállalkozásához. |
+| [Folyamatok](data-factory-create-pipelines.md) |Ennek a cikknek a segítségével megismerheti a Data Factory folyamatait és tevékenységeit, és megtudhatja, hogyan hozhat létre velük teljes körű, adatvezérelt munkafolyamatokat saját forgatókönyvéhez vagy vállalkozásához. |
 | [Adatkészletek](data-factory-create-datasets.md) |Ennek a cikknek a segítségével megismerheti a Data Factory adatkészleteit. |
 | [Ütemezés és végrehajtás](data-factory-scheduling-and-execution.md) |Ez a cikk ismerteti a Data Factory-alkalmazásmodell ütemezési és végrehajtási aspektusait. |
 | [Folyamatok monitorozása és felügyelete a Monitor & Manage alkalmazással](data-factory-monitor-manage-app.md) |Ez a cikk ismerteti, hogyan monitorozhatja és kezelheti a folyamatokat, illetve hogyan kereshet bennük hibákat a Monitoring & Management alkalmazással. |

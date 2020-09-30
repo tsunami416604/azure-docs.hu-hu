@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
-ms.openlocfilehash: b491c63e141389f1a53a884623f1c054ff2b8b41
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b1b766e3cb337151c5ca9b35e2040a2a47124151
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91276862"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568545"
 ---
 # <a name="branching-and-chaining-activities-in-an-azure-data-factory-pipeline-using-the-azure-portal"></a>Elágazó és láncolási tevékenységek egy Azure Data Factory-folyamatban a Azure Portal használatával
 
@@ -184,7 +184,7 @@ Ebben a lépésben egy másolási tevékenységgel és két webes tevékenységg
    ![Másolási tevékenység húzása](./media/tutorial-control-flow-portal/drag-drop-copy-activity.png)
 5. A **Másolás** tevékenység **Tulajdonságok** ablakában (a képernyő alján) váltson a **Forrás** lapra, majd kattintson az **+ Új** elemre. Ebben a lépésben létrehoz egy forrásadatkészletet a másolási tevékenységhez.
 
-   ![Forrásadatkészlet](./media/tutorial-control-flow-portal/new-source-dataset-button.png)
+   ![Képernyőkép, amely bemutatja, hogyan hozhat létre forrás-adatkészletet a másolási tevékenységhez.](./media/tutorial-control-flow-portal/new-source-dataset-button.png)
 6. Az **Új adatkészlet** ablakban válassza az **Azure Blob Storage** lehetőséget, majd kattintson a **Befejezés** gombra.
 
    ![Select Azure Blob Storage](./media/tutorial-control-flow-portal/select-azure-blob-storage.png)
@@ -273,7 +273,7 @@ Ebben a lépésben egy másolási tevékenységgel és két webes tevékenységg
         ![A második webes tevékenység beállításai](./media/tutorial-control-flow-portal/web-activity2-settings.png)         
 22. Válassza ki a **Másolás** tevékenységet a folyamattervezőben, kattintson a **+->** gombra, majd válassza a **Hiba** lehetőséget.  
 
-    ![A második webes tevékenység beállításai](./media/tutorial-control-flow-portal/select-copy-failure-link.png)
+    ![Képernyőkép, amely bemutatja, hogyan választhatja ki a hibát a másolási tevékenységben a folyamat-tervezőben.](./media/tutorial-control-flow-portal/select-copy-failure-link.png)
 23. Húzza a másolási tevékenység melletti **piros** gombot a **SendFailureEmailActivity** nevű második webes tevékenységre. Szabadon áthelyezheti a tevékenységeket, így a folyamat a következő képhez hasonlóan fog kinézni:
 
     ![A teljes folyamat az összes tevékenységgel](./media/tutorial-control-flow-portal/full-pipeline.png)
@@ -304,7 +304,7 @@ Ebben a lépésben egy másolási tevékenységgel és két webes tevékenységg
     ![Sikeres folyamatfuttatás](./media/tutorial-control-flow-portal/monitor-success-pipeline-run.png)
 2. A folyamatfuttatáshoz társított **tevékenységfuttatások megtekintéséhez** kattintson az első hivatkozásra a **Műveletek** oszlopban. A fenti **Folyamatok** elemre kattintva visszaválthat az előző nézetre. A lista frissítéséhez kattintson a **Frissítés** elemre.
 
-    ![Tevékenységfuttatások](./media/tutorial-control-flow-portal/activity-runs-success.png)
+    ![Képernyőfelvétel: a tevékenység-futtatások listájának megjelenítése.](./media/tutorial-control-flow-portal/activity-runs-success.png)
 
 ## <a name="trigger-a-pipeline-run-that-fails"></a>Sikertelen folyamatfuttatás aktiválása
 1. Váltson a bal oldalon található **Szerkesztés** lapra.

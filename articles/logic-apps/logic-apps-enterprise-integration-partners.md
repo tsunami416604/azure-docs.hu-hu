@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
-ms.openlocfilehash: e58cbe85f30ea09adde45d55bb7b80c710c45495
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8e3805fae5bf6cc5ad8cf759d3ba75220c6ddbd8
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74792442"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91565071"
 ---
 # <a name="add-trading-partners-to-integration-accounts-for-azure-logic-apps"></a>Kereskedelmi partnerek hozzáadása az Azure Logic Apps integrációs fiókjaihoz
 
@@ -47,7 +47,7 @@ Egy megállapodásban megadhatja a fogadó partner szemszögéből érkező bej�
 
 1. Válassza ki a **partnerek** csempét.
 
-   ![Válassza a "partnerek" csempét](./media/logic-apps-enterprise-integration-partners/choose-partners.png)
+   ![Képernyőkép, amely a partnerek csempét jeleníti meg.](./media/logic-apps-enterprise-integration-partners/choose-partners.png)
 
 1. A **partnerek**területen válassza a **Hozzáadás**lehetőséget. A **Partner hozzáadása**területen adja meg a partner adatait az alábbi táblázatban leírtak szerint.
 
@@ -55,9 +55,9 @@ Egy megállapodásban megadhatja a fogadó partner szemszögéből érkező bej�
 
    | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
-   | **Name (Név)** | Yes | A partner neve |
-   | **Selejtező** | Yes | Az a hitelesítő szervezet, amely egyedi üzleti identitásokat biztosít a szervezeteknek, például **D-U-N-S (Dun & bradstreettől)**. <p>A partnerek kölcsönösen meghatározott üzleti identitást választhatnak. Ezekben az esetekben válassza a **kölcsönösen meghatározott** EDIFACT vagy **kölcsönösen definiált (X12)** beállítást a X12 számára. <p>A RosettaNet esetében válassza a csak a **Duns**lehetőséget, amely a standard. |
-   | **Érték** | Yes | Egy érték, amely azonosítja a logikai alkalmazások által fogadott dokumentumokat. <p>A RosettaNet esetében ennek az értéknek egy kilenc számjegyű számnak kell lennie, amely megfelel a DUNS számának. |
+   | **Név** | Igen | A partner neve |
+   | **Selejtező** | Igen | Az a hitelesítő szervezet, amely egyedi üzleti identitásokat biztosít a szervezeteknek, például **D-U-N-S (Dun & bradstreettől)**. <p>A partnerek kölcsönösen meghatározott üzleti identitást választhatnak. Ezekben az esetekben válassza a **kölcsönösen meghatározott** EDIFACT vagy **kölcsönösen definiált (X12)** beállítást a X12 számára. <p>A RosettaNet esetében válassza a csak a **Duns**lehetőséget, amely a standard. |
+   | **Érték** | Igen | Egy érték, amely azonosítja a logikai alkalmazások által fogadott dokumentumokat. <p>A RosettaNet esetében ennek az értéknek egy kilenc számjegyű számnak kell lennie, amely megfelel a DUNS számának. |
    ||||
 
    > [!NOTE]
@@ -86,12 +86,12 @@ Válassza ki a **partnerek** csempét.
 
    | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
-   | **Partner besorolása** | No | A partner szervezeti típusa |
-   | **Ellátási lánc kódja** | No | A partner ellátási láncának kódja, például "információs technológia" vagy "elektronikus összetevők" |
-   | **Kapcsolattartó neve** | No | A partner kapcsolattartójának neve |
-   | **E-mail** | No | A partner e-mail-címe |
-   | **Fax** | No | A partner faxszáma |
-   | **Telefon** | No | A partner telefonszáma |
+   | **Partner besorolása** | Nem | A partner szervezeti típusa |
+   | **Ellátási lánc kódja** | Nem | A partner ellátási láncának kódja, például "információs technológia" vagy "elektronikus összetevők" |
+   | **Kapcsolattartó neve** | Nem | A partner kapcsolattartójának neve |
+   | **E-mail** | Nem | A partner e-mail-címe |
+   | **Fax** | Nem | A partner faxszáma |
+   | **Telefon** | Nem | A partner telefonszáma |
    ||||
 
 1. Ha elkészült, kattintson **az OK** gombra a módosítások mentéséhez.
@@ -100,12 +100,12 @@ Válassza ki a **partnerek** csempét.
 
 1. A [Azure Portalban](https://portal.azure.com)keresse meg és válassza ki az integrációs fiókját. Válassza ki a **partnerek** csempét.
 
-   ![Válassza a "partnerek" csempét](./media/logic-apps-enterprise-integration-partners/choose-partners-to-delete.png)
+   ![Képernyőkép, amely megjeleníti a partnereknek a kiválasztott partnerek csempéjét.](./media/logic-apps-enterprise-integration-partners/choose-partners-to-delete.png)
 
 1. A **partnerek**területen válassza ki a törölni kívánt partnert. Válassza a **Törlés** elemet.
 
    ![Partner törlése](./media/logic-apps-enterprise-integration-partners/delete-partner.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [szerződésekről](../logic-apps/logic-apps-enterprise-integration-agreements.md)

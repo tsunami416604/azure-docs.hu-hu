@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 07/22/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 24f321e3c3c0fe8e85633edb505879874e8c772f
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 6de0a6632c53055dd3d3f428481dcc465b67ef6e
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019232"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568012"
 ---
 # <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>A Azure Cosmos DB metrikáinak monitorozása és hibakeresése
 
@@ -41,7 +41,7 @@ A **metrikák** ablaktáblán a következő metrikák érhetők el:
 
 * **Konzisztencia-mérőszámok** – ez a metrika azt mutatja be, hogy az esetleges konzisztencia a kiválasztott konzisztencia-modellnél. A többrégiós fiókok esetében ez a metrika a kiválasztott régiók közötti replikációs késést is megjeleníti.
 
-* **Rendszermetrikák** – ez a mérőszám azt mutatja, hogy a fő partíció hány metaadat-kérelmet szolgáltat. Emellett segít azonosítani a szabályozott kérelmeket.
+* **Rendszermetrikák** – ez a metrika azt mutatja, hogy az elsődleges partíció hány metaadat-kérelmet szolgáltat. Emellett segít azonosítani a szabályozott kérelmeket.
 
 A következő szakaszokban ismertetjük azokat a gyakori forgatókönyveket, amelyekben Azure Cosmos DB mérőszámok használhatók. 
 
@@ -51,13 +51,13 @@ Első lépésként lépjen a [Azure Portalra](https://portal.azure.com) , és na
 
 A leggyakoribb hiba az állapotkód 429 (ráta korlátozása/szabályozása). Ez a hiba azt jelenti, hogy a Azure Cosmos DBre irányuló kérelmek többek, mint a kiosztott átviteli sebesség. A probléma leggyakoribb megoldása az, hogy az adott gyűjteményhez tartozó [RUs vertikális felskálázását](./set-throughput.md) .
 
-:::image type="content" source="media/use-metrics/metrics-12.png" alt-text="Kérelmek száma percenként":::
+:::image type="content" source="media/use-metrics/metrics-12.png" alt-text="Cosmos DB teljesítmény-metrikák a Azure Portal":::
 
 ## <a name="determine-the-throughput-distribution-across-partitions"></a>Az átviteli sebesség eloszlásának meghatározása a partíciók között
 
 A partíciós kulcsok jó kihasználása elengedhetetlen a skálázható alkalmazások számára. A particionált tárolók partíciók szerinti elosztásának meghatározásához navigáljon a [Azure Portal](https://portal.azure.com) **metrikák** paneljére. Az **átviteli sebesség** lapon a tárolási bontás az **egyes fizikai partíciós diagramok maximális felhasznált ru/másodpercben** jelenik meg. Az alábbi ábrán egy példa látható az olyan gyenge adateloszlásra, amelyet a bal szélen lévő elferdített partíció is mutat.
 
-:::image type="content" source="media/use-metrics/metrics-17.png" alt-text="Egyetlen partíció, amely nagy kihasználtságot lát":::
+:::image type="content" source="media/use-metrics/metrics-17.png" alt-text="Cosmos DB teljesítmény-metrikák a Azure Portal":::
 
 Az egyenetlen átviteli sebesség a *gyakori partíciókat* okozhatja, ami szabályozható kérelmeket eredményezhet, és újraparticionálást igényelhet. A Azure Cosmos DB particionálásával kapcsolatos további információkért lásd: [particionálás és skálázás Azure Cosmos DBban](./partition-data.md).
 
@@ -65,11 +65,11 @@ Az egyenetlen átviteli sebesség a *gyakori partíciókat* okozhatja, ami szab�
 
 A partíciók jó kihasználása elengedhetetlen a skálázható alkalmazások számára. Ha meg szeretné határozni, hogy a particionált tárolók tárolási eloszlása partíciók szerinti bontásban történjen-e, a [Azure Portal](https://portal.azure.com)metrikák paneljén. A Storage (tárolás) lapon a tárolók lebontása a felső partíciós kulcsok diagram által felhasznált adattábla és index tárolóban jelenik meg. Az alábbi ábra az adattárolás gyenge eloszlását mutatja be, ahogy azt a bal szélen található ferde partíció mutatja.
 
-:::image type="content" source="media/use-metrics/metrics-07.png" alt-text="Gyenge adateloszlás – példa":::
+:::image type="content" source="media/use-metrics/metrics-07.png" alt-text="Cosmos DB teljesítmény-metrikák a Azure Portal":::
 
 A diagramon a partícióra kattintva megadhatja, hogy melyik partíciós kulcs döntse el a terjesztést.
 
-:::image type="content" source="media/use-metrics/metrics-05.png" alt-text="A partíciós kulcs elferdíti az eloszlást":::
+:::image type="content" source="media/use-metrics/metrics-05.png" alt-text="Cosmos DB teljesítmény-metrikák a Azure Portal":::
 
 Miután meghatározta, hogy melyik partíciós kulcs okozza az elferdítés eloszlását, lehet, hogy újra kell particionálnia a tárolót egy elosztott partíciós kulccsal. A Azure Cosmos DB particionálásával kapcsolatos további információkért lásd: [particionálás és skálázás Azure Cosmos DBban](./partition-data.md).
 

@@ -3,12 +3,12 @@ title: Hitelesítési és engedélyezési problémák elhárítása – Azure Ev
 description: Ez a cikk tájékoztatást nyújt az Azure Event Hubs-vel kapcsolatos hitelesítési és engedélyezési hibák elhárításáról.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: bed415c6180953b5a5728032a50d51618c084343
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: cd5f48dfb146a027f0b95b4ddea3dc054a315c6e
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533886"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91566227"
 ---
 # <a name="troubleshoot-authentication-and-authorization-issues---azure-event-hubs"></a>Hitelesítési és engedélyezési problémák elhárítása – Azure Event Hubs
 A [kapcsolódási problémák elhárítása](troubleshooting-guide.md) című cikk tippekkel szolgál az Azure Event Hubs kapcsolódási problémáinak elhárításához. Ez a cikk tippeket és javaslatokat tartalmaz az Azure Event Hubs-vel kapcsolatos hitelesítési és engedélyezési problémák elhárításához. 
@@ -20,6 +20,8 @@ Ha Azure Active Directory (Azure AD) szolgáltatást használ az Azure Event Hub
 - Az [Azure Event Hubs adattulajdonos](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner) Event Hubs erőforrásokhoz való teljes hozzáféréshez.
 - Az [Azure Event Hubs adatfeladót](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver) a küldési hozzáféréshez.
 - [Azure Event Hubs adatfogadó](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender) a fogadási hozzáféréshez.
+
+A séma-beállításjegyzék beépített szerepköreivel kapcsolatban lásd: [séma beállításjegyzékbeli szerepkörei](schema-registry-overview.md#role-based-access-control).
 
 ### <a name="resource-scopes"></a>Erőforrás-hatókörök
 - **Fogyasztói csoport**: ezen a hatókörön a szerepkör-hozzárendelés csak erre az entitásra vonatkozik. A Azure Portal jelenleg nem támogatja az Azure-szerepkörök egy rendszerbiztonsági tag számára való hozzárendelését ezen a szinten. 
@@ -46,7 +48,7 @@ További információkért tekintse át a következő cikkeket:
 - [Hitelesítés közös hozzáférésű aláírások (SAS) használatával](authenticate-shared-access-signature.md). 
 - [A Event Hubs-erőforrásokhoz való hozzáférés engedélyezése közös hozzáférési aláírások használatával](authorize-access-shared-access-signature.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Lásd az alábbi cikkeket:
 

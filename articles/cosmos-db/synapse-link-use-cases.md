@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: ramkris
-ms.openlocfilehash: d6039ac3bead535fd9c7de64a8e92a0d7a58f390
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 2f7ef27ea5cc19c60e05fddfe4d00cd4ff234bc2
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89319236"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568046"
 ---
 # <a name="azure-synapse-link-for-azure-cosmos-db-near-real-time-analytics-use-cases"></a>Azure Cosmos DB-hez készült Azure Synapse Link: Közel valós idejű elemzési használati esetek
 
@@ -70,7 +70,7 @@ Az alábbiakban néhány útmutatást talál a Batch adatintegrációs & a Azure
 
 A kereskedőknek olyan biztonságos és skálázható e-kereskedelmi megoldásokat kell létrehozniuk, amelyek megfelelnek mind az ügyfelek, mind a vállalati igényeknek. Ezek az e-kereskedelmi megoldások testreszabott termékekkel és ajánlatokkal, gyorsan és biztonságosan dolgozzák fel az ügyfeleket, és a teljesítésre és az ügyfélszolgálatra összpontosítanak. Azure Cosmos DB a legújabb szinapszis-hivatkozással együtt, Azure Cosmos DB lehetővé teszi, hogy a kereskedők valós időben személyre szabott javaslatokat készítsenek az ügyfeleknek. Alacsony késleltetésű és hangolt konzisztencia-beállításokat használnak az azonnali felismerésekhez, ahogyan az a következő architektúrán látható:
 
-:::image type="content" source="./media/synapse-link-use-cases/real-time-personalization.png" alt-text="Azure szinapszis-hivatkozás a Azure Cosmos DB valós idejű személyre szabásához" border="false":::
+:::image type="content" source="./media/synapse-link-use-cases/real-time-personalization.png" alt-text="Azure szinapszis-hivatkozás a Azure Cosmos DB az ellátási lánc elemzésében " border="false":::
 
 Szinapszis-hivatkozás Azure Cosmos DB használati esethez:
 
@@ -82,7 +82,7 @@ Az ipari IOT innovációk jelentősen csökkentik a gépek leállását, és az 
 
 A következő egy architektúra, amely kihasználja az Azure szinapszis IoT-Azure Cosmos DB kapcsolatának Felhőbeli natív HTAP képességeit a prediktív karbantartásban:
 
-:::image type="content" source="./media/synapse-link-use-cases/iot-predictive-maintenance.png" alt-text="Azure-beli szinapszis-hivatkozás a IOT prediktív karbantartásban Azure Cosmos DB" border="false" :::
+:::image type="content" source="./media/synapse-link-use-cases/iot-predictive-maintenance.png" alt-text="Azure szinapszis-hivatkozás a Azure Cosmos DB az ellátási lánc elemzésében " border="false" :::
 
 Szinapszis-hivatkozás Azure Cosmos DB használati esetekhez:
 
@@ -92,7 +92,7 @@ Szinapszis-hivatkozás Azure Cosmos DB használati esetekhez:
 
 ## <a name="sample-scenario-htap-for-azure-cosmos-db"></a>Minta forgatókönyv: HTAP for Azure Cosmos DB
 
-Közel egy évtizednél Azure Cosmos DB több ezer ügyfelünk használta olyan kritikus fontosságú alkalmazások készítéséhez, amelyek rugalmas skálázást, kulcsrakész globális elosztást, több főkiszolgálós replikációt igényelnek az alacsony késés és a magas rendelkezésre állás érdekében mindkét olvasási & a tranzakciós munkaterhelésben.
+Közel egy évtizednél Azure Cosmos DB több ezer ügyfelünk használta olyan kritikus fontosságú alkalmazásokhoz, amelyek rugalmas skálázást, kulcsrakész globális elosztást, többrégiós írási replikálást igényelnek az alacsony késés és a magas rendelkezésre állás érdekében mindkét beolvasás & a tranzakciós munkaterhelésben.
  
 Az alábbi lista áttekintést nyújt az operatív adatok által támogatott különböző munkaterhelési mintákról Azure Cosmos DB használatával:
 
@@ -104,17 +104,17 @@ Az alábbi lista áttekintést nyújt az operatív adatok által támogatott kü
 
 Az Azure szinapszis-hivatkozás lehetővé teszi, hogy a Azure Cosmos DB ne csak az áramellátási tranzakciós feladatokat használja, hanem a közel valós idejű analitikai számítási feladatokat is végrehajtsa a korábbi működési adatokon. A tranzakciós munkaterhelések esetében az ETL-követelmények és a garantált teljesítmény-elkülönítés nem történik meg.
 
-Az alábbi képen a számítási feladatok mintái a Azure Cosmos DB használatával: az :::image type="content" source="./media/synapse-link-use-cases/synapse-link-workload-patterns.png" alt-text="Azure szinapszis hivatkozása Azure Cosmos db munkaterhelés-mintákhoz" border="false":::
+Az alábbi képen a számítási feladatok mintái a Azure Cosmos DB használatával: az :::image type="content" source="./media/synapse-link-use-cases/synapse-link-workload-patterns.png" alt-text="Azure szinapszis-hivatkozás a Azure Cosmos DB az ellátási lánc elemzésében " border="false":::
 
 Tegyük fel például, hogy egy e-kereskedelmi cég CompanyXYZ a 20 ország/régió globális műveleteivel, hogy bemutassa a Azure Cosmos DB kiválasztásának előnyeit, mint egyetlen valós idejű adatbázis, amely a készletkezelési platform tranzakciós és analitikai követelményeit is kikapcsolja.
 
 * A CompanyXYZ alapszintű üzleti adatai a készletkezelési rendszertől függenek – így a rendelkezésre állási & megbízhatósága a fő pillérre vonatkozó követelmények. A Azure Cosmos DB használatának előnyei:
 
-  * Az Azure-infrastruktúrával és az átlátszó, több főkiszolgálós globális replikációval való szoros integráció révén a Azure Cosmos DB piacvezető [99,999%-os magas rendelkezésre állást](high-availability.md) biztosít a regionális kimaradások ellen.
+  * Az Azure-infrastruktúrával való szoros integráció, valamint az átlátszó, többrégiós írások révén a globális replikáció Azure Cosmos DB piacvezető [99,999%-os magas rendelkezésre állást](high-availability.md) biztosít a regionális kimaradások ellen.
 
 * A CompanyXYZ ellátási láncbeli partnerei külön földrajzi helyen lehetnek, de előfordulhat, hogy a termékek leltározásának egyetlen nézetét kell megnézniük a világ minden részén, hogy támogassák a helyi műveleteiket. Ez magában foglalja a más ellátási láncú partnerek frissítéseinek valós idejű olvasását. Emellett az is előfordulhat, hogy a frissítéseket nem kell aggódnia, ha más partnerekkel ütközik a nagy átviteli sebességgel. A Azure Cosmos DB használatának előnyei:
 
-  * Az egyedi, több főkiszolgálós replikációs protokollal és a reteszelés nélküli, írásra optimalizált tranzakciós tárolóval a Azure Cosmos DB 10 MS-nál kevesebb késést garantál mind az indexelt olvasások, mind az írások esetében a esetek 99% percentilis globálisan.
+  * Az egyedi többrégiós replikációs protokoll és a zárolás nélküli, írásra optimalizált tranzakciós tárolók révén a Azure Cosmos DB kevesebb, mint 10 MS késést biztosít mind az indexelt olvasások, mind az írások esetében a esetek 99% percentilis globálisan.
 
   * A kötegelt adatcsatornák nagy teljesítményű betöltése & adatfolyamok [valós idejű indexelésével](index-policy.md) a tranzakciós tárolóban.
 

@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.topic: tutorial
 ms.date: 01/30/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 627086bdb13acdd29821af399f90fee8deaae432
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: f0d62ae3909bc886fa6a56ba7ed32d55d27302dd
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "76900181"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568659"
 ---
 # <a name="set-up-azure-cosmos-db-global-distribution-using-the-table-api"></a>Az Azure Cosmos DB globális terjesztésének beállítása a Table API-val
 
@@ -34,7 +34,7 @@ A Azure Cosmos DB Table API SDK automatikusan kiválasztja a legjobb végpontot,
 
 * **Olvasási kérelmek:** A rendszer az összes olvasási kérelmet elküldi a konfiguráltnak `CurrentRegion` . A közelség alapján az SDK automatikusan kiválasztja a tartalék földrajzilag replikált régiót a magas rendelkezésre állás érdekében.
 
-* **Írási kérelmek:** Az SDK automatikusan elküldi az összes írási kérelmet az aktuális írási régióba. Egy több főkiszolgálós fiókban az aktuális régió is az írási kérelmeket fogja szolgálni. A közelség alapján az SDK automatikusan kiválasztja a tartalék földrajzilag replikált régiót a magas rendelkezésre állás érdekében.
+* **Írási kérelmek:** Az SDK automatikusan elküldi az összes írási kérelmet az aktuális írási régióba. A többrégiós írásokat tartalmazó fiókokban az aktuális régió is az írási kérelmeket fogja szolgálni. A közelség alapján az SDK automatikusan kiválasztja a tartalék földrajzilag replikált régiót a magas rendelkezésre állás érdekében.
 
 Ha nem határozza meg a `CurrentRegion` tulajdonságot, az SDK az aktuális írási régiót használja az összes művelethez.
 

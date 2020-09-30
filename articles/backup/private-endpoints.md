@@ -3,12 +3,12 @@ title: Privát végpontok
 description: Megtudhatja, hogyan hozhat létre privát végpontokat a Azure Backuphoz, és hogy a saját végpontok használata hogyan segít megőrizni az erőforrások biztonságát.
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: 0a875dfedbf7a3b76b479fd4f23b74a7ced47252
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: e1121f1d1217ebd48c744135c976587545323f44
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89179232"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91565163"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Azure Backup magánhálózati végpontok
 
@@ -62,75 +62,13 @@ A felügyelt identitások lehetővé teszik, hogy a tároló privát végpontoka
     >[!NOTE]
     >Ha engedélyezve van, a felügyelt identitás **nem** tiltható le (akár átmenetileg is). A felügyelt identitás letiltása inkonzisztens viselkedést eredményezhet.
 
-## <a name="dns-changes"></a>DNS-változások
-
-A privát végpontok használatához saját DNS zónák szükségesek ahhoz, hogy a biztonsági mentési bővítmény feloldja a privát IP-címek magánhálózati kapcsolatának teljes tartománynevét. Összességében három magánhálózati DNS-zónára van szükség. Habár a zónák közül kettőt létre kell hozni kötelezően, a harmadik lehet úgy, hogy integrálva van a privát végponttal (a privát végpont létrehozásakor), vagy külön lehet létrehozni.
-
-Használhatja az egyéni DNS-kiszolgálókat is. Az egyéni DNS-kiszolgálók használatával kapcsolatos részletekért tekintse meg az [Egyéni DNS-kiszolgálók DNS-módosításait](#dns-changes-for-custom-dns-servers) .
-
-### <a name="creating-mandatory-dns-zones"></a>Kötelező DNS-zónák létrehozása
-
-Két kötelező DNS-zónát kell létrehoznia:
-
-- `privatelink.blob.core.windows.net` (biztonsági mentés/visszaállítás céljából)
-- `privatelink.queue.core.windows.net` (a szolgáltatással való kommunikációhoz)
-
-1. Keresse meg **saját DNS zónát** a **minden szolgáltatás** keresési sávján, és válassza ki **saját DNS zónát** a legördülő listából.
-
-    ![saját DNS zóna kiválasztása](./media/private-endpoints/private-dns-zone.png)
-
-1. Az **saját DNS zóna** ablaktáblán kattintson a **+ Hozzáadás** gombra az új zóna létrehozásának megkezdéséhez.
-
-1. A **saját DNS-zóna létrehozása** panelen adja meg a szükséges adatokat. Az előfizetésnek meg kell egyeznie a privát végpont létrehozásának helyétől.
-
-    A zónákat a következőképpen kell elnevezni:
-
-    - `privatelink.blob.core.windows.net`
-    - `privatelink.queue.core.windows.net`
-
-    | **Zóna**                           | **Szolgáltatás** | **Előfizetés és erőforráscsoport (RG) részletei**                  |
-    | ---------------------------------- | ----------- | ------------------------------------------------------------ |
-    | `privatelink.blob.core.windows.net`  | Blob        | **Előfizetés**: ugyanaz, mint ahol a privát végpontot létre kell hozni  **RG**: vagy a VNET vagy a privát végponthoz tartozó RG. |
-    | `privatelink.queue.core.windows.net` | Üzenetsor       | **RG**: vagy a VNET vagy a privát végponthoz tartozó RG |
-
-    ![saját DNS zóna létrehozása](./media/private-endpoints/create-private-dns-zone.png)
-
-1. Ha elkészült, folytassa a DNS-zóna áttekintésével és létrehozásával.
-
-### <a name="optional-dns-zone"></a>Opcionális DNS-zóna
-
-Kiválaszthatja, hogy a privát végpontok integrálva legyenek-e a Azure Backup magánhálózati DNS-zónákkal (lásd: a [privát végpontok létrehozása és használata a biztonsági mentéshez](#creating-and-using-private-endpoints-for-backup)című szakaszban) a szolgáltatásokkal való kommunikációhoz. Ha nem kívánja integrálni a magánhálózati DNS-zónával, dönthet úgy, hogy saját DNS-kiszolgálót használ, vagy külön saját DNS-zónát hoz létre. Ez az előző szakaszban tárgyalt két kötelező magánhálózati DNS-zónán kívül történik.
-
-Ha önálló, saját DNS-zónát szeretne létrehozni az Azure-ban, ugyanezt a lépéseket használhatja a kötelező DNS-zónák létrehozásához. Az elnevezési és az előfizetés részletei a következőkben vannak elosztva:
-
-| **Zóna**                                                     | **Szolgáltatás** | **Az előfizetés és az erőforráscsoport részletei**                  |
-| ------------------------------------------------------------ | ----------- | ------------------------------------------------------------ |
-| `privatelink.<geo>.backup.windowsazure.com`  <br><br>   **Megjegyzés**: a *geo* itt a régiókódra hivatkozik. Például: *wcus* és *ne* az USA nyugati középső régiójában és Észak-Európában. | Backup      | **Előfizetés**: ugyanaz, mint ahol a privát végpontot létre kell hozni  **RG**: az előfizetésen belüli bármely RG |
-
-Tekintse át [ezt a listát](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/AzureRegionCodesList.docx) a régiókódokhoz.
-
-Az URL-címek elnevezési konvenciói a nemzeti régiókban:
-
-- [Kína](/azure/china/resources-developer-guide#check-endpoints-in-azure)
-- [Németország](../germany/germany-developer-guide.md#endpoint-mapping)
-- [US Gov](../azure-government/documentation-government-developer-guide.md)
-
-### <a name="linking-private-dns-zones-with-your-virtual-network"></a>Privát DNS-zónák összekapcsolása a virtuális hálózattal
-
-A fent létrehozott DNS-zónákat most ahhoz a virtuális hálózathoz kell kapcsolni, ahol a biztonsági mentésre kerülő kiszolgálók találhatók. Ezt az összes létrehozott DNS-zóna esetében el kell végezni.
-
-1. Nyissa meg a DNS-zónát (amelyet az előző lépésben hozott létre), és navigáljon a bal oldali sávban található **virtuális hálózati kapcsolatokhoz** . Ha van, kattintson a **+ Hozzáadás** gombra
-1. Adja meg a szükséges adatokat. Az **előfizetés** és a **virtuális hálózat** mezőket meg kell adni annak a virtuális hálózatnak a megfelelő részleteivel, ahol a kiszolgálók léteznek. A többi mezőnek a következőképpen kell maradnia:.
-
-    ![Virtuális hálózati kapcsolat hozzáadása](./media/private-endpoints/add-virtual-network-link.png)
-
 ## <a name="grant-permissions-to-the-vault-to-create-required-private-endpoints"></a>Engedélyek megadása a tárolónak a szükséges privát végpontok létrehozásához
 
 A Azure Backuphoz szükséges privát végpontok létrehozásához a tárolónak (a tár felügyelt identitásának) a következő erőforráscsoportok engedélyekkel kell rendelkeznie:
 
 - A célként megadott VNet tartalmazó erőforráscsoport
 - Az erőforráscsoport, amelyben létre kell hozni a privát végpontokat
-- Az saját DNS zónákat tartalmazó erőforráscsoport
+- Az saját DNS zónákat tartalmazó erőforráscsoport, ahogy az [itt](#creating-private-endpoints-for-backup) részletesen szerepel
 
 Javasoljuk, hogy adja meg a **közreműködői** szerepkört a három erőforráscsoport számára a tárolóhoz (felügyelt identitás). A következő lépések azt írják le, hogyan kell ezt megtenni egy adott erőforráscsoport esetében (ezt a három erőforráscsoporthoz kell elvégezni):
 
@@ -173,6 +111,8 @@ Ez a szakasz azt ismerteti, hogyan hozható létre saját végpont a tárolóhoz
 
         ![Kitöltés a konfiguráció lapon](./media/private-endpoints/configuration-tab.png)
 
+        Ha az Azure saját DNS zónákhoz való integrálás helyett az egyéni DNS-kiszolgálókat szeretné használni, tekintse meg [ezt a szakaszt](#dns-changes-for-custom-dns-servers) .  
+
     1. Igény szerint hozzáadhat **címkéket** a privát végponthoz.
 
     1. Folytassa a **felülvizsgálat + létrehozás** után a részletek beírásával. Ha az ellenőrzés befejeződött, válassza a **Létrehozás** lehetőséget a privát végpont létrehozásához.
@@ -189,51 +129,6 @@ Lásd: [privát végpontok manuális jóváhagyása a Azure Resource Manager üg
 
     ![Privát végpontok jóváhagyása](./media/private-endpoints/approve-private-endpoints.png)
 
-## <a name="adding-dns-records"></a>DNS-rekordok hozzáadása
-
->[!NOTE]
-> Ez a lépés nem kötelező, ha integrált DNS-zónát használ. Ha azonban létrehozta saját Azure saját DNS-zónáját, vagy egyéni magánhálózati DNS-zónát használ, ügyeljen arra, hogy a jelen szakaszban leírtak szerint hozzon létre bejegyzéseket.
-
-Miután létrehozta a választható magánhálózati DNS-zónát és a tárolóhoz tartozó magánhálózati végpontokat, DNS-rekordokat kell hozzáadnia a DNS-zónához. Ezt manuálisan vagy PowerShell-parancsfájl használatával is elvégezheti. Ezt csak a biztonsági mentési DNS-zónára kell elvégezni, a blobok és a várólisták esetében a rendszer automatikusan frissíti azokat.
-
-### <a name="add-records-manually"></a>Rekordok manuális hozzáadása
-
-Ehhez a privát végponton lévő összes FQDN-hez bejegyzéseket kell készítenie a saját DNS zónába.
-
-1. Nyissa meg a **saját DNS-zónáját** , és navigáljon a bal oldali sávban található **Áttekintés** lehetőségre. A rekordok hozzáadásának megkezdéséhez válassza a **+** rekordhalmaz lehetőséget.
-
-    ![Válassza a + rekordhalmaz elemet a rekordok hozzáadásához](./media/private-endpoints/select-record-set.png)
-
-1. A megnyíló **rekordazonosító hozzáadása** panelen adjon hozzá egy BEJEGYZÉST minden FQDN és magánhálózati IP-cím **típusú** rekordként. A teljes tartománynevek és IP-címek listája a privát végpontról szerezhető be (az **Áttekintés**alatt). Ahogy az alábbi példában is látható, a magánhálózati végpont első teljes tartományneve hozzá lesz adva a saját DNS-zónában lévő rekordhoz.
-
-    ![Teljes tartománynevek és IP-címek listája](./media/private-endpoints/list-of-fqdn-and-ip.png)
-
-    ![Rekordhalmaz hozzáadása](./media/private-endpoints/add-record-set.png)
-
-### <a name="add-records-using-powershell-script"></a>Rekordok hozzáadása PowerShell-parancsfájl használatával
-
-1. Indítsa el a **Cloud Shell** a Azure Portalban, és válassza a **fájl feltöltése** lehetőséget a PowerShell ablakban.
-
-    ![Válassza a fájl feltöltése a PowerShell-ablakban lehetőséget.](./media/private-endpoints/upload-file-in-powershell.png)
-
-1. Töltse fel a következő szkriptet: [DnsZoneCreation](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/dnszonerecordcreation.ps1)
-
-1. Nyissa meg a saját mappáját (például: `cd /home/user` )
-
-1. Futtassa a következő parancsfájlt:
-
-    ```azurepowershell
-    ./dnszonerecordcreation.ps1 -Subscription <SubscriptionId> -VaultPEName <VaultPE Name> -VaultPEResourceGroup <Vault PE RG> -DNSResourceGroup <Private DNS RG> -Privatezone <privatednszone>
-    ```
-
-    Ezek a paraméterek:
-
-    - **előfizetés**: az az előfizetés, amelyben az erőforrások (a tároló magánhálózati végpontja és a saját DNS-zóna) található.
-    - **vaultPEName**: a tárolóhoz létrehozott privát végpont neve
-    - **vaultPEResourceGroup**: a tár privát végpontját tartalmazó erőforráscsoport
-    - **dnsResourceGroup**: a magánhálózati DNS-zónákat tartalmazó erőforráscsoport
-    - **Privatezone**: a magánhálózati DNS-zóna neve
-
 ## <a name="using-private-endpoints-for-backup"></a>Privát végpontok használata biztonsági mentéshez
 
 Miután jóváhagyta a VNet-tárolóhoz létrehozott privát végpontokat, megkezdheti a biztonsági mentések és a visszaállítások elvégzését.
@@ -243,12 +138,9 @@ Miután jóváhagyta a VNet-tárolóhoz létrehozott privát végpontokat, megke
 >
 >1. Létrehozott egy (új) Recovery Services-tárolót
 >1. A tár engedélyezése a rendszerhez rendelt felügyelt identitás használatára
->1. Három saját DNS zóna létrehozása (kettő, ha integrált DNS-zónát használ a biztonsági mentéshez)
->1. saját DNS zónák összekapcsolása az Azure-Virtual Network
 >1. A tár felügyelt identitásához hozzárendelt megfelelő engedélyek
 >1. Létrehozott egy privát végpontot a tárolóhoz
 >1. Jóváhagyta a privát végpontot (ha nem engedélyezett automatikusan)
->1. A kötelező DNS-rekordok hozzáadása a saját DNS-zónához a biztonsági mentéshez (csak akkor érvényes, ha nem használ integrált magánhálózati DNS-zónát)
 
 ### <a name="backup-and-restore-of-workloads-in-azure-vm-sql-sap-hana"></a>Munkaterhelések biztonsági mentése és visszaállítása az Azure-beli virtuális gépen (SQL, SAP HANA)
 
@@ -504,7 +396,11 @@ Létre kell hoznia három privát DNS-zónát, és csatolnia kell őket a virtu�
 >[!NOTE]
 >A fenti szövegben a *geo* a régiókódra hivatkozik. Például: *wcus* és *ne* az USA nyugati középső régiójában és Észak-Európában.
 
-Tekintse át [ezt a listát](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/AzureRegionCodesList.docx) a régiókódokhoz.
+Tekintse át [ezt a listát](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/AzureRegionCodesList.docx) a régiókódokhoz. Tekintse meg az alábbi hivatkozásokat az URL-elnevezési konvenciók a nemzeti régiókban:
+
+- [Kína](https://docs.microsoft.com/azure/china/resources-developer-guide#check-endpoints-in-azure)
+- [Németország](https://docs.microsoft.com/azure/germany/germany-developer-guide#endpoint-mapping)
+- [US Gov](https://docs.microsoft.com/azure/azure-government/documentation-government-developer-guide)
 
 #### <a name="adding-dns-records-for-custom-dns-servers"></a>DNS-rekordok hozzáadása az egyéni DNS-kiszolgálókhoz
 
@@ -566,6 +462,6 @@ A. Igen, használhatja a saját DNS-kiszolgálóit. Azonban győződjön meg arr
 K. Kell-e további lépéseket végrehajtani a kiszolgálón, miután követtem a jelen cikkben leírt eljárást?<br>
 A. A cikkben részletezett folyamat után nem kell további munkát végeznie a privát végpontok használatához a biztonsági mentéshez és a visszaállításhoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [Azure Backup összes biztonsági szolgáltatásáról](security-overview.md)

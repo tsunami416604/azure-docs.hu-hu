@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 89282b0cc07f210e7bbf80503c9dbef5f97b13a2
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 0e02f0bf1bb9646a644a40279a8bae930de34c0b
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91397334"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567995"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db-preview"></a>Mi az az Azure szinapszis-hivatkozás a Azure Cosmos DB (előzetes verzió)?
 
@@ -56,7 +56,7 @@ Az Azure szinapszis-hivatkozással költséghatékony, teljes körűen felügyel
 Azure Cosmos DB analitikus tároló egy fogyasztáson alapuló díjszabási modellt követ, amely az adattárolás és az analitikus olvasási/írási műveletek és a végrehajtott lekérdezések alapján történik. A tranzakciós számítási feladatokhoz jelenleg nem szükséges átviteli sebességet kiépíteni. Az adatoknak az Azure szinapszis Analytics szolgáltatással való nagy mértékben rugalmas számítási motorokkal való elérése teljes körűen biztosítja a tárterület és a számítási kapacitások hatékony üzemeltetését.
 
 
-### <a name="analytics-for-locally-available-globally-distributed-multi-master-data"></a>Elemzés a helyileg elérhető, globálisan elosztott, több főkiszolgálós adatokhoz
+### <a name="analytics-for-locally-available-globally-distributed-multi-region-writes"></a>Elemzés a helyileg elérhető, globálisan elosztott, többrégiós írásokhoz
 
 Az elemzési lekérdezéseket hatékonyan futtathatja Azure Cosmos DBban található adatközpont legközelebbi regionális példányán. A Azure Cosmos DB a legkorszerűbb képességet biztosítja a globálisan elosztott analitikai számítási feladatok, valamint a tranzakciós munkaterhelések aktív-aktív módon történő futtatásához.
 
@@ -130,7 +130,7 @@ A szinapszis-hivatkozás nem ajánlott, ha olyan hagyományos adattárház-köve
 
 Az Azure szinapszis hivatkozás számlázási modellje tartalmazza a Azure Cosmos DB analitikus tároló és a szinapszis-futtatókörnyezet használatával felmerülő költségeket. További információért lásd a [Azure Cosmos db analitikus áruház díjszabását](analytical-store-introduction.md#analytical-store-pricing) és az [Azure szinapszis Analytics árképzési](https://azure.microsoft.com/pricing/details/synapse-analytics/) cikkeit.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információért lásd a következő dokumentumokat:
 

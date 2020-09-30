@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/18/2020
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: fa3d044bbbce2a8c85f01517b918ffc57c10c759
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0792a885006cf3050002c0e275eff2850afb81c7
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91316205"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91566805"
 ---
 # <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>Azure Cosmos DB SQL API-erőforrások kezelése a PowerShell használatával
 
@@ -109,7 +109,7 @@ Ezzel a paranccsal frissítheti Azure Cosmos DB adatbázis-fiókjának tulajdons
 * Alapértelmezett konzisztencia-házirend módosítása
 * IP-címtartomány módosítása
 * Virtual Network konfigurációk módosítása
-* Több főkiszolgáló engedélyezése
+* Többrégiós írások engedélyezése
 
 > [!NOTE]
 > Nem lehet egyszerre hozzáadni vagy eltávolítani a régiókat ( `locations` ), és módosítani az Azure Cosmos-fiók egyéb tulajdonságait. A régiók módosításait külön műveletként kell végrehajtani a fiók bármely egyéb változása alapján.
@@ -166,7 +166,7 @@ Update-AzCosmosDBAccountRegion `
 Write-Host "Update-AzCosmosDBAccountRegion returns before the region update is complete."
 Write-Host "Check account in Azure portal or using Get-AzCosmosDBAccount for region status."
 ```
-### <a name="enable-multiple-write-regions-for-an-azure-cosmos-account"></a><a id="multi-master"></a> Több írási régió engedélyezése Azure Cosmos-fiókhoz
+### <a name="enable-multiple-write-regions-for-an-azure-cosmos-account"></a><a id="multi-region-writes"></a> Több írási régió engedélyezése Azure Cosmos-fiókhoz
 
 ```azurepowershell-interactive
 $resourceGroupName = "myResourceGroup"
@@ -175,13 +175,13 @@ $enableAutomaticFailover = $false
 $enableMultiMaster = $true
 
 # First disable automatic failover - cannot have both automatic
-# failover and multi-master on an account
+# failover and multi-region writes on an account
 Update-AzCosmosDBAccount `
     -ResourceGroupName $resourceGroupName `
     -Name $accountName `
     -EnableAutomaticFailover:$enableAutomaticFailover
 
-# Now enable multi-master
+# Now enable multi-region writes
 Update-AzCosmosDBAccount `
     -ResourceGroupName $resourceGroupName `
     -Name $accountName `
@@ -219,7 +219,7 @@ Update-AzCosmosDBAccount `
 
 ### <a name="list-account-keys"></a><a id="list-keys"></a> Fiók kulcsainak listázása
 
-Azure Cosmos-fiók létrehozásakor a szolgáltatás két fő hozzáférési kulcsot hoz létre, amelyek hitelesítésre használhatók az Azure Cosmos-fiók elérésekor. A csak olvasási jogosultságú kulcsok a csak olvasási műveletek hitelesítéséhez is létrejönnek.
+Azure Cosmos-fiók létrehozásakor a szolgáltatás két elsődleges hozzáférési kulcsot hoz létre, amelyek hitelesítésre használhatók az Azure Cosmos-fiók elérésekor. A csak olvasási jogosultságú kulcsok a csak olvasási műveletek hitelesítéséhez is létrejönnek.
 A két hozzáférési kulcs megadásával a Azure Cosmos DB lehetővé teszi, hogy egyszerre egy kulcsot újrageneráljon és forgasson el, megszakítás nélkül az Azure Cosmos-fiókjába.
 Cosmos DB fiókoknak két írható-olvasható kulcsa van (elsődleges és másodlagos) és két írásvédett kulcs (elsődleges és másodlagos).
 
@@ -273,8 +273,8 @@ $accountName = "mycosmosaccount"
 $enableAutomaticFailover = $true
 $enableMultiMaster = $false
 
-# First disable multi-master - cannot have both automatic
-# failover and multi-master on an account
+# First disable multi-region writes - cannot have both automatic
+# failover and multi-region writes on an account
 Update-AzCosmosDBAccount `
     -ResourceGroupName $resourceGroupName `
     -Name $accountName `

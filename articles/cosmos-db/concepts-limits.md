@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 373463ff9024ec3b657df6d141ed830142b23f2e
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: e4d2da56146a14b295e08a1093fe62a50f87ecfa
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91400060"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567553"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB szolgáltatási kvóták
 
@@ -154,11 +154,11 @@ Azure Cosmos DB támogatja a [szifilisz-és lekérdezési műveleteket](/rest/ap
 
 Ha egy művelet, például a lekérdezés eléri a végrehajtás időtúllépését vagy a válasz méretkorlát értéket, a rendszer visszaadja az eredmények egy oldalát, valamint egy folytatási tokent az ügyfélnek a végrehajtás folytatásához. Az időtartamra vonatkozóan nincs gyakorlati korlát az egyes oldalakra vagy folytatásokra vonatkozó egyetlen lekérdezés futtatásához.
 
-Cosmos DB a HMAC használja az engedélyezéshez. Használhatja a főkulcsot vagy egy [erőforrás-jogkivonatot](secure-access-to-data.md) a részletes hozzáférés-vezérléshez olyan erőforrásokhoz, mint a tárolók, a partíciós kulcsok vagy az elemek. Az alábbi táblázat a Cosmos DB engedélyezési jogkivonatának korlátait sorolja fel.
+Cosmos DB a HMAC használja az engedélyezéshez. A részletes hozzáférés-vezérléshez használhatja az elsődleges kulcsot vagy az [erőforrás-jogkivonatokat](secure-access-to-data.md) , például a tárolókat, a partíciós kulcsokat vagy az elemeket. Az alábbi táblázat a Cosmos DB engedélyezési jogkivonatának korlátait sorolja fel.
 
 | Erőforrás | Alapértelmezett korlát |
 | --- | --- |
-| Fő jogkivonat lejárati idejének maximális ideje | 15 perc  |
+| Elsődleges jogkivonat maximális lejárati ideje | 15 perc  |
 | Erőforrás-jogkivonat minimális lejárati ideje | 10 perc  |
 | Erőforrás-jogkivonat maximális lejárati ideje | Alapértelmezés szerint 24 óra. Megnövelheti [egy Azure-támogatási jegy bejelentésével](create-support-request-quota-increase.md)|
 | Token-engedélyezés maximális órajele| 15 perc |
@@ -171,7 +171,7 @@ Azure Cosmos DB az egyes fiókok rendszermetaadatainak karbantartását. Ez a me
 
 | Erőforrás | Alapértelmezett korlát |
 | --- | --- |
-|Maximális gyűjtemény-létrehozási arány RER perc| 5|
+|Gyűjtemény maximális létrehozási sebessége percenként| 5|
 |Adatbázis maximális létrehozási sebessége percenként|   5|
 |Maximális kiosztott átviteli sebesség percenkénti frissítése| 5|
 
@@ -247,7 +247,7 @@ A következő táblázat felsorolja az [ingyenes szintű fiókok Azure Cosmos db
 
   A fentiek mellett a [fiókra vonatkozó korlátok](#per-account-limits) az ingyenes szintű fiókok esetében is érvényesek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Cosmos DB alapvető fogalmak [globális eloszlásáról](distribute-data-globally.md) , [particionálásáról](partitioning-overview.md) és kiosztott [átviteli sebességéről](request-units.md).
 

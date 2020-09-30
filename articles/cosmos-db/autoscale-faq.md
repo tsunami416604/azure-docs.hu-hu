@@ -6,12 +6,12 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/10/2020
-ms.openlocfilehash: 0e6a502ae7ed71beaeefe603e0810264e62187ba
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: bc8e5baa92f507c9abb9bc6b5305773010803f01
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90708002"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567587"
 ---
 # <a name="frequently-asked-questions-about-autoscale-provisioned-throughput-in-azure-cosmos-db"></a>Gyakori kérdések a kiosztott átviteli sebességről Azure Cosmos DB
 
@@ -37,14 +37,14 @@ Az autoskálázással a rendszer a `T` `0.1 * Tmax` Bejövő forgalom alapján a
 Minden órában a legmagasabb átviteli sebességért kell fizetni, amelyet a `T` rendszer az órán belül felskálázással végez. Ha az erőforrás nem kapott kérelmeket az óra során, vagy nem lépték túl a skálázást `0.1 * Tmax` , akkor a minimumért kell fizetnie `0.1 * Tmax` . A részletekért tekintse meg a Azure Cosmos DB [díjszabási oldalát](https://azure.microsoft.com/pricing/details/cosmos-db/) . 
 
 ### <a name="how-does-autoscale-show-up-on-my-bill"></a>Hogyan jelenik meg az autoscale a számlán?
-Az egyfő szintű fiókok esetében az automatikus skálázási sebesség 100 RU/s esetén 1,5 x a standard (manuális) kiépített átviteli sebesség. A számlán látni fogja a meglévő standard kiosztott átviteli sebességet. A mérő mennyiségét a 1,5-es számmal megszorozza. Ha például a legmagasabb RU/s a rendszer egy órán belül, 6000 RU/s értékre van méretezve, akkor az adott órára a mérőszámban 60 * 1,5 = 90 egység lesz.
+Az egyszeri írási régió fiókjaiban az automatikus skálázási sebesség 100 RU/s esetén 1,5 x a standard (manuális) kiosztott átviteli sebesség. A számlán látni fogja a meglévő standard kiosztott átviteli sebességet. A mérő mennyiségét a 1,5-es számmal megszorozza. Ha például a legmagasabb RU/s a rendszer egy órán belül, 6000 RU/s értékre van méretezve, akkor az adott órára a mérőszámban 60 * 1,5 = 90 egység lesz.
 
-A több főkiszolgálós fiókok esetében a 100 RU/s automatikus skálázási sebessége megegyezik a standard (manuális) kiépített több főkiszolgálós átviteli sebességgel. A számlán látni fogja a meglévő több főkiszolgálós fogyasztásmérőt. Mivel a díjszabások azonosak, ha az autoscale-t használja, ugyanazt a mennyiséget fogja látni, mint a standard átviteli sebességgel.
+A több írási régióval rendelkező fiókok esetében az automatikus skálázási sebesség 100 RU/s-nál ugyanaz, mint a standard (manuális) kiosztott több írási régió átviteli sebessége. A számlán a meglévő több írási régió mérőszáma jelenik meg. Mivel a díjszabások azonosak, ha az autoscale-t használja, ugyanazt a mennyiséget fogja látni, mint a standard átviteli sebességgel.
 
 ### <a name="does-autoscale-work-with-reserved-capacity"></a>Működik az autoskálázás a fenntartott kapacitással?
-Igen. Ha az egyszeres főkiszolgáló számára fenntartott kapacitást vásárol, az autoskálázási erőforrások foglalási kedvezményét a rendszer 1,5 * arányban alkalmazza az [adott régió aránya](../cost-management-billing/reservations/understand-cosmosdb-reservation-charges.md#reservation-discount-per-region)alapján. 
+Igen. Ha a több írási régióval rendelkező fiókok számára fenntartott kapacitást vásárol, az autoskálázási erőforrások foglalási kedvezményét a rendszer 1,5 * arányban, az [adott régió aránya](../cost-management-billing/reservations/understand-cosmosdb-reservation-charges.md#reservation-discount-per-region)alapján alkalmazza. 
 
-A több főkiszolgálós foglalási kapacitás ugyanúgy működik, mint az automatikus skálázás és a standard (manuális) kiépített átviteli sebesség. [Azure Cosmos db fenntartott kapacitás](cosmos-db-reserved-capacity.md)
+A többszörös írási régió számára fenntartott kapacitás ugyanúgy működik, mint az automatikus skálázás és a standard (manuális) kiosztott átviteli sebesség. [Azure Cosmos db fenntartott kapacitás](cosmos-db-reserved-capacity.md)
 
 ### <a name="does-autoscale-work-with-free-tier"></a>Működik az autoscale ingyenes szintje?
 Igen. Az ingyenes szinten az adatátviteli sebességet használhatja egy tárolón. A megosztott átviteli sebességű adatbázisok egyéni maximális RU/s-vel való támogatása még nem érhető el. Megtudhatja [, hogy az ingyenes szintű számlázás hogyan működik az autoscale szolgáltatással](understand-your-bill.md#billing-examples-with-free-tier-accounts).
@@ -52,7 +52,7 @@ Igen. Az ingyenes szinten az adatátviteli sebességet használhatja egy tárol�
 ### <a name="is-autoscale-supported-for-all-apis"></a>Támogatott-e az összes API-t használó autoskálázás?
 Igen, az autoscale minden API esetében támogatott: Core (SQL), Gremlin, Table, Cassandra és API a MongoDB-hez.
 
-### <a name="is-autoscale-supported-for-multi-master-accounts"></a>Támogatott-e a több főkiszolgálós fiókok esetében az autoscale?
+### <a name="is-autoscale-supported-for-multi-region-write-accounts"></a>Támogatott-e a többrégiós írási fiókok esetében a méretezési funkció?
 Igen. A maximális RU/s a Azure Cosmos DB-fiókhoz hozzáadott minden régióban elérhető. 
 
 ### <a name="how-do-i-enable-autoscale-on-new-databases-or-containers"></a>Hogyan engedélyezi az autoskálázást az új adatbázisokon vagy tárolókban?
@@ -143,7 +143,7 @@ Másodszor, ha van egy gyakori partíció, azaz egy logikai partíciós kulcs é
 Ha például az 20 000 RU/s maximális átviteli sebesség lehetőséget választja, és 200 GB tárhellyel rendelkezik, és négy fizikai partícióval rendelkezik, az egyes fizikai partíciók akár 5000 RU/s-ra is felméretezhetők. Ha egy adott logikai partíción egy gyors partíció található, akkor a 429s jelenik meg, ha a mögöttes fizikai partíció mérete meghaladja az 5000 RU/s-t, azaz meghaladja az 100%-os normalizált kihasználtságot.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg, hogyan [engedélyezhető az Azure Cosmos db-adatbázis vagy-tárolók autoskálázása](how-to-provision-autoscale-throughput.md).
 * Ismerje meg, hogy milyen [előnyökkel jár a kiépített átviteli sebesség az autoskálázással](provision-throughput-autoscale.md#benefits-of-autoscale).

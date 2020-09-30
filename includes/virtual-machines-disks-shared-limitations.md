@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 09/22/2020
+ms.date: 09/30/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 11901e0b68fed9a6a83287d50896bf2afc51fa37
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9aa8857ab10423f460874870a3663929e8e5a5c5
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91279560"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91566948"
 ---
 A megosztott lemezek engedélyezése csak a lemezek egy részhalmaza számára lehetséges. Jelenleg csak az ultra-lemezek és a prémium szintű SSD-k engedélyezhetik a megosztott lemezeket. Minden olyan felügyelt lemez, amelyen engedélyezve vannak a megosztott lemezek, a következő korlátozások vonatkoznak a lemez típusa szerint rendezve:
 
@@ -30,7 +30,6 @@ A megosztott Ultra-lemezek az összes olyan régióban elérhetők, amelyek alap
 
 ### <a name="premium-ssds"></a>Prémium SSD-k
 
-- Jelenleg csak a [régiók egy részhalmazában](#regional-availability)támogatott.
 - Jelenleg csak Azure Resource Manager vagy SDK-támogatással rendelkezik. 
 - Csak adatlemezeken engedélyezhető, operációsrendszer-lemezekkel nem.
 - A **írásvédett** SSD-k gyorsítótárazása nem érhető el a prémium szintű SSD-k esetében `maxShares>1` .
@@ -42,24 +41,4 @@ A megosztott Ultra-lemezek az összes olyan régióban elérhetők, amelyek alap
 
 #### <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
 
-A közös prémium SSD-k csak a következő régiókban támogatottak:
-
-- USA keleti régiója
-- USA 2. keleti régiója
-- USA nyugati régiója
-- USA 2. nyugati régiója
-- USA nyugati középső régiója
-- USA déli középső régiója
-- USA északi középső régiója
-- Az USA középső régiója
-- Nyugat-Európa
-- Észak-Európa
-- Dél-Korea középső régiója
-- Közép-Kanada
-- Kelet-Kanada
-- Kelet-Japán
-- Nyugat-Japán
-- Délkelet-Ázsia
-- Kelet-Ázsia
-- USA-beli államigazgatás – Virginia
-- USA-beli államigazgatás – Arizona
+A megosztott prémium SSD-k minden olyan régióban elérhetők, ahol elérhetők a felügyelt lemezek.

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: e8feb4f2012d323d954ba000323824bc157bcf87
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: a913756c0348622ec0d885c50b55d5cecf6dd91d
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91534060"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568097"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>Nyelvi és területi támogatás szöveg-és beszédfelismerési fordításhoz
 
@@ -38,6 +38,7 @@ A fordító a következő nyelveket támogatja szöveg szöveggé fordításáho
 |:-----|:-----:|
 |búr| `af`|
 |Arab|    `ar`    |
+|Asszámi|  `as`    |
 |Bangla|    `bn`    |
 |Bosnyák (latin betűs)|   `bs`    |
 |Bolgár| `bg`    |
@@ -100,7 +101,7 @@ A fordító a következő nyelveket támogatja szöveg szöveggé fordításáho
 |Szerb (latin betűs)|   `sr-Latn`       |
 |Szlovák|    `sk`    |
 |Szlovén| `sl`    |
-|Spanyol|   `es`    |
+|spanyol|   `es`    |
 |szuahéli|   `sw`    |
 |Svéd|   `sv`    |
 |Tahitian|  `ty`    |
@@ -171,7 +172,7 @@ A Translator a következő nyelveket észleli fordításhoz és íráshoz.
 |Szerb (latin betűs)|   `sr-Latn`       |
 |Szlovák|    `sk`    |
 |Szlovén| `sl`    |
-|Spanyol|   `es`    |
+|spanyol|   `es`    |
 |szuahéli|   `sw`    |
 |Svéd|   `sv`    |
 |Tahitian|  `ty`    |
@@ -261,7 +262,7 @@ Tekintse meg a [szótári keresési](reference/v3-0-dictionary-lookup.md) és a 
 | Szerb (latin betűs)      | `sr-Latn`          |
 | Szlovák     | `sk`          |
 | Szlovén      | `sl`          |
-| Spanyol      | `es`          |
+| spanyol      | `es`          |
 | szuahéli      | `sw`          |
 | Svéd      | `sv`          |
 | tamil      | `ta`          |
@@ -333,7 +334,7 @@ Az [Egyéni Translator](https://aka.ms/CustomTranslator)használatával a követ
 | Szerb (latin betűs)      | `sr-Latn`          |
 | Szlovák     | `sk`          |
 | Szlovén      | `sl`          |
-| Spanyol      | `es`          |
+| spanyol      | `es`          |
 | szuahéli|  `sw`    |
 | Svéd      | `sv`          |
 |Tahitian|  `ty`    |

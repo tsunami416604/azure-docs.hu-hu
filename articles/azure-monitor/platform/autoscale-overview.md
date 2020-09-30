@@ -4,12 +4,12 @@ description: Méretezés Microsoft Azure
 ms.subservice: autoscale
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: d9ba94d9990e494a8d3e68bbcd7c176bb30e6ce2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e89cf36e59ab26ec220d1125162a841fc10f0e47
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073491"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567264"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure"></a>Az autoskálázás áttekintése Microsoft Azure
 Ez a cikk ismerteti, hogy mi Microsoft Azure az autoscale, annak előnyeit és a használatának első lépéseit.  
@@ -98,16 +98,19 @@ Beállíthatja az autoscale on
 | Szolgáltatás | Séma & docs |
 | --- | --- |
 | Web Apps |[Méretezés Web Apps](autoscale-get-started.md) |
-| Cloud Services |[Felhőalapú szolgáltatás méretezése](../../cloud-services/cloud-services-how-to-scale-portal.md) |
+| Felhőszolgáltatások |[Felhőalapú szolgáltatás méretezése](../../cloud-services/cloud-services-how-to-scale-portal.md) |
 | Virtual Machines: klasszikus |[A klasszikus virtuális gépek rendelkezésre állási csoportjainak méretezése](/archive/blogs/kaevans/autoscaling-azurevirtual-machines) |
 | Virtual Machines: Windows-méretezési csoportok |[Virtuálisgép-méretezési csoportok méretezése a Windowsban](../../virtual-machine-scale-sets/tutorial-autoscale-powershell.md) |
 | Virtual Machines: linuxos méretezési csoportok |[Virtuálisgép-méretezési csoportok skálázása Linux rendszeren](../../virtual-machine-scale-sets/tutorial-autoscale-cli.md) |
-| Virtual Machines: Windows-példa |[Speciális automatikus méretezési konfiguráció a Resource Manager-sablonokkal VM Scale Sets](autoscale-virtual-machine-scale-sets.md) |
+| Virtual Machines: Windows-példa |[Speciális automatikus méretezési konfiguráció a Resource Manager-sablonokkal VM Scale Sets](../../azure-monitor/platform/autoscale-virtual-machine-scale-sets.md) |
+| Azure App Service |[Alkalmazások vertikális felskálázása az Azure app Service-ben](../../app-service/manage-scale-up.md)|
 | API Management szolgáltatás|[Az Azure API Management-példány automatikus skálázása](../../api-management/api-management-howto-autoscale.md)
 | Azure Adatkezelő-fürtök|[Az Azure Adatkezelő-fürtök méretezése a változó igények kielégítése érdekében](/azure/data-explorer/manage-cluster-horizontal-scaling)|
-| Azure App Service |[Alkalmazások vertikális felskálázása az Azure app Service-ben](../../app-service/manage-scale-up.md)|
 | Logic Apps |[Integrációs szolgáltatási környezet (ISE) kapacitásának hozzáadása](../../logic-apps/ise-manage-integration-service-environment.md#add-ise-capacity)|
-## <a name="next-steps"></a>További lépések
+| Spring Cloud |[Automatikus skálázás beállítása mikroszolgáltatás-alkalmazásokhoz](../../spring-cloud/spring-cloud-tutorial-setup-autoscale.md)|
+| Service Bus |[Azure Service Bus névtér üzenetkezelési egységeinek automatikus frissítése](../../service-bus-messaging/automate-update-messaging-units.md)|
+
+## <a name="next-steps"></a>Következő lépések
 Ha többet szeretne megtudni az autoscale használatával kapcsolatban, használja az előzőleg felsorolt, vagy a következő erőforrásokra vonatkozó információkat:
 
 * [Általános mérőszámok Azure Monitor](autoscale-common-metrics.md)

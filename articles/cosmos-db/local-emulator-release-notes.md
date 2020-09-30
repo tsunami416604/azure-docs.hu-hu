@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: milismsft
 ms.author: adrianmi
 ms.date: 09/21/2020
-ms.openlocfilehash: da17cd1ea6dac52797162e3ac2d733ad1fd50ea1
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: ec034ac3cf6f4cbec2d373d9dade45a00f70ddbe
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90988187"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91566688"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Azure Cosmos Emulator – kibocsátási megjegyzések és letöltési információk
 
@@ -31,7 +31,7 @@ Ez a cikk az Azure Cosmos Emulator kiadási megjegyzéseit mutatja be az egyes k
 Ez a kiadás két új, Cosmos Emulator indítási lehetőséget hoz létre: 
 
 * "/EnablePreview" – lehetővé teszi az emulátor előzetes funkcióinak használatát. Az előzetes verzióban még fejlesztés alatt álló funkciók is elérhetők a CI és a Sample Writing használatával.
-* "/EnableAadAuthentication" – lehetővé teszi, hogy az emulátor fogadja az egyéni Azure Active Directory jogkivonatokat az Azure Cosmos főkulcsainak alternatívájaként. Ez a funkció továbbra is fejlesztés alatt áll; az adott szerepkör-hozzárendelések és az egyéb engedélyekkel kapcsolatos beállítások jelenleg nem támogatottak.
+* "/EnableAadAuthentication" – lehetővé teszi, hogy az emulátor fogadja az egyéni Azure Active Directory jogkivonatokat az Azure Cosmos elsődleges kulcsai alternatívájaként. Ez a funkció továbbra is fejlesztés alatt áll; az adott szerepkör-hozzárendelések és az egyéb engedélyekkel kapcsolatos beállítások jelenleg nem támogatottak.
 
 ### <a name="2112-07-july-2020"></a>2.11.2 (2020. július 7.)
 

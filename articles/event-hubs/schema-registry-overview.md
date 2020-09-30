@@ -1,23 +1,24 @@
 ---
-title: Azure Schema Registry Event Hubs (előzetes verzió)
+title: Azure Schema Registry az Event Hubsban (előzetes verzió)
 description: Ez a cikk áttekintést nyújt az Azure Event Hubs (előzetes verzió) által támogatott séma-beállításjegyzékről.
 ms.topic: overview
 ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: 225b36262ccb21b4942e17239b978d3ba595147e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6d478e264f38bb8a097c87e37479ca64b3d5e52d
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91349023"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568369"
 ---
-# <a name="azure-schema-registry-in-event-hubs-preview"></a>Azure Schema Registry Event Hubs (előzetes verzió)
+# <a name="azure-schema-registry-in-event-hubs-preview"></a>Azure Schema Registry az Event Hubsban (előzetes verzió)
 Számos esemény-adatfolyam és üzenetküldési forgatókönyv esetén az esemény vagy az üzenet tartalma strukturált adatokat tartalmaz, amelyek szerializálása vagy deszerializálása séma-vezérelt formátum, például Apache Avro használatával történik. A küldők és a fogadók is ellenőrizhetik az adatok integritását egy séma-dokumentummal, mint a JSON-sémával. A séma által vezérelt formátumok esetében a séma elérhetővé tétele az üzenet fogyasztói számára előfeltétel, hogy a fogyasztó képes legyen deszerializálni az adatmennyiséget. 
 
 Az **Azure Schema Registry** a Event Hubs egyik funkciója, amely egy központi tárházat biztosít a séma dokumentumaihoz az eseményvezérelt és üzenetküldési központú alkalmazásokhoz. Rugalmasságot biztosít a termelő és a fogyasztói alkalmazások számára az adatcseréhez anélkül, hogy a sémákat a közöttük lévő séma kezelése és megosztása, valamint a különböző díjszabások alapján kellene fejlődni. A séma beállításjegyzéke egyszerű irányítási keretrendszert is biztosít az újrafelhasználható sémák számára, és meghatározza a sémák közötti kapcsolatot egy csoportosítási összeállítás (Schema groups) segítségével.
 
 > [!NOTE]
-> - A **séma-beállításjegyzék** szolgáltatás jelenleg **előzetes** verzióban érhető el, és csak a **standard** és a **dedikált** szinteken érhető el, nem az alapszintű **szinten** .
+> - A **séma-beállításjegyzék** szolgáltatás jelenleg **előzetes**verzióban érhető el, és éles számítási feladatokhoz nem ajánlott.
+> - A szolgáltatás csak **standard** és **dedikált** szinten érhető el, nem az alapszintű **csomagokban** .
 > - Ez az előzetes verzió jelenleg csak az **USA nyugati középső** régiójában érhető el. 
 
 A sémák által vezérelt szerializálási keretrendszerek, például az Apache Avro, a externalizing-szerializálási metaadatok a megosztott sémákban is segíthetnek, ha jelentősen csökkentik az egyes adatkészletekben található, és a címkével ellátott, címkézett formátumokkal (például JSON) ellátott üzenetek és mezőnevek. Az eseményeken és az eseményvezérelt infrastruktúrán belül tárolt sémák biztosítják, hogy a szerializáláshoz és a szerializáláshoz szükséges metaadatok mindig elérhetők legyenek, és a sémák nem lehetnek rossz helyre helyezve. 
@@ -55,8 +56,10 @@ Ha programozott módon fér hozzá a séma beállításjegyzékéhez, regisztrá
 
 | Szerepkör | Leírás | 
 | ---- | ----------- | 
-| Séma beállításjegyzék-olvasója (előzetes verzió) | Séma-beállításjegyzékbeli csoportok és sémák olvasása és listázása. |
-| Séma beállításjegyzékbeli közreműködői (előzetes verzió) | Séma-beállításjegyzékbeli csoportok és sémák olvasása, írása és törlése. |
+| Tulajdonos | Séma-beállításjegyzékbeli csoportok és sémák olvasása, írása és törlése. |
+| Közreműködő | Séma-beállításjegyzékbeli csoportok és sémák olvasása, írása és törlése. |
+| [Séma beállításjegyzék-olvasója (előzetes verzió)](../role-based-access-control/built-in-roles.md#schema-registry-reader-preview) | Séma-beállításjegyzékbeli csoportok és sémák olvasása és listázása. |
+| [Séma beállításjegyzékbeli közreműködői (előzetes verzió)](../role-based-access-control/built-in-roles.md#schema-registry-reader-preview) | Séma-beállításjegyzékbeli csoportok és sémák olvasása, írása és törlése. |
 
 Az alkalmazások a Azure Portal használatával történő regisztrálásával kapcsolatos utasításokért lásd: [alkalmazás regisztrálása az Azure ad](../active-directory/develop/quickstart-register-app.md)-ben. Jegyezze fel az ügyfél-azonosítót (az alkalmazás AZONOSÍTÓját), a bérlő AZONOSÍTÓját és a kódban használandó titkot. 
 

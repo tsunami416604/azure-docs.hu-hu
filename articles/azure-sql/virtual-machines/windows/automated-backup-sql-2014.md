@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 25f3b1e6a01ba190dffaa8c43534a5e23b7d9b23
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d7938f24e408e72a84003c19e5c294d31f6b65b5
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91299119"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91565122"
 ---
 # <a name="automated-backup-for-sql-server-2014-virtual-machines-resource-manager"></a>Automatikus biztonsági mentés a SQL Server 2014 virtuális gépekhez (Resource Manager)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -34,33 +34,30 @@ Az automatikus biztonsági mentés automatikusan [úgy konfigurálja a felügyel
 ## <a name="prerequisites"></a>Előfeltételek
 Az automatikus biztonsági mentés használatához vegye figyelembe a következő előfeltételeket:
 
+
 **Operációs rendszer**:
 
-- Windows Server 2012
-- Windows Server 2012 R2
-- Windows Server 2016
+- Windows Server 2012 és újabb 
 
 **SQL Server verzió/kiadás**:
 
 - SQL Server 2014 standard
 - SQL Server 2014 Enterprise
 
-> [!IMPORTANT]
-> Az automatikus biztonsági mentés a SQL Server 2014-es verzióval működik. Ha SQL Server 2016/2017-es verziót használ, az adatbázisok biztonsági mentéséhez használhatja az automatikus Backup v2-t. További információ: [az automatikus biztonsági mentés v2 SQL Server 2016 Azure-beli virtuális gépekhez](automated-backup.md).
+> [!NOTE]
+> Az SQL 2016 és újabb rendszerekhez lásd: [SQL Server 2016 automatikus biztonsági mentése](automated-backup.md).
 
 **Adatbázis-konfiguráció**:
 
-- A célként megadott adatbázisoknak a teljes helyreállítási modellt kell használniuk. A teljes helyreállítási modell biztonsági mentésekre gyakorolt hatásával kapcsolatos további információkért lásd: [biztonsági mentés a teljes helyreállítási modell alatt](https://technet.microsoft.com/library/ms190217.aspx).
-- A célként megadott adatbázisoknak az alapértelmezett SQL Server példányon kell lenniük. A SQL Server IaaS-ügynök bővítmény nem támogatja a nevesített példányokat.
-
-> [!NOTE]
-> Az automatikus biztonsági mentés a SQL Server IaaS-ügynök bővítményére támaszkodik. Az aktuális SQL-virtuálisgép-katalógus lemezképei alapértelmezés szerint a bővítményt adja hozzá. További információ: [SQL Server IaaS-ügynök bővítmény](sql-server-iaas-agent-extension-automate-management.md).
+- A célként megadott _felhasználói_ adatbázisoknak a teljes helyreállítási modellt kell használniuk. A rendszeradatbázisoknak nem kell a teljes helyreállítási modellt használniuk. Ha azonban a modell-vagy MSDB a naplók biztonsági mentésére van szükség, a teljes helyreállítási modellt kell használnia. A teljes helyreállítási modell biztonsági mentésekre gyakorolt hatásával kapcsolatos további információkért lásd: [biztonsági mentés a teljes helyreállítási modell alatt](https://technet.microsoft.com/library/ms190217.aspx). 
+- A SQL Server VM a [teljes felügyeleti módban](sql-vm-resource-provider-register.md#upgrade-to-full)regisztrálta az SQL VM erőforrás-szolgáltatót. 
+-  Az automatikus biztonsági mentés a teljes [SQL Server IaaS-ügynök bővítményre](sql-server-iaas-agent-extension-automate-management.md)támaszkodik. Így az automatikus biztonsági mentés csak az alapértelmezett példányban, vagy egyetlen elnevezett példányban támogatott a célként megadott adatbázisokban. Ha nincs alapértelmezett példány, és több elnevezett példány is, az SQL IaaS bővítmény meghiúsul, és az automatikus biztonsági mentés nem fog működni. 
 
 ## <a name="settings"></a>Beállítások
 
 Az alábbi táblázat az automatikus biztonsági mentéshez konfigurálható beállításokat ismerteti. A tényleges konfigurációs lépések attól függően változnak, hogy az Azure Portal vagy az Azure Windows PowerShell-parancsokat használja-e.
 
-| Beállítás | Tartomány (alapértelmezett) | Description |
+| Beállítás | Tartomány (alapértelmezett) | Leírás |
 | --- | --- | --- |
 | **Automatikus biztonsági mentés** | Engedélyezés/letiltás (letiltva) | Engedélyezheti vagy letilthatja a SQL Server 2014 standard vagy Enterprise rendszert futtató Azure-beli virtuális gépek automatizált biztonsági mentését. |
 | **Megtartási időszak** | 1-30 nap (30 nap) | A biztonsági másolat megőrzésének napjainak száma. |

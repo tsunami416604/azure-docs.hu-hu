@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan frissítheti a tár konfigur�
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
-ms.openlocfilehash: 8890cb541e38f8bc8b680fbcfeb821f29723e8c0
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 19a335d17ee0aa5ff9f989556656f5cf20d2b1a9
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89007111"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567825"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>Az Azure Recovery Services-tároló konfigurációinak frissítése REST API használatával
 
@@ -30,13 +30,13 @@ Alapértelmezés szerint a rendszer minden újonnan létrehozott Recovery Servic
 A tárolóhoz tartozó helyreállítható törlés aktuális állapotának beolvasásához használja a következő *lekérési* műveletet
 
 ```http
-GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig?api-version=2019-05-13
+GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig?api-version=2019-06-15
 ```
 
 A Get URI a, a `{subscriptionId}` `{vaultName}` `{vaultresourceGroupName}` paraméterekkel rendelkezik. Ebben a példában a `{vaultName}` "testVault" és a `{vaultresourceGroupName}` "testVaultRG". Mivel az összes szükséges paraméter meg van adva az URI-ban, nincs szükség külön kérelem törzsére.
 
 ```http
-GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupconfig/vaultconfig?api-version=2019-05-13
+GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupconfig/vaultconfig?api-version=2019-06-15
 ```
 
 #### <a name="responses"></a>Válaszok
@@ -65,16 +65,16 @@ A "GET" kérés elküldése után a rendszer 200 (sikeres) választ ad vissza.
 
 ### <a name="update-soft-delete-state-using-rest-api"></a>Helyreállítható törlési állapot frissítése REST API használatával
 
-A Recovery Services-tároló törlési állapotának REST API használatával történő frissítéséhez használja a következő *javítási* műveletet:
+A Recovery Services-tároló törlési állapotának REST API használatával történő frissítéséhez használja a következő *put* műveletet:
 
 ```http
-PATCH https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig?api-version=2019-05-13
+PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig?api-version=2019-06-15
 ```
 
-A javítás URI-ja:, `{subscriptionId}` `{vaultName}` `{vaultresourceGroupName}` paraméterek. Ebben a példában a `{vaultName}` "testVault" és a `{vaultresourceGroupName}` "testVaultRG". Ha az URI-t a fenti értékekre cseréljük, akkor az URI a következőképpen fog kinézni.
+A Put URI a, a `{subscriptionId}` `{vaultName}` `{vaultresourceGroupName}` paraméterekkel rendelkezik. Ebben a példában a `{vaultName}` "testVault" és a `{vaultresourceGroupName}` "testVaultRG". Ha az URI-t a fenti értékekre cseréljük, akkor az URI a következőképpen fog kinézni.
 
 ```http
-PATCH https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupconfig/vaultconfig?api-version=2019-05-13
+PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupconfig/vaultconfig?api-version=2019-06-15
 ```
 
 #### <a name="create-the-request-body"></a>A kérelem törzsének létrehozása

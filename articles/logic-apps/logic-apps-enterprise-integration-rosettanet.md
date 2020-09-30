@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
-ms.openlocfilehash: 833e2a6f64301c39ba2b9e7959585c3edeab9445
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f02cbdc7ca8822c5fcc91b106856d7f8f547536b
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072586"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91565105"
 ---
 # <a name="exchange-rosettanet-messages-for-b2b-enterprise-integration-in-azure-logic-apps"></a>Exchange RosettaNet-üzenetek a B2B vállalati integrációhoz Azure Logic Apps
 
@@ -81,9 +81,9 @@ A PIP-folyamat konfigurációjának az integrációs fiókhoz való hozzáadás�
 
    | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
-   | **Név** | Yes | A PIP neve |
-   | **PIP-kód** | Yes | A PIP háromjegyű kód. További információ: [RosettaNet maggal](/biztalk/adapters-and-accelerators/accelerator-rosettanet/rosettanet-pips). |
-   | **PIP verziója** | Yes | A PIP verziószáma, amely a kiválasztott PIP-kód alapján érhető el |
+   | **Név** | Igen | A PIP neve |
+   | **PIP-kód** | Igen | A PIP háromjegyű kód. További információ: [RosettaNet maggal](/biztalk/adapters-and-accelerators/accelerator-rosettanet/rosettanet-pips). |
+   | **PIP verziója** | Igen | A PIP verziószáma, amely a kiválasztott PIP-kód alapján érhető el |
    ||||
 
    A PIP-tulajdonságokkal kapcsolatos további információkért látogasson el a [RosettaNet webhelyére](https://resources.gs1us.org/RosettaNet-Standards/Standards-Library/PIP-Directory#1043208-pipsreg).
@@ -112,15 +112,15 @@ A PIP-folyamat konfigurációjának az integrációs fiókhoz való hozzáadás�
 
    | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
-   | **Név** | Yes | A szerződés neve |
-   | **Szerződés típusa** | Yes | Válassza a **RosettaNet**lehetőséget. |
-   | **Gazda partner** | Yes | Egy szerződéshez a gazdagép és a vendég partner is szükséges. A fogadó partner a szerződést konfiguráló szervezetet jelöli. |
-   | **Gazdagép identitása** | Yes | A gazdagép-partner azonosítója |
-   | **Vendég partner** | Yes | Egy szerződéshez a gazdagép és a vendég partner is szükséges. A vendég partner a gazda partnerrel üzleti tevékenységet folytató szervezetet jelöli. |
-   | **Vendég identitás** | Yes | A vendég partner azonosítója |
+   | **Név** | Igen | A szerződés neve |
+   | **Szerződés típusa** | Igen | Válassza a **RosettaNet**lehetőséget. |
+   | **Gazda partner** | Igen | Egy szerződéshez a gazdagép és a vendég partner is szükséges. A fogadó partner a szerződést konfiguráló szervezetet jelöli. |
+   | **Gazdagép identitása** | Igen | A gazdagép-partner azonosítója |
+   | **Vendég partner** | Igen | Egy szerződéshez a gazdagép és a vendég partner is szükséges. A vendég partner a gazda partnerrel üzleti tevékenységet folytató szervezetet jelöli. |
+   | **Vendég identitás** | Igen | A vendég partner azonosítója |
    | **Fogadási beállítások** | Változó | Ezek a tulajdonságok a gazda partner által fogadott összes üzenetre érvényesek. |
    | **Küldési beállítások** | Változó | Ezek a tulajdonságok a gazda partner által küldött összes üzenetre érvényesek. |  
-   | **RosettaNet PIP-hivatkozások** | Yes | A szerződéshez tartozó PIP-hivatkozások. Minden RosettaNet-üzenethez PIP-konfigurációk szükségesek. |
+   | **RosettaNet PIP-hivatkozások** | Igen | A szerződéshez tartozó PIP-hivatkozások. Minden RosettaNet-üzenethez PIP-konfigurációk szükségesek. |
    ||||
 
 1. Ha úgy szeretné beállítani a szerződést, hogy fogadja a vendég partnertől érkező üzeneteket, válassza a **fogadási beállítások**lehetőséget.
@@ -131,9 +131,9 @@ A PIP-folyamat konfigurációjának az integrációs fiókhoz való hozzáadás�
 
       | Tulajdonság | Kötelező | Leírás |
       |----------|----------|-------------|
-      | **Az üzenetet alá kell írni** | No | A bejövő üzenetek aláírása a kiválasztott tanúsítvánnyal. |
+      | **Az üzenetet alá kell írni** | Nem | A bejövő üzenetek aláírása a kiválasztott tanúsítvánnyal. |
       | **Tanúsítvány** | Igen, ha engedélyezve van az aláírás | Az aláíráshoz használandó tanúsítvány |
-      | **Üzenetek titkosításának engedélyezése** | No | A bejövő üzenetek titkosítása a kiválasztott tanúsítvánnyal. |
+      | **Üzenetek titkosításának engedélyezése** | Nem | A bejövő üzenetek titkosítása a kiválasztott tanúsítvánnyal. |
       | **Tanúsítvány** | Igen, ha engedélyezve van a titkosítás | A titkosításhoz használandó tanúsítvány |
       ||||
 
@@ -147,10 +147,10 @@ A PIP-folyamat konfigurációjának az integrációs fiókhoz való hozzáadás�
 
       | Tulajdonság | Kötelező | Leírás |
       |----------|----------|-------------|
-      | **Üzenetek aláírásának engedélyezése** | No | A kimenő üzenetek aláírása a kiválasztott aláírási algoritmussal és tanúsítvánnyal. |
+      | **Üzenetek aláírásának engedélyezése** | Nem | A kimenő üzenetek aláírása a kiválasztott aláírási algoritmussal és tanúsítvánnyal. |
       | **Aláírási algoritmus** | Igen, ha engedélyezve van az aláírás | A használni kívánt aláíró algoritmus a kiválasztott tanúsítvány alapján |
       | **Tanúsítvány** | Igen, ha engedélyezve van az aláírás | Az aláíráshoz használandó tanúsítvány |
-      | **Üzenetek titkosításának engedélyezése** | No | A kimenő fájlok titkosítása a kiválasztott titkosítási algoritmus és tanúsítvány használatával. |
+      | **Üzenetek titkosításának engedélyezése** | Nem | A kimenő fájlok titkosítása a kiválasztott titkosítási algoritmus és tanúsítvány használatával. |
       | **Titkosítási algoritmus** | Igen, ha engedélyezve van a titkosítás | A használni kívánt titkosítási algoritmus a kiválasztott tanúsítvány alapján |
       | **Tanúsítvány** | Igen, ha engedélyezve van a titkosítás | A titkosításhoz használandó tanúsítvány |
       ||||
@@ -159,8 +159,8 @@ A PIP-folyamat konfigurációjának az integrációs fiókhoz való hozzáadás�
 
       | Tulajdonság | Kötelező | Leírás |
       |----------|----------|-------------|
-      | **Művelet URL-címe** |  Yes | A műveleti üzenetek küldéséhez használt URL-cím. Az URL-cím kötelező mező a szinkron és aszinkron üzenetek esetében is. |
-      | **Nyugtázás URL-címe** | Yes | A visszaigazolási üzenetek küldéséhez használandó URL-cím. Az URL-cím az aszinkron üzenetek kötelező mezője. |
+      | **Művelet URL-címe** |  Igen | A műveleti üzenetek küldéséhez használt URL-cím. Az URL-cím kötelező mező a szinkron és aszinkron üzenetek esetében is. |
+      | **Nyugtázás URL-címe** | Igen | A visszaigazolási üzenetek küldéséhez használandó URL-cím. Az URL-cím az aszinkron üzenetek kötelező mezője. |
       ||||
 
 1. Ha meg szeretné határozni a RosettaNet PIP-referenciákkal rendelkező szerződést a partnerek számára, válassza a **ROSETTANET pip-referenciák**lehetőséget. A **pip neve**területen válassza ki a korábban létrehozott pip nevét.
@@ -197,13 +197,13 @@ A fejlesztés felgyorsításához és az integrációs minták támogatásához 
 
 1. Adja meg a művelet tulajdonságainak adatait:
 
-   ![Művelet részleteinek megadása](media/logic-apps-enterprise-integration-rosettanet/decode-action-details.png)
+   ![Képernyőkép, amely megmutatja, hol adja meg a művelet tulajdonságait.](media/logic-apps-enterprise-integration-rosettanet/decode-action-details.png)
 
    | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
-   | **Üzenet** | Yes | A dekódolni kívánt RosettaNet-üzenet  |
-   | **Fejlécek** | Yes | Azok a HTTP-fejlécek, amelyek megadja a verzió értékeit, amely a RNIF verziója, valamint a válasz típusa, amely a partnerek közötti kommunikációs típust jelzi, és szinkron vagy aszinkron lehet |
-   | **Szerepkör** | Yes | A gazda partner szerepe a PIP-ben |
+   | **Üzenet** | Igen | A dekódolni kívánt RosettaNet-üzenet  |
+   | **Fejlécek** | Igen | Azok a HTTP-fejlécek, amelyek megadja a verzió értékeit, amely a RNIF verziója, valamint a válasz típusa, amely a partnerek közötti kommunikációs típust jelzi, és szinkron vagy aszinkron lehet |
+   | **Szerepkör** | Igen | A gazda partner szerepe a PIP-ben |
    ||||
 
    A RosettaNet dekódolása műveletből a kimenet, valamint más tulajdonságok is tartalmazzák a **kimenő jeleket**, amelyekkel kódolhat és visszatérhet a partnernek, vagy bármilyen egyéb műveletet végrehajthat a kimeneten.
@@ -230,14 +230,14 @@ A fejlesztés felgyorsításához és az integrációs minták támogatásához 
 
    | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
-   | **Üzenet** | Yes | A kódolni kívánt RosettaNet-üzenet  |
-   | **Gazda partner** | Yes | A gazda partner neve |
-   | **Vendég partner** | Yes | A vendég partner neve |
-   | **PIP-kód** | Yes | A PIP-kód |
-   | **PIP verziója** | Yes | A PIP verziója |  
-   | **PIP-példány identitása** | Yes | A PIP-üzenet egyedi azonosítója |  
-   | **Üzenettípus** | Yes | A kódolni kívánt üzenet típusa |  
-   | **Szerepkör** | Yes | A gazda partner szerepe |
+   | **Üzenet** | Igen | A kódolni kívánt RosettaNet-üzenet  |
+   | **Gazda partner** | Igen | A gazda partner neve |
+   | **Vendég partner** | Igen | A vendég partner neve |
+   | **PIP-kód** | Igen | A PIP-kód |
+   | **PIP verziója** | Igen | A PIP verziója |  
+   | **PIP-példány identitása** | Igen | A PIP-üzenet egyedi azonosítója |  
+   | **Üzenettípus** | Igen | A kódolni kívánt üzenet típusa |  
+   | **Szerepkör** | Igen | A gazda partner szerepe |
    ||||
 
    A kódolt üzenet most már készen áll a partnernek való küldésre.
@@ -256,7 +256,7 @@ A fejlesztés felgyorsításához és az integrációs minták támogatásához 
 
    ![RosettaNet műveletekkel való hurokig](media/logic-apps-enterprise-integration-rosettanet/rosettanet-loop.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Megtudhatja, hogyan érvényesítheti, átalakíthatja és más üzenetkezelési műveleteket a [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md)
 * További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

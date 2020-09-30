@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 09/30/2020
 ms.author: alexeyo
-ms.openlocfilehash: 554dd0967979bc2457c3a9c8371152e09535381f
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 7e22b772ec35ff9b63c99acd81ad6bb5abe328a0
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690136"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567162"
 ---
 # <a name="speech-services-quotas-and-limits"></a>A Speech Services kvótái és korlátai
 
@@ -23,7 +23,7 @@ Ez a cikk egy gyors referenciát és az Azure kognitív Speech Services kvótái
 
 ## <a name="quotas-and-limits-quick-reference"></a>Kvóták és korlátozások – rövid útmutató
 Ugrás [szöveg – beszéd kvótára és korlátokra](#text-to-speech-quotas-and-limits-per-speech-resource)
-### <a name="speech-to-text-quotas-and-limits-per-speech-resource"></a>Beszédfelismerési kvóták és korlátozások a beszédfelismerési erőforrásokban
+### <a name="speech-to-text-quotas-and-limits-per-speech-resource"></a>Diktálási kvóták és Speech-erőforrásonkénti korlátok
 Az alábbi táblázatban az "állítható" sor nélküli paraméterek **nem** állíthatók be az összes ár szintjére.
 
 | Kvóta | Ingyenes (F0)<sup>1</sup> | Standard (S0) |
@@ -33,10 +33,11 @@ Az alábbi táblázatban az "állítható" sor nélküli paraméterek **nem** á
 | Módosítható | Nem<sup>2</sup> | Igen<sup>2</sup> |
 | **REST API kérelmek korlátja ([API Management](../../api-management/api-management-key-concepts.md) végpontok)** | 100 kérelem/10 másodperc | 100 kérelem/10 másodperc |
 | **Adatkészlet maximális mérete az adatimportáláshoz** | 2 GB | 2 GB |
-| **A Batch-átírások maximális bemeneti blobjának mérete** | n.a. | 2,5 GB |
-| **BLOB-tárolók maximális mérete a kötegelt átíráshoz** | n.a. | 5 GB |
-| **Blobok maximális száma egy tárolóban a kötegelt átíráshoz** | n.a. | 10000 |
-| **Párhuzamosan futó feladatok maximális száma a Batch-átíráshoz** | n.a. | 2000  |
+| **A Batch-átírások maximális bemeneti blobjának mérete** | N.A. | 2,5 GB |
+| **BLOB-tárolók maximális mérete a kötegelt átíráshoz** | N.A. | 5 GB |
+| **Blobok maximális száma egy tárolóban a kötegelt átíráshoz** | N.A. | 10000 |
+| **A Batch-átírási kérelemben szereplő fájlok maximális száma (ha több tartalom URL-címét használja bemenetként)** | N.A. | 1000  |
+| **Párhuzamosan futó feladatok maximális száma a Batch-átíráshoz** | N.A. | 2000  |
 
 <sup>1</sup> az **ingyenes (F0)** díjszabási szinten a [díjszabási oldalon](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)a havi kedvezmények is szerepelnek.<br/>
 <sup>2</sup> [további magyarázatok](#detailed-description-quota-adjustment-and-best-practices), [ajánlott eljárások](#general-best-practices-to-mitigate-throttling-during-autoscaling)és [beállítási utasítások](#speech-to-text-increasing-online-transcription-concurrent-request-limit).<br/> 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: djpmsft
 ms.author: daperlov
 ms.date: 08/31/2020
-ms.openlocfilehash: 96fba5c27115dab65f26be80ce03bef35abcdb92
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: a936fbec23a38c5b96c678b38b92eed9346b88bf
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230830"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567536"
 ---
 # <a name="global-parameters-in-azure-data-factory"></a>Globális paraméterek a Azure Data Factory
 
@@ -25,11 +25,11 @@ A globális paraméterek állandók egy olyan adatelőállítón keresztül, ame
 
 Globális paraméter létrehozásához nyissa meg a *kezelés* szakasz *globális paraméterek* lapját. Válassza az **új** lehetőséget a létrehozási oldal megnyitásához – NAV.
 
-![Globális paraméterek létrehozása](media/author-global-parameters/create-global-parameter-1.png)
+![Képernyőfelvétel: a globális paraméterek létrehozásához kiválasztott új gomb kiemelése.](media/author-global-parameters/create-global-parameter-1.png)
 
 A Side-NAV lapon adjon meg egy nevet, válasszon ki egy adattípust, és adja meg a paraméter értékét.
 
-![Globális paraméterek létrehozása](media/author-global-parameters/create-global-parameter-2.png)
+![Képernyőkép, amely azt mutatja, hogy hol adja hozzá a nevet, az adattípust és az értéket az új globális paraméterhez.](media/author-global-parameters/create-global-parameter-2.png)
 
 A globális paraméter létrehozása után a paraméter nevére kattintva szerkesztheti. Ha egyszerre több paramétert szeretne módosítani, válassza az **összes szerkesztése**lehetőséget.
 

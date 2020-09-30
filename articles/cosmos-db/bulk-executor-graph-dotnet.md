@@ -9,12 +9,12 @@ ms.date: 05/28/2019
 ms.author: jasonh
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: dbb2ce5c7765e9b2784e5a60f94919b3ee855a39
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.openlocfilehash: 53c770bb8cc9d7a80ae7d11b6b1c089fcc9355da
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91408064"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91565632"
 ---
 # <a name="using-the-graph-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>A Graph tömeges végrehajtó .NET-kódtár használata tömeges műveletek végrehajtásához Azure Cosmos DB Gremlin API-ban
 
@@ -24,12 +24,12 @@ Ahelyett, hogy a Gremlin-lekérdezéseket egy adatbázisba küldi, ahol a rendsz
 
 ## <a name="bulk-operations-with-graph-data"></a>Tömeges gráfadatműveletek
 
-A [tömeges végrehajtó függvénytár](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph?view=azure-dotnet) tartalmaz egy `Microsoft.Azure.CosmosDB.BulkExecutor.Graph` névteret, amely lehetővé teszi a Graph-objektumok létrehozásához és importálásához szükséges funkciókat. 
+A [tömeges végrehajtó függvénytár](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph?view=azure-dotnet&preserve-view=true) tartalmaz egy `Microsoft.Azure.CosmosDB.BulkExecutor.Graph` névteret, amely lehetővé teszi a Graph-objektumok létrehozásához és importálásához szükséges funkciókat. 
 
 Az alábbi folyamat bemutatja, hogyan használható az adatmigrálás a Gremlin API-tárolók esetében:
 1. Rekordok lekérése az adatforrásból.
 2. Hozzon létre `GremlinVertex`- és `GremlinEdge`-objektumokat a beszerzett rekordokból, és adja hozzá őket egy `IEnumerable`-adatstruktúrához. Az alkalmazásnak ebben a részében kell megvalósítani a kapcsolatok észlelését és hozzáadását végző logikát, arra az esetre, ha az adatforrás nem egy gráfadatbázis.
-3. A [Graph BulkImportAsync metódus](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph.graphbulkexecutor.bulkimportasync?view=azure-dotnet) használatával szúrhatja be a gráfobjektumokat a gyűjteménybe.
+3. A [Graph BulkImportAsync metódus](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph.graphbulkexecutor.bulkimportasync?view=azure-dotnet&preserve-view=true) használatával szúrhatja be a gráfobjektumokat a gyűjteménybe.
 
 Ezzel a mechanizmussal jobb adatmigrálási hatékonyság érhető el, mint a Gremlin-ügyfél használata esetében. Azért tapasztalható ez a javulás, mert a Gremlin használata esetén az alkalmazás egyszerre egy lekérdezést küld le, amelyet ellenőrizni kell, ki kell értékelni, majd végre kell hajtani az adatok létrehozásához. A tömeges végrehajtó függvénytár kezeli az érvényesítést az alkalmazásban, és minden hálózati kérelem esetében egyszerre több gráf-objektumot fog küldeni.
 
@@ -140,7 +140,7 @@ Az `App.config` fájlban az alábbi konfigurációs értékek adhatók meg:
 Beállítás|Leírás
 ---|---
 `EndPointUrl`|Ez a **.NET SDK-végpont**, amely az Azure Cosmos DB Gremlin API-adatbázisfiók Áttekintés paneljén található. A formátuma a következő: `https://your-graph-database-account.documents.azure.com:443/`
-`AuthorizationKey`|Ez az Azure Cosmos DB-fiók alatt listázott elsődleges vagy másodlagos kulcs. További információért tekintse meg [az Azure Cosmos DB-adatokhoz való hozzáférés biztonságossá tételével foglalkozó cikket](https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data#master-keys).
+`AuthorizationKey`|Ez az Azure Cosmos DB-fiók alatt listázott elsődleges vagy másodlagos kulcs. További információért tekintse meg [az Azure Cosmos DB-adatokhoz való hozzáférés biztonságossá tételével foglalkozó cikket](https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data#primary-keys).
 `DatabaseName`, `CollectionName`|Ezek a **céladatbázis és -gyűjtemény nevei**. Ha a `ShouldCleanupOnStart` értéke `true`, a rendszer elveti a korábbi neveket, és ezekkel az értékekkel, valamint a `CollectionThroughput` értékkel egy új adatbázist és gyűjteményt hoz létre. Hasonlóképp, ha a `ShouldCleanupOnFinish` értéke `true`, a rendszer az értékek használatával törli az adatbázist, amint az adatok feldolgozása befejeződött. Vegye figyelembe, hogy a célgyűjteménynek **korlátlan gyűjteménynek kell lennie**.
 `CollectionThroughput`|A rendszer ezt egy új gyűjtemény létrehozásához használja, ha a `ShouldCleanupOnStart` értéke `true`.
 `ShouldCleanupOnStart`|Ez a program futtatása előtt törli az adatbázis-fiókot és -gyűjteményeket, és újakat hoz létre a `DatabaseName`, `CollectionName` és `CollectionThroughput` értékekkel.
@@ -159,4 +159,4 @@ Beállítás|Leírás
 
 * További információ a NuGet csomag részleteiről és a tömeges végrehajtó .NET-függvénytár kibocsátási megjegyzéséről: [tömeges végrehajtó SDK – részletek](sql-api-sdk-bulk-executor-dot-net.md). 
 * Tekintse át a [teljesítménnyel kapcsolatos tippeket](https://docs.microsoft.com/azure/cosmos-db/bulk-executor-dot-net#performance-tips) a tömeges végrehajtó használatának további optimalizálása érdekében.
-* Az ebben a névtérben definiált osztályokkal és névterekkel kapcsolatos további információért olvassa el [a BulkExecutor.Graph áttekintését tartalmazó cikket](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph?view=azure-dotnet).
+* Az ebben a névtérben definiált osztályokkal és névterekkel kapcsolatos további információért olvassa el [a BulkExecutor.Graph áttekintését tartalmazó cikket](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph?view=azure-dotnet&preserve-view=true).

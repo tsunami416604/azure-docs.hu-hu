@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/20/2020
-ms.openlocfilehash: 38cf9f5d5102fa4cc322b1a9c7134db85de87814
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: b33fab7657827733b2c5e7724666a3800686c8d9
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90947175"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91564782"
 ---
 # <a name="azure-database-for-mysql-single-server"></a>Önálló Azure Database for MySQL-kiszolgáló
 
@@ -20,7 +20,7 @@ A MySQL Community Edition [Azure Database for MySQL](overview.md) a két üzembe
 - Önálló kiszolgáló 
 - Rugalmas kiszolgáló (előzetes verzió)
 
-Ebben a cikkben áttekintjük és bemutatjuk az egykiszolgálós üzembe helyezési modell alapvető fogalmait. A rugalmas kiszolgáló telepítési módjával kapcsolatos további tudnivalókért tekintse meg a [rugalmas kiszolgálók áttekintése](flexible-server/index.yml) című témakört.
+Ebben a cikkben áttekintjük és bemutatjuk az egykiszolgálós üzembe helyezési modell alapvető fogalmait. A rugalmas kiszolgáló telepítési módjával kapcsolatos további információkért tekintse meg a [rugalmas kiszolgálók áttekintése című témakört](flexible-server/index.yml). A számítási feladatokhoz megfelelő központi telepítési lehetőség eldöntéséről további információt a [megfelelő MySQL-kiszolgáló kiválasztása az Azure-ban](select-right-deployment-type.md)című témakörben talál.
 
 ## <a name="overview"></a>Áttekintés
 
@@ -75,7 +75,7 @@ A Azure Database for MySQL biztonsági funkcióival kapcsolatos további inform�
 
 Az egykiszolgálós szolgáltatás beépített teljesítmény-figyelési és riasztási funkciókkal rendelkezik. Minden Azure-metrika egyperces gyakorisággal rendelkezik, és minden metrika 30 napos előzményt biztosít. A mérőszámokra vonatkozó riasztásokat is beállíthat. A szolgáltatás lehetővé teszi a lassú lekérdezési naplók konfigurálását, és egy eltérő [lekérdezési tárolási](concepts-query-store.md) funkcióval rendelkezik. A Query Store leegyszerűsíti a teljesítménnyel kapcsolatos hibaelhárítást, így gyorsan megtalálhatja a leghosszabb ideig futó és a legtöbb erőforrás-igényes lekérdezést. Ezen eszközök használatával gyorsan optimalizálhatja a számítási feladatokat, és konfigurálhatja a kiszolgálót a legjobb teljesítmény érdekében. További részletek: [figyelés](concepts-monitoring.md) .
 
-## <a name="migration"></a>Áttelepítés
+## <a name="migration"></a>Migrálás
 
 A szolgáltatás a MySQL közösségi verzióját futtatja. Ez lehetővé teszi az alkalmazások teljes kompatibilitását, és minimális újrabontási költségeket igényel a MySQL-motoron az egykiszolgálós szolgáltatáshoz fejlesztett meglévő alkalmazások áttelepítéséhez. Az egyetlen kiszolgálóra történő áttelepítés a következő lehetőségek egyikével végezhető el:
 

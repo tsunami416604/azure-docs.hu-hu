@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/17/2018
-ms.openlocfilehash: 7d57536eee62c415058dd454f3da6ee5f3d04898
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 03fc17c0d071cef4c8de92c6b50d60d961d18aef
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090331"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91565259"
 ---
 # <a name="improve-security-for-b2b-messages-by-using-certificates"></a>A B2B-üzenetek biztonságának fokozása tanúsítványokkal
 
@@ -51,11 +51,11 @@ Ha olyan logikai alkalmazásokban szeretne *nyilvános tanúsítványt* használ
    | **Tanúsítvány** | <*tanúsítvány-fájl neve*> | A feltölteni kívánt tanúsítványfájl megkereséséhez és kiválasztásához válassza a **tanúsítvány** mező melletti mappa ikont. |
    ||||
 
-   ![Válassza a Hozzáadás lehetőséget, adja meg a tanúsítvány részleteit](media/logic-apps-enterprise-integration-certificates/public-certificate-details.png)
+   ![Képernyőfelvétel: a Hozzáadás lehetőség kiválasztása a tanúsítvány részleteinek megadásához.](media/logic-apps-enterprise-integration-certificates/public-certificate-details.png)
 
    Miután az Azure érvényesíti a kiválasztott beállításokat, az Azure feltölti a tanúsítványt.
 
-   ![Az Azure új tanúsítványt jelenít meg](media/logic-apps-enterprise-integration-certificates/new-public-certificate.png) 
+   ![Képernyőfelvétel: itt látható, hogy az Azure hol jelenítse meg az új tanúsítványt.](media/logic-apps-enterprise-integration-certificates/new-public-certificate.png) 
 
 ## <a name="upload-a-private-certificate"></a>Privát tanúsítvány feltöltése
 
@@ -86,7 +86,7 @@ Miután definiálta a tulajdonságokat a létrehozott [szerződésekben](logic-a
    | Tulajdonság | Érték | Leírás | 
    |----------|-------|-------------|
    | **Név** | <*tanúsítvány neve*> | A tanúsítvány neve, amely ebben a példában a "privateCert". | 
-   | **Tanúsítvány típusa** | Privát | A tanúsítvány típusa |
+   | **Tanúsítvány típusa** | Személyes | A tanúsítvány típusa |
    | **Tanúsítvány** | <*tanúsítvány-fájl neve*> | A feltölteni kívánt tanúsítványfájl megkereséséhez és kiválasztásához válassza a **tanúsítvány** mező melletti mappa ikont. Ha kulcstartót használ a titkos kulcshoz, a feltöltött fájl lesz a nyilvános tanúsítvány. | 
    | **Erőforráscsoport** | <*integráció – fiók – erőforrás-csoport*> | Az integrációs fiókhoz tartozó erőforráscsoport, amely ebben a példában a "MyResourceGroup". | 
    | **Key Vault** | <*Key-Vault-név*> | Az Azure Key Vault neve |
@@ -99,6 +99,6 @@ Miután definiálta a tulajdonságokat a létrehozott [szerződésekben](logic-a
 
    ![Az Azure új tanúsítványt jelenít meg](media/logic-apps-enterprise-integration-certificates/new-private-certificate.png) 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [B2B-szerződés létrehozása](logic-apps-enterprise-integration-agreements.md)
