@@ -166,7 +166,7 @@ A központi telepítés eredménye a következő:
 Ha már rendelkezik telepített SAP-rendszerekkel, érdemes lehet optimalizálni néhány kritikus rendszer hálózati késését, és megkeresni az alkalmazás réteget és az adatbázis-kezelő réteget ugyanabban az adatközpontban. Ahhoz, hogy egy teljes Azure-beli rendelkezésre állási csoportba tartozó virtuális gépeket egy már létező, már meglévő közelségi elhelyezési csoportba helyezze át, le kell állítania a rendelkezésre állási csoport összes virtuális gépet, és a rendelkezésre állási csoportot hozzá kell rendelnie a meglévő közelségi csoporthoz Azure Portal, PowerShell vagy CLI használatával. Ha olyan virtuális gépet szeretne áthelyezni, amely nem része egy rendelkezésre állási csoportnak egy meglévő közelségi elhelyezési csoportban, csak le kell állítania a virtuális gépet, és hozzá kell rendelnie egy meglévő közelségi elhelyezési csoporthoz. 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Tekintse meg a dokumentációt:
 
 - [SAP-munkaterhelések az Azure-ban: tervezési és üzembe helyezési ellenőrzőlista](./sap-deployment-checklist.md)

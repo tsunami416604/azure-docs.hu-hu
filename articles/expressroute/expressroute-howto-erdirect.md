@@ -288,6 +288,6 @@ Hozzon létre egy áramkört a ExpressRoute Direct erőforráson.
   GatewayManagerEtag     
   ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A közvetlen ExpressRoute kapcsolatos további információkért tekintse meg az [áttekintést](expressroute-erdirect-about.md).

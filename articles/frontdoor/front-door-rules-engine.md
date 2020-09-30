@@ -10,31 +10,31 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 9/14/2020
+ms.date: 9/29/2020
 ms.author: duau
-ms.openlocfilehash: 94770e4fcad9659594854f81732c7b4e4a97051c
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 8e478cebcf8c5c9365100ade23c3d610c24930ba
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530879"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569753"
 ---
 # <a name="what-is-rules-engine-for-azure-front-door"></a>Mi a szabályok motorja az Azure bejárati kapujában? 
 
-A Rules Engine lehetővé teszi a HTTP-kérések kezelésének testreszabását, és a webalkalmazás viselkedésének nagyobb mértékű felügyeletét biztosítja. Az Azure-beli bejárati ajtóhoz tartozó szabályok a legfontosabb funkciókból állnak, többek között:
+A Rules Engine lehetővé teszi a HTTP-kérések kezelésének testreszabását a peremhálózat szélén, és a webalkalmazások által vezérelt viselkedést biztosít. Az Azure bejárati ajtóhoz tartozó szabályok motorja számos főbb funkcióval rendelkezik, többek között:
 
-- A HTTPS betartatása, gondoskodjon róla, hogy a végfelhasználók a tartalmat biztonságos kapcsolaton keresztül használják.
-- A biztonsági fejlécek alkalmazásával megakadályozhatja a böngészőalapú biztonsági réseket, például a HTTP Strict-Transport-Security (HSTS), az X-XSS-Protection, a Content-Security-Policy, az X-frame-Options, valamint a hozzáférés-vezérlés-engedélyezési-Origin fejléceket a különböző eredetű erőforrás-megosztási (CORS) forgatókönyvekhez. A biztonság-alapú attribútumok cookie-kkal is meghatározhatók.
-- Az alkalmazás mobil vagy asztali verziójára irányuló kérelmek átirányítása a kérések fejlécei, cookie-k vagy lekérdezési karakterláncok tartalmának mintái alapján.
-- Az átirányítási képességekkel 301, 302, 307 és 308 értéket adhat vissza az ügyfélnek, hogy átirányítsa az új állomásnévre, elérési utakra vagy protokollokra.
+* A HTTPS kikényszeríti annak biztosítására, hogy minden végfelhasználó kommunikáljon a tartalommal biztonságos kapcsolaton keresztül.
+* A biztonsági fejléceket implementálva megakadályozhatja a böngészőalapú biztonsági réseket, például a HTTP Strict-Transport-Security (HSTS), az X-XSS-Protection, a Content-Security-Policy, az X-frame-Options és a hozzáférés-vezérlés-engedélyezési-Origin fejléceket a különböző eredetű erőforrás-megosztási (CORS) forgatókönyvekhez. A biztonság-alapú attribútumok cookie-kkal is meghatározhatók.
+* Az alkalmazás mobil-vagy asztali verziójára irányuló kérelmek átirányítása a kérelem fejlécének tartalma, cookie-k vagy lekérdezési karakterláncok mintái alapján.
+* Az átirányítási képességekkel 301, 302, 307 és 308 értéket adhat vissza az ügyfélnek, hogy közvetlenül az új gazdagépekre, elérési utakra vagy protokollokra irányítsa.
 - Dinamikusan módosítja az útvonal gyorsítótárazási konfigurációját a bejövő kérelmek alapján.
 - Írja át újra a kérelem URL-címét, és továbbítsa a kérést a megfelelő háttérbe a konfigurált háttérrendszer-készletben.
 
 ## <a name="architecture"></a>Architektúra 
 
-A szabályok motorja kezeli a kérelmeket az Edge-ben. A szabályok motor konfigurálása után, amikor egy kérelem eléri a bejárati ajtó végpontját, a rendszer először a WAF hajtja végre, majd ezt követi a előtér/tartományhoz társított szabályok motor konfigurációja. A szabályok motorjának konfigurálásakor az azt jelenti, hogy a szülő-útválasztási szabály már egyezik. Annak megadása, hogy az egyes szabályokban szereplő összes művelet végre van-e hajtva, a szabályon belül az összes egyezési feltétel teljesül. Ha egy kérelem nem felel meg a szabály-végrehajtó konfigurációjának egyik feltételének sem, akkor az alapértelmezett útválasztási szabály lesz végrehajtva. 
+A szabályok motorja kezeli a kérelmeket az Edge-ben. Amikor egy kérelem eléri a bejárati ajtó végpontját, a rendszer először a WAF hajtja végre, majd ezt követi a előtér/tartományhoz társított szabályok motor konfigurációja. Ha a szabályok motorjának konfigurációja fut, az azt jelenti, hogy a szülő-útválasztási szabály már egyezik. Az egyes szabályokban végrehajtott összes művelet végrehajtásához az adott szabályban található összes egyezési feltételnek teljesülnie kell. Ha egy kérelem nem felel meg a szabály-végrehajtó konfigurációjának egyik feltételének sem, akkor az alapértelmezett útválasztási szabály lesz végrehajtva. 
 
-Az alábbi konfigurációban például a szabályok motorja úgy van konfigurálva, hogy hozzáfűzje a válasz fejlécét, amely megváltoztatja a gyorsítótár-vezérlő maximális életkorát, ha az egyeztetési feltétel teljesül. 
+Az alábbi ábrán például a szabályok motorja a válasz fejlécének hozzáfűzésére van konfigurálva. A fejléc megváltoztatja a gyorsítótár-vezérlő Max-Age értékeit, ha az egyeztetési feltétel teljesül. 
 
 ![Válasz fejlécének művelete](./media/front-door-rules-engine/rules-engine-architecture-3.png)
 
@@ -46,16 +46,16 @@ Mindkét példa esetében, ha egyetlen egyezési feltétel sem teljesül, a mega
 
 ## <a name="terminology"></a>Terminológia 
 
-A AFD Rules Engine használatával több szabálykészlet-konfigurációt hozhat létre, amelyek mindegyike szabályokból áll. Az alábbiakban néhány hasznos terminológiát ismertetünk, amely a szabályok motorjának konfigurálásakor fog megjelenni. 
+A AFD Rules Engine használatával létrehozhatók a szabályokhoz tartozó konfigurációk kombinációja, amelyek mindegyike szabályokból áll. Az alábbiakban néhány hasznos terminológiát ismertetünk, amely a szabályok motorjának konfigurálásakor fog megjelenni. 
 
 - *Rules Engine-konfiguráció*: egyetlen útvonalra vonatkozó szabályra alkalmazott szabályok halmaza. Mindegyik konfiguráció 25 szabályra van korlátozva. Akár 10 konfigurációt is létrehozhat. 
 - *Rules Engine szabály*: egy legfeljebb 10 egyeztetési feltételből és 5 műveletből álló szabály.
-- *Egyeztetési feltétel*: a beérkező kérések elemzéséhez számos egyeztetési feltétel használható. Egy szabály legfeljebb 10 egyeztetési feltételt tartalmazhat. Az egyeztetési feltételek a **és** a operátorral vannak kiértékelve. Az egyeztetési feltételek teljes listája [itt](front-door-rules-engine-match-conditions.md)található. 
-- *Művelet*: a műveletek azt írják elő, hogy mi történik a bejövő kérelmekkel – a kérés/válasz fejléc műveletei, a továbbítás, az átirányítások és az újraírások még ma elérhetők. Egy szabály legfeljebb 5 műveletet tartalmazhat. egy szabály azonban csak 1 útvonal-konfiguráció felülbírálását tartalmazhatja.  A műveletek teljes listája [itt](front-door-rules-engine-actions.md)található.
+- *Egyeztetési feltétel*: a beérkező kérések elemzéséhez számos egyezési feltételt lehet használni. Egy szabály legfeljebb 10 egyeztetési feltételt tartalmazhat. Az egyeztetési feltételek a **és** a operátorral vannak kiértékelve. Az egyeztetési feltételek teljes listája [itt](front-door-rules-engine-match-conditions.md)található. 
+- *Művelet*: a műveletek azt írják elő, hogy mi történik a bejövő kérelmekkel – a kérés/válasz fejléc műveletei, a továbbítás, az átirányítások és az újraírások még ma elérhetők. Egy szabály legfeljebb öt műveletet tartalmazhat. egy szabály azonban csak egy útvonal-konfiguráció felülbírálását tartalmazhatja.  A műveletek teljes listája [itt](front-door-rules-engine-actions.md)található.
 
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Ismerje meg, hogyan állíthatja be az első [szabályok motorjának konfigurációját](front-door-tutorial-rules-engine.md). 
+- Megtudhatja, hogyan konfigurálhatja az első [szabályok motorjának konfigurációját](front-door-tutorial-rules-engine.md). 
 - Útmutató a [Front Door létrehozásához](quickstart-create-front-door.md).
 - A [Front Door működésének](front-door-routing-architecture.md) ismertetése.

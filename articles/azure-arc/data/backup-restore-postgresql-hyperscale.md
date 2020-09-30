@@ -1,6 +1,6 @@
 ---
-title: Azure Database for PostgreSQL nagy kapacitású-kiszolgálócsoportok biztonsági mentése és visszaállítása
-description: Azure Database for PostgreSQL nagy kapacitású-kiszolgálócsoportok biztonsági mentése és visszaállítása
+title: Biztonsági mentés és visszaállítás a rugalmas skálázású Azure Database for PostgreSQL-kiszolgálócsoportokhoz
+description: Biztonsági mentés és visszaállítás a rugalmas skálázású Azure Database for PostgreSQL-kiszolgálócsoportokhoz
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: d300f3e02d2a1a83410d5b7d981298a4743fb223
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: dde4db7f3eb476b7645e910504e48fea8bb6df0c
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90939789"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569721"
 ---
 # <a name="backup-and-restore-for-azure-arc-enabled-postgresql-hyperscale-server-groups"></a>Azure arc-kompatibilis PostgreSQL nagy kapacitású-kiszolgálócsoportok biztonsági mentése és visszaállítása
 
@@ -52,7 +52,7 @@ Tekintse meg a kimenet tárolási szakaszát:
     }
 ...
 ```
-Ha a "biztonsági mentések" szakasz jelenik meg, az azt jelenti, hogy a kiszolgálói csoport biztonsági mentési tárolási osztály használatára van konfigurálva, és készen áll a biztonsági másolatok készítésére és a visszaállítására. Ha nem látja a "biztonsági mentések" szakaszt, törölnie kell, majd újra létre kell hoznia a kiszolgálói csoportot a biztonsági mentési tár osztályának konfigurálásához. Ezen a ponton még nem lehet biztonsági mentési tárolási osztályt konfigurálni a kiszolgálócsoport létrehozása után.
+Ha megjelenik a parancs kimenetének "biztonsági mentések" szakaszában szereplő tárolási osztály neve, az azt jelenti, hogy a kiszolgálói csoport egy biztonsági mentési tárolási osztály használatára lett konfigurálva, és készen áll a biztonsági másolatok készítésére és a visszaállításokra. Ha nem látja a "biztonsági mentések" szakaszt, törölnie kell, majd újra létre kell hoznia a kiszolgálói csoportot a biztonsági mentési tár osztályának konfigurálásához. Ezen a ponton még nem lehet biztonsági mentési tárolási osztályt konfigurálni a kiszolgálócsoport létrehozása után.
 
 >[!IMPORTANT]
 >Ha a kiszolgálócsoport már konfigurálva van a biztonsági mentési tárolási osztály használatára, ugorja át a következő lépést, és lépjen közvetlenül a "manuális teljes biztonsági mentés" lépésre.
@@ -134,10 +134,12 @@ azdata arc postgres backup list --server-name postgres01
 
 A következőhöz hasonló kimenetet ad vissza:
 ```console
-ID                                Name                      State
---------------------------------  ------------------------  -------
-d134f51aa87f4044b5fb07cf95cf797f  MyBackup_Aug31_0730amPST  Done
+ID                                Name                      State    Timestamp
+--------------------------------  ------------------------  -------  ------------------------------
+d134f51aa87f4044b5fb07cf95cf797f  MyBackup_Aug31_0730amPST  Done     2020-08-31 14:30:00:00+00:00
 ```
+
+Az időbélyeg azt az időpontot jelzi, amikor a biztonsági mentés történt.
 
 ## <a name="restore-a-backup"></a>Visszaállítás biztonsági másolatból
 

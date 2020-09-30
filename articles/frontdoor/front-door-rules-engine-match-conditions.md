@@ -1,5 +1,5 @@
 ---
-title: Azure bejárati ajtó szabályainak motorja egyeztetési feltételek
+title: Az Azure bejárati ajtó szabályai a motorok egyezési feltételei
 description: Ez a cikk az Azure bejárati szabályainak motorjában elérhető különböző egyeztetési feltételek listáját tartalmazza.
 services: frontdoor
 documentationcenter: ''
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/14/2020
 ms.author: duau
-ms.openlocfilehash: 1b2b891a0b6b67efef38005d3a4d67eecf41afbd
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 0e874ae3d29f4143a4f8a9275d5ffcde48d08e6d
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531865"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569756"
 ---
-# <a name="azure-front-door-rules-engine-match-conditions"></a>Azure Front Door szabálymotor egyezési feltételei
+# <a name="azure-front-door-rules-engine-match-conditions"></a>Azure bejárati ajtó szabályainak motorja egyeztetési feltételek
 
-A [AFD-szabályok motorjában](front-door-rules-engine.md) a szabály nulla vagy több egyeztetési feltételt és egy műveletet tartalmaz. Ez a cikk részletes leírást tartalmaz a AFD-szabályok motorjában használható egyeztetési feltételekről.
+A [AFD-szabályok motorjában](front-door-rules-engine.md)egy szabály nulla vagy több egyeztetési feltételből és egy műveletből áll. Ez a cikk részletes leírást tartalmaz a AFD-szabályok motorjában használható egyeztetési feltételekről.
 
-A szabály első része az egyeztetési feltétel vagy az egyeztetési feltételek halmaza. Egy szabály legfeljebb 10 egyeztetési feltételt tartalmazhat. Az egyeztetési feltétel azokat a kérelmeket azonosítja, amelyekhez definiált műveletek vannak végrehajtva. Ha több egyeztetési feltételt használ, az egyeztetési feltételek a és a Logic használatával vannak csoportosítva. A több értéket támogató összes egyeztetési feltétel esetében (lásd az alábbi "szóközzel tagolt"), a "vagy" operátort feltételezi.
+A szabály első része az egyeztetési feltétel vagy az egyeztetési feltételek halmaza. Egy szabály legfeljebb 10 egyeztetési feltételt tartalmazhat. Az egyeztetési feltétel azokat a kérelmeket azonosítja, amelyekhez meghatározott műveleteket végeztek. Ha több egyeztetési feltételt használ, az egyeztetési feltételek a és a Logic használatával vannak csoportosítva. A több értéket támogató összes egyeztetési feltétel ("szóközzel tagolt") esetén a "vagy" operátor feltételezett.
 
 Az egyeztetési feltételt például a következőre használhatja:
 
@@ -84,7 +84,7 @@ Nem IP-egyeztetés | IP-cím (szóközzel tagolt)
   - **IPv6-példa**: a *1:2:3:4:5:6:7:8 10:20:30:40:50:60:70:80* a 1:2:3:4:5:6:7:8 vagy 10:20:30:40:50:60:70:80 címről érkező kérelmekre illeszkedik.
 - Az IP-címterület szintaxisa az alapszintű IP-cím, amelyet egy perjel és az előtag mérete követ. Például:
   - **IPv4-példa**: a *5.5.5.64/26* a 5.5.5.64-en keresztül a 5.5.5.127-on keresztül érkező kérésekre illeszkedik.
-  - **IPv6-példa**: a *1:2:3:/48* a 1:2:3:0:0:0:0:0 – 1:2: 3: FFFF: FFFF: FFFF: FFFF: FFFF címen megjelenő kérelmekre illeszkedik.
+  - **IPv6-példa**: a *1:2:3:/48* a 1:2:3:0:0:0:0:0 és 1:2:3 közötti címekről érkező összes kérelemre illeszkedik: FFFF: FFFF: FFFF: FFFF: FFFF.
 
 ## <a name="request-body"></a>A kérés törzse
 
@@ -204,11 +204,11 @@ Azok a szabályok, amelyek a normál operátorok listájából fogadnak értéke
 - Nem nagyobb, mint
 - Nem nagyobb vagy egyenlő
 
-A (z) *vagy*annál *kisebb* numerikus operátorok esetében a felhasznált összehasonlítás a hosszon alapul. Ebben az esetben az egyeztetési feltételben szereplő értéknek olyan egész számnak kell lennie, amelynek meg kell egyeznie az összehasonlítani kívánt hosszsal. 
+A (z) *vagy*annál *kisebb* numerikus operátorok esetében a felhasznált összehasonlítás a hosszon alapul. Az egyeztetési feltételben szereplő értéknek olyan egész számnak kell lennie, amely megegyezik az összehasonlítani kívánt hosszsal. 
 
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Ismerje meg, hogyan állíthatja be az első [szabályok motorjának konfigurációját](front-door-tutorial-rules-engine.md). 
+- Ismerje meg, hogyan konfigurálhatja az első [szabályok motorját](front-door-tutorial-rules-engine.md). 
 - További tudnivalók a [szabályok motor műveleteiről](front-door-rules-engine-actions.md)
 - További információ az [Azure bejárati ajtó szabályainak motorról](front-door-rules-engine.md)
