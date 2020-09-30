@@ -3,17 +3,17 @@ title: Azure nagyvállalati regisztrációs számlák
 description: Ez a cikk az Azure Nagyvállalati számlák kezelését ismerteti.
 author: bandersmsft
 ms.author: banders
-ms.date: 09/03/2020
+ms.date: 09/18/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: ca7aaea1e0bac1c00a373c8847623606d629e800
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: fec013395af9aeb3d83f86ab47cc52b3fedd7a1f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442513"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316137"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Azure nagyvállalati regisztrációs számlák
 
@@ -162,20 +162,6 @@ Az egyes szolgáltatások alapvető nyilvános díjszabási információit, mér
 ### <a name="enterprise-agreement-units-of-measure"></a>Nagyvállalati szerződések mértékegységei
 
 A nagyvállalati szerződések mértékegységei gyakran eltérnek a többi programban, például a Microsoft Online Services szerződés programban (MOSA) látottaktól. Ez az eltérés azt jelenti, hogy néhány szolgáltatás esetében a rendszer összesíti a mértékegységeket egy normalizált díjszabás biztosítása érdekében. Az Azure Enterprise Portal Használati adatok összegzése nézetében látható mértékegység mindig a nagyvállalati mértékegység. Az egyes szolgáltatásokhoz tartozó aktuális mértékegységek és átváltások teljes listáját a [Felhasználóbarát szolgáltatásneveket](https://azurepricing.blob.core.windows.net/supplemental/Friendly_Service_Names.xlsx) tartalmazó Excel-fájlban találja.
-
-### <a name="rounding-rules"></a>Kerekítési szabályok
-
-Az Azure Enterprise Portal az IEEE szabvány szerinti banki kerekítés vagy Gauss-kerekítés logikáját használja. Ez a félszámjegyes értékeket a legközelebbi páros számjegyre kerekíti. A hagyományosabb felfelé kerekítő kerekítési függvények a fél számjegyeket a következő legmagasabb számjegyre kerekítik. Ez az Azure Enterprise Portalon használt módszer pontosabb összeget nyújt a csoportra vonatkozóan a normál Excel-logikához képest.
-
-Például: ha az első lehagyott számjegy 5, és nincs következő számjegy, vagy a következő számjegyek nullák, akkor az előző számjegy páros lesz. Például a 2,315 és a 2,325 egyaránt 2,32 lesz, ha a legközelebbi 100-ra van kerekítve.
-
-A következő táblázat bemutatja az Azure Enterprise Portal kerekítésre és konvertálásra vonatkozó szabályainak modellezéséhez használható Excel-képleteket:
-
-| Forgatókönyv | Bankár logikai képlet |
-| --- | --- |
-| Kerekítés használata | = MROUND({_forrás_}, 0,0002) |
-| Kerekítési díjszabás (2 tizedesjegy) | = MROUND({_forrás_}, 0,02) |
-| Kerekítési díjszabás (0 tizedesjegy) | = MROUND({_forrás_}, 2) |
 
 ### <a name="conversion-between-usage-detail-report-and-the-usage-summary-page"></a>Konverzió a használati adatokról szóló jelentés és a használati adatokat összegző oldal között
 
