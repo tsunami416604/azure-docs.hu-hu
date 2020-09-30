@@ -3,26 +3,24 @@ title: Alkalmazás betanítása – LUIS
 titleSuffix: Azure Cognitive Services
 description: A képzés a Language Understanding (LUIS) alkalmazás verziójának tanítási folyamata, amely a természetes nyelvi megértést javítja. A modell frissítéseinek elvégzése, például entitások, szándékok vagy hosszúságú kimondott szöveg hozzáadása, szerkesztése, címkézése vagy törlése után a LUIS-alkalmazás betanítása.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 11/15/2019
-ms.author: diberry
-ms.openlocfilehash: 7511d7379e7b51b19e3436ed7cef53fb914b80ac
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: a53857061110d5a77ac3d166277e7076f4f7f9c6
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343071"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541373"
 ---
 # <a name="train-your-active-version-of-the-luis-app"></a>A LUIS-alkalmazás aktív verziójának betanítása
 
 A képzés a Language Understanding (LUIS) alkalmazás tanításának folyamata, amely a természetes nyelvi megértést javítja. A modell frissítéseinek elvégzése, például entitások, szándékok vagy hosszúságú kimondott szöveg hozzáadása, szerkesztése, címkézése vagy törlése után a LUIS-alkalmazás betanítása.
 
-Az alkalmazások betanítása és [tesztelése](luis-concept-test.md) egy iterációs folyamat. A LUIS-alkalmazás betanítása után tesztelje a mintát hosszúságú kimondott szöveg, és ellenőrizze, hogy a szándékok és entitások felismerése helyesen megtörtént-e. Ha nem, akkor frissítse a LUIS alkalmazást, a betanítást és a tesztelést.
+Az alkalmazások betanítása és [tesztelése](luis-concept-test.md) egy iterációs folyamat. A betanítást követően mintabeszédelemekkel tesztelje a LUIS-alkalmazást annak megállapításához, hogy az alkalmazás helyesen ismeri-e fel a szándékokat és az entitásokat. Ha nem, akkor frissítse a LUIS alkalmazást, a betanítást és a tesztelést.
 
 A betanítás a LUIS-portál aktív verziójára vonatkozik.
 
@@ -58,7 +56,7 @@ A LUIS-portálon betanítás egyetlen lépés a **vonat** gomb megnyomására. A
 
 Ha tudni szeretné, hogy a betanítás sikeres-e, le kell kérdezni az állapotot, amíg az összes modellt nem sikerült betanítani.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Interaktív tesztelés](luis-interactive-test.md)
 * [Kötegelt tesztelés](luis-how-to-batch-test.md)

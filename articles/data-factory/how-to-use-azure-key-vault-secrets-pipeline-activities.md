@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: chlound
-ms.openlocfilehash: f2531ebfd8b1eafc04fa6eda660b0eec3d1147f2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5a662119d9ccf95eac23785c5fe9a787da882531
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81417077"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537395"
 ---
 # <a name="use-azure-key-vault-secrets-in-pipeline-activities"></a>Azure Key Vault-beli titkos kulcsok használata a folyamattevékenységekben
 
@@ -35,7 +35,7 @@ Ez a funkció az adatok gyári felügyelt identitására támaszkodik.  Ismerje 
 
 2. Nyissa meg a Key Vault hozzáférési házirendjét, és adja hozzá a felügyelt identitás engedélyeit a titkos kulcsok lekéréséhez és listázásához.
 
-    ![Key Vault hozzáférési szabályzatok](media/how-to-use-azure-key-vault-secrets-pipeline-activities/akvaccesspolicies.png)
+    ![Képernyőfelvétel: a "hozzáférési szabályzatok" oldal megjelenítése a "hozzáférési házirend hozzáadása" művelet kiemelésével.](media/how-to-use-azure-key-vault-secrets-pipeline-activities/akvaccesspolicies.png)
 
     ![Key Vault hozzáférési szabályzatok](media/how-to-use-azure-key-vault-secrets-pipeline-activities/akvaccesspolicies-2.png)
 
@@ -51,7 +51,7 @@ Ez a funkció az adatok gyári felügyelt identitására támaszkodik.  Ismerje 
 
     |Tulajdonság  |Érték  |
     |---------|---------|
-    |Biztonságos kimenet     |True (Igaz)         |
+    |Biztonságos kimenet     |Igaz         |
     |URL-cím     |[A titkos URI-érték]? API-Version = 7.0         |
     |Metódus     |GET         |
     |Hitelesítés     |MSI         |

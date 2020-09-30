@@ -8,15 +8,15 @@ ms.reviewer: nibaccam
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 08/10/2020
+ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperfq1
-ms.openlocfilehash: f3194198447f024154c369d519d6ff55ee8ee699
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 895bdfde80dfe10bef4b6aad12236db60e2c427b
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91296687"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533145"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Automatizált gépi tanulási kísérletek konfigurálása Pythonban
 
@@ -117,7 +117,7 @@ A következő határozza meg, hogy a modell hogyan lesz betanítva. Az automatiz
 
     Tekintse meg [ezt a jegyzetfüzetet](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) egy távoli példához Azure Machine learning felügyelt számítás használatával. 
 
-* Egy **Azure Databricks-fürt** az Azure-előfizetésében. További részleteket itt talál [: Azure Databricks-fürt beállítása AUTOMATIZÁLT ml-hez](how-to-configure-environment.md#azure-databricks). Tekintse meg ezt a [GitHub-webhelyet](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/azure-databricks/automl) , amely példákat tartalmaz a Azure Databrickst tartalmazó notebookokra.
+* Egy **Azure Databricks-fürt** az Azure-előfizetésében. További részleteket itt talál [: Azure Databricks-fürt beállítása AUTOMATIZÁLT ml-hez](how-to-configure-environment.md#aml-databricks). Tekintse meg ezt a [GitHub-webhelyet](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/azure-databricks/automl) , amely példákat tartalmaz a Azure Databrickst tartalmazó notebookokra.
 
 <a name='configure-experiment'></a>
 
@@ -222,7 +222,7 @@ Minden automatizált gépi tanulási kísérlet során az adatok automatikusan m
 
 A kísérletek az objektumban való konfigurálásakor `AutoMLConfig` engedélyezheti vagy letilthatja a beállítást `featurization` . A következő táblázat a [AutoMLConfig objektum](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)featurization elfogadott beállításait tartalmazza. 
 
-|Featurization-konfiguráció | Description |
+|Featurization-konfiguráció | Leírás |
 | ------------- | ------------- |
 |`"featurization": 'auto'`| Azt jelzi, hogy az előfeldolgozás részeként a rendszer automatikusan végrehajtja az [guardrails és a featurization lépéseket](how-to-configure-auto-features.md#featurization) . **Alapértelmezett beállítás**.|
 |`"featurization": 'off'`| Azt jelzi, hogy a featurization lépést nem kell automatikusan elvégezni.|
@@ -364,7 +364,7 @@ Tekintse meg az [útmutató](how-to-machine-learning-interpretability-automl.md)
 > [!NOTE]
 > A magyarázat-ügyfél jelenleg nem támogatja a ForecastTCN modellt. Ez a modell nem ad vissza magyarázat-irányítópultot, ha az a legjobb modellként lett visszaadva, és nem támogatja az igény szerinti magyarázatok futtatását.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 + További információ a [modellek telepítéséről és helyéről](how-to-deploy-and-where.md).
 

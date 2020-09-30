@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/22/2020
-ms.openlocfilehash: 018c3fb08c7fa0ad35fa567bffbeae48b6fbbce9
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: bae4cb72201bbc1653db5bb549d67531bda71d50
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88928836"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537718"
 ---
 # <a name="query-types-and-composition-in-azure-cognitive-search"></a>Az Azure Cognitive Search lekérdezési típusai és összetétele
 
@@ -92,7 +92,7 @@ A következő táblázat a lekérdezések elküldéséhez szükséges API-kat é
 |-------------|-------------|
 | [Keresési ablak (portál)](search-explorer.md) | Az index és az API-Version beállításokhoz biztosít keresési sávot. Az eredményeket JSON-dokumentumként adja vissza a rendszer. Feltárásra, tesztelésre és érvényesítésre ajánlott. <br/>[Részletek](search-get-started-portal.md#query-index) | 
 | [Poster vagy más REST-eszközök](search-get-started-postman.md) | A webes tesztelési eszközök kiváló választás a REST-hívások kialakításához. A REST API az Azure Cognitive Search minden lehetséges műveletét támogatja. Ebből a cikkből megtudhatja, hogyan állíthatja be a HTTP-kérések fejlécét és törzsét a kérelmek Azure Cognitive Searchba való küldéséhez.  |
-| [SearchIndexClient (.NET)](/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) | Az Azure Cognitive Search index lekérdezéséhez használható ügyfél.  <br/>[Részletek](search-howto-dotnet-sdk.md#core-scenarios)  |
+| [SearchIndexClient (.NET)](/dotnet/api/microsoft.azure.search.searchindexclient) | Az Azure Cognitive Search index lekérdezéséhez használható ügyfél.  <br/>[Részletek](search-howto-dotnet-sdk.md#core-scenarios)  |
 | [Dokumentumok keresése (REST API)](/rest/api/searchservice/search-documents) | Metódusok beolvasása vagy közzététele indexeken a lekérdezési paraméterek használatával további bevitelhez.  |
 
 ## <a name="choose-a-parser-simple--full"></a>Válasszon elemzőt: Simple | teljes
@@ -165,7 +165,7 @@ Ha azt szeretné, hogy az Azure Cognitive Search az eredményeket a keresési po
 ### <a name="hit-highlighting"></a>Találatok kiemelése
 Az Azure Cognitive Searchban a keresési lekérdezésnek megfelelő keresési eredmények pontos részét kiemelve a, a és a paraméterek használatával egyszerűen elvégezhető **`highlight`** **`highlightPreTag`** **`highlightPostTag`** . Megadhatja, hogy mely *kereshető* mezőknél legyen kiemelve a párosított szöveg, valamint az Azure Cognitive Search által visszaadott egyező szöveg kezdetéhez és végéhez hozzáfűzni kívánt karakterlánc-címkék pontos megadását.
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 + [A teljes szöveges keresés működése az Azure Cognitive Searchban (lekérdezési elemzési architektúra)](search-lucene-query-architecture.md)
 + [Keresési ablak](search-explorer.md)

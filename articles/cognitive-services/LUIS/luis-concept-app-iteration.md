@@ -3,20 +3,18 @@ title: Iterációs alkalmazás tervezése – LUIS
 titleSuffix: Azure Cognitive Services
 description: LUIS megtanulja a legjobbat a modell változásainak, a kitalált példáknak, a közzétételnek és az adatoknak a végponti lekérdezésekből való összegyűjtésének folyamatában.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/06/2020
-ms.author: diberry
-ms.openlocfilehash: 560a7d9106b9eaef0f82766615253715deb9238a
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 753d214b520affb59722bc29dbabc50c6e5968f6
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057874"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538721"
 ---
 # <a name="iterative-app-design-for-luis"></a>A LUIS-hoz készült iterációs alkalmazás kialakítása
 
@@ -26,7 +24,7 @@ A Language Understanding (LUIS) alkalmazás a leghatékonyabban tanul és hajt v
 * A LUIS-alkalmazás sémájának szerkesztése. Ide tartoznak az alábbiak:
     * Leképezések példa hosszúságú kimondott szöveg
     * Entitások
-    * Szolgáltatások
+    * Funkciók
 * Betanítás, tesztelés és közzététel
     * Tesztelés az aktív tanulás előrejelzési végpontján
 * Adatok összegyűjtése végponti lekérdezésekből

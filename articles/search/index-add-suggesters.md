@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/21/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4889e73e851e285c84d5d4429298e9a7cdacc140
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: e439f7d2b0232a2e1c36517f24723e4e16f7e6bb
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89014387"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537599"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>Javaslat létrehozása az automatikus kiegészítés és a javasolt eredmények lekérdezésben való engedélyezéséhez
 
@@ -26,7 +26,7 @@ A következő képernyőkép az [első alkalmazás létrehozása a C#-ban](tutor
 
 Ezeket a szolgáltatásokat külön vagy együtt is használhatja. A viselkedés Azure Cognitive Searchban való megvalósításához index és lekérdezési összetevő szükséges. 
 
-+ Az indexben adjon hozzá egy mutatót egy indexhez. Használhatja a portált, a [REST API](/rest/api/searchservice/create-index)vagy a [.net SDK](/dotnet/api/microsoft.azure.search.models.suggester?view=azure-dotnet)-t. A cikk további részében a javaslatok létrehozására összpontosítunk.
++ Az indexben adjon hozzá egy mutatót egy indexhez. Használhatja a portált, a [REST API](/rest/api/searchservice/create-index)vagy a [.net SDK](/dotnet/api/microsoft.azure.search.models.suggester)-t. A cikk további részében a javaslatok létrehozására összpontosítunk.
 
 + A lekérdezési kérelemben hívja meg az [alább felsorolt API](#how-to-use-a-suggester)-k egyikét.
 
@@ -111,7 +111,7 @@ A REST API adjon hozzá javaslatokat a [create index](/rest/api/searchservice/cr
 
 ## <a name="create-using-net"></a>Létrehozás .NET használatával
 
-A C# nyelvben Definiáljon egy [javaslat objektumot](/dotnet/api/microsoft.azure.search.models.suggester?view=azure-dotnet). `Suggesters` egy gyűjtemény, de csak egyetlen tételt vehet igénybe. 
+A C# nyelvben Definiáljon egy [javaslat objektumot](/dotnet/api/microsoft.azure.search.models.suggester). `Suggesters` egy gyűjtemény, de csak egyetlen tételt vehet igénybe. 
 
 ```csharp
 private static void CreateHotelsIndex(SearchServiceClient serviceClient)
@@ -138,7 +138,7 @@ private static void CreateHotelsIndex(SearchServiceClient serviceClient)
 |--------------|-----------------|
 |`name`        |A javaslat neve.|
 |`searchMode`  |A jelölt kifejezésekre való kereséshez használt stratégia. Az egyetlen jelenleg támogatott mód a (z `analyzingInfixMatching` ), amely jelenleg a kifejezés kezdetének felel meg.|
-|`sourceFields`|Egy vagy több olyan mező listája, amely a javaslatok forrását képezi. A mezőknek Type és típusúnak kell lenniük `Edm.String` `Collection(Edm.String)` . Ha a mezőben egy analizátor van megadva, akkor a [listán szereplő](/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet) elemzőnek (nem egyéni elemzőnek) kell lennie.<p/> Ajánlott eljárásként csak azokat a mezőket kell megadnia, amelyek a várt és a megfelelő választ adják meg, legyen szó egy keresési sávon vagy egy legördülő listában szereplő befejezett sztringről.<p/>A Hotel neve jó jelölt, mert pontossággal rendelkezik. A részletes mezők, például a leírások és a megjegyzések túl sűrűk. Ehhez hasonlóan az ismétlődő mezők, például a kategóriák és a címkék kevésbé hatékonyak. A példákban bemutatjuk a "kategória" kifejezést is, amely azt mutatja be, hogy több mezőt is tartalmazhat. |
+|`sourceFields`|Egy vagy több olyan mező listája, amely a javaslatok forrását képezi. A mezőknek Type és típusúnak kell lenniük `Edm.String` `Collection(Edm.String)` . Ha a mezőben egy analizátor van megadva, akkor a [listán szereplő](/dotnet/api/microsoft.azure.search.models.analyzername) elemzőnek (nem egyéni elemzőnek) kell lennie.<p/> Ajánlott eljárásként csak azokat a mezőket kell megadnia, amelyek a várt és a megfelelő választ adják meg, legyen szó egy keresési sávon vagy egy legördülő listában szereplő befejezett sztringről.<p/>A Hotel neve jó jelölt, mert pontossággal rendelkezik. A részletes mezők, például a leírások és a megjegyzések túl sűrűk. Ehhez hasonlóan az ismétlődő mezők, például a kategóriák és a címkék kevésbé hatékonyak. A példákban bemutatjuk a "kategória" kifejezést is, amely azt mutatja be, hogy több mezőt is tartalmazhat. |
 
 <a name="how-to-use-a-suggester"></a>
 
@@ -148,8 +148,8 @@ A rendszer egy lekérdezést használ. A javaslat létrehozása után hívja meg
 
 + [Javaslatok REST API](/rest/api/searchservice/suggestions) 
 + [Automatikus kiegészítés REST API](/rest/api/searchservice/autocomplete) 
-+ [SuggestWithHttpMessagesAsync metódus](/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync?view=azure-dotnet)
-+ [AutocompleteWithHttpMessagesAsync metódus](/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync?view=azure-dotnet&viewFallbackFrom=azure-dotnet)
++ [SuggestWithHttpMessagesAsync metódus] (/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync?
++ [AutocompleteWithHttpMessagesAsync metódus](/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync)
 
 Egy keresési alkalmazásban az ügyfél kódjának egy olyan könyvtárat kell kihasználnia, mint a [jQuery felhasználói felületének automatikus kiegészítése](https://jqueryui.com/autocomplete/) a részleges lekérdezés összegyűjtéséhez és a egyezés biztosításához. További információ erről a feladatról: [automatikus kiegészítés hozzáadása vagy javasolt eredmények az ügyfél kódjához](search-autocomplete-tutorial.md).
 
@@ -169,7 +169,7 @@ POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2020-06-30
 
 + A [DotNetHowToAutocomplete](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete) egy régebbi minta, amely a C# és a Java kódot is tartalmazza. Emellett bemutatja a javaslatok kialakítását, a javasolt lekérdezéseket, az automatikus kiegészítést és a sokoldalú navigációt. Ez a mintakód az üzemeltetett [NYCJobs](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs) -mintaadatok használatával működik. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A kérelmek létrehozásával kapcsolatban a következő cikkből tájékozódhat.
 

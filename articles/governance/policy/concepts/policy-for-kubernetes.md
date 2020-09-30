@@ -1,14 +1,14 @@
 ---
 title: A Kubernetes Azure Policy megismerése
 description: Ismerje meg, hogyan használja a Azure Policy a Rego-t és a nyílt házirend-ügynököt az Azure-ban vagy a helyszínen futó Kubernetes futtató fürtök kezelésére.
-ms.date: 09/22/2020
+ms.date: 09/29/2020
 ms.topic: conceptual
-ms.openlocfilehash: bb4345426eddb8b0b5250980eb46cf0509a22cff
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 67c6af4842ea1f404468497930b08c36ecd1abb9
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91369994"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540251"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>A Kubernetes-fürtökhöz tartozó Azure Policy ismertetése
 
@@ -56,7 +56,7 @@ A következő általános korlátozások érvényesek a Kubernetes-fürtök Azur
 - Nem megfelelő rekordok maximális száma (előfizetés: **1 000 000** )
 - Az Azure Policy-bővítményen kívüli forgalomirányító telepítése nem támogatott. A Azure Policy bővítmény engedélyezése előtt távolítsa el az előző forgalomirányító-telepítés által telepített összetevőket.
 - A [meg nem felelés okai](../how-to/determine-non-compliance.md#compliance-reasons) nem érhetők el az `Microsoft.Kubernetes.Data` 
-   [erőforrás-szolgáltató mód](./definition-structure.md#resource-provider-modes) esetében
+   [erőforrás-szolgáltató módban](./definition-structure.md#resource-provider-modes). [Összetevő részleteinek](../how-to/determine-non-compliance.md#component-details-for-resource-provider-modes)használata.
 
 A következő korlátozások érvényesek az AK-ra vonatkozó Azure Policy-bővítményre:
 
@@ -379,7 +379,7 @@ A _details. constraintTemplate_ és a _details. megkötés_ tulajdonságok rész
 
 ## <a name="assign-a-built-in-policy-definition"></a>Beépített szabályzatdefiníció hozzárendelése
 
-Ahhoz, hogy szabályzat-definíciót rendeljen a Kubernetes-fürthöz, hozzá kell rendelnie a megfelelő szerepköralapú hozzáférés-vezérlés (RBAC) házirend-hozzárendelési műveleteit. Az Azure beépített szerepköreinek **erőforrás-házirend közreműködője** és **tulajdonosa** rendelkezik ezekkel a műveletekkel. További információ: [RBAC-engedélyek Azure Policy](../overview.md#rbac-permissions-in-azure-policy).
+Ahhoz, hogy szabályzat-definíciót rendeljen a Kubernetes-fürthöz, hozzá kell rendelnie a megfelelő Azure szerepköralapú hozzáférés-vezérlési (Azure RBAC) szabályzat-hozzárendelési műveleteket. Az Azure beépített szerepköreinek **erőforrás-házirend közreműködője** és **tulajdonosa** rendelkezik ezekkel a műveletekkel. További információ: [Azure RBAC-engedélyek Azure Policy](../overview.md#azure-rbac-permissions-in-azure-policy).
 
 A következő lépésekkel megkeresheti a fürt kezelésére szolgáló beépített szabályzat-definíciókat a Azure Portal használatával:
 
@@ -430,7 +430,7 @@ Kubernetes-fürtben, ha a névtér a következő címkék valamelyikével rendel
 > [!NOTE]
 > Habár a fürt rendszergazdája jogosult lehet megkötési sablonok létrehozására és frissítésére, és a Azure Policy bővítmény által telepített erőforrások megkötésére, ezek a nem támogatott forgatókönyvek, mert a manuális frissítések felül vannak írva. A forgalomirányító továbbra is kiértékeli azokat a házirendeket, amelyek a bővítmény telepítése és a Azure Policy szabályzat-definíciók kiosztása előtt léteztek.
 
-A bővítmény 15 percenként meghívja a fürt teljes vizsgálatát. Miután összegyűjtötte a teljes vizsgálat részleteit és minden valós idejű értékelést a fürtön történt megkísérelt módosításokat, a bővítmény jelentést készít az eredményről Azure Policy a [megfelelőségi adatokba](../how-to/get-compliance-data.md) , például bármely Azure Policy hozzárendelésbe való felvételhez. A naplózási ciklusban csak az aktív házirend-hozzárendelések eredményeit adja vissza a rendszer. A naplózási eredmények a sikertelen korlátozás állapota mezőjében megjelenő [szabálysértésként](https://github.com/open-policy-agent/gatekeeper#audit) is megtekinthetők. A _nem megfelelő_ erőforrásokkal kapcsolatos részletekért tekintse meg [az erőforrás-szolgáltatói módok megfelelőségi részleteit](../how-to/determine-non-compliance.md#compliance-details-for-resource-provider-modes).
+A bővítmény 15 percenként meghívja a fürt teljes vizsgálatát. Miután összegyűjtötte a teljes vizsgálat részleteit és minden valós idejű értékelést a fürtön történt megkísérelt módosításokat, a bővítmény jelentést készít az eredményről Azure Policy a [megfelelőségi adatokba](../how-to/get-compliance-data.md) , például bármely Azure Policy hozzárendelésbe való felvételhez. A naplózási ciklusban csak az aktív házirend-hozzárendelések eredményeit adja vissza a rendszer. A naplózási eredmények a sikertelen korlátozás állapota mezőjében megjelenő [szabálysértésként](https://github.com/open-policy-agent/gatekeeper#audit) is megtekinthetők. A _nem megfelelő_ erőforrásokkal kapcsolatos részletekért tekintse meg [az erőforrás-szolgáltatói módok összetevőinek részleteit](../how-to/determine-non-compliance.md#component-details-for-resource-provider-modes).
 
 > [!NOTE]
 > A Kubernetes-fürtök Azure Policy összes megfelelőségi jelentése magában foglalja az elmúlt 45 percen belüli összes jogsértést. Az időbélyegző azt jelzi, hogy mikor történt megsértés.
@@ -531,7 +531,7 @@ A bővítmény által gyűjtött információk nem személyes adatok. A rendszer
 - Az ügynök telepítése során Azure Policy bővítmény által észlelt kivételek/hibák a szabályzat kiértékelése során
 - A Azure Policy bővítmény által nem telepített forgalomirányító házirend-definíciók száma
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse át a példákat [Azure Policy mintákon](../samples/index.md).
 - A [Szabályzatdefiníciók struktúrájának](definition-structure.md) áttekintése.

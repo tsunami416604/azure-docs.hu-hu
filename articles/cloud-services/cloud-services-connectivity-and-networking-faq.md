@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: genli
-ms.openlocfilehash: 7caeba0e88f63106eae80f7142b5d65463f8d7a7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2a27161ca9a218b1f7c0e3fb51c9935438d9778e
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77019400"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533417"
 ---
 # <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Az Azure Cloud Services kapcsolódási és hálózatkezelési problémái: gyakori kérdések (GYIK)
 
@@ -99,7 +99,7 @@ Mivel ez a állomásfejléc-kötés a csdef-fájlban van kikényszerítve, a szo
 
 ## <a name="how-can-i-make-sure-the-public-facing-ip-address-of-a-cloud-service-never-changes"></a>Hogyan lehet meggyőződni arról, hogy egy felhőalapú szolgáltatás nyilvános IP-címe soha nem változik?
 
-Annak érdekében, hogy a felhőalapú szolgáltatás (más néven VIP) nyilvános IP-címe soha ne legyen módosítva, hogy az egyes ügyfelek ne tudják a szokásos módon engedélyezni azokat, javasoljuk, hogy fenntartott IP-címet társítson hozzá. Ellenkező esetben az Azure által biztosított virtuális IP-cím le van foglalva az előfizetésből, ha törli az üzemelő példányt. A sikeres VIP-swap művelethez egyedi, fenntartott IP-címekre van szükség a termelési és az előkészítési tárolóhelyek esetében. Enélkül a swap művelet sikertelen lesz. Az IP-cím lefoglalásához és a felhőalapú szolgáltatáshoz való hozzárendeléséhez tekintse meg a következő cikkeket:
+Annak biztosítása érdekében, hogy a felhőalapú szolgáltatás (más néven VIP) nyilvános IP-címe ne módosuljon, hogy az egyes ügyfelek csak néhány konkrét ügyfelet fogadnak el, javasoljuk, hogy a hozzá tartozó fenntartott IP-címet. Ellenkező esetben az Azure által biztosított virtuális IP-cím le van foglalva az előfizetésből, ha törli az üzemelő példányt. A sikeres VIP-swap művelethez egyedi, fenntartott IP-címekre van szükség a termelési és az előkészítési tárolóhelyek esetében. Enélkül a swap művelet sikertelen lesz. Az IP-cím lefoglalásához és a felhőalapú szolgáltatáshoz való hozzárendeléséhez tekintse meg a következő cikkeket:
 
 - [Meglévő felhőalapú szolgáltatás IP-címének lefoglalása](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#reserve-the-ip-address-of-an-existing-cloud-service)
 - [Fenntartott IP-cím hozzárendelése egy felhőalapú szolgáltatáshoz szolgáltatás-konfigurációs fájl használatával](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)

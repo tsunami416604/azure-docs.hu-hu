@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c3143dac79b37ff6dac04856311394440dec9a1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c6c39fd6ceb9e5623d2b857ce8196ef29e73d78a
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91317412"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542308"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>Felhőalapú csoportok használata a szerepkör-hozzárendelések kezeléséhez Azure Active Directory (előzetes verzió)
 
@@ -58,7 +58,6 @@ A következő forgatókönyvek jelenleg nem támogatottak:
 
 ## <a name="known-issues"></a>Ismert problémák
 
-- A dinamikus csoportok nem hozhatók létre és nem módosíthatók, ha a szerepkör egy csoporton keresztül van hozzárendelve.
 - A **felügyelt felhasználó bejelentkezési funkciójának szakaszos** bevezetésének engedélyezése nem támogatja a hozzárendelést csoporton keresztül.
 - *Azure ad P2 licenccel rendelkező ügyfelek*esetében: ne rendeljen aktívként egy csoportot az Azure ad és a PRIVILEGED Identity Management (PIM) szolgáltatáson keresztüli szerepkörhöz. Konkrétan ne rendeljen hozzá szerepkört a szerepkörhöz hozzárendelhető csoporthoz, amikor a létrehozása folyamatban van, *és* a PIM használatával később hozzárendel egy szerepkört a csoporthoz. Ez olyan problémákhoz vezet, amelyekben a felhasználók nem látják az aktív szerepkör-hozzárendeléseiket a PIM-ben, és nem tudják eltávolítani a PIM-hozzárendelést. Ez a forgatókönyv nem érinti a jogosult hozzárendeléseket. Ha ezt a hozzárendelést próbálja végrehajtani, előfordulhat, hogy a rendszer váratlan viselkedést lát, például:
   - A szerepkör-hozzárendelés befejezési időpontja helytelenül jelenhet meg.
@@ -73,7 +72,7 @@ Ezeket a problémákat kijavítja.
 
 A szolgáltatás használatához elérhető prémium szintű Azure AD P1-licenccel kell rendelkeznie az Azure AD-szervezetben. Ahhoz, hogy az igény szerinti szerepkör-aktiváláshoz Privileged Identity Management is használhassa, elérhetőnek kell lennie prémium szintű Azure AD P2-licenccel. A követelmények megfelelő licencének megkereséséhez tekintse meg [az ingyenes és prémium csomagok általánosan elérhető funkcióinak összehasonlítását](../fundamentals/active-directory-whatis.md#what-are-the-azure-ad-licenses)ismertető témakört.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Szerepkörhöz hozzárendelhető csoport létrehozása](roles-groups-create-eligible.md)
 - [Szerepkör társítása szerepkörhöz hozzárendelhető csoporthoz](roles-groups-assign-role.md)

@@ -3,23 +3,21 @@ title: Sorszámmal elkészített, előre összeépített entitás – LUIS
 titleSuffix: Azure Cognitive Services
 description: Ez a cikk Language Understanding (LUIS) sorszámmal elkészített, előre összeépített entitási információit tartalmazza.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 10/14/2019
-ms.author: diberry
-ms.openlocfilehash: bb3bb27db48255f534e873ed4e93ac62f07016af
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1fa86c8960ea9f32163ebd7991260a19ef7a5d79
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78273447"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91535457"
 ---
 # <a name="ordinal-prebuilt-entity-for-a-luis-app"></a>A LUIS-alkalmazáshoz tartozó előre elkészített entitás sorszáma
-A sorszám a készleten belüli objektumok numerikus ábrázolása: `first`, `second`,. `third` Mivel ez az entitás már be van tanítva, nem kell hozzáadnia például a sorszámot tartalmazó hosszúságú kimondott szöveg az Application-leképezésekhez. A besorszám entitás [számos kultúrában](luis-reference-prebuilt-entities.md)támogatott.
+A sorszám a készleten belüli objektumok numerikus ábrázolása: `first` , `second` , `third` . Mivel ez az entitás már be van tanítva, nem kell hozzáadnia például a sorszámot tartalmazó hosszúságú kimondott szöveg az Application-leképezésekhez. A besorszám entitás [számos kultúrában](luis-reference-prebuilt-entities.md)támogatott.
 
 ## <a name="types-of-ordinal"></a>Sorszámok típusai
 A sorszám a [felismerők – Text GitHub-](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml#L45) adattárból felügyelhető
@@ -32,7 +30,7 @@ A lekérdezés a következő entitás-objektumokat adja vissza:
 
 #### <a name="v3-response"></a>[V3 válasz](#tab/V3)
 
-A következő JSON a `verbose` paraméter értéke: `false`
+A következő JSON a `verbose` paraméter értéke `false` :
 
 ```json
 "entities": {
@@ -42,7 +40,7 @@ A következő JSON a `verbose` paraméter értéke: `false`
 }
 ```
 #### <a name="v3-verbose-response"></a>[V3 részletes válasz](#tab/V3-verbose)
-A következő JSON a `verbose` paraméter értéke: `true`
+A következő JSON a `verbose` paraméter értéke `true` :
 
 ```json
 "entities": {

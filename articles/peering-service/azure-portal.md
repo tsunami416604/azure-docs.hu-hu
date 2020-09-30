@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: Infrastructure-services
 ms.date: 05/18/2020
 ms.author: derekol
-ms.openlocfilehash: 596f06d6dc3ad33f2794dfe0e3ed7822a4820adb
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 62210105ba4ba84cff4b246c5b7cf8cc794fb5e7
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91399015"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534947"
 ---
 # <a name="register-peering-service-by-using-the-azure-portal"></a>A Azure Portal használatával regisztrálja a társ-nyilvántartó szolgáltatást
 
@@ -72,14 +72,14 @@ Egy böngészőben nyissa meg a Azure Portal, és jelentkezzen be az Azure-fiók
 1. Válassza az **új előtag létrehozása** elemet az **előtagok** szakasz alján, és megjelenik a szövegmezők. Most adja meg az előtag-erőforrás nevét és a szolgáltatóhoz társított előtagokat.
 
 1. Válassza ki az **előtag-kulcsot** , és adja hozzá a szolgáltató (ISP vagy IXP) által megadott előtag-kulcsot. Ez a kulcs lehetővé teszi, hogy az MS érvényesítse az IP-előtagot lefoglaló előtagot és szolgáltatót.
-   > ![A társközi szolgáltatás konfigurációjának regisztrálása lap](./media/peering-service-portal/peering-serviceconfiguration.png)
+   > ![Képernyőfelvétel: a társítási szolgáltatás kapcsolatainak létrehozása lap konfiguráció lapja, amelyen megadhatja az előtag kulcsát.](./media/peering-service-portal/peering-serviceconfiguration.png)
 
 1. Kattintson a lap bal alsó sarkában található **felülvizsgálat + létrehozás** gombra. Megjelenik a **felülvizsgálat + létrehozás** lap, és az Azure ellenőrzi a konfigurációt.
     
 
 1. Amikor megjelenik az **átadott üzenet ellenőrzése** az ábrán látható módon, válassza a **Létrehozás**lehetőséget.
 
-   > ![A társközi szolgáltatás konfigurációjának regisztrálása lap](./media/peering-service-portal/peering-service-prefix.png)
+   > ![A képernyőképen a peering Service-kapcsolatok létrehozása lap áttekintés + létrehozás lapja látható.](./media/peering-service-portal/peering-service-prefix.png)
 
 
 1. A társ-szolgáltatási kapcsolat regisztrálása után a rendszer további ellenőrzéseket hajt végre a befoglalt előtagokon. Az érvényesítési állapotot az erőforrás neve **előtagok** szakaszában tekintheti meg. Ha az ellenőrzés sikertelen, a következő hibaüzenetek egyike jelenik meg:

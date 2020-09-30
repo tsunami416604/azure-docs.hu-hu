@@ -2,19 +2,17 @@
 title: A REST-hívással megkezdheti a javát
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: include
 ms.date: 06/03/2020
-ms.author: diberry
-ms.openlocfilehash: 65568132a3684112006c8267e46ce95b7c5acfcd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0212ad8aad4d9eb9603869e6a83302534509752b
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91316330"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91545163"
 ---
 [Dokumentáció](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c08)  |  [Minta](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/LUIS/java-predict-with-rest/Predict.java)
 
@@ -45,7 +43,7 @@ A Java használatával lekérdezheti az [előrejelzési végpontot](https://aka.
 
 1. Cserélje le az értékeket a `YOUR-` saját értékeivel kezdődő értékekre.
 
-    |Tájékoztatás|Rendeltetés|
+    |Tájékoztatás|Szerep|
     |--|--|
     |`YOUR-APP-ID`|Az alkalmazás azonosítója. A LUIS-portálon, az alkalmazás Alkalmazásbeállítások lapján található.
     |`YOUR-PREDICTION-KEY`|Az 32 karakteres előrejelzési kulcs. A LUIS-portálon, az alkalmazás Azure-erőforrások lapján található.
@@ -233,7 +231,7 @@ A Java használatával lekérdezheti az [előrejelzési végpontot](https://aka.
 
 Ha elkészült a rövid útmutatóval, törölje a Project mappát a fájlrendszerből.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Hosszúságú kimondott szöveg és-képzés hozzáadása Javával](../get-started-get-model-rest-apis.md)

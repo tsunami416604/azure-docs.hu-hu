@@ -1,14 +1,14 @@
 ---
 title: PCI-DSS v 3.2.1 terv minta-vezérlőelemek
-description: A Payment Card Industry adatbiztonsági standard v 3.2.1 tervezetének vezérlése a Azure Policy és a RBAC.
+description: A Payment Card Industry adatbiztonság standard v 3.2.1 tervének vezérlési mintája Azure Policy és az Azure RBAC.
 ms.date: 08/19/2020
 ms.topic: sample
-ms.openlocfilehash: e6133c4a847a6df8aa6a27bbca63e0fc2d047783
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 3d7bdd62dcc5b65b0978444e74013d289f03ed6a
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649227"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541645"
 ---
 # <a name="control-mapping-of-the-pci-dss-v321-blueprint-sample"></a>A PCI-DSS v 3.2.1 Blueprint-minta leképezésének vezérlése
 
@@ -63,21 +63,21 @@ Csak egy Azure-előfizetéshez tartozó tulajdonos nem engedélyez felügyeleti 
 
 ## <a name="32-721-831a-and-831b-management-of-privileged-access-rights"></a>3,2, 7.2.1, 8.3.1. a és 8.3.1. b privilegizált hozzáférési jogosultságok kezelése
 
-Ebből a tervből megtudhatja, hogyan korlátozhatja és szabályozhatja a privilegizált hozzáférési jogosultságokat, ha [Azure Policy](../../../policy/overview.md) definíciókat rendel hozzá a külső fiókok tulajdonosi, írási és olvasási engedélyekkel és olyan alkalmazottak fiókjaival, amelyeken nincs engedélyezve a többtényezős hitelesítés. Az Azure szerepköralapú hozzáférés-vezérlést (RBAC) valósít meg, amellyel felügyelheti, hogy ki férhet hozzá az Azure-erőforrásokhoz. Az egyéni RBAC-szabályok megvalósításának megismerése segíthet a szükséges és a megfelelő implementáció ellenőrzésében, mivel az egyéni RBAC-szabályok hibásak. Ez a terv [Azure Policy](../../../policy/overview.md) definíciókat is HOZZÁRENDEL az SQL-kiszolgálók Azure Active Directory-hitelesítésének naplózásához. A Azure Active Directory hitelesítés használata leegyszerűsíti az engedélyek kezelését, és központosítja az adatbázis-felhasználók és más Microsoft-identitások felügyeletét  
+Ebből a tervből megtudhatja, hogyan korlátozhatja és szabályozhatja a privilegizált hozzáférési jogosultságokat, ha [Azure Policy](../../../policy/overview.md) definíciókat rendel hozzá a külső fiókok tulajdonosi, írási és olvasási engedélyekkel és olyan alkalmazottak fiókjaival, amelyeken nincs engedélyezve a többtényezős hitelesítés. Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) segítségével felügyelheti, hogy ki férhet hozzá az Azure-erőforrásokhoz. Az egyéni Azure RBAC-szabályok megvalósításának megismerése segíthet a szükséges és a megfelelő implementáció ellenőrzésében, mivel az egyéni Azure RBAC-szabályok hibásak. Ez a terv [Azure Policy](../../../policy/overview.md) definíciókat is HOZZÁRENDEL az SQL-kiszolgálók Azure Active Directory-hitelesítésének naplózásához. A Azure Active Directory hitelesítés használata leegyszerűsíti az engedélyek kezelését, és központosítja az adatbázis-felhasználók és más Microsoft-identitások felügyeletét  
 máris használni tudják azt.
  
 - A tulajdonosi engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből
 - Az írási engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből
 - Az olvasási engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből
 - Az MFA-t engedélyezni kell az előfizetéshez tartozó tulajdonosi engedélyekkel rendelkező fiókokon
-- Az MFA-nak engedélyezve kell lennie az előfizetéséhez tartozó írási engedélyekkel rendelkező fiókoknak
+- Az MFA-t engedélyezni kell az előfizetés minden írási engedéllyel rendelkező fiókjában
 - Az MFA-t engedélyezni kell az előfizetésre vonatkozó olvasási engedéllyel rendelkező fiókokon
 - Az SQL-kiszolgálókhoz Azure Active Directory rendszergazdának kell kiépíteni
 - Egyéni RBAC-szabályok használatának naplózása
 
 ## <a name="812-and-815-least-privilege-and-review-of-user-access-rights"></a>8.1.2 és 8.1.5 a felhasználói hozzáférési jogok minimális jogosultsága és felülvizsgálata
 
-Az Azure szerepköralapú hozzáférés-vezérlést (RBAC) valósít meg, amellyel felügyelheti, hogy ki férhet hozzá az Azure-beli erőforrásokhoz. A Azure Portal használatával áttekintheti, hogy ki férhet hozzá az Azure-erőforrásokhoz és azok engedélyeihez. Ez a terv [Azure Policy](../../../policy/overview.md) -definíciókat rendel hozzá a naplózási fiókokhoz, amelyeket érdemes áttekinteni, beleértve az értékcsökkenéssel rendelkező fiókokat és a emelt szintű engedélyekkel rendelkező külső fiókokat.
+Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) segítségével felügyelheti, hogy ki férhet hozzá az Azure-beli erőforrásokhoz. A Azure Portal használatával áttekintheti, hogy ki férhet hozzá az Azure-erőforrásokhoz és azok engedélyeihez. Ez a terv [Azure Policy](../../../policy/overview.md) -definíciókat rendel hozzá a naplózási fiókokhoz, amelyeket érdemes áttekinteni, beleértve az értékcsökkenéssel rendelkező fiókokat és a emelt szintű engedélyekkel rendelkező külső fiókokat.
 
 - Az elavult fiókokat el kell távolítani az előfizetésből
 - A tulajdonosi engedélyekkel rendelkező elavult fiókokat el kell távolítani az előfizetésből
@@ -87,7 +87,7 @@ Az Azure szerepköralapú hozzáférés-vezérlést (RBAC) valósít meg, amelly
 
 ## <a name="813-removal-or-adjustment-of-access-rights"></a>8.1.3 eltávolítása vagy a hozzáférési jogosultságok módosítása
 
-Az Azure szerepköralapú hozzáférés-vezérlést (RBAC) valósít meg, amellyel felügyelheti, hogy ki férhet hozzá az Azure-beli erőforrásokhoz. A Azure Active Directory és a RBAC használatával frissítheti a felhasználói szerepköröket a szervezeti változások tükrözése érdekében. Ha szükséges, a fiókokat le lehet tiltani a bejelentkezés (vagy Eltávolítás) alól, amely azonnal eltávolítja az Azure-erőforrásokhoz való hozzáférési jogokat. Ez a terv [Azure Policy](../../../policy/overview.md) -definíciókat rendel hozzá a leértékelt fiókokhoz, amelyeket el kell tekinteni az eltávolításhoz.
+Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) segítségével felügyelheti, hogy ki férhet hozzá az Azure-beli erőforrásokhoz. A Azure Active Directory és az Azure RBAC segítségével frissítheti a felhasználói szerepköröket a szervezeti változások tükrözése érdekében. Ha szükséges, a fiókokat le lehet tiltani a bejelentkezés (vagy Eltávolítás) alól, amely azonnal eltávolítja az Azure-erőforrásokhoz való hozzáférési jogokat. Ez a terv [Azure Policy](../../../policy/overview.md) -definíciókat rendel hozzá a leértékelt fiókokhoz, amelyeket el kell tekinteni az eltávolításhoz.
 
 - Az elavult fiókokat el kell távolítani az előfizetésből
 - A tulajdonosi engedélyekkel rendelkező elavult fiókokat el kell távolítani az előfizetésből

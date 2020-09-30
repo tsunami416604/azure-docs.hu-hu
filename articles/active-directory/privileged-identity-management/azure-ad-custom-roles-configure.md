@@ -16,12 +16,12 @@ ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64a8cab82511a495ed2eef444b05dc534c0f1891
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 8745482ed551108044bbe5e2b2f191ad46d7a441
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422045"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538447"
 ---
 # <a name="configure-azure-ad-custom-roles-in-privileged-identity-management"></a>Egyéni Azure AD-szerepkörök konfigurálása Privileged Identity Management
 
@@ -44,7 +44,7 @@ Kövesse az alábbi lépéseket egy Azure AD-szerepkör beállításainak megnyi
 1. Válassza a **beállítás** lehetőséget a **Beállítások** lap megnyitásához. Válassza ki a konfigurálni kívánt beállítások szerepkörét.
 1. A **szerepkör-beállítások** lap megnyitásához válassza a **Szerkesztés** lehetőséget.
 
-    ![A beállítások szerkesztéséhez nyissa meg az Azure AD egyéni szerepkörét](./media/azure-ad-custom-roles-configure/edit-settings.png)
+    ![A "szerepkör-beállítás részletei" oldalt megjelenítő képernyőkép a "szerkesztés" művelet kiválasztásával.](./media/azure-ad-custom-roles-configure/edit-settings.png)
 
 ## <a name="role-settings"></a>Szerepkör-beállítások
 
@@ -98,7 +98,7 @@ Ha szeretne jóváhagyást kérni egy szerepkör aktiválásához, kövesse az a
 1. Válasszon ki legalább egy tagot vagy csoportot, majd kattintson a **kiválasztás**elemre. Legalább egy jóváhagyót ki kell választania. Nincsenek alapértelmezett jóváhagyók. A kiválasztott jóváhagyók listáján megjelennek a kiválasztások.
 1. A szerepkör-beállítások megadása után válassza a **frissítés** lehetőséget a módosítások mentéséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Egyéni Azure AD-szerepkör aktiválása](azure-ad-custom-roles-activate.md)
 - [Egyéni Azure AD-szerepkör kiosztása](azure-ad-custom-roles-assign.md)

@@ -5,12 +5,12 @@ ms.assetid: 6223b6bd-84ec-48df-943f-461d84605694
 ms.topic: article
 ms.date: 10/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0aa0393544f5744c6aaf428ca4b4c27922a0c287
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: f239122f7178dbc244c8dc23f3f7e7647f7330da
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987848"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91539078"
 ---
 # <a name="back-up-your-app-in-azure"></a>Adatok biztonsági mentése az Azure-ban
 A [Azure app Service](overview.md) biztonsági mentési és visszaállítási funkciója lehetővé teszi, hogy egyszerűen hozza létre az alkalmazások biztonsági másolatait manuálisan vagy ütemezés szerint. Beállíthatja, hogy a biztonsági másolatok határozatlan ideig maradjanak. Az alkalmazást visszaállíthatja egy korábbi állapot pillanatképére a meglévő alkalmazás felülírásával vagy egy másik alkalmazásra való visszaállítással.
@@ -70,13 +70,13 @@ A biztonsági mentési funkció a következő adatbázis-megoldásokat támogatj
 
 3. A **biztonsági mentési konfiguráció** lapon kattintson a **Storage nincs konfigurálva** a Storage-fiók konfigurálása elemre.
 
-    :::image type="content" source="./media/manage-backup/configure-storage.png" alt-text="Képernyőfelvétel a biztonsági mentési tár szakaszról a nincs konfigurálva beállítással.":::
+    :::image type="content" source="./media/manage-backup/configure-storage.png" alt-text="Képernyőkép a szalagcímről egy üzenettel, amely frissíti a App Service tervet a biztonsági mentési és visszaállítási funkció eléréséhez.":::
 
 4. Válassza ki a biztonsági mentési célhelyet a **Storage-fiók** és a **tároló**kiválasztásával. A Storage-fióknak ugyanahhoz az előfizetéshez kell tartoznia, mint annak az alkalmazásnak, amelyről biztonsági másolatot szeretne készíteni. Ha szeretné, létrehozhat egy új Storage-fiókot vagy egy új tárolót a megfelelő lapokon. Ha elkészült, kattintson a **kiválasztás**gombra.
 
 5. A **biztonsági mentési konfiguráció** lapon, amely továbbra is nyitva marad, konfigurálhatja a **biztonsági mentési adatbázist**, majd kiválaszthatja a biztonsági másolatokban szerepeltetni kívánt adatbázisokat (SQL Database vagy MySQL), majd kattintson **az OK**gombra.
 
-    :::image type="content" source="./media/manage-backup/configure-database.png" alt-text="Képernyőkép a biztonsági mentési adatbázisról szakasz, amely tartalmazza a Belefoglalás a biztonsági mentésbe lehetőséget.":::
+    :::image type="content" source="./media/manage-backup/configure-database.png" alt-text="Képernyőkép a szalagcímről egy üzenettel, amely frissíti a App Service tervet a biztonsági mentési és visszaállítási funkció eléréséhez.":::
 
     > [!NOTE]
     > Ahhoz, hogy egy adatbázis megjelenjen a listában, a kapcsolati karakterláncnak léteznie kell az **alkalmazás Alkalmazásbeállítások** lapjának **kapcsolati karakterláncok** szakaszában. 
@@ -141,7 +141,7 @@ A biztonsági mentések ugyanúgy működnek, mint a szokásos módon, [manuáli
 > [!NOTE]
 > A hely részleges biztonsági mentéseit ugyanúgy állíthatja vissza, mint a [normál biztonsági mentést](web-sites-restore.md). A visszaállítási folyamat a megfelelő dolog.
 > 
-> A teljes biztonsági mentés visszaállításakor a helyen lévő összes tartalmat lecseréli a biztonsági mentésben szereplő összes tartalomra. Ha egy fájl van a helyen, de a biztonsági másolatban nem szerepel, a rendszer törli. A részleges biztonsági mentés visszaállításakor azonban a rendszer a feketelistán lévő címtárak egyikén vagy bármely feketelistán található tartalomon is marad.
+> A teljes biztonsági mentés visszaállításakor a helyen lévő összes tartalmat lecseréli a biztonsági mentésben szereplő összes tartalomra. Ha egy fájl van a helyen, de a biztonsági másolatban nem szerepel, a rendszer törli. A részleges biztonsági mentés visszaállításakor azonban az egyik korlátozott könyvtárban vagy bármely korlátozott fájlban található tartalom a következőképpen marad.
 > 
 
 

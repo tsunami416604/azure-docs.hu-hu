@@ -3,12 +3,12 @@ title: Az Azure szabályzatának áttekintése
 description: Az Azure Policy az Azure egy szolgáltatása, amelynek használatával szabályzatdefiníciókat hozhat létre, rendelhet hozzá és kezelhet az Azure-környezetben.
 ms.date: 09/22/2020
 ms.topic: overview
-ms.openlocfilehash: 662a7510013e2008d8c16cf21376b11c247e0bc0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 596e52cca2be2a347c26502434048053a8b4684c
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905983"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538956"
 ---
 # <a name="what-is-azure-policy"></a>Mi az Azure Policy?
 
@@ -57,15 +57,15 @@ Az Azure Policy alábbi áttekintése a 2018-as buildből származik. A diaképe
 
 ## <a name="getting-started"></a>Első lépések
 
-### <a name="azure-policy-and-rbac"></a>Azure Policy és RBAC
+### <a name="azure-policy-and-azure-rbac"></a>Azure Policy és az Azure RBAC
 
-A Azure Policy és a szerepköralapú hozzáférés-vezérlés (RBAC) között van néhány lényeges különbség. Azure Policy kiértékeli az állapotot a Resource Managerben és egyes erőforrás-szolgáltatók tulajdonságaiban megjelenített erőforrások tulajdonságainak vizsgálatával. Azure Policy nem korlátozza a műveleteket (más néven _műveletek_). Azure Policy gondoskodik arról, hogy az erőforrás-állapot megfeleljen az üzleti szabályoknak, anélkül, hogy ki kellene használnia a változást, vagy hogy ki jogosult a módosításra.
+A Azure Policy és az Azure szerepköralapú hozzáférés-vezérlése (Azure RBAC) között néhány lényeges különbség van. Azure Policy kiértékeli az állapotot a Resource Managerben és egyes erőforrás-szolgáltatók tulajdonságaiban megjelenített erőforrások tulajdonságainak vizsgálatával. Azure Policy nem korlátozza a műveleteket (más néven _műveletek_). Azure Policy gondoskodik arról, hogy az erőforrás-állapot megfeleljen az üzleti szabályoknak, anélkül, hogy ki kellene használnia a változást, vagy hogy ki jogosult a módosításra.
 
-A RBAC a felhasználói [műveletek](../../role-based-access-control/resource-provider-operations.md) különböző hatókörökön történő felügyeletére koncentrál. Ha szükség van egy művelet vezérlésére, akkor a RBAC a megfelelő eszköz a használathoz. Még akkor is, ha az adott személy nem megfelelő erőforrást hoz létre, Azure Policy továbbra is blokkolja a létrehozás vagy a frissítés műveleteit.
+Az Azure RBAC a felhasználói [műveletek](../../role-based-access-control/resource-provider-operations.md) különböző hatókörökön történő felügyeletére koncentrál. Ha egy művelet vezérlésére van szükség, akkor az Azure RBAC a megfelelő eszköz a használathoz. Még akkor is, ha az adott személy nem megfelelő erőforrást hoz létre, Azure Policy továbbra is blokkolja a létrehozás vagy a frissítés műveleteit.
 
-A RBAC és a Azure Policy kombinációja teljes hatókör-vezérlést biztosít az Azure-ban.
+Az Azure RBAC és Azure Policy kombinációja teljes körű felügyeletet biztosít az Azure-ban.
 
-### <a name="rbac-permissions-in-azure-policy"></a>RBAC-engedélyek az Azure Policyban
+### <a name="azure-rbac-permissions-in-azure-policy"></a>Azure RBAC engedélyek a Azure Policyban
 
 Az Azure Policy több engedéllyel (más néven művelettel) rendelkezik két erőforrás-szolgáltatóban:
 
@@ -105,7 +105,7 @@ Azure Policy kiértékeli az összes erőforrást az Azure-ban. Bizonyos erőfor
 
 Az Azure Policyban a szabályzatok létrehozásának és bevezetésének folyamata egy szabályzatdefiníció létrehozásával kezdődik. Minden szabályzat-definíció rendelkezik olyan feltételekkel, amelyek érvényben vannak. Továbbá egy meghatározott hatással van, amely a feltételek teljesülése esetén zajlik.
 
-Azure Policy számos beépített szabályzatot kínálunk, amelyek alapértelmezés szerint elérhetők. Például:
+Azure Policy számos beépített szabályzatot kínálunk, amelyek alapértelmezés szerint elérhetők. Példa:
 
 - **Engedélyezett Storage-fiók SKU** -jának (megtagadás): meghatározza, hogy az üzembe helyezett Storage-fiók SKU-méreteken belül van-e. Ennek hatására az összes olyan Storage-fiók megtagadható, amely nem felel meg a definiált SKU-méretek készletének.
 - **Engedélyezett erőforrástípus** (megtagadás): meghatározza az üzembe helyezhető erőforrástípusok típusát. Ennek hatására az összes olyan erőforrást meg kell tagadni, amely nem része ennek a definiált listának.
@@ -173,7 +173,7 @@ A hozzárendelések portálon keresztüli beállításával kapcsolatos további
 
 [!INCLUDE [policy-limits](../../../includes/azure-policy-limits.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy áttekintette az Azure Policy tudnivalóit és néhány fontosabb fogalmat, folytatásként a következő témaköröket javasoljuk:
 

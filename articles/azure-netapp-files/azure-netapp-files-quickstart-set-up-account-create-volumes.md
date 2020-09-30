@@ -8,12 +8,12 @@ ms.workload: storage
 ms.topic: quickstart
 ms.date: 09/22/2020
 ms.custom: devx-track-azurecli, subject-armqs
-ms.openlocfilehash: 1506ab7210f8b98614f51e5168555068cce0afbb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d118bef4a7ccc263010fe176432a5301c4104118
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325674"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533893"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Gyors útmutató: Azure NetApp Files beállítása és NFS-kötet létrehozása 
 
@@ -53,7 +53,7 @@ A portál használatával történő regisztráció lépéseihez nyisson meg egy
 
 Ennek a cikknek a használatához a Azure PowerShell modul az a Version 2.6.0 vagy újabb verziója szükséges. Az aktuális verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket. Ha szeretné, használhatja a Cloud Shell-konzolt egy PowerShell-munkamenetben.
 
-1. A PowerShell-parancssorban (vagy a PowerShell Cloud Shell-munkamenetben) határozza meg a Azure NetApp Files engedélyezési előfizetését:
+1. A PowerShell-parancssorban (vagy a PowerShell Cloud Shell munkamenetben) válassza ki a Azure NetApp Files számára jóváhagyott előfizetést:
     ```powershell-interactive
     Select-AzSubscription -Subscription <subscriptionId>
     ```
@@ -460,7 +460,7 @@ Az erőforráscsoport törléséhez használja a Azure Portal, a PowerShellt vag
 
 ---
 
-## <a name="next-steps"></a>Következő lépések  
+## <a name="next-steps"></a>További lépések  
 
 > [!div class="nextstepaction"]
 > [Azure NetApp Files tárolási hierarchiája](azure-netapp-files-understand-storage-hierarchy.md)   

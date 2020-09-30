@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 08/20/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 09273cf901830e850acca05c57c0b110ffd7e28a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 13e3f5a7d86d2e9b705fbeb104ba4f8eb690cb3a
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89002862"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534097"
 ---
 # <a name="tutorial-ai-generated-searchable-content-from-azure-blobs-using-the-net-sdk"></a>Oktatóanyag: AI által generált kereshető tartalom az Azure-blobokból a .NET SDK használatával
 
@@ -66,7 +66,7 @@ Ha lehetséges, hozzon létre mindkettőt ugyanabban a régióban és erőforrá
 
    + **Erőforráscsoport**. Válasszon ki egy meglévőt, vagy hozzon létre egy újat, de ugyanazt a csoportot használja az összes szolgáltatáshoz, hogy együtt lehessen kezelni őket.
 
-   + A **Storage-fiók neve**. Ha úgy gondolja, hogy több erőforrása is van ugyanazzal a típussal, használja a nevet típus és régió szerint egyértelműsítse, például *blobstoragewestus*. 
+   + **Tárfiók neve**. Ha úgy gondolja, hogy több erőforrása is van ugyanazzal a típussal, használja a nevet típus és régió szerint egyértelműsítse, például *blobstoragewestus*. 
 
    + **Hely**. Ha lehetséges, válassza ki ugyanazt a helyet, amelyet az Azure Cognitive Search és Cognitive Services használ. Egyetlen hely érvényteleníti A sávszélességgel kapcsolatos díjakat.
 
@@ -170,7 +170,7 @@ Ezután telepítse a legújabb `Microsoft.Extensions.Configuration.Json` NuGet-c
       "AzureBlobConnectionString": "Put your Azure Blob connection string here",
     }
     ```
-    
+
 Adja hozzá a keresési szolgáltatás és a blob Storage-fiók adatait. Ne felejtse el, hogy ezt az információt az előző szakaszban jelzett szolgáltatás létesítési lépéseiből kérheti le.
 
 A **SearchServiceName**mezőben adja meg a rövid szolgáltatásnév nevét, és ne a teljes URL-címet.
@@ -586,11 +586,11 @@ A gyakorlat során az alábbi mezőket és mezőtípusokat használjuk:
 
 | Mezőnevek | Mezőtípusok |
 | --- | --- |
-| id | Edm.String |
-| tartalom | Edm.String |
-| languageCode | Edm.String |
-| keyPhrases | List<Edm.String> |
-| organizations | List<Edm.String> |
+| `id` | Edm.String |
+| `content` | Edm.String |
+| `languageCode` | Edm.String |
+| `keyPhrases` | List<Edm.String> |
+| `organizations` | List<Edm.String> |
 
 #### <a name="create-demoindex-class"></a>DemoIndex osztály létrehozása
 
@@ -906,7 +906,7 @@ catch (Exception e)
 }
 ```
 
-Ismételje meg a műveletet további mezők esetén: tartalom, languageCode, kifejezés és szervezet ebben a gyakorlatban. Vesszővel tagolt lista használatával több mezőt is visszaadhat a [Select](/dotnet/api/microsoft.azure.search.models.searchparameters.select?view=azure-dotnet) tulajdonságon keresztül.
+Ismételje meg a műveletet további mezők esetén: tartalom, languageCode, kifejezés és szervezet ebben a gyakorlatban. Vesszővel tagolt lista használatával több mezőt is visszaadhat a [Select](/dotnet/api/microsoft.azure.search.models.searchparameters.select) tulajdonságon keresztül.
 
 <a name="reset"></a>
 
@@ -932,7 +932,7 @@ Ha a saját előfizetésében dolgozik, a projekt végén érdemes lehet eltávo
 
 A bal oldali navigációs panelen a minden erőforrás vagy erőforráscsoport hivatkozás használatával megkeresheti és kezelheti az erőforrásokat a portálon.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy már ismeri a mesterséges intelligencia-bővítési folyamat összes objektumát, ismerkedjen meg közelebbről a készségkészlet-definíciókkal és az egyéni ismeretekkel.
 

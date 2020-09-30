@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/10/2020
-ms.openlocfilehash: 2fd96777a5fe74d44aeed5f6de82e54b2663a024
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: afae49cf6ee44b138a55f58f415fc761308b7894
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090382"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542376"
 ---
 # <a name="receive-and-confirm--b2b-as2-messages-by-using-azure-logic-apps-and-enterprise-integration-pack"></a>B2B AS2-üzenetek fogadása és megerősítése Azure Logic Apps és Enterprise Integration Pack használatával
 
@@ -111,7 +111,7 @@ Ha értesíteni szeretné a kereskedelmi partnert arról, hogy az üzenet érkez
 
    Ekkor megjelenik a feltétel alakzat, beleértve az elérési utakat, hogy a feltétel teljesül-e.
 
-   ![Feltétel alakzat döntési elérési utakkal](./media/logic-apps-enterprise-integration-b2b/added-condition-action.png)
+   ![A képernyőfelvételen a feltétel alakzat üres elérési úttal látható.](./media/logic-apps-enterprise-integration-b2b/added-condition-action.png)
 
 1. Most határozza meg az értékelendő feltételt. A **Válasszon értéket** mezőben adja meg a következő kifejezést:
 
@@ -119,7 +119,7 @@ Ha értesíteni szeretné a kereskedelmi partnert arról, hogy az üzenet érkez
 
    A középső mezőben ellenőrizze, hogy az összehasonlítási művelet a következőre van-e beállítva: `is equal to` . A jobb oldali mezőben adja meg az értéket `Expected` . Ha meg szeretné szerezni a jogkivonatként feloldható kifejezést, váltson át a tervező és a kód nézet között.
 
-   ![Feltétel alakzat döntési elérési utakkal](./media/logic-apps-enterprise-integration-b2b/expression-for-evaluating-condition.png)
+   ![A képernyőfelvétel a feltétel alakzatot jeleníti meg a feltételhez hozzáadva.](./media/logic-apps-enterprise-integration-b2b/expression-for-evaluating-condition.png)
 
 1. Mostantól megadhatja, hogy az **AS2-dekódolási** művelet sikeres volt-e, vagy sem.
 

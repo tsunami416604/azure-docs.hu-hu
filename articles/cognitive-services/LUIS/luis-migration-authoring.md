@@ -3,20 +3,18 @@ title: Migrálás Azure Resource authoring-kulcsba
 titleSuffix: Azure Cognitive Services
 description: Ez a cikk azt ismerteti, hogyan lehet áttelepíteni a Language Understanding (LUIS) szerzői hitelesítését egy e-mail-fiókból egy Azure-erőforrásba.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 08/13/2020
-ms.author: diberry
-ms.openlocfilehash: 4c9dc04770e5fadd72c5460a4b44c05ffda47cb7
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 926b79e672c14249ec7c2b053dba7eb3a31443a7
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245451"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91536043"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Migrálás Azure Resource authoring-kulcsba
 
@@ -58,7 +56,7 @@ Az áttelepítést a LUIS portálról kell elvégezni. Ha például a LUIS CLI h
 * Ha Ön az alkalmazás tulajdonosa, nem kell exportálnia az alkalmazásokat, mert azok automatikusan áttelepülnek. Javasoljuk, hogy mentse az egyes alkalmazások közreműködői listáját. A listát tartalmazó e-mail-sablon opcionálisan az áttelepítési folyamat részeként is elérhető.
 
 
-|Portál|Cél|
+|Portál|Szerep|
 |--|--|
 |[Azure](https://azure.microsoft.com/free/cognitive-services)| Hozzon létre előrejelzési és létrehozási erőforrásokat.<br> Közreműködők kiosztása erőforrásokhoz.|
 |[LUIS](https://www.luis.ai)| Migrálás új szerzői erőforrásokra.<br> Új authoring-erőforrások létrehozása az áttelepítési folyamat során.<br> Az **Manage**  >  **Azure-erőforrások** kezelése oldalon megadhatja vagy megadhatja az alkalmazások előrejelzési és szerzői erőforrásainak hozzárendelését. <br> Alkalmazások áthelyezése egy authoring-erőforrásból egy másikba.  |

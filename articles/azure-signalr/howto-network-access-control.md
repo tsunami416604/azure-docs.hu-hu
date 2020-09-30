@@ -8,12 +8,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: dayshen
-ms.openlocfilehash: 78b9859adbcf61ae3a9fc0d72a63d5973f90a487
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 72532029b2d9258dba7dea82bb5c5fc8b2673300
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84300217"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91536222"
 ---
 # <a name="configure-network-access-control"></a>A hálózati hozzáférés-vezérlés konfigurálása
 
@@ -48,7 +48,7 @@ Az Azure Signaler szolgáltatás hálózati hozzáférés-vezérlését az Azure
 1. Az alapértelmezett művelet szerkesztéséhez kapcsolja be az **Engedélyezés/megtagadás** gombot.
 
     > [!TIP]
-    > Az alapértelmezett művelet az a művelet, amelyet akkor teszünk, ha nincs ACL-szabály egyezése. Ha például az alapértelmezett művelet **megtagadja**a műveletet, akkor a rendszer megtagadja az alábbi, explicit módon nem engedélyezett típusú kérelmeket.
+    > Az alapértelmezett művelet az a művelet, amelyet akkor teszünk, ha nincs ACL-szabály egyezése. Ha például az alapértelmezett művelet meg van **tagadva**, akkor a rendszer megtagadja az alább nem explicit módon jóváhagyott kérelmeket.
 
 1. A nyilvános hálózati szabály szerkesztéséhez válassza a **nyilvános hálózatban**lévő engedélyezett típusú kérelmek lehetőséget.
 

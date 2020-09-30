@@ -15,12 +15,12 @@ ms.date: 08/18/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06e61bb966313265f7e3772dbbf6017a03a42386
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 48c4473cfafce1215219251c47bce1d5730645fc
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88869647"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534420"
 ---
 # <a name="assign-eligibility-for-a-privileged-access-group-preview-in-privileged-identity-management"></a>Jogosultsági szintű hozzáférési csoport (előzetes verzió) kiosztása Privileged Identity Management
 
@@ -48,7 +48,7 @@ Kövesse az alábbi lépéseket, hogy a felhasználók jogosultak legyenek egy e
 
 1. Válassza ki azokat a tagokat vagy tulajdonosokat, akik jogosultak legyenek az emelt szintű hozzáférési csoportra.
 
-    ![Tag vagy csoport ablaktábla kiválasztása](./media/groups-assign-member-owner/add-assignments.png)
+    ![Képernyőkép: a "hozzárendelések hozzáadása" lap megnyitása a "tag kiválasztása vagy a csoport kijelölése" ablaktáblán, és a "kiválasztás" gomb kiemelve.](./media/groups-assign-member-owner/add-assignments.png)
 
 1. Válassza a **tovább** lehetőséget a tagság vagy a tulajdonos időtartamának megadásához.
 
@@ -91,7 +91,7 @@ A meglévő szerepkör-hozzárendelések frissítéséhez vagy eltávolításáh
 
     További információ a szerepkör-hozzárendelés kibővítéséről: [Azure-beli erőforrás-szerepkörök kiterjesztése vagy megújítása Privileged Identity Managementban](pim-resource-roles-renew-extend.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure-beli erőforrás-szerepkörök kiterjesztése vagy megújítása Privileged Identity Management](pim-resource-roles-renew-extend.md)
 - [Az Azure erőforrás-szerepkör beállításainak konfigurálása Privileged Identity Management](pim-resource-roles-configure-role-settings.md)

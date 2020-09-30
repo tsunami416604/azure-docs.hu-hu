@@ -1,5 +1,5 @@
 ---
-title: Az SQL igény szerinti összekapcsolása Power BI Desktop & jelentés létrehozása
+title: 'Oktatóanyag: az SQL igény szerinti összekapcsolása Power BI Desktop & jelentés létrehozása'
 description: Ebből az oktatóanyagból megtudhatja, hogyan csatlakoztatható az SQL on-demand az Azure szinapszis Analytics szolgáltatásban Power BI asztalhoz, és hogyan hozhat létre bemutató jelentést egy nézet alapján.
 services: synapse analytics
 author: azaricstefan
@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: a5944f4d512914c956d8e6fbbdbd1b8c30e35417
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5c86825d6dce8681e114ec930add751b6beae085
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91288035"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91539554"
 ---
 # <a name="tutorial-use-sql-on-demand-with-power-bi-desktop--create-a-report"></a>Oktatóanyag: az SQL igény szerinti használata Power BI Desktop & jelentés létrehozása
 
@@ -100,7 +100,7 @@ A bemutatóban szereplő adat a következő adatkészleteket tartalmazza:
 
 Az USA népessége nemek és faji hovatartozás szerint, a 2000-es és a 2010-es Decennial-népszámlálás a parketta formátumában.
 
-| Mappa elérési útja                                                  | Description                                                  |
+| Mappa elérési útja                                                  | Leírás                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | /Release parancsot                                                    | A demo Storage-fiókban lévő adatszülő mappa               |
 | /Release/us_population_county/                               | Az USA-beli populációs adatfájlok parkettás formátumban, évről évre particionálva a kaptár/Hadoop particionálási sémával. |
@@ -173,6 +173,6 @@ Ha elkészült a jelentéssel, törölje az erőforrásokat a következő lépé
    DROP DATABASE Demo;
    ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Folytassa a [lekérdezési tároló fájljaival](develop-storage-files-overview.md) , hogy megtudja, hogyan kérdezheti le a tárolási fájlokat a szinapszis SQL használatával.

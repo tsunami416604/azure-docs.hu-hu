@@ -3,23 +3,21 @@ title: URL-alapú előre összeépített entitások – LUIS
 titleSuffix: Azure Cognitive Services
 description: Ez a cikk a Language Understanding (LUIS) URL-címen előre felépített entitásokra vonatkozó információkat tartalmaz.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 10/04/2019
-ms.author: diberry
-ms.openlocfilehash: 49f145ce3e9022826abad5d274dd611bb2cc6530
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bc33fd1b90306a016c419f227fb9e73e83e8ea83
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78270347"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91535253"
 ---
 # <a name="url-prebuilt-entity-for-a-luis-app"></a>A LUIS-alkalmazás URL-re épülő előkészített entitása
-URL-entitás kinyeri az URL-címeket tartománynevek vagy IP-címekkel. Mivel ez az entitás már be van tanítva, nem kell hozzáadnia például az alkalmazás URL-címeit tartalmazó hosszúságú kimondott szöveg. Az URL-entitás csak `en-us` a kulturális környezetekben támogatott.
+URL-entitás kinyeri az URL-címeket tartománynevek vagy IP-címekkel. Mivel ez az entitás már be van tanítva, nem kell hozzáadnia például az alkalmazás URL-címeit tartalmazó hosszúságú kimondott szöveg. Az URL-entitás csak a kulturális környezetekben támogatott `en-us` .
 
 ## <a name="types-of-urls"></a>URL-típusok
 Az URL-cím a [felismerők – Text GitHub-](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-URL.yaml) adattárból kezelhető
@@ -32,7 +30,7 @@ A lekérdezés a következő entitás-objektumokat adja vissza:
 
 #### <a name="v3-response"></a>[V3 válasz](#tab/V3)
 
-A következő JSON a `verbose` paraméter értéke: `false`
+A következő JSON a `verbose` paraméter értéke `false` :
 
 ```json
 "entities": {
@@ -43,7 +41,7 @@ A következő JSON a `verbose` paraméter értéke: `false`
 ```
 #### <a name="v3-verbose-response"></a>[V3 részletes válasz](#tab/V3-verbose)
 
-A következő JSON a `verbose` paraméter értéke: `true`
+A következő JSON a `verbose` paraméter értéke `true` :
 
 ```json
 "entities": {

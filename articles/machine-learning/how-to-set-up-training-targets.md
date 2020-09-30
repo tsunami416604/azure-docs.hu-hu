@@ -8,15 +8,15 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 09/25/2020
+ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: f93b6ab43e1dbf9230c92d22f8fb22ca48eb720e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2f05ab2bc7e514f3e58f383faf47a74ef69f94b6
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91275761"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91535093"
 ---
 # <a name="configure-and-submit-training-runs"></a>Betanítási futtatások konfigurálása és beküldése
 
@@ -128,7 +128,7 @@ Ha olyan parancssori argumentumokkal rendelkezik, amelyeket át szeretne adni a 
 Ha szeretné felülbírálni a futtatáshoz engedélyezett alapértelmezett maximális időt, ezt a paraméterrel teheti meg **`max_run_duration_seconds`** . A rendszer megkísérli automatikusan megszakítani a futtatást, ha ez az érték hosszabb időt vesz igénybe.
 
 ### <a name="specify-a-distributed-job-configuration"></a>Elosztott feladatok konfigurációjának meghatározása
-Ha elosztott betanítási feladatot szeretne futtatni, adja meg az elosztott feladatokhoz tartozó konfigurációt a **`distributed_job_config`** paraméterhez. A támogatott konfigurációs típusok közé tartozik az [MpiConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py&preserve-view=true), a [TensorflowConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration?view=azure-ml-py&preserve-view=true). 
+Ha elosztott betanítási feladatot szeretne futtatni, adja meg az elosztott feladatokhoz tartozó konfigurációt a **`distributed_job_config`** paraméterhez. A támogatott konfigurációs típusok a következők: [MpiConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py&preserve-view=true), [TensorflowConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration?view=azure-ml-py&preserve-view=true)és [PyTorchConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?view=azure-ml-py&preserve-view=true). 
 
 További információ és példák az elosztott Horovod, a TensorFlow és a PyTorch feladatok futtatásáról:
 
@@ -154,7 +154,7 @@ run.wait_for_completion(show_output=True)
 >
 > Az összetevőknek a betanítás során történő létrehozásához (például a Model Files, az ellenőrzőpontok, az adatfájlok vagy a képek kirajzolása) írja ezeket a `./outputs` mappába.
 >
-> Hasonlóképpen bármilyen naplót írhat a betanításból a `./logs` mappába. Azure Machine Learning [TensorBoard-integrációjának](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/export-run-history-to-tensorboard/export-run-history-to-tensorboard.ipynb) kihasználása érdekében ügyeljen arra, hogy a TensorBoard-naplókat a mappába írja. Amíg a Futtatás folyamatban van, el tudja indítani a TensorBoard, és továbbíthatja ezeket a naplókat.  Később is visszaállíthatja a naplókat az előző futtatások bármelyikéről.
+> Hasonlóképpen bármilyen naplót írhat a betanításból a `./logs` mappába. Azure Machine Learning [TensorBoard-integrációjának](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/track-and-monitor-experiments/tensorboard/export-run-history-to-tensorboard/export-run-history-to-tensorboard.ipynb) kihasználása érdekében ügyeljen arra, hogy a TensorBoard-naplókat a mappába írja. Amíg a Futtatás folyamatban van, el tudja indítani a TensorBoard, és továbbíthatja ezeket a naplókat.  Később is visszaállíthatja a naplókat az előző futtatások bármelyikéről.
 >
 > Ha például le szeretné tölteni a *kimenet* mappába a helyi gépre írt fájlt a távoli képzés futtatása után: `run.download_file(name='outputs/my_output_file', output_file_path='my_destination_path')`
 
@@ -165,13 +165,13 @@ Ha olyan képzést indít el, ahol a forrás könyvtára helyi git-tárház, a r
 ## <a name="notebook-examples"></a>Jegyzetfüzet-példák
 
 Tekintse meg ezeket a jegyzetfüzeteket a futtatások konfigurálására példákat a különböző képzési forgatókönyvekhez:
-* [használati útmutató – azureml/képzés](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training)
-* [használati útmutató – azureml/ml – keretrendszerek](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks)
+* [Képzés különböző számítási célokból](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training)
+* [Képzés ML-keretrendszerekkel](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks)
 * [oktatóanyagok/IMG-Classification-part1-Training. ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/image-classification-mnist-data/img-classification-part1-training.ipynb)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Oktatóanyag: a betanítási modell](tutorial-train-models-with-aml.md) felügyelt számítási célt használ a modellek betanításához.
 * Megtudhatja, hogyan taníthat modelleket konkrét ML-keretrendszerekkel, például a [Scikit-Learn](how-to-train-scikit-learn.md), a [TensorFlow](how-to-train-tensorflow.md)és a [PyTorch](how-to-train-pytorch.md).

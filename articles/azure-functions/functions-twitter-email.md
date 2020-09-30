@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/27/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, mvc, cc996988-fb4f-47
-ms.openlocfilehash: 29b35493342b92813aa808069ebdd7ca8a7bbc56
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: feb6b36f8e5e7bbec83d8882552484f68abfd56d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88208548"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537752"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>Az Azure Logic Apps szolgáltatással integrálható függvények létrehozása
 
@@ -182,7 +182,7 @@ Ezzel csatlakoztatta az alkalmazást és a Twittert. Most a szövegelemzést kel
 
 2. A **műveletek választására szolgáló** területen írja be a **Text Analytics** kifejezést, majd kattintson a **Hangulat felismerése** műveletre.
     
-    ![Új lépés, majd Művelet hozzáadása](media/functions-twitter-email/11-detect-sentiment.png)
+    ![Képernyőfelvétel: "a művelet kiválasztása" szakasz "Text Analytics" a keresőmezőbe, és az "érzelmek észlelése" művelet van kiválasztva. ](media/functions-twitter-email/11-detect-sentiment.png)
 
 3. Írjon be egy kapcsolatnevet (például: `MyCognitiveServicesConnection`), illessze be a Cognitive Services API kulcsát és a Cognitive Services végpontját a szövegszerkesztőből, majd kattintson a **Létrehozás** gombra.
 
@@ -202,7 +202,7 @@ Most, hogy konfigurálta a hangulatfelismerést, kapcsolatot adhat a véleményp
   
 4. Válassza ki a korábban létrehozott függvényalkalmazást.
 
-    ![Függvény kiválasztása](media/functions-twitter-email/15-select-function.png)
+    ![A "művelet kiválasztása" szakaszt bemutató képernyőkép a kiválasztott Function alkalmazással.](media/functions-twitter-email/15-select-function.png)
 
 5. Válassza ki az oktatóanyaghoz létrehozott függvényt.
 
@@ -228,7 +228,7 @@ A munkafolyamat utolsó része egy e-mail-értesítés küldésének kiváltása
 
 3. A **HA IGAZ** elemnél kattintson a **Művelet hozzáadása** lehetőségre, keresse meg az `outlook.com` elemet, kattintson az **E-mail küldése** műveletre, majd jelentkezzen be Outlook.com-fiókjába.
 
-    ![E-mail konfigurálása az e-mailt elküldő művelethez.](media/functions-twitter-email/20-add-outlook.png)
+    ![Képernyőfelvétel: a "ha igaz" szakasz "outlook.com" értékkel van megadva a keresőmezőbe, és az "e-mail küldése" művelet be van jelölve.](media/functions-twitter-email/20-add-outlook.png)
 
     > [!NOTE]
     > Ha nincs Outlook.com-fiókja, választhat egy másik, például Gmail- vagy Office 365 Outlook-összekötőt.
@@ -239,7 +239,7 @@ A munkafolyamat utolsó része egy e-mail-értesítés küldésének kiváltása
     
 | Beállítás      |  Ajánlott érték   | Leírás  |
 | ----------------- | ------------ | ------------- |
-| **Hogy** | Írja be az e-mail-címét | Az e-mail-cím, amelyre megérkezik az értesítés. |
+| **Művelet** | Írja be az e-mail-címét | Az e-mail-cím, amelyre megérkezik az értesítés. |
 | **Tárgy** | A tweetek által tükrözött vélemény kedvezőtlen  | Az e-mail-értesítés tárgysora.  |
 | **Törzs** | Tweet szövege, Hely | Kattintson a **Tweet szövege** és a **Hely** paraméterre. |
 

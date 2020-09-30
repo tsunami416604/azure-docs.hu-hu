@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 6/10/2020
-ms.openlocfilehash: ad8fd20d744f7aaa113b4c46f8ca0f05a6cc6951
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 8f3c85bb6dab906528c3c442cbdd1b762d8145e0
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90902842"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533128"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-portal"></a>Olvasási replikák létrehozása és kezelése a Azure Database for MySQL a Azure Portal használatával
 
@@ -19,15 +19,15 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre és kezelhet olvasási repli
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Egy [Azure Database for MySQL kiszolgáló](quickstart-create-mysql-server-database-using-azure-portal.md) , amely főkiszolgálóként lesz felhasználva.
+- Egy [Azure Database for MySQL kiszolgáló](quickstart-create-mysql-server-database-using-azure-portal.md) , amely forráskiszolgálóként lesz felhasználva.
 
 > [!IMPORTANT]
-> Az olvasási replika funkció csak a általános célú vagy a memória optimalizált árképzési szintjein Azure Database for MySQL-kiszolgálókon érhető el. Győződjön meg arról, hogy a főkiszolgáló a fenti díjszabási szintek egyikében van.
+> Az olvasási replika funkció csak a általános célú vagy a memória optimalizált árképzési szintjein Azure Database for MySQL-kiszolgálókon érhető el. Győződjön meg arról, hogy a forráskiszolgáló ezen díjszabási szintek egyikében található.
 
 ## <a name="create-a-read-replica"></a>Olvasási replika létrehozása
 
 > [!IMPORTANT]
-> Ha olyan mesteralakzathoz hoz létre replikát, amely nem rendelkezik meglévő replikákkal, a főkiszolgáló először újraindul, hogy felkészüljön a replikálásra. Ezt vegye figyelembe, és hajtsa végre ezeket a műveleteket egy leállási időszakon belül.
+> Ha olyan forráshoz hoz létre replikát, amely nem tartalmaz meglévő replikákat, a forrás először újraindul, hogy felkészüljön a replikálásra. Ezt vegye figyelembe, és hajtsa végre ezeket a műveleteket egy leállási időszakon belül.
 
 Az olvasási replika kiszolgáló a következő lépések segítségével hozható létre:
 
@@ -43,11 +43,11 @@ Az olvasási replika kiszolgáló a következő lépések segítségével hozhat
 
 5. Adja meg a replika kiszolgáló nevét.
 
-    :::image type="content" source="./media/howto-read-replica-portal/replica-name.png" alt-text="Azure Database for MySQL – replika neve":::
+    :::image type="content" source="./media/howto-read-replica-portal/replica-name.png" alt-text="Azure Database for MySQL – replikálás":::
 
-6. Válassza ki a replika-kiszolgáló helyét. Az alapértelmezett hely megegyezik a főkiszolgálóval.
+6. Válassza ki a replika-kiszolgáló helyét. Az alapértelmezett hely ugyanaz, mint a forráskiszolgáló.
 
-    :::image type="content" source="./media/howto-read-replica-portal/replica-location.png" alt-text="Azure Database for MySQL – replika helye":::
+    :::image type="content" source="./media/howto-read-replica-portal/replica-location.png" alt-text="Azure Database for MySQL – replikálás":::
 
    > [!NOTE]
    > Ha többet szeretne megtudni arról, hogy mely régiókban hozhat létre replikát, látogasson el a [replika áttekintése című cikkben](concepts-read-replicas.md). 
@@ -55,71 +55,71 @@ Az olvasási replika kiszolgáló a következő lépések segítségével hozhat
 7. A replika létrehozásának jóváhagyásához kattintson **az OK gombra** .
 
 > [!NOTE]
-> Az olvasási replikák ugyanazzal a kiszolgáló-konfigurációval jönnek létre, mint a főkiszolgáló. A replika-kiszolgáló konfigurációja a létrehozása után módosítható. A replika-kiszolgáló mindig ugyanabban az erőforráscsoportban és előfizetésben jön létre, mint a főkiszolgáló. Ha egy másik erőforráscsoporthoz vagy egy másik előfizetéshez szeretne replikát létrehozni, akkor [a replika-kiszolgálót a létrehozás után helyezheti át](https://docs.microsoft.com/azure/azure-resource-manager/management/move-resource-group-and-subscription) . Azt javasoljuk, hogy a replika-kiszolgáló konfigurációját a főkiszolgálónál egyenlő vagy nagyobb értékekkel kell megőrizni, hogy a replika képes legyen lépést tartani a főkiszolgálóval.
+> Az olvasási replikák ugyanazzal a kiszolgáló-konfigurációval jönnek létre, mint a főkiszolgáló. A replika-kiszolgáló konfigurációja a létrehozása után módosítható. A replika-kiszolgáló mindig ugyanabban az erőforráscsoportban és előfizetésben jön létre, mint a forráskiszolgálón. Ha egy másik erőforráscsoporthoz vagy egy másik előfizetéshez szeretne replikát létrehozni, akkor [a replika-kiszolgálót a létrehozás után helyezheti át](https://docs.microsoft.com/azure/azure-resource-manager/management/move-resource-group-and-subscription) . Azt javasoljuk, hogy a replika-kiszolgáló konfigurációját a forrásnál egyenlő vagy annál nagyobb értékekkel kell megőrizni, hogy a replika képes legyen lépést tartani a főkiszolgálóval.
 
 A replika-kiszolgáló létrehozása után a **replikáció** panelről is megtekinthető.
 
-   :::image type="content" source="./media/howto-read-replica-portal/list-replica.png" alt-text="Azure Database for MySQL – replikák listázása":::
+   :::image type="content" source="./media/howto-read-replica-portal/list-replica.png" alt-text="Azure Database for MySQL – replikálás":::
 
 ## <a name="stop-replication-to-a-replica-server"></a>Replikálás megszakítása egy másodpéldány-kiszolgálón
 
 > [!IMPORTANT]
-> A kiszolgálók replikálásának leállítása visszafordíthatatlan. Miután leállította a replikálást egy fő és egy replika között, nem vonható vissza. A replika-kiszolgáló ezután önálló kiszolgáló lesz, és már támogatja az olvasást és az írást is. Ez a kiszolgáló nem hozható létre újra replikába.
+> A kiszolgálók replikálásának leállítása visszafordíthatatlan. Miután leállította a replikálást a forrás és a replika között, nem vonható vissza. A replika-kiszolgáló ezután önálló kiszolgáló lesz, és már támogatja az olvasást és az írást is. Ez a kiszolgáló nem hozható létre újra replikába.
 
-Ha le szeretné állítani a replikációt egy fő és egy replika kiszolgáló között a Azure Portalból, kövesse az alábbi lépéseket:
+A forrás és a replika közötti replikáció leállításához a Azure Portal hajtsa végre a következő lépéseket:
 
-1. A Azure Portal válassza ki a fő Azure Database for MySQL kiszolgálót. 
+1. A Azure Portal válassza ki a forrás Azure Database for MySQL kiszolgálót. 
 
 2. Válassza a **replikálás** lehetőséget a menü **Beállítások**területén.
 
 3. Válassza ki azt a másodpéldány-kiszolgálót, amelyen le szeretné állítani a replikálást.
 
-   :::image type="content" source="./media/howto-read-replica-portal/stop-replication-select.png" alt-text="Azure Database for MySQL – replikálás leállítása kiszolgáló kiválasztása":::
+   :::image type="content" source="./media/howto-read-replica-portal/stop-replication-select.png" alt-text="Azure Database for MySQL – replikálás":::
 
 4. Válassza a **replikálás leállítása**lehetőséget.
 
-   :::image type="content" source="./media/howto-read-replica-portal/stop-replication.png" alt-text="Azure Database for MySQL – replikálás leállítása":::
+   :::image type="content" source="./media/howto-read-replica-portal/stop-replication.png" alt-text="Azure Database for MySQL – replikálás":::
 
 5. Az **OK**gombra kattintva erősítse meg, hogy le kívánja állítani a replikálást.
 
-   :::image type="content" source="./media/howto-read-replica-portal/stop-replication-confirm.png" alt-text="Azure Database for MySQL – replikálás leállítása – megerősítés":::
+   :::image type="content" source="./media/howto-read-replica-portal/stop-replication-confirm.png" alt-text="Azure Database for MySQL – replikálás":::
 
 ## <a name="delete-a-replica-server"></a>Replika-kiszolgáló törlése
 
 Ha törölni szeretne egy olvasási replika kiszolgálót a Azure Portalről, kövesse az alábbi lépéseket:
 
-1. A Azure Portal válassza ki a fő Azure Database for MySQL kiszolgálót.
+1. A Azure Portal válassza ki a forrás Azure Database for MySQL kiszolgálót.
 
 2. Válassza a **replikálás** lehetőséget a menü **Beállítások**területén.
 
 3. Válassza ki a törölni kívánt replika-kiszolgálót.
 
-   :::image type="content" source="./media/howto-read-replica-portal/delete-replica-select.png" alt-text="Azure Database for MySQL – replika törlése kiszolgáló kiválasztása":::
+   :::image type="content" source="./media/howto-read-replica-portal/delete-replica-select.png" alt-text="Azure Database for MySQL – replikálás":::
 
 4. **Replika törlésének** kiválasztása
 
-   :::image type="content" source="./media/howto-read-replica-portal/delete-replica.png" alt-text="Azure Database for MySQL – replika törlése":::
+   :::image type="content" source="./media/howto-read-replica-portal/delete-replica.png" alt-text="Azure Database for MySQL – replikálás":::
 
 5. Írja be a replika nevét, és kattintson a **Törlés** gombra a replika törlésének megerősítéséhez.  
 
-   :::image type="content" source="./media/howto-read-replica-portal/delete-replica-confirm.png" alt-text="Azure Database for MySQL – replika törlése – megerősítés":::
+   :::image type="content" source="./media/howto-read-replica-portal/delete-replica-confirm.png" alt-text="Azure Database for MySQL – replikálás":::
 
-## <a name="delete-a-master-server"></a>Főkiszolgáló törlése
+## <a name="delete-a-source-server"></a>Forráskiszolgáló törlése
 
 > [!IMPORTANT]
-> A főkiszolgáló törlése leállítja a replikálást az összes replikakiszolgálón, magát a főkiszolgálót pedig törli. A replikakiszolgálókból különálló kiszolgálók lesznek, amelyek az olvasási és írási műveleteket egyaránt támogatják.
+> A forráskiszolgáló törlése leállítja a replikálást az összes replikakiszolgálón, magát a forráskiszolgálót pedig törli. A replikakiszolgálókból különálló kiszolgálók lesznek, amelyek az olvasási és írási műveleteket egyaránt támogatják.
 
-A főkiszolgáló a Azure Portalból való törléséhez kövesse az alábbi lépéseket:
+A forráskiszolgáló Azure Portalból való törléséhez kövesse az alábbi lépéseket:
 
-1. A Azure Portal válassza ki a fő Azure Database for MySQL kiszolgálót.
+1. A Azure Portal válassza ki a forrás Azure Database for MySQL kiszolgálót.
 
 2. Az **Áttekintés**területen válassza a **Törlés**lehetőséget.
 
-   :::image type="content" source="./media/howto-read-replica-portal/delete-master-overview.png" alt-text="Azure Database for MySQL – főkiszolgáló törlése":::
+   :::image type="content" source="./media/howto-read-replica-portal/delete-master-overview.png" alt-text="Azure Database for MySQL – replikálás":::
 
-3. Írja be a főkiszolgáló nevét, és kattintson a **Törlés** gombra a főkiszolgáló törlésének megerősítéséhez.  
+3. Írja be a forráskiszolgáló nevét, és kattintson a **Törlés** gombra a forráskiszolgáló törlésének megerősítéséhez.  
 
-   :::image type="content" source="./media/howto-read-replica-portal/delete-master-confirm.png" alt-text="Azure Database for MySQL – főkiszolgáló törlése":::
+   :::image type="content" source="./media/howto-read-replica-portal/delete-master-confirm.png" alt-text="Azure Database for MySQL – replikálás":::
 
 ## <a name="monitor-replication"></a>Replikáció monitorozása
 
@@ -129,16 +129,16 @@ A főkiszolgáló a Azure Portalból való törléséhez kövesse az alábbi lé
 
 3. A rendelkezésre álló metrikák legördülő listájában válassza a **replikálás késése másodpercben** lehetőséget.
 
-   :::image type="content" source="./media/howto-read-replica-portal/monitor-select-replication-lag.png" alt-text="Replikációs késés kiválasztása":::
+   :::image type="content" source="./media/howto-read-replica-portal/monitor-select-replication-lag.png" alt-text="Azure Database for MySQL – replikálás":::
 
 4. Válassza ki a megtekinteni kívánt időtartományt. Az alábbi képen egy 30 perces időtartomány van kiválasztva.
 
-   :::image type="content" source="./media/howto-read-replica-portal/monitor-replication-lag-time-range.png" alt-text="Időtartomány kiválasztása":::
+   :::image type="content" source="./media/howto-read-replica-portal/monitor-replication-lag-time-range.png" alt-text="Azure Database for MySQL – replikálás":::
 
 5. A kijelölt időtartomány replikációs késésének megtekintése. Az alábbi képen az elmúlt 30 perc látható.
 
-   :::image type="content" source="./media/howto-read-replica-portal/monitor-replication-lag-time-range-thirty-mins.png" alt-text="Időtartomány kiválasztása":::
+   :::image type="content" source="./media/howto-read-replica-portal/monitor-replication-lag-time-range-thirty-mins.png" alt-text="Azure Database for MySQL – replikálás":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ az [olvasási replikáról](concepts-read-replicas.md)

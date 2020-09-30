@@ -1,6 +1,6 @@
 ---
-title: Az SQL on-demand (előzetes verzió) használata az Azure-beli nyílt adatkészletek elemzéséhez az Azure szinapszis Studióban (előzetes verzió)
-description: Ismerje meg, hogyan végezheti el a különböző Azure Open-adatkészletek összevonását az igény szerinti SQL on-demand (előzetes verzió) használatával, és megjelenítheti az eredményeket az Azure szinapszis Studióban.
+title: 'Oktatóanyag: az SQL on-demand (előzetes verzió) használata az Azure-beli nyílt adatkészletek elemzéséhez az Azure szinapszis Studióban (előzetes verzió)'
+description: Ebből az oktatóanyagból megtudhatja, hogyan végezhet könnyedén olyan felderítő adatelemzéseket, amelyek különböző Azure Open-adatkészleteket egyesítenek az SQL igény szerinti (előzetes verzió) használatával, és megjeleníthetik az eredményeket az Azure szinapszis Studióban.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6325c5c597ce0f85615780f7970a4a3c6c4c451b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0471bd594dcf1b0654d6b4c496e5d39ade2739fd
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91288052"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91539520"
 ---
-# <a name="use-sql-on-demand-to-analyze-azure-open-datasets-and-visualize-the-results-in-azure-synapse-studio"></a>Az SQL on-demand használatával elemezze az Azure Open-adatkészleteket, és megjelenítheti az eredményeket az Azure szinapszis Studióban
+# <a name="tutorial-use-sql-on-demand-to-analyze-azure-open-datasets-and-visualize-the-results-in-azure-synapse-studio"></a>Oktatóanyag: az SQL igény szerinti használata az Azure Open-adatkészletek elemzésére és az eredmények megjelenítésére az Azure szinapszis Studióban
 
 Ebből az oktatóanyagból megtudhatja, hogyan végezheti el a felderítő adatok elemzését, ha különböző Azure Open-adatkészleteket egyesít az SQL igény szerinti használatával, majd megjeleníti az eredményeket az Azure szinapszis Studióban.
 
@@ -215,7 +215,7 @@ A lekérdezés eredménye azt jelzi, hogy a taxik számának csökkenése a köv
 
 Ebből az oktatóanyagból megtudhatta, hogy az adatelemzők hogyan tudják gyorsan végrehajtani a felderítő adatelemzést, és a különböző adatkészleteket egyszerűen kombinálhatja az SQL igény szerinti használatával, és megjelenítheti az eredményeket az Azure szinapszis Studio használatával.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha szeretné megtudni, hogyan csatlakoztatható az SQL on-demand Power BI Desktop és hogyan hozhat létre jelentéseket, tekintse meg az [SQL igény szerinti csatolása Power bi Desktop és jelentések létrehozása](tutorial-connect-power-bi-desktop.md)című témakört.
  

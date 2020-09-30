@@ -2,20 +2,18 @@
 title: Entitások hozzáadása – LUIS
 description: Entitásokat hozhat létre a Language Understanding (LUIS) alkalmazások felhasználói hosszúságú kimondott szöveg származó kulcsfontosságú adatok kinyeréséhez. Az ügyfélalkalmazás a kinyert fullfil használja.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2020
-ms.author: diberry
-ms.openlocfilehash: 61e53e6110e545d253dae81e94f8738ee17c4141
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: c5c6836c2d68036bf2b9c5abe191943537349b8d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344475"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540965"
 ---
 # <a name="add-entities-to-extract-data"></a>Entitások hozzáadása az adatok kinyeréséhez
 
@@ -118,7 +116,7 @@ A következő lista a kanonikus nevet és a szinonimákat mutatja be.
 
 |Szín listaelem neve|Szín – szinonimák|
 |--|--|
-|Vörös|Crimson, Blood, Apple, Fire-Engine|
+|Piros|Crimson, Blood, Apple, Fire-Engine|
 |Kék|égbolt, kobalt|
 |Zöld|Kelly, lime|
 
@@ -179,14 +177,14 @@ Ebben az eljárásban hozzáadhat `origin` és `destination` szerepköröket egy
 1. Ha címkével szeretne felcímkézni a szerepkört, válassza ki az entitás címkéjét (szöveg alatti folytonos vonal), majd a legördülő listából válassza ki a **Megtekintés az entitásban ablaktáblát** .
 
     > [!div class="mx-imgBorder"]
-    > ![Képernyőkép a nézet kiválasztásáról az Entity paletta-ban](media/add-entities/view-in-entity-pane.png)
+    > ![Képernyőfelvétel: az entitások ablaktábla kiválasztott menüjének nézete.](media/add-entities/view-in-entity-pane.png)
 
     Az entitás paletta a jobb oldalon jelenik meg.
 
 1. Válassza ki az entitást, majd lépjen a paletta aljára, és válassza ki a szerepkört.
 
     > [!div class="mx-imgBorder"]
-    > ![Képernyőkép a nézet kiválasztásáról az Entity paletta-ban](media/add-entities/select-role-in-entity-palette.png)
+    > ![A képernyőfelvételen a szerepkör kiválasztásának helye látható.](media/add-entities/select-role-in-entity-palette.png)
 
 <a name="add-pattern-any-entities"></a>
 <a name="add-a-patternany-entity"></a>
@@ -202,7 +200,7 @@ A **minta. minden** entitás csak [mintázatokkal](luis-how-to-model-intent-patt
 LUIS nem teszi lehetővé az entitás típusának módosítását, mert nem tudja, mit kell hozzáadni vagy eltávolítani az entitás létrehozásához. A típus módosításához jobb, ha a megfelelő típusú új entitást kis mértékben eltérő névvel hozza létre. Az entitás létrehozása után minden egyes Kimondás után távolítsa el a régi címkével ellátott entitás nevét, és adja hozzá az új entitás nevét. Ha az összes hosszúságú kimondott szöveg újracímkézték, törölje a régi entitást.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Előre összeállított modellek használata](howto-add-prebuilt-models.md)

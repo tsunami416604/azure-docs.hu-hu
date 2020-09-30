@@ -3,14 +3,13 @@ title: Azure Service Fabric-szolgáltatások tárolóba helyezése Windows rends
 description: Ismerje meg, hogyan tárolóba helyezése a Service Fabric Reliable Services és a Reliable Actors szolgáltatások Windows rendszeren.
 ms.topic: conceptual
 ms.date: 5/23/2018
-ms.author: anmola
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 16840eb397dad697d4f3b9f361225e98442ae39e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: e0c5f3ecf0334ad2190d8542e54388a2a25d30fb
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89016206"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537412"
 ---
 # <a name="containerize-your-service-fabric-reliable-services-and-reliable-actors-on-windows"></a>A Service Fabric Reliable Services és a Reliable Actors tárolóba helyezése Windowson
 
@@ -138,6 +137,6 @@ Ez a dokumentum útmutatást nyújt a szolgáltatás Windows-tárolón belüli f
 
 Most már rendelkeznie kell egy, a fürtöt futtató, tárolóban Service Fabric alkalmazással.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További információk a [tárolók futtatásáról a Service Fabricban](service-fabric-get-started-containers.md).
 * További információk a Service Fabric [alkalmazásainak élettartamáról](service-fabric-application-lifecycle.md).

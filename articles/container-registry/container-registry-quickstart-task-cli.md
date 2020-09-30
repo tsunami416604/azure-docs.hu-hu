@@ -3,12 +3,13 @@ title: Rövid útmutató – tároló-rendszerkép létrehozása igény szerint 
 description: Az Azure-felhőben Azure Container Registry parancsokkal gyorsan készíthet, küldhet és futtathat Docker-tároló rendszerképet.
 ms.topic: quickstart
 ms.date: 09/25/2020
-ms.openlocfilehash: 6c73eb8ec69014858299eb940036716eff646137
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.custom: contperfq1
+ms.openlocfilehash: 36921900f64d458f1f2591897e32c98f6d22a550
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91409833"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538207"
 ---
 # <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>Gyors útmutató: tároló-rendszerkép létrehozása és futtatása Azure Container Registry feladatokkal
 
@@ -177,7 +178,7 @@ Ha már nincs rá szükség, az az [Group delete][az-group-delete] paranccsal el
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban az ACR-feladatok funkcióit használta a Docker-tárolói rendszerképek gyors létrehozására, leküldésére és futtatására az Azure-ban, helyi Docker-telepítés nélkül. Folytassa a Azure Container Registry feladatok oktatóanyagával, amelyből megtudhatja, hogyan használhatja az ACR-feladatokat a rendszerkép-buildek és a frissítések automatizálására.
 

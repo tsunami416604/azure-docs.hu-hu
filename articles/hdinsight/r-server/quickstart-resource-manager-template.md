@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/13/2020
-ms.openlocfilehash: 7f86d0a090409385497715b70e8199bdf48c6995
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 6b4b4b8bcf5a69fdae9f29284fe965a30d634788
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640327"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91539724"
 ---
 # <a name="quickstart-create-ml-services-cluster-in-azure-hdinsight-using-arm-template"></a>Gyors útmutató: ML Services-fürt létrehozása az Azure HDInsight ARM-sablon használatával
 
@@ -73,11 +73,11 @@ A gyors üzembe helyezés befejezése után érdemes lehet törölni a fürtöt.
 
 A Azure Portal navigáljon a fürthöz, és válassza a **Törlés**lehetőséget.
 
-![Resource Manager-sablon HBase](./media/quickstart-resource-manager-template/azure-portal-delete-rserver.png)
+![A képernyőfelvétel egy H D betekintési fürtöt mutat be a törölni kívánt erőforráscsoporthoz.](./media/quickstart-resource-manager-template/azure-portal-delete-rserver.png)
 
 Az erőforráscsoport nevét kiválasztva is megnyílik az erőforráscsoport oldala, ahol kiválaszthatja az **Erőforráscsoport törlése** elemet. Az erőforráscsoport törlésével törli a HDInsight-fürtöt és az alapértelmezett Storage-fiókot is.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre egy ML Services-fürtöt a HDInsight egy ARM-sablonnal. A következő cikkben megtudhatja, hogyan futtathat egy R-szkriptet a RStudio-kiszolgálóval, amely a Spark elosztott R-számításokhoz való használatát mutatja be.
 

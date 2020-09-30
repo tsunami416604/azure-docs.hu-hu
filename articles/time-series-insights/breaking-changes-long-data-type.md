@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.custom: dpalled
-ms.openlocfilehash: 43d3e80c66d54e3f7518246f7d75c5661995578c
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 4d4e7f4433171e593f5e61ab6f48afc640857d9b
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89489034"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91536579"
 ---
 # <a name="adding-support-for-long-data-type-in-azure-time-series-insights-gen2"></a>Hosszú adattípusok támogatásának hozzáadása a Azure Time Series Insights Gen2
 
@@ -72,11 +72,11 @@ Ha a **tulajdonságérték** tulajdonság ezen két oszlopán keresztül szeretn
 
 *Előző változó definíciója:*
 
-[![Előző változó definíciója](media/time-series-insights-long-data-type/var-def-previous.png)](media/time-series-insights-long-data-type/var-def-previous.png#lightbox)
+[![A képernyőképen az új változó hozzáadása párbeszédpanel jelenik meg a tulajdonságérték változóhoz, numerikus értékre.](media/time-series-insights-long-data-type/var-def-previous.png)](media/time-series-insights-long-data-type/var-def-previous.png#lightbox)
 
 *Új változó definíciója:*
 
-[![Új változó definíciója](media/time-series-insights-long-data-type/var-def.png)](media/time-series-insights-long-data-type/var-def.png#lightbox)
+[![Képernyőfelvétel: az új változó hozzáadása párbeszédpanel az tulajdonságérték változóhoz egyéni értékkel (numerikus).](media/time-series-insights-long-data-type/var-def.png)](media/time-series-insights-long-data-type/var-def.png#lightbox)
 
 Az **Egyesítés ($Event. tulajdonságérték. Double, a toDouble ($Event. tulajdonságérték. Long))** is használható az egyéni [Idősorozat-kifejezésként](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax).
 
@@ -139,11 +139,11 @@ Ha jelenleg olyan kategorikus változókat használ, amelyek egész értékeket 
 
 *Előző változó definíciója:*
 
-[![Előző változó definíciója](media/time-series-insights-long-data-type/var-def-cat-previous.png)](media/time-series-insights-long-data-type/var-def-cat-previous.png#lightbox)
+[![Képernyőfelvétel: az új változó hozzáadása párbeszédpanel a tulajdonságérték változóhoz, kategorikus.](media/time-series-insights-long-data-type/var-def-cat-previous.png)](media/time-series-insights-long-data-type/var-def-cat-previous.png#lightbox)
 
 *Új változó definíciója:*
 
-[![Új változó definíciója](media/time-series-insights-long-data-type/var-def-cat.png)](media/time-series-insights-long-data-type/var-def-cat.png#lightbox)
+[![Képernyőfelvétel: az új változó hozzáadása párbeszédpanel a tulajdonságérték változóhoz egyéni értékkel, kategorikus.](media/time-series-insights-long-data-type/var-def-cat.png)](media/time-series-insights-long-data-type/var-def-cat.png#lightbox)
 
 Az **Egyesítés ($Event. tulajdonságérték. Double, a toDouble ($Event. tulajdonságérték. Long))** is használható az egyéni [Idősorozat-kifejezésként](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax).
 
@@ -240,6 +240,6 @@ Ha az 1 – 3. eset által érintett és egyéni alkalmazásokat készít, friss
 
 Ha nagy mennyiségű tulajdonsággal rendelkező meleg áruházbeli felhasználó, és úgy gondolja, hogy ez a változás az 1 000-es meleg áruházbeli tulajdonság-név korlátot fogja leküldeni a környezetbe, küldjön támogatási jegyet a Azure Portal és megemlítjük ezt a kommunikációt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A [támogatott adattípusok](concepts-supported-data-types.md)teljes listájának megtekintése.

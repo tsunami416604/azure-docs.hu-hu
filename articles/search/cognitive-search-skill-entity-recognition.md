@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: fd35f297e88c37aec39938b0bfd60288e591a62c
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: ddfca965ea32ca726df39f894ba45f9580225d9d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936078"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542461"
 ---
 #    <a name="entity-recognition-cognitive-skill"></a>Entitás-felismerés – kognitív képesség
 
@@ -187,12 +187,12 @@ A paraméterek megkülönböztetik a kis-és nagybetűket, és mindegyik nem kö
 }
 ```
 
-Vegye figyelembe, hogy a szakértelem kimenetében lévő entitások által visszaadott eltolásokat a rendszer közvetlenül visszaadja a [text Analytics APIból](../cognitive-services/text-analytics/overview.md), ami azt jelenti, hogy ha az eredeti sztring indexbe való indexelését használja, akkor a [StringInfo](/dotnet/api/system.globalization.stringinfo?view=netframework-4.8) osztályt a .net-ben kell használnia a megfelelő tartalom kinyeréséhez.  [További részleteket itt találhat.](../cognitive-services/text-analytics/concepts/text-offsets.md)
+Vegye figyelembe, hogy a szakértelem kimenetében lévő entitások által visszaadott eltolásokat a rendszer közvetlenül visszaadja a [text Analytics APIból](../cognitive-services/text-analytics/overview.md), ami azt jelenti, hogy ha az eredeti sztring indexbe való indexelését használja, akkor a [StringInfo](/dotnet/api/system.globalization.stringinfo) osztályt a .net-ben kell használnia a megfelelő tartalom kinyeréséhez.  [További részleteket itt találhat.](../cognitive-services/text-analytics/concepts/text-offsets.md)
 
 ## <a name="error-cases"></a>Hibák esetei
 Ha a dokumentumhoz tartozó nyelvi kód nem támogatott, a rendszer hibát ad vissza, és egyetlen entitás sincs kibontva.
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 + [Beépített képességek](cognitive-search-predefined-skills.md)
 + [Készségkészlet definiálása](cognitive-search-defining-skillset.md)

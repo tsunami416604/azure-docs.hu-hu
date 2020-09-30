@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3a8c1a5da4f4d46d98e01eeb0bf210567af19a95
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: cd7496690ec88fbe4297386c32d1b8a2c3234577
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88007233"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540761"
 ---
 # <a name="customize-feed-for-windows-virtual-desktop-classic-users"></a>A Windows rendszerű virtuális asztali (klasszikus) felhasználók hírcsatornáinak testreszabása
 
@@ -37,7 +37,7 @@ Get-RdsRemoteApp -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroup
 ```
 
 > [!div class="mx-imgBorder"]
-> ![Képernyőkép a Get-RDSRemoteApp PowerShell-parancsmagról, amelynek neve és FriendlyName ki van emelve.](../media/get-rdsremoteapp.png)
+> ![Képernyőkép a Get-RDSRemoteApp PowerShell-parancsmagról, amelynek a neve és a FriendlyName ki van emelve a megjelenítendő név testreszabásához.](../media/get-rdsremoteapp.png)
 
 Ha rövid nevet szeretne hozzárendelni egy RemoteApp-hoz, futtassa a következő PowerShell-parancsmagot:
 
@@ -46,7 +46,7 @@ Set-RdsRemoteApp -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroup
 ```
 
 > [!div class="mx-imgBorder"]
-> ![Képernyőkép a set-RDSRemoteApp PowerShell-parancsmagról, amelynek neve és új FriendlyName ki van emelve.](../media/set-rdsremoteapp.png)
+> ![Képernyőkép a set-RDSRemoteApp PowerShell-parancsmagról, amelynek neve és új FriendlyName ki van emelve a megjelenítendő név testreszabásához.](../media/set-rdsremoteapp.png)
 
 ## <a name="customize-the-display-name-for-a-remote-desktop"></a>Távoli asztal megjelenítendő nevének testreszabása
 

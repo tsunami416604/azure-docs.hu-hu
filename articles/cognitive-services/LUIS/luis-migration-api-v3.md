@@ -5,13 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 06/30/2020
-ms.author: diberry
-ms.openlocfilehash: 3e4567eea02b3b7db9514f4e03c7f7f36496449b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a5760db2d6e453d631680d6154e6d9a03ce55cd6
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91309429"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541339"
 ---
 # <a name="prediction-endpoint-changes-for-v3"></a>Előrejelzési végpont módosításai v3 esetén
 
@@ -104,7 +103,7 @@ Ha verzió alapján szeretne lekérdezni, először közzé kell tennie az [API-
 }
 ```
 
-|Tulajdonság|Típus|Verzió|Alapértelmezett|Rendeltetés|
+|Tulajdonság|Típus|Verzió|Alapértelmezett|Szerep|
 |--|--|--|--|--|
 |`dynamicLists`|array|Csak v3|Nem kötelező.|A [dinamikus listák](schema-change-prediction-runtime.md#dynamic-lists-passed-in-at-prediction-time) segítségével kiterjesztheti a már meglévő betanított és közzétett lista entitást, amely már a Luis-alkalmazásban van.|
 |`externalEntities`|array|Csak v3|Nem kötelező.|A [külső entitások](schema-change-prediction-runtime.md#external-entities-passed-in-at-prediction-time) lehetővé teszi, hogy a Luis-alkalmazás képes legyen az entitások azonosítására és címkézésére a futtatókörnyezet során, amely funkciókként használható a meglévő entitásokhoz. |
@@ -273,6 +272,6 @@ A v3-as verzióban Ugyanez az eredmény szerepel az `verbose` entitás metaadata
 
 A v2 API-t a v3 előzetes verzió után legalább 9 hónapig nem lehet érvényteleníteni.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A V3 API dokumentációjának használatával frissítheti a meglévő REST-hívásokat a LUIS [Endpoint](https://westcentralus.dev.cognitive.microsoft.com/docs/services/luis-endpoint-api-v3-0/operations/5cb0a9459a1fe8fa44c28dd8) API-kra.

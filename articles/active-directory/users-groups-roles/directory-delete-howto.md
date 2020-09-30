@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: addimitu
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97a8f372a90d3add99390220d89214c6ad205db6
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: bf8eeb2d1f19ca0848ae5c608ba9f0d8e9526e05
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90056302"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541254"
 ---
 # <a name="delete-a-tenant-in-azure-active-directory"></a>Bérlő törlése Azure Active Directory
 
@@ -123,24 +123,24 @@ Az Azure AD-portálon azonnal törölheti az önkiszolgáló regisztrációs ter
 
 2. Válassza a **licencek**lehetőséget, majd válassza az **önkiszolgáló regisztrációs termékek**lehetőséget. Az összes önkiszolgáló regisztrációs terméket külön tekintheti meg az ülésen alapuló előfizetések között. Válassza ki a véglegesen törölni kívánt terméket. Íme egy példa a Microsoft Power BIban:
 
-    ![a Felhasználónév típusa helytelen, vagy nem található](./media/directory-delete-howto/licenses-page.png)
+    ![Képernyőkép, amely a "licencek önkiszolgáló regisztrációs termékek" lapot jeleníti meg.](./media/directory-delete-howto/licenses-page.png)
 
 3. Válassza a **Törlés** lehetőséget a termék törléséhez, és fogadja el azokat a feltételeket, amelyek azonnal és visszavonhatatlanul törlődnek. Ez a törlési művelet törli az összes felhasználót, és eltávolítja a szervezet hozzáférését a termékhez. Az Igen gombra kattintva lépjen tovább a törlésre.  
 
-    ![a Felhasználónév típusa helytelen, vagy nem található](./media/directory-delete-howto/delete-product.png)
+    ![Képernyőkép: "licencek önkiszolgáló regisztrációs termékek" oldal, "az önkiszolgáló bejelentkezési termék törlése" ablak nyitva.](./media/directory-delete-howto/delete-product.png)
 
 4. Ha az **Igen**lehetőséget választja, a rendszer kezdeményezi az önkiszolgáló termék törlését. Értesítés jelenik meg arról, hogy a törlés folyamatban van.  
 
-    ![a Felhasználónév típusa helytelen, vagy nem található](./media/directory-delete-howto/progress-message.png)
+    ![Képernyőkép: "a licencek önkiszolgáló regisztrációs termékek" oldal, amely a "Törlés folyamatban" értesítést jeleníti meg.](./media/directory-delete-howto/progress-message.png)
 
 5. Az önkiszolgáló bejelentkezési termék állapota most már **törölve**lett. Az oldal frissítésekor a terméket el kell távolítani az **önkiszolgáló regisztrációs termékek** oldaláról.  
 
-    ![a Felhasználónév típusa helytelen, vagy nem található](./media/directory-delete-howto/product-deleted.png)
+    ![Képernyőkép: a "licencek önkiszolgáló regisztrációs termékek" oldal, amely a jobb oldalon található "önkiszolgáló bejelentkezési termék törlése" panelt tartalmazza.](./media/directory-delete-howto/product-deleted.png)
 
 6. Miután törölte az összes terméket, újra bejelentkezhet az Azure AD felügyeleti központba, és nem feltétlenül szükséges művelet, és nem blokkolja a szervezet törlését. Az Azure AD-szervezetet sikeresen törölni kell.
 
     ![a Felhasználónév típusa helytelen, vagy nem található](./media/directory-delete-howto/delete-organization.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Azure Active Directory-dokumentáció](../index.yml)

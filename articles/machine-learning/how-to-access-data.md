@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 07/22/2020
 ms.custom: how-to, contperfq1, devx-track-python
-ms.openlocfilehash: 639e4cde82fd8496c90f8ebf263dd42661a75748
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e118c22829bc55e8baafb87db20817ab043ef4df
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91296807"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540778"
 ---
 # <a name="connect-to-azure-storage-services"></a>Csatlakozás Azure Storage-szolgáltatásokhoz
 
@@ -247,7 +247,7 @@ Az alapértelmezett adattár a következő kóddal is módosítható. Ez a képe
 
 A Azure Machine Learning számos módszert kínál a modellek pontozási célra való használatára. A módszerek némelyike nem biztosít hozzáférést az adattárolóhoz. A következő táblázat segítségével megtudhatja, hogy mely módszerek lehetővé teszik az adattárolók elérését a pontozás során:
 
-| Metódus | Adattár-hozzáférés | Description |
+| Metódus | Adattár-hozzáférés | Leírás |
 | ----- | :-----: | ----- |
 | [Kötegelt előrejelzés](how-to-use-parallel-run-step.md) | ✔ | Előrejelzések készítése aszinkron módon nagy mennyiségű adattal. |
 | [Webszolgáltatás](how-to-deploy-and-where.md) | &nbsp; | Modellek üzembe helyezése webszolgáltatásként. |
@@ -263,8 +263,8 @@ Azure Machine Learning támogatja az Azure Blob Storage, Azure Files, Azure Data
 
 Azure Data Factory a hatékony és rugalmas adatátvitelt több mint 80 előre összeépített összekötővel biztosítja, felár nélkül. Ezek az összekötők közé tartoznak az Azure adatszolgáltatások, a helyszíni adatforrások, az Amazon S3 és a vöröseltolódás, valamint a Google BigQuery.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Azure Machine learning-adatkészlet létrehozása](how-to-create-register-datasets.md)
-* [Modell betanítása](how-to-train-ml-models.md)
+* [Modell betanítása](how-to-set-up-training-targets.md)
 * [Modell üzembe helyezése](how-to-deploy-and-where.md)

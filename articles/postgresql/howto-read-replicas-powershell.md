@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 06/08/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0caa8e2911046e18e63748fe5bde4b4c965eb965
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: b57fe5879c45225f8ba22e2c94aceeb5b38369e3
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502536"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91539452"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-postgresql-using-powershell"></a>Olvasási replikák létrehozása és kezelése a Azure Database for PostgreSQL a PowerShell használatával
 
@@ -38,7 +38,7 @@ Ha a PowerShell helyi használatát választja, kapcsolódjon az Azure-fiókjáh
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 > [!IMPORTANT]
-> Az olvasási replika funkció csak a általános célú vagy a memória optimalizált árképzési szintjein Azure Database for PostgreSQL-kiszolgálókon érhető el. Győződjön meg arról, hogy a főkiszolgáló a fenti díjszabási szintek egyikében van.
+> Az olvasási replika funkció csak a általános célú vagy a memória optimalizált árképzési szintjein Azure Database for PostgreSQL-kiszolgálókon érhető el. Győződjön meg arról, hogy az elsődleges kiszolgáló az alábbi díjszabási szintek egyikében található.
 
 ### <a name="create-a-read-replica"></a>Olvasási replika létrehozása
 
@@ -54,7 +54,7 @@ A `New-AzPostgreSqlServerReplica` parancshoz a következő paraméterek szüksé
 | Beállítás | Példaérték | Leírás  |
 | --- | --- | --- |
 | ResourceGroupName |  myResourceGroup |  Az az erőforráscsoport, amelyben a replika-kiszolgáló létrejön.  |
-| Name | mydemoreplicaserver | A létrehozott új replika-kiszolgáló neve. |
+| Név | mydemoreplicaserver | A létrehozott új replika-kiszolgáló neve. |
 
 Egy több régióból származó olvasási replika létrehozásához használja a **Location** paramétert. Az alábbi példa egy replikát hoz létre az **USA nyugati** régiójában.
 
@@ -65,14 +65,14 @@ Get-AzPostgreSqlServer -Name mrdemoserver -ResourceGroupName myresourcegroup |
 
 Ha többet szeretne megtudni arról, hogy mely régiókban hozhat létre replikát, látogasson el a [replika áttekintése című cikkben](concepts-read-replicas.md).
 
-Alapértelmezés szerint az olvasási replikák ugyanazzal a kiszolgáló-konfigurációval jönnek létre, mint a főkiszolgáló, kivéve ha meg van adva a **SKU** paraméter.
+Alapértelmezés szerint az olvasási replikák ugyanazzal a kiszolgáló-konfigurációval jönnek létre, mint az elsődleges, kivéve, ha az **SKU** paraméter meg van adva.
 
 > [!NOTE]
-> Azt javasoljuk, hogy a replika-kiszolgáló konfigurációját a főkiszolgálónál egyenlő vagy nagyobb értékekkel kell megőrizni, hogy a replika képes legyen lépést tartani a főkiszolgálóval.
+> Azt javasoljuk, hogy a replika-kiszolgáló konfigurációját az elsődlegesnél egyenlő vagy nagyobb értékkel kell megőrizni, hogy a replika képes legyen lépést tartani a főkiszolgálóval.
 
-### <a name="list-replicas-for-a-master-server"></a>Főkiszolgáló replikáinak listázása
+### <a name="list-replicas-for-a-primary-server"></a>Elsődleges kiszolgáló replikáinak listázása
 
-Egy adott főkiszolgáló összes replikájának megtekintéséhez futtassa a következő parancsot:
+Egy adott elsődleges kiszolgáló összes replikájának megtekintéséhez futtassa a következő parancsot:
 
 ```azurepowershell-interactive
 Get-AzMariaDReplica -ResourceGroupName myresourcegroup -ServerName mydemoserver
@@ -83,7 +83,7 @@ A `Get-AzMariaDReplica` parancshoz a következő paraméterek szükségesek:
 | Beállítás | Példaérték | Leírás  |
 | --- | --- | --- |
 | ResourceGroupName |  myResourceGroup |  Az az erőforráscsoport, amelybe a replika-kiszolgáló létre lesz hozva.  |
-| ServerName | mydemoserver | A főkiszolgáló neve vagy azonosítója. |
+| ServerName | mydemoserver | Az elsődleges kiszolgáló neve vagy azonosítója. |
 
 ### <a name="delete-a-replica-server"></a>Replika-kiszolgáló törlése
 
@@ -93,12 +93,12 @@ Az olvasási replika kiszolgáló törlését a parancsmag futtatásával teheti
 Remove-AzPostgreSqlServer -Name mydemoreplicaserver -ResourceGroupName myresourcegroup
 ```
 
-### <a name="delete-a-master-server"></a>Főkiszolgáló törlése
+### <a name="delete-a-primary-server"></a>Elsődleges kiszolgáló törlése
 
 > [!IMPORTANT]
-> A főkiszolgáló törlése leállítja a replikálást az összes replikakiszolgálón, magát a főkiszolgálót pedig törli. A replikakiszolgálókból különálló kiszolgálók lesznek, amelyek az olvasási és írási műveleteket egyaránt támogatják.
+> Az elsődleges kiszolgáló törlése leállítja az összes másodpéldány-kiszolgálót, és maga törli az elsődleges kiszolgálót. A replikakiszolgálókból különálló kiszolgálók lesznek, amelyek az olvasási és írási műveleteket egyaránt támogatják.
 
-A főkiszolgálók törléséhez futtathatja a `Remove-AzPostgreSqlServer` parancsmagot.
+Elsődleges kiszolgáló törléséhez futtathatja a `Remove-AzPostgreSqlServer` parancsmagot.
 
 ```azurepowershell-interactive
 Remove-AzPostgreSqlServer -Name mydemoserver -ResourceGroupName myresourcegroup

@@ -14,12 +14,12 @@ ms.date: 03/05/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98af7725e1929637228c6cadd7ee2dc856bd4e8b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 706770db4309d1a909bc1161ab9d6657b6c5310a
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331298"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533548"
 ---
 # <a name="configure-security-alerts-for-azure-ad-roles-in-privileged-identity-management"></a>Azure AD-szerepkörökhöz tartozó biztonsági riasztások konfigurálása Privileged Identity Management
 
@@ -38,7 +38,7 @@ Kövesse a cikkben ismertetett lépéseket az Azure AD-szerepkörökhöz tartoz�
 
 # <a name="new-version"></a>[Új verzió](#tab/new)
 
-![Azure AD-szerepkörök – riasztási ablaktábla, amely a riasztásokat és a súlyosságot tartalmazza](./media/pim-how-to-configure-security-alerts/view-alerts.png)
+![Képernyőkép, amely a riasztások listáját és súlyosságát mutatja.](./media/pim-how-to-configure-security-alerts/view-alerts.png)
 
 ## <a name="security-alerts"></a>Biztonsági riasztások
 
@@ -242,6 +242,6 @@ A Privileged Identity Management a biztonsági riasztások némelyikét testresz
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure AD-szerepkör beállításainak konfigurálása Privileged Identity Management](pim-how-to-change-default-settings.md)

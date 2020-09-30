@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e2858daaa834552da5a85063fd9973d2c35209d7
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: f41584194f8f5e8afde630405116b8b169cb5656
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005618"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542036"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop-classic"></a>Oktatóanyag: bérlő létrehozása a Windows Virtual Desktopban (klasszikus)
 
@@ -126,7 +126,7 @@ Az Azure-előfizetés AZONOSÍTÓjának megkeresése:
 1. Ugyanebben a [Azure Portal](https://portal.azure.com) -munkamenetben keresse meg és válassza ki az **előfizetéseket**.
 
    > [!div class="mx-imgBorder"]
-   > ![A Azure Portal "Azure Active Directory" keresési eredményeinek képernyőképe. A "szolgáltatások" alatt a keresési eredmények ki vannak emelve.](../media/tenant-search-subscription.png)
+   > ![A Azure Portal "Azure Active Directory" keresési eredményeinek képernyőképe. A "szolgáltatások" keresési eredménye kiemelve.](../media/tenant-search-subscription.png)
 
 2. Válassza ki azt az Azure-előfizetést, amelyet a Windows rendszerű virtuális asztali szolgáltatás értesítéseinek fogadásához használni kíván.
 3. Keresse meg az **előfizetés azonosítóját**, majd vigye a kurzort az érték fölé, amíg meg nem jelenik a vágólap ikonja. Válassza a vágólap ikont, és illessze be egy praktikus helyre, hogy később a **AzureSubscriptionId** értékeként is használhassa.

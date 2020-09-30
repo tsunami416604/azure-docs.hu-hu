@@ -8,12 +8,12 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/25/2020
-ms.openlocfilehash: 2b01b9a3782d25660462d0cc2bf3aec87baf0023
-ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
+ms.openlocfilehash: 417bdacc3ce8b619d5ec9618e6060ac071882471
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91403784"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533925"
 ---
 # <a name="how-to-index-plain-text-blobs-in-azure-cognitive-search"></a>Egyszerű szöveges Blobok indexelése az Azure-ban Cognitive Search
 
@@ -61,9 +61,10 @@ Az elemzési módok az indexelő definíciójában vannak megadva.
 ```
 
 ## <a name="help-us-make-azure-cognitive-search-better"></a>Segítsen nekünk, hogy jobban megtegyük az Azure Cognitive Search
+
 Ha a funkciókra vonatkozó kérések vagy ötletek vannak, adja meg a [UserVoice](https://feedback.azure.com/forums/263029-azure-search/). Ha segítségre van szüksége a meglévő szolgáltatás használatához, tegye fel a kérdését [stack Overflowra](https://stackoverflow.microsoft.com/questions/tagged/18870).
 
-## <a name="see-also"></a>Lásd még
+## <a name="next-steps"></a>További lépések
 
 * [Indexelők az Azure Cognitive Searchben](search-indexer-overview.md)
 * [BLOB-indexelő konfigurálása](search-howto-indexing-azure-blob-storage.md)

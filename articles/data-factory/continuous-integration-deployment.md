@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: a5856d85b6a967f49fd651942ca6e4596bf15e7d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e1b9aacf96249c3e102c6a3dbf87d8ac1ff20be6
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320976"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533315"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Folyamatos integráció és kézbesítés Azure Data Factory
 
@@ -30,10 +30,6 @@ Azure Data Factory a folyamatos integráció és a szállítás (CI/CD) azt jele
 
 -    Automatikus üzembe helyezés a Data Factory Azure- [folyamatokkal](https://docs.microsoft.com/azure/devops/pipelines/get-started/what-is-azure-pipelines?view=azure-devops) való integrálásával
 -    Manuálisan tölthet fel egy Resource Manager-sablont a Data Factory UX-integrációval Azure Resource Manager használatával.
-
-A funkció és a bemutató kilenc perces bemutatása esetén tekintse meg ezt a videót:
-
-> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Continuous-integration-and-deployment-using-Azure-Data-Factory/player]
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -309,7 +305,7 @@ Az alábbi példa azt szemlélteti, hogy a paraméterezés-sablonok hogyan nézn
 ```
 Íme egy magyarázat arról, hogy az előző sablon hogyan épül fel, az erőforrástípus szerinti bontásban.
 
-#### <a name="pipelines"></a>Pipelines
+#### <a name="pipelines"></a>Folyamatok
     
 * Az elérési út bármely tulajdonsága `activities/typeProperties/waitTimeInSeconds` paraméterrel van elfoglalva. A folyamatokban lévő minden olyan tevékenység, amelynek a neve `waitTimeInSeconds` (például a `Wait` tevékenység), egy alapértelmezett névvel van ellátva. A Resource Manager-sablonban azonban nem szerepel alapértelmezett érték. A Resource Manager üzembe helyezése során kötelezően megadandó adatok lesznek.
 * Hasonlóképpen, egy nevű tulajdonság `headers` (például egy `Web` tevékenység) paraméterének típusa `object` (JObject). Alapértelmezett értékkel rendelkezik, amely megegyezik a forrás-előállítóval megegyező értékkel.

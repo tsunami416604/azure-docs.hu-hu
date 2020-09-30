@@ -3,20 +3,18 @@ title: Hosszúságú kimondott szöveg importálása Node.js-LUIS használatáva
 titleSuffix: Azure Cognitive Services
 description: A LUIS authoring API használatával megtudhatja, hogyan hozhat létre programozott módon egy LUIS-alkalmazást a meglévő adatokból CSV formátumban.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18, devx-track-js
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 09/05/2019
-ms.author: diberry
-ms.openlocfilehash: 13e18e024c2200459e58474f53bed2431e3375a7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 58eb92f4d0bc3de4671ca2ece14a178a876e4a6b
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91298226"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541041"
 ---
 # <a name="build-a-luis-app-programmatically-using-nodejs"></a>A LUIS-alkalmazások programozott módon történő létrehozása Node.js
 
@@ -186,7 +184,7 @@ Miután a szkript befejeződik, bejelentkezhet a [luisba](luis-reference-regions
 ![TurnOn szándék](./media/luis-tutorial-node-import-utterances-csv/imported-utterances-661.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Az alkalmazás tesztelése és betanítása a LUIS webhelyén](luis-interactive-test.md)

@@ -16,12 +16,12 @@ ms.date: 02/07/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24471ff5a085be905f9316f1af3c95c3a7912bf1
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 7e0f74f98adcc8a4e8aabc96f7f35c9c55ae277f
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421535"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91536358"
 ---
 # <a name="approve-or-deny-requests-for-azure-ad-roles-in-privileged-identity-management"></a>Azure AD-szerepkörökre vonatkozó kérelmek jóváhagyása vagy elutasítása Privileged Identity Management
 
@@ -58,7 +58,7 @@ Meghatalmazott jóváhagyóként e-mail-értesítést fog kapni, ha egy Azure AD
 
 1. Keresse meg és válassza ki a jóváhagyni kívánt kérelmet. A jóváhagyás vagy megtagadás lap jelenik meg.
 
-    ![Kérelmek jóváhagyása – jóváhagyás vagy megtagadás ablaktábla részletekkel és indoklással](./media/azure-ad-pim-approval-workflow/resources-approve-pane.png)
+    ![Képernyőkép a "kérelmek jóváhagyása – Azure AD-szerepkörök" oldalról.](./media/azure-ad-pim-approval-workflow/resources-approve-pane.png)
 
 1. Az **indoklás** mezőben adja meg az üzleti indoklást.
 
@@ -138,7 +138,7 @@ Meghatalmazott jóváhagyóként e-mail-értesítést fog kapni, ha egy Azure AD
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [E-mail-értesítések Privileged Identity Management](pim-email-notifications.md)
 - [Azure-beli erőforrás-szerepkörökre vonatkozó kérelmek jóváhagyása vagy elutasítása Privileged Identity Management](pim-resource-roles-approval-workflow.md)

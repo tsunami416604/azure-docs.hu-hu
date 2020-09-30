@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 676f1133a516174478a456a97bc467e7770fe6e7
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 695d1b1124c042b61837f0a1257ac2a201ae4860
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84712513"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91539401"
 ---
 # <a name="tutorial-detect-issues-with-devices-connected-to-your-monitoring-solution"></a>Oktatóanyag: A monitorozási megoldáshoz csatlakoztatott eszközök problémáinak észlelése
 
@@ -79,7 +79,7 @@ Kattintson az **Új szabály** elemre egy olyan többfeltételes szabály létre
 | Szabály neve        | Kritikus páratartalom- és hőmérsékletszint a hűtőben    |
 | Leírás      | A páratartalom és a hőmérséklet szintje kritikus |
 | Eszközcsoport     | **Hűtők** eszközcsoport             |
-| Számítás      | Average                               |
+| Számítás      | Átlag                               |
 | Időtartam      | 5                                     |
 | 1. feltétel mezője| páratartalom                              |
 | 1. feltétel operátora | Nagyobb, mint                      |
@@ -122,7 +122,7 @@ Egyszerre több szabályt is engedélyezhet vagy letilthat, ha kijelöli őket a
 
 Ha véglegesen szeretne törölni egy szabályt, azt a szabályok listájából teheti meg. Válassza ki a törölni kívánt szabályt, majd kattintson a **Törlés** elemre.
 
-[![Szabály törlése](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdelete-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdelete-expanded.png#lightbox)
+[![A "Rules" (szabályok) lapot tartalmazó képernyőkép, amely kiemelte a "szabály törlése" ablakot.](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdelete-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdelete-expanded.png#lightbox)
 
 Miután megerősítette, hogy törölni szeretné a szabályt, a szabályhoz kötődő összes riasztást törölheti a **Karbantartás** oldalon.
 

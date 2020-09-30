@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: how-to
 ms.date: 5/19/2020
 ms.author: derekol
-ms.openlocfilehash: 1eaf7413b01bceacbcbf3640bfe654fdad026672
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e10cd91eadd338217845b1504e8e9160bccfc98
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84700668"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537191"
 ---
 # <a name="create-or-modify-an-exchange-peering-with-route-server-in-azure-portal"></a>Exchange-társ létrehozása vagy módosítása a Azure Portal a Route Serverrel
 
@@ -74,7 +74,7 @@ Internetes Exchange-szolgáltatóként létrehozhat egy Exchange-partneri kéré
 1.  A **közvetlen**társítási kapcsolat területen adja meg a következő BGP-munkamenet részleteit:
 
     > [!div class="mx-imgBorder"]
-    > ![Közvetlen társ-útválasztási kiszolgáló konfigurálása](./media/setup-exchange-conf-tab-direct-route.png)
+    > ![Képernyőfelvétel: a közvetlen társas kapcsolat ablaktábla, amely tartalmazza a részleteket.](./media/setup-exchange-conf-tab-direct-route.png)
 
 
      * Partneri létesítmény, válassza ki a megfelelő fizikai helyet a társításhoz
@@ -99,19 +99,19 @@ Internetes Exchange-szolgáltatóként létrehozhat egy Exchange-partneri kéré
 1. A beállítások szakaszban válassza a **regisztrált ASN** lehetőséget.
 
     > [!div class="mx-imgBorder"]
-    > ![Közvetlen társ-útválasztási kiszolgáló konfigurálása](./media/setup-exchange-registered-asn.png)
+    > ![A képernyőképen a bejelentkezett, az S NS menüpontot tartalmazó panel jelenik meg.](./media/setup-exchange-registered-asn.png)
 
 1. Válassza a **regisztrált ASN hozzáadása** lehetőséget egy új ügyfél ASN létrehozásához az Exchange-előfizetés alatt.
 
     > [!div class="mx-imgBorder"]
-    > ![Közvetlen társ-útválasztási kiszolgáló konfigurálása](./media/setup-exchange-register-new-asn.png)
+    > ![Képernyőfelvétel: a S N panel regisztrálása névvel és S N szövegmezővel.](./media/setup-exchange-register-new-asn.png)
 
 1. Az ASN regisztrálása területen jelöljön ki egy nevet, töltse ki az ügyfél ASN-jét, majd kattintson a Mentés gombra.
 
 1. A regisztrált ASN alatt minden ASN-hez hozzá lesz rendelve egy társított előtag-kulcs. Exchange-szolgáltatóként meg kell adnia ezt az előtag-kulcsot az ügyfél számára, hogy az előfizetésük alatt regisztrálja a társ-szolgáltatási szolgáltatást.
 
     > [!div class="mx-imgBorder"]
-    > ![Közvetlen társ-útválasztási kiszolgáló konfigurálása](./media/setup-exchange-register-asn-prefixkey.png)
+    > ![Képernyőfelvétel: a regisztrált az S NS panel előtag-kulcsokkal.](./media/setup-exchange-register-asn-prefixkey.png)
 
 
 

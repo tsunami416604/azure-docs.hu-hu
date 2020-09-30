@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/25/2019
 ms.author: dobett
-ms.openlocfilehash: 32e2d3f9e8bbd63944188355774558ca5ea7bd9d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8d007fa7100a9880878e0b748c2c38402e5ea192
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60890040"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540234"
 ---
 # <a name="quickstart-try-a-cloud-based-remote-monitoring-solution"></a>Rövid útmutató: Távoli felhőalapú monitorozási megoldás kipróbálása
 
@@ -26,7 +26,7 @@ Ez a rövid útmutató üzembe helyezi a megoldás-gyorsító **alapszintű** ve
 
 A rövid útmutató elvégzéséhez szüksége lesz egy Azure-előfizetésre.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 ## <a name="deploy-the-solution"></a>A megoldás üzembe helyezése
 
@@ -133,7 +133,7 @@ Ha tovább kíván lépni a további oktatóanyagokra, ne kapcsolja ki a távoli
 
 Ha már nincs szüksége a megoldásgyorsítóra, törölje a [Kiépített megoldások](https://www.azureiotsolutions.com/Accelerators#dashboard) lapról. Ehhez jelölje ki, majd kattintson a **Megoldás törlése** gombra:
 
-![Megoldás törlése](media/quickstart-remote-monitoring-deploy/deletesolution.png)
+![Képernyőkép, amely a megoldás-gyorssegédtel jelölt "kiépített megoldások" oldalt jeleníti meg.](media/quickstart-remote-monitoring-deploy/deletesolution.png)
 
 
 ![Megoldás törlése](media/quickstart-remote-monitoring-deploy/deletesolution-page.png)

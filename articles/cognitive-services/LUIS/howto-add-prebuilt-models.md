@@ -3,19 +3,17 @@ title: Előre elkészített modellek a Language Understandinghoz
 titleSuffix: Azure Cognitive Services
 description: A LUIS előre elkészített modelleket tartalmaz, amelyekkel gyorsan hozzáadhat gyakori, társalgási felhasználói forgatókönyveket.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/17/2020
-ms.author: diberry
-ms.openlocfilehash: abf149d621d283744a71e08ea4ac2199a1994d57
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 2080139732d71aa5df9a9d4ad13fcc4545128dff
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680951"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541917"
 ---
 # <a name="add-prebuilt-models-for-common-usage-scenarios"></a>Előre összeépített modellek hozzáadása általános használati forgatókönyvekhez
 
@@ -59,7 +57,7 @@ A LUIS előre elkészített modelleket tartalmaz, amelyekkel gyorsan hozzáadhat
     > [!div class="mx-imgBorder"]
     > ![Előre összeépített entitás hozzáadása párbeszédpanel](./media/luis-prebuilt-domains/add-prebuilt-entity.png)
 
-1. Válassza a **Done** (Kész) lehetőséget. Az entitás hozzáadása után nem kell betanítania az alkalmazást.
+1. Válassza a **Kész** lehetőséget. Az entitás hozzáadása után nem kell betanítania az alkalmazást.
 
 ## <a name="add-a-prebuilt-domain-entity"></a>Előre elkészített tartományi entitás hozzáadása
 1. Jelentkezzen be a [Luis-portálra](https://www.luis.ai), és válassza ki az **előfizetését** és a **szerzői erőforrást** , hogy megtekintse az adott szerzői erőforráshoz rendelt alkalmazásokat.
@@ -70,7 +68,7 @@ A LUIS előre elkészített modelleket tartalmaz, amelyekkel gyorsan hozzáadhat
 
 1. Az **előre elkészített tartományi modellek hozzáadása** párbeszédpanelen válassza ki az előre elkészített tartomány entitást.
 
-1. Válassza a **Done** (Kész) lehetőséget. Az entitás hozzáadása után nem kell betanítania az alkalmazást.
+1. Válassza a **Kész** lehetőséget. Az entitás hozzáadása után nem kell betanítania az alkalmazást.
 
 ## <a name="publish-to-view-prebuilt-model-from-prediction-endpoint"></a>Közzététel az előre elkészített modell előrejelzési végpontból való megtekintéséhez
 

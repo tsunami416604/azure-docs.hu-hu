@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9df06a9d81ef3c9fbe3380bab88325a586981db9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5ca65a428af02eaf5ae6ac461006c720da4461bd
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91329312"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538180"
 ---
 # <a name="cloud-tiering-overview"></a>A felhőalapú rétegek áttekintése
 A felhőalapú rétegek a Azure File Sync választható funkciója, amelyekben a gyakran használt fájlok a kiszolgálón helyileg vannak gyorsítótárazva, míg az összes többi fájl a házirend-beállítások alapján Azure Files. Egy fájl többszintű kiválasztásakor a Azure File Sync fájlrendszer-szűrő (StorageSync.sys) a fájlt helyileg váltja fel egy mutatóval vagy újraelemzési ponttal. Az újraelemzési pont a fájl URL-címét jelöli Azure Files. A többrétegű fájlok "offline" attribútummal és az NTFS fájlrendszerrel beállított FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS attribútummal is rendelkeznek, így a harmadik féltől származó alkalmazások biztonságosan azonosíthatják a többrétegű fájlokat.
@@ -40,7 +40,7 @@ A felhő-rétegek nem függnek az NTFS-szolgáltatástól a legutóbbi hozzáfé
 <a id="tiering-minimum-file-size"></a>
 ### <a name="what-is-the-minimum-file-size-for-a-file-to-tier"></a>Mennyibe kerül a fájl minimális mérete a szinthez?
 
-Az ügynök 12-es és újabb verzióiban a fájlokra vonatkozó minimális fájlméret a fájlrendszer fürtjének méretétől függ. A Felhőbeli rétegek minimális mérete a fürt méretének és a minimális 8 KB-os értéknek a kiszámítására alkalmas. A következő táblázat a mennyiségi fürt méretétől függően a minimálisan felhasználható fájlméretet mutatja be:
+Az ügynök 9-es és újabb verzióiban a fájl minimális fájlmérete a fájlrendszer fürtjének méretétől függ. A Felhőbeli rétegek minimális mérete a fürt méretének és a minimális 8 KB-os értéknek a kiszámítására alkalmas. A következő táblázat a mennyiségi fürt méretétől függően a minimálisan felhasználható fájlméretet mutatja be:
 
 |Kötet fürtjének mérete (bájt) |Ennek a méretnek vagy nagyobb méretű fájloknak lépcsőzetesen kell lenniük  |
 |----------------------------|---------|
@@ -50,7 +50,7 @@ Az ügynök 12-es és újabb verzióiban a fájlokra vonatkozó minimális fájl
 |32 KB (32768)               | 64 KB   |
 |64 KB (65536) és nagyobb    | 128 KB  |
 
-A Windows Server 2019 és a Azure File Sync Agent 12-ös és újabb verziója esetén a fürtök mérete akár 2 MB is lehet, és a nagyobb szektorcsoportok méretének megegyező módon működik. A régebbi operációs rendszer vagy ügynök verziója legfeljebb 64 KB-ig támogatja a fürtök méretét, azonban a felhő-rétegek nem működnek.
+A Windows Server 2019 és a Azure File Sync Agent 12-es verziójának (a későbbi ügynök verziója) esetében a fürtök mérete akár 2 MB is lehet, a nagyobb méretű fürtök pedig ugyanúgy működnek. A régebbi operációs rendszer vagy ügynök verziója legfeljebb 64 KB-ig támogatja a fürtök méretét, azonban a felhő-rétegek nem működnek.
 
 A Windows által használt összes fájlrendszer, a fürt méretétől függően rendezi a merevlemezt (más néven a foglalási egység mérete). A fürt mérete a fájl tárolására használható legkisebb lemezterületet jelöli. Ha a fájlméretek nem jönnek létre a fürt méretének még többszörösére, a fájlnak a fürt következő többszörösére való tárolásához további helyet kell használni.
 

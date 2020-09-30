@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/12/2018
-ms.openlocfilehash: 919eef113b1a44b84aacf306426ac4f82baa2423
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 78b9d3f30ebc8f74433f04c4474121682c4a3f36
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91321084"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542019"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information-using-the-azure-portal"></a>Adatok növekményes betöltése Azure SQL Databaseból az Azure-ba Blob Storage a Change Tracking Information használatával a Azure Portal
 
@@ -285,10 +285,10 @@ Ebben a lépésben egy másolási tevékenységgel rendelkező folyamatot fog l�
 
 1. Kattintson a bal oldali ablaktáblán a **+ (plusz)** jelre, majd a **Folyamat** elemre.
 
-    ![Új folyamat menü](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-pipeline-menu.png)
+    ![Képernyőfelvétel: az adatfeldolgozó folyamatának beállítása.](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-pipeline-menu.png)
 2. Megjelenik egy új, a folyamat konfigurálására szolgáló lap. A folyamat fanézetben is megjelenik. A **Tulajdonságok** ablakban módosítsa a folyamat nevét a következőre: **FullCopyPipeline**.
 
-    ![Új folyamat menü](./media/tutorial-incremental-copy-change-tracking-feature-portal/full-copy-pipeline-name.png)
+    ![A képernyőképen egy megadott nevű folyamat látható.](./media/tutorial-incremental-copy-change-tracking-feature-portal/full-copy-pipeline-name.png)
 3. A **Tevékenységek** eszközkészletben bontsa ki az **Adatfolyam** elemet, húzza át a **Másolás** tevékenységet a folyamat tervezőfelületére, és állítsa be a **FullCopyActivity** nevet.
 
     ![Teljes másolási tevékenység neve](./media/tutorial-incremental-copy-change-tracking-feature-portal/full-copy-activity-name.png)
@@ -303,7 +303,7 @@ Ebben a lépésben egy másolási tevékenységgel rendelkező folyamatot fog l�
     ![A folyamat érvényesítése](./media/tutorial-incremental-copy-change-tracking-feature-portal/full-copy-pipeline-validate.png)
 7. Az entitások (társított szolgáltatások, adatkészletek és folyamatok) közzétételéhez kattintson a **Közzététel** elemre. Várja meg, amíg befejeződik a közzétételi folyamat.
 
-    ![Közzététel gomb](./media/tutorial-incremental-copy-change-tracking-feature-portal/publish-button.png)
+    ![A képernyőképen az összes közzététel gomb jelenik meg.](./media/tutorial-incremental-copy-change-tracking-feature-portal/publish-button.png)
 8. Várjon, amíg megjelenik a **Sikeres közzététel** üzenet.
 
     ![A közzététel sikerült](./media/tutorial-incremental-copy-change-tracking-feature-portal/publishing-succeeded.png)
@@ -315,16 +315,16 @@ Ebben a lépésben egy másolási tevékenységgel rendelkező folyamatot fog l�
 ### <a name="run-the-full-copy-pipeline"></a>A teljes másolási folyamat futtatása
 Kattintson az **Aktiválás** gombra a folyamat eszköztárán, majd az **Aktiválás most** elemre.
 
-![Aktiválás most menü](./media/tutorial-incremental-copy-change-tracking-feature-portal/trigger-now-menu.png)
+![A képernyőképen a trigger (trigger) lehetőség van kiválasztva az indítás menüből.](./media/tutorial-incremental-copy-change-tracking-feature-portal/trigger-now-menu.png)
 
 ### <a name="monitor-the-full-copy-pipeline"></a>A teljes másolási folyamat megfigyelése
 
 1. Kattintson a bal oldali **Monitorozás** lapra. Ekkor a folyamat futtatása és állapota megjelenik a listában. A lista frissítéséhez kattintson a **Refresh** (Frissítés) elemre. A Műveletek oszlop hivatkozásai lehetővé teszik, hogy megtekintse a folyamat futtatásához társított tevékenységfuttatásokat, és hogy újra futtassa a folyamatot.
 
-    ![Folyamatfuttatások](./media/tutorial-incremental-copy-change-tracking-feature-portal/monitor-full-copy-pipeline-run.png)
+    ![Képernyőfelvétel: az adatfeldolgozó folyamatait bemutató képernyőkép.](./media/tutorial-incremental-copy-change-tracking-feature-portal/monitor-full-copy-pipeline-run.png)
 2. A folyamat futtatásához társított tevékenységfuttatások megtekintéséhez kattintson a **Tevékenységfuttatások megtekintése** hivatkozásra a **Műveletek** oszlopban. Csak egy tevékenység található a folyamatban, ezért csak egy bejegyzés fog szerepelni a listában. A Folyamatfuttatások nézetre való visszaváltáshoz kattintson a fent található **Folyamatok** hivatkozásra.
 
-    ![Tevékenységfuttatások](./media/tutorial-incremental-copy-change-tracking-feature-portal/activity-runs-full-copy.png)
+    ![Képernyőfelvétel: az adatelőállítók tevékenység-futtatási funkciói, a folyamatokra mutató hivatkozás.](./media/tutorial-incremental-copy-change-tracking-feature-portal/activity-runs-full-copy.png)
 
 ### <a name="review-the-results"></a>Az eredmények áttekintése
 Egy `incremental-<GUID>.txt` nevű fájl található az `adftutorial` nevű tároló `incchgtracking` mappájában.
@@ -362,19 +362,19 @@ Ebben a lépésben a következő tevékenységeket tartalmazó folyamatot fog l�
 
 1. A Data Factory felhasználói felületen váltson a **Szerkesztés** lapra. Kattintson a **+ (plusz)** gombra a bal oldali ablaktáblán, majd kattintson a **folyamat**elemre.
 
-    ![Új folyamat menü](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-pipeline-menu-2.png)
+    ![A képernyőfelvétel azt mutatja be, hogyan lehet folyamatokat létrehozni egy adatelőállítóban.](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-pipeline-menu-2.png)
 2. Megjelenik egy új, a folyamat konfigurálására szolgáló lap. A folyamat fanézetben is megjelenik. A **Tulajdonságok** ablakban módosítsa a folyamat nevét a következőre: **IncrementalCopyPipeline**.
 
     ![Folyamat neve](./media/tutorial-incremental-copy-change-tracking-feature-portal/incremental-copy-pipeline-name.png)
 3. A **Tevékenységek** eszközkészletben bontsa ki az **Általános** elemet, és húzza a **Keresés** tevékenységet a folyamat tervezőfelületére. Állítsa a tevékenység nevét a következőre: **LookupLastChangeTrackingVersionActivity**. Ez a tevékenység a **table_store_ChangeTracking_version** táblában tárolt utolsó másolási művelet során használt változáskövetési verziót kapja meg.
 
-    ![Keresési tevékenység – név](./media/tutorial-incremental-copy-change-tracking-feature-portal/first-lookup-activity-name.png)
+    ![A képernyőképen egy keresési tevékenységgel rendelkező folyamat látható.](./media/tutorial-incremental-copy-change-tracking-feature-portal/first-lookup-activity-name.png)
 4. Váltson a **Beállítások ** lapra a ** tulajdonságok** ablakában, és válassza a **ChangeTrackingDataset** elemet a **Forrásadatkészlet** mezőnél.
 
-    ![Keresési tevékenység – beállítások](./media/tutorial-incremental-copy-change-tracking-feature-portal/first-lookup-activity-settings.png)
+    ![A képernyőképen a Tulajdonságok ablak Beállítások lapja látható.](./media/tutorial-incremental-copy-change-tracking-feature-portal/first-lookup-activity-settings.png)
 5. Húzza a **keresési** tevékenységet a **Tevékenységek** eszközkészletből a folyamat tervezőfelületére. Állítsa a tevékenység nevét a következőre: **LookupCurrentChangeTrackingVersionActivity**. Ez a tevékenység az aktuális változáskövetési verziót kapja meg.
 
-    ![Keresési tevékenység – név](./media/tutorial-incremental-copy-change-tracking-feature-portal/second-lookup-activity-name.png)
+    ![A képernyőfelvételen két keresési tevékenységgel rendelkező folyamat látható.](./media/tutorial-incremental-copy-change-tracking-feature-portal/second-lookup-activity-name.png)
 6. Váltson a **Beállítások** lapra a **tulajdonságok** ablakában, és hajtsa végre a következő lépéseket:
 
    1. Válassza ki a **SourceDataset** elemet a **Forrásadatkészlet** mezőnél.
@@ -385,7 +385,7 @@ Ebben a lépésben a következő tevékenységeket tartalmazó folyamatot fog l�
        SELECT CHANGE_TRACKING_CURRENT_VERSION() as CurrentChangeTrackingVersion
        ```
 
-      ![Keresési tevékenység – beállítások](./media/tutorial-incremental-copy-change-tracking-feature-portal/second-lookup-activity-settings.png)
+      ![A képernyőképen egy, a Tulajdonságok ablak Beállítások lapjára felvett lekérdezés jelenik meg.](./media/tutorial-incremental-copy-change-tracking-feature-portal/second-lookup-activity-settings.png)
 7. A **Tevékenységek** eszközkészletben bontsa ki az **Adatfolyam** elemet, és húzza át a **Másolás** tevékenységet a folyamat tervezőfelületére. Állítsa a tevékenység nevét a következőre: **IncrementalCopyActivity**. Ez a tevékenység átmásolja az utolsó és az aktuális változáskövetési verzió közötti adatokat a céladattárba.
 
     ![Másolási tevékenység – név](./media/tutorial-incremental-copy-change-tracking-feature-portal/incremental-copy-activity-name.png)
@@ -432,21 +432,21 @@ Ebben a lépésben a következő tevékenységeket tartalmazó folyamatot fog l�
     ![Érvényesítés gomb](./media/tutorial-incremental-copy-change-tracking-feature-portal/validate-button.png)
 16. Az entitásokat (társított szolgáltatásokat, adatkészleteket és folyamatokat) az **Összes közzététele** gombra kattintva teheti közzé a Data Factory szolgáltatásban. Várjon, amíg megjelenik a **Sikeres közzététel** üzenet.
 
-       ![Közzététel gomb](./media/tutorial-incremental-copy-change-tracking-feature-portal/publish-button-2.png)    
+       ![Képernyőfelvétel: az adatelőállító összes közzétételének gombja.](./media/tutorial-incremental-copy-change-tracking-feature-portal/publish-button-2.png)    
 
 ### <a name="run-the-incremental-copy-pipeline"></a>A növekményes másolási folyamat futtatása
 1. Kattintson az **Aktiválás** gombra a folyamat eszköztárán, majd az **Aktiválás most** elemre.
 
-    ![Aktiválás most menü](./media/tutorial-incremental-copy-change-tracking-feature-portal/trigger-now-menu-2.png)
+    ![A képernyőképen egy tevékenységgel rendelkező folyamat látható, amely a trigger menüből kiválasztott trigger most lehetőséggel jelenik meg.](./media/tutorial-incremental-copy-change-tracking-feature-portal/trigger-now-menu-2.png)
 2. A **Folyamatfuttatás** ablakban kattintson a **Befejezés** gombra.
 
 ### <a name="monitor-the-incremental-copy-pipeline"></a>A növekményes másolási folyamat figyelése
 1. Kattintson a bal oldali **Monitorozás** lapra. Ekkor a folyamat futtatása és állapota megjelenik a listában. A lista frissítéséhez kattintson a **Refresh** (Frissítés) elemre. A **Műveletek** oszlop hivatkozásai lehetővé teszik, hogy megtekintse a folyamat futtatásához társított tevékenységfuttatásokat, és hogy újra futtassa a folyamatot.
 
-    ![Folyamatfuttatások](./media/tutorial-incremental-copy-change-tracking-feature-portal/inc-copy-pipeline-runs.png)
+    ![Képernyőfelvétel: a folyamat futtatására szolgáló adatfeldolgozó.](./media/tutorial-incremental-copy-change-tracking-feature-portal/inc-copy-pipeline-runs.png)
 2. A folyamat futtatásához társított tevékenységfuttatások megtekintéséhez kattintson a **Tevékenységfuttatások megtekintése** hivatkozásra a **Műveletek** oszlopban. Csak egy tevékenység található a folyamatban, ezért csak egy bejegyzés fog szerepelni a listában. A Folyamatfuttatások nézetre való visszaváltáshoz kattintson a fent található **Folyamatok** hivatkozásra.
 
-    ![Tevékenységfuttatások](./media/tutorial-incremental-copy-change-tracking-feature-portal/inc-copy-activity-runs.png)
+    ![Képernyőfelvétel: a folyamat futása egy olyan adatfeldolgozó esetében, amelynek több jelöltje sikeres.](./media/tutorial-incremental-copy-change-tracking-feature-portal/inc-copy-activity-runs.png)
 
 
 ### <a name="review-the-results"></a>Az eredmények áttekintése
@@ -471,7 +471,7 @@ PersonID Name    Age    SYS_CHANGE_VERSION    SYS_CHANGE_OPERATION
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Folytassa a következő oktatóanyaggal, amely azt ismerteti, hogyan másolhat új és módosított fájlokat csak a LastModifiedDate alapján:
 
 > [!div class="nextstepaction"]

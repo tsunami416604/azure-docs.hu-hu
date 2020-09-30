@@ -3,20 +3,18 @@ title: Szándékok és entitások – LUIS
 titleSuffix: Azure Cognitive Services
 description: Egyetlen szándék a felhasználó által végrehajtani kívánt feladatot vagy műveletet jelöli. A felhasználó beszédeleme mögött rejlő célt vagy kívánságot jelölik. Adjon meg olyan leképezéseket, amelyek megfelelnek a felhasználók által az alkalmazásban használni kívánt műveleteknek.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/10/2019
-ms.author: diberry
-ms.openlocfilehash: f2e4f91dbc03853d6f1a5240f693ea8ff510e8c4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cf138248e878b21531df2035dfeda1b90162ea99
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82101076"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91536103"
 ---
 # <a name="intents-in-your-luis-app"></a>Szándékok a LUIS-alkalmazásban
 
@@ -29,7 +27,7 @@ Utazási alkalmazások leképezése   |   Példák kimondott szövegekre   |
  RepülőjegyFoglalás     |   "Könyv készítése a Rio-ra a jövő héten" <br/> "Fly to Rio on 24" <br/> "A következő vasárnapra van szükségem a Rio de Janeiroban"    |
  Üdvözlés     |   Szia <br/>Hello <br/>"Jó reggel"  |
  CheckWeather | "Mi az időjárás, mint a Boston?" <br/> "A hétvégi előrejelzés megjelenítése" |
- None         | "Cookie-recept beszerzése"<br>"A Lakers nyerte?" |
+ Nincsenek         | "Cookie-recept beszerzése"<br>"A Lakers nyerte?" |
 
 Minden alkalmazás a "[nincs](#none-intent)" előre definiált szándékkal, azaz a tartalék szándékkal van ellátva.
 
@@ -41,7 +39,7 @@ A teljes hozzárendelést egyetlen szándékhoz rendeli. Ha a LUIS a végpontra 
 
 Ha azt szeretné, hogy a pontszámok a teljes értékre legyenek kiválasztva, megadhat egy jelzőt az előrejelzési API lekérdezési karakterláncában.
 
-|Előrejelzési API verziója|Jelző|
+|Előrejelzési API verziója|Jelölő|
 |--|--|
 |2. verzió|`verbose=true`|
 |V3|`show-all-intents=true`|
@@ -55,8 +53,8 @@ Hozzon létre egy szándékot, ha a felhasználó _szándéka_ egy műveletet in
 
 |Szándék   | Entitás | Példa kimondott szöveg   |
 |------------------|------------------------------|------------------------------|
-| CheckWeather | {"type": "location", "Entity": "Seattle"}<br>{"type": "beépített. datetimeV2. Date", "entitás": "Tomorrow", "megoldás": "2018-05-23"} | Milyen időjárási viszonyok `Seattle` `tomorrow`vannak? |
-| CheckWeather | {"type": "date_range", "entitás": "Ez a hétvége"} | Előrejelzés megjelenítése a következőhöz:`this weekend` |
+| CheckWeather | {"type": "location", "Entity": "Seattle"}<br>{"type": "beépített. datetimeV2. Date", "entitás": "Tomorrow", "megoldás": "2018-05-23"} | Milyen időjárási viszonyok vannak `Seattle` `tomorrow` ? |
+| CheckWeather | {"type": "date_range", "entitás": "Ez a hétvége"} | Előrejelzés megjelenítése a következőhöz: `this weekend` |
 ||||
 
 ## <a name="prebuilt-domain-intents"></a>Előre elkészített tartományi leképezések

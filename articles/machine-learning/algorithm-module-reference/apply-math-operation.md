@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 654b10a283c4dcf5a1a1866ec51799aad45a8893
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 04ce45f428604275696d83938708bcee0c6c023f
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90898897"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91536766"
 ---
 # <a name="apply-math-operation"></a>Matematikai művelet alkalmazása
 
@@ -22,11 +22,11 @@ Ez a cikk a Azure Machine Learning Designer modulját ismerteti.
 
 Használja a matematikai művelet alkalmazása lehetőséget a bemeneti adatkészlet numerikus oszlopaira alkalmazott számítások létrehozásához. 
 
-A támogatott matematikai műveletek közé tartoznak az olyan általános aritmetikai függvények, mint a szorzás és osztás, a trigonometriai függvények, a különböző kerekítési függvények, valamint az adatelemzésben használt speciális függvények, például a gamma és a Error függvények.  
+A matematikai műveletek közé tartoznak az aritmetikai függvények, a trigonometriai függvények, a kerekítési függvények, valamint az adatelemzésekben használt speciális függvények, például a gamma és a Error függvények.  
 
 A művelet definiálása és a folyamat futtatása után a rendszer hozzáadja az értékeket az adatkészlethez. A modul konfigurálásának módjától függően a következőket teheti:
 
-+ Fűzze hozzá az eredményeket az adatkészlethez. Ez különösen akkor hasznos, ha ellenőrzi a művelet eredményét.
++ Fűzze hozzá az eredményeket az adatkészlethez (ez a művelet eredményének ellenőrzésekor hasznos).
 + Cserélje le az oszlopok értékeit az új, számított értékekre.
 + Új oszlop létrehozása az eredményekhez, és nem jeleníti meg az eredeti adatmennyiséget. 
 
@@ -42,7 +42,7 @@ Keresse meg a szükséges műveletet ezekben a kategóriákban:
   
 -   [Műveletek](#arithmetic-operations)  
   
-     Az **operatív** kategória az alapszintű matematikai függvényeket tartalmazza: összeadás, kivonás, szorzás és osztás. Akár oszlopokkal, akár állandókkal is dolgozhat. Például hozzáadhatja az A oszlop értékét a B oszlop értékéhez. Vagy előfordulhat, hogy ki kell vonni egy állandót, például egy korábban számított középértéket az A oszlop minden értékéből.  
+     Az **operatív** kategória alapszintű matematikai függvényeket tartalmaz: összeadás, kivonás, szorzás és osztás. Akár oszlopokkal, akár állandókkal is dolgozhat. Például hozzáadhatja az A oszlop értékét a B oszlop értékéhez. Vagy előfordulhat, hogy ki kell vonni egy állandót, például egy korábban számított középértéket az A oszlop minden értékéből.  
   
 -   [Kerekítés](#rounding-operations)  
   
@@ -55,7 +55,7 @@ Keresse meg a szükséges műveletet ezekben a kategóriákban:
 -   [Trigonometrikus](#trigonometric-functions)  
   
      A **trigonometriai** kategória tartalmazza az összes szabványos trigonometriai függvényt. Átalakíthatja például a radián-t fok-ra, vagy a számítási függvényeket, például az tangenset radiánban vagy fokban.
-     Ezek a függvények egyoperandusú, ami azt jelenti, hogy az értékek egy oszlopát adja meg bemenetként, alkalmazza a trigonometriai függvényt, és az értékek oszlopát adja vissza eredményként.  Ezért győződjön meg arról, hogy a bemeneti oszlop a megfelelő típusú, és tartalmazza a megadott művelet megfelelő típusú értékeit.   
+     Ezek a függvények egyoperandusú, ami azt jelenti, hogy az értékek egy oszlopát adja meg bemenetként, alkalmazza a trigonometriai függvényt, és az értékek oszlopát adja vissza eredményként. Győződjön meg arról, hogy a bemeneti oszlop a megfelelő típusú, és a megadott műveletnek megfelelő típusú értékeket tartalmaz.   
 
 ## <a name="how-to-configure-apply-math-operation"></a>A matematikai műveletek alkalmazásának konfigurálása  
 
@@ -74,7 +74,7 @@ A modul minden példánya egyszerre csak egy típusú műveletet tud végrehajta
     - Bármely kiválasztott oszlopnak numerikus adattípusnak kell lennie. 
     - Az adattartománynak érvényesnek kell lennie a kiválasztott matematikai művelethez. Ellenkező esetben hiba vagy NaN (nem szám) eredmény jelenhet meg. Például az ln (-1,0) érvénytelen művelet, és a következő értéket eredményezi: `NaN` .
   
-1.  Kattintson a **category (kategória** ) elemre a végrehajtandó matematikai művelet **típusának** kiválasztásához.
+1.  Válassza ki a **kategóriát** a végrehajtandó matematikai művelet **típusának** kiválasztásához.
     
 1. Válasszon egy adott műveletet a Kategória listából.
   
@@ -95,7 +95,7 @@ Ha a **Hozzáfűzés** vagy a **ResultOnly** lehetőség használatával hoz ere
 -   **Egyenlő (Col2_Col1)**, amely azt jelzi, hogy tesztelte a Col2 a Col1.  
 -   **Egyenlő (Col2_ $10)**, amely azt jelzi, hogy a 2. oszlopot összehasonlítja a konstans 10 értékkel.  
 
-A forrásadatok nem törlődnek és nem módosulnak, még akkor is, ha a **inplace** kapcsolót használja. az eredeti adatkészlet oszlopa továbbra is elérhető a tervezőben. Az eredeti adatokat úgy tekintheti meg, ha csatlakoztatja az [Oszlopok hozzáadása](add-columns.md) modult, és összekapcsolja a **matematikai művelet alkalmazása**kimenetével.  
+Még ha a **helyben** lehetőséget is használja, a forrásadatok nem törlődnek vagy módosulnak; az eredeti adatkészlet oszlopa továbbra is elérhető a tervezőben. Az eredeti adatokat úgy tekintheti meg, ha csatlakoztatja az [Oszlopok hozzáadása](add-columns.md) modult, és összekapcsolja a **matematikai művelet alkalmazása**kimenetével.  
     
 ## <a name="basic-math-operations"></a>Alapszintű Matematikai műveletek 
 
@@ -124,7 +124,7 @@ A kijelölt oszlopban lévő értékek konjugáltját adja vissza.
 Kiszámítja a kocka gyökerét a kijelölt oszlopban lévő értékeknél.  
 
 ### <a name="doublefactorial"></a>DoubleFactorial  
- Kiszámítja a kijelölt oszlopban lévő értékek dupla faktoriálisát. A Double faktoriálisát a normál faktoriálisát-függvény kiterjesztése, és az x!!. jelöli.  
+ Kiszámítja a kijelölt oszlopban lévő értékek dupla faktoriálisát. A Double faktoriálisát a normál faktoriálisát-függvény kiterjesztése, amely a következőképpen van kijelölve: `x!!` .  
 
 ### <a name="eps"></a>EPS
 
@@ -132,7 +132,7 @@ Az aktuális érték és a következő legmagasabb, kétszeres pontosságú szá
   
 ### <a name="exp"></a>Exp
 
-Az e értéket adja vissza a kijelölt oszlopban lévő érték hatványára. Ez ugyanaz, mint az Excel EXP függvény.  
+Az e értéket adja vissza a kijelölt oszlopban lévő érték hatványára. Ez a függvény megegyezik az Excel EXP függvénnyel.  
 
 ### <a name="exp2"></a>Exp2
 
@@ -170,11 +170,11 @@ Megadhatja az alapot (a második argumentumot) állandóként, vagy egy másik o
 
 ### <a name="log10"></a>Log10
 
-A kijelölt oszlop 10-es alapú logaritmusának értékeit adja vissza.  
+A kijelölt oszlop 10-es alapú logaritmusának értékét adja vissza.  
 
 ### <a name="log2"></a>Log2
 
-A kijelölt oszlophoz tartozó 2. alap logaritmus értékeit adja vissza.  
+A kijelölt oszlophoz tartozó 2. alap értéket adja vissza.  
 
 ### <a name="nthroot"></a>NthRoot
 Az érték n/s gyökerét adja vissza, amely a megadott n értéket használja.  
@@ -360,7 +360,7 @@ A Error függvény (más néven a Gauss Error függvény) a szigmabél alakzat e
 
 A kiegészítő hiba funkció értékét adja vissza.  
 
-A ERFC 1 – EMA (x) értékkel van definiálva.  
+`Erfc` 1 – EMA (x) értékkel van definiálva.  
 
 ### <a name="erfscaled"></a>ErfScaled
 
@@ -370,7 +370,7 @@ A Error függvény méretezett verziója használható az aritmetikai folyamat e
 
 ### <a name="erfinverse"></a>ErfInverse
 
-A inverz EMA függvény értékét adja vissza.  
+Az inverz függvény értékét adja vissza `erf` .  
 
 ### <a name="exponentialintegralein"></a>ExponentialIntegralEin
 
@@ -588,6 +588,6 @@ Azt is megteheti, hogy az alábbi modulok egyikével végrehajtja az összes sz�
 + [Python-szkript futtatása](execute-python-script.md)
 + [SQL-átalakítás alkalmazása](apply-sql-transformation.md)   
   
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

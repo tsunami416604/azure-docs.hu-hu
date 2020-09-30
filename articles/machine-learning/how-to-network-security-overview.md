@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: larryfr
-ms.author: aashishb
-author: aashishb
+ms.author: peterlu
+author: peterclu
 ms.date: 09/25/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python, references_regions
-ms.openlocfilehash: 1690d4b236fce53e033f08fa6825eefe6359d9e9
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.custom: how-to, devx-track-python, references_regions, contperfq1
+ms.openlocfilehash: c1d351cf7a3d66f6051bf5c9d17672b054c2d862
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91362214"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538382"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>Virtual Network elkülönítés és Adatvédelem – áttekintés
 
@@ -171,7 +171,7 @@ Konfigurálja a tűzfalat a Azure Machine Learning munkaterület erőforrásaiho
 
 További információ a tűzfal beállításairól: [munkaterület használata tűzfal mögött](how-to-access-azureml-behind-firewall.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez a cikk egy négy részből álló virtuális hálózati sorozat első része. A virtuális hálózatok biztonságossá tételéhez tekintse meg a cikkek további részeit:
 

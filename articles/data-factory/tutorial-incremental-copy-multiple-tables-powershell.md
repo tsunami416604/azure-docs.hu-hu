@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 06/10/2020
-ms.openlocfilehash: 094efad84b79095db324260dfa46bd0167e219ab
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d32c4da4604307bca406f7f5d5e5a94b69efe7ac
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91252918"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541832"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-azure-sql-database-using-powershell"></a>Több táblázatból származó adatok növekményes betöltése SQL Server Azure SQL Database a PowerShell használatával
 
@@ -821,11 +821,11 @@ A folyamat táblanevek listáját használja paraméterként. A **foreach tevék
 4. Az **adatfeldolgozó** lapon válassza a **Szerző & figyelő** lehetőséget Azure Data Factory elindításához egy külön lapon.
 
 5. Az **első lépések** oldalon válassza a **figyelő** lehetőséget a bal oldalon. 
-![Folyamat-futtatások](media/doc-common-process/get-started-page-monitor-button.png)    
+![A képernyőképen a Azure Data Factory első lépések lapja látható.](media/doc-common-process/get-started-page-monitor-button.png)    
 
 6. Itt megtekintheti az összes folyamatfuttatást és azok állapotát. A következő példában a folyamatfuttatás állapota **Sikeres**. A **Paraméterek** oszlopban található hivatkozásra kattintva megtekintheti a folyamatnak átadott paramétereket. Hiba esetén egy hivatkozás jelenik meg a **Hiba** oszlopban.
 
-    ![Folyamatfuttatások](media/tutorial-incremental-copy-multiple-tables-powershell/monitor-pipeline-runs-4.png)    
+    ![Képernyőfelvétel: a folyamat futtatására szolgáló adatfeldolgozó.](media/tutorial-incremental-copy-multiple-tables-powershell/monitor-pipeline-runs-4.png)    
 7. Amikor kiválasztja a **műveletek** oszlopban található hivatkozást, megjelenik a folyamat összes tevékenység-futtatása. 
 
 8. Ha vissza szeretne térni a **folyamat futtatási** nézetéhez, válassza a **minden folyamat futtatása**lehetőséget. 
@@ -974,7 +974,7 @@ project_table   2017-10-01 00:00:00.000
 
 Megfigyelhető, hogy mindkét tábla küszöbértékei frissültek.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az oktatóanyagban az alábbi lépéseket hajtotta végre: 
 
 > [!div class="checklist"]

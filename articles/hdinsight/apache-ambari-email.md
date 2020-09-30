@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 03/10/2020
-ms.openlocfilehash: 21376eb40fb40abe67f7e03d15aabd7d89ea62f8
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 40f8c36b197b0c68b9f04a02dc7731877b27ddd2
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "80082313"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541662"
 ---
 # <a name="tutorial-configure-apache-ambari-email-notifications-in-azure-hdinsight"></a>Oktatóanyag: az Apache Ambari e-mail értesítéseinek konfigurálása az Azure HDInsight
 
@@ -54,7 +54,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 1. A **Riasztási értesítések kezelése** ablakban válassza ki az **+** ikont.
 
-    ![Ambari riasztási értesítés létrehozása](./media/apache-ambari-email/azure-portal-create-notification.png)
+    ![A képernyőkép a riasztási értesítések kezelése párbeszédpanelt jeleníti meg.](./media/apache-ambari-email/azure-portal-create-notification.png)
 
 1. A **riasztási értesítés létrehozása** párbeszédpanelen adja meg a következő információkat:
 
@@ -63,7 +63,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
     |Név|Adja meg az értesítés nevét.|
     |Csoportok|Konfigurálja a kívánt módon.|
     |Súlyosság|Konfigurálja a kívánt módon.|
-    |Description|Választható.|
+    |Leírás|Választható.|
     |Metódus|Hagyjon **e-mailt**.|
     |E-mail cím|Adja meg az e-maileket az értesítések fogadásához, vesszővel elválasztva.|
     |SMTP-kiszolgáló|`smtp.sendgrid.net`|
@@ -75,13 +75,13 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
     |Jelszó megerősítése|Adja meg újra a jelszót.|
     |TLS indítása|Jelölje be ezt a jelölőnégyzetet|
 
-    ![Ambari riasztási értesítés létrehozása](./media/apache-ambari-email/ambari-create-alert-notification.png)
+    ![A riasztási értesítés létrehozása párbeszédpanelt a képernyőképen jelenítheti meg.](./media/apache-ambari-email/ambari-create-alert-notification.png)
 
     Kattintson a **Mentés** gombra. Visszatér a **Riasztási értesítések kezelése** ablakra.
 
 1. A **Riasztási értesítések kezelése** ablakban válassza a **Bezárás**lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan konfigurálhatja az Apache Ambari e-mailes értesítéseit a SendGrid használatával. Az Apache Ambari használatával kapcsolatos további tudnivalókért tekintse meg a következőt:
 
