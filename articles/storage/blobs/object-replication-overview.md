@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: ee76c1692049d5b25e85b6780fbcf78f7ebfdd2f
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 4105698198e6fb7f4e3d3526ff9590ebca4898f1
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987047"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91612166"
 ---
 # <a name="object-replication-for-block-blobs"></a>Objektum-replikálás blokk-blobokhoz
 
@@ -72,7 +72,7 @@ A forrás-és a cél tárolóknak is léteznie kell, mielőtt megadhatja őket e
 
 Az objektum-replikálás további költségekkel jár a forrás-és a célhelyek olvasási és írási műveleteinél, valamint a kimenő adatforgalomért a forrás-fiókból a cél fiókba történő adatreplikálási költségekkel, valamint a változási adatcsatorna feldolgozásával kapcsolatos költségek beolvasásával.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Objektumreplikáció konfigurálása](object-replication-configure.md)
 - [A hírcsatornák támogatásának módosítása az Azure-ban Blob Storage](storage-blob-change-feed.md)

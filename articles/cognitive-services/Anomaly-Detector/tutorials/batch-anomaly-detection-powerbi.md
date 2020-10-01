@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: aahi
-ms.openlocfilehash: 8e73ed8ac4712e84a900dcd85dbc8d756ccbdd62
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 3d42fd298a4bc6c6f0c0d27bdeae1999d6474f75
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905773"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611996"
 ---
 # <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>Oktatóanyag: rendellenességek megjelenítése a Batch észlelésével és Power BIával
 
@@ -56,7 +56,7 @@ Power BI a rendszer az első oszlopban lévő időbélyegeket `Date/Time` adatt�
 
 Kattintson az **átalakítás** menüszalagra a Power Query-szerkesztőben. A **bármely oszlop** csoportban nyissa meg az **adattípus:** legördülő menüt, és válassza a **text (szöveg**) lehetőséget.
 
-![A "navigátor" adatforrás képe Power BI](../media/tutorials/data-type-drop-down.png)
+![A legördülő lista adattípusának képe](../media/tutorials/data-type-drop-down.png)
 
 Amikor értesítést kap az oszlop típusának módosításáról, kattintson az **aktuális cseréje**elemre. Ezt követően kattintson a **Bezárás gombra & alkalmazása** vagy az **alkalmazás** a **Kezdőlap** menüszalagon.
 
@@ -66,7 +66,7 @@ Az adatfájlnak a rendellenesség-érzékelő API-hoz való formázásához és 
 
 Győződjön meg arról, hogy az új lekérdezés van kiválasztva, majd kattintson a **speciális szerkesztő**elemre.
 
-![A "Speciális szerkesztő" gomb képe a Power BI](../media/tutorials/advanced-editor-screen.png)
+![A "Speciális szerkesztő" képernyő képe](../media/tutorials/advanced-editor-screen.png)
 
 A Speciális szerkesztőon belül a következő Power Query M kódrészlettel bontsa ki az oszlopokat a táblából, és küldje el az API-nak. Ezt követően a lekérdezés létrehoz egy táblát a JSON-válaszból, és visszaküldi azt. Cserélje le a `apiKey` változót az érvényes anomália-érzékelő API-kulcsára és a `endpoint` végpontra. Miután megadta a lekérdezést a Speciális szerkesztőban, kattintson a **kész**gombra.
 
@@ -114,7 +114,7 @@ A Speciális szerkesztőon belül a következő Power Query M kódrészlettel bo
 
 A lekérdezésnek az adatlapon való meghívásához válassza az `Sheet1` alábbi **ENTER paramétert**, majd kattintson a **meghívás**gombra.
 
-![A "Speciális szerkesztő" gomb képe](../media/tutorials/invoke-function-screenshot.png)
+![Az meghívó függvény képe](../media/tutorials/invoke-function-screenshot.png)
 
 ## <a name="data-source-privacy-and-authentication"></a>Adatforrás-adatvédelem és-hitelesítés
 
@@ -148,11 +148,11 @@ Adja hozzá a következő mezőket a **meghívott függvényből** a diagram **�
 * LowerMargins
 * ExpectedValues
 
-![Az új gyors mérték képernyő képe](../media/tutorials/chart-settings.png)
+![A diagram beállításainak képe](../media/tutorials/chart-settings.png)
 
 A mezők hozzáadása után kattintson a diagramra, és méretezze át az összes adatpont megjelenítéséhez. A diagram az alábbi képernyőképhez hasonlóan fog kinézni:
 
-![Az új gyors mérték képernyő képe](../media/tutorials/chart-visualization.png)
+![A diagram vizualizációjának képe](../media/tutorials/chart-visualization.png)
 
 ### <a name="display-anomaly-data-points"></a>Az anomália adatpontjainak megjelenítése
 
@@ -162,17 +162,17 @@ A Power BI ablak jobb oldalán, a **mezők** ablaktábla alatt kattintson a jobb
 
 A megjelenő képernyőn válassza a **szűrt érték** kiszámítása lehetőséget. Alapérték **beállítása a** következőre: `Sum of Value` . Ezután húzza `IsAnomaly` a **meghívott függvény** mezőiből a **szűrőt**. Válasszon `True` a **szűrő** legördülő menüből.
 
-![Az új gyors mérték képernyő képe](../media/tutorials/new-quick-measure-2.png)
+![Az új gyors mérték képernyő második képe](../media/tutorials/new-quick-measure-2.png)
 
 Miután rákattintott **az OK gombra**, a `Value for True` mezők listájának alján egy mező jelenik meg. Kattintson rá a jobb gombbal, és nevezze át az **anomáliára**. Adja hozzá a diagram **értékeit**. Ezután válassza ki a **formázó** eszközt, és állítsa az X tengely típusát **kategorikus**értékre.
 
-![Az új gyors mérték képernyő képe](../media/tutorials/format-x-axis.png)
+![Az x tengely formátumának képe](../media/tutorials/format-x-axis.png)
 
 Színeket alkalmazhat a diagramra úgy, hogy a **Formátum** eszközre és az **adatszínekre**kattint. A diagramnak a következőhöz hasonlóan kell kinéznie:
 
-![Az új gyors mérték képernyő képe](../media/tutorials/final-chart.png)
+![Az utolsó diagram képe](../media/tutorials/final-chart.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 >[Adatfolyam-rendellenességek észlelése Azure Databricks](anomaly-detection-streaming-databricks.md)

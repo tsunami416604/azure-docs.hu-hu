@@ -9,26 +9,26 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/12/2020
+ms.date: 09/30/2020
 ms.author: hirsin
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 6330621aac78d5e9df52f2cd3ad9c3968bb0120d
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 77e34e4a18012f15b9e907e3b9efc1965b98f824
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88853381"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91612120"
 ---
 # <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Microsoft Identity platform-alkalmazás hitelesítési tanúsítványának hitelesítő adatai
 
-A Microsoft Identity platform lehetővé teszi, hogy az alkalmazások a saját hitelesítő adataikat használják a hitelesítéshez, például a OAuth 2,0  [ügyfél hitelesítő adatait adja](v2-oauth2-client-creds-grant-flow.md) meg, és a [befelé irányuló](v2-oauth2-on-behalf-of-flow.md) (OBO) folyamatot.
+A Microsoft Identity platform lehetővé teszi, hogy az alkalmazások a saját hitelesítő adataikat használják hitelesítésre, bárhol is használhatók legyenek, például a OAuth 2,0  [ügyfél-hitelesítő adatok megadási](v2-oauth2-client-creds-grant-flow.md) folyamata és a [befelé irányuló](v2-oauth2-on-behalf-of-flow.md) (OBO) folyamat.
 
 Az egyik hitelesítő adat, amelyet az alkalmazás használhat a hitelesítéshez, egy [JSON web token](./security-tokens.md#json-web-tokens-jwts-and-claims) (JWT)-állítás, amely az alkalmazás tulajdonában lévő tanúsítvánnyal van aláírva.
 
 ## <a name="assertion-format"></a>Érvényesítési formátum
 
-Az állítás kiszámításához használhatja a számos JWT-függvénytár egyikét a választott nyelven. Az adatokat a token a [fejlécben](#header), a [jogcímek](#claims-payload)és az [aláírás](#signature)alapján végzi el.
+Az állítás kiszámításához használhatja a számos JWT-függvénytár egyikét az Ön által választott nyelven, a [MSAL támogatja ezt `.WithCertificate()` ](msal-net-client-assertions.md)a lehetőséget. Az adatokat a token a [fejlécben](#header), a [jogcímek](#claims-payload)és az [aláírás](#signature)alapján végzi el.
 
 ### <a name="header"></a>Fejléc
 
@@ -40,14 +40,14 @@ Az állítás kiszámításához használhatja a számos JWT-függvénytár egyi
 
 ### <a name="claims-payload"></a>Jogcímek (hasznos adatok)
 
-| Paraméter |  Megjegyzések |
-| --- | --- |
-| `aud` | Célközönség: legyen `https://login.microsoftonline.com/<your-tenant-id>/oauth2/token` |
-| `exp` | Lejárati dátum: a jogkivonat lejárati dátuma. Az idő a (z) január 1-től 1970 (1970-01-01T0:0: 0Z) UTC szerint, a jogkivonat érvényességének lejárta előtt. Javasoljuk, hogy rövid lejárati időt használjon – 10 percet egy órára.|
-| `iss` | Kiállító: az ügyfélszolgáltatás client_id (*alkalmazás-ügyfél) azonosítója* . |
-| `jti` | GUID: a JWT azonosítója |
-| `nbf` | Nem előtte: az a dátum, amely előtt a jogkivonat nem használható. Az idő a (z) január 1-től 1970 (1970-01-01T0:0: 0Z) UTC-számú másodpercnek felel meg az érvényesítési időpontig. |
-| `sub` | A tulajdonos: a `iss` (z) esetében az ügyfélszolgáltatás client_id (*Application (ügyfél) azonosítója* ) |
+Jogcím típusa | Érték | Leírás
+---------- | ---------- | ----------
+aud | `https://login.microsoftonline.com/{tenantId}/v2.0` | Az "AUD" (célközönség) jogcím azonosítja azokat a címzetteket, amelyeket a JWT szánnak (itt az Azure AD-t) lásd: [RFC 7519, 4.1.3. szakasz](https://tools.ietf.org/html/rfc7519#section-4.1.3).  Ebben az esetben ez a címzett a bejelentkezési kiszolgáló (login.microsoftonline.com).
+exp | 1601519414 | Az "exp" (lejárati idő) jogcím azt a lejárati időt azonosítja, amely után a JWT nem fogadható el feldolgozásra. Lásd: [RFC 7519, 4.1.4. szakasz](https://tools.ietf.org/html/rfc7519#section-4.1.4).  Ez lehetővé teszi, hogy a rendszer addig használja az állítást, hogy a lehető legrövidebb idő elteltével 5-10 perccel `nbf` .  Az Azure AD nem korlátozza az `exp` aktuális időpontra vonatkozó korlátozásokat. 
+ISS | ClientID | Az "ISS" (kibocsátói) jogcím azonosítja a JWT kiállító rendszerbiztonsági tag, ebben az esetben az ügyfélalkalmazás.  Használja a GUID-alkalmazás AZONOSÍTÓját.
+JTI | (GUID) | A "kezdeményezés" (JWT ID) jogcím egyedi azonosítót biztosít a JWT számára. Az azonosító értékét olyan módon kell hozzárendelni, amely biztosítja, hogy az adott érték egy másik adatobjektumhoz is legyen véletlenül hozzárendelve. Ha az alkalmazás több kiállítót használ, az ütközéseket meg kell akadályozni a különböző kibocsátók által előállított értékek között. A "kezdeményezés" érték kis-és nagybetűket megkülönböztető karakterlánc. [RFC 7519, 4.1.7 szakasz](https://tools.ietf.org/html/rfc7519#section-4.1.7)
+NBF | 1601519114 | A "NBF" (nem korábban) jogcím azt az időpontot határozza meg, ameddig a JWT nem fogadható el a feldolgozáshoz. [RFC 7519, 4.1.5 szakasz](https://tools.ietf.org/html/rfc7519#section-4.1.5).  Az aktuális idő használata megfelelő. 
+Sub | ClientID | A "Sub" (tárgy) jogcím azonosítja a JWT tárgyát, ebben az esetben az alkalmazást is. Használja ugyanazt az értéket `iss` . 
 
 ### <a name="signature"></a>Aláírás
 
@@ -126,7 +126,18 @@ Az ügyfélalkalmazás Azure-alkalmazásának regisztrációja:
 3. Mentse a módosításokat az alkalmazás-jegyzékfájlba, majd töltse fel a jegyzékfájlt a Microsoft Identity platformba.
 
    A `keyCredentials` tulajdonság többértékű, így több tanúsítvány is feltölthető a gazdagabb kulcsok kezeléséhez.
+   
+## <a name="using-a-client-assertion"></a>Ügyfél-érvényesítés használata
+
+Az ügyfél-kijelentések bárhol használhatók, ha az ügyfél titkos kulcsát használja.  Így például az [engedélyezési kód folyamatában](v2-oauth2-auth-code-flow.md)átadható a-nek, `client_secret` hogy igazolja, hogy a kérelem az alkalmazástól érkezik. Ezt a és a paramétereket is lecserélheti `client_assertion` `client_assertion_type` . 
+
+| Paraméter | Érték | Leírás|
+|-----------|-------|------------|
+|`client_assertion_type`|`urn:ietf:params:oauth:client-assertion-type:jwt-bearer`| Ez egy rögzített érték, amely azt jelzi, hogy a tanúsítvány hitelesítő adatait használja. |
+|`client_assertion`| JWT |Ez a fent létrehozott JWT. |
 
 ## <a name="next-steps"></a>További lépések
+
+A [MSAL.net-függvénytár ezt a forgatókönyvet](msal-net-client-assertions.md) egyetlen sorban kezeli.
 
 A Microsoft Identity platform code minta használatával a GitHubon a [.net Core Daemon Console alkalmazás](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) azt mutatja be, hogyan használja az alkalmazás a saját hitelesítő adatait a hitelesítéshez. Azt is bemutatja, hogyan [hozhat létre önaláírt tanúsítványt](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/tree/master/1-Call-MSGraph#optional-use-the-automation-script) a `New-SelfSignedCertificate` PowerShell-parancsmag használatával. Az [alkalmazás-létrehozási szkripteket](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/AppCreationScripts-withCert/AppCreationScripts.md) is használhatja a minta tárházban tanúsítványok létrehozásához, az ujjlenyomat kiszámításához stb.

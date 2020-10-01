@@ -8,12 +8,12 @@ ms.date: 03/26/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: dd2b9bc462a9d4bc11f49a7e3294e52f88a926fb
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7a9f4f165f457dfb902a4c0ecce3f4a9b13e2ec8
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511840"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611537"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>Ismerje meg, hogyan telepíthet modulokat és hozhat létre útvonalakat az IoT Edge-ben
 
@@ -38,7 +38,7 @@ Az üzembe helyezési jegyzék magas szinten az olyan modulok listája, amelyek 
 
 Minden üzembe helyezési jegyzékfájlban két modulra van szükség: `$edgeAgent` és `$edgeHub` . Ezek a modulok a IoT Edge eszközt és a rajta futó modulokat kezelő IoT Edge futtatókörnyezet részét képezik. További információ ezekről a modulokról: [a IoT Edge futtatókörnyezet és az architektúrájának megismerése](iot-edge-runtime.md).
 
-A két futásidejű modul mellett akár 30 modult is hozzáadhat a IoT Edge eszközön való futtatáshoz.
+A két futásidejű modul mellett akár 50 modult is hozzáadhat a saját IoT Edge eszközön való futtatáshoz.
 
 A IoT Edge futtatókörnyezetet (edgeAgent és edgeHub) tartalmazó telepítési jegyzékfájl érvényes.
 
@@ -151,7 +151,7 @@ A forrás tulajdonság a következő értékek bármelyike lehet:
 | `/messages/modules/<moduleId>/outputs/*` | Egy adott modul által a kimeneten keresztül küldött összes eszközről a felhőbe irányuló üzenet |
 | `/messages/modules/<moduleId>/outputs/<output>` | Egy adott modul által az adott kimeneten küldött összes eszközről a felhőbe irányuló üzenet |
 
-### <a name="condition"></a>Feltétel
+### <a name="condition"></a>Condition (Állapot)
 
 A feltétel nem kötelező az útvonal deklarációjában. Ha az összes üzenetet át szeretné adni a forrásról a fogadónak, csak hagyja ki a **Where** záradékot teljesen. Vagy használhatja a [IoT hub lekérdezési nyelvet](../iot-hub/iot-hub-devguide-routing-query-syntax.md) a feltételnek megfelelő üzenetek vagy üzenetek szűrésére. IoT Edge útvonalak nem támogatják az üzenetek szűrését a Twin címkék vagy tulajdonságok alapján.
 
@@ -159,9 +159,9 @@ A IoT Edge moduljai között továbbított üzenetek ugyanúgy vannak formázva,
 
 A következő szintaxissal hozhat létre lekérdezéseket a három paraméter bármelyikén:
 
-* Rendszertulajdonságok: `$<propertyName>` vagy`{$<propertyName>}`
-* Alkalmazás tulajdonságai:`<propertyName>`
-* Törzs tulajdonságai:`$body.<propertyName>`
+* Rendszertulajdonságok: `$<propertyName>` vagy `{$<propertyName>}`
+* Alkalmazás tulajdonságai: `<propertyName>`
+* Törzs tulajdonságai: `$body.<propertyName>`
 
 Az üzenet tulajdonságaira vonatkozó lekérdezések létrehozásával kapcsolatos példákat az [eszközről a felhőbe irányuló Message Routes lekérdezési kifejezések](../iot-hub/iot-hub-devguide-routing-query-syntax.md)című témakörben talál.
 
@@ -279,7 +279,7 @@ Az alábbi példa azt szemlélteti, hogy az érvényes üzembe helyezési jegyz�
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A $edgeAgent és az $edgeHubben felvehető vagy befoglalható tulajdonságok teljes listáját az [IoT Edge ügynök és IoT Edge hub tulajdonságai](module-edgeagent-edgehub.md)részben találja.
 

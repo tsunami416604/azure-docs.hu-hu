@@ -1,6 +1,6 @@
 ---
-title: Microsoft Identity platform – Windows asztali útmutató
-description: Ismerje meg, hogyan szerezhet be egy Windowsos asztali .NET-(XAML-) alkalmazás hozzáférési jogkivonatot, és hogyan hívhat meg egy Microsoft Identity platform-végpont által védett API-t
+title: 'Gyors útmutató: felhasználói bejelentkezés és Microsoft Graph hívása egy Univerzális Windows-platform asztali alkalmazásban | Azure'
+description: Ebből a rövid útmutatóból megtudhatja, hogyan szerezhet be egy Windows Desktop .NET-(XAML-) alkalmazás hozzáférési jogkivonatot, és hogyan hívhat meg egy Microsoft Identity platform-végpont által védett API-t
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,18 +11,22 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: ad45f4c57c336b30f09684c250539bd4452a10a8
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 5af55c16ae17b30d2079b332c236c325f3bed4df
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88114557"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613271"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>Rövid útmutató: Jogkivonat lekérése és a Microsoft Graph API meghívása egy Windows asztali alkalmazásból
 
 Ebből a rövid útmutatóból megtudhatja, hogyan írhat egy Windows asztali .NET- (WPF-) alkalmazást, amely be tud jelentkezni személyes, munkahelyi és iskolai fiókokba, le tud kérni egy hozzáférési jogkivonatot, majd meg tudja hívni a Microsoft Graph API-t. (Lásd: [Hogyan működik a minta](#how-the-sample-works) egy ábrán.)
 
 > [!div renderon="docs"]
+> ## <a name="prerequisites"></a>Előfeltételek
+>
+> * A [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) telepítve van a [univerzális Windows-platform fejlesztési](/windows/uwp/get-started/get-set-up) számítási feladattal
+>
 > ## <a name="register-and-download-your-quickstart-app"></a>A rövid útmutató mintaalkalmazásának regisztrálása és letöltése
 > A rövid útmutató mintaalkalmazását kétféleképpen indíthatja el:
 > * [Expressz] [1. lehetőség: Az alkalmazás regisztrálása és automatikus konfigurálása, majd a kódminta letöltése](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
@@ -48,7 +52,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan írhat egy Windows asztali .N
 >      - Válassza a **Regisztráció** elemet az alkalmazás létrehozásához.
 > 1. Az alkalmazás oldalainak listájában válassza a **Hitelesítés** elemet.
 > 1. Az **átirányítási URI**-  |  **k javasolt átirányítási URI-k a nyilvános ügyfelekhez (mobil, asztali)** szakaszban használja a következőt: **https://login.microsoftonline.com/common/oauth2/nativeclient** .
-> 1. Kattintson a **Mentés** gombra.
+> 1. Válassza a **Mentés** lehetőséget.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>1. lépés: Az alkalmazás konfigurálása az Azure Portalon

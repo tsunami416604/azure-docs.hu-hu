@@ -7,12 +7,12 @@ ms.date: 09/23/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: a5b826bd76eb7e56620bcb5b5eec9464ebacffc6
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: edcfcda8de1fade605c409537155231d90d5849e
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91580421"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91610075"
 ---
 # <a name="implement-iot-plug-and-play-on-constrained-devices"></a>IoT-Plug and Play implementálása korlátozott eszközökön
 
@@ -39,7 +39,7 @@ A beágyazott C tárház SDK-je [számos mintát](https://github.com/Azure/azure
 
 ## <a name="using-azure-rtos"></a>Az Azure RTOS használata
 
-Az Azure RTOS egy egyszerűsített réteget tartalmaz, amely natív kapcsolatot biztosít az Azure IoT Cloud Services szolgáltatással. Ez a réteg egy egyszerű mechanizmust biztosít a korlátozott eszközök Azure-IoT való csatlakoztatásához az Azure RTOS speciális funkcióinak használatakor.
+Az Azure RTOS egy egyszerűsített réteget tartalmaz, amely natív kapcsolatot biztosít az Azure IoT Cloud Services szolgáltatással. Ez a réteg egy egyszerű mechanizmust biztosít a korlátozott eszközök Azure-IoT való csatlakoztatásához az Azure RTOS speciális funkcióinak használatakor. További információ: [What is Microsoft Azure RTOS](https://docs.microsoft.com/azure/rtos/overview-rtos).
 
 ### <a name="toolchains"></a>Eszközlánccal
 

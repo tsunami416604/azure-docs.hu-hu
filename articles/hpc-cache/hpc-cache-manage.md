@@ -4,14 +4,14 @@ description: Az Azure HPC cache kezelése és frissítése az Azure Portal vagy 
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 07/08/2020
+ms.date: 08/31/2020
 ms.author: v-erkel
-ms.openlocfilehash: 66b084cca3d1cd54362a538423988755a3d31ced
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 19950ca215abbac3a56bdb901448c9d92ad369be
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497223"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613047"
 ---
 # <a name="manage-your-cache"></a>A gyorsítótár kezelése
 
@@ -28,6 +28,7 @@ A lap tetején található gombok segítenek a gyorsítótár kezelésében:
 * **Indítás** és [**Leállítás**](#stop-the-cache) – gyorsítótár-művelet folytatása vagy felfüggesztése
 * [**Ürítés**](#flush-cached-data) – módosított adatot ír a tárolási célokba
 * [**Frissítés**](#upgrade-cache-software) – frissíti a gyorsítótár szoftverét
+* [**Diagnosztika gyűjtése**](#collect-diagnostics) – hibakeresési adatok feltöltése
 * **Frissítés** – újratölti az Áttekintés oldalt
 * [**Delete (Törlés**](#delete-the-cache) ) – véglegesen elpusztítja a gyorsítótárat
 
@@ -197,6 +198,16 @@ $
 
 ---
 
+## <a name="collect-diagnostics"></a>Diagnosztikai információk gyűjtése
+
+A **diagnosztika összegyűjtése** gomb manuálisan elindítja a rendszerinformációk gyűjtésének és a Microsoft-szolgáltatásba való feltöltésének folyamatát, és támogatja a hibaelhárítást. A gyorsítótár automatikusan gyűjti és feltölti ugyanazokat a diagnosztikai adatokat, ha súlyos gyorsítótárazási probléma lép fel.
+
+Akkor használja ezt a vezérlőt, ha a Microsoft szolgáltatás és a támogatás kéri.
+
+Miután rákattintott a gombra, kattintson az **Igen** gombra a feltöltés megerősítéséhez.
+
+![képernyőkép: "a diagnosztikai gyűjtemény elindítása" előugró ablak megerősítő üzenete. Az alapértelmezett "yes" gomb ki van emelve.](media/diagnostics-confirm.png)
+
 ## <a name="delete-the-cache"></a>A gyorsítótár törlése
 
 A **Törlés** gomb megsemmisíti a gyorsítótárat. Ha töröl egy gyorsítótárat, a rendszer minden erőforrását megsemmisíti, és többé nem számít fel fiókra vonatkozó díjat.
@@ -244,7 +255,7 @@ Az Áttekintés oldalon néhány alapszintű gyorsítótár-statisztika – a gy
 
 Ezek a diagramok az Azure beépített monitorozási és elemzési eszközeinek részét képezik. A portál oldalsávjának **figyelés** fejléce alatt további eszközök és riasztások érhetők el. További információt az [Azure monitoring dokumentációjának](../azure-monitor/insights/monitor-azure-resource.md#monitoring-in-the-azure-portal)portál szakasza tartalmaz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ az [Azure mérőszámok és statisztikai eszközökről](../azure-monitor/index.yml)
 * Segítség kérése [Az Azure HPC cache](hpc-cache-support-ticket.md) -hez

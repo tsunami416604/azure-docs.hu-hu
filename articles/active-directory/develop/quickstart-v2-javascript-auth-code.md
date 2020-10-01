@@ -1,7 +1,7 @@
 ---
-title: Felhasználói bejelentkezés a JavaScript-alapú egyoldalas alkalmazásokban (SPA) hitelesítési kóddal | Azure
+title: 'Gyors útmutató: felhasználói bejelentkezés a JavaScript egyoldalas alkalmazásokban (SPA) hitelesítési kóddal | Azure'
 titleSuffix: Microsoft identity platform
-description: Megtudhatja, hogyan jelentkezhet be a JavaScript-alapú egyoldalas alkalmazás (SPA) a személyes fiókok, a munkahelyi fiókok és az iskolai fiókok felhasználói számára az engedélyezési kód folyamatábrájának használatával.
+description: Ebből a rövid útmutatóból megtudhatja, hogyan jelentkezhet be a JavaScript egyoldalas alkalmazás (SPA) a személyes fiókok, a munkahelyi fiókok és az iskolai fiókok felhasználói számára az engedélyezési kód folyamatábrájának használatával.
 services: active-directory
 author: hahamil
 manager: CelesteDG
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: 224ce2ea64016db7b632ac36193f39e679c8da4b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 35362733849305ad2ad7e008840d53ba085fa987
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91257979"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613441"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa-using-the-auth-code-flow"></a>Gyors útmutató: bejelentkezés a felhasználókba és hozzáférési token beszerzése egy JavaScript SPA-ban az Auth Code flow használatával
 
@@ -197,7 +197,7 @@ Ha Node.js van telepítve, a legújabb verziót a Node.js Package Manager (NPM) 
 npm install @azure/msal-browser
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az ebben a rövid útmutatóban használt alkalmazás létrehozásával kapcsolatos részletes útmutatásért tekintse meg a következő oktatóanyagot:
 

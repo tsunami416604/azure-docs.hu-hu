@@ -137,7 +137,7 @@
         - name: Adatfeldolgozás
           href: concept-optimize-data-processing.md
     - name: A modell betanítása
-      displayName: 'run config, estimator, machine learning pipeline, ml pipeline, train model'
+      displayName: 'run config, machine learning pipeline, ml pipeline, train model'
       href: concept-train-machine-learning-model.md
     - name: Elosztott betanítás
       displayName: 'parallellization, deep learning, deep neural network, dnn'
@@ -319,16 +319,12 @@
               href: how-to-differential-privacy.md
     - name: Modellek betanítása
       items:
-        - name: Betanítási futtatás elküldése
-          displayName: 'run config, compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
+        - name: Betanítási futtatás konfigurálása és elküldése
+          displayName: 'run config, script run config, scriptrunconfig, compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
           href: how-to-set-up-training-targets.md
-        - name: Becslők használata gépi tanuláshoz
-          items:
-            - name: Becslők létrehozása a betanítás során
-              href: how-to-train-ml-models.md
-            - name: Hiperparaméterek hangolása
-              displayName: parameter
-              href: how-to-tune-hyperparameters.md
+        - name: Hiperparaméterek hangolása
+          displayName: 'parameter, hyperparameter, hyperdrive'
+          href: how-to-tune-hyperparameters.md
         - name: Az MLflow használata
           items:
             - name: Kísérletek nyomon követése az MLflow használatával

@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/26/2020
+ms.date: 09/29/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 939d78fb75dc69af91cbc920fadce69945a24e39
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 400f0b1b55136f133c9ad01fd0ba4b5dbc5e6bcb
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447733"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91612744"
 ---
 # <a name="add-azure-role-assignments-using-azure-resource-manager-templates"></a>Azure-beli szerepkör-hozzárendelések hozzáadása Azure Resource Manager-sablonok használatával
 
@@ -52,6 +52,18 @@ $objectid = (Get-AzADGroup -DisplayName "{name}").id
 objectid=$(az ad group show --group "{name}" --query objectId --output tsv)
 ```
 
+### <a name="managed-identities"></a>Felügyelt identitások
+
+A felügyelt identitás AZONOSÍTÓjának lekéréséhez a [Get-AzAdServiceprincipal](/powershell/module/az.resources/get-azadserviceprincipal) vagy [az ad SP](/cli/azure/ad/sp) parancsokat használhatja.
+
+```azurepowershell
+$objectid = (Get-AzADServicePrincipal -DisplayName <Azure resource name>).id
+```
+
+```azurecli
+objectid=$(az ad sp list --display-name <Azure resource name> --query [].objectId --output tsv)
+```
+
 ### <a name="application"></a>Alkalmazás
 
 Egy egyszerű szolgáltatásnév (az alkalmazás által használt identitás) AZONOSÍTÓjának lekéréséhez használhatja a [Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal) vagy [az ad SP List](/cli/azure/ad/sp#az-ad-sp-list) parancsot. Egyszerű szolgáltatásnév esetén használja az objektumazonosító azonosítót, **ne** pedig az alkalmazás azonosítóját.
@@ -77,7 +89,7 @@ A következő sablon alapszintű módszert mutat a szerepkör-hozzárendelés ho
 A sablon használatához a következőket kell tennie:
 
 - Új JSON-fájl létrehozása és a sablon másolása
-- A helyére írja be annak a `<your-principal-id>` felhasználónak, csoportnak vagy alkalmazásnak az azonosítóját, amelyhez a szerepkört hozzá szeretné rendelni
+- A helyére írja be annak a `<your-principal-id>` felhasználónak, csoportnak, felügyelt identitásnak vagy alkalmazásnak az azonosítóját, amelyhez a szerepkört hozzá szeretné rendelni
 
 ```json
 {
@@ -120,7 +132,7 @@ Az előző sablon nem túl rugalmas. A következő sablon paramétereket haszná
 
 A sablon használatához a következő bemeneteket kell megadnia:
 
-- Annak a felhasználónak, csoportnak vagy alkalmazásnak az azonosítója, amelyhez hozzá szeretné rendelni a szerepkört
+- Annak a felhasználónak, csoportnak, felügyelt identitásnak vagy alkalmazásnak az azonosítója, amelyhez a szerepkört hozzá szeretné rendelni
 - Egyedi azonosító, amely a szerepkör-hozzárendeléshez lesz használva, vagy használhatja az alapértelmezett azonosítót.
 
 ```json
@@ -214,7 +226,7 @@ A következő sablon a következőket mutatja be:
 
 A sablon használatához a következő bemeneteket kell megadnia:
 
-- Annak a felhasználónak, csoportnak vagy alkalmazásnak az azonosítója, amelyhez hozzá szeretné rendelni a szerepkört
+- Annak a felhasználónak, csoportnak, felügyelt identitásnak vagy alkalmazásnak az azonosítója, amelyhez a szerepkört hozzá szeretné rendelni
 
 ```json
 {
@@ -368,7 +380,7 @@ Az Azure-RBAC az Azure-erőforrásokhoz való hozzáférés eltávolításához 
 - [Azure CLI](role-assignments-cli.md#remove-role-assignment)
 - [REST API](role-assignments-rest.md#remove-a-role-assignment)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Rövid útmutató: Azure Resource Manager-sablon létrehozása és üzembe helyezése az Azure Portalon](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)
 - [Azure Resource Manager sablonok struktúrájának és szintaxisának megismerése](../azure-resource-manager/templates/template-syntax.md)

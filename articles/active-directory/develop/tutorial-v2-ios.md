@@ -1,7 +1,7 @@
 ---
-title: 'Oktatóanyag: Microsoft Authentication Library (MSAL) iOS & macOS rendszerhez | Azure'
+title: 'Oktatóanyag: a Microsoft Identity platformot használó iOS-vagy macOS-alkalmazás létrehozása hitelesítéshez | Azure'
 titleSuffix: Microsoft identity platform
-description: Ismerje meg, hogy az iOS és macOS (Swift) alkalmazások hogyan hívhatnak meg olyan API-t, amely hozzáférési jogkivonatokat igényel a Microsoft Identity platform használatával
+description: Ebben az oktatóanyagban olyan iOS-vagy macOS-alkalmazást hoz létre, amely a Microsoft Identity platform használatával jelentkezik be a felhasználókba, és hozzáférési jogkivonatot kap a Microsoft Graph API nevében való meghívásához.
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -13,20 +13,33 @@ ms.date: 09/18/2020
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 238f8426ae51bec64dfdb5edaa3107ca1f430914
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 70194c7adc55a00c5cb65928daac184499eb124d
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91256908"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611112"
 ---
-# <a name="sign-in-users-and-call-microsoft-graph-from-an-ios-or-macos-app"></a>Bejelentkezés a felhasználókba és Microsoft Graph meghívása iOS-vagy macOS-alkalmazásból
+# <a name="tutorial-sign-in-users-and-call-microsoft-graph-from-an-ios-or-macos-app"></a>Oktatóanyag: bejelentkezés a felhasználókba és Microsoft Graph meghívása iOS-vagy macOS-alkalmazásból
 
 Ebből az oktatóanyagból megtudhatja, hogyan integrálhat egy iOS-vagy macOS-alkalmazást a Microsoft Identity platformmal. Az alkalmazás bejelentkezik egy felhasználóval, beolvas egy hozzáférési jogkivonatot a Microsoft Graph API meghívásához, és kérelmet készít a Microsoft Graph API-nak.
 
-Az útmutató elvégzése után az alkalmazás elfogadja a személyes Microsoft-fiókok (például a outlook.com, a live.com és mások) és a munkahelyi vagy iskolai fiókok bejelentkezési adatait bármely olyan vállalattól vagy szervezettől, amely Azure Active Directoryt használ.
+Az útmutató elvégzése után az alkalmazás elfogadja a személyes Microsoft-fiókok (például a outlook.com, a live.com és mások) és a munkahelyi vagy iskolai fiókok bejelentkezési adatait bármely olyan vállalattól vagy szervezettől, amely Azure Active Directoryt használ. Ez az oktatóanyag az iOS-és macOS-alkalmazásokra is érvényes. Egyes lépések eltérnek a két platform között.
 
-## <a name="how-this-tutorial-works"></a>Az oktatóanyag működése
+Ebben az oktatóanyagban:
+
+> [!div class="checklist"]
+> * IOS-vagy macOS-alkalmazások projekt létrehozása a *Xcode* -ben
+> * Az alkalmazás regisztrálása a Azure Portalban
+> * Kód hozzáadása a felhasználói bejelentkezés és a kijelentkezés támogatásához
+> * Kód hozzáadása a Microsoft Graph API meghívásához
+> * Az alkalmazás tesztelése
+
+## <a name="prerequisites"></a>Előfeltételek
+
+- [Xcode 11. x +](https://developer.apple.com/xcode/)
+
+## <a name="how-tutorial-app-works"></a>Az oktatóanyag-alkalmazás működése
 
 ![Bemutatja, hogyan működik az oktatóanyag által generált minta alkalmazás](../../../includes/media/active-directory-develop-guidedsetup-ios-introduction/iosintro.svg)
 
@@ -42,16 +55,10 @@ Pontosabban:
 
 Ez a példa a Microsoft Authentication Library (MSAL) használatával valósítja meg a hitelesítést. A MSAL automatikusan megújítja a tokeneket, egyszeri bejelentkezést (SSO) tesz elérhetővé az eszköz más alkalmazásai között, és felügyeli a fiók (oka) t.
 
-Ez az oktatóanyag az iOS-és macOS-alkalmazásokra is érvényes. Egyes lépések eltérnek a két platform között.
+Ha le szeretné tölteni az oktatóanyagban felépített alkalmazás befejezett verzióját, mindkét verziót megtalálhatja a GitHubon is:
 
-## <a name="prerequisites"></a>Előfeltételek
-
-- Ebben az útmutatóban a XCode 11. x vagy újabb verziójára van szükség az alkalmazás létrehozásához. A XCode letöltése a [Mac App Store áruházból](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12 "XCode letöltési URL-címe")végezhető el.
-- Microsoft hitelesítési függvénytár ([MSAL. Framework](https://github.com/AzureAD/microsoft-authentication-library-for-objc)). Használhatja a függőség-kezelőt, vagy manuálisan is hozzáadhatja a könyvtárat. Az alábbi utasítások bemutatják, hogyan.
-
-Ez az oktatóanyag egy új projektet fog létrehozni. Ha ehelyett a kész oktatóanyagot szeretné letölteni, töltse le a következő kódot:
-- [iOS-mintakód](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip)
-- [macOS-mintakód](https://github.com/Azure-Samples/active-directory-macOS-swift-native-v2/archive/master.zip)
+- [iOS-kód minta](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/) (GitHub)
+- [MacOS-mintakód](https://github.com/Azure-Samples/active-directory-macOS-swift-native-v2/) (GitHub)
 
 ## <a name="create-a-new-project"></a>Új projekt létrehozása
 
@@ -64,7 +71,7 @@ Ez az oktatóanyag egy új projektet fog létrehozni. Ha ehelyett a kész oktat�
 
 ## <a name="register-your-application"></a>Az alkalmazás regisztrálása
 
-1. Ugrás a [Azure Portal](https://aka.ms/MobileAppReg)
+1. Nyissa meg az [Azure Portalt](https://aka.ms/MobileAppReg)
 2. Nyissa meg a Alkalmazásregisztrációk panelt, és válassza az **+ új regisztráció**lehetőséget.
 3. Adja meg az alkalmazás **nevét** , majd az átirányítási URI beállítása nélkül.
 4. Válassza **a fiókok lehetőséget bármely szervezeti címtárban (bármely Azure ad-címtár – több-bérlős) és személyes Microsoft-fiókok (például Skype, Xbox)** a **támogatott fióktípus** területen
@@ -159,7 +166,7 @@ Vegyen fel egy új kulcstartó-csoportot a projekt **aláírási & képességeib
 
 Ebben a lépésben regisztrálni fogja, `CFBundleURLSchemes` hogy a felhasználó átirányítható legyen az alkalmazásba a bejelentkezés után. A módon `LSApplicationQueriesSchemes` lehetővé teszi, hogy az alkalmazás használja a Microsoft Authenticator.
 
-A Xcode nyissa meg a `Info.plist` forrásként szolgáló fájlt, és adja hozzá a következőt a `<dict>` szakaszhoz. Cserélje le a `[BUNDLE_ID]` értéket a Azure Portal használt értékre, amely (ha letöltötte a kódot `com.microsoft.identitysample.MSALiOS` ) a. Ha saját projektet hoz létre, válassza ki a projektet a Xcode-ben, és nyissa meg az **általános** lapot. A köteg azonosítója az Identity ( **identitás** ) szakaszban jelenik meg.
+A Xcode nyissa meg a `Info.plist` forrásként szolgáló fájlt, és adja hozzá a következőt a `<dict>` szakaszhoz. Cserélje le a `[BUNDLE_ID]` értéket a Azure Portal használt értékre. Ha letöltötte a kódot, a köteg azonosítója `com.microsoft.identitysample.MSALiOS` . Ha saját projektet hoz létre, válassza ki a projektet a Xcode-ben, és nyissa meg az **általános** lapot. A köteg azonosítója az Identity ( **identitás** ) szakaszban jelenik meg.
 
 ```xml
 <key>CFBundleURLTypes</key>
@@ -509,7 +516,7 @@ Adja hozzá a következő kódot a `ViewController` osztályhoz:
 
 #### <a name="get-a-token-interactively"></a>Token interaktív beszerzése
 
-Az alábbi kód első alkalommal beolvas egy jogkivonatot egy objektum létrehozásával `MSALInteractiveTokenParameters` és meghívásával `acquireToken` . Ezután a következő kódot fogja hozzáadni:
+A következő kódrészlet első alkalommal kap egy jogkivonatot egy objektum létrehozásával `MSALInteractiveTokenParameters` és meghívásával `acquireToken` . Ezután a következő kódot fogja hozzáadni:
 
 1. `MSALInteractiveTokenParameters`Hatókörökkel jön létre.
 2. Meghívja `acquireToken()` a létrehozott paramétereket.
@@ -628,7 +635,7 @@ A frissített jogkivonat csendes beszerzéséhez adja hozzá a következő kódo
 
 Ha rendelkezik jogkivonattal, az alkalmazás a HTTP-fejlécben felhasználhatja, hogy jogosult kérést készítsen a Microsoft Graph:
 
-| fejléc kulcsa    | value                 |
+| fejléc kulcsa    | érték                 |
 | ------------- | --------------------- |
 | Engedélyezés | Tulajdonosi \<access-token> |
 
@@ -845,6 +852,9 @@ Amikor a felhasználó először jelentkezik be az alkalmazásba, a Microsoft Id
 
 A bejelentkezést követően az alkalmazás megjeleníti az Microsoft Graph végpont által visszaadott adatok megjelenítését `/me` .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ha olyan Firstline-munkatársakat kell támogatnia, amelyek az eszközök között osztoznak a váltások között, lásd: [megosztott eszköz mód iOS-eszközökhöz](msal-ios-shared-devices.md).
+További információ a védett webes API-kat meghívó mobil alkalmazások létrehozásáról a többrészes forgatókönyvek sorozatában.
+
+> [!div class="nextstepaction"]
+> [Forgatókönyv: webes API-kat meghívó mobil alkalmazás](scenario-mobile-overview.md)

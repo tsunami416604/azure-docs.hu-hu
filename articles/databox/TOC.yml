@@ -78,6 +78,8 @@
                   href: security-baseline.md
                 - name: Biztonság áttekintése
                   href: data-box-security.md
+            - name: ACL-ek és metaadatok átvitele
+              href: data-box-file-acls-preservation.md
             - name: GYIK
               href: data-box-faq.md
         - name: Útmutató

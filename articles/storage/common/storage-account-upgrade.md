@@ -8,13 +8,13 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 02/25/2019
 ms.author: tamram
-ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: c80269c949ec97a09584d736371ccd11879fd82b
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 0054b6e9bb73ef2918a8e5c52c59a272bae5da26
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89069697"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91612506"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Frissítés általános célú v2-tárfiókra
 
@@ -49,7 +49,7 @@ Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-a
 ```
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Ha egy általános célú v1-fiókot az Azure CLI használatával szeretne általános célú v2-fiókra frissíteni, először telepítse az Azure CLI legújabb verzióját. A CLI telepítésével kapcsolatban lásd [az Azure CLI 2.0-s verziójának telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) ismertető szakaszt.
+Ha egy általános célú v1-fiókot az Azure CLI használatával szeretne általános célú v2-fiókra frissíteni, először telepítse az Azure CLI legújabb verzióját. A CLI telepítésével kapcsolatban lásd [az Azure CLI 2.0-s verziójának telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli) ismertető szakaszt.
 
 Ezután hívja meg a következő parancsot a fiók frissítéséhez, az erőforráscsoport nevének, a Storage-fiók nevének és a kívánt fiók hozzáférési szintjének a behelyettesítéséhez.
 
@@ -166,6 +166,6 @@ A Blob Storage-tárfiókok georeplikációs adatátviteli költségei szintén a
 > [!NOTE]
 > A gyakori és ritka elérésű tárolási hozzáférési szint használatának költségeinek kiszámításához tekintse meg a *"mi a gyors és a lassú elérési szint, és Hogyan határozható meg, hogy melyiket érdemes használni?"* című részt. az [Azure Storage díjszabását tartalmazó oldalon](https://azure.microsoft.com/pricing/details/storage/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Tárfiók létrehozása](storage-account-create.md)

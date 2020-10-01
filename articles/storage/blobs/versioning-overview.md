@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 08/27/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 2e3cfd27d36558587ca35cc1c573999a48092b0d
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: e4a13fb22fd826f82252383587bc4a273c43099f
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297666"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613509"
 ---
 # <a name="blob-versioning"></a>BLOB verziószámozása
 
@@ -79,11 +79,11 @@ A [blob törlési](/rest/api/storageservices/delete-blob) műveletének meghív�
 
 A következő ábrán látható, hogy a törlési művelet milyen hatással van egy verzióval ellátott blobra:
 
-:::image type="content" source="media/versioning-overview/delete-versioned-base-blob.png" alt-text="A verziószámmal rendelkező blob törlését bemutató ábra.":::
+:::image type="content" source="media/versioning-overview/delete-versioned-base-blob.png" alt-text="Azt bemutató ábra, hogy az írási műveletek milyen hatással vannak a verziószámozásra.":::
 
 Ha új adatmennyiséget ír a blobba, a a blob új verzióját hozza létre. A meglévő verziók nem érintettek, ahogy az a következő ábrán is látható.
 
-:::image type="content" source="media/versioning-overview/recreate-deleted-base-blob.png" alt-text="A verzió törlését követően a verziószámozás újbóli létrehozását bemutató ábra.":::
+:::image type="content" source="media/versioning-overview/recreate-deleted-base-blob.png" alt-text="Azt bemutató ábra, hogy az írási műveletek milyen hatással vannak a verziószámozásra.":::
 
 ### <a name="blob-types"></a>Blobtípusok
 
@@ -122,7 +122,7 @@ A verziószám letiltását követően a verzió AZONOSÍTÓjának használatáv
 
 A következő ábra azt mutatja be, hogyan lehet a blobokat a verziószámozást követően letiltani, mert egy nem verziószámú blobot hoz létre. A blobhoz társított meglévő verziók megmaradnak.
 
-:::image type="content" source="media/versioning-overview/modify-base-blob-versioning-disabled.png" alt-text="Az alapszintű blob a verziószámozást követően módosított ábráját mutatja.":::
+:::image type="content" source="media/versioning-overview/modify-base-blob-versioning-disabled.png" alt-text="Azt bemutató ábra, hogy az írási műveletek milyen hatással vannak a verziószámozásra.":::
 
 ## <a name="blob-versioning-and-soft-delete"></a>BLOB verziószámozása és a Soft delete
 
@@ -138,7 +138,7 @@ A blob egy korábbi verziójának eltávolításához explicit módon törölje 
 
 Az alábbi ábrán látható, hogy mi történik a Blobok vagy a Blobok verziójának törlésekor.
 
-:::image type="content" source="media/versioning-overview/soft-delete-historical-version.png" alt-text="A verzió törlését bemutató ábra, amely lehetővé teszi, hogy a helyreállított törlés engedélyezve legyen.":::
+:::image type="content" source="media/versioning-overview/soft-delete-historical-version.png" alt-text="Azt bemutató ábra, hogy az írási műveletek milyen hatással vannak a verziószámozásra.":::
 
 Ha mind a verziószámozás, mind a Soft delete engedélyezve van egy Storage-fiókon, akkor a blob vagy blob verziójának módosításakor és törlésekor nem jön létre helyreállított pillanatkép.
 
@@ -150,7 +150,7 @@ A nem **törölhető blob** művelettel rendelkező, helyreállított verziók v
 
 Az alábbi ábra bemutatja, hogyan állíthatja vissza a nem törölt blob-verziókat a **blob törlésével** , és hogyan állíthatja vissza a blob aktuális verzióját a blob **másolása** művelettel.
 
-:::image type="content" source="media/versioning-overview/undelete-version.png" alt-text="A Soft-Deleted verziók visszaállítását bemutató ábra.":::
+:::image type="content" source="media/versioning-overview/undelete-version.png" alt-text="Azt bemutató ábra, hogy az írási műveletek milyen hatással vannak a verziószámozásra.":::
 
 A helyreállítható törlés megőrzési időtartamának lejárta után a rendszer véglegesen törli az összes helyreállított blob-verziót.
 
@@ -169,7 +169,7 @@ Amikor pillanatképet készít egy verzióval ellátott blobról, a pillanatkép
 
 Az alábbi ábrán látható, hogy mi történik, amikor pillanatképet készít egy verzióval ellátott blobról. A diagramon a blob-verziók és-Pillanatképek a 2-es és 3-as AZONOSÍTÓJÚ változattal azonos adathalmazt tartalmaznak.
 
-:::image type="content" source="media/versioning-overview/snapshot-versioned-blob.png" alt-text="Egy verzióval ellátott blob pillanatképeit bemutató ábra.":::
+:::image type="content" source="media/versioning-overview/snapshot-versioned-blob.png" alt-text="Azt bemutató ábra, hogy az írási műveletek milyen hatással vannak a verziószámozásra.":::
 
 ## <a name="authorize-operations-on-blob-versions"></a>Műveletek engedélyezése blob-verziókon
 
@@ -185,10 +185,10 @@ A blob verziószámozása úgy lett kialakítva, hogy az adatok véletlen vagy r
 
 Az alábbi táblázatban látható, hogy mely RBAC műveletek támogatják a Blobok vagy a Blobok verzióinak törlését.
 
-| Description | Blob service művelet | RBAC-adatművelet szükséges | RBAC beépített szerepkör-támogatás |
+| Leírás | Blob service művelet | RBAC-adatművelet szükséges | RBAC beépített szerepkör-támogatás |
 |----------------------------------------------|------------------------|---------------------------------------------------------------------------------------|-------------------------------|
 | A blob aktuális verziójának törlése | Delete Blob | **Microsoft. Storage/storageAccounts/blobServices/containers/Blobok/delete** | Storage-blobadatok közreműködője |
-| Verzió törlése | Delete Blob | **Microsoft. Storage/storageAccounts/blobServices/containers/Blobok/deleteBlobVersion/Action** | Storage blob-adattulajdonos |
+| Verzió törlése | Delete Blob | **Microsoft. Storage/storageAccounts/blobServices/containers/Blobok/deleteBlobVersion/Action** | Storage-blobadatok tulajdonosa |
 
 ### <a name="shared-access-signature-sas-parameters"></a>Közös hozzáférésű aláírás (SAS) paraméterei
 
@@ -269,7 +269,7 @@ A következő táblázat ismerteti a Blobok vagy verziók számlázási viselked
 
 Az alábbi ábra azt szemlélteti, hogyan történik az objektumok számlázása, amikor egy verzióval ellátott blob átkerül egy másik szintjére.
 
-:::image type="content" source="media/versioning-overview/versioning-billing-tiers.png" alt-text="Ábra, amely bemutatja, hogyan történik az objektumok számlázása, amikor egy verzióval ellátott blobot explicit módon határoznak meg.":::
+:::image type="content" source="media/versioning-overview/versioning-billing-tiers.png" alt-text="Azt bemutató ábra, hogy az írási műveletek milyen hatással vannak a verziószámozásra.":::
 
 A blob, a verzió vagy a pillanatkép szintje explicit módon történő beállítása nem vonható vissza. Ha egy blobot egy új szintre helyez át, majd visszahelyezi az eredeti szintjére, akkor akkor is a teljes tartalomért kell fizetnie, ha az objektum más objektumokkal is megosztja az eredeti szintet.
 
@@ -291,7 +291,7 @@ A következő táblázat ismerteti a nem megfelelően törölt Blobok számláz�
 | Ha a blob-alapú törlés és verziószámozás egyaránt engedélyezve van | A teljes tartalom hosszúságú összes meglévő verzió a szintjétől függetlenül. |
 | Ha a blob-törlés engedélyezve van, de a verziószámozás le van tiltva | Az összes létező, teljes tartalommal rendelkező törlési pillanatkép a rétegtől függetlenül. |
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 - [BLOB-verziószámozás engedélyezése és kezelése](versioning-enable.md)
 - [BLOB pillanatképének létrehozása](/rest/api/storageservices/creating-a-snapshot-of-a-blob)

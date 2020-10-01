@@ -5,13 +5,13 @@ author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: ace23e392d90e77c02df7861df96c066c82eee33
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.custom: ''
+ms.openlocfilehash: 16fc294784d9d6ff3c2fdd920d053eae5cd4b56d
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069067"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613203"
 ---
 # <a name="tutorial-add-tags-in-your-arm-template"></a>Oktatóanyag: Címkék hozzáadása az ARM-sablonhoz
 
@@ -96,7 +96,7 @@ Ha most leáll, érdemes lehet törölni a telepített erőforrásokat az erőfo
 3. Válassza ki az erőforráscsoport nevét.
 4. Válassza az **erőforráscsoport törlése** lehetőséget a felső menüben.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban címkéket adott hozzá az erőforrásokhoz. A következő oktatóanyagban megtudhatja, hogyan használhatók a paraméterek a sablonban az értékek átadásának egyszerűbbé tételéhez.
 

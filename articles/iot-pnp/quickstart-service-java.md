@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: cd618cf5f2f82b9c87981e961ed401f3409ec9d4
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 0ed5ebf316c80d7fc560b11e1f784dd1b91b170d
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91583561"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91612574"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-java"></a>Gyors útmutató: a megoldáshoz csatlakoztatott IoT Plug and Play-eszköz (Java) használata
 
@@ -76,7 +76,7 @@ A [környezet beállítása a IoT Plug and Play rövid útmutatók és oktatóan
 Ebben a rövid útmutatóban egy Java-ban írt minta IoT-megoldást használ, amely az imént beállított minta eszközzel kommunikál.
 
 > [!NOTE]
-> Ez a példa a **com. microsoft. Azure. SDK. IOT. Service. *;** névteret használja a **IoT hub szolgáltatás ügyfelétől**. A modell AZONOSÍTÓjának beolvasásával kapcsolatos további tudnivalókért tekintse meg a [fejlesztői útmutató](concepts-developer-guide-device-csharp.md)című témakört.
+> Ez a példa a **com. microsoft. Azure. SDK. IOT. Service. *;** névteret használja a **IoT hub szolgáltatás ügyfelétől**. A modell AZONOSÍTÓjának beolvasásával kapcsolatos további tudnivalókért tekintse meg a [fejlesztői útmutató](concepts-developer-guide-service.md)című témakört.
 
 1. Nyisson meg egy másik Terminálablak **szolgáltatást a szolgáltatás** -terminálként való használatra.
 

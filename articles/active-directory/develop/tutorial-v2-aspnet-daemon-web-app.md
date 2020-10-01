@@ -1,5 +1,6 @@
 ---
-title: A Microsoft Identity platform-végpontot használó több-bérlős démon létrehozása
+title: 'Oktatóanyag: több-bérlős démon létrehozása, amely hozzáfér Microsoft Graph üzleti adatszolgáltatásokhoz | Azure'
+titleSuffix: Microsoft identity platform
 description: Ebből az oktatóanyagból megtudhatja, hogyan hívhat meg Azure Active Directory által védett ASP.NET webes API-t egy Windows asztali (WPF-) alkalmazásból. A WPF-ügyfél hitelesíti a felhasználót, hozzáférési jogkivonatot kér, és meghívja a webes API-t.
 services: active-directory
 author: jmprieur
@@ -11,14 +12,14 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 4b05bbf818676cc70f485dd94ece79141e8f01a4
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 72b72959f7b5c89bfad4495c8534de5dfaaefe8b
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90982849"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611095"
 ---
-# <a name="tutorial-build-a-multitenant-daemon-that-uses-the-microsoft-identity-platform-endpoint"></a>Oktatóanyag: a Microsoft Identity platform-végpontot használó több-bérlős démon létrehozása
+# <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>Oktatóanyag: a Microsoft Identity platformot használó több-bérlős démon létrehozása
 
 Ebből az oktatóanyagból megtudhatja, hogyan használhatja a Microsoft Identity platformot a Microsoft üzleti ügyfelei adatainak hosszú távú, nem interaktív folyamatokban való eléréséhez. A minta démon a [OAuth2 ügyfél hitelesítő adatait](v2-oauth2-client-creds-grant-flow.md) használja a hozzáférési jogkivonat beszerzéséhez. A démon ezután a token használatával hívja meg [Microsoft Graph](https://graph.microsoft.io) és a szervezeti adathozzáférést.
 
@@ -30,28 +31,23 @@ Ebből az oktatóanyagból megtudhatja, hogyan használhatja a Microsoft Identit
 
 Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
+## <a name="prerequisites"></a>Előfeltételek
+
+- [Visual Studio 2017 vagy 2019](https://visualstudio.microsoft.com/downloads/).
+- Egy Azure AD-bérlő. További információ: [Azure ad-bérlő beszerzése](quickstart-create-new-tenant.md).
+- Egy vagy több felhasználói fiók az Azure AD-bérlőben. Ez a minta nem fog működni Microsoft-fiók. Ha bejelentkezett a [Azure Portalba](https://portal.azure.com) egy Microsoft-fiók, és még soha nem hozott létre felhasználói fiókot a címtárban, tegye meg most.
+
+## <a name="scenario"></a>Használati eset
+
 Az alkalmazás ASP.NET MVC-alkalmazásként van felépítve. A OWIN OpenID Connect middleware használatával jelentkezik be a felhasználókba.
 
 Ebben a példában a "Daemon" összetevő egy API-vezérlő `SyncController.cs` . A vezérlő hívásakor a rendszer lekéri az ügyfél Azure Active Directory (Azure AD) bérlőben lévő felhasználók listáját a Microsoft Graph. `SyncController.cs` egy AJAX-hívás indítja el a webalkalmazásban. A .NET- [hez készült Microsoft Authentication Library (MSAL)](msal-overview.md) használatával szerzi be Microsoft Graph hozzáférési jogkivonatát.
 
->[!NOTE]
-> Ha most ismerkedik a Microsoft Identity platformmal, javasoljuk, hogy kezdje a [.net Core Daemon](quickstart-v2-netcore-daemon.md)gyors üzembe helyezésével.
-
-## <a name="scenario"></a>Használati eset
-
-Mivel az alkalmazás egy több-bérlős alkalmazás a Microsoft üzleti ügyfelei számára, biztosítania kell, hogy az ügyfelek "regisztráljanak" vagy "csatlakozzanak" az alkalmazáshoz a vállalati adatszolgáltatásokhoz. A kapcsolati folyamat során a vállalati rendszergazda először közvetlenül az *alkalmazáshoz ad engedélyeket* , így nem interaktív módon férhet hozzá a vállalati adatbázisokhoz a bejelentkezett felhasználó jelenléte nélkül. A példában szereplő logika többsége azt mutatja be, hogyan valósítható meg ez a kapcsolódási folyamat az Identity platform [rendszergazdai engedélyezési](v2-permissions-and-consent.md#using-the-admin-consent-endpoint) végpontjának használatával.
+Mivel az alkalmazás egy több-bérlős alkalmazás a Microsoft üzleti ügyfelei számára, meg kell adnia egy módot arra, hogy az ügyfelek "regisztráljanak" vagy "csatlakozzanak" az alkalmazáshoz a vállalati adatszolgáltatásokhoz. A kapcsolati folyamat során a vállalati rendszergazda először közvetlenül az *alkalmazáshoz ad engedélyeket* , így nem interaktív módon férhet hozzá a vállalati adatbázisokhoz a bejelentkezett felhasználó jelenléte nélkül. A példában szereplő logika többsége azt mutatja be, hogyan valósítható meg ez a kapcsolódási folyamat az Identity platform [rendszergazdai engedélyezési](v2-permissions-and-consent.md#using-the-admin-consent-endpoint) végpontjának használatával.
 
 ![A diagram az Azure-hoz csatlakozó három helyi elemmel rendelkező UserSync-alkalmazást mutatja be, a Start dot Auth pedig interaktív módon beolvassa a tokent az Azure A D-hez való csatlakozáshoz, így a rendszergazda beleegyezik az Azure-ba való csatlakozáshoz, és a SyncController Microsoft Graphhoz való csatlakozáshoz.](./media/tutorial-v2-aspnet-daemon-webapp/topology.png)
 
 Az ebben a mintában használt fogalmakkal kapcsolatos további információkért olvassa el az [Identity platform végpontjának ügyfél-hitelesítő adatok protokolljának dokumentációját](v2-oauth2-client-creds-grant-flow.md).
-
-## <a name="prerequisites"></a>Előfeltételek
-
-A minta ebben a rövid útmutatóban való futtatásához a következőkre lesz szüksége:
-
-- [Visual Studio 2017 vagy 2019](https://visualstudio.microsoft.com/downloads/).
-- Egy Azure AD-bérlő. További információ: [Azure ad-bérlő beszerzése](quickstart-create-new-tenant.md).
-- Egy vagy több felhasználói fiók az Azure AD-bérlőben. Ez a minta nem fog működni Microsoft-fiók (korábban Windows Live-fiókkal). Ha bejelentkezett a [Azure Portalba](https://portal.azure.com) egy Microsoft-fiók, és még soha nem hozott létre felhasználói fiókot a címtárban, most végre kell hajtania.
 
 ## <a name="clone-or-download-this-repository"></a>A tárház klónozása vagy letöltése
 
@@ -116,7 +112,7 @@ Ha nem kívánja használni az automatizálást, kövesse az alábbi részben is
 1. Az alkalmazás oldalainak listájában válassza a **Hitelesítés** elemet. Ezután:
    - A **Speciális beállítások** szakaszban állítsa be a **KIJELENTKEZÉSI URL-címet** a következőre: **https://localhost:44316/Account/EndSession** .
    - A **Speciális beállítások**  >  **implicit támogatás** szakaszban válassza a **hozzáférési jogkivonatok** és **azonosító tokenek**elemet. Ez a minta megköveteli, hogy az [implicit engedélyezési folyamat](v2-oauth2-implicit-grant-flow.md) engedélyezze a bejelentkezést a felhasználó felé, és hívjon fel egy API-t.
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 1. A **tanúsítványok & titkok** oldal **ügyfél-titkok** szakaszában válassza az **új ügyfél titka**elemet. Ezután:
 
    1. Adja meg a kulcs leírását (például: **alkalmazás titka**),
@@ -226,7 +222,7 @@ A projekt webalkalmazás-és webes API-projektekkel rendelkezik. Az Azure-webhel
 1. Válassza a **Konfigurálás** lehetőséget.
 1. A **kapcsolat** lapon frissítse a cél URL-címet úgy, hogy a "https"-t használja. Használja például a következőt: `https://dotnet-web-daemon-v2-contoso.azurewebsites.net` . Kattintson a **Tovább** gombra.
 1. A **Beállítások** lapon győződjön meg arról, hogy a **szervezeti hitelesítés engedélyezése** jelölőnégyzet nincs bejelölve.
-1. Kattintson a **Mentés** gombra. Válassza a fő képernyő **Közzététel** elemét.
+1. Válassza a **Mentés** lehetőséget. Válassza a fő képernyő **Közzététel** elemét.
 
 A Visual Studio közzéteszi a projektet, és automatikusan megnyit egy böngészőt a projekt URL-címére. Ha megjelenik a projekt alapértelmezett weboldala, a kiadvány sikeres volt.
 
@@ -255,18 +251,9 @@ Ha hibát talál a MSAL.NET-ben, akkor emelje fel a problémát a [MSAL.net GitH
 
 A javaslatok megadásához nyissa meg a [felhasználói hang lapot](https://feedback.azure.com/forums/169401-azure-active-directory).
 
-## <a name="next-steps"></a>Következő lépések
-További információ a Microsoft Identity platform által támogatott különböző [hitelesítési folyamatokról és alkalmazási forgatókönyvekről](authentication-flows-app-scenarios.md) .
+## <a name="next-steps"></a>További lépések
 
-További információkért tekintse meg a következő fogalmi dokumentációt:
+További információ a Microsoft Identity platformot használó Daemon-alkalmazások létrehozásáról a védett webes API-k eléréséhez:
 
-- [Bérlet Azure Active Directory](single-and-multi-tenant-apps.md)
-- [Az Azure AD-alkalmazások hozzájárulási folyamatának ismertetése](application-consent-experience.md)
-- [Jelentkezzen be bármelyik Azure Active Directory felhasználót a több-bérlős alkalmazás mintájának használatával](howto-convert-app-to-be-multi-tenant.md)
-- [A felhasználók és a rendszergazdák beleegyezésének ismertetése](howto-convert-app-to-be-multi-tenant.md#understand-user-and-admin-consent)
-- [Alkalmazás- és szolgáltatásnév-objektumok az Azure Active Directoryban](app-objects-and-service-principals.md)
-- [Gyors útmutató: alkalmazás regisztrálása a Microsoft Identity platformmal](quickstart-register-app.md)
-- [Gyors útmutató: ügyfélalkalmazás konfigurálása a webes API-k eléréséhez](quickstart-configure-app-access-web-apis.md)
-- [Jogkivonat beszerzése az ügyfél hitelesítő adataival rendelkező alkalmazáshoz](msal-client-applications.md)
-
-Egy egyszerűbb, több-bérlős konzol démon alkalmazás esetében tekintse meg a [.net Core Daemon](quickstart-v2-netcore-daemon.md)rövid útmutatóját.
+> [!div class="nextstepaction"]
+> [Forgatókönyv: a webes API-kat meghívó alkalmazás](scenario-daemon-overview.md)

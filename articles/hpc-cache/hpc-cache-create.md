@@ -4,14 +4,14 @@ description: Azure HPC cache-példány létrehozása
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 09/03/2020
+ms.date: 09/30/2020
 ms.author: v-erkel
-ms.openlocfilehash: 5e17c55f8321ba0ad9a9686ada41413d64879d6c
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: bed158fb99654bd48184073b1266ae630255558b
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91570893"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613169"
 ---
 # <a name="create-an-azure-hpc-cache"></a>Azure HPC-gyorsítótár létrehozása
 
@@ -29,7 +29,7 @@ Az alábbi képre kattintva megtekintheti a gyorsítótár létrehozásának és
 
 ![képernyőkép a Project details lapról Azure Portal](media/hpc-cache-create-basics.png)
 
-A **projekt részletei**területen válassza ki azt az előfizetést és erőforráscsoportot, amely a gyorsítótárat fogja tárolni.<!-- Make sure the subscription is on the [access](hpc-cache-prerequisites.md#azure-subscription) list.  -->
+A **projekt részletei**területen válassza ki azt az előfizetést és erőforráscsoportot, amely a gyorsítótárat fogja tárolni.
 
 A **szolgáltatás részletei**területen adja meg a gyorsítótár nevét és a többi attribútumot:
 
@@ -282,7 +282,7 @@ Az üzenet tartalmaz néhány hasznos információt, beleértve az alábbi eleme
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Miután a gyorsítótár megjelenik az **erőforrások** listájában, átléphet a következő lépésre.
 

@@ -1,6 +1,7 @@
 ---
-title: IOS-és macOS-alapú Microsoft Identity platform | Azure
-description: Megtudhatja, hogyan jelentkezhet be a felhasználók és a lekérdezési Microsoft Graph egy iOS-vagy macOS-alkalmazásba.
+title: 'Gyors útmutató: bejelentkezés felvétele a Microsofttal iOS-vagy macOS-alkalmazásba | Azure'
+titleSuffix: Microsoft identity platform
+description: Ebből a rövid útmutatóból megtudhatja, hogyan jelentkezhet be egy iOS-vagy macOS-alkalmazás a felhasználókba, hogyan szerezhet be hozzáférési tokent a Microsoft Identity platformból, és meghívja a Microsoft Graph API-t.
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -12,12 +13,12 @@ ms.date: 09/24/2019
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: 39062396e0076af5901f2fc7d76f5c989e2ccc3a
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 6ab826b6816c8f1b71a28c6bf501b651baa2cfff
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115254"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613458"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>Gyors útmutató: bejelentkezés a felhasználókba és a Microsoft Graph API meghívása iOS-vagy macOS-alkalmazásból
 
@@ -25,13 +26,16 @@ Ez a rövid útmutató egy kódot tartalmaz, amely bemutatja, hogyan használhat
 
 Ez a rövid útmutató az iOS-és macOS-alkalmazásokra is vonatkozik. Néhány lépésre csak az iOS-alkalmazások esetében van szükség. Ezek a lépések meghívja, hogy csak az iOS rendszerhez készültek.
 
-![Bemutatja, hogyan működik a rövid útmutatóban létrehozott minta alkalmazás](media/quickstart-v2-ios/ios-intro.svg)
+## <a name="prerequisites"></a>Előfeltételek
 
-> [!NOTE]
-> **Előfeltételek**
-> * XCode 10 +
-> * iOS 10 +
-> * macOS 10.12 +
+* Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* XCode 10 +
+* iOS 10 +
+* macOS 10.12 +
+
+## <a name="how-the-sample-works"></a>A minta működése
+
+![Bemutatja, hogyan működik a rövid útmutatóban létrehozott minta alkalmazás](media/quickstart-v2-ios/ios-intro.svg)
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>A rövid útmutató mintaalkalmazásának regisztrálása és letöltése
@@ -70,16 +74,16 @@ Ez a rövid útmutató az iOS-és macOS-alkalmazásokra is vonatkozik. Néhány 
 >
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![Már konfigurált](media/quickstart-v2-ios/green-check.png) Az alkalmazás már konfigurálva van ezekkel az attribútumokkal
-> 
+>
 > #### <a name="step-2-download-the-sample-project"></a>2. lépés: a minta projekt letöltése
 > > [!div id="autoupdate_ios" class="nextstepaction"]
 > > [Az iOS-hez készült kód mintájának letöltése]()
-> 
+>
 > > [!div id="autoupdate_macos" class="nextstepaction"]
 > > [Töltse le a macOS rendszerhez készült kód mintáját]()
 > [!div renderon="docs"]
 > #### <a name="step-2-download-the-sample-project"></a>2. lépés: a minta projekt letöltése
-> 
+>
 > - [Az iOS-hez készült kód mintájának letöltése](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip)
 > - [Töltse le a macOS rendszerhez készült kód mintáját](https://github.com/Azure-Samples/active-directory-macOS-swift-native-v2/archive/master.zip)
 
@@ -260,15 +264,13 @@ self.applicationContext!.getCurrentAccount(with: nil) { (currentAccount, previou
 > |Ebben a példában: | Leírás |
 > |---------|---------|
 > | `scopes` | A kért hatóköröket tartalmazza (azaz `[ "user.read" ]` Microsoft Graph vagy `[ "<Application ID URL>/scope" ]` egyéni webes API-khoz ( `api://<Application ID>/access_as_user` ) |
-> | `account` | Az a fiók, amelynek a tokenjét kérik. Ez a rövid útmutató egyetlen Account-alkalmazásról szól. Ha többfiókos alkalmazást szeretne létrehozni, meg kell határoznia a logikai azonosítót, amely meghatározza, hogy melyik fiókot használja a rendszer a jogkivonat-kérelmekhez a `accountsFromDeviceForParameters:completionBlock:` és a megfelelő érték beadásával.`accountIdentifier` |
+> | `account` | Az a fiók, amelynek a tokenjét kérik. Ez a rövid útmutató egyetlen Account-alkalmazásról szól. Ha többfiókos alkalmazást szeretne létrehozni, meg kell határoznia a logikai azonosítót, amely meghatározza, hogy melyik fiókot használja a rendszer a jogkivonat-kérelmekhez a `accountsFromDeviceForParameters:completionBlock:` és a megfelelő érték beadásával. `accountIdentifier` |
+
+[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
 ## <a name="next-steps"></a>További lépések
 
-Próbálja ki az iOS és macOS rendszerhez készült oktatóanyagot, amely részletes útmutatót nyújt az alkalmazások létrehozásához, beleértve a gyors útmutató részletes ismertetését is.
-
-### <a name="learn-how-to-create-the-application-used-in-this-quickstart"></a>Ismerje meg, hogyan hozhatja létre az ebben a rövid útmutatóban használt alkalmazást
+Lépjen be a lépésenkénti oktatóanyagba, amelyben létrehoz egy iOS-vagy macOS-alkalmazást, amely a Microsoft Identity platform hozzáférési jogkivonatát kéri le, és a Microsoft Graph API meghívására használja.
 
 > [!div class="nextstepaction"]
-> [Az iOS és a macOS Graph API oktatóanyagának meghívása](./tutorial-v2-ios.md)
-
-[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+> [Oktatóanyag: bejelentkezés a felhasználókba és Microsoft Graph meghívása iOS-vagy macOS-alkalmazásból](tutorial-v2-ios.md)

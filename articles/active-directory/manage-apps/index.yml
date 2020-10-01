@@ -1,25 +1,25 @@
 ### YamlMime:Landing
 title: Alkalmazáskezelési dokumentáció
-summary: Az Azure Active Directory biztonságos és zökkenőmentes hozzáférést nyújt a felhőalapú és helyszíni alkalmazásokhoz. Ezenkívül nincs szükség a jelszavak kezelésére sem. A végfelhasználók egyetlen bejelentkezéssel elérhetik a Microsoft 365-öt és több ezer egyéb alkalmazást. Rövid útmutatóinkból, oktatóanyagainkból és segédleteinkből megtudhatja, hogyan kezelheti és helyezheti üzembe az alkalmazásokat.
+summary: Az Azure Active Directory egy identitás- és hozzáférés-kezelési (IAM-) rendszer. Központi helyet biztosít a digitális identitásokkal kapcsolatos információk tárolásához. A szoftveralkalmazásait konfigurálhatja az Azure AD, mint a felhasználói információkat tároló hely használatára.
 metadata:
   title: Alkalmazáskezelési dokumentáció
-  description: Az Azure Active Directory biztonságos és zökkenőmentes hozzáférést nyújt a felhőalapú és helyszíni alkalmazásokhoz. Ezenkívül nincs szükség a jelszavak kezelésére sem. A végfelhasználók egyetlen bejelentkezéssel elérhetik a Microsoft 365-öt és több ezer egyéb alkalmazást. Rövid útmutatóinkból, oktatóanyagainkból és segédleteinkből megtudhatja, hogyan kezelheti és helyezheti üzembe az alkalmazásokat.
+  description: Az Azure AD egy identitás- és hozzáférés-kezelési (IAM-) rendszer. Központi helyet biztosít a digitális identitásokkal kapcsolatos információk tárolásához. A szoftveralkalmazásait konfigurálhatja az Azure AD, mint a felhasználói információkat tároló hely használatára.
   ms.service: active-directory
   ms.subservice: app-mgmt
   ms.workload: identity
   ms.topic: landing-page
-  ms.date: 10/10/2019
+  ms.date: 09/28/2020
   author: kenwith
   ms.author: kenwith
   manager: celested
-  ms.openlocfilehash: dc056bbfb880b8cdfc2326edc3036657803f24d7
-  ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+  ms.openlocfilehash: e3232f319c14af6724bc5b844f71a5c6ff34bfa9
+  ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 08/14/2020
-  ms.locfileid: "88209117"
+  ms.lasthandoff: 09/29/2020
+  ms.locfileid: "91534998"
 landingContent:
-- title: Az alkalmazáskezelés ismertetése
+- title: Az alkalmazáskezelés bemutatása
   linkLists:
   - linkListType: overview
     links:
@@ -27,75 +27,91 @@ landingContent:
       url: what-is-application-management.md
     - text: Mi az az egyszeri bejelentkezés?
       url: what-is-single-sign-on.md
+- title: Bevezetés
+  linkLists:
   - linkListType: quickstart
     links:
-    - text: Gyorsútmutató-sorozat
+    - text: Az alkalmazásai megtekintése
       url: view-applications-portal.md
-- title: Felhőalkalmazások és egyszeri bejelentkezés kezelése
+    - text: Alkalmazás felvétele
+      url: add-application-portal.md
+- title: Alkalmazások hozzáadása és konfigurálása
   linkLists:
-  - linkListType: concept
+  - linkListType: learn
     links:
-    - text: Az egyszeri bejelentkezés ismertetése
+    - text: Alkalmazás felvétele
+      url: add-application-portal.md
+    - text: Alkalmazás konfigurálása
+      url: add-application-portal-configure.md
+- title: Alkalmazások kezelése
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Ajánlott eljárások
+      url: application-management-fundamentals.md
+    - text: Gyakori helyzetek
+      url: common-scenarios.md
+- title: Az egyszeri bejelentkezés ismertetése
+  linkLists:
+  - linkListType: architecture
+    links:
+    - text: Az egyszeri bejelentkezés alapelvei
       url: what-is-single-sign-on.md
-    - text: Végfelhasználói élmény
-      url: end-user-experiences.md
-  - linkListType: how-to-guide
-    links:
-    - text: Egyszeri bejelentkezés konfigurálása
-      url: configure-saml-single-sign-on.md
-    - text: Felhasználó vagy csoport hozzárendelése egy alkalmazáshoz
-      url: assign-user-or-group-access-portal.md
-- title: Felhasználók és csoportok kiépítése egy alkalmazáshoz
+    - text: Az egyszeri bejelentkezés beállításai
+      url: sso-options.md
+- title: Alkalmazás jóváhagyása
   linkLists:
-  - linkListType: overview
+  - linkListType: learn
     links:
-    - text: Mit jelent az alkalmazások üzembe helyezése?
-      url: /azure/active-directory/app-provisioning/user-provisioning?context=azure/active-directory/manage-apps/context/manage-apps-context
-  - linkListType: tutorial
-    links:
-    - text: SaaS-alkalmazások üzembe helyezésével kapcsolatos oktatóanyagok
-      url: /azure/active-directory/saas-apps/
-  - linkListType: how-to-guide
-    links:
-    - text: Alkalmazást szeretne létrehozni? SCIM használata az üzembe helyezéshez (Alkalmazás-üzembehelyezési dokumentáció)
-      url: /azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups
-    - text: Katalógusalkalmazást szeretne hozzáadni? Üzembe helyezés konfigurálása (Alkalmazás-üzembehelyezési dokumentáció)
-      url: /azure/active-directory/app-provisioning/configure-automatic-user-provisioning-portal
-- title: Helyszíni alkalmazás közzététele alkalmazásproxy használatával
+    - text: Felhasználói beleegyezés konfigurálása
+      url: configure-user-consent.md
+    - text: Rendszergazdai jóváhagyás konfigurálása
+      url: configure-admin-consent-workflow.md
+- title: Alkalmazások migrálása
   linkLists:
-  - linkListType: overview
+  - linkListType: learn
     links:
-    - text: Mi az alkalmazásproxy?
+    - text: Migrálási erőforrások
+      url: migration-resources.md
+    - text: AD FS-alkalmazás migrálása az Azure-ba
+      url: migrate-adfs-apps-to-azure.md
+- title: Helyszíni alkalmazások használata
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Mi az az alkalmazásproxy?
       url: what-is-application-proxy.md
-  - linkListType: concept
-    links:
-    - text: Alkalmazásproxy tervezése
+    - text: Az alkalmazásproxy üzembe helyezése
       url: application-proxy-deployment-plan.md
-  - linkListType: tutorial
-    links:
-    - text: Helyszíni alkalmazás hozzáadása
-      url: application-proxy-add-on-premises-application.md
-  - linkListType: how-to-guide
-    links:
-    - text: Összekötők konfigurálása proxykiszolgálókkal
-      url: application-proxy-configure-connectors-with-proxy-servers.md
-    - text: Egyéni kezdőlap konfigurálása
-      url: application-proxy-configure-custom-home-page.md
-  - linkListType: deploy
-    links:
-    - text: Távoli asztal közzététele alkalmazásproxy használatával
-      url: application-proxy-integrate-with-remote-desktop-services.md
-    - text: Távoli hozzáférés engedélyezése a SharePointhoz az Azure AD-alkalmazásproxy segítségével
-      url: application-proxy-integrate-with-sharepoint-server.md
-- title: Örökölt alkalmazások védelme alkalmazásszolgáltatási vezérlők és hálózatok segítségével
+- title: Alkalmazások védelmének biztosítása
   linkLists:
-  - linkListType: overview
+  - linkListType: learn
     links:
-    - text: Biztonságos hibrid hozzáférés örökölt alkalmazások esetében (a felhőben és a helyszínen)
-      url: secure-hybrid-access.md
-  - linkListType: how-to-guide
+    - text: Alkalmazások hozzáférésének kezelése
+      url: what-is-access-management.md
+    - text: Bérlőkorlátozások kezelése
+      url: tenant-restrictions.md
+- title: Saját alkalmazások konfigurálása
+  linkLists:
+  - linkListType: learn
     links:
-    - text: Az alkalmazások védelme az F5 Big-IP APM segítségével
-      url: https://aka.ms/f5-hybridaccessguide
-    - text: Az alkalmazások védelme a Zscaler ZPA segítségével
-      url: https://aka.ms/zscaler-hybridaccessguide
+    - text: Saját alkalmazások üzembe helyezésének megtervezése
+      url: access-panel-deployment-plan.md
+    - text: Gyűjtemények létrehozása
+      url: access-panel-collections.md
+- title: Új alkalmazások fejlesztése
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Útmutatás fejlesztőknek
+      url: developer-guidance-for-integrating-applications.md
+    - text: A platform bemutatása
+      url: ../develop/v2-overview.md
+- title: A dokumentumok újdonságai
+  linkLists:
+  - linkListType: whats-new
+    links:
+    - text: SAML-alapú SSO beállítása
+      url: add-application-portal-setup-sso.md
+    - text: OIDC-alapú SSO beállítása
+      url: add-application-portal-setup-oidc-sso.md

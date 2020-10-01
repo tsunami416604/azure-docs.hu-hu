@@ -3,17 +3,17 @@ title: Gyors útmutató – a .NET-hez készült ügyféloldali kódtár (v4) Az
 description: Megtudhatja, hogyan hozhat létre, kérhet le és törölhet titkos kódokat egy Azure Key vaultban a .NET ügyféloldali kódtár (v4) használatával
 author: msmbaldwin
 ms.author: mbaldwin
-ms.date: 03/12/2020
+ms.date: 09/30/2020
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cf9c34dc2dde5c41edb7991451aebf5d90104196
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: cc5aa7f10d83edc757e99820b9591a953df72062
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89003252"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91612251"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net-sdk-v4"></a>Gyors útmutató: Azure Key Vault .NET-hez készült ügyféloldali kódtár (SDK v4)
 
@@ -31,69 +31,70 @@ Az Azure Key Vault segít a felhőalapú alkalmazások és szolgáltatások ált
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* A [.net Core 3,1 SDK vagy újabb verzió](https://dotnet.microsoft.com/download/dotnet-core/3.1).
+* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/dotnet)
+* [.NET Core 3,1 SDK vagy újabb](https://dotnet.microsoft.com/download/dotnet-core)
 * [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) vagy [Azure PowerShell](/powershell/azure/)
 
-Ez a rövid útmutató feltételezi, hogy futtatja `dotnet` , az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)-t és a Windows-parancsokat egy Windows-terminálon (például a [PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-windows?view=powershell-6), a [Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-6)vagy a [Azure Cloud Shell](https://shell.azure.com/)).
+## <a name="setup"></a>Telepítés
 
-## <a name="setting-up"></a>Beállítás
+### <a name="create-a-new-console-app"></a>Új Console-alkalmazás létrehozása
 
-### <a name="create-new-net-console-app"></a>Új .NET Console-alkalmazás létrehozása
+A .NET Core Console-alkalmazás létrehozásához és fordításához hajtsa végre az alábbi lépéseket.
 
-A konzol ablakban a `dotnet new` parancs használatával hozzon létre egy új, a nevű .net-konzol alkalmazást `key-vault-console-app` .
+1. A parancssorban futtassa a következő parancsot egy nevű projekt létrehozásához `key-vault-console-app` :
 
-```console
-dotnet new console -n key-vault-console-app
-```
+    ```dotnetcli
+    dotnet new console --name key-vault-console-app
+    ```
 
-Módosítsa a könyvtárat az újonnan létrehozott alkalmazás mappájába. Az alkalmazást az alábbiakkal hozhatja létre:
+1. Váltson az újonnan létrehozott *Key-Vault-Console-app* könyvtárra, és futtassa a következő parancsot a projekt felépítéséhez:
 
-```console
-dotnet build
-```
+    ```dotnetcli
+    dotnet build
+    ```
 
-A Build kimenete nem tartalmazhat figyelmeztetést vagy hibát.
+    A Build kimenete nem tartalmazhat figyelmeztetést vagy hibát.
+    
+    ```console
+    Build succeeded.
+     0 Warning(s)
+     0 Error(s)
+    ```
 
-```console
-Build succeeded.
- 0 Warning(s)
- 0 Error(s)
-```
+### <a name="install-the-packages"></a>A csomagok telepítése
 
-### <a name="install-the-package"></a>A csomag telepítése
+A parancssorból telepítse a Azure Key Vault .NET-hez készült ügyféloldali kódtárat:
 
-A konzol ablakban telepítse a Azure Key Vault .NET-hez készült ügyféloldali kódtárat:
-
-```console
+```dotnetcli
 dotnet add package Azure.Security.KeyVault.Secrets
 ```
 
-Ebben a rövid útmutatóban a következő csomagokat is telepítenie kell:
+Ehhez a rövid útmutatóhoz telepítenie kell az Azure SDK-ügyfél függvénytárát is az Azure Identity szolgáltatáshoz:
 
-```console
+```dotnetcli
 dotnet add package Azure.Identity
 ```
 
 ### <a name="create-a-resource-group-and-key-vault"></a>Erőforráscsoport és kulcstartó létrehozása
 
-[!INCLUDE [Create a resource group and key vault](../../../includes/key-vault-rg-kv-creation.md)]
+[!INCLUDE[Create a resource group and key vault](../../../includes/key-vault-rg-kv-creation.md)]
 
 ### <a name="create-a-service-principal"></a>Egyszerű szolgáltatás létrehozása
 
-[!INCLUDE [Create a service principal](../../../includes/key-vault-sp-creation.md)]
+[!INCLUDE[Create a service principal](../../../includes/key-vault-sp-creation.md)]
 
 #### <a name="give-the-service-principal-access-to-your-key-vault"></a>A szolgáltatás egyszerű hozzáférésének biztosítása a kulcstartóhoz
 
-[!INCLUDE [Give the service principal access to your key vault](../../../includes/key-vault-sp-kv-access.md)]
+<!-- TODO: need to pass -g myResourceGroup to this command too -->
+[!INCLUDE[Give the service principal access to your key vault](../../../includes/key-vault-sp-kv-access.md)]
 
-#### <a name="set-environmental-variables"></a>Környezeti változók beállítása
+#### <a name="set-environment-variables"></a>Környezeti változók beállítása
 
-[!INCLUDE [Set environmental variables](../../../includes/key-vault-set-environmental-variables.md)]
+[!INCLUDE[Set environment variables](../../../includes/key-vault-set-environmental-variables.md)]
 
 ## <a name="object-model"></a>Objektummodell
 
-A .NET-hez készült Azure Key Vault ügyféloldali kódtára lehetővé teszi a kulcsok és a kapcsolódó eszközök, például tanúsítványok és titkos kódok kezelését. Az alábbi kódrészletek megmutatják, hogyan hozhat létre egy ügyfelet, hogyan állíthat be titkos kulcsot, beolvashat egy titkos kulcsot, és törölhet egy titkos kulcsot.
+A .NET-hez készült Azure Key Vault ügyféloldali kódtára lehetővé teszi a kulcsok és a kapcsolódó eszközök kezelését. A kapcsolódó eszközök közé tartoznak például tanúsítványok és titkos kulcsok. A [példák](#code-examples) az ügyfelek létrehozására, a titkos kulcs beolvasására és a titkos kód törlésére mutatnak.
 
 A teljes konzol alkalmazás a következő címen érhető el: https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-app .
 
@@ -101,21 +102,21 @@ A teljes konzol alkalmazás a következő címen érhető el: https://github.com
 
 ### <a name="add-directives"></a>Irányelvek hozzáadása
 
-Adja hozzá a következő irányelveket a kód elejéhez:
+Adja hozzá a következő irányelveket a *program.cs*tetejéhez:
 
-[!code-csharp[Directives](~/samples-key-vault-dotnet-quickstart/key-vault-console-app/Program.cs?name=directives)]
+[!code-csharp[](~/samples-key-vault-dotnet-quickstart/key-vault-console-app/Program.cs?name=directives)]
 
 ### <a name="authenticate-and-create-a-client"></a>Ügyfél hitelesítése és létrehozása
 
-A Key Vault hitelesítése és a Key Vault-ügyfél létrehozása a fenti [környezeti változók beállítása](#set-environmental-variables) című lépés környezeti változóktól függ. A Key Vault neve a "https://. vault.azure.net" formátumban van kibontva a Key Vault URI-ra \<your-key-vault-name\> . Az alábbi kód a Key Vault hitelesítéséhez használja a  ["DefaultAzureCredential ()"](/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet) értéket, amely környezeti változókat olvas be a hozzáférési jogkivonat lekéréséhez. 
+A Key Vault hitelesítés és az ügyfél létrehozása a környezeti [változók beállítása](#set-environment-variables) lépésben megadott környezeti változóktól függ. A kulcstartó neve a Key Vault URI-ra van bontva, a következő formátumban: `https://<your-key-vault-name>.vault.azure.net` . A következő kód [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet) használ a Key Vault hitelesítéséhez, amely környezeti változókat olvas be a hozzáférési jogkivonat lekéréséhez.
 
-[!code-csharp[Directives](~/samples-key-vault-dotnet-quickstart/key-vault-console-app/Program.cs?name=authenticate)]
+[!code-csharp[](~/samples-key-vault-dotnet-quickstart/key-vault-console-app/Program.cs?name=authenticate)]
 
 ### <a name="save-a-secret"></a>Titkos kód mentése
 
-Most, hogy az alkalmazás hitelesítése megtörtént, egy titkos kulcsot is hozzáadhat a kulcstartóhoz az [ügyfél használatával. SetSecret-metódus](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.setsecretasync) ehhez a mintában a "keresési kifejezésként" nevet kell használni a titkos kulcshoz.  
+Most, hogy a konzol alkalmazás hitelesítése megtörtént, adjon hozzá egy titkos kulcsot a kulcstartóhoz. Ehhez a feladathoz használja az [ügyfelet. SetSecret](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.setsecretasync) metódus. A metódus első paramétere elfogadja a titkos &mdash; "keresési kifejezésként" nevét ebben a mintában.
 
-[!code-csharp[Set secret](~/samples-key-vault-dotnet-quickstart/key-vault-console-app/Program.cs?name=setsecret)]
+[!code-csharp[](~/samples-key-vault-dotnet-quickstart/key-vault-console-app/Program.cs?name=setsecret)]
 
 Ellenőrizze, hogy a titkos kulcs be van-e állítva az az kulcstartó [Secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) paranccsal:
 
@@ -129,17 +130,17 @@ az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
 
 ### <a name="retrieve-a-secret"></a>Titkos kód beolvasása
 
-Most már lekérheti a korábban beállított értéket az [ügyféllel. GetSecret metódus](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.getsecretasync).
+Most már lekérheti a korábban beállított értéket az [ügyféllel. GetSecret](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.getsecretasync) metódus.
 
-[!code-csharp[Get secret](~/samples-key-vault-dotnet-quickstart/key-vault-console-app/Program.cs?name=getsecret)]
+[!code-csharp[](~/samples-key-vault-dotnet-quickstart/key-vault-console-app/Program.cs?name=getsecret)]
 
 A titkos kód most már mentve van `secret.Value` .
 
 ### <a name="delete-a-secret"></a>Titkos kulcs törlése
 
-Végül törölje a titkos kulcsot a Key vaultból az [ügyféllel. DeleteSecret metódus](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.getsecretasync).
+Végül törölje a titkos kulcsot a Key vaultból az [ügyféllel. DeleteSecret](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.getsecretasync) metódus.
 
-[!code-csharp[Delete secret](~/samples-key-vault-dotnet-quickstart/key-vault-console-app/Program.cs?name=deletesecret)]
+[!code-csharp[](~/samples-key-vault-dotnet-quickstart/key-vault-console-app/Program.cs?name=deletesecret)]
 
 A titkos kód az az kulcstartó [Secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) paranccsal ellenőrizhető:
 
@@ -156,20 +157,22 @@ az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
 Ha már nincs rá szükség, használhatja az Azure CLI-t vagy Azure PowerShell a kulcstartó és a hozzá tartozó erőforráscsoport eltávolításához.
 
 ### <a name="delete-a-key-vault"></a>Key Vault törlése
+
 ```azurecli
 az keyvault delete --name <your-unique-keyvault-name>
 ```
 
-```powershell
+```azurepowershell
 Remove-AzKeyVault -VaultName <your-unique-keyvault-name>
 ```
 
 ### <a name="purge-a-key-vault"></a>Key Vault kiürítése
+
 ```azurecli
 az keyvault purge --location eastus --name <your-unique-keyvault-name>
 ```
 
-```powershell
+```azurepowershell
 Remove-AzKeyVault -VaultName <your-unique-keyvault-name> -InRemovedState -Location eastus
 ```
 
@@ -185,61 +188,76 @@ Remove-AzResourceGroup -Name "myResourceGroup"
 
 ## <a name="sample-code"></a>Mintakód
 
-```csharp
-using System;
-using Azure.Identity;
-using Azure.Security.KeyVault.Secrets;
+Módosítsa a .NET Core Console alkalmazást úgy, hogy az a következő lépések végrehajtásával működjön együtt a Key Vault:
 
-namespace key_vault_console_app
-{
-    class Program
+1. Cserélje le a *program.cs* található kódot a következő kódra:
+
+    ```csharp
+    using System;
+    using Azure.Identity;
+    using Azure.Security.KeyVault.Secrets;
+    
+    namespace key_vault_console_app
     {
-        static void Main(string[] args)
+        class Program
         {
-            string secretName = "mySecret";
-
-            string keyVaultName = Environment.GetEnvironmentVariable("KEY_VAULT_NAME");
-            var kvUri = "https://" + keyVaultName + ".vault.azure.net";
-
-            var client = new SecretClient(new Uri(kvUri), new DefaultAzureCredential());
-
-            Console.Write("Input the value of your secret > ");
-            string secretValue = Console.ReadLine();
-
-            Console.Write("Creating a secret in " + keyVaultName + " called '" + secretName + "' with the value '" + secretValue + "` ...");
-
-            client.SetSecret(secretName, secretValue);
-
-            Console.WriteLine(" done.");
-
-            Console.WriteLine("Forgetting your secret.");
-            secretValue = "";
-            Console.WriteLine("Your secret is '" + secretValue + "'.");
-
-            Console.WriteLine("Retrieving your secret from " + keyVaultName + ".");
-
-            KeyVaultSecret secret = client.GetSecret(secretName);
-
-            Console.WriteLine("Your secret is '" + secret.Value + "'.");
-
-            Console.Write("Deleting your secret from " + keyVaultName + " ...");
-
-            client.StartDeleteSecret(secretName);
-
-            System.Threading.Thread.Sleep(5000);
-            Console.WriteLine(" done.");
-
+            static void Main(string[] args)
+            {
+                const string secretName = "mySecret";
+                var keyVaultName = Environment.GetEnvironmentVariable("KEY_VAULT_NAME");
+                var kvUri = $"https://{keyVaultName}.vault.azure.net";
+    
+                var client = new SecretClient(new Uri(kvUri), new DefaultAzureCredential());
+    
+                Console.Write("Input the value of your secret > ");
+                var secretValue = Console.ReadLine();
+    
+                Console.Write($"Creating a secret in {keyVaultName} called '{secretName}' with the value '{secretValue}' ...");
+                client.SetSecret(secretName, secretValue);
+                Console.WriteLine(" done.");
+    
+                Console.WriteLine("Forgetting your secret.");
+                secretValue = string.Empty;
+                Console.WriteLine($"Your secret is '{secretValue}'.");
+    
+                Console.WriteLine($"Retrieving your secret from {keyVaultName}.");
+                KeyVaultSecret secret = client.GetSecret(secretName);
+                Console.WriteLine($"Your secret is '{secret.Value}'.");
+    
+                Console.Write($"Deleting your secret from {keyVaultName} ...");
+                client.StartDeleteSecret(secretName);
+                System.Threading.Thread.Sleep(5000);
+                Console.WriteLine(" done.");
+            }
         }
     }
-}
-```
+    ```
 
+1. Futtassa az alábbi parancsot az alkalmazás futtatásához.
 
-## <a name="next-steps"></a>Következő lépések
+    ```dotnetcli
+    dotnet run
+    ```
 
-Ebben a rövid útmutatóban létrehozott egy titkos kulcsot, és lekérte a titkos kulcsot. Tekintse [meg a teljes konzol alkalmazást a githubon](https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-app).
+1. Ha a rendszer kéri, adjon meg egy titkos értéket. Például: mySecretPassword.
 
-Ha többet szeretne megtudni a Key Vaultről és az alkalmazásokkal való integrálásáról, folytassa az alábbi cikkekkel.
+    Megjelenik a következő kimenet egy változata:
+
+    ```console
+    Input the value of your secret > mySecretPassword
+    Creating a secret in <your-unique-keyvault-name> called 'mySecret' with the value 'mySecretPassword' ... done.
+    Forgetting your secret.
+    Your secret is ''.
+    Retrieving your secret from <your-unique-keyvault-name>.
+    Your secret is 'mySecretPassword'.
+    Deleting your secret from <your-unique-keyvault-name> ... done.    
+    ```
+
+## <a name="next-steps"></a>További lépések
+
+Ebben a rövid útmutatóban létrehozott egy kulcstartót, egy titkos kulcsot, és beolvasta ezt a titkot. Tekintse [meg a teljes konzol alkalmazást a githubon](https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-app).
+
+Ha többet szeretne megtudni a Key Vaultről és az alkalmazásokkal való integrálásáról, tekintse meg a következő cikkeket:
 
 - [A Azure Key Vault áttekintése](../general/overview.md)
 - Tekintse [meg a Azure Key Vault fejlesztői útmutatóját](../general/developers-guide.md)

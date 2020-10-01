@@ -1,7 +1,7 @@
 ---
-title: JavaScript egyoldalas alkalmazás oktatóanyaga | Azure
+title: 'Oktatóanyag: a Microsoft Identity platformot használó JavaScript egyoldalas alkalmazás létrehozása hitelesítéshez | Azure'
 titleSuffix: Microsoft identity platform
-description: Ebből az oktatóanyagból megtudhatja, hogyan hívhat meg egy olyan API-t, amely a Microsoft Identity platform által kiadott hozzáférési jogkivonatokat igényel.
+description: Ebben az oktatóanyagban egy olyan JavaScript egyoldalas alkalmazást (SPA) hoz létre, amely a Microsoft Identity platform használatával jelentkezik be a felhasználókba, és hozzáférési jogkivonatot kap a Microsoft Graph API nevében való meghívásához.
 services: active-directory
 author: navyasric
 manager: CelesteDG
@@ -12,52 +12,48 @@ ms.workload: identity
 ms.date: 08/06/2020
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: 728c0b4dadfa23b2d52e773928a3f78df27068b6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: fca1ab61c4c07d8c619719d79872470626137249
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91256824"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611180"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Bejelentkezés a felhasználókba és a Microsoft Graph API meghívása egy JavaScript egyoldalas alkalmazásból (SPA)
 
-Ez az útmutató bemutatja, hogyan használható a JavaScript egyoldalas alkalmazás (SPA):
-- Bejelentkezés személyes fiókokba, valamint munkahelyi és iskolai fiókokba
-- Hozzáférési jogkivonat beszerzése
-- Hívja meg az Microsoft Graph API-t vagy más API-kat, amelyek hozzáférési jogkivonatokat igényelnek a *Microsoft Identity platform végpontján*
+Ebben az oktatóanyagban egy egyoldalas alkalmazást (SPA) hoz létre a JavaScriptben, amely személyes Microsoft-fiókokkal vagy munkahelyi és iskolai fiókkal tud bejelentkezni a felhasználókba, majd beszerzett egy hozzáférési jogkivonatot a Microsoft Graph API meghívásához.
+
+Ebben az oktatóanyagban:
+
+> [!div class="checklist"]
+> * JavaScript-projekt létrehozása a `npm`
+> * Az alkalmazás regisztrálása a Azure Portalban
+> * Kód hozzáadása a felhasználói bejelentkezés és a kijelentkezés támogatásához
+> * Kód hozzáadása a Microsoft Graph API meghívásához
+> * Az alkalmazás tesztelése
 
 >[!TIP]
 > Ez az oktatóanyag a MSAL.js v1. x verzióját használja, amely az egylapos alkalmazások implicit engedélyezési folyamatának használatára korlátozódik. Javasoljuk, hogy az összes új alkalmazást használja, [MSAL.js 2. x-et, az engedélyezési kódot pedig PKCE és CORS](tutorial-v2-javascript-auth-code.md) támogatással.
+
+## <a name="prerequisites"></a>Előfeltételek
+
+* [Node.js](https://nodejs.org/en/download/) helyi webkiszolgáló futtatásához.
+* A Project Files módosítására szolgáló [Visual Studio Code](https://code.visualstudio.com/download) vagy más szerkesztő.
+* Egy modern böngésző. Az oktatóanyagban az alkalmazás [ES6](http://www.ecma-international.org/ecma-262/6.0/) -konvenciók általi használata miatt **nem támogatja** az **Internet Explorert** .
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Az útmutató által létrehozott minta alkalmazás működése
 
 ![Bemutatja, hogyan működik az oktatóanyag által generált minta alkalmazás](media/active-directory-develop-guidedsetup-javascriptspa-introduction/javascriptspa-intro.svg)
 
-### <a name="more-information"></a>További információ
+Az útmutatóban létrehozott minta alkalmazás lehetővé teszi, hogy a JavaScript SPA lekérdezze a Microsoft Graph API-t vagy egy webes API-t, amely elfogadja a tokeneket a Microsoft Identity platform végpontján. Ebben az esetben a felhasználó bejelentkezése után hozzáférési jogkivonatot kér a rendszer, és hozzáadja a HTTP-kérésekhez az engedélyezési fejlécen keresztül. Ez a token a felhasználó profiljának és e-maileknek az **MS Graph API**használatával való beszerzésére szolgál.
 
-Az útmutatóban létrehozott minta alkalmazás lehetővé teszi, hogy a JavaScript SPA lekérdezze a Microsoft Graph API-t vagy egy webes API-t, amely elfogadja a tokeneket a Microsoft Identity platform végpontján. Ebben az esetben a felhasználó bejelentkezése után hozzáférési jogkivonatot kér a rendszer, és hozzáadja a HTTP-kérésekhez az engedélyezési fejlécen keresztül. Ez a token a felhasználó profiljának és e-maileknek az **MS Graph API**használatával való beszerzésére szolgál. A token beszerzését és megújítását a **Microsoft Authentication Library (MSAL) kezeli a javascripthez**.
-
-### <a name="libraries"></a>Kódtárak
-
-Ez az útmutató a következő könyvtárat használja:
-
-|Kódtár|Description|
-|---|---|
-|[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|Microsoft hitelesítési függvénytár JavaScripthez|
+A token beszerzését és megújítását a [Microsoft Authentication Library (MSAL) kezeli a javascripthez](https://github.com/AzureAD/microsoft-authentication-library-for-js).
 
 ## <a name="set-up-your-web-server-or-project"></a>Webkiszolgáló vagy projekt beállítása
 
 > Inkább a minta projektjét szeretné letölteni? [Töltse le a projektfájlok fájljait](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip).
 >
 > A kód minta konfigurálásához a végrehajtás előtt ugorjon a [konfigurációs lépésre](#register-your-application).
-
-## <a name="prerequisites"></a>Előfeltételek
-
-* Az oktatóanyag futtatásához helyi webkiszolgálóra, például [Node.js](https://nodejs.org/en/download/), [.net Core](https://www.microsoft.com/net/core)vagy IIS Express [Visual Studio 2017](https://www.visualstudio.com/downloads/)-integrációra van szükség.
-
-* Az útmutatóban szereplő utasítások a Node.js beépített webkiszolgálón alapulnak. Javasoljuk, hogy a [Visual Studio Code](https://code.visualstudio.com/download) -ot használja integrált fejlesztői környezetként (ide).
-
-* Egy modern böngésző. Ez a JavaScript-minta [ES6](http://www.ecma-international.org/ecma-262/6.0/) -konvenciókat használ, ezért **nem** támogatja az **Internet Explorert**.
 
 ## <a name="create-your-project"></a>Projekt létrehozása
 
@@ -279,7 +275,7 @@ A hitelesítés további folytatása előtt regisztrálja alkalmazását **Azure
 1. Az alkalmazás **áttekintése** lapon jegyezze fel az **alkalmazás (ügyfél) azonosítójának** értékét későbbi használatra.
 1. Ez a rövid útmutató az [implicit engedélyezési folyamat](v2-oauth2-implicit-grant-flow.md) engedélyezését igényli. A regisztrált alkalmazás bal oldali ablaktábláján válassza a **hitelesítés**lehetőséget.
 1. A **Speciális beállítások**területén az **implicit engedélyezés**területen jelölje be az **azonosító tokenek** és a **hozzáférési tokenek** jelölőnégyzetet. Az azonosító jogkivonatok és hozzáférési tokenek megadása kötelező, mert az alkalmazásnak be kell jelentkeznie a felhasználókba, és hívnia kell egy API-t.
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 > ### <a name="set-a-redirect-url-for-nodejs"></a>Átirányítási URL-cím beállítása Node.jshoz
 >
@@ -486,8 +482,6 @@ Az útmutatóban létrehozott minta alkalmazásban a metódus használatával HT
    ```
 1. A böngészőben adja meg a **http://localhost:3000** vagy **http://localhost:{port}** a értéket, ahol a *port* a webkiszolgáló által figyelt port. Ekkor meg kell jelennie a *index.html* -fájl és a **Bejelentkezés** gomb tartalmának.
 
-## <a name="test-your-application"></a>Az alkalmazás tesztelése
-
 Miután a böngésző betölti a *index.html* fájlt, válassza a **Bejelentkezés**lehetőséget. A rendszer felszólítja, hogy jelentkezzen be a Microsoft Identity platform-végponttal:
 
 ![A JavaScript SPA-fiók bejelentkezési ablaka](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptspascreenshot1.png)
@@ -512,3 +506,10 @@ A Microsoft Graph API-nak a felhasználónak *. Read* hatókörrel kell rendelke
 > A rendszer a hatókörök számának növelésével további hozzájárulásokat is kérhet a felhasználótól.
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+
+## <a name="next-steps"></a>További lépések
+
+Az egyoldalas alkalmazások (SPA) fejlesztése a Microsoft Identity platformon, a több részből álló forgatókönyvek sorozatában.
+
+> [!div class="nextstepaction"]
+> [Forgatókönyv: egyoldalas alkalmazás](scenario-spa-overview.md)

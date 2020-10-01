@@ -1,7 +1,7 @@
 ---
-title: JavaScript egyoldalas alkalmazás oktatóanyaga – Auth kód flow | Azure
+title: 'Oktatóanyag: auth-programkódot használó egyoldalas JavaScript-alkalmazás létrehozása | Azure'
 titleSuffix: Microsoft identity platform
-description: Hogyan használhatják a JavaScript SPA-alkalmazások az Auth Code flow-t olyan API meghívásához, amelyhez hozzáférési tokenek szükségesek Azure Active Directory v 2.0 végponttal
+description: Ebben az oktatóanyagban létrehoz egy JavaScript SPA-t, amely bejelentkezhet a felhasználókba, és az Auth Code flow használatával beszerezhet egy hozzáférési jogkivonatot a Microsoft Identity platformból, és meghívhatja a Microsoft Graph API-t.
 services: active-directory
 author: hahamil
 manager: CelesteDG
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: 7a136c03db6e27763a22d92d2c335f23c616856e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 89bc974e4d95da183f23ef6643a03b3f20cfa6fa
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91256806"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611163"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-app-spa-using-auth-code-flow"></a>Oktatóanyag: bejelentkezés a felhasználókba és a Microsoft Graph API meghívása egy JavaScript-alapú egyoldalas alkalmazásból (SPA) az Auth Code flow használatával
 
@@ -32,6 +32,11 @@ Ez az oktatóanyag bemutatja, hogyan hozhat létre olyan JavaScript-alapú egyol
 A MSAL.js 2,0 a MSAL.js 1,0-es verziójában javítja az engedélyezési kód folyamatát a böngészőben az implicit engedélyezési folyamat helyett. A MSAL.js 2,0 **nem támogatja az** implicit folyamatot.
 
 [!INCLUDE [MSAL.js 2.0 and Azure AD B2C temporary incompatibility notice](../../../includes/msal-b2c-cors-compatibility-notice.md)]
+
+## <a name="prerequisites"></a>Előfeltételek
+
+* [Node.js](https://nodejs.org/en/download/) helyi webkiszolgáló futtatásához
+* [Visual Studio Code](https://code.visualstudio.com/download) vagy más Kódszerkesztő
 
 ## <a name="how-the-tutorial-app-works"></a>Az oktatóanyag alkalmazás működése
 
@@ -52,11 +57,6 @@ Inkább az oktatóanyag befejezett projektjét szeretné letölteni? Ha a projek
 Ezután a kód minta konfigurálásához a végrehajtás előtt ugorjon a [konfigurációs lépésre](#register-your-application).
 
 Ha folytatni szeretné az oktatóanyagot, és saját maga is felépíti az alkalmazást, folytassa a következő szakasszal, [előfeltételekkel](#prerequisites).
-
-## <a name="prerequisites"></a>Előfeltételek
-
-* [Node.js](https://nodejs.org/en/download/) helyi webkiszolgáló futtatásához
-* [Visual Studio Code](https://code.visualstudio.com/download) vagy más Kódszerkesztő
 
 ## <a name="create-your-project"></a>Projekt létrehozása
 
@@ -619,23 +619,23 @@ Elkészült az alkalmazás létrehozásával, és most már készen áll a Node.
 
 Miután a böngésző betölti a *index.html* fájlt, válassza a **Bejelentkezés**lehetőséget. A rendszer felszólítja, hogy jelentkezzen be a Microsoft Identity platform-végponttal:
 
-:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-01-signin-dialog.png" alt-text="Webböngésző – bejelentkezési párbeszédpanel megjelenítése":::
+:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-01-signin-dialog.png" alt-text="Egy egyoldalas alkalmazásban az engedélyezési kód folyamatát ábrázoló diagram":::
 
 ### <a name="provide-consent-for-application-access"></a>Adja meg az alkalmazás-hozzáférés beleegyezikét
 
 Amikor először jelentkezik be az alkalmazásba, a rendszer felszólítja, hogy adjon hozzáférést a profilhoz, és jelentkezzen be:
 
-:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-02-consent-dialog.png" alt-text="A böngészőben megjelenő tartalom párbeszédpanel":::
+:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-02-consent-dialog.png" alt-text="Egy egyoldalas alkalmazásban az engedélyezési kód folyamatát ábrázoló diagram":::
 
 Ha beleegyezik a kért engedélyekkel, a webalkalmazások megjelenítik a felhasználónevet, és sikeres bejelentkezést jeleznek:
 
-:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-03-signed-in.png" alt-text="A webböngésző sikeres bejelentkezésének eredményei":::
+:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-03-signed-in.png" alt-text="Egy egyoldalas alkalmazásban az engedélyezési kód folyamatát ábrázoló diagram":::
 
 ### <a name="call-the-graph-api"></a>A Graph API meghívása
 
 A bejelentkezést követően válassza a **Profil megtekintése** lehetőséget a Microsoft Graph API-hívásra adott válaszban visszaadott felhasználói profil adatainak megtekintéséhez:
 
-:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-04-see-profile.png" alt-text="A Microsoft Graph a böngészőben megjelenő profil adatai":::
+:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-04-see-profile.png" alt-text="Egy egyoldalas alkalmazásban az engedélyezési kód folyamatát ábrázoló diagram":::
 
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>További információ a hatókörökről és a delegált engedélyekről
 
@@ -647,16 +647,9 @@ Ha egy háttérrendszer API-nak nincs szüksége hatókörre, ami nem ajánlott,
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban létrehozott egy JavaScript-alapú egyoldalas alkalmazást (SPA), amely a JavaScript v 2.0-hoz készült Microsoft Authentication Library (MSAL) szolgáltatást használja a következőhöz:
+Ha szeretné mélyebben megismerni a JavaScript egyoldalas alkalmazás-fejlesztést a Microsoft Identity platformon, tekintse meg a több részből álló forgatókönyvek sorozatát:
 
-> [!div class="checklist"]
-> * A OAuth 2,0 engedélyezési kód folyamatának végrehajtása a PKCE
-> * Személyes Microsoft-fiókok, valamint munkahelyi és iskolai fiókok aláírása
-> * Hozzáférési jogkivonat beszerzése
-> * Hívja meg Microsoft Graph vagy saját API-ját, amelyhez a Microsoft Identity platform végponttól kapott hozzáférési jogkivonatok szükségesek
-
-Ha többet szeretne megtudni az engedélyezési kód folyamatáról, beleértve az implicit és az Auth kód közötti különbségeket, tekintse meg a [Microsoft Identity platform és a OAuth 2,0 engedélyezési kód](v2-oauth2-auth-code-flow.md)folyamatát.
-
-Ha szeretné mélyebben bemutatni a JavaScript egyoldalas alkalmazás-fejlesztést a Microsoft Identity platformon, a többrészes [forgatókönyv: a cikkek egyoldalas alkalmazási](scenario-spa-overview.md) sorozata segítséget nyújt az első lépésekhez.
+> [!div class="nextstepaction"]
+> [Forgatókönyv: egyoldalas alkalmazás](scenario-spa-overview.md)

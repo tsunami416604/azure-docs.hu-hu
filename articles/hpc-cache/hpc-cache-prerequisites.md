@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: v-erkel
-ms.openlocfilehash: 7731839d23ec49ddfee814cc6b2f6b3459372f03
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 9454dd8d1d6648396980f5148384d2e0119e0dab
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89613993"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91612982"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Az Azure HPC cache használatának előfeltételei
 
@@ -36,9 +36,6 @@ A cikk további részében találhat konkrét javaslatokat.
 ## <a name="azure-subscription"></a>Azure-előfizetés
 
 Díjköteles előfizetés ajánlott.
-<!-- 
-> [!NOTE]
-> The Azure HPC Cache team must add your subscription to the access list before it can be used to create a cache instance. This procedure helps ensure that each customer gets high-quality responsiveness from their caches. Fill out [this form](https://aka.ms/onboard-hpc-cache) to request access.  -->
 
 ## <a name="network-infrastructure"></a>Hálózati infrastruktúra
 
@@ -164,6 +161,6 @@ További információt a [NAS-konfiguráció és az NFS-tárolási cél problém
 
 Ha Azure HPC-gyorsítótárat szeretne létrehozni vagy kezelni az Azure parancssori felületéről (Azure CLI), telepítenie kell a CLI-szoftvert és a HPC-cache kiterjesztést. Kövesse az Azure [parancssori felület beállítása az Azure HPC cache-hez](az-cli-prerequisites.md)című témakör utasításait.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Azure HPC cache-példány létrehozása](hpc-cache-create.md) a Azure Portal

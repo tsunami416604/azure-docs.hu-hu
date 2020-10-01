@@ -1,7 +1,7 @@
 ---
-title: Bejelentkezés felvétele a Microsofttal a webalkalmazások ASP.NET Coreához | Azure
+title: 'Gyors útmutató: bejelentkezés felvétele a Microsofttal egy ASP.NET Core webalkalmazásba | Azure'
 titleSuffix: Microsoft identity platform
-description: Megtudhatja, hogyan implementálhatja a Microsoft bejelentkezést egy ASP.NET Core webalkalmazásban az OpenID Connect használatával
+description: Ebből a rövid útmutatóból megtudhatja, hogyan valósítja meg egy alkalmazás a Microsoft-bejelentkezést egy ASP.NET Core webalkalmazásban az OpenID Connect használatával
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,18 +12,23 @@ ms.workload: identity
 ms.date: 09/11/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 1d31fc70aaf8449ed8bdafe4e290113e20865906
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: bf80a15131a8808359d21d5a9655ef04db236178
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90902358"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613492"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Gyors útmutató: bejelentkezés felvétele a Microsofttal ASP.NET Core webalkalmazásba
 
 Ebben a rövid útmutatóban megtudhatja, hogyan jelentkezhet be ASP.NET Core webalkalmazás a személyes fiókokban (hotmail.com, outlook.com, Others) és munkahelyi és iskolai fiókokat bármely Azure Active Directory (Azure AD) példányból. (Lásd: [Hogyan működik a minta](#how-the-sample-works) egy ábrán.)
 
 > [!div renderon="docs"]
+> ## <a name="prerequisites"></a>Előfeltételek
+>
+> * [Visual studio 2019](https://visualstudio.microsoft.com/vs/) vagy [Visual Studio Code](https://code.visualstudio.com/)
+> * [.NET Core SDK 3.1 +](https://dotnet.microsoft.com/download)
+>
 > ## <a name="register-and-download-your-quickstart-app"></a>A rövid útmutató mintaalkalmazásának regisztrálása és letöltése
 > A rövid útmutató mintaalkalmazását kétféleképpen indíthatja el:
 > * [Expressz] [1. lehetőség: Az alkalmazás regisztrálása és automatikus konfigurálása, majd a kódminta letöltése](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
@@ -108,7 +113,7 @@ Ebben a rövid útmutatóban megtudhatja, hogyan jelentkezhet be ASP.NET Core we
 >
 > A kért engedélyek beleegyezése után az alkalmazás azt jeleníti meg, hogy sikeresen bejelentkezett a Azure Active Directory hitelesítő adataival.
 >
-> :::image type="content" source="media/quickstart-v2-aspnet-core-webapp/webapp-02-signed-in.png" alt-text="Webböngésző, amely megjeleníti a futó webalkalmazást és a bejelentkezett felhasználót":::
+> :::image type="content" source="media/quickstart-v2-aspnet-core-webapp/webapp-02-signed-in.png" alt-text="Az alkalmazás által az > felhasználótól kért engedélyeket megjelenítő belefoglalási párbeszédpanel":::
 
 ## <a name="more-information"></a>További információ
 
@@ -168,7 +173,7 @@ A vezérlő vagy vezérlő metódusait az attribútum használatával lehet véd
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A ASP.NET Core oktatóanyagot tartalmazó GitHub-tárház útmutatást és további kódrészleteket tartalmaz, amelyek az alábbiakat mutatják be:
 

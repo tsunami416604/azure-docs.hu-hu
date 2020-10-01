@@ -7,12 +7,12 @@ author: markjbrown
 ms.author: mjbrown
 ms.date: 09/22/2020
 ms.custom: devx-track-csharp, contperfq1
-ms.openlocfilehash: eb148801011b2d1c8c1f975edb870ba594b085a7
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 2ee20035fbb7b417897290caba4500f2c3862fee
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91440699"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611809"
 ---
 # <a name="install-and-use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Az Azure Cosmos Emulator telepítése és használata helyi fejlesztéshez és teszteléshez
 
@@ -131,7 +131,7 @@ Az Azure Cosmos emulatort a Windows Docker-tárolón futtathatja. További infor
    ```bash
    Starting emulator
    Emulator Endpoint: https://172.20.229.193:8081/
-   Master Key: C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
+   Primary Key: C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
    Exporting SSL Certificate
    You can import the SSL certificate from an administrator command prompt on the host by running:
    cd /d %LOCALAPPDATA%\CosmosDBEmulatorCert
@@ -458,7 +458,7 @@ Az emulátor eltávolításához kövesse az alábbi lépéseket:
 
 1. Az alkalmazások listájában görgessen a **Azure Cosmos db emulátorhoz**, válassza ki azt, kattintson az **Eltávolítás**gombra, és erősítse meg, majd válassza újra az **Eltávolítás** lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta, hogyan használhatja a helyi emulátort az ingyenes helyi fejlesztéshez. Most folytassa a következő cikkekkel:
 

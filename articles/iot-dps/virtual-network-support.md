@@ -7,12 +7,12 @@ ms.service: iot-dps
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: wesmc
-ms.openlocfilehash: 8912ef907641367bda89d7c0e98f9da811c6e577
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 43d7b3ae906909312a9e9ec4517061a788267a0c
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534600"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91612778"
 ---
 # <a name="azure-iot-hub-device-provisioning-service-dps-support-for-virtual-networks"></a>Azure IoT Hub Device Provisioning Service (DPS) virtuális hálózatok támogatása
 
@@ -69,13 +69,13 @@ Privát végpontok használata esetén vegye figyelembe a következő jelenlegi 
 
 Privát végpont beállításához kövesse az alábbi lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/)nyissa meg a DPS-erőforrást, és kattintson a **hálózatkezelés** fülre. kattintson a **privát végponti kapcsolatok** és a **+ privát végpont**elemre.
+1. A [Azure Portal](https://portal.azure.com/)nyissa meg a DPS-erőforrást, és kattintson a **hálózatkezelés** fülre. Kattintson a **privát végponti kapcsolatok** és a **+ privát végpont**elemre.
 
     ![Új privát végpont hozzáadása a DPS-hez](./media/virtual-network-support/networking-tab-add-private-endpoint.png)
 
 2. A _privát végpont_ alapjainak létrehozása lapon adja meg az alábbi táblázatban szereplő adatokat.
 
-    ![Konfigurálja az erőforrást, amelyhez egy új privát végpont leképezése](./media/virtual-network-support/create-private-endpoint-basics.png)
+    ![Privát végpontok létrehozása – alapismeretek](./media/virtual-network-support/create-private-endpoint-basics.png)
 
     | Mező | Érték |
     | :---- | :-----|
@@ -88,14 +88,14 @@ Privát végpont beállításához kövesse az alábbi lépéseket:
 
 3. A _magánhálózati végpont-erőforrás létrehozása_ lapon adja meg az alábbi táblázatban szereplő adatokat.
 
-    ![Konfigurálja az erőforrást, amelyhez egy új privát végpont leképezése](./media/virtual-network-support/create-private-endpoint-resource.png)
+    ![Privát végponti erőforrás létrehozása](./media/virtual-network-support/create-private-endpoint-resource.png)
 
     | Mező | Érték |
     | :---- | :-----|
     | **Előfizetés**        | Válassza ki azt az Azure-előfizetést, amely azt a DPS-erőforrást tartalmazza, amelyet a privát végpont fog mutatni.  |
     | **Erőforrás típusa**       | Válassza a **Microsoft. Devices/ProvisioningServices**lehetőséget. |
     | **Erőforrás**            | Válassza ki azt a DPS-erőforrást, amelyhez a privát végpont hozzá fog rendelni. |
-    | **Cél alerőforrása** | Válassza a **iotDps**lehetőséget. |
+    | **Célzott alerőforrás** | Válassza a **iotDps**lehetőséget. |
 
     > [!TIP]
     > Ebben a cikkben az **Azure-erőforráshoz való kapcsolódás erőforrás-azonosító vagy alias** -beállítás alapján [című szakasza](#request-a-private-endpoint) nyújt tájékoztatást.
@@ -107,7 +107,7 @@ Privát végpont beállításához kövesse az alábbi lépéseket:
  
     Kattintson a **Tovább gombra: címkék**, és opcionálisan adja meg az erőforráshoz tartozó címkéket.
 
-    ![Konfigurálja az erőforrást, amelyhez egy új privát végpont leképezése](./media/virtual-network-support/create-private-endpoint-configuration.png)
+    ![Privát végpont konfigurálása](./media/virtual-network-support/create-private-endpoint-configuration.png)
 
 6. Kattintson a **felülvizsgálat + létrehozás** , majd a **Létrehozás** elemre a saját végpont-erőforrás létrehozásához.
 
@@ -128,7 +128,7 @@ Az erőforrás-azonosító alapján privát végpontot is igényelhet a DPS-erő
     | Mező | Érték |
     | :---- | :-----|
     | **Erőforrás-azonosító vagy alias** | Adja meg a DPS-erőforrás erőforrás-AZONOSÍTÓját. |
-    | **Cél alerőforrása** | **IotDps** megadása |
+    | **Célzott alerőforrás** | **IotDps** megadása |
     | **Kérelem üzenete** | Adja meg a DPS-erőforrás tulajdonosának kérési üzenetét.<br>Például: <br>`Please approve this new private endpoint`<br>`for IoT devices in site 23 to access this DPS instance`  |
 
     Kattintson a **Tovább gombra: konfiguráció** lehetőségre a privát végpont VNET konfigurálásához.
@@ -141,7 +141,7 @@ Az erőforrás-azonosító alapján privát végpontot is igényelhet a DPS-erő
 
 5. A DPS-tulajdonos a privát végponti kérést fogja látni a saját végponti **kapcsolatok** listájában a DPS hálózatkezelés lapján. Ezen az oldalon a tulajdonos **jóváhagyhatja** vagy **elutasíthatja** a privát végpont kérelmét az alább látható módon.
 
-    ![DPS-Tulajdonságok lap](./media/virtual-network-support/approve-dps-private-endpoint.png)
+    ![DPS-jóváhagyás](./media/virtual-network-support/approve-dps-private-endpoint.png)
 
 
 ## <a name="pricing-private-endpoints"></a>Privát végpontok díjszabása

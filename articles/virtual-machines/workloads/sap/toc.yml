@@ -96,6 +96,8 @@
       href: hana-vm-operations.md
     - name: SAP HANA Azure-beli virtuális gépek tárkonfigurációi
       href: hana-vm-operations-storage.md
+    - name: NFS 4.1-es verziójú kötetek az SAP HANA-hoz készült Azure NetApp Filesban
+      href: hana-vm-operations-netapp.md
     - name: Az SAP HANA rendelkezésre állása az Azure-beli virtuális gépeken
       items:
         - name: Azure rendelkezésre állási csoportokon futó SAP HANA – Áttekintés

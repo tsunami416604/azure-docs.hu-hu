@@ -7,12 +7,12 @@ ms.date: 09/22/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: b952c2663750c055ec6838bf66df31fec5a0d730
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 4c84fbb131809c92d597b46d18c53e46b636f8ef
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91580414"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613475"
 ---
 # <a name="how-to-connect-an--iot-plug-and-play-bridge-sample-running-on-linux-or-windows-to-iot-hub"></a>Linux vagy Windows rendszeren futó IoT Plug and Play híd-minta összekapcsolása IoT Hub
 
@@ -88,7 +88,7 @@ Amikor letölti a kódot az alábbi lépésben, a a mappában található minta-
 Nyisson meg egy parancssort az Ön által választott könyvtárban. Futtassa az alábbi parancsot a [IoT Plug and Play Bridge](https://aka.ms/iotplugandplaybridge) GitHub-tárházának klónozásához a következő helyre:
 
 ```cmd
-git clone https://github.com/Azure/AzurePnPBridgePreview.git
+git clone https://github.com/Azure/iot-plug-and-play-bridge.git
 ```
 
 Miután klónozott a IoT Plug and Play Bridge-tárházat a gépére, nyisson meg egy rendszergazdai parancssort, és navigáljon a klónozott adattár könyvtárához:

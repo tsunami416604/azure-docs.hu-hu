@@ -1,7 +1,7 @@
 ---
-title: Bejelentkezési felhasználók szögletes egyoldalas alkalmazásokban – Azure
+title: 'Gyors útmutató: felhasználói bejelentkezés a szögletes egyoldalas alkalmazásokban – Azure'
 titleSuffix: Microsoft identity platform
-description: Megtudhatja, hogyan hívhat meg egy szögletes alkalmazás olyan API-t, amely hozzáférési jogkivonatokat igényel a Microsoft Identity platform használatával.
+description: Ebből a rövid útmutatóból megtudhatja, hogyan hívhat egy szögletes alkalmazás olyan API-t, amely a Microsoft Identity platform által kiadott hozzáférési jogkivonatokat igényel.
 services: active-directory
 author: jasonnutter
 manager: CelesteDG
@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: janutter
-ms.openlocfilehash: 23b25340906ddb4501492b048740f590c13654c4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4179807b349504d1ac0932f8d0816603f83afae4
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91258030"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613424"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-single-page-application"></a>Gyors útmutató: bejelentkezés a felhasználókba és hozzáférési jogkivonat beszerzése egy szögletes egyoldalas alkalmazásban
 
@@ -137,7 +137,7 @@ Ha a böngésző betölti az alkalmazást, válassza a **Bejelentkezés**lehető
 ![Diagram, amely bemutatja, hogyan működik a jelen rövid útmutatóban szereplő minta alkalmazás](./media/quickstart-v2-angular/diagram-auth-flow-spa-angular.svg)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Következő lépésként megtudhatja, hogyan jelentkezhet be a felhasználóba, és hogyan szerezheti be a tokeneket a szögletes oktatóanyagban:
 

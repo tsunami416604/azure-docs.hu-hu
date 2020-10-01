@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/01/2020
-ms.openlocfilehash: e2f9430ae039cc54c3e6180eb8ea76791d17f67f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8eb163c95fb1426ebae8956d50f6d8f6aec6fd7f
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91285128"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91612082"
 ---
 # <a name="perform-log-query-in-azure-monitor-that-span-across-workspaces-and-apps"></a>Napló lekérdezés végrehajtása a munkaterületeken és alkalmazásokon átnyúló Azure Monitorekben
 
@@ -58,7 +58,7 @@ A munkaterület azonosításához többféleképpen is elvégezhető:
 
 * Azure Resource ID – a munkaterület Azure által meghatározott egyedi identitása. Az erőforrás-azonosítót akkor használja, ha az erőforrás neve nem egyértelmű.  A munkaterületek formátuma a következő: */Subscriptions/subscriptionId/resourcegroups/resourceGroup/Providers/Microsoft. OperationalInsights/munkaterületek/componentName*.  
 
-    Példa:
+    Például:
     ``` 
     workspace("/subscriptions/e427519-5645-8x4e-1v67-3b84b59a1985/resourcegroups/ContosoAzureHQ/providers/Microsoft.OperationalInsights/workspaces/contosoretail-it").Update | count
     ```
@@ -89,7 +89,7 @@ Application Insights alkalmazásának azonosítására az alkalmazás *(azonosí
 
 * Azure Resource ID – az alkalmazás Azure-ban meghatározott egyedi identitása. Az erőforrás-azonosítót akkor használja, ha az erőforrás neve nem egyértelmű. A formátum: */Subscriptions/subscriptionId/resourcegroups/resourceGroup/Providers/Microsoft. OperationalInsights/Components/componentName*.  
 
-    Példa:
+    Például:
     ```
     app("/subscriptions/b459b4f6-912x-46d5-9cb1-b43069212ab4/resourcegroups/Fabrikam/providers/microsoft.insights/components/fabrikamapp").requests | count
     ```
@@ -140,8 +140,7 @@ applicationsScoping
 
 ![Idődiagramját](media/cross-workspace-query/chart.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse át a naplófájlok [elemzését Azure monitor](log-query-overview.md) a naplók áttekintését, valamint a Azure monitor naplózási adatai strukturált módját.
-- Tekintse át [Azure monitor a napló lekérdezéseit](query-language.md) , és tekintse meg az összes erőforrást a Azure monitor log lekérdezésekhez.
 

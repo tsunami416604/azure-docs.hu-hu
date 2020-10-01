@@ -232,6 +232,8 @@
               href: how-to-use-perfinsights.md
             - name: Teljesítménydiagnosztikai bővítmény
               href: performance-diagnostics-vm-extension.md
+            - name: Azure-beli windowsos virtuális gépek magas processzorhasználatával kapcsolatos problémák elhárítása
+              href: troubleshoot-high-cpu-issues-azure-windows-vm.md
         - name: Linux
           items:
             - name: A PerfInsights használata

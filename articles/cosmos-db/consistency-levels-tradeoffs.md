@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 3c82edd73921e11cd2f43a0d609624267af81575
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: b96902603deca4b7a184659e6274d65f02ac712d
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91570075"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613526"
 ---
 # <a name="latency-availability-and-performance-tradeoffs-with-different-azure-cosmos-db-consistency-levels"></a>Késés, rendelkezésre állás és teljesítménybeli kompromisszumok különböző Azure Cosmos DB konzisztencia-szintekkel
 
@@ -65,12 +65,12 @@ Az alábbi táblázat a konzisztencia-modell és az adattartósság közötti ka
 
 |**Régió (k)**|**Replikálási mód**|**Konzisztenciaszint**|**RPO**|**RTO**|
 |---------|---------|---------|---------|---------|
-|1|Egy vagy több főkiszolgáló|Bármely konzisztencia-szint|< 240 perc|<1 hét|
-|>1|Egyetlen főkiszolgáló|Munkamenet, konzisztens előtag, végleges|< 15 perc|< 15 perc|
-|>1|Egyetlen főkiszolgáló|Korlátozott frissesség|*K*  &  *T*|< 15 perc|
-|>1|Egyetlen főkiszolgáló|Erős|0|< 15 perc|
-|>1|Több főkiszolgáló|Munkamenet, konzisztens előtag, végleges|< 15 perc|0|
-|>1|Több főkiszolgáló|Korlátozott frissesség|*K*  &  *T*|0|
+|1|Egy vagy több írási régió|Bármely konzisztencia-szint|< 240 perc|<1 hét|
+|>1|Egyszeri írási régió|Munkamenet, konzisztens előtag, végleges|< 15 perc|< 15 perc|
+|>1|Egyszeri írási régió|Korlátozott frissesség|*K*  &  *T*|< 15 perc|
+|>1|Egyszeri írási régió|Erős|0|< 15 perc|
+|>1|Több írási régió|Munkamenet, konzisztens előtag, végleges|< 15 perc|0|
+|>1|Több írási régió|Korlátozott frissesség|*K*  &  *T*|0|
 
 *K* = egy elem *"k"* verziója (azaz frissítései) száma.
 
@@ -80,7 +80,7 @@ Az alábbi táblázat a konzisztencia-modell és az adattartósság közötti ka
 
 A több írási régióval konfigurált Cosmos-fiókok nem konfigurálhatók erős konzisztencia elérésére, mert az elosztott rendszer nem tud nulla értékű RPO és nulla RTO megadni. Emellett nincsenek írási késési előnyök a több írási régióval való erős konzisztencia használata miatt, mivel a bármely régióba való írási kérelmet replikálni kell, és el kell véglegesíteni a fiókban lévő összes konfigurált régióban. Ez a művelet ugyanazt az írási késést eredményezi, mint egyetlen írási régióbeli fiók.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tudjon meg többet az elosztott rendszerek globális eloszlásáról és az általános konzisztencia-kompromisszumokról. Lásd az alábbi cikkeket:
 

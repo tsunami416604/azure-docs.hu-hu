@@ -69,6 +69,8 @@
           href: export-from-microsoft-flow-logic-app-template.md
         - name: Állapotalapú vagy állapot nélküli munkafolyamatok létrehozása a Visual Studio Code-ban
           href: create-stateful-stateless-workflows-visual-studio-code.md
+        - name: Logikai alkalmazások meghívása a Power Automate-ből és a PowerAppsből
+          href: call-logic-apps-from-power-automate-power-apps.md
         - name: Munkafolyamat futtatásának szabályozása
           items:
             - name: Feltételes utasítások

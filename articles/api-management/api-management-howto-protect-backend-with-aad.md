@@ -1,27 +1,23 @@
 ---
-title: API-k elleni védelem a OAuth 2,0 API Management és a HRE használatával
+title: Az API-k API Management a OAuth 2,0 és az Azure AD használatával
 titleSuffix: Azure API Management
-description: Ismerje meg, hogyan védhető a webes API-k háttere Azure Active Directory és API Management használatával.
+description: Megtudhatja, hogyan védheti meg az Azure API Management webes API-hátteréhez való hozzáférést a OAuth 2,0 felhasználói engedélyezésével és Azure Active Directory
 services: api-management
-documentationcenter: ''
 author: miaojiang
-manager: dcscontentpm
-editor: ''
 ms.service: api-management
-ms.workload: mobile
 ms.topic: article
-ms.date: 06/24/2020
+ms.date: 09/23/2020
 ms.author: apimpm
-ms.openlocfilehash: 455444fe78171e3e2b37a309fd5708f283121ed6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 285a99bd47fa94940187aa0a4406e773a254dcb4
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243409"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91612336"
 ---
-# <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>API-k védelme az OAuth 2.0 Azure Active Directoryval és API Managementtel történő használatával
+# <a name="protect-a-web-api-backend-in-azure-api-management-by-using-oauth-20-authorization-with-azure-ad"></a>A webes API-k elleni védelem az Azure API Managementban az Azure AD-vel való OAuth 2,0-engedélyezés használatával 
 
-Ez az útmutató bemutatja, hogyan konfigurálhatja Azure API Management-példányát az API-k biztosításához a OAuth 2,0 protokoll és a Azure Active Directory (Azure AD) használatával. 
+Ez az útmutató bemutatja, hogyan konfigurálhatja [Azure API Management](api-management-key-concepts.md) -példányát az API-k biztosításához a [OAuth 2,0 protokoll és a Azure Active Directory (Azure ad)](../active-directory/develop/active-directory-v2-protocols.md)használatával. 
 
 > [!NOTE]
 > Ez a funkció a API Management **fejlesztői**, **alapszintű**, **standard**és **prémium** szintjein érhető el.
@@ -46,9 +42,9 @@ A következő lépések gyors áttekintést nyújtanak a lépésekről:
 
 ## <a name="register-an-application-in-azure-ad-to-represent-the-api"></a>Alkalmazás regisztrálása az Azure AD-ben az API képviseletéhez
 
-Az API-k Azure AD-vel való ellátásához először regisztráljon egy, az API-t képviselő alkalmazást az Azure AD-ben. 
+Az API-k Azure AD-vel való ellátásához először regisztráljon egy, az API-t képviselő alkalmazást az Azure AD-ben. A következő lépésekkel regisztrálja az alkalmazást a Azure Portal használatával. Az alkalmazások regisztrálásával kapcsolatos további információkért lásd: gyors üzembe helyezés [az alkalmazásban webes API-k közzététele céljából](../active-directory/develop/quickstart-configure-app-expose-web-apis.md).
 
-1. Az alkalmazás regisztrálásához lépjen a [Azure Portal](https://portal.azure.com) . Keresse meg és válassza ki az **alkalmazások regisztrációját**.
+1. Az alkalmazás regisztrálásához lépjen a [Azure Portal](https://portal.azure.com) . Keresse meg és válassza ki a **Alkalmazásregisztrációk**.
 
 1. Válassza az **új regisztráció**lehetőséget. 
 
@@ -79,7 +75,7 @@ Egy másik alkalmazás regisztrálása az Azure AD-ben a fejlesztői konzol kép
 
 1. Az alkalmazás regisztrálásához lépjen a [Azure Portal](https://portal.azure.com) .
 
-1.  Keresse meg és válassza ki az **alkalmazások regisztrációját**.
+1. Keresse meg és válassza ki a **Alkalmazásregisztrációk**.
 
 1. Válassza az **új regisztráció**lehetőséget.
 
@@ -106,7 +102,7 @@ A titkos kód létrehozásakor jegyezze fel a kulcs értékét egy későbbi lé
 
 Most, hogy regisztrált két alkalmazást az API és a fejlesztői konzol képviseletére, adja meg az engedélyeket, hogy az ügyfél-alkalmazás meghívni lehessen a háttér-alkalmazást.  
 
-1. Lépjen a [Azure Portal](https://portal.azure.com) az ügyfélalkalmazás engedélyeinek megadásához. Keresse meg és válassza ki az **alkalmazások regisztrációját**.
+1. Lépjen a [Azure Portal](https://portal.azure.com) az ügyfélalkalmazás engedélyeinek megadásához. Keresse meg és válassza ki a **Alkalmazásregisztrációk**.
 
 1. Válassza ki az ügyfélalkalmazás. Ezután az alkalmazás oldalain válassza az **API-engedélyek**lehetőséget.
 
@@ -156,7 +152,7 @@ Ebben a példában a fejlesztői konzol az ügyfél-alkalmazás. A következő l
 
 1. Az ügyfél titkos kulcsát közvetlenül a hitelesítési kód engedélyezési típusának **redirect_url** kell megadnia. Jegyezze fel ezt az URL-címet.
 
-1. Válassza a **Létrehozás** lehetőséget.
+1. Kattintson a **Létrehozás** gombra.
 
 1. Térjen vissza az ügyfél-alkalmazás regisztrálásához Azure Active Directory, és válassza a **hitelesítés**lehetőséget.
 
@@ -226,7 +222,7 @@ A [JWT szabályzat érvényesítésével](./api-management-access-restriction-po
 
 Ebben az útmutatóban a fejlesztői konzolt használta a API Managementban, mint a `Echo API` OAuth 2,0 által védettként hívható minta ügyfélalkalmazás. Ha többet szeretne megtudni az alkalmazások létrehozásáról és a 2,0-es OAuth megvalósításáról, tekintse meg a [Azure Active Directory](../active-directory/develop/sample-v2-code.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [Azure Active Directory és a OAuth 2.0-s](../active-directory/develop/authentication-vs-authorization.md)verzióról.
 - További [videók](https://azure.microsoft.com/documentation/videos/index/?services=api-management) a API Managementról.

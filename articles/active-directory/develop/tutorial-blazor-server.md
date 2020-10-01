@@ -8,12 +8,12 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 09/15/2020
-ms.openlocfilehash: c696d8834c24a792432469bf7b1adffc87f718ba
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 42aa51fdd3b0da5a0d438ba46b39bada159aeba6
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91373664"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611471"
 ---
 # <a name="tutorial-create-a-blazor-server-app-that-uses-the-microsoft-identity-platform-for-authentication"></a>Oktatóanyag: a Microsoft Identity platformot használó blézer-kiszolgálói alkalmazás létrehozása a hitelesítéshez
 
@@ -40,7 +40,7 @@ Minden Azure Active Directory (Azure AD) hitelesítést használó alkalmazást 
 
 A **hitelesítés**  >  **implicit megadása**területen jelölje be a **hozzáférési jogkivonatok** és **azonosító tokenek**jelölőnégyzetét, majd kattintson a **Save (Mentés** ) gombra.
 
-Végül, mivel az alkalmazás meghívja a védett API-t (ebben az esetben Microsoft Graph), az ügyfél titkos kulcsára van szükség ahhoz, hogy igazolja az identitását, amikor hozzáférési jogkivonatot kér az API meghívásához. 
+Végül, mivel az alkalmazás meghívja a védett API-t (ebben az esetben Microsoft Graph), az ügyfél titkos kulcsára van szükség ahhoz, hogy igazolja az identitását, amikor hozzáférési jogkivonatot kér az API meghívásához.
 
 1. Ugyanannak az alkalmazásnak a regisztrációja alatt a **kezelés**területen válassza a **tanúsítványok & Secrets**elemet.
 2. Hozzon létre egy **új ügyfél titkot** , amely soha nem jár le.
@@ -48,7 +48,7 @@ Végül, mivel az alkalmazás meghívja a védett API-t (ebben az esetben Micros
 
 ## <a name="create-the-app-using-the-net-cli"></a>Az alkalmazás létrehozása a .NET parancssori felület használatával
 
-Futtassa a következő parancsot a Microsoft. Identity. Web sablonjainak letöltéséhez, amelyet a jelen oktatóanyagban használunk majd. 
+Futtassa a következő parancsot a Microsoft. Identity. Web sablonjainak letöltéséhez, amelyet a jelen oktatóanyagban használunk majd.
 
 ```dotnetcli
 dotnet new --install Microsoft.Identity.Web.ProjectTemplates::0.4.0-preview
@@ -74,19 +74,19 @@ Most navigáljon az új Blazer-alkalmazáshoz a szerkesztőben, és adja hozzá 
 
 ## <a name="test-the-app"></a>Az alkalmazás tesztelése
 
-Most már létrehozhatja és futtathatja az alkalmazást. Ha futtatja ezt a sablon alkalmazást, meg kell adnia a keretrendszert, amelyet a-keretrendszer használatával kell futtatni. Ez az oktatóanyag a .NET Core 3,1 SDK-t használja. 
+Most már létrehozhatja és futtathatja az alkalmazást. Ha futtatja ezt a sablon alkalmazást, meg kell adnia a keretrendszert, amelyet a-keretrendszer használatával kell futtatni. Ez az oktatóanyag a .NET Core 3,1 SDK-t használja.
 
 ```dotnetcli
 dotnet run --framework netcoreapp3.1
 ```
 
-A böngészőben nyissa meg a alkalmazást `https://localhost:5001` , és jelentkezzen be egy Azure ad-felhasználói fiók használatával, és tekintse meg az alkalmazást futtató alkalmazást. 
+A böngészőben nyissa meg a alkalmazást `https://localhost:5001` , és jelentkezzen be egy Azure ad-felhasználói fiók használatával, és tekintse meg az alkalmazást futtató alkalmazást.
 
 ## <a name="retrieving-data-from-microsoft-graph"></a>Adatok beolvasása a Microsoft Graphból
 
 [Microsoft Graph](/graph/overview) számos olyan API-t kínál, amelyek hozzáférést biztosítanak a felhasználók Microsoft 365 adataihoz. Ha a Microsoft Identity platformot használja az alkalmazáshoz tartozó identitás-szolgáltatóként, könnyebben hozzáférhet ezekhez az adatokhoz, mivel Microsoft Graph közvetlenül támogatja a Microsoft Identity platform által kiállított jogkivonatokat. Ebben a szakaszban kód hozzáadásával megjelenítheti a bejelentkezett felhasználó e-mail-címeit az alkalmazás "lekérési információk" lapján.
 
-Mielőtt elkezdené, jelentkezzen ki az alkalmazásból, mert a szükséges engedélyeket módosítja, és az aktuális jogkivonat nem fog működni. Ha még nem tette meg, futtassa újra az alkalmazást, és válassza a **kijelentkezés** lehetőséget az alábbi kód frissítése előtt. 
+Mielőtt elkezdené, jelentkezzen ki az alkalmazásból, mert a szükséges engedélyeket módosítja, és az aktuális jogkivonat nem fog működni. Ha még nem tette meg, futtassa újra az alkalmazást, és válassza a **kijelentkezés** lehetőséget az alábbi kód frissítése előtt.
 
 Most frissítenie kell az alkalmazás regisztrációját és kódját, hogy lekérje a felhasználó e-mail-címét, és megjeleníti az üzeneteket az alkalmazáson belül. Ennek eléréséhez először ki kell terjesztenie az alkalmazás regisztrációs engedélyeit az Azure AD-ben, hogy engedélyezze az e-mailek elérését. Ezután vegyen fel kódot a Blazer alkalmazásba, és jelenítse meg ezeket az adatlapokat az egyik oldalon.
 
@@ -199,7 +199,9 @@ A jóváhagyás megadása után navigáljon az "adat lekérése" lapra, és olva
 
 :::image type="content" source="./media/tutorial-blazor-server/final-app-2.png" alt-text="Képernyőkép a végleges alkalmazásról. Van egy fejléce, amely szerint a Hello Nicholas, és megjeleníti a Nicholas-hoz tartozó e-mailek listáját.":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Microsoft Identity platform – ajánlott eljárások és javaslatok](./identity-platform-integration-checklist.md)
-- [A Microsoft Identity web alapjai](https://github.com/AzureAD/microsoft-identity-web/wiki/Microsoft-Identity-Web-basics)
+Ismerje meg, hogyan hívhat meg olyan webalkalmazásokat, amelyek a többrészes forgatókönyvek felhasználói számára jelentkeznek be:
+
+> [!div class="nextstepaction"]
+> [Forgatókönyv: a felhasználók által bejelentkezett webalkalmazás](scenario-web-app-sign-user-overview.md)

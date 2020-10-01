@@ -1,6 +1,7 @@
 ---
-title: Microsoft Identity platform – Windows UWP gyors üzembe helyezési útmutató | Azure
-description: Ismerje meg, hogyan szerezhet be egy Univerzális Windows-platform (XAML) alkalmazás hozzáférési jogkivonatot, és hogyan hívhat meg a Microsoft Identity platform-végpont által védett API-t.
+title: 'Gyors útmutató: felhasználói bejelentkezés és Microsoft Graph hívása egy Univerzális Windows-platform alkalmazásban | Azure'
+titleSuffix: Microsoft identity platform
+description: Ebből a rövid útmutatóból megtudhatja, hogyan szerezhet be egy Univerzális Windows-platform-(UWP-) alkalmazás hozzáférési jogkivonatot, és hogyan hívhat meg a Microsoft Identity platform által védett API-t.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:UWP
-ms.openlocfilehash: d68017bcddf43066dd989904578b7d09a84f4a9e
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 996c3f5bd6781d35f9ce55da0766712c53e7cb7a
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85553875"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613288"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Rövid útmutató: A Microsoft Graph API meghívása Univerzális Windows-platform- (UWP-) alkalmazásból
 
@@ -49,7 +50,7 @@ Ez a rövid útmutató egy olyan kódrészletet tartalmaz, amely bemutatja, hogy
 >      - Válassza a **Regisztráció** elemet az alkalmazás létrehozásához.
 > 1. Az alkalmazás oldalainak listájában válassza a **Hitelesítés** elemet.
 > 1. Az **átirányítási URI**-  |  **k javasolt átirányítási URI-k a nyilvános ügyfelekhez (mobil, asztali)** szakaszban, a következőt: **https://login.microsoftonline.com/common/oauth2/nativeclient** .
-> 1. Kattintson a **Mentés** gombra.
+> 1. Válassza a **Mentés** lehetőséget.
 
 > [!div renderon="portal" class="sxs-lookup"]
 > #### <a name="step-1-configure-your-application"></a>1. lépés: Az alkalmazás konfigurálása
@@ -88,7 +89,7 @@ Ez a rövid útmutató egy olyan kódrészletet tartalmaz, amely bemutatja, hogy
 >    ```csharp
 >    private const string ClientId = "Enter_the_Application_Id_here";
 >    ```
-> Az elemek magyarázata:
+> Ebben a példában:
 > - `Enter_the_Application_Id_here` – ez a regisztrált alkalmazás alkalmazásazonosítója.
 >
 > > [!TIP]
@@ -133,7 +134,7 @@ PublicClientApp = PublicClientApplicationBuilder.Create(ClientId)
                                                     .Build();
 ```
 
-> |Az elemek magyarázata: | Leírás |
+> |Ebben a példában: | Leírás |
 > |---------|---------|
 > | `ClientId` | Az Azure Portalon regisztrált alkalmazás **alkalmazásazonosítója (ügyfél-azonosítója)**. Ezt az értéket az alkalmazás **Áttekintés** oldalán találja az Azure Portalon. |
 
@@ -155,7 +156,7 @@ authResult = await App.PublicClientApp.AcquireTokenInteractive(scopes)
                       .ExecuteAsync();
 ```
 
-> |Az elemek magyarázata:| Leírás |
+> |Ebben a példában:| Leírás |
 > |---------|---------|
 > | `scopes` | A kért hatóköröket tartalmazza, például `{ "user.read" }` Microsoft Graph vagy `{ "api://<Application ID>/access_as_user" }` egyéni webes API-k esetén. |
 
@@ -170,7 +171,7 @@ authResult = await App.PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
                                       .ExecuteAsync();
 ```
 
-> |Az elemek magyarázata: | Leírás |
+> |Ebben a példában: | Leírás |
 > |---------|---------|
 > | `scopes` | A kért hatóköröket tartalmazza, például `{ "user.read" }` Microsoft Graph vagy `{ "api://<Application ID>/access_as_user" }` egyéni webes API-k esetén. |
 > | `firstAccount` | Megadja az első felhasználói fiókot a gyorsítótárban (a MSAL több felhasználót is támogat egyetlen alkalmazásban) |

@@ -1,7 +1,7 @@
 ---
-title: Egyoldalas alkalmazás-oktatóanyag – Azure
+title: 'Oktatóanyag: a Microsoft Identity platformot használó szögletes alkalmazás létrehozása hitelesítéshez | Azure'
 titleSuffix: Microsoft identity platform
-description: Ismerje meg, hogy a szögletes SPA-alkalmazások hogyan hívhatnak meg olyan API-t, amelyhez hozzáférési jogkivonatok szükségesek a Microsoft Identity platform végpontján.
+description: Ebben az oktatóanyagban egy szögletes egyoldalas alkalmazást (SPA) hoz létre, amely a Microsoft Identity platform használatával jelentkezik be a felhasználókba, és hozzáférési jogkivonatot kap a Microsoft Graph API nevében való meghívásához.
 services: active-directory
 author: hamiltonha
 manager: CelesteDG
@@ -12,30 +12,36 @@ ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: 76e82a474d2575325b09e6e82c7319b22f451715
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ae486ac8ddd233487bb10c897a155337aa815fe5
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91256925"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611248"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>Oktatóanyag: bejelentkezés a felhasználókba és a Microsoft Graph API meghívása egy szögletes egyoldalas alkalmazásból
 
-Ez az oktatóanyag azt mutatja be, hogyan használható a szögletes egyoldalas alkalmazás (SPA):
-- Jelentkezzen be személyes fiókjaiba, munkahelyi fiókjaiba vagy iskolai fiókjaiba.
-- Hozzáférési jogkivonat beszerzése.
-- Hívja meg az Microsoft Graph API-t vagy más API-kat, amelyek hozzáférési jogkivonatokat igényelnek a *Microsoft Identity platform végpontján*.
+Ez az oktatóanyag végigvezeti a személyes Microsoft-fiókokkal és munkahelyi vagy iskolai fiókkal rendelkező felhasználók bejelentkezését, valamint a Microsoft Graph API-t a nevükben.
 
->[!NOTE]
->Ez az oktatóanyag bemutatja, hogyan hozhat létre új szögletes SPA-t a Microsoft Authentication Library (MSAL) használatával. Ha egy minta alkalmazást szeretne letölteni, tekintse [meg a rövid](quickstart-v2-angular.md)útmutatót.
+Ebben az oktatóanyagban:
+
+> [!div class="checklist"]
+> * Szögletes projekt létrehozása a `npm`
+> * Az alkalmazás regisztrálása a Azure Portalban
+> * Kód hozzáadása a felhasználói bejelentkezés és a kijelentkezés támogatásához
+> * Kód hozzáadása a Microsoft Graph API meghívásához
+> * Az alkalmazás tesztelése
+
+## <a name="prerequisites"></a>Előfeltételek
+
+* [Node.js](https://nodejs.org/en/download/) helyi webkiszolgáló futtatásához.
+* A Project Files módosítására szolgáló [Visual Studio Code](https://code.visualstudio.com/download) vagy más szerkesztő.
 
 ## <a name="how-the-sample-app-works"></a>A minta alkalmazás működése
 
 ![Diagram, amely bemutatja, hogyan működik az oktatóanyagban létrehozott minta alkalmazás](./media/tutorial-v2-angular/diagram-auth-flow-spa-angular.svg)
 
-### <a name="more-information"></a>További információ
-
-Az ebben az oktatóanyagban létrehozott minta alkalmazás lehetővé teszi, hogy egy szögletes fürdő lekérdezze a Microsoft Graph API-t vagy egy webes API-t, amely a Microsoft Identity platform végpontjának jogkivonatait fogadja el. A szögletes könyvtár MSAL az alapszintű MSAL.js könyvtár burkolója. Lehetővé teszi a szögletes (6 +) alkalmazások számára a vállalati felhasználók hitelesítését Microsoft Azure Active Directory, Microsoft-fiók felhasználók és a közösségi identitást használó felhasználók (például a Facebook, a Google és a LinkedIn) használatával. A kódtár azt is lehetővé teszi, hogy az alkalmazások hozzáférjenek a Microsoft Cloud Serviceshez vagy Microsoft Graphhoz.
+Az ebben az oktatóanyagban létrehozott minta alkalmazás lehetővé teszi, hogy egy szögletes fürdő lekérdezze az Microsoft Graph API-t vagy egy webes API-t, amely elfogadja a Microsoft Identity platform által kiadott jogkivonatokat. A Microsoft hitelesítési függvénytárát (MSAL) használja az alapszintű MSAL.js könyvtárának szögletes, burkolója számára. A MSAL szögletes a 6 és az alkalmazások számára lehetővé teszi a vállalati felhasználók hitelesítését Azure Active Directory (Azure AD), valamint a Microsoft-fiókokkal rendelkező felhasználók és a Facebook, a Google és a LinkedIn közösségi identitások használatával. A könyvtár azt is lehetővé teszi, hogy az alkalmazások hozzáférjenek a Microsoft Cloud Serviceshez és a Microsoft Graphhoz.
 
 Ebben az esetben a felhasználó bejelentkezése után hozzáférési jogkivonatot kér a rendszer, és hozzáadja a HTTP-kérésekhez az engedélyezési fejlécen keresztül. A token beszerzését és megújítását a MSAL kezeli.
 
@@ -43,18 +49,11 @@ Ebben az esetben a felhasználó bejelentkezése után hozzáférési jogkivonat
 
 Ez az oktatóanyag a következő könyvtárat használja:
 
-|Kódtár|Description|
+|Kódtár|Leírás|
 |---|---|
 |[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|Microsoft Authentication Library JavaScript szögletes Burkolóhoz|
 
 A MSAL.js könyvtár forráskódját az [AzureAD/Microsoft-Authentication-Library-for-js](https://github.com/AzureAD/microsoft-authentication-library-for-js) adattáron találja a githubon.
-
-## <a name="prerequisites"></a>Előfeltételek
-
-Az oktatóanyag futtatásához a következőkre lesz szüksége:
-
-* Helyi webkiszolgáló, például [Node.js](https://nodejs.org/en/download/). Az oktatóanyagban szereplő utasítások a Node.json alapulnak.
-* Integrált fejlesztési környezet (IDE), például a [Visual Studio Code](https://code.visualstudio.com/download)a projektfájlok szerkesztéséhez.
 
 ## <a name="create-your-project"></a>Projekt létrehozása
 
@@ -341,8 +340,9 @@ Ha egy háttérbeli API-nak nincs szüksége hatókörre (nem ajánlott), a *cli
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ha most ismerkedik az identitás-és hozzáférés-kezeléssel, számos cikk segít a modern hitelesítési fogalmak megismerésében, a hitelesítés és az [Engedélyezés](authentication-vs-authorization.md)megkezdése előtt.
+Az egyoldalas alkalmazások (SPA) fejlesztése a Microsoft Identity platformon, a több részből álló cikkek sorozatában.
 
-Ha a Microsoft Identity platformon mélyebbre szeretne ugrani egy egyoldalas alkalmazás-fejlesztésre, a többrészes [forgatókönyv: az egyoldalas alkalmazások](scenario-spa-overview.md) sorozata segítséget nyújt az első lépésekhez.
+> [!div class="nextstepaction"]
+> [Forgatókönyv: egyoldalas alkalmazás](scenario-spa-overview.md)

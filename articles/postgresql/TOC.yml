@@ -4,6 +4,8 @@
   items:
     - name: Mi az az Azure DB for PostgreSQL?
       href: overview.md
+    - name: Melyik PostgreSQL üzembehelyezési lehetőséget érdemes választani?
+      href: overview-postgres-choose-server-options.md
     - name: Szolgáltatási hírek
       items:
         - name: Az SSL-főtanúsítvány lejár

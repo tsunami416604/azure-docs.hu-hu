@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/05/2020
+ms.date: 09/30/2020
 ms.author: iainfou
-ms.openlocfilehash: 6a18dbf5c00c3f3aba2b2d58f060856aba9fb080
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 6e2daa60e99eb7aab34b11f240a2e2fb03c98582
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88722897"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91612404"
 ---
 # <a name="frequently-asked-questions-faqs-about-azure-active-directory-ad-domain-services"></a>Gyakori kérdések (GYIK) a Azure Active Directory (AD) tartományi szolgáltatásokkal kapcsolatban
 
@@ -34,7 +34,7 @@ Ez az oldal válaszol a Azure Active Directory Domain Servicesekkel kapcsolatos 
 * [Engedélyezhető Azure AD Domain Services a PowerShell használatával?](#can-i-enable-azure-ad-domain-services-using-powershell)
 * [Engedélyezhető a Azure AD Domain Services Resource Manager-sablon használatával?](#can-i-enable-azure-ad-domain-services-using-a-resource-manager-template)
 * [Adhatok tartományvezérlőket Azure AD Domain Services felügyelt tartományhoz?](#can-i-add-domain-controllers-to-an-azure-ad-domain-services-managed-domain)
-* [A vendégnek a címtárat használó felhasználók meghívókat Azure AD Domain Services?](#can-guest-users-invited-to-my-directory-use-azure-ad-domain-services)
+* [Meghívhatják a vendég felhasználókat a saját könyvtárra Azure AD Domain Services?](#can-guest-users-be-invited-to-my-directory-use-azure-ad-domain-services)
 * [Áthelyezhetek egy meglévő Azure AD Domain Services felügyelt tartományt egy másik előfizetésbe, erőforráscsoporthoz, régióba vagy virtuális hálózatra?](#can-i-move-an-existing-azure-ad-domain-services-managed-domain-to-a-different-subscription-resource-group-region-or-virtual-network)
 * [A Azure AD Domain Services magas rendelkezésre állási lehetőségeket is tartalmaz?](#does-azure-ad-domain-services-include-high-availability-options)
 
@@ -67,12 +67,12 @@ Maga a szolgáltatás nem támogatja közvetlenül ezt a forgatókönyvet. A fel
 Igen. További információ: [a Azure ad Domain Services engedélyezése a PowerShell használatával](powershell-create-instance.md).
 
 ### <a name="can-i-enable-azure-ad-domain-services-using-a-resource-manager-template"></a>Engedélyezhető a Azure AD Domain Services Resource Manager-sablon használatával?
-Igen, létrehozhat egy Azure AD Domain Services felügyelt tartományt egy Resource Manager-sablon használatával. A sablon üzembe helyezése előtt létre kell hozni egy egyszerű szolgáltatásnevet és egy Azure AD-csoportot az Azure Portal vagy Azure PowerShell használatával. További információ: [Azure AD DS Managed domain létrehozása Azure Resource Manager sablon használatával](template-create-instance.md). Ha Azure AD Domain Services felügyelt tartományt hoz létre a Azure Portalban, akkor további központi telepítések esetén is exportálhatja a sablont.
+Igen, létrehozhat egy Azure AD Domain Services felügyelt tartományt egy Resource Manager-sablon használatával. A sablon üzembe helyezése előtt létre kell hozni egy egyszerű szolgáltatásnevet és egy Azure AD-csoportot az Azure Portal vagy Azure PowerShell használatával. További információ: [Azure AD DS Managed domain létrehozása Azure Resource Manager sablon használatával](template-create-instance.md). Ha Azure AD Domain Services felügyelt tartományt hoz létre a Azure Portalban, akkor is lehetőség van a sablon exportálására további üzemelő példányokkal való használatra.
 
 ### <a name="can-i-add-domain-controllers-to-an-azure-ad-domain-services-managed-domain"></a>Adhatok tartományvezérlőket Azure AD Domain Services felügyelt tartományhoz?
 Nem. A Azure AD Domain Services által megadott tartomány felügyelt tartomány. A tartományhoz tartozó tartományvezérlőket nem kell kiépíteni, konfigurálni vagy más módon kezelni. Ezeket a felügyeleti tevékenységeket a Microsoft szolgáltatásként biztosítjuk. Ezért nem adhat hozzá további tartományvezérlőket (írható vagy olvasható) a felügyelt tartományhoz.
 
-### <a name="can-guest-users-invited-to-my-directory-use-azure-ad-domain-services"></a>A vendégnek a címtárat használó felhasználók meghívókat Azure AD Domain Services?
+### <a name="can-guest-users-be-invited-to-my-directory-use-azure-ad-domain-services"></a>Meghívhatják a vendég felhasználókat a saját könyvtárra Azure AD Domain Services?
 Nem. Az Azure ad [B2B](../active-directory/external-identities/what-is-b2b.md) Meghívási folyamatát használó vendég felhasználók a Azure ad Domain Services felügyelt tartományba vannak szinkronizálva. A felhasználók jelszava azonban nem az Azure AD-címtárban van tárolva. Ezért a Azure AD Domain Services nem lehet szinkronizálni az NTLM-és Kerberos-kivonatokat a felhasználók számára a felügyelt tartományba. Ilyen felhasználók nem jelentkezhetnek be, illetve nem csatlakozhatnak számítógépekhez a felügyelt tartományhoz.
 
 ### <a name="can-i-move-an-existing-azure-ad-domain-services-managed-domain-to-a-different-subscription-resource-group-region-or-virtual-network"></a>Áthelyezhetek egy meglévő Azure AD Domain Services felügyelt tartományt egy másik előfizetésbe, erőforráscsoporthoz, régióba vagy virtuális hálózatra?
@@ -94,6 +94,7 @@ Igen. Minden Azure AD Domain Services felügyelt tartomány két tartományvezé
 * [Mi a jelszó élettartama házirend egy felügyelt tartományon?](#what-is-the-password-lifetime-policy-on-a-managed-domain)
 * [Biztosít Azure AD Domain Services AD-fiók zárolásának védelmét?](#does-azure-ad-domain-services-provide-ad-account-lockout-protection)
 * [Konfigurálható a elosztott fájlrendszer (DFS) és a replikáció Azure AD Domain Serviceson belül?](#can-i-configure-distributed-file-system-and-replication-within-azure-ad-domain-services)
+* [Hogyan történik a Windows-frissítések alkalmazása Azure AD Domain Services?](#how-are-windows-updates-applied-in-azure-ad-domain-services)
 
 ### <a name="can-i-connect-to-the-domain-controller-for-my-managed-domain-using-remote-desktop"></a>Csatlakozhatok a felügyelt tartományhoz tartozó tartományvezérlőhöz a Távoli asztal használatával?
 Nem. Nem rendelkezik engedéllyel a felügyelt tartományhoz való kapcsolódáshoz a Távoli asztal használatával. A *HRE DC rendszergazdák* csoport tagjai felügyelhetik a felügyelt TARTOMÁNYT az ad felügyeleti eszközök, például a Active Directory felügyeleti központ (ADAC) vagy az ad PowerShell használatával. Ezek az eszközök a felügyelt tartományhoz csatlakoztatott Windows Server *Távoli kiszolgálófelügyelet eszközei* funkciójával vannak telepítve. További információ: [felügyeleti virtuális gép létrehozása Azure ad Domain Services felügyelt tartomány konfigurálásához és felügyeletéhez](tutorial-create-management-vm.md).
@@ -129,13 +130,16 @@ Igen. A felügyelt tartomány 2 percen belül öt érvénytelen jelszóval prób
 ### <a name="can-i-configure-distributed-file-system-and-replication-within-azure-ad-domain-services"></a>Konfigurálható a elosztott fájlrendszer és a replikálás a Azure AD Domain Serviceson belül?
 Nem. Azure AD Domain Services használata esetén a elosztott fájlrendszer (DFS) és a replikáció nem érhető el.
 
+### <a name="how-are-windows-updates-applied-in-azure-ad-domain-services"></a>Hogyan történik a Windows-frissítések alkalmazása Azure AD Domain Services?
+A felügyelt tartomány tartományvezérlőinek automatikusan alkalmazzák a szükséges Windows-frissítéseket. Itt nem lehet konfigurálni vagy felügyelni. Győződjön meg arról, hogy nem hoz létre olyan hálózati biztonsági csoportra vonatkozó szabályokat, amelyek letiltják a Windows-frissítések kimenő forgalmát. A felügyelt tartományhoz csatlakoztatott saját virtuális gépek esetében Ön felelős a szükséges operációs rendszer-és alkalmazás-frissítések konfigurálásához és alkalmazásához.
+
 ## <a name="billing-and-availability"></a>Számlázás és rendelkezésre állás
 
 * [Díjköteles szolgáltatás Azure AD Domain Services?](#is-azure-ad-domain-services-a-paid-service)
 * [Van ingyenes próbaverzió a szolgáltatáshoz?](#is-there-a-free-trial-for-the-service)
 * [Szüneteltethető Azure AD Domain Services felügyelt tartomány?](#can-i-pause-an-azure-ad-domain-services-managed-domain)
-* [Használhatok feladatátvételi Azure AD Domain Services egy másik régióba egy DR eseményhez?](#can-i-pause-an-azure-ad-domain-services-managed-domain)
-* [Lekérhetek Azure AD Domain Services a nagyvállalati mobilitási csomag (EMS) részeként? Szükség van-e a Azure AD Domain Services használatára prémium szintű Azure AD?](#can-i-failover-azure-ad-domain-services-to-another-region-for-a-dr-event)
+* [Végezhetek feladatátvételt Azure AD Domain Services egy másik régióba egy DR eseményhez?](#can-i-pause-an-azure-ad-domain-services-managed-domain)
+* [Lekérhetek Azure AD Domain Services a nagyvállalati mobilitási csomag (EMS) részeként? Szükség van-e a Azure AD Domain Services használatára prémium szintű Azure AD?](#can-i-fail-over-azure-ad-domain-services-to-another-region-for-a-dr-event)
 * [Milyen Azure-régiók érhetők el a szolgáltatásban?](#can-i-get-azure-ad-domain-services-as-part-of-enterprise-mobility-suite-ems-do-i-need-azure-ad-premium-to-use-azure-ad-domain-services)
 
 ### <a name="is-azure-ad-domain-services-a-paid-service"></a>Díjköteles szolgáltatás Azure AD Domain Services?
@@ -147,7 +151,7 @@ Azure AD Domain Services az Azure ingyenes próbaverziójában szerepel. Regiszt
 ### <a name="can-i-pause-an-azure-ad-domain-services-managed-domain"></a>Szüneteltethető Azure AD Domain Services felügyelt tartomány?
 Nem. Miután engedélyezte Azure AD Domain Services felügyelt tartományt, a szolgáltatás a kiválasztott virtuális hálózaton belül elérhető, amíg nem törli a felügyelt tartományt. Nem lehet szüneteltetni a szolgáltatást. A számlázás óránként folytatódik, amíg nem törli a felügyelt tartományt.
 
-### <a name="can-i-failover-azure-ad-domain-services-to-another-region-for-a-dr-event"></a>Használhatok feladatátvételi Azure AD Domain Services egy másik régióba egy DR eseményhez?
+### <a name="can-i-fail-over-azure-ad-domain-services-to-another-region-for-a-dr-event"></a>Végezhetek feladatátvételt Azure AD Domain Services egy másik régióba egy DR eseményhez?
 Nem. Azure AD Domain Services jelenleg nem biztosít földrajzi redundáns telepítési modellt. Egy Azure-régióban egyetlen virtuális hálózatra korlátozódik. Ha több Azure-régiót szeretne használni, futtatnia kell a Active Directory-tartomány-vezérlőket az Azure IaaS virtuális gépeken. Az architektúrával kapcsolatos útmutatásért lásd: [a helyszíni Active Directory tartomány kiterjesztése az Azure-ra](/azure/architecture/reference-architectures/identity/adds-extend-domain).
 
 ### <a name="can-i-get-azure-ad-domain-services-as-part-of-enterprise-mobility-suite-ems-do-i-need-azure-ad-premium-to-use-azure-ad-domain-services"></a>Lekérhetek Azure AD Domain Services a nagyvállalati mobilitási csomag (EMS) részeként? Szükség van-e a Azure AD Domain Services használatára prémium szintű Azure AD?

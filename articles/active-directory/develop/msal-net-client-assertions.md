@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 11/18/2019
+ms.date: 9/30/2020
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: aeef0c4f139f9721449ba2c503f08fafa2c627d3
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: bb1ce0a8ba568dc651accdc5f8c84e9c2c980e73
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88166314"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91612812"
 ---
 # <a name="confidential-client-assertions"></a>Bizalmas ügyfél-kijelentések
 
@@ -48,16 +48,16 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .Build();
 ```
 
-Az Azure AD által várt jogcímek a következők:
+Az [Azure ad által várt jogcímek](active-directory-certificate-credentials.md) a következők:
 
 Jogcím típusa | Érték | Leírás
 ---------- | ---------- | ----------
-aud | `https://login.microsoftonline.com/{tenantId}/v2.0` | Az "AUD" (célközönség) jogcím azonosítja azokat a címzetteket, amelyeket a JWT szántak (itt az Azure AD) lásd: [RFC 7519, 4.1.3. szakasz].
-exp | Thu Jun 27 2019 15:04:17 GMT + 0200 (romantikus nyári idő) | Az "exp" (lejárati idő) jogcím azt a lejárati időt azonosítja, amely után a JWT nem fogadható el feldolgozásra. Lásd: [RFC 7519, 4.1.4. szakasz]
-ISS | ClientID | Az "ISS" (kibocsátói) jogcím azonosítja a JWT kiállító rendszerbiztonsági tag. A jogcím feldolgozása alkalmazásspecifikus. Az "ISS" érték egy kis-és nagybetűket megkülönböztető karakterlánc, amely egy StringOrURI értéket tartalmaz. [RFC 7519, 4.1.1. szakasz]
-JTI | (GUID) | A "kezdeményezés" (JWT ID) jogcím egyedi azonosítót biztosít a JWT számára. Az azonosító értékét olyan módon kell hozzárendelni, amely biztosítja, hogy az adott érték egy másik adatobjektumhoz is legyen véletlenül hozzárendelve. Ha az alkalmazás több kiállítót használ, az ütközéseket meg kell akadályozni a különböző kibocsátók által előállított értékek között. A "kezdeményezés" jogcímet arra használhatja, hogy megakadályozza a JWT lejátszását. A "kezdeményezés" érték kis-és nagybetűket megkülönböztető karakterlánc. [RFC 7519, szakasz 4.1.7]
-NBF | Thu Jun 27 2019 14:54:17 GMT + 0200 (romantikus nyári idő) | A "NBF" (nem korábban) jogcím azt az időpontot határozza meg, ameddig a JWT nem fogadható el a feldolgozáshoz. [RFC 7519, szakasz 4.1.5]
-Sub | ClientID | A "Sub" (tárgy) jogcím azonosítja a JWT tárgyát. A JWT lévő jogcímek általában a tárgyra vonatkozó utasítások. A tulajdonos értékének hatóköre csak helyileg egyedi lehet a kiállító kontextusában, vagy globálisan egyedinek kell lennie. A lásd: [RFC 7519, 4.1.2. szakasz]
+aud | `https://login.microsoftonline.com/{tenantId}/v2.0` | Az "AUD" (célközönség) jogcím azonosítja azokat a címzetteket, amelyeket a JWT szánnak (itt az Azure AD-t) lásd: [RFC 7519, 4.1.3. szakasz](https://tools.ietf.org/html/rfc7519#section-4.1.3).  Ebben az esetben ez a címzett a bejelentkezési kiszolgáló (login.microsoftonline.com).
+exp | 1601519414 | Az "exp" (lejárati idő) jogcím azt a lejárati időt azonosítja, amely után a JWT nem fogadható el feldolgozásra. Lásd: [RFC 7519, 4.1.4. szakasz](https://tools.ietf.org/html/rfc7519#section-4.1.4).  Ez lehetővé teszi, hogy a rendszer addig használja az állítást, hogy a lehető legrövidebb idő elteltével 5-10 perccel `nbf` .  Az Azure AD nem korlátozza az `exp` aktuális időpontra vonatkozó korlátozásokat. 
+ISS | ClientID | Az "ISS" (kibocsátói) jogcím azonosítja a JWT kiállító rendszerbiztonsági tag, ebben az esetben az ügyfélalkalmazás.  Használja a GUID-alkalmazás AZONOSÍTÓját.
+JTI | (GUID) | A "kezdeményezés" (JWT ID) jogcím egyedi azonosítót biztosít a JWT számára. Az azonosító értékét olyan módon kell hozzárendelni, amely biztosítja, hogy az adott érték egy másik adatobjektumhoz is legyen véletlenül hozzárendelve. Ha az alkalmazás több kiállítót használ, az ütközéseket meg kell akadályozni a különböző kibocsátók által előállított értékek között. A "kezdeményezés" érték kis-és nagybetűket megkülönböztető karakterlánc. [RFC 7519, 4.1.7 szakasz](https://tools.ietf.org/html/rfc7519#section-4.1.7)
+NBF | 1601519114 | A "NBF" (nem korábban) jogcím azt az időpontot határozza meg, ameddig a JWT nem fogadható el a feldolgozáshoz. [RFC 7519, 4.1.5 szakasz](https://tools.ietf.org/html/rfc7519#section-4.1.5).  Az aktuális idő használata megfelelő. 
+Sub | ClientID | A "Sub" (tárgy) jogcím azonosítja a JWT tárgyát, ebben az esetben az alkalmazást is. Használja ugyanazt az értéket `iss` . 
 
 Íme egy példa a jogcímek kiépítésére:
 
@@ -181,7 +181,7 @@ Ha már rendelkezik az aláírt ügyfél-állítással, használhatja a MSAL API
 
 ### <a name="withclientclaims"></a>WithClientClaims
 
-`WithClientClaims(X509Certificate2 certificate, IDictionary<string, string> claimsToSign, bool mergeWithDefaultClaims = true)`Alapértelmezés szerint az Azure AD által várt jogcímeket, valamint az elküldeni kívánt további ügyfél-jogcímeket tartalmazó aláírt állítást fog létrehozni. Az alábbi kódrészlettel teheti ezt meg.
+`WithClientClaims(X509Certificate2 certificate, IDictionary<string, string> claimsToSign, bool mergeWithDefaultClaims = true)` Alapértelmezés szerint az Azure AD által várt jogcímeket, valamint az elküldeni kívánt további ügyfél-jogcímeket tartalmazó aláírt állítást fog létrehozni. Az alábbi kódrészlettel teheti ezt meg.
 
 ```csharp
 string ipAddress = "192.168.1.2";

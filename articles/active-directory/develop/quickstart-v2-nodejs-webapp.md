@@ -1,6 +1,7 @@
 ---
-title: OIDC-bejelentkezés hozzáadása egy Node.js webalkalmazáshoz – Microsoft Identity platform | Azure
-description: Megtudhatja, hogyan valósítható meg a hitelesítés egy Node.js webalkalmazásban az OpenID Connect használatával.
+title: 'Gyors útmutató: felhasználói bejelentkezés hozzáadása egy Node.js webalkalmazáshoz | Azure'
+titleSuffix: Microsoft identity platform
+description: Ebből a rövid útmutatóból megtudhatja, hogyan valósítható meg a hitelesítés egy Node.js webalkalmazásban az OpenID Connect használatával.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, devx-track-js
-ms.openlocfilehash: 8e42d906cce65cf51d6359343bc4f218b94a05fb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 34baa054104a6cf2c78864cc2827b16c1eedb084
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91257690"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613305"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>Rövid útmutató: bejelentkezés hozzáadása az OpenID használatával Node.js webalkalmazáshoz
 
@@ -24,11 +25,8 @@ Ebből a rövid útmutatóból megtudhatja, hogyan állíthatja be az OpenID Con
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A minta futtatásához a következőkre lesz szüksége:
-
-* Node.js telepítése innen: http://nodejs.org/
-
-* [Microsoft-fiók](https://www.outlook.com) vagy [Microsoft 365 fejlesztői program](/office/developer-program/office-365-developer-program)
+- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- [Node.js](https://nodejs.org/en/download/).
 
 ## <a name="register-your-application"></a>Az alkalmazás regisztrálása
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com/) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
@@ -55,7 +53,7 @@ A minta futtatásához a következőkre lesz szüksége:
     - A **Speciális beállítások** szakaszban állítsa be a **KIJELENTKEZÉSI URL-címet** a következőre: `https://localhost:3000` .
     - A **Speciális beállítások > implicit engedélyezési** szakaszban tekintse meg az **azonosító jogkivonatokat** , mivel ez a minta megköveteli, hogy az [implicit engedélyezési folyamat](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-implicit-grant-flow) engedélyezze a bejelentkezést a felhasználó számára.
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 1. A **tanúsítványok & titkok** oldal **ügyfél-titkok** szakaszában válassza az **új ügyfél titka**elemet.
     - Adja meg a kulcs leírását (például az alkalmazás titkos kulcsaként).
@@ -124,7 +122,7 @@ A kiszolgáló sikeresen fut `http://localhost:3000` .
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ a Microsoft Identity platform által támogatott Web App-forgatókönyvről:
 > [!div class="nextstepaction"]
 > [Felhasználói forgatókönyvet használó webalkalmazás](scenario-web-app-sign-user-overview.md)

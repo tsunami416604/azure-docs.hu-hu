@@ -26,7 +26,7 @@
       href: delete-application-portal.md
 - name: Oktatóanyagok
   items:
-    - name: 'Integrált katalógusalkalmazások (pl. ServiceNow, Salesforce, Dropbox)'
+    - name: Az előre konfigurált alkalmazások listája
       href: /azure/active-directory/saas-apps/
     - name: Alkalmazásproxyval rendelkező helyszíni alkalmazás hozzáadása
       href: application-proxy-add-on-premises-application.md
@@ -142,7 +142,7 @@
       items:
         - name: Migrálási erőforrások
           href: migration-resources.md
-        - name: Egy ADFS-alkalmazás migrálása az Azure-ba
+        - name: AD FS-alkalmazás migrálása az Azure-ba
           href: migrate-adfs-apps-to-azure.md
         - name: Az AD FS alkalmazástevékenységi jelentésének használata (előzetes verzió)
           href: migrate-adfs-application-activity.md

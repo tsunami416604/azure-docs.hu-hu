@@ -10,34 +10,24 @@
       items:
         - name: Introduction (Bevezetés)
           href: get-started.md
-          displayName: 'get, started'
-        - name: 1. Munkaterület létrehozása
+        - name: 1. Synapse-munkaterület létrehozása
           href: get-started-create-workspace.md
-          displayName: 'get, started'
-        - name: 2. SQL-készletek használata
+        - name: 2. Elemzés SQL-készlettel
           href: get-started-analyze-sql-pool.md
-          displayName: 'get, started'
-        - name: 3. A Spark használata
+        - name: 3. Elemzés a Spark használatával
           href: get-started-analyze-spark.md
-          displayName: 'get, started'
-        - name: 4. Az igény szerinti SQL használata
+        - name: 4. Elemzés igény szerinti SQL használatával
           href: get-started-analyze-sql-on-demand.md
-          displayName: 'get, started'
         - name: 5. Tárfiók adatainak elemzése
           href: get-started-analyze-storage.md
-          displayName: 'get, started'
         - name: 6. Összehangolás folyamatok használatával
           href: get-started-pipelines.md
-          displayName: 'get, started'
         - name: 7. Vizualizáció a Power BI használatával
           href: get-started-visualize-power-bi.md
-          displayName: 'get, started'
         - name: 8. Monitorozás
           href: get-started-monitor.md
-          displayName: 'get, started'
         - name: 9. Ismerkedés a tudásbázissal
           href: get-started-knowledge-center.md
-          displayName: 'get, started'
     - name: Hasznos tanácsok
       href: overview-cheat-sheet.md
     - name: GYIK
@@ -58,16 +48,16 @@
       href: quickstart-power-bi.md
     - name: Készletek létrehozása
       items:
-        - name: SQL-készlet létrehozása a Synapse Studio használatával
-          href: quickstart-create-sql-pool-studio.md
+        - name: Apache Spark-notebook létrehozása webes eszközök használatával
+          href: quickstart-apache-spark-notebook.md
+        - name: Apache Spark-készlet létrehozása az Azure Portal használatával
+          href: quickstart-create-apache-spark-pool-portal.md
+        - name: Apache Spark-készlet létrehozása a Synapse Studio használatával
+          href: quickstart-create-apache-spark-pool-studio.md
         - name: SQL-készlet létrehozása az Azure Portal használatával
           href: quickstart-create-sql-pool-portal.md
-        - name: Jegyzetfüzet létrehozása
-          href: quickstart-apache-spark-notebook.md
-        - name: Spark-készlet létrehozása az Azure Portallal
-          href: quickstart-create-apache-spark-pool-portal.md
-        - name: Spark-készlet létrehozása a Synapse Studióval
-          href: quickstart-create-apache-spark-pool-studio.md
+        - name: SQL-készlet létrehozása a Synapse Studio használatával
+          href: quickstart-create-sql-pool-studio.md
     - name: Adatok betöltése SQL-készletek használatával
       items:
         - name: COPY utasítás
@@ -84,16 +74,12 @@
   items:
     - name: Apache Spark-alkalmazások futtatása
       href: ./spark/intellij-tool-synapse.md
-    - name: PySpark-alkalmazások futtatása Spark-készletekhez
-      href: ./spark/vscode-tool-synapse.md
     - name: Spark-feladatdefiníciók
       href: ./spark/apache-spark-job-definitions.md
     - name: Power BI Desktop
       href: ./sql/tutorial-connect-power-bi-desktop.md
     - name: Adatelemző
       items:
-        - name: Regressziós kísérlet futtatása Azure AutoML használatával
-          href: ./spark/apache-spark-azure-machine-learning-tutorial.md
         - name: Besorolási modell létrehozása Apache Spark MLlib használatával
           href: ./spark/apache-spark-machine-learning-mllib-notebook.md
     - name: Adatelemző
@@ -212,8 +198,8 @@
               href: ../data-factory/concepts-data-flow-expression-builder.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Kifejezés nyelve
               href: ../data-factory/data-flow-expression-functions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Eltérések az Azure Data Factoryhoz képest
-              href: ./data-integration/concepts-data-factory-differences.md
+        - name: Eltérések az Azure Data Factoryhoz képest
+          href: ./data-integration/concepts-data-factory-differences.md
     - name: Spark
       items:
         - name: Áttekintés
@@ -386,6 +372,22 @@
           href: ../cosmos-db/synapse-link-frequently-asked-questions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: A Synapse Link használati esetei
           href: ../cosmos-db/synapse-link-use-cases.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+    - name: Machine Learning
+      items:
+        - name: Áttekintés
+          items:
+            - name: Mit jelent a gépi tanulás a Synapse Analyticsben?
+              href: machine-learning/what-is-machine-learning.md
+        - name: Rövid útmutatók
+          items:
+            - name: Új Azure Machine Learning társított szolgáltatás létrehozása
+              href: machine-learning/quickstart-integrate-azure-machine-learning.md
+        - name: Oktatóanyagok
+          items:
+            - name: SQL-készletek modellpontozási varázslója
+              href: machine-learning/tutorial-sql-pool-model-scoring-wizard.md
+            - name: Regressziós kísérlet futtatása Azure AutoML használatával (pontozás a DW-ben)
+              href: ./spark/apache-spark-azure-machine-learning-tutorial.md
     - name: 'Eszközök integrációja (AI, ETL, BI)'
       items:
         - name: A Synapse Studio hibaelhárítása
@@ -478,31 +480,27 @@
               href: ../cosmos-db/configure-synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Csatlakozás a Cosmos DB-hez készült Azure Synapse Linkhez
               href: ./synapse-link/how-to-connect-synapse-link-cosmos-db.md
-            - name: Az Azure Cosmos DB elemzési tárának lekérdezése az Apache Sparkkal
+            - name: Azure Cosmos DB elemzési tár lekérdezése az Azure Synapse Analyticshez készült Apache Sparkkal
               href: ./synapse-link/how-to-query-analytical-store-spark.md
             - name: Adatok másolása Synapse Linkből SQL-készletbe Apache Spark használatával
               href: ./synapse-link/how-to-copy-to-sql-pool.md
-            - name: Az Azure Cosmos DB elemzési tárának lekérdezése az igény szerinti SQL-lel
-              href: sql/query-cosmos-db-analytical-store.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Synapse SQL
           items:
-            - name: Külső adatok lekérdezése
+            - name: Adatok lekérdezése a tárterületen
               items:
                 - name: Áttekintés
                   href: sql/query-data-storage.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: CSV-fájlok lekérdezése
+                - name: CSV-fájl lekérdezése
                   href: sql/query-single-csv-file.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: Parquet-fájlok lekérdezése
                   href: sql/query-parquet-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                - name: A Parquet beágyazott típusainak lekérdezése
+                  href: sql/query-parquet-nested-types.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: JSON-fájlok lekérdezése
                   href: sql/query-json-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: Az Azure Cosmos DB lekérdezése
-                  href: sql/query-cosmos-db-analytical-store.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: Beágyazott típusok lekérdezése
-                  href: sql/query-parquet-nested-types.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: Mappák és több fájl lekérdezése
                   href: sql/query-folders-multiple-csv-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: Particionált fájlok lekérdezése a fájlok metaadatainak használatával
+                - name: Fájlok metaadatainak használata
                   href: sql/query-specific-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: Nézetek létrehozása és használata
                   href: sql/create-use-views.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json

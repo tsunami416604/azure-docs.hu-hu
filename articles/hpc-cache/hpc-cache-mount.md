@@ -4,14 +4,14 @@ description: Ügyfelek összekötése az Azure HPC cache szolgáltatással
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 04/15/2020
+ms.date: 09/30/2020
 ms.author: v-erkel
-ms.openlocfilehash: 10f8e92138878381b5267742b8211df81e0c49d4
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: e29d031bc3461c4adab87b1d784ef19c89c7c12d
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232678"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613006"
 ---
 # <a name="mount-the-azure-hpc-cache"></a>Az Azure HPC Cache csatlakoztatása
 
@@ -20,7 +20,7 @@ A gyorsítótár létrehozása után az NFS-ügyfelek egy egyszerű parancs hasz
 A csatlakoztatási parancs az alábbi elemekből áll:
 
 * A gyorsítótár csatlakoztatási címeinek egyike (a gyorsítótár áttekintése oldalon látható)
-* A tárolási cél létrehozásakor beállított virtuális névtér elérési útja
+* A tárolási célhoz beállított virtuális névtér elérési útja (a gyorsítótár-névtér oldalon látható)
 * Az ügyfélen használandó helyi elérési út
 * Az ilyen típusú NFS-csatlakoztatások sikerességét optimalizáló parancs paraméterei
 
@@ -40,8 +40,8 @@ Hozzon létre például egy virtuális hálózaton belül az ügyfél virtuális
 
 Telepítse a megfelelő Linux-segédprogramot az NFS-csatlakoztatási parancs támogatásához:
 
-* Red Hat Enterprise Linux vagy SuSE esetén:`sudo yum install -y nfs-utils`
-* Ubuntu vagy Debian esetén:`sudo apt-get install nfs-common`
+* Red Hat Enterprise Linux vagy SuSE esetén: `sudo yum install -y nfs-utils`
+* Ubuntu vagy Debian esetén: `sudo apt-get install nfs-common`
 
 ### <a name="create-a-local-path"></a>Helyi elérési út létrehozása
 
@@ -65,7 +65,7 @@ A csatlakoztatási parancs létrehozásához kövesse az alábbi eljárást.
 
 1. Szabja testre az **ügyfél elérési útja** mezőt. Ez a mező egy példaként szolgáló parancsot biztosít, amellyel helyi elérési utat hozhat létre az ügyfélen. Az ügyfél ezen a címtáron helyileg fér hozzá a tartalomhoz az Azure HPC-gyorsítótárból.
 
-   Kattintson a mezőre, és szerkessze a parancsot, hogy tartalmazza a kívánt könyvtárnév nevét. A név a karakterlánc végén jelenik meg, a következő után:`sudo mkdir -p`
+   Kattintson a mezőre, és szerkessze a parancsot, hogy tartalmazza a kívánt könyvtárnév nevét. A név a karakterlánc végén jelenik meg, a következő után: `sudo mkdir -p`
 
    ![képernyőfelvétel: az ügyfél elérési útja mező a végén található kurzorral](media/mount-edit-client.png)
 
@@ -81,15 +81,15 @@ A csatlakoztatási parancs létrehozásához kövesse az alábbi eljárást.
 
    ![a névtér elérési útjai mező képernyőképe, a választóval megnyitva](media/mount-select-target.png)
 
-   A virtuális névterek elérési útjai a tárolási célok portálon tekinthetők meg és módosíthatók. Olvassa el a [tárolási célok hozzáadása](hpc-cache-add-storage.md) című témakört.
+   A virtuális névtér elérési útjai a **névtér** -portál lapon tekinthetők meg és módosíthatók. Olvassa el [az összesített névtér beállítása](add-namespace-paths.md) című témakört.
 
    Ha többet szeretne megtudni az Azure HPC cache összesített névtér-szolgáltatásáról, olvassa el [az összesített névtér megtervezése](hpc-cache-namespace.md)című témakört.
 
 1. A 3. lépésben szereplő **Mount Command** mező automatikusan feltölti a testreszabott csatlakoztatási paranccsal, amely a csatlakoztatási, a virtuális névtér elérési útját és az előző mezőkben beállított ügyfél elérési útját használja.
 
-   A vágólapra történő automatikus másoláshoz kattintson a mező jobb oldalán található másolási szimbólumra.
+   Kattintson a mező jobb oldalán található másolási szimbólumra, hogy automatikusan átmásolja a vágólapra.
 
-   ![a névtér elérési útjai mező képernyőképe, a választóval megnyitva](media/mount-command-copy.png)
+   ![képernyőkép a prototípus csatlakoztatási parancs mezőjéről, amely a "másolás a vágólapra" gomb szövegét jeleníti meg](media/mount-command-copy.png)
 
 1. A csatlakoztatott mount parancs használatával csatlakoztassa az ügyfélszámítógépet az Azure HPC-gyorsítótárhoz. A parancsot közvetlenül az ügyfél parancssorából is kiállíthatja, vagy belefoglalhatja a csatlakoztatás parancsot egy ügyfél-telepítési parancsfájlba vagy sablonba.
 
@@ -124,16 +124,16 @@ Robusztus ügyfél csatlakoztatása esetén adja át ezeket a beállításokat �
 
 ### <a name="find-mount-command-components"></a>Csatlakoztatási parancs összetevőinek keresése
 
-Ha a csatlakoztatási **utasítások** lap használata nélkül szeretné létrehozni a csatlakoztatási parancsot, megkeresheti a csatlakoztatási címeket a gyorsítótár **áttekintése** lapon és a virtuális névtér elérési útjain a **tárolási cél** lapon.
+Ha a csatlakoztatási **utasítások** lap használata nélkül szeretné létrehozni a csatlakoztatási parancsot, megkeresheti a csatlakoztatási címeket a gyorsítótár **áttekintése** lapon és a virtuális névtér elérési útjain a **névtér** lapon.
 
 ![képernyőkép az Azure HPC cache-példány áttekintő oldaláról, amely a jobb alsó sarokban lévő csatlakoztatási címek listája körüli kiemelési lista](media/hpc-cache-mount-addresses.png)
 
 > [!NOTE]
 > A gyorsítótár-csatlakoztatási címek a gyorsítótár alhálózatán belüli hálózati adaptereknek felelnek meg. Egy erőforráscsoport esetében ezek a hálózati adapterek a (z `-cluster-nic-` ) és egy szám végződésű névvel vannak felsorolva. Ne módosítsa vagy törölje ezeket a csatolókat, vagy a gyorsítótár elérhetetlenné válik.
 
-A virtuális névtér elérési útjai az egyes tárolási cél részletek lapján jelennek meg. Kattintson egy egyedi tárolási cél nevére a részletek megjelenítéséhez, beleértve a hozzájuk társított összesített névtér-elérési utakat is.
+A virtuális névtér elérési útjai a gyorsítótár **névtér** -beállítások lapján jelennek meg.
 
-![a tárolási cél részletes oldalának képernyőképe (fejléc "frissítési tárolási cél"). A tábla virtuális névtér elérési útja oszlopában található egy kiemelési mező](media/hpc-cache-view-namespace-paths.png)
+![képernyőkép a portál beállításairól > a névtér oldaláról a tábla első oszlopában található kiemelési mezővel: "névtér elérési útja"](media/view-namespace-paths.png)
 
 ## <a name="next-steps"></a>További lépések
 
