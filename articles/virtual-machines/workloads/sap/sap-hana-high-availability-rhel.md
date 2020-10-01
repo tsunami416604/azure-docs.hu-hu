@@ -10,14 +10,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/21/2020
+ms.date: 09/30/2020
 ms.author: radeltch
-ms.openlocfilehash: 2ce3a4116c12065bbaee8e11d5ada3b8c89b1a9d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2184a6e67b17f9fcaefc0a8e556ba81e839a2399
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088223"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598059"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-red-hat-enterprise-linux"></a>SAP HANA magas rendelkezésre állása Azure-beli virtuális gépeken Red Hat Enterprise Linux
 
@@ -95,7 +95,7 @@ SAP HANA a rendszerreplikáció beállítása dedikált virtuális állomásneve
 
 Az Azure piactér tartalmaz egy rendszerképet, amely az új virtuális gépek üzembe helyezéséhez használható SAP HANA Red Hat Enterprise Linux 7,4.
 
-### <a name="deploy-with-a-template"></a>Üzembe helyezés sablonnal
+### <a name="deploy-with-a-template"></a>Üzembe helyezés sablon használatával
 
 Az összes szükséges erőforrás üzembe helyezéséhez a GitHubon található egyik rövid útmutató-sablon is használható. A sablon üzembe helyezi a virtuális gépeket, a terheléselosztóot, a rendelkezésre állási készletet stb.
 A sablon üzembe helyezéséhez kövesse az alábbi lépéseket:
@@ -129,7 +129,7 @@ A sablon üzembe helyezéséhez kövesse az alábbi lépéseket:
       1. Nyissa meg a terheléselosztó felületet, válassza a előtér **IP-készlet**lehetőséget, majd kattintson a **Hozzáadás**gombra.
       1. Adja meg az új előtér-IP-készlet nevét (például **Hana-frontend**).
       1. Állítsa a **hozzárendelést** **statikus** értékre, és adja meg az IP-címet (például **10.0.0.13**).
-      1. Kattintson az **OK** gombra.
+      1. Válassza az **OK** lehetőséget.
       1. Az új előtér-IP-készlet létrehozása után jegyezze fel a készlet IP-címét.
 
    1. Következő lépésként hozzon létre egy háttér-készletet:
@@ -139,14 +139,14 @@ A sablon üzembe helyezéséhez kövesse az alábbi lépéseket:
       1. Válassza **a virtuális gép hozzáadása**lehetőséget.
       1. Válassza a * * virtuális gép * * elemet.
       1. Válassza ki a SAP HANA-fürthöz tartozó virtuális gépeket és azok IP-címeit.
-      1. Válassza a **Hozzáadás** elemet.
+      1. Válassza a **Hozzáadás** lehetőséget.
 
    1. Következő lépésként hozzon létre egy állapot-mintavételt:
 
       1. Nyissa meg a terheléselosztó-t, válassza az **állapot**-tesztek elemet, majd kattintson a **Hozzáadás**gombra.
       1. Adja meg az új állapot-mintavétel nevét (például **Hana-HP**).
       1. Válassza a **TCP** lehetőséget a protokoll és a**625-** es port. Tartsa meg az **intervallum** értékét 5-re, a nem kifogástalan **állapot küszöbértékének** értéke pedig 2.
-      1. Kattintson az **OK** gombra.
+      1. Válassza az **OK** lehetőséget.
 
    1. Ezután hozza létre a terheléselosztási szabályokat:
    
@@ -156,7 +156,7 @@ A sablon üzembe helyezéséhez kövesse az alábbi lépéseket:
       1. Válassza a **hektár portok**lehetőséget.
       1. Növelje az **üresjárati időkorlátot** 30 percre.
       1. Ügyeljen arra, hogy a **lebegő IP-címet engedélyezze**.
-      1. Kattintson az **OK** gombra.
+      1. Válassza az **OK** lehetőséget.
 
    > [!Note]
    > Ha a nyilvános IP-címek nélküli virtuális gépek a belső (nincs nyilvános IP-cím) standard Azure Load Balancer háttér-készletbe kerülnek, nem lesz kimenő internetkapcsolat, kivéve, ha további konfigurálást végeznek a nyilvános végpontok útválasztásának engedélyezéséhez. A kimenő kapcsolatok elérésével kapcsolatos részletekért lásd: [nyilvános végpontú kapcsolat Virtual Machines az Azure standard Load Balancer használata az SAP magas rendelkezésre állási helyzetekben](./high-availability-guide-standard-load-balancer-outbound-connections.md).  
@@ -167,7 +167,7 @@ A sablon üzembe helyezéséhez kövesse az alábbi lépéseket:
       1. Nyissa meg a terheléselosztó felületet, válassza a előtér **IP-készlet**lehetőséget, majd kattintson a **Hozzáadás**gombra.
       1. Adja meg az új előtér-IP-készlet nevét (például **Hana-frontend**).
       1. Állítsa a **hozzárendelést** **statikus** értékre, és adja meg az IP-címet (például **10.0.0.13**).
-      1. Kattintson az **OK** gombra.
+      1. Válassza az **OK** lehetőséget.
       1. Az új előtér-IP-készlet létrehozása után jegyezze fel a készlet IP-címét.
 
    1. Következő lépésként hozzon létre egy háttér-készletet:
@@ -177,14 +177,14 @@ A sablon üzembe helyezéséhez kövesse az alábbi lépéseket:
       1. Válassza **a virtuális gép hozzáadása**lehetőséget.
       1. Válassza ki a 3. lépésben létrehozott rendelkezésre állási készletet.
       1. Válassza ki a SAP HANA-fürthöz tartozó virtuális gépeket.
-      1. Kattintson az **OK** gombra.
+      1. Válassza az **OK** lehetőséget.
 
    1. Következő lépésként hozzon létre egy állapot-mintavételt:
 
       1. Nyissa meg a terheléselosztó-t, válassza az **állapot**-tesztek elemet, majd kattintson a **Hozzáadás**gombra.
       1. Adja meg az új állapot-mintavétel nevét (például **Hana-HP**).
       1. Válassza a **TCP** lehetőséget a protokoll és a**625-** es port. Tartsa meg az **intervallum** értékét 5-re, a nem kifogástalan **állapot küszöbértékének** értéke pedig 2.
-      1. Kattintson az **OK** gombra.
+      1. Válassza az **OK** lehetőséget.
 
    1. SAP HANA 1,0 esetében hozza létre a terheléselosztási szabályokat:
 
@@ -194,7 +194,7 @@ A sablon üzembe helyezéséhez kövesse az alábbi lépéseket:
       1. Tartsa a **protokollt** **TCP**-értékre, és írja be a 3**03**15 portot.
       1. Növelje az **üresjárati időkorlátot** 30 percre.
       1. Ügyeljen arra, hogy a **lebegő IP-címet engedélyezze**.
-      1. Kattintson az **OK** gombra.
+      1. Válassza az **OK** lehetőséget.
       1. Ismételje meg ezeket a lépéseket a 3**03**17-ös porton.
 
    1. SAP HANA 2,0 esetében hozza létre a rendszeradatbázis terheléselosztási szabályait:
@@ -205,7 +205,7 @@ A sablon üzembe helyezéséhez kövesse az alábbi lépéseket:
       1. Tartsa a **protokollt** **TCP**-értékre, és írja be a 3**03**13 portot.
       1. Növelje az **üresjárati időkorlátot** 30 percre.
       1. Ügyeljen arra, hogy a **lebegő IP-címet engedélyezze**.
-      1. Kattintson az **OK** gombra.
+      1. Válassza az **OK** lehetőséget.
       1. Ismételje meg ezeket a lépéseket a 3.**03**. porton.
 
    1. SAP HANA 2,0 esetében először hozza létre a bérlői adatbázishoz tartozó terheléselosztási szabályokat:
@@ -216,7 +216,7 @@ A sablon üzembe helyezéséhez kövesse az alábbi lépéseket:
       1. Tartsa a **protokollt** **TCP**-re, és írja be a 3**03**40 portot.
       1. Növelje az **üresjárati időkorlátot** 30 percre.
       1. Ügyeljen arra, hogy a **lebegő IP-címet engedélyezze**.
-      1. Kattintson az **OK** gombra.
+      1. Válassza az **OK** lehetőséget.
       1. Ismételje meg ezeket a lépéseket a 3**03**41 és 3**03**42-es porton.
 
 A SAP HANA szükséges portokkal kapcsolatos további információkért olvassa el a [bérlői adatbázisok kapcsolatai](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html) című részt a [SAP HANA bérlői adatbázisok](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6) útmutatójában vagy az 2388694-es [SAP-megjegyzésben][2388694].
@@ -342,7 +342,12 @@ Az ebben a szakaszban szereplő lépések az alábbi előtagokat használják:
 
 1. **[A]** RHEL a HANA-konfigurációhoz
 
-   Konfigurálja a RHEL a [2292690] -es és [2455582] -es SAP-megjegyzésben leírtak szerint <https://access.redhat.com/solutions/2447641> .
+   Konfigurálja a RHEL a (z) <https://access.redhat.com/solutions/2447641> és a következő SAP-megjegyzésekben leírtak szerint:  
+   - [2292690 – SAP HANA DB: ajánlott operációsrendszer-beállítások a RHEL 7 rendszerhez](https://launchpad.support.sap.com/#/notes/2292690)
+   - [2777782 – SAP HANA DB: ajánlott operációsrendszer-beállítások a RHEL 8 rendszerhez](https://launchpad.support.sap.com/#/notes/2777782)
+   - [2455582 – Linux: a GCC 6. x-sel lefordított SAP-alkalmazások futtatása](https://launchpad.support.sap.com/#/notes/2455582)
+   - [2593824 – Linux: a GCC 7. x verzióval lefordított SAP-alkalmazások futtatása](https://launchpad.support.sap.com/#/notes/2593824) 
+   - [2886607 – Linux: a GCC 9. x-szel lefordított SAP-alkalmazások futtatása](https://launchpad.support.sap.com/#/notes/2886607)
 
 1. **[A]** telepítse a SAP HANA
 
@@ -551,7 +556,7 @@ Ha alapszintű pacemaker-fürtöt szeretne létrehozni ehhez a HANA-kiszolgáló
 
 ## <a name="create-sap-hana-cluster-resources"></a>SAP HANA-fürt erőforrásainak létrehozása
 
-Telepítse a SAP HANA erőforrás-ügynököket az **összes csomópontra**. Győződjön meg arról, hogy a csomagot tartalmazó tárházat engedélyez.
+Telepítse a SAP HANA erőforrás-ügynököket az **összes csomópontra**. Győződjön meg arról, hogy a csomagot tartalmazó tárházat engedélyez. A RHEL 8. x ha-kompatibilis rendszerképek használata esetén nem szükséges további Tárházak engedélyezése.  
 
 <pre><code># Enable repository that contains SAP HANA resource agents
 sudo subscription-manager repos --enable="rhel-sap-hana-for-rhel-7-server-rpms"
@@ -566,13 +571,18 @@ Ezután hozza létre a HANA-topológiát. Futtassa az alábbi parancsokat a pace
 # Replace the bold string with your instance number and HANA system ID
 sudo pcs resource create SAPHanaTopology_<b>HN1</b>_<b>03</b> SAPHanaTopology SID=<b>HN1</b> InstanceNumber=<b>03</b> \
 op start timeout=600 op stop timeout=300 op monitor interval=10 timeout=600 \
---clone clone-max=2 clone-node-max=1 interleave=true
+clone clone-max=2 clone-node-max=1 interleave=true
 </code></pre>
 
-Ezután hozza létre a HANA-erőforrásokat:
+Ezután hozza létre a HANA-erőforrásokat.
+
+> [!NOTE]
+> Ez a cikk a *Slave*kifejezésre mutató hivatkozásokat tartalmaz, amelyek egy kifejezés, amelyet a Microsoft már nem használ. Ha a rendszer eltávolítja a kifejezést a szoftverből, azt a cikkből távolítjuk el.
+
+Ha a **RHEL 7. x verzióban**hoz létre fürtöt, használja a következő parancsokat:  
 
 <pre><code># Replace the bold string with your instance number, HANA system ID, and the front-end IP address of the Azure load balancer.
-
+#
 sudo pcs resource create SAPHana_<b>HN1</b>_<b>03</b> SAPHana SID=<b>HN1</b> InstanceNumber=<b>03</b> PREFER_SITE_TAKEOVER=true DUPLICATE_PRIMARY_TIMEOUT=7200 AUTOMATED_REGISTER=false \
 op start timeout=3600 op stop timeout=3600 \
 op monitor interval=61 role="Slave" timeout=700 \
@@ -581,14 +591,32 @@ op promote timeout=3600 op demote timeout=3600 \
 master notify=true clone-max=2 clone-node-max=1 interleave=true
 
 sudo pcs resource create vip_<b>HN1</b>_<b>03</b> IPaddr2 ip="<b>10.0.0.13</b>"
-
 sudo pcs resource create nc_<b>HN1</b>_<b>03</b> azure-lb port=625<b>03</b>
-
 sudo pcs resource group add g_ip_<b>HN1</b>_<b>03</b> nc_<b>HN1</b>_<b>03</b> vip_<b>HN1</b>_<b>03</b>
 
 sudo pcs constraint order SAPHanaTopology_<b>HN1</b>_<b>03</b>-clone then SAPHana_<b>HN1</b>_<b>03</b>-master symmetrical=false
-
 sudo pcs constraint colocation add g_ip_<b>HN1</b>_<b>03</b> with master SAPHana_<b>HN1</b>_<b>03</b>-master 4000
+
+sudo pcs property set maintenance-mode=false
+</code></pre>
+
+Ha a **RHEL 8. x verzióban**hoz létre fürtöt, használja a következő parancsokat:  
+
+<pre><code># Replace the bold string with your instance number, HANA system ID, and the front-end IP address of the Azure load balancer.
+#
+sudo pcs resource create SAPHana_<b>HN1</b>_<b>03</b> SAPHana SID=<b>HN1</b> InstanceNumber=<b>03</b> PREFER_SITE_TAKEOVER=true DUPLICATE_PRIMARY_TIMEOUT=7200 AUTOMATED_REGISTER=false \
+op start timeout=3600 op stop timeout=3600 \
+op monitor interval=61 role="Slave" timeout=700 \
+op monitor interval=59 role="Master" timeout=700 \
+op promote timeout=3600 op demote timeout=3600 \
+promotable meta notify=true clone-max=2 clone-node-max=1 interleave=true
+
+sudo pcs resource create vip_<b>HN1</b>_<b>03</b> IPaddr2 ip="<b>10.0.0.13</b>"
+sudo pcs resource create nc_<b>HN1</b>_<b>03</b> azure-lb port=625<b>03</b>
+sudo pcs resource group add g_ip_<b>HN1</b>_<b>03</b> nc_<b>HN1</b>_<b>03</b> vip_<b>HN1</b>_<b>03</b>
+
+sudo pcs constraint order SAPHanaTopology_<b>HN1</b>_<b>03</b>-clone then SAPHana_<b>HN1</b>_<b>03</b>-clone symmetrical=false
+sudo pcs constraint colocation add g_ip_<b>HN1</b>_<b>03</b> with master SAPHana_<b>HN1</b>_<b>03</b>-clone 4000
 
 sudo pcs property set maintenance-mode=false
 </code></pre>
@@ -638,7 +666,10 @@ Resource Group: g_ip_HN1_03
 
 A SAP HANA fő csomópontját a következő parancs végrehajtásával telepítheti át:
 
-<pre><code>[root@hn1-db-0 ~]# pcs resource move SAPHana_HN1_03-master
+<pre><code># On RHEL <b>7.x</b> 
+[root@hn1-db-0 ~]# pcs resource move SAPHana_HN1_03-master
+# On RHEL <b>8.x</b>
+[root@hn1-db-0 ~]# pcs resource move SAPHana_HN1_03-clone --master
 </code></pre>
 
 Ha be van állítva `AUTOMATED_REGISTER="false"` , a parancsnak át kell telepítenie a SAP HANA fő csomópontot és a hn1-db-1 virtuális IP-címet tartalmazó csoportot.
@@ -686,6 +717,9 @@ Resource Group: g_ip_HN1_03
 
 ### <a name="test-the-azure-fencing-agent"></a>Az Azure-kerítés ügynökének tesztelése
 
+> [!NOTE]
+> Ez a cikk a *Slave*kifejezésre mutató hivatkozásokat tartalmaz, amelyek egy kifejezés, amelyet a Microsoft már nem használ. Ha a rendszer eltávolítja a kifejezést a szoftverből, azt a cikkből távolítjuk el.  
+
 Erőforrás állapota a teszt elindítása előtt:
 
 <pre><code>Clone Set: SAPHanaTopology_HN1_03-clone [SAPHanaTopology_HN1_03]
@@ -717,7 +751,10 @@ hn1adm@hn1-db-1:/usr/sap/HN1/HDB03> hdbnsutil -sr_register --remoteHost=<b>hn1-d
 
 # Switch back to root and clean up the failed state
 exit
+# On RHEL <b>7.x</b>
 [root@hn1-db-1 ~]# pcs resource cleanup SAPHana_HN1_03-master
+# On RHEL <b>8.x</b>
+[root@hn1-db-1 ~]# pcs resource cleanup SAPHana_HN1_03 node=&lt;hostname on which the resource needs to be cleaned&gt;
 </code></pre>
 
 Erőforrás állapota a teszt után:
@@ -762,7 +799,10 @@ hn1adm@hn1-db-0:/usr/sap/HN1/HDB03> hdbnsutil -sr_register --remoteHost=<b>hn1-d
 
 # Switch back to root and clean up the failed state
 hn1adm@hn1-db-0:/usr/sap/HN1/HDB03> exit
+# On RHEL <b>7.x</b>
 [root@hn1-db-1 ~]# pcs resource cleanup SAPHana_HN1_03-master
+# On RHEL <b>8.x</b>
+[root@hn1-db-1 ~]# pcs resource cleanup SAPHana_HN1_03 node=&lt;hostname on which the resource needs to be cleaned&gt;
 </code></pre>
 
 Erőforrás állapota a teszt után:

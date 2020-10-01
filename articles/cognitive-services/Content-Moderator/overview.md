@@ -11,13 +11,13 @@ ms.topic: overview
 ms.date: 09/15/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
-keywords: Content moderátor, Azure Content moderátor, online moderátor, Content Filtering szoftver, Content moderációs szolgáltatás
-ms.openlocfilehash: d502f41a79500b80e1891219b54bde30eb3cd8ca
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+keywords: Content moderátor, Azure Content moderátor, online moderátor, Content Filtering szoftver, Content moderációs szolgáltatás, tartalom moderálása
+ms.openlocfilehash: aa1f4c1fab9b3d8a1b5db0e965f1608e694646b2
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91309654"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596861"
 ---
 # <a name="what-is-azure-content-moderator"></a>Mi az az Azure Content Moderator?
 
@@ -52,7 +52,7 @@ A Content Moderator szolgáltatás olyan moderálási API-kat tartalmaz, amelyek
 
 Az alábbi táblázat a moderálási API-k különböző típusait ismerteti.
 
-| API-csoport | Description |
+| API-csoport | Leírás |
 | ------ | ----------- |
 |[**Szövegmoderálás**](text-moderation-api.md)| Megvizsgálja a sértő tartalom, a szexuálisan explicit vagy szuggesztív tartalom, a káromkodás és a személyes adatokat szövegét.|
 |[**Egyéni kifejezéslista**](try-terms-list-api.md)| A szöveget a beépített kifejezésekkel együtt a kifejezések egyéni listájában vizsgálja. Az egyéni listákkal a saját tartalomházirendjének megfelelően tilthatja le vagy engedélyezheti a tartalmakat.|  
@@ -79,6 +79,6 @@ A Content Moderator szolgáltatás magában foglalja a webalapú [felülvizsgál
 
 Akárcsak az összes Cognitive Services esetében, a Content Moderator szolgáltatást használó fejlesztőknek ismerniük kell a Microsoft adatkezelési szabályzatait. További információért tekintse meg a Microsoft adatvédelmi központjának [Cognitive Services lapját](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Content Moderator a webes portálon való használatának megkezdéséhez kövesse [az interneten található Content moderator kipróbálása](quick-start.md)című témakört. Vagy fejezze be az [ügyféloldali kódtár](client-libraries.md) gyors üzembe helyezését a kódban található alapszintű forgatókönyvek megvalósításához.

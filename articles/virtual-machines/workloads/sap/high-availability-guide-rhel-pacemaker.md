@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/04/2020
+ms.date: 09/29/2020
 ms.author: radeltch
-ms.openlocfilehash: a1e097692eade956446b46782bca5ecf3a17de75
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 4c444cb84f215ba4f42c14eb64f1d2f441e4280d
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800262"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598298"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>A pacemaker beállítása Red Hat Enterprise Linux az Azure-ban
 
@@ -66,6 +66,7 @@ Először olvassa el a következő SAP-megjegyzéseket és dokumentumokat:
 * Az Azure-specifikus RHEL dokumentációja:
   * [A RHEL magas rendelkezésre állású fürtökre vonatkozó támogatási szabályzatok – Microsoft Azure Virtual Machines a fürt tagjai](https://access.redhat.com/articles/3131341)
   * [Red Hat Enterprise Linux 7,4 (és újabb) magas rendelkezésre állású fürt telepítése és konfigurálása Microsoft Azure](https://access.redhat.com/articles/3252491)
+  * [A RHEL 8 – magas rendelkezésre állás és fürtök bevezetésének szempontjai](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/considerations_in_adopting_rhel_8/high-availability-and-clusters_considerations-in-adopting-rhel-8)
   * [Az SAP S/4HANA ASCS/ERS konfigurálása önálló sorba helyezni-kiszolgáló 2 (ENSA2) segítségével a pacemaker on RHEL 7,6](https://access.redhat.com/articles/3974941)
 
 ## <a name="cluster-installation"></a>Fürt telepítése
@@ -78,7 +79,7 @@ Először olvassa el a következő SAP-megjegyzéseket és dokumentumokat:
 
 A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes csomópontra érvényesek, **[1]** – csak az 1. vagy **[2]** csomópontra érvényesek, csak a 2. csomópontra.
 
-1. **[A]** regisztráció
+1. **[A]** regisztráljon. Erre a lépésre nincs szükség, ha RHEL 8. x HA-kompatibilis lemezképet használ.  
 
    Regisztrálja a virtuális gépeket, és csatolja azt egy készlethez, amely a RHEL 7 tárházait tartalmazza.
 
@@ -88,9 +89,9 @@ A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes cs
    sudo subscription-manager attach --pool=&lt;pool id&gt;
    </code></pre>
 
-   Vegye figyelembe, hogy a készletnek egy Azure Marketplace-TB RHEL-rendszerképhez való csatolásával a RHEL-használat után gyakorlatilag egyszer kell fizetnie, és egyszer kell megadnia a RHEL jogosultságot a csatolni kívánt készletben. Ennek enyhítése érdekében az Azure mostantól BYOS RHEL-lemezképeket biztosít. További információ [itt](../redhat/byos.md)található.
+   Ha készletet csatlakoztat egy Azure Marketplace-TB RHEL-rendszerképhez, a RHEL-használat után gyakorlatilag egyszer kell fizetnie, és egyszer kell megadnia a RHEL jogosultságot a csatolni kívánt készletben. Ennek enyhítése érdekében az Azure mostantól BYOS RHEL-lemezképeket biztosít. További információt [itt](../redhat/byos.md) talál.
 
-1. **[A]** RHEL engedélyezése az SAP-repók számára
+1. **[A]** engedélyezze a RHEL az SAP-repók számára. Erre a lépésre nincs szükség, ha RHEL 8. x HA-kompatibilis lemezképet használ.  
 
    A szükséges csomagok telepítéséhez engedélyezze a következő adattárakat.
 
@@ -108,6 +109,7 @@ A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes cs
 
    > [!IMPORTANT]
    > A következő Azure kerítés-ügynök (vagy újabb verziók) használatát javasoljuk az ügyfelek számára a gyorsabb feladatátvételi idő kihasználása érdekében, ha egy erőforrás leáll, vagy ha a fürtcsomópontok nem tudnak kommunikálni egymással:  
+   > A RHEL 7,7 vagy újabb verziója a kerítés-ügynökök csomag legújabb elérhető verzióját használja  
    > RHEL 7,6: kerítés-ügynökök-4.2.1-11. el7_6.8  
    > RHEL 7,5: kerítés-ügynökök-4.0.11-86. el7_5.8  
    > RHEL 7,4: kerítés-ügynökök-4.0.11-66. el7_4.12  
@@ -165,15 +167,23 @@ A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes cs
 
 1. **[1]** pacemaker-fürt létrehozása
 
-   Futtassa a következő parancsokat a csomópontok hitelesítéséhez és a fürt létrehozásához. Állítsa a tokent 30000-re, hogy a memóriát megőrizve karbantartást engedélyezzen. További információkért tekintse meg [ezt a cikket a Linux rendszerhez][virtual-machines-linux-maintenance].
-
+   Futtassa a következő parancsokat a csomópontok hitelesítéséhez és a fürt létrehozásához. Állítsa a tokent 30000-re, hogy a memóriát megőrizve karbantartást engedélyezzen. További információkért tekintse meg [ezt a cikket a Linux rendszerhez][virtual-machines-linux-maintenance].  
+   
+   Ha a **RHEL 7. x verzióban**hoz létre fürtöt, használja a következő parancsokat:  
    <pre><code>sudo pcs cluster auth <b>prod-cl1-0</b> <b>prod-cl1-1</b> -u hacluster
    sudo pcs cluster setup --name <b>nw1-azr</b> <b>prod-cl1-0</b> <b>prod-cl1-1</b> --token 30000
    sudo pcs cluster start --all
+   </code></pre>
 
-   # Run the following command until the status of both nodes is online
+   Ha a **RHEL 8. X verzióban**hoz létre fürtöt, használja a következő parancsokat:  
+   <pre><code>sudo pcs host auth <b>prod-cl1-0</b> <b>prod-cl1-1</b> -u hacluster
+   sudo pcs cluster setup <b>nw1-azr</b> <b>prod-cl1-0</b> <b>prod-cl1-1</b> totem token=30000
+   sudo pcs cluster start --all
+   </code></pre>
+
+   A fürt állapotának ellenőrzéséhez hajtsa végre a következő parancsot:  
+   <pre><code> # Run the following command until the status of both nodes is online
    sudo pcs status
-
    # Cluster name: nw1-azr
    # WARNING: no stonith devices and stonith-enabled is not false
    # Stack: corosync
@@ -188,17 +198,22 @@ A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes cs
    #
    # No resources
    #
-   #
    # Daemon Status:
    #   corosync: active/disabled
    #   pacemaker: active/disabled
    #   pcsd: active/enabled
    </code></pre>
 
-1. **[A] A** várt szavazatok beállítása
-
-   <pre><code>sudo pcs quorum expected-votes 2
+1. **[A] A** várt szavazatok beállítása. 
+   
+   <pre><code># Check the quorum votes 
+    pcs quorum status
+    # If the quorum votes are not set to 2, execute the next command
+    sudo pcs quorum expected-votes 2
    </code></pre>
+
+   >[!TIP]
+   > Ha több csomópontot tartalmazó fürtöt hoz létre, a kettőnél több csomóponttal rendelkező fürt esetén a szavazatok nem állíthatók be 2 értékre.    
 
 1. **[1]** egyidejű kerítés-műveletek engedélyezése
 
@@ -211,7 +226,7 @@ A STONITH-eszköz egy egyszerű szolgáltatásnév használatával engedélyezi 
 
 1. Nyissa meg a következőt: <https://portal.azure.com>
 1. A Azure Active Directory panel megnyitása  
-   Válassza a tulajdonságok lehetőséget, és jegyezze fel a címtár-azonosítót. Ez a **bérlő azonosítója**.
+   Válassza a tulajdonságok lehetőséget, és jegyezze fel a könyvtár AZONOSÍTÓját. Ez a **bérlő azonosítója**.
 1. Kattintson Alkalmazásregisztrációk
 1. Kattintson az új regisztráció elemre.
 1. Adjon meg egy nevet, válassza a "fiókok ebben a szervezeti címtárban" lehetőséget. 
@@ -219,7 +234,7 @@ A STONITH-eszköz egy egyszerű szolgáltatásnév használatával engedélyezi 
    A bejelentkezési URL-cím nincs használatban, és bármely érvényes URL-cím lehet
 1. Válassza a tanúsítványok és titkos kulcsok lehetőséget, majd kattintson az új ügyfél titka elemre.
 1. Adja meg az új kulcs leírását, válassza a "soha nem jár le" lehetőséget, majd kattintson a Hozzáadás gombra.
-1. Jegyezze fel az értéket. Az egyszerű szolgáltatás **jelszavaként** van használatban
+1. Csomópont létrehozása az értékkel. Az egyszerű szolgáltatás **jelszavaként** van használatban
 1. Válassza az Áttekintés lehetőséget. Jegyezze fel az alkalmazás AZONOSÍTÓját. A szolgáltatás felhasználóneveként (**Bejelentkezési azonosítóként** az alábbi lépésekben) használatos az egyszerű szolgáltatásnév számára
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** egyéni szerepkör létrehozása a kerítés ügynökéhez
@@ -276,12 +291,17 @@ A virtuális gépek engedélyeinek szerkesztése után a fürtben konfigurálhat
 sudo pcs property set stonith-timeout=900
 </code></pre>
 
-A kerítés eszköz konfigurálásához használja a következő parancsot.
-
 > [!NOTE]
 > A (z) "pcmk_host_map" kapcsoló csak akkor szükséges a parancsban, ha a RHEL és az Azure-csomópontok nevei nem egyeznek. Tekintse meg az parancs félkövér szakaszát.
 
+A **7. X**RHEL használja a következő parancsot a kerítés eszköz konfigurálásához:    
 <pre><code>sudo pcs stonith create rsc_st_azure fence_azure_arm login="<b>login ID</b>" passwd="<b>password</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" subscriptionId="<b>subscription id</b>" <b>pcmk_host_map="prod-cl1-0:10.0.0.6;prod-cl1-1:10.0.0.7"</b> \
+power_timeout=240 pcmk_reboot_timeout=900 pcmk_monitor_timeout=120 pcmk_monitor_retries=4 pcmk_action_limit=3 \
+op monitor interval=3600
+</code></pre>
+
+A **8. X**RHEL használja a következő parancsot a kerítés eszköz konfigurálásához:  
+<pre><code>sudo pcs stonith create rsc_st_azure fence_azure_arm username="<b>login ID</b>" password="<b>password</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" subscriptionId="<b>subscription id</b>" <b>pcmk_host_map="prod-cl1-0:10.0.0.6;prod-cl1-1:10.0.0.7"</b> \
 power_timeout=240 pcmk_reboot_timeout=900 pcmk_monitor_timeout=120 pcmk_monitor_retries=4 pcmk_action_limit=3 \
 op monitor interval=3600
 </code></pre>

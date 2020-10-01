@@ -3,7 +3,7 @@ title: Az Azure Windows rendszerű virtuális gépek nagy CPU-problémáinak elh
 description: .
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
-author: v-miegge
+author: mnanda
 manager: dcscontentpm
 editor: v-jesits
 tags: azure-resource-manager
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 9/24/2020
 ms.author: mnanda
-ms.openlocfilehash: 1cc1b6cc6e678e30b2d66d67cdc4aa438cd2058b
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 3bd19f301b1afd7dd1c35f03f6f6131a26b00708
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91542958"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596844"
 ---
 # <a name="troubleshoot-high-cpu-issues-for-azure-windows-virtual-machines"></a>Az Azure Windows rendszerű virtuális gépek nagy CPU-problémáinak elhárítása
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 A teljesítménnyel kapcsolatos problémák különböző operációs rendszerekben vagy alkalmazásokban fordulnak elő, és minden probléma egyedi módszert igényel a hibaelhárításhoz. Ezeknek a problémáknak a nagy része a CPU, a memória, a Hálózatkezelés és a bemeneti/kimeneti (I/O) elemek körül forog, ahol a probléma előfordul. Ezen területek mindegyike különböző tüneteket állít elő (esetenként egyszerre), és más diagnózist és megoldást igényel.
 

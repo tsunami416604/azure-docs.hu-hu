@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: tutorial
-ms.date: 07/27/2020
+ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 83cf8ca47774713ca8dbfd493d7aa16bf65fb6b7
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 79a4fc048b8301d67206bf28b571f88f9e5ad024
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286461"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597668"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-gen2-environment"></a>Oktatóanyag: Azure Time Series Insights Gen2-környezet beállítása
 
@@ -84,7 +84,7 @@ Ez a szakasz azt ismerteti, hogyan hozható létre Azure Time Series Insights Ge
 
 1. Az **Time Series Insights környezet létrehozása** ablaktábla **alapok** lapján adja meg a következő paramétereket:
 
-    | Paraméter | Művelet |
+    | Paraméter | Műveletek |
     | --- | ---|
     | **Környezet neve** | Adjon egyedi nevet a Azure Time Series Insights Gen2-környezetnek. |
     | **Előfizetés** | Adja meg azt az előfizetést, amelyben létre szeretné hozni a Azure Time Series Insights Gen2-környezetet. Az ajánlott eljárás az, hogy ugyanazt az előfizetést használja, mint az eszköz-szimulátor által létrehozott többi IoT-erőforrást. |
@@ -107,7 +107,7 @@ Ez a szakasz azt ismerteti, hogyan hozható létre Azure Time Series Insights Ge
 
 1. Az **eseményforrás** lapon adja meg a következő paramétereket:
 
-   | Paraméter | Művelet |
+   | Paraméter | Műveletek |
    | --- | --- |
    | **Létrehoz egy eseményforrás?** | Válassza az **Igen** lehetőséget.|
    | **Név** | Adjon meg egyedi értéket az eseményforrás neveként. |
@@ -123,7 +123,7 @@ Ez a szakasz azt ismerteti, hogyan hozható létre Azure Time Series Insights Ge
 
    [![Konfigurálja a létrehozott IoT hubot eseményforrásként.](media/v2-update-provision/tsi-configure-event-source.png)](media/v2-update-provision/tsi-configure-event-source.png#lightbox)
 
-1. Válassza a **Létrehozás** lehetőséget.
+1. Kattintson a **Létrehozás** gombra.
 
     [![Tekintse át a + létrehozás oldalt a létrehozás gombbal.](media/v2-update-provision/tsi-environment-confirmation.png)](media/v2-update-provision/tsi-environment-confirmation.png#lightbox)
 
@@ -161,7 +161,7 @@ Most, hogy üzembe helyezte a Azure Time Series Insights Gen2-környezetét, meg
 
     1. A **szimulációs beállítások** oldal betöltése után adja meg a szükséges paramétereket.
 
-        | Paraméter | Művelet |
+        | Paraméter | Műveletek |
         | --- | --- |
         | **Név** | Adjon egyedi nevet a szimulátornak. |
         | **Leírás** | Adjon meg egy definíciót. |
@@ -217,7 +217,7 @@ Ebben a szakaszban egy modellt alkalmaz az adatai struktúrájára. A modell elv
 
 1. Adja meg a következő paramétereket:
 
-    | Paraméter | Művelet |
+    | Paraméter | Műveletek |
     | --- | ---|
     | **Név** | **Lift** megadása |
     | **Leírás** | Adja meg a **lift típus definícióját** |
@@ -226,30 +226,30 @@ Ebben a szakaszban egy modellt alkalmaz az adatai struktúrájára. A modell elv
 
     1. Válassza a **+ változó hozzáadása** lehetőséget, és adja meg a következő értékeket a felvonó első változójának. Összesen három változót fog létrehozni.
 
-        | Paraméter | Művelet |
+        | Paraméter | Műveletek |
         | --- | --- |
         | **Név** | Adja meg az **AVG hőmérsékletet**. |
-        | **Altípus** | **Numerikus** elem kiválasztása |
+        | **Erőforrás** | **Numerikus** elem kiválasztása |
         | **Érték** | Válasszon az előre beállított listából: válassza a **hőmérséklet (Double)** lehetőséget. <br /> Megjegyzés: az **értékek** automatikus kitöltését eltarthat néhány percig, miután Azure Time Series Insights Gen2 megkezdi az események fogadását.|
         | **Összesítési művelet** | Bontsa ki a **Speciális beállítások elemet**. <br /> Válassza az **AVG**elemet. |
 
     1. Kattintson az **Alkalmaz** gombra. Ezután adja meg ismét a **változót** , és állítsa be a következő értékeket:
 
-        | Paraméter | Művelet |
+        | Paraméter | Műveletek |
         | --- | --- |
         | **Név** | Adja meg az **AVG Vibration**értéket. |
-        | **Altípus** | **Numerikus** elem kiválasztása |
+        | **Erőforrás** | **Numerikus** elem kiválasztása |
         | **Érték** | Válasszon az előre beállított listából: válassza a **vibráció (dupla)** lehetőséget. <br /> Megjegyzés: az **értékek** automatikus kitöltését eltarthat néhány percig, miután Azure Time Series Insights Gen2 megkezdi az események fogadását.|
         | **Összesítési művelet** | Bontsa ki a **Speciális beállítások elemet**. <br /> Válassza az **AVG**elemet. |
 
     1. Kattintson az **Alkalmaz** gombra. Ezután adja meg ismét a **változót** , és állítsa be a következő értékeket a harmadik és a végső változóhoz:
 
-        | Paraméter | Művelet |
+        | Paraméter | Műveletek |
         | --- | --- |
         | **Név** | Adja meg a **padlót**. |
-        | **Altípus** | **Kategorikus** kijelölése |
+        | **Erőforrás** | **Kategorikus** kijelölése |
         | **Érték** | Válasszon az előre beállított lehetőség közül: válassza a **padló (Double)** lehetőséget. <br /> Megjegyzés: az **értékek** automatikus kitöltését eltarthat néhány percig, miután Azure Time Series Insights Gen2 megkezdi az események fogadását.|
-        | **Kategóriák** | <span style="text-decoration: underline">Címke</span>   -  <span style="text-decoration: underline">Értékek</span> <br /> Alsó: 1, 2, 3, 4 <br /> Középső: 5, 6, 7, 8, 9 <br /> Felső: 10, 11, 12, 13, 14, 15 |
+        | **Kategóriákat** | <span style="text-decoration: underline">Címke</span>   -  <span style="text-decoration: underline">Értékek</span> <br /> Alsó: 1, 2, 3, 4 <br /> Középső: 5, 6, 7, 8, 9 <br /> Felső: 10, 11, 12, 13, 14, 15 |
         | **Alapértelmezett kategória** | **Ismeretlen** megadása |
 
         [![Adja meg a típus változóit.](media/v2-update-provision/tsi-add-type-variables.png)](media/v2-update-provision/tsi-add-type-variables.png#lightbox)
@@ -263,7 +263,7 @@ Ebben a szakaszban egy modellt alkalmaz az adatai struktúrájára. A modell elv
 
    1. A **hierarchia szerkesztése** panelen állítsa be a következő paramétereket:
 
-        | Paraméter | Művelet |
+        | Paraméter | Műveletek |
         | --- | ---|
         | **Név** | Adja meg a **hely hierarchiáját**. |
         |**Szintek**| Adja meg az **országot** az első szint neveként <br /> Válassza a **+ szint hozzáadása** lehetőséget <br /> Adja meg a második szint **városát** , majd válassza a **+ szint hozzáadása** elemet. <br /> A harmadik és utolsó szint neveként adja meg a **Building** nevet |
@@ -276,7 +276,7 @@ Ebben a szakaszban egy modellt alkalmaz az adatai struktúrájára. A modell elv
 
     1. A jobb szélen lévő **műveletek** területen kattintson a ceruza ikonra az első példány szerkesztéséhez a következő értékekkel:
 
-        | Paraméter | Művelet |
+        | Paraméter | Műveletek |
         | --- | --- |
         | **Típus** | Válassza a **lift**lehetőséget. |
         | **Név** | **1. felvonó** megadása|
@@ -284,11 +284,11 @@ Ebben a szakaszban egy modellt alkalmaz az adatai struktúrájára. A modell elv
 
     1. Lépjen a **példány mezőire** , és adja meg a következő értékeket:
 
-        | Paraméter | Művelet |
+        | Paraméter | Műveletek |
         | --- | --- |
         | **Hierarchiák** | **Hely hierarchiájának** kiválasztása |
         | **Ország** | **USA** megadása |
-        | **Település** | **Seattle** megadása |
+        | **City** | **Seattle** megadása |
         | **Létrehozása** | Adja meg a **térközt** |
 
     1. Válassza a **Mentés** lehetőséget.
@@ -297,26 +297,26 @@ Ebben a szakaszban egy modellt alkalmaz az adatai struktúrájára. A modell elv
 
     **2. lift esetén:**
 
-    | Paraméter | Művelet |
+    | Paraméter | Műveletek |
     | --- | --- |
     | **Típus** | Válassza a **lift**lehetőséget. |
     | **Név** | **2. felvonó** megadása|
     | **Leírás** | **A 2. felvonóhoz tartozó példány** megadása |
     | **Hierarchiák** | **Hely hierarchiájának** kiválasztása |
     | **Ország** | **USA** megadása |
-    | **Település** | **Seattle** megadása |
+    | **City** | **Seattle** megadása |
     | **Létrehozása** | A **Pacific Science Center** megadása |
 
     **3. felvonó esetén:**
 
-    | Paraméter | Művelet |
+    | Paraméter | Műveletek |
     | --- | --- |
     | **Típus** | Válassza a **lift**lehetőséget. |
     | **Név** | **3. felvonó** megadása|
     | **Leírás** | **A 3. felvonóhoz tartozó példány** megadása |
     | **Hierarchiák** | **Hely hierarchiájának** kiválasztása |
     | **Ország** | **USA** megadása |
-    | **Település** | Adja meg a **New York** -i |
+    | **City** | Adja meg a **New York** -i |
     | **Létrehozása** | Adja meg a **Birodalom állapotának kiépítése** |
 
     [![Tekintse meg a frissített példányokat.](media/v2-update-provision/iot-solution-accelerator-instances.png)](media/v2-update-provision/iot-solution-accelerator-instances.png#lightbox)

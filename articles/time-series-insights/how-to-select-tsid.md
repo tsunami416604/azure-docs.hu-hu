@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 05/11/2020
+ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 94abdf8735fa487f46d423f17f7e1ff7bc853eb7
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: fb409673e028375812551ec146b43c27e3755d2a
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289885"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91595524"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>Az idősor-azonosító kiválasztásának ajánlott eljárásai
 
@@ -23,7 +23,7 @@ Ez a cikk összefoglalja a Azure Time Series Insights Gen2-környezet idősoroza
 
 ## <a name="choose-a-time-series-id"></a>Time Series-azonosító kiválasztása
 
-A megfelelő idősorozat-azonosító kiválasztása kritikus. Az idősorozat-azonosító kiválasztása olyan, mint egy adatbázis partíciós kulcsának kiválasztása. Azure Time Series Insights Gen2-környezet létrehozásakor szükséges. 
+A megfelelő idősorozat-azonosító kiválasztása kritikus. Az idősorozat-azonosító kiválasztása olyan, mint egy adatbázis partíciós kulcsának kiválasztása. Azure Time Series Insights Gen2-környezet létrehozásakor szükséges.
 
 > [!IMPORTANT]
 > Az idősorozat-azonosítók a következők:
@@ -40,7 +40,7 @@ Az alábbi legfontosabb ajánlott eljárások a következők:
 * Az idősorozat-AZONOSÍTÓnak egyedinek kell lennie az [Idősorozat-modell](./concepts-model-overview.md)levél csomópontjának szintjén.
 * Az idősorozat-azonosító tulajdonságának Name karakterláncának karakteres korlátja 128. Az idősorozat-azonosító tulajdonságának értékeként a karakteres korlát 1 024.
 * Ha hiányzik az idősorozat-azonosító egyedi tulajdonságának értéke, akkor a rendszer null értékként kezeli, és az egyediségi megkötésre vonatkozó szabályt követi.
-* Ha az idősorozat-azonosító egy összetett JSON-objektumba van beágyazva, akkor ügyeljen arra, hogy a tulajdonság nevének megadásakor kövesse a bejövő [adatösszeolvasztási szabályokat](./concepts-json-flattening-escaping-rules.md) . Tekintse meg a [B](concepts-json-flattening-escaping-rules.md#example-b)példát. 
+* Ha az idősorozat-azonosító egy összetett JSON-objektumba van beágyazva, akkor ügyeljen arra, hogy a tulajdonság nevének megadásakor kövesse a bejövő [adatösszeolvasztási szabályokat](./concepts-json-flattening-escaping-rules.md) . Tekintse meg a [B](concepts-json-flattening-escaping-rules.md#example-b)példát.
 * Az idősorozat-azonosító legfeljebb *három* fő tulajdonságot választhat. A kombinációjuk egy összetett kulcs lesz, amely az idősorozat AZONOSÍTÓját jelöli.  
   > [!NOTE]
   > A három fő tulajdonságnak karakterláncnak kell lennie.
@@ -75,7 +75,7 @@ Példa nyers eseményre:
 ```
 
 A Azure Portal az alábbi módon adhatja meg az összetett kulcsot:
- 
+
 [![Állítsa be a környezet idősorozat-AZONOSÍTÓját.](media/v2-how-to-tsid/configure-environment-key.png)](media/v2-how-to-tsid/configure-environment-key.png#lightbox)
 
   > [!NOTE]

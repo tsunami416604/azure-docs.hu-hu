@@ -12,22 +12,22 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.subservice: compliance
-ms.date: 07/22/2020
+ms.date: 09/30/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9df1226d4b61326f8e5aa6f9b71d36eb5a33e81e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 38edbd9e491d4bea469c6b83ad98df48fbce1d4f
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91306514"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597501"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>Oktatóanyag: az első hozzáférési csomag létrehozása az Azure AD-jogosultságok kezelésében
 
 A szervezetek számára fontos funkció az összes erőforráshoz, például a csoportokhoz, alkalmazásokhoz és webhelyekhez való hozzáférés kezelése. Azt szeretné, hogy az alkalmazottak a megfelelő szintű hozzáférést biztosítsanak a hatékonysághoz, és el kell távolítaniuk a hozzáférést, ha már nincs rá szükség.
 
-Ebben az oktatóanyagban a Woodgrove Bank rendszergazdaként működik. A rendszer arra kérte, hogy hozzon létre egy erőforrás-csomagot egy olyan marketingkampányok számára, amelyet a belső felhasználók önkiszolgáló kéréssel használhatnak. A kérések nem igényelnek jóváhagyást, és a felhasználó hozzáférése 30 nap után lejár. Ebben az oktatóanyagban a marketing kampány erőforrásai csak egyetlen csoport tagjai, de lehetnek csoportok, alkalmazások vagy SharePoint Online-webhelyek gyűjteményei.
+Ebben az oktatóanyagban a Woodgrove Bank rendszergazdaként működik. A rendszer arra kérte, hogy hozzon létre egy olyan erőforrás-csomagot, amelyet a belső felhasználók használhatnak az önkiszolgáló kéréshez. A kérések nem igényelnek jóváhagyást, és a felhasználó hozzáférése 30 nap után lejár. Ebben az oktatóanyagban a marketing kampány erőforrásai csak egyetlen csoport tagjai, de lehetnek csoportok, alkalmazások vagy SharePoint Online-webhelyek gyűjteményei.
 
 ![A forgatókönyv áttekintését bemutató diagram.](./media/entitlement-management-access-package-first/elm-scenario-overview.png)
 
@@ -67,7 +67,7 @@ Egy erőforrás-címtárhoz egy vagy több megosztani kívánt erőforrás tarto
 
 1. Hozza létre vagy konfigurálja a következő két felhasználót. Ezeket a neveket vagy más neveket is használhatja. A **Rendszergazda1** lehet az a felhasználó, aki jelenleg be van jelentkezve.
 
-    | Name | Címtárszerepkör |
+    | Név | Címtárszerepkör |
     | --- | --- |
     | **Rendszergazda1** | Globális rendszergazda<br/>-vagy-<br/>Felhasználói rendszergazda |
     | **Requestor1** | Felhasználó |
@@ -117,10 +117,14 @@ A *hozzáférési csomag* olyan erőforrások kötege, amelyekhez egy csoportnak
 11. A **szerepkör** legördülő listában válassza a **tag**elemet.
 
     ![Új hozzáférési csomag – erőforrás-szerepkörök lap](./media/entitlement-management-access-package-first/resource-roles.png)
+    >[!IMPORTANT]
+    >A hozzáférési csomaghoz hozzáadott szerepkör-hozzárendelhető csoportok a **szerepkörökhöz hozzárendelhető**altípussal lesznek jelezve. Az Azure AD-szerepkörökhöz hozzárendelhető csoportokkal kapcsolatos további részletekért tekintse meg a [szerepkörhöz hozzárendelhető csoport létrehozása](../users-groups-roles/roles-groups-create-eligible.md) a Azure Active Directoryban című témakört. Ha nem jelenik meg a felvenni kívánt szerepkörrel rendelkező csoport, vagy ha nem tudja felvenni, győződjön meg arról, hogy rendelkezik a szükséges Azure AD-szerepkörrel és jogosultság-kezelési szerepkörrel a művelet végrehajtásához. Előfordulhat, hogy meg kell kérnie valakit, aki a szükséges szerepkörökkel hozzáadja az erőforrást a katalógushoz. További információ: a [szükséges szerepkörök az erőforrások katalógushoz való hozzáadásához](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog).
 
     >[!NOTE]
     > [Dinamikus csoportok](../users-groups-roles/groups-create-rule.md) használatakor a tulajdonoson kívül más szerepkörök is nem érhetők el. Ez az elvárt működés.
     > ![A forgatókönyv áttekintése](./media/entitlement-management-access-package-first/dynamic-group-warning.png)
+    
+
 
 12. A **tovább** gombra kattintva nyissa meg a **kérelmek** lapot.
 
@@ -262,7 +266,7 @@ Ebben a lépésben eltávolítja a végrehajtott módosításokat, és törli a 
 
 1. Törölje a **marketing-erőforrások** csoportot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő cikkből megismerheti a jogosultságok kezelésének gyakori forgatókönyveit.
 > [!div class="nextstepaction"]

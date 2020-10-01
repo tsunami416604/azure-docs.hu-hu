@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.subservice: compliance
-ms.date: 09/08/2020
+ms.date: 09/30/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.custom: contperfq1
-ms.openlocfilehash: 2ce5f0c9b340e1b81fcf002ee70e7ec1cc74d38c
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: f8bf2a1bb4892637ac504d5920754fc412691a4a
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89594322"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597382"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Mi az az Azure AD-jogosultságkezelés?
 
@@ -77,8 +77,9 @@ A jogosultságok kezelése az Azure AD-be egy *hozzáférési csomag*fogalmát m
 
 Az Azure AD biztonsági csoportjaira vagy Microsoft 365 csoportokra támaszkodó egyéb erőforrásokhoz való hozzáférést is szabályozhatja.  Például:
 
-- A felhasználói licenceket a Microsoft 365 számára biztosíthatja egy hozzáférési csomagban található Azure AD biztonsági csoport használatával, és konfigurálhatja az adott csoportra vonatkozó [csoport alapú licencelést](../users-groups-roles/licensing-groups-assign.md) .
-- Hozzáférést biztosíthat a felhasználóknak az Azure-erőforrások kezeléséhez egy hozzáférési csomagban található Azure AD biztonsági csoport használatával és az adott csoport [Azure-beli szerepkör-hozzárendelésének](../../role-based-access-control/role-assignments-portal.md) létrehozásával
+- Az Azure AD biztonsági csoporttal rendelkező felhasználók számára engedélyezheti Microsoft 365 számára a felhasználói licenceket egy hozzáférési csomagban, és konfigurálhatja az adott csoportra vonatkozó [csoport alapú licencelést](../users-groups-roles/licensing-groups-assign.md) .
+- Hozzáférést biztosíthat a felhasználóknak az Azure-erőforrások kezeléséhez egy hozzáférési csomagban található Azure AD-beli biztonsági csoport használatával, valamint az adott csoport Azure-beli [szerepkör-hozzárendelésének](../../role-based-access-control/role-assignments-portal.md) létrehozásával.
+- Hozzáférést biztosíthat a felhasználóknak az Azure ad-szerepkörök kezeléséhez egy hozzáférési csomagban lévő Azure AD-szerepkörökhöz hozzárendelhető csoportok használatával, valamint [egy Azure ad-szerepkör hozzárendelésével az adott csoporthoz](../users-groups-roles/roles-groups-assign-role.md).
 
 ## <a name="how-do-i-control-who-gets-access"></a>Hogyan a hozzáférés-vezérlést?
 
@@ -161,12 +162,12 @@ További információ a licencekről: [licencek kiosztása vagy eltávolítása 
 
 Íme néhány példa a licencekre, amelyek segítségével meghatározhatja a szükséges licencek számát.
 
-| Forgatókönyv | Számítás | Licencek száma |
+| Használati eset | Számítás | Licencek száma |
 | --- | --- | --- |
 | A Woodgrove Bank globális rendszergazdája kezdeti katalógusokat hoz létre, és rendszergazdai feladatokat delegál a 6 másik felhasználó számára. Az egyik házirend azt határozza meg, hogy **minden alkalmazott** (2 000 alkalmazott) egy adott hozzáférési csomagot igényelhet. 150 az alkalmazottak a hozzáférési csomagokat kérik. | 2 000 **olyan** alkalmazottak, akik igényelhetik a hozzáférési csomagokat | 2000 |
 | A Woodgrove Bank globális rendszergazdája kezdeti katalógusokat hoz létre, és rendszergazdai feladatokat delegál a 6 másik felhasználó számára. Az egyik házirend azt határozza meg, hogy **minden alkalmazott** (2 000 alkalmazott) egy adott hozzáférési csomagot igényelhet. Egy másik házirend azt határozza meg, hogy a partner contoso (vendég) **felhasználóinak** néhány felhasználója a jóváhagyás alá eső hozzáférési csomagokat is kérheti. A contoso 30 000 felhasználóval rendelkezik. 150 az alkalmazottak a contoso-kérések hozzáférési csomagjait és 10 500 felhasználóit kérik. | 2 000 Employees + 500 vendég a Contosotól, amely meghaladja a 1:5 arányt (10 500-(2 000 * 5)) | 2500 |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Oktatóanyag: az első hozzáférési csomag létrehozása](entitlement-management-access-package-first.md)
-- [Gyakori forgatókönyvek](entitlement-management-scenarios.md)
+- [Gyakori helyzetek](entitlement-management-scenarios.md)

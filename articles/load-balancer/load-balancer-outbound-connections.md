@@ -11,56 +11,45 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/24/2020
+ms.date: 09/30/2020
 ms.author: allensu
-ms.openlocfilehash: 79399d0890f61d723f371528408d226f6a192ce4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d778b3ae0889ea0bf9cc38ca5813ac61fc5fcdbe
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91336496"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91595653"
 ---
 # <a name="outbound-connections"></a>Kimenő kapcsolatok
 
 Azure Load Balancer különböző mechanizmusokon keresztül biztosítja a kimenő kapcsolatokat. Ez a cikk a forgatókönyveket és azok kezelését ismerteti. 
 
-## <a name="outbound-connections-scenario-overview"></a><a name="scenarios"></a>A kimenő kapcsolatok forgatókönyvének áttekintése
 
-Az ezekben a forgatókönyvekben használt kifejezések. További információkért lásd: [terminológia](#terms):
+## <a name="scenarios"></a>Forgatókönyvek
 
-* [Forrás hálózati címfordítás (SNAT)](#snat)
-* [Port maszkolása (PAT)](#pat)
-* Transmission Control Protocol (TCP)
-* User Datagram Protocol (UDP)
-* Hálózati címfordítás
-* Internet Control Message Protocol
-* A biztonsági protokoll beágyazása
+* A virtuális gép nyilvános IP-címmel rendelkezik.
+* Virtuális gép nyilvános IP-cím nélkül.
+* Virtuális gép nyilvános IP-cím nélkül, standard Load Balancer nélkül.
 
-### <a name="scenarios"></a>Forgatókönyvek
+### <a name="virtual-machine-with-public-ip"></a><a name="scenario1"></a>Virtuális gép nyilvános IP-címmel
 
-* [1. eset](#scenario1) – nyilvános IP-címmel rendelkező virtuális gép.
-* [2. forgatókönyv](#scenario2) – nyilvános IP nélküli virtuális gép.
-* [3. eset](#scenario3) – nyilvános IP nélküli virtuális gép, standard Load Balancer nélkül.
-
-### <a name="scenario-1---virtual-machine-with-public-ip"></a><a name="scenario1"></a>1. eset – nyilvános IP-címmel rendelkező virtuális gép
-
-| Szövetségek | Metódus | IP-protokollok |
+| Szövetségek | Módszer | IP-protokollok |
 | ---------- | ------ | ------------ |
-| Nyilvános Load Balancer vagy önálló | [SNAT](#snat) </br> Nem használt [port](#pat) . | TCP </br> UDP </br> ICMP </br> ESP |
+| Nyilvános Load Balancer vagy önálló | [SNAT (forrás hálózati címfordítás)](#snat) </br> A [Pat (port maszkolása)](#pat) nincs használatban. | TCP (Transmission Control Protocol) </br> UDP (User Datagram Protocol) </br> ICMP (Internet Control Message Protocol) </br> ESP (biztonsági tartalom beágyazása) |
 
-#### <a name="description"></a>Description
+#### <a name="description"></a>Leírás
 
 Az Azure a példány hálózati adapterének IP-konfigurációjához hozzárendelt nyilvános IP-címet használja az összes kimenő folyamathoz. A példányhoz minden elérhető ideiglenes port tartozik. Nem számít, hogy a virtuális gép terheléselosztás alatt áll-e. Ez a forgatókönyv elsőbbséget élvez a többiekkel szemben. 
 
 Egy virtuális géphez hozzárendelt nyilvános IP-cím 1:1-kapcsolat (nem 1: sok), és állapot nélküli 1:1 NAT-ként lett megvalósítva.
 
-### <a name="scenario-2---virtual-machine-without-public-ip"></a><a name="scenario2"></a>2. forgatókönyv – nyilvános IP nélküli virtuális gép
+### <a name="virtual-machine-without-public-ip"></a><a name="scenario2"></a>Virtuális gép nyilvános IP-cím nélkül
 
-| Szövetségek | Metódus | IP-protokollok |
+| Szövetségek | Módszer | IP-protokollok |
 | ------------ | ------ | ------------ |
-| Nyilvános Load Balancer | A terheléselosztó felületének használata a [SNAT](#snat) és a [port maszkolásával (Pat)](#pat).| TCP </br> UDP |
+| Nyilvános Load Balancer | A Load Balancer frontend használata a [SNAT](#snat) -hez a [Pat (port maszkolása)](#pat).| TCP </br> UDP |
 
-#### <a name="description"></a>Description
+#### <a name="description"></a>Leírás
 
 A terheléselosztó erőforrása egy terheléselosztó-szabállyal van konfigurálva. Ez a szabály a nyilvános IP-frontend és a háttér-készlet közötti kapcsolat létrehozására szolgál. 
 
@@ -74,15 +63,15 @@ A terheléselosztó nyilvános IP-címének ideiglenes portjai a virtuális gép
 
 Ebben a kontextusban a SNAT használt ideiglenes portok neve SNAT-portok. Az SNAT-portok előre le vannak foglalva az [alapértelmezett SNAT-portok kiosztási táblájában](#snatporttable)leírtak szerint.
 
-### <a name="scenario-3---virtual-machine-without-public-ip-and-without-standard-load-balancer"></a><a name="scenario3"></a> 3. forgatókönyv – nyilvános IP nélküli virtuális gép és standard Load Balancer nélkül
+### <a name="virtual-machine-without-public-ip-and-without-standard-load-balancer"></a><a name="scenario3"></a>Virtuális gép nyilvános IP-cím nélkül, standard Load Balancer nélkül
 
-| Szövetségek | Metódus | IP-protokollok |
+| Szövetségek | Módszer | IP-protokollok |
 | ------------ | ------ | ------------ |
-|Nincsenek </br> Alapszintű Load Balancer | [SNAT](#snat) a [port maszkolásával (Pat)](#pat)| TCP </br> UDP | 
+|Nincs </br> Alapszintű Load Balancer | [SNAT](#snat) a [port maszkolásával (Pat)](#pat)| TCP </br> UDP | 
 
-#### <a name="description"></a>Description
+#### <a name="description"></a>Leírás
 
-Amikor a virtuális gép létrehoz egy kimenő folyamatot, az Azure lefordítja a kimenő forgalom forrás IP-címét egy nyilvános forrás IP-címére. Ez a nyilvános IP-cím **nem konfigurálható** , és nem foglalható le. Ez a cím nem számít az előfizetés nyilvános IP-erőforrásának korlátja alapján. 
+Amikor a virtuális gép létrehoz egy kimenő folyamatot, az Azure lefordítja a forrás IP-címet egy nyilvános forrás IP-címére. Ez a nyilvános IP-cím **nem konfigurálható** , és nem foglalható le. Ez a cím nem számít az előfizetés nyilvános IP-erőforrásának korlátja alapján. 
 
 A nyilvános IP-cím fel lesz szabadítva, és új nyilvános IP-címet igényel, ha újra telepíti a következőket: 
 
@@ -136,7 +125,7 @@ Előfordulhat, hogy a háttér-készlet méretének módosítása hatással lehe
 > [!NOTE]
 > Az **Azure Virtual Network NAT** kimenő kapcsolatot biztosíthat a virtuális hálózatokban található virtuális gépek számára.  További információ: [Mi az az Azure Virtual Network NAT?](../virtual-network/nat-overview.md) .
 
-A kimenő kapcsolat teljes deklaratív vezérlése lehetővé teszi az igényeinek megfelelő méretezést és finomhangolást. Ez a szakasz a fentiekben leírtak szerint kibontja a 2. forgatókönyvet.
+A kimenő kapcsolat teljes deklaratív vezérlése lehetővé teszi az igényeinek megfelelő méretezést és finomhangolást.
 
 ![Terheléselosztó kimenő szabályai](media/load-balancer-outbound-rules-overview/load-balancer-outbound-rules.png)
 
@@ -196,24 +185,20 @@ Esetenként nem kívánatos, hogy egy virtuális gép kimenő folyamatot hozzon 
 
 Ha NSG alkalmaz egy elosztott terhelésű virtuális gépre, ügyeljen a [szolgáltatás-címkékre](../virtual-network/security-overview.md#service-tags) és az [alapértelmezett biztonsági szabályokra](../virtual-network/security-overview.md#default-security-rules). Győződjön meg arról, hogy a virtuális gép Azure Load Balancertól származó állapot-mintavételi kérelmeket tud fogadni.
 
-Ha egy NSG letiltja az állapot-mintavételi kérelmeket a AZURE_LOADBALANCER alapértelmezett címkétől, a virtuális gép állapotának mintavétele meghiúsul, és a virtuális gép meg van jelölve. Load Balancer leállítja az új folyamatok küldését a virtuális gépre.
+Ha egy NSG letiltja az állapot-mintavételi kérelmeket a AZURE_LOADBALANCER alapértelmezett címkétől, a virtuális gép állapotának mintavétele meghiúsul, és a virtuális gép nem érhető el. Load Balancer leállítja az új folyamatok küldését a virtuális gépre.
 
 ## <a name="scenarios-with-outbound-rules"></a>Forgatókönyvek kimenő szabályokkal
 
 ### <a name="outbound-rules-scenarios"></a>Kimenő szabályok forgatókönyvei
 
-* [1. eset](#scenario1out) – a kimenő kapcsolatok konfigurálása egy adott nyilvános IP-cím vagy előtag-készlethez.
-* [2. forgatókönyv](#scenario2out) – a [SNAT](#snat) -port foglalásának módosítása.
-* [3. eset](#scenario3out) – csak a kimenő engedélyezése.
-* [4. forgatókönyv](#scenario4out) – kimenő NAT csak virtuális gépekhez (nincs bejövő).
-* [5. forgatókönyv](#scenario5out) – kimenő NAT a belső standard Load Balancer számára.
-* [6. forgatókönyv](#scenario6out) – engedélyezze a TCP-& UDP protokollokat a kimenő NAT-hoz egy nyilvános standard Load balancerrel.
+* Konfigurálja a kimenő kapcsolatokat egy adott nyilvános IP-cím vagy előtag-készletbe.
+* Módosítsa a [SNAT](#snat) -portok foglalását.
+* Csak a kimenő engedélyezése.
+* Kimenő NAT csak virtuális gépekhez (nincs bejövő).
+* Kimenő NAT a belső standard Load Balancerhez.
+* Engedélyezze mindkét TCP-& UDP protokollt a kimenő NAT-hoz egy nyilvános standard Load balancerrel.
 
-### <a name="scenario-1"></a><a name="scenario1out"></a>1\. példa
-
-| Használati eset |
-| -------- |
-| Kimenő kapcsolatok konfigurálása egy adott nyilvános IP-cím vagy előtag-készlethez|
+### <a name="configure-outbound-connections-to-a-specific-set-of-public-ips-or-prefix"></a><a name="scenario1out"></a>Kimenő kapcsolatok konfigurálása egy adott nyilvános IP-cím vagy előtag-készlethez
 
 #### <a name="details"></a>Részletek
 
@@ -229,11 +214,7 @@ Eltérő nyilvános IP-cím vagy előtag használata egy terheléselosztási sza
 4. Háttérbeli készlet újrafelhasználása vagy háttérbeli készlet létrehozása és a virtuális gépek elhelyezése a nyilvános Load Balancer háttér-készletében
 5. Konfiguráljon egy kimenő szabályt a nyilvános terheléselosztó számára, hogy engedélyezze a kimenő NAT-t a virtuális gépek számára a frontend használatával. Ha nem szeretné, hogy a terheléselosztási szabályt használja a kimenő forgalomhoz, tiltsa le a kimenő SNAT a terheléselosztási szabályban.
 
-### <a name="scenario-2"></a><a name="scenario2out"></a>2\. példa
-
-| Használati eset |
-| -------- |
-| [SNAT](#snat) -port foglalásának módosítása |
+### <a name="modify-snat-port-allocation"></a><a name="scenario2out"></a>[SNAT](#snat) -port foglalásának módosítása
 
 #### <a name="details"></a>Részletek
 
@@ -251,13 +232,9 @@ Ha a nyilvános IP-címek száma alapján több [SNAT](#snat) -portot próbál m
 
 Ha virtuális gépenként 10 000 portot ad meg, és a backend-készletben szereplő hét virtuális gép egyetlen nyilvános IP-címmel rendelkezik, a rendszer elutasítja a konfigurációt. A hét megszorozva a 10 000-as mérettel, amely meghaladja a 64 000-es portot. A forgatókönyv engedélyezéséhez adjon hozzá több nyilvános IP-címet a Kimenő szabály előtérbeli felületéhez. 
 
-A portok számának megadásával visszaállíthatja az [alapértelmezett portok kiosztását](load-balancer-outbound-connections.md#preallocatedports) . Az első 50-es virtuálisgép-példány 1024 portot kap, a 51-100-as virtuálisgép-példányok pedig a maximális példányszámig 512-t kapnak.  További információ az alapértelmezett SNAT-portok kiosztásáról [:.](#snatporttable)
+A portok számának megadásával visszaállíthatja az [alapértelmezett portok kiosztását](load-balancer-outbound-connections.md#preallocatedports) . Az első 50-es virtuálisgép-példány 1024 portot kap, a 51-100-as virtuálisgép-példányok pedig a maximális példányszámig 512-t kapnak.  További információ a SNAT alapértelmezett kiosztásáról: [SNAT-portok foglalási táblázata](#snatporttable).
 
-### <a name="scenario-3"></a><a name="scenario3out"></a>3\. példa
-
-| Használati eset |
-| -------- |
-| Csak kimenő engedélyezése |
+### <a name="enable-outbound-only"></a><a name="scenario3out"></a>Csak kimenő engedélyezése
 
 #### <a name="details"></a>Részletek
 
@@ -266,11 +243,7 @@ Egy nyilvános standard Load Balancer használatával biztosíthatja a kimenő N
 > [!NOTE]
 > Az **Azure Virtual Network NAT** a terheléselosztó szükségessége nélkül biztosíthatja a kimenő kapcsolatot a virtuális gépek számára.  További információ: [Mi az az Azure Virtual Network NAT?](../virtual-network/nat-overview.md) .
 
-### <a name="scenario-4"></a><a name="scenario4out"></a>4\. példa
-
-| Használati eset |
-| -------- |
-| Kimenő NAT csak virtuális gépekhez (nincs bejövő) |
+### <a name="outbound-nat-for-vms-only-no-inbound"></a><a name="scenario4out"></a>Kimenő NAT csak virtuális gépekhez (nincs bejövő)
 
 > [!NOTE]
 > Az **Azure Virtual Network NAT** a terheléselosztó szükségessége nélkül biztosíthatja a kimenő kapcsolatot a virtuális gépek számára.  További információ: [Mi az az Azure Virtual Network NAT?](../virtual-network/nat-overview.md) .
@@ -288,11 +261,7 @@ Ehhez a forgatókönyvhöz:
 
 A [SNAT](#snat) -portok méretezéséhez használjon előtagot vagy nyilvános IP-címet. Adja hozzá a kimenő kapcsolatok forrását egy engedélyezési vagy megtagadási listához.
 
-### <a name="scenario-5"></a><a name="scenario5out"></a>5. forgatókönyv
-
-| Használati eset |
-| -------- |
-| Kimenő NAT belső standard Load Balancerhez |
+### <a name="outbound-nat-for-internal-standard-load-balancer"></a><a name="scenario5out"></a>Kimenő NAT belső standard Load Balancerhez
 
 > [!NOTE]
 > Az **Azure Virtual Network NAT** a belső standard Load balancert használó virtuális gépek kimenő kapcsolatait is biztosíthatja.  További információ: [Mi az az Azure Virtual Network NAT?](../virtual-network/nat-overview.md) .
@@ -304,11 +273,7 @@ A kimenő kapcsolat nem érhető el a belső standard Load Balancer számára, a
 További információ: [csak kimenő terheléselosztó konfigurálása](https://docs.microsoft.com/azure/load-balancer/egress-only).
 
 
-### <a name="scenario-6"></a><a name="scenario6out"></a>6. forgatókönyv
-
-| Használati eset |
-| -------- |
-| TCP & UDP protokollok engedélyezése a kimenő NAT-hoz egy nyilvános standard Load balancerrel |
+### <a name="enable-both-tcp--udp-protocols-for-outbound-nat-with-a-public-standard-load-balancer"></a><a name="scenario6out"></a>TCP & UDP protokollok engedélyezése a kimenő NAT-hoz egy nyilvános standard Load balancerrel
 
 #### <a name="details"></a>Részletek
 
@@ -360,7 +325,7 @@ Ha egy nyilvános terheléselosztó nyilvános IP-címek nélküli virtuális g�
 
 A forrást a rendszer a virtuális hálózat magánhálózati IP-címéről a terheléselosztó nyilvános IP-címére írja át. 
 
-A nyilvános IP-címtartomány területen az alábbi folyamat öt rekordjának egyedinek kell lennie:
+A nyilvános IP-címtartomány területen a folyamat öt rekordjának egyedinek kell lennie:
 
 * Forrás IP-címe
 * Forrásport
@@ -458,7 +423,7 @@ A port felszabadítása után a port újra elérhetővé válik. Az SNAT-portok 
 - A kimenő szabályok csak a hálózati adapter elsődleges IP-konfigurációjához alkalmazhatók.  Nem hozható létre Kimenő szabály a virtuális gép vagy NVA másodlagos IP-címéhez. Több hálózati adapter is támogatott.
 - A virtuális hálózat és más Microsoft Platform-szolgáltatások nélküli webes feldolgozói szerepkörök elérhetők a belső standard Load Balancer használata esetén. Ez a hozzáférhetőség a VNet szolgáltatások és egyéb platform-szolgáltatások működésének mellékhatása. Ne támaszkodjon erre a mellékhatásra, mert maga a saját szolgáltatás, vagy az alapul szolgáló platform értesítés nélkül változhat. Mindig tegyük fel, hogy a kimenő kapcsolatot explicit módon kell létrehoznia, ha csak belső standard Load Balancer használata esetén szeretné használni. A jelen cikkben ismertetett 3. forgatókönyv nem érhető el.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha a kimenő kapcsolattal kapcsolatos problémákat tapasztal egy Azure Load Balanceron keresztül, tekintse meg a [Kimenő kapcsolatok hibaelhárítási útmutatóját](../load-balancer/troubleshoot-outbound-connection.md).
 

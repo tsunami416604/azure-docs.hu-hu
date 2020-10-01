@@ -1,38 +1,38 @@
 ---
-title: SAML-alapú egyszeri bejelentkezés (SSO) konfigurálása alkalmazások számára az Azure AD-ben
-description: SAML-alapú egyszeri bejelentkezés (SSO) konfigurálása alkalmazások számára az Azure AD-ben
+title: Az SAML-alapú egyszeri bejelentkezés (SSO) megismerése a Azure Active Directoryban lévő alkalmazásokhoz
+description: Az SAML-alapú egyszeri bejelentkezés (SSO) megismerése a Azure Active Directoryban lévő alkalmazásokhoz
 services: active-directory
 author: kenwith
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
-ms.topic: how-to
+ms.topic: conceptual
 ms.workload: identity
 ms.date: 07/28/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: afa927f8faa1ac2bd9cd910b3e78b690c16259e5
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 28bf7e631c8693434d686022891bb2e45152f0ce
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90605141"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597916"
 ---
-# <a name="configure-saml-based-single-sign-on"></a>SAML-alapú egyszeri bejelentkezés konfigurálása
+# <a name="understand-saml-based-single-sign-on"></a>SAML-alapú egyszeri bejelentkezés ismertetése
 
 Az alkalmazások felügyeletének rövid útmutató [sorozatában](view-applications-portal.md) megtudhatta, hogyan használhatja az Azure ad-t az alkalmazás identitás-szolgáltatója (identitásszolgáltató) használatával. Ez a cikk részletesebben ismerteti az egyszeri bejelentkezéshez használható SAML-alapú beállítást. 
 
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Az Azure AD használata az identitás-szolgáltatóként (identitásszolgáltató) és az egyszeri bejelentkezés (SSO) beállítása a használt alkalmazástól függően egyszerű vagy összetett lehet. Néhány alkalmazás csak néhány művelettel állítható be. Másoknak részletes konfigurációra van szükségük. A gyors üzembe helyezéshez járjon végig az alkalmazás-felügyeleti útmutató [sorozatán](view-applications-portal.md) . Ha a hozzáadott alkalmazás egyszerű, akkor valószínűleg nem kell elolvasnia ezt a cikket. Ha a hozzáadott alkalmazáshoz egyéni konfiguráció szükséges az SAML-alapú egyszeri bejelentkezéshez, akkor ez a cikk Önnek szól.
+Az Azure AD használata az identitás-szolgáltatóként (identitásszolgáltató) és az egyszeri bejelentkezés (SSO) konfigurálása a használt alkalmazástól függően egyszerű vagy összetett lehet. Néhány alkalmazás csak néhány művelettel konfigurálható. Másoknak részletes konfigurációra van szükségük. Az ismeretek gyors bejárásához járjon végig az alkalmazás-felügyeleti útmutató [sorozatán](view-applications-portal.md) . Ha a hozzáadott alkalmazás egyszerű, akkor valószínűleg nem kell elolvasnia ezt a cikket. Ha a hozzáadott alkalmazáshoz egyéni konfiguráció szükséges az SAML-alapú egyszeri bejelentkezéshez, akkor ez a cikk Önnek szól.
 
 A gyors üzembe helyezési [sorozatban](add-application-portal-setup-sso.md)van egy cikk, amely az egyszeri bejelentkezés konfigurálását ismerteti. Itt megismerheti, hogyan érheti el az alkalmazás SAML-konfigurációs lapját. Az SAML-konfiguráció oldal öt szakaszt tartalmaz. Ezeket a szakaszokat részletesen ismertetjük ebben a cikkben.
 
 > [!IMPORTANT] 
 > Vannak olyan helyzetek, amikor az **egyszeri bejelentkezési** lehetőség nem fog megjelenni a navigációban a **vállalati alkalmazásokban**lévő alkalmazásokhoz. 
 >
-> Ha az alkalmazás **Alkalmazásregisztrációk** használatával lett regisztrálva, akkor az egyszeri bejelentkezés funkció alapértelmezés szerint a OIDC OAuth használatára van beállítva. Ebben az esetben az **egyszeri bejelentkezési** lehetőség nem jelenik meg a **vállalati alkalmazások**alatt a navigációban. Ha a **Alkalmazásregisztrációk** használatával adja hozzá az egyéni alkalmazást, a jegyzékfájlban konfigurálhatja a beállításokat. További információ a jegyzékfájlról: [Azure Active Directory app manifest](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest). Az SSO-szabványokkal kapcsolatos további tudnivalókért tekintse meg a [hitelesítés és engedélyezés a Microsoft Identity platform használatával](https://docs.microsoft.com/azure/active-directory/develop/authentication-vs-authorization#authentication-and-authorization-using-microsoft-identity-platform)című témakört. 
+> Ha az alkalmazás a **Alkalmazásregisztrációk** használatával lett regisztrálva, akkor az egyszeri bejelentkezés funkció alapértelmezés szerint a OIDC OAuth használatára van konfigurálva. Ebben az esetben az **egyszeri bejelentkezési** lehetőség nem jelenik meg a **vállalati alkalmazások**navigációs sávján. Ha a **Alkalmazásregisztrációk** használatával adja hozzá az egyéni alkalmazást, a jegyzékfájlban konfigurálhatja a beállításokat. További információ a jegyzékfájlról: [Azure Active Directory app manifest](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest). Az SSO-szabványokkal kapcsolatos további tudnivalókért tekintse meg a [hitelesítés és engedélyezés a Microsoft Identity platform használatával](https://docs.microsoft.com/azure/active-directory/develop/authentication-vs-authorization#authentication-and-authorization-using-microsoft-identity-platform)című témakört. 
 >
 > Egyéb forgatókönyvek, amelyekben az **egyszeri bejelentkezés** hiányzik a navigálásból, ha egy alkalmazás egy másik bérlőn fut, vagy ha a fiókja nem rendelkezik a szükséges engedélyekkel (globális rendszergazda, Felhőbeli alkalmazás rendszergazdája, alkalmazás-rendszergazda vagy az egyszerű szolgáltatásnév tulajdonosa). Az engedélyek olyan eseteket is okozhatnak, ahol megnyithatja az **egyszeri bejelentkezést** , de nem fogja tudni menteni. További információ az Azure AD rendszergazdai szerepköreiről: ( https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) .
 
@@ -42,7 +42,7 @@ A gyors üzembe helyezési [sorozatban](add-application-portal-setup-sso.md)van 
 Az alkalmazás gyártójától kell beolvasnia az értékeket. Manuálisan is megadhatja az értékeket, vagy feltöltheti a metaadatokat a mezők értékének kinyeréséhez.
 
 > [!TIP]
-> Számos alkalmazás már előre konfigurálva van az Azure AD-vel való együttműködésre. Ezek az alkalmazások az alkalmazások katalógusában jelennek meg, amelyekkel megkereshet egy alkalmazást az Azure AD-bérlőhöz való hozzáadásakor. A gyors üzembe helyezési [sorozat](add-application-portal-setup-sso.md) végigvezeti a folyamaton. A katalógusban található alkalmazásokhoz részletes, lépésről lépésre, útmutatást kell beállítani. A lépések eléréséhez kattintson az alkalmazás SAML-konfiguráció lapján található hivatkozásra, amelyet a rövid útmutatóban leírtak szerint, vagy a [SaaS app Configuration oktatóanyagokban](../saas-apps/tutorial-list.md)böngészhet az összes alkalmazás-konfigurációs oktatóanyag listájában.
+> Számos alkalmazás már előre konfigurálva van az Azure AD-vel való együttműködésre. Ezek az alkalmazások az alkalmazások katalógusában jelennek meg, amelyekkel megkereshet egy alkalmazást az Azure AD-bérlőhöz való hozzáadásakor. A gyors üzembe helyezési [sorozat](add-application-portal-setup-sso.md) végigvezeti a folyamaton. A katalógusban található alkalmazásokhoz részletes, lépésenkénti útmutatót talál. A lépések eléréséhez kattintson az alkalmazás SAML-konfiguráció lapján található hivatkozásra, amelyet a rövid útmutatóban leírtak szerint, vagy a [SaaS app Configuration oktatóanyagokban](../saas-apps/tutorial-list.md)böngészhet az összes alkalmazás-konfigurációs oktatóanyag listájában.
 
 | Alapszintű SAML konfigurációs beállítás | SP által kezdeményezve | Identitásszolgáltató által kezdeményezve | Leírás |
 |:--|:--|:--|:--|
@@ -76,7 +76,7 @@ Ha többet szeretne megtudni az SAML-jogcímek testreszabásáról, tekintse meg
 
 ## <a name="saml-signing-certificate"></a>SAML-aláíró tanúsítvány
 
-Az Azure AD egy tanúsítványt használ az alkalmazásnak küldött SAML-tokenek aláírásához. Erre a tanúsítványra van szüksége az Azure AD és az alkalmazás közötti megbízhatósági kapcsolat beállításához. A tanúsítvány formátumával kapcsolatos részletekért tekintse meg az alkalmazás SAML-dokumentációját. További információ: [tanúsítványok kezelése összevont egyszeri bejelentkezéshez](manage-certificates-for-federated-single-sign-on.md) és [speciális tanúsítvány-aláírási beállítások az SAML-jogkivonatban](certificate-signing-options.md).
+Az Azure AD egy tanúsítványt használ az alkalmazásnak küldött SAML-tokenek aláírásához. Erre a tanúsítványra van szüksége az Azure AD és az alkalmazás közötti megbízhatósági kapcsolat konfigurálásához. A tanúsítvány formátumával kapcsolatos részletekért tekintse meg az alkalmazás SAML-dokumentációját. További információ: [tanúsítványok kezelése összevont egyszeri bejelentkezéshez](manage-certificates-for-federated-single-sign-on.md) és [speciális tanúsítvány-aláírási beállítások az SAML-jogkivonatban](certificate-signing-options.md).
 
 > [!IMPORTANT]
 > Számos alkalmazás már előre konfigurálva van, és az alkalmazás-katalógusban nem kell belefoglalni a tanúsítványokra. A gyors üzembe helyezési [sorozat](add-application-portal.md) végigvezeti az alkalmazások hozzáadásának és konfigurálásának lépésein.
@@ -99,7 +99,7 @@ A tanúsítvány módosításához kattintson a Szerkesztés gombra. Az **SAML a
 
 ## <a name="set-up-the-application-to-use-azure-ad"></a>Az alkalmazás beállítása az Azure AD használatára
 
-A **beállítás \<applicationName> ** szakasz felsorolja azokat az értékeket, amelyeket konfigurálni kell az alkalmazásban, hogy az Azure ad-t SAML-identitás-szolgáltatóként fogja használni. Az értékeket az alkalmazások webhely konfiguráció lapján állíthatja be. Ha például a GitHubot állítja be, akkor lépjen a github.com webhelyére, és állítsa be az értékeket. Ha az alkalmazás már előre konfigurálva van, és az Azure AD-galériában megjelenik egy hivatkozás, amely **részletes útmutatást**nyújt. Ellenkező esetben a beállított alkalmazás dokumentációját is meg kell keresnie. 
+A **beállítás \<applicationName> ** szakasz felsorolja azokat az értékeket, amelyeket konfigurálni kell az alkalmazásban, hogy az Azure ad-t SAML-identitás-szolgáltatóként fogja használni. Az értékeket az alkalmazások webhely konfiguráció lapján állíthatja be. Ha például a GitHubot konfigurálja, akkor a github.com-webhelyre lép, és beállítja az értékeket. Ha az alkalmazás már előre konfigurálva van, és az Azure AD-galériában megjelenik egy hivatkozás, amely **részletes útmutatást**nyújt. Ellenkező esetben meg kell keresnie a konfigurálni kívánt alkalmazás dokumentációját. 
 
 A **bejelentkezési URL-cím** és a **KIJELENTKEZÉSI URL-cím** mindkét esetben ugyanazt a végpontot oldja fel, amely az Azure ad-bérlő SAML-kérelem-kezelési végpontja. 
 

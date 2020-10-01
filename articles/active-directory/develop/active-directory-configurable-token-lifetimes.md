@@ -8,29 +8,30 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.topic: how-to
-ms.date: 09/25/2020
+ms.topic: conceptual
+ms.date: 09/29/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: c5866ddfee049499a4179505e0c1a206b1c68945
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: a9bf992a65914afb8fa800041b57ad9f44ba4fa0
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447298"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91595610"
 ---
 # <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Konfigurálható jogkivonat-élettartamok a Microsoft Identity platformban (előzetes verzió)
 
-Megadhatja a Microsoft Identity platform által kiadott jogkivonatok élettartamát. Beállíthatja a cégen belüli összes alkalmazás jogkivonatának élettartamát több-bérlős alkalmazások (több cég) vagy munkahelyen belüli adott szolgáltatásnév esetén. 
-> Vegye figyelembe, hogy jelenleg nem támogatjuk a felügyelt identitási szolgáltatások rendszerbiztonsági azonosítóinak élettartamának konfigurálását.
+Megadhatja a Microsoft Identity platform által kiadott jogkivonatok élettartamát. Beállíthatja a cégen belüli összes alkalmazás jogkivonatának élettartamát több-bérlős alkalmazások (több cég) vagy munkahelyen belüli adott szolgáltatásnév esetén. Jelenleg azonban a [felügyelt identitás-szolgáltatási rendszerbiztonsági tag](../managed-identities-azure-resources/overview.md)esetében nem támogatott a jogkivonat élettartamának konfigurálása.
 
 > [!IMPORTANT]
-> Az előzetes verzióban az ügyfelek meghallgatása után az Azure AD feltételes hozzáférés szolgáltatásban implementálta a [hitelesítési munkamenet-kezelési képességeket](https://go.microsoft.com/fwlink/?linkid=2083106) . Ezt az új funkciót használhatja a frissítési jogkivonat élettartamának konfigurálásához a bejelentkezési gyakoriság beállításával. 2020. május 30-ig az új bérlők nem használhatnak konfigurálható jogkivonat-élettartamot a munkamenet-és frissítési tokenek konfigurálásához. Az elavultság több hónapon belül megtörténik, ami azt jelenti, hogy a meglévő munkamenetek tiszteletben tartását és a tokenek frissítési jogkivonatait is megszüntetjük. A hozzáférési token élettartamát továbbra is beállíthatja az elavulás után.
+> Az előzetes verzióban az ügyfelek meghallgatása után az Azure AD feltételes hozzáférés szolgáltatásban implementálta a [hitelesítési munkamenet-kezelési képességeket](../conditional-access/howto-conditional-access-session-lifetime.md) . Ezt az új funkciót használhatja a frissítési jogkivonat élettartamának konfigurálásához a bejelentkezési gyakoriság beállításával. 2020. május 30-ig az új bérlők nem használhatnak konfigurálható jogkivonat-élettartamot a munkamenet-és frissítési tokenek konfigurálásához. Az elavultság több hónapon belül megtörténik, ami azt jelenti, hogy a meglévő munkamenetek tiszteletben tartását és a tokenek frissítési jogkivonatait is megszüntetjük. A hozzáférési token élettartamát továbbra is beállíthatja az elavulás után.
 
 Az Azure AD-ben a házirend-objektum az egyes alkalmazásokra vagy a szervezet összes alkalmazására kikényszerített szabályok halmazát jelöli. Minden egyes házirend-típushoz egyedi struktúra tartozik, amely a hozzájuk rendelt objektumokra érvényes tulajdonságokkal rendelkezik.
 
 Megadhat egy házirendet a szervezet alapértelmezett szabályzatának megfelelően. A szabályzatot a rendszer a szervezet bármely alkalmazására alkalmazza, amennyiben azt nem bírálja felül magasabb prioritású házirend. Egy szabályzatot adott alkalmazásokhoz is hozzárendelhet. A prioritás sorrendje a házirend típusa szerint változhat.
+
+Példákat olvashat a [jogkivonat-élettartamok konfigurálásának módjáról](configure-token-lifetimes.md).
 
 > [!NOTE]
 > A konfigurálható jogkivonat élettartama házirend csak a SharePoint Online-hoz és az üzleti erőforrásokhoz hozzáférő mobil-és asztali ügyfelekre vonatkozik, és nem vonatkozik a webböngésző-OneDrive.
@@ -63,7 +64,7 @@ A bizalmas ügyfelek olyan alkalmazások, amelyek biztonságos módon tárolhatj
 
 #### <a name="token-lifetimes-with-public-client-refresh-tokens"></a>Tokenek élettartama nyilvános ügyfél-frissítési jogkivonatokkal
 
-A nyilvános ügyfelek nem tudják biztonságosan tárolni az ügyfél jelszavát (titkos kulcs). Egy iOS-/Android-alkalmazás például nem tud titkos kulcsot kialakítani az erőforrás-tulajdonostól, ezért nyilvános ügyfélnek számít. Az erőforrásokra vonatkozó szabályzatok megadásával megakadályozhatja, hogy a frissítési tokenek a megadott időszaknál régebbi nyilvános ügyfelekről szerezzenek új hozzáférési vagy frissítési jogkivonat-párokat. (Ehhez használja a refresh token Max inaktív idő tulajdonságát ( `MaxInactiveTime` ).) Házirendeket is használhat egy olyan időszak megadására, amelyen túl a frissítési tokenek már nem lesznek elfogadva. (Ehhez használja a refresh token Max Age tulajdonságát.) A frissítési token élettartama beállítható annak szabályozására, hogy a felhasználó mikor és milyen gyakran írja elő a hitelesítő adatok újbóli hitelesítését, ahelyett, hogy a rendszer egy nyilvános ügyfélalkalmazás használatával visszaadja a hitelesítő adatokat.
+A nyilvános ügyfelek nem tudják biztonságosan tárolni az ügyfél jelszavát (titkos kulcs). Egy iOS-/Android-alkalmazás például nem tud titkos kulcsot kialakítani az erőforrás-tulajdonostól, ezért nyilvános ügyfélnek számít. Az erőforrásokra vonatkozó szabályzatok megadásával megakadályozhatja, hogy a frissítési tokenek a megadott időszaknál régebbi nyilvános ügyfelekről szerezzenek új hozzáférési vagy frissítési jogkivonat-párokat. Ehhez használja a [refresh token Max inaktív idő tulajdonságát](#refresh-token-max-inactive-time) ( `MaxInactiveTime` ). Házirendeket is használhat egy olyan időszak megadására, amelyen túl a frissítési tokenek már nem lesznek elfogadva. Ehhez használja az [egytényezős frissítési token Max Age](#single-factor-session-token-max-age) vagy a [multi-Factor munkamenet-token Max Age](#multi-factor-refresh-token-max-age) tulajdonságát. A frissítési token élettartama beállítható annak szabályozására, hogy a felhasználó mikor és milyen gyakran írja elő a hitelesítő adatok újbóli hitelesítését, ahelyett, hogy a rendszer egy nyilvános ügyfélalkalmazás használatával visszaadja a hitelesítő adatokat.
 
 > [!NOTE]
 > A Max Age tulajdonság azt az időtartamot használja, ameddig egyetlen jogkivonat használható. 
@@ -148,6 +149,8 @@ A **következőket érinti:** Hozzáférési tokenek, azonosító tokenek, SAML-
 
 **Összefoglalás:** Ez a házirend azt szabályozza, hogy az erőforráshoz tartozó hozzáférési és azonosító jogkivonatok érvényesek legyenek. A hozzáférési jogkivonat élettartama tulajdonságának csökkentése csökkenti annak kockázatát, hogy egy rosszindulatú színész egy hozzáférési jogkivonatot vagy egy azonosító jogkivonatot hosszabb ideig használ. (Ezek a tokenek nem vonhatók vissza.) A kompromisszum az, hogy a teljesítmény negatív hatással van, mivel a jogkivonatokat gyakrabban kell cserélni.
 
+Példaként tekintse meg [a házirend létrehozása webes bejelentkezéshez](configure-token-lifetimes.md#create-a-policy-for-web-sign-in)című témakört.
+
 ### <a name="refresh-token-max-inactive-time"></a>Frissítési jogkivonat maximális inaktív ideje
 **Karakterlánc:** MaxInactiveTime
 
@@ -159,6 +162,8 @@ Ez a házirend azokat a felhasználókat kényszeríti, akik nem voltak aktívak
 
 A frissítési token Max inaktív idő tulajdonságának alacsonyabb értékre kell állítani, mint az egytényezős token Max Age és a multi-Factor frissítési token Max Age tulajdonságai.
 
+Példaként tekintse meg a szabályzat [létrehozása egy olyan natív alkalmazáshoz, amely webes API-t hív meg](configure-token-lifetimes.md#create-a-policy-for-a-native-app-that-calls-a-web-api).
+
 ### <a name="single-factor-refresh-token-max-age"></a>Egy tényező frissítési Tokenének maximális kora
 **Karakterlánc:** MaxAgeSingleFactor
 
@@ -167,6 +172,8 @@ A **következőket érinti:** Tokenek frissítése
 **Összefoglalás:** Ez a házirend azt szabályozza, hogy a felhasználó mennyi ideig használhat frissítési jogkivonatot új hozzáférési/frissítési jogkivonat-párok beszerzésére, miután a rendszer csak egyetlen tényező használatával sikeresen hitelesítette a hitelesítést. Miután egy felhasználó hitelesíti és új frissítési tokent kapott, a felhasználó a megadott időtartamra használhatja a frissítési jogkivonat folyamatát. (Ez akkor igaz, ha az aktuális frissítési jogkivonat nincs visszavonva, és az inaktív időpontnál hosszabb ideig nem használatban marad.) Ezen a ponton a felhasználónak újra hitelesítenie kell magát, hogy új frissítési tokent kapjon.
 
 A maximális életkor csökkentése arra kényszeríti a felhasználókat, hogy gyakrabban hitelesítsék magukat. Mivel az egytényezős hitelesítés kevésbé biztonságos, mint a többtényezős hitelesítés, javasoljuk, hogy ezt a tulajdonságot olyan értékre állítsa be, amely egyenlő vagy kisebb, mint a multi-Factor refresh token Max Age tulajdonsága.
+
+Példaként tekintse meg a szabályzat [létrehozása egy olyan natív alkalmazáshoz, amely webes API-t hív meg](configure-token-lifetimes.md#create-a-policy-for-a-native-app-that-calls-a-web-api).
 
 ### <a name="multi-factor-refresh-token-max-age"></a>Multi-Factor refresh token Max Age
 **Karakterlánc:** MaxAgeMultiFactor
@@ -177,6 +184,8 @@ A **következőket érinti:** Tokenek frissítése
 
 A maximális életkor csökkentése arra kényszeríti a felhasználókat, hogy gyakrabban hitelesítsék magukat. Mivel az egytényezős hitelesítés kevésbé biztonságos, mint a többtényezős hitelesítés, javasoljuk, hogy ezt a tulajdonságot olyan értékre állítsa be, amely egyenlő vagy nagyobb, mint az egytényezős frissítési jogkivonat Max Age tulajdonsága.
 
+Példaként tekintse meg a szabályzat [létrehozása egy olyan natív alkalmazáshoz, amely webes API-t hív meg](configure-token-lifetimes.md#create-a-policy-for-a-native-app-that-calls-a-web-api).
+
 ### <a name="single-factor-session-token-max-age"></a>Egy tényezős munkamenet-token maximális kora
 **Karakterlánc:** MaxAgeSessionSingleFactor
 
@@ -186,6 +195,8 @@ A **következőket érinti:** Munkamenet-tokenek (állandó és nem állandó)
 
 A maximális életkor csökkentése arra kényszeríti a felhasználókat, hogy gyakrabban hitelesítsék magukat. Mivel az egytényezős hitelesítés kevésbé biztonságos, mint a többtényezős hitelesítés, javasoljuk, hogy ezt a tulajdonságot olyan értékre állítsa be, amely a multi-Factor munkamenet-token Max Age tulajdonságával egyenlő vagy annál kisebb.
 
+Példaként tekintse meg [a házirend létrehozása webes bejelentkezéshez](configure-token-lifetimes.md#create-a-policy-for-web-sign-in)című témakört.
+
 ### <a name="multi-factor-session-token-max-age"></a>Többtényezős munkamenet-token maximális kora
 **Karakterlánc:** MaxAgeSessionMultiFactor
 
@@ -194,191 +205,6 @@ A **következőket érinti:** Munkamenet-tokenek (állandó és nem állandó)
 **Összefoglalás:** Ez a házirend azt szabályozza, hogy a felhasználó mennyi ideig használhatja a munkamenet-tokent új azonosító és munkamenet-jogkivonat beszerzésére, miután a rendszer a legutóbbi sikeres hitelesítés után több tényezőt is sikeresen hitelesített. Miután egy felhasználó egy új munkamenet-tokent hitelesített és kap, a felhasználó a munkamenet-jogkivonat folyamatát a megadott ideig használhatja. (Ez akkor igaz, ha az aktuális munkamenet-jogkivonat nincs visszavonva, és nem járt le.) A megadott időtartam elteltével a felhasználónak újra hitelesítenie kell magát, hogy új munkamenet-tokent kapjon.
 
 A maximális életkor csökkentése arra kényszeríti a felhasználókat, hogy gyakrabban hitelesítsék magukat. Mivel az egytényezős hitelesítés kevésbé biztonságos, mint a többtényezős hitelesítés, javasoljuk, hogy ezt a tulajdonságot olyan értékre állítsa be, amely egyenlő vagy nagyobb, mint az egytényezős munkamenet-token Max Age tulajdonsága.
-
-## <a name="example-token-lifetime-policies"></a>Példa a jogkivonat élettartamára vonatkozó szabályzatokra
-Az Azure AD-ben számos forgatókönyv lehetséges, ha az alkalmazásokhoz, az egyszerű szolgáltatásokhoz és a teljes szervezethez token-élettartamot hozhat létre és kezelhet. Ebben a szakaszban néhány olyan általános házirend-forgatókönyvet ismertetünk, amely segíthet a következő új szabályok bevezetésében:
-
-* Jogkivonat élettartama
-* Token maximális inaktív ideje
-* Token maximális kora
-
-A példákban megtudhatja, hogyan végezheti el a következőket:
-
-* A szervezet alapértelmezett házirendjének kezelése
-* Házirend létrehozása webes bejelentkezéshez
-* Szabályzat létrehozása egy webes API-t meghívó natív alkalmazáshoz
-* Speciális szabályzat kezelése
-
-### <a name="prerequisites"></a>Előfeltételek
-Az alábbi példákban létrehozhat, frissíthet, csatolhat és törölhet szabályzatokat az alkalmazásokhoz, az egyszerű szolgáltatásokhoz és a teljes szervezethez. Ha még nem ismeri az Azure AD-t, javasoljuk, hogy Ismerje meg, [hogyan szerezhet be Azure ad-bérlőt](quickstart-create-new-tenant.md) , mielőtt folytatja ezeket a példákat.  
-
-A kezdéshez hajtsa végre a következő lépéseket:
-
-1. Töltse le a legújabb [Azure ad PowerShell-modul nyilvános előzetes kiadását](https://www.powershellgallery.com/packages/AzureADPreview).
-2. A parancs futtatásával `Connect` Jelentkezzen be az Azure ad-rendszergazdai fiókjába. Futtassa ezt a parancsot minden alkalommal, amikor új munkamenetet indít el.
-
-    ```powershell
-    Connect-AzureAD -Confirm
-    ```
-
-3. A szervezetben létrehozott összes házirend megtekintéséhez futtassa a következő parancsot. Futtassa ezt a parancsot a legtöbb művelet után a következő esetekben. A parancs futtatása a szabályzatok * * * * beszerzését is segíti.
-
-    ```powershell
-    Get-AzureADPolicy
-    ```
-
-### <a name="example-manage-an-organizations-default-policy"></a>Példa: a szervezet alapértelmezett házirendjének kezelése
-Ebben a példában olyan házirendet hoz létre, amely lehetővé teszi, hogy a felhasználók a teljes szervezeten belül ritkábban jelentkezzenek be. Ehhez hozzon létre egy jogkivonat-élettartam-szabályzatot az egytényezős frissítési tokenekhez, amelyet a rendszer a szervezeten belül alkalmaz. A szabályzatot a szervezet minden alkalmazására, valamint minden olyan egyszerű szolgáltatásnév alkalmazza, amely még nem rendelkezik házirend-beállítással.
-
-1. Hozzon létre egy jogkivonat-élettartam-szabályzatot.
-
-    1. Állítsa az egytényezős frissítési tokent a "visszavonás visszavonása" értékre. A jogkivonat nem jár le, amíg vissza nem vonja a hozzáférést. Hozza létre a következő szabályzat-definíciót:
-
-        ```powershell
-        @('{
-            "TokenLifetimePolicy":
-            {
-                "Version":1,
-                "MaxAgeSingleFactor":"until-revoked"
-            }
-        }')
-        ```
-
-    1. A szabályzat létrehozásához futtassa a következő parancsot:
-
-        ```powershell
-        $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1, "MaxAgeSingleFactor":"until-revoked"}}') -DisplayName "OrganizationDefaultPolicyScenario" -IsOrganizationDefault $true -Type "TokenLifetimePolicy"
-        ```
-
-    1. A szóköz eltávolításához futtassa a következő parancsot:
-
-        ```powershell
-        Get-AzureADPolicy -id | set-azureadpolicy -Definition @($((Get-AzureADPolicy -id ).Replace(" ","")))
-        ```
-
-    1. Az új szabályzat megtekintéséhez és a szabályzat **ObjectId**beszerzéséhez futtassa a következő parancsot:
-
-        ```powershell
-        Get-AzureADPolicy -Id $policy.Id
-        ```
-
-1. Frissítse a szabályzatot.
-
-    Dönthet úgy is, hogy az ebben a példában megadott első szabályzat nem annyira szigorú, mint a szolgáltatás. Ha úgy szeretné beállítani az egytényezős frissítési tokent, hogy két nap múlva lejárjon, futtassa a következő parancsot:
-
-    ```powershell
-    Set-AzureADPolicy -Id $policy.Id -DisplayName $policy.DisplayName -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxAgeSingleFactor":"2.00:00:00"}}')
-    ```
-
-### <a name="example-create-a-policy-for-web-sign-in"></a>Példa: házirend létrehozása webes bejelentkezéshez
-
-Ebben a példában olyan házirendet hoz létre, amely megköveteli, hogy a felhasználók gyakrabban hitelesítsék magukat a webalkalmazásban. Ezzel a szabályzattal állítható be a hozzáférési/azonosító tokenek élettartama, valamint a többtényezős munkamenet-tokenek maximális kora a webalkalmazás egyszerű szolgáltatásnév számára.
-
-1. Hozzon létre egy jogkivonat-élettartam-szabályzatot.
-
-    Ez a házirend a webes bejelentkezéshez megadja a hozzáférési/azonosító jogkivonat élettartamát és az egytényezős munkamenet-token maximális életkorát két óráig.
-
-    1. A szabályzat létrehozásához futtassa a következő parancsot:
-
-        ```powershell
-        $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"AccessTokenLifetime":"02:00:00","MaxAgeSessionSingleFactor":"02:00:00"}}') -DisplayName "WebPolicyScenario" -IsOrganizationDefault $false -Type "TokenLifetimePolicy"
-        ```
-
-    1. Az új szabályzat megtekintéséhez és a szabályzat **ObjectId**beszerzéséhez futtassa a következő parancsot:
-
-        ```powershell
-        Get-AzureADPolicy -Id $policy.Id
-        ```
-
-1. Rendelje hozzá a szabályzatot az egyszerű szolgáltatáshoz. Az egyszerű szolgáltatásnév **ObjectId** is le kell kérnie.
-
-    1. A [Get-azureadserviceprincipal parancsmagot](/powershell/module/azuread/get-azureadserviceprincipal) parancsmaggal tekintheti meg az összes szervezet egyszerű szolgáltatását vagy egy egyszerű szolgáltatásnevet.
-        ```powershell
-        # Get ID of the service principal
-        $sp = Get-AzureADServicePrincipal -Filter "DisplayName eq '<service principal display name>'"
-        ```
-
-    1. Ha rendelkezik az egyszerű szolgáltatással, futtassa a következő parancsot:
-        ```powershell
-        # Assign policy to a service principal
-        Add-AzureADServicePrincipalPolicy -Id $sp.ObjectId -RefObjectId $policy.Id
-        ```
-
-### <a name="example-create-a-policy-for-a-native-app-that-calls-a-web-api"></a>Példa: hozzon létre egy házirendet egy olyan natív alkalmazáshoz, amely meghívja a webes API-t
-Ebben a példában olyan házirendet hoz létre, amely megköveteli, hogy a felhasználóknak ritkábban kell hitelesíteniük magukat. A szabályzat emellett meghosszabbítja azt az időtartamot is, ameddig a felhasználó inaktív lehet, mielőtt a felhasználónak újra hitelesítenie kell magát. A szabályzatot a rendszer a webes API-ra alkalmazza. Ha a natív alkalmazás erőforrásként kéri a webes API-t, a rendszer alkalmazza ezt a házirendet.
-
-1. Hozzon létre egy jogkivonat-élettartam-szabályzatot.
-
-    1. Ha szigorú szabályzatot szeretne létrehozni egy webes API-hoz, futtassa a következő parancsot:
-
-        ```powershell
-        $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"30.00:00:00","MaxAgeMultiFactor":"until-revoked","MaxAgeSingleFactor":"180.00:00:00"}}') -DisplayName "WebApiDefaultPolicyScenario" -IsOrganizationDefault $false -Type "TokenLifetimePolicy"
-        ```
-
-    1. Az új szabályzat megtekintéséhez futtassa a következő parancsot:
-
-        ```powershell
-        Get-AzureADPolicy -Id $policy.Id
-        ```
-
-1. Rendelje hozzá a szabályzatot a webes API-hoz. Emellett le kell kérnie az alkalmazás **ObjectId** is. Használja a [Get-AzureADApplication](/powershell/module/azuread/get-azureadapplication) parancsmagot az alkalmazás **ObjectId**megkereséséhez, vagy használja a [Azure Portal](https://portal.azure.com/).
-
-    Szerezze be az alkalmazás **ObjectId** , és rendelje hozzá a szabályzatot:
-
-    ```powershell
-    # Get the application
-    $app = Get-AzureADApplication -Filter "DisplayName eq 'Fourth Coffee Web API'"
-
-    # Assign the policy to your web API.
-    Add-AzureADApplicationPolicy -Id $app.ObjectId -RefObjectId $policy.Id
-    ```
-
-### <a name="example-manage-an-advanced-policy"></a>Példa: speciális szabályzat kezelése
-Ebben a példában néhány szabályzatot hoz létre a prioritási rendszer működésének megismeréséhez. Azt is megtudhatja, hogyan kezelhet több objektumra alkalmazott házirendeket.
-
-1. Hozzon létre egy jogkivonat-élettartam-szabályzatot.
-
-    1. A következő parancs futtatásával hozhat létre olyan alapértelmezett házirendet, amely az egytényezős frissítési jogkivonat élettartamát 30 napra állítja be:
-
-        ```powershell
-        $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxAgeSingleFactor":"30.00:00:00"}}') -DisplayName "ComplexPolicyScenario" -IsOrganizationDefault $true -Type "TokenLifetimePolicy"
-        ```
-
-    1. Az új szabályzat megtekintéséhez futtassa a következő parancsot:
-
-        ```powershell
-        Get-AzureADPolicy -Id $policy.Id
-        ```
-
-1. Rendelje hozzá a szabályzatot egy egyszerű szolgáltatáshoz.
-
-    Most már rendelkezik egy szabályzattal, amely a teljes szervezetre vonatkozik. Előfordulhat, hogy meg szeretné őrizni ezt a 30 napos házirendet egy adott egyszerű szolgáltatásnév esetében, de a szervezet alapértelmezett házirendjét a "visszavonás visszavonása" felső korlátra kell módosítania.
-
-    1. A szervezet összes szolgáltatásának megtekintéséhez használja a [Get-azureadserviceprincipal parancsmagot](/powershell/module/azuread/get-azureadserviceprincipal) parancsmagot.
-
-    1. Ha rendelkezik az egyszerű szolgáltatással, futtassa a következő parancsot:
-
-        ```powershell
-        # Get ID of the service principal
-        $sp = Get-AzureADServicePrincipal -Filter "DisplayName eq '<service principal display name>'"
-
-        # Assign policy to a service principal
-        Add-AzureADServicePrincipalPolicy -Id $sp.ObjectId -RefObjectId $policy.Id
-        ```
-
-1. A jelző beállítása false (hamis) értékre `IsOrganizationDefault` :
-
-    ```powershell
-    Set-AzureADPolicy -Id $policy.Id -DisplayName "ComplexPolicyScenario" -IsOrganizationDefault $false
-    ```
-
-1. Új szervezet alapértelmezett házirendjének létrehozása:
-
-    ```powershell
-    New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxAgeSingleFactor":"until-revoked"}}') -DisplayName "ComplexPolicyScenarioTwo" -IsOrganizationDefault $true -Type "TokenLifetimePolicy"
-    ```
-
-    Most már rendelkezik a szolgáltatáshoz tartozó eredeti házirenddel, és az új szabályzat beállítása a szervezet alapértelmezett házirendje. Fontos megjegyezni, hogy az egyszerű szolgáltatásokra alkalmazott szabályzatok elsőbbséget élveznek a szervezet alapértelmezett házirendjeivel szemben.
 
 ## <a name="cmdlet-reference"></a>Parancsmag-referencia
 
@@ -419,3 +245,7 @@ A következő parancsmagokat használhatja az egyszerű szolgáltatásnév házi
 A szolgáltatás használatához prémium szintű Azure AD P1 licenc szükséges. A követelmények megfelelő licencének megkereséséhez tekintse meg [az ingyenes és Prémium kiadások általánosan elérhető funkcióinak összehasonlítását](https://azure.microsoft.com/pricing/details/active-directory/)ismertető témakört.
 
 A [Microsoft 365 vállalati verzió licenccel](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description) rendelkező ügyfelek hozzáférhetnek a feltételes hozzáférési funkciókhoz is.
+
+## <a name="next-steps"></a>További lépések
+
+További információért olvassa el [a jogkivonat-élettartamok konfigurálásának példáit](configure-token-lifetimes.md).

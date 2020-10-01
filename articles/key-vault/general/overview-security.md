@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 4c0430f96934c16a26ca3ab908da6aa017810ad0
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: b6163ca0cb02670024fe95459f31ac81c4da756c
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89377573"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596360"
 ---
 # <a name="azure-key-vault-security"></a>Az Azure Key Vault biztonsága
 
@@ -75,6 +75,14 @@ A tárolók expozíciójának csökkentése érdekében megadhatja, hogy mely IP
 A tűzfalszabályok érvénybe léptetése után a felhasználók csak akkor tudják olvasni az Key Vault adatait, ha a kérésük engedélyezett virtuális hálózatokról vagy IPv4-címtartományok származnak. Ez a Azure Portal Key Vault elérésére is vonatkozik. Bár a felhasználók megkereshetik a kulcstartót a Azure Portalból, előfordulhat, hogy nem tudják listázni a kulcsokat, titkokat vagy tanúsítványokat, ha az ügyfélszámítógépük nem szerepel az engedélyezési listán. Ez hatással van a más Azure-szolgáltatások Key Vault választóra is. Előfordulhat, hogy a felhasználók megtekinthetik a kulcstárolók listáját, de nem listázják a kulcsokat, ha a tűzfalszabályok megakadályozzák az ügyfélszoftvert.
 
 További információ a [Azure Key Vault virtuális hálózati szolgáltatási végpontokról](overview-vnet-service-endpoints.md)Azure Key Vault hálózati címek áttekintéséhez)
+
+### <a name="tls-and-https"></a>TLS és HTTPS
+
+*   A Key Vault előtér (adatsík) egy több-bérlős kiszolgáló. Ez azt jelenti, hogy a különböző ügyfelektől származó kulcstartók ugyanazt a nyilvános IP-címet tudják megosztani. Az elkülönítés érdekében minden HTTP-kérelem hitelesítése és engedélyezése más kérelmektől függetlenül történik.
+*   A biztonsági rések jelentésére a TLS régebbi verzióit is meghatározhatja, de mivel a nyilvános IP-cím meg van osztva, nem lehetséges, hogy a Key Vault szolgáltatás csapata letiltsa a TLS régi verzióit az egyes kulcstartók esetében a szállítási szinten.
+*   A HTTPS protokoll lehetővé teszi, hogy az ügyfél részt vegyen a TLS-egyeztetésben. Az **ügyfelek kihasználhatják a TLS legújabb verzióját**, és amikor az ügyfél ezt teszi, a teljes kapcsolatok a megfelelő szintű védelmet fogják használni. Az a tény, hogy Key Vault továbbra is támogatja a régebbi TLS-verziókat, nem rontja a kapcsolatok biztonságát újabb TLS-verziók használatával.
+*   A TLS protokoll ismert biztonsági rései ellenére nincs olyan ismert támadás, amely lehetővé tenné egy rosszindulatú ügynök számára, hogy kinyerje a kulcstartóból származó adatokat, amikor a támadó a biztonsági réseket tartalmazó TLS-verzióval létesített kapcsolatokat kezdeményez. A támadónak továbbra is hitelesítenie és hitelesítenie kell magát, és mindaddig, amíg a megbízható ügyfelek mindig csatlakoznak a legutóbbi TLS-verziókhoz, nincs mód arra, hogy a hitelesítő adatokat kiszivárgott a korábbi TLS-verziók biztonsági rései miatt.
+
 
 ## <a name="monitoring"></a>Figyelés
 

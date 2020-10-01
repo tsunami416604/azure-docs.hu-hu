@@ -1,31 +1,34 @@
 ---
-title: 'Gyors útmutató: Content Moderator kipróbálása a Web-Content Moderator'
+title: 'Gyors útmutató: Content Moderator kipróbálása a weben'
 titleSuffix: Azure Cognitive Services
-description: Ebben a rövid útmutatóban az online Content Moderator felülvizsgálati eszközt fogja használni a Content Moderator alapvető funkcióinak teszteléséhez anélkül, hogy kódot kellene írnia.
+description: Az online Content Moderator felülvizsgálati eszköz használatával tesztelheti a Content Moderator alapvető funkcióit anélkül, hogy kódot kellene írnia.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 06/29/2020
+ms.date: 09/29/2020
 ms.author: pafarley
-ms.openlocfilehash: 7be14c07a08d58f02890a48d39dd0a8010101374
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.custom: cog-serv-seo-aug-2020
+keywords: tartalom moderátora, tartalom moderálása
+ms.openlocfilehash: 025c8fcf98a31d7b3380ee2530428d08428493fb
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91332627"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596812"
 ---
 # <a name="quickstart-try-content-moderator-on-the-web"></a>Gyors útmutató: Content Moderator kipróbálása a weben
 
-Ebben a rövid útmutatóban az online Content Moderator felülvizsgálati eszköz használatával tesztelheti a Content Moderator alapvető funkcióit anélkül, hogy kódot kellene írnia. Ha gyorsabban szeretné integrálni ezt a szolgáltatást az alkalmazásba, tekintse meg a többi rövid útmutatót a [következő lépések](#next-steps) szakaszban.
+Ebben a rövid útmutatóban az online Content Moderator felülvizsgálati eszköz használatával tesztelheti a Content Moderator alapvető funkcióit anélkül, hogy kódot kellene írnia. Ha gyorsabban szeretné integrálni ezt a szolgáltatást a Content moderációs alkalmazásba, tekintse meg a többi rövid útmutatót a [következő lépések](#next-steps) szakaszban.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Egy webböngésző
 
 ## <a name="set-up-the-review-tool"></a>A felülvizsgálati eszköz beállítása
+
 A Content Moderator felülvizsgálati eszköz egy webalapú eszköz, amely lehetővé teszi, hogy az emberi felülvizsgálók segítsek a kognitív szolgáltatást a döntések meghozatalában. Ebben az útmutatóban elsajátíthatja a felülvizsgálati eszköz beállításának rövid folyamatát, hogy láthassa, hogyan működik a Content Moderator szolgáltatás. Lépjen a [Content moderator felülvizsgálati eszköz](https://contentmoderator.cognitive.microsoft.com/) webhelyére, és regisztráljon.
 
 ![Content Moderator Kezdőlap](images/homepage.PNG)
@@ -79,9 +82,9 @@ Ha többet szeretne megtudni a Content Moderator felülvizsgálati eszköz haszn
 
 Vagy folytassa a következő lépésekkel a kód moderálási API-jai használatának megkezdéséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogyan használhatja saját maga a moderálási API-kat az alkalmazásban.
-- Rendszerkép-moderálás implementálása. Az [API-konzollal](try-image-api.md) vagy a [.net SDK](dotnet-sdk-quickstart.md) gyors üzembe helyezésével ellenőrizheti a képeket, és felderítheti a potenciális felnőtteket és a zamatos tartalmakat címkék, megbízhatósági pontszámok és egyéb kinyert adatok használatával.
-- Szöveges moderálás implementálása. Használja az [API-konzolt](try-text-api.md) , vagy használja a [.net SDK](dotnet-sdk-quickstart.md) gyors verzióját a szöveges tartalom vizsgálatához a lehetséges trágárság, a gépi támogatású nemkívánatos szöveg besorolása (előzetes verzió) és a személyes adatokat.
+- Rendszerkép-moderálás implementálása. Az [API-konzollal](try-image-api.md) vagy az [ügyféloldali kódtár](client-libraries.md) gyors üzembe helyezésével ellenőrizheti a képeket, és felderítheti a potenciális felnőtt és a zamatos tartalmakat címkék, megbízhatósági pontszámok és egyéb kinyert adatok használatával.
+- Szöveges moderálás implementálása. Az [API-konzollal](try-text-api.md) vagy az [ügyféloldali kódtár](client-libraries.md) rövid útmutatójának használatával vizsgálja meg a szöveges tartalmat a lehetséges trágárság, a gépi támogatással nem rendelkező szöveges besorolás (előzetes verzió) és a személyes adatokat.
 - Videó-moderálás implementálása. Kövesse a [videó moderálásának útmutatóját a C#-](video-moderation-api.md) hoz a videók vizsgálatához és a potenciális felnőtt és a zamatos tartalmak észleléséhez. 

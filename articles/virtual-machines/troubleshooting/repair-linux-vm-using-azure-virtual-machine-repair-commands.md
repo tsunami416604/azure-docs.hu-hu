@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 09/10/2019
 ms.author: v-miegge
-ms.openlocfilehash: c7fbe46d378d45f49a8510f9fdd01a9cae665d0b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bfd3b2351a280f423ba0ef0b15318449554b5e3b
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074379"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91595939"
 ---
 # <a name="repair-a-linux-vm-by-using-the-azure-virtual-machine-repair-commands"></a>Linux rendszerű virtuális gép javítása az Azure-beli virtuális gép javítási parancsaival
 
@@ -42,7 +42,7 @@ A virtuálisgép-probléma megoldásához kövesse az alábbi lépéseket:
 1. Az Azure Cloud Shell elindítása
 2. Futtatás az Extension Add/Update
 3. Futtatás az VM Repair Create
-4. Enyhítő lépések végrehajtása
+4. Futtassa az az VM Repair Run parancsot, vagy végezzen kockázatcsökkentő lépéseket.
 5. Futtatás az VM Repair Restore
 
 További dokumentációt és útmutatást az [az VM Repair](/cli/azure/ext/vm-repair/vm/repair)című témakörben talál.
@@ -59,7 +59,7 @@ További dokumentációt és útmutatást az [az VM Repair](/cli/azure/ext/vm-re
 
    Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz az Azure CLI 2.0.30-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: ``az --version``. Ha telepítenie vagy frissítenie kell az Azure CLI-t, tekintse meg az [Azure CLI telepítését](/cli/azure/install-azure-cli)ismertető témakört.
    
-   Ha egy másik fiókkal kell bejelentkeznie Cloud Shellba, mint amellyel jelenleg bejelentkezett az Azure Portalra, használhatja az ``az login`` [az login Reference](/cli/azure/reference-index?view=azure-cli-latest#az-login).  A fiókjához társított előfizetések közötti váltáshoz használhatja ``az account set --subscription`` [az az Account set Reference](/cli/azure/account?view=azure-cli-latest#az-account-set)lehetőséget.
+   Ha egy másik fiókkal kell bejelentkeznie Cloud Shellba, mint amellyel jelenleg bejelentkezett az Azure Portalra, használhatja az ``az login`` [az login Reference](/cli/azure/reference-index?view=azure-cli-latest#az-login&preserve-view=true).  A fiókjához társított előfizetések közötti váltáshoz használhatja ``az account set --subscription`` [az az Account set Reference](/cli/azure/account?view=azure-cli-latest#az-account-set&preserve-view=true)lehetőséget.
 
 2. Ha első alkalommal használja a `az vm repair` parancsokat, adja hozzá a virtuális gép javítási CLI-bővítményét.
 
@@ -79,7 +79,13 @@ További dokumentációt és útmutatást az [az VM Repair](/cli/azure/ext/vm-re
    az vm repair create -g MyResourceGroup -n myVM --repair-username username --repair-password password!234 --verbose
    ```
 
-4. Hajtsa végre a szükséges kockázatcsökkentő lépéseket a létrehozott javítási virtuális gépen, majd folytassa az 5. lépéssel.
+4. Futtassa az `az vm repair run` parancsot. Ez a parancs a megadott javítási parancsfájlt futtatja a csatlakoztatott lemezen a javítási virtuális gépen keresztül. Ha a hibaelhárítási útmutató megadott Run-ID-t használ, használja itt, ellenkező esetben használhatja az az VM Repair List-Scripts parancsot az elérhető javítási parancsfájlok megjelenítéséhez. Az itt használt erőforráscsoport és virtuális gép neve a 3. lépésben használt nem funkcionális virtuális gép. A javítási parancsfájlokkal kapcsolatos további információkért tekintse meg a [javítási parancsfájl-függvénytárat](https://github.com/Azure/repair-script-library).
+
+   ```azurecli-interactive
+   az vm repair run -g MyResourceGroup -n MyVM --run-on-repair --run-id lin-hello-world --verbose
+   ```
+
+   Opcionálisan a virtuális gép kijavításával, az 5. lépéssel elvégezheti a szükséges manuális kockázatcsökkentő lépéseket is.
 
 5. Futtassa az `az vm repair restore` parancsot. Ez a parancs felcseréli a javított operációsrendszer-lemezt a virtuális gép eredeti operációsrendszer-lemezére. Az itt használt erőforráscsoport és virtuális gép neve a 3. lépésben használt nem funkcionális virtuális gép.
 

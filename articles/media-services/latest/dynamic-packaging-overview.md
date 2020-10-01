@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/31/2020
-ms.author: v-myoung
-ms.openlocfilehash: 3607ecb7d1ef01b968b67c704e12136cc1888b69
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/30/2020
+ms.author: inhenkel
+ms.openlocfilehash: 797ba00820e7ff9d96868acdfc1dddfff3d21623
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91296229"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598276"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Dinamikus csomagolás a Media Services v3-ban
 
@@ -56,6 +56,9 @@ A streaming-ügyfél a következő HLS-formátumokat adhatja meg:
 |HLS V4 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl)`||
 |HLS V3 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl-v3)`||
 |HLS CMAF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-cmaf)`||
+
+> [!NOTE]
+> Az Apple korábbi irányelvei azt javasolták, hogy az alacsony sávszélességű hálózatok tartaléka csak hangalapú streamet adjon meg.  Jelenleg a Media Services kódoló automatikusan létrehoz egy csak hangot.  Az Apple-irányelvek mostantól azt az állapotot jelentik, hogy a csak hangvezérelt nyomon követés *nem* vehető fel, különösen az Apple TV-disztribúcióhoz.  Ha meg szeretné akadályozni, hogy a lejátszó ne legyen alapértelmezett a csak hangvezéreltként, javasoljuk, hogy az URL-címben a "csak hang = hamis" címkét használja, amely eltávolítja a HLS, vagy egyszerűen csak a HLS-v3-t használja. Például: `http://host/locator/asset.ism/manifest(format=m3u8-aapl,audio-only=false)`.
 
 ### <a name="mpeg-dash-protocol"></a>MPEG-DASH protokoll
 
@@ -326,6 +329,6 @@ Tekintse meg [Azure Media Services közösségét](media-services-community.md) 
 
 A támogatási jegyet az [új támogatási kérelemre](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)való navigálással nyithatja meg.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Videók feltöltése, kódolása és streamelése](stream-files-tutorial-with-api.md)

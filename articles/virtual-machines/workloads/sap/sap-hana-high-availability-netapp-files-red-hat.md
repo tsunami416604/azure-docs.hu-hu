@@ -10,14 +10,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 08/11/2020
+ms.date: 09/30/2020
 ms.author: radeltch
-ms.openlocfilehash: 030677276fa077c06a95e7c677fec956b9c2a947
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3a5238ec9e9bc30da330be206eb559acc3c2ec07
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88556315"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598080"
 ---
 # <a name="high-availability-of-sap-hana-scale-up-with-azure-netapp-files-on-red-hat-enterprise-linux"></a>A SAP HANA skálázás magas rendelkezésre állása Azure NetApp Filesekkel Red Hat Enterprise Linux
 
@@ -199,7 +199,7 @@ A/Hana/Data és a/Hana/log SAP minimális átviteli sebességére vonatkozó kö
 
 |    Kötet    | Premium Storage rétegek mérete | Az ultra Storage-rétegek mérete | Támogatott NFS-protokoll |
 | :----------: | :--------------------------: | :------------------------: | :--------------------: |
-|  /hana/log   |            4 TiB             |           2 tebibájt            |          v 4.1          |
+|  /hana/log   |            4 TiB             |           2 TiB            |          v 4.1          |
 |  /hana/data  |           6,3 TiB            |          3,2 TiB           |          v 4.1          |
 | /hana/shared |           1 x RAM            |          1 x RAM           |          v3 vagy v 4.1    |
 
@@ -232,7 +232,7 @@ Először létre kell hoznia a Azure NetApp Files köteteket. Ezután hajtsa vé
         1.  Nyissa meg a terheléselosztó felületet, válassza a előtér **IP-készlet**lehetőséget, majd kattintson a **Hozzáadás**gombra.
         1.  Adja meg az új előtér-IP-készlet nevét (például **Hana-frontend**).
         1.  Állítsa a **hozzárendelést** **statikus** értékre, és adja meg az IP-címet (például **10.32.0.10**).
-        1.  Kattintson az **OK** gombra.
+        1.  Válassza az **OK** lehetőséget.
         1.  Az új előtér-IP-készlet létrehozása után jegyezze fel a készlet IP-címét.
     1.  Következő lépésként hozzon létre egy háttér-készletet:
         1.  Nyissa meg a Load balancert, válassza a **háttérbeli készletek**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
@@ -240,12 +240,12 @@ Először létre kell hoznia a Azure NetApp Files köteteket. Ezután hajtsa vé
         1.  Válassza **a virtuális gép hozzáadása**lehetőséget.
         1.  Válassza a * * virtuális gép * * elemet.
         1.  Válassza ki a SAP HANA-fürthöz tartozó virtuális gépeket és azok IP-címeit.
-        1.  Válassza a **Hozzáadás** elemet.
+        1.  Válassza a **Hozzáadás** lehetőséget.
     1.  Következő lépésként hozzon létre egy állapot-mintavételt:
         1.  Nyissa meg a terheléselosztó-t, válassza az **állapot**-tesztek elemet, majd kattintson a **Hozzáadás**gombra.
         1.  Adja meg az új állapot-mintavétel nevét (például **Hana-HP**).
         1.  Válassza a TCP lehetőséget a protokoll és a**625-** es port. Tartsa meg az **intervallum** értékét 5-re, a nem kifogástalan **állapot küszöbértékének** értéke pedig 2.
-        1.  Kattintson az **OK** gombra.
+        1.  Válassza az **OK** lehetőséget.
     1.  Ezután hozza létre a terheléselosztási szabályokat:
         1.  Nyissa meg a terheléselosztó-t, válassza a terheléselosztási **szabályok**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
         1.  Adja meg az új terheléselosztó-szabály nevét (például **Hana-LB**).
@@ -253,7 +253,7 @@ Először létre kell hoznia a Azure NetApp Files köteteket. Ezután hajtsa vé
         1.  Válassza a **hektár portok**lehetőséget.
         1.  Növelje az **üresjárati időkorlátot** 30 percre.
         1.  Ügyeljen arra, hogy a **lebegő IP-címet engedélyezze**.
-        1.  Kattintson az **OK** gombra.
+        1.  Válassza az **OK** lehetőséget.
 
 > [!NOTE] 
 > Ha a nyilvános IP-címek nélküli virtuális gépek a belső (nincs nyilvános IP-cím) standard Azure Load Balancer háttér-készletbe kerülnek, nem lesz kimenő internetkapcsolat, kivéve, ha további konfigurálást végeznek a nyilvános végpontok útválasztásának engedélyezéséhez. A kimenő kapcsolatok elérésével kapcsolatos részletekért lásd: [nyilvános végpontú kapcsolat Virtual Machines az Azure standard Load Balancer használata az SAP magas rendelkezésre állási helyzetekben](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections).
@@ -263,7 +263,7 @@ Először létre kell hoznia a Azure NetApp Files köteteket. Ezután hajtsa vé
         1.  Nyissa meg a terheléselosztó felületet, válassza a előtér **IP-készlet**lehetőséget, majd kattintson a **Hozzáadás**gombra.
         1.  Adja meg az új előtér-IP-készlet nevét (például **Hana-frontend**).
         1.  Állítsa a **hozzárendelést** **statikus** értékre, és adja meg az IP-címet (például **10.32.0.10**).
-        1.  Kattintson az **OK** gombra.
+        1.  Válassza az **OK** lehetőséget.
         1.  Az új előtér-IP-készlet létrehozása után jegyezze fel a készlet IP-címét.
     1.  Következő lépésként hozzon létre egy háttér-készletet:
         1.  Nyissa meg a Load balancert, válassza a **háttérbeli készletek**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
@@ -271,12 +271,12 @@ Először létre kell hoznia a Azure NetApp Files köteteket. Ezután hajtsa vé
         1.  Válassza **a virtuális gép hozzáadása**lehetőséget.
         1.  Válassza ki a 3. lépésben létrehozott rendelkezésre állási készletet.
         1.  Válassza ki a SAP HANA-fürthöz tartozó virtuális gépeket.
-        1.  Kattintson az **OK** gombra.
+        1.  Válassza az **OK** lehetőséget.
     1.  Következő lépésként hozzon létre egy állapot-mintavételt:
         1.  Nyissa meg a terheléselosztó-t, válassza az **állapot**-tesztek elemet, majd kattintson a **Hozzáadás**gombra.
         1.  Adja meg az új állapot-mintavétel nevét (például **Hana-HP**).
         1.  Válassza a **TCP** lehetőséget a protokoll és a**625-** es port. Tartsa meg az **intervallum** értékét 5-re, a nem kifogástalan **állapot küszöbértékének** értéke pedig 2.
-        1.  Kattintson az **OK** gombra.
+        1.  Válassza az **OK** lehetőséget.
     1.  SAP HANA 1,0 esetében hozza létre a terheléselosztási szabályokat:
         1.  Nyissa meg a terheléselosztó-t, válassza a terheléselosztási **szabályok**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
         1.  Adja meg az új terheléselosztó-szabály nevét (például Hana-LB-3**03**15).
@@ -284,7 +284,7 @@ Először létre kell hoznia a Azure NetApp Files köteteket. Ezután hajtsa vé
         1.  Tartsa a **protokollt** **TCP**-értékre, és írja be a 3**03**15 portot.
         1.  Növelje az **üresjárati időkorlátot** 30 percre.
         1.  Ügyeljen arra, hogy a **lebegő IP-címet engedélyezze**.
-        1.  Kattintson az **OK** gombra.
+        1.  Válassza az **OK** lehetőséget.
         1.  Ismételje meg ezeket a lépéseket a 3**03**17-ös porton.
     1.  SAP HANA 2,0 esetében hozza létre a rendszeradatbázis terheléselosztási szabályait:
         1.  Nyissa meg a terheléselosztó-t, válassza a terheléselosztási **szabályok**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
@@ -293,7 +293,7 @@ Először létre kell hoznia a Azure NetApp Files köteteket. Ezután hajtsa vé
         1.  Tartsa a **protokollt** **TCP**-értékre, és írja be a 3**03**13 portot.
         1.  Növelje az **üresjárati időkorlátot** 30 percre.
         1.  Ügyeljen arra, hogy a **lebegő IP-címet engedélyezze**.
-        1.  Kattintson az **OK** gombra.
+        1.  Válassza az **OK** lehetőséget.
         1.  Ismételje meg ezeket a lépéseket a 3.**03**. porton.
     1.  SAP HANA 2,0 esetében először hozza létre a bérlői adatbázishoz tartozó terheléselosztási szabályokat:
         1.  Nyissa meg a terheléselosztó-t, válassza a terheléselosztási **szabályok**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
@@ -302,7 +302,7 @@ Először létre kell hoznia a Azure NetApp Files köteteket. Ezután hajtsa vé
         1.  Tartsa a **protokollt** **TCP**-re, és írja be a 3**03**40 portot.
         1.  Növelje az **üresjárati időkorlátot** 30 percre.
         1.  Ügyeljen arra, hogy a **lebegő IP-címet engedélyezze**.
-        1.  Kattintson az **OK** gombra.
+        1.  Válassza az **OK** lehetőséget.
         1.  Ismételje meg ezeket a lépéseket a 3**03**41 és 3**03**42-es porton.
 
 A SAP HANA szükséges portokkal kapcsolatos további információkért olvassa el a [bérlői adatbázisok kapcsolatai](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html) című részt a [SAP HANA bérlői adatbázisok](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6) útmutatójában vagy az [2388694](https://launchpad.support.sap.com/#/notes/2388694)-es SAP-megjegyzésben.
@@ -548,13 +548,18 @@ Ebben a példában mindegyik fürtcsomópont saját HANA NFS-fájlrendszerrel re
 
     ```
     pcs constraint location SAPHanaTopology_HN1_03-clone rule score=-INFINITY hana_nfs1_active ne true and hana_nfs2_active ne true
+    # On RHEL 7.x
     pcs constraint location SAPHana_HN1_03-master rule score=-INFINITY hana_nfs1_active ne true and hana_nfs2_active ne true
+    # On RHEL 8.x
+    pcs constraint location SAPHana_HN1_03-clone rule score=-INFINITY hana_nfs1_active ne true and hana_nfs2_active ne true
     # Take the cluster out of maintenance mode
     sudo pcs property set maintenance-mode=false
     ```
 
    A fürt és az összes erőforrás állapotának megtekintése
-
+   > [!NOTE]
+   > Ez a cikk a *Slave*kifejezésre mutató hivatkozásokat tartalmaz, amelyek egy kifejezés, amelyet a Microsoft már nem használ. Ha a rendszer eltávolítja a kifejezést a szoftverből, azt a cikkből távolítjuk el.
+   
     ```
     sudo pcs status
     

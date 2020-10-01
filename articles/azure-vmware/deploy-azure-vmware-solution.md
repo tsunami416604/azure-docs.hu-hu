@@ -3,12 +3,12 @@ title: Azure VMware-megoldás üzembe helyezése és konfigurálása
 description: Megtudhatja, hogyan használhatja a tervezési szakaszban összegyűjtött információkat az Azure VMware-megoldás saját felhőbe történő üzembe helyezéséhez.
 ms.topic: tutorial
 ms.date: 10/02/2020
-ms.openlocfilehash: 08d2d48820505dad9bba74fe3ac84f45525f4525
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: af2a9e4fcb4125683342ad739e3890671f64b0bf
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/30/2020
-ms.locfileid: "91583311"
+ms.locfileid: "91598182"
 ---
 # <a name="deploy-and-configure-azure-vmware-solution"></a>Azure VMware-megoldás üzembe helyezése és konfigurálása
 
@@ -40,7 +40,7 @@ Használja az [Azure VMware megoldás üzembe helyezésének megtervezése](prod
 Az Azure VMware-megoldás üzembe helyezése után létre kell hoznia a virtuális hálózat vCenter és NSX csatlakozó ugrási mezőjét. Miután konfigurálta a ExpressRoute áramköröket és a ExpressRoute Global Reach, a Jump Box nem szükséges.  Az Azure VMware-megoldásban azonban hasznos lehet a vCenter és a NSX elérése.  
 
 
-:::image type="content" source="media/pre-deployment/jump-box-diagram.png" alt-text="Az Azure VMware-megoldás Jump Box létrehozása":::
+:::image type="content" source="media/pre-deployment/jump-box-diagram.png" alt-text="Az Azure VMware-megoldás Jump Box létrehozása" border="false" lightbox="media/pre-deployment/jump-box-diagram.png":::
 
 Ha virtuális gépet (VM) szeretne létrehozni a [telepítési folyamat részeként azonosított vagy létrehozott](production-ready-deployment-steps.md#azure-virtual-network-to-attach-azure-vmware-solution)virtuális hálózaton, kövesse az alábbi utasításokat: 
 
@@ -60,7 +60,7 @@ A Jump Box abban a virtuális hálózaton található, ahol az Azure VMware mego
 
 Az érvényben lévő útvonalak listájában az Azure VMware-megoldás üzembe helyezésének részeként létrehozott hálózatokat kell látnia. [A jelen cikk korábbi](#deploy-azure-vmware-solution) részében [ `/22` megadott hálózatról](production-ready-deployment-steps.md#ip-address-segment) származó több hálózat is megjelenik.
 
-:::image type="content" source="media/pre-deployment/azure-vmware-solution-effective-routes.png" alt-text="Az Azure VMware-megoldás Jump Box létrehozása":::
+:::image type="content" source="media/pre-deployment/azure-vmware-solution-effective-routes.png" alt-text="Az Azure VMware-megoldás Jump Box létrehozása" lightbox="media/pre-deployment/azure-vmware-solution-effective-routes.png":::
 
 Ebben a példában az üzembe helyezés során a 10.74.72.0/22 hálózat bemenete a/24 hálózatot eredményezi.  Ha valami hasonlót lát, csatlakozhat a vCenter-hez az Azure VMware megoldásban.
 

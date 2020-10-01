@@ -15,18 +15,20 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: d0f040961bfb72082f8c5accb86999d489a93de5
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 5d6530cf7b8d8611ff23a3517112cb0aa7442d6d
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401384"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91595980"
 ---
 # <a name="protect-your-content-with-media-services-dynamic-encryption"></a>A tartalmak Media Services dinamikus titkosítással védhetők
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-A Azure Media Services segítségével biztonságossá teheti az adathordozót, amikor a számítógépet a tárolás, a feldolgozás és a kézbesítés teljes egészében elhagyja. A Media Services használatával dinamikusan titkosíthatja az élő és igény szerinti tartalmat Advanced Encryption Standard (AES-128) vagy a három fő digitális jogkezelési (DRM) rendszerből: Microsoft PlayReady, Google Widevine és Apple FairPlay. A Media Services egy szolgáltatást is biztosít az AES-kulcsok és a DRM (PlayReady, Widevine és FairPlay) licencek továbbítására a hitelesítő ügyfelek számára. Ha a tartalom titkosítása AES Clear kulccsal történik, és HTTPS-kapcsolaton keresztül történik, nem egyértelmű, amíg el nem éri az ügyfelet. 
+A Azure Media Services segítségével biztonságossá teheti az adathordozót, amikor a számítógépet a tárolás, a feldolgozás és a kézbesítés teljes egészében elhagyja. A Media Services használatával dinamikusan titkosíthatja az élő és igény szerinti tartalmat Advanced Encryption Standard (AES-128) vagy a három fő digitális jogkezelési (DRM) rendszerből: Microsoft PlayReady, Google Widevine és Apple FairPlay. A Media Services egy szolgáltatást is biztosít az AES-kulcsok és a DRM (PlayReady, Widevine és FairPlay) licencek továbbítására a hitelesítő ügyfelek számára. Ha a tartalom titkosítása AES Clear kulccsal történik, és HTTPS-kapcsolaton keresztül történik, nem egyértelmű, amíg el nem éri az ügyfelet.
+
+[!INCLUDE [Widevine is not available in the GovCloud region.](./includes/widevine-not-available-govcloud.md)]
 
 A Media Services v3-as verziójában a tartalmi kulcs a streaming Lokátorhoz van társítva (lásd [a példát](protect-with-aes128.md)). Ha a Media Services Key Delivery Service-t használja, lehetővé teheti, hogy Azure Media Services létrehozza a tartalmi kulcsot. Ha saját Key Delivery Service-t használ, vagy ha magas rendelkezésre állási forgatókönyvet szeretne kezelni, akkor a tartalmi kulcsot is létre kell hoznia, ha a két adatközpontban ugyanazzal a tartalmi kulccsal kell rendelkeznie.
 
@@ -136,7 +138,7 @@ A HLS/CMAF + FairPlay (beleértve a HEVC/H. 265-et) a következő eszközökön 
 
 * iOS 11 vagy újabb verzió.
 * iPhone 8 vagy újabb verzió.
-* MacOS magas Sierra az Intel hetedik generációs PROCESSZORával.
+* macOS magas Sierra az Intel hetedik generációs PROCESSZORával.
 
 ### <a name="mpeg-dash"></a>MPEG-KÖTŐJEL
 
@@ -265,7 +267,7 @@ Ha a végén hibákat kap, ügyeljen `_NOT_SPECIFIED_IN_URL` arra, hogy a titkos
 
 Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Védelem AES-titkosítással](protect-with-aes128.md)
 * [Védelem a DRM-mel](protect-with-drm.md)

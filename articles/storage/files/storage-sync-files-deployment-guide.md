@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: deffa5c75cbde4f9d95be549844478d4de87a685
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: c64c376e8f283336573500e69ac31989b5947961
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069628"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598253"
 ---
 # <a name="deploy-azure-file-sync"></a>Az Azure File Sync üzembe helyezése
 A Azure File Sync segítségével központilag kezelheti a szervezete fájlmegosztást Azure Filesban, miközben megőrizheti a helyszíni fájlkiszolgáló rugalmasságát, teljesítményét és kompatibilitását. Az Azure File Sync a Windows Servert az Azure-fájlmegosztás gyors gyorsítótárává alakítja át. A Windows Serveren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl.: SMB, NFS vagy FTPS). Tetszőleges számú gyorsítótárral rendelkezhet a világ minden tájáról.
@@ -524,13 +524,12 @@ A javasolt lépések a Azure File Sync beléptetése az elsőre nulla állásid�
 Ha nem rendelkezik további tárterülettel a bevezetéshez, és szeretné csatolni a meglévő megosztásokhoz, az Azure Files-megosztásokban lévő adatmagot is megadhatja. Ez a megközelítés akkor javasolt, ha és csak akkor, ha az állásidőt el tudja fogadni, és a kezdeti bevezetési folyamat során egyáltalán nem módosítja a kiszolgálói megosztások adatváltozását. 
  
 1. A bevezetési folyamat során győződjön meg arról, hogy a kiszolgálók egyikén sem változhatnak az adatmennyiség.
-2. Az Azure-fájlmegosztás előállítása a kiszolgálói adatokkal az SMB protokollon keresztül bármely adatátviteli eszközzel, például Robocopy, közvetlen SMB-másolás. Mivel a AzCopy nem tölt fel adatfeltöltést az SMB-en keresztül, ezért nem használható az előzetes előkészítéshez.
+2. Az Azure-fájlmegosztás előzetes használata a kiszolgálói adatokkal az SMB protokollon keresztül bármely adatátviteli eszközzel. Robocopy, például:. A REST-AzCopy is használhatja. Ügyeljen arra, hogy a AzCopy a megfelelő kapcsolók használatával őrizze meg az ACL-ek időbélyegeit és attribútumait.
 3. Hozzon létre Azure File Sync topológiát a meglévő megosztásokra mutató kívánt kiszolgálói végpontokkal.
 4. Az összes végponton engedélyezze a szinkronizálás befejezési egyeztetési folyamatát. 
 5. Az egyeztetés befejeződése után megnyithatja a megosztásokat a változásokhoz.
  
 Jelenleg a kivetés előtti megközelítés néhány korlátozással rendelkezik – 
-- A fájlok teljes hűsége nem marad meg. A fájlok például elveszítik az ACL-eket és az időbélyegeket.
 - Az adatváltozások a kiszolgálón a szinkronizálási topológia teljes körű és futása előtt ütközéseket okozhatnak a kiszolgálói végpontokon.  
 - A Felhőbeli végpont létrehozása után Azure File Sync futtat egy folyamatot a felhőben lévő fájlok észleléséhez a kezdeti szinkronizálás megkezdése előtt. A folyamat befejezéséhez szükséges idő a különböző tényezőktől, például a hálózati sebességtől, a rendelkezésre álló sávszélességtől és a fájlok és mappák számától függ. Az előzetes kiadásban felmerülő durva becslés esetében az észlelési folyamat körülbelül 10 fájlt/s-t futtat.  Ezért még akkor is, ha az előkészítési folyamat gyorsan fut, a teljes körűen futó rendszerek teljes ideje jelentősen meghaladhatja a felhőben tárolt adatmennyiséget.
 
@@ -582,7 +581,7 @@ Az új korlát érvénybe léptetéséhez újra kell futtatnia a parancsmagot a 
 
 Az ügynök 11-es verziójában az új mód elérhetővé válik egy kiszolgálói végponton. Ez a mód lehetővé teszi a globálisan elosztott vállalatok számára, hogy a kiszolgálói gyorsítótárat egy előre kitöltött távoli régióban is használják, még mielőtt a helyi felhasználók hozzáférjenek a fájlokhoz. Ha engedélyezve van egy kiszolgálói végponton, ez a mód azt eredményezi, hogy a kiszolgáló felidézi az Azure-fájlmegosztás során létrehozott vagy módosított fájlokat.
 
-### <a name="scenario"></a>Forgatókönyv
+### <a name="scenario"></a>Használati eset
 
 A globálisan elosztott vállalatok fiókirodái az Egyesült Államokban és Indiában találhatóak. A délelőtti (amerikai idő) információkkal dolgozó szakemberek új mappát és új fájlokat hoznak létre egy új projekthez, és egész nap dolgozhatnak hozzájuk. Azure File Sync fogja szinkronizálni a mappát és a fájlokat az Azure-fájlmegosztás (Felhőbeli végpont) számára. Az indiai információs szakemberek továbbra is a projekten dolgoznak a saját időzónájában. Amikor reggel érkeznek, az indiai helyi Azure File Sync-kiszolgáló számára elérhetővé kell tennie ezeket az új fájlokat helyileg, így az indiai csapat hatékonyan dolgozhat ki helyi gyorsítótárból. Ha engedélyezi ezt a módot, azzal megakadályozza, hogy az igény szerinti visszahívás miatt a kezdeti fájlhoz való hozzáférés lassabb legyen, és lehetővé teszi a kiszolgáló számára, hogy az Azure-fájlmegosztás módosításakor vagy létrehozásakor proaktív módon felidézze a fájlokat.
 
@@ -627,7 +626,7 @@ DFS-R központi telepítésének áttelepítése Azure File Syncre:
 
 További információ: [Azure file Sync együttműködés elosztott fájlrendszer (DFS)](storage-sync-files-planning.md#distributed-file-system-dfs)szolgáltatással.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Azure File Sync kiszolgáló-végpont hozzáadása vagy eltávolítása](storage-sync-files-server-endpoint.md)
 - [Kiszolgáló regisztrálása vagy törlése Azure File Sync](storage-sync-files-server-registration.md)
 - [Az Azure File Sync monitorozása](storage-sync-files-monitoring.md)

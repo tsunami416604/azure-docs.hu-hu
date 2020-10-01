@@ -2,25 +2,20 @@
 title: Mi az az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)?
 description: Az Azure szerepköralapú hozzáférés-vezérlésének (Azure RBAC) áttekintése. Szerepkör-hozzárendelések használata az Azure-erőforrásokhoz való hozzáférés szabályozásához.
 services: active-directory
-documentationcenter: ''
 author: rolyon
 manager: mtillman
-ms.assetid: 8f8aadeb-45c9-4d0e-af87-f1f79373e039
 ms.service: role-based-access-control
-ms.devlang: na
 ms.topic: overview
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/23/2020
+ms.date: 09/30/2020
 ms.author: rolyon
-ms.reviewer: bagovind
-ms.custom: azuread-video-2020
-ms.openlocfilehash: cb77bfb6173e94ea3cdaadf4456947de75676565
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.custom: contperfq1, azuread-video-2020
+ms.openlocfilehash: b61da9710b51ad4802b46cae7625d6ba9a66e86c
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87761127"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91595833"
 ---
 # <a name="what-is-azure-role-based-access-control-azure-rbac"></a>Mi az az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)?
 
@@ -47,49 +42,35 @@ Az erőforrásokhoz való hozzáférés az Azure RBAC szolgáltatással való el
 
 ### <a name="security-principal"></a>Rendszerbiztonsági tag
 
-A *rendszerbiztonsági tag* egy olyan objektum, amely az Azure-erőforrásokhoz való hozzáférést kérő felhasználót, csoportot, egyszerű szolgáltatásnevet vagy felügyelt identitást jelöl.
+A *rendszerbiztonsági tag* egy olyan objektum, amely egy, az Azure-erőforrásokhoz hozzáférést igénylő felhasználót, csoportot, szolgáltatásnevet vagy felügyelt identitást jelöl. Ehhez a rendszerbiztonsági tag bármelyikéhez hozzárendelhet egy szerepkört.
 
-![Szerepkör-hozzárendelések rendszerbiztonsági tagjai](./media/overview/rbac-security-principal.png)
-
-- Felhasználó – Egy Azure Active Directory-profillal rendelkező személy. Más bérlőkön lévő felhasználókhoz is hozzárendelhet szerepköröket. A más vállalatok felhasználóira vonatkozó információkért lásd: [Azure Active Directory B2B](../active-directory/b2b/what-is-b2b.md).
-- Csoport – Felhasználók az Azure Active Directoryban létrehozott csoportja. Ha egy csoporthoz rendel hozzá egy szerepkört, a csoportban lévő összes felhasználó rendelkezik majd az adott szerepkörrel. 
-- Szolgáltatásnév – Alkalmazások vagy szolgáltatások által adott Azure-erőforrások elérésére használt biztonsági identitás. Úgy képzelhető el, mint egy alkalmazás *felhasználói identitása* (felhasználóneve és jelszava vagy tanúsítványa).
-- Felügyelt identitás – az Azure által automatikusan kezelt Azure Active Directory identitás. A Felhőbeli alkalmazások fejlesztése során jellemzően [felügyelt identitásokat](../active-directory/managed-identities-azure-resources/overview.md) használ az Azure-szolgáltatásokhoz való hitelesítéshez szükséges hitelesítő adatok kezeléséhez.
+![Szerepkör-hozzárendelések rendszerbiztonsági tagjai](./media/shared/rbac-security-principal.png)
 
 ### <a name="role-definition"></a>Szerepkör-definíció
 
 A *szerepkör-definíció* engedélyek gyűjteménye. Általában csak *szerepkörnek*nevezik. A szerepkör-definíció a végrehajtható műveletek listáját tartalmazza (például olvasás, írás és törlés). A szerepkör lehet magas szintű (például tulajdonos) vagy specifikus (például virtuálisgép-olvasó).
 
-![Szerepkör-hozzárendelések szerepkör-definíciója](./media/overview/rbac-role-definition.png)
+![Szerepkör-hozzárendelések szerepkör-definíciója](./media/shared/rbac-role-definition.png)
 
-Az Azure számos [beépített szerepkört](built-in-roles.md) tartalmaz, amelyeket használhat. Az alábbiakban négy alapvető beépített szerepkört sorolunk fel. Az első három minden erőforrástípusra alkalmazható.
-
-- [Tulajdonos](built-in-roles.md#owner) – teljes körű hozzáféréssel rendelkezik az összes erőforráshoz, beleértve a másokhoz való hozzáférés delegálására vonatkozó jogosultságot is.
-- [Közreműködő](built-in-roles.md#contributor) – az összes típusú Azure-erőforrást létrehozhatja és kezelheti, de mások számára nem biztosít hozzáférést.
-- [Olvasó](built-in-roles.md#reader) – megtekintheti a meglévő Azure-erőforrásokat.
-- [Felhasználói hozzáférés rendszergazdája](built-in-roles.md#user-access-administrator) – lehetővé teszi az Azure-erőforrásokhoz való felhasználói hozzáférés kezelését.
-
-A többi beépített szerepkör adott Azure-erőforrások kezelését teszi lehetővé. Például a [Virtuális gépek közreműködője](built-in-roles.md#virtual-machine-contributor) szerepkör virtuális gépek létrehozását és kezelését teszi lehetővé. Ha a beépített szerepkörök nem felelnek meg a szervezet konkrét igényeinek, létrehozhat saját [Egyéni Azure-szerepköröket](custom-roles.md)is.
+Az Azure számos [beépített szerepkört](built-in-roles.md) tartalmaz, amelyeket használhat. Például a [Virtuális gépek közreműködője](built-in-roles.md#virtual-machine-contributor) szerepkör virtuális gépek létrehozását és kezelését teszi lehetővé. Ha a beépített szerepkörök nem felelnek meg a szervezet konkrét igényeinek, létrehozhat saját [Egyéni Azure-szerepköröket](custom-roles.md)is.
 
 Ez a videó gyors áttekintést nyújt a beépített szerepkörökről és az egyéni szerepkörökről.
 
 >[!VIDEO https://www.youtube.com/embed/I1mefHptRgo]
 
-Az Azure olyan adatműveletekkel rendelkezik, amelyek lehetővé teszik az adatokhoz való hozzáférés megadását egy adott objektumon belül. Ha például egy felhasználó adatolvasási hozzáféréssel rendelkezik egy tárfiókhoz, akkor olvashatja az adott tárfiókban lévő blobokat vagy üzeneteket. További információ: az [Azure szerepkör-definíciók ismertetése](role-definitions.md).
+Az Azure olyan adatműveletekkel rendelkezik, amelyek lehetővé teszik az adatokhoz való hozzáférés megadását egy adott objektumon belül. Ha például egy felhasználó adatolvasási hozzáféréssel rendelkezik egy tárfiókhoz, akkor olvashatja az adott tárfiókban lévő blobokat vagy üzeneteket.
+
+További információ: az [Azure szerepkör-definíciók ismertetése](role-definitions.md).
 
 ### <a name="scope"></a>Hatókör
 
 A *hatókör* azon erőforrások készlete, amelyekre a hozzáférés vonatkozik. Szerepkörök hozzárendelésekor hatókör meghatározásával tovább korlátozhatja az engedélyezett műveletek körét. Ez akkor hasznos, ha egy [webhely közreműködői](built-in-roles.md#website-contributor)szerepkört szeretne tenni, de csak egy erőforráscsoporthoz.
 
-Az Azure-ban több szinten is megadhat egy hatókört: [felügyeleti csoport](../governance/management-groups/overview.md), előfizetés, erőforráscsoport vagy erőforrás. A hatókörök szülő-gyermek (származtatott) kapcsolatokba vannak rendezve.
+Az Azure-ban négy szinten adhatja meg a hatókört: [felügyeleti csoport](../governance/management-groups/overview.md), előfizetés, [erőforráscsoport](../azure-resource-manager/management/overview.md#resource-groups)vagy erőforrás. A hatókörök szülő-gyermek (származtatott) kapcsolatokba vannak rendezve. A szerepköröket a hatókör ezen szintjein lehet hozzárendelni.
 
-![Szerepkör-hozzárendelés hatóköre](./media/overview/rbac-scope.png)
+![Szerepkör-hozzárendelés hatóköre](./media/shared/rbac-scope.png)
 
-Amikor hozzáférést rendel egy szülő hatókörhöz, az engedélyeket azok származtatott hatókörei is öröklik. Például:
-
-- Ha [tulajdonosi](built-in-roles.md#owner) szerepkört rendel egy, a felügyeleti csoport hatóköréhez tartozó felhasználóhoz, a felhasználó a felügyeleti csoportban lévő összes előfizetésben mindent felügyelhet.
-- Ha az [Olvasó](built-in-roles.md#reader) szerepkört hozzárendeli egy csoporthoz az előfizetés hatókörében, a csoport tagjai az előfizetésben lévő összes erőforráscsoportot és erőforrást megtekinthetik.
-- Ha a [Közreműködő](built-in-roles.md#contributor) szerepkört hozzárendeli egy alkalmazáshoz az erőforrás-csoport hatókörében, az alkalmazás bármilyen típusú erőforrást kezelhet majd az adott erőforráscsoportban, az előfizetésben lévő többi erőforráscsoportban azonban nem.
+A hatókörrel kapcsolatos további információkért lásd a [hatókör ismertetése](scope-overview.md)című témakört.
 
 ### <a name="role-assignments"></a>Szerepkör-hozzárendelések
 
@@ -99,7 +80,9 @@ Az alábbi ábrán egy példa látható szerepkör-hozzárendelésre. Ebben a p�
 
 ![Hozzáférés-vezérlés szerepkör-hozzárendeléssel](./media/overview/rbac-overview.png)
 
-Szerepkör-hozzárendeléseket az Azure Portal, az Azure CLI, az Azure PowerShell, az Azure SDK-k vagy REST API-k használatával hozhat létre. Az egyes előfizetésekben akár **2000** szerepkör-hozzárendelést is megadhat. Ez a korlát tartalmazza az előfizetés, az erőforráscsoport és az erőforrás-hatókörök szerepkör-hozzárendeléseit. Az egyes felügyeleti csoportokban akár **500** szerepkör-hozzárendelést is megadhat. Szerepkör-hozzárendelések létrehozásához és eltávolításához `Microsoft.Authorization/roleAssignments/*` engedély szükséges. Ez a [Tulajdonos](built-in-roles.md#owner) vagy a [Felhasználói hozzáférés rendszergazdája](built-in-roles.md#user-access-administrator) szerepkörrel biztosítható.
+Szerepkör-hozzárendeléseket az Azure Portal, az Azure CLI, az Azure PowerShell, az Azure SDK-k vagy REST API-k használatával hozhat létre.
+
+További információ: [szerepkör-hozzárendelés hozzáadásának lépései](role-assignments-steps.md).
 
 ## <a name="multiple-role-assignments"></a>Több szerepkör-hozzárendelés
 
@@ -109,7 +92,9 @@ Tehát mi történik, ha több átfedésben lévő szerepkör-hozzárendelés va
 
 ## <a name="deny-assignments"></a>Megtagadás-hozzárendelések
 
-Korábban az Azure RBAC egy csak engedélyezési modell volt, amely nem rendelkezik megtagadás nélkül, de most az Azure RBAC korlátozott módon támogatja a megtagadási hozzárendeléseket. A szerepkör-hozzárendeléshez hasonlóan a *megtagadási hozzárendelések* egy adott hatókörben egy felhasználóhoz, csoporthoz, egyszerű szolgáltatáshoz vagy felügyelt identitáshoz tartozó megtagadási műveletet rendelnek a hozzáférés megtagadása céljából. A szerepkör-hozzárendelések olyan műveletek készletét határozzák meg, amelyek *engedélyezve*vannak, míg a megtagadási hozzárendelések olyan műveletek készletét határozzák meg, amelyek *nem engedélyezettek*. Vagyis a megtagadás-hozzárendelések akkor is meggátolják, hogy a felhasználók elvégezzék a megadott műveleteket, ha egy szerepkör-hozzárendelés hozzáférést nyújt azokhoz. A megtagadás-hozzárendelések elsőbbséget élveznek a szerepkör-hozzárendelésekkel szemben. További információ: az [Azure megtagadási hozzárendeléseinek megismerése](deny-assignments.md).
+Korábban az Azure RBAC egy csak engedélyezési modell volt, amely nem rendelkezik megtagadás nélkül, de most az Azure RBAC korlátozott módon támogatja a megtagadási hozzárendeléseket. A szerepkör-hozzárendeléshez hasonlóan a *megtagadási hozzárendelések* egy adott hatókörben egy felhasználóhoz, csoporthoz, egyszerű szolgáltatáshoz vagy felügyelt identitáshoz tartozó megtagadási műveletet rendelnek a hozzáférés megtagadása céljából. A szerepkör-hozzárendelések olyan műveletek készletét határozzák meg, amelyek *engedélyezve*vannak, míg a megtagadási hozzárendelések olyan műveletek készletét határozzák meg, amelyek *nem engedélyezettek*. Vagyis a megtagadás-hozzárendelések akkor is meggátolják, hogy a felhasználók elvégezzék a megadott műveleteket, ha egy szerepkör-hozzárendelés hozzáférést nyújt azokhoz. A megtagadás-hozzárendelések elsőbbséget élveznek a szerepkör-hozzárendelésekkel szemben.
+
+További információ: az [Azure megtagadási hozzárendeléseinek megismerése](deny-assignments.md).
 
 ## <a name="how-azure-rbac-determines-if-a-user-has-access-to-a-resource"></a>Hogyan határozza meg az Azure RBAC, hogy egy felhasználó hozzáfér-e egy erőforráshoz
 
@@ -137,6 +122,6 @@ Az Azure RBAC a következő magas szintű lépésekkel határozza meg, hogy van-
 
 ## <a name="next-steps"></a>További lépések
 
-- [Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása a Azure Portal használatával](role-assignments-portal.md)
+- [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure Portal használatával](role-assignments-portal.md)
 - [A különböző szerepkörök ismertetése](rbac-and-directory-admin-roles.md)
 - [Felhőalapú bevezetési keretrendszer: erőforrás-hozzáférés kezelése az Azure-ban](/azure/cloud-adoption-framework/govern/resource-consistency/resource-access-management)

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/28/2020
 ms.author: aahi
 keywords: helyszíni, Docker, tároló, Kubernetes
-ms.openlocfilehash: 48bfad4b101556dfcc4e57cf684341bda8063202
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: ccba46c1e83f92b1f27c64cb4d9ca32039862bd1
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91461206"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597454"
 ---
 # <a name="azure-cognitive-services-containers"></a>Azure Cognitive Services tárolók
 
@@ -58,9 +58,9 @@ Az Azure Cognitive Services tárolók a következő Docker-tárolókat biztosít
 | Szolgáltatás | Támogatott árképzési szintek | Tároló | Leírás |
 |--|--|--|--|
 | [Anomália detektor][ad-containers] | F0, S0 | **Anomália – detektor** ([rendszerkép](https://hub.docker.com/_/azure-cognitive-services-decision-anomaly-detector))  | A rendellenesség-Kiderítő API lehetővé teszi, hogy az idősoros adataiban a gépi tanulással figyelje és azonosítsa a rendellenességeket.<br>[Hozzáférés kérése][request-access] |
-| [Computer Vision][cv-containers] | F0, S1 | **Olvasás** | Különböző felületek és hátterek, például a nyugták, a plakátok és a névjegykártyák különböző objektumainak képeiből származó nyomtatott szöveg kibontása. Az olvasási tároló a képek *kézírásos szövegét* is észleli, és PDF/TIFF/többoldalas támogatást biztosít.<br/><br/>**Fontos:** Az olvasási tároló jelenleg csak angol nyelven működik. |
-| [Face][fa-containers] | F0, S0 | **Face** | Észleli az emberi arcokat a képekben, és azonosítja az attribútumokat, beleértve az arc-tereptárgyak (például az orr és a szemek), a nemek, az életkor és más, a géppel előre jelzett arc-funkciókat. Az észlelésen kívül a Face utasítással megtekintheti, hogy két arc vagy különböző kép azonos-e a megbízhatósági pontszám használatával, vagy összehasonlítja az arcokat egy adatbázissal, hogy megtudja, hasonló vagy azonos arc létezik-e. A hasonló arcok csoportokba rendezésére is képes, közös vizualizációs jellemzőkkel.<br>[Hozzáférés kérése][request-access] |
-| [Űrlap-felismerő][fr-containers] | F0, S0 | **Form Recognizer** | Az űrlap ismerete a gépi tanulási technológiákat alkalmazza a kulcs-érték párok és táblák űrlapokból való azonosításához és kinyeréséhez.<br>[Hozzáférés kérése][request-access] |
+| [Computer Vision][cv-containers] | F0, S1 | **Olvasás** OCR ([rendszerkép](https://hub.docker.com/_/microsoft-azure-cognitive-services-vision-read)) | Az olvasási OCR-tároló lehetővé teszi a nyomtatott és a kézírásos szöveg kinyerését képekből és dokumentumokból JPEG-, PNG-, BMP-, PDF-és TIFF-fájlformátumok támogatásával. További információ az API-k [olvasása dokumentációban](./computer-vision/concept-recognizing-text.md)található.<br>[Hozzáférés kérése][request-access] |
+| [Face][fa-containers] | F0, S0 | **Face** | Észleli az emberi arcokat a képekben, és azonosítja az attribútumokat, beleértve az arc-tereptárgyak (például az orr és a szemek), a nemek, az életkor és más, a géppel előre jelzett arc-funkciókat. Az észlelésen kívül a Face utasítással megtekintheti, hogy két arc vagy különböző kép azonos-e a megbízhatósági pontszám használatával, vagy összehasonlítja az arcokat egy adatbázissal, hogy megtudja, hasonló vagy azonos arc létezik-e. A hasonló arcok csoportokba rendezésére is képes, közös vizualizációs jellemzőkkel. |
+| [Űrlap-felismerő][fr-containers] | F0, S0 | **Form Recognizer** | Az űrlap ismerete a gépi tanulási technológiákat alkalmazza a kulcs-érték párok és táblák űrlapokból való azonosításához és kinyeréséhez. |
 | [LUIS][lu-containers] | F0, S0 | **Luis** ([rendszerkép](https://go.microsoft.com/fwlink/?linkid=2043204&clcid=0x409)) | Betölti a betanított vagy közzétett Language Understanding modellt, más néven LUIS alkalmazást egy Docker-tárolóba, és hozzáférést biztosít a tároló API-végpontjai lekérdezési előrejelzéséhez. Lekérdezési naplókat gyűjthet a tárolóból, és feltöltheti ezeket a [Luis-portálra](https://www.luis.ai) az alkalmazás előrejelzési pontosságának javítása érdekében. |
 | [Speech Service API][sp-containers-stt] | F0, S0 | **Beszéd – szöveg** ([rendszerkép](https://hub.docker.com/_/azure-cognitive-services-speechservices-speech-to-text)) | Folyamatos, valós idejű beszédet szöveggé alakít. |
 | [Speech Service API][sp-containers-cstt] | F0, S0 | **Custom Speech – szöveg** ([rendszerkép](https://hub.docker.com/_/azure-cognitive-services-speechservices-custom-speech-to-text)) | A folyamatos valós idejű beszédet szövegbe helyezi egy egyéni modell használatával. |
@@ -79,8 +79,8 @@ Az Azure Cognitive Services tárolók a következő Docker-tárolókat biztosít
 
 Emellett egyes tárolók támogatják a Cognitive Services [**all-in-One ajánlati**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne) erőforrás-kulcsokat. Egyetlen Cognitive Services is létrehozhat egy teljes körű erőforrást, és ugyanazt a számlázási kulcsot használhatja a támogatott szolgáltatások között a következő szolgáltatásokhoz:
 
-* Számítógépes látástechnológia
-* Arcfelismerés
+* Computer Vision
+* Face
 * LUIS
 * Szövegelemzés
 

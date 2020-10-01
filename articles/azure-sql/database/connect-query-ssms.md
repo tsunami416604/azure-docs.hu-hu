@@ -13,12 +13,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/28/2020
-ms.openlocfilehash: 35a637df85984bcfd20836bcd87aa5ecf1583170
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: 60977b9388af3a93d0ebbbc6aad50628b79e0e44
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91461138"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598269"
 ---
 # <a name="quickstart-use-ssms-to-connect-to-and-query-azure-sql-database-or-azure-sql-managed-instance"></a>Gyors útmutató: Azure SQL Database vagy Azure SQL felügyelt példányhoz való kapcsolódás és lekérdezés a SSMS használatával
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -64,6 +64,8 @@ Az adatbázishoz való kapcsolódáshoz szükséges kapcsolati adatok beolvasás
 
 ## <a name="connect-to-your-database"></a>Csatlakozás az adatbázishoz
 
+[!INCLUDE[ssms-connect-azure-ad](../includes/ssms-connect-azure-ad.md)]
+
 A SSMS-ben kapcsolódjon a kiszolgálóhoz.
 
 > [!IMPORTANT]
@@ -85,7 +87,7 @@ A SSMS-ben kapcsolódjon a kiszolgálóhoz.
    ![kapcsolódás a kiszolgálóhoz](./media/connect-query-ssms/connect.png)  
 
 > [!NOTE]
-> Ez az oktatóanyag SQL Server hitelesítést használ.  Az MFA-n keresztüli Azure Active Directory való csatlakozáshoz azonban győződjön meg róla, hogy a [SSMS 18,6-as vagy újabb verzióját](https://aka.ms/ssms)használja. 
+> Ez az oktatóanyag SQL Server hitelesítést használ.
 
 3. A **Kapcsolódás a kiszolgálóhoz** párbeszédpanelen válassza a **Beállítások lehetőséget** . A **Kapcsolódás az adatbázishoz** legördülő menüben válassza a **mySampleDatabase**lehetőséget. Az [Előfeltételek szakaszban](#prerequisites) a rövid útmutató elvégzésével létrehoz egy MySampleDatabase nevű AdventureWorksLT-adatbázist. Ha a AdventureWorks-adatbázis munkapéldánya eltérő névvel rendelkezik, mint a mySampleDatabase, válassza ki helyette.
 

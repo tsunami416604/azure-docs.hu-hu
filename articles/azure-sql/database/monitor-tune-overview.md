@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnick, sstein
-ms.date: 03/10/2020
-ms.openlocfilehash: 36a1be4f802292e62c98098508927b06a5851afa
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/30/2020
+ms.openlocfilehash: 6c8d048d43a16191cc7b1245ad2d686ba2ca22ab
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333086"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596979"
 ---
 # <a name="monitoring-and-performance-tuning-in-azure-sql-database-and-azure-sql-managed-instance"></a>Monitorozás és a teljesítmény finomhangolása az Azure SQL Database-ben és a felügyelt Azure SQL-példányban
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -27,11 +27,14 @@ Azure SQL Database számos adatbázis-tanácsadót biztosít az intelligens telj
 
 A Azure SQL Database és az Azure SQL felügyelt példánya fejlett monitorozási és hangolási képességeket biztosít a mesterséges intelligencia számára, hogy segítséget nyújtson az adatbázisok és megoldások teljesítményének elhárításában és maximalizálásában. Dönthet úgy, hogy a [Intelligent Insights](intelligent-insights-overview.md) és más adatbázis-erőforrás-naplók és-metrikák [adatfolyam-exportálását](metrics-diagnostic-telemetry-logging-streaming-export-configure.md) több, a felhasználás és az elemzés céljára szolgáló célhelyre konfigurálja, különösen az [SQL Analytics](../../azure-monitor/insights/azure-sql.md)használatával. A Azure SQL Analytics egy fejlett felhőalapú figyelési megoldás, amely az összes adatbázis teljesítményének figyelésére használható nagy léptékű és több előfizetésben egyetlen nézetben. Az exportálható naplók és metrikák listáját az [Exportálás diagnosztikai telemetria](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#diagnostic-telemetry-for-export) című témakörben tekintheti meg.
 
-Végezetül SQL Server saját monitorozási és diagnosztikai képességekkel rendelkezik, amelyek SQL Database és az SQL felügyelt példányainak kiaknázását, például a [lekérdezési tárolót](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) és a [dinamikus felügyeleti nézeteket (DMV)](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views)használják. A különböző teljesítménnyel kapcsolatos problémák figyeléséhez tekintse meg a [figyelés DMV használatával](monitoring-with-dmvs.md) szkripteket.
+A SQL Server saját monitorozási és diagnosztikai funkciókkal rendelkezik, amelyek SQL Database és az SQL felügyelt példányainak kiaknázását, például a [lekérdezési tárolót](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) és a [dinamikus felügyeleti nézeteket (DMV)](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views)használják. A különböző teljesítménnyel kapcsolatos problémák figyeléséhez tekintse meg a [figyelés DMV használatával](monitoring-with-dmvs.md) szkripteket.
 
 ## <a name="monitoring-and-tuning-capabilities-in-the-azure-portal"></a>A Azure Portal funkcióinak figyelése és finomhangolása
 
-A Azure Portal Azure SQL Database és az Azure SQL felügyelt példánya biztosítja az erőforrás-metrikák figyelését. Emellett a Azure SQL Database adatbázis-tanácsadókat és Lekérdezési terheléselemző biztosít a lekérdezés-hangolási javaslatok és a lekérdezési teljesítmény elemzéséhez. Végül a Azure Portalban engedélyezheti a [logikai SQL-kiszolgálók](logical-servers.md) és az önálló és a készletezett adatbázisok automatikus alkalmazását.
+A Azure Portal Azure SQL Database és az Azure SQL felügyelt példánya biztosítja az erőforrás-metrikák figyelését. A Azure SQL Database adatbázis-tanácsadókat biztosít, és Lekérdezési terheléselemző a lekérdezés-hangolási javaslatokat és a lekérdezési teljesítmény elemzését nyújtja. A Azure Portalban engedélyezheti az automatikus finomhangolást a [logikai SQL-kiszolgálók](logical-servers.md) és az önálló és készletezett adatbázisok számára.
+
+> [!NOTE]
+> A rendkívül alacsony használatú adatbázisok a portálon kevesebb, mint tényleges használattal rendelkezhetnek. A telemetria kiváltásának módja, ha egy dupla értéket a legközelebbi egész számra konvertál, a 0,5-nál kisebb használati összegek pedig 0-ra lesznek kerekítve, ami a kibocsátott telemetria részletességének csökkenését eredményezi. Részletekért lásd: [az alacsony adatbázis és a rugalmas készlet mérőszámai nullára kerekítve](#low-database-and-elastic-pool-metrics-rounding-to-zero).
 
 ### <a name="azure-sql-database-and-azure-sql-managed-instance-resource-monitoring"></a>Azure SQL Database és az Azure SQL felügyelt példányának erőforrás-figyelése
 
@@ -46,6 +49,33 @@ A Azure SQL Database olyan [adatbázis-tanácsadókat](database-advisor-implemen
 ### <a name="query-performance-insight-in-azure-sql-database"></a>Lekérdezési terheléselemző a Azure SQL Database
 
 A [lekérdezési terheléselemző](query-performance-insight-use.md) megjeleníti a teljesítményt a leggyakrabban használt és a leghosszabb ideig futó lekérdezések Azure Portalában az önálló és a készletezett adatbázisok esetében.
+
+### <a name="low-database-and-elastic-pool-metrics-rounding-to-zero"></a>Alacsony adatbázis-és rugalmas készlet-mérőszámok nullára kerekítve
+
+A rendkívül alacsony kihasználtságú adatbázisok a portálon kevesebb, mint tényleges használattal rendelkezhetnek. 2020 Mivel a telemetria-t egy dupla értéknek a legközelebbi egész számra való konvertálásakor kell kiállítani, a 0,5-nál kisebb használati összegek pedig 0-ra lesznek kerekítve, ami a kibocsátott telemetria részletességének csökkenését eredményezi.
+
+Például: Vegyünk egy 1 perces ablakot a következő négy adatponttal: 0,1, 0,1, 0,1, 0,1, ezek az alacsony értékek 0, 0, 0, 0 értékre vannak kerekítve, és átlagosan 0 értéket mutatnak. Ha az adatpontok bármelyike meghaladja a 0,5-as értéket, például: 0,1, 0,1, 0,9, 0,1, azok 0, 0, 1, 0 értékre vannak kerekítve, és egy átlagos 0,25 mutatnak.
+
+Érintett adatbázis-metrikák:
+- cpu_percent
+- log_write_percent
+- workers_percent
+- sessions_percent
+- physical_data_read_percent
+- dtu_consumption_percent2
+- xtp_storage_percent
+
+Érintett rugalmas készlet mérőszámai:
+- cpu_percent
+- physical_data_read_percent
+- log_write_percent
+- memory_usage_percent
+- data_storage_percent
+- peak_worker_percent
+- peak_session_percent
+- xtp_storage_percent
+- allocated_data_storage_percent
+
 
 ## <a name="generate-intelligent-assessments-of-performance-issues"></a>Teljesítménybeli problémák intelligens értékelésének előállítása
 
@@ -93,7 +123,7 @@ Stream-metrikák és erőforrás-naplók az [Azure Storage](../../azure-monitor/
 
 Emellett a speciális figyeléshez és hibaelhárításhoz is használhatja a SQL Server [kiterjesztett eseményeit](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events) . A kiterjesztett események architektúrája lehetővé teszi a felhasználók számára, hogy a teljesítménnyel kapcsolatos problémák elhárításához vagy azonosításához szükséges mennyiségű vagy kevés adatot gyűjtsenek. További információ a Azure SQL Database kiterjesztett eseményeinek használatáról: [kiterjesztett események a Azure SQL Databaseban](xevent-db-diff-from-svr.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az önálló és a készletezett adatbázisokra vonatkozó intelligens teljesítménnyel kapcsolatos javaslatokról az [adatbázis-tanácsadó teljesítményével kapcsolatos javaslatok](database-advisor-implement-performance-recommendations.md)című témakörben olvashat bővebben.
 - Az adatbázis teljesítményének automatikus és a teljesítménnyel kapcsolatos problémák kiváltó okának elemzésével kapcsolatos további információkért lásd: [Azure SQL Intelligent Insights](intelligent-insights-overview.md).

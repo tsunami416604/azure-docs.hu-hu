@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 09/25/2020
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 7a546c06e990d7fdb0fa7865c176f39772136539
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: e5a6dae98e786bf55dc17d8fabe42f84e9927442
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91540029"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91606060"
 ---
 ![A Dsv3 dokumentációja](media/vm-disk-performance/dsv3-documentation.jpg)
 
-A nem **gyorsítótárazott** lemez maximális átviteli sebessége a virtuális gép által kezelhető alapértelmezett tárolási korlát. A **gyorsítótárazott** tárterület maximális átviteli sebessége a gazdagép gyorsítótárazásának engedélyezésekor külön korlát. A gazdagép gyorsítótárazása úgy működik, hogy a tárolót közelebb hozza a virtuális géphez, amely írható vagy olvasható. A virtuális gép számára a gazdagép gyorsítótárazásához elérhető tárterület a dokumentációban található. Láthatja például, hogy a Standard_D8s_v3 a gyorsítótár tárterületének 200 GiB. Lássuk 
+A nem **gyorsítótárazott** lemez maximális átviteli sebessége a virtuális gép által kezelhető alapértelmezett tárolási korlát. A **gyorsítótárazott** tárterület maximális átviteli sebessége a gazdagép gyorsítótárazásának engedélyezésekor külön korlát. A gazdagép gyorsítótárazása úgy működik, hogy a tárolót közelebb hozza a virtuális géphez, amely írható vagy olvasható. A virtuális gép számára a gazdagép gyorsítótárazásához elérhető tárterület a dokumentációban található. Láthatja például, hogy a Standard_D8s_v3 a gyorsítótár tárterületének 200 GiB.
 
 A gazdagép-gyorsítótárazás engedélyezése a virtuális gép létrehozásakor és a lemezek csatlakoztatásakor végezhető el. Azt is megteheti, hogy be-és kikapcsolja az állomás gyorsítótárazza a lemezeket egy meglévő virtuális gépen.
 
@@ -94,7 +94,7 @@ Beállítás:
     - Gazdagép gyorsítótárazása: olvasás/írás
 - 2 P30 adatlemez X 2
     - IOPS: 5 000
-    - Gazdagép gyorsítótárazása: olvasás/írás
+    - Gazdagép gyorsítótárazása: letiltva
 
 ![Gazdagép-gyorsítótárazási példa távoli tárolóval](media/vm-disk-performance/host-caching-example-with-remote.jpg)
 

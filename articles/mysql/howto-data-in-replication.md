@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
-ms.date: 8/7/2020
-ms.openlocfilehash: f745e5e8b611271be9dff2131a2079abc609cf91
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.date: 9/29/2020
+ms.openlocfilehash: c3a6f9b5831d4fed377d3f8702dbc0af0663b3a5
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91539061"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596491"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Azure Database for MySQL konfigurálása felhőbe irányuló replikálás
 
@@ -51,10 +51,41 @@ Az alábbi lépéseket követve elkészítheti és konfigurálhatja a helyszíne
 
 1. A továbblépés előtt tekintse át a [fő kiszolgálóra vonatkozó követelményeket](concepts-data-in-replication.md#requirements) . 
 
-   Ügyeljen például arra, hogy a forráskiszolgáló engedélyezze a bejövő és kimenő forgalmat is a 3306-as porton, valamint azt, hogy a forráskiszolgáló **nyilvános IP-címmel**rendelkezik, a DNS nyilvánosan elérhető, vagy teljes TARTOMÁNYNEVE (FQDN). 
+2. Győződjön meg arról, hogy a forráskiszolgáló engedélyezi a bejövő és a kimenő forgalmat is a 3306-es porton, valamint arról, hogy a forráskiszolgáló **nyilvános IP-címmel**rendelkezik, a DNS nyilvánosan elérhető, vagy rendelkezik teljes tartománynévvel (FQDN). 
    
    Tesztelje a kapcsolatot a forráskiszolgálóról egy olyan eszközről való csatlakozásra tett kísérlettel, amely egy másik gépen vagy a Azure Portal elérhető [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) .
 
+   Ha a szervezete szigorú biztonsági házirendekkel rendelkezik, és nem engedélyezi az összes IP-címet a forráskiszolgálón az Azure-ból a forráskiszolgálóról való kommunikáció engedélyezéséhez, akkor az alábbi parancs segítségével meghatározhatja a MySQL-kiszolgáló IP-címét.
+
+   1. Jelentkezzen be a Azure Database for MySQL a MySQL parancssori eszköz használatával.
+   2. Hajtsa végre az alábbi lekérdezést.
+      ```bash
+      mysql> SELECT @@global.redirect_server_host;
+      ```
+      Néhány példa a kimenetre:
+      ```bash 
+      +-----------------------------------------------------------+
+      | @@global.redirect_server_host                             |
+      +-----------------------------------------------------------+
+      | e299ae56f000.tr1830.westus1-a.worker.database.windows.net |
+       +-----------------------------------------------------------+
+      ```
+   3. Kilépés a MySQL-parancssorból.
+   4. Futtassa az alábbi parancsot a ping segédprogramban az IP-cím lekéréséhez.
+      ```bash
+      ping <output of step 2b>
+      ``` 
+      Például: 
+      ```bash      
+      C:\Users\testuser> ping e299ae56f000.tr1830.westus1-a.worker.database.windows.net
+      Pinging tr1830.westus1-a.worker.database.windows.net (**11.11.111.111**) 56(84) bytes of data.
+      ```
+
+   5. Konfigurálja úgy a forráskiszolgáló tűzfalszabályok beállításait, hogy az előző lépés a 3306-es porton lévő, kiszolgált IP-címet tartalmazza.
+
+   > [!NOTE]
+   > Ez az IP-cím karbantartási/üzembe helyezési műveletek miatt változhat. Ez a kapcsolódási módszer csak olyan ügyfelek számára érhető el, akik nem engedhetik meg a 3306-es porton az összes IP-cím engedélyezését.
+   
 1. Bináris naplózás bekapcsolása
 
    A következő parancs futtatásával ellenőrizze, hogy engedélyezve van-e a bináris naplózás a forráson: 
@@ -126,7 +157,7 @@ Az alábbi lépéseket követve elkészítheti és konfigurálhatja a helyszíne
 
 1. Bináris naplófájl nevének és eltolásának beolvasása
 
-   Futtassa a [` show master status`](https://dev.mysql.com/doc/refman/5.7/en/show-master-status.html) parancsot az aktuális bináris naplófájl nevének és eltolásának meghatározásához.
+   Futtassa a [`show master status`](https://dev.mysql.com/doc/refman/5.7/en/show-master-status.html) parancsot az aktuális bináris naplófájl nevének és eltolásának meghatározásához.
     
    ```sql
     show master status;

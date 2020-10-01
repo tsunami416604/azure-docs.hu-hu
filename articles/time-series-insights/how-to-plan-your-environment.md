@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1788eba0ef9be781fb7cf23f1eb86b48c9c360e1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: cb12777a6a4fa1e75cd65bc597c87442d592aad5
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91287414"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598106"
 ---
 # <a name="plan-your-azure-time-series-insights-gen2-environment"></a>A Azure Time Series Insights Gen2-környezet megtervezése
 
@@ -36,7 +36,6 @@ A Azure Time Series Insights az üzleti modellt is alkalmazza. További informá
 ## <a name="the-gen2-environment"></a>A Gen2-környezet
 
 Azure Time Series Insights Gen2-környezet kiépítésekor két Azure-erőforrást hoz létre:
-
 
 * Azure Time Series Insights Gen2-környezet
 * Azure Storage-fiók
@@ -92,10 +91,10 @@ További információért és az események összeolvasztásának és tárolás�
 
 [!INCLUDE [business-disaster-recover](../../includes/time-series-insights-business-recovery.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- Tekintse át [Azure Advisor](../advisor/advisor-overview.md) az üzleti helyreállítás konfigurációs beállításainak megtervezéséhez.
-- Tekintse át [Azure Advisor](../advisor/advisor-overview.md) az üzleti helyreállítás konfigurációs beállításainak megtervezéséhez.
-- További információ az [adatfeldolgozásról](./concepts-ingestion-overview.md) Azure Time Series Insights Gen2.
-- Tekintse át az [adattárolásról](./concepts-storage.md) szóló cikket Azure Time Series Insights Gen2.
-- Tudnivalók az [adatmodellezésről](./concepts-model-overview.md) Azure Time Series Insights Gen2.
+* Tekintse át [Azure Advisor](../advisor/advisor-overview.md) az üzleti helyreállítás konfigurációs beállításainak megtervezéséhez.
+* Tekintse át [Azure Advisor](../advisor/advisor-overview.md) az üzleti helyreállítás konfigurációs beállításainak megtervezéséhez.
+* További információ az [adatfeldolgozásról](./concepts-ingestion-overview.md) Azure Time Series Insights Gen2.
+* Tekintse át az [adattárolásról](./concepts-storage.md) szóló cikket Azure Time Series Insights Gen2.
+* Tudnivalók az [adatmodellezésről](./concepts-model-overview.md) Azure Time Series Insights Gen2.

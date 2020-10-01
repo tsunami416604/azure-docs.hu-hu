@@ -13,12 +13,12 @@ ms.author: mireks
 ms.reviewer: vanto
 ms.date: 09/28/2020
 tags: azure-synapse
-ms.openlocfilehash: e526b8e2e4f31187bb958ec37c2ffa4d30f0265b
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: 2a3e1e7279e915c0c5992190ef0c8d1d83880dbb
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91461155"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596129"
 ---
 # <a name="using-multi-factor-azure-active-directory-authentication"></a>Multi-Factor Azure Active Directory hitelesítés használata
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -27,14 +27,12 @@ Azure SQL Database, az Azure SQL felügyelt példánya és az Azure szinapszis A
 
 **Töltse le a legújabb SSMS** -t az ügyfélszámítógépen, töltse le a SSMS legújabb verzióját a [Download SQL Server Management Studio (SSMS)](https://aka.ms/ssms)webhelyről. 
 
-> [!Note]
-> December 2021-én a 18,6-nál korábbi SSMS-kibocsátások többé nem lesznek hitelesítve Azure Active Directory MFA-val. Ha továbbra is Azure Active Directory hitelesítést kíván használni az MFA-val, telepítse vagy frissítse a SSMS 18,6-es vagy újabb verziójára.
+[!INCLUDE[ssms-connect-azure-ad](../includes/ssms-connect-azure-ad.md)]
+
 
 Az ebben a cikkben tárgyalt összes szolgáltatáshoz használja a 17,2-es vagy újabb 2017-es verziót. A legutóbbi kapcsolódás párbeszédpanelnek az alábbi képhez hasonlóan kell kinéznie:
 
   ![Képernyőkép a Kapcsolódás a kiszolgálóhoz párbeszédpanelről SQL Server Management Studio, amely a kiszolgáló típusának, a kiszolgálónévnek és a hitelesítésnek a beállításait jeleníti meg.](./media/authentication-mfa-ssms-overview/1mfa-universal-connect.png)
-  
-    
 
 ## <a name="authentication-options"></a>Hitelesítési lehetőségek
 

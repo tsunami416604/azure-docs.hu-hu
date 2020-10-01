@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: deli, rohitha, vikanand, hongzili, sopai, absaafan, logicappspm
 ms.topic: conceptual
 ms.date: 09/26/2020
-ms.openlocfilehash: 1595051c851d1c21242bcbb5368baa28a1da740d
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.openlocfilehash: cc52358af203bafc87c5f9ac3ae1f237c0c7ae6c
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91409850"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597792"
 ---
 # <a name="create-stateful-or-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Állapot-nyilvántartó vagy állapot nélküli munkafolyamatok létrehozása a Visual Studio Code-ban a Azure Logic Apps (előzetes verzió) bővítménnyel
 
@@ -389,9 +389,11 @@ Ebben a példában a logikai alkalmazás munkafolyamata ezt az triggert és a k�
 
 1. Ha törölnie kell egy tételt a tervezőben, kövesse az alábbi lépéseket:
 
-   1. A tervezőben válassza ki az elemet.
+   1. A tervezőben válassza ki az elemet, amely megnyitja az elem részletek ablaktábláját a jobb oldalon.
 
-   1. Az elem jobb oldalán megjelenő részletek ablaktábláján válassza az ellipszisek (**...**) gomb **>** **Törlés**lehetőséget. A törlés megerősítéséhez kattintson **az OK gombra**.
+   1. Bontsa ki a Visual Studio Code ablakát úgy, hogy az trigger vagy a művelet neve mellett az ellipszisek (**..**.) gomb a jobb felső sarokban jelenik meg. 
+
+   1. Nyissa meg az ellipszisek (**..**.) menüt, majd válassza a **Törlés**lehetőséget. A törlés megerősítéséhez kattintson **az OK gombra**.
 
       ![Képernyőfelvétel: a kijelölt elem megjelenítése a tervezőben az Open details panelen és a kijelölt ellipszisek gomb és a "Törlés" lehetőséggel.](./media/create-stateful-stateless-workflows-visual-studio-code/delete-item-from-designer.png)
 
@@ -443,9 +445,9 @@ Ebben a példában a logikai alkalmazás munkafolyamata ezt az triggert és a k�
 
    | Tulajdonság | Kötelező | Érték | Leírás |
    |----------|----------|-------|-------------|
-   | **Művelet** | Yes | <*saját e-mail cím*> | Az e-mail címzettje, amely a tesztelési célú e-mail-címe lehet. Ez a példa a fiktív e-mailt használja `sophiaowen@fabrikam.com` . |
-   | **Tárgy** | Yes | `An email from your example workflow` | Az e-mail tárgya |
-   | **Törzs** | Yes | `Hello from your example workflow!` | Az e-mail szövegtörzsének tartalma |
+   | **Művelet** | Igen | <*saját e-mail cím*> | Az e-mail címzettje, amely a tesztelési célú e-mail-címe lehet. Ez a példa a fiktív e-mailt használja `sophiaowen@fabrikam.com` . |
+   | **Tárgy** | Igen | `An email from your example workflow` | Az e-mail tárgya |
+   | **Törzs** | Igen | `Hello from your example workflow!` | Az e-mail szövegtörzsének tartalma |
    ||||
 
    > [!NOTE]
@@ -977,7 +979,7 @@ Bár a [Azure Logic apps számos meglévő korlátja](../logic-apps/logic-apps-l
 
   * A kód futtatásának korlátja öt másodperc és 15 másodperc közötti értékre nő.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Örömmel vesszük a véleményét a nyilvános előzetes verzióval kapcsolatos tapasztalatairól!
 

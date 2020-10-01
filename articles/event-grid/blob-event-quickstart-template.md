@@ -3,14 +3,14 @@ title: BLOB Storage-események küldése webes végpontnak – sablon
 description: A blob Storage-fiók létrehozásához használja a Azure Event Grid és egy Azure Resource Manager sablont, és fizessen elő eseményeket. Küldje el az eseményeket egy webhookba. "
 ms.date: 07/07/2020
 ms.topic: quickstart
-ms.openlocfilehash: 32fc17d1af552afa5a81fbc4a5973d69006742b9
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: fc6216142c6bec99cb12bf4e0bdae920f27f1bf2
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661265"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598353"
 ---
-# <a name="route-blob-storage-events-to-web-endpoint-by-using-an-arm-template"></a>BLOB Storage-események átirányítása a webes végpontba ARM-sablon használatával
+# <a name="quickstart-route-blob-storage-events-to-web-endpoint-by-using-an-arm-template"></a>Gyors útmutató: blob Storage-események átirányítása a webes végpontba ARM-sablon használatával
 
 Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. Ebben a cikkben egy Azure Resource Manager sablont (ARM-sablont) használ egy blob Storage-fiók létrehozásához, előfizethet az adott blob-tároló eseményeire, és elindítja az eseményt az eredmény megtekintéséhez. Általában olyan végpontoknak szoktunk eseményeket küldeni, amelyek eseményadatokat dolgoznak fel és műveleteket hajtanak végre. A cikk egyszerűsítése érdekében azonban az eseményeket egy olyan webalkalmazásnak küldjük el, amely az üzenetek gyűjtésével és megjelenítésével foglalkozik.
 
@@ -88,5 +88,5 @@ Azure Resource Manager-sablonokkal kapcsolatos további információkért tekint
 
 * [Azure Resource Manager dokumentáció](../azure-resource-manager/index.yml)
 * [Erőforrások definiálása Azure Resource Manager-sablonokban](/azure/templates/)
-* [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/)
+* [Azure Gyorsindítás sablonok](https://azure.microsoft.com/resources/templates/)
 * [Azure Event Grid sablonok](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Eventgrid).

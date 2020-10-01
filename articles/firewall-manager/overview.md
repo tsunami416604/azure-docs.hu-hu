@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 09/23/2020
+ms.date: 09/30/2020
 ms.author: victorh
-ms.openlocfilehash: 74d83ecc240fa4b48421dbaa1c5cc9e62990655d
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 00a84fbf694a58128712abf806ff12df96f0e5e9
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91399448"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596679"
 ---
 # <a name="what-is-azure-firewall-manager"></a>Mi az az Azure Firewall Manager?
 
@@ -89,6 +89,7 @@ Azure Firewall Manager a következő ismert problémákkal rendelkezik:
 |Az alkalmazási szabályok nem működnek olyan biztonságos központban, amelyben az egyéni DNS (előzetes verzió) konfigurálva van.|Az egyéni DNS (előzetes verzió) nem működik olyan biztonságos központi telepítések és központi virtuális hálózati telepítések esetén, ahol a kényszerített bújtatás engedélyezve van.|Javítás a vizsgálat alatt.|
 |A DDoS Protection standard nem támogatott a biztonságos virtuális hubok esetében|A DDoS Protection standard nincs integrálva a vWANs.|Kivizsgálás|
 |A tevékenységek naplói nem teljes mértékben támogatottak|A tűzfalszabályok jelenleg nem támogatják a tevékenységek naplóit.|Kivizsgálás|
+|SNAT magánhálózati IP-címtartományok konfigurálása|A [magánhálózati IP-címtartomány beállításai](../firewall/snat-private-range.md) figyelmen kívül lesznek hagyva, ha Azure Firewall házirend konfigurálva van. A rendszer az alapértelmezett Azure Firewall viselkedést használja, ahol nem SNAT hálózati szabályokat, ha a célként megadott IP-cím egy [IANA RFC 1918](https://tools.ietf.org/html/rfc1918)-beli magánhálózati IP-címtartomány része.|Kivizsgálás
 
 ## <a name="next-steps"></a>További lépések
 

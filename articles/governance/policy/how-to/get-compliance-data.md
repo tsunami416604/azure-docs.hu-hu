@@ -3,12 +3,12 @@ title: Szabályzatok megfelelőségi állapotának beolvasása
 description: Azure Policy értékelések és hatások határozzák meg a megfelelőséget. Ismerje meg, hogyan kérheti le Azure-erőforrásai megfelelőségi adatait.
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 5a308a23e84587eba69951081674d3525f083441
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 2b4db7daf75f153cadb03e5dd028084e311bb874
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91537950"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596043"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Azure-erőforrások megfelelőségi információk beolvasása
 
@@ -46,7 +46,37 @@ A hozzárendelt szabályzatok és kezdeményezések értékelése a különböz�
 
 ### <a name="on-demand-evaluation-scan"></a>Igény szerinti értékelési vizsgálat
 
-Egy előfizetés vagy egy erőforráscsoport próbaverziós vizsgálatát elindíthatja az Azure CLI-vel, Azure PowerShell vagy a REST API meghívásával. Ez a vizsgálat egy aszinkron folyamat.
+Az előfizetések vagy az erőforráscsoportok kiértékelése az Azure CLI-vel, a Azure PowerShellával, a REST API vagy a [Azure Policy megfelelőségi vizsgálat GitHub-művelettel](https://github.com/marketplace/actions/azure-policy-compliance-scan)indítható el.
+Ez a vizsgálat egy aszinkron folyamat.
+
+#### <a name="on-demand-evaluation-scan---github-action"></a>Igény szerinti értékelés vizsgálata – GitHub-művelet
+
+A [Azure Policy megfelelőség-ellenőrzési művelettel](https://github.com/marketplace/actions/azure-policy-compliance-scan) elindíthat egy igény szerinti értékelési vizsgálatot a [GitHub-munkafolyamatból](https://docs.github.com/actions/configuring-and-managing-workflows/configuring-a-workflow#about-workflows) egy vagy több erőforráson, erőforráscsoporton vagy előfizetésen, és a munkafolyamatot az erőforrások megfelelőségi állapota alapján. A munkafolyamatot úgy is beállíthatja, hogy az ütemezett időpontban fusson, hogy a legújabb megfelelőségi állapotot a megfelelő időpontban kapja meg. Opcionálisan ez a GitHub-művelet jelentést készíthet a beolvasott erőforrások megfelelőségi állapotáról további elemzéshez vagy archiváláshoz.
+
+Az alábbi példa egy előfizetés megfelelőségi vizsgálatát futtatja. 
+
+```yaml
+on:
+  schedule:    
+    - cron:  '0 8 * * *'  # runs every morning 8am
+jobs:
+  assess-policy-compliance:    
+    runs-on: ubuntu-latest
+    steps:         
+    - name: Login to Azure
+      uses: azure/login@v1
+      with:
+        creds: ${{secrets.AZURE_CREDENTIALS}} 
+
+    
+    - name: Check for resource compliance
+      uses: azure/policy-compliance-scan@v0
+      with:
+        scopes: |
+          /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+```
+
+További információ és munkafolyamat-példák: [Azure Policy megfelelőségi vizsgálathoz használható GitHub-művelet](https://github.com/Azure/policy-compliance-scan).
 
 #### <a name="on-demand-evaluation-scan---azure-cli"></a>Igény szerinti értékelés vizsgálata – Azure CLI
 

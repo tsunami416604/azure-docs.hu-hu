@@ -1,27 +1,29 @@
 ---
-title: Egy objektum-detektor létrehozása – Custom Vision Service
+title: 'Gyors útmutató: objektum-detektor létrehozása a Custom Vision webhellyel'
 titleSuffix: Azure Cognitive Services
-description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy Object detektor-modellt a Custom Vision webhellyel.
+description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre, betaníthat és tesztelheti egy objektum-detektor modellt a Custom Vision webhelyről.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 09/15/2020
+ms.date: 09/30/2020
 ms.author: pafarley
-ms.openlocfilehash: 234c80e84e11579a66737c3e5efedfda34182ac5
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.custom: cog-serv-seo-aug-2020
+keywords: képek felismerése, képfelismerési alkalmazás, egyéni jövőkép
+ms.openlocfilehash: ab747ad5e7b9362e9c587741198a0191c032b124
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90602863"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596894"
 ---
-# <a name="quickstart-how-to-build-an-object-detector-with-custom-vision"></a>Gyors útmutató: objektum-detektor létrehozása Custom Vision használatával
+# <a name="quickstart-build-an-object-detector-with-the-custom-vision-website"></a>Gyors útmutató: objektum-detektor létrehozása a Custom Vision webhellyel
 
-Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy Object detektort a Custom Vision webhelyén. Miután létrehozta a modellt, tesztelheti az új rendszerképeket, és végül integrálhatja azt a saját rendszerkép-felismerő szoftverbe.
+Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy Object detektor-modellt a Custom Vision webhellyel. A modell létrehozása után tesztelheti az új rendszerképekkel, és végül integrálhatja azt a saját rendszerkép-felismerő alkalmazásba.
 
-Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/), mielőtt hozzákezd.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

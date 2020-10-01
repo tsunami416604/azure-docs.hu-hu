@@ -2,23 +2,19 @@
 title: Ajánlott eljárások az Azure RBAC
 description: Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatának ajánlott eljárásai.
 services: active-directory
-documentationcenter: ''
 author: rolyon
 manager: mtillman
 ms.service: role-based-access-control
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/17/2020
+ms.date: 09/30/2020
 ms.author: rolyon
-ms.reviewer: bagovind
-ms.openlocfilehash: 053e86f3493c7a11a3cbbaad0871e45345697878
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4cb3e1fe0275c676e2ce54ff9201502fc3595937
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82735334"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91595505"
 ---
 # <a name="best-practices-for-azure-rbac"></a>Ajánlott eljárások az Azure RBAC
 
@@ -28,7 +24,9 @@ Ez a cikk az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) haszn�
 
 Az Azure RBAC használata lehetővé teszi, hogy elkülönítse a kötelességeket a csapaton belül, valamint csak olyan mértékű hozzáférést biztosítson, amelyre a felhasználóknak a feladataik elvégzéséhez szükségük van. Ahelyett, hogy mindenki számára korlátlan engedélyeket adna az Azure-előfizetéshez vagy -erőforrásokhoz, az egyes műveletekhez hatókört adhat meg.
 
-A hozzáférés-vezérlési stratégia megtervezésekor ajánlott eljárásként csak a munkájuk elvégzéséhez minimálisan szükséges jogosultságokat biztosítsa a felhasználók számára. Az alábbi ábrán egy javasolt minta látható az Azure RBAC használatához.
+A hozzáférés-vezérlési stratégia megtervezésekor ajánlott eljárásként csak a munkájuk elvégzéséhez minimálisan szükséges jogosultságokat biztosítsa a felhasználók számára. Ne rendeljen szélesebb hatókörű szerepköröket, még akkor is, ha az kezdetben kényelmesebbnek tűnik. A szerepkörök és hatókörök korlátozásával korlátozhatja, hogy a rendszerbiztonsági tag feltörése esetén milyen erőforrásokra van kitéve.
+
+Az alábbi ábrán egy javasolt minta látható az Azure RBAC használatához.
 
 ![Az Azure RBAC és a legalacsonyabb jogosultság](./media/best-practices/rbac-least-privilege.png)
 

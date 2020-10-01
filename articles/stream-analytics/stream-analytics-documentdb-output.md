@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/2/2020
 ms.custom: seodec18
-ms.openlocfilehash: dbeb1305a64fcace0be527708bc9122a4ffb931d
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 891cd651278906c6ff4b24d91342c612c67604de
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88870833"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596569"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure Stream Analytics kimenet Azure Cosmos DB  
 A Azure Stream Analytics a JSON-kimenethez [Azure Cosmos db](https://azure.microsoft.com/services/documentdb/) , így lehetővé teszi az adatarchiválást és az alacsony késésű lekérdezéseket a strukturálatlan JSON-adatokat illetően. Ez a dokumentum a konfiguráció megvalósításának ajánlott eljárásait ismerteti.
@@ -72,7 +72,9 @@ A kiválasztható partíciós kulcstól függően a következő _Figyelmeztetés
 
 Fontos, hogy olyan partíciós kulcs-tulajdonságot válasszon, amely számos különböző értékkel rendelkezik, és így egyenletesen terjesztheti a számítási feladatokat ezen értékek között. A particionálás természetes összetevője, hogy az azonos partíciós kulcsra vonatkozó kérelmeket egy adott partíció maximális átviteli sebessége korlátozza. 
 
-Az ugyanahhoz a partíciós kulcshoz tartozó dokumentumok tárolási mérete 20 GB-ra van korlátozva. Az ideális partíciós kulcs olyan, amely gyakran a lekérdezésekben található szűrőként jelenik meg, és a megoldás elégséges mértékben megfelel annak biztosításához, hogy a megoldás skálázható legyen.
+Az ugyanahhoz a partíciós kulcshoz tartozó dokumentumok tárolási mérete 20 GB-ra van korlátozva (a [fizikai partíció méretének korlátja](../cosmos-db/partition-data.md) 50 GB). Az [ideális partíciós kulcs](../cosmos-db/partitioning-overview.md#choose-partitionkey) olyan, amely gyakran a lekérdezésekben található szűrőként jelenik meg, és a megoldás elégséges mértékben megfelel annak biztosításához, hogy a megoldás skálázható legyen.
+
+Stream Analytics lekérdezésekhez használt partíciós kulcsoknak és Cosmos DBoknak nem kell megegyezniük. A teljes mértékben párhuzamos topológiák a *bemeneti partíciós kulcs*használatát ajánlják, `PartitionId` mint a stream Analytics lekérdezés partíciós kulcsát, de elképzelhető, hogy a Cosmos db tároló partíciós kulcsának ajánlott választása.
 
 A partíciós kulcs az Azure Cosmos DB tárolt eljárásaiban és eseményindítójában lévő tranzakciók határa is. A partíciós kulcsot úgy kell kiválasztani, hogy a tranzakciókban együtt előforduló dokumentumok ugyanazt a partíciós kulcs értékét használják. A particionálás a [Azure Cosmos DBban](../cosmos-db/partitioning-overview.md) című cikk részletesen ismerteti a partíciós kulcs kiválasztását.
 

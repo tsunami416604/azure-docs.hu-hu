@@ -1,24 +1,26 @@
 ---
-title: 'Rövid útmutató: űrlapok címkézése, modell betanítása és az űrlap elemzése a minta feliratozási eszköz – űrlap felismerő használatával'
+title: 'Rövid útmutató: űrlapok címkézése, modell betanítása és űrlapok elemzése a minta feliratozási eszköz – űrlap felismerő használatával'
 titleSuffix: Azure Cognitive Services
-description: Ebben a rövid útmutatóban az űrlap-felismerő minta címkézési eszköz használatával manuálisan címkézheti az űrlapos dokumentumokat. Ezután betanít egy egyéni modellt a címkével ellátott dokumentumokkal, és a modell használatával kinyerheti a kulcs/érték párokat.
+description: Ebben a rövid útmutatóban az űrlap-felismerő minta címkézési eszköz használatával manuálisan címkézheti az űrlapos dokumentumokat. Ezután betanít egy egyéni dokumentum-feldolgozási modellt a címkével ellátott dokumentumokkal, és a modell használatával kinyerheti a kulcs/érték párokat.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 08/25/2020
+ms.date: 09/30/2020
 ms.author: pafarley
-ms.openlocfilehash: e231bb7919f25210d7e5a2adff49dede6f0349a9
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.custom: cog-serv-seo-aug-2020
+keywords: dokumentumok feldolgozása
+ms.openlocfilehash: 6b641df00d4b4981aa47f314f8e575a9cbcccbba
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89418959"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597741"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Űrlap-felismerő modell betanítása címkékkel a minta feliratozási eszköz használatával
 
-Ebben a rövid útmutatóban az űrlap-felismerő REST API és a minta feliratozási eszköz használatával végezheti el a manuálisan címkézett adattípusú egyéni modell betanítását. A szolgáltatással kapcsolatos további információkért tekintse meg az Áttekintés a [címkékkel](../overview.md#train-with-labels) foglalkozó szakaszát.
+Ebben a rövid útmutatóban az űrlap-felismerő REST APIt fogja használni a minta feliratozási eszközzel, amely manuálisan címkézett adatfeldolgozási modellt alkalmaz egy egyéni dokumentum-feldolgozási modell betanításához. Tekintse meg az áttekintés című témakör [címkék](../overview.md#train-with-labels) című szakaszát, és ismerkedjen meg a felügyelt tanulással az űrlap-felismerővel.
 
 > [!VIDEO https://channel9.msdn.com/Shows/Docs-Azure/Azure-Form-Recognizer/player]
 
@@ -47,7 +49,7 @@ A minta címkéző eszköz futtatásához a Docker-motort fogja használni. A Do
 
    A gazdagépnek meg kell felelnie a következő hardverkövetelmények követelményeinek:
 
-    | Tároló | Minimum | Ajánlott|
+    | Tároló | Minimális | Ajánlott|
     |:--|:--|:--|
     |Minta címkéző eszköz|2 mag, 4 GB memória|4 mag, 8 GB memória|
 
@@ -93,7 +95,7 @@ A minta címkéző eszköz futtatásához a Docker-motort fogja használni. A Do
 
 ## <a name="set-up-input-data"></a>Bemeneti adatok beállítása
 
-Először győződjön meg arról, hogy az összes betanítási dokumentum formátuma azonos. Ha több formátumban is rendelkezik űrlapokkal, a közös formátum alapján rendezheti őket almappákba. A betanítás során az API-t egy almappába kell irányítani.
+Először győződjön meg arról, hogy az összes betanítási dokumentum formátuma azonos. Ha űrlapjai többféle formátumban vannak, rendezze őket almappákba formátum szerint. A betanítás során egy almappára kell hivatkoznia az API-nak.
 
 ### <a name="configure-cross-domain-resource-sharing-cors"></a>Tartományok közötti erőforrás-megosztás (CORS) konfigurálása
 
@@ -120,7 +122,7 @@ Töltse ki a mezőket a következő értékekkel:
 
 * **Megjelenítendő név** – a kapcsolatok megjelenítendő neve.
 * **Leírás** – a projekt leírása.
-* **Sas URL-cím** – az Azure Blob Storage tároló megosztott hozzáférés-aláírási (SAS) URL-címe. Az SAS URL-cím lekéréséhez nyissa meg a Microsoft Azure Storage Explorer, kattintson a jobb gombbal a tárolóra, majd válassza a **közös hozzáférésű aláírás beolvasása**elemet. A szolgáltatás használatának elkezdése után állítsa be a lejárati időt. Győződjön meg arról, hogy az **olvasási**, **írási**, **törlési**és **listázási** engedélyek be vannak jelölve, majd kattintson a **Létrehozás**gombra. Ezután másolja az értéket az **URL** szakaszban. A formátumnak a következőket kell tartalmaznia: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` .
+* **Sas URL-cím** – az Azure Blob Storage tároló megosztott hozzáférés-aláírási (SAS) URL-címe. Az SAS URL-cím lekéréséhez nyissa meg a Microsoft Azure Storage Explorer, kattintson a jobb gombbal a tárolóra, majd válassza a **közös hozzáférésű aláírás beolvasása**elemet. A lejárati időt állítsa be egy későbbi időpontra, amikor már nem fogja használni a szolgáltatást. Győződjön meg arról, hogy az **olvasási**, **írási**, **törlési**és **listázási** engedélyek be vannak jelölve, majd kattintson a **Létrehozás**gombra. Ezután másolja az értéket az **URL** szakaszban. A következő formátumban kell lennie: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
 
 :::image type="content" source="../media/label-tool/connections.png" alt-text="A mintául szolgáló címkéző eszköz csatlakoztatási beállításai.":::
 
@@ -137,7 +139,7 @@ A minta feliratozási eszközben a projektek a konfigurációkat és a beállít
 * **API-kulcs** – az űrlap-felismerő előfizetési kulcsa.
 * **Leírás** – nem kötelező – a projekt leírása
 
-:::image type="content" source="../media/label-tool/new-project.png" alt-text="Új projekt lap a minta feliratozási eszközön.":::
+:::image type="content" source="../media/label-tool/new-project.png" alt-text="A mintául szolgáló címkéző eszköz csatlakoztatási beállításai.":::
 
 ## <a name="label-your-forms"></a>Űrlapok címkézése
 
@@ -153,7 +155,7 @@ Kattintson az OCR futtatása elemre a bal oldali ablaktábla **összes fájlján
 
 Azt is megmutatja, hogy mely táblákat kell automatikusan kibontani. A kibontott táblázat megjelenítéséhez kattintson a dokumentum bal oldalán található tábla/rács ikonra. Ebben a rövid útmutatóban, mivel a táblázat tartalma automatikusan ki van kibontva, a táblázat tartalma nem lesz felcímkézve, hanem az automatikus kivonásra támaszkodik.
 
-:::image type="content" source="../media/label-tool/table-extraction.png" alt-text="Táblázat vizualizációja a minta címkézési eszközben.":::
+:::image type="content" source="../media/label-tool/table-extraction.png" alt-text="A mintául szolgáló címkéző eszköz csatlakoztatási beállításai.":::
 
 ### <a name="apply-labels-to-text"></a>Feliratok alkalmazása szövegre
 
@@ -199,7 +201,7 @@ Ezután létre kell hoznia címkéket (címkéket), és alkalmaznia kell azokat 
 
 ---
 
-:::image type="content" source="../media/label-tool/main-editor-2-1.png" alt-text="A minta-címkéző eszköz főszerkesztő ablaka.":::
+:::image type="content" source="../media/label-tool/main-editor-2-1.png" alt-text="A mintául szolgáló címkéző eszköz csatlakoztatási beállításai.":::
 
 
 Kövesse a fenti lépéseket az űrlapok legalább öt megjelöléséhez.
@@ -254,7 +256,7 @@ Kattintson a vonat ikonra a bal oldali ablaktáblán a képzés lap megnyitásá
 * A címkék és a becsült pontosság a címkén.
 
 
-:::image type="content" source="../media/label-tool/train-screen.png" alt-text="Képzés nézet.":::
+:::image type="content" source="../media/label-tool/train-screen.png" alt-text="A mintául szolgáló címkéző eszköz csatlakoztatási beállításai.":::
 
 A betanítás befejezése után vizsgálja meg az **átlagos pontossági** értéket. Ha alacsony, adjon hozzá további bemeneti dokumentumokat, és ismételje meg a fenti lépéseket. A már címkézett dokumentumok a projekt indexében maradnak.
 
@@ -269,11 +271,11 @@ Ez a funkció jelenleg a 2.1-es verzióban érhető el. előnézet.
 
 # <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/v2-1) 
 
-A Model összeállításával akár 100 modellt is létrehozhat egyetlen modell-AZONOSÍTÓra. Ha ezzel a modell-AZONOSÍTÓval hívja meg az elemzést, az űrlap-felismerő először a beküldött űrlapot sorolja be, és a legmegfelelőbb modellnek felel meg, majd visszaadja az adott modell eredményeit. Ez akkor hasznos, ha a bejövő űrlapok több sablon egyikéhez tartozhatnak.
+A Model Compose segítségével akár 100 modellt is létrehozhat egyetlen modellazonosítóhoz. Ha ezzel a létrehozott modellazonosítóval hívja meg az Elemzés funkciót, a Form Recognizer először besorolja a beküldött űrlapot, párosítja a neki leginkább megfelelő modellel, majd az adott modell eredményeit adja vissza. Ez akkor hasznos, ha a beérkező űrlapok számos sablon egyikéhez tartozhatnak.
 
 A minta feliratozási eszköz modelljeinek összeállításához kattintson a bal oldalon található Model levélírás (egyesítési nyíl) ikonra. A bal oldalon válassza ki azokat a modelleket, amelyeket össze szeretne állítani. A Arrows ikonnal rendelkező modellek már modellekből állnak. Kattintson a "levélírás" gombra. A felugró ablakban nevezze el az új komponált modellt, majd kattintson a "levélírás" elemre. Ha a művelet befejeződik, az új komponált modellnek szerepelnie kell a listában. 
 
-:::image type="content" source="../media/label-tool/model-compose.png" alt-text="Model komponált UX nézet.":::
+:::image type="content" source="../media/label-tool/model-compose.png" alt-text="A mintául szolgáló címkéző eszköz csatlakoztatási beállításai.":::
 
 ---
 
@@ -304,9 +306,12 @@ Ha folytatni szeretné a projekt folytatását, először létre kell hoznia egy
 
 Végül nyissa meg a Főoldalt (ház ikon), és kattintson a Cloud Project megnyitása lehetőségre. Ezután válassza ki a blob Storage-kapcsolatokat, és válassza ki a projekt *. fott* fájlját. Az alkalmazás betölti a projekt összes beállítását, mert a biztonsági jogkivonattal rendelkezik.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban megtanulta, hogyan használhatja az űrlap-felismerő minta címkézési eszközt egy olyan modell betanításához, amely manuálisan címkézett adattal rendelkezik. Ha szeretné integrálni a címkéző eszközt a saját alkalmazásba, használja a megcímkézett adatok betanításával foglalkozó REST API-kat.
+Ebben a rövid útmutatóban megtanulta, hogyan használhatja az űrlap-felismerő minta címkézési eszközt egy olyan modell betanításához, amely manuálisan címkézett adattal rendelkezik. Ha saját eszközt szeretne felépíteni a betanítási adatok címkézéséhez, használja a megcímkézett adatok betanításával foglalkozó REST API-kat.
 
 > [!div class="nextstepaction"]
 > [Betanítás címkékkel a Python használatával](./python-labeled-data.md)
+
+* [Mi a Form Recognizer?](../overview.md)
+* [Űrlap-felismerő ügyféloldali kódtár rövid útmutatói](client-library.md)

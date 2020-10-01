@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: references_regions
-ms.openlocfilehash: e9da87f3b5f7cb513b4b5d51c93a59d1703d401d
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 9c54482dc188141c4fc697bd43628b81e0ddc29f
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89258656"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597119"
 ---
 # <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>Felhők és régiók, amelyekben Azure Media Services v3 létezik
 
@@ -44,7 +44,7 @@ A [LiveTranscription](live-transcription.md) a következő régiókban érhető 
 - Nyugat-Európa
 - Észak-Európa
 - USA keleti régiója
-- USA középső régiója
+- Az USA középső régiója
 - USA déli középső régiója
 - USA 2. nyugati régiója
 - Dél-Brazília
@@ -96,6 +96,8 @@ A következő végpontokat fontos tudni, hogy mikor csatlakozhat Media Services-
 | Hitelesítés | `https://login.microsoftonline.us/` |
 | Jogkivonat célközönsége | `https://management.core.usgovcloudapi.net/` |
 
+[!INCLUDE [Widevine is not available in the GovCloud region.](./includes/widevine-not-available-govcloud.md)]
+
 ### <a name="azure-germany"></a>Azure Germany
 
 | Szolgáltatás | Végpont |
@@ -112,7 +114,7 @@ A következő végpontokat fontos tudni, hogy mikor csatlakozhat Media Services-
 | Hitelesítés | `https://login.chinacloudapi.cn/` |
 | Jogkivonat célközönsége |  `https://management.core.chinacloudapi.cn/` |
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 * [Azure-régiók](https://azure.microsoft.com/global-infrastructure/regions/)
 * [Azure földrajzi területek](https://azure.microsoft.com/global-infrastructure/geographies/)
