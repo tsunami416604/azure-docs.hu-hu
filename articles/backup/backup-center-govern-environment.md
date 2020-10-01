@@ -3,18 +3,20 @@ title: A Backup-hagyaték szabályozása a Backup Center használatával
 description: Ismerje meg, hogyan szabályozhatja az Azure-környezetet annak biztosításához, hogy az összes erőforrás megfelel a Backup Center biztonsági mentési perspektívájának.
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: 009ee461b0372a3fb73ffb3b0ee5151b77bd8ef8
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 8a16769be827bf34e5be82409d5b8eb014cdcf1a
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90995767"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91614329"
 ---
 # <a name="govern-your-backup-estate-using-backup-center"></a>A Backup-hagyaték szabályozása a Backup Center használatával
 
 A Backup Center segítségével szabályozhatja az Azure-környezetet, így biztosítva, hogy minden erőforrás megfelel a biztonsági mentési perspektívának. Az alábbiakban a Backup Center irányítási képességeiből tájékozódhat:
 
 * Azure-szabályzatok megtekintése és kiosztása a biztonsági mentéshez
+
+* Tekintse meg az erőforrások megfelelőségét az összes beépített Azure-szabályzatban a biztonsági mentéshez.
 
 * A biztonsági mentéshez nem konfigurált összes adatforrás megtekintése.
 
@@ -30,13 +32,19 @@ A definíciók bármelyikének kiválasztásával [hozzárendelheti a szabályza
 
 ![Azure Policy definíciók kiválasztása](./media/backup-center-govern-environment/azure-policy-definitions.png)
 
+## <a name="backup-compliance"></a>Biztonsági mentés megfelelősége
+
+A biztonsági mentés megfelelősége menüpontra kattintva megtekintheti az erőforrások [megfelelőségét](https://docs.microsoft.com/azure/governance/policy/how-to/get-compliance-data) az Azure-környezethez rendelt különböző beépített szabályzatoknak megfelelően. Megtekintheti az összes szabályzatnak megfelelő erőforrások százalékos arányát, valamint azokat a házirendeket, amelyek egy vagy több nem megfelelő erőforrással rendelkeznek.
+
+![Biztonsági másolatok megfelelőségének megtekintése](./media/backup-center-govern-environment/azure-policy-compliance.png)
+
 ## <a name="protectable-datasources"></a>Védhető adatforrások
 
 A **Protected DataSources** menüpont kiválasztásával megtekintheti az összes olyan adatforrást, amely nem lett konfigurálva a biztonsági mentéshez. A listát adatforrás-előfizetés, Erőforráscsoport, hely, típus és címkék alapján szűrheti. Miután azonosította a biztonsági mentésre szoruló adatforrást, kattintson a jobb gombbal a megfelelő rácsvonal elemre, és válassza a **biztonsági** mentés lehetőséget az erőforrás biztonsági mentésének konfigurálásához.
 
 ![Védhető adatforrások menü](./media/backup-center-govern-environment/protectable-datasources.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Biztonsági másolatok figyelése és üzemeltetése](backup-center-monitor-operate.md)
 * [Műveletek végrehajtása a Backup Center használatával](backup-center-actions.md)

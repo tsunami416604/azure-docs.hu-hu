@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan biztonságossá teheti a fürtöt IP-címtartom
 services: container-service
 ms.topic: article
 ms.date: 09/21/2020
-ms.openlocfilehash: 5dbe5061253fb18222a476a88a1ec94a5ce4b0fa
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 99c6b173d96bbd54f12a0edc501d49e8c65caf01
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91299663"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613730"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Biztonságos hozzáférés az API-kiszolgálóhoz a jogosult IP-címtartományok használatával az Azure Kubernetes szolgáltatásban (ak)
 
@@ -130,7 +130,33 @@ az aks update \
     --api-server-authorized-ip-ranges ""
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="how-to-find-my-ip-to-include-in---api-server-authorized-ip-ranges"></a>Hogyan találhatom meg az IP-címet, hogy szerepeljen a alkalmazásban `--api-server-authorized-ip-ranges` ?
+
+Az API-kiszolgáló innen való eléréséhez hozzá kell adnia a fejlesztői gépeket, az eszközök vagy az Automation IP-címeit a jóváhagyott IP-tartományok AK-beli fürtjének listájához. 
+
+Egy másik lehetőség, hogy a tűzfal virtuális hálózatán belül egy külön alhálózaton belüli Jumpbox konfigurálja a szükséges eszközökkel. Ez azt feltételezi, hogy a környezete tűzfallal rendelkezik a megfelelő hálózattal, és a tűzfal IP-címei a jogosult tartományokhoz lettek adva. Hasonlóképpen, ha úgy döntött, hogy az AK-alhálózatról a tűzfal alhálózatára kényszerített bújtatást, a fürt alhálózatán lévő Jumpbox is rendben van.
+
+Adjon hozzá egy másik IP-címet a jóváhagyott tartományokhoz a következő paranccsal.
+
+```bash
+# Retrieve your IP address
+CURRENT_IP=$(dig @resolver1.opendns.com ANY myip.opendns.com +short)
+# Add to AKS approved list
+az aks update -g $RG -n $AKSNAME --api-server-authorized-ip-ranges $CURRENT_IP/32
+```
+
+>> [!NOTE]
+> A fenti példa hozzáfűzi az API-kiszolgáló által jóváhagyott IP-tartományokat a fürthöz. Az engedélyezett IP-címtartományok letiltásához használja az az AK Update parancsot, és határozzon meg egy üres tartományt. 
+
+Egy másik lehetőség az alábbi parancs használata Windows rendszereken a nyilvános IPv4-cím lekéréséhez, vagy az [IP-cím megkeresése](https://support.microsoft.com/en-gb/help/4026518/windows-10-find-your-ip-address)című cikkben ismertetett lépéseket követve.
+
+```azurepowershell-interactive
+Invoke-RestMethod http://ipinfo.io/json | Select -exp ip
+```
+
+Ezt a címet a "mi az IP-cím" kifejezéssel keresheti meg egy böngészőben.
+
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben engedélyezte az API-kiszolgáló engedélyezett IP-tartományait. Ez a megközelítés a biztonságos AK-fürtök futtatásának egyik része.
 

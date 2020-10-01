@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 09/24/2020
 ms.author: jlian
-ms.openlocfilehash: eb25fc0d7831bc06b708431ce3d47c73b36fe5c6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6c562f7a5d9c7c02c737898821eef5ee5271eea4
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91281250"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613900"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>IoT Hub a magánhálózati és felügyelt identitású virtuális hálózatok támogatása
 
@@ -38,7 +38,7 @@ Ez a cikk azt ismerteti, hogyan valósíthatók meg ezek a célok az [Azure Priv
 
 A privát végpontok egy olyan magánhálózati IP-cím, amely az Azure-erőforrások elérhetőségét biztosító, az ügyfél tulajdonában lévő VNet van lefoglalva. Az Azure privát kapcsolaton keresztül beállíthat egy privát végpontot az IoT hub számára, hogy lehetővé tegye a VNet belüli szolgáltatások IoT Hub elérését anélkül, hogy a IoT Hub nyilvános végpontjának kellene elküldeni a forgalmat. Hasonlóképpen a helyszíni eszközök is használhatják a [virtuális magánhálózati (VPN)](../vpn-gateway/vpn-gateway-about-vpngateways.md) vagy a [ExpressRoute](https://azure.microsoft.com/services/expressroute/) -társítást, hogy hozzáférjenek a VNet és a IoT hub (a saját végpontján keresztül). Ennek eredményeképpen korlátozhatja vagy teljesen letilthatja az IoT hub nyilvános végpontokhoz való kapcsolódást [IoT hub IP-szűrő](./iot-hub-ip-filtering.md) használatával, és úgy [konfigurálhatja az útválasztást, hogy ne küldjön semmilyen adatátvitelt a beépített végpontnak](#built-in-event-hub-compatible-endpoint-doesnt-support-access-over-private-endpoint). Ez a megközelítés a saját hubhoz való kapcsolódást az eszközök magánhálózati végpontjának használatával tartja fenn. Ennek a beállításnak a fő témája a helyszíni hálózaton belüli eszközök. Ez a beállítás nem ajánlott a nagy kiterjedésű hálózatban üzembe helyezett eszközök esetében.
 
-![IoT Hub nyilvános végpont](./media/virtual-network-support/virtual-network-ingress.png)
+![Virtuális hálózati engress IoT Hub](./media/virtual-network-support/virtual-network-ingress.png)
 
 A folytatás előtt győződjön meg arról, hogy teljesülnek az alábbi előfeltételek:
 
@@ -92,7 +92,7 @@ Ahhoz, hogy más szolgáltatások megbízható Microsoft-szolgáltatásként meg
 
 1. Az **állapot**területen válassza **a be**lehetőséget, majd kattintson a **Mentés**gombra.
 
-    :::image type="content" source="media/virtual-network-support/managed-identity.png" alt-text="A IoT Hub felügyelt identitásának bekapcsolását bemutató képernyőkép":::
+    :::image type="content" source="media/virtual-network-support/managed-identity.png" alt-text="Képernyőfelvétel: a IoT Hub privát végpontjának hozzáadása":::
 
 ### <a name="assign-managed-identity-to-your-iot-hub-at-creation-time-using-arm-template"></a>Felügyelt identitás kiosztása a IoT Hub a létrehozáskor az ARM-sablon használatával
 
@@ -289,7 +289,7 @@ A Python esetében töltse le a korlátozott verziót a GitHubról.
     > pip install./azure_iot_hub-2.2.0_limited-py2. py3-none-any. WHL
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az alábbi hivatkozásokra kattintva további információt találhat IoT Hub szolgáltatásairól:
 

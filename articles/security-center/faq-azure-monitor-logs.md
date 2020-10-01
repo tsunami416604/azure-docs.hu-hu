@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 0f4552d6488ecd083b6ee5d4cae2ef2bd660efc7
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c4af0e8eda818fcb57ea9e050b760c3754c46e2c
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906371"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613645"
 ---
 # <a name="faq-for-customers-already-using-azure-monitor-logs"></a>Gyakori kérdések a Azure Monitor naplókat használó ügyfelek számára<a name="existingloganalyticscust"></a>
 
@@ -35,7 +35,6 @@ Egy Security Center megoldás van telepítve az adatgyűjtési képernyőn kivá
 Ha Security Center megállapítja, hogy egy virtuális gép már csatlakoztatva van egy létrehozott munkaterülethez, Security Center engedélyezi a megoldásokat a munkaterületen a díjszabási konfigurációnak megfelelően. A megoldásokat csak a megfelelő Azure-beli virtuális gépekre alkalmazza a [megoldás célcsoportján](../operations-management-suite/operations-management-suite-solution-targeting.md)keresztül, így a számlázás változatlan marad.
 
 - **Azure Defender off** – Security Center a "SecurityCenterFree" megoldást telepíti a munkaterületre. Nem számítunk fel díjat.
-- 
 - **Azure Defender on** – Security Center a "biztonsági" megoldást telepíti a munkaterületre.
 
    ![Megoldások az alapértelmezett munkaterületen](./media/security-center-platform-migration-faq/solutions.png)

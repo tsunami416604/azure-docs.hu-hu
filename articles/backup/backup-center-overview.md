@@ -2,13 +2,13 @@
 title: A Backup Center áttekintése
 description: Ez a cikk áttekintést nyújt az Azure-hoz készült Backup Centerről.
 ms.topic: conceptual
-ms.date: 09/01/2020
-ms.openlocfilehash: e7577f302b9a137f5f3c257dc35d0fdf339f69a4
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.date: 09/30/2020
+ms.openlocfilehash: 2857433e00a678603e30c8e5fc276020c4658f2e
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90995438"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91614282"
 ---
 # <a name="overview-of-backup-center"></a>A Backup Center áttekintése
 
@@ -39,9 +39,13 @@ A **feladatok** csempén az elmúlt 24 órában az összes biztonsági mentési 
 
 A **biztonsági mentési példányok** csempén megjelenik az összes biztonsági mentési példány összesített nézete a Backup-birtokon. Megtekintheti például a helyreállítható állapotú biztonságimásolat-példányok számát a védelemre beállított példányok számával szemben. A csempe bármelyik számának kiválasztásával további információkat tekinthet meg a biztonsági mentési példányokról egy adott adatforrás-típus és egy védelmi állapot tekintetében.
 
-Kövesse az alábbi lépéseket a Backup Center által biztosított különböző képességek megismeréséhez, valamint arról, hogyan használhatja ezeket a képességeket a Backup-ingatlan hatékony kezeléséhez.
+Tekintse meg a következő videót a Backup Center képességeinek megismeréséhez:
 
-## <a name="next-steps"></a>Következő lépések
+> [!VIDEO https://www.youtube.com/embed/pFRMBSXZcUk?t=497]
+
+A [következő lépésekkel](#next-steps) megismerheti a Backup Center által biztosított különböző képességeket, és hogy miként használhatja ezeket a képességeket a biztonsági mentési környezet hatékony kezeléséhez.
+
+## <a name="next-steps"></a>További lépések
 
 * [Biztonsági másolatok figyelése és üzemeltetése](backup-center-monitor-operate.md)
 * [A biztonsági mentési hagyaték szabályozása](backup-center-govern-environment.md)

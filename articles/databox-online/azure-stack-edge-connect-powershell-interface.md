@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 06/25/2019
+ms.date: 09/30/2020
 ms.author: alkohli
-ms.openlocfilehash: b6b0fe7e9e096b252d33d25c4a70305e57d206b1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 93678735237c25b19d04b7d901583ba785d7f594
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90894416"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613543"
 ---
-# <a name="manage-an-azure-stack-edge-pro-device-via-windows-powershell"></a>Azure Stack Edge Pro-eszköz kezelése a Windows PowerShell használatával
+# <a name="manage-an-azure-stack-edge-pro-fpga-device-via-windows-powershell"></a>Azure Stack Edge Pro FPGA-eszköz kezelése a Windows PowerShell használatával
 
 Azure Stack Edge Pro-megoldás lehetővé teszi az adatfeldolgozást és a hálózaton keresztüli küldését az Azure-ba. Ez a cikk az Azure Stack Edge Pro-eszköz konfigurációs és felügyeleti feladatait ismerteti. Az eszköz kezeléséhez használhatja a Azure Portal, a helyi webes felhasználói felületet vagy a Windows PowerShell felületét is.
 
@@ -43,16 +43,16 @@ Ez a cikk az alábbi eljárásokat tartalmazza:
 
 [!INCLUDE [Upload certificate](../../includes/data-box-edge-gateway-upload-certificate.md)]
 
-IoT Edge-tanúsítványokat is feltölthet, hogy biztonságos kapcsolatot lehessen létesíteni az IoT Edge-eszköz és a hozzá kapcsolódó, alsóbb rétegbeli eszközök között. Három IoT Edge tanúsítvány (*. PEM* formátum) szükséges a telepítéséhez:
+IoT Edge-tanúsítványokat is feltölthet, hogy biztonságos kapcsolatot lehessen létesíteni az IoT Edge-eszköz és a hozzá kapcsolódó, alsóbb rétegbeli eszközök között. Három fájl (*. PEM* formátum) szükséges a telepítéséhez:
 
 - Legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány vagy a tulajdonos HITELESÍTÉSSZOLGÁLTATÓja
 - Eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványa
-- Eszköz kulcsának tanúsítványa
+- Eszköz titkos kulcsa 
 
 A következő példa a parancsmag használatát mutatja be IoT Edge tanúsítványok telepítéséhez:
 
 ```
-Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cert.pem" -DeviceCertificateFilePath "\\hcfs\device-ca-cert.pem\" -DeviceKeyFilePath "\\hcfs\device-key-cert.pem" -Credential "username"
+Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cert.pem" -DeviceCertificateFilePath "\\hcfs\device-ca-cert.pem\" -DeviceKeyFilePath "\\hcfs\device-private-key.pem" -Credential "username"
 ```
 A parancsmag futtatásakor a rendszer kérni fogja a hálózati megosztás jelszavának megadását.
 
@@ -92,6 +92,6 @@ Ha a számítási szerepkör konfigurálva van az eszközön, a számítási nap
 
 A távoli PowerShell-munkamenetből való kilépéshez zárja be a PowerShell ablakát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure stack Edge Pro](azure-stack-edge-deploy-prep.md) üzembe helyezése Azure Portalban.

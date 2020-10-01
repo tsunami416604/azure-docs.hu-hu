@@ -1,14 +1,14 @@
 ---
 title: Az Azure Blueprints áttekintése
 description: Ismerje meg, hogyan hozhat létre, határozhat meg és helyezhet üzembe összetevőket az Azure-környezetben az Azure BluePrints szolgáltatásban.
-ms.date: 08/27/2020
+ms.date: 09/30/2020
 ms.topic: overview
-ms.openlocfilehash: 499f2c4afa55913b6af714d20ec1d52e2ecbbc47
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: f2e3c23c9cb83d2cb58b1e8f69a2a470a6f36f6d
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91541764"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91614257"
 ---
 # <a name="what-is-azure-blueprints"></a>Mi az az Azure Blueprints?
 
@@ -45,7 +45,7 @@ A szabályzatok a tervrajzok definíciójában szereplő _számos összetevő_ e
 
 ## <a name="blueprint-definition"></a>Tervdefiníció
 
-A tervek _tervelemekből_ állnak. Az Azure-tervezetek jelenleg a következő erőforrásokat támogatják összetevőkként:
+A terv összetevőkből áll _._ Az Azure-tervezetek jelenleg a következő erőforrásokat támogatják összetevőkként:
 
 |Erőforrás  | Hierarchialehetőségek| Leírás  |
 |---------|---------|---------|
@@ -74,7 +74,10 @@ Amikor létrehozunk egy tervet, az **Vázlat** módban van. Ha a terv készen á
 
 ## <a name="blueprint-assignment"></a>Tervek hozzárendelése
 
-A tervrajzok minden **közzétett** **verziója** hozzárendelhető (legfeljebb 90 karakter hosszú lehet) egy meglévő előfizetéshez. A portálon alapértelmezés szerint a terv legutóbb **közzétett****verziója** érhető el. Ha a terv tartalmaz összetevő-paramétereket (vagy tervparamétereket), akkor ezeket a hozzárendelés során lehet meghatározni.
+A tervrajzok minden **közzétett** **verziója** hozzárendelhető (legfeljebb 90 karakter hosszú lehet) egy meglévő felügyeleti csoportba vagy előfizetésbe. A portálon alapértelmezés szerint a terv legutóbb **közzétett****verziója** érhető el. Ha összetevő-paraméterek vagy tervrajz-paraméterek vannak megadva, akkor a paraméterek a hozzárendelési folyamat során vannak meghatározva.
+
+> [!NOTE]
+> Ha a terv definícióját egy felügyeleti csoporthoz rendeli, azt jelenti, hogy a hozzárendelési objektum létezik a felügyeleti csoportban. Az összetevők üzembe helyezése továbbra is egy előfizetést céloz meg. A felügyeleti csoport hozzárendelésének végrehajtásához a [create vagy a Update REST API](/rest/api/blueprints/assignments/createorupdate) kell használni, és a kérés törzsének tartalmaznia kell egy értéket a `properties.scope` cél-előfizetés definiálásához.
 
 ## <a name="permissions-in-azure-blueprints"></a>Engedélyek az Azure Blueprintsben
 

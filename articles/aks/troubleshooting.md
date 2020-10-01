@@ -4,12 +4,12 @@ description: Útmutató az Azure Kubernetes szolgáltatás (ak) használata sor�
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: 855e5e5e23371f600a7e73139f2e6da1eebc91d0
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 81adbfe7a5a04ffb8fcb3311ad3561135b77ab7b
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90068829"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91614019"
 ---
 # <a name="aks-troubleshooting"></a>AKS-hibaelhárítás
 
@@ -184,6 +184,14 @@ A probléma a következő megkerülő megoldásokkal használható:
 
 Ez általában az egyszerű szolgáltatásnév hitelesítő adatainak lejárta miatt fordul elő. [Egy AK-fürt hitelesítő adatainak frissítése.](update-credentials.md)
 
+## <a name="i-cant-access-my-cluster-api-from-my-automationdev-machinetooling-when-using-api-server-authorized-ip-ranges-how-do-i-fix-this-problem"></a>Nem tudom elérni a fürt API-ját az Automation/dev számítógép/eszköz használatával az API-kiszolgáló által jogosult IP-címtartományok használata esetén. Hogyan kijavítani ezt a problémát?
+
+Ehhez `--api-server-authorized-ip-ranges` meg kell adni a használt Automation/dev/szerszámozási rendszerek IP-címét vagy IP-tartományát. A jogosult IP-címtartományok használatával kapcsolatban tekintse meg az [API-kiszolgáló biztonságos elérésével](api-server-authorized-ip-ranges.md)foglalkozó témakör "az IP-cím megkeresése" című szakaszát.
+
+## <a name="im-unable-to-view-resources-in-kubernetes-resource-viewer-in-azure-portal-for-my-cluster-configured-with-api-server-authorized-ip-ranges-how-do-i-fix-this-problem"></a>Nem tudom megtekinteni a Kubernetes erőforrás-megjelenítőben lévő erőforrásokat az API-kiszolgáló által jóváhagyott IP-tartományokkal konfigurált fürt Azure Portaljában. Hogyan kijavítani ezt a problémát?
+
+A [Kubernetes erőforrás-megjelenítőnek](kubernetes-portal.md) hozzá `--api-server-authorized-ip-ranges` kell férnie a helyi ügyfélszámítógép vagy IP-címtartomány (amelyről a portál böngészése). A jogosult IP-címtartományok használatával kapcsolatban tekintse meg az [API-kiszolgáló biztonságos elérésével](api-server-authorized-ip-ranges.md)foglalkozó témakör "az IP-cím megkeresése" című szakaszát.
+
 ## <a name="im-receiving-errors-after-restricting-egress-traffic"></a>Hibák jelentkeznek a kimenő forgalom korlátozása után
 
 Ha a kimenő forgalmat egy AK-fürtből korlátozza, akkor szükség van a [szükséges és választható](limit-egress-traffic.md) kimeneti portokra/hálózati szabályokra, valamint a teljes tartománynevek/alkalmazási szabályokra az AK-ra vonatkozóan. Ha a beállítások ütköznek ezekkel a szabályokkal, bizonyos `kubectl` parancsok nem fognak megfelelően működni. Egy AK-fürt létrehozásakor hibák is megjelenhetnek.
@@ -225,7 +233,7 @@ Ezt a problémát a Kubernetes következő verzióiban rögzítették:
 |--|:--:|
 | 1.10 | 1.10.2 vagy újabb |
 | 1,11 | 1.11.0 vagy újabb |
-| 1,12 és újabb verziók | N/A |
+| 1,12 és újabb verziók | N.A. |
 
 
 ### <a name="failure-when-setting-uid-and-gid-in-mountoptions-for-azure-disk"></a>Hiba történt az UID és a GID beállításakor az Azure Disk mountOptions esetében
@@ -282,7 +290,7 @@ Ezt a problémát a Kubernetes következő verzióiban rögzítették:
 | 1.12 | 1.12.9 vagy újabb |
 | 1.13 | 1.13.6 vagy újabb |
 | 1,14 | 1.14.2 vagy újabb |
-| 1,15 és újabb verziók | N/A |
+| 1,15 és újabb verziók | N.A. |
 
 Ha olyan Kubernetes-verziót használ, amely nem rendelkezik a probléma javításával, és a csomópont elavult lemezzel rendelkezik, enyhítheti a virtuális gépről a nem létező lemezek tömeges műveletként való leválasztásával. **A nem létező lemezek különálló leválasztása sikertelen lehet.**
 
@@ -301,7 +309,7 @@ Ezt a problémát a Kubernetes következő verzióiban rögzítették:
 | 1.12 | 1.12.10 vagy újabb |
 | 1.13 | 1.13.8 vagy újabb |
 | 1,14 | 1.14.4 vagy újabb |
-| 1,15 és újabb verziók | N/A |
+| 1,15 és újabb verziók | N.A. |
 
 Ha olyan Kubernetes-verziót használ, amely nem rendelkezik a probléma javításával, és a csomópont meghibásodott állapotban van, a virtuális gép állapotának manuális frissítésével csökkentheti a következő lépések egyikét:
 
@@ -410,7 +418,7 @@ Ezt a problémát a Kubernetes következő verzióiban rögzítették:
 |--|:--:|
 | 1.12 | 1.12.6 vagy újabb |
 | 1.13 | 1.13.4 vagy újabb |
-| 1,14 és újabb verziók | N/A |
+| 1,14 és újabb verziók | N.A. |
 
 ### <a name="azure-files-mount-fails-because-of-storage-account-key-changed"></a>Azure Files csatlakoztatás sikertelen, mert a Storage-fiók kulcsa módosult
 

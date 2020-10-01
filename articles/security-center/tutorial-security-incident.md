@@ -1,6 +1,6 @@
 ---
-title: Incidens-válasz oktatóanyaga-Azure Security Center
-description: Ebből az oktatóanyagból megtudhatja, hogyan osztályozhatja a biztonsági riasztásokat, meghatározhatja a kiváltó okot & az incidensek hatókörét, és megkeresheti a biztonsági információkat.
+title: Riasztási válasz oktatóanyaga – Azure Security Center
+description: Ebből az oktatóanyagból megtudhatja, hogyan osztályozhatja a biztonsági riasztásokat, és hogyan állapíthatja meg a riasztások gyökerének okát & hatókörét.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -12,115 +12,115 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/30/2018
+ms.date: 09/30/2020
 ms.author: memildin
-ms.openlocfilehash: 08e04749eae7158abb501f9a4d127cdd7a89a391
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a04f94f5ebc7c1fdaf7b95e71dc8549e19863b39
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91336275"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91614156"
 ---
-# <a name="tutorial-respond-to-security-incidents"></a>Oktatóanyag: Reagálás a biztonsági incidensekre
-A Security Center fejlett elemzési eszközök és fenyegetésfelderítés segítségével folyamatosan elemzi a hibrid felhőbeli számítási feladatokat, hogy figyelmeztesse az esetleges rosszindulatú tevékenységekre. Ráadásul a Security Centerbe más biztonsági termékekből és szolgáltatásokból is integrálhat riasztásokat, és egyéni riasztásokat is létrehozhat a saját mutatói és intelligens forrásai alapján. Amikor valami kivált egy riasztást, gyors reagálásra van szükség a problémák kivizsgálásához és elhárításához. Az oktatóanyag során a következőket fogja elsajátítani:
+# <a name="tutorial-triage-investigate-and-respond-to-security-alerts"></a>Oktatóanyag: osztályozás, vizsgálat és válaszadás a biztonsági riasztásokra
+A Security Center fejlett elemzési eszközök és fenyegetésfelderítés segítségével folyamatosan elemzi a hibrid felhőbeli számítási feladatokat, hogy figyelmeztesse az esetleges rosszindulatú tevékenységekre. A riasztásokat más biztonsági termékekből és szolgáltatásokból is integrálhatja Security Centerba, és létrehozhat egyéni riasztásokat saját mutatók vagy intelligencia-források alapján. Amikor valami kivált egy riasztást, gyors reagálásra van szükség a problémák kivizsgálásához és elhárításához. 
+
+Az oktatóanyag során a következőket fogja elsajátítani:
 
 > [!div class="checklist"]
 > * Biztonsági riasztások osztályozása
-> * Részletes vizsgálat egy biztonsági incidens gyökerének és kiterjedésének meghatározása céljából
-> * Keresés a biztonsági adatok között a vizsgálat elősegítéséhez
+> * Biztonsági riasztás vizsgálata a kiváltó ok okának megállapításához
+> * Válaszadás a biztonsági riasztásokra, és az alapvető ok enyhítése
 
 Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyagban szereplő funkciók átlépéséhez engedélyeznie kell az Azure Defender használatát. Az Azure Defender szolgáltatás díjmentesen kipróbálható. További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/). A gyors üzembe helyezés Security Center végigvezeti Önt a verziófrissítés [lépésein](security-center-get-started.md) .
 
-## <a name="scenario"></a>Használati eset
-A Contoso vállalat nemrégiben áttelepítette egyes helyszíni erőforrásait az Azure-ba, beleértve egyes virtuális gépeken alapuló üzleti számítási feladatait és SQL-adatbázisait. A Contoso fő számítógépes biztonsági incidensmegoldó csapata, a Core Computer Security Incident Response Team (CSIRT) jelenleg nem tudja kivizsgálni a biztonsági problémákat, mivel a biztonsági intelligencia nem képezi jelenlegi incidensmegoldási eszközparkjuk szerves részét. Az integráció hiánya az észlelési szakasz során (túl sok téves riasztás), valamint a felmérési és a diagnosztikai szakaszok során is problémát jelent. Az áttelepítés részeként úgy döntöttek, hogy a probléma megoldásához igénybe veszik a Security Center segítségét.
-
-Az áttelepítés első szakasza azzal ért véget, hogy az összes erőforrást üzembe helyezték, és a Security Center összes biztonsági ajánlását feldolgozták. A Contoso CSIRT a számítógépes biztonsági incidensek kezelésének központi eleme. A csapatot olyan személyek alkotják, akik biztonsági incidensek kezelésével foglalkoznak. A csapat tagjainak feladatai egyértelműen meg vannak határozva annak érdekében, hogy ne maradjon lefedetlen felelősségi terület.
-
-A forgatókönyv szempontjából a Contoso CSIRT csapatának alábbi két tagjára fogunk összpontosítani:
-
-![Az incidensmegoldás életciklusa](./media/tutorial-security-incident/security-center-incident-response.png)
-
-Judit biztonsági üzemeltetéssel foglalkozik. Feladatai a következők:
-
-* A biztonsági fenyegetések non-stop figyelése és megoldása.
-* A problémák továbbítása szükség szerint a felhőbeli számítási feladat tulajdonosának vagy a biztonsági elemzőnek.
-
-A Sam egy biztonsági elemző, és feladatai közé tartoznak a következők:
-
-* A támadások kivizsgálása.
-* A riasztások javítása.
-* A számítási feladatok tulajdonosaival együttműködve a megoldások meghatározása és kivitelezése.
-
-Amint látható, Judit és Sándor feladatai eltérőek, azonban együtt kell működniük a Security Center adatainak megosztásában.
 
 ## <a name="triage-security-alerts"></a>Biztonsági riasztások osztályozása
-A Security Center segítségével minden biztonsági riasztást egy egyesített nézetben tekinthet meg. A biztonsági riasztások besorolása a súlyosságon alapul, és ahol lehetséges, a kapcsolódó riasztásokat a rendszer egyetlen biztonsági incidensben egyesíti. A riasztások és események osztályozásakor a következő feladatai vannak:
+A Security Center segítségével minden biztonsági riasztást egy egyesített nézetben tekinthet meg. A biztonsági riasztások az észlelt tevékenység súlyossága alapján vannak rangsorolva. 
 
-- További műveleteket nem igénylő riasztások elvetése, ha például a riasztás téves
-- Ismert támadások elhárítása, például rosszindulatú IP-címről érkező hálózati forgalom blokkolása
-- További vizsgálatot igénylő riasztások meghatározása
+A riasztások osztályozása a **biztonsági riasztások** lapról:
+
+:::image type="content" source="./media/tutorial-security-incident/alerts-list.png" alt-text="Biztonsági riasztások listája lap" lightbox="./media/tutorial-security-incident/alerts-list.png":::
+
+Ezen a lapon áttekintheti a környezetében található aktív biztonsági riasztásokat, hogy eldöntse, melyik riasztást kell először kivizsgálni.
+
+Ha a riasztások súlyossága alapján osztályozásakor a riasztások fontosságát, a riasztásokat az első nagyobb súlyossággal kell kezelni. További tudnivalók a riasztások súlyosságáról: [Hogyan vannak besorolva a riasztások?](security-center-alerts-overview.md#how-are-alerts-classified).
+
+> [!TIP]
+> Azure Security Center csatlakozhat a legnépszerűbb SIEM-megoldásokhoz, beleértve az Azure Sentinelt is, és a riasztásokat a választott eszköztől használhatja. További információ a [riasztások Siem-re való exportálásáról](continuous-export.md).
 
 
-1. A Security Center főmenüjének **ÉSZLELÉS** területén válassza a **Biztonsági riasztások** elemet:
+## <a name="investigate-a-security-alert"></a>Biztonsági riasztás vizsgálata
 
-   ![Biztonsági riasztások](./media/tutorial-security-incident/tutorial-security-incident-fig1.png)
+Ha eldöntötte, hogy melyik riasztást először vizsgálja meg:
 
-2. A riasztások listájában válasszon ki egy biztonsági incidenst, amely a riasztások gyűjteménye, hogy többet tudjon meg erről az incidensről. Megnyílik **A rendszer biztonsági incidenst észlelt** ablak.
+1. Válassza ki a kívánt riasztást.
+1. A riasztás áttekintése lapon válassza ki az elsőként kivizsgálni kívánt erőforrást.
+1. Indítsa el a vizsgálatot a bal oldali panelen, amely a biztonsági riasztással kapcsolatos magas szintű információkat jeleníti meg.
 
-   ![Biztonsági incidens észlelve](./media/tutorial-security-incident/tutorial-security-incident-fig2.png)
+    :::image type="content" source="./media/tutorial-security-incident/alert-details-left-pane.png" alt-text="Biztonsági riasztások listája lap":::
 
-3. Ezen a képernyőn felül megtalálja a biztonsági incidens leírását, majd azon riasztások listáját, amelyek az esemény részeit képezik. További információért kattintson az alaposabban megvizsgálni kívánt riasztásra.
+    Az ablaktábla a következőket jeleníti meg:
+    - Riasztás súlyossága, állapota és tevékenységi ideje
+    - A észlelt pontos tevékenységet ismertető Leírás
+    - Érintett erőforrások
+    - A tevékenység leölési lánca a MITRE ATT&a CK matrixon
 
-   ![Riasztás részletei az incidensből](./media/tutorial-security-incident/tutorial-security-incident-fig3.png)
+1. A gyanús tevékenység kivizsgálásához segítséget nyújtó részletesebb információkat a **riasztás részletei** lapon tekintheti meg.
 
-   A riasztások típusa eltérő lehet. A riasztási típusokkal és az elhárításhoz szükséges lehetséges lépésekkel kapcsolatban tekintse meg [Az Azure Security Center biztonsági riasztásainak megismerése](security-center-alerts-type.md) című cikket. A biztonságosan elvethető riasztások esetében jobb gombbal a riasztásra kattinthat, majd kiválaszthatja az **Elvetés** lehetőséget:
+1. Ha áttekintette az ezen a lapon található információkat, lehetséges, hogy a válasz folytatásához elég. Ha további részletekre van szüksége:
 
-   ![Riasztás](./media/tutorial-security-incident/tutorial-security-incident-fig4.png)
+    - Forduljon az erőforrás-tulajdonoshoz, és ellenőrizze, hogy az észlelt tevékenység hamis pozitív-e.
+    - Vizsgálja meg a megtámadott erőforrás által létrehozott nyers naplókat
 
-4. Ha a hiba gyökere és a rosszindulatú tevékenység hatóköre nem ismert, további vizsgálatért lépjen a következő lépésre.
+## <a name="respond-to-a-security-alert"></a>Válaszadás biztonsági riasztásra
+Miután kivizsgálta a riasztást, és megértette a hatókörét, választ kaphat a biztonsági riasztásokra Azure Security Centeron belül:
 
-## <a name="investigate-an-alert-or-incident"></a>Egy riasztás vagy esemény vizsgálata
-1. A **Biztonsági riasztás** oldalon kattintson a **Vizsgálat indítása** gombra (ha már megkezdte a vizsgálatot, a gomb neve **Vizsgálat folytatása** lesz).
+1.  Az ajánlott válaszok megjelenítéséhez nyissa meg a **Take Action (művelet végrehajtása** ) lapot.
 
-   ![Vizsgálat](./media/tutorial-security-incident/tutorial-security-incident-fig5.png)
+    :::image type="content" source="./media/tutorial-security-incident/alert-details-take-action.png" alt-text="Biztonsági riasztások listája lap" lightbox="./media/tutorial-security-incident/alert-details-take-action.png":::
 
-   A vizsgálati térkép a biztonsági riasztáshoz vagy eseményhez kapcsolódó entitások grafikus megjelenítése. Ha a térkép egy entitására kattint, az arra vonatkozó információk új entitásokként jelennek meg, és a térkép egyre bővül. A térképen kiválasztott entitás tulajdonságai kiemelve jelennek meg az oldal jobb oldalán található panelen. Az egyes lapokon megjelenő információk a kiválasztott entitástól függően változnak. A vizsgálati folyamat során tekintse át az összes releváns információt, hogy jobban megértse a támadó mozgását.
+1.  A probléma megoldásához szükséges manuális vizsgálat lépéseiért tekintse át a **fenyegetés enyhítése** szakaszt.
+1.  Ha szeretné megerősíteni az erőforrásokat, és meg szeretné akadályozni a jövőbeli támadásokat, javítsa ki a biztonsági javaslatokat a **jövőbeni támadások megelőzése** szakaszban.
+1.  A logikai alkalmazások automatikus válaszokkal történő elindításához használja az **trigger automatikus válasza** szakaszt.
+1.  Ha az észlelt tevékenység *nem* rosszindulatú, akkor a **hasonló riasztások mellőzése** szakaszban letilthatja az ilyen típusú riasztásokat.
 
-2. Ha több bizonyítékra van szüksége, vagy további vizsgálatra van szükség a talált entitásokkal kapcsolatban, lépjen a következő lépésre.
+1.  Ha befejezte a vizsgálatot a riasztásban, és a megfelelő módon válaszolt, módosítsa az állapotot elvetett **értékre**.
 
-## <a name="search-data-for-investigation"></a>Keresés az adatok között a vizsgálathoz
+    :::image type="content" source="./media/tutorial-security-incident/set-status-dismissed.png" alt-text="Biztonsági riasztások listája lap":::
 
-A Security Center keresési képességeinek segítségével további bizonyítékokat kereshet a sérült rendszerekről, valamint további részleteket tárhat fel a vizsgálat tárgyát képező entitásokról.
+    Ezzel eltávolítja a riasztást a fő riasztások listájáról. A riasztások listája lapon található szűrő használatával megtekintheti az összes **elhagyott** állapottal rendelkező riasztást.
 
-Keresés indításához nyissa meg a **Security Center** irányítópultot, kattintson a bal oldali navigációs ablaktáblán a **Keresés** elemre, válassza ki a keresni kívánt entitásokat tartalmazó munkaterületet, írja be a keresési lekérdezést, majd kattintson a Keresés gombra.
+1.  Megadhatja a Microsoftnak szóló riasztást:
+    1. A riasztás **hasznosként** vagy **nem hasznosként** való megjelölése
+    1. Válasszon ki egy okot, és adjon hozzá egy megjegyzést.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+        :::image type="content" source="./media/tutorial-security-incident/alert-feedback.png" alt-text="Biztonsági riasztások listája lap":::
 
-A gyűjtemény részét képező többi rövid útmutató és oktatóanyag erre a rövid útmutatóra épül. Ha azt tervezi, hogy az ezt követő rövid útmutatókkal és oktatóanyagokkal dolgozik tovább, tartsa meg az automatikus kiépítés és az Azure Defender használatát. Ha nem tervezi a folytatást, vagy le szeretné tiltani az Azure Defendert:
+    > [!TIP]
+    > Áttekintjük a visszajelzéseit, hogy javítsuk az algoritmusokat, és jobb biztonsági riasztásokat nyújtsanak.
+
+## <a name="end-the-tutorial"></a>Az oktatóanyag befejezése
+
+A gyűjtemény részét képező többi rövid útmutató és oktatóanyag erre a rövid útmutatóra épül. Ha azt tervezi, hogy az ezt követő rövid útmutatókkal és oktatóanyagokkal dolgozik tovább, tartsa meg az automatikus kiépítés és az Azure Defender használatát. 
+
+Ha nem folytatja a folytatást, vagy le szeretné tiltani valamelyik funkciót:
 
 1. Térjen vissza a Security Center főmenüre, és válassza a **díjszabás és beállítások**lehetőséget.
-1. Válassza ki a leértékelni kívánt előfizetést.
-1. Állítsa be az **Azure Defendert** a kikapcsoláshoz.
-1. Kattintson a **Mentés** gombra.
-
-Ha le szeretné tiltani az automatikus kiépítést:
-
-1. Térjen vissza a Security Center főmenüre, és válassza a **biztonsági szabályzat**elemet.
-2. Válassza ki azt az előfizetést, amelynél le szeretné tiltani az automatikus kiépítést.
-3. Az automatikus kiépítés letiltásához a **Biztonsági szabályzat – Adatgyűjtés** területen válassza a **Ki** lehetőséget az **Előkészítés** elemnél.
-4. Kattintson a **Mentés** gombra.
+1. Válassza ki az adott előfizetést.
+1. A visszalépéshez válassza az **Azure Defender kikapcsolva**lehetőséget.
+1. Az automatikus kiépítés letiltásához nyissa meg az **adatgyűjtés** lapot, és állítsa be az **automatikus kiépítés** **beállítást.**
+4. Válassza a **Mentés** lehetőséget.
 
 >[!NOTE]
-> Az automatikus kiépítés letiltása nem távolítja el a Log Analytics ügynököt az Azure-beli virtuális gépekről, ahol az ügynököt kiépítték. Az automatikus kiépítés letiltása korlátozza az erőforrások biztonsági monitorozását.
+> Az automatikus kiépítés letiltása nem távolítja el a Log Analytics ügynököt olyan Azure-beli virtuális gépekről, amelyek már rendelkeznek ügynökkel. Az automatikus kiépítés letiltása korlátozza az erőforrások biztonsági monitorozását.
 >
 
-## <a name="next-steps"></a>Következő lépések
-Ebben az oktatóanyagban a Security Center azon funkcióit ismerte meg, amelyeket a rendszer egy biztonsági incidensre adott reakció során használ, például:
+## <a name="next-steps"></a>További lépések
+Ebből az oktatóanyagból megtudhatta, hogyan használhatók a biztonsági riasztásokra reagáló Security Center funkciók. Kapcsolódó anyagok esetében lásd:
 
-> [!div class="checklist"]
-> * Biztonsági incidens, amely egy erőforráshoz tartozó összes riasztás együttese
-> * Vizsgálati térkép, amely a biztonsági riasztáshoz vagy eseményhez kapcsolt entitások grafikus megjelenítése
-> * Keresési képességek a sérült rendszerekre vonatkozó további bizonyítékok kereséséhez
+- [Válaszadás Key Vaulthoz készült Azure Defender-riasztásokra](defender-for-key-vault-usage.md)
+- [Biztonsági riasztások – útmutató](alerts-reference.md)
+- [Az Azure Defender bemutatása](azure-defender.md)

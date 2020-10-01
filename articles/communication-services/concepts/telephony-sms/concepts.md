@@ -9,14 +9,14 @@ ms.author: mikben
 ms.date: 03/10/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: e5cfc1e27bae10a1c67e4506afe9db825664785f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 5598726726ecca1467b2c82c8ea7f947af033bb4
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90947107"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91614036"
 ---
-# <a name="sms-concepts"></a>SMS-fogalmak
+# <a name="sms-concepts"></a>SMS-sel kapcsolatos alapfogalmak
 
 [!INCLUDE [Private Preview Notice](../../includes/private-preview-include.md)]
 
@@ -29,13 +29,14 @@ Az Azure Communication Services SMS ügyféloldali kódtárainak legfontosabb fu
 - **Kétirányú** beszélgetések olyan forgatókönyvek támogatásához, mint például az ügyfélszolgálat, a riasztások és a találkozók emlékeztetői.
 - **Megbízható kézbesítés** valós idejű kézbesítési jelentésekkel az alkalmazásból küldött üzenetekhez.
 - **Elemzés** a használati minták és az ügyfelek részvételének nyomon követéséhez.
-- A **letiltási** kezelési támogatással automatikusan észlelhetők és betartható a díjmentes számok. A kommunikációs szolgáltatások észlelik a leállítási és indítási üzeneteket, és a következő alapértelmezett válaszokat küldik a végfelhasználók számára: 
-  - STOP – *"sikeresen leiratkozott az adott számú üzenetekre. A válasz megkezdése újrafizetésre. "*
-  - START – *"sikeresen feliratkozott a számból érkező üzenetekre. A válasz leállítása lemondható. "*
-  - A leállítás és az indítási üzenetek vissza lesznek továbbítva Önnek. Az Azure kommunikációs szolgáltatásokkal megfigyelheti és implementálhatja ezeket a letiltásokat, így biztosíthatja, hogy a rendszer nem küld további üzeneteket a kommunikációt kihagyó címzetteknek.
+- A **letiltási** kezelési támogatással automatikusan észlelhetők és betartható a díjmentes számok. Az USA-beli díjmentes számokat az USA-beli szolgáltatók felhatalmazzák és érvényesítik.
+  - Leállítás – ha egy szöveges üzenet címzettje szeretné letiltani a letiltást, a "Leállítás" üzenetet a díjmentes számra küldheti. A szolgáltató a következő alapértelmezett választ küldi le: *"hálózati msg: a" Leállítás "szót választotta, amely letiltja az ebből a számból küldött összes szöveget. A "Leállítás" szöveg visszakapcsolja az üzeneteket. "*
+  - INDÍTÁS/leállítás – ha a címzett egy díjmentes számú szöveges üzenetre szeretne újrafizetni, akkor a "START" vagy a "Leállítás" lehetőséget a díjmentes számra küldheti. A szolgáltató a következő alapértelmezett választ küldi el a START/unstop számára: *"hálózati msg: megválaszolta a" leállítást ", és megkezdi az üzenetek fogadását erről a számról."*
+  - Az Azure kommunikációs szolgáltatás a leállítási üzenetet fogja felderíteni, és letiltja az összes további üzenetet a címzettnek. A kézbesítési jelentés azt jelzi, hogy sikertelen kézbesítés történt az állapotjelző üzenettel, mert a feladó letiltotta a megadott címzettet.
+  - A Leállítás, a leállítás és az indítási üzenetek vissza lesznek továbbítva Önnek. Az Azure kommunikációs szolgáltatásokkal megfigyelheti és implementálhatja ezeket a letiltásokat, így biztosíthatja, hogy a rendszer ne küldjön olyan üzenetet a címzetteknek, akik kiválasztották a kommunikációt.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Ismerkedés az SMS küldésével](../../quickstarts/telephony-sms/send.md)

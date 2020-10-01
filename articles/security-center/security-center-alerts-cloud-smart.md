@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/02/2019
 ms.author: memildin
-ms.openlocfilehash: 1d452406b05a3ad6b2be2e31bce1063f20e6c622
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 742d7122c60b383e8ab7aa73f73b11b47843a9d5
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91575945"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613822"
 ---
 # <a name="cloud-smart-alert-correlation-in-azure-security-center-incidents"></a>Felhőbeli intelligens riasztás korrelációja Azure Security Centerban (incidensek)
 
@@ -39,7 +39,8 @@ Az incidensek vizsgálata során az elemzőknek gyakran további kontextusra van
 > [!TIP]
 > A Fusion Analytics által előállítható biztonsági incidensekről szóló riasztások listáját a [riasztások hivatkozási táblájában](alerts-reference.md#alerts-fusion)tekintheti meg.
 
-![Képernyőkép a biztonsági incidensek által észlelt jelentésről](./media/security-center-alerts-cloud-smart/security-incident.png)
+:::image type="content" source="./media/security-center-alerts-cloud-smart/security-incident.png" alt-text="Képernyőkép a biztonsági incidensek által észlelt jelentésről":::
+
 
 A biztonsági incidensek jobb megismeréséhez lásd: a [biztonsági incidensek kezelése a Azure Security Centerban](security-center-incident.md).
 

@@ -7,12 +7,12 @@ ms.date: 7/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 084ba93baa35790da58e7765750bb79de27ed69c
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 1b329206dcc41d8f7fcb3874da037f5b57142722
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91578019"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613662"
 ---
 # <a name="tutorial-connect-a-sample-iot-plug-and-play-multiple-component-device-application-to-iot-hub-python"></a>Oktatóanyag: minta IoT csatlakoztatása Plug and Play több összetevőből álló eszköz alkalmazása IoT Hub (Python)
 
@@ -57,13 +57,13 @@ Ez a példa egy IoT Plug and Play hőmérséklet-vezérlő eszközt valósít me
 A *Azure-IOT-SDK-python\azure-IOT-device\samples\pnp* mappa tartalmazza a IOT Plug and Play eszközhöz tartozó mintakód kódját. A hőmérséklet-vezérlő mintájának fájljai a következők:
 
 - temp_controller_with_thermostats.
-- pnp_helper_preview_refresh.
+- pnp_helper.
 
 A hőmérséklet-vezérlő több összetevővel és egy alapértelmezett összetevővel rendelkezik, a hőmérséklet-vezérlő DTDL modellje alapján.
 
 Nyissa meg a *temp_controller_with_thermostats.* a fájlt egy tetszőleges szerkesztőben. A fájlban található kód:
 
-1. Importálás `pnp_helper_preview_refresh.py` a segítő módszerekhez való hozzáféréshez.
+1. Importálás `pnp_helper.py` a segítő módszerekhez való hozzáféréshez.
 
 1. A két digitális kettős modell azonosítóját (DTMIs) határozza meg, amelyek egyedileg jelölik a DTDL modellben definiált két különböző felületet. A valós hőmérséklet-vezérlő összetevőinek meg kell valósítaniuk ezt a két felületet. Ez a két csatoló már közzé van téve egy központi tárházban. Ezeknek a DTMIs ismerniük kell a felhasználó számára, és az eszközök megvalósítási forgatókönyvtől függően változhatnak. Az aktuális minta esetében ez a két csatoló a következőket képviseli:
 

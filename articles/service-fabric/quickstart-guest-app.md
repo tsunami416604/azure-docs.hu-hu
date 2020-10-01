@@ -4,12 +4,12 @@ description: Meglévő Node.js-alkalmazás üzemeltetése egy Azure Service Fabr
 ms.topic: conceptual
 ms.date: 12/06/2017
 ms.custom: devx-track-js
-ms.openlocfilehash: 29278faa80340d17e9ed9093dd5f432fd24a3a2d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: dfd1fe9db54925bc17a53a7686fa34d5ea53cd5a
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91314283"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91614104"
 ---
 # <a name="host-a-nodejs-application-on-azure-service-fabric"></a>Node.js-alkalmazás üzemeltetése az Azure Service Fabricban
 
@@ -31,7 +31,7 @@ Projekt létrehozása `CTRL`+`SHIFT`+`N` használatával
 
 Az **Új projekt** párbeszédpanelen válassza a **Felhő > Service Fabric-alkalmazás** elemet.
 
-Adja a **MyGuestApp** nevet az alkalmazásnak, majd kattintson az **OK** gombra.
+Nevezze el az alkalmazás **MyGuestApp** , és kattintson a **Létrehozás**gombra.
 
 >[!IMPORTANT]
 >A Node.js gyakran túllépi a Windows elérési utakra vonatkozó 260 karakteres korlátját. Használjon rövid elérési utat a projekthez, például: **c:\code\svc1**. Igény szerint az **[alábbi utasításokat](https://stackoverflow.com/a/41687101/1664231)** követve engedélyezheti a hosszú fájlelérési utakat a Windows 10 rendszerben.
@@ -126,7 +126,7 @@ Navigáljon erre a címre, ahol megjelenik a `HELLO WORLD` válasz.
 
 Ne felejtse el törölni az ehhez a rövid útmutatóhoz létrehozott összes erőforrást, mivel ezekért az erőforrásokért kell fizetnie.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információk a [futtatható vendégalkalmazásokról](service-fabric-guest-executables-introduction.md).
 
 <!-- Image References -->

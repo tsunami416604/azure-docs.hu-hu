@@ -3,12 +3,12 @@ title: Event Hubs – folyamatos átviteli események rögzítése Azure Portal 
 description: Ez a cikk azt ismerteti, hogyan engedélyezhető az események rögzítése az Azure Event Hubs az Azure Portal használatával.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 103aa4e3da84e41275bec6310035c117fe780a18
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2381bfa627d00a78ed91af0ba81579588ee016ce
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85315736"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613577"
 ---
 # <a name="enable-capturing-of-events-streaming-through-azure-event-hubs"></a>Az Azure Event Hubs használatával streamelt események rögzítésének engedélyezése
 
@@ -17,6 +17,9 @@ Az Azure [Event Hubs Capture][capture-overview] szolgáltatással automatikusan 
 A Capture-t konfigurálhatja az eseményközpont létrehozásakor az [Azure-portálon](https://portal.azure.com). Az Azure [blob Storage](https://azure.microsoft.com/services/storage/blobs/) -tárolóba vagy egy [Azure Data Lake Storage Gen 1 vagy Gen 2](https://azure.microsoft.com/services/data-lake-store/) fiókba rögzítheti az adatmennyiséget.
 
 További információk: [Az Event Hubs Capture áttekintése][capture-overview].
+
+> [!IMPORTANT]
+> A célként megadott tárterület (Azure Storage vagy Azure Data Lake Storage) fióknak ugyanabban az előfizetésben kell lennie, mint az Event hub-nak.
 
 ## <a name="capture-data-to-azure-storage"></a>Az Azure Storage-ba való adatrögzítés
 
@@ -84,7 +87,7 @@ A Capture-t olyan meglévő eseményközpontokon konfigurálhatja, amelyek az Ev
 
 ![A 2. generációs Azure Data Lake Storage konfigurálása](./media/event-hubs-capture-enable-through-portal/configure-data-lake-storage-gen2.png)
 
-### <a name="azure-data-lake-storage-gen-1"></a>1. generációs Azure Data Lake Storage 
+### <a name="azure-data-lake-storage-gen-1"></a>Azure Data Lake Storage Gen 1 
 
 ![Azure Data Lake Storage konfigurálása][4]
 

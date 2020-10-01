@@ -7,12 +7,12 @@ ms.date: 09/24/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: e7728af831b26bff19f347e5b85db6420e7966ed
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: f082e4d4c6c71e460842f80a5aa17130b6a41279
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91580481"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91614223"
 ---
 # <a name="iot-plug-and-play-service-developer-guide"></a>IoT Plug and Play Service – fejlesztői útmutató
 
@@ -28,19 +28,20 @@ Használja az Azure IoT Service SDK-kat a megoldásban az eszközök és modulok
 
 A szolgáltatás SDK-k lehetővé teszik, hogy egy megoldásról, például egy asztali vagy webalkalmazásból férhessenek hozzá az eszköz adataihoz. A szolgáltatás SDK-k két névteret és objektummodell-modellt tartalmaznak, amelyekkel lekérheti a modell AZONOSÍTÓját:
 
-- IOT hub szolgáltatás ügyfelének.
-- Digitális Twins szolgáltatás-ügyfél.
+- IOT hub szolgáltatás ügyfelének. Ez a szolgáltatás a modell AZONOSÍTÓját a Device Twin tulajdonságként teszi elérhetővé.
 
-| Nyelv | IoT Hub szolgáltatási ügyfél | Digitális Twins szolgáltatás ügyfele |
+- Digitális Twins szolgáltatás-ügyfél. Az új digitális Twins API olyan magas szintű szerkezeteken működik, mint például az összetevők, a tulajdonságok és a digitális Twins-definíciós nyelvi modellt definiáló parancsok. A digitális Twin API-k megkönnyítik a megoldás-építők számára, hogy IoT Plug and Play megoldásokat hozzanak létre.
+
+| Platform | IoT Hub szolgáltatási ügyfél | Digitális Twins szolgáltatás ügyfele |
 | -------- | ---------------------- | ---------------------------- |
-| C#       | [Dokumentáció](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.shared.twin.modelid?view=azure-dotnet#Microsoft_Azure_Devices_Shared_Twin_ModelId&preserve-view=true) <br/> [Minta](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/service/PnpServiceSamples/Thermostat/Program.cs)| [Minta](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/service/DigitalTwinClientSamples) |
-| Java     | [Dokumentáció](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.service.devicetwin.devicetwindevice?view=azure-java-stable&preserve-view=true) <br/> [Minta](https://github.com/Azure/azure-iot-sdk-java/blob/master/service/iot-service-samples/pnp-service-sample/thermostat-service-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/service/Thermostat.java)| [Minta](https://github.com/Azure/azure-iot-sdk-java/tree/master/service/iot-service-samples/digitaltwin-service-samples) |
-| Node.js  | [Dokumentáció](https://docs.microsoft.com/javascript/api/azure-iothub/twin?view=azure-node-latest&preserve-view=true) <br/> [Minta](https://github.com/Azure/azure-iot-sdk-node/blob/master/service/samples/javascript/twin.js)| [Dokumentáció](https://docs.microsoft.com/javascript/api/azure-iot-digitaltwins-service/?view=azure-node-latest&preserve-view=true) |
-| Python   | [Dokumentáció](https://docs.microsoft.com/python/api/azure-iot-hub/azure.iot.hub.iothubregistrymanager?view=azure-python&preserve-view=true) <br/> [Minta](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-hub/samples/iothub_registry_manager_method_sample.py)| [Dokumentáció](https://docs.microsoft.com/python/api/azure-iot-hub/azure.iot.hub.iothubdigitaltwinmanager?view=azure-python&preserve-view=true) | 
+| .NET     | [Dokumentáció](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.shared.twin.modelid?view=azure-dotnet#Microsoft_Azure_Devices_Shared_Twin_ModelId&preserve-view=true) <br/> [Példák](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/service/PnpServiceSamples)| [Példák](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/service/DigitalTwinClientSamples) |
+| Java     | [Dokumentáció](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.service.devicetwin.devicetwindevice?view=azure-java-stable&preserve-view=true) <br/> [Példák](https://github.com/Azure/azure-iot-sdk-java/blob/master/service/iot-service-samples/pnp-service-sample)| [Példák](https://github.com/Azure/azure-iot-sdk-java/tree/master/service/iot-service-samples/digitaltwin-service-samples) |
+| Node.js  | [Dokumentáció](https://docs.microsoft.com/javascript/api/azure-iothub/twin?view=azure-node-latest&preserve-view=true) <br/> [Minta](https://github.com/Azure/azure-iot-sdk-node/blob/master/service/samples/javascript/twin.js)| [Dokumentáció](https://docs.microsoft.com/javascript/api/azure-iot-digitaltwins-service/?view=azure-node-latest&preserve-view=true) <br/> [Minta](https://github.com/Azure/azure-iot-sdk-node/blob/master/service/samples/javascript/get_digital_twin.js) |
+| Python   | [Dokumentáció](https://docs.microsoft.com/python/api/azure-iot-hub/azure.iot.hub.iothubregistrymanager?view=azure-python&preserve-view=true) <br/> [Minta](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-hub/samples/iothub_registry_manager_method_sample.py)| [Dokumentáció](https://docs.microsoft.com/python/api/azure-iot-hub/azure.iot.hub.iothubdigitaltwinmanager?view=azure-python&preserve-view=true) <br/> [Minta](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-hub/samples/get_digital_twin_sample.py) |
 
 ## <a name="rest-api"></a>REST API
 
-Az alábbi példák a IoT Hub REST API használatával kommunikálnak a csatlakoztatott IoT Plug and Play eszközzel. Az API jelenlegi verziója: `2020-09-30` . Hozzáfűzés `?api-version=2020-05-31` a REST PI-hívásokhoz.
+Az alábbi példák a IoT Hub REST API használatával kommunikálnak a csatlakoztatott IoT Plug and Play eszközzel. Az API jelenlegi verziója: `2020-09-30` . Hozzáfűzés `?api-version=2020-09-30` a REST PI-hívásokhoz.
 
 > [!NOTE]
 > Az API jelenleg nem támogatja az ikrek modulját `digitalTwins` .

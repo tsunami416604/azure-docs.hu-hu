@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 54c607ebac02a9d7e534d24656a8687e9ff39725
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: b97d36a5773eeb82a60330d0398ea19232f72b1e
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91533179"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613713"
 ---
 # <a name="set-up-a-development-environment-for-azure-machine-learning"></a>Fejlesztési környezet beállítása Azure Machine Learninghoz
 
@@ -228,7 +228,7 @@ Használja ezeket a beállításokat:
 | Beállítás |A következőre érvényes:| Érték |
 |----|---|---|
 | Fürt neve |mindig| yourclustername |
-| A Databricks futtatókörnyezete |mindig|Nem ML futtatókörnyezet 6,5 (Scala 2,11, Spark 2.4.3) |
+| A Databricks futtatókörnyezete |mindig|Nem ML futtatókörnyezet 7,1 (Scala 2,21, Spark 3.0.0) |
 | Python-verzió |mindig| 3 |
 | Feldolgozók |mindig| 2 vagy magasabb |
 | Munkavégző csomópont virtuálisgép-típusai <br>(meghatározza az egyidejű ismétlések maximális számát) |Automatizált ML<br>csak| A memóriára optimalizált virtuális gép előnyben részesített |
@@ -238,19 +238,18 @@ A folytatás előtt várjon, amíg a fürt fut.
 
 ### <a name="install-the-correct-sdk-into-a-databricks-library"></a>A megfelelő SDK telepítése Databricks-tárba
 
-Ha a fürt fut, [hozzon létre egy függvénytárat](https://docs.databricks.com/user-guide/libraries.html#create-a-library) , hogy csatolja a megfelelő Azure Machine learning SDK-csomagot a fürthöz.
+Ha a fürt fut, [hozzon létre egy függvénytárat](https://docs.databricks.com/user-guide/libraries.html#create-a-library) , hogy csatolja a megfelelő Azure Machine learning SDK-csomagot a fürthöz. Az automatikus [gépi tanulás című szakaszban a Databricks-hez készült SDK](#sdk-for-databricks-with-automated-machine-learning)-hoz az automatikus ml-re ugorjon.
 
 1. Kattintson a jobb gombbal arra a munkaterület-mappára, ahol a könyvtárat tárolni szeretné. Válassza **Create**a  >  **könyvtár**létrehozása lehetőséget.
 
-1. **Csak egy** lehetőséget válasszon (más SDK-telepítés nem támogatott)
+1. Válassza a következő lehetőséget (más SDK-telepítés nem támogatott)
 
    |SDK- &nbsp; csomag &nbsp; extrái|Forrás|PyPi &nbsp; neve&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
    |----|---|---|
    |Databricks| Python-tojás vagy PyPI feltöltése | azureml – SDK [databricks]|
-   |Databricks esetében –<br> automatizált ML-képességek| Python-tojás vagy PyPI feltöltése | `azureml-sdk[automl]`|
 
    > [!Warning]
-   > Más SDK-extrák nem telepíthetők. Válassza ki az előző beállítások közül az egyiket [ `databricks` ] vagy [ `automl` ].
+   > Más SDK-extrák nem telepíthetők. Válassza a csak a [ `databricks` ] lehetőséget.
 
    * Ne válassza **az Automatikus csatolás az összes fürthöz**lehetőséget.
    * Válassza a  **csatolás** elemet a fürt neve mellett.
@@ -270,9 +269,17 @@ Ha a fürt fut, [hozzon létre egy függvénytárat](https://docs.databricks.com
 
 Ha a telepítés sikeres volt, az importált függvénytárnak a következőhöz hasonlóan kell kinéznie:
 
-SDK a Databricks-hez a Databricks-hez készült automatikus gépi tanulás **_nélkül_** ![ Azure Machine learning SDK](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
+#### <a name="sdk-for-databricks"></a>Databricks SDK
+![Azure Machine Learning SDK a Databricks-hez](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
 
-SDK az Databricks-hez **készült** automatizált Machine learning SDK-val a Databricks-re ![ telepített automatikus gépi tanulással](./media/how-to-configure-environment/automlonadb.png)
+#### <a name="sdk-for-databricks-with-automated-machine-learning"></a>SDK a Databricks automatizált gépi tanulással
+Ha a fürtöt a Databricks nem ML Runtime 7,1-es vagy újabb verzióval hozták létre, futtassa a következő parancsot a jegyzetfüzet első cellájában a pénzmosás SDK telepítéséhez.
+
+```
+%pip install -r https://aka.ms/automl_linux_requirements.txt
+```
+A nem ML 7,0-es és alacsonyabb Databricks esetében telepítse a pénzmosás SDK-t az [init parancsfájl](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks/automl/README.md)használatával.
+
 
 ### <a name="start-exploring"></a>Kezdje el az ismerkedést
 
