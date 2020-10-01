@@ -7,17 +7,17 @@ ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: reference
 author: bonova
 ms.author: bonova
 ms.reviewer: sstein, jovanpop, sachinp
 ms.date: 09/14/2020
-ms.openlocfilehash: c563862c777dd9b5bf4c9f31155aa65c430acd1a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 71392b652f305f085e8eddbfe75e0585a756bc4a
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91323238"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91618114"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Az Azure SQL felügyelt példányok erőforrás-korlátainak áttekintése
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -65,7 +65,7 @@ Az SQL felügyelt példányának két szolgáltatási szintje van: [általános 
 > [!Important]
 > A üzletileg kritikus Service-szintű szolgáltatás a felügyelt SQL-példány (másodlagos replika) egy további beépített példányát biztosítja, amely csak olvasható számítási feladatokhoz használható. Ha elkülönítheti az írási és olvasási lekérdezéseket és a csak olvasható/analitikai/jelentéskészítési lekérdezéseket, akkor a virtuális mag és a memóriát is megkezdheti ugyanarra az árakra. Előfordulhat, hogy a másodlagos replika néhány másodperccel az elsődleges példány mögött van, ezért olyan jelentéskészítési/elemzési munkaterhelések kiszervezésére lett kialakítva, amelyeknek nincs szükségük pontos aktuális állapotára. Az alábbi táblázatban a **csak olvasható lekérdezések** a másodlagos replikán végrehajtott lekérdezések.
 
-| **Funkció** | **általános célú** | **Üzletileg kritikus** |
+| **Funkció** | **Általános célú** | **Üzletileg kritikus** |
 | --- | --- | --- |
 | Virtuális magok száma\* | Gen4:8, 16, 24<br/>Gen5:4, 8, 16, 24, 32, 40, 64, 80 | Gen4:8, 16, 24 <br/> Gen5:4, 8, 16, 24, 32, 40, 64, 80 <br/>\*A csak olvasható lekérdezések esetében azonos számú virtuális mag van hozzárendelve. |
 | Maximális memória | Gen4:56 GB – 168 GB (7GB/virtuális mag)<br/>Gen5:20,4 GB – 408 GB (5.1 GB/virtuális mag)<br/>További virtuális mag hozzáadásával további memóriát érhet el. | Gen4:56 GB – 168 GB (7GB/virtuális mag)<br/>Gen5:20,4 GB-408 GB (5.1 GB/virtuális mag) olvasási és írási lekérdezésekhez<br/>+ további 20,4 GB – 408 GB (5.1 GB/virtuális mag) a csak olvasható lekérdezésekhez.<br/>További virtuális mag hozzáadásával további memóriát érhet el. |
@@ -161,7 +161,7 @@ A következő táblázat a támogatott előfizetési típusok **alapértelmezett
 
 Ha az aktuális régiókban több példányra van szüksége, küldjön egy támogatási kérést a kvóta kiterjesztéséhez a Azure Portal használatával. További információ: [a kérelmek kvótájának növekedése Azure SQL Database](../database/quota-increase-request.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ az SQL felügyelt példányáról: [Mi az SQL felügyelt példánya?](sql-managed-instance-paas-overview.md).
 - A díjszabással kapcsolatos információkért lásd: az [SQL felügyelt példányának díjszabása](https://azure.microsoft.com/pricing/details/sql-database/managed/).

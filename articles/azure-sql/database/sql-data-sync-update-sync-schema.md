@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: data-movement
 ms.custom: data sync
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 11/14/2018
-ms.openlocfilehash: b42624506b3fe3a40cd19353c0dc25ecd8a5da02
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: fb64348e53dc92ef8f5830f2649afdf9eca3a9ca
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328802"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91616482"
 ---
 # <a name="automate-the-replication-of-schema-changes-in-azure-sql-data-sync"></a>A séma változásainak az Azure-ban való replikálásának automatizálása SQL-adatszinkronizálás
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -219,7 +219,7 @@ Ha meg szeretné tisztítani a rekordokat a séma módosításainak nyomon köve
 
 -   Ne használja a CSONKÍTás lehetőséget a séma-változások követése táblában lévő adattörléshez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az SQL Data Syncről:
 

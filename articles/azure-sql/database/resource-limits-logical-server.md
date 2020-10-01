@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: single-database
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 09/15/2020
-ms.openlocfilehash: 32c5135629bf56645ea39a8eee991de3cae6dca0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6589211839a5c1667a6b5cef22220fd917f7e4af
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325334"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91618960"
 ---
 # <a name="resource-limits-for-azure-sql-database-and-azure-synapse-analytics-servers"></a>A Azure SQL Database és az Azure szinapszis Analytics-kiszolgálók erőforrás-korlátai
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -96,7 +96,7 @@ A memórián kívüli hibák észlelésekor a megoldás a következőkre terjed 
 - Az adatbázis vagy a rugalmas készlet szolgáltatási szintjeinek vagy számítási méretének növelése. Lásd: [önálló adatbázis-erőforrások méretezése](single-database-scale.md) és [rugalmas készlet erőforrásainak méretezése](elastic-pool-scale.md).
 - A lekérdezések és a konfiguráció optimalizálása a memória kihasználtságának csökkentése érdekében. Az alábbi táblázat ismerteti az általános megoldásokat.
 
-|Megoldás|Description|
+|Megoldás|Leírás|
 | :----- | :----- |
 |A memóriabeli támogatások méretének csökkentése|A memória-támogatással kapcsolatos további információkért tekintse meg a [SQL Server memória-engedélyezés](https://techcommunity.microsoft.com/t5/sql-server/understanding-sql-server-memory-grant/ba-p/383595) blogbejegyzésének ismertetése című témakört. A túlzottan nagy memória-támogatás elkerülésére szolgáló közös megoldás a [statisztikák](https://docs.microsoft.com/sql/relational-databases/statistics/statistics) naprakészen tartása. Ez a lekérdezési motor által a memória-használat pontosabb becslését eredményezi, így elkerülhető a szükségtelenül nagy memória-támogatás.</br></br>Az adatbázis-kezelő a 140-es és újabb kompatibilitási szintet használó adatbázisokban automatikusan megváltoztathatja a memória-engedélyezési méretet a [Batch Mode memória-engedélyezési visszajelzések](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#batch-mode-memory-grant-feedback)használatával. Az adatbázis-kezelő a 150-es és újabb kompatibilitási szintet használó adatbázisokban hasonlóan a [sor módú memória-engedélyezési visszajelzéseket](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#row-mode-memory-grant-feedback)is használja a leggyakoribb soros üzemmódú lekérdezéseknél. Ez a beépített funkció segít elkerülni a memórián belüli hibákat a szükségtelenül nagy memória-támogatás miatt.|
 |A lekérdezési terv gyorsítótára méretének csökkentése|Az adatbázismotor gyorsítótárazza a memóriában a lekérdezési terveket, így elkerülhető a lekérdezés-végrehajtás minden lekérdezési tervének fordítása. Ha el szeretné kerülni, hogy a lekérdezési terv gyorsítótára a csak egyszer használt gyorsítótárazási csomagokat okozza, engedélyezze a OPTIMIZE_FOR_AD_HOC_WORKLOADS [adatbázis-hatókörű konfigurációt](https://docs.microsoft.com/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql).|
@@ -182,7 +182,7 @@ Ha a rendszer észleli, hogy a gépen rendelkezésre álló szabad terület alac
 
 Mivel az adatmennyiséget fizikailag egy másik gépre másolják, a nagyobb adatbázisok áthelyezése jelentős időt igényelhet. Ebben az időszakban, ha egy nagyméretű felhasználói adatbázis vagy rugalmas készlet, vagy az `tempdb` adatbázis nagy mértékben növekszik, akkor a lemezterület kifogyása növekszik. A rendszer kiegyensúlyozott módon kezdeményezi az adatbázis-áthelyezést, hogy megakadályozza a felesleges hibákat, és elkerülje a szükségtelen feladatátvételeket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az általános Azure-korlátokkal kapcsolatos információkért lásd: [Azure-előfizetések és-szolgáltatások korlátai, kvótái és megkötései](../../azure-resource-manager/management/azure-subscription-service-limits.md).
 - További információ a DTU és a Edtu: [DTU és edtu](purchasing-models.md#dtu-based-purchasing-model).

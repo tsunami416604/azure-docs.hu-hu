@@ -7,17 +7,17 @@ ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: bonova
 ms.author: bonova
 ms.reviewer: sstein
 ms.date: 09/05/2019
-ms.openlocfilehash: c5ee1f1fbd55bfa44f78f2d1f0129b60be8ea34c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5798220ad92a99f32f757ffa20f9233b8c79151b
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325181"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91617434"
 ---
 # <a name="deploy-azure-sql-managed-instance-to-an-instance-pool"></a>Az Azure SQL felügyelt példányának üzembe helyezése egy példány-készleten
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -253,7 +253,7 @@ Meglévő adatbázisok áthelyezése:
 Ha több adatbázis van, ismételje meg a folyamatot az egyes adatbázisokhoz.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A szolgáltatások és az összehasonlítások listájáért lásd: [általános SQL-szolgáltatások](../database/features-comparison.md).
 - További információ a VNet konfigurálásáról: [SQL felügyelt példány VNet konfigurációja](connectivity-architecture-overview.md).

@@ -7,17 +7,17 @@ ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: quickstart
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, jovanpop
 ms.date: 03/13/2019
-ms.openlocfilehash: a629d230d63506a163cac0c530a1a8fbfed9627f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1bcaaed394d8e802a9660e2fdf0e37994ee795a7
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325079"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91617689"
 ---
 # <a name="quickstart-configure-a-point-to-site-connection-to-azure-sql-managed-instance-from-on-premises"></a>Gyors útmutató: pont – hely kapcsolat konfigurálása az Azure SQL felügyelt példányához a helyszíni környezetből
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -83,7 +83,7 @@ Ez a rövid útmutató:
 1. Nyissa meg a **VPN** -t a **hálózati & interneten** a helyi ügyfélszámítógépen, és válassza ki az SQL felügyelt példányának virtuális hálózatát, hogy kapcsolatot létesítsen ehhez a VNet. A következő képen a VNet neve **MyNewVNet**.
 
     ![VPN-kapcsolat](./media/point-to-site-p2s-configure/vpn-connection.png)  
-2. Válassza a **Kapcsolódás** lehetőséget.
+2. Kattintson a **Csatlakozás** gombra.
 3. A párbeszédpanelen válassza a **kapcsolat**lehetőséget.
 
     ![VPN-kapcsolat](./media/point-to-site-p2s-configure/vpn-connection2.png)  
@@ -104,7 +104,7 @@ Ez a rövid útmutató:
 
 A csatlakozási lehetőség után megtekintheti a rendszer és a felhasználói adatbázisokat az adatbázisok csomópontban. A biztonság, a kiszolgálói objektumok, a replikálás, a felügyelet, a SQL Server Agent és a XEvent Profiler-csomópontok különböző objektumait is megtekintheti.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az Azure-beli virtuális gépekről történő kapcsolódást bemutató rövid útmutató: [pont – hely kapcsolat konfigurálása](point-to-site-p2s-configure.md).
 - Az alkalmazások csatlakozási lehetőségeinek áttekintését lásd: [alkalmazások csatlakoztatása SQL felügyelt példányhoz](connect-application-instance.md).

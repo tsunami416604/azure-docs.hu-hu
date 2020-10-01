@@ -2,18 +2,18 @@
 title: A tárolók Azure Monitorának frissítése a metrikák számára | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan frissítheti Azure Monitor a tárolók számára az összesített metrikák vizsgálatát és riasztását támogató egyéni metrikák funkció engedélyezéséhez.
 ms.topic: conceptual
-ms.date: 07/17/2020
+ms.date: 09/24/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d56a280bdef2058c28d596f6c259eb319d80b08e
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 6c420c91e20cc1cf9ab5e4f58bdd352ead3ba4d0
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499959"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91618145"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>A tárolókhoz készült Azure Monitor frissítése a metrikák engedélyezéséhez
 
-A tárolók Azure Monitor támogatja a metrikák gyűjtését az Azure Kubernetes Services (ak) fürtök csomópontjairól és a hüvelyekről, és azokat a Azure Monitor metrikák tárolójába írja. Ennek a változásnak a célja, hogy jobb ütemezést nyújtson az összesített számítások (AVG, Darabszám, max. min.) bemutatása a teljesítménymutatók esetében, támogatja a teljesítmény-diagramok Azure Portal-irányítópultokon való rögzítését, valamint a metrikai riasztások támogatását.
+A tárolók Azure Monitor támogatja az Azure Kubernetes Services (ak) és az Azure arc által engedélyezett Kubernetes-fürtök csomópontjainak és hüvelyének begyűjtését, valamint a Azure Monitor metrikák tárolóba írását. Ennek a változásnak a célja, hogy jobb ütemezést nyújtson az összesített számítások (AVG, Darabszám, max. min.) bemutatása a teljesítménymutatók esetében, támogatja a teljesítmény-diagramok Azure Portal-irányítópultokon való rögzítését, valamint a metrikai riasztások támogatását.
 
 >[!NOTE]
 >Ez a funkció jelenleg nem támogatja az Azure Red Hat OpenShift-fürtöket.
@@ -27,9 +27,12 @@ A szolgáltatás részeként a következő metrikák engedélyezettek:
 | Bepillantást nyerhet. tároló/hüvely | podCount, completedJobsCount, restartingContainerCount, oomKilledContainerCount, podReadyPercentage | A *Pod* -metrikák a következő dimenziókat tartalmazzák: ControllerName, Kubernetes névtér, név, fázis. |
 | Bepillantást nyerhet. tároló/tárolók | cpuExceededPercentage, memoryRssExceededPercentage, memoryWorkingSetExceededPercentage | |
 
-Ezen új képességek támogatásához egy új, a **Microsoft/OMS: ciprod02212019**verziót tároló ügynök szerepel a kiadásban. Az AK új központi telepítései automatikusan tartalmazzák ezt a konfigurációs változást és képességet. A fürt frissítése a szolgáltatás támogatásához a Azure Portal, Azure PowerShell vagy az Azure CLI használatával végezhető el. Azure PowerShell és parancssori felülettel. Ezt a fürtöt vagy az előfizetésben lévő összes fürt számára engedélyezheti.
+Ezen új képességek támogatásához egy új, tárolóban lévő ügynök szerepel a kiadásban, a **Microsoft/OMS: ciprod05262020** for AK és a **Microsoft/OMS: Ciprod09252020** for Azure arc enabled Kubernetes-fürtökben. Az AK új központi telepítései automatikusan tartalmazzák ezt a konfigurációs változást és képességet. A fürt frissítése a szolgáltatás támogatásához a Azure Portal, Azure PowerShell vagy az Azure CLI használatával végezhető el. Azure PowerShell és parancssori felülettel. Ezt a fürtöt vagy az előfizetésben lévő összes fürt számára engedélyezheti.
 
-Bármelyik folyamat hozzárendeli a figyelési **metrika közzétevői** szerepkörét a fürt egyszerű vagy felhasználó által hozzárendelt MSI-fiókjához a figyelési bővítményhez, így az ügynök által gyűjtött adatok közzétehetők a fürtök erőforrásában. A monitorozási metrikák közzétevője csak az erőforráshoz tartozó mérőszámok leküldésére jogosult, nem változtathat meg semmilyen állapotot, nem frissítheti az erőforrást, illetve nem olvashatja el az adatokat. További információ a szerepkörről: a [metrikák közzétevői szerepkörének figyelése](../../role-based-access-control/built-in-roles.md#monitoring-metrics-publisher).
+Bármelyik folyamat hozzárendeli a figyelési **metrika közzétevői** szerepkörét a fürt egyszerű vagy felhasználó által hozzárendelt MSI-fiókjához a figyelési bővítményhez, így az ügynök által gyűjtött adatok közzétehetők a fürtök erőforrásában. A monitorozási metrikák közzétevője csak az erőforráshoz tartozó mérőszámok leküldésére jogosult, nem változtathat meg semmilyen állapotot, nem frissítheti az erőforrást, illetve nem olvashatja el az adatokat. További információ a szerepkörről: a [metrikák közzétevői szerepkörének figyelése](../../role-based-access-control/built-in-roles.md#monitoring-metrics-publisher). A figyelési mérőszámok közzétevői szerepkörének követelménye nem alkalmazható az Azure arc-kompatibilis Kubernetes-fürtökre.
+
+> [!IMPORTANT]
+> A frissítés nem szükséges az Azure arc-kompatibilis Kubernetes-fürtökhöz, mivel azok már rendelkeznek a minimálisan szükséges ügynök-verzióval.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -37,7 +40,7 @@ A fürt frissítése előtt erősítse meg a következőket:
 
 * Az egyéni metrikák csak az Azure-régiók egy részhalmazában érhetők el. A támogatott régiók listáját [itt](../platform/metrics-custom-overview.md#supported-regions)dokumentáljuk.
 
-* Az AK-fürterőforrás **[tulajdonosi](../../role-based-access-control/built-in-roles.md#owner)** szerepkörének tagja, hogy engedélyezze a Node és a pod egyéni teljesítmény-mérőszámok gyűjteményét.
+* Az AK-fürterőforrás **[tulajdonosi](../../role-based-access-control/built-in-roles.md#owner)** szerepkörének tagja, hogy engedélyezze a Node és a pod egyéni teljesítmény-mérőszámok gyűjteményét. Ez a követelmény nem vonatkozik az Azure arc-kompatibilis Kubernetes-fürtökre.
 
 Ha úgy dönt, hogy az Azure CLI-t használja, először telepítenie és használnia kell a CLI-t helyileg. Az Azure CLI 2.0.59 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a parancsot `az --version` . Ha telepítenie vagy frissítenie kell az Azure CLI-t, tekintse meg [Az Azure CLI telepítését](/cli/azure/install-azure-cli)ismertető témakört.
 

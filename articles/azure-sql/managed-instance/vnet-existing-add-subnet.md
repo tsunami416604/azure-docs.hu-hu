@@ -7,17 +7,17 @@ ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 03/17/2020
-ms.openlocfilehash: 17838d4a652be3a1b50da56812731e0f634a0c08
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 461acc07ee2217a38f7bb59805d4c7e0de4a1e22
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91323124"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91617655"
 ---
 # <a name="configure-an-existing-virtual-network-for-azure-sql-managed-instance"></a>Meglévő virtuális hálózat konfigurálása felügyelt Azure SQL-példányhoz
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -31,7 +31,7 @@ Ha a következő esetek valamelyike vonatkozik Önre, a jelen cikkben ismertetet
 - Azt szeretné, hogy az alhálózat továbbra is megfeleljen a [hálózati követelményeknek](connectivity-architecture-overview.md#network-requirements) , miután végzett a módosításokat.
 
 > [!Note]
-> Felügyelt példányok csak a Azure Resource Manager üzemi modellel létrehozott virtuális hálózatokon hozhatók létre. A klasszikus üzemi modellel létrehozott Azure-beli virtuális hálózatok nem támogatottak. Az alhálózat méretének kiszámítása a [felügyelt SQL-példányhoz tartozó alhálózat méretének meghatározása](vnet-subnet-determine-size.md) című cikkben ismertetett irányelvek alapján. Az alhálózatot nem lehet átméretezni az erőforrások belső telepítése után.
+> Felügyelt példányok csak a Azure Resource Manager üzemi modellel létrehozott virtuális hálózatokon hozhatók létre. A klasszikus üzemi modellel létrehozott Azure-beli virtuális hálózatok nem támogatottak. Az alhálózat méretének kiszámítása a [felügyelt SQL-példányhoz tartozó alhálózat méretének meghatározása](vnet-subnet-determine-size.md) című cikkben ismertetett irányelvek alapján. Az alhálózat a benne lévő erőforrások üzembe helyezése után már nem méretezhető át.
 >
 > A felügyelt példány létrehozása után a példány vagy a VNet másik erőforráscsoporthoz vagy előfizetésbe való áthelyezése nem támogatott.
 
@@ -58,7 +58,7 @@ A szkript három lépésben készíti elő az alhálózatot:
 2. Confirm (megerősítés): megjeleníti a felhasználó által az SQL felügyelt példány központi telepítésének előkészítéséhez szükséges módosításokat. Emellett beleegyezik.
 3. Előkészítés: helyesen konfigurálja a virtuális hálózatot és az alhálózatot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az áttekintést lásd: [Mi az SQL felügyelt példány?](sql-managed-instance-paas-overview.md).
 - A virtuális hálózatok létrehozásával, felügyelt példány létrehozásával és adatbázis biztonsági másolatból való visszaállításával kapcsolatos oktatóanyagért lásd: [felügyelt példány létrehozása](instance-create-quickstart.md).

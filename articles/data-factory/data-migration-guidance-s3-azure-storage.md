@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 8/04/2019
-ms.openlocfilehash: 5de1ef97050f37bb44d87ebae1d95df365952ace
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 963a541835c5e45c5642f2d516da53fd165142b4
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90984892"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91616924"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-amazon-s3-to-azure-storage"></a>Az Amazon S3-ból az Azure Storage-ba való Migrálás Azure Data Factory használata 
 
@@ -74,7 +74,7 @@ Az adatáttelepítés privát kapcsolaton keresztül:
 
 - Ebben az architektúrában az adatáttelepítés az AWS Direct csatlakozás és az Azure Express Route közötti privát kapcsolaton keresztül történik, így az adatforgalom soha nem halad át a nyilvános interneten.  Az AWS VPC és az Azure Virtual Network használatát igényli. 
 - Az architektúra eléréséhez telepítenie kell az ADF saját üzemeltetésű integrációs modulját egy Windows rendszerű virtuális GÉPRE az Azure Virtual Networkben.  A saját üzemeltetésű IR virtuális gépeket manuálisan, vagy akár több virtuális gépre is kibővítheti (legfeljebb 4 csomópont), így teljes mértékben kihasználhatja a hálózat és a tárhely IOPS/sávszélességét. 
-- Ha a HTTPS-kapcsolaton keresztüli adatátvitelre elfogadható, de a forrás S3 hálózati hozzáférését egy adott IP-tartományhoz kívánja zárolni, akkor az AWS VPC eltávolításával és a privát hivatkozás HTTPS-vel való cseréjével elfogadhatja az architektúra egy változatát.  Szeretné megőrizni az Azure virtuális és saját üzemeltetésű integrációs modulját az Azure-beli virtuális GÉPEN, így statikus, nyilvánosan irányítható IP-címmel is rendelkezhet az engedélyezési célra. 
+- Ha a HTTPS-kapcsolaton keresztüli adatátvitelre elfogadható, de a forrás S3 hálózati hozzáférését egy adott IP-tartományhoz kívánja zárolni, akkor az AWS VPC eltávolításával és a privát hivatkozás HTTPS-vel való cseréjével elfogadhatja az architektúra egy változatát.  Szeretné megőrizni az Azure virtuális és saját üzemeltetésű integrációs modulját az Azure-beli virtuális GÉPEN, így statikus, nyilvánosan irányítható IP-címmel szűrheti a szűrési célokat. 
 - Ez az architektúra a kezdeti pillanatkép-adatáttelepítés és a Delta-adatáttelepítés során is elérhető. 
 
 ## <a name="implementation-best-practices"></a>Gyakorlati tanácsok a megvalósításhoz 
@@ -154,6 +154,6 @@ A fenti feltételezések alapján a becsült ár a következő:
 
 Itt látható az a [sablon](solution-template-migration-s3-azure.md) , amellyel az Amazon S3-ból Azure Data Lake Storage Gen2 több száz millió fájlból álló petabájt migrálhat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Több tárolóból származó fájlok másolása Azure Data Factory](solution-template-copy-files-multiple-containers.md)

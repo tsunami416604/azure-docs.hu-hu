@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: overview
 ms.date: 09/23/2020
 ms.author: alkohli
-ms.openlocfilehash: 34dc0717b13cb38c4477cc93f23d57d0a8023dae
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8ae95518bab5ed9bc100a5902acf1fd1db631dbe
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320744"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91617162"
 ---
 # <a name="what-is-azure-stack-edge-pro-with-gpu"></a>Mi az a GPU-val rendelkező Azure Stack Edge Pro?
 
@@ -40,7 +40,7 @@ Az alábbiakban azokat a forgatókönyveket láthatja, amelyekben a Azure Stack 
 
 Az Azure Stack Edge Pro a következő képességekkel rendelkezik:
 
-|Képesség |Description  |
+|Képesség |Leírás  |
 |---------|---------|
 |Gyorsított AI-következtetés| A beépített GPU (a modelltől függően egy vagy két) engedélyezte.|
 |Edge számítástechnika      |Támogatja a virtuális gépek és a tárolón lévő munkaterhelések használatát az adatok elemzéséhez, feldolgozásához és szűréséhez. |
@@ -73,11 +73,11 @@ Azure Stack Edge Pro fizikai eszköz, az Azure-erőforrás és a célként megad
 
 - **Erőforrás rendelkezésre állása** – ebben az előzetes kiadásban az erőforrás az USA keleti régiójában, Nyugat-Európában és dél-Kelet-Ázsia régióban érhető el.
 
-- **Eszköz rendelkezésre állása** – az összes olyan ország listáját, ahol az Azure stack Edge Pro-eszköz elérhető, lépjen a **rendelkezésre állási** szakaszra az [Azure Stack Edge Pro díjszabásának](https://azure.microsoft.com/pricing/details/azure-stack/edge/#azureStackEdgePro) **Azure stack Edge Pro** lapján.
+- **Eszköz rendelkezésre állása** – az összes olyan országban/régióban, ahol az Azure stack Edge Pro-eszköz elérhető, válassza a **rendelkezésre állási** szakaszt az [Azure Stack Edge Pro díjszabásának](https://azure.microsoft.com/pricing/details/azure-stack/edge/#azureStackEdgePro) **Azure stack Edge Pro** lapján.
     
 - **Céloldali tárfiókok** – Az adatokat tároló tárfiókok minden Azure-régióban elérhetők. Azokat a régiókat, amelyekben a Storage-fiókok Azure Stack Edge Pro-adataikat tárolják, közel kell lennie ahhoz, hogy az eszköz az optimális teljesítmény érdekében legyen. Az eszköztől távol található tárfiók esetében hosszú késések és lassabb teljesítmény várható.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse át az [Azure stack Edge Pro rendszerkövetelményeit](azure-stack-edge-gpu-system-requirements.md).
 

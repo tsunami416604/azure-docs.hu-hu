@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scenario
 ms.custom: seo-lt-2019, sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 53d12510c4960b16d56ee32f07ca96bc398f999a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e08150f5998b71523a986eac1f8a9be993125f5a
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84043155"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619151"
 ---
 # <a name="disaster-recovery-for-a-multi-tenant-saas-application-using-database-geo-replication"></a>Vész-helyreállítás egy több-bérlős SaaS-alkalmazáshoz az adatbázis-geo-replikáció használatával
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -54,7 +54,7 @@ Minden résznek körültekintően kell megfontolnia, különösen, ha nagy lépt
 
 * Telepítés
     * Hozzon létre és őrizzen meg egy tükrözési környezetet a helyreállítási régióban. A rugalmas készletek létrehozása és az ebben a helyreállítási környezetben található adatbázisok replikálása a helyreállítási régióban foglalt kapacitást is fenntartja. A környezet fenntartása magában foglalja az új bérlői adatbázisok replikálását az üzembe helyezés során.  
-* Helyreállítás
+* Helyreállítási
     * Ha a napi költségek csökkentése érdekében a méretezhető helyreállítási környezetet használják, a készleteket és az adatbázisokat fel kell mérni a helyreállítási régióban a teljes működési kapacitás megszerzéséhez.
     * Az új bérlői kiépítés engedélyezése a helyreállítási régióban a lehető leghamarabb  
     * A bérlők prioritási sorrendben való visszaállítására van optimalizálva

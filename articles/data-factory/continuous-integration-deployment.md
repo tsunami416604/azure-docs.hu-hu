@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: e1b9aacf96249c3e102c6a3dbf87d8ac1ff20be6
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 6b091406b15db036007ba6a11049ee63ffe99cf0
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91533315"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91616895"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Folyamatos integráció és kézbesítés Azure Data Factory
 
@@ -461,7 +461,13 @@ Alább látható az aktuális alapértelmezett paraméterezés-sablon. Ha csak n
                 }
             }
         }
+    },
+    "Microsoft.DataFactory/factories/managedVirtualNetworks/managedPrivateEndpoints": {
+        "properties": {
+            "*": "="
+        }
     }
+}
 ```
 
 ### <a name="example-parameterizing-an-existing-azure-databricks-interactive-cluster-id"></a>Példa: parameterizing meglévő Azure Databricks interaktív fürt azonosítója
@@ -553,7 +559,7 @@ Az alábbi példa bemutatja, hogyan adhat hozzá egyetlen értéket az alapérte
                     "database": "=",
                     "serviceEndpoint": "=",
                     "batchUri": "=",
-            "poolName": "=",
+                    "poolName": "=",
                     "databaseName": "=",
                     "systemNumber": "=",
                     "server": "=",
@@ -636,6 +642,8 @@ Ha git-integrációt használ a saját adatgyárával, és rendelkezik egy CI/CD
 -   **Üzembe helyezés előtti és utáni parancsfájl**. A CI/CD-ben a Resource Manager üzembe helyezési lépése előtt végre kell hajtania bizonyos feladatokat, például az eseményindítók leállítását és újraindítását, valamint a tisztítást végző műveletet. Javasoljuk, hogy a központi telepítési feladat előtt és után használjon PowerShell-parancsfájlokat. További információ: az [aktív eseményindítók frissítése](#updating-active-triggers). A (z) adatfeldolgozó csapata a lap alján található [parancsfájlt adott](#script) meg.
 
 -   **Integrációs modulok és megosztás**. Az integrációs modulok nem változnak gyakran, és a CI/CD minden fázisában hasonlóak. Így Data Factory az integrációs modul azonos nevét és típusát várja a CI/CD minden szakaszában. Ha az integrációs modulokat minden fázisban meg szeretné osztani, érdemes lehet egy Ternáris-gyárat használni, amely csak a megosztott integrációs modulokat tartalmazza. Ezt a megosztott gyárat az összes környezetében használhatja társított Integration Runtime-típusként.
+
+-   **Felügyelt magánhálózati végpont üzembe helyezése**. Ha egy saját végpont már létezik egy gyárban, és olyan ARM-sablont próbál telepíteni, amely azonos nevű, de módosított tulajdonságokkal rendelkező privát végpontot tartalmaz, akkor a telepítés sikertelen lesz. Más szóval a privát végpontok sikeresen üzembe helyezhetők, ha ugyanazokkal a tulajdonságokkal rendelkezik, mint a gyárban már meglévő. Ha bármely tulajdonság eltérő a környezetek között, felülbírálhatja azt a tulajdonság parameterizing, és a telepítés során megadhatja a megfelelő értéket.
 
 -   **Key Vault**. Ha olyan társított szolgáltatásokat használ, amelyek kapcsolati adatait Azure Key Vault tárolja, ajánlott külön kulcstárolókat tárolni a különböző környezetekben. Külön jogosultsági szinteket is beállíthat mindegyik kulcstartóhoz. Előfordulhat például, hogy nem szeretné, hogy a csapattagok rendelkezzenek a termelési titkokhoz szükséges engedélyekkel. Ha követi ezt a megközelítést, javasoljuk, hogy az összes fázisban ugyanazokat a titkos neveket tartsa meg. Ha megtartja ugyanazokat a titkos neveket, nem kell parametrizálja minden egyes kapcsolódási karakterláncot a CI/CD-környezetek között, mert az egyetlen dolog, ami megváltoztatja a kulcstároló nevét, amely egy külön paraméter.
 

@@ -6,17 +6,17 @@ ms.service: sql-managed-instance
 ms.subservice: security
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein, jovanpop
 ms.date: 07/21/2020
-ms.openlocfilehash: 5311d6504e98c107b6ceb893babb6db31c9aff51
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 08adfd7b69d580f6a231f13f9fb2793d828e16a3
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325045"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91618162"
 ---
 # <a name="migrate-a-certificate-of-a-tde-protected-database-to-azure-sql-managed-instance"></a>TDE-védelemmel ellátott adatbázis tanúsítványának migrálása az Azure SQL felügyelt példányaira
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -186,7 +186,7 @@ Először létre kell hoznia [egy Azure Key vaultot](/azure/key-vault/key-vault-
 
 A tanúsítvány mostantól elérhető a megadott felügyelt példányon, és a megfelelő TDE-védelemmel ellátott adatbázis biztonsági mentése sikeresen visszaállítható.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből a cikkből megtudhatta, hogyan telepíthet át egy olyan tanúsítványt, amely egy adatbázis titkosítási kulcsát védi transzparens adattitkosítás, a helyszíni vagy IaaS SQL Server példányról az Azure SQL felügyelt példányára.
 

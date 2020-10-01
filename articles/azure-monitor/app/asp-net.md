@@ -1,150 +1,358 @@
 ---
-title: Webalkalmazás-elemzés beállítása az ASP.NET-hez az Azure Application Insights segítségével | Microsoft Docs
+title: ASP.NET figyelésének konfigurálása az Azure Application Insights-vel | Microsoft Docs
 description: Konfigurálhatja a helyszíni vagy az Azure-ban üzemeltetett ASP.NET-webhely teljesítmény-, rendelkezésre állási és felhasználói viselkedési elemzési eszközeit.
 ms.topic: conceptual
-ms.date: 05/08/2019
-ms.openlocfilehash: c07e7c8e7bd710cb591719fe8d53a3bad6ca2ee0
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.date: 09/30/2020
+ms.custom: contperfq1
+ms.openlocfilehash: 5f52f1febcc69723dae76e31d17b5a9a7e8c67bb
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90973794"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91616754"
 ---
-# <a name="set-up-application-insights-for-your-aspnet-website"></a>Az Application Insights beállítása az ASP.NET-webhelyhez
+# <a name="configure-application-insights-for-your-aspnet-website"></a>Application Insights konfigurálása a ASP.NET webhelye számára
 
-Ez az eljárás beállítja, hogy az ASP.NET webapp telemetriát küldjön az [Azure Application Insights](./app-insights-overview.md) szolgáltatásnak. Az eljárás a saját helyszíni IIS-kiszolgálón vagy a felhőben futtatott ASP.NET-alkalmazásokon használható. Diagramokat és hatékony lekérdezési nyelvet biztosít, amelyek révén jobban megismerheti az alkalmazás működését, és hogy a felhasználók minként használják, valamint automatikus riasztásokat kaphat a meghibásodásokkal és a teljesítményproblémákkal kapcsolatban. Számos fejlesztő már így is rendkívül hasznosnak tartja ezeket a funkciókat, azonban a telemetria szükség esetén bővíthető és testre is szabható.
-
-A telepítés mindössze néhány kattintással végrehajtható a Visual Studióban. A szolgáltatás díjmentesen is használható, ha a telemetria mennyiségét korlátozza. Ez a funkció lehetővé teszi a kísérletezést és hibakeresést, illetve a nem sok felhasználóval rendelkező helyek figyelését. Ha úgy dönt, hogy belevág, és az éles webhelyét is figyelni fogja, a későbbiekben könnyen emelhető a korlát.
+Ez az eljárás beállítja, hogy az ASP.NET webapp telemetriát küldjön az [Azure Application Insights](./app-insights-overview.md) szolgáltatásnak. A szolgáltatás a saját IIS-kiszolgálóin vagy a felhőben üzemeltetett ASP.NET-alkalmazásokhoz használható. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 Ha hozzá kívánja adni az Application Insights megoldást ASP.NET-webhelyéhez, tegye a következőket:
 
-- Telepítse a [Windowshoz készült Visual Studio 2019](https://www.visualstudio.com/downloads/) alkalmazást a következő számítási feladatokkal:
-    - ASP.NET és webes fejlesztés (ne törölje a választható összetevőket)
+- Telepítse a [Windowshoz készült Visual Studio 2019](https://www.visualstudio.com/downloads/) legújabb verzióját a következő munkaterhelésekkel:
+    - ASP.NET és webes fejlesztés.
     - Azure-fejlesztés
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
-## <a name="step-1-add-the-application-insights-sdk"></a><a name="ide"></a> 1. lépés: Az Application Insights SDK hozzáadása
+- Hozzon létre egy [Application Insights munkaterület-alapú erőforrást](create-workspace-resource.md).
 
-> [!IMPORTANT]
-> Az ebben a példában szereplő Képernyőképek a Visual Studio 2017 15.9.9 és újabb verzióján alapulnak. A Application Insights hozzáadásának élménye a Visual Studio és a ASP.NET-sablon típusának különböző verzióiban is változhat. Előfordulhat, hogy a régebbi verziók helyettesítő szöveggel rendelkeznek, például "configure Application Insights".
+## <a name="create-a-basic-aspnet-web-app"></a>Alapszintű ASP.NET-Webalkalmazás létrehozása
 
-Kattintson a jobb gombbal a webalkalmazás nevére a megoldáskezelő, majd válassza a **Hozzáadás**  >  **Application Insights telemetria**
+1. Indítsa el a Visual Studio 2019-es kiadását.
+2. Válassza a **fájl**  >  **új**  >  **projekt**lehetőséget.
+3. Válassza a **ASP.net Web Application (. NET Framework) C#** elemet.
+4. Adja meg a projekt nevét > **válassza a létrehozás lehetőséget**.
+5. Válassza az **MVC**  >  **Létrehozás**elemet. 
 
-![A Solution Explorer (Megoldáskezelő) képernyőképe, a kiemelt Configure Application Insights (Application Insights konfigurálása) elemmel](./media/asp-net/add-telemetry-new.png)
+## <a name="add-application-insights-automatically"></a>Application Insights automatikus hozzáadása
 
-(Az Application Insights SDK verziójától függően a rendszer felkérheti, hogy frissítsen az SDK legújabb kiadására. Ebben az esetben válassza az **Update SDK** (SDK frissítése) lehetőséget.)
+Ez a szakasz végigvezeti a Application Insights sablonon alapuló ASP.NET-webalkalmazáshoz való automatikus hozzáadásának lépésein. A Visual Studióban a ASP.NET Web App-projektből:
 
-![Képernyőkép: Elérhető a Microsoft Application Insights SDK egy új verziója. Az SDK frissítési lehetőség kiemelve](./media/asp-net/0002-update-sdk.png)
+1. Válassza a **Hozzáadás Application Insights telemetria**  >  **Application Insights SDK (helyi)**  >  **következő**  >  **Befejezés**  >  **Bezárás**lehetőséget.
+2. Nyissa meg az `ApplicationInsights.config` fájlt. 
+3. A záró `</ApplicationInsights>` címke előtt adjon hozzá egy sort, amely tartalmazza a Application Insights erőforrás kialakítási kulcsát.  A kialakítási kulcs az újonnan létrehozott Application Insights erőforrás áttekintés ablaktábláján található, amelyet a jelen cikk előfeltételeinek részeként hozott létre.
 
-Az Application Insights konfigurációs képernyőjén:
+    ```xml
+    <InstrumentationKey>your-instrumentation-key-goes-here</InstrumentationKey>
+    ```
+4. Válassza a **projekt**  >  **NuGet-csomagok**  >  **frissítése** > frissítse `Microsoft.ApplicationInsights` az egyes NuGet-csomagokat a legújabb stabil kiadásra.   
+5. Futtassa az alkalmazást **IIS Express**kiválasztásával. Egy alapszintű ASP.NET alkalmazás elindul. A hely telemetria lévő lapokat a rendszer a Application Insightsba küldi el.
 
-Válassza az első **lépések**lehetőséget.
+## <a name="add-application-insights-manually"></a>Application Insights manuális hozzáadása
 
-![Képernyőfelvétel: a Application Insights lap és az első lépések gomb.](./media/asp-net/00004-start-free.png)
+Ez a szakasz végigvezeti a Application Insights sablon alapú ASP.NET-webalkalmazáshoz való manuális hozzáadásának lépésein. Ez a szakasz azt feltételezi, hogy egy webalkalmazást használ a standard ASP.NET Framework MVC Web App-sablon alapján.
 
-Ha szeretné beállítani az erőforráscsoportot vagy az adatok tárolásának helyét, kattintson a **Configure settings** (Beállítások konfigurálása) lehetőségre. Az erőforráscsoportok az adatokhoz való hozzáférés szabályozásához használhatóak. Ha például több alkalmazása is van, amelyek egy adott rendszer részét képezik, azok Application Insights-adatait ugyanabba az erőforráscsoportba helyezheti.
+1. Adja hozzá a következő NuGet-csomagokat és azok függőségeit a projekthez:
 
- Válassza a **Regisztráció** lehetőséget.
+    - [`Microsoft.ApplicationInsights.WindowsServer`](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer)
+    - [`Microsoft.ApplicationInsights.Web`](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web)
+    - [`Microsoft.AspNet.TelemetryCorrelation`](https://www.nuget.org/packages/Microsoft.AspNet.TelemetryCorrelation)
 
-![Képernyőkép az alkalmazásregisztrációs szakaszról az Application Insights oldalon](./media/asp-net/00005-register-ed.png)
+2. Bizonyos esetekben a rendszer `ApplicationInsights.config` automatikusan létrehozza a fájlt. Ha a fájl már létezik, ugorjon a #4 lépésre. Ha nem jön létre automatikusan, létre kell hoznia azt. A projektben a `Global.asax` fájlhoz hasonló szinten hozzon létre egy új fájlt a következő néven: `ApplicationInsights.config`
 
- Válassza a **Project**  >  **NuGet-csomagok kezelése**  >  **csomag forrása: nuget.org** > ellenőrizze, hogy az Application Insights SDK legújabb stabil kiadása van-e.
+3. Másolja a következő XML-konfigurációt az újonnan létrehozott fájlba:
 
- A telemetria az [Azure Portalra](https://portal.azure.com) lesz küldve a hibakeresés során és az alkalmazás közzététele után is.
-> [!NOTE]
-> Ha a hibakeresés során nem szeretne telemetriát küldeni a portálra, adja hozzá az Application Insights SDK-t az alkalmazáshoz, de ne konfiguráljon erőforrást a portálon. A telemetria a hibakeresés során a Visual Studióban lesz megtekinthető. Később visszatérhet erre a konfigurációs oldalra, vagy megvárhatja az alkalmazás üzembe helyezését, és [bekapcsolhatja a telemetriát a futtatás során](./status-monitor-v2-overview.md).
+     ```xml
+     <?xml version="1.0" encoding="utf-8"?>
+    <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings">
+      <TelemetryInitializers>
+        <Add Type="Microsoft.ApplicationInsights.DependencyCollector.HttpDependenciesParsingTelemetryInitializer, Microsoft.AI.DependencyCollector" />
+        <Add Type="Microsoft.ApplicationInsights.WindowsServer.AzureRoleEnvironmentTelemetryInitializer, Microsoft.AI.WindowsServer" />
+        <Add Type="Microsoft.ApplicationInsights.WindowsServer.BuildInfoConfigComponentVersionTelemetryInitializer, Microsoft.AI.WindowsServer" />
+        <Add Type="Microsoft.ApplicationInsights.Web.WebTestTelemetryInitializer, Microsoft.AI.Web" />
+        <Add Type="Microsoft.ApplicationInsights.Web.SyntheticUserAgentTelemetryInitializer, Microsoft.AI.Web">
+          <!-- Extended list of bots:
+                search|spider|crawl|Bot|Monitor|BrowserMob|BingPreview|PagePeeker|WebThumb|URL2PNG|ZooShot|GomezA|Google SketchUp|Read Later|KTXN|KHTE|Keynote|Pingdom|AlwaysOn|zao|borg|oegp|silk|Xenu|zeal|NING|htdig|lycos|slurp|teoma|voila|yahoo|Sogou|CiBra|Nutch|Java|JNLP|Daumoa|Genieo|ichiro|larbin|pompos|Scrapy|snappy|speedy|vortex|favicon|indexer|Riddler|scooter|scraper|scrubby|WhatWeb|WinHTTP|voyager|archiver|Icarus6j|mogimogi|Netvibes|altavista|charlotte|findlinks|Retreiver|TLSProber|WordPress|wsr-agent|http client|Python-urllib|AppEngine-Google|semanticdiscovery|facebookexternalhit|web/snippet|Google-HTTP-Java-Client-->
+          <Filters>search|spider|crawl|Bot|Monitor|AlwaysOn</Filters>
+        </Add>
+        <Add Type="Microsoft.ApplicationInsights.Web.ClientIpHeaderTelemetryInitializer, Microsoft.AI.Web" />
+        <Add Type="Microsoft.ApplicationInsights.Web.AzureAppServiceRoleNameFromHostNameHeaderInitializer, Microsoft.AI.Web" />
+        <Add Type="Microsoft.ApplicationInsights.Web.OperationNameTelemetryInitializer, Microsoft.AI.Web" />
+        <Add Type="Microsoft.ApplicationInsights.Web.OperationCorrelationTelemetryInitializer, Microsoft.AI.Web" />
+        <Add Type="Microsoft.ApplicationInsights.Web.UserTelemetryInitializer, Microsoft.AI.Web" />
+        <Add Type="Microsoft.ApplicationInsights.Web.AuthenticatedUserIdTelemetryInitializer, Microsoft.AI.Web" />
+        <Add Type="Microsoft.ApplicationInsights.Web.AccountIdTelemetryInitializer, Microsoft.AI.Web" />
+        <Add Type="Microsoft.ApplicationInsights.Web.SessionTelemetryInitializer, Microsoft.AI.Web" />
+      </TelemetryInitializers>
+      <TelemetryModules>
+        <Add Type="Microsoft.ApplicationInsights.DependencyCollector.DependencyTrackingTelemetryModule, Microsoft.AI.DependencyCollector">
+          <ExcludeComponentCorrelationHttpHeadersOnDomains>
+            <!-- 
+            Requests to the following hostnames will not be modified by adding correlation headers.         
+            Add entries here to exclude additional hostnames.
+            NOTE: this configuration will be lost upon NuGet upgrade.
+            -->
+            <Add>core.windows.net</Add>
+            <Add>core.chinacloudapi.cn</Add>
+            <Add>core.cloudapi.de</Add>
+            <Add>core.usgovcloudapi.net</Add>
+          </ExcludeComponentCorrelationHttpHeadersOnDomains>
+          <IncludeDiagnosticSourceActivities>
+            <Add>Microsoft.Azure.EventHubs</Add>
+            <Add>Microsoft.Azure.ServiceBus</Add>
+          </IncludeDiagnosticSourceActivities>
+        </Add>
+        <Add Type="Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.PerformanceCollectorModule, Microsoft.AI.PerfCounterCollector">
+          <!--
+          Use the following syntax here to collect additional performance counters:
+          
+          <Counters>
+            <Add PerformanceCounter="\Process(??APP_WIN32_PROC??)\Handle Count" ReportAs="Process handle count" />
+            ...
+          </Counters>
+          
+          PerformanceCounter must be either \CategoryName(InstanceName)\CounterName or \CategoryName\CounterName
+          
+          NOTE: performance counters configuration will be lost upon NuGet upgrade.
+          
+          The following placeholders are supported as InstanceName:
+            ??APP_WIN32_PROC?? - instance name of the application process  for Win32 counters.
+            ??APP_W3SVC_PROC?? - instance name of the application IIS worker process for IIS/ASP.NET counters.
+            ??APP_CLR_PROC?? - instance name of the application CLR process for .NET counters.
+          -->
+        </Add>
+        <Add Type="Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse.QuickPulseTelemetryModule, Microsoft.AI.PerfCounterCollector" />
+        <Add Type="Microsoft.ApplicationInsights.WindowsServer.AppServicesHeartbeatTelemetryModule, Microsoft.AI.WindowsServer" />
+        <Add Type="Microsoft.ApplicationInsights.WindowsServer.AzureInstanceMetadataTelemetryModule, Microsoft.AI.WindowsServer">
+          <!--
+          Remove individual fields collected here by adding them to the ApplicationInsighs.HeartbeatProvider 
+          with the following syntax:
+          
+          <Add Type="Microsoft.ApplicationInsights.Extensibility.Implementation.Tracing.DiagnosticsTelemetryModule, Microsoft.ApplicationInsights">
+            <ExcludedHeartbeatProperties>
+              <Add>osType</Add>
+              <Add>location</Add>
+              <Add>name</Add>
+              <Add>offer</Add>
+              <Add>platformFaultDomain</Add>
+              <Add>platformUpdateDomain</Add>
+              <Add>publisher</Add>
+              <Add>sku</Add>
+              <Add>version</Add>
+              <Add>vmId</Add>
+              <Add>vmSize</Add>
+              <Add>subscriptionId</Add>
+              <Add>resourceGroupName</Add>
+              <Add>placementGroupId</Add>
+              <Add>tags</Add>
+              <Add>vmScaleSetName</Add>
+            </ExcludedHeartbeatProperties>
+          </Add>
+                
+          NOTE: exclusions will be lost upon upgrade.
+          -->
+        </Add>
+        <Add Type="Microsoft.ApplicationInsights.WindowsServer.DeveloperModeWithDebuggerAttachedTelemetryModule, Microsoft.AI.WindowsServer" />
+        <Add Type="Microsoft.ApplicationInsights.WindowsServer.UnhandledExceptionTelemetryModule, Microsoft.AI.WindowsServer" />
+        <Add Type="Microsoft.ApplicationInsights.WindowsServer.UnobservedExceptionTelemetryModule, Microsoft.AI.WindowsServer">
+          <!--</Add>
+        <Add Type="Microsoft.ApplicationInsights.WindowsServer.FirstChanceExceptionStatisticsTelemetryModule, Microsoft.AI.WindowsServer">-->
+        </Add>
+        <Add Type="Microsoft.ApplicationInsights.Web.RequestTrackingTelemetryModule, Microsoft.AI.Web">
+          <Handlers>
+            <!-- 
+            Add entries here to filter out additional handlers: 
+            
+            NOTE: handler configuration will be lost upon NuGet upgrade.
+            -->
+            <Add>Microsoft.VisualStudio.Web.PageInspector.Runtime.Tracing.RequestDataHttpHandler</Add>
+            <Add>System.Web.StaticFileHandler</Add>
+            <Add>System.Web.Handlers.AssemblyResourceLoader</Add>
+            <Add>System.Web.Optimization.BundleHandler</Add>
+            <Add>System.Web.Script.Services.ScriptHandlerFactory</Add>
+            <Add>System.Web.Handlers.TraceHandler</Add>
+            <Add>System.Web.Services.Discovery.DiscoveryRequestHandler</Add>
+            <Add>System.Web.HttpDebugHandler</Add>
+          </Handlers>
+        </Add>
+        <Add Type="Microsoft.ApplicationInsights.Web.ExceptionTrackingTelemetryModule, Microsoft.AI.Web" />
+        <Add Type="Microsoft.ApplicationInsights.Web.AspNetDiagnosticTelemetryModule, Microsoft.AI.Web" />
+      </TelemetryModules>
+      <ApplicationIdProvider Type="Microsoft.ApplicationInsights.Extensibility.Implementation.ApplicationId.ApplicationInsightsApplicationIdProvider, Microsoft.ApplicationInsights" />
+      <TelemetrySinks>
+        <Add Name="default">
+          <TelemetryProcessors>
+            <Add Type="Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse.QuickPulseTelemetryProcessor, Microsoft.AI.PerfCounterCollector" />
+            <Add Type="Microsoft.ApplicationInsights.Extensibility.AutocollectedMetricsExtractor, Microsoft.ApplicationInsights" />
+            <Add Type="Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.AdaptiveSamplingTelemetryProcessor, Microsoft.AI.ServerTelemetryChannel">
+              <MaxTelemetryItemsPerSecond>5</MaxTelemetryItemsPerSecond>
+              <ExcludedTypes>Event</ExcludedTypes>
+            </Add>
+            <Add Type="Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.AdaptiveSamplingTelemetryProcessor, Microsoft.AI.ServerTelemetryChannel">
+              <MaxTelemetryItemsPerSecond>5</MaxTelemetryItemsPerSecond>
+              <IncludedTypes>Event</IncludedTypes>
+            </Add>
+          </TelemetryProcessors>
+          <TelemetryChannel Type="Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.ServerTelemetryChannel, Microsoft.AI.ServerTelemetryChannel" />
+        </Add>
+      </TelemetrySinks>
+      <!-- 
+        Learn more about Application Insights configuration with ApplicationInsights.config here: 
+        http://go.microsoft.com/fwlink/?LinkID=513840
+      -->
+      <InstrumentationKey>your-instrumentation-key-here</InstrumentationKey>
+    </ApplicationInsights>
+     ```
 
-## <a name="step-2-run-your-app"></a><a name="run"></a> 2. lépés: Az alkalmazás futtatása
-Futtassa az alkalmazást az F5 billentyűvel. Nyisson meg több lapot, hogy létrejöjjön valamennyi telemetria.
+4. A záró `</ApplicationInsights>` címke előtt adja hozzá a rendszerállapot-kulcsot a Application Insights erőforráshoz.  A kialakítási kulcs az újonnan létrehozott Application Insights erőforrás áttekintés ablaktábláján található, amelyet a jelen cikk előfeltételeinek részeként hozott létre.
 
-A Visual Studióban láthatja a naplózott események számát.
+    ```xml
+    <InstrumentationKey>your-instrumentation-key-goes-here</InstrumentationKey>
+    ```
 
-![A Visual Studio képernyőképe. Megjelenik az Application Insights gomb a hibakeresés alatt.](./media/asp-net/00006-Events.png)
+5. A projekttel azonos szinten `ApplicationInsights.config` hozzon létre egy nevű mappát `ErrorHandler` egy új C#-fájllal `AiHandleErrorAttribute.cs` . A fájl tartalma a következőképpen fog megjelenni:
 
-## <a name="step-3-see-your-telemetry"></a>3. lépés: A telemetria megtekintése
-A telemetriát a Visual Studióban vagy az Application Insights webportálon tekintheti meg. A telemetria keresése a Visual Studióban segíti az alkalmazás hibakeresését. A teljesítményt és a használatot a webes portálon figyelheti, amikor a rendszer élesben működik. 
+    ```csharp
+    using System;
+    using System.Web.Mvc;
+    using Microsoft.ApplicationInsights;
+    
+    namespace WebApplication10.ErrorHandler //namespace will vary based on your project name
+    {
+        [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, Inherited = true, AllowMultiple = true)] 
+        public class AiHandleErrorAttribute : HandleErrorAttribute
+        {
+            public override void OnException(ExceptionContext filterContext)
+            {
+                if (filterContext != null && filterContext.HttpContext != null && filterContext.Exception != null)
+                {
+                    //If customError is Off, then AI HTTPModule will report the exception
+                    if (filterContext.HttpContext.IsCustomErrorEnabled)
+                    {   
+                        var ai = new TelemetryClient();
+                        ai.TrackException(filterContext.Exception);
+                    } 
+                }
+                base.OnException(filterContext);
+            }
+        }
+    }
+    
+    ```
 
-### <a name="see-your-telemetry-in-visual-studio"></a>Telemetria megtekintése a Visual Studióban
+6. A `App_Start` mappában Nyissa meg a `FilterConfig.cs` fájlt, és módosítsa úgy, hogy az megfeleljen a mintának:
 
-A Visual Studióban az Application Insights-adatok megtekintéséhez tegye a következőket.  Válassza **Solution Explorer**a  >  **csatlakoztatott szolgáltatások** megoldáskezelő > kattintson a jobb gombbal a **Application Insights**, majd az **élő telemetria keresése**elemre.
+    ```csharp
+    using System.Web;
+    using System.Web.Mvc;
+    
+    namespace WebApplication10 //Namespace will vary based on project name
+    {
+        public class FilterConfig
+        {
+            public static void RegisterGlobalFilters(GlobalFilterCollection filters)
+            {
+                filters.Add(new ErrorHandler.AiHandleErrorAttribute());
+            }
+        }
+    }
+    ```
 
-A Visual Studio Application Insights keresőablakában az alkalmazásából származó adatok között látni fogja az alkalmazás kiszolgálói oldalán létrejött telemetriai adatokat. Kísérletezzen a szűrőkkel, és kattintson valamely eseményre további részletek megtekintéséhez.
+7. Frissítse a Web.config fájlt a következőképpen:
 
-![A Data from debug session (Hibakeresési munkamenetből származó adatok) nézet képernyőképe az Application Insights ablakban.](./media/asp-net/55.png)
+    ```xml
+    <?xml version="1.0" encoding="utf-8"?>
+    <!--
+      For more information on how to configure your ASP.NET application, please visit
+      https://go.microsoft.com/fwlink/?LinkId=301880
+      -->
+    <configuration>
+      <appSettings>
+        <add key="webpages:Version" value="3.0.0.0" />
+        <add key="webpages:Enabled" value="false" />
+        <add key="ClientValidationEnabled" value="true" />
+        <add key="UnobtrusiveJavaScriptEnabled" value="true" />
+      </appSettings>
+      <system.web>
+        <compilation debug="true" targetFramework="4.7.2" />
+        <httpRuntime targetFramework="4.7.2" />
+        <httpModules>
+          <add name="TelemetryCorrelationHttpModule" type="Microsoft.AspNet.TelemetryCorrelation.TelemetryCorrelationHttpModule, Microsoft.AspNet.TelemetryCorrelation" />
+          <add name="ApplicationInsightsWebTracking" type="Microsoft.ApplicationInsights.Web.ApplicationInsightsHttpModule, Microsoft.AI.Web" />
+        </httpModules>
+      </system.web>
+      <runtime>
+        <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
+          <dependentAssembly>
+            <assemblyIdentity name="Antlr3.Runtime" publicKeyToken="eb42632606e9261f" />
+            <bindingRedirect oldVersion="0.0.0.0-3.5.0.2" newVersion="3.5.0.2" />
+          </dependentAssembly>
+          <dependentAssembly>
+            <assemblyIdentity name="Newtonsoft.Json" publicKeyToken="30ad4fe6b2a6aeed" />
+            <bindingRedirect oldVersion="0.0.0.0-12.0.0.0" newVersion="12.0.0.0" />
+          </dependentAssembly>
+          <dependentAssembly>
+            <assemblyIdentity name="System.Web.Optimization" publicKeyToken="31bf3856ad364e35" />
+            <bindingRedirect oldVersion="1.0.0.0-1.1.0.0" newVersion="1.1.0.0" />
+          </dependentAssembly>
+          <dependentAssembly>
+            <assemblyIdentity name="WebGrease" publicKeyToken="31bf3856ad364e35" />
+            <bindingRedirect oldVersion="0.0.0.0-1.6.5135.21930" newVersion="1.6.5135.21930" />
+          </dependentAssembly>
+          <dependentAssembly>
+            <assemblyIdentity name="System.Web.Helpers" publicKeyToken="31bf3856ad364e35" />
+            <bindingRedirect oldVersion="1.0.0.0-3.0.0.0" newVersion="3.0.0.0" />
+          </dependentAssembly>
+          <dependentAssembly>
+            <assemblyIdentity name="System.Web.WebPages" publicKeyToken="31bf3856ad364e35" />
+            <bindingRedirect oldVersion="1.0.0.0-3.0.0.0" newVersion="3.0.0.0" />
+          </dependentAssembly>
+          <dependentAssembly>
+            <assemblyIdentity name="System.Web.Mvc" publicKeyToken="31bf3856ad364e35" />
+            <bindingRedirect oldVersion="1.0.0.0-5.2.7.0" newVersion="5.2.7.0" />
+          </dependentAssembly>
+          <dependentAssembly>
+            <assemblyIdentity name="System.Memory" publicKeyToken="cc7b13ffcd2ddd51" culture="neutral" />
+            <bindingRedirect oldVersion="0.0.0.0-4.0.1.1" newVersion="4.0.1.1" />
+          </dependentAssembly>
+        </assemblyBinding>
+      </runtime>
+      <system.codedom>
+        <compilers>
+          <compiler language="c#;cs;csharp" extension=".cs" type="Microsoft.CodeDom.Providers.DotNetCompilerPlatform.CSharpCodeProvider, Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" warningLevel="4" compilerOptions="/langversion:default /nowarn:1659;1699;1701" />
+          <compiler language="vb;vbs;visualbasic;vbscript" extension=".vb" type="Microsoft.CodeDom.Providers.DotNetCompilerPlatform.VBCodeProvider, Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" warningLevel="4" compilerOptions="/langversion:default /nowarn:41008 /define:_MYTYPE=\&quot;Web\&quot; /optionInfer+" />
+        </compilers>
+      </system.codedom>
+      <system.webServer>
+        <validation validateIntegratedModeConfiguration="false" />
+        <modules>
+          <remove name="TelemetryCorrelationHttpModule" />
+          <add name="TelemetryCorrelationHttpModule" type="Microsoft.AspNet.TelemetryCorrelation.TelemetryCorrelationHttpModule, Microsoft.AspNet.TelemetryCorrelation" preCondition="managedHandler" />
+          <remove name="ApplicationInsightsWebTracking" />
+          <add name="ApplicationInsightsWebTracking" type="Microsoft.ApplicationInsights.Web.ApplicationInsightsHttpModule, Microsoft.AI.Web" preCondition="managedHandler" />
+        </modules>
+      </system.webServer>
+    </configuration>
+    
+    ```
 
-> [!Tip]
-> Ha nem jelennek meg adatok, ellenőrizze, hogy megfelelő-e az időtartomány, majd kattintson a Search (Keresés) ikonra.
+Sikeresen konfigurálta a kiszolgálóoldali alkalmazások figyelését. Ha futtatja a webalkalmazást, láthatja, hogy a telemetria elkezdenek megjelenni Application Insightson belül.
 
-[További tudnivalók az Application Insights-eszközökről a Visual Studióban](./visual-studio.md).
+## <a name="add-client-side-monitoring"></a>Ügyféloldali megfigyelés hozzáadása
 
-<a name="monitor"></a>
-### <a name="see-telemetry-in-web-portal"></a>Telemetria megtekintése a webportálon
+Az előző fejezetek útmutatást nyújtanak a kiszolgálóoldali figyelés automatikus és manuális konfigurálására szolgáló módszerekhez. Ügyféloldali figyelés hozzáadásához az [ügyféloldali JavaScript SDK-](javascript.md)t kell használnia. A weblapok ügyféloldali tranzakcióinak figyeléséhez hozzáadhat egy [JavaScript-kódrészletet](javascript.md#snippet-based-setup) az oldal HTML-kódjának záró `</head>` címkéje előtt. 
 
-A telemetriát az Application Insights webportálon is megtekintheti (ha a telepítéskor nem csak az SDK-t telepítette). A portálon a Visual Studiónál több diagram, elemzőeszköz és összetevőket megjelenítő nézet található. A portál riasztásokat is biztosít.
+A kódrészletet manuálisan is hozzáadhatja az egyes HTML-lapok fejlécéhez, ezért azt javasoljuk, hogy vegye fel a kódrészletet egy elsődleges lapra, amely beírja a kódrészletet egy hely összes oldalára. A jelen cikk sablon alapú ASP.net MVC alkalmazásához a szerkeszteni kívánt fájl meghívása megtörténik, `_Layout.cshtml` és a **Views**  >  **megosztva**nézetek alatt található.
 
-Nyissa meg az Application Insights-erőforrást. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) és keresse meg ott, vagy válassza a **Solution Explorer** > **Connected Services** (Csatlakoztatott szolgáltatások) lehetőséget > kattintson a jobb gombbal az **Application Insights** > **Open Application Insights Portal** (Application Insights-portál megnyitása) elemre, amely odavezeti.
+Ügyféloldali figyelés hozzáadásához nyissa meg a `_Layout.cshtml` fájlt, és kövesse az ügyféloldali JavaScript SDK konfigurációs cikkében található [kódrészlet-alapú beállítási útmutatót](javascript.md#snippet-based-setup) .
 
-A portál az alkalmazásából származó telemetriai adatok nézetével nyílik meg.
+## <a name="troubleshooting"></a>Hibaelhárítás
 
-![Az Application Insights áttekintési oldalának képernyőképe](./media/asp-net/007.png)
+A Visual Studio 2019 aktuális verziójának ismert hibája, hogy a rendszerállapot-kulcs felhasználói titokban való tárolása során a rendszer megszakította a .NET-keretrendszer alapú alkalmazások működését, és a kulcsot végső soron be kell hardcoded a applicationinsights.config fájlba a hiba megkerülése érdekében. Ez a cikk úgy lett kialakítva, hogy a probléma teljes mértékben elkerülhető legyen, ha nem használ felhasználói titkokat.  
 
-A portálon az egyik csempére vagy diagramra kattintva további részleteket tekinthet meg.
+## <a name="next-steps"></a>További lépések
 
-## <a name="step-4-publish-your-app"></a>4. lépés: Az alkalmazás közzététele
-Tegye közzé alkalmazását az IIS-kiszolgálón vagy az Azure-on. Az [Élő mérőszámok streammel](./live-stream.md) ellenőrizheti, hogy minden rendben működik-e.
+* Szintetikus tranzakciók hozzáadásával tesztelheti, hogy a webhely elérhető-e a világ minden tájáról a [rendelkezésre állás monitorozásával](monitor-web-app-availability.md).
+* [Konfigurálja a mintavételezést](sampling.md) a telemetria-forgalom csökkentése és az adattárolási költségek csökkentése érdekében.
 
-A telemetria a Application Insights portálon épül fel, ahol nyomon követheti a metrikákat, és megkeresheti a telemetria. A hatékony [Kusto lekérdezési nyelvet](/azure/kusto/query/) használhatja a használat és a teljesítmény elemzéséhez, vagy adott események megtalálásához is.
-
-Továbbra is elemezheti a telemetria a [Visual Studióban](./visual-studio.md), olyan eszközökkel, mint a diagnosztikai keresés és a [trendek](./visual-studio-trends.md).
-
-> [!NOTE]
-> Ha az alkalmazása elég telemetriát küld a [szabályozási korlát](./pricing.md#limits-summary) eléréséhez, az automatikus [mintavételezés](./sampling.md) bekapcsol. A mintavételezés csökkenti az alkalmazásból küldött telemetria mennyiségét, míg a korrelatív adatokat diagnosztikai célból megőrzi.
->
->
-
-## <a name="youre-all-set"></a><a name="land"></a> Készen áll
-
-Gratulálunk! Telepítette az Application Insights csomagot az alkalmazásba, és konfigurálta, hogy telemetriát küldjön az Application Insights szolgáltatásba az Azure-ban.
-
-Az alkalmazás telemetriáját fogadó Azure-erőforrást egy *kialakítási kulcs* azonosítja. A kulcs az ApplicationInsights.config fájlban található.
-
-
-## <a name="upgrade-to-future-sdk-versions"></a>Frissítés a jövőbeli SDK-verziókra
-
-* [Kibocsátási megjegyzések](./release-notes.md)
-
-Az SDK új verziójára való frissítéshez nyissa meg a **NuGet csomagkezelő eszközt**, és szűrje a telepített csomagokat. Válassza a **Microsoft. ApplicationInsights. Web**lehetőséget, és válassza a **frissítés**lehetőséget.
-
-Ha az ApplicationInsights.config fájlt testreszabta, mentse el egy példányát a frissítés előtt. Ezután egyesítse a módosításait az új verzióval.
-
-## <a name="next-steps"></a>Következő lépések
-
-További témaköröket is elolvashat, ha a következők érdeklik:
-
-* [Webalkalmazás beállítása futási időben](./monitor-performance-live-website-now.md)
-* [Azure Cloud Services](./cloudservices.md)
-
-### <a name="more-telemetry"></a>További telemetria
-
-* **[Böngésző és oldalbetöltési adatok](./javascript.md)** – Kódrészlet beszúrása a weboldalakra.
-* **[Részletesebb függőség- és kivételfigyelés](./monitor-performance-live-website-now.md)** – Állapotfigyelő telepítése a kiszolgálón.
-* A felhasználói műveletek számlálására, időpontjára vagy mérésére szolgáló **[Egyéni események kódolása](./api-custom-events-metrics.md)** .
-* **[Naplóadatok lekérése](./asp-net-trace-logs.md)** – Naplóadatok összevetése a telemetriával.
-
-### <a name="analysis"></a>Elemzés
-
-* **[Az Application Insights használata a Visual Studióban](./visual-studio.md)**<br/>A telemetriával végzett hibakereséssel, diagnosztikai kereséssel és a kódig való részletezés lefúrással kapcsolatos információkat tartalmaz.
-* **[Elemzés](../log-query/get-started-portal.md)** – Erőteljes lekérdezési nyelv.
-
-### <a name="alerts"></a>Riasztások
-
-* [Rendelkezésre állási tesztek](./monitor-web-app-availability.md): Hozzon létre teszteket, hogy megbizonyosodjon róla, oldala látható a weben.
-* [Intelligens diagnosztika](./proactive-diagnostics.md): Ezek a tesztek automatikusan futnak, a beállításukhoz semmit sem kell tennie. Értesítést kap, ha az alkalmazásában szokatlanul magas a meghiúsult kérelmek száma.
-* [Metrikai riasztások](../platform/alerts-log.md): riasztások beállítása, amely figyelmezteti, ha egy metrika átlépi a küszöbértéket. Az alkalmazás kódjába beépített egyedi metrikákhoz is állíthat be riasztásokat.
-
-### <a name="automation"></a>Automation
-
-* [Application Insights-erőforrások létrehozásának automatizálása](./powershell.md)
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: d25a44aa70b9638017856595c7431e897d035c33
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: a0cba1c3a7a3b713fa5f0603ad9e116068d8df66
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91576115"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91618471"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>A blob Storage funkciói a Azure Data Lake Storage Gen2ban érhetők el
 
@@ -50,7 +50,7 @@ Ez a táblázat a blob Storage azon funkcióit sorolja fel, amelyeket a Azure Da
 |Blobfuse|Előnézet|Még nem támogatott|[BLOB Storage csatlakoztatása fájlrendszerként a blobfuse-mel](storage-how-to-mount-container-linux.md)|
 |Fiók feladatátvétele|Még nem támogatott|Még nem támogatott|[Vész-helyreállítási és-fiók feladatátvétele](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |BLOB Container ACL|Még nem támogatott<div role="complementary" aria-labelledby="blob-container-ACL"><sup>2</sup></div>|Még nem támogatott<div role="complementary" aria-labelledby="blob-container-ACL"><sup>2</sup></div>|[Tároló ACL beállítása](https://docs.microsoft.com/rest/api/storageservices/set-container-acl)|
-|Felhasználó által kezelt kulcsok|Még nem támogatott|Még nem támogatott|[Ügyfél által felügyelt kulcsok az Azure Storage-titkosításhoz](../common/customer-managed-keys-overview.md)|
+|Ügyfél által biztosított kulcsok|Még nem támogatott|Még nem támogatott|[Titkosítási kulcs megadása a blob Storage-kérelemben](encryption-customer-provided-keys.md)|
 |Egyéni tartományok|Még nem támogatott|Még nem támogatott|[Egyéni tartomány leképezése egy Azure Blob Storage-végpontra](storage-custom-domain-name.md)|
 |Titkosítási hatókörök|Még nem támogatott|Még nem támogatott|[Titkosítási hatókörök létrehozása és kezelése (előzetes verzió)](encryption-scope-manage.md)|
 |Csatorna módosítása|Még nem támogatott|Még nem támogatott|[A hírcsatornák támogatásának módosítása az Azure Blob Storage-ban](storage-blob-change-feed.md)|
@@ -63,7 +63,7 @@ Ez a táblázat a blob Storage azon funkcióit sorolja fel, amelyeket a Azure Da
 
 <div id="preview-form"><sup>3</sup> Ha a pillanatképeket, a nem módosítható tárolókat vagy a statikus webhelyeket Data Lake Storage Gen2 használatával szeretné használni, regisztrálnia kell az előzetes verzióban az <a href=https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VUOUc3NTNQSUdOTjgzVUlVT1pDTzU4WlRKRy4u>űrlap</a>kitöltésével.  </div>
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 - [Ismert problémák a Azure Data Lake Storage Gen2](data-lake-storage-known-issues.md)
 - [Az Azure Data Lake Storage Gen2t támogató Azure-szolgáltatások](data-lake-storage-supported-azure-services.md)

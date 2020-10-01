@@ -7,17 +7,17 @@ ms.service: sql-db-mi
 ms.subservice: security
 ms.custom: seo-lt-2019 sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: 84166e5523cdbdb9ccebf9a0cbfc5e4dee0eb9e8
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: e2cdf7d5213f1667b0b588cc5bfa9f105245b6b3
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387132"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619117"
 ---
 # <a name="powershell-and-the-azure-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell és az Azure CLI: transzparens adattitkosítás engedélyezése az ügyfél által felügyelt kulccsal Azure Key Vault
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -82,7 +82,7 @@ A [set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultacce
 > A Key Vault neve és a kulcsnév együttes hossza nem lehet hosszabb 94 karakternél.
 
 > [!TIP]
-> Példa a Key Vault KeyId:https://contosokeyvault.vault.azure.net/keys/Key1/1a1a2b2b3c3c4d4d5e5e6f6f7g7g8h8h
+> Példa a Key Vault KeyId: https://contosokeyvault.vault.azure.net/keys/Key1/1a1a2b2b3c3c4d4d5e5e6f6f7g7g8h8h
 
 ```powershell
 # add the key from Key Vault to the server
@@ -148,7 +148,7 @@ az keyvault set-policy --name <kvname>  --object-id <objectid> --resource-group 
 ```
 
 > [!TIP]
-> Tartsa meg az új kulcs kulcs-URI-JÁT vagy keyID a következő lépéshez, például:https://contosokeyvault.vault.azure.net/keys/Key1/1a1a2b2b3c3c4d4d5e5e6f6f7g7g8h8h
+> Tartsa meg az új kulcs kulcs-URI-JÁT vagy keyID a következő lépéshez, például: https://contosokeyvault.vault.azure.net/keys/Key1/1a1a2b2b3c3c4d4d5e5e6f6f7g7g8h8h
 
 ## <a name="add-the-key-vault-key-to-the-server-and-set-the-tde-protector"></a>Adja hozzá a Key Vault kulcsot a kiszolgálóhoz, és állítsa be a TDE-védőt.
 
@@ -241,7 +241,7 @@ Ha probléma merül fel, ellenőrizze a következőket:
    - A kulcs nem rendelkezhet lejárati dátummal
    - A kulcsnak engedélyezve kell lennie a *Get*, a *wrap Key*és a *dewrap Key* műveletnek.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Megtudhatja, hogyan forgathatja el egy kiszolgáló TDE-védelmezőjét a biztonsági követelményeknek való megfelelés érdekében: [a transzparens adattitkosítás Protector elforgatása a PowerShell használatával](transparent-data-encryption-byok-key-rotation.md).
 - Biztonsági kockázat esetén Ismerje meg, hogyan távolíthat el egy potenciálisan sérült TDE-védőt: [távolítson el egy potenciálisan feltört kulcsot](transparent-data-encryption-byok-remove-tde-protector.md).

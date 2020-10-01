@@ -6,17 +6,17 @@ ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: seo-lt-2019, sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: douglas, sstein
 ms.date: 06/26/2019
-ms.openlocfilehash: 07534b834fb0b882d3c37b670f93d2a00296a248
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0b8ceee1260e4209420778d7f327d771b858a899
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91323277"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91617723"
 ---
 # <a name="delete-a-subnet-after-deleting-a-managed-instance-of-sql-managed-instance"></a>Alhálózat törlése a felügyelt SQL-példány felügyelt példányának törlése után
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -50,7 +50,7 @@ Azure Portal értesítések megerősítik, hogy a virtuális fürt törlésére 
 
 Ha a virtuális fürtöt az API-n keresztül szeretné törölni, használja a [virtuális fürtök delete metódusában](https://docs.microsoft.com/rest/api/sql/virtualclusters/delete)megadott URI-paramétereket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az áttekintést lásd: [Mi az az Azure SQL felügyelt példánya?](sql-managed-instance-paas-overview.md).
 - Ismerje meg a [kapcsolati architektúrát az SQL felügyelt példányában](connectivity-architecture-overview.md).

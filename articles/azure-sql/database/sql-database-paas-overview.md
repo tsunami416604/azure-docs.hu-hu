@@ -7,28 +7,28 @@ ms.service: sql-database
 ms.subservice: service
 ms.custom: sqldbrb=3
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: overview
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/21/2020
-ms.openlocfilehash: 38f52178ec9c736f3ee51839678401753365d48d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 0fd3778d50216e337b872f0a27cb30b04a0219f7
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907061"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91617230"
 ---
 # <a name="what-is-azure-sql-database"></a>Mi az Azure SQL Database?
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-A Azure SQL Database egy teljes körűen felügyelt platformként szolgáló adatbázis-motor, amely kezeli a legtöbb adatbázis-kezelési funkciót, például a verziófrissítést, a javítást, a biztonsági mentést és a figyelést felhasználói beavatkozás nélkül. A Azure SQL Database a SQL Server adatbázismotor és a 99,99%-OS rendelkezésre állású operációs rendszer legújabb stabil verziójában fut. A Azure SQL Database beépített Pásti-funkciók lehetővé teszik, hogy az Ön vállalata számára kritikus, a tartományra jellemző adatbázis-felügyeleti és optimalizálási tevékenységekre koncentráljon.
+Az Azure SQL Database egy olyan adatbázismotor, amely egy teljes mértékben felügyelt, szolgáltatásként nyújtott platform (PaaS), és képes kezelni az adatbázisok felügyeletével kapcsolatos legtöbb feladatot, például a frissítéseket, a javítások telepítését, a biztonsági mentések készítését és a felhasználói beavatkozás nélküli monitorozást. Az Azure SQL Database mindig az SQL Server-adatbázismotor legfrissebb stabil verzióján és javított operációs rendszeren fut, 99,99%-os rendelkezésre állással. Az Azure SQL Database-be beépített PaaS-funkciók lehetővé teszik, hogy azon alkalmazási területre jellemző adatbázisgazdai és -optimalizálási tevékenységekre koncentráljon, amelyek kritikus fontosságúak a vállalat számára.
 
-A Azure SQL Database segítségével magas rendelkezésre állású és nagy teljesítményű adattárolási réteget hozhat létre az Azure-beli alkalmazások és megoldások számára. A SQL Database a különböző modern felhőalapú alkalmazások számára megfelelő választás lehet, mivel lehetővé teszi a kapcsolati és [nem kapcsolati struktúrák](../multi-model-features.md), például a diagramok, a JSON, a térbeli és az XML feldolgozását.
+Az Azure SQL Database használatával magas rendelkezésre állású és nagy teljesítményű adattároló réteget hozhat létre az Azure-ban az alkalmazások és a megoldások számára. A SQL Database a különböző modern felhőalapú alkalmazások számára megfelelő választás lehet, mivel lehetővé teszi a kapcsolati és [nem kapcsolati struktúrák](../multi-model-features.md), például a diagramok, a JSON, a térbeli és az XML feldolgozását.
 
-A Azure SQL Database az [Microsoft SQL Server adatbázismotor](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation?toc=/azure/sql-database/toc.json)legújabb stabil verziójára épül. Használhatja a speciális lekérdezés-feldolgozási funkciókat, például [a nagy teljesítményű memóriában lévő technológiákat és az](../in-memory-oltp-overview.md) [intelligens lekérdezések feldolgozását](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json). Valójában a SQL Server legújabb képességei SQL Database, majd SQL Server önmagára. A legújabb SQL Server képességek javítása és frissítése nélkül, több millió adatbázison keresztül tesztelve. 
+A Azure SQL Database az [Microsoft SQL Server adatbázismotor](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation?toc=/azure/sql-database/toc.json)legújabb stabil verziójára épül. Használhatja a speciális lekérdezés-feldolgozási funkciókat, például [a nagy teljesítményű memóriában lévő technológiákat és az](../in-memory-oltp-overview.md) [intelligens lekérdezések feldolgozását](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json). Az SQL Server legújabb funkciói először az SQL Database-ben jelennek meg, és csak ezután válnak elérhetővé magában az SQL Serverben. Az SQL Server legújabb funkciói a karbantartás és frissítés terhei nélkül állnak az Ön rendelkezésére úgy, hogy már több millió adatbázison tesztelték őket. 
 
-A SQL Database lehetővé teszi a teljesítmény egyszerű meghatározását és méretezését két különböző beszerzési modellen belül: egy [virtuális mag-alapú vásárlási modellt](service-tiers-vcore.md) és egy [DTU-alapú vásárlási modellt](service-tiers-dtu.md). A SQL Database egy teljes körűen felügyelt szolgáltatás, amely beépített magas rendelkezésre állást, biztonsági másolatokat és egyéb gyakori karbantartási műveleteket tartalmaz. A Microsoft az SQL és az operációs rendszer kódjának összes javítását és frissítését kezeli. Nem kell kezelnie a mögöttes infrastruktúrát.
+A SQL Database lehetővé teszi a teljesítmény egyszerű meghatározását és méretezését két különböző beszerzési modellen belül: egy [virtuális mag-alapú vásárlási modellt](service-tiers-vcore.md) és egy [DTU-alapú vásárlási modellt](service-tiers-dtu.md). Az SQL Database egy teljeskörűen felügyelt szolgáltatás, amely beépített magas rendelkezésre állással, biztonsági mentésekkel és egyéb gyakori karbantartási műveletekkel rendelkezik. A Microsoft az SQL és az operációs rendszer kódjának összes javítását és frissítését kezeli. Nem kell kezelnie a mögöttes infrastruktúrát.
 
 Ha még nem ismeri a Azure SQL Database, tekintse meg a részletes [Azure SQL-videó sorozatának](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner) *Azure SQL Database áttekintő* videóját:
 > [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/Azure-SQL-Database-Overview-7-of-61/player]
@@ -222,7 +222,7 @@ Nem. A javítások hatása általában nem észlelhető, ha az alkalmazásban [�
 - [Visszajelzés](https://aka.ms/sqlfeedback): hibák jelentése és funkciók kérése.
 - [Reddit](https://www.reddit.com/r/SQLServer/): beszéljen SQL Server.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/sql-database/) , amely az önálló adatbázisokra és a rugalmas készletekre vonatkozó költség-összehasonlításokat és számológépeket tartalmazza.
 - Az első lépésekhez tekintse meg ezeket a rövid útmutatókat:

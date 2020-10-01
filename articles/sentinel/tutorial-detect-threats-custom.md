@@ -1,6 +1,6 @@
 ---
 title: Egyéni elemzési szabályok létrehozása a fenyegetések észleléséhez az Azure Sentinel használatával | Microsoft Docs
-description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egyéni elemzési szabályokat a biztonsági fenyegetések észleléséhez az Azure Sentinel használatával.
+description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egyéni elemzési szabályokat a biztonsági fenyegetések észleléséhez az Azure Sentinel használatával. Használja ki az események csoportosításának és a riasztások csoportosításának előnyeit, és Ismerje meg az automatikus letiltást.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/06/2020
 ms.author: yelevin
-ms.openlocfilehash: 0e5989490603e22745a8bc972b16ed016c894893
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 55853cc6a3dc27df4c63e0a28ab079813040e45d
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88605896"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91617179"
 ---
 # <a name="tutorial-create-custom-analytics-rules-to-detect-threats"></a>Oktatóanyag: egyéni elemzési szabályok létrehozása a fenyegetések észleléséhez
 
@@ -53,13 +53,15 @@ Egyéni elemzési szabályokat hozhat létre, amelyek segítségével megkereshe
 
       Íme egy példa a lekérdezésre, amely riasztást küld, ha rendellenes számú erőforrás jön létre az Azure-tevékenységben.
 
-      `AzureActivity
-     \| where OperationName == "Create or Update Virtual Machine" or OperationName =="Create Deployment"
-     \| where ActivityStatus == "Succeeded"
-     \| make-series dcount(ResourceId)  default=0 on EventSubmissionTimestamp in range(ago(7d), now(), 1d) by Caller`
+      ```kusto
+      AzureActivity
+      | where OperationName == "Create or Update Virtual Machine" or OperationName =="Create Deployment"
+      | where ActivityStatus == "Succeeded"
+      | make-series dcount(ResourceId)  default=0 on EventSubmissionTimestamp in range(ago(7d), now(), 1d) by Caller
+      ```
 
-      > [!NOTE]
-      > A lekérdezés hosszának 1 és 10 000 karakter közöttinek kell lennie, és nem tartalmazhat "Search \* " vagy "Union \* " karaktert.
+        > [!NOTE]
+        > A lekérdezés hosszának 1 és 10 000 karakter közöttinek kell lennie, és nem tartalmazhat "Search \* " vagy "Union \* " karaktert.
 
     1. A **leképezési entitások** szakasz segítségével a lekérdezési eredményekből származó paramétereket kapcsolhat az Azure Sentinel által elismert entitásokhoz. Ezek az entitások a további elemzés alapjául szolgálnak, beleértve az incidensek **beállításai** lapon lévő riasztások csoportosítását.
   
@@ -69,8 +71,12 @@ Egyéni elemzési szabályokat hozhat létre, amelyek segítségével megkereshe
 
        1. A **legutóbbi keresési adatok** beállítása a lekérdezés által jelzett adatok időtartamának meghatározásához – például lekérdezheti az elmúlt 10 perc adatait, vagy az elmúlt 6 óra adatait.
 
-       > [!NOTE]
-       > Ez a két beállítás egymástól független, egy pontra. A lekérdezéseket rövid idő alatt futtathatja, amely hosszabb időt is igénybe vehet az intervallumnál (egymást átfedő lekérdezésekkel), de nem futtathat lekérdezést olyan intervallumban, amely meghaladja a lefedettségi időt, ellenkező esetben a teljes lekérdezési lefedettség hiányában marad.
+          > [!NOTE]
+          > **Lekérdezési időközök és lookback időszak**
+          > - Ez a két beállítás egymástól független, egy pontra. A lekérdezéseket rövid idő alatt futtathatja, amely hosszabb időt is igénybe vehet az intervallumnál (egymást átfedő lekérdezésekkel), de nem futtathat lekérdezést olyan intervallumban, amely meghaladja a lefedettségi időt, ellenkező esetben a teljes lekérdezési lefedettség hiányában marad.
+          >
+          > **Betöltési késleltetés**
+          > - Annak érdekében, hogy az események a forráshoz és az Azure Sentinelbe való betöltéséhez esetlegesen előforduló **késést** is figyelembe lehessen venni, és az adatok ismétlődése nélkül az Azure Sentinel ütemezett elemzési szabályokat futtat az ütemezett időponttól számított **öt perces késleltetéssel** .
 
     1. Az alapkonfiguráció meghatározásához használja a **riasztási küszöbérték** szakaszt. Például állítsa be a **riasztást, ha a lekérdezés eredményeinek száma** **nagyobb, mint** , és adja meg a 1000 számot, ha azt szeretné, hogy a szabály csak akkor hozzon létre riasztást, ha a lekérdezés több, mint 1000 eredményt ad vissza, amikor az fut. Ez egy kötelező mező, ezért ha nem szeretné beállítani az alapkonfigurációt – azaz ha azt szeretné, hogy a riasztás minden eseményt regisztráljon – a 0 értéket adja meg a szám mezőben.
     
@@ -135,7 +141,44 @@ Egyéni elemzési szabályokat hozhat létre, amelyek segítségével megkereshe
 > [!NOTE]
 > Az Azure Sentinelben létrehozott riasztások [Microsoft Graph biztonságon](https://aka.ms/securitygraphdocs)keresztül érhetők el. További információ: [Microsoft Graph Security riasztások dokumentációja](https://aka.ms/graphsecurityreferencebetadocs).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="troubleshooting"></a>Hibaelhárítás
+
+### <a name="a-scheduled-rule-failed-to-execute-or-appears-with-auto-disabled-added-to-the-name"></a>Egy ütemezett szabályt nem sikerült végrehajtani, vagy a rendszer automatikusan letiltottként jeleníti meg a nevet
+
+Ritkán fordul elő, hogy egy ütemezett lekérdezési szabály nem fut, de ez megtörténhet. Az Azure Sentinel a meghibásodások meghatározott típusa és a hozzájuk kapcsolódó körülmények alapján osztályozza az átmeneti vagy állandó hibákat.
+
+#### <a name="transient-failure"></a>Átmeneti hiba
+
+Átmeneti hiba fordul elő, mert az ideiglenes állapotú, és hamarosan visszatér a normális kerékvágásba, ekkor a szabály végrehajtása sikeres lesz. Néhány példa azokra a hibákra, amelyeket az Azure Sentinel átmenetiként osztályoz:
+
+- Egy szabály lekérdezése túl sokáig tart a futtatásához és az időtúllépéshez.
+- Kapcsolódási problémák az adatforrások és a Log Analytics, illetve a Log Analytics és az Azure Sentinel között.
+- Minden más új és ismeretlen hiba átmenetinek tekintendő.
+
+Átmeneti hiba esetén az Azure Sentinel továbbra is megkísérli végrehajtani a szabályt az előre meghatározott és folyamatosan növekvő intervallumok után, akár egy pontot. Ezt követően a szabály csak a következő ütemezett időpontban fog futni. Egy szabály nem lesz automatikusan letiltva átmeneti hiba miatt.
+
+#### <a name="permanent-failure---rule-auto-disabled"></a>Állandó hiba – a szabály automatikusan le van tiltva
+
+Állandó hiba történt a szabály futtatását engedélyező feltételek változása miatt, amely emberi beavatkozás nélkül nem tér vissza a korábbi állapotukba. Az alábbiakban néhány példát láthat az állandóként besorolt hibákra:
+
+- A célként megadott munkaterület (amelyen a szabály lekérdezése működik) törölve lett.
+- A célként megadott tábla (amelyen a szabály lekérdezése működik) törölve lett.
+- Az Azure Sentinel el lett távolítva a cél munkaterületről.
+- A szabály lekérdezése által használt függvény már nem érvényes; módosult vagy el lett távolítva.
+- A szabály lekérdezésének egyik adatforrásához tartozó engedélyek módosultak.
+- A szabály lekérdezésének egyik adatforrása törölve lett vagy le lett választva.
+
+**Ha előre meghatározott számú, egymást követő állandó hibát észlel, és ugyanazon a szabályon van,** akkor Az Azure Sentinel leállítja a szabály végrehajtásának kísérletét, és a következő lépéseket is végrehajtja:
+
+- Letiltja a szabályt.
+- Hozzáadja az **"automatikus LEtiltva"** kifejezést a szabály nevének elejéhez.
+- Hozzáadja a hiba okát (és a letiltását) a szabály leírásához.
+
+Egyszerűen meghatározhatja az automatikusan letiltott szabályok jelenlétét, ha a szabályok listáját név szerint rendezi. Az automatikusan letiltott szabályok a lista elején vagy közelében lesznek.
+
+A SOC-kezelőknek rendszeresen ellenőriznie kell a szabályok listáját az automatikusan letiltott szabályok meglétének ellenőrzéséhez.
+
+## <a name="next-steps"></a>További lépések
 
 Ebből az oktatóanyagból megtudhatta, hogyan kezdheti el a fenyegetések észlelését az Azure Sentinel használatával.
 

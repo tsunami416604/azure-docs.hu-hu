@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: development
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: sample
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: aed1965b07a80efa3cd8dbc84e396b9ef4f99252
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2829b1c71aebcc97452fc658e6509e4fae42da8c
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84345274"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91616805"
 ---
 # <a name="in-memory-sample"></a>Memóriában tárolt minta
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -152,7 +152,7 @@ end
 
 Ha az előző T-SQL-parancsfájl *_ondisk* verzióját szeretné ostress.exe, akkor a *_inmem* alsztring mindkét előfordulását a *_ondisk*értékre kell cserélni. Ezek a cserék a táblák és a tárolt eljárások nevét érintik.
 
-#### <a name="install-rml-utilities-and-ostress"></a>RML segédprogramok telepítése és`ostress`
+#### <a name="install-rml-utilities-and-ostress"></a>RML segédprogramok telepítése és `ostress`
 
 Ideális esetben a ostress.exe Azure-beli virtuális gépen (VM) való futtatását tervezi. Hozzon létre egy [Azure-beli virtuális gépet](https://azure.microsoft.com/documentation/services/virtual-machines/) ugyanabban az Azure földrajzi régióban, ahol a AdventureWorksLT-adatbázis található. Ehelyett a ostress.exe futtatható a laptopon.
 
@@ -365,7 +365,7 @@ A P2 díjszabási csomaggal rendelkező adatbázisban a lekérdezés teljesítm�
 
 #### <a name="tools"></a>Eszközök
 
-- [Azure Portalra](https://portal.azure.com/)
+- [Azure Portal](https://portal.azure.com/)
 
 - [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx)
 

@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: security
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 827d66b51aa2080c4fb10209439d7781ddf787a7
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 1e8810e8b0c02aec33f55fb8f0689eec3c5bad8f
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89436925"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91616703"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>Virtuális hálózati szolgáltatási végpontok és szabályok használata a Azure SQL Database-kiszolgálókon
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -280,7 +280,7 @@ Már rendelkeznie kell egy olyan alhálózattal, amely az adott Virtual Network 
 - [Azure Virtual Network szolgáltatásbeli végpontok][vm-virtual-network-service-endpoints-overview-649d]
 - [Kiszolgálói szintű és adatbázis-szintű tűzfalszabályok][sql-db-firewall-rules-config-715d]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A PowerShell használatával hozzon létre egy virtuális hálózati szolgáltatási végpontot, majd egy virtuális hálózati szabályt a Azure SQL Databasehoz.][sql-db-vnet-service-endpoint-rule-powershell-md-52d]
 - [Virtual Network szabályok:][rest-api-virtual-network-rules-operations-862r] a REST API-kkal végzett műveletek

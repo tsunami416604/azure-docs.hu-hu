@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: development
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: ajetasin
 ms.author: ajetasi
 ms.reviewer: sstein
 ms.date: 11/04/2019
-ms.openlocfilehash: 7f3ae912b12f85be16d3df49dc10c022358f3af8
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 640dcfc49d1b467cbb852e8b07b113c1180daf7f
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89437071"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91617094"
 ---
 # <a name="stream-data-into-azure-sql-database-using-azure-stream-analytics-integration-preview"></a>Adatfolyam-továbbítás Azure SQL Database Azure Stream Analytics Integration (előzetes verzió)
 
@@ -43,7 +43,7 @@ Az cikkben ismertetett lépések elvégzéséhez az alábbi erőforrásokra lesz
 
 ## <a name="configure-stream-analytics-integration"></a>A stream Analytics-integráció konfigurálása
 
-1. Jelentkezzen be az Azure Portalra.
+1. Jelentkezzen be az Azure portálra.
 2. Navigáljon ahhoz az adatbázishoz, ahol be szeretné állítani a folyamatos átviteli adatait. Válassza a **stream Analytics (előzetes verzió)** lehetőséget.
 
     ![Stream Analytics](./media/stream-data-stream-analytics-integration/stream-analytics.png)
@@ -122,7 +122,7 @@ Az cikkben ismertetett lépések elvégzéséhez az alábbi erőforrásokra lesz
 
      ![Stream Analytics-feladatok](./media/stream-data-stream-analytics-integration/jobs.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure Stream Analytics dokumentációja](https://docs.microsoft.com/azure/stream-analytics/)
 - [Az Azure Stream Analytics megoldásmintái](../../stream-analytics/stream-analytics-solution-patterns.md)

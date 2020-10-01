@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: data-movement
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/14/2019
-ms.openlocfilehash: 36c2a6700c1657d1fa3cef4ede64e6076bc93eab
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 90f1e068bf816ecf72bcc8a3ba9439883e69a069
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91332950"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91616670"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-databases-in-azure-sql-database-and-sql-server"></a>Oktatóanyag: SQL-adatszinkronizálás beállítása Azure SQL Database és SQL Server adatbázisai között
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -165,7 +165,7 @@ Az új szinkronizálási csoport tagjainak létrehozása és telepítése után 
 
 1. A listából válassza ki a szinkronizálni kívánt táblákat. Alapértelmezés szerint minden oszlop ki van választva, ezért tiltsa le az olyan oszlopok jelölőnégyzetét, amelyeket nem szeretne szinkronizálni. Ügyeljen arra, hogy a kijelölt elsődleges kulcs oszlopot hagyja kiválasztva.
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 1. Alapértelmezés szerint az adatbázisok nincsenek szinkronizálva az ütemezett vagy a manuális futtatásig. Manuális szinkronizálás futtatásához navigáljon az adatbázishoz SQL Database a Azure Portalban, válassza a **szinkronizálás más adatbázisokhoz**lehetőséget, majd válassza ki a szinkronizálási csoportot. Megnyílik az **adatszinkronizálás** lap. Válassza a **Szinkronizálás** elemet.
 
@@ -231,7 +231,7 @@ Miután *. bacpac* fájlként exportált egy adatbázist, és importálja a fáj
 
 Az ügyfél-ügynökkel kapcsolatos gyakori kérdésekért lásd: [ügynök – gyakori](sql-data-sync-agent-overview.md#agent-faq)kérdések.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Gratulálunk! Olyan szinkronizálási csoportot hozott létre, amely SQL Database példányt és egy SQL Server adatbázist is tartalmaz.
 

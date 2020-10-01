@@ -1,9 +1,9 @@
 ---
-title: Az adathordozó-feldolgozás skálázása – áttekintés | Microsoft Docs
-description: Ez a témakör áttekintést nyújt az adathordozók feldolgozásának Azure Media Servicessal való méretezéséről.
+title: A Media szolgáltatás számára fenntartott egységek áttekintése | Microsoft Docs
+description: Ez a cikk áttekintést nyújt az adathordozók feldolgozásának Azure Media Servicessal való méretezéséről.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,68 +11,53 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/26/2019
-ms.author: juliako
-ms.openlocfilehash: 1d2ef02ea77ad2bca37f1e397b784d06481538fa
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.date: 09/30/2020
+ms.author: inhenkel
+ms.openlocfilehash: 8867e680be0aba187daf83bc538dd47c582c71fe
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89264011"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91618505"
 ---
-# <a name="scaling-media-processing-overview"></a>Médiafeldolgozás skálázása – áttekintés 
+# <a name="media-reserved-units"></a>Media szolgáltatás számára fenntartott egységek
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
-Ezen az oldalon áttekintheti, hogyan és miért érdemes méretezni a médiafájlok feldolgozását. 
-
-## <a name="overview"></a>Áttekintés
-A Media Services-fiókok Fenntartott egység típussal vannak társítva, amely meghatározza a médiafeldolgozási feladatok feldolgozásának sebességét. A következő fenntartott egység típusok közül választhat: **S1**, **S2**vagy **S3**. Ugyanaz a kódolási feladat például gyorsabban fut, amikor az **S2** Fenntartott egység típust használja az **S1** típus helyett. További információkért lásd a [fenntartott egységek típusát](https://azure.microsoft.com/blog/high-speed-encoding-with-azure-media-services/).
-
-A fenntartott egység típusának meghatározása mellett megadhatja, hogy a fiók a fenntartott egységekkel legyen kiépítve. A megadott Fenntartott egységek száma határozza meg az egy adott fiókon egy időben feldolgozható médiafeladatok számát. Ha például a fiókja öt fenntartott egységgel rendelkezik, akkor az öt adathordozó-feladat egyszerre fut, amíg a feladatok feldolgozására sor kerül. A hátralévő feladatok megvárhatják a várólistán, és a folyamatban lévő tevékenységek befejezését követően is felveszik a feldolgozást. Ha egy fiókhoz nincs kiépítve fenntartott egység, a rendszer szekvenciálisan felveszi a tevékenységeket. Ebben az esetben a várakozási idő egy feladat befejezése és a következő kezdés a rendszer erőforrásainak rendelkezésre állása alapján fog függeni.
+A Azure Media Services lehetővé teszi a médiafájlok feldolgozását a Media szolgáltatás számára fenntartott egységek (MRUs-EK) kezelésével. Egy MRU további számítási kapacitást biztosít a kódolási adathordozók számára. A MRUs száma határozza meg azt a sebességet, amellyel a rendszer feldolgozza a média feladatait, és hogy hány adathordozó-feladatot lehet egyszerre feldolgozni egy fiókban. Ha például a fiókja öt MRUs rendelkezik, és vannak feldolgozható feladatok, az öt adathordozó-feladat egyidejűleg futhat. A rendszer a fennmaradó feladatokat várólistára helyezi, és a folyamatban lévő feladatok befejezését követően egymás után is felveheti a feldolgozást. Minden olyan MRU, amelyet kiépített, a kapacitás foglalása, de nem biztosít dedikált erőforrást. Rendkívül nagy igény esetén előfordulhat, hogy az összes MRUs azonnal nem kezdi meg a feldolgozást.
 
 ## <a name="choosing-between-different-reserved-unit-types"></a>Különböző fenntartott egységek típusának kiválasztása
-A következő táblázat segít dönteni a különböző kódolási sebességek kiválasztásakor. Emellett néhány teljesítményteszt-esetet is biztosít [egy videón, amelyet](https://nimbuspmteam.blob.core.windows.net/asset-46f1f723-5d76-477e-a153-3fd0f9f90f73/SeattlePikePlaceMarket_7min.ts?sv=2015-07-08&sr=c&si=013ab6a6-5ebf-431e-8243-9983a6b5b01c&sig=YCgEB8DxYKK%2B8W9LnBykzm1ZRUTwQAAH9QFUGw%2BIWuc%3D&se=2118-09-21T19%3A28%3A57Z) a saját tesztek elvégzéséhez tölthet le:
 
-|RU-típus|Forgatókönyv|Példa a [7 perces 1080p videó](https://nimbuspmteam.blob.core.windows.net/asset-46f1f723-5d76-477e-a153-3fd0f9f90f73/SeattlePikePlaceMarket_7min.ts?sv=2015-07-08&sr=c&si=013ab6a6-5ebf-431e-8243-9983a6b5b01c&sig=YCgEB8DxYKK%2B8W9LnBykzm1ZRUTwQAAH9QFUGw%2BIWuc%3D&se=2118-09-21T19%3A28%3A57Z) eredményeire|
+A következő táblázat segít dönteni a különböző kódolási sebességek kiválasztásakor.  Egy 7 perces, a használatban lévő MRU-től függően 1080p-videóként jeleníti meg a kódolás időtartamát.
+
+|RU-típus|Használati eset|Példa a 7 perces 1080p videó eredményeire |
 |---|---|---|
 | **S1**|Egyetlen bitráta kódolása. <br/>A fájlok SD-vagy alacsonyabb felbontásban, nem érzékenyek, alacsonyak.|A "H264 Single bitráta SD 16x9" használatával az egyetlen sávszélességű SD-feloldási MP4-fájl kódolása körülbelül 7 percet vesz igénybe.|
 | **S2**|Egyetlen bitráta és több bitráta-kódolás.<br/>Normál használat SD és HD kódoláshoz.|A "H264 Single bitráta 720p" beállítású kódolás körülbelül 6 percet vesz igénybe.<br/><br/>A "H264 Multiple bitráta 720p" beállítású kódolás körülbelül 12 percet vesz igénybe.|
 | **S3**|Egyetlen bitráta és több bitráta-kódolás.<br/>Teljes HD-és 4K-felbontású videók. Időérzékeny, gyorsabb átfutási idő kódolása.|A "H264 Single bitráta 1080p" beállítással rendelkező kódolás körülbelül 3 percet vesz igénybe.<br/><br/>A "H264 Multiple bitráta 1080p" beállítással rendelkező kódolás körülbelül 8 percet vesz igénybe.|
 
-## <a name="considerations"></a>Megfontolandó szempontok
-> [!IMPORTANT]
-> Tekintse át az ebben a szakaszban ismertetett szempontokat.  
-> 
-> 
+> [!NOTE]
+> Ha nem hoz létre MRU-et a fiókjához, a rendszer a média feladatait az S1 MRU és a feladatok egymás utáni feladataival dolgozza fel. A rendszer nem foglal le feldolgozási kapacitást, így a várakozási idő egy feladat befejezése és a következő kezdés a rendszeren lévő erőforrások rendelkezésre állásának függvénye lesz.
 
-* Az Media Services v3 vagy Video Indexer által aktivált hangelemzési és videó-elemzési feladatokhoz az S3 egység típusa kifejezetten ajánlott.
-* Ha a megosztott készletet használja, azaz a fenntartott egységek nélkül, akkor a kódolási feladatok ugyanolyan teljesítménnyel rendelkeznek, mint az S1 RUs. Azonban nincs felső korlát ahhoz az időponthoz, ameddig a tevékenységek várólistán lévő állapotba kerülnek, és egy adott időpontban egyetlen feladat is fut.
+## <a name="considerations"></a>Megfontolandó szempontok
+
+* Az Media Services v3 vagy Video Indexer által aktivált hangelemzési és videó-elemzési feladatokhoz ajánlott a fiók tíz S3 egységgel való üzembe helyezése. Ha több mint 10 S3 MRUs van szüksége, nyisson meg egy támogatási jegyet a [Azure Portal](https://portal.azure.com/)használatával.
+* A MRUs nem rendelkező kódolási feladatoknál nincs felső korlát ahhoz, hogy a tevékenységek várólistán lévő állapotban legyenek, és legfeljebb egy feladat fog futni egyszerre.
 
 ## <a name="billing"></a>Számlázás
 
-A számlázás a fiókban a Media szolgáltatás számára fenntartott egységek száma alapján történik. Ez attól függetlenül történik, hogy van-e a fiókjában futó feladat. Részletes magyarázatért tekintse meg a [Media Services díjszabási](https://azure.microsoft.com/pricing/details/media-services/) oldalának gyakori kérdések című szakaszát.   
+A számlázás a fiókban a Media szolgáltatás számára fenntartott egységek száma alapján történik. Ez attól függetlenül történik, hogy van-e a fiókjában futó feladat. Részletes magyarázatért tekintse meg a [Media Services díjszabási](https://azure.microsoft.com/pricing/details/media-services/) oldalának gyakori kérdések című szakaszát.
 
 ## <a name="quotas-and-limitations"></a>Kvóták és korlátozások
+
 A kvótákkal és korlátozásokkal, valamint a támogatási jegyek megnyitásával kapcsolatos információkért lásd: [kvóták és korlátozások](media-services-quotas-and-limitations.md).
 
-## <a name="next-step"></a>Következő lépés
-A skálázási adathordozó feldolgozási feladatának elérése az alábbi technológiák egyikével: 
+## <a name="next-steps"></a>További lépések
 
-> [!div class="op_single_selector"]
-> * [.NET](media-services-dotnet-encoding-units.md)
-> * [Portál](media-services-portal-scale-media-processing.md)
-> * [REST](/rest/api/media/operations/encodingreservedunittype)
-> * [Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
-> * [PHP](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)
-> 
+Próbálja ki a médiafájlok feldolgozását az alábbi technológiák egyikével:
 
-> [!NOTE]
-> A Java SDK legújabb verziójának beszerzéséhez és a Java-fejlesztés megkezdéséhez tekintse meg [Az Azure Media Services Java ügyfél-SDK használatának megkezdése](./media-services-java-how-to-use.md) című cikket. <br/>
-> A legfrissebb Media Services PHP SDK letöltéséhez keresse meg a Microsoft Azure-csomag 0.5.7-es verzióját a [Packagist-adattárban](https://packagist.org/packages/microsoft/windowsazure#v0.5.7).  
-
-## <a name="media-services-learning-paths"></a>A Media Services tanulási útvonalai
-[!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
-
-## <a name="provide-feedback"></a>Visszajelzés küldése
-[!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
+[.Net](media-services-dotnet-encoding-units.md) 
+ [Portál](media-services-portal-scale-media-processing.md) 
+ [Rest](/rest/api/media/operations/encodingreservedunittype) 
+ [Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples) 
+ [Php](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)

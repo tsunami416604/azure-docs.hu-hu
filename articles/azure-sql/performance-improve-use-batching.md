@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: development
 ms.custom: sqldbrb=2
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
 ms.date: 01/25/2019
-ms.openlocfilehash: 01e1c63a4cfea367a0f721ac33986abade8b5b35
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 94f54e02de1b61cb05b4e41bb4c40118299cf20f
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84343829"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91618641"
 ---
 # <a name="how-to-use-batching-to-improve-azure-sql-database-and-azure-sql-managed-instance-application-performance"></a>A kötegelt feldolgozás használata az Azure SQL Database és az Azure SQL felügyelt példányok alkalmazásának teljesítményének növeléséhez
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -99,7 +99,7 @@ Az alábbi táblázat néhány alkalmi tesztelési eredményt mutat be. A teszte
 
 **A helyszínen az Azure-** ba:
 
-| Műveletek | Nincs tranzakció (MS) | Tranzakció (MS) |
+| Üzemeltetés | Nincs tranzakció (MS) | Tranzakció (MS) |
 | --- | --- | --- |
 | 1 |130 |402 |
 | 10 |1208 |1226 |
@@ -108,7 +108,7 @@ Az alábbi táblázat néhány alkalmi tesztelési eredményt mutat be. A teszte
 
 **Azure-ról Azure-ra (azonos adatközpont)**:
 
-| Műveletek | Nincs tranzakció (MS) | Tranzakció (MS) |
+| Üzemeltetés | Nincs tranzakció (MS) | Tranzakció (MS) |
 | --- | --- | --- |
 | 1 |21 |26 |
 | 10 |220 |56 |
@@ -195,7 +195,7 @@ A legtöbb esetben a tábla értékű paraméterek egyenértékű vagy jobb telj
 
 A következő táblázat a tábla értékű paraméterek ezredmásodpercben történő használatára ad hoc tesztelési eredményeket mutat be.
 
-| Műveletek | Helyszíni – Azure (MS) | Azure-beli azonos adatközpont (MS) |
+| Üzemeltetés | Helyszíni – Azure (MS) | Azure-beli azonos adatközpont (MS) |
 | --- | --- | --- |
 | 1 |124 |32 |
 | 10 |131 |25 |
@@ -233,7 +233,7 @@ Vannak olyan esetek, amikor a tömeges másolás előnyben részesített a tábl
 
 A következő ad hoc tesztelési eredmények a **SqlBulkCopy** -ben történő kötegelt feldolgozás teljesítményét mutatják be ezredmásodpercben.
 
-| Műveletek | Helyszíni – Azure (MS) | Azure-beli azonos adatközpont (MS) |
+| Üzemeltetés | Helyszíni – Azure (MS) | Azure-beli azonos adatközpont (MS) |
 | --- | --- | --- |
 | 1 |433 |57 |
 | 10 |441 |32 |
@@ -276,7 +276,7 @@ Ez a példa az alapvető koncepció megjelenítését szemlélteti. Egy reálisa
 
 A következő ad hoc teszt eredményei az ilyen típusú INSERT utasítás teljesítményét mutatják be ezredmásodpercben.
 
-| Műveletek | Tábla értékű paraméterek (MS) | Egyszeres utasítás beszúrása (MS) |
+| Üzemeltetés | Tábla értékű paraméterek (MS) | Egyszeres utasítás beszúrása (MS) |
 | --- | --- | --- |
 | 1 |32 |20 |
 | 10 |30 |25 |

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 09/29/2020
 ms.author: alkohli
-ms.openlocfilehash: 690e92daa3e207864ad8de9954583970703ecd9e
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 251b15f72c3216ad3ff4b2983c8cbbd2d9ec6579
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91570849"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91618250"
 ---
 # <a name="deployment-checklist-for-your-azure-stack-edge-pro-gpu-device"></a>Üzembe helyezési ellenőrzőlista a Azure Stack Edge Pro GPU-eszközhöz  
 
@@ -45,9 +45,6 @@ Az alábbi ellenőrzőlista segítségével gondoskodhat róla, hogy a Azure Sta
 | (Optional) Network switch port    | Device hosts Hyper-V VMs for compute. Some network switch port configurations don’t accommodate these setups by default.                                                                                                        |                                                                                                                   |-->
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Felkészülés az [Azure stack Edge Pro-eszköz](azure-stack-edge-gpu-deploy-prep.md)üzembe helyezésére.
-
-
-

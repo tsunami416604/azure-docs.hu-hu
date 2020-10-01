@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 1f6fc7bff31faa62c290a4c02be3e80fee6fa200
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 7da19ddd96c15ff5688d6e153d1859ed8c11ec8e
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042632"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91616550"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>A Twin modellek ismertetése az Azure Digital Twinsban
 
@@ -28,8 +28,10 @@ Az Azure Digital Twins modelljei a digitális Twins Definition Language (DTDL) h
 
 Az Azure Digital Twins a **DTDL _2-es verzióját_** használja. A DTDL ezen verziójával kapcsolatos további információkért tekintse meg a specifikációs dokumentációt a GitHubon: [*Digital Twins Definition Language (DTDL) – 2. verzió*](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md). Az DTDL _1-es verziójának_ használata az Azure Digital Twins használatával már elavult.
 
-> [!TIP] 
-> Nem minden olyan szolgáltatás, amely a DTDL-t használja, pontosan ugyanazokat a funkciókat implementálja, mint a DTDL. Például a IoT Plug and Play nem használja a graphs szolgáltatáshoz használt DTDL-funkciókat, míg az Azure digitális Twins jelenleg nem implementál DTDL-parancsokat. Az Azure digitális Twins-ra jellemző DTDL-funkciókkal kapcsolatos további információkért tekintse meg a jelen cikk későbbi, az [Azure Digital Twins DTDL megvalósítási sajátosságai](#azure-digital-twins-dtdl-implementation-specifics)című szakaszát.
+> [!NOTE] 
+> Nem minden olyan szolgáltatás, amely a DTDL-t használja, pontosan ugyanazokat a funkciókat implementálja, mint a DTDL. Például a IoT Plug and Play nem használja a graphs szolgáltatáshoz használt DTDL-funkciókat, míg az Azure digitális Twins jelenleg nem implementál DTDL-parancsokat.
+>
+> Az Azure digitális Twins-ra jellemző DTDL-funkciókkal kapcsolatos további információkért tekintse meg a jelen cikk későbbi, az [Azure Digital Twins DTDL megvalósítási sajátosságai](#azure-digital-twins-dtdl-implementation-specifics)című szakaszát.
 
 ## <a name="elements-of-a-model"></a>A modell elemei
 
@@ -75,6 +77,8 @@ Ahhoz, hogy egy DTDL-modell kompatibilis legyen az Azure Digital Twins szolgált
 * Az Azure Digital Twins DTDL nem lehet *parancsokat*definiálni.
 * Az Azure Digital Twins csak egyetlen szinten teszi lehetővé az összetevők beágyazását. Ez azt jelenti, hogy egy összetevőként használt felületnek nem lehet saját összetevője. 
 * Az illesztőfelületek nem definiálhatók más DTDL-felületeken belüli beágyazott kapcsolaton belül. azokat különálló legfelső szintű entitásként kell definiálni, amelyeknek saját azonosítójuk van. Ezt követően, ha egy másik csatoló összetevőként vagy öröklés útján szeretné felvenni az illesztőfelületet, hivatkozhat az AZONOSÍTÓra.
+
+Az Azure Digital Twins nem veszi figyelembe az `writable` attribútumot a tulajdonságok és a kapcsolatok esetében is. Bár ez DTDL-specifikációként is beállítható, az Azure Digital Twins nem használja az értéket. Ehelyett ezeket a rendszer az Azure Digital Twins szolgáltatáshoz általános írási engedéllyel rendelkező külső ügyfelek által írhatóként kezeli.
 
 ## <a name="example-model-code"></a>Példa a modell kódjára
 

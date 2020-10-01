@@ -7,17 +7,17 @@ ms.service: sql-managed-instance
 ms.subservice: data-movement
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: MashaMSFT
 ms.author: ferno
 ms.reviewer: mathoma
 ms.date: 04/28/2020
-ms.openlocfilehash: 114d4f41ad48af3d1e585fcb01eb0794a8e349b5
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: b0f2a6fcd888afd7eb99a810fad6e876fe6ff4ac
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920109"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91617060"
 ---
 # <a name="tutorial-configure-replication-between-two-managed-instances"></a>Oktatóanyag: két felügyelt példány közötti replikáció konfigurálása
 
@@ -61,8 +61,8 @@ A [Azure Portal](https://portal.azure.com) használatával hozzon létre egy er�
 
 A [Azure Portal](https://portal.azure.com) használatával hozzon létre két [SQL felügyelt példányt](instance-create-quickstart.md) ugyanazon a virtuális hálózaton és alhálózaton. Nevezze el például a két felügyelt példányt:
 
-- `sql-mi-pub`(a véletlenszerűség néhány karakterrel együtt)
-- `sql-mi-sub`(a véletlenszerűség néhány karakterrel együtt)
+- `sql-mi-pub` (a véletlenszerűség néhány karakterrel együtt)
+- `sql-mi-sub` (a véletlenszerűség néhány karakterrel együtt)
 
 A felügyelt példányokhoz való [kapcsolódáshoz konfigurálnia kell egy Azure-beli virtuális gépet](connect-vm-instance-configure.md) is. 
 
@@ -70,11 +70,11 @@ A felügyelt példányokhoz való [kapcsolódáshoz konfigurálnia kell egy Azur
 
 [Hozzon létre egy Azure Storage-fiókot](/azure/storage/common/storage-create-storage-account#create-a-storage-account) a munkakönyvtár számára, majd hozzon létre egy [fájlmegosztást](../../storage/files/storage-how-to-create-file-share.md) a Storage-fiókon belül. 
 
-Másolja a fájlmegosztás elérési útját a (z) formátumban:`\\storage-account-name.file.core.windows.net\file-share-name`
+Másolja a fájlmegosztás elérési útját a (z) formátumban: `\\storage-account-name.file.core.windows.net\file-share-name`
 
 Például: `\\replstorage.file.core.windows.net\replshare`
 
-Másolja a Storage-hozzáférési kulcsokat a formátumba:`DefaultEndpointsProtocol=https;AccountName=<Storage-Account-Name>;AccountKey=****;EndpointSuffix=core.windows.net`
+Másolja a Storage-hozzáférési kulcsokat a formátumba: `DefaultEndpointsProtocol=https;AccountName=<Storage-Account-Name>;AccountKey=****;EndpointSuffix=core.windows.net`
 
 Például: `DefaultEndpointsProtocol=https;AccountName=replstorage;AccountKey=dYT5hHZVu9aTgIteGfpYE64cfis0mpKTmmc8+EP53GxuRg6TCwe5eTYWrQM4AmQSG5lb3OBskhg==;EndpointSuffix=core.windows.net`
 
@@ -293,7 +293,7 @@ Futtassa az alábbi T-SQL-kódrészletet további sorok beszúrásához a közz�
 INSERT INTO ReplTest (ID, c1) VALUES (15, 'pub')
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 A kiadvány eldobásához futtassa az alábbi T-SQL-parancsot:
 

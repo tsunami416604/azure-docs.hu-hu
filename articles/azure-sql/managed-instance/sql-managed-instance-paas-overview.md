@@ -6,17 +6,17 @@ ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: overview
 author: bonova
 ms.author: bonova
 ms.reviewer: sstein, vanto
 ms.date: 08/14/2020
-ms.openlocfilehash: ce86f4e6ed5f29be3e36959e0f9db76edaab4982
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c98e377ec216bea6c1d4a96b15b3741aa52672e0
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91273024"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91618134"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>Mi az az Azure SQL felügyelt példánya?
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -56,15 +56,15 @@ Az SQL felügyelt példány legfontosabb funkciói az alábbi táblázatban lát
 |Funkció | Leírás|
 |---|---|
 | SQL Server verzió/Build | SQL Server adatbázismotor (legújabb stabil) |
-| Felügyelt automatizált biztonsági másolatok | Yes |
-| Beépített példány-és adatbázis-figyelés és-metrikák | Yes |
-| Szoftver automatikus javítása | Yes |
-| Az adatbázismotor legújabb funkciói | Yes |
+| Felügyelt automatizált biztonsági másolatok | Igen |
+| Beépített példány-és adatbázis-figyelés és-metrikák | Igen |
+| Szoftver automatikus javítása | Igen |
+| Az adatbázismotor legújabb funkciói | Igen |
 | Adatfájlok (sorok) száma az adatbázisban | Többszörös |
 | Naplófájlok (napló) száma adatbázisban | 1 |
-| VNet – Azure Resource Manager üzemelő példány | Yes |
-| VNet – klasszikus üzembe helyezési modell | No |
-| Portál támogatása | Yes|
+| VNet – Azure Resource Manager üzemelő példány | Igen |
+| VNet – klasszikus üzembe helyezési modell | Nem |
+| Portál támogatása | Igen|
 | Beépített integrációs szolgáltatás (SSIS) | Nem – a SSIS a [Azure Data Factory Péter](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) részét képezi |
 | Beépített Analysis Service (SSAS) | Nem – a SSAS külön [Péter](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview) |
 | Beépített jelentéskészítési szolgáltatás (SSRS) | Nem – használjon [Power bi](https://docs.microsoft.com/power-bi/paginated-reports/paginated-reports-report-builder-power-bi) többoldalas jelentéseket, vagy az SSRS-t egy Azure-beli virtuális gépen üzemelteti. A felügyelt SQL-példányok nem futtathatják az SSRS-t szolgáltatásként, SQL Server hitelesítéssel az Azure-beli virtuális gépen telepített jelentéskészítő kiszolgálókhoz is tárolhatnak [SSRS-katalógus-adatbázisokat](https://docs.microsoft.com/sql/reporting-services/install-windows/ssrs-report-server-create-a-report-server-database#database-server-version-requirements) . |
@@ -237,7 +237,7 @@ A következő táblázat több, a Transact-SQL szolgáltatáson keresztül elér
 |`SERVERPROPERTY('EngineEdition')`|8|Ez az érték egyedileg azonosítja a felügyelt példányt.|
 |`@@SERVERNAME`, `SERVERPROPERTY ('ServerName')`|Teljes példány DNS-neve a következő formátumban: `<instanceName>` . `<dnsPrefix>` . a database.windows.net, ahol az az `<instanceName>` ügyfél által megadott név, míg a `<dnsPrefix>` neve automatikusan létrejön a globális DNS-név egyediségét garantáló név ("wcus17662feb9ce98"), például:.|Példa: my-managed-instance.wcus17662feb9ce98.database.windows.net|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az első felügyelt példány létrehozásával kapcsolatos információkért lásd: gyors [útmutató](instance-create-quickstart.md).
 - A szolgáltatások és az összehasonlítások listájáért lásd: [általános SQL-szolgáltatások](../database/features-comparison.md).

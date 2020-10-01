@@ -7,17 +7,17 @@ ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: guide
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 04/16/2019
-ms.openlocfilehash: 332b5198f046d0096e95e79e27cbc49408e6d136
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 208793d3ba8c3463abe892b368beb41d4b79f214
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325198"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91617451"
 ---
 # <a name="azure-sql-managed-instance-content-reference"></a>Az Azure SQL felügyelt példányának tartalmi referenciája
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -108,6 +108,6 @@ Ebben a cikkben az Azure SQL felügyelt példányának kezeléséhez és konfigu
 - [SaaS-videóindexelő](../database/saas-tenancy-video-index-wingtip-brk3120-20171011.md)
 - [SaaS-alkalmazásbiztonság](../database/saas-tenancy-elastic-tools-multi-tenant-row-level-security.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Első lépések: az [SQL felügyelt példányának telepítése](instance-create-quickstart.md).

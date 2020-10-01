@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/06/2020
-ms.openlocfilehash: 0c64a38295754e4754326dec126bfbc36e1bef61
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 55d8b5ebdfb226247f8a500f36e6df3ae02ea58a
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86523332"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619049"
 ---
 # <a name="azure-integration-runtime-ip-addresses"></a>Azure Integration Runtime – IP-címek
 
@@ -27,7 +27,7 @@ A Azure Integration Runtime által használt IP-címek attól a régiótól füg
 > [!IMPORTANT]  
 > A felügyelt Virtual Networkt engedélyező adatfolyamatok és Azure Integration Runtime nem támogatják a rögzített IP-címtartományok használatát.
 >
-> Ezeket az IP-tartományokat az adatáthelyezéshez, a folyamathoz és a külső tevékenységek végrehajtásához is használhatja. Ezek az IP-címtartományok az Azure Integration Runtime-ból bejövő hozzáféréshez használt adattárakban/hálózati biztonsági csoportban (NSG)/tűzfalakon való engedélyezési feladatokhoz használhatók. 
+> Ezeket az IP-tartományokat az adatáthelyezéshez, a folyamathoz és a külső tevékenységek végrehajtásához is használhatja. Ezek az IP-címtartományok az Azure Integration Runtime használatával történő bejövő hozzáféréshez használható adattárakban/hálózati biztonsági csoportban (NSG)/tűzfalakon való szűréshez használhatók. 
 
 ## <a name="azure-integration-runtime-ip-addresses-specific-regions"></a>Azure Integration Runtime IP-címek: adott régiók
 
@@ -40,6 +40,6 @@ Az Azure Integration Runtime számára felsorolt IP-címekről érkező forgalom
 
   Ehelyett javasoljuk, [hogy megbízható szolgáltatásokat használjon az Azure Storage-hoz való csatlakozáskor](https://techcommunity.microsoft.com/t5/azure-data-factory/data-factory-is-now-a-trusted-service-in-azure-storage-and-azure/ba-p/964993). 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A Azure Data Factory adatáthelyezésének biztonsági szempontjai](data-movement-security-considerations.md)

@@ -7,17 +7,17 @@ ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: seo-lt-2019, sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 02/22/2019
-ms.openlocfilehash: 04f0fca06c2e50ef6d99d51c03e58b468a476e9d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 156a4c74eea24b20c28df88be85cb32c0ebe2981
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91323107"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91617638"
 ---
 # <a name="determine-required-subnet-size--range-for-azure-sql-managed-instance"></a>A szükséges alhálózati méret meghatározása & az Azure SQL felügyelt példányának tartománya
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -28,7 +28,7 @@ A VNet alhálózatában üzembe helyezhető felügyelt példányok száma az alh
 
 Felügyelt példány létrehozásakor az Azure számos virtuális gépet foglal le a kiépítés során kiválasztott szintjétől függően. Mivel ezek a virtuális gépek az alhálózathoz vannak társítva, IP-címeket igényelnek. A normál működés és a szolgáltatás karbantartása során a magas rendelkezésre állás biztosítása érdekében az Azure további virtuális gépeket foglalhat le. Ennek eredményeképpen a szükséges IP-címek száma nagyobb, mint az alhálózaton lévő felügyelt példányok száma.
 
-A felügyelt példányok kialakításához legalább 32 IP-címnek kell szerepelnie egy alhálózatban. Ennek eredményeképpen az alhálózati IP-címtartományok meghatározásakor a/27 minimális alhálózati maszkot használhatja. Ajánlott a felügyelt példányok központi telepítésének az alhálózat méretének alapos megtervezése. A tervezés során figyelembe veendő bemenetek:
+A rendszer úgy lett kialakítva, hogy egy felügyelt példánynak legalább 32 IP-címre van szüksége egy alhálózaton. Ennek eredményeképpen az alhálózat IP-tartományainak meghatározásakor a legkisebb alhálózati maszk a /27 lehet. Ajánlott gondosan megtervezni a felügyelt példányok üzembe helyezéséhez az alhálózat méretét. A tervezés során figyelembe veendő bemenetek:
 
 - A felügyelt példányok száma, beleértve a következő példány-paramétereket:
   - szolgáltatási szintek
@@ -90,7 +90,7 @@ A skálázási művelet példányaiban átmenetileg további IP-kapacitásra van
 
   \* A Gen4 hardverek fokozatos kiépítése folyamatban van, és már nem érhető el az új üzemelő példányokhoz. Frissítse a Gen4-ről a Gen5-re vonatkozó hardver-előállítást, hogy kihasználhassa a Gen5-hardverek létrehozásával kapcsolatos képességeket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az áttekintést lásd: [Mi az az Azure SQL felügyelt példánya?](sql-managed-instance-paas-overview.md).
 - További információ az [SQL felügyelt példányának kapcsolati architektúráról](connectivity-architecture-overview.md).
