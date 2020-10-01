@@ -7,14 +7,14 @@ ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
 ms.localizationpriority: high
-ms.date: 09/04/2019
+ms.date: 09/17/2019
 ms.author: alkohli
-ms.openlocfilehash: 3f89d713003f1f4265a7ab7c467454af750fab48
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: abe09cf10e241ec95ceed767e7038cde07667fc9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84707803"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322733"
 ---
 ::: zone target="docs"
 
@@ -68,7 +68,12 @@ Ellenőrizze, hogy az adatok jelen vannak-e a tárfiók(ok)ban, mielőtt töröl
 
       ![Felügyelt lemezek erőforráscsoportja](media/data-box-disk-deploy-picked-up/resource-group-attached-managed-disk.png)
 
-  - Ha egy VHDX-et vagy egy dinamikus/különbséglemez VHD-t másolt, akkor a VHDX/VHD-t a rendszer blokkblobként tölti fel az előkészítési tárfiókba. Lépjen az előkészítési **Tárfiók > Blobok** területre, majd válassza ki a megfelelő tárolót: StandardSSD, StandardHDD vagy PremiumSSD. A VHDX/VHD-knek blokkblobként kell megjelenniük az előkészítési tárfiókban.
+    > [!NOTE]
+    > Ha egy lapblob nem lett sikeresen konvertálva felügyelt lemezzé az adatok másolása során, akkor az a tárfiókban marad, és a tárolásért fizetnie kell.
+
+  -  Ha egy VHDX-et vagy egy dinamikus/különbséglemez VHD-t másolt, akkor a VHDX/VHD-t a rendszer blokkblobként tölti fel az előkészítési tárfiókba. Lépjen az előkészítési **Tárfiók > Blobok** területre, majd válassza ki a megfelelő tárolót: StandardSSD, StandardHDD vagy PremiumSSD. A VHDX/VHD-knek blokkblobként kell megjelenniük az előkészítési tárfiókban.
+  
+
   
 ::: zone-end
 
