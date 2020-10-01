@@ -28,15 +28,17 @@ Ebből a rövid útmutatóból megtudhatja, hogyan indíthat el hívást az Andr
 
 Android Studio válassza az új Android Studio projekt indítása lehetőséget.
 
-:::image type="content" source="../media/android/studio-new-project.png" alt-text="Képernyőfelvétel: az új Android Studio projekt indítása gomb, amely a Android Studioban van kiválasztva.":::
+:::image type="content" source="../media/android/studio-new-project.png" alt-text="Képernyőfelvétel: az &quot;új Android Studio projekt indítása&quot; gomb, amely a Android Studioban van kiválasztva.&quot;:::
 
-Válassza a "üres tevékenység" projekt sablont a "telefon és a tábla" alatt.
+Válassza a &quot;üres tevékenység&quot; projekt sablont a &quot;telefon és a tábla" alatt.
 
-:::image type="content" source="../media/android/studio-blank-activity.png" alt-text="Képernyőfelvétel: a Project Template (üres tevékenység) lehetőség van kiválasztva.":::
+:::image type="content" source="../media/android/studio-blank-activity.png" alt-text="Képernyőfelvétel: az &quot;új Android Studio projekt indítása&quot; gomb, amely a Android Studioban van kiválasztva.&quot;:::
 
-Válassza ki az "API 26: Android 8,0 (Oreo)" minimális ügyféloldali kódtárat.
+Válassza a &quot;üres tevékenység&quot; projekt sablont a &quot;telefon és a tábla" minimális ügyféloldali kódtárat.
 
-:::image type="content" source="../media/android/studio-calling-min-api.png" alt-text="Képernyőfelvétel: az üres tevékenység lehetőség van kiválasztva a Project template 2. képernyőn.":::
+:::image type="content" source="../media/android/studio-calling-min-api.png" alt-text="Képernyőfelvétel: az &quot;új Android Studio projekt indítása&quot; gomb, amely a Android Studioban van kiválasztva.&quot;:::
+
+Válassza a &quot;üres tevékenység&quot; projekt sablont a &quot;telefon és a tábla":::
 
 
 ### <a name="install-the-package"></a>A csomag telepítése
@@ -313,7 +315,9 @@ private void startCall() {
 
 Az alkalmazás mostantól az eszköztár Run app (alkalmazás futtatása) gombjával (Shift + F10) indítható el. Ellenőrizze, hogy meghívja-e a hívásokat `8:echo123` . Egy előre rögzített üzenet jelenik meg, majd újra megismétli az üzenetet.
 
-:::image type="content" source="../media/android/quickstart-android-call-echobot.png" alt-text="A befejezett alkalmazást bemutató képernyőkép.":::
+:::image type="content" source="../media/android/quickstart-android-call-echobot.png" alt-text="Képernyőfelvétel: az &quot;új Android Studio projekt indítása&quot; gomb, amely a Android Studioban van kiválasztva.&quot;:::
+
+Válassza a &quot;üres tevékenység&quot; projekt sablont a &quot;telefon és a tábla":::
 
 ## <a name="sample-code"></a>Példakód
 

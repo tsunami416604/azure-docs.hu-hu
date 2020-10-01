@@ -17,10 +17,10 @@ Lehetséges, hogy a szervezete további műveleteket igényel az előfizetés tu
 Íme néhány gyakori lehetséges tevékenység, amelyet a tulajdonosnak vagy a rendszergazdának végre kell hajtania. Ezek és egyéb műveletek a Azure Portal [*Azure ad alkalmazás regisztrációk*](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) oldaláról is elvégezhetők.
 * Adja meg a rendszergazdai jóváhagyást az alkalmazás regisztrálásához. Előfordulhat, hogy a szervezete *rendszergazdai* jogosultságokkal rendelkezik, globálisan be van kapcsolva az Azure ad-ben az előfizetésben lévő összes alkalmazás regisztrálásához. Ha igen, a tulajdonosnak/rendszergazdának be kell jelölnie ezt a gombot a vállalat számára az alkalmazás regisztrációjának *API-engedélyei* lapján, hogy az alkalmazás regisztrációja érvényes legyen:
 
-    :::image type="content" source="../articles/digital-twins/media/how-to-set-up-instance/portal/grant-admin-consent.png" alt-text="A "rendszergazdai jóváhagyás megadása" gomb portál nézete az API-engedélyek alatt":::
+    :::image type="content" source="../articles/digital-twins/media/how-to-set-up-instance/portal/grant-admin-consent.png" alt-text="A &quot;rendszergazdai jóváhagyás megadása&quot; gomb portál nézete az API-engedélyek alatt":::
   - Ha a beleegyezikés sikeresen megtörtént, az Azure Digital Twins bejegyzésében szerepelnie kell a _ **(vállalata)** számára engedélyezett_ *állapot* értékének.
    
-    :::image type="content" source="../articles/digital-twins/media/how-to-set-up-instance/portal/granted-admin-consent-done.png" alt-text="A vállalat számára az API-engedélyek alatt megadott rendszergazdai engedély portál nézete":::
+    :::image type="content" source="../articles/digital-twins/media/how-to-set-up-instance/portal/granted-admin-consent-done.png" alt-text="A &quot;rendszergazdai jóváhagyás megadása&quot; gomb portál nézete az API-engedélyek alatt":::
 * Nyilvános ügyfél-hozzáférés aktiválása
 * A webes és asztali hozzáférés adott válasz URL-címeinek beállítása
 * Implicit OAuth2 hitelesítési folyamatok engedélyezése
