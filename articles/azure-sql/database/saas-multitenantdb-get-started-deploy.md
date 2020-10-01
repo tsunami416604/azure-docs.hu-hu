@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scenario
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/16/2018
-ms.openlocfilehash: 59a7fbbd6f948ec5207522814a1375b806536810
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5363a1b7321bfcbb53b4494b51ee2ea2e7217782
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84310087"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619644"
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application"></a>Horizontálisan több-bérlős alkalmazás üzembe helyezése és megismerése
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -80,7 +80,7 @@ Válassza ki a neveket, majd írja le őket.
         - Válasszon ki egy **helyet** a legördülő listából.
     - **Felhasználó** számára – javasoljuk, hogy válasszon egy rövid **felhasználói** értéket.
 
-1. **Az alkalmazás üzembe helyezése**.
+1. **Telepítse az alkalmazást**.
 
     - Kattintson ide a feltételek és kikötések elfogadásához.
     - Kattintson a **Purchase** (Vásárlás) gombra.
@@ -116,7 +116,7 @@ A parancsfájlok futtatása előtt állítsa be az *erőforráscsoportot* és a 
 
 Az ebben a fájlban beállított értékeket az összes parancsfájl használja, ezért fontos, hogy pontosak legyenek. Ha újratelepíti az alkalmazást, különböző értékeket kell választania a felhasználói és az erőforráscsoport számára. Ezután frissítse a UserConfig. psm1 fájlt az új értékekkel.
 
-## <a name="run-the-application"></a>Alkalmazás futtatása
+## <a name="run-the-application"></a>Az alkalmazás futtatása
 
 A Wingtip alkalmazásban a bérlők a helyszínek. A helyszín lehet a koncertterem, a sportcsarnok vagy bármely más, az eseményeket futtató hely. A helyszínek regisztrálva vannak a Wingtip ügyfélként, és minden egyes helyszínhez létrejön egy bérlői azonosító. Minden egyes helyszín felsorolja a közelgő eseményeit a Wingtip-ben, így a nyilvános jegyeket vásárolhat az eseményekhez.
 
@@ -200,7 +200,7 @@ Ezután kiépítünk egy másik bérlőt, ezúttal a saját adatbázisában:
 
    ![Salix salsa-események lapja](./media/saas-multitenantdb-get-started-deploy/salix-salsa.png)
 
-   - Görgessen a lap aljára. A szalagcímben megjelenik az adatbázis neve, amelyben a bérlői információk tárolódnak.
+   - Görgessen le az oldal aljára. A szalagcímben megjelenik az adatbázis neve, amelyben a bérlői információk tárolódnak.
 
 3. Frissítse az **Events hubot** , és a két új bérlő most megjelenik a listában.
 

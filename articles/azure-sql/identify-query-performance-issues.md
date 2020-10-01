@@ -6,19 +6,19 @@ ms.service: sql-database
 ms.subservice: performance
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: troubleshooting
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnick, sstein
 ms.date: 03/10/2020
-ms.openlocfilehash: 0a7cd807de7e723d48faaa0944ea55b1887c9721
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: afc142ec9de0e275d505276d959cfac3e652c55d
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91284108"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619763"
 ---
-# <a name="detectable-types-of-query-performance-bottlenecks-in-azure-sql-database"></a>A lekérdezési teljesítmény szűk keresztmetszetének észlelhető típusai Azure SQL Database
+# <a name="detectable-types-of-query-performance-bottlenecks-in-azure-sql-database"></a>A lekérdezési teljesítményt érintő szűk keresztmetszetek típusai az Azure SQL Database-ben
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
 
 A teljesítmény szűk keresztmetszetének feloldására tett kísérlet során először határozza meg, hogy a szűk keresztmetszet bekövetkezik-e, miközben a lekérdezés futó állapotban van vagy várakozási állapotú. A döntéstől függően különböző felbontások érvényesek. A következő ábrán megismerheti azokat a tényezőket, amelyek egy futó probléma vagy egy várakozással kapcsolatos probléma miatt lehetnek. Ebben a cikkben az egyes típusú problémákkal kapcsolatos problémákat és megoldásokat tárgyaljuk.
@@ -220,6 +220,6 @@ A lekérdezési tárolót nyomon követő DMV és a várakozási statisztikának
 > - [TigerToolbox várakozások és zárak](https://github.com/Microsoft/tigertoolbox/tree/master/Waits-and-Latches)
 > - [TigerToolbox usp_whatsup](https://github.com/Microsoft/tigertoolbox/tree/master/usp_WhatsUp)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [SQL Database monitorozás és hangolás áttekintése](database/monitor-tune-overview.md)

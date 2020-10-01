@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 19b37472d7decb46825da4760511f1761493c246
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 9ae4970383802adad755fff4a6ce382db6ce32fe
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89441935"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619916"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory – az adatáthelyezés biztonsági szempontjai
 
 > [!NOTE]
 > Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, tekintse [meg a Data Factory adatáthelyezési biztonsági szempontjait](../data-movement-security-considerations.md).
 
-## <a name="introduction"></a>Bevezetés
+## <a name="introduction"></a>Introduction (Bevezetés)
 Ez a cikk azt az alapszintű biztonsági infrastruktúrát ismerteti, amelyet az adatátviteli szolgáltatások Azure Data Factory használnak az adatok biztonságossá tételéhez. Azure Data Factory felügyeleti erőforrások az Azure biztonsági infrastruktúrára épülnek, és az Azure által kínált összes lehetséges biztonsági intézkedést felhasználhatják.
 
 A Data Factory-megoldásokkal egy vagy több [adatfolyamatot](data-factory-create-pipelines.md) is létrehozhat. A folyamatok olyan tevékenységek logikus csoportosításai, amelyek együttesen vesznek részt egy feladat végrehajtásában. Ezek a folyamatok abban a régióban találhatók, ahol az adat-előállítót létrehozták. 
@@ -142,14 +142,14 @@ Az alábbi képek a adatkezelés Gateway használatát mutatják be a helyszíni
 
 ![IPSec VPN átjáróval](media/data-factory-data-movement-security-considerations/ipsec-vpn-for-gateway.png)
 
-### <a name="firewall-configurations-and-whitelisting-ip-address-of-gateway"></a>Tűzfal-konfigurációk és az átjáró IP-címének engedélyezési listája
+### <a name="firewall-configurations-and-filtering-ip-address-of-gateway"></a>Tűzfal-konfigurációk és az átjáró IP-címének szűrése
 
 #### <a name="firewall-requirements-for-on-premisesprivate-network"></a>A tűzfalra vonatkozó követelmények helyszíni/magánhálózati hálózatokhoz  
 A vállalatokban a **vállalati tűzfal** a szervezet központi útválasztóján fut. A **Windows tűzfal** démonként fut azon a helyi gépen, amelyen az átjáró telepítve van. 
 
 A következő táblázat a **vállalati tűzfal** **kimenő portokra** és tartományokra vonatkozó követelményeit tartalmazza.
 
-| Tartománynevek | Kimenő portok | Description |
+| Tartománynevek | Kimenő portok | Leírás |
 | ------------ | -------------- | ----------- | 
 | `*.servicebus.windows.net` | 443, 80 | Az átjáró számára szükséges az adatátviteli szolgáltatásokhoz való kapcsolódáshoz Data Factory |
 | `*.core.windows.net` | 443 | Az átjáró az Azure Storage-fiókhoz való csatlakozáshoz használja az [előkészített másolási](data-factory-copy-activity-performance.md#staged-copy) szolgáltatás használatakor. | 
@@ -158,20 +158,20 @@ A következő táblázat a **vállalati tűzfal** **kimenő portokra** és tarto
 | `*.azuredatalakestore.net` | 443 | (Nem kötelező) akkor szükséges, ha a célhelye Azure Data Lake Store | 
 
 > [!NOTE] 
-> Előfordulhat, hogy a megfelelő adatforrások által megkövetelt portokat vagy engedélyezési tartományokat a vállalati tűzfal szintjén kell kezelnie. Ez a táblázat csak az Azure SQL Database, az Azure szinapszis Analytics, Azure Data Lake Store példaként használja.   
+> Előfordulhat, hogy a megfelelő adatforrások által megkövetelt módon kell kezelnie a portok/szűrési tartományokat a vállalati tűzfal szintjén. Ez a táblázat csak az Azure SQL Database, az Azure szinapszis Analytics, Azure Data Lake Store példaként használja.   
 
 A következő táblázat a **Windows tűzfal** **bejövő portokra** vonatkozó követelményeit tartalmazza.
 
-| Bejövő portok | Description | 
+| Bejövő portok | Leírás | 
 | ------------- | ----------- | 
 | 8050 (TCP) | A Hitelesítőadat-kezelő alkalmazása megköveteli a helyszíni adattárakhoz tartozó hitelesítő adatok biztonságos beállítását az átjárón. | 
 
 ![Az átjáró portjának követelményei](media/data-factory-data-movement-security-considerations/gateway-port-requirements.png)
 
-#### <a name="ip-configurations-whitelisting-in-data-store"></a>IP-konfigurációk/engedélyezési beállítások az adattárban
-A felhőben lévő egyes adattárakhoz szükség van a számítógép IP-címének engedélyezési listára is. Győződjön meg arról, hogy az átjáró számítógépének IP-címe engedélyezett/a tűzfalon megfelelően van konfigurálva.
+#### <a name="ip-configurationsfiltering-in-data-store"></a>IP-konfigurációk/szűrés az adattárban
+A felhőben lévő egyes adattárakhoz szükség van a számítógép IP-címének jóváhagyására is. Győződjön meg arról, hogy az átjáró számítógépének IP-címe megfelelően van jóváhagyva/konfigurálva a tűzfalon.
 
-A következő felhőalapú adattárakhoz az átjáró-gép IP-címének engedélyezési módszere szükséges. Az adattárak némelyike alapértelmezés szerint nem igényli az IP-cím engedélyezési felírását. 
+A következő felhőalapú adattárakhoz az átjáró-számítógép IP-címének jóváhagyása szükséges. Az adattárak némelyike alapértelmezés szerint nem igényli az IP-cím jóváhagyását. 
 
 - [Azure SQL Database](../../azure-sql/database/firewall-configure.md) 
 - [Azure Synapse Analytics](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
@@ -185,12 +185,10 @@ A következő felhőalapú adattárakhoz az átjáró-gép IP-címének engedél
 **Válasz:** Ez a funkció még nem támogatott. Már dolgozunk rajta.
 
 **Kérdés:** Milyen portokra vonatkozó követelmények vonatkoznak az átjáró működéséhez?
-**Válasz:** Az átjáró HTTP-alapú kapcsolatokat tesz elérhetővé az Internet megnyitásához. A kapcsolódáshoz a **443-es és a 80-as kimenő portnak** kell megnyitnia az átjáró számára. Nyissa meg a 8050-es **bejövő portot** a Hitelesítőadat-kezelő alkalmazáshoz csak a számítógép szintjén (a vállalati tűzfal szintjén). Ha Azure SQL Database vagy az Azure szinapszis Analytics forrásként vagy célhelyként van használatban, akkor a **1433** -as portot is meg kell nyitnia. További információ: a [tűzfal konfigurációi és az IP-címek engedélyezési](#firewall-configurations-and-whitelisting-ip-address-of gateway) listája szakasz. 
+**Válasz:** Az átjáró HTTP-alapú kapcsolatokat tesz elérhetővé az Internet megnyitásához. A kapcsolódáshoz a **443-es és a 80-as kimenő portnak** kell megnyitnia az átjáró számára. Nyissa meg a 8050-es **bejövő portot** a Hitelesítőadat-kezelő alkalmazáshoz csak a számítógép szintjén (a vállalati tűzfal szintjén). Ha Azure SQL Database vagy az Azure szinapszis Analytics forrásként vagy célhelyként van használatban, akkor a **1433** -as portot is meg kell nyitnia. További információ: [tűzfal-konfigurációk és IP-címek szűrése](#firewall-configurations-and-filtering-ip-address-of gateway) szakasz. 
 
 **Kérdés:** Mik a tanúsítványokra vonatkozó követelmények az átjáróhoz?
 **Válasz:** Az aktuális átjáróhoz szükség van egy tanúsítványra, amelyet a Hitelesítőadat-kezelő alkalmazás az adattár hitelesítő adatainak biztonságos beállításához használ. Ez a tanúsítvány az átjáró telepítője által létrehozott és konfigurált önaláírt tanúsítvány. Ehelyett saját TLS/SSL-tanúsítványt is használhat. További információ: [Click-Once Hitelesítőadat-kezelő alkalmazás](#click-once-credentials-manager-app) szakasz. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A másolási tevékenység teljesítményével kapcsolatos további információkért lásd: a [másolási tevékenység teljesítményének és finomhangolásának útmutatója](data-factory-copy-activity-performance.md).
-
- 

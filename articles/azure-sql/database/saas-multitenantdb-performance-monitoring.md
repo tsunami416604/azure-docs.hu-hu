@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scenario
 ms.custom: seo-lt-2019, sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: e4f26b21ad7458b4f5bcad9a902f4e048d726f1f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3307e31935377f55f792e640934e59017c1980c7
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84042434"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619617"
 ---
 # <a name="monitor-and-manage-performance-of-sharded-multi-tenant-azure-sql-database-in-a-multi-tenant-saas-app"></a>Több-bérlős SaaS-alkalmazásban lévő többbérlős Azure SQL Databaseek teljesítményének figyelése és kezelése
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -76,7 +76,7 @@ A *New-TenantBatch* szkript új bérlőket hoz létre a több-bérlős adatbázi
 
 A *Demo-PerformanceMonitoringAndManagement.ps1* parancsfájl a több-bérlős adatbázison futó számítási feladatok szimulálására szolgál. A terhelés a rendelkezésre álló betöltési forgatókönyvek egyikével jön létre:
 
-| Bemutató | Forgatókönyv |
+| Bemutató | Használati eset |
 |:--|:--|
 | 2 | Normál intenzitású terhelés előállítása (körülbelül 30 DTU) |
 | 3 | Terhelés kiváltása a bérlők száma alapján|

@@ -6,17 +6,17 @@ ms.service: sql-managed-instance
 ms.subservice: performance
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, sstein
 ms.date: 05/04/2020
-ms.openlocfilehash: 48dfc456616fa4876b7053483f7377eda21aabde
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: dbf5c06adcddb5b3dfa3cdf2e0127f8a36c59885
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91283819"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91620103"
 ---
 # <a name="create-alerts-for-azure-sql-managed-instance-using-the-azure-portal"></a>Riasztások létrehozása az Azure SQL felügyelt példányaihoz a Azure Portal használatával
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -140,7 +140,7 @@ Meglévő riasztások megtekintése, felfüggesztése, aktiválása, módosítá
 
    Megjelenik a meglévő riasztások listája. Válasszon ki egy egyéni meglévő riasztási szabályt a kezeléséhez. A meglévő aktív szabályok módosíthatók és beállíthatók az Ön igényei szerint. Az aktív szabályok felfüggesztés nélkül is felmenthetők. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Tudnivalók Azure Monitor riasztási rendszerről: [a riasztások áttekintése Microsoft Azure](../../azure-monitor/platform/alerts-overview.md)
 * További információ a metrikus riasztásokról: [a metrikai riasztások működésének ismertetése Azure monitor](../../azure-monitor/platform/alerts-metric-overview.md)

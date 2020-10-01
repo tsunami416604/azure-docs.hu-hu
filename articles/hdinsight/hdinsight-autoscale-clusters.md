@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: contperfq1
 ms.date: 09/14/2020
-ms.openlocfilehash: 08b7fe2b3e959536589cfd425541ad36e3bd1e78
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 385e910befb79daafa532fa816b96d50a46b7d8c
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90532188"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91620086"
 ---
 # <a name="autoscale-azure-hdinsight-clusters"></a>Azure HDInsight-fürtök autoskálázása
 
@@ -68,11 +68,11 @@ A leskálázáshoz az autoskálázás bizonyos számú csomópont eltávolítás
 > [!Important]
 > Az Azure HDInsight automatikus skálázási funkciója 2019. november 7. óta általánosan elérhető a Spark- és Hadoop-fürtökhöz, és olyan fejlesztéseket tartalmaz, amelyek a funkció előzetes verziójában nem voltak elérhetők. Ha a 2019. november 7. előtt létrehozott egy Spark-fürtöt, és használni szeretné rajta az automatikus skálázási funkciót, akkor azt az eljárást javasoljuk, hogy hozzon létre egy új fürtöt, és azon engedélyezze az automatikus skálázást.
 >
-> Az interaktív lekérdezés (LLAP) az általános elérhetőség érdekében a 2020-es augusztus 27-én megjelent. A HBase-fürtök még előzetes verzióban érhetők el. Az automatikus skálázás kizárólag a Spark-, Hadoop-, Interactive Query és HBase-fürtökhöz érhető el.
+> Az interaktív lekérdezés (LLAP) autoskálázása a HDI 4,0-es verziójának általánosan elérhetővé vált a 2020. augusztus 27-én. A HBase-fürtök még előzetes verzióban érhetők el. Az automatikus skálázás kizárólag a Spark-, Hadoop-, Interactive Query és HBase-fürtökhöz érhető el.
 
 Az alábbi táblázat az autoscale szolgáltatással kompatibilis fürtök típusát és verzióját ismerteti.
 
-| Verzió | Spark | Hive | LLAP | A HBase | Kafka | Storm | ML |
+| Verzió | Spark | Hive | Interaktív lekérdezés | HBase | Kafka | Storm | ML |
 |---|---|---|---|---|---|---|---|
 | HDInsight 3,6 ESP nélkül | Igen | Igen | Igen | Igen* | Nem | Nem | Nem |
 | HDInsight 4,0 ESP nélkül | Igen | Igen | Igen | Igen* | Nem | Nem | Nem |
@@ -81,7 +81,7 @@ Az alábbi táblázat az autoscale szolgáltatással kompatibilis fürtök típu
 
 \* A HBase-fürtök csak az ütemezett skálázáshoz konfigurálhatók, nem pedig a terhelés alapján.
 
-## <a name="get-started"></a>Első lépések
+## <a name="get-started"></a>Bevezetés
 
 ### <a name="create-a-cluster-with-load-based-autoscaling"></a>Fürt létrehozása terheléselosztási alapú automatikus skálázással
 
@@ -225,7 +225,7 @@ A Azure Portalban felsorolt fürt állapota segíthet az autoskálázási tevék
 
 Az alábbi listában az összes olyan fürt állapotüzenetek látható, amelyet látni fog.
 
-| Fürt állapota | Description |
+| Fürt állapota | Leírás |
 |---|---|
 | Futó | A fürt rendesen működik. Az összes korábbi autoskálázási tevékenység sikeresen befejeződött. |
 | Frissítése  | A fürt automatikus skálázási konfigurációjának frissítése folyamatban van.  |
@@ -251,7 +251,7 @@ A skálázási művelet befejezéséhez 10 – 20 percet is igénybe vehet. Test
 
 ### <a name="prepare-for-scaling-down"></a>Felkészülés a méretezésre
 
-A fürt skálázási folyamata során az automatikus skálázás leszereli a csomópontokat a célként megadott méret kielégítése érdekében. Ha a feladatok futnak ezeken a csomópontokon, az autoskálázás megvárja a feladatok befejeződését. Mivel az egyes munkavégző csomópontok is a HDFS szerepkört is kiszolgálják, az ideiglenes adat a többi csomópontra tolódik. Győződjön meg arról, hogy a többi csomóponton elegendő lemezterület áll rendelkezésre az összes ideiglenes adatbázis üzemeltetéséhez.
+A fürt skálázási folyamata során az automatikus skálázás leszereli a csomópontokat a célként megadott méret kielégítése érdekében. Ha a feladatok futnak ezeken a csomópontokon, az autoscale megvárja, amíg a feladatok befejeződtek a Spark és a Hadoop-fürtök esetében. Mivel az egyes munkavégző csomópontok is a HDFS szerepkört is kiszolgálják, az ideiglenes adat a többi csomópontra tolódik. Győződjön meg arról, hogy a többi csomóponton elegendő lemezterület áll rendelkezésre az összes ideiglenes adatbázis üzemeltetéséhez.
 
 A futó feladatok továbbra is folytatódnak. A függőben lévő feladatok a kevesebb rendelkezésre álló munkavégző csomóponttal való ütemezésre várnak.
 
@@ -265,7 +265,7 @@ A Hadoop-fürtökhöz tartozó autoskálázás a HDFS használatát is figyeli. 
 
 ### <a name="set-the-hive-configuration-maximum-total-concurrent-queries-for-the-peak-usage-scenario"></a>A struktúra konfigurációjának maximális száma egyidejű lekérdezések használata a csúcsérték-használati forgatókönyvhöz
 
-Az automatikus skálázási események nem változtatják meg az *egyidejű lekérdezések maximális számát* a Ambari. Ez azt jelenti, hogy a kaptár-kiszolgáló 2 interaktív szolgáltatása csak a megadott számú egyidejű lekérdezést képes kezelni, még akkor is, ha a LLAP démonok száma a terhelés és az ütemterv alapján fel van skálázásra. Az általános javaslat az, hogy ezt a konfigurációt a maximális használati forgatókönyvhöz állítsa be a manuális beavatkozás elkerülése érdekében.
+Az automatikus skálázási események nem változtatják meg az *egyidejű lekérdezések maximális számát* a Ambari. Ez azt jelenti, hogy a kaptár-kiszolgáló 2 interaktív szolgáltatása csak a megadott számú egyidejű lekérdezést képes kezelni, még akkor is, ha az interaktív lekérdezési démonok száma a terhelés és az ütemterv alapján fel van skálázásra. Az általános javaslat az, hogy ezt a konfigurációt a maximális használati forgatókönyvhöz állítsa be a manuális beavatkozás elkerülése érdekében.
 
 Előfordulhat azonban, hogy a kaptár-kiszolgáló 2 újraindítási hibát tapasztal, ha csak kis számú feldolgozó csomópont van, és az egyidejű lekérdezések maximális száma beállítás értéke túl magas. Legalább annyi munkavégző csomópontra van szükség, amely képes a megadott számú TEZ AMS-hez alkalmazkodni (egyenlő az egyidejű lekérdezések maximális konfigurációjának összegével). 
 
@@ -275,12 +275,12 @@ Előfordulhat azonban, hogy a kaptár-kiszolgáló 2 újraindítási hibát tapa
 
 Az HDInsight autoscale egy csomópont-címkefájl használatával határozza meg, hogy a csomópont készen áll-e a feladatok végrehajtására. A csomópont feliratának fájlját a HDFS tárolja három replikával. Ha a fürt mérete jelentősen csökken, és nagy mennyiségű ideiglenes adat van, akkor a három replika eldobása kisebb eséllyel történik. Ha ez történik, a fürt hibás állapotba kerül.
 
-### <a name="llap-daemons-count"></a>LLAP-démonok száma
+### <a name="interactive-query-daemons-count"></a>Interaktív lekérdezési démonok száma
 
-Az autoscae-kompatibilis LLAP-fürtök esetében az autoskálázás felfelé/lefelé irányuló eseménye a LLAP-démonok számát is felméretezi az aktív munkavégző csomópontok számára. A démonok számának változása nem marad meg a `num_llap_nodes` Ambari konfigurációjában. Ha a kaptár-szolgáltatások újraindítása manuálisan történik, a rendszer a LLAP-démonok számát a Ambari konfigurációjában állítja vissza.
+Az interaktív lekérdezési fürtök számára az autoskálázást támogató interaktív lekérdezések esetében az interaktív lekérdezési démonok száma az aktív munkavégző csomópontok számára is méretezhető. A démonok számának változása nem marad meg a `num_llap_nodes` Ambari konfigurációjában. Ha a kaptár-szolgáltatások újraindítása manuálisan történik, az interaktív lekérdezési démonok száma a Ambari konfigurációjának megfelelően alaphelyzetbe áll.
 
-Ha a LLAP szolgáltatás manuálisan újraindul, manuálisan kell módosítania a `num_llap_node` konfigurációt (a kaptár LLAP démon futtatásához szükséges csomópontok számát) a *speciális struktúra-interaktív-env* elemnél, hogy az megfeleljen az aktuális aktív munkavégző csomópontok számának.
+Ha az interaktív lekérdezési szolgáltatást manuálisan indítja újra, manuálisan kell módosítania a `num_llap_node` konfigurációt (a struktúra interaktív lekérdezési démon futtatásához szükséges csomópontok száma) a *speciális struktúra – interaktív env* elemnél, hogy megfeleljen az aktuális aktív munkavégző csomópontok számának.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További tudnivalók a fürtök méretezési [útmutatóinak](hdinsight-scaling-best-practices.md) manuális skálázásához

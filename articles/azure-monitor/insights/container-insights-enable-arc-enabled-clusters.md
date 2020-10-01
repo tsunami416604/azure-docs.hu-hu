@@ -2,13 +2,13 @@
 title: Az Azure arc-kompatibilis Kubernetes-fürt konfigurálása az Azure Monitor for containers szolgáltatással | Microsoft Docs
 description: Ez a cikk bemutatja, hogyan konfigurálhatja a figyelést Azure Monitor az Azure arc-kompatibilis Kubernetes-fürtökön található tárolók esetében.
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: 44512acbd09df449dbba2177bb10f22f480b82d6
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.date: 09/23/2020
+ms.openlocfilehash: 79a534e4f37fb0154115e43402f031752a603ccb
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90977538"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91620290"
 ---
 # <a name="enable-monitoring-of-azure-arc-enabled-kubernetes-cluster"></a>Az Azure arc-kompatibilis Kubernetes-fürt figyelésének engedélyezése
 
@@ -21,8 +21,6 @@ A tárolók Azure Monitor a Kubernetes egy vagy több meglévő központi telep�
 A tárolók Azure Monitor támogatja az Azure arc-kompatibilis Kubernetes (előzetes verzió) figyelését az [Áttekintés](container-insights-overview.md) című cikkben leírtak szerint, a következő funkciók kivételével:
 
 - Élő adatértékek (előzetes verzió)
-
-- A fürtcsomópontok és a hüvelyek [metrikáinak összegyűjtése](container-insights-update-metrics.md) és tárolása a Azure monitor metrikai adatbázisban
 
 A következő Azure Monitor a tárolók esetében hivatalosan támogatott:
 
@@ -106,7 +104,7 @@ Ha engedélyezni szeretné a fürt figyelését a korábban letöltött PowerShe
 1. Töltse le és mentse a parancsfájlt egy helyi mappába, amely a következő parancsokkal konfigurálja a fürtöt a figyelési bővítmény használatával:
 
     ```powershell
-    wget https://aka.ms/enable-monitoring-powershell-script -outfile enable-monitoring.ps1
+    Invoke-WebRequest https://aka.ms/enable-monitoring-powershell-script -OutFile enable-monitoring.ps1
     ```
 
 2. Konfigurálja a `$azureArcClusterResourceId` változót úgy, hogy beállítja a megfelelő értékeit `subscriptionId` , `resourceGroupName` és `clusterName` Az Azure arc-kompatibilis Kubernetes-fürterőforrás erőforrás-azonosítóját jelképezi.
@@ -284,7 +282,7 @@ Itt adhatja meg a proxykiszolgáló felhasználónevét és jelszavát, IP-cím�
 export proxyEndpoint=https://<user>:<password>@<proxyhost>:<port>
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ha a figyelés engedélyezve van az arc-kompatibilis Kubernetes-fürt és a rajtuk futó munkaterhelések állapotának és erőforrás-felhasználásának összegyűjtéséhez, Ismerje meg, [hogyan használhatja](container-insights-analyze.md) a Azure monitor for containers szolgáltatást.
 

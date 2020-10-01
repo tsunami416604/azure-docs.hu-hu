@@ -7,17 +7,17 @@ ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: quickstart
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, srbozovi, bonova
 ms.date: 02/18/2019
-ms.openlocfilehash: 072dc3c453984eb30805bb6c2c8c44cc39b06d17
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a1f496d59fa626dc8750493591128f7363afa40d
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91283598"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91620256"
 ---
 # <a name="quickstart-configure-an-azure-vm-to-connect-to-azure-sql-managed-instance"></a>Gyors útmutató: Azure-beli virtuális gép konfigurálása a felügyelt Azure SQL-példányhoz való kapcsolódáshoz
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -53,10 +53,10 @@ A következő lépések új alhálózatot hoznak létre az SQL felügyelt péld�
    | ---------------- | ----------------- | ----------- |
    | **Név** | Bármely érvényes név|Az érvényes nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/architecture/best-practices/resource-naming) ismertető cikket.|
    | **Címtartomány (CIDR-blokk)** | Érvényes tartomány | Az alapértelmezett érték jó ehhez a rövid útmutatóhoz.|
-   | **Hálózati biztonsági csoport** | Nincsenek | Az alapértelmezett érték jó ehhez a rövid útmutatóhoz.|
-   | **Útvonaltábla** | Nincsenek | Az alapértelmezett érték jó ehhez a rövid útmutatóhoz.|
+   | **Hálózati biztonsági csoport** | Nincs | Az alapértelmezett érték jó ehhez a rövid útmutatóhoz.|
+   | **Útvonaltábla** | Nincs | Az alapértelmezett érték jó ehhez a rövid útmutatóhoz.|
    | **Szolgáltatásvégpontok** | 0 kijelölve | Az alapértelmezett érték jó ehhez a rövid útmutatóhoz.|
-   | **Alhálózat delegálása** | Nincsenek | Az alapértelmezett érték jó ehhez a rövid útmutatóhoz.|
+   | **Alhálózat delegálása** | Nincs | Az alapértelmezett érték jó ehhez a rövid útmutatóhoz.|
 
    ![Új SQL felügyelt példány alhálózata ügyfél virtuális géphez](./media/connect-vm-instance-configure/new-subnet.png)
 
@@ -112,7 +112,7 @@ A következő lépések bemutatják, hogyan csatlakozhat az újonnan létrehozot
 
     ![Képernyőfelvétel: a kiválasztott virtuális gép áttekintő lapját tartalmazó Azure Portal és a Kiemelt kapcsolat.](./media/connect-vm-instance-configure/vm.png)  
 
-2. Válassza a **Kapcsolódás** lehetőséget.
+2. Kattintson a **Csatlakozás** gombra.
 
    A virtuális gép nyilvános IP-címét és portszámát tartalmazó RDP protokoll fájl (. rdp fájl) űrlap jelenik meg.
 
@@ -144,7 +144,7 @@ A Kiszolgálókezelő irányítópultján csatlakozik a virtuális géphez.
 
 A csatlakozás után megtekintheti a rendszer- és felhasználói adatbázisokat a Databases (Adatbázisok) csomóponton, valamint különféle objektumokat a Security (Biztonság), Server Objects (Kiszolgálóobjektumok), Replication (Replikáció), Management (Felügyelet), SQL Server Agent és XEvent Profiler csomópontokon.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A pont – hely kapcsolattal rendelkező helyszíni ügyfélszámítógépekről történő kapcsolódást bemutató rövid útmutató: [pont – hely kapcsolat konfigurálása](point-to-site-p2s-configure.md).
 - Az alkalmazások csatlakozási lehetőségeinek áttekintését lásd: [alkalmazások csatlakoztatása SQL felügyelt példányhoz](connect-application-instance.md).

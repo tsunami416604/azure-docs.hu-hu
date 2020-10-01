@@ -3,12 +3,12 @@ title: Az Azure Red Hat OpenShift v4. x konfigurálása az Azure Monitor for con
 description: Ez a cikk azt ismerteti, hogyan konfigurálhatja a Kubernetes-fürtök figyelését az Azure Red Hat OpenShift 4-es vagy újabb verziójában üzemeltetett Azure Monitor.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 91b5644c13ac560910703454c4052e223f958014
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 63db888419ee691e83ea456fcd7fc28a4d9909fe
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499171"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91620324"
 ---
 # <a name="configure-azure-red-hat-openshift-v4x-with-azure-monitor-for-containers"></a>Az Azure Red Hat OpenShift v4. x konfigurálása Azure Monitor for containers szolgáltatással
 
@@ -20,7 +20,7 @@ A tárolók Azure Monitor széles körű monitorozást biztosítanak az Azure Ku
 
 Az ebben a cikkben ismertetett támogatott módszerek használatával engedélyezheti a tárolók Azure Monitorét az Azure Red Hat OpenShift v4. x egy vagy több meglévő példányához.
 
-Meglévő fürt esetén futtassa ezt a [bash-szkriptet az Azure CLI-ben](/cli/azure/openshift?view=azure-cli-latest#az-openshift-create).
+Meglévő fürt esetén futtassa ezt a [bash-szkriptet az Azure CLI-ben](/cli/azure/openshift?view=azure-cli-latest#az-openshift-create&preserve-view=true).
 
 ## <a name="supported-and-unsupported-features"></a>Támogatott és nem támogatott funkciók
 
@@ -39,7 +39,7 @@ A tárolók Azure Monitor támogatja az Azure Red Hat OpenShift v4. x figyelés�
 
 - A [Kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) parancssori eszköz
 
-- [Log Analytics munkaterület](../platform/design-logs-deployment.md).
+- Egy [Log Analytics-munkaterület](../platform/design-logs-deployment.md).
 
     A tárolók Azure Monitor Log Analytics munkaterületet támogatnak az Azure [Products By Region régióban](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor)felsorolt régiókban. Saját munkaterület létrehozásához [Azure Resource Manager](../platform/template-workspace-configuration.md), a [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)vagy a [Azure Portal](../learn/quick-create-workspace.md)használatával hozható létre.
 
@@ -138,7 +138,7 @@ A létrehozott alapértelmezett munkaterület a *alapértelmezettmunkaterület \
 Cserélje le a és a `azureAroV4ClusterResourceId` paraméterek értékeit `kubeContext` .
 
 ```bash
-export azureAroV4ClusterResourceId=“/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.RedHatOpenShift/OpenShiftClusters/<clusterName>”
+export azureAroV4ClusterResourceId="/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.RedHatOpenShift/OpenShiftClusters/<clusterName>"
 export kubeContext="<kubeContext name of your ARO v4 cluster>"
 ```
 
@@ -164,7 +164,7 @@ A tárolók Azure Monitor több fürtből álló nézete kiemeli az Azure Red Ha
 
     A lista eredményeit a **fürt típusa** oszlopban található **ARO** érték megkeresésével azonosíthatja. Miután kiválasztotta az **Engedélyezés**lehetőséget, a rendszer átirányítja erre a cikkre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Most, hogy engedélyezte a figyelést, hogy összegyűjtse a RedHat OpenShift 4. x-es verzióját és a rajtuk futó munkaterheléseket, megtudhatja, [hogyan használhatja](container-insights-analyze.md) a Azure monitor for containers szolgáltatást.
 

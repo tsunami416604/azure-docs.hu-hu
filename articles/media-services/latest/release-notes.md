@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 5a22bd9508feac1348bcd8042fa6ac791864c261
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: 88b1eb70814c349d488933179a16c084a0af803c
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89425636"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619967"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>A Azure Media Services v3 kibocsátási megjegyzései
 
@@ -42,9 +42,9 @@ A legújabb fejleményekkel naprakészen tarthatja a cikket, amely a következő
 ## <a name="august-2020"></a>2020. augusztus
 
 ### <a name="dynamic-encryption"></a>Dinamikus titkosítás
-Már elérhető a dinamikus adatcsomagolásban a örökölt PlayReady Protected File Format (PIFF 1,1) titkosítás támogatása. Ez támogatja a Samsungtól és az LG-től származó örökölt intelligens TV-készleteket, amelyek a Microsoft által közzétett Common Encryption Standard (CENC) korai tervezeteit implementálják.  A PIFF 1,1 formátuma más néven a Silverlight ügyféloldali könyvtára által korábban támogatott titkosítási formátum. Napjainkban a titkosítási formátum egyetlen felhasználási esete az, hogy az örökölt intelligens televíziós piacot célozza meg, ahol a nem triviálisan sok olyan régióban marad, amely csak a PIFF 1,1 titkosítást támogató Smooth Streaming támogatja. 
+Már elérhető a dinamikus adatcsomagolásban a örökölt PlayReady Protected File Format (PIFF 1,1) titkosítás támogatása. Ez támogatja a Samsungtól és az LG-től származó örökölt intelligens TV-készleteket, amelyek a Microsoft által közzétett Common Encryption Standard (CENC) korai tervezeteit implementálják.  A PIFF 1,1 formátuma más néven a Silverlight ügyféloldali könyvtára által korábban támogatott titkosítási formátum. Napjainkban az ilyen titkosítási formátum esetében az egyetlen felhasználási eset az, hogy az örökölt intelligens TV-piacot célozza meg, ahol még nem triviálisan sok olyan intelligens televízió található, amely csak a PIFF 1,1 titkosítást támogató Smooth Streaming támogatja. 
 
-Az új PIFF 1,1 titkosítási támogatás használatához módosítsa a titkosítási értéket "PIFF" értékre a folyamatos átviteli lokátor URL-címének elérési útján. További részletekért tekintse meg az [Content Protection áttekintését.](content-protection-overview.md)
+Az új PIFF 1,1 titkosítási támogatás használatához módosítsa a titkosítási értéket "PIFF" értékre a folyamatos átviteli lokátor URL-címének elérési útján. További részletekért tekintse meg a [Content Protection áttekintését.](content-protection-overview.md)
 Például: `https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=piff)`|
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Az élő átiratok immár 19 nyelvet és 8 régiót támogatnak.
 
 Közzétettünk egy teljes körű tartalomvédelem nevű oktatóanyagot [Az Azure ad használatával](./azure-ad-content-protection.md).
 
-### <a name="high-availablity"></a>Magas availablity
+### <a name="high-availability"></a>Magas rendelkezésre állás
 
 Magas rendelkezésre állást tettünk közzé a Media Services és a video on demand (VOD) [áttekintése](./media-services-high-availability-encoding.md) és [mintája](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/HighAvailabilityEncodingStreaming)alapján.
 
@@ -97,7 +97,7 @@ Media Services GA'ed a következő Azure Government régiókban: *USA Korm. Ariz
 
 Az élő és a videó igény szerinti folyamatos átviteléhez a CDN támogatását is hozzáadta a *forrás-és a kisegítő* fejlécekhez. olyan ügyfelek számára érhető el, akik közvetlen szerződést kötöttek a Akamai CDN-vel. Forrás – Assist CDN – a Meghívási funkció a következő HTTP-fejléceket foglalja magában a Akamai CDN és a Azure Media Services-forrás között:
 
-|HTTP-fejléc|Értékek|Küldő|Fogadó|Cél|
+|HTTP-fejléc|Értékek|Küldő|Fogadó|Rendeltetés|
 | ---- | ---- | ---- | ---- | ----- |
 |CDN-Origin-Assist-prefektus-enabled | 1 (alapértelmezett) vagy 0 |Tartalomkézbesítési hálózat (CDN)|Forrás|Annak jelzése, hogy a CDN engedélyezve van-e|
 |CDN-Origin-Assist-prefektus-Path| Példa: <br/>Töredékek (videó = 1400000000, Format = mpd-Time-CMAF)|Forrás|Tartalomkézbesítési hálózat (CDN)|A CDN elérési útjának biztosítása|
@@ -136,12 +136,12 @@ A következő új ajánlott partneri kódolók támogatása a RTMP Live streamin
 
 - Mostantól elérhető egy új tartalom-kompatibilis kódolási beállításkészlet. A szolgáltatás a GOP-ra igazított MP4-készletet a tartalommal kompatibilis kódolással hozza létre. A szolgáltatás bármilyen bemeneti tartalmat figyelembe vesz, és a bemeneti tartalom kezdeti egyszerű elemzését végzi. Ezeket az eredményeket használja a rétegek optimális számának, a megfelelő átviteli sebességnek és a megoldási beállításoknak az adaptív adatfolyamok általi továbbításához. Ez a készlet különösen hatékony az alacsony bonyolultságú és közepes bonyolultságú videókhoz, ahol a kimeneti fájlok alacsonyabb átviteli sebességű, de olyan minőségben, amely továbbra is jó élményt nyújt a nézők számára. A kimenet video-és hangalapú MP4-fájlokat fog tartalmazni. További információ: [Open API-specifikációk](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/Encoding.json).
 - Továbbfejlesztett teljesítmény és többszálas működés a standard szintű kódolóban. Adott körülmények között az ügyfélnek a 5-40%-os VOD-kódolású teljesítmény-növelést kell látnia. Az alacsony komplexitású tartalom több átviteli sebességre való kódolása a legmagasabb teljesítménybeli növekedést fogja látni. 
-- A standard szintű kódolás mostantól egy normál GOP-lépésszám-tartalmat tart fenn, amely az időalapú GOP-beállítás használatakor a többtényezős adatforgalom (VFR) kódolására vonatkozik.  Ez azt jelenti, hogy a kevert képarányos tartalmat, amely a 15-30 fps között változik, például a kimenetre kiszámított normál GOP-távolságokat kell látni az adaptív sávszélességű streaming MP4-fájlokkal. Ez javítja a sávok közötti zökkenőmentes váltás lehetőségét a HLS vagy kötőjel továbbításakor. 
+- A standard szintű kódolás mostantól egy normál GOP-lépésszám-tartalmat tart fenn, amely az időalapú GOP-beállítás használatakor a többtényezős adatforgalom (VFR) kódolására vonatkozik.  Ez azt jelenti, hogy az ügyfél a kevert képarányos tartalmat küldi el, amely a 15-30 fps-tól függően változik Ez javítja a sávok közötti zökkenőmentes váltás lehetőségét a HLS vagy kötőjel továbbításakor. 
 -  Továbbfejlesztett AV-szinkronizálás a változó Képkockasebesség (VFR) forrás tartalmához
 
 ### <a name="video-indexer-video-analytics"></a>Video Indexer, video Analytics
 
-- A VideoAnalyzer-készlettel kinyert kulcsképek mostantól a videó eredeti felbontásában jelennek meg az átméretezés helyett. A nagyfelbontású kulcsképek kinyerése eredeti minőségi rendszerképeket biztosít, és lehetővé teszi a Microsoft Computer Vision által biztosított lemezkép-alapú mesterséges intelligencia-modellek használatát, és Custom Vision szolgáltatásokat, amelyekkel még több információt nyerhet a videóból.
+- A VideoAnalyzer-készlettel kinyert kulcsképek mostantól a videó eredeti felbontásában jelennek meg az átméretezés helyett. A nagyfelbontású kulcsképek kinyerése eredeti minőségi rendszerképeket biztosít, és lehetővé teszi a Microsoft Computer Vision által biztosított lemezkép-alapú mesterséges intelligencia-modellek használatát, és a Custom Vision szolgáltatások révén még több információt nyerhet a videóból.
 
 ## <a name="september-2019"></a>2019. szeptember
 
@@ -155,7 +155,7 @@ Media Services v3 bejelenti az élő események élő lineáris kódolásának 2
 
 #### <a name="deprecation-of-media-processors"></a>Adathordozó-processzorok elavulása
 
-Bejelentjük, hogy a *Azure Media Indexer* elavult, és *Azure Media Indexer 2 előzetes*verzió. A nyugdíjazási dátumokért tekintse meg az  [örökölt összetevőkkel](../previous/legacy-components.md) foglalkozó témakört. A [Azure Media Services video Indexer](../video-indexer/index.yml) ezeket a régi adathordozó-processzorokat váltja fel.
+Bejelentjük, hogy a *Azure Media Indexer* elavult, és *Azure Media Indexer 2 előzetes*verzió. A nyugdíjazási dátumokért tekintse meg az  [örökölt összetevőkkel](../previous/legacy-components.md) foglalkozó cikket. A [Azure Media Services video Indexer](../video-indexer/index.yml) ezeket a régi adathordozó-processzorokat váltja fel.
 
 További információ: [áttelepítés Azure Media Indexerról és Azure Media Indexer 2 – Azure Media Services video Indexer](../previous/migrate-indexer-v1-v2.md).
 
@@ -173,7 +173,7 @@ További információkért tekintse [meg a felhőket és a régiókat, amelyekbe
 
 #### <a name="deprecation-of-media-processors"></a>Adathordozó-processzorok elavulása
 
-Bejelentjük a *Windows Azure Media Encoder* (Tamás) és a *Azure Media Encoder* (ame) adathordozó-processzorok elavult kivonását. A nyugdíjazási dátumokért tekintse meg ezt a [régi összetevőket](../previous/legacy-components.md) ismertető témakört.
+Bejelentjük a *Windows Azure Media Encoder* (Tamás) és a *Azure Media Encoder* (ame) adathordozó-processzorok elavult kivonását. A nyugdíjazási dátumok esetében tekintse meg ezt az [örökölt összetevőket](../previous/legacy-components.md) ismertető cikket.
 
 Részletekért lásd: [a Tamás Áttelepítésének Media Encoder standard](https://go.microsoft.com/fwlink/?LinkId=2101334) és az [ame áttelepítésének Media Encoder standard](https://go.microsoft.com/fwlink/?LinkId=2101335).
  
@@ -223,8 +223,8 @@ További információkért tekintse [meg a felhőket és a régiókat, amelyekbe
 
 A Media Services teljesítmény-fejlesztési funkciókat tartalmazó frissítések lettek hozzáadva.
 
-* A feldolgozáshoz támogatott maximális fájlméret frissült. Lásd: [kvóták és korlátozások](limits-quotas-constraints.md).
-* A [kódolási sebesség fejlesztése](media-reserved-units-cli-how-to.md#choosing-between-different-reserved-unit-types).
+* A feldolgozáshoz támogatott maximális fájlméret frissült. Lásd:, [kvóták és korlátok](limits-quotas-constraints.md).
+* A [kódolási sebesség fejlesztése](concept-media-reserved-units.md).
 
 ## <a name="april-2019"></a>2019. április
 
@@ -408,7 +408,7 @@ Tekintse meg a [Azure Media Services közösségi](media-services-community.md) 
 
 [Áttelepítési útmutató Media Services v2-ről v3-re való áttéréshez](migrate-from-v2-to-v3.md#known-issues).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Áttekintés](media-services-overview.md)
 - [A Media Services v3 dokumentációjának frissítései](docs-release-notes.md)

@@ -9,14 +9,14 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: 3df0959003923a9a4ff2347330fd5a4f22e52245
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 11c11d3e43f15b569a74c282b15a95525cea7e7c
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91300122"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91620035"
 ---
-# <a name="analyze-data-with-sql-dedicated-pools"></a>Adat elemzése dedikált SQL-készletekkel
+# <a name="analyze-data-with-dedicated-sql-pools"></a>Az adatelemzés dedikált SQL-készletekkel
 
 Az Azure szinapszis Analytics lehetővé teszi az adatelemzést egy dedikált SQL-készlettel. Ebben az oktatóanyagban a New York-i taxi-adatszolgáltatások segítségével megismerheti a dedicted SQL-készlet képességeit.
 
@@ -95,7 +95,7 @@ Az Azure szinapszis Analytics lehetővé teszi az adatelemzést egy dedikált SQ
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Elemzés a Spark használatával](get-started-analyze-spark.md)

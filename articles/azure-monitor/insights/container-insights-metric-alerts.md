@@ -1,18 +1,18 @@
 ---
-title: Metrikai riasztások a Azure Monitorről a tárolók számára | Microsoft Docs
+title: Metrikai riasztások Azure Monitorről tárolók számára
 description: Ez a cikk a Azure Monitor for containers nyilvános előzetes verziójában elérhető javasolt metrikai riasztásokat tekinti át.
 ms.topic: conceptual
-ms.date: 08/04/2020
-ms.openlocfilehash: aace260ff22d63211424f2ce4a7319bf577436f4
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.date: 09/24/2020
+ms.openlocfilehash: 83394faf3d7296522151b815bddd910d47e45d24
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90019886"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619950"
 ---
 # <a name="recommended-metric-alerts-preview-from-azure-monitor-for-containers"></a>Ajánlott metrikai riasztások (előzetes verzió) Azure Monitorről tárolók számára
 
-Ha riasztást szeretne kapni a Rendszererőforrásokkal kapcsolatos problémákról, amikor a maximális keresletet tapasztalják, és a közeli kapacitást futtatják, a Azure Monitor a tárolók esetében a Azure Monitor naplókban tárolt teljesítményadatok alapján kell létrehoznia a naplózási riasztást. A tárolók Azure Monitor a nyilvános előzetes verzióban elérhető, előre konfigurált metrikus riasztási szabályokat is tartalmaz.
+Ha riasztást szeretne kapni a Rendszererőforrásokkal kapcsolatos problémákról, amikor a maximális keresletet tapasztalják, és a közeli kapacitást futtatják, a Azure Monitor a tárolók esetében a Azure Monitor naplókban tárolt teljesítményadatok alapján kell létrehoznia a naplózási riasztást. A tárolók Azure Monitor mostantól nyilvános előzetes verzióban elérhető, előre konfigurált metrikus riasztási szabályokat is tartalmaz az AK-hoz és az Azure arc-kompatibilis Kubernetes-fürthöz.
 
 Ez a cikk a tapasztalatok áttekintését és útmutatást nyújt a riasztási szabályok konfigurálásához és kezeléséhez.
 
@@ -22,22 +22,22 @@ Ha nem ismeri a Azure Monitor riasztásokat, a Kezdés előtt tekintse meg [a Mi
 
 Mielőtt elkezdené, erősítse meg a következőket:
 
-* Az egyéni metrikák csak az Azure-régiók egy részhalmazában érhetők el. A támogatott régiók listáját [itt](../platform/metrics-custom-overview.md#supported-regions)dokumentáljuk.
+* Az egyéni metrikák csak az Azure-régiók egy részhalmazában érhetők el. A támogatott régiók listája a [támogatott régiókban](../platform/metrics-custom-overview.md#supported-regions)van dokumentálva.
 
-* A metrikus riasztások támogatásához és a további mérőszámok bevezetéséhez az ügynök minimálisan szükséges verziója a **Microsoft/OMS: ciprod05262020**.
+* A metrikus riasztások támogatásához és a további mérőszámok bevezetéséhez az ügynök minimálisan szükséges verziója a **Microsoft/OMS: ciprod05262020** for AK és a **Microsoft/OMS: Ciprod09252020** for Azure arc enabled Kubernetes-fürt.
 
     Annak ellenőrzéséhez, hogy a fürt az ügynök újabb verzióját futtatja-e, a következők közül választhat:
 
     * Futtassa a parancsot: `kubectl describe <omsagent-pod-name> --namespace=kube-system` . A visszaadott állapotban jegyezze fel a kimenet omsagent található **rendszerkép** *a következőben* :. 
     * A **csomópontok** lapon válassza ki a fürtcsomópont csomópontot, majd a jobb oldalon a **Tulajdonságok** ablaktáblán jegyezze fel az értéket az **ügynök képcímkéje**területen.
 
-    A megjelenített értéknek a **ciprod05262020**-nál későbbi verziónak kell lennie. Ha a fürt rendelkezik egy régebbi verzióval, kövesse a [frissítési ügynök az AK-fürtön](container-insights-manage-agent.md#upgrade-agent-on-aks-cluster) lépéseit a legújabb verzió beszerzéséhez.
-    
+    Az AK-hoz megadott értéknek **ciprod05262020** vagy újabb verziójúnak kell lennie. Az Azure arc-kompatibilis Kubernetes-fürtön látható értéknek **ciprod09252020** vagy újabb verziójúnak kell lennie. Ha a fürt rendelkezik egy régebbi verzióval, tekintse meg a [Hogyan lehet frissíteni a Azure monitor for containers Agent](container-insights-manage-agent.md#upgrade-agent-on-aks-cluster) című témakört a legújabb verzió beszerzésének lépéseihez.
+
     Az ügynök kiadásával kapcsolatos további információkért lásd az [ügynök kiadási előzményei](https://github.com/microsoft/docker-provider/tree/ci_feature_prod)című témakört. A metrikák gyűjtésének ellenőrzéséhez használhatja a Azure Monitor metrikák Explorert, és ellenőrizheti, hogy a **metrikai névtér** tartalmazza-e az **észlelt** adatokat. Ha igen, megkezdheti a riasztások beállítását. Ha nem jelenik meg a begyűjtött metrikák, a fürtszolgáltatási tag vagy az MSI nem rendelkezik a szükséges engedélyekkel. Annak ellenőrzéséhez, hogy az SPN vagy az MSI a **figyelési metrikák közzétevői** szerepkör tagja-e, kövesse a [fürt frissítése az Azure CLI](container-insights-update-metrics.md#upgrade-per-cluster-using-azure-cli) -vel című szakaszban ismertetett lépéseket a szerepkör-hozzárendelés megerősítéséhez és beállításához.
 
 ## <a name="alert-rules-overview"></a>Riasztási szabályok áttekintése
 
-A Azure Monitor for containers szolgáltatással kapcsolatos riasztások esetén a következő metrikai riasztások tartoznak az AK-fürtökhöz:
+A Azure Monitor for containers szolgáltatással kapcsolatos riasztásokhoz a következő metrikai riasztások tartoznak az AK-hoz és az Azure arc-kompatibilis Kubernetes-fürtökhöz:
 
 |Név| Leírás |Alapértelmezett küszöbérték |
 |----|-------------|------------------|
@@ -231,7 +231,7 @@ A ConfigMap konfigurációs fájljának konfigurálásához hajtsa végre az al�
 
 A konfiguráció módosítása több percet is igénybe vehet, mielőtt érvénybe lépnek, és a fürtben lévő összes omsagent-hüvely újra fog indulni. Az újraindítás az összes omsagent-hüvely működés közbeni újraindítása, és nem minden újraindítási idő. Az újraindítások végeztével megjelenik egy üzenet, amely az alábbihoz hasonló, és az eredményt tartalmazza: `configmap "container-azm-ms-agentconfig" created` .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Megtekintheti a [napló lekérdezési példáit](container-insights-log-search.md#search-logs-to-analyze-data) , amelyekkel előre definiált lekérdezéseket és példákat tekinthet meg a fürtök riasztásának, megjelenítésének vagy elemzésének kiértékeléséhez és testreszabásához.
 

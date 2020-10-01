@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: performance
 ms.custom: sqldbrb=1
 ms.devlang: PowerShell
-ms.topic: conceptual
+ms.topic: sample
 author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
-ms.openlocfilehash: faba9eaf59f5d1c941bacb58ba1faf9f817d39cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 57449b0bbd39b6ea04ecae5a3ad766ae5687ca0b
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84046984"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619831"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-azure-sql-database"></a>A kibővített eseményekhez tartozó gyűrűs pufferek Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -31,7 +31,7 @@ Ez a témakör egy Transact-SQL-kód mintát mutat be, amely a következőket ta
 2. Munkamenetet hoz létre egy meglévő kiterjesztett eseményhez, nevezetesen: **SQLServer. sql_statement_starting**.
 
    * Az esemény olyan SQL-utasításokra korlátozódik, amelyek egy adott frissítési karakterláncot tartalmaznak: a **(z) "% Update tabEmployee%" utasítást**.
-   * Úgy dönt, hogy elküldi az esemény kimenetét egy gyűrűs puffer típusú célhoz, azaz **package0. ring_buffer**.
+   * Úgy dönt, hogy elküldi az esemény kimenetét egy gyűrűs puffer típusú célhoz, azaz  **package0. ring_buffer**.
 3. Elindítja az esemény-munkamenetet.
 4. Néhány egyszerű SQL UPDATE-utasítást is kiad.
 5. Egy SQL SELECT utasítás kiírása az esemény kimenetének a gyűrűs pufferből való lekéréséhez.

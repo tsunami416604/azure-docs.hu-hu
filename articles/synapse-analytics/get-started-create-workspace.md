@@ -8,23 +8,23 @@ manager: julieMSFT
 ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
-ms.date: 08/27/2020
-ms.openlocfilehash: f5851174ba223bd0ab48512b9e75449dcc927a04
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/30/2020
+ms.openlocfilehash: b7fd495c735116d3b895a55225c1ef55091db4cb
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91300105"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91620069"
 ---
-# <a name="prerequisites"></a>Előfeltételek
-
-Az oktatóanyag lépéseinek elvégzéséhez hozzáféréssel kell rendelkeznie egy olyan erőforráscsoporthoz, amelyhez hozzá van rendelve a **tulajdonosi** szerepkör. Hozza létre a szinapszis munkaterületet ebben az erőforráscsoportban.
-
-## <a name="create-a-synapse-workspace"></a>Synapse-munkaterület létrehozása
+# <a name="creating-a-synapse-workspace"></a>Szinapszis-munkaterület létrehozása
 
 Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy szinapszis-munkaterületet, egy SQL-készletet és egy Apache Spark készletet. 
 
-## <a name="create-a-synapse-workspace"></a>Synapse-munkaterület létrehozása
+## <a name="prerequisites"></a>Előfeltételek
+
+Az oktatóanyag lépéseinek elvégzéséhez hozzáféréssel kell rendelkeznie egy olyan erőforráscsoporthoz, amelyhez hozzá van rendelve a **tulajdonosi** szerepkör. Hozza létre a szinapszis munkaterületet ebben az erőforráscsoportban.
+
+## <a name="create-a-synapse-workspace-in-the-azure-portal"></a>Szinapszis-munkaterület létrehozása az Azure Portalon
 
 1. Nyissa meg a [Azure Portal](https://portal.azure.com), és a legfelső szintű keresés a **szinapszisban**.
 1. A keresési eredmények között, a **szolgáltatások**területen válassza az **Azure szinapszis Analytics (munkaterületek előzetes verzió)** lehetőséget.
@@ -118,9 +118,9 @@ Konfigurálja a Storage-fiókhoz való hozzáférést a munkaterületről. Előf
     * A Storage- **blob adatközreműködői** szerepköréhez a Storage-fiókban rendeljen **sajátmunkaterület** a munkaterület-identitáshoz.
     * Rendelje hozzá a **sajátmunkaterület** a munkaterület neveként.
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Elemzés SQL-készlet használatával](get-started-analyze-sql-pool.md)

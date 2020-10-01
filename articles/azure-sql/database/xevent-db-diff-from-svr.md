@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: performance
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: reference
 author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
-ms.openlocfilehash: 7f0f50de3f74f0e8040118035e28b3e905ed5616
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c8f73c0789cd0211deeb66af5c7300a81d7b1be0
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84046956"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619814"
 ---
 # <a name="extended-events-in-azure-sql-database"></a>Bővített események Azure SQL Database 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -66,14 +66,14 @@ A kapcsolódó témakörök két mintakód-mintát biztosítanak:
 - Ha az esemény- [munkamenet létrehozása](/sql/t-sql/statements/create-event-session-transact-sql) parancsot SQL Serveron hajtja végre, használja a **on Server** záradékot. Azure SQL Database azonban a **on Database** záradékot használja.
 - A **on Database** záradék az [Alter Event-munkamenetre](/sql/t-sql/statements/alter-event-session-transact-sql) és a [drop Event Session](/sql/t-sql/statements/drop-event-session-transact-sql) Transact-SQL parancsokra is vonatkozik.
 
-- Az ajánlott eljárás az, hogy tartalmazza a **STARTUP_STATE =** esemény-munkamenetet az **esemény-munkamenet létrehozásakor** , vagy az esemény-munkamenet-utasítások **megváltoztatásával** .
+- Az ajánlott eljárás az, hogy tartalmazza a **STARTUP_STATE =** esemény-munkamenetet az **esemény-munkamenet létrehozásakor**  , vagy az esemény-munkamenet-utasítások **megváltoztatásával** .
   - A **= on** érték a feladatátvétel miatti automatikus újraindítást is támogatja a logikai adatbázis újrakonfigurálása után.
 
 ## <a name="new-catalog-views"></a>Új katalógus nézetei
 
 A kiterjesztett események funkciót számos [katalógus-nézet](https://msdn.microsoft.com/library/ms174365.aspx)támogatja. A katalógus nézeteiből megtudhatja, hogy az aktuális adatbázisban a felhasználó által létrehozott esemény-munkamenetek *metaadatai vagy definíciói* szerepelnek-e. A nézetek nem adnak vissza adatokat az aktív esemény-munkamenetek példányairól.
 
-| Neve<br/>Katalógus nézet | Description |
+| Neve<br/>Katalógus nézet | Leírás |
 |:--- |:--- |
 | **sys. database_event_session_actions** |Minden művelet sorát adja vissza egy esemény-munkamenet minden eseményén. |
 | **sys. database_event_session_events** |Egy adott esemény-munkamenetben lévő események sorát adja vissza. |
@@ -87,7 +87,7 @@ A Microsoft SQL Server hasonló katalógus-nézetek olyan nevekkel rendelkeznek,
 
 A Azure SQL Database [dinamikus felügyeleti nézetekkel (DMV) rendelkeznek](https://msdn.microsoft.com/library/bb677293.aspx) , amelyek támogatják a kiterjesztett eseményeket. DMV az *aktív* esemény-munkamenetekről.
 
-| DMV neve | Description |
+| DMV neve | Leírás |
 |:--- |:--- |
 | **sys. dm_xe_database_session_event_actions** |Az esemény-munkamenet műveletekkel kapcsolatos adatokat adja vissza. |
 | **sys. dm_xe_database_session_events** |A munkamenet-eseményekre vonatkozó adatokat adja vissza. |

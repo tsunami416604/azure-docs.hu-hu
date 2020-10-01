@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: f7c41dc11e7321d6fb9e6f8c030eb74b586a1b3e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d96718176c3cd7486c51e57942c4d12bf0d57992
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075035"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91620009"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-as-default-storage-by-using-powershell"></a>HDInsight-fürtök létrehozása Azure Data Lake Storage Gen1 alapértelmezett tárolóként a PowerShell használatával
 
@@ -67,7 +67,7 @@ Data Lake Storage Gen1 fiók létrehozásához tegye a következőket:
     ```
 
     > [!NOTE]
-    > Ha regisztrálja a Data Lake Storage Gen1 erőforrás-szolgáltatót, és a következőhöz hasonló hibaüzenetet kap `Register-AzResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` , előfordulhat, hogy az előfizetése nem engedélyezett a Data Lake Storage Gen1 számára. Az Data Lake Storage Gen1 Azure-előfizetésének engedélyezéséhez kövesse az [Azure Data Lake Storage Gen1 használatának első lépései a Azure Portal használatával](data-lake-store-get-started-portal.md)című témakör utasításait.
+    > Ha regisztrálja a Data Lake Storage Gen1 erőforrás-szolgáltatót, és a következőhöz hasonló hibaüzenetet kap `Register-AzResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` , előfordulhat, hogy az előfizetését nem hagyja jóvá Data Lake Storage Gen1. Az Data Lake Storage Gen1 Azure-előfizetésének engedélyezéséhez kövesse az [Azure Data Lake Storage Gen1 használatának első lépései a Azure Portal használatával](data-lake-store-get-started-portal.md)című témakör utasításait.
     >
 
 2. Egy Data Lake Storage Gen1 fiók egy Azure-erőforráscsoporthoz van társítva. Első lépésként hozzon létre egy erőforráscsoportot.
