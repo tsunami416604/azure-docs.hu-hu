@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 07/10/2020
+ms.date: 10/01/2020
 ms.author: alkohli
-ms.openlocfilehash: 301c75df6bedf430af64bbeff63f2eb759691355
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: bd8e6d4175c57bd31c3fd83bf6f9669d2b65ffb2
+ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86210439"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91660843"
 ---
 # <a name="tutorial-copy-data-from-azure-data-box-via-nfs-preview"></a>Oktatóanyag: adatok másolása Azure Data Boxról NFS-en keresztül (előzetes verzió)
 
@@ -25,7 +25,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 >
 > * Előfeltételek
 > * Csatlakozás a Data Boxhoz
-> * Adatok másolása Data Boxról
+> * Adatok másolása a Data Boxról
 
 [!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
 
@@ -33,11 +33,11 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
-1. A Azure Data Box sorrendjét helyezte el.
-    - Importálási sorrend esetén tekintse meg az [oktatóanyag: order Azure Data Box](data-box-deploy-ordered.md)című témakört.
-    - Az exportálási sorrendet lásd [: oktatóanyag: order Azure Data Box](data-box-deploy-export-ordered.md).
+1. Megrendelt egy Azure Data Boxot.
+    - Az importálási rendelésekkel kapcsolatos információkért lásd [ Az Azure Data Box megrendelése](data-box-deploy-ordered.md) című oktatóanyagot.
+    - Exportálási rendelésekkel kapcsolatos információkért lásd: [Oktatóanyag: Az Azure Data Box megrendelése](data-box-deploy-export-ordered.md) című oktatóanyagot.
 2. Megkapta a Data Boxot, és a portálon a megrendelés **Kézbesítve** állapotú.
-3. Van egy gazdagépe, amelyre másolni kívánja az adatait a Data Boxból. A gazdaszámítógépen:
+3. Rendelkezik egy gazdagéppel, amelyre át kívánja másolni az adatokat a Data Boxról. A gazdaszámítógépen:
    * egy [támogatott operációs rendszernek](data-box-system-requirements.md) kell futnia;
    * egy nagy sebességű hálózathoz kell csatlakoznia. Határozottan javasoljuk, hogy legalább 10 GbE sebességű kapcsolattal rendelkezzen. Ha 10 GbE sebességű kapcsolat nem áll rendelkezésre, 1 GbE sebességű adatkapcsolat is használható, azonban ez csökkenti a másolási sebességet.
 
@@ -45,15 +45,17 @@ Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
 [!INCLUDE [data-box-shares](../../includes/data-box-shares.md)]
 
-Amennyiben Linux rendszerű gazdagépet használ, a következő módon konfigurálhatja a Data Boxot, hogy hozzáférést biztosítson az NFS-ügyelek számára.
+Amennyiben Linux rendszerű gazdagépet használ, a következő módon konfigurálhatja a Data Boxot, hogy hozzáférést biztosítson az NFS-ügyelek számára. Data Box egyszerre legfeljebb öt NFS-ügyfelet tud összekötni.
 
-1. Adja meg azon ügyfelek IP-címeit, akik hozzáférhetnek a megosztáshoz. A helyi webes felületen lépjen a **Connect and copy** (Kapcsolódás és másolás) lapra. Az **NFS settings** (NFS-beállítások) pontban kattintson az **NFS client access** (NFS-ügyfélhozzáférés) lehetőségre. 
+1. Adja meg a megosztást elérő engedélyezett ügyfelek IP-címeit:
 
-    ![NFS-ügyfélhozzáférés konfigurálása 1](media/data-box-deploy-export-copy-data/nfs-client-access-1.png)
+    1.  A helyi webes KEZELŐFELÜLETen lépjen a **Kapcsolódás és másolás** lapra. Az **NFS settings** (NFS-beállítások) pontban kattintson az **NFS client access** (NFS-ügyfélhozzáférés) lehetőségre. 
 
-2. Adja meg az NFS-ügynök IP-címét, és kattintson az **Add** (Hozzáadás) gombra. Ezt a lépést megismételve további NFS-ügyfeleket is konfigurálhat. Kattintson az **OK** gombra.
+        ![NFS-ügyfél-hozzáférés megnyitása](media/data-box-deploy-export-copy-data/nfs-client-access-1.png)
 
-    ![NFS-ügyfélhozzáférés konfigurálása 2](media/data-box-deploy-export-copy-data/nfs-client-access-2.png)
+    1. NFS-ügyfél hozzáadásához adja meg az ügyfél IP-címét, és kattintson a **Hozzáadás**gombra. Data Box egyszerre legfeljebb öt NFS-ügyfelet tud összekötni. Ha végzett, kattintson **az OK**gombra.
+
+         ![NFS-ügyfél hozzáadása](media/data-box-deploy-export-copy-data/nfs-client-access-2.png)
 
 2. Győződjön meg arról, hogy a Linux gazdagépen az NFS-ügyfél [támogatott verziója](data-box-system-requirements.md) van telepítve. Használja a Linux-disztribúciónak megfelelő verziót. 
 
@@ -71,7 +73,7 @@ Amennyiben Linux rendszerű gazdagépet használ, a következő módon konfigur�
 
     **Mindig hozzon létre egy mappát azokhoz a fájlokhoz, amelyeket másolni szeretne a megosztás alatt, majd másolja a fájlokat a létrehozott mappába**. A blokkblob- és lapblobmegosztások alatt létrehozott mappa azt a tárolót jelöli, amelybe a rendszer feltölti az adatokat blobokként. Nem másolhat fájlokat közvetlenül a tárfiók *gyökér*mappájába.
 
-## <a name="copy-data-from-data-box"></a>Adatok másolása Data Boxról
+## <a name="copy-data-from-data-box"></a>Adatok másolása a Data Boxról
 
 A Data Box-megosztásokhoz történő csatlakozás után a következő lépés az adatok másolása.
 
@@ -118,9 +120,9 @@ Amennyiben az rsyncet használja többszálas másoláshoz, a következő irány
 > [!IMPORTANT]
 > A következő Linux-fájltípusok nem támogatottak: szimbolikus hivatkozások, szövegfájlok, fájlok, szoftvercsatornák és csövek blokkolása. Ezek a fájltípusok a **szállításra való előkészítés** lépésben hibát okoznak.
 
-A másolás befejeződése után nyissa meg az **irányítópultot** , és ellenőrizze a felhasznált területet és a szabad területet az eszközön.
+A másolás befejezése után nyissa meg az **Irányítópultot**, majd ellenőrizze, hogy az eszközén lévő felhasznált és szabad tárhely mennyiségét.
 
-Most folytathatja a Data Box elszállítását a Microsoftnak.
+Ezután elküldheti az Azure Data Boxot a Microsoftnak.
 
 ## <a name="next-steps"></a>További lépések
 
@@ -130,7 +132,7 @@ Ebben az oktatóanyagban az Azure Data Box témaköréből ismerhette meg a köv
 >
 > * Előfeltételek
 > * Csatlakozás a Data Boxhoz
-> * Adatok másolása Data Boxról
+> * Adatok másolása a Data Boxról
 
 Folytassa a következő oktatóanyaggal, amelyben megismerheti, hogyan küldheti vissza a Data Boxot a Microsoftnak.
 

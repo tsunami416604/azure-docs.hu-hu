@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 7e1a2d50e04601b977bb7a708f60e78089ddded1
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: a040200c5746defcaee84a951521d5919c0c4d28
+ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91631018"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91660676"
 ---
 # <a name="delete-azure-arc-data-controller"></a>Azure arc-adatkezelő törlése
 
@@ -75,16 +75,21 @@ oc adm policy remove-scc-from-user anyuid     -z default -n arc
 
 ### <a name="delete-cluster-level-objects"></a>Fürt szintjén lévő objektumok törlése
 
-A névtér hatókörű objektumain kívül, ha a fürt szintjén lévő objektumokat is törölni szeretné, például a CRDs, a `clusterroles` és a `clusterrolebindings` parancsot, futtassa a következő parancsokat:
+A névtér hatókörű objektumain kívül, ha a fürt szintjén lévő objektumokat is törölni szeretné, például a CRDs, `clusterroles` és `clusterrolebindings` futtatnia kell a következő parancsokat:
 
-```
+```console
 # Cleanup azure arc data service artifacts
+#Delete CRDs
 kubectl delete crd datacontrollers.arcdata.microsoft.com 
 kubectl delete crd sqlmanagedinstances.sql.arcdata.microsoft.com 
 kubectl delete crd postgresql-11s.arcdata.microsoft.com 
 kubectl delete crd postgresql-12s.arcdata.microsoft.com
-kubectl delete clusterroles azure-arc-data:cr-arc-metricsdc-reader
-kubectl delete clusterrolebindings azure-arc-data:crb-arc-metricsdc-reader
+#Delete clusterrole
+kubectl delete clusterrole <namespace>:cr-arc-metricsdc-reader
+#For example: kubectl delete clusterrole arc:cr-arc-metricsdc-reader
+#Delete rolebinding
+kubectl delete clusterrolebinding <namespace>:crb-arc-metricsdc-reader
+#For example: kubectl delete clusterrolebinding arc:crb-arc-metricsdc-reader
 ```
 
 ### <a name="optionally-delete-the-azure-arc-data-controller-namespace"></a>Szükség esetén törölheti az Azure arc-adatvezérlő névterét
@@ -92,9 +97,9 @@ kubectl delete clusterrolebindings azure-arc-data:crb-arc-metricsdc-reader
 
 ```console
 kubectl delete ns <nameSpecifiedDuringCreation>
-# for example kubectl delete ns arc
+# for example: kubectl delete ns arc
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Mik azok az Azure arc-kompatibilis adatszolgáltatások?](overview.md)

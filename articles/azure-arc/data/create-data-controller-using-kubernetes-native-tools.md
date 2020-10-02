@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 087b021f088e344926a44f7e009f273d265dd82b
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: bfdda75c0826ed12fbce1eb47680f91abbde4934
+ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91397623"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91661057"
 ---
 # <a name="create-azure-arc-data-controller-using-kubernetes-tools"></a>Azure arc-adatkezelő létrehozása a Kubernetes-eszközökkel
 
@@ -31,11 +31,11 @@ Az Azure arc-adatkezelő Kubernetes eszközökkel történő létrehozásához t
 > [!NOTE]
 > A lenti Azure arc-adatkezelő létrehozásához szükséges néhány lépés a Kubernetes-fürt rendszergazdai engedélyeinek megkövetelése.  Ha Ön nem Kubernetes-Fürtfelügyelő, akkor a Kubernetes-fürt rendszergazdájának kell elvégeznie ezeket a lépéseket az Ön nevében.
 
-#### <a name="cleanup-from-past-installations"></a>Korábbi telepítések karbantartása
+### <a name="cleanup-from-past-installations"></a>Korábbi telepítések karbantartása
 
-Ha ugyanazon a fürtön már telepítette az Azure arc-adatkezelőt, és törölte az Azure arc-adatkezelőt a `azdata arc dc delete` paranccsal, előfordulhat, hogy bizonyos fürtözött objektumokat is törölni kell. Futtassa az alábbi parancsokat az Azure arc-adatkezelő fürt szintjének törléséhez:
+Ha korábban már telepítette az Azure arc-adatkezelőt, ugyanazon a fürtön, és törölte az Azure arc-adatkezelőt a `azdata arc dc delete` paranccsal, előfordulhat, hogy bizonyos fürtözött objektumokat is törölni kell. Futtassa az alábbi parancsokat az Azure arc-adatkezelő fürt szintjének törléséhez:
 
-```
+```console
 # Cleanup azure arc data service artifacts
 kubectl delete crd datacontrollers.arcdata.microsoft.com 
 kubectl delete sqlmanagedinstances.sql.arcdata.microsoft.com 
@@ -280,7 +280,7 @@ Lásd: az **SQL felügyelt példányának üzembe helyezése** az Azure arc-komp
 
 Ha bármilyen problémába ütközik a létrehozással kapcsolatban, tekintse meg a [hibaelhárítási útmutatót](troubleshoot-guide.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [SQL felügyelt példány létrehozása a Kubernetes-natív eszközök használatával](./create-sql-managed-instance-using-kubernetes-native-tools.md)
 - [PostgreSQL nagy kapacitású-kiszolgálócsoport létrehozása a Kubernetes natív eszközeivel](./create-postgresql-hyperscale-server-group-kubernetes-native-tools.md)

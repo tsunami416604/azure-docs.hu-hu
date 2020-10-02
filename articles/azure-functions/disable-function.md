@@ -4,18 +4,18 @@ description: Megtudhatja, hogyan tilthatja le és engedélyezheti a függvények
 ms.topic: conceptual
 ms.date: 04/08/2020
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 761a78f050aa25a62075dd7a53836afb48f89cd7
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 4d93f728103aabdd1bd5557033a8bd36ffac2d42
+ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213148"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91661023"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>Függvények letiltása a Azure Functionsban
 
 Ez a cikk azt ismerteti, hogyan lehet letiltani egy függvényt a Azure Functionsban. A függvények *letiltásához* azt jelenti, hogy a futtatókörnyezet figyelmen kívül hagyja a függvényhez definiált automatikus triggert. Ezzel megakadályozhatja, hogy egy adott függvény a teljes Function app leállítása nélkül fusson.
 
-A függvények letiltásának ajánlott módja a következő formátumban: alkalmazás beállítása `AzureWebJobs.<FUNCTION_NAME>.Disabled` . Az Alkalmazásbeállítások számos módon hozhatók létre és módosíthatók, például az [Azure CLI](/cli/azure/) használatával és a függvény **kezelés** lapjának [Azure Portal](https://portal.azure.com). 
+A függvények letiltásának ajánlott módja a következő formátumban beállított alkalmazás beállítása: `AzureWebJobs.<FUNCTION_NAME>.Disabled` `true` . Az Alkalmazásbeállítások számos módon hozhatók létre és módosíthatók, például az [Azure CLI](/cli/azure/) használatával és a függvény **kezelés** lapjának [Azure Portal](https://portal.azure.com). 
 
 > [!NOTE]  
 > Ha letilt egy HTTP által aktivált függvényt a jelen cikkben ismertetett módszerekkel, a végpont továbbra is elérhető, ha a helyi számítógépen fut.  
@@ -40,7 +40,7 @@ az functionapp config appsettings set --name <myFunctionApp> \
 
 ## <a name="use-the-portal"></a>A portál használata
 
-Használhatja a funkció **Áttekintés** lapján található **Engedélyezés** és **Letiltás** gombokat is. Ezek a gombok az alkalmazás beállításainak létrehozásával és törlésével működnek `AzureWebJobs.<FUNCTION_NAME>.Disabled` .
+Használhatja a funkció **Áttekintés** lapján található **Engedélyezés** és **Letiltás** gombokat is. Ezek a gombok az Alkalmazásbeállítások értékének módosításával működnek `AzureWebJobs.<FUNCTION_NAME>.Disabled` . Ez a függvény-specifikus beállítás az első letiltásakor jön létre.
 
 ![Függvény állapotának kapcsolója](media/disable-function/function-state-switch.png)
 

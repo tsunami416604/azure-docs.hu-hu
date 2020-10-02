@@ -3,16 +3,16 @@ title: Az Azure rendszerkép-készítő szolgáltatás hibáinak megoldása
 description: Az Azure VM rendszerkép-készítő szolgáltatás használata során felmerülő gyakori problémák és hibák elhárítása
 author: cynthn
 ms.author: danis
-ms.date: 09/03/2020
+ms.date: 10/02/2020
 ms.topic: troubleshooting
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: ee65cd1605e23dfd5699f92a900bdb5e7952fe13
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: dd17057a56e8dfb269a22458b9aa20fefaab68bc
+ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89459929"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91661108"
 ---
 # <a name="troubleshoot-azure-image-builder-service"></a>Az Azure rendszerkép-készítő szolgáltatás hibáinak megoldása
 
@@ -591,6 +591,18 @@ További információ az Azure DevOps képességeiről és korlátairól: [Micro
 #### <a name="solution"></a>Megoldás
 
 Saját DevOps-ügynököket is üzemeltetheti, vagy megtekintheti a Build időpontjának csökkentését. Ha például a megosztott rendszerkép-katalógusra terjeszt, replikálja egy régióba. Ha aszinkron módon kíván replikálni. 
+
+### <a name="slow-windows-logon-please-wait-for-the-windows-modules-installer"></a>Lassú Windows-bejelentkezés: "várjon, amíg a Windows-modulok telepítője"
+
+#### <a name="error"></a>Hiba
+Miután létrehozott egy Windows 10-es rendszerképet a rendszerkép-készítővel, hozzon létre egy virtuális gépet a rendszerképből, az RDP-t, és várjon néhány percet az első bejelentkezéskor egy kék képernyővel az üzenettel:
+```text
+Please wait for the Windows Modules Installer
+```
+
+#### <a name="solution"></a>Megoldás
+Első lépésként a rendszerkép-összeállításban győződjön meg arról, hogy a Windows újraindítási testreszabása nem szükséges a legutóbbi testreszabáshoz, és hogy az összes szoftver telepítése befejeződött. Végül adja hozzá a [/Mode: VM](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep-command-line-options) lehetőséget a AIB által használt alapértelmezett Sysprep-hez, lásd alább, "a AIB-lemezképek által létrehozott virtuális gépek nem hozhatnak létre sikeresen" > "felülbírálja a parancsokat"  
+
  
 ## <a name="vms-created-from-aib-images-do-not-create-successfully"></a>A AIB-lemezképből létrehozott virtuális gépek nem jönnek létre sikeresen
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 07/10/2020
+ms.date: 10/01/2020
 ms.author: alkohli
-ms.openlocfilehash: 7d699fc47fa0a0cb57d103ff42ff17bdc0f3a82b
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: b193247fee843796da0cb2fcfc1a874b1a1b72fb
+ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202691"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91660921"
 ---
 # <a name="azure-data-box-limits"></a>Azure Data Box korlátok
 
@@ -28,6 +28,7 @@ Vegye figyelembe ezeket a korlátokat a Microsoft Azure Data Box üzembe helyez�
 - Data Box legfeljebb 500 000 000 fájlt tárolhat az importáláshoz és az exportáláshoz.
 - A Data Box legfeljebb 512 tárolót vagy megosztást támogat a felhőben. A felhasználói megosztáson belüli legfelső szintű könyvtárak tárolók vagy Azure-fájlmegosztás formájában válnak elérhetővé a felhőben. 
 - Data Box a használati kapacitás 80 TB-nál kevesebb lehet, mert ReFS a metaadatokat.
+- Data Box egyszerre legfeljebb 5 ügyfélkapcsolatot támogat egy NFS-megosztáson. 
 
 ## <a name="azure-storage-limits"></a>Azure Storage-korlátok
 
@@ -46,13 +47,13 @@ Az importálási rendelésekre vonatkozó Data Box a következők:
 
 Az exportálási sorrendre vonatkozó Data Box a következők:
 
-- A Data Box Windows-alapú eszköz, és nem támogatja a kis-és nagybetűket megkülönböztető fájlneveket. Előfordulhat például, hogy az Azure-ban két különböző fájl található, amelyek neve csak a házban különbözik. Ne használja az adatmezőt az ilyen fájlok exportálására, mivel ezek felül lesznek írva az eszközön.
-- Ha ismétlődő címkékkel rendelkezik a bemeneti fájlokban vagy az ugyanarra az adatokra hivatkozó címkékből, akkor Data Box az Exportálás kihagyhatja vagy felülírhatja a fájlokat. A fájlok száma és a Azure Portal megjelenített adatok mérete eltérő lehet az eszközön lévő adatok tényleges méretétől. 
-- Data Box az adatexportálást a Windows-alapú rendszerbe SMB protokollon keresztül, és a fájlok és mappák SMB-korlátozásai korlátozzák. A nem támogatott nevekkel rendelkező fájlok és mappák exportálására nem kerül sor.
+- Data Box egy Windows-alapú eszköz, és nem támogatja a kis-és nagybetűket megkülönböztető fájlneveket. Előfordulhat például, hogy az Azure-ban két különböző fájl található, amelyek neve csak a házban különbözik. Ne használja a Data Box az ilyen fájlok exportálására, mert a fájlok felül lesznek írva az eszközön.
+- Ha ismétlődő címkékkel rendelkezik a bemeneti fájlokban vagy az ugyanarra az adatokra hivatkozó címkékből, akkor a Data Box exportálás kihagyhatja vagy felülírhatja a fájlokat. A Azure Portal által megjelenített fájlok és adatok mérete eltérő lehet az eszközön lévő adatok tényleges méretétől. 
+- Data Box az adatexportálást a Windows-alapú rendszerbe SMB protokollon keresztül, és a fájlok és mappák SMB-korlátozásai korlátozzák. A nem támogatott nevekkel rendelkező fájlok és mappák exportálása nem történt meg.
 - Létezik egy 1:1-es leképezés az előtagról a tárolóra.
-- A fájlnév maximális mérete 1024 karakter, és a fájlnevek nem lesznek exportálva.
+- A fájlnév maximális mérete 1024 karakter. Az ezt a hosszúságot meghaladó fájlnevek nem lesznek exportálva.
 - A rendszer az *XML-* fájlban duplikált előtagokat exportál (a rendelés létrehozása során feltöltve). A duplikált előtagok figyelmen kívül lesznek hagyva.
-- Az oldal blobok és a tárolók nevei megkülönböztetik a kis-és nagybetűket, így ha a burkolat nem egyezik, a blob és/vagy tároló nem található.
+- A blobok és a tárolók nevei megkülönböztetik a kis-és nagybetűket. Ha a burkolat nem egyezik, a blob és/vagy tároló nem található.
  
 
 ## <a name="azure-storage-account-size-limits"></a>Azure Storage-fiók méretének korlátai

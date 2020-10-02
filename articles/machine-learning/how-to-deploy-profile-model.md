@@ -10,12 +10,12 @@ author: gvashishtha
 ms.date: 07/31/2020
 ms.topic: conceptual
 zone_pivot_groups: aml-control-methods
-ms.openlocfilehash: a3aed23441df225316f52eb3acb1387cbba6d807
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: aac5fba68c43892216cbd16dd99b0c6a9bf70217
+ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935585"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91660989"
 ---
 # <a name="profile-your-model-to-determine-resource-utilization"></a>A modell profiljának meghatározása az erőforrások kihasználtságának meghatározásához
 
@@ -24,6 +24,10 @@ Ez a cikk bemutatja, hogyan lehet profilt felvenni a gépi tanulás modelljébe 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Ez a cikk feltételezi, hogy betanított és regisztrált egy modellt Azure Machine Learningsal. Tekintse meg a [minta oktatóanyagot](how-to-train-scikit-learn.md) , amely egy scikit-tanulási modell betanítását és regisztrálását Azure Machine learning.
+
+## <a name="limitations"></a>Korlátozások
+
+* A profilkészítés nem fog működni, ha a munkaterület Azure Container Registry (ACR) egy virtuális hálózat mögött van.
 
 ## <a name="run-the-profiler"></a>A Profiler futtatása
 
@@ -125,7 +129,7 @@ az ml model profile -g <resource-group-name> -w <workspace-name> --inference-con
 
 ::: zone-end
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Sikertelen üzembe helyezés hibáinak megoldása](how-to-troubleshoot-deployment.md)
 * [Üzembe helyezés az Azure Kubernetes Service-ben](how-to-deploy-azure-kubernetes-service.md)
