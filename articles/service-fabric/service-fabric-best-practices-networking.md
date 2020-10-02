@@ -5,14 +5,14 @@ author: chrpap
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: chrpap
-ms.openlocfilehash: 0f25627c852befb03c2c32d741b8fe9b64cd4dc2
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: b8db69792b31fd82646757423e669e39e8539d06
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948963"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91630702"
 ---
-# <a name="networking"></a>Hálózat
+# <a name="networking"></a>Hálózatkezelés
 
 Az Azure Service Fabric-fürtök létrehozásakor és kezelésekor hálózati kapcsolatot biztosít a csomópontjai és alkalmazásai számára. A hálózati erőforrások közé tartozik az IP-címtartományok, a virtuális hálózatok, a terheléselosztó és a hálózati biztonsági csoportok. Ebben a cikkben az ezen erőforrásokkal kapcsolatos ajánlott eljárásokat ismerheti meg.
 
@@ -47,7 +47,7 @@ Ha egy meglévő Service Fabric fürtön szeretné engedélyezni a gyorsított h
 
 Az infrastruktúra horizontális felskálázása szükséges a gyorsított hálózatkezelés engedélyezéséhez egy meglévő fürtön, mert a gyorsított hálózatkezelés engedélyezése a leállást okozhatja, mivel a rendelkezésre állási csoportba tartozó összes virtuális gépet le kell állítani, és fel kell [szabadítani a gyorsított hálózatkezelés bármely meglévő hálózati adapterre való engedélyezése előtt](../virtual-network/create-vm-accelerated-networking-cli.md#enable-accelerated-networking-on-existing-vms).
 
-## <a name="cluster-networking"></a>Fürt hálózatkezelése
+## <a name="cluster-networking"></a>Fürthálózat
 
 * Service Fabric fürtöket meglévő virtuális hálózatba lehet telepíteni a [Service Fabric hálózati mintákban](./service-fabric-patterns-networking.md)leírt lépések végrehajtásával.
 
@@ -59,7 +59,7 @@ Az infrastruktúra horizontális felskálázása szükséges a gyorsított hál�
 
 ## <a name="network-security-rules"></a>Hálózati biztonsági szabályok
 
-Az alapvető szabályok itt az Azure által felügyelt Service Fabric-fürt biztonsági zárolásának minimális száma. Nem sikerült megnyitni a következő portokat, vagy az IP/URL-cím engedélyezésével megakadályozza a fürt megfelelő működését, és előfordulhat, hogy nem támogatott. Ezzel a szabállyal szigorúan szükséges az [operációs rendszer rendszerképének automatikus frissítése](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md), ellenkező esetben további portokat kell megnyitnia.
+Az alapvető szabályok itt az Azure által felügyelt Service Fabric-fürt biztonsági zárolásának minimális száma. Nem sikerült megnyitni a következő portokat, vagy az IP/URL-cím jóváhagyása megakadályozza a fürt megfelelő működését, és előfordulhat, hogy nem támogatott. Ezzel a szabállyal szigorúan szükséges az [operációs rendszer rendszerképének automatikus frissítése](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md), ellenkező esetben további portokat kell megnyitnia.
 
 ### <a name="inbound"></a>Bejövő 
 |Prioritás   |Név               |Port        |Protokoll  |Forrás             |Cél       |Műveletek   
@@ -70,8 +70,8 @@ Az alapvető szabályok itt az Azure által felügyelt Service Fabric-fürt bizt
 |3930       |Rövid élettartamú          |49152-65534 |TCP       |VirtualNetwork     |VirtualNetwork    |Engedélyezés
 |3940       |Alkalmazás        |20000-30000 |TCP       |VirtualNetwork     |VirtualNetwork    |Engedélyezés
 |3950       |SMB                |445         |TCP       |VirtualNetwork     |VirtualNetwork    |Engedélyezés
-|3960       |RDP                |3389-3488   |TCP       |Internet           |VirtualNetwork    |Deny (Megtagadás)
-|3970       |SSH                |22          |TCP       |Internet           |VirtualNetwork    |Deny (Megtagadás)
+|3960       |RDP                |3389-3488   |TCP       |Internet           |VirtualNetwork    |Megtagadás
+|3970       |SSH                |22          |TCP       |Internet           |VirtualNetwork    |Megtagadás
 |3980       |Egyéni végpont    |80          |TCP       |Internet           |VirtualNetwork    |Engedélyezés
 |4100       |Bejövő forgalom blokkolása      |443         |Bármelyik       |Bármelyik                |Bármelyik               |Engedélyezés
 
@@ -99,10 +99,10 @@ További információ a bejövő biztonsági szabályokról:
 
 |Prioritás   |Név               |Port        |Protokoll  |Forrás             |Cél       |Műveletek   
 |---        |---                |---         |---       |---                |---               |---
-|3900       |Hálózat            |Bármely         |TCP       |VirtualNetwork     |VirtualNetwork    |Engedélyezés
+|3900       |Network (Hálózat)            |Bármelyik         |TCP       |VirtualNetwork     |VirtualNetwork    |Engedélyezés
 |3910       |Erőforrás-szolgáltató  |443         |TCP       |VirtualNetwork     |ServiceFabric     |Engedélyezés
 |3920       |Frissítés            |443         |TCP       |VirtualNetwork     |Internet          |Engedélyezés
-|3950       |Kimenő forgalom letiltása     |Bármelyik         |Bármelyik       |Bármelyik                |Bármelyik               |Deny (Megtagadás)
+|3950       |Kimenő forgalom letiltása     |Bármelyik         |Bármelyik       |Bármelyik                |Bármelyik               |Megtagadás
 
 További információ a kimenő biztonsági szabályokról:
 
@@ -123,7 +123,7 @@ A biztonsági zárolással kapcsolatos problémák nyomon követéséhez haszná
 
 * Azon gapped gépeken üzemeltetett Windows-tárolók esetében, amelyek nem tudnak lekérni alaprétegeket az Azure Cloud Storage-ból, felülbírálják a külső réteg viselkedését a [--Allow-nem terjeszthető összetevők](/virtualization/windowscontainers/about/faq#how-do-i-make-my-container-images-available-on-air-gapped-machines) jelző használatával a Docker-démonban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Fürt létrehozása a Windows Servert futtató virtuális gépeken vagy számítógépeken: [Service Fabric Windows Server-fürt létrehozása](service-fabric-cluster-creation-for-windows-server.md)
 * Fürt létrehozása virtuális gépeken vagy Linuxon futó számítógépeken: [Linux-fürt létrehozása](service-fabric-cluster-creation-via-portal.md)

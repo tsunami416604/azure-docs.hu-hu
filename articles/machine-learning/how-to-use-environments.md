@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 0932e86494fdd1444e069f9d6fcac532cc3ace0d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 488f48275fa511ea69939563496beaaa709d9bf0
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91250725"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631664"
 ---
 # <a name="create--use-software-environments-in-azure-machine-learning"></a>Hozzon létre & a szoftveres környezetek használatával Azure Machine Learning
 
@@ -179,6 +179,12 @@ A regisztrált környezetekben a következő kóddal kérheti le a rendszerképe
 
 ```python
 details = environment.get_image_details(workspace=ws)
+```
+
+Ha a rendszerkép részleteit egy futtatásból egy olyan környezetből szeretné beszerezni, amelyről az alapértéket mentette, használja a következő kódot:
+
+```python
+details = run.get_environment().get_image_details(workspace=ws)
 ```
 
 ### <a name="use-existing-environments"></a>Meglévő környezetek használata
@@ -422,7 +428,7 @@ Töltse le a regisztrált környezetet a következő parancs használatával.
 az ml environment download -n myenv -d downloaddir
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ha felügyelt számítási célt kíván használni a modell betanításához, tekintse meg az [oktatóanyag: modell](tutorial-train-models-with-aml.md)betanítása című témakört.
 * A betanított modellel megtudhatja, [Hogyan és hol helyezheti üzembe a modelleket](how-to-deploy-and-where.md).

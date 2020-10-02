@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/06/2019
 ms.author: trbye
-ms.openlocfilehash: 1b837797bf0baf025d350cec1918cf4a5b639416
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 9074b10b9bf7f8147f70d77bcfbe02749e39154b
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650620"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91645117"
 ---
 ## <a name="reference-docs"></a>Dokumentációs dokumentumok
 
@@ -24,12 +24,12 @@ A beszédfelismerési szolgáltatás két SDK-t biztosít. Az első SDK az első
 
 Az alábbi lista segítségével megkeresheti a megfelelő Speech SDK-dokumentációt:
 
-- <a href="https://aka.ms/csspeech/csharpref" target="_blank" rel="noopener">C# SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-- <a href="https://aka.ms/csspeech/cppref" target="_blank" rel="noopener">C++ SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-- <a href="https://aka.ms/csspeech/javaref" target="_blank" rel="noopener">Java SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://aka.ms/csspeech/csharpref" target="_blank" rel="noopener">C# SDK <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://aka.ms/csspeech/cppref" target="_blank" rel="noopener">C++ SDK <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://aka.ms/csspeech/javaref" target="_blank" rel="noopener">Java SDK <span class="docon docon-navigate-external x-hidden-focus"></span></a>
 - <a href="https://aka.ms/csspeech/pythonref" target="_blank" rel="noopener">Python SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 - <a href="https://aka.ms/csspeech/javascriptref" target="_blank" rel="noopener">JavaScript SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-- <a href="https://aka.ms/csspeech/objectivecref" target="_blank" rel="noopener">Objective-C SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://aka.ms/csspeech/objectivecref" target="_blank" rel="noopener">Objective-C SDK <span class="docon docon-navigate-external x-hidden-focus"></span></a>
 
 > [!TIP]
 > A Speech Service SDK-t aktívan karbantartják és frissítik. A változások nyomon követéséhez a frissítések és szolgáltatások kiegészítései a [SPEECH SDK kibocsátási megjegyzéseit](../releasenotes.md)is megtekintik.
@@ -45,4 +45,4 @@ A különböző beszédfelismerési szolgáltatás REST API-jai hivatkozásait a
 - [REST API: beszéd – szöveg](../rest-speech-to-text.md)
 - [REST API: kiejtés értékelése](../rest-speech-to-text.md#pronunciation-assessment-parameters)
 - [REST API: szövegről beszédre](../rest-text-to-speech.md)
-- <a href="https://cris.ai/swagger/ui/index" target="_blank" rel="noopener">REST API: kötegelt átírás és testreszabás<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0" target="_blank" rel="noopener">REST API: kötegelt átírás és testreszabás <span class="docon docon-navigate-external x-hidden-focus"></span></a>

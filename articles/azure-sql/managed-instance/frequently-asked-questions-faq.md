@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 09/21/2020
-ms.openlocfilehash: 74c603576016b72edddb4c0fe7aa970bd8626a4a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: fedbcf00512e2eb671656ca1c585df83560a8c02
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325215"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627618"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Felügyelt Azure SQL-példányra vonatkozó gyakori kérdések (GYIK)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -277,7 +277,7 @@ Az alhálózatnak elegendő számú elérhető [IP-címmel](connectivity-archite
 
 **Mi a teendő, ha nincs elegendő IP-cím a példány-frissítési művelet végrehajtására?**
 
-Abban az esetben, ha nincs elegendő [IP-cím](connectivity-architecture-overview.md#network-requirements) abban az alhálózatban, amelyben a felügyelt példányt kiépíti, létre kell hoznia egy új alhálózatot és egy új felügyelt példányt. Azt is javasoljuk, hogy az új alhálózat több IP-címmel lett létrehozva, így a későbbi frissítési műveletek elkerülik a hasonló helyzeteket. Az új példány üzembe helyezése után manuálisan végezheti el az adatok biztonsági mentését és visszaállítását a régi és az új példányok között, vagy elvégezheti a példányok közötti [időpontra történő visszaállítást](point-in-time-restore.md?tabs=azure-powershell).
+Abban az esetben, ha nincs elegendő [IP-cím](connectivity-architecture-overview.md#network-requirements) abban az alhálózatban, amelyben a felügyelt példányt kiépíti, létre kell hoznia egy új alhálózatot és egy új felügyelt példányt. Azt is javasoljuk, hogy az új alhálózatot több lefoglalt IP-címmel hozza létre, hogy a jövőbeli frissítési műveletek során ne merüljenek fel hasonló helyzetek. Az új példány üzembe helyezése után manuálisan végezheti el az adatok biztonsági mentését és visszaállítását a régi és az új példányok között, vagy elvégezheti a példányok közötti [időpontra történő visszaállítást](point-in-time-restore.md?tabs=azure-powershell).
 
 **Szükség van egy üres alhálózatra a felügyelt példány létrehozásához?**
 
@@ -334,9 +334,12 @@ Nem, ez a lehetőség nem érhető el.  A privát adatvégpont esetében a felü
 
 **Mi a javasolt módszer a különböző régiókba helyezett felügyelt példányok összekapcsolására?**
 
-Az Express Route Circuit-társítás az előnyben részesített módszer. Ez nem keverhető a belső terheléselosztással kapcsolatos [korlátozás](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)miatt nem támogatott régiók közötti virtuális hálózattal.
+Az Express Route Circuit-társítás az előnyben részesített módszer. A globális virtuális hálózati társítást az alábbi megjegyzésben ismertetett korlátozás támogatja.  
 
-Ha az expressz útvonal-összevonási kapcsolat nem lehetséges, az egyetlen lehetőség, hogy helyek közötti VPN-kapcsolatot ([Azure Portal](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal), [POWERSHELL](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell), [Azure CLI](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli)) hozzon létre.
+> [!IMPORTANT]
+> [9/22/2020-ben bejelentettük a globális virtuális hálózati társítást az újonnan létrehozott virtuális fürtökhöz](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/). Ez azt jelenti, hogy a globális virtuális hálózati társítás támogatott a bejelentési dátum után üres alhálózatokban létrehozott SQL felügyelt példányok esetében, valamint az ezen alhálózatokban létrehozott összes további felügyelt példány esetében is. A többi SQL felügyelt példányok társításának támogatása az azonos régióban található hálózatokra korlátozódik a [globális virtuális hálózati társítás korlátai](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)miatt. További részletekért tekintse meg az [Azure Virtual Networks – gyakori kérdések](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) című cikket is. 
+
+Ha az expressz útvonal-összekapcsolási és a globális virtuális hálózati társítás nem lehetséges, akkor az egyetlen lehetőség, ha helyek közötti VPN-kapcsolatot ([Azure Portal](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal), [POWERSHELL](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell), [Azure CLI](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli)) hoz létre.
 
 ## <a name="mitigate-data-exfiltration-risks"></a>Az adatkiszűrése kockázatok enyhítése  
 

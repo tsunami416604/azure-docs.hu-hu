@@ -11,12 +11,12 @@ ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 622d38e09f65d05d7cba7a34f30a070c27d3fd37
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 28fb9da04c9c9d3e98b5226e1aee4cf5dde7183b
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89658379"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91628672"
 ---
 # <a name="azure-active-directory-connect-cloud-provisioning-faq"></a>Azure Active Directory Connect Cloud kiépítés – gyakori kérdések
 
@@ -84,7 +84,19 @@ Nem, a Server Core-ügynök telepítése nem támogatott.
 
 Nem, az átmeneti kiszolgálók nem támogatottak.
 
-## <a name="next-steps"></a>Következő lépések 
+**K: szinkronizálhatom a vendég felhasználói fiókokat?**
+
+Nem, a vendég felhasználói fiókok szinkronizálása nem támogatott.
+
+**K: Ha olyan szervezeti egységből helyezek át egy felhasználót, amelynek hatóköre a felhőalapú kiépítés egy olyan szervezeti egységre, amelynek hatóköre Azure AD Connect, mi történik?**
+
+A rendszer törli és újból létrehozza a felhasználót.  Egy felhasználó olyan szervezeti egységből való áthelyezése, amely a felhőalapú kiépítés hatókörét képezi, törlési műveletnek tekinti a rendszer.  Ha a felhasználót Azure AD Connect által felügyelt szervezeti egységre helyezi át, a rendszer újra kiépíti az Azure AD-ba, és létrehoz egy új felhasználót.
+
+**K: Ha átnevezem vagy áthelyezem a Felhőbeli kiépítési szűrő hatókörében lévő szervezeti egységet, mi történik az Azure AD-ben létrehozott felhasználóval?**
+
+Semmit nem fogok észlelni.  A rendszer nem törli a felhasználókat, ha a szervezeti egységet átnevezték vagy áthelyezték.
+
+## <a name="next-steps"></a>További lépések 
 
 - [Mi az az üzembe helyezés?](what-is-provisioning.md)
 - [Mi az az Azure AD Connect felhőalapú jogosultságkiosztás?](what-is-cloud-provisioning.md)

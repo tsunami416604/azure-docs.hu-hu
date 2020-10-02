@@ -3,12 +3,12 @@ title: Etikai hackelési tesztkörnyezet beállítása Azure Lab Servicesokkal |
 description: Megtudhatja, hogyan állíthatja be a labort a Azure Lab Services használatával az etikai hackerek tanításához.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 5134a7db824bad69f42a4051319479f712051446
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: ae0d57223edb68d1bed4ad64a005dd33da019dd0
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297586"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631681"
 ---
 # <a name="set-up-a-lab-to-teach-ethical-hacking-class"></a>Tesztkörnyezet beállítása az etikai hackelési osztály tanításához 
 Ez a cikk bemutatja, hogyan állíthat be egy olyan osztályt, amely az etikai feltörések kriminalisztikai oldalára koncentrál. A behatolási teszt, amelyet az etikai hackelési Közösség használ, akkor következik be, amikor valaki megpróbál hozzáférni a rendszerhez vagy a hálózathoz a rosszindulatú támadó által kihasználható biztonsági rések bemutatására. 
@@ -70,26 +70,23 @@ A Kali egy Linux-disztribúció, amely a behatolás tesztelésére és a biztons
 ## <a name="set-up-a-nested-vm-with-metasploitable-image"></a>Beágyazott virtuális gép beállítása Metasploitable-lemezképpel  
 A Rapid7 Metasploitable-rendszerkép a biztonsági rések mellett konfigurált rendszerkép. Ezt a rendszerképet fogja használni a problémák teszteléséhez és kereséséhez. Az alábbi utasítások bemutatják, hogyan használható egy előre létrehozott Metasploitable-rendszerkép. Ha azonban a Metasploitable-rendszerkép újabb verziójára van szükség, tekintse meg a következőt: [https://github.com/rapid7/metasploitable3](https://github.com/rapid7/metasploitable3) .
 
-1. Navigáljon a következőhöz: [https://information.rapid7.com/download-metasploitable-2017.html](https://information.rapid7.com/download-metasploitable-2017.html) . Töltse ki az űrlapot a rendszerkép letöltéséhez, és kattintson a **Submit (Küldés** ) gombra.
-1. Válassza a **Letöltés Metasploitable most** gombot.
-1. A zip-fájl letöltésekor bontsa ki a zip-fájlt, és jegyezze fel a helyet.
-1. Alakítsa át a kinyert VMDK-fájlt egy vhdx-fájlba, hogy a a Hyper-V használatával is használható legyen. Ehhez nyissa meg a PowerShellt rendszergazdai jogosultságokkal, és navigáljon arra a mappára, ahol a VMDK fájl található, és kövesse az alábbi utasításokat:
-    1. Töltse le a [Microsoft Virtual Machine Convertert](https://download.microsoft.com/download/9/1/E/91E9F42C-3F1F-4AD9-92B7-8DD65DA3B0C2/mvmc_setup.msi), és amikor a rendszer kéri, futtassa mvmc_setup.msi fájlt.
-    1. Importálja a PowerShell modult.  A modul telepítési alapértelmezett helye: C:\Program Files\Microsoft Virtual Machine Converter \
-
-        ```powershell
-        Import-Module 'C:\Program Files\Microsoft Virtual Machine Converter\MvmcCmdlet.psd1'
-        ```
-    1. Alakítsa át a VMDK egy olyan VHD-fájlba, amelyet a Hyper-V használhat. A művelet több percet is igénybe vehet.
-    
-        ```powershell
-        ConvertTo-MvmcVirtualHardDisk -SourceLiteralPath .\Metasploitable.vmdk -DestinationLiteralPath .\Metasploitable.vhdx -VhdType DynamicHardDisk -VhdFormat vhdx
-        ```
-    1. Másolja az újonnan létrehozott metasploitable. vhdx C:\Users\Public\Documents\Hyper-V\Virtual Hard Disks\. 
+1. Töltse le a Metasploitable-rendszerképet.
+    1. Navigáljon a következőhöz: [https://information.rapid7.com/download-metasploitable-2017.html](https://information.rapid7.com/download-metasploitable-2017.html) . Töltse ki az űrlapot a rendszerkép letöltéséhez, és kattintson a **Submit (Küldés** ) gombra.
+    2. Válassza a **Letöltés Metasploitable most** gombot.
+    3. A zip-fájl letöltésekor bontsa ki a zip-fájlt, és jegyezze fel a Metasploitable. VMDK fájl helyét.
+1. Alakítsa át a kinyert VMDK-fájlt egy vhdx-fájlba, hogy a vhdx-fájlt a Hyper-V használatával használhassa. A VMware-lemezképek Hyper-V-lemezképekre való átalakításához több eszköz is rendelkezésre áll, és fordítva.  A [STARWIND V2V átalakítót](https://www.starwindsoftware.com/starwind-v2v-converter)fogjuk használni.  A letöltéshez lásd: [STARWIND V2V Converter letöltési oldal](https://www.starwindsoftware.com/starwind-v2v-converter#download).
+    1. Indítsa el a **STARWIND V2V átalakítót**.
+    1. A **konvertálandó rendszerkép kiválasztása** lapon válassza a **helyi fájl**lehetőséget.  Kattintson a **Tovább** gombra.
+    1. A **forrás rendszerkép** lapon navigáljon az előző lépésben kibontott Metasploitable. VMDK elemre, és válassza ki a **fájl neve** beállítást.  Kattintson a **Tovább** gombra.
+    1. A **cél rendszerképének kiválasztása**területen válassza a **helyi fájl**lehetőséget.  Kattintson a **Tovább** gombra.
+    1. A **cél képformátumának kiválasztása** lapon válassza a **VHD/VHDX**elemet.  Kattintson a **Tovább** gombra.
+    1. A **VHD/VHDX képformátumának kiválasztása** lapon válassza a VHDX- **felszaporodható rendszerkép**lehetőséget.  Kattintson a **Tovább** gombra.
+    1. A **célfájl nevének kiválasztása** lapon fogadja el az alapértelmezett fájlnevet.  Válassza a **Konvertálás**lehetőséget.
+    1. A **Konvertálás** lapon várja meg a rendszerkép konvertálását.  A folyamat befejezése eltarthat néhány percig.  A konverzió befejeződése után válassza a **Befejezés** lehetőséget.
 1. Hozzon létre egy új Hyper-V virtuális gépet.
     1. Nyissa meg a **Hyper-V kezelőjét**.
     1. Válassza **Action**az  ->  **új**  ->  **virtuális gép**művelet lehetőséget.
-    1. Az **új virtuális gép varázsló**alapismeretek **lapján kattintson a** **tovább**gombra.
+    1. Az **új virtuális gép varázsló**alapismeretek **lapján kattintson a** **Tovább gombra**.
     1. A **név és hely megadása** lapon adja meg a **Metasploitable** nevet a **név**mezőben, majd kattintson a **Tovább gombra**.
 
         ![Új virtuálisgép-rendszerkép varázsló](./media/class-type-ethical-hacking/new-vm-wizard-1.png)
@@ -117,7 +114,7 @@ A Rapid7 Metasploitable-rendszerkép a biztonsági rések mellett konfigurált r
 A sablon frissítve lett, és a rendszerképek szükségesek egy etikai hackelési bevezetési tesztelési osztályhoz, amely egy olyan eszközzel rendelkezik, amely a behatolási teszteket és egy másik, biztonsági réseket felderítő képet tartalmaz. A sablon képe mostantól közzétehető az osztályban. Kattintson a **Közzététel** gombra a sablon lapon a sablonnak a laborba való közzétételéhez.
   
 
-## <a name="cost"></a>Cost  
+## <a name="cost"></a>Költség  
 Ha a labor költségeit szeretné megbecsülni, a következő példát használhatja: 
  
 Egy 25 tanulós osztály esetében, amely 20 órányi ütemezett időpontot és 10 órányi munkafeladatot vagy hozzárendelést használ, a labor ára a következő lesz: 
@@ -129,7 +126,7 @@ További információ a díjszabásról: [Azure Lab Services díjszabása](https
 ## <a name="conclusion"></a>Összegzés
 Ez a cikk végigvezeti a tesztkörnyezet etikai feltörési osztályhoz való létrehozásának lépésein. Ez magában foglalja a beágyazott virtualizálás beállításának lépéseit két virtuális gép létrehozásához a gazda virtuális gépen az áthatoló tesztelés érdekében.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A következő lépések közösek a laborok beállításához:
 
 - [Felhasználók hozzáadása](tutorial-setup-classroom-lab.md#add-users-to-the-lab)

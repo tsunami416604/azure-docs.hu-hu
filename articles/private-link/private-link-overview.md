@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 09/03/2020
 ms.author: allensu
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: c8d4696f2e7d181783d62df2e414329eaa246dce
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 21e2ba2e93e0c237e8dab531ee955899e679d547
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91529856"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629913"
 ---
 # <a name="what-is-azure-private-link"></a>Mi az az Azure privát kapcsolat? 
 Az Azure Private link lehetővé teszi az Azure Pásti-szolgáltatások (például az Azure Storage és a SQL Database) és az Azure által üzemeltetett felhasználói/partneri szolgáltatások elérését a virtuális hálózat [privát végpontján](private-endpoint-overview.md) keresztül.
@@ -63,7 +63,7 @@ Az Azure Private link a következő előnyöket biztosítja:
 |Azure Relay | Összes nyilvános régió      |  | Előnézet <br/> [További információ](https://docs.microsoft.com/azure/service-bus-relay/private-link-service)  |
 |Azure Event Grid| Összes nyilvános régió<br/> Minden kormányzati régió       |  | FE   <br/> [További információ](https://docs.microsoft.com/azure/event-grid/network-security) |
 |Azure-webalkalmazások | Összes nyilvános régió      | PremiumV2 Windows-és Linux-és rugalmas prémium szintű funkciókkal támogatott  | Előnézet   <br/> [További információ](https://docs.microsoft.com/azure/app-service/networking/private-endpoint)   |
-|Azure Machine Learning | USA KELETI RÉGIÓJA, USA DÉLI KÖZÉPSŐ RÉGIÓJA,<br/>USA NYUGATI RÉGIÓJA, USA 2. NYUGATI RÉGIÓJA,<br/>KÖZÉP-KANADA, DÉLKELET-ÁZSIA,<br/>KELET-JAPÁN, ÉSZAK-EURÓPA,<br/>EGYESÜLT KIRÁLYSÁG DÉLI RÉGIÓJA, KELET-AUSZTRÁLIA     |  | Előnézet   <br/> [További információ](https://docs.microsoft.com/azure/machine-learning/how-to-configure-private-link)   |
+|Azure Machine Learning | Összes nyilvános régió    |  | FE   <br/> [További információ](https://docs.microsoft.com/azure/machine-learning/how-to-configure-private-link)   |
 | Azure Automation  | Összes nyilvános régió |  | Előnézet | |
 | Azure IoT Hub | Összes nyilvános régió    |  | FE   <br/> [További információ](https://docs.microsoft.com/azure/iot-hub/virtual-network-support ) |
 | Azure SignalR | USA KELETI RÉGIÓJA, USA DÉLI KÖZÉPSŐ RÉGIÓJA,<br/>USA 2. nyugati régiója, minden kínai régió      |  | Előnézet   <br/> [További információ](https://aka.ms/asrs/privatelink)   |

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/15/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 8901f54c4802766eb3f12830d98d29fb47337ae5
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 866640d90c66dd82e8be61d221bc903907575454
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90705214"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91644385"
 ---
 Az előzetes verzióban az NFS a következő korlátozásokkal rendelkezik:
 
@@ -22,7 +22,7 @@ Az előzetes verzióban az NFS a következő korlátozásokkal rendelkezik:
 - Létre kell hoznia egy új Storage-fiókot az NFS-megosztás létrehozásához.
 - Csak a felügyeleti sík REST API-jai támogatottak. Az adatsíkok REST API-jai nem érhetők el, ami azt jelenti, hogy az olyan eszközök, mint a Storage Explorer, nem működnek együtt az NFS-megosztásokkal, és az NFS-megosztási adatok is megtekinthetők a Azure Portalban.
 - Csak a prémium szint esetén érhető el.
-- Jelenleg csak a helyileg redundáns tárolással érhető el.
+- Jelenleg csak a helyileg redundáns tárolással (LRS) érhető el.
 
 ### <a name="azure-storage-features-not-yet-supported"></a>Az Azure Storage szolgáltatásai még nem támogatottak
 

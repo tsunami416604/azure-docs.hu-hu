@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/19/2020
+ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: a7d7c7b7236841835866ccb7786e7e4eab767c1f
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: a54dfa0f2b072d30cac605937a1b623ef9d4051d
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88565587"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631494"
 ---
 # <a name="step-1-deploy-the-log-forwarder"></a>1. lépés: a naplózási továbbító üzembe helyezése
 
@@ -39,7 +39,7 @@ Ebben a lépésben a Linux-gépet fogja kijelölni és konfigurálni, amely tov�
 - A Linux gépen telepítve kell lennie a pythonnak.<br>A parancs használatával keresse meg a következőt: `python -version` .
 - A Linux rendszerű számítógép nem csatlakoztatható Azure-munkaterületekhez az Log Analytics-ügynök telepítése előtt.
 
-## <a name="run-the-deployment-script"></a>Az üzembe helyezési parancsfájl futtatása
+## <a name="run-the-deployment-script"></a>Az üzembe helyezési szkript futtatása
  
 1. Az Azure Sentinel navigációs menüjében kattintson az **adatösszekötők**elemre. Az összekötők listájában kattintson a **Common Event Format (CEF)** csempére, majd a jobb alsó sarokban található **összekötő megnyitása lap** gombra. 
 
@@ -71,74 +71,131 @@ A megfelelő leírás megtekintéséhez válassza ki a syslog démont.
 
 1. **Az Log Analytics-ügynök letöltése és telepítése:**
 
-    - Letölti a Log Analytics (OMS) Linux-ügynök telepítési parancsfájlját<br>
-        `wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh`
+    - Letölti a Log Analytics (OMS) Linux-ügynök telepítési parancsfájlját.
 
-    - A Log Analytics ügynök telepítése<br>
-        `sh onboard_agent.sh -w [workspaceID] -s [Primary Key] -d opinsights.azure.com`
+        ```bash
+        wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/
+            onboard_agent.sh
+        ```
+
+    - Telepíti a Log Analytics ügynököt.
+    
+        ```bash
+        sh onboard_agent.sh -w [workspaceID] -s [Primary Key] -d opinsights.azure.com
+        ```
+
+1. **A Log Analytics-ügynök konfigurációjának beállítása a 25226-es port figyelésére és a CEF üzenetek továbbítására az Azure Sentinel számára:**
+
+    - Letölti a konfigurációt a Log Analytics ügynök GitHub-adattárból.
+
+        ```bash
+        wget -o /etc/opt/microsoft/omsagent/[workspaceID]/conf/omsagent.d/security_events.conf
+            https://raw.githubusercontent.com/microsoft/OMS-Agent-for-Linux/master/installer/conf/
+            omsagent.d/security_events.conf
+        ```
 
 1. **A syslog démon konfigurálása:**
 
-    1. Megnyitja a 514-es portot a TCP-kommunikációhoz a syslog konfigurációs fájljának használatával `/etc/rsyslog.conf` .
+    - Megnyitja a 514-es portot a TCP-kommunikációhoz a syslog konfigurációs fájljának használatával `/etc/rsyslog.conf` .
 
-    1. Úgy konfigurálja a démont, hogy továbbítsa a CEF üzeneteket a Log Analytics-ügynöknek a 25226-as TCP-porton. ehhez egy speciális konfigurációs fájlt kell beszúrnia `security-config-omsagent.conf` a syslog démon könyvtárába `/etc/rsyslog.d/` .
+    - Úgy konfigurálja a démont, hogy továbbítsa a CEF üzeneteket a Log Analytics-ügynöknek a 25226-as TCP-porton. ehhez egy speciális konfigurációs fájlt kell beszúrnia `security-config-omsagent.conf` a syslog démon könyvtárába `/etc/rsyslog.d/` .
 
         A fájl tartalma `security-config-omsagent.conf` :
 
-        ```console
-        :rawmsg, regex, "CEF"|"ASA"
-        *.* @@127.0.0.1:25226
+        ```bash
+        if $rawmsg contains "CEF:" or $rawmsg contains "ASA-" then @@127.0.0.1:25226 
         ```
 
-1. **A syslog démon újraindítása**
+1. **A syslog démon és a Log Analytics ügynök újraindítása:**
 
-    `service rsyslog restart`
+    - Újraindítja a rsyslog démont.
+    
+        ```bash
+        service rsyslog restart
+        ```
 
-1. **A Log Analytics-ügynök konfigurációjának beállítása a 25226-es port figyelésére és a CEF üzenetek továbbítására az Azure Sentinel számára**
+    - Újraindítja a Log Analytics ügynököt.
 
-    1. A konfiguráció letöltése a Log Analytics Agent GitHub-adattárból<br>
-        `wget -o /etc/opt/microsoft/omsagent/[workspaceID]/conf/omsagent.d/security_events.conf https://raw.githubusercontent.com/microsoft/OMS-Agent-for-Linux/master/installer/conf/omsagent.d/security_events.conf`
+        ```bash
+        /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+        ```
 
+1. **A *számítógép* mező a várt módon történő leképezésének ellenőrzése:**
 
-    1. Újraindítja a Log Analytics ügynököt<br>
-        `/opt/microsoft/omsagent/bin/service_control restart [workspaceID]`
+    - Gondoskodik arról, hogy a syslog forrás *számítógép* mezőjének megfelelően legyen leképezve a log Analytics ügynök a parancs futtatásával és az ügynök újraindításával.
+
+        ```bash
+        sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" 
+            -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/pl ugin/
+            filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+        ```
 
 # <a name="syslog-ng-daemon"></a>[syslog-ng démon](#tab/syslogng)
 
 1. **Az Log Analytics-ügynök letöltése és telepítése:**
 
-    - Letölti a Log Analytics (OMS) Linux-ügynök telepítési parancsfájlját<br>`wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh`
+    - Letölti a Log Analytics (OMS) Linux-ügynök telepítési parancsfájlját.
 
-    - A Log Analytics ügynök telepítése<br>`sh onboard_agent.sh -w [workspaceID] -s [Primary Key] -d opinsights.azure.com`
+        ```bash
+        wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/
+            onboard_agent.sh
+        ```
+
+    - Telepíti a Log Analytics ügynököt.
+    
+        ```bash
+        sh onboard_agent.sh -w [workspaceID] -s [Primary Key] -d opinsights.azure.com
+        ```
+
+1. **A Log Analytics-ügynök konfigurációjának beállítása a 25226-es port figyelésére és a CEF üzenetek továbbítására az Azure Sentinel számára:**
+
+    - Letölti a konfigurációt a Log Analytics ügynök GitHub-adattárból.
+
+        ```bash
+        wget -o /etc/opt/microsoft/omsagent/[workspaceID]/conf/omsagent.d/security_events.conf
+            https://raw.githubusercontent.com/microsoft/OMS-Agent-for-Linux/master/installer/conf/
+            omsagent.d/security_events.conf
+        ```
 
 1. **A syslog démon konfigurálása:**
 
-    1. Megnyitja a 514-es portot a TCP-kommunikációhoz a syslog konfigurációs fájljának használatával `/etc/syslog-ng/syslog-ng.conf` .
+    - Megnyitja a 514-es portot a TCP-kommunikációhoz a syslog konfigurációs fájljának használatával `/etc/syslog-ng/syslog-ng.conf` .
 
-    1. Úgy konfigurálja a démont, hogy továbbítsa a CEF üzeneteket a Log Analytics-ügynöknek a 25226-as TCP-porton. ehhez egy speciális konfigurációs fájlt kell beszúrnia `security-config-omsagent.conf` a syslog démon könyvtárába `/etc/syslog-ng/conf.d/` .
+    - Úgy konfigurálja a démont, hogy továbbítsa a CEF üzeneteket a Log Analytics-ügynöknek a 25226-as TCP-porton. ehhez egy speciális konfigurációs fájlt kell beszúrnia `security-config-omsagent.conf` a syslog démon könyvtárába `/etc/syslog-ng/conf.d/` .
 
         A fájl tartalma `security-config-omsagent.conf` :
 
-        ```console
+        ```bash
         filter f_oms_filter {match(\"CEF\|ASA\" ) ;};
         destination oms_destination {tcp(\"127.0.0.1\" port("25226"));};
         log {source(s_src);filter(f_oms_filter);destination(oms_destination);};
         ```
 
-1. **A syslog démon újraindítása**
+1. **A syslog démon és a Log Analytics ügynök újraindítása:**
 
-    `service syslog-ng restart`
+    - Újraindítja a syslog-ng démont.
+    
+        ```bash
+        service syslog-ng restart
+        ```
 
-1. **A Log Analytics-ügynök konfigurációjának beállítása a 25226-es port figyelésére és a CEF üzenetek továbbítására az Azure Sentinel számára**
+    - Újraindítja a Log Analytics ügynököt.
 
-    1. A konfiguráció letöltése a Log Analytics Agent GitHub-adattárból<br>
-        `wget -o /etc/opt/microsoft/omsagent/[workspaceID]/conf/omsagent.d/security_events.conf https://raw.githubusercontent.com/microsoft/OMS-Agent-for-Linux/master/installer/conf/omsagent.d/security_events.conf`
+        ```bash
+        /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+        ```
+
+1. **A *számítógép* mező a várt módon történő leképezésének ellenőrzése:**
+
+    - Gondoskodik arról, hogy a syslog forrás *számítógép* mezőjének megfelelően legyen leképezve a log Analytics ügynök a parancs futtatásával és az ügynök újraindításával.
+
+        ```bash
+        sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" 
+            -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/pl ugin/
+            filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+        ```
 
 
-    1. Újraindítja a Log Analytics ügynököt<br>
-        `/opt/microsoft/omsagent/bin/service_control restart [workspaceID]`
-
----
 
 ## <a name="next-steps"></a>További lépések
 Ebből a dokumentumból megtudhatta, hogyan helyezheti üzembe a Log Analytics-ügynököt a CEF-berendezések Azure Sentinelhez való összekapcsolásához. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:

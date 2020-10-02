@@ -3,12 +3,12 @@ title: Azure Migrate készülék – gyakori kérdések
 description: Választ kaphat a Azure Migrate berendezéssel kapcsolatos gyakori kérdésekre.
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.openlocfilehash: 6c1e5099f208788919d27ba3d2b1de296f0d91a6
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 7839c2678152837cc9217e6afe13f7cca36ab4b0
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526561"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91630491"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate berendezés: gyakori kérdések
 
@@ -42,7 +42,7 @@ A berendezés a következőképpen telepíthető:
 
 ## <a name="how-does-the-appliance-connect-to-azure"></a>Hogyan kapcsolódik a készülék az Azure-hoz?
 
-A készülék az interneten keresztül vagy az Azure ExpressRoute segítségével csatlakozhat. Győződjön meg arról, hogy ezek az [URL-címek](https://docs.microsoft.com/azure/migrate/migrate-appliance#url-access) engedélyezve vannak a berendezés számára az Azure-hoz való kapcsolódáshoz.
+A készülék az interneten keresztül vagy az Azure ExpressRoute segítségével csatlakozhat. Győződjön meg arról, hogy ezek az [URL-címek](https://docs.microsoft.com/azure/migrate/migrate-appliance#url-access) jóváhagyva lettek, hogy a készülék csatlakozhasson az Azure-hoz.
 
 - Ha az Azure ExpressRoute-t szeretné használni Azure Migrate replikációs forgalomhoz, a Microsoft-társításhoz vagy egy meglévő nyilvános társításhoz van szükség (az új ER-létrehozásokhoz elavult a nyilvános társrendszer).
 - Az Azure ExpressRoute-en keresztüli replikáció az (only) Private peering engedélyezése esetén nem támogatott.
@@ -147,6 +147,6 @@ Ezek az automatikus frissítések csak a készülék és a berendezés ügynöke
 
 Igen. A portálon nyissa meg az Azure Migrate: Server Assessment vagy Azure Migrate: Server áttelepítési eszköz **ügynök állapota** lapját. Itt megtekintheti a kapcsolat állapotát az Azure és a készüléken található felderítési és értékelési ügynökök között.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Olvassa el a [Azure Migrate áttekintést](migrate-services-overview.md).

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e168deea1ba442d48f483264c1e97ce618040f18
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 361b27ce84417b30fe58ac7651f70f8c72f8a16a
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74379122"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627372"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>A hibrid Azure Active Directory csatlakoztatása a régebbi verziójú eszközökhöz 
 
@@ -40,7 +40,6 @@ Ez a cikk a lehetséges problémák megoldásával kapcsolatos hibaelhárítási
 
 - Az alacsonyabb szintű Windows-eszközök hibrid Azure AD-csatlakoztatása némileg eltérő módon működik, mint a Windows 10-es verzióban. Sok ügyfél nem veszi észre, hogy szükségük van AD FSra (összevont tartományokra) vagy zökkenőmentes egyszeri bejelentkezésre (felügyelt tartományok esetén).
 - Az összevont tartományokkal rendelkező ügyfelek esetében, ha a szolgáltatáskapcsolódási pont (SCP) úgy van konfigurálva, hogy a felügyelt tartománynévre mutasson (például contoso.onmicrosoft.com, contoso.com helyett), akkor a hibrid Azure AD JOIN az alacsonyabb szintű Windows-eszközökhöz nem fog működni.
-- Jelenleg az eszközök maximális száma felhasználónként az alacsonyabb szintű hibrid Azure AD-hez csatlakoztatott eszközökre is érvényes. 
 - Ugyanaz a fizikai eszköz többször is megjelenik az Azure AD-ben, ha több tartományi felhasználó jelentkezik be az alacsonyabb szintű hibrid Azure AD-hez csatlakoztatott eszközökre.  Ha például a *jdoe* és a *jharnett* egy eszközre jelentkezik be, akkor a **felhasználói** adatok lapon külön regisztráció (DeviceID) jön létre. 
 - A felhasználói adatok lapon több bejegyzést is megadhat egy eszközhöz az operációs rendszer újratelepítése, illetve a manuális ismételt regisztráció miatt.
 - Az eszközök kezdeti regisztrálása/csatlakoztatása úgy van konfigurálva, hogy a bejelentkezés vagy a zárolás/zárolás feloldására irányuló kísérletet végezzen. Egy Feladatütemező feladat 5 perces késleltetést váltott ki. 

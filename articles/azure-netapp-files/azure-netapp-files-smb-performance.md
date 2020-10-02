@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: b-juche
-ms.openlocfilehash: 24b3710861f0ee158619ae9103584dcdb181f3d5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b01ab9787f86e6905f8d25ad4609385e3f6b6a5a
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79460449"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91628496"
 ---
 # <a name="faqs-about-smb-performance-for-azure-netapp-files"></a>A Azure NetApp Files SMB-teljesítményével kapcsolatos gyakori kérdések
 
@@ -46,7 +46,7 @@ A Windows támogatja a többcsatornás SMB használatát, mivel a Windows 2012 l
 
 Ha szeretné megtudni, hogy az Azure-beli virtuális gépek hálózati adapterei támogatják-e az RSS-t, futtassa az alábbi parancsot, `Get-SmbClientNetworkInterface` és ellenőrizze a mezőt `RSS Capable` : 
 
-![RSS-támogatás az Azure-beli virtuális géphez](../media/azure-netapp-files/azure-netapp-files-formance-rss-support.png)
+![Képernyőkép, amely az Azure virtuális gép RSS-kimenetét jeleníti meg.](../media/azure-netapp-files/azure-netapp-files-formance-rss-support.png)
 
 ## <a name="does-azure-netapp-files-support-smb-direct"></a>Azure NetApp Files támogatja az SMB Direct szolgáltatást?
 
@@ -60,9 +60,9 @@ A többcsatornás SMB szolgáltatás lehetővé teszi, hogy az SMB3-ügyfél kap
 
 Nem. Az SMB-ügyfél megfelel az SMB-kiszolgáló által visszaadott hálózati adapterek számának.  Minden tárolási kötet egy és csak egy tárolási végpontból érhető el.  Ez azt jelenti, hogy a rendszer csak egy hálózati adaptert használ az adott SMB-kapcsolathoz.  
 
-Az `Get-SmbClientNetworkInterace` alábbi kimenet azt mutatja, hogy a virtuális gépnek két hálózati adaptere van – 15 és 12.  Ahogy az a parancs alatt látható `Get-SmbMultichannelConnection` , annak ellenére, hogy két RSS-kompatibilis hálózati adapter van, akkor a rendszer csak a 12-es felületet használja az SMB-megosztással kapcsolatban; a 15-ös illesztőfelület nincs használatban.
+Az `Get-SmbClientNetworkInterace` alábbi kimenet azt mutatja, hogy a virtuális gépnek 2 hálózati adaptere van – 15 és 12.  Ahogy az az alábbi parancsban `Get-SmbMultichannelConnection` is látható, még ha két RSS-kompatibilis hálózati adapter van, akkor a rendszer csak a 12-es felületet használja az SMB-megosztással kapcsolatban; a 15-ös illesztőfelület nincs használatban.
 
-![RSS-kompatibilis hálózati adapterek](../media/azure-netapp-files/azure-netapp-files-rss-capable-nics.png)
+![Az RSS-kompatibilis hálózati adapterek kimenetét bemutató képernyőképen.](../media/azure-netapp-files/azure-netapp-files-rss-capable-nics.png)
 
 ## <a name="is-nic-teaming-supported-in-azure"></a>Támogatott a hálózati adapterek összevonása az Azure-ban?
 
@@ -74,25 +74,61 @@ Az alábbi tesztek és grafikonok a többcsatornás SMB hatékonyságát mutatj�
 
 ### <a name="random-io"></a>Véletlenszerű I/O  
 
-Ha a többcsatornás SMB le van tiltva az ügyfélen, a FIO és a 40-GiB munkakészletek használatával a Pure 8 – KiB olvasási és írási tesztek elvégzése is megtörtént.  Az SMB-megosztást leválasztották az egyes tesztek között, az SMB-ügyfélkapcsolatok számának és az RSS hálózati adapter beállításainál (,,, `1` `4` `8` `16` `set-SmbClientConfiguration -ConnectionCountPerRSSNetworkInterface <count>` ). A tesztek azt mutatják, hogy az alapértelmezett beállítás `4` elegendő az I/O-igényes számítási feladatokhoz, és a növekményes érték `8` `16` nem volt hatással. 
+Ha a többcsatornás SMB le van tiltva az ügyfélen, a Pure 4 KiB olvasási és írási tesztek a FIO és egy 40 GiB munkakészlettel lettek elvégezve.  Az SMB-megosztást leválasztották az egyes tesztek között, az SMB-ügyfélkapcsolatok számának és az RSS hálózati adapter beállításainál (,,, `1` `4` `8` `16` `set-SmbClientConfiguration -ConnectionCountPerRSSNetworkInterface <count>` ). A tesztek azt mutatják, hogy az alapértelmezett beállítás elegendő az I/O-igényes számítási feladatokhoz, és ez a `4` növekményes `8` `16` hatás. 
 
 A parancs azt `netstat -na | findstr 445` igazolta, hogy további kapcsolatok jöttek-e a-ig és a értékre `1` `4` `8` `16` .  Minden teszt során négy CPU-magot teljes mértékben kihasználtak az SMB számára, ahogy azt a perfmon- `Per Processor Network Activity Cycles` statisztika megerősítette (ez a cikk nem tartalmazza.)
 
-![Véletlenszerű I/O-tesztek](../media/azure-netapp-files/azure-netapp-files-random-io-tests.png)
+![A többcsatornás SMB-t véletlenszerű I/O-összehasonlítást bemutató diagram.](../media/azure-netapp-files/azure-netapp-files-random-io-tests.png)
 
-Az Azure-beli virtuális gép nem befolyásolja az SMB-(vagy NFS-) tárolási I/O-korlátozásokat.  Ahogy az alábbi ábrán is látható, a D16-példány típusa korlátozott 32 000 a gyorsítótárazott tárolás IOPS és 25 600 a nem gyorsítótárazott tárolási IOPS esetében.  A fenti gráf azonban jelentősen több I/O-t mutat az SMB protokollon keresztül.
+Az Azure-beli virtuális gép nem befolyásolja az SMB-(vagy NFS-) tárolási I/O-korlátozásokat.  Ahogy az a következő ábrán is látható, a D32ds-példány típusa korlátozott 308 000 a gyorsítótárazott tárolás IOPS és 51 200 a nem gyorsítótárazott tárolási IOPS esetében.  A fenti gráf azonban jelentősen több I/O-t mutat az SMB protokollon keresztül.
 
-![Véletlenszerű I/O-összehasonlítás](../media/azure-netapp-files/azure-netapp-files-random-io-tests-list.png)
+![A véletlenszerű I/O-összehasonlítási tesztet bemutató diagram.](../media/azure-netapp-files/azure-netapp-files-random-io-tests-list.png)
 
 ### <a name="sequential-io"></a>Szekvenciális IO 
 
-A fent ismertetett véletlenszerű I/O-tesztekhez hasonló tesztek 64 – KiB szekvenciális I/O-vel lettek elvégezve. Bár az ügyfél-kapcsolati kapcsolatok száma az RSS-hálózati adapteren (a 4. után) nem volt észrevehető hatással a véletlenszerű I/O-műveletekre, ugyanez nem vonatkozik a szekvenciális I/O-ra. Ahogy az alábbi ábrán is látható, az egyes növekmények az olvasási sebesség megfelelő növekedésével vannak társítva. Az írási átviteli sebesség az Azure által az egyes példányok típusának és méretének megfelelő hálózati sávszélességre vonatkozó korlátozások miatt megmaradt. 
+A korábban ismertetett véletlenszerű I/O-tesztekhez hasonló tesztek végrehajtása a 64-KiB szekvenciális I/O-vel történt. Bár az ügyfél-kapcsolati kapcsolatok száma az RSS-hálózati adapteren (a 4. után) nem volt észrevehető hatással a véletlenszerű I/O-műveletekre, ugyanez nem vonatkozik a szekvenciális I/O-ra. Ahogy az alábbi ábrán is látható, az egyes növekmények az olvasási sebesség megfelelő növekedésével vannak társítva. Az írási átviteli sebesség az Azure által az egyes példányok típusának és méretének megfelelő hálózati sávszélességre vonatkozó korlátozások miatt megmaradt. 
 
-![Szekvenciális I/O-tesztek](../media/azure-netapp-files/azure-netapp-files-sequential-io-tests.png)
+![Az átviteli sebesség tesztelésének összehasonlítását bemutató diagram.](../media/azure-netapp-files/azure-netapp-files-sequential-io-tests.png)
 
-Az Azure minden egyes virtuális gép típusára/méretére korlátozza a hálózati díjszabást. A ráta korlátja csak a kimenő forgalomra érvényes. A virtuális gépen lévő hálózati adapterek száma nem befolyásolja a számítógép számára elérhető sávszélesség teljes mennyiségét.  Az D16-példány típusa például egy 8000 Mbps (1 000 MiB/s) hálózati korláttal rendelkezik.  Ahogy a fenti szekvenciális gráf mutatja, a korlát befolyásolja a kimenő forgalmat (írásokat), de a többcsatornás olvasásokat nem.
+Az Azure minden egyes virtuális gép típusára/méretére korlátozza a hálózati díjszabást. A ráta korlátja csak a kimenő forgalomra érvényes. A virtuális gépen lévő hálózati adapterek száma nem befolyásolja a számítógép számára elérhető sávszélesség teljes mennyiségét.  Az D32ds-példány típusa például egy 16 000 Mbps (2 000 MiB/s) hálózati korláttal rendelkezik.  Ahogy a fenti szekvenciális gráf mutatja, a korlát befolyásolja a kimenő forgalmat (írásokat), de a többcsatornás olvasásokat nem.
 
-![Szekvenciális I/O-összehasonlítás](../media/azure-netapp-files/azure-netapp-files-sequential-io-tests-list.png)
+![Szekvenciális I/O összehasonlító tesztet bemutató diagram.](../media/azure-netapp-files/azure-netapp-files-sequential-io-tests-list.png)
+
+## <a name="what-performance-is-expected-with-a-single-instance-with-a-1-tb-dataset"></a>Milyen teljesítmény várható egy 1 TB-os adatkészlettel rendelkező egyetlen példánnyal?
+
+Annak érdekében, hogy részletesebb képet kapjon a számítási feladatokhoz az olvasási/írási mixek használatával, az alábbi két diagram egyetlen, ultra szintű, 50 TB-os Felhőbeli kötet teljesítményét jeleníti meg 1 TB-os adatkészlettel és a 4. többcsatornás SMB-vel. A rendszer optimális IODepth használ, és rugalmas IO-(FIO-) paramétereket használ a hálózati sávszélesség () teljes használatának biztosításához `numjobs=16` .
+
+A következő diagramon a 4k véletlenszerű I/O-műveletek eredményei láthatók, egyetlen virtuálisgép-példánnyal és olvasási/írási aránysal 10%-os időközökkel:
+
+![A Windows 2019 standard _D32ds_v4 4K véletlenszerű i/o-tesztet bemutató diagram.](../media/azure-netapp-files/smb-performance-standard-4k-random-io.png)
+
+A következő diagramon a szekvenciális I/O eredményei láthatók:
+
+![A Windows 2019 standard _D32ds_v4 64 KB-os adatátviteli sebességet bemutató diagram.](../media/azure-netapp-files/smb-performance-standard-64k-throughput.png)
+
+## <a name="what-performance-is-expected-when-scaling-out-using-5-vms-with-a-1-tb-dataset"></a>Milyen teljesítmény várható az 5 virtuális gép 1 TB-os adatkészlettel való horizontális felskálázásakor?
+
+Ezek a tesztek 5 virtuális géppel ugyanazt a tesztelési környezetet használják, mint az egyetlen virtuális gép, és minden folyamat saját fájlra ír.
+
+A következő diagramon a véletlenszerű I/O-műveletek eredményei láthatók:
+
+![Diagram, amely a Windows 2019 standard _D32ds_v4 4K 5 példányú randio IO-tesztet jeleníti meg.](../media/azure-netapp-files/smb-performance-standard-4k-random-io-5-instances.png)
+
+A következő diagramon a szekvenciális I/O eredményei láthatók:
+
+![Diagram, amely a Windows 2019 standard _D32ds_v4 64 bites, 5 példányú szekvenciális átviteli sebességét jeleníti meg.](../media/azure-netapp-files/smb-performance-standard-64k-throughput-5-instances.png)
+
+## <a name="how-do-you-monitor-hyper-v-ethernet-adapters-and-ensure-that-you-maximize-network-capacity"></a>Hogyan figyelheti a Hyper-V Ethernet-adaptereket, és biztosítja, hogy maximalizálja a hálózati kapacitást?  
+
+A FIO-ben való teszteléshez használt egyik stratégia beállítása a következő: `numjobs=16` . Így az egyes feladatok 16 adott példányra vannak kiosztva a Microsoft Hyper-V hálózati adapter maximalizálása érdekében.
+
+A Windows Teljesítményfigyelőben lévő egyes adapterek tevékenységeit a **teljesítményfigyelő > a teljesítményszámlálók hozzáadása > hálózati adapter > Microsoft Hyper-V hálózati adapter**lehetőségre kattintva ellenőrizheti.
+
+![Képernyőfelvétel: a Teljesítményfigyelő hozzáadása számláló felület.](../media/azure-netapp-files/smb-performance-performance-monitor-add-counter.png)
+
+Miután a köteteken fut az adatforgalom, a Windows Teljesítményfigyelőben figyelheti az adaptereket. Ha nem használja ezeket a 16 virtuális adaptereket, előfordulhat, hogy nem maximalizálja a hálózati sávszélesség kapacitását.
+
+![A Teljesítményfigyelő kimenetét bemutató képernyőkép.](../media/azure-netapp-files/smb-performance-performance-monitor-output.png)
 
 ## <a name="is-accelerated-networking-recommended"></a>A gyorsított hálózatkezelés ajánlott?
 
@@ -115,7 +151,7 @@ Az SMB-aláírás a Azure NetApp Files által támogatott összes SMB protokoll-
 
 Az SMB-aláírás káros hatással van az SMB teljesítményére. A teljesítmény romlásának egyéb lehetséges okai között az egyes csomagok digitális aláírása további ügyféloldali PROCESSZORt használ, mivel az alábbi Perfmon-kimenet látható. Ebben az esetben a 0. alap a felelős az SMB-hez, beleértve az SMB-aláírást is.  Az előző szakaszban szereplő, nem többcsatornás szekvenciális olvasási adatátviteli számokkal való összehasonlítás azt mutatja, hogy az SMB-aláírás csökkenti a teljes átviteli sebességet a 875MiB/s-ről körülbelül 250MiB/s értékre. 
 
-![SMB-aláírás teljesítményére gyakorolt hatás](../media/azure-netapp-files/azure-netapp-files-smb-signing-performance.png)
+![Az SMB-aláírás teljesítményének hatását bemutató diagram.](../media/azure-netapp-files/azure-netapp-files-smb-signing-performance.png)
 
 
 ## <a name="next-steps"></a>További lépések  

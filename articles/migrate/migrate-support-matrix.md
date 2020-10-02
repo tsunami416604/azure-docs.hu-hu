@@ -4,12 +4,12 @@ description: Összefoglalja a Azure Migrate szolgáltatás támogatási beállí
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.author: raynew
-ms.openlocfilehash: 6137201f8accb901ffe1892d9876b172411cfe6b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ee45d2f489b23289e4f92a544590a510e77ece13
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91329594"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627950"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure Migrate támogatási mátrix
 
@@ -34,7 +34,7 @@ A táblázat összefoglalja a támogatott felderítési, felmérési és áttele
 
 Az eszközök adott támogatását a táblázat foglalja össze.
 
-**Eszköz** | **Kiértékelés** | **Migrate** 
+**Eszköz** | **Kiértékelés** | **Migrate (Áttelepítés)** 
 --- | --- | ---
 Azure Migrate kiszolgáló értékelése | A [VMWare virtuális gépek](tutorial-prepare-vmware.md), a [Hyper-V virtuális gépek](tutorial-prepare-hyper-v.md)és a [fizikai kiszolgálók](tutorial-prepare-physical.md)értékelése. |  Nem érhető el (NA)
 Azure Migrate Server Migration | NA | Telepítse át a [VMWare virtuális gépeket](tutorial-migrate-vmware.md), a [Hyper-V virtuális gépeket](tutorial-migrate-hyper-v.md)és a [fizikai kiszolgálókat](tutorial-migrate-physical-virtual-machines.md).
@@ -97,7 +97,7 @@ Egyesült Királyság | Egyesült Királyság déli régiója vagy Egyesült Kir
 Egyesült Államok | USA középső régiója vagy USA 2. nyugati régiója
 
 > [!NOTE]
-> Svájc földrajza esetében Nyugat-Svájc csak REST API felhasználók számára érhető el, és szükség van egy engedélyezett előfizetésre.
+> Svájc földrajza esetében Nyugat-Svájc csak REST API felhasználók számára érhető el, és jóváhagyott előfizetésre van szükség.
 
 ## <a name="supported-geographies-azure-government"></a>Támogatott földrajzi területek (Azure Government)
 
@@ -125,7 +125,7 @@ A Azure Migrate szolgáltatásnak két verziója van:
 - **Aktuális verzió**: ezzel a verzióval új Azure Migrate projekteket hozhat létre, felderítheti a helyszíni értékeléseket, és összehangolhatja az értékeléseket és áttelepítéseket. [További információ](whats-new.md).
 - **Előző verzió**: a Azure Migrate korábbi verzióját használó ügyfelek esetében (csak a helyszíni VMWare virtuális gépek felmérése támogatott), most az aktuális verziót kell használnia. Az előző verzióban nem hozhat létre új Azure Migrate projekteket, és nem végezhet új felfedezéseket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A [VMWare virtuális gépek kiértékelése](tutorial-assess-vmware.md) áttelepítéshez.
 - [Vizsgálja át a Hyper-V virtuális gépeket](tutorial-assess-hyper-v.md) az áttelepítéshez.

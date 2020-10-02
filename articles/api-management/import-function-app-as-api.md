@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: c6ec2be6daee931a4066ff5ce4f64fc949d497ac
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: be8a8f35ece946d1be907b2ca13a640bebbb4ee5
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243426"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627023"
 ---
 # <a name="import-an-azure-function-app-as-an-api-in-azure-api-management"></a>Azure-függvényalkalmazás importálása API-ként az Azure API Management használatával
 
@@ -71,8 +71,8 @@ Kövesse az alábbi lépéseket egy új API létrehozásához egy Azure-függvé
     > [!NOTE]
     > Kizárólag olyan függvényeket importálhat, amelyek rendelkeznek HTTP-triggerrel, és az engedélyszintjük *Névtelenre* vagy *Függvényre* van állítva.
 
-7. Váltson **teljes** nézetre, és rendelje hozzá a **terméket** az új API-hoz. Szükség esetén más mezőket is megadhat a létrehozás során, vagy később konfigurálhatja őket a **Beállítások** lapon. A beállításokat az [első API-oktatóanyag importálásával és közzétételével](import-and-publish.md#-import-and-publish-a-backend-api) foglalkozó cikkben ismertetjük.
-8. Kattintson a **Létrehozás** lehetőségre.
+7. Váltson **teljes** nézetre, és rendelje hozzá a **terméket** az új API-hoz. Szükség esetén más mezőket is megadhat a létrehozás során, vagy később konfigurálhatja őket a **Beállítások** lapon. A beállításokat az [első API-oktatóanyag importálásával és közzétételével](import-and-publish.md#import-and-publish-a-backend-api) foglalkozó cikkben ismertetjük.
+8. Kattintson a **Létrehozás** elemre.
 
 ## <a name="append-azure-function-app-to-an-existing-api"></a><a name="append-azure-function-app-to-api"></a> Azure-függvényalkalmazás hozzáfűzése egy már létező API-hoz
 
@@ -108,7 +108,7 @@ Kövesse az alábbi lépéseket, hogy egy Azure-függvényalkalmazást hozzáfű
 
     ![Hozzáfűzés függvényalkalmazásból](./media/import-function-app-as-api/append-04.png)
 
-## <a name="authorization"></a><a name="authorization"></a>Engedély
+## <a name="authorization"></a><a name="authorization"></a> Engedély
 
 Az Azure-függvényalkalmazás importáláskor automatikusan létrehozza a következőket:
 
@@ -140,7 +140,7 @@ Az Azure API Management példányában válassza a **Névvel ellátott értékek
 
 ![Hozzáadás függvényalkalmazásból](./media/import-function-app-as-api/keys-01.png)
 
-## <a name="test-the-new-api-in-the-azure-portal"></a><a name="test-in-azure-portal"></a>Az új API tesztelése a Azure Portal
+## <a name="test-the-new-api-in-the-azure-portal"></a><a name="test-in-azure-portal"></a> Az új API tesztelése a Azure Portal
 
 Az Azure Portalról közvetlenül meghívhat műveleteket. Az Azure Portalon kényelmesen megtekintheti és tesztelheti az API-k műveleteit.  
 

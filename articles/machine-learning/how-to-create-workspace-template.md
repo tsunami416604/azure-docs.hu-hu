@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.custom: how-to, devx-track-azurecli, devx-track-azurepowershell
 ms.author: larryfr
 author: Blackmist
-ms.date: 09/21/2020
-ms.openlocfilehash: 0d8965fcbde799ff4f48c320fe796746545eeea7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/30/2020
+ms.openlocfilehash: 20fa52febaa42850609f3f793d6f4aa4ae2704a6
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91315643"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91626326"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Munkaterületek létrehozása Azure Machine Learninghez Azure Resource Manager sablon használatával
 
@@ -31,6 +31,13 @@ További információ: [alkalmazások központi telepítése Azure Resource Mana
 * Egy **Azure-előfizetés**. Ha még nem rendelkezik ilyennel, próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
 
 * Ha a parancssori felületről szeretne sablont használni, [Azure PowerShell](https://docs.microsoft.com/powershell/azure/?view=azps-1.2.0) vagy az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)-t kell használnia.
+
+* Egyes esetekben támogatási jegyet kell megnyitni. Ezek a forgatókönyvek a következők:
+
+    * __Privát hivatkozás engedélyezve munkaterülete ügyfél által felügyelt kulccsal (CMK)__
+    * __Azure Container Registry a virtuális hálózat mögötti munkaterülethez__
+
+    További információ: a [kvóták kezelése és növelése](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases).
 
 * Egyes esetekben támogatási jegyet kell megnyitni. Ezek a forgatókönyvek a következők:
 
@@ -279,21 +286,7 @@ Az adatai számára további konfigurációt adhat meg, ha a **confidential_data
 Ha a társított erőforrások nem egy virtuális hálózat mögött találhatók, a **privateEndpointType** paramétert beállíthatja úgy, hogy `AutoAproval` `ManualApproval` a munkaterületet egy privát végpont mögött helyezze üzembe. Ezt az új és a meglévő munkaterületek esetében is megteheti. Meglévő munkaterület frissítésekor adja meg a sablon paramétereit a meglévő munkaterületről származó információkkal.
 
 > [!IMPORTANT]
-> Az Azure Private link használatával létrehozhat egy privát végpontot Azure Machine Learning munkaterület számára, jelenleg nyilvános előzetes verzióban érhető el. Ez a funkció csak a következő régiókban érhető el:
->
-> * **USA keleti régiója**
-> * **USA déli középső régiója**
-> * **USA nyugati régiója**
-> * **USA 2. nyugati régiója**
-> * **Közép-Kanada**
-> * **Délkelet-Ázsia**
-> * **Kelet-Japán**
-> * **Észak-Európa**
-> * **Kelet-Ausztrália**
-> * **Az Egyesült Királyság déli régiója**
->
-> Ez az előzetes verzió szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. 
-> További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> A privát hivatkozást tartalmazó Azure Machine Learning munkaterület nem érhető el a Azure Government-régiókban vagy az Azure China 21Vianet-régiókban.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
@@ -691,7 +684,7 @@ Egy másik munkaterületet és privát végpontot tartalmazó virtuális hálóz
     az network private-dns link vnet create --name mylinkname --registration-enabled true --resource-group myresourcegroup --virtual-network myvirtualnetworkid --zone-name privatelink.api.azureml.ms
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Erőforrások üzembe helyezése Resource Manager-sablonokkal és Resource Manager-Rest APIokkal](../azure-resource-manager/templates/deploy-rest.md).
 * [Azure-erőforráscsoportok létrehozása és üzembe helyezése a Visual Studióval](../azure-resource-manager/templates/create-visual-studio-deployment-project.md).

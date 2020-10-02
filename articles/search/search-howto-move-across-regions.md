@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 09/10/2020
-ms.openlocfilehash: 7383d9f95435775448f7322d9eb7707f676e9952
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 774b605859df41e0b71ee82c38a6b08bdf5b9c49
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90007043"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629811"
 ---
 # <a name="move-your-azure-cognitive-search-service-to-another-azure-region"></a>Azure Cognitive Search-szolgáltatás áthelyezése másik Azure-régióba
 
@@ -27,7 +27,7 @@ Alkalmanként előfordulhat, hogy az ügyfelek egy másik régióba helyezik át
 
 + Ellenőrizze, hogy a tárfiók által használt szolgáltatások és funkciók támogatottak-e a célként megadott régióban.
 
-+ Az előzetes verziójú funkciók használatához ellenőrizze, hogy az előfizetése engedélyezett-e a célként megadott régióban.
++ Az előzetes verziójú funkciók esetében győződjön meg arról, hogy az előfizetés jóvá van hagyva a célcsoport számára.
 
 ## <a name="prepare-and-move"></a>Előkészítés és áthelyezés
 
@@ -51,7 +51,7 @@ Alkalmanként előfordulhat, hogy az ügyfelek egy másik régióba helyezik át
 
 Törölje a régi szolgáltatást, ha az új szolgáltatás teljes körű tesztelése és működtetése megtörtént. A szolgáltatás törlése automatikusan törli a szolgáltatáshoz társított összes tartalmat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő hivatkozások segítséget nyújtanak a fenti lépések elvégzéséhez szükséges további információk megkereséséhez.
 

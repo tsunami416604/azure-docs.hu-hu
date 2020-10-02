@@ -10,12 +10,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: reference
 ms.date: 12/16/2019
-ms.openlocfilehash: b6e4845ca626dc8805b9bec6ca50076371d35b55
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 30b7e34f2a791cfd8dec1a6d8e81d706fa07939f
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89419129"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631222"
 ---
 # <a name="azure-key-vault-rest-api-error-codes"></a>Azure Key Vault REST API hibakódok
  
@@ -128,7 +128,7 @@ Ha csak a válasz hozzáférési jogkivonatot szeretné beszerezni, akkor dekód
 A HTTP 403 azt jelenti, hogy a kérés hitelesítése megtörtént (ismeri a kérelmező identitást), de az identitásnak nincs engedélye a kért erőforrás elérésére. Két ok van:
 
 - Nincs hozzáférési házirend az identitáshoz.
-- A kérelmező erőforrás IP-címe nem engedélyezett a Key Vault tűzfalának beállításaiban.
+- A kérelmező erőforrás IP-címe nincs jóváhagyva a Key Vault tűzfalának beállításaiban.
 
 A HTTP 403 gyakran akkor fordul elő, ha az ügyfél alkalmazása nem használja azt az ügyfél-azonosítót, amelyet az ügyfél gondol. Ez általában azt jelenti, hogy a hozzáférési házirendek nem megfelelően vannak beállítva a tényleges hívó identitáshoz.
 
@@ -166,5 +166,3 @@ A szabályozás a következő technikák használatával működik:
 - Ha a kérések száma nem csökkenthető a gyorsítótárazással és az időzített leállítási, akkor érdemes lehet több Kulcstartóba osztani a kulcsokat. Egy előfizetéshez tartozó szolgáltatási korlát ötszöröse az egyéni Key Vault korlát. Ha több mint 5 kulcstartót használ, több előfizetés használatát is figyelembe kell venni. 
 
 A határértékek növelésére irányuló kérést tartalmazó részletes útmutató itt található: [Key Vault szabályozási útmutató](overview-throttling.md)
-
-

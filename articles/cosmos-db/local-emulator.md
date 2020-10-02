@@ -7,16 +7,22 @@ author: markjbrown
 ms.author: mjbrown
 ms.date: 09/22/2020
 ms.custom: devx-track-csharp, contperfq1
-ms.openlocfilehash: 2ee20035fbb7b417897290caba4500f2c3862fee
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 64da8084ec8d40e17a0005f2e70486c7d51bf640
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/01/2020
-ms.locfileid: "91611809"
+ms.locfileid: "91627592"
 ---
 # <a name="install-and-use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Az Azure Cosmos Emulator telepítése és használata helyi fejlesztéshez és teszteléshez
 
-Az Azure Cosmos Emulator egy helyi környezetet biztosít, amely a Azure Cosmos DB szolgáltatás fejlesztésére szolgál. Az Azure Cosmos Emulator használatával helyileg fejlesztheti és tesztelheti alkalmazását anélkül, hogy Azure-előfizetést hozna létre, vagy bármilyen költséget kellene fizetnie. Ha meggyőződött arról, hogy az alkalmazás hogyan működik az Azure Cosmos emulatorban, átválthat egy Azure Cosmos-fiók használatára a felhőben. Első lépésként töltse le és telepítse az [Azure Cosmos Emulator](https://aka.ms/cosmosdb-emulator) legújabb verzióját a helyi számítógépre. Ez a cikk bemutatja, hogyan telepítheti és használhatja az emulátort Windows-, Linux-, macOS-és Windows Docker-környezetekben.
+Az Azure Cosmos Emulator egy helyi környezetet biztosít, amely a Azure Cosmos DB szolgáltatás fejlesztésére szolgál. Az Azure Cosmos Emulator használatával helyileg fejlesztheti és tesztelheti alkalmazását anélkül, hogy Azure-előfizetést hozna létre, vagy bármilyen költséget kellene fizetnie. Ha meggyőződött arról, hogy az alkalmazás hogyan működik az Azure Cosmos emulatorban, átválthat egy Azure Cosmos-fiók használatára a felhőben. Ez a cikk bemutatja, hogyan telepítheti és használhatja az emulátort Windows-, Linux-, macOS-és Windows Docker-környezetekben.
+
+## <a name="download-the-emulator"></a>Az Emulator letöltése
+
+Első lépésként töltse le és telepítse az Azure Cosmos Emulator legújabb verzióját a helyi számítógépre. Az [emulátor kibocsátási megjegyzései](local-emulator-release-notes.md) című cikk felsorolja az összes elérhető verziót és az egyes kiadásokban végrehajtott szolgáltatás-frissítéseket.
+
+:::image type="icon" source="media/local-emulator/download-icon.png" border="false":::**[Az Azure Cosmos Emulator letöltése](https://aka.ms/cosmosdb-emulator)**
 
 Az Azure Cosmos Emulator használatával az [SQL](local-emulator.md#sql-api), [Cassandra](local-emulator.md#cassandra-api), [MongoDB](local-emulator.md#azure-cosmos-dbs-api-for-mongodb), [Gremlin](local-emulator.md#gremlin-api)és [Table](local-emulator.md#table-api) API-fiókokkal fejleszthet alkalmazásokat. Jelenleg az emulátorban található adatkezelő teljes mértékben támogatja az SQL-adatmegjelenítést; a MongoDB, Gremlin/Graph és Cassandra ügyfélalkalmazások használatával létrehozott adatai jelenleg nem tekinthetők meg. További információ: a különböző API-kkal való [Kapcsolódás az emulátor-végponthoz](#connect-with-emulator-apis) .
 
@@ -38,7 +44,7 @@ Mivel az Azure Cosmos Emulator egy emulált környezetet biztosít, amely a hely
 
 * Az emulátor használatával csak a [kiépített átviteli sebességű](set-throughput.md) módban hozhat létre Azure Cosmos-fiókot; jelenleg nem támogatja a [kiszolgáló](serverless.md) nélküli üzemmódot.
 
-* Az emulátor nem méretezhető szolgáltatás, és nem támogatja nagy mennyiségű tároló használatát. Ha az Azure Cosmos emulatort használja, alapértelmezés szerint legfeljebb 25 rögzített méretű tárolót hozhat létre a 400 RU/s (csak Azure Cosmos DB SDK-k használata esetén támogatott) vagy 5 korlátlan tároló használata esetén. Az érték módosításával kapcsolatos további információkért lásd: [a PartitionCount értékének beállítása] Emulator-Command-Line-Parameters. MD # set-PartitionCount).
+* Az emulátor nem méretezhető szolgáltatás, és nem támogatja nagy mennyiségű tároló használatát. Ha az Azure Cosmos emulatort használja, alapértelmezés szerint legfeljebb 25 rögzített méretű tárolót hozhat létre a 400 RU/s (csak Azure Cosmos DB SDK-k használata esetén támogatott) vagy 5 korlátlan tároló használata esetén. Az érték módosításával kapcsolatos további információkért tekintse meg [a PartitionCount értékének beállítása](emulator-command-line-parameters.md#set-partitioncount) című cikket.
 
 * Az emulátor nem biztosít különböző [Azure Cosmos db konzisztencia-szinteket](consistency-levels.md) , például a Cloud Service-t.
 
@@ -64,7 +70,7 @@ Az emulátor telepítése előtt győződjön meg arról, hogy rendelkezik az al
 
 Első lépésként töltse le és telepítse az [Azure Cosmos Emulator](https://aka.ms/cosmosdb-emulator) legújabb verzióját a helyi számítógépre. Ha az emulátor telepítésekor problémákba ütközik, tekintse meg az [emulátor hibaelhárítása](troubleshoot-local-emulator.md) című cikket.
 
-A rendszerkövetelményektől függően futtathatja az emulátort a Windowson, a [Windowson](#run-on-windows-docker), a [Linuxon vagy a [MacOS](#run-on-linux-macos) - [en, a](#run-on-windows)cikk következő fejezeteiben leírtak szerint.
+A rendszerkövetelményektől függően a jelen cikk következő fejezeteiben leírtak szerint futtathatja az emulátort [a Windows, a](#run-on-windows) [Linux vagy a MacOS](#run-on-linux-macos) rendszerhez készült [Docker](#run-on-windows-docker)használatával.
 
 ## <a name="check-for-emulator-updates"></a>Emulátor frissítéseinek keresése
 

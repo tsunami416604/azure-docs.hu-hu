@@ -12,14 +12,14 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: 6a5fb517b3ea6626a929da10954bd58cc8e39ef0
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 9ff43202bdace577024413c9cc177de2997a0ad5
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91574228"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627942"
 ---
-# <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Bejelentkezés felvétele a Microsoftba ASP.NET-webalkalmazásba
+# <a name="tutorial-add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Oktatóanyag: bejelentkezés felvétele a Microsoftba ASP.NET-webalkalmazásba
 
 Ez az útmutató bemutatja, hogyan valósítható meg a bejelentkezés a Microsoftnak egy ASP.NET MVC-megoldással egy hagyományos webböngésző-alapú alkalmazás és az OpenID Connect használatával.
 
@@ -69,7 +69,7 @@ Ez a szakasz azt ismerteti, hogyan telepítheti és konfigurálhatja a hitelesí
 
 ## <a name="add-authentication-components"></a>Hitelesítési összetevők hozzáadása
 
-1. A Visual Studióban: Nyissa meg a **Tools**  >  **Nuget Package**Manager  >  **csomagkezelő konzolját**.
+1. A Visual Studióban: Nyissa meg a **Tools**  >  **NuGet Package**Manager  >  **csomagkezelő konzolját**.
 2. Az *OWIN közbenső szoftver NuGet-csomagjai* hozzáadásához írja az alábbiakat a Package Manager Console (Csomagkezelő konzol) ablakba:
 
     ```powershell
@@ -295,7 +295,7 @@ Ez a vezérlő bemutatja, hogy hogyan védheti meg a vezérlőt az `[Authorize]`
         {
             var userClaims = User.Identity as System.Security.Claims.ClaimsIdentity;
 
-            //You get the user’s first and last name below:
+            //You get the user's first and last name below:
             ViewBag.Name = userClaims?.FindFirst("name")?.Value;
 
             // The 'preferred_username' claim can be used for showing the username
@@ -313,7 +313,7 @@ Ez a vezérlő bemutatja, hogy hogyan védheti meg a vezérlőt az `[Authorize]`
     ```
 
 ### <a name="more-information"></a>További információ
-Az attribútum használata miatt a `[Authorize]` vezérlő összes metódusát csak akkor lehet végrehajtani, ha a felhasználó hitelesítése megtörtént. Ha a felhasználó nincs hitelesítve, és megpróbál hozzáférni a vezérlőhöz, a OWIN hitelesítési kihívást kezdeményez, és kényszeríti a felhasználót a hitelesítésre. Az előző kód a felhasználó azonosító jogkivonatában szereplő adott felhasználói attribútumok jogcímeinek listáját vizsgálja. Ilyen attribútum például a felhasználó teljes neve és felhasználóneve, valamint a globális felhasználóazonosító tárgya. Emellett tartalmazza a *bérlőazonosítót* is, amely a felhasználó szervezetének azonosítóját jelöli.
+Az attribútum használata miatt a `[Authorize]` vezérlő összes metódusát csak akkor lehet végrehajtani, ha a felhasználó hitelesítése megtörtént. Ha a felhasználó nincs hitelesítve, és megpróbál hozzáférni a vezérlőhöz, a OWIN hitelesítési kihívást kezdeményez, és kényszeríti a felhasználót a hitelesítésre. Az előző kód a felhasználó azonosító jogkivonatában szereplő adott felhasználói attribútumok jogcímeinek listáját vizsgálja. Ezek az attribútumok tartalmazzák a felhasználó teljes nevét és felhasználónevét, valamint a globális felhasználói azonosító tulajdonosát. Tartalmazza továbbá a *bérlő azonosítóját*is, amely a felhasználó SZERVEZETének azonosítóját jelöli.
 
 ## <a name="create-a-view-to-display-the-users-claims"></a>Nézet létrehozása a felhasználó jogcímeinek megjelenítéséhez
 
@@ -427,7 +427,7 @@ A vezérlő nézet megkeresése után a felhasználó alapszintű tulajdonságai
 
 |Tulajdonság |Érték |Leírás |
 |---|---|---|
-|**Név** |Felhasználó teljes neve | A felhasználó vezeték- és utóneve
+|**Név** |Felhasználó teljes neve | A felhasználó vezetékneve és vezetékneve
 |**Felhasználónév** |felhasználói<span>@domain.com</span> | A felhasználó azonosítására használt Felhasználónév|
 |**Tárgy** |Tárgy |Egy karakterlánc, amely egyedileg azonosítja a felhasználót a weben keresztül|
 |**Bérlőazonosító** |Guid | A felhasználó Azure AD-szervezetét egyedileg jelképező **GUID**|

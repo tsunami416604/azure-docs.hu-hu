@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/01/2020
 ms.author: allensu
-ms.openlocfilehash: 3509b99d1b222fc4f0bfa48effe42496c209d9ae
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 8eb8be3307cf5e1df987f636be5c01cecaf4ae45
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654480"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631443"
 ---
 # <a name="azure-load-balancer-skus"></a>SKU Azure Load Balancer
 
@@ -38,7 +38,7 @@ Az önálló virtuális gépeket, a rendelkezésre állási csoportokat és a Vi
 | **Háttérbeli készlet végpontjai** | Bármely virtuális gép vagy virtuálisgép-méretezési csoport egyetlen virtuális hálózatban. | Egyetlen rendelkezésre állási csoport vagy virtuálisgép-méretezési csoport virtuális gépei. |
 | **[Állapotminták](./load-balancer-custom-probe-overview.md#types)** | TCP, HTTP, HTTPS | TCP, HTTP |
 | **[Állapot-mintavételi leállási viselkedés](./load-balancer-custom-probe-overview.md#probedown)** | A TCP-kapcsolatok egy példányon maradnak életben __, és__ az összes mintavétel le van kapcsolva. | A TCP-kapcsolatok egy példányon maradnak életben. Minden TCP-kapcsolat megszűnik, ha az összes mintavétel le van nyomva. |
-| **Availability Zones** | Zóna – redundáns és zónákhoz tartozó előtér a bejövő és kimenő forgalomhoz. | Nem elérhető |
+| **Rendelkezésre állási zónák** | Zóna – redundáns és zónákhoz tartozó előtér a bejövő és kimenő forgalomhoz. | Nem elérhető |
 | **Diagnosztika** | [Többdimenziós metrikák Azure Monitor](./load-balancer-standard-diagnostics.md) | [Naplók Azure Monitor](./load-balancer-monitor-log.md) |
 | **HA portok** | [Belső Load Balancer számára elérhető](./load-balancer-ha-ports-overview.md) | Nem elérhető |
 | **Alapértelmezés szerint biztonságos** | Lezárva a bejövő folyamatokhoz, kivéve, ha a hálózati biztonsági csoport engedélyezi azt. A virtuális hálózatról a belső terheléselosztó felé irányuló belső forgalom engedélyezett. | Alapértelmezés szerint megnyílik. A hálózati biztonsági csoport nem kötelező. |
@@ -54,7 +54,9 @@ További információ: [Load Balancer korlátok](https://docs.microsoft.com/azur
 
 - Az SKU nem változtatható. Meglévő erőforrás SKU-jának nem módosítható.
 - Egy önálló virtuálisgép-erőforrás, rendelkezésre állási készlet erőforrás vagy virtuálisgép-méretezési csoport erőforrása hivatkozhat egyetlen SKU-ra, soha nem mindkettőre.
-- Az [előfizetési műveletek](../azure-resource-manager/management/move-resource-group-and-subscription.md) nem támogatottak standard Load Balancer és a standard nyilvános IP-erőforrások esetében.
+- [Áthelyezési műveletek](../azure-resource-manager/management/move-resource-group-and-subscription.md):
+  - Az erőforráscsoport-áthelyezési műveletek (ugyanazon az előfizetésen belül) a standard Load Balancer és a standard nyilvános IP-címek esetében **is támogatottak** . 
+  - Az [előfizetési csoport áthelyezési műveletei](../azure-resource-manager/management/move-support-resources.md) **nem** támogatottak standard Load Balancer és standard nyilvános IP-erőforrások esetén.
 
 ## <a name="next-steps"></a>További lépések
 

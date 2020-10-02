@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: a11573da29cead49bfb17c2c5df3951229182959
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: c592055be1987786b94623bde5352e2a3cc0e092
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91360650"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91630151"
 ---
 # <a name="speech-service-for-telephony-data"></a>Beszédfelismerési szolgáltatás a telefonos adatkezeléshez
 
@@ -62,7 +62,7 @@ Nem ritka, hogy egy támogatási hívás 35%-ában a nem beszélgetési időpont
 
 Néhány vállalat kísérletezik az idegen nyelvi támogatási hívások fordításával, így a kézbesítő vezetők megismerhetik az ügyfelek globális felhasználói élményét. A [fordítási](/azure/cognitive-services/speech-service/speech-translation) képességek felülmúlhatatlanok. Nagy számú területi beállításhoz hang-hang vagy hang-szöveg is fordítható.
 
-### <a name="text-to-speech"></a>Text to Speech
+### <a name="text-to-speech"></a>Szövegfelolvasás
 
 A [szöveg és a beszéd](text-to-speech.md) egy másik fontos része az ügyfelekkel kommunikáló robotok megvalósításának. A tipikus elérési út az, hogy az ügyfél beszél, a hangjuk szövegbe kerül, a szöveget pedig a szándékok alapján elemezzük, a válasz a felismert szándékon alapul, és az eszköz felszínre kerül az ügyfél számára, vagy egy szintetizált hangválasztó jön létre. Természetesen mindeznek gyorsan kell történnie – ezért az alacsony késés a rendszerek sikeres sikerének fontos eleme.
 
@@ -121,7 +121,7 @@ Egy másik forgatókönyv a közvetlen integráció a munkamenet-kezdeményező 
 
  A beszédfelismerési szolgáltatás a beépített modellekkel jól működik. Azonban érdemes lehet tovább testreszabni és hangolni a termék vagy a környezet élményét. A testreszabási lehetőségek köre az akusztikus modell finomhangolása és a márka egyedi hangbetűkészletei között. Miután létrehozott egy egyéni modellt, a beszédfelismerési szolgáltatás bármelyik szolgáltatásával valós időben vagy batch módban használhatja azt.
 
-| Speech szolgáltatás | Modellezés | Description |
+| Speech szolgáltatás | Modellezés | Leírás |
 | -------------- | ----- | ----------- |
 | Diktálás | [Akusztikai modell](how-to-customize-acoustic-models.md) | Hozzon létre egy egyéni akusztikai modellt olyan alkalmazásokhoz, eszközökhöz vagy eszközökhöz, amelyeket az adott környezetben, például autóban vagy gyári szinten használnak, és amelyek külön rögzítési feltételekkel rendelkeznek. Ilyenek például az ékezetes beszédek, a konkrét háttérzajok, vagy egy adott mikrofon használata a rögzítéshez. |
 |                | [Nyelvi modell](how-to-customize-language-model.md) | Hozzon létre egy egyéni nyelvi modellt, amellyel javítható az iparágra jellemző szókincs és nyelvtan, például az orvosi szakkifejezések vagy az informatikai szakzsargonk átírása. |
@@ -142,9 +142,9 @@ A mintakód a GitHubon érhető el a beszédfelismerési szolgáltatás egyes fu
 - [Beszédeszközök SDK](speech-devices-sdk.md)
 - [REST API: beszéd – szöveg](rest-speech-to-text.md)
 - [REST API: szövegről beszédre](rest-text-to-speech.md)
-- [REST API: kötegelt átírás és testreszabás](https://westus.cris.ai/swagger/ui/index)
+- [REST API: kötegelt átírás és testreszabás](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Beszédfelismerési szolgáltatás előfizetési kulcsának beszerzése ingyenesen](overview.md#try-the-speech-service-for-free)

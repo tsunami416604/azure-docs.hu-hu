@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: overview
 ms.date: 05/12/2020
-ms.openlocfilehash: 3751560125ea8ac6cc00ed63521bff30b751e688
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 26f6c8e3aceddc6f766bb43a1e384d761dee32bf
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009596"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631379"
 ---
 # <a name="azure-cache-for-redis"></a>Azure Cache for Redis
 A Redis készült Azure cache memóriában tárolt adattárakat biztosít a nyílt forráskódú szoftverek [Redis](https://redis.io/)alapján. A Redis javítja a háttérbeli adattárakat használó alkalmazások teljesítményét és méretezhetőségét. Nagy mennyiségű alkalmazás-kérést képes feldolgozni a gyakran használt adatoknak a kiszolgáló memóriájában való megtartásával, amely gyorsan beírható és olvasható. A Redis kritikus, kis késésű és nagy átviteli sebességű adattárolási megoldást nyújt a modern alkalmazásokhoz.
@@ -31,12 +31,20 @@ Az Azure cache for Redis az alkalmazások teljesítményének növelésével jav
 | Feladatok és üzenetek üzenetsor-kezelése | Az alkalmazások gyakran vesznek fel feladatokat egy várólistába, ha a kérelemhez társított műveletek végrehajtása időt vesz igénybe. A már futó műveletek várólistára kerülnek, és gyakran egy másik kiszolgáló végzi a feldolgozást.  Ezt a késleltetési módot a tevékenységek üzenetsorba való helyezésének nevezik. A Redis készült Azure cache elosztott várólistát biztosít a minta alkalmazásban való engedélyezéséhez.|
 | Elosztott tranzakciók | Az alkalmazásokhoz időnként szükség van egy adott háttérbeli adattárolóra vonatkozó parancsok sorozatára, hogy egyetlen atomi műveletként fussanak. Minden parancsnak sikeresnek kell lennie, vagy mindegyiket vissza kell állítani a kezdeti állapotba. A Redis-hez készült Azure cache egyetlen [tranzakcióként](https://redis.io/topics/transactions)támogatja a parancsok kötegének végrehajtását. |
 
+## <a name="redis-versions"></a>Redis-verziók
+
+A Redis-hez készült Azure cache a Redis 4. x-es verzióját és a 6,0-as előnézetét támogatja. Eldöntöttük, hogy kihagyjuk a Redis 5,0-et, hogy a legújabb verziót hozza létre. Korábban az Azure cache for Redis csak egyetlen Redis-verziót tart fenn. Egy újabb főverzió-frissítést és legalább egy régebbi stabil verziót fog biztosítani. Kiválaszthatja, hogy az alkalmazás [melyik verziója](cache-how-to-version.md) legyen a legmegfelelőbb.
+
+> [!NOTE]
+> A Redis 6,0 jelenleg előzetes verzióban érhető el – [vegye fel velünk a kapcsolatot](mailto:azurecache@microsoft.com) , ha érdekli. Ez az előzetes verzió szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+>
+
 ## <a name="service-tiers"></a>Szolgáltatásszintek
 A Redis készült Azure cache a következő szinteknél érhető el:
 
 | Szint | Leírás |
 |---|---|
-Alapszintű | Egy csomópontos gyorsítótár. Ez a szint több memóriát támogat (250 MB-53 GB), és ideális fejlesztési, tesztelési és nem kritikus fontosságú számítási feladatokhoz. Az alapszintű csomaghoz nem tartozik szolgáltatói szerződés (SLA). |
+| Alapszintű | Egy csomópontos gyorsítótár. Ez a szint több memóriát támogat (250 MB-53 GB), és ideális fejlesztési, tesztelési és nem kritikus fontosságú számítási feladatokhoz. Az alapszintű csomaghoz nem tartozik szolgáltatói szerződés (SLA). |
 | Standard | Egy replikált gyorsítótár egy két csomópontos, elsődleges/replika, az Azure által kezelt konfigurációban, magas rendelkezésre állású [SLA](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)-val. |
 | Prémium | A prémium szint a nagyvállalati használatra kész szint. A prémium szintű gyorsítótárak több funkciót támogatnak, és nagyobb átviteli sebességgel, valamint gyorsabb válaszidőkkel rendelkeznek. A prémium szintű gyorsítótárakat nagyobb teljesítményű hardvereken helyezik üzembe, és az alapszintű vagy a standard szintnél jobb teljesítményt biztosítanak. Ez az előny azt jelenti, hogy az azonos méretű gyorsítótár esetében a standard szinthez képest magasabb lesz a prémium szintű kapacitás. |
 

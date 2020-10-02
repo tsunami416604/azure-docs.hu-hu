@@ -12,14 +12,14 @@ ms.workload: identity
 ms.date: 08/06/2020
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: fca1ab61c4c07d8c619719d79872470626137249
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 2cfc0324a06b4d950fc289b9c8ef033e77ffa53f
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/01/2020
-ms.locfileid: "91611180"
+ms.locfileid: "91627907"
 ---
-# <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Bejelentkezés a felhasználókba és a Microsoft Graph API meghívása egy JavaScript egyoldalas alkalmazásból (SPA)
+# <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Oktatóanyag: bejelentkezés a felhasználókba és a Microsoft Graph API meghívása egy JavaScript egyoldalas alkalmazásból (SPA)
 
 Ebben az oktatóanyagban egy egyoldalas alkalmazást (SPA) hoz létre a JavaScriptben, amely személyes Microsoft-fiókokkal vagy munkahelyi és iskolai fiókkal tud bejelentkezni a felhasználókba, majd beszerzett egy hozzáférési jogkivonatot a Microsoft Graph API meghívásához.
 

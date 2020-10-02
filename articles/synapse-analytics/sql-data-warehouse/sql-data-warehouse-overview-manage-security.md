@@ -11,12 +11,12 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 9428ad0756fac59f54e7036d26a1b7d6408cab31
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 06f62fd656357e16396a0458a9afee12dcfa507f
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85200970"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629369"
 ---
 # <a name="secure-a-database-in-azure-synapse"></a>Adatbázis biztonságossá tétele az Azure Szinapszisban
 
@@ -33,7 +33,7 @@ Ez a cikk végigvezeti a szinapszis SQL-készlet biztonságossá tételének ala
 
 A kapcsolatbiztonság azt jelenti, hogy hogyan korlátozza és védi az adatbázis kapcsolatait a tűzfalszabályok és a csatlakozástitkosítás használatával.
 
-A tűzfalszabályok a [logikai SQL-kiszolgáló](../../azure-sql/database/logical-servers.md) és az adatbázisai egyaránt használják a kapcsolódási kísérletek elutasítására olyan IP-címekről, amelyek nincsenek explicit módon engedélyezve. Ha engedélyezni szeretné az alkalmazás vagy az ügyfélszámítógép nyilvános IP-címének kapcsolatait, először létre kell hoznia egy kiszolgálói szintű tűzfalszabály-szabályt a Azure Portal, REST API vagy a PowerShell használatával.
+A tűzfalszabályok használatát mind a [logikai SQL-kiszolgáló](../../azure-sql/database/logical-servers.md) , mind az adatbázisai használják, hogy elutasítja a kapcsolódási kísérleteket a nem jóváhagyott IP-címekről. Ha engedélyezni szeretné az alkalmazás vagy az ügyfélszámítógép nyilvános IP-címének kapcsolatait, először létre kell hoznia egy kiszolgálói szintű tűzfalszabály-szabályt a Azure Portal, REST API vagy a PowerShell használatával.
 
 Az ajánlott eljárás az, hogy a lehető legnagyobb mértékben korlátozza a kiszolgálói szintű tűzfalon keresztül engedélyezett IP-címtartományt.  Ha a helyi számítógépről szeretné elérni az SQL-készletet, győződjön meg arról, hogy a tűzfal a hálózaton és a helyi számítógépen engedélyezi a kimenő kommunikációt az 1433-as TCP-porton  
 

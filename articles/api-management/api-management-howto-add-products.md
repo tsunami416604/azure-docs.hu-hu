@@ -1,28 +1,21 @@
 ---
-title: Termék létrehozása és közzététele az Azure API Managementben
-description: Megismerheti, hogyan hozhat létre és tehet közzé termékeket az Azure API Managementben. A termék közzétételekor a fejlesztők elkezdhetik használni a termék API-jait.
-services: api-management
-documentationcenter: ''
+title: Oktatóanyag – termék létrehozása és közzététele az Azure-ban API Management
+description: Ebben az oktatóanyagban egy terméket hoz létre és tesz közzé az Azure API Managementban. A közzététel után a fejlesztők elkezdhetik használni a termék API-jait.
 author: mikebudzynski
-manager: cfowler
-editor: ''
 ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
-ms.custom: mvc
 ms.topic: tutorial
-ms.date: 08/10/2018
+ms.date: 09/30/2020
 ms.author: apimpm
-ms.openlocfilehash: 69b5e381ed8446b45f68b4b1ce9bb13df47039c0
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 2f298f240d8aa7a38b42a8c78ee3c90fe3423d10
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904904"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91630566"
 ---
-# <a name="create-and-publish-a-product"></a>Termékek létrehozása és közzététele  
+# <a name="tutorial-create-and-publish-a-product"></a>Oktatóanyag: termék létrehozása és közzététele  
 
-Az Azure API Management szolgáltatásban a termék egy vagy több API-t, valamint a használati kvótát és a használati feltételeket tartalmazza. Egy termék közzététele után a fejlesztők előfizethetnek a termékre, és megkezdhetik a termék API-jainak használatát.  
+Az Azure API Management egy [*termék*](api-management-terminology.md#term-definitions) tartalmaz egy vagy több API-t, valamint egy használati kvótát és a használati feltételeket. Egy termék közzététele után a fejlesztők előfizethetnek a termékre, és megkezdhetik a termék API-jainak használatát.  
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -30,7 +23,8 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Termékek létrehozása és közzététele
 > * API hozzáadása a termékhez
 
-![Termék hozzáadását bemutató oktatóanyag](media/api-management-howto-add-products/added-product.png)
+:::image type="content" source="media/api-management-howto-add-products/added-product.png" alt-text="API Management termékek a portálon":::
+
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -40,52 +34,56 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="create-and-publish-a-product"></a>Termékek létrehozása és közzététele
 
-![Termék hozzáadása](media/api-management-howto-add-products/02-create-publish-product-01.png)
+1. Jelentkezzen be a Azure Portalba, és navigáljon a API Management-példányhoz.
+1. A bal oldali navigációs sávon válassza a **termékek**  >  **+ Hozzáadás**lehetőséget.
+1.  A **termék hozzáadása** ablakban adja meg az alábbi táblázatban leírt értékeket a termék létrehozásához.
 
-1. Kattintson a bal oldali menü **Termékek** lehetőségére a **Termékek** oldal megjelenítéséhez.
-2. Kattintson a **+ Hozzáadás** gombra.
-
-    Termék hozzáadásakor meg kell adnia a következő információkat: 
+    :::image type="content" source="media/api-management-howto-add-products/02-create-publish-product-01.png" alt-text="API Management termékek a portálon":::
 
     | Név                     | Leírás                                                                                                                                                                                                                                                                                                             |
     |--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | Megjelenített név             | A név, ahogyan a **fejlesztői portálon** meg szeretné jeleníteni.                                                                                                                                                                                                                                                        |
-    | Név                     | A termék leíró neve.                                                                                                                                                                                                                                                                                      |
-    | Leírás              | A **Leírás** mezőben részletes információkat adhat meg a termékről, például a funkcióját vagy az API-kat, amelyekhez hozzáférést nyújt.                                                                                                                                               |
-    | Állam                    | Kattintson a **Közzétett** elemre, ha közzé szeretné tenni a terméket. Mielőtt meghívhatná egy termék API-jait, közzé kell tenni a terméket. Alapértelmezés szerint az új termékek nincsenek közzétéve, és csak a **Rendszergazdák** csoport tagjai számára láthatók.                                                                                      |
-    | Előfizetés szükséges    | Jelölje be az **Előfizetés szükséges** jelölőnégyzetet, ha egy felhasználónak elő kell fizetnie a termék használatára.                                                                                                                                                                                                                                   |
-    | Jóváhagyást igényel        | Jelölje be a **Jóváhagyást igényel** jelölőnégyzetet, ha azt szeretné, hogy egy rendszergazda döntsön a termék előfizetésére vonatkozó kérelmek elfogadásáról vagy elutasításáról. Ha a jelölőnégyzet nincs bejelölve, a rendszer az előfizetési kísérleteket automatikusan elfogadja.                                                                                                                         |
-    | Előfizetések számának korlátozása | Az egyidejű előfizetések számának korlátozásához adjon meg egy határértéket.                                                                                                                                                                                                                                |
+    | Megjelenített név             | A név, ahogy szeretné, hogy megjelenjen a [fejlesztői portálon](api-management-howto-developer-portal.md).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+    | Leírás              | Adja meg a termékkel kapcsolatos információkat, például a célját, az API-kat, amelyek hozzáférést biztosítanak a szolgáltatáshoz és egyéb részletekhez.                                                                                                                                               |
+    | Állapot                    | Válassza a **közzétett** elemet, ha közzé szeretné tenni a terméket. Mielőtt meghívhatná egy termék API-jait, közzé kell tenni a terméket. Alapértelmezés szerint az új termékek nincsenek közzétéve, és csak a  **rendszergazdák** csoport számára láthatók.                                                                                      |
+    | Előfizetés szükséges    | Válassza ki, hogy a termék használatához szükség van-e a felhasználó előfizetésére.                                                                                                                                                                                                                                   |
+    | Jóváhagyást igényel        | Jelölje be, ha azt szeretné, hogy a rendszergazda áttekintse és elfogadja vagy elutasítja az előfizetési kísérleteket a termékre. Ha nincs bejelölve, a rendszer automatikusan jóváhagyja az előfizetési kísérleteket.                                                                                                                         |
+    | Előfizetések számának korlátozása | Opcionálisan korlátozhatja több egyidejű előfizetés számát.                                                                                                                                                                                                                                |
     | Jogi feltételek              | Megadhatja a termék használati feltételeit, amelyeket az előfizetőknek el kell fogadniuk, hogy használni tudják a terméket.                                                                                                                                                                                                             |
-    | API-k                     | A termékek egy vagy több API társításai. Megadhatja az API-k számát, és a fejlesztői portálon elérhetővé teheti őket a fejlesztők számára. <br/> A termék létrehozása során hozzáadhat meglévő API-kat, Később is hozzáadhat egy API-t a termékhez a termék **Beállítások** lapján vagy egy API létrehozásakor. |
+    | API-k                     | Válasszon ki egy vagy több API-t. A termék létrehozása után API-kat is hozzáadhat. További információ: API-k [hozzáadása egy termékhez](#add-apis-to-a-product) a cikk későbbi részében. |
 
-3. Az új termék létrehozásához kattintson a **Létrehozás** gombra.
+3. Válassza a **Létrehozás** lehetőséget az új termék létrehozásához.
 
 ### <a name="add-more-configurations"></a>További konfigurációk hozzáadása
 
-A mentés után is folytathatja a termék konfigurálását a **Beállítások** lapon. 
+A mentés után folytassa a termék konfigurálását. A API Management-példányban válassza ki a terméket a **termékek** ablakban. Hozzáadás vagy frissítés:
 
-A termék előfizetőit az **Előfizetések** lapon tekintheti meg, ahol új előfizetőket is megadhat.
 
-Egy termék láthatóságának beállítása a fejlesztők és a vendégek számára a **hozzáférés-vezérlés** lapon.
+|Elem   |Leírás  |
+|---------|---------|
+|Beállítások     |    Termék metaadatai és állapota     |
+|API-k     |  A termékhez társított API-k       |
+|[Házirendek](api-management-howto-policies.md)     |  A termék API-kra alkalmazott házirendek      |
+|Hozzáférés-vezérlés     |  A termék láthatósága a fejlesztők és a vendégek számára       |
+|[Előfizetések](api-management-subscriptions.md)    |    Termék előfizetői     |
 
-## <a name="add-apis-to-a-product"></a><a name="add-apis"> </a>API-k hozzáadása termékekhez
+## <a name="add-apis-to-a-product"></a>API-k hozzáadása termékekhez
 
-A termékek egy vagy több API társításai. Megadhatja az API-k számát, és a fejlesztői portálon elérhetővé teheti őket a fejlesztők számára. A termék létrehozása során hozzáadhat meglévő API-kat, de később is hozzáadhat API-t a termékhez a Termékek **Beállítások** lapján vagy az API-k létrehozásakor.
+A termékek egy vagy több API társításai. Megadhatja az API-k számát, és a fejlesztői portálon elérhetővé teheti őket a fejlesztők számára. A termék létrehozása során hozzáadhat egy vagy több meglévő API-t. A termékhez később is hozzáadhat API-kat a Products **Settings** (termékek beállításai) lapon, vagy LÉTREHOZHAT egy API-t.
 
 A fejlesztőknek elő kell fizetniük a termékre az API-k eléréséhez. Amikor előfizetnek, kapnak egy előfizetési kulcsot, amely a termék minden API-jához használható. Ha Ön hozta létre az APIM-példányt, akkor már eleve rendszergazdának számít, így alapértelmezés szerint minden termékre előfizetett.
 
 ### <a name="add-an-api-to-an-existing-product"></a>API hozzáadása meglévő termékhez
 
-![termék hozzáadása, API](media/api-management-howto-add-products/02-create-publish-product-02.png)
 
-1. Válasszon ki egy terméket a **Termékek** lapon.
-2. Lépjen az **API-k** lapra.
-3. Kattintson a **+ Hozzáadás** gombra.
-4. Válasszon egy API-t, és kattintson a **Kiválasztás** gombra.
+1. A API Management példány bal oldali navigációs sávján válassza a **termékek**elemet.
+1. Válasszon ki egy terméket, majd válassza az **API-kat**.
+1. Válassza a **+ Hozzáadás** lehetőséget.
+1. Válasszon ki egy vagy több API-t, majd **válassza a elemet**.
+
+:::image type="content" source="media/api-management-howto-add-products/02-create-publish-product-02.png" alt-text="API Management termékek a portálon":::
 
 > [!TIP]
-> [REST API-n keresztül](/rest/api/apimanagement/2019-12-01/subscription/createorupdate) vagy PowerShell-paranccsal, egyéni előfizetési azonosítók használatával hozhatja létre és frissítheti egy felhasználó *Termékre* vonatkozó előfizetését.
+> Létrehozhat vagy frissíthet egy felhasználó előfizetését egyéni előfizetési kulcsokkal rendelkező termékre egy [REST API](/rest/api/apimanagement/2019-12-01/subscription/createorupdate) vagy egy PowerShell-paranccsal.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -13,12 +13,12 @@ ms.date: 03/17/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: 7ff1e6e3b422f55da332e206aea184ca1b5902a6
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 3578562839069eb4b9c99b16d938efe48821fcec
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90705894"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631307"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Útmutató: Azure Active Directory-felhasználók bejelentkeztetése több-bérlős alkalmazásminta használatával
 
@@ -97,7 +97,7 @@ Mivel a/gyakori hibák végpont nem felel meg egy bérlőnek, és nem kiállít�
     https://sts.windows.net/{tenantid}/
 ```
 
-Ezért a több-bérlős alkalmazások nem tudják érvényesíteni a jogkivonatokat úgy, hogy a metaadatokban lévő kiállítói értéket a `issuer` tokenben lévő értékkel egyeztetik. A több-bérlős alkalmazásoknak logikával kell eldönteniük, hogy mely kibocsátói értékek érvényesek, és melyek nem a kibocsátó értékének bérlői azonosító részén alapulnak. 
+Ezért a több-bérlős alkalmazások nem tudják érvényesíteni a jogkivonatokat úgy, hogy a metaadatokban lévő kiállítói értéket a `issuer` tokenben lévő értékkel egyeztetik. A több-bérlős alkalmazásoknak logikával kell eldönteniük, hogy mely kibocsátói értékek érvényesek, és melyek nem a kibocsátó értékének bérlői azonosító részén alapulnak.
 
 Ha például egy több-bérlős alkalmazás csak olyan bérlők számára engedélyezi a bejelentkezést, akik regisztráltak a szolgáltatásra, akkor ellenőriznie kell a kibocsátó értékét vagy a `tid` jogkivonatban lévő jogcím értékét, hogy megbizonyosodjon róla, hogy a bérlő szerepel az előfizetők listáján. Ha egy több-bérlős alkalmazás csak az egyéni felhasználókra vonatkozik, és nem végez hozzáférési döntéseket a bérlők alapján, akkor az a kibocsátó értékét is figyelmen kívül hagyhatja.
 
@@ -116,7 +116,7 @@ Ezt a beleegyező felhasználói élményt az alkalmazás által kért engedély
 * A delegált engedély lehetővé teszi, hogy az alkalmazás bejelentkezett felhasználóként működjön a felhasználó által elvégezhető műveletek egy részhalmaza számára. Megadhat például egy alkalmazást a delegált engedéllyel a bejelentkezett felhasználó naptárának olvasásához.
 * Az alkalmazás csak az alkalmazás identitására jogosult. Például engedélyezheti az alkalmazásnak, hogy a bérlőben lévő felhasználók listáját olvassa el, függetlenül attól, hogy ki jelentkezett be az alkalmazásba.
 
-Bizonyos engedélyeket egy normál felhasználó is jóváhagyhat, míg mások a bérlői rendszergazda beleegyezését igénylik. 
+Bizonyos engedélyeket egy normál felhasználó is jóváhagyhat, míg mások a bérlői rendszergazda beleegyezését igénylik.
 
 ### <a name="admin-consent"></a>Rendszergazdai jóváhagyás
 
@@ -179,10 +179,6 @@ Ha egy rendszergazda a bérlő összes felhasználója számára engedélyez egy
 
 A több-bérlős alkalmazások hozzáférési tokeneket is kérhetnek az Azure AD által védett API-k meghívásához. Ha a Active Directory-hitelesítési tár (ADAL) több-bérlős alkalmazással való használata során gyakran előfordul, hogy a rendszer először a/gyakori hibák-t használó felhasználó jogkivonatát kéri le, választ kap, majd egy későbbi tokent kér ugyanahhoz a felhasználóhoz is a/Common. használatával. Mivel az Azure AD válasza egy bérlőtől származik, és nem/gyakori hibák, a ADAL gyorsítótárazza a jogkivonatot a bérlőtől. A/gyakori hibák a felhasználó hozzáférési jogkivonatának beolvasására irányuló hívása nem éri el a gyorsítótár bejegyzését, és a rendszer felszólítja a felhasználót, hogy jelentkezzen be újra. Ha el szeretné kerülni a gyorsítótár hiányzó számát, győződjön meg arról, hogy a bérlő végpontján már bejelentkezett felhasználóra vonatkozó további hívások történnek.
 
-## <a name="next-steps"></a>További lépések
-
-Ebben a cikkben megtanulta, hogyan hozhat létre olyan alkalmazásokat, amelyek bármely Azure AD-bérlőből bejelentkezhetnek a felhasználókba. Miután engedélyezte az egyszeri bejelentkezést (SSO) az alkalmazás és az Azure AD között, frissítheti az alkalmazást a Microsoft-erőforrások (például Microsoft 365) által elérhető API-k eléréséhez. Ez lehetővé teszi, hogy személyre szabott felhasználói élményt nyújtson az alkalmazásban, például a környezetfüggő információkat jelenítse meg a felhasználók számára, például a profil képét vagy a következő naptári időpontot. Ha többet szeretne megtudni az Azure AD-hez és Microsoft 365 szolgáltatásokhoz, például az Exchange, a SharePoint, a OneDrive, a OneNote és más rendszerekhez, látogasson el [Microsoft Graph API][MSFT-Graph-overview]-ra.
-
 ## <a name="related-content"></a>Kapcsolódó tartalom
 
 * [Több-bérlős alkalmazás mintája](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/master/2-WebApp-graph-user/2-3-Multi-Tenant/README.md)
@@ -191,6 +187,10 @@ Ebben a cikkben megtanulta, hogyan hozhat létre olyan alkalmazásokat, amelyek 
 * [Alkalmazások integrálása az Azure Active Directoryval][AAD-Integrating-Apps]
 * [Az engedélyezési keretrendszer áttekintése][AAD-Consent-Overview]
 * [Az API-engedélyek hatókörének Microsoft Graph][MSFT-Graph-permission-scopes]
+
+## <a name="next-steps"></a>További lépések
+
+Ebben a cikkben megtanulta, hogyan hozhat létre olyan alkalmazásokat, amelyek bármely Azure AD-bérlőből bejelentkezhetnek a felhasználókba. Miután engedélyezte az egyszeri bejelentkezést (SSO) az alkalmazás és az Azure AD között, frissítheti az alkalmazást a Microsoft-erőforrások (például Microsoft 365) által elérhető API-k eléréséhez. Ez lehetővé teszi, hogy személyre szabott felhasználói élményt nyújtson az alkalmazásban, például a környezetfüggő információkat jelenítse meg a felhasználók számára, például a profil képét vagy a következő naptári időpontot. Ha többet szeretne megtudni az Azure AD-hez és Microsoft 365 szolgáltatásokhoz, például az Exchange, a SharePoint, a OneDrive, a OneNote és más rendszerekhez, látogasson el [Microsoft Graph API][MSFT-Graph-overview]-ra.
 
 <!--Reference style links IN USE -->
 [AAD-Access-Panel]:  https://myapps.microsoft.com
@@ -228,8 +228,7 @@ Ebben a cikkben megtanulta, hogyan hozhat létre olyan alkalmazásokat, amelyek 
 [JWT]: https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32
 [O365-Perm-Ref]: /graph/permissions-reference
 [OAuth2-Access-Token-Scopes]: https://tools.ietf.org/html/rfc6749#section-3.3
-[OAuth2-AuthZ-Code-Grant-Flow]: /previous-versions/azure/dn645542(v=azure.100)
-[OAuth2-AuthZ-Grant-Types]: https://tools.ietf.org/html/rfc6749#section-1.3 
+[OAuth2-AuthZ-Grant-Types]: https://tools.ietf.org/html/rfc6749#section-1.3
 [OAuth2-Client-Types]: https://tools.ietf.org/html/rfc6749#section-2.1
 [OAuth2-Role-Def]: https://tools.ietf.org/html/rfc6749#page-6
 [OpenIDConnect]: https://openid.net/specs/openid-connect-core-1_0.html

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c6e3316afc09992d16e17d9d2e2afe6b92dcd22
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: a09c4513206bea3462577ecba49b5d77b655b0e0
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049043"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91628264"
 ---
 # <a name="conditional-access-sign-in-risk-based-conditional-access"></a>Feltételes hozzáférés: bejelentkezési kockázatalapú feltételes hozzáférés
 
@@ -37,7 +37,7 @@ A házirendet két helyen lehet hozzárendelni. A szervezeteknek a következő l
    1. A **kizárás**területen válassza a **felhasználók és csoportok** lehetőséget, majd válassza ki a szervezet vészhelyzeti hozzáférését vagy az adatbontási fiókokat. 
    1. Válassza a **Kész** lehetőséget.
 1. A **Cloud apps vagy a műveletek**területen válassza a  >  **Include** **minden felhőalapú alkalmazás**lehetőséget.
-1. A **Conditions**  >  **felhasználói kockázat**beállítás alatt állítsa az **Igen**értékre a **configure (Konfigurálás** ) beállítást. **A bejelentkezés kockázati szintjének kiválasztása területen a szabályzat érvényes lesz a következőre** : 
+1. A **Conditions**  >  **bejelentkezési kockázat**beállításnál állítsa az **Igen**értékre a **configure (Konfigurálás** ) beállítást. **A bejelentkezés kockázati szintjének kiválasztása területen a szabályzat érvényes lesz a következőre** : 
    1. Válassza a **magas** és **közepes**lehetőséget.
    1. Válassza a **Kész** lehetőséget.
 1. A **hozzáférés-vezérlés**  >  **megadása**területen válassza a **hozzáférés biztosítása**, a **többtényezős hitelesítés megkövetelése**, majd a **kiválasztás**lehetőséget.
@@ -60,7 +60,7 @@ A házirendet két helyen lehet hozzárendelni. A szervezeteknek a következő l
 1. **Házirend kényszerített** értékének beállítása **a**következőre:.
 1. Válassza a **Mentés** lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Feltételes hozzáférés – közös szabályzatok](concept-conditional-access-policy-common.md)
 

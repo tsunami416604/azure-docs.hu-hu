@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: dde4db7f3eb476b7645e910504e48fea8bb6df0c
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 4fb64a2ea55744d66b203ef4d901f22ae4695e1a
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91569721"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91630423"
 ---
 # <a name="backup-and-restore-for-azure-arc-enabled-postgresql-hyperscale-server-groups"></a>Azure arc-kompatibilis PostgreSQL nagy kapacitású-kiszolgálócsoportok biztonsági mentése és visszaállítása
 
@@ -93,8 +93,6 @@ Ebben a példában:
 - a __név__ a biztonsági másolat nevét jelzi.
 - a __kiszolgáló neve__ egy kiszolgálócsoport-csoportot jelöl
 - a __No-WAIT__ érték azt jelzi, hogy a parancssor nem várja meg a biztonsági mentés befejeződését, hogy továbbra is használni tudja ezt a parancssori ablakot.
-
->**Megjegyzés**: az a parancs, amely lehetővé teszi a visszaállításhoz elérhető biztonsági másolatok listázását, a biztonsági mentés dátumát és időpontját. Ezért javasoljuk, hogy adjon nevet a biztonsági mentésnek (a--name paraméterrel), amely tartalmazza a dátum-és időadatokat.
 
 Ez a parancs egy elosztott teljes biztonsági mentést koordinál az összes olyan csomóponton, amely az Azure arc-kompatibilis PostgreSQL nagy kapacitású-kiszolgálócsoport részét képezi. Más szóval a koordinátor és a munkavégző csomópontok összes adatait biztonsági másolatot készít.
 
@@ -217,6 +215,6 @@ A DELETE paranccsal kapcsolatos további információkért futtassa a következ�
 azdata arc postgres backup delete --help
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - További információ a kiszolgálócsoport [kibővítéséről (munkavégző csomópontok hozzáadásáról)](scale-out-postgresql-hyperscale-server-group.md)
 - További információ a kiszolgálócsoport [fel-vagy leskálázásáról (a memória/virtuális mag növelése/csökkentése)](scale-up-down-postgresql-hyperscale-server-group-using-cli.md)

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
-ms.date: 09/10/2020
+ms.date: 09/30/2020
 ms.author: aahi
-ms.openlocfilehash: 0fde9a0f46073a2f3a24962ea58431581455f474
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e4a75bdd6147ee2189660c37062c5bec9d55d512
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936004"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631739"
 ---
 # <a name="metrics-advisor-frequently-asked-questions"></a>Metrikák Advisor – gyakori kérdések
 
@@ -74,9 +74,26 @@ Az adatai részletessége alapján a rendellenességek észlelését eredményez
 
 ### <a name="more-concepts-and-technical-terms"></a>További fogalmak és technikai feltételek
 
-További információért látogasson el a [szószedetbe](glossary.md) .
+További információkat a [szószedetben](glossary.md) talál.
 
-## <a name="how-do-i-detect-such-kinds-of-anomalies"></a>Hogyan észlelni az ilyen típusú rendellenességeket? 
+###  <a name="how-do-i-write-a-valid-query-for-ingesting-my-data"></a>Hogyan az adataik betöltéséhez érvényes lekérdezést írni?  
+
+Ahhoz, hogy a metrikai tanácsadó adatokat tartalmazzon, létre kell hoznia egy lekérdezést, amely az adatok dimenzióit egyetlen időbélyegen adja vissza. A metrikai tanácsadó többször is futtatja ezt a lekérdezést az adatoknak az egyes időbélyegekről való lekéréséhez. 
+
+Vegye figyelembe, hogy a lekérdezésnek az egyes dimenziók kombinációinak legfeljebb egy rekordjában kell visszaadnia egy adott időbélyegzőn. Minden visszaadott rekordnak ugyanazzal az időbélyegzővel kell rendelkeznie. A lekérdezés nem ad vissza duplikált rekordot.
+
+Tegyük fel például, hogy az alábbi lekérdezést hozza létre napi metrika esetén: 
+ 
+`select timestamp, city, category, revenue from sampledata where Timestamp >= @StartTime and Timestamp < dateadd(DAY, 1, @StartTime)`
+
+Ügyeljen arra, hogy az idősorozat helyes részletességét használja. Óradíjas metrika esetén a következőt kell használnia: 
+
+`select timestamp, city, category, revenue from sampledata where Timestamp >= @StartTime and Timestamp < dateadd(hour, 1, @StartTime)`
+
+Vegye figyelembe, hogy ezek a lekérdezések csak egyetlen időbélyegen adják vissza az adatokat, és tartalmazzák a metrikai tanácsadó által betöltött összes dimenzió kombinációt. 
+
+:::image type="content" source="media/query-result.png" alt-text="Üzenet, ha már létezik egy F0-erőforrás" lightbox="media/query-result.png":::
+
 
 ### <a name="how-do-i-detect-spikes--dips-as-anomalies"></a>Hogyan észlelni a tüskéket & a dipsot rendellenességként?
 

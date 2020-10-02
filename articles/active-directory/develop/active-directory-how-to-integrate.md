@@ -1,5 +1,6 @@
 ---
-title: Integráció a Microsoft Identity platformmal
+title: Integráció a Microsoft Identity platformmal | Azure
+titleSuffix: Microsoft identity platform
 description: Ismerje meg az alkalmazások Microsoft Identity platformmal való integrálásának előnyeit, és szerezzen forrásokat olyan funkciókhoz, mint az egyszerűsített bejelentkezés, az Identitáskezelés, a többtényezős hitelesítés és a hozzáférés-vezérlés.
 services: active-directory
 author: rwike77
@@ -8,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 04/08/2019
+ms.date: 10/01/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, seoapril2019
-ms.openlocfilehash: bdeb27f9e761fefc52c9c97b28d15770e22221f4
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: e9724bb2e5377f84904dc77c33375c39f3077dd4
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90706166"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631409"
 ---
 # <a name="integrating-with-microsoft-identity-platform"></a>Integráció a Microsoft Identity platformmal
 
@@ -45,9 +46,9 @@ Az alkalmazás számos módon integrálható a Microsoft Identity platformmal. H
 
 **Használja a Microsoft Identity platformot a szerepköralapú Access Controlhoz.**  A rendszergazdák és az alkalmazások tulajdonosai felhasználókat és csoportokat rendelhetnek hozzá az alkalmazás Microsoft Identity platformon való regisztrálása során meghatározott szerepkörökhöz. A szerepkör-információkat a rendszer a bejelentkezési jogkivonatokban elküldi az alkalmazásnak, és a Microsoft Graph API használatával is olvasható. További információ a [Microsoft Identity platform használatáról az engedélyezéshez](https://cloudblogs.microsoft.com/enterprisemobility/2014/12/18/azure-active-directory-now-with-group-claims-and-application-roles/).
 
-### <a name="get-access-to-users-profile-calendar-email-contacts-files-and-more"></a>Hozzáférés a felhasználói profilhoz, a naptárhoz, az e-mailekhez, a névjegyekhez és a fájlokhoz
+### <a name="get-access-to-users-profile-calendar-email-contacts-files-and-more"></a>Hozzáférés a felhasználók profiljához, a naptárhoz, az e-mailekhez, a névjegyekhez és a fájlokhoz
 
-**A Microsoft Identity platform a Microsoft 365 és más Microsoft üzleti szolgáltatások engedélyezési kiszolgálója.**  Ha támogatja a Microsoft Identity platformot, hogy bejelentkezzen az alkalmazásba, vagy támogassa a jelenlegi felhasználói fiókjainak az Azure AD felhasználói fiókjaihoz való összekapcsolását a OAuth 2,0 használatával, olvasási és írási hozzáférést kérhet a felhasználó profiljához, naptárához, e-mailekhez, névjegyekhez, fájlokhoz és egyéb információkhoz. Az eseményeket zökkenőmentesen is megírhatja a felhasználó naptárába, és fájlokat olvashat vagy írhat a OneDrive. További információ [a Microsoft 365 API-k eléréséről](/previous-versions/office/office-365-api/).
+**A Microsoft Identity platform a Microsoft 365 és más Microsoft üzleti szolgáltatások engedélyezési kiszolgálója.**  Ha támogatja a Microsoft Identity platformot, hogy bejelentkezzen az alkalmazásba, vagy támogassa a jelenlegi felhasználói fiókjainak az Azure AD felhasználói fiókjaihoz való összekapcsolását a OAuth 2,0 használatával, olvasási és írási hozzáférést kérhet a felhasználó profiljához, naptárához, e-mailekhez, névjegyekhez, fájlokhoz és egyéb információkhoz. Az eseményeket zökkenőmentesen is megírhatja a felhasználó naptárába, és fájlokat olvashat vagy írhat a OneDrive. További információ [a Microsoft 365 API](/graph/overview)-król.
 
 ### <a name="promote-your-application-in-the-azure-and-microsoft-365-marketplaces"></a>Népszerűsítse alkalmazását az Azure-ban és Microsoft 365 piactéren
 

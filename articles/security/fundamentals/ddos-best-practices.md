@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2018
 ms.author: terrylan
-ms.openlocfilehash: 3b1a0d646c05be0de83837b33e77e34969c9254c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c817608a9e015c69b252f69000d78437e918b8f8
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287799"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631511"
 ---
 # <a name="azure-ddos-protection---designing-resilient-solutions"></a>Azure DDoS Protection – rugalmas megoldások tervezése
 
@@ -54,7 +54,7 @@ A méretezhetőség azt szemlélteti, hogy a rendszer milyen jól tudja kezelni 
 
 A védelem részletesen a különböző védelmi stratégiák használatával kezelhető a kockázatkezelés. Az alkalmazásokban a biztonsági védelem egyre csökkenti a sikeres támadás lehetőségét. Javasoljuk, hogy az Azure platform beépített képességeinek használatával hozzon létre biztonságos terveket az alkalmazásaihoz.
 
-Például a támadás kockázata az alkalmazás méretével (*felületével*) nő. Az engedélyezési lista használatával csökkentheti a felületet a kihelyezett IP-címtartomány és a terheléselosztó által nem szükséges portok ([Azure Load Balancer](/azure/load-balancer/load-balancer-get-started-internet-portal) és az [Azure Application Gateway](/azure/application-gateway/application-gateway-create-probe-portal)) bezárásához. A [hálózati biztonsági csoportok (NSG)](/azure/virtual-network/security-overview) egy másik módszer a támadási felület csökkentésére.
+Például a támadás kockázata az alkalmazás méretével (*felületével*) nő. A felszín területét egy jóváhagyási lista használatával csökkentheti a kihelyezett IP-címtartomány és a terheléselosztó által nem szükséges portok figyelése ([Azure Load Balancer](/azure/load-balancer/load-balancer-get-started-internet-portal) és az [Azure Application Gateway](/azure/application-gateway/application-gateway-create-probe-portal)). A [hálózati biztonsági csoportok (NSG)](/azure/virtual-network/security-overview) egy másik módszer a támadási felület csökkentésére.
 A [szolgáltatási címkék](/azure/virtual-network/security-overview#service-tags) és az [alkalmazás-biztonsági csoportok](/azure/virtual-network/security-overview#application-security-groups) használatával csökkentheti a biztonsági szabályok létrehozásának összetettségét, és konfigurálhatja a hálózati biztonságot az alkalmazások struktúrájának természetes kiterjesztéseként.
 
 Amikor csak lehetséges, üzembe kell helyeznie az Azure-szolgáltatásokat egy [virtuális hálózaton](/azure/virtual-network/virtual-networks-overview) . Ez a gyakorlat lehetővé teszi a szolgáltatási erőforrások számára, hogy magánhálózati IP-címeken keresztül kommunikáljanak egymással. A virtuális hálózatról származó Azure-szolgáltatási forgalom alapértelmezés szerint a nyilvános IP-címeket használja forrás IP-címként. A [szolgáltatási végpontok](/azure/virtual-network/virtual-network-service-endpoints-overview) használatával a szolgáltatás forgalmát úgy fogja váltani, hogy a virtuális hálózati magánhálózati címeket használják forrás IP-címként, amikor egy virtuális hálózatról érik el az Azure-szolgáltatást.
