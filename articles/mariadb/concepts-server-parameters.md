@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 6/25/2020
-ms.openlocfilehash: 7d530180b499495e97cb635186fc6a0d5cbd9044
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b5064e3cef7def1aca5aa0c97d031d519fd610cf
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392726"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91626394"
 ---
 # <a name="server-parameters-in-azure-database-for-mariadb"></a>Kiszolgálói paraméterek a Azure Database for MariaDB
 
@@ -29,13 +29,19 @@ A támogatott kiszolgálói paraméterek listája folyamatosan bővül. A Azure 
 
 Az alábbi részekben tájékozódhat a számos gyakran frissített kiszolgálói paraméter korlátairól. A korlátokat a kiszolgáló díjszabási szintje és virtuális mag határozzák meg.
 
+### <a name="log_bin_trust_function_creators"></a>log_bin_trust_function_creators
+
+Azure Database for MariaDB a bináris naplók mindig engedélyezve vannak (azaz `log_bin` be van állítva). Ha triggereket szeretne használni, akkor ehhez hasonló hibaüzenetet kap, *Ha nem rendelkezik a felügyelői jogosultsággal, és engedélyezve van a bináris naplózás (a kevésbé biztonságos `log_bin_trust_function_creators` változót érdemes használni)*.
+
+A bináris naplózási formátum mindig **sor** , és a kiszolgálóval létesített összes kapcsolat **mindig** sor alapú bináris naplózást használ. A sor-alapú bináris naplózással nem léteznek biztonsági problémák, és a bináris naplózás nem törhető le, így a biztonságos beállítás értéke [`log_bin_trust_function_creators`](https://mariadb.com/docs/reference/mdb/system-variables/log_bin_trust_function_creators/) **true (igaz**) lehet.
+
 ### <a name="innodb_buffer_pool_size"></a>innodb_buffer_pool_size
 
 A paraméterrel kapcsolatos további információkért tekintse meg a [MariaDB dokumentációját](https://mariadb.com/kb/en/innodb-system-variables/#innodb_buffer_pool_size) .
 
 #### <a name="servers-supporting-up-to-4-tb-storage"></a>Legfeljebb 4 TB tárterületet támogató kiszolgálók
 
-|**Díjszabási csomag**|**Virtuális mag (ok)**|**Alapértelmezett érték (bájt)**|**Minimális érték (bájt)**|**Maximális érték (bájt)**|
+|**Tarifacsomag**|**Virtuális mag (ok)**|**Alapértelmezett érték (bájt)**|**Minimális érték (bájt)**|**Maximális érték (bájt)**|
 |---|---|---|---|---|
 |Alapszintű|1|872415232|134217728|872415232|
 |Alapszintű|2|2684354560|134217728|2684354560|
@@ -53,7 +59,7 @@ A paraméterrel kapcsolatos további információkért tekintse meg a [MariaDB d
 
 #### <a name="servers-support-up-to-16-tb-storage"></a>A kiszolgálók legfeljebb 16 TB tárterületet támogatnak
 
-|**Díjszabási csomag**|**Virtuális mag (ok)**|**Alapértelmezett érték (bájt)**|**Minimális érték (bájt)**|**Maximális érték (bájt)**|
+|**Tarifacsomag**|**Virtuális mag (ok)**|**Alapértelmezett érték (bájt)**|**Minimális érték (bájt)**|**Maximális érték (bájt)**|
 |---|---|---|---|---|
 |Alapszintű|1|872415232|134217728|872415232|
 |Alapszintű|2|2684354560|134217728|2684354560|
@@ -72,7 +78,7 @@ A paraméterrel kapcsolatos további információkért tekintse meg a [MariaDB d
 ### <a name="innodb_file_per_table"></a>innodb_file_per_table
 
 > [!NOTE]
-> `innodb_file_per_table`csak a általános célú és a memória optimalizált díjszabási szintjein lehet frissíteni.
+> `innodb_file_per_table` csak a általános célú és a memória optimalizált díjszabási szintjein lehet frissíteni.
 
 A MariaDB a tábla létrehozása során megadott konfiguráció alapján különböző tablespaces-ben tárolja a InnoDB táblát. A [System tablespace](https://mariadb.com/kb/en/innodb-system-tablespaces/) a InnoDB adatszótárának tárolóhelye. A [file-by-Table tablespace](https://mariadb.com/kb/en/innodb-file-per-table-tablespaces/) egyetlen InnoDB-táblához tartalmaz adatmennyiséget és indexeket, és a fájlrendszerben tárolja a saját adatfájljában. Ezt a viselkedést a `innodb_file_per_table` Server paraméter vezérli. A `innodb_file_per_table` beállítás `OFF` hatására a InnoDB táblákat hozhat létre a System tablespaceben. Ellenkező esetben a InnoDB táblákat hoz létre a fájl-/táblázatos tablespaces-ben.
 
@@ -82,7 +88,7 @@ A Azure Database for MariaDB a legnagyobb **1 TB**-ot támogatja egyetlen adatf�
 
 A paraméterrel kapcsolatos további információkért tekintse meg a [MariaDB dokumentációját](https://mariadb.com/kb/en/server-system-variables/#join_buffer_size) .
 
-|**Díjszabási csomag**|**Virtuális mag (ok)**|**Alapértelmezett érték (bájt)**|**Minimális érték (bájt)**|**Maximális érték (bájt)**|
+|**Tarifacsomag**|**Virtuális mag (ok)**|**Alapértelmezett érték (bájt)**|**Minimális érték (bájt)**|**Maximális érték (bájt)**|
 |---|---|---|---|---|
 |Alapszintű|1|Alapszintű csomag nem konfigurálható|N.A.|N.A.|
 |Alapszintű|2|Alapszintű csomag nem konfigurálható|N.A.|N.A.|
@@ -100,7 +106,7 @@ A paraméterrel kapcsolatos további információkért tekintse meg a [MariaDB d
 
 ### <a name="max_connections"></a>max_connections
 
-|**Díjszabási csomag**|**Virtuális mag (ok)**|**Alapértelmezett érték**|**Minimális érték**|**Maximális érték**|
+|**Tarifacsomag**|**Virtuális mag (ok)**|**Alapértelmezett érték**|**Minimális érték**|**Maximális érték**|
 |---|---|---|---|---|
 |Alapszintű|1|50|10|50|
 |Alapszintű|2|100|10|100|
@@ -131,7 +137,7 @@ Ha új ügyfélkapcsolatokat hoz létre a MariaDB-hoz, akkor az idő és a létr
 
 A paraméterrel kapcsolatos további információkért tekintse meg a [MariaDB dokumentációját](https://mariadb.com/kb/en/server-system-variables/#max_heap_table_size) .
 
-|**Díjszabási csomag**|**Virtuális mag (ok)**|**Alapértelmezett érték (bájt)**|**Minimális érték (bájt)**|**Maximális érték (bájt)**|
+|**Tarifacsomag**|**Virtuális mag (ok)**|**Alapértelmezett érték (bájt)**|**Minimális érték (bájt)**|**Maximális érték (bájt)**|
 |---|---|---|---|---|
 |Alapszintű|1|Alapszintű csomag nem konfigurálható|N.A.|N.A.|
 |Alapszintű|2|Alapszintű csomag nem konfigurálható|N.A.|N.A.|
@@ -153,7 +159,7 @@ A lekérdezési gyorsítótár alapértelmezés szerint engedélyezve van a Mari
 
 A paraméterrel kapcsolatos további információkért tekintse meg a [MariaDB dokumentációját](https://mariadb.com/kb/en/server-system-variables/#query_cache_size) .
 
-|**Díjszabási csomag**|**Virtuális mag (ok)**|**Alapértelmezett érték (bájt)**|**Minimális érték (bájt)**|* * Maximális érték * *|
+|**Tarifacsomag**|**Virtuális mag (ok)**|**Alapértelmezett érték (bájt)**|**Minimális érték (bájt)**|* * Maximális érték * *|
 |---|---|---|---|---|
 |Alapszintű|1|Alapszintű csomag nem konfigurálható|N.A.|N.A.|
 |Alapszintű|2|Alapszintű csomag nem konfigurálható|N.A.|N.A.|
@@ -173,7 +179,7 @@ A paraméterrel kapcsolatos további információkért tekintse meg a [MariaDB d
 
 A paraméterrel kapcsolatos további információkért tekintse meg a [MariaDB dokumentációját](https://mariadb.com/kb/en/server-system-variables/#sort_buffer_size) .
 
-|**Díjszabási csomag**|**Virtuális mag (ok)**|**Alapértelmezett érték (bájt)**|**Minimális érték (bájt)**|**Maximális érték (bájt)**|
+|**Tarifacsomag**|**Virtuális mag (ok)**|**Alapértelmezett érték (bájt)**|**Minimális érték (bájt)**|**Maximális érték (bájt)**|
 |---|---|---|---|---|
 |Alapszintű|1|Alapszintű csomag nem konfigurálható|N.A.|N.A.|
 |Alapszintű|2|Alapszintű csomag nem konfigurálható|N.A.|N.A.|
@@ -193,7 +199,7 @@ A paraméterrel kapcsolatos további információkért tekintse meg a [MariaDB d
 
 A paraméterrel kapcsolatos további információkért tekintse meg a [MariaDB dokumentációját](https://mariadb.com/kb/en/server-system-variables/#tmp_table_size) .
 
-|**Díjszabási csomag**|**Virtuális mag (ok)**|**Alapértelmezett érték (bájt)**|**Minimális érték (bájt)**|**Maximális érték (bájt)**|
+|**Tarifacsomag**|**Virtuális mag (ok)**|**Alapértelmezett érték (bájt)**|**Minimális érték (bájt)**|**Maximális érték (bájt)**|
 |---|---|---|---|---|
 |Alapszintű|1|Alapszintű csomag nem konfigurálható|N.A.|N.A.|
 |Alapszintű|2|Alapszintű csomag nem konfigurálható|N.A.|N.A.|

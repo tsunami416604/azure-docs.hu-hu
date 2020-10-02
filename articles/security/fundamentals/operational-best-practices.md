@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 13b3d483e271ac220ae254891fe362e932746e87
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 7c429ad04a4c1e881c84c3af9dfa9ee553963917
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279499"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629794"
 ---
 # <a name="azure-operational-security-best-practices"></a>Az Azure működési biztonságának ajánlott eljárásai
 Ez a cikk az Azure-ban tárolt adatok, alkalmazások és egyéb eszközök védelmére vonatkozó ajánlott eljárásokat ismerteti.
@@ -185,7 +185,7 @@ Az Azure Cloud Services esetében konfigurálja az egyes szerepköröket [több 
 Az [Azure Virtual Machines](../../virtual-machines/windows/overview.md)esetén győződjön meg arról, hogy a virtuálisgép-architektúra több virtuális gépet tartalmaz, és hogy minden virtuális gép egy [rendelkezésre állási csoportba](../../virtual-machines/windows/tutorial-availability-sets.md)tartozik. Javasoljuk, hogy használjon virtuálisgép-méretezési csoportokat az automatikus skálázási képességekhez.
 
 **Ajánlott eljárás**: a biztonsági védelem egy alkalmazásban való rétegződése csökkenti a sikeres támadás esélyét. Hozzon létre biztonságos terveket az alkalmazásaihoz az Azure platform beépített képességeinek használatával.  
-**Részletek**: a támadás kockázata az alkalmazás méretével (felszíni területével) növekszik. Az engedélyezési lista használatával csökkentheti a felületet a kihelyezett IP-címtartomány és a terheléselosztó által nem szükséges portok ([Azure Load Balancer](/azure/load-balancer/load-balancer-get-started-internet-portal) és az [Azure Application Gateway](/azure/application-gateway/application-gateway-create-probe-portal)) bezárásához.
+**Részletek**: a támadás kockázata az alkalmazás méretével (felszíni területével) növekszik. A felszín területét egy jóváhagyási lista használatával csökkentheti a kihelyezett IP-címtartomány és a terheléselosztó által nem szükséges portok figyelése ([Azure Load Balancer](/azure/load-balancer/load-balancer-get-started-internet-portal) és az [Azure Application Gateway](/azure/application-gateway/application-gateway-create-probe-portal)).
 
 A [hálózati biztonsági csoportok](../../virtual-network/security-overview.md) egy másik módszer a támadási felület csökkentésére. A [szolgáltatási címkék](../../virtual-network/security-overview.md#service-tags) és az [alkalmazás-biztonsági csoportok](../../virtual-network/security-overview.md#application-security-groups) használatával csökkentheti a biztonsági szabályok létrehozásának összetettségét, és konfigurálhatja a hálózati biztonságot az alkalmazások struktúrájának természetes kiterjesztéseként.
 
@@ -221,7 +221,7 @@ További információ: [házirendek létrehozása és kezelése a megfelelőség
 ## <a name="monitor-azure-ad-risk-reports"></a>Azure AD kockázati jelentések figyelése
 A biztonsági rések túlnyomó többsége akkor kerül sor, amikor a támadók a felhasználó identitásának ellopásával hozzáférnek a környezetekhez. A feltört identitások feltárása nem egyszerű feladat. Az Azure AD adaptív gépi tanulási algoritmusokat és heurisztikus műveleteket használ a felhasználói fiókokhoz kapcsolódó gyanús műveletek észlelésére. A rendszer minden észlelt gyanús műveletet egy [kockázati észlelésnek](../../active-directory/reports-monitoring/concept-risk-events.md)nevezett rekordban tárol. A kockázati észlelések az Azure AD biztonsági jelentéseiben vannak rögzítve. További információért olvassa el a [veszélyeztetett felhasználókról szóló jelentést](../../active-directory/reports-monitoring/concept-user-at-risk.md) , valamint a [kockázatos bejelentkezések biztonsági jelentését](../../active-directory/reports-monitoring/concept-risky-sign-ins.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az Azure-beli felhőalapú megoldások tervezésekor, üzembe helyezése és kezelése során ajánlott biztonsági eljárásokat az [Azure biztonsági eljárásaival és modelljeivel](best-practices-and-patterns.md) foglalkozó témakörben talál.
 
 Az Azure-biztonsággal és a kapcsolódó Microsoft-szolgáltatásokkal kapcsolatos általános információk az alábbi forrásokból érhetők el:

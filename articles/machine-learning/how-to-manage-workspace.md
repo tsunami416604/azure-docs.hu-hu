@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: sgilley
 author: sdgilley
-ms.date: 09/22/2020
+ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, fasttrack-edit
-ms.openlocfilehash: 6462226436aa7976f5293a5c271258be8a340cd4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d2885c6cc259cba74ab991ecf5046856984824f1
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322333"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631246"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>Azure Machine Learning munkaterületek létrehozása és kezelése a Azure Portal
 
@@ -64,17 +64,15 @@ Munkaterület létrehozásához Azure-előfizetésre van szükség. Ha nem rende
 ### <a name="networking"></a>Hálózatkezelés  
 
 > [!IMPORTANT]  
-> További információ a saját munkaterülettel rendelkező privát végpontok és virtuális hálózatok használatáról: [hálózati elkülönítés és adatvédelem](how-to-enable-virtual-network.md).  
-1. Az alapértelmezett hálózati konfiguráció egy __nyilvános végpont__használata, amely a nyilvános interneten érhető el. Ha a munkaterülethez való hozzáférést egy Ön által létrehozott Azure-Virtual Network szeretné korlátozni, válassza a __magánhálózati végpont__ (előzetes verzió) lehetőséget a __kapcsolati módszerként__, majd a __+ Hozzáadás__ paranccsal konfigurálja a végpontot.   
-
-   > [!IMPORTANT]   
-   > A Azure Machine Learning munkaterülettel rendelkező privát végpontok jelenleg nyilvános előzetes verzióban érhetők el. Ez az előzetes verzió szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.  
-   > További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
+> További információ a saját munkaterülettel rendelkező privát végpontok és virtuális hálózatok használatáról: [hálózati elkülönítés és adatvédelem](how-to-enable-virtual-network.md).
+    
+1. Az alapértelmezett hálózati konfiguráció egy __nyilvános végpont__használata, amely a nyilvános interneten érhető el. Ha a munkaterülethez való hozzáférést egy Ön által létrehozott Azure-Virtual Network szeretné korlátozni, válassza a __magánhálózati végpont__ lehetőséget a __kapcsolati módszerként__, majd a __+ Hozzáadás__ paranccsal konfigurálja a végpontot. 
+    
    :::image type="content" source="media/how-to-manage-workspace/select-private-endpoint.png" alt-text="Privát végpont kiválasztása":::  
 
 1. A __privát végpont létrehozása__ űrlapon állítsa be a használni kívánt helyet, nevet és virtuális hálózatot. Ha saját DNS zónával szeretné használni a végpontot, válassza a __saját DNS-zóna integrálása__ lehetőséget, majd a __saját DNS zóna__ mező használatával válassza ki a zónát. A végpont létrehozásához kattintson __az OK gombra__ .   
 
-   :::image type="content" source="media/how-to-manage-workspace/create-private-endpoint.png" alt-text="Magánhálózati végpont létrehozása":::   
+   :::image type="content" source="media/how-to-manage-workspace/create-private-endpoint.png" alt-text="Privát végpont kiválasztása":::   
 
 1. Ha befejezte a hálózatkezelés konfigurálását, válassza a __felülvizsgálat + létrehozás__lehetőséget, vagy lépjen a választható __speciális__ konfigurációra. 
 
@@ -112,14 +110,15 @@ Ha a Azure Machine Learning __vállalati__ verzióját használja, a saját kulc
 >   
 >     Nem kell manuálisan létrehoznia a Azure Cosmos DB példányt, a rendszer létrehoz egyet a munkaterület létrehozása során. Ez a Azure Cosmos DB-példány egy külön erőforráscsoporthoz jön létre a következő minta alapján: `<your-workspace-resource-name>_<GUID>` .   
 >   
-> Ez a beállítás a munkaterület létrehozása után nem módosítható. Ha törli a munkaterület által használt Azure Cosmos DB, törölnie kell az azt használó munkaterületet is.   
+> Ez a beállítás a munkaterület létrehozása után nem módosítható. Ha törli a munkaterület által használt Azure Cosmos DB, törölnie kell az azt használó munkaterületet is.
+
 1. Válassza az __ügyfél által felügyelt kulcsok__lehetőséget, majd __kattintson a kulcs kiválasztásához__.   
 
-    :::image type="content" source="media/how-to-manage-workspace/advanced-workspace.png" alt-text="Felhasználó által kezelt kulcsok":::   
+    :::image type="content" source="media/how-to-manage-workspace/advanced-workspace.png" alt-text="Privát végpont kiválasztása":::   
 
 1. A __válasszon kulcsot Azure Key Vault__ űrlapon válassza ki a meglévő Azure Key Vault, a benne található kulcsot, valamint a kulcs verzióját. Ezzel a kulccsal titkosíthatja a Azure Cosmos DB tárolt adataikat. Végül használja a __Select (kiválasztás__ ) gombot a kulcs használatához. 
 
-   :::image type="content" source="media/how-to-manage-workspace/select-key-vault.png" alt-text="Válassza ki a kulcsot":::
+   :::image type="content" source="media/how-to-manage-workspace/select-key-vault.png" alt-text="Privát végpont kiválasztása":::
 
 ### <a name="download-a-configuration-file"></a>Konfigurációs fájl letöltése
 
@@ -148,7 +147,7 @@ Ha a Azure Machine Learning __vállalati__ verzióját használja, a saját kulc
 
 A [Azure Portal](https://portal.azure.com/)a törölni kívánt munkaterület tetején válassza a **Törlés**  lehetőséget.
 
-:::image type="content" source="./media/how-to-manage-workspace/delete-workspace.png" alt-text="Munkaterület törlése":::
+:::image type="content" source="./media/how-to-manage-workspace/delete-workspace.png" alt-text="Privát végpont kiválasztása":::
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -171,7 +170,7 @@ A Azure Machine Learning munkaterület egyes műveletekhez Azure Container Regis
 
 [!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Kövesse a teljes hosszúságú oktatóanyagot, amelyből megtudhatja, hogyan hozhat létre, taníthat és helyezhet üzembe modelleket Azure Machine Learning használatával a munkaterületen.
 

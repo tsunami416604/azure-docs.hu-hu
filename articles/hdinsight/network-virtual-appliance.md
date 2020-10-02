@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 06/30/2020
-ms.openlocfilehash: 1dcc345260c6a0844344bb33dec94c40d1dd9a54
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 407160a5c315844003db4c5e371a03e6e25d2694
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650870"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91630933"
 ---
 # <a name="configure-network-virtual-appliance-in-azure-hdinsight"></a>Hálózati virtuális berendezés konfigurálása az Azure HDInsight
 
@@ -23,7 +23,7 @@ A Azure Firewall automatikusan úgy van konfigurálva, hogy a gyakori fontos for
 
 * A szolgáltatás-végponttal kompatibilis szolgáltatások olyan szolgáltatási végpontokkal konfigurálhatók, amelyek megkerülik a NVA, általában a költségeket vagy a teljesítménnyel kapcsolatos megfontolásokat.
 * Az IP-címek függőségei nem HTTP/S forgalomra vonatkoznak (TCP-és UDP-forgalom).
-* A teljes tartománynév HTTP/HTTPS-végpontok a NVA-eszközön is megadhatók.
+* Az FQDN HTTP/HTTPS-végpontok jóváhagyható a NVA-eszközön.
 * Rendelje hozzá a HDInsight-alhálózathoz létrehozott útválasztási táblázatot.
 
 ## <a name="service-endpoint-capable-dependencies"></a>Szolgáltatási végpontok számára alkalmas függőségek
@@ -57,7 +57,7 @@ A következő szolgáltatási végpontok közül egyet vagy többet is engedély
 | ocsp.digicert.com:80                                                  |
 | microsoft.com:80                                                      |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Tűzfal használata a kimenő forgalom korlátozására](./hdinsight-restrict-outbound-traffic.md)
 * [Azure HDInsight virtuális hálózati architektúra](hdinsight-virtual-network-architecture.md)

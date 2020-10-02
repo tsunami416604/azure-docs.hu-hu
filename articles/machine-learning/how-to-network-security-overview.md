@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
-ms.date: 09/25/2020
+ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperfq1
-ms.openlocfilehash: c1d351cf7a3d66f6051bf5c9d17672b054c2d862
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: d4690062dead8186022cc53ca47dbc7e17a9376f
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91538382"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631188"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>Virtual Network elkülönítés és Adatvédelem – áttekintés
 
@@ -80,19 +80,7 @@ A lépések végrehajtásával kapcsolatos részletes útmutatásért lásd: [Az
 ### <a name="limitations"></a>Korlátozások
 
 A munkaterület és a kapcsolódó erőforrások virtuális hálózaton belüli biztonságossá tétele a következő korlátozásokkal jár:
-- A munkaterület privát hivatkozása csak a következő régiókban érhető el:
-    - **USA keleti régiója**
-    - **USA déli középső régiója**
-    - **USA nyugati régiója**
-    - **USA 2. nyugati régiója**
-    - **Közép-Kanada**
-    - **Délkelet-Ázsia**
-    - **Kelet-Japán**
-    - **Észak-Európa**
-    - **Kelet-Ausztrália**
-    - **Az Egyesült Királyság déli régiója**
-    
-    Ez a korlátozás nem vonatkozik a kapcsolódó erőforrásokra. Engedélyezheti például a VNet a Storage szolgáltatáshoz bármely Azure Machine Learning régióban.
+- A privát hivatkozást tartalmazó Azure Machine Learning munkaterület nem érhető el a Azure Government vagy az Azure China 21Vianet régióiban.
 - Minden erőforrásnak azonos VNet kell lennie. Az azonos VNet lévő alhálózatok azonban engedélyezettek.
 
 ## <a name="secure-the-training-environment"></a>A képzési környezet biztonságossá tétele

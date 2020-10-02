@@ -7,25 +7,26 @@ ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 05/19/2020
-ms.openlocfilehash: 880b9027a3708dc283e43b813d3dabf2c9ffd401
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: f5325f2eeb6b3c1866db7db0b99b2885623e6d5a
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120806"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91626411"
 ---
 # <a name="microsoft-commercial-marketplace-resources"></a>A Microsoft kereskedelmi piactér erőforrásai
 
-A Microsoft kereskedelmi piactéren elérhető legújabb kiadásokról és egyéb frissítésekről a következő forrásokban talál információt.
+A legújabb kiadásokról és a Microsoft kereskedelmi piactér és a partneri központ további frissítéseiről a következő forrásokban olvashat bővebben.
 
-* [Microsoft AppSource és Azure Marketplace – partner Community fórum](https://www.microsoftpartnercommunity.com/t5/Microsoft-AppSource-and-Azure/bd-p/2222)
+* [Microsoft AppSource és Azure Marketplace – partner Community fórum ](https://www.microsoftpartnercommunity.com/t5/Microsoft-AppSource-and-Azure/bd-p/2222)
+* [A partner Center bejelentései](/partner-center/announcements/)
 * [A piactér és a felhőalapú megoldás-szolgáltató (CSP) frissítési blogja](https://aka.ms/marketplacemarchupdateblog)
 * [Ajánlatok közzététele a CSP-csatornán (ISV)](./cloud-solution-providers.md)
 * [Marketplace-ajánlatok viszonteladása (CSP)](https://aka.ms/marketplaceincsp)
 * [Standard szintű szerződés a Microsoft kereskedelmi piactérről](./standard-contract.md)
-* [SaaS Fulfillment API-k](./partner-center-portal/pc-saas-fulfillment-apis.md)
-* [Földrajzi Elérhetőség és pénznemek támogatása a kereskedelmi piactéren](./marketplace-geo-availability-currencies.md)
-* [A partner Center kereskedelmi piactérének elemzései](./partner-center-portal/analytics.md)
+* [SaaS-teljesítési API-k](./partner-center-portal/pc-saas-fulfillment-apis.md)
+* [Földrajzi Elérhetőség és pénznemek támogatása a kereskedelmi piactéren](marketplace-geo-availability-currencies.md)
+* [A partner Center kereskedelmi piactérének elemzései](partner-center-portal/analytics.md)
 * [A Microsoft Build piactér blogja](https://aka.ms/marketplacebuildblog)
 * [Előfordulhat, hogy a piactér frissíti a blogot](https://azure.microsoft.com/blog/microsoft-commercial-marketplace-updates-may-2019/)
 * Partneri központ: [fiók](partner-center-portal/create-account.md)  /  [kezelése](partner-center-portal/manage-account.md)fiók  /  [áttelepítése a CPP-ből](partner-center-portal/account-migration-from-cpp-to-pc.md)

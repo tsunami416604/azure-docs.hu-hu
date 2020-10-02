@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, vanto
 ms.date: 11/09/2018
-ms.openlocfilehash: 9d58a8c1dc79c10ed42fd1675115eb14f2ad4d3e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a59e498435aab7b3e3e2ecf2e6096c044550a1b8
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91283730"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91628366"
 ---
 # <a name="connect-your-application-to-azure-sql-managed-instance"></a>Alkalmazás csatlakoztatása felügyelt Azure SQL-példányhoz
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -45,10 +45,10 @@ A virtuális hálózatok összekapcsolásának két lehetősége van:
 - [Azure VNet-társítás](../../virtual-network/virtual-network-peering-overview.md)
 - VNet – VNet VPN Gateway ([Azure Portal](../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md), [POWERSHELL](../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md), [Azure CLI](../../vpn-gateway/vpn-gateway-howto-vnet-vnet-cli.md))
 
-A társítás előnyben részesített, mivel a Microsoft gerinc hálózatot használja, így a kapcsolati szempontból nem észlelhető különbség a virtuális gépek és az azonos virtuális hálózatok közötti késésben. A virtuális hálózat társítása az azonos régióban található hálózatokra korlátozódik.  
+A társítás előnyben részesített, mivel a Microsoft gerinc hálózatot használja, így a kapcsolati szempontból nem észlelhető különbség a virtuális gépek és az azonos virtuális hálózatok közötti késésben. A virtuális hálózatok közötti társítás az azonos régióban található hálózatok között támogatott. A globális virtuális hálózati társítást az alábbi megjegyzésben ismertetett korlátozás is támogatja.  
 
 > [!IMPORTANT]
-> Az SQL felügyelt példányához tartozó virtuális hálózati társítási forgatókönyv az ugyanabban a régióban található hálózatokra korlátozódik, a [globális virtuális hálózati társítás korlátai](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)miatt. További részletekért tekintse meg az [Azure Virtual Networks – gyakori kérdések](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) című cikket is. 
+> [9/22/2020-ben bejelentettük a globális virtuális hálózati társítást az újonnan létrehozott virtuális fürtökhöz](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/). Ez azt jelenti, hogy a globális virtuális hálózati társítás támogatott a bejelentési dátum után üres alhálózatokban létrehozott SQL felügyelt példányok esetében, valamint az ezen alhálózatokban létrehozott összes további felügyelt példány esetében is. A többi SQL felügyelt példányok társításának támogatása az azonos régióban található hálózatokra korlátozódik a [globális virtuális hálózati társítás korlátai](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)miatt. További részletekért tekintse meg az [Azure Virtual Networks – gyakori kérdések](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) című cikket is. 
 
 ## <a name="connect-from-on-premises"></a>Helyi kapcsolat 
 
@@ -154,7 +154,7 @@ Az eszközök és illesztőprogramok következő minimális verziói ajánlottak
 |SSMS| 18,0 vagy [újabb](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) |
 |[SMO](https://docs.microsoft.com/sql/relational-databases/server-management-objects-smo/sql-server-management-objects-smo-programming-guide) | [150](https://www.nuget.org/packages/Microsoft.SqlServer.SqlManagementObjects) vagy újabb |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ az SQL felügyelt példányáról: [Mi az SQL felügyelt példánya?](sql-managed-instance-paas-overview.md).
 - Az új felügyelt példányok létrehozásával kapcsolatos oktatóanyagért lásd: [felügyelt példány létrehozása](instance-create-quickstart.md).

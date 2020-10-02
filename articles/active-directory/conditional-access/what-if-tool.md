@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db76ec2bc2fc8640214f962a809fee559b4c4af3
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: bebd32d2773ca86638de221d305079bb262e3e5e
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948198"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631426"
 ---
 # <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>Hibaelhárítás a feltételes hozzáférés Lehetőségelemzési eszközével
 
@@ -36,7 +36,7 @@ A **feltételes hozzáférés What if eszközben**először konfigurálnia kell 
 
 - A tesztelni kívánt felhasználó 
 - Azok a felhőalapú alkalmazások, amelyeket a felhasználó megkísérel elérni
-- A felhőalapú alkalmazások konfigurálásának feltételei
+- A konfigurált felhőalapú alkalmazásokhoz való hozzáférés végrehajtásának feltételei
      
 A következő lépésként elindíthat egy szimulációs futtatást, amely kiértékeli a beállításokat. Csak az engedélyezett szabályzatok tartoznak egy próbaverziós futtatásba.
 
@@ -102,7 +102,7 @@ A kiválasztott felhasználóra vonatkozó szabályzatok listáján megtalálhat
 
 Azon házirendek listáján, amelyek nem érvényesek a felhasználóra, megtalálhatja azokat az okokat is, amelyek miatt ezek a szabályzatok nem érvényesek. Az egyes felsorolt szabályzatok esetében az ok az első olyan feltételt jelenti, amely nem teljesült. Egy nem alkalmazott házirend lehetséges oka a letiltott házirend, mivel azokat a rendszer nem értékeli ki.   
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A feltételes hozzáférési szabályzat alkalmazásával kapcsolatos további információkért a [feltételes hozzáférési információk és jelentéskészítés](howto-conditional-access-insights-reporting.md)funkció használatával a házirend csak jelentés mód használatával érhető el.
 - Ha készen áll a környezet feltételes hozzáférési házirendjeinek konfigurálására, tekintse meg a [feltételes hozzáférés általános házirendjeit](concept-conditional-access-policy-common.md).

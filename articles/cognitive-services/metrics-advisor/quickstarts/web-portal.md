@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: quickstart
-ms.date: 09/14/2020
+ms.date: 09/30/2020
 ms.author: aahi
-ms.openlocfilehash: 0453ec9eac2b73b5372c143b23d6db98f65e38aa
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 004685a50e2413c29528ad3aca08a0150843a8aa
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90947812"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631367"
 ---
 # <a name="quickstart-monitor-your-first-metric-using-the-web-portal"></a>Rövid útmutató: az első metrika monitorozása a webes portál használatával
 
@@ -38,6 +38,13 @@ Metrikai Advisor-példány kiépítésekor az API-k és a webalapú munkaterüle
 > * Ha a REST APIt szeretné használni a szolgáltatással való kommunikációhoz, szüksége lesz a létrehozott erőforrás kulcsára és végpontra. Ezeket a létrehozott erőforrás  **kulcsok és végpontok** lapján tekintheti meg.
 
 Ez a dokumentum egy SQL Database példát használ az első figyelő létrehozásához.
+
+## <a name="sign-in-to-your-workspace"></a>Bejelentkezés a munkaterületre
+
+Miután létrehozta az erőforrást, jelentkezzen be a [metrika Advisor portálra](https://go.microsoft.com/fwlink/?linkid=2143774). Válassza ki a munkaterületet a metrikák figyelésének megkezdéséhez. 
+ 
+Jelenleg egy metrikai Advisor-erőforrást is létrehozhat az egyes elérhető régiókban. A metrikák tanácsadó portálon bármikor válthat munkaterületeket.
+
 
 ## <a name="onboard-time-series-data"></a>Előkészítési idősoros adatsorok
 
@@ -85,12 +92,12 @@ Ha az Adatséma betöltődik, és az alábbi módon jelenik meg, válassza ki a 
 |Kiválasztás  |Leírás  |Jegyzetek  |
 |---------|---------|---------|
 |**Timestamp**     | Egy adatpont időbélyege Ha nincs megadva, a metrikák tanácsadója az adatpont betöltésének időbélyegét fogja használni. Minden adatcsatorna esetében legfeljebb egy oszlopot adhat meg timestamp típusúként.        | Választható. Legfeljebb egy oszlopnak kell megadnia.       |
-|**mérték**     |  Az adatcsatorna numerikus értékei. Minden adatcsatorna esetében több mértéket is megadhat, de legalább egy oszlopot ki kell jelölni mértékként.        | Legalább egy oszloppal kell megadni.        |
+|**Measure**     |  Az adatcsatorna numerikus értékei. Minden adatcsatorna esetében több mértéket is megadhat, de legalább egy oszlopot ki kell jelölni mértékként.        | Legalább egy oszloppal kell megadni.        |
 |**Méret**     | Kategorikus értékek. A különböző értékek kombinációja egy adott egydimenziós idősorozatot azonosít, például: ország, nyelv, bérlő. A none vagy tetszőleges számú oszlopot kiválaszthatja dimenzióként. Megjegyzés: Ha nem karakterlánc típusú oszlopot választ dimenzióként, a dimenzió alábontása legyen óvatos. | Választható.        |
 |**Figyelmen kívül**     | A kijelölt oszlop figyelmen kívül hagyása.        |         |
 
 
-:::image type="content" source="../media/schema-configuration.png" alt-text="Séma konfigurációja" lightbox="../media/schema-configuration.png":::
+:::image type="content" source="../media/schema-configuration.png" alt-text="Kapcsolati beállítások" lightbox="../media/schema-configuration.png":::
 
 ### <a name="automatic-roll-up-settings"></a>Automatikus összesítő beállítások
 
@@ -110,7 +117,7 @@ Az észlelés alkalmazása esetén kattintson az adatcsatorna listájában felso
 - A konfiguráció észlelésének frissítése a várt eredmények kielégítése érdekében
 - Értesítés beállítása az észlelt rendellenességekről
 
-:::image type="content" source="../media/metric-details.png" alt-text="Metrika részletei" lightbox="../media/metric-details.png":::
+:::image type="content" source="../media/metric-details.png" alt-text="Kapcsolati beállítások" lightbox="../media/metric-details.png":::
 
 ## <a name="view-the-diagnostic-insights"></a>A diagnosztikai ismeretek megtekintése
 
@@ -118,13 +125,13 @@ Az észlelési konfiguráció finomhangolása után az észlelt rendellenessége
 
 A diagnosztikai megállapítások megtekintéséhez kattintson az idősorozat-vizualizációk piros pontokra, amelyek az észlelt rendellenességeket jelölik. Ekkor megjelenik egy ablak az incidensek elemzése oldalra mutató hivatkozással. 
 
-:::image type="content" source="../media/incident-link.png" alt-text="Incidens hivatkozása" lightbox="../media/incident-link.png":::
+:::image type="content" source="../media/incident-link.png" alt-text="Kapcsolati beállítások" lightbox="../media/incident-link.png":::
 
 Miután rákattintott a hivatkozásra, a rendszer az incidensek elemzése oldalra mutat, amely a megfelelő anomálián alapul, és a diagnosztikai elemzések egy rakásával foglalkozik. A fentiekben az incidensre vonatkozó statisztikai adatok, például a **Súlyosság**, a rendellenességek és az **érintett** **kezdési** és **befejezési idő**szerepel. 
 
 Ezután látni fogja az incidens őse anomáliát, és automatizálja a kiváltó okokat. Ez az automatizált kiváltó okok az összes kapcsolódó rendellenesség esetében az incidensek fájának elemzésével jönnek létre, többek között a következőkkel: szórás, eloszlás és a szülő anomáliák való hozzájárulás. 
 
-:::image type="content" source="../media/incident-diagnostic.png" alt-text="Incidens-diagnosztika" lightbox="../media/incident-diagnostic.png":::
+:::image type="content" source="../media/incident-diagnostic.png" alt-text="Kapcsolati beállítások" lightbox="../media/incident-diagnostic.png":::
 
 Ezek alapján már könnyedén megtekintheti, hogy mi történik, és milyen hatással van az incidensre, valamint a legvalószínűbb kiváltó ok. Annak érdekében, hogy a lehető legrövidebb időn belül azonnali művelettel lehessen megoldani az incidenst. 
 
@@ -143,7 +150,7 @@ A web Hook az a belépési pont, amellyel a rendszer a metrikai tanácsadó szol
 A Hook létrehozása után a riasztási beállítások határozzák meg, hogy a rendszer milyen riasztási értesítéseket küldjön. Az egyes mérőszámokhoz több riasztási beállítást is beállíthat. két fontos beállítás a **riasztás** , amely meghatározza a befoglalni kívánt rendellenességeket, és **szűri az anomáliák beállításait** , amelyek meghatározzák, hogy mely rendellenességek szerepeljenek a riasztásban. További részletekért tekintse meg a **riasztási beállítások hozzáadása vagy szerkesztése** című szakaszt a következő témakörben [: útmutató: riasztások konfigurálása és értesítések beszerzése Hook használatával](../how-tos/alerts.md#add-or-edit-alert-settings) .
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Adatcsatornák előkészítése](../how-tos/onboard-your-data.md)
     - [Adatcsatornák kezelése](../how-tos/manage-data-feeds.md)

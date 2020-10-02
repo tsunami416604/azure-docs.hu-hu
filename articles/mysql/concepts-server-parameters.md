@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/25/2020
-ms.openlocfilehash: bf87a61633706cb5db384e8a8ab957fa6a3f37f1
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 5415446e0211618cfbee917d0df91213d68b7097
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91533723"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627346"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>Kiszolgálói paraméterek a Azure Database for MySQL
 
@@ -54,6 +54,12 @@ A rövid lekérdezések teljesítményével kapcsolatos problémák javítása �
 
 > [!IMPORTANT]
 > Az éles üzemben való bekapcsolás előtt tesztelje a szál készletét. 
+
+### <a name="log_bin_trust_function_creators"></a>log_bin_trust_function_creators
+
+Azure Database for MySQL a bináris naplók mindig engedélyezve vannak (azaz `log_bin` be van állítva). Ha triggereket szeretne használni, akkor ehhez hasonló hibaüzenetet kap, *Ha nem rendelkezik a felügyelői jogosultsággal, és engedélyezve van a bináris naplózás (a kevésbé biztonságos `log_bin_trust_function_creators` változót érdemes használni)*. 
+
+A bináris naplózási formátum mindig **sor** , és a kiszolgálóval létesített összes kapcsolat **mindig** sor alapú bináris naplózást használ. A sor-alapú bináris naplózással nem léteznek biztonsági problémák, és a bináris naplózás nem törhető le, így a biztonságos beállítás értéke [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) **true (igaz**) lehet.
 
 ### <a name="innodb_buffer_pool_size"></a>innodb_buffer_pool_size
 

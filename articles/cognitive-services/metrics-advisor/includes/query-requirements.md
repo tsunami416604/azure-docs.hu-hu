@@ -7,16 +7,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: include
-ms.date: 09/10/2020
+ms.date: 09/30/2020
 ms.author: aahi
-ms.openlocfilehash: 68b5946cb21bef1c8979a94c8780682cfe9defa6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 518865f78c170f1fbe4e65b96dc149c1b449a88b
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91376264"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631366"
 ---
-A lekérdezésben használja a `@StartTime` paramétert az adott időbélyeghez tartozó metrikai adatok lekéréséhez. Ezt a rendszer a `yyyy-MM-ddTHH:mm:ss` formázó sztringtel helyettesíti. 
+A lekérdezésben használja a `@StartTime` paramétert a metrikai adatok egyetlen időbélyeghez való lekéréséhez. A metrikai tanácsadó a paramétert a `yyyy-MM-ddTHH:mm:ss` lekérdezés futtatásakor formázó karakterlánccal helyettesíti.
 
 > [!IMPORTANT]
-> Győződjön meg arról, hogy a lekérdezés csak **egyetlen időbélyegből** származó metrikus adatokat ad vissza. A metrikai tanácsadó minden időbélyegen futtatja a lekérdezést a megfelelő metrikai adatok beolvasásához. Például a *napi* részletességgel rendelkező metrika lekérdezése csak egyetlen időbélyeget tartalmazhat, például `2020-06-21T00:00:00Z` Ha egyszer futtatja a lekérdezést. 
+> A lekérdezésnek az egyes dimenzió-kombinációk esetében legfeljebb egy rekordot kell visszaadnia minden időbélyegnél. A lekérdezés által visszaadott összes rekordnak azonos időbélyegzővel kell rendelkeznie. A metrikai tanácsadó minden időbélyeg esetében futtatja ezt a lekérdezést az adatok betöltéséhez. További információért és példákért tekintse [meg a gyakori kérdések szakaszt](../faq.md#how-do-i-write-a-valid-query-for-ingesting-my-data) . 

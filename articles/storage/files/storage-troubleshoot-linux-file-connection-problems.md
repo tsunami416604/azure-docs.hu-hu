@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 0be60208146681135c7502746a271e4e007dc0ea
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 40fb5a1623175445065f0546403661a1f6eb399f
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91249586"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629437"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux-smb"></a>A Linux (SMB) Azure Files problémáinak elhárítása
 
@@ -298,6 +298,32 @@ A rendszer naplózza a hibát, mert Azure Files [jelenleg nem támogatja a több
 
 ### <a name="solution"></a>Megoldás
 Ez a hiba figyelmen kívül hagyható.
+
+
+### <a name="unable-to-access-folders-or-files-which-name-has-a-space-or-a-dot-at-the-end"></a>Nem lehet hozzáférni azokhoz a mappákhoz vagy fájlokhoz, amelyeknek a neve szóköz vagy pont a végén
+
+Nem férhet hozzá a mappákhoz vagy a fájlokhoz az Azure-fájlmegosztás Linux rendszeren való csatlakoztatása során, például a du és az ls és/vagy a harmadik féltől származó alkalmazások sikertelenek lehetnek "nincs ilyen fájl vagy könyvtár" hiba a megosztás elérésekor, azonban a portálon keresztül fel tudja tölteni a fájlokat az említett mappákba.
+
+### <a name="cause"></a>Ok
+
+A mappák vagy fájlok olyan rendszerből lettek feltöltve, amely a név végén kódolja a karaktereket egy másik karakterre, a Macintosh számítógépekről feltöltött fájlok "0xF028" vagy "0xF029" karaktert tartalmazhatnak a 0x20 (szóköz) vagy a 0X2E (pont) helyett.
+
+### <a name="solution"></a>Megoldás
+
+Használja a megosztás mapchars beállítását a megosztás Linux rendszeren való csatlakoztatásakor: 
+
+ahelyett, hogy:
+
+```bash
+sudo mount -t cifs $smbPath $mntPath -o vers=3.0,username=$storageAccountName,password=$storageAccountKey,serverino
+```
+
+használja
+
+```bash
+sudo mount -t cifs $smbPath $mntPath -o vers=3.0,username=$storageAccountName,password=$storageAccountKey,serverino,mapchars
+```
+
 
 ## <a name="need-help-contact-support"></a>Segítségre van szüksége? Vegye fel a kapcsolatot az ügyfélszolgálattal.
 

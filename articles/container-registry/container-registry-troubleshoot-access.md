@@ -2,13 +2,13 @@
 title: A beállításjegyzék hálózati problémáinak elhárítása
 description: Az Azure Container Registry virtuális hálózatban való elérésekor vagy tűzfal mögötti gyakori problémák tünetei, okai és megoldása
 ms.topic: article
-ms.date: 08/11/2020
-ms.openlocfilehash: 06c5b65537fd7d256010260bb3a93888721f643b
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.date: 10/01/2020
+ms.openlocfilehash: c2ae8609dbd28a1a39a634e3c065030552aefb06
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91532448"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91630950"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>A beállításjegyzék hálózati problémáinak elhárítása
 
@@ -22,6 +22,7 @@ A következők közül egyet vagy többet is tartalmazhat:
 * Nem lehet leküldeni vagy lekérni a képeket, és Azure CLI-hibát kap `Could not connect to the registry login server`
 * Nem sikerült lekérni a lemezképeket a beállításjegyzékből az Azure Kubernetes Service-be vagy egy másik Azure-szolgáltatásba
 * Nem lehet hozzáférni egy, a HTTPS-proxy mögötti beállításjegyzékhez, és hibaüzenetet kap `Error response from daemon: login attempt failed with status: 403 Forbidden`
+* Nem lehet konfigurálni a virtuális hálózati beállításokat, és hibaüzenetet kap `Failed to save firewall and virtual network settings for container registry`
 * Nem lehet hozzáférni vagy megtekinteni a beállításjegyzék beállításait Azure Portal vagy a beállításjegyzéket az Azure CLI használatával felügyelni
 * Nem lehet virtuális hálózati beállításokat vagy nyilvános hozzáférési szabályokat felvenni vagy módosítani
 * Az ACR-feladatok nem képesek leküldeni vagy lekérni a képeket
@@ -47,7 +48,7 @@ A példákat az [Azure Container Registry állapotának ellenőrzését](contain
 
 ### <a name="configure-client-firewall-access"></a>Az ügyfél tűzfal-hozzáférésének konfigurálása
 
-Ha egy beállításjegyzéket szeretne elérni egy ügyfél-tűzfal vagy proxykiszolgáló mögött, konfigurálja a tűzfalszabályokat a beállításjegyzék REST-és adatvégpontokhoz való hozzáféréséhez. Ha a [dedikált adatvégpontok](container-registry-firewall-access-rules.md#enable-dedicated-data-endpoints) engedélyezve vannak, az eléréséhez szabályokra van szükség:
+Ha egy beállításjegyzéket szeretne elérni egy ügyfél-tűzfal vagy proxykiszolgáló mögött, konfigurálja a tűzfalszabályokat a beállításjegyzék nyilvános REST és adatvégpontok eléréséhez. Ha a [dedikált adatvégpontok](container-registry-firewall-access-rules.md#enable-dedicated-data-endpoints) engedélyezve vannak, az eléréséhez szabályokra van szükség:
 
 * REST-végpont: `<registryname>.azurecr.io`
 * Adatvégpont (ok): `<registry-name>.<region>.data.azurecr.io`
@@ -85,6 +86,8 @@ Győződjön meg arról, hogy a virtuális hálózat magánhálózati vagy szolg
 Tekintse át a hálózat más erőforrásairól a beállításjegyzékbe irányuló forgalom korlátozásához használt NSG-szabályokat és-szolgáltatási címkéket. 
 
 Ha konfigurálva van egy szolgáltatási végpont a beállításjegyzékhez, győződjön meg arról, hogy egy hálózati szabály van hozzáadva a beállításjegyzékhez, amely engedélyezi az adott hálózati alhálózat elérését. A szolgáltatási végpont csak a hálózatban lévő virtuális gépek és AK-fürtök elérését támogatja.
+
+Ha egy másik Azure-előfizetésben lévő virtuális hálózat használatával szeretné korlátozni a beállításjegyzék-hozzáférést, ügyeljen arra, hogy regisztrálja az `Microsoft.ContainerRegistry` erőforrás-szolgáltatót az előfizetésben. [Regisztrálja Azure Container Registry erőforrás-szolgáltatóját](../azure-resource-manager/management/resource-providers-and-types.md) a Azure Portal, az Azure CLI vagy más Azure-eszközök használatával.
 
 Ha Azure Firewall vagy hasonló megoldás van konfigurálva a hálózaton, ellenőrizze, hogy a kimenő forgalom más erőforrásokból, például egy AK-fürtből van-e engedélyezve a beállításjegyzékbeli végpontok eléréséhez.
 

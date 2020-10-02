@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 346156c624a4c8b1c1d6cc490fc0559f364b4b9d
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: c498046b9088f78eda95693fa23f0a0bb3472724
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905567"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91626870"
 ---
 # <a name="import-an-openapi-specification"></a>OpenAPI-specifikáció importálása
 
@@ -42,8 +42,8 @@ Hajtsa végre a következő rövid útmutatót: [Azure API Management-példány 
 2. Az **Új API hozzáadása** listáról válassza az **OpenAPI-specifikáció** lehetőséget.
 
     ![OpenAPI-specifikáció](./media/import-api-from-oas/oas-api.png)
-3. Adja meg az API-beállításokat. Megadhatja az értékeket a létrehozás során, vagy később konfigurálhatja őket a **Beállítások** lapon. A beállításokat az [első API-oktatóanyag importálásával és közzétételével](import-and-publish.md#-import-and-publish-a-backend-api) foglalkozó cikkben ismertetjük.
-4. Válassza a **Létrehozás** lehetőséget.
+3. Adja meg az API-beállításokat. Megadhatja az értékeket a létrehozás során, vagy később konfigurálhatja őket a **Beállítások** lapon. A beállításokat az [első API-oktatóanyag importálásával és közzétételével](import-and-publish.md#import-and-publish-a-backend-api) foglalkozó cikkben ismertetjük.
+4. Kattintson a **Létrehozás** gombra.
 
 > [!NOTE]
 > Az API-importálási korlátozások [egy másik cikkben](api-management-api-import-restrictions.md)vannak dokumentálva.
@@ -52,7 +52,7 @@ Hajtsa végre a következő rövid útmutatót: [Azure API Management-példány 
 
 [!INCLUDE [api-management-define-api-topics.md](../../includes/api-management-define-api-topics.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Közzétett API átalakítása és védelme](transform-api.md)

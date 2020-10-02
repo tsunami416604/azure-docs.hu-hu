@@ -5,29 +5,32 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
-ms.date: 6/11/2020
-ms.openlocfilehash: a37fbee4361d4a87c43a42cae66c425eba1e0877
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 10/1/2020
+ms.openlocfilehash: c28f0edafd72794a60ef577fc3177e4436157950
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90887039"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631477"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mysql-using-the-azure-portal"></a>Kiszolgálói paraméterek konfigurálása Azure Database for MySQL a Azure Portal használatával
 
 Azure Database for MySQL támogatja egyes kiszolgálói paraméterek konfigurációját. Ez a cikk azt ismerteti, hogyan konfigurálhatja ezeket a paramétereket a Azure Portal használatával. Nem minden kiszolgáló paraméter módosítható.
 
+>[!Note]
+> A kiszolgálói paraméterek globálisan frissíthetők a kiszolgáló szintjén, az [Azure CLI](./howto-configure-server-parameters-using-cli.md), a [PowerShell](./howto-configure-server-parameters-using-powershell.md)vagy a [Azure Portal](./howto-server-parameters.md)használatával.
+
 ## <a name="configure-server-parameters"></a>Kiszolgáló paramétereinek konfigurálása
 
-1. Jelentkezzen be a Azure Portalba, majd keresse meg a Azure Database for MySQL-kiszolgálót.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), majd keresse meg a Azure Database for MySQL-kiszolgálót.
 2. A **Beállítások** szakaszban kattintson a **kiszolgálói paraméterek** elemre a Azure Database for MySQL kiszolgáló kiszolgálói paraméterek lapjának megnyitásához.
 :::image type="content" source="./media/howto-server-parameters/auzre-portal-server-parameters.png" alt-text="Azure Portal kiszolgáló paramétereinek lapja":::
 3. Keresse meg a módosítani kívánt beállításokat. A **description (Leírás** ) oszlopban tekintse át a cél és az engedélyezett értékek ismeretét.
-:::image type="content" source="./media/howto-server-parameters/3-toggle_parameter.png" alt-text="Számbavétel legördülő lista":::
+:::image type="content" source="./media/howto-server-parameters/3-toggle_parameter.png" alt-text="Azure Portal kiszolgáló paramétereinek lapja":::
 4. A módosítások mentéséhez kattintson a  **Save (Mentés** ) gombra.
-:::image type="content" source="./media/howto-server-parameters/4-save_parameters.png" alt-text="Módosítások mentése vagy elvetése":::
+:::image type="content" source="./media/howto-server-parameters/4-save_parameters.png" alt-text="Azure Portal kiszolgáló paramétereinek lapja":::
 5. Ha új értékeket mentett a paraméterek számára, az **összes visszaállítása az alapértelmezett**értékre lehetőség kiválasztásával bármikor visszaállíthatja az alapértelmezett értékeket.
-:::image type="content" source="./media/howto-server-parameters/5-reset_parameters.png" alt-text="Az összes visszaállítása az alapértelmezett értékre":::
+:::image type="content" source="./media/howto-server-parameters/5-reset_parameters.png" alt-text="Azure Portal kiszolgáló paramétereinek lapja":::
 
 ## <a name="setting-parameters-not-listed"></a>Nem felsorolt paraméterek beállítása
 
@@ -69,7 +72,7 @@ SELECT name FROM mysql.time_zone_name;
 
 A globális szintű időzónát a Azure Portal **kiszolgáló paraméterek** lapján lehet beállítani. Az alábbi beállítás a globális időzónát az "USA/csendes-óceáni" értékre állítja be.
 
-:::image type="content" source="./media/howto-server-parameters/timezone.png" alt-text="Időzóna-paraméter beállítása":::
+:::image type="content" source="./media/howto-server-parameters/timezone.png" alt-text="Azure Portal kiszolgáló paramétereinek lapja":::
 
 ### <a name="setting-the-session-level-time-zone"></a>A munkamenet-szint időzónájának beállítása
 
@@ -81,6 +84,6 @@ SET time_zone = 'US/Pacific';
 
 Tekintse meg a MySQL dokumentációját a [dátum-és Időfüggvényekhez](https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_convert-tz).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure Database for MySQLhoz tartozó kapcsolatok kódtárai](concepts-connection-libraries.md).

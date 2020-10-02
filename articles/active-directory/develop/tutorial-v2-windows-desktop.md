@@ -12,14 +12,14 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 7effb1592fb19f92958353a3333edf6fdf9a51af
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: b82193fda64f2cf265c879c5cda9141be1b576f8
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91574262"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627890"
 ---
-# <a name="call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>A Microsoft Graph API meghívása egy Windowsos asztali alkalmazásból
+# <a name="tutorial-call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>Oktatóanyag: a Microsoft Graph API meghívása egy Windowsos asztali alkalmazásból
 
 Ez az útmutató azt mutatja be, hogy a natív Windowsos asztali .NET-(XAML-) alkalmazások hogyan használják a hozzáférési jogkivonatot a Microsoft Graph API meghívásához. Az alkalmazás más API-khoz is hozzáférhet, amelyekhez hozzáférési jogkivonatok szükségesek a Microsoft Identity platformon.
 

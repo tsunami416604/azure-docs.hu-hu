@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2020
 author: shganesh-dev
 ms.author: shganesh
-ms.openlocfilehash: f0f14bf24bd867344ec72c86a6fd517085b66d1f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: ed836e3df28c5e39aa7f9d21f020c0d37292dcfc
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317552"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631800"
 ---
 # <a name="commercial-marketplace-analytics-terminology-and-common-questions"></a>Kereskedelmi piactér analitikai terminológiája és gyakori kérdések
 
@@ -45,6 +45,7 @@ Ha ezt az üzenetet kapja, az azt jelenti, hogy rendelkezik elemzési adatokkal,
 | Azure-licenc típusa: Enterprise | Ügyfél, megrendelés | A végfelhasználók az Azure-t és a Piactéri ajánlatokat egy Nagyvállalati Szerződéson keresztül szerzik be, közvetlenül a Microsofttal.|
 | Azure-licenc típusa: Enterprise a viszonteladón keresztül  | Ügyfél, megrendelés | A végfelhasználók az Azure-t és a Piactéri ajánlatokat egy viszonteladón keresztül szerzik be, amely megkönnyíti a Nagyvállalati Szerződés a Microsofttal.|
 | Azure-licenc típusa: utólagos fizetés| Ügyfél, megrendelés | A végfelhasználók az Azure-t és a Piactéri ajánlatokat a "Pay as go" szerződés keretében szerzik be közvetlenül a Microsofttal.|
+| Számlázási fiók azonosítója| Ügyfél, rendelés, használat| Annak a fióknak az azonosítója, amelyre a számlázást létrehozták. Ezzel az attribútummal összekapcsolhatók az analitikus jelentések a kifizetési tranzakciós jelentéssel.|
 | Felhőbeli példány neve| Rendelés| Az a Microsoft Cloud, amelyben a virtuális gép üzembe helyezése megtörtént.|
 | Felhőbeli példány neve: Azure Global| Rendelés| A nyilvános globális Microsoft-felhő.|
 | Felhőbeli példány neve: Azure Government | Rendelés| Kormányzati specifikus Microsoft-felhők a következő kormányok egyikére: Kína, Németország vagy az Amerikai Egyesült Államok Egyesült Államok.| |

@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 08/28/2020
-ms.openlocfilehash: 023d6512a13e1add1e9980d450a91ed2183e7793
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 2035fa811ed6bb5760f2527f66e0f2ca48ccb2c9
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/01/2020
-ms.locfileid: "91614444"
+ms.locfileid: "91627227"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Automatikus feladatátvételi csoportok használata több adatbázis átlátható és koordinált feladatátvételének engedélyezéséhez
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -359,7 +359,11 @@ Ha egy feladatátvételi csoportot állít be az elsődleges és a másodlagos S
 - Az SQL által felügyelt példány két példányának különböző Azure-régiókban kell lennie.
 - A felügyelt SQL-példányok két példányának azonos szolgáltatási szintnek kell lennie, és ugyanazzal a tárolási mérettel kell rendelkeznie.
 - A felügyelt SQL-példány másodlagos példányának üresnek kell lennie (nincs felhasználói adatbázis).
-- Az SQL felügyelt példány példányai által használt virtuális hálózatokat [VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md) vagy [expressz útvonalon](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md)keresztül kell csatlakoztatni. Ha két virtuális hálózat egy helyszíni hálózaton keresztül csatlakozik, győződjön meg arról, hogy nem blokkolja tűzfalszabály az 5022-es és a 11000–11999-es portokat. A globális virtuális társhálózatok nem támogatottak.
+- Az SQL felügyelt példány példányai által használt virtuális hálózatokat [VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md) vagy [expressz útvonalon](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md)keresztül kell csatlakoztatni. Ha két virtuális hálózat egy helyszíni hálózaton keresztül csatlakozik, győződjön meg arról, hogy nem blokkolja tűzfalszabály az 5022-es és a 11000–11999-es portokat. A globális VNet-társítást az alábbi megjegyzésben ismertetett korlátozás támogatja.
+
+   > [!IMPORTANT]
+   > [9/22/2020-ben bejelentettük a globális virtuális hálózati társítást az újonnan létrehozott virtuális fürtökhöz](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/). Ez azt jelenti, hogy a globális virtuális hálózati társítás támogatott a bejelentési dátum után üres alhálózatokban létrehozott SQL felügyelt példányok esetében, valamint az ezen alhálózatokban létrehozott összes további felügyelt példány esetében is. A többi SQL felügyelt példányok társításának támogatása az azonos régióban található hálózatokra korlátozódik a [globális virtuális hálózati társítás korlátai](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)miatt. További részletekért tekintse meg az [Azure Virtual Networks – gyakori kérdések](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) című cikket is. 
+
 - A két felügyelt SQL-példány virtuális hálózatok nem rendelkezhet átfedésben lévő IP-címekkel.
 - A hálózati biztonsági csoportokat (NSG) úgy kell beállítania, hogy az 5022-es portnak és a 11000–12000 közötti tartományba eső portoknak engedélyezni kell a másik felügyelt példány alhálózatával folytatott bejövő és kimenő forgalmat. Ezzel lehetővé teszi a virtuális hálózatok közötti replikációs forgalmat.
 

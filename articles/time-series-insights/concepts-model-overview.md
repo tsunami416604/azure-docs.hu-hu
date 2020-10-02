@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 53db53f60166c3b5afa117a60a99e3429a14576d
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: a61dd6c17ad4d11c6dd7294c9a4f96270748c16a
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89488558"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91630661"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-gen2"></a>Idősorozat-modell Azure Time Series Insights Gen2
 
@@ -101,7 +101,7 @@ A példányokat a **timeSeriesId**, a **typeId**, a **Name**, a **description**,
 | --- | ---|
 | timeSeriesId | Azon idősorozat egyedi azonosítója, amelyhez a példány társítva van. A legtöbb esetben a példányokat egyedileg azonosítják egy olyan tulajdonság, mint például az deviceId vagy a assetId. Bizonyos esetekben egy összetettebb összetett azonosító is használható, amely legfeljebb 3 tulajdonságot egyesít. |
 | typeId | Az idősorozat-modell típusának kis-és nagybetűket megkülönböztető egyedi karakterlánc-azonosítója, amelyhez a példány társítva van. Alapértelmezés szerint az összes felderített új példány egy alapértelmezett típushoz van társítva.
-| name | A **Name** tulajdonság nem kötelező, és megkülönbözteti a kis-és nagybetűket. Ha a **név** nem érhető el, az alapértelmezett érték a **timeSeriesId**. Ha megadja a nevet, a **timeSeriesId** továbbra [is elérhető.](time-series-insights-update-explorer.md#4-time-series-well) |
+| név | A **Name** tulajdonság nem kötelező, és megkülönbözteti a kis-és nagybetűket. Ha a **név** nem érhető el, az alapértelmezett érték a **timeSeriesId**. Ha megadja a nevet, a **timeSeriesId** továbbra [is elérhető.](time-series-insights-update-explorer.md#4-time-series-well) |
 | leírás | A példány szöveges leírása. |
 | hierarchyIds | Meghatározza, hogy mely hierarchiák tartoznak a példányhoz. |
 | instanceFields | Egy példány tulajdonságai és a példányt definiáló statikus adatmennyiség. A hierarchia vagy a hierarchián kívüli tulajdonságok értékeit határozzák meg, miközben a keresési műveletek végrehajtásához is támogatják az indexelést. |
@@ -148,7 +148,7 @@ A hierarchiákat a hierarchia **azonosítója**, **neve**és **forrása**határo
 | Tulajdonság | Leírás |
 | ---| ---|
 | id | A hierarchia egyedi azonosítója, amely például egy példány definiálásakor használatos. |
-| name | A hierarchia nevének megadására szolgáló sztring. |
+| név | A hierarchia nevének megadására szolgáló sztring. |
 | source | Meghatározza a szervezeti hierarchiát vagy elérési utat, amely a felhasználók által létrehozandó hierarchia legfelső szintű szülő-gyermek sorrendje. A szülő-gyermek tulajdonságok hozzárendelésének mezői. |
 
 A hierarchia a következőképpen jelenik meg a JSON-ben:
@@ -240,7 +240,7 @@ Az idősorozat-modell típusait **azonosító**, **név**, **Leírás**és **vá
 | Tulajdonság | Leírás |
 | ---| ---|
 | id | A kis-és nagybetűket megkülönböztető egyedi karakterlánc-azonosító a típushoz. |
-| name | A típus nevének megadására szolgáló sztring. |
+| név | A típus nevének megadására szolgáló sztring. |
 | leírás | A típushoz tartozó karakterlánc leírása. |
 | változók | Adja meg a típushoz társított változókat. |
 
@@ -286,7 +286,7 @@ A típusok megfelelnek a következő JSON-példának:
 
 Az idősorozat-modell típusai számos változót tartalmazhatnak, amelyek a képleteket és számítási szabályokat határozzák meg az eseményeken. További információ az [idősorozat-modell változók definiálásáról](./concepts-variables.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A modell API-kon keresztüli szerkesztésével kapcsolatos további információkért olvassa el a [Time Series Model](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis) Reference dokumentációját.
 

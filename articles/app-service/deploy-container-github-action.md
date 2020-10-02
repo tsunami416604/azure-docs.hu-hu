@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/25/2019
 ms.author: jafreebe
 ms.reviewer: ushan
-ms.openlocfilehash: 6808117728569ba6fd0b094c7330ce9a1baa24c4
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: 59bfdbf2d78497bc253f466e94fd69367a85070d
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/01/2020
-ms.locfileid: "91618607"
+ms.locfileid: "91631783"
 ---
 # <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>Egyéni tároló üzembe helyezése a GitHub-műveletek használatával App Service
 
@@ -23,7 +23,7 @@ Azure App Service tároló munkafolyamathoz a fájl három szakaszt tartalmaz:
 
 |Section  |Feladatok  |
 |---------|---------|
-|**Hitelesítés** | 1. egyszerű szolgáltatásnév vagy közzétételi profil. <br /> 2. hozzon létre egy GitHub-titkot. |
+|**Hitelesítés** | 1. az egyszerű szolgáltatásnév vagy a közzétételi profil beolvasása. <br /> 2. hozzon létre egy GitHub-titkot. |
 |**Létrehozás** | 1. hozza létre a környezetet. <br /> 2. hozza létre a tároló rendszerképét. |
 |**Telepítés** | 1. Telepítse a tároló lemezképét. |
 

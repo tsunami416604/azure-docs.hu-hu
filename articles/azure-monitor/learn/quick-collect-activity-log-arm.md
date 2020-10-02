@@ -7,12 +7,12 @@ ms.custom: subject-armqs
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2020
-ms.openlocfilehash: 26e8c40c35b130510f1bf8ae1456cb15907b345c
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 552df72901b9fde7acedd554b429f3a2ce0f671b
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851926"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631851"
 ---
 # <a name="quickstart-send-azure-activity-log-to-log-analytics-workspace-using-an-arm-template"></a>Gyors útmutató: Azure-beli tevékenység naplójának küldése Log Analytics munkaterületre ARM-sablon használatával
 
@@ -22,10 +22,10 @@ A műveletnapló egy Azure-beli platform-napló, amely betekintést nyújt az el
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 - A parancsok helyi számítógépről való futtatásához telepítse az Azure CLI-t vagy a Azure PowerShell modulokat. További információ: [Az Azure CLI telepítése](/cli/azure/install-azure-cli) és [Azure PowerShell telepítése](/powershell/azure/install-az-ps).
 
-## <a name="create-a-log-analytics-workspace"></a>A Log Analytics-munkaterület létrehozása
+## <a name="create-a-log-analytics-workspace"></a>Log Analytics-munkaterület létrehozása
 
 ### <a name="review-the-template"></a>A sablon áttekintése
 
@@ -38,12 +38,13 @@ A következő sablon egy üres Log Analytics munkaterületet hoz létre. Mentse 
   "parameters": {
     "workspaceName": {
       "type": "string",
-        "metadata": {
-          "description": "Name of the workspace."
-        }
+      "metadata": {
+        "description": "Name of the workspace."
+      }
     },
     "sku": {
       "type": "string",
+      "defaultValue": "pergb2018",
       "allowedValues": [
         "pergb2018",
         "Free",
@@ -52,7 +53,6 @@ A következő sablon egy üres Log Analytics munkaterületet hoz létre. Mentse 
         "Standard",
         "Premium"
       ],
-      "defaultValue": "pergb2018",
       "metadata": {
         "description": "Pricing tier: PerGB2018 or legacy tiers (Free, Standalone, PerNode, Standard or Premium) which are not available to all customers."
       }
@@ -109,7 +109,7 @@ A következő sablon egy üres Log Analytics munkaterületet hoz létre. Mentse 
   "resources": [
     {
       "type": "Microsoft.OperationalInsights/workspaces",
-      "apiVersion": "2020-03-01-preview",
+      "apiVersion": "2020-08-01",
       "name": "[parameters('workspaceName')]",
       "location": "[parameters('location')]",
       "properties": {
@@ -301,7 +301,7 @@ Bontsa ki az egyik rekordot a részletes tulajdonságainak megtekintéséhez.
 
 ![Összetett lekérdezés](media/quick-collect-activity-log/query-02.png)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha azt tervezi, hogy az ezt követő rövid útmutatókkal és oktatóanyagokkal dolgozik tovább, érdemes lehet ezeket az erőforrásokat helyben hagyni. Ha már nincs rá szükség, törölje az erőforráscsoportot, amely törli a riasztási szabályt és a kapcsolódó erőforrásokat. Az erőforráscsoport törlése az Azure CLI vagy a Azure PowerShell használatával
 

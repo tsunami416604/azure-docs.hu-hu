@@ -3,15 +3,15 @@ title: 'Rövid útmutató: C# ASP.NET Core-alkalmazás létrehozása'
 description: Megtudhatja, hogyan futtathat webalkalmazásokat Azure App Service az első ASP.NET Core-alkalmazás üzembe helyezésével.
 ms.assetid: b1e6bd58-48d1-4007-9d6c-53fd6db061e3
 ms.topic: quickstart
-ms.date: 08/01/2020
-ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18
+ms.date: 09/24/2020
+ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18, contperfq1
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 95f877c9030d51e68b97a21875ff3ff05b383457
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 7cbfddd10fdc383b16ce2277e5e9a082297d1912
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90973751"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91628145"
 ---
 # <a name="quickstart-create-an-aspnet-core-web-app-in-azure"></a>Rövid útmutató: ASP.NET Core Webalkalmazás létrehozása az Azure-ban
 
@@ -145,7 +145,7 @@ A webalkalmazás **áttekintő** lapja olyan alapszintű felügyeleti lehetősé
 
 [!INCLUDE [Clean-up section](../../includes/clean-up-section-portal.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban a Visual studiót használta egy ASP.NET Core webalkalmazás létrehozásához és üzembe helyezéséhez Azure App Service.
 
@@ -304,7 +304,7 @@ A létrehozott alkalmazás kezeléséhez lépjen a <a href="https://portal.azure
 
 A bal oldali menüben kattintson a **app Services**elemre, majd kattintson az Azure-alkalmazás nevére.
 
-:::image type="content" source="./media/quickstart-dotnetcore/portal-app-service-list.png" alt-text="Képernyőkép a App Services lapról, amely egy példaként kiválasztott Azure-alkalmazást mutat be.":::
+:::image type="content" source="./media/quickstart-dotnetcore/portal-app-service-list.png" alt-text="Képernyőkép a App Services oldalon egy példaként kiválasztott webalkalmazással.":::
 
 Megtekintheti az alkalmazás áttekintés lapját. Itt elvégezhet olyan alapszintű felügyeleti feladatokat, mint a tallózás, leállítás, elindítás, újraindítás és törlés. 
 
@@ -314,7 +314,7 @@ A bal oldali menü az alkalmazás konfigurálásához biztosít különböző ol
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: ASP.NET Core alkalmazás SQL Database](tutorial-dotnetcore-sqldb-app.md)

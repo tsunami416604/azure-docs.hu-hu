@@ -3,12 +3,12 @@ title: Várólisták és témakörök Service Bus Azure Event Grid események es
 description: Ismerteti, hogyan használhatók Service Bus várólisták és témakörök Azure Event Grid eseményekhez tartozó eseménykezelőként.
 ms.topic: conceptual
 ms.date: 09/03/2020
-ms.openlocfilehash: 00f937a66ff17c2d5f502fe976675c999ee02a58
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ab219f0dc6009dc01d5915995fc04094e72a88cf
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91270168"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629505"
 ---
 # <a name="service-bus-queues-and-topics-as-event-handlers-for-azure-event-grid-events"></a>Várólisták és témakörök Service Bus Azure Event Grid események eseménykezelői számára
 Az eseménykezelő az a hely, ahol az esemény elküldése történik. A kezelő további műveletet hajt végre az esemény feldolgozásához. Számos Azure-szolgáltatás automatikusan van konfigurálva az események kezelésére, és **Azure Service Bus** az egyikük. 
@@ -157,8 +157,5 @@ Az üzenet belső rendszerazonosítóját az esemény ismételt kézbesítése f
 }
 ```
 
-> [!NOTE]
-> Nem támogatott az események továbbítása egy Azure-beli Serving Bus-várólistához vagy **egy másik bérlőben** található témakörhöz. 
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A támogatott eseménykezelők listáját az [eseménykezelők](event-handlers.md) című cikkben tekintheti meg. 

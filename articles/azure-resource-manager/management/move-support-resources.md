@@ -3,12 +3,12 @@ title: Művelet támogatásának áthelyezése erőforrástípus szerint
 description: Felsorolja az új erőforráscsoporthoz vagy előfizetésbe áthelyezhető Azure-erőforrástípusok listáját.
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: e1e90a7cbc4f817f5dd6c854020e2711e8ac097b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 675f7bb11ed98dd17e8f4ee4a0197d05128af851
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91284975"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627108"
 ---
 # <a name="move-operation-support-for-resources"></a>Művelet-támogatás áthelyezése az erőforrásokhoz
 
@@ -1416,7 +1416,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | frontdoors | Nem | Nem |
 > | ipallocations | Igen | Igen |
 > | ipgroups | Igen | Igen |
-> | loadbalancers | Igen – alapszintű SKU<br>Nem szabványos SKU | Igen – alapszintű SKU<br>Nem szabványos SKU |
+> | loadbalancers | Igen – alapszintű SKU<br> Igen – szabványos SKU | Igen – alapszintű SKU<br>Nem szabványos SKU |
 > | localnetworkgateways | Igen | Igen |
 > | natgateways | Nem | Nem |
 > | networkexperimentprofiles | Nem | Nem |
@@ -1435,7 +1435,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | privateendpointredirectmaps | Nem | Nem |
 > | privateendpoints | Igen | Igen |
 > | privatelinkservices | Nem | Nem |
-> | nyilvános IP | Igen – alapszintű SKU<br>Nem szabványos SKU | Igen – alapszintű SKU<br>Nem szabványos SKU |
+> | nyilvános IP | Igen – alapszintű SKU<br>Igen – szabványos SKU | Igen – alapszintű SKU<br>Nem szabványos SKU |
 > | publicipprefixes | Igen | Igen |
 > | routefilters | Nem | Nem |
 > | routetables | Igen | Igen |
@@ -2057,7 +2057,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 
 A harmadik féltől származó szolgáltatások jelenleg nem támogatják az áthelyezési műveletet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az erőforrások áthelyezésére szolgáló parancsokért lásd: [erőforrások áthelyezése új erőforráscsoporthoz vagy előfizetésbe](move-resource-group-and-subscription.md).
 

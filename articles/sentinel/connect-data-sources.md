@@ -13,14 +13,14 @@ ms.topic: how-to
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/08/2020
+ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: 63acffd16fa4374d4f8541a9d3327b29a3641f71
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c1df52f027c23b2e3618ad17494b06c2ccecfaf6
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90895807"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627142"
 ---
 # <a name="connect-data-sources"></a>Adatforrások csatlakoztatása
 
@@ -45,17 +45,22 @@ Az Azure Sentinel a következő adatkapcsolási módszereket támogatja:
 
 - **Szolgáltatás-szolgáltatás integrációja**:<br> Egyes szolgáltatások natív módon csatlakoznak, mint például az AWS és a Microsoft Services, ezek a szolgáltatások kihasználják az Azure Foundation-t a Box-integrációhoz, a következő megoldások néhány kattintással csatlakoztathatók:
     - [Amazon Web Services – CloudTrail](connect-aws.md)
-    - [Azure-tevékenység](connect-azure-activity.md)
     - [Azure Active Directory](connect-azure-active-directory.md) – naplózási naplók és bejelentkezési naplók
+    - [Azure-tevékenység](connect-azure-activity.md)
     - [Azure AD Identity Protection](connect-azure-ad-Identity-protection.md)
-    - [Microsoft Defender for Identity](connect-azure-atp.md) (korábbi nevén Azure Advanced Threat Protection)
+    - [Azure DDoS Protection](connect-azure-ddos-protection.md)
+    - [Azure Defender for IoT](connect-asc-iot.md) (korábban Azure Security Center IoT)
     - [Azure Information Protection](connect-azure-information-protection.md)
+    - [Azure Firewall](connect-azure-firewall.md)
     - [Azure Security Center](connect-azure-security-center.md) – riasztások az Azure Defender-megoldásokból
+    - [Azure webalkalmazási tűzfal (WAF)](connect-azure-waf.md) (korábban Microsoft WAF)
     - [Cloud App Security](connect-cloud-app-security.md)
     - [Tartományi névkiszolgáló](connect-dns.md)
-    - [Office 365](connect-office-365.md)
+    - [Microsoft 365 Defender](connect-microsoft-365-defender.md) – a MDATP nyers adatfeldolgozást is tartalmaz
     - [Microsoft Defender for Endpoint](connect-microsoft-defender-advanced-threat-protection.md) (korábban Microsoft Defender komplex veszélyforrások elleni védelem)
-    - [Microsoft webalkalmazási tűzfal](connect-microsoft-waf.md)
+    - [Microsoft Defender for Identity](connect-azure-atp.md) (korábbi nevén Azure Advanced Threat Protection)
+    - [Microsoft Defender office 365](connect-office-365-advanced-threat-protection.md) (korábbi nevén Office 365 Advanced Threat Protection)
+    - [Office 365](connect-office-365.md) (most már csapatok!)
     - [Windows tűzfal](connect-windows-firewall.md)
     - [A Windows biztonsági eseményei](connect-windows-security-events.md)
 
@@ -67,9 +72,14 @@ Az Azure Sentinel a következő adatkapcsolási módszereket támogatja:
     - [Citrix Analytics (Security)](connect-citrix-analytics.md)
     - [F5 BIG-IP](connect-f5-big-ip.md)
     - [Forcepoint DLP](connect-forcepoint-dlp.md)
+    - [Okta SSO](connect-okta-single-sign-on.md)
+    - [Orca Security](connect-orca-security-alerts.md)
     - [Perimeter 81-naplók](connect-perimeter-81-logs.md)
+    - [Proofpoint TAP](connect-proofpoint-tap.md)
+    - [Qualys VM](connect-qualys-vm.md)
     - [Squadra Technologies secRMM](connect-squadra-secrmm.md)
     - [Symantec ICDX](connect-symantec.md)
+    - [VMware Carbon Black Cloud Endpoint Standard](connect-vmware-carbon-black.md)
     - [Zimperium](connect-zimperium-mtd.md)
 
 
@@ -79,7 +89,7 @@ Az Azure Sentinel a következő adatkapcsolási módszereket támogatja:
 
     Az Azure Sentinel-ügynök, amely valójában a Log Analytics ügynök, átalakítja a CEF formátumú naplókat olyan formátumba, amelyet a Log Analytics betölt. A készülék típusától függően az ügynök közvetlenül a készülékre, vagy egy dedikált Linux-alapú napló-továbbítóra van telepítve. A Linux-ügynök a syslog démontól érkező eseményeket fogad UDP-n keresztül, de ha egy Linux rendszerű gépen nagy mennyiségű syslog-eseményt kell gyűjteni, a rendszer a syslog démonból az ügynököt és onnan Log Analytics.
 
-    - **Tűzfalak, proxyk és végpontok:**
+    - **Tűzfalak, proxyk és végpontok – CEF:**
         - [AI Vectra Detect](connect-ai-vectra-detect.md)
         - [Ellenőrzőpont](connect-checkpoint.md)
         - [Cisco ASA](connect-cisco.md)
@@ -87,21 +97,29 @@ Az Azure Sentinel a következő adatkapcsolási módszereket támogatja:
         - [F5 ASM](connect-f5.md)
         - [Forcepoint-termékek](connect-forcepoint-casb-ngfw.md)
         - [Fortinet](connect-fortinet.md)
-        - [Palo Alto Networks](connect-paloalto.md)
+        - [Illusive Networks AMS](connect-illusive-attack-management-system.md)
         - [One Identity Safeguard](connect-one-identity.md)
-        - [Egyéb CEF készülékek](connect-common-event-format.md)
-        - [Egyéb syslog-készülékek](connect-syslog.md)
+        - [Palo Alto Networks](connect-paloalto.md)
         - [Trend Micro Deep Security](connect-trend-micro.md)
         - [Zscaler](connect-zscaler.md)
+        - [Egyéb CEF-alapú készülékek](connect-common-event-format.md)
+    - **Tűzfalak, proxyk és végpontok – syslog:**
+        - [Infoblox NIOS](connect-infoblox.md)
+        - [Pulse Connect Secure](connect-pulse-connect-secure.md)
+        - [Sophos XG](connect-sophos-xg-firewall.md)
+        - [Symantec Proxy SG](connect-symantec-proxy-sg.md)
+        - [Symantec VIP](connect-symantec-vip.md)
+        - [Egyéb syslog-alapú készülékek](connect-syslog.md)
     - DLP-megoldások
-    - [Veszélyforrások elleni intelligencia szolgáltatók](connect-threat-intelligence.md)
+    - [Intelligens veszélyforrás-felderítési szolgáltatók](connect-threat-intelligence.md)
     - [DNS-gépek](connect-dns.md) – közvetlenül a DNS-gépen telepített ügynök
+    - [Azure Stack virtuális gépek](connect-azure-stack.md)
     - Linux-kiszolgálók
     - Egyéb felhők
     
 ## <a name="agent-connection-options"></a>Ügynökkapcsolat-beállítások<a name="agent-options"></a>
 
-Ahhoz, hogy a külső berendezést az Azure Sentinelhez lehessen kapcsolni, az ügynököt egy dedikált gépen (virtuális gépen vagy helyszínen) kell telepíteni a készülék és az Azure Sentinel közötti kommunikáció támogatásához. Az ügynököt automatikusan vagy manuálisan is üzembe helyezheti. Az automatikus központi telepítés csak akkor érhető el, ha a dedikált számítógép egy új, az Azure-ban létrehozott virtuális gép. 
+Ahhoz, hogy a külső berendezést az Azure Sentinelhez lehessen kapcsolni, az ügynököt egy dedikált gépen (virtuális gépen vagy helyszínen) kell telepíteni a készülék és az Azure Sentinel közötti kommunikáció támogatásához. Az ügynök automatikusan vagy manuálisan is üzembe helyezhető. Az automatikus központi telepítés csak akkor érhető el, ha a dedikált számítógép egy új, az Azure-ban létrehozott virtuális gép. 
 
 
 ![CEF az Azure-ban](./media/connect-cef/cef-syslog-azure.png)
@@ -147,7 +165,7 @@ Azt is megteheti, hogy manuálisan telepítheti az ügynököt egy meglévő Azu
 | Barracuda_CL | [A Barracuda csatlakoztatása](connect-barracuda.md) | &#10003; | |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az Azure Sentinel megkezdéséhez szüksége lesz egy előfizetésre Microsoft Azure. Ha nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes próbaverzióra](https://azure.microsoft.com/free/).
 - Ismerje meg, hogyan hozhatja be [adatait az Azure sentinelbe](quickstart-onboard.md), és hogyan tekintheti [meg az adatait és a lehetséges fenyegetéseket](quickstart-get-visibility.md).

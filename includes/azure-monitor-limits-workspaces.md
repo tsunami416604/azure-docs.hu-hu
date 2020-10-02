@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 9de26246756f831ace57e7ed03a3a598ef020c91
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: e6b64b5a1a60ba3bbf93e607536eeb0379669c73
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91451569"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91642474"
 ---
 **Adatgyűjtés mennyisége és megőrzése** 
 
@@ -70,7 +70,7 @@ A Azure Monitor egy nagy léptékű adatszolgáltatás, amely több ezer ügyfel
 
 Ha olyan munkaterületre küldi az adatmennyiséget, amely a munkaterületen konfigurált küszöbérték 80%-ánál nagyobb, akkor az eseményt 6 óránként küldi el a munkaterület *műveleti* táblájába, amíg a küszöbérték továbbra is meghalad. Ha a betöltött mennyiség meghaladja a küszöbértéket, a rendszer bizonyos adatvesztést végez, és az eseményt 6 óránként küldi el a munkaterület *műveleti* táblájába, amíg a küszöbérték továbbra is túllépve lesz. Ha a betöltési mennyiség aránya továbbra is meghaladja a küszöbértéket, vagy hamarosan várhatóan nem éri el, kérheti, hogy egy támogatási kérelem megnyitásával növelje azt. 
 
-Ha értesítést szeretne kapni a munkaterületen lévő betöltési mennyiség korlátozásáról vagy eléréséről, hozzon létre egy [napló-riasztási szabályt](../articles/azure-monitor/platform/alerts-log.md) a következő lekérdezéssel a riasztási logika alapján a nulla értékkel rendelkező eredmények számán, 5 perces próbaidőszakot és 5 perces gyakoriságot használva.
+Ha értesítést szeretne kapni a munkaterületen lévő betöltési mennyiség korlátozásáról vagy eléréséről, hozzon létre egy [napló-riasztási szabályt](../articles/azure-monitor/platform/alerts-log.md) a következő lekérdezés és a riasztási logika alapján, a nullánál nagyobb eredmények száma, 5 perces próbaidőszak és 5 perc gyakorisága alapján.
 
 A betöltési mennyiség túllépte a küszöbértéket
 ```Kusto

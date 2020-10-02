@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: 756645d2df22f1222c3004a44e5a46c7a3bc1a2f
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: e74271119b581b2bb291b1a9ddd74ad0781855e6
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852548"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629135"
 ---
 # <a name="register-a-confidential-client-application-in-azure-active-directory"></a>Bizalmas ügyfélalkalmazás regisztrálása a Azure Active Directoryban
 
@@ -23,55 +23,57 @@ Az ügyfélalkalmazás regisztrálása egy olyan alkalmazás Azure Active Direct
 
 Ha új bizalmas alkalmazást szeretne regisztrálni a portálon, kövesse az alábbi lépéseket.
 
-## <a name="app-registrations-in-azure-portal"></a>Alkalmazásregisztrációk a Azure Portal
+## <a name="register-a-new-application"></a>Új alkalmazás regisztrálása
 
-1. Az [Azure Portal](https://portal.azure.com) bal oldali navigációs paneljén kattintson az **Azure Active Directory** elemre.
+1. A [Azure Portal](https://portal.azure.com)navigáljon a **Azure Active Directory**.
 
-2. A **Azure Active Directory** panelen kattintson **Alkalmazásregisztrációk**:
+1. Válassza az **Alkalmazásregisztrációk** lehetőséget.
 
     ![Azure Portal. Új alkalmazás regisztrálása.](media/how-to-aad/portal-aad-new-app-registration.png)
 
-3. Kattintson az **új regisztrációra**.
-
-## <a name="register-a-new-application"></a>Új alkalmazás regisztrálása
+1. Válassza az **új regisztráció**lehetőséget.
 
 1. Adja meg az alkalmazás megjelenítendő nevét.
 
-2. Adja meg a válasz URL-címét. Ezeket az adatokat később is megváltoztathatja, de ha ismeri az alkalmazás válaszának URL-címét, adja meg most.
+1. Adja meg a válasz URL-címét. Ezeket az adatokat később is megváltoztathatja, de ha ismeri az alkalmazás válaszának URL-címét, adja meg most.
 
     ![Új bizalmas ügyfélalkalmazás regisztrálása.](media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT.png)
+1. Válassza a **Regisztráció** lehetőséget.
 
 ## <a name="api-permissions"></a>API-engedélyek
 
-További API-engedélyek hozzáadása:
+Most, hogy regisztrálta az alkalmazását, ki kell választania, hogy mely API-engedélyeket kell megadnia az alkalmazásnak a felhasználók nevében:
 
-1. Nyissa meg az **API-engedélyeket**:
+1. Válassza az **API-engedélyek**lehetőséget.
 
     ![Bizalmas ügyfél. API-engedélyek](media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT-API-Permissions.png)
 
-2. Kattintson **az engedély hozzáadása** elemre.
+1. Válassza **az engedély hozzáadása**lehetőséget.
 
-3. Válassza ki a megfelelő erőforrás-API-t:
+    Ha az Azure API-t használja a FHIR-hez, az Azure Healthcare API-kat a **saját szervezetem által használt API**- **k alapján kell** megkeresnie. 
 
-    A FHIR-hez készült Azure API-hoz (felügyelt szolgáltatás) kattintson a **szervezetem által használt API** -k elemre, és keresse meg az "Azure Healthcare API-k" Az Azure-hoz készült nyílt forráskódú FHIR-kiszolgáló esetében válassza ki a [FHIR API-erőforrás alkalmazásának regisztrációját](register-resource-azure-ad-client-app.md):
+    Ha más erőforrás-alkalmazásra hivatkozik, válassza ki a korábban a **saját API**-k alatt létrehozott [FHIR API Resource Application-regisztrációt](register-resource-azure-ad-client-app.md) .
 
-    ![Bizalmas ügyfél. Saját API-k](media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT-API-MyApis.png)
 
-4. Válassza ki azokat a hatóköröket (engedélyeket), amelyeket a bizalmas alkalmazásnak meg kell tudnia kérni a felhasználó nevében:
+    :::image type="content" source="media/conf-client-app/confidential-client-org-api.png" alt-text="Bizalmas ügyfél. Saját szervezeti API-k" lightbox="media/conf-client-app/confidential-app-org-api-expanded.png":::
+    
 
-    ![Bizalmas ügyfél. Delegált engedélyek](media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT-API-DelegatedPermissions.png)
+3. Válassza ki azokat a hatóköröket (engedélyeket), amelyeket a bizalmas alkalmazásnak meg kell tudnia kérni a felhasználó nevében:
+
+    :::image type="content" source="media/conf-client-app/confidential-client-add-permission.png" alt-text="Bizalmas ügyfél. Saját szervezeti API-k":::
 
 ## <a name="application-secret"></a>Alkalmazás titkos kódja
 
-1. Alkalmazás titkos kódjának létrehozása (ügyfél titkos kulcsa):
+1. Válassza ki a **tanúsítványok & Secrets**elemet.
+1. Válassza az **Új titkos ügyfélkód** lehetőséget. 
 
     ![Bizalmas ügyfél. Alkalmazás titka](media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT-SECRET.png)
 
-2. Adja meg a titok leírását és időtartamát.
+2. Adja meg a titok leírását és időtartamát (1 év, 2 év vagy soha).
 
 3. A létrehozást követően csak egyszer fog megjelenni a portálon. Jegyezze fel, és tárolja biztonságosan.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta, hogyan regisztrálhat egy bizalmas ügyfélalkalmazás Azure Active Directoryban. Most már készen áll a [FHIR készült Azure API](fhir-paas-powershell-quickstart.md)üzembe helyezésére.
 

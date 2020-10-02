@@ -1,5 +1,6 @@
 ---
 title: A Microsoft Identity platform áttekintése – Azure
+titleSuffix: Microsoft identity platform
 description: Ismerje meg a Microsoft Identity platform összetevőit, valamint azt, hogy miként segíthetnek az alkalmazásokban az identitás-és hozzáférés-kezelési (IAM) támogatás létrehozásában.
 services: active-directory
 author: rwike77
@@ -12,14 +13,14 @@ ms.date: 07/09/2020
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: identityplatformtop40
-ms.openlocfilehash: e34eeeca3b17087fb5bd43ae353e43b5ab355831
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 831af87159b909ca744839d2997aa2b70cbc72e3
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88119555"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627125"
 ---
-# <a name="microsoft-identity-platform-overview"></a>A Microsoft Identity platform áttekintése
+# <a name="what-is-the-microsoft-identity-platform"></a>Mi az a Microsoft Identitásplatform?
 
 A Microsoft Identity platform segítségével olyan alkalmazásokat hozhat létre, amelyeket a felhasználók és az ügyfelek bejelentkezhetnek a Microsoft-identitásuk vagy közösségi fiókjaik használatára, valamint jogosult hozzáférést biztosítanak a saját API-khoz vagy a Microsoft API-khoz, például a Microsoft Graphhoz.
 
@@ -49,7 +50,7 @@ Válassza ki a létrehozni kívánt [alkalmazási forgatókönyvet](authenticati
 - [Webes API-kat hívó webes API](scenario-web-api-call-api-overview.md)
 - [Asztali alkalmazás](scenario-desktop-overview.md)
 - [Démonalkalmazások](scenario-daemon-overview.md)
-- [mobilalkalmazás](scenario-mobile-overview.md)
+- [Mobile-alkalmazás](scenario-mobile-overview.md)
 
 Amikor együttműködik a Microsoft Identity platformmal az alkalmazások hitelesítésének és engedélyezésének integrálásához, tekintse át ezt a rendszerképet, amely az alkalmazás leggyakoribb forgatókönyveit és identitás-összetevőit ismerteti. Válassza ki a képet a teljes méret megtekintéséhez.
 

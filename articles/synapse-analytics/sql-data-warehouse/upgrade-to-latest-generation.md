@@ -11,12 +11,12 @@ ms.date: 02/19/2019
 ms.author: martinle
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 1177551b698bb2e295a71f6cd4a132411d1c5bea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f97b7cb836009683a689fc49882e61ce66abac58
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85210694"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627074"
 ---
 # <a name="optimize-performance-by-upgrading-azure-synapse-analytics-sql-pool"></a>Teljesítmény optimalizálása az Azure szinapszis Analytics SQL-készletének frissítésével
 
@@ -114,7 +114,7 @@ Mostantól zökkenőmentesen frissíthet az SQL-készlet számítási optimaliz�
 
    > [!NOTE]
    > Ha nem látja a frissítés a **Gen2** kártyát a feladatok lapon, az előfizetés típusa az aktuális régióban korlátozott.
-   > [Küldjön be egy támogatási jegyet](sql-data-warehouse-get-started-create-support-ticket.md) az előfizetés engedélyezési listájának beszerzéséhez.
+   > [Küldjön be egy támogatási jegyet](sql-data-warehouse-get-started-create-support-ticket.md) az előfizetés jóváhagyásához.
 
 3. A frissítés előtt győződjön meg róla, hogy a számítási feladatok futtatása és Adattisztítás befejeződött. Néhány percen belül leállást tapasztalhat, mielőtt az SQL-készlet újra online állapotba kerül, mint a számítási optimalizált Gen2 szintű SQL-készlet. **Frissítés kiválasztása**:
 

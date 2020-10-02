@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: df1e6159baafc11c4b73c33feaf936784c05469e
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 6671b8aa60690bc1915e297bc31b19299be2b1da
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87853041"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629080"
 ---
 # <a name="register-a-public-client-application-in-azure-active-directory"></a>Nyilvános ügyfélalkalmazás regisztrálása Azure Active Directory
 
@@ -45,7 +45,8 @@ A [bizalmas ügyfélalkalmazás](register-confidential-azure-ad-client-app.md)ha
 
 1. Nyissa meg az **API-engedélyeket**.
 
-    Ha az Azure API-t használja a FHIR-hez, az Azure Healthcare API-kat a **szervezetem által használt API** -k alatt, az alábbi ábrán találhatja meg.
+    Ha az Azure API-t használja a FHIR-hez, az Azure Healthcare API-kat a **saját szervezetem által használt API**-k alapján kell megkeresnie. Ha már [telepítette az Azure API-t a FHIR-hez](fhir-paas-powershell-quickstart.md), csak ezt fogja tudni megkeresni.
+
     
     Ha más erőforrás-alkalmazásra hivatkozik, válassza ki a korábban a **saját API**-k alatt létrehozott [FHIR API Resource Application-regisztrációt](register-resource-azure-ad-client-app.md) :
 
@@ -59,7 +60,7 @@ Ha a cikkben regisztrált alkalmazás és a FHIR-kiszolgáló ugyanabban az Azur
 
 Ha az ügyfélalkalmazás egy másik Azure AD-bérlőben van konfigurálva a FHIR-kiszolgálóról, akkor frissítenie kell a **szolgáltatót**. A FHIR készült Azure API-ban a szolgáltatót a beállítások – > hitelesítés területen állíthatja be. Állítsa be a szolgáltatót a következőre: **https://login.microsoftonline.com/\<TENANT-ID>** .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta, hogyan regisztrálhat egy nyilvános ügyfélalkalmazás Azure Active Directoryban. Ezt követően tesztelje a hozzáférést a FHIR-kiszolgálóhoz a Poster használatával.
  

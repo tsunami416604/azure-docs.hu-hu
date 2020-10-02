@@ -5,13 +5,14 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
+ms.custom: references_regions
 ms.date: 8/13/2020
-ms.openlocfilehash: 207693945c2fe916e99d55545d8a33c08067ba04
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 9e1bd3f555873503aa1f6ed9c804aced3620fb9e
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91538279"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627516"
 ---
 # <a name="monitoring-in-azure-database-for-mysql"></a>Figyelés Azure Database for MySQL
 A kiszolgálók figyelési adatai segítenek a számítási feladatok megoldásában és optimalizálásában. A Azure Database for MySQL különböző mérőszámokat biztosít, amelyek betekintést nyújtanak a kiszolgáló működésére.
@@ -56,8 +57,10 @@ A [teljesítményre vonatkozó javaslatok](concepts-performance-recommendations.
 
 A **tervezett karbantartási értesítések** lehetővé teszik, hogy riasztásokat kapjon a Azure Database for MySQL közelgő tervezett karbantartásáról. Ezek az értesítések a [Service Health](../service-health/overview.md) tervezett karbantartásával vannak integrálva, és lehetővé teszik az előfizetések összes ütemezett karbantartásának megtekintését egy helyen. Emellett segít az értesítések méretezésében a megfelelő célközönségek számára a különböző erőforráscsoportok esetében, mivel előfordulhat, hogy a különböző kapcsolattartók különböző erőforrásokért felelősek. A közelgő karbantartási 72 órával az esemény előtt értesítést fog kapni.
 
-> [!Note]
-> Minden eseményről minden kísérletet megteszünk a **tervezett karbantartási értesítés** 72 óra megadására. A kritikus vagy biztonsági javítások esetében azonban előfordulhat, hogy az értesítések közelebb kerülnek az eseményhez, vagy kimaradnak.
+A tervezett karbantartás során várható, hogy a kiszolgáló újraindul, és [átmeneti hibák](concepts-connectivity.md#transient-errors) léphetnek fel. Az események többségét a rendszer automatikusan csökkenti a 60 másodpercnél kisebb mértékben.
+
+> [!IMPORTANT]
+> A tervezett karbantartási értesítések jelenleg nyilvános előzetes verzióban érhetők el minden régióban, **kivéve** az USA nyugati középső régióját
 
 ### <a name="to-receive-planned-maintenance-notification"></a>Tervezett karbantartási értesítés fogadása
 
@@ -72,8 +75,8 @@ A **tervezett karbantartási értesítések** lehetővé teszik, hogy riasztáso
 
 A **szolgáltatás állapotára vonatkozó riasztások**létrehozásával kapcsolatos részletes útmutatásért lásd: [műveletnapló riasztások létrehozása a szolgáltatási értesítéseken](../service-health/alerts-activity-log-service-notifications.md).
 
-> [!IMPORTANT]
-> A tervezett karbantartási értesítések jelenleg előzetes verzióban érhetők el minden régióban, **kivéve** az USA nyugati középső régióját
+> [!Note]
+> Minden eseményről minden kísérletet megteszünk a **tervezett karbantartási értesítés** 72 óra megadására. A kritikus vagy biztonsági javítások esetében azonban előfordulhat, hogy az értesítések közelebb kerülnek az eseményhez, vagy kimaradnak.
 
 ## <a name="next-steps"></a>További lépések
 - A riasztások metrikai létrehozásával kapcsolatos útmutatást a riasztások [beállítása](howto-alert-on-metric.md) című témakörben tekintheti meg.

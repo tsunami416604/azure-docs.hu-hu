@@ -9,16 +9,37 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 7c8e92604cc6188d17411a266f8b27db55c8fbad
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3e3b804e2a3c43eb9579d1c6a1195511df528de2
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91317276"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629998"
 ---
 # <a name="upload-usage-data-metrics-and-logs-to-azure-monitor"></a>Használati adatok, metrikák és naplók feltöltése a Azure Monitorba
 
-A monitorozás az Azure arc-kompatibilis adatszolgáltatások által biztosított számos beépített funkció egyike. 
+A használati adatokat rendszeresen exportálhatja számlázási célokra, a metrikák figyelésére és a naplókra, majd feltöltheti azt az Azure-ba.  A három adattípus exportálásával és feltöltésével az adatvezérlő, az SQL felügyelt példánya és a PostgreSQL nagy kapacitású Server Group-erőforrások is létrehozhatók és frissíthetők az Azure-ban.
+
+> [!NOTE] 
+Az előzetes verzió ideje alatt az Azure arc-kompatibilis adatszolgáltatások használata díjmentes.
+
+## <a name="prerequisites"></a>Előfeltételek
+
+Ehhez telepítenie kell az Azure CLI-t (az) és az Azure-beli adatcli-t (azdata).  [Telepítse az eszközöket](./install-client-tools.md).
+
+Az Azure-ba való adatfeltöltés előtt gondoskodnia kell arról, hogy az Azure-előfizetése a Microsoft. AzureData erőforrás-szolgáltatót regisztrálja.
+
+Ezt a következő parancs futtatásával ellenőrizheti:
+
+```console
+az provider show -n Microsoft.AzureData -o table
+```
+
+Ha az erőforrás-szolgáltató jelenleg nincs regisztrálva az előfizetésben, a következő parancs futtatásával regisztrálhat.  Ez a parancs egy-két percet is igénybe veheti.
+
+```console
+az provider register -n Microsoft.AzureData --wait
+```
 
 ## <a name="upload-usage-data"></a>Használati adatok feltöltése
 
@@ -405,7 +426,7 @@ Az előzetes verzió ideje alatt ez a folyamat éjjel történik. Az általános
 
 A metrikák feltöltéséhez az Azure monitor csak az utolsó 30 perces adatokat fogadja el ([További információ](../../azure-monitor/platform/metrics-store-custom-rest-api.md#troubleshooting)). A metrikák feltöltésére vonatkozó útmutató a metrikák az exportfájl létrehozása utáni azonnali feltöltésére szolgál, így megtekintheti a teljes adathalmazt Azure Portalban. Ha például a 2:00 ÓRAKOR exportálta a metrikákat, és a feltöltési parancsot 2:50 ÓRAKOR futtatta. Mivel a Azure Monitor csak az elmúlt 30 percben fogadja az adatgyűjtést, előfordulhat, hogy a portálon nem jelennek meg az összes információ. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Számlázási adatok feltöltése az Azure-ba, és megtekintés a Azure Portal](view-billing-data-in-azure.md)
 

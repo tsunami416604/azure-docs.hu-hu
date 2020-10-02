@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b91763c275e4fd091b7c1554699e5d6f35a6f55
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 60f82a3197366081c66c4b7a1fe9c4ebe7762c94
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91266326"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91628696"
 ---
 # <a name="tutorial-integrate-a-single-forest-with-a-single-azure-ad-tenant"></a>Oktatóanyag: egyetlen erdő integrálása egyetlen Azure AD-Bérlővel
 
@@ -112,7 +112,7 @@ Az ügynök futtatásának ellenőrzéséhez kövesse az alábbi lépéseket:
 5.  Az **New Configuration** 
  ![ Azure ad-kiépítés (előzetes verzió) képernyő új konfiguráció képernyőképére kattintva kiemelve jelenik meg az "új konfiguráció" hivatkozás.](media/tutorial-single-forest/configure1.png)
 7.  A konfiguráció képernyőn adja meg az **értesítő e-mailt**, helyezze át a választót az **engedélyezéshez** , majd kattintson a **Mentés**gombra.
-![Képernyőkép a konfigurálásról a képernyőn megjelenő értesítő e-mailben és a kijelölés engedélyezése lapon.](media/tutorial-single-forest/configure2.png)
+![Képernyőkép a konfigurálásról a képernyőn megjelenő értesítő e-mailben és a kijelölés engedélyezése lapon.](media/how-to-configure/configure2.png)
 1.  A konfigurációs állapotnak most **kifogástalannak**kell lennie.
 ![Képernyőkép az Azure AD-kiépítési (előzetes) képernyőről, amely kifogástalan állapotot mutat.](media/how-to-configure/manage4.png)
 
@@ -135,7 +135,7 @@ Ekkor ellenőrzi, hogy a helyszíni címtárban lévő felhasználók szinkroniz
 Ezzel sikeresen beállított egy hibrid identitási környezetet, amellyel tesztelheti és megismerheti az Azure által kínált lehetőségeket.
 
 
-## <a name="next-steps"></a>Következő lépések 
+## <a name="next-steps"></a>További lépések 
 
 - [Mi az az üzembe helyezés?](what-is-provisioning.md)
 - [Mi az az Azure AD Connect felhőalapú jogosultságkiosztás?](what-is-cloud-provisioning.md)

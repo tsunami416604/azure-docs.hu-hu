@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: e0d6694d44fdac9958acdf70be067348fadde57f
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: 483c29d4aed4102440b09f26fe6778709836145f
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91461240"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629828"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Beszédfelismerési szolgáltatás nyelvi és hangalapú támogatása
 
@@ -30,7 +30,7 @@ A pontosság javítása érdekében a testreszabást a nyelvek egy részhalmaza 
 
 <!--
 To get the AM and ML bits:
-https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20models%3A/GetSupportedLocalesForModels
+https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetSupportedLocalesForModels
 
 To get pronunciation bits:
 https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronunciation Datasets" -> Click on Import -> Locale: the list of locales there correspond to the supported locales
@@ -400,18 +400,18 @@ A különböző Speaker Recognition API-khoz támogatott nyelveket a következő
 | Területi beállítás | Nyelv | Szövegtől függő ellenőrzés | Szövegtől független ellenőrzés | Szöveg – független azonosítás |
 |----|----|----|----|----|
 | en-US | Angol (US) | igen | igen | igen |
-|zh-CN    |Kínai (mandarin, egyszerűsített)|    n.a.|    igen|    igen|
-|de-DE    |Német (Németország)    |n.a.    |igen    |igen|
-|en-GB    |Angol (Egyesült Királyság)    |n.a.    |igen    |igen|
-|fr-FR    |Francia (Franciaország)    |n.a.    |igen    |igen|
-|EN-AU    |Angol (Ausztrália)    |n.a.    |igen    |igen|
-|en-CA    |Angol (Kanada)    |n.a.|    igen|    igen|
-|fr – CA    |Francia (Kanada)    |n.a.    |igen|    igen|
-|it-IT    |Olasz|    n.a.    |igen|    igen|
-|es-ES|    Spanyol (Spanyolország)    |n.a.    |igen|    igen|
-|es-MX    |Spanyol (Mexikó)    |n.a.|    igen|    igen|
-|ja-JP|    Japán    |n.a.    |igen    |igen|
-|pt-BR|    Portugál (Brazília)|    n.a.|    igen|    igen|
+|zh-CN    |Kínai (mandarin, egyszerűsített)|    n/a|    igen|    igen|
+|de-DE    |Német (Németország)    |n/a    |igen    |igen|
+|en-GB    |Angol (Egyesült Királyság)    |n/a    |igen    |igen|
+|fr-FR    |Francia (Franciaország)    |n/a    |igen    |igen|
+|EN-AU    |Angol (Ausztrália)    |n/a    |igen    |igen|
+|en-CA    |Angol (Kanada)    |n/a|    igen|    igen|
+|fr – CA    |Francia (Kanada)    |n/a    |igen|    igen|
+|it-IT    |Olasz|    n/a    |igen|    igen|
+|es-ES|    Spanyol (Spanyolország)    |n/a    |igen|    igen|
+|es-MX    |Spanyol (Mexikó)    |n/a|    igen|    igen|
+|ja-JP|    Japán    |n/a    |igen    |igen|
+|pt-BR|    Portugál (Brazília)|    n/a|    igen|    igen|
 
 ## <a name="next-steps"></a>Következő lépések
 

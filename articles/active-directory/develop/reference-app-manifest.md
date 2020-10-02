@@ -13,18 +13,18 @@ ms.date: 04/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: 554e5a022dcb49cd861ad7198a2c375634db6d10
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 6971e62b20dc1155b875f69eb1d4da9d7b6e6887
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90705745"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627006"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory-alkalmazás jegyzékfájlja
 
 Az alkalmazás jegyzékfájlja a Microsoft Identity platform alkalmazás-objektumának összes attribútumának definícióját tartalmazza. Az alkalmazás-objektum frissítésére szolgáló mechanizmusként is szolgál. Az alkalmazás entitásával és annak sémájával kapcsolatos további információkért tekintse meg a [Graph API alkalmazás-entitás dokumentációját](/graph/api/resources/application).
 
-Az alkalmazások attribútumai a Azure Portalon vagy programozott módon konfigurálhatók [REST API](/graph/api/resources/application) vagy a [PowerShell](/powershell/module/azuread/?view=azureadps-2.0#applications)használatával. Vannak azonban olyan helyzetek, amikor szerkesztenie kell az alkalmazás jegyzékfájlját az alkalmazás attribútumának konfigurálásához. Ezek a forgatókönyvek a következőket biztosítják:
+Az alkalmazások attribútumai a Azure Portalon vagy programozott módon konfigurálhatók [REST API](/graph/api/resources/application) vagy a [PowerShell](/powershell/module/azuread#applications)használatával. Vannak azonban olyan helyzetek, amikor szerkesztenie kell az alkalmazás jegyzékfájlját az alkalmazás attribútumának konfigurálásához. Ezek a forgatókönyvek a következőket biztosítják:
 
 * Ha az alkalmazást Azure AD több-bérlős és személyes Microsoft-fiókkal regisztrálta, a felhasználói felületen nem módosíthatja a támogatott Microsoft-fiókokat. Ehelyett az Application manifest Editort kell használnia a támogatott fióktípus módosításához.
 * Ha meg kell határoznia az alkalmazás által támogatott engedélyeket és szerepköröket, módosítania kell az alkalmazás jegyzékfájlját.
@@ -105,7 +105,7 @@ Példa:
 
 | Kulcs | Érték típusa |
 | :--- | :--- |
-| allowPublicClient | Logikai |
+| allowPublicClient | Logikai érték |
 
 Megadja a tartalék alkalmazás típusát. Az Azure AD alapértelmezés szerint kikövetkezteti az alkalmazás típusát a replyUrlsWithType. Vannak olyan helyzetek, amikor az Azure AD nem tudja megállapítani az ügyfél-alkalmazás típusát. Például az egyik ilyen forgatókönyv az a [ROPC](https://tools.ietf.org/html/rfc6749#section-4.3) folyamat, amelyben a HTTP-kérelem URL-átirányítás nélkül történik. Ezekben az esetekben az Azure AD az alkalmazás típusát a tulajdonság értéke alapján fogja értelmezni. Ha az érték TRUE (igaz), a tartalék alkalmazás típusa nyilvános ügyfélként van beállítva, például egy mobileszközön futó telepített alkalmazás. Az alapértelmezett érték false (hamis), ami azt jelenti, hogy a tartalék alkalmazás típusa bizalmas ügyfél, például webalkalmazás.
 
@@ -119,7 +119,7 @@ Példa:
 
 | Kulcs | Érték típusa |
 | :--- | :--- |
-| availableToOtherTenants | Logikai |
+| availableToOtherTenants | Logikai érték |
 
 Értéke TRUE (igaz), ha az alkalmazás más Bérlővel van megosztva; Ellenkező esetben hamis.
 
@@ -350,7 +350,7 @@ Példa:
 
 | Kulcs | Érték típusa |
 | :--- | :--- |
-| name | Sztring |
+| név | Sztring |
 
 Az alkalmazás megjelenítendő neve.
 
@@ -364,7 +364,7 @@ Példa:
 
 | Kulcs | Érték típusa |
 | :--- | :--- |
-| oauth2AllowImplicitFlow | Logikai |
+| oauth2AllowImplicitFlow | Logikai érték |
 
 Azt adja meg, hogy a webalkalmazás igényelhet-e OAuth 2.0 implicit flow-hozzáférési jogkivonatokat. Az alapértelmezett érték a false. Ez a jelző a böngészőalapú alkalmazások, például a JavaScript egyoldalas alkalmazások esetében használatos. További információért írja be `OAuth 2.0 implicit grant flow` a tartalomjegyzékbe, és tekintse meg az implicit folyamattal kapcsolatos témaköröket.
 
@@ -378,7 +378,7 @@ Példa:
 
 | Kulcs | Érték típusa |
 | :--- | :--- |
-| oauth2AllowIdTokenImplicitFlow | Logikai |
+| oauth2AllowIdTokenImplicitFlow | Logikai érték |
 
 Megadja, hogy a webalkalmazás igényelhet-e OAuth 2.0 implicit flow ID-tokeneket. Az alapértelmezett érték a false. Ez a jelző a böngészőalapú alkalmazások, például a JavaScript egyoldalas alkalmazások esetében használatos.
 
@@ -417,7 +417,7 @@ Példa:
 
 | Kulcs | Érték típusa |
 | :--- | :--- |
-| oauth2RequiredPostResponse | Logikai |
+| oauth2RequiredPostResponse | Logikai érték |
 
 Azt határozza meg, hogy a OAuth 2,0 jogkivonat-kérelmek részeként az Azure AD engedélyezi-e a POST kéréseket, a kérések helyett. Az alapértelmezett érték a False (hamis), amely azt határozza meg, hogy csak a GET kérelmek engedélyezettek lesznek.
 
@@ -492,7 +492,7 @@ Példa:
 
 | Kulcs | Érték típusa |
 | :--- | :--- |
-| publicClient | Logikai|
+| publicClient | Logikai érték|
 
 Azt határozza meg, hogy az alkalmazás nyilvános-e (például egy mobileszközön futó telepített alkalmazás).
 
@@ -686,14 +686,10 @@ A következő megjegyzések szakasz a tartalom pontosítását és formázását
 [AAD-DEVELOPER-GLOSSARY]:developer-glossary.md
 [AAD-GROUPS-FOR-AUTHORIZATION]: http://www.dushyantgill.com/blog/2014/12/10/authorization-cloud-applications-using-ad-groups/
 [ADD-UPD-RMV-APP]:quickstart-v1-integrate-apps-with-azure-ad.md
-[APPLICATION-ENTITY]: /previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity
-[APPLICATION-ENTITY-APP-ROLE]: /previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#approle-type
-[APPLICATION-ENTITY-OAUTH2-PERMISSION]: /previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#oauth2permission-type
 [AZURE-PORTAL]: https://portal.azure.com
 [DEV-GUIDE-TO-AUTH-WITH-ARM]: http://www.dushyantgill.com/blog/2015/05/23/developers-guide-to-auth-with-azure-resource-manager-api/
 [GRAPH-API]: active-directory-graph-api.md
 [IMPLICIT-GRANT]:v1-oauth2-implicit-grant-flow.md
 [INTEGRATING-APPLICATIONS-AAD]: ./quickstart-register-app.md
 [O365-PERM-DETAILS]: /graph/permissions-reference
-[O365-SERVICE-DAEMON-APPS]: /previous-versions/office/office-365-api/
 [RBAC-CLOUD-APPS-AZUREAD]: http://www.dushyantgill.com/blog/2014/12/10/roles-based-access-control-in-cloud-applications-using-azure-ad/

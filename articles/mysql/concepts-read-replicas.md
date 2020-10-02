@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 7/7/2020
-ms.openlocfilehash: 4550f1da0ac87a55bab64566a0035451dee8d225
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.date: 10/1/2020
+ms.openlocfilehash: b32ef80ad670e369315ec3ddb6972aef30bec27a
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91538262"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627567"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Olvasási replikák az Azure Database for MySQL-ben
 
@@ -36,6 +36,9 @@ Gyakori forgatókönyv, hogy a BI-és analitikai munkaterhelések az olvasási r
 Mivel a replikák csak olvashatók, nem csökkentik közvetlenül az írási kapacitás terheit a főkiszolgálón. Ez a funkció nem a nagy írási igényű számítási feladatokhoz ideális.
 
 Az olvasási replika funkció MySQL aszinkron replikálást használ. A funkció nem a szinkron replikációs forgatókönyvek esetében jelent meg. A forrás és a replika között mérhető késleltetés történik. A replikán lévő adatok végül konzisztensek maradnak a főkiszolgálón lévő adatokkal. Használja ezt a szolgáltatást olyan számítási feladatokhoz, amelyek alkalmasak erre a késésre.
+
+> [!IMPORTANT]
+> A Azure Database for MySQL **sor** alapú bináris naplózást használ. Ha a táblából hiányzik egy elsődleges kulcs, a rendszer a tábla összes sorát ellenőrzi a DML-műveleteknél. Ez nagyobb replikációs késést okoz. Annak biztosítása érdekében, hogy a replika képes legyen lépést tartani a forrás változásaival, javasoljuk, hogy hozzon létre egy elsődleges kulcsot a forráskiszolgálón a replika-kiszolgáló létrehozása előtt, vagy ha már rendelkezik ilyennel, hozza létre újra a replikát.
 
 ## <a name="cross-region-replication"></a>Régiók közötti replikáció
 A forráskiszolgáló egy másik régióban is létrehozhat egy olvasási replikát. A régiók közötti replikáció hasznos lehet olyan forgatókönyvek esetén, mint például a vész-helyreállítási tervezés vagy az adatok közelebb hozása a felhasználókhoz.

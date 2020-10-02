@@ -10,14 +10,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 09/22/2018
+ms.date: 09/30/2020
 ms.author: duau
-ms.openlocfilehash: babe24d0c934cffac00a5100d1da7ee252d147da
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: dbce9019e33c07dd4faa91ffd490eba4d313c675
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399055"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91630610"
 ---
 # <a name="troubleshooting-common-routing-issues"></a>Gyakori útválasztási problémák elhárítása
 
@@ -27,37 +27,38 @@ Ez a cikk azt ismerteti, hogyan lehet elhárítani az Azure-beli előtérbeni ko
 
 ### <a name="symptom"></a>Hibajelenség
 
-- A háttérbe való beküldést követő rendszeres kérések nem lesznek sikeresek, de a bejárati ajtón keresztül 503-as hiba történik.
-
-- A bejárati ajtó meghibásodása néhány másodperc elteltével (általában 30 másodperc után) jelenik meg
+* A háttérbe való beküldést követő rendszeres kérések nem lesznek sikeresek, de a bejárati ajtón keresztül 503-as hiba történik.
+* A bejárati ajtó meghibásodása néhány másodperc elteltével (általában 30 másodperc után) jelenik meg
 
 ### <a name="cause"></a>Ok
 
-Ez a tünet akkor fordul elő, ha a háttérrendszer túllépi az időtúllépési konfigurációt (az alapértelmezett érték 30 másodperc), hogy megkapja a kérést a bejárati ajtótól, vagy ha az időtúllépési érték túllépi a kérést, a bejárati ajtótól választ küld. 
+A probléma oka a következő két dolog egyike lehet:
+ 
+* A háttérrendszer az időtúllépésnél hosszabb időt vesz igénybe (az alapértelmezett érték 30 másodperc), hogy megkapja a kérést az előtérben.
+* A beérkező kérésre adott válasz küldéséhez szükséges idő az időtúllépési értéknél hosszabb időt vesz igénybe. 
 
 ### <a name="troubleshooting-steps"></a>Hibaelhárítási lépések
 
-- Küldje el a kérést a háttérbe közvetlenül (anélkül, hogy belépjen a bejárati ajtón), és megtudhatja, mi a szokásos idő a háttérrendszer megválaszolására.
-- Küldje el a kérést a bejárati ajtón keresztül, és ellenőrizze, hogy van-e 503-válasz. Ha nem, akkor ez nem lehet időtúllépési probléma. Forduljon az ügyfélszolgálathoz.
-- Ha a bejárati ajtón keresztüli végrehajtás a 503-es hibakódot eredményezi, akkor a bejárati ajtó sendReceiveTimeout mezőjében adja meg az alapértelmezett időtúllépést akár 4 percre (240 másodpercre). A beállítás a és a `backendPoolSettings` néven van meghívva `sendRecvTimeoutSeconds` . 
+* Küldje el a kérést a háttérbe közvetlenül (anélkül, hogy belépjen a bejárati ajtón), és megtudhatja, mi a szokásos idő a háttérrendszer megválaszolására.
+* Küldje el a kérést a bejárati ajtón keresztül, és ellenőrizze, hogy van-e 503-válasz. Ha nem, akkor előfordulhat, hogy a probléma nem időtúllépési hiba. Vegye fel a kapcsolatot az ügyfélszolgálattal.
+* Ha az első ajtón halad át, a rendszer 503-as hibakódot eredményez, majd konfigurálja a `sendReceiveTimeout` bejárati ajtó mezőjét. Az alapértelmezett időtúllépés akár 4 perc is kiterjeszthető (240 másodperc). A beállítás a és a `backendPoolSettings` néven van meghívva `sendRecvTimeoutSeconds` . 
 
 ## <a name="requests-sent-to-the-custom-domain-returns-400-status-code"></a>Az egyéni tartományba küldött kérések 400 állapotkódot adnak vissza.
 
 ### <a name="symptom"></a>Hibajelenség
 
-- Létrehozott egy bejárati ajtót, de a tartományra vagy a előtér-gazdagépre irányuló kérelem HTTP 400-as állapotkódot ad vissza.
-
-- Létrehozott egy DNS-hozzárendelést egy egyéni tartományból a konfigurált előtér-gazdagépre. Az egyéni tartományhoz tartozó állomásnév küldése azonban egy HTTP 400 állapotkódot ad vissza, és nem úgy tűnik, hogy a konfigurált háttér (ek) ra irányítja az útvonalat.
+* Létrehozott egy bejárati ajtót, de a tartományra vagy a előtér-gazdagépre irányuló kérelem HTTP 400-as állapotkódot ad vissza.
+* Létrehozta az egyéni tartományhoz tartozó DNS-leképezést a konfigurált előtér-gazdagéphez. A kérésnek az egyéni tartományba való küldése azonban HTTP 400-állapotkódot ad vissza. Ez a beállítás nem jelenik meg a konfigurált háttérre való átirányításhoz.
 
 ### <a name="cause"></a>Ok
 
-Ez a jelenség akkor fordulhat elő, ha nem konfigurált útválasztási szabályt a előtér-gazdagépként hozzáadott egyéni tartományhoz. Az útválasztási szabályt explicit módon hozzá kell adni az adott előtér-gazdagéphez, még akkor is, ha az egyik már be van állítva az előtér-gazdagéphez a bejárati ajtó altartományában (*. azurefd.net), amelyhez az egyéni tartományhoz tartozik egy DNS-hozzárendelés.
+A probléma akkor fordul elő, ha nem konfigurált útválasztási szabályt a előtér-gazdagépként hozzáadott egyéni tartományhoz. Explicit módon hozzá kell adni egy útválasztási szabályt az adott előtér-gazdagéphez. Még akkor is, ha már konfigurálva van a előtér-gazdagéphez a bejárati ajtó altartományában (*. azurefd.net).
 
 ### <a name="troubleshooting-steps"></a>Hibaelhárítási lépések
 
-Adjon hozzá egy útválasztási szabályt az egyéni tartományból a kívánt háttér-készlethez.
+Adja hozzá az egyéni tartomány útválasztási szabályát a kiválasztott háttérbeli készletre irányuló közvetlen forgalomhoz.
 
-## <a name="front-door-is-not-redirecting-http-to-https"></a>A bejárati ajtó nem irányítja át a HTTP-t HTTPS-re
+## <a name="front-door-doesnt-redirect-http-to-https"></a>A bejárati ajtó nem irányítja át a HTTP PROTOKOLLT
 
 ### <a name="symptom"></a>Hibajelenség
 
@@ -73,36 +74,34 @@ Ez a viselkedés akkor fordulhat elő, ha nem megfelelően konfigurálta az útv
 
 ### <a name="symptom"></a>Hibajelenség
 
-- Létrehozta a bejárati ajtót, és konfigurált egy előtér-gazdagépet, egy háttér-készletet legalább egy háttérrel, valamint egy útválasztási szabályt, amely összekapcsolja a frontend-gazdagépet a háttér-készlettel. Úgy tűnik, hogy a tartalom nem érhető el a konfigurált előtér-gazdagépre irányuló kérelem küldésekor, mert a rendszer HTTP 404 állapotkódot ad vissza.
+ A bejárati ajtót úgy hozta létre, hogy egy előtér-gazdagépet, egy háttér-készletet és legalább egy háttér-készletet konfigurál, valamint egy útválasztási szabályt, amely összekapcsolja a frontend-gazdagépet a háttér-készlettel. A tartalom nem érhető el, ha a konfigurált előtér-gazdagépre irányuló kérést küld, ezért a rendszer HTTP 404 állapotkódot ad vissza.
 
 ### <a name="cause"></a>Ok
 
 A tünet több lehetséges oka is lehet:
 
-- A háttérrendszer nem nyilvános háttérű, és nem látható a bejárati ajtón.
-- A háttér-konfiguráció hibásan van konfigurálva, ami azt eredményezi, hogy a bejárati ajtó nem a megfelelő kérést küldi el (azaz a háttérrendszer csak HTTP-t fogad el, de nem jelölte be a HTTPS-t, így a bejárati ajtó a HTTPS-kérelmek továbbítását kísérli meg)
-- A háttérrendszer elutasítja a háttérben a kérelemmel továbbított állomásfejléc-fejlécet.
-- A háttérrendszer konfigurációja még nincs teljesen telepítve.
+* A háttér nem egy nyilvános háttérrendszer, és nem látható a bejárati ajtón.
+* Helytelenül van konfigurálva a háttérrendszer, így a bejárati ajtó nem a megfelelő kérést küldi el. Más szóval a háttérrendszer csak a HTTP-t fogadja el, és a HTTPS engedélyezése nem engedélyezett. Így a bejárati ajtó a HTTPS-kérelmek továbbítására tesz kísérletet.
+* A háttérrendszer elutasítja a háttérben a kérelemmel továbbított állomásfejléc-fejlécet.
+* A háttérrendszer konfigurációja még nincs teljesen telepítve.
 
 ### <a name="troubleshooting-steps"></a>Hibaelhárítási lépések
 
 1. Üzembe helyezés ideje
-   - Győződjön meg arról, hogy a konfiguráció üzembe helyezése körülbelül 10 percet várt.
+   * Győződjön meg arról, hogy a konfiguráció üzembe helyezése körülbelül 10 percet várt.
 
 2. A háttér-beállítások keresése
-    - Navigáljon arra a háttér-készletre, amelyhez a kérésnek útválasztási műveletnek kell lennie (attól függ, hogyan konfigurálta az útválasztási szabályt), és ellenőrizze, hogy helyesek-e a _háttérbeli gazdagép típusa_ és a háttérbeli gazdagép neve. Ha a háttérrendszer egy egyéni gazdagép, győződjön meg arról, hogy helyesen írta-e be. 
+    * Navigáljon arra a háttér-készletre, amelyhez a kérésnek útválasztási műveletnek kell lennie (attól függ, hogy az útválasztási szabály hogyan van konfigurálva). Ellenőrizze, hogy helyesek-e a *háttérbeli gazdagép típusa* és a háttérbeli gazdagép neve. Ha a háttérrendszer egy egyéni gazdagép, győződjön meg arról, hogy helyesen írta-e be. 
 
-    - Keresse meg a HTTP-és HTTPS-portokat. A legtöbb esetben a 80-es és a 443-as (ill.) érték helyes, és nincs szükség módosításra. Van azonban esély arra, hogy a háttérrendszer ne legyen így konfigurálva, és egy másik portot figyel.
+    * Keresse meg a HTTP-és HTTPS-portokat. A legtöbb esetben a 80-es és a 443-as (ill.) érték helyes, és nincs szükség módosításra. Van azonban esély arra, hogy a háttérrendszer ne legyen így konfigurálva, és egy másik portot figyel.
 
-        - Győződjön meg arról, hogy _a háttérrendszer_ azon hátteréhez van konfigurálva, amelyhez a előtér-gazdagépnek útválasztási művelettel kell rendelkeznie. A legtöbb esetben ez a fejléc nem egyezhet meg a háttér- _gazdagép nevével_. A helytelen érték azonban különféle HTTP-4xx okozhat, ha a háttérrendszer más értéket vár el. Ha a háttér IP-címét adja meg, lehetséges, hogy a háttérbeli _állomásfejléc-fejlécet_ be kell állítania a háttér állomásneve számára.
+        * Győződjön meg arról, hogy _a háttérrendszer_ azon hátteréhez van konfigurálva, amelyhez a előtér-gazdagépnek útválasztási művelettel kell rendelkeznie. A legtöbb esetben ez a fejléc nem egyezhet meg a háttér- *gazdagép nevével*. A helytelen érték azonban különféle HTTP-4xx okozhat, ha a háttérrendszer más értéket vár el. Ha a háttér IP-címét adja meg, lehetséges, hogy a háttérbeli *állomásfejléc-fejlécet* be kell állítania a háttér állomásneve számára.
 
+3. Keresse meg az útválasztási szabály beállításait:
+    * Navigáljon ahhoz az útválasztási szabályhoz, amely a szóban forgó előtér-gazdagépről egy háttér-készletre irányítja. Győződjön meg arról, hogy az elfogadott protokollok megfelelően vannak konfigurálva a kérelem továbbításakor. Az *elfogadott protokollok* mező határozza meg, hogy a befelé irányuló kérések mely kérelmeket fogadják el. A *továbbítási protokoll* határozza meg, hogy milyen protokoll-előtérben kell használni a kérést a háttérbe való továbbításhoz.
+         * Ha például a háttérrendszer csak a HTTP-kérelmeket fogadja el, a következő konfigurációk érvényesek lesznek:
+            * Az *elfogadott protokollok* a http és a HTTPS. A *továbbítási protokoll* http. A kérelem egyeztetése nem fog működni, mivel a HTTPS egy engedélyezett protokoll, és ha egy kérelem HTTPS-ként jelentkezett be, a bejárati ajtó HTTPS-kapcsolaton keresztül próbálkozik a továbbítással.
 
-3. Az útválasztási szabály beállításainak megtekintése
-    - Navigáljon ahhoz az útválasztási szabályhoz, amely a szóban forgó előtér-gazdagépről egy háttér-készletre irányítja. Győződjön meg arról, hogy az elfogadott protokollok megfelelően vannak konfigurálva, vagy ha nem, győződjön meg arról, hogy a protokoll bejárati ajtaja a kérelem továbbításakor fog működni. Az _elfogadott protokollok_ mező határozza meg, hogy a befelé irányuló kérések mely kérelmeket fogadják el, és a _továbbítási protokoll_ határozza meg, hogy milyen protokoll-előtérben kell használni a kérést a háttér
-         - Ha például a háttérrendszer csak a HTTP-kérelmeket fogadja el, a következő konfigurációk érvényesek lesznek:
-            - Az _elfogadott protokollok_ a http és a HTTPS. A _továbbítási protokoll_ http. Az egyeztetési kérelem nem fog működni, mivel a HTTPS egy engedélyezett protokoll, és ha egy kérelem HTTPS-ként jött létre, a bejárati ajtó HTTPS-kapcsolaton keresztül próbálkozik a továbbítással.
+            * Az *elfogadott protokollok* a http. A *továbbítási protokoll* vagy egyeztetési kérelem vagy http.
 
-            - Az _elfogadott protokollok_ a http. A _továbbítási protokoll_ vagy egyeztetési kérelem vagy http.
-
-    - Az _URL-cím újraírása_ alapértelmezés szerint le van tiltva, és csak akkor használja ezt a mezőt, ha le szeretné szűkíteni az elérhetővé tenni kívánt háttérbeli erőforrások hatókörét. Ha le van tiltva, a bejárati ajtó továbbítja ugyanazt a kérési útvonalat, amelyet a rendszer kap. Lehetséges, hogy ez a mező helytelenül van konfigurálva, és a bejárati ajtó olyan erőforrást kér a háttérből, amely nem érhető el, így HTTP 404 állapotkódot ad vissza.
-
+    - Az *URL-cím újraírása* alapértelmezés szerint le van tiltva. Ez a mező csak akkor használható, ha le szeretné szűkíteni az elérhetővé tenni kívánt háttérrendszer-erőforrások hatókörét. Ha le van tiltva, a bejárati ajtó továbbítja ugyanazt a kérési útvonalat, amelyet a rendszer kap. Ezt a mezőt helytelenül lehet beállítani. Tehát amikor a bevezető ajtó olyan erőforrást kér a háttérből, amely nem érhető el, egy HTTP 404 állapotkódot ad vissza.

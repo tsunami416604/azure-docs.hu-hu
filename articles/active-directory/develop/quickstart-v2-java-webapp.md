@@ -1,6 +1,7 @@
 ---
-title: A Microsoft Identity platform Java-webalkalmazásának rövid útmutatója | Azure
-description: Ismerje meg, hogyan implementálhatja a Microsoft bejelentkezést egy Java-webalkalmazásban az OpenID Connect használatával
+title: 'Gyors útmutató: bejelentkezés felvétele a Microsofttal Java-webalkalmazásba | Azure'
+titleSuffix: Microsoft identity platform
+description: Ebből a rövid útmutatóból megtudhatja, hogyan implementálhatja a Microsoft-bejelentkezést egy Java-webalkalmazásban az OpenID Connect használatával.
 services: active-directory
 author: sangonzal
 manager: CelesteDG
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java, devx-track-java
-ms.openlocfilehash: d1b79d60bba89ef01b261c403fe3b25939669d0b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6281ab00f20663a54fd8c397df307581d3967ef9
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91258098"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631596"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Gyors útmutató: bejelentkezés felvétele a Microsofttal egy Java-webalkalmazásba
 
@@ -57,7 +58,7 @@ A minta futtatásához a következőkre lesz szüksége:
 > 1. Az **Áttekintés** oldalon keresse meg az alkalmazás **(ügyfél) azonosítóját** és a **könyvtár (bérlő) azonosító** értékeit. Másolja ezeket az értékeket később.
 > 1. Válassza ki a **hitelesítést** a menüben, majd adja hozzá a következő adatokat:
 >    - Adja hozzá **a** webplatform-konfigurációt.  Adja hozzá ezeket `https://localhost:8443/msal4jsample/secure/aad` és `https://localhost:8443/msal4jsample/graph/me` az **átirányítási URI-ket**.
->    - Kattintson a **Mentés** gombra.
+>    - Válassza a **Mentés** lehetőséget.
 > 1. Válassza ki a **tanúsítványokat & a titkokat** a menüben, majd az **ügyfél titkai** szakaszban kattintson az **új ügyfél titka**lehetőségre:
 >
 >    - Írja be a kulcs leírását (például az alkalmazás titkos kulcsaként).

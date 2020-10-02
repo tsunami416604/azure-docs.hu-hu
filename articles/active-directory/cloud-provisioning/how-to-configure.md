@@ -11,12 +11,12 @@ ms.date: 02/26/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50f02ea42bb792320da6e2523b733f09afd412a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c8b18629a776dd98950f49b1f607cbc876abcd9c
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85360962"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91628891"
 ---
 # <a name="create-a-new-configuration-for-azure-ad-connect-cloud-based-provisioning"></a>Új konfiguráció létrehozása Azure AD Connect felhőalapú kiépítés számára
 
@@ -25,67 +25,68 @@ Miután telepítette az ügynököt, be kell jelentkeznie a Azure Portalba, és 
 ## <a name="configure-provisioning"></a>Kiépítés konfigurálása
 A kiépítés konfigurálásához kövesse az alábbi lépéseket.
 
-1.  A Azure Portal válassza a **Azure Active Directory**lehetőséget.
-1.  Válassza a **Azure ad Connect**lehetőséget.
-1.  Válassza a **felügyelet kiépítés (előzetes verzió)** lehetőséget.
+ 1. A Azure Portal válassza a **Azure Active Directory**
+ 2. Válassza a **Azure ad Connect**lehetőséget.
+ 3. Válassza a **kiépítés kezelése**lehetőséget.
 
-    ![Kiépítés kezelése (előzetes verzió)](media/how-to-configure/manage1.png)
+ ![Kiépítés kezelése](media/how-to-configure/manage1.png)
+ 
+ 4. Válassza az **Új konfiguráció**lehetőséget.
+ 5. A konfiguráció képernyőn válassza ki a tartományt, és adja meg, hogy engedélyezi-e a jelszó-kivonat szinkronizálását.  Kattintson a **Létrehozás**gombra.  
+ 
+ ![Új konfiguráció létrehozása](media/how-to-configure/configure1.png)
 
-1.  Válassza az **Új konfiguráció**lehetőséget.
-1.  A konfigurációs képernyőn a helyszíni tartomány előre fel van töltve.
-1.  Adja meg az **értesítő e-mailt**. Az e-mail értesítést kap, ha a kiépítés állapota nem kifogástalan.
-1.  Helyezze át a választót az **engedélyezéshez**, majd válassza a **Mentés**lehetőséget.
 
-    ![Azure AD-kiépítés (előzetes verzió)](media/tutorial-single-forest/configure2.png)
+ 6.  Ekkor megnyílik a kiépítési konfiguráció szerkesztése képernyő.
+
+   ![Konfiguráció szerkesztése](media/how-to-configure/configure2.png)
+
+ 7. Adja meg az **értesítő e-mailt**. Az e-mail értesítést kap, ha a kiépítés állapota nem kifogástalan.
+ 8. Helyezze át a választót az engedélyezéshez, majd válassza a mentés lehetőséget.
 
 ## <a name="scope-provisioning-to-specific-users-and-groups"></a>Hatókör-kiépítés adott felhasználókra és csoportokra
 Az ügynök hatókörével a helyi Active Directory csoportok vagy szervezeti egységek használatával szinkronizálhatja az adott felhasználókat és csoportokat. Nem konfigurálhat csoportokat és szervezeti egységeket a konfiguráción belül. 
 
-1.  A Azure Portal válassza a **Azure Active Directory**lehetőséget.
-1.  Válassza a **Azure ad Connect**lehetőséget.
-1.  Válassza a **felügyelet kiépítés (előzetes verzió)** lehetőséget.
-1.  A **konfiguráció**területen válassza ki a konfigurációt.
+ 1.  A Azure Portal válassza a **Azure Active Directory**lehetőséget.
+ 2. Válassza a **Azure ad Connect**lehetőséget.
+ 3. Válassza a **felügyelet kiépítés (előzetes verzió)** lehetőséget.
+ 4. A **konfiguráció**területen válassza ki a konfigurációt.
 
-    ![Konfigurációs szakasz](media/how-to-configure/scope1.png)
+ ![Konfigurációs szakasz](media/how-to-configure/scope1.png)
+ 
+ 5. A **Konfigurálás**területen válassza a **hatókör-szűrők szerkesztése** lehetőséget a konfigurációs szabály hatókörének módosításához.
+ ![Hatókör szerkesztése](media/how-to-configure/scope3.png)
+ 7. A jobb oldalon módosíthatja a hatókört.  Ha elkészült, kattintson a **kész**  gombra, és **mentse a mentést** .
+ 8. A hatókör módosítása után [újra kell indítani a kiépítés](#restart-provisioning) szolgáltatást a módosítások azonnali szinkronizálásának indításához.
 
-1.  A **Konfigurálás**területen válassza a **minden felhasználó** lehetőséget a konfigurációs szabály hatókörének módosításához.
+## <a name="attribute-mapping"></a>Attribútumleképezés
+Azure AD Connect a felhő-kiépítés lehetővé teszi az attribútumok egyszerű leképezését a helyszíni felhasználói/csoport objektumai és az Azure AD objektumai között.  Az alapértelmezett attribútum-hozzárendelések testreszabhatók az üzleti igényeknek megfelelően. Így módosíthatja vagy törölheti a meglévő attribútum-hozzárendeléseket, illetve létrehozhat új attribútum-hozzárendeléseket is.  További információ: [attribútumok leképezése](how-to-attribute-mapping.md).
 
-    ![Minden felhasználó lehetőség](media/how-to-configure/scope2.png)
-
-1. A jobb oldalon úgy módosíthatja a hatókört, hogy csak biztonsági csoportokat tartalmazzon. Adja meg a csoport megkülönböztető nevét, majd kattintson a **Hozzáadás**gombra.
-
-    ![Kiválasztott biztonsági csoportok beállítás](media/how-to-configure/scope3.png)
-
-1.  Vagy módosíthatja a hatókört úgy, hogy csak bizonyos szervezeti egységeket tartalmazzon. Válassza a **kész** és a **Mentés**lehetőséget.  
-2.  A hatókör módosítása után [újra kell indítani a kiépítés](#restart-provisioning) szolgáltatást a módosítások azonnali szinkronizálásának indításához.
-
-    ![Kiválasztott szervezeti egységek lehetőség](media/how-to-configure/scope4.png)
-
+## <a name="on-demand-provisioning"></a>Igény szerinti kiépítés
+Azure AD Connect a felhő-kiépítés lehetővé teszi a konfigurációs változások tesztelését, ha ezeket a módosításokat egyetlen felhasználóra vagy csoportra alkalmazza.  Ezzel ellenőrizheti, hogy a konfiguráción végrehajtott módosítások megfelelően lettek-e alkalmazva, és megfelelően szinkronizálva vannak-e az Azure AD-vel.  További információ: [igény szerinti kiépítés](how-to-on-demand-provision.md).
 
 ## <a name="restart-provisioning"></a>Kiépítés újraindítása 
 Ha nem szeretné megvárni a következő ütemezett futtatást, aktiválja a kiépítési futtatást az **Újraindítás kiépítés** gomb használatával. 
-1.  A Azure Portal válassza a **Azure Active Directory**lehetőséget.
-1.  Válassza a **Azure ad Connect**lehetőséget.
-1.  Válassza a **felügyelet kiépítés (előzetes verzió)** lehetőséget.
-1.  A **konfiguráció**területen válassza ki a konfigurációt.
+ 1.  A Azure Portal válassza a **Azure Active Directory**lehetőséget.
+ 2. Válassza a **Azure ad Connect**lehetőséget.
+ 3.  Válassza a **felügyelet kiépítés (előzetes verzió)** lehetőséget.
+ 4. A **konfiguráció**területen válassza ki a konfigurációt.
 
-    ![Konfiguráció kiválasztása a kiépítés újraindításához](media/how-to-configure/scope1.png)
+   ![Konfiguráció kiválasztása a kiépítés újraindításához](media/how-to-configure/scope1.png)
 
-1.  A felső részen válassza a **kiépítés újraindítása**lehetőséget.
+ 5. A felső részen válassza a **kiépítés újraindítása**lehetőséget.
 
 ## <a name="remove-a-configuration"></a>Konfiguráció eltávolítása
 A konfiguráció törléséhez kövesse az alábbi lépéseket.
 
-1.  A Azure Portal válassza a **Azure Active Directory**lehetőséget.
-1.  Válassza a **Azure ad Connect**lehetőséget.
-1.  Válassza a **felügyelet kiépítés (előzetes verzió)** lehetőséget.
-1.  A **konfiguráció**területen válassza ki a konfigurációt.
+ 1.  A Azure Portal válassza a **Azure Active Directory**lehetőséget.
+ 2. Válassza a **Azure ad Connect**lehetőséget.
+ 3. Válassza a **felügyelet kiépítés (előzetes verzió)** lehetőséget.
+ 4. A **konfiguráció**területen válassza ki a konfigurációt.
+   
+   ![Konfiguráció eltávolítására szolgáló konfigurációs beállítás](media/how-to-configure/scope1.png)
 
-    ![Konfiguráció eltávolítására szolgáló konfigurációs beállítás](media/how-to-configure/scope1.png)
-
-1.  A konfiguráció képernyő felső részén válassza a **Törlés**lehetőséget.
-
-    ![Törlés gomb](media/how-to-configure/remove1.png)
+ 5. A konfiguráció képernyő felső részén válassza a **Törlés**lehetőséget.
 
 >[!IMPORTANT]
 >A konfiguráció törlése előtt nincs megerősítés. Győződjön meg arról, hogy ezt a műveletet szeretné végrehajtani a **Törlés**kiválasztása előtt.

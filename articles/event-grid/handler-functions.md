@@ -3,12 +3,12 @@ title: Azure-függvény Azure Event Grid események eseménykezelőként
 description: Leírja, hogyan használhatja az Azure functions-t Event Grid eseményekhez tartozó eseménykezelőként.
 ms.topic: conceptual
 ms.date: 09/18/2020
-ms.openlocfilehash: 87aeb78729dcc7bec9f193fab389e5c0952e63d5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: db06962c020eb954bf0c595e5a4019b1df774898
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91270318"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629688"
 ---
 # <a name="azure-function-as-an-event-handler-for-event-grid-events"></a>Azure-függvény Event Grid események eseménykezelőként
 
@@ -60,7 +60,7 @@ Amikor létrehoz egy előfizetést a felhasználói felületen, az **esemény-el
 
 A meglévő előfizetések ezen értékeit a **Event Grid témakör** lap **szolgáltatások** lapján frissítheti. 
 
-:::image type="content" source="./media/custom-event-to-function/features-batch-settings.png" alt-text="Kötegelt feldolgozás engedélyezése a létrehozás után":::
+:::image type="content" source="./media/custom-event-to-function/features-batch-settings.png" alt-text="Az előfizetés létrehozásának időpontjában engedélyezze a kötegelt feldolgozást":::
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager-sablon
 **MaxEventsPerBatch** és **preferredBatchSizeInKilobytes** is beállíthat egy Azure Resource Manager sablonban. További információ: [Microsoft. EventGrid eventSubscriptions-sablon referenciája](https://docs.microsoft.com/azure/templates/microsoft.eventgrid/eventsubscriptions).
@@ -71,8 +71,5 @@ A Batch szolgáltatáshoz kapcsolódó beállításokat az az [eventgrid Event-e
 ### <a name="azure-powershell"></a>Azure PowerShell
 A [New-AzEventGridSubscription](https://docs.microsoft.com/powershell/module/az.eventgrid/new-azeventgridsubscription) vagy az [Update-AzEventGridSubscription](https://docs.microsoft.com/powershell/module/az.eventgrid/update-azeventgridsubscription) parancsmaggal konfigurálhatja a Batch szolgáltatáshoz kapcsolódó beállításokat a következő paraméterekkel: `-MaxEventsPerBatch` vagy `-PreferredBatchSizeInKiloBytes` .
 
-> [!NOTE]
-> Az események egy **másik bérlőben** lévő Azure-függvénybe való továbbítása nem támogatott. 
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A támogatott eseménykezelők listáját az [eseménykezelők](event-handlers.md) című cikkben tekintheti meg. 

@@ -3,12 +3,12 @@ title: Event hub Azure Event Grid események eseménykezelője
 description: Ismerteti, hogyan használható az Event hub Azure Event Grid eseményekhez eseménykezelőként.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 5e6a84c1737c6b8a575f47576aeb1d3d9efae6eb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4fb8027290831dbfed4b6d202d61d2d689274828
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322563"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629624"
 ---
 # <a name="event-hub-as-an-event-handler-for-azure-event-grid-events"></a>Event hub Azure Event Grid események eseménykezelője
 Az eseménykezelő az a hely, ahol az esemény elküldése történik. A kezelő végrehajt egy műveletet az esemény feldolgozásához. Számos Azure-szolgáltatás automatikusan van konfigurálva az események kezelésére, és az **azure Event Hubs** az egyik. 
@@ -26,7 +26,7 @@ Lásd az alábbi példákat:
 ## <a name="message-properties"></a>Üzenet tulajdonságai
 Ha az **Event hub** -t a Event Grid eseményeihez tartozó esemény-kezelőként használja, akkor az üzenetek fejlécében megjelenő tulajdonságok a következők: 
 
-| Tulajdonság neve | Description |
+| Tulajdonság neve | Leírás |
 | ------------- | ----------- | 
 | AEG-előfizetés – név | Az esemény-előfizetés neve. |
 | AEG – kézbesítés – darabszám | <p>Az eseményre tett kísérletek száma.</p> <p>Példa: "1"</p> |
@@ -82,8 +82,5 @@ Ha az **Event hub** -t a Event Grid eseményeihez tartozó esemény-kezelőként
 }
 ```
 
-> [!NOTE]
-> Az események egy **másik bérlőben** lévő Azure Event hubhoz való továbbítása nem támogatott. 
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A támogatott eseménykezelők listáját az [eseménykezelők](event-handlers.md) című cikkben tekintheti meg. 

@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/23/2020
+ms.date: 10/01/2020
 ms.author: mimart
 ms.reviewer: arvinh
-ms.openlocfilehash: 52819fc37cf0d10cb36009feb82dec234184752c
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: f7cbe9e9f81b3b71ee7da2feac2908c36f1777e5
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235536"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629012"
 ---
 # <a name="on-demand-provisioning"></a>Igény szerinti kiépítés
 Igény szerinti kiépítés használatával másodpercek alatt kiépítheti a felhasználókat egy alkalmazásba. A funkció többek között a következőkre használható:
@@ -28,12 +28,15 @@ Igény szerinti kiépítés használatával másodpercek alatt kiépítheti a fe
 ## <a name="how-to-use-on-demand-provisioning"></a>Igény szerinti kiépítés használata
 
 1. Jelentkezzen be az **Azure Portalra**.
-2. Lépjen az **összes szolgáltatás**  >  **vállalati alkalmazáshoz**.
-3. Válassza ki az alkalmazást, majd nyissa meg a létesítési konfiguráció lapot.
-4. Konfigurálja úgy a kiépítés konfigurálását, hogy megadja a rendszergazdai hitelesítő adatait.
-5. Válassza **a kiépítés igény szerint**lehetőséget.
-6. Keressen egy felhasználót az utónév, a vezetéknév, a megjelenítendő név, az egyszerű felhasználónév vagy az e-mail-cím alapján.
-7. Válassza a **kiépítés** elemet az oldal alján.
+1. Lépjen az **összes szolgáltatás**  >  **vállalati alkalmazáshoz**.
+1. Válassza ki az alkalmazást, majd nyissa meg a létesítési konfiguráció lapot.
+1. Konfigurálja úgy a kiépítés konfigurálását, hogy megadja a rendszergazdai hitelesítő adatait.
+1. Válassza **a kiépítés igény szerint**lehetőséget.
+1. Keressen egy felhasználót az utónév, a vezetéknév, a megjelenítendő név, az egyszerű felhasználónév vagy az e-mail-cím alapján.
+   > [!NOTE]
+   > A Felhőbeli HR-kiépítési alkalmazásokhoz (munkanap/SuccessFactors AD/Azure AD) a bemeneti érték eltér. A munkanap forgatókönyv esetén adja meg a felhasználó "WID" számát a munkanapokon. SuccessFactors forgatókönyv esetén adja meg a felhasználó "personIdExternal" a SuccessFactors-ben. 
+ 
+1. Válassza a **kiépítés** elemet az oldal alján.
 
 :::image type="content" source="media/provision-on-demand/on-demand-provision-user.jpg" alt-text="Képernyőfelvétel: a felhasználó igény szerinti üzembe helyezésének Azure Portal felhasználói felületét jeleníti meg.":::
 
@@ -121,7 +124,7 @@ Végül a kiépítési szolgáltatás végrehajt egy műveletet, például a fel
 
 Íme egy példa arra, hogy mit láthat a felhasználó sikeres igény szerinti kiépítés után:
 
-:::image type="content" source="media/provision-on-demand/success-on-demand-provision.jpg" alt-text="A felhasználó sikeres igény szerinti üzembe helyezését bemutató képernyőkép.":::
+:::image type="content" source="media/provision-on-demand/success-on-demand-provision.jpg" alt-text="Képernyőfelvétel: a felhasználó igény szerinti üzembe helyezésének Azure Portal felhasználói felületét jeleníti meg.":::
 
 #### <a name="view-details"></a>Részletek megtekintése
 
@@ -144,7 +147,7 @@ Jelenleg van néhány ismert korlátozás az igény szerinti kiépítés során.
 > [!NOTE]
 > Az igény szerinti kiépítési képességre az alábbi korlátozások vonatkoznak. Arról, hogy egy alkalmazás támogatja-e a kiépítési csoportokat, a törlést vagy más képességeket, keresse meg az adott alkalmazáshoz tartozó oktatóanyagot.
 
-* A munkanap, Amazon Web Services (AWS) és a SuccessFactors alkalmazások nem támogatják az igény szerinti üzembe helyezést. 
+* Az Amazon Web Services (AWS) alkalmazás nem támogatja az igény szerinti kiépítés használatát. 
 * A csoportok és szerepkörök igény szerinti üzembe helyezése nem támogatott.
 * Az igény szerinti kiépítés az alkalmazásból ki nem osztott felhasználók letiltását támogatja. Azonban nem támogatja az Azure AD-ből letiltott vagy törölt felhasználók letiltását vagy törlését. Ezek a felhasználók nem jelennek meg a felhasználó keresésekor.
 

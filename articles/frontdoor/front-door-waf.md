@@ -1,5 +1,5 @@
 ---
-title: Webalkalmazások méretezése és biztosítása az Azure bejárati ajtó és a WAF használatával
+title: 'Oktatóanyag: webalkalmazások méretezése és biztosítása az Azure-beli bejárati ajtó és az Azure webalkalmazási tűzfal (WAF) használatával'
 description: Ez az oktatóanyag bemutatja, hogyan használhatja az Azure-webalkalmazási tűzfalat az Azure bevezető ajtó szolgáltatásával.
 services: frontdoor
 documentationcenter: ''
@@ -9,20 +9,20 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/14/2020
+ms.date: 10/01/2020
 ms.author: duau
-ms.openlocfilehash: 2d531289a1d6e8c484b0334e570d943acdb82268
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7c5e938f985296e0534ca6e2438cf3acedb0fb65
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91276254"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91626479"
 ---
 # <a name="tutorial-quickly-scale-and-protect-a-web-application-by-using-azure-front-door-and-azure-web-application-firewall-waf"></a>Oktatóanyag: webalkalmazások gyors méretezése és biztosítása az Azure-beli előtérben és az Azure webalkalmazási tűzfal (WAF) használatával
 
-A COVID-19 miatt számos webalkalmazás gyors növekedést észlelt az elmúlt hetekben. Ezek a webalkalmazások a rosszindulatú adatforgalmat is megtapasztalják, beleértve a szolgáltatásmegtagadási támadásokat is. A forgalom felskálázása és a támadások elleni védelem hatékony módja: az Azure WAF a webalkalmazás előtt gyorsított, gyorsítótárazási és biztonsági rétegként állítható be. Ez a cikk útmutatást nyújt arról, hogyan lehet gyorsan beolvasni az Azure-t az Azure WAF az Azure-on belül vagy azon kívül futó webalkalmazások üzembe helyezéséhez. 
+A COVID-19 miatt számos webalkalmazás gyors növekedést észlelt az elmúlt hetekben. Ezek a webalkalmazások a rosszindulatú adatforgalmat is megtapasztalják, beleértve a szolgáltatásmegtagadási támadásokat is. Az alkalmazás vertikális felskálázása és a támadások elleni védelem hatékony módja: az Azure WAF az Azure-ba a webalkalmazás előtt gyorsított, gyorsítótárazási és biztonsági rétegként konfigurálható. Ez a cikk útmutatást nyújt arról, hogyan kérhet Azure bejárati ajtót az Azure-on belül vagy kívül futó webalkalmazásokhoz konfigurált Azure WAF. 
 
-Az oktatóanyagban az Azure CLI használatával állíthatja be a WAF. Ugyanezt a dolgot a Azure Portal, a Azure PowerShell, a Azure Resource Manager vagy az Azure REST API-k használatával hajthatja végre. 
+Ebben az oktatóanyagban az Azure CLI használatával konfiguráljuk a WAF. Ugyanezt a dolgot a Azure Portal, a Azure PowerShell, a Azure Resource Manager vagy az Azure REST API-k használatával hajthatja végre. 
 
 Ebből az oktatóanyagból az alábbiakat sajátíthatja el:
 > [!div class="checklist"]
@@ -36,7 +36,7 @@ Ebből az oktatóanyagból az alábbiakat sajátíthatja el:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Az oktatóanyagban szereplő utasítások az Azure CLI-t használják. [Tekintse meg ezt az útmutatót](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) az Azure CLI-vel való ismerkedéshez.
+- Az oktatóanyagban szereplő utasítások az Azure CLI-t használják. [Tekintse meg ezt az útmutatót](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest&preserve-view=true) az Azure CLI-vel való ismerkedéshez.
 
   > [!TIP] 
   > Az Azure CLI első lépéseinek egyszerű és gyors módja a [Bash Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart).
@@ -48,7 +48,7 @@ Ebből az oktatóanyagból az alábbiakat sajátíthatja el:
    ```
 
 > [!NOTE] 
-> Az oktatóanyagban használt parancsokkal kapcsolatos további információkért tekintse meg az [Azure CLI-referenciát az](https://docs.microsoft.com/cli/azure/ext/front-door/?view=azure-cli-latest)előtérben.
+> Az oktatóanyagban használt parancsokkal kapcsolatos további információkért tekintse meg az [Azure CLI-referenciát az](https://docs.microsoft.com/cli/azure/ext/front-door/?view=azure-cli-latest&preserve-view=true)előtérben.
 
 ## <a name="create-an-azure-front-door-resource"></a>Azure-beli előtérben lévő erőforrás létrehozása
 
@@ -132,11 +132,11 @@ A webalkalmazás egyéni tartományneve az a felhasználó, aki az alkalmazásra
 
 A DNS-rekordok frissítésének konkrét lépései a DNS-szolgáltatótól függenek. Ha Azure DNSt használ a DNS-név üzemeltetéséhez, tekintse meg a [DNS-rekordok frissítésének](https://docs.microsoft.com/azure/dns/dns-operations-recordsets-cli) és az Azure-beli bejárati ajtóra mutató lépéseknek a dokumentációját `hostName` . 
 
-Fontos megjegyezni, hogy ha az ügyfeleket a zóna csúcsának használatával kell megszereznie a webhelyhez (például contoso.com). Ebben az esetben az Azure DNS és az [alias bejegyzéstípust](https://docs.microsoft.com/azure/dns/dns-alias) kell használnia a DNS-név üzemeltetéséhez. 
+Fontos megjegyezni, hogy ha ügyfeleinek a zóna csúcsán kell megszerezniük a webhelyét (például contoso.com). Ebben az esetben az Azure DNS és az [alias bejegyzéstípust](https://docs.microsoft.com/azure/dns/dns-alias) kell használnia a DNS-név üzemeltetéséhez. 
 
 Emellett frissítenie kell az Azure bejárati ajtajának konfigurációját, hogy [az egyéni tartományt hozzá lehessen adni](https://docs.microsoft.com/azure/frontdoor/front-door-custom-domain) ahhoz, hogy tisztában legyen ezzel a leképezéssel.
 
-Végül, ha egyéni tartományt használ a webalkalmazás eléréséhez, és engedélyezni szeretné a HTTPS protokollt, [be kell állítania az egyéni tartomány tanúsítványait az Azure-beli bejárati ajtón](https://docs.microsoft.com/azure/frontdoor/front-door-custom-domain-https). 
+Végül, ha egyéni tartományt használ a webalkalmazás eléréséhez, és engedélyezni szeretné a HTTPS protokollt. [Az Azure-beli bejárati ajtóban be kell állítania az egyéni tartományhoz tartozó tanúsítványokat](https://docs.microsoft.com/azure/frontdoor/front-door-custom-domain-https). 
 
 ## <a name="lock-down-your-web-application"></a>A webalkalmazás zárolása
 
@@ -144,7 +144,7 @@ Javasoljuk, hogy csak az Azure-előtérben lévő élek kommunikáljanak a webal
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szüksége az oktatóanyagban használt erőforrásokra, az az [Group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) paranccsal távolítsa el az erőforráscsoportot, a bejárati ajtót és a WAF szabályzatot:
+Ha már nincs szüksége az oktatóanyagban használt erőforrásokra, az az [Group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete&preserve-view=true) paranccsal távolítsa el az erőforráscsoportot, a bejárati ajtót és a WAF szabályzatot:
 
 ```azurecli-interactive
   az group delete \
@@ -152,12 +152,9 @@ Ha már nincs szüksége az oktatóanyagban használt erőforrásokra, az az [Gr
 ```
 `--name`: Az oktatóanyagban használt összes erőforrás erőforráscsoport neve.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha szeretné megtudni, hogyan lehet elhárítani a bejárati ajtót, tekintse meg a hibaelhárítási útmutatókat:
 
 > [!div class="nextstepaction"]
 > [Gyakori útválasztási problémák elhárítása](front-door-troubleshoot-routing.md)
-
-> [!div class="nextstepaction"]
-> [Engedélyezett hitelesítésszolgáltatók](https://docs.microsoft.com/azure/frontdoor/front-door-troubleshoot-allowed-ca)

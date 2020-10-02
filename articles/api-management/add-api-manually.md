@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 6b8b7c0dbdce160a19b5bb5ecb67bf2fb0a204ee
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 39a3b9d7dd9efbda93de0b5d7c5f9938922d0012
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89295262"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631290"
 ---
 # <a name="add-an-api-manually"></a>API hozzáadása manuálisan
 
@@ -39,8 +39,8 @@ Hajtsa végre a következő rövid útmutatót: [Azure API Management-példány 
 2. A bal oldali menüben válassza az **+ API hozzáadása** elemet.
 3. Válassza az **Üres API** elemet a listából.  
     ![Üres API](media/add-api-manually/blank-api.png)  
-4. Adja meg az API beállításait. A beállításokat az [első API-oktatóanyag importálásával és közzétételével](import-and-publish.md#-import-and-publish-a-backend-api) foglalkozó cikkben ismertetjük.
-5. Válassza a **Létrehozás** lehetőséget.
+4. Adja meg az API beállításait. A beállításokat az [első API-oktatóanyag importálásával és közzétételével](import-and-publish.md#import-and-publish-a-backend-api) foglalkozó cikkben ismertetjük.
+5. Kattintson a **Létrehozás** gombra.
 
 Ezen a ponton nincsenek olyan API Management műveletek, amelyek a háttér-API műveleteire mutatnak. Ha olyan műveletet hív meg, amely a háttérön keresztül érhető el, de nem a API Managementon keresztül, akkor a rendszer **404**-as számot kap.
 
@@ -57,7 +57,7 @@ Ez a szakasz bemutatja, hogyan hozhat létre egy „/get” műveletet, amelyet 
 2. Kattintson a **+ Művelet hozzáadása** elemre.
 3. Az **URL** szakaszban válassza a **GET** elemet, és írja be a „*/get*” karakterláncot az erőforrás mezőjébe.
 4. A **Megjelenített név** mezőbe írja be a következőt: „*FetchData*”.
-5. Kattintson a **Mentés** gombra.
+5. Válassza a **Mentés** lehetőséget.
 
 ### <a name="test-an-operation"></a>Műveletek tesztelése
 
@@ -79,7 +79,7 @@ Ez a szakasz bemutatja, hogyan adhat hozzá egy paramétert használó művelete
 2. Kattintson a **+ Művelet hozzáadása** elemre.
 3. Az **URL** szakaszban válassza a **GET** elemet, és írja be a „*/status/{code}*” karakterláncot az erőforrás mezőjébe. Lehetősége van megadni a paraméterhez kapcsolódó információkat. A **TÍPUS** értéke például lehet „*Szám*”, az **ÉRTÉKEK** értéke pedig lehet „*200*” (az alapértelmezett érték).
 4. A **Megjelenített név** mezőbe írja be a következőt: „GetStatus”.
-5. Kattintson a **Mentés** gombra.
+5. Válassza a **Mentés** lehetőséget.
 
 ### <a name="test-the-operation"></a>A művelet tesztelése 
 

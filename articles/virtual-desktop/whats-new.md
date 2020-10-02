@@ -3,17 +3,17 @@ title: A Windows rendszerű virtuális asztal újdonságai – Azure
 description: Új szolgáltatások és Termékfrissítések a Windows rendszerű virtuális asztali gépekhez.
 author: Heidilohr
 ms.topic: overview
-ms.date: 09/02/2020
+ms.date: 10/01/2020
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
 ms.custom: references_regions
-ms.openlocfilehash: d698470f450f6fe903ab68334764e0918d659d7f
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 0191d6ad74a9b6349f5d1724f9483607dce2d926
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89319814"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91630014"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>A Windows rendszerű virtuális asztal újdonságai
 
@@ -25,6 +25,29 @@ A Windows rendszerű virtuális asztali frissítések rendszeres időközönkén
 - Hibajavítások
 
 Ez a cikk havonta frissül. Ügyeljen arra, hogy az új frissítések megtartása érdekében gyakran térjen vissza ide.
+
+## <a name="september-2020"></a>2020. szeptember
+
+A következőképpen módosult a 2020 szeptemberében:
+
+- A következő Azure-földrajzi területeken a kapcsolatok késésének csökkentésével optimalizáltuk a teljesítményt:
+    - Németország
+    - Dél-Afrika (csak ellenőrzési környezetek esetén)
+
+Most már használhatja a [Experience kalkulátort](https://azure.microsoft.com/services/virtual-desktop/assessment/) a felhasználói élmény minőségének becsléséhez ezekben a területeken.
+
+- Megjelent a Windows rendszerű virtuális asztali Windows asztali ügyfél 1.2.1364 verziója. Ebben a frissítésben a következő módosításokat hajtottuk végre:
+    - Kijavított egy problémát, amelyben az egyszeri bejelentkezés (SSO) nem működött a Windows 7 rendszeren.
+    - Kijavított egy problémát, amely miatt az ügyfél leválasztott egy olyan felhasználót, aki engedélyezte a csapatok számára a média optimalizálását, vagy csatlakozhat egy Teams-értekezlethez, míg egy másik alkalmazás kizárólagos módban nyitott meg egy hangadatfolyamot.
+    - Kijavított egy problémát, amelyben a csapatok nem észleltek hang-és video-eszközöket, amikor engedélyezve lett a csapatok multimédia-optimalizálása.
+    - "Segítségre van szüksége a beállításokhoz?" az asztali beállítások lapra mutató hivatkozás.
+    - A nagy kontrasztú sötét témák használatakor megjelenő "subscribe" (előfizetés) gombra vonatkozó probléma kijavítva.
+    
+- A felhasználók óriási segítségének köszönhetően javítottunk két kritikus problémát a Microsoft Store Távoli asztal-ügyfél számára. Folytatjuk a visszajelzések áttekintését és a problémák megoldását, mivel az ügyfél szakaszos kiadását bővítjük világszerte több felhasználó számára.
+    
+- Új funkciót adtunk hozzá, amely lehetővé teszi a virtuális gép helyének, rendszerképének, erőforráscsoportának, előtagjának és hálózati konfigurációjának módosítását a munkafolyamatok részeként, hogy a virtuális gépet hozzáadja a központi telepítéshez a Azure Portal.
+
+- Az informatikai szakemberek mostantól a Microsoft Endpoint Manager használatával kezelhetik a hibrid Azure Active Directory csatlakoztatott Windows 10 Enterprise rendszerű virtuális gépeket. További információt [a blogbejegyzésben](https://techcommunity.microsoft.com/t5/microsoft-endpoint-manager-blog/microsoft-endpoint-manager-announces-support-for-windows-virtual/ba-p/1681048)talál.
 
 ## <a name="august-2020"></a>2020. augusztus
 
@@ -141,7 +164,6 @@ Tekintse meg ezeket a cikkeket a Windows rendszerű virtuális asztali és Távo
 - [Android](/windows-server/remote/remote-desktop-services/clients/android-whatsnew)
 - [Web](/windows-server/remote/remote-desktop-services/clients/web-client-whatsnew)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerkedjen meg a jövőbeli tervekkel a [Microsoft 365 Windows rendszerű virtuális asztali menetrendben](https://www.microsoft.com/microsoft-365/roadmap?filters=Windows%20Virtual%20Desktop).
-

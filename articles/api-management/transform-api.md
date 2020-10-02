@@ -1,30 +1,24 @@
 ---
-title: Az API-k átalakítása és védelme az Azure API Management szolgáltatással | Microsoft Docs
-description: Megtudhatja, hogyan védheti meg az API-kat kvótákkal és szabályozási (sebességhatároló) házirendekkel.
-services: api-management
-documentationcenter: ''
+title: Oktatóanyag – API átalakítása és biztosítása az Azure API Managementban | Microsoft Docs
+description: Ebből az oktatóanyagból megtudhatja, hogyan védhető meg az API-k a API Management átalakítási és szabályozási (díjszabási) szabályzatokkal.
 author: vladvino
-manager: cfowler
-editor: ''
 ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 02/26/2019
+ms.date: 09/28/2020
 ms.author: apimpm
-ms.openlocfilehash: 07efa1899ab7364615aab9d8b50437092274ae81
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 04fcfa4712ec0b558140e942997060234b33f53e
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371377"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627765"
 ---
-# <a name="transform-and-protect-your-api"></a>Az API-k átalakítása és védelme
+# <a name="tutorial-transform-and-protect-your-api"></a>Oktatóanyag: az API átalakítása és biztosítása
 
-Az oktatóanyag bemutatja, hogyan alakíthatja át úgy az API-kat, hogy azok ne fedjenek fel privát háttérinformációkat. Előfordulhat például, hogy szeretné elrejteni a háttérrendszeren futó technológiával kapcsolatos információkat. Vagy az is lehet, hogy el kívánja rejteni az API-k HTTP-válaszának szövegtörzsében megjelenő URL-címeket, és átirányítani azokat az APIM-átjáróhoz.
+Az oktatóanyag bemutatja, hogyan alakíthatja át az API-t, hogy az ne fedje fel az adatokat a privát háttérrendszer számára. Előfordulhat például, hogy el szeretné rejteni a háttéren futó technológiai verem információit. Előfordulhat, hogy az API HTTP-válasz törzsében megjelenő eredeti URL-címeket is el szeretné rejteni, hanem átirányítja őket a APIM-átjáróra.
 
-Ez az oktatóanyag továbbá ismerteti, milyen könnyű védelmet biztosítani a háttérbeli API-k számára a hívásszám korlátjának konfigurálásával az Azure API Management segítségével. Korlátozhatja például az API hívásainak számát, hogy a fejlesztők ne vegyék túlzottan igénybe. További információt az [API Management-szabályzatokkal kapcsolatos](api-management-policies.md) cikkben olvashat.
+Ez az oktatóanyag azt is bemutatja, hogy milyen egyszerű a háttérrendszer-API védelme, ha az Azure API Management-vel korlátozza a díjszabást. Előfordulhat például, hogy korlátozni szeretné az API-hívások sebességét, hogy az API-t ne használja a fejlesztők. További információ: [API Management szabályzatok](api-management-policies.md).
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -32,10 +26,10 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 >
 > -   Az API átalakítása a válaszfejlécek eltávolításához
 > -   Az API-válasz szövegtörzsében szereplő eredeti URL-címek lecserélése az APIM-átjáró URL-címeire
-> -   API-k védelme hívásszám-korlátozási szabályzat (szabályozás) hozzáadásával
+> -   API-k elleni védelem díjszabási szabályzat hozzáadásával (szabályozás)
 > -   Az átalakítások tesztelése
 
-![Házirendek](./media/transform-api/api-management-management-console.png)
+:::image type="content" source="media/transform-api/api-management-management-console.png" alt-text="Szabályzatok a portálon":::
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -48,7 +42,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="transform-an-api-to-strip-response-headers"></a>Az API átalakítása a válaszfejlécek eltávolításához
 
-Ez a szakasz azt mutatja be, hogyan rejtheti el a HTTP-fejléceket, amelyeket nem kíván megjeleníteni a felhasználók számára. Ebben a példában a következő fejlécek lesznek törölve a HTTP-válaszból:
+Ez a szakasz bemutatja, hogyan rejtheti el azokat a HTTP-fejléceket, amelyeket nem kíván megjeleníteni a felhasználók számára. Ez a példa bemutatja, hogyan törölheti a következő fejléceket a HTTP-válaszban:
 
 -   **X-Powered-By**
 -   **X-AspNet-Version**
@@ -57,79 +51,76 @@ Ez a szakasz azt mutatja be, hogyan rejtheti el a HTTP-fejléceket, amelyeket ne
 
 Az eredeti válasz megtekintése:
 
-1. Az APIM-szolgáltatáspéldányban válassza az **API-k** lehetőséget (az **API Management** területen).
-2. Kattintson a **Demo Conference API** elemre az API-k listájában.
-3. A képernyő felső részén kattintson a **Teszt** fülre.
-4. Válassza a **GetSpeakers** műveletet.
-5. A képernyő alján kattintson a **Küldés** gombra.
+1. Az API Management Service-példányban válassza az **API**-k elemet.
+1. Válassza ki a **bemutató konferencia API** -t az API-listából.
+1. Válassza a **teszt** fület a képernyő tetején.
+1. Válassza ki a **GetSpeakers** műveletet, és válassza a **Küldés**lehetőséget.
 
-Az eredeti válasznak így kell kinéznie:
+Az eredeti válasznak a következőhöz hasonlóan kell kinéznie:
 
-![Házirendek](./media/transform-api/original-response.png)
+:::image type="content" source="media/transform-api/original-response.png" alt-text="Szabályzatok a portálon":::
+
+Amint láthatja, a válasz tartalmazza az **x-AspNet-Version**és az **x-powered-by** fejléceket.
 
 ### <a name="set-the-transformation-policy"></a>Az átalakítási szabályzat beállítása
 
-![Kimenő szabályzat beállítása](./media/transform-api/04-ProtectYourAPI-01-SetPolicy-Outbound.png)
+1. Válassza a **bemutató konferencia API**-  >  **tervezés**  >  **minden művelet**lehetőséget.
+4. A **kimenő feldolgozás** szakaszban válassza a Kódszerkesztő ( **</>** ) ikont.
 
-1. Válassza a **Demo Conference API** lehetőséget.
-2. A képernyő felső részén válassza a **Tervezés** lapot.
-3. Válassza **az összes művelet**lehetőséget.
-4. A **kimenő feldolgozás** szakaszban kattintson az **</>** ikonra.
-5. Vigye a kurzort a ** &lt; kimenő &gt; ** elemen belülre.
-6. A jobb oldali ablak **Átalakítási szabályzatok** területén kattintson kétszer a **+ HTTP-fejléc beállítása** elemre (két szabályzatkódrészlet beszúrásához).
+   :::image type="content" source="media/transform-api/04-ProtectYourAPI-01-SetPolicy-Outbound.png" alt-text="Szabályzatok a portálon" border="false":::
 
-   ![Házirendek](./media/transform-api/transform-api.png)
+1. Vigye a kurzort a ** &lt; kimenő &gt; ** elembe, és válassza a jobb felső sarokban található **kódrészletek megjelenítése** lehetőséget.
+1. A jobb oldali ablak **átalakítási házirendek**területén válassza a * * HTTP-fejléc beállítása * * kétszer (két szabályzat beszúrásához) lehetőséget.
 
-7. Módosítsa a **\<outbound>** kódot úgy, hogy az alábbihoz hasonló legyen:
+   :::image type="content" source="media/transform-api/transform-api.png" alt-text="Szabályzatok a portálon":::
+
+1. Módosítsa a **\<outbound>** kódot úgy, hogy az alábbihoz hasonló legyen:
 
    ```
    <set-header name="X-Powered-By" exists-action="delete" />
    <set-header name="X-AspNet-Version" exists-action="delete" />
    ```
 
-   ![Házirendek](./media/transform-api/set-policy.png)
+   :::image type="content" source="media/transform-api/set-policy.png" alt-text="Szabályzatok a portálon"::: (HTTP-fejléc beállítása)
 
-8. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 ## <a name="replace-original-urls-in-the-body-of-the-api-response-with-apim-gateway-urls"></a>Az API-válasz szövegtörzsében szereplő eredeti URL-címek lecserélése az APIM-átjáró URL-címeire
 
-Ez a szakasz bemutatja, hogy az API HTTP-válaszának szövegtörzsében megjelenő URL-címek hogyan rejthetőek el és irányíthatóak át az APIM-átjáróhoz.
+Ez a szakasz bemutatja, hogyan rejtheti el az API HTTP-válasz törzsében megjelenő eredeti URL-címeket, és átirányíthatja őket az APIM-átjáróra.
 
 ### <a name="test-the-original-response"></a>Az eredeti válasz tesztelése
 
 Az eredeti válasz megtekintése:
 
-1. Válassza a **Demo Conference API** lehetőséget.
-2. A képernyő felső részén kattintson a **Teszt** fülre.
-3. Válassza a **GetSpeakers** műveletet.
-4. A képernyő alján kattintson a **Küldés** gombra.
+1. Válassza a **bemutató konferencia API**-  >  **teszt**lehetőséget.
+1. Válassza ki a **GetSpeakers** műveletet, és válassza a **Küldés**lehetőséget.
 
-    Az eredeti válasz a következőhöz hasonló:
+    Amint láthatja, a válasz tartalmazza az eredeti háttérbeli URL-címeket:
 
-    ![Házirendek](./media/transform-api/original-response2.png)
+    :::image type="content" source="media/transform-api/original-response2.png" alt-text="Szabályzatok a portálon":::
+
 
 ### <a name="set-the-transformation-policy"></a>Az átalakítási szabályzat beállítása
 
-1.  Válassza a **Demo Conference API** lehetőséget.
-2.  Válassza **az összes művelet**lehetőséget.
-3.  A képernyő felső részén válassza a **Tervezés** lapot.
-4.  A **kimenő feldolgozás** szakaszban kattintson az **</>** ikonra.
-5.  Vigye a kurzort a ** &lt; kimenő &gt; ** elembe, és kattintson a jobb felső sarokban található **kódrészletek megjelenítése** gombra.
-6.  A jobb oldali ablak **átalakítási házirendek**területén kattintson a **tartalom maszk URL-címek**elemére.
+1.  Válassza a **bemutató konferencia API**  >  **minden művelet**  >  **kialakítás**elemet.
+1.  A **kimenő feldolgozás** szakaszban válassza a Kódszerkesztő ( **</>** ) ikont.
+1.  Vigye a kurzort a ** &lt; kimenő &gt; ** elembe, és válassza a jobb felső sarokban található **kódrészletek megjelenítése** lehetőséget.
+1.  A jobb oldali ablak **átalakítási házirendek**területén válassza a **tartalom maszk URL-címek**elemet. 
+1.  Válassza a **Mentés** lehetőséget.
 
 ## <a name="protect-an-api-by-adding-rate-limit-policy-throttling"></a>API-k védelme hívásszám-korlátozási szabályzat (szabályozás) hozzáadásával
 
-Ez a szakasz bemutatja, hogyan lehet védelmet biztosítani a háttérbeli API-k számára a hívásszám korlátjának konfigurálásával. Korlátozhatja például az API hívásainak számát, hogy a fejlesztők ne vegyék túlzottan igénybe. Ebben a példában a korlátot a rendszer 15 másodpercenként 3 hívásra állítja az egyes előfizetés-azonosítók esetében. 15 másodperc elteltével a fejlesztők újra meghívhatják az API-t.
+Ez a szakasz bemutatja, hogyan lehet védelmet biztosítani a háttérbeli API-k számára a hívásszám korlátjának konfigurálásával. Előfordulhat például, hogy korlátozni szeretné az API-hívások sebességét, hogy az API-t ne használja a fejlesztők. Ebben a példában a korlátot a rendszer 15 másodpercenként 3 hívásra állítja az egyes előfizetés-AZONOSÍTÓk esetében. 15 másodperc elteltével a fejlesztő újrapróbálhatja az API hívását.
 
-![Bejövő szabályzat beállítása](./media/transform-api/04-ProtectYourAPI-01-SetPolicy-Inbound.png)
+1.  Válassza a **bemutató konferencia API**  >  **minden művelet**  >  **kialakítás**elemet.
+1.  A **bejövő feldolgozás** szakaszban válassza a Kódszerkesztő ( **</>** ) ikont.
+1.  Vigye a kurzort a ** &lt; bejövő &gt; ** elemen belülre.
 
-1.  Válassza a **Demo Conference API** lehetőséget.
-2.  Válassza **az összes művelet**lehetőséget.
-3.  A képernyő felső részén válassza a **Tervezés** lapot.
-4.  A **Bejövő feldolgozás** szakaszban kattintson a **</>** ikonra.
-5.  Vigye a kurzort a ** &lt; bejövő &gt; ** elemen belülre.
-6.  A jobb oldali ablak **Hozzáférés-korlátozási szabályzatok** területén kattintson a **+ Hívások számának korlátozása kulcsonként** elemre.
-7.  Módosítsa a **ráta-limit-by-Key** kódot (a **\<inbound\>** elemben) a következő kódra:
+    :::image type="content" source="media/transform-api/04-ProtectYourAPI-01-SetPolicy-Inbound.png" alt-text="Szabályzatok a portálon" border="false":::
+
+1.  A jobb oldali ablakban a **hozzáférés-korlátozási szabályzatok**területen válassza a **maximális hívási sebesség/kulcs**lehetőséget.
+1.  Módosítsa a **ráta-limit-by-Key** kódot (a **\<inbound\>** elemben) a következő kódra:
 
     ```
     <rate-limit-by-key calls="3" renewal-period="15" counter-key="@(context.Subscription.Id)" />
@@ -137,7 +128,7 @@ Ez a szakasz bemutatja, hogyan lehet védelmet biztosítani a háttérbeli API-k
 
 ## <a name="test-the-transformations"></a>Az átalakítások tesztelése
 
-Jelenleg, ha a kódszerkesztőben megtekinti a kódot, a szabályzatok így néznek ki:
+Ezen a ponton, ha megtekinti a kódot a kódszerkesztőban, a szabályzatok így néznek ki:
 
    ```
    <policies>
@@ -164,42 +155,32 @@ A szakasz további részében teszteljük a szabályzatátalakításokat, amelye
 
 ### <a name="test-the-stripped-response-headers"></a>Az eltávolított válaszfejlécek tesztelése
 
-1. Válassza a **Demo Conference API** lehetőséget.
-2. Kattintson a **Teszt** fülre.
-3. Kattintson a **GetSpeakers** műveletre.
-4. Kattintson a **Küldés** gombra.
+1. Válassza a **bemutató konferencia API**-  >  **teszt**lehetőséget.
+1. Válassza ki a **GetSpeakers** műveletet, és válassza a **Küldés**lehetőséget.
 
-    Láthatja, hogy a fejlécek el lettek távolítva:
+    Amint láthatja, a fejlécek el lettek tiltva:
 
-    ![Házirendek](./media/transform-api/final-response1.png)
+    :::image type="content" source="media/transform-api/final-response1.png" alt-text="Szabályzatok a portálon":::
 
 ### <a name="test-the-replaced-url"></a>A lecserélt URL-cím tesztelése
 
-1. Válassza a **Demo Conference API** lehetőséget.
-2. Kattintson a **Teszt** fülre.
-3. Kattintson a **GetSpeakers** műveletre.
-4. Kattintson a **Küldés** gombra.
+1. Válassza a **bemutató konferencia API**-  >  **teszt**lehetőséget.
+1. Válassza ki a **GetSpeakers** műveletet, és válassza a **Küldés**lehetőséget.
 
-    Láthatja, hogy az URL-cím le lett cserélve.
+    Amint látható, az URL-cím le lett cserélve.
 
-    ![Házirendek](./media/transform-api/final-response2.png)
+    :::image type="content" source="media/transform-api/final-response2.png" alt-text="Szabályzatok a portálon":::
 
 ### <a name="test-the-rate-limit-throttling"></a>Hívásszám-korlát (szabályozás) tesztelése
 
-1. Válassza a **Demo Conference API** lehetőséget.
-2. Kattintson a **Teszt** fülre.
-3. Kattintson a **GetSpeakers** műveletre.
-4. Kattintson a **Küldés** gombra háromszor egymás után.
+1. Válassza a **bemutató konferencia API**-  >  **teszt**lehetőséget.
+1. Válassza a **GetSpeakers** műveletet. Válassza a három alkalommal a **Küldés** lehetőséget egy sorban.
 
-    Miután 3 alkalommal elküldte a kérelmet, a **429 Túl sok kérelem** választ kapja.
+    A kérelem 3 alkalommal történő elküldése után a **429 túl sok kérést** kap.
 
-5. Várjon 15 másodpercet, majd kattintson ismét a **Küldés** gombra. Ezúttal a **200 OK** választ kapja.
+    :::image type="content" source="media/transform-api/test-throttling.png" alt-text="Szabályzatok a portálon":::
 
-    ![Throttling](./media/transform-api/test-throttling.png)
-
-## <a name="video"></a>Videó
-
-> [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Rate-Limits-and-Quotas/player]
+1. Várjon 15 másodpercet, és válassza a **Küldés** újra lehetőséget. Ezúttal a **200 OK** választ kapja.
 
 ## <a name="next-steps"></a>További lépések
 

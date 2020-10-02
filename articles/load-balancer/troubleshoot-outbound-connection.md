@@ -7,18 +7,18 @@ ms.service: load-balancer
 ms.topic: troubleshooting
 ms.date: 05/7/2020
 ms.author: errobin
-ms.openlocfilehash: cd98d5b8d2d4a959a48bfb04fe2eb9e16c4113c9
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: c37c0e9b914854ff41053526740d3454c5c23f90
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851137"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91628995"
 ---
-# <a name="troubleshooting-outbound-connections-failures"></a><a name="obconnecttsg"></a>A kimenő kapcsolatok hibáinak elhárítása
+# <a name="troubleshooting-outbound-connections-failures"></a><a name="obconnecttsg"></a> A kimenő kapcsolatok hibáinak elhárítása
 
 Ez a cikk olyan gyakori problémák megoldását mutatja be, amelyekkel a Azure Load Balancer kimenő kapcsolatai is előfordulhatnak. Az ügyfelek által tapasztalt kimenő kapcsolattal kapcsolatos legtöbb probléma a SNAT-portok kimerülése és a megszakadt csomagok miatti kapcsolati időtúllépések miatt fordul elő. Ez a cikk az egyes problémák enyhítésének lépéseit ismerteti.
 
-## <a name="managing-snat-pat-port-exhaustion"></a><a name="snatexhaust"></a>A SNAT (PAT) portjának kimerülésének kezelése
+## <a name="managing-snat-pat-port-exhaustion"></a><a name="snatexhaust"></a> A SNAT (PAT) portjának kimerülésének kezelése
 A [pathoz](load-balancer-outbound-connections.md) használt [ideiglenes portok](load-balancer-outbound-connections.md) kimeríthető erőforrások, amelyeket az [önálló virtuális gép nyilvános IP-cím nélküli](load-balancer-outbound-connections.md) és [elosztott terhelésű virtuális gép nyilvános IP-cím](load-balancer-outbound-connections.md)nélkül című része ismertet. Az időszakos portok használatát figyelemmel kísérheti, és összehasonlíthatja az aktuális kiosztásával, hogy meghatározza a kockázatát vagy a SNAT kimerülésének megerősítését [az útmutató segítségével](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics#how-do-i-check-my-snat-port-usage-and-allocation) .
 
 Ha tudja, hogy több kimenő TCP-vagy UDP-kapcsolatra van szüksége ugyanahhoz a cél IP-címhez és porthoz, és megfigyelheti a sikertelen kimenő kapcsolatokat, vagy ha támogatja a SNAT-portok kimerítését (a [Pat](load-balancer-outbound-connections.md)által használt időszakosan lefoglalt időszakos [portok](load-balancer-outbound-connections.md#preallocatedports) ), számos általános kockázatcsökkentő lehetőség közül választhat. Tekintse át ezeket a beállításokat, és döntse el, hogy mi az elérhető és melyik a legmegfelelőbb a forgatókönyvhöz. Lehetséges, hogy egy vagy több segíthet a forgatókönyv kezelésében.
@@ -44,7 +44,7 @@ Ha a [pathoz](load-balancer-outbound-connections.md) használt, [előlefoglalt](
 Az ideiglenes portok 4 perces üresjárati időkorláttal rendelkeznek (nem állítható be). Ha az újrapróbálkozások túl agresszívek, a kimerültségnek nincs lehetősége a saját törlésére. Ezért figyelembe véve, hogy a--és milyen gyakran – az alkalmazás újrapróbálkozási tranzakciói a terv kritikus részét képezik.
 
 ## <a name="assign-a-public-ip-to-each-vm"></a><a name="assignilpip"></a>Nyilvános IP-cím kiosztása minden virtuális géphez
-Egy nyilvános IP-cím hozzárendelésével a forgatókönyv a [nyilvános IP-címekre változik egy virtuális gépen](load-balancer-outbound-connections.md). Az egyes virtuális gépekhez használt nyilvános IP-címek minden ideiglenes portja elérhető a virtuális gép számára. (Azon forgatókönyvek esetében, amelyekben a nyilvános IP-címek ideiglenes portjai meg vannak osztva a megfelelő háttér-készlethez társított összes virtuális géppel.) Kompromisszumok merülnek fel, mint például a nyilvános IP-címek további díja, valamint a nagy számú egyedi IP-cím engedélyezési lehetséges következményei.
+Egy nyilvános IP-cím hozzárendelésével a forgatókönyv a [nyilvános IP-címekre változik egy virtuális gépen](load-balancer-outbound-connections.md). Az egyes virtuális gépekhez használt nyilvános IP-címek minden ideiglenes portja elérhető a virtuális gép számára. (Azon forgatókönyvek esetében, amelyekben a nyilvános IP-címek ideiglenes portjai meg vannak osztva a megfelelő háttér-készlethez társított összes virtuális géppel.) Kompromisszumok merülnek fel, mint például a nyilvános IP-címek további díja, valamint a nagy számú egyedi IP-cím szűrésének lehetséges következményei.
 
 >[!NOTE] 
 >Ez a beállítás webes feldolgozói szerepkörök esetén nem érhető el.
@@ -55,7 +55,7 @@ Nyilvános standard Load Balancer használata esetén [több előtér-IP-címet 
 >[!NOTE]
 >A legtöbb esetben a SNAT-portok kimerítése hibás kialakítás jele.  Győződjön meg arról, hogy a portok kimerítésének okát érdemes megismerni, mielőtt SNAT-portok hozzáadására több felületet használ.  Előfordulhat, hogy olyan problémát takar, amely később hibát okozhat.
 
-## <a name="scale-out"></a><a name="scaleout"></a>Horizontális felskálázás
+## <a name="scale-out"></a><a name="scaleout"></a>Vertikális felskálázás
 Az [előlefoglalt portok](load-balancer-outbound-connections.md#preallocatedports) a háttérrendszer-készlet mérete alapján vannak hozzárendelve, és rétegekbe vannak csoportosítva, hogy kis mennyiségű portot lehessen megszakítani, ha a portok némelyikét újra kell osztani a háttérrendszer következő méretének növeléséhez.  Előfordulhat, hogy egy adott előtérben a SNAT-portok kihasználtságának növelésére van lehetősége, ha a háttér-készletet egy adott réteg maximális méretére szeretné méretezni.  Vegye figyelembe, hogy az alkalmazás számára az alapértelmezett portok kiosztása szükséges ahhoz, hogy a kockázat SNAT kimerültség nélkül hatékonyan felskálázásra kerüljön.
 
 A háttér-készletben lévő két virtuális gép esetében például IP-konfiguráció esetén 1024 SNAT-port érhető el, ami lehetővé teszi, hogy összesen 2048 SNAT portot engedélyezzen a telepítéshez.  Ha az üzembe helyezést 50 virtuális gépre szeretné növelni, bár az előre lefoglalt portok száma virtuális gépenként állandó marad, akkor az üzemelő példány összesen 51 200 (50 x 1024) SNAT-portot használhat.  Ha ki szeretné bővíteni az üzemelő példányt, ellenőrizze, hogy az előre [lefoglalt portok](load-balancer-outbound-connections.md#preallocatedports) száma szintenként van-e kibővítve, hogy a maximális méretet a megfelelő rétegre alakítsa ki.  Ha az előző példában úgy döntött, hogy 50-példány helyett 51-ra szeretné felskálázást végezni, akkor a következő szintet kell végrehajtania, és a végén a virtuális gép kevesebb SNAT-portja, valamint összesen szerepel.

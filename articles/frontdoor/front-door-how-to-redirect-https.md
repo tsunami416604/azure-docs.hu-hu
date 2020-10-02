@@ -5,107 +5,93 @@ services: front-door
 author: duongau
 ms.service: frontdoor
 ms.topic: how-to
-ms.date: 5/21/2019
+ms.date: 09/30/2020
 ms.author: duau
-ms.openlocfilehash: fe2159f0eeb9d01081e6a25e7a88ceff4f1e361c
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 19908b3cba63bc76a205097ef8d16e612d58503b
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399690"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91626642"
 ---
 # <a name="create-a-front-door-with-http-to-https-redirection-using-the-azure-portal"></a>A Azure Portal használatával HTTP-vel HTTPS-átirányítással hozhat létre egy bejárati ajtót
 
-A Azure Portal használatával létrehozhat egy [bejárati ajtót](front-door-overview.md) a TLS-lezáráshoz szükséges tanúsítvánnyal. Egy útválasztási szabály a HTTP-forgalom HTTPS-re való átirányítására szolgál.
-
-Ebben a cikkben az alábbiakkal ismerkedhet meg:
-
-> [!div class="checklist"]
-> * Bejárati ajtó létrehozása meglévő Web App-erőforrással
-> * Egyéni tartomány hozzáadása TLS/SSL-tanúsítvánnyal 
-> * HTTPS-átirányítás beállítása az egyéni tartományon
-
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+A Azure Portal használatával [létrehozhat egy bejárati ajtót](quickstart-create-front-door.md) a TLS-lezáráshoz szükséges tanúsítvánnyal. Egy útválasztási szabály a HTTP-forgalom HTTPS-re való átirányítására szolgál.
 
 ## <a name="create-a-front-door-with-an-existing-web-app-resource"></a>Bejárati ajtó létrehozása meglévő Web App-erőforrással
 
 1. Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
-2. Az Azure Portal bal felső sarkában kattintson az **Erőforrás létrehozása** gombra.
-3. Keresse meg a **bejárati ajtót** a keresősáv használatával, és ha megtalálta az erőforrás típusát, kattintson a **Létrehozás**gombra.
-4. Válasszon egy előfizetést, majd használjon egy meglévő erőforráscsoportot, vagy hozzon létre újat. Megjegyzés: a felhasználói felületen megkérdezett hely csak az erőforráscsoport számára érhető el. A bejárati ajtó konfigurációját a rendszer az összes [Azure-beli elülső ajtó pop-helyein](front-door-faq.md#what-are-the-pop-locations-for-azure-front-door)üzembe helyezi.
 
-    ![Új bejárati ajtó alapalapjainak konfigurálása](./media/front-door-url-redirect/front-door-create-basics.png)
+1. Válassza a Azure Portal bal felső sarkában található **erőforrás létrehozása** elemet.
 
-5. A **tovább** gombra kattintva megadhatja a konfiguráció lapot. A bejárati ajtó konfigurálása három lépésben történik – egy alapértelmezett előtér-gazdagép hozzáadása, a háttérrendszer-készletben lévő hátterek hozzáadása, majd az útválasztási szabályok létrehozása a frontend-gazdagép útválasztási viselkedésének leképezéséhez. 
+1. Keresse meg a **bejárati ajtót** a keresősáv használatával, és ha megtalálta az erőforrás típusát, válassza a **Létrehozás**lehetőséget.
 
-     ![Bejárati ajtó konfigurációs tervezője](./media/front-door-url-redirect/front-door-designer.png)
+1. Válasszon egy *előfizetést* , majd használjon egy meglévő erőforráscsoportot, vagy hozzon létre újat. Kattintson a **tovább** gombra a konfiguráció lap megadásához.
 
-6. A előtér-gazdagépek létrehozásához kattintson a " **+** " ikonra _az_ előtér-állomás létrehozásához, adjon meg egy globálisan egyedi nevet a bejárati ajtóhoz tartozó alapértelmezett előtér-gazdagéphez ( `\<**name**\>.azurefd.net` ). Kattintson a **Hozzáadás** gombra, és folytassa a következő lépéssel.
+    > [!NOTE]
+    > A felhasználói felületen megkérdezett hely csak az erőforráscsoport esetében érhető el. A bejárati ajtó konfigurációját a rendszer az összes [Azure-beli elülső ajtó pop-helyein](front-door-faq.md#what-are-the-pop-locations-for-azure-front-door)üzembe helyezi.
 
-     ![Előtér-gazdagép hozzáadása](./media/front-door-url-redirect/front-door-create-fehost.png)
+    :::image type="content" source="./media/front-door-url-redirect/front-door-create-basics.png" alt-text="Új bejárati ajtó alapalapjainak konfigurálása&quot;:::
 
-7. A háttér **+** - _készletek_ létrehozásához kattintson a "" ikonra a háttér-készleteken. Adja meg a háttér-készlet nevét, majd kattintson**a "háttér hozzáadása**" elemre.
-8. Válassza ki a háttér-gazdagép típusát az _app Service_-ben. Válassza ki azt az előfizetést, amelyre a webalkalmazást üzemelteti, majd válassza ki az adott webalkalmazást a legördülő menüből a **háttérbeli gazdagép neve**elemnél.
-9. Kattintson a **Hozzáadás** gombra a háttér mentéséhez, majd kattintson ismét a **Hozzáadás** gombra a háttérbeli készlet konfigurációjának mentéséhez.   ![Háttér hozzáadása a háttérbeli készlethez](./media/front-door-url-redirect/front-door-create-backendpool.png)
+1. A bejárati ajtó konfigurálása három lépésben történik – egy alapértelmezett előtér-gazdagép hozzáadása, a háttérrendszer-készletben lévő hátterek hozzáadása, majd az útválasztási szabályok létrehozása a frontend-gazdagép útválasztási viselkedésének leképezéséhez. Válassza a &quot; **+** " ikont a előtér- _gazdagépeken_ egy előtér-állomás létrehozásához.
 
-10. **+** Útvonal létrehozásához kattintson az _útválasztási szabályok_ "" ikonjára. Adja meg az útvonal nevét, írja be a "HttpToHttpsRedirect" nevet, majd az _elfogadva protokollok_ mezőt a **"http only"** értékre. Győződjön meg arról, hogy a megfelelő _frontend-gazdagép_ van kiválasztva.  
-11. A _Route Details (útvonal részletei_ ) szakaszban adja meg az **átirányítási** _útvonal típusát_ , győződjön meg arról, hogy az _átirányítás típusa_ a **következőre van beállítva (302)** , és az _átirányítási protokoll_ **csak HTTPS**értékre van beállítva. 
-12. Kattintson a Hozzáadás gombra a HTTP-re irányuló útválasztási szabály mentéséhez a HTTPS-átirányítás érdekében.
-     ![HTTP-HTTPS-átirányítási útvonal hozzáadása](./media/front-door-url-redirect/front-door-redirect-config-example.png)
-13. Adjon hozzá egy másik útválasztási szabályt a HTTPS-forgalom kezelésére. Kattintson a " **+** " Bejelentkezés az _útválasztási szabályokra_ , és adja meg az útvonal nevét, mondjuk a "DefaultForwardingRoute" nevet, majd állítsa be az _elfogadott protokollok_ mezőt a **"https only"** értékre. Győződjön meg arról, hogy a megfelelő _frontend-gazdagép_ van kiválasztva.
-14. Az útvonal részletei szakaszban adja meg az _útvonal típusát_ a **továbbításhoz**, győződjön meg arról, hogy a jobb oldali háttér-készlet van kiválasztva, és a _továbbítási protokoll_ **csak HTTPS**értékre van beállítva. 
-15. Kattintson a Hozzáadás gombra az útválasztási szabály mentéséhez a kérelem továbbításához.
-     ![Továbbítási útvonal hozzáadása a HTTPS-forgalomhoz](./media/front-door-url-redirect/front-door-forward-route-example.png)
-16. Kattintson a **felülvizsgálat + létrehozás** , majd a **Létrehozás**lehetőségre az előtérben lévő profil létrehozásához. A létrehozás után nyissa meg az erőforrást.
+    :::image type="content" source="./media/front-door-url-redirect/front-door-designer.png" alt-text="Új bejárati ajtó alapalapjainak konfigurálása&quot;:::
 
-## <a name="add-a-custom-domain-to-your-front-door-and-enable-https-on-it"></a>Egyéni tartomány hozzáadása a bejárati ajtóhoz és a HTTPS engedélyezése
-Az alábbi lépések bemutatják, hogyan adhat hozzá egyéni tartományt egy meglévő bejárati erőforráshoz, majd engedélyezheti a HTTP-t a HTTPS-átirányításhoz. 
+1. A bejárati ajtó konfigurálása három lépésben történik – egy alapértelmezett előtér-gazdagép hozzáadása, a háttérrendszer-készletben lévő hátterek hozzáadása, majd az útválasztási szabályok létrehozása a frontend-gazdagép útválasztási viselkedésének leképezéséhez. Válassza a &quot; **+** ":::
 
-### <a name="add-a-custom-domain"></a>Egyéni tartomány hozzáadása
+1. Adja meg a bejárati ajtó alapértelmezett előtér-gazdagépének globálisan egyedi nevét. Kattintson a **Hozzáadás** gombra a következő lépéshez való továbblépéshez.
 
-Ebben a példában egy CNAME rekordot ad hozzá az `www` altartományhoz (például `www.contosonews.com` ).
+    :::image type="content" source="./media/front-door-url-redirect/front-door-create-frontend-host.png" alt-text="Új bejárati ajtó alapalapjainak konfigurálása&quot;:::
 
-#### <a name="create-the-cname-record"></a>A CNAME rekord létrehozása
+1. A bejárati ajtó konfigurálása három lépésben történik – egy alapértelmezett előtér-gazdagép hozzáadása, a háttérrendszer-készletben lévő hátterek hozzáadása, majd az útválasztási szabályok létrehozása a frontend-gazdagép útválasztási viselkedésének leképezéséhez. Válassza a &quot; **+** ":::
 
-Adjon hozzá egy CNAME-rekordot egy altartománynak a bejárati ajtó alapértelmezett előtér-gazdagéphez való hozzárendeléséhez ( `<name>.azurefd.net` ahol `<name>` a a bejárati ajtó profiljának neve).
+### <a name="create-backend-pool"></a>Háttér-készlet létrehozása
 
-A `www.contoso.com` tartomány esetében például adjon hozzá egy CNAME rekordot, amely a nevet a következőre képezi le: `www` `<name>.azurefd.net` .
+1. A háttér **+** - _készletek_ létrehozásához válassza a "" ikont a háttér-készleteken. Adja meg a háttér-készlet nevét, majd válassza a **háttér hozzáadása**elemet.
 
-Miután hozzáadta a CNAME rekordot, a DNS-rekordok oldala a következő példához hasonlóan jelenik meg:
+    :::image type="content" source="./media/front-door-url-redirect/front-door-designer-backend-pool.png" alt-text="Új bejárati ajtó alapalapjainak konfigurálása&quot;:::
 
-![Egyedi CNAME-tartomány a bejárati ajtóhoz](./media/front-door-url-redirect/front-door-dns-cname.png)
+1. A bejárati ajtó konfigurálása három lépésben történik – egy alapértelmezett előtér-gazdagép hozzáadása, a háttérrendszer-készletben lévő hátterek hozzáadása, majd az útválasztási szabályok létrehozása a frontend-gazdagép útválasztási viselkedésének leképezéséhez. Válassza a &quot; **+** ":::
 
-#### <a name="onboard-the-custom-domain-on-your-front-door"></a>Az egyéni tartomány előkészítése a bejárati ajtón
+1. Válassza ki a háttér-gazdagép típusát az _app Service_-ben. Válassza ki azt az előfizetést, amelyre a webalkalmazást üzemelteti, majd válassza ki az adott webalkalmazást a legördülő menüből a **háttérbeli gazdagép neve**elemnél.
 
-1. Az új egyéni tartomány hozzáadásához az előtér-Tervező lapon kattintson a "+" ikonra a frontend gazdagépek szakaszban. 
-2. Adja meg a teljesen minősített egyéni DNS-nevet az egyéni Állomásnév mezőben, például: `www.contosonews.com` . 
-3. Ha a tartományból a bejárati ajtóhoz tartozó CNAME-leképezést érvényesíti, kattintson a **Hozzáadás** gombra az egyéni tartomány hozzáadásához.
-4. Kattintson a **Save (Mentés** ) gombra a módosítások elküldéséhez.
+    :::image type="content" source="./media/front-door-url-redirect/front-door-create-backend-pool.png" alt-text="Új bejárati ajtó alapalapjainak konfigurálása&quot;:::
 
-![Egyéni tartomány menü](./media/front-door-url-redirect/front-door-add-custom-domain.png)
+1. A bejárati ajtó konfigurálása három lépésben történik – egy alapértelmezett előtér-gazdagép hozzáadása, a háttérrendszer-készletben lévő hátterek hozzáadása, majd az útválasztási szabályok létrehozása a frontend-gazdagép útválasztási viselkedésének leképezéséhez. Válassza a &quot; **+** ":::
 
-### <a name="enable-https-on-your-custom-domain"></a>HTTPS engedélyezése az egyéni tartományon
+1. Válassza a **Hozzáadás** lehetőséget a háttér mentéséhez, majd a háttérbeli készlet konfigurációjának mentéséhez kattintson ismét a **Hozzáadás** gombra. 
 
-1. Kattintson a hozzáadott egyéni tartományra, és az **egyéni tartomány HTTPS**szakasza alatt módosítsa az állapotot **engedélyezve**értékre.
-2. A **tanúsítványkezelő típusa** beállítható úgy, hogy a bejárati ajtó _felügyelve_ legyen a megőrzött, felügyelt és automatikusan áthelyezett tanúsítványokhoz. Azt is megteheti, hogy a Azure Key Vault használatával tárolt egyéni TLS/SSL-tanúsítványt használja. Ez az oktatóanyag feltételezi, hogy az előtérben felügyelt tanúsítvány használata.
-![HTTPS engedélyezése az egyéni tartományhoz](./media/front-door-url-redirect/front-door-custom-domain-https.png)
+## <a name="create-http-to-https-redirect-rule"></a>HTTP-alapú HTTPS-átirányítási szabály létrehozása
 
-3. Kattintson a **frissítés** elemre a kijelölés mentéséhez, majd kattintson a **Mentés**gombra.
-4. Néhány perc elteltével kattintson a **frissítés** elemre, majd kattintson ismét az egyéni tartományra a tanúsítvány kiépítés állapotának megtekintéséhez. 
+1. **+** Útvonal létrehozásához válassza az *útválasztási szabályok* ikonját. Adja meg az útvonal nevét (például "HttpToHttpsRedirect"), majd állítsa az *elfogadott protokoll* mezőt a **"http only"** értékre. Győződjön meg arról, hogy a megfelelő előtér */tartomány* van kiválasztva.  
 
-> [!WARNING]
-> Ha engedélyezi a HTTPS-t az egyéni tartományhoz, több percet is igénybe vehet, és a tartomány tulajdonjogának ellenőrzésével is függ, ha a CNAME nem közvetlenül van leképezve az előtérben lévő gazdagépre `<name>.azurefd.net` . További információ a [https engedélyezéséről egyéni tartományhoz](./front-door-custom-domain-https.md).
+    :::image type="content" source="./media/front-door-url-redirect/front-door-designer-routing-rule.png" alt-text="Új bejárati ajtó alapalapjainak konfigurálása&quot;:::
 
-## <a name="configure-the-routing-rules-for-the-custom-domain"></a>Az egyéni tartomány útválasztási szabályainak konfigurálása
+1. A bejárati ajtó konfigurálása három lépésben történik – egy alapértelmezett előtér-gazdagép hozzáadása, a háttérrendszer-készletben lévő hátterek hozzáadása, majd az útválasztási szabályok létrehozása a frontend-gazdagép útválasztási viselkedésének leképezéséhez. Válassza a &quot; **+** ":::
 
-1. Kattintson a korábban létrehozott átirányítási útválasztási szabályra.
-2. Kattintson a előtér-gazdagépek legördülő menüjére, és válassza ki az egyéni tartományt, hogy alkalmazza ezt az útvonalat a tartományhoz is.
-3. Kattintson a **Frissítés** parancsra.
-4. Végezze el ugyanezt a műveletet a másik útválasztási szabályhoz is, azaz a továbbítási útvonalhoz az egyéni tartomány hozzáadásához.
-5. A módosítások elküldéséhez kattintson a **Save (Mentés** ) gombra.
+1. Az *útvonal részletei* szakaszban adja meg az **átirányítási** *útvonal típusát* . Győződjön meg arról, hogy az *átirányítási típus* a következőre van beállítva: **Found (302)** és *átirányítási protokoll* – a Get beállítása **csak HTTPS**értékre. 
 
-## <a name="next-steps"></a>Következő lépések
+    :::image type="content" source="./media/front-door-url-redirect/front-door-redirect-config-example.png" alt-text="Új bejárati ajtó alapalapjainak konfigurálása&quot;:::
 
-- Útmutató a [Front Door létrehozásához](quickstart-create-front-door.md).
+1. A bejárati ajtó konfigurálása három lépésben történik – egy alapértelmezett előtér-gazdagép hozzáadása, a háttérrendszer-készletben lévő hátterek hozzáadása, majd az útválasztási szabályok létrehozása a frontend-gazdagép útválasztási viselkedésének leképezéséhez. Válassza a &quot; **+** ":::
+
+1. Válassza a **Hozzáadás** lehetőséget a http-re irányuló útválasztási szabály mentéséhez a https-átirányítás érdekében.
+
+## <a name="create-forwarding-rule"></a>Továbbítási szabály létrehozása
+
+1. Adjon hozzá egy másik útválasztási szabályt a HTTPS-forgalom kezeléséhez. Válassza ki az **+** *útválasztási szabályok* "" aláírását, és adja meg az útvonal nevét, például: "DefaultForwardingRoute". Ezután állítsa az *elfogadott protokollok* mezőt **csak HTTPS**értékre. Győződjön meg arról, hogy a megfelelő előtér */tartomány* van kiválasztva.
+
+1. Az útvonal részletei szakaszban állítsa az *útvonal típusát* **továbbítandó**értékre. Győződjön meg arról, hogy a jobb oldali háttér-készlet kiválasztásra kerül, és a *továbbítási protokoll* **csak HTTPS**-re van beállítva. 
+
+    :::image type="content" source="./media/front-door-url-redirect/front-door-forward-route-example.png" alt-text="Új bejárati ajtó alapalapjainak konfigurálása&quot;:::
+
+1. A bejárati ajtó konfigurálása három lépésben történik – egy alapértelmezett előtér-gazdagép hozzáadása, a háttérrendszer-készletben lévő hátterek hozzáadása, majd az útválasztási szabályok létrehozása a frontend-gazdagép útválasztási viselkedésének leképezéséhez. Válassza a &quot; **+** " border="false":::
+
+1. Válassza a **Hozzáadás** lehetőséget az útválasztási szabály mentéséhez a kérelem továbbításához.
+
+1. Válassza a **felülvizsgálat + létrehozás** , majd a **Létrehozás**lehetőséget az előtérben lévő profil létrehozásához. A létrehozás után nyissa meg az erőforrást.
+
+## <a name="next-steps"></a>További lépések
+
 - A [Front Door működésének](front-door-routing-architecture.md) ismertetése.
 - További információ az [URL-átirányítás a bejárati ajtón](front-door-url-redirect.md).

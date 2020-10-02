@@ -1,6 +1,6 @@
 ---
 title: Szolgáltatási alkalmazás regisztrálása az Azure AD-ben – Azure API a FHIR-hez
-description: Megtudhatja, hogyan regisztrálhat egy szolgáltatásbeli ügyfélalkalmazás Azure Active Directoryban, amely a jogkivonatok hitelesítésére és beszerzésére használható.
+description: Megtudhatja, hogyan regisztrálhat egy szolgáltatás-ügyfélalkalmazás Azure Active Directoryban.
 services: healthcare-apis
 author: matjazl
 ms.service: healthcare-apis
@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: 34eec3ad0d2fc193744898b6f08cbe50c261c945
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 19d6b0ebfa2570b04c3a9dda3fe69428aa0eed75
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87853024"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629302"
 ---
 # <a name="register-a-service-client-application-in-azure-active-directory"></a>Szolgáltatásbeli ügyfélalkalmazás regisztrálása a Azure Active Directoryban
 
@@ -23,53 +23,57 @@ Az alábbi lépéseket követve hozzon létre egy új szolgáltatás-ügyfelet.
 
 ## <a name="app-registrations-in-azure-portal"></a>Alkalmazásregisztrációk a Azure Portal
 
-1. Az [Azure Portal](https://portal.azure.com) bal oldali navigációs paneljén kattintson az **Azure Active Directory** elemre.
+1. A [Azure Portal](https://portal.azure.com)navigáljon a **Azure Active Directory**.
 
-2. A **Azure Active Directory** panelen kattintson **Alkalmazásregisztrációk**:
+2. Válassza az **Alkalmazásregisztrációk** lehetőséget.
 
     ![Azure Portal. Új alkalmazás regisztrálása.](media/how-to-aad/portal-aad-new-app-registration.png)
 
-3. Kattintson az **Új regisztráció** elemre.
+3. Válassza az **új regisztráció**lehetőséget.
 
-## <a name="service-client-application-details"></a>Szolgáltatás ügyfélalkalmazás adatai
+4. Adja meg a szolgáltatás ügyfelének megjelenítendő nevet. A szolgáltatás-ügyfélalkalmazások általában nem használnak válasz URL-címet.
 
-* A szolgáltatás ügyfelének megjelenítendő névnek kell lennie, és a válasz URL-címét is megadhatja, de általában nem lesz használatban.
+    :::image type="content" source="media/service-client-app/service-client-registration.png" alt-text="Azure Portal. Új szolgáltatás-ügyfélalkalmazás regisztrálása.":::
 
-    ![Azure Portal. Új szolgáltatás-ügyfélalkalmazás regisztrálása.](media/how-to-aad/portal-aad-register-new-app-registration-SERVICE-CLIENT-NAME.png)
+5. Válassza a **Regisztráció** lehetőséget.
 
 ## <a name="api-permissions"></a>API-engedélyek
 
-Meg kell adnia a szolgáltatás ügyfélalkalmazások szerepköreit. 
+Most, hogy regisztrálta az alkalmazását, ki kell választania, hogy mely API-engedélyeket kell megadnia az alkalmazásnak a felhasználók nevében:
 
-1. Nyissa meg az **API-engedélyeket** , és válassza ki a [FHIR API Resource Application regisztrációját](register-resource-azure-ad-client-app.md). Ha az Azure API-t használja a FHIR-hez, az Azure Healthcare API-kat a **saját szervezetem által használt API**-k alapján kell megkeresnie.
+1. Válassza az **API-engedélyek**lehetőséget.
+1. Válassza **az engedély hozzáadása**lehetőséget.
 
-    ![Azure Portal. Szolgáltatás ügyféloldali API-engedélyei](media/how-to-aad/portal-aad-register-new-app-registration-SERVICE-CLIENT-API-PERMISSIONS.png)
+    Ha az Azure API-t használja a FHIR-hez, az Azure Healthcare API-kat a **saját szervezetem által használt API**- **k alapján kell** megkeresnie. 
 
-2. Válassza ki az erőforrás-alkalmazásban definiált alkalmazási szerepköröket:
+    Ha más erőforrás-alkalmazásra hivatkozik, válassza ki a korábban a **saját API**-k alatt létrehozott [FHIR API Resource Application-regisztrációt](register-resource-azure-ad-client-app.md) .
 
-    ![Azure Portal. Szolgáltatás ügyfélalkalmazás engedélyei](media/how-to-aad/portal-aad-register-new-app-registration-SERVICE-CLIENT-APPLICATION-PERMISSIONS.png)
+    :::image type="content" source="media/service-client-app/service-client-org-api.png" alt-text="Azure Portal. Új szolgáltatás-ügyfélalkalmazás regisztrálása." lightbox="media/service-client-app/service-client-org-api-expanded.png":::
 
-3. Adja meg az alkalmazás jóváhagyását. Ha nem rendelkezik a szükséges engedélyekkel, forduljon a Azure Active Directory rendszergazdájához:
+1. Válassza ki azokat a hatóköröket (engedélyeket), amelyeket a bizalmas alkalmazásnak meg kell tudnia kérni a felhasználó nevében:
 
-    ![Azure Portal. Szolgáltatás-ügyfél rendszergazdai engedélye](media/how-to-aad/portal-aad-register-new-app-registration-SERVICE-CLIENT-ADMIN-CONSENT.png)
+    :::image type="content" source="media/service-client-app/service-client-add-permission.png" alt-text="Azure Portal. Új szolgáltatás-ügyfélalkalmazás regisztrálása.":::
+
+1. Adja meg az alkalmazás jóváhagyását. Ha nem rendelkezik a szükséges engedélyekkel, forduljon a Azure Active Directory rendszergazdájához:
+
+    :::image type="content" source="media/service-client-app/service-client-grant-permission.png" alt-text="Azure Portal. Új szolgáltatás-ügyfélalkalmazás regisztrálása.":::
 
 ## <a name="application-secret"></a>Alkalmazás titkos kódja
 
-A szolgáltatás ügyfelének szüksége van egy titkos kulcsra (jelszóra), amelyet a tokenek beszerzéséhez fog használni.
+A szolgáltatás ügyfelének titkos (jelszó) értékkel kell rendelkeznie a jogkivonat beszerzéséhez.
 
-1. Kattintson a **tanúsítványok &amp; titkok** elemre.
-
-2. Kattintson az **Új titkos ügyfélkód** elemre.
+1. Válassza ki a **tanúsítványok & Secrets**elemet.
+2. Válassza az **Új titkos ügyfélkód** lehetőséget.
 
     ![Azure Portal. Szolgáltatás-ügyfél titka](media/how-to-aad/portal-aad-register-new-app-registration-SERVICE-CLIENT-SECRET.png)
 
-3. Adja meg a titok időtartamát.
+3. Adja meg a titok leírását és időtartamát (1 év, 2 év vagy soha).
 
-4. Miután létrejött, csak egyszer jelenik meg a portálon. Jegyezze fel, és tárolja biztonságosan.
+4. A titkos kód létrehozása után csak egyszer jelenik meg a portálon. Jegyezze fel, és tárolja biztonságosan.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben megtanulta, hogyan regisztrálhat egy szolgáltatás-ügyfélalkalmazás Azure Active Directoryban. Ezután helyezzen üzembe egy FHIR API-t az Azure-ban.
+Ebben a cikkben megtanulta, hogyan regisztrálhat egy szolgáltatás-ügyfélalkalmazás Azure Active Directoryban. Következő lépésként megismerheti a FHIR készült Azure API további beállításait is.
  
 >[!div class="nextstepaction"]
->[Nyílt forráskódú FHIR-kiszolgáló üzembe helyezése](fhir-oss-powershell-quickstart.md)
+>[További beállítások](azure-api-for-fhir-additional-settings.md)
