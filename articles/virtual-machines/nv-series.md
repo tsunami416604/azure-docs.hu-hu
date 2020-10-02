@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 6dd912313176eecce1973849875234149700c5e6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 62f27a07c868cc9cc7f37a7b26ab38127946e3c2
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284778"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652873"
 ---
 # <a name="nv-series"></a>NV sorozat
 
@@ -20,13 +20,12 @@ Az NV-sorozatú virtuális gépeket az [NVIDIA Tesla M60](https://images.nvidia.
 
 Az NV-példányokban minden GPU egy RÁCSos licenccel rendelkezik. Ez a licenc lehetővé teszi, hogy az NV-példányokat virtuális munkaállomásként használja egyetlen felhasználó számára, vagy 25 egyidejű felhasználó csatlakozhat a virtuális GÉPHEZ egy virtuális alkalmazási forgatókönyv esetén.
 
-Premium Storage: nem támogatott
-
-Premium Storage gyorsítótárazás: nem támogatott
-
-Élő áttelepítés: nem támogatott
-
-Memória-megőrzési frissítések: nem támogatott
+[Premium Storage](premium-storage-performance.md): nem támogatott<br>
+[Premium Storage gyorsítótárazás](premium-storage-performance.md): nem támogatott<br>
+[Élő áttelepítés](maintenance-and-updates.md): nem támogatott<br>
+[Memória-megőrzési frissítések](maintenance-and-updates.md): nem támogatott<br>
+[VM-generáció támogatása](generation-2.md): 1. generáció<br>
+<br>
 
 | Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | GPU | GPU memória: GiB | Adatlemezek max. száma | Hálózati adapterek maximális száma | Virtuális munkaállomások | Virtuális alkalmazások |
 |---|---|---|---|---|---|---|---|---|---|
@@ -55,6 +54,6 @@ Ha manuálisan telepíti az NVIDIA GPU-illesztőprogramokat, tekintse meg a köv
 - [Nagy teljesítményű számítás](sizes-hpc.md)
 - [Előző generációk](sizes-previous-gen.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.

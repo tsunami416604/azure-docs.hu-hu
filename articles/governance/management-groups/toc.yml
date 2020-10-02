@@ -19,6 +19,12 @@
     - name: Felügyeleti csoport létrehozása – Azure PowerShell
       displayName: hierarchy
       href: ./create-management-group-powershell.md
+    - name: Felügyeleti csoport létrehozása – .NET
+      displayName: hierarchy
+      href: ./create-management-group-dotnet.md
+    - name: Felügyeleti csoport létrehozása – JavaScript
+      displayName: hierarchy
+      href: ./create-management-group-javascript.md
     - name: Felügyeleti csoport létrehozása – REST
       displayName: hierarchy
       href: ./create-management-group-rest-api.md

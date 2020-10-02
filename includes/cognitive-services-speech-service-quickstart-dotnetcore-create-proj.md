@@ -4,16 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 12/12/2018
 ms.author: erhopf
-ms.openlocfilehash: 777b2608cf5f326556dfaea307f4f3e9346213f8
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: d5b95c8d71cf3d4830a2fe5eb6442ef479c9fab6
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "66482326"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91654440"
 ---
-1. Indítsa el a Visual Studio 2019 alkalmazást.
+1. Indítsa el a Visual Studio 2019-et.
 
-1. Győződjön róla meg, hogy elérhető a **Platformfüggetlen .NET-fejlesztés** számítási feladat.  > Válassza **a**Visual Studio menüsávjának eszközök**és szolgáltatások beolvasása** elemét, és nyissa meg a Visual Studio telepítőjét. Ha ez a számítási feladat már engedélyezve van, zárja be a párbeszédpanelt.
+1. Győződjön róla meg, hogy elérhető a **Platformfüggetlen .NET-fejlesztés** számítási feladat. Válassza **a**Visual  >  Studio menüsávjának eszközök**és szolgáltatások beolvasása** elemét, és nyissa meg a Visual Studio telepítőjét. Ha ez a számítási feladat már engedélyezve van, zárja be a párbeszédpanelt.
 
    ![A Visual Studio telepítőjének képernyőképe, amelyen ki van emelve a Számítási feladatok lap](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-net-core-workload.png)
 
@@ -29,7 +29,7 @@ ms.locfileid: "66482326"
 
 1. A jobb felső sarokban, a **csomag forrása** mezőben válassza a **nuget.org**lehetőséget. Keresse meg a `Microsoft.CognitiveServices.Speech` csomagot, és telepítse a **HelloWorld** projektbe.
 
-   ![A megoldás csomagjainak kezelésére szolgáló párbeszédpanel képernyőképe](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-dotnetcore-windows-03-nuget-install-1.0.0.png "NuGet-csomag telepítése")
+   ![A "csomagok kezelése a megoldáshoz" párbeszédpanel képernyőképe.](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-dotnetcore-windows-03-nuget-install-1.0.0.png "NuGet-csomag telepítése")
 
 1. A NuGet-csomag telepítésének indításához fogadja el a képernyőn megjelenő licencet.
 

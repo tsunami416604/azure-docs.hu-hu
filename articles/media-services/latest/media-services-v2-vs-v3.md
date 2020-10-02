@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 08/31/2020
+ms.date: 10/01/2020
 ms.author: inhenkel
-ms.openlocfilehash: 061ae48de9a73270ed499282c9fc9a4f8f1dba90
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 515379a4207a582b441d132b1c28ff11bc83c714
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89298946"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651752"
 ---
 # <a name="media-services-v2-vs-v3"></a>Media Services v2 és v3
 
@@ -30,18 +30,17 @@ Ez a cikk a Azure Media Services v3 verzióban bevezetett változásokat ismerte
 
 ## <a name="general-changes-from-v2"></a>Általános változások a v2-ből
 
-* A v3-vel létrehozott eszközök esetében a Media Services csak az [Azure Storage kiszolgálóoldali tároló-titkosítását](../../storage/common/storage-service-encryption.md)támogatja.
-    * A V3 API-kat a Media Services által biztosított Storage encryption (AES 256) [tárolóval](../previous/media-services-rest-storage-encryption.md) rendelkező v2 API-kkal rendelkező eszközökhöz lehet használni.
-    * V3 API-kkal nem hozhatók létre új adategységek a régi AES 256 [Storage encryption](../previous/media-services-rest-storage-encryption.md) használatával.
-* Az [eszköznek](assets-concept.md)a v3-as tulajdonságai eltérnek a v2-től, lásd: [a tulajdonságok leképezése](#map-v3-asset-properties-to-v2).
+* Az eszközhöz kapcsolódó változásokért tekintse meg az alábbi, az [eszközre vonatkozó módosításokat](#asset-specific-changes) ismertető szakaszt.
 * A v3 SDK-k mostantól le vannak választva a Storage SDK-ból, így nagyobb mértékben szabályozható a használni kívánt Storage SDK verziója, és elkerülheti a verziószámozási problémákat. 
 * A V3 API-kon a kódolási átviteli sebességek másodpercenkénti száma. Ez eltér a v2 Media Encoder Standard előkészlettől. Például a v2-es bitrátát 128 (kbps) értékűre kell megadni, a v3-as verzióban azonban 128000 (BITS/másodperc). 
 * A AssetFiles, a AccessPolicies és a IngestManifests entitások nem léteznek a v3-as verzióban.
-* A IAsset. ParentAssets tulajdonság nem létezik a v3-as verzióban.
 * A Tartalomkulcsok már nem entitás, most a streaming lokátor tulajdonsága.
 * Event Grid támogatás helyettesíti a NotificationEndpoints.
-* A következő entitások lettek átnevezve
-    * A feladat kimenete lecseréli a feladatot, és most egy feladat része.
+* A következő entitások lettek átnevezve:
+
+   * a v3 JobOutput lecseréli a v2 feladatot, és már egy feladat része. A bemenetek és kimenetek jelenleg a feladatok szintjén vannak. További információ: [Job input létrehozása helyi fájlból](job-input-from-local-file-how-to.md). 
+
+       A feladatok előrehaladási előzményeinek megtekintéséhez figyelje a EventGrid eseményeket. További információ: [Event Grid események feldolgozása](reacting-to-media-services-events.md).
     * A folyamatos átviteli lokátor helyettesíti a lokátort.
     * Az élő esemény lecseréli a csatornát.<br/>Az élő események számlázása az élő csatorna mérőszámán alapul. További információt a [számlázással](live-event-states-billing.md) és a [díjszabással](https://azure.microsoft.com/pricing/details/media-services/)foglalkozó témakörben talál.
     * Az élő kimenet lecseréli a programot.
@@ -89,6 +88,12 @@ A V3 API a v2 API-val kapcsolatos következő szolgáltatásbeli réseket tartal
 
 ## <a name="asset-specific-changes"></a>Eszköz-specifikus változások
 
+* A v3-vel létrehozott eszközök esetében a Media Services csak az [Azure Storage kiszolgálóoldali tároló-titkosítását](../../storage/common/storage-service-encryption.md)támogatja.
+    * A V3 API-kat a Media Services által biztosított Storage encryption (AES 256) [tárolóval](../previous/media-services-rest-storage-encryption.md) rendelkező v2 API-kkal rendelkező eszközökhöz lehet használni.
+    * V3 API-kkal nem hozhatók létre új adategységek a régi AES 256 [Storage encryption](../previous/media-services-rest-storage-encryption.md) használatával.
+* Az [eszköznek](assets-concept.md)a v3-as tulajdonságai eltérnek a v2-től, lásd: [a tulajdonságok leképezése](#map-v3-asset-properties-to-v2).
+* A IAsset. ParentAssets tulajdonság nem létezik a v3-as verzióban.
+
 ### <a name="map-v3-asset-properties-to-v2"></a>V3-eszköz tulajdonságainak hozzárendelése v2-re
 
 A következő táblázat azt mutatja be, hogy az adategység tulajdonságai hogyan jelennek meg az objektumnak [a v2](/rest/api/media/assets/createorupdate#asset)-ben lévő tulajdonságok tulajdonságában.
@@ -124,7 +129,7 @@ Az adategységek védelméhez az eszközöket a tárolási oldal titkosításáv
 
 Az alábbi táblázat a v2 és v3 kód közötti különbségeket mutatja be a gyakori forgatókönyvek esetében.
 
-|Forgatókönyv|V2 API|V3 API|
+|Használati eset|v2 API|V3 API|
 |---|---|---|
 |Eszköz létrehozása és fájl feltöltése |[v2 .NET-példa](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L113)|[v3 .NET – példa](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L169)|
 |Feladatok elküldése|[v2 .NET-példa](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L146)|[v3 .NET – példa](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L298)<br/><br/>Bemutatja, hogyan hozhat létre először egy átalakítót, majd küldhet el egy feladatot.|

@@ -2,13 +2,13 @@
 title: Üzembehelyezési előzmények törlései
 description: Ismerteti, hogyan Azure Resource Manager automatikusan törli a központi telepítéseket az üzembe helyezési előzményekből. A központi telepítések akkor törlődnek, ha az előzmények meghaladják a 800-as korlátot.
 ms.topic: conceptual
-ms.date: 09/15/2020
-ms.openlocfilehash: 0c5d972eea9bc9cf2bf8716b26cd0e07d0a07b82
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 10/01/2020
+ms.openlocfilehash: 13c65f3311e308708034bb5befb7e3c3ee158d38
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91284733"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652482"
 ---
 # <a name="automatic-deletions-from-deployment-history"></a>Automatikus törlés az üzembe helyezési előzményekből
 
@@ -23,7 +23,7 @@ Azure Resource Manager automatikusan törli az előzményekből a korlát közel
 
 ## <a name="when-deployments-are-deleted"></a>Központi telepítések törlésekor
 
-A rendszer az előzményekből törli az üzembe helyezéseket, amikor eléri a 775-es vagy újabb telepítéseket. Azure Resource Manager törli az üzemelő példányokat, amíg az előzmények le nem 750. A legrégebbi üzemelő példányokat a rendszer mindig először törli.
+Az üzembe helyezések törlődnek az előzményekből, ha túllépi az 775-es üzemelő példányt. Azure Resource Manager törli az üzemelő példányokat, amíg az előzmények le nem 750. A legrégebbi üzemelő példányokat a rendszer mindig először törli.
 
 :::image type="content" border="false" source="./media/deployment-history-deletions/deployment-history.svg" alt-text="Törlések az üzembe helyezési előzményekből":::
 

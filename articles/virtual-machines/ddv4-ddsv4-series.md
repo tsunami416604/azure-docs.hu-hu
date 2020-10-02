@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: 3c51a00e5760a2dac1648cc938416625bd52ddb7
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 5f09ed7aeb6e8b60093681abb16923ec23fd7f57
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649907"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652992"
 ---
 # <a name="ddv4-and-ddsv4-series"></a>Ddv4 és Ddsv4 sorozat
 
@@ -28,15 +28,13 @@ A Ddv4-sorozat méretei az Intel &reg; Xeon &reg; Platinum 8272CL (Cascade-tó) 
 
 Az új Ddv4 virtuálisgép-méretek közé tartozik a gyors, nagyobb helyi SSD-tároló (akár 2 400 GiB is), és olyan alkalmazások számára készült, amelyek alacsony késésű, nagy sebességű helyi tárterületet igényelnek, például olyan alkalmazásokhoz, amelyeknél gyors olvasási/írási műveletek szükségesek a temp Storage szolgáltatáshoz, vagy a gyorsítótárak vagy ideiglenes fájlok átmeneti tárolására van szükségük. A Ddv4 virtuális gépekhez szabványos SSD-ket és standard HDD-tárolót is csatolhat. A távoli adatlemezek tárterületét a rendszer külön számlázza a virtuális gépektől.
 
-ACU: 195-210
-
-Premium Storage: nem támogatott
-
-Premium Storage gyorsítótárazás: nem támogatott
-
-Élő áttelepítés: támogatott
-
-Memória megőrzésének frissítései: támogatott
+[ACU](acu.md): 195-210<br>
+[Premium Storage](premium-storage-performance.md): nem támogatott<br>
+[Premium Storage gyorsítótárazás](premium-storage-performance.md): nem támogatott<br>
+[Élő áttelepítés](maintenance-and-updates.md): támogatott<br>
+[Memória megőrzésének frissítései](maintenance-and-updates.md): támogatott<br>
+[VM-generáció támogatása](generation-2.md): 1. generáció<br>
+<br> 
 
 | Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolási sebesség: IOPS/MBps | Hálózati adapterek maximális száma|Várt hálózati sávszélesség (Mbps) |
 |---|---|---|---|---|---|---|---|
@@ -57,15 +55,13 @@ Az új Ddsv4 virtuálisgép-méretek közé tartozik a gyors, nagyobb helyi SSD-
  > [!NOTE]
  >A Ddsv4-méretek díjszabása és számlázási mérőszámai azonosak a Ddv4 sorozattal.
 
-ACU: 195-210
-
-Premium Storage: támogatott
-
-Premium Storage gyorsítótárazás: támogatott
-
-Élő áttelepítés: támogatott
-
-Memória megőrzésének frissítései: támogatott
+[ACU](acu.md): 195-210<br>
+[Premium Storage](premium-storage-performance.md): támogatott<br>
+[Premium Storage gyorsítótárazás](premium-storage-performance.md): támogatott<br>
+[Élő áttelepítés](maintenance-and-updates.md): támogatott<br>
+[Memória megőrzésének frissítései](maintenance-and-updates.md): támogatott<br>
+[VM-létrehozási támogatás](generation-2.md): 1. és 2. generáció<br>
+<br> 
 
 | Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolási sebesség: IOPS/MBps (gyorsítótár mérete GiB-ban) | Gyorsítótár nélküli lemez maximális átviteli sebessége: IOPS/MBps | Hálózati adapterek maximális száma|Várt hálózati sávszélesség (Mbps) |
 |---|---|---|---|---|---|---|---|---|
@@ -93,6 +89,6 @@ Memória megőrzésének frissítései: támogatott
 További információ a lemezek típusairól: [lemezek típusai](./disks-types.md#ultra-disk)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.

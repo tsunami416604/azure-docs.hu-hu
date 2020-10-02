@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 6/25/2020
-ms.openlocfilehash: 24a214d63fd01fc4353be6563d18f9e28b820c6f
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.date: 10/1/2020
+ms.openlocfilehash: 2c70e862364aea549c10c24a9dcc1c424c792993
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036521"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652176"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>A Azure Database for MySQL korlátozásai
 A következő szakaszok ismertetik a kapacitást, a tárolási motor támogatását, a jogosultságok támogatását, az adatmanipulációs nyilatkozatok támogatását és az adatbázis-szolgáltatás működési korlátait. Lásd még a MySQL-adatbázismotor esetében alkalmazandó [általános korlátozásokat](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html) is.
@@ -25,7 +25,11 @@ Azure Database for MySQL támogatja a kiszolgálói paraméterek értékének fi
 
 A kezdeti üzembe helyezéskor az Azure for MySQL-kiszolgáló az időzóna-információkhoz tartozó rendszertáblákat tartalmazza, de ezek a táblák nem lesznek feltöltve. Az időzóna-táblázatok úgy tölthetők fel, hogy meghívja a `mysql.az_load_timezone` tárolt eljárást egy eszközről, például a MySQL-parancssorból vagy a MySQL Workbenchből. A tárolt eljárás meghívásához és a globális vagy munkamenet szintű időzónák beállításához tekintse meg a [Azure Portal](howto-server-parameters.md#working-with-the-time-zone-parameter) vagy az [Azure CLI](howto-configure-server-parameters-using-cli.md#working-with-the-time-zone-parameter) -cikkeket.
 
-## <a name="storage-engine-support"></a>A Storage Engine támogatása
+A szolgáltatás nem támogatja a jelszavakat, például a "validate_password" és a "caching_sha2_password".
+
+## <a name="storage-engines"></a>Storage-motorok
+
+A MySQL számos tárolási motort támogat. Azure Database for MySQL rugalmas kiszolgálón a következő tárolási motorok támogatottak és nem támogatottak:
 
 ### <a name="supported"></a>Támogatott
 - [InnoDB](https://dev.mysql.com/doc/refman/5.7/en/innodb-introduction.html)
@@ -37,21 +41,23 @@ A kezdeti üzembe helyezéskor az Azure for MySQL-kiszolgáló az időzóna-info
 - [Archívum](https://dev.mysql.com/doc/refman/5.7/en/archive-storage-engine.html)
 - [ÖSSZEVONT](https://dev.mysql.com/doc/refman/5.7/en/federated-storage-engine.html)
 
-## <a name="privilege-support"></a>Jogosultságok támogatása
+## <a name="privileges--data-manipulation-support"></a>Jogosultságok az adatkezelési támogatás &
+
+Számos kiszolgálói paraméter és beállítás akaratlanul csökkentheti a kiszolgáló teljesítményét, vagy megtagadhatja a MySQL-kiszolgáló DEA savas tulajdonságait. A szolgáltatás integritásának és az SLA-nak a termék szintjén történő fenntartása érdekében a szolgáltatás nem tesz elérhetővé több szerepkört. 
+
+A MySQL szolgáltatás nem teszi lehetővé a közvetlen hozzáférést a mögöttes fájlrendszerhez. Egyes adatmanipulációs parancsok nem támogatottak. 
 
 ### <a name="unsupported"></a>Nem támogatott
-- DBA-szerepkör: számos kiszolgáló-paraméter és-beállítás akaratlanul csökkentheti a kiszolgáló teljesítményét, vagy megtagadja az adatbázis-kezelők által nyújtott savas tulajdonságokat. A szolgáltatás integritásának és az SLA-nak a termék szintjén történő fenntartása érdekében ez a szolgáltatás nem teszi elérhetővé a DBA-szerepkört. Az alapértelmezett felhasználói fiók, amely új adatbázis-példány létrehozásakor jön létre, lehetővé teszi, hogy a felhasználó a felügyelt adatbázis-példányban a DDL-és DML-utasítások többségét elvégezze. 
-- SZUPER jogosultság: a hasonló [Super jogosultság](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html#priv_super) is korlátozott.
-- Leszűkítés: a létrehozáshoz és a korlátozásához Super jogosultságok szükségesek. Ha biztonsági másolat használatával importálja az adatimportálást, távolítsa el `CREATE DEFINER` manuálisan a parancsokat, vagy használja a `--skip-definer` parancsot a mysqldump végrehajtásakor.
-- Rendszeradatbázisok: Azure Database for MySQL-ben a [MySQL rendszeradatbázis](https://dev.mysql.com/doc/refman/8.0/en/system-schema.html) csak olvasható, mivel a rendszer a különböző Pásti szolgáltatási funkciók támogatásához használatos. Vegye figyelembe, hogy a rendszeradatbázisban nem lehet bármit módosítani `mysql` .
 
-## <a name="data-manipulation-statement-support"></a>Az adatkezelési utasítás támogatása
+A következők nem támogatottak:
+- DBA-szerepkör: korlátozott. Azt is megteheti, hogy a rendszergazda felhasználóval (az új kiszolgáló létrehozásakor jön létre) lehetővé teszi a DDL-és DML-utasítások többségének végrehajtását. 
+- SZUPER jogosultság: ehhez hasonlóan a [Super Privilege](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html#priv_super) is korlátozott.
+- Leszűkítés: a létrehozáshoz és a korlátozásához Super jogosultságok szükségesek. Ha biztonsági másolat használatával importálja az adatimportálást, távolítsa el `CREATE DEFINER` manuálisan a parancsokat, vagy használja a `--skip-definer` parancsot a mysqldump végrehajtásakor.
+- Rendszeradatbázisok: a [MySQL rendszeradatbázis](https://dev.mysql.com/doc/refman/5.7/en/system-schema.html) csak olvasható, és a különböző Pásti funkciók támogatására szolgál. A rendszeradatbázis nem módosítható `mysql` .
+- `SELECT ... INTO OUTFILE`: Nem támogatott a szolgáltatásban.
 
 ### <a name="supported"></a>Támogatott
-- `LOAD DATA INFILE`támogatott, de a `[LOCAL]` paramétert meg kell adni, és egy UNC elérési útra kell irányítani (az Azure Storage csatlakoztatva van az SMB protokollon keresztül).
-
-### <a name="unsupported"></a>Nem támogatott
-- `SELECT ... INTO OUTFILE`
+- `LOAD DATA INFILE` támogatott, de a `[LOCAL]` paramétert meg kell adni, és egy UNC elérési útra kell irányítani (az Azure Storage csatlakoztatva van az SMB protokollon keresztül).
 
 ## <a name="functional-limitations"></a>Funkcionális korlátozások
 
@@ -75,6 +81,6 @@ A kezdeti üzembe helyezéskor az Azure for MySQL-kiszolgáló az időzóna-info
 ## <a name="current-known-issues"></a>Aktuális ismert problémák
 - A MySQL-kiszolgáló példánya a kiszolgáló nem megfelelő verzióját jeleníti meg a kapcsolatok létrehozása után. A megfelelő kiszolgálópéldány-motor verziójának lekéréséhez használja a `select version();` parancsot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Az egyes szolgáltatási szinteknél elérhető szolgáltatások](concepts-pricing-tiers.md)
 - [Támogatott MySQL-adatbázis-verziók](concepts-supported-versions.md)

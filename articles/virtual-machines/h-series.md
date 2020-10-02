@@ -8,28 +8,26 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: b1f30e91b9ce96daf8b2eb8ac6c8cb38b86b347f
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 56112107bbd1bb506fcbff615ec524e043d54d1a
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89594407"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653723"
 ---
 # <a name="h-series"></a>H-sorozat
 
 A H-sorozatú virtuális gépeket nagy CPU-gyakorisággal vagy nagy memóriával rendelkező, alapvető követelményekkel rendelkező alkalmazások számára optimalizáltuk. A H-sorozatú virtuális gépek 8 vagy 16 Intel Xeon E5 2667 v3 processzorral rendelkeznek, CPU Core-onként akár 14 GB RAM-mal, és nem feleznie. A H-sorozat 56 GB/s Mellanox FDR InfiniBand a konzisztens RDMA teljesítményének nem blokkoló FAT-konfigurációjában. A H-sorozatú virtuális gépek jelenleg nem engedélyezettek az SR-IOV, és támogatják az Intel MPI 5. x és MS-MPI használatát.
 
-ACU: 290–300
+[ACU](acu.md): 290-300<br>
+[Premium Storage](premium-storage-performance.md): nem támogatott<br>
+[Premium Storage gyorsítótárazás](premium-storage-performance.md): nem támogatott<br>
+[Élő áttelepítés](maintenance-and-updates.md): nem támogatott<br>
+[Memória-megőrzési frissítések](maintenance-and-updates.md): nem támogatott<br>
+[VM-generáció támogatása](generation-2.md): 1. generáció<br>
+<br>
 
-Premium Storage: nem támogatott
-
-Premium Storage gyorsítótárazás: nem támogatott
-
-Élő áttelepítés: nem támogatott
-
-Memória-megőrzési frissítések: nem támogatott
-
-| Méret | vCPU | Processzor | Memória (GB) | Memória sávszélessége GB/s | Alapszintű CPU-gyakoriság (GHz) | Teljes magok gyakorisága (GHz, csúcs) | Egymagos gyakoriság (GHz, csúcs) | RDMA teljesítmény (GB/s) | MPI-támogatás | Ideiglenes tárterület (GB) | Adatlemezek max. száma | Lemezek max. teljesítménye: IOPS | Ethernet hálózati adapterek maximális száma |
+| Méret | vCPU | Processzor | Memória (GiB) | Memória sávszélessége GB/s | Alapszintű CPU-gyakoriság (GHz) | Teljes magok gyakorisága (GHz, csúcs) | Egymagos gyakoriság (GHz, csúcs) | RDMA teljesítmény (GB/s) | MPI-támogatás | Ideiglenes tároló (GiB) | Adatlemezek max. száma | Lemezek max. teljesítménye: IOPS | Ethernet hálózati adapterek maximális száma |
 | --- | --- |--- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_H8   | 8  | Intel Xeon E5 2667 v3 | 56 | 40 | 3.2 | 3.3 | 3,6 | - | Intel 5. x, MS-MPI | 1000 | 32 | 32x500 | 2 |
 | Standard_H16  | 16 | Intel Xeon E5 2667 v3 | 112 | 80 | 3.2 | 3.3 | 3,6 | - | Intel 5. x, MS-MPI | 2000 | 64 | 64x500 | 4 |

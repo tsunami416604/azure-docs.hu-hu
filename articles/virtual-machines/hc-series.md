@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: bb76dbf975ce15f72d3ad339853c407de42cf507
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 9475d3f000bbfd84c16efc080cbbb9df63cac608
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89594390"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653264"
 ---
 # <a name="hc-series"></a>HC-sorozat
 
@@ -21,17 +21,15 @@ A HC sorozatú virtuális gépek a sűrű számítások által vezérelt alkalma
 
 A HC sorozatú virtuális gépek 100 GB/s Mellanox EDR InfiniBand rendelkeznek. Ezek a virtuális gépek az optimalizált és konzisztens RDMA teljesítmény érdekében nem blokkoló FAT-fában vannak csatlakoztatva. Ezek a virtuális gépek támogatják az adaptív útválasztást és a dinamikus csatlakozású átvitelt (a DCT a standard RC és UD átvitelek esetében). Ezek a funkciók növelik az alkalmazások teljesítményét, méretezhetőségét és konzisztenciáját, és használata erősen ajánlott.
 
-ACU: 297-315
+[ACU](acu.md): 297-315<br>
+[Premium Storage](premium-storage-performance.md): nem támogatott<br>
+[Premium Storage gyorsítótárazás](premium-storage-performance.md): nem támogatott<br>
+[Élő áttelepítés](maintenance-and-updates.md): nem támogatott<br>
+[Memória-megőrzési frissítések](maintenance-and-updates.md): nem támogatott<br>
+[VM-létrehozási támogatás](generation-2.md): 1. és 2. generáció<br>
+<br>
 
-Premium Storage: támogatott
-
-Premium Storage gyorsítótárazás: támogatott
-
-Élő áttelepítés: nem támogatott
-
-Memória-megőrzési frissítések: nem támogatott
-
-| Méret | vCPU | Processzor | Memória (GB) | Memória sávszélessége GB/s | Alapszintű CPU-gyakoriság (GHz) | Teljes magok gyakorisága (GHz, csúcs) | Egymagos gyakoriság (GHz, csúcs) | RDMA teljesítmény (GB/s) | MPI-támogatás | Ideiglenes tárterület (GB) | Adatlemezek max. száma | Ethernet hálózati adapterek maximális száma |
+| Méret | vCPU | Processzor | Memória (GiB) | Memória sávszélessége GB/s | Alapszintű CPU-gyakoriság (GHz) | Teljes magok gyakorisága (GHz, csúcs) | Egymagos gyakoriság (GHz, csúcs) | RDMA teljesítmény (GB/s) | MPI-támogatás | Ideiglenes tároló (GiB) | Adatlemezek max. száma | Ethernet hálózati adapterek maximális száma |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_HC44rs | 44 | Intel Xeon Platinum 8168 | 352 | 191 | 2.7 | 3.4 | 3.7 | 100 | Mind | 700 | 4 | 1 |
 

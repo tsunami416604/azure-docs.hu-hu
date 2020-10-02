@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 39bb129d6edba168ed1ed45b1de205a206c83ed2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aec72644f708d6363a80da28c5e571d0165fcdfa
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678171"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651836"
 ---
 # <a name="export-your-application"></a>Az alkalmazás exportálása
 
@@ -30,7 +30,7 @@ Létrehozhat egy másolatot bármely alkalmazásról, levonva az eszköz példá
 
 Válassza a **Másolás** lehetőséget. A párbeszédpanelen adja meg az új alkalmazás részleteit. Ezután a **Másolás** gombra kattintva erősítse meg, hogy folytatni kívánja. Ha többet szeretne megtudni az űrlap mezőiről, tekintse meg az [alkalmazás létrehozása](quick-deploy-iot-central.md) rövid útmutatót.
 
-![Alkalmazásbeállítások lap](media/howto-use-app-templates/appcopy2.png)
+![A "alkalmazás másolása" beállítások oldalát megjelenítő képernyőkép.](media/howto-use-app-templates/appcopy2.png)
 
 Az alkalmazás másolási műveletének sikerességét követően az új alkalmazásra kattintva megnyithatja a hivatkozást.
 
@@ -88,6 +88,6 @@ Ha töröl egy alkalmazást, már nem használhatja a korábban létrehozott meg
 
 Az alkalmazás sablonjának frissítéséhez módosítsa a sablon nevét vagy leírását az **alkalmazás sablon exportálása** lapon. Ezután kattintson ismét az **Exportálás** gombra. Ez a művelet létrehoz egy új **megosztható hivatkozást** , és érvényteleníti az előző **megosztható hivatkozás** URL-címét.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte az alkalmazás sablonjainak használatát, a javasolt következő lépés az, hogy megtudja, hogyan [figyelheti az IoT Central alkalmazáshoz csatlakoztatott eszközök általános állapotát](howto-monitor-application-health.md) .

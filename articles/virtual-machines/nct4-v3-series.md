@@ -8,30 +8,29 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 08/10/2020
 ms.author: vikancha
-ms.openlocfilehash: 17ce5314f58a92158ff4fd187ad0ca46bb14a275
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7c3423e8bd5cd3e38c05205842845bec2243ed83
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320166"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653502"
 ---
 # <a name="ncast4_v3-series-in-preview"></a>NCasT4_v3 sorozat (előzetes verzió) 
 
 Az NCasT4_v3 sorozatú virtuális gépeket [NVIDIA Tesla T4](https://www.nvidia.com/en-us/data-center/tesla-t4/) GPU-k és AMD EPYC 7V12 (Róma) processzorok működtetik. A virtuális gépek legfeljebb 4 NVIDIA T4 GPU-t, 16 GB memóriát, valamint akár 64 nem többszálú AMD EPYC 7V12 (Róma) processzort és 440 GiB rendszermemóriát is igénybe vehetik. Ezek a virtuális gépek ideálisak a mesterséges intelligencia-szolgáltatások üzembe helyezéséhez – például a felhasználók által generált kérelmek valós idejű meghívásához, vagy interaktív grafikus és vizualizációs számítási feladatokhoz az NVIDIA GRID Driver és Virtual GPU Technology használatával. A CUDA-, TensorRT-, Cafe-, ONNX-és egyéb keretrendszerek, vagy GPU-gyorsított grafikus alkalmazások (az OpenGL és a DirectX) alapján a szabványos GPU számítási feladatok gazdaságosan üzembe helyezhetők a NCasT4_v3 sorozaton belül a felhasználók közelében.
 
-[Beküldheti](https://aka.ms/NCT4v3Preview) az előzetes program részét képező kérelmet.
+> [!NOTe]
+> Küldjön [be egy kérést](https://aka.ms/NCT4v3Preview) az előzetes program részévé.
 
 <br>
 
-ACU: 230-260
-
-Premium Storage: támogatott
-
-Premium Storage gyorsítótárazás: támogatott
-
-Élő áttelepítés: nem támogatott
-
-Memória-megőrzési frissítések: nem támogatott
+[ACU](acu.md): 230-260<br>
+[Premium Storage](premium-storage-performance.md): támogatott<br>
+[Premium Storage gyorsítótárazás](premium-storage-performance.md): támogatott<br>
+[Élő áttelepítés](maintenance-and-updates.md): nem támogatott<br>
+[Memória-megőrzési frissítések](maintenance-and-updates.md): nem támogatott<br>
+[VM-generáció támogatása](generation-2.md): 1. generáció<br>
+<br>
 
 | Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | GPU | GPU memória: GiB | Adatlemezek max. száma | Hálózati adapterek maximális száma |
 | --- | --- | --- | --- | --- | --- | --- | --- |

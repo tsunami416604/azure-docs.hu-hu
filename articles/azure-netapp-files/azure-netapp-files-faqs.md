@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: b-juche
-ms.openlocfilehash: 4b8c879a89da47a081e4b95382d17b3d2baede9d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2a64e595f0ea07510f416be56a54a3c74294b95d
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325572"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653621"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Gyakori kérdések a Azure NetApp Files
 
@@ -178,15 +178,11 @@ Yes, Azure NetApp Files supports LDAP signing by default. This functionality ena
 
 ### <a name="i-tried-to-use-the-root-and-local-users-to-access-a-dual-protocol-volume-with-the-ntfs-security-style-on-a-unix-system-why-did-i-encounter-a-permission-denied-error"></a>Megpróbáltam a "root" és a local Users használatával hozzáférni egy kettős protokollú kötethez az NTFS biztonsági stílussal egy UNIX rendszeren. Miért történt "engedély megtagadva" hibaüzenet?   
 
-A kettős protokollú kötetek az NFS-és az SMB-protokollokat is támogatják.  Amikor megpróbál hozzáférni a csatlakoztatott kötethez a UNIX rendszerű rendszeren, a rendszer megkísérli leképezni a Windows-felhasználóhoz használt UNIX-felhasználót. Ha nem található leképezés, az "engedély megtagadva" hibaüzenet jelenik meg.  Ez a helyzet akkor is érvényes, ha a "root" felhasználót használja a hozzáféréshez.    
-
-Az "engedély megtagadva" probléma elkerüléséhez győződjön meg arról, hogy a Windows Active Directory tartalmazza `pcuser` a csatlakoztatási pont elérését. Ha az `pcuser` "engedély megtagadva" problémával találkozik, várjon 24 órát a gyorsítótár-bejegyzés törlésére a hozzáférés ismételt megkísérlése előtt.
+Lásd: a [kettős protokollú kötetek hibáinak elhárítása](troubleshoot-dual-protocol-volumes.md) .
 
 ### <a name="when-i-try-to-create-a-dual-protocol-volume-why-does-the-creation-process-fail-with-the-error-failed-to-validate-ldap-configuration-try-again-after-correcting-ldap-configuration"></a>Amikor megpróbálok létrehozni egy kettős protokollú kötetet, miért nem sikerült a létrehozási folyamat végrehajtása a következő hibával: "az LDAP-konfiguráció ellenőrzése sikertelen volt, próbálkozzon újra az LDAP-konfiguráció javítása után"?  
 
-Lehet, hogy a DNS-kiszolgálón hiányzik az AD Host Machine mutató (PTR) rekordja. Létre kell hoznia egy névkeresési zónát a DNS-kiszolgálón, majd hozzá kell adnia egy PTR-rekordot az adott névkeresési zónában.
-
-Tegyük fel például, hogy az AD-gép IP-címe `1.1.1.1` , az ad-gép állomásneve (a parancs használatával megtalált `hostname` ) `AD1` , és a tartománynév `myDomain.com` .  A névkeresési zónához hozzáadott PTR-rekordnak a következőnek kell lennie: `1.1.1.1`  ->  `AD1.myDomain.com` .
+Lásd: a [kettős protokollú kötetek hibáinak elhárítása](troubleshoot-dual-protocol-volumes.md) .
 
 ## <a name="capacity-management-faqs"></a>A kapacitások kezelésével kapcsolatos gyakori kérdések
 

@@ -7,24 +7,23 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: bd62d7f7c04896a8a62ab1290ddbc9370934d333
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 38365cc144bbffbedfa1416112c5f8eca2b5fc13
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286240"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653519"
 ---
 # <a name="nc-series"></a>NC sorozat
 
 Az NC sorozatú virtuális gépeket az [NVIDIA Tesla K80](https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-product-literature/Tesla-K80-BoardSpec-07317-001-v05.pdf) kártya és az Intel Xeon E5-2690 v3 (Haswell) processzor látja el. A felhasználók gyorsabban végezhetik el az adatgyűjtést, ha a CUDA használatával hasznosítják az energetikai feltárási alkalmazásokat, az összeomlási szimulációkat, a Ray által követett renderelést, a mély tanulást stb. A NC24r konfiguráció alacsony késésű, nagy átviteli sebességű hálózati adaptert biztosít a szorosan összekapcsolt párhuzamos számítási feladatokhoz.
 
-Premium Storage: nem támogatott
-
-Premium Storage gyorsítótárazás: nem támogatott
-
-Élő áttelepítés: nem támogatott
-
-Memória-megőrzési frissítések: nem támogatott
+[Premium Storage](premium-storage-performance.md): nem támogatott<br>
+[Premium Storage gyorsítótárazás](premium-storage-performance.md): nem támogatott<br>
+[Élő áttelepítés](maintenance-and-updates.md): nem támogatott<br>
+[Memória-megőrzési frissítések](maintenance-and-updates.md): nem támogatott<br>
+[VM-generáció támogatása](generation-2.md): 1. generáció<br>
+<br>
 
 | Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | GPU | GPU memória: GiB | Adatlemezek max. száma | Hálózati adapterek maximális száma |
 |---|---|---|---|---|---|---|---|
@@ -56,6 +55,6 @@ Ha manuálisan telepíti az NVIDIA GPU-illesztőprogramokat, tekintse meg a köv
 - [Nagy teljesítményű számítás](sizes-hpc.md)
 - [Előző generációk](sizes-previous-gen.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.

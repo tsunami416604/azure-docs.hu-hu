@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 78d707c0b5afd745ae805c9513243f3791d47c60
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: dd755e1bc220d61aa540a0e7da9e3f174bde9d76
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654752"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652924"
 ---
 # <a name="lsv2-series"></a>Lsv2 sorozat
 
@@ -25,17 +25,14 @@ A Lsv2 sorozat nagy átviteli sebességű, kis késleltetésű, közvetlenül le
 >
 > További információ: a teljesítmény optimalizálása a Lsv2-sorozatú virtuális gépeken [Windows](../virtual-machines/windows/storage-performance.md) vagy [Linux](../virtual-machines/linux/storage-performance.md)rendszeren.  
 
-ACU: 150-175
-
-Feltört: támogatott
-
-Premium Storage: támogatott
-
-Premium Storage gyorsítótárazás: nem támogatott
-
-Élő áttelepítés: nem támogatott
-
-Memória-megőrzési frissítések: nem támogatott
+[ACU](acu.md): 150-175<br>
+[Premium Storage](premium-storage-performance.md): támogatott<br>
+[Premium Storage gyorsítótárazás](premium-storage-performance.md): nem támogatott<br>
+[Élő áttelepítés](maintenance-and-updates.md): nem támogatott<br>
+[Memória-megőrzési frissítések](maintenance-and-updates.md): nem támogatott<br>
+[VM-létrehozási támogatás](generation-2.md): 1. és 2. generáció<br>
+Feltört: támogatott<br>
+<br>
 
 | Méret | vCPU | Memória (GiB) | <sup>1</sup> . ideiglenes lemez (GIB) | NVMe-lemezek<sup>2</sup> | NVMe lemez átviteli sebessége<sup>3</sup> (olvasási IOPS/Mbps) | Nem gyorsítótárazott adatlemez átviteli sebessége (IOPs/MBps)<sup>4</sup> | A nem gyorsítótárazott adatlemezek maximális adatátviteli sebessége (IOPs/MBps)<sup>5</sup>| Adatlemezek maximális száma | Hálózati adapterek maximális száma | Várt hálózati sávszélesség (Mbps) |
 |---|---|---|---|---|---|---|---|---|---|---|
@@ -90,6 +87,6 @@ Memória-megőrzési frissítések: nem támogatott
 További információ a lemezek típusairól: [lemezek típusai](./disks-types.md#ultra-disk)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.

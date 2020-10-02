@@ -1,38 +1,36 @@
 ---
 title: CI/CD Azure-folyamatokkal és-sablonokkal
-description: Ismerteti, hogyan lehet folyamatos integrációt beállítani az Azure-folyamatokban az Azure erőforráscsoport-telepítési projektek használatával a Visual Studióban Resource Manager-sablonok üzembe helyezéséhez.
+description: Ismerteti, hogyan konfigurálhatja a folyamatos integrációt az Azure-folyamatokban Azure Resource Manager sablonok használatával. Bemutatja, hogyan használhat PowerShell-parancsfájlokat, illetve hogyan másolhat fájlokat egy átmeneti helyre, és onnan telepítheti azokat.
 ms.topic: conceptual
-ms.date: 10/17/2019
-ms.openlocfilehash: d8eff1c7efae319106eb8a85af7823a820a0da39
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 10/01/2020
+ms.openlocfilehash: 6784df30340e4c54b8b1d6e82b45046666824315
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82084651"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653400"
 ---
 # <a name="integrate-arm-templates-with-azure-pipelines"></a>ARM-sablonok integrálása az Azure-folyamatokkal
 
-A Visual Studio Azure erőforráscsoport-projektet biztosít Azure Resource Manager (ARM) Sablonok létrehozásához és az Azure-előfizetéshez való üzembe helyezéséhez. A projektet integrálhatja Azure-folyamatokkal a folyamatos integráció és a folyamatos üzembe helyezés (CI/CD) érdekében.
+A folyamatos integráció és a folyamatos üzembe helyezés (CI/CD) érdekében integrálhatja Azure Resource Manager sablonokat (ARM-sablonokat) az Azure-folyamatokkal. Az [ARM-sablonok Azure-folyamatokkal való folyamatos integrációjának](deployment-tutorial-pipeline.md) oktatóanyaga azt mutatja be, hogyan használható az [ARM-sablon telepítési feladata](https://github.com/microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureResourceManagerTemplateDeploymentV3/README.md) a sablonnak a GitHub-tárházból való üzembe helyezéséhez. Ez a módszer akkor működik, ha közvetlenül egy adattárból kíván üzembe helyezni egy sablont.
 
-A sablonok Azure-folyamatokkal való üzembe helyezésének két módja van:
+Ebből a cikkből megtudhatja, hogyan telepíthet üzembe sablonokat Azure-folyamatokkal. Ez a cikk a következőket mutatja be:
 
-* **Azure PowerShell parancsfájlt futtató feladat hozzáadása**. Ennek a beállításnak az az előnye, hogy a teljes fejlesztési életciklus során a konzisztencia biztosítható, mivel a Visual Studio-projektben (Deploy-AzureResourceGroup.ps1) található parancsfájlt használja. A parancsfájl a projektből egy olyan Storage-fiókra mutat, amelyet a Resource Manager elérhet. Az összetevők olyan elemek a projektben, mint például a csatolt sablonok, a parancsfájlok és az alkalmazás bináris fájljai. Ezt követően a parancsfájl üzembe helyezi a sablont.
+* **Azure PowerShell parancsfájlt futtató feladat hozzáadása**. Ennek a beállításnak az az előnye, hogy a fejlesztési életciklus teljes életciklusa alatt biztosítja a konzisztenciát, mivel a helyi tesztek futtatásakor használt parancsfájlt használhatja. A szkript telepíti a sablont, de más műveleteket is végrehajthat, például paramétereket lehet használni.
 
-* Feladatok **hozzáadása a feladatok másolásához és üzembe helyezéséhez**. Ez a beállítás kényelmes alternatívát kínál a projekt parancsfájlhoz. A folyamat két feladatot konfigurál. Egy feladat az összetevők és a másik tevékenység fázisában telepíti a sablont.
+   A Visual Studio egy PowerShell-parancsfájlt tartalmazó [Azure erőforráscsoport-projektet](create-visual-studio-deployment-project.md) biztosít. A parancsfájl a projektből egy olyan Storage-fiókra mutat, amelyet a Resource Manager elérhet. Az összetevők olyan elemek a projektben, mint például a csatolt sablonok, a parancsfájlok és az alkalmazás bináris fájljai. Ha továbbra is szeretné használni a szkriptet a projektből, használja a cikkben látható PowerShell-parancsfájlt.
 
-Ez a cikk mindkét megközelítést mutatja be.
+* Feladatok **hozzáadása a feladatok másolásához és üzembe helyezéséhez**. Ez a beállítás kényelmes alternatívát kínál a projekt parancsfájlhoz. A folyamat két feladatot konfigurál. Egy feladattal az összetevők egy elérhető helyre kerülnek. A másik feladat az adott helyről telepíti a sablont.
 
 ## <a name="prepare-your-project"></a>A projekt előkészítése
 
-Ez a cikk feltételezi, hogy a Visual Studio-projekt és az Azure DevOps-szervezet készen áll a folyamat létrehozására. A következő lépések bemutatják, hogyan ellenőrizheti, hogy készen áll-e:
+Ez a cikk feltételezi, hogy az ARM-sablon és az Azure DevOps-szervezet készen áll a folyamat létrehozására. A következő lépések bemutatják, hogyan ellenőrizheti, hogy készen áll-e:
 
-* Rendelkezik egy Azure DevOps-szervezettel. Ha még nem rendelkezik ilyennel, [hozzon létre egyet ingyen](/azure/devops/pipelines/get-started/pipelines-sign-up?view=azure-devops). Ha a csapata már rendelkezik Azure DevOps-szervezettel, ellenőrizze, hogy a használni kívánt Azure DevOps-projekt rendszergazdája-e.
+* Rendelkezik egy Azure DevOps-szervezettel. Ha még nem rendelkezik ilyennel, [hozzon létre egyet ingyen](/azure/devops/pipelines/get-started/pipelines-sign-up). Ha a csapata már rendelkezik Azure DevOps-szervezettel, ellenőrizze, hogy a használni kívánt Azure DevOps-projekt rendszergazdája-e.
 
-* Konfigurált egy [szolgáltatási kapcsolódást](/azure/devops/pipelines/library/connect-to-azure?view=azure-devops) az Azure-előfizetéséhez. A folyamat feladatai az egyszerű szolgáltatás identitása alatt futnak. A kapcsolatok létrehozásának lépéseiért tekintse meg a [DevOps-projekt létrehozása](deployment-tutorial-pipeline.md#create-a-devops-project)című témakört.
+* Konfigurált egy [szolgáltatási kapcsolódást](/azure/devops/pipelines/library/connect-to-azure) az Azure-előfizetéséhez. A folyamat feladatai az egyszerű szolgáltatás identitása alatt futnak. A kapcsolatok létrehozásának lépéseiért tekintse meg a [DevOps-projekt létrehozása](deployment-tutorial-pipeline.md#create-a-devops-project)című témakört.
 
-* Van egy Visual Studio-projektje, amely az **Azure Resource Group** Starter sablonból lett létrehozva. Az ilyen típusú projekt létrehozásával kapcsolatos további információkért lásd: [Azure-erőforráscsoportok létrehozása és telepítése a Visual Studióval](create-visual-studio-deployment-project.md).
-
-* A Visual Studio-projekt [egy Azure DevOps-projekthez csatlakozik](/azure/devops/repos/git/share-your-code-in-git-vs-2017?view=azure-devops).
+* Rendelkezik egy [ARM-sablonnal](quickstart-create-templates-use-visual-studio-code.md) , amely meghatározza a projekt infrastruktúráját.
 
 ## <a name="create-pipeline"></a>Folyamat létrehozása
 
@@ -56,27 +54,32 @@ Készen áll Azure PowerShell feladat hozzáadására vagy a fájl másolására
 
 ## <a name="azure-powershell-task"></a>Azure PowerShell feladat
 
-Ez a szakasz bemutatja, hogyan konfigurálhatja a folyamatos üzembe helyezést egyetlen olyan feladattal, amely futtatja a PowerShell-parancsfájlt a projektben. A következő YAML-fájl egy [Azure PowerShell feladatot](/azure/devops/pipelines/tasks/deploy/azure-powershell?view=azure-devops)hoz létre:
+Ez a szakasz bemutatja, hogyan konfigurálhatja a folyamatos üzembe helyezést egyetlen olyan feladattal, amely futtatja a PowerShell-parancsfájlt a projektben. Ha egy sablont telepítő PowerShell-parancsfájlra van szüksége, tekintse meg [Deploy-AzTemplate.ps1](https://github.com/Azure/azure-quickstart-templates/blob/master/Deploy-AzTemplate.ps1) vagy [Deploy-AzureResourceGroup.ps1](https://github.com/Azure/azure-quickstart-templates/blob/master/Deploy-AzureResourceGroup.ps1).
 
-```yaml
+A következő YAML-fájl egy [Azure PowerShell feladatot](/azure/devops/pipelines/tasks/deploy/azure-powershell)hoz létre:
+
+```yml
+trigger:
+- master
+
 pool:
-  name: Hosted Windows 2019 with VS2019
-  demands: azureps
+  vmImage: 'ubuntu-latest'
 
 steps:
-- task: AzurePowerShell@3
+- task: AzurePowerShell@5
   inputs:
-    azureSubscription: 'demo-deploy-sp'
-    ScriptPath: 'AzureResourceGroupDemo/Deploy-AzureResourceGroup.ps1'
-    ScriptArguments: -ResourceGroupName 'demogroup' -ResourceGroupLocation 'centralus'
-    azurePowerShellVersion: LatestVersion
+    azureSubscription: 'script-connection'
+    ScriptType: 'FilePath'
+    ScriptPath: './Deploy-Template.ps1'
+    ScriptArguments: -Location 'centralus' -ResourceGroupName 'demogroup' -TemplateFile templates\mainTemplate.json
+    azurePowerShellVersion: 'LatestVersion'
 ```
 
-A feladat beállításakor `AzurePowerShell@3` a folyamat a AzureRM modulból származó parancsokat használ a kapcsolatok hitelesítéséhez. Alapértelmezés szerint a Visual Studio-projektben a PowerShell-szkript a AzureRM modult használja. Ha frissítette a szkriptet az az [modul](/powershell/azure/new-azureps-module-az)használatára, állítsa a feladatot a következőre: `AzurePowerShell@4` .
+A feladat beállításakor `AzurePowerShell@5` a folyamat az az [modult](/powershell/azure/new-azureps-module-az)használja. Ha a AzureRM modult használja a parancsfájlban, állítsa a feladatot a következőre: `AzurePowerShell@3` .
 
 ```yaml
 steps:
-- task: AzurePowerShell@4
+- task: AzurePowerShell@3
 ```
 
 A (z) esetében `azureSubscription` adja meg a létrehozott szolgáltatási kapcsolatok nevét.
@@ -92,69 +95,45 @@ A esetében `scriptPath` adja meg a folyamat fájljának relatív elérési útj
 ScriptPath: '<your-relative-path>/<script-file-name>.ps1'
 ```
 
-Ha nincs szüksége az összetevők előkészítésére, csak adja meg egy erőforráscsoport nevét és helyét, amelyet az üzembe helyezéshez szeretne használni. A Visual Studio-parancsfájl létrehozza az erőforráscsoportot, ha még nem létezik.
+A-ben `ScriptArguments` adja meg a parancsfájlhoz szükséges paramétereket. Az alábbi példa egy parancsfájlhoz tartozó paramétereket mutat be, de testre kell szabnia a parancsfájl paramétereit.
 
 ```yaml
-ScriptArguments: -ResourceGroupName '<resource-group-name>' -ResourceGroupLocation '<location>'
+ScriptArguments: -Location 'centralus' -ResourceGroupName 'demogroup' -TemplateFile templates\mainTemplate.json
 ```
 
-Ha az összetevőket egy meglévő Storage-fiókba kell bemutatnia, használja a következőt:
+Ha a **Mentés**lehetőséget választja, a folyamat automatikusan elindul. Térjen vissza a build-folyamat összegzéséhez, és tekintse meg az állapotot.
 
-```yaml
-ScriptArguments: -ResourceGroupName '<resource-group-name>' -ResourceGroupLocation '<location>' -UploadArtifacts -ArtifactStagingDirectory '$(Build.StagingDirectory)' -StorageAccountName '<your-storage-account>'
-```
-
-Most, hogy megértette, hogyan hozhatja létre a feladatot, ugorjon végig a folyamat szerkesztésének lépésein.
-
-1. Nyissa meg a folyamatot, és cserélje le a tartalmát a YAML:
-
-   ```yaml
-   pool:
-     name: Hosted Windows 2019 with VS2019
-     demands: azureps
-
-   steps:
-   - task: AzurePowerShell@3
-     inputs:
-       azureSubscription: 'demo-deploy-sp'
-       ScriptPath: 'AzureResourceGroupDemo/Deploy-AzureResourceGroup.ps1'
-       ScriptArguments: -ResourceGroupName 'demogroup' -ResourceGroupLocation 'centralus' -UploadArtifacts -ArtifactStagingDirectory '$(Build.StagingDirectory)' -StorageAccountName 'stage3a4176e058d34bb88cc'
-       azurePowerShellVersion: LatestVersion
-   ```
-
-1. Kattintson a **Mentés** gombra.
-
-   ![Folyamat mentése](./media/add-template-to-azure-pipelines/save-pipeline.png)
-
-1. Adjon meg egy üzenetet a végrehajtáshoz, és véglegesítse közvetlenül a **főkiszolgálónak**.
-
-1. Ha a **Mentés**lehetőséget választja, a folyamat automatikusan elindul. Térjen vissza a build-folyamat összegzéséhez, és tekintse meg az állapotot.
-
-   ![Eredmények megtekintése](./media/add-template-to-azure-pipelines/view-results.png)
+![Eredmények megtekintése](./media/add-template-to-azure-pipelines/view-results.png)
 
 Az aktuálisan futó folyamat kiválasztásával megtekintheti a feladatok részleteit. Amikor befejeződik, megjelenik az egyes lépések eredményei.
 
 ## <a name="copy-and-deploy-tasks"></a>Feladatok másolása és üzembe helyezése
 
-Ez a szakasz bemutatja, hogyan konfigurálhatja a folyamatos üzembe helyezést két feladat használatával az összetevők előkészítéséhez és a sablon üzembe helyezéséhez.
+Ez a szakasz bemutatja, hogyan konfigurálhatja a folyamatos üzembe helyezést két feladat használatával. Az első feladat az összetevőket egy Storage-fiókba, a második pedig a sablont telepíti.
 
-Az alábbi YAML az [Azure file Copy feladatot](/azure/devops/pipelines/tasks/deploy/azure-file-copy?view=azure-devops)jeleníti meg:
+A fájlok Storage-fiókba való másolásához a szolgáltatás-kapcsolódáshoz tartozó szolgáltatásnevet hozzá kell rendelni a Storage blob-adatközreműködőhöz vagy a Storage blob-adat tulajdonosi szerepköréhez. További információ: Ismerkedés [a AzCopy](../../storage/common/storage-use-azcopy-v10.md)szolgáltatással.
 
-```yaml
-- task: AzureFileCopy@3
-  displayName: 'Stage files'
+Az alábbi YAML az [Azure file Copy feladatot](/azure/devops/pipelines/tasks/deploy/azure-file-copy)jeleníti meg.
+
+```yml
+trigger:
+- master
+
+pool:
+  vmImage: 'windows-latest'
+
+steps:
+- task: AzureFileCopy@4
   inputs:
-    SourcePath: 'AzureResourceGroup1'
-    azureSubscription: 'demo-deploy-sp'
+    SourcePath: 'templates'
+    azureSubscription: 'copy-connection'
     Destination: 'AzureBlob'
-    storage: 'stage3a4176e058d34bb88cc'
-    ContainerName: 'democontainer'
-    outputStorageUri: 'artifactsLocation'
-    outputStorageContainerSasToken: 'artifactsLocationSasToken'
-    sasTokenTimeOutInMinutes: '240'
+    storage: 'demostorage'
+    ContainerName: 'projecttemplates'
+  name: AzureFileCopy
 ```
 
-A feladat több részből áll, hogy átvizsgálja a környezetét. A az összetevők `SourcePath` helyét jelzi a folyamat fájljához viszonyítva. Ebben a példában a fájlok egy nevű mappában találhatók, `AzureResourceGroup1` amely a projekt neve volt.
+A feladat több részből áll, hogy átvizsgálja a környezetét. A az összetevők `SourcePath` helyét jelzi a folyamat fájljához viszonyítva.
 
 ```yaml
 SourcePath: '<path-to-artifacts>'
@@ -173,92 +152,82 @@ storage: '<your-storage-account-name>'
 ContainerName: '<container-name>'
 ```
 
+A fájl másolása feladat létrehozása után készen áll arra, hogy hozzáadja az előkészített sablon üzembe helyezéséhez szükséges feladatot.
+
 A következő YAML a [Azure Resource Manager sablon telepítési feladatát](https://github.com/microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureResourceManagerTemplateDeploymentV3/README.md)mutatja:
 
 ```yaml
-- task: AzureResourceGroupDeployment@2
-  displayName: 'Deploy template'
+- task: AzureResourceManagerTemplateDeployment@3
   inputs:
     deploymentScope: 'Resource Group'
-    ConnectedServiceName: 'demo-deploy-sp'
-    subscriptionName: '01234567-89AB-CDEF-0123-4567890ABCDEF'
+    azureResourceManagerConnection: 'copy-connection'
+    subscriptionId: '00000000-0000-0000-0000-000000000000'
     action: 'Create Or Update Resource Group'
     resourceGroupName: 'demogroup'
-    location: 'Central US'
+    location: 'West US'
     templateLocation: 'URL of the file'
-    csmFileLink: '$(artifactsLocation)WebSite.json$(artifactsLocationSasToken)'
-    csmParametersFileLink: '$(artifactsLocation)WebSite.parameters.json$(artifactsLocationSasToken)'
-    overrideParameters: '-_artifactsLocation $(artifactsLocation) -_artifactsLocationSasToken "$(artifactsLocationSasToken)"'
+    csmFileLink: '$(AzureFileCopy.StorageContainerUri)templates/mainTemplate.json$(AzureFileCopy.StorageContainerSasToken)'
+    csmParametersFileLink: '$(AzureFileCopy.StorageContainerUri)templates/mainTemplate.parameters.json$(AzureFileCopy.StorageContainerSasToken)'
     deploymentMode: 'Incremental'
+    deploymentName: 'deploy1'
 ```
 
-A feladat több részből áll, hogy átvizsgálja a környezetét.
+Ennek a feladatnak több része is részletesebben áttekinthető.
 
-- `deploymentScope`: Válassza ki az üzembe helyezés hatókörét a következő lehetőségek közül: `Management Group` `Subscription` és `Resource Group` . Ebben az útmutatóban használhatja az **erőforráscsoportot** . További információ a hatókörökről: [telepítési hatókörök](deploy-rest.md#deployment-scope).
+- `deploymentScope`: Válassza ki az üzembe helyezés hatókörét a következő lehetőségek közül: `Management Group` , `Subscription` és `Resource Group` . További információ a hatókörökről: [telepítési hatókörök](deploy-rest.md#deployment-scope).
 
-- `ConnectedServiceName`: Adja meg a létrehozott szolgáltatási kapcsolatok nevét.
+- `azureResourceManagerConnection`: Adja meg a létrehozott szolgáltatási kapcsolatok nevét.
 
-    ```yaml
-    ConnectedServiceName: '<your-connection-name>'
-    ```
+- `subscriptionId`: Adja meg a cél előfizetés-AZONOSÍTÓját. Ez a tulajdonság csak az erőforráscsoport központi telepítési hatókörére és az előfizetés központi telepítési hatókörére vonatkozik.
 
-- `subscriptionName`: Adja meg a cél előfizetés-AZONOSÍTÓját. Ez a tulajdonság csak az erőforráscsoport központi telepítési hatókörére és az előfizetés központi telepítési hatókörére vonatkozik.
+- `resourceGroupName` és `location` : adja meg a telepíteni kívánt erőforráscsoport nevét és helyét. A feladat akkor hozza létre az erőforráscsoportot, ha az nem létezik.
 
-- `resourceGroupName`és `location` : adja meg a telepíteni kívánt erőforráscsoport nevét és helyét. A feladat akkor hozza létre az erőforráscsoportot, ha az nem létezik.
-
-    ```yaml
-    resourceGroupName: '<resource-group-name>'
-    location: '<location>'
-    ```
-
-A központi telepítési feladat egy nevű sablonra `WebSite.json` és egy WebSite.parameters.jsnevű Parameters fájlra hivatkozik. Használja a sablon és a paraméter fájljainak nevét.
-
-Most, hogy megértette, hogyan hozhatja létre a feladatokat, nézzük végig a folyamat szerkesztésének lépéseit.
-
-1. Nyissa meg a folyamatot, és cserélje le a tartalmát a YAML:
-
-   ```yaml
-   pool:
-     name: Hosted Windows 2019 with VS2019
-
-   steps:
-   - task: AzureFileCopy@3
-     displayName: 'Stage files'
-     inputs:
-       SourcePath: 'AzureResourceGroup1'
-       azureSubscription: 'demo-deploy-sp'
-       Destination: 'AzureBlob'
-       storage: 'stage3a4176e058d34bb88cc'
-       ContainerName: 'democontainer'
-       outputStorageUri: 'artifactsLocation'
-       outputStorageContainerSasToken: 'artifactsLocationSasToken'
-       sasTokenTimeOutInMinutes: '240'
-    - task: AzureResourceGroupDeployment@2
-      displayName: 'Deploy template'
-      inputs:
-        deploymentScope: 'Resource Group'
-        ConnectedServiceName: 'demo-deploy-sp'
-        subscriptionName: '01234567-89AB-CDEF-0123-4567890ABCDEF'
-        action: 'Create Or Update Resource Group'
-        resourceGroupName: 'demogroup'
-        location: 'Central US'
-        templateLocation: 'URL of the file'
-        csmFileLink: '$(artifactsLocation)WebSite.json$(artifactsLocationSasToken)'
-        csmParametersFileLink: '$(artifactsLocation)WebSite.parameters.json$(artifactsLocationSasToken)'
-        overrideParameters: '-_artifactsLocation $(artifactsLocation) -_artifactsLocationSasToken "$(artifactsLocationSasToken)"'
-        deploymentMode: 'Incremental'
+   ```yml
+   resourceGroupName: '<resource-group-name>'
+   location: '<location>'
    ```
 
-1. Kattintson a **Mentés** gombra.
+- `csmFileLink`: Adja meg az előkészített sablon hivatkozását. Az érték beállításakor használja a fájlmásolási feladat által visszaadott változókat. Az alábbi példa egy mainTemplate.jsnevű sablonra hivatkozik. A **sablonok** nevű mappát a rendszer belefoglalja, mert a fájlmásolási feladat a fájlra másolta a fájlt. A folyamatában adja meg a sablon elérési útját és a sablon nevét.
 
-1. Adjon meg egy üzenetet a végrehajtáshoz, és véglegesítse közvetlenül a **főkiszolgálónak**.
+   ```yml
+   csmFileLink: '$(AzureFileCopy.StorageContainerUri)templates/mainTemplate.json$(AzureFileCopy.StorageContainerSasToken)'
+   ```
 
-1. Ha a **Mentés**lehetőséget választja, a folyamat automatikusan elindul. Térjen vissza a build-folyamat összegzéséhez, és tekintse meg az állapotot.
+A folyamat így néz ki:
 
-   ![Eredmények megtekintése](./media/add-template-to-azure-pipelines/view-results.png)
+```yml
+trigger:
+- master
 
-Az aktuálisan futó folyamat kiválasztásával megtekintheti a feladatok részleteit. Amikor befejeződik, megjelenik az egyes lépések eredményei.
+pool:
+  vmImage: 'windows-latest'
 
-## <a name="next-steps"></a>További lépések
+steps:
+- task: AzureFileCopy@4
+  inputs:
+    SourcePath: 'templates'
+    azureSubscription: 'copy-connection'
+    Destination: 'AzureBlob'
+    storage: 'demostorage'
+    ContainerName: 'projecttemplates'
+  name: AzureFileCopy
+- task: AzureResourceManagerTemplateDeployment@3
+  inputs:
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: 'copy-connection'
+    subscriptionId: '00000000-0000-0000-0000-000000000000'
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: 'demogroup'
+    location: 'West US'
+    templateLocation: 'URL of the file'
+    csmFileLink: '$(AzureFileCopy.StorageContainerUri)templates/mainTemplate.json$(AzureFileCopy.StorageContainerSasToken)'
+    csmParametersFileLink: '$(AzureFileCopy.StorageContainerUri)templates/mainTemplate.parameters.json$(AzureFileCopy.StorageContainerSasToken)'
+    deploymentMode: 'Incremental'
+    deploymentName: 'deploy1'
+```
 
-Az Azure-folyamatok ARM-sablonokkal való használatának lépésenkénti folyamatát lásd [: oktatóanyag: Azure Resource Manager sablonok folyamatos integrációja az Azure-folyamatokkal](deployment-tutorial-pipeline.md).
+Ha a **Mentés**lehetőséget választja, a folyamat automatikusan elindul. Térjen vissza a build-folyamat összegzéséhez, és tekintse meg az állapotot.
+
+## <a name="next-steps"></a>Következő lépések
+
+További információ az ARM-sablonok GitHub-műveletekkel való használatáról: [Azure Resource Manager sablonok üzembe helyezése a GitHub-műveletek használatával](deploy-github-actions.md).

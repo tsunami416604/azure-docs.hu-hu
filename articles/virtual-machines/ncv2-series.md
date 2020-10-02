@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: f7d4403fa480aa03868df5a0daa09e54ce8ecda7
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 19ed565cbc68cc49da9daa5460e4dca41ce01cbc
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286223"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653485"
 ---
 # <a name="ncv2-series"></a>NCv2 sorozat
 
@@ -20,13 +20,11 @@ Az NCv2 sorozatú virtuális gépeket NVIDIA Tesla P100 GPU-k működtetik. Ezek
 
 A NC24rs v2-konfiguráció alacsony késleltetésű, nagy átviteli sebességű hálózati adaptert biztosít a szorosan összekapcsolt párhuzamos számítási feladatokhoz.
 
-Premium Storage: támogatott
-
-Premium Storage gyorsítótárazás: támogatott
-
-Élő áttelepítés: nem támogatott
-
-Memória-megőrzési frissítések: nem támogatott
+[Premium Storage](premium-storage-performance.md): támogatott<br>
+[Premium Storage gyorsítótárazás](premium-storage-performance.md): támogatott<br>
+[Élő áttelepítés](maintenance-and-updates.md): nem támogatott<br>
+[Memória-megőrzési frissítések](maintenance-and-updates.md): nem támogatott<br>
+[VM-létrehozási támogatás](generation-2.md): 1. és 2. generáció<br>
 
 > [!IMPORTANT]
 > Ennél a virtuálisgép-sorozatnál az előfizetéshez tartozó vCPU (Core) kvóta kezdetben 0 értékre van állítva minden régióban. [VCPU-kvóta növelésének kérése](../azure-portal/supportability/resource-manager-core-quotas-request.md) a sorozathoz egy [elérhető régióban](https://azure.microsoft.com/regions/services/).
@@ -61,6 +59,6 @@ Ha manuálisan telepíti az NVIDIA GPU-illesztőprogramokat, tekintse meg a köv
 - [Nagy teljesítményű számítás](sizes-hpc.md)
 - [Előző generációk](sizes-previous-gen.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.

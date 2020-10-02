@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 07/10/2019
 ms.author: dekapur
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 4c812ab4f6c8908e3cabcf2d3afcc63959073ed4
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 1940e65fc5a9fd4aecd0b0cbcf6631e0628bda91
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020108"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653128"
 ---
 # <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric-using-application-insights"></a>Oktatóanyag: ASP.NET Core-alkalmazások monitorozása és diagnosztikája a Service Fabricben az Application Insights használatával
 
@@ -75,7 +75,7 @@ A következő lépésekkel konfigurálhatja a Application Insightst mind a Votin
 >[!NOTE]
 >A projekt típusától függően, ha a jobb gombbal a szolgáltatás nevére kattint, előfordulhat, hogy az Add-> Application Insights Telemetria lehetőségre kell kattintania...
 
-2. Kattintson az **Első lépések** lehetőségre.
+2. Kattintson az első **lépések**elemre.
 3. Jelentkezzen be az Azure-előfizetés beállításához használt fiókba, és válassza ki azt az előfizetést, amelyben a Application Insights erőforrást létrehozta. Keresse meg az erőforrást az „Erőforrás” legördülő lista *Meglévő Application Insights-erőforrás* eleme alatt. Kattintson a **Regisztrálás** gombra, hogy az Application Insightsot a szolgáltatáshoz adja.
 
     ![Az AI regisztrálása](./media/service-fabric-tutorial-monitoring-aspnet/register-ai.png)
@@ -191,7 +191,7 @@ A nyomokra kattintva további részleteket tudhat meg azokról. Hasznos adatokat
 
 Ezenkívül az Áttekintés oldal bal oldali menüjében lévő *Alkalmazástérképre* vagy az **Alkalmazástérkép** ikonra kattintva a két csatlakoztatott szolgáltatást megjelenítő alkalmazástérképre léphet.
 
-![AI nyomrészletek](./media/service-fabric-tutorial-monitoring-aspnet/app-map-new.png)
+![Képernyőkép, amely kiemeli az alkalmazás-hozzárendelést a bal oldali menüben.](./media/service-fabric-tutorial-monitoring-aspnet/app-map-new.png)
 
 Az Alkalmazástérkép segíthet az alkalmazástopológia jobb megértésében, különösen, amikor több együttműködő szolgáltatást kezd hozzáadni. A kérések sikerességi arányáról is alapvető adatokat nyújt, és segíthet a sikertelen kérések diagnosztizálásában, hogy jobban megértse, mi volt hiba. Az Alkalmazástérkép használatáról további információért lásd: [Alkalmazástérkép az Application Insightsban](../azure-monitor/app/app-map.md).
 

@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: ayshak
-ms.openlocfilehash: a5a3887efe9b8f19608fac63216ca53576d9ec3f
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 8591b703382049346fe019b89a5f31517380757f
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654735"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653417"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>B sorozatú virtuális gépek méretei
 
@@ -21,13 +21,12 @@ A B sorozatú virtuális gépek ideálisak olyan számítási feladatokhoz, amel
 
 A B sorozat a következő virtuálisgép-méretekhez tartozik:
 
-Premium Storage: támogatott
-
-Premium Storage gyorsítótárazás: nem támogatott
-
-Élő áttelepítés: támogatott
-
-Memória megőrzésének frissítései: támogatott
+[Premium Storage](premium-storage-performance.md): támogatott<br>
+[Premium Storage gyorsítótárazás](premium-storage-performance.md): nem támogatott<br>
+[Élő áttelepítés](maintenance-and-updates.md): támogatott<br>
+[Memória megőrzésének frissítései](maintenance-and-updates.md): támogatott<br>
+[VM-létrehozási támogatás](generation-2.md): 1. és 2. generáció<br>
+<br>
 
 | Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Virtuális gép alapszintű CPU-teljesítmény | Virtuális gép maximális CPU-teljesítmény | Kezdeti kreditek | Banki/óránkénti kreditek | Maximális banki kreditek | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolási sebesség: IOPS/MBps | Gyorsítótár nélküli lemez maximális átviteli sebessége: IOPS/MBps | Hálózati adapterek maximális száma |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
@@ -58,7 +57,7 @@ Alapterv: 270%
 
 ![Óránkénti forgalmi adatok diagramja](./media/b-series-burstable/office-workload.png)
 
-| Forgatókönyv | Idő | CPU-használat (%) | Halmozott kreditek<sup>1</sup> | Rendelkezésre álló kreditek |
+| Használati eset | Idő | CPU-használat (%) | Halmozott kreditek<sup>1</sup> | Rendelkezésre álló kreditek |
 | --- | --- | --- | --- | --- |
 | B16ms üzembe helyezése | Üzembe helyezés | Üzembe helyezés  | 480 (kezdeti kreditek) | 480 |
 | Nincs forgalom | 0:00 | 0 | 162 | 642 |
@@ -151,6 +150,6 @@ Válasz **: igen**, az összes B sorozatú méret támogatja Premium Storage ada
 
 További információ a lemezek típusairól: [lemezek típusai](./disks-types.md#ultra-disk)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.

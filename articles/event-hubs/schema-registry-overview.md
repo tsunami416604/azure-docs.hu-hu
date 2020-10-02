@@ -4,12 +4,12 @@ description: Ez a cikk áttekintést nyújt az Azure Event Hubs (előzetes verzi
 ms.topic: overview
 ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: 6d478e264f38bb8a097c87e37479ca64b3d5e52d
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: a0cc54f6ada1a5900e817c8e22fc192cd73f6550
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91568369"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653570"
 ---
 # <a name="azure-schema-registry-in-event-hubs-preview"></a>Azure Schema Registry az Event Hubsban (előzetes verzió)
 Számos esemény-adatfolyam és üzenetküldési forgatókönyv esetén az esemény vagy az üzenet tartalma strukturált adatokat tartalmaz, amelyek szerializálása vagy deszerializálása séma-vezérelt formátum, például Apache Avro használatával történik. A küldők és a fogadók is ellenőrizhetik az adatok integritását egy séma-dokumentummal, mint a JSON-sémával. A séma által vezérelt formátumok esetében a séma elérhetővé tétele az üzenet fogyasztói számára előfeltétel, hogy a fogyasztó képes legyen deszerializálni az adatmennyiséget. 
@@ -19,7 +19,6 @@ Az **Azure Schema Registry** a Event Hubs egyik funkciója, amely egy központi 
 > [!NOTE]
 > - A **séma-beállításjegyzék** szolgáltatás jelenleg **előzetes**verzióban érhető el, és éles számítási feladatokhoz nem ajánlott.
 > - A szolgáltatás csak **standard** és **dedikált** szinten érhető el, nem az alapszintű **csomagokban** .
-> - Ez az előzetes verzió jelenleg csak az **USA nyugati középső** régiójában érhető el. 
 
 A sémák által vezérelt szerializálási keretrendszerek, például az Apache Avro, a externalizing-szerializálási metaadatok a megosztott sémákban is segíthetnek, ha jelentősen csökkentik az egyes adatkészletekben található, és a címkével ellátott, címkézett formátumokkal (például JSON) ellátott üzenetek és mezőnevek. Az eseményeken és az eseményvezérelt infrastruktúrán belül tárolt sémák biztosítják, hogy a szerializáláshoz és a szerializáláshoz szükséges metaadatok mindig elérhetők legyenek, és a sémák nem lehetnek rossz helyre helyezve. 
 

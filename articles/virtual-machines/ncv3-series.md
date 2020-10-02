@@ -7,24 +7,22 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: de118f7a4a29d306fe351199795a5a8cacb38fcd
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: ab08d23fe7448e50db42ea126e8158ad284b3320
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289748"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653468"
 ---
 # <a name="ncv3-series"></a>NCv3 sorozat
 
 Az NCv3 sorozatú virtuális gépeket NVIDIA Tesla V100 GPU-k működtetik. Ezek a GPU-k 1,5 x-t biztosítanak a NCv2 sorozat számítási teljesítményéhez. Az ügyfelek igénybe vehetik a frissített GPU-ket a hagyományos HPC-számítási feladatokhoz, mint például a tározó modellezése, a DNS-szekvencia, a protein-elemzés, a Monte Carlo-szimulációk és egyebek. Az NC24rs v3 konfiguráció alacsony késésű, nagy átviteli sebességű hálózati adaptert biztosít a szorosan összekapcsolt párhuzamos számítási feladatokhoz. A GPU-k mellett az Intel Xeon E5-2690 v4 (Broadwell) processzorok is a NCv3 sorozatú virtuális gépeket használják.
 
-Premium Storage: támogatott
-
-Premium Storage gyorsítótárazás: támogatott
-
-Élő áttelepítés: nem támogatott
-
-Memória-megőrzési frissítések: nem támogatott
+[Premium Storage](premium-storage-performance.md): támogatott<br>
+[Premium Storage gyorsítótárazás](premium-storage-performance.md): támogatott<br>
+[Élő áttelepítés](maintenance-and-updates.md): nem támogatott<br>
+[Memória-megőrzési frissítések](maintenance-and-updates.md): nem támogatott<br>
+[VM-létrehozási támogatás](generation-2.md): 1. és 2. generáció<br>
 
 > [!IMPORTANT]
 > Ennél a virtuálisgép-sorozatnál az előfizetéshez tartozó vCPU (Core) kvóta kezdetben 0 értékre van állítva minden régióban. [VCPU-kvóta növelésének kérése](../azure-portal/supportability/resource-manager-core-quotas-request.md) a sorozathoz egy [elérhető régióban](https://azure.microsoft.com/regions/services/).
@@ -59,6 +57,6 @@ Ha manuálisan telepíti az NVIDIA GPU-illesztőprogramokat, tekintse meg a köv
 - [Nagy teljesítményű számítás](sizes-hpc.md)
 - [Előző generációk](sizes-previous-gen.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.

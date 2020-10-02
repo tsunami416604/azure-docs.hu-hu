@@ -581,8 +581,6 @@
     - name: Támogatás
       displayName: 'support,help,release notes,search,scoped search,azure support,github support,stack overflow,github issues,bugs,feedback,uservoice'
       href: support.md
-    - name: Régiók
-      href: regions.md
     - name: A Swagger dokumentációja
       href: swagger-documentation.md
     - name: Független felhők

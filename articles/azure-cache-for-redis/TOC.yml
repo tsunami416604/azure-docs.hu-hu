@@ -68,6 +68,8 @@
       items:
         - name: Gyorsítótárszint kiválasztása
           href: cache-overview.md#choosing-the-right-tier
+        - name: A Redis-verzió beállítása
+          href: cache-how-to-version.md
         - name: A gyorsítótár elosztása klaszterezéssel
           href: cache-how-to-premium-clustering.md
         - name: A gyorsítótár megőrzése a Redis adatmegőrzési funkciójával

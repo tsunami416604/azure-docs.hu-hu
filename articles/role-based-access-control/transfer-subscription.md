@@ -1,5 +1,5 @@
 ---
-title: Azure-előfizetés átvitele egy másik Azure AD-címtárba (előzetes verzió)
+title: Azure-előfizetés átvitele egy másik Azure AD-címtárba
 description: Ismerje meg, hogyan vihet át egy Azure-előfizetést és egy ismert kapcsolódó erőforrást egy másik Azure Active Directory (Azure AD) könyvtárba.
 services: active-directory
 author: rolyon
@@ -10,19 +10,14 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 08/31/2020
 ms.author: rolyon
-ms.openlocfilehash: ab004c11b46428c5fad28177b0d94edc04b95654
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 6d0c0333186655d4f105337021164814453ab47a
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400544"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652384"
 ---
-# <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory-preview"></a>Azure-előfizetés átvitele egy másik Azure AD-címtárba (előzetes verzió)
-
-> [!IMPORTANT]
-> Az alábbi lépéseket követve egy előfizetés másik Azure AD-címtárba való átvitele jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
-> További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>Azure-előfizetés átvitele egy másik Azure AD-címtárba
 
 A szervezetek több Azure-előfizetéssel is rendelkezhetnek. Minden előfizetés egy adott Azure Active Directory (Azure AD) címtárral van társítva. A felügyelet egyszerűbbé tételéhez érdemes lehet egy másik Azure AD-címtárba továbbítani az előfizetést. Ha egy előfizetést másik Azure AD-címtárba ruház át, bizonyos erőforrások nem kerülnek át a célkiszolgálóra. Például az Azure szerepköralapú hozzáférés-vezérlésben (Azure RBAC) lévő összes szerepkör-hozzárendelés és egyéni szerepkör **véglegesen** törlődik a forrás-címtárból, és nem kerül át a célhelyre.
 
@@ -81,7 +76,7 @@ Számos Azure-erőforrás függőséget tartalmaz egy előfizetéshez vagy egy c
 | Azure File Sync | Igen | Igen |  |  |
 | Azure Managed Disks | Yes | N/A |  |  |
 | Azure Container Services a Kubernetes-hez | Igen | Igen |  |  |
-| Azure Active Directory Domain Services | Igen | Nem |  |  |
+| Azure Active Directory tartományi szolgáltatások | Igen | Nem |  |  |
 | Alkalmazásregisztrációk | Igen | Igen |  |  |
 
 > [!WARNING]
@@ -91,7 +86,7 @@ Számos Azure-erőforrás függőséget tartalmaz egy előfizetéshez vagy egy c
 
 A lépések elvégzéséhez a következőkre lesz szüksége:
 
-- [Bash Azure Cloud Shell](/azure/cloud-shell/overview) vagy [Azure CLI](https://docs.microsoft.com/cli/azure) -ben
+- [Bash Azure Cloud Shell](/azure/cloud-shell/overview) vagy [Azure CLI](/cli/azure) -ben
 - Annak az előfizetésnek a fiók rendszergazdája, amelyet át szeretne vinni a forrás-könyvtárba
 - [Tulajdonosi](built-in-roles.md#owner) szerepkör a célként megadott könyvtárban
 
@@ -101,13 +96,13 @@ A lépések elvégzéséhez a következőkre lesz szüksége:
 
 1. Jelentkezzen be az Azure-ba rendszergazdaként.
 
-1. Szerezze be az előfizetések listáját az az [Account List](/cli/azure/account#az-account-list) paranccsal.
+1. Szerezze be az előfizetések listáját az az [Account List](/cli/azure/account#az_account_list) paranccsal.
 
     ```azurecli
     az account list --output table
     ```
 
-1. Az az [Account set](https://docs.microsoft.com/cli/azure/account#az-account-set) paranccsal állíthatja be az átvinni kívánt aktív előfizetést.
+1. Az az [Account set](/cli/azure/account#az_account_set) paranccsal állíthatja be az átvinni kívánt aktív előfizetést.
 
     ```azurecli
     az account set --subscription "Marketing"
@@ -115,9 +110,9 @@ A lépések elvégzéséhez a következőkre lesz szüksége:
 
 ### <a name="install-the-resource-graph-extension"></a>Az erőforrás-gráf bővítmény telepítése
 
- Az erőforrás-gráf bővítmény lehetővé teszi, hogy az az [Graph](https://docs.microsoft.com/cli/azure/ext/resource-graph/graph) paranccsal lekérdezze a Azure Resource Manager által felügyelt erőforrásokat. Ezt a parancsot a későbbi lépésekben fogja használni.
+ Az erőforrás-gráf bővítmény lehetővé teszi, hogy az az [Graph](/cli/azure/ext/resource-graph/graph) paranccsal lekérdezze a Azure Resource Manager által felügyelt erőforrásokat. Ezt a parancsot a későbbi lépésekben fogja használni.
 
-1. Az [az Extension List](https://docs.microsoft.com/cli/azure/extension#az-extension-list) paranccsal ellenőrizze, hogy telepítve van *-e az erőforrás-gráf* bővítmény.
+1. Az [az Extension List](/cli/azure/extension#az_extension_list) paranccsal ellenőrizze, hogy telepítve van *-e az erőforrás-gráf* bővítmény.
 
     ```azurecli
     az extension list
@@ -131,7 +126,7 @@ A lépések elvégzéséhez a következőkre lesz szüksége:
 
 ### <a name="save-all-role-assignments"></a>Az összes szerepkör-hozzárendelés mentése
 
-1. Az [az szerepkör-hozzárendelési lista](https://docs.microsoft.com/cli/azure/role/assignment#az-role-assignment-list) használatával listázhatja az összes szerepkör-hozzárendelést (beleértve az örökölt szerepkör-hozzárendeléseket is).
+1. Az [az szerepkör-hozzárendelési lista](/cli/azure/role/assignment#az_role_assignment_list) használatával listázhatja az összes szerepkör-hozzárendelést (beleértve az örökölt szerepkör-hozzárendeléseket is).
 
     Annak érdekében, hogy könnyebb legyen áttekinteni a listát, a kimenet JSON-ként, TSV-ként vagy táblázatként is exportálható. További információ: szerepkör- [hozzárendelések listázása az Azure RBAC és az Azure CLI használatával](role-assignments-list-cli.md).
 
@@ -149,7 +144,7 @@ A lépések elvégzéséhez a következőkre lesz szüksége:
 
 ### <a name="save-custom-roles"></a>Egyéni szerepkörök mentése
 
-1. Az egyéni szerepkörök listázásához használja az az [role definition List listát](https://docs.microsoft.com/cli/azure/role/definition#az-role-definition-list) . További információ: [Azure-beli egyéni szerepkörök létrehozása vagy frissítése az Azure CLI használatával](custom-roles-cli.md).
+1. Az egyéni szerepkörök listázásához használja az az [role definition List listát](/cli/azure/role/definition#az_role_definition_list) . További információ: [Azure-beli egyéni szerepkörök létrehozása vagy frissítése az Azure CLI használatával](custom-roles-cli.md).
 
     ```azurecli
     az role definition list --custom-role-only true --output json --query '[].{roleName:roleName, roleType:roleType}'
@@ -193,7 +188,7 @@ A felügyelt identitások nem frissülnek, ha egy előfizetést egy másik köny
 
 1. Tekintse át a [felügyelt identitásokat támogató Azure-szolgáltatások listáját](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md) , és jegyezze fel, hogy hol lehet felügyelt identitásokat használni.
 
-1. Az [az ad SP List](/cli/azure/identity?view=azure-cli-latest#az-identity-list) használatával listázhatja a rendszer által hozzárendelt és a felhasználó által hozzárendelt felügyelt identitásokat.
+1. Az [az ad SP List](/cli/azure/ad/sp#az_ad_sp_list) használatával listázhatja a rendszer által hozzárendelt és a felhasználó által hozzárendelt felügyelt identitásokat.
 
     ```azurecli
     az ad sp list --all --filter "servicePrincipalType eq 'ManagedIdentity'"
@@ -207,7 +202,7 @@ A felügyelt identitások nem frissülnek, ha egy előfizetést egy másik köny
     | `alternativeNames` a tulajdonság nem tartalmazza `isExplicit` | Rendszer által hozzárendelt |
     | `alternativeNames` tulajdonság tartalma `isExplicit=True` | Felhasználó által hozzárendelt |
 
-    Az [az Identity List](https://docs.microsoft.com/cli/azure/identity#az-identity-list) használatával is egyszerűen listázhatja a felhasználó által hozzárendelt felügyelt identitásokat. További információ: [felhasználó által hozzárendelt felügyelt identitás létrehozása, listázása és törlése az Azure CLI használatával](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md).
+    Az [az Identity List](/cli/azure/identity#az_identity_list) használatával is egyszerűen listázhatja a felhasználó által hozzárendelt felügyelt identitásokat. További információ: [felhasználó által hozzárendelt felügyelt identitás létrehozása, listázása és törlése az Azure CLI használatával](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md).
 
     ```azurecli
     az identity list
@@ -224,7 +219,7 @@ Kulcstartó létrehozásakor a rendszer automatikusan az alapértelmezett Azure 
 > [!WARNING]
 > Ha olyan erőforráshoz (például egy Storage-fiókhoz vagy SQL-adatbázishoz) használ titkosítást, amely **nem** ugyanahhoz az előfizetéshez tartozik, mint az átvitt egyik kulcstartó, akkor az egy helyreállíthatatlan forgatókönyvhöz vezethet. Ha ez a helyzet áll fenn, hajtson végre egy másik kulcstartó használatát, vagy átmenetileg tiltsa le az ügyfél által felügyelt kulcsokat a nem helyreállítható forgatókönyv elkerüléséhez.
 
-- Ha rendelkezik kulcstartóval, az az Key [Vault show](https://docs.microsoft.com/cli/azure/keyvault#az-keyvault-show) paranccsal listázhatja a hozzáférési házirendeket. További információ: [Key Vault hozzáférési szabályzatok társítása](../key-vault/general/assign-access-policy-cli.md).
+- Ha rendelkezik kulcstartóval, az az Key [Vault show](/cli/azure/keyvault#az_keyvault_show) paranccsal listázhatja a hozzáférési házirendeket. További információ: [Key Vault hozzáférési szabályzatok társítása](../key-vault/general/assign-access-policy-cli.md).
 
     ```azurecli
     az keyvault show --name MyKeyVault
@@ -232,7 +227,7 @@ Kulcstartó létrehozásakor a rendszer automatikusan az alapértelmezett Azure 
 
 ### <a name="list-azure-sql-databases-with-azure-ad-authentication"></a>Azure SQL Database-adatbázisok listázása az Azure AD-hitelesítéssel
 
-- Az [az SQL Server ad-admin List](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-list) és az az [Graph](https://docs.microsoft.com/cli/azure/ext/resource-graph/graph) bővítmény használatával ellenőrizze, hogy az Azure SQL Database-adatbázisok engedélyezve vannak-e az Azure ad-hitelesítés integrálásával. További információ: [Azure Active Directory hitelesítés konfigurálása és kezelése SQL](../azure-sql/database/authentication-aad-configure.md)-sel.
+- Az [az SQL Server ad-admin List](/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_list) és az az [Graph](/cli/azure/ext/resource-graph/graph) bővítmény használatával ellenőrizze, hogy az Azure SQL Database-adatbázisok engedélyezve vannak-e az Azure ad-hitelesítés integrálásával. További információ: [Azure Active Directory hitelesítés konfigurálása és kezelése SQL](../azure-sql/database/authentication-aad-configure.md)-sel.
 
     ```azurecli
     az sql server ad-admin list --ids $(az graph query -q 'resources | where type == "microsoft.sql/servers" | project id' -o tsv | cut -f1)
@@ -248,13 +243,13 @@ Kulcstartó létrehozásakor a rendszer automatikusan az alapértelmezett Azure 
 
 ### <a name="list-other-known-resources"></a>Más ismert erőforrások listázása
 
-1. Az az [Account show](https://docs.microsoft.com/cli/azure/account#az-account-show) paranccsal kérheti le az előfizetés-azonosítóját.
+1. Az az [Account show](/cli/azure/account#az_account_show) paranccsal kérheti le az előfizetés-azonosítóját.
 
     ```azurecli
     subscriptionId=$(az account show --query id | sed -e 's/^"//' -e 's/"$//')
     ```
 
-1. Az az [Graph](https://docs.microsoft.com/cli/azure/ext/resource-graph/graph) bővítmény használatával listázhat más Azure-erőforrásokat az ismert Azure ad-címtár függőségeivel.
+1. Az az [Graph](/cli/azure/ext/resource-graph/graph) bővítmény használatával listázhat más Azure-erőforrásokat az ismert Azure ad-címtár függőségeivel.
 
     ```azurecli
     az graph query -q \
@@ -286,13 +281,13 @@ Ebben a lépésben átviszi az előfizetést a forrás könyvtárából a cél k
 
     Csak az adatátviteli kérést elfogadó új fiókban lévő felhasználó férhet hozzá az erőforrások kezeléséhez.
 
-1. Szerezze be az előfizetések listáját az az [Account List](https://docs.microsoft.com/cli/azure/account#az-account-list) paranccsal.
+1. Szerezze be az előfizetések listáját az az [Account List](/cli/azure/account#az_account_list) paranccsal.
 
     ```azurecli
     az account list --output table
     ```
 
-1. Az az [Account set](https://docs.microsoft.com/cli/azure/account#az-account-set) paranccsal állíthatja be a használni kívánt aktív előfizetést.
+1. Az az [Account set](/cli/azure/account#az_account_set) paranccsal állíthatja be a használni kívánt aktív előfizetést.
 
     ```azurecli
     az account set --subscription "Contoso"
@@ -300,7 +295,7 @@ Ebben a lépésben átviszi az előfizetést a forrás könyvtárából a cél k
 
 ### <a name="create-custom-roles"></a>Egyéni szerepkörök létrehozása
         
-- Az [az role definition Create](https://docs.microsoft.com/cli/azure/role/definition#az-role-definition-create) paranccsal hozzon létre minden egyéni szerepkört a korábban létrehozott fájlokból. További információ: [Azure-beli egyéni szerepkörök létrehozása vagy frissítése az Azure CLI használatával](custom-roles-cli.md).
+- Az [az role definition Create](/cli/azure/role/definition#az_role_definition_create) paranccsal hozzon létre minden egyéni szerepkört a korábban létrehozott fájlokból. További információ: [Azure-beli egyéni szerepkörök létrehozása vagy frissítése az Azure CLI használatával](custom-roles-cli.md).
 
     ```azurecli
     az role definition create --role-definition <role_definition>
@@ -308,7 +303,7 @@ Ebben a lépésben átviszi az előfizetést a forrás könyvtárából a cél k
 
 ### <a name="create-role-assignments"></a>Szerepkör-hozzárendelések létrehozása
 
-- Az [az role hozzárendelés Create](https://docs.microsoft.com/cli/azure/role/assignment#az-role-assignment-create) paranccsal hozhatja létre a felhasználókhoz, csoportokhoz és egyszerű szolgáltatásokhoz tartozó szerepkör-hozzárendeléseket. További információ: szerepkör- [hozzárendelések hozzáadása vagy eltávolítása az Azure RBAC és az Azure CLI használatával](role-assignments-cli.md).
+- Az [az role hozzárendelés Create](/cli/azure/role/assignment#az_role_assignment_create) paranccsal hozhatja létre a felhasználókhoz, csoportokhoz és egyszerű szolgáltatásokhoz tartozó szerepkör-hozzárendeléseket. További információ: szerepkör- [hozzárendelések hozzáadása vagy eltávolítása az Azure RBAC és az Azure CLI használatával](role-assignments-cli.md).
 
     ```azurecli
     az role assignment create --role <role_name_or_id> --assignee <assignee> --resource-group <resource_group>
@@ -324,7 +319,7 @@ Ebben a lépésben átviszi az előfizetést a forrás könyvtárából a cél k
     | Virtuálisgép-méretezési csoportok | [Felügyelt identitások konfigurálása Azure-erőforrásokhoz virtuálisgép-méretezési csoportokban az Azure CLI használatával](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vmss.md#system-assigned-managed-identity) |
     | Egyéb szolgáltatások | [Az Azure-erőforrások felügyelt identitásait támogató szolgáltatások](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md) |
 
-1. A rendszer által hozzárendelt felügyelt identitásokhoz tartozó szerepkör-hozzárendelések létrehozásához használja az [az role hozzárendelés Create](https://docs.microsoft.com/cli/azure/role/assignment#az-role-assignment-create) paranccsal. További információ: [felügyelt identitás-hozzáférés társítása az erőforrásokhoz az Azure CLI használatával](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md).
+1. A rendszer által hozzárendelt felügyelt identitásokhoz tartozó szerepkör-hozzárendelések létrehozásához használja az [az role hozzárendelés Create](/cli/azure/role/assignment#az_role_assignment_create) paranccsal. További információ: [felügyelt identitás-hozzáférés társítása az erőforrásokhoz az Azure CLI használatával](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md).
 
     ```azurecli
     az role assignment create --assignee <objectid> --role '<role_name_or_id>' --scope <scope>
@@ -340,7 +335,7 @@ Ebben a lépésben átviszi az előfizetést a forrás könyvtárából a cél k
     | Virtuálisgép-méretezési csoportok | [Felügyelt identitások konfigurálása Azure-erőforrásokhoz virtuálisgép-méretezési csoportokban az Azure CLI használatával](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vmss.md#user-assigned-managed-identity) |
     | Egyéb szolgáltatások | [Az Azure-erőforrások felügyelt identitásait támogató szolgáltatások](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)<br/>[Felhasználó által hozzárendelt felügyelt identitás létrehozása, listázása vagy törlése az Azure CLI használatával](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md) |
 
-1. A felhasználó által hozzárendelt felügyelt identitásokhoz tartozó szerepkör-hozzárendelések létrehozásához használja az [az role hozzárendelés Create](https://docs.microsoft.com/cli/azure/role/assignment#az-role-assignment-create) paranccsal. További információ: [felügyelt identitás-hozzáférés társítása az erőforrásokhoz az Azure CLI használatával](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md).
+1. A felhasználó által hozzárendelt felügyelt identitásokhoz tartozó szerepkör-hozzárendelések létrehozásához használja az [az role hozzárendelés Create](/cli/azure/role/assignment#az_role_assignment_create) paranccsal. További információ: [felügyelt identitás-hozzáférés társítása az erőforrásokhoz az Azure CLI használatával](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md).
 
     ```azurecli
     az role assignment create --assignee <objectid> --role '<role_name_or_id>' --scope <scope>

@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 106600b608586175cbab1098cf0eb7ac6fad94fa
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: b994e8ce34319da4827d389b49e23ed6e5bcde95
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91540302"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653757"
 ---
 # <a name="diagnose-and-troubleshoot-an-azure-time-series-insights-gen2-environment"></a>Azure Time Series Insights Gen2-környezet diagnosztizálása és megoldása
 
@@ -43,17 +43,17 @@ Számos gyakori oka lehet annak, hogy az adatai nem jelennek meg az [Azure Time 
 
 - Az eseményforrás kulcsa hiányzik egy szükséges engedély.
 
-  * Egy IoT hub esetében meg kell adnia a **Service kapcsolódási** engedéllyel rendelkező kulcsot.
+  - Egy IoT hub esetében meg kell adnia a **Service kapcsolódási** engedéllyel rendelkező kulcsot.
 
     [![Ellenőrizze az IoT hub engedélyeit.](media/preview-troubleshoot/verify-correct-permissions.png)](media/preview-troubleshoot/verify-correct-permissions.png#lightbox)
 
-    * Mind a szabályzatok **iothubowner** , mind a **szolgáltatás** működik, mert a **szolgáltatás csatlakozási** engedéllyel rendelkeznek.
+    - Mind a szabályzatok **iothubowner** , mind a **szolgáltatás** működik, mert a **szolgáltatás csatlakozási** engedéllyel rendelkeznek.
 
-  * Az Event hub esetében meg kell adnia a **figyelés** engedéllyel rendelkező kulcsot.
+  - Az Event hub esetében meg kell adnia a **figyelés** engedéllyel rendelkező kulcsot.
   
     [![Tekintse át az Event hub engedélyeit.](media/preview-troubleshoot/verify-eh-permissions.png)](media/preview-troubleshoot/verify-eh-permissions.png#lightbox)
 
-    * Az **olvasási** és a **kezelési** szabályzat is működik, mert a **figyelés** engedéllyel rendelkezik.
+    - Az **olvasási** és a **kezelési** szabályzat is működik, mert a **figyelés** engedéllyel rendelkezik.
 
 - A megadott fogyasztói csoport nem kizárólag Time Series Insights.
 
@@ -77,9 +77,9 @@ Előfordulhat, hogy az idősorozat-azonosító nélkül küld adatokat.
 
 - Lehetséges, hogy az eseményforrás kulcsa újra lett létrehozva, és a Gen2-környezetnek szüksége van az új eseményforrás-kulcsra.
 
-Ez a probléma akkor fordul elő, ha az eseményforrás létrehozásakor megadott kulcs már nem érvényes. Látni fogja a telemetria a központban, de nem érkezett bejövő üzenetek a Time Series Insightsban. Ha nem biztos abban, hogy a kulcsot újragenerálta-e, kereshet a Event Hubs "tevékenység naplójában a" névtér-engedélyezési szabályok létrehozása vagy frissítése "vagy a" IotHub-erőforrás létrehozása vagy frissítése "kifejezésre a IoT hub számára. 
+Ez a probléma akkor fordul elő, ha az eseményforrás létrehozásakor megadott kulcs már nem érvényes. Látni fogja a telemetria a központban, de nem érkezett bejövő üzenetek a Time Series Insightsban. Ha nem biztos abban, hogy a kulcsot újragenerálta-e, megkeresheti a Event Hubs "tevékenység naplójában a" névtér-engedélyezési szabályok létrehozása vagy frissítése "vagy a" IotHub-erőforrás létrehozása vagy frissítése "kifejezést a IoT hub számára.
 
-Ha az új kulccsal szeretné frissíteni a Time Series Insights Gen2-környezetét, nyissa meg a hub-erőforrást a Azure Portal, és másolja az új kulcsot. Navigáljon az ÁME-erőforráshoz, és kattintson az események forrásai elemre. 
+Ha az új kulccsal szeretné frissíteni a Time Series Insights Gen2-környezetét, nyissa meg a hub-erőforrást a Azure Portal, és másolja az új kulcsot. Navigáljon az ÁME-erőforráshoz, és kattintson az események forrásai elemre.
 
    [![Képernyőfelvétel: a T S I erőforrás az eseményforrás menüpont kinevezett eleme.](media/preview-troubleshoot/update-hub-key-step-1.png)](media/preview-troubleshoot/update-hub-key-step-1.png#lightbox)
 
@@ -91,14 +91,14 @@ Válassza ki azokat az eseményforrás (ka) t, amelyekről leállt a betöltés,
 
 Győződjön meg arról, hogy a név és az érték megfelel a következő szabályoknak:
 
-* Az időbélyeg-tulajdonság neve megkülönbözteti a kis-és nagybetűket.
-* Az eseményforrás által a JSON-karakterláncként kapott timestamp tulajdonság értéke formátuma `yyyy-MM-ddTHH:mm:ss.FFFFFFFK` . Ilyen karakterlánc például: `"2008-04-12T12:53Z"` .
+- Az időbélyeg-tulajdonság neve megkülönbözteti a kis-és nagybetűket.
+- Az eseményforrás által a JSON-karakterláncként kapott timestamp tulajdonság értéke formátuma `yyyy-MM-ddTHH:mm:ss.FFFFFFFK` . Ilyen karakterlánc például: `"2008-04-12T12:53Z"` .
 
 A legegyszerűbb módszer annak biztosítására, hogy az időbélyeg-tulajdonság neve rögzítve legyen, és megfelelően működjön a Time Series Insights Gen2 Explorer használata. A Time Series Insights Gen2 Explorerben a diagramon kiválaszthat egy időszakot, miután megadták az időbélyeg-tulajdonság nevét. Kattintson a jobb gombbal a kijelölésre, és válassza az **események feltárása** lehetőséget. Az első oszlop fejléce az időbélyeg-tulajdonság neve. `($ts)`A szó mellett kell lennie a következő `Timestamp` helyett:
 
-* `(abc)`, amely azt jelzi, hogy Time Series Insights beolvassa az adatértékeket karakterláncként.
-* A **Naptár** ikon, amely azt jelzi, hogy Time Series Insights beolvassa az adatértéket datetime formátumban.
-* `#`, amely azt jelzi, hogy Time Series Insights egész számként olvassa az adatértékeket.
+- `(abc)`, amely azt jelzi, hogy Time Series Insights beolvassa az adatértékeket karakterláncként.
+- A **Naptár** ikon, amely azt jelzi, hogy Time Series Insights beolvassa az adatértéket datetime formátumban.
+- `#`, amely azt jelzi, hogy Time Series Insights egész számként olvassa az adatértékeket.
 
 Ha az időbélyegző tulajdonság nincs explicit módon megadva, az esemény IoT hub-vagy Event hub-várólistán lévő az alapértelmezett időbélyegző lesz használva.
 
@@ -131,9 +131,9 @@ Ez a probléma akkor fordulhat elő, ha nem a Power BI-összekötő legújabb ve
 
 [![A képernyőfelvételen a nem lehet csatlakozni párbeszédpanel jelenik meg.](media/preview-troubleshoot/power-bi-unable-to-connect.png)](media/preview-troubleshoot/power-bi-unable-to-connect.png#lightbox)
 
-* Ellenőrizze a Power BI Desktop verzióját, és győződjön meg arról, hogy a júliusi 2020-es verziót használja. Ha nem, frissítse a Power BI Desktop, majd futtassa újra az összekötőt. 
+- Ellenőrizze a Power BI Desktop verzióját, és győződjön meg arról, hogy a júliusi 2020-es verziót használja. Ha nem, frissítse a Power BI Desktop, majd futtassa újra az összekötőt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Olvassa el, hogyan [dolgozhat a Time Series-modellekkel](/azure/time-series-insights/time-series-insights-overview).
 

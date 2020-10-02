@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7509a17127f04220a8e8450a81627354b28bdacd
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: bcee951dc85d9c317bad481ebdb91ff6c761371c
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89006465"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653672"
 ---
 # <a name="tutorial-viewing-a-remotely-rendered-model"></a>Oktatóanyag: távolról renderelt modell megtekintése
 
@@ -76,10 +76,10 @@ Módosítania kell a `Packages/manifest.json` Unity Project mappában találhat�
 
 Miután módosította és mentette a jegyzékfájlt, az Unity automatikusan frissülni fog. Erősítse meg a csomagok betöltését a *projekt* ablakban:
 
-:::image type="content" source="./media/confirm-packages.png" alt-text="csomagok importálásának megerősítése":::
+:::image type="content" source="./media/confirm-packages.png" alt-text="Új Unity-projekt":::
 
 Ha a csomagok nem töltődnek be, ellenőrizze az Unity-konzolt a hibákért. Ha nem rendelkezik hibákkal, és még mindig nem lát csomagokat a **csomagok** mappában, ellenőrizze a csomag láthatóságának váltógomb. \
-![Unity kamera tulajdonságai](./media/unity-package-visibility.png)
+![Képernyőfelvétel a csomag láthatóságának váltógomb mutató nyilat ábrázoló nyílra.](./media/unity-package-visibility.png)
 
 ## <a name="ensure-you-have-the-latest-version-of-the-package"></a>Győződjön meg arról, hogy a csomag legújabb verziója van
 
@@ -120,7 +120,7 @@ A következő lépésekkel biztosíthatja, hogy a projekt a távoli renderelési
 
 1. Válasszon **grafikát** a bal oldali lista menüből
 1. Módosítsa a **szkriptek renderelési folyamatának** beállítását a *HybridRenderingPipeline*. \
-    ![a Project Graphics beállításainak módosítása](./media/settings-graphics-render-pipeline.png)\
+    ![Képernyőkép, amely arra utal, hogy hol változtatja meg a szkriptek renderelési folyamatának beállításait a HybridRenderingPipeline értékre.](./media/settings-graphics-render-pipeline.png)\
     Előfordulhat, hogy a felhasználói felület nem tölti fel a csomagok közül a rendelkezésre álló folyamat-típusok listáját. Ha ez történik, a *HybridRenderingPipeline* eszközt kézzel kell húzni a mezőre: \
     ![a Project Graphics beállításainak módosítása](./media/hybrid-rendering-pipeline.png)
 
@@ -597,7 +597,7 @@ Ahhoz, hogy a **NotAuthorized** -ről a további **munkamenetre**lehessen jutni,
 1. Húzza az összetevőt a saját eseményre, és hivatkozzon magára. \
 ![Hitelesítés mellőzése](./media/bypass-authorization-add-event.png)\
 1. A legördülő listából válassza a **RemoteRenderingCoordinator-> BypassAuthorization**. \
-![Hitelesítés mellőzése](./media/bypass-authorization-event.png)
+![A kiválasztott RemoteRenderingCoordinator. BypassAuthorization beállítást megjelenítő képernyőkép.](./media/bypass-authorization-event.png)
 
 ## <a name="create-or-join-a-remote-session"></a>Távoli munkamenet létrehozása vagy csatlakoztatása
 
@@ -724,7 +724,7 @@ private void LateUpdate()
 
 A szükséges alapszintű létrehozás után készen áll a modell betöltésére a távoli munkamenetbe, és a keretek fogadásának megkezdése.
 
-![ARR verem 4](./media/remote-render-stack-4.png)
+![A modell betöltésének és megtekintésének előkészítési folyamatát bemutató diagram.](./media/remote-render-stack-4.png)
 
 A **LoadModel** metódus úgy van kialakítva, hogy elfogadja a modell elérési útját, a folyamatjelzőt és a szülő-átalakítást. Ezek az argumentumok a modellnek a távoli munkamenetbe való betöltéséhez használhatók, frissíti a felhasználót a betöltési folyamaton, majd a fölérendelt átalakító alapján a távolról megjelenített modellt.
 

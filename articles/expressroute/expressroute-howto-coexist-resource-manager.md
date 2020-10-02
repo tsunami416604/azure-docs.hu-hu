@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 12/11/2019
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: cc53aa9cab765f16fdf7a517793f8f36ca30daac
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: edbd36ad3444795ade4b3f8d29d8473b21a2fda8
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89396182"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651513"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>A ExpressRoute és a helyek közötti egyidejű kapcsolatok konfigurálása a PowerShell használatával
 > [!div class="op_single_selector"]
@@ -52,7 +52,7 @@ Konfigurálhat egy helyek közötti VPN-kapcsolatot tartalékként az ExpressRou
 > 
 > 
 
-![Egyidejű jelenlét](media/expressroute-howto-coexist-resource-manager/scenario1.jpg)
+![Diagram, amely a helyek közötti VPN-kapcsolat biztonsági mentését jeleníti meg a ExpressRoute.](media/expressroute-howto-coexist-resource-manager/scenario1.jpg)
 
 ### <a name="configure-a-site-to-site-vpn-to-connect-to-sites-not-connected-through-expressroute"></a>Helyek közötti VPN konfigurálása az ExpressRoute használatával nem csatlakozó helyekhez
 A hálózatát konfigurálhatja úgy is, hogy egyes helyek közvetlenül az Azure-hoz kapcsolódnak helyek közötti VPN-en keresztül, míg más helyek az ExpressRoute használatával kapcsolódnak. 

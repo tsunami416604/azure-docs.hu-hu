@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8a70097cbae3bc5ebf48c0358faa32aea0a6be5
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: de383bfa9f943cd5644d35ed83db8a80ec8017bd
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91370177"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653213"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Útmutató: az Azure AD JOIN megvalósításának megtervezése
 
@@ -187,6 +187,7 @@ Az Azure AD-hez csatlakoztatott eszközökhöz való távoli asztali kapcsolatho
 A Windows 10 2004 frissítésének indítása után a felhasználók a Távoli asztalt is használhatják egy Azure AD-beli regisztrált Windows 10-es eszközről egy Azure AD-hez csatlakoztatott eszközre. 
 
 ## <a name="understand-your-provisioning-options"></a>A kiépítési lehetőségek megismerése
+**Megjegyzés**: az Azure ad-hez csatlakoztatott eszközök nem telepíthetők rendszer-előkészítő eszközzel (Sysprep) vagy hasonló képalkotási eszközökkel
 
 Az Azure AD JOIN a következő módszerekkel építhető ki:
 

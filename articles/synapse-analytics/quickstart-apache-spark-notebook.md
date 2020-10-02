@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: quickstart
 ms.date: 04/15/2020
-ms.openlocfilehash: aca58328ada4f01072cf3779735bcd5cb518ef0a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: cf899962f6e62b0943f48494bf5c3fe27a6327a9
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91260767"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651717"
 ---
 # <a name="quickstart-create-an-apache-spark-pool-in-azure-synapse-analytics-using-web-tools"></a>Rövid útmutató: Apache Spark-készlet létrehozása az Azure szinapszis Analyticsben webes eszközök használatával
 
@@ -85,7 +85,7 @@ A notebook egy interaktív környezet, amely különböző programozási nyelvek
 
     ![A kimenet Storage Explorer-nézete](./media/quickstart-apache-spark-notebook/spark-get-started-default-storage.png "A kimenet Storage Explorer-nézete")
 
-    ![A kimenet Storage Explorer-nézete](./media/quickstart-apache-spark-notebook/spark-get-started-default-storage2.png "A kimenet Storage Explorer-nézete")
+    ![Képernyőkép, amely kiemeli az alapértelmezett > demodata > demo_df elérési utat.](./media/quickstart-apache-spark-notebook/spark-get-started-default-storage2.png "A kimenet Storage Explorer-nézete")
 
 ## <a name="run-spark-sql-statements"></a>Spark SQL-utasítások futtatása
 

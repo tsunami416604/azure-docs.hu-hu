@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/22/2020
+ms.date: 09/21/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 59e811b7813ef94682896e0f95e971ca0094ef65
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 8f3fd462a52b035cd5b5447560e5472b41f237fa
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88119640"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653230"
 ---
 # <a name="microsoft-identity-platform-userinfo-endpoint"></a>Microsoft Identity platform UserInfo-végpont
 
@@ -28,7 +28,7 @@ Az UserInfo végpont az [OpenID Connect standard](https://openid.net/specs/openi
 
 A UserInfo végpontot programozott módon derítheti fel az OpenID Connect Discovery-dokumentum használatával `https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration` . Ez a mező szerepel a `userinfo_endpoint` mezőben, és ez a minta használható a felhők között, hogy a jobb oldali végpontra mutasson.  Nem javasoljuk, hogy a UserInfo-végpontot az alkalmazásban használja – a OIDC-felderítési dokumentum használatával megkeresheti a végpontot futásidőben.
 
-Az OpenID Connect specifikációjának részeként a UserInfo-végpontot gyakran automatikusan meghívja a [OIDC-kompatibilis kódtárak](https://openid.net/developers/certified/) a felhasználó adatainak lekéréséhez.  Az ilyen végpontok üzemeltetése nélkül a Microsoft Identity platform nem lenne szabványoknak megfelelő, és egyes könyvtárak sikertelenek lesznek.  A [OIDC standardban azonosított jogcímek listájáról](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims) a jogcímek, a tulajdonosi jogcímek és az e-mailek, ha elérhetők, és a hozzájárulása is elő van állítva.  
+Az OpenID Connect specifikációjának részeként a UserInfo-végpontot gyakran automatikusan meghívja a [OIDC-kompatibilis kódtárak](https://openid.net/developers/certified/)  a felhasználó adatainak lekéréséhez.  Az ilyen végpontok üzemeltetése nélkül a Microsoft Identity platform nem lenne szabványoknak megfelelő, és egyes könyvtárak sikertelenek lesznek.  A [OIDC standardban azonosított jogcímek listájáról](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims) a jogcímek, a tulajdonosi jogcímek és az e-mailek, ha elérhetők, és a hozzájárulása is elő van állítva.  
 
 ## <a name="consider-use-an-id-token-instead"></a>Megfontolandó: azonosító jogkivonat használata
 
@@ -42,7 +42,7 @@ A UserInfo egy standard OAuth-tulajdonosi jogkivonat API, mint bármely más Mic
 
 ### <a name="permissions"></a>Engedélyek
 
-A UserInfo API meghívásához használja az alábbi [OIDC-engedélyeket](v2-permissions-and-consent.md#openid-connect-scopes) . `openid`kötelező, és a `profile` és a `email` hatókörök biztosítják, hogy a válaszban további információk is elérhetők legyenek.
+A UserInfo API meghívásához használja az alábbi [OIDC-engedélyeket](v2-permissions-and-consent.md#openid-connect-scopes) . `openid` kötelező, és a `profile` és a `email` hatókörök biztosítják, hogy a válaszban további információk is elérhetők legyenek.
 
 |Engedély típusa      | Engedélyek    |
 |:--------------------|:---------------------------------------------------------|
@@ -81,7 +81,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6Il…
 }
 ```
 
-Az itt felsorolt jogcímek, például `sub` ugyanazok a jogcímek, amelyeket az alkalmazás az alkalmazás számára kiállított [azonosító jogkivonatban](id-tokens.md) láthat.  
+Az itt felsorolt jogcímek tartalmazzák az összes olyan jogcímet, amelyet az UserInfo-végpont vissza tud adni.  Ezek ugyanazok az értékek, amelyeket az alkalmazás az alkalmazás számára kiállított [azonosító jogkivonatban](id-tokens.md) láthat.  
 
 ## <a name="notes-and-caveats-on-the-userinfo-endpoint"></a>Megjegyzések és kikötések a UserInfo-végponton
 

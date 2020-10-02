@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 8209f5b7fc02f59c33ad0a7b58ec6305d6eecf0c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8d727bc8bdc8f015504baa57f9596b3bacac9712
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320081"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651633"
 ---
 # <a name="troubleshoot-storage-resource-deletion-errors"></a>A tárolási erőforrások törlési hibáinak elhárítása
 
@@ -95,9 +95,9 @@ Ha a VHD adatlemez, válassza le a virtuális MEREVLEMEZt a virtuális gépről 
 7. Válassza a **Szerkesztés** lehetőséget a **lemezek** panel tetején.
 8. Kattintson a törölni kívánt adatlemez **leválasztási ikonja** elemre.
 
-     ![Képernyőkép a portálról, amelyen a "blob metadata" panel nyílik meg.](./media/troubleshoot-vhds/utd-vm-disks-edit.png)
+     ![Képernyőkép a portálról, amelyen a "blob-metaadatok" panel nyílik meg, és kiemeli a törlendő adatlemez leválasztási ikonját.](./media/troubleshoot-vhds/utd-vm-disks-edit.png)
 
-9. Kattintson a **Mentés** gombra. A lemez most már le van választva a virtuális gépről, és a virtuális merevlemez már nincs bérletben. A bérlet felszabadítása néhány percet is igénybe vehet. Annak ellenőrzéséhez, hogy a bérlet megjelent-e, keresse meg a blob helyét, és a **blob tulajdonságai** ablaktáblán a **címbérlet állapota** értékének **zárolása** vagy **elérhetőnek**kell lennie.
+9. Válassza a **Mentés** lehetőséget. A lemez most már le van választva a virtuális gépről, és a virtuális merevlemez már nincs bérletben. A bérlet felszabadítása néhány percet is igénybe vehet. Annak ellenőrzéséhez, hogy a bérlet megjelent-e, keresse meg a blob helyét, és a **blob tulajdonságai** ablaktáblán a **címbérlet állapota** értékének **zárolása** vagy **elérhetőnek**kell lennie.
 
 [Storage deletion errors in Resource Manager deployment]: #storage-delete-errors-in-rm
 

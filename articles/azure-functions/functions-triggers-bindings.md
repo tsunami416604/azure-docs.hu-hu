@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: ddcf6758c8c648678c69070fa5b65ae6c4947018
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: e00fd3d1dac0a18ac7f7377e08ae8d20ae132c56
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252691"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652617"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Functions-eseményindítók és -kötések – fogalmak
 
@@ -33,7 +33,7 @@ Tekintse át az alábbi példákat a különböző függvények megvalósítás�
 |A Event Grid egy rendszerképet olvas be a Blob Storageról, és a Cosmos DB dokumentumból küld e-mailt. | Event Grid | Blob Storage és Cosmos DB | SendGrid |
 | Egy webhook, amely Microsoft Grapht használ az Excel-lapok frissítéséhez. | HTTP | *Nincs* | Microsoft Graph |
 
-<sup>\*</sup>Különböző várólistákat jelöl
+<sup>\*</sup> Különböző várólistákat jelöl
 
 Ezek a példák nem teljes körűek, de az eseményindítók és kötések együttes használatának szemléltetésére szolgálnak.
 
@@ -67,11 +67,15 @@ A és a további beállításai `dataType` `stream` `string` .
 
 Minden eseményindító és kötés rendelkezik egy `direction` tulajdonsággal a (z) [function.js](./functions-reference.md) fájlban:
 
-- Az eseményindítók esetében az irány mindig`in`
-- A bemeneti és kimeneti kötések használata `in` és`out`
+- Az eseményindítók esetében az irány mindig `in`
+- A bemeneti és kimeneti kötések használata `in` és `out`
 - Egyes kötések speciális irányt támogatnak `inout` . A használata esetén `inout` csak a **speciális szerkesztő** érhető el a portál **integrálás** lapján.
 
 Ha az [attribútumokat egy osztály-függvénytárban](functions-dotnet-class-library.md) konfigurálja az eseményindítók és kötések konfigurálásához, az irány egy attribútum konstruktorában van megadva, vagy a paraméter típusa alapján következtethető ki.
+
+## <a name="add-bindings-to-a-function"></a>Kötések hozzáadása egy függvényhez
+
+A függvényt a bemeneti vagy kimeneti kötések használatával más szolgáltatásokhoz is összekapcsolhatjuk. Adja hozzá a kötést úgy, hogy hozzáadja a függvényhez tartozó konkrét definíciókat. További információ: [kötések hozzáadása meglévő függvényhez Azure functions](add-bindings-existing-function.md).  
 
 ## <a name="supported-bindings"></a>Támogatott kötések
 
@@ -79,7 +83,13 @@ Ha az [attribútumokat egy osztály-függvénytárban](functions-dotnet-class-li
 
 További információ arról, hogy mely kötések érhetők el előzetes verzióban, vagy hogy a rendszer az éles használatra jóváhagyja a [támogatott nyelveket](supported-languages.md).
 
-## <a name="resources"></a>További források
+## <a name="bindings-code-examples"></a>Példák a kötések kódjára
+
+A következő táblázat példákat mutat be bizonyos kötési típusokra, amelyek bemutatják, hogyan használhatók a függvények kötései. Először válassza ki a projektnek megfelelő nyelv fület. 
+
+[!INCLUDE [functions-bindings-code-example-chooser](../../includes/functions-bindings-code-example-chooser.md)]
+
+## <a name="resources"></a>Források
 - [Kötési kifejezések és minták](./functions-bindings-expressions-patterns.md)
 - [Az Azure Function Return értékének használata](./functions-bindings-return-value.md)
 - [Kötési kifejezés regisztrálása](./functions-bindings-register.md)

@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 2548f002b2006b5d241c323ae880704bbe95301e
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 6ab532e3d824aa857a35bf2898aea2efba28df71
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649924"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653026"
 ---
 # <a name="dav4-and-dasv4-series"></a>Dav4 és Dasv4 sorozat
 
@@ -20,15 +20,13 @@ A Dav4 sorozat és a Dasv4 sorozat új méretek az AMD 2.35 GHz EPYC<sup>TM</sup
 
 ## <a name="dav4-series"></a>Dav4 sorozat
 
-ACU: 230-260
-
-Premium Storage: nem támogatott
-
-Premium Storage gyorsítótárazás: nem támogatott
-
-Élő áttelepítés: támogatott
-
-Memória megőrzésének frissítései: támogatott
+[ACU](acu.md): 230-260<br>
+[Premium Storage](premium-storage-performance.md): nem támogatott<br>
+[Premium Storage gyorsítótárazás](premium-storage-performance.md): nem támogatott<br>
+[Élő áttelepítés](maintenance-and-updates.md): támogatott<br>
+[Memória megőrzésének frissítései](maintenance-and-updates.md): támogatott<br>
+[VM-generáció támogatása](generation-2.md): 1. generáció<br>
+<br>
 
 A Dav4-sorozat méretei a 2.35 GHz-es AMD EPYC<sup>TM</sup> 7452 processzoron alapulnak, amely növelheti a 3.35 GHz-es maximális gyakoriságot. A Dav4-sorozat méretei vCPU, memória és ideiglenes tárterület kombinációját nyújtják a legtöbb éles számítási feladathoz. Az adatlemezes tárolást a virtuális gépektől függetlenül számlázzuk. A prémium SSD használatához használja a Dasv4-méreteket. A Dasv4-méretek díjszabása és számlázási mérőszámai megegyeznek a Dav4 sorozattal.
 
@@ -45,15 +43,13 @@ A Dav4-sorozat méretei a 2.35 GHz-es AMD EPYC<sup>TM</sup> 7452 processzoron al
 
 ## <a name="dasv4-series"></a>Dasv4 sorozat
 
-ACU: 230-260
-
-Premium Storage: támogatott
-
-Premium Storage gyorsítótárazás: támogatott
-
-Élő áttelepítés: támogatott
-
-Memória megőrzésének frissítései: támogatott
+[ACU](acu.md): 230-260<br>
+[Premium Storage](premium-storage-performance.md): támogatott<br>
+[Premium Storage gyorsítótárazás](premium-storage-performance.md): támogatott<br>
+[Élő áttelepítés](maintenance-and-updates.md): támogatott<br>
+[Memória megőrzésének frissítései](maintenance-and-updates.md): támogatott<br>
+[VM-létrehozási támogatás](generation-2.md): 1. és 2. generáció<br>
+<br>
 
 A Dasv4-sorozat méretei a 2.35 GHz-es AMD EPYC<sup>TM</sup> 7452 processzoron alapulnak, amely növelheti a 3.35 GHz-es maximális gyakoriságot, és prémium SSD-t használhat. A Dasv4-sorozat méretei vCPU, memória és ideiglenes tárterület kombinációját nyújtják a legtöbb éles számítási feladathoz.
 
@@ -83,6 +79,6 @@ A Dasv4-sorozat méretei a 2.35 GHz-es AMD EPYC<sup>TM</sup> 7452 processzoron a
 
 További információ a lemezek típusairól: [lemezek típusai](./disks-types.md#ultra-disk)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.

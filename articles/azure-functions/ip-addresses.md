@@ -3,12 +3,12 @@ title: Azure Functions IP-címei
 description: Megtudhatja, hogyan keresheti meg a beérkező és a kimenő IP-címeket a Function apps számára, és hogy mi okoz változást.
 ms.topic: conceptual
 ms.date: 12/03/2018
-ms.openlocfilehash: 4b99855d8cc28a41d9eb91bdcf691747910ed4a1
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 1d2cf34ee4712705eaa1c0da5ad63712f9e649fe
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87874078"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652465"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>Azure Functions IP-címei
 
@@ -51,7 +51,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 ```
 
 > [!NOTE]
-> Ha a használati [csomagon](functions-scale.md#consumption-plan) futó Function alkalmazás skálázható, a kimenő IP-címek új tartománya is hozzárendelhető. A használati terv futtatásakor előfordulhat, hogy a teljes adatközpontot hozzá kell adnia egy engedélyezési listához.
+> Ha a használati [csomagon](functions-scale.md#consumption-plan) vagy a [prémium csomagon](functions-scale.md#premium-plan) futó Function alkalmazás skálázható, a kimenő IP-címek új tartománya is hozzárendelhető. Ha bármelyik csomagon fut, előfordulhat, hogy a teljes adatközpontot hozzá kell adnia egy engedélyezési listához.
 
 ## <a name="data-center-outbound-ip-addresses"></a>Az adatközpont kimenő IP-címei
 
@@ -89,7 +89,7 @@ A bejövő IP-cím a következő **esetekben** változhat:
 - Törölje az utolsó függvény alkalmazást egy erőforráscsoport és egy régió kombinációjában, majd hozza létre újra.
 - Törölje a TLS-kötést, például a [tanúsítvány megújítása](../app-service/configure-ssl-certificate.md#renew-certificate)során.
 
-Ha a Function alkalmazás egy [felhasználási](functions-scale.md#consumption-plan)csomagban fut, akkor a bejövő IP-cím akkor is változhat, ha nem végeztek olyan műveleteket, mint például a [fent felsoroltak](#inbound-ip-address-changes).
+Ha a Function alkalmazás egy használati csomagban [vagy egy](functions-scale.md#consumption-plan) [prémium](functions-scale.md#premium-plan)csomagban fut, akkor a bejövő IP-cím akkor is változhat, ha nem végeztek olyan műveleteket, mint például a [fent felsoroltak](#inbound-ip-address-changes).
 
 ## <a name="outbound-ip-address-changes"></a>Kimenő IP-címek változásai
 
@@ -98,7 +98,7 @@ A Function app számára elérhető kimenő IP-címek készlete a következő es
 * Hajtson végre bármilyen műveletet, amely módosíthatja a bejövő IP-címet.
 * Változtassa meg a App Service csomag díjszabási szintjét. Az alkalmazás által használható összes lehetséges kimenő IP-cím listája a `possibleOutboundIPAddresses` tulajdonságban található. Lásd: [kimenő IP](#find-outbound-ip-addresses)-címek keresése.
 
-Ha a Function alkalmazás egy [felhasználási](functions-scale.md#consumption-plan)csomagban fut, akkor a kimenő IP-cím akkor is változhat, ha nem végeztek olyan műveleteket, mint például a [fent felsoroltak](#inbound-ip-address-changes).
+Ha a Function alkalmazás egy használati [tervben](functions-scale.md#consumption-plan) vagy egy [prémium](functions-scale.md#premium-plan)csomagban fut, a kimenő IP-cím akkor is változhat, ha nem végeztek olyan műveleteket, mint például a [fent felsoroltak](#inbound-ip-address-changes).
 
 A kimenő IP-címek módosításának szándékos kényszerítése:
 

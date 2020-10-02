@@ -3,12 +3,12 @@ title: Gyorsított tantermi tesztkörnyezet telepítési útmutatója Azure Lab 
 description: Ez az útmutató segít a labor-készítőknek az iskolán belüli használatra szolgáló labor-fiók gyors beállításában.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: ad1a679c556316c2d23a713ffa5ac5dfe86cce0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 510aa97a0a47e62f627203495c601bb2538e19ad
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445576"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652210"
 ---
 # <a name="classroom-lab-setup-guide"></a>A tanterem Lab telepítési útmutatója
 
@@ -60,9 +60,6 @@ A labor Services az utólagos elszámolású díjszabási modellt használja, am
 - **Schedule**: az ütemterv lehetővé teszi, hogy automatikusan vezérelje a laborok virtuális gépei indításának és leállításának idejét.
 - **Kvóta**: a kvóta azt határozza meg, hogy a tanulók hány óráig férhetnek hozzá egy virtuális géphez az ütemezett órákon kívül. Ha a kvóta eléri a tanulók általi használatot, a rendszer automatikusan leállítja a virtuális gépet. A tanuló nem tudja újraindítani a virtuális gépet, ha a kvóta megnövekszik.
 - **Automatikus leállítás**: Ha engedélyezve van, az automatikus leállítási beállítás azt eredményezi, hogy a Windows rendszerű virtuális gépek bizonyos időtartam után automatikusan leállnak, miután egy tanuló leválasztott egy RDP protokoll (RDP) munkamenetből. Alapértelmezés szerint ez a beállítás le van tiltva.  
-
-    > [!NOTE]
-    > Ez a beállítás jelenleg csak a Windows esetében létezik.
 
 ### <a name="how-will-students-save-their-work"></a>Hogyan fogja megmenteni a tanulókat a munkájukat?
 
@@ -129,7 +126,7 @@ Miután megértette az osztály laborjának követelményeit, készen áll a be�
     > [!NOTE]
     > Az irányítópulton látható becsült költségek azt a maximális díjat jelentik, amelyet a tanulók a laborban használhatnak. Például nem számítunk fel díjat a tanulók által fel *nem* használt időtartamokra. A becsült költségek *nem* tükrözik a virtuális gép, a megosztott képkatalógus vagy a tesztkörnyezet létrehozója által elindítható használati díjakat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Osztályterem-tesztkörnyezet használatának követése](tutorial-track-usage.md)
   

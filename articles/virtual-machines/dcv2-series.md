@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: jushiman
-ms.openlocfilehash: 41dbb42637db98dcd97e3487f252e88f2ba5f9a3
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: fccdaaab121f315f1cb98b2b6ee3bffcb9ac2b3b
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649890"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653009"
 ---
 # <a name="dcsv2-series"></a>DCsv2 sorozat
 
@@ -21,17 +21,13 @@ A DCsv2 sorozat a nyilvános felhőben feldolgozott adatok és kódok titkosság
 
 Példa a használati esetekre: a bizalmas többrésztvevős adatmegosztás, a csalások észlelése, a pénzmosás elleni védelem, a blockchain, a bizalmas használati elemzés, az intelligencia elemzése és a bizalmas gépi tanulás.
 
-Premium Storage: támogatott *
-
-Premium Storage gyorsítótárazás: támogatott *
-
-Élő áttelepítés: nem támogatott
-
-Memória-megőrzési frissítések: nem támogatott
+[Premium Storage](premium-storage-performance.md): támogatott *<br>
+[Premium Storage gyorsítótárazás](premium-storage-performance.md): támogatott<br>
+[Élő áttelepítés](maintenance-and-updates.md): nem támogatott<br>
+[Memória-megőrzési frissítések](maintenance-and-updates.md): nem támogatott<br>
+[VM-létrehozási támogatás](generation-2.md): 1. és 2. generáció<br>
 
 * A Standard_DC8_v2 kivételével
-
-
 
 | Méret             | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolóteljesítmény: IOPS/MBps (gyorsítótár mérete GiB-ban) | Hálózati adapterek maximális száma/várt hálózati sávszélesség (MBps) | EPC-memória (MiB) |
 |------------------|------|-------------|------------------------|----------------|-------------------------------------------------------------------------|----------------------------------------------|---------------------|
@@ -60,6 +56,6 @@ Memória-megőrzési frissítések: nem támogatott
 
 További információ a lemezek típusairól: [lemezek típusai](./disks-types.md#ultra-disk)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.

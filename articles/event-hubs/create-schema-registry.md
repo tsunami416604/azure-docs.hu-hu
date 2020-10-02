@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan hozhat létre egy séma-beál
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: b977ed8d6b4444daa1e125c61a8d38b2a6512e44
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 90556e0843cda94dc79330321d027f8d28eb7d20
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91566363"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652193"
 ---
 # <a name="create-an-azure-event-hubs-schema-registry-preview"></a>Azure Event Hubs séma-beállításjegyzék létrehozása (előzetes verzió)
 Ez a cikk bemutatja, hogyan hozhat létre sémákkal rendelkező sémákat az Azure Event Hubs által üzemeltetett séma-beállításjegyzékben. Az Azure Event Hubs séma-beállításjegyzékbeli funkciójának áttekintését lásd: [Az Azure Schema Registry in Event Hubs](schema-registry-overview.md).
@@ -17,7 +17,6 @@ Ez a cikk bemutatja, hogyan hozhat létre sémákkal rendelkező sémákat az Az
 > [!NOTE]
 > - A **séma-beállításjegyzék** szolgáltatás jelenleg **előzetes**verzióban érhető el, és éles számítási feladatokhoz nem ajánlott.
 > - A szolgáltatás csak **standard** és **dedikált** szinten érhető el, nem az alapszintű **csomagokban** .
-> - Ez az előzetes verzió jelenleg csak az **USA nyugati középső** régiójában érhető el. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 [Hozzon létre egy Event Hubs névteret](event-hubs-create.md#create-an-event-hubs-namespace). Használhat egy meglévő névteret is. 

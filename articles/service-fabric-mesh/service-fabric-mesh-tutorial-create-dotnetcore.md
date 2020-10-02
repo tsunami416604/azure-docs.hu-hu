@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 09/18/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter, devx-track-csharp
-ms.openlocfilehash: 4a64d1999f13ee09cf92633fd188bfc7ed0e4856
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 6531b8a631c38339733aa5fdad60bb1917fe7d9b
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011209"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653111"
 ---
 # <a name="tutorial-create-debug-deploy-and-upgrade-a-multi-service-service-fabric-mesh-app"></a>Oktatóanyag: Többszolgáltatású Service Fabric Meshben-alkalmazás létrehozása, hibaelhárítása, üzembe helyezése és frissítése
 
@@ -59,7 +59,7 @@ A **Name** (Név) mezőbe írja be a(z) `todolistapp` kifejezést, a **Location*
 
 Ügyeljen rá, hogy bejelölje a **Create directory for solution** (Címtár létrehozása a megoldáshoz) jelölőnégyzetet, majd kattintson az **OK** gombra a Service Fabric mesh-projekt létrehozásához.
 
-![A Visual Studio új Service Fabric mesh-projektjének párbeszédpanele](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-new-project.png)
+![Képernyőkép, amely bemutatja, hogyan lehet létrehozni egy Service Fabric Mesh-projektet.](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-new-project.png)
 
 Ezután megjelenik a **New Service Fabric Service** (Új Service Fabric-szolgáltatás) párbeszédpanel.
 
@@ -73,7 +73,7 @@ A **New Service Fabric Service** (Új Service Fabric-szolgáltatás) párbeszéd
 
 Ezután megjelenik a ASP.NET Core webalkalmazás párbeszédpanel. Válassza a **Web Application** (Webalkalmazás) lehetőséget, majd kattintson az **OK** gombra.
 
-![Visual Studio új ASP.NET Core-alkalmazás](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-new-aspnetcore-app.png)
+![Képernyőfelvétel a webes Appliccation-sablonról.](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-new-aspnetcore-app.png)
 
 Most már rendelkezik egy Service Fabric mesh-alkalmazással. Következő lépésként hozza létre a modellt a feladatlista-adatokhoz.
 

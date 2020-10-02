@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: eebdf053cc3eea1dfc91476bff3817891bec42a3
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 4a22602dd9638b981cfe3d8bae9b5cdaacbf90dc
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88959056"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652040"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Az Azure WebJobs SDK első lépései az eseményalapú háttérfeldolgozáshoz
 
@@ -264,13 +264,13 @@ Ebben a szakaszban helyileg hozza létre és futtatja a projektet, és egy üzen
 
 1. Adja *meg a várólista nevét* a várólista neveként, majd kattintson az **OK gombra**.
 
-   ![Várólista létrehozása](./media/webjobs-sdk-get-started/create-queue.png)
+   ![Képernyőkép, amely megjeleníti a várólista létrehozásának helyét és a "várólista" nevét. ](./media/webjobs-sdk-get-started/create-queue.png)
 
 1. Kattintson a jobb gombbal az új várólista csomópontjára, majd válassza a **várólista megtekintése**lehetőséget.
 
 1. Válassza az **üzenet hozzáadása** ikont.
 
-   ![Várólista létrehozása](./media/webjobs-sdk-get-started/create-queue-message.png)
+   ![Képernyőkép, amely kiemeli az üzenet hozzáadása ikont.](./media/webjobs-sdk-get-started/create-queue-message.png)
 
 1. Az **üzenet hozzáadása** párbeszédpanelen adja meg a következőt: *"Helló világ!" alkalmazás!* az **üzenet szövegeként**, majd kattintson **az OK gombra**. Most már van egy üzenet a várólistában.
 
@@ -327,13 +327,13 @@ Ebben a szakaszban a következő feladatokat végezheti el a Application Insight
 
 1. Adja hozzá a következő bejegyzést a **kapcsolatok karakterláncok** mezőben.
 
-   |Név  |kapcsolatok karakterlánca  |Adatbázis típusa|
+   |Name  |kapcsolatok karakterlánca  |Adatbázis típusa|
    |---------|---------|------|
    |AzureWebJobsStorage | {a korábban átmásolt tárolási kapcsolatok karakterlánca}|Egyéni|
 
 1. Ha az **Alkalmazásbeállítások** mezőhöz nem tartozik Application Insights kialakítási kulcs, adja hozzá a korábban átmásolt eszközt. (A rendszerállapot-kulcs már ott is lehet, attól függően, hogyan hozta létre a App Service alkalmazást.)
 
-   |Név  |Érték  |
+   |Name  |Érték  |
    |---------|---------|
    |APPINSIGHTS_INSTRUMENTATIONKEY | {Instrumentation-kulcs} |
 

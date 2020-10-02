@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 07/11/2019
 ms.author: duau
-ms.openlocfilehash: aef21ecbda26e47dc6ef8a915cbd4403c13430e4
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 731101b1a8236e20a9af07f1bbf5a7b70d53c0ac
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89395230"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653383"
 ---
 # <a name="optimize-expressroute-routing"></a>Az ExpressRoute-útválasztás optimalizálása
 Ha több ExpressRoute-kapcsolatcsoporttal rendelkezik, több útvonalon csatlakozhat a Microsofthoz. Ennek eredményeképpen előfordulhat, hogy az útválasztás nem lesz optimális – azaz a forgalom hosszabb úton jut el a Microsofthoz, illetve a Microsofttól az Ön hálózatába. Minél hosszabb a hálózati útvonal, annál nagyobb a késés. A késés közvetlen hatással van az alkalmazások teljesítményére és a felhasználói élményre. Ez a cikk ezt a problémát mutatja be, és ismerteti, hogyan optimalizálható az útválasztás a standard útválasztási technológiák segítségével.
@@ -27,7 +27,7 @@ Fontos annak biztosítása, hogy a Microsoft vagy a nyilvános hálózat haszná
 
 Vegye figyelembe a következő példát:
 
-![1. ExpressRoute-probléma – az optimálisnál rosszabb útválasztás az ügyféltől a Microsoft felé](./media/expressroute-optimize-routing/expressroute-localPreference.png)
+![Diagram, amely a ExpressRoute 1. probléma – az optimálisnál rosszabb útválasztást jeleníti meg az ügyféltől a Microsoft felé](./media/expressroute-optimize-routing/expressroute-localPreference.png)
 
 A fenti példában a ExpressRoute elérési utak előnyben részesítése a következő módon konfigurálja a helyi beállításokat. 
 

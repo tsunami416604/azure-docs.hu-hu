@@ -7,24 +7,22 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 8c229a72b706333a117645095bd96e44abbdf469
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 1dfd4185f077806d6b84376e786cfe5de1a8ffc3
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89418886"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653439"
 ---
 # <a name="nd-series"></a>ND sorozat
 
 Az ND sorozatú Virtual Machines az AI-hoz készült GPU-család, valamint a Deep learning számítási feladatainak egy új kiegészítése. Kiváló teljesítményt nyújtanak a képzéshez és a következtetésekhez. Az ND-példányokat az [NVIDIA Tesla P40](https://images.nvidia.com/content/pdf/tesla/184427-Tesla-P40-Datasheet-NV-Final-Letter-Web.pdf) GPU-k és az Intel Xeon E5-2690 v4 (Broadwell) processzorok működtetik. Ezek a példányok kiváló teljesítményt biztosítanak az egyszeres pontosságú lebegőpontos műveletekhez, a Microsoft Cognitive Toolkit, TensorFlow, Cafe és más keretrendszereket használó AI-munkaterhelésekhez. Az ND sorozat emellett sokkal nagyobb GPU-memória méretet (24 GB) biztosít, ami lehetővé teszi, hogy a rendszer sokkal nagyobb neurális hálós modellekhez illeszkedjen. Az NC sorozathoz hasonlóan az ND sorozat egy olyan konfigurációt kínál, amely egy másodlagos, kis késleltetésű, nagy átviteli sebességű hálózattal rendelkezik a RDMA-on keresztül, és InfiniBand a kapcsolatot, így nagy léptékű, több GPU-ra kiterjedő képzési feladatokat is futtathat.
 
-Premium Storage: támogatott
-
-Premium Storage gyorsítótárazás: támogatott
-
-Élő áttelepítés: nem támogatott
-
-Memória-megőrzési frissítések: nem támogatott
+[Premium Storage](premium-storage-performance.md): támogatott<br>
+[Premium Storage gyorsítótárazás](premium-storage-performance.md): támogatott<br>
+[Élő áttelepítés](maintenance-and-updates.md): nem támogatott<br>
+[Memória-megőrzési frissítések](maintenance-and-updates.md): nem támogatott<br>
+[VM-létrehozási támogatás](generation-2.md): 1. és 2. generáció<br>
 
 > [!IMPORTANT]
 > Ennél a virtuálisgép-sorozatnál az előfizetéshez tartozó régiónként vCPU (mag) kvóta kezdetben 0 értékre van állítva. [VCPU-kvóta növelésének kérése](../azure-portal/supportability/resource-manager-core-quotas-request.md) a sorozathoz egy [elérhető régióban](https://azure.microsoft.com/regions/services/).

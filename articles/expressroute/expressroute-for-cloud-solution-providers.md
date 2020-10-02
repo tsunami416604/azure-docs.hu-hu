@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: ec3f8f71713abb818f29458748eb0054390f474e
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 17b8fc3824fb1c7e6cfcfc3d4333dc226b51724d
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89396675"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653638"
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>ExpressRoute felhőszolgáltatók (CSP) számára
 A Microsoft hatalmas léptékű szolgáltatásokat kínál a hagyományos viszonteladók és forgalmazók (CSP) számára, hogy gyorsan láthassák el ügyfeleiket új szolgáltatásokat és megoldásokat anélkül, hogy be kellene fektetniük az új szolgáltatások fejlesztésébe. Ahhoz, hogy lehetővé tegye a felhőszolgáltatók (CSP) számára az új szolgáltatások közvetlen felügyeletét, a Microsoft olyan programokat és API-kat biztosít, amelyek segítségével a CSP-k ügyfeleik nevében felügyelhetik a Microsoft Azure-erőforrásokat. Ezeknek az erőforrásoknak az egyike az ExpressRoute. Az ExpressRoute lehetővé teszi, hogy a CSP meglévő ügyfélerőforrásait csatlakoztassa az Azure-szolgáltatásokhoz. A ExpressRoute egy nagy sebességű privát kommunikációs hivatkozás az Azure szolgáltatásaihoz. 
@@ -34,18 +34,18 @@ A Microsoft az API-k segítségével felügyeli az Azure Customer-előfizetések
 Az ügyfelével kötött szerződése határozza meg az előfizetés kezelésének módját. A CSP közvetlenül kezelheti az erőforrások létrehozását és karbantartását, vagy az ügyfél megtarthatja a Microsoft Azure-előfizetés feletti felügyeletet, és maga hozhat létre igény szerinti Azure-erőforrásokat. Ha az ügyfél felügyeli az erőforrások létrehozását a Microsoft Azure-előfizetésében, a következő két modell egyikét fogja használni: "*Kapcsolódás*" modell vagy "*Direct-to*" modell. A modellek leírását a következő szakaszok tartalmazzák.  
 
 ### <a name="connect-through-model"></a>Szolgáltatón keresztüli csatlakozás modell
-![helyettesítő szöveg](./media/expressroute-for-cloud-solution-providers/connect-through.png)  
+![A "összekapcsolás" modellt bemutató diagram.](./media/expressroute-for-cloud-solution-providers/connect-through.png)  
 
 A szolgáltatón keresztüli csatlakozás modellben a CSP közvetlen kapcsolatot hoz létre az Ön adatközpontja és az ügyfél Azure-előfizetése között. A közvetlen kapcsolat ExpressRoute használatával jön létre, és hálózatát összekapcsolja az Azure-ral. Az ügyfél ezután az Ön hálózatához csatlakozik. Ebben a forgatókönyvben az ügyfélnek a CSP hálózatán keresztül kell kapcsolódnia az Azure-szolgáltatásokhoz. 
 
 Ha az ügyfele más Azure-előfizetésekkel is rendelkezik, amelyeket nem az Ön kezel, akkor a nyilvános interneten vagy saját privát kapcsolaton keresztül csatlakoznak a nem CSP-előfizetés keretében létesített szolgáltatásokhoz. 
 
-Az Azure-szolgáltatásokat kezelő CSP esetében feltételezhető, hogy a CSP-nek korábban létrehozott ügyfél-identitási tárolója van, amelyet a rendszer a CSP-előfizetésük felügyeletére Azure Active Directory replikálhat a (z) (AOBO) használatával. A forgatókönyvhöz tartozó fő illesztőprogramok közé tartozik például, hogy egy adott partner vagy szolgáltató kapcsolatban álljon az ügyféllel, az ügyfél jelenleg szolgáltatói szolgáltatásokat használ, vagy ha a partnernek a szolgáltató által üzemeltetett és az Azure által üzemeltetett megoldások kombinációját kívánja biztosítani, hogy rugalmasságot és megoldást nyújtson a CSP által nem teljesíthető felhasználói kihívásokra. A modell az alábbi **ábrán** látható.
+Az Azure-szolgáltatásokat kezelő CSP esetében feltételezhető, hogy a CSP-nek korábban létrehozott ügyfél-identitási tárolója van, amelyet a rendszer a CSP-előfizetésük felügyeletére Azure Active Directory replikálhat a (z) (AOBO) használatával. A forgatókönyvhöz tartozó fő illesztőprogramok közé tartozik például, hogy egy adott partner vagy szolgáltató kapcsolatban álljon az ügyféllel, az ügyfél jelenleg szolgáltatói szolgáltatásokat használ, vagy ha a partnernek a szolgáltató által üzemeltetett és az Azure által üzemeltetett megoldások kombinációját kívánja biztosítani, hogy rugalmasságot és megoldást nyújtson a CSP által nem teljesíthető felhasználói kihívásokra. Ez a modell az alábbi **ábrán** látható.
 
-![helyettesítő szöveg](./media/expressroute-for-cloud-solution-providers/connect-through-model.png)
+![A "összekapcsolás" modell részletes forgatókönyvét bemutató diagram.](./media/expressroute-for-cloud-solution-providers/connect-through-model.png)
 
 ### <a name="connect-to-model"></a>Szolgáltatóhoz való csatlakozás
-![helyettesítő szöveg](./media/expressroute-for-cloud-solution-providers/connect-to.png)
+![A "kapcsolódás a következőhöz" modellt bemutató diagram.](./media/expressroute-for-cloud-solution-providers/connect-to.png)
 
 A szolgáltatóhoz való csatlakozás modellben a szolgáltató közvetlen kapcsolatot hoz létre az ügyfél adatközpontja és a CSP által létrehozott Azure-előfizetés között az ExpressRoute használatával az ügyfél hálózatán (ügyfélhálózat) keresztül.
 
@@ -56,7 +56,7 @@ A szolgáltatóhoz való csatlakozás modellben a szolgáltató közvetlen kapcs
 
 Ez a csatlakozási forgatókönyv megköveteli, hogy az ügyfél közvetlenül kapcsolódjon az ügyfél-hálózaton keresztül a CSP által felügyelt Azure-előfizetés eléréséhez, közvetlen hálózati kapcsolaton keresztül, amelyet teljes egészében, vagy részben az ügyfél kezel. Ezen ügyfelek esetében feltételezhető, hogy a szolgáltató jelenleg nem rendelkezik ügyfél-identitási tárolóval, és a szolgáltató segítséget nyújt az ügyfélnek az aktuális azonosítási tár replikálásában Azure Active Directory az előfizetésük kezeléséhez az AOBO-en keresztül. A forgatókönyv fő esetei, ha egy adott partner vagy szolgáltató már jól működő kapcsolattal rendelkezik az ügyféllel, az ügyfél jelenleg is használja a szolgáltató által nyújtott szolgáltatásokat, vagy ha a partner kizárólag az Azure-on futtatott megoldásokon alapuló olyan szolgáltatásokat kíván nyújtani, amelyekhez nincs szükség meglévő szolgáltatói adatközpontra vagy infrastruktúrára.
 
-![helyettesítő szöveg](./media/expressroute-for-cloud-solution-providers/connect-to-model.png)
+![A "kapcsolódás a modellhez" nevű részletes forgatókönyvet bemutató diagram.](./media/expressroute-for-cloud-solution-providers/connect-to-model.png)
 
 A két lehetőség közül választhat az ügyfél igényeinek megfelelően, és a jelenlegi igényeknek kell megadnia az Azure-szolgáltatásokat. A modellekkel és a kapcsolódó szerepköralapú hozzáférésvezérlés-, hálózat- és identitástervezési mintákkal kapcsolatos részletek az alábbi hivatkozásokon tekinthetők meg:
 
@@ -109,7 +109,7 @@ Az alapértelmezett útválasztási tábla az alábbi útvonalakat tartalmazza:
 * Virtuális hálózatok közti útvonalak a VPN Gateway használatával
 * Virtuális hálózat és helyszíni hálózat közötti útvonal VPN- vagy ExpressRoute-átjáró használatával
 
-![helyettesítő szöveg](./media/expressroute-for-cloud-solution-providers/default-routing.png)  
+![Az alapértelmezett útválasztási beállításokat megjelenítő diagram.](./media/expressroute-for-cloud-solution-providers/default-routing.png)  
 
 ### <a name="user-defined-routing-udr"></a>Felhasználó által meghatározott útválasztás (UDR)
 A felhasználó által megadott útvonalak segítségével felügyelhető a hozzárendelt alhálózatról a többi alhálózatra irányuló kimenő forgalom a virtuális hálózatban vagy a többi előre definiált átjáró (ExpressRoute, internet vagy VPN) valamelyikén keresztül. A rendszer alapértelmezett útválasztási táblája lecserélhető a felhasználó által meghatározott útválasztási táblára, amely a benne lévő útvonalakat egyéni útvonalakra cseréli. A felhasználó által meghatározott útválasztás használatával az ügyfelek egyedi útvonalakat hozhatnak létre készülékekhez, például tűzfalakhoz vagy behatolás-észlelő készülékekhez, vagy blokkolhatják a hozzáférést megadott alhálózatokhoz azon alhálózatról, amelyen a felhasználó által megadott útvonal található. A felhasználó által megadott útvonalak áttekintését [itt](../virtual-network/virtual-networks-udr-overview.md)tekintheti meg. 

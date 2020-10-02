@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: e4d2da56146a14b295e08a1093fe62a50f87ecfa
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 2d14207bada52c937875bc62bdbde63d788c1aca
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91567553"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653587"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB szolgáltatási kvóták
 
@@ -216,7 +216,7 @@ A következő táblázat felsorolja a MongoDB funkcióinak támogatására vonat
 | MongoDB műveletek maximális végrehajtási ideje| 30-as |
 | Tétlen kapcsolat időtúllépése a kiszolgálóoldali kapcsolat bezárásakor * | 30 perc |
 
-\* Azt javasoljuk, hogy az ügyfélalkalmazások a tétlen kapcsolat időkorlátját 2-3 percre állítsa be, mert az [Azure terheléselosztó alapértelmezett időtúllépése 4 perc](../load-balancer/load-balancer-tcp-idle-timeout.md#tcp-idle-timeout).  Ez az időkorlát biztosítja, hogy az üresjárati kapcsolatok ne legyenek lezárva egy köztes terheléselosztó között az ügyfélszámítógép és a Azure Cosmos DB között.
+\* Azt javasoljuk, hogy az ügyfélalkalmazások a tétlen kapcsolat időkorlátját 2-3 percre állítsa be, mert az [Azure terheléselosztó alapértelmezett időtúllépése 4 perc](../load-balancer/load-balancer-tcp-idle-timeout.md).  Ez az időkorlát biztosítja, hogy az üresjárati kapcsolatok ne legyenek lezárva egy köztes terheléselosztó között az ügyfélszámítógép és a Azure Cosmos DB között.
 
 ## <a name="try-cosmos-db-free-limits"></a>Próbálja ki Cosmos DB szabad korlátokat
 

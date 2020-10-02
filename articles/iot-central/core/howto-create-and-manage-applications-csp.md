@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: how-to
 manager: philmea
-ms.openlocfilehash: 02481d5dcbaba15c9b17a27348207d9af64f3355
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e000e2979436605b9274792ad3dde8eb1fa80976
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80982038"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653349"
 ---
 # <a name="create-and-manage-an-azure-iot-central-application-from-the-csp-portal"></a>Azure IoT Central-alkalmazás létrehozása és kezelése a CSP-portálról
 
@@ -35,7 +35,7 @@ Az Azure IoT Central Application Manager oldalán landol. Az Azure IoT Central a
 
 Azure IoT Central-alkalmazás létrehozásához kattintson a bal oldali menüben a **Létrehozás** elemre. Válasszon az egyik iparági sablon közül, vagy válassza az **Egyéni** alkalmazás lehetőséget, hogy teljesen új alkalmazást hozzon létre. Ekkor betöltődik az alkalmazás-létrehozási oldal. Az összes mezőt el kell végeznie ezen a lapon, majd a **Létrehozás**lehetőséget kell választania. További információkat az alábbi mezőkben talál.
 
-![Alkalmazás-oldal létrehozása a kriptográfiai szolgáltatásokhoz](media/howto-create-and-manage-applications-csp/image4.png)
+![Képernyőkép, amely a "Build Your IoT Application" (felépítés) gombot mutatja a kiválasztva.](media/howto-create-and-manage-applications-csp/image4.png)
 
 ![Alkalmazás-oldal létrehozása a kriptográfiai szolgáltatásokhoz](media/howto-create-and-manage-applications-csp/image4-1.png)
 
@@ -81,7 +81,7 @@ A hely az a [földrajzi](https://azure.microsoft.com/global-infrastructure/geogr
 
 Válassza ki az alkalmazáshoz használni kívánt sablont.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte, hogyan hozhat létre egy Azure IoT Central alkalmazást CSP-ként, itt látható a következő lépés:
 

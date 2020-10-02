@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: duau
-ms.openlocfilehash: b72126933c5454b8fabe19dda08ad5eb66edd1ba
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: f080f5011311101ed8f9faa2ee807c030a048409
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89392670"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653043"
 ---
 # <a name="performance-considerations-for-traffic-manager"></a>Teljesítménnyel kapcsolatos megfontolások a Traffic Manager esetében
 
@@ -50,7 +50,7 @@ Az ezeken a helyeken lévő eszközök a DNS-késéseket mérik, és megjelenít
 
     Az egyik legegyszerűbb eszköz a WebSitePulse. Adja meg az URL-címet a DNS-feloldási idő, az első bájt, az utolsó bájt és az egyéb teljesítményadatok megtekintéséhez. Három különböző tesztelési hely közül választhat. Ebben a példában láthatja, hogy az első végrehajtás azt mutatja, hogy a DNS-címkeresés 0,204 másodpercet vesz igénybe.
 
-    ![pulse1](./media/traffic-manager-performance-considerations/traffic-manager-web-site-pulse.png)
+    ![Képernyőfelvétel: a "DNS" keresési eredmény kiemelése a "WebSitePulse" eszközre mutat.](./media/traffic-manager-performance-considerations/traffic-manager-web-site-pulse.png)
 
     Mivel az eredmények gyorsítótárazva vannak, a második teszt ugyanarra a Traffic Manager végpontra vonatkozóan a DNS-címkeresés 0,002 másodpercet vesz igénybe.
 

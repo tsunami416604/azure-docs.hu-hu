@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 02/13/2019
 ms.author: duau
-ms.openlocfilehash: 8ac38c25821a9f636ac98903599ee7d3acfa5e17
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: ccbd9645ac7d331c06e528298b3a45a184c6cc49
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89395723"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652227"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit"></a>ExpressRoute-kapcsolatcsoport társviszonyának létrehozása és módosítása
 
@@ -60,12 +60,12 @@ Ez a szakasz segítséget nyújt egy ExpressRoute-áramkör Microsoft-társi kon
 
    **Áramköri szolgáltató állapota: nincs kiépítve**
 
-   [![Képernyőfelvétel: a ExpressRoute bemutató lapja, amelynek a szolgáltatói állapotát a "nincs kiépítve" értékre kiemelő piros mező mutatja.](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-m.png)](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-m-lightbox.png#lightbox)
+   [![Képernyőkép, amely a ExpressRoute bemutató oldalát jeleníti meg a szolgáltató állapotának "nincs kiépítve" értékre való kijelölésével.](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-m.png)](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-m-lightbox.png#lightbox)
 
 
    **Áramkör-szolgáltató állapota: kiépítve**
 
-   [![Képernyőfelvétel: a ExpressRoute bemutató lapja, amely a szolgáltatói állapotot jelöli, amely a "kiépítve" értékre van állítva.](./media/expressroute-howto-routing-portal-resource-manager/provisioned-m.png)](./media/expressroute-howto-routing-portal-resource-manager/provisioned-m-lightbox.png#lightbox)
+   [![Képernyőkép, amely a ExpressRoute bemutató oldalát jeleníti meg a szolgáltató állapotának "kiépítve" értékre való kijelölésével.](./media/expressroute-howto-routing-portal-resource-manager/provisioned-m.png)](./media/expressroute-howto-routing-portal-resource-manager/provisioned-m-lightbox.png#lightbox)
 
 2. Konfigurálja a Microsoft társviszony-létesítést a kapcsolatcsoporthoz. Mielőtt folytatná, ellenőrizze az alábbi információk meglétét.
 

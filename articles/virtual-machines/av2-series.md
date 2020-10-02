@@ -7,27 +7,24 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 33d481d546d94bb1279cafbd85ae23c8ac4d00b8
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 65aab240dd0be97aafa370883aa953f8eb766cf2
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89437267"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91650748"
 ---
 # <a name="av2-series"></a>Av2-sorozat
 
 A Av2 sorozatú virtuális gépek számos különböző hardvereszközön és processzoron is üzembe helyezhetők. A Av2 sorozatú virtuális gépekhez a CPU-teljesítmény és a memória-konfigurációk a legmegfelelőbbek a belépési szintű munkaterhelésekhez, például a fejlesztéshez A méret szabályozása úgy történik, hogy konzisztens processzor-teljesítményt nyújtson a futó példány számára, függetlenül a telepített hardvertől. Az adott méretet futtató fizikai hardver meghatározásához kérdezze le a virtuális hardvert a virtuális gépen belülről. Ilyenek például a fejlesztési és tesztelési kiszolgálók, az alacsony forgalmú webkiszolgálók, a kis-és közepes adatbázisok, a bizonyítási fogalmak és a kódok tárházai.
 
-ACU: 100
-
-Premium Storage: nem támogatott
-
-Premium Storage gyorsítótárazás: nem támogatott
-
-Élő áttelepítés: támogatott
-
-Memória megőrzésének frissítései: támogatott
-
+[ACU](acu.md): 100<br>
+[Premium Storage](premium-storage-performance.md): nem támogatott <br>
+[Premium Storage gyorsítótárazás](premium-storage-performance.md): nem támogatott <br>
+[Élő áttelepítés](maintenance-and-updates.md): támogatott <br>
+[Memória megőrzésének frissítései](maintenance-and-updates.md): támogatott <br>
+[VM-generáció támogatása](generation-2.md): 1. generáció <br>
+<br>
 
 | Méret | virtuális mag | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Maximális Temp Storage átviteli sebessége: IOPS/olvasási MBps/írási MBps | Adatlemezek maximális száma/átviteli sebesség: IOPS | Hálózati adapterek maximális száma | Várt hálózati sávszélesség (Mbps)
 |---|---|---|---|---|---|---|---|

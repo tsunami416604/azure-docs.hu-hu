@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 07b5b81dd7e23f25e7bfba90bbab7083090724d4
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ce38fd1a9c49a1715562b59fb14667a88ce44181
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018858"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653162"
 ---
 # <a name="tutorial-manipulating-models"></a>Oktatóanyag: modellek módosítása
 
@@ -161,7 +161,7 @@ Ha a **RemoteBounds** parancsfájlt a **RemoteRenderedModel**azonos game objektu
 
 1. Futtassa ismét az alkalmazást. Röviddel a modell betöltése után a távoli objektum határai láthatók. Az alábbi értékekhez hasonlóan fog megjelenni:
 
-     ![Frissített korlátok](./media/updated-bounds.png)
+     ![A távoli objektumhoz tartozó határokat bemutató képernyőkép.](./media/updated-bounds.png)
 
 Most már van egy helyi **BoxCollider** , amely pontos határokkal van konfigurálva az Unity objektumon. A korlátok lehetővé teszik a vizualizációk és a interakciók használatát ugyanazokkal a stratégiákkal, amelyeket egy helyileg megjelenített objektumhoz használunk. Például az átalakítást, a fizikát és egyebeket megváltoztató parancsfájlok.
 

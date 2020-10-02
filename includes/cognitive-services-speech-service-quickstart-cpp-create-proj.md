@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: 517b092f933bedae0f254461d9bfee4d4640db8b
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 96a085e3183289d9f2add054128c0faa6b0cdb29
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87375084"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91654442"
 ---
 Visual Studio-projekt C++ asztali fejlesztéshez való létrehozásához be kell állítania a Visual Studio fejlesztői beállításait, létre kell hoznia a projektet, ki kell választania a cél architektúrát, és telepítenie kell a Speech SDK-t.
 
@@ -19,13 +19,13 @@ A kezdéshez győződjön meg arról, hogy megfelelően van-e beállítva a Visu
 
 1. Nyissa meg a Visual Studio 2019 alkalmazást a **Start** ablak megjelenítéséhez.
 
-   ![Start ablak – Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-start-window.png)
+   ![A Visual Studio 2019 "Start" ablakát bemutató képernyőkép.](../articles/cognitive-services/Speech-Service/media/sdk/vs-start-window.png)
 
 1. Válassza a **Folytatás kód nélkül** lehetőséget a Visual Studio ide elemre.
 
 1. A Visual Studio menüsávjában válassza az **eszközök**eszközök  >  **és szolgáltatások beolvasása** lehetőséget a Visual Studio telepítőjének megnyitásához, és tekintse meg a **módosítás** párbeszédpanelt.
 
-   ![Munkaterhelések lap, módosítás párbeszédpanel, Visual Studio-telepítő](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-cpp-workload.png)
+   ![A Visual Studio telepítőjének "módosítás" párbeszédpanelének "számítási feladatok" lapját bemutató képernyőkép.](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-cpp-workload.png)
 
 1. A **munkaterhelések** lapon, a **Windows**alatt keresse meg az **asztali fejlesztés C++** munkaterheléssel című részt. Ha a munkaterhelés melletti jelölőnégyzet még nincs kiválasztva, válassza ki.
 

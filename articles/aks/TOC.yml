@@ -50,6 +50,8 @@
       href: concepts-identity.md
     - name: Biztonság
       items:
+        - name: Biztonsági alapkonfiguráció
+          href: security-baseline.md
         - name: Alkalmazás- és fürtbiztonság
           href: concepts-security.md
         - name: Az Azure Policy biztonsági vezérlői
@@ -57,7 +59,7 @@
           href: ./security-controls-policy.md
     - name: Hálózat
       href: concepts-network.md
-    - name: Storage
+    - name: Tárolás
       href: concepts-storage.md
     - name: Méretezés
       href: concepts-scale.md

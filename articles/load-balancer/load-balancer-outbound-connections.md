@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/30/2020
 ms.author: allensu
-ms.openlocfilehash: d778b3ae0889ea0bf9cc38ca5813ac61fc5fcdbe
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: 6b9f454c75a10644e86931dc86ebd9514e5431d3
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91595653"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91649796"
 ---
 # <a name="outbound-connections"></a>Kimenő kapcsolatok
 
@@ -33,11 +33,11 @@ Azure Load Balancer különböző mechanizmusokon keresztül biztosítja a kimen
 
 ### <a name="virtual-machine-with-public-ip"></a><a name="scenario1"></a>Virtuális gép nyilvános IP-címmel
 
-| Szövetségek | Módszer | IP-protokollok |
+| Szövetségek | Metódus | IP-protokollok |
 | ---------- | ------ | ------------ |
 | Nyilvános Load Balancer vagy önálló | [SNAT (forrás hálózati címfordítás)](#snat) </br> A [Pat (port maszkolása)](#pat) nincs használatban. | TCP (Transmission Control Protocol) </br> UDP (User Datagram Protocol) </br> ICMP (Internet Control Message Protocol) </br> ESP (biztonsági tartalom beágyazása) |
 
-#### <a name="description"></a>Leírás
+#### <a name="description"></a>Description
 
 Az Azure a példány hálózati adapterének IP-konfigurációjához hozzárendelt nyilvános IP-címet használja az összes kimenő folyamathoz. A példányhoz minden elérhető ideiglenes port tartozik. Nem számít, hogy a virtuális gép terheléselosztás alatt áll-e. Ez a forgatókönyv elsőbbséget élvez a többiekkel szemben. 
 
@@ -45,11 +45,11 @@ Egy virtuális géphez hozzárendelt nyilvános IP-cím 1:1-kapcsolat (nem 1: so
 
 ### <a name="virtual-machine-without-public-ip"></a><a name="scenario2"></a>Virtuális gép nyilvános IP-cím nélkül
 
-| Szövetségek | Módszer | IP-protokollok |
+| Szövetségek | Metódus | IP-protokollok |
 | ------------ | ------ | ------------ |
 | Nyilvános Load Balancer | A Load Balancer frontend használata a [SNAT](#snat) -hez a [Pat (port maszkolása)](#pat).| TCP </br> UDP |
 
-#### <a name="description"></a>Leírás
+#### <a name="description"></a>Description
 
 A terheléselosztó erőforrása egy terheléselosztó-szabállyal van konfigurálva. Ez a szabály a nyilvános IP-frontend és a háttér-készlet közötti kapcsolat létrehozására szolgál. 
 
@@ -65,11 +65,11 @@ Ebben a kontextusban a SNAT használt ideiglenes portok neve SNAT-portok. Az SNA
 
 ### <a name="virtual-machine-without-public-ip-and-without-standard-load-balancer"></a><a name="scenario3"></a>Virtuális gép nyilvános IP-cím nélkül, standard Load Balancer nélkül
 
-| Szövetségek | Módszer | IP-protokollok |
+| Szövetségek | Metódus | IP-protokollok |
 | ------------ | ------ | ------------ |
 |Nincs </br> Alapszintű Load Balancer | [SNAT](#snat) a [port maszkolásával (Pat)](#pat)| TCP </br> UDP | 
 
-#### <a name="description"></a>Leírás
+#### <a name="description"></a>Description
 
 Amikor a virtuális gép létrehoz egy kimenő folyamatot, az Azure lefordítja a forrás IP-címet egy nyilvános forrás IP-címére. Ez a nyilvános IP-cím **nem konfigurálható** , és nem foglalható le. Ez a cím nem számít az előfizetés nyilvános IP-erőforrásának korlátja alapján. 
 
@@ -160,7 +160,7 @@ A nyilvános IP-előtagon belüli összes IP-cím egy további 64 000 ideiglenes
 
 ### <a name="outbound-flow-idle-timeout-and-tcp-reset"></a><a name="idletimeout"></a> Kimenő forgalom üresjárati időkorlátja és a TCP-visszaállítás
 
-A kimenő szabályok egy konfigurációs paramétert biztosítanak a kimenő folyamat üresjárati időkorlátjának szabályozására, és az alkalmazás igényeinek megfelelően illeszkednek. A kimenő üresjárati időtúllépések alapértelmezett értéke 4 perc. További információ: az [üresjárati időtúllépések konfigurálása](load-balancer-tcp-idle-timeout.md#tcp-idle-timeout). 
+A kimenő szabályok egy konfigurációs paramétert biztosítanak a kimenő folyamat üresjárati időkorlátjának szabályozására, és az alkalmazás igényeinek megfelelően illeszkednek. A kimenő üresjárati időtúllépések alapértelmezett értéke 4 perc. További információ: az [üresjárati időtúllépések konfigurálása](load-balancer-tcp-idle-timeout.md). 
 
 A terheléselosztó alapértelmezett viselkedése a folyamat csendes eldobása, ha elérte a kimenő üresjárati időkorlátot. A `enableTCPReset` paraméter lehetővé teszi a kiszámítható alkalmazások viselkedését és vezérlését. A paraméter azt határozza meg, hogy a kimenő Üresjárati időkorlát időtúllépése esetén a kétirányú TCP alaphelyzetbe állítás (TCP első) legyen-e. 
 
@@ -375,7 +375,7 @@ A rendszer egy SNAT-portot használ minden egyes folyamathoz a cél IP-cím és 
 
 | Alkalmazható protokoll (ok) |
 |------------------------|
-| N.A. |
+| N/A |
 
 #### <a name="details"></a>Részletek
 
@@ -423,7 +423,7 @@ A port felszabadítása után a port újra elérhetővé válik. Az SNAT-portok 
 - A kimenő szabályok csak a hálózati adapter elsődleges IP-konfigurációjához alkalmazhatók.  Nem hozható létre Kimenő szabály a virtuális gép vagy NVA másodlagos IP-címéhez. Több hálózati adapter is támogatott.
 - A virtuális hálózat és más Microsoft Platform-szolgáltatások nélküli webes feldolgozói szerepkörök elérhetők a belső standard Load Balancer használata esetén. Ez a hozzáférhetőség a VNet szolgáltatások és egyéb platform-szolgáltatások működésének mellékhatása. Ne támaszkodjon erre a mellékhatásra, mert maga a saját szolgáltatás, vagy az alapul szolgáló platform értesítés nélkül változhat. Mindig tegyük fel, hogy a kimenő kapcsolatot explicit módon kell létrehoznia, ha csak belső standard Load Balancer használata esetén szeretné használni. A jelen cikkben ismertetett 3. forgatókönyv nem érhető el.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha a kimenő kapcsolattal kapcsolatos problémákat tapasztal egy Azure Load Balanceron keresztül, tekintse meg a [Kimenő kapcsolatok hibaelhárítási útmutatóját](../load-balancer/troubleshoot-outbound-connection.md).
 
