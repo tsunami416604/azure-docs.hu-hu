@@ -95,6 +95,8 @@
           href: public-ip-security-baseline.md
     - name: Biztonság
       items:
+        - name: Biztonsági alapkonfiguráció
+          href: security-baseline.md
         - name: Network security groups (Hálózati biztonsági csoportok)
           items:
             - name: Áttekintés

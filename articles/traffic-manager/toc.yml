@@ -44,6 +44,10 @@
       items:
         - name: A Traffic Manager által használt ország-/régióhierarchia
           href: traffic-manager-geographic-regions.md
+    - name: Biztonság
+      items:
+        - name: Biztonsági alapkonfiguráció
+          href: security-baseline.md
     - name: Beágyazott Traffic Manager-profilok
       href: traffic-manager-nested-profiles.md
     - name: Végponttípusok
