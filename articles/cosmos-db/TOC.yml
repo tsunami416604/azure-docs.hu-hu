@@ -112,7 +112,7 @@
           displayName: 'request units, RUs, RU'
           href: scaling-throughput.md
         - name: Ütközéstípusok és -feloldási szabályzatok
-          displayName: 'last write wins, custom, multi master, multi-master'
+          displayName: 'last write wins, custom, multi-region writes, multi-master'
           href: conflict-resolution-policies.md
         - name: Globális terjesztés – technikai részletek
           href: global-dist-under-the-hood.md
@@ -584,7 +584,7 @@
         - name: Adattitkosítás
           href: database-encryption-at-rest.md
         - name: Biztonságos hozzáférés az adatokhoz
-          displayName: 'master key, resource token, users, roles'
+          displayName: 'primary key, resource token, users, roles'
           href: secure-access-to-data.md
         - name: IP-tűzfal
           href: firewall-support.md
@@ -977,7 +977,7 @@
           href: how-to-move-regions.md
     - name: Globális terjesztés
       items:
-        - name: Több főkiszolgálós telepítés konfigurálása
+        - name: Többrégiós írások konfigurálása
           href: how-to-multi-master.md
         - name: Konzisztenciaszintek kezelése
           displayName: 'session, consistency prefix, strong, eventual, bounded staleness'

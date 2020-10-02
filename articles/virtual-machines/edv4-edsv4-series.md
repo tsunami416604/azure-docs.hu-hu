@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/04/2020
-ms.openlocfilehash: 15a53ddaa669f0720632901edfd58eb273518867
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 5b0301a57c4223666ac612b997c87c87271fe49b
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049621"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91649524"
 ---
 # <a name="edv4-and-edsv4-series"></a>Edv4 és Edsv4 sorozat
 
@@ -24,15 +24,13 @@ A Edv4 és a Edsv4 sorozat az Intel &reg; Xeon &reg; Platinum 8272CL (Cascade La
 
 A Edv4-sorozat méretei az Intel &reg; Xeon &reg; Platinum 8272CL (Cascade-tó) processzorokon futnak. A Edv4 virtuálisgép-méretek akár 504 GiB RAM-mal is rendelkeznek, a gyors és nagyméretű helyi SSD-tárolók mellett (legfeljebb 2 400 GiB). Ezek a virtuális gépek ideálisak a nagy teljesítményű, kis késésű, nagy sebességű helyi tárterületet használó, nagy teljesítményű vállalati alkalmazásokhoz és alkalmazásokhoz. A standard SSD-ket és a standard HDD lemezes tárolást a Edv4 virtuális gépekhez is csatlakoztathatja. 
 
-ACU: 195 – 210
-
-Premium Storage: nem támogatott
-
-Premium Storage gyorsítótárazás: nem támogatott
-
-Élő áttelepítés: támogatott
-
-Memória megőrzésének frissítései: támogatott
+[ACU](acu.md): 195 – 210<br>
+[Premium Storage](premium-storage-performance.md): nem támogatott<br>
+[Premium Storage gyorsítótárazás](premium-storage-performance.md): nem támogatott<br>
+[Élő áttelepítés](maintenance-and-updates.md): támogatott<br>
+[Memória megőrzésének frissítései](maintenance-and-updates.md): támogatott<br>
+[VM-generáció támogatása](generation-2.md): 1. generáció<br>
+<br>
 
 | Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolási sebesség: IOPS/MBps | Hálózati adapterek maximális száma|Várt hálózati sávszélesség (Mbps) |
 |---|---|---|---|---|---|---|---|
@@ -50,15 +48,13 @@ Memória megőrzésének frissítései: támogatott
 
 A Edsv4-sorozat méretei az Intel &reg; Xeon &reg; Platinum 8272CL (Cascade-tó) processzorokon futnak. A Edsv4 virtuálisgép-méretek akár 504 GiB RAM-mal is rendelkeznek, a gyors és nagyméretű helyi SSD-tárolók mellett (legfeljebb 2 400 GiB). Ezek a virtuális gépek ideálisak a nagy teljesítményű, kis késésű, nagy sebességű helyi tárterületet használó, nagy teljesítményű vállalati alkalmazásokhoz és alkalmazásokhoz.
 
-ACU: 195-210
-
-Premium Storage: támogatott
-
-Premium Storage gyorsítótárazás: támogatott
-
-Élő áttelepítés: támogatott
-
-Memória megőrzésének frissítései: támogatott
+[ACU](acu.md): 195-210<br>
+[Premium Storage](premium-storage-performance.md): támogatott<br>
+[Premium Storage gyorsítótárazás](premium-storage-performance.md): támogatott<br>
+[Élő áttelepítés](maintenance-and-updates.md): támogatott<br>
+[Memória megőrzésének frissítései](maintenance-and-updates.md): támogatott<br>
+[VM-generáció támogatása](generation-2.md): 1. generáció<br>
+<br>
 
 | Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolási sebesség: IOPS/MBps (gyorsítótár mérete GiB-ban) | Gyorsítótár nélküli lemez maximális átviteli sebessége: IOPS/MBps | Hálózati adapterek maximális száma|Várt hálózati sávszélesség (Mbps) |
 |---|---|---|---|---|---|---|---|---|

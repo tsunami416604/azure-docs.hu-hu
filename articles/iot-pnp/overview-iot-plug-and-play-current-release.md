@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 0ba4d60b9e32a8658fa294de1b78ef4950436eb0
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 723e63d4185adb03ddccadaa2148c665665725c2
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91609939"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91650017"
 ---
 # <a name="whats-in-the-current-iot-plug-and-play-release"></a>Mi a jelenlegi IoT Plug and Play kiadás
 
@@ -53,7 +53,7 @@ További információ a kódtárak és SDK-k használatáról: [Microsoft SDK-k 
 - C Device SDK [vcpkg 1.3.9](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/setting_up_vcpkg.md)
 - Beágyazott C Device SDK [GitHub](https://github.com/Azure/azure-sdk-for-c/)
 - .NET-eszközök SDK- [NuGet 1.31.0](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client)
-- Java-eszköz SDK [Maven 1.25.0](https://mvnrepository.com/artifact/com.microsoft.azure.sdk.iot/iot-device-client)
+- Java-eszköz SDK [Maven 1.26.0](https://mvnrepository.com/artifact/com.microsoft.azure.sdk.iot/iot-device-client)
 - Python Device SDK [pip 2.3.0](https://pypi.org/project/azure-iot-device/)
 - Node.js Device SDK [NPM 1.17.2](https://www.npmjs.com/package/azure-iot-device)
 - .NET – IoT Hub szolgáltatás [NuGet 1.31.0](https://www.nuget.org/packages/Microsoft.Azure.Devices )

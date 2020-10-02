@@ -354,7 +354,7 @@
           href: ../../bastion/bastion-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Állapotok és életciklus
       href: ../states-lifecycle.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-    - name: Létrehozási vagy frissítési műveletek PUT-hívásai
+    - name: PUT-hívások műveletek létrehozásához és frissítéséhez
       href: ../put-calls-create-or-update.md
       maintainContext: true
     - name: Figyelés
@@ -407,7 +407,7 @@
           href: ps-template.md
         - name: Kapcsolódás virtuális géphez
           href: connect-logon.md
-        - name: Kapcsolódás Linux rendszerű virtuális gépekhez
+        - name: SSH–Linuxos virtuális gépek
           displayName: ssh keygen ssk-key putty
           items:
             - name: A portálon
@@ -595,7 +595,7 @@
               href: disk-encryption-troubleshooting.md
             - name: Lemeztitkosítás – gyakori kérdések
               href: disk-encryption-faq.md
-            - name: Lemeztitkosítás – Előző verzió (Azure AD)
+            - name: Lemeztitkosítás – előző verzió
               items:
                 - name: Áttekintés
                   href: disk-encryption-overview-aad.md

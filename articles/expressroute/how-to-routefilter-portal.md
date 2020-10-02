@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/01/2019
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 37f8903adbc676ae2e48e2ef5841d8f5b122842c
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 468c7a0113a4603f4f47bb529145261ff50d96d4
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89566245"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91650544"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-azure-portal"></a>Útválasztási szűrők konfigurálása a Microsoft-partnerek számára: Azure Portal
 > [!div class="op_single_selector"]
@@ -88,33 +88,33 @@ Egy útvonal-szűrőnek csak egy szabálya lehet, és a szabálynak "Allow" típ
 ### <a name="1-create-a-route-filter"></a>1. útvonal-szűrő létrehozása
 Létrehozhat egy útvonal-szűrőt az új erőforrás létrehozásához szükséges lehetőség kiválasztásával. Kattintson az **erőforrás létrehozása**  >  **hálózati**  >  **RouteFilter**elemre, ahogy az a következő képen látható:
 
-![Útvonal-szűrő létrehozása](./media/how-to-routefilter-portal/CreateRouteFilter1.png)
+![Az "útvonal-szűrő" oldalt megjelenítő képernyőkép.](./media/how-to-routefilter-portal/CreateRouteFilter1.png)
 
 Az útválasztási szűrőt egy erőforráscsoporthoz kell helyeznie. 
 
-![Útvonal-szűrő létrehozása](./media/how-to-routefilter-portal/CreateRouteFilter.png)
+![Képernyőkép: az "útvonal-szűrő létrehozása" oldal, amely tartalmazza a megadott értékeket.](./media/how-to-routefilter-portal/CreateRouteFilter.png)
 
 ### <a name="2-create-a-filter-rule"></a>2. szűrési szabály létrehozása
 
 A szabályok hozzáadásához és frissítéséhez válassza az útválasztási szűrő szabály kezelése lapját.
 
-![Útvonal-szűrő létrehozása](./media/how-to-routefilter-portal/ManageRouteFilter.png)
+![Képernyőkép, amely az "áttekintés" lapot mutatja a "szabály kezelése" művelet kiemelésével.](./media/how-to-routefilter-portal/ManageRouteFilter.png)
 
 
 Kiválaszthatja azokat a szolgáltatásokat, amelyekhez csatlakozni szeretne a legördülő listából, és ha elkészült, mentse a szabályt.
 
-![Útvonal-szűrő létrehozása](./media/how-to-routefilter-portal/AddRouteFilterRule.png)
+![Képernyőkép: a "szabály kezelése" ablak, amely az "engedélyezett szolgáltatási Közösségek" legördülő listában kiválasztott szolgáltatásokat tartalmazza.](./media/how-to-routefilter-portal/AddRouteFilterRule.png)
 
 
 ## <a name="step-3-attach-the-route-filter-to-an-expressroute-circuit"></a><a name="attach"></a>3. lépés: az útvonal-szűrő csatolása egy ExpressRoute-áramkörhöz
 
 Az útvonal-szűrőt csatolhatja egy áramkörhöz az "áramkör hozzáadása" gomb kiválasztásával, majd a ExpressRoute áramkör kiválasztásával a legördülő listából.
 
-![Útvonal-szűrő létrehozása](./media/how-to-routefilter-portal/AddCktToRouteFilter.png)
+![Képernyőkép: az "áttekintés" oldal, amelyen az "áramkör hozzáadása" művelet be van jelölve.](./media/how-to-routefilter-portal/AddCktToRouteFilter.png)
 
 Ha a kapcsolati szolgáltató konfigurálja a ExpressRoute-áramkör társítását, akkor az "áramkör hozzáadása" gomb megnyomása előtt frissítse az áramkört a ExpressRoute-áramkör paneljéről.
 
-![Útvonal-szűrő létrehozása](./media/how-to-routefilter-portal/RefreshExpressRouteCircuit.png)
+![Képernyőkép, amely az "áttekintés" lapot jeleníti meg a kiválasztott "frissítés" művelettel.](./media/how-to-routefilter-portal/RefreshExpressRouteCircuit.png)
 
 ## <a name="common-tasks"></a><a name="tasks"></a>Gyakori feladatok
 
@@ -122,7 +122,7 @@ Ha a kapcsolati szolgáltató konfigurálja a ExpressRoute-áramkör társítás
 
 Az útválasztási szűrők tulajdonságait megtekintheti, amikor megnyitja az erőforrást a portálon.
 
-![Útvonal-szűrő létrehozása](./media/how-to-routefilter-portal/ViewRouteFilter.png)
+![Az "áttekintés" oldalt megjelenítő képernyőkép.](./media/how-to-routefilter-portal/ViewRouteFilter.png)
 
 
 ### <a name="to-update-the-properties-of-a-route-filter"></a><a name="updateproperties"></a>Egy útvonal szűrő tulajdonságainak frissítése
@@ -130,16 +130,16 @@ Az útválasztási szűrők tulajdonságait megtekintheti, amikor megnyitja az e
 Az áramkörhöz csatolt BGP-közösségi értékek listáját a "szabály kezelése" gombra kattintva frissítheti.
 
 
-![Útvonal-szűrő létrehozása](./media/how-to-routefilter-portal/ManageRouteFilter.png)
+![Képernyőkép, amely az "áttekintés" lapot mutatja a "szabály kezelése" művelet kiemelésével.](./media/how-to-routefilter-portal/ManageRouteFilter.png)
 
-![Útvonal-szűrő létrehozása](./media/how-to-routefilter-portal/AddRouteFilterRule.png) 
+![Képernyőkép, amely a "szabály kezelése" ablakot jeleníti meg a kiválasztott szolgáltatásokkal.](./media/how-to-routefilter-portal/AddRouteFilterRule.png) 
 
 
 ### <a name="to-detach-a-route-filter-from-an-expressroute-circuit"></a><a name="detach"></a>Útvonal-szűrő leválasztása egy ExpressRoute-áramkörből
 
 Ha egy áramkört szeretne leválasztani az útvonal-szűrőből, kattintson a jobb gombbal az áramkörre, és kattintson a "leválasztás" elemre.
 
-![Útvonal-szűrő létrehozása](./media/how-to-routefilter-portal/DetachRouteFilter.png) 
+![A "leválasztás" művelettel Kiemelt "áttekintés" oldalt megjelenítő képernyőkép.](./media/how-to-routefilter-portal/DetachRouteFilter.png) 
 
 
 ### <a name="to-delete-a-route-filter"></a><a name="delete"></a>Útvonal-szűrő törlése

@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 88b1eb70814c349d488933179a16c084a0af803c
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: efdfc1c12191977c0422cda6c52eb9b73c95c55f
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91619967"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651190"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>A Azure Media Services v3 kibocsátási megjegyzései
 
@@ -37,7 +37,6 @@ A legújabb fejleményekkel naprakészen tarthatja a cikket, amely a következő
 > A [Azure Portal](https://portal.azure.com/) a v3 [élő események](live-events-outputs-concept.md)kezelésére, a v3- [eszközök](assets-concept.md) és-feladatok megtekintésére, az API-k elérésére és a tartalmak titkosítására vonatkozó információk beszerzésére használható. Az összes többi felügyeleti feladathoz (például az átalakítások és a feladatok kezeléséhez) használja a [REST API](https://aka.ms/ams-v3-rest-ref), a [CLI](https://aka.ms/ams-v3-cli-ref)vagy a támogatott [SDK](media-services-apis-overview.md#sdks)-k egyikét.
 >
 > Részletekért lásd: [a Media Services v3 Azure Portal korlátozásai](frequently-asked-questions.md#what-are-the-azure-portal-limitations-for-media-services-v3).
-
 
 ## <a name="august-2020"></a>2020. augusztus
 
@@ -264,21 +263,21 @@ A V3 API GA-kiadásának frissítései a következők:
 
 ## <a name="november-2018"></a>2018. november
 
-A CLI 2,0 modul már elérhető a [Azure Media Services v3 GA](/cli/azure/ams?view=azure-cli-latest) – v 2.0.50.
+A CLI 2,0 modul már elérhető a [Azure Media Services v3 GA](/cli/azure/ams?view=azure-cli-latest&preserve-view=true) – v 2.0.50.
 
 ### <a name="new-commands"></a>Új parancsok
 
-- [az AMS-fiók](/cli/azure/ams/account?view=azure-cli-latest)
-- [az AMS Account-Filter](/cli/azure/ams/account-filter?view=azure-cli-latest)
-- [az AMS Asset](/cli/azure/ams/asset?view=azure-cli-latest)
-- [az AMS Asset-Filter](/cli/azure/ams/asset-filter?view=azure-cli-latest)
-- [az AMS Content-Key-Policy](/cli/azure/ams/content-key-policy?view=azure-cli-latest)
-- [az AMS Job](/cli/azure/ams/job?view=azure-cli-latest)
-- [az AMS Live-Event](/cli/azure/ams/live-event?view=azure-cli-latest)
-- [az AMS Live-output](/cli/azure/ams/live-output?view=azure-cli-latest)
-- [az AMS streaming-Endpoint](/cli/azure/ams/streaming-endpoint?view=azure-cli-latest)
-- [az AMS streaming-Locator](/cli/azure/ams/streaming-locator?view=azure-cli-latest)
-- [az AMS Account MRU](/cli/azure/ams/account/mru?view=azure-cli-latest) -lehetővé teszi a Media szolgáltatás számára fenntartott egységek kezelését. További információ: a [Media szolgáltatás számára fenntartott egységek skálázása](media-reserved-units-cli-how-to.md).
+- [az AMS-fiók](/cli/azure/ams/account?view=azure-cli-latest&preserve-view=true)
+- [az AMS Account-Filter](/cli/azure/ams/account-filter?view=azure-cli-latest&preserve-view=true)
+- [az AMS Asset](/cli/azure/ams/asset?view=azure-cli-latest&preserve-view=true)
+- [az AMS Asset-Filter](/cli/azure/ams/asset-filter?view=azure-cli-latest&preserve-view=true)
+- [az AMS Content-Key-Policy](/cli/azure/ams/content-key-policy?view=azure-cli-latest&preserve-view=true)
+- [az AMS Job](/cli/azure/ams/job?view=azure-cli-latest&preserve-view=true)
+- [az AMS Live-Event](/cli/azure/ams/live-event?view=azure-cli-latest&preserve-view=true)
+- [az AMS Live-output](/cli/azure/ams/live-output?view=azure-cli-latest&preserve-view=true)
+- [az AMS streaming-Endpoint](/cli/azure/ams/streaming-endpoint?view=azure-cli-latest&preserve-view=true)
+- [az AMS streaming-Locator](/cli/azure/ams/streaming-locator?view=azure-cli-latest&preserve-view=true)
+- [az AMS Account MRU](/cli/azure/ams/account/mru?view=azure-cli-latest&preserve-view=true) -lehetővé teszi a Media szolgáltatás számára fenntartott egységek kezelését. További információ: a [Media szolgáltatás számára fenntartott egységek skálázása](media-reserved-units-cli-how-to.md).
 
 ### <a name="new-features-and-breaking-changes"></a>Új funkciók és a változások megszakítása
 
@@ -408,7 +407,7 @@ Tekintse meg a [Azure Media Services közösségi](media-services-community.md) 
 
 [Áttelepítési útmutató Media Services v2-ről v3-re való áttéréshez](migrate-from-v2-to-v3.md#known-issues).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Áttekintés](media-services-overview.md)
 - [A Media Services v3 dokumentációjának frissítései](docs-release-notes.md)

@@ -3,12 +3,12 @@ title: Élő videók elemzése Computer Vision térbeli elemzéshez – Azure
 description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja a Live Video Analytics szolgáltatást az Azure Cognitive Services Computer Vision térbeli Analysis AI funkciójának használatával egy élő videó-hírcsatorna (szimulált) IP-kamerából való elemzéséhez.
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: 98ee57d4916ac0a8da8b48a9cdd881468b2d75d5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 72063cdefdf349eaad1b1d2fd760bb30b42786da
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90946605"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91649753"
 ---
 # <a name="analyze-live-video-with-computer-vision-for-spatial-analysis-preview"></a>Élő videó elemzése a Computer Vision for térbeli Analysis (előzetes verzió)
 
@@ -64,21 +64,14 @@ Létre kell hoznia egy Computer Vision típusú Azure-erőforrást [Azure Portal
 
 ### <a name="gathering-required-parameters"></a>A szükséges paraméterek összegyűjtése
 
-Három elsődleges paraméter van az összes szükséges Cognitive Services tárolóhoz, beleértve a térbeli elemzési tárolót is. A végfelhasználói licencszerződést (EULA) az Accept értékkel kell megadnia. Emellett a végponti URL-cím és az API-kulcs is szükséges.
+Három elsődleges paraméter van az összes szükséges Cognitive Services tárolóhoz, beleértve a térbeli elemzési tárolót is. A végfelhasználói licencszerződést (EULA) az Accept értékkel kell megadnia. Emellett szükség van egy végponti URI-ra és egy API-kulcsra is.
 
-### <a name="endpoint-uri-endpoint_uri"></a>Végpont URI azonosítója {ENDPOINT_URI}
+### <a name="keys-and-endpoint-uri"></a>Kulcsok és végpont URI-ja
 
-A végpont URI-értéke a Cognitive Services erőforrás Azure Portal áttekintés lapján érhető el. Keresse meg az Áttekintés lapot, és keresse meg a végpont URI-JÁT. 
-
-> [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/spatial-analysis-tutorial/keys-endpoint.png" alt-text="Kulcsok és végpont":::
-
-### <a name="keys-api_key"></a>Kulcsok {API_KEY}
-
-Ez a kulcs a térbeli elemzési tároló elindítására szolgál, és a megfelelő kognitív szolgáltatási erőforrás Azure Portal kulcsok lapján érhető el. Keresse meg a kulcsok lapot, és keresse meg a kulcsokat.
+A rendszer egy kulcsot használ a térbeli elemzési tároló elindításához, és a `Keys and Endpoint` megfelelő kognitív szolgáltatási erőforrás Azure Portal lapján érhető el. Keresse meg a lapot, és keresse meg a kulcsokat és a végpont URI-JÁT.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/spatial-analysis-tutorial/endpoint-uri.png" alt-text="Végpont URI-ja":::
+> :::image type="content" source="./media/spatial-analysis-tutorial/keys-endpoint.png" alt-text="Térbeli elemzés – áttekintés":::
 
 ## <a name="set-up-azure-stack-edge"></a>Azure Stack Edge beállítása
 
@@ -100,7 +93,7 @@ Az alábbi [lépéseket](https://docs.microsoft.com/azure/databox-online/azure-s
     
     ```json
     {
-        "IoThubConnectionString" : " HostName=<IoTHubName>.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=<SharedAccessKey>”,
+        "IoThubConnectionString" : "HostName=<IoTHubName>.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=<SharedAccessKey>",
         "deviceId" : "<your Azure Stack Edge name>",
         "moduleId" : "lvaEdge"
     } 
@@ -125,271 +118,9 @@ Az alábbi [lépéseket](https://docs.microsoft.com/azure/databox-online/azure-s
     
 ## <a name="set-up-deployment-template"></a>Telepítési sablon beállítása  
 
-Adja hozzá a térbeli elemzési modult a/src/Edge/deployment.template.js. A sablonban a lvaEdge modul, a rtspsim modul és a térbeli elemzési modul található.
+Keresse meg a telepítési fájlt a/src/Edge/deployment.spatialAnalysis.template.json címen. A sablonban a lvaEdge modul, a rtspsim modul és a térbeli elemzési modul található.
 
-<p>
-<details>
-<summary>Bontsa ki a következőt, és tekintse meg a minta telepítési sablont.  
-Másolja ide a tartalmakat, és illessze be a/src/Edge/deployment.template.jsbe.
-</summary>
-<pre><code>
-{
-  "$schema-template": "2.0.0",
-  "modulesContent": {
-    "$edgeAgent": {
-      "properties.desired": {
-        "schemaVersion": "1.0",
-        "runtime": {
-          "type": "docker",
-          "settings": {
-            "minDockerVersion": "v1.25",
-            "loggingOptions": "",
-            "registryCredentials": {
-            }
-          }
-        },
-        "systemModules": {
-          "edgeAgent": {
-            "type": "docker",
-            "settings": {
-              "image": "mcr.microsoft.com/azureiotedge-agent:1.0",
-              "createOptions": {}
-            }
-          },
-          "edgeHub": {
-            "type": "docker",
-            "status": "running",
-            "restartPolicy": "always",
-            "settings": {
-              "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
-              "createOptions": {
-                "HostConfig": {
-                  "PortBindings": {
-                    "5671/tcp": [
-                      {
-                        "HostPort": "5671"
-                      }
-                    ],
-                    "8883/tcp": [
-                      {
-                        "HostPort": "8883"
-                      }
-                    ],
-                    "443/tcp": [
-                      {
-                        "HostPort": "443"
-                      }
-                    ]
-                  }
-                }
-              }
-            }
-          }
-        },
-        "modules": {
-          "lvaEdge": {
-            "version": "1.0",
-            "type": "docker",
-            "status": "running",
-            "restartPolicy": "always",
-            "settings": {
-              "image": "mcr.microsoft.com/media/live-video-analytics:1",
-              "createOptions": {
-                "HostConfig": {
-                  "LogConfig": {
-                    "Type": "",
-                    "Config": {
-                      "max-size": "10m",
-                      "max-file": "10"
-                    }
-                  },
-                  "Binds": [
-                    "$OUTPUT_VIDEO_FOLDER_ON_DEVICE:/var/media/",
-                    "$APPDATA_FOLDER_ON_DEVICE:/var/lib/azuremediaservices"
-                  ],
-                  "IpcMode": "host",
-                  "ShmSize": 1536870912
-                }
-              }
-            },
-            "env": {
-              "IS_DEVELOPER_ENVIRONMENT": {
-                "value": "true"
-              }
-            }
-          },
-          "rtspsim": {
-              "version": "1.0",
-              "type": "docker",
-              "status": "running",
-              "restartPolicy": "always",
-              "settings": {
-                "image": "mcr.microsoft.com/lva-utilities/rtspsim-live555:1.2",
-                "createOptions": {
-                  "HostConfig": {
-                    "Mounts": [
-                      {
-                        "Target": "/live/mediaServer/media",
-                        "Source": "lvaspatialanalysislocal",
-                        "Type": "volume"
-                      }
-                    ],
-                    "PortBindings": {
-                      "554/tcp": [
-                        {
-                          "HostPort": "554"
-                        }
-                      ]
-                    }
-                  }
-                }
-              }
-            },
-          "spatialAnalysis": {
-            "version": "1.0",
-            "type": "docker",
-            "status": "running",
-            "restartPolicy": "always",
-            "settings": {
-              "image": "mcr.microsoft.com/azure-cognitive-services/spatial-analysis:1.0",
-              "createOptions": {
-                "HostConfig": {
-                  "PortBindings": {
-                    "50051/tcp": [
-                      {
-                        "HostPort": "50051"
-                      }
-                    ]
-                  },
-                  "IpcMode": "host",
-                  "Binds": [
-                      "/tmp/.X11-unix:/tmp/.X11-unix"
-                  ],
-                  "Runtime": "nvidia",
-                  "ShmSize": 536870911,
-                  "LogConfig": {
-                      "Type": "json-file",
-                      "Config": {
-                          "max-size": "10m",
-                          "max-file": "200"
-                      }
-                  }
-                }
-              }
-            },
-            "env": {
-              "DISPLAY": {
-                "value": ":0"
-              },
-              "ARCHON_SHARED_BUFFER_LIMIT": {
-                "value": "377487360"
-              },
-              "ARCHON_PERF_MARKER": {
-                "value": "false"
-              },
-              "QT_X11_NO_MITSHM": {
-                "value": "1"
-              },
-              "OMP_WAIT_POLICY": {
-                "value": "PASSIVE"
-              },
-              "EULA": {
-                "value": "accept"
-              },
-              "BILLING_ENDPOINT": {
-                "value": "<Use one key from Archon azure resource (keys page)>"
-              },
-              "API_KEY": {
-                "value": "<Use endpoint from Archon azure resource (overview page)>"
-              }
-            }
-          }
-        }
-      }
-    },
-    "$edgeHub": {
-      "properties.desired": {
-        "schemaVersion": "1.0",
-        "routes": {
-          "LVAToHub": "FROM /messages/modules/lvaEdge/outputs/* INTO $upstream"
-        },
-        "storeAndForwardConfiguration": {
-          "timeToLiveSecs": 7200
-        }
-      }
-    },
-    "lvaEdge": {
-      "properties.desired": {
-        "applicationDataDirectory": "/var/lib/azuremediaservices",
-        "azureMediaServicesArmId": "/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP/providers/microsoft.media/mediaservices/$AMS_ACCOUNT",
-        "aadTenantId": "$AAD_TENANT_ID",
-        "aadServicePrincipalAppId": "$AAD_SERVICE_PRINCIPAL_ID",
-        "aadServicePrincipalSecret": "$AAD_SERVICE_PRINCIPAL_SECRET",
-        "aadEndpoint": "https://login.microsoftonline.com",
-        "aadResourceId": "https://management.core.windows.net/",
-        "armEndpoint": "https://management.azure.com/",
-        "diagnosticsEventsOutputName": "AmsDiagnostics",
-        "operationalEventsOutputName": "AmsOperational",        
-        "logLevel": "Info",
-        "logCategories": "Application,Events,MediaPipeline",
-        "allowUnsecuredEndpoints": true,
-        "telemetryOptOut": false
-      }
-    },
-    "spatialAnalysis": {
-      "properties.desired": {
-        "globalSettings": {
-          "PlatformTelemetryEnabled": true,
-          "CustomerTelemetryEnabled": true
-        },
-        "graphs": {
-            "polygonCross": {
-              "version": 2,
-              "enabled": true,
-              "platformloglevel": "info",
-              "operationId": "cognitiveservices.vision.spatialanalysis-personcrossingpolygon.livevideoanalytics",
-              "parameters": {
-                  "BINDING_ADDRESS": "0.0.0.0:50051",
-                  "DETECTOR_NODE_CONFIG": "{ \"show_debug_video\": false, \"gpu_index\": 0 }",
-                  "SPACEANALYTICS_CONFIG": "{\"zones\":[{\"name\":\"polygon0\",\"polygon\":[[0,0],[0.6,0],[0.6,0.9],[0,0.9],[0,0]],\"threshold\":50,\"events\":[{\"type\":\"enter/exit\",\"config\":{\"trigger\":\"event\"}}]}]}"
-              },
-              "nodesloglevel": "info"
-            },
-            "personCount": {
-              "version": 2,
-              "enabled": false,
-              "platformloglevel": "info",
-              "operationId": "cognitiveservices.vision.spatialanalysis-personcount.livevideoanalytics",
-              "parameters": {
-                  "BINDING_ADDRESS": "0.0.0.0:50051",
-                  "DETECTOR_NODE_CONFIG": "{ \"show_debug_video\": false, \"gpu_index\": 0 }",
-                  "SPACEANALYTICS_CONFIG": "{\"zones\":[{\"name\":\"polygon0\",\"polygon\":[[0.8,0],[1,0],[1,1],[0.8,1],[0.8,0]],\"threshold\":50,\"events\":[{\"type\":\"count\",\"config\":{\"trigger\":\"event\"}}]}]}"
-              },
-              "nodesloglevel": "info"
-            },
-            "personDistance": {
-              "version": 2,
-              "enabled": false,
-              "platformloglevel": "info",
-              "operationId": "cognitiveservices.vision.spatialanalysis-persondistance.livevideoanalytics",
-              "parameters": {
-                  "BINDING_ADDRESS": "0.0.0.0:50051",
-                  "DETECTOR_NODE_CONFIG": "{ \"show_debug_video\": false, \"gpu_index\": 0,\"gpu_index\": 0,\"do_calibration\": true}",
-                  "SPACEANALYTICS_CONFIG": "{\"zones\":[{\"name\": \"distance_zone\", \"polygon\": [[0,0],[0,1],[1,1],[1,0],[0,0]],\"threshold\": 35.00,\"events\":[{\"type\": \"people_distance\",\"config\":{\"trigger\": \"event\",\"output_frequency\":1,\"minimum_distance_threshold\":6.0,\"maximum_distance_threshold\":35.0}}]}]}"
-              },
-              "nodesloglevel": "info"
-            }
-        }
-      }
-    }
-  }
-}
-</code>
-</pre>
-</details>
-</p>
-
-A következőkre van szüksége:
+Az üzembe helyezési sablon fájljában néhány dolgot kell figyelnie:
 
 1. Állítsa be a port kötését.
     
@@ -402,12 +133,11 @@ A következőkre van szüksége:
         ]
     },
     ```
-1. A lvaEdge és a térbeli elemzési modul createOptions IpcMode azonosnak kell lennie, és a gazdagépre kell beállítani.
-1. A telepítési sablon fájljának tartalmaznia kell a "központi telepítés" kifejezést a fájlnévben, ellenkező esetben nem ismerhető fel és nem hozható nyilvánosságra az üzembe helyezési jegyzék.
+1. `IpcMode` a lvaEdge és a térbeli elemzési modul createOptions azonosnak kell lennie, és a gazdagépre kell beállítani.
 1. Az RTSP-szimulátor működéséhez győződjön meg arról, hogy beállította a kötet határait. További információ: [Setup Docker Volume mounts](deploy-azure-stack-edge-how-to.md#optional-setup-docker-volume-mounts).
 
-    1. [Kapcsolódjon az SMB-megosztáshoz](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-add-shares#connect-to-an-smb-share) , és másolja a [videofájl](https://lvamedia.blob.core.windows.net/public/bulldozer.mkv) a helyi megosztásba.
-    1. Láthatja, hogy a rtspsim modul a következőt tartalmazza:
+    1. [Kapcsolódjon az SMB-megosztáshoz](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-add-shares#connect-to-an-smb-share) , és másolja a [minta buldózer-videofájl](https://lvamedia.blob.core.windows.net/public/bulldozer.mkv) a helyi megosztásba.
+    1. Ellenőrizze, hogy a rtspsim modul a következő konfigurációval rendelkezik-e:
         
         ```json
         "createOptions": {
@@ -439,32 +169,17 @@ Kövesse az alábbi lépéseket a jegyzékfájlnak a sablonból való létrehoz�
 1. Az AZURE IOT HUB panel mellett válassza a további műveletek ikont a IoT Hub kapcsolódási karakterlánc beállításához. A karakterláncot a src/Cloud-to-Device-Console-app/appsettings.jsfájlból másolhatja.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/spatial-analysis-tutorial/connection-string.png" alt-text="Térbeli elemzés: a kapcsolatok karakterlánca":::
-1. Kattintson a jobb gombbal az src/Edge/deployment.template.jselemre, és válassza a IoT Edge üzembe helyezési jegyzék előállítása lehetőséget.
+    > :::image type="content" source="./media/spatial-analysis-tutorial/connection-string.png" alt-text="Térbeli elemzés – áttekintés":::
+1. Kattintson a jobb gombbal `src/edge/deployment.spatialAnalysis.template.json` , és válassza a IoT Edge üzembe helyezési jegyzék előállítása lehetőséget.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/spatial-analysis-tutorial/deployment-amd64-json.png" alt-text="Térbeli elemzés: üzembe helyezés amd64 JSON":::
+    > :::image type="content" source="./media/spatial-analysis-tutorial/deployment-template-json.png" alt-text="Térbeli elemzés – áttekintés":::
     
     Ehhez a művelethez létre kell hoznia egy deployment.amd64.jsnevű jegyzékfájlt az src/Edge/config mappában.
-1. Kattintson a jobb gombbal az src/Edge/config/deployment.amd64.jselemre, válassza a központi telepítés létrehozása egyetlen eszközhöz lehetőséget, majd válassza ki a peremhálózati eszköz nevét.
+1. Kattintson a jobb gombbal `src/edge/config/deployment.spatialAnalysis.amd64.json` , válassza a központi telepítés létrehozása egyetlen eszközhöz lehetőséget, majd válassza ki a peremhálózati eszköz nevét.
     
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/spatial-analysis-tutorial/deployment-template-json.png" alt-text="Térbeli elemzés: üzembe helyezési sablon JSON":::   
-1. Amikor a rendszer rákérdez a IoT Hub eszköz kiválasztására, válassza ki a Azure Stack Edge nevét a legördülő menüből.
-1. Körülbelül 30 másodperc elteltével frissítse az Azure IoT Hubt az ablak bal alsó sarkában. A peremhálózati eszköz mostantól a következő központilag telepített modulokat mutatja:
-    
-    * Élő video Analytics IoT Edge (modul neve lvaEdge).
-    * Valós idejű Streaming Protocol (RTSP) szimulátor (modul neve rtspsim).
-    * Térbeli elemzés (modul neve spatialAnalysis).
-    
-Ha a telepítés sikeresen megtörtént, a KIMENETben a következőhöz hasonló üzenet jelenik meg:
-
-```
-[Edge] Start deployment to device [<Azure Stack Edge name>]
-[Edge] Deployment succeeded.
-```
-
-Ezután megkeresheti `lvaEdge` , `rtspsim` `spatialAnalysis` és `rtspsim` modulokat használhat az eszközök/modulok területen, és az állapotuknak "fut" állapotúnak kell lennie.
+    > :::image type="content" source="./media/spatial-analysis-tutorial/deployment-amd64-json.png" alt-text="Térbeli elemzés – áttekintés" állapotúnak kell lennie.
 
 ## <a name="prepare-to-monitor-events"></a>Felkészülés az események figyelésére
 
@@ -475,25 +190,26 @@ Az események megtekintéséhez kövesse az alábbi lépéseket:
 1. Kattintson a jobb gombbal az Azure Stack Edge-re, és válassza a figyelés beépített esemény végpontja lehetőséget.
     
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/spatial-analysis-tutorial/start-monitoring.png" alt-text="Térbeli elemzés: figyelés indítása":::
+    > :::image type="content" source="./media/spatial-analysis-tutorial/start-monitoring.png" alt-text="Térbeli elemzés – áttekintés":::
      
 ## <a name="run-the-program"></a>A program futtatása
 
-Létezik egy program.cs, amely a közvetlen metódusokat hívja meg a src/Cloud-to-Device-Console-app/operations.json. Be kell állítania a operations.jst, és meg kell adnia egy topológiát a Media Graph használatához.
+Létezik egy program.cs, amely a közvetlen metódusokat hívja meg a src/Cloud-to-Device-Console-app/operations.json. Be kell állítania a operations.jst, és meg kell adnia egy topológiát a Media Graph használatához.  
+
 operations.json:
 
-Állítsa be az ehhez hasonló topológiát (topologyFile helyi topológiához, topologyUrl az online topológiához):
+* Állítsa be az ehhez hasonló topológiát (topologyFile helyi topológiához, topologyUrl az online topológiához):
 
 ```json
 {
     "opName": "GraphTopologySet",
     "opParams": {
-        "topologyFile": "../edge/spatialAnalysistopology.json"
+        "topologyFile": "../edge/spatialAnalysisTopology.json"
     }
 },
 ```
 
-Hozzon létre gráf-példányt ehhez hasonló módon, itt állítsa be a paramétereket a topológiában:
+* Hozzon létre gráf-példányt ehhez hasonló módon, itt állítsa be a paramétereket a topológiában:
 
 ```json
 {
@@ -521,167 +237,20 @@ Hozzon létre gráf-példányt ehhez hasonló módon, itt állítsa be a paramé
     }
 },
 ```
+* Módosítsa a Graph-topológiára mutató hivatkozást:
 
-<p>
-<details>
-<summary>Bontsa ki a spatialAnalysis-modulhoz tartozó minta-topológiai fájl megjelenítéséhez:
-</summary>
-<pre><code>
-{
-    "@apiVersion": "1.0",
-    "name": "InferencingWithCVExtension",
-    "properties": {
-      "description": "Analyzing live video using spatialAnalysis Extension to send images to an external inference engine",
-      "parameters": [
-        {
-          "name": "rtspUserName",
-          "type": "String",
-          "description": "rtsp source user name.",
-          "default": "dummyUserName"
-        },
-        {
-          "name": "rtspPassword",
-          "type": "String",
-          "description": "rtsp source password.",
-          "default": "dummyPassword"
-        },
-        {
-          "name": "rtspUrl",
-          "type": "String",
-          "description": "rtsp Url"
-        },
-        {
-          "name": "grpcUrl",
-          "type": "String",
-          "description": "inferencing Url",
-          "default": "tcp://spatialAnalysis:50051"
-        },
-        {
-          "name": "frameRate",
-          "type": "String",
-          "description": "Rate of the frames per second to be received from LVA.",
-          "default": "2"
-        },
-        {
-          "name": "spatialanalysisusername",
-          "type": "String",
-          "description": "spatialanalysis endpoint username",
-          "default": "not-in-use"
-        },
-        {
-          "name": "spatialanalysispassword",
-          "type": "String",
-          "description": "spatialanalysis endpoint password",
-          "default": "not-in-use"  
-        }
-      ],
-      "sources": [
-        {
-          "@type": "#Microsoft.Media.MediaGraphRtspSource",
-          "name": "rtspSource",
-          "transport": "tcp",
-          "endpoint": {
-            "@type": "#Microsoft.Media.MediaGraphUnsecuredEndpoint",
-            "url": "${rtspUrl}",
-            "credentials": {
-              "@type": "#Microsoft.Media.MediaGraphUsernamePasswordCredentials",
-              "username": "${rtspUserName}",
-              "password": "${rtspPassword}"
-            }
-          }
-        }
-      ],
-      "processors": [
-        {
-          "@type": "#Microsoft.Media.MediaGraphFrameRateFilterProcessor",
-          "name": "frameRateFilter",
-          "inputs": [
-            {
-              "nodeName": "rtspSource"
-            }
-          ],
-          "maximumFps": "${frameRate}"
-        },
-        {
-          "@type": "#Microsoft.Media.MediaGraphCognitiveServicesVisionExtension",
-          "name": "computerVisionExtension",
-          "endpoint": {
-            "@type": "#Microsoft.Media.MediaGraphUnsecuredEndpoint",
-            "url": "${grpcUrl}",
-            "credentials": {
-              "@type": "#Microsoft.Media.MediaGraphUsernamePasswordCredentials",
-              "username": "${spatialanalysisusername}",
-              "password": "${spatialanalysispassword}"
-            }
-          },
-          "image": {
-            "scale": {
-              "mode": "pad",
-              "width": "1408",
-              "height": "786"
-            },
-            "format": {
-              "@type": "#Microsoft.Media.MediaGraphImageFormatRaw",
-              "pixelFormat": "bgr24"
-            }
-          },
-          "inputs": [
-            {
-              "nodeName": "frameRateFilter"
-            }
-          ]
-        },
-        {
-            "@type": "#Microsoft.Media.MediaGraphSignalGateProcessor",
-            "name": "signalGateProcessor",
-            "inputs": [
-              {
-                "nodeName": "computerVisionExtension"
-              },
-              {
-                "nodeName": "rtspSource"
-              }
-            ],
-            "activationEvaluationWindow": "PT1S",
-            "activationSignalOffset": "PT0S",
-            "minimumActivationTime": "PT30S",
-            "maximumActivationTime": "PT30S"
-          }
-      ],
-      "sinks": [
-        {
-            "@type": "#Microsoft.Media.MediaGraphAssetSink",
-            "name": "assetSink",
-            "assetNamePattern": "sampleAssetFromEVR-CV-LVAEdge-${System.DateTime}",
-            "segmentLength": "PT30S",
-            "LocalMediaCacheMaximumSizeMiB": "200",
-            "localMediaCachePath": "/var/lib/azuremediaservices/tmp/",
-            "inputs": [
-                {
-                    "nodeName": "signalGateProcessor"
-                }
-            ]
-        },
-        {
-          "@type": "#Microsoft.Media.MediaGraphIoTHubMessageSink",
-          "name": "hubSink",
-          "hubOutputName": "inferenceOutput",
-          "inputs": [
-            {
-              "nodeName": "computerVisionExtension"
-            }
-          ]
-        }
-      ]
-    }
-  }
-</code>
-</pre>
-</details>
-</p>
+`topologyUrl` : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/lva-spatial-analysis/topology.json"
 
+A **GraphInstanceSet**alatt szerkessze a gráf topológiájának nevét, hogy az megfeleljen az előző hivatkozásban szereplő értéknek:
 
-MediaGraphRealTimeComputerVisionExtension használata a térbeli elemzési modullal való kapcsolódáshoz. A $ {grpcUrl} beállítása a tcp://spatialAnalysis-ben: <PORT_NUMBER>, azaz tcp://spatialAnalysis:50051
+`topologyName` : InferencingWithCVExtension
+
+A **GraphTopologyDelete**alatt szerkessze a nevet:
+
+`name`: InferencingWithCVExtension
+
+>[!Note]
+Tekintse meg a MediaGraphRealTimeComputerVisionExtension használatát a térbeli elemzési modullal való kapcsolódáshoz. Állítsa be a $ {grpcUrl} értéket **TCP://spatialAnalysis: <PORT_NUMBER>**, például TCP://spatialAnalysis:50051
 
 ```json
 {
@@ -786,7 +355,7 @@ Minta kimenete a personZoneEvent (a cognitiveservices. vízió. spatialanalysis-
 
 Próbálkozzon a modul által kínált különböző műveletekkel, `spatialAnalysis` például a **personCount** és a **personDistance** . ehhez a telepítési jegyzékfájl Graph csomópontjában az "enabled" jelzőt kell bekapcsolni.
 >[!Tip]
-> Használjon egy olyan [videofájlokat](https://lvamedia.blob.core.windows.net/public/2018-03-07.16-50-00.16-55-00.school.G421.mkv) , amely egynél több személlyel rendelkezik a keretben.
+> Használjon egy [minta videofájlokat](https://lvamedia.blob.core.windows.net/public/2018-03-07.16-50-00.16-55-00.school.G421.mkv) , amelynek több személye van a keretben.
 
 > [!NOTE]
 > Egyszerre csak egy műveletet futtathat. Ezért győződjön meg arról, hogy csak egy jelző van beállítva **igaz** értékre, a többi pedig **false (hamis**) értékre van állítva.

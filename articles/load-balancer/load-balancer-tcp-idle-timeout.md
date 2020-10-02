@@ -1,5 +1,5 @@
 ---
-title: A terheléselosztó TCP-üresjárati időkorlátjának konfigurálása az Azure-ban
+title: A Load Balancer TCP alaphelyzetbe állításának és üresjárati időkorlátjának konfigurálása az Azure
 titleSuffix: Azure Load Balancer
 description: Ebből a cikkből megtudhatja, hogyan konfigurálhatja Azure Load Balancer TCP üresjárati időkorlátját.
 services: load-balancer
@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/09/2020
+ms.date: 10/09/2020
 ms.author: allensu
-ms.openlocfilehash: 374ec9daf6255a0a05ed9b2f03cc01b90785493c
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 26c4c01aaf6abe6b9c9ac6daf6836d7b660ba21e
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91628162"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91649830"
 ---
-# <a name="configure-tcp-idle-timeout-settings-for-azure-load-balancer"></a>A TCP Üresjárati időkorlát beállításainak konfigurálása Azure Load Balancer
+# <a name="configure-tcp-idle-timeout-for-azure-load-balancer"></a>A TCP Üresjárati időkorlát konfigurálása Azure Load Balancerhoz
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -28,26 +28,12 @@ ms.locfileid: "91628162"
 
 Ha a PowerShell helyi telepítése és használata mellett dönt, ehhez a cikkhez az Azure PowerShell-modul 5.4.1-es vagy újabb verziójára lesz szükség. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor azt is futtatnia kell, `Connect-AzAccount` hogy létrehozza az Azure-hoz való kapcsolódást.
 
-## <a name="tcp-idle-timeout"></a>TCP Üresjárati időkorlát
-Azure Load Balancer üresjárati időkorlátja 4 perc és 30 perc között van. Alapértelmezés szerint 4 percre van beállítva. Ha egy inaktivitási időtartam hosszabb az időtúllépési értéknél, nem garantálható, hogy a TCP-vagy HTTP-munkamenet az ügyfél és a felhőalapú szolgáltatás között marad.
-
-Ha a csatlakozás be van zárva, az ügyfélalkalmazás a következő hibaüzenetet kaphatja: "az alapul szolgáló csatlakozás bezárult: a kiszolgáló lezárta az életben tartani várt kapcsolatokat."
-
-Gyakori eljárás a TCP Keep-Alive használata. Ez a gyakorlat hosszabb ideig tart a kapcsolatok aktív állapotban. További információkért tekintse meg ezeket a [.net-példákat](https://msdn.microsoft.com/library/system.net.servicepoint.settcpkeepalive.aspx). Ha a Keep-Alive engedélyezve van, a rendszer a csatlakozáskor inaktivitási időszakokban küld csomagokat. Életben tartási csomagok gondoskodnak arról, hogy az Üresjárati időkorlát értéke ne legyen elérhető, és a kapcsolat hosszabb ideig marad.
-
-A beállítás csak a bejövő kapcsolatok esetében működik. A kapcsolat elvesztésének elkerüléséhez konfigurálja a TCP Keep-Alive értéket az Üresjárati időkorlát beállításnál kisebb intervallumra, vagy növelje az Üresjárati időkorlát értékét. Ezen forgatókönyvek támogatásához konfigurálható Üresjárati időkorlát támogatása lett hozzáadva.
-
-A TCP Keep-Alive olyan forgatókönyvek esetén működik, ahol az akkumulátorok élettartama nem korlátozás. A mobil alkalmazások esetében nem ajánlott. Ha egy TCP Keep-Alive protokollt használ a mobil alkalmazásban, az eszköz akkumulátora gyorsabban kiüríthető.
-
-![TCP-időtúllépés](./media/load-balancer-tcp-idle-timeout/image1.png)
+A Azure Load Balancer 4 perces Üresjárati időkorlát 120 percre van beállítva. Alapértelmezés szerint 4 percre van beállítva. Ha egy inaktivitási időtartam hosszabb az időtúllépési értéknél, nem garantálható, hogy a TCP-vagy HTTP-munkamenet az ügyfél és a felhőalapú szolgáltatás között marad. További információ a [TCP tétlen időtúllépésről](load-balancer-tcp-reset.md).
 
 A következő szakaszok azt ismertetik, hogyan változtathatók meg a nyilvános IP-címek és a terheléselosztó erőforrásainak üresjárati időtúllépési beállításai.
 
->[!NOTE]
-> A TCP Üresjárati időkorlát nem befolyásolja az UDP protokoll terheléselosztási szabályait.
 
-
-## <a name="configure-the-tcp-timeout-for-your-instance-level-public-ip-to-15-minutes"></a>A példány-szintű nyilvános IP-cím TCP-időtúllépésének beállítása 15 percre
+## <a name="configure-the-tcp-idle-timeout-for-your-public-ip"></a>A TCP Üresjárati időkorlát konfigurálása a nyilvános IP-címhez
 
 ```azurepowershell-interactive
 $publicIP = Get-AzPublicIpAddress -Name MyPublicIP -ResourceGroupName MyResourceGroup
@@ -57,7 +43,7 @@ Set-AzPublicIpAddress -PublicIpAddress $publicIP
 
 A(z) `IdleTimeoutInMinutes` nem kötelező. Ha nincs beállítva, az alapértelmezett időtúllépés 4 perc. Az elfogadható időtúllépési tartomány 4 – 120 perc.
 
-## <a name="set-the-tcp-timeout-on-a-load-balanced-rule-to-15-minutes"></a>Egy elosztott terhelésű szabály TCP-időtúllépésének beállítása 15 percre
+## <a name="set-the-tcp-idle-timeout-on-rules"></a>A TCP Üresjárati időkorlát beállítása a szabályoknál
 
 A terheléselosztó üresjárati időkorlátjának beállításához a "IdleTimeoutInMinutes" beállítás van beállítva a terheléselosztási szabályhoz. Például:
 
@@ -65,7 +51,8 @@ A terheléselosztó üresjárati időkorlátjának beállításához a "IdleTime
 $lb = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroup "MyResourceGroup"
 $lb | Set-AzLoadBalancerRuleConfig -Name myLBrule -IdleTimeoutInMinutes 15
 ```
-## <a name="next-steps"></a>További lépések
+
+## <a name="next-steps"></a>Következő lépések
 
 [A belső Load Balancer áttekintése](load-balancer-internal-overview.md)
 

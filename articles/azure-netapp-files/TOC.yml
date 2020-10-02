@@ -4,6 +4,8 @@
   items:
     - name: Mi az az Azure NetApp Files?
       href: azure-netapp-files-introduction.md
+    - name: Újdonságok
+      href: whats-new.md
     - name: Az Azure NetApp Files tárhely-hierarchiája
       href: azure-netapp-files-understand-storage-hierarchy.md
 - name: Rövid útmutatók
@@ -27,6 +29,8 @@
           href: azure-netapp-files-performance-metrics-volumes.md
         - name: Teljesítménytesztek Linuxhoz
           href: performance-benchmarks-linux.md
+        - name: Az Oracle-adatbázis teljesítménye az Azure NetApp Files önálló kötetein
+          href: performance-oracle-single-volumes.md
         - name: Az SMB-teljesítménnyel kapcsolatos gyakori kérdések
           href: azure-netapp-files-smb-performance.md
     - name: Az Azure NetApp Files költségmodellje

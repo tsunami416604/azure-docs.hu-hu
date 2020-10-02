@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: v-erkel
-ms.openlocfilehash: e29d031bc3461c4adab87b1d784ef19c89c7c12d
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 7f1d8d34d6351fc344fdb101ac8e9a96678df9d5
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91613006"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651428"
 ---
 # <a name="mount-the-azure-hpc-cache"></a>Az Azure HPC Cache csatlakoztatása
 
@@ -79,7 +79,7 @@ A csatlakoztatási parancs létrehozásához kövesse az alábbi eljárást.
 
 1. Válassza ki az ügyfélhez használni kívánt **virtuális névtér elérési útját** . Ezek az elérési utak a háttér-tárolási rendszeren lévő exportálásokra mutató hivatkozással rendelkeznek.
 
-   ![a névtér elérési útjai mező képernyőképe, a választóval megnyitva](media/mount-select-target.png)
+   ![A "virtuális névtér elérési útja" mezőt megjelenítő képernyőkép, a választóval megnyitva.](media/mount-select-target.png)
 
    A virtuális névtér elérési útjai a **névtér** -portál lapon tekinthetők meg és módosíthatók. Olvassa el [az összesített névtér beállítása](add-namespace-paths.md) című témakört.
 
@@ -115,7 +115,7 @@ Robusztus ügyfél csatlakoztatása esetén adja át ezeket a beállításokat �
 
 > Mount-o Hard, proto = TCP, mountproto = TCP, újrapróbálkozás = 30 $ {CACHE_IP_ADDRESS}:/$ {NAMESPACE_PATH} $ {LOCAL_FILESYSTEM_MOUNT_POINT}
 
-| Javasolt csatlakoztatási parancs beállításai | Leírás |
+| Javasolt csatlakoztatási parancs beállításai | Description |
 --- | ---
 ``hard`` | Az Azure HPC cache-hez való Soft mounts az alkalmazás hibáival és az esetleges adatvesztéssel jár.
 ``proto=tcp`` | Ez a beállítás támogatja az NFS-hálózati hibák megfelelő kezelését.
@@ -135,6 +135,6 @@ A virtuális névtér elérési útjai a gyorsítótár **névtér** -beállít�
 
 ![képernyőkép a portál beállításairól > a névtér oldaláról a tábla első oszlopában található kiemelési mezővel: "névtér elérési útja"](media/view-namespace-paths.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha adatokat szeretne áthelyezni a gyorsítótár tárolási céljaira, olvassa el az [új Azure Blob Storage feltöltése](hpc-cache-ingest.md)című cikkét.

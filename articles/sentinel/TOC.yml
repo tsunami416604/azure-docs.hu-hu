@@ -172,7 +172,7 @@
           href: connect-azure-stack.md
     - name: Felhasználói és entitásviselkedési elemzés engedélyezése
       href: enable-entity-behavior-analytics.md
-    - name: Munkavégzés egyszerre több bérlővel (MSSP)
+    - name: Több bérlő (MSSP) kezelése
       href: multiple-tenants-service-providers.md
     - name: Munkavégzés több munkaterület incidenseivel
       href: multiple-workspace-view.md

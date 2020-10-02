@@ -4,6 +4,8 @@
   items:
     - name: Az AKS ismertetése
       href: intro-kubernetes.md
+    - name: Megoldásarchitektúrák
+      href: /azure/architecture/reference-architectures/containers/aks-start-here?bc=%2fazure%2faks%2fbreadcrumb%2ftoc.json&toc=%2fazure%2faks%2ftoc.json
 - name: Rövid útmutatók
   expanded: true
   items:
@@ -55,7 +57,7 @@
           href: ./security-controls-policy.md
     - name: Hálózat
       href: concepts-network.md
-    - name: Tárolás
+    - name: Storage
       href: concepts-storage.md
     - name: Méretezés
       href: concepts-scale.md

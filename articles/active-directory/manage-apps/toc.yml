@@ -57,10 +57,16 @@
           href: developer-guidance-for-integrating-applications.md
     - name: Egyszeri bejelentkezés
       items:
-        - name: Az egyszeri bejelentkezés beállításai
-          href: sso-options.md
         - name: Egyszeri bejelentkezés üzembe helyezésének tervezése
           href: plan-sso-deployment.md
+        - name: Az egyszeri bejelentkezés beállításai
+          href: sso-options.md
+        - name: SAML-alapú egyszeri bejelentkezés
+          href: configure-saml-single-sign-on.md
+        - name: Jelszóalapú SSO
+          href: configure-password-single-sign-on-non-gallery-applications.md
+        - name: Hivatkozásalapú SSO
+          href: configure-linked-sign-on.md
         - name: Egykattintásos SSO
           href: one-click-sso-tutorial.md
     - name: Alkalmazások biztonsága
@@ -102,14 +108,6 @@
 - name: Útmutatók
   expanded: false
   items:
-    - name: Egyszeri bejelentkezés konfigurálása
-      items:
-        - name: SAML-alapú egyszeri bejelentkezés konfigurálása
-          href: configure-saml-single-sign-on.md
-        - name: Jelszavas bejelentkezés konfigurálása
-          href: configure-password-single-sign-on-non-gallery-applications.md
-        - name: Csatolt bejelentkezés konfigurálása
-          href: configure-linked-sign-on.md
     - name: Felhasználók hozzárendelése és alkalmazások hozzáférésének kezelése
       items:
         - name: Felhasználói beleegyezés konfigurálása

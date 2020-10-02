@@ -1,9 +1,9 @@
 ### YamlMime:Landing
-title: Az IoT Plug and Play előzetes verziójának frissítési dokumentációja
+title: Az IoT Plug and Play dokumentációja
 summary: Az IoT Plug and Play használatával egy olyan eszközmodellt határozhat meg, amely lehetővé teszi a felhőmegoldások számára az eszköz automatikus megértését és a vele történő kommunikáció megkezdését.
 metadata:
-  title: Az IoT Plug and Play előzetes verziójának architektúrája
-  description: Az IoT Plug and Play előzetes verziójával a megoldáskészítők manuális konfigurálás nélkül integrálhatnak eszközöket egy megoldásba. Ez a cikk bemutatja a legfontosabb architektúraelemeket, amelyek ezt lehetővé teszik.
+  title: IoT Plug and Play-architektúra
+  description: Az IoT Plug and Play használatával a megoldáskészítők manuális konfigurálás nélkül integrálhatnak eszközöket egy megoldásba. Ez a cikk bemutatja a legfontosabb architektúraelemeket, amelyek lehetővé teszik a feladat teljesítését.
   services: iot-pnp
   ms.service: iot-pnp
   ms.topic: landing-page
@@ -11,12 +11,12 @@ metadata:
   ms.author: dobett
   manager: philmea
   ms.date: 10/31/2019
-  ms.openlocfilehash: 6fe77d059974bcc37fb0b0bbc6a171d371a93478
-  ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+  ms.openlocfilehash: 5b01154fa3e5821ca577e4a910facff8d9cb968a
+  ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 07/28/2020
-  ms.locfileid: "87337364"
+  ms.lasthandoff: 09/30/2020
+  ms.locfileid: "91598040"
 landingContent:
 - title: Az IoT Plug and Play ismertetése
   linkLists:
@@ -24,8 +24,8 @@ landingContent:
     links:
     - text: Mi az IoT Plug and Play?
       url: overview-iot-plug-and-play.md
-    - text: Az előzetes verzió 2020-as frissítésének újdonságai
-      url: overview-iot-plug-and-play-preview-updates.md
+    - text: Mit tartalmaz a jelenlegi kiadás?
+      url: overview-iot-plug-and-play-current-release.md
 - title: Eszközök felépítése
   linkLists:
   - linkListType: quickstart
@@ -43,11 +43,13 @@ landingContent:
   - linkListType: concept
     links:
     - text: Fejlesztői útmutató
-      url: concepts-developer-guide.md
-    - text: Az IoT Plug and Playhez kapcsolódó konvenciók
-      url: concepts-convention.md
+      url: concepts-developer-guide-device-csharp.md
     - text: Összetevők
       url: concepts-components.md
+    - text: Az IoT Plug and Playhez kapcsolódó konvenciók
+      url: concepts-convention.md
+    - text: IoT Plug and Play-híd
+      url: concepts-iot-pnp-bridge.md
 - title: Megoldások kiépítése
   linkLists:
   - linkListType: quickstart

@@ -8,13 +8,13 @@ metadata:
   ms.topic: landing-page
   author: dikamath
   ms.author: dikamath
-  ms.date: 05/04/2020
-  ms.openlocfilehash: aad6bc60066d76c96dd38fa3ba1e94069bb9e25a
-  ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+  ms.date: 09/21/2020
+  ms.openlocfilehash: 76a879f1c2c228fd509f0b0725b7ff3ddac4fa41
+  ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 08/22/2020
-  ms.locfileid: "88752118"
+  ms.lasthandoff: 09/30/2020
+  ms.locfileid: "91574908"
 landingContent:
 - title: Az Azure VMware Solution ismertetése
   linkLists:
@@ -22,15 +22,61 @@ landingContent:
     links:
     - text: Mi az az Azure VMware Solution?
       url: introduction.md
+  - linkListType: concept
+    links:
+    - text: Magánfelhő és -fürtök
+      url: concepts-private-clouds-clusters.md
+    - text: Magánfelhő-hálózat és -kapcsolatok
+      url: concepts-networking.md
+    - text: Tárolás magánfelhőkben
+      url: concepts-storage.md
+    - text: Magánfelhők hozzáférése és identitása
+      url: concepts-identity.md
+    - text: Szerepköralapú hozzáférés-vezérlés
+      url: concepts-role-based-access-control.md
+    - text: Magánfelhők frissítései
+      url: concepts-upgrades.md
+- title: Az Azure VMware Solution üzembe helyezése
+  linkLists:
   - linkListType: get-started
     links:
-    - text: Hálózati ellenőrzőlista
-      url: tutorial-network-checklist.md
+    - text: Üzembe helyezés előtti folyamat
+      url: production-ready-deployment-steps.md
+    - text: Üzembe helyezés előtti ellenőrzőlista
+      url: pre-deployment-checklist.md
+    - text: 1 – Az Azure VMware Solution üzembe helyezése
+      url: deploy-azure-vmware-solution.md
+    - text: 2 – Helyszíni csatlakozás
+      url: azure-vmware-solution-on-premises.md
+    - text: 3 – A HCX üzembe helyezése és konfigurálása
+      url: tutorial-deploy-vmware-hcx.md
   - linkListType: tutorial
     links:
-    - text: AVS-magánfelhő létrehozása
+    - text: Hálózattervezési ellenőrzőlista
+      url: tutorial-network-checklist.md
+    - text: Magánfelhő létrehozása
       url: tutorial-create-private-cloud.md
+    - text: Hozzáférés egy magánfelhőhöz
+      url: tutorial-access-private-cloud.md
     - text: Hálózatkezelés konfigurálása
       url: tutorial-configure-networking.md
-    - text: Hozzáférés a magánfelhőhöz
-      url: tutorial-access-private-cloud.md
+    - text: NSX-T hálózati szegmens létrehozása
+      url: tutorial-nsx-t-network-segment.md
+    - text: Helyszíni hálózat és magánfelhő közötti társviszony létesítése
+      url: tutorial-expressroute-global-reach-private-cloud.md
+    - text: A VMware HCX üzembe helyezése és konfigurálása
+      url: tutorial-deploy-vmware-hcx.md
+    - text: Magánfelhő skálázása
+      url: tutorial-scale-private-cloud.md
+- title: Az Azure VMware Solution kiterjesztése
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Migrálás kiértékelése
+      url: ../migrate/how-to-create-azure-vmware-solution-assessment.md?context=/azure/migrate/context/migrate-context.json
+    - text: DHCP kezelése
+      url: manage-dhcp.md
+    - text: Vészhelyreállítás üzembe helyezése virtuális gépekhez
+      url: disaster-recovery-for-virtual-machines.md
+    - text: Virtuálisgép üzembe helyezése a tartalomtáron keresztül
+      url: tutorial-deploy-vm-content-library.md

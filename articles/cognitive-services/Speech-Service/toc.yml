@@ -10,6 +10,10 @@
       href: language-support.md
     - name: Régiós támogatás
       href: regions.md
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
+    - name: Kvóták és korlátok
+      href: speech-services-quotas-and-limits.md
     - name: A docs újdonságai
       href: whats-new.md
 - name: Diktálás
@@ -347,6 +351,8 @@
       items:
         - name: Mi az a hangvezérelt asszisztens?
           href: voice-assistants.md
+        - name: Hangvezérelt asszisztens mintái (GitHub)
+          href: 'https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant'
     - name: Custom Commands
       items:
         - name: Mik azok az egyéni parancsok?
@@ -459,11 +465,58 @@
       items:
         - name: Speaker Recognition REST API
           href: 'https://docs.microsoft.com/rest/api/speakerrecognition/'
-- name: Hosting
+- name: Eszközök
   items:
-    - name: Az üzemeltetés dokumentációja
-      href: index-hosting.yml
-    - name: Útmutatók
+    - name: Beszéd SDK
+      items:
+        - name: Speech SDK – áttekintés
+          href: speech-sdk.md
+        - name: A Speech SDK beállítása
+          href: quickstarts/setup-platform.md
+        - name: A Beszéd SDK kibocsátási megjegyzései
+          href: releasenotes.md
+        - name: Referencia
+          items:
+            - name: C++
+              href: 'https://aka.ms/csspeech/cppref'
+            - name: C#
+              href: 'https://aka.ms/csspeech/csharpref'
+            - name: Java
+              href: 'https://aka.ms/csspeech/javaref'
+            - name: JavaScript
+              href: 'https://aka.ms/csspeech/javascriptref'
+            - name: Objective-C
+              href: 'https://aka.ms/csspeech/objectivecref'
+            - name: Python
+              href: 'https://aka.ms/csspeech/pythonref'
+    - name: Speech parancssori felület
+      displayName: SPX
+      items:
+        - name: A Speech parancssori felület áttekintése
+          displayName: What is SPX?
+          href: spx-overview.md
+        - name: A Speech parancssori felület alapjai
+          displayName: SPX basics
+          href: spx-basics.md
+    - name: Speech Studio
+      items:
+        - name: A Speech Studio áttekintése
+          href: 'https://speech.microsoft.com'
+        - name: Custom Commands-alkalmazás létrehozása a Speech Studióval
+          href: quickstart-custom-speech-commands-create-new.md
+- name: Üzembe helyezés
+  items:
+    - name: Naplózás engedélyezése
+      href: how-to-use-logging.md
+    - name: Memóriahasználat nyomon követése
+      href: how-to-track-speech-sdk-memory-usage.md
+    - name: Linuxos OpenSSL konfigurálása
+      displayName: 'memory usage, memory consumption, object logging, object tracking, memory, openssl'
+      href: how-to-configure-openssl-linux.md
+    - name: RHEL/CentOS 7 konfigurálása
+      href: how-to-configure-rhel-centos-7.md
+      displayName: 'RHEL, CentOS 7, CentOS, Configure RHEL, Configure CentO'
+    - name: Containers
       items:
         - name: Speech-tárolók telepítése és futtatása
           displayName: 'containers,install container,run container'
@@ -479,53 +532,8 @@
         - name: Speech-tárolók az Azure Container Instancesben
           displayName: 'ACI,azure container instances,container instances,containers'
           href: deploy-speech-on-container-instances.md
-    - name: További források
-      items:
         - name: Tárolók – GYIK
           href: speech-container-faq.md
-- name: Beszéd SDK
-  items:
-    - name: Speech SDK – áttekintés
-      href: speech-sdk.md
-    - name: A Speech SDK beállítása
-      displayName: 'install the speech sdk, install the speech sdk java, install the speech sdk C#, install the speech sdk python, install the speech sdk C++, setup speech sdk, install, install C#, install C++, install Python, install Java, install Javascript'
-      href: quickstarts/setup-platform.md
-    - name: Útmutatók
-      items:
-        - name: Naplózás engedélyezése
-          href: how-to-use-logging.md
-        - name: Memóriahasználat nyomon követése
-          href: how-to-track-speech-sdk-memory-usage.md
-        - name: Linuxos OpenSSL konfigurálása
-          displayName: 'memory usage, memory consumption, object logging, object tracking, memory, openssl'
-          href: how-to-configure-openssl-linux.md
-        - name: RHEL/CentOS 7 konfigurálása
-          href: how-to-configure-rhel-centos-7.md
-          displayName: 'RHEL, CentOS 7, CentOS, Configure RHEL, Configure CentOS'
-    - name: Példák
-      items:
-        - name: Speech SDK-minták (GitHub)
-          href: 'https://github.com/Azure-Samples/cognitive-services-speech-sdk'
-        - name: Beszédeszközök SDK-minták (GitHub)
-          href: 'https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK'
-        - name: Hangvezérelt asszisztens mintái (GitHub)
-          href: 'https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant'
-    - name: Referencia
-      items:
-        - name: C++
-          href: 'https://aka.ms/csspeech/cppref'
-        - name: C#
-          href: 'https://aka.ms/csspeech/csharpref'
-        - name: Java
-          href: 'https://aka.ms/csspeech/javaref'
-        - name: JavaScript
-          href: 'https://aka.ms/csspeech/javascriptref'
-        - name: Objective-C
-          href: 'https://aka.ms/csspeech/objectivecref'
-        - name: Python
-          href: 'https://aka.ms/csspeech/pythonref'
-        - name: A Beszéd SDK kibocsátási megjegyzései
-          href: releasenotes.md
 - name: Eszközök
   items:
     - name: A Speech Devices dokumentációja
@@ -536,6 +544,8 @@
           href: speech-devices-sdk.md
         - name: A Beszédeszközök SDK beszerzése
           href: get-speech-devices-sdk.md
+        - name: Beszédeszközök SDK-minták (GitHub)
+          href: 'https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK'
     - name: Hardver
       items:
         - name: Mikrofonsorra vonatkozó javaslatok
@@ -560,23 +570,6 @@
       items:
         - name: A Beszédeszközök SDK kibocsátási megjegyzései
           href: devices-sdk-release-notes.md
-- name: Eszközök
-  items:
-    - name: Speech parancssori felület
-      displayName: SPX
-      items:
-        - name: Mi az a Speech parancssori felület?
-          displayName: What is SPX?
-          href: spx-overview.md
-        - name: A Speech parancssori felület alapjai
-          displayName: SPX basics
-          href: spx-basics.md
-    - name: Speech Studio
-      items:
-        - name: Mi az a Speech Studio?
-          href: 'https://speech.microsoft.com'
-        - name: Custom Commands-alkalmazás létrehozása a Speech Studióval
-          href: quickstart-custom-speech-commands-create-new.md
 - name: Migrálás
   items:
     - name: A Bing Speechből
@@ -595,12 +588,8 @@
     - name: Független felhők
       displayName: 'fairfax,mooncake,compliant,secret,compliance,government,government cloud,dod,china'
       href: sovereign-clouds.md
-    - name: Díjszabás
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
     - name: Díjkalkulátor
       href: 'https://azure.microsoft.com/pricing/calculator/#cognitive-services'
-    - name: Kvóták és korlátok
-      href: speech-services-quotas-and-limits.md
     - name: Megfelelőség
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Titkosítás

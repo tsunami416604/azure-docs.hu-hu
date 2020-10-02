@@ -6,12 +6,12 @@ ms.service: fxt-edge-filer
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: rohogue
-ms.openlocfilehash: 16b219afa329cc105fb70000d8a088d67883feed
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: a6630a04f3811aae0b75bc378a66e8a05e4f8203
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88184669"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91650442"
 ---
 # <a name="open-a-support-ticket-for-the-azure-fxt-edge-filer"></a>Támogatási jegy megnyitása az Azure FXT Edge Filer-hoz
 
@@ -23,7 +23,7 @@ A Azure Portal segítségével nyisson meg egy támogatási jegyet a Microsoft �
 1. A bal oldali panelen görgessen a lap aljára, majd kattintson a **Súgó és támogatás**elemre.
 1. Kattintson az **új támogatási kérelem**elemre. 
 
-   ![Képernyőfelvétel az üres támogatási kérelem űrlapról](media/fxt-support-blank.png)
+   ![Képernyőfelvétel: a "Súgó + támogatás" oldal, amelyen az "új támogatási kérelem" lehetőség van kiválasztva.](media/fxt-support-blank.png)
 
 1. Töltse ki a kérelem űrlapját.  
     1. Az **alapvető beállítások** lapon válassza ki a **probléma típusát** ``Technical`` . 

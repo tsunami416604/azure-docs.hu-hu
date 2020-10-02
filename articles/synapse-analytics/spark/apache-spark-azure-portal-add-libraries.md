@@ -9,12 +9,12 @@ ms.date: 07/22/2020
 ms.author: euang
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: b815dd9218ac395786e7ab7ed3a02ba440fe2807
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ad3231652056244fdfc814251e6caad025db77e5
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91260172"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91649898"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Apache Spark kódtárainak kezelése az Azure szinapszis Analyticsben
 
@@ -85,7 +85,7 @@ Függvénytár telepítése Spark-készletre (előzetes verzió) közvetlenül a
 
  4. Töltse fel a környezet konfigurációs fájlját a fájl-választó használatával.
 
-![Python-kódtárak hozzáadása](./media/apache-spark-azure-portal-add-libraries/apache-spark-add-library-azure.png "Python-kódtárak hozzáadása")
+![Képernyőfelvétel: a környezeti konfigurációs fájl feltöltése gomb.](./media/apache-spark-azure-portal-add-libraries/apache-spark-add-library-azure.png "Python-kódtárak hozzáadása")
 
 ### <a name="verify-installed-libraries"></a>Telepített kódtárak ellenőrzése
 

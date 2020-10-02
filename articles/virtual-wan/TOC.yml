@@ -76,6 +76,8 @@
       href: upgrade-virtual-wan.md
     - name: NVA létrehozása virtuális központban
       href: How-to-nva-hub.md
+    - name: Bérlők közötti virtuális hálózati kapcsolat létrehozása
+      href: cross-tenant-vnet.md
     - name: ExpressRoute
       items:
         - name: ExpressRoute-kapcsolat létrehozása

@@ -595,10 +595,6 @@
                   href: ../../bastion/create-host-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: A Bastion használata a csatlakozáshoz
               href: ../../bastion/bastion-connect-vm-ssh.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-              items:
-                - name: Bastion SSH-kapcsolat
-            - name: Bastion RDP-kapcsolat
-              href: ../../bastion/bastion-connect-vm-rdp.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Titkosítás
           items:
             - name: Lemeztitkosítási forgatókönyvek Linux rendszerre
@@ -625,7 +621,7 @@
               href: disk-encryption-troubleshooting.md
             - name: Lemeztitkosítás – gyakori kérdések
               href: disk-encryption-faq.md
-            - name: Lemeztitkosítás – Előző verzió (Azure AD)
+            - name: Lemeztitkosítás – előző verzió
               items:
                 - name: Áttekintés
                   href: disk-encryption-overview-aad.md
@@ -640,6 +636,7 @@
         - name: Kulcstartó létrehozása
           href: key-vault-setup.md
         - name: SSH-kulcsok létrehozása és használata
+          displayName: ssh keys ssh openssh
           items:
             - name: Linux vagy macOS rendszeren
               href: mac-create-ssh-keys.md

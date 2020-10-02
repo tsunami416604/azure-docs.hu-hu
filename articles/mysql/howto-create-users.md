@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
-ms.date: 4/2/2020
-ms.openlocfilehash: 9b79a0f21135e91ab72a4c8a9e604b84b67df0a9
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 10/1/2020
+ms.openlocfilehash: ed653ffb6fc24a75170d51d345c0c64724ff90f1
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90902818"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651021"
 ---
 # <a name="create-databases-and-users-in-azure-database-for-mysql-server"></a>Adatbázisok és felhasználók létrehozása Azure Database for MySQL-kiszolgálón
 
@@ -35,7 +35,8 @@ A kiszolgáló-rendszergazda felhasználó bizonyos jogosultságokat kap a kiszo
 A Azure Database for MySQL-kiszolgáló létrehozása után az első kiszolgáló-rendszergazdai felhasználói fiókkal további felhasználókat hozhat létre, és rendszergazdai hozzáférést adhat hozzájuk. A kiszolgálói rendszergazdai fiókkal kevesebb jogosultsággal rendelkező felhasználó hozható létre, akik egyéni adatbázis-sémákkal rendelkeznek hozzáféréssel.
 
 > [!NOTE]
-> A SUPER Privilege és a DBA szerepkör nem támogatott. Tekintse át a korlátozások című cikkben szereplő [jogosultságokat](concepts-limits.md#privilege-support) , hogy megtudja, mi nem támogatott a szolgáltatásban.
+> A SUPER Privilege és a DBA szerepkör nem támogatott. Tekintse át a korlátozások című cikkben szereplő [jogosultságokat](concepts-limits.md#privileges--data-manipulation-support) , hogy megtudja, mi nem támogatott a szolgáltatásban.<br><br>
+> A szolgáltatás nem támogatja a jelszavakat, például a "validate_password" és a "caching_sha2_password".
 
 ## <a name="how-to-create-database-with-non-admin-user-in-azure-database-for-mysql"></a>Adatbázis létrehozása nem rendszergazda felhasználóval Azure Database for MySQL
 
@@ -69,7 +70,7 @@ A Azure Database for MySQL-kiszolgáló létrehozása után az első kiszolgál�
 
 5. Jelentkezzen be a kiszolgálóra, és adja meg a kijelölt adatbázist az új Felhasználónév és jelszó használatával. Ez a példa a MySQL parancssort jeleníti meg. Ezzel a paranccsal a rendszer a felhasználónévhez tartozó jelszót kéri. Cserélje le a saját kiszolgáló nevét, az adatbázis nevét és a felhasználónevet.
 
-# <a name="single-server"></a>[Egyetlen kiszolgáló](#tab/single-server)
+# <a name="single-server"></a>[Önálló kiszolgáló](#tab/single-server)
 
    ```azurecli-interactive
    mysql --host mydemoserver.mysql.database.azure.com --database testdb --user db_user@mydemoserver -p
@@ -106,6 +107,10 @@ A Azure Database for MySQL-kiszolgáló létrehozása után az első kiszolgál�
 
    SHOW GRANTS FOR 'new_master_user'@'%';
    ```
+
+## <a name="azure_superuser"></a>azure_superuser
+
+Az összes Azure Database for MySQL-kiszolgáló egy "azure_superuser" nevű felhasználóval jön létre. Ez egy, a Microsoft által létrehozott rendszerfiók, amely a kiszolgáló felügyeletét, biztonsági mentését és egyéb rendszeres karbantartását végzi. A hívási mérnökök ezt a fiókot is használhatják a kiszolgáló elérésére a tanúsítványalapú hitelesítéssel rendelkező incidensek során, és az igény szerinti (JIT) folyamatokat kell használniuk.
 
 ## <a name="next-steps"></a>Következő lépések
 

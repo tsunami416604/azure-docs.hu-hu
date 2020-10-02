@@ -11,12 +11,12 @@ ms.custom:
 ms.author: dobett
 author: dominicbetts
 ms.date: 11/12/2019
-ms.openlocfilehash: 6062e8a74af4bb0a19d02ccf9a4c50da0cc4a7c5
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: f00448f19cc0a2118477a9527005548fea25537e
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "81000104"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651445"
 ---
 # <a name="tutorial-export-data-from-azure-iot-central-and-visualize-insights-in-power-bi"></a>Oktatóanyag: adatok exportálása az Azure IoT Central és az elemzések megjelenítése Power BI
 
@@ -43,7 +43,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 Az Event hub és a Logic app létrehozása előtt létre kell hoznia egy erőforráscsoportot a kezeléséhez. Az erőforráscsoport ugyanazon a helyen kell lennie, mint az **áruházbeli elemzési-pénztár** IoT Central alkalmazás. Erőforráscsoport létrehozása:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. A bal oldali navigációs sávon válassza az **erőforráscsoportok**lehetőséget. Ezután válassza a **Hozzáadás**lehetőséget.
+1. A bal oldali navigációs sávon válassza az **erőforráscsoportok**lehetőséget. Ezután válassza a **Hozzáadás** elemet.
 1. Az **előfizetés**mezőben válassza ki a IoT Central alkalmazás létrehozásához használt Azure-előfizetés nevét.
 1. Az **erőforráscsoport** neve mezőbe írja be a következőt: _Retail-Store-Analysis_*.
 1. A **régió**esetében válassza ki ugyanazt a régiót, amelyet a IoT Central alkalmazáshoz választott.
@@ -89,7 +89,7 @@ Most már rendelkezik egy Event hub-vel, beállíthatja az **áruházbeli elemz�
 1. Válassza ki a **Event Hubs névteret**.
 1. Válassza ki a **Store-telemetria** Event hubot.
 1. Kapcsolja ki az **eszközöket** és az eszközök **sablonjait** az **exportálandó adatexportálás** szakaszban.
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 Az adatexportálás eltarthat néhány percig, hogy el lehessen küldeni a telemetria az Event hub-ra. Az Exportálás állapota az **adatexportálás** oldalon látható:
 
@@ -409,7 +409,7 @@ A Logic app-kialakításhoz való hozzáadáshoz válassza a **kód nézetet**:
     * Válassza ki az **időbélyeg** mezőt, majd válassza az **x-opt-Enqueuedtime** lehetőséget a **dinamikus tartalmak** listájából.
     * Válassza ki a **tartózkodási idő 1** mezőt, majd válassza a **továbbiak** tovább lehetőséget a **telemetria elemzéséhez**. Ezután válassza a **DwellTime1**lehetőséget.
     * Válassza ki a **tartózkodási idő 2** mezőt, majd válassza a **továbbiak** tovább lehetőséget a **telemetria elemzéséhez**. Ezután válassza a **DwellTime2**lehetőséget.
-    * A módosítások mentéséhez válassza a **Mentés** gombot. A **tartózkodási idő illesztőfelülete** művelet a következő képernyőképhez hasonlóan néz ki: ![ Foglaltság művelet](./media/tutorial-in-store-analytics-visualize-insights/occupancy-action-1.png)
+    * A módosítások mentéséhez válassza a **Mentés** gombot. A **tartózkodási idő illesztőfelületének** művelete a következő képernyőképhez hasonlóan néz ki: ![ képernyőkép, amely a "tartózkodási idő illesztőfelülete" műveletet mutatja.](./media/tutorial-in-store-analytics-visualize-insights/occupancy-action-1.png)
 1. Válassza ki a **személyek száma illesztőfelület** műveletet, és válassza a **művelet hozzáadása**lehetőséget.
 1. A **Keresés az összekötők és műveletek**területen írja be **Power bi**, majd nyomja le az **ENTER**billentyűt.
 1. Válassza a **sorok hozzáadása adatkészlethez (előzetes verzió)** műveletet.
@@ -484,7 +484,7 @@ Vegyen fel négy kártya csempét, hogy megjelenjen a várólista hossza és a t
 
 Méretezze át és rendezze át a csempéket az irányítópulton úgy, hogy az a következő képernyőképhez hasonlítson:
 
-![Power BI-irányítópult](./media/tutorial-in-store-analytics-visualize-insights/pbi-dashboard.png)
+![Képernyőfelvétel: a Power B I irányítópult átméretezett és átrendezett csempéket jelenít meg.](./media/tutorial-in-store-analytics-visualize-insights/pbi-dashboard.png)
 
 Hozzáadhat további grafikus erőforrásokat is az irányítópult további testreszabásához:
 
@@ -500,7 +500,7 @@ Az Event hub és a Logic alkalmazást törölheti a Azure Portal a **Retail-Stor
 
 Power BI adatkészleteket és irányítópultokat a munkaterület Power BI beállítások lapján lévő munkaterület törlésével törölheti.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a három oktatóanyag olyan teljes körű megoldást mutat be, amely a **Store Analytics-checkout** IoT Central alkalmazás sablonját használja. Csatlakoztatta az eszközöket az alkalmazáshoz, a IoT Central használta az eszközök figyelésére, és Power BI, hogy irányítópultot hozzon létre az eszköz telemetria való betekintés céljából. A következő lépés egy másik IoT Central alkalmazás-sablon egyikének megismerése:
 

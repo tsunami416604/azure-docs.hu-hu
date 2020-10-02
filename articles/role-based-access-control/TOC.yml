@@ -28,6 +28,10 @@
       href: tutorial-custom-role-cli.md
 - name: Alapelvek
   items:
+    - name: Szerepkör-definíciók
+      href: role-definitions.md
+    - name: Hatókör
+      href: scope-overview.md
     - name: Ajánlott eljárások
       href: best-practices.md
     - name: Feltételes hozzáférés az Azure felügyeleti szolgáltatásaihoz
@@ -40,11 +44,7 @@
 - name: Útmutatók
   items:
     - name: Szerepkör-definíciók felsorolása
-      items:
-        - name: Áttekintés
-          href: role-definitions.md
-        - name: Szerepkör-definíciók felsorolása
-          href: role-definitions-list.md
+      href: role-definitions-list.md
     - name: Szerepkör-hozzárendelések felsorolása
       items:
         - name: Portál
@@ -57,6 +57,8 @@
           href: role-assignments-list-rest.md
     - name: Szerepkör-hozzárendelések hozzáadása vagy eltávolítása
       items:
+        - name: Szerepkör-hozzárendelés hozzáadásának lépései
+          href: role-assignments-steps.md
         - name: Portál
           href: role-assignments-portal.md
         - name: Portál – vendégfelhasználók

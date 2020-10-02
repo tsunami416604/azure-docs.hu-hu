@@ -43,6 +43,8 @@
       href: basic-concepts.md
     - name: Biztonság
       items:
+        - name: Key Vault – hitelesítési alapok
+          href: authentication-fundamentals.md
         - name: Az Azure Key Vault biztonsága
           href: overview-security.md
         - name: Az Azure Key Vault használatának ajánlott eljárásai – Azure Key Vault
@@ -130,6 +132,8 @@
           href: access-behind-firewall.md
     - name: Helyreállítható törlés
       items:
+        - name: A Key Vault helyreállítása (Helyreállítható törlés és végleges törlés elleni védelem)
+          href: key-vault-recovery.md
         - name: Helyreállítható törlés használata a CLI-n
           href: soft-delete-cli.md
         - name: Helyreállítható törlés használata PowerShellel

@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 403a5b68e3320700e275c744210f480be2c88e84
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 07374debf8d660d8f1c32788db3d218da611d539
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021323"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91650476"
 ---
 # <a name="tutorial-securing-azure-remote-rendering-and-model-storage"></a>Oktatóanyag: az Azure távoli renderelés és a modell tárterületének védelme
 
@@ -163,7 +163,7 @@ Módosítsa a **RemoteRenderingCoordinator** egy egyéni modell betöltéséhez 
     ```
 
     Ez a kód három további karakterlánc-változót hoz létre a **RemoteRenderingCoordinator** összetevőhöz.
-    ![Csatolt modell](./media/storage-account-linked-model.png)
+    ![Képernyőfelvétel: a Storage-fiók neve, a blob-tároló neve és a RemoteRenderingCoordinator összetevő modell-elérési útja.](./media/storage-account-linked-model.png)
 
 1. Adja hozzá az értékeket a **RemoteRenderingCoordinator** összetevőhöz. Miután követte a [modell átalakításának](../../../quickstarts/convert-model.md)gyors útmutatóját, a következő értékeket kell megadni:
 
@@ -392,12 +392,13 @@ Ha a HRE-hitelesítés aktív, az Unity Editorban az alkalmazás indításakor m
     * Az **Azure-bérlő azonosítója** a HRE-alkalmazás regisztrációjában található *címtár-(bérlői) azonosító* (lásd az alábbi képet).
     * Az **Azure távoli renderelési fiók azonosítója** megegyezik a **REMOTERENDERINGCOORDINATOR**használt **fiók azonosítójával** .
 
-    ![HRE-hitelesítési összetevő](./media/app-overview-data.png)
+    ![Képernyőkép, amely kiemeli az alkalmazás (ügyfél) AZONOSÍTÓját és könyvtárát (bérlői AZONOSÍTÓját).](./media/app-overview-data.png)
 
 1. Kattintson a Play (lejátszás) gombra az Unity Editorban, és a munkamenet futtatásához.
     Mivel a **AADAuthentication** összetevő rendelkezik egy nézet-vezérlővel, az automatikusan összekapcsolva jelenik meg a munkamenet-engedélyezési modális panel utáni rákérdezéssel.
 1. Kövesse a panelen található utasításokat a **AppMenu**jobb oldalán.
-    Ehhez hasonlónak kell lennie a következőhöz: ![ HRE hitelesítési összetevő ](./media/device-flow-instructions.png) a másodlagos eszközön (vagy ugyanazon az eszközön lévő böngészőn) való belépés után, valamint a hitelesítő adatokkal való bejelentkezéskor a rendszer egy hozzáférési jogkivonatot ad vissza a kérelmező alkalmazásnak, ebben az esetben az Unity Editorban.
+    Ehhez a következőhöz hasonlónak kell megjelennie: ![ illusztráció, amely a AppMenu jobb oldalán megjelenő utasítás panelt jeleníti meg.](./media/device-flow-instructions.png)
+    Miután megadta a megadott kódolást a másodlagos eszközön (vagy ugyanazon az eszközön található böngészőn), és bejelentkezik a hitelesítő adataival, a rendszer egy hozzáférési jogkivonatot ad vissza a kérelmező alkalmazásnak, ebben az esetben az Unity Editorban.
 1. Ezen pont után az alkalmazás minden elemének a szokásos módon kell megjelennie. Ha nem halad a várt módon, ellenőrizze az Unity-konzolt.
 
 ## <a name="build-to-device"></a>Kiépítés eszközre

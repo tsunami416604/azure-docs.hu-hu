@@ -4,11 +4,13 @@
   items:
     - name: Mi az IoT Plug and Play?
       href: overview-iot-plug-and-play.md
-    - name: Az előzetes verzió frissítésének újdonságai
-      href: overview-iot-plug-and-play-preview-updates.md
+    - name: Mit tartalmaz a jelenlegi kiadás?
+      href: overview-iot-plug-and-play-current-release.md
 - name: Rövid útmutatók
   expanded: true
   items:
+    - name: Saját környezet beállítása
+      href: set-up-environment.md
     - name: Eszköz csatlakoztatása az IoT Hubhoz
       items:
         - name: C#
@@ -27,6 +29,10 @@
           href: quickstart-service-node.md
         - name: Python
           href: quickstart-service-python.md
+        - name: C#
+          href: quickstart-service-csharp.md
+        - name: Java
+          href: quickstart-service-java.md
 - name: Oktatóanyagok
   items:
     - name: Több összetevőből álló eszköz csatlakoztatása (C)
@@ -41,18 +47,38 @@
       href: tutorial-multiple-components-python.md
     - name: MQTT használata eszközök csatlakoztatására
       href: tutorial-use-mqtt.md
+    - name: MXChip-eszközök kezelése (minta)
+      href: 'https://docs.microsoft.com/samples/azure-samples/mxchip-iot-devkit-pnp-get-started/sample/'
+    - name: Eszköz migrálása modulba
+      href: tutorial-migrate-device-to-module.md
 - name: Alapelvek
   items:
     - name: Architektúra
       href: concepts-architecture.md
-    - name: Fejlesztői útmutató
-      href: concepts-developer-guide.md
+    - name: Útmutató eszközfejlesztők számára
+      items:
+        - name: C#
+          href: concepts-developer-guide-device-csharp.md
+        - name: Node.js
+          href: concepts-developer-guide-device-node.md
+        - name: Java
+          href: concepts-developer-guide-device-java.md
+        - name: Python
+          href: concepts-developer-guide-device-python.md
+        - name: C#
+          href: concepts-developer-guide-device-c.md
+    - name: Útmutató szolgáltatásfejlesztők számára
+      href: concepts-developer-guide-service.md
     - name: Összetevők
       href: concepts-components.md
     - name: Az IoT Plug and Playhez kapcsolódó konvenciók
       href: concepts-convention.md
+    - name: IoT Plug and Play-híd
+      href: concepts-iot-pnp-bridge.md
     - name: Digital Twins
       href: concepts-digital-twin.md
+    - name: Eszköztanúsítás
+      href: concepts-certification-program.md
     - name: Modelladattár
       href: concepts-model-repository.md
     - name: Modellek használata megoldásokban
@@ -67,8 +93,14 @@
   items:
     - name: IoT Explorer telepítése és használata
       href: howto-use-iot-explorer.md
+    - name: Az IoT Plug and Play-híd telepítése és használata
+      href: howto-use-iot-pnp-bridge.md
     - name: Azure IoT CLI-bővítmény telepítése és használata
       href: howto-use-iot-pnp-cli.md
+    - name: DTDL tartalomkészítő eszközök telepítése és használata
+      href: howto-use-dtdl-authoring-tools.md
+    - name: Embedded C használata
+      href: howto-use-embedded-c.md
     - name: Digitális ikereszközök kezelése
       href: howto-manage-digital-twin.md
     - name: Eszköz minősítése
@@ -78,7 +110,7 @@
     - name: Kódtárak és SDK-k
       href: libraries-sdks.md
     - name: Digital Twin REST API
-      href: 'https://aka.ms/iot-pnp-preview-rest'
+      href: 'https://docs.microsoft.com/rest/api/iothub/service/digitaltwin'
     - name: Azure CLI
       href: /cli/azure/azure-cli-reference-for-IoT
 - name: További források

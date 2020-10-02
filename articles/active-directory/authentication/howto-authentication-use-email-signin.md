@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 06/24/2020
+ms.date: 10/01/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
-ms.reviewer: scottsta
-ms.openlocfilehash: 084c50a67fe332751a3679da4c97f67d414ebb94
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.reviewer: calui
+ms.openlocfilehash: 9b9617b4109318257895587cc0d8e75054a7f729
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419529"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91650306"
 ---
 # <a name="sign-in-to-azure-active-directory-using-email-as-an-alternate-login-id-preview"></a>Bejelentkezés Azure Active Directory az e-mail-cím használata másodlagos bejelentkezési AZONOSÍTÓként (előzetes verzió)
 
@@ -28,6 +28,8 @@ Néhány szervezet nem helyezte át a hibrid hitelesítést a következő okok m
 * Az üzleti vagy megfelelőségi okok miatt a szervezet nem szeretné a helyszíni UPN-t használni az Azure AD-be való bejelentkezéshez.
 
 Ha segítségre van szüksége a hibrid hitelesítésre való áttéréshez, beállíthatja az Azure AD-t, hogy a felhasználók a hitelesített tartományba tartozó e-mailben jelentkezzenek be egy másik bejelentkezési AZONOSÍTÓként. Ha például a *contoso* a *Fabrikam*-re lett átnevezve, és nem kívánja tovább használni az örökölt `balas@contoso.com` UPN-t, a rendszer mostantól másodlagos Bejelentkezési azonosítóként is használhatja az e-mailt. Egy alkalmazáshoz vagy szolgáltatáshoz való hozzáféréshez a felhasználók a hozzárendelt e-mail-cím használatával bejelentkeznek az Azure AD-be, például: `balas@fabrikam.com` .
+
+Ez a cikk bemutatja, hogyan engedélyezheti és használhatja az e-maileket alternatív bejelentkezési AZONOSÍTÓként. Ez a funkció a ingyenes Azure AD Edition és újabb verziókban érhető el.
 
 > [!NOTE]
 > Jelentkezzen be az Azure AD-be a másodlagos bejelentkezési AZONOSÍTÓként a Azure Active Directory nyilvános előzetes verziójára. További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -45,6 +47,8 @@ A probléma tipikus megkerülő megoldás volt az Azure AD UPN beállítása arr
 Egy másik módszer, hogy szinkronizálja az Azure AD-t és a helyszíni UPN-ket ugyanarra az értékre, majd konfigurálja az Azure AD-t, hogy a felhasználók ellenőrzött e-mail-címmel jelentkezzenek be az Azure AD-be. Ennek a képességnek a biztosításához meg kell adnia egy vagy több e-mail-címet a felhasználó *ProxyAddresses* attribútumában a helyszíni címtárban. A *ProxyAddresses* ezután automatikusan szinkronizálva lesznek az Azure ad-vel Azure ad Connect használatával.
 
 ## <a name="preview-limitations"></a>Előzetes verzió korlátozásai
+
+Jelentkezzen be az Azure AD-be az e-mailben, alternatív bejelentkezési AZONOSÍTÓként pedig elérhető a ingyenes Azure AD Edition és újabb verziókban.
 
 Az aktuális előzetes verzióban a következő korlátozások érvényesek, amikor egy felhasználó egy nem UPN-alapú e-mail-címmel jelentkezik be alternatív bejelentkezési AZONOSÍTÓként:
 

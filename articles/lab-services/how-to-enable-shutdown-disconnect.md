@@ -2,13 +2,13 @@
 title: Virtuális gépek automatikus leállításának beállítása laborhoz Azure Lab Services
 description: Megtudhatja, hogyan engedélyezheti vagy tilthatja le a virtuális gépek automatikus leállítását, ha a távoli asztali kapcsolat le van választva.
 ms.topic: article
-ms.date: 08/17/2020
-ms.openlocfilehash: 0df3fdcaea99c00461caac37a3b655d152a0e527
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.date: 10/01/2020
+ms.openlocfilehash: 67b51941207fdd4913df9a92362959bbd468d336
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798482"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91649881"
 ---
 # <a name="configure-automatic-shutdown-of-vms-for-a-lab"></a>Virtuális gépek automatikus leállításának beállítása laborhoz
 
@@ -16,8 +16,8 @@ Ez a cikk bemutatja, hogyan konfigurálhatja a virtuális gépek automatikus le�
 
 Több automatikus leállítási költség-vezérlési funkciót is engedélyezhet, hogy proaktív módon meggátolja a további költségeket, ha a virtuális gépeket nem használják aktívan. A következő három automatikus leállítási és leválasztási funkció kombinációja a legtöbb esetben megfogást nyújt, amikor a felhasználók véletlenül elhagyják a virtuális gépeket:
  
-* A felhasználók automatikus leválasztása a virtuális gépekről, amelyeket az operációs rendszer tétlennek tekint (csak Windows).
-* Virtuális gépek automatikus leállítása a felhasználók leválasztásakor (Windows & Linux).
+* A felhasználók automatikus leválasztása a virtuális gépekről, amelyeket az operációs rendszer tétlennek tekint.
+* A virtuális gépek automatikus leállítása a felhasználók leválasztásakor.
 * Automatikusan leállítja az elindított virtuális gépeket, de a felhasználók nem csatlakoznak.
 
 Tekintse át az automatikus leállítási funkciókról szóló további részleteket a [Cost Control és az automatikus leállítás beállításai](cost-management-guide.md#automatic-shutdown-settings-for-cost-control) szakaszban.
@@ -37,8 +37,7 @@ Az automatikus leállítási beállítást a [Azure Lab Servicesban](https://lab
 Ügyeljen arra, hogy az automatikus leállítás részleteit a [Cost Control és az automatikus leállítás beállításai](cost-management-guide.md#automatic-shutdown-settings-for-cost-control) szakaszban tekintse át.
 
 > [!WARNING]
-> Ha a Windows operációs rendszert (OS) leállítja egy virtuális gépre, mielőtt leválaszt egy RDP-munkamenetet a virtuális géphez, az automatikus leállítás funkció nem fog megfelelően működni.  
-
+> Ha a Linux vagy a Windows operációs rendszert (OS) leállítja egy virtuális gépen, mielőtt leválasztja az RDP-munkamenetet a virtuális géphez, az automatikus leállítási funkció nem fog megfelelően működni.  
 ## <a name="next-steps"></a>Következő lépések
 
 [Az osztályterem Labs irányítópultja](use-dashboard.md)

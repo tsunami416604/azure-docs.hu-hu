@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 9/21/2020
-ms.openlocfilehash: 64f4b6e87f038b265fbd2c3e13f3779fb4c24f74
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 10/1/2020
+ms.openlocfilehash: 6fff7f22e7d265eb9b15bcec8604eeab692ac1c0
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936155"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91650289"
 ---
 # <a name="limitations-in-azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL-rugalmas kiszolgáló korlátozásai (előzetes verzió)
 
@@ -26,6 +26,8 @@ Ez a cikk a Azure Database for MySQL rugalmas kiszolgálói szolgáltatás korl�
 > Ha a (z) és a (z) kiszolgáló paramétereinek minimális/maximális értékeit keresi `max_connections` `innodb_buffer_pool_size` , akkor ez az információ a kiszolgálói paraméterekre vonatkozó fogalmakat is áthelyezte <!-- **[server parameters](./concepts-server-parameters.md)** --> cikket.
 
 Azure Database for MySQL támogatja a kiszolgálói paraméterek értékének finomhangolását. Néhány paraméter minimális és maximális értéke (pl. `max_connections`, `join_buffer_size` , `query_cache_size` ) a számítási és a kiszolgáló számítási mérete határozza meg. Tekintse meg a kiszolgálói paraméterekkel kapcsolatos fogalmakat <!-- [server parameters](./concepts-server-parameters.md)--> További információ ezekről a korlátozásokról.
+
+A szolgáltatás nem támogatja a jelszavakat, például a "validate_password" és a "caching_sha2_password".
 
 ## <a name="storage-engines"></a>Storage-motorok
 
