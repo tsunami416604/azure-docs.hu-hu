@@ -449,12 +449,6 @@
               href: windows-voice-assistants-best-practices.md
             - name: Minták és gyakori kérdések
               href: windows-voice-assistants-faq.md
-    - name: Egyéni kulcsszó
-      items:
-        - name: Az egyéni kulcsszavak áttekintése
-          href: custom-keyword-overview.md
-        - name: Az egyéni kulcsszavak alapjai
-          href: custom-keyword-basics.md
 - name: Beszélőfelismerés
   items:
     - name: A Speaker Recognition áttekintése
@@ -465,6 +459,12 @@
       items:
         - name: Speaker Recognition REST API
           href: 'https://docs.microsoft.com/rest/api/speakerrecognition/'
+- name: Egyéni kulcsszó
+  items:
+    - name: Az egyéni kulcsszavak áttekintése
+      href: custom-keyword-overview.md
+    - name: Az egyéni kulcsszavak alapjai
+      href: custom-keyword-basics.md
 - name: Eszközök
   items:
     - name: Beszéd SDK
