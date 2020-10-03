@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 ms.topic: include
 ms.custom: include file
 services: time-series-insights
@@ -8,13 +8,13 @@ ms.service: time-series-insights
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
-ms.date: 02/03/2020
-ms.openlocfilehash: b2e86a92c253bc1926386269e289cdb7ae578746
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 10/02/2020
+ms.openlocfilehash: 7de4dc21391f7dbd817c56ce51606a808cf9e3c4
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080767"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665811"
 ---
 1. A [Azure Portal](https://ms.portal.azure.com/)válassza a **Azure Active Directory**  >  **Alkalmazásregisztrációk**  >  **új regisztráció**lehetőséget.
 
@@ -22,7 +22,7 @@ ms.locfileid: "87080767"
 
     A regisztrálás után az alkalmazás itt jelenik meg.
 
-1. Adjon nevet az alkalmazásnak, és válassza ki a **fiókokat ebben a szervezeti könyvtárban csak** az API-hoz hozzáférő **támogatott fióktípus** megadásához. Válasszon egy érvényes URI-t a felhasználók a hitelesítés után való átirányításához, majd **regisztrálja**őket.
+1. Adjon nevet az alkalmazásnak, és válassza ki a **fiókokat ebben a szervezeti könyvtárban csak** az API-hoz hozzáférő **támogatott fióktípus** megadásához. Ha [nyilvános ügyfélprogramot](https://docs.microsoft.com/azure/active-directory/develop/msal-client-application-configuration#redirect-uri)hoz létre, adjon hozzá egy érvényes átirányítási URI-t, majd **regisztráljon**.
 
    [![Az alkalmazás létrehozása Azure Active Directory](media/time-series-insights-aad-registration/active-directory-registration.png)](media/time-series-insights-aad-registration/active-directory-registration.png#lightbox)
 
@@ -32,7 +32,7 @@ ms.locfileid: "87080767"
 
    Másolja az **alkalmazás (ügyfél) azonosítóját** az ügyfélalkalmazás használatára.
 
-1. A **hitelesítés** panelen a fontos hitelesítési konfigurációs beállítások adhatók meg. 
+1. A **hitelesítés** panelen a fontos hitelesítési konfigurációs beállítások adhatók meg.
 
     1. Adja hozzá az **átirányítási URI-ket** , és konfigurálja a **hozzáférési jogkivonatokat** a **+ platform hozzáadása**lehetőség kiválasztásával.
 
@@ -66,7 +66,7 @@ ms.locfileid: "87080767"
    > [!NOTE]
    > Lehetőség van egy tanúsítvány importálására. A fokozott biztonság érdekében ajánlott a tanúsítvány használata. A tanúsítvány használatához válassza a **tanúsítvány feltöltése**lehetőséget.
 
-1. A Azure Active Directory alkalmazás Azure Time Series Insightsének hozzárendelése. Válassza az **API-engedélyek**lehetőséget a  >  **Add a permission**  >  **szervezetem által használt API**-k hozzáadása lehetőségre. 
+1. A Azure Active Directory alkalmazás Azure Time Series Insightsének hozzárendelése. Válassza az **API-engedélyek**lehetőséget a  >  **Add a permission**  >  **szervezetem által használt API**-k hozzáadása lehetőségre.
 
     [![API hozzárendelése a Azure Active Directory-alkalmazáshoz](media/time-series-insights-aad-registration/active-directory-app-api-permission.png)](media/time-series-insights-aad-registration/active-directory-app-api-permission.png#lightbox)
 

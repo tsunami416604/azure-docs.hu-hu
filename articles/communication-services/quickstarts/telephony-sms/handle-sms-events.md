@@ -6,15 +6,15 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2020
+ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 02a0a5dd5cfe3a1ecaa264f1e81c848a8da6c58d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 66160f17a15ce81dbc21ddf65dba17c0a4ad7a99
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90947240"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665371"
 ---
 # <a name="quickstart-handle-sms-events"></a>Gyors útmutató: SMS-események kezelése
 
@@ -65,11 +65,11 @@ Előfizethet bizonyos eseményekre, hogy elmondja Event Grid a nyomon követni k
 
 Tekintse meg az [Azure kommunikációs szolgáltatások által támogatott események](../../concepts/event-handling.md)teljes listáját.
 
-:::image type="content" source="./media/handle-sms-events/select-events-create-eventsub.png" alt-text="Képernyőfelvétel: az SMS-ben fogadott és SMS-kézbesítési jelentés bejelölt esemény-típusai.":::
+:::image type="content" source="./media/handle-sms-events/select-events-create-eventsub.png" alt-text="Képernyőfelvétel: az esemény-előfizetések gombjának kiválasztása az erőforrás események lapján.":::
 
 Válassza a **webes Hook** lehetőséget a **végpont típusához**. 
 
-:::image type="content" source="./media/handle-sms-events/select-events-create-linkwebhook.png" alt-text="Képernyőfelvétel: a végpont típusa mező, amely a web Hookra van beállítva.":::
+:::image type="content" source="./media/handle-sms-events/select-events-create-linkwebhook.png" alt-text="Képernyőfelvétel: az esemény-előfizetések gombjának kiválasztása az erőforrás események lapján.":::
 
 A **végpont**esetében kattintson a **válasszon egy végpontot**lehetőségre, és adja meg a webalkalmazás URL-címét.
 
@@ -77,7 +77,7 @@ Ebben az esetben a rövid útmutatóban korábban beállított [Azure Event Grid
 
 Ezután válassza a **kijelölés megerősítése**lehetőséget.
 
-:::image type="content" source="./media/handle-sms-events/select-events-create-selectwebhook-epadd.png" alt-text="A webhook-végpont megerősítését bemutató képernyőkép.":::
+:::image type="content" source="./media/handle-sms-events/select-events-create-selectwebhook-epadd.png" alt-text="Képernyőfelvétel: az esemény-előfizetések gombjának kiválasztása az erőforrás események lapján.":::
 
 ## <a name="viewing-sms-events"></a>SMS-események megtekintése
 
@@ -94,9 +94,9 @@ Tekintse meg az [Azure kommunikációs szolgáltatások által támogatott esem�
 
 A fenti műveletek elvégzése után láthatja, hogy a rendszer  `SMS Received` `SMS Delivery Report Received` elküldi az eseményeket a végpontnak. Ezek az események az elején beállított [Azure Event Grid Viewer-mintában](https://docs.microsoft.com/samples/azure-samples/azure-event-grid-viewer/azure-event-grid-viewer/) jelennek meg. Az esemény melletti szem ikon megnyomásával megtekintheti a teljes adattartalmat. Az események a következőképpen fognak kinézni:
 
-:::image type="content" source="./media/handle-sms-events/sms-received.png" alt-text="Az SMS-ben fogadott esemény Event Grid sémáját ábrázoló képernyőkép.":::
+:::image type="content" source="./media/handle-sms-events/sms-received.png" alt-text="Képernyőfelvétel: az esemény-előfizetések gombjának kiválasztása az erőforrás események lapján.":::
 
-:::image type="content" source="./media/handle-sms-events/SMS-Delivery-Report-Received.png" alt-text="Képernyőfelvétel: a Event Grid sémája egy SMS kézbesítési jelentés eseményéhez.":::
+:::image type="content" source="./media/handle-sms-events/SMS-Delivery-Report-Received.png" alt-text="Képernyőfelvétel: az esemény-előfizetések gombjának kiválasztása az erőforrás események lapján.":::
 
 További információk az [esemény-sémákkal és egyéb eseményvezérelt fogalmakkal](../../concepts/event-handling.md) kapcsolatban
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: 89bc974e4d95da183f23ef6643a03b3f20cfa6fa
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 3caf12e13b5999c40843f1203ac8ce7f2f21ef6b
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91611163"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665871"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-app-spa-using-auth-code-flow"></a>Oktatóanyag: bejelentkezés a felhasználókba és a Microsoft Graph API meghívása egy JavaScript-alapú egyoldalas alkalmazásból (SPA) az Auth Code flow használatával
 
@@ -551,7 +551,9 @@ Amikor a felhasználó első alkalommal kiválasztja a **Bejelentkezés** gombot
 
 Ekkor a rendszer elküld egy PKCE-védelemmel ellátott hitelesítési kódot a CORS által védett jogkivonat-végpontba, és kicseréli a jogkivonatokat. Az alkalmazás egy azonosító jogkivonatot, hozzáférési jogkivonatot és frissítési jogkivonatot fogad el, és *msal.js*dolgozza fel, és a jogkivonatokban tárolt információk gyorsítótárazva vannak.
 
-Az azonosító jogkivonat a felhasználóra vonatkozó alapszintű információkat tartalmaz, például a megjelenítendő nevüket. Ha azt tervezi, hogy az azonosító jogkivonat által megadott bármilyen adatforrást használ, a háttér-kiszolgálónak *ellenőriznie kell* , hogy a tokent egy érvényes felhasználónak adta-e ki az alkalmazás számára. A frissítési jogkivonat korlátozott élettartammal rendelkezik, és 24 óra elteltével lejár. A frissítési token használatával csendesen szerezhetők be új hozzáférési tokenek.
+Az azonosító jogkivonat a felhasználóra vonatkozó alapszintű információkat tartalmaz, például a megjelenítendő nevüket. Ha azt tervezi, hogy az azonosító jogkivonat által megadott bármilyen adatforrást használ, a háttér-kiszolgálónak *ellenőriznie kell* , hogy a tokent egy érvényes felhasználónak adta-e ki az alkalmazás számára.
+
+A hozzáférési jogkivonat korlátozott élettartammal rendelkezik, és 24 óra elteltével lejár. A frissítési token használatával csendesen szerezhetők be új hozzáférési tokenek.
 
 Az oktatóanyagban létrehozott `acquireTokenSilent` és/vagy a `acquireTokenPopup` Microsoft Graph API felhasználói profil adatainak lekérdezéséhez használt *hozzáférési token* beszerzése. Ha szüksége van egy olyan mintára, amely érvényesíti az azonosító jogkivonatot, tekintse meg az [Active Directory-JavaScript-singlepageapp-DotNet-webapi-v2](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2) minta alkalmazást a githubon. A minta egy ASP.NET webes API-t használ a jogkivonat-ellenőrzéshez.
 
@@ -647,7 +649,7 @@ Ha egy háttérrendszer API-nak nincs szüksége hatókörre, ami nem ajánlott,
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha szeretné mélyebben megismerni a JavaScript egyoldalas alkalmazás-fejlesztést a Microsoft Identity platformon, tekintse meg a több részből álló forgatókönyvek sorozatát:
 

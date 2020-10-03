@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 5c175a1575a4efbdc2294412e3743e201d8c4bb1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c0d4c72bd60f35088773ec6dc5df80709c5ae98c
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83653300"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91666823"
 ---
 # <a name="what-is-ipv6-for-azure-virtual-network"></a>Mi az az IPv6 for Azure Virtual Network?
 
@@ -40,7 +40,7 @@ IPv6 az Azure VNET előnyei:
 - Hosszú távú, stabil Azure-alapú virtuális gépek közötti IPv6-kapcsolaton alapul.
 - Alapértelmezés szerint biztonságos, mivel az internethez való IPv6-kapcsolat csak akkor áll fenn, ha explicit módon megkéri azt a központi telepítésben.
 
-## <a name="capabilities"></a>Képességek
+## <a name="capabilities"></a>Funkciók
 
 Az IPv6 for Azure VNet a következő képességeket tartalmazza:
 
@@ -61,7 +61,7 @@ Az IPv6 for Azure VNet a következő képességeket tartalmazza:
     - Megjegyzés: az IPv6 csak az Azure-beli virtuális gépeken lévő elsődleges hálózati adapter (NIC) esetében állítható be. 
 - [Standard IPv6 belső Load Balancer](ipv6-dual-stack-standard-internal-load-balancer-powershell.md) támogatás rugalmas többrétegű alkalmazások létrehozásához az Azure virtuális hálózatok-n belül.   
 - Alapszintű IPv6 nyilvános Load Balancer támogatása az örökölt központi telepítésekkel való kompatibilitáshoz
-- A [fenntartott IPv6 nyilvános IP-címek és címtartományok](ipv6-public-ip-address-prefix.md) stabil és kiszámítható IPv6-címeket biztosítanak, amelyek megkönnyítik az Azure által üzemeltetett alkalmazások engedélyezését vállalata és ügyfelei számára.
+- A [fenntartott IPv6 nyilvános IP-címek és címtartományok](ipv6-public-ip-address-prefix.md) stabil és kiszámítható IPv6-címeket biztosítanak, amelyek megkönnyítik az Azure által üzemeltetett alkalmazások szűrését vállalata és ügyfelei számára.
 - Példányszintű nyilvános IP IPv6-alapú internetkapcsolatot biztosít közvetlenül az egyes virtuális gépek számára.
 - [IPv6 hozzáadása meglévő IPv4-alapú központi telepítésekhez](ipv6-add-to-existing-vnet-powershell.md)– ez a funkció lehetővé teszi, hogy a központi telepítések újbóli létrehozása nélkül egyszerűen hozzá lehessen adni IPv6-kapcsolatot a meglévő IPv4-alapú telepítésekhez.  A folyamat során az IPv4-alapú hálózati forgalom nem befolyásolja, hogy az alkalmazástól és az operációs rendszertől függően akár élő szolgáltatásokhoz is hozzáadhat IPv6-t.    
 - Lehetővé teszi, hogy az internetes ügyfelek zökkenőmentesen férjenek hozzá a kettős stack-alkalmazásokhoz, és a Azure DNS IPv6-(AAAA-) rekordokat támogatják. 
@@ -87,7 +87,7 @@ Az Azure Virtual Network jelenlegi IPv6-kiadása a következő korlátozásokkal
 
 Az IPv6-os Azure-erőforrások és a sávszélesség az IPv4-vel megegyező díjszabás szerint történik. Az IPv6 esetében nincs további vagy eltérő díj. A [nyilvános IP-címekre](https://azure.microsoft.com/pricing/details/ip-addresses/), a [hálózati sávszélességre](https://azure.microsoft.com/pricing/details/bandwidth/)vagy a [Load Balancer](https://azure.microsoft.com/pricing/details/load-balancer/)díjszabására vonatkozó részletekért tekintse meg a következőt:.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan [helyezhet üzembe egy IPv6-alapú kettős verem-alkalmazást Azure PowerShell használatával](virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md).
 - Ismerje meg, hogyan [helyezhet üzembe egy IPv6-alapú kettős verem-alkalmazást az Azure CLI használatával](virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli.md).

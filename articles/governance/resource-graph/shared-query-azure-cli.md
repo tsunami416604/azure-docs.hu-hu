@@ -3,12 +3,12 @@ title: 'Gyors útmutató: megosztott lekérdezés létrehozása az Azure CLI-vel
 description: Ebben a rövid útmutatóban az Azure CLI-hez készült Resource Graph-bővítmény engedélyezéséhez és egy megosztott lekérdezés létrehozásához szükséges lépéseket követheti.
 ms.date: 06/29/2020
 ms.topic: quickstart
-ms.openlocfilehash: c5f7e6fbe1b462c1f9b6e8ad46c598398e1aca02
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: c888cee5899c45747db1775ffdfbc0d0c78e00c7
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050947"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667520"
 ---
 # <a name="quickstart-create-a-resource-graph-shared-query-using-azure-cli"></a>Gyors útmutató: erőforrás-gráf megosztott lekérdezés létrehozása az Azure CLI használatával
 
@@ -24,7 +24,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 
 ## <a name="add-the-resource-graph-extension"></a>A Resource Graph bővítmény hozzáadása
 
-Annak engedélyezéséhez, hogy az Azure CLI működjön az Azure Resource Graph használatával, hozzá kell adni a bővítményt. Ez a bővítmény mindenhol működik, ahol az Azure CLI használható, beleértve a [Basht Windows 10-en](/windows/wsl/install-win10), a [Cloud Shellt](https://shell.azure.com) (különállón és portálon belülin egyaránt), az [Azure CLI Docker-rendszerképet](https://hub.docker.com/r/microsoft/azure-cli/), vagy akár helyileg telepítve is.
+Annak engedélyezéséhez, hogy az Azure CLI működjön az Azure Resource Graph használatával, hozzá kell adni a bővítményt. Ez a bővítmény mindenhol működik, ahol az Azure CLI használható, beleértve a [Basht Windows 10-en](/windows/wsl/install-win10), a [Cloud Shellt](https://shell.azure.com) (különállón és portálon belülin egyaránt), az [Azure CLI Docker-rendszerképet](https://hub.docker.com/_/microsoft-azure-cli), vagy akár helyileg telepítve is.
 
 1. Győződjön meg arról, hogy a legújabb Azure CLI telepítve van (legalább a **2.8.0**). Ha még nincs telepítve, kövesse [ezeket az utasításokat](/cli/azure/install-azure-cli-windows).
 

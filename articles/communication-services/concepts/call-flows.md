@@ -6,15 +6,15 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2020
+ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 7172e3319e60603d46dc2af87f3818a5c3664285
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 9fe5cb13ee352b2c49ab6ae57cabd6116cdfa720
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90947253"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667673"
 ---
 # <a name="call-flows"></a>Folyamatok meghívása
 
@@ -44,13 +44,13 @@ Ha két eszköz olyan alhálózatokban található, amelyek nem tudnak megérkez
 
 Alice számára a Coffee Shop NAT-je lesz, és Bob számára a hazai iroda NAT-je lesz. Alice eszköze elküldi a NAT külső címeit, és Bob is ugyanezt teszi. Az ügyfél-kódtárak megtudhatják a külső címeket egy olyan KÁBÍTó (munkamenet-bejárási segédprogramok a NAT-hoz) szolgáltatáshoz, amelyet az Azure kommunikációs szolgáltatásai ingyenesen biztosítanak. Az Alice és Bob közötti kézfogást kezelő logika beágyazva van az Azure kommunikációs szolgáltatásokban biztosított ügyféloldali kódtárak közé. (Nincs szükség további konfigurációra)
 
-:::image type="content" source="./media/call-flows/about-voice-case-2.png" alt-text="A KÁBÍTÁSi kapcsolatokat használó VOIP-hívást ábrázoló ábra.":::
+:::image type="content" source="./media/call-flows/about-voice-case-2.png" alt-text="A felhasználók és a kommunikációs szolgáltatások közötti közvetlen VOIP-hívást bemutató ábra.":::
 
 ### <a name="case-3-voip-where-neither-a-direct-nor-nat-connection-is-possible"></a>3. eset: VoIP, ahol sem a közvetlen, sem a NAT-kapcsolatok nem lehetségesek
 
 Ha egy vagy mindkét ügyfél egy szimmetrikus NAT mögött található, egy külön felhőalapú szolgáltatás szükséges az adathordozó továbbításához a két ügyfél kódtára között. Ezt a szolgáltatást kapcsolja be (a NAT-kapcsolaton keresztüli átjárással), és a kommunikációs szolgáltatások is biztosítanak. A kommunikációs szolgáltatások által meghívott ügyféloldali függvénytár automatikusan az észlelt hálózati feltételek alapján kapcsolja be a szolgáltatásokat. A Microsoft TURN Service használatát külön kell fizetni.
 
-:::image type="content" source="./media/call-flows/about-voice-case-3.png" alt-text="A KAPCSOLÁSi kapcsolatokat használó VOIP-hívást ábrázoló ábra.":::
+:::image type="content" source="./media/call-flows/about-voice-case-3.png" alt-text="A felhasználók és a kommunikációs szolgáltatások közötti közvetlen VOIP-hívást bemutató ábra.":::
  
 ### <a name="case-4-group-calls-with-pstn"></a>4. eset: csoportos hívások a PSTN-sel
 
@@ -58,7 +58,7 @@ A PSTN-hívások és az adathordozók egyaránt az Azure kommunikációs szolgá
 
 A PSTN adathordozó-forgalma a Media Processor nevű összetevőn keresztül áramlik.
 
-:::image type="content" source="./media/call-flows/about-voice-pstn.png" alt-text="A kommunikációs szolgáltatásokkal rendelkező PSTN-csoportok hívását bemutató ábra.":::
+:::image type="content" source="./media/call-flows/about-voice-pstn.png" alt-text="A felhasználók és a kommunikációs szolgáltatások közötti közvetlen VOIP-hívást bemutató ábra.":::
 
 > [!NOTE]
 > A média-feldolgozással jól ismertek, a média processzora szintén vissza van állítva a felhasználói ügynöknek, az [RFC 3261 SIP: munkamenet-kezdeményező protokollban](https://tools.ietf.org/html/rfc3261)definiált módon, ami azt jelenti, hogy a Microsoft és a Carrier hálózatok közötti hívások kezelése során kodekeket fordíthat. Az Azure kommunikációs szolgáltatások jelző vezérlője a Microsoft által a SIP-proxyk ugyanazon RFC-ben történő megvalósítása.
@@ -70,11 +70,11 @@ A csoportos hívások alapértelmezett valós idejű protokollja a User Datagram
 > [!NOTE]
 > A Media Processor többpontos vezérlő egységként (MCU) vagy szelektív továbbítási egységként (SFU) működhet
 
-:::image type="content" source="./media/call-flows/about-voice-group-calls.png" alt-text="A kommunikációs szolgáltatásokon belüli UDP-adatfolyamok folyamatát ábrázoló diagram.":::
+:::image type="content" source="./media/call-flows/about-voice-group-calls.png" alt-text="A felhasználók és a kommunikációs szolgáltatások közötti közvetlen VOIP-hívást bemutató ábra.":::
 
 Ha az ügyféloldali kódtár nem tud az UDP protokollt használni a tűzfal korlátozásai miatt, a rendszer kísérletet tesz a Transmission Control Protocol (TCP) használatára. Vegye figyelembe, hogy a Media Processor összetevőhöz UDP szükséges, így ha ez történik, a kommunikációs szolgáltatások bekapcsolják a szolgáltatást, hogy a rendszer a TCP-t UDP-re fordítja. Ebben az esetben a díjak kiváltására akkor kerül sor, ha a funkciók kézi letiltására nem kerül sor.
 
-:::image type="content" source="./media/call-flows/about-voice-group-calls-2.png" alt-text="A kommunikációs szolgáltatások TCP-feldolgozási folyamatát ábrázoló diagram.":::
+:::image type="content" source="./media/call-flows/about-voice-group-calls-2.png" alt-text="A felhasználók és a kommunikációs szolgáltatások közötti közvetlen VOIP-hívást bemutató ábra.":::
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/03/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 760a3a194e181576acb3601aabc07c6900cb664e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 47b3706d1fb46ab7e115d79c2f06f6264c8b423e
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91276764"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91666513"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>Bevezetés az Azure Cosmos DB Table API és az Azure Table Storage a .NET SDK-val való használatába
 
@@ -136,7 +136,7 @@ Az entitásokat a [TableOperation](https://docs.microsoft.com/dotnet/api/microso
 
 A lekérdezés után egyszerűen törölheti az entitásokat az entitások frissítésénél bemutatott minta alapján. Az alábbi kód lekérdez, majd töröl egy ügyfélentitást. Entitás törléséhez fűzze hozzá a következő kódot a **SamplesUtils.cs** fájlhoz: 
 
-:::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/SamplesUtils.cs" id="QueryData":::
+:::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/SamplesUtils.cs" id="DeleteItem":::
 
 ## <a name="execute-the-crud-operations-on-sample-data"></a>A szifilisz-műveletek végrehajtása a mintaadatok alapján
 
@@ -158,7 +158,7 @@ A projekt **CosmosTableSamples**. Nyissa meg a **program.cs** nevű osztályt, �
 
 Most hozza létre a megoldást, és nyomja le az F5 billentyűt a projekt futtatásához. A projekt futtatásakor a következő kimenet jelenik meg a parancssorban:
 
-:::image type="content" source="./media/tutorial-develop-table-standard/output-from-sample.png" alt-text="Kimenet a parancssorból":::
+:::image type="content" source="./media/tutorial-develop-table-standard/output-from-sample.png" alt-text="Tekintse meg és másolja a vágólapra a PRIMARY CONNECTION STRING (Elsődleges kapcsolati sztring) értékét a Kapcsolati sztring ablaktáblán.":::
 
 Ha olyan hibaüzenetet kap, amely szerint a Settings.jsnem található a projekt futtatásakor, akkor a következő XML-bejegyzés a projekt beállításaihoz való hozzáadásával oldható meg. Kattintson a jobb gombbal a CosmosTableSamples elemre, válassza a CosmosTableSamples. csproj szerkesztése lehetőséget, és adja hozzá a következő itemGroup: 
 
@@ -171,7 +171,7 @@ Ha olyan hibaüzenetet kap, amely szerint a Settings.jsnem található a projekt
 ```
 Most jelentkezzen be a Azure Portalba, és ellenőrizze, hogy az adatkészletek szerepelnek-e a táblában. 
 
-:::image type="content" source="./media/tutorial-develop-table-standard/results-in-portal.png" alt-text="Eredmények a portálon":::
+:::image type="content" source="./media/tutorial-develop-table-standard/results-in-portal.png" alt-text="Tekintse meg és másolja a vágólapra a PRIMARY CONNECTION STRING (Elsődleges kapcsolati sztring) értékét a Kapcsolati sztring ablaktáblán.":::
 
 ## <a name="next-steps"></a>Következő lépések
 

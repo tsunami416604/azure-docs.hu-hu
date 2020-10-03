@@ -1,5 +1,5 @@
 ---
-title: Egyéni kulcsszavak létrehozása – beszédfelismerési szolgáltatás
+title: Kulcsszó-útmutató létrehozása – beszédfelismerési szolgáltatás
 titleSuffix: Azure Cognitive Services
 description: Az eszköz mindig egy kulcsszót (vagy kifejezést) figyel. Ha a felhasználó a kulcsszót mondja, az eszköz az összes további hangot elküldi a felhőbe, amíg a felhasználó nem állítja a beszédet. A kulcsszó személyre szabása hatékony módszert tesz lehetővé az eszköz megkülönböztetésére és a saját arculatának megerősítésére.
 services: cognitive-services
@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/20/2019
+ms.date: 10/02/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 188824b9c43387cf106a3cdd53a09fd6bcb198b8
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: f2f333cd01057ff5f6f904924880f88b0685c72f
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91360667"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667693"
 ---
-# <a name="custom-keyword-basics"></a>Az egyéni kulcsszavak alapjai
+# <a name="get-started-with-custom-keyword"></a>Ismerkedés az egyéni kulcsszóval
 
-Ebből a cikkből megtudhatja, hogyan használhatja az egyéni kulcsszavakat a Speech Studio és a Speech SDK használatával. A kulcsszó egy szó vagy rövid kifejezés, amely lehetővé teszi, hogy a termék hangvezérelt legyen. Kulcsszavas modelleket hozhat létre a Speech Studióban, majd exportálhatja az alkalmazásaiban a Speech SDK-val használt modell-fájlt.
+Ebben a rövid útmutatóban megismerheti az egyéni kulcsszavakkal végzett munka alapjait a Speech Studio és a Speech SDK használatával. A kulcsszó egy szó vagy rövid kifejezés, amely lehetővé teszi, hogy a termék hangvezérelt legyen. Kulcsszavas modelleket hozhat létre a Speech Studióban, majd exportálhatja az alkalmazásaiban a Speech SDK-val használt modell-fájlt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

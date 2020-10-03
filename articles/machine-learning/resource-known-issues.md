@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4
-ms.date: 08/13/2020
-ms.openlocfilehash: 3a1d5c70913f7e2a56eaf04be333a931c1adbc3d
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.date: 10/02/2020
+ms.openlocfilehash: c4250be15b1c4fdc5df81c0f0ba3623dedf6488f
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91450061"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667265"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Ismert problémák és hibaelhárítás a Azure Machine Learningban
 
@@ -183,7 +183,7 @@ Esetenként hasznos lehet, ha a Segítség kérése során diagnosztikai adatoka
   * Chrome (legújabb verzió)
   * Firefox (legújabb verzió)
 
-## <a name="set-up-your-environment"></a>A környezet kialakítása
+## <a name="set-up-your-environment"></a>Saját környezet beállítása
 
 * **Hiba történt a AmlCompute létrehozásakor**: ritkán fordul elő, hogy néhány felhasználó létrehozta Azure Machine learning munkaterületét a Azure Portal, mielőtt a ga-kiadás nem tudja létrehozni a AmlCompute az adott munkaterületen. Felvehet egy támogatási kérést a szolgáltatásra, vagy létrehozhat egy új munkaterületet a portálon vagy az SDK-ban, hogy azonnal feloldja a zárolást.
 
@@ -387,9 +387,9 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
   
 * **sikertelen volt az importálás AutoMLConfig**: a Machine learning 1.0.76-verziójában módosult a csomag, amely az új verzióra való frissítés előtt el kell távolítani a korábbi verziót. Ha a `ImportError: cannot import name AutoMLConfig` rendszer a v 1.0.76 v 1.0.76 vagy újabb verzióra történő frissítés után észlelt, hárítsa el a hibát a következő parancs futtatásával: `pip uninstall azureml-train automl` és `pip install azureml-train-auotml` . A automl_setup. cmd parancsfájl ezt automatikusan elvégzi. 
 
-* **munkaterület. from_config sikertelen**: Ha a WS = workspace. from_config () metódus hívása sikertelen –
+* **Workspace.from_config sikertelen**: Ha a ws = Workspace.from_config () hívása sikertelen –
   1. Győződjön meg arról, hogy a Configuration. ipynb jegyzetfüzet sikeresen futott.
-  2. Ha a jegyzetfüzet olyan mappából fut, amely nem a `configuration.ipynb` futtatott mappában található, másolja a aml_config mappát, és a fájl config.jsaz új mappába. Munkaterület. from_config beolvassa a config.jsa jegyzetfüzet mappájába vagy a szülőmappa mappájába.
+  2. Ha a jegyzetfüzet olyan mappából fut, amely nem a `configuration.ipynb` futtatott mappában található, másolja a aml_config mappát, és a fájl config.jsaz új mappába. Workspace.from_config beolvassa az config.jsa jegyzetfüzet mappájába vagy a szülőmappa mappájába.
   3. Ha új előfizetést, erőforráscsoportot, munkaterületet vagy régiót használ, győződjön meg arról, hogy a `configuration.ipynb` jegyzetfüzetet újra futtatja. config.jsközvetlen módosítása csak akkor működik, ha a munkaterület már létezik a megadott erőforrás-csoportban a megadott előfizetésben.
   4. Ha módosítani szeretné a régiót, módosítsa a munkaterületet, az erőforráscsoportot vagy az előfizetést. `Workspace.create` a nem hoz létre vagy frissít egy munkaterületet, ha már létezik, még akkor is, ha a megadott régió eltér.
   
@@ -450,6 +450,10 @@ kubectl get secret/azuremlfessl -o yaml
 >[!Note]
 >A Kubernetes Base-64 kódolású formátumban tárolja a titkokat. Ahhoz, hogy a titkokat el tudja végezni, a 64-es alapszintű dekódolást `cert.pem` és a `key.pem` titkok összetevőit kell megadnia `attach_config.enable_ssl` . 
 
+### <a name="detaching-azure-kubernetes-service"></a>Az Azure Kubernetes szolgáltatás leválasztása
+
+A gépi tanuláshoz készült Azure Machine Learning Studio, SDK vagy az Azure CLI bővítmény használata az AK-fürtök leválasztásához nem törli az AK-fürtöt. A fürt törléséhez lásd: [Az Azure CLI használata az AK-val](/azure/aks/kubernetes-walkthrough#delete-the-cluster).
+
 ### <a name="webservices-in-azure-kubernetes-service-failures"></a>Webszolgáltatások az Azure Kubernetes szolgáltatásban – hibák
 
 Az Azure Kubernetes szolgáltatásban számos webszolgáltatási hiba oldható fel a fürthöz való csatlakozással a használatával `kubectl` . Az `kubeconfig.json` Azure Kubernetes Service-fürtöket a következő futtatásával kérheti le:
@@ -478,7 +482,7 @@ Az Azure szerepköralapú hozzáférés-vezérléssel korlátozható a Azure Mac
 
 További információ: [felhasználók és szerepkörök kezelése](how-to-assign-roles.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További hibaelhárítási cikkek a Azure Machine Learning:
 

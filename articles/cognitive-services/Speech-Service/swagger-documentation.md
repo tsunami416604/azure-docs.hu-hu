@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: reference
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 30e8224b6cb757f044a5eac598d834cee838391e
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 6bb50e427fa85a170c5ad23a63d67c01e898a17d
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91629981"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665684"
 ---
 # <a name="swagger-documentation"></a>A Swagger dokumentációja
 
@@ -30,10 +30,17 @@ A [hencegés specifikációja](https://westus.dev.cognitive.microsoft.com/docs/s
 
 Be kell állítania a hencegő szolgáltatást ugyanahhoz a régióhoz, mint a beszédfelismerési szolgáltatás előfizetése. A régiót a Speech Service-erőforrás alatt lévő Azure Portal ellenőrizheti. A támogatott régiók teljes listájáért lásd: [régiók](regions.md).
 
-1. A böngészőben nyissa meg a terület hencegő specifikációját `https://<your-region>.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0` . Az oldalon kattintson az **API-definíció**elemre, majd kattintson a **hencegés**elemre. Másolja a megjelenő lap URL-címét.
+1. A böngészőben nyissa meg a terület hencegő specifikációját:  
+       `https://<your-region>.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0`
+1. Az oldalon kattintson az **API-definíció**elemre, majd kattintson a **hencegés**elemre. Másolja a megjelenő lap URL-címét.
 1. Új böngészőben nyissa meg a következőt: https://editor.swagger.io
 1. Kattintson a **fájl**menü **URL importálása**parancsára, illessze be az URL-címet, majd kattintson **az OK**gombra.
-1. Kattintson az **ügyfél előállítása** és a **Python**elemre. Az ügyféloldali kódtár letölti a számítógépet.
+1. Kattintson az **ügyfél előállítása** és a **Python**elemre. Az ügyféloldali kódtár egy fájlban tölti le a számítógépre `.zip` .
+1. Mindent kibonthat a letöltésből. Lehet `tar -xf` , hogy mindent Kinyer.
+1. Telepítse a kibontott modult a Python-környezetbe:  
+       `pip install path/to/package/python-client`
+1. A telepített csomag neve `swagger_client` . Győződjön meg arról, hogy a telepítés megmunkált:  
+       `python -c "import swagger_client"`
 
 Használhatja a [githubon a Speech Service-mintákkal](https://aka.ms/csspeech/samples)generált Python-könyvtárat.
 
@@ -43,7 +50,7 @@ Használhatja a [githubon a Speech Service-mintákkal](https://aka.ms/csspeech/s
 * [REST API: beszéd – szöveg](rest-speech-to-text.md)
 * [REST API: szövegről beszédre](rest-text-to-speech.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Speech Service-minták a githubon](https://aka.ms/csspeech/samples).
 * [Beszédfelismerési szolgáltatás előfizetési kulcsának beszerzése ingyenesen](overview.md#try-the-speech-service-for-free)

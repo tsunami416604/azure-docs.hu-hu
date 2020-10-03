@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: a642f7dfc470a695f96967cad0ed738d45b11efb
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 59b4a04231df3b93b093750cc6c9d70982a418a9
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90881921"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665344"
 ---
 # <a name="azure-data-lake-storage-gen-1-output-from-azure-stream-analytics"></a>1. generációs kimenet Azure Data Lake Storage Azure Stream Analytics
 
@@ -24,7 +24,7 @@ Stream Analytics Azure Data Lake Storage kimenete nem érhető el az Azure China
 
 A következő táblázat felsorolja a tulajdonságok nevét és a hozzájuk tartozó leírásokat a Data Lake Storage 1. generációs kimenetének konfigurálásához.
 
-| Tulajdonság neve | Leírás |
+| Tulajdonság neve | Description |
 | --- | --- |
 | Kimeneti alias | Egy rövid név, amely lekérdezésekben a lekérdezés kimenetének Data Lake Storeba való irányítására szolgál. |
 | Előfizetés | Az Azure Data Lake Storage-fiókot tartalmazó előfizetés. |
@@ -44,7 +44,7 @@ A partíciós kulcshoz használja a {Date} és az {Time} tokent az elérési út
 
 ## <a name="output-batch-size"></a>Kimeneti köteg mérete
 
-Az üzenetek maximális méretéhez lásd: [Data Lake Storage korlátok](../azure-resource-manager/management/azure-subscription-service-limits.md#data-lake-store-limits). A köteg méretének optimalizálása érdekében írási művelet esetén akár 4 MB-ot is használhat.
+Az üzenetek maximális méretéhez lásd: [Data Lake Storage korlátok](../azure-resource-manager/management/azure-subscription-service-limits.md#data-lake-storage-limits). A köteg méretének optimalizálása érdekében írási művelet esetén akár 4 MB-ot is használhat.
 
 ## <a name="next-steps"></a>Következő lépések
 

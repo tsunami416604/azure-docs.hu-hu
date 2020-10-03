@@ -6,16 +6,16 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2020
+ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-azp-net
-ms.openlocfilehash: 3ba3d8d4b345c9db2e41c647147021eb9616288e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 8b606108d0e33ba1dd49e37c0f407b0caa350f6b
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90947265"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667503"
 ---
 # <a name="quickstart-create-and-manage-communication-services-resources"></a>Gyors útmutató: kommunikációs szolgáltatások erőforrásainak létrehozása és kezelése
 
@@ -77,7 +77,7 @@ A környezeti változó hozzáadását követően futtassa a `source ~/.zshrc` p
 
 #### <a name="linux"></a>[Linux](#tab/linux)
 
-Szerkessze a **. bash_profile**, és adja hozzá a környezeti változót:
+Szerkessze **.bash_profile**, és adja hozzá a környezeti változót:
 
 ```bash
 export COMMUNICATION_SERVICES_CONNECTION_STRING="<yourconnectionstring>"
@@ -98,7 +98,7 @@ Ha az erőforrás törlése után bármilyen telefonszáma van rendelve az erőf
 Ebben a rövid útmutatóban megtanulta a következőket:
 
 > [!div class="checklist"]
-> * Kommunikációs szolgáltatások erőforrásának létrehozása
+> * Communication Services-erőforrás létrehozása
 > * Erőforrás-földrajz és-címkék konfigurálása
 > * Hozzáférés az adott erőforrás kulcsaihoz
 > * Erőforrás törlése

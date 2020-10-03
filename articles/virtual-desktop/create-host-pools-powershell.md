@@ -3,15 +3,15 @@ title: Windows rendszerű virtuális asztali alkalmazáskészlet létrehozása P
 description: Hogyan hozhat létre egy gazdagépet a Windows rendszerű virtuális asztalon PowerShell-parancsmagokkal.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 08/11/2020
+ms.date: 10/02/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ce3b2b30b1ed421937c11e58bc014cc740b45480
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a47126a48ea63efd4e49097428679b85b7a95a61
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91287287"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667163"
 ---
 # <a name="create-a-windows-virtual-desktop-host-pool-with-powershell"></a>Windows rendszerű virtuális asztali címkészlet létrehozása a PowerShell-lel
 
@@ -99,6 +99,9 @@ A tartományhoz való csatlakozás sikeres végrehajtásához tegye a következ�
 
     >[!NOTE]
     > Ha a virtuális gépeket egy Azure Active Directory Domain Services (Azure AD DS) környezethez csatlakoztatja, győződjön meg arról, hogy a tartományhoz való csatlakozás felhasználója a [HRE DC-rendszergazdák csoport](../active-directory-domain-services/tutorial-create-instance-advanced.md#configure-an-administrative-group)tagja is.
+
+>[!IMPORTANT]
+>Azt javasoljuk, hogy ne engedélyezzen olyan házirendeket vagy konfigurációkat, amelyek letiltják Windows Installer. Ha letiltja Windows Installer, a szolgáltatás nem tudja telepíteni az ügynök frissítéseit a munkamenet-gazdagépekre, és a munkamenet-gazdagépek nem fognak megfelelően működni.
 
 ## <a name="register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool"></a>A virtuális gépek regisztrálása a Windows rendszerű virtuális asztali gazdagépen
 

@@ -8,12 +8,12 @@ ms.topic: overview
 author: peterclu
 ms.author: peterlu
 ms.date: 08/24/2020
-ms.openlocfilehash: 40a4fbd956b12d469247cb178007d0259cbeac75
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7b0db0f97531c60b3e809dd0dafa042dbcc2b542
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90902916"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667435"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Mi az Azure Machine Learning Studio?
 
@@ -88,7 +88,7 @@ Az alábbi táblázat összefoglalja ML Studio (klasszikus) és Azure Machine Le
 | Számítási célok betanítása | Tulajdonosi számítási cél, csak CPU-támogatás | Testreszabható [képzési számítási célok](concept-compute-target.md#train)széles köre. GPU-val és CPU-támogatással rendelkezik | 
 | Üzembe helyezési számítási célok | Tulajdonosi webszolgáltatás formátuma, nem testreszabható | Testreszabható [üzembe helyezési számítási célok](concept-compute-target.md#deploy)széles köre. GPU-val és CPU-támogatással rendelkezik |
 | ML-folyamat | Nem támogatott | Rugalmas, moduláris [folyamatok](concept-ml-pipelines.md) készítése a munkafolyamatok automatizálására |
-| MLOps | Alapszintű modell kezelése és üzembe helyezése | Entitás verziószámozása (modell, adatfeldolgozás), munkafolyamat-automatizálás, integráció a vel-eszközökkel [és egyebek](concept-model-management-and-deployment.md) |
+| MLOps | Alapszintű modell kezelése és üzembe helyezése; Csak CPU-telepítések | Entitások verziószámozása (modell, adattárolás, munkafolyamatok), munkafolyamat-automatizálás, integráció a vel-eszközökkel, processzor-és GPU-környezetek, [valamint egyebek](concept-model-management-and-deployment.md) |
 | Modell formátuma | Saját formátum, Studio (klasszikus) csak | Több támogatott formátum a betanítási feladattípustól függően |
 | Automatizált modellek betanítása és hiperparaméter finomhangolása |  Nem támogatott | [Támogatott](concept-automated-ml.md). Kód – az első és a kód nélküli beállítások. | 
 | Adateltolódás észlelése | Nem támogatott | [Támogatott](how-to-monitor-datasets.md) |

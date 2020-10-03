@@ -2,19 +2,19 @@
 title: 'Rövid útmutató: szinapszis-munkaterület létrehozása'
 description: Hozzon létre egy szinapszis-munkaterületet az útmutató lépéseit követve.
 services: synapse-analytics
-author: pimorano
+author: saveenr
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: ''
 ms.date: 09/03/2020
-ms.author: pimorano
+ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: cbf7fb8deba86dd966ccb8087823c76b20413db8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 04bbab477f20ec25ccb0e975dad2b30a511346d2
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91260359"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667758"
 ---
 # <a name="quickstart-create-a-synapse-workspace"></a>Rövid útmutató: szinapszis-munkaterület létrehozása
 Ez a rövid útmutató ismerteti, hogyan hozhat létre egy Azure szinapszis-munkaterületet a Azure Portal használatával.
@@ -27,8 +27,8 @@ Ez a rövid útmutató ismerteti, hogyan hozhat létre egy Azure szinapszis-munk
 
     |Tab|Beállítás | Ajánlott érték | Leírás |
     |---|---|---|---|
-    |Alapvető beállítások|**Munkaterület neve**|Bármilyen nevet megadhat.| Ebben a dokumentumban a **sajátmunkaterület**-t fogjuk használni.|
-    |Alapvető beállítások|**Régió**|A Storage-fiók régiójának egyeztetése.|
+    |Alapbeállítások|**Munkaterület neve**|Bármilyen nevet megadhat.| Ebben a dokumentumban a **sajátmunkaterület**-t fogjuk használni.|
+    |Alapbeállítások|**Régió**|A Storage-fiók régiójának egyeztetése.|
 
 1. Munkaterület létrehozásához ADLSGEN2-fiókra van szükség. A legegyszerűbb választás egy új létrehozása. Ha újra szeretné használni a meglévőket, néhány további konfigurálást is végre kell hajtania. 
 1. 1. lehetőség új ADLSGEN2-fiók létrehozása 
@@ -66,7 +66,7 @@ Előfordulhat, hogy az Azure szinapszis-munkaterülethez tartozó felügyelt ide
     * A Storage- **blob adatközreműködői** szerepköréhez a Storage-fiókban rendeljen **sajátmunkaterület** a munkaterület-identitáshoz.
     * Rendelje hozzá a **sajátmunkaterület** a munkaterület neveként.
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 ## <a name="next-steps"></a>Következő lépések
 

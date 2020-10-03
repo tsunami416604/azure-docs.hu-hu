@@ -3,12 +3,12 @@ title: Ügynök nélküli függőségi elemzés beállítása Azure Migrate Serv
 description: Az ügynök nélküli függőségek elemzésének beállítása Azure Migrate Server Assessment-ben.
 ms.topic: how-to
 ms.date: 6/08/2020
-ms.openlocfilehash: 164cc20632faa1d444d06da6688000e9b40d7e76
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 57e5add810cf4fac232bce08fc7ca96df0a7c3a0
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91275591"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667469"
 ---
 # <a name="analyze-machine-dependencies-agentless"></a>A gép függőségeinek elemzése (ügynök nélküli)
 
@@ -137,12 +137,12 @@ Válassza ki azokat a gépeket, amelyeken le szeretné állítani a függőségi
 Ha több gép függőségét szeretné leállítani, a [PowerShell](#start-or-stop-dependency-discovery-using-powershell) használatával teheti meg.
 
 
-### <a name="start-or-stop-dependency-discovery-using-powershell"></a>Függőségi felderítés elindítása vagy leállítása a PowerShell használatával
+## <a name="start-or-stop-dependency-discovery-using-powershell"></a>Függőségi felderítés elindítása vagy leállítása a PowerShell használatával
 
 Töltse le a PowerShell-modult [Azure PowerShell Samples](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale) -tárházból a githubon.
 
 
-#### <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
+### <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
 1. Jelentkezzen be az Azure-előfizetésbe a AzAccount parancsmag használatával.
 
@@ -166,7 +166,7 @@ Töltse le a PowerShell-modult [Azure PowerShell Samples](https://github.com/Azu
     Import-Module .\AzMig_Dependencies.psm1
     ```
 
-#### <a name="enable-or-disable-dependency-data-collection"></a>Függőségi adatgyűjtés engedélyezése vagy letiltása
+### <a name="enable-or-disable-dependency-data-collection"></a>Függőségi adatgyűjtés engedélyezése vagy letiltása
 
 1. A következő parancsokkal lekérheti a felderített VMware virtuális gépek listáját a Azure Migrate projektben. Az alábbi példában a projekt neve FabrikamDemoProject, és a hozzá tartozó erőforráscsoport FabrikamDemoRG. A gépek listája FabrikamDemo_VMs.csv lesz mentve
 

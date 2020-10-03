@@ -7,12 +7,12 @@ ms.topic: how-to
 author: navits09
 ms.author: navits
 ms.date: 08/07/2020
-ms.openlocfilehash: d92dc562136ef20dac19e7ddfa4339c565793308
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: e42111de7d05f184e1153ddc351c3f1fa10cc86f
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91531819"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665238"
 ---
 # <a name="create-a-dynamics-365-business-central-offer"></a>Microsoft Dynamics 365 Business Central-ajánlat létrehozása
 
@@ -128,8 +128,8 @@ Itt adhatja meg az ajánlat részleteit, például a nevet, a leírást és a k�
 5. Használati feltételek
 6. Adatvédelmi irányelvek
 7. Ajánlat neve
-8. Összefoglalás
-9. Leírás
+8. Összegzés
+9. Description
 10. Képernyőképek/videók
 
 ### <a name="name"></a>Név
@@ -140,7 +140,7 @@ Az itt megadott név jelenik meg az ügyfelek számára az ajánlati lista cím�
 
 Adja meg az ajánlat rövid leírását, amely legfeljebb 100 karakter hosszú lehet. Ez a leírás a piactér keresési eredményeiben használható.
 
-### <a name="description"></a>Leírás
+### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -256,9 +256,8 @@ Töltse fel az ajánlathoz tartozó fájlkiterjesztés-fájlt (. app).
 
 Kötelező, ha az ajánlatát egy olyan bővítménnyel együtt kell telepíteni, amely nem lesz közzétéve a piactéren. Ha igen, töltse fel az. app fájlt.
 
-#### <a name="dependency-package-file"></a>Függőségi csomag fájlja
-
-Kötelező, ha az ajánlatot a piactéren már közzétett másik bővítménnyel együtt kell telepíteni. Ha igen, töltse fel `.app` itt a vagy a `.zip` fájlt.
+>[!NOTE]
+>A függőségi csomagfájl már nem használatos. Ehelyett töltsön fel egy függvénytár-csomagfájl fájlt.
 
 ### <a name="url-to-app-installation"></a>Az alkalmazás telepítésének URL-címe
 
@@ -313,6 +312,6 @@ Ha első alkalommal teszi közzé ezt az ajánlatot, a következőket teheti:
 - A **minősítési megjegyzések** szakaszban adja meg a minősítési csoport tesztelési utasításait, hogy az alkalmazás megfelelően legyen tesztelve, valamint az alkalmazás megértéséhez szükséges kiegészítő megjegyzések mellett.
 - Küldje el az ajánlatot közzétételre a **Submit (Küldés**) gombra kattintva. A rendszer e-mailt küld Önnek, ha az ajánlat előzetes verziója elérhető az Ön számára az áttekintéshez és a jóváhagyáshoz. Térjen vissza a partneri központba, és válassza a **Go-Live** lehetőséget az ajánlat nyilvánosságra való közzétételéhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Meglévő ajánlat frissítése a kereskedelmi piactéren](./update-existing-offer.md)

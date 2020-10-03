@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ddca4bc684646854ae8d308043b3de56ec65924
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: 747edfdb2a2709a842f767d2ace09662d139c827
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89426095"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91666432"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Azure-előfizetés társítása vagy hozzáadása az Azure Active Directory-bérlőhöz
 
@@ -50,7 +50,7 @@ Az előfizetés hozzárendelése vagy hozzáadása előtt végezze el a követke
   - Ha rendelkezik kulcstartókkal, nem lesznek elérhetők, és a társítás után ki kell javítani őket.
   - Ha bármilyen felügyelt identitással rendelkezik olyan erőforrásokhoz, mint például a Virtual Machines vagy a Logic Apps, a társítás után újra engedélyeznie kell vagy újra létre kell hoznia azokat.
   - Ha regisztrált Azure Stack van, akkor újra regisztrálnia kell a társítás után
-  - További információ: [Azure-előfizetés átadása egy másik Azure AD-címtárba (Előzetes verzió)](../../role-based-access-control/transfer-subscription.md).
+  - További információ: [Azure-előfizetés átvitele egy másik Azure ad-címtárba](../../role-based-access-control/transfer-subscription.md).
 
 - Jelentkezzen be egy olyan fiókkal, amely a következőket használja:
 
@@ -93,7 +93,7 @@ Miután hozzárendelt egy előfizetést egy másik címtárhoz, előfordulhat, h
 
 - Ha az előfizetést használó Azure Stack regisztrált, újra kell regisztrálnia. További információ: [Azure stack regisztrálása az Azure](/azure-stack/operator/azure-stack-registration)-ban.
 
-- További információ: [Azure-előfizetés átadása egy másik Azure AD-címtárba (Előzetes verzió)](../../role-based-access-control/transfer-subscription.md).
+- További információ: [Azure-előfizetés átvitele egy másik Azure ad-címtárba](../../role-based-access-control/transfer-subscription.md).
 
 ## <a name="next-steps"></a>Következő lépések
 

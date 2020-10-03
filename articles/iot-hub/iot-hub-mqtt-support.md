@@ -13,12 +13,12 @@ ms.custom:
 - 'Role: IoT Device'
 - 'Role: Cloud Development'
 - contperfq1
-ms.openlocfilehash: 2e1c8975c0f37fff2e177c9aa0dcf8f3b92a9d3f
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 0a5cf5ad4a7cbf7d732d1fafdcafd434cba20d13
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89421407"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91664936"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Kommunikáció az IoT hub használatával a MQTT protokollal
 
@@ -53,9 +53,9 @@ Az alábbi táblázat az egyes támogatott nyelvekre mutató hivatkozásokat tar
 | Nyelv | MQTT protokoll paramétere | MQTT a webes szoftvercsatornák protokoll paramétereként
 | --- | --- | --- |
 | [Node.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device.js) | Azure-IOT-Device-mqtt. Mqtt | Azure-IOT-Device-mqtt. MqttWs |
-| [Java](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java) |[IotHubClientProtocol](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.iothubclientprotocol?view=azure-java-stable). MQTT | IotHubClientProtocol. MQTT_WS |
+| [Java](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java) |[IotHubClientProtocol](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.iothubclientprotocol?view=azure-java-stable). MQTT | IotHubClientProtocol.MQTT_WS |
 | [C#](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/iothub_client_sample_mqtt_dm) | [MQTT_Protocol](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothubtransportmqtt-h/mqtt-protocol) | [MQTT_WebSocket_Protocol](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothubtransportmqtt-websockets-h/mqtt-websocket-protocol) |
-| [C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples) | [TransportType](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.transporttype?view=azure-dotnet). Mqtt | A TransportType. Mqtt visszaesik a MQTT-ra, ha a MQTT meghibásodik. Ha csak a webes szoftvercsatornák MQTT szeretné megadni, használja a TransportType. Mqtt_WebSocket_Only |
+| [C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples) | [TransportType](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.transporttype?view=azure-dotnet). Mqtt | A TransportType. Mqtt visszaesik a MQTT-ra, ha a MQTT meghibásodik. Ha csak a webes szoftvercsatornák MQTT szeretné megadni, használja a TransportType.Mqtt_WebSocket_Only |
 | [Python](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples) | Alapértelmezés szerint a MQTT támogatja | Hozzáadás a `websockets=True` -ügyfél létrehozásához a hívásban |
 
 A következő kódrészlet azt mutatja be, hogyan adható meg a MQTT over web Sockets protokoll az Azure IoT Node.js SDK használatakor:
@@ -103,6 +103,38 @@ Ha ezt teszi, ellenőrizze a következő elemeket:
 
 * A AMQP nem támogatott a Python SDK-ban.
 
+## <a name="example-in-c-using-mqtt-without-an-azure-iot-sdk"></a>Példa C-ben az Azure IoT SDK-val nem rendelkező MQTT használatával
+
+A [IOT MQTT-minta adattárában](https://github.com/Azure-Samples/IoTMQTTSample)talál néhány C/C++ bemutató projektet, amely bemutatja, hogyan küldhet telemetria-üzeneteket, és hogyan fogadhat eseményeket egy IoT hub használatával az Azure IOT C SDK használata nélkül. 
+
+Ezek a minták az Eclipse Mosquitto függvénytár használatával küldenek üzeneteket az IoT hub-ban megvalósított MQTT-közvetítőnek.
+
+A tárház tartalma:
+
+**Windows esetén:**
+
+* TelemetryMQTTWin32: olyan kódot tartalmaz, amely telemetria üzenetet küld egy Azure IoT hub-ra, amely Windows rendszerű gépen lett létrehozva és futtatva.
+
+* SubscribeMQTTWin32: olyan kódot tartalmaz, amely egy Windows rendszerű gépen lévő adott IoT hub eseményeire fizet elő.
+
+* DeviceTwinMQTTWin32: olyan kódot tartalmaz, amely lekérdezi és előfizet egy eszköznek az Azure IoT hub-ban egy Windows rendszerű gépen lévő eszközének kettős eseményeire.
+
+* PnPMQTTWin32: olyan kódot tartalmaz, amely egy telemetria-üzenetet küld a IoT beépülő & modulnak, amely a Windows rendszerű gépeken létrehozott és futtatott Azure IoT hub-eszközökre vonatkozó képességeket jelenít meg. További információk a [IoT Plug & Play](https://docs.microsoft.com/azure/iot-pnp/overview-iot-plug-and-play) -ről
+
+**Linux esetén:**
+
+* MQTTLinux: kód-és Build-szkriptet tartalmaz a Linuxon való futtatáshoz (WSL, Ubuntu és Raspbian).
+
+* LinuxConsoleVS2019: ugyanazt a kódot tartalmazza, de egy VS2019-projekt WSL (Windows Linux alrendszer). Ez a projekt lehetővé teszi a Linux lépésről lépésre futó kód hibakeresését a Visual studióból.
+
+**Mosquitto_pub esetén:**
+
+Ez a mappa két, a Mosquitto.org által biztosított mosquitto_pub segédprogram eszközzel használható mintát tartalmaz.
+
+* Mosquitto_sendmessage: egyszerű szöveges üzenet küldése egy eszközként működő Azure IoT hub-nak.
+
+* Mosquitto_subscribe: az Azure IoT hub-ban előforduló események megtekintéséhez.
+
 ## <a name="using-the-mqtt-protocol-directly-as-a-device"></a>A MQTT protokoll használata közvetlenül (eszközként)
 
 Ha egy eszköz nem tudja használni az eszköz SDK-kat, akkor továbbra is csatlakozhat a nyilvános eszközök végpontjaihoz a 8883-es porton az MQTT protokoll használatával. A **csatlakoztatási** csomagban az eszköznek a következő értékeket kell használnia:
@@ -147,38 +179,6 @@ Ha egy eszköz nem tudja használni az eszköz SDK-kat, akkor továbbra is csatl
 A MQTT csatlakoztatásához és a csomagok leválasztásához IoT Hub a **műveletek figyelése** csatornán eseményt ad ki. Ez az esemény további információkat tartalmaz, amelyek segíthetnek a kapcsolódási problémák elhárításában.
 
 Az alkalmazás megadhat **egy üzenetet** a **csatlakoztatási** csomagban. Az alkalmazásnak `devices/{device_id}/messages/events/` vagy `devices/{device_id}/messages/events/{property_bag}` a téma nevének meg kell egyeznie, hogy **Will** a **rendszer** telemetria üzenetként továbbítsa az üzeneteket. Ebben az esetben, ha a hálózati kapcsolat be van zárva, de a **leválasztási** csomag korábban nem érkezett meg az eszközről, a IoT hub elküldi a telemetria csatornához a **kapcsolódási** csomagban **megadott üzenetet.** Az telemetria csatorna az alapértelmezett **események** végpontja vagy IoT hub útválasztás által definiált egyéni végpont lehet. Az üzenet a **iothub-MessageType** tulajdonsággal rendelkezik, amelynek a értéke hozzá **lesz** rendelve.
-
-### <a name="an-example-of-c-code-using-mqtt-without-azure-iot-c-sdk"></a>C kód példája az Azure IoT C SDK nélküli MQTT használatával
-
-A [IOT MQTT-minta adattárában](https://github.com/Azure-Samples/IoTMQTTSample)talál néhány C/C++ bemutató projektet, amely bemutatja, hogyan küldhet telemetria-üzeneteket, és hogyan fogadhat eseményeket egy IoT hub használatával az Azure IOT C SDK használata nélkül. 
-
-Ezek a minták az Eclipse Mosquitto függvénytár használatával küldenek üzeneteket az IoT hub-ban megvalósított MQTT-közvetítőnek.
-
-A tárház tartalma:
-
-**Windows esetén:**
-
-* TelemetryMQTTWin32: olyan kódot tartalmaz, amely telemetria üzenetet küld egy Azure IoT hub-ra, amely Windows rendszerű gépen lett létrehozva és futtatva.
-
-* SubscribeMQTTWin32: olyan kódot tartalmaz, amely egy Windows rendszerű gépen lévő adott IoT hub eseményeire fizet elő.
-
-* DeviceTwinMQTTWin32: olyan kódot tartalmaz, amely lekérdezi és előfizet egy eszköznek az Azure IoT hub-ban egy Windows rendszerű gépen lévő eszközének kettős eseményeire.
-
-* PnPMQTTWin32: olyan kódot tartalmaz, amely egy telemetria-üzenetet küld a IoT beépülő & modulnak, amely a Windows rendszerű gépeken létrehozott és futtatott Azure IoT hub-eszközökre vonatkozó képességeket jelenít meg. További információk a [IoT Plug & Play](https://docs.microsoft.com/azure/iot-pnp/overview-iot-plug-and-play) -ről
-
-**Linux esetén:**
-
-* MQTTLinux: kód-és Build-szkriptet tartalmaz a Linuxon való futtatáshoz (WSL, Ubuntu és Raspbian).
-
-* LinuxConsoleVS2019: ugyanazt a kódot tartalmazza, de egy VS2019-projekt WSL (Windows Linux alrendszer). Ez a projekt lehetővé teszi a Linux lépésről lépésre futó kód hibakeresését a Visual studióból.
-
-**Mosquitto_pub esetén:**
-
-Ez a mappa két, a Mosquitto.org által biztosított mosquitto_pub segédprogram eszközzel használható mintát tartalmaz.
-
-* Mosquitto_sendmessage: egyszerű szöveges üzenet küldése egy eszközként működő Azure IoT hub-nak.
-
-* Mosquitto_subscribe: az Azure IoT hub-ban előforduló események megtekintéséhez.
 
 ## <a name="using-the-mqtt-protocol-directly-as-a-module"></a>A MQTT protokoll használata közvetlenül (modulként)
 

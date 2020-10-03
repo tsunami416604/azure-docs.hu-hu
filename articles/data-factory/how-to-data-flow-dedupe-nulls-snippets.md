@@ -8,18 +8,20 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: makromer
-ms.openlocfilehash: 683d7ffe5549b86a587cd2dc3c9a86a36aee1bba
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 841484a647d2737d621c75ebe63f65f2de829a26
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91637247"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91666500"
 ---
 # <a name="dedupe-rows-and-find-nulls-using-data-flow-snippets"></a>Dedupe sorok és null értékek keresése adatfolyam-kódrészletek használatával
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Ha kódrészleteket használ a leképezési adatforgalomban, egyszerűen végezhet olyan gyakori feladatokat, mint például az adatok deduplikálása és a null szűrés. Ez a útmutató ismerteti, hogyan adhatja hozzá ezeket a függvényeket a folyamatokhoz az adatfolyam-parancsfájlok használatával.
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4GnhH]
 
 ## <a name="create-a-pipeline"></a>Folyamat létrehozása
 
@@ -61,6 +63,6 @@ Ha kódrészleteket használ a leképezési adatforgalomban, egyszerűen végezh
 
   Az általános deduping és NULL ellenőrzésekkel rendelkező munkafolyamatok mostantól a meglévő kódrészletek az adatfolyam-parancsfájl könyvtárából való hozzáadásával és a meglévő tervbe való felvételével rendelkeznek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Hozza létre a többi adatáramlási logikát az adatforgalom- [átalakítások](concepts-data-flow-overview.md)leképezése használatával.

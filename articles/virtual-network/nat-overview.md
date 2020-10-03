@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: allensu
-ms.openlocfilehash: 5efcf944f5d22759f9d448da5862bcf1f19e2efe
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.openlocfilehash: 75a2bb187b2ed7a234e99d8cd293cb30148bcb1f
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91409561"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667197"
 ---
 # <a name="what-is-virtual-network-nat"></a>Mi az Virtual Network NAT?
 
@@ -43,7 +43,7 @@ Virtual Network NAT (hálózati címfordítás) egyszerűbbé teszi a csak kimen
 
 A kimenő kapcsolatok a NAT-vel rendelkező minden egyes alhálózat esetében meghatározhatók.  Ugyanazon a virtuális hálózaton belül több alhálózat is rendelkezhet különböző NAT-hálózatokkal. Az alhálózat konfigurálásához meg kell adni a NAT-átjáró által használt erőforrást. Bármely virtuálisgép-példány UDP-és TCP-kimenő forgalma a NAT protokollt fogja használni. 
 
-A NAT kompatibilis a szabványos SKU nyilvános IP-címek erőforrásaival vagy a nyilvános IP-előtag erőforrásaival vagy a kettő kombinációjával.  A nyilvános IP-előtagot közvetlenül is használhatja, vagy eloszthatja az előtag nyilvános IP-címeit több NAT Gateway-erőforrás között. A NAT a teljes adatforgalmat az előtag IP-címeinek tartományához irányítja.  Az üzemelő példányok IP-engedélyezési listája már könnyen elérhető.
+A NAT kompatibilis a szabványos SKU nyilvános IP-címek erőforrásaival vagy a nyilvános IP-előtag erőforrásaival vagy a kettő kombinációjával.  A nyilvános IP-előtagot közvetlenül is használhatja, vagy eloszthatja az előtag nyilvános IP-címeit több NAT Gateway-erőforrás között. A NAT a teljes adatforgalmat az előtag IP-címeinek tartományához irányítja.  Az üzemelő példányok IP-szűrése már egyszerű.
 
 Az alhálózat összes kimenő forgalmát a NAT automatikusan dolgozza fel az ügyfél-konfiguráció nélkül.  A felhasználó által megadott útvonalak nem szükségesek. A NAT elsőbbséget élvez más kimenő forgatókönyvekkel szemben, és lecseréli egy alhálózat alapértelmezett internetes célját.
 
@@ -145,4 +145,3 @@ Szeretnénk tudni, hogyan lehet javítani a szolgáltatást. Javasolja és szava
 
 * További információ a [NAT-átjáró erőforrásáról](./nat-gateway-resource.md).
 * [Ossza meg velünk a következőt Virtual Network NAT UserVoice-ben való létrehozásához](https://aka.ms/natuservoice).
-

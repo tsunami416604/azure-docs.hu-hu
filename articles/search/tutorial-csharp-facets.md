@@ -7,31 +7,39 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 06/20/2020
+ms.date: 10/01/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0b51960418b311ed6170d6d060f3674a9a825808
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ab15af07c5f63d375d8fdb4fc38e0853e207a0be
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88998509"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667282"
 ---
 # <a name="tutorial-add-faceted-navigation-using-the-net-sdk"></a>Oktatóanyag: sokoldalú Navigálás hozzáadása a .NET SDK használatával
 
-Az aspektusok a navigáláshoz nyújtanak segítséget azáltal, hogy a felhasználó számára a keresésre mutató hivatkozásokat adnak meg. A dimenziók az adathalmazok (például a kategória, vagy egy adott szolgáltatás, a mintaadatok) attribútumai.
-
-Ez az oktatóanyag a C# oktatóanyagban létrehozott lapozási projektre épül [: keresési eredmények tördelése – Azure Cognitive Search](tutorial-csharp-paging.md) oktatóanyag.
+A dimenziók lehetővé teszik a saját irányítású navigálást az eredmények szűrésére szolgáló hivatkozások megadásával. Ebben az oktatóanyagban egy sokoldalú navigációs struktúra kerül a lap bal oldalára, és a feliratokkal és a szöveggel az eredmények kivágására is lehetőség van.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > * Modell tulajdonságainak beállítása _IsFacetable_
 > * Face-Navigálás hozzáadása az alkalmazáshoz
 
+## <a name="overview"></a>Áttekintés
+
+A dimenziók a keresési index mezőin alapulnak. A facet = [string] karakterláncot tartalmazó lekérdezési kérelem a következőt adja meg a dimenziónak:. Gyakori, hogy több aspektust is magában foglal, például az `&facet=category&facet=amenities` egyeseket, amelyeket egy jellel (&) kell elválasztani. A sokoldalú navigációs struktúra megvalósításához meg kell adnia mindkét aspektust és szűrőt. A szűrőt egy Click eseményen kell használni, hogy Szűkítse az eredményeket. A "költségvetés" lehetőségre kattintva például a feltételek alapján szűri az eredményeket.
+
+Ez az oktatóanyag kiterjeszti a lapozófájl hozzáadása a [keresési eredményekhez](tutorial-csharp-paging.md) című oktatóanyagban létrehozott lapozófájl-projektet.
+
+Az oktatóanyagban szereplő kód befejezett verziója a következő projektben található:
+
+* [4 – Hozzáadás – dimenzió – navigáció (GitHub)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11/4-add-facet-navigation)
+
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
+* [2a – Add-személyhívó (GitHub)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11/2a-add-paging) megoldás. A projekt az előző oktatóanyagból vagy a GitHubról származó másolatból létrehozott saját verzió lehet.
 
-A [C# oktatóanyag: keresési eredmények tördelése – az Azure Cognitive Search-](tutorial-csharp-paging.md) projekt üzembe helyezése folyamatban van. A projekt lehet saját verziója, vagy a GitHubról telepítheti: [első alkalmazás létrehozása](https://github.com/Azure-Samples/azure-search-dotnet-samples).
+Ez az oktatóanyag a [Azure.Search.Documents (11-es verzió)](https://www.nuget.org/packages/Azure.Search.Documents/) csomag használatára lett frissítve. A .NET SDK egy korábbi verziójával kapcsolatban lásd: [Microsoft. Azure. Search (10-es verzió)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v10)mintakód.
 
 ## <a name="set-model-properties-as-isfacetable"></a>Modell tulajdonságainak beállítása IsFacetable
 
@@ -42,58 +50,53 @@ Ahhoz, hogy egy Model tulajdonságot a faced keresési szolgáltatásban lehesse
     ```cs
     public partial class Hotel
     {
-        [System.ComponentModel.DataAnnotations.Key]
-        [IsFilterable]
+        [SimpleField(IsFilterable = true, IsKey = true)]
         public string HotelId { get; set; }
 
-        [IsSearchable, IsSortable]
+        [SearchableField(IsSortable = true)]
         public string HotelName { get; set; }
 
-        [IsSearchable]
-        [Analyzer(AnalyzerName.AsString.EnLucene)]
+        [SearchableField(AnalyzerName = LexicalAnalyzerName.Values.EnLucene)]
         public string Description { get; set; }
 
-        [IsSearchable]
-        [Analyzer(AnalyzerName.AsString.FrLucene)]
-        [JsonProperty("Description_fr")]
+        [SearchableField(AnalyzerName = LexicalAnalyzerName.Values.FrLucene)]
+        [JsonPropertyName("Description_fr")]
         public string DescriptionFr { get; set; }
 
-        [IsSearchable, IsFilterable, IsSortable, IsFacetable]
+        [SearchableField(IsFilterable = true, IsSortable = true, IsFacetable = true)]
         public string Category { get; set; }
 
-        [IsSearchable, IsFilterable, IsFacetable]
+        [SearchableField(IsFilterable = true, IsFacetable = true)]
         public string[] Tags { get; set; }
 
-        [IsFilterable, IsSortable, IsFacetable]
+        [SimpleField(IsFilterable = true, IsSortable = true, IsFacetable = true)]
         public bool? ParkingIncluded { get; set; }
 
-        [IsFilterable, IsSortable, IsFacetable]
+        [SimpleField(IsFilterable = true, IsSortable = true, IsFacetable = true)]
         public DateTimeOffset? LastRenovationDate { get; set; }
 
-        [IsFilterable, IsSortable, IsFacetable]
+        [SimpleField(IsFilterable = true, IsSortable = true, IsFacetable = true)]
         public double? Rating { get; set; }
 
         public Address Address { get; set; }
 
-        [IsFilterable, IsSortable]
+        [SimpleField(IsFilterable = true, IsSortable = true)]
         public GeographyPoint Location { get; set; }
 
         public Room[] Rooms { get; set; }
-
     }
     ```
 
-2. Az oktatóanyag részeként nem módosítunk címkéket, ezért a hotel.cs fájl változatlan marad.
+1. Az oktatóanyag részeként nem módosítunk címkéket, ezért a hotel.cs fájl változatlan marad.
 
     > [!Note]
     > A dimenziós keresés hibát jelez, ha a keresésben kért mező nincs megfelelően címkézve.
 
-
 ## <a name="add-facet-navigation-to-your-app"></a>Face-Navigálás hozzáadása az alkalmazáshoz
 
-Ebben a példában engedélyezzük a felhasználó számára, hogy kiválassza az eredmények közül az egyik kategóriát, vagy egy rekreációs elemet. A felhasználó egy adott keresési szöveg beírásával indul el, majd leszűkítheti a keresés eredményét egy kategória kiválasztásával, és az eredményeket tovább szűkítheti a megfelelőség kiválasztásával, vagy először kiválaszthatja a megfelelőt (a megrendelés nem fontos).
+Ebben a példában engedélyezzük a felhasználó számára, hogy kiválassza az eredmények közül az egyik kategóriát, vagy egy rekreációs elemet. A felhasználó egy adott keresési szöveg beírásával indul el, majd fokozatosan leszűkíti a keresés eredményét egy kategória vagy egy élvezet kiválasztásával.
 
-Szükség van a vezérlőre, hogy átadja az aspektusok listáját a nézetnek. Meg kell őrizni a felhasználói beállításokat a keresés folyamata során, és ismét az ideiglenes tárterületet használjuk az adatmegőrzési mechanizmusként.
+A vezérlő feladata, hogy átadja az aspektusok listáját a nézetnek. Ha a keresési folyamat során meg szeretné őrizni a felhasználói beállításokat, a rendszer ideiglenes tárterületet használ az állapot megőrzése érdekében.
 
 ![A "pool" keresésének szűkítése a facet navigációs használatával](./media/tutorial-csharp-create-first-app/azure-search-facet-nav.png)
 
@@ -102,222 +105,224 @@ Szükség van a vezérlőre, hogy átadja az aspektusok listáját a nézetnek. 
 1. Nyissa meg a SearchData.cs fájlt, és adja hozzá a karakterlánc-tulajdonságokat a **SearchData** osztályhoz, hogy a Dimenzióérték-szűrő sztringek tárolásához.
 
     ```cs
-        public string categoryFilter { get; set; }
-        public string amenityFilter { get; set; }
+    public string categoryFilter { get; set; }
+    public string amenityFilter { get; set; }
     ```
 
 ### <a name="add-the-facet-action-method"></a>A dimenzió műveleti módszer hozzáadása
 
-A Kezdőlap vezérlőnek egy új műveletre, **aspektusra**és frissítésre van szüksége a meglévő **index** és **Page** műveletekhez, valamint a **RunQueryAsync** metódus frissítéseihez.
+A Kezdőlap vezérlőnek egy új műveletre, **aspektusra**és frissítésre van szüksége a meglévő **index** és **Page** műveletekhez, valamint a **RunQueryAsync** metódushoz.
 
-1. Nyissa meg a Kezdőlap vezérlő fájlt, és adja hozzá a **using** utasítást a **List &lt; String &gt; ** -összeállítás engedélyezéséhez.
+<!-- 1. Open the home controller file, and add the **using** statement, to enable the **List&lt;string&gt;** construct.
 
     ```cs
-    using System.Collections.Generic;
+    using System.Collections.Generic; 
+    ```-->
+
+1. Cserélje le az **index (SearchData Model)** műveleti metódusát.
+
+    ```cs
+    public async Task<ActionResult> Index(SearchData model)
+    {
+        try
+        {
+            // Ensure the search string is valid.
+            if (model.searchText == null)
+            {
+                model.searchText = "";
+            }
+
+            // Make the search call for the first page.
+            await RunQueryAsync(model, 0, 0, "", "").ConfigureAwait(false);
+        }
+        catch
+        {
+            return View("Error", new ErrorViewModel { RequestId = "1" });
+        }
+
+        return View(model);
+    }
     ```
 
-2. Cserélje le az **index (SearchData Model)** műveleti metódusát.
+1. Cserélje le a **PageAsync (SearchData Model)** műveleti metódust.
 
     ```cs
-        public async Task<ActionResult> Index(SearchData model)
+    public async Task<ActionResult> PageAsync(SearchData model)
+    {
+        try
         {
-            try
-            {
-                // Ensure the search string is valid.
-                if (model.searchText == null)
-                {
-                    model.searchText = "";
-                }
+            int page;
 
-                // Make the search call for the first page.
-                await RunQueryAsync(model, 0, 0, "", "");
+            // Calculate the page that should be displayed.
+            switch (model.paging)
+            {
+                case "prev":
+                    page = (int)TempData["page"] - 1;
+                    break;
+
+                case "next":
+                    page = (int)TempData["page"] + 1;
+                    break;
+
+                default:
+                    page = int.Parse(model.paging);
+                    break;
             }
 
-            catch
-            {
-                return View("Error", new ErrorViewModel { RequestId = "1" });
-            }
-            return View(model);
+            // Recover the leftMostPage.
+            int leftMostPage = (int)TempData["leftMostPage"];
+
+            // Recover the filters.
+            string catFilter = TempData["categoryFilter"].ToString();
+            string ameFilter = TempData["amenityFilter"].ToString();
+
+            // Recover the search text.
+            model.searchText = TempData["searchfor"].ToString();
+
+            // Search for the new page.
+            await RunQueryAsync(model, page, leftMostPage, catFilter, ameFilter);
         }
+
+        catch
+        {
+            return View("Error", new ErrorViewModel { RequestId = "2" });
+        }
+        return View("Index", model);
+    }
     ```
 
-3. Cserélje le az **oldal (SearchData Model)** műveleti metódusát.
+1. Vegyen fel egy **FacetAsync (SearchData Model)** műveleti módszert, amely akkor aktiválódik, amikor a felhasználó rákattint egy aspektusra mutató hivatkozásra. A modell a kategória-vagy a rekreációs keresési szűrőt fogja tartalmazni. Adja hozzá a **PageAsync** művelet után.
 
     ```cs
-        public async Task<ActionResult> Page(SearchData model)
+    public async Task<ActionResult> FacetAsync(SearchData model)
+    {
+        try
         {
-            try
+            // Filters set by the model override those stored in temporary data.
+            string catFilter;
+            string ameFilter;
+            if (model.categoryFilter != null)
             {
-                int page;
-
-                // Calculate the page that should be displayed.
-                switch (model.paging)
-                {
-                    case "prev":
-                        page = (int)TempData["page"] - 1;
-                        break;
-
-                    case "next":
-                        page = (int)TempData["page"] + 1;
-                        break;
-
-                    default:
-                        page = int.Parse(model.paging);
-                        break;
-                }
-
-                // Recover the leftMostPage.
-                int leftMostPage = (int)TempData["leftMostPage"];
-
-                // Recover the filters.
-                string catFilter = TempData["categoryFilter"].ToString();
-                string ameFilter = TempData["amenityFilter"].ToString();
-
-                // Recover the search text.
-                model.searchText = TempData["searchfor"].ToString();
-
-                // Search for the new page.
-                await RunQueryAsync(model, page, leftMostPage, catFilter, ameFilter);
+                catFilter = model.categoryFilter;
+            } else
+            {
+                catFilter = TempData["categoryFilter"].ToString();
             }
 
-            catch
+            if (model.amenityFilter != null)
             {
-                return View("Error", new ErrorViewModel { RequestId = "2" });
+                ameFilter = model.amenityFilter;
+            } else
+            {
+                ameFilter = TempData["amenityFilter"].ToString();
             }
-            return View("Index", model);
+
+            // Recover the search text.
+            model.searchText = TempData["searchfor"].ToString();
+
+            // Initiate a new search.
+            await RunQueryAsync(model, 0, 0, catFilter, ameFilter).ConfigureAwait(false);
         }
-    ```
-
-4. Adjon hozzá egy **dimenziós (SearchData Model)** műveleti metódust, amely akkor aktiválódik, amikor a felhasználó rákattint egy aspektus hivatkozására. A modell tartalmazni fog egy kategória keresési szűrőt vagy egy rekreációs keresési szűrőt. Felveheti a lapot az **oldal** művelet után.
-
-    ```cs
-        public async Task<ActionResult> Facet(SearchData model)
+        catch
         {
-            try
-            {
-                // Filters set by the model override those stored in temporary data.
-                string catFilter;
-                string ameFilter;
-                if (model.categoryFilter != null)
-                {
-                    catFilter = model.categoryFilter;
-                } else
-                {
-                    catFilter = TempData["categoryFilter"].ToString();
-                }
-
-                if (model.amenityFilter != null)
-                {
-                    ameFilter = model.amenityFilter;
-                } else
-                {
-                    ameFilter = TempData["amenityFilter"].ToString();
-                }
-
-                // Recover the search text.
-                model.searchText = TempData["searchfor"].ToString();
-
-                // Initiate a new search.
-                await RunQueryAsync(model, 0, 0, catFilter, ameFilter);
-            }
-
-            catch
-            {
-                return View("Error", new ErrorViewModel { RequestId = "2" });
-            }
-            return View("Index", model);
+            return View("Error", new ErrorViewModel { RequestId = "2" });
         }
+
+        return View("Index", model);
+    }
     ```
 
 ### <a name="set-up-the-search-filter"></a>A keresési szűrő beállítása
 
 Ha a felhasználó egy adott dimenziót választ ki, például az **üdülő és a fürdő** kategóriára kattint, akkor csak az ebben a kategóriában megadott szállodák lesznek visszaadva az eredmények között. Ha így szeretne szűkíteni egy keresést, be kell állítania egy _szűrőt_.
 
-1. Cserélje le a **RunQueryAsync** metódust a következő kódra. Elsődlegesen egy kategória-szűrő sztringet és egy rekreációs szűrő sztringet vesz igénybe, és beállítja a **SearchParameters** **Filter** paraméterét.
+1. Cserélje le a **RunQueryAsync** metódust a következő kódra. Elsődlegesen egy kategória-szűrő sztringet és egy rekreációs szűrő sztringet vesz igénybe, és beállítja a **SearchOptions** **Filter** paraméterét.
 
     ```cs
-        private async Task<ActionResult> RunQueryAsync(SearchData model, int page, int leftMostPage, string catFilter, string ameFilter)
+    private async Task<ActionResult> RunQueryAsync(SearchData model, int page, int leftMostPage, string catFilter, string ameFilter)
+    {
+        InitSearch();
+
+        string facetFilter = "";
+
+        if (catFilter.Length > 0 && ameFilter.Length > 0)
         {
-            InitSearch();
-
-            string facetFilter = "";
-
-            if (catFilter.Length > 0 && ameFilter.Length > 0)
-            {
-                // Both facets apply.
-                facetFilter = $"{catFilter} and {ameFilter}"; 
-            } else
-            {
-                // One, or zero, facets apply.
-                facetFilter = $"{catFilter}{ameFilter}";
-            }
-
-            var parameters = new SearchParameters
-            {
-                Filter = facetFilter,
-
-                // Return information on the text, and number, of facets in the data.
-                Facets = new List<string> { "Category,count:20", "Tags,count:20" },
-
-                // Enter Hotel property names into this list, so only these values will be returned.
-                Select = new[] { "HotelName", "Description", "Category", "Tags" },
-
-                SearchMode = SearchMode.All,
-
-                // Skip past results that have already been returned.
-                Skip = page * GlobalVariables.ResultsPerPage,
-
-                // Take only the next page worth of results.
-                Top = GlobalVariables.ResultsPerPage,
-
-                // Include the total number of results.
-                IncludeTotalResultCount = true,
-            };
-
-            // For efficiency, the search call should be asynchronous, so use SearchAsync rather than Search.
-            model.resultList = await _indexClient.Documents.SearchAsync<Hotel>(model.searchText, parameters);
-
-            // This variable communicates the total number of pages to the view.
-            model.pageCount = ((int)model.resultList.Count + GlobalVariables.ResultsPerPage - 1) / GlobalVariables.ResultsPerPage;
-
-            // This variable communicates the page number being displayed to the view.
-            model.currentPage = page;
-
-            // Calculate the range of page numbers to display.
-            if (page == 0)
-            {
-                leftMostPage = 0;
-            }
-            else
-               if (page <= leftMostPage)
-            {
-                // Trigger a switch to a lower page range.
-                leftMostPage = Math.Max(page - GlobalVariables.PageRangeDelta, 0);
-            }
-            else
-            if (page >= leftMostPage + GlobalVariables.MaxPageRange - 1)
-            {
-                // Trigger a switch to a higher page range.
-                leftMostPage = Math.Min(page - GlobalVariables.PageRangeDelta, model.pageCount - GlobalVariables.MaxPageRange);
-            }
-            model.leftMostPage = leftMostPage;
-
-            // Calculate the number of page numbers to display.
-            model.pageRange = Math.Min(model.pageCount - leftMostPage, GlobalVariables.MaxPageRange);
-
-            // Ensure Temp data is stored for the next call.
-            TempData["page"] = page;
-            TempData["leftMostPage"] = model.leftMostPage;
-            TempData["searchfor"] = model.searchText;
-            TempData["categoryFilter"] = catFilter;
-            TempData["amenityFilter"] = ameFilter;
-
-            // Return the new view.
-            return View("Index", model);
+            // Both facets apply.
+            facetFilter = $"{catFilter} and {ameFilter}"; 
+        } else
+        {
+            // One, or zero, facets apply.
+            facetFilter = $"{catFilter}{ameFilter}";
         }
+
+        var options = new SearchOptions
+        {
+            Filter = facetFilter,
+
+            SearchMode = SearchMode.All,
+
+            // Skip past results that have already been returned.
+            Skip = page * GlobalVariables.ResultsPerPage,
+
+            // Take only the next page worth of results.
+            Size = GlobalVariables.ResultsPerPage,
+
+            // Include the total number of results.
+            IncludeTotalCount = true,
+        };
+
+        // Return information on the text, and number, of facets in the data.
+        options.Facets.Add("Category,count:20");
+        options.Facets.Add("Tags,count:20");
+
+        // Enter Hotel property names into this list, so only these values will be returned.
+        options.Select.Add("HotelName");
+        options.Select.Add("Description");
+        options.Select.Add("Category");
+        options.Select.Add("Tags");
+
+        // For efficiency, the search call should be asynchronous, so use SearchAsync rather than Search.
+        model.resultList = await _searchClient.SearchAsync<Hotel>(model.searchText, options).ConfigureAwait(false);
+
+        // This variable communicates the total number of pages to the view.
+        model.pageCount = ((int)model.resultList.TotalCount + GlobalVariables.ResultsPerPage - 1) / GlobalVariables.ResultsPerPage;
+
+        // This variable communicates the page number being displayed to the view.
+        model.currentPage = page;
+
+        // Calculate the range of page numbers to display.
+        if (page == 0)
+        {
+            leftMostPage = 0;
+        }
+        else if (page <= leftMostPage)
+        {
+            // Trigger a switch to a lower page range.
+            leftMostPage = Math.Max(page - GlobalVariables.PageRangeDelta, 0);
+        }
+        else if (page >= leftMostPage + GlobalVariables.MaxPageRange - 1)
+        {
+            // Trigger a switch to a higher page range.
+            leftMostPage = Math.Min(page - GlobalVariables.PageRangeDelta, model.pageCount - GlobalVariables.MaxPageRange);
+        }
+        model.leftMostPage = leftMostPage;
+
+        // Calculate the number of page numbers to display.
+        model.pageRange = Math.Min(model.pageCount - leftMostPage, GlobalVariables.MaxPageRange);
+
+        // Ensure Temp data is stored for the next call.
+        TempData["page"] = page;
+        TempData["leftMostPage"] = model.leftMostPage;
+        TempData["searchfor"] = model.searchText;
+        TempData["categoryFilter"] = catFilter;
+        TempData["amenityFilter"] = ameFilter;
+
+        // Return the new view.
+        return View("Index", model);
+    }
     ```
 
-    Hozzáadta a **Kategória** és a **címkék** tulajdonságokat a **kijelölni** kívánt elemek listájához. Ehhez a feltételhez nem szükséges, hogy a Face navigáció működjön, de ezt az információt használjuk a megfelelő szűrés ellenőrzéséhez.
+    Figyelje meg, hogy a **Kategória** és a **címkék** tulajdonságok hozzáadódnak a **kijelölni** kívánt elemek listájához. Ehhez a feltételhez nem szükséges, hogy a Face navigáció működjön, de ezeket az információkat a szűrők helyes működésének ellenőrzéséhez használjuk.
 
 ### <a name="add-lists-of-facet-links-to-the-view"></a>A nézethez tartozó aspektusi hivatkozások listáját adja hozzá
 
@@ -341,187 +346,189 @@ A nézet jelentős változásokat fog igényelni.
     .facetheader {
         font-size: 10pt;
         font-weight: bold;
-        color: darkgreen;    
+        color: darkgreen;
     }
     ```
 
-2. A nézet esetében a kimenetet egy táblázatba rendezjük, hogy a bal oldali dimenziók listáit szépen igazítsa, a jobb oldalon pedig az eredményeket. Nyissa meg az index. cshtml fájlt. Cserélje le a HTML törzs címkék teljes tartalmát a &lt; &gt; következő kódra.
+1. A nézet megjelenítéséhez rendezze a kimenetet egy táblázatba, hogy a bal oldali dimenziók listáit szépen igazítsa, a jobb oldalon pedig az eredményeket. Nyissa meg az index. cshtml fájlt. Cserélje le a HTML törzs címkék teljes tartalmát a &lt; &gt; következő kódra.
 
-    ```cs
+    ```html
     <body>
+        @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+        {
+            <table>
+                <tr>
+                    <td></td>
+                    <td>
+                        <h1 class="sampleTitle">
+                            <img src="~/images/azure-logo.png" width="80" />
+                            Hotels Search - Facet Navigation
+                        </h1>
+                    </td>
+                </tr>
 
-    @using (Html.BeginForm("Index", "Home", FormMethod.Post))
-    {
-        <table>
-            <tr>
-                <td></td>
-                <td>
-                    <h1 class="sampleTitle">
-                        <img src="~/images/azure-logo.png" width="80" />
-                        Hotels Search - Facet Navigation
-                    </h1>
-                </td>
-            </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <!-- Display the search text box, with the search icon to the right of it.-->
+                        <div class="searchBoxForm">
+                            @Html.TextBoxFor(m => m.searchText, new { @class = "searchBox" }) <input value="" class="searchBoxSubmit" type="submit">
+                        </div>
+                    </td>
+                </tr>
 
-            <tr>
-                <td></td>
-                <td>
-                    <!-- Display the search text box, with the search icon to the right of it.-->
-                    <div class="searchBoxForm">
-                        @Html.TextBoxFor(m => m.searchText, new { @class = "searchBox" }) <input value="" class="searchBoxSubmit" type="submit">
-                    </div>
-                </td>
-            </tr>
+                <tr>
+                    <td valign="top">
+                        <div id="facetplace" class="facetchecks">
 
-            <tr>
-                <td valign="top">
-                    <div id="facetplace" class="facetchecks">
-
-                        @if (Model != null && Model.resultList != null)
-                        {
-                            List<string> categories = Model.resultList.Facets["Category"].Select(x => x.Value.ToString()).ToList();
-
-                            if (categories.Count > 0)
+                            @if (Model != null && Model.resultList != null)
                             {
-                                <h5 class="facetheader">Category:</h5>
-                                <ul class="facetlist">
-                                    @for (var c = 0; c < categories.Count; c++)
-                                    {
-                                        var facetLink = $"{categories[c]} ({Model.resultList.Facets["Category"][c].Count})";
-                                        <li>
-                                            @Html.ActionLink(facetLink, "Facet", "Home", new { categoryFilter = $"Category eq '{categories[c]}'" }, null)
-                                        </li>
-                                    }
-                                </ul>
-                            }
+                                List<string> categories = Model.resultList.Facets["Category"].Select(x => x.Value.ToString()).ToList();
 
-                            List<string> tags = Model.resultList.Facets["Tags"].Select(x => x.Value.ToString()).ToList();
-
-                            if (tags.Count > 0)
-                            {
-                                <h5 class="facetheader">Amenities:</h5>
-                                <ul class="facetlist">
-                                    @for (var c = 0; c < tags.Count; c++)
-                                    {
-                                        var facetLink = $"{tags[c]} ({Model.resultList.Facets["Tags"][c].Count})";
-                                        <li>
-                                            @Html.ActionLink(facetLink, "Facet", "Home", new { amenityFilter = $"Tags/any(t: t eq '{tags[c]}')" }, null)
-                                        </li>
-                                    }
-                                </ul>
-                            }
-                        }
-                    </div>
-                </td>
-                <td valign="top">
-                    <div id="resultsplace">
-                        @if (Model != null && Model.resultList != null)
-                        {
-                            // Show the result count.
-                            <p class="sampleText">
-                                @Html.DisplayFor(m => m.resultList.Count) Results
-                            </p>
-
-                            @for (var i = 0; i < Model.resultList.Results.Count; i++)
-                            {
-                                string amenities = string.Join(", ", Model.resultList.Results[i].Document.Tags);
-
-                                string fullDescription = Model.resultList.Results[i].Document.Description;
-                                fullDescription += $"\nCategory: {Model.resultList.Results[i].Document.Category}";
-                                fullDescription += $"\nAmenities: {amenities}";
-
-                                // Display the hotel name and description.
-                                @Html.TextAreaFor(m => Model.resultList.Results[i].Document.HotelName, new { @class = "box1" })
-                                @Html.TextArea($"desc{i}", fullDescription, new { @class = "box2" })
-                            }
-                        }
-                    </div>
-                </td>
-            </tr>
-
-            <tr>
-                <td></td>
-                <td valign="top">
-                    @if (Model != null && Model.pageCount > 1)
-                    {
-                        // If there is more than one page of results, show the paging buttons.
-                        <table>
-                            <tr>
-                                <td class="tdPage">
-                                    @if (Model.currentPage > 0)
-                                    {
-                                        <p class="pageButton">
-                                            @Html.ActionLink("|<", "Page", "Home", new { paging = "0" }, null)
-                                        </p>
-                                    }
-                                    else
-                                    {
-                                        <p class="pageButtonDisabled">|&lt;</p>
-                                    }
-                                </td>
-
-                                <td class="tdPage">
-                                    @if (Model.currentPage > 0)
-                                    {
-                                        <p class="pageButton">
-                                            @Html.ActionLink("<", "Page", "Home", new { paging = "prev" }, null)
-                                        </p>
-                                    }
-                                    else
-                                    {
-                                        <p class="pageButtonDisabled">&lt;</p>
-                                    }
-                                </td>
-
-                                @for (var pn = Model.leftMostPage; pn < Model.leftMostPage + Model.pageRange; pn++)
+                                if (categories.Count > 0)
                                 {
-                                    <td class="tdPage">
-                                        @if (Model.currentPage == pn)
+                                    <h5 class="facetheader">Category:</h5>
+                                    <ul class="facetlist">
+                                        @for (var c = 0; c < categories.Count; c++)
                                         {
-                                            // Convert displayed page numbers to 1-based and not 0-based.
-                                            <p class="pageSelected">@(pn + 1)</p>
+                                            var facetLink = $"{categories[c]} ({Model.resultList.Facets["Category"][c].Count})";
+                                            <li>
+                                                @Html.ActionLink(facetLink, "FacetAsync", "Home", new { categoryFilter = $"Category eq '{categories[c]}'" }, null)
+                                            </li>
+                                        }
+                                    </ul>
+                                }
+
+                                List<string> tags = Model.resultList.Facets["Tags"].Select(x => x.Value.ToString()).ToList();
+
+                                if (tags.Count > 0)
+                                {
+                                    <h5 class="facetheader">Amenities:</h5>
+                                    <ul class="facetlist">
+                                        @for (var c = 0; c < tags.Count; c++)
+                                        {
+                                            var facetLink = $"{tags[c]} ({Model.resultList.Facets["Tags"][c].Count})";
+                                            <li>
+                                                @Html.ActionLink(facetLink, "FacetAsync", "Home", new { amenityFilter = $"Tags/any(t: t eq '{tags[c]}')" }, null)
+                                            </li>
+                                        }
+                                    </ul>
+                                }
+                            }
+                        </div>
+                    </td>
+                    <td valign="top">
+                        <div id="resultsplace">
+                            @if (Model != null && Model.resultList != null)
+                            {
+                                // Show the result count.
+                                <p class="sampleText">
+                                    @Model.resultList.TotalCount Results
+                                </p>
+
+                                var results = Model.resultList.GetResults().ToList();
+
+                                @for (var i = 0; i < results.Count; i++)
+                                {
+                                    string amenities = string.Join(", ", results[i].Document.Tags);
+
+                                    string fullDescription = results[i].Document.Description;
+                                    fullDescription += $"\nCategory: {results[i].Document.Category}";
+                                    fullDescription += $"\nAmenities: {amenities}";
+
+
+                                    // Display the hotel name and description.
+                                    @Html.TextAreaFor(m => results[i].Document.HotelName, new { @class = "box1" })
+                                    @Html.TextArea($"desc{i}", fullDescription, new { @class = "box2" })
+                                }
+                            }
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td valign="top">
+                        @if (Model != null && Model.pageCount > 1)
+                        {
+                            // If there is more than one page of results, show the paging buttons.
+                            <table>
+                                <tr>
+                                    <td class="tdPage">
+                                        @if (Model.currentPage > 0)
+                                        {
+                                            <p class="pageButton">
+                                                @Html.ActionLink("|<", "PageAsync", "Home", new { paging = "0" }, null)
+                                            </p>
                                         }
                                         else
                                         {
-                                            <p class="pageButton">
-                                                @Html.ActionLink((pn + 1).ToString(), "Page", "Home", new { paging = @pn }, null)
-                                            </p>
+                                            <p class="pageButtonDisabled">|&lt;</p>
                                         }
                                     </td>
-                                }
 
-                                <td class="tdPage">
-                                    @if (Model.currentPage < Model.pageCount - 1)
-                                    {
-                                        <p class="pageButton">
-                                            @Html.ActionLink(">", "Page", "Home", new { paging = "next" }, null)
-                                        </p>
-                                    }
-                                    else
-                                    {
-                                        <p class="pageButtonDisabled">&gt;</p>
-                                    }
-                                </td>
+                                    <td class="tdPage">
+                                        @if (Model.currentPage > 0)
+                                        {
+                                            <p class="pageButton">
+                                                @Html.ActionLink("<", "PageAsync", "Home", new { paging = "prev" }, null)
+                                            </p>
+                                        }
+                                        else
+                                        {
+                                            <p class="pageButtonDisabled">&lt;</p>
+                                        }
+                                    </td>
 
-                                <td class="tdPage">
-                                    @if (Model.currentPage < Model.pageCount - 1)
+                                    @for (var pn = Model.leftMostPage; pn < Model.leftMostPage + Model.pageRange; pn++)
                                     {
-                                        <p class="pageButton">
-                                            @Html.ActionLink(">|", "Page", "Home", new { paging = Model.pageCount - 1 }, null)
-                                        </p>
+                                        <td class="tdPage">
+                                            @if (Model.currentPage == pn)
+                                            {
+                                                // Convert displayed page numbers to 1-based and not 0-based.
+                                                <p class="pageSelected">@(pn + 1)</p>
+                                            }
+                                            else
+                                            {
+                                                <p class="pageButton">
+                                                    @Html.ActionLink((pn + 1).ToString(), "PageAsync", "Home", new { paging = @pn }, null)
+                                                </p>
+                                            }
+                                        </td>
                                     }
-                                    else
-                                    {
-                                        <p class="pageButtonDisabled">&gt;|</p>
-                                    }
-                                </td>
-                            </tr>
-                        </table>
-                    }
-                </td>
-            </tr>
-        </table>
-    }
+
+                                    <td class="tdPage">
+                                        @if (Model.currentPage < Model.pageCount - 1)
+                                        {
+                                            <p class="pageButton">
+                                                @Html.ActionLink(">", "PageAsync", "Home", new { paging = "next" }, null)
+                                            </p>
+                                        }
+                                        else
+                                        {
+                                            <p class="pageButtonDisabled">&gt;</p>
+                                        }
+                                    </td>
+
+                                    <td class="tdPage">
+                                        @if (Model.currentPage < Model.pageCount - 1)
+                                        {
+                                            <p class="pageButton">
+                                                @Html.ActionLink(">|", "PageAsync", "Home", new { paging = Model.pageCount - 1 }, null)
+                                            </p>
+                                        }
+                                        else
+                                        {
+                                            <p class="pageButtonDisabled">&gt;|</p>
+                                        }
+                                    </td>
+                                </tr>
+                            </table>
+                        }
+                    </td>
+                </tr>
+            </table>
+        }
     </body>
     ```
 
@@ -535,15 +542,15 @@ A felhasználó aspektusának az az előnye, hogy egyetlen kattintással szűkí
 
     ![A "repülőtér" keresésének szűkítése a Face navigációs használatával](./media/tutorial-csharp-create-first-app/azure-search-facet-airport.png)
 
-2. Kattintson az **üdülő és a fürdő** kategóriára. Ellenőrizze, hogy az összes eredmény ebben a kategóriában van-e.
+1. Kattintson az **üdülő és a fürdő** kategóriára. Ellenőrizze, hogy az összes eredmény ebben a kategóriában van-e.
 
     ![A keresés szűkítése a "Resort and Spa" kifejezésre](./media/tutorial-csharp-create-first-app/azure-search-facet-airport-ras.png)
 
-3. Kattintson a **kontinentális reggeli** élvezete lehetőségre. Ellenőrizze, hogy az összes eredmény továbbra is az "üdülőhely és Spa" kategóriában van-e, a kiválasztott rekreációval együtt.
+1. Kattintson a **kontinentális reggeli** élvezete lehetőségre. Ellenőrizze, hogy az összes eredmény továbbra is az "üdülőhely és Spa" kategóriában van-e, a kiválasztott rekreációval együtt.
 
     ![A keresés szűkítése a "kontinentális reggeli" kifejezésre](./media/tutorial-csharp-create-first-app/azure-search-facet-airport-ras-cb.png)
 
-4. Próbáljon meg más kategóriát kijelölni, majd egy élvezetet, és tekintse meg a szűkített eredményeket. Ezután próbálkozzon a másik megoldással, egy kivezetővel, majd egy kategóriával.
+1. Próbáljon meg más kategóriát kijelölni, majd egy élvezetet, és tekintse meg a szűkített eredményeket. Ezután próbálkozzon a másik megoldással, egy kivezetővel, majd egy kategóriával. Üres keresés küldése az oldal alaphelyzetbe állításához.
 
     >[!Note]
     > Ha egy dimenziós listában (például kategória) végez egy kijelölést, akkor a rendszer felülírja az összes korábbi kijelölést a Kategória listában.
@@ -552,9 +559,9 @@ A felhasználó aspektusának az az előnye, hogy egyetlen kattintással szűkí
 
 Vegye figyelembe az alábbi elvihetőket a projektből:
 
-* Minden tulajdonságot **IsFacetable**kell megjelölni, ha azokat bele kell foglalni a facet navigationbe.
-* A facet Navigation egyszerűen és intuitív módon teszi lehetővé a keresés szűkítéséhez.
-* A dimenziós Navigálás a legmegfelelőbb szakaszokra oszlik (a szállodák kategóriái, a szállodai szolgáltatások, az árak, a minősítési tartományok stb.), és mindegyik szakasz egy megfelelő fejléccel rendelkezik.
+* Fontos, hogy az egyes dimenziós mezőket a **IsFacetable** tulajdonsággal kell megjelölni a facet navigationbe való felvételhez.
+* Az aspektusokat szűrőkkel kombinálva csökkentheti az eredményeket.
+* A dimenziók összegző jellegűek, és az előzőekhez tartozó egyes kiválasztások tovább szűkítik az eredményeket.
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -8,26 +8,27 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 10/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: ac5322b93fc5f804292cfbff2c2e7eeb79b5989f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: cac4234d5bd93de8b059ea53a4697dae1bf5c64c
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87098428"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667879"
 ---
 # <a name="data-modeling-in-azure-time-series-insights-gen2"></a>Adatmodellezés Azure Time Series Insights Gen2
 
 Ez a cikk azt ismerteti, hogyan használható a Time Series-modell a Azure Time Series Insights Gen2. Számos gyakori adatesetet részletez.
 
 > [!TIP]
+>
 > * További információ a [Time Series-modellről](concepts-model-overview.md).
 > * További információ a [Azure Time Series Insights Gen2 Explorer alkalmazásban](./time-series-insights-update-explorer.md)való navigálásról.
 
 ## <a name="instances"></a>példányszám
 
-A Azure Time Series Insights Explorer támogatja a példányok **létrehozási**, **olvasási**, **frissítési**és **törlési** műveleteit a böngészőben. 
+A Azure Time Series Insights Explorer támogatja a példányok **létrehozási**, **olvasási**, **frissítési**és **törlési** műveleteit a böngészőben.
 
 A kezdéshez válassza ki a **modell** nézetet a Azure Time Series Insights Explorer **elemzés** nézetében.
 
@@ -57,7 +58,7 @@ A kezdéshez válassza ki a **modell** nézetet a Azure Time Series Insights Exp
 
 ### <a name="edit-a-single-instance"></a>Egyetlen példány szerkesztése
 
-1. Válassza ki a példányt, és válassza a **Szerkesztés** vagy a **ceruza ikont**. 
+1. Válassza ki a példányt, és válassza a **Szerkesztés** vagy a **ceruza ikont**.
 1. Végezze el a szükséges módosításokat, majd kattintson a **Mentés**gombra.
 
     [![Egyetlen példány szerkesztése.](media/v2-update-how-to-tsm/how-to-tsm-edit-instance.png)](media/v2-update-how-to-tsm/how-to-tsm-edit-instance.png#lightbox)
@@ -75,7 +76,7 @@ A kezdéshez válassza ki a **modell** nézetet a Azure Time Series Insights Exp
 
 ## <a name="hierarchies"></a>Hierarchiák
 
-A Azure Time Series Insights Explorer támogatja a hierarchia **létrehozási**, **olvasási**, **frissítési**és **törlési** műveleteit a böngészőben. 
+A Azure Time Series Insights Explorer támogatja a hierarchia **létrehozási**, **olvasási**, **frissítési**és **törlési** műveleteit a böngészőben.
 
 A kezdéshez válassza ki a **modell** nézetet a Azure Time Series Insights Explorer **elemzés** nézetében.
 
@@ -117,7 +118,7 @@ A kezdéshez válassza ki a **modell** nézetet a Azure Time Series Insights Exp
 
 ### <a name="delete-a-hierarchy"></a>Hierarchia törlése
 
-1. Válassza ki a hierarchiát, és válassza a **Törlés** vagy a **hulladék raktárhely ikont**. 
+1. Válassza ki a hierarchiát, és válassza a **Törlés** vagy a **hulladék raktárhely ikont**.
 
     [![A Törlés gombra kattintva törölheti a hierarchiát.](media/v2-update-how-to-tsm/how-to-tsm-delete-hierarchy.png)](media/v2-update-how-to-tsm/how-to-tsm-delete-hierarchy.png#lightbox)
 
@@ -125,7 +126,7 @@ A kezdéshez válassza ki a **modell** nézetet a Azure Time Series Insights Exp
 
 ## <a name="types"></a>Típusok
 
-A Azure Time Series Insights Explorer támogatja a típus **létrehozási**, **olvasási**, **frissítési**és **törlési** műveleteit a böngészőben. 
+A Azure Time Series Insights Explorer támogatja a típus **létrehozási**, **olvasási**, **frissítési**és **törlési** műveleteit a böngészőben.
 
 A kezdéshez válassza ki a **modell** nézetet a Azure Time Series Insights Explorer **elemzés** nézetében.
 
@@ -136,7 +137,7 @@ A kezdéshez válassza ki a **modell** nézetet a Azure Time Series Insights Exp
     [![Idősorozat-modell típusai panel.](media/v2-update-how-to-tsm/how-to-tsm-type-panel.png)](media/v2-update-how-to-tsm/how-to-tsm-type-panel.png#lightbox)
 
 1. Kattintson a **+ Hozzáadás** elemre az **új típus hozzáadása** felbukkanó mód megjelenítéséhez.
-1. Adja meg a típus tulajdonságait és változóit. A bevitelt követően válassza a **Mentés**lehetőséget. 
+1. Adja meg a típus tulajdonságait és változóit. A bevitelt követően válassza a **Mentés**lehetőséget.
 
     [![A típus hozzáadására szolgáló konfigurációs beállítások.](media/v2-update-how-to-tsm/how-to-tsm-add-new-type.png)](media/v2-update-how-to-tsm/how-to-tsm-add-new-type.png#lightbox)
 
@@ -166,10 +167,10 @@ A kezdéshez válassza ki a **modell** nézetet a Azure Time Series Insights Exp
 
 1. A **törlés megerősítéséhez válassza a**Törlés lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- A Time Series-modellel kapcsolatos további információkért olvassa el az [adatmodellezést](./concepts-model-overview.md)ismertető témakört.
+* A Time Series-modellel kapcsolatos további információkért olvassa el az [adatmodellezést](./concepts-model-overview.md)ismertető témakört.
 
-- Ha többet szeretne megtudni a Gen2, olvassa el [az Azure Time Series Insights Gen2 Explorer adatainak megjelenítése](./time-series-insights-update-explorer.md)című témakörét.
+* Ha többet szeretne megtudni a Gen2, olvassa el [az Azure Time Series Insights Gen2 Explorer adatainak megjelenítése](./time-series-insights-update-explorer.md)című témakörét.
 
-- A támogatott JSON-alakzatokkal kapcsolatos további tudnivalókért olvassa el a [támogatott JSON-alakzatok](./time-series-insights-send-events.md#supported-json-shapes)című témakört.
+* A támogatott JSON-alakzatokkal kapcsolatos további tudnivalókért olvassa el a [támogatott JSON-alakzatok](./time-series-insights-send-events.md#supported-json-shapes)című témakört.

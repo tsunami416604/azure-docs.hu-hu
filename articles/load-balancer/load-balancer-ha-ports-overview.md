@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2019
 ms.author: allensu
-ms.openlocfilehash: 5115190d944e78d476f369442dccdbda394e46ba
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: b0b19eaa86269feff28c73275e4db4a3d332b3df
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90564049"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91664873"
 ---
 # <a name="high-availability-ports-overview"></a>Magas rendelkezésre állású portok – áttekintés
 
-Az Azure standard Load Balancer segítségével a TCP-és UDP-forgalom terheléselosztása minden porton egyidejűleg végezhető el, amikor belső terheléselosztó használatban van. 
+Az Azure standard Load Balancer lehetővé teszi, hogy minden porton egyidejűleg terheléselosztást hajtson **végre** **minden** porton, ha belső Load Balancert használ a ha portokon keresztül.
 
-A magas rendelkezésre állású (HA) portok terheléselosztási szabálya egy belső standard Load Balancer konfigurált terheléselosztási szabály egy változata. Leegyszerűsítheti a terheléselosztó használatát azáltal, hogy egyetlen szabályt biztosít a belső standard Load Balancer összes portjára érkező TCP-és UDP-folyamatok terheléselosztásához. A terheléselosztási döntés egy folyamaton alapul. Ez a művelet a következő öt rekordos kapcsolaton alapul: forrás IP-címe, forrásport, cél IP-címe, célport és protokoll
+A magas rendelkezésre állású (HA) portok olyan terheléselosztási szabályok, amelyek egyszerű módszert biztosítanak a belső standard Load Balancer **összes** portjára **érkező folyamatok** terheléselosztásához. A terheléselosztási döntés egy folyamaton alapul. Ez a művelet a következő öt rekordos kapcsolaton alapul: forrás IP-címe, forrásport, cél IP-címe, célport és protokoll
 
 A HA-portok terheléselosztási szabályai segítenek a kritikus forgatókönyvek, például a magas rendelkezésre állás és a virtuális hálózatokon belüli hálózati virtuális berendezések (NVA-EK) méretezése terén. A funkció akkor is segíthet, ha nagy számú portot kell terheléselosztással elválasztani. 
 
@@ -97,7 +97,7 @@ Ha a forgatókönyve megköveteli, hogy egynél több portot kell konfigurálnia
 - A flow-szimmetria (elsősorban a NVA-forgatókönyvek esetében) a háttér-példány és egyetlen hálózati adapter (és egy IP-konfiguráció) esetében csak akkor támogatott, ha a fenti ábrán látható módon használja, és a HA portok terheléselosztási szabályait használja. Semmilyen más esetben nincs megadva. Ez azt jelenti, hogy két vagy több Load Balancer erőforrás és a hozzájuk tartozó szabályok független döntéseket hoznak, és soha nem koordinálják őket. Tekintse meg a [hálózati virtuális berendezések](#nva)leírását és ábráját. Ha több hálózati adaptert használ, vagy a NVA egy nyilvános és belső Load Balancer között használja, a flow-szimmetria nem érhető el.  Ezt megteheti, ha a forrás NAT'ing a bejövő forgalmat a készülék IP-címére, hogy a válaszok ugyanarra a NVA érkezzenek.  Javasoljuk azonban, hogy egyetlen hálózati adaptert használjon, és használja a fenti ábrán látható hivatkozási architektúrát.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Megtudhatja, hogyan konfigurálhat ha portokat a ILB a portálon](tutorial-load-balancer-standard-internal-portal.md#create-a-load-balancer-rule), a [powershellen](load-balancer-get-started-ilb-arm-ps.md#create-the-configuration-rules-probe-and-load-balancer), a [CLI](load-balancer-get-started-ilb-arm-cli.md#create-the-load-balancer-rule)-n vagy a [sablonokon](quickstart-load-balancer-standard-internal-template.md)keresztül.
 - [Tudnivalók a standard Load Balancer](load-balancer-standard-overview.md)

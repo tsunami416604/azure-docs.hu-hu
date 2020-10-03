@@ -2,14 +2,14 @@
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 06/23/2020
+ms.date: 09/30/2020
 ms.author: tamram
-ms.openlocfilehash: 43a72d915fa5a00c54bef7a06fe3815a7d63f2fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fe493ca4a2edf16bfda405e8b2c5581c0f745616
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85805469"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665604"
 ---
 | Erőforrás | Cél | Cél (előzetes verzió) |
 |-|-|-|
@@ -19,13 +19,15 @@ ms.locfileid: "85805469"
 | Blokk blob maximális mérete | 50 000 X 100 MiB (körülbelül 4,75 TiB) | 50 000 X 4000 MiB (körülbelül 190,7 TiB) (előzetes verzió) |
 | Blokk maximális mérete egy hozzáfűző blobban | 4 MiB |  |
 | Hozzáfűző blob maximális mérete | 50 000 x 4 MiB (körülbelül 195 GiB) |  |
-| Oldal blobjának maximális mérete | 8 TiB |  |
+| Oldal blobjának maximális mérete | 8 TiB<sup>2</sup> |  |
 | Tárolt hozzáférési szabályzatok maximális száma blob-tárolón | 5 |  |
 | Egy blobhoz tartozó célalkalmazás-kérelmek sebessége | Legfeljebb 500 kérelem másodpercenként |  |
-| Cél átviteli sebesség egy egyoldalas blobhoz | Akár 60 MiB másodpercenként |  |
+| Cél átviteli sebesség egy egyoldalas blobhoz | Akár 60 MiB/másodperc<sup>2</sup> |  |
 | Cél átviteli sebesség egyetlen blokk blobhoz | Legfeljebb Storage-fiók bejövő/kimenő korlátja<sup>1</sup> |  |
 
 <sup>1</sup> az egyes Blobok átviteli sebessége több tényezőtől függ, többek között a következőktől: Egyidejűség, kérelmek mérete, teljesítményszint, a feltöltések forrása, valamint a letöltés céljának célja. A [nagy átviteli sebességű blokkos Blobok](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/)teljesítményének növelésével kihasználhatja a nagyobb méretű Blobok vagy blokkok feltöltését. Pontosan hívja meg a [put blobot](/rest/api/storageservices/put-blob) vagy a [Letiltás](/rest/api/storageservices/put-block) műveletet egy olyan blob-vagy blokk-mérettel, amely nagyobb, mint 4 MIB a standard Storage-fiókokhoz. A Premium Block blob vagy a Data Lake Storage Gen2 Storage-fiókok esetében használjon 256 KiB-nál nagyobb blokk-vagy blob-méretet.
+
+<sup>2</sup> az oldal Blobok még nem támogatottak azokban a fiókokban, amelyeken **hierarchikus névtér** van beállítva.
 
 A következő táblázat a szolgáltatás verziója által engedélyezett maximális blokk-és blob-méreteket ismerteti.
 

@@ -1,20 +1,20 @@
 ---
-title: Ügyfél és kiszolgáló architektúrája
+title: Ügyfél- és kiszolgálói architektúra
 titleSuffix: An Azure Communication Services concept document
 description: Ismerje meg a kommunikációs szolgáltatások architektúráját.
 author: mikben
 manager: mikben
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2020
+ms.date: 09/30/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 38d6b131c972b4fd890af53624fdd6a36b3ecb6c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: b844f61963081bf355837fd26254915112cbce11
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935477"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91666942"
 ---
 # <a name="client-and-server-architecture"></a>Ügyfél és kiszolgáló architektúrája
 
@@ -43,13 +43,13 @@ További információkért tekintse át a [legjobb Identitáskezelés-kezelési 
 
 Az Azure Communications JavaScript-ügyféloldali kódtárai lehetővé teszik a webes alkalmazások gazdag szöveg-, hang-és videó-interakcióval való kezelését. Az alkalmazás közvetlenül kommunikál az Azure kommunikációs szolgáltatásokkal az ügyfél-függvénytáron keresztül az adatsíkon való hozzáféréshez és valós idejű szöveg-, hang-és videó-kommunikációhoz. A minta architektúra folyamata az alábbiakban található:
 
-:::image type="content" source="../media/scenarios/archdiagram-browser.png" alt-text="A kommunikációs szolgáltatások böngésző-architektúráját bemutató ábra.":::
+:::image type="content" source="../media/scenarios/archdiagram-browser.png" alt-text="A felhasználói hozzáférési jogkivonat architektúráját bemutató ábra.":::
 
 ## <a name="native-app-communication"></a>Natív alkalmazás kommunikációja
 
 Számos forgatókönyv a legalkalmasabb a natív alkalmazásokhoz. Az Azure kommunikációs szolgáltatások a böngészők közötti és az alkalmazások közötti kommunikációt is támogatják.  Natív alkalmazások létrehozásakor a leküldéses értesítések lehetővé teszik, hogy a felhasználók akkor is fogadhasson hívásokat, ha az alkalmazás nem fut. Az Azure kommunikációs szolgáltatások megkönnyítik az integrált leküldéses értesítéseket a Google Firebase, a Apple Push Notification Service és a Windows leküldéses értesítésekhez. A minta architektúra folyamata az alábbiakban található:
 
-:::image type="content" source="../media/scenarios/archdiagram-app.png" alt-text="A kommunikációs szolgáltatások architektúráját bemutató ábra a natív alkalmazással való kommunikációhoz.":::
+:::image type="content" source="../media/scenarios/archdiagram-app.png" alt-text="A felhasználói hozzáférési jogkivonat architektúráját bemutató ábra.":::
 
 ## <a name="voice-and-sms-over-the-public-switched-telephony-network-pstn"></a>Hang és SMS a nyilvános kapcsolóval rendelkező telefonos hálózaton (PSTN) keresztül
 
@@ -58,7 +58,7 @@ A telefonos rendszeren keresztüli kommunikáció jelentősen növelheti az alka
 > [!Note]
 > A nyilvános előzetes verzióban az Egyesült államokbeli telefonszámok kiosztása az Egyesült Államokban és Kanadában található számlázási címmel rendelkező ügyfelek számára érhető el. 
 
-:::image type="content" source="../media/scenarios/archdiagram-pstn.png" alt-text="A kommunikációs szolgáltatások PSTN-architektúráját bemutató ábra.":::
+:::image type="content" source="../media/scenarios/archdiagram-pstn.png" alt-text="A felhasználói hozzáférési jogkivonat architektúráját bemutató ábra.":::
 
 A PSTN-és SMS-megoldásokkal kapcsolatos további információkért lásd [a PSTN-és SMS-megoldás megtervezése](../concepts/telephony-sms/plan-solution.md) című témakört.
 
@@ -66,9 +66,9 @@ A PSTN-és SMS-megoldásokkal kapcsolatos további információkért lásd [a PS
 
 Az Azure kommunikációs szolgáltatások az Azure kommunikációs szolgáltatások adatsíkjával közvetlenül hozzáférő szolgáltatásokkal támogatják az emberi és a rendszer közötti kommunikációt, de szöveges és hangcsatornákat is. Lehet például, hogy a bot megválaszolja a bejövő telefonhívásokat, vagy részt vesz egy webes csevegésben. Az Azure kommunikációs szolgáltatások olyan ügyféloldali kódtárakat biztosít, amelyek lehetővé teszik ezen forgatókönyvek meghívását és csevegését. A minta architektúra folyamata az alábbiakban található:
 
-:::image type="content" source="../media/scenarios/archdiagram-bot.png" alt-text="A kommunikációs szolgáltatások bot architektúráját bemutató ábra.":::
+:::image type="content" source="../media/scenarios/archdiagram-bot.png" alt-text="A felhasználói hozzáférési jogkivonat architektúráját bemutató ábra.":::
 
-## <a name="networking"></a>Hálózatkezelés
+## <a name="networking"></a>Hálózat
 
 Előfordulhat, hogy tetszőleges adatokat kell cserélnie a felhasználók között, például szinkronizálnia kell a közös, vegyes valóságot vagy játékélményt. A szöveg-, hang-és videó-kommunikációhoz használt valós idejű adatsíkok kétféleképpen érhetők el:
 

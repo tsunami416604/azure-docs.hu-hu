@@ -1,17 +1,17 @@
 ---
 title: Oktatóanyag – felügyelt identitás az Azure Spring Cloud app Azure Functionsának meghívásához
-description: Felügyelt identitás használata az Azure Spring Cloud app Azure Functionsának meghívásához
+description: Felügyelt identitás használata az Azure Functions meghívásához egy Azure Spring Cloud-alkalmazásból
 author: MarkGardner
 ms.author: margard
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/10/2020
-ms.openlocfilehash: 6538022e7ada748f828f6d57dde73b5e12da84c9
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 44268bf1b7805ece8de4a3499a7d53fc851af142
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90108772"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91664987"
 ---
 # <a name="tutorial-use-a-managed-identity-to-invoke-azure-functions-from-an-azure-spring-cloud-app"></a>Oktatóanyag: felügyelt identitás használata az Azure Spring Cloud app Azure Functionsának meghívásához
 
@@ -28,7 +28,7 @@ A Azure Functions és a App Services egyaránt támogatja az Azure Active Direct
 * [A Azure Functions Core Tools 3.0.2009 vagy újabb verziójának telepítése](https://docs.microsoft.com/azure/azure-functions/functions-run-local#install-the-azure-functions-core-tools)
 
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Hozzon létre egy erőforráscsoportot, amely a Function alkalmazást és a Spring Cloudt is tartalmazza a parancs az [Group Create](/cli/azure/group#az-group-create)paranccsal történő használatával:
 
 ```azurecli-interactive
@@ -91,7 +91,7 @@ Alapértelmezés szerint a függvények a kulcs alapú hitelesítést használj�
 }
 ```
 
-Az alkalmazás mostantól közzétehető az előző lépésben létrehozott Function app-példányon.
+Az alkalmazás mostantól közzétehető az előző lépésben létrehozott [Function app](#create-a-function-app) -példányon.
 
 ```console
 func azure functionapp publish <your-functionapp-name>

@@ -4,17 +4,17 @@ description: Az Azure Storage szolgáltatással kapcsolatos problémák azonosí
 author: normesta
 ms.service: storage
 ms.topic: troubleshooting
-ms.date: 09/23/2019
+ms.date: 10/02/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 79e108303575d5a9969e04f01bdeb126bf078762
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: a63af55161c2e60724fd35987f9dcbf05b12df2e
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90031483"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667911"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage felügyelete, diagnosztizálása és hibaelhárítása
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -35,7 +35,7 @@ Az Azure Storage-alkalmazásokkal kapcsolatos teljes körű hibaelhárítást a 
   * [Teljesítmény figyelése]
 * [Tárolási problémák diagnosztizálása]
   * [A szolgáltatás állapotával kapcsolatos problémák]
-  * [Teljesítményproblémák]
+  * [Teljesítménnyel kapcsolatos problémák]
   * [Hibák diagnosztizálása]
   * [A Storage Emulator problémái]
   * [Storage-naplózási eszközök]
@@ -72,7 +72,7 @@ Az Azure Storage-alkalmazásokkal kapcsolatos teljes körű hibaelhárítást a 
   * [4. függelék: az Excel használata a metrikák és a naplózási adatok megtekintéséhez]
   * [5. függelék: az Azure DevOps Application Insights figyelése]
 
-## <a name="introduction"></a><a name="introduction"></a>Bevezetés
+## <a name="introduction"></a><a name="introduction"></a>Introduction (Bevezetés)
 Ez az útmutató bemutatja, hogyan használhatók olyan szolgáltatások, mint például az Azure Storage Analytics, az ügyféloldali naplózás az Azure Storage ügyféloldali Kódtáraban, valamint más, harmadik féltől származó eszközök az Azure Storage-hoz kapcsolódó problémák azonosításához, diagnosztizálásához és hibaelhárításához.
 
 ![Az ügyfélalkalmazások és az Azure Storage-szolgáltatások közötti információáramlást ábrázoló diagram.][1]
@@ -178,7 +178,7 @@ A következő szakaszokban ismertetjük azokat a lépéseket, amelyeket követni
 ### <a name="service-health-issues"></a><a name="service-health-issues"></a>A szolgáltatás állapotával kapcsolatos problémák
 A szolgáltatás állapotával kapcsolatos problémák általában a vezérlőn kívül esnek. A [Azure Portal](https://portal.azure.com) információt nyújt az Azure-szolgáltatásokkal kapcsolatos folyamatos problémákról, beleértve a tárolási szolgáltatásokat is. Ha a Storage-fiók létrehozásakor úgy döntött, hogy olvasási hozzáférésű földrajzi redundáns tárterületet használ, akkor ha az adatai nem lesznek elérhetők az elsődleges helyen, az alkalmazás ideiglenesen a másodlagos helyen lévő írásvédett másolatra vált. A másodlagosból való olvasáshoz az alkalmazásnak képesnek kell lennie az elsődleges és a másodlagos tárolóhelyek közötti váltásra, és képesnek kell lennie csökkentett funkcionalitású módban dolgozni a csak olvasható adatokkal. Az Azure Storage ügyféloldali kódtárai lehetővé teszik az újrapróbálkozási szabályzat megadását, amely képes a másodlagos tárolóból olvasni, ha az elsődleges tárolóból való olvasás meghiúsul. Emellett az alkalmazásnak is tisztában kell lennie azzal, hogy a másodlagos helyen lévő adatai végül konzisztensek. További információkért tekintse meg az [Azure Storage redundancia lehetőségeinek és az olvasási hozzáférés földrajzi redundáns tárolásának](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/)feladatait ismertető blogot.
 
-### <a name="performance-issues"></a><a name="performance-issues"></a>Teljesítményproblémák
+### <a name="performance-issues"></a><a name="performance-issues"></a>Teljesítménnyel kapcsolatos problémák
 Egy alkalmazás teljesítményének megítélése szubjektív lehet, főképp a felhasználó szemszögéből. Ezért fontos, hogy rendelkezzen olyan alapmértékekkel, amelyek segíthetnek a teljesítménnyel kapcsolatos problémák azonosításában. Számos tényező hatással lehet az Azure Storage szolgáltatás teljesítményére az ügyfélalkalmazás szemszögéből. Ezek a tényezők működhetnek a Storage szolgáltatásban, az ügyfélen vagy a hálózati infrastruktúrában; Ezért fontos, hogy a teljesítménnyel kapcsolatos probléma eredetének azonosítására szolgáló stratégia legyen.
 
 Miután azonosította a teljesítménnyel kapcsolatos probléma valószínű helyét a mérőszámokból, a naplófájlok segítségével részletes információkat találhat a probléma diagnosztizálásához és elhárításához.
@@ -256,6 +256,14 @@ A Storage szolgáltatás automatikusan létrehozza a kiszolgálói kérelmek azo
 >
 >
 
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
+
+Az alábbi mintakód azt mutatja be, hogyan használható egyéni ügyfél-kérelem-azonosító. 
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Monitoring.cs" id="Snippet_UseCustomRequestID":::
+
+# <a name="net-v11"></a>[.NET-v11](#tab/dotnet11)
+
 Ha a Storage ügyféloldali kódtár egy **StorageException** dob az ügyfélen, a **RequestInformation** tulajdonság olyan **RequestResult** objektumot tartalmaz, amely tartalmaz egy **ServiceRequestID** tulajdonságot. Egy **RequestResult** objektum egy **OperationContext** -példányból is elérhető.
 
 Az alábbi mintakód azt mutatja be, hogyan lehet egyéni **ügyfélkérelem** értéket beállítani egy **OperationContext** objektumnak a Storage szolgáltatáshoz való csatolásával. Azt is bemutatja, hogyan kérhető le a **ServerRequestId** értéke a válaszüzenetből.
@@ -291,6 +299,8 @@ catch (StorageException storageException)
     }
 }
 ```
+
+---
 
 ### <a name="timestamps"></a><a name="timestamps"></a>Időbélyegek
 Időbélyegeket is használhat a kapcsolódó naplóbejegyzések megkereséséhez, de ügyeljen arra, hogy az ügyfél és a kiszolgáló közötti összes óra döntse. Keressen plusz vagy mínusz 15 percet a kiszolgálóoldali bejegyzések egyeztetéséhez az ügyfél időbélyege alapján. Ne feledje, hogy a metrikákat tartalmazó Blobok metaadatai a blobban tárolt mérőszámok időtartományát jelzik. Ez az időtartomány akkor hasznos, ha sok metrikai blobtal rendelkezik ugyanahhoz a perchez vagy órára.
@@ -358,13 +368,19 @@ Az ügyfélnek a lassú válaszadás lehetséges okai a következők lehetnek: k
 
 A tábla-és üzenetsor-szolgáltatások esetében a Nyéki algoritmus magas **AverageE2ELatency** eredményezhet a **averageserverlatency értéket mutatnak**képest: további információért lásd a [nyár utáni algoritmust, amely nem csupán a kis kérések elérésére szolgál](https://docs.microsoft.com/archive/blogs/windowsazurestorage/nagles-algorithm-is-not-friendly-towards-small-requests). A **System.net** -névtér **ServicePointManager** osztályának használatával letilthatja a Nyéki algoritmust a kódban. Ezt csak akkor hajtsa végre, ha az alkalmazásban meghívja a Table vagy a üzenetsor-szolgáltatást, mivel ez nem befolyásolja a már megnyitott kapcsolatokat. A következő példa egy feldolgozói szerepkör **Application_Start** metódusára mutat.
 
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Monitoring.cs" id="Snippet_DisableNagle":::
+
+# <a name="net-v11"></a>[.NET-v11](#tab/dotnet11)
+
 ```csharp
 var storageAccount = CloudStorageAccount.Parse(connStr);
-ServicePoint tableServicePoint = ServicePointManager.FindServicePoint(storageAccount.TableEndpoint);
-tableServicePoint.UseNagleAlgorithm = false;
 ServicePoint queueServicePoint = ServicePointManager.FindServicePoint(storageAccount.QueueEndpoint);
 queueServicePoint.UseNagleAlgorithm = false;
 ```
+
+---
 
 Tekintse át az ügyféloldali naplókat, és ellenőrizze, hogy az ügyfélalkalmazás hány kérelmét küldi el, és keresse meg a .NET-sel kapcsolatos általános teljesítménybeli szűk keresztmetszeteket az ügyfélben, például a PROCESSZORt, a .NET-alapú adatgyűjtést, a hálózati kihasználtságot vagy a memóriát. A .NET-ügyfélalkalmazások hibaelhárításának kiindulási pontként lásd: [hibakeresés, nyomkövetés és profilkészítés](https://msdn.microsoft.com/library/7fe0dd2y).
 
@@ -559,7 +575,7 @@ Ha az ügyfélalkalmazás olyan SAS-kulcsot próbál használni, amely nem tarta
 
 A következő táblázat a tárolási naplózási naplófájlban található példa kiszolgálóoldali naplófájlt jeleníti meg:
 
-| Name | Érték |
+| Név | Érték |
 | --- | --- |
 | Kérelem kezdési ideje | 2014-05-30T06:17:48.4473697 Z |
 | Művelettípus     | GetBlobProperties            |
@@ -594,6 +610,12 @@ A JavaScript-probléma megkerüléséhez konfigurálhatja a CORS-t az ügyfélhe
 
 Az alábbi mintakód bemutatja, hogyan konfigurálhatja a blob Service-t, hogy engedélyezze a contoso-tartományban futó JavaScriptet a blob Storage szolgáltatásban található blob eléréséhez:
 
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Monitoring.cs" id="Snippet_ConfigureCORS":::
+
+# <a name="net-v11"></a>[.NET-v11](#tab/dotnet11)
+
 ```csharp
 CloudBlobClient client = new CloudBlobClient(blobEndpoint, new StorageCredentials(accountName, accountKey));
 // Set the service properties.
@@ -609,6 +631,8 @@ sp.Cors.CorsRules.Clear();
 sp.Cors.CorsRules.Add(cr);
 client.SetServiceProperties(sp);
 ```
+
+---
 
 #### <a name="network-failure"></a><a name="network-failure"></a>Hálózati hiba
 Bizonyos esetekben a hálózati csomagok elvesztése miatt a Storage szolgáltatás HTTP 404-üzeneteket ad vissza az ügyfélnek. Ha például az ügyfélalkalmazás töröl egy entitást a Table szolgáltatásból, láthatja, hogy az ügyfél olyan tárolási kivételt jelez, amely "HTTP 404 (nem található)" állapotüzenetek bejelentését jeleníti meg a Table szolgáltatásból. Amikor megvizsgálja a táblázatot a Table Storage szolgáltatásban, láthatja, hogy a szolgáltatás a kért módon törölte az entitást.
@@ -829,7 +853,7 @@ Az Azure Storage-beli elemzéssel kapcsolatos további információkért tekints
 
 [Tárolási problémák diagnosztizálása]: #diagnosing-storage-issues
 [A szolgáltatás állapotával kapcsolatos problémák]: #service-health-issues
-[Teljesítményproblémák]: #performance-issues
+[Teljesítménnyel kapcsolatos problémák]: #performance-issues
 [Hibák diagnosztizálása]: #diagnosing-errors
 [A Storage Emulator problémái]: #storage-emulator-issues
 [Storage-naplózási eszközök]: #storage-logging-tools

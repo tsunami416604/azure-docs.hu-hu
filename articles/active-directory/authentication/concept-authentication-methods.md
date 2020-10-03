@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: d4b44deda1bd17e65c3e2c2a9c46dddccd411996
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: c331334df64ea1bea45949152a34241a73fa5bb9
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90602037"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91666160"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Milyen hitelesítési és ellenőrzési módszerek érhetők el az Azure Active Directoryban?
 
@@ -60,14 +60,14 @@ A következő táblázat azt ismerteti, hogy mikor lehet hitelesítési módszer
 
 | Metódus                         | Elsődleges hitelesítés | Másodlagos hitelesítés  |
 |--------------------------------|:----------------------:|:-------------------------:|
-| Vállalati Windows Hello     | Igen                    | MFA                       |
+| Vállalati Windows Hello     | Yes                    | MFA                       |
 | A Microsoft Authenticator alkalmazás    | Igen (előzetes verzió)          | MFA és SSPR              |
-| FIDO2 biztonsági kulcs (előzetes verzió)   | Igen                    | MFA                       |
+| FIDO2 biztonsági kulcs (előzetes verzió)   | Yes                    | MFA                       |
 | A hardver-tokenek ESKÜje (előzetes verzió) | No                     | MFA                       |
 | Az eskü szoftver jogkivonatai           | No                     | MFA                       |
 | SMS                            | Igen (előzetes verzió)          | MFA és SSPR              |
 | Hanghívás                     | No                     | MFA és SSPR              |
-| Jelszó                       | Igen                    |                           |
+| Jelszó                       | Yes                    |                           |
 
 Az összes hitelesítési módszer konfigurálható a Azure Portalban, és egyre inkább a [Microsoft Graph REST API Beta](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta)használatával.
 
@@ -91,7 +91,7 @@ A következő további ellenőrzési módszerek használhatók bizonyos helyzete
 * [Biztonsági kérdések](concept-authentication-security-questions.md) – csak a SSPR esetében használatos
 * [E-mail-cím](concept-sspr-howitworks.md#authentication-methods) – csak a SSPR esetében használatos
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Első lépésként tekintse meg az önkiszolgáló [jelszó-visszaállítás (SSPR)][tutorial-sspr] és az [Azure multi-Factor Authentication][tutorial-azure-mfa]című oktatóanyagot.
 
@@ -100,6 +100,8 @@ További információ a SSPR fogalmakról: az [Azure ad önkiszolgáló jelszó-
 További információ az MFA-fogalmakról: [how Azure multi-Factor Authentication Works][concept-mfa].
 
 További információ a hitelesítési módszerek konfigurálásáról a [Microsoft Graph REST API Beta](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta)használatával.
+
+A használt hitelesítési módszerek áttekintését lásd: [Azure multi-Factor Authentication hitelesítési módszer elemzése a PowerShell](/samples/azure-samples/azure-mfa-authentication-method-analysis/azure-mfa-authentication-method-analysis/)-lel.
 
 <!-- INTERNAL LINKS -->
 [tutorial-sspr]: tutorial-enable-sspr.md

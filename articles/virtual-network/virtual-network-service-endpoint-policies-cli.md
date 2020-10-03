@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: rdhillon
 ms.custom: ''
-ms.openlocfilehash: 702ee5dd8d432582ce1df75ce71c220aa0507cba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 53f10996a7f15e32261f151600163f41df4e58ca
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708212"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91666772"
 ---
 # <a name="manage-data-exfiltration-to-azure-storage-accounts-with-virtual-network-service-endpoint-policies-using-the-azure-cli"></a>Az Azure Storage-fiókok kiszűrése az Azure CLI-vel való kezelése virtuális hálózati szolgáltatás végponti házirendjeivel
 
@@ -37,7 +37,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 * Erősítse meg az engedélyezett Storage-fiókhoz való hozzáférést az alhálózaton.
 * Győződjön meg arról, hogy a hozzáférés meg van tagadva a nem engedélyezett Storage-fiókhoz az alhálózaton.
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -252,7 +252,7 @@ az storage account network-rule add \
 
 Az Azure-szolgáltatás végponti házirendjei csak az Azure Storage számára érhetők el. Így a *Microsoft. Storage* ezen az alhálózaton található szolgáltatás-végpontját is engedélyezzük ebben a példában a telepítéshez.
 
-A szolgáltatási végpontokra vonatkozó házirendek a szolgáltatási végpontokon vannak alkalmazva. Első lépésként hozzon létre egy szolgáltatási végponti szabályzatot. Ezután létrehozjuk az ebben a szabályzatban szereplő szabályzat-definíciókat az Azure Storage-fiókok számára az alhálózathoz való engedélyezési listához
+A szolgáltatási végpontokra vonatkozó házirendek a szolgáltatási végpontokon vannak alkalmazva. Első lépésként hozzon létre egy szolgáltatási végponti szabályzatot. Ezután létrehozjuk az ebben a szabályzatban szereplő szabályzat-definíciókat az Azure Storage-fiókok számára az alhálózat jóváhagyásához
 
 Szolgáltatás-végponti szabályzat létrehozása
 
@@ -353,7 +353,7 @@ A hozzáférés megtagadva, és hibaüzenet jelenik meg `mount error(13): Permis
 
 Lépjen ki az SSH-munkamenetből a *myVmPublic* virtuális gépre.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rá szükség, az [az Group delete](/cli/azure) paranccsal távolítsa el az erőforráscsoportot és a benne található összes erőforrást.
 
@@ -361,6 +361,6 @@ Ha már nincs rá szükség, az [az Group delete](/cli/azure) paranccsal távol�
 az group delete --name myResourceGroup --yes
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben egy szolgáltatás-végponti házirendet alkalmazott egy Azure Virtual Network szolgáltatási végponton az Azure Storage-ba. Létrehozta az Azure Storage-fiókokat és a korlátozott hálózati hozzáférést csak bizonyos Storage-fiókokhoz (és így másokat is megtagadott) egy virtuális hálózat alhálózatáról. A szolgáltatás-végponti házirendekkel kapcsolatos további tudnivalókért lásd: [szolgáltatás-végponti házirendek áttekintése](virtual-network-service-endpoint-policies-overview.md).

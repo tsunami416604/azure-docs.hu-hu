@@ -6,14 +6,14 @@ ms.subservice: sizes
 author: mimckitt
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 02/20/2020
+ms.date: 10/02/2020
 ms.author: jushiman
-ms.openlocfilehash: 18389f3058bcc60c22f8598040f4fea4b036f1ee
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: afad68be53637cf258223eafab0a13f525a92f4c
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89298912"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91666619"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>A virtuális gépek méreteinek korábbi generációi
 
@@ -163,7 +163,7 @@ Az A8–A11- és a H-sorozat méretei más néven *nagy számítási igényű p�
 <sup>1</sup> Az MPI-alkalmazások esetében a dedikált RDMA háttérrendszer-hálózatot a FDR InfiniBand hálózata teszi lehetővé, amely rendkívül alacsony késést és nagy sávszélességet biztosít.  
 
 > [!NOTE]
-> Az A8 – A11-es virtuális gépek a 3/2021-es kivonulásra vannak tervezve. További információ: [HPC áttelepítési útmutató](https://azure.microsoft.com/resources/hpc-migration-guide/).
+> Az A8 – A11-es virtuális gépek a 3/2021-es kivonulásra vannak tervezve. Javasoljuk, hogy ne hozzon létre új A8 – A11 virtuális gépeket. Telepítse át a meglévő A8 – A11-es virtuális gépeket újabb és nagy teljesítményű, nagy teljesítményű számítási virtuálisgép-méretekre, mint például a H, a HB, a HC, a HBv2, valamint az általános célú számítási virtuálisgép-méretek, például a D, E és F a jobb ár-teljesítmény érdekében. További információ: [HPC áttelepítési útmutató](https://azure.microsoft.com/resources/hpc-migration-guide/).
 
 <br>
 

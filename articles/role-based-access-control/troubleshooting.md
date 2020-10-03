@@ -15,12 +15,12 @@ ms.date: 09/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 2f96e48d0c7b14178185f751b8c708e75ab3f322
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 415af4d71365a88a5998f6a9356d5240bc5e2518
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91441834"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665991"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Az Azure RBAC hibáinak megoldása
 
@@ -86,7 +86,7 @@ $ras.Count
 
 ## <a name="transferring-a-subscription-to-a-different-directory"></a>Előfizetés átadása egy másik címtárba
 
-- Ha az előfizetés másik Azure AD-címtárba való átvitelének lépéseire van szüksége, tekintse meg [Az Azure-előfizetés átvitele másik Azure ad-címtárba (előzetes verzió)](transfer-subscription.md)című témakört.
+- Ha az előfizetés másik Azure AD-címtárba való átvitelének lépéseire van szüksége, tekintse meg [Az Azure-előfizetés másik Azure ad-címtárba való átvitelét](transfer-subscription.md)ismertető témakört.
 - Ha másik Azure AD-címtárba helyezi át az előfizetést, az összes szerepkör-hozzárendelés **véglegesen** törlődik a forrás Azure ad-címtárból, és nem települ át a cél Azure ad-címtárba. A szerepkör-hozzárendeléseket újra létre kell hoznia a cél könyvtárában. Emellett manuálisan újra létre kell hoznia a felügyelt identitásokat az Azure-erőforrásokhoz. További információ: [Gyakori kérdések és ismert problémák a felügyelt identitásokkal](../active-directory/managed-identities-azure-resources/known-issues.md)kapcsolatban.
 - Ha Ön az Azure AD globális rendszergazdája, és nem fér hozzá egy előfizetéshez a címtárak közötti átvitel után, használja az **Azure-erőforrások hozzáférés-vezérlése** kapcsolót, hogy ideiglenesen [emelje](elevate-access-global-admin.md) a hozzáférést az előfizetéshez.
 
@@ -245,7 +245,7 @@ A [Azure functions](../azure-functions/functions-overview.md) egyes funkcióinak
 
 Egy olvasó rákattinthat a **platform szolgáltatásai** lapra, majd a **minden beállítás** elemre kattintva megtekintheti a Function alkalmazáshoz kapcsolódó beállításokat (a webalkalmazáshoz hasonlóan), de ezek a beállítások nem módosíthatók. A szolgáltatások eléréséhez szüksége lesz a [közreműködő](built-in-roles.md#contributor) szerepkörre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A vendég felhasználókkal kapcsolatos hibák](role-assignments-external-users.md#troubleshoot)
 - [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure Portal használatával](role-assignments-portal.md)

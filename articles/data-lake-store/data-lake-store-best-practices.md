@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: sachins
-ms.openlocfilehash: 103315b61592cc711f61ec5e95468e50314b9fa6
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 291a5850540ea7d7d24a4a544c1eb65183df8ffb
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440830"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667741"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen1"></a>Ajánlott eljárások Azure Data Lake Storage Gen1 használatához
 
@@ -33,7 +33,7 @@ Tegyük fel, hogy van egy 100 000 gyermekobjektum nevű mappája. Ha a másodper
 
 A Data Lake Storage Gen1 big datajának használatakor a legvalószínűbb, hogy egy egyszerű szolgáltatásnév lehetővé teszi az olyan szolgáltatások használatát, mint például az Azure HDInsight az adatkezeléshez. Előfordulhatnak azonban olyan esetek, amikor az egyes felhasználóknak is szükségük van az adathozzáférésre. Ilyen esetekben Azure Active Directory [biztonsági csoportokat](data-lake-store-secure-data.md#create-security-groups-in-azure-active-directory) kell használnia, ahelyett, hogy egyéni felhasználókat rendel hozzá a mappákhoz és fájlokhoz.
 
-Ha a biztonsági csoporthoz engedélyek vannak rendelve, a csoportba tartozó felhasználók hozzáadására vagy eltávolítására nincs szükség frissítésre Data Lake Storage Gen1. Ez azt is lehetővé teszi, hogy ne lépje túl a [32-es és az alapértelmezett ACL](../azure-resource-manager/management/azure-subscription-service-limits.md#data-lake-store-limits) -EK korlátját (Ez magában foglalja az összes fájlhoz és mappához tartozó négy POSIX-stílusú ACL-t: [a tulajdonos felhasználó](data-lake-store-access-control.md#the-owning-user), [a tulajdonos csoport](data-lake-store-access-control.md#the-owning-group), [a maszk](data-lake-store-access-control.md#the-mask)és más).
+Ha a biztonsági csoporthoz engedélyek vannak rendelve, a csoportba tartozó felhasználók hozzáadására vagy eltávolítására nincs szükség frissítésre Data Lake Storage Gen1. Ez azt is lehetővé teszi, hogy ne lépje túl a [32-es és az alapértelmezett ACL](../azure-resource-manager/management/azure-subscription-service-limits.md#data-lake-storage-limits) -EK korlátját (Ez magában foglalja az összes fájlhoz és mappához tartozó négy POSIX-stílusú ACL-t: [a tulajdonos felhasználó](data-lake-store-access-control.md#the-owning-user), [a tulajdonos csoport](data-lake-store-access-control.md#the-owning-group), [a maszk](data-lake-store-access-control.md#the-mask)és más).
 
 ### <a name="security-for-groups"></a>Csoportok biztonsága
 

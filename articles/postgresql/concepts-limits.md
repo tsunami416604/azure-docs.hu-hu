@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/28/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 047e722a0e0ade60d1eb93a48e37333fffafd674
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6733e373b35dd160af94e3178cd11f657f362c1c
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76836456"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665257"
 ---
 # <a name="limits-in-azure-database-for-postgresql---single-server"></a>Korlátok Azure Database for PostgreSQL – egyetlen kiszolgáló
 Az alábbi szakaszok az adatbázis-szolgáltatás kapacitását és működési korlátait ismertetik. Ha szeretne többet megtudni az erőforrásról (számítási, memória-, tárolási) szintjeiről, tekintse meg a [díjszabási szintek](concepts-pricing-tiers.md) című cikket.
@@ -21,7 +21,7 @@ Az alábbi szakaszok az adatbázis-szolgáltatás kapacitását és működési 
 ## <a name="maximum-connections"></a>Kapcsolatok maximális száma
 Alább láthatók a kapcsolatok maximális száma az árképzési szinten és a virtuális mag. Az Azure-rendszernek öt kapcsolattal kell rendelkeznie a Azure Database for PostgreSQL-kiszolgáló figyeléséhez. 
 
-|**Díjszabási csomag**| **Virtuális mag (ok)**| **Kapcsolatok maximális száma** | **Felhasználói kapcsolatok maximális száma** |
+|**Tarifacsomag**| **Virtuális mag (ok)**| **Kapcsolatok maximális száma** | **Felhasználói kapcsolatok maximális száma** |
 |---|---|---|---|
 |Alapszintű| 1| 55 | 50|
 |Alapszintű| 2| 105 | 100|
@@ -67,7 +67,12 @@ A PostgreSQL-kapcsolatok, akár tétlenek is, körülbelül 10 MB memóriát fog
 ### <a name="utf-8-characters-on-windows"></a>UTF-8 karakter a Windowsban
 - Bizonyos esetekben az UTF-8 karakterek nem támogatottak teljes mértékben a nyílt forráskódú PostgreSQL-ben Windows rendszeren, amely hatással van a Azure Database for PostgreSQLra. További információért tekintse meg a [hiba #15476 a PostgreSQL-Archive](https://www.postgresql-archive.org/BUG-15476-Problem-on-show-trgm-with-4-byte-UTF-8-characters-td6056677.html) webhelyen.
 
-## <a name="next-steps"></a>További lépések
+### <a name="gss-error"></a>GSS hiba
+Ha a **GSS**kapcsolatos hiba jelenik meg, valószínű, hogy egy újabb ügyfél-vagy illesztőprogram-verziót használ, amelyet az Azure postgres egyetlen kiszolgáló még nem támogat. Ez a hiba ismert a [JDBC illesztőprogram-verziók 42.2.15 és 42.2.16](https://github.com/pgjdbc/pgjdbc/issues/1868)való befolyásolásához.
+   - A frissítés befejezését november végére tervezzük. Időközben érdemes lehet egy működő illesztőprogram-verziót használni.
+   - Vagy vegye fontolóra a GSS-kérelem letiltását.  Használjon például a következőhöz: `gssEncMode=disable` .
+
+## <a name="next-steps"></a>Következő lépések
 - [Az egyes díjszabási szinten elérhető](concepts-pricing-tiers.md) tartalmak ismertetése
 - További információ a [PostgreSQL-adatbázisok támogatott verzióiról](concepts-supported-versions.md)
 - Tekintse át [Azure Database for PostgreSQL kiszolgáló biztonsági mentését és visszaállítását a Azure Portal használatával](howto-restore-server-portal.md)

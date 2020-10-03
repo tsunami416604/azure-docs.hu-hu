@@ -5,17 +5,22 @@ services: storage
 author: twooley
 ms.service: storage
 ms.topic: include
-ms.date: 06/22/2018
+ms.date: 09/30/2020
 ms.author: twooley
 ms.custom: include file
-ms.openlocfilehash: 5e5ef3084fa4e13035fe562dd3c5ed2a37b76be2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 358de5761f3535b5f1e75d82539ee8e3ecdbd289
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80334876"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665605"
 ---
-A Azure Data Lake Storage Gen1 a big data analitikus számítási feladatokhoz használható, nagyvállalati szintű, Hyper-skála tárház. A Data Lake Storage Gen1 használatával bármilyen méretű, típusú és feldolgozási sebességű adatot rögzíthet egyetlen helyen az operatív és a felderítő elemzéshez. A Data Lake Storage Gen1-fiókban tárolható adatmennyiségnek nincs korlátja.
+**Azure Data Lake Storage Gen2** nem dedikált szolgáltatás-vagy tárolási fióktípus. Ez a big data elemzésekhez dedikált képességek legújabb kiadása.  Ezek a képességek egy általános célú v2-vagy BlockBlobStorage-fiókban érhetők el, és a fiók **hierarchikus névtér** funkciójának engedélyezésével szerezhetők be. A méretezési célokért tekintse meg ezeket a cikkeket. 
+
+- [Méretezési célok a blob Storage](https://docs.microsoft.com/azure/storage/blobs/scalability-targets#scale-targets-for-blob-storage)-hoz.
+- [A standard Storage-fiókokra vonatkozó célkitűzések méretezése](https://docs.microsoft.com/azure/storage/common/scalability-targets-standard-account?toc=/azure/storage/blobs/toc.json#scale-targets-for-standard-storage-accounts).
+
+A **Azure Data Lake Storage Gen1** egy dedikált szolgáltatás. Ez egy nagyvállalati szintű Hyper-Scale adattár big data analitikus számítási feladatokhoz. A Data Lake Storage Gen1 használatával bármilyen méretű, típusú és feldolgozási sebességű adatot rögzíthet egyetlen helyen az operatív és a felderítő elemzéshez. A Data Lake Storage Gen1-fiókban tárolható adatmennyiségnek nincs korlátja.
 
 | **Erőforrás** | **Korlát** | **Megjegyzések** |
 | --- | --- | --- |

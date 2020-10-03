@@ -1,18 +1,18 @@
 ---
 title: Virtuális gépek elkülönítése az Azure-ban
 description: Ismerje meg, hogyan működik a virtuális gép elkülönítése az Azure-ban.
-author: ayshakeen
+author: styli365
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/18/2019
-ms.author: ayshak
-ms.openlocfilehash: 58b3f9c3655a2e15842f7fa28ad3e6921395beba
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.author: sttsinar
+ms.openlocfilehash: d6a77cac049ef32949eeba4cbd6fe9217100a360
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831447"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91666840"
 ---
 # <a name="virtual-machine-isolation-in-azure"></a>Virtuális gépek elkülönítése az Azure-ban
 
@@ -42,7 +42,7 @@ Mivel az elkülönített virtuálisgép-méretek hardveres korlátok, az Azure a
 | Standard_DS15_v2<sup>1</sup> | Május 15., 2020 |
 | Standard_D15_v2<sup>1</sup>  | Május 15., 2020 |
 
-<sup>1</sup> a Standard_DS15_v2 és Standard_D15_v2 elkülönítési program részleteit lásd: gyakori kérdések
+<sup>1</sup>  a Standard_DS15_v2 és Standard_D15_v2 elkülönítési program részleteit lásd: gyakori kérdések
 
 
 ## <a name="faq"></a>GYIK
@@ -64,7 +64,7 @@ Mivel az elkülönített virtuálisgép-méretek hardveres korlátok, az Azure a
 ### <a name="q-what-are-the-milestones-for-d15_v2-or-ds15_v2-isolation-retirement"></a>K: milyen mérföldkövek vannak a D15_v2 vagy DS15_v2 elkülönítésének megszüntetéséhez? 
 **A**: 
  
-| Dátum | Művelet |
+| Dátum | Műveletek |
 |---|---| 
 | 2019. november 18. | D/DS15i_v2 rendelkezésre állása (TB, 1 éves RI) | 
 | Május 14., 2020 | Az elmúlt nap, hogy megvásárolja a D/DS15i_v2 1 éves RI | 
@@ -72,6 +72,6 @@ Mivel az elkülönített virtuálisgép-méretek hardveres korlátok, az Azure a
 | Május 15., 2021 | A D/DS15i_v2 kivonása (az összes ügyfél, kivéve, ha a D/DS15_v2 3 éves RI-t vásárolt, 2019. november 18. előtt)| 
 | November 17., 2022 | A (z) D/DS15i_v2 kivonása a 3 éves beérkező 2019 DS15_v2 példányok esetében |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az ügyfelek emellett dönthetnek úgy is, hogy a [beágyazott virtuális gépek Azure-támogatásának](https://azure.microsoft.com/blog/nested-virtualization-in-azure/)használatával tovább alcsoportba helyezik az elkülönített virtuális gépek erőforrásait.

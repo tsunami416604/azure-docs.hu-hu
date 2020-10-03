@@ -4,17 +4,17 @@ description: Tudnivalók a Azure Time Series Insights ügyfél-adatkérési funk
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
-ms.date: 04/17/2020
 ms.topic: conceptual
 ms.service: time-series-insights
 services: time-series-insights
+ms.date: 10/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: 30b3832dfe3e1c4564d1d89b5c318421e48f554f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 5565dd43689d0420fbb9b73f088f24a38a2d54db
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501695"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665905"
 ---
 # <a name="summary-of-customer-data-request-features"></a>Az ügyféladat-kérési funkciók összegzése
 
@@ -54,19 +54,19 @@ A hozzáférési házirendekben az exportálási műveleteket is elvégezheti a 
 
 Előfordulhat, hogy a személyes adatok az Time Series Insights Storage-ban, a felhasználói és a rendszergazdai adatoktól eltérő forgatókönyvet alkotnak. Ha úgy gondolja, hogy a Time Series Insights tárolt adatai személyes adatként vannak tárolva, az alábbi lépések végrehajtásával exportálhatja és törölheti ezeket az adatfájlokat:
 
-**Az adatmegjelenítés és-exportálás**
+### <a name="view-and-export-data"></a>Az adatmegjelenítés és-exportálás
 
 Time Series Insights belül tárolt adatmegjelenítéshez és-exportáláshoz meg kell keresnie az adott adathalmazt. A Time Series Insights Explorer vagy a Time Series Insights lekérdezési API-k segítségével megtekintheti és exportálhatja az adatfájlokat. Ha a Time Series Insights Explorerrel szeretné megtekinteni és exportálni az adatexportálást, először keresse meg a szóban forgó felhasználói adatelemet. A keresés után kattintson a jobb gombbal a diagramra, és válassza az **események feltárása**lehetőséget. Megjelenik az Events (események) rács, amely a CSV-ként és JSON-ként való exportálási beállításokat jeleníti meg.
 
 További információ: [Azure Time Series Insights Explorer](time-series-insights-explorer.md).
 
-**Adat törlése**
+### <a name="delete-data"></a>Adat törlése
 
 A Time Series Insights jelenleg nem támogatja az adattárolás részletes törlését. A Time Series Insights azonban lehetővé teszi a Time Series Insights belül tárolt ügyféladatok eltávolítását az adatmegőrzési házirendek konfigurálásával. A törlési követelmények támogatásához módosíthatja a teljes Time Series Insights környezet megőrzési időtartamát tetszőleges számú napig.
 
 További információért olvassa el az [adatmegőrzés konfigurálása Time Series Insightsban](time-series-insights-how-to-configure-retention.md)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ [a Azure Time Series Insights-környezet adatelérésének biztosításáról](./time-series-insights-data-access.md).
 

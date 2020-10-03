@@ -6,15 +6,15 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2020
+ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 5be2ff48ea5510c54c79e76e8bae082bd5085794
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: abc2367c309f46ee1b29a51145c67e8d71919774
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90947118"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665395"
 ---
 # <a name="communication-services-notifications"></a>Kommunikációs szolgáltatások értesítései
 
@@ -36,7 +36,7 @@ További információ az [Azure kommunikációs szolgáltatásokban zajló esem�
 
 Csatlakoztathat egy Azure Notification hub-t a kommunikációs szolgáltatások erőforrásához, hogy automatikusan küldjön leküldéses értesítéseket a felhasználó mobileszközön, amikor bejövő hívást kapnak. Ezeket a leküldéses értesítéseket kell használnia az alkalmazás háttérben való felébresztéséhez és a felhasználói felület megjelenítéséhez, amely lehetővé teszi a felhasználó számára a hívás elfogadását vagy elutasítását. 
 
-:::image type="content" source="./media/notifications/acs-anh-int.png" alt-text="Ábra, amely bemutatja, hogyan integrálható a kommunikációs szolgáltatások az Azure Notifications hub szolgáltatással.":::
+:::image type="content" source="./media/notifications/acs-anh-int.png" alt-text="Ábra, amely bemutatja, hogyan integrálódik a kommunikációs szolgáltatások a Event Grid.":::
 
 A kommunikációs szolgáltatások az Azure Notification hub-t áteresztő szolgáltatásként használják a platform-specifikus leküldéses értesítési szolgáltatásokkal való kommunikációhoz a [Direct Send](https://docs.microsoft.com/rest/api/notificationhubs/direct-send) API használatával. Ez lehetővé teszi a meglévő Azure Notification hub-erőforrások és-konfigurációk újrafelhasználását, hogy alacsony késésű, megbízható hívási értesítéseket nyújtson az alkalmazásaihoz.
 
@@ -66,7 +66,7 @@ armclient POST /subscriptions/<sub_id>/resourceGroups/<resource_group>/providers
 
 A portálon navigáljon az Azure kommunikációs szolgáltatások erőforrásaihoz. A kommunikációs szolgáltatások erőforráson belül válassza a kommunikációs szolgáltatások lap bal oldali menüjének leküldéses értesítések elemét, és kapcsolja össze a korábban kiépített értesítési központot. Itt meg kell adnia a kapcsolódási karakterláncot és az erőforrás-azonosítót:
 
-:::image type="content" source="./media/notifications/acs-anh-portal-int.png" alt-text="A leküldéses értesítések beállításait megjelenítő képernyőkép az Azure Portalon.":::
+:::image type="content" source="./media/notifications/acs-anh-portal-int.png" alt-text="Ábra, amely bemutatja, hogyan integrálódik a kommunikációs szolgáltatások a Event Grid.":::
 
 #### <a name="device-registration"></a>Eszközregisztráció 
 

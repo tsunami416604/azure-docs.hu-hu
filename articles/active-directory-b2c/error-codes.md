@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 01/10/2020
+ms.date: 10/02/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9d205998ad5710ecad346db4d7be18a68747c087
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0122fa43c9d99c01797e3523748e4f31b4b7469a
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85388527"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91664851"
 ---
 # <a name="error-codes-azure-active-directory-b2c"></a>Hibakódok: Azure Active Directory B2C
 
@@ -34,7 +34,7 @@ A Azure Active Directory B2C szolgáltatás a következő hibákat adhatja vissz
 | `AADB2C90013` | A {0} kérelemben megadott "" válasz típusa nem támogatott. |
 | `AADB2C90014` | A kérelemben megadott, kért válasz mód {0} nem támogatott. |
 | `AADB2C90016` | A kért "" ügyfél-érvényesítési típus {0} nem egyezik a várt " {1} " típussal. |
-| `AADB2C90017` | A kérelemben megadott ügyfél-kijelentés érvénytelen:{0} |
+| `AADB2C90017` | A kérelemben megadott ügyfél-kijelentés érvénytelen: {0} |
 | `AADB2C90018` | A {0} kérelemben megadott ügyfél-azonosító nincs regisztrálva a (z) bérlőben {1} . |
 | `AADB2C90019` | A (z) "" azonosítójú kulcstároló a (z) "" {0} bérlőn {1} nem rendelkezik érvényes kulccsal. Ok: {2} . |
 | `AADB2C90021` | A (z) "" technikai profil nem létezik a (z) "" bérlő "" {0} szabályzatában {1} {2} . |
@@ -73,7 +73,8 @@ A Azure Active Directory B2C szolgáltatás a következő hibákat adhatja vissz
 | `AADB2C90085` | A szolgáltatás belső hibát észlelt. Ellenőrizze újra a hitelesítést, és próbálkozzon újra. |
 | `AADB2C90086` | A megadott grant_type [ {0} ] nem támogatott. |
 | `AADB2C90087` | A megadott engedély nem lett kiadva a protokoll végpontjának jelen verziójához. |
-| `AADB2C90088` | A megadott engedély nem lett kiadva ehhez a végponthoz. Tényleges érték: {0} és várt érték:{1} |
+| `AADB2C90088` | A megadott engedély nem lett kiadva ehhez a végponthoz. Tényleges érték: {0} és várt érték: {1} |
+| `AADB2C90091` | Felhasználó törlése. |
 | `AADB2C90092` | A (z) "" AZONOSÍTÓJÚ megadott alkalmazás {0} le van tiltva a (z) "" bérlőnél {1} . Engedélyezze az alkalmazást, és próbálkozzon újra. |
 | `AADB2C90107` | A (z) " {0} " azonosítójú alkalmazás nem kaphat azonosító jogkivonatot, mert az OpenID hatóköre nem lett megadva a kérelemben, vagy az alkalmazás nincs engedélyezve. |
 | `AADB2C90108` | A (z) "" előkészítési lépés {0} nem határoz meg CpimIssuerTechnicalProfileReferenceId, ha az egyik várt érték. |

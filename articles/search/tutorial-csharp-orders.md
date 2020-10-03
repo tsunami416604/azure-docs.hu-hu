@@ -7,20 +7,18 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 06/20/2020
+ms.date: 10/02/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: a6114791a1909a0cd02b96a4cdcc4c133b8e662e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5fe8bf70374a2eec639a0a9365f7d227cf259d06
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91280844"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667248"
 ---
 # <a name="tutorial-order-search-results-using-the-net-sdk"></a>Oktatóanyag: keresési eredmények sorrendbe helyezése a .NET SDK használatával
 
-Egészen addig, amíg ez a pont nem szerepel az oktatóanyagokban, a rendszer visszaadja az eredményeket, és megjeleníti az alapértelmezett sorrendet. Ez lehet az a sorrend, amelyben az adatok találhatók, vagy esetleg egy alapértelmezett _pontozási profil_ lett meghatározva, amelyet a rendszer akkor használ, ha nincs megadva rendezési paraméter. Ebben az oktatóanyagban bemutatjuk, hogyan lehet az eredményeket egy elsődleges tulajdonság alapján megrendelni, majd az azonos elsődleges tulajdonsággal rendelkező eredmények esetében a kijelölés sorrendjét egy másodlagos tulajdonsághoz. A numerikus értékek alapján történő rendezés alternatívájaként az utolsó példa azt szemlélteti, hogyan lehet sorrendet rendelni egy egyéni pontozási profil alapján. Az _összetett típusok_megjelenítését is mélyebben fogjuk bemutatni.
-
-Ha a visszaadott eredményeket egyszerűen össze szeretné hasonlítani, a projekt a C# oktatóanyagban létrehozott végtelen görgetési projektre épül [: keresési eredmények tördelése – Azure Cognitive Search](tutorial-csharp-paging.md) oktatóanyag.
+Ebben az oktatóanyag-sorozatban az eredmények visszaadva lettek, és [alapértelmezett sorrendben](index-add-scoring-profiles.md#what-is-default-scoring)jelennek meg. Ebben az oktatóanyagban elsődleges és másodlagos rendezési feltételeket fog felvenni. A numerikus értékek alapján történő rendezés alternatívájaként az utolsó példa azt szemlélteti, hogyan rangsorolhatja az eredményeket egy egyéni pontozási profil alapján. Az _összetett típusok_megjelenítését is mélyebben fogjuk bemutatni.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
@@ -29,34 +27,42 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Eredmények szűrése földrajzi ponttól mért távolság alapján
 > * Eredmények megrendelése pontozási profil alapján
 
+## <a name="overview"></a>Áttekintés
+
+Ez az oktatóanyag kiterjeszti a [lapozás hozzáadása a keresési eredményekhez](tutorial-csharp-paging.md) című oktatóanyagban létrehozott végtelen görgetési projektet.
+
+Az oktatóanyagban szereplő kód befejezett verziója a következő projektben található:
+
+* [5 – Order-Results (GitHub)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11/5-order-results)
+
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
+* [2b – Add-végtelen-Scroll (GitHub)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11/2b-add-infinite-scroll) megoldás. A projekt az előző oktatóanyagból vagy a GitHubról származó másolatból létrehozott saját verzió lehet.
 
-A C# oktatóanyag végtelen görgetési verziója [: a keresési eredmények tördelése – az Azure Cognitive Search-](tutorial-csharp-paging.md) projekt üzembe helyezése folyamatban van. A projekt lehet saját verziója, vagy a GitHubról telepítheti: [első alkalmazás létrehozása](https://github.com/Azure-Samples/azure-search-dotnet-samples).
+Ez az oktatóanyag a [Azure.Search.Documents (11-es verzió)](https://www.nuget.org/packages/Azure.Search.Documents/) csomag használatára lett frissítve. A .NET SDK egy korábbi verziójával kapcsolatban lásd: [Microsoft. Azure. Search (10-es verzió)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v10)mintakód.
 
 ## <a name="order-results-based-on-one-property"></a>Eredmények megrendelése egy tulajdonság alapján
 
-Ha egy tulajdonság alapján rendelünk eredményeket, mondjuk a szállodai minősítést, nem csak a megrendelt eredményeket szeretnénk megerősíteni, azt is szeretnénk, hogy a megrendelés helyes legyen. Más szóval, ha minősítést rendelünk, a minősítést a nézetben kell megjeleníteni.
+Ha egy tulajdonság alapján rendezi az eredményeket, például a szállodai minősítést, nem csupán a megrendelt eredményeket akarjuk megerősíteni, akkor azt is szeretnénk, hogy a megrendelés helyes legyen. A minősítési mező az eredményekhez való hozzáadása lehetővé teszi, hogy az eredmények megfelelően rendezve legyenek.
 
-Ebben az oktatóanyagban egy kicsit többet is megadunk az eredmények, a legolcsóbb szobaár és a legdrágább szobaárak megjelenítéséhez minden egyes szállodában. A rendezés során a rendszer az értékeket is felveszi, hogy megbizonyosodjon róla, hogy a megrendelést mi is mutatja a nézetben.
+Ebben a gyakorlatban még egy kicsit többet is megadunk az eredmények megjelenítéséhez: a legolcsóbb szobaár, valamint a legdrágább szobaár az egyes hotelekhez.
 
-Nem szükséges módosítani a modelleket a rendezés engedélyezéséhez. A nézetet és a vezérlőt frissíteni kell. Először nyissa meg a Kezdőlap vezérlőt.
+Nem szükséges módosítani a modelleket a rendezés engedélyezéséhez. Csak a nézet és a vezérlő frissítései szükségesek. Először nyissa meg a Kezdőlap vezérlőt.
 
 ### <a name="add-the-orderby-property-to-the-search-parameters"></a>Adja hozzá a OrderBy tulajdonságot a keresési paraméterekhez
 
-1. Ahhoz, hogy az eredményeket egyetlen numerikus tulajdonság alapján kell megrendelni, a **OrderBy** paramétert a tulajdonság nevére kell beállítani. Az **index (SearchData Model)** metódusban adja hozzá a következő sort a keresési paraméterekhez.
+1. Adja hozzá a **OrderBy** kapcsolót a tulajdonság nevéhez. Az **index (SearchData Model)** metódusban adja hozzá a következő sort a keresési paraméterekhez.
 
     ```cs
-        OrderBy = new[] { "Rating desc" },
+    OrderBy = new[] { "Rating desc" },
     ```
 
     >[!Note]
     > Az alapértelmezett sorrend növekvő, de a tulajdonsághoz hozzáadhatja az **Asc** értéket, hogy ezt törölje. A csökkenő sorrendet a **desc**hozzáadásával határozhatja meg.
 
-2. Most futtassa az alkalmazást, és adja meg a gyakori keresési kifejezéseket. Előfordulhat, hogy az eredmények nem a megfelelő sorrendben jelennek meg, mert nem a fejlesztő, hanem nem a felhasználó, egyszerűen ellenőrizheti az eredményeket!
+1. Most futtassa az alkalmazást, és adja meg a gyakori keresési kifejezéseket. Előfordulhat, hogy az eredmények nem a megfelelő sorrendben jelennek meg, mert nem a fejlesztő, hanem nem a felhasználó, egyszerűen ellenőrizheti az eredményeket!
 
-3. Tegyük fel, hogy egyértelművé teszi, hogy az eredmények a minősítés alapján vannak rendezve. Először cserélje le a **Box1** és a **rajzolása 2** osztályt a Hotels. CSS fájlra a következő osztályokkal (ezek az osztályok az oktatóanyaghoz szükséges összes újdonság).
+1. Tegyük fel, hogy egyértelművé teszi, hogy az eredmények a minősítés alapján vannak rendezve. Először cserélje le a **Box1** és a **rajzolása 2** osztályt a Hotels. CSS fájlra a következő osztályokkal (ezek az osztályok az oktatóanyaghoz szükséges összes újdonság).
 
     ```html
     textarea.box1A {
@@ -114,22 +120,22 @@ Nem szükséges módosítani a modelleket a rendezés engedélyezéséhez. A né
     }
     ```
 
-    >[!Tip]
-    >A böngészők általában a CSS-fájlokat gyorsítótárazzák, és ez egy régi CSS-fájl használatát eredményezi, és a módosítások figyelmen kívül lesznek hagyva. Ez egy jó módja annak, hogy egy lekérdezési karakterláncot adjon hozzá egy Version paraméterrel a hivatkozáshoz. Például:
+    > [!Tip]
+    > A böngészők általában a CSS-fájlokat gyorsítótárazzák, és ez egy régi CSS-fájl használatát eredményezi, és a módosítások figyelmen kívül lesznek hagyva. Ez egy jó módja annak, hogy egy lekérdezési karakterláncot adjon hozzá egy Version paraméterrel a hivatkozáshoz. Például:
     >
     >```html
     >   <link rel="stylesheet" href="~/css/hotels.css?v1.1" />
     >```
     >
-    >Frissítse a verziószámot, ha úgy gondolja, hogy a böngésző egy régi CSS-fájlt használ.
+    > Frissítse a verziószámot, ha úgy gondolja, hogy a böngésző egy régi CSS-fájlt használ.
 
-4. Adja hozzá a **minősítés** tulajdonságot a **Select** paraméterhez az **index (SearchData Model)** metódusban.
+1. Adja hozzá a **minősítés** tulajdonságot a **Select** paraméterhez az **index (SearchData Model)** metódusban.
 
     ```cs
     Select = new[] { "HotelName", "Description", "Rating"},
     ```
 
-5. Nyissa meg a nézetet (index. cshtml), és cserélje le a renderelési ciklust (** &lt; !--jelenítse meg a szállodai adatkészletet.-- &gt; **) a következő kóddal.
+1. Nyissa meg a nézetet (index. cshtml), és cserélje le a renderelési ciklust (** &lt; !--jelenítse meg a szállodai adatkészletet.-- &gt; **) a következő kóddal.
 
     ```cs
                 <!-- Show the hotel data. -->
@@ -144,7 +150,7 @@ Nem szükséges módosítani a modelleket a rendezés engedélyezéséhez. A né
                 }
     ```
 
-6. A minősítésnek mind az első megjelenített oldalon, mind a további, a végtelen görgetéssel meghívott lapokon elérhetőnek kell lennie. Az utóbbi két helyzetben frissítenie kell a vezérlő **következő** műveletét és a nézet **görgetett** függvényét. A vezérlőtől kezdődően módosítsa a **következő** metódust a következő kódra. Ez a kód létrehozza és közli a minősítési szöveget.
+1. A minősítésnek mind az első megjelenített oldalon, mind a további, a végtelen görgetéssel meghívott lapokon elérhetőnek kell lennie. Az utóbbi két helyzetben frissítenie kell a vezérlő **következő** műveletét és a nézet **görgetett** függvényét. A vezérlőtől kezdődően módosítsa a **következő** metódust a következő kódra. Ez a kód létrehozza és közli a minősítési szöveget.
 
     ```cs
         public async Task<ActionResult> Next(SearchData model)
@@ -172,7 +178,7 @@ Nem szükséges módosítani a modelleket a rendezés engedélyezéséhez. A né
         }
     ```
 
-7. Most frissítse a nézet **görgetett** függvényét a minősítés szövegének megjelenítéséhez.
+1. Most frissítse a nézet **görgetett** függvényét a minősítés szövegének megjelenítéséhez.
 
     ```javascript
             <script>
@@ -194,7 +200,7 @@ Nem szükséges módosítani a modelleket a rendezés engedélyezéséhez. A né
 
     ```
 
-8. Most futtassa újra az alkalmazást. Keressen az általános kifejezésre, például a "WiFi" kifejezésre, és győződjön meg róla, hogy az eredmények sorrendje a Hotel minősítésének csökkenő sorrendje.
+1. Most futtassa újra az alkalmazást. Keressen az általános kifejezésre, például a "WiFi" kifejezésre, és győződjön meg róla, hogy az eredmények sorrendje a Hotel minősítésének csökkenő sorrendje.
 
     ![Megrendelés minősítés alapján](./media/tutorial-csharp-create-first-app/azure-search-orders-rating.png)
 
@@ -212,7 +218,7 @@ Nem szükséges módosítani a modelleket a rendezés engedélyezéséhez. A né
         public double expensive { get; set; }
     ```
 
-2. Az **index (SearchData Model)** művelet végén lévő szobaárak kiszámításához a Kezdőlap vezérlőben. Az ideiglenes adattárolást követően adja hozzá a számításokat.
+1. Az **index (SearchData Model)** művelet végén lévő szobaárak kiszámításához a Kezdőlap vezérlőben. Az ideiglenes adattárolást követően adja hozzá a számításokat.
 
     ```cs
                 // Ensure TempData is stored for the next call.
@@ -243,13 +249,13 @@ Nem szükséges módosítani a modelleket a rendezés engedélyezéséhez. A né
                 }
     ```
 
-3. Adja hozzá a **Rooms** tulajdonságot a vezérlő **index (SearchData modell)** műveleti metódusának **Select** paraméteréhez.
+1. Adja hozzá a **Rooms** tulajdonságot a vezérlő **index (SearchData modell)** műveleti metódusának **Select** paraméteréhez.
 
     ```cs
      Select = new[] { "HotelName", "Description", "Rating", "Rooms" },
     ```
 
-4. Módosítsa a renderelési ciklust a nézetben az eredmények első oldalának díjszabási tartományának megjelenítéséhez.
+1. Módosítsa a renderelési ciklust a nézetben az eredmények első oldalának díjszabási tartományának megjelenítéséhez.
 
     ```cs
                 <!-- Show the hotel data. -->
@@ -266,7 +272,7 @@ Nem szükséges módosítani a modelleket a rendezés engedélyezéséhez. A né
                 }
     ```
 
-5. Változtassa meg a **következő** metódust a Kezdőlap vezérlőn, hogy az eredmény további oldalain kommunikáljon a ráta tartományával.
+1. Változtassa meg a **következő** metódust a Kezdőlap vezérlőn, hogy az eredmény további oldalain kommunikáljon a ráta tartományával.
 
     ```cs
         public async Task<ActionResult> Next(SearchData model)
@@ -296,7 +302,7 @@ Nem szükséges módosítani a modelleket a rendezés engedélyezéséhez. A né
         }
     ```
 
-6. Frissítse a **görgethető** függvényt a nézetben a szobaárak szövegének kezeléséhez.
+1. Frissítse a **görgethető** függvényt a nézetben a szobaárak szövegének kezeléséhez.
 
     ```javascript
             <script>
@@ -318,7 +324,7 @@ Nem szükséges módosítani a modelleket a rendezés engedélyezéséhez. A né
             </script>
     ```
 
-7. Futtassa az alkalmazást, és ellenőrizze, hogy megjelenik-e a szobaárak tartománya.
+1. Futtassa az alkalmazást, és ellenőrizze, hogy megjelenik-e a szobaárak tartománya.
 
     ![A szobák díjszabási tartományának megjelenítése](./media/tutorial-csharp-create-first-app/azure-search-orders-rooms.png)
 
@@ -338,7 +344,7 @@ A kérdés most az, hogy hogyan lehet különbséget tenni a szállodák közöt
     >[!Tip]
     >A **OrderBy** listájában tetszőleges számú tulajdonság adható meg. Ha a hotelek azonos minősítési és felújítási dátummal rendelkeztek, egy harmadik tulajdonságot is meg lehet adni a közöttük való különbségtételhez.
 
-2. Újra meg kell látni a felújítási dátumot a nézetben, csak azért, hogy az adott megrendelés helyes legyen. Olyan dolgok esetében, mint a felújítás, valószínűleg csak az év szükséges. Módosítsa a megjelenítési hurkot a nézetben a következő kódra.
+1. Újra meg kell látni a felújítási dátumot a nézetben, csak azért, hogy az adott megrendelés helyes legyen. Olyan dolgok esetében, mint a felújítás, valószínűleg csak az év szükséges. Módosítsa a megjelenítési hurkot a nézetben a következő kódra.
 
     ```cs
                 <!-- Show the hotel data. -->
@@ -357,7 +363,7 @@ A kérdés most az, hogy hogyan lehet különbséget tenni a szállodák közöt
                 }
     ```
 
-3. Változtassa meg a **következő** metódust a fővezérlőn a legutóbbi felújítás év összetevőjének továbbításához.
+1. Változtassa meg a **következő** metódust a fővezérlőn a legutóbbi felújítás év összetevőjének továbbításához.
 
     ```cs
         public async Task<ActionResult> Next(SearchData model)
@@ -389,7 +395,7 @@ A kérdés most az, hogy hogyan lehet különbséget tenni a szállodák közöt
         }
     ```
 
-4. A felújítási szöveg megjelenítéséhez módosítsa a nézet **görgetett** függvényét.
+1. A felújítási szöveg megjelenítéséhez módosítsa a nézet **görgetett** függvényét.
 
     ```javascript
             <script>
@@ -412,7 +418,7 @@ A kérdés most az, hogy hogyan lehet különbséget tenni a szállodák közöt
             </script>
     ```
 
-5. Futtassa az alkalmazást. Keressen egy általános kifejezésre, például a "pool" vagy a "View" kifejezésre, és ellenőrizze, hogy az azonos minősítéssel rendelkező szállodák mostantól csökkenő sorrendben jelennek-e meg a felújítás dátuma alapján.
+1. Futtassa az alkalmazást. Keressen egy általános kifejezésre, például a "pool" vagy a "View" kifejezésre, és ellenőrizze, hogy az azonos minősítéssel rendelkező szállodák mostantól csökkenő sorrendben jelennek-e meg a felújítás dátuma alapján.
 
     ![Megrendelés a felújítás napján](./media/tutorial-csharp-create-first-app/azure-search-orders-renovation.png)
 
@@ -431,13 +437,13 @@ Az eredmények földrajzi távolság alapján történő megjelenítéséhez tö
         Filter = $"geo.distance(Location, geography'POINT({model.lon} {model.lat})') le {model.radius}",
     ```
 
-2. A fenti szűrő _nem_ rendezi az eredményeket a távolság alapján, csak eltávolítja a kiugró értékeket. Az eredmények rendezéséhez adjon meg egy **OrderBy** -beállítást, amely megadja a geoDistance metódust.
+1. A fenti szűrő _nem_ rendezi az eredményeket a távolság alapján, csak eltávolítja a kiugró értékeket. Az eredmények rendezéséhez adjon meg egy **OrderBy** -beállítást, amely megadja a geoDistance metódust.
 
     ```cs
     OrderBy = new[] { $"geo.distance(Location, geography'POINT({model.lon} {model.lat})') asc" },
     ```
 
-3. Bár az Azure Cognitive Search az eredményeket egy távolsági szűrő használatával adta vissza, a rendszer _nem_ adja vissza az adatmennyiség és a megadott pont közötti számított távolságot. Számítsa ki újra ezt az értéket a nézetből vagy vezérlőből, ha az eredmények között szeretné megjeleníteni.
+1. Bár az Azure Cognitive Search az eredményeket egy távolsági szűrő használatával adta vissza, a rendszer _nem_ adja vissza az adatmennyiség és a megadott pont közötti számított távolságot. Számítsa ki újra ezt az értéket a nézetből vagy vezérlőből, ha az eredmények között szeretné megjeleníteni.
 
     A következő kód a két lat/Lon pont közötti távolságot számítja ki.
 
@@ -460,7 +466,7 @@ Az eredmények földrajzi távolság alapján történő megjelenítéséhez tö
         }
     ```
 
-4. Most össze kell kötnie ezeket a fogalmakat. Ezek a kódrészletek azonban a jelen oktatóanyagban is elérhetők, így a térképes alkalmazások létrehozása az olvasó számára is megmarad. Ahhoz, hogy ez a példa továbbra is megtörténjen, vegye fontolóra egy város nevének beírását egy sugárral, vagy egy pont megkeresését a térképen, és kiválaszthatja a sugarat. Ezen beállítások további vizsgálatához tekintse meg a következő forrásokat:
+1. Most össze kell kötnie ezeket a fogalmakat. Ezek a kódrészletek azonban a jelen oktatóanyagban is elérhetők, így a térképes alkalmazások létrehozása az olvasó számára is megmarad. Ahhoz, hogy ez a példa továbbra is megtörténjen, vegye fontolóra egy város nevének beírását egy sugárral, vagy egy pont megkeresését a térképen, és kiválaszthatja a sugarat. Ezen beállítások további vizsgálatához tekintse meg a következő forrásokat:
 
 * [Az Azure Maps dokumentációja](../azure-maps/index.yml)
 * [Címek keresése a Azure Maps Search szolgáltatással](../azure-maps/how-to-search-for-address.md)
@@ -492,7 +498,7 @@ Lássunk három példát a pontozási profilokra, és gondolja át, _Hogyan befo
 
     ```
 
-2. A következő pontozási profil jelentős mértékben növeli a pontszámot, ha egy megadott paraméter egy vagy több címkét tartalmaz (amely a "kényelmi" lehetőséget hívja meg). A profil legfontosabb pontja, hogy _egy paramétert kell megadni_ , amely szöveget tartalmaz. Ha a paraméter üres vagy nincs megadva, a rendszer hibát jelez.
+1. A következő pontozási profil jelentős mértékben növeli a pontszámot, ha egy megadott paraméter egy vagy több címkét tartalmaz (amely a "kényelmi" lehetőséget hívja meg). A profil legfontosabb pontja, hogy _egy paramétert kell megadni_ , amely szöveget tartalmaz. Ha a paraméter üres vagy nincs megadva, a rendszer hibát jelez.
  
     ```cs
             {
@@ -510,7 +516,7 @@ Lássunk három példát a pontozási profilokra, és gondolja át, _Hogyan befo
         }
     ```
 
-3. Ebben a harmadik példában a minősítés jelentős lökést ad a pontszámnak. A legutóbb felújított dátum is fellendíti a pontszámot, de csak akkor, ha az adatok az aktuális dátum 730 napon (2 év) belül esik.
+1. Ebben a harmadik példában a minősítés jelentős lökést ad a pontszámnak. A legutóbb felújított dátum is fellendíti a pontszámot, de csak akkor, ha az adatok az aktuális dátum 730 napon (2 év) belül esik.
 
     ```cs
             {
@@ -547,7 +553,7 @@ Lássunk három példát a pontozási profilokra, és gondolja át, _Hogyan befo
 
 1. Nyissa meg az index. cshtml fájlt, és cserélje le a &lt; Body (törzs) &gt; szakaszt a következő kódra.
 
-    ```cs
+    ```html
     <body>
 
     @using (Html.BeginForm("Index", "Home", FormMethod.Post))
@@ -653,7 +659,7 @@ Lássunk három példát a pontozási profilokra, és gondolja át, _Hogyan befo
     </body>
     ```
 
-2. Nyissa meg a SearchData.cs fájlt, és cserélje le a **SearchData** osztályt a következő kódra.
+1. Nyissa meg a SearchData.cs fájlt, és cserélje le a **SearchData** osztályt a következő kódra.
 
     ```cs
     public class SearchData
@@ -692,7 +698,7 @@ Lássunk három példát a pontozási profilokra, és gondolja át, _Hogyan befo
     }
     ```
 
-3. Nyissa meg a Hotels. css fájlt, és adja hozzá a következő HTML-osztályokat.
+1. Nyissa meg a Hotels. css fájlt, és adja hozzá a következő HTML-osztályokat.
 
     ```html
     .facetlist {
@@ -722,7 +728,7 @@ Lássunk három példát a pontozási profilokra, és gondolja át, _Hogyan befo
     using System.Linq;
     ```
 
-2.  Ebben a példában az **indexhez** a kezdeti hívást egy kicsit nagyobbra kell tenni, mint a kezdeti nézet visszaadása. A metódus most legfeljebb 20 kényelmi lehetőséget keres a nézetben való megjelenítéshez.
+1. Ebben a példában az **indexhez** a kezdeti hívást egy kicsit nagyobbra kell tenni, mint a kezdeti nézet visszaadása. A metódus most legfeljebb 20 kényelmi lehetőséget keres a nézetben való megjelenítéshez.
 
     ```cs
         public async Task<ActionResult> Index()
@@ -752,7 +758,7 @@ Lássunk három példát a pontozási profilokra, és gondolja át, _Hogyan befo
         }
     ```
 
-3. Két privát módszerre van szükségünk az aspektusok ideiglenes tárhelyre való mentéséhez, valamint az ideiglenes tárolóból történő helyreállításához és a modell feltöltéséhez.
+1. Két privát módszerre van szükségünk az aspektusok ideiglenes tárhelyre való mentéséhez, valamint az ideiglenes tárolóból történő helyreállításához és a modell feltöltéséhez.
 
     ```cs
         // Save the facet text to temporary storage, optionally saving the state of the check boxes.
@@ -790,7 +796,7 @@ Lássunk három példát a pontozási profilokra, és gondolja át, _Hogyan befo
         }
     ```
 
-4. Szükség szerint be kell állítania a **OrderBy** és a **ScoringProfile** paramétereket. Cserélje le a meglévő **index (SearchData Model)** metódust a következőre.
+1. Szükség szerint be kell állítania a **OrderBy** és a **ScoringProfile** paramétereket. Cserélje le a meglévő **index (SearchData Model)** metódust a következőre.
 
     ```cs
         public async Task<ActionResult> Index(SearchData model)
@@ -947,17 +953,17 @@ Lássunk három példát a pontozási profilokra, és gondolja át, _Hogyan befo
 
 1. Futtassa az alkalmazást. A nézetben a szolgáltatások teljes készletét kell megtekinteni.
 
-2. A "numerikus minősítéssel" lehetőség kiválasztásával megadhatja az ebben az oktatóanyagban már megvalósított numerikus sorrendet, a felújítási dátumot pedig az egyenlő minősítésű szállodák között kell eldöntenie.
+1. A "numerikus minősítéssel" lehetőség kiválasztásával megadhatja az ebben az oktatóanyagban már megvalósított numerikus sorrendet, a felújítási dátumot pedig az egyenlő minősítésű szállodák között kell eldöntenie.
 
-![A "Beach" rendezése minősítés alapján](./media/tutorial-csharp-create-first-app/azure-search-orders-beach.png)
+   ![A "Beach" rendezése minősítés alapján](./media/tutorial-csharp-create-first-app/azure-search-orders-beach.png)
 
-3. Most próbálja ki a "by kényelmi" profilt. Tegye elérhetővé a különböző kényelmi szolgáltatásokat, és ellenőrizze, hogy az adott szolgáltatásokkal rendelkező szállodák támogatják-e az eredmények listáját.
+1. Most próbálja ki a "by kényelmi" profilt. Tegye elérhetővé a különböző kényelmi szolgáltatásokat, és ellenőrizze, hogy az adott szolgáltatásokkal rendelkező szállodák támogatják-e az eredmények listáját.
 
-![A "Beach" rendezése profil alapján](./media/tutorial-csharp-create-first-app/azure-search-orders-beach-profile.png)
+   ![A "Beach" rendezése profil alapján](./media/tutorial-csharp-create-first-app/azure-search-orders-beach-profile.png)
 
-4. Próbálja ki a "megújított dátum/minősítési profil" lehetőséget, hogy megtekintse, mire számíthat. Csak a közelmúltban felújított szállodáknak kell megszerezniük a _frissesség_ növelését.
+1. Próbálja ki a "megújított dátum/minősítési profil" lehetőséget, hogy megtekintse, mire számíthat. Csak a közelmúltban felújított szállodáknak kell megszerezniük a _frissesség_ növelését.
 
-### <a name="resources"></a>Források
+### <a name="resources"></a>További források
 
 További információt az alábbi [pontozási profilok hozzáadása Azure Cognitive Search indexhez](/azure/search/index-add-scoring-profiles)című témakörben talál.
 

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/28/2020
 ms.author: aahi
 keywords: helyszíni, Docker, tároló, Kubernetes
-ms.openlocfilehash: ccba46c1e83f92b1f27c64cb4d9ca32039862bd1
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: ed61760312ad8bada0241b0338c36ab3557e2caa
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91597454"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665412"
 ---
 # <a name="azure-cognitive-services-containers"></a>Azure Cognitive Services tárolók
 
@@ -29,7 +29,8 @@ A tárolók támogatása jelenleg az Azure Cognitive Services egy részhalmazáh
 
 > [!div class="checklist"]
 > * [Anomáliadetektor][ad-containers]
-> * [Computer Vision][cv-containers]
+> * [OCR olvasása (optikai karakterfelismerés) ][cv-containers]
+> * [Térbeli elemzés][spa-containers]
 > * [Face][fa-containers]
 > * [Form Recognizer][fr-containers]
 > * [Language Understanding (LUIS)][lu-containers]
@@ -55,7 +56,7 @@ Cognitive Services erőforrások elérhetők [Microsoft Azureon](https://azure.m
 
 Az Azure Cognitive Services tárolók a következő Docker-tárolókat biztosítják, amelyek mindegyike az Azure-beli szolgáltatások funkcióinak egy részhalmazát tartalmazza Cognitive Services:
 
-| Szolgáltatás | Támogatott árképzési szintek | Tároló | Leírás |
+| Szolgáltatás | Támogatott árképzési szintek | Tároló | Description |
 |--|--|--|--|
 | [Anomália detektor][ad-containers] | F0, S0 | **Anomália – detektor** ([rendszerkép](https://hub.docker.com/_/azure-cognitive-services-decision-anomaly-detector))  | A rendellenesség-Kiderítő API lehetővé teszi, hogy az idősoros adataiban a gépi tanulással figyelje és azonosítsa a rendellenességeket.<br>[Hozzáférés kérése][request-access] |
 | [Computer Vision][cv-containers] | F0, S1 | **Olvasás** OCR ([rendszerkép](https://hub.docker.com/_/microsoft-azure-cognitive-services-vision-read)) | Az olvasási OCR-tároló lehetővé teszi a nyomtatott és a kézírásos szöveg kinyerését képekből és dokumentumokból JPEG-, PNG-, BMP-, PDF-és TIFF-fájlformátumok támogatásával. További információ az API-k [olvasása dokumentációban](./computer-vision/concept-recognizing-text.md)található.<br>[Hozzáférés kérése][request-access] |
@@ -82,7 +83,7 @@ Emellett egyes tárolók támogatják a Cognitive Services [**all-in-One ajánla
 * Computer Vision
 * Face
 * LUIS
-* Szövegelemzés
+* Text Analytics
 
 ## <a name="container-availability-in-azure-cognitive-services"></a>Tároló rendelkezésre állása az Azure-ban Cognitive Services
 
@@ -108,7 +109,7 @@ Az egyes tárolók saját követelményeiket is magukban foglalhatják, beleért
 
 [!INCLUDE [Discoverability of more container information](../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Cognitive Services használható [tároló-receptek](containers/container-reuse-recipe.md) megismerése.
 

@@ -3,17 +3,17 @@ title: B sorozat – feltört – Azure Virtual Machines
 description: Ismerteti a feltört Azure-beli VM-méretek B sorozatát.
 services: virtual-machines
 ms.subservice: sizes
-author: ayshakeen
+author: styli365
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
-ms.author: ayshak
-ms.openlocfilehash: 8591b703382049346fe019b89a5f31517380757f
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.author: sttsinar
+ms.openlocfilehash: 43e19df24de2f2c4e8e5334010ee788129cee68b
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/02/2020
-ms.locfileid: "91653417"
+ms.locfileid: "91666636"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>B sorozatú virtuális gépek méretei
 
@@ -21,12 +21,14 @@ A B sorozatú virtuális gépek ideálisak olyan számítási feladatokhoz, amel
 
 A B sorozat a következő virtuálisgép-méretekhez tartozik:
 
+[Azure számítási egység (ACU)](https://docs.microsoft.com/azure/virtual-machines/acu?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json): változó *<br>
 [Premium Storage](premium-storage-performance.md): támogatott<br>
 [Premium Storage gyorsítótárazás](premium-storage-performance.md): nem támogatott<br>
 [Élő áttelepítés](maintenance-and-updates.md): támogatott<br>
 [Memória megőrzésének frissítései](maintenance-and-updates.md): támogatott<br>
 [VM-létrehozási támogatás](generation-2.md): 1. és 2. generáció<br>
 <br>
+* A B sorozatú virtuális gépek beállíthatók, így a ACU-számok a munkaterheléstől és az alapvető használattól függően eltérőek lesznek.
 
 | Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Virtuális gép alapszintű CPU-teljesítmény | Virtuális gép maximális CPU-teljesítmény | Kezdeti kreditek | Banki/óránkénti kreditek | Maximális banki kreditek | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolási sebesség: IOPS/MBps | Gyorsítótár nélküli lemez maximális átviteli sebessége: IOPS/MBps | Hálózati adapterek maximális száma |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|

@@ -4,19 +4,24 @@ description: Ismerkedjen meg a Azure Migrate szolgáltatás új és legújabb fr
 ms.topic: overview
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: a46519d434061ebfdedbabe70a3e044cb69ca552
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0552402661397a2a8aa09f989189cc08b46e638e
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322223"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667078"
 ---
 # <a name="whats-new-in-azure-migrate"></a>A Azure Migrate újdonságai
 
 A [Azure Migrate](migrate-services-overview.md) segítségével helyszíni kiszolgálókat, alkalmazásokat és az Microsoft Azure felhőbe áttelepítheti, elemezheti és áttelepítheti azokat. Ez a cikk a Azure Migrate új kiadásait és szolgáltatásait foglalja össze.
+
 ## <a name="update-september-2020"></a>Frissítés (2020. szeptember)
-- Azure Migrate mostantól lehetővé teszi, hogy a kiszolgálók áttelepíthetők legyenek Availability Zonesba.
-- Azure Migrate mostantól lehetővé teszi UEFI-alapú virtuális gépek és fizikai kiszolgálók áttelepítését az Azure 2. generációs virtuális gépekre. 
+- A kiszolgálók Availability Zonesre való áttelepítése mostantól támogatott.
+- Az UEFI-alapú virtuális gépek és fizikai kiszolgálók áttelepítése már támogatott az Azure 2. generációs virtuális gépekre
+- Új Azure Migrate Power BI Assessment-irányítópult elérhető, amely segít összehasonlítani a költségeket a különböző értékelési beállítások között. Az irányítópult egy PowerShell-segédprogramot tartalmaz, amely automatikusan létrehozza a Power BI irányítópulthoz csatlakozó értékeléseket. [Részletek](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/assessment-utility)
+- A függőségek elemzése (ügynök nélküli) mostantól egy 1000 virtuális gépen is futhat egyszerre.
+- A függőségek elemzése (ügynök nélküli) mostantól engedélyezhető vagy letiltható a PowerShell-parancsfájlok használatával. [Részletek](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale)
+- Power BI hálózati kapcsolatainak megjelenítése a függőségi elemzés (ügynök nélküli) használatával gyűjtött adatok használatával [. További információ.](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale)
 
 ## <a name="update-august-2020"></a>Update (augusztus 2020)
 
@@ -24,9 +29,10 @@ A [Azure Migrate](migrate-services-overview.md) segítségével helyszíni kiszo
 - Lehetőség a petesejtek/VHD-fájlok vagy a portálon lévő telepítési parancsfájlok letöltésére a VMware és a Hyper-V berendezések beállításához.
 - Frissítette a készülék Configuration Managert a továbbfejlesztett felhasználói felülettel.
 - Több hitelesítő adat támogatja a Hyper-V virtuális gépek felderítését.
-- Továbbfejlesztett keresési, rendezési és szűrési funkciók a hozzáadott hitelesítő adatok és a felderítési források számára.
-- Egyetlen elem bemenete, több elem beolvasása és CSV-importálási beállítások a felhasználó számára a Hyper-V-gazdagépek/-fürtök felderítési forrásainak hozzáadásához & fizikai kiszolgálókon.
-- Továbbfejlesztett hiba történt az érvényesítési és felderítési műveletekhez tartozó állapot frissítéseivel a táblázatban szereplő összes hozzáadott forrás esetében. 
+
+## <a name="update-july-2020"></a>Frissítés (2020. július)
+
+- Az ügynök nélküli VMware Migrálás mostantól támogatja a 300 virtuális gépek egyidejű replikálását vCenter
 
 ## <a name="update-june-2020"></a>Frissítés (2020. június)
 
