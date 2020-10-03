@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 07/08/2020
 ms.author: raynew
 ms.custom: include file
-ms.openlocfilehash: 60012f79c3c04a4ff14c4a7f0609b6940d3402c4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e3106b52ede95fe63a8df691a82acdd4937c8cce
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86544795"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91672343"
 ---
 **A konfigurációs és a feldolgozási kiszolgáló követelményei**
 
@@ -50,7 +50,7 @@ IP-cím típusa | Statikus
 Portok | 443 (vezérlőcsatorna-vezénylés)<br>9443 (Adatátvitel) 
 Hálózati adapter típusa | VMXNET3 (ha a konfigurációs kiszolgáló egy VMware virtuális gép)
  |
-**Internet-hozzáférés** (a kiszolgálónak közvetlenül vagy proxyn keresztül kell hozzáférnie a következő URL-címekhez):|
+**Internet-hozzáférés**  (a kiszolgálónak közvetlenül vagy proxyn keresztül kell hozzáférnie a következő URL-címekhez):|
 \*.backup.windowsazure.com | A replikált adatátvitelhez és a koordinációhoz használatos
 \*.blob.core.windows.net | A replikált adattárolást tároló fiók elérésére szolgál. Megadhatja a gyorsítótárbeli Storage-fiók adott URL-címét.
 \*.hypervrecoverymanager.windowsazure.com | Replikációs felügyeleti műveletekhez és koordináláshoz használatos
@@ -58,7 +58,7 @@ https:\//login.microsoftonline.com | Replikációs felügyeleti műveletekhez é
 time.nist.gov | A rendszer és a globális idő közötti idő-szinkronizálás vizsgálatára szolgál.
 time.windows.com | A rendszer és a globális idő közötti idő-szinkronizálás vizsgálatára szolgál.
 | <ul> <li> https:\//management.azure.com </li><li> https:\//secure.aadcdn.microsoftonline-p.com </li><li> https: \/ /login.Live.com </li><li> https: \/ /Graph.Windows.net </li><li> https:\//login.windows.net </li><li> *. services.visualstudio.com (nem kötelező) </li><li> https: \/ /www.Live.com </li><li> https: \/ /www.microsoft.com </li></ul> | A OVF-telepítőnek hozzá kell férnie a további URL-címekhez. A hozzáférés-vezérléshez és az identitások kezeléséhez használják Azure Active Directory.
-https: \/ /dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi  | A MySQL letöltésének befejezéséhez. </br> Néhány régióban a letöltés átirányítva lesz a CDN URL-címére. Szükség esetén győződjön meg arról, hogy a CDN URL-címe is engedélyezett.
+https: \/ /dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi  | A MySQL letöltésének befejezéséhez. </br> Néhány régióban a letöltés átirányítva lesz a CDN URL-címére. Szükség esetén győződjön meg arról, hogy a CDN URL-cím is jóvá van hagyva.
 |
 
 > [!NOTE]
@@ -83,4 +83,3 @@ A következő táblázat összefoglalja a konfigurációs kiszolgáló kapacitá
 12 vCPU<br/><br/> 2 SOCKS * 6 mag \@ 2,5 GHz | 18 GB | 600 GB | 500 GB – 1 TB | 100 – 150 gép
 16 vCPU<br/><br/> 2 zokni * 8 mag \@ 2,5 GHz | 32 GB | 1 TB | 1-2 TB | 150 – 200 gép
 |
-

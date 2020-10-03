@@ -4,18 +4,18 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 07/13/2020
 ms.author: jingwang
-ms.openlocfilehash: 6c348b3dd0005eeab154aa2d74abc617cbd1d0cb
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: fbde8bc28f8fc34b7a6a6443950b8733c6dcff45
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87529388"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91672172"
 ---
 <!--
     Separate the generic requirement on Self-hosted Integration Runtime set-up from connector articles.
 -->
-Ha az adattár egy helyszíni hálózaton, egy Azure-beli virtuális hálózaton vagy egy Amazon Virtual Private-felhőben található, létre kell hoznia egy saját üzemeltetésű [integrációs](../articles/data-factory/create-self-hosted-integration-runtime.md) modult a csatlakozáshoz.
+Ha az adattár egy helyszíni hálózaton, egy Azure-beli virtuális hálózaton vagy egy Amazon Virtual Private-felhőben található, a csatlakozáshoz konfigurálnia kell egy saját üzemeltetésű [integrációs](../articles/data-factory/create-self-hosted-integration-runtime.md) modult.
 
-Ha az adattár egy felügyelt felhőalapú adatszolgáltatás, akkor használhatja az Azure Integration Runtime szolgáltatást. Ha a hozzáférés csak azokra az IP-címekre korlátozódik, amelyeket a tűzfalszabályok engedélyeznek, akkor választhatja [Azure Integration Runtime IP](../articles/data-factory/azure-integration-runtime-ip-addresses.md) -címek hozzáadását az engedélyezési listához. 
+Ha az adattár felügyelt felhőalapú adatszolgáltatás, akkor használhatja az Azure Integration Runtime szolgáltatást is. Ha a hozzáférés a tűzfalszabályok által jóváhagyott IP-címekre korlátozódik, [Azure Integration Runtime IP-címeket](../articles/data-factory/azure-integration-runtime-ip-addresses.md) adhat hozzá az engedélyezési listához. 
 
 A Data Factory által támogatott hálózati biztonsági mechanizmusokkal és lehetőségekkel kapcsolatos további információkért lásd az [adatelérési stratégiákat](../articles/data-factory/data-access-strategies.md).
