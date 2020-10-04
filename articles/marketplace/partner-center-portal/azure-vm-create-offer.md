@@ -7,12 +7,12 @@ ms.topic: how-to
 author: emuench
 ms.author: mingshen
 ms.date: 08/07/2020
-ms.openlocfilehash: 9f48c06f075ccdc3c3c212e1ba7912707565cd87
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.openlocfilehash: 46749015d5141053eaea3f2f251bbba7d9455481
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91405054"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91709016"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>Azure-beli virtuális gépek ajánlatának létrehozása az Azure Marketplace-en
 
@@ -20,7 +20,7 @@ Ez a cikk bemutatja, hogyan hozhat létre és tehet közzé Azure-beli virtuáli
 
 Mielőtt elkezdené, [hozzon létre egy kereskedelmi piactér-fiókot a partner Centerben](create-account.md). Győződjön meg arról, hogy a fiók regisztrálva van a kereskedelmi piactér programban.
 
-## <a name="introduction"></a>Bevezetés
+## <a name="introduction"></a>Introduction (Bevezetés)
 
 ### <a name="the-benefits-of-publishing-to-azure-marketplace"></a>Az Azure Marketplace-en való közzététel előnyei
 
@@ -180,7 +180,7 @@ Az **ajánlati lista** lapon megadhatja az ajánlat részleteit, például az aj
 
 ### <a name="marketplace-details"></a>Piactér – részletek
 
-#### <a name="name"></a>Name
+#### <a name="name"></a>Név
 
 Az itt megadott név jelenik meg az ügyfelek számára az ajánlati lista címeként. Ez a mező az ajánlat **aliasa** mezőben megadott névvel van feltöltve az ajánlat létrehozásakor. A nevet később módosíthatja. A név:
 
@@ -226,7 +226,7 @@ Adja meg a támogatási webhelyet, ahol az ügyfelek elérheti a támogatási cs
 
 Adja meg a Microsoft-partnerek számára a támogatási jegy megnyitásakor használandó kapcsolattartási adatokat. Ez az információ nem szerepel az Azure Marketplace-en.
 
-- Name
+- Név
 - E-mail
 - Telefon
 
@@ -234,7 +234,7 @@ Adja meg a Microsoft-partnerek számára a támogatási jegy megnyitásakor hasz
 
 Adja meg a Microsoft számára az ajánlattal kapcsolatos problémák esetén használandó kapcsolattartási adatokat, beleértve a minősítéssel kapcsolatos problémákat is. Ez az információ nem szerepel az Azure Marketplace-en.
 
-- Name
+- Név
 - E-mail
 - Telefon
 
@@ -242,7 +242,7 @@ Adja meg a Microsoft számára az ajánlattal kapcsolatos problémák esetén ha
 
 Adja meg az ajánlathoz használni kívánt emblémákat és képeket. Minden képnek PNG formátumúnak kell lennie. A homályos képek miatt a rendszer elutasítja a kérelmet.
 
-[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+[!INCLUDE [logo tips](../includes/graphics-suggestions.md)]
 
 >[!NOTE]
 >Ha probléma merül fel a fájlok feltöltésekor, győződjön meg arról, hogy a helyi hálózat nem blokkolja a https://upload.xboxlive.com partner központ által használt szolgáltatást.
@@ -547,7 +547,7 @@ Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk az A
 
 <br>Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk az Azure Marketplace keresési eredményei között:
 
-:::image type="content" source="media/example-azure-marketplace-virtual-machine-search-results.png" alt-text="Bemutatja, hogyan jelenik meg az ajánlat az Azure piactér keresési eredményei között.":::
+:::image type="content" source="media/example-azure-marketplace-virtual-machine-search-results.png" alt-text="Bemutatja, hogyan jelenik meg az ajánlat az Azure piactéren.":::
 
 #### <a name="call-out-descriptions"></a>Lehívási leírások
 
@@ -558,7 +558,7 @@ Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk az A
 
 <br>Íme egy példa az Azure Marketplace-csomag részleteire:
 
-:::image type="content" source="media/example-azure-marketplace-virtual-machine-plan-details.png" alt-text="Bemutatja az Azure Marketplace-csomag részleteit.":::
+:::image type="content" source="media/example-azure-marketplace-virtual-machine-plan-details.png" alt-text="Bemutatja, hogyan jelenik meg az ajánlat az Azure piactéren.":::
 
 #### <a name="call-out-descriptions"></a>Lehívási leírások
 
@@ -568,7 +568,7 @@ Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk az A
 
 <br>Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk a Azure Portalban:
 
-:::image type="content" source="media/example-azure-portal-virtual-machine-offer.png" alt-text="Bemutatja, hogyan jelennek meg az ajánlat a Azure Portalban.":::
+:::image type="content" source="media/example-azure-portal-virtual-machine-offer.png" alt-text="Bemutatja, hogyan jelenik meg az ajánlat az Azure piactéren.":::
 
 #### <a name="call-out-descriptions"></a>Lehívási leírások
 
@@ -579,7 +579,7 @@ Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk az A
 
 <br>Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk a Azure Portal keresési eredmények között:
 
-:::image type="content" source="media/example-azure-portal-virtual-machine-search-results.png" alt-text="Bemutatja, hogyan jelenik meg az ajánlat a Azure Portal keresési eredmények között.":::
+:::image type="content" source="media/example-azure-portal-virtual-machine-search-results.png" alt-text="Bemutatja, hogyan jelenik meg az ajánlat az Azure piactéren.":::
 
 #### <a name="call-out-descriptions"></a>Lehívási leírások
 
@@ -589,7 +589,7 @@ Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk az A
 
 <br>Íme egy példa a Azure Portal terv részleteire:
 
-:::image type="content" source="media/example-azure-portal-virtual-machine-plan-details.png" alt-text="A Azure Portal terv részleteit mutatja be.":::
+:::image type="content" source="media/example-azure-portal-virtual-machine-plan-details.png" alt-text="Bemutatja, hogyan jelenik meg az ajánlat az Azure piactéren.":::
 
 #### <a name="call-out-descriptions"></a>Lehívási leírások
 

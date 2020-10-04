@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 09/11/2020
-ms.openlocfilehash: 5bf94faff86edf954c687ca3024c63229829ca04
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: a706ced5c65b9de3cb3bfdb623d810bb1ea43623
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91369722"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707982"
 ---
 # <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>Gyakori kérdések a Microsoft kereskedelmi piactérről
 
@@ -305,15 +305,14 @@ További információ: [a kifizetési fiók és az adózási űrlapok beállít�
 
 A visszatérítések fogadásához az ügyfelek egy megadott időkereten belül törölhetik az előfizetéseket. Havi előfizetések esetén 24 óra, éves előfizetések esetén pedig 14 nap. Az olyan ajánlatok, amelyeknek a használata a megoldás alkalmazása után történik, nem jogosultak a visszatérítésre.
 
-## <a name="resources"></a>Források
+## <a name="resources"></a>További források
 
 ### <a name="where-can-i-find-more-information-about-the-commercial-marketplace"></a>Hol találhatok további információt a kereskedelmi piactérről?
 
 Íme néhány erőforrás a kezdéshez:
 
-- [A Microsoft kereskedelmi piactér bemutatása](/azure/marketplace/marketplace-publishers-guide)
+- [Mi a Microsoft kereskedelmi piactér?](overview.md)
 - [Microsoft kereskedelmi piactér – partneri központ](https://partner.microsoft.com/asset/collection/commercial-marketplace#/)
-- [Üdvözöljük a kereskedelmi piactéren](index.yml)
 
 ### <a name="how-can-i-engage-with-microsoft-and-other-partners"></a>Hogyan vehetek részt a Microsoft és más partnerek között?
 
@@ -324,7 +323,7 @@ A következő erőforrásokat javasoljuk:
 
 ### <a name="where-can-i-learn-more-about-partner-center"></a>Hol tudhatok meg többet a partner Center szolgáltatásról?
 
-- [A partner Center dokumentációja](https://docs.microsoft.com/partner-center/)
+- [A partner Center dokumentációja](/partner-center/)
 - [Üdvözöljük a kereskedelmi piactéren](index.yml)
 
 ### <a name="where-can-i-learn-more-about-the-microsoft-admin-center"></a>Hol tudhatok meg többet a Microsoft felügyeleti központról?

@@ -1,17 +1,17 @@
 ---
 title: Monitorozás és mérőszámok – Azure Database for PostgreSQL – rugalmas kiszolgáló
 description: Ez a cikk a Azure Database for PostgreSQL rugalmas kiszolgáló figyelési és mérőszám-funkcióit ismerteti.
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: b0957219308dfaab2d375fb7c23926a13c745344
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1519e0b5cef6055cf8d8b0aded0d8ad323d548a2
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91314674"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707846"
 ---
 # <a name="monitor-metrics-on-azure-database-for-postgresql---flexible-server"></a>Metrikák figyelése Azure Database for PostgreSQL-rugalmas kiszolgálón
 

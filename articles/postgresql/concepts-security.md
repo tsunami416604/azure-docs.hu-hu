@@ -1,17 +1,17 @@
 ---
 title: Biztonság Azure Database for PostgreSQL – egyetlen kiszolgáló
 description: A Azure Database for PostgreSQL-egy kiszolgáló biztonsági funkcióinak áttekintése.
-author: rachel-msft
-ms.author: raagyema
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/22/2019
-ms.openlocfilehash: b95e02046b2f05dd89ec8fce5da438380a8894e9
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: be042a0ec076538cf0f0d155667acea6f1ae19cb
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89375789"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710481"
 ---
 # <a name="security-in-azure-database-for-postgresql---single-server"></a>Biztonság Azure Database for PostgreSQL – egyetlen kiszolgáló
 
@@ -38,7 +38,7 @@ Az IP-tűzfalszabályok az egyes kérelmek feladó IP-címe alapján biztosítan
 A Virtual Network szolgáltatás végpontja kiterjeszti a virtuális hálózati kapcsolatot az Azure-gerincen. A virtuális hálózati szabályok használatával engedélyezheti a Azure Database for PostgreSQL-kiszolgáló számára a virtuális hálózatban lévő kijelölt alhálózatok kapcsolatainak engedélyezését. További információt a [Virtual Network szolgáltatás végpontjának áttekintése](concepts-data-access-and-security-vnet.md)című témakörben talál.
 
 ### <a name="private-ip"></a>Magánhálózati IP-cím
-A privát hivatkozás lehetővé teszi, hogy egy privát végponton keresztül kapcsolódjon az Azure-beli Azure Database for PostgreSQL egyetlen kiszolgálóhoz. Az Azure Private link lényegében az Azure-szolgáltatásokat a privát Virtual Networkon (VNet) belül hozza elérhetővé. A Péter-erőforrások a magánhálózati IP-cím használatával ugyanúgy érhetők el, mint a VNet lévő többi erőforráshoz. További információt a [privát hivatkozások áttekintése](concepts-data-access-and-security-private-link.md) című témakörben talál.
+A privát hivatkozás lehetővé teszi, hogy egy privát végponton keresztül kapcsolódjon az Azure-beli Azure Database for PostgreSQL egyetlen kiszolgálóhoz. Az Azure Private Link lényegében elérhetővé teszi az Azure-szolgáltatásokat a virtuális magánhálózaton belül. A PaaS-erőforrások a magánhálózati IP-cím használatával érhetők el, ugyanúgy, mint a virtuális hálózat más erőforrásai. További információt a [privát hivatkozások áttekintése](concepts-data-access-and-security-private-link.md) című témakörben talál.
 
 
 ## <a name="access-management"></a>Hozzáférés-kezelés
@@ -54,6 +54,9 @@ A komplex [veszélyforrások elleni védelem](concepts-data-access-and-security-
 
 A [naplózás elérhető](concepts-audit.md) az adatbázisok tevékenységeinek nyomon követéséhez. 
 
+## <a name="migrating-from-oracle"></a>Áttelepítés Oracle-ből
+
+Az Oracle támogatja a transzparens adattitkosítás (TDE) a tábla-és az tablespace-adattitkosítást. A PostgreSQL-hez készült Azure-ban az adatforgalom különböző rétegekben automatikusan titkosítva van. Tekintse meg a jelen oldal "rest" című szakaszát, és tekintse meg a különböző biztonsági témaköröket, beleértve az [ügyfelek által felügyelt kulcsokat](./concepts-data-encryption-postgresql.md) és az [infrastruktúra kettős titkosítását](./concepts-infrastructure-double-encryption.md)is. Érdemes megfontolni az [Azure for PostgreSQL-hez](./concepts-extensions.md)támogatott [pgcrypto](https://www.postgresql.org/docs/11/pgcrypto.html) -bővítmény használatát is.
 
 ## <a name="next-steps"></a>Következő lépések
 - Tűzfalszabályok engedélyezése [IP](concepts-firewall-rules.md) -címekhez vagy [virtuális hálózatokhoz](concepts-data-access-and-security-vnet.md)

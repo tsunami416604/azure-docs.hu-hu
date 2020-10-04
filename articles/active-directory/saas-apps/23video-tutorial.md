@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/07/2019
 ms.author: jeedes
-ms.openlocfilehash: d4271c2d298744f339ac577a0db585dd8c309b16
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1dc2aba6241ef498cd6802c7490e46552e7737ab
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88538824"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708815"
 ---
 # <a name="tutorial-integrate-23-video-with-azure-active-directory"></a>Oktatóanyag: 23 videó integrálása a Azure Active Directory
 
@@ -106,7 +106,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -138,11 +138,11 @@ Ennek a szakasznak a célja egy B. Simon nevű felhasználó létrehozása 23 vi
 
 3. A **felhasználók** szakaszban kattintson a **Konfigurálás**elemre.
 
-    ![Felhasználó kiosztása](./media/23video-tutorial/tutorial-23video-10.png)
+    ![Képernyőkép, amely kiemeli a felhasználók szakaszt.](./media/23video-tutorial/tutorial-23video-10.png)
 
 4. Kattintson **az új felhasználó hozzáadása**lehetőségre.
 
-    ![Felhasználó kiosztása](./media/23video-tutorial/tutorial-23video-11.png)
+    ![Képernyőfelvétel: az új felhasználó hozzáadása gomb.](./media/23video-tutorial/tutorial-23video-11.png)
 
 5. A **webhelyhez való csatlakozás meghívása** című szakaszban hajtsa végre a következő lépéseket:
 

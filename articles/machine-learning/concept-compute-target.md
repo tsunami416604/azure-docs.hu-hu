@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 07/27/2020
-ms.openlocfilehash: 6b166e46c8ebb640e15c005e2ddae3161e141f10
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.date: 09/29/2020
+ms.openlocfilehash: ca23bb49a3592dcc139bcc04875f3867018e158d
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91446780"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707734"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Mik azok a számítási célok Azure Machine Learning? 
 
@@ -28,18 +28,31 @@ Egy tipikus modell-fejlesztési életciklus esetén a következőket teheti:
 A számítási célokhoz használt számítási erőforrások egy [munkaterülethez](concept-workspace.md)vannak csatolva. A helyi gépen kívüli számítási erőforrásokat a munkaterület felhasználói osztják meg.
 
 ## <a name="training-compute-targets"></a><a name="train"></a> Számítási célok betanítása
-
-A Azure Machine Learning különböző számítási erőforrásokon keresztül eltérő támogatást nyújt.  Saját számítási erőforrást is csatolhat, bár a különböző forgatókönyvek támogatása eltérő lehet.
+A Azure Machine Learning különböző számítási célok esetében eltérő támogatással rendelkezik. Egy tipikus modell fejlesztési életciklusa kis mennyiségű adaton kezdi meg a fejlesztést és kísérletezést. Ebben a szakaszban a helyi környezet használatát javasoljuk. Például a helyi számítógép vagy egy felhőalapú virtuális gép. A nagyobb adatkészletek betanításának felskálázása vagy az elosztott képzések elvégzése során javasoljuk, hogy Azure Machine Learning számítás használatával hozzon létre egy olyan önálló vagy többcsomópontos fürtöt, amely minden egyes futtatásakor elküldi az autoskálázást. Saját számítási erőforrást is csatolhat, bár a különböző forgatókönyvek támogatása az alábbiakban részletezett módon változhat:
 
 [!INCLUDE [aml-compute-target-train](../../includes/aml-compute-target-train.md)]
 
-További információ [a számítási cél használatáról a modell betanításához](how-to-set-up-training-targets.md).
+További információ a [betanítási műveletek számítási célra való beküldéséről](how-to-set-up-training-targets.md).
 
-## <a name="deployment-targets"></a><a name="deploy"></a>Üzembehelyezési célhelyek
+## <a name="compute-targets-for-inference"></a><a name="deploy"></a> Kiszámítási célok a következtetéshez
 
 A modell központi telepítésének üzemeltetéséhez a következő számítási erőforrások használhatók.
 
 [!INCLUDE [aml-compute-target-deploy](../../includes/aml-compute-target-deploy.md)]
+
+A következtetések elvégzése során a Azure Machine Learning létrehoz egy Docker-tárolót, amely a modell és a hozzájuk tartozó erőforrások használatához szükséges. Ezt a tárolót a rendszer a következő telepítési forgatókönyvek egyikében használja:
+
+* A valós idejű következtetésekhez használt __webszolgáltatásként__ . A webszolgáltatás központi telepítései a következő számítási célok egyikét használják:
+
+    * [Helyi számítógép](how-to-attach-compute-targets.md#local)
+    * [Azure Machine Learning számítási példány](how-to-create-manage-compute-instance.md)
+    * [Azure Container Instances](how-to-attach-compute-targets.md#aci)
+    * [Azure Kubernetes Service](how-to-create-attach-kubernetes.md)
+    * Azure Functions (előzetes verzió). A központi telepítés Azure Functions csak Azure Machine Learning támaszkodik a Docker-tároló felépítésére. Innen Azure Functions használatával telepítjük. További információ: [Machine learning-modell üzembe helyezése Azure functions (előzetes verzió)](how-to-deploy-functions.md).
+
+* Olyan __Batch-következtetési__ végpontként, amely az adatkötegek rendszeres feldolgozására szolgál. A Batch-következtetések [Azure Machine learning számítási fürtöt](how-to-create-attach-compute-cluster.md)használnak.
+
+* Egy __IoT-eszközre__ (előzetes verzió). A IoT-eszközre történő központi telepítés csak az Azure Machine Learningra támaszkodik a Docker-tároló felépítéséhez. Innen Azure IoT Edge használatával telepítjük. További információ: [telepítés IoT Edge modulként (előzetes verzió)](/azure/iot-edge/tutorial-deploy-machine-learning).
 
 Megtudhatja, [hol és hogyan helyezheti üzembe a modellt egy számítási célra](how-to-deploy-and-where.md).
 
@@ -50,8 +63,9 @@ A felügyelt számítási erőforrásokat Azure Machine Learning hozza létre é
 
 A következő esetekben hozhat létre Azure Machine Learning számítási példányokat vagy számítási fürtöket:
 * [Azure Machine Learning Studio](how-to-create-attach-compute-studio.md)
-* Azure Portal
-* Python SDK [ComputeInstance](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computeinstance%28class%29?view=azure-ml-py&preserve-view=true) és [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute%28class%29?view=azure-ml-py&preserve-view=true) osztályok
+* Python SDK és parancssori felület:
+    * [Számítási példány](how-to-create-manage-compute-instance.md)
+    * [Számítási fürt](how-to-create-attach-compute-cluster.md)
 * [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-compute-targets) (előzetes verzió)
 * Resource Manager-sablon. Példa a sablonra: [Azure Machine learning számítási sablon létrehozása](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-amlcompute).
 * Machine learning- [bővítmény az Azure CLI-hez](reference-azure-machine-learning-cli.md#resource-management).  
@@ -68,7 +82,7 @@ Ha létrehozta ezeket a számítási erőforrásokat, az automatikusan a munkate
 
 
 > [!NOTE]
-> Ha egy számítási fürt üresjáratban van, az autoskálázás 0 csomópontra történik, így nem kell fizetnie, ha nincs használatban.  A számítási *példányok*azonban mindig be vannak kapcsolva, és nem méretezhetők le.  Ha nem használja, [állítsa le a számítási példányt](concept-compute-instance.md#managing-a-compute-instance) a többletköltség elkerülése érdekében. 
+> Ha egy számítási fürt üresjáratban van, az autoskálázás 0 csomópontra történik, így nem kell fizetnie, ha nincs használatban.  A számítási *példányok*azonban mindig be vannak kapcsolva, és nem méretezhetők le.  Ha nem használja, [állítsa le a számítási példányt](how-to-create-manage-compute-instance.md#manage) a többletköltség elkerülése érdekében. 
 
 ### <a name="supported-vm-series-and-sizes"></a>Támogatott VM-sorozatok és-méretek
 
@@ -82,21 +96,21 @@ A támogatott adatsorozatokkal és korlátozásokkal kapcsolatos további inform
 
 | **Támogatott VM-sorozat**  | **Korlátozások** |
 |------------|------------|
-| T | Nincsenek |
-| Dv2 | Nincsenek |  
-| Dv3 | Nincsenek|
-| DSv2 | Nincsenek | 
-| DSv3 | Nincsenek|
-| FSv2 | Nincsenek | 
+| T | Nincs |
+| Dv2 | Nincs |  
+| Dv3 | Nincs|
+| DSv2 | Nincs | 
+| DSv3 | Nincs|
+| FSv2 | Nincs | 
 | HBv2 | Jóváhagyást igényel |  
 | HCS FRISSÍTŐÜGYNÖK | Jóváhagyást igényel |  
 | M | Jóváhagyást igényel |
-| NC | Nincsenek |    
+| NC | Nincs |    
 | NCsv2 | Jóváhagyást igényel |
 | NCsv3 | Jóváhagyást igényel |  
 | NDs | Jóváhagyást igényel |
 | NDv2 | Jóváhagyást igényel |
-| NV | Nincsenek |
+| NV | Nincs |
 | NVv3 | Jóváhagyást igényel | 
 
 

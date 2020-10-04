@@ -7,12 +7,12 @@ ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 08/07/2020
-ms.openlocfilehash: dc1e8bfa9b747b9933762af1b6a5b59cf8cd98de
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 5b823b0429feffa87a05faadc78574287bc9b4a4
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815776"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708339"
 ---
 # <a name="create-an-iot-edge-module-offer"></a>IoT Edge-modulajánlat létrehozása
 
@@ -78,9 +78,9 @@ Ha az ajánlatot a piactéren a partner centerrel teszi közzé, akkor opcionál
 
 Íme néhány további érdeklődő felügyeleti erőforrás:
 
-- [Az érdeklődők kezelése – áttekintés](commercial-marketplace-get-customer-leads.md)
-- [Érdeklődői felügyelet – gyakori kérdések](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)
-- [Gyakori vezető konfigurációs hibák](../lead-management-for-cloud-marketplace.md#publishing-config-errors))
+- [A kereskedelmi piactér ajánlatának ügyfelei](commercial-marketplace-get-customer-leads.md)
+- [Az érdeklődők felügyeletével kapcsolatos gyakori kérdések](../lead-management-faq.md#common-questions-about-lead-management)
+- [Az érdeklődők konfigurálásával kapcsolatos hibák elhárítása](../lead-management-faq.md#publishing-config-errors)
 - Az [érdeklődők kezelése – áttekintés](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (ellenőrizze, hogy ki van-e kapcsolva az előugró ablakok blokkolása).
 
 A folytatás előtt válassza a **Piszkozat mentése** lehetőséget.
@@ -149,7 +149,7 @@ Adja meg az ajánlat rövid leírását. Ez akár 100 karakter hosszú lehet, é
 
 Adja meg az ajánlat részletesebb leírását. Ez akár 256 karakter hosszú lehet, és a piactér keresési eredményeiben használható.
 
-### <a name="description"></a>Leírás
+### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -194,7 +194,7 @@ Az ajánlatok listájának létrehozásával kapcsolatos további tudnivalókér
 
 Adja meg az ajánlathoz használni kívánt emblémákat és képeket. Minden képnek PNG formátumúnak kell lennie. A rendszer elutasítja a homályos képeket.
 
-[!INCLUDE [logostips](../includes/graphics-suggestions.md)]
+[!INCLUDE [logo tips](../includes/graphics-suggestions.md)]
 
 >[!Note]
 >Ha probléma merül fel a fájlok feltöltésekor, győződjön meg arról, hogy a helyi hálózat nem blokkolja a https://upload.xboxlive.com partner központ által használt szolgáltatást.
@@ -235,14 +235,14 @@ Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk az A
 4. használati feltételei
 5. Adatvédelmi szabályzat címe (hivatkozás)
 6. Név
-7. Összefoglalás
-8. Leírás
+7. Összegzés
+8. Description
 9. Hasznos hivatkozások
 10. Képernyőképek/videók
 
 <br>Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk az Azure Marketplace keresési eredményei között:
 
-:::image type="content" source="media/example-iot-azure-marketplace-offer-search-results.png" alt-text="Bemutatja, hogyan jelenik meg az ajánlat az Azure piactér keresési eredményei között.":::
+:::image type="content" source="media/example-iot-azure-marketplace-offer-search-results.png" alt-text="Bemutatja, hogyan jelenik meg az ajánlat az Azure piactéren.":::
 
 #### <a name="call-out-descriptions"></a>Lehívási leírások
 
@@ -252,7 +252,7 @@ Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk az A
 
 <br>Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk a Azure Portalban:
 
-:::image type="content" source="media/example-iot-azure-portal-offer.png" alt-text="Bemutatja, hogyan jelennek meg az ajánlat a Azure Portalban.":::
+:::image type="content" source="media/example-iot-azure-portal-offer.png" alt-text="Bemutatja, hogyan jelenik meg az ajánlat az Azure piactéren.":::
 
 #### <a name="call-out-descriptions"></a>Lehívási leírások
 
@@ -263,7 +263,7 @@ Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk az A
 
 <br>Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk a Azure Portal keresési eredmények között:
 
-:::image type="content" source="media/example-iot-azure-portal-offer-search-results.png" alt-text="Bemutatja, hogyan jelenik meg az ajánlat a Azure Portal keresési eredmények között.":::
+:::image type="content" source="media/example-iot-azure-portal-offer-search-results.png" alt-text="Bemutatja, hogyan jelenik meg az ajánlat az Azure piactéren.":::
 
 #### <a name="call-out-descriptions"></a>Lehívási leírások
 
@@ -362,7 +362,7 @@ A mezők befejezése után válassza a **Piszkozat mentése** lehetőséget.
 
 Íme egy példa az Azure Marketplace-csomag részleteire (a felsorolt árak kizárólag a tényleges költségekkel kapcsolatosak, és nem tükrözik a tényleges költségeket):
 
-:::image type="content" source="media/example-iot-azure-marketplace-plan.png" alt-text="Bemutatja az Azure Marketplace-csomag részleteit.":::
+:::image type="content" source="media/example-iot-azure-marketplace-plan.png" alt-text="Bemutatja, hogyan jelenik meg az ajánlat az Azure piactéren.":::
 
 #### <a name="call-out-descriptions"></a>Lehívási leírások
 
@@ -372,7 +372,7 @@ A mezők befejezése után válassza a **Piszkozat mentése** lehetőséget.
 
 <br>Íme egy példa a Azure Portal terv részleteire (a felsorolt díjak csak a felhasználási célokra szolgálnak, és nem tükrözik a tényleges költségeket):
 
-:::image type="content" source="media/example-iot-azure-marketplace-plan-details.png" alt-text="A Azure Portal terv részleteit mutatja be.":::
+:::image type="content" source="media/example-iot-azure-marketplace-plan-details.png" alt-text="Bemutatja, hogyan jelenik meg az ajánlat az Azure piactéren.":::
 
 #### <a name="call-out-descriptions"></a>Lehívási leírások
 
@@ -413,7 +413,7 @@ Az **Azure Container Registry neve**: adja meg annak a [Azure Container Registry
 
 A **Azure Container Registry rendszergazdai felhasználóneve**: adja meg a tároló képével rendelkező Azure Container Registryhoz társított [rendszergazdai felhasználónevet](../../container-registry/container-registry-authentication.md#admin-account)). A felhasználónévnek és a jelszónak meg kell győződnie arról, hogy a vállalata hozzáférhessen a beállításjegyzékhez. A rendszergazdai Felhasználónév és jelszó beszerzéséhez állítsa a **rendszergazdai** jogosultsággal rendelkező tulajdonságot **true** értékre az Azure parancssori felület (CLI) használatával. Igény szerint beállíthatja, hogy a **rendszergazda felhasználó** **engedélyezze** a Azure Portal.
 
-:::image type="content" source="media/example-iot-update-container-registry.png" alt-text="A tároló-beállításjegyzék frissítése párbeszédpanelt mutatja be.":::
+:::image type="content" source="media/example-iot-update-container-registry.png" alt-text="Bemutatja, hogyan jelenik meg az ajánlat az Azure piactéren.":::
 
 #### <a name="call-out-description"></a>Visszahívás leírása
 
@@ -421,7 +421,7 @@ A **Azure Container Registry rendszergazdai felhasználóneve**: adja meg a tár
 
 <br>**A Azure Container Registryhoz tartozó jelszó**: adja meg a Azure Container Registryhoz társított rendszergazdai Felhasználónév és a tároló képét. A felhasználónévnek és a jelszónak meg kell győződnie arról, hogy a vállalata hozzáférhessen a beállításjegyzékhez. A jelszót a Azure Portal **Container Registry**  >  **hozzáférési kulcsok** vagy az Azure CLI használatával a [show paranccsal](https://docs.microsoft.com/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show) kérheti le.
 
-:::image type="content" source="media/example-iot-access-keys.png" alt-text="A Azure Portal a Hívóbetű képernyőjét mutatja.":::
+:::image type="content" source="media/example-iot-access-keys.png" alt-text="Bemutatja, hogyan jelenik meg az ajánlat az Azure piactéren.":::
 
 #### <a name="call-out-descriptions"></a>Lehívási leírások
 
@@ -429,7 +429,7 @@ A **Azure Container Registry rendszergazdai felhasználóneve**: adja meg a tár
 2. Felhasználónév
 3. Jelszó
 
-**A tárház neve a Azure Container Registryon belül**. Adja meg a rendszerképet tartalmazó Azure Container Registry adattár nevét. Adja meg az adattár nevét, amikor leküldi a rendszerképet a beállításjegyzékbe. A tárház nevét a [Container Registry](https://azure.microsoft.com/services/container-registry/)  >  **adattárak lapon**találja. További információ: [a Container Registry-Tárházak megtekintése a Azure Portalban](../../container-registry/container-registry-repositories.md). Vegye figyelembe, hogy a név beállítása után nem módosítható. Egyedi nevet adjon a fiókjában található összes ajánlathoz.
+**A tárház neve a Azure Container Registryon belül**. Adja meg a rendszerképet tartalmazó Azure Container Registry adattár nevét. Adja meg az adattár nevét, amikor leküldi a rendszerképet a beállításjegyzékbe. A tárház nevét a [Container Registry](https://azure.microsoft.com/services/container-registry/)  >  **adattárak lapon**találja. További információ: [a Container Registry-Tárházak megtekintése a Azure Portalban](../../container-registry/container-registry-repositories.md). A név beállítása után nem módosítható. Egyedi nevet adjon a fiókjában található összes ajánlathoz.
 
 ### <a name="image-tags-for-new-versions-of-your-offer"></a>Képcímkék az ajánlat új verzióihoz
 
@@ -490,6 +490,6 @@ Az ajánlat közzétételre való elküldéséhez válassza a **Közzététel**l
 
 Egy e-mailt küldünk, amelyből megtudhatja, hogy az ajánlat előzetes verziója elérhető-e a felülvizsgálathoz és jóváhagyáshoz. Az ajánlat nyilvános közzétételéhez lépjen a partner Center webhelyre, és válassza a **Go-Live**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Meglévő ajánlat frissítése a kereskedelmi piactéren](https://docs.microsoft.com//azure/marketplace/partner-center-portal/update-existing-offer)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 08/18/2020
-ms.openlocfilehash: 6eeb27f6382585e883fbebc40a9f70feb33adb4f
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 90267f2b75b7b9c1e77a45d7e3faa4b0bf6dd63a
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89420608"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708543"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge-modulok
 
@@ -58,7 +58,7 @@ A Microsoft Azure Marketplace-szerződések és-szabályzatok minden feltétele 
 
 IoT Edge modul Azure Marketplace-en való közzétételéhez meg kell felelnie a következő előfeltételeknek:
 
-- Hozzáférés a partner központhoz. További információ: az [Azure Marketplace és a AppSource közzétételi útmutatója](marketplace-publishers-guide.md).
+- Hozzáférés a partner központhoz. További információ: [kereskedelmi Piactéri fiók létrehozása a partner Centerben](partner-center-portal/create-account.md).
 - IoT Edge moduljának üzemeltetése egy Azure Container Registry.
 - A IoT Edge modul metaadatainak készen állnak, például (nem teljes lista):
     - Egy cím

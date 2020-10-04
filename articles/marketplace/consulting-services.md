@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/08/2020
 author: Microsoft-BradleyWright
 ms.author: brwrigh
-ms.openlocfilehash: 9745dce03d87b447dfd606f021891794cb343593
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 25f110f27ec9ac55420f624b5eea4555e482e7f4
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89419754"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708356"
 ---
 # <a name="consulting-service-offers"></a>Tanácsadási szolgáltatás ajánlatok
 
@@ -22,7 +22,7 @@ A tanácsadási szolgáltatás ajánlata az ügyfél-specifikus engagement. A ki
 
 ## <a name="compare-consulting-services"></a>Tanácsadási szolgáltatások összehasonlítása
 
-A kereskedelmi piactér online áruházai, Microsoft AppSource és az Azure Marketplace a megoldások típusaival és a felhőalapú termékekkel vannak összehangolva, hogy az ügyfelek megtalálják a szükséges igényeket. Az egyes online áruházak speciális közzétételi lehetőségeket biztosítanak a közzétételi befektetések maximalizálása érdekében. Ha többet szeretne megtudni a két online áruház közötti különbségről, tekintse meg a [Microsoft AppSource és az Azure Marketplace összehasonlítását](comparing-appsource-azure-marketplace.md)ismertető témakört.
+A kereskedelmi piactér online áruházai, Microsoft AppSource és az Azure Marketplace a megoldások típusaival és a felhőalapú termékekkel vannak összehangolva, hogy az ügyfelek megtalálják a szükséges igényeket. Az egyes online áruházak speciális közzétételi lehetőségeket biztosítanak a közzétételi befektetések maximalizálása érdekében. Ha többet szeretne megtudni a AppSource és az Azure Marketplace közötti különbségekről, tekintse meg a [kereskedelmi piactér online áruházait](overview.md#commercial-marketplace-online-stores).
 
 A Dynamics 365, a Power apps és a Power BI alapján elérhető tanácsadói szolgáltatások jogosultak a AppSource-on való listázásra. További információkért töltse le a [Microsoft AppSource Consulting Services-lista irányelvek](https://go.microsoft.com/fwlink/?LinkId=828734&clcid=0x409) PDF-fájlját.
 

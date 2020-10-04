@@ -1,17 +1,17 @@
 ---
 title: Kapcsolódás az Azure Kubernetes szolgáltatáshoz – Azure Database for PostgreSQL – egyetlen kiszolgáló
 description: Tudnivalók az Azure Kubernetes szolgáltatás (ak) az Azure Database for PostgreSQL-Single Serverrel való csatlakoztatásáról
-author: rachel-msft
-ms.author: raagyema
+author: mksuni
+ms.author: sumuth
 ms.service: postgresql
 ms.date: 07/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4214b01f3f3651f8785f8644cf12326bf182bce7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9b7da2fcc1310f03f894e048089658f25be3a149
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084177"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708849"
 ---
 # <a name="connecting-azure-kubernetes-service-and-azure-database-for-postgresql---single-server"></a>Az Azure Kubernetes szolgáltatás és Azure Database for PostgreSQL – egyetlen kiszolgáló csatlakoztatása
 
@@ -48,5 +48,5 @@ A kapcsolat Pooler az adatbázishoz való új kapcsolatok létrehozásához és 
 A PostgreSQL-sel több összekapcsolási készlet is használható. Ezek egyike a [PgBouncer](https://pgbouncer.github.io/). A Microsoft Container Registry egy kis méretű, tárolóban lévő PgBouncer biztosítunk, amely az oldalkocsiban használható az AK-ról Azure Database for PostgreSQL-ra való csatlakozásra. Látogasson el a [Docker hub oldalára](https://hub.docker.com/r/microsoft/azureossdb-tools-pgbouncer/) , ahol megtudhatja, hogyan érheti el és használhatja ezt a rendszerképet. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 -  [Azure Kubernetes Service-fürt létrehozása](../aks/kubernetes-walkthrough.md)

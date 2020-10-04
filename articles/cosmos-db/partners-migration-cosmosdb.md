@@ -6,18 +6,18 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: 4507b3f3338dccbf51f7342081997549e62f13fe
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: bd0ec4cf085fb19c89c6be48d4f4534383560fd5
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290088"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707778"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Azure Cosmos DB NoSQL áttelepítési és alkalmazásfejlesztés-partnerek
 
-A NoSQL migrálása révén számos tapasztalt rendszerintegrátori partnert és eszközt választhat a Azure Cosmos DB-megoldások támogatásához. 
+A NoSQL migrálása révén számos tapasztalt rendszerintegrátori partnert és eszközt választhat a Azure Cosmos DB-megoldások támogatásához. Ez a cikk felsorolja azokat a partnereket, akik a Azure Cosmos DBt használó megoldásokkal vagy szolgáltatásokkal rendelkeznek. A lista időbeli változása miatt a Microsoft nem vállal felelősséget a partnerek megoldásaiban történt módosításokért és frissítésért.
 
-## <a name="systems-integrator-partners"></a>A Systems integrátor partnerei
+## <a name="systems-integrator-and-tooling-partners"></a>Rendszerintegrátor és szerszámozási partnerek
 
 |**Partner**  |**Képességek & felület**  |**Támogatott országok/régiók**  |
 |---------|---------|---------|
@@ -48,7 +48,7 @@ A NoSQL migrálása révén számos tapasztalt rendszerintegrátori partnert és
 | [Szoftveres szoftverek](https://www.incyclesoftware.com/) | NoSQL-áttelepítés, kiszolgáló nélküli architektúra, alkalmazásfejlesztés| USA|
 | [Orion](https://www.orioninc.com/) | Személyre szabás, kiskereskedelmi (leltár), operatív elemzés (Spark), IoT, alkalmazásfejlesztés| Egyesült Államok, Kanada|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a Microsoft egyéb partnereiről, tekintse meg a [Microsoft partner webhelyét](https://partner.microsoft.com/).
 

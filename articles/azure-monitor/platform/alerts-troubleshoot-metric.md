@@ -4,14 +4,14 @@ description: Azure Monitor metrikus riasztásokkal és lehetséges megoldásokka
 author: harelbr
 ms.author: harelbr
 ms.topic: troubleshooting
-ms.date: 09/14/2020
+ms.date: 10/04/2020
 ms.subservice: alerts
-ms.openlocfilehash: f9003aa7b9b2c28e443485484ccd4eb50fa6e0dd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1280529aa758194dbd02196d71a715310431a73b
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91294225"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710294"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Azure Monitor metrikai riasztásokkal kapcsolatos problémák elhárítása 
 
@@ -76,6 +76,9 @@ További információ az adatoknak a virtuális gép vendég operációs rendsze
 > [!NOTE] 
 > Ha a vendég metrikákat úgy konfigurálta, hogy egy Log Analytics munkaterületre legyenek küldve, a metrikák a Log Analytics munkaterület-erőforrás alatt jelennek meg, és **csak** az azokat figyelő riasztási szabály létrehozása után kezdenek adatokat megjeleníteni. Ehhez kövesse a [naplók metrikariasztásának konfigurálására](./alerts-metric-logs.md#configuring-metric-alert-for-logs) szolgáló lépéseket.
 
+> [!NOTE] 
+> A metrikai riasztások jelenleg nem támogatják a vendég metrikájának figyelését egyetlen riasztási szabállyal rendelkező több virtuális géphez. Ezt a [napló riasztási szabályával](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log)érheti el. Ehhez győződjön meg arról, hogy a vendég metrikák gyűjtése egy Log Analytics munkaterületre történik, és hozzon létre egy napló-riasztási szabályt a munkaterületen.
+
 ## <a name="cant-find-the-metric-to-alert-on"></a>Nem található a riasztáshoz használandó metrika
 
 Ha egy adott metrika esetében szeretne riasztást kapni, de nem látja a mérőszámokat az erőforráshoz, [ellenőrizze, hogy az erőforrás típusa támogatott-e a metrikus riasztások](./alerts-metric-near-real-time.md)esetén.
@@ -110,7 +113,7 @@ A metrikai riasztások alapértelmezés szerint állapottal rendelkeznek, ezért
 
 Metrika-riasztási szabály létrehozásakor a metrika neve a [metrika-definíciók API](/rest/api/monitor/metricdefinitions/list) -val lesz érvényesítve, hogy biztosan létezik. Bizonyos esetekben riasztási szabályt kell létrehoznia egy egyéni metrika esetében még a kibocsátása előtt is. Ha például egy Resource Manager-sablonnal hoz létre egy Application Insights-erőforrást, amely egy egyéni metrikát fog kibocsátani, valamint egy riasztási szabályt, amely figyeli a metrikát.
 
-Annak elkerülése érdekében, hogy a telepítés meghiúsuljon az egyéni metrika definícióinak érvényesítése során, használhatja a *skipMetricValidation* paramétert a riasztási szabály feltételek szakaszában, ami miatt a metrika érvényesítése ki lesz hagyva. Az alábbi példában megtekintheti, hogyan használhatja ezt a paramétert egy Resource Manager-sablonban. További információ: a [teljes Resource Manager-sablon mintái a metrikus riasztási szabályok létrehozásához](./alerts-metric-create-templates.md).
+Annak elkerülése érdekében, hogy a telepítés meghiúsuljon az egyéni metrika definícióinak érvényesítése során, használhatja a *skipMetricValidation* paramétert a riasztási szabály feltételek szakaszában, ami miatt a metrika érvényesítése ki lesz hagyva. Az alábbi példában megtekintheti, hogyan használhatja ezt a paramétert egy Resource Manager-sablonban. További információt a [metrikus riasztási szabályok létrehozásához a Resource Manager-sablonok teljes mintáit](./alerts-metric-create-templates.md)ismertető témakörben talál.
 
 ```json
 "criteria": {
@@ -245,13 +248,19 @@ Ha több feltételt tartalmazó riasztási szabályban dimenziókat használ, ve
 - Minden feltételben csak egy értéket lehet kijelölni dimenzión belül.
 - Nem használhatja a "minden aktuális és jövőbeli érték kijelölése" lehetőséget (válassza ki \* ).
 - Ha a különböző feltételekben konfigurált mérőszámok ugyanazt a dimenziót támogatják, akkor a konfigurált dimenzió értékét explicit módon kell beállítani az összes metrika esetében (a vonatkozó feltételek között).
-Példa:
+Például:
     - Vegyünk egy olyan metrikai riasztási szabályt, amely egy Storage-fiókban van definiálva, és két feltételt figyel:
         * **Tranzakciók** összesen > 5
         * Átlagos **SuccessE2ELatency** > 250 MS
     - Szeretném frissíteni az első feltételt, és csak olyan tranzakciókat figyelni, amelyekben az **ApiName** dimenzió *"GetBlob"* értékkel rendelkezik
     - Mivel mind a **tranzakciók** , mind a **SuccessE2ELatency** metrikája támogatja a **ApiName** -dimenziót, mindkét feltételt frissíteni kell, és mindkettőnek meg kell adnia a **ApiName** dimenziót *"GetBlob"* értékkel.
 
+## <a name="setting-the-alert-rules-period-and-frequency"></a>A riasztási szabály időtartamának és gyakoriságának beállítása
+
+Javasoljuk, hogy a *kiértékelés gyakorisága*nagyobb mértékű *összesítési részletességet (időszakot)* válasszon, hogy csökkentse a hozzáadott idősorozat első kiértékelésének valószínűségét a következő esetekben:
+-   Metrikus riasztási szabály, amely több dimenziót figyel – új dimenzió érték-kombináció hozzáadásakor
+-   Metrikus riasztási szabály, amely több erőforrást figyel – új erőforrás a hatókörhöz való hozzáadásakor
+-   Metrikus riasztási szabály, amely nem folyamatosan kibocsátott mérőszámot figyel (ritka metrika) – Ha a mérőszámot 24 óránál hosszabb időt követően bocsátják ki a rendszer, amelyben nem lett kibocsátva
 
 ## <a name="next-steps"></a>Következő lépések
 

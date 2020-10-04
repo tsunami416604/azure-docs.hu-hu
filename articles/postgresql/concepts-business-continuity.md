@@ -1,17 +1,17 @@
 ---
 title: Üzletmenet-folytonosság – Azure Database for PostgreSQL – egyetlen kiszolgáló
 description: Ez a cikk az üzletmenet folytonosságát (az időponthoz való visszaállítást, az adatközpont-kimaradást, a Geo-visszaállítást és a replikákat) ismerteti Azure Database for PostgreSQL használatakor.
-author: rachel-msft
-ms.author: raagyema
+author: sr-msft
+ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/07/2020
-ms.openlocfilehash: 75cd86bd1587a9294caef00efdf973fe8a26c150
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 6bcb1ea6c16fd387dfb7f15f909d1908c20a44d7
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89612012"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710906"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>Az üzletmenet folytonosságának áttekintése Azure Database for PostgreSQL – egyetlen kiszolgálóval
 
@@ -19,16 +19,20 @@ Ez az Áttekintés ismerteti azokat a képességeket, amelyeket a Azure Database
 
 ## <a name="features-that-you-can-use-to-provide-business-continuity"></a>Az üzletmenet folytonosságának biztosítására használható funkciók
 
-A Azure Database for PostgreSQL olyan üzletmenet-folytonossági funkciókat biztosít, amelyek automatikus biztonsági mentést tartalmaznak, és lehetővé teszi a felhasználók számára a Geo-visszaállítás kezdeményezését. Mindegyik különböző tulajdonságokkal rendelkezik a becsült helyreállítási idő (ERT) és a lehetséges adatvesztés tekintetében. A becsült helyreállítási idő (ERT) a becsült időtartam ahhoz, hogy az adatbázis teljesen működőképes legyen egy visszaállítási/feladatátvételi kérelem után. Ha megértette ezeket a lehetőségeket, választhat közülük, és együtt használhatja őket különböző forgatókönyvek esetén. Az üzletmenet-folytonossági terv kidolgozása során meg kell ismernie a maximális elfogadható időtartamot, mielőtt az alkalmazás teljesen helyreáll a zavaró esemény után – ez a helyreállítási idő célkitűzése (RTO). Meg kell ismernie a legutóbbi adatfrissítések (időintervallum) maximális mennyiségét is, ha az alkalmazás a zavaró esemény utáni helyreállítás során elveszíti az adatvesztést – ez a helyreállítási pont célkitűzése (RPO).
+Az üzletmenet-folytonossági terv kidolgozása során meg kell ismernie a maximális elfogadható időtartamot, mielőtt az alkalmazás teljesen helyreáll a zavaró esemény után – ez a helyreállítási idő célkitűzése (RTO). Meg kell ismernie a legutóbbi adatfrissítések (időintervallum) maximális mennyiségét is, ha az alkalmazás a zavaró esemény utáni helyreállítás során elveszíti az adatvesztést – ez a helyreállítási pont célkitűzése (RPO).
 
-A következő táblázat összehasonlítja a rendelkezésre álló funkciók ERT-és RPO:
+A Azure Database for PostgreSQL olyan üzletmenet-folytonossági funkciókat biztosít, amelyek a Geo-redundáns biztonsági mentéseket is lehetővé teszi a Geo-visszaállítás megkezdésére és az olvasási replikák egy másik régióban történő üzembe helyezésére. Mindegyiknek különböző jellemzői vannak a helyreállítási időhöz és a lehetséges adatvesztéshez. A [geo-visszaállítás](concepts-backup.md) funkcióval egy új kiszolgáló jön létre, amely egy másik régióból replikált biztonsági mentési adatok használatával történik. A helyreállításhoz és helyreállításhoz szükséges teljes idő az adatbázis méretétől és a helyreállítható naplók mennyiségétől függ. A kiszolgáló létrehozásának teljes ideje néhány perctől néhány órára változhat. [Olvasási replikák](concepts-read-replicas.md)esetén az elsődleges tranzakciós naplók aszinkron módon lesznek továbbítva a replikára. Az elsődleges és a replika közötti késés a helyek közötti késéstől és a továbbítandó adatok mennyiségétől függ. Ha egy elsődleges hely meghibásodása, például a rendelkezésre állási zóna hibája, a replika előléptetése rövidebb RTO és adatvesztést biztosít. 
 
-| **Képesség** | **Basic** | **általános célú** | **Memóriaoptimalizált** |
+A következő táblázat összehasonlítja a RTO és a RPO egy tipikus forgatókönyvben:
+
+| **Képesség** | **Basic** | **Általános célú** | **Memóriaoptimalizált** |
 | :------------: | :-------: | :-----------------: | :------------------: |
 | Időponthoz kötött visszaállítás biztonsági másolatból | A megőrzési időtartamon belüli visszaállítási pontok | A megőrzési időtartamon belüli visszaállítási pontok | A megőrzési időtartamon belüli visszaállítási pontok |
-| Geo-visszaállítás földrajzilag replikált biztonsági másolatokból | Nem támogatott | ERT < 12 h<br/>RPO < 1 óra | ERT < 12 h<br/>RPO < 1 óra |
+| Geo-visszaállítás földrajzilag replikált biztonsági másolatokból | Nem támogatott | RTO – változó <br/>RPO < 1 óra | RTO – változó <br/>RPO < 1 óra |
+| Olvasási replikák | RTO – perc <br/>RPO < 5 perc | RTO – perc <br/>RPO < 5 perc| RTO – perc <br/>RPO < 5 perc|
 
-Érdemes lehet az [olvasási replikákat](concepts-read-replicas.md)is használni.
+> [!IMPORTANT]
+> Az itt említett várt RTO és RPO csak referenciául szolgálnak. Ezekhez a metrikához nem biztosítunk SLA-t.
 
 ## <a name="recover-a-server-after-a-user-or-application-error"></a>Kiszolgáló helyreállítása felhasználói vagy alkalmazáshiba miatt
 

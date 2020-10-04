@@ -1,5 +1,5 @@
 ---
-title: Szoftverek vásárlása a AppSource-on | Azure piactér
+title: Szoftverek vásárlása Microsoft AppSource
 description: A szoftver megvásárlásának lépései a AppSource-on | Az Azure Marketplace-en.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -7,18 +7,18 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 03/20/2020
-ms.openlocfilehash: 6ea96f23f6d8c6a2e95a6217522f23545d49e9df
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: bfdae8de4c1a460844b09f82048e1e1d6abdb2ad
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032843"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708033"
 ---
 # <a name="how-to-purchase-software-on-microsoft-appsource"></a>Szoftverek vásárlása Microsoft AppSource
 
 A Microsoft [AppSource](https://appsource.microsoft.com/) mostantól lehetővé teszi az ügyfeleknek a Microsoft-partnerek által kínált SaaS-alkalmazásokra való előfizetést. Az ügyfelek az áruházban minősített webalkalmazásokat kereshetnek, és egyetlen helyen kezelhetik a díjakat, a frissítéseket, a visszalépéseket és a lemondásokat a Microsoft felügyeleti központjának használatával. Ez a cikk azt ismerteti, hogyan vásárolhat alkalmazást az áruházból.
 
-A AppSource a választható alkalmazások közül választhat, beleértve az ingyenes, a próbaverziókat és a fizetős előfizetéseket. Ez a cikk azt ismerteti, hogyan vásárolhatók meg a fizetős előfizetések a AppSource használatával.
+A AppSource számos különböző alkalmazást biztosít, beleértve az ingyenes próbaverziókat és a fizetős előfizetéseket. Ez a cikk azt ismerteti, hogyan vásárolhatók meg a fizetős előfizetések a AppSource használatával.
 
 ## <a name="requirements"></a>Követelmények
 
@@ -51,7 +51,7 @@ Az SaaS-ajánlatok megvásárlásához a következőkre van szüksége:
 
 A megrendelés kézhezvételét követően több másodpercig is eltarthat, amíg a rendszer megerősíti a kérést. Megjelenik egy hivatkozás, amely az SaaS-előfizetés konfigurálását végzi az oldalon, valamint egy e-mailt, amely megerősíti a vásárlást, és a konfiguráció befejezésére szolgáló hivatkozást.
 
-1. A **megrendelés megerősítése** lapon válassza a **Konfigurálás**lehetőséget. Azt is megteheti, hogy a megerősítő e-mailben elküldött konfigurációs hivatkozást használja.
+1. A **megrendelés megerősítése** lapon válassza a **Konfigurálás**lehetőséget. Vagy használhatja a megerősítő e-mailben küldött konfigurációs hivatkozást is.
 1. Fejezze be az üzembe helyezést, és állítsa be a szoftver szolgáltatójának webhelyén.
 
     > [!Note]
@@ -65,4 +65,4 @@ Egy támogatási jegyet a Microsoft 365 felügyeleti központon keresztül [kül
 
 ## <a name="next-steps"></a>Következő lépések
 
-- További információért tekintse meg a [kereskedelmi piactér dokumentációját](partner-center-portal/commercial-marketplace-overview.md) .
+- [A Microsoft Marketplace-ügyfél dokumentációja](/marketplace/)

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 06/17/2020
-ms.openlocfilehash: 7b42c12499977b5f7bc1704c57904e90be2e8466
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 464e75e55bc67ce619134be01ba00f2606a271a4
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91398014"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91709070"
 ---
 # <a name="create-a-consulting-service-offer"></a>Tanácsadási szolgáltatásajánlat létrehozása
 
@@ -76,10 +76,10 @@ Ha az ajánlatot a piactéren, a partner centeren keresztül teszi közzé, csat
 
 Íme néhány további érdeklődő felügyeleti erőforrás:
 
-- [Az érdeklődők kezelése – áttekintés](commercial-marketplace-get-customer-leads.md)
-- [Érdeklődői felügyelet – gyakori kérdések](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)
-- [Gyakori vezető konfigurációs hibák](../lead-management-for-cloud-marketplace.md#publishing-config-errors))
-- Az [érdeklődők kezelése – áttekintés](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (ellenőrizze, hogy ki van-e kapcsolva az előugró ablakok blokkolása)
+- [A kereskedelmi piactér ajánlatának ügyfelei](commercial-marketplace-get-customer-leads.md)
+- [Az érdeklődők felügyeletével kapcsolatos gyakori kérdések](../lead-management-faq.md#common-questions-about-lead-management)
+- [Az érdeklődők konfigurálásával kapcsolatos hibák elhárítása](../lead-management-faq.md#publishing-config-errors)
+- Az [érdeklődők kezelése – áttekintés](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (ellenőrizze, hogy ki van-e kapcsolva az előugró ablakok blokkolása).
 
 A folytatás előtt válassza a **Piszkozat mentése** lehetőséget.
 
@@ -110,7 +110,7 @@ Ezen a lapon állíthatja be azt az elsődleges terméket, amelyet a tanácsadá
     - Vészhelyreállítás
     - Identitás
     - Eszközök internetes hálózata
-    - Áttelepítés
+    - Migrálás
     - Hálózatkezelés
     - Biztonság
     - Tárolás
@@ -141,12 +141,12 @@ Itt megadhatja a piactéren megjelenő ajánlat részleteit. Ebbe beletartozik a
 4. Iparágak
 5. Ajánlat neve
 6. Összegzés
-7. Leírás
+7. Description
 8. Képernyőképek/videók
 
 <br>Íme egy példa arra, hogyan jelennek meg az ajánlati információk a Microsoft AppSourceban (a felsorolt árak kizárólag a tényleges költségekkel kapcsolatos célokat szolgálnak):
 
-:::image type="content" source="media/example-consulting-service-offer-appsource.png" alt-text="Bemutatja, hogyan jelenik meg az ajánlat a Microsoft AppSourceban.":::
+:::image type="content" source="media/example-consulting-service-offer-appsource.png" alt-text="Bemutatja, hogyan jelenik meg az ajánlat az Azure piactéren.":::
 
 #### <a name="call-out-descriptions"></a>Lehívási leírások
 
@@ -156,7 +156,7 @@ Itt megadhatja a piactéren megjelenő ajánlat részleteit. Ebbe beletartozik a
 4. Iparágak
 5. Ajánlat neve
 6. Összegzés
-7. Leírás
+7. Description
 8. Képernyőképek/videók
 9. Dokumentumok
 
@@ -174,7 +174,7 @@ A név:
 
 Adja meg az ajánlat rövid leírását. Ez akár 100 karakter hosszú lehet, és a piactér keresési eredményeiben használható.
 
-### <a name="description"></a>Leírás
+### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -202,7 +202,7 @@ Akár három (de legalább egy) támogató PDF-dokumentumot is hozzáadhat az aj
 
 Adja meg az ajánlathoz használni kívánt emblémákat és képeket. Minden képnek. png formátumúnak kell lennie. A rendszer elutasítja a homályos képeket.
 
-[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+[!INCLUDE [logo tips](../includes/graphics-suggestions.md)]
 
 >[!Note]
 >Ha probléma merül fel a fájlok feltöltésekor, győződjön meg arról, hogy a helyi hálózat nem blokkolja a https://upload.xboxlive.com partner központ által használt szolgáltatást.
@@ -247,7 +247,7 @@ Itt olyan elemeket határozhat meg, mint például a díjszabás, a piac és a t
 
 Miután elvégezte az ajánlat összes szükséges részét, elküldheti ajánlatát az áttekintéshez és a közzétételhez.
 
-1. Ha készen áll a tanácsadási szolgáltatás ajánlatának közzétételére, kattintson **a felülvizsgálat és közzététel**elemre.
+1. Ha készen áll a tanácsadási szolgáltatás ajánlatának közzétételére, válassza a **felülvizsgálat és közzététel**lehetőséget.
 2. Tekintse át a végső beküldési oldal részleteit.
 3. Ha szükséges, jegyezze fel a minősítési csapatot, ha úgy véli, hogy az ajánlat bármely részlete magyarázatot kér.
 4. Ha elkészült, válassza a **Küldés**lehetőséget.

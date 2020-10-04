@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 1bdda60d3b6f5e763bd31b25ab0fd8c2783f978d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: cd07370c75ac64fa8e3806fed50a64db90122c76
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88537928"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708305"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-acquireio"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a AcquireIO
 
@@ -100,7 +100,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -134,15 +134,15 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. A menü bal oldalán kattintson az **App Store**elemre.
 
-     ![AcquireIO-konfiguráció](./media/acquireio-tutorial/config01.png)
+     ![Képernyőkép, amely kiemeli az App Store-t.](./media/acquireio-tutorial/config01.png)
 
 1. Görgessen le a **Active Directoryra** , majd kattintson a **telepítés**gombra.
 
-    ![AcquireIO-konfiguráció](./media/acquireio-tutorial/config02.png)
+    ![Képernyőkép, amely kiemeli a Active Directory szakaszt és a telepítés gombot.](./media/acquireio-tutorial/config02.png)
 
 1. A Active Directory előugró ablakában hajtsa végre a következő lépéseket:
 
-    ![AcquireIO-konfiguráció](./media/acquireio-tutorial/config03.png)
+    ![A Active Directory képernyőt megjelenítő screnshot.](./media/acquireio-tutorial/config03.png)
 
     a. A **Másolás** gombra kattintva másolja a példányhoz tartozó válasz URL-címét, és illessze be a **Válasz URL** -szövegmezőbe az **alapszintű SAML-konfiguráció** szakaszának Azure Portal.
 
@@ -162,7 +162,7 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a Ac
 
 1. A menü bal oldalán kattintson a **profilok** elemre, és navigáljon a **Profil hozzáadása**lehetőségre.
 
-     ![AcquireIO-konfiguráció](./media/acquireio-tutorial/config04.png)
+     ![Képernyőfelvétel: a képernyő bal oldalán, valamint a profil hozzáadása lehetőséggel kiemeli a profilok menüt.](./media/acquireio-tutorial/config04.png)
 
 1. Az **ügyfél hozzáadása** felugró ablakban végezze el a következő lépéseket:
 

@@ -1,18 +1,18 @@
 ---
 title: Kapcsolatok karakterláncának létrehozása a PowerShell-Azure Database for PostgreSQL
 description: Ez a cikk egy Azure PowerShell példát mutat be a Azure Database for PostgreSQLhoz való kapcsolódáshoz használt kapcsolati karakterlánc létrehozásához.
-author: rachel-msft
-ms.author: raagyema
+author: mksuni
+ms.author: sumuth
 ms.service: postgresql
 ms.custom: mvc, devx-track-azurepowershell
 ms.topic: how-to
 ms.date: 8/6/2020
-ms.openlocfilehash: a8e82c1863fde7a7580300606949e00a34c4e58c
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 29641bdc3696f0722ca430dde912768071fd9b16
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87909901"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708169"
 ---
 # <a name="how-to-generate-an-azure-database-for-postgresql-connection-string-with-powershell"></a>Azure Database for PostgreSQL kapcsolódási karakterlánc létrehozása a PowerShell-lel
 

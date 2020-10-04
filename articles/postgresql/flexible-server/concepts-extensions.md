@@ -1,17 +1,17 @@
 ---
 title: Bővítmények – Azure Database for PostgreSQL – rugalmas kiszolgáló
 description: Tudnivalók a Azure Database for PostgreSQL-rugalmas kiszolgáló elérhető postgres-bővítményeiről
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: f38006e83be47142a6d7a6db25eefb3daccd0d92
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7e9268f69b0ec8d06cd86fe5aec19a46b20a3a76
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91307585"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710583"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---flexible-server"></a>PostgreSQL-bővítmények Azure Database for PostgreSQL – rugalmas kiszolgáló
 
@@ -36,14 +36,14 @@ A következő bővítmények érhetők el Azure Database for PostgreSQL rugalmas
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 3.0.0           | A címek összetevőire való elemzéséhez használatos. |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 3.0.0           | Példa az USA-beli szabványosító adathalmazra|
 > |[amcheck](https://www.postgresql.org/docs/12/amcheck.html)                    | 1,2             | a kapcsolatok integritásának ellenőrzéséhez szükséges függvények|
-> |[Bloom](https://www.postgresql.org/docs/12/bloom.html)                    | 1,0             | Bloom hozzáférési módszer – aláírási fájl alapú index|
+> |[Bloom](https://www.postgresql.org/docs/12/bloom.html)                    | 1.0             | Bloom hozzáférési módszer – aláírási fájl alapú index|
 > |[btree_gin](https://www.postgresql.org/docs/12/btree-gin.html)                    | 1.3             | gyakori adattípusok indexelésének támogatása a GIN-ben|
 > |[btree_gist](https://www.postgresql.org/docs/12/btree-gist.html)                   | 1.5             | gyakori adattípusok indexelésének támogatása a lényegeben|
 > |[citext](https://www.postgresql.org/docs/12/citext.html)                       | 1.6             | kis-és nagybetűket megkülönböztető karakterláncok adattípusa|
 > |[adatkocka](https://www.postgresql.org/docs/12/cube.html)                         | 1.4             | többdimenziós kockák adattípusa|
 > |[dblink](https://www.postgresql.org/docs/12/dblink.html)                       | 1,2             | Kapcsolódás más PostgreSQL-adatbázisokhoz egy adatbázison belülről|
-> |[dict_int](https://www.postgresql.org/docs/12/dict-int.html)                     | 1,0             | szöveges keresési szótár sablonja egész számokhoz|
-> |[dict_xsyn](https://www.postgresql.org/docs/12/dict-xsyn.html)                     | 1,0             | szöveges keresési szótár sablon a kiterjesztett szinonimák feldolgozásához|
+> |[dict_int](https://www.postgresql.org/docs/12/dict-int.html)                     | 1.0             | szöveges keresési szótár sablonja egész számokhoz|
+> |[dict_xsyn](https://www.postgresql.org/docs/12/dict-xsyn.html)                     | 1.0             | szöveges keresési szótár sablon a kiterjesztett szinonimák feldolgozásához|
 > |[earthdistance](https://www.postgresql.org/docs/12/earthdistance.html)                | 1,1             | nagy hatótávolságú távolságok kiszámítása a Föld felszínén|
 > |[fuzzystrmatch](https://www.postgresql.org/docs/12/fuzzystrmatch.html)                | 1,1             | a karakterláncok közötti hasonlóságok és távolságok meghatározása|
 > |[hstore](https://www.postgresql.org/docs/12/hstore.html)                       | 1.6             | a (kulcs, érték) párok tárolására szolgáló adattípus|
@@ -62,16 +62,16 @@ A következő bővítmények érhetők el Azure Database for PostgreSQL rugalmas
 > |[pgcrypto](https://www.postgresql.org/docs/12/pgcrypto.html)                     | 1.3             | titkosítási függvények|
 > |[pgrowlocks](https://www.postgresql.org/docs/12/pgrowlocks.html)                   | 1,2             | sor szintű zárolási információk megjelenítése|
 > |[pgstattuple](https://www.postgresql.org/docs/12/pgstattuple.html)                  | 1.5             | rekord szintű statisztikák megjelenítése|
-> |[plpgsql](https://www.postgresql.org/docs/12/plpgsql.html)                      | 1,0             | PL/pgSQL eljárási nyelv|
+> |[plpgsql](https://www.postgresql.org/docs/12/plpgsql.html)                      | 1.0             | PL/pgSQL eljárási nyelv|
 > |[PostGIS](https://www.postgis.net/)                      | 3.0.0           | PostGIS geometria, földrajz |
 > |[postgis_raster](https://www.postgis.net/)               | 3.0.0           | PostGIS raszteres típusok és függvények| 
 > |[postgis_sfcgal](https://www.postgis.net/)               | 3.0.0           | PostGIS SFCGAL függvények|
 > |[postgis_tiger_geocoder](https://www.postgis.net/)       | 3.0.0           | PostGIS Tiger geocoder és fordított geocoder|
 > |[postgis_topology](https://postgis.net/docs/Topology.html)             | 3.0.0           | PostGIS-topológia térbeli típusai és funkciói|
-> |[postgres_fdw](https://www.postgresql.org/docs/12/postgres-fdw.html)                 | 1,0             | idegen adatburkolók távoli PostgreSQL-kiszolgálókhoz|
+> |[postgres_fdw](https://www.postgresql.org/docs/12/postgres-fdw.html)                 | 1.0             | idegen adatburkolók távoli PostgreSQL-kiszolgálókhoz|
 > |[sslinfo](https://www.postgresql.org/docs/12/sslinfo.html)                    | 1,2             | az SSL-tanúsítványokkal kapcsolatos információk|
-> |[tsm_system_rows](https://www.postgresql.org/docs/12/tsm-system-rows.html)                    | 1,0             |  TABLESAMPLE metódus, amely a sorok számát korlátozza|
-> |[tsm_system_time](https://www.postgresql.org/docs/12/tsm-system-time.html)                    | 1,0             |  TABLESAMPLE-metódus, amely az időt ezredmásodpercben, korlátként fogadja el|
+> |[tsm_system_rows](https://www.postgresql.org/docs/12/tsm-system-rows.html)                    | 1.0             |  TABLESAMPLE metódus, amely a sorok számát korlátozza|
+> |[tsm_system_time](https://www.postgresql.org/docs/12/tsm-system-time.html)                    | 1.0             |  TABLESAMPLE-metódus, amely az időt ezredmásodpercben, korlátként fogadja el|
 > |[nem ékezetes](https://www.postgresql.org/docs/12/unaccent.html)                     | 1,1             | ékezeteket eltávolító szöveges keresési szótár|
 > |[UUID – ossp](https://www.postgresql.org/docs/12/uuid-ossp.html)                    | 1,1             | univerzálisan egyedi azonosítók (UUID-EK) előállítása|
 
@@ -85,14 +85,14 @@ A következő bővítmények érhetők el Azure Database for PostgreSQL rugalmas
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.5.1           | A címek összetevőire való elemzéséhez használatos. |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.5.1           | Példa az USA-beli szabványosító adathalmazra|
 > |[amcheck](https://www.postgresql.org/docs/11/amcheck.html)                    | 1,1             | a kapcsolatok integritásának ellenőrzéséhez szükséges függvények|
-> |[Bloom](https://www.postgresql.org/docs/11/bloom.html)                    | 1,0             | Bloom hozzáférési módszer – aláírási fájl alapú index|
+> |[Bloom](https://www.postgresql.org/docs/11/bloom.html)                    | 1.0             | Bloom hozzáférési módszer – aláírási fájl alapú index|
 > |[btree_gin](https://www.postgresql.org/docs/11/btree-gin.html)                    | 1.3             | gyakori adattípusok indexelésének támogatása a GIN-ben|
 > |[btree_gist](https://www.postgresql.org/docs/11/btree-gist.html)                   | 1.5             | gyakori adattípusok indexelésének támogatása a lényegeben|
 > |[citext](https://www.postgresql.org/docs/11/citext.html)                       | 1.5             | kis-és nagybetűket megkülönböztető karakterláncok adattípusa|
 > |[adatkocka](https://www.postgresql.org/docs/11/cube.html)                         | 1.4             | többdimenziós kockák adattípusa|
 > |[dblink](https://www.postgresql.org/docs/11/dblink.html)                       | 1,2             | Kapcsolódás más PostgreSQL-adatbázisokhoz egy adatbázison belülről|
-> |[dict_int](https://www.postgresql.org/docs/11/dict-int.html)                     | 1,0             | szöveges keresési szótár sablonja egész számokhoz|
-> |[dict_xsyn](https://www.postgresql.org/docs/11/dict-xsyn.html)                     | 1,0             | szöveges keresési szótár sablon a kiterjesztett szinonimák feldolgozásához|
+> |[dict_int](https://www.postgresql.org/docs/11/dict-int.html)                     | 1.0             | szöveges keresési szótár sablonja egész számokhoz|
+> |[dict_xsyn](https://www.postgresql.org/docs/11/dict-xsyn.html)                     | 1.0             | szöveges keresési szótár sablon a kiterjesztett szinonimák feldolgozásához|
 > |[earthdistance](https://www.postgresql.org/docs/11/earthdistance.html)                | 1,1             | nagy hatótávolságú távolságok kiszámítása a Föld felszínén|
 > |[fuzzystrmatch](https://www.postgresql.org/docs/11/fuzzystrmatch.html)                | 1,1             | a karakterláncok közötti hasonlóságok és távolságok meghatározása|
 > |[hstore](https://www.postgresql.org/docs/11/hstore.html)                       | 1.5             | a (kulcs, érték) párok tárolására szolgáló adattípus|
@@ -111,16 +111,16 @@ A következő bővítmények érhetők el Azure Database for PostgreSQL rugalmas
 > |[pgcrypto](https://www.postgresql.org/docs/11/pgcrypto.html)                     | 1.3             | titkosítási függvények|
 > |[pgrowlocks](https://www.postgresql.org/docs/11/pgrowlocks.html)                   | 1,2             | sor szintű zárolási információk megjelenítése|
 > |[pgstattuple](https://www.postgresql.org/docs/11/pgstattuple.html)                  | 1.5             | rekord szintű statisztikák megjelenítése|
-> |[plpgsql](https://www.postgresql.org/docs/11/plpgsql.html)                      | 1,0             | PL/pgSQL eljárási nyelv|
+> |[plpgsql](https://www.postgresql.org/docs/11/plpgsql.html)                      | 1.0             | PL/pgSQL eljárási nyelv|
 > |[PostGIS](https://www.postgis.net/)                      | 2.5.1           | Geometriai, földrajzi és raszteres térbeli típusok és függvények PostGIS|
 > |[postgis_sfcgal](https://www.postgis.net/)               | 2.5.1           | PostGIS SFCGAL függvények|
 > |[postgis_tiger_geocoder](https://www.postgis.net/)       | 2.5.1           | PostGIS Tiger geocoder és fordított geocoder|
 > |[postgis_topology](https://postgis.net/docs/Topology.html)             | 2.5.1           | PostGIS-topológia térbeli típusai és funkciói|
-> |[postgres_fdw](https://www.postgresql.org/docs/11/postgres-fdw.html)                 | 1,0             | idegen adatburkolók távoli PostgreSQL-kiszolgálókhoz|
+> |[postgres_fdw](https://www.postgresql.org/docs/11/postgres-fdw.html)                 | 1.0             | idegen adatburkolók távoli PostgreSQL-kiszolgálókhoz|
 > |[sslinfo](https://www.postgresql.org/docs/11/sslinfo.html)                    | 1,2             | az SSL-tanúsítványokkal kapcsolatos információk|
-> |[tablefunc](https://www.postgresql.org/docs/11/tablefunc.html)                    | 1,0             | a teljes táblákat, például a kereszttáblás funkciókat kezelő függvények|
-> |[tsm_system_rows](https://www.postgresql.org/docs/11/tsm-system-rows.html)                    | 1,0             |  TABLESAMPLE metódus, amely a sorok számát korlátozza|
-> |[tsm_system_time](https://www.postgresql.org/docs/11/tsm-system-time.html)                    | 1,0             |  TABLESAMPLE-metódus, amely az időt ezredmásodpercben, korlátként fogadja el|
+> |[tablefunc](https://www.postgresql.org/docs/11/tablefunc.html)                    | 1.0             | a teljes táblákat, például a kereszttáblás funkciókat kezelő függvények|
+> |[tsm_system_rows](https://www.postgresql.org/docs/11/tsm-system-rows.html)                    | 1.0             |  TABLESAMPLE metódus, amely a sorok számát korlátozza|
+> |[tsm_system_time](https://www.postgresql.org/docs/11/tsm-system-time.html)                    | 1.0             |  TABLESAMPLE-metódus, amely az időt ezredmásodpercben, korlátként fogadja el|
 > |[nem ékezetes](https://www.postgresql.org/docs/11/unaccent.html)                     | 1,1             | ékezeteket eltávolító szöveges keresési szótár|
 > |[UUID – ossp](https://www.postgresql.org/docs/11/uuid-ossp.html)                    | 1,1             | univerzálisan egyedi azonosítók (UUID-EK) előállítása|
 

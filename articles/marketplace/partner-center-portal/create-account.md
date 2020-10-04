@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/01/2020
 author: parthpandyaMSFT
 ms.author: parthp
-ms.openlocfilehash: 64788544971eaa7738013ab1a0475771c13bab88
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 96a11caa93a925731ad2f24ac860b21301a29cdf
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89647658"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708186"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Kereskedelmi piactér-fiók létrehozása a partner Centerben
 
@@ -80,7 +80,7 @@ A közzétevői profil tartalmazza a vállalat nevét és az MPN-AZONOSÍTÓját
     
 1. Annak ellenőrzéséhez, hogy a kereskedelmi piactér fiók regisztrálva van-e, válassza a **Beállítások**  >  **partner-beállítások**  >  **programok**elemet.
 
-Most létrehozott egy kereskedelmi piactér-fiókot a partner Centerben. További információ: [kereskedelmi piactér – áttekintés](./commercial-marketplace-overview.md). A kiadók hozzáadásával kapcsolatos segítségért lásd: [új közzétevők hozzáadása a kereskedelmi piactérhez](#add-new-publishers-to-the-commercial-marketplace-program).
+Most létrehozott egy kereskedelmi piactér-fiókot a partner Centerben. A kiadók hozzáadásával kapcsolatos segítségért lásd: [új közzétevők hozzáadása a kereskedelmi piactérhez](#add-new-publishers-to-the-commercial-marketplace-program).
 
 ## <a name="create-an-account-by-using-existing-microsoft-partner-center-enrollments"></a>Fiók létrehozása meglévő Microsoft partner Center-regisztrációk használatával
 
@@ -129,7 +129,7 @@ A bejelentkezést követően fejezze be a fiók beállítását a következő m�
     
 1. Annak ellenőrzéséhez, hogy a kereskedelmi piactér fiók regisztrálva van-e, válassza a **Beállítások**  >  **partner-beállítások**  >  **programok**elemet.
 
-Most létrehozott egy kereskedelmi piactér-fiókot a partner Centerben. További információ: [kereskedelmi piactér – áttekintés](./commercial-marketplace-overview.md). A kiadók hozzáadásával kapcsolatos segítségért lásd: [új közzétevők hozzáadása a kereskedelmi piactérhez](#add-new-publishers-to-the-commercial-marketplace-program).
+Most létrehozott egy kereskedelmi piactér-fiókot a partner Centerben. A kiadók hozzáadásával kapcsolatos segítségért lásd: [új közzétevők hozzáadása a kereskedelmi piactérhez](#add-new-publishers-to-the-commercial-marketplace-program).
 
 ### <a name="what-if-im-already-enrolled-in-a-developer-program"></a>Mi a teendő, ha már regisztráltam egy fejlesztői programban?
 
@@ -157,7 +157,7 @@ Miután bejelentkezett a partneri központba, fejezze be a fiók beállítását
     
 1. Annak ellenőrzéséhez, hogy a kereskedelmi piactér fiók regisztrálva van-e, válassza a **Beállítások**  >  **partner-beállítások**  >  **programok**elemet.
 
-Most létrehozott egy kereskedelmi piactér-fiókot a partner Centerben. További információ: [kereskedelmi piactér – áttekintés](./commercial-marketplace-overview.md). A kiadók hozzáadásával kapcsolatos segítségért lásd: [új közzétevők hozzáadása a kereskedelmi piactérhez](#add-new-publishers-to-the-commercial-marketplace-program).
+Most létrehozott egy kereskedelmi piactér-fiókot a partner Centerben. A kiadók hozzáadásával kapcsolatos segítségért lásd: [új közzétevők hozzáadása a kereskedelmi piactérhez](#add-new-publishers-to-the-commercial-marketplace-program).
 
 ## <a name="for-publishers-who-moved-from-the-cloud-partner-portal"></a>A Cloud Partner Portalból áthelyezett közzétevők esetében
 
@@ -190,4 +190,5 @@ A folyamat befejezése után az újonnan létrehozott közzétevőt a bal oldali
 
 ## <a name="next-steps"></a>Következő lépések
 
+- [Mi a Microsoft kereskedelmi piactér?](../overview.md)
 - [A kereskedelmi piactér-fiók kezelése a partner Centerben](./manage-account.md)

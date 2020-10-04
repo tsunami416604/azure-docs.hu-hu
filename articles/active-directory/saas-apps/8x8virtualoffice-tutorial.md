@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/20/2020
 ms.author: jeedes
-ms.openlocfilehash: 52b45bf7457a81b605df91e63a7c6ad539309dd8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 5f7e85cc37d5a899681b5dd1466c216f1be39a61
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88538654"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708798"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-8x8"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a 8x8
 
@@ -107,7 +107,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -147,11 +147,11 @@ Az oktatóanyag következő része attól függ, hogy milyen típusú előfizet�
 
 1. A kezdőlapon kattintson az **Identitáskezelés**elemre.
 
-    ![8x8 Configuration Manager](./media/8x8virtualoffice-tutorial/configure1.png)
+    ![Képernyőkép, amely kiemeli az Identitáskezelés csempéjét.](./media/8x8virtualoffice-tutorial/configure1.png)
 
 1. Jelölje be **az egyszeri bejelentkezés (SSO)** jelölőnégyzetet, majd válassza a **Microsoft Azure ad**lehetőséget.
 
-    ![8x8 Configuration Manager](./media/8x8virtualoffice-tutorial/configure2.png)
+    ![Képernyőfelvétel: az egyszeri bejelentkezés (SSO) és a Microsoft Azure AD lehetőségek.](./media/8x8virtualoffice-tutorial/configure2.png)
 
 1. Másolja ki a három URL-címet és az aláírási tanúsítványt az Azure AD-beli **SAML-alapú egyszeri bejelentkezés beállítása** a 8x8 CONFIGURATION Manager **Microsoft Azure ad SAML-beállítások** szakaszában.
 
@@ -173,23 +173,23 @@ Az oktatóanyag következő része attól függ, hogy milyen típusú előfizet�
 
 1. Válassza ki a **Virtual Office-fiókhoz tartozó Mgr** alkalmazást az alkalmazás panelen.
 
-    ![Konfigurálás az alkalmazás oldalán](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_001.png)
+    ![Képernyőkép, amely kiemeli a virtuális Office-fiók kezelője csempét.](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_001.png)
 
 1. Válassza a kezelendő **üzleti** fiók elemet, majd kattintson **a bejelentkezés** gombra.
 
-    ![Konfigurálás az alkalmazás oldalán](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_002.png)
+    ![Képernyőkép, amely kiemeli az üzleti lehetőséget és a bejelentkezés gombot.](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_002.png)
 
 1. Kattintson a **fiókok** fülre a menü listában.
 
-    ![Konfigurálás az alkalmazás oldalán](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_003.png)
+    ![Képernyőkép, amely kiemeli a fiókok lapot a menü listában.](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_003.png)
 
 1. Kattintson az **egyszeri bejelentkezés** elemre a fiókok listájában.
 
-    ![Konfigurálás az alkalmazás oldalán](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_004.png)
+    ![Képernyőkép, amely kiemeli az egyszeri bejelentkezés lehetőségét.](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_004.png)
 
 1. Válassza az **egyszeri bejelentkezés** lehetőséget a hitelesítési módszerek területen, majd kattintson az **SAML**elemre.
 
-    ![Konfigurálás az alkalmazás oldalán](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_005.png)
+    ![Képernyőkép, amely kiemeli az SAML-t az egyszeri bejelentkezés alatt.](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_005.png)
 
 1. Az **SAML egyszeri bejelentkezés** szakaszban hajtsa végre a következő lépéseket:
 

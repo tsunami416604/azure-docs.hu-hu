@@ -9,12 +9,12 @@ ms.subservice: spot
 ms.date: 03/25/2020
 ms.reviewer: jagaveer
 ms.custom: jagaveer, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: b5888000028ba87d503bb0bc690aad6628a51a37
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 61f82cf907ef861307a907f6cd2b9b13f043b9a0
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89072740"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91709044"
 ---
 # <a name="azure-spot-vms-for-virtual-machine-scale-sets"></a>Azure spot virtuális gépek virtuálisgép-méretezési csoportokhoz 
 
@@ -163,8 +163,7 @@ Ha törölni szeretné a példányt a kizárása után, módosítsa a paraméter
 
 **K:**  Működik az autoskálázás a kizárási házirendekkel (felszabadítás és törlés)?
 
-**A:** Azt javasoljuk, hogy állítsa be a kizárási házirendet a törléshez az autoscale használatakor. Ennek az az oka, hogy a lefoglalt példányok száma a méretezési csoport kapacitásának száma alapján történik. Az autoscale használatakor a megcélzott példányok száma gyorsan elvégezhető a delefoglalt, kizárt példányok miatt. 
-
+**A:** Azt javasoljuk, hogy állítsa be a kizárási házirendet a törléshez az autoscale használatakor. Ennek az az oka, hogy a lefoglalt példányok száma a méretezési csoport kapacitásának száma alapján történik. Az autoscale használatakor a megcélzott példányok száma gyorsan elvégezhető a delefoglalt, kizárt példányok miatt. Emellett a méretezési műveleteket a helyszíni kizárások is befolyásolhatják. A VMSS-példányok például a percek száma alá eshetnek a méretezési műveletek során több hely kizárása miatt. 
 
 **K:** Milyen csatornák támogatják a helyszíni virtuális gépeket?
 
@@ -174,11 +173,11 @@ Ha törölni szeretné a példányt a kizárása után, módosítsa a paraméter
 
 | Azure-csatornák               | Azure helyszíni virtuális gépek rendelkezésre állása       |
 |------------------------------|-----------------------------------|
-| Nagyvállalati Szerződés         | Igen                               |
-| Használatalapú fizetés                | Igen                               |
+| Nagyvállalati Szerződés         | Yes                               |
+| Használatalapú fizetés                | Yes                               |
 | Felhőalapú szolgáltató (CSP) | [Kapcsolatfelvétel a partnerrel](/partner-center/azure-plan-get-started) |
 | Előnyök                     | Nem elérhető                     |
-| Szponzorált                    | Igen                               |
+| Szponzorált                    | Yes                               |
 | Ingyenes próba                   | Nem elérhető                     |
 
 

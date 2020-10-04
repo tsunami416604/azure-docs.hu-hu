@@ -1,19 +1,19 @@
 ---
 title: 'Gyors útmutató: kapcsolat a Python-Azure Database for PostgreSQL-Single Serverrel'
 description: Ez a rövid útmutató olyan Python-kódrészleteket tartalmaz, amelyekkel összekapcsolhatók és lekérhető Azure Database for PostgreSQL – egyetlen kiszolgálóról származó adatok lekérdezése.
-author: rachel-msft
-ms.author: raagyema
+author: mksuni
+ms.author: sumuth
 ms.service: postgresql
 ms.custom: mvc, devcenter, devx-track-python
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/07/2019
-ms.openlocfilehash: 9fb0c02bcf040b1d27831e72d31ff07a7c38ad0a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6452934828c4e74563daf001271b3ce018ab58e3
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90901821"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707897"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Rövid útmutató: a Python használata az Azure Database for PostgreSQL-kiszolgálóval való kapcsolódáshoz és az adatlekérdezéshez
 
@@ -105,7 +105,7 @@ conn.close()
 
 A kód sikeres futtatásakor a következő kimenetet hozza létre:
 
-:::image type="content" source="media/connect-python/2-example-python-output.png" alt-text="Parancssori kimenet":::
+:::image type="content" source="media/connect-python/2-example-python-output.png" alt-text="Azure Database for PostgreSQL-kiszolgáló neve":::
 
 ## <a name="read-data"></a>Adatok olvasása
 A következő kódrészlet a Azure Database for PostgreSQL-adatbázishoz kapcsolódik, és az SQL **Select** utasítással az adatok beolvasásához használja az [cursor.exeCute](http://initd.org/psycopg/docs/cursor.html#execute) kifejezést. Ez a függvény elfogad egy lekérdezést, és visszaad egy eredményhalmaz értékét a [cursor. fetchall ()](http://initd.org/psycopg/docs/cursor.html#cursor.fetchall)használatával. 

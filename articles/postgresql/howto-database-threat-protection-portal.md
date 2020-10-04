@@ -1,17 +1,17 @@
 ---
 title: Összetett veszélyforrások elleni védelem használata – Azure Database for PostgreSQL – egyetlen kiszolgáló
 description: A fenyegetések elleni védelem rendellenes adatbázis-tevékenységeket észlel, ami az adatbázis potenciális biztonsági fenyegetéseket jelez.
-author: rachel-msft
-ms.author: raagyema
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: 25f263a5c9ccdc67f1ab8353e616a6dded0c7f7e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6aa0a0f798df2fd69d6f69badd0dcbbb92a0cf39
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90901673"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708220"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-postgresql---single-server"></a>Komplex veszélyforrások elleni védelem Azure Database for PostgreSQL – egyetlen kiszolgáló
 
@@ -42,15 +42,15 @@ A rendellenes adatbázis-tevékenységek észlelése után e-mailben értesíté
     
 1. Kattintson a **legutóbbi riasztások megtekintése** hivatkozásra az e-mailben a Azure Portal elindításához és a Azure Security Center riasztások oldal megjelenítéséhez, amely áttekintést nyújt az SQL Database-ben észlelt aktív fenyegetésekről.
     
-    :::image type="content" source="./media/howto-database-threat-protection-portal/anomalous-activity-report.png" alt-text="Rendellenes tevékenység jelentés":::
+    :::image type="content" source="./media/howto-database-threat-protection-portal/anomalous-activity-report.png" alt-text="Fenyegetés észlelésének beállítása":::
 
     Aktív fenyegetések megtekintése:
 
-    :::image type="content" source="./media/howto-database-threat-protection-portal/active-threats.png" alt-text="Aktív fenyegetések":::
+    :::image type="content" source="./media/howto-database-threat-protection-portal/active-threats.png" alt-text="Fenyegetés észlelésének beállítása":::
 
 2. Egy adott riasztásra kattintva további részleteket és műveleteket kaphat a fenyegetés kivizsgálásához és a jövőbeli fenyegetések szervizelését.
     
-    :::image type="content" source="./media/howto-database-threat-protection-portal/specific-alert.png" alt-text="Adott riasztás":::
+    :::image type="content" source="./media/howto-database-threat-protection-portal/specific-alert.png" alt-text="Fenyegetés észlelésének beállítása":::
 
 ## <a name="explore-threat-detection-alerts"></a>Fenyegetések észlelésével kapcsolatos riasztások megismerése
 
@@ -58,7 +58,7 @@ A komplex veszélyforrások elleni védelem a [Azure Security Centerával](https
 
 Kattintson a **biztonsági riasztások** elemre a **veszélyforrások védelme** területen a Azure Security Center riasztások oldal elindításához, és tekintse át az adatbázisban észlelt aktív SQL-fenyegetéseket.
 
-  :::image type="content" source="./media/howto-database-threat-protection-portal/threat-detection-alert-asc.png" alt-text="Veszélyforrások elleni védelem ASC":::
+  :::image type="content" source="./media/howto-database-threat-protection-portal/threat-detection-alert-asc.png" alt-text="Fenyegetés észlelésének beállítása":::
 
 ## <a name="next-steps"></a>Következő lépések
 

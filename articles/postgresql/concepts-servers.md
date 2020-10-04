@@ -1,17 +1,17 @@
 ---
 title: Kiszolgálók – Azure Database for PostgreSQL – egyetlen kiszolgáló
 description: Ez a cikk a Azure Database for PostgreSQL – egyetlen kiszolgáló konfigurálásához és kezeléséhez szükséges szempontokat és irányelveket ismerteti.
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: d86170a53b4bfbe712bbca12db4d6063214aba21
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c8ae129cbad56e3bb63e055f9d843cac1da22fb1
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74768163"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710464"
 ---
 # <a name="azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL – Önálló kiszolgáló
 Ez a cikk a Azure Database for PostgreSQL egyetlen kiszolgálóval való használattal kapcsolatos szempontokat és irányelveket ismerteti.
@@ -41,7 +41,7 @@ A következő elemek segítenek biztosítani az adatbázis biztonságos elérés
 | **Hitelesítés és engedélyezés** | Az Azure Database for PostgreSQL-kiszolgáló támogatja a natív PostgreSQL-hitelesítést. A kiszolgálóhoz történő csatlakozás és a hitelesítés rendszergazdai bejelentkezéssel végezhető el. |
 | **Protokoll** | A szolgáltatás támogatja a PostgreSQL által használt Message-alapú protokollt. |
 | **TCP/IP** | A protokoll több mint TCP/IP-cím, illetve UNIX-tartományú szoftvercsatorna esetén támogatott. |
-| **Firewall** | Az adatai védelme érdekében a tűzfalszabály megakadályozza az összes hozzáférést a kiszolgálóhoz és az adatbázisaihoz, amíg meg nem adja, hogy mely számítógépek rendelkeznek engedéllyel. Tekintse meg [Azure Database for PostgreSQL kiszolgáló tűzfalszabályok szabályait](concepts-firewall-rules.md). |
+| **Tűzfal** | Az adatai védelme érdekében a tűzfalszabály megakadályozza az összes hozzáférést a kiszolgálóhoz és az adatbázisaihoz, amíg meg nem adja, hogy mely számítógépek rendelkeznek engedéllyel. Tekintse meg [Azure Database for PostgreSQL kiszolgáló tűzfalszabályok szabályait](concepts-firewall-rules.md). |
 
 ## <a name="managing-your-server"></a>A kiszolgáló kezelése
 Azure Database for PostgreSQL-kiszolgálókat a [Azure Portal](https://portal.azure.com) vagy az [Azure CLI](/cli/azure/postgres)használatával kezelheti.
@@ -62,7 +62,7 @@ A PostgreSQL-kiszolgáló paraméterei határozzák meg a kiszolgáló konfigur�
 A postgres felügyelt szolgáltatásaként a Azure Database for PostgreSQL konfigurálható paramétereinek a helyi postgres-példány paramétereinek egy részhalmaza (a postgres paraméterekkel kapcsolatos további információért lásd a [PostgreSQL dokumentációját](https://www.postgresql.org/docs/9.6/static/runtime-config.html)). A Azure Database for PostgreSQL-kiszolgáló az egyes paraméterekhez tartozó alapértelmezett értékekkel van engedélyezve a létrehozáskor. A felhasználó nem konfigurálhat olyan paramétereket, amelyek szükségesek a kiszolgáló újraindításához vagy a rendszergazdai hozzáférés a módosítások életbe léptetéséhez.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - A szolgáltatás áttekintését itt tekintheti meg: [Azure Database for PostgreSQL Overview (áttekintés](overview.md)).
 - A **szolgáltatási szintek**alapján meghatározott erőforrás-kvótákkal és korlátozásokkal kapcsolatos információkért lásd: [szolgáltatási szintek](concepts-pricing-tiers.md).
 - További információ a szolgáltatáshoz való csatlakozásról: [Azure Database for PostgreSQL kapcsolódási kódtárai](concepts-connection-libraries.md).

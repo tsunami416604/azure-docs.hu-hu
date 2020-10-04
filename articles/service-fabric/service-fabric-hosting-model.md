@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: harahma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2e14995b92e99e1a9695f81fb71bcab6dd62303a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5f3f6238bb72704d13fef4a7171aeaebee5f9141
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011667"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708696"
 ---
 # <a name="azure-service-fabric-hosting-model"></a>Azure Service Fabric üzemeltetési modell
 Ez a cikk áttekintést nyújt az Azure Service Fabric által biztosított alkalmazás-üzemeltetési modellekről, valamint ismerteti a **megosztott folyamat** és az **exkluzív folyamat** modelljei közötti különbségeket. Leírja, hogyan néz ki egy telepített alkalmazás egy Service Fabric csomóponton, valamint a szolgáltatás replikái (vagy példányai) és a Service-Host folyamat közötti kapcsolat.
@@ -30,19 +30,19 @@ Az üzemeltetési modell megismeréséhez Lássunk egy példát. Tegyük fel, ho
 Tegyük fel, hogy három csomópontos fürttel rendelkezünk, és létrehozunk *egy "* MyAppType" típusú **App1** . Ebben az Application **fabricben:/App1**-ben létrehozunk egy "MyServiceType" típusú Service **Fabric-t:/App1/servicea-** et. Ennek a szolgáltatásnak két partíciója van (például **P1** és **P2**), és a partíciók három replikája. Az alábbi ábrán az alkalmazás nézete látható, amelyet egy csomóponton helyeztek üzembe.
 
 
-![Központilag telepített alkalmazás csomópont nézetének diagramja][node-view-one]
+![Olyan diagram, amely az alkalmazás nézetét jeleníti meg a csomóponton való üzembe helyezéskor.][node-view-one]
 
 
 Service Fabric aktivált "MyServicePackage" ("MyCodePackage"), amely a partíciók replikáit üzemelteti. A fürt összes csomópontja azonos nézettel rendelkezik, mert a partíciók replikáinak számát úgy döntöttük, hogy a fürt csomópontjainak száma egyenlő legyen. Hozzunk létre egy másik szolgáltatást, **Fabric:/App1/ServiceB**, az Application **Fabric:/App1**. A szolgáltatásnak van egy partíciója (például **P3**), és a partíciók három replikája. Az alábbi ábrán a csomópont új nézete látható:
 
 
-![Központilag telepített alkalmazás csomópont nézetének diagramja][node-view-two]
+![A csomópont új nézetét ábrázoló diagram.][node-view-two]
 
 
 Service Fabric helyezte el az új replikát a Service **Fabric:/App1/ServiceB** partíció **P3** -as verziójában a (z) "MyServicePackage" meglévő aktiválása során. Most. hozzunk létre egy másik Application **Fabric-t:/App2** "MyAppType" típussal. A **hálón belül:/App2**, hozzon létre egy Service **Fabric-t:/App2/servicea**. Ennek a szolgáltatásnak két partíciója van (**P4** és **P5**), és a partíciók három replikája. A következő ábrán az új csomópont nézet látható:
 
 
-![Központilag telepített alkalmazás csomópont nézetének diagramja][node-view-three]
+![Az új csomópont nézetét bemutató diagram.][node-view-three]
 
 
 Service Fabric aktiválja a "MyServicePackage" új példányát, amely a "MyCodePackage" új példányát indítja el. A Service **Fabric:/App2/servicea** (**P4** és **P5**) partícióinak replikái az új "MyCodePackage" másolatba kerülnek.
@@ -157,7 +157,7 @@ Most tegyük fel, hogy létrehozunk egy alkalmazást, **Fabric:/SpecialApp**. A 
 Egy adott csomóponton mindkét szolgáltatás két replikával rendelkezik. Mivel az exkluzív folyamatmodell használatával hozza létre a szolgáltatásokat, Service Fabric aktiválja a "MyServicePackage" egy új példányát az egyes replikák esetében. A "MultiTypeServicePackage" minden aktiválása elindítja a "MyCodePackageA" és a "MyCodePackageB" másolatát. Azonban a "MyCodePackageA" vagy a "MyCodePackageB" csak az egyik a replikát futtatja, amelyhez a "MultiTypeServicePackage" aktiválva lett. Az alábbi ábrán a csomópont nézet látható:
 
 
-![A telepített alkalmazás csomópont nézetének diagramja][node-view-five]
+![A csomópont nézetét megjelenítő diagram.][node-view-five]
 
 
 A (z) "MultiTypeServicePackage" a Service **Fabric:/SpecialApp/servicea**, a (z) "MyCodePackageA" **nevű, a** (z) "" a replika tárolására szolgáló replikájának aktiválásakor. A "MyCodePackageB" fut. Hasonlóképpen, a "MultiTypeServicePackage" aktiválása a Service **Fabric:/SpecialApp/ServiceB**partíciójának **P3** -as replikájában a "MyCodePackageB" a replikát üzemelteti. A "MyCodePackageA" fut. Ezért minél több *CodePackages* (a különböző *ServiceTypes*regisztrálása *), annál*nagyobb a redundáns erőforrás-használat. 

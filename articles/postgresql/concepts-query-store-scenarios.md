@@ -1,17 +1,17 @@
 ---
 title: Lekérdezés-tárolási forgatókönyvek – Azure Database for PostgreSQL – egyetlen kiszolgáló
 description: Ez a cikk a Azure Database for PostgreSQL-Single Server lekérdezési tárolójának egyes forgatókönyveit ismerteti.
-author: rachel-msft
-ms.author: raagyema
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 31e3f82b6ea1b1fc15c0832dc03edce2a59f1e1b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad646e39e9b6a87611dc2f40330a77fe70c92c27
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74768350"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710549"
 ---
 # <a name="usage-scenarios-for-query-store"></a>A lekérdezési tároló használati forgatókönyvei
 
@@ -57,5 +57,5 @@ Bizonyos munkaterhelések nem rendelkeznek olyan domináns lekérdezésekkel, am
  
 Az alkalmazás kódjának ellenőrzésekor érdemes lehet átírni az adatelérési réteget a tárolt eljárások vagy a paraméteres lekérdezések használatára. Ez a helyzet azonban javítható az alkalmazások módosítása nélkül is, ha a lekérdezési paraméterezés a teljes adatbázisra (az összes lekérdezésre) vagy az ugyanazon lekérdezési kivonattal rendelkező különálló lekérdezési sablonokra kényszeríti. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ a [query Store használatának ajánlott eljárásairól](concepts-query-store-best-practices.md)

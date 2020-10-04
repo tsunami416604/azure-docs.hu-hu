@@ -7,12 +7,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
-ms.openlocfilehash: b4581b7e93cde9d6ba9a20d46ee263a879c05402
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 37c1854aeb1a1fa3d9283c00b07c665b213b306c
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961873"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708152"
 ---
 # <a name="deployment-best-practices"></a>Ajánlott eljárások az üzembe helyezéshez
 
@@ -47,7 +47,7 @@ Ha a projekt a teszteléshez, a MINŐSÉGBIZTOSÍTÁShoz és az előkészítésh
 
 A folyamatos üzembe helyezést soha nem szabad engedélyezni az éles tárolóhelyen. Ehelyett a termelési ág (gyakran a Master) üzembe helyezését nem éles tárolóhelyre kell telepíteni. Ha készen áll az alapág kiadására, cserélje le az üzemi tárolóhelyre. Éles környezetbe történő váltás – az éles környezetbe való telepítés helyett – megakadályozza az állásidőt, és lehetővé teszi a módosítások visszaállítását újbóli cserével. 
 
-![A tárolóhelyek használatának vizualizációja](media/app-service-deploy-best-practices/slot_flow_code_diagam.png)
+![Diagram, amely a fejlesztési, átmeneti és főágak, valamint a rendszerbe telepített tárolóhelyek közötti folyamatot mutatja.](media/app-service-deploy-best-practices/slot_flow_code_diagam.png)
 
 ### <a name="continuously-deploy-containers"></a>Tárolók folyamatos üzembe helyezése
 

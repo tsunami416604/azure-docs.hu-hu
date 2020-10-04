@@ -1,19 +1,19 @@
 ---
 title: Tűzfalszabályok kezelése – Azure CLI-Azure Database for PostgreSQL – egyetlen kiszolgáló
 description: Ez a cikk azt ismerteti, hogyan hozhat létre és kezelhet tűzfalszabályok Azure Database for PostgreSQL – egyetlen kiszolgálón az Azure CLI parancssorral.
-author: rachel-msft
-ms.author: raagyema
+author: niklarin
+ms.author: nlarin
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 5/6/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 17a41030adeb302f2c85b1bd4576caad9e723544
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: cd96a4e8af5faab618f3302c423675b2dadca79a
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489758"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710855"
 ---
 # <a name="create-and-manage-firewall-rules-in-azure-database-for-postgresql---single-server-using-azure-cli"></a>Tűzfalszabályok létrehozása és kezelése Azure Database for PostgreSQL – egyetlen kiszolgálón az Azure CLI használatával
 A kiszolgálói szintű tűzfalszabályok használatával felügyelhető egy adott IP-cím vagy IP-címtartomány Azure Database for PostgreSQL-kiszolgálóhoz való hozzáférése. A kényelmes Azure CLI-parancsok használatával létrehozhat, frissíthet, törölhet, listázhat és megjeleníthet tűzfalszabályok a kiszolgáló kezeléséhez. A Azure Database for PostgreSQL tűzfalszabályok áttekintését lásd: [Azure Database for PostgreSQL Server Firewall Rules](concepts-firewall-rules.md).
@@ -79,7 +79,7 @@ az postgres server firewall-rule delete --resource-group myresourcegroup --serve
 ```
 A művelet sikere esetén nincs kimenet. Hiba esetén a rendszer a hibaüzenet szövegét adja vissza.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Ehhez hasonlóan webböngészővel is [létrehozhat és kezelhet Azure Database for PostgreSQL tűzfalszabályok használatát a Azure Portal használatával](howto-manage-firewall-using-portal.md).
 - További információ a [Azure Database for PostgreSQL kiszolgálói tűzfalszabályok](concepts-firewall-rules.md)használatáról.
 - A kiszolgálóhoz való további biztonságos hozzáférés [Virtual Network szolgáltatási végpontok és szabályok létrehozásával és kezelésével az Azure CLI használatával](howto-manage-vnet-using-cli.md).

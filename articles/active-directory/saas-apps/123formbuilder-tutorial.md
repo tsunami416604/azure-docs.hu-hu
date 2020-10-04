@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: jeedes
-ms.openlocfilehash: 2fadfac3fe9e66c3a05e2cceed19def607ff72c3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d980e0a5dd4b042f919775c205a20ea69e51f0bd
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88539283"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91709002"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-123formbuilder-sso"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a 123FormBuilder SSO-val
 
@@ -109,7 +109,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -133,7 +133,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
 1. Az egyszeri bejelentkezés **123FormBuilder egyszeri bejelentkezéses** oldalon való konfigurálásához lépjen a [https://www.123formbuilder.com/form-2709121/](https://www.123formbuilder.com/form-2709121/) következő lépésekre, és végezze el az alábbi lépéseket:
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/123formbuilder-tutorial/submit.png) 
+    ![Az SSO SAML-Identity szolgáltató konfigurációs képernyőjét bemutató képernyőkép.](./media/123formbuilder-tutorial/submit.png) 
 
     a. Az **e-mail** szövegmezőbe írja be a felhasználó e-mail-címét, például: `B.Simon@Contoso.com` .
 

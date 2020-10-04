@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: 93b47d2147a7438ebd38a5ae36363950639ba414
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 2679d24a9e8c821dae73114f32adbeb3d22a1458
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89380967"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708900"
 ---
 # <a name="how-to-create-a-saas-offer-in-the-commercial-marketplace"></a>SaaS-ajánlat létrehozása a kereskedelmi piactéren
 
@@ -69,7 +69,7 @@ A test Drive nagyszerű lehetőséget nyújt arra, hogy az ajánlatot a lehetsé
 Az Ügyfélkapcsolat-kezelési (CRM) rendszer a kereskedelmi piactérsel való összekapcsolásával biztosítható, hogy az ügyfél kapcsolattartási adatait, amikor az ügyfél kifejezi érdeklődését vagy üzembe helyezi a terméket. Ezt a csatlakozást bármikor módosíthatja az ajánlat létrehozásakor vagy után.
 
 > [!NOTE]
-> Az érdeklődők felügyeletét akkor kell konfigurálnia, ha az ajánlatot a Microsofton keresztül értékesíti, vagy kiválasztotta a **kapcsolatfelvételi** lista lehetőséget. Részletes útmutatásért lásd: [az ólom kezelése a kereskedelmi piactéren](lead-management-for-cloud-marketplace.md).
+> Az érdeklődők felügyeletét akkor kell konfigurálnia, ha az ajánlatot a Microsofton keresztül értékesíti, vagy kiválasztotta a **kapcsolatfelvételi** lista lehetőséget. Részletes útmutatásért tekintse [meg a kereskedelmi Marketplace-ajánlat ügyfeleinek vezetőit](partner-center-portal/commercial-marketplace-get-customer-leads.md).
 
 #### <a name="to-configure-the-connection-details-in-partner-center"></a>A kapcsolat részleteinek konfigurálása a partner Centerben
 

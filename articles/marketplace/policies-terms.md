@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 09/09/2020
-ms.openlocfilehash: 4ddf37d5f2e7f569e5447dfe321574e3f9ccc778
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 52b9a67ee8c11011ea04f7414a3d978f5860c0ce
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90974848"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708067"
 ---
 # <a name="commercial-marketplace-policies-and-terms"></a>A kereskedelmi piactér szabályzatai és feltételei
 
@@ -30,6 +30,6 @@ A kereskedelmi piactéren elérhető ajánlatoknak meg kell felelniük a szabál
 - [Az Azure Marketplace részvételi szabályzata](/legal/marketplace/participation-policy?context=/azure/marketplace/context/context)
 - [Az Azure Marketplace használati feltételei](/legal/marketplace/terms?context=/azure/marketplace/context/context)
 
-## <a name="next-step"></a>Következő lépés
+## <a name="next-steps"></a>Következő lépések
 
-Látogasson el a [kereskedelmi piactér közzétételi útmutató](marketplace-publishers-guide.md) oldalára.
+- [Mi a Microsoft kereskedelmi piactér?](overview.md)

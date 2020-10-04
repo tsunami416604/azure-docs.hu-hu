@@ -8,19 +8,19 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 07/16/2020
 ms.author: aahi
-ms.openlocfilehash: c50beef5c9c5dcae7edd487e8bf3d192ba557865
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 74586222bbd92b2d6182b34b4667cda0bc599b93
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662706"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91709529"
 ---
 > [!NOTE]
 > A védett állapottal kapcsolatos információk (PHI) észleléséhez használja a `domain=phi` paramétert és a modell verzióját, `2020-04-01` vagy később.
 >
-> Például: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.1/entities/recognition/pii?domain=phi&model-version=2020-04-01`
+> Például: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/entities/recognition/pii?domain=phi&model-version=2020-07-01`
  
-A rendszer a következő entitás-kategóriákat adja vissza, amikor kéréseket küld a `/v3.1-preview.1/entities/recognition/pii` végpontnak.
+A rendszer a következő entitás-kategóriákat adja vissza, amikor kéréseket küld a `/v3.1-preview.2/entities/recognition/pii` végpontnak.
 
 | Kategória   | Alkategória | Description                          | Modell verziójának indítása | Jegyzetek |
 |------------|-------------|--------------------------------------|------------------------|---|
@@ -36,7 +36,7 @@ A rendszer a következő entitás-kategóriákat adja vissza, amikor kéréseket
 | E-mail | N/A | E-mail-címek. | `2019-10-01` | Szintén visszaadott `domain=phi` .   |
 | URL-cím | N/A | Webhelyek URL-címei. | `2019-10-01` | Szintén visszaadott `domain=phi` . |
 | IP | N/A | Hálózati IP-címek. | `2019-10-01` | Szintén visszaadott `domain=phi` . |
-| Dátum/idő | N/A | Dátum és napszakok. | `2019-10-01` |  | 
+| DateTime | N/A | Dátum és napszakok. | `2019-10-01` |  | 
 | Dátum/idő | Date | Naptári dátumok. | `2019-10-01` | Szintén visszaadott `domain=phi` . |
 | Mennyiség | N/A | Számok és numerikus mennyiségek. | `2019-10-01` |  |
 | Mennyiség | Életkor | Alábbi korhatárt szabja. | `2019-10-01` | | |

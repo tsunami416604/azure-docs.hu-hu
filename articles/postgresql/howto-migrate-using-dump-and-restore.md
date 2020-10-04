@@ -1,17 +1,17 @@
 ---
 title: Memóriakép és visszaállítás – Azure Database for PostgreSQL – egyetlen kiszolgáló
 description: Ismerteti, hogyan lehet kibontani egy PostgreSQL-adatbázist egy memóriakép-fájlba, és hogyan lehet visszaállítani egy pg_dump által létrehozott fájlból Azure Database for PostgreSQL-egyetlen kiszolgálón.
-author: rachel-msft
-ms.author: raagyema
+author: sr-msft
+ms.author: srranga
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 529573bd18dbdbd16a795619d488beedfb532b11
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 4fe15d1bd23f36b7289c54bedf575ae4760600e0
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90902667"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710804"
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>PostgreSQL-adatbázis migrálása memóriakép és visszaállítás használatával
 [!INCLUDE[applies-to-postgres-single-flexible-server](includes/applies-to-postgres-single-flexible-server.md)]
@@ -98,7 +98,7 @@ Az alábbi példa bemutatja, hogyan használhatja ezt a **pg_restoret** a **ruga
 - A memóriaképet úgy is szerkesztheti, ha hozzáadja a következő parancsot: *synchronous_commit = off;* , az elején, a parancs pedig *synchronous_commit = on;* végén. Ha nem kapcsolja be a végére, az alkalmazások megváltoznak az adatvesztés következtében.
 
 - A cél Azure Database for PostgreSQL kiszolgálón a visszaállítás előtt vegye figyelembe a következőket:
-    - A lekérdezési teljesítmény nyomon követésének kikapcsolása, mivel ezek a statisztikák nem szükségesek az áttelepítés során. Ezt úgy teheti meg, hogy pg_stat_statements. Track, pg_qs. query_capture_mode és pgms_wait_sampling. query_capture_mode értéket állít be a NONE értékre.
+    - A lekérdezési teljesítmény nyomon követésének kikapcsolása, mivel ezek a statisztikák nem szükségesek az áttelepítés során. Ezt úgy teheti meg, hogy a pg_stat_statements. Track, a pg_qs. query_capture_mode és a pgms_wait_sampling. query_capture_mode beállítást a NONE értékre állítja.
 
     - A Migrálás felgyorsításához használjon nagy számítási és magas memória-SKU-t, például 32 virtuális mag memóriát. A visszaállítás befejezése után egyszerűen méretezheti vissza az előnyben részesített SKU-ra. Minél nagyobb a SKU, annál több párhuzamosságot érhet el a `-j` pg_restore parancs megfelelő paraméterének növelésével.
 

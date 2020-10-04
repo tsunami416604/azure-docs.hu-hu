@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: a149d147b9817d8fde7a4fa7eb1b0e7a7eea8283
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: ca60c44d1e167367e2c138af1e7bfd4ba1a69417
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90940404"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710073"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-postgresql---flexible-server"></a>Számítási és tárolási lehetőségek Azure Database for PostgreSQL – rugalmas kiszolgáló
 
@@ -20,9 +20,9 @@ ms.locfileid: "90940404"
 
 A Azure Database for PostgreSQL-kiszolgálót a három különböző díjszabási csomag egyikében hozhatja létre: a feltört, a általános célú és a memória optimalizált. Az árképzési csomagokat a virtuális mag olyan számítási mennyisége különbözteti meg, amely kiépíthető, memóriát virtuális mag, valamint az adatok tárolására szolgáló tárolási technológiát. Az összes erőforrást a PostgreSQL-kiszolgáló szintjén kell kiépíteni. A kiszolgálók egy vagy több adatbázissal rendelkezhetnek.
 
-| Erőforrás/szintek | **Burstable** | **általános célú** | **Memória optimalizálva** |
+| Erőforrás/szintek | **Burstable** | **Általános célú** | **Memória optimalizálva** |
 |:---|:----------|:--------------------|:---------------------|
-| Virtuális mag | 1, 2 | 4, 8, 16, 32, 64 | 4, 8, 16, 32, 48, 64 |
+| Virtuális mag | 1, 2 | 2, 4, 8, 16, 32, 48, 64 | 2, 4, 8, 16, 32, 48, 64 |
 | Memória/virtuális mag | Változó | 4 GB | 6,75 – 8 GB |
 | Tárterület mérete | 32 GB – 16 TB | 32 GB – 16 TB | 32 GB – 16 TB |
 | Adatbázis biztonsági másolatának megőrzési időtartama | 7 – 35 nap | 7 – 35 nap | 7 – 35 nap |
@@ -48,7 +48,7 @@ A rendelkezésre álló kiszolgálói típusok részletes leírása a következ�
 | **Burstable**        |        |             |                    |                             |
 | B1ms                 | 1      | 2 GiB       | 640                | 15 MiB/mp                  |
 | B2s                  | 2      | 4. GiB       | 1280               | 15 MiB/mp                  |
-| **általános célú**  |        |             |                    |                             |
+| **Általános célú**  |        |             |                    |                             |
 | D2s_v3               | 2      | 8 GiB       | 3200               | 48 MiB/mp                  |
 | D4s_v3               | 4      | 16 GiB      | 6400               | 96 MiB/mp                  |
 | D8s_v3               | 8      | 32 GiB      | 12800              | 192 MiB/mp                 |
@@ -65,7 +65,7 @@ A rendelkezésre álló kiszolgálói típusok részletes leírása a következ�
 | E48s_v3              | 48     | 384 GiB     | 18000              | 750 MiB/mp                 |
 | E64s_v3              | 64     | 432 GiB     | 18000              | 750 MiB/mp                 |
 
-## <a name="storage"></a>Tárolás
+## <a name="storage"></a>Storage
 
 Az Ön által kiépített tárterület a Azure Database for PostgreSQL-kiszolgáló számára elérhető tárolási kapacitás mennyisége. A tárterületet az adatbázisfájlok, az ideiglenes fájlok, a tranzakciónaplók és a PostgreSQL-kiszolgáló naplófájljai használják. A kiépített tárterület teljes mennyisége határozza meg a kiszolgáló számára elérhető I/O-kapacitást is.
 
@@ -101,7 +101,7 @@ Az I/O-használatot a Azure Portal vagy az Azure CLI-parancsok használatával f
 |**Burstable**       |                                          |   |   |    |    |     |     |     |     |      |      |
 |B1ms                |640 IOPS                                  |120|240|500 |640 *|640 * |640 * |640 * |640 * |640 *  |640 *  |
 |B2s                 |1280 IOPS                                 |120|240|500 |1100|1280 *|1280 *|1280 *|1280 *|1280 * |1280 * |
-|**általános célú** |                                          |   |   |    |    |     |     |     |     |      |      |
+|**Általános célú** |                                          |   |   |    |    |     |     |     |     |      |      |
 |D2s_v3              |3200 IOPS                                 |120|240|500 |1100|2300 |3200 *|3200 *|3200 *|3200 * |3200 * |
 |D4s_v3              |6 400 IOPS                                |120|240|500 |1100|2300 |5000 |6400 *|6400 *|6400 * |6400 * |
 |D8s_v3              |12 800 IOPS                               |120|240|500 |1100|2300 |5000 |7500 |7500 |12800 *|12800 *|
@@ -128,7 +128,7 @@ A (a) jelölésű \* IOPS a kiválasztott VM-típus korlátozza. Ellenkező eset
 |**Burstable**       |                                              |   |   |    |    |     |     |     |     |      |      |
 |B1ms                |10 MiB/mp                                    |10|10|10 |10 |10  |10  |10  |10  |10   |10   |
 |B2s                 |15 MiB/mp                                    |15|15|15 |15 |15  |15  |15  |15  |15   |15   |
-|**általános célú** |                                              |   |   |    |    |     |     |     |     |      |      |
+|**Általános célú** |                                              |   |   |    |    |     |     |     |     |      |      |
 |D2s_v3              |48 MiB/mp                                    |25 |48 *|48 * |48 * |48 *  |48 *  |48 *  |48 *  |48 *   |48 *   |
 |D4s_v3              |96 MiB/mp                                    |25 |50 |96 * |96 * |96 *  |96 *  |96 *  |96 *  |96 *   |96 *   |
 |D8s_v3              |192 MiB/mp                                   |25 |50 |100 |125 |150  |192 * |192 * |192 * |192 *  |192 *  |

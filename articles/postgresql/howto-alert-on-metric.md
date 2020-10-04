@@ -1,17 +1,17 @@
 ---
 title: Riasztások konfigurálása – Azure Portal-Azure Database for PostgreSQL – egyetlen kiszolgáló
 description: Ez a cikk bemutatja, hogyan konfigurálhat és érhet el metrikai riasztásokat Azure Database for PostgreSQL – egyetlen kiszolgáló számára a Azure Portal.
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: 0866df5f4f78fff429e75d586450bce72faece63
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: fba5c868a146529a981e23cd88b413f2eb441896
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907544"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708934"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---single-server"></a>Riasztások beállítása Azure Database for PostgreSQL – egyetlen kiszolgáló esetén a Azure Portal használatával
 
@@ -40,37 +40,25 @@ A riasztási szabályokkal kapcsolatos információkat a használatával konfigu
 
 4. Megnyílik a **szabály létrehozása** lap az alább látható módon. Adja meg a kötelező adatokat:
 
-   :::image type="content" source="./media/howto-alert-on-metric/4-add-rule-form.png" alt-text="Metrikus riasztási űrlap hozzáadása":::
-
-5. A **feltétel** szakaszban válassza a **feltétel hozzáadása**lehetőséget.
-
-6. Válasszon ki egy mérőszámot azon jelek listájáról, amelyekről riasztást szeretne kapni. Ebben a példában válassza a "tárolási százalék" lehetőséget.
+   :::image type="content" source="./media/howto-alert-on-metric/4-add-rule-form.png" alt-text="Riasztási szabályok kiválasztása" lehetőséget.
    
-   :::image type="content" source="./media/howto-alert-on-metric/6-configure-signal-logic.png" alt-text="Metrika kiválasztása":::
+   :::image type="content" source="./media/howto-alert-on-metric/6-configure-signal-logic.png" alt-text="Riasztási szabályok kiválasztása":::
 
 7. Konfigurálja a riasztási logikát, beleértve a **feltételt** (pl. "Nagyobb, mint"), **küszöbérték** (pl. 85 százalék), **időösszesítés**, **időtartam** a metrikai szabálynak meg kell felelnie a riasztási eseményindítók előtt (pl. "Az elmúlt 30 percben") és a **gyakoriság**.
    
    A Befejezés gombra kattintva válassza a **kész** lehetőséget.
 
-   :::image type="content" source="./media/howto-alert-on-metric/7-set-threshold-time.png" alt-text="Metrika kiválasztása":::
-
-8. A **műveleti csoportok** szakaszban válassza az **új létrehozása** lehetőséget egy új csoport létrehozásához, hogy értesítést kapjon a riasztásról.
-
-9. Töltse ki a "műveleti csoport hozzáadása" űrlapot névvel, rövid névvel, előfizetéssel és erőforráscsoporthoz.
-
-10. **E-mail/SMS/leküldéses/** hangműveletek típusának konfigurálása.
-    
-    Válassza az "e-mail-Azure Resource Manager szerepkör" lehetőséget az előfizetés-tulajdonosok, a közreműködők és az olvasók számára az értesítések fogadásához.
+   :::image type="content" source="./media/howto-alert-on-metric/7-set-threshold-time.png" alt-text="Riasztási szabályok kiválasztása" lehetőséget az előfizetés-tulajdonosok, a közreműködők és az olvasók számára az értesítések fogadásához.
    
     Szükség esetén adjon meg egy érvényes URI-t a **webhook** mezőben, ha azt szeretné, hogy a riasztás tüzek esetén legyen meghívva.
 
     Ha elkészült, kattintson **az OK gombra** .
 
-    :::image type="content" source="./media/howto-alert-on-metric/10-action-group-type.png" alt-text="Műveletcsoport":::
+    :::image type="content" source="./media/howto-alert-on-metric/10-action-group-type.png" alt-text="Riasztási szabályok kiválasztása":::
 
 11. Adja meg a riasztási szabály nevét, leírását és súlyosságát.
 
-    :::image type="content" source="./media/howto-alert-on-metric/11-name-description-severity.png" alt-text="Műveletcsoport"::: 
+    :::image type="content" source="./media/howto-alert-on-metric/11-name-description-severity.png" alt-text="Riasztási szabályok kiválasztása"::: 
 
 12. A riasztás létrehozásához válassza a **riasztási szabály létrehozása** lehetőséget.
 

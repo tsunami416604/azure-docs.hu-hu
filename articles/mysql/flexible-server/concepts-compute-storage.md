@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: 67c924c350fa2bc69f724d44a1b43c7e878e493a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 8a1b30803494facf6eaabcc3695770d694b4e221
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90940524"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708679"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-mysql---flexible-server-preview"></a>Számítási és tárolási lehetőségek Azure Database for MySQL – rugalmas kiszolgáló (előzetes verzió)
 
@@ -20,10 +20,10 @@ ms.locfileid: "90940524"
 
 A három különböző számítási réteg egyikében hozhat létre Azure Database for MySQL rugalmas kiszolgálót: a feltört, a általános célú és a memória optimalizált. A számítási rétegeket a mögöttes virtuálisgép-SKU különbözteti meg, a B sorozat, a D sorozat és az E sorozat használata. A számítási szintek és méretek közül választhat a kiszolgálón elérhető memória-és virtuális mag. Ugyanazt a tárolási technológiát használják az összes számítási szinten. Minden erőforrást a MySQL-kiszolgáló szintjén kell kiépíteni. A kiszolgálók egy vagy több adatbázissal rendelkezhetnek.
 
-| Erőforrás/szintek | **Burstable** | **általános célú** | **Memória optimalizálva** |
+| Erőforrás/szintek | **Burstable** | **Általános célú** | **Memória optimalizálva** |
 |:---|:----------|:--------------------|:---------------------|
 | Virtuálisgép-sorozatok| B sorozat | Ddsv4 sorozat | Edsv4 sorozat|
-| Virtuális mag | 1, 2 | 2, 4, 8, 16, 32, 64 | 2, 4, 8, 16, 32, 48, 64 |
+| Virtuális mag | 1, 2 | 2, 4, 8, 16, 32, 48, 64 | 2, 4, 8, 16, 32, 48, 64 |
 | Memória/virtuális mag | Változó | 4. GiB | 8 GiB * |
 | Tárterület mérete | 5 GiB – 16 TiB | 5 GiB – 16 TiB | 5 GiB – 16 TiB |
 | Adatbázis biztonsági másolatának megőrzési időtartama | 1 – 35 nap | 1 – 35 nap | 1 – 35 nap |
@@ -52,7 +52,7 @@ A rendelkezésre álló kiszolgálói típusok részletes leírása a következ�
 | B1s                  | 1      | 1                 |  
 | B1ms                 | 1      | 2                 | 
 | B2s                  | 2      | 4                 |  
-| **általános célú**  |        |                   | 
+| **Általános célú**  |        |                   | 
 | D2ds_v4              | 2      | 8                 |  
 | D4ds_v4              | 4      | 16                | 
 | D8ds_v4              | 8      | 32                | 
@@ -71,7 +71,7 @@ A rendelkezésre álló kiszolgálói típusok részletes leírása a következ�
 
 Ha további részleteket szeretne megtudni a rendelkezésre álló számítási sorozatokról, tekintse meg az Azure virtuális gép dokumentációját, amely a [feltört (B sorozatú)](../../virtual-machines/sizes-b-series-burstable.md), [általános célú (Ddsv4 sorozat)](../../virtual-machines/ddv4-ddsv4-series.md)és a [memóriára optimalizált (Edsv4-sorozat)](../../virtual-machines/edv4-edsv4-series.md).
 
-## <a name="storage"></a>Tárolás
+## <a name="storage"></a>Storage
 
 A kiépített tárterület a rugalmas kiszolgáló számára elérhető tárolókapacitás mennyisége. A tároló az adatbázisfájlok, az ideiglenes fájlok, a tranzakciónaplók és a MySQL-kiszolgálói naplók tárolására szolgál. Az összes számítási szinten a támogatott minimális tárterület 5 GiB, a maximum pedig 16 TiB. A tárterület 1 GiB-onként méretezhető, és a kiszolgáló létrehozása után méretezhető.
 
@@ -113,7 +113,7 @@ Ha többet szeretne megtudni a maximálisan érvényes IOPS, a számítási és 
 | B1s                  | 320                 |
 | B1ms                 | 640                 |
 | B2s                  | 1280                | 
-| **általános célú**  |                     |
+| **Általános célú**  |                     |
 | D2ds_v4              | 3200                |
 | D4ds_v4              | 6400                |
 | D8ds_v4              | 12800               |

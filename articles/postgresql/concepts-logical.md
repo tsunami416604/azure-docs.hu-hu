@@ -1,17 +1,17 @@
 ---
 title: Logikai dekódolás – Azure Database for PostgreSQL – egyetlen kiszolgáló
 description: Leírja a logikai dekódolást és az adatváltozások rögzítésének wal2json Azure Database for PostgreSQL – egyetlen kiszolgálón
-author: rachel-msft
-ms.author: raagyema
+author: sr-msft
+ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/22/2020
-ms.openlocfilehash: bd886bea90c1092e38fac191a60a118aab0bef1f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 4ab4a64fa395c105ced8e47cdcec019373f7f835
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903888"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708611"
 ---
 # <a name="logical-decoding"></a>Logikai dekódolás
  
@@ -38,7 +38,7 @@ A kiszolgálót újra kell indítani a paraméter módosítása után. Belsőleg
 
 ### <a name="using-azure-cli"></a>Az Azure parancssori felület használata
 
-1. Az Azure. replication_support beállítása a következőre: `logical` .
+1. Azure.replication_support beállítása a következőre: `logical` .
    ```
    az postgres server configuration set --resource-group mygroup --server-name myserver --name azure.replication_support --value logical
    ``` 
@@ -50,13 +50,13 @@ A kiszolgálót újra kell indítani a paraméter módosítása után. Belsőleg
 
 ### <a name="using-azure-portal"></a>Az Azure Portal használata
 
-1. Az Azure-beli replikáció támogatását állítsa **logikai**értékre. Kattintson a **Mentés** gombra.
+1. Az Azure-beli replikáció támogatását állítsa **logikai**értékre. Válassza a **Mentés** lehetőséget.
 
    :::image type="content" source="./media/concepts-logical/replication-support.png" alt-text="Azure Database for PostgreSQL – replikálás – Azure-replikáció támogatása":::
 
 2. A módosítás alkalmazásához indítsa újra a kiszolgálót az **Igen**lehetőség kiválasztásával.
 
-   :::image type="content" source="./media/concepts-logical/confirm-restart.png" alt-text="Azure Database for PostgreSQL – replikálás – újraindítás megerősítése":::
+   :::image type="content" source="./media/concepts-logical/confirm-restart.png" alt-text="Azure Database for PostgreSQL – replikálás – Azure-replikáció támogatása":::
 
 
 ## <a name="start-logical-decoding"></a>Logikai dekódolás elindítása
@@ -159,7 +159,7 @@ SELECT pg_drop_replication_slot('test_slot');
 ```
 
 > [!IMPORTANT]
-> Ha leállítja a logikai dekódolást, módosítsa az Azure-t. replication_support vissza a következőre: `replica` vagy `off` . A megőrzött WAL-részletek `logical` részletesebbek, és le kell tiltani, ha nincs használatban a logikai dekódolás. 
+> Ha leállítja a logikai dekódolást, módosítsa azure.replication_support vissza a következőre: `replica` vagy `off` . A megőrzött WAL-részletek `logical` részletesebbek, és le kell tiltani, ha nincs használatban a logikai dekódolás. 
 
  
 ## <a name="next-steps"></a>Következő lépések

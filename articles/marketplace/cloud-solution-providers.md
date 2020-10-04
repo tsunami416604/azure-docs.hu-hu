@@ -7,16 +7,16 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 07/14/2020
-ms.openlocfilehash: 247a5c89b52c6b58f2e1d04723f4f73b85aeb153
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: bdd2dacbba4ef8b7c439a345ea70771354b7fb5a
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91400740"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708594"
 ---
 # <a name="cloud-solution-provider-program"></a>Cloud Solution Provider program
 
-Ez a cikk azt ismerteti, hogyan konfigurálható az ajánlat, hogy elérhető legyen a Cloud Solution Provider (CSP) program számára. Az ajánlatoknak a [kereskedelmi piactér online áruházakon](comparing-appsource-azure-marketplace.md)keresztüli közzétételén kívül a CSP programon keresztül is elérhetővé teheti, hogy a program által kiszolgált, több millió minősített Microsoft-ügyfelet is elérhet.
+Ez a cikk azt ismerteti, hogyan konfigurálható az ajánlat, hogy elérhető legyen a Cloud Solution Provider (CSP) program számára. Az ajánlatoknak a [kereskedelmi piactér online áruházakon](overview.md#commercial-marketplace-online-stores)keresztüli közzétételén kívül a CSP programon keresztül is elérhetővé teheti, hogy a program által kiszolgált, több millió minősített Microsoft-ügyfelet is elérhet.
 
 Az új vagy meglévő ajánlatokat a CSP programban is konfigurálhatja, amely lehetővé teszi, hogy a CSP-partnerek eladják termékeiket, és csomagolt megoldásokat hozzanak létre az ügyfeleknek.
 
@@ -60,7 +60,7 @@ Három lehetőség közül választhat:
 
 Ennek a lehetőségnek a kiválasztásával engedélyezheti, hogy a CSP program mely partnerei jogosultak az ajánlat viszonteladására.
 
-A partnerek engedélyezéséhez kattintson a **CSP-partnerek kijelölése** lehetőségre, és megjelenik egy menü, amely lehetővé teszi a partner neve vagy a CSP Azure Active Directory (HRE) BÉRLŐi azonosítójának keresését.
+Ha engedélyezni szeretné a partnereket, válassza a **CSP-partnerek kiválasztása** lehetőséget, és egy olyan menü jelenik meg, amely lehetővé teszi a partner neve vagy a CSP Azure Active Directory (Azure ad) BÉRLŐi azonosítójának keresését.
 
 ![CSP menü kiválasztása](media/marketplace-publishers-guide/csp-pop-up-module.png)
 
@@ -81,7 +81,7 @@ A módosítások regisztrálásához kattintson a **Piszkozat mentése** gombra.
 Ha ez az ajánlat közzé van téve, közzé kell tennie az ajánlatot, hogy elérhetővé tegye a kiválasztott partnerei számára.
 
 >[!NOTE]
->Ha egy adott régióban engedélyez egy partnert a CSP programban, az ajánlatot az adott régióhoz tartozó bármely ügyfélnek is értékesítheti. A CSP-ajánlatok régiókban való besorolásával kapcsolatos további információkért tekintse meg a [Cloud Solution Provider program regionális piacait és pénznemét](https://docs.microsoft.com/partner-center/regional-authorization-overview) ismertető témakört.
+>Ha egy adott régióban engedélyez egy partnert a CSP programban, az ajánlatot az adott régióhoz tartozó bármely ügyfélnek is értékesítheti. A CSP-ajánlatok régiók szerinti besorolásáról további információt a [Cloud Solution Provider program regionális piacai és pénzneme](https://docs.microsoft.com/partner-center/regional-authorization-overview)című témakörben talál.
 
 Ha egy már közzétett ajánlat CSP-listáját frissíti, vegye fel a további partnereket, és válassza a **szinkronizálás CSP-célközönség**lehetőséget.
 
@@ -170,14 +170,11 @@ Ahhoz, hogy a partnerek a felhőalapú megoldás-szolgáltatói programban legha
 
 ### <a name="partner-center-csp-channel"></a>Partneri központ CSP-csatornája
 
-Ha kiválasztotta a CSP-csatornát a partner Centerben, a kiadónak meg kell adnia egy URL-címet, amely a megfelelő marketinganyagok és csatorna elérhetőségi adatait tárolja a CSP-csatornán az ajánlati lista modulban:
+Ha kiválasztotta a CSP-csatornát a partner Centerben, a kiadónak meg kell adnia egy URL-címet, amely a megfelelő marketinganyagok és csatorna elérhetőségi adatait tárolja az ajánlati lista modulban.
 
 ![A partner Center CSP-biztosítékokkal kapcsolatos információi](media/marketplace-publishers-guide/pc-csp-channel.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Látogasson el az [Azure Marketplace és a AppSource kiadói útmutatóba](marketplace-publishers-guide.md).
-
-A piactér GTM szolgáltatásaival kapcsolatos további információkért tekintse meg a piacra jutási [szolgáltatásokat](https://partner.microsoft.com/reach-customers/gtm)ismertető témakört.
-
-Az ajánlat létrehozásához és konfigurálásához jelentkezzen be a [partner Centerben](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) .
+- További információ a [piaci megjelenéssel kapcsolatos szolgáltatásokról](https://partner.microsoft.com/reach-customers/gtm).
+- Az ajánlat létrehozásához és konfigurálásához jelentkezzen be a [partner Centerben](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) .

@@ -10,27 +10,29 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: how-to
-ms.date: 09/03/2020
+ms.date: 10/02/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e0c8e6fb3bab179483d03320e6d90ab712ec528
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: be0d428120f53a4edb9763199a78b0e50409b19a
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89493348"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708737"
 ---
 # <a name="user-management-enhancements-preview-in-azure-active-directory"></a>Felhasználói felügyeleti fejlesztések (előzetes verzió) Azure Active Directory
 
-Ez a cikk azt ismerteti, hogyan használható a továbbfejlesztett felhasználói felügyelet előzetes verziója a Azure Active Directory (Azure AD) portálon. A **minden felhasználó** és a **törölt felhasználók** oldal frissítve lett, hogy további információkat szolgáltasson, és megkönnyítse a felhasználók megtalálását. További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Ez a cikk azt ismerteti, hogyan használható a Azure Active Directory (Azure AD) portálon a felhasználó-felügyeleti fejlesztések előzetes verziója. A **minden felhasználó** és a **törölt felhasználók** oldal frissítve lett, hogy további információkat szolgáltasson, és megkönnyítse a felhasználók megtalálását. További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Az előzetes verzió változásai a következők:
 
 - További látható felhasználói tulajdonságok, például az objektumazonosító, a címtár-szinkronizálás állapota, a létrehozás típusa és az identitás kiállítója
 - A keresés mostantól lehetővé teszi a nevek, e-mailek és objektumazonosítók együttes keresését
-- Továbbfejlesztett szűrés felhasználói típussal (tag és vendég), címtár-szinkronizálási állapottal és létrehozási típussal
+- Továbbfejlesztett szűrés felhasználói típus szerint (tag, vendég, nincs), címtár-szinkronizálási állapot, létrehozás típusa, cégnév és tartománynév
+- Új rendezési képességek olyan tulajdonságokhoz, mint a név és az egyszerű Felhasználónév
+- Új felhasználók száma, amelyek keresések vagy szűrők használatával frissülnek
 
 > [!NOTE]
 > Ez az előzetes verzió jelenleg nem érhető el Azure AD B2C bérlők számára.
@@ -66,7 +68,7 @@ A **minden felhasználó** lapon látható felhasználói tulajdonságok a köve
 - Meghívási állapot: a vendég felhasználó meghívásának állapota.
 - Mail: a felhasználó e-mail-címe.
 
-   ![az összes felhasználó és a törölt felhasználók lapokon megjelenő új felhasználói tulajdonságok](./media/users-search-enhanced/user-properties.png)
+![az összes felhasználó és a törölt felhasználók lapokon megjelenő új felhasználói tulajdonságok](./media/users-search-enhanced/user-properties.png)
 
 ### <a name="deleted-users-page"></a>Törölt felhasználók lap
 
@@ -96,22 +98,36 @@ A szűrési képességek továbbfejlesztettek, így több szűrési lehetőség 
 
 A **minden felhasználó** lapon található szűrhető tulajdonságok a következők:
 
-- Felhasználó típusa – tag vagy vendég
-- Címtárral szinkronizált állapot – igen
-- Létrehozás típusa – meghívás, e-mailben ellenőrzött, helyi fiók
+- Felhasználó típusa: tag, vendég, nincs
+- Címtárral szinkronizált állapot: igen, nem
+- Létrehozás típusa: meghívás, e-mailben ellenőrzött, helyi fiók
 - Meghívás állapota – elfogadás függőben, elfogadva
-- Felügyeleti egység – ezzel a beállítással korlátozhatja a megtekintett felhasználók hatókörét egyetlen felügyeleti egységre. További információ: [felügyeleti egységek kezelése előzetes](directory-administrative-units.md)verzió.
+- Tartománynév: adjon meg egy tartománynevet
+- Cég neve: adja meg a vállalat nevét
+- Felügyeleti egység: ezzel a beállítással korlátozhatja a megtekintett felhasználók hatókörét egyetlen felügyeleti egységre. További információ: [felügyeleti egységek kezelése előzetes](directory-administrative-units.md)verzió.
 
-## <a name="filtering-deleted-users-list"></a>Törölt felhasználók listájának szűrése
+### <a name="filtering-deleted-users-list"></a>Törölt felhasználók listájának szűrése
 
 A **törölt felhasználók** lapon további szűrők nem szerepelnek a **minden felhasználó** lapon. A **törölt felhasználók** lapon található szűrhető tulajdonságok a következők:
 
-- Felhasználó típusa – tag vagy vendég
-- Címtárral szinkronizált állapot – igen
-- Létrehozás típusa – meghívás, e-mailben ellenőrzött, helyi fiók
-- Meghívás állapota – elfogadás függőben, elfogadva
-- Törlés dátuma – utolsó 7, 14 vagy 30 nap
-- Végleges törlés dátuma – utolsó 7, 14 vagy 30 nap
+- Felhasználó típusa: tag, vendég, nincs
+- Címtárral szinkronizált állapot: igen, nem
+- Létrehozás típusa: meghívás, e-mailben ellenőrzött, helyi fiók
+- Meghívás állapota: elfogadás függőben, elfogadva
+- Törlés dátuma: utolsó 7, 14 vagy 30 nap
+- Tartománynév: adjon meg egy tartománynevet
+- Cég neve: adja meg a vállalat nevét
+- Végleges törlés dátuma: utolsó 7, 14 vagy 30 nap
+
+## <a name="user-list-sorting"></a>Felhasználói lista rendezése
+
+Mostantól név és egyszerű felhasználónév alapján rendezheti a **minden felhasználó** és a **törölt felhasználók** lapokat. A **törölt felhasználók** listán a törlés dátuma is megadható.
+
+## <a name="user-list-counts"></a>Felhasználói lista száma
+
+A felhasználók teljes számát a **minden felhasználó** és a **törölt felhasználók** lapokon tekintheti meg. A listák keresésekor vagy szűrése során a rendszer frissíti a darabszámot, hogy tükrözze a talált felhasználók teljes számát.
+
+![A felhasználók listájának a minden felhasználó lapján látható ábrája](./media/users-search-enhanced/user-list-sorting.png)
 
 ## <a name="frequently-asked-questions-faq"></a>Gyakori kérdések (GYIK)
 
@@ -121,8 +137,6 @@ Mi történik a felhasználók és a vendégek tömeges képességeivel? | A tö
 Mi történt a forrás oszloppal? | A **forrás** oszlopot lecserélték más oszlopokra, amelyek hasonló információt biztosítanak, miközben lehetővé teszi az értékek egymástól független szűrését. Ilyenek például a **Létrehozás típusa**, a **címtárral szinkronizált** és az **identitás kiállítója**.
 Mi történt a Felhasználónév oszloppal? | A **Felhasználónév** oszlop még mindig létezik, de az **egyszerű felhasználónévre**lett átnevezve. Ez jobban megfelel az adott oszlopban található információknak. Azt is láthatja, hogy a teljes egyszerű felhasználónév mostantól megjelenik a B2B vendégek számára. Ez megegyezik azzal, amit az MS Graph-ban fog kapni.  
 Miért csak a "Start with" (indítás a következővel) keresési lehetőséggel végezhető a keresés? | Vannak olyan korlátozások, amelyek megakadályozzák, hogy a "tartalmaz" keresési műveletet engedélyezze. Hallottuk a visszajelzést, így maradunk.
-Miért nem lehet rendezni az oszlopokat? | Vannak olyan korlátozások, amelyek megakadályozzák, hogy az oszlopok rendezését lehetővé tegyük. Hallottuk a visszajelzést, így maradunk.
-Miért csak az igen értékkel lehet szűrni a **címtárral szinkronizált** oszlopot? | Bizonyos korlátozásokkal megakadályozhatja, hogy a tulajdonságot a No érték alapján szűrje. Hallottuk a visszajelzést, így maradunk.
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: overview
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 29930a835297b0ddd3a91534dab9ccb6d74896e3
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 8ac5b0976e677cc48fb3fe47c50797b07acdbc44
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90967556"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708866"
 ---
 # <a name="about-keys"></a>Információ a kulcsokról
 
@@ -47,7 +47,7 @@ HSM-védelemmel ellátott kulcsok (más néven HSM-kulcsok) feldolgozása egy HS
 - A tárolók az **FIPS 140-2 2. szintű** hitelesített HSM védik a HSM-kulcsok a megosztott HSM háttér-infrastruktúrában való ellátásához. 
 - A felügyelt HSM-készletek a **FIPS 140-2 3. szintű** hitelesített HSM-modulokat használják a kulcsok védetté tenni. Mindegyik HSM-készlet egy elkülönített, egybérlős példány, amely saját [biztonsági tartománnyal](../managed-hsm/security-domain.md) rendelkezik, és teljes titkosítási elkülönítést biztosít minden más HSM-készlettől, amely ugyanazokat a hardveres infrastruktúrát is megosztja.
 
-Ezek a kulcsok egyetlen bérlős HSM-készletekben vannak védve. Az RSA, az EC és a szimmetrikus kulcs importálható puha formában, vagy egy támogatott HSM-eszközről is exportálható. A HSM-készletekben is létrehozhat kulcsokat. Ha a [BYOK (a saját kulcs használata) specifikációban](../keys/byok-specification.md)leírt módszer segítségével importálja a HSM-kulcsokat a kulcsok használatával, az lehetővé teszi a biztonságos szállítási kulcsra vonatkozó anyagok kezelését a felügyelt HSM-készletekbe. 
+Ezek a kulcsok egyetlen bérlős HSM-készletekben vannak védve. Az RSA, az EC és a szimmetrikus kulcs importálható puha formában, vagy egy támogatott HSM-eszközről is exportálható. A HSM-készletekben is létrehozhat kulcsokat. Amikor HSM-kulcsokat importál a [BYOK (saját kulcs használata) specifikációban](../keys/byok-specification.md)ismertetett módszerrel, az lehetővé teszi a biztonságos szállítási kulcsra vonatkozó anyagok kezelését a felügyelt HSM-készletekbe. 
 
 A földrajzi határokra vonatkozó további információkért lásd: [Microsoft Azure Adatvédelmi központ](https://azure.microsoft.com/support/trust-center/privacy/)
 
@@ -217,7 +217,7 @@ A kulcsok használatával kapcsolatos további információkért tekintse meg [a
 
 ## <a name="next-steps"></a>Következő lépések
 - [Tudnivalók a Key Vaultról](../general/overview.md)
-- [A felügyelt HSM ismertetése](../managed-hsm/overview.md)
+- [A Managed HSM ismertetése](../managed-hsm/overview.md)
 - [Információ a titkos kulcsokról](../secrets/about-secrets.md)
 - [Információ a tanúsítványokról](../certificates/about-certificates.md)
 - [Key Vault REST API áttekintése](../general/about-keys-secrets-certificates.md)

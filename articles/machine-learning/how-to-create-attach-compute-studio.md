@@ -11,19 +11,22 @@ ms.subservice: core
 ms.date: 08/06/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
-ms.openlocfilehash: 5345fd81e41bbb354e11e1be23329c3130d4d0c2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c22593fbd1e1653efa98c760d5bbb73b03761059
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90898076"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708395"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-in-azure-machine-learning-studio"></a>Számítási célok létrehozása a modell betanításához és üzembe helyezéséhez Azure Machine Learning Studióban
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre és kezelhet számítási célokat az Azure Machine Studióban.  Számítási célokat a használatával is létrehozhat és kezelhet:
 
-* [Azure Machine learning learning SDK](how-to-create-attach-compute-sdk.md), 
-* A Azure Machine Learning [CLI-bővítménye](reference-azure-machine-learning-cli.md#resource-management)
+* Azure Machine Learning learning SDK vagy CLI bővítmény a Azure Machine Learning
+  * [Számítási példány](how-to-create-manage-compute-instance.md)
+  * [Számítási fürt](how-to-create-attach-compute-cluster.md)
+  * [Azure Kubernetes Service-fürt](how-to-create-attach-kubernetes.md)
+  * [Egyéb számítási erőforrások](how-to-attach-compute-targets.md)
 * A [vs Code bővítmény](how-to-manage-resources-vscode.md#compute-clusters) a Azure Machine Learninghoz.
 
 
@@ -56,11 +59,11 @@ Az előző lépések végrehajtásával tekintheti meg a számítási célok lis
 
 1. Ha nincsenek számítási célok, válassza a  **Létrehozás** lehetőséget a lap közepén.
   
-    :::image type="content" source="media/how-to-create-attach-studio/create-compute-target.png" alt-text="Számítási cél létrehozása":::
+    :::image type="content" source="media/how-to-create-attach-studio/create-compute-target.png" alt-text="Számítási célok listájának megtekintése":::
 
 1. Ha megjelenik a számítási erőforrások listája, válassza a **+ új** elemet a lista fölött.
 
-    :::image type="content" source="media/how-to-create-attach-studio/select-new.png" alt-text="Új kiválasztása":::
+    :::image type="content" source="media/how-to-create-attach-studio/select-new.png" alt-text="Számítási célok listájának megtekintése":::
 
 
 1. Töltse ki az űrlapot a számítási típushoz:
@@ -74,14 +77,14 @@ Az előző lépések végrehajtásával tekintheti meg a számítási célok lis
 
 1. A létrehozási művelet állapotának megtekintéséhez válassza ki a listából a számítási célt:
 
-    :::image type="content" source="media/how-to-create-attach-studio/view-list.png" alt-text="Számítási állapot megtekintése egy listából":::
+    :::image type="content" source="media/how-to-create-attach-studio/view-list.png" alt-text="Számítási célok listájának megtekintése":::
 
 
 ### <a name="compute-instance"></a>Számítási példány
 
 A számítási példány létrehozásához kövesse a [fenti lépéseket](#portal-create) .  Ezután töltse ki az űrlapot a következőképpen:
 
-:::image type="content" source="media/concept-compute-instance/create-compute-instance.png" alt-text="Új számítási példány létrehozása":::
+:::image type="content" source="media/concept-compute-instance/create-compute-instance.png" alt-text="Számítási célok listájának megtekintése":::
 
 
 |Mező  |Leírás  |
@@ -107,7 +110,7 @@ Hozzon létre egy vagy több csomópontos számítási fürtöt a képzéshez, a
 |Csomópontok maximális száma | A kiépíteni kívánt csomópontok maximális száma. A számítás a feladatok elküldésekor a csomópontok maximális száma alapján automatikusan méretezhető. |
 |Speciális beállítások     |  Választható. Virtuális hálózat konfigurálása. Válassza ki az **erőforráscsoportot**, a **virtuális hálózatot**és az **alhálózatot** , hogy létrehozza a számítási példányt egy Azure-Virtual Network (vnet) belül. További információ: a vnet vonatkozó [hálózati követelmények](how-to-enable-virtual-network.md#compute-instance) .   [Felügyelt identitásokat](#managed-identity) is csatolhat az erőforrásokhoz való hozzáférés biztosításához     |
 
-#### <a name="set-up-managed-identity"></a><a id="managed-identity"></a> Felügyelt identitás beállítása
+#### <a name="set-up-managed-identity"></a><a name="managed-identity"></a> Felügyelt identitás beállítása
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-managed-identity-intro.md)]
 

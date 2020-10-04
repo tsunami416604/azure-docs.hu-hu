@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2020
-ms.openlocfilehash: 382a6056076179be0d25e0fee0d55b978a3b7169
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 1d75e0d9f57aee495524e2d35231dd3c78cedea1
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89420438"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708118"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>SaaS-ajánlat tervezése a kereskedelmi piactéren
 
@@ -57,7 +57,7 @@ Az azonnali letöltés _(ingyenes)_, az _ingyenes próbaverzió_és az _értéke
 
 Ezek a kiegészítő technikai követelmények csak a _Microsofton keresztüli értékesítés_ (transactd) listázási lehetőségre vonatkoznak:
 
-- Az Azure AD egyszeri bejelentkezéses (SSO) Identitáskezelés és hitelesítés szükséges. Részletes útmutatásért lásd: [Az Azure ad és a transactd SaaS-ajánlatok a kereskedelmi piactéren](azure-ad-saas.md).
+- Az Azure AD egyszeri bejelentkezéses (SSO) Identitáskezelés és hitelesítés szükséges ahhoz, hogy a vásárló felhasználó hozzáférjen a kezdőlaphoz. Részletes útmutatásért lásd: [Az Azure ad és a transactd SaaS-ajánlatok a kereskedelmi piactéren](azure-ad-saas.md).
 - Az Azure Marketplace és a Microsoft AppSource integrálásához a [SaaS-teljesítési API-kat](./partner-center-portal/pc-saas-fulfillment-api-v2.md) kell használnia. Olyan szolgáltatást kell közzétennie, amely képes kommunikálni az SaaS-előfizetéssel egy felhasználói fiók és szolgáltatáscsomag létrehozásához, frissítéséhez és törléséhez. A kritikus API-módosításokat 24 órán belül támogatni kell. A nem kritikus API-változások rendszeresen jelennek majd meg. Az összegyűjtött mezők használatát leíró diagramok és részletes magyarázatok az [API](./partner-center-portal/pc-saas-fulfillment-api-v2.md)-k dokumentációjában találhatók.
 - Létre kell hoznia legalább egy csomagot az ajánlathoz. A csomag díjszabása a közzététel előtt kiválasztott árképzési modell alapján történik: _átalánydíjas_ vagy _felhasználónkénti_. A [csomagokkal](#plans) kapcsolatos további részletekért lásd a cikk későbbi részében leírtakat.
 - Az ügyfél bármikor lemondhatja az ajánlatot.
@@ -90,7 +90,7 @@ Ha Transact-ajánlatot hoz létre, az alábbi információkat kell összegyűjte
   > [!NOTE]
   > Ha a közzétevő két vagy több különböző fiókkal rendelkezik a partner Centerben, akkor az egyik fiókhoz két vagy több különböző Azure AD-alkalmazás-azonosítót kell használni. A fiókpartner minden fiókpartner-fiókjának egyedi Azure AD-alkalmazás-azonosítót kell használnia a fiókon keresztül közzétett SaaS-ajánlatok számára.
 
-## <a name="test-drives"></a>Tesztelési meghajtók
+## <a name="test-drives"></a>Tesztverziók
 Dönthet úgy, hogy engedélyezi a tesztelési meghajtót az SaaS-alkalmazáshoz. A tesztelési meghajtók adott számú óráig biztosítanak hozzáférést egy előre konfigurált környezethez. Engedélyezheti a tesztelési meghajtókat bármilyen közzétételi lehetőséghez, azonban ez a funkció további követelményekkel is rendelkezik. További információ a tesztelési meghajtókról: [Mi az a test Drive?](what-is-test-drive.md). A különböző típusú tesztelési meghajtók konfigurálásával kapcsolatos információkért lásd: a tesztvezetés [technikai konfigurációjának tesztelése](test-drive-technical-configuration.md).
 
 > [!TIP]
@@ -100,7 +100,7 @@ Dönthet úgy, hogy engedélyezi a tesztelési meghajtót az SaaS-alkalmazáshoz
 
 Az ügyfelek adatainak összegyűjtéséhez az ajánlatot az Ügyfélkapcsolat-kezelési (CRM) rendszerhez kell kötni. A rendszer engedélyt kér az ügyféltől az információk megosztására. Az ügyfél adatait, valamint az ajánlat nevét, AZONOSÍTÓját és online áruházát, ahol az ajánlatot megtalálták, a rendszer a konfigurált CRM-rendszerbe küldi el. A kereskedelmi piactér számos CRM-rendszert támogat, valamint egy Azure-tábla használatát vagy egy HTTPS-végpont konfigurálását a Power automatizálás használatával.
 
-A CRM-kapcsolatok bármikor hozzáadhatók vagy módosíthatók az ajánlat létrehozásakor vagy azt követően is. Részletes útmutatásért lásd: [az ólom kezelése a kereskedelmi piactéren](lead-management-for-cloud-marketplace.md).
+A CRM-kapcsolatok bármikor hozzáadhatók vagy módosíthatók az ajánlat létrehozásakor vagy azt követően is. Részletes útmutatásért tekintse [meg a kereskedelmi Marketplace-ajánlat ügyfeleinek vezetőit](partner-center-portal/commercial-marketplace-get-customer-leads.md).
 
 ## <a name="selecting-an-online-store"></a>Online áruház kiválasztása
 
@@ -183,7 +183,7 @@ Ha könnyebben létre szeretné hozni az ajánlatot, készítse elő ezeket az e
   - . png fájl
   - Tartalmaznia kell egy feliratot
 - **Média – videók** (nem kötelező): legfeljebb négy videót adhat hozzá az alábbi követelményekkel:
-  - Name
+  - Név
   - URL: csak a YouTube vagy a Vimeo szolgáltatásban kell tárolni.
   - Miniatűr: 1280 x 720. png fájl
 
@@ -194,7 +194,7 @@ Ha könnyebben létre szeretné hozni az ajánlatot, készítse elő ezeket az e
 Az előzetes verzió célközönsége az online áruházakban élő közzététel előtt is elérheti az ajánlatát, hogy az élő közzététel előtt tesztelje a végpontok közötti funkcionalitást. A **célközönség előnézete** lapon megadhatja az előzetes verziójú célközönséget. Ez a beállítás nem érhető el, ha úgy dönt, hogy a tranzakciókat egymástól függetlenül dolgozza fel, ahelyett, hogy az ajánlatot a Microsofton keresztül eladja. Ha igen, kihagyhatja ezt a szakaszt, és [további értékesítési lehetőségekhez](#additional-sales-opportunities)juthat.
 
 > [!NOTE]
-> Az előzetes verzió célközönsége különbözik egy privát csomagtól. Egy privát csomag csak a kiválasztott célközönség számára érhető el. Ez lehetővé teszi, hogy egy egyéni csomagot adott ügyfelekkel egyeztesse. További részletekért tekintse meg a következő szakaszt: csomagok.
+> Az előzetes verzió célközönsége különbözik egy privát csomagtól. Egy privát csomag csak a kiválasztott célközönség számára érhető el. Ez lehetővé teszi, hogy egy egyéni csomagot adott ügyfelekkel egyeztesse. További információt a következő szakaszban talál: csomagok.
 
 Meghívhat a Microsoft-fiók (MSA) vagy a Azure Active Directory (Azure AD) e-mail-címére. Legfeljebb 10 e-mail-címet adjon meg manuálisan, vagy importáljon akár 20-at egy. CSV-fájllal. Ha az ajánlata már élő, akkor is megadhatja az előnézeti közönséget az ajánlat változásainak és frissítéseinek teszteléséhez.
 
