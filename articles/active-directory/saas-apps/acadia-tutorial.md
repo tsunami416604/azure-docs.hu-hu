@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 1/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 39339803945034765fbc30e6f5fc11e737f750c4
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f3fa61e7c00dca8cb133ec21ba395d943ebdc956
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88538399"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708407"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-acadia"></a>Oktatóanyag: Azure Active Directory integráció a Acadia
 
@@ -100,7 +100,7 @@ Az Azure AD egyszeri bejelentkezés Acadia való konfigurálásához hajtsa vég
 
 4. Az **alapszintű SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket:
 
-    ![Acadia tartomány és URL-címek egyszeri bejelentkezési adatai](common/idp-intiated.png)
+    ![Az alkalmazás IDENTITÁSSZOLGÁLTATÓ kezdeményezett módban való konfigurálásához szükséges képernyő-elemeket bemutató képernyőkép.](common/idp-intiated.png)
 
     a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<CUSTOMER>.acadia.sysalli.com/shibboleth`
 
@@ -156,7 +156,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

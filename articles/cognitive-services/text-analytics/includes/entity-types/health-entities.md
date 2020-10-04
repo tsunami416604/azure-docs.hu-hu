@@ -6,72 +6,304 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 07/28/2020
+ms.date: 10/02/2020
 ms.author: aahi
-ms.openlocfilehash: 6880391fb54791fe5f597de2305d24f8c0e47ec6
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 563daca1e5179639b8dd3aaf710d92e54faf6aa1
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88122361"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91709528"
 ---
-## <a name="health-entity-categories"></a>Állapot entitások kategóriái:
+## <a name="text-analytics-for-health-categories-entities-and-attributes"></a>Text Analytics állapot-kategóriák, entitások és attribútumok esetében
 
-A következő entitás-kategóriákat adja vissza a [text Analytics for Health](../../how-tos/text-analytics-for-health.md).  Vegye figyelembe, hogy ebben a tároló-előnézetben csak az angol nyelvű szöveg támogatott, és az egyes tárolók rendszerképében csak egyetlen modell-verzió van megadva.
+Az [egészségügyi Text Analytics](../../how-tos/text-analytics-for-health.md) a következő kategóriákban észleli az orvosi fogalmakat.  (Vegye figyelembe, hogy a tároló előzetes verziója csak az angol nyelvű szöveget támogatja, és az egyes tárolók rendszerképében csak egyetlen modell-verzió van megadva.)
 
-### <a name="named-entity-recognition"></a>Megnevezett entitások felismerése
 
-|Kategória  |Leírás   |
-|----------|--------------|
-| Kor | Alábbi korhatárt szabja. Például *30 éves*. |
-| AdministrativeEvent | Egy felügyeleti esemény. |
-| BodyStructure | Az emberi törzs részei, beleértve a szerveket és más struktúrákat. Például *ARM*vagy *Heart*. | 
-| CareEnvironment | Az a környezet, amelyben az ellátást vagy a kezelést felügyelik. Például *vészhelyzeti helyiség* | 
-| ConditionQualifier | Feltétel szintjei. Például *enyhe*, *kiterjesztett*vagy *diffúz*. | 
-| Diagnosztikai | Egészségügyi feltételek. Például *magas vérnyomás*. | 
-| Irány | Irányban. Például *balra* vagy *anterior*. | 
-| Adagolás | A gyógyszer mérete vagy mennyisége. Például *25mg*.  | 
-| ExaminationName | Egy vizsgálati módszer vagy eljárás. Például: *X-ray*. | 
-| RelationalOperator | Egy operátor, amely két entitás közötti kapcsolatot határoz meg. Például *kisebb, mint*, vagy `>=` .  | 
-| MeasurementUnit | Egy mérési egység (például százalék). | 
-| MeasurementValue | Egy mérési egység numerikus értéke. | 
-| FamilyRelation | Egy családi kapcsolat. Például: *Sister*.  | 
-| Frequency | Gyakoriságokat.   | 
-| Nem | Nemek. | 
-| Gén | Egy gén entitás, például *TP53*.   | 
-| HealthcareProfession | A gyógyszer felügyeletének módszere. Például: *szóbeli felügyelet*. | 
-| MedicationClass | Gyógyszeres osztályok. Például *antibiotikumok*.  | 
-| MedicationForm | A gyógyszert egy formája. Például: *kapszula*. | 
-| MedicationName  | Általános és márka nevű gyógyszer. Például az *ibuprofen*. | 
-| MedicationRoute | A gyógyszer felügyeletének módszere. Például: *szóbeli felügyelet*. | 
-| SymptomOrSign  | Megbetegedés tünetei. Például *fáj a torka*. | 
-| Idő | Alkalommal. Például: *8 év* , vagy *2. reggel* |
-| TreatmentName  | A kezelési nevek. Például: *terápia*. | 
-| Változat | A gén entitás genetikai változata. | 
+| Kategória  | Leírás  |
+|---------|---------|
+| ANATÓMIA | a törzs-és anatómiai rendszerekkel, webhelyekkel, helyekkel vagy régiókkal kapcsolatos információkat rögzítő fogalmak. |
+ | Demográfia | a nemekkel és a korral kapcsolatos információkat rögzítő fogalmak. |
+ | AUDITÁLÁSBAN | a diagnosztikai eljárásokkal és tesztekkel kapcsolatos információkat rögzítő fogalmak. |
+ | GENOMICS | a génekkel és a változatokkal kapcsolatos információkat rögzítő fogalmak. |
+ | EGÉSZSÉGÜGYI | a felügyeleti eseményekkel, a gondozási környezetekkel és az egészségügyi szakmákkal kapcsolatos információkat rögzítő fogalmak. |
+ | ORVOSI FELTÉTEL | a diagnosztizálással, tünetekkel vagy jelekkel kapcsolatos információkat rögzítő fogalmak. |
+ | GYÓGYSZERT | a gyógyszerekre vonatkozó információkat rögzítő fogalmak, beleértve a gyógyszerek nevét, osztályait, adagolását és az adminisztrációs útvonalakat. |
+ | SZOCIÁLIS | fogalmak, amelyek rögzítik az orvosilag releváns közösségi szempontokkal kapcsolatos információkat, például a családi kapcsolatot. |
+ | KEZELÉS | a terápiás eljárásokkal kapcsolatos információkat rögzítő fogalmak. |
+  
+Az egyes kategóriák két fogalmi csoportot tartalmazhatnak:
 
-### <a name="relation-extraction"></a>Kapcsolatok kibontása
+* **Entitások** – olyan feltételek, amelyek olyan orvosi fogalmakat rögzítenek, mint például a diagnosztika, a gyógyszer neve vagy a kezelés neve.  A *bronchitis* például a diagnosztika, és az *aszpirin* a gyógyszer neve.  Az ebben a csoportban megjelenő említést UMLS-koncepcióhoz lehet kapcsolni.
+* **Attribútumok** – az észlelt entitással kapcsolatos további információkat biztosító kifejezések (például: *súlyos* ) a *bronchitis* vagy a *81 mg* feltétele az *aszpirin*adagja.  Az ebben a kategóriában szereplő említés nem lesz társítva egy UMLS-koncepció-AZONOSÍTÓhoz.
 
-A kapcsolat kibontása azonosítja a szövegben említett fogalmak közötti értelmes kapcsolatokat. A "feltétel időpontja" típusú kapcsolatok például a feltétel nevének egy időponthoz társításával találhatók meg. Az állapot Text Analytics a következő kapcsolatokat tudja azonosítani:
+Emellett a szolgáltatás felismeri a különböző fogalmak közötti kapcsolatokat, beleértve az attribútumok és az entitások közötti kapcsolatokat *, például a* *törzs szerkezetének* vagy a *gyógyszert a gyógyszer neve* *és az* entitások közötti kapcsolatok között, például a rövidítések észlelésében.
 
-|Kategória  |Leírás   |
-|----------|--------------|
-| DirectionOfBodyStructure | A törzs struktúrájának iránya. |
-| DirectionOfCondition | Egy feltétel iránya. |
-| DirectionOfExamination | Egy vizsgálat iránya. |
-| DirectionOfTreatment | A kezelés iránya. |
-| TimeOfCondition | Egy feltétel kialakulásához kapcsolódó idő. |
-| QualifierOfCondition | Egy feltétel társított minősítője. |
-| DosageOfMedication | A gyógyszer adagolása. |
-| FormOfMedication | A gyógyszert egy formája. |
-| RouteOfMedication | Egy gyógyszer fogyasztásának útvonala vagy módja. Például: *szóbeli*. |
-| FrequencyOfMedication | A gyógyszer felhasználásának gyakorisága. | 
-| ValueOfCondition | Egy feltétellel társított numerikus érték. |
-| UnitOfCondition | Egy adott feltételhez társított egység (például idő). |
-| TimeOfMedication | Az az idő, amikor a gyógyszert felhasználták. |
-| TimeOfTreatment | A kezelés felügyeletének időpontja. | 
-| FrequencyOfTreatment | A kezelés felügyeletének gyakorisága. |
-| ValueOfExamination | Egy vizsgálathoz rendelt numerikus érték. | 
-| UnitOfExamination | Egy olyan egység (például százalék), amely egy vizsgálathoz van társítva. |
-| RelationOfExamination | Egy entitás és egy vizsgálat közötti kapcsolat. | 
-| TimeOfExamination | A vizsgálathoz kapcsolódó idő. |
-| Rövidítés | Egy rövidítés.  | 
+## <a name="anatomy"></a>Anatómia
+
+### <a name="entities"></a>Entitások
+
+**BODY_STRUCTURE** – törzsrendszer, anatómiai helyek vagy régiók, valamint törzsi webhelyek. Például: ARM, térd, has, orr, máj, fej, légzőszervi rendszer, limfociták.
+
+:::image type="content" source="../../media/ta-for-health/anatomy-entities-body-structure.png" alt-text="Példa a törzs szerkezetének entitására.":::
+
+
+:::image type="content" source="../../media/ta-for-health/anatomy-entities-body-structure-2.png" alt-text="Példa a törzs szerkezetének entitására.":::
+
+### <a name="attributes"></a>Attribútumok
+
+**Írásirányt** képező kifejezések, például: Left, laterális, Upper, posterior, amely a törzs szerkezetét jellemzi.
+
+:::image type="content" source="../../media/ta-for-health/anatomy-attributes.png" alt-text="Példa a törzs szerkezetének entitására.":::
+
+### <a name="supported-relations"></a>Támogatott kapcsolatok
+
+* **DIRECTION_OF_BODY_STRUCTURE**
+
+## <a name="demographics"></a>Demográfia
+
+### <a name="entities"></a>Entitások
+
+**Kor** – minden életkori kifejezés és kifejezés, beleértve a betegeket, a családtagokat és másokat is. Például: 40 éves, 51 yo, 3 hónapos, felnőtt, csecsemő, idős, fiatal, kiskorú, középkorú.
+
+:::image type="content" source="../../media/ta-for-health/age-entity.png" alt-text="Példa a törzs szerkezetének entitására.":::
+
+:::image type="content" source="../../media/ta-for-health/age-entity-2.png" alt-text="Példa a törzs szerkezetének entitására.":::
+
+
+**Nemre** vonatkozó feltételek, amelyek felfedik a tárgy nemet. Például: férfi, nő, nő, úriember, Lady.
+
+:::image type="content" source="../../media/ta-for-health/gender-entity.png" alt-text="Példa a törzs szerkezetének entitására.":::
+
+### <a name="attributes"></a>Attribútumok
+
+**RELATIONAL_OPERATOR** – a demográfiai entitás és a további információk közötti kapcsolatot kifejező kifejezések.
+
+:::image type="content" source="../../media/ta-for-health/relational-operator.png" alt-text="Példa a törzs szerkezetének entitására.":::
+
+## <a name="examinations"></a>Vizsgálatok
+
+### <a name="entities"></a>Entitások
+
+**EXAMINATION_NAME** – diagnosztikai eljárások és tesztek. Például: MRI, EKG, HIV-teszt, hemoglobin, vérlemezkék száma, méretezési rendszerek, például a *Bristol széklet Scale*.
+
+:::image type="content" source="../../media/ta-for-health/exam-name-entities.png" alt-text="Példa a törzs szerkezetének entitására.":::
+
+:::image type="content" source="../../media/ta-for-health/exam-name-entities-2.png" alt-text="Példa a törzs szerkezetének entitására.":::
+
+### <a name="attributes"></a>Attribútumok
+
+**Irány** – a vizsgálatot jellemző irányok.
+
+:::image type="content" source="../../media/ta-for-health/exam-direction-attribute.png" alt-text="Példa a törzs szerkezetének entitására.":::
+
+**MEASUREMENT_UNIT** – a vizsgálat egysége. Például a *hemoglobin > 9,5 g/DL*értékben a *g/DL* kifejezés a *hemoglobin* -teszt egysége.
+
+:::image type="content" source="../../media/ta-for-health/exam-unit-attribute.png" alt-text="Példa a törzs szerkezetének entitására.":::
+
+**MEASUREMENT_VALUE** – a vizsgálat értéke. Például a *hemoglobin > 9,5 g/DL*értékben a *9,5* kifejezés a *hemoglobin* -teszt értéke.
+
+:::image type="content" source="../../media/ta-for-health/exam-value-attribute.png" alt-text="Példa a törzs szerkezetének entitására.":::
+
+**RELATIONAL_OPERATOR** – a vizsgálat és a további információk közötti kapcsolatot kifejező kifejezéseket. Például a megcélzott vizsgálathoz szükséges mérési érték.
+
+:::image type="content" source="../../media/ta-for-health/exam-relational-operator-attribute.png" alt-text="Példa a törzs szerkezetének entitására.":::
+
+**Idő** – a vizsgálat kezdő és/vagy hosszára (időtartamára) vonatkozó időbeli feltételek. Például, ha a teszt bekövetkezett.
+
+:::image type="content" source="../../media/ta-for-health/exam-time-attribute.png" alt-text="Példa a törzs szerkezetének entitására.":::
+
+### <a name="supported-relations"></a>Támogatott kapcsolatok
+
++ **DIRECTION_OF_EXAMINATION**
++   **RELATION_OF_EXAMINATION**
++   **TIME_OF_EXAMINATION**
++   **UNIT_OF_EXAMINATION**
++   **VALUE_OF_EXAMINATION**
+
+## <a name="genomics"></a>Genomics
+
+### <a name="entities"></a>Entitások
+
+**Gén** – a gének összes említése. Például: MTRR, F2.
+
+:::image type="content" source="../../media/ta-for-health/genomics-entities.png" alt-text="Példa a törzs szerkezetének entitására.":::
+
+**Variant** – a gén összes variációjának említése. Például: c. 524C>T, (MTRR): r.1462_1557del96
+  
+## <a name="healthcare"></a>Egészségügy
+
+### <a name="entities"></a>Entitások
+  
+**ADMINISTRATIVE_EVENT** – az egészségügyi rendszerhez kapcsolódó események, de adminisztratív/félig adminisztratív jellegűek. Például: regisztráció, beléptetés, próbaverzió, tanulmányi bejegyzés, átvitel, kivonás, kórházi ellátás, kórházi tartózkodás. 
+
+:::image type="content" source="../../media/ta-for-health/healthcare-event-entity.png" alt-text="Példa a törzs szerkezetének entitására.":::
+
+**CARE_ENVIRONMENT** – olyan környezet vagy hely, ahol a betegek törődnek. Például: vészhelyzeti helyiség, orvosi rendelő, cardio-egység, hospice, kórház.
+
+:::image type="content" source="../../media/ta-for-health/healthcare-environment-entity.png" alt-text="Példa a törzs szerkezetének entitására.":::
+
+**HEALTHCARE_PROFESSION** – az egészségügyi szakember licenccel vagy nem licenccel rendelkezik. Például: fogorvos, patológus, neurológus, radiológus, gyógyszerész, táplálkozási, fizikai terapeuta, csontkovács.
+
+:::image type="content" source="../../media/ta-for-health/healthcare-profession-entity.png" alt-text="Példa a törzs szerkezetének entitására.":::
+
+:::image type="content" source="../../media/ta-for-health/healthcare-profession-entity-2.png" alt-text="Példa a törzs szerkezetének entitására.":::
+
+## <a name="medical-condition"></a>Orvosi feltétel
+
+### <a name="entities"></a>Entitások
+
+**Diagnosztika** – betegség, szindróma, mérgezés. Például: mellrák, Alzheimer-kór, HTN, CHF, gerincvelői sérülés.
+
+:::image type="content" source="../../media/ta-for-health/medical-condition-entity.png" alt-text="Példa a törzs szerkezetének entitására.":::
+
+:::image type="content" source="../../media/ta-for-health/medical-condition-entity-2.png" alt-text="Példa a törzs szerkezetének entitására.":::
+
+**SYMPTOM_OR_SIGN** – a betegség vagy más Diagnosztizálás szubjektív vagy tárgyilagos bizonyítéka. Például a mellkasi fájdalom, a fejfájás, a szédülés, a kiütések, az ZOKOG, a has lágy, jó székletürítés, jól táplált.
+
+:::image type="content" source="../../media/ta-for-health/medical-condition-symptom-entity.png" alt-text="Példa a törzs szerkezetének entitására.":::
+
+:::image type="content" source="../../media/ta-for-health/medical-condition-symptom-entity-2.png" alt-text="Példa a törzs szerkezetének entitására.":::
+
+### <a name="attributes"></a>Attribútumok
+
+**CONDITION_QUALIFIER** az orvosi feltételek leírására szolgáló minőségi feltételeket. A következő alkategóriák minősülnek minősítőknek:
+
+1.  Időhöz kapcsolódó kifejezések: ezek az idődimenziót minőségileg leíró kifejezések, például hirtelen, akut, krónikus, régi. 
+2.  Minőségi kifejezések: azok a feltételek, amelyek leírják az orvosi feltétel "természetét", például égő, éles.
+3.  Súlyossági kifejezések: súlyos, enyhe, egy kicsit, nem ellenőrzött.
+4.  Extensivity kifejezések: helyi, központi, diffúz.
+5.  Sugárzási kifejezések: sugárzók, sugárzások.
+6.  Feltétel méretezése: bizonyos esetekben a feltételt egy skála jellemzi, amely az értékek véges rendezett listája. Például a betegek a III. fázis hasnyálmirigy-rákos megbetegedéssel.
+7.  Feltétel tanfolyam: olyan kifejezés, amely egy feltétel tanfolyamára vagy előrehaladására vonatkozik, például a fejlesztésre, a romlásra, a felbontásra és a visszaküldetésre. 
+
+:::image type="content" source="../../media/ta-for-health/condition-qualifier-diagnosis.png" alt-text="Példa a törzs szerkezetének entitására.":::
+
+:::image type="content" source="../../media/ta-for-health/condition-qualifier-diagnosis-2.png" alt-text="Példa a törzs szerkezetének entitására.":::
+
+:::image type="content" source="../../media/ta-for-health/conditional-qualifier-symptom-medication.png" alt-text="Példa a törzs szerkezetének entitására.":::
+
+:::image type="content" source="../../media/ta-for-health/condition-qualifier-diagnosis-3.png" alt-text="Példa a törzs szerkezetének entitására.":::
+
+:::image type="content" source="../../media/ta-for-health/condition-qualifier-symptom.png" alt-text="Példa a törzs szerkezetének entitására.":::
+
+A törzs orvosi feltételeit jellemző **irányok** iránya.
+
+:::image type="content" source="../../media/ta-for-health/medical-condition-direction-attribute.png" alt-text="Példa a törzs szerkezetének entitására.":::
+
+**Gyakoriság** – milyen gyakran fordul elő vagy fordul elő az orvosi feltételek.
+
+:::image type="content" source="../../media/ta-for-health/medical-condition-frequency-attribute.png" alt-text="Példa a törzs szerkezetének entitására.":::
+
+:::image type="content" source="../../media/ta-for-health/medical-condition-frequency-attribute-2.png" alt-text="Példa a törzs szerkezetének entitására.":::
+
+**MEASUREMENT_UNIT** – az orvosi feltételt jellemző egység. Például *1.5 x2x1 cm daganatban*a *cm* kifejezés a *tumor*mértékegysége. 
+
+:::image type="content" source="../../media/ta-for-health/medical-condition-measure-unit-attribute.png" alt-text="Példa a törzs szerkezetének entitására.":::
+
+**MEASUREMENT_VALUE** – az orvosi állapotot jellemző érték. Például *1.5 x2x1 cm-es tumorban*az *1.5 x2x1* a *tumor*mérési értéke. 
+
+:::image type="content" source="../../media/ta-for-health/medical-condition-measure-value-attribute.png" alt-text="Példa a törzs szerkezetének entitására.":::
+
+**RELATIONAL_OPERATOR** – az orvosi feltételekkel kapcsolatos további információk közötti kapcsolatot kifejező kifejezések. Például az idő vagy a mérték értéke. 
+
+:::image type="content" source="../../media/ta-for-health/medical-condition-relational-operator.png" alt-text="Példa a törzs szerkezetének entitására.":::
+
+Az orvosi feltételek kezdetének és/vagy hosszának (időtartamának **) időbeli időbeli** feltételei. Például amikor egy tünet elindult (kialakulás) vagy egy betegség előfordulásakor.
+
+:::image type="content" source="../../media/ta-for-health/medical-condition-time-attribute.png" alt-text="Példa a törzs szerkezetének entitására.":::
+
+### <a name="supported-relations"></a>Támogatott kapcsolatok
+
++ **DIRECTION_OF_CONDITION**
++   **QUALIFIER_OF_CONDITION**
++   **TIME_OF_CONDITION**
++   **UNIT_OF_CONDITION**
++   **VALUE_OF_CONDITION**
+
+## <a name="medication"></a>Gyógyszert
+
+### <a name="entities"></a>Entitások
+
+**MEDICATION_CLASS** – a hasonló beavatkozási mechanizmussal, a kapcsolódó művelettel, hasonló kémiai szerkezettel és/vagy az azonos betegség kezelésére használt gyógyszerek készlete. Például: ACE-gátló, opioid, antibiotikumok, fájdalomcsillapítók.
+
+:::image type="content" source="../../media/ta-for-health/medication-entities-class.png" alt-text="Példa a törzs szerkezetének entitására.":::
+
+**MEDICATION_NAME** – a gyógyszert említik, beleértve a szerzői jog nélküli márkaneveket és a nem márkanevek nevét. Például: Advil, ibuprofen.
+
+:::image type="content" source="../../media/ta-for-health/medication-entities-name.png" alt-text="Példa a törzs szerkezetének entitására.":::
+
+### <a name="attributes"></a>Attribútumok
+
+**Adagolás** – a megrendelt gyógyszer mennyisége. Tegyük fel például, hogy *1000 ml*-es nátrium-klorid-megoldás.
+
+:::image type="content" source="../../media/ta-for-health/medication-dosage.png" alt-text="Példa a törzs szerkezetének entitására.":::
+
+**Gyakoriság** – milyen gyakran kell gyógyszert felvenni.
+
+:::image type="content" source="../../media/ta-for-health/medication-frequency.png" alt-text="Példa a törzs szerkezetének entitására.":::
+
+:::image type="content" source="../../media/ta-for-health/medication-frequency-2.png" alt-text="Példa a törzs szerkezetének entitására.":::
+
+**MEDICATION_FORM** – a gyógyszer formája. Például: megoldás, pirula, kapszula, tabletta, javítás, zselé, beillesztés, hab, spray, drops, Cream, szirup.
+
+:::image type="content" source="../../media/ta-for-health/medication-form.png" alt-text="Példa a törzs szerkezetének entitására.":::
+
+**MEDICATION_ROUTE** – a gyógyszert felügyeleti módszere. Például: szóbeli, hüvelyi, IV, epidurális, helyileg belélegzett.
+
+:::image type="content" source="../../media/ta-for-health/medication-route.png" alt-text="Példa a törzs szerkezetének entitására.":::
+
+**RELATIONAL_OPERATOR** – a gyógyszerek és a további információk közötti kapcsolatot kifejező kifejezések. Például a szükséges mérési érték.
+
+:::image type="content" source="../../media/ta-for-health/medication-relational-operator.png" alt-text="Példa a törzs szerkezetének entitására.":::
+
+:::image type="content" source="../../media/ta-for-health/medication-time.png" alt-text="Példa a törzs szerkezetének entitására.":::
+
+### <a name="supported-relations"></a>Támogatott kapcsolatok
+
++ **DOSAGE_OF_MEDICATION**
++   **FORM_OF_MEDICATION**
++   **FREQUENCY_OF_MEDICATION**
++   **ROUTE_OF_MEDICATION**
++   **TIME_OF_MEDICATION**
+  
+## <a name="treatment"></a>Kezelés
+
+### <a name="entities"></a>Entitások
+
+**TREATMENT_NAME** – terápiás eljárások. Például a térd-csere sebészet, a csontvelő-transzplantáció, a TAVI, az étrend.
+
+:::image type="content" source="../../media/ta-for-health/treatment-entities-name.png" alt-text="Példa a törzs szerkezetének entitására.":::
+
+### <a name="attributes"></a>Attribútumok
+
+A kezelést jellemző, **irányt** meghatározó kifejezések.
+
+:::image type="content" source="../../media/ta-for-health/treatment-direction.png" alt-text="Példa a törzs szerkezetének entitására.":::
+
+**Gyakoriság** – milyen gyakran történik a kezelés, vagy ha ez történik.
+
+:::image type="content" source="../../media/ta-for-health/treatment-frequency.png" alt-text="Példa a törzs szerkezetének entitására.":::
+ 
+**RELATIONAL_OPERATOR** – a kezelés és a további információk közötti kapcsolatot kifejező kifejezések.  Például az előző eljárásból mennyi idő telt el.
+
+:::image type="content" source="../../media/ta-for-health/treatment-relational-operator.png" alt-text="Példa a törzs szerkezetének entitására.":::
+
+A kezelés kezdetére és/vagy hosszára (időtartamára) **vonatkozó időbeli feltételek** . Például az a dátum, amikor a kezelést megadták.
+
+:::image type="content" source="../../media/ta-for-health/treatment-time.png" alt-text="Példa a törzs szerkezetének entitására.":::
+
+
+### <a name="supported-relations"></a>Támogatott kapcsolatok
+
++ **DIRECTION_OF_TREATMENT**
++   **TIME_OF_TREATMENT**
++   **FREQUENCY_OF_TREATMENT**
+
+## <a name="social"></a>Közösségi
+
+### <a name="entities"></a>Entitások
+
+**FAMILY_RELATION** – a tárgy rokonainak említése. Például: Atya, lánya, testvér, szülők.
+
+:::image type="content" source="../../media/ta-for-health/family-relation.png" alt-text="Példa a törzs szerkezetének entitására.":::

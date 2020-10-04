@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 04/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 85c406fc561424d7b02d39dfd58dc3c8fe34aab2
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 8ec87a8d78f73af48b662c5971dfe1803717f88a
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88116087"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91704548"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>Útmutató: az SAML-jogkivonatban kiadott szerepkör-jogcím konfigurálása nagyvállalati alkalmazásokhoz
 
@@ -75,7 +75,7 @@ Ha az alkalmazás egy SAML-válaszban egyéni szerepköröket vár, ezt a funkci
 
      `https://graph.microsoft.com/beta/servicePrincipals`
 
-      Ha több könyvtárat használ, kövesse az alábbi mintát:`https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
+      Ha több könyvtárat használ, kövesse az alábbi mintát: `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
 
       ![Graph Explorer párbeszédpanel az egyszerű szolgáltatások beolvasására szolgáló lekérdezéssel](./media/active-directory-enterprise-app-role-management/graph-explorer-new1.png)
 
@@ -159,7 +159,7 @@ Ha az alkalmazás egy SAML-válaszban egyéni szerepköröket vár, ezt a funkci
 
     a. az ikon **szerkesztése** gombra kattintva megnyithatja a **felhasználói attribútumok & jogcímek** párbeszédpanelt.
 
-      !["Attribútum hozzáadása" gomb](./media/active-directory-enterprise-app-role-management/editattribute.png)
+      ![Képernyőfelvétel: a felhasználói attribútumok & jogcímek párbeszédpanel megnyitásához használt szerkesztési ikon kiemelése.](./media/active-directory-enterprise-app-role-management/editattribute.png)
 
     b. A **felhasználói jogcímek kezelése** párbeszédpanelen adja hozzá az SAML-jogkivonat attribútumot az **új jogcím hozzáadása**lehetőségre kattintva.
 
@@ -173,7 +173,7 @@ Ha az alkalmazás egy SAML-válaszban egyéni szerepköröket vár, ezt a funkci
 
     e. A **forrás attribútum** listáról írja be az adott sorhoz megjelenő attribútum értékét.
 
-    f. Kattintson a **Mentés** gombra.
+    f. Válassza a **Mentés** lehetőséget.
 
 10. Ha az alkalmazást egy identitás-szolgáltató által kezdeményezett egyszeri bejelentkezéssel szeretné tesztelni, jelentkezzen be a [hozzáférési panelre](https://myapps.microsoft.com) , és válassza ki az alkalmazás csempéjét. Az SAML-jogkivonatban a felhasználóhoz tartozó összes hozzárendelt szerepkört látnia kell a megadott jogcím nevével.
 
@@ -189,7 +189,7 @@ Meglévő szerepkör frissítéséhez hajtsa végre a következő lépéseket:
 
     `https://graph.microsoft.com/beta/servicePrincipals`
 
-    Ha több könyvtárat használ, kövesse az alábbi mintát:`https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
+    Ha több könyvtárat használ, kövesse az alábbi mintát: `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
 
     ![Graph Explorer párbeszédpanel az egyszerű szolgáltatások beolvasására szolgáló lekérdezéssel](./media/active-directory-enterprise-app-role-management/graph-explorer-new1.png)
 
@@ -227,7 +227,7 @@ Meglévő szerepkör törléséhez hajtsa végre a következő lépéseket:
 
     `https://graph.microsoft.com/beta/servicePrincipals`
 
-    Ha több könyvtárat használ, kövesse az alábbi mintát:`https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
+    Ha több könyvtárat használ, kövesse az alábbi mintát: `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
 
     ![Graph Explorer párbeszédpanel, az egyszerű szolgáltatások listájának beolvasására szolgáló lekérdezéssel](./media/active-directory-enterprise-app-role-management/graph-explorer-new1.png)
 
@@ -263,7 +263,7 @@ Meglévő szerepkör törléséhez hajtsa végre a következő lépéseket:
     > [!NOTE]
     > A szerepkört le kell tiltani ahhoz, hogy el lehessen távolítani.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További lépésekért tekintse meg az [alkalmazás dokumentációját](../saas-apps/tutorial-list.md).
 

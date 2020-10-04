@@ -1,17 +1,17 @@
 ---
 title: Replikák olvasása – Azure Database for PostgreSQL – egyetlen kiszolgáló
 description: Ez a cikk a Azure Database for PostgreSQL-Single Server olvasási replika funkcióját ismerteti.
-author: rachel-msft
-ms.author: raagyema
+author: sr-msft
+ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/10/2020
-ms.openlocfilehash: d1fa99d0954177e2804039fc71c2ba010b94bd50
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 2d0ee0e4c5cf3f7c2f4b623f0270ecf5eb01fc36
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91530940"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710515"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Replikák olvasása Azure Database for PostgreSQL – egyetlen kiszolgáló
 
@@ -83,7 +83,7 @@ A parancssorba írja be a felhasználói fiókhoz tartozó jelszót.
 ## <a name="monitor-replication"></a>Replikáció monitorozása
 Azure Database for PostgreSQL két mérőszámot biztosít a replikáció figyeléséhez. A két metrika a replikák és a **replika késések** **közötti maximális késés** . A metrikák megtekintésével kapcsolatos további információkért tekintse meg a replika **figyelése** című szakaszt a [replika olvasása című cikkben](howto-read-replicas-portal.md).
 
-A **replikák közötti maximális késés** az elsődleges és a legkésleltető replika közötti késést mutatja bájtban. Ez a metrika csak az elsődleges kiszolgálón érhető el.
+A **replikák közötti maximális késés** az elsődleges és a legkésleltető replika közötti késést mutatja bájtban. Ez a metrika csak az elsődleges kiszolgálón érhető el, és csak akkor lesz elérhető, ha legalább az egyik olvasási replika csatlakozik az elsődlegeshez.
 
 A **replika késésének** mérőszáma az utolsó visszajátszott tranzakció óta eltelt időt mutatja. Ha az elsődleges kiszolgálón nincsenek tranzakciók, akkor a metrika ezt az időbeli késést tükrözi. Ez a metrika csak replika kiszolgálók esetében érhető el. A replika késését a nézetből számítjuk ki `pg_stat_wal_receiver` :
 
@@ -141,6 +141,9 @@ Ha úgy döntött, hogy feladatátvételt kíván replikálni egy replikára,
     
 Miután az alkalmazás sikeresen feldolgozta az olvasásokat és az írásokat, befejezte a feladatátvételt. Az alkalmazás által tapasztalható állásidő mennyisége a probléma észlelése és a fenti 1. és 2. lépés elvégzése után függ.
 
+### <a name="disaster-recovery"></a>Vészhelyreállítás
+
+Ha van olyan súlyos katasztrófa-esemény, mint például a rendelkezésre állási zóna szintű vagy regionális meghibásodások, akkor a vész-helyreállítási műveletet az olvasási replika előléptetésével hajthatja végre. A felhasználói felület portálon navigáljon az olvasási replika kiszolgálóra. Ezután kattintson a replikáció fülre, és állítsa le a replikát úgy, hogy az egy független kiszolgáló legyen. Azt is megteheti, hogy az [Azure CLI](https://docs.microsoft.com/cli/azure/postgres/server/replica?view=azure-cli-latest#az_postgres_server_replica_stop) használatával leállítja és előlépteti a másodpéldány-kiszolgálót.
 
 ## <a name="considerations"></a>Megfontolandó szempontok
 
@@ -189,6 +192,6 @@ Ha leállítja egy elsődleges kiszolgáló és egy olvasási replika közötti 
 ### <a name="deleted-primary-and-standalone-servers"></a>Elsődleges és önálló kiszolgálók törölve
 Elsődleges kiszolgáló törlésekor az összes olvasási replikája önálló kiszolgáló lesz. A rendszer újraindítja a replikákat, hogy tükrözze ezt a változást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Ismerje meg, hogyan [hozhat létre és kezelhet olvasási replikákat a Azure Portalban](howto-read-replicas-portal.md).
 * Ismerje meg, hogyan [hozhat létre és kezelhet olvasási replikákat az Azure CLI-ben és a REST APIban](howto-read-replicas-cli.md).
