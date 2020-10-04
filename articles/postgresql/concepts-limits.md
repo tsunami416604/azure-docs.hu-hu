@@ -1,18 +1,18 @@
 ---
 title: Korlátok – Azure Database for PostgreSQL – egyetlen kiszolgáló
 description: Ez a cikk Azure Database for PostgreSQL – egyetlen kiszolgáló korlátozásait ismerteti, például a kapcsolatok számát és a tárolási motor beállításait.
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/28/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6733e373b35dd160af94e3178cd11f657f362c1c
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: 6f48245983898c542197deb7e0b3cd53bd39be33
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91665257"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707523"
 ---
 # <a name="limits-in-azure-database-for-postgresql---single-server"></a>Korlátok Azure Database for PostgreSQL – egyetlen kiszolgáló
 Az alábbi szakaszok az adatbázis-szolgáltatás kapacitását és működési korlátait ismertetik. Ha szeretne többet megtudni az erőforrásról (számítási, memória-, tárolási) szintjeiről, tekintse meg a [díjszabási szintek](concepts-pricing-tiers.md) című cikket.

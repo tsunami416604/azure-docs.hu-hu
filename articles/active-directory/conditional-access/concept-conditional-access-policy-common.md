@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbf4d7b9f622ff590eee401544bf62655fd8d096
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 114f26c71ee1aecdb1a0ad3d1c01e558843c0969
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024383"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91705058"
 ---
 # <a name="common-conditional-access-policies"></a>Gyakori feltételes hozzáférési szabályzatok
 
@@ -38,18 +38,18 @@ További információ a segélyhívó fiókokról és azok fontos okairól a kö
 * [MFA megkövetelése az Azure-felügyelethez](howto-conditional-access-policy-azure-management.md)\*
 * [MFA megkövetelése minden felhasználó számára](howto-conditional-access-policy-all-users-mfa.md)\*
 
-\*Ez a négy házirend együtt van konfigurálva, a [biztonsági Alapértelmezések](../fundamentals/concept-fundamentals-security-defaults.md)által engedélyezett funkciókat utánozza.
+\* Ez a négy házirend együtt van konfigurálva, a [biztonsági Alapértelmezések](../fundamentals/concept-fundamentals-security-defaults.md)által engedélyezett funkciókat utánozza.
 
 ## <a name="additional-policies"></a>További szabályzatok
 
-* [A kockázatalapú feltételes hozzáférésre vonatkozó bejelentkezés (prémium szintű Azure AD P2 szükséges)](howto-conditional-access-policy-risk.md)
+* [Bejelentkezési kockázat alapú feltételes hozzáférés (prémium szintű Azure AD P2 szükséges)](howto-conditional-access-policy-risk.md)
 * [Felhasználói kockázat alapú feltételes hozzáférés (prémium szintű Azure AD P2 szükséges)](howto-conditional-access-policy-risk-user.md)
 * [Megbízható helyek megkövetelése az MFA-regisztrációhoz](howto-conditional-access-policy-registration.md)
-* [Hozzáférés letiltása hely szerint](howto-conditional-access-policy-location.md)
+* [Hozzáférés letiltása hely alapján](howto-conditional-access-policy-location.md)
 * [Megfelelő eszköz megkövetelése](howto-conditional-access-policy-compliant-device.md)
 * [Hozzáférés letiltása adott alkalmazások kivételével](howto-conditional-access-policy-block-access.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A bejelentkezési viselkedés szimulálása a feltételes hozzáférési What If eszköz használatával.](troubleshoot-conditional-access-what-if.md)
 

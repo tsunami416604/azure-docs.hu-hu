@@ -8,12 +8,12 @@ ms.author: nibaccam
 author: nibaccam
 ms.date: 08/05/2020
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: c90d11ba630dbb1e37054715855ae5547a8a034b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a80559761c8a3eba6045db5cd99a7719dd041fa8
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90902724"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91704395"
 ---
 # <a name="create-azure-machine-learning-datasets-from-azure-open-datasets"></a>Azure Machine Learning adatkészletek létrehozása az Azure Open-adatkészletből
 
@@ -45,20 +45,20 @@ Ehhez a cikkhez a következők szükségesek:
 
 * Egy [Azure Machine learning munkaterület](../machine-learning/how-to-manage-workspace.md).
 
-* A [Azure Machine learning SDK for Python telepítve](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py), amely magában foglalja a `azureml-datasets` csomagot is.
+* A [Azure Machine learning SDK for Python telepítve](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true ), amely magában foglalja a `azureml-datasets` csomagot is.
 
-    * Hozzon létre egy [Azure Machine learning számítási példányt](../machine-learning/concept-compute-instance.md#managing-a-compute-instance), amely egy teljesen konfigurált és felügyelt fejlesztői környezet, amely integrált jegyzetfüzeteket és már telepített SDK-t tartalmaz.
+    * Hozzon létre egy [Azure Machine learning számítási példányt](../machine-learning/how-to-create-manage-compute-instance.md), amely egy teljesen konfigurált és felügyelt fejlesztői környezet, amely integrált jegyzetfüzeteket és már telepített SDK-t tartalmaz.
 
-    **VAGY**
+    **OR**
 
-    * Saját Python-környezetében dolgozhat, és saját maga is telepítheti az SDK-t [ezekkel az utasításokkal](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
+    * Saját Python-környezetében dolgozhat, és saját maga is telepítheti az SDK-t [ezekkel az utasításokkal](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true ).
 
 > [!NOTE]
 > Egyes adatkészlet-osztályok függőségekkel rendelkeznek a [azureml-adatelőkészítés](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) csomagon, amely csak a 64 bites Python rendszerrel kompatibilis. A Linux-felhasználók esetében ezek az osztályok csak a következő disztribúciókban támogatottak: Red Hat Enterprise Linux (7, 8), Ubuntu (14,04, 16,04, 18,04), Fedora (27, 28), Debian (8, 9) és CentOS (7).
 
 ## <a name="create-datasets-with-the-sdk"></a>Adatkészletek létrehozása az SDK-val
 
-Ha Azure Machine Learning adatkészleteket szeretne létrehozni az Azure Open adatkészlet-osztályaival a Python SDK-ban, győződjön meg arról, hogy telepítette a csomagot a következővel: `pip install azureml-opendatasets` . Minden különálló adatkészletet a saját osztálya képvisel az SDK-ban, és bizonyos osztályok Azure Machine Learningként [ `TabularDataset` , `FileDataset` ](../machine-learning/how-to-create-register-datasets.md#dataset-types)vagy mindkettőként érhetők el. Az osztályok teljes listáját a [dokumentációban](https://docs.microsoft.com/python/api/azureml-opendatasets/azureml.opendatasets?view=azure-ml-py) találja `opendatasets` .
+Ha Azure Machine Learning adatkészleteket szeretne létrehozni az Azure Open adatkészlet-osztályaival a Python SDK-ban, győződjön meg arról, hogy telepítette a csomagot a következővel: `pip install azureml-opendatasets` . Minden különálló adatkészletet a saját osztálya képvisel az SDK-ban, és bizonyos osztályok Azure Machine Learningként [ `TabularDataset` , `FileDataset` ](../machine-learning/how-to-create-register-datasets.md#dataset-types)vagy mindkettőként érhetők el. Az osztályok teljes listáját a [dokumentációban](https://docs.microsoft.com/python/api/azureml-opendatasets/azureml.opendatasets?view=azure-ml-py&preserve-view=true ) találja `opendatasets` .
 
 Bizonyos osztályokat lekérhet a `opendatasets` vagy rendszerbe `TabularDataset` `FileDataset` , amely lehetővé teszi a fájlok közvetlen kezelését és/vagy letöltését. Más osztályok **csak** a `get_tabular_dataset()` `get_file_dataset()` `Dataset` Python SDK osztályának vagy funkcióinak használatával szerezhetnek be adatkészletet.
 
@@ -88,7 +88,7 @@ diabetes_tabular = Diabetes.get_tabular_dataset()
 
 Regisztrálja Azure Machine Learning adatkészletet a munkaterületén, így megoszthatja őket másokkal, és újból felhasználhatja őket a munkaterületen végzett kísérletek során. Amikor egy megnyitott adatkészletből létrehozott Azure Machine Learning adatkészletet regisztrál, az adatok letöltése nem történik meg azonnal, de az adatok a kéréskor (például a betanítás során) egy központi tárolóhelyről lesznek elérhetők.
 
-Az adatkészletek munkaterülethez való regisztrálásához használja a [`register()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.abstract_dataset.abstractdataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--create-new-version-false-) metódust. 
+Az adatkészletek munkaterülethez való regisztrálásához használja a [`register()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.abstract_dataset.abstractdataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--create-new-version-false-&preserve-view=true ) metódust. 
 ```Python
 titanic_ds = titanic_ds.register(workspace=workspace,
                                  name='titanic_ds',

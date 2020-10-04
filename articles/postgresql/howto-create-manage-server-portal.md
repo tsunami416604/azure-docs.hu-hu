@@ -1,17 +1,17 @@
 ---
 title: Azure Database for PostgreSQL kezelése – Azure Portal
 description: Megtudhatja, hogyan kezelheti Azure Database for PostgreSQL-kiszolgálókat a Azure Portal.
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 11/20/2019
-ms.openlocfilehash: 02a50a94b0b07d1755abe78c567df7ff5c7eda92
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 393e67d1b690f7231b5bf298b44f4db7c489d184
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907447"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91704514"
 ---
 # <a name="manage-an-azure-database-for-postgresql-server-using-the-azure-portal"></a>Azure Database for PostgreSQL-kiszolgáló kezelése a Azure Portal használatával
 
@@ -50,7 +50,7 @@ A kiszolgáló létrehozása után a általános célú és a memória optimaliz
 
 2. Módosítsa a **virtuális mag** beállítást úgy, hogy áthelyezi a csúszkát a kívánt értékre.
 
-   :::image type="content" source="./media/howto-create-manage-server-portal/scaling-compute.png" alt-text="Képernyőkép a Azure Portalról a virtuális mag lehetőség kiválasztásához Azure Database for PostgreSQL":::
+   :::image type="content" source="./media/howto-create-manage-server-portal/scaling-compute.png" alt-text="A Azure Portal képernyőképe az alapszintű, általános célú vagy a memória optimalizált szintjeinek kiválasztásához Azure Database for PostgreSQL":::
 
    > [!NOTE]
    > A skálázás virtuális mag a kiszolgáló újraindítását okozza.
@@ -63,7 +63,7 @@ A kiszolgáló létrehozása után a általános célú és a memória optimaliz
 
 2. Módosítsa a **tárolási** beállításokat úgy, hogy a csúszkát felfelé helyezi a kívánt értékre.
 
-   :::image type="content" source="./media/howto-create-manage-server-portal/scaling-storage.png" alt-text="Képernyőfelvétel a Azure Portal a tárolási skála kiválasztásához Azure Database for PostgreSQL":::
+   :::image type="content" source="./media/howto-create-manage-server-portal/scaling-storage.png" alt-text="A Azure Portal képernyőképe az alapszintű, általános célú vagy a memória optimalizált szintjeinek kiválasztásához Azure Database for PostgreSQL":::
 
    > [!NOTE]
    > A tárterület nem méretezhető le.
@@ -76,11 +76,11 @@ A rendszergazdai szerepkör jelszava a Azure Portal használatával módosíthat
 
 1. Válassza ki a kiszolgálót a Azure Portal. Az **Áttekintés** ablakban válassza a **jelszó alaphelyzetbe állítása**lehetőséget.
 
-   :::image type="content" source="./media/howto-create-manage-server-portal/overview-reset-password.png" alt-text="Képernyőkép a Azure Portalről a jelszó alaphelyzetbe állításához Azure Database for PostgreSQL":::
+   :::image type="content" source="./media/howto-create-manage-server-portal/overview-reset-password.png" alt-text="A Azure Portal képernyőképe az alapszintű, általános célú vagy a memória optimalizált szintjeinek kiválasztásához Azure Database for PostgreSQL":::
 
 2. Adjon meg egy új jelszót, és erősítse meg a jelszót. A szövegmező a jelszó bonyolultságára vonatkozó követelményeket fogja kérni.
 
-   :::image type="content" source="./media/howto-create-manage-server-portal/reset-password.png" alt-text="Képernyőkép a Azure Portalről a jelszó alaphelyzetbe állításához és a mentéshez Azure Database for PostgreSQL":::
+   :::image type="content" source="./media/howto-create-manage-server-portal/reset-password.png" alt-text="A Azure Portal képernyőképe az alapszintű, általános célú vagy a memória optimalizált szintjeinek kiválasztásához Azure Database for PostgreSQL":::
 
 3. Az új jelszó mentéséhez kattintson **az OK gombra** .
 
@@ -90,11 +90,11 @@ Ha már nincs szüksége rá, törölheti a kiszolgálót.
 
 1. Válassza ki a kiszolgálót a Azure Portal. Az **Áttekintés** ablakban válassza a **Törlés**lehetőséget.
 
-   :::image type="content" source="./media/howto-create-manage-server-portal/overview-delete.png" alt-text="Képernyőkép a Azure Portalről a kiszolgáló törléséhez Azure Database for PostgreSQL":::
+   :::image type="content" source="./media/howto-create-manage-server-portal/overview-delete.png" alt-text="A Azure Portal képernyőképe az alapszintű, általános célú vagy a memória optimalizált szintjeinek kiválasztásához Azure Database for PostgreSQL":::
 
 2. Írja be a kiszolgáló nevét a beviteli mezőbe annak megerősítéséhez, hogy ez a kiszolgáló, amelyet törölni szeretne.
 
-   :::image type="content" source="./media/howto-create-manage-server-portal/confirm-delete.png" alt-text="Képernyőkép a Azure Portalről a kiszolgáló törlésének megerősítéséhez Azure Database for PostgreSQL":::
+   :::image type="content" source="./media/howto-create-manage-server-portal/confirm-delete.png" alt-text="A Azure Portal képernyőképe az alapszintű, általános célú vagy a memória optimalizált szintjeinek kiválasztásához Azure Database for PostgreSQL":::
 
    > [!NOTE]
    > A kiszolgáló törlése visszafordíthatatlan.

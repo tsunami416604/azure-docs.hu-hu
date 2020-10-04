@@ -4,14 +4,14 @@ description: Nagy mennyiségű riasztás a több idősorozatra vonatkozó egyetl
 author: harelbr
 ms.author: harelbr
 ms.topic: conceptual
-ms.date: 08/11/2020
+ms.date: 10/04/2020
 ms.subservice: alerts
-ms.openlocfilehash: f7ca91ca49d9357285e1307c5051ef5685ad24c9
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 81e09e6d9c6a57339f1d6f1eb5ce4f494555fa19
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88187002"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91704480"
 ---
 # <a name="monitor-multiple-time-series-in-a-single-metric-alert-rule"></a>Több idősorozat figyelése egyetlen metrikai riasztási szabályban
 
@@ -174,6 +174,11 @@ A metrikus riasztási szabályok díjszabása a [Azure monitor díjszabási olda
 Metrikus riasztási szabály létrehozásakor a megadott ár becslése a kiválasztott szolgáltatások és a figyelt idősorozatok száma alapján történik, amelyet a szabály konfigurációja és az aktuális metrika értékei határoznak meg. A havi díj azonban az idősorozat tényleges értékelésén alapul, és ezért eltérhet az eredeti becsléstől, ha egyes idősorozatok nem rendelkeznek a kiértékeléshez szükséges adatokkal, vagy ha a riasztási szabály olyan szolgáltatásokat használ, amelyek dinamikusan méretezhetővé tehetik.
 
 A riasztási szabályok például magas árat mutatnak, ha kihasználja a többdimenziós funkciót, és nagy számú dimenzióérték-kombináció van kiválasztva, ami számos idősorozat figyelését eredményezi. Az adott riasztási szabályhoz tartozó tényleges díj azonban alacsonyabb lehet, ha a Dimension Values kombinációból származó idősorozatok közül nem mindegyiknek kell kiértékelnie az adatokat.
+
+## <a name="number-of-time-series-monitored-by-a-single-alert-rule"></a>Egyetlen riasztási szabály által figyelt idősorozatok száma
+
+A felesleges költségek elkerülése érdekében az egyes riasztási szabályok alapértelmezés szerint legfeljebb 5000 idősorozatot tudnak figyelni. Ha ezt a korlátot az előfizetésből kívánja emelni, nyisson meg egy támogatási jegyet.
+
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 05/13/2020
 ms.author: aahi
-ms.openlocfilehash: c1ca14b8471ef6257c0603e61d78e789e846f0ae
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: e4a652b146286965c68154bd362525861158ecb2
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142401"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91704378"
 ---
 # <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>Példa: a fő kifejezések kinyerése Text Analytics használatával
 
@@ -23,14 +23,16 @@ A [Key Phrase Extraction API](https://westus2.dev.cognitive.microsoft.com/docs/s
 
 Ez a funkció akkor hasznos, ha szeretné gyorsan azonosítani a dokumentum gyűjtemény fő témáit. Például „Az étel finom, a személyzet nagyszerű volt” bemeneti szövegre a szolgáltatás visszaadja a fő kulcsszavakat: „étel” és „nagyszerű személyzet”.
 
-További információk: [Támogatott nyelvek](../text-analytics-supported-languages.md).
+További információ: [támogatott nyelvek](../text-analytics-supported-languages.md).
 
 > [!TIP]
 > A Text Analytics egy Linux-alapú Docker-tároló rendszerképet is biztosít a fő kifejezés kinyeréséhez, így az adatokhoz [az Text Analytics tárolót is telepítheti és futtathatja](text-analytics-how-to-install-containers.md) .
 
 ## <a name="preparation"></a>Előkészítés
 
-A Key kifejezés kinyerése a legjobban akkor működik, ha nagyobb mennyiségű szöveget ad meg a munkához. Ez az érzelmek elemzésével ellentétes, ami jobb a kisebb mennyiségű szövegnél. A legjobb eredmény elérése érdekében célszerű a bemenetet ennek megfelelően átszervezni.
+[!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
+
+A Key kifejezés kinyerése a legjobban akkor működik, ha nagyobb mennyiségű szöveget ad meg a munkához. Ez az érzelmek elemzésével ellentétes, ami jobb a kisebb mennyiségű szövegnél. Annak érdekében, hogy mindkét művelet a legjobb eredményt hozza, érdemes lehet ennek megfelelően átszervezni a bemeneteket.
 
 A JSON-dokumentumoknak ebben a formátumban kell szerepelniük: azonosító, szöveg, nyelv
 
@@ -95,57 +97,66 @@ Minden POST kérés egy JSON formátumú választ ad vissza az azonosítókkal �
 
 A kimenetet visszaadása azonnali. Az eredmények adatfolyamát JSON elfogadó alkalmazáshoz küldheti vagy a kimenetet elmentheti fájlba a helyi rendszeren, majd importálható az adatokat rendezni, keresni és kezelni képes alkalmazásba.
 
-Itt látható egy példa a Key kifejezés kinyerésének kimenetére:
+Itt látható egy példa a fő kifejezés kinyerésének eredményére a v 3.1-es verzióról. 2 végpont a következő:
 
 ```json
     {
-        "documents": [
-            {
-                "keyPhrases": [
-                    "year",
-                    "trail",
-                    "trip",
-                    "views"
-                ],
-                "id": "1"
-            },
-            {
-                "keyPhrases": [
-                    "marked trails",
-                    "Worst hike",
-                    "goners"
-                ],
-                "id": "2"
-            },
-            {
-                "keyPhrases": [
-                    "trail",
-                    "small children",
-                    "family"
-                ],
-                "id": "3"
-            },
-            {
-                "keyPhrases": [
-                    "spectacular views",
-                    "trail",
-                    "area"
-                ],
-                "id": "4"
-            },
-            {
-                "keyPhrases": [
-                    "places",
-                    "beautiful views",
-                    "favorite trail"
-                ],
-                "id": "5"
-            }
-        ],
-        "errors": []
+       "documents":[
+          {
+             "id":"1",
+             "keyPhrases":[
+                "year",
+                "trail",
+                "trip",
+                "views",
+                "hike"
+             ],
+             "warnings":[]
+          },
+          {
+             "id":"2",
+             "keyPhrases":[
+                "marked trails",
+                "Worst hike",
+                "goners"
+             ],
+             "warnings":[]
+          },
+          {
+             "id":"3",
+             "keyPhrases":[
+                "trail",
+                "small children",
+                "family"
+             ],
+             "warnings":[]
+          },
+          {
+             "id":"4",
+             "keyPhrases":[
+                "spectacular views",
+                "trail",
+                "Worth",
+                "area"
+             ],
+             "warnings":[]
+          },
+          {
+             "id":"5",
+             "keyPhrases":[
+                "places",
+                "beautiful views",
+                "favorite trail",
+                "rest"
+             ],
+             "warnings":[]
+          }
+       ],
+       "errors":[],
+       "modelVersion":"2020-07-01"
     }
-```
 
+```
 Ahogy azt a feljegyezte, az elemző megkeresi és elveti a nem alapvető szavakat, és megtartja a mondat tárgyát vagy tárgyát képező egyszeres kifejezéseket vagy kifejezéseket.
 
 ## <a name="summary"></a>Összefoglalás
@@ -164,6 +175,6 @@ Ebben a cikkben megtanulta a kulcsfontosságú kifejezések kinyeréséhez szük
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Text Analytics áttekintése](../overview.md)
+* [A Text Analytics áttekintése](../overview.md)
 * [Az Text Analytics ügyféloldali kódtár használata](../quickstarts/text-analytics-sdk.md)
 * [Újdonságok](../whats-new.md)

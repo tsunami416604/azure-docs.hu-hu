@@ -1,18 +1,18 @@
 ---
 title: 'Oktatóanyag: Azure Database for PostgreSQL – egyetlen kiszolgáló megtervezése – Azure Portal'
 description: Ez az oktatóanyag bemutatja, hogyan tervezheti meg az első Azure Database for PostgreSQL-kiszolgálót a Azure Portal használatával.
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.custom: tutorial, mvc
 ms.topic: tutorial
 ms.date: 06/25/2019
-ms.openlocfilehash: 7e98c34198c0821dac59f849267a920a87c48a54
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d22e9c10c167e0b2646298acca75d506a0ea032f
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905645"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707574"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Oktatóanyag: Azure Database for PostgreSQL – egyetlen kiszolgáló tervezése a Azure Portal használatával
 
@@ -42,11 +42,11 @@ Kövesse az alábbi lépéseket az Azure-adatbázis PostgreSQL-kiszolgálóhoz l
 
 3. Válassza az **egykiszolgálós** telepítés lehetőséget.
 
-   :::image type="content" source="./media/tutorial-design-database-using-azure-portal/select-deployment-option.png" alt-text="Azure Database for PostgreSQL kiválasztása – egykiszolgálós üzembe helyezési lehetőség":::
+   :::image type="content" source="./media/tutorial-design-database-using-azure-portal/select-deployment-option.png" alt-text="Azure-adatbázis PostgreSQL-hez - Az adatbázis létrehozása":::
 
 4. Töltse ki az **alapok** űrlapot a következő információkkal:
 
-    :::image type="content" source="./media/tutorial-design-database-using-azure-portal/create-basics.png" alt-text="A kiszolgáló létrehozása":::
+    :::image type="content" source="./media/tutorial-design-database-using-azure-portal/create-basics.png" alt-text="Azure-adatbázis PostgreSQL-hez - Az adatbázis létrehozása":::
 
     Beállítás|Ajánlott érték|Leírás
     ---|---|---
@@ -64,7 +64,7 @@ Kövesse az alábbi lépéseket az Azure-adatbázis PostgreSQL-kiszolgálóhoz l
    > Érdemes lehet az alapszintű díjszabást használni, ha a számítási feladathoz elegendő a könnyű számítás és az I/O. Vegye figyelembe, hogy az alapszintű díjszabásban létrehozott kiszolgálók később nem méretezhetők át általános célú vagy a memóriára optimalizált értékre. További információért tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/postgresql/) .
    > 
 
-    :::image type="content" source="./media/quickstart-create-database-portal/2-pricing-tier.png" alt-text="A díjszabási szintek panelje":::
+    :::image type="content" source="./media/quickstart-create-database-portal/2-pricing-tier.png" alt-text="Azure-adatbázis PostgreSQL-hez - Az adatbázis létrehozása":::
 
     > [!TIP]
     > Az **automatikus növekedés** lehetővé teszi, hogy a kiszolgáló növelje a tárterületet, ha közeledik a lefoglalt korláthoz, anélkül, hogy ez befolyásolná a munkaterhelést.
@@ -73,7 +73,7 @@ Kövesse az alábbi lépéseket az Azure-adatbázis PostgreSQL-kiszolgálóhoz l
 
 6. Az eszköztáron válassza az **Értesítések** ikont (csengő) az üzembehelyezési folyamat megfigyeléséhez. Az üzembe helyezés után kiválaszthatja a **Rögzítés az irányítópulton** lehetőséget, amellyel létrehoz egy csempét a kiszolgálóhoz az Azure Portal irányítópultján. A csempe a kiszolgáló **Áttekintés** oldalának közvetlen megnyitására szolgál. Az **Erőforrás megnyitása** lehetőség kiválasztásával megnyitja a kiszolgáló **Áttekintés** oldalát.
 
-    :::image type="content" source="./media/quickstart-create-database-portal/3-notifications.png" alt-text="Az értesítések panel":::
+    :::image type="content" source="./media/quickstart-create-database-portal/3-notifications.png" alt-text="Azure-adatbázis PostgreSQL-hez - Az adatbázis létrehozása":::
    
    Alapértelmezés szerint a **postgres** adatbázis a kiszolgáló alatt jön létre. A [postgres](https://www.postgresql.org/docs/9.6/static/app-initdb.html) adatbázis egy alapértelmezett adatbázis, amelyet a felhasználók, segédprogramok és külső féltől származó alkalmazások általi használatra szántak. (A másik alapértelmezett adatbázis az **azure_maintenance**. Az a feladata, hogy elkülönítse a felügyelt szolgáltatások folyamatait a felhasználói műveletektől. Ehhez az adatbázishoz nem lehet hozzáférni.)
 
@@ -84,13 +84,13 @@ Az Azure Database for PostgreSQL szolgáltatás a kiszolgáló szintjén haszná
 
 1. Miután befejeződött az üzembe helyezés, kattintson az **Összes erőforrás** elemre a bal oldali menüben, és írja be a **mydemoserver** nevet az újonnan létrehozott kiszolgáló megkereséséhez. Kattintson a keresési eredményekben listázott kiszolgálónévre. Megnyílik a kiszolgáló **Áttekintés** oldala, amely további konfigurációs lehetőségeket biztosít.
 
-   :::image type="content" source="./media/tutorial-design-database-using-azure-portal/4-locate.png" alt-text="Azure-adatbázis PostgreSQL-hez - Kiszolgáló keresés":::
+   :::image type="content" source="./media/tutorial-design-database-using-azure-portal/4-locate.png" alt-text="Azure-adatbázis PostgreSQL-hez - Az adatbázis létrehozása":::
 
 2. A kiszolgáló lapján válassza a **Kapcsolatbiztonság** elemet. 
 
 3. Kattintson a **szabály neve** alatt található szövegmezőre, és adjon hozzá egy új tűzfalszabály-szabályt a kapcsolat IP-tartományának megadásához. Adja meg az IP-címtartományt. Kattintson a **Mentés** gombra.
 
-   :::image type="content" source="./media/tutorial-design-database-using-azure-portal/5-firewall-2.png" alt-text="Azure-adatbázis PostgreSQL-hez - Tűzfalszabály létrehozása":::
+   :::image type="content" source="./media/tutorial-design-database-using-azure-portal/5-firewall-2.png" alt-text="Azure-adatbázis PostgreSQL-hez - Az adatbázis létrehozása":::
 
 4. Kattintson a **Mentés** gombra, majd kattintson az **X**-re a **Kapcsolatbiztonság** oldal bezárásához.
 
@@ -104,13 +104,13 @@ Amikor létrehozta az Azure Database for PostgreSQL-kiszolgálót, az alapértel
 
 1. Az Azure Portal bal oldali menüjében kattintson az **Összes erőforrás** elemre, és keressen rá az újonnan létrehozott kiszolgálóra.
 
-   :::image type="content" source="./media/tutorial-design-database-using-azure-portal/4-locate.png" alt-text="Azure-adatbázis PostgreSQL-hez - Kiszolgáló keresés":::
+   :::image type="content" source="./media/tutorial-design-database-using-azure-portal/4-locate.png" alt-text="Azure-adatbázis PostgreSQL-hez - Az adatbázis létrehozása":::
 
 2. Kattintson a **mydemoserver** kiszolgálónévre.
 
 3. Válassza ki a kiszolgáló **Áttekintés** oldalát. Jegyezze fel a **Kiszolgálónevet** és a **Kiszolgáló-rendszergazdai bejelentkezési nevet**.
 
-   :::image type="content" source="./media/tutorial-design-database-using-azure-portal/6-server-name.png" alt-text="PostgreSQL-hez készült Azure-adatbázis – Kiszolgáló-rendszergazdai bejelentkezés":::
+   :::image type="content" source="./media/tutorial-design-database-using-azure-portal/6-server-name.png" alt-text="Azure-adatbázis PostgreSQL-hez - Az adatbázis létrehozása":::
 
 
 ## <a name="connect-to-postgresql-database-using-psql"></a>Csatlakozás a PostgreSQL-adatbázishoz a psql használatával
@@ -190,11 +190,11 @@ Tegyük fel, hogy véletlenül töröltünk egy fontos adatbázistáblát. Ebbő
 
 1. A kiszolgálóhoz tartozó Azure Database for PostgreSQL **Áttekintés** lapján kattintson az eszköztár **Visszaállítás** elemére. Megnyílik a **visszaállítás** oldal.
 
-   :::image type="content" source="./media/tutorial-design-database-using-azure-portal/9-azure-portal-restore.png" alt-text="Azure Portal – A Visszaállítás űrlap beállításai":::
+   :::image type="content" source="./media/tutorial-design-database-using-azure-portal/9-azure-portal-restore.png" alt-text="Azure-adatbázis PostgreSQL-hez - Az adatbázis létrehozása":::
 
 2. Töltse ki a **Visszaállítás** űrlapot a szükséges információkkal:
 
-   :::image type="content" source="./media/tutorial-design-database-using-azure-portal/10-azure-portal-restore.png" alt-text="Azure Portal – A Visszaállítás űrlap beállításai":::
+   :::image type="content" source="./media/tutorial-design-database-using-azure-portal/10-azure-portal-restore.png" alt-text="Azure-adatbázis PostgreSQL-hez - Az adatbázis létrehozása":::
 
    - **Visszaállítási pont**: válasszon olyan időpontot, amely a kiszolgáló módosítása előtt következik be
    - **Célkiszolgáló**: Adja meg az új kiszolgáló nevét, amelyre a biztonsági másolatot vissza kívánja állítani

@@ -1,18 +1,18 @@
 ---
 title: Olvasási replikák kezelése – Azure PowerShell-Azure Database for PostgreSQL
 description: Ismerje meg, hogyan állíthat be és kezelhet olvasási replikákat Azure Database for PostgreSQL a PowerShell használatával.
-author: rachel-msft
-ms.author: raagyema
+author: sr-msft
+ms.author: srranga
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 06/08/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b57fe5879c45225f8ba22e2c94aceeb5b38369e3
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 26c6f70f92e4c372c0ff6afbcbb3c0bb284e2f6c
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91539452"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91704786"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-postgresql-using-powershell"></a>Olvasási replikák létrehozása és kezelése a Azure Database for PostgreSQL a PowerShell használatával
 
@@ -51,7 +51,7 @@ Get-AzPostgreSqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 
 A `New-AzPostgreSqlServerReplica` parancshoz a következő paraméterek szükségesek:
 
-| Beállítás | Példaérték | Leírás  |
+| Beállítás | Példaérték | Description  |
 | --- | --- | --- |
 | ResourceGroupName |  myResourceGroup |  Az az erőforráscsoport, amelyben a replika-kiszolgáló létrejön.  |
 | Név | mydemoreplicaserver | A létrehozott új replika-kiszolgáló neve. |
@@ -80,7 +80,7 @@ Get-AzMariaDReplica -ResourceGroupName myresourcegroup -ServerName mydemoserver
 
 A `Get-AzMariaDReplica` parancshoz a következő paraméterek szükségesek:
 
-| Beállítás | Példaérték | Leírás  |
+| Beállítás | Példaérték | Description  |
 | --- | --- | --- |
 | ResourceGroupName |  myResourceGroup |  Az az erőforráscsoport, amelybe a replika-kiszolgáló létre lesz hozva.  |
 | ServerName | mydemoserver | Az elsődleges kiszolgáló neve vagy azonosítója. |
@@ -104,7 +104,7 @@ Elsődleges kiszolgáló törléséhez futtathatja a `Remove-AzPostgreSqlServer`
 Remove-AzPostgreSqlServer -Name mydemoserver -ResourceGroupName myresourcegroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Azure Database for PostgreSQL kiszolgáló újraindítása a PowerShell-lel](howto-restart-server-powershell.md)

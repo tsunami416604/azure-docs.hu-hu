@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 926f4dd94ba5b1f864a002c282004b3a9f438dca
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 280b7e051c4c9d87c504c1abf6aca0b04bfa1b29
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88722738"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91704599"
 ---
 # <a name="review-security-audit-events-in-azure-active-directory-domain-services-using-azure-monitor-workbooks"></a>Biztonsági naplózási események áttekintése Azure Active Directory Domain Services Azure Monitor munkafüzetek használatával
 
@@ -58,7 +58,7 @@ A biztonsági áttekintés jelentés munkafüzet-sablonjának eléréséhez hajt
 1. Válassza ki a felügyelt tartományt, például *aaddscontoso.com*
 1. A bal oldali menüben válassza a **figyelés > munkafüzetek** lehetőséget.
 
-    ![Válassza a munkafüzetek menü lehetőséget a Azure Portal](./media/use-azure-monitor-workbooks/select-workbooks-in-azure-portal.png)
+    ![Képernyőkép, amely hightlights, hogy hol válassza ki a biztonsági áttekintés jelentést és a fiók tevékenységének jelentését.](./media/use-azure-monitor-workbooks/select-workbooks-in-azure-portal.png)
 
 1. Válassza a **biztonsági áttekintés jelentést**.
 1. A munkafüzet tetején található legördülő menükből válassza ki az Azure-előfizetését, majd egy Azure Monitor munkaterületet.
@@ -108,7 +108,7 @@ Az Azure AD DS által biztosított két sablonos munkafüzet jó kiindulópont a
 
 Azure Monitor munkafüzetek összes diagramja és táblázata Kusto lekérdezések használatával jön létre. A saját lekérdezések létrehozásával kapcsolatos további információkért lásd: [Azure monitor log-lekérdezések][azure-monitor-queries] és [Kusto-lekérdezések oktatóanyaga][kusto-queries].
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha módosítania kell a jelszó-és a zárolási házirendeket, tekintse [meg a felügyelt tartományokra vonatkozó jelszó-és fiókzárolási házirendeket][password-policy].
 

@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 09/24/2020
 ms.author: aahi
-ms.openlocfilehash: 5f5122b5fa7c20bc0717ef1605e41bb5f2700be2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d6820e890607ff16230ecf48e8318e6d1119a3a2
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91309098"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707506"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Elnevezett entitások felismerésének használata a Text Analyticsban
 
@@ -141,10 +141,11 @@ A kimenetet visszaadása azonnali. Az eredmények adatfolyamát JSON elfogadó a
 
 ### <a name="example-responses"></a>Válaszok – példa
 
-A 3. verzió külön végpontokat biztosít az Egypéldányos és az entitások összekapcsolásához. A két műveletre adott válaszok alább láthatók. 
+A 3-as verzió külön végpontokat biztosít az általános célú, a személyes és az entitások összekapcsolásához. A két műveletre adott válaszok alább láthatók. 
 
 #### <a name="version-30"></a>[3,0-es verzió](#tab/version-3)
 
+Példa az általános célú válaszra:
 ```json
 {
   "documents": [
@@ -198,6 +199,44 @@ A 3. verzió külön végpontokat biztosít az Egypéldányos és az entitások 
 ```
 #### <a name="version-31-preview"></a>[3,1-es verzió – előzetes verzió](#tab/version-3-preview)
 
+Példa a személyes adatokra válaszra:
+```json
+{
+  "documents": [
+    {
+    "redactedText": "You can even pre-order from their online menu at *************************, call ************ or send email to ***************************!",
+    "id": "0",
+    "entities": [
+        {
+        "text": "www.contososteakhouse.com",
+        "category": "URL",
+        "offset": 49,
+        "length": 25,
+        "confidenceScore": 0.8
+        }, 
+        {
+        "text": "312-555-0176",
+        "category": "Phone Number",
+        "offset": 81,
+        "length": 12,
+        "confidenceScore": 0.8
+        }, 
+        {
+        "text": "order@contososteakhouse.com",
+        "category": "Email",
+        "offset": 111,
+        "length": 27,
+        "confidenceScore": 0.8
+        }
+      ],
+    "warnings": []
+    }
+  ],
+  "errors": [],
+  "modelVersion": "2020-07-01"
+}
+```
+Példa a választ hivatkozó entitásra:
 ```json
 {
   "documents": [
@@ -244,7 +283,6 @@ A 3. verzió külön végpontokat biztosít az Egypéldányos és az entitások 
   "modelVersion": "2020-02-01"
 }
 ```
-
 ---
 
 

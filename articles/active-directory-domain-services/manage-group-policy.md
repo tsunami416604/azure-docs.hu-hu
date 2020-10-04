@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: d9738d3abfdf30e133ae241c497823be349d25da
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: c5ee162a78ac5e8c3080cd33c89fcee507ecfe92
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040078"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91704854"
 ---
 # <a name="administer-group-policy-in-an-azure-active-directory-domain-services-managed-domain"></a>Csoportházirend felügyelete Azure Active Directory Domain Services felügyelt tartományban
 
@@ -90,7 +90,7 @@ A felügyelt tartományokban két beépített Csoportházirend objektum (GPO) ta
 
 1. Megnyílik a Csoportházirend-felügyeleti szerkesztő eszköz, amely lehetővé teszi a csoportházirend-objektum testreszabását, például a *fiókok házirendjeit*:
 
-    ![Csoportházirend-objektum testreszabása a szükséges beállítások megadásához](./media/active-directory-domain-services-admin-guide/gp-editor.png)
+    ![Képernyőkép a Csoportházirend-felügyeleti szerkesztőról.](./media/active-directory-domain-services-admin-guide/gp-editor.png)
 
     Ha elkészült, válassza a **fájl > mentés** lehetőséget a szabályzat mentéséhez. A számítógépek alapértelmezés szerint 90 percenként frissülnek, és az elvégzett módosítások alkalmazásával Csoportházirend.
 
@@ -116,7 +116,7 @@ A hasonló házirend-beállítások csoportosításához gyakran további csopor
 
     Ha elkészült, válassza a **fájl > mentés** lehetőséget a szabályzat mentéséhez. A számítógépek alapértelmezés szerint 90 percenként frissülnek, és az elvégzett módosítások alkalmazásával Csoportházirend.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Csoportházirend-kezelő konzol használatával konfigurálható elérhető Csoportházirend beállításokról: [csoportházirend beállításelemek][group-policy-console]használata.
 

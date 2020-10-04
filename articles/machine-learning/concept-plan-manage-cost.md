@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 872775df82d609a640346ddef2f77381c2160fcf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 031ec44cec473d9f2b2f05669aa3fc18084985f2
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91276067"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91704728"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>A Azure Machine Learning költségeinek megtervezése és kezelése
 
@@ -69,7 +69,7 @@ A folyamatosan változó adatváltozások esetén gyors és gördülékeny model
 
 Azure Machine Learning felhasználók használhatják a felügyelt Azure Machine Learning számítási fürtöt, más néven AmlCompute. A AmlCompute számos GPU-és CPU-beállítást támogat. A AmlCompute az előfizetése nevében, Azure Machine Learning alapján üzemelteti. Ugyanezt a vállalati szintű biztonsági, megfelelőségi és irányítási funkciókat biztosítja az Azure IaaS Cloud Scale-ben.
 
-Mivel ezek a számítási készletek az Azure IaaS-infrastruktúráján belül vannak, a képzést az infrastruktúra többi részével megegyező biztonsági és megfelelőségi követelményekkel helyezheti üzembe, méretezheti és kezelheti.  Ezek az üzembe helyezések az előfizetésében történnek, és engedelmeskednek az irányítás szabályainak. További információ a [Azure Machine learning számítási](how-to-create-attach-compute-sdk.md#amlcompute)feladatokról.
+Mivel ezek a számítási készletek az Azure IaaS-infrastruktúráján belül vannak, a képzést az infrastruktúra többi részével megegyező biztonsági és megfelelőségi követelményekkel helyezheti üzembe, méretezheti és kezelheti.  Ezek az üzembe helyezések az előfizetésében történnek, és engedelmeskednek az irányítás szabályainak. További információ a [Azure Machine learning számítási](how-to-create-attach-compute-cluster.md)feladatokról.
 
 ## <a name="configure-training-clusters-for-autoscaling"></a>Betanítási fürtök konfigurálása automatikus skálázáshoz
 
@@ -127,4 +127,4 @@ Azure Machine Learning a számítás a fenntartott példányokat is támogatja. 
 További információk:
 * [Erőforrás-kvóták kezelése és növelése](how-to-manage-quotas.md)
 * [Költségek kezelése a Cost Analysis szolgáltatással](../cost-management-billing/costs/quick-acm-cost-analysis.md).
-* Hozzon létre Azure Machine Learning számítást az [SDK](how-to-create-attach-compute-sdk.md#amlcompute) -val vagy a [Studio](how-to-create-attach-compute-studio.md#amlcompute)-ban.
+* Hozzon létre Azure Machine Learning számítást az [SDK](how-to-create-attach-compute-cluster.md) -val vagy a [Studio](how-to-create-attach-compute-studio.md#amlcompute)-ban.

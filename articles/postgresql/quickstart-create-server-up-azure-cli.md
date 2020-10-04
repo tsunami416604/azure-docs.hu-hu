@@ -1,19 +1,19 @@
 ---
 title: 'Gyors útmutató: kiszolgáló létrehozása – az postgres up-Azure Database for PostgreSQL-Single Server'
 description: Rövid útmutató Azure Database for PostgreSQL – egyetlen kiszolgáló létrehozásához az Azure CLI (parancssori felület)-up paranccsal.
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 05/06/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 662d34d3ed89a7d440a604de4338de334ea0bd11
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: e4615db3dbabbc4b18dad7d6ec805ddff10e8fd7
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89300017"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91705109"
 ---
 # <a name="quickstart-use-an-azure-cli-command-az-postgres-up-preview-to-create-an-azure-database-for-postgresql---single-server"></a>Gyors útmutató: Azure CLI-parancs használata az postgres up (előzetes verzió), Azure Database for PostgreSQL-egyetlen kiszolgáló létrehozása
 
@@ -103,7 +103,7 @@ Ha csak az újonnan létrehozott kiszolgálót szeretné törölni, futtathatja 
 az postgres down
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Adatbázis migrálása exportálással és importálással](./howto-migrate-using-export-and-import.md)

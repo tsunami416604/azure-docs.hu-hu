@@ -2,17 +2,17 @@
 title: Átmeneti kapcsolódási hibák kezelése – Azure Database for PostgreSQL – egyetlen kiszolgáló
 description: Megtudhatja, hogyan kezelheti az Azure Database for PostgreSQL-kiszolgáló átmeneti kapcsolódási hibáit.
 keywords: PostgreSQL-kapcsolat, kapcsolati karakterlánc, csatlakozási problémák, átmeneti hiba, kapcsolódási hiba
-author: rachel-msft
-ms.author: raagyema
+author: niklarin
+ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 026a0edf24d349c4b445d6229d3b1ad73decf87d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c70c82615df111f265604ff0984aa452d68565f
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82097829"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91704350"
 ---
 # <a name="handling-transient-connectivity-errors-for-azure-database-for-postgresql---single-server"></a>Az Azure Database for PostgreSQL átmeneti csatlakozási hibáinak kezelése – Önálló kiszolgáló
 
@@ -44,6 +44,6 @@ Ha a program a Azure Database for PostgreSQL harmadik féltől származó middle
 
 Ügyeljen arra, hogy tesztelje újra a logikát. Például próbálja meg végrehajtani a kódot a Azure Database for PostgreSQL kiszolgáló számítási erőforrásainak felfelé vagy lefelé skálázásakor. Az alkalmazásnak gond nélkül kell kezelnie a művelet során észlelt rövid állásidőt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az Azure Database for PostgreSQL-hez való csatlakozás hibáinak elhárítása](howto-troubleshoot-common-connection-issues.md)

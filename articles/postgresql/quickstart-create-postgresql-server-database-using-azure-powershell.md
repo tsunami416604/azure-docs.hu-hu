@@ -1,19 +1,19 @@
 ---
 title: 'Gyors útmutató: kiszolgáló létrehozása – Azure PowerShell-Azure Database for PostgreSQL – egyetlen kiszolgáló'
 description: Rövid útmutató egy Azure Database for PostgreSQL – egyetlen kiszolgáló létrehozásához Azure PowerShell használatával.
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.devlang: azurepowershell
 ms.topic: quickstart
 ms.date: 06/08/2020
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 082adc0753cb8e41bc61f5703445e6b8507202b5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7f04c4c52b2c1e2b347699168b3255d2f809278b
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90902683"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91705313"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql---single-server-using-powershell"></a>Rövid útmutató: Azure Database for PostgreSQL egyetlen kiszolgáló létrehozása a PowerShell használatával
 
@@ -43,7 +43,7 @@ Ha több Azure-előfizetéssel rendelkezik, válassza ki a megfelelő előfizet�
 Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
 ```
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Hozzon létre egy [Azure-erőforráscsoportot](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) a [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) parancsmag használatával. Az erőforráscsoport olyan logikai tároló, amelyben a rendszer csoportként helyezi üzembe és kezeli az Azure-erőforrásokat.
 
@@ -61,7 +61,7 @@ A következő táblázat a parancsmag leggyakrabban használt paramétereinek li
 
 |        **Beállítás**         | **Mintaérték** |                                                                                                                                                             **Leírás**                                                                                                                                                              |
 | -------------------------- | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Name                       | mydemoserver     | Válasszon egy globálisan egyedi nevet az Azure-ban, amely a Azure Database for PostgreSQL-kiszolgálót azonosítja. A kiszolgáló neve csak betűket, számokat és a kötőjel (-) karaktert tartalmazhatja. A megadott nagybetűs karakterek automatikusan kisbetűsre konvertálódnak a létrehozási folyamat során. 3–63 karakter hosszúságú lehet. |
+| Név                       | mydemoserver     | Válasszon egy globálisan egyedi nevet az Azure-ban, amely a Azure Database for PostgreSQL-kiszolgálót azonosítja. A kiszolgáló neve csak betűket, számokat és a kötőjel (-) karaktert tartalmazhatja. A megadott nagybetűs karakterek automatikusan kisbetűsre konvertálódnak a létrehozási folyamat során. 3–63 karakter hosszúságú lehet. |
 | ResourceGroupName          | myResourceGroup  | Adja meg az Azure-erőforráscsoport nevét.                                                                                                                                                                                                                                                                                            |
 | SKU                        | GP_Gen5_2        | A termékváltozat neve. A következő egyezmény **díjszabása: standard \_ számítási generációs \_ virtuális mag** a gyorsírásban. Az SKU paraméterrel kapcsolatos további információkért tekintse meg a táblázatot követő információkat.                                                                                                                                           |
 | BackupRetentionDay         | 7                | Az az időtartam, ameddig egy biztonsági mentést meg kell őrizni. A mértékegysége a nap. A tartomány 7–35.                                                                                                                                                                                                                                                                       |
@@ -169,7 +169,7 @@ A pgAdmin egy nyílt forráskódú eszköz, amely a PostgreSQL-lel együtt haszn
 
 1. A **Létrehozás – Kiszolgáló** párbeszédpanel **Kapcsolat** lapján töltse ki a beállítások tábláját.
 
-   :::image type="content" source="./media/quickstart-create-postgresql-server-database-using-azure-powershell/10-pgadmin-create-server.png" alt-text="A kapcsolatok lap":::
+   :::image type="content" source="./media/quickstart-create-postgresql-server-database-using-azure-powershell/10-pgadmin-create-server.png" alt-text="Az általános lap":::
 
     pgAdmin-paraméter |Érték|Leírás
     ---|---|---
@@ -181,7 +181,7 @@ A pgAdmin egy nyílt forráskódú eszköz, amely a PostgreSQL-lel együtt haszn
     Szerepkör | Hagyja üresen | Itt nem kell megadni szerepkörnevet. Hagyja üresen ezt a mezőt.
     SSL-mód | *Kötelező* | A TLS/SSL üzemmódot a pgAdmin SSL lapján állíthatja be. Alapértelmezés szerint az összes Azure Database for PostgreSQL-kiszolgáló a TLS-kényszerítéssel lett létrehozva. A TLS-kényszerítés kikapcsolásához lásd: [a TLS kényszerítésének konfigurálása](./concepts-ssl-connection-security.md#configure-enforcement-of-tls).
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 1. A bal oldali **Böngésző** panelen bontsa ki a **Kiszolgálók** csomópontot. Válassza ki például a **mydemoserver** kiszolgálót. Kattintson rá a csatlakozáshoz.
 
@@ -193,7 +193,7 @@ A pgAdmin egy nyílt forráskódú eszköz, amely a PostgreSQL-lel együtt haszn
 
 1. A listából válassza ki az adatbázis **tulajdonosát**. Válassza ki a kiszolgáló-rendszergazdai bejelentkezési nevet (a példánkban ez a **my admin**).
 
-   :::image type="content" source="./media/quickstart-create-postgresql-server-database-using-azure-powershell/11-pgadmin-database.png" alt-text="Adatbázis létrehozása a pgAdmin-ben":::
+   :::image type="content" source="./media/quickstart-create-postgresql-server-database-using-azure-powershell/11-pgadmin-database.png" alt-text="Az általános lap":::
 
 1. Egy új, üres adatbázis létrehozásához válassza a **Mentés** lehetőséget.
 

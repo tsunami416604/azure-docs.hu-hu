@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/30/2020
+ms.date: 10/01/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 450bd87c6dd1f55c58f4c8a620dbddcfdf42ec7f
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: 15581178dc1c00b6905763e8552062869f8378ce
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91596549"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91704956"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Az Azure használata az SAP munkaterhelés-forgatókönyvek üzemeltetéséhez és futtatásához
 
@@ -83,6 +83,7 @@ Ebből a szakaszból megtudhatja, hogyan konfigurálhatja az SSO-t a legtöbb SA
 ## <a name="change-log"></a>Módosítási napló
 
 - 09/30/2020: a [SAP HANA magas rendelkezésre állásának](./sap-hana-high-availability-rhel.md)megváltozása az Azure-beli virtuális gépeken a RHEL-on, [Ha SAP HANA FELSKÁLÁZÁS a RHEL ANF](./sap-hana-high-availability-netapp-files-red-hat.md) és a [pacemaker beállítása az Azure](./high-availability-guide-rhel-pacemaker.md) -beli RHEL a RHEL 8,1-re vonatkozó utasítások módosításához
+- 09/29/2020: korlátozásokat és javaslatokat tesz a PPG használatáról az Azure-beli [Proximity-elhelyezési csoportok optimális hálózati késéséhez SAP-alkalmazásokkal](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios) . 
 - 09/28/2020: új tárolási üzemeltetési útmutató a SAP HANAhoz a Azure NetApp Files használatával az [NFS v 4.1-es kötetekkel Azure NetApp Files SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-netapp)
 - 09/23/2020: új hitelesített SKU-ket adhat hozzá a HLI [elérhető SKU-HLI](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-available-skus) 
 - 09/20/2020: változások a dokumentumokban [az azure Virtual Machines adatbázis-kezelő rendszerbe állítása az SAP-munkaterheléshez](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general), [SQL Server Azure Virtual Machines adatbázis-kezelő üzembe helyezése az SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_sqlserver), az [Azure Virtual Machines Oracle adatbázis-kezelő üzembe helyezése az SAP-Munkaterheléshez](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_oracle), az [IBM DB2 Azure Virtual Machines adatbázis-kezelő üzembe helyezése SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_ibm) -alapú számítási feladatokhoz az új konfigurációs javaslathoz való A különböző útmutatókhoz is hozzáadhat Ultra Disk-javaslatokat.

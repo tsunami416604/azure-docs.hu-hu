@@ -1,19 +1,19 @@
 ---
 title: Azure CLI-szkript – Azure Database for PostgreSQL-kiszolgáló visszaállítása
 description: Ez az Azure CLI-példaszkript bemutatja, hogyan lehet visszaállítani egy Azure Database for PostgreSQL-kiszolgálót és a hozzá tartozó adatbázisokat egy korábbi időpontban fennálló állapotra.
-author: rachel-msft
-ms.author: raagyema
+author: sr-msft
+ms.author: srranga
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 02/28/2018
-ms.openlocfilehash: 7b02b81e650eabea6f3f5f09347dc4aa2382671a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4905006baf92161932cf1d2ce0660aaf52560c90
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496508"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707625"
 ---
 # <a name="restore-an-azure-database-for-postgresql-server-using-azure-cli"></a>Azure Database for PostgreSQL-kiszolgáló visszaállítása az Azure CLI használatával
 Ez az Azure CLI-példaszkript visszaállít egy Azure Database for PostgreSQL-kiszolgálót egy korábbi időpontra.
@@ -40,7 +40,7 @@ Ez a szkript a következő táblában leírt parancsokat használja:
 | [az postgresql server restore](/cli/azure/postgres/server#az-postgres-server-restore) | Visszaállít egy kiszolgálót egy biztonsági másolatból. |
 | [az group delete](/cli/azure/group) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Az Azure parancssori felületével kapcsolatos további információért tekintse meg az [Azure CLI dokumentációját](/cli/azure).
 - További szkripteket [az Azure Database for PostgreSQL-hez készült Azure CLI-példák](../sample-scripts-azure-cli.md) között találhat.
 - [Egy Azure Database for PostgreSQL-kiszolgáló biztonsági mentése és visszaállítása az Azure Portal használatával](../howto-restore-server-portal.md)

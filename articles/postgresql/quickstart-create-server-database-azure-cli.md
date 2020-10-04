@@ -1,19 +1,19 @@
 ---
 title: 'Rövid útmutató: kiszolgáló létrehozása – Azure CLI-Azure Database for PostgreSQL – egyetlen kiszolgáló'
 description: Ebben a rövid útmutatóban egy Azure Database for PostgreSQL-kiszolgálót fog létrehozni az Azure CLI használatával.
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 06/25/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 182226a0bb97c9239f1c0d0dc6e7d4d2b8bdbb1c
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: df7c27fb0aca6a9b903d29ea4414832fb677b3eb
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798873"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91705262"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-by-using-the-azure-cli"></a>Gyors útmutató: Azure Database for PostgreSQL-kiszolgáló létrehozása az Azure CLI használatával
 
