@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 6/12/2019
 ms.author: rohink
 ms.openlocfilehash: 540c4d6f2dde64cef9b5795d635ac6259bfc69c3
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87985631"
 ---
 # <a name="what-is-azure-private-dns"></a>Mi az Azure Private DNS?
@@ -45,7 +45,7 @@ Az Azure saját DNS a következő előnyöket biztosítja:
 
 * **Minden Azure-régióban elérhető**. Az Azure DNS Private Zones szolgáltatás az Azure nyilvános felhőben található összes Azure-régióban elérhető.
 
-## <a name="capabilities"></a>Képességek
+## <a name="capabilities"></a>Funkciók
 
 Azure DNS a következő képességeket biztosítja:
 

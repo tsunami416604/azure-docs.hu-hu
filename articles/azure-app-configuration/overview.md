@@ -7,10 +7,10 @@ ms.service: azure-app-configuration
 ms.topic: overview
 ms.date: 02/19/2020
 ms.openlocfilehash: f38b8de37e84cd8a65c5a5caadf8d3b6b71ce455
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88587072"
 ---
 # <a name="what-is-azure-app-configuration"></a>Az Azure App Configurationről
@@ -51,7 +51,7 @@ Az alkalmazás konfigurációja kiegészíti [Azure Key Vault](https://azure.mic
 
 Az alkalmazások konfigurációs tárolójának az alkalmazáshoz való hozzáadásának legegyszerűbb módja a Microsoft által biztosított ügyféloldali kódtár. A választott nyelvtől és keretrendszertől függően az alábbi módszerek érhetők el az alkalmazáshoz való csatlakozáshoz
 
-| Programozási nyelv és keretrendszer | Csatlakozás |
+| Programozási nyelv és keretrendszer | A kapcsolódás menete |
 |---|---|
 | .NET Core és ASP.NET Core | Alkalmazás-konfigurációs szolgáltató a .NET Core-hoz |
 | .NET-keretrendszer és ASP.NET | A .NET-hez készült app Configuration Builder |

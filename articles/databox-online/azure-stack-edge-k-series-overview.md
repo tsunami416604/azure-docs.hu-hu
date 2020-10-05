@@ -9,10 +9,10 @@ ms.topic: overview
 ms.date: 09/23/2020
 ms.author: alkohli
 ms.openlocfilehash: 4bae9e28a22a99d092db2bf887f0cd790e04c52a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91318559"
 ---
 # <a name="what-is-the-azure-stack-edge-mini-r"></a>Mi az a Azure Stack Edge mini R?
@@ -26,7 +26,7 @@ Ez a cikk áttekintést nyújt a Azure Stack Edge mini R megoldásról, a főbb 
 
 Azure Stack Edge mini R a következő képességekkel rendelkezik:
 
-|Képesség |Description  |
+|Képesség |Leírás  |
 |---------|---------|
 |Robusztus hardver| Erős környezetekhez tervezett robusztus hardver.|
 |Ultra hordozható| Ultra hordozható, akkumulátorral működtetett forma tényező.|
@@ -80,7 +80,7 @@ Azure Stack Edge mini R fizikai eszközét, az Azure-erőforrást és a célkén
 - **Céloldali tárfiókok** – Az adatokat tároló tárfiókok minden Azure-régióban elérhetők. Azok a régiók, amelyekben a Storage-fiókok tárolják Azure Stack Edge mini R-adataikat, közel kell lenniük ahhoz, ahol az eszköz az optimális teljesítmény érdekében található. Az eszköztől távol található tárfiók esetében hosszú késések és lassabb teljesítmény várható.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse át az [Azure stack Edge mini R rendszerkövetelményeit](azure-stack-edge-gpu-system-requirements.md).
 

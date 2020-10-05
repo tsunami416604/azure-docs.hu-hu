@@ -11,10 +11,10 @@ ms.topic: include
 ms.custom: include file
 ms.author: dademath
 ms.openlocfilehash: 7fc1225a37353e43f5fb17f3394df167fb795bf7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91303315"
 ---
 Ismerkedés az Azure kommunikációs szolgáltatásokkal a kommunikációs szolgáltatások C# SMS ügyféloldali kódtár használatával SMS-üzenetek küldéséhez.
@@ -41,7 +41,7 @@ A rövid útmutató elvégzésével az Azure-fiókjában néhány USD értékű 
 
 ### <a name="create-a-new-c-application"></a>Új C#-alkalmazás létrehozása
 
-A konzol ablakban (például cmd, PowerShell vagy bash) az `dotnet new` paranccsal hozzon létre egy új, a nevű Console-alkalmazást `SmsQuickstart` . Ez a parancs egy egyszerű ""Helló világ!"alkalmazás" C#-projektet hoz létre egyetlen forrásfájlban: **program.cs**.
+A konzol ablakban (például cmd, PowerShell vagy bash) az `dotnet new` paranccsal hozzon létre egy új, a nevű Console-alkalmazást `SmsQuickstart` . Ez a parancs egy egyszerű "„Helló világ!” alkalmazás" C#-projektet hoz létre egyetlen forrásfájlban: **program.cs**.
 
 ```console
 dotnet new console -o SmsQuickstart

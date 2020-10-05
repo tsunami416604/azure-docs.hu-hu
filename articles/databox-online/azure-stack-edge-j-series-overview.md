@@ -9,10 +9,10 @@ ms.topic: overview
 ms.date: 09/23/2020
 ms.author: alkohli
 ms.openlocfilehash: 11ed87f8cf5aabb86f709d938acc4c31b737ca91
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91318592"
 ---
 # <a name="what-is-the-azure-stack-edge-pro-r"></a>Mi az a Azure Stack Edge Pro R?
@@ -26,7 +26,7 @@ Ez a cikk áttekintést nyújt a Azure Stack Edge Pro R megoldásról, a főbb k
 
 Azure Stack Edge Pro R a következő képességekkel rendelkezik:
 
-|Képesség |Description  |
+|Képesség |Leírás  |
 |---------|---------|
 |Robusztus hardver| Robusztus kiszolgálói osztályú, kemény környezetekhez tervezett hardverek. Hordozható árutovábbítási esetekben található eszköz. |
 |Felhő által felügyelt     |Az eszköz és a szolgáltatás kezelése a Azure Portal keresztül történik.|
@@ -79,7 +79,7 @@ Azure Stack Edge Pro R fizikai eszköz, az Azure-erőforrás és a célként meg
 
 - **Céloldali tárfiókok** – Az adatokat tároló tárfiókok minden Azure-régióban elérhetők. Azokat a régiókat, amelyekben a Storage-fiókok Azure Stack Edge Pro R-adatait el kell helyezni, közel kell lennie ahhoz, hogy az eszköz az optimális teljesítmény érdekében legyen. Az eszköztől távol található tárfiók esetében hosszú késések és lassabb teljesítmény várható.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse át az [Azure stack Edge Pro R rendszerkövetelményeit](azure-stack-edge-gpu-system-requirements.md).
 <!--- Understand the [Azure Stack Edge Pro R limits](azure-stack-edge-limits.md).-->

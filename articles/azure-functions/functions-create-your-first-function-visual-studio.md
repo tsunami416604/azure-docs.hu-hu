@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.date: 03/06/2020
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, 23113853-34f2-4f
 ms.openlocfilehash: d7cfcd02c5e6c9ff57241288bd79efb45d4ac7ab
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88213976"
 ---
 # <a name="quickstart-create-your-first-function-in-azure-using-visual-studio"></a>Rövid útmutató: az első függvény létrehozása az Azure-ban a Visual Studióval
@@ -74,7 +74,7 @@ A projekt közzététele előtt rendelkeznie kell egy Function alkalmazással az
 
 2. Nyissa meg ezt az URL-címet, és megjelenik a függvény által visszaadott távoli GET kérelemre adott válasz, amely a következő példához hasonlóan néz ki:
 
-    :::image type="content" source="media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-azure.png" alt-text="A függvény által visszaadott válasz a böngészőben":::
+    :::image type="content" source="media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-azure.png" alt-text="Futó Function alkalmazás":::
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -88,7 +88,7 @@ E rövid útmutatók elvégzéséhez erőforrásokat hozott létre. [Fiókjának
 
 1. A Function alkalmazás lapon válassza az **Áttekintés** lapot, majd válassza ki az **erőforráscsoport**területen található hivatkozást.
 
-   :::image type="content" source="media/functions-create-your-first-function-visual-studio/functions-app-delete-resource-group.png" alt-text="Válassza ki a függvény alkalmazás oldaláról törölni kívánt erőforráscsoportot.":::
+   :::image type="content" source="media/functions-create-your-first-function-visual-studio/functions-app-delete-resource-group.png" alt-text="Futó Function alkalmazás":::
 
 2. Az **erőforráscsoport** lapon tekintse át a befoglalt erőforrások listáját, és ellenőrizze, hogy a törölni kívántak-e.
  
@@ -96,7 +96,7 @@ E rövid útmutatók elvégzéséhez erőforrásokat hozott létre. [Fiókjának
 
    A törlés eltarthat néhány percig. Amint a művelet befejeződött, néhány másodpercre egy értesítés jelenik meg. Az értesítést úgy is megtekintheti, ha kiválasztja a harang ikont az oldal tetején.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban a Visual studiót használta egy C#-függvény alkalmazás létrehozásához és közzétételéhez az Azure-ban egy egyszerű HTTP trigger függvénnyel. 
 

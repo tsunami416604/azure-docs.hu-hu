@@ -6,10 +6,10 @@ ms.date: 06/29/2020
 ms.topic: quickstart
 ms.author: jgao
 ms.openlocfilehash: ff6c459f2f4178bee6b6b564e177c097d72592a3
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/30/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85557342"
 ---
 # <a name="quickstart-create-and-deploy-arm-templates-by-using-the-azure-portal"></a>Rövid útmutató: ARM-sablonok létrehozása és üzembe helyezése a Azure Portal használatával
@@ -20,7 +20,7 @@ Megtudhatja, hogyan hozhatja Azure Resource Manager (ARM) sablont a Azure Portal
 
 Az oktatóanyag befejezése után üzembe kell helyeznie egy Azure Storage-fiókot. Ugyanez a folyamat használható más Azure-erőforrások üzembe helyezésére is.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="generate-a-template-using-the-portal"></a>Sablon generálása az Azure Portal használatával
 
@@ -33,15 +33,15 @@ Számos tapasztalt sablon-fejlesztő ezt a módszert használja a sablonok létr
 
     ![Válassza az erőforrás létrehozása lehetőséget Azure Portal menüből](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-a-resource.png)
 
-1. Válassza a **Storage**  >  **Storage-fiók**lehetőséget.
+1. Válassza a **Tárolás** > **Tárfiók** lehetőséget.
 
-    ![Azure Storage-fiók létrehozása](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-portal.png)
+    ![Azure-tárfiók létrehozása](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-portal.png)
 1. Adja meg a következő információkat:
 
-    |Name|Érték|
+    |Név|Érték|
     |----|----|
     |**Erőforráscsoport**|Válassza az **új létrehozása**lehetőséget, és adjon meg egy tetszőleges erőforráscsoport-nevet. A képernyőképen az erőforráscsoport neve *mystorage1016rg*. Az erőforráscsoport az Azure-erőforrások tárolója. Az erőforráscsoport megkönnyíti az Azure-erőforrások kezelését. |
-    |**Name (Név)**|Adjon egyedi nevet a Storage-fióknak. A Storage-fiók nevének egyedinek kell lennie az összes Azure-ban, és csak kisbetűket és számokat tartalmaz. A névnek 3 – 24 karakter hosszúnak kell lennie. Ha hibaüzenet jelenik meg, amely azt jelzi, hogy "a Storage-fiók neve (mystorage1016) már használatban van", próbálja meg használni ** &lt; a>Storage &lt; mai dátumot a MMDD>**, például a **johndolestorage1016**. További információ: [elnevezési szabályok és korlátozások](/azure/architecture/best-practices/resource-naming).|
+    |**Név**|Adjon egyedi nevet a Storage-fióknak. A Storage-fiók nevének egyedinek kell lennie az összes Azure-ban, és csak kisbetűket és számokat tartalmaz. A névnek 3 – 24 karakter hosszúnak kell lennie. Ha hibaüzenet jelenik meg, amely azt jelzi, hogy "a Storage-fiók neve (mystorage1016) már használatban van", próbálja meg használni ** &lt; a>Storage &lt; mai dátumot a MMDD>**, például a **johndolestorage1016**. További információ: [elnevezési szabályok és korlátozások](/azure/architecture/best-practices/resource-naming).|
 
     A többi tulajdonság esetén használhatja az alapértelmezett értékeket.
 
@@ -157,23 +157,23 @@ Az Azure megköveteli, hogy minden Azure-szolgáltatás egyedi névvel rendelkez
      }
      ```
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 1. Írja be a következő értékeket:
 
-    |Name|Érték|
+    |Név|Érték|
     |----|----|
     |**Erőforráscsoport**|Válassza ki az utolsó szakaszban létrehozott erőforráscsoport-nevet. |
     |**Régió**|Válasszon egy helyet az erőforráscsoportnak. Például: **USA középső régiója**. |
     |**Hely**|Válassza ki a Storage-fiók helyét. Például: **USA középső régiója**. |
     |**Fiók típusa**|Adja meg **Standard_LRS** ehhez a rövid útmutatóhoz. |
-    |**Altípus**|Adja meg a rövid útmutató **StorageV2** . |
+    |**Erőforrás**|Adja meg a rövid útmutató **StorageV2** . |
     |**Hozzáférési szintek**|Adja meg a **gyors** üzembe helyezési útmutatót. |
     |**TLS minimális verziója**|Adja meg a **TLS1_0**. |
     |**Csak HTTPS-forgalmat támogat**| Ennél a rövid útmutatónál válassza a **true** (igaz) értéket. |
     |**BLOB nyilvános hozzáférésének engedélyezése**| Ehhez az útmutatóhoz válassza a **false** (hamis) értéket. |
 
-1. Válassza az **Áttekintés + létrehozás** lehetőséget.
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Felülvizsgálat és létrehozás** lehetőséget.
+1. Válassza a **Létrehozás** lehetőséget.
 1. Az üzembe helyezés állapotát úgy nézheti meg, ha a képernyő felső részén kiválasztja a harang (értesítések) ikont. Ekkor **a telepítés folyamatban**van. Várjon, amíg az üzembe helyezés befejeződik.
 
     ![Azure Resource Manager-sablonok üzembehelyezési értesítése](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-portal-notification.png)

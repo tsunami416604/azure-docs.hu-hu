@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 09/06/2020
 ms.author: mlottner
 ms.openlocfilehash: 6f438bd7dd0b3e45fd292947a3b08db80401b825
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90947164"
 ---
 # <a name="quickstart-security-module-for-azure-rtos-preview"></a>Gyors útmutató: biztonsági modul az Azure RTOS (előzetes verzió)
@@ -63,12 +63,12 @@ A IoT Hub Log Analytics betöltését a IoT-megoldás alapértelmezett védelmez
 1. Válassza **az adatgyűjtés**lehetőséget. 
 1. A **munkaterület-konfiguráció** lehetőségnél kapcsolja be a váltás **a következőre: be.** 
 1. Hozzon létre egy új Log Analytics munkaterületet, vagy csatoljon egy meglévőt. Győződjön meg arról, hogy be van jelölve a **nyers biztonsági adathozzáférés** beállítása beállítás. 
- :::image type="content" source="media/quickstart/azure-rtos-data-collection-on.png" alt-text="Az Azure RTOS konfigurálása, amely az adatgyűjtési lehetőséget és a nyers biztonsági adatbeállításokat mutatja mind a kiválasztott":::
+ :::image type="content" source="media/quickstart/azure-rtos-data-collection-on.png" alt-text="Az Azure RTOS Access adatgyűjtési beállítása":::
 1. Válassza a **Mentés** lehetőséget
 1. Térjen vissza az Azure-erőforrások listájához, és ellenőrizze, hogy a létrehozott vagy csatolt Log Analytics munkaterület engedélyezve van-e a IoT Hub.
-    :::image type="content" source="media/quickstart/verify-azure-resource-list.png" alt-text="Ellenőrizze az Azure-erőforrások listáját, és erősítse meg a megfelelő Log Analytics munkaterület hozzáadását IoT Hub"::: 
+    :::image type="content" source="media/quickstart/verify-azure-resource-list.png" alt-text="Az Azure RTOS Access adatgyűjtési beállítása"::: 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Folytassa a következő cikkel a megoldás konfigurálásának és testreszabásának befejezéséhez.
 

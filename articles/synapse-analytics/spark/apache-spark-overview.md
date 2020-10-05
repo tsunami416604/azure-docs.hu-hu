@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
 ms.openlocfilehash: 3a2ba65fcef2b6481835cb45243449870361c062
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87498922"
 ---
 # <a name="apache-spark-in-azure-synapse-analytics"></a>Apache Spark az Azure szinapszis Analyticsben
@@ -26,13 +26,13 @@ A Apache Spark egy párhuzamos feldolgozási keretrendszer, amely támogatja a m
 
 ## <a name="what-is-apache-spark"></a>Mi az Apache Spark?
 
-A Apache Spark primitíveket biztosít a memóriabeli fürtök számítástechnikaához. A Spark-feladatokkal az adatok betölthetők és gyorsítótárazhatók a memóriába, majd ismétlődő jelleggel lekérdezhetők. A memórián belüli számítástechnika sokkal gyorsabb, mint a lemezes alkalmazások. A Spark több programozási nyelvet is integrálva van, hogy lehetővé tegye az elosztott adatkészletek, például a helyi gyűjtemények kezelését. Nem kell mindent térképként rendszerezni és csökkenteni a műveletek számát.
+A Apache Spark primitíveket biztosít a memóriabeli fürtök számítástechnikaához. A Spark-feladatokkal az adatok betölthetők és gyorsítótárazhatók a memóriába, majd ismétlődő jelleggel lekérdezhetők. A memóriában történő feldolgozás sokkal gyorsabb, mint a lemezalapú alkalmazások. A Spark több programozási nyelvet is integrálva van, hogy lehetővé tegye az elosztott adatkészletek, például a helyi gyűjtemények kezelését. Nem kell mindent térképként rendszerezni és csökkenteni a műveletek számát.
 
 ![Hagyományos MapReduce vs. Spark](./media/apache-spark-overview/map-reduce-vs-spark.png)
 
 Az Azure Szinapszisban a Spark-készletek teljes körűen felügyelt Spark szolgáltatást biztosítanak. Itt találja a a szinapszis Analyticsben a Spark-készlet létrehozásának előnyeit.
 
-| Funkció | Leírás |
+| Szolgáltatás | Leírás |
 | --- | --- |
 | Gyorsaság és hatékonyság |A Spark-példányok körülbelül 2 percen belül kezdődnek, kevesebb mint 60 csomópontot, és körülbelül 5 percet vesznek igénybe több mint 60 csomópont. A példány alapértelmezés szerint 5 perccel az utolsó feladatot követően leáll, kivéve, ha egy jegyzetfüzet-kapcsolatban nem tartja életben. |
 | Könnyű létrehozás |Az Azure Szinapszisban létrehozhat egy új Spark-készletet percek alatt a Azure Portal, Azure PowerShell vagy a szinapszis Analytics .NET SDK használatával. Lásd: Ismerkedés [a Spark-készletekkel a szinapszis Analyticsben](../quickstart-create-apache-spark-pool-studio.md). |
@@ -41,7 +41,7 @@ Az Azure Szinapszisban a Spark-készletek teljes körűen felügyelt Spark szolg
 | A 2. generációs Azure Data Lake Storage támogatása| Az Azure Szinapszisban található Spark-készletek a 2. generációs és a BLOB Storage-t is Azure Data Lake Storage használhatják. További információ a Data Lake Storageről: [Azure Data Lake Storage áttekintése](../../data-lake-store/data-lake-store-overview.md). |
 | Integráció külső integrált fejlesztői környezetekkel (IDE) | Az Azure szinapszis egy IDE beépülő modult biztosít a [JetBrains "INTELLIJ ötletéhez](https://www.jetbrains.com/idea/) , amely hasznos lehet alkalmazások létrehozására és beküldésére egy Spark-készletbe. |
 | Előre betöltött Anaconda-könyvtárak |Az Azure Szinapszisban a Spark-készletek előre telepített anaconda-kódtárakkal jönnek. Az [Anaconda](https://docs.continuum.io/anaconda/) közel 200 könyvtárat biztosít például a Machine Learning szolgáltatáshoz, az adatok elemzéséhez vagy a megjelenítéshez. |
-| Méretezhetőség | Az Azure szinapszis-készletekben lévő Apache Sparkek lehetővé teszik az automatikus méretezést, így a készletek méretezése szükség szerint a csomópontok hozzáadásával vagy eltávolításával végezhető el. Emellett a Spark-készletek leállíthatók adatvesztés nélkül, mivel az összes tárolt adatmennyiség az Azure Storage-ban vagy a Data Lake Storageban van tárolva. |
+| Méretezhetőség | Az Azure szinapszis-készletekben lévő Apache Sparkek lehetővé teszik az automatikus méretezést, így a készletek méretezése szükség szerint a csomópontok hozzáadásával vagy eltávolításával végezhető el. A Spark-készletek emellett adatvesztés nélkül leállíthatók, mivel minden adatot az Azure Storage vagy a Data Lake Storage tárol. |
 
 Az Azure Szinapszisban található Spark-készletek a következő összetevőket tartalmazzák, amelyek alapértelmezés szerint a készletekben elérhetők.
 
@@ -68,11 +68,11 @@ A szinapszis Analyticsben a Spark-készletek a következő főbb forgatókönyve
 
 ### <a name="data-engineeringdata-preparation"></a>Adattervezés/adatfeldolgozás
 
-Apache Spark számos nyelvi funkcióval rendelkezik a nagy mennyiségű adatainak előkészítéséhez és feldolgozásához, így értékesebb lehet, és a szinapszis Analytics szolgáltatásban más szolgáltatások is felhasználhatják őket. Ez több nyelven is engedélyezve van (C#, Scala, PySpark, Spark SQL) és a rendelkezésre bocsátott kódtárak a feldolgozáshoz és a csatlakozáshoz.
+Az Apache Spark számos nyelvi funkciót biztosít nagy mennyiségű adat előkészítésének és feldolgozásának elősegítéséhez, így értékesebbé teheti az adatokat, amelyeket azután más szolgáltatások felhasználhatnak a Synapse Analyticsen belül. Ez több nyelven is engedélyezve van (C#, Scala, PySpark, Spark SQL) és a rendelkezésre bocsátott kódtárak a feldolgozáshoz és a csatlakozáshoz.
 
 ### <a name="machine-learning"></a>Machine Learning
 
-A Apache Spark a [MLlib](https://spark.apache.org/mllib/), a Spark-ra épülő gépi tanulási kódtár, amelyet a szinapszis Analyticsben használhat a Spark-készletből. A szinapszis Analyticsben található Spark-készletek közé tartozik az anaconda, egy Python-disztribúció, különböző adatelemzési csomagokkal, beleértve a gépi tanulást is. A notebookok beépített támogatásával kombinálva a gépi tanulási alkalmazások létrehozására szolgáló környezettel rendelkezik.
+A Apache Spark a [MLlib](https://spark.apache.org/mllib/), a Spark-ra épülő gépi tanulási kódtár, amelyet a szinapszis Analyticsben használhat a Spark-készletből. A Synapse Analytics Spark-készletei tartalmazzák az Anacondát, amely egy Python-disztribúció számos adatelemzési, köztük gépi tanulási csomaggal. A jegyzetfüzetek beépített támogatásával ötvözve ez egy gépi tanulási alkalmazások létrehozásához ideális környezetet teremt.
 
 ## <a name="where-do-i-start"></a>Hol kezdjem el
 

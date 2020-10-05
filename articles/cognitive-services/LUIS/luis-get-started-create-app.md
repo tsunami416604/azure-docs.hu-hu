@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 05/05/2020
 ms.openlocfilehash: 28bf79b61c0278a3f45820a23cd2c69f0b609700
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91316485"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>Rövid útmutató: Előre összeállított otthonautomatizálási alkalmazás használata
@@ -207,7 +207,7 @@ Miután betanította az alkalmazását, tesztelheti is.
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Behívhatja a végpontot kódból:
 

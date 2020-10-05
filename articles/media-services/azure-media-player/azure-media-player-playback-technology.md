@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 04/20/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: b9772f89f78f21cfb0f2f9baa7c6b9915fbacf37
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91275693"
 ---
 # <a name="playback-technology-tech"></a>Lejátszási technológia ("Tech") #
@@ -69,6 +69,6 @@ Az ajánlott technikai sorrend az Azure Media Services-ból származó tartalom 
 > [!NOTE]
 > Ha a várt technikai beállításhoz egy beépülő modult kell telepíteni, például a Flash-t, amely nincs telepítve a felhasználó számítógépén, az AMP továbbra is a következő Tech képességeit fogja ellenőriznie a forrás típusaival és a védelmi információkkal együtt a tech listáról. Ha például egy nem védett, igény szerinti adatfolyamot próbál meg megtekinteni a Safari 8-as verziójában az OS X Yosemite-on, és a Flash és a Silverlight is nincs telepítve, az AMP a natív Html5 Tech for lejátszást fogja kiválasztani.<br/><br/>Az új böngésző-technológiák naponta jelentkeznek, és ez hatással lehet erre a mátrixra.
 
-## <a name="next-steps"></a>Következő lépések ##
+## <a name="next-steps"></a>További lépések ##
 
 - [Azure Media Player rövid útmutató](azure-media-player-quickstart.md)

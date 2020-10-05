@@ -8,10 +8,10 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: 1ed5a64a76d27f87b590573894e34f2560a5c2aa
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90972288"
 ---
 # <a name="building-government-solutions-with-azure-iot-central"></a>Kormányzati megoldások létrehozása az Azure IoT Centrallal
@@ -72,7 +72,7 @@ A csatlakoztatott hulladékkezelési alkalmazás sablonja előre konfigurált:
 
 Ismerkedés a [csatlakoztatott hulladékgazdálkodási alkalmazás oktatóanyagával](./tutorial-connected-waste-management.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Próbálja ki a IoT Centralban az ingyenes [create app](https://apps.azureiotcentral.com/build/government) (kormányzati alkalmazás sablonjait)
 * További tudnivalók a [víz minőségének monitorozásával kapcsolatos fogalmakról](./concepts-waterqualitymonitoring-architecture.md)

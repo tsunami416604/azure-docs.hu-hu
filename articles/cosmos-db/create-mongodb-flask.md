@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 12/26/2018
 ms.custom: devx-track-python
 ms.openlocfilehash: 1ed15182e700f125072c69ba9bcf60caf4da5c88
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87873041"
 ---
 # <a name="quickstart-build-a-python-app-using-azure-cosmos-dbs-api-for-mongodb"></a>Gyors útmutató: Python-alkalmazás létrehozása a MongoDB-hez készült Azure Cosmos DB API-val
@@ -152,11 +152,11 @@ Ha nem szeretne elágazást létrehozni ebből a tárházból, válassza az alá
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből a rövid útmutatóból megtudhatta, hogyan hozhat létre Azure Cosmos DB a Mongo DB API-fiókhoz, és hogyan futtathat egy Python-lombikot Azure Cosmos DB a GitHubról klónozott webalkalmazáshoz. Így már további adatokat importálhat az Azure Cosmos DB-fiókba. 
 

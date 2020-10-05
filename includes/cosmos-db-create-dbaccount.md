@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 08/19/2020
 ms.custom: include file
 ms.openlocfilehash: 4bad128e6f76b2d7dd87634a10b35ebbedd269ce
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88639051"
 ---
 1. Az Azure Portal vagy a **Kezdőlap lapon**válassza az **erőforrás létrehozása**lehetőséget.
@@ -49,8 +49,8 @@ ms.locfileid: "88639051"
 
 1. Tekintse át a Fiókbeállítások beállítást, majd kattintson a **Létrehozás**gombra. A fiók létrehozása néhány percet vesz igénybe. Várjon, amíg befejeződik a portál oldalának megjelenítése a **központi telepítés befejezéséhez**. 
 
-    :::image type="content" source="./media/cosmos-db-create-dbaccount/azure-cosmos-db-account-created.png" alt-text="Az Azure Portal Értesítések panelje":::
+    :::image type="content" source="./media/cosmos-db-create-dbaccount/azure-cosmos-db-account-created.png" alt-text="Az Azure Cosmos DB Új fiók lapja":::
 
 1. Válassza az **Ugrás az erőforráshoz** lehetőséget, hogy megnyissa a Azure Cosmos db fiók lapot. 
 
-    :::image type="content" source="./media/cosmos-db-create-dbaccount/azure-cosmos-db-account-created-2.png" alt-text="A Azure Cosmos DB fiók lapja":::
+    :::image type="content" source="./media/cosmos-db-create-dbaccount/azure-cosmos-db-account-created-2.png" alt-text="Az Azure Cosmos DB Új fiók lapja":::

@@ -14,10 +14,10 @@ ms.date: 03/24/2020
 ms.author: mlearned
 ms.custom: mvc
 ms.openlocfilehash: 3e4913c4be0d59bc37e3da2358c4f8ec302a26e5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "82233788"
 ---
 # <a name="create-a-cicd-pipeline-for-php-with-azure-devops-starter"></a>CI/CD-folyamat létrehozása a PHP-hez az Azure DevOps Starter-vel
@@ -110,13 +110,13 @@ Ha még nem rendelkezik Azure-előfizetéssel, a [Visual Studio dev Essentials](
 
 1. A jobb oldalon válassza a **kiadások megtekintése** lehetőséget a kiadások előzményeinek megjelenítéséhez.
 
-1. Válassza ki az egyik kiadás melletti három pontot (...), majd kattintson a **Megnyitás**gombra. Ebben a nézetben több menüt is megtekinthet, például a kiadás összegzését, a társított munkaelemeket vagy a teszteket.
+1. Válassza ki az egyik kiadás melletti három pontot (...), majd kattintson a  **Megnyitás**gombra. Ebben a nézetben több menüt is megtekinthet, például a kiadás összegzését, a társított munkaelemeket vagy a teszteket.
 
 1. Válassza a **Véglegesítéseket**. Ez a nézet az adott központi telepítéshez társított kód-véglegesítő kódokat jeleníti meg. 
 
 1. Válassza a **naplók**lehetőséget. A naplók hasznos információkat tartalmaznak az üzembehelyezési folyamattal kapcsolatban. Ezek az üzembe helyezések alatt és után is megtekinthetők.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szüksége rájuk, törölheti Azure App Service és az egyéb kapcsolódó erőforrásokat is. Használja a **delete** funkciót a DevOps Starter irányítópultján.
 

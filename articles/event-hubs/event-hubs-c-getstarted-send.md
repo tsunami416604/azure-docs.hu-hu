@@ -4,15 +4,15 @@ description: 'Gyors útmutató: Ez a cikk bemutatja, hogyan hozhat létre olyan 
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.openlocfilehash: bfe1ca1a45f7b33d7431aed13446d8d72f79fb90
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85315670"
 ---
 # <a name="quickstart-send-events-to-azure-event-hubs-using-c"></a>Gyors útmutató: események küldése az Azure Event Hubs C használatával
 
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 Az Azure Event Hubs egy Big Data streamplatform és eseményfeldolgozó szolgáltatás, amely másodpercenként több millió esemény fogadására és feldolgozására képes. Az Event Hubs képes az elosztott szoftverek és eszközök által generált események, adatok vagy telemetria feldolgozására és tárolására. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók. Az Event Hubs részletes áttekintéséért lásd az [Event Hubs áttekintését](event-hubs-about.md) és az [Event Hubs-szolgáltatásokat](event-hubs-features.md) ismertető cikket.
 
 Ez az oktatóanyag azt ismerteti, hogyan küldhet eseményeket egy Event hubhoz a C-ben lévő Console-alkalmazás használatával. 

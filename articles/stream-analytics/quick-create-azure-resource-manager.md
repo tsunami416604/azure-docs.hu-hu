@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.custom: mvc, subject-armqs
 ms.date: 05/28/2020
 ms.openlocfilehash: 26ae0f5add40125b5e9c1ce9451583040322314b
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88641891"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-by-using-an-arm-template"></a>Gyors útmutató: Azure Stream Analytics-feladatok létrehozása ARM-sablon használatával
@@ -108,7 +108,7 @@ Remove-AzResourceGroup -Name $resourceGroupName
 Write-Host "Press [ENTER] to continue..."
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban létrehozott egy Azure Stream Analytics feladatot egy ARM-sablonnal, és ellenőrizte az üzemelő példányt. A következő cikkből megtudhatja, hogyan exportálhat egy ARM-sablont egy meglévő feladatokhoz a VS Code használatával.
 

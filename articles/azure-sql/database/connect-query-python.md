@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
 ms.openlocfilehash: 5257e8730830c6b51808d5d014bc3bdec6036bfe
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87843963"
 ---
 # <a name="quickstart-use-python-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Gyors útmutató: Azure SQL Database vagy Azure SQL felügyelt példányban lévő adatbázis lekérdezése a Python használatával
@@ -83,7 +83,7 @@ A Azure SQL Database-adatbázishoz való kapcsolódáshoz szükséges kapcsolati
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-2. Nyissa meg az **SQL-adatbázisok** vagy az SQL- **felügyelt példányok** lapot.
+2. Nyissa meg az **SQL-adatbázisok**  vagy az SQL- **felügyelt példányok** lapot.
 
 3. Az **Áttekintés** lapon tekintse át a teljes kiszolgálónevet a **kiszolgáló neve** mellett, Azure SQL Database vagy a **gazdagép** melletti teljes kiszolgálónevet (vagy IP-címet) egy Azure SQL felügyelt példányhoz, vagy SQL Server az Azure virtuális gépen. A kiszolgálónév vagy az állomásnév másolásához vigye a kurzort a fölé, és válassza a **Másolás** ikont.
 
@@ -127,7 +127,7 @@ A Azure SQL Database-adatbázishoz való kapcsolódáshoz szükséges kapcsolati
 
 1. Győződjön meg arról, hogy a 20 legfontosabb kategória/termék sorait adja vissza, majd zárjuk be a parancssorablakot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az első adatbázis megtervezése Azure SQL Database](design-first-database-tutorial.md)
 - [Microsoft Python-illesztőprogramok a SQL Server](https://docs.microsoft.com/sql/connect/python/python-driver-for-sql-server/)

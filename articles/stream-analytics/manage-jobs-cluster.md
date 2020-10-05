@@ -9,10 +9,10 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 09/22/2020
 ms.openlocfilehash: 6b475e34c01ca26abd3d8ab1d904521de19f941b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90947084"
 ---
 # <a name="create-and-delete-jobs-in-an-azure-stream-analytics-cluster"></a>Feladatok létrehozása és törlése egy Azure Stream Analytics-fürtben
@@ -49,7 +49,7 @@ Stream Analytics feladatnak leállított állapotban kell lennie ahhoz, hogy el 
 
    Ha eltávolít egy feladatot egy Stream Analytics-fürtről, a rendszer visszaadja a standard több-bérlős környezetet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most már tudja, hogyan adhat hozzá és távolíthat el feladatokat a Azure Stream Analytics-fürtben. Ezután megtudhatja, hogyan kezelheti a privát végpontokat és méretezheti a fürtöket:
 

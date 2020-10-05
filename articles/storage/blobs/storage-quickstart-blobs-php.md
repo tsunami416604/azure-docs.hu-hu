@@ -8,10 +8,10 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.openlocfilehash: a19ff153ea0625a14401770de690dcfddeb74d88
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87835748"
 ---
 #  <a name="transfer-objects-tofrom-azure-blob-storage-using-php"></a>Objektumok továbbítása Azure Blob-tárolókra és -tárolókról a PHP használatával
@@ -143,7 +143,7 @@ A mintakód egy helyi fájlt tölt fel az Azure-ba. A fájlt a rendszer **myfile
 
 Egy blokkblob tartalmának részleges frissítéséhez használja a **createblocklist()** metódust. A blokkblobok legfeljebb 4,7 TB méretűek lehetnek, és az Excel-munkafüzetektől kezdve a nagyméretű videofájlokig bármit tartalmazhatnak. A lapblobok elsősorban az IaaS virtuális gépek biztonsági mentéséhez szükséges VHD-fájlokhoz használatosak. A hozzáfűző blobok a naplózáshoz használhatók, például amikor egy fájlba szeretne írni, majd folyamatosan újabb információkat szeretne hozzáadni. A hozzáfűző blobokat egyetlen írót tartalmazó modellek esetében érdemes használni. A blobtárolókban tárolt objektumok a legtöbb esetben blokkblobok.
 
-### <a name="list-the-blobs-in-a-container"></a>A tárolóban lévő blobok listázása
+### <a name="list-the-blobs-in-a-container"></a>Tárolóban lévő blobok kilistázása
 
 A tárolóban található fájlok listáját a **listblobs()** metódus használatával kérheti le. A következő kód lekéri a blobok listáját, majd végighalad rajtuk, és megjeleníti a tárolóban talált blobok nevét.  
 
@@ -173,7 +173,7 @@ A blobok tartalmát a **getBlob()** metódus segítségével kérheti le. A köv
     fpassthru($blob->getContentStream());
 ```
 
-### <a name="clean-up-resources"></a>Erőforrások felszabadítása
+### <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 Ha már nincs szüksége az ebben a rövid útmutatóban feltöltött blobokra, a teljes tárolót törölheti a **deletecontainer()** metódussal. Ha már nincs szüksége a létrehozott fájlokra, a **deleteblob()** metódus használatával törölheti őket.
 
 ```PHP
@@ -202,7 +202,7 @@ Blob Storage-tárolókat alkalmazó PHP-alkalmazások fejlesztéséhez tekintse 
 - Az Azure Storage-hoz készült [PHP ügyféloldali kódtár forráskódját](https://github.com/Azure/azure-storage-php) megtekintheti, letöltheti és telepítheti a GitHubról.
 - Tekintse át a PHP ügyféloldali kódtár használatával írt [Blob Storage-mintákat](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=php&term=blob).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
  
 Ennek a rövid útmutatónak a segítségével megtanulta, hogyan vihetők át fájlok egy helyi lemez és az Azure Blob Storage között a PHP használatával. Ha bővebb információra van szüksége a PHP használatával kapcsolatban, lépjen tovább a PHP fejlesztői központunkba.
 

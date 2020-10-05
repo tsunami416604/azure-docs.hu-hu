@@ -17,10 +17,10 @@ ms.custom:
 - devx-track-js
 ms.date: 06/21/2019
 ms.openlocfilehash: 13baface2bce9e98f08e37b8a16ba1e2b435205a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91281575"
 ---
 # <a name="quickstart-use-nodejs-to-control-a-device-connected-to-an-azure-iot-hub"></a>Gyors útmutató: Azure IoT hub-hoz csatlakoztatott eszköz vezérlésének Node.js használata
@@ -163,7 +163,7 @@ A háttéralkalmazás az IoT Hubon található szolgáltatásoldali végponthoz 
 
 [!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban közvetlen metódust hívott egy eszközön egy háttérbeli alkalmazásból, és a közvetlen metódus hívására válaszolt egy szimulált eszköz alkalmazásban.
 

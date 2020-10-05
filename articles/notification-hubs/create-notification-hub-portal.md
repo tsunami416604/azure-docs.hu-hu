@@ -12,10 +12,10 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 02/14/2019
 ms.openlocfilehash: 981e23a2b021cc0eb8085aa943830f87352aee69
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87828523"
 ---
 # <a name="quickstart-create-an-azure-notification-hub-in-the-azure-portal"></a>Gyors útmutató: Azure Notification hub létrehozása a Azure Portalban
@@ -57,6 +57,6 @@ Ebben a szakaszban egy meglévő névtérben hoz létre egy értesítési közpo
 
       ![Azure Portal – Értesítések -> Erőforrás megnyitása](./media/create-notification-hub-portal/hub-home-page.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban létrehozott egy értesítési központot. Ha szeretné megtudni, hogyan konfigurálhatja az elosztót a platform Notification System (PNS) beállításaival, tekintse meg az [értesítési központ konfigurálása PNS-beállításokkal](configure-notification-hub-portal-pns-settings.md)című témakört.

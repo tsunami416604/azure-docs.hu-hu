@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 09/26/2019
 ms.author: glenga
 ms.openlocfilehash: 4fe159660421113e0f0ac0586ae7e4a22d5bcda7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "77474232"
 ---
 ### <a name="query-the-storage-queue"></a>A tárolási várólista lekérdezése
@@ -19,9 +19,9 @@ A [`az storage queue list`](/cli/azure/storage/queue#az-storage-queue-list) para
 az storage queue list --output tsv
 ```
 
-A parancs kimenete tartalmaz egy nevű `outqueue`várólistát, amely a függvény futtatásakor létrehozott üzenetsor.
+A parancs kimenete tartalmaz egy nevű várólistát `outqueue` , amely a függvény futtatásakor létrehozott üzenetsor.
 
-Ezután a [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek) parancs használatával tekintse meg az ebben a várólistában lévő üzeneteket, az alábbi példában látható módon:
+Ezután a parancs használatával [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek) tekintse meg az ebben a várólistában lévő üzeneteket, az alábbi példában látható módon:
 
 ```azurecli-interactive
 echo `echo $(az storage message peek --queue-name outqueue -o tsv --query '[].{Message:content}') | base64 --decode`

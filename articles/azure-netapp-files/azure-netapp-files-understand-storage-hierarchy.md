@@ -15,13 +15,13 @@ ms.topic: overview
 ms.date: 09/22/2020
 ms.author: b-juche
 ms.openlocfilehash: 435d74e771a9d887c87c9d10e6b525ac77cf97e8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91278328"
 ---
-# <a name="storage-hierarchy-of-azure-netapp-files"></a>Azure NetApp Files tárolási hierarchiája
+# <a name="storage-hierarchy-of-azure-netapp-files"></a>Az Azure NetApp Files tárhely-hierarchiája
 
 Mielőtt létrehozna egy kötetet az Azure NetApp Filesban, meg kell vásárolnia és be kell állítania egy készletet a kiosztott kapacitáshoz.  Kapacitáskészlet beállításához rendelkeznie kell NetApp-fiókkal. Az Azure NetApp Files tárhely-hierarchiájának megismerése segítségére lehet az Azure NetApp Files-erőforrások beállítása és kezelése során.
 
@@ -86,11 +86,11 @@ Az alábbi példák az Azure-előfizetés, a NetApp-fiókok, a kapacitáskészle
 
 ![Tárhely-hierarchia fogalmi diagramja](../media/azure-netapp-files/azure-netapp-files-storage-hierarchy.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure NetApp Files erőforráskorlátai](azure-netapp-files-resource-limits.md)
 - [Regisztrálás az Azure NetApp Filesra](azure-netapp-files-register.md)
 - [Az Azure NetApp Files szolgáltatásszintjei](azure-netapp-files-service-levels.md)
 - [Az Azure NetApp Files teljesítményével kapcsolatos szempontok](azure-netapp-files-performance-considerations.md)
 - [Kapacitáskészlet beállítása](azure-netapp-files-set-up-capacity-pool.md)
-- [Manuális QoS-kapacitás készletének kezelése](manage-manual-qos-capacity-pool.md)
+- [Manuális QoS-kapacitáskészlet kezelése](manage-manual-qos-capacity-pool.md)

@@ -8,10 +8,10 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.openlocfilehash: 8c24c5f043d17b5f0e54ca1c2c6cf41a0d3fe9bc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "68726356"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-ruby"></a>Rövid útmutató: blobok feltöltése, letöltése és listázása a Ruby használatával
@@ -113,7 +113,7 @@ blob_client.set_container_acl(container_name, "container")
 
 A Blob Storage támogatja a blokkblobokat, a hozzáfűző blobokat és a lapblobokat. A leggyakrabban használt elemek a blokkblobok, és ez a rövid útmutató is ezeket használja.  
 
-Ha szeretne feltölteni egy fájlt a blobba, szüksége lesz a fájl teljes útvonalára, amelyet a helyi meghajtón található könyvtárnév és fájlnév összefűzésével kap meg. Ezután feltöltheti a fájlt a megadott elérési útra a **blokk\_létrehozása\_blob ()** metódus használatával. 
+Ha szeretne feltölteni egy fájlt a blobba, szüksége lesz a fájl teljes útvonalára, amelyet a helyi meghajtón található könyvtárnév és fájlnév összefűzésével kap meg. Ezután feltöltheti a fájlt a megadott elérési útra a **blokk létrehozása \_ \_ blob ()** metódus használatával. 
 
 A mintakód létrehoz egy, a fel- és letöltéshez használatos helyi fájlt, és úgy tárolja el, hogy az a **file\_path\_to\_file** névvel és a **local\_file\_name** blobnévvel legyen feltöltve. A következő példa feltölti a fájlt a **quickstartblobs** nevű tárolóba.
 
@@ -135,11 +135,11 @@ puts "\nUploading to Blob storage as blob" + local_file_name
 blob_client.create_block_blob(container.name, local_file_name, full_path_to_file)
 ```
 
-Egy blokkos blob tartalmának részleges frissítéséhez használja a **create\_Block\_List ()** metódust. A blokkblobok legfeljebb 4,7 TB méretűek lehetnek, és az Excel-munkafüzetektől kezdve a nagyméretű videofájlokig bármit tartalmazhatnak. A lapblobok elsősorban az IaaS virtuális gépek biztonsági mentéséhez szükséges VHD-fájlokhoz használatosak. A hozzáfűző blobok a naplózáshoz használhatók, például amikor egy fájlba szeretne írni, majd folyamatosan újabb információkat szeretne hozzáadni. A hozzáfűző blobokat egyetlen írót tartalmazó modellek esetében érdemes használni. A blobtárolókban tárolt objektumok a legtöbb esetben blokkblobok.
+Egy blokkos blob tartalmának részleges frissítéséhez használja a **create \_ Block \_ List ()** metódust. A blokkblobok legfeljebb 4,7 TB méretűek lehetnek, és az Excel-munkafüzetektől kezdve a nagyméretű videofájlokig bármit tartalmazhatnak. A lapblobok elsősorban az IaaS virtuális gépek biztonsági mentéséhez szükséges VHD-fájlokhoz használatosak. A hozzáfűző blobok a naplózáshoz használhatók, például amikor egy fájlba szeretne írni, majd folyamatosan újabb információkat szeretne hozzáadni. A hozzáfűző blobokat egyetlen írót tartalmazó modellek esetében érdemes használni. A blobtárolókban tárolt objektumok a legtöbb esetben blokkblobok.
 
-### <a name="list-the-blobs-in-a-container"></a>A tárolóban lévő blobok listázása
+### <a name="list-the-blobs-in-a-container"></a>Tárolóban lévő blobok kilistázása
 
-A tárolóban található fájlok listáját a **List\_Blobs ()** metódussal kérheti le. A következő kód lekéri a blobok listáját, majd végighalad rajtuk, és megjeleníti a tárolóban talált blobok nevét.  
+A tárolóban található fájlok listáját a **List \_ Blobs ()** metódussal kérheti le. A következő kód lekéri a blobok listáját, majd végighalad rajtuk, és megjeleníti a tárolóban talált blobok nevét.  
 
 ```ruby
 # List the blobs in the container
@@ -169,7 +169,7 @@ File.open(full_path_to_file2,"wb") {|f| f.write(content)}
 ```
 
 ### <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Ha már nincs szüksége az ebben a rövid útmutatóban feltöltött blobokra, a teljes tárolót törölheti **a\_delete Container ()** metódus használatával. Ha már nincs szükség a létrehozott fájlokra, a **delete\_blob ()** metódus használatával törölheti a fájlokat.
+Ha már nincs szüksége az ebben a rövid útmutatóban feltöltött blobokra, a teljes tárolót törölheti a **delete \_ Container ()** metódus használatával. Ha már nincs szükség a létrehozott fájlokra, a **delete \_ blob ()** metódus használatával törölheti a fájlokat.
 
 ```ruby
 # Clean up resources. This includes the container and the temp files

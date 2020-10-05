@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
 ms.openlocfilehash: 0ac54eb5d6350cc234eb7036a3a1dc97a4f1b083
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91288375"
 ---
 # <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>Storage-fájlok lekérdezése az SQL on-demand (előzetes verzió) erőforrásain belül a szinapszis SQL-ben
@@ -260,7 +260,7 @@ A demo-adat a következő adatkészleteket tartalmazza:
 | /json/books/                                                 | Könyvekből származó JSON-fájlok                                   |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A különböző fájltípusok lekérdezésével, valamint a nézetek létrehozásával és használatával kapcsolatos további információkért tekintse meg a következő cikkeket:
 

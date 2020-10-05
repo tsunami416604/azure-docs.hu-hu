@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: quickstart
 keywords: Kinect, Azure, szenzor, hozzáférés, mélység, SDK, törzs, nyomon követés, közös, beállítás, CUDA, NVIDIA
 ms.openlocfilehash: 2cf4c1097730f88fc4bd66c28e1bdddd7fea8640
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85277961"
 ---
 # <a name="quickstart-set-up-azure-kinect-body-tracking"></a>Gyors útmutató: az Azure Kinect-törzs nyomon követésének beállítása
@@ -47,7 +47,7 @@ Indítsa el az [Azure Kinect Viewert](azure-kinect-viewer.md) annak ellenőrzés
 
 Indítsa el az **Azure Kinect Body Tracking Viewert** , és győződjön meg arról, hogy a Body Tracking SDK helyesen van beállítva. A megjelenítőt az SDK MSI telepítője telepíti. A Start menüben vagy a-on is megtalálhatja `<SDK Installation Path>\tools\k4abt_simple_3d_viewer.exe` .
 
-Ha nem rendelkezik elég nagy teljesítményű GPU-val, és továbbra is tesztelni szeretné az eredményt, az alábbi parancs futtatásával elindíthatja az **Azure Kinect Body Tracking Viewert** a parancssorban:`<SDK Installation Path>\tools\k4abt_simple_3d_viewer.exe CPU`
+Ha nem rendelkezik elég nagy teljesítményű GPU-val, és továbbra is tesztelni szeretné az eredményt, az alábbi parancs futtatásával elindíthatja az **Azure Kinect Body Tracking Viewert** a parancssorban: `<SDK Installation Path>\tools\k4abt_simple_3d_viewer.exe CPU`
 
 Ha minden megfelelően be van állítva, a rendszer egy 3D pont felhővel és nyomon követett törzstel rendelkező ablakot jelenít meg.
 
@@ -61,5 +61,5 @@ A Body Tracking SDK használatáról [itt](https://github.com/microsoft/Azure-Ki
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
->[Az első Body Tracking-alkalmazás létrehozása](build-first-body-app.md)
+>[Az első testkövetési alkalmazás összeállítása](build-first-body-app.md)
 

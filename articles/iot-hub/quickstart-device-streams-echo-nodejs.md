@@ -10,10 +10,10 @@ ms.custom: mvc, devx-track-js
 ms.date: 03/14/2019
 ms.author: robinsh
 ms.openlocfilehash: 7401bc0661459e1322c9b2f2226d45794f814732
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91302944"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-nodejs-via-iot-hub-device-streams-preview"></a>Gyors útmutató: Node.js eszközön keresztüli kommunikáció IoT Hub eszköz streamen keresztül (előzetes verzió)
@@ -43,7 +43,7 @@ A Microsoft Azure IoT Hub jelenleg [előzetes verziójú szolgáltatásként](ht
 > [!IMPORTANT]
 > Az adatfolyamok előnézete jelenleg csak a következő régiókban létrehozott IoT hubok esetében támogatott:
 >
-> * Az USA középső régiója
+> * USA középső régiója
 > * USA középső – EUAP
 > * Észak-Európa
 > * Délkelet-Ázsia
@@ -155,7 +155,7 @@ Ezután leállíthatja a programot az ENTER billentyű lenyomásával.
 
 [!INCLUDE [iot-hub-quickstarts-clean-up-resources-device-streams](../../includes/iot-hub-quickstarts-clean-up-resources-device-streams.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban egy IoT hub, egy eszköz regisztrálása, az eszköz és a szolgáltatás oldalán található alkalmazások közötti adatfolyamot állított be, és a stream használatával visszaküldheti az adatátvitelt az alkalmazások között.
 

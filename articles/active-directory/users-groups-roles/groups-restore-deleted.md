@@ -14,10 +14,10 @@ ms.reviewer: krbain
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 133371007702ce6443455d7381722fdbbc79eabc
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88213666"
 ---
 # <a name="restore-a-deleted-microsoft-365-group-in-azure-active-directory"></a>Törölt Microsoft 365 csoport visszaállítása Azure Active Directory
@@ -92,7 +92,7 @@ Annak ellenőrzéséhez, hogy sikeresen visszaállította-e a Microsoft 365 csop
 - Minden SharePoint-webhely és annak tartalma elérhető lesz
 - A csoport a Microsoft 365 csoportokat támogató Exchange-végpontokból és egyéb Microsoft365-munkaterhelésből is elérhető.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 E cikkekben további információk találhatók az Azure Active Directory-csoportokkal kapcsolatban.
 

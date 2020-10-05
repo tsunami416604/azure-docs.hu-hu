@@ -10,17 +10,17 @@ services: iot-central
 ms.custom: mvc
 manager: philmea
 ms.openlocfilehash: 66c3bd8650d1194d5d753c1dc967ec8e870c8748
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "80998968"
 ---
-# <a name="quickstart-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>Gyors útmutató: szabályok és műveletek konfigurálása az eszközhöz az Azure IoT Central
+# <a name="quickstart-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>Rövid útmutató: Az eszközre vonatkozó szabályok és műveletek konfigurálása az Azure IoT Centralban
 
 *Ez a cikk operátorokra, fejlesztőkre és rendszergazdákra vonatkozik.*
 
-Ebben a rövid útmutatóban egy olyan szabályt hoz létre, amely e-mailt küld, ha az eszköz érzékelője&deg; által jelentett hőmérséklet meghaladja a 90 F-ot.
+Ebben a rövid útmutatóban egy olyan szabályt hoz létre, amely e-mailt küld, ha az eszköz érzékelője által jelentett hőmérséklet meghaladja a 90 F-ot &deg; .
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -30,7 +30,7 @@ Mielőtt elkezdené, hajtsa végre a két előző rövid útmutató [Azure IoT C
 
 1. Új telemetria-szabály az alkalmazáshoz való hozzáadásához a bal oldali ablaktáblán válassza a **szabályok**elemet.
 
-1. Új szabály létrehozásához válassza a elemet **+**.
+1. Új szabály létrehozásához válassza a elemet **+** .
 
 1. Adja meg a **környezeti hőmérsékletet** a szabály neveként.
 
@@ -41,7 +41,7 @@ Mielőtt elkezdené, hajtsa végre a két előző rövid útmutató [Azure IoT C
     | Mező        | Érték            |
     | ------------ | ---------------- |
     | Mérés  | Hőmérséklet      |
-    | Művelet     | nagyobb, mint  |
+    | Operátor     | nagyobb, mint  |
     | Érték        | 90               |
 
     További feltételek hozzáadásához válassza a **+ feltétel**lehetőséget.
@@ -56,14 +56,14 @@ Mielőtt elkezdené, hajtsa végre a két előző rövid útmutató [Azure IoT C
     | --------- | ------------------------------------------------- |
     | Megjelenített név | Kezelői e-mail művelet                          |
     | Művelet        | Az Ön e-mail-címe                                |
-    | Megjegyzések     | A környezeti hőmérséklet túllépte a küszöbértéket. |
+    | Jegyzetek     | A környezeti hőmérséklet túllépte a küszöbértéket. |
 
     > [!NOTE]
     > Ha e-mailes értesítést szeretne kapni, az e-mail-címnek [az alkalmazásban lévő felhasználói azonosítónak](howto-administer.md) kell lennie, és ennek a felhasználónak be kellett jelentkeznie legalább egyszer az alkalmazásba.
 
     ![Szabály létrehozása művelet](./media/quick-configure-rules/action.png)
 
-1. Kattintson a **Mentés** gombra. A szabály a **szabályok** lapon jelenik meg.
+1. Válassza a **Mentés** lehetőséget. A szabály a megjelenik a **Szabályok** oldalon.
 
 ## <a name="test-the-rule"></a>A szabály tesztelése
 

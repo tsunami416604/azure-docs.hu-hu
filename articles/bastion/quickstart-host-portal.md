@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.date: 03/11/2020
 ms.author: charwen
 ms.openlocfilehash: b0155ae92e3179918273d6a19773aa15b67949ea
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90985594"
 ---
 # <a name="quickstart-connect-to-a-virtual-machine-using-a-private-ip-address-and-azure-bastion"></a>Gyors útmutató: Kapcsolódás virtuális géphez magánhálózati IP-cím és Azure-alapú megerősített kapcsolat használatával
@@ -27,7 +27,7 @@ Ez a rövid útmutató bemutatja, hogyan csatlakozhat egy virtuális géphez egy
 
 |**Név** | **Érték** |
 | --- | --- |
-| Name |  VNet1Bastion |
+| Név |  VNet1Bastion |
 | Régió | eastus |
 | Virtuális hálózat |  VNet1 |
 | + Alhálózat neve | AzureBastionSubnet |
@@ -66,7 +66,7 @@ Amikor egy meglévő virtuális gép használatával hoz létre egy megerősíte
 
    ![megerősített gazdagép létrehozása](./media/quickstart-host-portal/bastion-settings.png)
 
-## <a name="connect"></a><a name="connect"></a>Csatlakozni
+## <a name="connect"></a><a name="connect"></a>Kapcsolódás
 
 Miután a megerősített állapotot telepítette a virtuális hálózatra, a képernyő a kapcsolódás lapra változik.
 
@@ -87,7 +87,7 @@ Ha végzett a virtuális hálózat és a virtuális gépek használatával, tör
 
 3. Írja be a *TestRG1* **nevet az erőforráscsoport neveként** , majd válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban egy megerősített gazdagépet hozott létre a virtuális hálózathoz, majd biztonságosan kapcsolódott egy virtuális géphez a megerősített gazdagépen keresztül.
 

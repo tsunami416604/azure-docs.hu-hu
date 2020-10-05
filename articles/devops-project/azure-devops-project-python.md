@@ -14,10 +14,10 @@ ms.date: 03/24/2020
 ms.author: mlearned
 ms.custom: mvc, devx-track-python
 ms.openlocfilehash: 891b8a5a844691d46c121c254e04b73f2b8c2d62
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87872735"
 ---
 # <a name="create-a-cicd-pipeline-for-python-with-azure-devops-starter"></a>CI/CD-folyamat létrehozása a Pythonhoz az Azure DevOps Starter-vel
@@ -120,11 +120,11 @@ Az előző lépésben a DevOps Starter automatikusan konfigurált egy teljes CI/
 
 1. Válassza a **naplók**lehetőséget. A naplók hasznos információkat tartalmaznak az üzembehelyezési folyamattal kapcsolatban. Ezeket az üzembe helyezések során és után is megtekintheti.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szüksége rájuk, törölheti Azure App Service és kapcsolódó erőforrásokat. Használja a **delete** funkciót a DevOps Starter irányítópultján.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A CI/CD-folyamat beállításakor a rendszer automatikusan létrehozta a létrehozási és kiadási folyamatokat. A csapat igényeihez igazodva módosíthatja ezt a buildet és a kiadási folyamatokat. A CI/CD folyamattal kapcsolatos további tudnivalókért tekintse meg a következőt:
 

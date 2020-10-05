@@ -11,10 +11,10 @@ ms.workload: identity
 ms.date: 07/01/2020
 ms.author: kenwith
 ms.openlocfilehash: d9ef069291f010db510d626ceda959a0342c39e2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91305783"
 ---
 # <a name="quickstart-set-up-saml-based-single-sign-on-sso-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Gyors útmutató: SAML-alapú egyszeri bejelentkezés (SSO) beállítása egy alkalmazáshoz a Azure Active Directory (Azure AD) bérlőben
@@ -53,14 +53,14 @@ Egyszeri bejelentkezés beállítása egy alkalmazáshoz:
 
 1. Válassza az **SAML** lehetőséget az SSO-konfiguráció lap megnyitásához. Ebben a példában az egyszeri bejelentkezéshez konfigurált alkalmazás GitHub. Miután beállította a GitHubot, a felhasználók bejelentkezhetnek a GitHubra az Azure AD-bérlőben lévő hitelesítő adataik használatával.
 
-    :::image type="content" source="media/add-application-portal-setup-sso/github-sso.png" alt-text="Képernyőfelvétel: az egyszeri bejelentkezési konfiguráció oldal a GitHubon.":::
+    :::image type="content" source="media/add-application-portal-setup-sso/github-sso.png" alt-text="A képernyőképen az Azure AD portál egyszeri bejelentkezési konfiguráció lapja látható.":::
 
 1. Az Azure AD az SAML-alapú SSO használatára való konfigurálásának folyamata az alkalmazástól függően változhat. Van egy hivatkozás a GitHub útmutatására. Az egyéb alkalmazásokhoz kapcsolódó útmutatókért lásd: [útmutatók az SaaS-alkalmazások integrálásához a Azure Active Directory](https://docs.microsoft.com/azure/active-directory/saas-apps/)használatával.
 1. Az alkalmazáshoz tartozó egyszeri bejelentkezés beállításához kövesse az útmutatót. Számos alkalmazás rendelkezik konkrét előfizetési követelményekkel az egyszeri bejelentkezés működéséhez. A GitHub például nagyvállalati előfizetést igényel.
     > [!TIP]
     > További információ az SAML konfigurációs lehetőségeiről: [SAML-alapú egyszeri bejelentkezés konfigurálása](configure-saml-single-sign-on.md).
 
-    :::image type="content" source="media/add-application-portal-setup-sso/github-pricing.png" alt-text="Képernyőfelvétel: az egyszeri bejelentkezés lehetősége a GitHub díjszabási oldalának vállalati előfizetésében.":::
+    :::image type="content" source="media/add-application-portal-setup-sso/github-pricing.png" alt-text="A képernyőképen az Azure AD portál egyszeri bejelentkezési konfiguráció lapja látható.":::
 
 > [!TIP]
 > Az Graph API segítségével automatizálhatja az alkalmazások felügyeletét: az [alkalmazások kezelésének automatizálása Microsoft Graph API-val](https://docs.microsoft.com/graph/application-saml-sso-configure-api).
@@ -70,7 +70,7 @@ Egyszeri bejelentkezés beállítása egy alkalmazáshoz:
 
 Ha elkészült ezzel a rövid útmutatóval, érdemes törölni az alkalmazást a tesztelési bérlő tisztításához. Az alkalmazás törlését a sorozat utolsó rövid útmutatója tartalmazza. [alkalmazás törlése](delete-application-portal.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő cikkből megtudhatja, hogyan törölhet egy alkalmazást.
 > [!div class="nextstepaction"]

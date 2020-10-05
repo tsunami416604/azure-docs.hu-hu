@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 05/19/2020
 ms.openlocfilehash: 38fffd7793e1f5bd59ac6dde4499b2eb25009b52
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91303852"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Rövid útmutató: új alkalmazás létrehozása a LUIS portálon
@@ -29,7 +29,7 @@ Ebben a rövid útmutatóban egy új alkalmazást hoz létre a LUIS portálon. E
 
    |Beállítás neve| Érték | Rendeltetés|
    |--|--|--|
-   |Name|`myEnglishApp`|Egyedi LUIS-alkalmazás neve<br>kötelező|
+   |Név|`myEnglishApp`|Egyedi LUIS-alkalmazás neve<br>kötelező|
    |Kultúra|**Angol**|A felhasználók hosszúságú kimondott szöveg nyelve, **en-us**<br>kötelező|
    |Leírás (nem kötelező)|`App made with LUIS Portal`|Az alkalmazás leírása<br>választható|
    |Előrejelzési erőforrás (nem kötelező) |-  |Ne válassza a lehetőséget. A LUIS egy alapszintű kulcsot biztosít a szerzői műveletek és a 1 000-es előrejelzési végpontokra vonatkozó kérések használatához. |
@@ -165,7 +165,7 @@ A LUIS-portál interaktív **teszt** paneljén ellenőrizheti, hogy az entitás 
 
 Ha ezzel a rövid útmutatóval végzett, és nem a következő rövid útmutatóra vált, válassza a **saját alkalmazások** lehetőséget a felső navigációs menüből. Ezután jelölje be az alkalmazás bal oldali jelölőnégyzetét a listából, majd válassza a  **Törlés** lehetőséget a lista fölötti helyi eszköztáron.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [2. alkalmazás üzembe helyezése](get-started-portal-deploy-app.md)

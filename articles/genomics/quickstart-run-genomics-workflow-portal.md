@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 01/11/2019
 ms.custom: devx-track-python
 ms.openlocfilehash: 7720238bb7e2ff133935b9af545628f744d828d1
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88642316"
 ---
 # <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>Rövid útmutató: Munkafolyamat futtatása a Microsoft Genomics szolgáltatással
@@ -142,6 +142,6 @@ msgen list -f c:\temp\config.txt
 
 A munkafolyamat befejezése után megtekintheti az Azure Storage-fiókban lévő kimeneti fájlokat a konfigurált kimeneti tárolóban. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben a minta bemeneti adatokat feltöltötte az Azure Storage-ba, és elküldte a munkafolyamatot a Microsoft Genomics szolgáltatásnak a `msgen` Python-ügyfélen keresztül. Ha többet szeretne megtudni a Microsoft Genomics szolgáltatással használható bemeneti fájltípusokkal kapcsolatban, tekintse meg a következő lapokat: [párosított FASTQ](quickstart-input-pair-FASTQ.md)  |  [Bam](quickstart-input-BAM.md)  |  [több FASTQ vagy Bam](quickstart-input-multiple.md). Ezt az oktatóanyagot a [Azure Notebooks példán](https://aka.ms/genomicsnotebook) keresztül is felfedezheti, ha letölti a "genomikai oktatóanyag. ipynb" fájlt, és egy jegyzetfüzet-olvasóval, például a [Jupyter](https://docs.microsoft.com/azure/notebooks/tutorial-create-run-jupyter-notebook) -vel nyitja meg a fájlt, és futtatja azt.

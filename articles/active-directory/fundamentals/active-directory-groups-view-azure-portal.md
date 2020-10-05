@@ -14,10 +14,10 @@ ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ddedd753eb98a8656006c9dddc412e44330e1a21
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87797491"
 ---
 <!--As a brand-new Azure AD administrator, I need to view my organization’s groups along with the assigned members, so I can manage permissions to apps and services for people in my organization-->
@@ -50,7 +50,7 @@ Hozzon létre egy _MDM policy – West_ nevű új csoportot. Csoportok létrehoz
     
     - **Tagság típusa:** válassza a **Hozzárendelt** lehetőséget.
 
-3. Válassza a **Létrehozás** lehetőséget.
+3. Kattintson a **Létrehozás** gombra.
 
 ## <a name="create-a-new-user"></a>Új felhasználó létrehozása
 Hozzon létre egy _Alain Charon_ nevű új felhasználót. A felhasználóknak már létezniük kell, hogy hozzáadhatóak legyenek csoporttagként. Az "egyéni tartománynevek" lapon először tekintse meg a hitelesített tartománynevet, amelyben a felhasználókat létre szeretné hozni. Felhasználók létrehozásával kapcsolatos további információkért tekintse meg a [felhasználók hozzáadását és törlését](add-users-azure-active-directory.md) ismertető cikket.

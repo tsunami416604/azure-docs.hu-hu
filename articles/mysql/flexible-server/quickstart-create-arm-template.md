@@ -8,10 +8,10 @@ ms.custom: subject-armqs
 ms.author: sumuth
 ms.date: 09/22/2020
 ms.openlocfilehash: 18366069fd7273afe33b538d2bd69ac8a99689c6
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90947210"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mysql---flexible-server-preview"></a>Gyors útmutató: ARM-sablon használata Azure Database for MySQL rugalmas kiszolgáló létrehozásához (előzetes verzió)
@@ -245,7 +245,7 @@ echo "Press [ENTER] to continue ..."
 ```
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az ARM-sablonok létrehozásának folyamatát ismertető lépésenkénti oktatóanyagért lásd:
 

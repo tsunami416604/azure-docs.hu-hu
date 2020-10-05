@@ -9,10 +9,10 @@ ms.date: 06/19/2019
 ms.author: hrasheed
 ms.custom: mvc
 ms.openlocfilehash: 8a6a204ee5080e3acf99c13ecba1e1c7664d68b4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "73241882"
 ---
 # <a name="quickstart-execute-an-r-script-on-an-ml-services-cluster-in-azure-hdinsight-using-rstudio-server"></a>Gyors útmutató: R-szkript végrehajtása egy ML Services-fürtön az Azure HDInsight az RStudio-kiszolgáló használatával
@@ -27,13 +27,13 @@ Egy ML Services-fürt a HDInsight-on. Lásd: [Apache Hadoop-fürtök létrehozá
 
 ## <a name="connect-to-rstudio-server"></a>Csatlakozás az RStudio Serverhez
 
-A RStudio-kiszolgáló a fürt peremhálózati csomópontján fut. Nyissa meg a következő URL `CLUSTERNAME` -címet, ahol a a létrehozott ml Services-fürt neve:
+A RStudio-kiszolgáló a fürt peremhálózati csomópontján fut. Nyissa meg a következő URL-címet, ahol a a `CLUSTERNAME` létrehozott ml Services-fürt neve:
 
 ```
 https://CLUSTERNAME.azurehdinsight.net/rstudio/
 ```
 
-Amikor először jelentkezik be, kétszer kell hitelesítenie. Az első hitelesítési kéréshez adja meg a fürt rendszergazdai felhasználónevét és jelszavát, az `admin`alapértelmezett érték:. A második hitelesítési kérésnél adja meg az SSH-felhasználónevet és a jelszót `sshuser`, az alapértelmezett érték:. A későbbi bejelentkezések csak az SSH hitelesítő adatokat igénylik.
+Amikor először jelentkezik be, kétszer kell hitelesítenie. Az első hitelesítési kéréshez adja meg a fürt rendszergazdai felhasználónevét és jelszavát, az alapértelmezett érték: `admin` . A második hitelesítési kérésnél adja meg az SSH-felhasználónevet és a jelszót, az alapértelmezett érték: `sshuser` . A későbbi bejelentkezések csak az SSH hitelesítő adatokat igénylik.
 
 A csatlakozást követően a képernyőnek a következőhöz hasonlóan kell kinéznie:
 

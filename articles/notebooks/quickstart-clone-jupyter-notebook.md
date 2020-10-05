@@ -4,10 +4,10 @@ description: Gyorsan klónozott Jupyter notebookot egy GitHub-adattárból, és 
 ms.topic: quickstart
 ms.date: 12/04/2018
 ms.openlocfilehash: 267e79e7d4bf108ac3b2c72d64cee5a07ba638be
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87424477"
 ---
 # <a name="quickstart-clone-a-notebook-in-azure-notebooks-preview"></a>Gyors útmutató: jegyzetfüzet klónozása Azure Notebooks előzetes verzióban
@@ -71,7 +71,7 @@ Nincsenek.
 
 1. A jegyzetfüzetek kivételével a fájlok szerkesztéséhez kattintson a jobb gombbal a fájlra a projektben, és válassza a **fájl szerkesztése** (billentyűparancs: i) elemet. Az alapértelmezett művelet, **Futtatás** (billentyűparancs: r), csak a fájl tartalmát jeleníti meg, és nem teszi lehetővé a szerkesztést.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Jupyter-jegyzetfüzet létrehozása és futtatása lineáris regresszióhoz](tutorial-create-run-jupyter-notebook.md)

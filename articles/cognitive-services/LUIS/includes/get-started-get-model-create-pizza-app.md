@@ -11,15 +11,15 @@ ms.topic: include
 ms.custom: include file
 ms.author: roy-har
 ms.openlocfilehash: 9965e4c856fdef2af17b116264ad5344ebc97eb2
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "84466921"
 ---
 Hozza létre a pizza alkalmazást.
 
-1. Válassza a [pizza-app-for-Luis-v6. JSON](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/apps/pizza-app-for-luis-v6.json) lehetőséget a fájl GitHub-oldalának megadásához `pizza-app-for-luis.json` .
+1. Válassza a [pizza-app-for-luis-v6.json](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/apps/pizza-app-for-luis-v6.json) lehetőséget a fájl GitHub-oldalának megadásához `pizza-app-for-luis.json` .
 1. Kattintson a jobb gombbal a **RAW** gombra, és válassza a **hivatkozás mentése másként** lehetőséget a számítógépre való mentéshez `pizza-app-for-luis.json` .
 1. Jelentkezzen be a [Luis portálra](https://www.luis.ai).
 1. Válassza [a saját alkalmazások](https://www.luis.ai/applications)lehetőséget.
@@ -44,7 +44,7 @@ Meg kell jelennie a **szándékok** oldalnak a pizza-alkalmazásban található 
 ## <a name="add-an-authoring-resource-to-the-pizza-app"></a>Szerzői erőforrás hozzáadása a pizza-alkalmazáshoz
 
 1. Válassza a **kezelés**lehetőséget.
-1. Válassza ki az **Azure-erőforrásokat**.
+1. Válassza az **Azure Resources** (Azure-erőforrások) lehetőséget.
 1. Válassza az **erőforrás létrehozása**lehetőséget.
 1. Válassza a **szerzői erőforrás módosítása**lehetőséget.
 
@@ -65,7 +65,7 @@ A következő értékek megkeresése:
 
 1. A **leképezések** lapon válassza a **kezelés**lehetőséget.
 1. Az **Alkalmazásbeállítások** lapon jegyezze fel az **alkalmazás azonosítóját**.
-1. Válassza ki az **Azure-erőforrásokat**.
+1. Válassza az **Azure Resources** (Azure-erőforrások) lehetőséget.
 1. Válassza az **erőforrás létrehozása**lehetőséget.
 1. A **szerzői erőforrás** lapon jegyezze fel az **elsődleges kulcsot**. Ez az érték a szerzői kulcs.
 1. Jegyezze fel a **végpont URL-címét**. Ez az érték a szerzői végpont.

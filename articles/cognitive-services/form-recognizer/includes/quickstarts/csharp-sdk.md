@@ -10,10 +10,10 @@ ms.topic: include
 ms.date: 09/21/2020
 ms.author: pafarley
 ms.openlocfilehash: fc7b435d3abdd2e04f8beabf35b7ed337c5ff68b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91318903"
 ---
 > [!IMPORTANT]
@@ -35,7 +35,7 @@ ms.locfileid: "91318903"
 
 ### <a name="create-a-new-c-application"></a>Új C#-alkalmazás létrehozása
 
-A konzol ablakban (például cmd, PowerShell vagy bash) az `dotnet new` paranccsal hozzon létre egy új, a nevű Console-alkalmazást `formrecognizer-quickstart` . Ez a parancs egy egyszerű ""Helló világ!"alkalmazás" C#-projektet hoz létre egyetlen forrásfájlban: _program.cs_. 
+A konzol ablakban (például cmd, PowerShell vagy bash) az `dotnet new` paranccsal hozzon létre egy új, a nevű Console-alkalmazást `formrecognizer-quickstart` . Ez a parancs egy egyszerű "„Helló világ!” alkalmazás" C#-projektet hoz létre egyetlen forrásfájlban: _program.cs_. 
 
 ```console
 dotnet new console -n formrecognizer-quickstart
@@ -933,7 +933,7 @@ Headers:
     Content-Type: application/json; charset=utf-8
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban az űrlap-felismerő .NET ügyféloldali kódtárat használta a modellek betanításához és az űrlapok különböző módokon történő elemzéséhez. Következő lépésként Ismerkedjen meg a jobb betanítási adatkészlet létrehozásával és a pontosabb modellek előállításával.
 

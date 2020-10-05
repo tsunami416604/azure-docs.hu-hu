@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 03/19/2020
 ms.author: aahi
 ms.openlocfilehash: 7a9fab8ba8bb9d21c9284cbf14bc67226d2ef9d3
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "80289741"
 ---
 Ezzel a rövid útmutatóval megkezdheti a hírek keresését a Pythonhoz készült Bing Video Search ügyféloldali kódtár használatával. Habár a Bing Video Search REST API kompatibilis a legtöbb programozási nyelvvel, az ügyféloldali kódtár egyszerű módszert kínál a szolgáltatás integrálására az alkalmazásokba. A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/video_search_samples.py) található további megjegyzésekkel és szolgáltatásokkal.
@@ -64,7 +64,7 @@ client = VideoSearchAPI(endpoint, CognitiveServicesCredentials(subscription_key)
 
 ## <a name="send-a-search-request-and-get-a-response"></a>Keresési kérelem küldése és Válasz kérése
 
-1. `client.videos.search()` A keresési lekérdezéssel küldhet egy kérést a Bing Video Search APInak, és választ kaphat.
+1. A `client.videos.search()` keresési lekérdezéssel küldhet egy kérést a Bing Video Search APInak, és választ kaphat.
 
     ```python
     video_result = client.videos.search(query="SwiftKey")

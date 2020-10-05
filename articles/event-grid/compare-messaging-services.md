@@ -4,10 +4,10 @@ description: A három Azure Messaging Services – Azure Event Grid, Event Hubs 
 ms.topic: overview
 ms.date: 07/07/2020
 ms.openlocfilehash: 7a3a0cd7f63a67206053ae55f33bd71aee2c19c6
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87460405"
 ---
 # <a name="choose-between-azure-messaging-services---event-grid-event-hubs-and-service-bus"></a>Válasszon az Azure Messaging Services – Event Grid, Event Hubs és Service Bus között
@@ -38,7 +38,7 @@ Az üzenetek felhasználható vagy máshol tárolható nyers adatok, amelyeket s
 
 ## <a name="comparison-of-services"></a>A szolgáltatások összehasonlítása
 
-| Szolgáltatás | Cél | Típus | A következő esetekben használja |
+| Szolgáltatás | Rendeltetés | Típus | A következő esetekben használja |
 | ------- | ------- | ---- | ----------- |
 | Event Grid | Reaktív programozás | Események terjesztése (különálló) | Állapotváltozásokra való reakció |
 | Event Hubs | Big data folyamat | Eseménystreamelés (sorozat) | Telemetria és elosztott adatok streamelése |

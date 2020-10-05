@@ -11,13 +11,13 @@ ms.topic: include
 ms.custom: include file
 ms.author: roy-har
 ms.openlocfilehash: 8e67a6d0c98a3839922a79e9b452465087da1b69
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "84418032"
 ---
-1. Válassza a [pizza-app-for-Luis-v6. JSON](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/apps/pizza-app-for-luis-v6.json) lehetőséget a fájl GitHub-oldalának megadásához `pizza-app-for-luis.json` .
+1. Válassza a [pizza-app-for-luis-v6.json](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/apps/pizza-app-for-luis-v6.json) lehetőséget a fájl GitHub-oldalának megadásához `pizza-app-for-luis.json` .
 1. Kattintson a jobb gombbal a **RAW** gombra, és válassza a **hivatkozás mentése másként** lehetőséget a számítógépre való mentéshez `pizza-app-for-luis.json` .
 1. Jelentkezzen be a [Luis portálra](https://www.luis.ai).
 1. Válassza [a saját alkalmazások](https://www.luis.ai/applications)lehetőséget.
@@ -49,6 +49,6 @@ A következő értékek megkeresése:
 
 1. A **leképezések** lapon válassza a **kezelés**lehetőséget.
 1. Az **Alkalmazásbeállítások** lapon jegyezze fel az **alkalmazás azonosítóját**.
-1. Válassza ki az **Azure-erőforrásokat**.
+1. Válassza az **Azure Resources** (Azure-erőforrások) lehetőséget.
 1. Az **Azure-erőforrások** lapon jegyezze fel az **elsődleges kulcsot**. Ez az érték az előrejelzési kulcs.
 1. Jegyezze fel a **végpont URL-címét**. Ez az érték az előrejelzési végpont.

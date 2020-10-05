@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.service: azure-communication-services
 ms.custom: references_regions
 ms.openlocfilehash: f5cf8f8ef004dacc9fe2bbdd1b815f2ae5275311
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91298116"
 ---
 # <a name="quickstart-get-a-phone-number-using-the-azure-portal"></a>Gyors útmutató: telefonszám beszerzése a Azure Portal használatával
@@ -37,13 +37,13 @@ A számok kiosztásának megkezdéséhez nyissa meg a kommunikációs szolgálta
 
 Navigáljon a telefonszámok panelre az erőforrás menüben.
 
-:::image type="content" source="../media/manage-phone-azure-portal-phone-page.png" alt-text="A kommunikációs szolgáltatások erőforrásának telefonos lapját ábrázoló képernyőkép.":::
+:::image type="content" source="../media/manage-phone-azure-portal-phone-page.png" alt-text="A kommunikációs szolgáltatások erőforrásának főoldalát bemutató képernyőkép.":::
 
 A `Get` varázsló elindításához kattintson a gombra. A panelen `Phone numbers` megjelenő varázsló végigvezeti egy olyan kérdésen, amely segít kiválasztani a forgatókönyvhöz legjobban illő telefonszámot. 
 
 Először ki kell választania, hogy `Country/region` Hol szeretné kiépíteni a telefonszámot. Miután kiválasztotta az országot/régiót, ki kell választania az `phone plan` igényeinek legmegfelelőbb lakosztállyal. 
 
-:::image type="content" source="../media/manage-phone-azure-portal-get-numbers.png" alt-text="Képernyőfelvétel: a telefonszámok beolvasása nézet.":::
+:::image type="content" source="../media/manage-phone-azure-portal-get-numbers.png" alt-text="A kommunikációs szolgáltatások erőforrásának főoldalát bemutató képernyőkép.":::
 
 ### <a name="select-a-phone-plan"></a>Válasszon egy telefonos csomagot
 
@@ -60,13 +60,13 @@ Jelenleg két típusú típust kínálunk: `Geographic` és `Toll-free` . Ha kiv
 
 A példánkban kiválasztottunk egy `Toll-free` számot a `Outbound calling` csomaggal.
 
-:::image type="content" source="../media/manage-phone-azure-portal-select-plans.png" alt-text="A csomagok kiválasztása nézetet bemutató képernyőkép.":::
+:::image type="content" source="../media/manage-phone-azure-portal-select-plans.png" alt-text="A kommunikációs szolgáltatások erőforrásának főoldalát bemutató képernyőkép.":::
 
 ### <a name="declare-purpose"></a>Cél deklarálása
 
 Ezután a varázsló kérni fogja a szám használatának céljára. Ezeket az információkat a megfelelő adó-és segélyhívó előírások alkalmazására gyűjtjük.
 
-:::image type="content" source="../media/quickstart-search-and-acquire-bot-or-human.png" alt-text="A telefonszámok beszerzésének folyamatán belüli bot vagy Human kijelölését bemutató képernyőkép.":::
+:::image type="content" source="../media/quickstart-search-and-acquire-bot-or-human.png" alt-text="A kommunikációs szolgáltatások erőforrásának főoldalát bemutató képernyőkép.":::
 
 Innen kattintson a `Next: Numbers` lap alján található gombra a kiépíteni kívánt telefonszám (ok) testreszabásához.
 
@@ -74,14 +74,14 @@ Innen kattintson a `Next: Numbers` lap alján található gombra a kiépíteni k
 
 Az `Numbers` oldalon testreszabhatja a kiépíteni kívánt telefonszám (oka) t.
 
-:::image type="content" source="../media/manage-phone-azure-portal-select-numbers-start.png" alt-text="A számok kiválasztása oldalt ábrázoló képernyőfelvétel":::
+:::image type="content" source="../media/manage-phone-azure-portal-select-numbers-start.png" alt-text="A kommunikációs szolgáltatások erőforrásának főoldalát bemutató képernyőkép.":::
 
 > [!NOTE]
 > Ez a rövid útmutató a `Toll-free` szám típusának testreszabási folyamatát mutatja be. Ha kiválasztotta a számot, a felhasználói élmény némileg eltérő lehet `Geographic` , de a végeredmény ugyanaz lesz.
 
 Válassza ki a `Area code` listából az elérhető körzetszámot, és adja meg a kiépíteni kívánt mennyiséget, majd kattintson ide a `Search` kiválasztott követelményeknek megfelelő számok megkereséséhez. Az igényeinek megfelelő telefonszámokat a havi költséggel együtt fogjuk megjeleníteni.
 
-:::image type="content" source="../media/manage-phone-azure-portal-found-numbers.png" alt-text="Képernyőfelvétel: a számok kiválasztása oldal a fenntartott számokkal.":::
+:::image type="content" source="../media/manage-phone-azure-portal-found-numbers.png" alt-text="A kommunikációs szolgáltatások erőforrásának főoldalát bemutató képernyőkép.":::
 
 > [!NOTE]
 > A rendelkezésre állás a típustól, a helytől és a kiválasztott tervtől függ.
@@ -98,7 +98,7 @@ Az összefoglalás lapon áttekintheti a telefonszámok kiépítéséhez szüks�
 
 Végül kattintson a `Place order` lap alján a megerősítéshez.
 
-:::image type="content" source="../media/manage-phone-azure-portal-get-numbers-summary.png" alt-text="Képernyőfelvétel: az összefoglalás oldal, amely tartalmazza a szám típusát, a funkciókat, a telefonszámokat és a teljes havi költséget.":::
+:::image type="content" source="../media/manage-phone-azure-portal-get-numbers-summary.png" alt-text="A kommunikációs szolgáltatások erőforrásának főoldalát bemutató képernyőkép.":::
 
 ## <a name="find-your-phone-numbers-on-the-azure-portal"></a>Telefonszámok megkeresése a Azure Portal
 
@@ -108,7 +108,7 @@ Navigáljon az Azure kommunikációs erőforrásához a [Azure Portalon](https:/
 
 A telefonszámok kezeléséhez válassza a menü telefonszámok lapját.
 
-:::image type="content" source="../media/manage-phone-azure-portal-phones.png" alt-text="A kommunikációs szolgáltatások erőforrásának telefonszám lapját ábrázoló képernyőkép.":::
+:::image type="content" source="../media/manage-phone-azure-portal-phones.png" alt-text="A kommunikációs szolgáltatások erőforrásának főoldalát bemutató képernyőkép.":::
 
 > [!NOTE]
 > Eltarthat néhány percig, amíg a kiépített számok megjelennek ezen az oldalon.
@@ -123,7 +123,7 @@ Gyakori kérdések és problémák:
 
 - A kommunikációs szolgáltatások erőforrásának törlésekor a rendszer automatikusan felszabadítja az adott erőforráshoz tartozó telefonszámokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban megtanulta a következőket:
 

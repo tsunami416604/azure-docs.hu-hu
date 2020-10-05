@@ -12,10 +12,10 @@ ms.date: 07/06/2020
 ms.author: aahi
 ms.custom: seo-javascript-september2019, devx-track-js
 ms.openlocfilehash: 00026066c90520f59700c7c5ddc33557099b3e8a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91309013"
 ---
 # <a name="quickstart-use-nodejs-to-call-the-text-analytics-cognitive-service"></a>Gyors útmutató: Node.js használata a Text Analytics kognitív szolgáltatás meghívásához  
@@ -459,7 +459,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Text Analytics a Power BI](../tutorials/tutorial-power-bi-key-phrases.md)

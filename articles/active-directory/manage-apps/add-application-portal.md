@@ -11,10 +11,10 @@ ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
 ms.openlocfilehash: 2946590cbb4c5e8f495a1f6ee4aac65929cd4d0e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91305739"
 ---
 # <a name="quickstart-add-an-application-to-your-azure-active-directory-azure-ad-tenant"></a>Gyors útmutató: alkalmazás hozzáadása a Azure Active Directory (Azure AD) bérlőhöz
@@ -55,10 +55,10 @@ Alkalmazás hozzáadása az Azure AD-bérlőhöz:
     :::image type="content" source="media/add-application-portal/sso-types.png" alt-text="A képernyőképen az SSO-típusok választója látható." lightbox="media/add-application-portal/sso-types.png":::
 
     - Ha az alkalmazás fejlesztője a **OIDC standardot** használta az egyszeri bejelentkezéshez, válassza a **regisztráció**lehetőséget. Megjelenik egy telepítési oldal. Ezután nyissa meg a rövid útmutatót a OIDC-alapú egyszeri bejelentkezés beállításához.
-    :::image type="content" source="media/add-application-portal/sign-up-oidc-sso.png" alt-text="A képernyőképen egy OIDC-alapú SSO-alkalmazás hozzáadása látható.":::
+    :::image type="content" source="media/add-application-portal/sign-up-oidc-sso.png" alt-text="A képernyőképen az SSO-típusok választója látható.":::
 
     - Ha az alkalmazás fejlesztője az SAML- **szabványt** használta az egyszeri bejelentkezéshez, válassza a **Létrehozás**lehetőséget. Megjelenik az első lépések lap, amelyen a beállításokkal konfigurálhatja az alkalmazást a vállalat számára. Az űrlapon szerkesztheti az alkalmazás nevét, hogy megfeleljen a szervezet igényeinek. Ezután nyissa meg a rövid útmutatót az SAML-alapú egyszeri bejelentkezés beállításához.
-    :::image type="content" source="media/add-application-portal/create-application.png" alt-text="A képernyőfelvételen egy SAML-alapú SSO-alkalmazás hozzáadása látható.":::
+    :::image type="content" source="media/add-application-portal/create-application.png" alt-text="A képernyőképen az SSO-típusok választója látható.":::
 
 
 > [!IMPORTANT]
@@ -75,7 +75,7 @@ Elkészült egy alkalmazás hozzáadásával. A következő rövid útmutató be
 
 Ha nem folytatja a gyors üzembe helyezési sorozatot, akkor érdemes lehet törölni az alkalmazást a tesztelési bérlő törléséhez. Az alkalmazás törlését a sorozat utolsó rövid útmutatója tartalmazza. [alkalmazás törlése](delete-application-portal.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő cikkből megtudhatja, hogyan konfigurálhat egy alkalmazást.
 > [!div class="nextstepaction"]

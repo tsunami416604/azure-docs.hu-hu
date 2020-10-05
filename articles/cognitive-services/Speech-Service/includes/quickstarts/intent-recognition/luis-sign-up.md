@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 01/27/2020
 ms.author: trbye
 ms.openlocfilehash: a41c9dc888e85baf021712e3302da7ae6106db47
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "81421840"
 ---
 A szándék-felismerési útmutató befejezéséhez létre kell hoznia egy LUIS-fiókot és egy projektet a LUIS betekintő portál használatával. Ehhez a rövid útmutatóhoz csak LUIS-előfizetés szükséges. *Nincs* szükség beszédfelismerési szolgáltatás előfizetésére.
@@ -18,7 +18,7 @@ Első lépésként létre kell hoznia egy LUIS-fiókot és-alkalmazást a LUIS b
 
 A LUIS-alkalmazás létrehozásához kövesse az alábbi utasításokat:
 
-* <a href="https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app" target="_blank">Gyors útmutató: előre elkészített tartományi alkalmazás készítése<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+* <a href="https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app" target="_blank">Gyors útmutató: előre elkészített tartományi alkalmazás készítése <span class="docon docon-navigate-external x-hidden-focus"></span></a>
 
 Ha elkészült, négy dolgot kell megadnia:
 

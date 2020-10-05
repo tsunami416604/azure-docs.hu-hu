@@ -10,10 +10,10 @@ ms.date: 08/25/2020
 ms.author: alehall
 ms.reviewer: jrasnick
 ms.openlocfilehash: 065e24c12e0750cd7a1f3ce2d4cad5c7ad4b95df
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91260694"
 ---
 # <a name="quickstart-create-an-azure-synapse-workspace-with-azure-cli"></a>Rövid útmutató: Azure szinapszis-munkaterület létrehozása az Azure CLI-vel
@@ -147,6 +147,6 @@ Ha törölni szeretné az Azure szinapszis munkaterületet, hajtsa végre a köv
 az synapse workspace delete --name $SynapseWorkspaceName --resource-group $SynapseResourceGroup
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ezután [LÉTREHOZHAT SQL-készleteket](quickstart-create-sql-pool-studio.md) , vagy [létrehozhat Apache Spark készleteket](quickstart-create-apache-spark-pool-studio.md) az adatok elemzésének és vizsgálatának megkezdéséhez.

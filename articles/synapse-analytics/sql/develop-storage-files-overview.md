@@ -10,10 +10,10 @@ ms.date: 04/19/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
 ms.openlocfilehash: 8884f62ba015cc4b33b75a133f21264dac6430e5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91288987"
 ---
 # <a name="access-external-storage-in-synapse-sql-on-demand"></a>Külső tárterület elérése a szinapszis SQL-ben (igény szerint)
@@ -188,7 +188,7 @@ A következő táblázat a fent felsorolt műveletekhez szükséges engedélyeke
 | KIVÁLASZTÁS KÜLSŐ TÁBLÁBÓL | `SELECT TABLE` és `REFERENCES DATABASE SCOPED CREDENTIAL` |
 | CETAS | Tábla létrehozása:, `CREATE TABLE` , `ALTER ANY SCHEMA` `ALTER ANY DATA SOURCE` , és `ALTER ANY EXTERNAL FILE FORMAT` . Az adat olvasása: `ADMINISTER BULK OPERATIONS` vagy a `REFERENCES CREDENTIAL` `SELECT TABLE` lekérdezés + R/W engedélyének minden táblája/nézete/funkciója a Storage-ban |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most már készen áll a folytatásra a következő cikkekkel:
 

@@ -13,10 +13,10 @@ ms.date: 09/22/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, scenarios:getting-started, languages:aspnet-core
 ms.openlocfilehash: dc0cdca2355403bc8f5409d9a6ca7f4ae89caf25
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90947178"
 ---
 # <a name="quickstart-protect-an-aspnet-core-web-api-with-microsoft-identity-platform"></a>Gyors útmutató: ASP.NET Core webes API-k védetté helyezése a Microsoft Identity platformmal
@@ -160,7 +160,7 @@ namespace webapi.Controllers
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A ASP.NET Core web API code minta részét képező GitHub-tárház útmutatást és további kódrészleteket tartalmaz, amelyek bemutatják a következőket:
 

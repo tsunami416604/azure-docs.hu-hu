@@ -5,10 +5,10 @@ ms.topic: overview
 ms.date: 04/24/2019
 ms.custom: mvc
 ms.openlocfilehash: 72dee7bbcaa730f12af3ee323157fa92f6694603
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90968338"
 ---
 # <a name="what-is-the-azure-backup-service"></a>Mi az az Azure App Service?
@@ -37,7 +37,7 @@ A Azure Backup a következő kulcsfontosságú előnyöket nyújtja:
 - **Könnyen méretezhető** – a Azure Backup az Azure-felhő mögöttes teljesítményének és korlátlan skálájának használatával biztosítja a magas rendelkezésre állást karbantartási vagy figyelési terhelés nélkül.
 - **Korlátlan adatátviteli**lehetőség: a Azure Backup nem korlátozza az átvitt bejövő vagy kimenő adatok mennyiségét, vagy a továbbított adatok díját.
   - Kimenő adatokon a Recovery Services-tárolóból a visszaállítási művelet során átvitt adatok értendők.
-  - Ha az Azure import/export szolgáltatással nagy mennyiségű adat importálására szolgáló offline kezdeti biztonsági mentést hajt végre, akkor a rendszer a bejövő adatokhoz kapcsolódó költségeket is felhasználja.  [További információ](backup-azure-backup-import-export.md).
+  - Ha az Azure import/export szolgáltatással nagy mennyiségű adat importálására szolgáló offline kezdeti biztonsági mentést hajt végre, akkor a rendszer a bejövő adatokhoz kapcsolódó költségeket is felhasználja.  [További információk](backup-azure-backup-import-export.md).
 - **Adatbiztonság megőrzése**: Azure Backup biztosít olyan megoldásokat, amelyekkel biztonságossá teheti az adatátvitelt és [a nyugalmi](backup-azure-security-feature-cloud.md) [állapotban lévő](backup-azure-security-feature.md) adatok védelmét.
 - **Központosított figyelés és felügyelet**: a Azure Backup [beépített monitorozási és riasztási képességeket](backup-azure-monitoring-built-in-monitor.md) biztosít egy Recovery Services-tárolóban. Ezek a képességek további felügyeleti infrastruktúra nélkül érhetők el. A figyelés és a jelentéskészítés méretezését a [Azure monitor használatával](backup-azure-monitoring-use-azuremonitor.md)is növelheti.
 - Alkalmazás **-konzisztens biztonsági másolatok beolvasása**: az alkalmazás-konzisztens biztonsági mentés azt jelenti, hogy egy helyreállítási pont rendelkezik az összes szükséges adattal a biztonsági másolat visszaállításához. A Azure Backup az alkalmazással konzisztens biztonsági mentéseket biztosít, amelyek biztosítják, hogy az adatokat nem kell visszaállítani további javításokkal. Az alkalmazáskonzisztens adatok visszaállítása rövidebb idő alatt végrehajtható, így gyorsan visszatérhet egy működőképes állapotba.
@@ -48,7 +48,7 @@ A Azure Backup a következő kulcsfontosságú előnyöket nyújtja:
   - A [geo-redundáns tárolás (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage) az alapértelmezett és ajánlott replikációs lehetőség. A GRS az adatait egy másodlagos régióba replikálja (több száz kilométerre a forrásadatok elsődleges helyétől). A GRS több mint LRS, de a GRS magasabb szintű tartósságot biztosít az adataihoz, még akkor is, ha van regionális leállás.
   - A [Zone-redundáns tárolás (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) a [rendelkezésre állási zónákban](https://docs.microsoft.com/azure/availability-zones/az-overview#availability-zones)replikálja az adatait, és biztosítja az adattárolást és a rugalmasságot ugyanabban a régióban. A ZRS nem rendelkezik állásidővel. Így az [adattárolást](https://azure.microsoft.com/resources/achieving-compliant-data-residency-and-security-with-azure/)igénylő kritikus fontosságú munkaterhelések, valamint az állásidő nélkül is készíthető biztonsági mentés a ZRS-ben.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Tekintse át](backup-architecture.md) a különböző biztonsági mentési forgatókönyvek architektúráját és összetevőit.
 - [Ellenőrizze](backup-support-matrix.md) a biztonsági mentés támogatási követelményeit és korlátozásait, valamint az [Azure virtuális gépek biztonsági mentését](backup-support-matrix-iaas.md).

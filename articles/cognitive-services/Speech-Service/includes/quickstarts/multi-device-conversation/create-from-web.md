@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 01/15/2020
 ms.author: ralphe
 ms.openlocfilehash: 9ed32feaf68a7cae4d2a847aac19458fe0e61890
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "76264570"
 ---
 3. Létre kell hoznia egy beszélgetést, amelyhez csatlakozni tud:
-    1. Indítsa el a böngészőt, és [https://translator.microsoft.com](https://translator.microsoft.com)navigáljon a következőre:.
+    1. Indítsa el a böngészőt, és navigáljon a következőre: [https://translator.microsoft.com](https://translator.microsoft.com) .
     1. Kattintson a beszélgetés indítása lehetőségre.
     1. Jelentkezzen be bármelyik elérhető lehetőség használatával.
     1. Írjon be egy nevet (például a gazdagépet).

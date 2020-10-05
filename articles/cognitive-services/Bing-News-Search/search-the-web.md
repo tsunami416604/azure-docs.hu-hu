@@ -12,10 +12,10 @@ ms.date: 12/18/2019
 ms.author: scottwhi
 ms.custom: seodec2018
 ms.openlocfilehash: d44fe58eb17e7f11dc64ee1426df7f356cb91aef
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85602754"
 ---
 # <a name="what-is-the-bing-news-search-api"></a>Mi az a Bing News Search API?
@@ -32,7 +32,7 @@ Noha a Bing News Search API elsődlegesen megkeresi és visszaadja a kapcsolód�
 |---------|---------|
 |[Keresési kifejezések ajánlása és használata](concepts/search-for-news.md#suggest-and-use-search-terms)     | A [Bing AutoSuggest API](../bing-autosuggest/get-suggested-search-terms.md) használatával javíthatja a keresési élményét, ha Begépelte a javasolt keresési kifejezéseket.         |
 |[Általános hírek beszerzése](concepts/search-for-news.md#get-general-news)     | Megkeresheti a híreket úgy, hogy keresési lekérdezést küld a Bing News Search APInak, és lekérdezi a kapcsolódó híreket tartalmazó cikkeket.           |
-|[A mai legfontosabb hírek](concepts/search-for-news.md#get-todays-top-news)      | Tekintse meg az első híreket az egész napra, az összes kategóriába.       |
+|[Mai kiemelt hírek](concepts/search-for-news.md#get-todays-top-news)      | Tekintse meg az első híreket az egész napra, az összes kategóriába.       |
 |[Hírek kategóriánként](concepts/search-for-news.md)     | Hírek keresése adott kategóriákban.        | 
 |[Headline Hírek](concepts/search-for-news.md)     | Keresse meg az összes kategóriát a legnépszerűbb főcímek között.         |
 

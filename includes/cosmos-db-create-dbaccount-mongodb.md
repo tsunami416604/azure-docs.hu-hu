@@ -4,17 +4,17 @@ description: fájlbefoglalás
 services: cosmos-db
 ms.custom: include file
 ms.openlocfilehash: ecf45a692f83689ed56c03bec13f291781508474
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "77061706"
 ---
 1. Egy új böngészőablakban jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 2. A bal oldali menüben válassza az **erőforrás létrehozása**lehetőséget.
    
-   ![Erőforrás létrehozása a Azure Portalban](./media/cosmos-db-create-dbaccount-mongodb/create-nosql-db-databases-json-tutorial-0.png)
+   ![Erőforrás létrehozása az Azure Portalon](./media/cosmos-db-create-dbaccount-mongodb/create-nosql-db-databases-json-tutorial-0.png)
    
 3. Az **új** lapon válassza az **adatbázisok**  >  **Azure Cosmos db**elemet.
    
@@ -26,13 +26,13 @@ ms.locfileid: "77061706"
     ---|---|---
     Előfizetés|Az Ön előfizetése|Válassza ki az Azure Cosmos DB-fiókhoz használni kívánt Azure-előfizetést. 
     Erőforráscsoport|Új létrehozása<br><br>Ezután adja meg ugyanazt a nevet, mint a fiók neve|Válassza az **Új létrehozása** lehetőséget. Ezután adjon meg egy új erőforráscsoport-nevet a fiókhoz. Az egyszerűség kedvéért használja ugyanazt a nevet, mint a Azure Cosmos DB fiók nevét. 
-    Account Name|Adjon meg egy egyedi nevet|Adjon meg egy egyedi nevet az Azure Cosmos DB-fiók azonosításához. A fiók URI-ja az egyedi *Mongo.Cosmos.Azure.com* lesz hozzáfűzve.<br><br>A fiók neve csak kisbetűket, számokat és kötőjeleket (-) tartalmazhat, és 3 – 31 karakter hosszúságú lehet.
-    API|Azure Cosmos DB a Mongo DB API-hoz|A létrehozni kívánt fiók típusát az API határozza meg. A Azure Cosmos DB öt API-t biztosít a dokumentumok adatbázisaihoz, a Gremlin Azure Cosmos DB, a Mongo DB API-hoz a dokumentum-adatbázisok, az Azure Table és a Cassandra esetében. Jelenleg külön fiókot kell létrehoznia minden egyes API-hoz. <br><br>Válassza ki **Azure Cosmos db a MONGO db API** -hoz, mert ebben a rövid útmutatóban olyan gyűjteményt hoz létre, amely együttműködik a MongoDB.<br><br>[További információ a Azure Cosmos db for MONGODB API-ról](../articles/cosmos-db/mongodb-introduction.md).|
+    Fiók neve|Adjon meg egy egyedi nevet|Adjon meg egy egyedi nevet az Azure Cosmos DB-fiók azonosításához. A fiók URI-ja az egyedi *Mongo.Cosmos.Azure.com* lesz hozzáfűzve.<br><br>A fiók neve csak kisbetűket, számokat és kötőjeleket (-) tartalmazhat, és 3 – 31 karakter hosszúságú lehet.
+    API|Azure Cosmos DB a Mongo DB API-hoz|A létrehozni kívánt fiók típusát az API határozza meg. A Azure Cosmos DB öt API-t biztosít a dokumentumok adatbázisaihoz, a Gremlin Azure Cosmos DB, a Mongo DB API-hoz a dokumentum-adatbázisok, az Azure Table és a Cassandra esetében. Jelenleg külön fiókot kell létrehoznia minden egyes API-hoz. <br><br>Válassza ki **Azure Cosmos db a MONGO db API**  -hoz, mert ebben a rövid útmutatóban olyan gyűjteményt hoz létre, amely együttműködik a MongoDB.<br><br>[További információ a Azure Cosmos db for MONGODB API-ról](../articles/cosmos-db/mongodb-introduction.md).|
     Hely|Válassza ki a felhasználóihoz legközelebb eső régiót|Válassza ki az Azure Cosmos DB-fiókot üzemeltetéséhez használni kívánt földrajzi helyet. Használja a felhasználókhoz legközelebb lévő helyet, hogy a lehető leggyorsabb hozzáférést biztosítsa az adatokhoz.|
 
     Válassza a **felülvizsgálat + létrehozás**lehetőséget. Kihagyhatja a **hálózat** és **címkék** szakaszt. 
 
-    ![Az Azure Cosmos DB új fiók lapja](./media/cosmos-db-create-dbaccount-mongodb/azure-cosmos-db-create-new-account.png)
+    ![Az Azure Cosmos DB Új fiók lapja](./media/cosmos-db-create-dbaccount-mongodb/azure-cosmos-db-create-new-account.png)
 
 4. A fiók létrehozása eltarthat néhány percig. Várja meg, amíg a portálon megjelenik a **Gratulálunk! A Mongo DB API-fiókhoz tartozó Azure Cosmos DB kész** oldal.
 

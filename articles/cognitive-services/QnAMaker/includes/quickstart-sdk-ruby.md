@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 09/04/2020
 ms.author: v-jawe
 ms.openlocfilehash: ef0db373dc6faaa470470b8169fdb6ae61aa8dde
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90982764"
 ---
 A Ruby QnA Maker ügyféloldali kódtára a következőre használható:
@@ -78,15 +78,15 @@ A szerzői QnA Maker ügyfél egy [QnAMakerClient](https://github.com/Azure/azur
 
 Az ügyfél létrehozása után használja az ügyfél [Tudásbázis](https://github.com/Azure/azure-sdk-for-ruby/blob/master/data/azure_cognitiveservices_qnamaker/lib/4.0/generated/azure_cognitiveservices_qnamaker/knowledgebase.rb) -tulajdonságának metódusait a Tudásbázis létrehozásához, kezeléséhez és közzétételéhez.
 
-Az azonnali műveletekhez a metódus általában az eredményt adja vissza, ha van ilyen. A hosszú ideig futó műveletek esetében a válasz egy [művelet](https://github.com/Azure/azure-sdk-for-ruby/blob/master/data/azure_cognitiveservices_qnamaker/lib/4.0/generated/azure_cognitiveservices_qnamaker/models/operation.rb) objektum. Hívja meg az [Operations. get_details](https://github.com/Azure/azure-sdk-for-ruby/blob/20b8b81287d272587ace808434c14b039d014e12/data/azure_cognitiveservices_qnamaker/lib/4.0/generated/azure_cognitiveservices_qnamaker/operations.rb#L33) metódust a `operation.operation_id` [kérelem állapotának](https://github.com/Azure/azure-sdk-for-ruby/blob/master/data/azure_cognitiveservices_qnamaker/lib/4.0/generated/azure_cognitiveservices_qnamaker/models/operation_state_type.rb)meghatározásához szükséges értékkel.
+Az azonnali műveletekhez a metódus általában az eredményt adja vissza, ha van ilyen. A hosszú ideig futó műveletek esetében a válasz egy [művelet](https://github.com/Azure/azure-sdk-for-ruby/blob/master/data/azure_cognitiveservices_qnamaker/lib/4.0/generated/azure_cognitiveservices_qnamaker/models/operation.rb) objektum. A [operations.get_details](https://github.com/Azure/azure-sdk-for-ruby/blob/20b8b81287d272587ace808434c14b039d014e12/data/azure_cognitiveservices_qnamaker/lib/4.0/generated/azure_cognitiveservices_qnamaker/operations.rb#L33) `operation.operation_id` [kérelem állapotának](https://github.com/Azure/azure-sdk-for-ruby/blob/master/data/azure_cognitiveservices_qnamaker/lib/4.0/generated/azure_cognitiveservices_qnamaker/models/operation_state_type.rb)meghatározásához hívja meg a Operations.get_details metódust a következő értékkel:.
 
 ### <a name="qnamakerruntimeclient-object-model"></a>QnAMakerRuntimeClient objektummodell
 
 A futásidejű QnA Maker ügyfél egy [QnAMakerRuntimeClient](https://github.com/Azure/azure-sdk-for-ruby/blob/master/data/azure_cognitiveservices_qnamakerruntime/lib/4.0/generated/azure_cognitiveservices_qnamakerruntime/qnamaker_runtime_client.rb) objektum.
 
-Miután közzétette a tudásbázist az authoring Client használatával, használja a futásidejű ügyfél [futtatókörnyezetét. generate_answer](https://github.com/Azure/azure-sdk-for-ruby/blob/20b8b81287d272587ace808434c14b039d014e12/data/azure_cognitiveservices_qnamakerruntime/lib/4.0/generated/azure_cognitiveservices_qnamakerruntime/runtime.rb#L34) metódussal választ kaphat a Tudásbázisból.
+Miután közzétette a tudásbázist az authoring ügyfél használatával, a futtatókörnyezet [Runtime.generate_answer](https://github.com/Azure/azure-sdk-for-ruby/blob/20b8b81287d272587ace808434c14b039d014e12/data/azure_cognitiveservices_qnamakerruntime/lib/4.0/generated/azure_cognitiveservices_qnamakerruntime/runtime.rb#L34) metódusával választ kaphat a tudásbázistól.
 
-A hívásakor `generate_answer` adjon meg egy kivonatot a `custom_headers` választható paraméterhez. A kivonatnak tartalmaznia kell egy kulcsot `Authorization` és egy értéket `EndpointKey YOUR_ENDPOINT_KEY` . YOUR_ENDPOINT_KEY érték esetén az authoring Client paranccsal hívja meg a [endpoint_keys. get_keys](https://github.com/Azure/azure-sdk-for-ruby/blob/20b8b81287d272587ace808434c14b039d014e12/data/azure_cognitiveservices_qnamaker/lib/4.0/generated/azure_cognitiveservices_qnamaker/endpoint_keys.rb#L32).
+A hívásakor `generate_answer` adjon meg egy kivonatot a `custom_headers` választható paraméterhez. A kivonatnak tartalmaznia kell egy kulcsot `Authorization` és egy értéket `EndpointKey YOUR_ENDPOINT_KEY` . A YOUR_ENDPOINT_KEY értékeként az authoring Client használatával hívhatja meg a [endpoint_keys. Get _keys](https://github.com/Azure/azure-sdk-for-ruby/blob/20b8b81287d272587ace808434c14b039d014e12/data/azure_cognitiveservices_qnamaker/lib/4.0/generated/azure_cognitiveservices_qnamaker/endpoint_keys.rb#L32).
 
 ## <a name="authenticate-the-client-for-authoring-the-knowledge-base"></a>Az ügyfél hitelesítése a Tudásbázis létrehozásához
 
@@ -103,7 +103,7 @@ A Tudásbázis a [CreateKbDTO](https://github.com/Azure/azure-sdk-for-ruby/blob/
 * **Fájlok**esetében használja a [FileDTO](https://github.com/Azure/azure-sdk-for-ruby/blob/master/data/azure_cognitiveservices_qnamaker/lib/4.0/generated/azure_cognitiveservices_qnamaker/models/file_dto.rb) objektumot. A FileDTO tartalmazza a fájlnevet, valamint a fájl eléréséhez szükséges nyilvános URL-címet.
 * **URL-címek**esetében a karakterláncok listáját használhatja a nyilvánosan elérhető URL-címek ábrázolására.
 
-Hívja meg a [create](https://github.com/Azure/azure-sdk-for-ruby/blob/20b8b81287d272587ace808434c14b039d014e12/data/azure_cognitiveservices_qnamaker/lib/4.0/generated/azure_cognitiveservices_qnamaker/knowledgebase.rb#L554) metódust, majd adja át a `operation_id` visszaadott művelet tulajdonságát a [Operations. get_details](#get-status-of-an-operation) metódusnak az állapot lekérdezéséhez.
+Hívja meg a [create](https://github.com/Azure/azure-sdk-for-ruby/blob/20b8b81287d272587ace808434c14b039d014e12/data/azure_cognitiveservices_qnamaker/lib/4.0/generated/azure_cognitiveservices_qnamaker/knowledgebase.rb#L554) metódust, majd adja át a `operation_id` visszaadott művelet tulajdonságát a [Operations.get_details](#get-status-of-an-operation) metódusnak az állapot lekérdezéséhez.
 
 A következő kód utolsó sora a Tudásbázis AZONOSÍTÓját adja vissza.
 
@@ -116,7 +116,7 @@ A tudásbázist a Tudásbázis meghívásával, a Tudásbázis-AZONOSÍTÓban é
 - [frissítése](https://github.com/Azure/azure-sdk-for-ruby/blob/master/data/azure_cognitiveservices_qnamaker/lib/4.0/generated/azure_cognitiveservices_qnamaker/models/update_kb_operation_dtoupdate.rb)
 - [törlése](https://github.com/Azure/azure-sdk-for-ruby/blob/master/data/azure_cognitiveservices_qnamaker/lib/4.0/generated/azure_cognitiveservices_qnamaker/models/update_kb_operation_dtodelete.rb)
 
-Adja át a `operation_id` visszaadott művelet tulajdonságát a [Operations. get_details](#get-status-of-an-operation) metódusnak az állapot lekérdezéséhez.
+Adja át a `operation_id` visszaadott művelet tulajdonságát a [Operations.get_details](#get-status-of-an-operation) metódusnak az állapot lekérdezéséhez.
 
 :::code language="ruby" source="~/cognitive-services-quickstart-code/ruby/qnamaker/sdk/quickstart.rb" id="UpdateKBMethod":::
 
@@ -136,7 +136,7 @@ Tegye közzé a tudásbázist a [Tudásbázis. publish](https://github.com/Azure
 
 Miután közzétette a tudásbázist, szüksége lesz a futásidejű végponti kulcsra az ismeretek lekérdezéséhez. Ez nem ugyanaz, mint az authoring Client létrehozásához használt előfizetési kulcs.
 
-[EndpointKeysDTO](https://github.com/Azure/azure-sdk-for-ruby/blob/master/data/azure_cognitiveservices_qnamaker/lib/4.0/generated/azure_cognitiveservices_qnamaker/models/endpoint_keys_dto.rb) -objektum beszerzéséhez használja a [endpoint_keys. get_keys](https://github.com/Azure/azure-sdk-for-ruby/blob/20b8b81287d272587ace808434c14b039d014e12/data/azure_cognitiveservices_qnamaker/lib/4.0/generated/azure_cognitiveservices_qnamaker/endpoint_keys.rb#L32) metódust.
+Használja a [endpoint_keys. Get _keys](https://github.com/Azure/azure-sdk-for-ruby/blob/20b8b81287d272587ace808434c14b039d014e12/data/azure_cognitiveservices_qnamaker/lib/4.0/generated/azure_cognitiveservices_qnamaker/endpoint_keys.rb#L32) metódust egy [EndpointKeysDTO](https://github.com/Azure/azure-sdk-for-ruby/blob/master/data/azure_cognitiveservices_qnamaker/lib/4.0/generated/azure_cognitiveservices_qnamaker/models/endpoint_keys_dto.rb) objektum beolvasásához.
 
 Használja az objektumban visszaadott kulcs-tulajdonságok egyikét a Tudásbázis lekérdezéséhez.
 

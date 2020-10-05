@@ -4,10 +4,10 @@ description: A QnA Maker egy felhőalapú NLP-szolgáltatás, amely könnyen lé
 ms.topic: overview
 ms.date: 05/26/2020
 ms.openlocfilehash: d2ff2d789f2ea1ae6018d95ef1d880da87b4ff74
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "83994867"
 ---
 # <a name="what-is-the-qna-maker-service"></a>Mi a QnA Maker szolgáltatás?
@@ -31,7 +31,7 @@ QnA Maker Tudásbázis közzétételét követően az ügyfélalkalmazás egy k�
 
 ![Kérdezzen egy robotot, és kapjon választ a Tudásbázis tartalmából](../media/qnamaker-overview-learnabout/bot-chat-with-qnamaker.png)
 
-|Lépés|Műveletek|
+|Lépés|Művelet|
 |:--|:--|
 |1|Az ügyfélalkalmazás elküldi a felhasználó _kérdését_ (a szöveg a saját szavaival), "hogyan programozott módon frissíti a tudásbázist?" a Tudásbázis-végponthoz.|
 |2|A QnA Maker a betanított Tudásbázis használatával biztosítja a megfelelő választ, valamint azokat a követési kérdéseket, amelyek a legjobb válasz keresésének pontosítására használhatók. QnA Maker egy JSON-formátumú választ ad vissza.|

@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 09/14/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: 9904fb8c2142816196a1939a16445318bdb245d0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91262314"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-docker-cli"></a>Gyors útmutató: tároló-példány üzembe helyezése az Azure-ban a Docker CLI használatával
@@ -100,7 +100,7 @@ docker rm hungry-kirch
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban létrehozott egy Azure Container-példányt egy nyilvános rendszerképből a Docker és az Azure közötti integráció használatával. További információ az integrációs forgatókönyvekről a [Docker dokumentációjában](https://docs.docker.com/engine/context/aci-integration/). 
 

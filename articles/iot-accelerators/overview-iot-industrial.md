@@ -9,10 +9,10 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 3df10c9d7630e9db76994e8e508f30adb986e0d5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91281813"
 ---
 # <a name="what-is-industrial-iot-iiot"></a>Mi az ipari IoT (IIoT)?
@@ -48,7 +48,7 @@ Az OPC Twin egy IIoT-összetevő, amely automatizálja az eszközök felderíté
 
 Az OPC-tár az OPC ua Global Discovery Server (GDS) implementációja, amely konfigurálhatja, regisztrálhatja és kezelheti a tanúsítványok életciklusát az OPC UA-kiszolgáló és az ügyfélalkalmazások számára a felhőben. Az OPC-tároló leegyszerűsíti a biztonságos eszközök kapcsolatának megvalósítását és karbantartását az ipari térben. A Tanúsítványkezelő automatizálásával az OPC-tároló felszabadítja a gyári operátorokat a kapcsolat-és tanúsítványkezelőhöz kapcsolódó manuális és összetett folyamatokkal.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy már bevezette az iparági IoT és annak összetevőit, itt látható a következő lépés:
 

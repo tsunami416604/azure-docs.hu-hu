@@ -10,10 +10,10 @@ ms.date: 09/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
 ms.openlocfilehash: 07342cb31f1c44273f98a97b018620538f86c17f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91287729"
 ---
 # <a name="interact-with-azure-cosmos-db-using-apache-spark-in-azure-synapse-link-preview"></a>A Azure Cosmos DB használata az Azure szinapszis-kapcsolaton keresztüli Apache Spark használatával (előzetes verzió)
@@ -35,11 +35,11 @@ Mielőtt megtudhatja, hogyan lehet lekérdezni Azure Cosmos DB analitikus áruh�
 
 A tapasztalatok közötti különbség az, hogy az Azure Cosmos DB tárolóban lévő alapul szolgáló adatváltozások automatikusan megjelenjenek-e a Sparkban végzett elemzés során. Ha egy Spark-DataFrame regisztrálva van, vagy egy Spark-tábla jön létre egy tároló analitikus tárolóján, a rendszer az elemzési tárolóban lévő adatok aktuális pillanatképét a Sparkba olvassa be a további elemzések hatékony pushdown. Fontos megjegyezni, hogy mivel a Spark egy lusta kiértékelési szabályzatot követ, kivéve, ha egy műveletet a Spark-DataFrame vagy egy SparkSQL-lekérdezést hajt végre a Spark-táblán, a tényleges adatok nem kerülnek beolvasásra a mögöttes tároló analitikus tárolójából.
 
-A **Spark DataFrame való betöltés**esetén a beolvasott metaadatok a Spark-munkamenet élettartamán keresztül vannak gyorsítótárazva, és így a DataFrame meghívott további műveletek a DataFrame létrehozásakor az analitikai tároló pillanatképével lesznek kiértékelve.
+A **Spark DataFrame-be való betöltéskor** a beolvasott metaadatok a Spark-munkamenet teljes élettartama alatt gyorsítótárazva maradnak, így a DataFrame-en meghívott további műveletek kiértékelése a DataFrame létrehozásakor az elemzési tárba került pillanatkép alapján történik.
 
-Másfelől a **Spark-tábla létrehozása**esetén az analitikai tár állapotának metaadatai nem kerülnek be a sparkba, és a rendszer minden SparkSQL-lekérdezés végrehajtásán újra betöltődik a Spark-táblán.
+Ezzel szemben a **Spark-táblák létrehozásakor** a rendszer nem gyorsítótárazza a Sparkban az elemzési tár állapotának metaadatait, hanem újra betölti őket a Spark-táblán végrehajtott összes SparkSQL-lekérdezés végrehajtásakor.
 
-Így választhat a Spark DataFrame betöltése és a Spark-táblázat létrehozása alapján, hogy szeretné-e kiértékelni a Spark-elemzést az analitikai tár rögzített pillanatképével vagy az analitikai tároló legújabb pillanatképének használatával.
+Ezért választhat a Spark DataFrame betöltése és a Spark-táblázat létrehozása között aszerint, hogy a Spark-elemzést az elemzési tár rögzített pillanatképével vagy az elemzési tár legújabb pillanatképével összehasonlítva szeretné elvégezni.
 
 > [!NOTE]
 > A Mongo DB-fiókok Azure Cosmos DB API- [ját az analitikai](../../cosmos-db/analytical-store-introduction.md#analytical-schema) tárolóban és a használni kívánt bővített tulajdonságok neveiben tekintheti meg.
@@ -86,7 +86,7 @@ create table call_center using cosmos.olap options (
 ```
 
 > [!NOTE]
-> Ha olyan forgatókönyvekkel rendelkezik, amelyekben az alapul szolgáló Azure Cosmos DB tároló sémája idővel megváltozik; Ha azt szeretné, hogy a frissített séma automatikusan tükrözze a Spark tábla lekérdezéseit, ezt a `spark.cosmos.autoSchemaMerge`  beállítást a `true` Spark-táblázat beállításainál állíthatja be.
+> Olyan forgatókönyvek esetében, amikor az alapul szolgáló Azure Cosmos DB-tároló tároló sémája idővel megváltozik, és ha szeretné, hogy a séma változásai automatikusan megjelenjenek a Spark-tábla lekérdezéseiben, a Spark-tábla beállításaiban állítsa `true` értékre a `spark.cosmos.autoSchemaMerge` beállítást.
 
 
 ## <a name="write-spark-dataframe-to-azure-cosmos-db-container"></a>Spark-DataFrame írása Azure Cosmos DB tárolóba
@@ -211,7 +211,7 @@ Ebből a példából megtudhatja, hogyan hivatkozhat a külső kódtárak a JAR-
 ```
 Ha távoli Spark-feladatokra vonatkozó definíciókat szeretne elküldeni egy szinapszis Spark-készletbe, megtudhatja, hogyan hivatkozhat a külső könyvtárakra az [oktatóanyag](../spark/apache-spark-job-definitions.md)követésével.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Minták az Azure szinapszis hivatkozásának megkezdéséhez a GitHubon](https://aka.ms/cosmosdb-synapselink-samples)
 * [Ismerje meg, mi támogatott az Azure szinapszis-hivatkozás Azure Cosmos DB](./concept-synapse-link-cosmos-db-support.md)

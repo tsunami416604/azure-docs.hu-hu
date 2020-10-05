@@ -9,17 +9,17 @@ ms.topic: quickstart
 ms.date: 02/03/2020
 ms.author: allensu
 ms.openlocfilehash: 0d873401d377a03581a319769604f3d976f365be
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87927238"
 ---
 # <a name="quickstart-create-a-private-link-service-by-using-the-azure-portal"></a>Rövid útmutató: privát link szolgáltatás létrehozása a Azure Portal használatával
 
 Az Azure Private link Service a saját szolgáltatására hivatkozik, amelyet a privát kapcsolat kezel. Az Azure-standard Load Balancer mögött működő szolgáltatáshoz vagy erőforráshoz privát hivatkozásokat adhat hozzá. A szolgáltatás felhasználói saját virtuális hálózatokról is hozzáférhetnek. Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy privát hivatkozási szolgáltatást a Azure Portal használatával.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
@@ -171,7 +171,7 @@ Ebben a szakaszban egy, a standard Load Balancer mögötti privát kapcsolati sz
 
 1. Tekintse át az adatokat, majd válassza a **Létrehozás**lehetőséget.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha végzett a Private link szolgáltatással, törölje az erőforráscsoportot az ebben a rövid útmutatóban használt erőforrások törléséhez.
 

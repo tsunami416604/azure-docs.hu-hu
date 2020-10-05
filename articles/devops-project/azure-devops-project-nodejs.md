@@ -14,10 +14,10 @@ ms.date: 03/24/2020
 ms.author: angrobe
 ms.custom: mvc, devx-track-js
 ms.openlocfilehash: fa6d0f78f984c5e71ccdbcada45ea1bc50be9e95
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91318619"
 ---
 # <a name="create-a-cicd-pipeline-in-azure-pipelines-for-nodejs-with-azure-devops-starter"></a>CI/CD-folyamat létrehozása Azure-folyamatokban Node.js Azure DevOps Starter-vel
@@ -190,7 +190,7 @@ Az előző két lépésben hozzáadott egy Gatsby létrehozott PWA a git-tárhá
 
 Törölheti Azure App Service és az egyéb kapcsolódó erőforrásokat, amelyeket akkor hozott létre, amikor már nincs szüksége az erőforrásokra. Használja a **delete** funkciót a DevOps Starter irányítópultján.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A CI/CD folyamat konfigurálásakor a rendszer automatikusan létrehozza a létrehozási és kiadási folyamatokat. Ezeket a build és kiadási folyamatokat a csapat igényeinek megfelelően módosíthatja. A CI/CD folyamattal kapcsolatos további tudnivalókért tekintse meg a következőt:
 

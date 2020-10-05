@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 3/18/2020
 ms.openlocfilehash: 90247f093096728ac250f36fa7cb0d5d88a597d9
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88121884"
 ---
 # <a name="quickstart-azure-database-for-mariadb-use-mysql-workbench-to-connect-and-query-data"></a>Gyors útmutató: Azure Database for MariaDB: a MySQL Workbench használata a kapcsolódáshoz és az adatlekérdezéshez
@@ -54,8 +54,8 @@ Csatlakozás az Azure Database for MariaDB-kiszolgálóhoz a MySQL Workbench has
    | Beállítás | Ajánlott érték | Mező leírása |
    |---|---|---|
    |   Kapcsolat neve | **Bemutató-kapcsolatok** | Adjon meg egy címkét a kapcsolathoz. |
-   | Kapcsolati módszer | **Standard (TCP/IP)** | A Standard (TCP/IP) elégséges. |
-   | Gazdanév | *kiszolgáló neve* | Adja meg az Azure Database for MariaDB-példány létrehozásakor használt kiszolgálónév értékét. A példakiszolgáló a **mydemoserver.mariadb.database.azure.com**. Használja a teljes tartománynevet (\*.mariadb.database.azure.com), ahogyan az a példában látható. Ha nem emlékszik a kiszolgáló nevére, az előző szakasz lépéseit követve lekérheti a kapcsolati adatokat.  |
+   | Connection Method (Kapcsolati módszer) | **Standard (TCP/IP)** | A Standard (TCP/IP) elégséges. |
+   | Hostname (Gazdanév) | *kiszolgáló neve* | Adja meg az Azure Database for MariaDB-példány létrehozásakor használt kiszolgálónév értékét. A példakiszolgáló a **mydemoserver.mariadb.database.azure.com**. Használja a teljes tartománynevet (\*.mariadb.database.azure.com), ahogyan az a példában látható. Ha nem emlékszik a kiszolgáló nevére, az előző szakasz lépéseit követve lekérheti a kapcsolati adatokat.  |
    | Port | **3306** | Az Azure Database for MariaDB-hez való csatlakozáskor mindig a 3306-os portot használja. |
    | Felhasználónév |  *kiszolgáló-rendszergazdai bejelentkezési név* | Adja meg az Azure Database for MariaDB-példány létrehozásakor használt kiszolgáló-rendszergazdai bejelentkezési felhasználónevet. A példában szereplő Felhasználónév a **myadmin \@ mydemoserver**. Ha nem emlékszik a kiszolgáló-rendszergazdai bejelentkezési névre, az előző szakasz lépéseit követve lekérheti a kapcsolati adatokat. A formátum a *username \@ servername*.
    | Jelszó | *a jelszó* | A jelszó mentéséhez kattintson a **Store in Vault** (Tárolás a tárolóban) gombra. |

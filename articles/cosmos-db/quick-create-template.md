@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 06/01/2020
 ms.custom: subject-armqs
 ms.openlocfilehash: 249ff87813fe23505a09db020d4c6ad0f272796d
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85483295"
 ---
 # <a name="quickstart-create-an-azure-cosmos-db-and-a-container-by-using-an-arm-template"></a>Rövid útmutató: Azure Cosmos DB és tároló létrehozása ARM-sablonnal
@@ -21,7 +21,7 @@ Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-sz
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonok használatát, válassza az **üzembe helyezés az Azure** -ban gombot. A sablon megnyílik a Azure Portalban.
+Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonokat, kattintson az **Üzembe helyezés az Azure-ban** gombra. A sablon az Azure Portalon fog megnyílni.
 
 [:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Üzembe helyezés az Azure-ban":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql%2Fazuredeploy.json)
 
@@ -35,7 +35,7 @@ Azure-előfizetés vagy ingyenes Azure Cosmos DB próbaverziós fiók
 
 ## <a name="review-the-template"></a>A sablon áttekintése
 
-Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql/)származik.
+Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql/) közül származik.
 
 :::code language="json" source="~/quickstart-templates/101-cosmosdb-sql/azuredeploy.json":::
 
@@ -57,7 +57,7 @@ További Azure Cosmos DB-sablonok a gyorsindítási [sablonok](https://azure.mic
 
 2. Válassza ki vagy adja meg a következő értékeket.
 
-   :::image type="content" source="./media/quick-create-template/create-cosmosdb-using-template-portal.png" alt-text="ARM-sablon, Azure Cosmos DB integráció, portál üzembe helyezése":::
+   :::image type="content" source="./media/quick-create-template/create-cosmosdb-using-template-portal.png" alt-text="Üzembe helyezés az Azure-ban":::
 
     Ha meg van adva, használja az alapértelmezett értékeket az Azure Cosmos-erőforrások létrehozásához.
 
@@ -78,7 +78,7 @@ További Azure Cosmos DB-sablonok a gyorsindítási [sablonok](https://azure.mic
 
 3. Válassza a **Beszerzés** lehetőséget. Miután sikeresen telepítette az Azure Cosmos-fiókot, értesítést kap:
 
-   :::image type="content" source="./media/quick-create-template/resource-manager-template-portal-deployment-notification.png" alt-text="ARM-sablon, Cosmos DB integráció, portál-értesítés üzembe helyezése":::
+   :::image type="content" source="./media/quick-create-template/resource-manager-template-portal-deployment-notification.png" alt-text="Üzembe helyezés az Azure-ban":::
 
 Az Azure Portalon helyezhető üzembe a sablon. A Azure Portalon kívül használhatja a Azure PowerShell, az Azure CLI és a REST API is. További információ az üzembe helyezési módszerekről: [sablonok üzembe helyezése](../azure-resource-manager/templates/deploy-powershell.md).
 

@@ -17,10 +17,10 @@ ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2ecbebfc75cb8c77ebb99ad04b1f9e33b3c4ef64
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91306463"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Mi az Azure AD Identity Governance?
@@ -74,7 +74,7 @@ A [Azure ad Privileged Identity Management (PIM)](../privileged-identity-managem
 
 A fent felsorolt funkciók mellett további Azure AD-funkciók is gyakran használatosak az identitás-irányítási forgatókönyvek biztosításához:
 
-| Képesség | Használati eset |Funkció
+| Képesség | Használati eset |Szolgáltatás
 | ------- | --------------------- |-----|
 |Identitás életciklusa (alkalmazottak)|A rendszergazdák engedélyezhetik a felhasználói fiókok üzembe helyezését a munkanap vagy a SuccessFactors Cloud HR vagy a helyszíni HR használatával.|[Felhőbeli HR – Azure AD-felhasználók üzembe helyezése](../app-provisioning/plan-cloud-hr-provision.md)|
 |Identitás életciklusa (vendég)|A rendszergazdák engedélyezhetik az önkiszolgáló vendég felhasználói számára egy másik Azure AD-bérlőből, közvetlen összevonásból, egyszeri jelszóból (OTP) vagy Google-fiókokból való bevezetést.  A vendég felhasználókat a rendszer automatikusan kiépíti és kiépíti életciklus-szabályzatok alapján.|[Jogosultságok kezelése](entitlement-management-overview.md) [B2B](../external-identities/what-is-b2b.md) használatával|
@@ -106,14 +106,14 @@ Habár nincs tökéletes megoldás vagy javaslat minden ügyfélhez, a következ
 
 Ajánlott eljárás a legkevésbé Kiemelt szerepkör használata a rendszergazdai feladatok elvégzéséhez az Identitáskezelés irányításában. Javasoljuk, hogy az Azure AD PIM használatával aktiválja a szerepköröket a feladatok elvégzéséhez szükséges módon. Az identitás-irányítási funkciók konfigurálásához az alábbi legkevesebb jogosultsággal rendelkező címtár-szerepkört kell megadni:
 
-| Funkció | Legkevésbé Kiemelt szerepkör |
+| Szolgáltatás | Legkevésbé Kiemelt szerepkör |
 | ------- | --------------------- |
 | Jogosultságkezelés | Felhasználói rendszergazda (a SharePoint Online-helyek katalógusba való felvételének kivételével, amely globális rendszergazdai jogosultságot igényel) |
 | Hozzáférési felülvizsgálatok | Felhasználói rendszergazda (az Azure-beli vagy az Azure AD-szerepkörök hozzáférési felülvizsgálatának kivételével, amelyhez Kiemelt szerepkörű rendszergazda szükséges) |
 |Privileged Identity Management | Kiemelt szerepkörű rendszergazda |
 | Használati feltételek | Biztonsági rendszergazda vagy feltételes hozzáférésű rendszergazda |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Mi az az Azure AD-jogosultságkezelés?](entitlement-management-overview.md)
 - [Mik azok az Azure AD-hozzáférési felülvizsgálatok?](access-reviews-overview.md)

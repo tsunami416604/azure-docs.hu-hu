@@ -9,10 +9,10 @@ ms.date: 06/04/2020
 ms.author: cynthn
 ms.custom: subject-armqs
 ms.openlocfilehash: ded59b2f517c5b109dfd00bde2fb73f8351bf821
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88649669"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-using-an-arm-template"></a>Gyors útmutató: Windows rendszerű virtuális gép létrehozása ARM-sablonnal
@@ -60,12 +60,12 @@ Több erőforrás van definiálva a sablonban:
     - **Erőforráscsoport**: válasszon ki egy meglévő erőforráscsoportot a legördülő listából, vagy válassza az **új létrehozása**lehetőséget, adjon meg egy egyedi nevet az erőforráscsoport számára, majd kattintson **az OK**gombra.
     - **Hely**: válasszon ki egy helyet.  Például: **USA középső régiója**.
     - **Rendszergazdai Felhasználónév**: adjon meg egy felhasználónevet, például az *Azureus*nevet.
-    - **Rendszergazdai jelszó**: adja meg a rendszergazdai fiókhoz használni kívánt jelszót. A jelszónak legalább 12 karakter hosszúságúnak kell lennie, [az összetettségre vonatkozó követelmények teljesülése mellett](faq.md#what-are-the-password-requirements-when-creating-a-vm).
+    - **Rendszergazdai jelszó**: adja meg a rendszergazdai fiókhoz használni kívánt jelszót. A jelszónak legalább 12 karakter hosszúnak kell lennie, és meg kell felelnie a [meghatározott összetettségi követelményeknek](faq.md#what-are-the-password-requirements-when-creating-a-vm).
     - **DNS-címke előtagja**: adjon meg egy egyedi azonosítót, amelyet a DNS-címke részeként kíván használni.
     - **Windows operációs rendszer verziója**: válassza ki a virtuális gépen futtatni kívánt Windows-verziót.
     - **Virtuális gép mérete**: válassza ki a virtuális géphez használandó [méretet](../sizes.md) .
     - **Hely**: az alapértelmezett érték ugyanaz a hely, mint az erőforráscsoport, ha már létezik.
-1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget. Az érvényesítés befejezése után a **Létrehozás** gombra kattintva hozhatja létre és helyezheti üzembe a virtuális gépet.
+1. Válassza az **Áttekintés + létrehozás** lehetőséget. Az érvényesítés befejezése után a **Létrehozás** gombra kattintva hozhatja létre és helyezheti üzembe a virtuális gépet.
 
 
 Az Azure Portalon helyezhető üzembe a sablon. A Azure Portalon kívül használhatja a Azure PowerShell, az Azure CLI és a REST API is. További információ az üzembe helyezési módszerekről: [sablonok üzembe helyezése](../../azure-resource-manager/templates/deploy-powershell.md).

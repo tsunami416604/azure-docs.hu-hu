@@ -13,10 +13,10 @@ ms.author: aahi
 keywords: anomáliák észlelése, gépi tanulás, algoritmusok
 ms.custom: cog-serv-seo-aug-2020
 ms.openlocfilehash: 2e48c189df23ed94cd54e1bc9097b7d9709c9ed3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91319316"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>Mi az az Anomaly Detector API?
@@ -29,11 +29,11 @@ A rendellenesség-Kiderítő API lehetővé teszi, hogy a gépi tanulás ismeret
 
 Az anomália detektor használata nem igényel korábbi felhasználói élményt a gépi tanulásban, és a REST API lehetővé teszi a szolgáltatás egyszerű integrálását az alkalmazásokba és folyamataiba.
 
-## <a name="features"></a>Funkciók
+## <a name="features"></a>Szolgáltatások
 
 Az anomáliák detektorral automatikusan észlelheti a rendellenességeket az idősorozat-adataiban, vagy valós időben végezheti el azokat.
 
-|Funkció  |Leírás  |
+|Szolgáltatás  |Leírás  |
 |---------|---------|
 |Anomáliák észlelése valós időben. | A korábban látott adatpontok használatával észlelheti a folyamatos adatátviteli hibák észlelését, és meghatározhatja, hogy a legújabb-e anomália. A művelet létrehoz egy modellt a küldött adatpontok használatával, és meghatározza, hogy a célként megadott pont anomáli-e. Ha az API-t az Ön által létrehozott összes új adatpontra hívja fel, az adatait a létrehozásuk során figyelheti. |
 |Az adatkészletekben lévő rendellenességek észlelése kötegként. | Az idősorozat használatával észlelheti az összes olyan rendellenességet, amely létezhet az összes adategységben. A művelet létrehoz egy modellt a teljes idősorozat-adataival, és minden olyan pontot, amely ugyanazzal a modellel lett elemezve.         |
@@ -91,7 +91,7 @@ Ha többet szeretne megtudni a Microsoft által fejlesztett SR-CNN-algoritmusokr
 * Csatlakozás az [anomália-detektor Advisors csoportjához a Microsoft Teams](https://aka.ms/AdAdvisorsJoin) szolgáltatásban
 * A kiválasztott [felhasználó által létrehozott tartalom](user-generated-content.md) megjelenítése
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Gyors útmutató: az idősoros adataiban észlelt rendellenességek észlelése az anomália-detektor használatával REST API](quickstarts/detect-data-anomalies-csharp.md)
 * Az anomália érzékelő API [online bemutatója](https://notebooks.azure.com/AzureAnomalyDetection/projects/anomalydetector)

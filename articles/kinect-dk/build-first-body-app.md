@@ -9,10 +9,10 @@ ms.date: 06/26/2019
 ms.topic: quickstart
 keywords: Kinect, Azure, szenzor, SDK, szövegtörzs, nyomon követés, közös, alkalmazás, első
 ms.openlocfilehash: bdf8ee7a14bf59a151dfa316b11159830b4f63b8
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85277960"
 ---
 # <a name="quickstart-build-an-azure-kinect-body-tracking-application"></a>Gyors útmutató: Azure Kinect Body Tracking-alkalmazás létrehozása
@@ -49,7 +49,7 @@ A törzs nyomon követése egyetlen fejlécet használ `k4abt.h` . Adja meg a fe
 
 Az első Body Tracking-alkalmazás feltételezi, hogy egyetlen Azure Kinect-eszköz csatlakozik a számítógéphez.
 
-A Body Tracking az Sensor SDK-ra épül. A Body Tracking használatához először meg kell nyitnia és konfigurálnia kell az eszközt. Az [k4a_device_open ()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga3d4eb5dfbf4d576d4978b66ea419f113.html#ga3d4eb5dfbf4d576d4978b66ea419f113) függvény használatával nyissa meg az eszközt, majd konfigurálja [k4a_device_configuration_t](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/structk4a__device__configuration__t.html) objektummal. A legjobb eredmény érdekében állítsa a mélységi módot a vagy a értékre `K4A_DEPTH_MODE_NFOV_UNBINNED` `K4A_DEPTH_MODE_WFOV_2X2BINNED` . A törzs nyomon követése nem fog futni, ha a mélységi mód értéke `K4A_DEPTH_MODE_OFF` vagy `K4A_DEPTH_MODE_PASSIVE_IR` .
+A Body Tracking az Sensor SDK-ra épül. A Body Tracking használatához először meg kell nyitnia és konfigurálnia kell az eszközt. Az [k4a_device_open ()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga3d4eb5dfbf4d576d4978b66ea419f113.html#ga3d4eb5dfbf4d576d4978b66ea419f113) függvény használatával nyissa meg az eszközt, majd konfigurálja [k4a_device_configuration_t](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/structk4a__device__configuration__t.html) objektummal. A legjobb eredmény érdekében állítsa a mélységi módot a vagy a értékre `K4A_DEPTH_MODE_NFOV_UNBINNED` `K4A_DEPTH_MODE_WFOV_2X2BINNED` . A törzs nyomon követése nem fog futni, ha a mélységi mód értéke  `K4A_DEPTH_MODE_OFF` vagy `K4A_DEPTH_MODE_PASSIVE_IR` .
 
 Az eszköz megkeresésével és megnyitásával kapcsolatos további információkért tekintse meg az [oldalt](find-then-open-device.md).
 
@@ -125,7 +125,7 @@ size_t num_bodies = k4abt_frame_get_num_bodies(body_frame);
 printf("%zu bodies are detected!\n", num_bodies);
 ```
 
-## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
+## <a name="clean-up"></a>A feleslegessé vált elemek eltávolítása
 
 Utolsó lépésként állítsa le a törzs nyomon követését, és szabadítsa fel a törzs nyomon követésére szolgáló objektumot. Emellett le kell állítania és be kell fejeznie az eszközt.
 

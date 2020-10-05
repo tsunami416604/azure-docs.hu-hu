@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 06/12/2020
 ms.custom: seodec18, H1Hack27Feb2017, mvc, devx-track-azurecli
 ms.openlocfilehash: f4e69616d30c6a7b853c5cc854adee147ebde206
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87486544"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-the-azure-cli"></a>Rövid útmutató: saját tároló-beállításjegyzék létrehozása az Azure CLI használatával
@@ -21,7 +21,7 @@ A Dockert is telepítenie kell helyileg. A Docker csomagokat biztosít, amelyekk
 
 Mivel az Azure Cloud Shell nem tartalmazza az összes szükséges Docker-összetevőt (a `dockerd`-démont), ehhez a rövid útmutatóhoz nem használható a Cloud Shell.
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Hozzon létre egy erőforráscsoportot az [az group create][az-group-create] paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 

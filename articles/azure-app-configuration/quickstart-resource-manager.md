@@ -10,10 +10,10 @@ ms.custom:
 - mvc
 - subject-armqs
 ms.openlocfilehash: 7b7dd00d3495c24733ecdc213e0e25f8bc9640eb
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88661469"
 ---
 # <a name="quickstart-automated-vm-deployment-with-app-configuration-and-resource-manager-template-arm-template"></a>Gyors útmutató: automatikus virtuálisgép-telepítés alkalmazás-konfigurációval és Resource Manager-sablonnal (ARM-sablon)
@@ -61,7 +61,7 @@ A [második sablon](https://azure.microsoft.com/resources/templates/101-app-conf
     - **Hely**: határozza meg az alkalmazás konfigurációs tárolójának helyét.  Használja az alapértelmezett értéket.
     - **SKU neve**: adja meg az alkalmazás-konfigurációs tároló SKU-nevét. Használja az alapértelmezett értéket.
 
-1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
+1. Válassza az **Áttekintés + létrehozás** lehetőséget.
 1. Győződjön meg arról, hogy a lapon az **Érvényesítés sikeres**volt, majd válassza a **Létrehozás**lehetőséget.
 
 Jegyezze fel az erőforráscsoport nevét és az alkalmazás konfigurációs tárolójának nevét.  Ezekre az értékekre szüksége lesz a virtuális gép telepítésekor
@@ -108,7 +108,7 @@ Most, hogy hozzáadta a kulcs-értékeket a tárolóhoz, készen áll a virtuál
     - **VM SKU-kulcs**: a **windowsOsVersion**meghatározása.  Ez az a kulcs-érték neve, amelyet a tárolóhoz adott hozzá.
     - **Lemez mérete kulcs**: határozza meg a **diskSizeGB**. Ez az az érték, amelyet a tárolóhoz adott hozzá.
 
-1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
+1. Válassza az **Áttekintés + létrehozás** lehetőséget.
 1. Győződjön meg arról, hogy a lapon az **Érvényesítés sikeres**volt, majd válassza a **Létrehozás**lehetőséget.
 
 ## <a name="review-deployed-resources"></a>Üzembe helyezett erőforrások áttekintése

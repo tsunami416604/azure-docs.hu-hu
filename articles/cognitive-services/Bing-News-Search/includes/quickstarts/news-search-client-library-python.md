@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: aahi
 ms.openlocfilehash: c1bd0d86a3fd9d19d67d84b9b05955421373e01e
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "79503880"
 ---
 Ezzel a rövid útmutatóval megkezdheti a hírek keresését a Pythonhoz készült Bing News Search ügyféloldali kódtár használatával. Habár a Bing News Search REST API kompatibilis a legtöbb programozási nyelvvel, az ügyféloldali kódtár egyszerű módszert kínál a szolgáltatás integrálására az alkalmazásokba. A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/news_search_samples.py)található.

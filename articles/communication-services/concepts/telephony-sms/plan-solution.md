@@ -10,10 +10,10 @@ ms.date: 06/23/2020
 ms.topic: overview
 ms.service: azure-communication-services
 ms.openlocfilehash: 39f88ab8b735438f60d8e20513ea5cbda43d41ee
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90947108"
 ---
 # <a name="plan-your-telephony-and-sms-solution"></a>A telefonos és SMS-megoldás megtervezése
@@ -42,7 +42,7 @@ Az Azure kommunikációs szolgáltatásai kiváló rugalmasságot biztosítanak 
 
 Az elérhető csomagok az országtól és a telefonszámtól függenek. Az alábbi ábra a döntési folyamatot mutatja be: a rendelkezésre álló csomagok az országtól és a telefonszámtól függenek.
 
-<!-- Tami/team have rejected this multiple times despite updates, says it needs to be higher res - need to work with her to get approval for this image. Commenting out to move our staging forward. :::image type="content" source="../../media/example-decision-flow.png" alt-text="Example for the decision flow"::: -->
+<!-- Tami/team have rejected this multiple times despite updates, says it needs to be higher res - need to work with her to get approval for this image. Commenting out to move our staging forward. :::image type="content" source="../../media/example-decision-flow.png" alt-text="Ábra, amely bemutatja, hogyan hozhat döntéseket a telefonszámokkal kapcsolatban."::: -->
 
 A telefonszám típusának kiválasztása előtt tekintse át a nemzetközi telefonszám-számozási tervet.
 
@@ -67,19 +67,19 @@ A telefonszám a következőkből áll
 
 Az Egyesült államokbeli régióbeli telefonszám:
 
-:::image type="content" source="../media/plan-solution/regional-us.png" alt-text="Az Egyesült államokbeli régióbeli telefonszámok – példa":::
+:::image type="content" source="../media/plan-solution/regional-us.png" alt-text="Ábra, amely bemutatja, hogyan hozhat döntéseket a telefonszámokkal kapcsolatban.":::
 
 A kanadai régióbeli telefonszám:
 
-:::image type="content" source="../media/plan-solution/regional-canada.png" alt-text="Példa a kanadai régióbeli telefonszámra":::
+:::image type="content" source="../media/plan-solution/regional-canada.png" alt-text="Ábra, amely bemutatja, hogyan hozhat döntéseket a telefonszámokkal kapcsolatban.":::
 
 Díjmentes szám a Észak-Amerika régióban:
 
-:::image type="content" source="../media/plan-solution/tollfree-us.png" alt-text="Ingyenesen hívható szám – példa Észak-Amerika":::
+:::image type="content" source="../media/plan-solution/tollfree-us.png" alt-text="Ábra, amely bemutatja, hogyan hozhat döntéseket a telefonszámokkal kapcsolatban.":::
 
 Az Egyesült Királyságban egy mobiltelefon-telefonszám:
 
-:::image type="content" source="../media/plan-solution/mobile-uk.png" alt-text="Példa mobil számra az Egyesült Királyságban":::
+:::image type="content" source="../media/plan-solution/mobile-uk.png" alt-text="Ábra, amely bemutatja, hogyan hozhat döntéseket a telefonszámokkal kapcsolatban.":::
 
 Ezután tekintse át az Azure kommunikációs szolgáltatásokban elérhető telefonszám-típusokat.
 
@@ -102,7 +102,7 @@ Nézzük meg a telefonszámok számára engedélyezhető funkciókat. Ezek a ké
 - **Kétirányú bejövő és kimenő SMS**, egy előre definiált csomag, amely lehetővé teszi az SMS küldését és fogadását egy csomag részeként.
 - **PSTN-hívás**, kiválaszthat egy bejövő hívást, és a hívó azonosító használatával helyezheti el a kimenő hívásokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 ### <a name="quickstarts"></a>Rövid útmutatók
 
@@ -112,6 +112,6 @@ Nézzük meg a telefonszámok számára engedélyezhető funkciókat. Ezek a ké
 
 ### <a name="conceptual-documentation"></a>Fogalmi dokumentáció
 
-- [Hang-és video-fogalmak](../voice-video-calling/about-call-types.md)
+- [A hang- és videóhívással kapcsolatos alapfogalmak](../voice-video-calling/about-call-types.md)
 - [Folyamatok és SMS-folyamatok hívása](../call-flows.md)
 - [Díjszabás](../pricing.md)

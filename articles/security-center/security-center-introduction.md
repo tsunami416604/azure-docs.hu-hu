@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
 ms.openlocfilehash: 2eee46f99af247ffd0e11b262ace0a96453270d4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91323674"
 ---
 # <a name="what-is-azure-security-center"></a>Mi az az Azure Security Center?
@@ -67,7 +67,7 @@ Ez egy biztonsági alapszintű, és gondoskodik arról, hogy a munkaterhelések 
 
 Security Center segít **AZONOSÍTANI az árnyék-előfizetéseket**. Ha az irányítópulton **nem** szereplő előfizetéseket keres, azonnal megtudhatja, hogy vannak-e újonnan létrehozott előfizetések, és gondoskodjon róla, hogy a szabályzatok hatálya alá legyenek szabva, és Azure Security Center által védettek legyenek.
 
-:::image type="content" source="./media/security-center-intro/sc-policy-dashboard.png" alt-text="Security Center szabályzat irányítópultja":::
+:::image type="content" source="./media/security-center-intro/sc-policy-dashboard.png" alt-text="Házirend-kezelés lap":::
 
 ### <a name="continuous-assessments"></a>Folyamatos értékelések
 
@@ -75,13 +75,13 @@ Security Center folyamatosan felfedi a számítási feladatok során üzembe hel
 
 Annak megértéséhez, hogy az egyes javaslatok milyen fontosak az általános biztonsági helyzethez, Security Center csoportosítsa a javaslatokat a biztonsági ellenőrzésekben, és hozzáadja a **biztonságos pontszám** értéket az egyes vezérlőkhöz. Ez kulcsfontosságú a **biztonsági feladatok rangsorolásának**lehetővé tételéhez.
 
-:::image type="content" source="./media/security-center-intro/sc-secure-score.png" alt-text="Security Center biztonságos pontszám":::
+:::image type="content" source="./media/security-center-intro/sc-secure-score.png" alt-text="Házirend-kezelés lap":::
 
 ### <a name="network-map"></a>Hálózati Térkép
 
 Az egyik leghatékonyabb eszköz Security Center biztosítja a hálózat biztonsági állapotának folyamatos figyelését a **hálózati Térkép**. A térkép segítségével megtekintheti a számítási feladatok topológiáját, így megtekintheti, hogy az egyes csomópontok megfelelően vannak-e konfigurálva. Láthatja, hogy a csomópontok hogyan kapcsolódnak egymáshoz, ami segít letiltani a nemkívánatos kapcsolatokat, amelyek megkönnyítik a támadók számára a hálózatra való csúszást.
 
-:::image type="content" source="./media/security-center-intro/sc-net-map.png" alt-text="Security Center hálózati Térkép":::
+:::image type="content" source="./media/security-center-intro/sc-net-map.png" alt-text="Házirend-kezelés lap":::
 
 
 ### <a name="optimize-and-improve-security-by-configuring-recommended-controls"></a>Az ajánlott vezérlők konfigurálásával optimalizálhatja és javíthatja a biztonságot.
@@ -92,15 +92,15 @@ Azure Security Center értékének szíve a javaslataiban rejlik. A javaslatok a
 
 A javaslatok segítségével csökkentheti a támadási felületet az egyes erőforrások között. Ez magában foglalja az Azure Virtual Machines, a nem Azure-kiszolgálókat és az Azure Pásti szolgáltatásait, például az SQL-és a Storage-fiókokat, valamint az egyes erőforrások különböző típusait, és saját szabványokkal rendelkeznek.
 
-:::image type="content" source="./media/security-center-intro/sc-recommendation-example.png" alt-text="Példa Security Center javaslatra":::
+:::image type="content" source="./media/security-center-intro/sc-recommendation-example.png" alt-text="Házirend-kezelés lap":::
 
-## <a name="protect-against-threats"></a>Fenyegetések elleni védelem
+## <a name="protect-against-threats"></a>Védelem a fenyegetésekkel szemben
 
 Security Center fenyegetések elleni védelme lehetővé teszi a fenyegetések észlelését és megelőzését a szolgáltatásként (IaaS), a nem Azure-beli kiszolgálókon, valamint az Azure-ban szolgáltatásként (Pásti) elérhető platformokon.
 
 Security Center fenyegetés elleni védelme magában foglalja a Fusion kill-Chain Analysis szolgáltatást, amely a környezetben a Cyber kill-Chain Analysis szolgáltatáson alapuló riasztásokat automatikusan összekapcsolja, így könnyebben megismerheti a támadási kampányok teljes történetét, ahol elindult, és milyen hatással van az erőforrásaira.
 
-:::image type="content" source="./media/security-center-intro/sc-alerts.png" alt-text="Biztonsági riasztások":::
+:::image type="content" source="./media/security-center-intro/sc-alerts.png" alt-text="Házirend-kezelés lap":::
 
 ### <a name="integration-with-microsoft-defender-advanced-threat-protection"></a>Integráció a Microsoft Defender komplex veszélyforrások elleni védelemmel
 
@@ -136,7 +136,7 @@ A Security Center zökkenőmentes, natív integrációt biztosít az Azure-és a
 
 Kiterjedt naplózási gyűjtemény – a Windows és a Linux rendszerből származó naplók mind kihasználva vannak a biztonsági elemzési motorban, és javaslatok és riasztások létrehozásához használatosak.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A Security Center használatához Microsoft Azure-előfizetéssel kell rendelkeznie. Ha nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes próbaverzióra](https://azure.microsoft.com/free/).
 

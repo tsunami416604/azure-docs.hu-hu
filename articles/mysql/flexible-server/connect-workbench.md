@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 9/21/2020
 ms.openlocfilehash: d604ca8c8979ec98b990f8002ce29d0df92ac2af
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90947795"
 ---
 # <a name="quickstart-use-mysql-workbench-to-connect-and-query-data-in-azure-database-for-mysql---flexible-server-preview"></a>Rövid útmutató: a MySQL Workbench használata a Azure Database for MySQL rugalmas kiszolgálóval való kapcsolódáshoz és adatlekérdezéshez (előzetes verzió)
@@ -53,7 +53,7 @@ Kapcsolódás Azure Database for MySQL rugalmas kiszolgálóhoz a MySQL Workbenc
 
 2. A **Setup New Connection** (Új kapcsolat beállítása) párbeszédpanelen adja meg a következő információkat a **Parameters** (Paraméterek) lapon:
 
-    :::image type="content" source="./media/connect-workbench/2-setup-new-connection.png" alt-text="új kapcsolat beállítása":::
+    :::image type="content" source="./media/connect-workbench/2-setup-new-connection.png" alt-text="Azure Database for MySQL Flexible Server name":::
 
     | **Paraméterek** | **Ajánlott érték** | **Mező leírása** |
     |---|---|---|
@@ -108,7 +108,7 @@ Kapcsolódás Azure Database for MySQL rugalmas kiszolgálóhoz a MySQL Workbenc
 
     A képernyőkép az SQL-példakódot és a futtatás utáni kimenetet mutatja az SQL Workbench-ben.
 
-    :::image type="content" source="./media/connect-workbench/3-workbench-sql-tab.png" alt-text="MySQL Workbench SQL lap SQL-mintakód futtatásához":::
+    :::image type="content" source="./media/connect-workbench/3-workbench-sql-tab.png" alt-text="Azure Database for MySQL Flexible Server name":::
 
 2. A SQL-mintakód futtatásához kattintson az **SQL File** (SQL-fájl) lévő eszköztár villám ikonjára.
 3. Figyelje meg az oldal közepén, a **Result Grid** (Eredménytáblázat) szakaszban lévő többlapos eredményeket.
@@ -116,7 +116,7 @@ Kapcsolódás Azure Database for MySQL rugalmas kiszolgálóhoz a MySQL Workbenc
 
 Most, hogy a MySQL Workbench használatával csatlakoztatta Azure Database for MySQL rugalmas kiszolgálóhoz, és az SQL nyelv használatával kérdezi le az adatlekérdezéseket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Titkosított kapcsolat Transport Layer Security (TLS 1,2) használatával Azure Database for MySQL-rugalmas kiszolgálón](./how-to-connect-tls-ssl.md).
 - További információ a [Azure Database for MySQL rugalmas kiszolgáló hálózatkezeléséről](./concepts-networking.md).
 - [Azure Database for MySQL rugalmas kiszolgálói tűzfalszabályok létrehozása és kezelése a Azure Portal használatával](./how-to-manage-firewall-portal.md).

@@ -9,10 +9,10 @@ ms.topic: overview
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/20/2020
 ms.openlocfilehash: a8d164dd50ac190d2bc14fea70cde20bfdb89361
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85849909"
 ---
 # <a name="what-is-ml-services-in-azure-hdinsight"></a>Mi az az Azure HDInsight a ML-szolgáltatások?
@@ -63,7 +63,7 @@ A következő szolgáltatások a HDInsight ML-szolgáltatásaiban szerepelnek.
 | R-enabled | R- [csomagok](https://docs.microsoft.com/machine-learning-server/r-reference/introducing-r-server-r-package-reference) az r-ben írt megoldásokhoz, az r nyílt forráskódú eloszlásával és futásidejű infrastruktúrával a parancsfájlok futtatásához. |
 | Python – engedélyezve | Python- [modulok](https://docs.microsoft.com/machine-learning-server/python-reference/introducing-python-package-reference) a Pythonban írt megoldásokhoz, a Python és a futásidejű infrastruktúra nyílt forráskódú eloszlásával a parancsfájlok futtatásához.
 | [Előre betanított modellek](https://docs.microsoft.com/machine-learning-server/install/microsoftml-install-pretrained-models) | A vizuális elemzéshez és a szöveg hangulatának elemzéséhez, amely készen áll az Ön által megadott adatgyűjtésre. |
-| [Üzembe helyezés és használat](r-server-operationalize.md) | `Operationalize`a kiszolgáló és a megoldások webszolgáltatásként való üzembe helyezése. |
+| [Üzembe helyezés és használat](r-server-operationalize.md) | `Operationalize` a kiszolgáló és a megoldások webszolgáltatásként való üzembe helyezése. |
 | [Távoli végrehajtás](r-server-hdinsight-manage.md#connect-remotely-to-microsoft-ml-services) | Indítsa el a távoli munkameneteket a hálózaton található ML Services-fürtön az ügyfél munkaállomásán. |
 
 ## <a name="data-storage-options-for-ml-services-on-hdinsight"></a>Adattárolási lehetőségek a HDInsight ML-szolgáltatásaihoz
@@ -82,7 +82,7 @@ A peremhálózati csomóponton böngésző vagy SSH/Putty használatával kapcso
 
 Az R-szkriptek a 8000-es és a nyílt forráskódú R-csomagok bármelyikét használhatják. A párhuzamos és elosztott rutinokat a skálázhatósági könyvtárból is használhatja. Az Edge-csomóponton futó parancsfájlok az R-tolmácson belül futnak a csomóponton. A skálázási függvényeket a Térkép csökkentése (RxHadoopMR) vagy a Spark (RxSpark) számítási környezet által meghívó lépések kivételével. A függvények elosztott módon futnak az adatokhoz társított adatcsomópontok között. A környezeti beállításokkal kapcsolatos további információkért lásd: [számítási környezeti beállítások a HDInsight tartozó ml-szolgáltatásokhoz](r-server-compute-contexts.md).
 
-## <a name="operationalize-a-model"></a>`Operationalize`egy modell
+## <a name="operationalize-a-model"></a>`Operationalize` egy modell
 
 Az adatmodellezés befejezése után `operationalize` Az Azure-ból vagy a helyszíni környezetből származó új adatokra vonatkozó előrejelzéseket készíthet. Ez a folyamat pontozásként ismert. A pontozás a HDInsight, Azure Machine Learning és a helyszínen is elvégezhető.
 

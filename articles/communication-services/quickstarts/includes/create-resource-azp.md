@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
 ms.openlocfilehash: 11b9c553573d9e6188ba634b4cb966d6a9b850b4
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90947264"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
@@ -23,11 +23,11 @@ Azure kommunikációs szolgáltatások erőforrásának létrehozásához elősz
 
 Adja meg a **kommunikációt** a **piactér** vagy a portál tetején található keresési sávon.
 
-:::image type="content" source="../media/create-a-communication-resource/searchbar-communication-portal.png" alt-text="A keresési sávban a kommunikációs szolgáltatások keresését bemutató képernyőkép.":::
+:::image type="content" source="../media/create-a-communication-resource/searchbar-communication-portal.png" alt-text="Képernyőfelvétel: az erőforrás létrehozása gomb kiemelése a Azure Portalban.":::
 
 Válassza az eredmények között a **kommunikációs szolgáltatások** elemet, majd kattintson a **Hozzáadás**gombra.
 
-:::image type="content" source="../media/create-a-communication-resource/add-communication-portal.png" alt-text="Képernyőfelvétel: az Azure panel, a Hozzáadás gomb kiemelése.":::
+:::image type="content" source="../media/create-a-communication-resource/add-communication-portal.png" alt-text="Képernyőfelvétel: az erőforrás létrehozása gomb kiemelése a Azure Portalban.":::
 
 Most már konfigurálhatja a kommunikációs szolgáltatások erőforrását. A létrehozási folyamat első lapján a következőt kell megadnia:
 

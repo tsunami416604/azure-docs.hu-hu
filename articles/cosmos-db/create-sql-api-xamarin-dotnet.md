@@ -10,10 +10,10 @@ ms.date: 09/22/2020
 ms.author: anfeldma
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 7d8f51b12c16afbb8a0cf71e99b9b357719db4be
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91319044"
 ---
 # <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>Gyors útmutató: Azure Cosmos DB SQL API-fiókkal rendelkező Xamarin-alkalmazás létrehozása a használatával
@@ -91,7 +91,7 @@ Lépjen vissza az Azure Portalra az API-kulccsal kapcsolatos adatokért, majd m�
 
 1. Az [Azure Portalon](https://portal.azure.com/) az Azure Cosmos DB SQL API-fiókban a bal oldali navigációs sávon kattintson a **Kulcsok** elemre, majd kattintson az **Írható és olvasható kulcsok** lehetőségre. A következő lépésben a képernyő jobb oldalán lévő másolási gombokkal másolhatja az URI-t és az elsődleges kulcsot az APIKeys.cs fájlba.
 
-    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/keys.png" alt-text="Hozzáférési kulcs megtekintése és másolása az Azure Portal Kulcsok paneljén":::
+    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/keys.png" alt-text="iOS rendszeren futó teendőkezelő Xamarin-alkalmazás":::
 
 2. A Visual Studio 2019-es vagy Visual Studio for Mac-es verziójában nyissa meg a APIKeys.cs fájlt a Azure-Cosmos-db-SQL-xamarin-Getting-Started/src/ToDoItems. Core/Helpers mappában.
 
@@ -109,7 +109,7 @@ Lépjen vissza az Azure Portalra az API-kulccsal kapcsolatos adatokért, majd m�
 
 Ez a megoldás bemutatja, hogy hogyan hozhat létre egy teendőkezelő alkalmazást az Azure Cosmos DB SQL API és a Xamarin.Forms segítségével. Az alkalmazás két lappal rendelkezik, az első lap a még el nem végzett teendőket megjelenítő listanézetet tartalmazza. A második lap a már elvégzett teendőket jeleníti meg. Az első lapon található, még el nem végzett teendők megtekintése mellett új teendőket is hozzáadhat, szerkesztheti a meglévőket, és befejezettként jelölheti meg a lista tételeit.
 
-:::image type="content" source="./media/create-sql-api-xamarin-dotnet/android-todo-screen.png" alt-text="Másolja át a json-adatokat, és kattintson a Mentés gombra az Adatkezelőben az Azure-portálon":::
+:::image type="content" source="./media/create-sql-api-xamarin-dotnet/android-todo-screen.png" alt-text="iOS rendszeren futó teendőkezelő Xamarin-alkalmazás":::
 
 A ToDoItems megoldásban található kód az alábbiakat tartalmazza:
 
@@ -172,27 +172,27 @@ A következő lépések mutatják be, hogyan futtathatja az alkalmazást a Visua
 
 1. Először válassza ki a kívánt platformot. Ehhez kattintson a kiemelt legördülő listára, és válassza a ToDoItems.iOS elemet az iOS, vagy a ToDoItems.Android elemet az Android esetén.
 
-    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/ide-select-platform.png" alt-text="A hibakeresés céljaként használni kívánt platform kiválasztása a Visual Studio for Mac alkalmazásban":::
+    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/ide-select-platform.png" alt-text="iOS rendszeren futó teendőkezelő Xamarin-alkalmazás":::
 
 2. Az alkalmazás hibakeresésének elkezdéséhez nyomja le a Command+Enter billentyűkombinációt vagy kattintson a Lejátszás gombra.
 
-    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/ide-start-debug.png" alt-text="Hibakeresés elkezdése a Visual Studio for Mac alkalmazásban":::
+    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/ide-start-debug.png" alt-text="iOS rendszeren futó teendőkezelő Xamarin-alkalmazás":::
 
 3. Az iOS-szimulátor vagy az Android-emulátor elindítása után az alkalmazás 2 lapot jelenít meg a képernyő alján az iOS, illetve a képernyő tetején az Android esetén. Az első lapon az el nem végzett teendők láthatók, a másodikon pedig a befejezettek.
 
-    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/ios-droid-started.png" alt-text="A teendőkezelő alkalmazás indítóképernyője":::
+    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/ios-droid-started.png" alt-text="iOS rendszeren futó teendőkezelő Xamarin-alkalmazás":::
 
 4. Az iOS rendszeren egy teendő elvégzéséhez csúsztassa a teendőt balra > koppintson a **Complete** (Befejezés) gombra. Az Android rendszeren egy teendő elvégzéséhez nyomja le hosszan a teendőt > majd koppintson a Complete (Befejezés) gombra.
 
-    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/simulator-complete.png" alt-text="Teendő elvégzése":::
+    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/simulator-complete.png" alt-text="iOS rendszeren futó teendőkezelő Xamarin-alkalmazás":::
 
 5. Teendő szerkesztéséhez > koppintson az elemre > megjelenik egy új képernyő, ahol új értékeket adhat meg. A Save (Mentés) gombra koppintva menti a módosításokat az Azure Cosmos DB-ben.
 
-    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/simulator-edit.png" alt-text="Teendő szerkesztése":::
+    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/simulator-edit.png" alt-text="iOS rendszeren futó teendőkezelő Xamarin-alkalmazás":::
 
 6. Teendő hozzáadásához > koppintson az **Add** (Hozzáadás) gombra a kezdőképernyő jobb felső sarkában > megjelenik egy új, üres szerkesztési lap.
 
-    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/simulator-add.png" alt-text="Teendő hozzáadása":::
+    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/simulator-add.png" alt-text="iOS rendszeren futó teendőkezelő Xamarin-alkalmazás":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>Tekintse át az SLA-kat az Azure Portalon
 
@@ -202,7 +202,7 @@ A következő lépések mutatják be, hogyan futtathatja az alkalmazást a Visua
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre egy Azure Cosmos-fiókot, hogyan hozhat létre tárolót a Adatkezelő használatával, és hogyan építhet ki és helyezhet üzembe egy Xamarin-alkalmazást. Mostantól további adatait is importálhatja az Azure Cosmos-fiókjába.
 

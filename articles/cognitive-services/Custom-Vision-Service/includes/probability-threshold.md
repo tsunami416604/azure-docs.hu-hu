@@ -6,12 +6,12 @@ ms.topic: include
 ms.date: 07/17/2019
 ms.author: pafarley
 ms.openlocfilehash: 07e7cc991f127bf4bb4f466c0108962786e45bce
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "68423582"
 ---
-Megjegyzés: A **Valószínűségi küszöbérték** csúszka a **Teljesítmény** lap bal oldali ablaktábláján. Ez az a megbízhatósági szint, amelyet az előrejelzésnek a helyesnek kell tekinteni (a pontosság és a visszahívás kiszámítása céljából). 
+Jegyezze fel a **valószínűségi küszöb** csúszkát a **teljesítmény** lap bal oldali paneljén. Ez az a megbízhatósági szint, amelyet az előrejelzésnek megfelelőnek kell lennie ahhoz, hogy helyesnek lehessen tekinteni (a pontosság és a visszahívás kiszámítása céljából). 
 
-Ha nagy valószínűségi küszöbértékkel értelmezi az előrejelzési hívásokat, azok általában&mdash;nagy pontossággal adják vissza az eredményeket a visszahívás rovására az észlelt besorolások helyesek, de sokan észrevétlenek maradnak. Az alacsony valószínűségi küszöbérték&mdash;a tényleges besorolások nagy részét észleli, de több hamis pozitív van a készleten belül. Ezt szem előtt tartva, be kell állítania a valószínűségi küszöbértéket a projekt egyedi igényeinek megfelelően. Később, amikor előrejelzési eredményeket kap az ügyféloldalon, ugyanazt a valószínűségi küszöbértéket kell használnia, mint az itt használt.
+Ha magas valószínűségi küszöbértékkel értelmezi az előrejelzési hívásokat, a rendszer általában nagy pontossággal adja vissza az eredményeket az &mdash; észlelt besorolások visszahívásának rovására, de sok továbbra is észrevétlen marad. Az alacsony valószínűségi küszöbérték a &mdash; tényleges besorolások túlnyomó többségét észleli, de a készleten belül még több hamis pozitív érték van. Ezt szem előtt tartva a valószínűségi küszöbértéket a projekt konkrét igényeinek megfelelően kell beállítania. Később, amikor az ügyfél oldalán az előrejelzési eredményeket kapja, ugyanazt a valószínűségi küszöbértéket kell használnia, mint az itt használt értéket.

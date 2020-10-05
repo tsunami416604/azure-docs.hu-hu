@@ -9,10 +9,10 @@ ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
 ms.openlocfilehash: e3c2b2ce5bd9af60d6d1fd4ac066681ee8473521
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91249450"
 ---
 # <a name="azure-synapse-workspace-managed-identity-preview"></a>Azure szinapszis-munkaterület felügyelt identitása (előzetes verzió)
@@ -56,6 +56,6 @@ A következő ablakban válassza a **felügyelt identitás** lehetőséget a **h
 
 ![Társított szolgáltatás létrehozása 3](./media/synapse-workspace-managed-identity/workspace-managed-identity-4.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ [Az Azure szinapszis-munkaterület felügyelt identitására vonatkozó engedélyek megadásáról](./how-to-grant-workspace-managed-identity-permissions.md)

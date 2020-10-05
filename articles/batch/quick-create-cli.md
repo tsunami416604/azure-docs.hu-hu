@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 08/13/2020
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: 8824d4485167955dd1b928bc57381b2e6b672c5d
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88213091"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-azure-cli"></a>Rövid útmutató: Az első Batch-feladat futtatása az Azure CLI használatával
@@ -25,7 +25,7 @@ Az Azure CLI az Azure-erőforrások parancssorból vagy szkriptekkel történő 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az-group-create) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
@@ -204,7 +204,7 @@ Ha már nincs szükség rájuk, az [az group delete](/cli/azure/group#az-group-d
 az group delete --name QuickstartBatch-rg
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban egy Batch-fiókot, egy Batch-készletet és egy Batch-feladatot hozott létre. A feladat mintatevékenységeket futtatott, Ön pedig megtekintette az egyik csomóponton létrejött kimenetet. Most, hogy megismerkedett a Batch szolgáltatás fő fogalmaival, készen áll a Batch szolgáltatás realisztikusabb számítási feladatokkal, nagyobb léptékben történő kipróbálására. Az Azure Batchről további információt az Azure Batch-oktatóanyagokban találhat.
 

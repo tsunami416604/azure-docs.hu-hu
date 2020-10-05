@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
 ms.openlocfilehash: 8c1e47db4f5f5bb64c31d16c26f6c3860b5bcb29
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91323056"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-c"></a>Rövid útmutató: az arcok észlelése egy képen a Face REST API és C használatával #
@@ -343,7 +343,7 @@ A sikeres válasz egy könnyen olvasható JSON formátumban jeleníti meg az Arc
 ]
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban létrehozott egy egyszerű .NET-konzol alkalmazást, amely REST-hívásokat használ az Azure Face szolgáltatással az arcok észleléséhez a rendszerképben, és visszaküldi az attribútumokat. Ezután tekintse át a Face API dokumentációját, ahol további információt talál a támogatott forgatókönyvekről.
 

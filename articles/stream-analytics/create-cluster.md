@@ -9,10 +9,10 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 09/22/2020
 ms.openlocfilehash: a7be204c30d242be991fb9a57d239b69342ace97
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90947140"
 ---
 # <a name="quickstart-create-a-dedicated-azure-stream-analytics-cluster-using-azure-portal"></a>Rövid útmutató: dedikált Azure Stream Analytics-fürt létrehozása Azure Portal használatával
@@ -30,7 +30,7 @@ Ebben a szakaszban létre fog hozni egy Stream Analytics fürterőforrás-erőfo
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-1. Válassza az **Erőforrás létrehozása** lehetőséget. A *Keresés a piactéren* mezőbe írja be a kifejezést, és válassza ki **stream Analytics fürtöt**. Ezután válassza a **Hozzáadás**lehetőséget.
+1. Válassza az **Erőforrás létrehozása** lehetőséget. A *Keresés a piactéren* mezőbe írja be a kifejezést, és válassza ki **stream Analytics fürtöt**. Ezután válassza a **Hozzáadás** elemet.
 
    :::image type="content" source="./media/create-cluster/search-result.png" alt-text="Stream Analytics a fürt keresési eredményét.":::
 
@@ -60,7 +60,7 @@ Ha nem tervezi Stream Analytics feladatok futtatását, törölheti a Stream Ana
 
 1. Nyissa meg a fürt **áttekintését** . Válassza a **Törlés** lehetőséget, majd kövesse az utasításokat a fürt törléséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre Azure Stream Analytics-fürtöt. A következő cikkből megtudhatja, hogyan futtathat egy Stream Analytics feladatot a fürtön:
 

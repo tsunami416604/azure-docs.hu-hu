@@ -8,10 +8,10 @@ ms.author: mathoma
 ms.date: 06/29/2020
 ms.service: dms
 ms.openlocfilehash: 24a0d16a6ff052df4b7a9bcdd078542987b4fd50
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88661180"
 ---
 # <a name="quickstart-create-instance-of-azure-database-migration-service-using-arm-template"></a>Gyors útmutató: Azure Database Migration Service példányának létrehozása ARM-sablonnal
@@ -64,7 +64,7 @@ További Azure Database Migration Services-sablonok a rövid útmutató [sablonj
 
 
 
-3. Válassza a **Felülvizsgálat + létrehozás** lehetőséget. Miután a Azure Database Migration Service példánya sikeresen telepítve lett, értesítést kap. 
+3. Válassza az **Áttekintés + létrehozás** lehetőséget. Miután a Azure Database Migration Service példánya sikeresen telepítve lett, értesítést kap. 
 
 
 Az Azure Portalon helyezhető üzembe a sablon. A Azure Portalon kívül használhatja a Azure PowerShell, az Azure CLI és a REST API is. További információ az üzembe helyezési módszerekről: [sablonok üzembe helyezése](../azure-resource-manager/templates/deploy-powershell.md).

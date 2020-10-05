@@ -16,10 +16,10 @@ ms.workload: tbd
 ms.date: 10/21/2019
 ms.author: lcozzens
 ms.openlocfilehash: 17817a5730678ae708c92c99093e7b859e05f8fe
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90983850"
 ---
 # <a name="quickstart-add-feature-flags-to-a-net-framework-app"></a>Gyors útmutató: szolgáltatás-jelzők hozzáadása .NET-keretrendszerbeli alkalmazáshoz
@@ -51,7 +51,7 @@ A .NET-szolgáltatások felügyeleti könyvtárai kiterjesztik a keretrendszert 
 
 1. A **create a New Project (új projekt létrehozása**) területen szűrje a **konzol** projekt típusát, és kattintson a **Console app (.NET-keretrendszer)** elemre. Kattintson a **Tovább** gombra.
 
-1. Az **új projekt konfigurálása**területen adja meg a projekt nevét. A **keretrendszer**területen válassza a **.net-keretrendszer 4,8** vagy újabb lehetőséget. Kattintson a **Létrehozás** lehetőségre.
+1. Az **új projekt konfigurálása**területen adja meg a projekt nevét. A **keretrendszer**területen válassza a **.net-keretrendszer 4,8** vagy újabb lehetőséget. Kattintson a **Létrehozás** elemre.
 
 ## <a name="connect-to-an-app-configuration-store"></a>Kapcsolódás alkalmazás-konfigurációs tárolóhoz
 
@@ -126,7 +126,7 @@ A .NET-szolgáltatások felügyeleti könyvtárai kiterjesztik a keretrendszert 
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban létrehozta a szolgáltatás jelölőjét az alkalmazás konfigurációjában, és felhasználta azt egy .NET Framework Console alkalmazással. Ha meg szeretné tudni, hogyan lehet dinamikusan frissíteni a szolgáltatás jelölőit és az egyéb konfigurációs értékeket az alkalmazás újraindítása nélkül, folytassa a következő oktatóanyaggal.
 

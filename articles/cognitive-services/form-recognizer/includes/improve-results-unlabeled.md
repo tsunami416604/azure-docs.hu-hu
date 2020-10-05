@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 06/12/2019
 ms.author: pafarley
 ms.openlocfilehash: f0761847c3677b324ef16c5987eb9a1561dbcbe0
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "75379291"
 ---
 Vizsgálja `"confidence"` meg az egyes kulcsok/értékek eredményének értékét a `"pageResults"` csomópont alatt. Tekintse meg a csomópontban található megbízhatósági pontszámokat is `"readResults"` , amelyek a szöveges olvasási műveletnek felelnek meg. Az olvasási eredmények megbízhatósága nem befolyásolja a kulcs/érték kinyerési eredményeinek megbízhatóságát, ezért mindkettőt ellenőriznie kell.

@@ -9,10 +9,10 @@ ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: b205665a0e5fc06fdc784efa91036f26da5d3cde
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88654344"
 ---
 # <a name="linux-virtual-machines-in-azure"></a>Linux rendszerű virtuális gépek az Azure-ban
@@ -45,7 +45,7 @@ Az Azure-ban létrehozott minden erőforrás világszerte több [földrajzi rég
 
 Az alábbi táblázatban az elérhető helyek listájának megismeréséhez olvasható néhány módszer.
 
-| Metódus | Leírás |
+| Módszer | Leírás |
 | --- | --- |
 | Azure Portal |Egy virtuális gép létrehozásakor válasszon egy helyet a listából. |
 | Azure PowerShell |Használja a [Get-AzLocation](/powershell/module/az.resources/get-azlocation) parancsot. |
@@ -105,13 +105,13 @@ Az Azure támogatja a [Cloud-init](https://cloud-init.io/) használatát a legt�
 
 * [A cloud-init használata Azure-beli Linux rendszerű virtuális gépeken](using-cloud-init.md)
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Tárolás
 * [A Microsoft Azure Storage bemutatása](../../storage/common/storage-introduction.md)
 * [Lemez hozzáadása Linux rendszerű virtuális géphez az azure-cli használatával](add-disk.md)
 * [Adatlemez csatlakoztatása Linux rendszerű virtuális géphez az Azure Portalon](attach-disk-portal.md)
 
 ## <a name="networking"></a>Hálózat
-* [A Virtual Network áttekintése](../../virtual-network/virtual-networks-overview.md)
+* [Virtual Network áttekintése](../../virtual-network/virtual-networks-overview.md)
 * [IP-címek az Azure-ban](../../virtual-network/public-ip-addresses.md)
 * [Portok nyitása egy Linux rendszerű virtuális géphez az Azure Portalon](nsg-quickstart.md)
 * [Teljes tartománynév létrehozása az Azure Portalon](portal-create-fqdn.md)

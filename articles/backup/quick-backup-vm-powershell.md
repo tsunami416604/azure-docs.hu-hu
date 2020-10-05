@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.date: 04/16/2019
 ms.custom: mvc, devx-track-azurepowershell
 ms.openlocfilehash: 5e83c599ceed76927f2a313f78c83638d708f1bb
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90985127"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-powershell"></a>Virtuális gép biztonsági mentése az Azure-ban a PowerShell használatával
@@ -166,7 +166,7 @@ Remove-AzRecoveryServicesVault -Vault $vault
 Remove-AzResourceGroup -Name "myResourceGroup"
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A rövid útmutató során létrehozott egy Recovery Services-tárolót, engedélyezte a védelmet a virtuális gépen, valamint létrehozta a kezdeti helyreállítási pontot.
 

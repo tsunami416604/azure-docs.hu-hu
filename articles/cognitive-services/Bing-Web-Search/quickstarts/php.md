@@ -12,15 +12,15 @@ ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: bbb6acd4e976d345daa99cde7635febc3755963f
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "83873823"
 ---
 # <a name="quickstart-use-php-to-call-the-bing-web-search-api"></a>Rövid útmutató: A Bing Web Search API meghívása a PHP segítségével  
 
-Ezzel a rövid útmutatóval megteheti az első hívást a Bing Web Search API. Ez a Node. js-alkalmazás keresési kérelmet küld az API-nak, és megjeleníti a JSON-választ. Bár ez az alkalmazás JavaScript nyelven íródott, az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel.
+Ezzel a rövid útmutatóval megteheti az első hívást a Bing Web Search API. Ez a Node.js alkalmazás egy keresési kérelmet küld az API-nak, és megjeleníti a JSON-választ. Bár ez az alkalmazás JavaScript nyelven íródott, az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -33,7 +33,7 @@ Az alábbi dolgokra szüksége lesz a rövid útmutató futtatásához:
 
 ## <a name="enable-secure-http-support"></a>Biztonságos HTTP támogatásának engedélyezése
 
-Az első lépések megtételéhez keresse meg a php. ini fájlt, és tegye meg a megjegyzését:
+Az első lépések előtt keresse meg a következő sort php.ini és Megjegyzés:
 
 ```php
 ; extension=php_openssl.dll

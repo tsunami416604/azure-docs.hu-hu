@@ -9,10 +9,10 @@ ms.date: 07/31/2020
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: e3d400726bfb65b2548bc773ffb460fe1ad426a0
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87513451"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-azure-with-powershell"></a>Rövid útmutató: Linux virtuális gép létrehozása az Azure-ban PowerShell-lel
@@ -42,7 +42,7 @@ Az SSH-kulcspár létrehozásával kapcsolatos részletes információkért lás
 
 Ha a Cloud Shell használatával hozza létre az SSH-kulcspárt, akkor azt a rendszer a [Cloud Shell által automatikusan létrehozott Storage-fiókban](../../cloud-shell/persisting-shell-storage.md)tárolja. Ne törölje a Storage-fiókot, vagy a fájlok megosztását, amíg a kulcsok beolvasása vagy a virtuális gép elérésének elvesztése megszűnik. 
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Hozzon létre egy Azure-erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Az erőforráscsoportok olyan logikai tárolók, amelyekbe a rendszer üzembe helyezi az Azure-erőforrásokat és kezeli azokat:
 

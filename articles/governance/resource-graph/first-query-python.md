@@ -5,10 +5,10 @@ ms.date: 07/15/2020
 ms.topic: quickstart
 ms.custom: devx-track-python
 ms.openlocfilehash: a92eda343e8c0c38b9c9ebebb16d5c102d1b3f19
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87873670"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-python"></a>Rövid útmutató: az első Resource Graph-lekérdezés futtatása a Python használatával
@@ -125,7 +125,7 @@ Ha a Python-függvénytárak hozzá lettek adva a környezethez, itt az ideje, h
 
 Ha a végső lekérdezés többször is fut, feltételezve, hogy a környezetében semmi sem változik, a visszaadott eredmények konzisztensek és a **Name** tulajdonság szerint vannak rendezve, de továbbra is az első öt találatra korlátozódnak.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha el szeretné távolítani a telepített kódtárakat a Python-környezetből, ezt a következő paranccsal teheti meg:
 
@@ -134,7 +134,7 @@ Ha el szeretné távolítani a telepített kódtárakat a Python-környezetből,
 pip uninstall azure-mgmt-resourcegraph azure-mgmt-resource azure-cli-core
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban hozzáadta az erőforrás-gráf kódtárait a Python-környezethez, és futtatta az első lekérdezést. Ha többet szeretne megtudni az erőforrás-gráf nyelvéről, folytassa a lekérdezés nyelvének részletei lapon.
 

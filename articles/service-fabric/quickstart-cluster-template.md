@@ -8,10 +8,10 @@ ms.custom: subject-armqs
 ms.author: edoyle
 ms.date: 07/29/2020
 ms.openlocfilehash: 359b527733ee8eebf7e1e7d12c40a0c74ec1c9bd
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87460303"
 ---
 # <a name="quickstart-create-a-service-fabric-cluster-using-arm-template"></a>Rövid útmutató: Service Fabric-fürt létrehozása ARM-sablonnal
@@ -28,7 +28,7 @@ Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonoka
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
+Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 ### <a name="install-service-fabric-sdk-and-powershell-modules"></a>Service Fabric SDK és PowerShell-modulok telepítése
 

@@ -12,10 +12,10 @@ ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: devx-track-python
 ms.openlocfilehash: e6f132db9b4c0f0310496b2e22579e18359e1573
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87847227"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-python"></a>Gyors útmutató: videók keresése a Bing Video Search REST API és a Python használatával
@@ -191,11 +191,11 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Egyoldalas webalkalmazás készítése](../tutorial-bing-video-search-single-page-app.md)
 
-## <a name="see-also"></a>További információ 
+## <a name="see-also"></a>Lásd még 
 
  [Mi az a Bing Video Search API?](../overview.md)

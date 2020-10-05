@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 07/30/2020
 ms.author: mlottner
 ms.openlocfilehash: 172ae82288c2cb948839b69955b9491715eb4690
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90947073"
 ---
 # <a name="quickstart-investigate-security-alerts"></a>Gyors útmutató: biztonsági riasztások vizsgálata
@@ -44,14 +44,14 @@ Az egyes összesített riasztások megnyitásakor megjelenik a riasztás részle
 
 1. Válassza ki és nyissa meg a biztonsági riasztásokat a **IoT hub**  >  **biztonsági**  >  **riasztások** listából. 
 1. Tekintse át a riasztás **leírását**, **súlyosságát**, **az észlelés forrását, a**riasztást kiállító összes eszköz **adatait** az összesítési időszakban.
-:::image type="content" source="media/quickstart/drill-down-iot-alert-details.png" alt-text="Részletezés és az egyes eszközök részleteinek áttekintése összesített riasztásban "::: 
+:::image type="content" source="media/quickstart/drill-down-iot-alert-details.png" alt-text="Új IoT biztonsági riasztások vizsgálata az új riasztási jelző használatával"::: 
 1. A riasztási sajátosságok áttekintése után használja a **manuális szervizelési lépés** utasításait a riasztást okozó probléma megoldásához és/vagy megoldásához. 
-:::image type="content" source="media/quickstart/iot-alert-manual-remediation-steps.png" alt-text="Kövesse a manuális szervizelési lépéseket az eszköz biztonsági értesítéseinek feloldásához vagy szervizeléséhez":::
+:::image type="content" source="media/quickstart/iot-alert-manual-remediation-steps.png" alt-text="Új IoT biztonsági riasztások vizsgálata az új riasztási jelző használatával":::
 
 1. Ha további vizsgálatra van szükség, **vizsgálja meg a log Analytics riasztásait** a hivatkozás használatával. 
-:::image type="content" source="media/quickstart/investigate-iot-alert-log-analytics.png" alt-text="A riasztások további vizsgálatához használja a következő képernyőn elérhető log Analytics-hivatkozás használatával":::
+:::image type="content" source="media/quickstart/investigate-iot-alert-log-analytics.png" alt-text="Új IoT biztonsági riasztások vizsgálata az új riasztási jelző használatával":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Folytassa a következő cikkel a Defender-riasztási típusok és a lehetséges testreszabások megismeréséhez...
 

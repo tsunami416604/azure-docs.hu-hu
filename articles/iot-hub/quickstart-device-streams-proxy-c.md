@@ -10,10 +10,10 @@ ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
 ms.openlocfilehash: b8cba8f7a21b04dc722124eb2873c64f67fd6def
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "83727131"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>Gyors útmutató: SSH és RDP engedélyezése IoT Hub-adatfolyamon C alkalmazásproxy-alkalmazással (előzetes verzió)
@@ -48,13 +48,13 @@ Az alábbi ábra azt szemlélteti, hogy az eszköz és a szolgáltatás helyi pr
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Az adatfolyamok előnézete jelenleg csak a következő régiókban létrehozott IoT hubok esetében támogatott:
 
-  * USA középső régiója
+  * Az USA középső régiója
   * USA középső – EUAP
   * Észak-Európa
   * Délkelet-Ázsia
@@ -120,7 +120,7 @@ Ebben a rövid útmutatóban a [C Azure IoT Device SDK](iot-hub-device-sdk-c-int
       cmake --build . -- /m /p:Configuration=Release
       ```
 
-## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
+## <a name="create-an-iot-hub"></a>IoT-központ létrehozása
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -199,7 +199,7 @@ Ebben a szakaszban egy végpontok közötti streamet hoz létre az SSH-forgalom 
 Ahogy azt a "hogyan működik" című szakaszban tárgyaljuk, az SSH-forgalom bújtatásához szükséges teljes stream létrehozásához helyi proxyra van szükség (a szolgáltatás és az eszköz oldalain egyaránt). A nyilvános előzetes verzióban a IoT Hub C SDK csak az eszközön található adatfolyamokat támogatja. A szolgáltatás helyi proxyjának létrehozásához és futtatásához kövesse az alábbi rövid útmutatók valamelyikét:
 
    * [SSH/RDP IoT Hub-eszközökön keresztül, C# proxy alkalmazások használatával](./quickstart-device-streams-proxy-csharp.md)
-   * [SSH/RDP IoT Hub-eszköz streamek használatával Node. js-proxy-alkalmazásokkal](./quickstart-device-streams-proxy-nodejs.md)
+   * [SSH/RDP IoT Hub-eszközökön Node.js proxy alkalmazások használatával](./quickstart-device-streams-proxy-nodejs.md)
 
 ### <a name="establish-an-ssh-session"></a>SSH-munkamenet létrehozása
 
@@ -219,11 +219,11 @@ Az alábbi képen az SSH-ügyfélprogram konzoljának kimenete látható. Az SSH
 
 ![SSH-ügyfél kimenete](./media/quickstart-device-streams-proxy-csharp/ssh-console-output.png)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources-device-streams.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban egy IoT hub, egy eszköz regisztrálása, egy eszköz-és egy szolgáltatás-helyi proxy program üzembe helyezésével hozhat létre adatfolyamot IoT Hubon keresztül, és a proxykat az SSH-forgalom bújtatásához használta.
 

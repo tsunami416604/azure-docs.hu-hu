@@ -10,17 +10,17 @@ ms.topic: quickstart
 ms.date: 06/12/2019
 ms.author: hrasheed
 ms.openlocfilehash: 572262cbece26171f9a67bf073906fa2dfd4d8e1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "79371069"
 ---
 # <a name="quickstart-query-apache-hbase-in-azure-hdinsight-with-hbase-shell"></a>Gyors útmutató: az Apache HBase lekérdezése az Azure HDInsight az HBase Shellrel
 
 Ebből a rövid útmutatóból megtudhatja, hogyan használható az Apache HBase shell egy HBase-tábla létrehozásához, az adatbeszúráshoz és a tábla lekérdezéséhez.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -40,13 +40,13 @@ A HBase (a [Cloud BigTable](https://cloud.google.com/bigtable/)implementációja
 
 Az SSH-val HBase-fürtökhöz csatlakozhat, majd az Apache HBase-rendszerhéj használatával HBase-táblákat hozhat létre, és adatbeszúrási és Adatlekérdezési adatként is létrehozhat.
 
-1. Használja `ssh` a parancsot a HBase-fürthöz való kapcsolódáshoz. Szerkessze az alábbi parancsot úgy `CLUSTERNAME` , hogy lecseréli a fürt nevét, majd beírja a következő parancsot:
+1. Használja a `ssh` parancsot a HBase-fürthöz való kapcsolódáshoz. Szerkessze az alábbi parancsot úgy, hogy lecseréli a `CLUSTERNAME` fürt nevét, majd beírja a következő parancsot:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-2. A `hbase shell` parancs használatával indítsa el a HBase interaktív rendszerhéját. Adja meg az alábbi parancsot az SSH-kapcsolatban:
+2. `hbase shell`A parancs használatával indítsa el a HBase interaktív rendszerhéját. Adja meg az alábbi parancsot az SSH-kapcsolatban:
 
     ```bash
     hbase shell
@@ -58,7 +58,7 @@ Az SSH-val HBase-fürtökhöz csatlakozhat, majd az Apache HBase-rendszerhéj ha
     create 'Contacts', 'Personal', 'Office'
     ```
 
-4. Használja `list` a parancsot a HBase összes táblájának listázásához. Írja be a következő parancsot:
+4. Használja a `list` parancsot a HBase összes táblájának listázásához. Írja be a következő parancsot:
 
     ```hbase
     list
@@ -73,19 +73,19 @@ Az SSH-val HBase-fürtökhöz csatlakozhat, majd az Apache HBase-rendszerhéj ha
     put 'Contacts', '1000', 'Office:Address', '1111 San Gabriel Dr.'
     ```
 
-6. A `scan` tábla adatvizsgálatához és visszaküldéséhez használja a `Contacts` parancsot. Írja be a következő parancsot:
+6. `scan`A tábla adatvizsgálatához és visszaküldéséhez használja a parancsot `Contacts` . Írja be a következő parancsot:
 
     ```hbase
     scan 'Contacts'
     ```
 
-7. Egy `get` sor tartalmának lekéréséhez használja a parancsot. Írja be a következő parancsot:
+7. `get`Egy sor tartalmának lekéréséhez használja a parancsot. Írja be a következő parancsot:
 
     ```hbase
     get 'Contacts', '1000'
     ```
 
-    A `scan` parancs használatával hasonló eredmények jelennek meg, mivel csak egy sor van.
+    A parancs használatával hasonló eredmények jelennek meg, `scan` mivel csak egy sor van.
 
 8. A `delete` parancs használatával törölheti a cella értékét egy táblában. Írja be a következő parancsot:
 
@@ -93,7 +93,7 @@ Az SSH-val HBase-fürtökhöz csatlakozhat, majd az Apache HBase-rendszerhéj ha
     delete 'Contacts', '1000', 'Office:Address'
     ```
 
-9. A `disable` tábla letiltásához használja a parancsot. Írja be a következő parancsot:
+9. `disable`A tábla letiltásához használja a parancsot. Írja be a következő parancsot:
 
     ```hbase
     disable 'Contacts'
@@ -105,7 +105,7 @@ Az SSH-val HBase-fürtökhöz csatlakozhat, majd az Apache HBase-rendszerhéj ha
     drop 'Contacts'
     ```
 
-11. A `exit` HBase interaktív rendszerhéj leállításához használja a parancsot. Írja be a következő parancsot:
+11. `exit`A HBase interaktív rendszerhéj leállításához használja a parancsot. Írja be a következő parancsot:
 
     ```hbase
     exit

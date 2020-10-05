@@ -8,17 +8,17 @@ ms.date: 02/01/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 0cbbcc822765097f83fcd1a52ce775c69faba9fa
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87836428"
 ---
 # <a name="quickstart-create-and-manage-azure-files-share-with-windows-virtual-machines"></a>Rövid útmutató: Azure Files megosztás létrehozása és kezelése Windows rendszerű virtuális gépekkel
 
 A cikk a Azure Files-megosztás létrehozásának és használatának alapvető lépéseit mutatja be. Ebben a rövid útmutatóban a hangsúly a Azure Files-megosztás gyors beállításán alapul, így a szolgáltatás működése is megtapasztalható. Ha részletesebb útmutatásra van szüksége az Azure-fájlmegosztás saját környezetben történő létrehozásához és használatához, tekintse meg az [Azure-fájlmegosztás használata a Windowsban](storage-how-to-use-files-windows.md)című témakört.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -123,7 +123,7 @@ Most, hogy leképezte a meghajtót, létrehozhat egy pillanatképet.
 
    ![Pillanatkép létrehozása](./media/storage-files-quick-create-use-windows/create-snapshot.png)
 
-1. A virtuális gépen nyissa meg a *qstestfile.txtt* , és írja be a "Ez a fájl módosítva" > mentse és zárjuk be a fájlt.
+1. A virtuális gépen nyissa meg a *qstestfile.txtt * , és írja be a "Ez a fájl módosítva" > mentse és zárjuk be a fájlt.
 1. Hozzon létre egy másik pillanatképet.
 
 ## <a name="browse-a-share-snapshot"></a>Megosztási pillanatkép tallózása
@@ -175,11 +175,11 @@ A helyszíni VSS-pillanatképekhez hasonlóan a csatlakoztatott Azure-fájlmegos
 
    ![Visszaállítás gomb a figyelmeztető üzenet ](./media/storage-files-quick-create-use-windows/snapshot-windows-restore.png) megjegyzése: Ha a fájl nem módosult, akkor a fájl korábbi verziója nem jelenik meg, mert a fájl a pillanatképtel megegyező verziójú. Ez összhangban van azzal, hogy ez hogyan működik a Windows-fájlkiszolgálón.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [storage-files-clean-up-portal](../../../includes/storage-files-clean-up-portal.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Azure-fájlmegosztás használata a Windows rendszeren](storage-how-to-use-files-windows.md)

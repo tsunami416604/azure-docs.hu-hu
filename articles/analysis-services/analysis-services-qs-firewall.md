@@ -8,10 +8,10 @@ ms.date: 08/12/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: e4953137cf939c35c6ac73fe51ca43eca6e99edc
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88192435"
 ---
 # <a name="quickstart-configure-server-firewall---portal"></a>Rövid útmutató: Kiszolgálótűzfal konfigurálása – Portál
@@ -44,7 +44,7 @@ Ez a rövid útmutató segítséget nyújt az Azure Analysis Services-kiszolgál
 
 Ha már nincs rá szükség, törölje az IP-címtartományokat, vagy tiltsa le a tűzfalat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a rövid útmutatóban megismerte, hogyan konfigurálhat tűzfalat a kiszolgálójához. Most, hogy tűfalas védelmet biztosított a kiszolgáló számára, hozzáadhat egy alapszintű minta adatmodellt a portálról. A mintamodell azért hasznos, mert segít megismerni a modell adatbázis-szerepkörök konfigurálását és az ügyfélkapcsolatok tesztelését. További tudnivalókért folytassa a mintamodell hozzáadását ismertető oktatóanyaggal.
 
 > [!div class="nextstepaction"]

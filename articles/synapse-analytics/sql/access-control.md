@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
 ms.openlocfilehash: a2e6111f2df5a8d7334a85ec5b6a9e514368ad6c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91289480"
 ---
 # <a name="manage-access-to-workspaces-data-and-pipelines"></a>Munkaterületekhez, adatbázisokhoz és folyamatokhoz való hozzáférés kezelése
@@ -68,7 +68,7 @@ A munkaterület kiépítés után ki kell választania egy [Azure Data Lake Stor
 
 ### <a name="step-4-configure-sql-admin-access-for-the-workspace"></a>4. lépés: az SQL-rendszergazdai hozzáférés konfigurálása a munkaterülethez
 
-1. Ugrás a [Azure Portal](https://portal.azure.com)
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com)
 2. Navigáljon a munkaterületre
 3. Lépjen a **Beállítások**  >  **Active Directory adminisztrátor**
 4. Válassza a **rendszergazda beállítása** lehetőséget.
@@ -198,6 +198,6 @@ REVOKE CONTROL ON DATABASE::<SQLpoolname> TO <workspacename>;
 DROP USER [<workspacename>];
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A szinapszis munkaterület által felügyelt identitás áttekintését lásd: az [Azure szinapszis munkaterület felügyelt identitása](../security/synapse-workspace-managed-identity.md). További információ az adatbázis-rendszerbiztonsági tagekről: [rendszerbiztonsági tag](https://msdn.microsoft.com/library/ms181127.aspx). Az adatbázis-szerepkörökkel kapcsolatos további információkért tekintse meg az [adatbázis-szerepkörök](https://msdn.microsoft.com/library/ms189121.aspx) című cikket.

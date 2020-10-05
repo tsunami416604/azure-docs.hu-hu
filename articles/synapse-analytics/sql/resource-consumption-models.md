@@ -9,10 +9,10 @@ ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
 ms.openlocfilehash: 4d00abdd3caf6c77b2227d9edfea3cc23d13e392
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91288222"
 ---
 # <a name="synapse-sql-resource-consumption"></a>Szinapszis SQL-erőforrások felhasználása
@@ -107,7 +107,7 @@ Az aktuális DWU-beállítás megtekintése:
 
 1. Nyissa meg SQL Server Object Explorer a Visual Studióban.
 2. Kapcsolódjon a logikai SQL-kiszolgálóhoz társított Master adatbázishoz.
-3. Válasszon a sys. database_service_objectives dinamikus felügyeleti nézetből. Alább bemutatunk egy példát:
+3. Válasszon a sys.database_service_objectives dinamikus felügyeleti nézetből. Alább bemutatunk egy példát:
 
 ```sql
 SELECT  db.name [Database]
@@ -128,7 +128,7 @@ DWU módosítása:
 
 2. A **skála**alatt mozgassa a csúszkát balra vagy jobbra a DWU beállítás módosításához.
 
-3. Kattintson a **Mentés** gombra. Ekkor megjelenik egy megerősítő üzenet. Válassza az **Igen** lehetőséget a megerősítéshez **, vagy a Mégse gombra.**
+3. Válassza a **Mentés** lehetőséget. Ekkor megjelenik egy megerősítő üzenet. Válassza az **Igen** lehetőséget a megerősítéshez **, vagy a Mégse gombra.**
 
 #### <a name="powershell"></a>PowerShell
 
@@ -212,6 +212,6 @@ Amikor elindít egy méretezési műveletet, a rendszer először az összes nyi
 - A skálázási műveletek esetében a rendszer leválasztja az összes számítási csomópontot, kiépíti a további számítási csomópontokat, majd újracsatlakoztatja a tárolási réteghez.
 - A leskálázási művelethez a rendszer leválasztja az összes számítási csomópontot, majd csak a szükséges csomópontokat csatlakoztatja a tárolási réteghez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A teljesítmény kezelésével kapcsolatos további információkért lásd: [erőforrás-osztályok a számítási feladatok kezeléséhez](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) , valamint a [memória és a Egyidejűség korlátai](../sql-data-warehouse/memory-concurrency-limits.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).

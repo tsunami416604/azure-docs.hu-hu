@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 08/24/2020
 ms.custom: seodec18, mvc, devx-track-js
 ms.openlocfilehash: c8477bd91c3a02a2cd02d341c38c16da251902ae
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91324535"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-portal"></a>Gyors útmutató: tároló-példány üzembe helyezése az Azure-ban a Azure Portal használatával
@@ -29,7 +29,7 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot][a
 
 Válassza az **erőforrás létrehozása**  >  **tárolók**  >  **Container instances**elemet.
 
-:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-01.png" alt-text="Új tárolópéldány létrehozásának megkezdése az Azure Portalon":::
+:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-01.png" alt-text="Az Azure Container Instances használatával üzembe helyezett alkalmazás képe a böngészőben":::
 
 Az **alapvető beállítások** lapon adja meg a következő értékeket az **erőforráscsoport**, a **tároló neve**és a **tároló képe** szövegmezőben. A többi értéket hagyja az alapértelmezett értéken, majd válassza az **OK** lehetőséget.
 
@@ -38,25 +38,25 @@ Az **alapvető beállítások** lapon adja meg a következő értékeket az **er
 * Kép forrása: rövid útmutató **rendszerképek**
 * Tároló képe: `mcr.microsoft.com/azuredocs/aci-helloworld` (Linux)
 
-:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-03.png" alt-text="Új tárolópéldány alapbeállításainak konfigurálása az Azure Portalon":::
+:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-03.png" alt-text="Az Azure Container Instances használatával üzembe helyezett alkalmazás képe a böngészőben":::
 
 Ebben a rövid útmutatóban az alapértelmezett beállítások használatával telepítheti a nyilvános Microsoft- `aci-helloworld` rendszerképet. Ez a minta linuxos rendszerkép egy olyan kisméretű webalkalmazást csomagol, amely egy statikus HTML-oldalt kiszolgáló Node.js. Saját tároló-lemezképeket is használhat Azure Container Registry, Docker hub vagy más beállításjegyzékben.
 
 A **hálózatkezelés** lapon adja meg a tároló **DNS-neve címkéjét** . A névnek egyedinek kell lennie azon az Azure-régión belül, ahol létrehozza a Container-példányt. A tároló nyilvánosan elérhető az alábbi helyen: `<dns-name-label>.<region>.azurecontainer.io`. Ha „DNS-névcímke nem érhető el” hibaüzenetet kap, próbálkozzon másik DNS-névcímkével.
 
-:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-04.png" alt-text="Új Container-példány hálózati beállításainak konfigurálása a Azure Portal":::
+:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-04.png" alt-text="Az Azure Container Instances használatával üzembe helyezett alkalmazás képe a böngészőben":::
 
 Hagyja meg a többi beállítást az alapértelmezett értékeken, majd válassza a **felülvizsgálat + létrehozás**elemet.
 
 Miután az érvényesítés befejeződött, egy összefoglalás jelenik meg a tároló beállításairól. Válassza a **Létrehozás** lehetőséget a tároló üzembe helyezési kérelmének elküldéséhez.
 
-:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-05.png" alt-text="Új tárolópéldány beállításainak összefoglalása az Azure Portalon":::
+:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-05.png" alt-text="Az Azure Container Instances használatával üzembe helyezett alkalmazás képe a böngészőben":::
 
 Az üzembe helyezés indításakor megjelenik egy értesítés, amely jelzi, hogy a központi telepítés folyamatban van. Amikor a tárolócsoport üzembe helyezése megtörtént, egy újabb értesítés jelenik meg.
 
 Nyissa meg a tároló csoport áttekintését, ehhez navigáljon az **erőforráscsoportok**  >  **myresourcegroup**  >  **mycontainer**. Jegyezze fel a tárolópéldány teljes tartománynevét (**FQDN**) és **Állapotát**.
 
-:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-06.png" alt-text="Tárolócsoport áttekintése az Azure Portalon":::
+:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-06.png" alt-text="Az Azure Container Instances használatával üzembe helyezett alkalmazás képe a böngészőben":::
 
 Ha az **Állapot***Fut* értékre vált, navigáljon a tároló teljes tartománynevére a böngészőjében.
 
@@ -70,20 +70,20 @@ A tárolópéldányok naplóinak megtekintése hasznos lehet a tárolóval vagy 
 
 A tároló naplóinak megtekintéséhez a **Beállítások**területen válassza a **tárolók**, majd a **naplók**lehetőséget. Látnia kell a HTTP GET kérést is, amely akkor jött létre, amikor megtekintette az alkalmazást a böngészőjében.
 
-:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-11.png" alt-text="Tárolónaplók az Azure Portalon":::
+:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-11.png" alt-text="Az Azure Container Instances használatával üzembe helyezett alkalmazás képe a böngészőben":::
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Miután végzett a tárolóval, válassza ki az **Áttekintés** lehetőséget a *mycontainer* tárolópéldányhoz, majd válassza a **Törlés** lehetőséget.
 
-:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-09.png" alt-text="A Container példány törlése a Azure Portal]":::
+:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-09.png" alt-text="Az Azure Container Instances használatával üzembe helyezett alkalmazás képe a böngészőben":::
 
 Válassza az **Igen** lehetőséget, amikor a megerősítési párbeszédpanel megjelenik.
 
-:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-10.png" alt-text="Tároló példány jóváhagyásának törlése a Azure Portal]":::
+:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-10.png" alt-text="Az Azure Container Instances használatával üzembe helyezett alkalmazás képe a böngészőben":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban létrehozott egy Azure Container-példányt egy nyilvános Microsoft-rendszerképből. Ha szeretne létrehozni és üzembe helyezni egy tárolórendszerképet egy privát Azure-tárolóregisztrációs adatbázisból, lépjen tovább az Azure Container Instances oktatóanyagára.
 

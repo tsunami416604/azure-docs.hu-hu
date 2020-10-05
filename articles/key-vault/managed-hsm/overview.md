@@ -10,10 +10,10 @@ ms.date: 09/15/2020
 ms.author: mbaldwin
 author: msmbaldwin
 ms.openlocfilehash: e98b21d5afebdbd2654d032493b92eb5e6e7fdc6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91320557"
 ---
 # <a name="what-is-azure-key-vault-managed-hsm-preview"></a>Mi az Azure Key Vault Managed HSM (előzetes verzió)?
@@ -49,6 +49,6 @@ Azure Key Vault felügyelt HSM egy teljes körűen felügyelt, magas rendelkezé
 
 - HSM-védelemmel ellátott kulcsok generálása a helyszíni HSM-ben és biztonságos importálása a felügyelt HSM-be
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Útmutató [: felügyelt HSM kiépítése és aktiválása az Azure CLI használatával](quick-create-cli.md) a felügyelt HSM létrehozásához és aktiválásához
 - [Ajánlott eljárások a Azure Key Vault Managed HSM használatával](best-practices.md)

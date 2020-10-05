@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 05/06/2020
 ms.openlocfilehash: 6126c6e37ad43ed6456b224d043dc6695fa2d00e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91298410"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Gyors útmutató: alkalmazás üzembe helyezése a LUIS portálon
@@ -118,7 +118,7 @@ Ha ugyanezt az információt szeretné megtekinteni a teszt ablaktáblán, közz
 
 Ha elkészült a rövid útmutatóval, válassza a **saját alkalmazások** lehetőséget a felső navigációs menüből. Jelölje be az alkalmazás jelölőnégyzetét a listából, majd válassza a **Törlés** lehetőséget a lista fölötti helyi eszköztáron.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Közös szándékok és entitások azonosítása](luis-tutorial-prebuilt-intents-entities.md)

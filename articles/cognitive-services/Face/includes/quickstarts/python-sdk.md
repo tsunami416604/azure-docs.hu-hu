@@ -10,10 +10,10 @@ ms.topic: include
 ms.date: 09/17/2020
 ms.author: pafarley
 ms.openlocfilehash: f746a61850567014ce216c47df472d035f1ae123
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91322962"
 ---
 Ismerkedés az Arcfelismerés a Pythonhoz készült Face ügyféloldali kódtár használatával. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját. A Face szolgáltatás hozzáférést biztosít a speciális algoritmusokhoz a képeken található emberi arcok észleléséhez és felismeréséhez.
@@ -276,7 +276,7 @@ Ha ebben a rövid útmutatóban az adatok áttelepítve lettek a pillanatkép-sz
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_deletetargetgroup)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan használhatja a Pythonhoz készült Face ügyféloldali kódtárat az arcfelismerő feladatok elvégzésére. Ezután tekintse át a dokumentációt, és ismerkedjen meg a könyvtárral.
 
