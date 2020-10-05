@@ -450,6 +450,8 @@
               href: how-to-enable-data-collection.md
             - name: Monitorozás az Application Insights segítségével
               href: how-to-enable-app-insights.md
+        - name: Nagy teljesítményű kiszolgálás a Tritonnal
+          href: how-to-deploy-with-triton.md
         - name: Modellek folyamatos üzembe helyezése
           displayName: ci cd azure devops models
           href: how-to-deploy-continuously-deploy.md

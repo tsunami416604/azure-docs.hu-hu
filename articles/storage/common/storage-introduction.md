@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: b603776ce19bca8d6fefa7c3c85366ebe3b7b01f
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 1f335640eb37f51857fa295298d0a3ca91f2a370
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653800"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714988"
 ---
 # <a name="introduction-to-the-core-azure-storage-services"></a>Az alapszintű Azure Storage szolgáltatás bemutatása
 
@@ -41,7 +41,7 @@ Mindegyik szolgáltatás tárfiókon keresztül érhető el. Első lépésként 
 
 A következő táblázat összehasonlítja a fájlokat, a blobokat, a lemezeket, a várólistákat és a táblázatokat, és megjeleníti az egyes forgatókönyvek példáit.
 
-| Funkció | Leírás | A következő esetekben használja |
+| Szolgáltatás | Leírás | A következő esetekben használja |
 |--------------|-------------|-------------|
 | **Azure Files** |A teljes körűen felügyelt felhőalapú fájlmegosztást biztosít, amely bárhonnan elérhető az iparági szabványnak megfelelő SMB protokollon keresztül.<br><br>Azure-fájlmegosztást csatlakoztathat a felhőből vagy a helyszíni Windows, Linux és macOS rendszerű környezetekről. | Olyan alkalmazást szeretne átemelni és átállítani a felhőbe, amely már a natív fájlrendszer API-kat használja az Azure-ban futó más alkalmazások közötti adatmegosztáshoz.<br/><br/>Szeretné cserélni vagy kiegészíteni a helyszíni fájlkiszolgálók vagy NAS-eszközöket.<br><br> Olyan fejlesztési és hibakeresési eszközöket szeretne tárolni, amelyeknek számos virtuális gépről kell elérniük. |
 | **Azure Blobs** | Lehetővé teszi a strukturálatlan adatmennyiségek tárolását és elérését a blokkos Blobok nagy méretekben.<br/><br/>A [Azure Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md) is támogatja a vállalati Big Data elemzési megoldásokhoz. | Azt szeretné, hogy az alkalmazás támogassa a folyamatos átvitelt és a véletlenszerű hozzáférési forgatókönyveket.<br/><br/>Bárhonnan elérhetővé szeretné tenni az alkalmazásadatok elérését.<br/><br/>Az Azure-ban szeretne létrehozni egy vállalati adattavat, és big data elemzést hajt végre. |
@@ -111,7 +111,7 @@ Az Azure Storage számos különböző típusú Storage-fiókot kínál. Mindegy
 
 Minden Azure Storage-kérelemnek engedélyezve kell lennie. Az Azure Storage a következő engedélyezési módszereket támogatja:
 
-- **Azure Active Directory (Azure AD) integráció a blob-és üzenetsor-adatkezeléshez.** Az Azure Storage a szerepköralapú hozzáférés-vezérlés (RBAC) révén támogatja az Azure AD-vel történő hitelesítést és engedélyezést a blob-és üzenetsor-szolgáltatásokhoz. A kérések Azure AD-vel való engedélyezése ajánlott a kiváló biztonság és a könnyű használat érdekében. További információ: az [Azure-blobok és-várólisták hozzáférésének engedélyezése Azure Active Directory használatával](storage-auth-aad.md).
+- **Azure Active Directory (Azure AD) integráció a blob-és üzenetsor-adatkezeléshez.** Az Azure Storage támogatja az Azure AD-vel való hitelesítést és engedélyezést a blob-és üzenetsor-szolgáltatásokhoz az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával. A kérések Azure AD-vel való engedélyezése ajánlott a kiváló biztonság és a könnyű használat érdekében. További információ: az [Azure-blobok és-várólisták hozzáférésének engedélyezése Azure Active Directory használatával](storage-auth-aad.md).
 - **Azure AD-hitelesítés az Azure Files SMB-en keresztül.** Azure Files támogatja az SMB-(Server Message Block) identitás-alapú hitelesítést Azure Active Directory Domain Services (Azure AD DS) vagy helyszíni Active Directory tartományi szolgáltatások (előzetes verzió) használatával. A tartományhoz csatlakoztatott Windows rendszerű virtuális gépek Azure AD-beli hitelesítő adatokkal érhetik el az Azure-fájlmegosztást. További információ: [Azure Files identitás-alapú hitelesítés támogatásának áttekintése az SMB-hozzáféréshez](../files/storage-files-active-directory-overview.md) és a [Azure Files központi telepítésének megtervezéséhez](../files/storage-files-planning.md#identity).
 - **Hitelesítés megosztott kulccsal.** A Azure Storage Blob, fájlok, üzenetsor és Table Services támogatja a megosztott kulccsal való hitelesítést. A megosztott kulcsos hitelesítést használó ügyfelek minden, a Storage-fiók elérési kulcsával aláírt kérelemmel továbbítanak egy fejlécet. További információ: [Engedélyezés megosztott kulccsal](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key).
 - **Hitelesítés közös hozzáférésű aláírásokkal (SAS).** A közös hozzáférésű aláírás (SAS) egy olyan karakterlánc, amely egy olyan biztonsági jogkivonatot tartalmaz, amely egy tárolási erőforrás URI azonosítójának hozzáfűzésére használható. A biztonsági jogkivonat olyan korlátozásokat ágyaz be, mint az engedélyek és a hozzáférés intervalluma. További információ: [Shared Access Signatures (SAS) használata](storage-sas-overview.md).

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: 9bf656989dc331fdd4ce044126ea9d0be9414930
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 16080440a9458753992c62309ce75ed241fb64d5
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90088799"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715116"
 ---
 # <a name="prevent-shared-key-authorization-for-an-azure-storage-account-preview"></a>Azure Storage-fiókhoz tartozó megosztott kulcs engedélyezésének tiltása (előzetes verzió)
 
@@ -67,7 +67,7 @@ Kövesse az alábbi lépéseket egy olyan metrika létrehozásához, amely nyomo
 
 Miután konfigurálta a metrikát, a Storage-fiókra irányuló kérések megjelennek a gráfon. Az alábbi képen a megosztott kulccsal rendelkező vagy SAS-tokenrel létrehozott kérelmek láthatók. A kérelmek összesítése naponta történik az elmúlt harminc napban.
 
-:::image type="content" source="media/shared-key-authorization-prevent/metric-shared-key-requests.png" alt-text="A megosztott kulccsal rendelkező összesített kérelmeket bemutató képernyőfelvétel":::
+:::image type="content" source="media/shared-key-authorization-prevent/metric-shared-key-requests.png" alt-text="Képernyőfelvétel a metrikák a megosztott kulccsal vagy SAS-vel végzett tranzakciók összegének konfigurálásáról":::
 
 A riasztási szabályt úgy is beállíthatja, hogy értesítést kapjon arról, ha a megosztott kulccsal rendelkező bizonyos számú kérelem a Storage-fiókra vonatkozik. További információ: [metrikus riasztások létrehozása, megtekintése és kezelése Azure monitor használatával](../../azure-monitor/platform/alerts-metric.md).
 
@@ -93,7 +93,7 @@ Az Azure Storage-beli adatAzure Monitor és az Azure Log Analytics való elemzé
 1. A **Kategória részletei**között, a **napló** szakaszban válassza az **StorageRead**, a **StorageWrite**és a **StorageDelete** lehetőséget, hogy naplózza az összes adatkérést a kiválasztott szolgáltatásba.
 1. A **célhely részletei**területen válassza **a Küldés log Analyticsba**lehetőséget. Válassza ki az előfizetését és a korábban létrehozott Log Analytics munkaterületet, ahogy az az alábbi képen is látható.
 
-    :::image type="content" source="media/shared-key-authorization-prevent/create-diagnostic-setting-logs.png" alt-text="A naplózási kérelmek diagnosztikai beállításainak létrehozását bemutató képernyőkép":::
+    :::image type="content" source="media/shared-key-authorization-prevent/create-diagnostic-setting-logs.png" alt-text="Képernyőfelvétel a metrikák a megosztott kulccsal vagy SAS-vel végzett tranzakciók összegének konfigurálásáról":::
 
 A Storage-fiókban minden egyes Azure Storage-erőforráshoz diagnosztikai beállítást hozhat létre.
 
@@ -133,7 +133,7 @@ Az alábbi lépéseket követve engedélyezheti a megosztott kulcs engedélyezé
 1. Keresse meg a **konfigurációs** beállítást a **Beállítások**területen.
 1. A **megosztott kulcs hozzáférésének engedélyezése** **Letiltva**értékre.
 
-    :::image type="content" source="media/shared-key-authorization-prevent/shared-key-access-portal.png" alt-text="A fiók megosztott kulcshoz való hozzáférésének tiltását bemutató képernyőkép":::
+    :::image type="content" source="media/shared-key-authorization-prevent/shared-key-access-portal.png" alt-text="Képernyőfelvétel a metrikák a megosztott kulccsal vagy SAS-vel végzett tranzakciók összegének konfigurálásáról":::
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -219,7 +219,7 @@ Néhány Azure-eszköz lehetővé teszi az Azure AD-hitelesítés használatát 
 | Azure PowerShell | Támogatott. További információ az Azure ad-val kapcsolatos PowerShell-parancsok engedélyezéséről: [PowerShell-parancsok futtatása Azure ad-beli hitelesítő adatokkal a Blobok adatainak eléréséhez](../blobs/authorize-active-directory-powershell.md) , illetve [PowerShell-parancsok futtatása Azure ad-beli hitelesítő adatokkal a várólista adatainak eléréséhez](../queues/authorize-active-directory-powershell.md). |
 | Azure CLI | Támogatott. További információ arról, hogyan engedélyezhető az Azure CLI-parancsok használata az Azure AD-vel a blob-és üzenetsor-adatok eléréséhez: [Azure CLI-parancsok futtatása Azure ad-beli hitelesítő adatokkal a blob-vagy üzenetsor-adatok eléréséhez](authorize-data-operations-cli.md). |
 | Azure IoT Hub | Támogatott. További információ: [IoT hub virtuális hálózatok támogatása](../../iot-hub/virtual-network-support.md). |
-| Azure Cloud Shell | A Azure Cloud Shell a Azure Portal integrált rendszerhéja. Azure Cloud Shell a fájlok megőrzését a Storage-fiókban lévő Azure-fájlmegosztás tárolja. Ezek a fájlok elérhetetlenné válnak, ha a megosztott kulcs engedélyezése nem engedélyezett a Storage-fiók esetében. További információ: [a Microsoft Azure Files Storage összekötése](/azure/cloud-shell/overview#connect-your-microsoft-azure-files-storage). <br /><br /> Ha a Azure Cloud Shell parancsainak futtatásával szeretné felügyelni azokat a Storage-fiókokat, amelyek esetében a megosztott kulcsokhoz való hozzáférés nem engedélyezett, először a szerepköralapú hozzáférés-vezérlés (RBAC) segítségével meg kell adni a szükséges engedélyeket a fiókokhoz. További információ: [Mi az az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)?](../../role-based-access-control/overview.md). |
+| Azure Cloud Shell | A Azure Cloud Shell a Azure Portal integrált rendszerhéja. Azure Cloud Shell a fájlok megőrzését a Storage-fiókban lévő Azure-fájlmegosztás tárolja. Ezek a fájlok elérhetetlenné válnak, ha a megosztott kulcs engedélyezése nem engedélyezett a Storage-fiók esetében. További információ: [a Microsoft Azure Files Storage összekötése](/azure/cloud-shell/overview#connect-your-microsoft-azure-files-storage). <br /><br /> Ha a Azure Cloud Shell parancsainak futtatásával szeretné kezelni azokat a Storage-fiókokat, amelyekhez a megosztott kulcsokhoz való hozzáférés nem engedélyezett, először győződjön meg arról, hogy az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával biztosította a szükséges engedélyeket ezekhez a fiókokhoz. További információ: [Mi az az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)?](../../role-based-access-control/overview.md). |
 
 ## <a name="about-the-preview"></a>Az előzetes verzió ismertetése
 
@@ -245,7 +245,7 @@ Ha a Storage-fiók forgalmát értékeli, vegye figyelembe, hogy az [ügyfélalk
 
 Ha az előzetes verzióban nem engedélyezett a megosztott kulcshoz való hozzáférés a Storage-fiókhoz, a rendszer továbbra is engedélyezi a megosztott hozzáférési aláírásokat a várólista, tábla vagy Azure Files erőforrások számára. Ez a korlátozás mindkét szolgáltatás SAS-jogkivonatára és a fiók SAS-jogkivonatára vonatkozik. A SAS mindkét típusa megosztott kulccsal van hitelesítve.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure Storage-beli adathozzáférés engedélyezése](storage-auth.md)
 - [Blobokhoz és várólistákhoz való hozzáférés engedélyezése Azure Active Directory használatával](storage-auth-aad.md)

@@ -97,6 +97,8 @@
       href: ../../azure-functions/security-baseline.md
     - name: Az Azure IoT Hub biztonsági alapkonfigurációja
       href: ../../iot-hub/security-baseline.md
+    - name: Az Azure Kubernetes Service biztonsági alapkonfigurációja
+      href: ../../aks/security-baseline.md
     - name: Az Azure Load Balancer biztonsági alapkonfigurációja
       href: ../../load-balancer/security-baseline.md
     - name: Az Azure Monitor biztonsági alapkonfigurációja
@@ -117,6 +119,8 @@
       href: ../../sql-database/security-baseline.md
     - name: Az Azure Storage biztonsági alapkonfigurációja
       href: ../../storage/common/security-baseline.md
+    - name: Az Azure Traffic Manager biztonsági alapkonfigurációja
+      href: ../../traffic-manager/security-baseline.md
     - name: A Batch biztonsági alapkonfigurációja
       href: ../../batch/security-baseline.md
     - name: A Cognitive Services biztonsági alapkonfigurációja
@@ -163,3 +167,7 @@
       href: ../../virtual-machines/linux/security-baseline.md
     - name: A Virtual Machines (Windows) biztonsági alapkonfigurációja
       href: ../../virtual-machines/windows/security-baseline.md
+    - name: A virtuális hálózatok biztonsági alapkonfigurációja
+      href: ../../virtual-network/security-baseline.md
+    - name: A VPN Gateway biztonsági alapkonfigurációja
+      href: ../../vpn-gateway/security-baseline.md

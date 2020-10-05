@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: hux
 ms.custom: references_regions
-ms.openlocfilehash: 70d0e31809227d5e27f8f2b22a7703d5a8ccca3c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3b6162552e43c9f475bef2ca3097da22ae198011
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91275064"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713686"
 ---
 # <a name="manage-and-find-azure-blob-data-with-blob-index-preview"></a>Azure Blob-adatkezelés és-keresés a blob-indextel (előzetes verzió)
 
@@ -104,7 +104,7 @@ Az alábbi táblázatban a FindBlobsByTags összes érvényes operátora láthat
 |     >=     |  Nagyobb vagy egyenlő mint | "Prioritás" >= "5" |
 |     <      |  Kisebb, mint   | "Age" < "32" |
 |     <=     |  Kisebb vagy egyenlő  | "Cég" <= "contoso" |
-|    AND     |  Logikai és  | "Rang" >= "010" és "Rank" < "100" |
+|    ÉS     |  Logikai és  | "Rang" >= "010" és "Rank" < "100" |
 | @container | Hatókör egy adott tárolóra | @container = "videofiles" és "status" = "kész" |
 
 > [!NOTE]
@@ -128,7 +128,7 @@ Az alábbi táblázatban a feltételes műveletek összes érvényes operátora 
 |     >=     |  Nagyobb vagy egyenlő mint | "Prioritás" >= "5" |
 |     <      |  Kisebb, mint   | "Age" < "32" |
 |     <=     |  Kisebb vagy egyenlő  | "Cég" <= "contoso" |
-|    AND     |  Logikai és  | "Rang" >= "010" és "Rank" < "100" |
+|    ÉS     |  Logikai és  | "Rang" >= "010" és "Rank" < "100" |
 |     VAGY     | Logikai vagy   | "Status" = "kész" vagy "priority" >= "05" |
 
 > [!NOTE]
@@ -196,7 +196,7 @@ A következő minta életciklus-kezelési szabály a "videofiles" tárolóban l�
 
 Az alábbi módszerek egyikével engedélyezheti a blob-indexhez való hozzáférést:
 
-- Szerepköralapú hozzáférés-vezérlés (RBAC) használatával engedélyeket adhat egy Azure Active Directory (Azure AD) rendszerbiztonsági tag számára. A Microsoft az Azure AD használatát javasolja a kiváló biztonság és a könnyű használat érdekében. További információ az Azure AD és a blob-műveletek használatáról: a Blobok [és várólisták hozzáférésének engedélyezése Azure Active Directory használatával](../common/storage-auth-aad.md).
+- Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával engedélyeket adhat egy Azure Active Directory (Azure AD) rendszerbiztonsági tag számára. A Microsoft az Azure AD használatát javasolja a kiváló biztonság és a könnyű használat érdekében. További információ az Azure AD és a blob-műveletek használatáról: a Blobok [és várólisták hozzáférésének engedélyezése Azure Active Directory használatával](../common/storage-auth-aad.md).
 - Közös hozzáférésű aláírás (SAS) használatával a blob-indexhez való hozzáférés delegálására. A közös hozzáférésű aláírásokkal kapcsolatos további információkért lásd: [korlátozott hozzáférés engedélyezése az Azure Storage-erőforrásokhoz közös hozzáférésű aláírások (SAS) használatával](../common/storage-sas-overview.md).
 - A fiók-hozzáférési kulcsok használatával engedélyezze a megosztott kulccsal rendelkező műveleteket. További információ: [Engedélyezés megosztott kulccsal](/rest/api/storageservices/authorize-with-shared-key).
 
@@ -205,7 +205,7 @@ A blob index címkéi a blob-adatforrások. Előfordulhat, hogy a Blobok olvasá
 ### <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés
 Az [Azure ad-identitást](../common/storage-auth-aad.md) használó hívók a következő engedélyeket kaphatják meg a blob index-címkéken való működéshez.
 
-|   BLOB-műveletek  |  RBAC művelet   |
+|   BLOB-műveletek  |  Azure RBAC művelet   |
 |--------------------|----------------|
 | Blobok keresése címkék alapján | Microsoft. Storage/storageAccounts/blobServices/containers/Blobok/Filter/művelet |
 | BLOB-címkék beállítása      | Microsoft. Storage/storageAccounts/blobServices/tárolók/Blobok/címkék/írás |
@@ -308,7 +308,7 @@ A blob index címkéi csak a karakterlánc-adattípusokat támogatják, a lekér
 ### <a name="are-blob-index-tags-and-azure-resource-manager-tags-related"></a>A blob-indexek címkéi és a hozzájuk kapcsolódó Azure Resource Manager Címkék?
 Nem, a Resource Manager-címkék segítenek megszervezni a vezérlési sík erőforrásait, például az előfizetéseket, az erőforráscsoportokat és a Storage-fiókokat. A blob index címkéi az objektumok kezelését és felderítését biztosítják az adatsík erőforrásain, például a Storage-fiókban található blobokon.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A blob index kihasználása például a [blob index használata az adatkezeléshez és az adatkereséshez](storage-blob-index-how-to.md)című témakörben olvasható.
 

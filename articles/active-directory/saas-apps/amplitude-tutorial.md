@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 6f2b7ec07583859e12711237c6a899d61335c969
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b05a85dd61cdf4edc366edc3fbf20e4097308d09
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545473"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713575"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amplitude"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az amplitúdóval
 
@@ -107,7 +107,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -141,15 +141,15 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
 1. A bal oldali navigációs sávon kattintson a **terv adminisztrátor** elemre.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/amplitude-tutorial/configure1.png)
+    ![Képernyőfelvétel: az amplitúdó menü kiválasztva.](./media/amplitude-tutorial/configure1.png)
 
 1. Válassza ki **Microsoft Azure Active Directory metaadatokat** az **SSO-integrációból**.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/amplitude-tutorial/configure2.png)
+    ![Képernyőfelvétel: a terv felügyeleti panelje a Microsoft Azure Active Directory metaadat-hivatkozással.](./media/amplitude-tutorial/configure2.png)
 
 1. Az **egyszeri bejelentkezés beállítása** szakaszban hajtsa végre a következő lépéseket:
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/amplitude-tutorial/configure3.png)
+    ![Képernyőfelvétel: az egyszeri bejelentkezés beállítása szakasz, amely az ebben a lépésben ismertetett értékeket tartalmazza.](./media/amplitude-tutorial/configure3.png)
 
     a. Nyissa meg a letöltött **metaadatok XML-** fájlját Azure Portal a Jegyzettömbben, illessze be a tartalmat a **Microsoft Azure Active Directory metaadatok** szövegmezőbe.
 

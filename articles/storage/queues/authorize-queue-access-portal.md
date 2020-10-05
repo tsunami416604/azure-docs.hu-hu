@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozguns
 ms.subservice: queues
 ms.custom: contperfq1
-ms.openlocfilehash: 32e78b3b8ccad791bc7b9bb11123dbe901df597f
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 2593f1b7ea4cfabe0243fe6f830d718896e68473
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90088671"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715504"
 ---
 # <a name="choose-how-to-authorize-access-to-queue-data-in-the-azure-portal"></a>Válassza ki, hogyan engedélyezze a hozzáférést az üzenetsor-információhoz a Azure Portal
 
@@ -24,11 +24,11 @@ Amikor a [Azure Portal](https://portal.azure.com)használatával fér hozzá a v
 
 ## <a name="permissions-needed-to-access-queue-data"></a>A várólista-adateléréshez szükséges engedélyek
 
-Attól függően, hogy hogyan kívánja engedélyezni az üzenetsor-azonosítók elérését a Azure Portalban, egyedi engedélyekre van szüksége. A legtöbb esetben ezek az engedélyek szerepköralapú hozzáférés-vezérlésen (RBAC) keresztül érhetők el. További információ a RBAC: [Mi az az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)?](../../role-based-access-control/overview.md).
+Attól függően, hogy hogyan kívánja engedélyezni az üzenetsor-azonosítók elérését a Azure Portalban, egyedi engedélyekre van szüksége. A legtöbb esetben ezek az engedélyek az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával érhetők el. További információ az Azure RBAC: [Mi az az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)?](../../role-based-access-control/overview.md).
 
 ### <a name="use-the-account-access-key"></a>A fiók elérési kulcsának használata
 
-A várólista-információk fiók-hozzáférési kulccsal való eléréséhez hozzá kell rendelnie egy Azure-szerepkört, amely tartalmazza a **Microsoft. Storage/storageAccounts/listkeys műveletének beolvasása/művelet**RBAC műveletet. Ez az Azure-szerepkör beépített vagy egyéni szerepkör lehet. A **Microsoft. Storage/storageAccounts/listkeys műveletének beolvasása/műveletet** támogató beépített szerepkörök a következők:
+A várólista-információk fiók-hozzáférési kulccsal való eléréséhez hozzá kell rendelnie egy Azure-szerepkört, amely tartalmazza az Azure RBAC műveletet a **Microsoft. Storage/storageAccounts/listkeys műveletének beolvasása/művelet**. Ez az Azure-szerepkör beépített vagy egyéni szerepkör lehet. A **Microsoft. Storage/storageAccounts/listkeys műveletének beolvasása/műveletet** támogató beépített szerepkörök a következők:
 
 - A Azure Resource Manager [tulajdonosi](../../role-based-access-control/built-in-roles.md#owner) szerepkör
 - A Azure Resource Manager [közreműködő](../../role-based-access-control/built-in-roles.md#contributor) szerepkör
@@ -74,11 +74,11 @@ Amikor egy várólistára navigál, a Azure Portal jelzi, hogy jelenleg a fiók-
 
 Ha a fiók-hozzáférési kulccsal végzi a hitelesítést, a hitelesítési módszerként megadott **elérési kulcsot** fogja látni a portálon:
 
-:::image type="content" source="media/authorize-queue-access-portal/auth-method-access-key.png" alt-text="Képernyőfelvétel, amely az aktuálisan hozzáférő várólistákat jeleníti meg a fiók kulcsával":::
+:::image type="content" source="media/authorize-queue-access-portal/auth-method-access-key.png" alt-text="Képernyőfelvétel az üzenetsor-adatAzure Portal":::
 
 Ha az Azure AD-fiók használatára szeretne váltani, kattintson a képre Kiemelt hivatkozásra. Ha rendelkezik a megfelelő engedélyekkel az Ön által hozzárendelt Azure-szerepkörökön keresztül, folytathatja a folytatást. Ha azonban nem rendelkezik a megfelelő engedélyekkel, a következőhöz hasonló hibaüzenet jelenik meg:
 
-:::image type="content" source="media/authorize-queue-access-portal/auth-error-azure-ad.png" alt-text="Hiba jelenik meg, ha az Azure AD-fiók nem támogatja a hozzáférést":::
+:::image type="content" source="media/authorize-queue-access-portal/auth-error-azure-ad.png" alt-text="Képernyőfelvétel az üzenetsor-adatAzure Portal":::
 
 Figyelje meg, hogy ha az Azure AD-fiókja nem rendelkezik a megtekintéshez szükséges engedélyekkel, a listában nem jelenik meg a várólisták. Kattintson a **kapcsolóra** a Hívóbetű eléréséhez, és használja a hozzáférési kulcsot a hitelesítéshez.
 
@@ -86,15 +86,15 @@ Figyelje meg, hogy ha az Azure AD-fiókja nem rendelkezik a megtekintéshez szü
 
 Ha az Azure AD-fiókkal végzi a hitelesítést, akkor a portálon hitelesítési módszerként megadott **Azure ad-felhasználói fiókot** fogja látni:
 
-:::image type="content" source="media/authorize-queue-access-portal/auth-method-azure-ad.png" alt-text="Az Azure AD-fiókkal aktuálisan hozzáférő várólistákat megjelenítő felhasználó képernyőképe":::
+:::image type="content" source="media/authorize-queue-access-portal/auth-method-azure-ad.png" alt-text="Képernyőfelvétel az üzenetsor-adatAzure Portal":::
 
 Ha a fiók-hozzáférési kulcs használatára szeretne váltani, kattintson a képre Kiemelt hivatkozásra. Ha rendelkezik hozzáféréssel a fiók kulcsához, akkor folytathatja a folytatást. Ha azonban nincs hozzáférése a fiók kulcsához, a Azure Portal hibaüzenetet jelenít meg.
 
 A várólisták nem jelennek meg a portálon, ha nem rendelkezik hozzáféréssel a fiók kulcsaihoz. Kattintson a **Váltás az Azure ad felhasználói fiókra** hivatkozásra az Azure ad-fiók ismételt hitelesítésre való használatához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure-blobok és-várólisták hozzáférésének hitelesítése Azure Active Directory használatával](../common/storage-auth-aad.md)
-- [Hozzáférés biztosítása az Azure-tárolók és-várólisták számára a Azure Portal RBAC](../common/storage-auth-aad-rbac-portal.md)
-- [Hozzáférés biztosítása Azure-blobok és -üzenetsorok adataihoz RBAC használatával az Azure CLI-vel](../common/storage-auth-aad-rbac-cli.md)
-- [Hozzáférés biztosítása Azure-blobok és -üzenetsorok adataihoz RBAC használatával a PowerShell-lel](../common/storage-auth-aad-rbac-powershell.md)
+- [A Azure Portal használata Azure-szerepkörök hozzárendeléséhez a blob-és üzenetsor-adat eléréséhez](../common/storage-auth-aad-rbac-portal.md)
+- [Az Azure CLI-vel hozzárendelhet egy Azure-szerepkört a blob-és üzenetsor-adat eléréséhez](../common/storage-auth-aad-rbac-cli.md)
+- [A Azure PowerShell modul használatával rendeljen hozzá egy Azure-szerepkört a blob-és üzenetsor-információ eléréséhez](../common/storage-auth-aad-rbac-powershell.md)

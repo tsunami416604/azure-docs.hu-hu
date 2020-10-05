@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: fa6a226926439e30b9ca51c75743ce35915ffd85
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 31d67daebf2e15fb11b5ebe30c4f7741a09eed2d
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90017234"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91716110"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Hozzáférés-vezérlés a 2. generációs Azure Data Lake Storage-ben
 
@@ -21,22 +21,22 @@ Azure Data Lake Storage Gen2 olyan hozzáférés-vezérlési modellt valósít m
 
 <a id="azure-role-based-access-control-rbac"></a>
 
-## <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés
+## <a name="azure-role-based-access-control"></a>Azure-beli szerepköralapú hozzáférés-vezérlés
 
-A RBAC szerepkör-hozzárendelésekkel hatékonyan alkalmazza a *rendszerbiztonsági tag*engedélyeinek készleteit. A *rendszerbiztonsági tag* egy olyan objektum, amely az Azure-erőforrásokhoz való hozzáférést kérő Azure Active Directory (ad) által meghatározott felhasználó, csoport, szolgáltatásnév vagy felügyelt identitást jelöl.
+Az Azure RBAC a szerepkör-hozzárendelések használatával hatékonyan alkalmazza a *rendszerbiztonsági tag*engedélyeinek készleteit. A *rendszerbiztonsági tag* egy olyan objektum, amely az Azure-erőforrásokhoz való hozzáférést kérő Azure Active Directory (ad) által meghatározott felhasználó, csoport, szolgáltatásnév vagy felügyelt identitást jelöl.
 
 Ezek az Azure-erőforrások jellemzően legfelső szintű erőforrásokra vannak korlátozva (például: Azure Storage-fiókok). Az Azure Storage esetében, és ennek következtében Azure Data Lake Storage Gen2 ezt a mechanizmust a tároló (fájlrendszer) erőforrásra kiterjesztették.
 
-Ha szeretné megtudni, hogyan rendeljen hozzá szerepköröket rendszerbiztonsági tag számára a Storage-fiók hatókörében, tekintse meg [Az Azure Blob-és üzenetsor-kezelés hozzáférésének biztosítása a Azure Portal RBAC](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)című témakört.
+Ha szeretné megtudni, hogyan rendeljen hozzá szerepköröket rendszerbiztonsági tag számára a Storage-fiók hatókörében, olvassa el a következő témakört: [a Azure Portal használata Azure-szerepkör hozzárendeléséhez a blob-és üzenetsor-információk eléréséhez](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 > [!NOTE]
 > A vendég felhasználó nem hozhat létre szerepkör-hozzárendelést.
 
 ### <a name="the-impact-of-role-assignments-on-file-and-directory-level-access-control-lists"></a>A szerepkör-hozzárendelések hatása a fájl-és könyvtár szintű hozzáférés-vezérlési listára
 
-Az Azure szerepkör-hozzárendelések használata egy hatékony mechanizmus a hozzáférési engedélyek szabályozására, és ez egy nagyon durva módszer a hozzáférés-vezérlési listákhoz képest. A RBAC legkisebb részletessége a tároló szintjén van, ezért a rendszer az ACL-ekkel magasabb prioritással értékeli. Ezért ha egy szerepkört egy rendszerbiztonsági tag számára rendel hozzá egy tároló hatókörében, a rendszerbiztonsági tag az adott szerepkörhöz tartozó összes könyvtárra és fájlra vonatkozó engedélyezési szinttel rendelkezik, függetlenül az ACL-hozzárendeléstől.
+Az Azure szerepkör-hozzárendelések használata egy hatékony mechanizmus a hozzáférési engedélyek szabályozására, és ez egy nagyon durva módszer a hozzáférés-vezérlési listákhoz képest. Az Azure-RBAC legkisebb részletessége a tároló szintjén van, és ez az ACL-nél magasabb prioritással lesz kiértékelve. Ezért ha egy szerepkört egy rendszerbiztonsági tag számára rendel hozzá egy tároló hatókörében, a rendszerbiztonsági tag az adott szerepkörhöz tartozó összes könyvtárra és fájlra vonatkozó engedélyezési szinttel rendelkezik, függetlenül az ACL-hozzárendeléstől.
 
-Ha egy rendszerbiztonsági tag egy [beépített szerepkörön](https://docs.microsoft.com/azure/storage/common/storage-auth-aad?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#built-in-rbac-roles-for-blobs-and-queues)vagy egy egyéni szerepkörön keresztül kap RBAC-adatengedélyeket, akkor ezeket az engedélyeket először a kérelem engedélyezése után értékeli ki a rendszer. Ha a kért műveletet a rendszerbiztonsági tag Azure szerepkör-hozzárendelései engedélyezik, akkor az engedélyezés azonnal megoldódik, és a rendszer nem végez további ACL-ellenőrzéseket. Ha a rendszerbiztonsági tag nem rendelkezik Azure-szerepkör-hozzárendeléssel, vagy a kérelem művelete nem felel meg a hozzárendelt engedélynek, akkor az ACL-ellenőrzések végrehajtásával megállapíthatja, hogy a rendszerbiztonsági tag jogosult-e a kért művelet végrehajtására.
+Ha egy rendszerbiztonsági tag Azure RBAC-adatengedélyeket biztosít egy [beépített szerepkör](https://docs.microsoft.com/azure/storage/common/storage-auth-aad?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#built-in-rbac-roles-for-blobs-and-queues)vagy egy egyéni szerepkör segítségével, akkor a rendszer először a kérések jóváhagyása után értékeli ki ezeket az engedélyeket. Ha a kért műveletet a rendszerbiztonsági tag Azure szerepkör-hozzárendelései engedélyezik, akkor az engedélyezés azonnal megoldódik, és a rendszer nem végez további ACL-ellenőrzéseket. Ha a rendszerbiztonsági tag nem rendelkezik Azure-szerepkör-hozzárendeléssel, vagy a kérelem művelete nem felel meg a hozzárendelt engedélynek, akkor az ACL-ellenőrzések végrehajtásával megállapíthatja, hogy a rendszerbiztonsági tag jogosult-e a kért művelet végrehajtására.
 
 > [!NOTE]
 > Ha a rendszerbiztonsági tag a Storage blob-adatok tulajdonosának beépített szerepkör-hozzárendelését rendelte hozzá, akkor a rendszerbiztonsági tag egy *felügyelőnek* tekintendő, és teljes hozzáférést kap az összes mutációs művelethez, beleértve a címtár vagy fájl tulajdonosának beállítását, valamint a könyvtárak és fájlok hozzáférés-vezérlési listáihoz tartozó ACL-eket, amelyekhez nem a tulajdonos. A felügyelői hozzáférés csak az erőforrás tulajdonosának módosítására jogosult.
@@ -102,7 +102,7 @@ A Container objektumokra vonatkozó engedélyek a következők: **olvasás**, **
 | **Végrehajtás (X)** | Nem jelent semmit a Data Lake Storage Gen2 kontextusában | Egy könyvtár alárendelt elemeinek bejárásához szükséges. |
 
 > [!NOTE]
-> Ha csak ACL-ek (nem RBAC) használatával ad meg engedélyeket, a rendszerbiztonsági tag számára olvasási vagy írási hozzáférést kell adnia egy fájlhoz, meg kell adnia a rendszerbiztonsági tag számára a tárolóhoz **tartozó engedélyeket,** valamint a fájlhoz vezető mappák hierarchiájában lévő összes mappát.
+> Ha csak ACL-ek (nem Azure RBAC) használatával ad meg engedélyeket, a rendszerbiztonsági tag számára olvasási vagy írási hozzáférést kell adnia egy fájlhoz, a rendszerbiztonsági tag számára pedig a fájlhoz tartozó mappák hierarchiájának minden mappájához meg kell adni a rendszerbiztonsági **tag engedélyeit** .
 
 #### <a name="short-forms-for-permissions"></a>Az engedélyek rövid alakjai
 
@@ -252,8 +252,8 @@ A umask, amely a 007-re beállított állandó érték Azure Data Lake Storage G
 
 | umask-összetevő     | Numerikus alak | Rövid alak | Értelmezés |
 |---------------------|--------------|------------|---------|
-| umask. owning_user   |    0         |   `---`      | A tulajdonos felhasználó számára másolja a szülő alapértelmezett ACL-t a gyermek hozzáférési ACL-jéhez. | 
-| umask. owning_group  |    0         |   `---`      | A tulajdonos csoport esetében másolja a szülő alapértelmezett ACL-t a gyermek hozzáférési ACL-jéhez. | 
+| umask.owning_user   |    0         |   `---`      | A tulajdonos felhasználó számára másolja a szülő alapértelmezett ACL-t a gyermek hozzáférési ACL-jéhez. | 
+| umask.owning_group  |    0         |   `---`      | A tulajdonos csoport esetében másolja a szülő alapértelmezett ACL-t a gyermek hozzáférési ACL-jéhez. | 
 | umask. other         |    7         |   `RWX`      | Egyéb esetben távolítsa el az összes engedélyt a gyermek hozzáférési ACL-jéhez |
 
 Az Azure Data Lake Storage Gen2 által használt umask érték azt jelenti, hogy az új gyermekeknél az alapértelmezett érték soha **nem lesz** továbbítva, kivéve, ha egy alapértelmezett ACL van definiálva a szülő könyvtáron. Ebben az esetben a umask a rendszer hatékonyan figyelmen kívül hagyja, és az alapértelmezett ACL által definiált engedélyeket alkalmazza a gyermek elemre. 

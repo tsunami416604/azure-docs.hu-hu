@@ -51,6 +51,8 @@
       href: cli-samples.md
 - name: Alapelvek
   items:
+    - name: Magas rendelkezésre állás
+      href: cache-high-availability.md
     - name: Feladatátvétel és javítás
       href: cache-failover.md
     - name: Ajánlott eljárások
@@ -90,8 +92,6 @@
           href: cache-reserved-pricing.md
         - name: Migrálás az Azure Cache for Redisbe
           href: cache-migration-guide.md
-        - name: Migrálás a Managed Cache Service-ből (elavult)
-          href: cache-migrate-to-redis.md
         - name: Tervezés – GYIK
           href: cache-planning-faq.md
     - name: Létrehozás

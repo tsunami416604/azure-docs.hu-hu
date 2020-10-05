@@ -10,12 +10,12 @@ ms.date: 09/15/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: e6e6c802da212294594f45d0545c6cf07694760b
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 48831a9482087dbeed0952cc30fcbc9c14fbaed0
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707917"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715632"
 ---
 # <a name="configure-object-replication-for-block-blobs"></a>Objektumok replikálásának konfigurálása a blokkos blobokhoz
 
@@ -37,7 +37,7 @@ A Storage-fiók legfeljebb két célobjektum forrásaként használható. Előfo
 
 Az objektumok replikálásának konfigurálásakor az Azure Storage erőforrás-szolgáltatón keresztül létre kell hoznia egy replikációs házirendet a célhelyen. A replikációs házirend létrehozása után az Azure Storage egy házirend-azonosítót rendel hozzá. Ezt követően a házirend-azonosító használatával kell hozzárendelni a replikációs házirendet a forrás-fiókhoz. A replikáció végrehajtásához meg kell egyeznie a forrás-és a célhelyen lévő házirend-AZONOSÍTÓval.
 
-A Storage-fiókhoz tartozó objektum-replikációs házirend konfigurálásához hozzá kell rendelnie a Azure Resource Manager **közreműködő** szerepkört, amely a Storage-fiók szintjére vagy magasabbra van korlátozva. További információ: [Azure-beli beépített szerepkörök](../../role-based-access-control/built-in-roles.md) az azure szerepköralapú Access Control (RBAC) dokumentációjában.
+A Storage-fiókhoz tartozó objektum-replikációs házirend konfigurálásához hozzá kell rendelnie a Azure Resource Manager **közreműködő** szerepkört, amely a Storage-fiók szintjére vagy magasabbra van korlátozva. További információ: [Azure-beli beépített szerepkörök](../../role-based-access-control/built-in-roles.md) az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) dokumentációjában.
 
 ### <a name="configure-object-replication-when-you-have-access-to-both-storage-accounts"></a>Az objektumok replikálásának konfigurálása, ha mindkét Storage-fiókhoz hozzáfér
 
@@ -65,19 +65,19 @@ Ha a Azure Portal replikációs szabályzatot szeretne létrehozni, kövesse az 
 
     Az alábbi képen olyan szűrők láthatók, amelyek korlátozzák, hogy mely Blobok legyenek átmásolva egy replikációs szabály részeként.
 
-    :::image type="content" source="media/object-replication-configure/configure-replication-copy-prefix.png" alt-text="A replikációs szabály szűrőinek megjelenítését bemutató képernyőkép":::
+    :::image type="content" source="media/object-replication-configure/configure-replication-copy-prefix.png" alt-text="A Azure Portal replikációs szabályait ábrázoló képernyőkép":::
 
 1. Alapértelmezés szerint a másolási hatókör úgy van beállítva, hogy csak az új objektumokat másolja. Ha a tárolóban lévő összes objektumot át szeretné másolni, vagy egyéni dátumból és időpontból szeretné másolni az objektumokat, válassza a **módosítás** hivatkozást, és konfigurálja a tároló pár másolási hatókörét.
 
     Az alábbi képen egy egyéni másolási hatókör látható, amely az objektumokat egy adott dátumtól és időponttól kezdve másolja.
 
-    :::image type="content" source="media/object-replication-configure/configure-replication-copy-scope.png" alt-text="Az objektumok replikálásának egyéni másolási hatókörét bemutató képernyőkép":::
+    :::image type="content" source="media/object-replication-configure/configure-replication-copy-scope.png" alt-text="A Azure Portal replikációs szabályait ábrázoló képernyőkép":::
 
 1. Válassza a **Mentés és az alkalmaz** lehetőséget a replikációs házirend létrehozásához és az adatreplikálás megkezdéséhez.
 
 Az objektumok replikálásának konfigurálása után a Azure Portal megjeleníti a replikációs házirendet és a szabályokat, ahogy az az alábbi képen is látható.
 
-:::image type="content" source="media/object-replication-configure/object-replication-policies-portal.png" alt-text="A Azure Portal objektum-replikációs házirendjét ábrázoló képernyőfelvétel":::
+:::image type="content" source="media/object-replication-configure/object-replication-policies-portal.png" alt-text="A Azure Portal replikációs szabályait ábrázoló képernyőkép":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -238,7 +238,7 @@ az storage account or-policy show \
 
 Ha nem rendelkezik engedéllyel a forrásként szolgáló Storage-fiókhoz, konfigurálhatja az objektum-replikálást a célhelyen, és megadhat egy JSON-fájlt, amely tartalmazza a házirend-definíciót egy másik felhasználó számára, hogy ugyanazt a házirendet hozza létre a forrás fiókon. Ha például a forrásoldali fiók egy másik Azure AD-bérlőn található a célhelyen, akkor ezt a módszert használhatja az objektumok replikálásának konfigurálásához.
 
-Ne feledje, hogy a házirend létrehozásához hozzá kell rendelnie a Azure Resource Manager **közreműködő** szerepkört a célként megadott Storage-fiók szintjére vagy magasabbra. További információ: [Azure-beli beépített szerepkörök](../../role-based-access-control/built-in-roles.md) az azure szerepköralapú Access Control (RBAC) dokumentációjában.
+Ne feledje, hogy a házirend létrehozásához hozzá kell rendelnie a Azure Resource Manager **közreműködő** szerepkört a célként megadott Storage-fiók szintjére vagy magasabbra. További információ: [Azure-beli beépített szerepkörök](../../role-based-access-control/built-in-roles.md) az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) dokumentációjában.
 
 A következő táblázat összefoglalja, hogy mely értékeket kell használni a JSON-fájlban a szabályzat-AZONOSÍTÓhoz és a szabály-azonosítóhoz.
 
@@ -284,7 +284,7 @@ A következő lépésekkel konfigurálhatja az objektumok replikálását a cél
 1. Válassza a **replikációs szabályok feltöltése**lehetőséget.
 1. Töltse fel a JSON-fájlt. A Azure Portal megjeleníti a létrehozandó szabályzatot és szabályokat, ahogy az az alábbi képen is látható.
 
-    :::image type="content" source="media/object-replication-configure/replication-rules-upload-portal.png" alt-text="Képernyőfelvétel egy JSON-fájl feltöltéséről a replikációs házirend meghatározásához":::
+    :::image type="content" source="media/object-replication-configure/replication-rules-upload-portal.png" alt-text="A Azure Portal replikációs szabályait ábrázoló képernyőkép":::
 
 1. Válassza a **feltöltés** lehetőséget a replikációs házirend létrehozásához a cél fiókon.
 
@@ -293,7 +293,7 @@ Ezután letöltheti azt a házirend-definíciót tartalmazó JSON-fájlt, amelye
 1. A Azure Portalban navigáljon a cél fiókhoz tartozó **objektum-replikációs** beállításokhoz.
 1. Kattintson a letölteni kívánt szabályzat melletti **további** gombra, majd válassza a **szabályok letöltése**lehetőséget a következő képen látható módon.
 
-    :::image type="content" source="media/object-replication-configure/replication-rules-download-portal.png" alt-text="A replikációs szabályok JSON-fájlba való letöltését bemutató képernyőkép":::
+    :::image type="content" source="media/object-replication-configure/replication-rules-download-portal.png" alt-text="A Azure Portal replikációs szabályait ábrázoló képernyőkép":::
 
 1. Mentse a JSON-fájlt a helyi számítógépre, és ossza meg egy másik felhasználóval, hogy konfigurálja a házirendet a forrás fiókon.
 

@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: 834d3bd3e41be0487a3d05f00846bcb58bfe00a8
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: f39efcbfe7f0094e9481049a1678dba8a045888f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90018186"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714227"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Csatlakozás az Azure IoT Centralhoz
 
@@ -99,13 +99,13 @@ Gyökér-vagy köztes tanúsítvány hozzáadása és ellenőrzése a beléptet�
 
 1. Az **elsődleges tanúsítvány lapon**töltse fel az elsődleges X. 509 tanúsítványt. Ez a legfelső szintű vagy köztes tanúsítvány:
 
-    :::image type="content" source="media/concepts-get-connected/upload-primary-certificate.png" alt-text="Az elsődleges tanúsítvány képernyőképe":::
+    :::image type="content" source="media/concepts-get-connected/upload-primary-certificate.png" alt-text="X. 509 regisztrációs csoport hozzáadása képernyőkép":::
 
-1. Az **ellenőrző kód** segítségével létrehozhat egy ellenőrző kódot a használt eszközön. Ezután válassza az **ellenőrzés** lehetőséget az ellenőrző tanúsítvány feltöltéséhez.
+1. Kattintson az **ellenőrző kód előállítása** elemre az ellenőrző tanúsítvány létrehozásához használt eszköz kódjának létrehozásához. Ezután válassza az **ellenőrzés** lehetőséget az ellenőrző tanúsítvány feltöltéséhez.
 
 1. Ha az ellenőrzés sikeres, a következő megerősítés jelenik meg:
 
-    :::image type="content" source="media/concepts-get-connected/verified-primary-certificate.png" alt-text="Ellenőrzött elsődleges tanúsítvány képernyőképe":::
+    :::image type="content" source="media/concepts-get-connected/verified-primary-certificate.png" alt-text="X. 509 regisztrációs csoport hozzáadása képernyőkép":::
 
 A tanúsítvány tulajdonjogának ellenőrzése biztosítja, hogy a tanúsítványt feltöltő személy rendelkezik a tanúsítvány titkos kulcsával.
 
@@ -147,7 +147,7 @@ A folyamat némileg eltér attól függően, hogy az eszközök SAS-jogkivonatok
 
 1. Másolja a csoport elsődleges kulcsát az **sas-IoT-Devices** beléptetési csoportból:
 
-    :::image type="content" source="media/concepts-get-connected/group-primary-key.png" alt-text="Elsődleges kulcs csoportosítása SAS-IoT-Devices beléptetési csoportból":::
+    :::image type="content" source="media/concepts-get-connected/group-primary-key.png" alt-text="X. 509 regisztrációs csoport hozzáadása képernyőkép":::
 
 1. Az `az iot central device compute-device-key` eszköz sas-kulcsainak létrehozásához használja az parancsot. Használja az előző lépésben a csoport elsődleges kulcsát. Az eszköz azonosítóinak kisbetűvel kell rendelkezniük:
 
@@ -299,7 +299,7 @@ Ha az eszköz nem tudja használni a támogatott protokollokat, az Azure IoT Edg
 
 Az eszközök és az Azure-IoT Central között kicserélt összes adatforgalom titkosítva van. IoT Hub minden olyan eszközről hitelesíti a kérelmet, amely az eszközre irányuló IoT Hub végpontokhoz csatlakozik. A hitelesítő adatok vezetéken keresztüli cseréjének elkerüléséhez az eszköz aláírt jogkivonatokat használ a hitelesítéshez. További információ: [IoT hub hozzáférésének szabályozása](../../iot-hub/iot-hub-devguide-security.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha Ön egy eszköz fejlesztője, néhány javasolt lépés a következő:
 

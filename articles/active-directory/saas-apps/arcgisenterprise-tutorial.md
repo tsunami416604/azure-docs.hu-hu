@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2018
 ms.author: jeedes
-ms.openlocfilehash: a544a98b3a9d5c2d30f95240325e91018d2f40c9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: fc0303cc4ba00f873ecfea7b02047ebd1bff7da1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549610"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713873"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-enterprise"></a>Oktatóanyag: Azure Active Directory integráció a ArcGIS Enterprise-nal
 
@@ -104,7 +104,7 @@ Az Azure AD egyszeri bejelentkezés az [alkalmazásnév] használatával törté
 
 4. Az **alapszintű SAML-konfiguráció** szakaszban hajtsa végre az alábbi lépéseket, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni:
 
-    ![ArcGIS vállalati tartomány és URL-címek egyszeri bejelentkezési adatai](common/idp-intiated.png)
+    ![A képernyőfelvételen az alapszintű SAML-konfiguráció látható, ahol megadható az azonosító, a válasz U R L, majd a Mentés elemre.](common/idp-intiated.png)
 
     a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `<EXTERNAL_DNS_NAME>.portal`
 
@@ -112,7 +112,7 @@ Az Azure AD egyszeri bejelentkezés az [alkalmazásnév] használatával törté
 
     c. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    ![ArcGIS vállalati tartomány és URL-címek egyszeri bejelentkezési adatai](common/metadata-upload-additional-signon.png)
+    ![Képernyőfelvétel: további U R ls beállítása, ahol megadhatja a bejelentkezést az U R L-ben.](common/metadata-upload-additional-signon.png)
 
     A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://<EXTERNAL_DNS_NAME>/portal/sharing/rest/oauth2/saml/signin`
 
@@ -138,19 +138,19 @@ Az Azure AD egyszeri bejelentkezés az [alkalmazásnév] használatával törté
 
 1. Válassza a **szervezet >beállítások szerkesztése**lehetőséget.
 
-    ![ArcGIS vállalati konfiguráció](./media/arcgisenterprise-tutorial/configure1.png)
+    ![A képernyőképen a ArcGIS Enterprise Organization (vállalati szervezet) lap jelenik meg, amely a szerkesztési beállításokat tartalmazza.](./media/arcgisenterprise-tutorial/configure1.png)
 
 1. Válassza a **Biztonság** fület.
 
-    ![ArcGIS vállalati konfiguráció](./media/arcgisenterprise-tutorial/configure2.png)
+    ![Képernyőfelvétel: a Biztonság lap van kiválasztva.](./media/arcgisenterprise-tutorial/configure2.png)
 
 1. Görgessen le a **vállalati bejelentkezések SAML használatával** szakaszban, és válassza a **vállalati bejelentkezés beállítása**lehetőséget.
 
-    ![ArcGIS vállalati konfiguráció](./media/arcgisenterprise-tutorial/configure3.png)
+    ![A képernyőképen a vállalati bejelentkezések az SAML-n keresztül láthatók, ahol kiválaszthatja a vállalati bejelentkezés beállítása lehetőséget.](./media/arcgisenterprise-tutorial/configure3.png)
 
 1. Az **identitás-szolgáltató beállítása** szakaszban hajtsa végre a következő lépéseket:
 
-    ![ArcGIS vállalati konfiguráció](./media/arcgisenterprise-tutorial/configure4.png)
+    ![A képernyőképen az itt ismertetett lépéseket követve állíthatja be az identitás-szolgáltatót.](./media/arcgisenterprise-tutorial/configure4.png)
 
     a. Adjon meg egy nevet, például **Azure Active Directory tesztet** a **Name (név** ) szövegmezőben.
 
@@ -158,7 +158,7 @@ Az Azure AD egyszeri bejelentkezés az [alkalmazásnév] használatával törté
 
     c. Kattintson a **Speciális beállítások megjelenítése** elemre, és másolja be az **entitás-azonosító** értékét, és illessze be az **azonosító** szövegmezőbe a **ArcGIS Enterprise domain és URLs** szakaszának Azure Portal.
     
-    ![ArcGIS vállalati konfiguráció](./media/arcgisenterprise-tutorial/configure5.png)
+    ![Képernyőfelvétel: a D entitás beszerzése és az azonosítási szolgáltató frissítése.](./media/arcgisenterprise-tutorial/configure5.png)
 
     d. Kattintson az **identitás-szolgáltató frissítése**elemre.
 
@@ -185,7 +185,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

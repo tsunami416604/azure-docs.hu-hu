@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: lcozzens
-ms.openlocfilehash: 10510774409a6b75687086290b32885b30d9131a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ef4633953f7ac03737608124309d94e436913794
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91335381"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715450"
 ---
 # <a name="azure-app-configuration-faq"></a>Azure-alkalmazás konfigurálása – gyakori kérdések
 
@@ -94,7 +94,7 @@ A következő szempontok a rétegek kiválasztására vonatkoznak.
     A standard szintű tárolók esetében az első 200 000-kérelmeket naponta felszámítjuk. A további kérések számlázása a túlterhelésnek megfelelően történik.
 
 - **Szolgáltatói szerződés**: a standard szint 99,9%-os rendelkezésre állást biztosít. Az ingyenes szint nem rendelkezik SLA-val.
-- **Biztonsági funkciók**: mindkét réteg tartalmaz alapszintű biztonsági funkciókat, beleértve a Microsoft által kezelt kulcsokkal történő titkosítást, a HMAC vagy a Azure Active Directory, a RBAC-támogatás és a felügyelt identitás használatával történő hitelesítést. A standard szint fejlettebb biztonsági funkciókat kínál, többek között a privát kapcsolatok támogatását és a titkosítást az ügyfél által felügyelt kulcsokkal.
+- **Biztonsági funkciók**: mindkét réteg tartalmaz alapszintű biztonsági funkciókat, beleértve a Microsoft által felügyelt kulcsokkal való titkosítást, a HMAC vagy a Azure Active Directory, az Azure RBAC-támogatás és a felügyelt identitás használatával történő hitelesítést. A standard szint fejlettebb biztonsági funkciókat kínál, többek között a privát kapcsolatok támogatását és a titkosítást az ügyfél által felügyelt kulcsokkal.
 - **Költség**: a standard szintű tárolók napi használati díjat számítanak fel. A napi kiosztást megelőzően a kérések túlterhelését is felszámítjuk. Ingyenes szintű tároló használata díjmentes.
 
 ## <a name="can-i-upgrade-a-store-from-the-free-tier-to-the-standard-tier-can-i-downgrade-a-store-from-the-standard-tier-to-the-free-tier"></a>Frissíthetek áruházat az ingyenes szintről a standard szintre? Visszaválthatok egy áruházat a standard szintről az ingyenes szintre?
@@ -130,6 +130,6 @@ Fizessen elő a [GitHub-hirdetmények](https://github.com/Azure/AppConfiguration
 
 Közvetlenül a [githubon](https://github.com/Azure/AppConfiguration/issues)érhet el minket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Tudnivalók az Azure App Configurationről](./overview.md)

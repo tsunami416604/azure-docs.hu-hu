@@ -73,7 +73,7 @@
           href: time-series-insights-update-query-data-csharp.md
         - name: Adatok lekérdezése a C# használatával – Gen1
           href: time-series-insights-query-data-csharp.md
-        - name: Referenciaadatok kezelése a C#-ban
+        - name: Referenciaadatok kezelése a C#-ban – Gen1
           href: time-series-insights-manage-reference-data-csharp.md
         - name: Egyéni nézet megosztása
           href: time-series-insights-parameterized-urls.md

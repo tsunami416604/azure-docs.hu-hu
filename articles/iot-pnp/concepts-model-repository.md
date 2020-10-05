@@ -7,16 +7,16 @@ ms.date: 07/24/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: c82858294054b50d6edae42a3d41e9fcb89ca89d
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 5d07257d1e23ee792aa996e31a2c28c17bc23d34
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91577798"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715071"
 ---
-# <a name="azure-iot-model-repository"></a>Azure IoT-modell adattár
+# <a name="azure-iot-model-repository"></a>Azure IoT-modelladattár
 
-Az Azure IoT Model repository lehetővé teszi az eszközök építői számára a IoT Plug and Play eszköz modelljeinek felügyeletét és megosztását. Az eszköz modelljei a [digitális Twins modellezési nyelv (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)használatával meghatározott JSON ld-dokumentumok. A Model repository szolgáltatásban tárolt modellek a hozzáférés-vezérléssel vagy nyilvánosan, a IoT Plug and Play felhőalapú megoldás integrálásához és fejlesztéséhez szükséges hitelesítés nélkül is megoszthatók a megoldás-fejlesztőknek.
+Az Azure IoT modelladattárral az eszközkészítők IoT Plug and Play-eszközmodelleket kezelhetnek és oszthatnak meg. Az eszköz modelljei a [digitális Twins modellezési nyelv (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)használatával meghatározott JSON ld-dokumentumok. A Model repository szolgáltatásban tárolt modellek a hozzáférés-vezérléssel vagy nyilvánosan, a IoT Plug and Play felhőalapú megoldás integrálásához és fejlesztéséhez szükséges hitelesítés nélkül is megoszthatók a megoldás-fejlesztőknek.
 
 > [!NOTE]
 > Az eszközök építői dönthetnek úgy, hogy közvetlenül egy eszközön, modulok használatával vagy egy IoT Edge modulban implementálják a IoT Plug and Play eszköz modelljeit.
@@ -48,7 +48,7 @@ var httpClient = new HttpClient();
 httpClient.BaseAddress = new Uri("https://repo.azureiotrepository.com");
 
 var modelId = "dtmi:com:mxchip:model;1";
-var response = await httpClient.GetAsync($"/models/{modelId}?api-version=2020-09-30").ConfigureAwait(false);
+var response = await httpClient.GetAsync($"/models/{modelId}?api-version=2020-05-01-preview").ConfigureAwait(false);
 ```
 
 Egy nyilvános modell parancssori felülettel való megtekintéséhez tekintse meg az Azure CLI [Get Model](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-show&preserve-view=true) parancsot.
@@ -118,7 +118,7 @@ Ha a REST API használatával szeretne megtekinteni egy vállalatot vagy közös
 
 ```csharp
 var modelId = "dtmi:com:mxchip:model;1";
-var response = await httpClient.GetAsync($"/models/{modelId}?api-version=2020-09-30").ConfigureAwait(false);
+var response = await httpClient.GetAsync($"/models/{modelId}?api-version=2020-05-01-preview").ConfigureAwait(false);
 ```
 
 Ha a parancssori felület használatával szeretné megtekinteni a vállalati modellt vagy a megosztott modellt, tekintse meg az Azure CLI [Get Model](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-show&preserve-view=true) parancsot.
@@ -164,22 +164,22 @@ Modell feltöltéséhez a REST API használatával tekintse meg a [Model API lé
 ```csharp
 var httpContent = new StringContent(jsonLdModel, Encoding.UTF8, "application/json");
 var modelId = "dtmi:com:mxchip:model;1";
-var response = await httpClient.PutAsync($"/models/{modelId}?api-version=2020-09-30", httpContent).ConfigureAwait(false);
+var response = await httpClient.PutAsync($"/models/{modelId}?api-version=2020-05-01-preview", httpContent).ConfigureAwait(false);
 ```
 
 Ha a parancssori felület használatával szeretne feltölteni egy modellt, tekintse meg az Azure CLI [modell létrehozása](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-create&preserve-view=true) parancsot.
 
 ### <a name="publish-a-model"></a>Modell közzététele
 
-Modell közzétételéhez a következő követelményeknek kell teljesülniük:
+Modell közzétételéhez az alábbi követelményeknek kell megfelelni:
 
-1. A modell közzétételéhez a szervezetnek a [Microsoft Partner Network](https://docs.microsoft.com/partner-center/) tagjának kell lennie. A partner Center-fiók létrehozásával kapcsolatban lásd: [partner Center-fiók létrehozása](https://docs.microsoft.com/partner-center/mpn-create-a-partner-center-account). A fiók jóváhagyása után közzéteheti a modelleket. További információ: a [partner Center gyakori kérdései](https://support.microsoft.com/help/4340639/partner-center-account-faqs).
+1. Modell közzétételéhez a szervezetének a [Microsoft Partner Network](https://docs.microsoft.com/partner-center/) tagjának kell lennie. Partnerközpontfiók létrehozásához lásd: [Partnerközpontfiók létrehozása](https://docs.microsoft.com/partner-center/mpn-create-a-partner-center-account). A fiók jóváhagyása után közzéteheti a modelleket. További információért lásd a [Partnerközponttal kapcsolatos gyakori kérdéseket](https://support.microsoft.com/help/4340639/partner-center-account-faqs).
 
 2. A felhasználónak az adattár bérlője *közzétevői* szerepkör tagjának kell lennie.
 
 A szervezeten belüli felhasználók által létrehozott és közzétett modellek *közzétett modellként*láthatók. Ezek a modellek nyilvánosak, és a **nyilvános modellekben**bárki megtalálhatja őket.
 
-Modell közzététele a portál használatával:
+Modell közzététele a portálon:
 
 1. Jelentkezzen be az [Azure IoT Model adattár-portálra](https://aka.ms/iotmodelrepo).
 

@@ -18,6 +18,8 @@
       items:
         - name: Céltárak hozzáadása
           href: hpc-cache-add-storage.md
+        - name: Névtérelérési utak hozzáadása
+          href: add-namespace-paths.md
         - name: Adatok áthelyezése céltárakba (ha szükséges)
           items:
             - name: Az új blobtároló előzetes betöltése
@@ -42,8 +44,6 @@
   items:
     - name: Azure CLI
       href: /cli/azure/ext/hpc-cache/hpc-cache
-    - name: Azure PowerShell
-      href: /powershell/module/Az.HPCCache
 - name: További források
   items:
     - name: Támogatási jegy megnyitása

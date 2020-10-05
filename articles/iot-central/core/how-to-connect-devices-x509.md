@@ -7,12 +7,12 @@ ms.date: 08/12/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 6de711567e87bcdd1e58185f90264d0c9aecdfde
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 22d86b96b7d9493ecc2f734be3f677a270a2739a
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91343872"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714265"
 ---
 # <a name="how-to-connect-devices-with-x509-certificates-using-nodejs-device-sdk-for-iot-central-application"></a>X. 509 tanúsítvánnyal rendelkező eszközök csatlakoztatása a IoT Central alkalmazáshoz készült Node.js eszközoldali SDK-val
 
@@ -30,35 +30,34 @@ Ez a cikk két módszert mutat be az X. 509 – [csoportos regisztrációk](how-
 
 Használjon X. 509 tanúsítványokat egy csoportos regisztrációval éles környezetben. A csoportos regisztráció során adjon hozzá egy gyökérszintű vagy köztes X. 509 tanúsítványt a IoT Central alkalmazáshoz. A legfelső szintű vagy köztes tanúsítványból származtatott levél tanúsítvánnyal rendelkező eszközök csatlakozhatnak az alkalmazáshoz.
 
-
 ## <a name="generate-root-and-device-cert"></a>Gyökér-és eszköz-tanúsítvány előállítása
 
-Ebben a szakaszban egy X. 509 tanúsítványt fog használni egy olyan eszköz csatlakoztatásához, amely a beléptetési csoport tanúsítványa alapján származtatott tanúsítvánnyal rendelkezik, amely képes csatlakozni a IoT Central alkalmazáshoz.
+Ebben a szakaszban egy X. 509 tanúsítvány használatával csatlakozik egy olyan eszközhöz, amely a beléptetési csoport tanúsítványa alapján származtatott tanúsítvánnyal rendelkezik, amely csatlakozhat a IoT Central alkalmazáshoz.
 
 > [!WARNING]
-> Az X. 509 tanúsítványok létrehozásának így csak tesztelésre van lehetőségük. Éles környezetben a tanúsítvány generálásához a hivatalos, biztonságos mechanizmust kell használnia.
+> Az X. 509 tanúsítványok létrehozásának így csak tesztelésre van lehetőség. Éles környezetben a tanúsítvány generálásához a hivatalos, biztonságos mechanizmust kell használnia.
 
 1. Nyisson meg egy parancssort. A tanúsítvány-létrehozási parancsfájlok GitHub-tárházának klónozása:
-    
+
     ```cmd/sh
     git clone https://github.com/Azure/azure-iot-sdk-node.git
     ```
 
-2. Navigáljon a Certificate Generator parancsfájlhoz, és telepítse a szükséges csomagokat:
+1. Navigáljon a Certificate Generator parancsfájlhoz, és telepítse a szükséges csomagokat:
 
     ```cmd/sh
     cd azure-iot-sdk-node/provisioning/tools
     npm install
     ```
 
-3. Hozzon létre egy főtanúsítványt, majd származtatja az eszköz tanúsítványát a szkript futtatásával. Ügyeljen arra, hogy csak kisbetűs alfanumerikus karaktereket és kötőjeleket használjon a tanúsítvány neveként.
+1. Hozzon létre egy főtanúsítványt, majd származtatja az eszköz tanúsítványát a szkript futtatásával. Ügyeljen arra, hogy csak kisbetűs alfanumerikus karaktereket és kötőjeleket használjon a tanúsítvány neveként:
 
     ```cmd/sh
     node create_test_cert.js root mytestrootcert
     node create_test_cert.js device mytestdevice mytestrootcert
     ```
 
-Ez három fájlt hoz létre a gyökérhez és az eszköz tanúsítványához.
+Ezek a parancsok három fájlt hoznak létre a gyökérhez és az eszköz tanúsítványához.
 
 fájlnév | tartalmát
 -------- | --------
@@ -66,57 +65,47 @@ fájlnév | tartalmát
 \<name\>_key. PEM | Az X509-tanúsítvány titkos kulcsa
 \<name\>_fullchain. PEM | Az X509-tanúsítvány teljes kulcstartója.
 
-
 ## <a name="create-a-group-enrollment"></a>Csoportos regisztráció létrehozása
 
+1. Nyissa meg IoT Central alkalmazást, és a bal oldali ablaktáblában navigáljon a **felügyelet**  elemre, és válassza az **eszköz-kapcsolódás**lehetőséget.
 
-1. Most nyissa meg IoT Central alkalmazást, és a bal oldali ablaktáblán navigáljon a **felügyelet**  elemre, majd kattintson az **eszköz csatlakoztatása**elemre. 
+1. Válassza a **+ beléptetési csoport létrehozása**lehetőséget, és hozzon létre egy új, _MyX509Group_ nevű regisztrációs csoportot tanúsítványok igazolási típusával **(X. 509)**.
 
-2. Válassza a + **beléptetési csoport létrehozása**lehetőséget, és hozzon létre egy új, _MyX509Group_ nevű regisztrációs csoportot tanúsítványok igazolási típusával **(X. 509)**:
+1. Nyissa meg a létrehozott beléptetési csoportot, és válassza az **elsődleges kezelése**lehetőséget.
 
-
-3. Nyissa meg a létrehozott beléptetési csoportot, és kattintson az **elsődleges kezelése**elemre. 
-
-4. Válassza a fájl lehetőséget, és töltse fel a korábban létrehozott _mytestrootcert_cert. PEM_ nevű főtanúsítvány-fájlt:
-
+1. Válassza a fájl lehetőséget, és töltse fel a korábban létrehozott _mytestrootcert_cert. PEM_ nevű főtanúsítvány-fájlt:
 
     ![Tanúsítvány feltöltése](./media/how-to-connect-devices-x509/certificate-upload.png)
 
-
-
-5. Az ellenőrzés elvégzéséhez másolja az ellenőrző kódot, és hozzon létre egy X. 509 ellenőrző tanúsítványt az adott kóddal a parancssorban.
+1. Az ellenőrzés befejezéséhez hozza létre az ellenőrző kódot, másolja, majd használja egy X. 509 ellenőrző tanúsítvány létrehozásához a parancssorban:
 
     ```cmd/sh
     node create_test_cert.js verification --ca mytestrootcert_cert.pem --key mytestrootcert_key.pem --nonce  {verification-code}
     ```
 
-6. Töltse fel az aláírt ellenőrző tanúsítványt _verification_cert. PEM_ -ra az ellenőrzés befejezéséhez.
+1. Töltse fel az aláírt ellenőrző tanúsítványt _verification_cert. PEM_ az ellenőrzés befejezéséhez:
 
     ![Ellenőrzött tanúsítvány](./media/how-to-connect-devices-x509/verified.png)
 
-
 Mostantól az elsődleges főtanúsítványból származtatott X. 509 tanúsítvánnyal rendelkező eszközöket is összekapcsolhat. A beléptetési csoport mentése után jegyezze fel az azonosító hatókörét.
-
 
 ## <a name="run-sample-device-code"></a>Minta eszköz kódjának futtatása
 
+1. Az Azure IoT Central alkalmazásban válassza az **eszközök**lehetőséget, és hozzon létre egy új eszközt a _mytestdevice_ , mint a **környezeti érzékelő** eszközének **azonosítóját** .
 
-1. Az Azure IoT Central alkalmazásban kattintson az **eszközök**elemre, és hozzon létre egy új eszközt a _mytestdevice_ , mint az **eszköz azonosítóját** a környezeti érzékelő eszköz sablonjában.
+1. Másolja a _mytestdevice_key. PEM_ és a _mytestdevice_cert. pem_ fájlokat a _environmentalSensor.js_ alkalmazást tartalmazó mappába. Ezt az alkalmazást az [eszköz csatlakoztatása (Node.js) oktatóanyag](./tutorial-connect-device-nodejs.md)befejezése után hozta létre.
 
-
-2. Másolja a _mytestdevice_key. PEM_ és a _mytestdevice_cert. PEM_ mappát arra a mappába, amely a _environmentalSensor.js_ alkalmazást tartalmazza az [eszköz csatlakoztatása (Node.js) oktatóanyag](./tutorial-connect-device-nodejs.md)befejezése után.
-
-3. Navigáljon a environmentalSensor.js alkalmazást tartalmazó mappához, és futtassa a következő parancsot az X. 509 csomag telepítéséhez:
+1. Navigáljon a environmentalSensor.js alkalmazást tartalmazó mappához, és futtassa a következő parancsot az X. 509 csomag telepítéséhez:
 
     ```cmd/sh
     npm install azure-iot-security-x509 --save
     ```
 
-4. Szerkessze a **environmentalSensor.js** fájlt.
-    - Cserélje le az `idScope` értéket az **azonosító hatókörre** , amelyet korábban jegyzett készített 
+1. Szerkessze a **environmentalSensor.js** fájlt.
+    - Cserélje le az `idScope` értéket az **azonosító hatókörre** , amelyet korábban jegyzett készített.
     - `registrationId`Az értéket cserélje le a értékre `mytestdevice` .
 
-5. Szerkessze az `require` utasításokat a következőképpen:
+1. Szerkessze az `require` utasításokat a következőképpen:
 
     ```javascript
     var iotHubTransport = require('azure-iot-device-mqtt').Mqtt;
@@ -128,7 +117,7 @@ Mostantól az elsődleges főtanúsítványból származtatott X. 509 tanúsítv
     var X509Security = require('azure-iot-security-x509').X509Security;
     ```
 
-6. Szerkessze az ügyfelet létrehozó szakaszt a következőképpen:
+1. Szerkessze az ügyfelet létrehozó szakaszt a következőképpen:
 
     ```javascript
     var provisioningHost = 'global.azure-devices-provisioning.net';
@@ -141,7 +130,7 @@ Mostantól az elsődleges főtanúsítványból származtatott X. 509 tanúsítv
     var hubClient;
     ```
 
-7. A következő lépésekkel módosíthatja a kapcsolatokat megnyitó szakaszt:
+1. A következő lépésekkel módosíthatja a kapcsolatokat megnyitó szakaszt:
 
    ```javascript
     var connectionString = 'HostName=' + result.assignedHub + ';DeviceId=' + result.deviceId + ';x509=true';
@@ -149,11 +138,11 @@ Mostantól az elsődleges főtanúsítványból származtatott X. 509 tanúsítv
     hubClient.setOptions(deviceCert);
     ```
 
-8. Futtassa a szkriptet, és ellenőrizze, hogy az eszköz sikeresen lett-e kiépítve.
+1. Futtassa a szkriptet, és győződjön meg róla, hogy az eszközt sikeresen kiosztották:
 
     ```cmd/sh
     node environmentalSensor.js
-    ```   
+    ```
 
     Azt is ellenőrizheti, hogy a telemetria megjelenik-e az irányítópulton.
 
@@ -165,10 +154,9 @@ Az eszköz és a megoldás teszteléséhez használjon X. 509 tanúsítványokat
 
 ## <a name="generate-self-signed-device-cert"></a>Önaláírt eszköz tanúsítványának előállítása
 
+Ebben a szakaszban egy önaláírt X. 509 tanúsítványt használ az eszközök egyéni regisztrációhoz való csatlakoztatásához, amelyek egyetlen eszköz regisztrálására szolgálnak. Az önaláírt tanúsítványok csak tesztelésre szolgálnak.
 
-Ebben a szakaszban egy önaláírt X. 509 tanúsítványt fog használni az eszközök egyéni regisztrációhoz való csatlakoztatásához, amely egyetlen eszköz regisztrálására szolgál. Az önaláírt tanúsítványok csak tesztelésre szolgálnak.
-
-Hozzon létre egy önaláírt X. 509 eszköz-tanúsítványt a szkript futtatásával. Ügyeljen arra, hogy csak kisbetűs alfanumerikus karaktereket és kötőjeleket használjon a tanúsítvány neveként.
+Hozzon létre egy önaláírt X. 509 eszköz-tanúsítványt a szkript futtatásával. Ügyeljen arra, hogy csak kisbetűs alfanumerikus karaktereket és kötőjeleket használjon a tanúsítvány neveként:
 
   ```cmd/sh
     cd azure-iot-sdk-node/provisioning/tools
@@ -178,46 +166,43 @@ Hozzon létre egy önaláírt X. 509 eszköz-tanúsítványt a szkript futtatás
 
 ## <a name="create-individual-enrollment"></a>Egyéni regisztráció létrehozása
 
-1. Az Azure IoT Central alkalmazásban válassza az **eszközök**lehetőséget, majd hozzon létre egy **Device ID** új eszközt az _mytestselfcertprimary_ a környezeti érzékelő eszköz sablonjában. Jegyezze fel az **azonosító hatókörét**
+1. Az Azure IoT Central alkalmazásban válassza az **eszközök**lehetőséget, majd hozzon létre egy **Device ID** új eszközt az _mytestselfcertprimary_ a környezeti érzékelő eszköz sablonjában. Jegyezze fel az **azonosító hatókörét**, amelyet később használni fog.
 
-2. Nyissa meg a létrehozott eszközt, és válassza a **Csatlakoztatás** lehetőséget.
+1. Nyissa meg a létrehozott eszközt, és válassza a **Csatlakoztatás**lehetőséget.
 
-3. Válassza az **Egyéni regisztrációk** lehetőséget, mint a csatlakozási módszert és a **tanúsítványokat (X. 509)** mechanizmusként.
+1. Válassza az **Egyéni regisztrációk** a **csatlakozási módszer** és a **tanúsítványok (X. 509)** lehetőséget a következő mechanizmusként:
 
     ![Egyéni regisztráció](./media/how-to-connect-devices-x509/individual-device-connect.png)
 
+1. Válassza a fájl lehetőséget az elsődleges területen, és töltse fel a korábban létrehozott _mytestselfcertprimary_cert. PEM_ nevű tanúsítványfájl-fájlt.
 
-4. Válassza a fájl lehetőséget az elsődleges területen, és töltse fel a korábban létrehozott _mytestselfcertprimary_cert. PEM_ nevű tanúsítványfájl-fájlt. 
-
-5. Válassza a fájl lehetőséget a másodlagos tanúsítványhoz, és töltse fel a _mytestselfcertsecondary_cert. PEM_ nevű tanúsítványfájl-fájlt. Ezután válassza a **Mentés** lehetőséget.
+1. Válassza a fájl lehetőséget a másodlagos tanúsítványhoz, és töltse fel a _mytestselfcertsecondary_cert. PEM_ nevű tanúsítványfájl-fájlt. Ezután válassza a **Mentés**lehetőséget:
 
     ![Egyéni beléptetési tanúsítvány feltöltése](./media/how-to-connect-devices-x509/individual-enrollment.png)
 
 Az eszköz most már X. 509 tanúsítvánnyal lett kiépítve.
 
-
-
 ## <a name="run-a-sample-individual-enrollment-device"></a>Minta egyéni beléptetési eszköz futtatása
 
-1. Másolja a _mytestselfcertprimary_key. PEM_ és a _mytestselfcertprimary_cert. PEM_mappát arra a mappára, amely a environmentalSensor.js alkalmazást tartalmazza, amikor befejezte az [eszköz csatlakoztatása (Node.js) oktatóanyagot](./tutorial-connect-device-nodejs.md).
+1. Másolja a _mytestselfcertprimary_key. PEM_ és a _mytestselfcertprimary_cert. pem_ fájlokat a environmentalSensor.js alkalmazást tartalmazó mappába. Ezt az alkalmazást az [eszköz csatlakoztatása (Node.js) oktatóanyag](./tutorial-connect-device-nodejs.md)befejezése után hozta létre.
 
-
-2. Szerkessze a **environmentalSensor.js** fájlt az alábbiak szerint, és mentse.
+1. Szerkessze a **environmentalSensor.js** fájlt az alábbiak szerint, és mentse.
     - Cserélje le az `idScope` értéket az **azonosító hatókörre** , amelyet korábban jegyzett készített.
     - `registrationId`Az értéket cserélje le a értékre `mytestselfcertprimary` .
     - A **var deviceCert** a következőképpen cserélje le:
-    ```cmd\sh
-    var deviceCert = {
-    cert: fs.readFileSync('mytestselfcertprimary_cert.pem').toString(),
-    key: fs.readFileSync('mytestselfcertprimary_key.pem').toString()
-    };
-    ```
 
-3. Futtassa a szkriptet, és ellenőrizze, hogy az eszköz sikeresen lett-e kiépítve.
+        ```javascript
+        var deviceCert = {
+        cert: fs.readFileSync('mytestselfcertprimary_cert.pem').toString(),
+        key: fs.readFileSync('mytestselfcertprimary_key.pem').toString()
+        };
+        ```
+
+1. Futtassa a szkriptet, és győződjön meg róla, hogy az eszközt sikeresen kiosztották:
 
     ```cmd/sh
     node environmentalSensor.js
-    ```   
+    ```
 
     Azt is ellenőrizheti, hogy a telemetria megjelenik-e az irányítópulton.
 
@@ -225,7 +210,6 @@ Az eszköz most már X. 509 tanúsítvánnyal lett kiépítve.
 
 A fenti lépéseket a _mytestselfcertsecondary_ -tanúsítványhoz is megismételheti.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megismerte, hogyan csatlakoztathatók az eszközök az X. 509 tanúsítványokkal, a javasolt következő lépés az [eszköz kapcsolatának figyelése az Azure CLI használatával](howto-monitor-devices-azure-cli.md)
-

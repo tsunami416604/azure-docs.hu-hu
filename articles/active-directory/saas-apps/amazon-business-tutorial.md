@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 0db43f438eaff3e783b829eabe7152c5f13e943d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 659cca6979a8d8be7d12c49fe01a9d0a5d7ac58e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548291"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713755"
 ---
 # <a name="tutorial-integrate-amazon-business-with-azure-active-directory"></a>Oktatóanyag: az Amazon Business integrálása a Azure Active Directory
 
@@ -101,19 +101,19 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható. Az attribútumok szerkesztéséhez kattintson a **Szerkesztés** ikonra a **felhasználói attribútumok & jogcímek** szakaszban.
 
-    ![Attribútumok](media/amazon-business-tutorial/map-attribute3.png)
+    ![Képernyőfelvétel: felhasználói attribútumok & alapértelmezett értékekkel rendelkező jogcímek, például givenName user. givenName és EmailAddress user. mail.](media/amazon-business-tutorial/map-attribute3.png)
 
 1. Szerkessze az attribútumokat, és másolja a **névtér** értékét a Jegyzettömbbe.
 
-    ![Attribútumok](media/amazon-business-tutorial/map-attribute4.png)
+    ![Képernyőfelvétel: felhasználói attribútumok & jogcímek a jogcím neve és értéke oszlopokkal.](media/amazon-business-tutorial/map-attribute4.png)
 
 1. A fentieken kívül az Amazon Business Application néhány további attribútumot vár az SAML-válaszba való visszatéréshez. A **csoport jogcímek** párbeszédpanel **felhasználói attribútumok & jogcímek** szakaszában hajtsa végre a következő lépéseket:
 
     a. Kattintson a **kérelemben visszaadott csoportok**melletti **tollra** .
 
-    ![image](./media/amazon-business-tutorial/config04.png)
+    ![A képernyőképen a felhasználói attribútumok & jogcímek szerepelnek a jogcímek beállításban visszaadott csoportok ikonjával.](./media/amazon-business-tutorial/config04.png)
 
-    ![image](./media/amazon-business-tutorial/config05.png)
+    ![A képernyőfelvétel az ebben az eljárásban leírt értékekkel rendelkező csoportos jogcímeket jeleníti meg.](./media/amazon-business-tutorial/config05.png)
 
     b. Válassza az **összes csoport** lehetőséget a választógombok listájáról.
 
@@ -145,54 +145,54 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Az **egyszeri bejelentkezés beállítása** varázslóban válassza ki a szolgáltatót a szervezeti követelményeknek megfelelően, és kattintson a **tovább**gombra.
 
-    ![Alapértelmezett csoport](media/amazon-business-tutorial/default-group1.png)
+    ![A képernyőképen az S S O beállítása látható, Microsoft Azure A D és a következő kijelölése után.](media/amazon-business-tutorial/default-group1.png)
     
     > [!NOTE]
     > Bár a Microsoft ADFS egy felsorolt lehetőség, nem fog működni az Azure AD SSO-val.
 
 1. Az **új felhasználói fiók alapértelmezései** varázslóban válassza ki az **alapértelmezett csoportot** , majd válassza ki az **alapértelmezett felvásárlási szerepkört** a szervezet felhasználói szerepköre szerint, és kattintson a **tovább**gombra.
 
-    ![Alapértelmezett csoport](media/amazon-business-tutorial/dafault-group2.png)
+    ![A képernyőképen az új felhasználói fiók alapértelmezései láthatók a Microsoft S O-vel, az igényléssel és a következő kijelöléssel.](media/amazon-business-tutorial/dafault-group2.png)
 
 1. A **metaadat-fájl feltöltése** varázslóban kattintson a **Tallózás** gombra a **metaadatok XML-** fájljának feltöltéséhez, amelyet a Azure Portal letöltött, majd kattintson a **feltöltés**gombra.
 
-    ![Kapcsolatok adatvédelme](media/amazon-business-tutorial/connection-data1.png)
+    ![A képernyőfelvételen a metaadat-fájl feltöltése látható, amely lehetővé teszi, hogy megkeresse az x m l-fájlt, és töltse fel.](media/amazon-business-tutorial/connection-data1.png)
 
 1. A letöltött metaadat-fájl feltöltése után a rendszer automatikusan feltölti a **kapcsolatok adatai** szakaszban található mezőket. Ezután kattintson a **tovább**gombra.
 
-    ![Kapcsolatok adatvédelme](media/amazon-business-tutorial/connection-data2.png)
+    ![A képernyőfelvételen A kapcsolatok adatai láthatók, ahol megadhatja az Azure D azonosítóját, A login U R L és az SAML aláíró tanúsítványát.](media/amazon-business-tutorial/connection-data2.png)
 
 1. A **Attribute utasítás feltöltése** varázslóban kattintson a **kihagyás**gombra.
 
-    ![Attribútumok](media/amazon-business-tutorial/map-attribute1.png)
+    ![A képernyőfelvételen a Attribute utasítás feltöltése látható, amely lehetővé teszi, hogy megkeresse az attribútumok utasításait, de ebben az esetben válassza a Kihagyás lehetőséget.](media/amazon-business-tutorial/map-attribute1.png)
 
 1. Az **attribútum-hozzárendelési** varázslóban adja hozzá a követelmény mezőket a **+ mező hozzáadása** lehetőségre kattintva. Adja hozzá az attribútumok értékeit, beleértve a névteret is, amelyet a Azure Portal a **SAML-AttributeName** mezőbe másolt **felhasználói attribútumok & a jogcímek** szakasza alapján, majd kattintson a **tovább**gombra.
 
-    ![Attribútumok](media/amazon-business-tutorial/map-attribute2.png)
+    ![A képernyőképen az attribútumok leképezése látható, ahol szerkesztheti az Amazon-adatsaml-attribútumok nevét.](media/amazon-business-tutorial/map-attribute2.png)
 
 1. Az **Amazon-adatkapcsolatok** varázslóban kattintson a **tovább**gombra.
 
-    ![Kapcsolat](media/amazon-business-tutorial/amazon-connect.png)
+    ![Képernyőfelvétel: az Amazon-kapcsolódási adatforrások, ahol a Tovább gombra kattintva folytathatja a folytatást.](media/amazon-business-tutorial/amazon-connect.png)
 
 1. Ellenőrizze a konfigurált lépések **állapotát** , és kattintson a **tesztelés megkezdése**elemre.
 
-    ![Kapcsolat](media/amazon-business-tutorial/sso-connection1.png)
+    ![A képernyőképen az S S O kapcsolat részletei láthatók a tesztelés megkezdésének lehetőségével.](media/amazon-business-tutorial/sso-connection1.png)
 
 1. Az **SSO-kapcsolatok tesztelése** varázslóban kattintson a **teszt**elemre.
 
-    ![Kapcsolat](media/amazon-business-tutorial/sso-connection2.png)
+    ![A képernyőképen az S S O-kapcsolatok tesztelése gomb látható.](media/amazon-business-tutorial/sso-connection2.png)
 
 1. A **identitásszolgáltató által kezdeményezett URL-cím** varázslóban az **aktiválás**elemre kattintva másolja ki a **idpid** hozzárendelt értéket, és illessze be a **IDPID** paramétert a **Válasz URL-címére** a Azure Portal **alapszintű SAML-konfiguráció** szakaszában.
 
-    ![Kapcsolat](media/amazon-business-tutorial/sso-connection3.png)
+    ![Képernyőfelvétel: I D P indított U R L, ahol a teszteléshez szükség van egy U R L-re, majd az aktiválás elemre.](media/amazon-business-tutorial/sso-connection3.png)
 
 1. A **készen áll az aktív SSO-ra való váltásra?** varázsló, ellenőrizze, hogy **teljes körűen tesztelt SSO-t használok-e, és készen áll-e az élő** indításra jelölőnégyzet, és kattintson a **váltás aktív**
 
-    ![Kapcsolat](media/amazon-business-tutorial/sso-connection4.png)
+    ![Képernyőfelvétel: a készen áll arra, hogy váltson az aktív S O-megerősítésre, ahol kiválaszthatja a váltás aktívra lehetőséget.](media/amazon-business-tutorial/sso-connection4.png)
 
 1. Végül az **SSO-kapcsolat részletei** szakaszban az **állapot** **aktívként**jelenik meg.
 
-    ![Kapcsolat](media/amazon-business-tutorial/sso-connection5.png)
+    ![A képernyőfelvétel aktív állapottal rendelkező S S O-kapcsolati adatait jeleníti meg.](media/amazon-business-tutorial/sso-connection5.png)
     
     > [!NOTE]
     > Ha az alkalmazást **SP** -kezdeményezésű módban szeretné konfigurálni, hajtsa végre a következő lépést, illessze be a bejelentkezési URL-címet a fenti képernyőképen a **további URL-címek beállítása** szakasz **bejelentkezési URL-címe** szövegmezőbe a Azure Portal. Használja az alábbi formátumot:
@@ -212,21 +212,21 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="create-an-azure-ad-security-group-in-the-azure-portal"></a>Azure AD biztonsági csoport létrehozása a Azure Portalban
 
 1. Kattintson **Azure Active Directory > minden csoport**elemre.
 
-    ![Azure AD biztonsági csoport létrehozása](./media/amazon-business-tutorial/all-groups-tab.png)
+    ![Képernyőfelvétel: a Azure Portal menü, Azure Active Directory kiválasztva és a csoportok ablaktáblán kijelölt összes csoport.](./media/amazon-business-tutorial/all-groups-tab.png)
 
 1. Kattintson az **új csoport**elemre:
 
-    ![Azure AD biztonsági csoport létrehozása](./media/amazon-business-tutorial/new-group-tab.png)
+    ![A képernyőképen az új csoport gomb látható.](./media/amazon-business-tutorial/new-group-tab.png)
 
 1. Adja meg a **csoport típusát**, a **csoport nevét**, a **csoport leírását**, a **tagság típusát**. Kattintson a nyílra a tagok kiválasztásához, majd keressen rá, vagy kattintson arra a tagra, amelyet hozzá szeretne adni a csoporthoz. Kattintson a **kiválasztás** elemre a kijelölt tagok hozzáadásához, majd kattintson a **Létrehozás**gombra.
 
-    ![Azure AD biztonsági csoport létrehozása](./media/amazon-business-tutorial/group-information.png)
+    ![Képernyőfelvétel: a csoportok ablaktábla, ahol lehetőség van, beleértve a tagok kijelölését és a külső felhasználók meghívását.](./media/amazon-business-tutorial/group-information.png)
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -240,7 +240,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
-    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
+    ![Képernyőfelvétel: felhasználó hozzáadása gomb.](common/add-assign-user.png)
 
 1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
 1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
@@ -249,7 +249,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
     >[!NOTE]
     > Ha nem rendeli hozzá a felhasználókat az Azure AD-ben, a következő hibaüzenet jelenik meg.
 
-    ![A felhasználó hozzáadása hivatkozás](media/amazon-business-tutorial/assign-user.png)
+    ![A képernyőképen egy hibaüzenet jelenik meg, amelyet nem lehet bejelentkezni.](media/amazon-business-tutorial/assign-user.png)
 
 ### <a name="assign-the-azure-ad-security-group-in-the-azure-portal"></a>Rendelje hozzá az Azure AD biztonsági csoportot a Azure Portal
 

@@ -1,20 +1,20 @@
 ---
 title: Hozzáférés engedélyezése az Azure-alkalmazás konfigurációjához Azure Active Directory használatával
-description: A RBAC engedélyezése az Azure app Configuration-példányhoz való hozzáférés engedélyezéséhez
+description: Az Azure RBAC engedélyezése az Azure app Configuration-példányhoz való hozzáférés engedélyezéséhez
 author: lisaguthrie
 ms.author: lcozzens
 ms.date: 02/13/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 8889e7270127aa3991adb3c0575a4bce96090db2
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 7e7b524f125eda406adc9be2300c94e5944e1819
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830071"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715947"
 ---
 # <a name="authorize-access-to-azure-app-configuration-using-azure-active-directory"></a>Hozzáférés engedélyezése az Azure-alkalmazás konfigurációjához Azure Active Directory használatával
-A kivonatoló alapú üzenethitelesítő kód (HMAC) használata mellett az Azure app Configuration támogatja a Azure Active Directory (Azure AD) használatát az alkalmazás-konfigurációs példányok kéréseinek engedélyezéséhez.  Az Azure AD lehetővé teszi a szerepköralapú hozzáférés-vezérlés (RBAC) használatát a rendszerbiztonsági tag engedélyeinek megadásához.  Egy rendszerbiztonsági tag lehet egy felhasználó, egy [felügyelt identitás](../active-directory/managed-identities-azure-resources/overview.md) vagy egy [egyszerű alkalmazás](../active-directory/develop/app-objects-and-service-principals.md).  A szerepkörökkel és a szerepkör-hozzárendelésekkel kapcsolatos további tudnivalókért tekintse meg a [különböző szerepkörök ismertetése](../role-based-access-control/overview.md)című témakört.
+A kivonatoló alapú üzenethitelesítő kód (HMAC) használata mellett az Azure app Configuration támogatja a Azure Active Directory (Azure AD) használatát az alkalmazás-konfigurációs példányok kéréseinek engedélyezéséhez.  Az Azure AD lehetővé teszi az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatát a rendszerbiztonsági tag engedélyeinek megadásához.  Egy rendszerbiztonsági tag lehet egy felhasználó, egy [felügyelt identitás](../active-directory/managed-identities-azure-resources/overview.md) vagy egy [egyszerű alkalmazás](../active-directory/develop/app-objects-and-service-principals.md).  A szerepkörökkel és a szerepkör-hozzárendelésekkel kapcsolatos további tudnivalókért tekintse meg a [különböző szerepkörök ismertetése](../role-based-access-control/overview.md)című témakört.
 
 ## <a name="overview"></a>Áttekintés
 A rendszerbiztonsági tag által az alkalmazás-konfigurációs erőforráshoz való hozzáférésre vonatkozó kéréseket engedélyezni kell. Az Azure AD-vel az erőforrásokhoz való hozzáférés kétlépéses folyamat:

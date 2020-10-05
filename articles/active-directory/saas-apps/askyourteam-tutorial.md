@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/28/2020
 ms.author: jeedes
-ms.openlocfilehash: ad68208f8993ce84c71c97d97de7e2b090f1e7da
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6ab6a355b986daeca41ffd18a51689cd9d880dcd
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549416"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713813"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-askyourteam"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a AskYourTeam
 
@@ -105,7 +105,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -131,19 +131,19 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Kattintson a **saját szervezet**elemre.
 
-    ![AskYourTeam-konfiguráció](./media/askyourteam-tutorial/user1.png)
+    ![A képernyőfelvételen a saját szervezet hivatkozás látható.](./media/askyourteam-tutorial/user1.png)
 
 1. Kattintson az **integrációk**elemre.
 
-    ![AskYourTeam-konfiguráció](./media/askyourteam-tutorial/configure1.png)
+    ![A képernyőképen az integrációk hivatkozás látható.](./media/askyourteam-tutorial/configure1.png)
 
 1. Kattintson a **beállítások szerkesztése**elemre.
 
-    ![AskYourTeam-konfiguráció](./media/askyourteam-tutorial/configure2.png)
+    ![Képernyőfelvétel: az egyszeri bejelentkezési üzenet, amely a beállítások szerkesztése gombot tartalmazza.](./media/askyourteam-tutorial/configure2.png)
 
 1. Az **egyszeri bejelentkezési integráció szerkesztése** oldalon hajtsa végre a következő lépéseket: 
 
-    ![AskYourTeam-konfiguráció](./media/askyourteam-tutorial/configure3.png)
+    ![A képernyőképen az egyszeri bejelentkezéses integráció szerkesztése látható, ahol megadhatja a lépés értékeit.](./media/askyourteam-tutorial/configure3.png)
 
     a. Az **SAML egyszeri bejelentkezési szolgáltatás URL-címe** szövegmezőbe illessze be azt a **bejelentkezési URL** -címet, amelyet a Azure Portal másolt.
 
@@ -168,15 +168,15 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Kattintson a **saját szervezet**elemre.
 
-    ![AskYourTeam-konfiguráció](./media/askyourteam-tutorial/user1.png)
+    ![Képernyőfelvétel: a saját szervezet hivatkozása, amely a feladat elindítását mutatja.](./media/askyourteam-tutorial/user1.png)
 
 1. Kattintson a **felhasználók** elemre, és válassza az **új felhasználó**lehetőséget.
 
-    ![AskYourTeam-konfiguráció](./media/askyourteam-tutorial/user2.png)
+    ![Képernyőfelvétel: a felhasználók hivatkozása az új felhasználóval.](./media/askyourteam-tutorial/user2.png)
 
 1. Az **új felhasználó** szakaszban hajtsa végre a következő lépéseket:
 
-    ![AskYourTeam-konfiguráció](./media/askyourteam-tutorial/user3.png)
+    ![A képernyőképen egy új felhasználói szakasz jelenik meg, ahol megadhatja a felhasználói adatokat.](./media/askyourteam-tutorial/user3.png)
 
     1. **A Utónév szövegmezőbe** írja be a felhasználó utónevét.
 

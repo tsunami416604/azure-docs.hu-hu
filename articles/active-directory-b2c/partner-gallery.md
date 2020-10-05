@@ -1,7 +1,7 @@
 ---
 title: ISV-partneri katalógus a Azure AD B2Choz
 titleSuffix: Azure AD B2C
-description: Ismerje meg, hogyan integrálható az ISV-partnereinkkel a végfelhasználói élmény igényei szerint. A partneri hálózat kibővíti a megoldási képességeiket; az MFA, a biztonságos ügyfél-hitelesítés, a szerepköralapú Access Control engedélyezése; csalás elleni küzdelem a személyazonosság-ellenőrzés igazolásával.
+description: Ismerje meg, hogyan integrálható az ISV-partnereinkkel a végfelhasználói élmény igényei szerint. A partneri hálózat kibővíti a megoldási képességeiket; MFA engedélyezése, biztonságos ügyfél-hitelesítés, szerepköralapú hozzáférés-vezérlés; csalás elleni küzdelem a személyazonosság-ellenőrzés igazolásával.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 21498f9117ac25356c9381d632644bbaa4d5a74b
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 9e83fcd6a8e6a7b0c81f47cc3ad97b7f55da1b3b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90706676"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713184"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>ISV-partnerek Azure Active Directory B2C
 
-Az ISV-partneri hálózat kibővíti a megoldási képességeiket a zökkenőmentes végfelhasználói élmények kiépítésének megkönnyítésére. A Azure AD B2C lehetővé teszi az ISV-partnerekkel való integrációt a többtényezős hitelesítési módszerek, a biztonságos ügyfél-hitelesítés (SCA) engedélyezése, a szerepköralapú Access Control végrehajtása, valamint a csalás elleni védelem a személyazonosság-ellenőrzés és a próbanyomat használatával. A részletes példákból megismerheti, hogyan integrálhatja az alkalmazásokat az alább felsorolt ISV-partnerekkel.
+Az ISV-partneri hálózat kibővíti a megoldási képességeiket a zökkenőmentes végfelhasználói élmények kiépítésének megkönnyítésére. A Azure AD B2C lehetővé teszi az ISV-partnerekkel való integrációt a többtényezős hitelesítési módszerek, a biztonságos ügyfél-hitelesítés (SCA) engedélyezése, a szerepköralapú hozzáférés-vezérlés elvégzése, valamint a csalás elleni védelem a személyazonosság ellenőrzése és a próbanyomat használatával. A részletes példákból megismerheti, hogyan integrálhatja az alkalmazásokat az alább felsorolt ISV-partnerekkel.
 
 >[!NOTE]
 >A [githubon található Azure Active Directory B2C közösségi webhely](https://azure-ad-b2c.github.io/azureadb2ccommunity.io/) a Közösségtől származó egyéni szabályzatokat is biztosít.

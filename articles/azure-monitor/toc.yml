@@ -117,15 +117,10 @@
       items:
         - name: Áttekintés
           href: platform/data-platform.md
-        - name: Adatok helye
-          href: platform/data-locations.md
-        - name: Mérőszámok
-          href: platform/data-platform-metrics.md
         - name: Naplók
           href: platform/data-platform-logs.md
-        - name: Naplóadatok feldolgozási ideje
-          displayname: latency
-          href: platform/data-ingestion-time.md
+        - name: Mérőszámok
+          href: platform/data-platform-metrics.md
         - name: Adatok streamelése az Event Hubsra
           href: platform/stream-monitoring-data-event-hubs.md
     - name: Insights
@@ -209,39 +204,42 @@
           href: platform/diagnostic-settings.md
     - name: Log Analytics
       items:
-        - name: Naplólekérdezések áttekintése
-          displayname: 'log query, log queries, query, queries'
+        - name: Áttekintés
+          displayname: 'Log Analytics, log query, log queries, query, queries'
           href: log-query/log-query-overview.md
+        - name: Oktatóanyag
+          displayname: 'Log Analytics workspace, log query, log queries, query, queries'
+          href: log-query/get-started-portal.md
+        - name: Lekérdezési hatókör
+          href: log-query/scope.md
         - name: Egyszerű naplózás
           href: log-query/simple-logs.md
-        - name: Auditnapló lekérdezései
-          href: log-query/query-audit.md
-        - name: Oktatóanyagok
+        - name: Naplólekérdezések
           items:
-            - name: Log Analytics-oktatóanyag
-              href: log-query/get-started-portal.md
-            - name: Naplólekérdezések – oktatóanyag
-              href: log-query/get-started-queries.md
-        - name: Naplóadatok
-          items:
-            - name: Lekérdezési hatókör
-              href: log-query/scope.md
             - name: Standard oszlopok
               href: platform/log-standard-columns.md
+            - name: Lekérdezések naplózása
+              href: log-query/query-audit.md
+            - name: Lekérdezések optimalizálása
+              href: log-query/query-optimization.md
+            - name: Függvények
+              href: log-query/functions.md
+            - name: Szövegadatok elemzése
+              href: log-query/parse-text.md
+            - name: Példa a lekérdezésekre
+              href: log-query/saved-queries.md
             - name: Számítógépcsoportok
               href: platform/computer-groups.md
         - name: Lekérdezés nyelve
           items:
-            - name: Lekérdezési nyelv dokumentációja
-              href: log-query/query-language.md
-            - name: Nyelvi különbözőségek
+            - name: KQL-referencia
+              href: /azure/data-explorer/kusto/query/
+            - name: Különbségek az Azure Data Explorerhez képest
               href: log-query/data-explorer-difference.md
-            - name: Hasznos operátorok
-              href: log-query/useful-operators.md
-            - name: Functions
-              href: log-query/functions.md
-            - name: Váltás a naplóbeli keresésről
-              href: log-query/log-search-transition.md
+            - name: Példák
+              href: log-query/examples.md
+            - name: Példák intelligens elemzésre
+              href: log-query/smart-analytics.md
             - name: Leckék
               items:
                 - name: Sztringműveletek
@@ -268,9 +266,9 @@
                   href: log-query/sql-cheatsheet.md
                 - name: Splunk
                   href: log-query/splunk-cheatsheet.md
-        - name: Erőforrásközi
+        - name: Erőforrásközi lekérdezések
           items:
-            - name: Erőforrásközi lekérdezések
+            - name: Áttekintés
               href: log-query/cross-workspace-query.md
             - name: alkalmazáskifejezés
               href: log-query/app-expression.md
@@ -280,32 +278,25 @@
               href: log-query/resource-expression.md
             - name: Alkalmazás adatforrásainak egységesítése
               href: log-query/unify-app-resource-data.md
-        - name: Példák és útmutatás
-          items:
-            - name: Példa a lekérdezésekre
-              href: log-query/saved-queries.md
-            - name: Példák naplólekérdezésekre
-              href: log-query/examples.md
-            - name: Példák intelligens elemzésre
-              href: log-query/smart-analytics.md
-            - name: Lekérdezések optimalizálása
-              href: log-query/query-optimization.md
-            - name: Szövegadatok elemzése
-              href: log-query/parse-text.md
         - name: Munkaterületek és fürtök
           items:
             - name: Munkaterület üzembe helyezésének megtervezése
               href: platform/design-logs-deployment.md
             - name: Munkaterület létrehozása
               items:
-                - name: Az Azure Portal használata
+                - name: Azure Portal
                   href: learn/quick-create-workspace.md
-                - name: Az Azure parancssori felület használatával
+                - name: Azure CLI
                   href: learn/quick-create-workspace-cli.md
-                - name: A PowerShell használata
+                - name: PowerShell
                   href: platform/powershell-workspace-configuration.md
+                - name: Resource Manager-sablon
+                  href: platform/template-workspace-configuration.md
             - name: Munkaterület törlése és helyreállítása
               href: platform/delete-workspace.md
+            - name: Hozzáférés kezelése
+              displayName: Log Analytics workspace
+              href: platform/manage-access.md
             - name: Munkaterület áthelyezése
               href: platform/move-workspace.md
             - name: A szolgáltatókat szem előtt tartó tervezés
@@ -328,6 +319,9 @@
       items:
         - name: Adatgyűjtési szabályok
           href: platform/data-collection-rule-overview.md
+        - name: Naplóadatok feldolgozási ideje
+          displayname: latency
+          href: platform/data-ingestion-time.md
         - name: Ügynökök adatforrásai
           items:
             - name: Áttekintés
@@ -1167,12 +1161,18 @@
               href: platform/workbooks-time.md
             - name: Szövegparaméterek
               href: platform/workbooks-text.md
+            - name: Erőforrás-paraméterek
+              href: platform/workbooks-resources.md
         - name: Konfiguráció
           items:
             - name: Hozzáférés-vezérlés
               href: platform/workbooks-access-control.md
             - name: Üzembe helyezés Azure Resource Managerrel
               href: platform/workbooks-automate.md
+            - name: Csoportok
+              href: platform/workbooks-groups.md
+            - name: JSON-adatok átalakítása JSONPath használatával
+              href: platform/workbooks-jsonpath.md
             - name: Munkafüzetek áthelyezése egy másik régióba
               href: platform/workbooks-move-region.md
             - name: Munkafüzetsablonok áthelyezése egy másik régióba

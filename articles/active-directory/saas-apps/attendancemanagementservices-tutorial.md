@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
-ms.openlocfilehash: df04cc41f2b5947bb0cf23715a857a3449627f23
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d8050b87d122ef676b52f1cab5e06175a55602b1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550251"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713867"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-attendance-management-services"></a>Oktatóanyag: Azure Active Directory integráció a részvételi felügyeleti szolgáltatásokkal
 
@@ -128,11 +128,11 @@ Az Azure AD egyszeri bejelentkezés a következő lépésekkel konfigurálható 
 
 1. Kattintson az **SAML-hitelesítés** elemre a **biztonsági kezelés szakaszban**.
 
-    ![A látogatottsági kezelési szolgáltatások konfigurációja](./media/attendancemanagementservices-tutorial/user1.png)
+    ![Képernyőfelvétel: a nem latin karaktereket használó lapokon kiválasztott SAML-hitelesítés.](./media/attendancemanagementservices-tutorial/user1.png)
 
 1. Hajtsa végre a következő lépéseket:
 
-    ![A látogatottsági kezelési szolgáltatások konfigurációja](./media/attendancemanagementservices-tutorial/user2.png)
+    ![Képernyőfelvétel: ablak, amelyen elvégezheti az ebben a lépésben ismertetett feladatokat.](./media/attendancemanagementservices-tutorial/user2.png)
 
     a. Válassza **az SAML-hitelesítés használata**lehetőséget.
 
@@ -168,7 +168,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -206,15 +206,15 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a r�
 
 1. Kattintson a **biztonság kezelése szakasz** **felhasználói felügyelet** elemére.
 
-    ![Alkalmazott hozzáadása](./media/attendancemanagementservices-tutorial/user5.png)
+    ![A képernyőképen a nem latin karaktereket használó lapokon kiválasztott felhasználói felügyelet látható.](./media/attendancemanagementservices-tutorial/user5.png)
 
 1. Kattintson az **új szabályok bejelentkezés**elemre.
 
-    ![Alkalmazott hozzáadása](./media/attendancemanagementservices-tutorial/user3.png)
+    ![A képernyőképen a plusz lehetőség kiválasztása látható.](./media/attendancemanagementservices-tutorial/user3.png)
 
 1. A **OBCiD információi** szakaszban hajtsa végre a következő lépéseket:
 
-    ![Alkalmazott hozzáadása](./media/attendancemanagementservices-tutorial/user4.png)
+    ![Képernyőfelvétel: a leírt feladatok elvégzéséhez használható ablak.](./media/attendancemanagementservices-tutorial/user4.png)
 
     a. A **OBCiD** szövegmezőbe írja be a felhasználóhoz hasonló e-mail címet `BrittaSimon\@contoso.com` .
 

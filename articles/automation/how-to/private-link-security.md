@@ -6,12 +6,12 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 07/09/2020
 ms.subservice: ''
-ms.openlocfilehash: c81d9774dccf8c02d2eab7b1ebbb69e6671869e8
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: a4985784a17f2e0350a7b2c7a4f62f574862d50c
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423796"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714362"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-automation-preview"></a>Hálózatok biztonságos csatlakoztatása az Azure privát hivatkozásával Azure Automation (előzetes verzió)
 
@@ -41,7 +41,7 @@ A privát hivatkozással a következőket teheti:
 - Biztonságosan csatlakoztathatja a helyszíni hálózatot, hogy Azure Automation ExpressRoute és privát kapcsolaton keresztül.
 - Minden forgalom megtartása az Microsoft Azure gerinc hálózatán belül.
 
-További információ: [a privát hivatkozás legfontosabb előnyei](../../private-link/private-link-overview.md#key-benefits).
+További információ:  [a privát hivatkozás legfontosabb előnyei](../../private-link/private-link-overview.md#key-benefits).
 
 ## <a name="how-it-works"></a>Működés
 
@@ -53,7 +53,7 @@ Az előzetes kiadás részeként egy Automation-fiók nem fér hozzá a privát 
 
 ### <a name="webhook-scenario"></a>Webhook forgatókönyv
 
-A runbookok elindításához tegye a webhook URL-címét. Az URL-cím például a következőre hasonlít:`https://<automationAccountId>.webhooks.<region>.azure-automation.net/webhooks?token=gzGMz4SMpqNo8gidqPxAJ3E%3d`
+A runbookok elindításához tegye a webhook URL-címét. Az URL-cím például a következőre hasonlít: `https://<automationAccountId>.webhooks.<region>.azure-automation.net/webhooks?token=gzGMz4SMpqNo8gidqPxAJ3E%3d`
 
 ### <a name="state-configuration-agentsvc-scenario"></a>Állapot-konfiguráció (agentsvc) forgatókönyv
 
@@ -83,10 +83,10 @@ Ebben a szakaszban egy privát végpontot fog létrehozni az Automation-fiókhoz
     | ------- | ----- |
     | **PROJEKT RÉSZLETEI** | |
     | Előfizetés | Válassza ki előfizetését. |
-    | Erőforráscsoport | Válassza a **myResourceGroup**lehetőséget. Ezt az előző szakaszban hozta létre.  |
+    | Erőforráscsoport | Válassza a **myResourceGroup** lehetőséget. Ezt az előző szakaszban hozta létre.  |
     | **PÉLDÁNY RÉSZLETEI** |  |
-    | Name | Adja meg a *PrivateEndpoint*. |
-    | Régió | Válassza a **YourRegion**lehetőséget. |
+    | Név | Adja meg a *PrivateEndpoint*. |
+    | Region | Válassza a **YourRegion**lehetőséget. |
     |||
 
 4. Válassza a **Tovább: erőforrás**elemet.
@@ -108,17 +108,17 @@ Ebben a szakaszban egy privát végpontot fog létrehozni az Automation-fiókhoz
 
     | Beállítás | Érték |
     | ------- | ----- |
-    |**HÁLÓZATI**| |
+    |**HÁLÓZATKEZELÉS**| |
     | Virtuális hálózat| Válassza a *MyVirtualNetwork*lehetőséget. |
     | Alhálózat | Válassza a *mySubnet*lehetőséget. |
-    |**MAGÁNHÁLÓZATI DNS-INTEGRÁCIÓ**||
+    |**PRIVÁT DNS-INTEGRÁCIÓ**||
     |Integrálás saját DNS-zónával |Válassza az **Igen** lehetőséget. |
-    |saját DNS zóna |Select *(New) privatelink. Azure – Automation.net* |
+    |Privát DNS-zóna |Select *(New) privatelink. Azure – Automation.net* |
     |||
 
-8. Válassza a **Felülvizsgálat és létrehozás** lehetőséget. A **felülvizsgálat + létrehozás** oldalon az Azure ellenőrzi a konfigurációt.
+8. Válassza az **Áttekintés + létrehozás** lehetőséget. Az **Áttekintés és létrehozása** lapra kerül, ahol az Azure érvényesíti az Ön konfigurációját.
 
-9. Amikor megjelenik az **átadott üzenet ellenőrzése** lehetőség, válassza a **Létrehozás**lehetőséget.
+9. Amikor megjelenik a **Megfelelt az ellenőrzésen** üzenet, válassza a **Létrehozás** lehetőséget.
 
 A Private **link Centerben (előzetes verzió)** válassza a **privát végpontok** lehetőséget a privát kapcsolati erőforrás megtekintéséhez.
 
@@ -128,7 +128,7 @@ Válassza ki az erőforrást az összes adat megtekintéséhez. Ez létrehoz egy
 
 Ehhez hasonlóan a rendszer létrehoz egy egyedi teljes tartománynevet (FQDN) az állapot-konfigurációhoz (agentsvc) és a hibrid Runbook-feldolgozói feladatok futtatókörnyezetéhez (jrds). Mindegyikük külön IP-címet kap a VNet, és a **kapcsolatok állapota** **jóváhagyottként**jelenik meg.
 
-Ha a szolgáltatás felhasználója rendelkezik RBAC engedélyekkel az Automation-erőforráshoz, akkor választhat az automatikus jóváhagyási módszer közül. Ebben az esetben, ha a kérelem eléri az Automation-szolgáltatói erőforrást, nincs szükség beavatkozásra a szolgáltatótól, és a rendszer automatikusan jóváhagyja a kapcsolódást.
+Ha a szolgáltatás felhasználójának Azure RBAC engedélyei vannak az Automation-erőforráshoz, akkor választhatják az automatikus jóváhagyási módszert. Ebben az esetben, ha a kérelem eléri az Automation-szolgáltatói erőforrást, nincs szükség beavatkozásra a szolgáltatótól, és a rendszer automatikusan jóváhagyja a kapcsolódást.
 
 ## <a name="set-public-network-access-flags"></a>Nyilvános hálózati hozzáférési jelzők beállítása
 
@@ -160,6 +160,6 @@ A következő beállításokkal konfigurálhatja a magánhálózati végpontok D
 
 További információ: [Azure Private Endpoint DNS-konfiguráció](../../private-link/private-endpoint-dns.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a privát végpontról: [Mi az az Azure Private Endpoint?](../../private-link/private-endpoint-overview.md).

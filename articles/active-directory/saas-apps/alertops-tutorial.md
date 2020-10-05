@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.openlocfilehash: d820a3fc9b12a36a76e2eb887b32d27acc156c76
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a278204da556b41bd663b8b5c9ff5152e16017cc
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88522337"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715872"
 ---
 # <a name="tutorial-integrate-alertops-with-azure-active-directory"></a>Oktatóanyag: a AlertOps és a Azure Active Directory integrálása
 
@@ -108,11 +108,11 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 4. Kattintson a **Fiókbeállítások** lehetőségre a bal oldali navigációs panelen.
 
-    ![AlertOps-konfiguráció](./media/alertops-tutorial/configure1.png)
+    ![Képernyőfelvétel: a AlertOps menü, a Fiókbeállítások neve.](./media/alertops-tutorial/configure1.png)
 
 5. Az **előfizetés beállításai** lapon válassza az **SSO** lehetőséget, és hajtsa végre a következő lépéseket:
 
-    ![AlertOps-konfiguráció](./media/alertops-tutorial/configure2.png)
+    ![Képernyőfelvétel: az előfizetési beállítások ablak a S S O-hez az ebben a lépésben ismertetett értékekkel.](./media/alertops-tutorial/configure2.png)
 
     a. Jelölje be **az egyszeri bejelentkezés (SSO) használata** jelölőnégyzetet.
 
@@ -138,7 +138,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Britta Simon nev�
    1. A **Név** mezőbe írja a következőt: `Britta Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `BrittaSimon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -164,15 +164,15 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
 2. A bal oldali navigációs panelen kattintson a **felhasználók** elemre.
 
-    ![AlertOps-konfiguráció](./media/alertops-tutorial/user1.png)
+    ![A képernyőképen a AlertOps menüt láthatja a felhasználók számára.](./media/alertops-tutorial/user1.png)
 
 3. Válassza a **felhasználó hozzáadása**elemet.
 
-    ![AlertOps-konfiguráció](./media/alertops-tutorial/user2.png)
+    ![Képernyőfelvétel: a felhasználók ablak megjelenítése a felhasználó hozzáadása gombbal.](./media/alertops-tutorial/user2.png)
 
 4. A **felhasználó hozzáadása** párbeszédpanelen hajtsa végre a következő lépéseket:
 
-    ![AlertOps-konfiguráció](./media/alertops-tutorial/user3.png)
+    ![A képernyőképen a felhasználók hozzáadása panel jelenik meg, amely az ebben a lépésben leírt értékekkel van megadva.](./media/alertops-tutorial/user3.png)
 
     a. A **bejelentkezési Felhasználónév** szövegmezőbe írja be a felhasználó felhasználónevét, például a **Brittasimon**nevet.
 
@@ -186,7 +186,7 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
     f. Válassza ki a felhasználó **szerepkörét** a legördülő listából a saját szervezete számára.
 
-    : Válassza a **Hozzáadás** elemet.
+    : Válassza a **Hozzáadás** lehetőséget.
 
 ### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 

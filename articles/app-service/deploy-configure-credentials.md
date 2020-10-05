@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 08/14/2019
 ms.reviewer: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 739325f66594667c6973df356e2bcf26a3eb056d
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 50b3cae00110a64e4d95171822bf1d2a282d2cc1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89300272"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715416"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Központi telepítési hitelesítő adatok konfigurálása Azure App Servicehoz
 A [Azure app Service](https://go.microsoft.com/fwlink/?LinkId=529714) kétféle hitelesítő adatot támogat a [helyi git üzembe helyezéséhez](deploy-local-git.md) és az [FTP/S](deploy-ftp.md)környezethez. Ezek a hitelesítő adatok nem egyeznek meg az Azure-előfizetés hitelesítő adataival.
@@ -100,10 +100,10 @@ Annak ellenőrzéséhez, hogy a közzétételi profil hitelesítő adatai le van
 
 ### <a name="disable-access-to-the-api"></a>Az API elérésének letiltása
 
-Az előző szakaszban található API egy Azure szerepköralapú Access Control (RBAC), ami azt jelenti, hogy [létrehozhat egy egyéni szerepkört](https://docs.microsoft.com/azure/role-based-access-control/custom-roles#steps-to-create-a-custom-role) , és alacsonyabb priveldged felhasználókat rendelhet hozzá a szerepkörhöz, így az alapszintű hitelesítés nem engedélyezhető egyetlen helyen sem. Az egyéni szerepkör konfigurálásához [kövesse az alábbi utasításokat](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#create-a-custom-rbac-role).
+Az előző szakaszban található API egy Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC), ami azt jelenti, hogy [létrehozhat egy egyéni szerepkört](https://docs.microsoft.com/azure/role-based-access-control/custom-roles#steps-to-create-a-custom-role) , és alacsonyabb priveldged felhasználókat rendelhet hozzá a szerepkörhöz, így az alapszintű hitelesítés nem engedélyezhető egyetlen helyen sem. Az egyéni szerepkör konfigurálásához [kövesse az alábbi utasításokat](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#create-a-custom-rbac-role).
 
 A [Azure monitor](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#audit-with-azure-monitor) használatával is naplózhatja a sikeres hitelesítési kérelmeket, és a [Azure Policy](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#enforce-compliance-with-azure-policy) használatával kényszerítheti ki ezt a konfigurációt az előfizetésben található összes webhelyre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogyan használhatja ezeket a hitelesítő adatokat az alkalmazás [helyi git](deploy-local-git.md) -ből való üzembe helyezéséhez, vagy [FTP/S](deploy-ftp.md)használatával.

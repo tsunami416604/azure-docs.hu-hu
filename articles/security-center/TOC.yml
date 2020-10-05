@@ -39,6 +39,7 @@
         - name: Azure Defender App Service-hez
           href: defender-for-app-service-introduction.md
         - name: Azure Defender tároláshoz
+          displayName: 'blob, adls, files'
           href: defender-for-storage-introduction.md
         - name: Azure Defender SQL-hez
           displayName: database
@@ -46,7 +47,7 @@
         - name: Azure Defender IoT-hez
           href: defender-for-iot-introduction.md
         - name: Azure Defender Key Vaulthoz
-          displayName: KV
+          displayName: 'KV, akv'
           href: defender-for-key-vault-introduction.md
         - name: Azure Defender Kuberneteshez
           displayName: 'clusters, k8s'
@@ -65,13 +66,13 @@
   items:
     - name: Bevezetés
       href: security-center-get-started.md
-    - name: Nem Azure-beli gép csatlakoztatása
-      displayName: 'azure stack, windows, linux'
-      href: quickstart-onboard-machines.md
-    - name: AWS- és GCP-fiókok csatlakoztatása
+    - name: Hibrid környezet beállítása
       items:
+        - name: Nem Azure-beli gép csatlakoztatása
+          displayName: 'azure stack, ash, windows, linux, hybrid, arc'
+          href: quickstart-onboard-machines.md
         - name: AWS-fiókok csatlakoztatása
-          displayName: 'hybrid, multicloud, amazon'
+          displayName: 'hybrid, multicloud, amazon, arc'
           href: quickstart-onboard-aws.md
         - name: GCP-fiókok csatlakoztatása
           displayName: 'hybrid, multicloud, google'
@@ -90,7 +91,7 @@
       href: security-center-planning-and-operations-guide.md
     - name: Az erőforrások védelme
       href: tutorial-protect-resources.md
-    - name: Reagálás incidensekre
+    - name: A biztonsági riasztások kivizsgálása és a riasztásokra való válaszadás
       href: tutorial-security-incident.md
     - name: Előírásoknak való megfelelés javítása
       href: security-center-compliance-dashboard.md
@@ -206,6 +207,7 @@
       items:
         - name: Az SQL-hez készült Azure Defender konfigurálása Azure-beli virtuális gépeken
           href: defender-for-sql-usage.md
+          displayName: 'hybrid, arc'
         - name: Az Information Protection-szabályzat testreszabása
           href: security-center-info-protection-policy.md
     - name: Az Azure Defender használata tárolóregisztrációs adatbázisokhoz
@@ -218,6 +220,7 @@
         - name: Riasztásletiltási szabályok létrehozása és kezelése
           href: alerts-suppression-rules.md
         - name: Válaszadás Key Vaulthoz készült Azure Defender-riasztásokra
+          displayName: 'akv, kv'
           href: defender-for-key-vault-usage.md
         - name: Biztonsági incidensek kezelése
           href: security-center-incident.md

@@ -4,14 +4,14 @@ description: Azure Monitor metrikus riasztásokkal és lehetséges megoldásokka
 author: harelbr
 ms.author: harelbr
 ms.topic: troubleshooting
-ms.date: 10/04/2020
+ms.date: 10/05/2020
 ms.subservice: alerts
-ms.openlocfilehash: 1280529aa758194dbd02196d71a715310431a73b
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 579729eca8269d75569166a5bda32a979544b164
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91710294"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715317"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Azure Monitor metrikai riasztásokkal kapcsolatos problémák elhárítása 
 
@@ -81,8 +81,10 @@ További információ az adatoknak a virtuális gép vendég operációs rendsze
 
 ## <a name="cant-find-the-metric-to-alert-on"></a>Nem található a riasztáshoz használandó metrika
 
-Ha egy adott metrika esetében szeretne riasztást kapni, de nem látja a mérőszámokat az erőforráshoz, [ellenőrizze, hogy az erőforrás típusa támogatott-e a metrikus riasztások](./alerts-metric-near-real-time.md)esetén.
-Ha megtekintheti az erőforráshoz tartozó mérőszámokat, de nem talál egy adott mérőszámot, [ellenőrizze, hogy a metrika elérhető-e](./metrics-supported.md), és ha igen, tekintse meg a metrika leírását, hogy az csak az erőforrás adott verzióiban vagy kiadásaiban legyen elérhető.
+Ha a riasztást egy adott metrika esetében szeretné megjeleníteni, de riasztási szabály létrehozásakor nem látja, ellenőrizze a következőket:
+- Ha nem látja az erőforráshoz tartozó mérőszámokat, ellenőrizze, hogy [az erőforrás típusa támogatott-e metrikus riasztások](./alerts-metric-near-real-time.md)esetén.
+- Ha az erőforráshoz bizonyos mérőszámok láthatók, de nem talál egy adott mérőszámot, [ellenőrizze, hogy a metrika elérhető-e](./metrics-supported.md), és ha igen, tekintse meg a metrika leírását, és ellenőrizze, hogy csak az erőforrás adott verzióiban és kiadásaiban érhető-e el.
+- Ha a metrika nem érhető el az erőforráshoz, lehet, hogy elérhető az erőforrás-naplókban, és a naplózási riasztások segítségével figyelhető. Az [Azure-erőforrásokból származó erőforrás-naplók gyűjtésével és elemzésével](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-resource-logs)kapcsolatban itt talál további információt.
 
 ## <a name="cant-find-the-metric-dimension-to-alert-on"></a>Nem található a riasztásra vonatkozó metrikai dimenzió.
 
@@ -262,6 +264,6 @@ Javasoljuk, hogy a *kiértékelés gyakorisága*nagyobb mértékű *összesíté
 -   Metrikus riasztási szabály, amely több erőforrást figyel – új erőforrás a hatókörhöz való hozzáadásakor
 -   Metrikus riasztási szabály, amely nem folyamatosan kibocsátott mérőszámot figyel (ritka metrika) – Ha a mérőszámot 24 óránál hosszabb időt követően bocsátják ki a rendszer, amelyben nem lett kibocsátva
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A riasztásokkal és értesítésekkel kapcsolatos általános hibaelhárítási információkért lásd: [Azure monitor riasztások hibaelhárítási problémái](alerts-troubleshoot.md).
