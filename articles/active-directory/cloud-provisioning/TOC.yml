@@ -34,6 +34,10 @@
           href: how-to-install.md
         - name: Felhőalapú jogosultságkiosztás konfigurálása
           href: how-to-configure.md
+        - name: Igény szerinti üzembe helyezés
+          href: how-to-on-demand-provision.md
+        - name: Attribútumleképezés
+          href: how-to-attribute-mapping.md
         - name: Egyszeri bejelentkezés használata
           href: how-to-sso.md
     - name: Tervezés és kialakítás

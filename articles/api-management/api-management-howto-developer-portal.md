@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/28/2020
 ms.author: apimpm
-ms.openlocfilehash: 068f15cc06a76412836176dc13237741ea14d135
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 3642b95f5bd6d0207508ca85f1d22ce20b44eae3
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89614053"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715457"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Az Azure API Management fejlesztői portál áttekintése
 
@@ -172,7 +172,7 @@ A CORS is engedélyezheti manuálisan is.
 
 ### <a name="what-permissions-do-i-need-to-edit-the-developer-portal"></a>Milyen engedélyekre van szükségem a fejlesztői portál szerkesztéséhez?
 
-Ha úgy látja a `Oops. Something went wrong. Please try again later.` hibát, amikor a portált felügyeleti módban nyitja meg, előfordulhat, hogy nem rendelkezik a szükséges engedélyekkel (RBAC).
+Ha úgy látja a `Oops. Something went wrong. Please try again later.` hibát, amikor a portált felügyeleti módban nyitja meg, előfordulhat, hogy nem rendelkezik a szükséges engedélyekkel (Azure RBAC).
 
 Az örökölt portáloknak a `Microsoft.ApiManagement/service/getssotoken/action` szolgáltatás hatókörében () kell megadniuk az engedélyt `/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ApiManagement/service/<apim-service-name>` ahhoz, hogy a felhasználói rendszergazda hozzáférjen a portálokhoz. Az új portálon engedély szükséges a `Microsoft.ApiManagement/service/users/token/action` hatókörben `/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ApiManagement/service/<apim-service-name>/users/1` .
 
@@ -217,12 +217,12 @@ A hívási hibát a TLS/SSL-tanúsítvány is okozhatja, amely egy egyéni tarto
 | Apple Safari                | Igen<sup>1</sup> |
 | Google Chrome               | Igen<sup>1</sup> |
 | Microsoft Edge              | Igen<sup>1</sup> |
-| Microsoft Internet Explorer | No              |
+| Microsoft Internet Explorer | Nem              |
 | Mozilla Firefox             | Igen<sup>1</sup> |
 
  <small><sup>1</sup> támogatott a két legújabb üzemi verzióban.</small>
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az új fejlesztői portálról:
 

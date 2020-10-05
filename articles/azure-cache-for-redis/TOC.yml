@@ -43,6 +43,8 @@
           href: cache-java-spring-boot-initializer-with-redis-cache.md
     - name: Ranglisták létrehozása
       href: cache-web-app-cache-aside-leaderboard.md
+    - name: Gépi tanulási modell üzembe helyezése
+      href: cache-ml.md
     - name: Kezelés az Azure PowerShell-lel
       href: cache-how-to-manage-redis-cache-powershell.md
     - name: Kezelés az Azure CLI-vel

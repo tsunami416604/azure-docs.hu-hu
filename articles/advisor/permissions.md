@@ -3,12 +3,12 @@ title: Engedélyek Azure Advisor
 description: Az Advisor engedélyei, valamint az, hogy miként lehet letiltani az előfizetések konfigurálását, illetve elhalasztani vagy elvetheti az ajánlásokat.
 ms.topic: article
 ms.date: 04/03/2019
-ms.openlocfilehash: 3c7b42372ae6de5c2f519b69aec8a154a2f35a82
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 402a21c47c4cba8f747d5d4601f9c95034c99262
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927385"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91712922"
 ---
 # <a name="permissions-in-azure-advisor"></a>Engedélyek Azure Advisor
 
@@ -47,7 +47,7 @@ Ha a javaslat elhalasztása vagy elutasítása során hibaüzenetet kap, előfor
 
 ## <a name="next-steps"></a>További lépések
 
-Ez a cikk áttekintést nyújt arról, hogy az Advisor hogyan használja a RBAC a felhasználói engedélyek vezérléséhez és a gyakori problémák megoldásához. Az Advisor szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következőt:
+Ez a cikk áttekintést nyújt arról, hogy az Advisor hogyan használja az Azure RBAC a felhasználói engedélyek vezérlésére és a gyakori problémák megoldására. Az Advisor szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következőt:
 
 - [Mi az Azure Advisor?](./advisor-overview.md)
 - [Ismerkedés az Azure Advisor szolgáltatással](./advisor-get-started.md)

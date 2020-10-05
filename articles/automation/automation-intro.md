@@ -7,12 +7,12 @@ keywords: Azure Automation, DSC, PowerShell, állapot-konfiguráció, Update Man
 ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: d10570efe49203f879cdceae776af5c3bc6991c0
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 0e4be48157650ace3d7bebcc3a5689caef1ba779
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448069"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715963"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Az Azure Automation bemutatása
 
@@ -64,7 +64,7 @@ Az Azure Automation megosztott erőforrásainak segítségével könnyebben auto
 
 ### <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés
 
-A Azure Automation támogatja a szerepköralapú hozzáférés-vezérlést (RBAC) az Automation-fiókhoz és erőforrásaihoz való hozzáférés szabályozásához. Ha többet szeretne megtudni az Automation-fiók, a runbookok és a feladatok RBAC konfigurálásáról, tekintse meg a [szerepköralapú hozzáférés-vezérlés a Azure Automation számára](automation-role-based-access-control.md)című témakört.
+Azure Automation támogatja az Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC) az Automation-fiókhoz és erőforrásaihoz való hozzáférés szabályozásához. További információ az Azure-RBAC az Automation-fiókon, a runbookok és a feladatokon való konfigurálásáról: [szerepköralapú hozzáférés-vezérlés a Azure Automationhoz](automation-role-based-access-control.md).
 
 ### <a name="source-control-integration"></a>Verziókövetés integrálása
 
@@ -86,7 +86,7 @@ Azure Automation támogatja a felügyeletet az infrastruktúra és az alkalmazá
 * **Változások keresése** – azonosíthatja a helytelen konfigurációt okozó változásokat, és javíthatja a működési megfelelőséget.
 * **Figyelő** – a gép olyan változásainak elkülönítése, amelyek problémákat okoznak, és a felügyeleti rendszereknek kiterjesztik vagy kibővítik azokat.
 * **Védelem** – karanténba helyezheti a biztonsági riasztásokat. Megadhatja a vendégen futtatott rendszerekre vonatkozó követelményeket.
-* **Szabályozás** – RBAC beállítása csapatokhoz. Visszanyerheti a nem használt erőforrásokat.
+* **Szabályozás** – Azure-RBAC beállítása csapatokhoz. Visszanyerheti a nem használt erőforrásokat.
 
 [!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: d453cc5300dc658e4b33bb0591100deae5f34aef
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 69ebc238d36223a4287ae1de668f60f9c2db014a
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544740"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713590"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-answerhub"></a>Oktatóanyag: Azure Active Directory integráció a AnswerHub
 
@@ -140,7 +140,7 @@ Ebben a szakaszban a AnswerHub való egyszeri bejelentkezést állíthatja be.
 
 4. A **identitásszolgáltató-konfiguráció** lapon hajtsa végre a következő lépéseket:
 
-    ![Felhasználók & csoportok lap](./media/answerhub-tutorial/ic785172.png "SAML-telepítés")  
+    ![Képernyőfelvétel: a AnswerHub lap, amelyen a felhasználók & csoportok lap van kijelölve.](./media/answerhub-tutorial/ic785172.png "SAML-telepítés")  
   
     a. A **identitásszolgáltató bejelentkezési URL-címe** mezőbe illessze be a Azure Portalból másolt **bejelentkezési URL-címet** .
   
@@ -231,7 +231,7 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a An
 
 4. A bal oldali ablaktábla **felhasználók kezelése** területén válassza a **felhasználók létrehozása vagy importálása**lehetőséget, majd válassza a **felhasználók & csoportok**lehetőséget.
 
-   ![Felhasználók & csoportok lap](./media/answerhub-tutorial/ic785175.png "Felhasználók & csoportok")
+   ![Képernyőfelvétel: a AnswerHub lap, amelyen a felhasználók & csoportok lap van kiválasztva, és a felhasználók létrehozása vagy importálása hivatkozás kinevezett.](./media/answerhub-tutorial/ic785175.png "Felhasználók & csoportok")
 
 5. A megfelelő mezőkben adja meg a hozzáadni kívánt érvényes Azure AD **-fiók e-mail-címét**, **felhasználónevét**és **jelszavát** , majd kattintson a **Mentés**gombra.
 

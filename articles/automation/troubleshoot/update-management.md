@@ -5,12 +5,12 @@ services: automation
 ms.date: 09/25/2020
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: 26ce59c1d4ec8e3e2bf2096a4688b7639148410f
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 9f832b45b3aca11fb96a56643f2cce0228adf8ac
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91359239"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713499"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Az Update Management hibáinak elhárítása
 
@@ -226,7 +226,7 @@ A probléma lehetséges okai a következők:
 
 #### <a name="incorrect-access-on-selected-scopes"></a>Helytelen hozzáférés a kijelölt hatókörökön
 
-A Azure Portal csak azokat a gépeket jeleníti meg, amelyekhez írási hozzáférése van egy adott hatókörben. Ha nem rendelkezik megfelelő hozzáféréssel a hatókörhöz, tekintse meg az [oktatóanyag: felhasználói hozzáférés biztosítása az Azure-erőforrásokhoz a RBAC és a Azure Portal használatával](../../role-based-access-control/quickstart-assign-role-user-portal.md).
+A Azure Portal csak azokat a gépeket jeleníti meg, amelyekhez írási hozzáférése van egy adott hatókörben. Ha nem rendelkezik megfelelő hozzáféréssel a hatókörhöz, tekintse meg [az oktatóanyag: felhasználói hozzáférés biztosítása az Azure-erőforrásokhoz a Azure Portal használatával](../../role-based-access-control/quickstart-assign-role-user-portal.md)című témakört.
 
 #### <a name="arg-query-doesnt-return-expected-machines"></a>Az ARG-lekérdezés nem ad vissza várt gépeket
 
@@ -594,7 +594,7 @@ Ha Linuxon dolgozik, a frissítések besorolás szerinti („kritikus és bizton
 
 A KB2267602 a [Windows Defender definíciófrissítése](https://www.microsoft.com/wdsi/definitions). Naponta frissül.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha nem látja a problémát, vagy nem tudja elhárítani a problémát, próbálja ki a következő csatornák egyikét a további támogatáshoz.
 

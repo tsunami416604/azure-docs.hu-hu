@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 5b1e5c73f3d43ca2627729149256f3e9362d58c2
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: bd50a007b73438a5776cf6ecdb1074dc9980c537
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90984258"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713715"
 ---
 # <a name="security-recommendations-for-blob-storage"></a>Biztonsági javaslatok a blob Storage-hoz
 
@@ -29,7 +29,7 @@ Azure Security Center rendszeresen elemzi az Azure-erőforrások biztonsági ál
 
 | Ajánlás | Megjegyzések | Security Center |
 |-|----|--|
-| A Azure Resource Manager telepítési modell használata | Hozzon létre új Storage-fiókokat a Azure Resource Manager üzemi modellel a fontos biztonsági fejlesztésekhez, beleértve a jobb hozzáférés-vezérlést (RBAC) és a naplózást, a Resource Manager-alapú üzembe helyezést és irányítást, a felügyelt identitásokhoz való hozzáférést, a titkokhoz való Azure Key Vault elérését, az Azure AD-alapú hitelesítést és az Azure Storage-adatokhoz és-erőforrásokhoz Ha lehetséges, telepítse át a klasszikus üzemi modellt használó meglévő Storage-fiókokat a Azure Resource Manager használatára. További információ a Azure Resource Managerről: [Azure Resource Manager áttekintése](/azure/azure-resource-manager/resource-group-overview). | - |
+| A Azure Resource Manager telepítési modell használata | Hozzon létre új Storage-fiókokat a Azure Resource Manager üzembe helyezési modellel a fontos biztonsági fejlesztésekhez, beleértve a kiváló Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC) és a naplózást, a Resource Manager-alapú üzembe helyezést és irányítást, a felügyelt identitásokhoz való hozzáférést, a Secrets Azure Key Vault elérését, valamint az Azure AD-alapú hitelesítést, valamint az Azure Storage-adatok és- Ha lehetséges, telepítse át a klasszikus üzemi modellt használó meglévő Storage-fiókokat a Azure Resource Manager használatára. További információ a Azure Resource Managerről: [Azure Resource Manager áttekintése](/azure/azure-resource-manager/resource-group-overview). | - |
 | Az Azure Defender engedélyezése az összes Storage-fiókhoz | Az Azure Defender for Azure Storage egy további biztonsági intelligenciát biztosít, amely szokatlan és potenciálisan ártalmas kísérleteket észlel a Storage-fiókok eléréséhez vagy kiaknázásához. A biztonsági riasztások Azure Security Center, ha a tevékenységben észlelt rendellenességek bekövetkeznek, és e-mailben is elküldik az előfizetési rendszergazdáknak, a gyanús tevékenységek részleteivel és a fenyegetések kivizsgálására és elhárítására vonatkozó javaslatokkal kapcsolatban. További információ: az [Azure Defender konfigurálása az Azure Storage](../common/azure-defender-storage-configure.md)-hoz. | [Igen](../../security-center/security-center-sql-service-recommendations.md) |
 | A nem kötelező törlés bekapcsolása a blob-adatelemekhez | A Soft delete lehetővé teszi a Blobok adatainak helyreállítását a törlés után. A Soft delete szolgáltatással kapcsolatos további információkért lásd az [Azure Storage-Blobok helyreállítható törlését](storage-blob-soft-delete.md)ismertető témakört. | - |
 | Üzleti szempontból kritikus fontosságú adathalmazok tárolása a nem változtatható blobokban | A jogcímek és az időalapú adatmegőrzési szabályzatok konfigurálása a blob-adatok féreg általi tárolására (egyszer írható, olvasható) állapot. A immutably tárolt Blobok olvashatók, de a megőrzési időtartam időtartama alatt nem módosíthatók és nem törölhetők. További információ: [az üzleti szempontból kritikus fontosságú Blobok adatainak tárolása a](storage-blob-immutable-storage.md)nem módosítható tárolóval. | - |
@@ -40,7 +40,7 @@ Azure Security Center rendszeresen elemzi az Azure-erőforrások biztonsági ál
 | Ajánlás | Megjegyzések | Security Center |
 |-|----|--|
 | A blob-adathozzáférés engedélyezése a Azure Active Directory (Azure AD) használatával | Az Azure AD a blob Storage-ba irányuló kérések engedélyezéséhez nyújt kiváló biztonságot és könnyű használatot a megosztott kulcson keresztül. További információ: az [Azure-blobok és-várólisták hozzáférésének engedélyezése Azure Active Directory használatával](../common/storage-auth-aad.md). | - |
-| Ne feledje, hogy a legalacsonyabb jogosultsági szint a RBAC-on keresztüli Azure AD rendszerbiztonsági tag engedélyeinek hozzárendelésével | Ha egy szerepkört egy felhasználóhoz, csoporthoz vagy alkalmazáshoz rendel, a rendszerbiztonsági tag csak azokat az engedélyeket adja meg, amelyek szükségesek a feladataik elvégzéséhez. Az erőforrásokhoz való hozzáférés korlátozása segít megakadályozni az adataival való szándékos és rosszindulatú visszaéléseket. | - |
+| Ne feledje, hogy az Azure AD rendszerbiztonsági tag Azure RBAC | Ha egy szerepkört egy felhasználóhoz, csoporthoz vagy alkalmazáshoz rendel, a rendszerbiztonsági tag csak azokat az engedélyeket adja meg, amelyek szükségesek a feladataik elvégzéséhez. Az erőforrásokhoz való hozzáférés korlátozása segít megakadályozni az adataival való szándékos és rosszindulatú visszaéléseket. | - |
 | Felhasználói delegálási SAS használata a blob-adathoz való korlátozott hozzáférés biztosításához az ügyfeleknek | A felhasználói delegálási SAS Azure Active Directory (Azure AD) hitelesítő adatokkal, valamint a SAS számára megadott engedélyekkel van védve. A felhasználói delegálási SAS a hatóköre és a funkciója szempontjából hasonló a szolgáltatás SAS-hez, de biztonsági előnyöket biztosít a szolgáltatás SAS-re vonatkozóan. További információ: [korlátozott hozzáférés engedélyezése az Azure Storage-erőforrásokhoz közös hozzáférésű aláírások (SAS) használatával](../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). | - |
 | A fiók-hozzáférési kulcsok biztonságossá tétele Azure Key Vault | A Microsoft azt javasolja, hogy az Azure AD használatával engedélyezze az Azure Storage-ba irányuló kéréseket. Ha azonban megosztott kulcsos hitelesítést kell használnia, akkor a fiók kulcsainak védelmét Azure Key Vault. A kulcsokat a Key vaultból is lekérheti futásidőben, az alkalmazással való mentés helyett. További információ a Azure Key Vaultről: [Azure Key Vault áttekintése](../../key-vault/general/overview.md). | - |
 | A fiók kulcsai rendszeres újragenerálása | A fiókok kulcsainak rendszeres elforgatása csökkenti annak kockázatát, hogy az adatok rosszindulatú szereplőkkel legyenek kitéve. | - |
@@ -49,7 +49,7 @@ Azure Security Center rendszeresen elemzi az Azure-erőforrások biztonsági ál
 | Ha egy szolgáltatás SAS-je nem egy tárolt hozzáférési szabályzathoz van társítva, akkor a lejárati időt állítsa egy órára vagy kevesebbre. | Nem lehet visszavonni egy olyan szolgáltatáshoz tartozó SAS-t, amely nincs hozzárendelve egy tárolt hozzáférési szabályzathoz. Emiatt a lejárati időt úgy kell korlátozni, hogy az SAS egy órán vagy kevesebb ideig érvényes legyen. | - |
 | Névtelen nyilvános olvasási hozzáférés letiltása a tárolók és a Blobok számára | A névtelen nyilvános olvasási hozzáférés egy tárolóhoz és a Blobok csak olvasási hozzáférést biztosítanak ezekhez az erőforrásokhoz bármely ügyfél számára. Kerülje a nyilvános olvasási hozzáférés engedélyezését, ha a forgatókönyv megköveteli. Ha meg szeretné tudni, hogyan tilthatja le a névtelen nyilvános hozzáférést egy Storage-fiókhoz, olvassa el a [Névtelen nyilvános olvasási hozzáférés beállítása tárolók és Blobok](anonymous-read-access-configure.md)számára című témakört.  | - |
 
-## <a name="networking"></a>Hálózatkezelés
+## <a name="networking"></a>Hálózat
 
 | Ajánlás | Megjegyzések | Security Center |
 |-|----|--|
@@ -67,7 +67,7 @@ Azure Security Center rendszeresen elemzi az Azure-erőforrások biztonsági ál
 |-|----|--|
 | A kérések engedélyezésének nyomon követése | Az Azure Storage naplózásának engedélyezése az Azure Storage-ba irányuló kérelmek engedélyezésének nyomon követésére. A naplók azt jelzik, hogy egy kérelem névtelenül történt-e egy OAuth 2,0-token használatával, megosztott kulcs használatával vagy közös hozzáférésű aláírás (SAS) használatával. További információ: az [Azure Storage Analytics naplózása](../common/storage-analytics-logging.md). | - |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure biztonsági dokumentációja](https://docs.microsoft.com//azure/security/)
 - [Biztonságos fejlesztői dokumentáció](https://docs.microsoft.com/azure/security/develop/).

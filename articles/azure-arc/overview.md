@@ -3,12 +3,12 @@ title: Az Azure Arc áttekintése
 description: Ismerje meg, hogy mi az Azure arc, és hogyan segíti az ügyfelek a hibrid erőforrásaik kezelését és irányítását más Azure-szolgáltatásokkal és-funkciókkal.
 ms.date: 09/23/2020
 ms.topic: overview
-ms.openlocfilehash: e6dc052655bffae949399f77a26d7b76c5b0d13c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8e48378e5032768b3f56a5d99c1189e282ff37f8
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91335398"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714154"
 ---
 # <a name="azure-arc-overview"></a>Az Azure Arc áttekintése
 
@@ -56,7 +56,7 @@ Az Azure arc-vezérlési sík funkció díjmentesen vehető igénybe.Ide tartozn
 
 * Keresés és indexelés az Azure Resource Graph használatával.
 
-* Hozzáférés és biztonság RBAC és előfizetéseken keresztül.
+* Hozzáférés és biztonság az Azure RBAC és előfizetésekkel.
 
 * Környezetek és automatizálás sablonok és bővítmények segítségével.
 
@@ -72,7 +72,7 @@ Az aktuális előzetes verzióban az Azure arc-kompatibilis Kubernetes díjmente
 
 Az aktuális előzetes verzióban az Azure arc-kompatibilis adatszolgáltatások díjmentesen vehetők igénybe.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ha többet szeretne megtudni az ív használatára képes kiszolgálókról, tekintse meg a következő [áttekintést](./servers/overview.md) :
 

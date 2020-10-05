@@ -700,6 +700,8 @@
               href: how-to-data-flow-error-rows.md
             - name: Azure SQL DB-ről Azure Cosmos DB-re
               href: how-to-sqldb-to-cosmosdb.md
+            - name: Deduplikáció és NULL ellenőrzés kódrészletekkel
+              href: how-to-data-flow-dedupe-nulls-snippets.md
         - name: SSIS-migrálás helyszínről
           items:
             - name: SSIS-migrálás áttekintése

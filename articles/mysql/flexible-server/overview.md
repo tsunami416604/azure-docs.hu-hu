@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/21/2020
-ms.openlocfilehash: 4b629ddeb1db8dd94c1c96ecb62fafb9ca7bfc60
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 6af3d9b99625dbecf6aec656d4aa7a65e4d1b4cd
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91569662"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715200"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL – rugalmas kiszolgáló (előzetes verzió)
 
@@ -54,7 +54,9 @@ További részletekért tekintse meg a [magas rendelkezésre állással kapcsola
 
 ## <a name="automated-patching-with-managed-maintenance-window"></a>Automatizált javítás a felügyelt karbantartási időszakmal
 
-A szolgáltatás a mögöttes hardver, az operációs rendszer és az adatbázis motorjának automatizált javítását végzi. A javítás biztonsági és szoftverfrissítéseket is tartalmaz. A MySQL motor esetében az alverziók frissítései a tervezett karbantartási kiadás részeként is szerepelnek. A felhasználók úgy konfigurálhatják a javítási ütemtervet, hogy a rendszer felügyelhető legyen, vagy definiálja az egyéni ütemtervet. A karbantartási ütemterv során a javítás érvénybe lép, és a kiszolgáló a javítási folyamat részeként újraindítást igényelhet a frissítés befejezéséhez. Az egyéni ütemterv segítségével a felhasználók előre jelezheti a javítási ciklust, és olyan karbantartási időszakot választhatnak, amelynek minimális hatása van a vállalatra. Általánosságban elmondható, hogy a szolgáltatás a folyamatos integráció és a kiadás részeként havi kiadási ütemtervet követ. 
+A szolgáltatás a mögöttes hardver, az operációs rendszer és az adatbázis motorjának automatizált javítását végzi. A javítás biztonsági és szoftverfrissítéseket is tartalmaz. A MySQL motor esetében az alverziók frissítései a tervezett karbantartási kiadás részeként is szerepelnek. A felhasználók úgy konfigurálhatják a javítási ütemtervet, hogy a rendszer felügyelhető legyen, vagy definiálja az egyéni ütemtervet. A karbantartási ütemterv során a javítás érvénybe lép, és a kiszolgáló a javítási folyamat részeként újraindítást igényelhet a frissítés befejezéséhez. Az egyéni ütemterv segítségével a felhasználók előre jelezheti a javítási ciklust, és olyan karbantartási időszakot választhatnak, amelynek minimális hatása van a vállalatra. Általánosságban elmondható, hogy a szolgáltatás a folyamatos integráció és a kiadás részeként havi kiadási ütemtervet követ.
+
+További részletekért tekintse meg az [ütemezett karbantartást](concepts-maintenance.md) . 
 
 ## <a name="automatic-backups"></a>Automatikus biztonsági mentések
 
@@ -86,6 +88,8 @@ További információért lásd a [számítási és tárolási fogalmakat](conce
 ## <a name="stopstart-server-to-optimize-cost"></a>A kiszolgáló leállítása/elindítása a Cost optimalizálásához
 
 A rugalmas kiszolgálói szolgáltatás lehetővé teszi a kiszolgáló igény szerinti leállítását és elindítását a Cost optimalizálása érdekében. A számítási szintek számlázása azonnal leáll, amikor a kiszolgáló leáll. Ezzel jelentős költségmegtakarítást érhet el a fejlesztés, a tesztelés és az időkorlátos kiszámítható éles számítási feladatok esetében. A kiszolgáló hét napig leállított állapotban marad, kivéve, ha hamarabb újraindul. 
+
+További információért lásd a [kiszolgálói fogalmakat](concept-servers.md) . 
 
 ## <a name="enterprise-grade-security-and-privacy"></a>Nagyvállalati szintű biztonság és adatvédelem
 
@@ -122,7 +126,7 @@ Ezenkívül a következő elérhetőségeken léphet velünk kapcsolatba:
 - Ha a fiókjával van probléma, nyújtson be [támogatási kérelmet](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) az Azure Portalon.
 - Ha visszajelzést szeretne küldeni vagy új szolgáltatásokat kérne, hozzon létre egy bejegyzést a [UserVoice-on](https://feedback.azure.com/forums/597982-azure-database-for-mysql).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most, hogy elolvasta Azure Database for MySQL egykiszolgálós üzembe helyezési mód bevezetését, készen áll a következőre:
 
 - Hozza létre az első kiszolgálót. 

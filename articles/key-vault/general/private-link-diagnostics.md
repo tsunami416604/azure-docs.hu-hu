@@ -7,12 +7,12 @@ ms.date: 09/30/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: ea818cd14e6052da2bbcf2a4473e95c68cd5e4a9
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: faf7a6e0331e3891c2ece7461685b14e751c0894
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91671310"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713039"
 ---
 # <a name="diagnose-private-links-configuration-issues-on-azure-key-vault"></a>A magánhálózati kapcsolatok konfigurációs problémáinak diagnosztizálása Azure Key Vault
 
@@ -24,7 +24,7 @@ Ha még nem ismeri ezt a funkciót, tekintse meg [a Key Vault integrálása az A
 
 ### <a name="symptoms-covered-by-this-article"></a>A cikkben szereplő tünetek
 
-- A DNS-lekérdezések továbbra is egy nyilvános IP-címet adnak vissza a kulcstartó számára, nem pedig olyan magánhálózati IP-címet, amelyet a privát kapcsolat funkció használatával elvár.
+- A DNS-lekérdezések továbbra is egy nyilvános IP-címet adnak vissza a kulcstartó számára, nem pedig egy magánhálózati IP-címet, amelyet a privát hivatkozások funkció használatával elvár.
 - Egy, a privát hivatkozást használó ügyfél által kezdeményezett összes kérelem időtúllépésekkel vagy hálózati hibákkal meghiúsul, és a probléma nem időszakos.
 - A Key Vault privát IP-címmel rendelkezik, de a kérések továbbra is `403` választ kapnak a `ForbiddenByFirewall` belső hibakódra.
 - Privát hivatkozásokat használ, de a Key Vault továbbra is fogadja a nyilvános internetről érkező kéréseket.
@@ -46,7 +46,7 @@ Lássunk is hozzá!
 
 ### <a name="confirm-that-your-client-runs-at-the-virtual-network"></a>Ellenőrizze, hogy az ügyfél a virtuális hálózaton fut-e
 
-Ez a hibaelhárítási útmutató az alkalmazás kódjából származó kulcstárolóhoz való kapcsolódásra vonatkozik. Ilyenek például a Virtual Machines, az Azure Service Fabric Clusters, az Azure App Service, az Azure Kubernetes Service (ak) és más hasonló alkalmazások.
+Ez az útmutató segítséget nyújt a Key vaulthoz tartozó, az alkalmazás kódjából származó kapcsolatok kijavításához. Ilyenek például az Azure Virtual Machines, az Azure Service Fabric-fürtök, a Azure App Service, az Azure Kubernetes szolgáltatás (ak) és más hasonló alkalmazások.
 
 A magánhálózati hivatkozások definíciója alapján az alkalmazásnak vagy a parancsfájlnak a számítógép, a fürt vagy a környezet azon Virtual Network csatlakoztatott számítógépen kell futnia, ahol a [magánhálózati végpont erőforrása](../../private-link/private-endpoint-overview.md) telepítve lett. Ha az alkalmazás egy tetszőleges internetkapcsolattal rendelkező hálózaton fut, ez az útmutató nem alkalmazható, és valószínűleg privát hivatkozások nem használhatók.
 
@@ -128,7 +128,7 @@ Szüksége lesz az állomásnév feloldásának diagnosztizálására, és ahhoz
 Az IP-cím az a számítógép, amelyet a virtuális gépek és más *, ugyanazon Virtual Network futtató* eszközök fognak használni a kulcstartóhoz való kapcsolódáshoz. Jegyezze fel az IP-címet, vagy hagyja nyitva a böngésző fület, és ne érintse meg a további vizsgálatok során.
 
 >[!NOTE]
-> Ha a kulcstartó több privát végponttal rendelkezik, akkor több magánhálózati IP-címmel fog rendelkezni. Ez csak akkor hasznos, ha több virtuális hálózattal rendelkezik ugyanahhoz a kulcstartóhoz, amelyek mindegyike saját privát végponton keresztül (a privát végpont egyetlen Virtual Networkhoz tartozik). Győződjön meg arról, hogy a megfelelő Virtual Network diagnosztizálja a problémát, és a fenti eljárásban kiválasztja a megfelelő privát végponti kapcsolatokat. Emellett ne **hozzon** létre több privát végpontot ugyanahhoz a Key Vaulthoz ugyanabban a Virtual Network. Ez nem szükséges, és a zűrzavar forrása.
+> Ha a Key Vault több privát végponttal rendelkezik, akkor több magánhálózati IP-címmel rendelkezik. Ez csak akkor hasznos, ha több virtuális hálózattal rendelkezik ugyanahhoz a kulcstartóhoz, amelyek mindegyike saját privát végponton keresztül (a privát végpont egyetlen Virtual Networkhoz tartozik). Győződjön meg arról, hogy a megfelelő Virtual Network diagnosztizálja a problémát, és a fenti eljárásban kiválasztja a megfelelő privát végponti kapcsolatokat. Emellett ne **hozzon** létre több privát végpontot ugyanahhoz a Key Vaulthoz ugyanabban a Virtual Network. Ez nem szükséges, és a zűrzavar forrása.
 
 ## <a name="5-validate-the-dns-resolution"></a>5. a DNS-feloldás ellenőrzése
 
@@ -158,11 +158,11 @@ Linux:
 
 Láthatja, hogy a név feloldása egy nyilvános IP-címre történik, és nincs `privatelink` alias. Az aliast később ismertetjük, ezért ne aggódjon.
 
-A fenti eredmény attól függetlenül várható, hogy a gép csatlakoztatva van-e a Virtual Networkhoz, vagy egy internetkapcsolattal rendelkező, tetszőleges gép. Ez azért történik, mert a Key Vault nem rendelkezik a jóváhagyott állapotú privát kapcsolattal, ezért a Key vaultnak nem kell a privát kapcsolati kapcsolatokat támogatnia.
+A fenti eredmény attól függetlenül várható, hogy a gép csatlakoztatva van-e a Virtual Networkhoz, vagy egy internetkapcsolattal rendelkező, tetszőleges gép. Ez azért történik, mert a Key Vault nem rendelkezik jóváhagyott állapotú magánhálózati végponti kapcsolattal, ezért nem szükséges, hogy a Key Vault támogassa a privát hivatkozásokat.
 
 ### <a name="key-vault-with-private-link-resolving-from-arbitrary-internet-machine"></a>A Key Vault és a privát kapcsolat feloldása tetszőleges internetes gépről
 
-Ha a kulcstartó egy vagy több magánhálózati végponti kapcsolattal rendelkezik, és a gazdagépet egy tetszőleges, az internethez csatlakozó számítógépről oldja fel (olyan gép, amely **nem** csatlakozik a privát végpontot tároló Virtual Networkhoz), a következőt kell megtalálnia:
+Ha a kulcstartó egy vagy több magánhálózati végponti kapcsolattal rendelkezik, és a gazdagépet egy tetszőleges, az internethez csatlakozó számítógépről oldja fel (olyan gép, amely *nem* csatlakozik a privát végpontot tároló Virtual Networkhoz), a következőt kell megtalálnia:
 
 Windows:
 
@@ -253,7 +253,7 @@ Ahhoz, hogy a Key Vault névfeloldása működjön, `A` utótag vagy pontok nél
 Emellett a rekord értékének `A` (az IP-címnek) [a Key Vault magánhálózati IP-címének](#find-the-key-vault-private-ip-address-in-the-virtual-network)kell lennie. Ha megtalálta a `A` rekordot, de nem megfelelő IP-címet tartalmaz, akkor el kell távolítania a helytelen IP-címet, és hozzá kell adnia egy újat. Javasoljuk, hogy távolítsa el a teljes `A` rekordot, és vegyen fel egy újat.
 
 >[!NOTE]
-> Amikor eltávolít vagy módosít egy `A` rekordot, a gép továbbra is feloldható a régi IP-címhez, mert az élettartam (élettartam) értéke még nem jár le. Azt javasoljuk, hogy mindig az 60 másodpercnél (egy percnél) kisebb TTL-értéket válasszon, és ne legyen nagyobb 600 másodpercnél (10 perc). Ha olyan értéket ad meg, amely túl nagy, az ügyfelek az kimaradások miatt nem fognak helyreállítani problémákat.
+> Amikor eltávolít vagy módosít egy `A` rekordot, a gép továbbra is feloldható a régi IP-címhez, mert az élettartam (élettartam) értéke még nem jár le. Azt javasoljuk, hogy mindig az 60 másodpercnél (egy percnél) kisebb TTL-értéket válasszon, és ne legyen nagyobb 600 másodpercnél (10 perc). Ha olyan értéket ad meg, amely túl nagy, előfordulhat, hogy az ügyfelek túl sokáig tarthatnak az kimaradások helyreállítása érdekében.
 
 ### <a name="dns-resolution-for-more-than-one-virtual-network"></a>Egynél több Virtual Network DNS-feloldása
 
@@ -261,15 +261,13 @@ Ha több virtuális hálózat van, és mindegyik saját privát végponti erőfo
 
 A fejlettebb forgatókönyvekben több virtuális hálózat is van, amelyeken engedélyezve van a társítás. Ebben az esetben csak egy Virtual Networkra van szükség a privát végponti erőforráshoz, de előfordulhat, hogy mindkettőnek kapcsolódnia kell az saját DNS Zone-erőforráshoz. Ez a forgatókönyv nem vonatkozik közvetlenül a dokumentumra.
 
-### <a name="fact-the-user-controls-dns-resolution"></a>Tény: a felhasználó vezérli a DNS-feloldást
+### <a name="fact-you-have-control-over-dns-resolution"></a>Tény: szabályozhatja a DNS-feloldást
 
-Ha Ön hálózati tudós vagy kíváncsi személy, valószínűleg felismerte, hogyan működik a DNS-feloldás. Ahogy az [előző szakaszban](#key-vault-with-private-link-resolving-from-arbitrary-internet-machine)is látható, a privát hivatkozásokkal rendelkező kulcstartó az aliast a `{vaultname}.privatelink.vaultcore.azure.net` *nyilvános* regisztrációban fogja tartalmazni. A Virtual Network által használt DNS-kiszolgáló megkeresi az összes aliast a *privát* nevek regisztrálásához, és ha talál ilyet, a nyilvános regisztráció aliasnevei után leáll.
+Ahogy az [előző szakaszban](#key-vault-with-private-link-resolving-from-arbitrary-internet-machine)is látható, a privát hivatkozásokkal rendelkező kulcstartóban szerepel az alias a `{vaultname}.privatelink.vaultcore.azure.net` *nyilvános* regisztrációban. A Virtual Network által használt DNS-kiszolgáló a nyilvános regisztrációt használja, de ellenőrzi, hogy van-e minden alias a *privát* regisztrációhoz, és ha talál ilyet, a nyilvános regisztráció során megadott aliasokat fogja leállítani.
 
-Tegyük fel például, hogy a Virtual Network egy nevű saját DNS zónához van csatolva `privatelink.vaultcore.azure.net` , és a Key Vault nyilvános DNS-regisztrációja rendelkezik az aliassal `fabrikam.privatelink.vaultcore.azure.net` . Vegye figyelembe, hogy az utótag pontosan egyezik a saját DNS zóna nevével. Ez azt jelenti, hogy a megoldás először a `A` saját DNS zónában található névvel rendelkező rekordra fog megjelenni `fabrikam` . Ha a `A` rekord megtalálható, a rendszer az IP-címet adja vissza a DNS-lekérdezésben. Ezt az IP-címet csak a kulcstartó magánhálózati IP-címének kell megadnia.
+Ez a logika azt jelenti, hogy ha a Virtual Network egy nevű saját DNS zónához van csatolva `privatelink.vaultcore.azure.net` , és a Key Vault nyilvános DNS-regisztrációja az aliassal rendelkezik `fabrikam.privatelink.vaultcore.azure.net` (vegye figyelembe, hogy a Key Vault hostname utótagja pontosan megegyezik a saját DNS zóna nevével), majd a DNS-lekérdezés egy olyan rekordot keres, `A` amelynek neve a `fabrikam` *saját DNS zónában*van. Ha a `A` rekord megtalálható, a rendszer az IP-címet adja vissza a DNS-lekérdezésben, és a nyilvános DNS-regisztráció során nem végez további keresést.
 
-Amint láthatja, a teljes névfeloldás a felhasználói vezérlő alatt található.
-
-Ennek a kialakításnak két oka van:
+Amint láthatja, a névfeloldás a vezérlő alatt található. Ennek a kialakításnak a logikája a következő:
 
 - Lehet, hogy olyan összetett forgatókönyvvel rendelkezik, amely egyéni DNS-kiszolgálókat és helyszíni hálózatokkal való integrációt is magában foglal. Ebben az esetben meg kell határoznia, hogy a nevek hogyan legyenek lefordítva az IP-címekre.
 - Előfordulhat, hogy privát hivatkozások nélkül kell hozzáférnie a kulcstartóhoz. Ebben az esetben az állomásnév feloldása a Virtual Networkból a nyilvános IP-címet kell visszaadnia, és ez azért történik, mert a privát hivatkozások nélküli kulcstartók nem rendelkeznek az `privatelink` aliassal a név regisztrálásakor.

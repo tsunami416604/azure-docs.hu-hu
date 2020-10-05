@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: tutorial
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 9ed46f37c0906fa244d70cd2dea997f19c8bd462
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 0de41941fa5907b7d33e24de331571015510e7bf
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447413"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713796"
 ---
 # <a name="planning-and-operations-guide"></a>Tervezési és működtetési útmutató
 Ez az útmutató olyan informatikai (IT) szakemberek, informatikai építészek, Információbiztonsági elemzők és felhőalapú rendszergazdák számára készült, akik a Azure Security Center használatát tervezik.
@@ -40,7 +40,7 @@ A vállalat méretétől és felépítésétől függően előfordulhat, hogy so
 
 ![Szerepkörök](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig01-new.png)
 
-Ezek a személyek a Security Center segítségével teljesítik feladataikat. Példa:
+Ezek a személyek a Security Center segítségével teljesítik feladataikat. Például:
 
 **Bálint (számítási feladatok felelőse)**
 
@@ -120,7 +120,7 @@ A Security Center-szabályzatok a következő összetevőkből állnak:
 - [Adatgyűjtés](security-center-enable-data-collection.md): ügynökkiépítési és adatgyűjtési beállítások.
 - [Biztonsági házirend](tutorial-security-policy.md): egy [Azure Policy](../governance/policy/overview.md) , amely meghatározza, hogy mely vezérlőket figyeli és javasolja a Security Center, vagy a Azure Policy használatával új definíciókat hozhat létre, további házirendeket határozhat meg, és szabályzatokat rendelhet hozzá a felügyeleti csoportokhoz.
 - [E-mail-értesítések](security-center-provide-security-contact-details.md): biztonsági felelősök kapcsolati adatai és értesítési beállításai.
-- [Díjszabási](security-center-pricing.md)csomag: az Azure Defender vagy anélkül, amely meghatározza, hogy mely Security Center szolgáltatások érhetők el a hatókörben lévő erőforrásokhoz (előfizetések, erőforráscsoportok és munkaterületek esetében adható meg).
+- [Díjszabási](security-center-pricing.md)csomag: az Azure Defender szolgáltatással vagy anélkül meghatározható, hogy mely Security Center szolgáltatások érhetők el a hatókörben lévő erőforrásokhoz (előfizetésekhez és munkaterületekhez, illetve az API-t használó erőforráscsoportokhoz is megadható).
 
 > [!NOTE]
 > Biztonsági kapcsolattartó kinevezésével biztosítható, hogy az Azure a biztonsági incidensek esetén elérje a megfelelő illetékes személyt. Olvassa el a [Provide security contact details in Azure Security Center](security-center-provide-security-contact-details.md) (A biztonsági kapcsolattartó adatainak megadása az Azure Security Centerben) részt, amelyből megtudhatja, hogyan engedélyezheti ezt a javaslatot.
@@ -161,7 +161,7 @@ Az Azure Security Center által létrehozott munkaterületek adatait 30 napig ő
 > A Microsoft erős kötelezettségvállalásokat tesz az adatok védelmének és biztonságának védelme érdekében. A Microsoft szigorú megfelelőségi és biztonsági szabályokat követ, a kódolástól kezdve egészen a szolgáltatások üzemeltetéséig. Az adatkezeléssel és adatbiztonsággal kapcsolatos további információkért olvassa el az [Azure Security Center adatbiztonság](security-center-data-security.md) című cikket.
 >
 
-## <a name="onboarding-non-azure-resources"></a>Nem Azure-erőforrások előkészítése
+## <a name="onboard-non-azure-resources"></a>Nem Azure-erőforrások előkészítése
 
 A Security Center a nem Azure-számítógépek biztonsági állapotát is képes monitorozni, azonban ehhez elő kell készítenie ezeket az erőforrásokat. A nem Azure-beli erőforrások bevezetésével kapcsolatos további információkért olvassa el a [nem Azure-beli számítógépek](quickstart-onboard-machines.md) bevezetését ismertető témakört.
 
@@ -219,18 +219,16 @@ A következő példában gyanús RDP-tevékenységre figyelmeztető üzenetet l�
 
 Ezen a lapon a támadás idejére, a forrás eszköznevére és a megcélzott virtuális gépre vonatkozó adatokat, illetve a javasolt következő lépésre vonatkozó információkat talál. Bizonyos esetekben előfordulhat, hogy a támadás forrására vonatkozó információ üres. Ezzel kapcsolatban további információkat talál a [Missing Source Information in Azure Security Center Alerts](https://blogs.msdn.microsoft.com/azuresecurity/2016/03/25/missing-source-information-in-azure-security-center-alerts/) (Hiányzó forrásadatok az Azure Security Center riasztásaiban) című cikkben.
 
-Erről a lapról is indítható vizsgálat a támadás idővonalának, a támadás lefolyásának, a veszélyeztetett rendszereknek és a használt hitelesítő adatoknak a behatóbb ismerete és a teljes támadásfolyam grafikus megjelenítése érdekében.
-
 A feltört rendszer azonosítása után futtathat egy korábban létrehozott munkafolyamat- [automatizálást](workflow-automation.md) . Ezek olyan eljárások gyűjteményei, amelyeket Security Center lehet végrehajtani a riasztások indítása után.
 
-Az [incidensekre adott válaszokkal kapcsolatos videók Azure Security Center & Microsoft Operations Management Suite kihasználása](https://channel9.msdn.com/Blogs/Taste-of-Premier/ToP1703) érdekében olyan bemutatókat láthat, amelyek segítségével megismerheti, hogy a Security Center hogyan használhatók az egyes fázisokban.
+Az [incidensekre adott válaszokkal kapcsolatos videók Azure Security Center & Microsoft Operations Management Suite kihasználása](https://channel9.msdn.com/Blogs/Taste-of-Premier/ToP1703) érdekében láthat néhány bemutatót, amely bemutatja, hogyan használhatók a Security Center az egyes fázisokban.
 
 > [!NOTE]
 > Tekintse át a [biztonsági riasztások kezelése és válaszadás a Azure Security Centerban](security-center-managing-and-responding-alerts.md) című témakört, amelyből megtudhatja, hogyan használhatja a Security Center képességeket az incidensek megválaszolásának megkönnyítése érdekében.
 >
 >
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a dokumentumban megismerkedhetett a Security Center bevezetésével. A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md)

@@ -9,12 +9,12 @@ ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 85701f3d073b8f743ddf48910822f152420c4fc0
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 3a3395873d7655118e3fcc9c36cdfc3855f8f000
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001382"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714821"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>A blob Storage teljesítmény-és méretezhetőségi ellenőrzőlistája
 
@@ -66,7 +66,7 @@ További információ a Queue szolgáltatás skálázhatósági céljairól: az 
 Ha egy adott előfizetés/régió kombináció számára engedélyezett tárolási fiókok maximális számát keresi, értékelje ki a forgatókönyvet, és állapítsa meg, hogy az alábbi feltételek bármelyike teljesül-e:
 
 - A Storage-fiókok segítségével tárolja a nem felügyelt lemezeket, és hozzáadja ezeket a lemezeket a virtuális gépekhez? Ebben az esetben a Microsoft a felügyelt lemezek használatát javasolja. A felügyelt lemezek méretezése automatikusan történik, és nincs szükség egyéni Storage-fiókok létrehozására és felügyeletére. További információ: [Bevezetés az Azure Managed Disks](../../virtual-machines/managed-disks-overview.md) szolgáltatásba
-- Felhasználónként használ egy Storage-fiókot az adatelkülönítés érdekében? Ebben a forgatókönyvben a Microsoft azt javasolja, hogy minden ügyfélhez BLOB-tárolót használjon, a teljes Storage-fiók helyett. Az Azure Storage mostantól lehetővé teszi, hogy az Azure-szerepköröket tároló alapján rendeljen hozzá. További információkért lásd: [hozzáférés biztosítása az Azure blobhoz és a üzenetsor-adatokhoz a Azure Portal RBAC](../common/storage-auth-aad-rbac-portal.md).
+- Felhasználónként használ egy Storage-fiókot az adatelkülönítés érdekében? Ebben a forgatókönyvben a Microsoft azt javasolja, hogy minden ügyfélhez BLOB-tárolót használjon, a teljes Storage-fiók helyett. Az Azure Storage mostantól lehetővé teszi, hogy az Azure-szerepköröket tároló alapján rendeljen hozzá. További információ: [a Azure Portal használata Azure-szerepkör hozzárendeléséhez a blob-és üzenetsor-adatokhoz való hozzáféréshez](../common/storage-auth-aad-rbac-portal.md).
 - Több Storage-fiókot használ a szilánkok számára a bejövő forgalom, a kimenő I/O-műveletek másodpercenkénti (IOPS) vagy kapacitásának növelésére? Ebben a forgatókönyvben a Microsoft azt javasolja, hogy a Storage-fiókok megnövekedett korlátainak kihasználásával csökkentse a munkaterhelés számára szükséges tárolási fiókok számát, ha lehetséges. Vegye fel a kapcsolatot az [Azure támogatási szolgálatával](https://azure.microsoft.com/support/options/) , és kérjen nagyobb korlátokat a Storage-fiókjához. További információ: [nagyobb méretű, magasabb szintű Storage-fiókok bejelentése](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/).
 
 ### <a name="capacity-and-transaction-targets"></a>Kapacitás-és tranzakciós célok
@@ -284,7 +284,7 @@ A hozzáfűzési Blobok hasonlók a blokkokból álló Blobok blokkolásához. H
 
 Az oldal Blobok akkor megfelelőek, ha az alkalmazásnak véletlenszerű írást kell végeznie az adatokon. Az Azure-beli virtuális gépek lemezeit például blobként tárolja a rendszer. További információkért lásd: a [Blobok, a blobok és a Blobok hozzáfűzésének ismertetése](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs).  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A blob Storage méretezhetőségi és teljesítménybeli céljai](scalability-targets.md)
 - [A standard szintű Storage-fiókok méretezhetősége és teljesítménybeli céljai](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)

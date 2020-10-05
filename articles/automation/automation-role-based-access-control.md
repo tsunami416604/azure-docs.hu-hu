@@ -1,21 +1,21 @@
 ---
 title: A szerepkör engedélyeinek és biztonságának kezelése Azure Automation
-description: Ez a cikk a szerepköralapú hozzáférés-vezérlés (RBAC) használatát ismerteti, amely lehetővé teszi az Azure-erőforrások hozzáférés-kezelését.
+description: Ez a cikk az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatát ismerteti, amely lehetővé teszi az Azure-erőforrások hozzáférés-kezelését.
 keywords: automation rbac, szerepköralapú hozzáférés-vezérlés, azure rbac
 services: automation
 ms.subservice: shared-capabilities
 ms.date: 07/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 21742d2db6a7fde69568e5fd1e5eda98542faa47
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: efdb195ad41b036f7f470884b3a441de1db7f7f4
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87528668"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91716150"
 ---
 # <a name="manage-role-permissions-and-security"></a>Szerepköri engedélyek és biztonság kezelése
 
-A Szerepköralapú hozzáférés-vezérlés (RBAC) hozzáférés-vezérlést biztosít az Azure-erőforrásokhoz. A [RBAC](../role-based-access-control/overview.md)segítségével elkülönítheti a feladatait a csapaton belül, és csak a felhasználókhoz, csoportokhoz és alkalmazásokhoz férhet hozzá, amelyekre szükségük van a feladatok elvégzéséhez. Szerepköralapú hozzáférést biztosíthat a felhasználóknak a Azure Portal, az Azure parancssori eszközei vagy az Azure felügyeleti API-k használatával.
+Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) lehetővé teszi az Azure-erőforrások hozzáférés-kezelését. Az [Azure RBAC](../role-based-access-control/overview.md)segítségével elkülönítheti a feladatait a csapaton belül, és csak a felhasználókhoz, csoportokhoz és alkalmazásokhoz férhet hozzá, amelyekre szükségük van a feladatok elvégzéséhez. Szerepköralapú hozzáférést biztosíthat a felhasználóknak a Azure Portal, az Azure parancssori eszközei vagy az Azure felügyeleti API-k használatával.
 
 ## <a name="roles-in-automation-accounts"></a>Az Automation-fiókok szerepkörei
 
@@ -270,11 +270,11 @@ Az Update Management több szolgáltatásra is kiterjed a szolgáltatás nyújt�
 |Megoldás     |Log Analytics közreműködő         | Megoldás|
 |Virtuális gép     | Virtuális gépek közreműködője        | Virtuális gép        |
 
-## <a name="configure-rbac-for-your-automation-account"></a>Az Automation-fiók RBAC konfigurálása
+## <a name="configure-azure-rbac-for-your-automation-account"></a>Az Azure RBAC konfigurálása az Automation-fiókhoz
 
-A következő szakasz bemutatja, hogyan konfigurálhatja az Automation-fiók RBAC az [Azure Portal](#configure-rbac-using-the-azure-portal) és a [PowerShell](#configure-rbac-using-powershell)használatával.
+A következő szakasz bemutatja, hogyan konfigurálhatja az Azure RBAC az Automation-fiókjában a [Azure Portal](#configure-azure-rbac-using-the-azure-portal) és a [PowerShell](#configure-azure-rbac-using-powershell)használatával.
 
-### <a name="configure-rbac-using-the-azure-portal"></a>RBAC konfigurálása a Azure Portal használatával
+### <a name="configure-azure-rbac-using-the-azure-portal"></a>Az Azure-RBAC konfigurálása a Azure Portal használatával
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/), és nyissa meg az Automation-fiókját az Automation-fiókok lapról.
 2. Kattintson a **hozzáférés-vezérlés (iam)** elemre a hozzáférés-vezérlés (iam) lap megnyitásához. Ezen a lapon hozzáadhat új felhasználókat, csoportokat és alkalmazásokat az Automation-fiók kezeléséhez, és megtekintheti az Automation-fiókhoz konfigurálható meglévő szerepköröket.
@@ -315,7 +315,7 @@ Eltávolíthat egy olyan felhasználó hozzáférési engedélyét, aki nem keze
 
    ![Felhasználók eltávolítása](media/automation-role-based-access-control/automation-08-remove-users.png)
 
-### <a name="configure-rbac-using-powershell"></a>RBAC konfigurálása a PowerShell használatával
+### <a name="configure-azure-rbac-using-powershell"></a>Az Azure RBAC konfigurálása a PowerShell használatával
 
 Az Automation-fiókokhoz a következő [Azure PowerShell parancsmagok](../role-based-access-control/role-assignments-powershell.md)használatával is konfigurálhat szerepköralapú hozzáférést:
 
@@ -398,9 +398,9 @@ Ha az Automation-fiók hatókörében az Automation-operátori szerepkörhöz ho
 
 ![Nincs hozzáférése az erőforrásokhoz](media/automation-role-based-access-control/automation-10-no-access-to-resources.png)
 
-## <a name="configure-rbac-for-runbooks"></a>A runbookok RBAC konfigurálása
+## <a name="configure-azure-rbac-for-runbooks"></a>Az Azure-RBAC konfigurálása a runbookok
 
-Azure Automation lehetővé teszi a RBAC adott runbookok való hozzárendelését. Ehhez futtassa a következő szkriptet egy felhasználó adott runbook való hozzáadásához. Egy Automation-fiók rendszergazdája vagy egy Bérlői rendszergazda futtathatja ezt a parancsfájlt.
+Azure Automation lehetővé teszi, hogy Azure-szerepköröket rendeljen hozzá adott runbookok. Ehhez futtassa a következő szkriptet egy felhasználó adott runbook való hozzáadásához. Egy Automation-fiók rendszergazdája vagy egy Bérlői rendszergazda futtathatja ezt a parancsfájlt.
 
 ```azurepowershell-interactive
 $rgName = "<Resource Group Name>" # Resource Group name for the Automation account
@@ -423,7 +423,7 @@ New-AzRoleAssignment -ObjectId $userId -RoleDefinitionName "Automation Runbook O
 
 A parancsfájl futtatása után a felhasználó bejelentkezhet a Azure Portalba, és kiválaszthatja az **összes erőforrást**. A listán a felhasználó láthatja azokat a runbook, amelyekhez Automation Runbook-kezelőként hozzá lett adva.
 
-![Runbook RBAC a portálon](./media/automation-role-based-access-control/runbook-rbac.png)
+![Azure-RBAC Runbook a portálon](./media/automation-role-based-access-control/runbook-rbac.png)
 
 ### <a name="user-experience-for-automation-operator-role---runbook"></a>Felhasználói élmény az Automation-operátori szerepkörhöz – Runbook
 
@@ -433,6 +433,6 @@ Ha a Runbook hatókörében az Automation-operátori szerepkörhöz hozzárendel
 
 ## <a name="next-steps"></a>További lépések
 
-* További PowerShell-RBAC a következő témakörben talál: [RBAC kezelése a Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)használatával.
+* Ha többet szeretne megtudni az Azure RBAC a PowerShell használatával kapcsolatban, tekintse meg az [Azure szerepkör-hozzárendelések hozzáadása vagy eltávolítása Azure PowerShell használatával](../role-based-access-control/role-assignments-powershell.md)című részt.
 * A runbookok típusaival kapcsolatos részletekért lásd: [Azure Automation runbook-típusok](automation-runbook-types.md).
 * A runbook elindításához tekintse [meg a Runbook elindítása a Azure Automationban](start-runbooks.md)című témakört.

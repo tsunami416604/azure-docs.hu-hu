@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 6358f9d233b3c09dc4ae4f3ecac7c91dea8bba6e
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: f4687add8fdd55c8084a7180a6e0a3bffd9751b1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89228273"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715159"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>Azure-beli biztonsági alapkonfiguráció Azure Storage-hoz
 
@@ -380,13 +380,13 @@ A Microsoft-szolgáltatásokhoz és az Azure ARM-hoz Azure AD Privileged Identit
 
 ### <a name="39-use-azure-active-directory"></a>3,9: a Azure Active Directory használata
 
-**Útmutató**: a Azure Active Directory (Azure ad) használata központi hitelesítési és engedélyezési rendszerrel. Az Azure AD szerepköralapú hozzáférés-vezérlést (RBAC) biztosít, amely részletesen szabályozza az ügyfelek hozzáférését egy Storage-fiók erőforrásaihoz.  Az Azure AD-hitelesítő adatok használata, ha lehetséges, biztonsági szempontból ajánlott a fiók kulcsa helyett, ami könnyebben sérülhet. Ha az alkalmazás kialakításához közös hozzáférésű aláírásokra van szükség a blob Storage-hoz való hozzáféréshez, az Azure AD hitelesítő adataival hozzon létre egy felhasználói delegálási közös hozzáférési aláírást (SAS), amikor lehetséges a kiváló biztonság.
+**Útmutató**: a Azure Active Directory (Azure ad) használata központi hitelesítési és engedélyezési rendszerrel. Az Azure Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC) biztosít, amely részletesen szabályozza az ügyfelek hozzáférését egy Storage-fiók erőforrásaihoz.  Az Azure AD-hitelesítő adatok használata, ha lehetséges, biztonsági szempontból ajánlott a fiók kulcsa helyett, ami könnyebben sérülhet. Ha az alkalmazás kialakításához közös hozzáférésű aláírásokra van szükség a blob Storage-hoz való hozzáféréshez, az Azure AD hitelesítő adataival hozzon létre egy felhasználói delegálási közös hozzáférési aláírást (SAS), amikor lehetséges a kiváló biztonság.
 
 - [Azure AD-példány létrehozása és konfigurálása](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
 
 - [Az Azure Storage erőforrás-szolgáltató használata a kezelési erőforrások eléréséhez](https://docs.microsoft.com/azure/storage/common/authorization-resource-provider)
 
-- [Az Azure Blob-és üzenetsor-információhoz való hozzáférés konfigurálása a RBAC-ben Azure Portal](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal)
+- [Az Azure Blob-és üzenetsor-információhoz való hozzáférés konfigurálása az Azure RBAC Azure Portal](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal)
 
 - [Az Azure Storage-beli adathozzáférés engedélyezése](https://docs.microsoft.com/azure/storage/common/storage-auth)
 
@@ -478,7 +478,7 @@ Diagnosztikai beállítások létrehozása Azure Active Directory felhasználói
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: bizalmas adatok tárolására vagy feldolgozására szolgáló rendszerek elkülönítése
 
-**Útmutató**: az elkülönítés megvalósítása különálló előfizetések, felügyeleti csoportok és Storage-fiókok használatával az egyes biztonsági tartományok, például a környezet, az adatérzékenység érdekében.  A Storage-fiók korlátozásával szabályozhatja, hogy az alkalmazások és a vállalati környezetek milyen mértékben férhetnek hozzá az alkalmazásokhoz és a vállalati környezetekhez, a használt hálózatok típusa és részhalmaza alapján. A hálózati szabályok konfigurálásakor csak a megadott hálózatokon adatokat kérő alkalmazások férhetnek hozzá egy Storage-fiókhoz. Az Azure Storage szolgáltatáshoz való hozzáférést az Azure AD RBAC keresztül szabályozhatja. A magánhálózati végpontokat úgy is konfigurálhatja, hogy a virtuális hálózat és a szolgáltatás közötti adatforgalom biztonságosabbá tételét a Microsoft gerinc hálózatán keresztül végezze el, így nem kell a nyilvános internetről bejárni. 
+**Útmutató**: az elkülönítés megvalósítása különálló előfizetések, felügyeleti csoportok és Storage-fiókok használatával az egyes biztonsági tartományok, például a környezet, az adatérzékenység érdekében.  A Storage-fiók korlátozásával szabályozhatja, hogy az alkalmazások és a vállalati környezetek milyen mértékben férhetnek hozzá az alkalmazásokhoz és a vállalati környezetekhez, a használt hálózatok típusa és részhalmaza alapján. A hálózati szabályok konfigurálásakor csak a megadott hálózatokon adatokat kérő alkalmazások férhetnek hozzá egy Storage-fiókhoz. Az Azure Storage szolgáltatáshoz való hozzáférést az Azure RBAC keresztül szabályozhatja. A magánhálózati végpontokat úgy is konfigurálhatja, hogy a virtuális hálózat és a szolgáltatás közötti adatforgalom biztonságosabbá tételét a Microsoft gerinc hálózatán keresztül végezze el, így nem kell a nyilvános internetről bejárni. 
 
 - [További Azure-előfizetések létrehozása](https://docs.microsoft.com/azure/billing/billing-create-subscription)
 
@@ -502,7 +502,7 @@ Emellett a virtuális hálózati szolgáltatás végpont-házirendjeivel is szű
 
 - [Azure Storage-tűzfalak és virtuális hálózatok konfigurálása](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)
 
-- [Virtuális hálózati szolgáltatás végponti házirendjei az Azure Storage-hoz](https://docs.microsoft.com/azure/private-link/create-private-endpoint-storage-portal)
+- [Virtuális hálózati szolgáltatásvégpont-szabályzatok létrehozása az Azure Storage-hez](https://docs.microsoft.com/azure/private-link/create-private-endpoint-storage-portal)
 
 - [Az ügyfelek adatvédelmének megismerése az Azure-ban](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
 
@@ -534,13 +534,13 @@ Emellett a virtuális hálózati szolgáltatás végpont-házirendjeivel is szű
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: az erőforrásokhoz való hozzáférés szabályozása az Azure RBAC
 
-**Útmutató**: a Azure Active Directory (Azure ad) a szerepköralapú hozzáférés-vezérlés (RBAC) segítségével engedélyezi a hozzáférési jogokat a biztonságos erőforrásokhoz. Az Azure Storage egy beépített Azure-beli szerepkört határoz meg, amely magában foglalja a blob-vagy üzenetsor-adateléréshez használt engedélyek közös készleteit. 
+**Útmutató**: a Azure Active Directory (Azure ad) az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) segítségével engedélyezi a hozzáférési jogokat a biztonságos erőforrásokhoz. Az Azure Storage egy beépített Azure-beli szerepkört határoz meg, amely magában foglalja a blob-vagy üzenetsor-adateléréshez használt engedélyek közös készleteit. 
 
 - [Azure-szerepkörök kiosztása Azure Storage-fiókhoz](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal#assign-azure-roles-using-the-azure-portal)
 
 - [Az Azure Storage erőforrás-szolgáltató használata a kezelési erőforrások eléréséhez](https://docs.microsoft.com/azure/storage/common/authorization-resource-provider)
 
-- [Az Azure Blob-és üzenetsor-információhoz való hozzáférés konfigurálása a RBAC-ben Azure Portal](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal)
+- [Az Azure Blob-és üzenetsor-információhoz való hozzáférés konfigurálása az Azure RBAC Azure Portal](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal)
 
 - [HRE-példány létrehozása és konfigurálása](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
 
@@ -1113,7 +1113,7 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 **Felelősség**: megosztott
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](https://docs.microsoft.com/azure/security/benchmarks/overview)
 - További információ az [Azure biztonsági Alaptervekről](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)

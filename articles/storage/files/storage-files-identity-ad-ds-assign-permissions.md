@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
-ms.openlocfilehash: 287bd02a11c71fbdd29b28b5ec9fc8424a477fea
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: af88f0b3403fb80acbb7dacebe293ac583e35799
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320353"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91716036"
 ---
 # <a name="part-two-assign-share-level-permissions-to-an-identity"></a>Második rész: megosztási szintű engedélyek kiosztása identitáshoz
 
@@ -52,7 +52,7 @@ Ha Azure-szerepkört szeretne hozzárendelni egy Azure AD-identitáshoz a [Azure
 
 ### <a name="powershell"></a>PowerShell
 
-A következő PowerShell-minta bemutatja, hogyan rendelhet hozzá Azure-szerepköröket egy Azure AD-identitáshoz a bejelentkezési név alapján. Az Azure-szerepkörök PowerShell-lel való hozzárendelésével kapcsolatos további információkért lásd: [a hozzáférés kezelése a RBAC és a Azure PowerShell használatával](../../role-based-access-control/role-assignments-powershell.md).
+A következő PowerShell-minta bemutatja, hogyan rendelhet hozzá Azure-szerepköröket egy Azure AD-identitáshoz a bejelentkezési név alapján. Az Azure-szerepkörök PowerShell-lel való hozzárendelésével kapcsolatos további információkért lásd: Azure-beli [szerepkör-hozzárendelések hozzáadása vagy eltávolítása a Azure PowerShell modul használatával](../../role-based-access-control/role-assignments-powershell.md).
 
 Az alábbi minta parancsfájl futtatása előtt cserélje le a helyőrző értékeket, beleértve a zárójeleket is, az értékekkel együtt.
 
@@ -67,7 +67,7 @@ New-AzRoleAssignment -SignInName <user-principal-name> -RoleDefinitionName $File
 
 ### <a name="cli"></a>parancssori felület
   
-A következő CLI 2,0 parancs egy Azure-szerepkört rendel hozzá egy Azure AD-identitáshoz a bejelentkezési név alapján. Az Azure-szerepkörök Azure CLI-vel való hozzárendelésével kapcsolatos további információkért lásd: a [hozzáférés kezelése a RBAC és az Azure CLI használatával](../../role-based-access-control/role-assignments-cli.md). 
+A következő CLI 2,0 parancs egy Azure-szerepkört rendel hozzá egy Azure AD-identitáshoz a bejelentkezési név alapján. Az Azure-szerepkörök Azure CLI-vel való hozzárendelésével kapcsolatos további információkért lásd: Azure-beli [szerepkör-hozzárendelések hozzáadása vagy eltávolítása az Azure CLI használatával](../../role-based-access-control/role-assignments-cli.md). 
 
 A következő minta parancsfájl futtatása előtt ne felejtse el helyettesíteni a helyőrző értékeket, beleértve a zárójeleket is a saját értékeivel.
 
@@ -76,7 +76,7 @@ A következő minta parancsfájl futtatása előtt ne felejtse el helyettesíten
 az role assignment create --role "<role-name>" --assignee <user-principal-name> --scope "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/fileServices/default/fileshares/<share-name>"
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megosztott szintű engedélyeket rendelt hozzá, konfigurálnia kell a címtár-és a fájl szintű engedélyeket. Folytassa a következő cikkel.
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: 40654926b2998b3ba1c4ce1a5607a768f2c32340
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: c78a65c3cc2d913ba0b836947d2184b3a061a648
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987279"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714640"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Önálló Azure Automation-fiók létrehozása
 
@@ -22,7 +22,7 @@ Amikor létrehoz egy Automation-fiókot a Azure Portalban, a rendszer automatiku
 
 * Egyszerű szolgáltatásnevet hoz létre Azure Active Directoryban (Azure AD).
 * Létrehoz egy tanúsítványt.
-* Hozzárendeli a közreműködői szerepkör-alapú Access Control (RBAC), amely a runbookok használatával kezeli Azure Resource Manager erőforrásait.
+* Hozzárendeli a közreműködő szerepkört, amely Azure Resource Manager erőforrásokat kezel a runbookok használatával.
 
 A fiók létrehozásával gyorsan megkezdheti a runbookok létrehozását és üzembe helyezését az automatizálási igények kielégítése érdekében.
 
@@ -74,7 +74,7 @@ Ha Azure Automation fiókot szeretne létrehozni a Azure Portalban, hajtsa végr
    > [!NOTE]
    > Ha úgy dönt, hogy nem hozza létre a futtató fiókot az Azure-beli **futtató fiók létrehozása** **nem lehetőség kiválasztásával** , egy üzenet jelenik meg az Automation-fiók hozzáadása panelen. Bár a fiók létrejön a Azure Portalban, a fiók nem rendelkezik a megfelelő hitelesítési identitással a klasszikus üzemi modell előfizetésében vagy a Azure Resource Manager előfizetés-címtárszolgáltatás szolgáltatásban. Ezért az Automation-fióknak nincs hozzáférése az előfizetéséhez tartozó erőforrásokhoz. Ez megakadályozza, hogy az erre a fiókra hivatkozó runbookok az adott üzemi modell erőforrásaihoz tartozó erőforrások hitelesítéséhez és végrehajtásához is hozzáférjenek.
    >
-   > :::image type="content" source="media/automation-create-standalone-account/create-account-decline-create-runas-msg.png" alt-text="Képernyőkép: "a következő üzenet jelenik meg:" úgy döntött, hogy nem hoz létre futtató fiókot. "":::
+   > :::image type="content" source="media/automation-create-standalone-account/create-account-decline-create-runas-msg.png" alt-text="A prompt képernyőképe: nem rendelkezik a futtató fiók Azure Active Directoryban való létrehozásához szükséges engedélyekkel.":::
    >
    > Ha az egyszerű szolgáltatásnév nincs létrehozva, a közreműködői szerepkör nincs hozzárendelve.
    >
@@ -99,7 +99,7 @@ A klasszikus futtató fiókok már nem jönnek létre alapértelmezés szerint A
 2. Válassza a **klasszikus Azure-beli futtató fiók**lehetőséget.
 3. A klasszikus futtató fiók létrehozásának folytatásához kattintson a **Létrehozás** gombra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ a grafikus létrehozásról: [grafikus runbookok készítése Azure Automationban](automation-graphical-authoring-intro.md).
 * A PowerShell-runbookok megkezdéséhez tekintse meg az [oktatóanyag: PowerShell-Runbook létrehozása](learn/automation-tutorial-runbook-textual-powershell.md)című témakört.

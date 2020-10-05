@@ -10,22 +10,22 @@ ms.date: 09/14/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: blobs
-ms.openlocfilehash: f936991f25023303a0a673c2c2b0550474e96028
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: cca0b197bdef04ffca9b71a7f394d3359023e2b7
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90108574"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715894"
 ---
 # <a name="run-powershell-commands-with-azure-ad-credentials-to-access-blob-data"></a>PowerShell-parancsok futtatása Azure AD-beli hitelesítő adatokkal a Blobok adatainak eléréséhez
 
 Az Azure Storage olyan bővítményeket biztosít a PowerShellhez, amelyek lehetővé teszik a Azure Active Directory-(Azure AD-) hitelesítő adatokkal való bejelentkezést és parancsfájlok futtatását. Ha Azure AD-beli hitelesítő adatokkal jelentkezik be a PowerShellbe, egy OAuth 2,0 hozzáférési tokent ad vissza. A PowerShell automatikusan használja ezt a tokent, hogy engedélyezze a további adatműveleteket a blob Storage-ban. A támogatott műveletek esetében már nem kell átadnia egy fiók kulcsát vagy SAS-jogkivonatát a paranccsal.
 
-A blob-adathoz a szerepköralapú hozzáférés-vezérlés (RBAC) használatával rendelhet engedélyeket az Azure AD rendszerbiztonsági tag számára. Az Azure Storage-beli Azure-szerepkörökkel kapcsolatos további információkért lásd: [hozzáférési jogosultságok kezelése az Azure Storage-adatokhoz a RBAC használatával](../common/storage-auth-aad-rbac.md).
+Engedélyeket rendelhet a blob-adathoz az Azure AD rendszerbiztonsági tag számára az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával. Az Azure Storage-beli Azure-szerepkörökkel kapcsolatos további információkért lásd: [hozzáférési jogosultságok kezelése az Azure Storage-adatokhoz az Azure RBAC](../common/storage-auth-aad-rbac.md).
 
 ## <a name="supported-operations"></a>Támogatott műveletek
 
-Az Azure Storage-bővítmények a blob-adatokon végrehajtott műveletek esetében támogatottak. A felhívható műveletek az Azure AD rendszerbiztonsági tag által a PowerShellbe való bejelentkezéshez megadott engedélyektől függenek. Az Azure Storage-tárolók engedélyei a RBAC-on keresztül vannak hozzárendelve. Ha például hozzá lett rendelve a **blob-Adatolvasó** szerepkörhöz, futtathat parancsfájl-parancsokat, amelyek egy tárolóból olvasnak be egy adatforrást. Ha a **blob-adatközreműködői** szerepkört hozzárendelte, akkor futtathat parancsfájl-parancsokat, amelyek egy tárolót vagy az általuk tartalmazott adattartalmakat olvassák, írhatják vagy törölhetik.
+Az Azure Storage-bővítmények a blob-adatokon végrehajtott műveletek esetében támogatottak. A felhívható műveletek az Azure AD rendszerbiztonsági tag által a PowerShellbe való bejelentkezéshez megadott engedélyektől függenek. Az Azure Storage-tárolók engedélyei az Azure RBAC keresztül rendelhetők hozzá. Ha például hozzá lett rendelve a **blob-Adatolvasó** szerepkörhöz, futtathat parancsfájl-parancsokat, amelyek egy tárolóból olvasnak be egy adatforrást. Ha a **blob-adatközreműködői** szerepkört hozzárendelte, akkor futtathat parancsfájl-parancsokat, amelyek egy tárolót vagy az általuk tartalmazott adattartalmakat olvassák, írhatják vagy törölhetik.
 
 A tárolók egyes Azure Storage-műveleteihez szükséges engedélyekkel kapcsolatos további információkért lásd: [tárolási műveletek hívása OAuth-tokenekkel](/rest/api/storageservices/authorize-with-azure-active-directory#call-storage-operations-with-oauth-tokens).  
 
@@ -68,7 +68,7 @@ Az alábbi példa bemutatja, hogyan hozhat létre egy tárolót egy új Storage-
     $ctx = New-AzStorageContext -StorageAccountName "<storage-account>" -UseConnectedAccount
     ```
 
-1. A tároló létrehozása előtt rendelje hozzá a [Storage blob adatközreműködői](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) szerepkört saját magának. Annak ellenére, hogy Ön a fiók tulajdonosa, explicit engedélyekkel kell rendelkeznie az adatműveletek elvégzéséhez a Storage-fiókon. Az Azure-szerepkörök hozzárendelésével kapcsolatos további információkért lásd: [hozzáférés biztosítása az Azure blobhoz és a üzenetsor-adatokhoz a Azure Portal RBAC](../common/storage-auth-aad-rbac.md).
+1. A tároló létrehozása előtt rendelje hozzá a [Storage blob adatközreműködői](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) szerepkört saját magának. Annak ellenére, hogy Ön a fiók tulajdonosa, explicit engedélyekkel kell rendelkeznie az adatműveletek elvégzéséhez a Storage-fiókon. Az Azure-szerepkörök hozzárendelésével kapcsolatos további információkért lásd: [a Azure Portal használata Azure-szerepkör hozzárendeléséhez a blob-és üzenetsor-adatokhoz való hozzáféréshez](../common/storage-auth-aad-rbac.md).
 
     > [!IMPORTANT]
     > Az Azure-beli szerepkör-hozzárendelések eltartása néhány percet is igénybe vehet.
@@ -80,7 +80,7 @@ Az alábbi példa bemutatja, hogyan hozhat létre egy tárolót egy új Storage-
     New-AzStorageContainer -Name $containerName -Context $ctx
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A PowerShell használata Azure-szerepkör hozzárendeléséhez a blob-és üzenetsor-adateléréshez](../common/storage-auth-aad-rbac-powershell.md)
 - [Hozzáférés engedélyezése a blob-és üzenetsor-szolgáltatásokhoz az Azure-erőforrások felügyelt identitásával](../common/storage-auth-aad-msi.md)

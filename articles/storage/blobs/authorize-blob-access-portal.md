@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: blobs
 ms.custom: contperfq1
-ms.openlocfilehash: 4a9f243ce32dee9948cd2f2410b5c7f1382bf7c8
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: a4c32877ddb260e90fb4121b16a9b318616c2a4d
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90088850"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715828"
 ---
 # <a name="choose-how-to-authorize-access-to-blob-data-in-the-azure-portal"></a>Válassza ki, hogyan engedélyezze a blob-adathozzáférést a Azure Portal
 
@@ -26,11 +26,11 @@ Azt is megadhatja, hogyan engedélyezze az egyes Blobok feltöltési műveleteit
 
 ## <a name="permissions-needed-to-access-blob-data"></a>A blob-adateléréshez szükséges engedélyek
 
-Attól függően, hogy hogyan kívánja engedélyezni a blob-adatAzure Portalhoz való hozzáférést, külön engedélyekre van szüksége. A legtöbb esetben ezek az engedélyek szerepköralapú hozzáférés-vezérlésen (RBAC) keresztül érhetők el. További információ a RBAC: [Mi az az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)?](../../role-based-access-control/overview.md).
+Attól függően, hogy hogyan kívánja engedélyezni a blob-adatAzure Portalhoz való hozzáférést, külön engedélyekre van szüksége. A legtöbb esetben ezek az engedélyek az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával érhetők el. További információ az Azure RBAC: [Mi az az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)?](../../role-based-access-control/overview.md).
 
 ### <a name="use-the-account-access-key"></a>A fiók elérési kulcsának használata
 
-Ahhoz, hogy a blob-információk hozzáférhessenek a fiók elérési kulcsához, hozzá kell rendelnie egy Azure-szerepkört, amely tartalmazza a **Microsoft. Storage/storageAccounts/listkeys műveletének beolvasása/művelet**RBAC műveletet. Ez az Azure-szerepkör beépített vagy egyéni szerepkör lehet. A **Microsoft. Storage/storageAccounts/listkeys műveletének beolvasása/műveletet** támogató beépített szerepkörök a következők:
+Ahhoz, hogy a blob-információk hozzáférhessenek a fiók elérési kulcsához, hozzá kell rendelnie egy Azure-szerepkört, amely tartalmazza az Azure RBAC műveletet **Microsoft. Storage/storageAccounts/listkeys műveletének beolvasása/művelet**. Ez az Azure-szerepkör beépített vagy egyéni szerepkör lehet. A **Microsoft. Storage/storageAccounts/listkeys műveletének beolvasása/műveletet** támogató beépített szerepkörök a következők:
 
 - A Azure Resource Manager [tulajdonosi](../../role-based-access-control/built-in-roles.md#owner) szerepkör
 - A Azure Resource Manager [közreműködő](../../role-based-access-control/built-in-roles.md#contributor) szerepkör
@@ -75,11 +75,11 @@ Amikor megnyit egy tárolót, a Azure Portal jelzi, hogy jelenleg a fiók-hozzá
 
 Ha a fiók-hozzáférési kulccsal végzi a hitelesítést, a hitelesítési módszerként megadott **elérési kulcsot** fogja látni a portálon:
 
-:::image type="content" source="media/authorize-blob-access-portal/auth-method-access-key.png" alt-text="Képernyőfelvétel, amely az aktuálisan hozzáférő tárolók számára a fiók kulcsa":::
+:::image type="content" source="media/authorize-blob-access-portal/auth-method-access-key.png" alt-text="A blob-adatAzure Portalban való böngészést bemutató képernyőkép":::
 
 Ha az Azure AD-fiók használatára szeretne váltani, kattintson a képre Kiemelt hivatkozásra. Ha rendelkezik a megfelelő engedélyekkel az Ön által hozzárendelt Azure-szerepkörökön keresztül, folytathatja a folytatást. Ha azonban nem rendelkezik a megfelelő engedélyekkel, a következőhöz hasonló hibaüzenet jelenik meg:
 
-:::image type="content" source="media/authorize-blob-access-portal/auth-error-azure-ad.png" alt-text="Hiba jelenik meg, ha az Azure AD-fiók nem támogatja a hozzáférést":::
+:::image type="content" source="media/authorize-blob-access-portal/auth-error-azure-ad.png" alt-text="A blob-adatAzure Portalban való böngészést bemutató képernyőkép":::
 
 Figyelje meg, hogy nem jelennek meg Blobok a listában, ha az Azure AD-fiókja nem rendelkezik a megtekintéséhez szükséges engedélyekkel. Kattintson a **kapcsolóra** a Hívóbetű eléréséhez, és használja a hozzáférési kulcsot a hitelesítéshez.
 
@@ -87,11 +87,11 @@ Figyelje meg, hogy nem jelennek meg Blobok a listában, ha az Azure AD-fiókja n
 
 Ha az Azure AD-fiókkal végzi a hitelesítést, akkor a portálon hitelesítési módszerként megadott **Azure ad-felhasználói fiókot** fogja látni:
 
-:::image type="content" source="media/authorize-blob-access-portal/auth-method-azure-ad.png" alt-text="Képernyőfelvétel, amely az Azure AD-fiókkal jelenleg a tárolókat éri el":::
+:::image type="content" source="media/authorize-blob-access-portal/auth-method-azure-ad.png" alt-text="A blob-adatAzure Portalban való böngészést bemutató képernyőkép":::
 
 Ha a fiók-hozzáférési kulcs használatára szeretne váltani, kattintson a képre Kiemelt hivatkozásra. Ha rendelkezik hozzáféréssel a fiók kulcsához, akkor folytathatja a folytatást. Ha azonban nincs hozzáférése a fiók kulcsához, a következőhöz hasonló hibaüzenet jelenik meg:
 
-:::image type="content" source="media/authorize-blob-access-portal/auth-error-access-key.png" alt-text="Hiba jelenik meg, ha nincs hozzáférése a fiók kulcsához":::
+:::image type="content" source="media/authorize-blob-access-portal/auth-error-access-key.png" alt-text="A blob-adatAzure Portalban való böngészést bemutató képernyőkép":::
 
 Figyelje meg, hogy a listában nem jelennek meg Blobok, ha nem rendelkezik hozzáféréssel a fiók kulcsaihoz. Kattintson a **Váltás az Azure ad felhasználói fiókra** hivatkozásra az Azure ad-fiók ismételt hitelesítésre való használatához.
 
@@ -106,11 +106,11 @@ A blob-feltöltési műveletek engedélyezésének megadásához kövesse az al�
 1. Bontsa ki a **speciális** szakaszt a blob speciális tulajdonságainak megjelenítéséhez.
 1. A **Hitelesítés típusa** mezőben adja meg, hogy szeretné-e engedélyezni a feltöltési műveletet az Azure ad-fiókjával vagy a fiók hozzáférési kulcsával, ahogy az alábbi képen látható:
 
-    :::image type="content" source="media/authorize-blob-access-portal/auth-blob-upload.png" alt-text="A blob-feltöltés engedélyezési módjának módosítását bemutató képernyőkép":::
+    :::image type="content" source="media/authorize-blob-access-portal/auth-blob-upload.png" alt-text="A blob-adatAzure Portalban való böngészést bemutató képernyőkép":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure-blobok és-várólisták hozzáférésének hitelesítése Azure Active Directory használatával](../common/storage-auth-aad.md)
-- [Hozzáférés biztosítása az Azure-tárolók és-várólisták számára a Azure Portal RBAC](../common/storage-auth-aad-rbac-portal.md)
-- [Hozzáférés biztosítása Azure-blobok és -üzenetsorok adataihoz RBAC használatával az Azure CLI-vel](../common/storage-auth-aad-rbac-cli.md)
-- [Hozzáférés biztosítása Azure-blobok és -üzenetsorok adataihoz RBAC használatával a PowerShell-lel](../common/storage-auth-aad-rbac-powershell.md)
+- [A Azure Portal használata Azure-szerepkörök hozzárendeléséhez a blob-és üzenetsor-adat eléréséhez](../common/storage-auth-aad-rbac-portal.md)
+- [Az Azure CLI-vel hozzárendelhet egy Azure-szerepkört a blob-és üzenetsor-adat eléréséhez](../common/storage-auth-aad-rbac-cli.md)
+- [A Azure PowerShell modul használatával rendeljen hozzá egy Azure-szerepkört a blob-és üzenetsor-információ eléréséhez](../common/storage-auth-aad-rbac-powershell.md)

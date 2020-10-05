@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 0e9ccb3f4308a1a75a715a16ab4c1a2887b0a915
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4ffaad77a34be66d06f8f0033731d0496e444e52
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88522030"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715880"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-alibaba-cloud-service-role-based-sso"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az Alibaba Cloud Service-szel (szerepköralapú SSO)
 
@@ -114,7 +114,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -132,11 +132,11 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
 1. A **felhasználók és csoportok** lapon válassza a U2 lehetőséget a felhasználók listából, majd kattintson a **kiválasztás**gombra. Ezután kattintson a **hozzárendelés**elemre.
 
-    ![Konfiguráció tesztelése](./media/alibaba-cloud-service-role-based-sso-tutorial/test01.png)
+    ![A képernyőképen az Alibaba Hozzáadás-hozzárendelés panelje látható, és nincs kiválasztva felhasználó és csoport.](./media/alibaba-cloud-service-role-based-sso-tutorial/test01.png)
 
 1. Tekintse meg a hozzárendelt szerepkört és az Alibaba Cloud Service (szerepköralapú SSO) tesztelését.
 
-    ![Konfiguráció tesztelése](./media/alibaba-cloud-service-role-based-sso-tutorial/test02.png)
+    ![A képernyőképen az U2 felhasználóhoz rendelt tekercs látható.](./media/alibaba-cloud-service-role-based-sso-tutorial/test02.png)
 
     >[!NOTE]
     >Miután hozzárendelte a felhasználót (U2), a létrehozott szerepkör automatikusan csatolva lesz a felhasználóhoz. Ha több szerepkört hozott létre, szükség szerint csatolja a megfelelő szerepkört a felhasználóhoz. Ha a szerepköralapú egyszeri bejelentkezést több Alibaba Felhőbeli fiókkal szeretné megvalósítani az Azure AD-ből, ismételje meg a fenti lépéseket.
@@ -164,25 +164,25 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
     b. A szerepkör létrehozásához szükséges engedélyek beszerzéséhez kattintson az **engedélyek módosítása** elemre.
 
-    ![Graph-konfiguráció](./media/alibaba-cloud-service-role-based-sso-tutorial/graph01.png)
+    ![Képernyőfelvétel: a Graph Explorer-hitelesítés és a módosítási engedélyek hivatkozása.](./media/alibaba-cloud-service-role-based-sso-tutorial/graph01.png)
 
     c. Válassza ki az alábbi engedélyeket a listából, majd kattintson az **engedélyek módosítása**lehetőségre az alábbi ábrán látható módon.
 
-    ![Graph-konfiguráció](./media/alibaba-cloud-service-role-based-sso-tutorial/graph02.png)
+    ![A képernyőfelvételen a következő engedélyek láthatók: Directory. AccessAsUser. all, könyvtár. Read. all, és Directory. ReadWrite. ALL.](./media/alibaba-cloud-service-role-based-sso-tutorial/graph02.png)
 
     >[!NOTE]
     >Az engedélyek megadása után jelentkezzen be újra a Graph Explorerben.
 
     d. A Graph Explorer lapon válassza az első legördülő lista **beolvasása** lehetőséget a második **beta** legördülő listából. Ezután írja be `https://graph.microsoft.com/beta/servicePrincipals` a mezőt a legördülő lista melletti mezőbe, és kattintson a **lekérdezés futtatása**elemre.
 
-    ![Graph-konfiguráció](./media/alibaba-cloud-service-role-based-sso-tutorial/graph03.png)
+    ![A képernyőképen látható a GET és a Beta nevű Graph Explorer, valamint a lekérdezés futtatása gomb.](./media/alibaba-cloud-service-role-based-sso-tutorial/graph03.png)
 
     >[!NOTE]
     >Ha több könyvtárat használ, megadhatja a `https://graph.microsoft.com/beta/contoso.com/servicePrincipals` lekérdezés mezőjét.
 
     e. A **Válasz előnézete** szakaszban bontsa ki a appRoles tulajdonságot a "szolgáltatásnév" értékről a későbbi használat érdekében.
 
-    ![Graph-konfiguráció](./media/alibaba-cloud-service-role-based-sso-tutorial/graph05.png)
+    ![A képernyőképen a válasz előnézet szakaszban látható egyszerű szöveges szöveg jelenik meg, ahol megtekintheti a appRoles tulajdonságot.](./media/alibaba-cloud-service-role-based-sso-tutorial/graph05.png)
 
     >[!NOTE]
     >A appRoles tulajdonság megkereséséhez írja `https://graph.microsoft.com/beta/servicePrincipals/<objectID>` be a lekérdezést a mezőbe. Vegye figyelembe, hogy az az `objectID` objektum-azonosító, amelyet az Azure ad **tulajdonságlapján** másolt.
@@ -234,19 +234,19 @@ Az előző konfigurációk befejezése után tesztelje az Alibaba Cloud Service-
 
 1. A Azure Portal lépjen az **Alibaba Cloud Service (SZEREPKÖRALAPÚ SSO)** lapra, válassza az **egyszeri bejelentkezés**lehetőséget, majd kattintson a **teszt**gombra.
 
-    ![Konfiguráció tesztelése](./media/alibaba-cloud-service-role-based-sso-tutorial/test03.png)
+    ![A képernyőképen az Alibaba Cloud Service és a test Button közötti egyszeri bejelentkezés látható.](./media/alibaba-cloud-service-role-based-sso-tutorial/test03.png)
 
 2. Kattintson a **Bejelentkezés az aktuális felhasználóként** elemre.
 
-    ![Konfiguráció tesztelése](./media/alibaba-cloud-service-role-based-sso-tutorial/test04.png)
+    ![A képernyőképen a bejelentkezés aktuális felhasználói hivatkozás látható.](./media/alibaba-cloud-service-role-based-sso-tutorial/test04.png)
 
 3. A fiók kiválasztása lapon válassza a U2 lehetőséget.
 
-    ![Konfiguráció tesztelése](./media/alibaba-cloud-service-role-based-sso-tutorial/test05.png)
+    ![A képernyőképen az S S O bejelentkezési beállítás látható a kiválasztott U2-es felhasználónál.](./media/alibaba-cloud-service-role-based-sso-tutorial/test05.png)
 
 4. A következő oldal jelenik meg, amely azt jelzi, hogy a szerepköralapú egyszeri bejelentkezés sikeres.
 
-    ![Konfiguráció tesztelése](./media/alibaba-cloud-service-role-based-sso-tutorial/test06.png)
+    ![A képernyőképen a termékek & szolgáltatások lapon látható, amely a teszt sikerességét jelzi. ](./media/alibaba-cloud-service-role-based-sso-tutorial/test06.png)
 
 ## <a name="additional-resources"></a>További források
 

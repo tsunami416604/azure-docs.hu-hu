@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: troubleshooting
 ms.date: 09/04/2020
 ms.author: deanwe
-ms.openlocfilehash: 348106c405e6e096f7bfd9a225fc783c4454b1ad
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 003f97c99de7dd4be79e820e822b6071f45ed146
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91449768"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714970"
 ---
 # <a name="frequently-asked-questions-for-azure-automanage-for-vms"></a>Gyakori kérdések az Azure-beli automanage virtuális gépekről
 
@@ -35,7 +35,7 @@ Az alábbi előfeltételek az Azure automanage szolgáltatás engedélyezéséne
 - A virtuális gépek nem csatolhatnak egy másik előfizetésben lévő log Analytics-munkaterülethez
 - Az automanage nem támogatja a homokozó-előfizetéseket.
 
-**Milyen RBAC engedélyre van szükség az automanage engedélyezéséhez?**
+**Milyen Azure RBAC engedélyre van szükség az automanage engedélyezéséhez?**
 
 Ha egy meglévő automanage-fiókkal rendelkező virtuális gépen engedélyezi az automanage-alapú felügyeletet, akkor közreműködői szerepkörrel kell rendelkeznie ahhoz az erőforráscsoporthoz, amelyben a virtuális gép található.
 
@@ -113,7 +113,7 @@ Ha az állapotot *nem sikerült*megtekinteni, a virtuális gép által használt
 A [technikai támogatási esetekről szóló jegyet](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)is megadhat. A **szolgáltatás** beállításnál keresse meg és válassza ki az *automanage* ( *felügyelet és felügyelet) szakaszt a figyelés és kezelés* szakaszban.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Próbálja meg engedélyezni a Azure Portalban található virtuális gépek autofelügyeletét.
 

@@ -7,22 +7,22 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: rogarana
-ms.openlocfilehash: de0f58b54f0cb5ad450949bb1a7b8744f081227d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 50753950556531ed3915292f44668073b88be45b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320336"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91716019"
 ---
 # <a name="part-three-configure-directory-and-file-level-permissions-over-smb"></a>Harmadik rész: a könyvtár-és a fájl szintű engedélyek konfigurálása SMB protokollon keresztül 
 
 A cikk elkezdése előtt győződjön meg arról, hogy végrehajtotta az előző cikket, [rendeljen hozzá megosztási szintű engedélyeket egy identitáshoz](storage-files-identity-ad-ds-assign-permissions.md) , hogy megbizonyosodjon arról, hogy a megosztási szintű engedélyek érvényben vannak.
 
-Miután megosztási szintű engedélyeket rendelt a RBAC-hez, a megfelelő Windows ACL-eket kell konfigurálnia a gyökér, a könyvtár vagy a fájl szintjén, hogy kihasználhassa a részletes hozzáférés-vezérlés előnyeit. Gondoljon arra, hogy a RBAC engedélyek magas szintű forgalomirányító, amely meghatározza, hogy a felhasználó hozzáférhet-e a megosztáshoz. Míg a Windows ACL-ek részletesebben működnek, hogy megtudja, milyen műveleteket végezhet a felhasználó a címtár vagy a fájl szintjén. A megosztási szint és a fájl/könyvtár szintű engedélyek akkor is érvénybe lépnek, ha egy felhasználó egy fájlhoz vagy könyvtárhoz próbál hozzáférni, tehát ha a kettő között különbség van, akkor csak a legszigorúbb korlátozás lesz érvényben. Ha például egy felhasználó rendelkezik írási/olvasási hozzáféréssel a fájl szintjén, de csak egy megosztási szinten olvas, akkor csak a fájlt tudja olvasni. Ugyanez igaz lehet, ha fordították, és a felhasználó olvasási/írási hozzáféréssel rendelkezik a megosztás szintjén, de csak a fájl szintjén olvashatja el.
+A megosztási szintű engedélyek Azure RBAC való hozzárendelését követően a részletes hozzáférés-vezérlés kihasználása érdekében konfigurálnia kell a megfelelő Windows-ACL-eket a gyökér, a könyvtár vagy a fájl szintjén. Tekintse át az Azure RBAC-megosztási szintű engedélyeit, amelyek meghatározzák, hogy a felhasználók hozzáférhetnek-e a megosztáshoz. Míg a Windows ACL-ek részletesebben működnek, hogy megtudja, milyen műveleteket végezhet a felhasználó a címtár vagy a fájl szintjén. A megosztási szint és a fájl/könyvtár szintű engedélyek akkor is érvénybe lépnek, ha egy felhasználó egy fájlhoz vagy könyvtárhoz próbál hozzáférni, tehát ha a kettő között különbség van, akkor csak a legszigorúbb korlátozás lesz érvényben. Ha például egy felhasználó rendelkezik írási/olvasási hozzáféréssel a fájl szintjén, de csak egy megosztási szinten olvas, akkor csak a fájlt tudja olvasni. Ugyanez igaz lehet, ha fordították, és a felhasználó olvasási/írási hozzáféréssel rendelkezik a megosztás szintjén, de csak a fájl szintjén olvashatja el.
 
-## <a name="rbac-permissions"></a>RBAC engedélyek
+## <a name="azure-rbac-permissions"></a>Azure RBAC engedélyek
 
-A következő táblázat tartalmazza az ehhez a konfigurációhoz kapcsolódó RBAC-engedélyeket:
+A következő táblázat tartalmazza az ehhez a konfigurációhoz kapcsolódó Azure RBAC-engedélyeket:
 
 
 | Beépített szerepkör  | NTFS-engedély  | Eredményül kapott hozzáférés  |
@@ -58,7 +58,7 @@ A fájlmegosztás gyökérkönyvtárában a következő engedélyek szerepelnek:
 - NT AUTHORITY\SYSTEM: (F)
 - LÉTREHOZÓ TULAJDONOS: (OI) (CI) (IO) (F)
 
-|Felhasználók|Definíció|
+|Felhasználók|Meghatározás|
 |---|---|
 |BUILTIN\Rendszergazdák|Minden olyan felhasználó, aki a helyszíni AD DS környezet tartományi rendszergazdái.
 |BUILTIN\Users|Beépített biztonsági csoport az AD-ben. Alapértelmezés szerint NT AUTHORITY\Authenticated-felhasználókat tartalmaz. A hagyományos fájlkiszolgálók esetében kiszolgálónként konfigurálhatja a tagság definícióját. Azure Files esetében nem létezik egy üzemeltetési kiszolgáló, ezért a BUILTIN\Users ugyanazokat a felhasználókat tartalmazza, mint az NT AUTHORITY\Authenticated-felhasználók.|
@@ -116,7 +116,7 @@ icacls <mounted-drive-letter>: /grant <user-email>:(f)
 
 A Windows ACL-ek és a különböző típusú támogatott engedélyek beállításával kapcsolatos további információkért tekintse meg [az icacls parancssori útmutatója](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls)című témakört.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy a funkció engedélyezve és konfigurálva van, folytassa a következő cikkel, amelyben csatlakoztathatja az Azure-fájlmegosztást egy tartományhoz csatlakoztatott virtuális gépről.
 

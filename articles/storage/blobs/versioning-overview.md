@@ -10,12 +10,12 @@ ms.date: 08/27/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e4a13fb22fd826f82252383587bc4a273c43099f
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 191213511a6b41e3a8419660a40b8d79a5c747f2
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91613509"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714937"
 ---
 # <a name="blob-versioning"></a>BLOB verziószámozása
 
@@ -175,17 +175,17 @@ Az alábbi ábrán látható, hogy mi történik, amikor pillanatképet készít
 
 Az alábbi módszerek egyikével engedélyezheti a blob-verziókhoz való hozzáférést:
 
-- Szerepköralapú hozzáférés-vezérlés (RBAC) használatával engedélyeket adhat egy Azure Active Directory (Azure AD) rendszerbiztonsági tag számára. A Microsoft az Azure AD használatát javasolja a kiváló biztonság és a könnyű használat érdekében. További információ az Azure AD és a blob-műveletek használatáról: a Blobok [és várólisták hozzáférésének engedélyezése Azure Active Directory használatával](../common/storage-auth-aad.md).
+- Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával engedélyeket adhat egy Azure Active Directory (Azure AD) rendszerbiztonsági tag számára. A Microsoft az Azure AD használatát javasolja a kiváló biztonság és a könnyű használat érdekében. További információ az Azure AD és a blob-műveletek használatáról: a Blobok [és várólisták hozzáférésének engedélyezése Azure Active Directory használatával](../common/storage-auth-aad.md).
 - Közös hozzáférésű aláírás (SAS) használatával a blob-verziókhoz való hozzáférés delegálására. Adja meg az aláírt erőforrástípus verziószámát `bv` , amely a blob verziószámát jelöli, hogy egy adott verzió műveleteihez hozzon létre egy sas-jogkivonatot. A közös hozzáférésű aláírásokkal kapcsolatos további információkért lásd: [korlátozott hozzáférés engedélyezése az Azure Storage-erőforrásokhoz közös hozzáférésű aláírások (SAS) használatával](../common/storage-sas-overview.md).
 - A fiók-hozzáférési kulcsok használatával engedélyezheti a megosztott kulccsal rendelkező blob-verziók műveleteit. További információ: [Engedélyezés megosztott kulccsal](/rest/api/storageservices/authorize-with-shared-key).
 
 A blob verziószámozása úgy lett kialakítva, hogy az adatok véletlen vagy rosszindulatú törléssel védve legyenek. A védelem fokozása érdekében a Blobok verziójának törléséhez speciális engedélyek szükségesek. A következő szakaszok ismertetik a blob-verziók törléséhez szükséges engedélyeket.
 
-### <a name="rbac-action-to-delete-a-blob-version"></a>RBAC művelet a blob verziójának törléséhez
+### <a name="azure-rbac-action-to-delete-a-blob-version"></a>Azure RBAC művelet blob-verzió törléséhez
 
-Az alábbi táblázatban látható, hogy mely RBAC műveletek támogatják a Blobok vagy a Blobok verzióinak törlését.
+A következő táblázat bemutatja, hogy mely Azure RBAC-műveletek támogatják a Blobok vagy a Blobok verzióinak törlését.
 
-| Leírás | Blob service művelet | RBAC-adatművelet szükséges | RBAC beépített szerepkör-támogatás |
+| Leírás | Blob service művelet | Az Azure RBAC-adatművelet szükséges | Azure beépített szerepkör-támogatás |
 |----------------------------------------------|------------------------|---------------------------------------------------------------------------------------|-------------------------------|
 | A blob aktuális verziójának törlése | Delete Blob | **Microsoft. Storage/storageAccounts/blobServices/containers/Blobok/delete** | Storage-blobadatok közreműködője |
 | Verzió törlése | Delete Blob | **Microsoft. Storage/storageAccounts/blobServices/containers/Blobok/deleteBlobVersion/Action** | Storage-blobadatok tulajdonosa |
@@ -291,7 +291,7 @@ A következő táblázat ismerteti a nem megfelelően törölt Blobok számláz�
 | Ha a blob-alapú törlés és verziószámozás egyaránt engedélyezve van | A teljes tartalom hosszúságú összes meglévő verzió a szintjétől függetlenül. |
 | Ha a blob-törlés engedélyezve van, de a verziószámozás le van tiltva | Az összes létező, teljes tartalommal rendelkező törlési pillanatkép a rétegtől függetlenül. |
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 - [BLOB-verziószámozás engedélyezése és kezelése](versioning-enable.md)
 - [BLOB pillanatképének létrehozása](/rest/api/storageservices/creating-a-snapshot-of-a-blob)

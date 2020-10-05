@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
-ms.openlocfilehash: b57a57f05853b9f8c291dc2ac352db7b1e679260
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: f24fb6c4d83da0d443702afaf673079363a9ffb0
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534855"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714456"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Az Azure Storage Explorer hibaelhárítási útmutatója
 
@@ -21,13 +21,13 @@ A Microsoft Azure Storage Explorer egy különálló alkalmazás, amelynek segí
 
 Ez az útmutató a Storage Explorer gyakran előforduló problémák megoldásait összegzi.
 
-## <a name="rbac-permissions-issues"></a>A RBAC engedélyeivel kapcsolatos problémák
+## <a name="azure-rbac-permissions-issues"></a>Az Azure RBAC engedélyeivel kapcsolatos problémák
 
-A szerepköralapú hozzáférés-vezérlési [RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview) lehetővé teszi az Azure-erőforrások nagy részletességű hozzáférés-kezelését azáltal, hogy az engedélyeket a _szerepkörökhöz_ötvözi. Íme néhány stratégia a RBAC optimális működéséhez Storage Explorerban.
+Az Azure szerepköralapú hozzáférés-vezérlést biztosító [Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview) lehetővé teszi az Azure-erőforrások nagy részletességű hozzáférés-kezelését azáltal, hogy az engedélyek csoportját a _szerepkörökbe_ötvözi. Íme néhány stratégia az Azure RBAC optimális működéséhez Storage Explorerban.
 
 ### <a name="how-do-i-access-my-resources-in-storage-explorer"></a>Hogyan hozzáférni a Storage Explorer erőforrásaihoz?
 
-Ha problémába ütközik a tárolási erőforrások RBAC keresztüli elérésekor, előfordulhat, hogy a megfelelő szerepkörök nem lettek hozzárendelve. A következő szakaszok ismertetik azokat az engedélyeket, Storage Explorer jelenleg a tárolási erőforrásokhoz való hozzáférésre van szükség. Ha nem biztos benne, hogy rendelkezik a megfelelő szerepkörökkel vagy engedélyekkel, forduljon az Azure-fiók rendszergazdájához.
+Ha problémák merülnek fel a tárolási erőforrások Azure RBAC való elérésekor, előfordulhat, hogy nem lett hozzárendelve a megfelelő szerepkörökhöz. A következő szakaszok ismertetik azokat az engedélyeket, Storage Explorer jelenleg a tárolási erőforrásokhoz való hozzáférésre van szükség. Ha nem biztos benne, hogy rendelkezik a megfelelő szerepkörökkel vagy engedélyekkel, forduljon az Azure-fiók rendszergazdájához.
 
 #### <a name="read-listget-storage-accounts-permissions-issue"></a>"Olvasási: a Storage-fiók (ok) engedélyeinek listázása/beolvasása" engedélyekkel kapcsolatos probléma
 
@@ -65,7 +65,7 @@ Ha blob-tárolókat vagy-várólistákat szeretne elérni, az Azure-beli hiteles
 3. Válassza ki azt a felhasználói fiókot és bérlőt, amelyhez hozzá kívánja rendelni az erőforrást. Kattintson a Tovább gombra.
 4. Válassza ki az erőforrás típusát, adja meg az erőforrás URL-címét, és adjon meg egy egyedi megjelenítendő nevet a kapcsolódáshoz. Kattintson a Tovább gombra. Kattintson a Csatlakozás gombra.
 
-Más erőforrástípusok esetében jelenleg nem áll rendelkezésre RBAC kapcsolatos megoldás. Megkerülő megoldásként igényelhet SAS URI-t az [erőforráshoz való csatoláshoz](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-shared-access-signature-uri).
+Más erőforrástípusok esetében jelenleg nem áll rendelkezésre Azure RBAC kapcsolatos megoldás. Megkerülő megoldásként igényelhet SAS URI-t az [erőforráshoz való csatoláshoz](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-shared-access-signature-uri).
 
 ### <a name="recommended-azure-built-in-roles"></a>Ajánlott Azure beépített szerepkörök
 
@@ -175,9 +175,9 @@ Ha a sikeres bejelentkezést követően nem tudja lekérni az előfizetéseket, 
 
 Ha nem távolíthat el egy csatolt fiókot vagy tárolási erőforrást a felhasználói felületen, manuálisan törölheti az összes csatolt erőforrást a következő mappák törlésével:
 
-* Windows`%AppData%/StorageExplorer`
-* MacOS`/Users/<your_name>/Library/Application Support/StorageExplorer`
-* Linux`~/.config/StorageExplorer`
+* Windows `%AppData%/StorageExplorer`
+* MacOS `/Users/<your_name>/Library/Application Support/StorageExplorer`
+* Linux `~/.config/StorageExplorer`
 
 > [!NOTE]
 > A mappák törlése előtt Storage Explorer bezárásához.
@@ -355,7 +355,7 @@ Storage Explorer szükséges, hogy a .NET Core telepítve legyen a rendszeren. J
      sudo apt-get install -y dotnet-runtime-2.1
    ```
 
-# <a name="ubuntu-1604"></a>[Ubuntu 16,04](#tab/1604)
+# <a name="ubuntu-1604"></a>[Ubuntu 16.04](#tab/1604)
 
 1. Töltse le a Storage Explorer. tar. gz fájlt.
 2. Telepítse a [.net Core-futtatókörnyezetet](https://docs.microsoft.com/dotnet/core/install/linux):

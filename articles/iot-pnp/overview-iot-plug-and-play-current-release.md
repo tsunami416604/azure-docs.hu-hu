@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 723e63d4185adb03ddccadaa2148c665665725c2
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: c7ebcdac3174f7eb497ae3e976386ab92212e1ba
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91650017"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715565"
 ---
 # <a name="whats-in-the-current-iot-plug-and-play-release"></a>Mi a jelenlegi IoT Plug and Play kiadás
 
@@ -56,7 +56,7 @@ További információ a kódtárak és SDK-k használatáról: [Microsoft SDK-k 
 - Java-eszköz SDK [Maven 1.26.0](https://mvnrepository.com/artifact/com.microsoft.azure.sdk.iot/iot-device-client)
 - Python Device SDK [pip 2.3.0](https://pypi.org/project/azure-iot-device/)
 - Node.js Device SDK [NPM 1.17.2](https://www.npmjs.com/package/azure-iot-device)
-- .NET – IoT Hub szolgáltatás [NuGet 1.31.0](https://www.nuget.org/packages/Microsoft.Azure.Devices )
+- .NET – IoT Hub szolgáltatás [NuGet 1.27.1](https://www.nuget.org/packages/Microsoft.Azure.Devices )
 - Java – IoT Hub Service [Maven 1.26.0](https://mvnrepository.com/artifact/com.microsoft.azure.sdk.iot/iot-service-client/1.26.0)
 - Node.js-IoT Hub Service [NPM 1.13.0](https://www.npmjs.com/package/azure-iothub)
 - Python-IoT Hub/digitális Twins szolgáltatás [pip 2.2.3](https://pypi.org/project/azure-iot-hub)

@@ -9,12 +9,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: b816e7bd5e00b21700bc994fc0860195d39f2915
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 3b4d74e7ba869e0438a936817d824e841823d472
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87826517"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715722"
 ---
 # <a name="security-controls-for-azure-storage"></a>Az Azure Storage biztonsági vezérlői
 
@@ -24,7 +24,7 @@ Ez a cikk az Azure Storage-ba beépített biztonsági vezérlőket dokumentálja
 
 ## <a name="data-protection"></a>Adatvédelem
 
-| Biztonsági ellenőrzés | Igen/nem | Megjegyzések |
+| Biztonsági ellenőrzés | Igen/nem | Jegyzetek |
 |---|---|--|
 | Kiszolgálóoldali titkosítás nyugalmi állapotban: Microsoft által felügyelt kulcsok | Igen |  |
 | Kiszolgálóoldali titkosítás nyugalmi állapotban: ügyfél által felügyelt kulcsok (BYOK) | Igen | Lásd: [Storage Service encryption az ügyfél által felügyelt kulcsokkal Azure Key Vaultban](storage-service-encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).|
@@ -32,9 +32,9 @@ Ez a cikk az Azure Storage-ba beépített biztonsági vezérlőket dokumentálja
 | Az átvitel közbeni titkosítás (például ExpressRoute titkosítás, VNet titkosítás és VNet-VNet titkosítás)| Igen | A szabványos HTTPS/TLS-mechanizmusok támogatása.  A felhasználók a szolgáltatásba való továbbítás előtt is titkosítani tudják az adatokat. |
 | Titkosított API-hívások| Igen |  |
 
-## <a name="network"></a>Hálózat
+## <a name="network"></a>Network (Hálózat)
 
-| Biztonsági ellenőrzés | Igen/nem | Megjegyzések |
+| Biztonsági ellenőrzés | Igen/nem | Jegyzetek |
 |---|---|--|
 | Szolgáltatás végpontjának támogatása| Igen |  |
 | Szolgáltatás-címkék támogatása| Igen | Az Azure Storage által támogatott szolgáltatási címkékkel kapcsolatos további információkért lásd: az [Azure-szolgáltatások címkéi – áttekintés](../../virtual-network/service-tags-overview.md) . |
@@ -44,7 +44,7 @@ Ez a cikk az Azure Storage-ba beépített biztonsági vezérlőket dokumentálja
 
 ## <a name="monitoring--logging"></a>& naplózás figyelése
 
-| Biztonsági ellenőrzés | Igen/nem | Megjegyzések|
+| Biztonsági ellenőrzés | Igen/nem | Jegyzetek|
 |---|---|--|
 | Azure monitoring-támogatás (log Analytics, alkalmazás-elemzések stb.)| Igen | Azure Monitor metrikák|
 | Vezérlési és felügyeleti síkok naplózása és naplózása | Igen | Azure-tevékenységnapló |
@@ -52,14 +52,14 @@ Ez a cikk az Azure Storage-ba beépített biztonsági vezérlőket dokumentálja
 
 ## <a name="identity"></a>Identitás
 
-| Biztonsági ellenőrzés | Igen/nem | Megjegyzések|
+| Biztonsági ellenőrzés | Igen/nem | Jegyzetek|
 |---|---|--|
 | Hitelesítés| Igen | Azure Active Directory, megosztott kulcs, közös hozzáférési jogkivonat. |
-| Engedélyezés| Igen | Támogatás engedélyezése RBAC, POSIX ACL-eken és SAS-tokeneken keresztül |
+| Engedélyezés| Igen | Támogatás engedélyezése Azure RBAC, POSIX ACL-eken és SAS-tokeneken keresztül |
 
 ## <a name="configuration-management"></a>Konfigurációkezelés
 
-| Biztonsági ellenőrzés | Igen/nem | Megjegyzések|
+| Biztonsági ellenőrzés | Igen/nem | Jegyzetek|
 |---|---|--|
 | Configuration Management-támogatás (konfiguráció verziószámozása stb.)| Igen | Azure Resource Manager API-k támogatása az erőforrás-szolgáltatónál |
 

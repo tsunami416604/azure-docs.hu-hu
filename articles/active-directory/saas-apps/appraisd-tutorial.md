@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 2b8e8a6df2fc355ad6a8ef50d801dc7457e97c63
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2e355241191a4bdcab12c7c0b6527706b044a70c
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547783"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714470"
 ---
 # <a name="tutorial-integrate-appraisd-with-azure-active-directory"></a>Oktatóanyag: az értékelés integrálása a Azure Active Directory
 
@@ -86,7 +86,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Az értékelt alkalmazás egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőfelvételen az alapértelmezett attribútumok listája látható, ahol a **NameIdentifier** a **User. userPrincipalName**leképezéssel van leképezve. Az értékelt alkalmazás azt várja, hogy a **NameIdentifier** a **User. mail**használatával legyen leképezve, ezért az attribútum-hozzárendelést úgy kell módosítania, hogy a **Szerkesztés** ikonra kattint, és módosítja az attribútum-hozzárendelést.
 
-    ![image](common/edit-attribute.png)
+    ![Képernyőfelvétel: a felhasználói attribútumok ablaktábla, ahol a Szerkesztés ikon ki van emelve.](common/edit-attribute.png)
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
 
@@ -110,15 +110,15 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 4. A lap jobb felső részén kattintson a **Beállítások** ikonra, majd navigáljon a **konfiguráció**elemre.
 
-    ![image](./media/appraisd-tutorial/tutorial_appraisd_sett.png)
+    ![A képernyőképen a konfigurációs hivatkozás látható.](./media/appraisd-tutorial/tutorial_appraisd_sett.png)
 
 5. A menü bal oldalán kattintson az **SAML egyszeri bejelentkezés**elemre.
 
-    ![image](./media/appraisd-tutorial/tutorial_appraisd_single.png)
+    ![A képernyőfelvételen az SAML egyszeri bejelentkezés lehetőségre Kiemelt konfigurációs beállítások láthatók.](./media/appraisd-tutorial/tutorial_appraisd_single.png)
 
 6. Az **SAML 2,0 egyszeri bejelentkezés konfigurálása** lapon hajtsa végre a következő lépéseket:
 
-    ![image](./media/appraisd-tutorial/tutorial_appraisd_saml.png)
+    ![A képernyőfelvételen az SAML 2,0 egyszeri bejelentkezés konfigurációs oldala látható, ahol szerkesztheti az alapértelmezett továbbítási állapotot és a szolgáltatás által kezdeményezett bejelentkezést. U R L.](./media/appraisd-tutorial/tutorial_appraisd_saml.png)
 
     a. Másolja az **alapértelmezett Relay State** értéket, és illessze be a **továbbítási állapot** szövegmezőbe a Azure Portal **alapszintű SAML-konfigurációjában** .
 
@@ -126,7 +126,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 7. Görgessen le ugyanazon az oldalon a **felhasználók azonosítása**területen, hajtsa végre a következő lépéseket:
 
-    ![image](./media/appraisd-tutorial/tutorial_appraisd_identifying.png)
+    ![Képernyőfelvétel: a felhasználók azonosítására szolgáló hely, ahol megadhatja a lépés értékeit.](./media/appraisd-tutorial/tutorial_appraisd_identifying.png)
 
     a. Az **identitás-szolgáltató egyszeri bejelentkezési URL-címe** szövegmezőbe illessze be a **bejelentkezési URL-címet**, amelyet a Azure Portal másolt, majd kattintson a Save ( **Mentés**) gombra.
 
@@ -144,7 +144,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B. Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B. Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -174,15 +174,15 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek az �
 
 2. A lap jobb felső részén kattintson a **Beállítások** ikonra, majd navigáljon a **felügyeleti központ**elemre.
 
-    ![image](./media/appraisd-tutorial/tutorial_appraisd_admin.png)
+    ![Képernyőfelvétel: a beállítások lehetőség, ahol kiválaszthatja a felügyeleti központ elemet.](./media/appraisd-tutorial/tutorial_appraisd_admin.png)
 
 3. A lap tetején található eszköztáron kattintson a **People (személyek**) elemre, majd navigáljon **új felhasználó hozzáadásához**.
 
-    ![image](./media/appraisd-tutorial/tutorial_appraisd_user.png)
+    ![Képernyőfelvétel: a kiértékelt lap az emberekkel, és új felhasználó hozzáadása.](./media/appraisd-tutorial/tutorial_appraisd_user.png)
 
 4. Az **új felhasználó hozzáadása** oldalon hajtsa végre a következő lépéseket:
 
-    ![image](./media/appraisd-tutorial/tutorial_appraisd_newuser.png)
+    ![A képernyőképen az új felhasználó hozzáadása lap látható.](./media/appraisd-tutorial/tutorial_appraisd_newuser.png)
 
     a. Az **Utónév** szövegmezőbe írja be a felhasználó utónevét, például a **Britta**nevet.
 

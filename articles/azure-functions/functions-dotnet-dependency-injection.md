@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.date: 08/15/2020
 ms.author: glenga
 ms.reviewer: jehollan
-ms.openlocfilehash: 7e45537d0a9fbdd738d6a2142b9259a15498e9c9
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.openlocfilehash: f535a27e3afadaf8eefc41c5f1a8ab6c02d24c04
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89503805"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715944"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Függőséginjektálás használata a .NET Azure Functionsben
 
@@ -92,7 +92,7 @@ namespace MyNamespace
         private readonly HttpClient _client;
         private readonly IMyService _service;
 
-        public MyHttpTrigger(HttpClient httpClient, MyService service)
+        public MyHttpTrigger(HttpClient httpClient, IMyService service)
         {
             this._client = httpClient;
             this._service = service;
@@ -186,7 +186,7 @@ A következő példában szereplő `host.json` fájl hozzáadja a naplózási sz
 
 A Function Host számos szolgáltatást regisztrál. A következő szolgáltatások az alkalmazástól való függőségként is biztonságosak:
 
-|Szolgáltatástípus|Élettartama|Description|
+|Szolgáltatástípus|Élettartama|Leírás|
 |--|--|--|
 |`Microsoft.Extensions.Configuration.IConfiguration`|Singleton|Futásidejű konfiguráció|
 |`Microsoft.Azure.WebJobs.Host.Executors.IHostIdProvider`|Singleton|A gazdagép-példány AZONOSÍTÓjának biztosításáért felelős|
@@ -306,7 +306,7 @@ Alapértelmezés szerint a konfigurációs fájlok (például * aappsettings.js*
 > [!IMPORTANT]
 > A felhasználási vagy prémium csomagokban futó Function apps esetében az eseményindítókban használt konfigurációs értékek módosítása a skálázási hibákhoz vezethet. Ha az osztály ezen tulajdonságok bármelyikét megváltoztatja, a `FunctionsStartup` Function app indítási hibát eredményez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információkat találhat az alábbi forrásokban:
 
