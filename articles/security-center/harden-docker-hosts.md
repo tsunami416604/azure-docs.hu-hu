@@ -7,12 +7,12 @@ ms.date: 9/12/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 3f59bae9864e533270b0bfea829f64ccf541a8a3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 500fa45db7e0e6bffb587d9d352ee1ab49f14703
+ms.sourcegitcommit: 5b69ba21787c07547edfbfd5254eaf34315cfadd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91301431"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91712272"
 ---
 # <a name="harden-your-docker-hosts"></a>A Docker-gazdagépek megerősítése
 
@@ -32,7 +32,7 @@ A biztonsági rések észlelése esetén egyetlen javaslaton belül vannak csopo
 |Kiadás állapota:|Általánosan elérhető (GA)|
 |Árképzési|[Az Azure Defender for Servers](defender-for-servers-introduction.md) használatát igényli|
 |Szükséges szerepkörök és engedélyek:|Az **olvasó** azon a munkaterületen, amelyhez a gazdagép csatlakozik|
-|Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![No](./media/icons/no-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
+|Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Yes](./media/icons/yes-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
 |||
 
 ## <a name="identify-and-remediate-security-vulnerabilities-in-your-docker-configuration"></a>Biztonsági rések azonosítása és szervizelése a Docker-konfigurációban
@@ -50,11 +50,11 @@ A biztonsági rések észlelése esetén egyetlen javaslaton belül vannak csopo
     > [!TIP]
     > Ha elindította az eszköz leltározása lapon, és elérte ezt a javaslatot, akkor a javaslat oldalon kijelölése a **művelet végrehajtása** gombra.
     >
-    > :::image type="content" source="./media/monitor-container-security/host-security-take-action-button.png" alt-text="Log Analytics elindításához tegye a művelet gombot":::
+    > :::image type="content" source="./media/monitor-container-security/host-security-take-action-button.png" alt-text="Javaslat a biztonsági rések szervizelésére a tároló biztonsági beállításaiban ":::
 
     A Log Analytics egy egyéni művelettel nyílik meg, amely készen áll a futtatásra. Az alapértelmezett egyéni lekérdezés tartalmazza az összes észlelt szabály listáját, valamint útmutatást nyújt a problémák megoldásához.
 
-    :::image type="content" source="./media/monitor-container-security/docker-host-vulnerabilities-in-query.png" alt-text="Log Analytics lap az összes sikertelen CIS-vezérlőt megjelenítő lekérdezéssel":::
+    :::image type="content" source="./media/monitor-container-security/docker-host-vulnerabilities-in-query.png" alt-text="Javaslat a biztonsági rések szervizelésére a tároló biztonsági beállításaiban ":::
 
 1. Szükség esetén a lekérdezés paramétereinek csípése.
 
