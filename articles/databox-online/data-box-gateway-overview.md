@@ -9,10 +9,10 @@ ms.topic: overview
 ms.date: 08/21/2019
 ms.author: alkohli
 ms.openlocfilehash: aa68b746ef5c22c97fcfdcca889bf71577c19479
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85100759"
 ---
 # <a name="what-is-azure-data-box-gateway"></a>Mi az Azure Data Box Gateway?
@@ -67,13 +67,13 @@ A Data Box Gateway virtuális eszköz az alábbi műszaki adatokkal rendelkezik:
 | Specifikációk                                          | Leírás              |
 |---------------------------------------------------------|--------------------------|
 | Virtuális processzorok (magok)   | Minimum 4 |
-| Memory (Memória)  |Minimum 8 GB|
+| Memória  |Minimum 8 GB|
 | Rendelkezésre állás|Egyetlen csomópont|
 | Lemezek|Operációsrendszer-lemez: 250 GB <br> Adatlemez: legalább 2 TB, dinamikusan kiosztott és SSD-másolatokkal kiegészített|
-| Hálózati illesztők |1 vagy több virtuális hálózati adapter|
+| Hálózati adapterek |1 vagy több virtuális hálózati adapter|
 | Natív fájlmegosztási protokollok|SMB és NFS  |
 | Biztonság|Hitelesítés az eszköz és az adatok hozzáférésének feloldásához <br> Átvitel alatt álló adatok titkosítása AES-256 bites titkosítás használatával|
-| Kezelés|Helyi webes felhasználói felület – kezdeti beállítás, diagnosztika és az eszköz energiagazdálkodása <br> Azure Portal – a Data Box Gateway-eszközök napi szintű felügyelete       |
+| Felügyelet|Helyi webes felhasználói felület – kezdeti beállítás, diagnosztika és az eszköz energiagazdálkodása <br> Azure Portal – a Data Box Gateway-eszközök napi szintű felügyelete       |
 
 ## <a name="components"></a>Összetevők
 

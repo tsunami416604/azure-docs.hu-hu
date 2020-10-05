@@ -8,10 +8,10 @@ ms.date: 06/30/2020
 ms.service: azure-education
 ms.subservice: education-hub
 ms.openlocfilehash: a12c954cbce0b6b78c2f36d4fe75a901571f572a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "86535798"
 ---
 # <a name="what-is-the-azure-education-hub"></a>Mi az Azure Education-központ?
@@ -26,7 +26,7 @@ A Education-központhoz való hozzáféréshez már meg kell kapnia egy e-mailes
 
 Az akadémiai támogatás használatához létre kell hoznia egy osztályteremet a Education-központban, és az osztályban lévő előfizetéseket kell használnia, amelyek hozzáférnek az Azure-kreditekhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [A Education-központ elérése](access-education-hub.md)
+- [Hozzáférés az Education-központhoz](access-education-hub.md)
 - [Támogatási lehetőségek](educator-service-desk.md)

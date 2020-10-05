@@ -4,10 +4,10 @@ description: Futtasson Jupyter jegyzetfüzeteket a felhőben az ingyenes Azure N
 ms.topic: overview
 ms.date: 04/05/2019
 ms.openlocfilehash: d229e48e5c49a9a672c533fb24231e9329e524c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85831403"
 ---
 # <a name="overview-of-azure-notebooks-preview"></a>Az Azure Notebooks előzetes verziójának áttekintése
@@ -93,9 +93,9 @@ A Azure Notebooksával kapcsolatos kérdéseiről a [GitHub-adattáron](https://
 
 - Gyorsútmutatók:
 
-  - [Notebook létrehozása és megosztása](quickstart-create-share-jupyter-notebook.md)
-  - [Notebook klónozása](quickstart-clone-jupyter-notebook.md)
-  - [Helyi Jupyter notebook migrálása](quickstart-migrate-local-jupyter-notebook.md)
+  - [Jegyzetfüzet létrehozása és megosztása](quickstart-create-share-jupyter-notebook.md)
+  - [Jegyzetfüzet klónozása](quickstart-clone-jupyter-notebook.md)
+  - [Helyi Jupyter-jegyzetfüzet migrálása](quickstart-migrate-local-jupyter-notebook.md)
   - [Egyéni környezet használata](quickstart-create-jupyter-notebook-project-environment.md)
   - [Bejelentkezés és felhasználói azonosító beállítása](quickstart-sign-in-azure-notebooks.md)
 

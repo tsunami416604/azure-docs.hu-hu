@@ -14,10 +14,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
 ms.openlocfilehash: 7a096e355e140b18bd7df010c379e31d21f90634
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "86515053"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-and-query"></a>Rövid útmutató: a Visual Studio Code használata a kapcsolódáshoz és a lekérdezéshez 
@@ -76,13 +76,13 @@ Szerezze be a Azure SQL Databasehoz való kapcsolódáshoz szükséges kapcsolat
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-2. Navigáljon az **SQL-adatbázisok** vagy az **SQL-felügyelt példányok** lapra.
+2. Navigáljon az **SQL-adatbázisok**  vagy az **SQL-felügyelt példányok** lapra.
 
 3. Az **Áttekintés** lapon tekintse át a teljes kiszolgálónevet a SQL Database **kiszolgáló neve** mellett, vagy a **gazdagép** melletti teljes kiszolgálónevet egy SQL felügyelt példányhoz. A kiszolgálónév vagy az állomásnév másolásához vigye a kurzort a fölé, és válassza a **Másolás** ikont.
 
 ## <a name="set-language-mode-to-sql"></a>A nyelvmód SQL értékre állítása
 
-A Visual Studio Code-ban állítsa a nyelvi módot **SQL** -re az MSSQL-parancsok és a T-SQL IntelliSense engedélyezéséhez.
+A Visual Studio Code-ban állítsa a nyelvi módot **SQL**  -re az MSSQL-parancsok és a T-SQL IntelliSense engedélyezéséhez.
 
 1. Nyisson meg egy új Visual Studio Code-ablakot.
 
@@ -109,7 +109,7 @@ Hozzon létre kapcsolatot a kiszolgálóval a Visual Studio Code használatával
 
    | Tulajdonság       | Ajánlott érték | Leírás |
    | ------------ | ------------------ | ------------------------------------------------- |
-   | **Kiszolgálónév** | A teljes kiszolgálónév | Valami hasonló: **mynewserver20170313.database.Windows.net**. |
+   | **Kiszolgáló neve** | A teljes kiszolgálónév | Valami hasonló: **mynewserver20170313.database.Windows.net**. |
    | **Adatbázis neve** | mySampleDatabase | Az adatbázis, amelyhez csatlakozni kíván. |
    | **Hitelesítés** | SQL-bejelentkezés| Ez az oktatóanyag SQL-hitelesítést használ. |
    | **Felhasználónév** | Felhasználónév | A kiszolgáló létrehozásához használt kiszolgálói rendszergazdai fiók felhasználóneve. |
@@ -191,7 +191,7 @@ Futtassa az alábbi [delete](https://docs.microsoft.com/sql/t-sql/statements/del
 
 2. Nyomja le a **CTRL**E billentyűt a + **Shift** + **E** tábla megadott sorának törléséhez `Product` .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A SQL Server Management Studio használatával történő kapcsolódáshoz és lekérdezéshez tekintse meg a rövid útmutató [: a SQL Server Management Studio használata az adatbázishoz való kapcsolódáshoz Azure SQL Database és a lekérdezési](connect-query-ssms.md)információit.
 - A Azure Portal használatával történő kapcsolódáshoz és lekérdezéshez tekintse meg a gyors útmutató [: az SQL-lekérdezési szerkesztő használata a Azure Portal a kapcsolódáshoz és az adatlekérdezéshez](connect-query-portal.md).

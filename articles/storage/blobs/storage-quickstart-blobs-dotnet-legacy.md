@@ -9,10 +9,10 @@ ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.openlocfilehash: efec40e4236c00fd4792e9d6aa51943cf43838ca
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89001416"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v11-for-net"></a>Gyors útmutató: Azure Blob Storage ügyféloldali kódtár v11 a .NET-hez
@@ -54,7 +54,7 @@ Ez a szakasz végigvezeti a projekt előkészítésének folyamatán az Azure Bl
 
 Először hozzon létre egy *blob-Gyorsindítás*nevű .net Core-alkalmazást.
 
-1. Egy konzolablak (például cmd, PowerShell vagy bash) használatával `dotnet new` hozzon létre egy új Console-alkalmazást a *blob-Gyorsindítás*néven. Ez a parancs egy egyszerű ""Helló világ!"alkalmazás" C#-projektet hoz létre egyetlen forrásfájlban: *program.cs*.
+1. Egy konzolablak (például cmd, PowerShell vagy bash) használatával `dotnet new` hozzon létre egy új Console-alkalmazást a *blob-Gyorsindítás*néven. Ez a parancs egy egyszerű "„Helló világ!” alkalmazás" C#-projektet hoz létre egyetlen forrásfájlban: *program.cs*.
 
    ```console
    dotnet new console -n blob-quickstart
@@ -199,7 +199,7 @@ Az alábbi kódrészletek azt mutatják be, hogyan végezheti el a következőke
    * [Tároló létrehozása](#create-a-container)
    * [Engedélyek beállítása tárolón](#set-permissions-on-a-container)
    * [Blobok feltöltése tárolóba](#upload-blobs-to-a-container)
-   * [A tárolóban lévő blobok listázása](#list-the-blobs-in-a-container)
+   * [Tárolóban lévő blobok kilistázása](#list-the-blobs-in-a-container)
    * [Blobok letöltése](#download-blobs)
    * [Tároló törlése](#delete-a-container)
 
@@ -297,7 +297,7 @@ CloudBlockBlob cloudBlockBlob = cloudBlobContainer.GetBlockBlobReference(localFi
 await cloudBlockBlob.UploadFromFileAsync(sourceFile);
 ```
 
-### <a name="list-the-blobs-in-a-container"></a>A tárolóban lévő blobok listázása
+### <a name="list-the-blobs-in-a-container"></a>Tárolóban lévő blobok kilistázása
 
 A tárolóban lévő Blobok listázása a [ListBlobsSegmentedAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.listblobssegmentedasync) metódus használatával. Ebben az esetben a tárolóhoz csak egy blob lett hozzáadva, így a listázási művelet csak ezt az egy blobot adja vissza.
 
@@ -392,7 +392,7 @@ Az **Enter** billentyű lenyomása után az alkalmazás törli a Storage-tárol�
 
 A fájlok ellenőrzése után nyomja le bármelyik billentyűt a bemutató befejezéséhez és a tesztfájlok törléséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ennek a rövid útmutatónak a segítségével megismerkedett a blobok a .NET használatával való fel- és letöltésével, valamint kilistázásával.
 

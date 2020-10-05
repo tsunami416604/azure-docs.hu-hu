@@ -18,10 +18,10 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 04/30/2019
 ms.openlocfilehash: b8ac964c62ac4b30e9280e4ae921297ba860d7c2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "86529930"
 ---
 # <a name="what-is-azure-notification-hubs"></a>Mi az az Azure Notification Hubs?
@@ -111,7 +111,7 @@ Notification Hubs a használatra kész leküldéses motor a következő előnyö
 - **Biztonság**
   - Közös hozzáférésű jogosultságkód (SAS) vagy összevont hitelesítés.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az értesítési központ létrehozásának és használatának első lépéseinek végrehajtásához kövesse az [értesítések mobilalkalmazásokba való leküldésével](notification-hubs-android-push-notification-google-fcm-get-started.md) foglalkozó oktatóanyagot.
 

@@ -14,10 +14,10 @@ ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc
 ms.openlocfilehash: 02304758ef89ff7c94d1c3d8f98f6931ab7fd8dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "82233125"
 ---
 # <a name="create-a-cicd-pipeline-for-go-using-azure-devops-starter"></a>CI/CD-folyamat létrehozása a Go-hoz az Azure DevOps Starter használatával
@@ -40,7 +40,7 @@ A DevOps Starter egy CI/CD-folyamatot hoz létre az Azure-folyamatokban. Létreh
 
 1. Válassza ki a **Go** minta alkalmazást, majd kattintson a **tovább**gombra.  
     
-1. Az alapértelmezett keretrendszer az **Egyszerű Go-alkalmazás**. Válassza a **Tovább** lehetőséget.  Az alkalmazás-keretrendszer, amelyet korábban választott, megdiktálja az üzembe helyezéshez elérhető Azure-szolgáltatások telepítési céljainak típusát. 
+1. Az alapértelmezett keretrendszer az **Egyszerű Go-alkalmazás**. Kattintson a **Tovább** gombra.  Az alkalmazás-keretrendszer, amelyet korábban választott, megdiktálja az üzembe helyezéshez elérhető Azure-szolgáltatások telepítési céljainak típusát. 
     
 1. Hagyja meg az alapértelmezett Azure-szolgáltatást, és kattintson a **Tovább gombra**.
 
@@ -114,7 +114,7 @@ A DevOps Starter automatikusan beállítja a teljes CI/CD-folyamatot az Azure Re
 
 1. Válassza a **naplók**lehetőséget. A naplók hasznos információkat tartalmaznak az üzembehelyezési folyamattal kapcsolatban. Ezeket az üzembe helyezések során és után is megtekintheti.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rá szükség, törölheti az Azure App Service példányt és az ebben a rövid útmutatóban létrehozott kapcsolódó erőforrásokat. Ehhez használja a **delete** funkciót a DevOps Starter irányítópultján.
 

@@ -4,10 +4,10 @@ description: 'Rövid útmutató: a Azure Event Grid és az Azure CLI vagy a port
 ms.date: 07/07/2020
 ms.topic: quickstart
 ms.openlocfilehash: aea52bcaa94d6f288e86e44e1a0f294796d8e4a3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91324396"
 ---
 # <a name="quickstart-route-custom-events-to-an-azure-function-with-event-grid"></a>Gyors útmutató: egyéni események átirányítása egy Azure-függvénybe Event Grid
@@ -26,7 +26,7 @@ Az egyéni témakörre való feliratkozás előtt hozzon létre egy függvényt 
         :::image type="content" source="./media/custom-event-to-function/function-event-grid-trigger.png" alt-text="Event Grid trigger kiválasztása":::
 3. Az **új függvény** lapon adja meg a függvény nevét, majd válassza a **create Function (függvény létrehozása**) lehetőséget.
 
-    :::image type="content" source="./media/custom-event-to-function/new-function-page.png" alt-text="Új függvény lap":::
+    :::image type="content" source="./media/custom-event-to-function/new-function-page.png" alt-text="Event Grid trigger kiválasztása":::
 4. A **kód + teszt** lapon megtekintheti a függvény meglévő kódját, és frissítheti azt. 
 
 [!INCLUDE [event-grid-register-provider-portal.md](../../includes/event-grid-register-provider-portal.md)]
@@ -88,7 +88,7 @@ Az Event Grid-témakörre való feliratkozással lehet tudatni az Event Griddel,
     
         A kötegelt feldolgozás magas átviteli sebességet biztosít. A **másodpercenkénti események**maximális száma beállításnál állítsa be, hogy az előfizetés hány eseményt tartalmazzon egy kötegben. Az előnyben részesített batch-méret a Batch méretének előnyben részesített felső határát adja meg kilogramm bájtban, de túlléphető, ha egyetlen esemény nagyobb ennél a küszöbértéknél.
     
-        :::image type="content" source="./media/custom-event-to-function/enable-batching.png" alt-text="Kötegelt feldolgozás engedélyezése":::
+        :::image type="content" source="./media/custom-event-to-function/enable-batching.png" alt-text="Event Grid trigger kiválasztása":::
     6. Az **esemény-előfizetés létrehozása** lapon válassza a **Létrehozás**lehetőséget.
 
 ## <a name="send-an-event-to-your-topic"></a>Esemény elküldése a témakörbe
@@ -187,7 +187,7 @@ Ha tovább kívánja használni az eseményt, akkor ne törölje a cikkben létr
 
     A rendszerképben látható másik erőforráscsoportot a Cloud Shell ablak hozta létre és használta. Ha később nem tervezi használni a Cloud Shell ablakot, törölje azt. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megismerkedett vele, hogyan hozhat létre témaköröket és eseményfeliratkozásokat, bővebben is tájékozódhat arról, hogy miben nyújthat segítséget az Event Grid:
 

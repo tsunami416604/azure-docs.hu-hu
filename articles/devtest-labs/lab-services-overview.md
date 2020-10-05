@@ -4,10 +4,10 @@ description: Azure DevTest Labs és Azure Lab Services összehasonlítása.
 ms.topic: overview
 ms.date: 06/26/2020
 ms.openlocfilehash: b1cd476faf6c457033ffeace03cd2e37b51e8578
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85480082"
 ---
 # <a name="compare-azure-devtest-labs-and-azure-lab-services"></a>Azure DevTest Labs és Azure Lab Services összehasonlítása
@@ -99,7 +99,7 @@ Az alábbi táblázat az Azure Lab Services által támogatott tesztkörnyezetek
 | Az Azure-infrastruktúra felügyelete a tesztkörnyezetben. |  A szolgáltatás automatikusan felügyeli. | A felhasználó saját maga felügyeli.  |
 | Beépített rugalmasság az infrastruktúrával kapcsolatos problémákkal szemben | A szolgáltatás automatikusan kezeli. | A felhasználó saját maga felügyeli.  |
 | Előfizetés-kezelés | A szolgáltatás kezeli az erőforrások kiosztását a szolgáltatást támogató Microsoft-előfizetéseken belül. A szolgáltatás automatikusan kezeli a méretezést. | A felhasználó saját maga felügyeli a saját Azure-előfizetésében. Nincsenek automatikus skálázási előfizetések. |
-| Azure Resource Manager-alapú üzemi környezet a tesztkörnyezetben | Nem érhető el | Elérhető |
+| Azure Resource Manager-alapú üzemi környezet a tesztkörnyezetben | Nem elérhető | Elérhető |
 
 ## <a name="next-steps"></a>További lépések
 

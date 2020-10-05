@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 11/23/2019
 ms.author: duau
 ms.openlocfilehash: 830700fb4a5ac57405877364e9cc4828e5d1a5a4
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89392544"
 ---
 # <a name="what-is-traffic-manager"></a>Mi az a Traffic Manager?
@@ -56,7 +56,7 @@ A [beágyazott Traffic Manager profilok](traffic-manager-nested-profiles.md)hasz
 Díjszabási információkért tekintse meg a [Traffic Manager díjszabását](https://azure.microsoft.com/pricing/details/traffic-manager/) ismertető részt.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Útmutató a [Traffic Manager-profil létrehozásához](traffic-manager-create-profile.md).
 - Útmutató a [Traffic Manager működéséhez](traffic-manager-how-it-works.md).

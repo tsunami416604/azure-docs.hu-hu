@@ -12,17 +12,17 @@ ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: 9132c9609961053e7f60344dc387b2a8d01bd6b9
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85212989"
 ---
 # <a name="quickstart-configure-workload-isolation-using-t-sql"></a>Rövid útmutató: a munkaterhelés elkülönítésének konfigurálása T-SQL használatával
 
 Ebben a rövid útmutatóban gyorsan létre fog hozni egy munkaterhelési csoportot és egy besorolást az erőforrások az adatok betöltéséhez való kiszolgálásához. A munkaterhelés-csoport a rendszererőforrások 20%-át az adatterhelések számára fogja kiosztani.  A számítási feladatok besorolása a kérelmeket az adatterhelések terhelési csoportjához rendeli.  Az adatterhelések 20%-os elkülönítése esetén a rendszer garantált forrásokat biztosít a kitalált SLA-hoz.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
+Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 > [!NOTE]
 > Ha egy szinapszis SQL-példányt hoz létre az Azure szinapszis Analytics szolgáltatásban, akkor egy új számlázható szolgáltatást eredményezhet.  További információ: az [Azure szinapszis Analytics díjszabása](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
@@ -94,7 +94,7 @@ SELECT * FROM
 sys.dm_workload_management_workload_groups_stats
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 ```sql
 DROP WORKLOAD CLASSIFIER [wgcELTLogin]
@@ -110,5 +110,5 @@ Az adattárház-egységek és az adattárházban tárolt adatforgalomért kell f
 
 ## <a name="next-steps"></a>További lépések
 
-- Most létrehozott egy munkaterhelés-csoportot. Futtasson néhány lekérdezést a ELTLogin, hogy láthassa, hogyan végzik el. A lekérdezéseket és a hozzárendelt munkaterhelési csoportot a [sys. dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql/?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) témakörben tekintheti meg.
+- Most létrehozott egy munkaterhelés-csoportot. Futtasson néhány lekérdezést a ELTLogin, hogy láthassa, hogyan végzik el. A lekérdezéseket és a hozzárendelt munkaterhelési csoportot a [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql/?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) oldalon tekintheti meg.
 - További információ az SQL-alapú számítási feladatok kezeléséről: [munkaterhelés-kezelés](sql-data-warehouse-workload-management.md) és munkaterhelés- [elkülönítés](sql-data-warehouse-workload-isolation.md).

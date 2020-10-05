@@ -4,10 +4,10 @@ description: Ez a rövid útmutató bemutatja, hogyan adhat hozzá a kérdésekh
 ms.topic: quickstart
 ms.date: 05/26/2020
 ms.openlocfilehash: a832d9f421d3a1851401c286f129e29d0196ec99
-ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "84331389"
 ---
 # <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>Gyors útmutató: kérdések és válaszok felvétele QnA Maker portálra
@@ -43,7 +43,7 @@ Az aktuális Tudásbázis rendelkezik a QnA Maker hibaelhárítási QnA párokka
 
 Az URL-cím importálása után csak egy kérdés lett létrehozva. Ebben az eljárásban további kérdéseket is megadhat.
 
-1. A **Szerkesztés** lapon használja a kérdés és válasz párok fölötti keresési szövegmezőt a kérdés megtalálásához.`How large a knowledge base can I create?`
+1. A **Szerkesztés** lapon használja a kérdés és válasz párok fölötti keresési szövegmezőt a kérdés megtalálásához. `How large a knowledge base can I create?`
 
 1. A **kérdés** oszlopban válassza az **+ alternatív megfogalmazás hozzáadása** lehetőséget, majd adja hozzá a következő táblázatban megadott összes új megfogalmazást.
 
@@ -103,7 +103,7 @@ A tudásbázist úgy szerkesztette, hogy több kérdést támogasson, és a név
 
 Ha nem folytatja a következő rövid útmutatót, törölje a QnA Maker és a bot Framework erőforrásait a Azure Portalban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Válasz kérése Postman vagy cURL használatával](get-answer-from-knowledge-base-using-url-tool.md)

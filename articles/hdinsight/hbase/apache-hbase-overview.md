@@ -9,10 +9,10 @@ ms.topic: overview
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/20/2020
 ms.openlocfilehash: afbf9aff09999a34a84d55634a868250fbb6d1ff
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "82188960"
 ---
 # <a name="what-is-apache-hbase-in-azure-hdinsight"></a>Mi az Apache HBase az Azure HDInsight
@@ -43,7 +43,7 @@ A kanonikus használati eset, amelyre a BigTable (és az HBase-t) a webes keres�
 |Kulcs-érték tároló|A HBase használható kulcs-érték tárolóként, és alkalmas az üzenetek rendszerének kezelésére. A Facebook HBase használ az üzenetkezelési rendszerhez, és ideális megoldás az internetes kommunikáció tárolására és kezelésére. A WebTable a HBase eszközt használja a weblapokról kinyert táblázatok keresésére és kezelésére.|
 |Érzékelői adatok|A HBase hasznos a növekményesen, különböző forrásokból gyűjtött adatok rögzítéséhez. Ezek az adatkészletek a közösségi elemzések és az idősorozatok közé tartoznak. Az interaktív irányítópultok naprakészen tartása a trendek és a számlálók használatával, valamint a naplózási rendszerek kezelése. Ilyenek például a Bloomberg Trader Terminal és a Open Time Series-adatbázis (OpenTSDB). A OpenTSDB tárolja és hozzáférést biztosít a kiszolgálói rendszerek állapotáról összegyűjtött mérőszámokhoz.|
 |Valós idejű lekérdezés|A [Apache Phoenix](https://phoenix.apache.org/) az Apache HBase SQL-lekérdezési motorja. A szolgáltatás JDBC-illesztőprogramként érhető el, és lehetővé teszi a HBase-táblák lekérdezését és kezelését az SQL használatával.|
-|A HBase platformként|Az alkalmazások a HBase felett futhatnak adattárolóként. Ilyenek például a Phoenix, `Kiji`a OpenTSDB, a és a Titan. Az alkalmazások integrálhatók is a HBase eszközzel. Ilyenek például a következők: [Apache Hive](https://hive.apache.org/), Apache Pig, [Solr](https://lucene.apache.org/solr/), Apache Storm, Apache Flume, [Apache Impala](https://impala.apache.org/), Apache Spark, `Ganglia`és Apache Drill.|
+|A HBase platformként|Az alkalmazások a HBase felett futhatnak adattárolóként. Ilyenek például a Phoenix, a OpenTSDB, `Kiji` a és a Titan. Az alkalmazások integrálhatók is a HBase eszközzel. Ilyenek például a következők: [Apache Hive](https://hive.apache.org/), Apache Pig, [Solr](https://lucene.apache.org/solr/), Apache Storm, Apache Flume, [Apache Impala](https://impala.apache.org/), Apache Spark, `Ganglia` és Apache Drill.|
 
 ## <a name="next-steps"></a>További lépések
 

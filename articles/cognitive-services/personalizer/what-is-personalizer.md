@@ -6,10 +6,10 @@ ms.date: 08/27/2020
 ms.custom: cog-serv-seo-aug-2020
 keywords: személyre szabott, Azure személyre szabott, gépi tanulás
 ms.openlocfilehash: 93b1f0487818cf783cc4a19f79618cfe2285cbd1
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89055617"
 ---
 # <a name="what-is-personalizer"></a>Mi a Personalizer?
@@ -77,7 +77,7 @@ Mivel a személyre szabott, közel valós időben a személyre szabott adatokat 
 1. [Tervezze](concepts-features.md) meg és tervezze meg a tartalmat, a **_műveleteket_** és a **_környezetet_**. Határozza meg **_a jutalmas pontszámhoz_** tartozó jutalmazási algoritmust.
 1. Az Ön által létrehozott minden [személyre szabott erőforrás](how-to-settings.md) egy tanulási ciklusnak tekintendő. A hurok az adott tartalomhoz vagy felhasználói élményhez tartozó rang és jutalmazási hívásokat is megkapja.
 
-    |Erőforrás típusa| Cél|
+    |Erőforrás típusa| Rendeltetés|
     |--|--|
     |[Gyakornoki mód](concept-apprentice-mode.md) `E0`|A személyre szabott modell betanítása anélkül, hogy ez hatással lenne a meglévő alkalmazásra, majd telepítse az online tanulási viselkedést éles környezetbe|
     |Standard `S0`|Online tanulási viselkedés éles környezetben|
@@ -88,7 +88,7 @@ Mivel a személyre szabott, közel valós időben a személyre szabott adatokat 
     1. Jelenítse meg a legjobb, egyetlen _tartalmi_ tételt, amely a visszaadott _jutalom műveleti azonosítója_a felhasználónak.
     1. Az _üzleti logikát_ alkalmazva gyűjtheti össze a felhasználó működésével kapcsolatos információkat a **jutalom** pontszámának meghatározásához, például:
 
-    |Viselkedés|Számított jutalom pontszáma|
+    |Működés|Számított jutalom pontszáma|
     |--|--|
     |A felhasználó a legjobb, egyetlen _tartalmi_ elemet (jutalmazási művelet azonosítója) választotta|**1**|
     |A felhasználó által kiválasztott egyéb tartalom|**0**|
@@ -119,7 +119,7 @@ A személyre szabott szolgáltatás használatának megkezdése után próbálja
 * [Személyre szabott Python SDK](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/personalizer?view=azure-python)
 * [REST API-k](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > A [megszemélyesítő működése](how-personalizer-works.md) 

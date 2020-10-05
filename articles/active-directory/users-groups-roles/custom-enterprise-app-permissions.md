@@ -13,10 +13,10 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.openlocfilehash: 2ebba2bb957a1c05fd591181f0a784ed778c6c57
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91333375"
 ---
 # <a name="enterprise-application-permissions-for-custom-roles-in-azure-active-directory"></a>Vállalati alkalmazások engedélyei a Azure Active Directory egyéni szerepköreihez
@@ -119,7 +119,7 @@ Az alkalmazás-hozzáférés engedélyezésének engedélyezése az üzembe hely
 
 ## <a name="full-list-of-permissions"></a>Engedélyek teljes listája
 
-Engedély | Description
+Engedély | Leírás
 ---------- | -----------
 Microsoft. Directory/applicationPolicies/allProperties/READ | Az alkalmazás-házirendek összes tulajdonságának olvasása.
 Microsoft. Directory/applicationPolicies/allProperties/Update | Az alkalmazás-házirendek összes tulajdonságának frissítése.
@@ -166,7 +166,7 @@ Microsoft. Directory/servicePrincipals/szinkronizálás/standard/olvasás | Az e
 Microsoft. Directory/servicePrincipals/synchronizationSchema/Manage | A séma-szinkronizálás összes aspektusának kezelése a szolgáltatás egyszerű erőforrásaihoz
 Microsoft. Directory/provisioningLogs/allProperties/READ | A kiépítési naplók összes tulajdonságának olvasása
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Egyéni szerepkörök létrehozása a Azure Portal, az Azure AD PowerShell és a Graph API használatával](roles-create-custom.md)
 - [Egyéni szerepkör hozzárendeléseinek megtekintése](roles-view-assignments.md)

@@ -12,10 +12,10 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 07/16/2020
 ms.openlocfilehash: eb423ebd354adeb8273755d34323b283d53eb8b5
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87283894"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-arm-template"></a>Rövid útmutató: Azure Data Factory létrehozása ARM-sablonnal
@@ -94,23 +94,23 @@ További Azure Data Factory-sablonok a gyorsindítási [sablonok](https://azure.
 
 1. Válassza **az Ugrás az erőforrás-csoportba**lehetőséget.
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-go-to-resource-group.png" alt-text="Erőforráscsoport":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-go-to-resource-group.png" alt-text="Az ADF ARM-sablon üzembe helyezése":::
 
 2.  Ellenőrizze, hogy létrejött-e a Azure Data Factory.
     1. A Azure Data Factory neve a Format-DataFactory \<uniqueid\> .
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-sample.png" alt-text="Példa Data Factory":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-sample.png" alt-text="Az ADF ARM-sablon üzembe helyezése":::
 
 2. Ellenőrizze, hogy létrejött-e a Storage-fiók.
     1. A Storage-fiók neve formátuma: Storage \<uniqueid\> .
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-storage-account.png" alt-text="Storage-fiók":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-storage-account.png" alt-text="Az ADF ARM-sablon üzembe helyezése":::
 
 3. Válassza ki a létrehozott Storage-fiókot, majd válassza a **tárolók**lehetőséget.
     1. A **tárolók** lapon válassza ki a létrehozott BLOB-tárolót.
         1. A blob-tároló neve a-blob formátumban van \<uniqueid\> .
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-blob-container.png" alt-text="BLOB-tároló":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-blob-container.png" alt-text="Az ADF ARM-sablon üzembe helyezése":::
 
 ### <a name="upload-a-file"></a>Fájl feltöltése
 
@@ -126,7 +126,7 @@ További Azure Data Factory-sablonok a gyorsindítási [sablonok](https://azure.
 
 6. Válassza a **Bezárás** ikont ( **X**) a **blob feltöltése** oldal bezárásához.
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-upload-blob-file.png" alt-text="Fájl feltöltése a bemeneti mappába":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-upload-blob-file.png" alt-text="Az ADF ARM-sablon üzembe helyezése":::
 
 Tartsa megnyitva a tároló oldalt, mert ezzel ellenőrizheti a rövid útmutató végén található kimenetet.
 
@@ -136,17 +136,17 @@ Tartsa megnyitva a tároló oldalt, mert ezzel ellenőrizheti a rövid útmutat�
 
 2. Válassza ki a **szerző & figyelés** csempét. 
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-author-monitor-tile.png" alt-text="&-figyelő szerzője":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-author-monitor-tile.png" alt-text="Az ADF ARM-sablon üzembe helyezése":::
 
 2. Válassza a **Szerző** fület :::image type="icon" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-author.png" border="false"::: .
 
 3. Válassza ki a létrehozott folyamatot – ArmtemplateSampleCopyPipeline.
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-pipelines.png" alt-text="ARM-sablon folyamata":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-pipelines.png" alt-text="Az ADF ARM-sablon üzembe helyezése":::
 
 4. Válassza az **aktiválási**  >  **trigger hozzáadása most**lehetőséget.
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-trigger-now.png" alt-text="Eseményindító":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-trigger-now.png" alt-text="Az ADF ARM-sablon üzembe helyezése":::
 
 5. A jobb oldali ablaktábla **folyamat futtatása**területén kattintson az **OK gombra**.
 
@@ -156,7 +156,7 @@ Tartsa megnyitva a tároló oldalt, mert ezzel ellenőrizheti a rövid útmutat�
 
 2. Itt a folyamat futtatásához kapcsolódó tevékenységfuttatások láthatóak. Ebben a rövid útmutatóban a folyamat csak egyetlen tevékenységtípussal rendelkezik: Másolás. Ilyenkor az adott tevékenységhez tartozó Futtatás jelenik meg.
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-successful-run.png" alt-text="Sikeres Futtatás":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-successful-run.png" alt-text="Az ADF ARM-sablon üzembe helyezése":::
 
 ### <a name="verify-the-output-file"></a>A kimeneti fájl ellenőrzése
 
@@ -168,7 +168,7 @@ A folyamat automatikusan létrehoz egy kimeneti mappát a blob-tárolóban. Ezut
 
 3. Ellenőrizze, hogy az **emp.txt** fájl bekerült-e a kimeneti mappába. 
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-output.png" alt-text="Kimenet":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-output.png" alt-text="Az ADF ARM-sablon üzembe helyezése":::
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

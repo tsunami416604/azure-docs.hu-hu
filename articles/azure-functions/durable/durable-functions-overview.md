@@ -7,10 +7,10 @@ ms.date: 03/12/2020
 ms.author: cgillum
 ms.reviewer: azfuncdf
 ms.openlocfilehash: 28c494bf2867ec5d2d3ee99ef7ee45f8181cfd90
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89669247"
 ---
 # <a name="what-are-durable-functions"></a>Mik azok a tartós függvények?
@@ -38,7 +38,7 @@ Durable Functions elsődleges használati esete az összetett, állapot-nyilván
 * [Függvényláncolás](#chaining)
 * [Elosztás/összevonás](#fan-in-out)
 * [Aszinkron HTTP API-k](#async-http)
-* [Figyelés](#monitoring)
+* [Nyomon követés](#monitoring)
 * [Emberi beavatkozás](#human)
 * [Gyűjtő (állapot-nyilvántartó entitások)](#aggregator)
 

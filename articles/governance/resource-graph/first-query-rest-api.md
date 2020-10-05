@@ -4,10 +4,10 @@ description: Ebben a rövid útmutatóban követheti az erőforrás-gráf végpo
 ms.date: 06/29/2020
 ms.topic: quickstart
 ms.openlocfilehash: 8776a107484691ffab72f2e1622ed5837375b7fb
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85802720"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-rest-api"></a>Rövid útmutató: az első Resource Graph-lekérdezés futtatása a REST API használatával
@@ -18,7 +18,7 @@ A folyamat végén a REST API végpontok meghívásához és az első Resource G
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
+Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -129,11 +129,11 @@ Ha a végső lekérdezés többször is fut, feltételezve, hogy a környezetéb
 
 Az Azure Resource Graph REST API-hívásával kapcsolatos további példákért tekintse meg az [Azure Resource Graph Rest-példákat](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources#examples).
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 REST API nem rendelkezik az eltávolításhoz szükséges könyvtárakkal vagy modulokkal. Ha olyan eszközt telepített, mint például a _ARMClient_ vagy a _Poster_ a hívások elvégzéséhez, és a továbbiakban nincs szüksége rá, akkor az eszközt most már el is távolíthatja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban megismerte az erőforrás-gráf REST API végpontját, és futtatta az első lekérdezést. Ha többet szeretne megtudni az erőforrás-gráf nyelvéről, folytassa a lekérdezés nyelvének részletei lapon.
 

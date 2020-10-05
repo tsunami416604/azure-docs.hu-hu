@@ -11,10 +11,10 @@ ms.topic: overview
 ms.date: 12/19/2019
 ms.author: scottwhi
 ms.openlocfilehash: 192517aa16e0fe56eb5b7dc8b852116af500b715
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87023721"
 ---
 # <a name="what-is-the-bing-visual-search-api"></a>Mi az a Bing Visual Search API?
@@ -30,7 +30,7 @@ Ha a [Bing Image Search API](../bing-image-search/overview.md)használja, a rend
 
 A következő bepillantást a Bing Visual Search használatával derítheti fel:
 
-| Elemzések                              | Description |
+| Elemzések                              | Leírás |
 |--------------------------------------|-------------|
 | Vizuálisan hasonló képek              | A bemeneti képhez hasonló rendszerképek listája. |
 | Vizuálisan hasonló termékek            | Termékek, amelyek vizuálisan hasonlóak a termékhez.            |

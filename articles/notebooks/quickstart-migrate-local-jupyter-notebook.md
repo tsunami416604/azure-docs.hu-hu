@@ -4,10 +4,10 @@ description: Gyorsan átvihet egy Jupyter-jegyzetfüzetet Azure Notebooks előze
 ms.topic: quickstart
 ms.date: 12/04/2018
 ms.openlocfilehash: 9c961ad67260cee2809e0bba1e79f2c709183dea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85832117"
 ---
 # <a name="quickstart-migrate-a-local-jupyter-notebook-in-azure-notebooks-preview"></a>Gyors útmutató: helyi Jupyter-jegyzetfüzet migrálása Azure Notebooks előzetes verzióban
@@ -48,7 +48,7 @@ Ez a rövid útmutató bemutatja, hogyan lehet áttelepíteni egy jegyzetfüzete
 
    Ha a jegyzetfüzet egy GitHub-tárházban található, kövesse a következő témakör lépéseit [: a notebook klónozása](quickstart-clone-jupyter-notebook.md) helyette.
 
-   - Ha **a alkalmazást a számítógépről**használja, húzza át a *. ipynb* fájlokat a felugró ablakba, vagy válassza a **fájlok kiválasztása**lehetőséget, majd keresse meg és válassza ki az importálni kívánt fájlokat. Ezután válassza a **Feltöltés** lehetőséget. A feltöltött fájlok neve megegyezik a helyi fájlokkal. Nincs szükség semmilyen *. ipynb_checkpoints* mappa tartalmának feltöltésére.
+   - Ha **a alkalmazást a számítógépről**használja, húzza át a *. ipynb* fájlokat a felugró ablakba, vagy válassza a **fájlok kiválasztása**lehetőséget, majd keresse meg és válassza ki az importálni kívánt fájlokat. Ezután válassza a **Feltöltés** lehetőséget. A feltöltött fájlok neve megegyezik a helyi fájlokkal. Nem kell feltöltenie *.ipynb_checkpoints* mappák tartalmát.
 
      ![Feltöltés a számítógép előugró ablakból](media/quickstarts/upload-from-computer-popup.png)
 

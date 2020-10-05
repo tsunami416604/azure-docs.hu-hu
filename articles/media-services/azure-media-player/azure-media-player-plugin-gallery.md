@@ -7,10 +7,10 @@ ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
 ms.openlocfilehash: 6d592064729bbdd64e485e0bd0373b2d471597e0
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87282483"
 ---
 # <a name="azure-media-player-plugin-gallery"></a>Azure Media Player beépülő modul gyűjteménye #
@@ -30,12 +30,12 @@ ms.locfileid: "87282483"
 | Idősor-jelölők                    | [Bemutató](http://sr-test.azurewebsites.net/Tests/Plugin%20Gallery/plugins/timelinemarkers/example.html)                        | [GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-timeline-markers-plugin)                     | Ez a beépülő modul az időpontok tömbjét veszi igénybe, és a folyamatjelző sáv fölé rendezi az egyes időpontokat. |
 | Elemzés                           | | | |
 | Application Insights                | [Blogbejegyzés](https://azure.microsoft.com/blog/player-analytics-azure-media-player-plugin/)                   | [GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-application-insights-plugin)                     | Ez a beépülő modul, amely nyomon követi a lejátszó metrikáit és portjait, hogy Power BI a megtekintők játékosi élményének intuitív grafikus ábrázolását. |
-| Google Analytics                    | n.a.                         | [GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-google-analytics-plugin)                     | Google Analytics beépülő modul a Azure Media Playerhoz |
+| Google Analytics                    | N/A                         | [GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-google-analytics-plugin)                     | Google Analytics beépülő modul a Azure Media Playerhoz |
 | Diagnosztika                         | | | |
 | Diagnosztika kimenete                  | [Bemutató](http://sr-test.azurewebsites.net/Tests/Plugin%20Gallery/plugins/diagnosticslogger/example.html)                        | [GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-diagnostic-logger-plugin)                     | Ez a beépülő modul a saját lejátszójában a diagnosztika tömbjét jeleníti meg, hogy a működés közben megtekintse a bemutató hivatkozást, és megnyitja a JavaScript-konzolt. |
 | Könnyű hozzáférés                      | | | |
 | Nagyítás                             | [Bemutató](http://sr-test.azurewebsites.net/Tests/Plugin%20Gallery/plugins/zoom/example.html)                        | [GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-zoom-plugin)                     | Ez a beépülő modul egy húzással használható nagyítási skálát jelenít meg a játékosok képernyőjén, így a nézők nagyítani tudják a tartalmat |
-| Élő feliratok                       | [Azure blogbejegyzés](https://azure.microsoft.com/blog/live-real-time-captions-with-azure-media-services-and-player/),[SubPly post](http://www.subply.com/en/Products/AzureLiveCaptions.htm) | n.a. | *További információ: post.* Teljes körű munkafolyamatok, amelyek élő feliratozásra készültek Azure Media Playerhoz, a bal szélső hivatkozásra kattintva megtekintheti a SubPly webhelyét, és további információkat tudhat meg a megoldásról |
+| Élő feliratok                       | [Azure blogbejegyzés](https://azure.microsoft.com/blog/live-real-time-captions-with-azure-media-services-and-player/),[SubPly post](http://www.subply.com/en/Products/AzureLiveCaptions.htm) | N/A | *További információ: post.* Teljes körű munkafolyamatok, amelyek élő feliratozásra készültek Azure Media Playerhoz, a bal szélső hivatkozásra kattintva megtekintheti a SubPly webhelyét, és további információkat tudhat meg a megoldásról |
 | Gyorsbillentyűk                            | <strike>[Bemutató](http://sr-test.azurewebsites.net/Tests/Plugin%20Gallery/plugins/hotkeys/example.html)</strike>                        | <strike>[GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-hot-keys-plugin)</strike>                     | A gyorsbillentyűk beépülő modul lehetővé teszi, hogy a nézők a lejátszó különböző szempontjait vezérelve általános beépülő modulok, például F teljes képernyős, M az Elnémítás és a nyílbillentyűkkel a folyamatjelző sáv vezérlőelemhez. *Megjegyzés: Ez a beépülő modul már integrálva van az AMP-es verzióba, de ingyenesen használhatja erőforrásként* |
 | Közösségi                              | | | |
 | Megosztás                               | [Bemutató](http://sr-test.azurewebsites.net/Tests/Plugin%20Gallery/plugins/share/example.html)                        | [GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-social-share-plugin)                     | Ez a beépülő modul egy megosztás gombot ad hozzá a lejátszó vezérlőelem sávjához, így a nézők megoszthatják a barátaikat a Facebook, a Twitter vagy a LinkedIn használatával. |

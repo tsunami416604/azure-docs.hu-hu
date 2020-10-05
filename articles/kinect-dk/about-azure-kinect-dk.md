@@ -1,5 +1,5 @@
 ---
-title: Tudnivalók az Azure Kinect DK-ról
+title: Az Azure Kinect DK bemutatása
 description: Az Azure Kinect Developer Kit (DK) eszközeinek és integrált szolgáltatásainak áttekintése.
 author: tesych
 ms.author: tesych
@@ -8,17 +8,17 @@ ms.topic: overview
 ms.date: 06/26/2019
 keywords: Azure, Kinect, áttekintés, fejlesztői készlet, DK, eszköz, mélység, Body Tracking, beszédfelismerés, kognitív szolgáltatások, SDK-k, SDK, belső vezérlőprogram
 ms.openlocfilehash: 6b3215ba6761521214ebffa2a100c5a1a030ab4c
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85277964"
 ---
-# <a name="about-azure-kinect-dk"></a>Tudnivalók az Azure Kinect DK-ról
+# <a name="about-azure-kinect-dk"></a>Az Azure Kinect DK bemutatása
 
  ![Azure Kinect DK](./media/index/device-image.jpg)
 
-Az Azure Kinect DK egy fejlett AI-érzékelőkkel rendelkező fejlesztői készlet, amely kifinomult számítógépes látási és beszédfelismerési modelleket biztosít.  A Kinect részletes érzékelőt, térbeli mikrofon tömböt tartalmaz egy videokamera és egy tájolási érzékelővel, amely egyetlen kis méretű eszköz, több mód, lehetőség és szoftverfejlesztői készlet (SDK) révén. A szolgáltatás megvásárolható a [Microsoft online áruházban](https://www.microsoft.com/p/azure-kinect-dk/8pp5vxmd9nhq).
+Az Azure Kinect DK egy fejlesztői csomag, amelynek fejlett AI-érzékelői kifinomult számítógépes látástechnológiás és beszédmodelleket nyújtanak.  A Kinect fejlett mélységérzékelőt, térbeli mikrofonsort, videokamerát és orientációs érzékelőt tartalmaz, és ez a kompakt kis eszköz számos móddal, beállítással és szoftverfejlesztői készlettel (SDK-k) rendelkezik. A szolgáltatás megvásárolható a [Microsoft online áruházban](https://www.microsoft.com/p/azure-kinect-dk/8pp5vxmd9nhq).
 
 Az Azure Kinect DK fejlesztési környezet a következő több SDK-t tartalmazza:
 
@@ -81,7 +81,7 @@ A Speech SDK lehetővé teszi az Azure-hoz csatlakoztatott Speech Services haszn
 
 - Diktálás
 - Beszédfordítás
-- Szövegfelolvasás
+- Text-to-Speech
 
 >[!NOTE]
 >Az Azure Kinect DK nem rendelkezik hangszórókkal.
@@ -93,7 +93,7 @@ További részleteket és információkat a [Speech Service dokumentációjában
 A következő [Azure-beli kognitív szemléletű szolgáltatások](https://azure.microsoft.com/services/cognitive-services/directory/vision/) olyan Azure-szolgáltatásokat biztosítanak, amelyek képes azonosítani és elemezni a tartalmat a képeken és videókon.
 
 - [Számítógép jövőképe](https://azure.microsoft.com/services/cognitive-services/computer-vision/)
-- [Arcfelismerés](https://azure.microsoft.com/services/cognitive-services/face/)
+- [Face](https://azure.microsoft.com/services/cognitive-services/face/)
 - [Videó-indexelő](https://azure.microsoft.com/services/media-services/video-indexer/)
 - [Tartalom moderátora](https://azure.microsoft.com/services/cognitive-services/content-moderator/)
 - [Egyéni jövőkép](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/)

@@ -1,5 +1,5 @@
 ---
-title: Cognitive Services Big-adatmennyiséghez
+title: Cognitive Services big data jellegű adatokhoz
 description: Ismerje meg, hogyan használhatja az Azure Cognitive Servicest nagyméretű adatkészleteken a Python, a Java és a Scala használatával. A Big adatok Cognitive Services a folyamatosan fejleszthető, intelligens modellek közvetlenül Apache Spark &trade; és SQL-számításokban is beágyazható.
 services: cognitive-services
 author: mhamilton723
@@ -9,10 +9,10 @@ ms.topic: overview
 ms.date: 07/09/2020
 ms.author: marhamil
 ms.openlocfilehash: 0001002636362a74915f9dae21a6beff52baea63
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "86201779"
 ---
 # <a name="azure-cognitive-services-for-big-data"></a>Azure-Cognitive Services Big-adatmennyiségekhez
@@ -35,14 +35,14 @@ Az API-kkal és SDK-kkal elért [Cognitive Services](https://docs.microsoft.com/
 
 |Szolgáltatásnév|A szolgáltatás leírása|
 |:-----------|:------------------|
-|[Számítógépes látástechnológia](https://docs.microsoft.com/azure/cognitive-services/computer-vision/ "Számítógépes látástechnológia")| A Computer Vision szolgáltatás a rendszerképek feldolgozásához és a visszaadott adatokhoz való hozzáférést biztosít a speciális algoritmusokhoz. |
-|[Arcfelismerés](https://docs.microsoft.com/azure/cognitive-services/face/ "Arcfelismerés")| A Face szolgáltatás hozzáférést biztosít a speciális arc-algoritmusokhoz, lehetővé téve a Face attribútumok észlelését és felismerését. |
+|[Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/ "Computer Vision")| A Computer Vision szolgáltatás a rendszerképek feldolgozásához és a visszaadott adatokhoz való hozzáférést biztosít a speciális algoritmusokhoz. |
+|[Face](https://docs.microsoft.com/azure/cognitive-services/face/ "Face")| A Face szolgáltatás hozzáférést biztosít a speciális arc-algoritmusokhoz, lehetővé téve a Face attribútumok észlelését és felismerését. |
 
-### <a name="speech"></a>Beszéd
+### <a name="speech"></a>Speech
 
 |Szolgáltatásnév|A szolgáltatás leírása|
 |:-----------|:------------------|
-|[Speech szolgáltatás](https://docs.microsoft.com/azure/cognitive-services/speech-service/ "Speech szolgáltatás")|A beszédfelismerési szolgáltatás hozzáférést biztosít olyan szolgáltatásokhoz, mint a beszédfelismerés, a beszédfelismerés, a beszédfelismerés és a hangszórók ellenőrzése és azonosítása.|
+|[Beszédfelismerési szolgáltatás](https://docs.microsoft.com/azure/cognitive-services/speech-service/ "Speech szolgáltatás")|A beszédfelismerési szolgáltatás hozzáférést biztosít olyan szolgáltatásokhoz, mint a beszédfelismerés, a beszédfelismerés, a beszédfelismerés és a hangszórók ellenőrzése és azonosítása.|
 
 ### <a name="decision"></a>Döntés
 
@@ -54,7 +54,7 @@ Az API-kkal és SDK-kkal elért [Cognitive Services](https://docs.microsoft.com/
 
 |Szolgáltatásnév|A szolgáltatás leírása|
 |:-----------|:------------------|
-|[Szövegelemzés](https://docs.microsoft.com/azure/cognitive-services/text-analytics/ "Szövegelemzés")| A Text Analytics szolgáltatás természetes nyelvi feldolgozást tesz lehetővé a nyers szövegekben az érzelmek elemzése, a kulcs-kifejezés kinyerése és a nyelvfelismerés terén.|
+|[Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/ "Text Analytics")| A Text Analytics szolgáltatás természetes nyelvi feldolgozást tesz lehetővé a nyers szövegekben az érzelmek elemzése, a kulcs-kifejezés kinyerése és a nyelvfelismerés terén.|
 
 ### <a name="search"></a>Keresés
 

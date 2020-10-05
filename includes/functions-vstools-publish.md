@@ -9,10 +9,10 @@ ms.date: 03/06/2020
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: db6f5927e1cbdb3527014ccbb277c7ec20b02600
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "84231556"
 ---
 1. A **Megoldáskezelőben** kattintson a jobb gombbal a projektre, és válassza a **Publish** (Közzététel) lehetőséget.
@@ -34,10 +34,10 @@ ms.locfileid: "84231556"
 
     | Beállítás      | Érték  | Leírás                                |
     | ------------ |  ------- | -------------------------------------------------- |
-    | **Name (Név)** | Globálisan egyedi név | Az új függvényalkalmazást azonosító egyedi név. Fogadja el ezt a nevet, vagy adjon meg egy új nevet. Érvényes karakterek: `a-z` , `0-9` és `-` . |
+    | **Név** | Globálisan egyedi név | Az új függvényalkalmazást azonosító egyedi név. Fogadja el ezt a nevet, vagy adjon meg egy új nevet. Érvényes karakterek: `a-z` , `0-9` és `-` . |
     | **Előfizetés** | Az Ön előfizetése | A használandó előfizetés. Fogadja el ezt az előfizetést, vagy válasszon újat a legördülő listából. |
     | **[Erőforráscsoport](../articles/azure-resource-manager/management/overview.md)** | Az erőforráscsoport neve |  Az erőforráscsoport, amelyben létre szeretné hozni a Function alkalmazást. Válasszon ki egy meglévő erőforráscsoportot a legördülő listából, vagy válassza az **új** lehetőséget egy új erőforráscsoport létrehozásához.|
-    | **[Üzemeltetési csomag](../articles/azure-functions/functions-scale.md)** | A üzemeltetési terv neve | A kiszolgáló nélküli terv konfigurálásához válassza az **új** lehetőséget. Ügyeljen arra, hogy a **méret**területen válassza a **felhasználás** lehetőséget. Ha a projektet egy [felhasználási](../articles/azure-functions/functions-scale.md#consumption-plan)csomagban futó Function alkalmazásban teszi közzé, csak a functions-alkalmazás végrehajtásához kell fizetnie. Más üzemeltetési csomagok magasabb költségekkel járnak. Ha nem a **felhasználást**tervezi, akkor a [Function alkalmazás skálázását](../articles/azure-functions/functions-scale.md)kell kezelnie.  |
+    | **[Szolgáltatási csomag](../articles/azure-functions/functions-scale.md)** | A üzemeltetési terv neve | A kiszolgáló nélküli terv konfigurálásához válassza az **új** lehetőséget. Ügyeljen arra, hogy a **méret**területen válassza a **felhasználás** lehetőséget. Ha a projektet egy [felhasználási](../articles/azure-functions/functions-scale.md#consumption-plan)csomagban futó Function alkalmazásban teszi közzé, csak a functions-alkalmazás végrehajtásához kell fizetnie. Más üzemeltetési csomagok magasabb költségekkel járnak. Ha nem a **felhasználást**tervezi, akkor a [Function alkalmazás skálázását](../articles/azure-functions/functions-scale.md)kell kezelnie.  |
     | **Hely** | Az App Service helye | Válasszon egy **helyet** a közeli [régióban](https://azure.microsoft.com/regions/) vagy más, a funkciókhoz hozzáférő szolgáltatásokhoz. |
     | **[Azure Storage](../articles/storage/common/storage-account-create.md)** | Általános célú Storage-fiók | A functions futtatókörnyezet megköveteli egy Azure Storage-fiók megírását. Válassza az **új** lehetőséget az általános célú Storage-fiók konfigurálásához. Kiválaszthat egy meglévő fiókot is, amely megfelel a [Storage-fiókra vonatkozó követelményeknek](../articles/azure-functions/functions-scale.md#storage-account-requirements).  |
 
@@ -51,6 +51,6 @@ ms.locfileid: "84231556"
     
 1.  A közzététel lapon válassza a **kezelés a Cloud Explorerben**lehetőséget. Ekkor megnyílik az új Function app Azure-erőforrás a Cloud Explorerben. 
     
-    :::image type="content" source="media/functions-vstools-publish/functions-visual-studio-publish-complete.png" alt-text="Sikeres közzétételt jelző üzenet":::
+    :::image type="content" source="media/functions-vstools-publish/functions-visual-studio-publish-complete.png" alt-text="Közzétételi profil létrehozása":::
     
     A Cloud Explorer használatával megtekintheti a hely tartalmát, elindíthatja és leállíthatja a Function alkalmazást, és közvetlenül böngészhet az Azure-ban és a Azure Portalban használható alkalmazás-erőforrásokkal. 

@@ -8,10 +8,10 @@ author: cjgronlund
 ms.author: cgronlun
 ms.date: 05/06/2020
 ms.openlocfilehash: 24f5a671076a44db382ac37e2f6532e5f0f2a3ae
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "82930386"
 ---
 # <a name="what-are-azure-open-datasets-and-how-can-you-use-them"></a>Mik azok az Azure Open-adatkészletek, és hogyan használhatók?
@@ -35,14 +35,14 @@ A következő példák az elérhető adatkészletekre mutatnak.
 
 ### <a name="weather-data"></a>Időjárási adatszolgáltatások
  
-|Adatkészlet         | Notebooks     | Leírás                                    |
+|Adathalmaz         | Notebooks     | Leírás                                    |
 |----------------|---------------|------------------------------------------------|
 |[NOAA integrált Surface-adatszolgáltatások (ISD)](https://azure.microsoft.com/services/open-datasets/catalog/noaa-integrated-surface-data/) | [Azure Notebooks](https://azure.microsoft.com/services/open-datasets/catalog/noaa-integrated-surface-data/?tab=data-access#AzureNotebooks) <br> [Azure Databricks](https://azure.microsoft.com/services/open-datasets/catalog/noaa-integrated-surface-data/?tab=data-access#AzureDatabricks) | Világszerte óránkénti időjárási adatok a NOAA-ből a legjobb térbeli lefedettséggel Észak-Amerika, Európa, Ausztrália és Ázsia egyes részeiben. Naponta frissül. |
 |[NOAA globális előrejelzési rendszere (GFS)](https://azure.microsoft.com/services/open-datasets/catalog/noaa-global-forecast-system/) | [Azure Notebooks](https://azure.microsoft.com/services/open-datasets/catalog/noaa-global-forecast-system/?tab=data-access#AzureNotebooks) <br> [Azure Databricks](https://azure.microsoft.com/services/open-datasets/catalog/noaa-global-forecast-system/?tab=data-access#AzureDatabricks) | 15 napos US óránkénti időjárás-előrejelzési adat a NOAA-től. Naponta frissül. |
 
 ### <a name="calendar-data"></a>Naptáradatok
 
-|Adatkészlet         | Notebooks     | Leírás                                    |
+|Adathalmaz         | Notebooks     | Leírás                                    |
 |----------------|---------------|------------------------------------------------|
 |[Ünnepnapok](https://azure.microsoft.com/services/open-datasets/catalog/public-holidays/) | [Azure Notebooks](https://azure.microsoft.com/services/open-datasets/catalog/public-holidays/?tab=data-access#AzureNotebooks) <br> [Azure Databricks](https://azure.microsoft.com/services/open-datasets/catalog/public-holidays/?tab=data-access#AzureDatabricks) | Világszerte nyilvános ünnepnapok adatai, amelyek 41 országokat vagy régiókat mutatnak be 1970 és 2099 között. Magában foglalja az országot és azt, hogy a legtöbb ember fizetett-e időt. |
 

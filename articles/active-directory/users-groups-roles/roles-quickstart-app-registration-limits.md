@@ -14,10 +14,10 @@ ms.reviewer: vincesm
 ms.custom: it-pro, devx-track-azurepowershell
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d7304ecd73ed73e3ec6ae3c060fef264e016fe38
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89067807"
 ---
 # <a name="quickstart-grant-permission-to-create-unlimited-app-registrations"></a>Gyors útmutató: korlátlan alkalmazás-regisztrációk létrehozásának engedélyezése
@@ -55,7 +55,7 @@ Kész! Ebben a rövid útmutatóban sikeresen létrehozott egy egyéni szerepkö
 > [!TIP]
 > Ha az Azure AD-portál használatával szeretné hozzárendelni a szerepkört egy alkalmazáshoz, adja meg az alkalmazás nevét a hozzárendelési oldal keresőmező mezőjében. Az alkalmazások alapértelmezés szerint nem jelennek meg a listában, de a keresési eredmények között lesznek visszaadva.
 
-### <a name="app-registration-permissions"></a>Alkalmazás-regisztrációs engedélyek
+### <a name="app-registration-permissions"></a>Alkalmazásregisztráció engedélyei
 
 Két engedély áll rendelkezésre, amelyek lehetővé teszi az alkalmazás-regisztrációk létrehozását, amelyek mindegyike különböző viselkedést biztosít.
 
@@ -178,7 +178,7 @@ Törzs
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Nyugodtan ossza meg velünk az [Azure ad rendszergazdai szerepkörökkel foglalkozó fórumát](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032).
 - Az Azure AD szerepkör-hozzárendelésekről további információt a [rendszergazdai szerepkörök hozzárendelése](directory-assign-admin-roles.md)című témakörben talál.

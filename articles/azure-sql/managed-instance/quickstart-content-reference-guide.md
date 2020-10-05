@@ -13,10 +13,10 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 07/11/2019
 ms.openlocfilehash: 7c7268aa361c77f1d466ab7a58b74aa91090dc4b
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "84708569"
 ---
 # <a name="getting-started-with-azure-sql-managed-instance"></a>Az Azure SQL felügyelt példányának első lépései
@@ -30,7 +30,7 @@ Ebben a cikkben olyan tartalmakra mutató hivatkozásokat talál, amelyek megtan
 
 A következő rövid útmutatók segítségével gyorsan létrehozhat egy felügyelt SQL-példányt, konfigurálhat egy virtuális gépet, vagy megtekintheti az ügyfélalkalmazás VPN-kapcsolatát, és egy fájl használatával visszaállíthat egy adatbázist az új SQL felügyelt példányra `.bak` .
 
-### <a name="configure-environment"></a>A környezet konfigurálása
+### <a name="configure-environment"></a>Környezet konfigurálása
 
 Első lépésként létre kell hoznia az első SQL-beli felügyelt példányát a hálózati környezettel, ahol a rendszer elhelyezi és engedélyezi a kapcsolódást a számítógép vagy a virtuális gép között, ahol lekérdezéseket hajt végre az SQL felügyelt példányán. A következő útmutatók használhatók:
 

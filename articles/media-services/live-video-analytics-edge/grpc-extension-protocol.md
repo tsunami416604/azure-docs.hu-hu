@@ -4,13 +4,13 @@ description: Ebből a cikkből megtudhatja, hogyan küldhet üzeneteket az élő
 ms.topic: overview
 ms.date: 09/14/2020
 ms.openlocfilehash: 288dcd1a11c7c42d8796d3b17f2bfd56f562aaf1
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89448360"
 ---
-# <a name="grpc-extension-protocol"></a>gRPC-kiterjesztési protokoll
+# <a name="grpc-extension-protocol"></a>gRPC-bővítmény-protokoll
 
 Ebből a cikkből megtudhatja, hogyan küldhet üzeneteket az élő video Analytics-modul és az AI-vagy CV egyéni bővítménye között a gRPC-bővítmény protokoll használatával.
 
@@ -182,6 +182,6 @@ A gRPC használt kapcsolat a TLS protokollal is biztonságossá válhat. Ez olya
 
 A gRPC nem támogatja a IgnoreHostname és a IgnoreSignature ellenőrzési lehetőségeit, ezért a kiszolgálói tanúsítványnak, amelyre a következtetést biztosító motor mutat, tartalmaznia kell egy olyan CN-t, amely pontosan megegyezik az IP-címmel/állomásnévvel a gRPC-bővítmény csomópontjának végponti URL-címében.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Tudnivalók a viszonyítási metaadatok sémáról](inference-metadata-schema.md)

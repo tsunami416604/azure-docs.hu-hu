@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.date: 08/10/2020
 ms.reviewer: azfuncdf, antchu
 ms.openlocfilehash: edd02085abe63b124082255247362f096248ba82
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91317259"
 ---
 # <a name="create-your-first-durable-function-in-powershell"></a>Az első tartós függvény létrehozása a PowerShellben
@@ -106,7 +106,7 @@ Ezután adja hozzá a hivatkozott `Hello` tevékenység függvényt.
     | Adatkérés | Érték | Leírás |
     | ------ | ----- | ----------- |
     | Sablon kiválasztása a függvényhez | Durable Functions tevékenység (előzetes verzió) | Tevékenységi függvény létrehozása |
-    | Adja meg a függvény nevét | Üdvözöljük | A tevékenység függvényének neve |
+    | Adja meg a függvény nevét | helló | A tevékenység függvényének neve |
 
 Hozzáadta a `Hello` Orchestrator által meghívott tevékenység-függvényt. Nyissa meg a *Hello/run.ps1t * , és tekintse meg, hogy bemenetként és Üdvözlésként adja meg a nevet. A Activity függvény olyan műveleteket hajt végre, mint például egy adatbázis hívása vagy egy számítási művelet végrehajtása.
 
@@ -238,7 +238,7 @@ Ebben a szakaszban egy Function-alkalmazást és egy kapcsolódó erőforrást h
 
 2. Illessze be a HTTP-kérelem új URL-címét a böngésző címsorába. Ugyanezt az állapot-választ kell megadnia, mint korábban a közzétett alkalmazás használatakor.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Visual Studio Code használatával egy PowerShell tartós Function-alkalmazást hozhat létre és tehet közzé.
 

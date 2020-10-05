@@ -8,10 +8,10 @@ ms.date: 02/22/2020
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 7164c3dd5c98544f3cb2944cb33cfd0e9703e36d
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90563335"
 ---
 # <a name="azure-files-networking-considerations"></a>Azure Files hálózati megfontolások 
@@ -155,6 +155,6 @@ Egy Azure Storage-fiók esetében letilthatja a titkosítást az átvitel során
 
 További információ az átvitel közbeni titkosításról: [biztonságos átvitel megkövetelése az Azure Storage-ban](../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 - [Az Azure Files áttekintése](storage-files-introduction.md)
 - [Azure Files üzembe helyezésének tervezése](storage-files-planning.md)

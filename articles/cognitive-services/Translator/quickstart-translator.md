@@ -13,10 +13,10 @@ ms.author: erhopf
 ms.custom: cog-serv-seo-aug-2020
 keywords: Translator, Translator Service, szöveg lefordítása, átbetűzés-szöveg, nyelvfelismerés
 ms.openlocfilehash: e5b0bc17e8df1d82fb23a098f857be4fea13b982
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91318840"
 ---
 # <a name="quickstart-get-started-with-translator"></a>Gyors útmutató: a fordító használatának első lépései
@@ -102,7 +102,7 @@ Ha a Translator szolgáltatást a REST használatával hívja meg, meg kell győ
 
 <table width="100%">
   <th width="20%">Fejlécek</th>
-  <th>Description</th>
+  <th>Leírás</th>
   <tr>
     <td>Hitelesítési fejléc (ek)</td>
     <td><em>Kötelező kérelem fejléce</em><br/>Tekintse <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">meg a hitelesítés elérhető beállításait</a>.</td>
@@ -2441,7 +2441,7 @@ Sikeres hívás után a következő választ kell látnia. További információ
 ]
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Ismerje meg, hogy az API hogyan számolja a karaktereket](character-counts.md)
 * [A fordítás testreszabása és javítása](customization.md)

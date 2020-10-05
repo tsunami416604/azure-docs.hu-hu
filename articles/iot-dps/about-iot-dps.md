@@ -12,10 +12,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: e3fce15cdeb1792749224299167b52fc2311d04e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91318278"
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>Eszközregisztráció az Azure IoT Hub Device Provisioning Service használatával
@@ -121,7 +121,7 @@ További információ a kvótakorlátozásokról:
 ## <a name="related-azure-components"></a>Kapcsolódó Azure-összetevők
 A DPS automatizálja az eszköz kiépítési folyamatát az Azure IoT Hub. További információ a [IoT hubról](https://docs.microsoft.com/azure/iot-hub/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Mostanra nagyjából átlátja az IoT-eszközök Azure-ban való kiépítését. A következő lépés egy teljes körű IoT-forgatókönyv kipróbálása.
 
 [IoT Hub Device Provisioning Service beállítása a Azure Portal](quick-setup-auto-provision.md)

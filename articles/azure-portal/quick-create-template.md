@@ -8,10 +8,10 @@ ms.custom: subject-armqs
 ms.author: mblythe
 ms.date: 06/15/2020
 ms.openlocfilehash: fd2d7006e0c13f7e652b4edd973a36f94f2e2265
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/30/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85560495"
 ---
 # <a name="quickstart-create-a-dashboard-in-the-azure-portal-by-using-an-arm-template"></a>Rövid útmutató: irányítópult létrehozása a Azure Portal ARM-sablon használatával
@@ -20,13 +20,13 @@ A Azure Portal egyik irányítópultja a Felhőbeli erőforrások célzott és r
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonok használatát, válassza az **üzembe helyezés az Azure** -ban gombot. A sablon megnyílik a Azure Portalban.
+Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonokat, kattintson az **Üzembe helyezés az Azure-ban** gombra. A sablon az Azure Portalon fog megnyílni.
 
 [![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azure-portal-dashboard%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 - Egy meglévő virtuális gép.
 
 ## <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása
@@ -60,7 +60,7 @@ A rövid útmutató következő részében létrehozott irányítópultnak egy m
 
 ## <a name="review-the-template"></a>A sablon áttekintése
 
-Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/101-azure-portal-dashboard/)származik. A cikk sablonja túl hosszú ahhoz, hogy megjelenjen itt. A sablon megtekintéséhez lásd: [azuredeploy.js](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-azure-portal-dashboard/azuredeploy.json). Egy Azure-erőforrás van definiálva a sablonban, [Microsoft. Portal/irányítópultok](/azure/templates/microsoft.portal/dashboards) – irányítópult létrehozása a Azure Portal.
+Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/101-azure-portal-dashboard/) közül származik. A cikk sablonja túl hosszú ahhoz, hogy megjelenjen itt. A sablon megtekintéséhez lásd: [azuredeploy.js](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-azure-portal-dashboard/azuredeploy.json). Egy Azure-erőforrás van definiálva a sablonban, [Microsoft. Portal/irányítópultok](/azure/templates/microsoft.portal/dashboards) – irányítópult létrehozása a Azure Portal.
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
@@ -90,7 +90,7 @@ A Azure Portal a sablon üzembe helyezéséhez volt használva. Az Azure Portalo
 
 Ellenőrizze, hogy az irányítópult létrehozása sikeres volt-e, és hogy látható-e az adatok a virtuális gépről.
 
-1. A Azure Portal válassza az **irányítópult**lehetőséget.
+1. Az Azure Portalon válassza az **Irányítópult** lehetőséget.
 
     ![Navigálás az irányítópulton Azure Portal](media/quick-create-template/navigate-to-dashboards.png)
 

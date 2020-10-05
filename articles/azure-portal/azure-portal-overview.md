@@ -10,10 +10,10 @@ ms.topic: overview
 ms.service: azure-portal
 manager: mtillman
 ms.openlocfilehash: 4aa1ccbd9b605850052e190949542eb014fe90a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "84763924"
 ---
 # <a name="azure-portal-overview"></a>Az Azure Portal áttekintése
@@ -22,9 +22,9 @@ Ez a cikk bemutatja a Azure Portal, azonosítja a portál oldal elemeit, és seg
 
 ## <a name="what-is-the-azure-portal"></a>Mi az az Azure Portal?
 
-Az Azure Portal egy egységesített felületet biztosító webes konzol, amely alternatívát biztosít a parancssori eszközökkel szemben. A Azure Portal segítségével az Azure-előfizetését grafikus felhasználói felületen kezelheti. Az egyszerű webalkalmazásokból az összetett felhőbe történő üzembe helyezéshez mindent létrehozhat, kezelhet és figyelheti. Egyéni irányítópultokat hozhat létre az erőforrások rendezett nézetéhez. Kisegítő lehetőségek beállítása az optimális felhasználói élményhez.
+Az Azure Portal egy egységesített felületet biztosító webes konzol, amely alternatívát biztosít a parancssori eszközökkel szemben. A Azure Portalon egy grafikus felhasználói felületen kezelheti Azure-előfizetését. Az egyszerű webalkalmazásokból az összetett felhőben üzemelő példányokig bármit létrehozhat, kezelhet és figyelhet. Egyéni irányítópultokat hozhat létre az erőforrások rendezett megtekintéséhez. Kisegítő lehetőségeket állíthat be az optimális felhasználói élmény érdekében.
 
-A Azure Portal a rugalmasság és a folyamatos rendelkezésre állás érdekében lett kialakítva. Minden Azure-adatközpontban jelen van. Ez a konfiguráció megkönnyíti az egyes adatközpontok hibáinak Azure Portalét, és elkerüli a hálózat lelassulását azáltal, hogy a felhasználókhoz közeledik. A Azure Portal folyamatosan frissül, és nem igényel állásidőt a karbantartási tevékenységekhez.
+A Azure Portal a rugalmasság és a folyamatos rendelkezésre állás érdekében lett kialakítva. Minden Azure-adatközpontban jelen van. Ez a konfiguráció megkönnyíti az egyes adatközpontok hibáinak Azure Portalét, és elkerüli a hálózat lelassulását azáltal, hogy a felhasználókhoz közeledik. Az Azure Portal folyamatosan frissül, és nem igényel állásidőt a karbantartási tevékenységekhez.
 
 ## <a name="azure-portal-menu"></a>Azure Portal menü
 

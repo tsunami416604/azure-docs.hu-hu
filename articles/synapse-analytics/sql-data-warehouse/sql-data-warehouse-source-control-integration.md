@@ -11,10 +11,10 @@ ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.openlocfilehash: 84abfea39cb7311e7cd60346d936c08c28c334d4
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89441321"
 ---
 # <a name="source-control-integration-for-sql-pool"></a>Verziókövetés integrálása az SQL-készletbe
@@ -87,6 +87,6 @@ A projektek Visual Studióval való összekapcsolásával kapcsolatos további i
 
 4. (Nem**kötelező**) A séma összehasonlításával és a cél adattárház változásainak a SSDT használatával történő frissítésével biztosíthatja, hogy az Azure-tárházban az objektum-definíciók és a helyi adattár tükrözzék az adattárházat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [SQL-készlet fejlesztése](sql-data-warehouse-overview-develop.md)

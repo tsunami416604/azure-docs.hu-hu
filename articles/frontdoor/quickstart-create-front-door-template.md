@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 09/14/2020
 ms.author: duau
 ms.openlocfilehash: 41ad240b7232895a83839777f9942011edfaf5f4
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90529385"
 ---
 # <a name="quickstart-create-a-front-door-using-an-arm-template"></a>Rövid útmutató: első ajtó létrehozása ARM-sablonnal
@@ -95,7 +95,7 @@ A Azure PowerShell a sablon üzembe helyezésére szolgál. A Azure PowerShellon
 
 1. Válassza ki a korábban létrehozott bejárati ajtót, és kattintson a **frontend Host** hivatkozásra. A hivatkozás megnyit egy webböngészőt, amely átirányítja a háttérbeli FQDN-re, amelyet a létrehozás során megadott.
 
-    :::image type="content" source="./media/quickstart-create-front-door-template/front-door-overview.png" alt-text="Az első ajtós portál áttekintése":::
+    :::image type="content" source="./media/quickstart-create-front-door-template/front-door-overview.png" alt-text="Az előtérben lévő Resource Manager-sablon PowerShell-telepítésének kimenete":::
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -107,7 +107,7 @@ Az erőforráscsoport törléséhez hívja meg a következő `Remove-AzResourceG
 Remove-AzResourceGroup -Name <your resource group name>
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban létrehozta a következőket:
 * Front Door

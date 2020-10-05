@@ -12,10 +12,10 @@ ms.date: 06/25/2020
 ms.author: trbye
 zone_pivot_groups: platforms-set-of-three
 ms.openlocfilehash: 9589a1642eac494eacb6c0b05007fcde79c0a5b1
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85391247"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-windows-linux-or-android"></a>Rövid útmutató: a beszédfelismerési eszközök SDK-minta alkalmazásának futtatása Windows, Linux vagy Android rendszeren
@@ -32,7 +32,7 @@ ms.locfileid: "85391247"
 [!INCLUDE [Android platform](includes/speech-devices-sdk-android-quickstart.md)]
 ::: zone-end
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [A kibocsátási megjegyzések áttekintése](devices-sdk-release-notes.md)

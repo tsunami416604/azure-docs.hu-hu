@@ -7,10 +7,10 @@ ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
 ms.openlocfilehash: 2231c2969bbfce1668002ad4f5f719e0b8e13de5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "81726556"
 ---
 # <a name="accessibility"></a>Kisegítő lehetőségek #
@@ -29,7 +29,7 @@ Azure Media Player alapértelmezett felhasználói felülete megfelel a legtöbb
 
 ### <a name="tabbing-focus"></a>Lapfülek fókusza ###
 
-Az általános HTML-szabványok által biztosított tabbing fókusz a Azure Media Playerban érhető el. A TAB fókuszának engedélyezéséhez hozzá kell adnia `tabindex=0` (vagy egy másik értéket, ha tudomásul veszi, hogyan befolyásolja a TAB rendezését a HTML- `<video>` ben) a `<video ... tabindex=0>...</video>`HTML-hez hasonló módon:. Egyes platformokon a vezérlőelemek fókusza csak akkor lehet jelen, ha a vezérlők láthatók, és ha a platform támogatja ezeket a képességeket.
+Az általános HTML-szabványok által biztosított tabbing fókusz a Azure Media Playerban érhető el. A TAB fókuszának engedélyezéséhez hozzá kell adnia `tabindex=0` (vagy egy másik értéket, ha tudomásul veszi, hogyan befolyásolja a TAB rendezését a HTML-ben) a HTML-hez `<video>` hasonló módon: `<video ... tabindex=0>...</video>` . Egyes platformokon a vezérlőelemek fókusza csak akkor lehet jelen, ha a vezérlők láthatók, és ha a platform támogatja ezeket a képességeket.
 
 Ha engedélyezve van a lapfülek fókusza, a végfelhasználók az egértől függően hatékonyan kezelhetik és vezérelhetik a videó lejátszót. A helyi menü vagy az átirányítható elem a TAB billentyű lenyomásával és az ENTER vagy a SZÓKÖZ billentyűvel választható ki. Ha megnyomja az ENTER vagy a szóköz billentyűt a helyi menüben, a rendszer kibontja azt, hogy a végfelhasználó folytassa a bejárást a menüelem kiválasztásához. Ha elérte a kívánt elemet, az Enter vagy a Szóköz billentyűvel választhatja ki.
 
@@ -37,13 +37,13 @@ Ha engedélyezve van a lapfülek fókusza, a végfelhasználók az egértől fü
 
 Azure Media Player támogatja a billentyűzeten keresztüli gyors vezérlést. Egy webböngészőben a mögöttes video elem vezérlésének egyetlen módja, ha a lejátszóra koncentrál. Ha már van Fókuszban a lejátszó, a gyorsbillentyű vezérelheti a lejátszó funkcióit.  Az alábbi táblázat a különböző billentyűparancsokat és a hozzájuk rendelt műveleteket tartalmazza:
 
-| Billentyűparancs              | Viselkedés                                                                |
+| Billentyűparancs              | Működés                                                                |
 |----------------------|-------------------------------------------------------------------------|
 | F/f                  | Megnyitja vagy bezárja a lejátszó teljes képernyős nézetét.                                  |
 | M/m                  | Elnémítja a hangerőt, vagy feloldja a némítást.                                          |
 | Felfelé és lefelé nyíl    | Növeli és csökkenti a lejátszó hangerejét.                                    |
 | Balra és jobbra nyíl | Vissza és előre ugrik a videóban.                                  |
-| 0,1,2,3,4,5,6,7,8,9  | A videó előrehaladása a lenyomott\- billentyűtől függően 0% 90%-ra változik |
+| 0,1,2,3,4,5,6,7,8,9  | A videó előrehaladása a \- lenyomott billentyűtől függően 0% 90%-ra változik |
 | Kattintson a művelet elemre.         | Lejátssza vagy szünetelteti a videót.                                                   |
 
 ## <a name="next-steps"></a>További lépések

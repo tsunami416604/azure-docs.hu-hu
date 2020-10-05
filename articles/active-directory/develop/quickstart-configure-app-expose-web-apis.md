@@ -14,10 +14,10 @@ ms.author: marsma
 ms.custom: aaddev, contperfq1
 ms.reviewer: aragra, lenalepa, sureshja
 ms.openlocfilehash: 72d66bd4c738ed60bbaefc123daae90ecc0db163
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89442143"
 ---
 # <a name="quickstart-configure-an-application-to-expose-a-web-api"></a>Gyors útmutató: alkalmazás konfigurálása webes API-k megjelenítéséhez
@@ -95,7 +95,7 @@ A példában szereplő `Employees.Write.All` hatókör hozzáadásához kövesse
 
 Ha sikeresen felvette az előző szakaszokban ismertetett, példaként megadott hatóköröket, akkor az ehhez a képhez hasonlóan a webes API-alkalmazás regisztrációjának **elérhetővé tétele API** -paneljén fog megjelenni:
 
-:::image type="content" source="media/quickstart-configure-app-expose-web-apis/portal-03-scopes-list.png" alt-text="Képernyőfelvétel: az API-panel közzététele két elérhető hatókörrel.":::
+:::image type="content" source="media/quickstart-configure-app-expose-web-apis/portal-03-scopes-list.png" alt-text="Az alkalmazás regisztrációja elérhetővé teszi az API-panelt a Azure Portal":::
 
 Ahogy az ábrán is látható, a hatókör teljes karakterlánca a webes API **alkalmazás-azonosító URI-ja** és a hatókör **hatókörének neve**.
 
@@ -111,7 +111,7 @@ Miután az ügyfélalkalmazás regisztrálva van a webes API-hoz való hozzáfé
 
 A későbbiekben igény szerint további hatóköröket is közzétehet. Vegye figyelembe, hogy a webes API több művelethez társított több hatókört is ki tud tenni. Az erőforrás a (z) `scp` OAuth 2,0 hozzáférési jogkivonatban található hatókör () jogcímek kiértékelésével képes a webes API-hoz való hozzáférés szabályozására.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy kitette a webes API-t a hatókörök konfigurálásával, konfigurálja az ügyfélalkalmazás regisztrációját, és engedélyezze a hatókörök elérését.
 

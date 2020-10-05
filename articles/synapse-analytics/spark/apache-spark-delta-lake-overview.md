@@ -12,10 +12,10 @@ ms.author: euang
 ms.custom: devx-track-csharp
 zone_pivot_groups: programming-languages-spark-all-minus-sql
 ms.openlocfilehash: 655daeb0149228d78d5288b0e5d0d705a5743d28
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89008641"
 ---
 # <a name="linux-foundation-delta-lake-overview"></a>A Linux Foundation Delta Lake áttekintése
@@ -113,7 +113,7 @@ data.write.format("delta").save(deltaTablePath)
 
 Eredmények:
 
-| ID|
+| ID (Azonosító)|
 |---|
 |  0|
 |  1|
@@ -154,7 +154,7 @@ df.show()
 
 Eredmények:
 
-| ID|
+| ID (Azonosító)|
 |---|
 |  1|
 |  3|
@@ -200,7 +200,7 @@ df.show()
 
 Eredmények:
 
-| ID|
+| ID (Azonosító)|
 |---|
 |  7|
 |  8|
@@ -293,7 +293,7 @@ Eredmények:
 |Utolsó hozzáférés                 |Thu Jan 01 00:00:00 UTC 1970                                                                                 |       |
 |Created By (Létrehozó)                  |Spark 2.4.4.2.6.99.201 – 11401300                                                                              |       |
 |Típus                        |FELÜGYELT                                                                                                      |       |
-|Szolgáltató                    |különbözeti                                                                                                        |       |
+|Szolgáltató                    |delta                                                                                                        |       |
 |Tábla tulajdonságai            |[transient_lastDdlTime = 1587774934]                                                                           |       |
 |Statisztika                  |2407 bájt                                                                                                   |       |
 |Hely                    |abfss://data @ <data lake> . DFS.Core.Windows.net/Synapse/workspaces/ <workspace name> /Warehouse/manageddeltatable|       |
@@ -405,7 +405,7 @@ deltaTable.toDF.show
 
 Eredmények:
 
-| ID|
+| ID (Azonosító)|
 |---|
 |106|
 |108|
@@ -444,7 +444,7 @@ deltaTable.toDF.show
 
 Eredmények:
 
-| ID|
+| ID (Azonosító)|
 |---|
 |  5|
 |  7|
@@ -509,7 +509,7 @@ deltaTable.toDF.show()
 
 Eredmények:
 
-| ID|
+| ID (Azonosító)|
 |---|
 | 18|
 | 15|
@@ -564,7 +564,7 @@ deltaTable.history.show(false)
 
 Eredmények:
 
-|version|          időbélyeg|userId|userName (Felhasználónév)|művelet|                                                operationParameters| feladat|notebook|clusterId|visszacsapás|isolationLevel|isBlindAppend|
+|version|          időbélyeg|userId|userName (Felhasználónév)|művelet|                                                operationParameters| feladat|jegyzetfüzet|clusterId|visszacsapás|isolationLevel|isBlindAppend|
 |-------|-------------------|------|--------|---------|-------------------------------------------------------------------|----|--------|---------|-----------|--------------|-------------|
 |      4|2020-04-25 00:36:27|  null|    null|    KÖRLEVÉL|                       [predikátum-> (oldData.`ID` = newData. `ID` )]|null|    null|     null|          3|          null|        hamis|
 |      3|2020-04-25 00:36:08|  null|    null|   DELETE|[predikátum-> ["(( `ID` % cast (2 as BIGINT)) = cast (0 as BIGINT))"]]|null|    null|     null|          2|          null|        hamis|
@@ -609,7 +609,7 @@ df.show()
 
 Eredmények:
 
-| ID|
+| ID (Azonosító)|
 |---|
 |  0|
 |  1|
@@ -696,7 +696,7 @@ deltaTable.toDF.sort($"id".desc).show
 
 Eredmények:
 
-| ID|
+| ID (Azonosító)|
 |---|
 | 19|
 | 18|
@@ -903,7 +903,7 @@ spark.sql(s"DESCRIBE HISTORY delta.`$deltaTablePath`").show()
 
 Eredmények:
 
-|version|          időbélyeg|userId|userName (Felhasználónév)|       művelet| operationParameters| feladat|notebook|clusterId|visszacsapás|isolationLevel|isBlindAppend|
+|version|          időbélyeg|userId|userName (Felhasználónév)|       művelet| operationParameters| feladat|jegyzetfüzet|clusterId|visszacsapás|isolationLevel|isBlindAppend|
 |-------|-------------------|------|--------|----------------|--------------------|----|--------|---------|-----------|--------------|-------------|
 |      5|2020-04-25 00:37:09|  null|    null|FOLYAMATOS ÁTVITELI FRISSÍTÉS|[outputMode-> AP...|null|    null|     null|          4|          null|         true|
 |      4|2020-04-25 00:36:27|  null|    null|           KÖRLEVÉL|[predikátum – > (ol...|null|    null|     null|          3|          null|        hamis|
@@ -994,7 +994,7 @@ A teljes dokumentációért lásd a [Delta Lake dokumentációs oldalát](https:
 
 További információ: [Delta Lake Project](https://github.com/delta-io/delta).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [.NET Apache Spark dokumentációhoz](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 * [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)

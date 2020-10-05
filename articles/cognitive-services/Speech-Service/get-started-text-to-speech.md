@@ -14,10 +14,10 @@ ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug
 zone_pivot_groups: speech-full-stack-objectivec-swift
 keywords: szöveg – beszéd
 ms.openlocfilehash: 91f7d9cd6393b7ce73dad53cc825ae98fb749f92
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91332490"
 ---
 # <a name="get-started-with-text-to-speech"></a>Ismerkedés a szövegfelolvasással
@@ -50,7 +50,7 @@ ms.locfileid: "91332490"
 [!INCLUDE [CLI Basics include](includes/how-to/text-to-speech-basics/text-to-speech-basics-cli.md)]
 ::: zone-end
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Bevezetés a Custom Voice szolgáltatásba](how-to-custom-voice.md)
 * [Szintézis javítása az SSML-lel](speech-synthesis-markup.md)

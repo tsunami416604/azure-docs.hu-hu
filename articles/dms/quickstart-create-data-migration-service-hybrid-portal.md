@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019
 ms.topic: quickstart
 ms.date: 03/13/2020
 ms.openlocfilehash: e63f073c4f7166cd205b85ef06589f6056b2a70f
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "84195676"
 ---
 # <a name="quickstart-create-a-hybrid-mode-instance-with-azure-portal--azure-database-migration-service"></a>Gyors útmutató: hibrid üzemmódú példány létrehozása Azure Portal & Azure Database Migration Service
@@ -39,7 +39,7 @@ Ebben a rövid útmutatóban a Azure Portal használatával hozza létre a Azure
 > [!IMPORTANT]
 > A Azure Database Migration Service hibrid telepítőhöz .NET 4.7.2 vagy újabb verzió szükséges. A .NET legújabb verzióinak megkereséséhez tekintse meg a [.NET-keretrendszer letöltése](https://dotnet.microsoft.com/download/dotnet-framework) lapot.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
+Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
@@ -69,7 +69,7 @@ A Azure Database Migration Service első példányának létrehozása előtt reg
 
     - Válasszon egy emlékezetes és egyedi **szolgáltatásnevet** a Azure Database Migration Service példányának azonosításához.
     - Válassza ki azt az **Azure-előfizetést**, amelyben a példányt létre szeretné hozni.
-    - Válasszon ki egy meglévő **erőforráscsoportot**, vagy hozzon létre egy újat.
+    - Válasszon ki egy meglévő **erőforráscsoportot** , vagy hozzon létre egy újat.
     - Válassza ki a forráshoz vagy a célkiszolgálóhoz legközelebb eső **Helyet**.
     - **Szolgáltatási mód**esetén válassza a **hibrid (előzetes verzió)** lehetőséget.
 
@@ -125,7 +125,7 @@ Létre kell hoznia egy Azure-alkalmazás regisztrációs AZONOSÍTÓját, amelye
     > [!IMPORTANT]
     > A Azure Database Migration Service hibrid telepítőhöz .NET 4.7.2 vagy újabb verzió szükséges. A .NET legújabb verzióinak megkereséséhez tekintse meg a [.NET-keretrendszer letöltése](https://dotnet.microsoft.com/download/dotnet-framework) lapot.
 
-4. A telepítési mappában keresse meg és nyissa meg a **dmsSettings. JSON** fájlt, adja meg a **ApplicationId** és a **resourceId**, majd mentse a fájlt.
+4. A telepítési mappában keresse meg és nyissa meg a **dmsSettings.js** fájlt, adja meg a **ApplicationId** és a **resourceId**, majd mentse a fájlt.
 
     ![Hibrid feldolgozói beállítások Azure Database Migration Service](media/quickstart-create-data-migration-service-hybrid-portal/dms-settings.png)
 
@@ -172,7 +172,7 @@ Jelenleg a Azure Database Migration Service hibrid üzemmód eltávolítása csa
 
 ## <a name="set-up-the-azure-database-migration-service-hybrid-worker-using-powershell"></a>A Azure Database Migration Service Hybrid Worker beállítása a PowerShell használatával
 
-A Azure Database Migration Service Hybrid Worker Azure Portal használatával történő telepítése mellett egy [PowerShell-szkriptet](https://techcommunity.microsoft.com/gxcuf89792/attachments/gxcuf89792/MicrosoftDataMigration/119/1/DMS_Hybrid_Script.zip) is biztosítunk, amellyel automatizálható a feldolgozó telepítési lépései, miután létrehozta a Azure Database Migration Service új példányát hibrid módban. A parancsfájl:
+A Azure Database Migration Service Hybrid Worker Azure Portal használatával történő telepítése mellett egy [PowerShell-szkriptet](https://techcommunity.microsoft.com/gxcuf89792/attachments/gxcuf89792/MicrosoftDataMigration/119/1/DMS_Hybrid_Script.zip) is biztosítunk, amellyel automatizálható a feldolgozó telepítési lépései, miután létrehozta a Azure Database Migration Service új példányát hibrid módban. A szkript a következőket hajtja végre:
 
 1. Új AdApp hoz létre.
 2. Letölti a telepítőt.

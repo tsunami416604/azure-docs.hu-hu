@@ -12,10 +12,10 @@ ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: 30862a0c16995e143df72f2a243419819941f54e
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85213040"
 ---
 # <a name="quickstart-configure-synapse-sql-pool-workload-isolation-using-a-workload-group-in-the-azure-portal"></a>Rövid útmutató: a szinapszis SQL-készlet számítási feladatainak elkülönítése munkaterhelési csoport használatával a Azure Portalban
@@ -23,7 +23,7 @@ ms.locfileid: "85213040"
 Ebben a rövid útmutatóban a [munkaterhelés elkülönítését](sql-data-warehouse-workload-isolation.md) úgy konfigurálja, hogy létrehoz egy munkaterhelés-csoportot az erőforrások megőrzéséhez.  Ebben az oktatóanyagban a meghívott adatok betöltése munkaterhelési csoportot hozunk létre `DataLoads` . A munkaterhelés-csoport a rendszererőforrások 20%-át fogja lefoglalni.  Az adatterhelések 20%-os elkülönítése esetén azok garantált erőforrások, amelyek lehetővé teszik számukra, hogy kitalálják a SLA-kat.  A munkaterhelési csoport létrehozása után [hozzon létre egy](quickstart-create-a-workload-classifier-portal.md) számítási feladattal rendelkező számítási feladatot, amely lekérdezéseket rendel ehhez a munkaterhelés-csoporthoz
 
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
+Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
@@ -56,7 +56,7 @@ Munkaterhelés-csoport létrehozása 20%-os elkülönítéssel:
 7.  Adja meg `20` a **(z)%. erőforrások minimális**értékeit.
 8.  Adja meg `5` a **(z)%-os minimális erőforrások számát**.
 9.  Adja meg `100` a **Cap-erőforrások%**-át.
-10.   Kattintson a **Save** (Mentés) gombra.
+10.   Kattintson a **Mentés** gombra.
 
    ![Kattintson a Save (Mentés) gombra.](./media/quickstart-configure-workload-isolation-portal/configure-wg.png)
 
@@ -64,7 +64,7 @@ A munkaterhelési csoport létrehozásakor megjelenik egy portál értesítése.
 
    ![Kattintson a végleges gombra](./media/quickstart-configure-workload-isolation-portal/display-wg.png)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Az `DataLoads` oktatóanyagban létrehozott munkaterhelés-csoport törlése:
 1. Kattintson a **`...`** `DataLoads` munkaterhelés csoport jobb oldalán.
@@ -85,7 +85,7 @@ Az erőforrások tisztításához kövesse az alábbi lépéseket.
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és válassza ki az adattárházat.
 
-    ![Erőforrások felszabadítása](./media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
+    ![Az erőforrások eltávolítása](./media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
 2. A számítás szüneteltetéséhez kattintson a **szüneteltetés** gombra. Ha az adattárház szüneteltetve van, az **Indítás** gomb látható.  A számítás folytatásához kattintson a **Start**gombra.
 

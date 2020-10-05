@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 07/08/2020
 ms.openlocfilehash: d82e9244152f1ecb78b062b4b1dbf02c45c505a1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91325657"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Az Azure Monitor dokumentációjának újdonságai
@@ -55,7 +55,7 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 - Adatgyűjtés [szabályai a Azure monitor (előzetes verzió)](platform/data-collection-rule-overview.md) – új cikk.
 
 
-### <a name="containers"></a>Tárolók
+### <a name="containers"></a>Containers
 - [Üzembe helyezés & hPa-metrikák Azure monitor for containers](insights/container-insights-deployment-hpa-metrics.md) – új cikk.
 
 ### <a name="insights"></a>Insights
@@ -100,7 +100,7 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 - [Resource Manager-sablonok – minták Application Insights erőforrásokhoz](samples/resource-manager-app-resource.md) – új cikk.
 - Az [Azure Application Insights Profiler-vel kapcsolatos problémák elhárítása](app/profiler-troubleshooting.md) – megjegyzés a ASP.net Core-alkalmazások Azure app Service-on futó hiba a Profilerben. 
 
-### <a name="containers"></a>Tárolók
+### <a name="containers"></a>Containers
 - A [Azure monitor for containers – új cikk értesítéseinek naplózása](insights/container-insights-log-alerts.md) .
 - [Metrikai riasztások Azure monitor a tárolók számára](insights/container-insights-metric-alerts.md) – új cikk.
 
@@ -163,7 +163,7 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 - [Alkalmazások figyelése programkód módosítása nélkül – automatikus rendszerállapot-Azure Monitor Application Insights](app/codeless-overview.md) – új cikk.
 - [Az SDK-Betöltési hiba elhárítása JavaScript-webalkalmazások esetén](app/javascript-sdk-load-failure.md) – új cikk.
 
-### <a name="containers"></a>Tárolók
+### <a name="containers"></a>Containers
 - [A hibrid Kubernetes-fürthöz tartozó új szakasz figyelésének leállítása](insights/container-insights-optout-hybrid.md) az ív-kompatibilis Kubernetes.
 - [Azure arc-kompatibilis Kubernetes-fürt konfigurálása Azure monitor for containers](insights/container-insights-enable-arc-enabled-clusters.md) – új cikk.
 - Az [Azure Red Hat OpenShift v4. x konfigurálása Azure monitor for containers esetében](insights/container-insights-azure-redhat4-setup.md) – frissített előfeltételek.
@@ -200,7 +200,7 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 - [Azure-erőforrásnaplók](platform/resource-logs.md)
 - [Azure-beli tevékenységek naplójának összegyűjtése és elemzése Azure Monitor](./platform/activity-log.md)
 - [Azure-beli erőforrás-naplók gyűjtése Log Analytics munkaterületen](./platform/resource-logs.md#send-to-log-analytics-workspace)
-- [Diagnosztikai beállítások létrehozása a platform naplófájljainak és metrikáinak különböző célhelyekre küldéséhez](platform/diagnostic-settings.md)
+- [Diagnosztikai beállítások létrehozása a platformnaplók és -metrikák más célhelyekre való küldéséhez](platform/diagnostic-settings.md)
 - [Az Azure-tevékenység naplójának exportálása](./platform/activity-log.md#legacy-collection-methods)
 - [Az Azure-platform naplóinak áttekintése](platform/platform-logs-overview.md)
 - [Azure platform-naplók továbbítása egy Event hubhoz](./platform/resource-logs.md#send-to-azure-event-hubs)
@@ -270,7 +270,7 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 
 
 
-### <a name="containers"></a>Tárolók
+### <a name="containers"></a>Containers
 - A [tárolók Azure monitorának engedélyezése](insights/container-insights-onboard.md) – frissített tűzfal-konfigurációs tábla.
 - A [tárolók Azure monitorának frissítése a metrikák](insights/container-insights-update-metrics.md) számára – frissítés a felügyelt identitások használatához a metrikák összegyűjtéséhez.
 - [A tárolók Azure monitor figyelési díja](insights/container-insights-cost.md) – új cikk.
@@ -333,7 +333,7 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 - [Application Insights eltávolítása a Visual Studióban](app/remove-application-insights.md) – új cikk.
 - [Telemetria-mintavételezés az Azure Application Insightsban](app/sampling.md) – javítás a Pythonban rögzített sebességű mintában.
 
-### <a name="containers"></a>Tárolók
+### <a name="containers"></a>Containers
 
 - Az [Azure Red Hat OpenShift v4. x konfigurálása Azure monitor for containers szolgáltatással](insights/container-insights-azure-redhat4-setup.md) – új cikk.
 - [ServiceNow-szinkronizálási problémák manuális javítása](platform/itsmc-resync-servicenow.md) – új cikk.
@@ -381,7 +381,7 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 - [Python-alkalmazások figyelése Azure monitor (előzetes verzió)](app/opencensus-python.md) – szabványos metrikák hozzáadása.
 - [Forrás-hozzárendelési támogatás JavaScript-alkalmazásokhoz – Azure Monitor Application Insights](app/source-map-support.md) – új cikk.
 
-### <a name="containers"></a>Tárolók
+### <a name="containers"></a>Containers
 
 - [Azure monitor GYIK](faq.md) – Azure monitor tárolók frissítése.
 - [GPU-figyelés konfigurálása a Azure monitor for containers](insights/container-insights-gpu-monitoring.md) – új cikk.
@@ -616,6 +616,6 @@ Több cikk is frissült a tartalom átszervezésének részeként a platform nap
 - [Erőforrás-naplók összegyűjtése Azure-erőforrásokból és Azure monitor](learn/tutorial-resource-logs.md) -új cikk elemzése.
 - [Azure-erőforrás figyelése Azure monitor](learn/quick-monitor-azure-resource.md) -új cikkel.
    
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ha szeretne hozzájárulni Azure Monitor dokumentációhoz, tekintse meg a [docs közreműködői útmutatóját](/contribute/).

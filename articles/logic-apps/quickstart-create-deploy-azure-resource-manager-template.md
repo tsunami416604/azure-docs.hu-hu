@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.custom: mvc, subject-armqs
 ms.date: 06/30/2020
 ms.openlocfilehash: 10cc89d1a0cc975df4384e551dddde32be0a4a72
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87078123"
 ---
 # <a name="quickstart-create-and-deploy-a-logic-app-workflow-by-using-an-arm-template"></a>Gyors útmutató: logikai alkalmazások munkafolyamatainak létrehozása és üzembe helyezése ARM-sablon használatával
@@ -46,7 +46,7 @@ Ha további rövid útmutató-sablonokat szeretne Azure Logic Appshoz, tekintse 
 
 Kövesse a Gyorsindítás sablon üzembe helyezéséhez használni kívánt beállítást:
 
-| Beállítás | Description |
+| Beállítás | Leírás |
 |--------|-------------|
 | [Azure Portal](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=azure-portal#deploy-template) | Ha az Azure-környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonokat, ezek a lépések segítenek közvetlenül az Azure-ba bejelentkezni, és megnyitják a gyors üzembe helyezési sablont a Azure Portal. További információ: [erőforrások üzembe helyezése ARM-sablonokkal és Azure Portal](../azure-resource-manager/templates/deploy-portal.md). |
 | [Azure CLI](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=azure-cli#deploy-template) | Az Azure parancssori felülete (Azure CLI) az Azure-erőforrások létrehozására és kezelésére szolgáló parancsok halmaza. A parancsok futtatásához az Azure CLI 2,6-es vagy újabb verziójára lesz szükség. A CLI verziójának megadásához írja be a következőt: `az --version` . További információt az alábbi témakörökben talál: <p><p>- [Mi az az Azure CLI?](/cli/azure/what-is-azure-cli?view=azure-cli-latest) <br>- [Ismerkedés az Azure CLI-vel](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) |
@@ -280,7 +280,7 @@ További információ [: Logic Apps REST API: munkafolyamatok – Get](/rest/api
 
 ---
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha azt tervezi, hogy az ezt követő rövid útmutatókkal és oktatóanyagokkal dolgozik tovább, érdemes megtartania ezeket az erőforrásokat. Ha már nincs szüksége a logikai alkalmazásra, törölje az erőforráscsoportot a Azure Portal, az Azure CLI, az Azure PowerShell vagy az erőforrás-kezelés REST API használatával.
 

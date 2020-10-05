@@ -7,10 +7,10 @@ ms.topic: quickstart
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.openlocfilehash: 13e11bb6064888ac36a2d2801fee3db1e9e9fcba
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89050505"
 ---
 # <a name="quickstart-broadcast-real-time-messages-from-console-app"></a>Rövid útmutató: Valós idejű üzenetek szétküldése konzolalkalmazásból
@@ -139,7 +139,7 @@ Verzió | API-állapot | Ajtó | Specifikusság
 
 Az egyes verziókhoz elérhető API-k listáját az alábbi lista tartalmazza.
 
-API | 1,0 – előzetes verzió | 1,0
+API | 1,0 – előzetes verzió | 1.0
 --- | --- | ---
 [Szétküldés mindenkinek](#broadcast) | **&#x2713;** | **&#x2713;**
 [Szétküldés egy csoportnak](#broadcast-group) | **&#x2713;** | **&#x2713;**
@@ -202,7 +202,7 @@ API-verzió | API HTTP-metódus | URL-cím kérése
 `1.0` | `GET` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/users/<user-id>/groups/<group-name>`
 `1.0` | `GET` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/users/<user-id>` 
 
-Válasz állapotkódja | Description
+Válasz állapotkódja | Leírás
 ---|---
 `200` | A felhasználó létezik
 `404` | A felhasználó nem létezik
@@ -252,7 +252,7 @@ API-verzió | API HTTP-metódus | URL-cím kérése
 ---|---|---                             
 `1.0` | `GET` | `https://<instance-name>.service.signalr.net/api/v1/health`
 
-Válasz állapotkódja | Description
+Válasz állapotkódja | Leírás
 ---|---
 `200` | A szolgáltatás jó
 `5xx` | Szolgáltatáshiba
@@ -263,7 +263,7 @@ Válasz állapotkódja | Description
 
 [Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsapi)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan használhatja a REST APIt a Signaler szolgáltatásból az ügyfeleknek küldött valós idejű üzenetek szórására. Következő lépésként tájékozódjon arról, hogyan fejlesztheti és helyezheti üzembe a Azure Functionst a Signal Service-kötéssel, amely REST APIra épül.
 

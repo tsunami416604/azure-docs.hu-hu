@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.openlocfilehash: a4ab8372e23e3621f7d73f8dbc38957c809acc9c
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89237254"
 ---
 # <a name="basic-concepts"></a>Alapfogalmak
@@ -100,7 +100,7 @@ SGX ENKLÁVÉHOZ enklávéhoz generált JWT-példa:
 ```
 Az olyan jogcímeket, mint az "exp", a "IAT", az "ISS", a "NBF", a [JWT RFC](https://tools.ietf.org/html/rfc7517) által definiált, és a fennmaradó értéket az Azure-igazolás hozza létre. További információkért lásd: [Az Azure-igazolás által kiállított jogcímek](claim-sets.md) .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Igazolási szabályzat létrehozása és aláírása](author-sign-policy.md)
 - [Az Azure-igazolás beállítása a PowerShell használatával](quickstart-powershell.md)

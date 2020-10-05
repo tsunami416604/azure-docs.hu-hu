@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: cdn
 author: SyntaxC4
 ms.service: azure-cdn
@@ -9,10 +9,10 @@ ms.date: 04/30/2020
 ms.author: cfowler
 ms.custom: include file
 ms.openlocfilehash: d73a8d743a948cbd94a3af81fe2e77c45c0eeb67
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "82996288"
 ---
 ## <a name="create-a-new-cdn-profile"></a>Új CDN-profil létrehozása
@@ -35,7 +35,7 @@ A CDN-profil a CDN-végpontok egy olyan tárolója, amely meghatároz egy tarifa
     | **Előfizetés** | Válasszon egy Azure-előfizetést a legördülő listából. |
     | **Erőforráscsoport** | Válassza az **új létrehozása** elemet, és írja be a *CDNQuickstart-RG* nevet az erőforráscsoport neveként, vagy válassza a **meglévő használata** lehetőséget, és válassza a *CDNQuickstart – RG* lehetőséget, ha már rendelkezik a csoporttal. | 
     | **Erőforráscsoport helye** | Válasszon egy helyet a legördülő listából. |
-    | **Díjszabási csomag** | Válassza ki a **szabványos Akamai** lehetőséget a legördülő listából. (A Akamai réteg üzembe helyezési ideje körülbelül egy percet tartalmaz. A Microsoft-szintek körülbelül 10 percet vesznek igénybe, a Verizon-rétegek körülbelül 90 percet vesznek igénybe.) |
+    | **Tarifacsomag** | Válassza ki a **szabványos Akamai** lehetőséget a legördülő listából. (A Akamai réteg üzembe helyezési ideje körülbelül egy percet tartalmaz. A Microsoft-szintek körülbelül 10 percet vesznek igénybe, a Verizon-rétegek körülbelül 90 percet vesznek igénybe.) |
     | **Új CDN-végpont létrehozása** | Hagyja kiválasztatlanul. |  
    
     ![Új CDN-profil](./media/cdn-create-profile/cdn-new-profile.png)

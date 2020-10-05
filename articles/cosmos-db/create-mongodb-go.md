@@ -9,10 +9,10 @@ ms.devlang: go
 ms.topic: quickstart
 ms.date: 04/24/2020
 ms.openlocfilehash: 0c03c4f163ef36335dacdc3c28340164dcd23fba
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85299194"
 ---
 # <a name="quickstart-connect-a-go-application-to-azure-cosmos-dbs-api-for-mongodb"></a>Gyors útmutató: go-alkalmazás összekötése Azure Cosmos DB API-MongoDB
@@ -75,7 +75,7 @@ Az alábbi kódrészletek mind a `todo.go` fájlból származnak.
 
 ### <a name="connecting-the-go-app-to-azure-cosmos-db"></a>Az alkalmazás csatlakoztatása az Azure Cosmos DB-hez
 
-[`clientOptions`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo/options?tab=doc#ClientOptions)a Azure Cosmos DBhoz tartozó kapcsolati karakterláncot ágyazza be, amelyet a rendszer a környezeti változó használatával ad át (részletek a közelgő szakaszban). A kapcsolat inicializálva van [`mongo.NewClient`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo?tab=doc#NewClient) , amely a `clientOptions` példányt adja át. a rendszer meghívja a [ `Ping` függvényt](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo?tab=doc#Client.Ping) , hogy erősítse meg a sikeres kapcsolódást (ez egy nem gyors stratégia)
+[`clientOptions`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo/options?tab=doc#ClientOptions) a Azure Cosmos DBhoz tartozó kapcsolati karakterláncot ágyazza be, amelyet a rendszer a környezeti változó használatával ad át (részletek a közelgő szakaszban). A kapcsolat inicializálva van [`mongo.NewClient`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo?tab=doc#NewClient) , amely a `clientOptions` példányt adja át. a rendszer meghívja a [ `Ping` függvényt](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo?tab=doc#Client.Ping) , hogy erősítse meg a sikeres kapcsolódást (ez egy nem gyors stratégia)
 
 ```go
     ctx, cancel := context.WithTimeout(context.Background(), time.Second*10)
@@ -96,7 +96,7 @@ Az alábbi kódrészletek mind a `todo.go` fájlból származnak.
 ```
 
 > [!NOTE] 
-> A [`SetDirect(true)`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo/options?tab=doc#ClientOptions.SetDirect) konfiguráció használata fontos, anélkül, hogy a következő kapcsolódási hibaüzenetet kapja:`unable to connect connection(cdb-ms-prod-<azure-region>-cm1.documents.azure.com:10255[-4]) connection is closed`
+> A [`SetDirect(true)`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo/options?tab=doc#ClientOptions.SetDirect) konfiguráció használata fontos, anélkül, hogy a következő kapcsolódási hibaüzenetet kapja: `unable to connect connection(cdb-ms-prod-<azure-region>-cm1.documents.azure.com:10255[-4]) connection is closed`
 >
 
 ### <a name="create-a-todo-item"></a>Elemek létrehozása `todo`
@@ -145,7 +145,7 @@ func list(status string) {
     }
 ```
 
-[`Find`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo?tab=doc#Collection.Find)a a szűrőn alapuló dokumentumok keresésére szolgál, és az eredmény a következő szeletre lesz konvertálva:`Todo`
+[`Find`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo?tab=doc#Collection.Find) a a szűrőn alapuló dokumentumok keresésére szolgál, és az eredmény a következő szeletre lesz konvertálva: `Todo`
 
 ```go
     todoCollection := c.Database(database).Collection(collection)
@@ -199,9 +199,9 @@ func update(todoid, newStatus string) {
     }
 ```
 
-### <a name="delete-a-todo"></a>A törlése`todo`
+### <a name="delete-a-todo"></a>A törlése `todo`
 
-A `todo` törlődik a alapján, `_id` és egy példány formájában van beágyazva [`bson.D`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/bson?tab=doc#D) . [`DeleteOne`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo?tab=doc#Collection.DeleteOne)a rendszer meghívja a dokumentumot a dokumentum törlésére.
+A `todo` törlődik a alapján, `_id` és egy példány formájában van beágyazva [`bson.D`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/bson?tab=doc#D) . [`DeleteOne`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo?tab=doc#Collection.DeleteOne) a rendszer meghívja a dokumentumot a dokumentum törlésére.
 
 ```go
 func delete(todoid string) {
@@ -352,9 +352,9 @@ export MONGODB_COLLECTION=todos
 
 Kiválaszthatja a kívánt értékeit, vagy megadhatja `MONGODB_DATABASE` `MONGODB_COLLECTION` őket.
 
-## <a name="run-the-application"></a>Alkalmazás futtatása
+## <a name="run-the-application"></a>Az alkalmazás futtatása
 
-Hozzon létre egy`todo`
+Hozzon létre egy `todo`
 
 ```bash
 ./todo --create "Create an Azure Cosmos DB database account"
@@ -366,7 +366,7 @@ Ha a művelet sikeres, az újonnan létrehozott dokumentum MongoDB származó ki
 added todo ObjectID("5e9fd6befd2f076d1f03bd8a")
 ```
 
-Hozzon létre egy másikat`todo`
+Hozzon létre egy másikat `todo`
 
 ```bash
 ./todo --create "Get the MongoDB connection string using the Azure CLI"
@@ -422,7 +422,7 @@ Az előző lépésben létrehozott felhasználói adatok megtekintéséhez, lek�
 
 A felső keresőmezőbe írja be a **Azure Cosmos db**kifejezést. Amikor megnyílik a Cosmos-fiók panel, válassza ki a Cosmos-fiókját. A bal oldali navigációs sávon válassza a **adatkezelő**lehetőséget. A Gyűjtemények panelen bontsa ki gyűjteményét. Ezt követően megtekintheti a gyűjteményhez tartozó dokumentumokat, lekérdezhet adatokat, valamint létrehozhat és futtathat tárolt eljárásokat, eseményindítókat és felhasználói függvényeket. 
 
-:::image type="content" source="./media/create-mongodb-go/go-cosmos-db-data-explorer.png" alt-text="Az újonnan létrehozott dokumentum megjelenítve az Adatkezelőben":::
+:::image type="content" source="./media/create-mongodb-go/go-cosmos-db-data-explorer.png" alt-text="Az újonnan létrehozott dokumentum megjelenítve az Adatkezelőben&quot;:::
 
 
 A `todo` felhasználó azonosítójának törlése
@@ -443,12 +443,12 @@ Az `todo` imént törölt érték nem lehet jelen
 +----------------------------+--------------------------------+-----------+
 |             ID             |          DESCRIPTION           |  STATUS   |
 +----------------------------+--------------------------------+-----------+
-| "5e9fd6befd2f076d1f03bd8a" | Get the MongoDB connection     | pending   |
+| &quot;5e9fd6befd2f076d1f03bd8a" | Get the MongoDB connection     | pending   |
 |                            | string using the Azure CLI     |           |
 +----------------------------+--------------------------------+-----------+
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 

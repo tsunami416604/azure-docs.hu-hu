@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
 ms.openlocfilehash: ba6f79fffe5287be7574d422f026489d4da2795e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87287505"
 ---
 # <a name="azure-synapse-analytics-workspaces-preview-frequently-asked-questions"></a>Azure szinapszis Analytics (munkaterületek előzetes verzió) – gyakori kérdések
@@ -22,7 +22,7 @@ Ebben az útmutatóban megtalálja a szinapszis-elemzések leggyakrabban feltett
 
 [!INCLUDE [preview](includes/note-preview.md)]
 
-## <a name="general"></a>Általános
+## <a name="general"></a>Általános kérdések
 
 ### <a name="q-what-is-azure-synapse-analytics"></a>K: Mi az az Azure szinapszis Analytics?
 
@@ -102,7 +102,7 @@ Válasz: igen, a harmadik féltől származó üzleti alkalmazásokat, például
 ## <a name="next-steps"></a>Következő lépések
 
 - [Munkaterület létrehozása](quickstart-create-workspace.md)
-- [A szinapszis Studio használata](quickstart-synapse-studio.md)
+- [A Synapse Studio használata](quickstart-synapse-studio.md)
 - [SQL-készlet létrehozása](quickstart-create-sql-pool-portal.md)
 - [Az igény szerinti SQL használata](quickstart-sql-on-demand.md)
 - [Apache Spark-készlet létrehozása](quickstart-create-apache-spark-pool-portal.md) 

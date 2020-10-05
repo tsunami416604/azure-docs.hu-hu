@@ -10,10 +10,10 @@ ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
 ms.openlocfilehash: 781cc10895f3a77afe71d508c1194b425010ec41
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89319542"
 ---
 # <a name="bringing-and-creating-linux-images-in-azure"></a>Linux-rendszerképek készítése és létrehozása az Azure-ban
@@ -37,7 +37,7 @@ Az Azure-lemezképek több operációsrendszer-lemezből és adatlemezből is k�
 
 Az Azure két fő képtípust kínál, általánosítva és specializálva. Az általánosított és specializált kifejezések eredetileg Windows-feltételek, amelyek az Azure-ba migrálva vannak. Ezek a típusok határozzák meg, hogy a platform hogyan fogja kezelni a virtuális gépet, amikor bekapcsolja. Mindkét típushoz előnyök és hátrányok tartoznak, és előfeltételei vannak. Az első lépések előtt tudnia kell, hogy milyen típusú rendszerképekre lesz szüksége. Az alábbi összefoglalja a forgatókönyveket és a szükséges típusokat:
 
-| Forgatókönyv      | Lemezkép típusa  | Tárolási lehetőségek |
+| Használati eset      | Lemezkép típusa  | Tárolási lehetőségek |
 | ------------- |:-------------:| :-------------:| 
 | Hozzon létre egy olyan rendszerképet, amely több virtuális gép általi használatra is konfigurálható, és beállítható az állomásnév, rendszergazdai felhasználó hozzáadása és egyéb feladatok végrehajtása az első rendszerindítás során. | Általánosított | Megosztott képgyűjtemény vagy önálló felügyelt lemezképek |
 | Rendszerkép létrehozása VM-pillanatképből vagy biztonsági másolatból | Specializált |Megosztott képgyűjtemény vagy felügyelt lemez |
@@ -108,6 +108,6 @@ Ha továbbra is létre kell hoznia egy saját rendszerképet, győződjön meg a
 - [Ubuntu](create-upload-ubuntu.md)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtudhatja, hogyan hozhat létre [megosztott képtárat](tutorial-custom-images.md).

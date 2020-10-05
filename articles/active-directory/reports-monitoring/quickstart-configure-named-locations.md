@@ -17,10 +17,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 94f4d17596936dd9d0ebbdae3c351cac9ed2a570
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89299864"
 ---
 # <a name="quickstart-configure-named-locations-in-azure-active-directory"></a>Rövid útmutató: Nevesített helyek konfigurálása Azure Active Directory használatával
@@ -55,7 +55,7 @@ Ennek a rövid útmutatónak az elvégzéséhez a következőkre lesz szüksége
 
    * A **Név** mezőbe írja be a megnevezett hely nevét.
    * Az **IP-címtartományok** mezőbe írja be az IP-címtartományt CIDR formátumban.  
-   * Kattintson a **Létrehozás** lehetőségre.
+   * Kattintson a **Létrehozás** elemre.
     
      ![Az új panel](./media/quickstart-configure-named-locations/61.png)
 

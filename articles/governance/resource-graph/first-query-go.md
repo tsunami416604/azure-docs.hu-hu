@@ -4,10 +4,10 @@ description: Ebben a rövid útmutatóban az erőforrás-gráf csomagjának enge
 ms.date: 06/16/2020
 ms.topic: quickstart
 ms.openlocfilehash: cc15b9fe75913ca47a14001a27e1e3c37d9ea71a
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "84899683"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-go"></a>Rövid útmutató: az első Resource Graph-lekérdezés futtatása a go használatával
@@ -18,7 +18,7 @@ A folyamat végén hozzá kell adni a csomagokat a go-telepítéshez, és futtat
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
+Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 ## <a name="add-the-resource-graph-package"></a>Az erőforrás-gráf csomag hozzáadása
 
